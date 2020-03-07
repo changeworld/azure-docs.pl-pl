@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: rajanaki
 ms.openlocfilehash: a411fc9a95bef595a8fc49cad77189bb88fb7661
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875798"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362854"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Usuwanie serwerów i wyłączanie ochrony
 
@@ -30,10 +30,10 @@ Jeśli replikujesz maszyny wirtualne VMware lub serwery fizyczne z systemem Wind
 ## <a name="unregister-a-vmm-server"></a>Wyrejestrowywanie serwera programu VMM
 
 1. Zatrzymaj replikację maszyn wirtualnych w chmurach na serwerze programu VMM, który chcesz usunąć.
-2. Usuń wszystkie mapowania sieci używane przez chmury na serwerze programu VMM, który chcesz usunąć. W **obszarze Site Recovery infrastruktura** > dla**mapowania sieci** **programu System Center VMM** > kliknij prawym przyciskiem myszy mapowanie sieci > **Usuń**.
+2. Usuń wszystkie mapowania sieci używane przez chmury na serwerze programu VMM, który chcesz usunąć. W **Site Recovery** > infrastruktury **dla programu System Center VMM** > **mapowanie sieci**, kliknij prawym przyciskiem myszy mapowanie sieci > **Usuń**.
 3. Zanotuj identyfikator serwera programu VMM.
-4. Usuń skojarzenie zasad replikacji z chmur na serwerze programu VMM, który chcesz usunąć.  W **Site Recovery infrastruktura** > dla**zasad replikacji** **programu System Center VMM** >  kliknij dwukrotnie skojarzone zasady. Kliknij prawym przyciskiem myszy > w chmurze, aby **usunąć skojarzenie**.
-5. Usuń serwer programu VMM lub aktywny węzeł. W **Site Recovery infrastruktura** > dla**serwerów programu** **System Center VMM** > VMM kliknij prawym przyciskiem myszy serwer > **Usuń**.
+4. Usuń skojarzenie zasad replikacji z chmur na serwerze programu VMM, który chcesz usunąć.  W **Site Recovery** > infrastruktury **dla programu System Center VMM** >  **zasad replikacji**kliknij dwukrotnie skojarzone zasady. Kliknij prawym przyciskiem myszy > w chmurze, aby **usunąć skojarzenie**.
+5. Usuń serwer programu VMM lub aktywny węzeł. W **Site Recovery** > infrastruktury **dla programu System Center VMM** > **serwerów programu VMM**kliknij prawym przyciskiem myszy serwer > **Usuń**.
 6. Jeśli serwer programu VMM był w stanie odłączonym, Pobierz i uruchom [skrypt oczyszczania](https://aka.ms/asr-cleanup-script-vmm) na serwerze programu VMM. Otwórz program PowerShell z opcją **Uruchom jako administrator** , aby zmienić zasady wykonywania dla domyślnego zakresu (LocalMachine). W skrypcie Określ identyfikator serwera programu VMM, który chcesz usunąć. Skrypt usuwa z serwera informacje o rejestracji i parowania z chmurą.
 5. Uruchom skrypt oczyszczania na dowolnym pomocniczym serwerze programu VMM.
 6. Uruchom skrypt czyszczący dla wszystkich innych pasywnych węzłów klastra programu VMM, na których zainstalowano dostawcę.
@@ -45,10 +45,10 @@ Jeśli replikujesz maszyny wirtualne VMware lub serwery fizyczne z systemem Wind
 Hosty funkcji Hyper-V, które nie są zarządzane przez program VMM, są zbierane do lokacji funkcji Hyper-V. Usuń hosta w lokacji funkcji Hyper-V w następujący sposób:
 
 1. Wyłącz replikację dla maszyn wirtualnych funkcji Hyper-V znajdujących się na hoście.
-2. Usuń skojarzenia zasad dla lokacji funkcji Hyper-V. W **Site Recovery infrastrukturze** > dla**zasad replikacji** >  **lokacji funkcji Hyper-V**kliknij dwukrotnie skojarzone zasady. Kliknij prawym przyciskiem myszy witrynę > **Usuń skojarzenie**.
-3. Usuń hosty funkcji Hyper-V. W **infrastrukturze** > usługi Site Recovery dla**hostów funkcji**Hyper-v w**lokacji** > z systemem, kliknij prawym przyciskiem myszy serwer > **Usuń**.
-4. Usuń lokację funkcji Hyper-V po usunięciu z niej wszystkich hostów. W **Site Recovery infrastrukturze** > **dla** > lokacji funkcji Hyper-v w lokacjach funkcji Hyper-v kliknij prawym przyciskiem myszy lokację > **Usuń**.
-5. Jeśli host funkcji Hyper-V był w stanie  odłączonym, uruchom następujący skrypt na każdym usuniętym hoście funkcji Hyper-v. Skrypt czyści ustawienia na serwerze i wyrejestrowuje go z magazynu.
+2. Usuń skojarzenia zasad dla lokacji funkcji Hyper-V. W **Site Recovery** > infrastruktury **dla lokacji funkcji Hyper-V** >  **zasad replikacji**, kliknij dwukrotnie skojarzone zasady. Kliknij prawym przyciskiem myszy witrynę > **Usuń skojarzenie**.
+3. Usuń hosty funkcji Hyper-V. W **Site Recovery** > infrastruktury **dla lokacji funkcji hyper-v** > **hostach funkcji Hyper-v**kliknij prawym przyciskiem myszy serwer > **Usuń**.
+4. Usuń lokację funkcji Hyper-V po usunięciu z niej wszystkich hostów. W **Site Recovery** > infrastruktury **dla lokacji funkcji hyper-v** > **Lokacje funkcji Hyper-v**, kliknij prawym przyciskiem myszy lokację > **Usuń**.
+5. Jeśli host funkcji Hyper-V był w stanie **odłączonym** , uruchom następujący skrypt na każdym usuniętym hoście funkcji Hyper-v. Skrypt czyści ustawienia na serwerze i wyrejestrowuje go z magazynu.
 
 
 ```powershell

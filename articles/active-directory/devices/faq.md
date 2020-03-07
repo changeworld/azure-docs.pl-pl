@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cebb59d30dd717e54321ab138f6580947a545961
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185845"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377011"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory często zadawane pytania dotyczące zarządzania urządzeniami
 

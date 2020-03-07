@@ -6,11 +6,11 @@ ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
 ms.openlocfilehash: 6e4c8057322b6208ea3b447b264e2bde1344540c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421551"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372400"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Najważniejsze pojęcia dotyczące przepływu pracy programu Windows PowerShell dla elementów Runbook usługi Automation
 
@@ -41,7 +41,7 @@ Kod przepływu pracy programu PowerShell wygląda niemal identycznie z kodem skr
 
 ### <a name="activities"></a>Działania
 
-Działanie jest konkretnym zadaniem w przepływie pracy. Tak samo, jak skrypt składa się z co najmniej jedno polecenie, przepływ pracy składa się z jednego lub więcej działań, które są wykonywane w sekwencji. Windows PowerShell Workflow automatycznie konwertuje wiele poleceń cmdlet programu Windows PowerShell do działania po uruchomieniu przepływu pracy. Po określeniu jednego z tych poleceń cmdlet w elemencie Runbook odpowiednie działanie jest uruchamiane przez Windows Workflow Foundation. Dla poleceń cmdlet, które nie mają odpowiadającego im działania, Windows PowerShell Workflow automatycznie uruchamia polecenie cmdlet w ramach [InlineScript](#inlinescript) działania. Istnieje zestaw poleceń cmdlet, które są wyłączone i nie mogą być używane w przepływie pracy, chyba że zostaną jawnie umieszczone w bloku InlineScript. Aby uzyskać więcej szczegółowych informacji dotyczących tych pojęć, zobacz [używanie działań w skryptowych przepływach pracy](https://technet.microsoft.com/library/jj574194.aspx).
+Działanie jest konkretnym zadaniem w przepływie pracy. Tak samo, jak skrypt składa się z co najmniej jedno polecenie, przepływ pracy składa się z jednego lub więcej działań, które są wykonywane w sekwencji. Windows PowerShell Workflow automatycznie konwertuje wiele poleceń cmdlet programu Windows PowerShell do działania po uruchomieniu przepływu pracy. Po określeniu jednego z tych poleceń cmdlet w elemencie Runbook odpowiednie działanie jest uruchamiane przez Windows Workflow Foundation. W przypadku tych poleceń cmdlet, które nie odpowiadają działaniu, przepływ pracy programu Windows PowerShell automatycznie uruchamia polecenie cmdlet w ramach działania [InlineScript](#inlinescript) . Istnieje zestaw poleceń cmdlet, które są wyłączone i nie mogą być używane w przepływie pracy, chyba że zostaną jawnie umieszczone w bloku InlineScript. Aby uzyskać więcej szczegółowych informacji dotyczących tych pojęć, zobacz [Używanie działań w skryptowych przepływach pracy](https://technet.microsoft.com/library/jj574194.aspx).
 
 Działania przepływów pracy dzielą zestaw wspólnych parametrów konfigurujących ich pracę. Aby uzyskać szczegółowe informacje o typowych parametrach przepływu pracy, zobacz [about_WorkflowCommonParameters](https://technet.microsoft.com/library/jj129719.aspx).
 
@@ -189,7 +189,7 @@ Workflow Copy-Files
 }
 ```
 
-Możesz użyć **ForEach-równoległe** konstrukcji do przetwarzania poleceń dla każdego elementu w kolekcji jednocześnie. Elementy w kolekcji są przetwarzane równolegle, podczas gdy polecenia w bloku skryptu uruchamiają się sekwencyjnie. Ta funkcja używa następującej składni poniżej. W takim przypadku zakończeniu rozpocznie się w tym samym czasie dla wszystkich elementów w kolekcji. Dla każdego elementu Activity2 rozpoczyna się po zakończeniu. Działanie activity3 jest uruchamiany dopiero po zakończeniu zakończeniu i Activity2 dla wszystkich elementów. Użyjemy parametru `ThrottleLimit`, aby ograniczyć równoległość. Zbyt wysoka `ThrottleLimit` może spowodować problemy. Idealna wartość parametru `ThrottleLimit` zależy od wielu czynników w środowisku. Należy spróbować uruchomić z niską wartością i wypróbować różne wartości zwiększające się, dopóki nie znajdziesz tego, który działa w konkretnym przypadku.
+Można użyć konstrukcji **foreach-Parallel** , aby przetwarzać polecenia dla każdego elementu w kolekcji współbieżnie. Elementy w kolekcji są przetwarzane równolegle, podczas gdy polecenia w bloku skryptu uruchamiają się sekwencyjnie. Ta funkcja używa następującej składni poniżej. W takim przypadku zakończeniu rozpocznie się w tym samym czasie dla wszystkich elementów w kolekcji. Dla każdego elementu Activity2 rozpoczyna się po zakończeniu. Działanie activity3 jest uruchamiany dopiero po zakończeniu zakończeniu i Activity2 dla wszystkich elementów. Użyjemy parametru `ThrottleLimit`, aby ograniczyć równoległość. Zbyt wysoka `ThrottleLimit` może spowodować problemy. Idealna wartość parametru `ThrottleLimit` zależy od wielu czynników w środowisku. Należy spróbować uruchomić z niską wartością i wypróbować różne wartości zwiększające się, dopóki nie znajdziesz tego, który działa w konkretnym przypadku.
 
 ```powershell
 ForEach -Parallel -ThrottleLimit 10 ($<item> in $<collection>)
@@ -222,7 +222,7 @@ Workflow Copy-Files
 
 ## <a name="checkpoints"></a>Punkty kontrolne
 
-*Punkt kontrolny* jest migawką bieżącego stanu przepływu pracy, który zawiera bieżącą wartość dla zmiennych i wszystkie dane wyjściowe wygenerowane do tego momentu. Jeśli przepływ pracy zakończy się błędem lub jest zawieszony, przy następnym uruchomieniu zostanie uruchomiony od ostatniego punktu kontrolnego zamiast od początku przepływu pracy.  Punkt kontrolny można ustawić w przepływie pracy za pomocą **Checkpoint-Workflow** działania. Azure Automation ma funkcję o nazwie " [uczciwy udział](automation-runbook-execution.md#fair-share)", w której każdy element Runbook, który działa przez 3 godziny, zostaje zwolniony, aby umożliwić uruchomienie innych elementów Runbook. Po pewnym czasie zostanie ponownie załadowany zwolniony element Runbook, a w jego przypadku zostanie wznowione wykonywanie z ostatniego punktu kontrolnego wykonanego w elemencie Runbook. W celu zagwarantowania, że element Runbook zostanie ostatecznie zakończony, należy dodać punkty kontrolne w odstępach czasu, które są uruchamiane krócej niż 3 godziny. Jeśli podczas każdego uruchomienia zostanie dodany nowy punkt kontrolny, a element Runbook zostanie wykluczony po 3 godzinach z powodu błędu, element Runbook zostanie wznowiony w nieskończoność.
+*Punkt kontrolny* jest migawką bieżącego stanu przepływu pracy, który zawiera bieżącą wartość dla zmiennych i wszystkie dane wyjściowe wygenerowane do tego momentu. Jeśli przepływ pracy zakończy się błędem lub jest zawieszony, przy następnym uruchomieniu zostanie uruchomiony od ostatniego punktu kontrolnego zamiast od początku przepływu pracy.  Punkt kontrolny można ustawić w przepływie pracy przy użyciu działania **Checkpoint-Workflow** . Azure Automation ma funkcję o nazwie " [uczciwy udział](automation-runbook-execution.md#fair-share)", w której każdy element Runbook, który działa przez 3 godziny, zostaje zwolniony, aby umożliwić uruchomienie innych elementów Runbook. Po pewnym czasie zostanie ponownie załadowany zwolniony element Runbook, a w jego przypadku zostanie wznowione wykonywanie z ostatniego punktu kontrolnego wykonanego w elemencie Runbook. W celu zagwarantowania, że element Runbook zostanie ostatecznie zakończony, należy dodać punkty kontrolne w odstępach czasu, które są uruchamiane krócej niż 3 godziny. Jeśli podczas każdego uruchomienia zostanie dodany nowy punkt kontrolny, a element Runbook zostanie wykluczony po 3 godzinach z powodu błędu, element Runbook zostanie wznowiony w nieskończoność.
 
 W poniższym przykładowym kodzie wyjątek występuje po Activity2, co spowodowało zakończenie przepływu pracy. Po ponownym uruchomieniu przepływu pracy jest on uruchamiany przez uruchomienie Activity2, ponieważ był tuż po ostatnim zestawie punktów kontrolnych.
 
@@ -287,7 +287,7 @@ workflow CreateTestVms
 
 Nie jest to wymagane w przypadku uwierzytelniania przy użyciu konta Uruchom jako skonfigurowanego za pomocą nazwy głównej usługi.
 
-Aby uzyskać więcej informacji na temat punktów kontrolnych, zobacz [Dodawanie punktów kontrolnych do skryptowego przepływu pracy](https://technet.microsoft.com/library/jj574114.aspx).
+Aby uzyskać więcej informacji na temat punktów kontrolnych, zobacz [Dodawanie punktów kontrolnych do skryptu przepływu pracy](https://technet.microsoft.com/library/jj574114.aspx).
 
 ## <a name="next-steps"></a>Następne kroki
 

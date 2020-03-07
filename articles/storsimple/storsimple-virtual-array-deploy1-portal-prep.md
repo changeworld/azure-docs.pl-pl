@@ -9,18 +9,18 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7f2c7a6f9c1146627f81dc20386c59a91724b245
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76273837"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365617"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>Wdróż wirtualną macierz StorSimple — Przygotuj Azure Portal
 
 ![](./media/storsimple-virtual-array-deploy1-portal-prep/getstarted4.png)
 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 [!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
@@ -30,7 +30,7 @@ Do ukończenia procesu instalacji i konfiguracji niezbędne są uprawnienia admi
 
 Informacje publikowane w tym artykule dotyczą wdrażania tablic wirtualnych StorSimple w chmurze Azure Portal i Microsoft Azure Government.
 
-### <a name="get-started"></a>Rozpocznij
+### <a name="get-started"></a>Rozpoczynanie pracy
 Przepływ pracy wdrożenia polega na przygotowaniu portalu, aprowizacji macierzy wirtualnej w środowisku zwirtualizowanym i zakończeniu instalacji. Aby rozpocząć pracę z wdrożeniem macierzy wirtualnej StorSimple jako serwerem plików lub serwerem iSCSI, należy zapoznać się z poniższymi zasobami.
 
 #### <a name="deployment-articles"></a>Artykuły dotyczące wdrażania
@@ -127,7 +127,7 @@ Wykonaj poniższe czynności w witrynie [Azure Portal](https://portal.azure.com/
 
 #### <a name="to-get-the-virtual-array-image"></a>Aby uzyskać obraz macierzy wirtualnej
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com/). 
+1. Zaloguj się do [Azure Portal](https://portal.azure.com/). 
 2. W Azure Portal kliknij pozycję **przeglądaj > menedżerów urządzeń StorSimple**.
 3. Wybierz istniejącą usługę StorSimple Menedżer urządzeń. W bloku **StorSimple Menedżer urządzeń** kliknij pozycję **Szybki Start**. 
 4. Kliknij link odpowiadający obrazowi, który chcesz pobrać z centrum pobierania Microsoft. Pliki obrazów mają rozmiar około 4,8 GB.
@@ -149,7 +149,7 @@ Aby dodać istniejące konto magazynu Microsoft Azure, wykonaj następujące czy
 
 1. Przejdź do usługi Menedżer urządzeń, wybierz i kliknij ją dwukrotnie. Spowoduje to otwarcie bloku **Przegląd** .
 2. Wybierz pozycję **poświadczenia konta magazynu** w sekcji **Konfiguracja** .
-3. Kliknij pozycję **Dodaj**.
+3. Kliknij pozycję **Add** (Dodaj).
 4. W bloku **Dodawanie konta magazynu** wykonaj następujące czynności:
    
    1. W obszarze **subskrypcja**wybierz pozycję **bieżące**.
@@ -158,7 +158,7 @@ Aby dodać istniejące konto magazynu Microsoft Azure, wykonaj następujące czy
    
    3. Wybierz pozycję **Włącz** , aby utworzyć bezpieczny kanał na potrzeby komunikacji sieciowej między urządzeniem StorSimple a chmurą. Wybierz opcję **Wyłącz** tylko wtedy, gdy Pracujesz w chmurze prywatnej.
    
-   4. Kliknij pozycję **Dodaj**. Po pomyślnym utworzeniu konta magazynu otrzymasz powiadomienie.<br></br>
+   4. Kliknij pozycję **Add** (Dodaj). Po pomyślnym utworzeniu konta magazynu otrzymasz powiadomienie.<br></br>
    
       ![Dodawanie istniejącego poświadczenia konta magazynu](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 

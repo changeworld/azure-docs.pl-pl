@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 10/09/2019
 ms.openlocfilehash: 1d1ddb84c000efaf58356ffdd15382e0b74aa744
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494865"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395208"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Samouczek: tworzenie klastrów Apache Hadoop na żądanie w usłudze HDInsight przy użyciu Azure Data Factory
 
@@ -183,7 +183,7 @@ W tym artykule opisano konfigurowanie działania programu Hive w celu utworzenia
 
 ## <a name="create-a-data-factory"></a>Tworzenie fabryki danych
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [Azure portal](https://portal.azure.com/).
 
 2. W menu po lewej stronie przejdź do **+ Utwórz zasób** > **Analytics** > **Data Factory**.
 
@@ -193,7 +193,7 @@ W tym artykule opisano konfigurowanie działania programu Hive w celu utworzenia
 
     |Właściwość  |Wartość  |
     |---------|---------|
-    |Nazwa | Wprowadź nazwę fabryki danych. Ta nazwa musi być unikatowa w skali globalnej.|
+    |Name (Nazwa) | Wprowadź nazwę fabryki danych. Ta nazwa musi być unikatowa w skali globalnej.|
     |Subskrypcja | Wybierz swoją subskrypcję platformy Azure. |
     |Grupa zasobów | Wybierz pozycję **Użyj istniejącej** , a następnie wybierz grupę zasobów utworzoną za pomocą skryptu programu PowerShell. |
     |Wersja | Pozostaw w **wersji 2**. |
@@ -235,7 +235,7 @@ W tej sekcji utworzysz dwie połączone usługi w fabryce danych.
 
     |Właściwość |Wartość |
     |---|---|
-    |Nazwa |Wprowadź polecenie `HDIStorageLinkedService`.|
+    |Name (Nazwa) |Wprowadź polecenie `HDIStorageLinkedService`.|
     |Subskrypcja platformy Azure |Wybierz swoją subskrypcję z listy rozwijanej.|
     |Nazwa konta magazynu |Wybierz konto usługi Azure Storage utworzone jako część skryptu programu PowerShell.|
 
@@ -257,7 +257,7 @@ W tej sekcji utworzysz dwie połączone usługi w fabryce danych.
 
     | Właściwość | Wartość |
     | --- | --- |
-    | Nazwa | Wprowadź polecenie `HDInsightLinkedService`.|
+    | Name (Nazwa) | Wprowadź polecenie `HDInsightLinkedService`.|
     | Typ | Wybierz pozycję **HDInsight na żądanie**. |
     | Połączona usługa Azure Storage | Wybierz pozycję `HDIStorageLinkedService`. |
     | Typ klastra | Wybierz pozycję **Hadoop** |

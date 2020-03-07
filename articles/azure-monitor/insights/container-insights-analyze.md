@@ -4,11 +4,11 @@ description: W tym artykule opisano sposób wyświetlania i analizowania wydajno
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: f57f8982b2aa045156e6f48316610137260d6597
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75731020"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385560"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Monitorowanie wydajności klastra Kubernetes za pomocą Azure Monitor dla kontenerów
 
@@ -24,11 +24,11 @@ Główne różnice w monitorowaniu klastra systemu Windows Server z Azure Monito
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się do [portalu Azure](https://portal.azure.com). 
+Zaloguj się do [Azure portal](https://portal.azure.com). 
 
 ## <a name="multi-cluster-view-from-azure-monitor"></a>Wyświetlanie wielu klastrów z usługi Azure Monitor
 
-Aby wyświetlić stan kondycji wszystkich wdrożonych klastrów Kubernetes, wybierz pozycję **monitor** w lewym okienku w Azure Portal. W obszarze **Insights** zaznacz **kontenery**. 
+Aby wyświetlić stan kondycji wszystkich wdrożonych klastrów Kubernetes, wybierz pozycję **monitor** w lewym okienku w Azure Portal. W sekcji **szczegółowe informacje** wybierz pozycję **kontenery**. 
 
 ![Przykład pulpitu nawigacyjnego wielu klastrów w usłudze Azure Monitor](./media/container-insights-analyze/azmon-containers-multiview.png)
 
@@ -71,17 +71,17 @@ W poniższej tabeli przedstawiono podział obliczeń kontrolujących Stany kondy
 |**Użytkownik pod**| | |  
 | |W dobrej kondycji |100% |  
 | |Ostrzeżenie |90 - 99% |  
-| |Krytyczna |< 90% |  
+| |Krytyczny |< 90% |  
 | |Nieznane |Jeśli nie zostały zgłoszone w ciągu ostatnich 30 minut |  
 |**System pod**| | |  
 | |W dobrej kondycji |100% |
-| |Ostrzeżenie |ND |
-| |Krytyczna |< 100% |
+| |Ostrzeżenie |N/D |
+| |Krytyczny |< 100% |
 | |Nieznane |Jeśli nie zostały zgłoszone w ciągu ostatnich 30 minut |
-|**Węzeł** | | |
+|**Node** | | |
 | |W dobrej kondycji |> 85% |
 | |Ostrzeżenie |60 - 84% |
-| |Krytyczna |< 60% |
+| |Krytyczny |< 60% |
 | |Nieznane |Jeśli nie zostały zgłoszone w ciągu ostatnich 30 minut |
 
 Z listy klastrów możesz przejść do szczegółów na stronie **klaster** , wybierając nazwę klastra. Następnie przejdź do strony wydajność **węzłów** , wybierając pakiet zbiorczy węzłów w kolumnie **węzły** dla danego klastra. Możesz też przejść do szczegółów na stronie wydajność **kontrolerów** , wybierając zestawienie z kolumną **zasobników użytkownika** lub **system** .
@@ -93,7 +93,7 @@ Dostęp do Azure Monitor dla kontenerów jest dostępny bezpośrednio w klastrze
 - Klaster
 - Węzły 
 - Kontrolery 
-- Kontenery
+- Containers
 
 >[!NOTE]
 >Środowisko opisane w dalszej części tego artykułu dotyczy również wyświetlania stanu wydajności i kondycji klastrów Kubernetes hostowanych w Azure Stack lub innym środowisku w przypadku wybrania z widoku wiele klastrów. 
@@ -105,8 +105,8 @@ Zostanie otwarta strona domyślna i zostaną wyświetlone cztery liniowe wykresy
 Na wykresach wydajności są wyświetlane cztery metryki wydajności:
 
 - **Użycie procesora CPU przez węzeł&nbsp;%** : zagregowana perspektywa użycia procesora CPU dla całego klastra. Aby przefiltrować wyniki dla zakresu czasu, wybierz opcję **średnie**, **minimum**, **pięćdziesiąt**, **90**, **używany 95.** lub **Max** w selektorze percentyly powyżej wykresu. Filtry mogą być używane pojedynczo lub łącznie. 
-- **Wykorzystanie pamięci węzła&nbsp;%** : perspektywy zagregowane wykorzystanie pamięci dla całego klastra. Aby przefiltrować wyniki dla zakresu czasu, wybierz opcję **średnie**, **minimum**, **pięćdziesiąt**, **90**, **używany 95.** lub **Max** w selektorze percentyly powyżej wykresu. Filtry mogą być używane pojedynczo lub łącznie. 
-- **Liczba węzłów**: liczba węzłów i stan z usługi Kubernetes. Stanem reprezentowanego węzła klastra są łącznie, gotowe i niegotowe. Można je filtrować pojedynczo lub łączyć w selektorze powyżej wykresu. 
+- **Użycie pamięci przez węzeł&nbsp;%** : zagregowana perspektywa wykorzystania pamięci dla całego klastra. Aby przefiltrować wyniki dla zakresu czasu, wybierz opcję **średnie**, **minimum**, **pięćdziesiąt**, **90**, **używany 95.** lub **Max** w selektorze percentyly powyżej wykresu. Filtry mogą być używane pojedynczo lub łącznie. 
+- **Liczba węzłów**: liczba węzłów i stan z Kubernetes. Stanem reprezentowanego węzła klastra są łącznie, gotowe i niegotowe. Można je filtrować pojedynczo lub łączyć w selektorze powyżej wykresu. 
 - **Liczba aktywnych pod**: liczba i stan z Kubernetes. Stany reprezentowanego obszaru są całkowite, oczekujące, uruchomione, nieznane, zakończone powodzeniem lub niepowodzeniem. Można je filtrować pojedynczo lub łączyć w selektorze powyżej wykresu. 
 
 Użyj klawiszy strzałek w lewo i w prawo, aby przechodzić przez każdy punkt danych na wykresie. Użyj klawiszy strzałek w górę i w dół, aby przechodzić do kolejnych wierszy percentylu. Wybierz ikonę pinezki w prawym górnym rogu dowolnego z wykresów, aby przypiąć wybrany wykres do ostatniego wyświetlonego pulpitu nawigacyjnego platformy Azure. Z poziomu pulpitu nawigacyjnego można zmieniać rozmiar wykresu i zmienić jego położenie. Wybranie wykresu z pulpitu nawigacyjnego przekierowuje Cię do Azure Monitor kontenerów i ładuje prawidłowy zakres i widok.
@@ -128,7 +128,7 @@ W Eksploratorze metryk można wyświetlić zagregowane metryki dotyczące węzł
 | | memoryWorkingSetPercentage | Pamięć zestawu roboczego kontenera użyta w procentach. | 
 | | nodesCount | Liczba węzłów z Kubernetes.|
 | Szczegółowe informacje. kontenery/zasobniki | |
-| | podCount | Liczba pod z Kubernetes.|
+| | PodCount | Liczba pod z Kubernetes.|
 
 Można [podzielić](../platform/metrics-charts.md#apply-splitting-to-a-chart) metrykę, aby wyświetlić ją w wymiarze, i wizualizować, jak różne segmenty są porównywane ze sobą. Dla węzła można podzielić wykres na wymiar *hosta* . Z poziomu usługi można podzielić ją na segmenty według następujących wymiarów:
 
@@ -163,7 +163,7 @@ Z rozwiniętego węzła możesz przejść do szczegółów z lub kontenera, któ
  
 ![Przykład przechodzenia do szczegółów z węzła do kontrolera w widoku wydajności](./media/container-insights-analyze/drill-down-node-controller.png)
 
-Wybierz pozycję Kontrolery lub kontenery w górnej części strony, aby przejrzeć stan i wykorzystanie zasobów dla tych obiektów. Aby przejrzeć użycie pamięci, na liście rozwijanej **Metryka** wybierz pozycję **pamięć RSS** lub **zestaw roboczy pamięci**. **Pamięć RSS** jest obsługiwany tylko w przypadku rozwiązania Kubernetes w wersji 1.8 i nowszych. W przeciwnym razie do wyświetlania wartości **Min&nbsp; %**  jako *NaN&nbsp;%* , który jest wartość typu danych liczbowych, który reprezentuje niezdefiniowany lub wartość wyniku.
+Wybierz pozycję Kontrolery lub kontenery w górnej części strony, aby przejrzeć stan i wykorzystanie zasobów dla tych obiektów. Aby przejrzeć użycie pamięci, na liście rozwijanej **Metryka** wybierz pozycję **pamięć RSS** lub **zestaw roboczy pamięci**. **Pamięć RSS** jest obsługiwana tylko dla Kubernetes w wersji 1,8 lub nowszej. W przeciwnym razie można wyświetlić wartości dla **minimalnej&nbsp;%** jako *NaN&nbsp;%* , która jest liczbową wartością typu danych reprezentującą niezdefiniowaną lub niereprezentującą wartość.
 
 ![Widok wydajności węzłów kontenerów](./media/container-insights-analyze/containers-node-metric-dropdown.png)
 
@@ -191,16 +191,16 @@ Informacje przedstawione podczas wyświetlania karty **węzły** są opisane w p
 
 | Kolumna | Opis | 
 |--------|-------------|
-| Nazwa | Nazwa hosta. |
+| Name (Nazwa) | Nazwa hosta. |
 | Stan | Kubernetes widok stanu węzła. |
 | Minimalna&nbsp;%, średnia&nbsp;%, pięćdziesiąt&nbsp;%,&nbsp;90%, używany 95.&nbsp;%, maks.&nbsp;%  | Średni procent węzła, w oparciu o procentowy podczas wybranego okresu. |
 | Minimum, AVG, pięćdziesiąt, 90, używany 95., Max | Średnia wartość rzeczywista węzłów oparta na percentylu podczas wybranego czasu trwania. Średnia wartość jest mierzona na podstawie limitu procesora CPU/pamięci ustawionego dla węzła. W przypadku zasobników i kontenerów jest to średnia wartość raportowana przez hosta. |
-| Kontenery | Liczba kontenerów. |
-| Czas pracy | Reprezentuje czas, ponieważ węzeł uruchomiony lub został ponownie uruchomiony. |
-| Kontroler | Tylko w przypadku kontenerów i zasobników. Pokazuje, który kontroler znajduje się w. Nie wszystkie zasobników są w kontrolerze, więc niektóre może być wyświetlany **n/d**. | 
+| Containers | Liczba kontenerów. |
+| Czas działania | Reprezentuje czas, ponieważ węzeł uruchomiony lub został ponownie uruchomiony. |
+| Kontroler | Tylko w przypadku kontenerów i zasobników. Pokazuje, który kontroler znajduje się w. Nie wszystkie zasobniki znajdują się w kontrolerze, dlatego niektóre mogą wyświetlać **N/a**. | 
 | Minimum trendu&nbsp;%, średnia&nbsp;%, pięćdziesiąt&nbsp;%,&nbsp;90%, używany 95.&nbsp;%, maks.&nbsp;% | Trend wykres słupkowy przedstawia procent metryki średni percentyl kontrolera. |
 
-W selektorze, wybierz **kontrolerów**.
+W selektorze wybierz pozycję **Kontrolery**.
 
 ![Wybierz widok kontrolerów](./media/container-insights-analyze/containers-controllers-tab.png)
 
@@ -220,13 +220,13 @@ Informacje wyświetlane podczas przeglądania kontrolerów są opisane w poniżs
 
 | Kolumna | Opis | 
 |--------|-------------|
-| Nazwa | Nazwa kontrolera.|
+| Name (Nazwa) | Nazwa kontrolera.|
 | Stan | Stan zbiorczy kontenerów po zakończeniu działania z stanem takim jak *OK*, *przerwany*, *Niepowodzenie*, *zatrzymano*lub *wstrzymano*. Jeśli kontener jest uruchomiony, ale stan nie był prawidłowo wyświetlany lub nie został pobrany przez agenta i nie odpowiedział przez dłużej niż 30 minut, stan jest *nieznany*. Dodatkowe szczegóły ikony stanu znajdują się w poniższej tabeli.|
 | Minimalna&nbsp;%, średnia&nbsp;%, pięćdziesiąt&nbsp;%,&nbsp;90%, używany 95.&nbsp;%, maks.&nbsp;%| Pakiet zbiorczy średnią średnią wartość procentową poszczególnych jednostek dla wybranej metryki i percentyl. |
 | Minimum, AVG, pięćdziesiąt, 90, używany 95., Max  | Pakiet zbiorczy średni Procesora pamięci lub millicore wydajności kontenera dla wybranych percentyl. Średnia wartość jest mierzony od limitu Procesora/pamięci dla zasobnik. |
-| Kontenery | Łączna liczba kontenerów dla kontrolera lub zasobników. |
+| Containers | Łączna liczba kontenerów dla kontrolera lub zasobników. |
 | Ponowne uruchomienie | Zbiorcze informacje licznika ponowne uruchomienie z kontenerów. |
-| Czas pracy | Reprezentuje czas od momentu uruchomienia kontenera. |
+| Czas działania | Reprezentuje czas od momentu uruchomienia kontenera. |
 | Węzeł | Tylko w przypadku kontenerów i zasobników. Pokazuje, który kontroler znajduje się w. | 
 | Minimum trendu&nbsp;%, średnia&nbsp;%, pięćdziesiąt&nbsp;%,&nbsp;90%, używany 95.&nbsp;%, maks.&nbsp;% | Wykres słupkowy trend reprezentuje metryki średni percentyl kontrolera. |
 
@@ -239,9 +239,9 @@ Ikony w polu Stan wskazują stan online kontenerów.
 | ![Ikona stanu uruchomiona po raz ostatni informowało](./media/container-insights-analyze/containers-grey-icon.png) | Ostatnio zgłoszone uruchomione, ale nie udzielono odpowiedzi przez ponad 30 minut|
 | ![Ikona stanu powodzenia](./media/container-insights-analyze/containers-green-icon.png) | Pomyślnie zatrzymano lub nie można zatrzymać|
 
-Ikona stanu przedstawia liczbę oparte na zasobnik udostępnia. Pokazuje dwa najgorsze Stany i po umieszczeniu status Wyświetla stan pakietu zbiorczego z wszystkich zasobników w kontenerze. Jeśli nie ma stanu gotowości, wyświetlana jest wartość stanu **(0)** .
+Ikona stanu przedstawia liczbę oparte na zasobnik udostępnia. Pokazuje dwa najgorsze Stany i po umieszczeniu status Wyświetla stan pakietu zbiorczego z wszystkich zasobników w kontenerze. Jeśli nie ma stanu gotowości, zostanie wyświetlona wartość stanu **(0)** .
 
-W selektorze, wybierz **kontenery**.
+W selektorze wybierz pozycję **Containers (kontenery**).
 
 ![Wybierz widok kontenerów](./media/container-insights-analyze/containers-containers-tab.png)
 
@@ -257,14 +257,14 @@ Informacje wyświetlane podczas wyświetlania kontenerów są opisane w poniższ
 
 | Kolumna | Opis | 
 |--------|-------------|
-| Nazwa | Nazwa kontrolera.|
+| Name (Nazwa) | Nazwa kontrolera.|
 | Stan | Stan kontenerów, jeśli istnieje. Dodatkowe szczegóły ikona stanu znajdują się w następnej tabeli.|
 | Minimalna&nbsp;%, średnia&nbsp;%, pięćdziesiąt&nbsp;%,&nbsp;90%, używany 95.&nbsp;%, maks.&nbsp;% | Pakiet zbiorczy średnią wartość procentową poszczególnych jednostek dla wybranej metryki i percentyl. |
 | Minimum, AVG, pięćdziesiąt, 90, używany 95., Max | Pakiet zbiorczy średni wydajność użycia CPU millicore lub pamięci przez kontener dla wybranych percentyl. Średnia wartość jest mierzony od limitu Procesora/pamięci dla zasobnik. |
 | Zasobnik | Kontener, w którym znajduje się pod.| 
 | Węzeł |  Węzeł, w którym znajduje się kontener. | 
 | Ponowne uruchomienie | Reprezentuje czas od momentu uruchomienia kontenera. |
-| Czas pracy | Reprezentuje czas, ponieważ kontener został uruchomiony lub ponownie uruchomiony. |
+| Czas działania | Reprezentuje czas, ponieważ kontener został uruchomiony lub ponownie uruchomiony. |
 | Minimum trendu&nbsp;%, średnia&nbsp;%, pięćdziesiąt&nbsp;%,&nbsp;90%, używany 95.&nbsp;%, maks.&nbsp;% | Trend wykres słupkowy przedstawia procent metryki średni percentyl kontenera. |
 
 Ikony w polu Stan wskazują stan online, zgodnie z opisem w poniższej tabeli.
@@ -279,7 +279,7 @@ Ikony w polu Stan wskazują stan online, zgodnie z opisem w poniższej tabeli.
 
 ## <a name="workbooks"></a>Skoroszyty
 
-Skoroszyty łączą tekst, [kwerendy dzienników](../log-query/query-language.md), [metryki](../platform/data-platform-metrics.md)i parametry w rozbudowanych raportach interaktywnych. Skoroszyty mogą być edytowane przez innych członków zespołu, którzy mają dostęp do tych samych zasobów platformy Azure.
+Skoroszyty łączą tekst, [kwerendy dzienników](../log-query/query-language.md), [metryki](../platform/data-platform-metrics.md)i parametry w rozbudowanych raportach interaktywnych. Skoroszyty są edytowane przez innych członków zespołu, którzy mają dostęp do tych samych zasobów platformy Azure.
 
 Azure Monitor kontenerów zawiera cztery skoroszyty umożliwiające rozpoczęcie pracy:
 

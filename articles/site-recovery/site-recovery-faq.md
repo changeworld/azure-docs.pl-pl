@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 1/24/2020
 ms.author: raynew
 ms.openlocfilehash: a9d0ae4a6e60a72bbb1148aca1a75c44506b2e9e
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760355"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362969"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Ogólne pytania dotyczące Azure Site Recovery
 
@@ -56,7 +56,7 @@ Obsługiwane są wdrożenia pakietu Azure Pack, systemu platformy Cloud Platform
 ### <a name="do-you-support-single-azure-pack-and-single-vmm-server-deployments"></a>Czy są obsługiwane wdrożenia oparte na jednym pakiecie Azure Pack i jednym serwerze VMM?
 Tak. maszyny wirtualne funkcji Hyper-V można replikować na platformę Azure lub między lokacjami dostawcy usług.  Należy pamiętać, że w przypadku replikowania między lokacjami dostawcy usług integracja elementu Runbook platformy Azure jest niedostępna.
 
-## <a name="pricing"></a>Cennik
+## <a name="pricing"></a>Ceny
 
 ### <a name="where-can-i-find-pricing-information"></a>Gdzie mogę znaleźć informacje o cenach?
 Przejrzyj szczegóły [cennika Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/) .
@@ -73,13 +73,13 @@ Aby uzyskać szczegółowe oszacowanie kosztów, uruchom narzędzie planista wdr
 
 Nie. nie ma dodatkowych opłat za pamięć podręczną. W przypadku replikowania do konta magazynu w warstwie Standardowa ten magazyn pamięci podręcznej jest częścią tego samego docelowego konta magazynu.
 
-### <a name="i-have-been-an-azure-site-recovery-user-for-over-a-month-do-i-still-get-the-first-31-days-free-for-every-protected-instance"></a>Jestem użytkownikiem usługi Azure Site Recovery od ponad miesiąca. Czy nadal uzyskam pierwsze 31 bezpłatnych dni dla każdego chronionego wystąpienia?
+### <a name="i-have-been-an-azure-site-recovery-user-for-over-a-month-do-i-still-get-the-first-31-days-free-for-every-protected-instance"></a>Jestem użytkownikiem Azure Site Recovery przez ponad miesiąc. Czy nadal otrzymuję pierwsze 31 bezpłatnych dni dla każdego chronionego wystąpienia?
 
-Tak. Przez pierwsze 31 dni opłaty usługi Azure Site Recovery dla każdego chronionego wystąpienia nie są naliczane. Na przykład jeśli w ciągu ostatnich 6 miesięcy włączono ochronę 10 wystąpień, a 11 wystąpienie zostało połączone z Azure Site Recovery, nie ma opłat za 11 wystąpienie przez pierwsze 31 dni. W pierwszych 10 wystąpieniach nadal są naliczane opłaty za Azure Site Recovery, ponieważ były one chronione przez więcej niż 31 dni.
+Tak. Każde chronione wystąpienie nie ma Azure Site Recovery opłat za pierwsze 31 dni. Na przykład jeśli w ciągu ostatnich 6 miesięcy włączono ochronę 10 wystąpień, a 11 wystąpienie zostało połączone z Azure Site Recovery, nie ma opłat za 11 wystąpienie przez pierwsze 31 dni. W pierwszych 10 wystąpieniach nadal są naliczane opłaty za Azure Site Recovery, ponieważ były one chronione przez więcej niż 31 dni.
 
-### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>Czy podczas pierwszych 31 dni będą naliczane inne opłaty usługi Azure?
+### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>Czy w ciągu pierwszych 31 dni będą naliczane inne opłaty za korzystanie z platformy Azure?
 
-Tak, nawet jeśli Site Recovery jest bezpłatny w ciągu pierwszych 31 dni chronionego wystąpienia, mogą zostać naliczone opłaty za usługę Azure Storage, transakcje magazynowe i transfer danych. Opłaty za zasoby obliczeniowe platformy Azure mogą zostać również naliczone dla odzyskanej maszyny wirtualnej.
+Tak, nawet jeśli Site Recovery jest bezpłatny w ciągu pierwszych 31 dni chronionego wystąpienia, mogą zostać naliczone opłaty za usługę Azure Storage, transakcje magazynowe i transfer danych. Odzyskana maszyna wirtualna może również naliczać opłaty za usługę Azure COMPUTE.
 
 
 ### <a name="is-there-a-cost-associated-to-perform-disaster-recovery-drillstest-failover"></a>Czy istnieją koszty związane z przechodzeniem do odzyskiwania po awarii/testowaniem pracy w trybie failover?
@@ -88,7 +88,7 @@ Nie ma oddzielnego kosztu do testowania odzyskiwania po awarii. Po utworzeniu ma
 
 
 
-## <a name="security"></a>Zabezpieczenia
+## <a name="security"></a>Bezpieczeństwo
 
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>Czy dane replikacji są wysyłane do usługi Site Recovery?
 Nie, Site Recovery nie przechwytuje replikowanych danych i nie zawiera żadnych informacji o działaniach na maszynach wirtualnych lub serwerach fizycznych.
@@ -219,7 +219,7 @@ Tak. odzyskiwanie lokalizacji alternatywnej można użyć do powrotu po awarii d
 * [Dla maszyn wirtualnych VMware](concepts-types-of-failback.md#alternate-location-recovery-alr)
 * [Dla maszyn wirtualnych funkcji Hyper-V](hyper-v-azure-failback.md#fail-back-to-an-alternate-location)
 
-## <a name="automation"></a>Automation
+## <a name="automation"></a>Automatyzacja
 
 ### <a name="can-i-automate-site-recovery-scenarios-with-an-sdk"></a>Czy można zautomatyzować scenariusze Site Recovery przy użyciu zestawu SDK?
 Tak. Przepływy pracy usługi Site Recovery można zautomatyzować przy użyciu interfejsu API REST, programu PowerShell lub zestawu SDK platformy Azure. Obecnie obsługiwane scenariusze wdrażania Site Recovery przy użyciu programu PowerShell:

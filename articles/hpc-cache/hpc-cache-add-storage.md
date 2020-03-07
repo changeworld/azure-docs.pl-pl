@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: rohogue
 ms.openlocfilehash: a68bf06bad995f71bedf6a5bdedcb676737a8c61
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990610"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388227"
 ---
 # <a name="add-storage-targets"></a>Dodawanie lokalizacji docelowych magazynu
 
@@ -148,9 +148,9 @@ Ta tabela zawiera podsumowanie różnic między modelami użycia:
 
 | Model użycia | Tryb buforowania | Weryfikacja zaplecza | Maksymalne opóźnienie zapisu |
 | ---- | ---- | ---- | ---- |
-| Czytaj duże, rzadko występujące zapisy | Odczytywanie | Nigdy | Brak |
-| Ponad 15% zapisów | Odczyt/zapis | Nigdy | 1 godzina |
-| Klienci pomijają pamięć podręczną | Odczytywanie | 30 sekund | Brak |
+| Czytaj duże, rzadko występujące zapisy | Odczytywanie | nigdy nie | None |
+| Ponad 15% zapisów | Odczyt/zapis | nigdy nie | 1 godzina |
+| Klienci pomijają pamięć podręczną | Odczytywanie | 30 sekund | None |
 
 ## <a name="next-steps"></a>Następne kroki
 

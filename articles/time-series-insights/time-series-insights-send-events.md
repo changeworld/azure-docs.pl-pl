@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 02/11/2020
 ms.custom: seodec18
 ms.openlocfilehash: c3c7f59ecb3a06d80012917e2da4425a899859d7
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152520"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385316"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>Wysyłanie zdarzeń do środowiska usługi Time Series Insights za pomocą Centrum zdarzeń
 
@@ -105,7 +105,7 @@ Aktualizacja usługi Time Series Insights używa wystąpienia, aby dodać kontek
 
 * **Dane wyjściowe**: jedno zdarzenie.
 
-    |id|sygnatura czasowa|
+    |{1&gt;identyfikator&lt;1}|sygnatura czasowa|
     |--------|---------------|
     |device1|2016-01-08T01:08:00Z|
 
@@ -128,7 +128,7 @@ Aktualizacja usługi Time Series Insights używa wystąpienia, aby dodać kontek
 
 * **Dane wyjściowe**: dwa zdarzenia.
 
-    |id|sygnatura czasowa|
+    |{1&gt;identyfikator&lt;1}|sygnatura czasowa|
     |--------|---------------|
     |device1|2016-01-08T01:08:00Z|
     |device2|2016-01-08T01:17:00Z|
@@ -155,7 +155,7 @@ Aktualizacja usługi Time Series Insights używa wystąpienia, aby dodać kontek
 
 * **Dane wyjściowe**: dwa zdarzenia. **Lokalizacja** właściwości jest kopiowana do każdego zdarzenia.
 
-    |location|events.id|events.timestamp|
+    |lokalizacja|events.id|events.timestamp|
     |--------|---------------|----------------------|
     |WestUs|device1|2016-01-08T01:08:00Z|
     |WestUs|device2|2016-01-08T01:17:00Z|
@@ -196,7 +196,7 @@ Aktualizacja usługi Time Series Insights używa wystąpienia, aby dodać kontek
 
 * **Dane wyjściowe**: dwa zdarzenia.
 
-    |location|manufacturer.name|manufacturer.location|events.id|events.timestamp|events.data.type|events.data.units|events.data.value|
+    |lokalizacja|manufacturer.name|manufacturer.location|events.id|events.timestamp|events.data.type|events.data.units|events.data.value|
     |---|---|---|---|---|---|---|---|
     |WestUs|manufacturer1|EastUs|device1|2016-01-08T01:08:00Z|pressure|psi|108.09|
     |WestUs|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|vibration|abs G|217.09|

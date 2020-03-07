@@ -5,11 +5,11 @@ ms.topic: quickstart
 ms.date: 08/30/2019
 ms.custom: seodec18
 ms.openlocfilehash: 7901498772b8e746fb2c87a5237f06ab279e3b64
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922312"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374016"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>Uruchamianie niestandardowego kontenera systemu Windows na platformie Azure (wersja zapoznawcza)
 
@@ -29,7 +29,7 @@ W celu ukończenia tego samouczka:
     - Zainstaluj najnowsze aktualizacje w programie Visual Studio, wybierając pozycję **pomoc** > **sprawdzić dostępność aktualizacji**.
     - Dodaj obciążenia w programie Visual Studio, wybierając pozycję **narzędzia** > **Pobierz narzędzia i funkcje**.
 
-## <a name="create-an-aspnet-web-app"></a>Tworzenie aplikacji internetowej ASP.NET
+## <a name="create-an-aspnet-web-app"></a>Tworzenie aplikacji internetowej platformy ASP.NET
 
 Utwórz aplikację internetową ASP.NET, wykonując następujące czynności:
 
@@ -79,7 +79,7 @@ Utwórz aplikację internetową ASP.NET, wykonując następujące czynności:
 
 ## <a name="create-a-windows-container-app"></a>Tworzenie aplikacji kontenera systemu Windows
 
-1. Zaloguj się do [portalu Azure]( https://portal.azure.com).
+1. Zaloguj się do [Azure portal]( https://portal.azure.com).
 
 1. W lewym górnym rogu witryny Azure Portal wybierz pozycję **Utwórz zasób**.
 

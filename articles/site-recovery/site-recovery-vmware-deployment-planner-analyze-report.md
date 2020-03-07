@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/4/2019
 ms.author: mayg
 ms.openlocfilehash: 4dad11e8331064a9df1b1aed561e00b9a9b24017
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495877"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362990"
 ---
 # <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Analizowanie raportu Planista wdrażania na potrzeby odzyskiwania po awarii oprogramowania VMware na platformę Azure
 
@@ -40,7 +40,7 @@ Arkusz Podsumowanie środowiska lokalnego zawiera omówienie profilowanego środ
 
 **Zaobserwowany dzienny typowy współczynnik zmian danych (GB)** : średni współczynnik zmian danych zaobserwowany we wszystkie dni profilowania. Jest on używany jako dane wejściowe do określania liczby serwerów konfiguracji i dodatkowych serwerów przetwarzania do użycia we wdrożeniu.
 
-## <a name="recommendations"></a>Polecane elementy
+## <a name="recommendations"></a>Zalecenia
 
 Arkusz Zalecenia raportu dotyczącego replikacji z programu VMware do platformy Azure zawiera następujące informacje zgodnie z wybranym żądanym celem punktu odzyskiwania:
 
@@ -178,7 +178,7 @@ Może wystąpić sytuacja, w której nie można ustawić przepustowości większ
 
 **Nazwa maszyny wirtualnej**: nazwa lub adres IP maszyny wirtualnej używany w pliku VMListFile podczas generowania raportu. Ta kolumna obejmuje też dyski (VMDK) dołączone do maszyn wirtualnych. Aby wyróżnić maszyny wirtualne vCenter o zduplikowanych nazwach lub adresach IP, nazwy zawierają nazwę hosta ESXi. Wymieniony host ESXi to host, na którym umieszczono maszynę wirtualną odnaleziono w trakcie okresu profilowania.
 
-**Zgodność maszyny wirtualnej**: wartości to **Tak** i **Tak\*** . **Tak**\* jest dla wystąpień, w których maszyna wirtualna jest zgodna z [dysków ssdem w warstwie Premium](../virtual-machines/windows/disks-types.md). Tutaj profilowany dysk o dużym współczynniku zmian lub dużej liczbie operacji we/wy należy do kategorii P20 lub P30, ale z powodu swojego rozmiaru jest mapowany w dół do kategorii P10 lub P20. Decyzja o tym, do którego typu dysku magazynu Premium będzie mapowany dysk, jest podejmowana na podstawie jego rozmiaru na poziomie konta magazynu. Przykład:
+**Zgodność maszyny wirtualnej**: wartości to **Tak** i **Tak\*** . **Tak**\* jest dla wystąpień, w których maszyna wirtualna jest zgodna z [dysków ssdem w warstwie Premium](../virtual-machines/windows/disks-types.md). Tutaj profilowany dysk o dużym współczynniku zmian lub dużej liczbie operacji we/wy należy do kategorii P20 lub P30, ale z powodu swojego rozmiaru jest mapowany w dół do kategorii P10 lub P20. Decyzja o tym, do którego typu dysku magazynu Premium będzie mapowany dysk, jest podejmowana na podstawie jego rozmiaru na poziomie konta magazynu. Na przykład:
 * Mniej niż 128 GB — P10.
 * 128 GB do 256 GB — P15.
 * 256 GB do 512 GB — P20.

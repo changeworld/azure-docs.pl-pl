@@ -18,11 +18,11 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 4bf6d777662ad1ba4843d6e650dfd3a6a357822f
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159764"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365532"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity platform i przepływ poświadczeń klienta OAuth 2,0
 
@@ -184,7 +184,7 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 | `client_id` | Wymagany | Identyfikator aplikacji przypisany do aplikacji. Te informacje można znaleźć w portalu, w którym zarejestrowano aplikację. |
 | `scope` | Wymagany | Wartość przekazaną dla parametru `scope` w tym żądaniu powinna być identyfikatorem zasobu (identyfikatorem URI aplikacji), który ma zostać umieszczony przy użyciu sufiksu `.default`. Na przykład Microsoft Graph wartość jest `https://graph.microsoft.com/.default`. <br/>Ta wartość informuje punkt końcowy platformy tożsamości firmy Microsoft o wszystkich bezpośrednich uprawnieniach aplikacji skonfigurowanych dla aplikacji, dlatego punkt końcowy powinien wydać token skojarzony z zasobem, którego chcesz użyć. Aby dowiedzieć się więcej na temat zakresu `/.default`, zapoznaj się z [dokumentacją dotyczącą zgody](v2-permissions-and-consent.md#the-default-scope). |
 | `client_secret` | Wymagany | Wpis tajny klienta wygenerowany dla aplikacji w portalu rejestracji aplikacji. Wpis tajny klienta musi być zakodowany przy użyciu adresu URL przed wysłaniem. |
-| `grant_type` | Wymagany | musi być ustawiony na `client_credentials`. |
+| `grant_type` | Wymagany | Musi być ustawiony na `client_credentials`. |
 
 ### <a name="second-case-access-token-request-with-a-certificate"></a>Drugi przypadek: żądanie tokenu dostępu z certyfikatem
 
@@ -207,7 +207,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 | `scope` | Wymagany | Wartość przekazaną dla parametru `scope` w tym żądaniu powinna być identyfikatorem zasobu (identyfikatorem URI aplikacji), który ma zostać umieszczony przy użyciu sufiksu `.default`. Na przykład Microsoft Graph wartość jest `https://graph.microsoft.com/.default`. <br/>Ta wartość informuje punkt końcowy platformy tożsamości firmy Microsoft o wszystkich bezpośrednich uprawnieniach aplikacji skonfigurowanych dla aplikacji, co powinno wydać token dla skojarzonych z zasobem, który ma być używany. Aby dowiedzieć się więcej na temat zakresu `/.default`, zapoznaj się z [dokumentacją dotyczącą zgody](v2-permissions-and-consent.md#the-default-scope). |
 | `client_assertion_type` | Wymagany | Wartość musi być ustawiona na `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`. |
 | `client_assertion` | Wymagany | Potwierdzenie (token sieci Web JSON), które należy utworzyć i podpisać przy użyciu certyfikatu zarejestrowanego jako poświadczenia dla aplikacji. Przeczytaj informacje o [poświadczeniach certyfikatów](active-directory-certificate-credentials.md) , aby dowiedzieć się, jak zarejestrować certyfikat i format potwierdzenia.|
-| `grant_type` | Wymagany | musi być ustawiony na `client_credentials`. |
+| `grant_type` | Wymagany | Musi być ustawiony na `client_credentials`. |
 
 Zwróć uwagę, że parametry są prawie takie same, jak w przypadku żądania przez wspólny klucz tajny, z tą różnicą, że parametr client_secret jest zastępowany przez dwa parametry: client_assertion_type i client_assertion.
 

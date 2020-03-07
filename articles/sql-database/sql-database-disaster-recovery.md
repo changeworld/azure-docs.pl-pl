@@ -12,11 +12,11 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/21/2019
 ms.openlocfilehash: d28edd28dcbe31bfe63c2d0a9c3e975967efef04
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826586"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359162"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Przywracanie Azure SQL Database lub przełączenia w tryb failover do pomocniczego
 
@@ -89,7 +89,7 @@ Jeśli przestój aplikacji nie powoduje odpowiedzialności biznesowej, można u�
 
 Jeśli używasz funkcji przywracania geograficznego do odzyskiwania po awarii, musisz upewnić się, że połączenie z nowymi bazami danych jest prawidłowo skonfigurowane, aby można było wznowić normalną funkcję aplikacji. Jest to lista kontrolna zadań umożliwiających przywrócenie gotowej produkcji bazy danych.
 
-### <a name="update-connection-strings"></a>Aktualizowanie parametrów połączenia
+### <a name="update-connection-strings"></a>Zaktualizuj parametry połączenia
 
 Ponieważ odzyskana baza danych znajduje się na innym serwerze, należy zaktualizować parametry połączenia aplikacji, aby wskazywały na ten serwer.
 

@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.openlocfilehash: c006aa8c46864b78ae46aa9c351605cca1d1e425
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77606583"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388595"
 ---
 # <a name="azure-cosmos-db-trigger-for-azure-functions-2x"></a>Wyzwalacz Azure Cosmos DB dla Azure Functions 2. x
 
@@ -218,8 +218,8 @@ W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**type** | Nie dotyczy | musi być ustawiony na `cosmosDBTrigger`. |
-|**direction** | Nie dotyczy | musi być ustawiony na `in`. Ten parametr jest ustawiany automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. |
+|**type** | Nie dotyczy | Musi być ustawiony na `cosmosDBTrigger`. |
+|**direction** | Nie dotyczy | Musi być ustawiony na `in`. Ten parametr jest ustawiany automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. |
 |**Nazwij** | Nie dotyczy | Nazwa zmiennej, używany w kodzie funkcji, który reprezentuje listę dokumentów za pomocą zmian. |
 |**connectionStringSetting**|**ConnectionStringSetting** | Nazwa ustawienia aplikacji zawierającego parametry połączenia używane do łączenia z konta usługi Azure Cosmos DB są monitorowane. |
 |**Bazy**|**Bazy**  | Nazwa bazy danych Azure Cosmos DB za pomocą kolekcji są monitorowane. |
@@ -240,7 +240,7 @@ W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="usage"></a>Użycie
+## <a name="usage"></a>Sposób użycia
 
 Wyzwalacz wymaga drugiej kolekcji, która używa do przechowywania _dzierżaw_ w ramach partycji. Kolekcja monitorowanych i kolekcji, która zawiera dzierżaw musi być dostępny dla wyzwalacza do pracy.
 

@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
 ms.openlocfilehash: c6e74e7992326d2a4b8fe24510742422b005c2e2
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756164"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359062"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolacja w chmurze publicznej platformy Azure
 System Azure umożliwia uruchamianie aplikacji i maszyn wirtualnych w ramach udostępnionej infrastruktury fizycznej. Jedną z ekonomicznych motywacji do uruchamiania aplikacji w środowisku chmury jest możliwość dystrybucji kosztów zasobów udostępnionych między wieloma klientami. Ta metoda korzystania z wielu dzierżawców zwiększa wydajność dzięki możliwości multipleksowania zasobów między różnymi klientami przy niskich kosztach. Niestety, wprowadza również ryzyko związane z udostępnianiem serwerów fizycznych i innych zasobów infrastruktury w celu uruchamiania poufnych aplikacji i maszyn wirtualnych, które mogą należeć do dowolnego lub potencjalnie złośliwego użytkownika.
@@ -221,7 +221,7 @@ W przypadku wielu organizacji [szyfrowanie danych w spoczynku](isolation-choices
 
 -   [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) umożliwia szyfrowanie dysków systemu operacyjnego i dysków danych używanych przez maszynę wirtualną IaaS.
 
-#### <a name="azure-disk-encryption"></a>Azure Disk Encryption
+#### <a name="azure-disk-encryption"></a>Usługa Azure Disk Encryption
 [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) dla maszyn wirtualnych pomaga sprostać wymaganiom bezpieczeństwa i zgodności w organizacji przez szyfrowanie dysków maszyny wirtualnej (w tym dysków rozruchowych i danych) przy użyciu kluczy i zasad, które można kontrolować w [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
 
 Rozwiązanie do szyfrowania dysków dla systemu Windows jest oparte na [szyfrowanie dysków funkcją BitLocker firmy Microsoft](https://technet.microsoft.com/library/cc732774.aspx), a rozwiązanie Linux opiera się na usłudze [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt).
@@ -278,7 +278,7 @@ Serwery logiczne i bazy danych są pojęciami specyficznymi dla platformy SQL Az
 
 Serwery usługi SQL Azure nie są wystąpieniami fizycznymi ani MASZYNami wirtualnymi, a nie są kolekcjami baz danych, współużytkowania i zasad zabezpieczeń, które są przechowywane w tak zwany "logicznym głównym" bazą danych.
 
-![SQL Azure](./media/isolation-choices/azure-isolation-fig11.png)
+![Usługi SQL Azure](./media/isolation-choices/azure-isolation-fig11.png)
 
 Logiczne główne bazy danych to:
 
@@ -319,7 +319,7 @@ Wdrożenie platformy Azure ma wiele warstw izolacji sieci. Na poniższym diagram
 
 **Izolacja ruchu:** [Sieć wirtualna](../../virtual-network/virtual-networks-overview.md) to granica izolacji ruchu na platformie Azure. Maszyny wirtualne w jednej sieci wirtualnej nie mogą komunikować się bezpośrednio z maszynami wirtualnymi w innej sieci wirtualnej, nawet jeśli obie sieci wirtualne są tworzone przez tego samego klienta. Izolacja jest właściwością krytyczną, która zapewnia, że maszyny wirtualne klienta i komunikacja pozostają prywatne w ramach sieci wirtualnej.
 
-[Podsieć](../../virtual-network/virtual-networks-overview.md) oferuje dodatkową warstwę izolacji w sieci wirtualnej na podstawie zakresu adresów IP. Adresy IP w sieci wirtualnej można podzielić na wiele podsieci w celu zapewnienia organizacji i zabezpieczeń. Maszyny wirtualne i wystąpienia ról PaaS wdrożone w podsieciach (tych samych lub różnych) w ramach sieci wirtualnej mogą komunikować się ze sobą bez dodatkowego konfigurowania. Możesz również skonfigurować [grupę zabezpieczeń sieci (sieciowych grup zabezpieczeń)](../../virtual-network/virtual-networks-overview.md) , aby zezwolić na ruch sieciowy do wystąpienia maszyny wirtualnej lub go zabronić na podstawie reguł skonfigurowanych na liście kontroli dostępu (ACL) sieciowej grupy zabezpieczeń. Grupy NSG można kojarzyć z podsieciami lub poszczególnymi wystąpieniami maszyn wirtualnych w danej podsieci. Gdy sieciowa grupa zabezpieczeń jest skojarzona z podsiecią, reguły listy ACL dotyczą wszystkich wystąpień maszyn wirtualnych w tej podsieci.
+[Podsieć](../../virtual-network/virtual-networks-overview.md) oferuje dodatkową warstwę izolacji w sieci wirtualnej na podstawie zakresu adresów IP. Adresy IP w sieci wirtualnej można podzielić na wiele podsieci w celu zapewnienia organizacji i zabezpieczeń. Maszyny wirtualne i wystąpienia ról PaaS wdrożone w podsieciach (tych samych lub różnych) w ramach sieci wirtualnej mogą komunikować się ze sobą bez dodatkowego konfigurowania. Możesz również skonfigurować [grupę zabezpieczeń sieci (sieciowych grup zabezpieczeń)](../../virtual-network/virtual-networks-overview.md) , aby zezwolić na ruch sieciowy do wystąpienia maszyny wirtualnej lub go zabronić na podstawie reguł skonfigurowanych na liście kontroli dostępu (ACL) sieciowej grupy zabezpieczeń. Sieciowe grupy zabezpieczeń można kojarzyć z podsieciami lub poszczególnymi wystąpieniami maszyn wirtualnych w danej podsieci. Gdy sieciowa grupa zabezpieczeń jest skojarzona z podsiecią, reguły listy ACL dotyczą wszystkich wystąpień maszyn wirtualnych w tej podsieci.
 
 ## <a name="next-steps"></a>Następne kroki
 

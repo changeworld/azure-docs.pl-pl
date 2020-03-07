@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
 ms.openlocfilehash: f222cdd315b79503b1bdea032f495c71df4682b5
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084263"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363033"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>Nawiązywanie połączenia z maszynami wirtualnymi platformy Azure po przejściu w tryb failover z lokalnego 
 
@@ -96,7 +96,7 @@ Przechowywanie adresów IP wymaga wykonania następujących czynności:
 
 ### <a name="failover-example"></a>Przykład pracy awaryjnej
 
-Przyjrzyjmy się przykładowi.
+Spójrzmy na przykład.
 
 - Fikcyjny Bank Woodgrove firmy hostuje swoje aplikacje biznesowe w środowisku lokalnym, które obsługują swoje aplikacje mobilne na platformie Azure.
 - Łączą się z lokalnymi z platformą Azure za pośrednictwem sieci VPN typu lokacja-lokacja. 

@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 7/13/2019
 ms.author: rohink
 ms.openlocfilehash: d84a7a908bd3bb5cfb2958a617be437f3b6b154e
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934905"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356570"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Użyj Azure DNS, aby podać niestandardowe ustawienia domeny dla usługi platformy Azure
 
@@ -40,7 +40,7 @@ Przejdź do strefy DNS, a następnie kliknij pozycję **+ zestaw rekordów**. Wy
 
 |Właściwość  |Wartość  |Opis  |
 |---------|---------|---------|
-|Nazwa     | myfunctionapp        | Ta wartość wraz z etykietą nazwy domeny jest nazwą FQDN niestandardowej nazwy domeny.        |
+|Name (Nazwa)     | myfunctionapp        | Ta wartość wraz z etykietą nazwy domeny jest nazwą FQDN niestandardowej nazwy domeny.        |
 |Typ     | CNAME        | Użyj rekordu CNAME przy użyciu aliasu.        |
 |TTL     | 1        | 1 jest używany przez 1 godzinę        |
 |Jednostka czasu wygaśnięcia     | Godziny        | Godziny są używane jako pomiar czasu         |
@@ -65,7 +65,7 @@ Przejdź do strefy DNS, a następnie kliknij pozycję **+ zestaw rekordów**. Wy
 
 |Właściwość  |Wartość  |Opis  |
 |---------|---------|---------|
-|Nazwa     | mywebserver        | Ta wartość wraz z etykietą nazwy domeny jest nazwą FQDN niestandardowej nazwy domeny.        |
+|Name (Nazwa)     | mywebserver        | Ta wartość wraz z etykietą nazwy domeny jest nazwą FQDN niestandardowej nazwy domeny.        |
 |Typ     | A        | Użyj rekordu A jako zasobu jest adresem IP.        |
 |TTL     | 1        | 1 jest używany przez 1 godzinę        |
 |Jednostka czasu wygaśnięcia     | Godziny        | Godziny są używane jako pomiar czasu         |
@@ -92,7 +92,7 @@ Przejdź do strefy DNS, a następnie kliknij pozycję **+ zestaw rekordów**. Wy
 
 |Właściwość  |Wartość  |Opis  |
 |---------|---------|---------|
-|Nazwa     | mywebserver        | Ta wartość wraz z etykietą nazwy domeny jest nazwą FQDN niestandardowej nazwy domeny.        |
+|Name (Nazwa)     | mywebserver        | Ta wartość wraz z etykietą nazwy domeny jest nazwą FQDN niestandardowej nazwy domeny.        |
 |Typ     | CNAME        | Użyj rekordu CNAME przy użyciu aliasu. Jeśli zasób użył adresu IP, będzie używany rekord A.        |
 |TTL     | 1        | 1 jest używany przez 1 godzinę        |
 |Jednostka czasu wygaśnięcia     | Godziny        | Godziny są używane jako pomiar czasu         |
@@ -115,7 +115,7 @@ Aby dowiedzieć się, jak przeprowadzić migrację aktywnej nazwy DNS, zobacz [M
 
 Jeśli musisz zakupić domenę niestandardową, odwiedź stronę [kupowanie niestandardowej nazwy domeny dla platformy Azure Web Apps](../app-service/manage-custom-dns-buy-domain.md) , aby dowiedzieć się więcej na temat App Service domen.
 
-## <a name="blob-storage"></a>Magazyn obiektów Blob
+## <a name="blob-storage"></a>Blob Storage
 
 Poniższe kroki przeprowadzimy przez proces konfigurowania rekordu CNAME dla konta usługi BLOB Storage przy użyciu metody asverify. Ta metoda zapewnia brak przestojów.
 
@@ -128,7 +128,7 @@ Przejdź do strefy DNS, a następnie kliknij pozycję **+ zestaw rekordów**. Wy
 
 |Właściwość  |Wartość  |Opis  |
 |---------|---------|---------|
-|Nazwa     | asverify.mystorageaccount        | Ta wartość wraz z etykietą nazwy domeny jest nazwą FQDN niestandardowej nazwy domeny.        |
+|Name (Nazwa)     | asverify.mystorageaccount        | Ta wartość wraz z etykietą nazwy domeny jest nazwą FQDN niestandardowej nazwy domeny.        |
 |Typ     | CNAME        | Użyj rekordu CNAME przy użyciu aliasu.        |
 |TTL     | 1        | 1 jest używany przez 1 godzinę        |
 |Jednostka czasu wygaśnięcia     | Godziny        | Godziny są używane jako pomiar czasu         |
@@ -142,7 +142,7 @@ Sprawdź poprawność rozpoznawania nazw DNS, uruchamiając `nslookup`
 
 Aby dowiedzieć się więcej o mapowaniu domeny niestandardowej do punktu końcowego usługi BLOB Storage, odwiedź stronę [Konfigurowanie niestandardowej nazwy domeny dla punktu końcowego usługi BLOB Storage](../storage/blobs/storage-custom-domain-name.md?toc=%dns%2ftoc.json) .
 
-## <a name="azure-cdn"></a>Usługa Sieć CDN systemu Azure
+## <a name="azure-cdn"></a>Usługa Azure CDN
 
 Poniższe kroki przeprowadzimy przez proces konfigurowania rekordu CNAME dla punktu końcowego usługi CDN przy użyciu metody cdnverify. Ta metoda zapewnia brak przestojów.
 
@@ -156,7 +156,7 @@ Przejdź do strefy DNS, a następnie kliknij pozycję **+ zestaw rekordów**. Wy
 
 |Właściwość  |Wartość  |Opis  |
 |---------|---------|---------|
-|Nazwa     | cdnverify. mycdnendpoint        | Ta wartość wraz z etykietą nazwy domeny jest nazwą FQDN niestandardowej nazwy domeny.        |
+|Name (Nazwa)     | cdnverify. mycdnendpoint        | Ta wartość wraz z etykietą nazwy domeny jest nazwą FQDN niestandardowej nazwy domeny.        |
 |Typ     | CNAME        | Użyj rekordu CNAME przy użyciu aliasu.        |
 |TTL     | 1        | 1 jest używany przez 1 godzinę        |
 |Jednostka czasu wygaśnięcia     | Godziny        | Godziny są używane jako pomiar czasu         |

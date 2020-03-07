@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: 1fceda6fcbb6e8db1fa8afbc5181315bd0c98940
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
-ms.translationtype: MT
+ms.openlocfilehash: 35cea2e6df311d2f4071686c21c8e4c36477abc1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512984"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78370582"
 ---
 # <a name="azure-event-grid-event-schema"></a>Schemat zdarzeń Azure Event Grid
 
@@ -83,16 +83,16 @@ Na przykład schemat opublikowany dla zdarzenia usługi Azure Blob Storage to:
 
 Wszystkie zdarzenia mają takie same dane jak najwyższego poziomu:
 
-| Właściwość | Typ | Opis |
-| -------- | ---- | ----------- |
-| temat | string | Pełna ścieżka zasobu do źródła zdarzeń. To pole nie umożliwia zapisu. Ta wartość jest podawana przez usługę Event Grid. |
-| subject | string | Zdefiniowana przez wydawcę ścieżka do tematu zdarzenia. |
-| eventType | string | Jeden z zarejestrowanych typów zdarzeń dla tego źródła zdarzeń. |
-| eventTime | string | Czas generowania zdarzenia na podstawie czasu UTC dostawcy. |
-| id | string | Unikatowy identyfikator zdarzenia. |
-| data | obiekt | Dane zdarzenia specyficzne dla dostawcy zasobów. |
-| dataVersion | string | Wersja schematu obiektu danych. Wydawca definiuje wersję schematu. |
-| metadataVersion | string | Wersja schematu metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Ta wartość jest podawana przez usługę Event Grid. |
+| Właściwość | Typ | Wymagany | Opis |
+| -------- | ---- | -------- | ----------- |
+| temat | ciąg | Nie, ale jeśli ta wartość jest uwzględniona, musi dokładnie odpowiadać Event Grid tematu Azure Resource Manager identyfikator. Jeśli nie jest uwzględniony, Event Grid będzie sygnaturą zdarzenia. | Pełna ścieżka zasobu do źródła zdarzeń. To pole nie umożliwia zapisu. Event Grid udostępnia tę wartość. |
+| subject | ciąg | Yes | Ścieżka zdefiniowana przez program Publisher do tematu zdarzenia. |
+| eventType | ciąg | Yes | Jeden z zarejestrowanych typów zdarzeń dla tego źródła zdarzeń. |
+| eventTime | ciąg | Yes | Czas generowania zdarzenia na podstawie czasu UTC dostawcy. |
+| id | ciąg | Yes | Unikatowy identyfikator zdarzenia. |
+| data | obiekt | Nie | Dane zdarzenia specyficzne dla dostawcy zasobów. |
+| dataVersion | ciąg | Nie, ale zostanie opatrzona pustą wartością. | Wersja schematu obiektu danych. Wydawca definiuje wersję schematu. |
+| metadataVersion | ciąg | Niewymagane, ale jeśli jest uwzględnione, muszą być zgodne ze schematem Event Grid `metadataVersion` dokładnie (obecnie tylko `1`). Jeśli nie jest uwzględniony, Event Grid będzie sygnaturą zdarzenia. | Wersja schematu metadanych zdarzenia. Event Grid definiuje schemat właściwości najwyższego poziomu. Event Grid udostępnia tę wartość. |
 
 Aby dowiedzieć się więcej o właściwościach w obiekcie danych, zobacz Źródło zdarzenia:
 

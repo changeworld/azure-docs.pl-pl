@@ -4,11 +4,11 @@ description: Zawiera omówienie urządzenia Azure Migrate używanego w ocenie i 
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: 1b1e35c3b7a9d98e57ec4261f6f913c370bbb365
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597545"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388984"
 ---
 # <a name="azure-migrate-appliance"></a>Urządzenie usługi Azure Migrate
 

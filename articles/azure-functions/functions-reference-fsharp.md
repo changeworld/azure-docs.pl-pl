@@ -7,11 +7,11 @@ ms.topic: reference
 ms.date: 10/09/2018
 ms.author: syclebsc
 ms.openlocfilehash: 669701f91ab28a4eb734b0346be6515dc44e8685
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975010"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356999"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Dokumentacja F# dla deweloperów Azure Functions
 
@@ -98,7 +98,7 @@ let Run(blob: string, output: byref<string>, log: ILogger) =
     output <- input
 ```
 
-## <a name="async"></a>Async
+## <a name="async"></a>Asynchroniczne
 Można użyć przepływu pracy `async`, ale wynik musi zwrócić `Task`. Można to zrobić za pomocą `Async.StartAsTask`, na przykład:
 
 ```fsharp
@@ -287,7 +287,7 @@ Dyrektywa `#load` działa tylko z plikami `.fsx` (F# skrypt), a nie z plikami `.
 ## <a name="next-steps"></a>Następne kroki
 Więcej informacji zawierają następujące zasoby:
 
-* [Podręcznik języka F#](/dotnet/articles/fsharp/index)
+* [F#Prowadzą](/dotnet/articles/fsharp/index)
 * [Najlepsze rozwiązania dotyczące usługi Azure Functions](functions-best-practices.md)
 * [Dokumentacja usługi Azure Functions dla deweloperów](functions-reference.md)
 * [Azure Functions wyzwalacze i powiązania](functions-triggers-bindings.md)

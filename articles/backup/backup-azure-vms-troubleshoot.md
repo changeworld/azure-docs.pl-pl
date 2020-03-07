@@ -4,12 +4,12 @@ description: W tym artykule dowiesz się, jak rozwiązywać problemy z tworzenie
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 1b82d43a58a25dc1c475180a4780106220e1ceeb
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 8e29061becd9eb82dd04f3ed0db787542b29cbc7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597324"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363862"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Rozwiązywanie problemów dotyczących błędów kopii zapasowych w usłudze Azure Virtual Machines
 
@@ -125,7 +125,7 @@ Jeśli w katalogu **MachineKeys** są wyświetlane uprawnienia inne niż ustawie
    * Uprawnienia do odczytu
 2. Usuń wszystkie certyfikaty, **w których wystawiony** jest klasyczny model wdrażania lub **Generator certyfikatów CRP systemu Windows Azure**:
 
-   * [Otwórz przystawkę Certyfikaty w konsoli komputera lokalnego](https://msdn.microsoft.com/library/ms788967(v=vs.110).aspx).
+   * [Otwórz przystawkę Certyfikaty w konsoli komputera lokalnego](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in).
    * W obszarze osobiste **Certyfikaty** > Usuń wszystkie certyfikaty, **w których wystawiony** jest klasyczny model wdrażania lub **Generator certyfikatów usługi Windows Azure CRP**.
 3. Wyzwalanie zadania tworzenia kopii zapasowej maszyny wirtualnej.
 
@@ -191,14 +191,14 @@ Dzięki temu migawki będą wykonywane za pośrednictwem hosta, a nie konta goś
 | **Kod błędu**: ExtensionSnapshotFailedNoSecureNetwork <br/> **Komunikat o błędzie**: operacja migawki nie powiodła się z powodu błędu tworzenia bezpiecznego kanału komunikacji sieciowej. | <ol><li> Otwórz Edytor rejestru, uruchamiając **regedit. exe** w trybie podniesionych uprawnień. <li> Zidentyfikuj wszystkie wersje .NET Framework znajdujących się w systemie. Znajdują się one w hierarchii klucza rejestru **HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft**. <li> Dla każdej .NET Framework znajdującej się w kluczu rejestru Dodaj następujący klucz: <br> **Schusestrongcrypto we "= DWORD: 00000001**. </ol>|
 | **Kod błędu**: ExtensionVCRedistInstallationFailure <br/> **Komunikat o błędzie**: operacja migawki nie powiodła się z powodu błędu C++ instalacji pakietu redystrybucyjnego Visual Studio 2012. | Przejdź do C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion i zainstaluj vcredist2013_x64.<br/>Upewnij się, że wartość klucza rejestru, która umożliwia instalację usługi, jest ustawiona na poprawną wartość. Oznacza to, że należy ustawić wartość **początkową** w **HKEY_LOCAL_MACHINE \system\currentcontrolset\services\msiserver** na **3** , a nie **4**. <br><br>Jeśli nadal występują problemy z instalacją, uruchom ponownie usługę instalacji, uruchamiając polecenie **msiexec/unregister** , a następnie pozycję **msiexec/Register** z wiersza polecenia z podwyższonym poziomem uprawnień.  |
 
-## <a name="jobs"></a>Zadania
+## <a name="jobs"></a>Stanowiska
 
 | Szczegóły błędu | Obejście |
 | --- | --- |
-| Anulowanie nie jest obsługiwane dla tego typu zadania: <br>Poczekaj na zakończenie zadania. |Brak |
+| Anulowanie nie jest obsługiwane dla tego typu zadania: <br>Poczekaj na zakończenie zadania. |None |
 | Zadanie nie jest w stanie do anulowania: <br>Poczekaj na zakończenie zadania. <br>**lub**<br> Wybrane zadanie nie jest w stanie do anulowania: <br>Poczekaj na zakończenie zadania. |Prawdopodobnie zadanie jest niemal ukończone. Poczekaj na zakończenie zadania.|
 | Kopia zapasowa nie może anulować zadania, ponieważ nie jest w toku: <br>Anulowanie jest obsługiwane tylko dla zadań w toku. Spróbuj anulować zadanie w toku. |Ten błąd występuje ze względu na stan przejściowy. Poczekaj chwilę i spróbuj ponownie wykonać operację anulowania. |
-| Wykonanie kopii zapasowej nie powiodło się: <br>Poczekaj na zakończenie zadania. |Brak |
+| Wykonanie kopii zapasowej nie powiodło się: <br>Poczekaj na zakończenie zadania. |None |
 
 ## <a name="restore"></a>Przywracanie
 
@@ -206,14 +206,14 @@ Dzięki temu migawki będą wykonywane za pośrednictwem hosta, a nie konta goś
 | --- | --- |
 | Przywracanie nie powiodło się z powodu błędu wewnętrznego w chmurze. |<ol><li>Usługa w chmurze, do której próbujesz przywrócić, jest skonfigurowana przy użyciu ustawień DNS. Możesz sprawdzić: <br>**$Deployment = Get-AzureDeployment-ServiceName "ServiceName"-Slot "Product" Get-AzureDns-$Deployment DnsSettings. DnsSettings**.<br>Jeśli **adres** jest skonfigurowany, ustawienia DNS są skonfigurowane.<br> <li>Usługa w chmurze, do której próbujesz przywrócić, jest skonfigurowana za pomocą **zastrzeżonego adresu IP**, a istniejące maszyny wirtualne w usłudze w chmurze mają stan zatrzymany. Możesz sprawdzić, czy usługa w chmurze zarezerwował adres IP przy użyciu następujących poleceń cmdlet programu PowerShell: **$Deployment = Get-AzureDeployment-ServiceName "ServiceName"-Slot "Product" $DEP. ReservedIPName**. <br><li>Próbujesz przywrócić maszynę wirtualną z następującymi specjalnymi konfiguracjami sieci w tej samej usłudze w chmurze: <ul><li>Maszyny wirtualne w obszarze Konfiguracja usługi równoważenia obciążenia, wewnętrzne i zewnętrzne.<li>Maszyny wirtualne z wieloma zarezerwowanymi adresami IP. <li>Maszyny wirtualne z wieloma kartami sieciowymi. </ul><li>Wybierz nową usługę w chmurze w interfejsie użytkownika lub zapoznaj się z tematami dotyczącymi [przywracania](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) maszyn wirtualnych mających specjalne konfiguracje sieci.</ol> |
 | Wybrana nazwa DNS jest już zajęta: <br>Określ inną nazwę DNS i spróbuj ponownie. |Ta nazwa DNS odwołuje się do nazwy usługi w chmurze, zazwyczaj kończącej się rozszerzeniem **. cloudapp.NET**. Ta nazwa musi być unikatowa. Jeśli zostanie wyświetlony ten błąd, należy wybrać inną nazwę maszyny wirtualnej podczas przywracania. <br><br> Ten błąd jest wyświetlany tylko dla użytkowników Azure Portal. Operacja przywracania za pomocą programu PowerShell kończy się powodzeniem, ponieważ przywraca tylko dyski i nie tworzy maszyny wirtualnej. Ten błąd zostanie zwrócony, gdy maszyna wirtualna zostanie jawnie utworzona przez użytkownika po operacji przywracania dysku. |
-| Określona konfiguracja sieci wirtualnej jest nieprawidłowa: <br>Określ inną konfigurację sieci wirtualnej i spróbuj ponownie. |Brak |
-| Określona usługa w chmurze używa zastrzeżonego adresu IP, który nie jest zgodny z konfiguracją przywracanej maszyny wirtualnej: <br>Określ inną usługę w chmurze, która nie używa zastrzeżonego adresu IP. Lub wybierz inny punkt odzyskiwania do przywrócenia. |Brak |
-| Osiągnięto limit liczby wejściowych punktów końcowych w usłudze w chmurze: <br>Spróbuj ponownie wykonać operację, określając inną usługę w chmurze lub używając istniejącego punktu końcowego. |Brak |
-| Magazyn Recovery Services i docelowe konto magazynu znajdują się w dwóch różnych regionach: <br>Upewnij się, że konto magazynu określone w operacji przywracania znajduje się w tym samym regionie platformy Azure co magazyn Recovery Services. |Brak |
-| Konto magazynu określone dla operacji przywracania nie jest obsługiwane: <br>Obsługiwane są tylko podstawowe lub standardowe konta magazynu z lokalnymi nadmiarowymi lub geograficznie nadmiarowymi ustawieniami replikacji. Wybierz obsługiwane konto magazynu. |Brak |
+| Określona konfiguracja sieci wirtualnej jest nieprawidłowa: <br>Określ inną konfigurację sieci wirtualnej i spróbuj ponownie. |None |
+| Określona usługa w chmurze używa zastrzeżonego adresu IP, który nie jest zgodny z konfiguracją przywracanej maszyny wirtualnej: <br>Określ inną usługę w chmurze, która nie używa zastrzeżonego adresu IP. Lub wybierz inny punkt odzyskiwania do przywrócenia. |None |
+| Osiągnięto limit liczby wejściowych punktów końcowych w usłudze w chmurze: <br>Spróbuj ponownie wykonać operację, określając inną usługę w chmurze lub używając istniejącego punktu końcowego. |None |
+| Magazyn Recovery Services i docelowe konto magazynu znajdują się w dwóch różnych regionach: <br>Upewnij się, że konto magazynu określone w operacji przywracania znajduje się w tym samym regionie platformy Azure co magazyn Recovery Services. |None |
+| Konto magazynu określone dla operacji przywracania nie jest obsługiwane: <br>Obsługiwane są tylko podstawowe lub standardowe konta magazynu z lokalnymi nadmiarowymi lub geograficznie nadmiarowymi ustawieniami replikacji. Wybierz obsługiwane konto magazynu. |None |
 | Typ konta magazynu określony dla operacji przywracania nie jest w trybie online: <br>Upewnij się, że konto magazynu określone w operacji przywracania jest w trybie online. |Ten błąd może wystąpić z powodu przejściowego błędu w usłudze Azure Storage lub z powodu przestoju. Wybierz inne konto magazynu. |
-| Osiągnięto limit przydziału grupy zasobów: <br>Usuń niektóre grupy zasobów z Azure Portal lub skontaktuj się z pomocą techniczną platformy Azure w celu zwiększenia limitów. |Brak |
-| Wybrana podsieć nie istnieje: <br>Wybierz podsieć, która istnieje. |Brak |
+| Osiągnięto limit przydziału grupy zasobów: <br>Usuń niektóre grupy zasobów z Azure Portal lub skontaktuj się z pomocą techniczną platformy Azure w celu zwiększenia limitów. |None |
+| Wybrana podsieć nie istnieje: <br>Wybierz podsieć, która istnieje. |None |
 | Usługa kopii zapasowej nie ma autoryzacji umożliwiającej dostęp do zasobów w Twojej subskrypcji. |Aby rozwiązać ten problem, należy najpierw przywrócić dyski, wykonując kroki opisane w sekcji [przywracanie kopii zapasowej dysków](backup-azure-arm-restore-vms.md#restore-disks). Następnie użyj kroków programu PowerShell z sekcji [Tworzenie maszyny wirtualnej z przywróconych dysków](backup-azure-vms-automation.md#restore-an-azure-vm). |
 
 ## <a name="backup-or-restore-takes-time"></a>Czas wykonywania kopii zapasowej lub przywracania
@@ -273,7 +273,7 @@ Kopia zapasowa maszyny wirtualnej polega na wystawianiu poleceń migawek do maga
 * **Jeśli więcej niż cztery maszyny wirtualne współużytkują tę samą usługę w chmurze, należy rozłożyć maszyny wirtualne na wiele zasad tworzenia kopii zapasowych**. Rozłożenie czasu wykonywania kopii zapasowych, więc nie można uruchomić więcej niż czterech kopii zapasowych maszyn wirtualnych. Spróbuj oddzielić godziny rozpoczęcia w zasadach o co najmniej godzinie.
 * **Maszyna wirtualna jest uruchamiana z dużym procesorem CPU lub pamięcią**. Jeśli maszyna wirtualna działa z dużą ilością pamięci lub użyciem procesora CPU, więcej niż 90 procent, zadanie migawki jest umieszczane w kolejce i opóźnione. Ostatecznie przeprowadzi limit czasu. Jeśli ten problem wystąpi, wypróbuj kopię zapasową na żądanie.
 
-## <a name="networking"></a>Networking
+## <a name="networking"></a>Sieć
 
 Aby tworzenie kopii zapasowej maszyny wirtualnej IaaS było możliwe, należy włączyć protokół DHCP wewnątrz gościa. Jeśli potrzebujesz statycznego prywatnego adresu IP, skonfiguruj go za pomocą Azure Portal lub programu PowerShell. Upewnij się, że opcja DHCP wewnątrz maszyny wirtualnej jest włączona.
 Uzyskaj więcej informacji na temat konfigurowania statycznego adresu IP za pomocą programu PowerShell:

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: c184972789c412406f264f725f8b94e1f7f162ce
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547051"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358680"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Omówienie środowiska uruchomieniowego usługi Azure IoT Edge oraz jej architektury
 
@@ -92,7 +92,7 @@ Każdy element w manifeście wdrożenia zawiera określone informacje o module i
   * Działanie
   * W złej kondycji
   * Niepowodzenie
-  * Zatrzymane
+  * Zatrzymano
 
 * **restartPolicy** — sposób ponownego uruchomienia modułu przez agenta IoT Edge. Możliwe wartości obejmują:
   
@@ -117,7 +117,7 @@ Agent usługi IoT Edge wysyła odpowiedź środowiska uruchomieniowego do usług
 
 Aby uzyskać więcej informacji, zobacz [Informacje o sposobie wdrażania modułów i ustanawiania tras w programie IoT Edge](module-composition.md).
 
-### <a name="security"></a>Zabezpieczenia
+### <a name="security"></a>Bezpieczeństwo
 
 Agent usługi IoT Edge odgrywa kluczową rolę w zabezpieczeniach urządzenia usługi IoT Edge. Na przykład wykonuje akcje, takie jak weryfikacja do obrazu modułu przed jego uruchomienie.
 
@@ -125,4 +125,4 @@ Aby uzyskać więcej informacji na temat środowiska zabezpieczeń Azure IoT Edg
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Omówienie modułów usługi Azure IoT Edge](iot-edge-modules.md)
+[Informacje o modułach Azure IoT Edge](iot-edge-modules.md)

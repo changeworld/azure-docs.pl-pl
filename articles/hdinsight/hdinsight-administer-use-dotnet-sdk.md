@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
 ms.openlocfilehash: 432b8855ffb9542a1e052c8c97b52bcddeb5c824
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934737"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385565"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>Zarządzanie klastrami Apache Hadoop w usłudze HDInsight przy użyciu zestawu .NET SDK
 
@@ -25,7 +25,7 @@ Dowiedz się, jak zarządzać klastrami usługi HDInsight przy użyciu [zestawu 
 
 Przed rozpoczęciem korzystania z informacji zawartych w tym artykule należy dysponować następującymi elementami:
 
-* **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+* **Subskrypcja platformy Azure**. Zobacz artykuł [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
 ## <a name="connect-to-azure-hdinsight"></a>Łączenie z usługą Azure HDInsight
 

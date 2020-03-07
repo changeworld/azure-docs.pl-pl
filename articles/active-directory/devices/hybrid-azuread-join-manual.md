@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ed28b4bb8ec61455168f50058c8cdcaf9f50717d
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73882848"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377034"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Samouczek: ręczne konfigurowanie urządzeń dołączonych hybrydowo do usługi Azure Active Directory
 
@@ -82,10 +82,10 @@ Skorzystaj z poniższej tabeli, aby uzyskać przegląd kroków wymaganych dla da
 
 | Kroki | Bieżący system Windows i synchronizacja skrótów haseł | Bieżący system Windows i federacja | System Windows niższego poziomu |
 | :--- | :---: | :---: | :---: |
-| Konfigurowanie punktu połączenia usługi | ![Zaznacz][1] | ![Zaznacz][1] | ![Zaznacz][1] |
-| Konfigurowanie wystawiania oświadczeń |     | ![Zaznacz][1] | ![Zaznacz][1] |
-| Włączanie urządzeń z systemem innym niż Windows 10 |       |        | ![Zaznacz][1] |
-| Weryfikowanie dołączonych urządzeń | ![Zaznacz][1] | ![Zaznacz][1] | [Niezaznaczone][1] |
+| Konfigurowanie punktu połączenia usługi | ![Sprawdź][1] | ![Sprawdź][1] | ![Sprawdź][1] |
+| Konfigurowanie wystawiania oświadczeń |     | ![Sprawdź][1] | ![Sprawdź][1] |
+| Włączanie urządzeń z systemem innym niż Windows 10 |       |        | ![Sprawdź][1] |
+| Weryfikowanie dołączonych urządzeń | ![Sprawdź][1] | ![Sprawdź][1] | [Niezaznaczone][1] |
 
 ## <a name="configure-a-service-connection-point"></a>Konfigurowanie punktu połączenia usługi
 

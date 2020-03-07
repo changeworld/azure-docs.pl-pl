@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: pepogors
 ms.openlocfilehash: 6e60fc10dd7e0eec24de4a089d09d914624dcfbc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463310"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379984"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Zagadnienia dotyczące planowania pojemności klastra Service Fabric
 W przypadku każdego wdrożenia produkcyjnego planowanie wydajności jest ważnym krokiem. Poniżej przedstawiono niektóre elementy, które należy wziąć pod uwagę w ramach tego procesu.
@@ -68,7 +68,7 @@ Warstwa trwałości służy do wskazywania, że system ma uprawnienia do program
 | ---------------- |  ----------------------------  | ---------------------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | Złoty             | 5                              | Jednostki SKU w całym węźle przeznaczone dla pojedynczego klienta (na przykład L32s, GS5, G5, DS15_v2, D15_v2) | Może zostać opóźnione do zatwierdzenia przez klaster Service Fabric | Można wstrzymywać przez 2 godziny na UD w celu dodatkowego czasu na odzyskanie replik przed wcześniejszymi błędami |
 | Srebrny           | 5                              | Maszyny wirtualne jednego rdzenia lub nowszego z co najmniej 50 GB lokalnego dysku SSD                      | Może zostać opóźnione do zatwierdzenia przez klaster Service Fabric | Nie może być opóźniony przez dowolny znaczny okres czasu                                                    |
-| Bronze           | 1                              | Maszyny wirtualne z co najmniej 50 GB lokalnego dysku SSD                                              | Nie zostanie opóźniony przez klaster Service Fabric           | Nie może być opóźniony przez dowolny znaczny okres czasu                                                    |
+| Bron           | 1                              | Maszyny wirtualne z co najmniej 50 GB lokalnego dysku SSD                                              | Nie zostanie opóźniony przez klaster Service Fabric           | Nie może być opóźniony przez dowolny znaczny okres czasu                                                    |
 
 > [!WARNING]
 > Typy węzłów działające z trwałością Bronze nie uzyskują _żadnych uprawnień_. Oznacza to, że zadania infrastruktury mające wpływ na obciążenia stanowe nie zostaną zatrzymane ani opóźnione, co może wpłynąć na Twoje obciążenia. Używaj tylko Bronze dla typów węzłów, które uruchamiają tylko obciążenia bezstanowe. W przypadku obciążeń produkcyjnych zaleca się używanie srebra lub wyższej. 
@@ -132,7 +132,7 @@ Poniżej przedstawiono zalecenia dotyczące wyboru warstwy niezawodności.  Licz
 | **Liczba węzłów klastra** | **Warstwa niezawodności** |
 | --- | --- |
 | 1 |Nie określaj parametru warstwy niezawodności system oblicza |
-| 3 |Bronze |
+| 3 |Bron |
 | 5 lub 6|Srebrny |
 | 7 lub 8 |Złoty |
 | 9 i w górę |Platyn |

@@ -16,11 +16,11 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: c2d93099f0f76f173cc7e77ab7f24f27d1560835
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516778"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365639"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>Wdróż wirtualną macierz StorSimple — Skonfiguruj jako serwer plików za pośrednictwem Azure Portal
 ![](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
@@ -31,28 +31,28 @@ ms.locfileid: "68516778"
 
 W tym artykule opisano sposób przeprowadzania konfiguracji początkowej, rejestrowania serwera plików StorSimple, kończenia konfiguracji urządzenia i tworzenia udziałów SMB oraz łączenia się z nimi. Jest to ostatni artykuł z serii samouczków wdrażania wymaganych do całkowitego wdrożenia macierzy wirtualnej jako serwera plików lub serwera iSCSI.
 
-Proces instalacji i konfiguracji może potrwać około 10 minut. Informacje zawarte w tym artykule mają zastosowanie tylko do wdrożenia macierzy wirtualnej StorSimple. W przypadku wdrażania urządzeń z serii StorSimple 8000 przejdź do: [Wdróż urządzenie z serii StorSimple 8000 z aktualizacją Update 2](storsimple-deployment-walkthrough-u2.md).
+Proces instalacji i konfiguracji może potrwać około 10 minut. Informacje zawarte w tym artykule mają zastosowanie tylko do wdrożenia macierzy wirtualnej StorSimple. W przypadku wdrażania urządzeń z serii StorSimple 8000 przejdź do: [wdrażanie urządzenia z serii StorSimple 8000 z uruchomioną aktualizacją Update 2](storsimple-deployment-walkthrough-u2.md).
 
 ## <a name="setup-prerequisites"></a>Wymagania wstępne instalacji
 Przed skonfigurowaniem i skonfigurowaniem macierzy wirtualnej StorSimple upewnij się, że:
 
 * Zainicjowano obsługę macierzy wirtualnej i nastąpiło do niej połączenie, zgodnie z opisem w temacie " [Inicjowanie obsługi StorSimple macierzy wirtualnej w funkcji Hyper-V"](storsimple-virtual-array-deploy2-provision-hyperv.md) lub [Inicjowanie obsługi wirtualnej macierzy StorSimple w oprogramowaniu VMware](storsimple-virtual-array-deploy2-provision-vmware.md).
-* Masz klucz rejestracji usługi z usługi StorSimple Menedżer urządzeń, która została utworzona w celu zarządzania macierzami wirtualnymi StorSimple. Aby uzyskać więcej informacji, [Zobacz Krok 2: Pobierz klucz](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key) rejestracji usługi dla macierzy wirtualnej StorSimple.
+* Masz klucz rejestracji usługi z usługi StorSimple Menedżer urządzeń, która została utworzona w celu zarządzania macierzami wirtualnymi StorSimple. Aby uzyskać więcej informacji, zobacz [krok 2. Pobieranie klucza rejestracji usługi](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key) dla macierzy wirtualnej StorSimple.
 * Jeśli jest to druga lub kolejna tablica wirtualna, która jest rejestrowana w istniejącej usłudze StorSimple Menedżer urządzeń, należy mieć klucz szyfrowania danych usługi. Ten klucz został wygenerowany, gdy pierwsze urządzenie zostało pomyślnie zarejestrowane w tej usłudze. Jeśli ten klucz został utracony, zobacz [Pobierz klucz szyfrowania danych usługi](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) dla macierzy wirtualnej StorSimple.
 
 ## <a name="step-by-step-setup"></a>Konfiguracja krok po kroku
 Wykonaj następujące instrukcje krok po kroku, aby skonfigurować i skonfigurować macierz wirtualną StorSimple.
 
-## <a name="step-1-complete-the-local-web-ui-setup-and-register-your-device"></a>Krok 1: Ukończ konfigurację lokalnego interfejsu użytkownika sieci Web i Zarejestruj urządzenie
+## <a name="step-1-complete-the-local-web-ui-setup-and-register-your-device"></a>Krok 1. ukończenie instalacji lokalnego interfejsu użytkownika sieci Web i zarejestrowanie urządzenia
 #### <a name="to-complete-the-setup-and-register-the-device"></a>Aby ukończyć instalację i zarejestrować urządzenie
-1. Otwórz okno przeglądarki i Połącz się z lokalnym interfejsem użytkownika sieci Web. Wpisz:
+1. Otwórz okno przeglądarki i Połącz się z lokalnym interfejsem użytkownika sieci Web. Typ:
    
    `https://<ip-address of network interface>`
    
    Użyj adresu URL połączenia zanotowanego w poprzednim kroku. Zostanie wyświetlony komunikat o błędzie z informacją, że wystąpił problem z certyfikatem zabezpieczeń witryny sieci Web. Kliknij przycisk **Kontynuuj na tej stronie sieci Web**.
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image2.png)
-2. Zaloguj się do internetowego interfejsu użytkownika macierzy wirtualnej jako **StorSimpleAdmin**. Wprowadź hasło administratora urządzenia zmienione w kroku 3: Uruchom macierz wirtualną w [ramach aprowizacji macierzy wirtualnej StorSimple w funkcji Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md) lub w [celu aprowizacji macierzy wirtualnej StorSimple w oprogramowaniu VMware](storsimple-virtual-array-deploy2-provision-vmware.md).
+2. Zaloguj się do internetowego interfejsu użytkownika macierzy wirtualnej jako **StorSimpleAdmin**. Wprowadź hasło administratora urządzenia zmienione w kroku 3: Uruchom macierz wirtualną w obszarze [StorSimple macierzy wirtualnej w funkcji Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md) lub w [celu udostępnienia StorSimpleej macierzy wirtualnej w oprogramowaniu VMware](storsimple-virtual-array-deploy2-provision-vmware.md).
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image3.png)
 3. Nastąpi przekierowanie do strony **głównej** . Ta strona zawiera opis różnych ustawień wymaganych do skonfigurowania i zarejestrowania macierzy wirtualnej przy użyciu usługi StorSimple Menedżer urządzeń. Ustawienia **sieci**, **Ustawienia serwera proxy sieci Web**i **Ustawienia czasu** są opcjonalne. Jedyne wymagane ustawienia to **Ustawienia urządzenia** i **Ustawienia chmury**.
@@ -70,13 +70,13 @@ Wykonaj następujące instrukcje krok po kroku, aby skonfigurować i skonfigurow
 6. Na stronie **Ustawienia urządzenia** :
    
    1. Przypisz unikatową **nazwę** do urządzenia. Nazwa może składać się z 1-15 znaków i może zawierać litery, cyfry i łączniki.
-   2. Kliknij ![](./media/storsimple-virtual-array-deploy3-fs-setup/image6.png) ikonę **serwer plików** dla tworzonego **typu** urządzenia. Serwer plików umożliwi tworzenie folderów udostępnionych.
+   2. Kliknij ikonę **serwera plików** ![](./media/storsimple-virtual-array-deploy3-fs-setup/image6.png) dla tworzonego **typu** urządzenia. Serwer plików umożliwi tworzenie folderów udostępnionych.
    3. Ponieważ urządzenie jest serwerem plików, należy przyłączyć urządzenie do domeny. Wprowadź **nazwę domeny**.
-   4. Kliknij przycisk **zastosować**.
+   4. Kliknij przycisk **Zastosuj**.
 7. Zostanie wyświetlone okno dialogowe. Wprowadź poświadczenia domeny w określonym formacie. Kliknij ikonę zaznaczania. Poświadczenia domeny zostały zweryfikowane. Jeśli poświadczenia są nieprawidłowe, zostanie wyświetlony komunikat o błędzie.
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image7.png)
-8. Kliknij przycisk **zastosować**. Spowoduje to zastosowanie i zweryfikowanie ustawień urządzenia.
+8. Kliknij przycisk **Zastosuj**. Spowoduje to zastosowanie i zweryfikowanie ustawień urządzenia.
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image8.png)
    
@@ -90,23 +90,23 @@ Wykonaj następujące instrukcje krok po kroku, aby skonfigurować i skonfigurow
    
    Na stronie **serwer proxy sieci Web** :
    
-   1. Podaj **adres URL serwera proxy sieci Web** w tym formacie: *http://&lt;Host — adres IP&gt;lub nazwa FQDN:P numer*portu. Należy zauważyć, że adresy URL HTTPS nie są obsługiwane.
+   1. Podaj **adres URL serwera proxy sieci Web** w tym formacie: *http://&lt;adres IP hosta lub nazwa FQDN&gt;:P numer*. Należy zauważyć, że adresy URL HTTPS nie są obsługiwane.
    2. Określ **uwierzytelnianie** jako **podstawowa** lub **Brak**.
    3. W przypadku korzystania z uwierzytelniania należy również podać **nazwę użytkownika** i **hasło**.
-   4. Kliknij przycisk **zastosować**. Spowoduje to zweryfikowanie i zastosowanie skonfigurowanych ustawień serwera proxy sieci Web.
+   4. Kliknij przycisk **Zastosuj**. Spowoduje to zweryfikowanie i zastosowanie skonfigurowanych ustawień serwera proxy sieci Web.
 10. (Opcjonalnie) skonfiguruj ustawienia czasu dla urządzenia, takie jak strefa czasowa i serwery NTP serwerów głównych i dodatkowych. Serwery NTP są wymagane, ponieważ urządzenie musi synchronizować czas, aby można było uwierzytelnić się z dostawcami usług w chmurze.
     
     ![](./media/storsimple-virtual-array-deploy3-fs-setup/image10.png)
     
     Na stronie **Ustawienia czasu** :
     
-    1. Z listy rozwijanej wybierz strefę **czasową** na podstawie lokalizacji geograficznej, w której jest wdrażane urządzenie. Domyślna strefa czasowa urządzenia to PST. Wszystkie zaplanowane operacje urządzenia będą wykonywane w ramach tej strefy czasowej.
+    1. Z listy rozwijanej wybierz **strefę czasową** na podstawie lokalizacji geograficznej, w której jest wdrażane urządzenie. Domyślna strefa czasowa urządzenia to PST. Wszystkie zaplanowane operacje urządzenia będą wykonywane w ramach tej strefy czasowej.
     2. Określ **podstawowy serwer NTP** dla urządzenia lub Zaakceptuj wartość domyślną Time.Windows.com. Upewnij się, że sieć zezwala na ruch NTP z centrum danych do Internetu.
     3. Opcjonalnie można określić **pomocniczy serwer NTP** dla urządzenia.
-    4. Kliknij przycisk **zastosować**. Spowoduje to zweryfikowanie i zastosowanie skonfigurowanych ustawień czasu.
+    4. Kliknij przycisk **Zastosuj**. Spowoduje to zweryfikowanie i zastosowanie skonfigurowanych ustawień czasu.
 11. Skonfiguruj ustawienia chmury dla urządzenia. W tym kroku zakończysz konfigurację urządzenia lokalnego, a następnie zarejestrujesz urządzenie w usłudze StorSimple Menedżer urządzeń.
     
-    1. Wprowadź **klucz rejestracji usługi** , który został uzyskany [w kroku 2: Pobierz klucz](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key) rejestracji usługi dla macierzy wirtualnej StorSimple.
+    1. Wprowadź **klucz rejestracji usługi** , który został uzyskany w [kroku 2: Pobierz klucz rejestracji usługi](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key) dla macierzy wirtualnej StorSimple.
     2. Jeśli jest to pierwsze urządzenie zarejestrowano w usłudze, zostanie wyświetlony **klucz szyfrowania danych usługi**. Skopiuj ten klucz i zapisz go w bezpiecznym miejscu. Ten klucz jest wymagany w przypadku klucza rejestracji usługi w celu zarejestrowania dodatkowych urządzeń w usłudze StorSimple Menedżer urządzeń. 
        
        Jeśli nie jest to pierwsze urządzenie, które jest zarejestrowana w ramach tej usługi, musisz podać klucz szyfrowania danych usługi. Aby uzyskać więcej informacji, zobacz Pobieranie [klucza szyfrowania danych usługi](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) w lokalnym interfejsie użytkownika sieci Web.
@@ -120,7 +120,7 @@ Wykonaj następujące instrukcje krok po kroku, aby skonfigurować i skonfigurow
     
     ![Konfigurowanie serwera plików](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png)
 
-## <a name="step-2-configure-the-device-as-file-server"></a>Krok 2: Skonfiguruj urządzenie jako serwer plików
+## <a name="step-2-configure-the-device-as-file-server"></a>Krok 2. Konfigurowanie urządzenia jako serwera plików
 Wykonaj następujące kroki w [Azure Portal](https://portal.azure.com/) , aby zakończyć wymaganą konfigurację urządzenia.
 
 #### <a name="to-configure-the-device-as-file-server"></a>Aby skonfigurować urządzenie jako serwer plików
@@ -155,7 +155,7 @@ Wykonaj następujące kroki w [Azure Portal](https://portal.azure.com/) , aby za
    
         ![Konfigurowanie serwera plików](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs8m.png)
 
-5. Po pomyślnym utworzeniu poświadczenia konta magazynu zostanie zaktualizowany blok **Konfigurowanie** , aby wyświetlić określone poświadczenia konta magazynu. Kliknij pozycję **Konfiguruj**.
+5. Po pomyślnym utworzeniu poświadczenia konta magazynu zostanie zaktualizowany blok **Konfigurowanie** , aby wyświetlić określone poświadczenia konta magazynu. Kliknij przycisk **Konfiguruj**.
    
    ![Konfigurowanie serwera plików](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs11m.png)
    
@@ -169,11 +169,11 @@ Wykonaj następujące kroki w [Azure Portal](https://portal.azure.com/) , aby za
    
    Możesz dalej dodać udział.
 
-## <a name="step-3-add-a-share"></a>Krok 3: Dodawanie udziału
+## <a name="step-3-add-a-share"></a>Krok 3. Dodawanie udziału
 Wykonaj poniższe czynności w witrynie [Azure Portal](https://portal.azure.com/), aby utworzyć udział.
 
 #### <a name="to-create-a-share"></a>Aby utworzyć udział
-1. Wybierz urządzenie serwera plików skonfigurowane w poprzednim kroku, a następnie kliknij przycisk **...** (lub kliknij prawym przyciskiem myszy). W menu kontekstowym wybierz pozycję **Dodaj udział**. Alternatywnie możesz kliknąć przycisk **+ Dodaj udział** na pasku poleceń urządzenia.
+1. Wybierz urządzenie serwera plików, które zostało skonfigurowane w poprzednim kroku, a następnie kliknij przycisk **...** (lub kliknij prawym przyciskiem myszy). W menu kontekstowym wybierz pozycję **Dodaj udział**. Alternatywnie możesz kliknąć przycisk **+ Dodaj udział** na pasku poleceń urządzenia.
    
    ![Dodawanie udziału](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs15m.png)
 2. Określ następujące ustawienia udziału:
@@ -182,10 +182,10 @@ Wykonaj poniższe czynności w witrynie [Azure Portal](https://portal.azure.com/
     
    2. Opcjonalny **Opis** udziału. Opis pomoże zidentyfikować właścicieli udziałów.
     
-   3. **Typ** udziału. Typ może być przypięty **warstwowo** lub **lokalnie**, z warstwą domyślną. W przypadku obciążeń wymagających lokalnych gwarancji, małych opóźnień i większej wydajności Wybierz udział przypięty **lokalnie** . Dla wszystkich innych danych wybierz udział **warstwowy** .
+   3. **Typ** udziału. Typ może być **przypięty** **warstwowo** lub lokalnie, z warstwą domyślną. W przypadku obciążeń wymagających lokalnych gwarancji, małych opóźnień i większej wydajności Wybierz udział **przypięty lokalnie** . Dla wszystkich innych danych wybierz udział **warstwowy** .
       Udział przypięty lokalnie jest elastycznie zainicjowany i zapewnia, że podstawowe dane udziału pozostają na urządzeniu lokalnym i nie zostaną przelane do chmury. Udział warstwowy z drugiej strony jest alokowany elastycznie. Podczas tworzenia udziału warstwowego zostanie zainicjowana obsługa 10% miejsca w warstwie lokalnej i 90% miejsca w chmurze. Na przykład jeśli Zainicjowano obsługę woluminu o pojemności 1 TB, 100 GB będzie znajdować się w miejscu lokalnym, a w chmurze zostanie użyta 900 GB. To z kolei oznacza, że w przypadku braku całego lokalnego miejsca na urządzeniu nie można zainicjować obsługi administracyjnej udziału warstwowego.
    
-   4. W polu **Ustaw domyślne pełne uprawnienia do** , przypisz uprawnienia użytkownikowi lub grupie, która uzyskuje dostęp do tego udziału. Określ nazwę użytkownika lub grupy użytkowników w formacie *John\@contoso.com* . Zalecamy użycie grupy użytkowników (zamiast pojedynczego użytkownika) w celu umożliwienia administratorom dostępu do tych udziałów. Po przypisaniu uprawnień w tym miejscu możesz następnie zmodyfikować te uprawnienia przy użyciu Eksploratora plików.
+   4. W polu **Ustaw domyślne pełne uprawnienia do** , przypisz uprawnienia użytkownikowi lub grupie, która uzyskuje dostęp do tego udziału. Określ nazwę użytkownika lub grupy użytkowników w formacie *john\@contoso.com* . Zalecamy użycie grupy użytkowników (zamiast pojedynczego użytkownika) w celu umożliwienia administratorom dostępu do tych udziałów. Po przypisaniu uprawnień w tym miejscu możesz następnie zmodyfikować te uprawnienia przy użyciu Eksploratora plików.
    
    5. Kliknij przycisk **Dodaj** , aby utworzyć udział. 
     
@@ -199,11 +199,11 @@ Wykonaj poniższe czynności w witrynie [Azure Portal](https://portal.azure.com/
    
       ![Dodawanie udziału](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs22m.png)
 
-## <a name="step-4-connect-to-the-share"></a>Krok 4: Łączenie z udziałem
+## <a name="step-4-connect-to-the-share"></a>Krok 4. Nawiązywanie połączenia z udziałem
 Teraz musisz nawiązać połączenie z co najmniej jednym udziałem utworzonym w poprzednim kroku. Wykonaj te kroki na hoście z systemem Windows Server połączonym z wirtualną tablicą StorSimple.
 
 #### <a name="to-connect-to-the-share"></a>Aby nawiązać połączenie z udziałem
-1. Naciśnij ![](./media/storsimple-virtual-array-deploy3-fs-setup/image22.png) klawisze + R. W oknie uruchamiania Określ  *&#92; &#92; &lt;nazwę&gt; serwera plików* jako ścieżkę, zastępując *nazwę serwera plików* nazwą urządzenia przypisaną do serwera plików. Kliknij przycisk **OK**.
+1. Naciśnij klawisz ![](./media/storsimple-virtual-array-deploy3-fs-setup/image22.png) + R. W oknie uruchamiania Określ  *&#92; &#92;&lt;nazwę serwera plików&gt;* jako ścieżkę, zastępując *nazwę serwera plików* nazwą urządzenia przypisaną do serwera plików. Kliknij przycisk **OK**.
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image23.png)
 2. Spowoduje to otwarcie Eksploratora plików. Teraz utworzone przez Ciebie udziały powinny być widoczne jako foldery. Wybierz i kliknij dwukrotnie udział (folder) w celu wyświetlenia jego zawartości.
@@ -211,6 +211,6 @@ Teraz musisz nawiązać połączenie z co najmniej jednym udziałem utworzonym w
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image24.png)
 3. Teraz możesz dodawać pliki do tych udziałów i tworzyć kopie zapasowe.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Dowiedz się, jak [zarządzać wirtualną tablicą StorSimple](storsimple-ova-web-ui-admin.md)za pomocą lokalnego interfejsu użytkownika sieci Web.
 

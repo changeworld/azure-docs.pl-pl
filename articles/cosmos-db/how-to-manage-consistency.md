@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
 ms.openlocfilehash: 68be15e1ffd9093ab67fc046edaad991d633ca7e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445367"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385712"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Zarządzanie poziomami spójności w usłudze Azure Cosmos DB
 
@@ -23,7 +23,7 @@ W tym artykule wyjaśniono, jak zarządzać poziomami spójności w usłudze Azu
 
 [Domyślny poziom spójności](consistency-levels.md) jest poziomem spójności używanym domyślnie przez klientów. Klienci zawsze mogą ją przesłonić.
 
-### <a name="cli"></a>Interfejs CLI
+### <a name="cli"></a>Interfejs wiersza polecenia
 
 ```bash
 # create with a default consistency
@@ -33,7 +33,7 @@ az cosmosdb create --name <name of Cosmos DB Account> --resource-group <resource
 az cosmosdb update --name <name of Cosmos DB Account> --resource-group <resource group name> --default-consistency-level Eventual
 ```
 
-### <a name="powershell"></a>PowerShell
+### <a name="powershell"></a>Program PowerShell
 
 Ten przykład tworzy nowe konto usługi Azure Cosmos z włączoną obsługą wielu regionów zapisu w regionach Wschodnie stany USA i zachodnie stany USA. Domyślny poziom spójności jest ustawiony na spójność *sesji* .
 
@@ -59,7 +59,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
   -Properties $CosmosDBProperties
 ```
 
-### <a name="azure-portal"></a>Portal Azure
+### <a name="azure-portal"></a>Portalu Azure
 
 Aby wyświetlić lub zmodyfikować domyślny poziom spójności, zaloguj się do witryny Azure Portal. Znajdź konto usługi Azure Cosmos i Otwórz domyślne okienko **spójności** . Wybierz odpowiedni poziom spójności jako nowe ustawienie domyślne, a następnie wybierz pozycję **Zapisz**. Azure Portal udostępnia również wizualizację różnych poziomów spójności przy użyciu notatek muzycznych. 
 
