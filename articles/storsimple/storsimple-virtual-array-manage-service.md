@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 2ff987448e3900c2a533789b2f38fd3ced71ce72
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516669"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365588"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>Wdróż usługę StorSimple Menedżer urządzeń dla macierzy wirtualnej StorSimple
 
@@ -73,9 +73,9 @@ Wykonaj następujące kroki, aby usunąć usługę.
 1. Przejdź do sekcji **Wszystkie zasoby**. Wyszukaj usługę StorSimple Menedżer urządzeń. Wybierz usługę, którą chcesz usunąć.
    
     ![Wybierz usługę do usunięcia](./media/storsimple-virtual-array-manage-service/deleteservice2.png)
-2. Przejdź do pulpitu nawigacyjnego usługi, aby upewnić się, że nie ma żadnych urządzeń podłączonych do usługi. Jeśli nie ma żadnych urządzeń zarejestrowanych w usłudze, zobaczysz również komunikat transparentu. Kliknij przycisk **Usuń**.
+2. Przejdź do pulpitu nawigacyjnego usługi, aby upewnić się, że nie ma żadnych urządzeń podłączonych do usługi. Jeśli nie ma żadnych urządzeń zarejestrowanych w usłudze, zobaczysz również komunikat transparentu. Kliknij pozycję **Usuń**.
    
-    ![Usuwanie usługi](./media/storsimple-virtual-array-manage-service/deleteservice3.png)
+    ![Usuń usługę](./media/storsimple-virtual-array-manage-service/deleteservice3.png)
 
 3. Po wyświetleniu monitu o potwierdzenie kliknij przycisk **tak** w powiadomieniu o potwierdzeniu. 
    
@@ -94,7 +94,7 @@ Po pomyślnym utworzeniu usługi konieczne będzie zarejestrowanie urządzenia z
 Wykonaj następujące kroki, aby uzyskać klucz rejestracji usługi.
 
 #### <a name="to-get-the-service-registration-key"></a>Aby uzyskać klucz rejestracji usługi
-1. W bloku **StorSimple Menedżer urządzeń** przejdź do pozycji **klucze** **zarządzania &gt;**  .
+1. W bloku **StorSimple Menedżer urządzeń** przejdź do pozycji **zarządzanie** **kluczami**&gt;.
    
    ![Blok Klucze](./media/storsimple-virtual-array-manage-service/getregkey2.png)
 2. W bloku **klucze** zostanie wyświetlony klucz rejestracji usługi. Skopiuj klucz rejestracji za pomocą ikony kopiowania. 
@@ -107,13 +107,13 @@ Należy ponownie wygenerować klucz rejestracji usługi, jeśli wymagane jest pr
 Wykonaj następujące kroki, aby ponownie wygenerować klucz rejestracji usługi.
 
 #### <a name="to-regenerate-the-service-registration-key"></a>Aby ponownie wygenerować klucz rejestracji usługi
-1. W bloku **StorSimple Menedżer urządzeń** przejdź do pozycji **klucze** **zarządzania &gt;**  .
+1. W bloku **StorSimple Menedżer urządzeń** przejdź do pozycji **zarządzanie** **kluczami**&gt;.
    
    ![Blok Klucze](./media/storsimple-virtual-array-manage-service/getregkey2.png)
 2. W bloku **klucze** kliknij polecenie **Generuj ponownie**.
    
    ![Kliknij pozycję Wygeneruj ponownie](./media/storsimple-virtual-array-manage-service/getregkey5.png)
-3. W bloku ponowne **generowanie klucza rejestracji usługi** zapoznaj się z akcją wymaganą, gdy klucze zostaną ponownie wygenerowane. Wszystkie kolejne urządzenia zarejestrowane w ramach tej usługi będą korzystały z nowego klucza rejestracji. Kliknij przycisk Wygeneruj ponownie, aby potwierdzić. Po zakończeniu rejestracji otrzymasz powiadomienie.
+3. W bloku ponowne **generowanie klucza rejestracji usługi** zapoznaj się z akcją wymaganą, gdy klucze zostaną ponownie wygenerowane. Wszystkie kolejne urządzenia zarejestrowane w ramach tej usługi będą korzystały z nowego klucza rejestracji. Kliknij przycisk **Wygeneruj** ponownie, aby potwierdzić. Po zakończeniu rejestracji otrzymasz powiadomienie.
    
    ![Potwierdź ponowne wygenerowanie klucza](./media/storsimple-virtual-array-manage-service/getregkey3.png)
 4. Zostanie wyświetlony nowy klucz rejestracji usługi.
@@ -122,7 +122,7 @@ Wykonaj następujące kroki, aby ponownie wygenerować klucz rejestracji usługi
    
    Skopiuj ten klucz i Zapisz go, aby zarejestrować nowe urządzenia w tej usłudze.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Dowiedz się, jak rozpocząć [pracę](storsimple-virtual-array-deploy1-portal-prep.md) z wirtualną tablicą StorSimple.
 * Dowiedz się, jak [administrować urządzeniem StorSimple](storsimple-ova-web-ui-admin.md).
 

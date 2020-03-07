@@ -5,11 +5,11 @@ ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
 ms.openlocfilehash: d57b196bf95ebdf31bc459ad4b9d718fd32ca495
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672230"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358121"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Zaawansowane użycie uwierzytelniania i autoryzacji w Azure App Service
 
@@ -152,13 +152,13 @@ Aplikacja może również uzyskać dodatkowe szczegóły dotyczące uwierzytelni
 
 W kodzie serwera tokeny specyficzne dla dostawcy są wstawiane do nagłówka żądania, dzięki czemu można łatwo uzyskać do nich dostęp. W poniższej tabeli przedstawiono możliwe nazwy nagłówków tokenów:
 
-| Dostawca | Nazwy nagłówków |
+| Provider | Nazwy nagłówków |
 |-|-|
-| Usługa Active Directory systemu Azure | `X-MS-TOKEN-AAD-ID-TOKEN` <br/> `X-MS-TOKEN-AAD-ACCESS-TOKEN` <br/> `X-MS-TOKEN-AAD-EXPIRES-ON`  <br/> `X-MS-TOKEN-AAD-REFRESH-TOKEN` |
+| Azure Active Directory | `X-MS-TOKEN-AAD-ID-TOKEN` <br/> `X-MS-TOKEN-AAD-ACCESS-TOKEN` <br/> `X-MS-TOKEN-AAD-EXPIRES-ON`  <br/> `X-MS-TOKEN-AAD-REFRESH-TOKEN` |
 | Token Facebook | `X-MS-TOKEN-FACEBOOK-ACCESS-TOKEN` <br/> `X-MS-TOKEN-FACEBOOK-EXPIRES-ON` |
 | Google | `X-MS-TOKEN-GOOGLE-ID-TOKEN` <br/> `X-MS-TOKEN-GOOGLE-ACCESS-TOKEN` <br/> `X-MS-TOKEN-GOOGLE-EXPIRES-ON` <br/> `X-MS-TOKEN-GOOGLE-REFRESH-TOKEN` |
 | Konto Microsoft | `X-MS-TOKEN-MICROSOFTACCOUNT-ACCESS-TOKEN` <br/> `X-MS-TOKEN-MICROSOFTACCOUNT-EXPIRES-ON` <br/> `X-MS-TOKEN-MICROSOFTACCOUNT-AUTHENTICATION-TOKEN` <br/> `X-MS-TOKEN-MICROSOFTACCOUNT-REFRESH-TOKEN` |
-| Serwis Twitter | `X-MS-TOKEN-TWITTER-ACCESS-TOKEN` <br/> `X-MS-TOKEN-TWITTER-ACCESS-TOKEN-SECRET` |
+| Twitter | `X-MS-TOKEN-TWITTER-ACCESS-TOKEN` <br/> `X-MS-TOKEN-TWITTER-ACCESS-TOKEN-SECRET` |
 |||
 
 Na podstawie kodu klienta (takiego jak aplikacja mobilna lub JavaScript w przeglądarce) Wyślij żądanie `GET` HTTP, aby `/.auth/me`. Zwrócony kod JSON ma tokeny specyficzne dla dostawcy.
@@ -176,7 +176,7 @@ Gdy token dostępu dostawcy (nie [token sesji](#extend-session-token-expiration-
 - **Konto Microsoft**: podczas [konfigurowania ustawień uwierzytelniania konta microsoft](configure-authentication-provider-microsoft.md)wybierz zakres `wl.offline_access`.
 - **Azure Active Directory**: w [https://resources.azure.com](https://resources.azure.com)wykonaj następujące czynności:
     1. W górnej części strony wybierz pozycję **Odczyt/zapis**.
-    2. W przeglądarce po lewej stronie przejdź do **subskrypcji** >  **_\<subskrypcja\_nazwa_**  > **resourceGroups** >  **_\<zasobów\__** \_nazwa > > **dostawców** > **witryną** **sieci Web > Microsoft.** 
+    2. W przeglądarce po lewej stronie przejdź do **subskrypcji** >  **_\<subskrypcja\_nazwa_**  > **resourceGroups** >  **_\<zasobów\__** \_nazwa > > **dostawców** > **witryną** **sieci Web > Microsoft.**  > \<\_ >  >  
     3. Kliknij pozycję **Edytuj**.
     4. Zmodyfikuj następującą właściwość. Zastąp _\<identyfikator\_aplikacji, >_ z identyfikatorem aplikacji Azure Active Directory usługi, do której chcesz uzyskać dostęp.
 
@@ -223,9 +223,9 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 Zarówno konto Microsoft, jak i Azure Active Directory umożliwiają logowanie się z wielu domen. Na przykład konto Microsoft umożliwia korzystanie z kont _Outlook.com_, _Live.com_i _hotmail.com_ . Usługa Azure AD umożliwia dowolna liczba domen niestandardowych dla kont logowania. Można jednak przyspieszyć użytkowników bezpośrednio do własnej, oznakowanej strony logowania do usługi Azure AD (np. `contoso.com`). Aby zasugerować nazwę domeny kont logowania, wykonaj następujące kroki.
 
-W [https://resources.azure.com](https://resources.azure.com)przejdź do **subskrypcji** >  **_\< subskrypcja\_ nazwa_**  > **resourceGroups** >  **_\< zasobów_** \_\_ nazwa > > **dostawcy** >  > **authsettings**. 
+W [https://resources.azure.com](https://resources.azure.com)przejdź do **subskrypcji** >  **_\<subskrypcja\_nazwa_**  > **resourceGroups** >  **_\<zasobów_** \_\_nazwa > > **dostawcy** >  > **authsettings**. > \<\_ >  >  
 
-Kliknij przycisk **Edytuj**, zmodyfikuj następującą właściwość, a następnie kliknij przycisk **Put**. Pamiętaj, aby zastąpić _nazwę domeny\<\__ z żądaną domeną.
+Kliknij przycisk **Edytuj**, zmodyfikuj następującą właściwość, a następnie kliknij przycisk **Put**. Pamiętaj, aby zastąpić _nazwę domeny\<\_>_ z żądaną domeną.
 
 ```json
 "additionalLoginParams": ["domain_hint=<domain_name>"]

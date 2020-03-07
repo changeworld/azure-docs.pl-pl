@@ -18,11 +18,11 @@ ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: 68f575164487f726c2f6c7477ceacd731bb52b0f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844925"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381195"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>Szybki start: diagnozowanie problemu z filtrowaniem ruchu sieciowego maszyny wirtualnej przy użyciu witryny Azure Portal
 
@@ -30,7 +30,7 @@ W tym przewodniku Szybki start wdrożysz maszynę wirtualną, a następnie spraw
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
+## <a name="log-in-to-azure"></a>Logowanie się do platformy Azure
 
 Zaloguj się do witryny Azure Portal na stronie https://portal.azure.com.
 
@@ -42,12 +42,12 @@ Zaloguj się do witryny Azure Portal na stronie https://portal.azure.com.
 
     |Ustawienie|Wartość|
     |---|---|
-    |Nazwa|myVm|
+    |Name (Nazwa)|myVm|
     |Nazwa użytkownika| Wprowadź wybraną nazwę użytkownika.|
     |Hasło| Wprowadź wybrane hasło. Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Subskrypcja| Wybierz subskrypcję.|
     |Grupa zasobów| Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę **myResourceGroup**.|
-    |Lokalizacja| Wybierz pozycję **Wschodnie stany USA**|
+    |Lokalizacja| Wybierz pozycję **Wschodnie stany USA**.|
 
 4. Wybierz rozmiar maszyny wirtualnej, a następnie wybierz pozycję **Wybierz**.
 5. W obszarze **Ustawienia** zaakceptuj wszystkie wartości domyślne i wybierz przycisk **OK**.
@@ -81,8 +81,8 @@ Podczas tworzenia maszyny wirtualnej platforma Azure domyślnie zezwala na i blo
     | Grupa zasobów    | Wybierz pozycję myResourceGroup                                                                            |
     | Maszyna wirtualna   | Wybierz pozycję myVm                                                                                       |
     | Interfejs sieciowy | myvm — nazwa interfejsu sieciowego utworzonego w portalu podczas tworzenia maszyny wirtualnej jest inna. |
-    | Protocol (Protokół)          | TCP                                                                                               |
-    | Kierunek         | Wychodzące                                                                                          |
+    | Protokół          | TCP                                                                                               |
+    | Kierunek         | Wychodzący                                                                                          |
     | Lokalny adres IP  | 10.0.0.4                                                                                          |
     | Port lokalny      | 60000                                                                                                |
     | Zdalny adres IP | 13.107.21.200 — jeden z adresów dla < www. Bing. com >.                                             |
@@ -120,7 +120,7 @@ Gdy grupa zasobów i wszystkie znajdujące się w niej zasoby nie będą już po
 
 1. Wprowadź ciąg *myResourceGroup* w polu **Szukaj** w górnej części portalu. Gdy pozycja **myResourceGroup** pojawi się w wynikach wyszukiwania, wybierz ją.
 2. Wybierz pozycję **Usuń grupę zasobów**.
-3. W polu **WPISZ NAZWĘ GRUPY ZASOBÓW:** wprowadź nazwę *myResourceGroup*, a następnie wybierz pozycję **Usuń**.
+3. W polu *WPISZ NAZWĘ GRUPY ZASOBÓW:* wprowadź nazwę **myResourceGroup**, a następnie wybierz pozycję **Usuń**.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -14,11 +14,11 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b8f44e9a1e43da2b9ce6c817898c1722fba715c4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978963"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391053"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Skojarzyć lub dodać subskrypcję platformy Azure z dzierżawą usługi Azure Active Directory
 
@@ -31,9 +31,9 @@ Jeśli subskrypcja wygaśnie, utracisz dostęp do wszystkich innych zasobów sko
 Wszyscy użytkownicy mają jeden katalog *macierzysty* na potrzeby uwierzytelniania. Użytkownicy mogą również być Gośćmi w innych katalogach. Możesz zobaczyć oba katalogi gości i macierzystego dla każdego użytkownika w usłudze Azure AD.
 
 > [!Important]
-> Po skojarzeniu subskrypcji z innym katalogiem użytkownicy, którzy mają przypisane role przy użyciu [kontroli dostępu opartej na rolach (RBAC)](../../role-based-access-control/role-assignments-portal.md) , utracą dostęp. Administratorzy subskrypcji klasycznych, w tym administrator usługi i współadministratorzy, również tracą dostęp.
+> Po skojarzeniu subskrypcji z innym katalogiem użytkownicy, którzy mają przypisane role przy użyciu [kontroli dostępu opartej na rolach (RBAC)](../../role-based-access-control/role-assignments-portal.md) , utracą dostęp. Klasyczni administratorzy subskrypcji, w tym administrator usługi i współadministratorzy, również utracą dostęp.
 >
-> Przypisania zasad są również usuwane z subskrypcji, gdy subskrypcja jest skojarzona z innym katalogiem.
+> Przypisania zasad są również usuwane z subskrypcji, gdy subskrypcja jest kojarzona z innym katalogiem.
 >
 > Przeniesienie klastra usługi Azure Kubernetes Service (AKS) do innej subskrypcji lub przeniesienie subskrypcji będącej właścicielem klastra do nowej dzierżawy powoduje utratę funkcjonalności klastra z powodu utraty przypisań ról i uprawnień jednostki usługi. Aby uzyskać więcej informacji na temat AKS, zobacz [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/).
 
@@ -61,13 +61,13 @@ Aby można było skojarzyć lub dodać subskrypcję, wykonaj następujące zadan
 
 Aby skojarzyć istniejącą subskrypcję z katalogiem usługi Azure AD, wykonaj następujące kroki:
 
-1. Zaloguj się i wybierz subskrypcję, której chcesz użyć z [strony subskrypcje w witrynie Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
+1. Zaloguj się i wybierz subskrypcję, której chcesz użyć na [stronie Subskrypcje w Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 
-1. Wybierz **Zmień katalog**.
+1. Wybierz pozycję **Zmień katalog**.
 
     ![Strony subskrypcje, z podświetloną opcją katalogu zmiany](media/active-directory-how-subscriptions-associated-directory/change-directory-in-azure-subscriptions.png)
 
-1. Przejrzyj wszelkie ostrzeżenia, które są wyświetlane, a następnie wybierz **zmiany**.
+1. Przejrzyj wszystkie wyświetlone ostrzeżenia, a następnie wybierz pozycję **Zmień**.
 
     ![Zmień przedstawiający katalogu, aby zmienić stronę katalogu](media/active-directory-how-subscriptions-associated-directory/edit-directory-ui.png)
 
@@ -79,7 +79,7 @@ Użyj **katalogu przełącznika** , aby przejść do nowego katalogu. Poprawne w
 
 ![Strona przełączników katalogów z przykładowymi informacjami](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
 
-Zmienianie katalogu subskrypcji jest operacją poziomu usług, dzięki czemu nie ma wpływu na własność rozliczeń subskrypcji. Administrator konta nadal może zmienić administratora usługi z [Centrum kont](https://account.azure.com/subscriptions). Aby usunąć oryginalny katalog, należy przenieść własność rozliczeń subskrypcji do nowego administratora konta. Aby dowiedzieć się więcej na temat przenoszenia własności rozliczeń, zobacz [przenoszenie własności subskrypcji platformy Azure na inne konto](../../cost-management-billing/manage/billing-subscription-transfer.md).
+Zmienianie katalogu subskrypcji jest operacją poziomu usług, dzięki czemu nie ma wpływu na własność rozliczeń subskrypcji. Administrator konta nadal może zmienić administratora usługi z [centrum konta](https://account.azure.com/subscriptions). Aby usunąć oryginalny katalog, należy przenieść własność rozliczeń subskrypcji do nowego administratora konta. Aby dowiedzieć się więcej na temat przenoszenia własności rozliczeń, zobacz [przenoszenie własności subskrypcji platformy Azure na inne konto](../../cost-management-billing/manage/billing-subscription-transfer.md).
 
 ## <a name="post-association-steps"></a>Kroki po skojarzeniu
 

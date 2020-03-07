@@ -9,11 +9,11 @@ ms.topic: overview
 ms.date: 01/10/2020
 ms.author: cherylmc
 ms.openlocfilehash: c4a406961444845fef783c47942924b01b7aa646
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972403"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357371"
 ---
 # <a name="what-is-vpn-gateway"></a>Co to jest usługa VPN Gateway?
 
@@ -25,7 +25,7 @@ Brama sieci wirtualnej składa się z co najmniej dwóch maszyn wirtualnych wdro
 
 Jednym z ustawień skonfigurowanych dla bramy sieci wirtualnej jest typ bramy. Typ bramy określa sposób użycia bramy sieci wirtualnej oraz akcje podejmowane przez bramę. Typ bramy "VPN" określa, że typ tworzonej bramy sieci wirtualnej to "Brama sieci VPN", a nie Brama ExpressRoute. Sieć wirtualna może mieć dwie bramy sieci wirtualnej; jedna Brama sieci VPN i jedna brama ExpressRoute — podobnie jak w przypadku [współistniejących](#coexisting) konfiguracji połączeń. Aby uzyskać więcej informacji, zobacz [Gateway types](vpn-gateway-about-vpn-gateway-settings.md#gwtype) (Typy bram).
 
-Bramy sieci VPN można wdrożyć w Strefy dostępności platformy Azure. Zapewni to elastyczność, skalowalność i większą dostępność bram sieci wirtualnej. Wdrażanie bram w strefach dostępności platformy Azure fizycznie i logicznie dzieli bramy w danym regionie, chroniąc jednocześnie lokalną łączność sieci z platformą Azure przed błędami na poziomie strefy. Zobacz [temat strefy — nadmiarowe bramy sieci wirtualnej w strefy dostępności platformy Azure](about-zone-redundant-vnet-gateways.md)
+Bramy sieci VPN można wdrożyć w Strefy dostępności platformy Azure. Zapewnia to elastyczność, skalowalność i wyższą dostępność dla bram sieci wirtualnej. Wdrażanie bram w Strefy dostępności platformy Azure fizycznie i logicznie oddziela bramy w danym regionie, chroniąc połączenie sieci lokalnej na platformie Azure przed awariami na poziomie strefy. Zobacz [temat strefy — nadmiarowe bramy sieci wirtualnej w strefy dostępności platformy Azure](about-zone-redundant-vnet-gateways.md)
 
 Tworzenie bramy sieci wirtualnej może potrwać do 45 minut. Podczas tworzenia bramy sieci wirtualnej maszyny wirtualne bramy są wdrażane w podsieci bramy i konfigurowane przy użyciu określonych przez Ciebie ustawień. Po utworzeniu bramy sieci VPN możesz utworzyć połączenie tunelu VPN IPsec/IKE między bramą sieci VPN a inną bramą sieci VPN (sieć wirtualna-sieć wirtualna) lub utworzyć połączenie tunelu VPN IPsec/IKE obejmujące wiele lokalizacji między bramą sieci VPN a lokalnym urządzeniem sieci VPN (lokacja-lokacja). Możesz również utworzyć połączenie sieci VPN typu punkt-lokacja (VPN over OpenVPN, IKEv2 lub SSTP), które umożliwia łączenie się z siecią wirtualną z lokalizacji zdalnej, np. z konferencji lub z domu.
 
@@ -118,7 +118,7 @@ Sieci wirtualne, między którymi tworzone jest połączenie, mogą:
 
 Platforma Azure ma obecnie dwa modele wdrażania: klasyczny model wdrażania oraz model wdrażania przy użyciu usługi Resource Manager. Jeśli korzystasz z platformy Azure od pewnego czasu, prawdopodobnie masz maszyny wirtualne i wystąpienia roli platformy Azure działające w klasycznej sieci wirtualnej. Nowsze maszyny wirtualne i wystąpienia roli mogą działać w sieci wirtualnej utworzonej w usłudze Resource Manager. Możesz utworzyć połączenie między tymi sieciami wirtualnymi, aby umożliwić zasobom w jednej sieci wirtualnej bezpośrednie komunikowanie się z zasobami w innej sieci.
 
-### <a name="vnet-peering"></a>Wirtualne sieci równorzędne
+### <a name="vnet-peering"></a>Komunikacja równorzędna sieci wirtualnych
 
 Można utworzyć połączenie przy użyciu komunikacji równorzędnej sieci wirtualnych pod warunkiem, że sieć wirtualna spełnia określone wymagania. W przypadku komunikacji równorzędnej sieci wirtualnych nie jest używana brama sieci wirtualnej. Aby uzyskać więcej informacji, zobacz temat [Komunikacja równorzędna sieci wirtualnych](../virtual-network/virtual-network-peering-overview.md).
 
@@ -146,7 +146,7 @@ Sieć VPN typu lokacja-lokacja może zostać skonfigurowana jako bezpieczna ści
 
 [!INCLUDE [vpn-gateway-table-coexist](../../includes/vpn-gateway-table-coexist-include.md)]
 
-## <a name="pricing"></a>Cennik
+## <a name="pricing"></a>Ceny
 
 [!INCLUDE [vpn-gateway-about-pricing-include](../../includes/vpn-gateway-about-pricing-include.md)]
 

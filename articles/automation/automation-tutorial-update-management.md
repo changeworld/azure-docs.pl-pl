@@ -4,14 +4,14 @@ description: Ten artykuł zawiera omówienie sposobu używania Update Management
 services: automation
 ms.subservice: update-management
 ms.topic: tutorial
-ms.date: 01/21/2020
+ms.date: 03/04/2020
 ms.custom: mvc
-ms.openlocfilehash: 3922f8a2478f00c632b6daf294f23c7b5ad8c261
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 347f2fbc0f12aa775c42dbb14a4625dc509a20ed
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310139"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372922"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Zarządzanie aktualizacjami i poprawkami dla maszyn wirtualnych platformy Azure
 
@@ -19,10 +19,9 @@ Przy użyciu rozwiązania Update Management można zarządzać aktualizacjami i 
 
 Aby uzyskać informacje o cenach, zobacz [cennik usługi Automation dla rozwiązania Update Management](https://azure.microsoft.com/pricing/details/automation/).
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Dołączanie maszyny wirtualnej dla rozwiązania Update Management
 > * Wyświetlanie oceny aktualizacji
 > * Konfigurowanie alertów
 > * Planowanie wdrożenia aktualizacji
@@ -32,39 +31,12 @@ Niniejszy samouczek zawiera informacje na temat wykonywania następujących czyn
 
 Do ukończenia tego samouczka niezbędne są następujące elementy:
 
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, możesz [aktywować miesięczne środki na korzystanie z platformy Azure dla subskrybentów programu Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Konto usługi Azure Automation](automation-offering-get-started.md) do przechowywania obserwatora i elementów runbook akcji oraz zadania obserwatora.
+* Rozwiązanie [Update Management](automation-update-management.md) włączone dla co najmniej jednej maszyny wirtualnej.
 * [Maszyna wirtualna](../virtual-machines/windows/quick-create-portal.md) do dołączenia.
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
-
-## <a name="enable-update-management"></a>Włączanie rozwiązania Update Management
-
-Najpierw na maszynie wirtualnej używanej w tym samouczku włącz rozwiązanie Update Management:
-
-1. W menu [Azure Portal](https://portal.azure.com) wybierz pozycję **maszyny wirtualne** lub Wyszukaj i wybierz pozycję **maszyny wirtualne** ze strony **głównej** .
-1. Wybierz maszynę wirtualną, dla której chcesz włączyć Update Management.
-1. Na stronie maszyny wirtualnej w obszarze **OPERACJE** wybierz pozycję **Update Management**. Zostanie wyświetlone okienko **Włączanie rozwiązania Update Management**.
-
-Jest przeprowadzana walidacja w celu ustalenia, czy rozwiązanie Update Management zostało włączone dla tej maszyny wirtualnej. To sprawdzenie poprawności obejmuje sprawdzanie Log Analytics obszaru roboczego i połączonego konta usługi Automation oraz tego, czy rozwiązanie Update Management jest włączone w obszarze roboczym.
-
-Obszar roboczy usługi [Log Analytics](../azure-monitor/platform/data-platform-logs.md) służy do zbierania danych generowanych przez funkcje i usługi, takie jak rozwiązanie Update Management. Obszar roboczy zawiera pojedynczą lokalizację do przeglądania i analizowania danych z wielu źródeł.
-
-Proces walidacji sprawdza również, czy maszyna wirtualna jest obsługiwana za pomocą agenta Log Analytics i hybrydowego procesu roboczego elementu Runbook usługi Automation. Ten agent jest używany do komunikacji z usługą Azure Automation i uzyskiwania informacji dotyczących stanu aktualizacji. Agent wymaga otwartego portu 443 w celu komunikowania się z usługą Azure Automation oraz pobierania aktualizacji.
-
-Jeśli którekolwiek z następujących wymagań wstępnych nie będzie występować podczas dołączania, zostanie ono automatycznie dołączone:
-
-* Obszar roboczy usługi [Log Analytics](../azure-monitor/platform/data-platform-logs.md)
-* [Konto usługi Automation](./automation-offering-get-started.md)
-* [Hybrydowy proces roboczy elementu Runbook](./automation-hybrid-runbook-worker.md) (włączony na maszynie wirtualnej)
-
-W rozwiązaniu **Update Management** ustaw lokalizację, obszar roboczy usługi Log Analytics i konto usługi Automation do użycia. Następnie wybierz pozycję **Włącz**. Jeśli te opcje są niedostępne, oznacza to, że na maszynie wirtualnej włączono inne rozwiązanie do automatyzacji. W takim przypadku należy użyć tego samego obszaru roboczego i konta usługi Automation.
-
-![Okno włączania rozwiązania Update Management](./media/automation-tutorial-update-management/manageupdates-update-enable.png)
-
-Włączanie rozwiązania może potrwać kilka minut. W tym czasie nie należy zamykać okna przeglądarki. Po włączeniu rozwiązania informacje dotyczące brakujących aktualizacji maszyny wirtualnej są przekazywane do dzienników usługi Azure Monitor. Udostępnienie danych do analizy może potrwać od 30 minut do 6 godzin.
 
 ## <a name="view-update-assessment"></a>Wyświetlanie oceny aktualizacji
 
@@ -74,7 +46,7 @@ W obszarze **link do informacji**wybierz łącze Aktualizuj, aby otworzyć artyk
 
 ![Wyświetlanie stanu aktualizacji](./media/automation-tutorial-update-management/manageupdates-view-status-win.png)
 
-Kliknij w dowolnym innym miejscu aktualizacji, aby otworzyć okno **Przeszukiwanie dzienników** dla wybranej aktualizacji. Zapytanie dotyczące przeszukiwania dzienników jest wstępnie zdefiniowane dla tej określonej aktualizacji. Możesz zmodyfikować to zapytanie lub utworzyć własne zapytanie, aby wyświetlić szczegółowe informacje o aktualizacjach wdrożonych lub brakujących we własnym środowisku.
+Kliknij w dowolnym miejscu w obszarze aktualizacji, aby otworzyć okienko **przeszukiwania dzienników** dla wybranej aktualizacji. Zapytanie dotyczące przeszukiwania dzienników jest wstępnie zdefiniowane dla tej określonej aktualizacji. Możesz zmodyfikować to zapytanie lub utworzyć własne zapytanie, aby wyświetlić szczegółowe informacje o aktualizacjach wdrożonych lub brakujących we własnym środowisku.
 
 ![Wyświetlanie stanu aktualizacji](./media/automation-tutorial-update-management/logsearch.png)
 
@@ -111,15 +83,15 @@ W obszarze **Grupy akcji** wybierz pozycję **Utwórz nową**. Grupa akcji to gr
 
 W polu **Nazwa grupy akcji** wprowadź nazwę alertu oraz krótką nazwę. Krótka nazwa jest używana zamiast pełnej nazwy grupy akcji podczas przesyłania powiadomień przy użyciu danej grupy.
 
-W obszarze **Akcje** wprowadź nazwę akcji, taką jak **Powiadomienia e-mail**. W obszarze **TYP AKCJI** wybierz pozycję **E-mail/SMS/Push/Głos**. W obszarze **SZCZEGÓŁY** wybierz pozycję **Edytuj szczegóły**.
+W obszarze **Akcje**wprowadź nazwę akcji, na przykład **powiadomienia e-mail**. W obszarze **Typ akcji**wybierz pozycję **poczta e-mail/SMS/wypychanie/głos**. W obszarze **szczegóły**wybierz pozycję **Edytuj szczegóły**.
 
 W okienku **E-mail/SMS/Push/Głos** wprowadź nazwę. Zaznacz pole wyboru **E-mail**, a następnie wprowadź prawidłowy adres e-mail.
 
 ![Konfigurowanie grupy akcji dla poczty e-mail](./media/automation-tutorial-update-management/configure-email-action-group.png)
 
-W okienku **E-mail/SMS/Push/Głos** wybierz przycisk **OK**. W okienku **Dodawanie grupy akcji** wybierz przycisk **OK**.
+W okienku **wiadomości e-mail/SMS/wypychanie/głos** wybierz pozycję **OK**. W okienku **Dodaj grupę akcji** wybierz **przycisk OK**.
 
-Aby dostosować temat wiadomości e-mail alertu, w oknie **Tworzenie reguły** w obszarze **Dostosowywanie akcji** wybierz pozycję **Temat wiadomości e-mail**. Po zakończeniu wybierz pozycję **Utwórz regułę alertu**. Alert informuje użytkownika o pomyślnym wdrożeniu aktualizacji oraz o maszynach będących elementami danego uruchomienia wdrożenia aktualizacji.
+Aby dostosować temat wiadomości e-mail dotyczącej alertu, w obszarze **Tworzenie reguły**w obszarze **Dostosuj akcje**wybierz pozycję **temat wiadomości e-mail**. Po zakończeniu wybierz pozycję **Utwórz regułę alertu**. Alert informuje użytkownika o pomyślnym wdrożeniu aktualizacji oraz o maszynach będących elementami danego uruchomienia wdrożenia aktualizacji.
 
 ## <a name="schedule-an-update-deployment"></a>Planowanie wdrożenia aktualizacji
 
@@ -139,7 +111,7 @@ W obszarze **Nowe wdrożenie aktualizacji** podaj następujące informacje:
 
 * **Grupy do zaktualizowania (wersja zapoznawcza)** : zdefiniuj zapytanie na podstawie kombinacji subskrypcji, grup zasobów, lokalizacji i tagów, aby utworzyć dynamiczną grupę maszyn wirtualnych platformy Azure, które chcesz uwzględnić w swoim wdrożeniu. Aby dowiedzieć się więcej, zobacz [Grupy dynamiczne](automation-update-management-groups.md)
 
-* **Maszyny do zaktualizowania**: wybierz zapisane wyszukiwanie bądź zaimportowaną grupę lub wybierz maszynę z listy rozwijanej, a następnie wybierz poszczególne maszyny. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**. Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w dziennikach usługi Azure Monitor, zobacz [Computer groups in Azure Monitor logs (Grupy komputerów w dziennikach usługi Azure Monitor)](../azure-monitor/platform/computer-groups.md)
+* **Maszyny do zaktualizowania**: wybierz zapisane wyszukiwanie bądź zaimportowaną grupę lub wybierz maszynę z listy rozwijanej, a następnie wybierz poszczególne maszyny. W przypadku wybrania opcji **maszyny**gotowość komputera zostanie wyświetlona w kolumnie **Aktualizowanie gotowości agenta** . Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w dziennikach usługi Azure Monitor, zobacz [Computer groups in Azure Monitor logs (Grupy komputerów w dziennikach usługi Azure Monitor)](../azure-monitor/platform/computer-groups.md)
 
 * **Klasyfikacja aktualizacji**: Wybierz obsługiwane klasyfikacje aktualizacji dostępne dla każdego produktu, które mogą zostać uwzględnione we wdrożeniu aktualizacji. W tym samouczku pozostaw wszystkie typy wybranymi.
 
@@ -147,7 +119,7 @@ W obszarze **Nowe wdrożenie aktualizacji** podaj następujące informacje:
 
    |System operacyjny  |Typ  |
    |---------|---------|
-   |Windows     | Aktualizacje krytyczne</br>Aktualizacje zabezpieczeń</br>Pakiety zbiorcze aktualizacji</br>Pakiety funkcji</br>Dodatki Service Pack</br>Aktualizacje definicji</br>narzędzia</br>Aktualizacje        |
+   |System Windows     | Aktualizacje krytyczne</br>Aktualizacje zabezpieczeń</br>Pakiety zbiorcze aktualizacji</br>Pakiety funkcji</br>Dodatki Service Pack</br>Aktualizacje definicji</br>Narzędzia</br>Aktualizacje        |
    |Linux     | Aktualizacje krytyczne i zabezpieczeń</br>Inne aktualizacje       |
 
    Opis typów klasyfikacji znajduje się w [klasyfikacjach aktualizacji](automation-view-update-assessments.md#update-classifications).
@@ -163,7 +135,7 @@ W obszarze **Nowe wdrożenie aktualizacji** podaj następujące informacje:
 
 * **Ustawienia harmonogramu**: spowoduje otwarcie okienka **Ustawienia harmonogramu**. Domyślny czas rozpoczęcia to 30 minut po bieżącej godzinie. Czas rozpoczęcia można ustawić na dowolny czas od 10 minut w przyszłości.
 
-   Możesz też określić, czy wdrożenie ma występować raz, czy zgodnie z ustawionym harmonogramem cyklicznym. W obszarze **Cykl** wybierz pozycję **Raz**. Pozostaw wartość domyślną jako 1 dzień, a następnie wybierz przycisk **OK**. Konfiguruje to harmonogram cykliczny.
+   Możesz też określić, czy wdrożenie ma występować raz, czy zgodnie z ustawionym harmonogramem cyklicznym. W obszarze **Cykl** wybierz pozycję **Raz**. Pozostaw wartość domyślną na 1 dzień, a następnie wybierz pozycję **OK**. Konfiguruje to harmonogram cykliczny.
 
 * **Skrypty wstępne i końcowe**: wybierz skrypty do uruchomienia przed i po wdrożeniu. Aby dowiedzieć się więcej, zobacz [Zarządzanie skryptami wstępnymi i końcowymi](pre-post-scripts.md).
 
@@ -221,7 +193,7 @@ Aby wyświetlić szczegółowe informacje o błędach związanych z wdrożeniem,
 
 Po pomyślnym wdrożeniu aktualizacji zostanie wysłana wiadomość e-mail podobna do poniższego przykładu z informacją o powodzeniu tego wdrożenia:
 
-![Konfigurowanie grupy akcji dla poczty e-mail](./media/automation-tutorial-update-management/email-notification.png)
+![Skonfiguruj grupę akcji poczty e-mail](./media/automation-tutorial-update-management/email-notification.png)
 
 ## <a name="next-steps"></a>Następne kroki
 

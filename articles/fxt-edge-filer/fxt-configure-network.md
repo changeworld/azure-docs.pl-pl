@@ -7,11 +7,11 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.openlocfilehash: a40ff50dcb0934cbf1ea5222675bd75948ac1d03
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551067"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397036"
 ---
 # <a name="tutorial-configure-the-clusters-network-settings"></a>Samouczek: Konfigurowanie ustawień sieciowych klastra
 
@@ -19,7 +19,7 @@ Przed użyciem nowo utworzonego klastra usługi Azure FXT Edge, należy sprawdzi
 
 W tym samouczku wyjaśniono ustawienia sieci, które mogą być konieczne do dostosowania nowego klastra. 
 
-Dowiesz się więcej na temat następujących zagadnień: 
+Dowiesz się: 
 
 > [!div class="checklist"]
 > * Jakie ustawienia sieciowe mogą wymagać aktualizacji po utworzeniu klastra

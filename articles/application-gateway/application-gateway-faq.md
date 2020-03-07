@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: 27048a8464fc7380a5c11ab6bbb543e35c089774
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
-ms.translationtype: MT
+ms.openlocfilehash: 7a5ef2c2fbed6daabef6cd3c5049fcd25f478d53
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919621"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373586"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Często zadawane pytania dotyczące Application Gateway
 
@@ -130,7 +130,7 @@ Nie. Wystąpienia są dystrybuowane w domenach uaktualnień i domenach błędów
 
 ### <a name="does-application-gateway-support-connection-draining"></a>Czy Application Gateway obsługuje opróżnianie połączenia?
 
-Tak. Można skonfigurować opróżnianie połączenia w celu zmiany elementów członkowskich w puli zaplecza bez zakłóceń. Aby uzyskać więcej informacji, zobacz [sekcję opróżniania połączeń Application Gateway](overview.md#connection-draining).
+Tak. Można skonfigurować opróżnianie połączenia w celu zmiany elementów członkowskich w puli zaplecza bez zakłóceń. Aby uzyskać więcej informacji, zobacz [sekcję opróżniania połączeń Application Gateway](features.md#connection-draining).
 
 ### <a name="can-i-change-instance-size-from-medium-to-large-without-disruption"></a>Czy mogę zmienić rozmiar wystąpienia z średniego na duży bez zakłóceń?
 
@@ -410,7 +410,7 @@ Jeśli jednak chcesz używać Application Gateway v2 tylko z prywatnym adresem I
 Przykładowa konfiguracja sieciowej grupy zabezpieczeń do dostępu tylko do prywatnego adresu IP: ![Application Gateway v2 sieciowej grupy zabezpieczeń Konfiguracja tylko do prywatnego dostępu do adresów IP](./media/application-gateway-faq/appgw-privip-nsg.png)
 
 ### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>Czy Application Gateway plik cookie koligacji jest obsługiwany?
-Tak. [Aktualizacja V80](https://chromiumdash.appspot.com/schedule) [przeglądarki chromu](https://www.chromium.org/Home) wprowadziła upoważnienie dla plików cookie protokołu HTTP bez atrybutu SameSite, który ma być traktowany jako SameSite = swobodny. Oznacza to, że plik cookie koligacji Application Gateway nie będzie wysyłany przez przeglądarkę w kontekście trzeciego pary. Aby obsłużyć ten scenariusz, Application Gateway dodaje do istniejącego pliku cookie *ApplicationGatewayAffinity* inny plik cookie o nazwie *ApplicationGatewayAffinityCORS* .  Te pliki cookie są podobne, ale plik cookie *ApplicationGatewayAffinityCORS* ma dwa więcej atrybutów: *SameSite = none; Zabezpiecz*. Te atrybuty utrzymują sesje programu Sticky Notes nawet w przypadku żądań między źródłami. Aby uzyskać więcej informacji, zobacz [sekcję koligacja na podstawie plików cookie](configuration-overview.md#cookie-based-affinity) .
+Tak. [Aktualizacja V80](https://chromiumdash.appspot.com/schedule) [przeglądarki chromu](https://www.chromium.org/Home) wprowadziła upoważnienie dla plików cookie protokołu HTTP bez atrybutu SameSite, który ma być traktowany jako SameSite = swobodny. Oznacza to, że plik cookie koligacji Application Gateway nie będzie wysyłany przez przeglądarkę w kontekście innej firmy. Aby obsłużyć ten scenariusz, Application Gateway dodaje do istniejącego pliku cookie *ApplicationGatewayAffinity* inny plik cookie o nazwie *ApplicationGatewayAffinityCORS* .  Te pliki cookie są podobne, ale plik cookie *ApplicationGatewayAffinityCORS* ma dwa więcej atrybutów: *SameSite = none; Zabezpiecz*. Te atrybuty utrzymują sesje programu Sticky Notes nawet w przypadku żądań między źródłami. Aby uzyskać więcej informacji, zobacz [sekcję koligacja na podstawie plików cookie](configuration-overview.md#cookie-based-affinity) .
 
 ## <a name="next-steps"></a>Następne kroki
 

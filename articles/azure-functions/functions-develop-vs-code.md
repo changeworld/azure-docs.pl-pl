@@ -4,11 +4,11 @@ description: Dowiedz się, jak opracowywać i testować Azure Functions przy uż
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.openlocfilehash: 41a1a64be4823769f6bf23b251fec94fd68eb0f0
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484779"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358036"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Opracowywanie Azure Functions przy użyciu Visual Studio Code
 
@@ -184,7 +184,7 @@ Visual Studio Code pozwala dodawać powiązania do pliku Function. JSON, wykonuj
 
 Poniżej przedstawiono przykładowe monity o zdefiniowanie nowego powiązania danych wyjściowych magazynu:
 
-| Monit | Value | Opis |
+| Monit | Wartość | Opis |
 | -------- | ----- | ----------- |
 | **Wybierz kierunek powiązania** | `out` | Powiązanie jest powiązaniem wyjściowym. |
 | **Wybieranie powiązania z kierunkiem** | `Azure Queue Storage` | Powiązanie to powiązanie kolejki usługi Azure Storage. |
@@ -248,10 +248,10 @@ Poniższe kroki umożliwiają opublikowanie projektu w nowej aplikacji funkcji u
 
 1. Postępując zgodnie z instrukcjami, podaj następujące informacje:
 
-    | Monit | Value | Opis |
+    | Monit | Wartość | Opis |
     | ------ | ----- | ----------- |
     | Wybieranie aplikacji funkcji na platformie Azure | Utwórz nowe aplikacja funkcji na platformie Azure | W następnym monicie wpisz globalnie unikatową nazwę, która identyfikuje nową aplikację funkcji, a następnie wybierz klawisz ENTER. Prawidłowe znaki dla nazwy aplikacji funkcji to `a-z`, `0-9` i `-`. |
-    | Wybierz system operacyjny | Windows | Aplikacja funkcji jest uruchamiana w systemie Windows. |
+    | Wybierz system operacyjny | System Windows | Aplikacja funkcji jest uruchamiana w systemie Windows. |
     | Wybierz plan hostingu | Plan Zużycie | Jest używany [host planu zużycia](functions-scale.md#consumption-plan) bezserwerowego. |
     | Wybierz środowisko uruchomieniowe dla nowej aplikacji | Język projektu | Środowisko uruchomieniowe musi pasować do projektu, który jest publikowany. |
     | Wybierz grupę zasobów dla nowych zasobów | Utwórz nową grupę zasobów | W następnym monicie wpisz nazwę grupy zasobów, na przykład `myResourceGroup`, a następnie wybierz klawisz ENTER. Możesz również wybrać istniejącą grupę zasobów. |

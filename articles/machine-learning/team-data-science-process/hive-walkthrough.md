@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 005d4fe1b6ec59e7f05be3dd2ab3e72d0e7aa8e0
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720575"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393394"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Zespół danych dla celów naukowych w działaniu: klastry użycia usługi Azure HDInsight Hadoop
 W tym instruktażu będziemy używać [procesu nauki o danych zespołowych (przetwarzania TDSP)](overview.md) w kompleksowym scenariuszu. Korzystamy z [klastra Azure HDInsight Hadoop](https://azure.microsoft.com/services/hdinsight/) do przechowywania, eksplorowania i tworzenia funkcji danych z dostępnych publicznie zestawów danych [podróży NYCych](https://www.andresmh.com/nyctaxitrips/) w postaci pośrednich oraz do próbkowania danych. Aby obsłużyć binarne i wieloklasowej klasyfikacji i regresji predykcyjnego zadań, firma Microsoft tworzy modele danych przy użyciu usługi Azure Machine Learning. 

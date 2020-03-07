@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/28/2020
 ms.openlocfilehash: 194bc7983019a616d534a4146f86fff59f9719dc
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990525"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357217"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Infrastruktura Integration Runtime w usłudze Azure Data Factory
 Integration Runtime (IR) to infrastruktura obliczeniowa używana przez usługę Azure Data Factory do zapewnienia następujących możliwości integracji danych w różnych środowiskach sieciowych:
@@ -48,7 +48,7 @@ Na poniższym diagramie przedstawiono, jak różnych infrastruktur Integration R
 
 ![Różne typy infrastruktur Integration Runtime](media/concepts-integration-runtime/different-integration-runtimes.png)
 
-## <a name="azure-integration-runtime"></a>Azure Integration Runtime
+## <a name="azure-integration-runtime"></a>Środowisko uruchomieniowe integracji Azure
 Infrastruktura Azure Integration Runtime zapewnia następujące funkcje:
 
 - Uruchamianie przepływów danych na platformie Azure 
@@ -70,7 +70,7 @@ Informacje na temat tworzenia i konfigurowania infrastruktury Azure IR można zn
 > [!NOTE] 
 > Środowisko Azure Integration Runtime ma właściwości dotyczące środowiska uruchomieniowego przepływu danych, które definiuje podstawową infrastrukturę obliczeniową, która będzie używana do uruchamiania przepływów danych. 
 
-## <a name="self-hosted-integration-runtime"></a>Własne środowisko Integration Runtime
+## <a name="self-hosted-integration-runtime"></a>Infrastruktura Integration Runtime (Self-hosted)
 Infrastruktura IR (Self-hosted) oferuje następujące możliwości:
 
 - Uruchamianie działania kopiowania między magazynami danych w chmurze i magazynem danych w sieci prywatnej.

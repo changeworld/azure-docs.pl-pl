@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 678385d9ed16a9821fc61be476e7eb9eaf6fd4f1
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 4a5d0908842c20e15fdf7b336b9e244c4bafb345
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78183707"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78397796"
 ---
 # <a name="string-claims-transformations"></a>Przekształcenia oświadczeń ciągów
 
@@ -127,7 +127,7 @@ Tworzy na podstawie podanego parametru wejściowego wyrażenie typu String.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 |----- | ----------------------- | --------- | ----- |
-| InputParameter | wartość | ciąg | Ciąg, który ma zostać ustawiony. Ten parametr wejściowy obsługuje [wyrażenia transformacji oświadczeń ciągów](string-transformations.md#string-claim-transformations-expressions). |
+| InputParameter | {1&gt;value&lt;1} | ciąg | Ciąg, który ma zostać ustawiony. Ten parametr wejściowy obsługuje [wyrażenia transformacji oświadczeń ciągów](string-transformations.md#string-claim-transformations-expressions). |
 | Oświadczenie outputclaim | createdClaim | ciąg | Wartość oświadczenia, która jest generowana po wywołaniu tej transformacji oświadczeń, z wartością określoną w parametrze wejściowym. |
 
 Użyj tej transformacji oświadczeń, aby ustawić wartość typu oświadczenia ciągu.
@@ -374,7 +374,7 @@ Kopiuje zlokalizowane ciągi do oświadczeń.
 Aby użyć transformacji oświadczeń GetLocalizedStringsTransformation:
 
 1. Zdefiniuj [ciąg lokalizacji](localization.md) i skojarz go z [profilem niepotwierdzonym przez siebie](self-asserted-technical-profile.md).
-1. `ElementType` elementu `LocalizedString` musi mieć wartość `GetLocalizedStringsTransformationClaimType`.
+1. `ElementType` elementu `LocalizedString` musi być ustawiona na `GetLocalizedStringsTransformationClaimType`.
 1. `StringId` jest unikatowym identyfikatorem, który można zdefiniować, i użyć go później w transformacji oświadczeń.
 1. W polu transformacja oświadczeń Określ listę oświadczeń, które mają być ustawione przy użyciu zlokalizowanego ciągu. `ClaimTypeReferenceId` jest odwołaniem do elementu ClaimType zdefiniowanego już w sekcji ClaimsSchema w zasadach. `TransformationClaimType` jest nazwą zlokalizowanego ciągu, zgodnie z definicją w `StringId` elementu `LocalizedString`.
 1. W [profilu technicznym z własnym](self-asserted-technical-profile.md)potwierdzeniem lub transformacji danych wejściowych lub wyjściowych [kontrolki wyświetlania](display-controls.md) , Utwórz odwołanie do transformacji oświadczeń.
@@ -787,7 +787,7 @@ Wyodrębnia części typu "String", rozpoczynając od znaku w określonej pozycj
 | ---- | ----------------------- | --------- | ----- |
 | Oświadczenie inputclaim | Oświadczenie inputclaim | ciąg | Typ zgłoszenia, który zawiera ciąg. |
 | InputParameter | startIndex | int | Początkowa pozycja znaku w podciągu w tym wystąpieniu (liczony od zera). |
-| InputParameter | length | int | Liczba znaków w podciągu. |
+| InputParameter | {1&gt;length&lt;1} | int | Liczba znaków w podciągu. |
 | Oświadczenie outputclaim | Oświadczenie outputclaim | wartość logiczna | Ciąg, który jest odpowiednikiem podciągu długości, który rozpoczyna się od elementu startIndex w tym wystąpieniu, lub pusty, jeśli wartość startIndex jest równa długości tego wystąpienia, a długość wynosi zero. |
 
 Na przykład Pobierz prefiks kraju numeru telefonu.

@@ -9,11 +9,11 @@ ms.service: iot-central
 services: iot-central
 manager: corywink
 ms.openlocfilehash: db4e48a7bff9127810b051a9ab63bbe9d78cf6da
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022430"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394174"
 ---
 # <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>Tworzenie akcji elementu webhook dla reguł na platformie Azure IoT Central
 
@@ -39,7 +39,7 @@ W tym przykładzie nawiążesz połączenie z usługą RequestBin, aby otrzymywa
 
 Teraz, gdy reguła zostanie wyzwolona, zobaczysz nowe żądanie w RequestBin.
 
-## <a name="payload"></a>ładunku
+## <a name="payload"></a>Ładunku
 
 Gdy reguła jest wyzwalana, żądanie HTTP POST jest wykonywane do adresu URL wywołania zwrotnego zawierającego ładunek JSON z danymi telemetrycznymi, urządzeniem, regułą i aplikacją. Ładunek może wyglądać następująco:
 

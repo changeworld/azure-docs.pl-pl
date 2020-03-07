@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 819929fb157444ae53df113c0318dd18146156c9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442039"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397348"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Poziomy spójności i interfejsy API usługi Azure Cosmos DB
 
@@ -56,6 +56,6 @@ W poniższej tabeli pokazano, w jaki sposób natywne zagadnienia dotyczące zapi
 
 Przeczytaj więcej na temat poziomów spójności i zgodności między interfejsami API Azure Cosmos DB przy użyciu interfejsów API Open Source. Zobacz następujące artykuły:
 
-* [Dostępność i wydajność kompromisy dla różnych poziomów spójności](consistency-levels-tradeoffs.md)
+* [Wady dostępności i wydajności dla różnych poziomów spójności](consistency-levels-tradeoffs.md)
 * [Funkcje MongoDB obsługiwane przez interfejs API Azure Cosmos DB dla MongoDB](mongodb-feature-support.md)
 * [Funkcje Apache Cassandra obsługiwane przez Azure Cosmos DB interfejs API Cassandra](cassandra-support.md)

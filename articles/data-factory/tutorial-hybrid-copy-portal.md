@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
 ms.openlocfilehash: 01f2644874da032b95162f3f5721ab9dbea74265
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974716"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393447"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Kopiowanie danych z lokalnej bazy danych programu SQL Server do usługi Azure Blob Storage
 W tym samouczku użyjesz interfejsu użytkownika usługi Azure Data Factory, aby utworzyć potok usługi Data Factory, który kopiuje dane z lokalnej bazy danych programu SQL Server do usługi Azure Blob Storage. Utworzysz własne środowisko Integration Runtime (Self-hosted), służące do przenoszenia danych między lokalnym magazynem danych i magazynem danych w chmurze.
@@ -32,7 +32,7 @@ Ten samouczek obejmuje wykonanie następujących kroków:
 > * Tworzenie połączonych zestawów programu SQL Server i usługi Azure Storage.
 > * Tworzenie zestawów danych programu SQL Server i usługi Azure Blob.
 > * Tworzenie potoku z działaniem kopiowania do przenoszenia danych.
-> * Uruchom potok.
+> * Uruchamianie potoku
 > * Monitorowanie uruchomienia potoku.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -78,7 +78,7 @@ W tym samouczku używasz nazwy i klucza swojego konta magazynu. Pobierz nazwę i
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu nazwy użytkownika i hasła do konta platformy Azure.
 
-1. W lewym okienku wybierz pozycję **Wszystkie usługi**. Zastosuj filtrowanie według słowa kluczowego **Magazyn**, a następnie wybierz pozycję **Konta magazynu**.
+1. W lewym okienku wybierz pozycję **wszystkie usługi**. Zastosuj filtrowanie według słowa kluczowego **Magazyn**, a następnie wybierz pozycję **Konta magazynu**.
 
     ![Wyszukiwanie kont magazynu](media/doc-common-process/search-storage-account.png)
 
@@ -171,7 +171,7 @@ W tym kroku utworzysz fabrykę danych i uruchomisz interfejs użytkownika usług
 
     b. W polu **Nazwa serwera** wprowadź nazwę lokalnego wystąpienia programu SQL Server.
 
-    d. W polu **Nazwa bazy danych** wprowadź nazwę bazy danych zawierającej tabelę **emp**.
+    c. W polu **Nazwa bazy danych** wprowadź nazwę bazy danych zawierającej tabelę **emp**.
 
     d. W polu **Typ uwierzytelniania** wybierz odpowiedni typ uwierzytelniania, którego usługa Data Factory powinna używać do nawiązania połączenia z bazą danych SQL Server.
 
@@ -208,7 +208,7 @@ W tym kroku utworzysz fabrykę danych i uruchomisz interfejs użytkownika usług
 
     b. W polu **ścieżka pliku**wprowadź **adftutorial/Fromonprem** dla części **kontenera/katalogu** . Jeśli folder wyjściowy nie istnieje w kontenerze adftutorial, usługa Data Factory automatycznie utworzy folder wyjściowy.
 
-    d. W polu część **pliku** wybierz pozycję **Dodaj zawartość dynamiczną**.
+    c. W polu część **pliku** wybierz pozycję **Dodaj zawartość dynamiczną**.
     ![wyrażenie dynamiczne do rozpoznawania nazwy pliku](./media/tutorial-hybrid-copy-portal/file-name.png)
 
     d. Dodaj `@CONCAT(pipeline().RunId, '.txt')`, a następnie wybierz pozycję **Zakończ**. Ta akcja spowoduje zmianę nazwy pliku na PipelineRunID. txt.
@@ -245,7 +245,7 @@ Potok w tym przykładzie kopiuje dane z jednej lokalizacji do innej lokalizacji 
 > * Tworzenie połączonych usług programu SQL Server i usługi Storage.
 > * Tworzenie zestawów danych programu SQL Server i usługi Blob Storage.
 > * Tworzenie potoku z działaniem kopiowania do przenoszenia danych.
-> * Uruchom potok.
+> * Uruchamianie potoku
 > * Monitorowanie uruchomienia potoku.
 
 Lista magazynów danych obsługiwanych przez usługę Data Factory znajduje się w artykule [Obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

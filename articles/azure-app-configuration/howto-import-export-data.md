@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: lcozzens
 ms.openlocfilehash: 2c074cbd99620a482b18cbe2dfcce8f987d78bd5
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77619211"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372095"
 ---
 # <a name="import-or-export-configuration-data"></a>Importowanie lub eksportowanie danych konfiguracji
 
