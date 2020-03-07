@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
 ms.openlocfilehash: 6614e70d130abe46067c657bda3ccdd7000caddc
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845278"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374327"
 ---
 # <a name="api-management-policy-expressions"></a>Wyrażenia zasad API Management
 W tym artykule omówiono składnię wyrażeń C# zasad w 7. Każde wyrażenie ma dostęp do niejawnie podanej zmiennej [kontekstowej](api-management-policy-expressions.md#ContextVariables) i dozwolone [podzbiór](api-management-policy-expressions.md#CLRTypes) typów .NET Framework.
@@ -76,134 +76,134 @@ Poniższa tabela zawiera listę typów .NET Framework i ich elementów członkow
 
 |Typ|Obsługiwane elementy członkowskie|
 |--------------|-----------------------|
-|Newtonsoft.Json.Formatting|Wszystko|
+|Newtonsoft.Json.Formatting|Wszyscy|
 |Newtonsoft.Json.JsonConvert|Serializacjaobject, deserializacjaobject|
-|Newtonsoft.Json.Linq.Extensions|Wszystko|
-|Newtonsoft.Json.Linq.JArray|Wszystko|
-|Newtonsoft.Json.Linq.JConstructor|Wszystko|
-|Newtonsoft.Json.Linq.JContainer|Wszystko|
-|Newtonsoft.Json.Linq.JObject|Wszystko|
-|Newtonsoft.Json.Linq.JProperty|Wszystko|
-|Newtonsoft.Json.Linq.JRaw|Wszystko|
-|Newtonsoft.Json.Linq.JToken|Wszystko|
-|Newtonsoft.Json.Linq.JTokenType|Wszystko|
-|Newtonsoft.Json.Linq.JValue|Wszystko|
-|System. Array|Wszystko|
-|System.BitConverter|Wszystko|
-|System.Boolean|Wszystko|
-|System.Byte|Wszystko|
-|System.Char|Wszystko|
-|System. Collections. Generic. dictionary < TKey, TValue >|Wszystko|
-|System.Collections.Generic.HashSet\<T>|Wszystko|
-|System.Collections.Generic.ICollection\<T>|Wszystko|
-|System. Collections. Generic. IDictionary < TKey, TValue >|Wszystko|
-|System.Collections.Generic.IEnumerable\<T>|Wszystko|
-|System.Collections.Generic.IEnumerator\<T>|Wszystko|
-|System.Collections.Generic.IList\<T>|Wszystko|
-|System.Collections.Generic.IReadOnlyCollection\<T>|Wszystko|
-|System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>|Wszystko|
-|System.Collections.Generic.ISet\<T>|Wszystko|
-|System.Collections.Generic.KeyValuePair<TKey, TValue>|Wszystko|
-|System.Collections.Generic.List\<T>|Wszystko|
-|System.Collections.Generic.Queue\<T>|Wszystko|
-|System.Collections.Generic.Stack\<T>|Wszystko|
-|System.Convert|Wszystko|
+|Newtonsoft.Json.Linq.Extensions|Wszyscy|
+|Newtonsoft.Json.Linq.JArray|Wszyscy|
+|Newtonsoft.Json.Linq.JConstructor|Wszyscy|
+|Newtonsoft.Json.Linq.JContainer|Wszyscy|
+|Newtonsoft.Json.Linq.JObject|Wszyscy|
+|Newtonsoft.Json.Linq.JProperty|Wszyscy|
+|Newtonsoft.Json.Linq.JRaw|Wszyscy|
+|Newtonsoft.Json.Linq.JToken|Wszyscy|
+|Newtonsoft.Json.Linq.JTokenType|Wszyscy|
+|Newtonsoft.Json.Linq.JValue|Wszyscy|
+|System. Array|Wszyscy|
+|System.BitConverter|Wszyscy|
+|System.Boolean|Wszyscy|
+|System.Byte|Wszyscy|
+|System.Char|Wszyscy|
+|System. Collections. Generic. dictionary < TKey, TValue >|Wszyscy|
+|System. Collections. Generic. HashSet —\<T >|Wszyscy|
+|System. Collections. Generic. ICollection\<T >|Wszyscy|
+|System. Collections. Generic. IDictionary < TKey, TValue >|Wszyscy|
+|System. Collections. Generic. IEnumerable\<T >|Wszyscy|
+|System. Collections. Generic. IEnumerator\<T >|Wszyscy|
+|System. Collections. Generic. IList\<T >|Wszyscy|
+|System. Collections. Generic. IReadOnlyCollection\<T >|Wszyscy|
+|System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>|Wszyscy|
+|System. Collections. Generic. ISet\<T >|Wszyscy|
+|System.Collections.Generic.KeyValuePair<TKey, TValue>|Wszyscy|
+|System. Collections. Generic. list\<T >|Wszyscy|
+|System. Collections. Generic. Queue\<T >|Wszyscy|
+|System. Collections. Generic. Stack\<T >|Wszyscy|
+|System.Convert|Wszyscy|
 |System.DateTime|(Konstruktor), Add, addDays, addgodz. addmilisekunds, addmiesiącach, AddSeconds, AddTicks, AddYears, Date, Day, DayOfWeek, dzieńroku, DaysInMonth, Hour, IsDaylightSavingTime, IsLeapYear, MaxValue, milisekundy, minute, MinValue, month, Now , Analizuj, drugi, Odejmij, Ticks, TimeOfDay, Today, ToString, UtcNow, Year|
 |System.DateTimeKind|UTC|
-|System.DateTimeOffset|Wszystko|
-|System.Decimal|Wszystko|
-|System.Double|Wszystko|
-|System.Exception|Wszystko|
-|System.Guid|Wszystko|
-|System.Int16|Wszystko|
-|System.Int32|Wszystko|
-|System.Int64|Wszystko|
-|System.IO.StringReader|Wszystko|
-|System.IO.StringWriter|Wszystko|
-|System.Linq.Enumerable|Wszystko|
-|System.Math|Wszystko|
-|System.MidpointRounding|Wszystko|
-|System .NET. WebUtility|Wszystko|
-|System.Nullable|Wszystko|
-|System.Random|Wszystko|
-|System.SByte|Wszystko|
-|System.Security.Cryptography.AsymmetricAlgorithm|Wszystko|
-|System.Security.Cryptography.CipherMode|Wszystko|
-|System.Security.Cryptography.HashAlgorithm|Wszystko|
-|System.Security.Cryptography.HashAlgorithmName|Wszystko|
-|System.Security.Cryptography.HMAC|Wszystko|
-|System.Security.Cryptography.HMACMD5|Wszystko|
-|System.Security.Cryptography.HMACSHA1|Wszystko|
-|System.Security.Cryptography.HMACSHA256|Wszystko|
-|System.Security.Cryptography.HMACSHA384|Wszystko|
-|System.Security.Cryptography.HMACSHA512|Wszystko|
-|System.Security.Cryptography.KeyedHashAlgorithm|Wszystko|
-|System.Security.Cryptography.MD5|Wszystko|
-|System.Security.Cryptography.Oid|Wszystko|
-|System.Security.Cryptography.PaddingMode|Wszystko|
-|System.Security.Cryptography.RNGCryptoServiceProvider|Wszystko|
-|System.Security.Cryptography.RSA|Wszystko|
-|System.Security.Cryptography.RSAEncryptionPadding|Wszystko|
-|System.Security.Cryptography.RSASignaturePadding|Wszystko|
-|System.Security.Cryptography.SHA1|Wszystko|
-|System.Security.Cryptography.SHA1Managed|Wszystko|
-|System.Security.Cryptography.SHA256|Wszystko|
-|System.Security.Cryptography.SHA256Managed|Wszystko|
-|System.Security.Cryptography.SHA384|Wszystko|
-|System.Security.Cryptography.SHA384Managed|Wszystko|
-|System.Security.Cryptography.SHA512|Wszystko|
-|System.Security.Cryptography.SHA512Managed|Wszystko|
-|System.Security.Cryptography.SymmetricAlgorithm|Wszystko|
-|System.Security.Cryptography.X509Certificates.PublicKey|Wszystko|
-|System.Security.Cryptography.X509Certificates.RSACertificateExtensions|Wszystko|
-|System.Security.Cryptography.X509Certificates.X500DistinguishedName|Nazwa|
-|System.Security.Cryptography.X509Certificates.X509Certificate|Wszystko|
-|System.Security.Cryptography.X509Certificates.X509Certificate2|Wszystko|
-|System.Security.Cryptography.X509Certificates.X509ContentType|Wszystko|
-|System.Security.Cryptography.X509Certificates.X509NameType|Wszystko|
-|System.Single|Wszystko|
-|System.String|Wszystko|
-|System.StringComparer|Wszystko|
-|System.StringComparison|Wszystko|
-|System.StringSplitOptions|Wszystko|
-|System.Text.Encoding|Wszystko|
+|System.DateTimeOffset|Wszyscy|
+|System.Decimal|Wszyscy|
+|System.Double|Wszyscy|
+|System.Exception|Wszyscy|
+|System.Guid|Wszyscy|
+|System.Int16|Wszyscy|
+|System.Int32|Wszyscy|
+|System.Int64|Wszyscy|
+|System.IO.StringReader|Wszyscy|
+|System.IO.StringWriter|Wszyscy|
+|System.Linq.Enumerable|Wszyscy|
+|System.Math|Wszyscy|
+|System.MidpointRounding|Wszyscy|
+|System .NET. WebUtility|Wszyscy|
+|System.Nullable|Wszyscy|
+|System.Random|Wszyscy|
+|System.SByte|Wszyscy|
+|System.Security.Cryptography.AsymmetricAlgorithm|Wszyscy|
+|System.Security.Cryptography.CipherMode|Wszyscy|
+|System.Security.Cryptography.HashAlgorithm|Wszyscy|
+|System.Security.Cryptography.HashAlgorithmName|Wszyscy|
+|System.Security.Cryptography.HMAC|Wszyscy|
+|System.Security.Cryptography.HMACMD5|Wszyscy|
+|System.Security.Cryptography.HMACSHA1|Wszyscy|
+|System.Security.Cryptography.HMACSHA256|Wszyscy|
+|System.Security.Cryptography.HMACSHA384|Wszyscy|
+|System.Security.Cryptography.HMACSHA512|Wszyscy|
+|System.Security.Cryptography.KeyedHashAlgorithm|Wszyscy|
+|System.Security.Cryptography.MD5|Wszyscy|
+|System.Security.Cryptography.Oid|Wszyscy|
+|System.Security.Cryptography.PaddingMode|Wszyscy|
+|System.Security.Cryptography.RNGCryptoServiceProvider|Wszyscy|
+|System.Security.Cryptography.RSA|Wszyscy|
+|System.Security.Cryptography.RSAEncryptionPadding|Wszyscy|
+|System.Security.Cryptography.RSASignaturePadding|Wszyscy|
+|System.Security.Cryptography.SHA1|Wszyscy|
+|System.Security.Cryptography.SHA1Managed|Wszyscy|
+|System.Security.Cryptography.SHA256|Wszyscy|
+|System.Security.Cryptography.SHA256Managed|Wszyscy|
+|System.Security.Cryptography.SHA384|Wszyscy|
+|System.Security.Cryptography.SHA384Managed|Wszyscy|
+|System.Security.Cryptography.SHA512|Wszyscy|
+|System.Security.Cryptography.SHA512Managed|Wszyscy|
+|System.Security.Cryptography.SymmetricAlgorithm|Wszyscy|
+|System.Security.Cryptography.X509Certificates.PublicKey|Wszyscy|
+|System.Security.Cryptography.X509Certificates.RSACertificateExtensions|Wszyscy|
+|System.Security.Cryptography.X509Certificates.X500DistinguishedName|Name (Nazwa)|
+|System.Security.Cryptography.X509Certificates.X509Certificate|Wszyscy|
+|System.Security.Cryptography.X509Certificates.X509Certificate2|Wszyscy|
+|System.Security.Cryptography.X509Certificates.X509ContentType|Wszyscy|
+|System.Security.Cryptography.X509Certificates.X509NameType|Wszyscy|
+|System.Single|Wszyscy|
+|System.String|Wszyscy|
+|System.StringComparer|Wszyscy|
+|System.StringComparison|Wszyscy|
+|System.StringSplitOptions|Wszyscy|
+|System.Text.Encoding|Wszyscy|
 |System.Text.RegularExpressions.Capture|Indeks, długość, wartość|
 |System.Text.RegularExpressions.CaptureCollection|Liczba, element|
 |System.Text.RegularExpressions.Group|Przechwytywanie, sukces|
 |System.Text.RegularExpressions.GroupCollection|Liczba, element|
 |System.Text.RegularExpressions.Match|Puste, grupy, wynik|
 |System.Text.RegularExpressions.Regex|(Konstruktor), IsMatch, Match, dopasowań, Replace, Unescape, Split|
-|System.Text.RegularExpressions.RegexOptions|Wszystko|
-|System.Text.StringBuilder|Wszystko|
-|System.TimeSpan|Wszystko|
-|System.TimeZone|Wszystko|
-|System.TimeZoneInfo.AdjustmentRule|Wszystko|
-|System.TimeZoneInfo.TransitionTime|Wszystko|
-|System.TimeZoneInfo|Wszystko|
-|System.Tuple|Wszystko|
-|System.UInt16|Wszystko|
-|System.UInt32|Wszystko|
-|System.UInt64|Wszystko|
-|System.Uri|Wszystko|
-|System.UriPartial|Wszystko|
-|System.Xml.Linq.Extensions|Wszystko|
-|System.Xml.Linq.XAttribute|Wszystko|
-|System.Xml.Linq.XCData|Wszystko|
-|System.Xml.Linq.XComment|Wszystko|
-|System.Xml.Linq.XContainer|Wszystko|
-|System.Xml.Linq.XDeclaration|Wszystko|
+|System.Text.RegularExpressions.RegexOptions|Wszyscy|
+|System.Text.StringBuilder|Wszyscy|
+|System.TimeSpan|Wszyscy|
+|System.TimeZone|Wszyscy|
+|System.TimeZoneInfo.AdjustmentRule|Wszyscy|
+|System.TimeZoneInfo.TransitionTime|Wszyscy|
+|System.TimeZoneInfo|Wszyscy|
+|System.Tuple|Wszyscy|
+|System.UInt16|Wszyscy|
+|System.UInt32|Wszyscy|
+|System.UInt64|Wszyscy|
+|System.Uri|Wszyscy|
+|System.UriPartial|Wszyscy|
+|System.Xml.Linq.Extensions|Wszyscy|
+|System.Xml.Linq.XAttribute|Wszyscy|
+|System.Xml.Linq.XCData|Wszyscy|
+|System.Xml.Linq.XComment|Wszyscy|
+|System.Xml.Linq.XContainer|Wszyscy|
+|System.Xml.Linq.XDeclaration|Wszyscy|
 |System.Xml.Linq.XDocument|Wszystkie, z wyjątkiem: Load|
-|System.Xml.Linq.XDocumentType|Wszystko|
-|System.Xml.Linq.XElement|Wszystko|
-|System.Xml.Linq.XName|Wszystko|
-|System.Xml.Linq.XNamespace|Wszystko|
-|System.Xml.Linq.XNode|Wszystko|
-|System.Xml.Linq.XNodeDocumentOrderComparer|Wszystko|
-|System.Xml.Linq.XNodeEqualityComparer|Wszystko|
-|System.Xml.Linq.XObject|Wszystko|
-|System.Xml.Linq.XProcessingInstruction|Wszystko|
-|System.Xml.Linq.XText|Wszystko|
-|System.Xml.XmlNodeType|Wszystko|
+|System.Xml.Linq.XDocumentType|Wszyscy|
+|System.Xml.Linq.XElement|Wszyscy|
+|System.Xml.Linq.XName|Wszyscy|
+|System.Xml.Linq.XNamespace|Wszyscy|
+|System.Xml.Linq.XNode|Wszyscy|
+|System.Xml.Linq.XNodeDocumentOrderComparer|Wszyscy|
+|System.Xml.Linq.XNodeEqualityComparer|Wszyscy|
+|System.Xml.Linq.XObject|Wszyscy|
+|System.Xml.Linq.XProcessingInstruction|Wszyscy|
+|System.Xml.Linq.XText|Wszyscy|
+|System.Xml.XmlNodeType|Wszyscy|
 
 ## <a name="ContextVariables"></a>Zmienna kontekstowa
 Zmienna o nazwie `context` jest niejawnie dostępna w każdym [wyrażeniu](api-management-policy-expressions.md#Syntax)zasad. Jego członkowie zapewniają informacje dotyczące `\request`. Wszystkie `context` członkowie są tylko do odczytu.
@@ -213,7 +213,7 @@ Zmienna o nazwie `context` jest niejawnie dostępna w każdym [wyrażeniu](api-m
 |context|[Interfejs API](#ref-context-api): [IApi](#ref-iapi)<br /><br /> [Wdrożenie](#ref-context-deployment)<br /><br /> Upłynęło: przedział czasu w czasie między wartością sygnatury czasowej a bieżącym czasem<br /><br /> [LastError](#ref-context-lasterror)<br /><br /> [Operacja](#ref-context-operation)<br /><br /> [Iloczyn](#ref-context-product)<br /><br /> [Żądanie](#ref-context-request)<br /><br /> IdentyfikatorŻądania: GUID — unikatowy identyfikator żądania<br /><br /> [Odpowiedź](#ref-context-response)<br /><br /> [Subskrypcja](#ref-context-subscription)<br /><br /> Sygnatura czasowa: Data i godzina odebrania żądania<br /><br /> Śledzenie: bool-wskazuje, czy śledzenie jest włączone, czy wyłączone <br /><br /> [Użytkownicy](#ref-context-user)<br /><br /> [Zmienne](#ref-context-variables): IReadOnlyDictionary < String, Object ><br /><br /> void Trace (Message: String)|
 |<a id="ref-context-api"></a>Context. Interfejsu API|ID: ciąg<br /><br /> IsCurrentRevision: bool<br /><br />  Name: ciąg<br /><br /> Ścieżka: ciąg<br /><br /> Poprawka: ciąg<br /><br /> ServiceUrl: [IUrl](#ref-iurl)<br /><br /> Wersja: ciąg |
 |<a id="ref-context-deployment"></a>Context. Mieszczeniu|Region: ciąg<br /><br /> ServiceName: ciąg<br /><br /> Certyfikaty: IReadOnlyDictionary < String, X509Certificate2 >|
-|<a id="ref-context-lasterror"></a>context.LastError|Źródło: ciąg<br /><br /> Przyczyna: ciąg<br /><br /> Komunikat: ciąg<br /><br /> Zakres: ciąg<br /><br /> Sekcja: ciąg<br /><br /> Ścieżka: ciąg<br /><br /> PolicyId: ciąg<br /><br /> Aby uzyskać więcej informacji o kontekście. LastError, zobacz [Obsługa błędów](api-management-error-handling-policies.md).|
+|<a id="ref-context-lasterror"></a>Context. LastError|Źródło: ciąg<br /><br /> Przyczyna: ciąg<br /><br /> Komunikat: ciąg<br /><br /> Zakres: ciąg<br /><br /> Sekcja: ciąg<br /><br /> Ścieżka: ciąg<br /><br /> PolicyId: ciąg<br /><br /> Aby uzyskać więcej informacji o kontekście. LastError, zobacz [Obsługa błędów](api-management-error-handling-policies.md).|
 |<a id="ref-context-operation"></a>Context. Operacje|ID: ciąg<br /><br /> Metoda: ciąg<br /><br /> Name: ciąg<br /><br /> UrlTemplate: ciąg|
 |<a id="ref-context-product"></a>Context. Iloczyn|Interfejsy API: interfejs IEnumerable <[IApi](#ref-iapi)\><br /><br /> ApprovalRequired: bool<br /><br /> Grupy: interfejs IEnumerable <[IGroup](#ref-igroup)\><br /><br /> ID: ciąg<br /><br /> Name: ciąg<br /><br /> State: Wyliczenie ProductState {NotPublished, opublikowano}<br /><br /> SubscriptionLimit: int?<br /><br /> SubscriptionRequired: bool|
 |<a id="ref-context-request"></a>Context. Żądając|Treść: [IMessageBody](#ref-imessagebody) lub `null`, jeśli żądanie nie ma treści.<br /><br /> Certificate: System.Security.Cryptography.X509Certificates.X509Certificate2<br /><br /> [Headers](#ref-context-request-headers): IReadOnlyDictionary < String, String [] ><br /><br /> IpAddress: ciąg<br /><br /> MatchedParameters: IReadOnlyDictionary < ciąg, ciąg ><br /><br /> Metoda: ciąg<br /><br /> OriginalUrl: [IUrl](#ref-iurl)<br /><br /> Adres URL: [IUrl](#ref-iurl)|

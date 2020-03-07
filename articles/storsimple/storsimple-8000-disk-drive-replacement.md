@@ -1,6 +1,6 @@
 ---
-title: Wymiana dysku, na urządzeniu StorSimple 8000 series | Dokumentacja firmy Microsoft
-description: Wyjaśnia, jak wymiana dysku, obudowy do głównej StorSimple lub obudowy EBOD.
+title: Zastępowanie dysku na urządzeniu z serii StorSimple 8000 | Microsoft Docs
+description: Wyjaśnia, jak zastąpić dysk w podstawowej obudowie StorSimple lub w obudowie EBOD.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,100 +15,100 @@ ms.workload: TBD
 ms.date: 8/25/2017
 ms.author: alkohli
 ms.openlocfilehash: 3d6ef22e4df36996d68194589f43ea0f57def22c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60576955"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365991"
 ---
-# <a name="replace-a-disk-drive-on-your-storsimple-8000-series-device"></a>Wymiana dysku, na urządzeniu StorSimple 8000 series
+# <a name="replace-a-disk-drive-on-your-storsimple-8000-series-device"></a>Zastępowanie dysku na urządzeniu z serii StorSimple 8000
 
 ## <a name="overview"></a>Omówienie
-W tym samouczku wyjaśniono, jak zostanie usunięty i zastąpiony nieprawidłowe działanie lub uszkodzonego dysku twardym na urządzeniu z systemem Microsoft Azure StorSimple. Aby zastąpić dysk, musisz:
+W tym samouczku wyjaśniono, jak usunąć i zastąpić wadliwe lub uszkodzone dyski twarde na urządzeniu Microsoft Azure StorSimple. Aby zastąpić dysk, należy:
 
-* Odłączyć antitamper blokady
+* Odłączanie blokady przed naruszeniem
 * Usuń dysk
-* Zainstaluj dysk zastępczy
+* Zainstaluj zamienny dysk
 
 > [!IMPORTANT]
-> Zanim usunięcie i zastąpienie dysku, zapoznaj się z informacjami bezpieczeństwa w [wymiana składników sprzętu StorSimple](storsimple-8000-hardware-component-replacement.md).
+> Przed usunięciem i zastępowaniem stacji dysków zapoznaj się z informacjami o bezpieczeństwie [zastępowanie składników sprzętowych StorSimple](storsimple-8000-hardware-component-replacement.md).
  
 
-## <a name="disengage-the-antitamper-lock"></a>Odłączyć antitamper blokady
-W tej procedurze wyjaśniono, jak antitamper blokady na urządzeniu StorSimple może być urządzenie włączone lub wyłączone podczas zastępowania dysków. Antitamper blokady są zainstalowane w uchwyty operatora dysku i są one dostępne za pośrednictwem małych przysłony w sekcji zatrzaśnięcia uchwytu. Dyski są dostarczane z blokadami równa pozycji blokady.
+## <a name="disengage-the-antitamper-lock"></a>Odłączanie blokady przed naruszeniem
+W tej procedurze wyjaśniono, w jaki sposób można włączać lub wyStorSimpleać blokady przed naruszeniem na urządzeniu z systemem, gdy zastąpisz stacje dysków. Blokady przed naruszeniem są instalowane w uchwytach nośnej stacji, a dostęp do nich uzyskuje się za pomocą małego szczeliny w sekcji zatrzaśnięcie uchwytu. Dyski są dostarczane z blokadami ustawionymi na położenie zablokowane.
 
-#### <a name="to-unlock-the-antitamper-lock"></a>Aby odblokować antitamper blokady
-1. Klucz blokady ("tamperproof" T10 śrubokręt, które firma Microsoft udostępniła) należy wstawić dokładnie w przysłony w uchwyt oraz w jego gniazda. 
+#### <a name="to-unlock-the-antitamper-lock"></a>Aby odblokować blokadę przed naruszeniem
+1. Starannie Wstaw klucz blokady ("Tamperproof" T10, który został dostarczony przez firmę Microsoft) do otworu w uchwycie i w jego gnieździe. 
    
-   Jeśli antitamper blokada jest aktywna, czerwony wskaźnik jest widoczny w przysłony.
+   Jeśli blokada naruszy jest aktywowana, czerwony wskaźnik jest widoczny w szczelinie.
   
-    ![Zablokowane dysku](./media/storsimple-disk-drive-replacement/IC741056.png)
+    ![Zablokowana stacja dysków](./media/storsimple-disk-drive-replacement/IC741056.png)
    
-    **Rysunek 1** blokady przed odporne zaangażowanie
+    **Rysunek 1** Blokada chroniąca przed naruszeniem
    
    | Label | Opis |
    |:--- |:--- |
-   | 1 |Przysłony wskaźnika |
-   | 2 |Antitamper blokady |
-2. Wymienić główny klucz w kierunku przeciwnym kierunku, dopóki czerwony wskaźnik nie jest widoczna w przysłony powyżej klucza.
+   | 1 |Otwór wskaźnika |
+   | 2 |Blokada antynaruszenie |
+2. Obróć klucz w kierunku przeciwnie do czasu, aż czerwony wskaźnik nie będzie widoczny w szczelinie nad kluczem.
 3. Usuń klucz.
    
-    ![Odblokowany dysku](./media/storsimple-disk-drive-replacement/IC741057.png)
+    ![Odblokowano dysk](./media/storsimple-disk-drive-replacement/IC741057.png)
    
-    **Rysunek 2** odblokowany dysku
-4. Teraz można usunąć dysku.
+    **Rysunek 2** Odblokowano dysk
+4. Dysk można teraz usunąć.
 
-Postępuj zgodnie z instrukcjami w odwrotnej kolejności, dzięki którym można zaangażować blokady.
+Wykonaj kroki opisane w sekcji wstecz, aby włączyć blokadę.
 
 ## <a name="remove-the-disk-drive"></a>Usuń dysk
-Urządzenie StorSimple obsługuje konfiguracji RAID 10 przypominającej magazynu miejsca do magazynowania. Oznacza to, że może działać normalnie z jednym dyskiem zakończonych niepowodzeniem dysków półprzewodnikowych (SSD), lub dysku twardego dysku (HDD).
+Urządzenie StorSimple obsługuje konfigurację funkcji miejsca do magazynowania w macierzy RAID 10. Oznacza to, że może działać normalnie z jednym uszkodzonym dyskiem, dyskiem SSD lub dyskiem twardym.
 
 > [!IMPORTANT]
-> * Jeśli system ma więcej niż jeden dysk nie powiodło się, nie usuwaj więcej niż jednego dysku SSD lub dysk twardy z systemu w dowolnym momencie w czasie. Ten sposób może spowodować utratę danych.
-> * Upewnij się, umieść zastępowania dysków SSD w miejscu, które wcześniej zawierało dyski SSD. Podobnie umieść zastępowania dysku twardego w miejscu, które wcześniej zawierało dysk twardy.
-> * W witrynie Azure portal, miejsc, są numerowane od 0 – 11. W związku z tym jeśli w portalu jest wyświetlany czy dysk w gnieździe 2 uległ awarii, na urządzeniu, poszukaj uszkodzony dysk w gnieździe trzeci od lewego górnego rogu.
+> * Jeśli system ma więcej niż jeden dysk, który uległ awarii, nie należy usuwać więcej niż jednego SSD lub dysku twardego z systemu w dowolnym momencie. Wykonanie tej operacji może spowodować utratę danych.
+> * Upewnij się, że zamienny dysk SSD został umieszczony w gnieździe, które wcześniej zawierało dysk SSD. Podobnie Umieść zamienny dysk twardy w gnieździe, które wcześniej zawierało dysk twardy.
+> * W Azure Portal gniazda są numerowane od 0 do 11. W związku z tym, jeśli w portalu widać, że dysk w gnieździe 2 zakończył się niepowodzeniem, na urządzeniu poszukaj uszkodzonego dysku z lewej strony.
 > 
 > 
 
-Dyski można usunięte i zastąpione, gdy system działa.
+Dyski można usuwać i wymieniać, gdy system działa.
 
 #### <a name="to-remove-a-drive"></a>Aby usunąć dysk
-1. Aby zidentyfikować uszkodzony dysk, w witrynie Azure portal przejdź do Twojego urządzenia **Ustawienia > kondycja sprzętu**. Ponieważ dysk może zakończyć się niepowodzeniem w obudowie podstawowego i/lub obudowy EBOD (jeśli jest używany model 8600), sprawdź stan dysków w ramach **udostępnione składniki** i w obszarze **składniki współużytkowane EBOD**. Uszkodzony dysk w każdej obudowie pojawią się w stanie czerwonym.
-2. Odszukaj dyski uzyskać podstawowy obudowy lub obudowy EBOD. 
-3. Jeśli dysk jest odblokowany, przejdź do następnego kroku. Jeśli dysk jest zablokowany, odblokuj go, wykonując poniższe kroki w [odłączyć antitamper blokady](#disengage-the-antitamper-lock).
-4. Naciśnij zatrzaśnięcia czarny na moduł operatora stacji, a następnie ściągnąć uchwyt operatora dysku na zewnątrz i natychmiast wiodących obudowy.
+1. Aby zidentyfikować uszkodzony dysk, w Azure Portal przejdź do **ustawień urządzenia > kondycja sprzętu**. Ponieważ dysk może kończyć się niepowodzeniem w obudowie podstawowej i/lub w obudowie EBOD (Jeśli korzystasz z modelu 8600), sprawdź stan dysków w obszarze **składniki udostępnione** i w obszarze **EBOD składniki współużytkowane**. Uszkodzony dysk w jednej z obudów zostanie wyświetlony z czerwonym stanem.
+2. Znajdź dyski z przodu podstawowej obudowy lub obudowy EBOD. 
+3. Jeśli dysk jest odblokowany, przejdź do następnego kroku. Jeśli dysk jest zablokowany, Odblokuj go, wykonując procedurę z odłączania [blokady przed naruszeniem](#disengage-the-antitamper-lock).
+4. Naciśnij czarny zamka w module nośnej dysków i wyciągnij obsługę operatora napędowego i z przodu obudowy.
    
-    ![Zwolnienie uchwytu dysku](./media/storsimple-disk-drive-replacement/IC741051.png)
+    ![Zwalnianie dojścia dysku](./media/storsimple-disk-drive-replacement/IC741051.png)
    
-    **Rysunek 3** zwalniania dojścia dysku
-5. Gdy uchwyt operatora dysku pełni zostanie przedłużony, przesuń operatora dysku poza obudowy. 
+    **Rysunek 3** Zwalnianie dojścia dysku
+5. Gdy dojście do nośnej stacji dysków jest w pełni rozszerzone, przesuń nośnik dysku z obudowy. 
    
-    ![Przedłużanie dysk z dysku twardego](./media/storsimple-disk-drive-replacement/IC741052.png)
+    ![Przesuwanie dysku z dysku](./media/storsimple-disk-drive-replacement/IC741052.png)
    
-    **Rysunek 4** przedłużanie dysku poza operatora
+    **Rysunek 4** Przesuwanie stacji dysków z nośnej
 
-## <a name="install-the-replacement-disk-drive"></a>Zainstaluj dysk zastępczy
-Po dysku nie powiodło się w urządzeniu StorSimple i usunięto go, wykonaj tę procedurę, aby zamienić go na nowy dysk.
+## <a name="install-the-replacement-disk-drive"></a>Zainstaluj zamienny dysk
+Po awarii dysku na urządzeniu StorSimple i usunięciu go, wykonaj poniższą procedurę, aby zastąpić go nowym dyskiem.
 
-#### <a name="to-insert-a-drive"></a>Aby wstawić dysku
-1. Upewnij się, że dojście operatora dysku pełni zostanie przedłużony, jak pokazano na poniższej ilustracji.
+#### <a name="to-insert-a-drive"></a>Aby wstawić dysk
+1. Upewnij się, że dojście do nośnej stacji jest w pełni rozszerzone, jak pokazano na poniższej ilustracji.
    
-    ![Dysk z dojściem rozszerzone](./media/storsimple-disk-drive-replacement/IC741044.png)
+    ![Stacja dysków z rozszerzoną obsługą](./media/storsimple-disk-drive-replacement/IC741044.png)
    
-    **Rysunek 5** dysku z dojściem rozszerzone
-2. Przesuń operatora dysku aż do obudowy.
+    **Rysunek 5** Dysk z rozszerzonym dojściem
+2. Przesuń nośnik napędu do obudowy.
    
-    ![Przedłużanie dysku w stacji dysków operatora](./media/storsimple-disk-drive-replacement/IC741045.png)
+    ![Przesuwanie dysku do nośnika stacji dysków](./media/storsimple-disk-drive-replacement/IC741045.png)
    
-    **Rysunek 6** przedłużanie operatora dysku do obudowy
-3. Za pomocą operatora dysku wstawiony należy zamknąć dojście operatora dysku przerywając Wypychanie do obudowy, operatora dysku, dopóki uchwyt operatora dysku przymocować w stanie zablokowanym.
-4. Użyj klucza blokady, dostarczony przez firmę Microsoft (tamperproof Torx śrubokręt) do bezpiecznego dojścia operatora w miejscu, włączając gwintowanym blokady Włącz kwartału z ruchem wskazówek zegara.
-5. Sprawdź, czy zamiana powiodła się, jak i dysk będzie działać. Dostęp do witryny Azure portal i przejdź do **ustawienia urządzenia** > **kondycja sprzętu**. W obszarze **udostępnione składniki** lub **składniki współużytkowane EBOD**, stan dysku powinna być zielona, wskazujący, że jest w dobrej kondycji.
+    **Rysunek 6** .  Przesuwanie nośnej stacji dysków do obudowy
+3. Po włożeniu nośnika stacji Zamknij uchwyt nośnej stacji, gdy kontynuuje wypychanie nośnej stacji dysków do obudowy, aż do momentu przyłączenia uchwytu nośnego do zablokowanego położenia.
+4. Użyj klawisza blokady dostarczonego przez firmę Microsoft (Tamperproof TORX), aby zabezpieczyć dojście do miejsca, przełączając blokadę w prawo.
+5. Sprawdź, czy zastąpienie zakończyło się pomyślnie, a dysk działa. Uzyskaj dostęp do Azure Portal i przejdź do **ustawień urządzenia** > **kondycja sprzętu**. W obszarze **składniki udostępnione** lub **EBOD udostępnione składniki**stan dysku powinien być zielony, co oznacza, że jest w dobrej kondycji.
 
    
    > [!NOTE]
-   > Może upłynąć kilka godzin, aż stan dysku i kolor na zielony po zastąpienia.
+   > Zmiana stanu dysku na zielony po zastąpieniu może potrwać kilka godzin.
   
-## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się więcej o [wymiana składników sprzętu StorSimple](storsimple-8000-hardware-component-replacement.md).
+## <a name="next-steps"></a>Następne kroki
+Dowiedz się więcej o [wymianie składników sprzętowych StorSimple](storsimple-8000-hardware-component-replacement.md).
 

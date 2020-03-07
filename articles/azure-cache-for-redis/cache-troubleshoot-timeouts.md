@@ -7,11 +7,11 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.openlocfilehash: 4b8cfed883ffef780de2e82e3f309e97bcb5515c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75412085"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356402"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Rozwiązywanie problemów z usługą Azure cache dla limitów czasu Redis
 
@@ -40,12 +40,12 @@ Ten komunikat o błędzie zawiera metryki, które mogą ułatwić wskazanie przy
 | --- | --- |
 | powrotu |W ostatnim czasie: 0 poleceń zostało wystawione |
 | mgr |Menedżer gniazd wykonuje `socket.select`, co oznacza, że prosi o system operacyjny, aby wskazać gniazdo, które ma coś do zrobienia. Czytnik nie jest aktywnie czytany z sieci, ponieważ nie ma znaczenia, czy nie ma nic do zrobienia |
-| kolejka |Liczba operacji w toku wynosi 73 |
+| queue |Liczba operacji w toku wynosi 73 |
 | qu |6 operacji w toku znajdują się w niewysłanej kolejce i nie została jeszcze zapisywana w sieci wychodzącej |
 | qs |67 operacji w toku zostały wysłane do serwera, ale odpowiedź nie jest jeszcze dostępna. Odpowiedź może być `Not yet sent by the server` lub `sent by the server but not yet processed by the client.` |
 | qc |0 z operacji w toku ma przejrzane odpowiedzi, ale nie zostały jeszcze oznaczone jako ukończone, ponieważ oczekują na pętlę ukończenia |
 | oznacza |Istnieje aktywny składnik zapisywania (oznacza to, że 6 niewysłanych żądań nie jest ignorowany) bajty/activewriters |
-| Sekcja  w temacie |Brak aktywnych czytników i zero bajtów jest dostępnych do odczytu na karcie sieciowej bajty/activereaders |
+| in |Brak aktywnych czytników i zero bajtów jest dostępnych do odczytu na karcie sieciowej bajty/activereaders |
 
 Aby zbadać możliwe przyczyny główne, można wykonać następujące czynności.
 

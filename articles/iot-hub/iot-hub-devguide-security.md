@@ -9,13 +9,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.openlocfilehash: 47eae55493c5db281ee1be0f9d32f8f8190fc286
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546949"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357756"
 ---
-# <a name="control-access-to-iot-hub"></a>Kontrola dostępu do usługi IoT Hub
+# <a name="control-access-to-iot-hub"></a>Kontrola dostępu do centrum IoT Hub
 
 W tym artykule opisano opcje zabezpieczania Centrum IoT. IoT Hub używa *uprawnień* do udzielania dostępu do każdego punktu końcowego Centrum IoT Hub. Uprawnienia ograniczają dostęp do centrum IoT Hub na podstawie funkcjonalności.
 
@@ -41,7 +41,7 @@ Musisz mieć odpowiednie uprawnienia, aby uzyskać dostęp do dowolnych punktów
   | -------------------- | ----------- |
   | iothubowner | Wszystkie uprawnienia |
   | usługa | Uprawnienia **Serviceconnect** |
-  | device | Uprawnienia **DeviceConnect** |
+  | pliku | Uprawnienia **DeviceConnect** |
   | registryRead | Uprawnienia **RegistryRead** |
   | registryReadWrite | Uprawnienia **RegistryRead** i **RegistryWrite** |
 
@@ -57,9 +57,9 @@ Na przykład w typowym rozwiązaniu IoT:
 > [!NOTE]
 > Aby uzyskać szczegółowe informacje, zobacz [uprawnienia](#iot-hub-permissions) .
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Uwierzytelnianie
 
-Usługa Azure IoT Hub udziela dostępu do punktów końcowych, weryfikując token względem zasad dostępu współużytkowanego i poświadczeń zabezpieczeń rejestru tożsamości.
+Usługa Azure IoT Hub udziela dostępu do punktów końcowych, weryfikując token względem zasad dostępu współdzielonego i poświadczeń zabezpieczeń rejestru tożsamości.
 
 Poświadczenia zabezpieczeń, takie jak klucze symetryczne, nigdy nie są wysyłane przez sieć.
 
@@ -247,7 +247,7 @@ Należy pamiętać, że wszystkie funkcje dostępne na urządzeniach są udostę
 
 Punkty końcowe dostępne na urządzeniu są (niezależnie od protokołu):
 
-| Punkt końcowy | Funkcjonalność |
+| Endpoint | Funkcjonalność |
 | --- | --- |
 | `{iot hub host name}/devices/{deviceId}/messages/events` |Wysyłanie komunikatów z urządzenia do chmury. |
 | `{iot hub host name}/devices/{deviceId}/messages/devicebound` |Odbieraj komunikaty z chmury do urządzenia. |
@@ -319,7 +319,7 @@ Składniki usługi mogą generować tylko tokeny zabezpieczające przy użyciu z
 
 Poniżej przedstawiono funkcje usługi uwidocznione w punktach końcowych:
 
-| Punkt końcowy | Funkcjonalność |
+| Endpoint | Funkcjonalność |
 | --- | --- |
 | `{iot hub host name}/devices` |Tworzenie, aktualizowanie, pobieranie i usuwanie tożsamości urządzeń. |
 | `{iot hub host name}/messages/events` |Odbieraj komunikaty z urządzenia do chmury. |
@@ -445,7 +445,7 @@ Poniższa tabela zawiera listę uprawnień, których można użyć do kontrolowa
 | --- | --- |
 | **RegistryRead** |Przyznaje dostęp do odczytu do rejestru tożsamości. Aby uzyskać więcej informacji, zobacz [Rejestr tożsamości](iot-hub-devguide-identity-registry.md). <br/>To uprawnienie jest używane przez usługi zaplecza w chmurze. |
 | **RegistryReadWrite** |Przyznaje dostęp do odczytu i zapisu do rejestru tożsamości. Aby uzyskać więcej informacji, zobacz [Rejestr tożsamości](iot-hub-devguide-identity-registry.md). <br/>To uprawnienie jest używane przez usługi zaplecza w chmurze. |
-| **ServiceConnect** |Przyznaje dostęp do punktów końcowych komunikacji i monitorowania dla usługi w chmurze. <br/>Przyznaje uprawnienia do odbierania komunikatów z urządzenia do chmury, wysyłania komunikatów z chmury do urządzeń i pobierania odpowiednich potwierdzeń dostarczania. <br/>Przyznaje uprawnienia do pobierania potwierdzeń dostarczania dla przekazywania plików. <br/>Przyznaje uprawnienia dostępu bliźniaczych reprezentacji do aktualizowania tagów i żądanych właściwości, pobierania raportowanych właściwości i uruchamiania zapytań. <br/>To uprawnienie jest używane przez usługi zaplecza w chmurze. |
+| **Serviceconnect** |Przyznaje dostęp do punktów końcowych komunikacji i monitorowania dla usługi w chmurze. <br/>Przyznaje uprawnienia do odbierania komunikatów z urządzenia do chmury, wysyłania komunikatów z chmury do urządzeń i pobierania odpowiednich potwierdzeń dostarczania. <br/>Przyznaje uprawnienia do pobierania potwierdzeń dostarczania dla przekazywania plików. <br/>Przyznaje uprawnienia dostępu bliźniaczych reprezentacji do aktualizowania tagów i żądanych właściwości, pobierania raportowanych właściwości i uruchamiania zapytań. <br/>To uprawnienie jest używane przez usługi zaplecza w chmurze. |
 | **DeviceConnect** |Przyznaje dostęp do punktów końcowych dostępnych dla urządzenia. <br/>Przyznaje uprawnienia do wysyłania komunikatów z urządzenia do chmury i odbierania komunikatów z chmury do urządzenia. <br/>Przyznaje uprawnienia do przekazywania plików z urządzenia. <br/>Przyznaje uprawnienia do odbierania powiadomień o właściwościach z przędzki urządzenia i aktualizacji właściwości zgłaszanych przez urządzenie. <br/>Przyznaje uprawnienia do wykonywania operacji przekazywania plików. <br/>To uprawnienie jest używane przez urządzenia. |
 
 ## <a name="additional-reference-material"></a>Dodatkowe materiały referencyjne

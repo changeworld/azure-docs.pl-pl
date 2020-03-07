@@ -16,11 +16,11 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
 ms.openlocfilehash: ed5fc923c82fb0d0e4004e18159d943564c6f55e
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045826"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388780"
 ---
 # <a name="tutorial-configure-availability-group-on-azure-sql-server-vm-manually"></a>Samouczek: Ręczne konfigurowanie grupy dostępności na platformie Azure SQL Server VM
 
@@ -41,7 +41,7 @@ W poniższej tabeli wymieniono wymagania wstępne, które należy wykonać przed
 |  |Wymaganie |Opis |
 |----- |----- |----- |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png) | Dwa serwery SQL | — W zestawie dostępności platformy Azure <br/> — W pojedynczej domenie <br/> — Z zainstalowaną funkcją klaster trybu failover |
-|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)| Windows Server | Udział plików dla monitora klastra |  
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)| Oprogramowanie Windows Server | Udział plików dla monitora klastra |  
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Konto usługi SQL Server | Konto domeny |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Konto usługi SQL Server Agent | Konto domeny |  
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Otwarte porty zapory | -SQL Server: **1433** dla domyślnego wystąpienia <br/> -Punkt końcowy dublowania bazy danych: **5022** lub dowolny dostępny port <br/> -Sonda kondycji adresu IP modułu równoważenia obciążenia grupy dostępności: **59999** lub dowolny dostępny port <br/> — Sonda kondycji adresu IP podstawowego modułu równoważenia obciążenia klastra: **58888** lub dowolny dostępny port |
@@ -72,9 +72,9 @@ Po zakończeniu wymagań wstępnych pierwszym krokiem jest utworzenie klastra tr
    ![utworzyć klaster](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/40-createcluster.png)
 4. W Kreatorze tworzenia klastra utwórz klaster z jednym węzłem, przechodząc przez strony z ustawieniami w poniższej tabeli:
 
-   | Strona | Ustawienia |
+   | Stronic | Ustawienia |
    | --- | --- |
-   | Zanim rozpoczniesz |Użyj domyślnych |
+   | Przed rozpoczęciem |Użyj domyślnych |
    | Wybierz serwery |Wpisz nazwę pierwszej SQL Server w polu **Wprowadź nazwę serwera** , a następnie kliknij przycisk **Dodaj**. |
    | Ostrzeżenie dotyczące walidacji |Wybierz pozycję **nie. nie wymagaj pomocy technicznej firmy Microsoft dla tego klastra i dlatego nie należy uruchamiać testów weryfikacyjnych. Po kliknięciu przycisku Dalej Kontynuuj tworzenie klastra**. |
    | Punkt dostępu do administrowania klastrem |Wpisz nazwę klastra, na przykład **SQLAGCluster1** w polu **Nazwa klastra**.|
@@ -85,7 +85,7 @@ Po zakończeniu wymagań wstępnych pierwszym krokiem jest utworzenie klastra tr
   > [!NOTE]
   > W systemie Windows Server 2019 klaster tworzy **rozproszoną nazwę serwera** zamiast **nazwy sieciowej klastra**. Jeśli używasz systemu Windows Server 2019, Pomiń wszystkie kroki odnoszące się do nazwy podstawowe klastra w tym samouczku. Nazwę sieci klastra można utworzyć przy użyciu [programu PowerShell](virtual-machines-windows-portal-sql-create-failover-cluster.md#windows-server-2019). Aby uzyskać więcej informacji, przejrzyj [klaster trybu failover w blogu: cluster network Object](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97) . 
 
-1. W **Menedżer klastra trybu failover**przewiń w dół do **zasobów podstawowe klastra** i rozwiń Szczegóły klastra. Powinny pojawić się zarówno **nazwa** i **adres IP** **zasobów** w stanu. Nie można przełączyć zasobu adresu IP do trybu online, ponieważ klaster ma przypisany ten sam adres IP co komputer, w związku z czym jest to zduplikowany adres.
+1. W **Menedżer klastra trybu failover**przewiń w dół do **zasobów podstawowe klastra** i rozwiń Szczegóły klastra. Powinna zostać wyświetlona **Nazwa** i zasoby **adresów IP** w stanie **Niepowodzenie** . Nie można przełączyć zasobu adresu IP do trybu online, ponieważ klaster ma przypisany ten sam adres IP co komputer, w związku z czym jest to zduplikowany adres.
 
 2. Kliknij prawym przyciskiem myszy zasób niepowodzenie **adresu IP** , a następnie kliknij polecenie **Właściwości**.
 
@@ -116,7 +116,7 @@ Dodaj inne SQL Server do klastra.
 
 1. Kliknij przycisk **Dalej**.
 
-1. Kliknij przycisk **Zakończ**.
+1. Kliknij przycisk **Finish** (Zakończ).
 
    Menedżer klastra trybu failover pokazuje, że klaster ma nowy węzeł i znajduje się w kontenerze **węzły** .
 
@@ -179,7 +179,7 @@ Następnie skonfiguruj kworum klastra.
 
 1. Sprawdź ustawienia w obszarze **potwierdzenie**. Kliknij przycisk **Dalej**.
 
-1. Kliknij przycisk **Zakończ**.
+1. Kliknij przycisk **Finish** (Zakończ).
 
 Zasoby podstawowe klastra są skonfigurowane za pomocą monitora udziału plików.
 
@@ -291,7 +291,7 @@ Teraz można przystąpić do konfigurowania grupy dostępności, wykonując nast
 4. Na stronie **Określanie replik** kliknij pozycję **Dodaj replikę**.
 
    ![Kreator nowej grupy, określanie replik](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/62-newagaddreplica.png)
-5. Zostanie wyświetlone okno dialogowe **łączenie z serwerem** . Wpisz nazwę drugiego serwera w polu **Nazwa serwera**. Kliknij przycisk **Połącz**.
+5. Zostanie wyświetlone okno dialogowe **łączenie z serwerem** . Wpisz nazwę drugiego serwera w polu **Nazwa serwera**. Kliknij przycisk **Connect** (Połącz).
 
    Z powrotem na stronie **Określanie replik** powinien zostać wyświetlony drugi serwer wymieniony w obszarze **repliki dostępności**. Skonfiguruj repliki w następujący sposób.
 
@@ -318,7 +318,7 @@ Teraz można przystąpić do konfigurowania grupy dostępności, wykonując nast
 10. Na stronie **Podsumowanie** kliknij przycisk **Zakończ**, a następnie zaczekaj, aż Kreator skonfiguruje nową grupę dostępności. Na stronie **postęp** możesz kliknąć **więcej szczegółów** , aby wyświetlić szczegółowy postęp. Po zakończeniu pracy kreatora przejrzyj **wyniki** , aby sprawdzić, czy grupa dostępności została pomyślnie utworzona.
 
      ![Kreator nowej grupy, wyniki](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/74-results.png)
-11. Kliknij przycisk **Zamknij** , aby zakończyć działanie kreatora.
+11. Kliknij przycisk **Zamknij** , aby zakończyć pracę kreatora.
 
 ### <a name="check-the-availability-group"></a>Sprawdź grupę dostępności
 
@@ -426,7 +426,7 @@ Aby skonfigurować moduł równoważenia obciążenia, należy utworzyć pulę z
    | **Port** | Użyj portu dla odbiornika grupy dostępności | 1433 |
    | **Port zaplecza** | To pole nie jest używane, gdy jest ustawiany swobodny adres IP dla bezpośredniego powrotu serwera | 1433 |
    | **Badane** |Nazwa określona dla sondy | SQLAlwaysOnEndPointProbe |
-   | **Trwałość sesji** | Lista rozwijana | **Brak** |
+   | **Trwałość sesji** | Lista rozwijana | **Dawaj** |
    | **Limit czasu bezczynności** | Minuty, aby można było otworzyć połączenie TCP | 4 |
    | **Zmienny adres IP (bezpośredni zwrot serwera)** | |Enabled (Włączony) |
 
@@ -467,7 +467,7 @@ Adres IP usługi WSFC musi również znajdować się w usłudze równoważenia o
    | **Port** | Użyj portu dla adresu IP klastra. Jest to dostępny port, który nie jest używany przez port sondy odbiornika. | 58888 |
    | **Port zaplecza** | To pole nie jest używane, gdy jest ustawiany swobodny adres IP dla bezpośredniego powrotu serwera | 58888 |
    | **Badane** |Nazwa określona dla sondy | WSFCEndPointProbe |
-   | **Trwałość sesji** | Lista rozwijana | **Brak** |
+   | **Trwałość sesji** | Lista rozwijana | **Dawaj** |
    | **Limit czasu bezczynności** | Minuty, aby można było otworzyć połączenie TCP | 4 |
    | **Zmienny adres IP (bezpośredni zwrot serwera)** | |Enabled (Włączony) |
 

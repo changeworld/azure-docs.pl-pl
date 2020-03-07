@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: cherylmc
 ms.openlocfilehash: bae44f67a485546ba29148a114d88df198f7c3e6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483091"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361692"
 ---
 # <a name="create-and-manage-expressroute-public-peering"></a>Tworzenie publicznej komunikacji równorzędnej ExpressRoute i zarządzanie nią
 
 > [!div class="op_single_selector"]
 > * [Artykuł — publiczna Komunikacja równorzędna](about-public-peering.md)
-> * [Wideo — publicznej komunikacji równorzędnej](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
+> * [Wideo — publiczna Komunikacja równorzędna](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
 > * [Artykuł — Komunikacja równorzędna firmy Microsoft](expressroute-circuit-peerings.md#microsoftpeering)
 >
 
@@ -65,7 +65,7 @@ Aby sprawdzić dostępność określonej usługi, możesz sprawdzić dokumentacj
 
 ## <a name="custom-route-filters"></a>Niestandardowe filtry tras
 
-W ramach sieci, aby używać tylko trasy, czego potrzebujesz, możesz zdefiniować filtry tras niestandardowych. Zapoznaj się [Routing](expressroute-routing.md) strony, aby uzyskać szczegółowe informacje na temat konfiguracji routingu.
+W ramach sieci, aby używać tylko trasy, czego potrzebujesz, możesz zdefiniować filtry tras niestandardowych. Szczegółowe informacje na temat konfiguracji routingu można znaleźć na stronie [routingu](expressroute-routing.md) .
 
 ## <a name="powershell"></a>Azure PowerShell kroki
 
@@ -135,7 +135,7 @@ Ponieważ publiczna Komunikacja równorzędna jest przestarzała, nie można sko
    > 
    >
 
-### <a name="getpublic"></a>Aby dowiedzieć się Azure publicznej komunikacji równorzędnej
+### <a name="getpublic"></a>Aby uzyskać szczegółowe informacje dotyczące publicznej komunikacji równorzędnej Azure
 
 Można uzyskać szczegółów konfiguracji, za pomocą następującego polecenia cmdlet:
 
@@ -145,7 +145,7 @@ Można uzyskać szczegółów konfiguracji, za pomocą następującego polecenia
   Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -Circuit $ckt
   ```
 
-### <a name="updatepublic"></a>Aby zaktualizować konfigurację komunikacji równorzędnej publicznej Azure
+### <a name="updatepublic"></a>Aby zaktualizować konfigurację publicznej komunikacji równorzędnej Azure
 
 Możesz zaktualizować dowolną część konfiguracji, korzystając z następującego przykładu. W tym przykładzie identyfikator sieci VLAN obwodu jest aktualizowany z 200 do 600.
 
@@ -212,7 +212,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    * Podsieć /30 dla połączenia dodatkowego. Musi to być prawidłowy publiczny prefiks IPv4.
    * Prawidłowy identyfikator sieci VLAN do ustanowienia tej komunikacji równorzędnej jest włączony. Upewnij się, że żadna inna komunikacja równorzędna w obwodzie nie używa tego samego identyfikatora VLAN.
    * Numer AS do komunikacji równorzędnej. Możesz używać 2-bajtowych i 4-bajtowych numerów AS.
-   * **Opcjonalnie —** Skrót MD5, jeśli zdecydujesz się go użyć.
+   * **Opcjonalne-** Skrót MD5, jeśli zdecydujesz się na użycie jednego z nich.
 
    Uruchom poniższy przykład, aby skonfigurować publiczną komunikację równorzędną Azure dla obwodu:
 
@@ -229,7 +229,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    > [!IMPORTANT]
    > Pamiętaj, aby określić numer AS jako ASN komunikacji równorzędnej, a nie ASN klienta.
 
-### <a name="getpublic"></a>Aby wyświetlić Azure szczegóły dotyczące komunikacji równorzędnej publicznej
+### <a name="getpublic"></a>Aby wyświetlić szczegóły dotyczące publicznej komunikacji równorzędnej Azure
 
 Można uzyskać szczegółów konfiguracji, korzystając z następującego przykładu:
 
@@ -264,7 +264,7 @@ Dane wyjściowe są podobne do poniższego przykładu:
 }
 ```
 
-### <a name="updatepublic"></a>Aby zaktualizować konfigurację komunikacji równorzędnej publicznej Azure
+### <a name="updatepublic"></a>Aby zaktualizować konfigurację publicznej komunikacji równorzędnej Azure
 
 Możesz zaktualizować dowolną część konfiguracji, korzystając z następującego przykładu. W tym przykładzie identyfikator sieci VLAN obwodu jest aktualizowany z 200 do 600.
 
@@ -284,11 +284,11 @@ az network express-route peering delete -g ExpressRouteResourceGroup --circuit-n
 
 Aby skonfigurować komunikację równorzędną, należy użyć kroków programu PowerShell lub interfejsu wiersza polecenia zawartych w tym artykule. Aby zarządzać komunikacją równorzędną, można użyć poniższych sekcji. W celu uzyskania informacji te kroki wyglądają podobnie do zarządzania [komunikacji równorzędnej firmy Microsoft w portalu](expressroute-howto-routing-portal-resource-manager.md#msft).
 
-### <a name="get"></a>Aby wyświetlić Azure szczegóły dotyczące komunikacji równorzędnej publicznej
+### <a name="get"></a>Aby wyświetlić szczegóły dotyczące publicznej komunikacji równorzędnej Azure
 
 Wyświetl właściwości publicznej komunikacji równorzędnej Azure, wybierając komunikację równorzędną w portalu.
 
-### <a name="update"></a>Aby zaktualizować konfigurację komunikacji równorzędnej publicznej Azure
+### <a name="update"></a>Aby zaktualizować konfigurację publicznej komunikacji równorzędnej Azure
 
 Wybierz wiersz dla komunikacji równorzędnej, a następnie zmodyfikuj właściwości komunikacji równorzędnej.
 

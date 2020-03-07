@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: rohink
 ms.openlocfilehash: bc318aff0dad7d7fdff16df549c013927ef0e799
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938819"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386918"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager często zadawane pytania
 
@@ -172,7 +172,7 @@ Można określić maksymalną liczbę punktów końcowych do zwrócenia, a wiele
 
 Nie możemy zagwarantować, że w każdym zapytaniu zostanie zwrócony ten sam zestaw punktów końcowych. Dotyczy to również faktu, że niektóre punkty końcowe mogą działać w złej kondycji, w którym punkt nie zostanie uwzględniony w odpowiedzi.
 
-## <a name="real-user-measurements"></a>Pomiary dotyczące prawdziwych użytkowników
+## <a name="real-user-measurements"></a>Pomiary rzeczywistego użytkownika
 
 ### <a name="what-are-the-benefits-of-using-real-user-measurements"></a>Jakie korzyści wynikają z używania Pomiary rzeczywistego użytkownika?
 
@@ -499,11 +499,11 @@ W poniższej tabeli opisano zachowanie Traffic Manager Sprawdzanie kondycji dla 
 
 | Stan monitora podrzędnego | Stan monitora nadrzędnego punktu końcowego | Uwagi |
 | --- | --- | --- |
-| Wyłączony. Profil podrzędny został wyłączony. |Zatrzymane |Stan nadrzędnego punktu końcowego jest zatrzymany, nie jest wyłączony. Stan wyłączony jest zarezerwowany dla wskazywania, że punkt końcowy został wyłączony w profilu nadrzędnym. |
+| Disabled (Wyłączone). Profil podrzędny został wyłączony. |Zatrzymano |Stan nadrzędnego punktu końcowego jest zatrzymany, nie jest wyłączony. Stan wyłączony jest zarezerwowany dla wskazywania, że punkt końcowy został wyłączony w profilu nadrzędnym. |
 | Pogorszenie. Co najmniej jeden punkt końcowy profilu podrzędnego jest w stanie obniżonej wydajności. |Online: liczba punktów końcowych w trybie online w profilu podrzędnym jest równa co najmniej wartości MinChildEndpoints.<BR>CheckingEndpoint: liczba punktów końcowych w trybie online i CheckingEndpoint w profilu podrzędnym jest równa co najmniej wartości MinChildEndpoints.<BR>Obniżona wydajność: w przeciwnym razie. |Ruch jest kierowany do punktu końcowego stanu CheckingEndpoint. Jeśli wartość MinChildEndpoints jest zbyt wysoka, punkt końcowy ma zawsze obniżony poziom. |
 | Online. Co najmniej jeden punkt końcowy profilu podrzędnego jest stanem online. Brak punktu końcowego w stanie obniżonej wydajności. |Zobacz powyżej. | |
 | CheckingEndpoints. Co najmniej jeden punkt końcowy profilu podrzędnego to "CheckingEndpoint". Żadne punkty końcowe nie są w trybie online ani nie zostały obniżone. |Tak samo jak powyżej. | |
-| Nieaktywne. Wszystkie punkty końcowe profilu podrzędnego są wyłączone lub zatrzymane albo ten profil nie ma punktów końcowych. |Zatrzymane | |
+| Nieaktywne. Wszystkie punkty końcowe profilu podrzędnego są wyłączone lub zatrzymane albo ten profil nie ma punktów końcowych. |Zatrzymano | |
 
 ## <a name="next-steps"></a>Następne kroki:
 

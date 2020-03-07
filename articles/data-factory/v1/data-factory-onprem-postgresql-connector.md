@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 37c83e77cadae002ff701a08c4b36a86f7cab9a0
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929066"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387423"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Przenoszenie danych z PostgreSQL za pomocą Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -50,12 +50,12 @@ Można utworzyć potok za pomocą działania kopiowania, które przenosi dane z 
 - Najprostszym sposobem utworzenia potoku jest użycie **Kreatora kopiowania**. Zobacz [Samouczek: Tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) na potrzeby szybkiego instruktażu dotyczącego tworzenia potoku przy użyciu Kreatora kopiowania danych.
 - Do utworzenia potoku można także użyć następujących narzędzi:
   - Visual Studio
-  - Program Azure PowerShell
+  - Azure PowerShell
   - Szablon usługi Azure Resource Manager
   - Interfejs API .NET
   - Interfejs API REST
 
-    Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
+    Aby uzyskać instrukcje krok po kroku dotyczące tworzenia potoku za pomocą działania kopiowania, zobacz [Samouczek dotyczący działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Niezależnie od tego, czy używasz narzędzi, czy interfejsów API, wykonaj następujące kroki, aby utworzyć potok służący do przenoszenia danych ze źródłowego magazynu danych do magazynu danych ujścia:
 
@@ -70,23 +70,23 @@ Poniższe sekcje zawierają szczegółowe informacje na temat właściwości JSO
 ## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 Poniższa tabela zawiera opis elementów JSON specyficznych dla PostgreSQL połączonej usługi.
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 | --- | --- | --- |
-| type |Właściwość Type musi mieć wartość: **OnPremisesPostgreSql** |Tak |
-| serwer |Nazwa serwera PostgreSQL. |Tak |
-| baza danych |Nazwa bazy danych PostgreSQL. |Tak |
+| type |Właściwość Type musi mieć wartość: **OnPremisesPostgreSql** |Yes |
+| serwer |Nazwa serwera PostgreSQL. |Yes |
+| database |Nazwa bazy danych PostgreSQL. |Yes |
 | schema |Nazwa schematu w bazie danych programu. Nazwa schematu jest uwzględniana wielkość liter. |Nie |
-| authenticationType |Typ uwierzytelniania używany do łączenia się z bazą danych PostgreSQL. Możliwe wartości to: Anonymous, Basic i Windows. |Tak |
+| authenticationType |Typ uwierzytelniania używany do łączenia się z bazą danych PostgreSQL. Możliwe wartości to: Anonymous, Basic i Windows. |Yes |
 | nazwa użytkownika |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowego lub systemu Windows. |Nie |
 | hasło |Określ hasło dla konta użytkownika określonego dla nazwy użytkownika. |Nie |
-| gatewayName |Nazwa bramy, która ma być używana przez usługę Data Factory do łączenia się z lokalną bazą danych PostgreSQL. |Tak |
+| gatewayName |Nazwa bramy, która ma być używana przez usługę Data Factory do łączenia się z lokalną bazą danych PostgreSQL. |Yes |
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 Aby uzyskać pełną listę sekcji & właściwości dostępne do definiowania zestawów danych, zobacz artykuł [Tworzenie zestawów danych](data-factory-create-datasets.md) . Sekcje, takie jak struktura, dostępność i zasady JSON zestawu danych, są podobne dla wszystkich typów zestawów danych.
 
 Sekcja typeProperties jest inna dla każdego typu zestawu danych i zawiera informacje dotyczące lokalizacji danych w magazynie danych. Sekcja typeProperties dla zestawu danych typu **relacyjnego** (który zawiera zestaw danych PostgreSQL) ma następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 | --- | --- | --- |
 | tableName |Nazwa tabeli w wystąpieniu bazy danych PostgreSQL, do której odwołuje się połączona usługa. W tabeli TableName jest rozróżniana wielkość liter. |Nie (Jeśli **kwerenda** **RelationalSource** jest określona) |
 
@@ -97,7 +97,7 @@ Natomiast właściwości dostępne w sekcji typeProperties działania różnią 
 
 Jeśli źródło jest typu **RelationalSource** (co obejmuje PostgreSQL), w sekcji typeProperties dostępne są następujące właściwości:
 
-| Właściwość | Opis | Dozwolone wartości | Wymagane |
+| Właściwość | Opis | Dozwolone wartości | Wymagany |
 | --- | --- | --- | --- |
 | query |Użyj zapytania niestandardowego do odczytywania danych. |Ciąg zapytania SQL. Na przykład: `"query": "select * from \"MySchema\".\"MyTable\""`. |Nie (Jeśli określono element **TableName** **zestawu danych** ) |
 
@@ -302,44 +302,44 @@ Jak wspomniano w artykule [działania związane z przenoszeniem danych](data-fac
 
 Podczas przesuwania danych do PostgreSQL następujące mapowania są używane z typu PostgreSQL do typu .NET.
 
-| Typ bazy danych PostgreSQL | Aliasy PostgresSQL | Typ programu .NET Framework |
+| Typ bazy danych PostgreSQL | Aliasy PostgresSQL | Typ .NET Framework |
 | --- | --- | --- |
-| abstime | |Datetime |
+| abstime | |Data/godzina |
 | bigint |int8 |Int64 |
 | bigserial |serial8 |Int64 |
 | bit [(n)] | |Byte [], ciąg |
 | różne bity [(n)] |varbit |Byte [], ciąg |
-| wartość logiczna |bool |Wartość logiczna |
+| wartość logiczna |logiczna |Wartość logiczna |
 | box | |Byte [], ciąg |
 | bytea | |Byte [], ciąg |
 | znak [(n)] |Char [(n)] |Ciąg |
 | różne znaki [(n)] |varchar [(n)] |Ciąg |
 | Identyfikator | |Ciąg |
 | CIDR | |Ciąg |
-| koło | |Byte [], ciąg |
-| date | |Datetime |
+| kreślon | |Byte [], ciąg |
+| date | |Data/godzina |
 | DateRange | |Ciąg |
-| Podwójna precyzja |float8 |Double |
+| Podwójna precyzja |float8 |Podwójne |
 | inet | |Byte [], ciąg |
 | intarry | |Ciąg |
 | int4range | |Ciąg |
 | int8range | |Ciąg |
 | liczba całkowita |int, INT4 |Int32 |
 | Interwał [pola] [(p)] | |Zakres czasu |
-| json | |Ciąg |
+| kodu | |Ciąg |
 | jsonb | |Byte[] |
-| wiersz | |Byte [], ciąg |
+| linia | |Byte [], ciąg |
 | lseg | |Byte [], ciąg |
 | macaddr | |Byte [], ciąg |
-| money | |Decimal |
-| numeryczne [(p, s)] |Decimal [(p, s)] |Decimal |
+| money | |Dziesiętna |
+| numeryczne [(p, s)] |Decimal [(p, s)] |Dziesiętna |
 | numrange | |Ciąg |
 | oid | |Int32 |
-| Ścieżka | |Byte [], ciąg |
+| ścieżka | |Byte [], ciąg |
 | pg_lsn | |Int64 |
 | Moment | |Byte [], ciąg |
 | wielokąt | |Byte [], ciąg |
-| real |float4 |Pojedyncze |
+| real |float4 |Single |
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
 | Kolejną |serial4 |Int32 |

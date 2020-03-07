@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
 ms.openlocfilehash: 2f04b5ecb2019a77bbb38e97c3869cc0a9447955
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921525"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383264"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Rozszerzenie DSC dla systemu Linux (Microsoft. OSTCExtensions. DSCForLinux)
 
@@ -289,7 +289,7 @@ Aby uzyskać więcej informacji na temat szablonu Azure Resource Manager, zobacz
 ### <a name="use-azure-cliazure-cli"></a>Korzystanie z [interfejsu wiersza polecenia platformy Azure] [Azure-CLI]
 Przed wdrożeniem rozszerzenia DSCForLinux Skonfiguruj `public.json` i `protected.json` zgodnie z różnymi scenariuszami w sekcji 3.
 
-#### <a name="classic"></a>Klasyczny
+#### <a name="classic"></a>Wdrożenie klasyczne
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
@@ -327,7 +327,7 @@ DSCForLinux Microsoft.OSTCExtensions <version> \
 
 ### <a name="use-azure-powershellazure-powershell"></a>Użycie [Azure PowerShell] [Azure-PowerShell]
 
-#### <a name="classic"></a>Klasyczny
+#### <a name="classic"></a>Wdrożenie klasyczne
 
 Możesz zalogować się do konta platformy Azure w trybie zarządzania usługami platformy Azure, uruchamiając następujące operacje:
 

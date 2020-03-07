@@ -9,11 +9,11 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 37fdd42adf66ebcb11b357ece6ea63384630d9f4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458939"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362896"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Konfigurowanie odzyskiwania po awarii na platformie Azure dla lokalnych maszyn wirtualnych VMware
 
@@ -22,7 +22,7 @@ W tym artykule opisano sposób włączania replikacji lokalnych maszyn wirtualny
 Jest to trzeci samouczek z serii, który pokazuje, jak skonfigurować odzyskiwanie po awarii na platformie Azure dla lokalnych maszyn wirtualnych VMware. W poprzednim samouczku [przygotowano lokalne środowisko VMware](vmware-azure-tutorial-prepare-on-premises.md) na potrzeby odzyskiwania po awarii na platformie Azure.
 
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Skonfiguruj ustawienia replikacji źródłowej oraz lokalny serwer konfiguracji Site Recovery.
@@ -31,7 +31,7 @@ Niniejszy samouczek zawiera informacje na temat wykonywania następujących czyn
 > * Włącz replikację maszyny wirtualnej VMware.
 
 > [!NOTE]
-> Samouczki pokazują najprostszą ścieżkę wdrożenia dla scenariusza. Jeśli jest to możliwe, są używane opcje domyślne, i nie są przedstawione wszystkie ustawienia i ścieżki. Aby uzyskać szczegółowe instrukcje, zapoznaj się z artykułem w sekcji jak to zrobić w spisie treści Site Recovery.
+> Samouczki pokazują najprostszą ścieżkę wdrożenia dla scenariusza. Jeśli to możliwe, używają opcji domyślnych i nie przedstawiają wszystkich możliwych ustawień i ścieżek. Aby uzyskać szczegółowe instrukcje, zapoznaj się z artykułem w sekcji jak to zrobić w spisie treści Site Recovery.
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
@@ -157,7 +157,7 @@ Wybierz i zweryfikuj zasoby docelowe.
 
 ## <a name="create-a-replication-policy"></a>Tworzenie zasad replikacji
 
-1. Otwórz [Portalu Azure](https://portal.azure.com). Wyszukaj i wybierz **Recovery Services magazynów**.
+1. Otwórz [portal Azure](https://portal.azure.com). Wyszukaj i wybierz **Recovery Services magazynów**.
 2. Wybierz magazyn usług Recovery Services (**ContosoVMVault** w ramach tego samouczka).
 3. Aby utworzyć zasady replikacji, wybierz pozycję **Infrastruktura usługi Site Recovery** > **Zasady replikacji** >  **+Zasady replikacji**.
 4. W obszarze **Tworzenie zasad replikacji** wprowadź nazwę zasad. W tym scenariuszu są używane zasady **VMwareRepPolicy**.
