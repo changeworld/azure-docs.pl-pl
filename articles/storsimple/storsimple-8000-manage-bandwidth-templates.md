@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie szablonami przepustowości w przypadku serii StorSimple 8000 | Dokumentacja firmy Microsoft
-description: Opisuje sposób Zarządzanie szablonami przepustowości StorSimple, które umożliwiają kontrolowanie użycia przepustowości.
+title: Zarządzanie szablonami przepustowości dla serii StorSimple 8000 | Microsoft Docs
+description: Opisuje sposób zarządzania szablonami przepustowości StorSimple, które umożliwiają kontrolę wykorzystania przepustowości.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,161 +15,161 @@ ms.workload: na
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: 13a3e57bb27c075fc045e87790dbe13369ed9f8e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60699475"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78366780"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-bandwidth-templates"></a>Zarządzanie szablonami przepustowości StorSimple przy użyciu usługi Menedżer urządzeń StorSimple
+# <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-bandwidth-templates"></a>Zarządzanie szablonami przepustowości StorSimple przy użyciu usługi StorSimple Menedżer urządzeń
 
 ## <a name="overview"></a>Omówienie
 
-Szablony przepustowości umożliwiają skonfigurowanie użycia przepustowości sieci między wiele harmonogramów pory dnia do warstwy danych z urządzenia StorSimple w chmurze.
+Szablony przepustowości umożliwiają skonfigurowanie użycia przepustowości sieci w wielu codziennych harmonogramach w celu warstwy danych z urządzenia StorSimple do chmury.
 
-Przy użyciu przepustowości harmonogramy możesz wykonywać następujące czynności:
+Harmonogramy ograniczania przepustowości umożliwiają wykonywanie:
 
-* Określić harmonogramy dostosowane przepustowości, w zależności od obciążenia użycia sieci.
-* Scentralizuj zarządzanie i ponowne użycie harmonogramy na wielu urządzeniach w sposób łatwy i bezproblemowe.
+* Określ dostosowane harmonogramy przepustowości w zależności od użycia sieci obciążenia.
+* Scentralizowane i bezproblemowe zarządzanie harmonogramami na wielu urządzeniach.
 
 > [!NOTE]
-> Ta funkcja jest dostępna tylko w przypadku urządzeń fizycznych StorSimple (modele 8100 i 8600), a nie dla urządzeń StorSimple w chmurze (modele urządzenia 8010 i 8020).
+> Ta funkcja jest dostępna tylko dla urządzeń fizycznych StorSimple (modele 8100 i 8600), a nie dla urządzeń w chmurze StorSimple (modele 8010 i 8020).
 
 
-## <a name="the-bandwidth-templates-blade"></a>Blok szablony przepustowości
+## <a name="the-bandwidth-templates-blade"></a>Blok szablonów przepustowości
 
-**Szablony przepustowości** blok zawiera wszystkie szablony przepustowości dla usługi w formacie tabelarycznym i zawiera następujące informacje:
+Blok **Szablony przepustowości** ma wszystkie szablony przepustowości dla usługi w formacie tabelarycznym i zawiera następujące informacje:
 
-* **Nazwa** — nazwa przypisana do szablonu przepustowości podczas jej tworzenia.
-* **Harmonogram** — liczba harmonogramów zawarte w szablonie danej przepustowości.
-* **Używane przez** — liczbę woluminów przy użyciu szablonów przepustowości.
+* **Nazwa** — unikatowa nazwa przypisana do szablonu przepustowości podczas jego tworzenia.
+* **Schedule** — liczba harmonogramów zawartych w danym szablonie przepustowości.
+* **Używane przez** — liczba woluminów korzystających z szablonów przepustowości.
 
-Można również znaleźć dodatkowe informacje, aby łatwiej skonfigurować szablony przepustowości:
+Możesz również znaleźć dodatkowe informacje pomocne w konfigurowaniu szablonów przepustowości w programie:
 
-* [Pytania i odpowiedzi dotyczące szablonami przepustowości](#questions-and-answers-about-bandwidth-templates)
+* [Pytania i odpowiedzi dotyczące szablonów przepustowości](#questions-and-answers-about-bandwidth-templates)
 * [Najlepsze rozwiązania dotyczące szablonów przepustowości](#best-practices-for-bandwidth-templates)
 
 ## <a name="add-a-bandwidth-template"></a>Dodawanie szablonu przepustowości
 
-Wykonaj poniższe kroki, aby utworzyć nowy szablon przepustowości.
+Wykonaj następujące kroki, aby utworzyć nowy szablon przepustowości.
 
 #### <a name="to-add-a-bandwidth-template"></a>Aby dodać szablon przepustowości
 
-1. Przejdź do usługi Menedżer urządzeń StorSimple, kliknij przycisk **szablony przepustowości** a następnie kliknij przycisk **+ szablonu przepustowości Dodaj**.
+1. Przejdź do usługi StorSimple Menedżer urządzeń, kliknij pozycję **Szablony przepustowości** , a następnie kliknij pozycję **+ Dodaj szablon przepustowości**.
 
-    ![Kliknij przycisk + Dodaj szablonu przepustowości](./media/storsimple-8000-manage-bandwidth-templates/addbwtemp1.png)
+    ![Kliknij pozycję + Dodaj szablon przepustowości](./media/storsimple-8000-manage-bandwidth-templates/addbwtemp1.png)
 
-2. W **szablonu przepustowości Dodaj** blok, wykonaj następujące czynności:
+2. W bloku **Dodaj szablon przepustowości** wykonaj następujące czynności:
    
-    1. Określ unikatową nazwę dla szablonu przepustowości.
-    2. Zdefiniowanie harmonogramu przepustowości. Aby utworzyć harmonogram:
+    1. Określ unikatową nazwę szablonu przepustowości.
+    2. Zdefiniuj harmonogram przepustowości. Aby utworzyć harmonogram:
    
-        1. Z listy rozwijanej wybierz **dni** tygodnia harmonogram jest skonfigurowany dla. Możesz wybrać wiele dni.        
+        1. Z listy rozwijanej wybierz **dni** tygodnia, w których harmonogram jest skonfigurowany. Można wybrać wiele dni.        
         
-        2. Wprowadź **czas rozpoczęcia** w _gg: mm_ formatu. Jest to, gdy rozpocznie się harmonogramu.
+        2. Wprowadź **godzinę rozpoczęcia** w formacie _gg: mm_ . Dzieje się tak po rozpoczęciu harmonogramu.
 
-        3. Wprowadź **czas zakończenia** w _gg: mm_ formatu. Jest to, gdy harmonogram zostanie zatrzymane.
+        3. Wprowadź **godzinę zakończenia** w formacie _gg: mm_ . Jest to planowane, gdy harmonogram zostanie zatrzymany.
       
            > [!NOTE]
-           > Nakładające się harmonogramy nie są dozwolone. Czas rozpoczęcia i zakończenia spowoduje nakładających się harmonogramu, zobaczysz komunikat o błędzie w tym celu.
+           > Nakładające się harmonogramy są niedozwolone. Jeśli godziny rozpoczęcia i zakończenia spowodują nakładanie się harmonogramu, zobaczysz komunikat o błędzie.
 
-        4. Określ **przepustowość**. Jest to przepustowość w megabitach na sekundę (MB/s) używany przez urządzenia StorSimple w operacje dotyczące chmury (wysyłanie i pobieranie danych). W tym polu podaj liczbę z zakresu od 1 do 1000.
+        4. Określ **stawkę przepustowości**. Jest to przepustowość w megabitach na sekundę (MB/s) używana przez urządzenie StorSimple w operacjach obejmujących chmurę (operacje przekazywania i pobierania). W tym polu podaj liczbę z zakresu od 1 do 1000.
 
-            ![Zdefiniuj harmonogram przepustowości](./media/storsimple-8000-manage-bandwidth-templates/addbwtemp2.png)
+            ![Definiowanie harmonogramu przepustowości](./media/storsimple-8000-manage-bandwidth-templates/addbwtemp2.png)
          
-            Powtórz powyższe kroki, aby zdefiniować wiele harmonogramów dla szablonu, aż wszystko będzie gotowe.
+            Powtórz powyższe kroki, aby zdefiniować wiele harmonogramów dla szablonu do momentu ukończenia.
 
-        5. Kliknij przycisk **Dodaj** aby rozpocząć tworzenie szablonu przepustowości. Utworzony szablon zostanie dodany do listy szablonów przepustowości.
+        5. Kliknij przycisk **Dodaj** , aby rozpocząć tworzenie szablonu przepustowości. Utworzony szablon zostanie dodany do listy szablonów przepustowości.
       
 
-## <a name="edit-a-bandwidth-template"></a>Edytuj szablon przepustowości
+## <a name="edit-a-bandwidth-template"></a>Edytowanie szablonu przepustowości
 
-Wykonaj poniższe kroki, aby edytować szablon przepustowości.
+Aby edytować szablon przepustowości, wykonaj następujące czynności.
 
 ### <a name="to-edit-a-bandwidth-template"></a>Aby edytować szablon przepustowości
 
-1. Przejdź do Menedżera urządzeń StorSimple, usługi, a następnie kliknij przycisk **szablony przepustowości**.
-2. Na liście szablony przepustowości wybierz szablon, który chcesz usunąć. Kliknij prawym przyciskiem myszy, a następnie z menu kontekstowego wybierz pozycję **Usuń**.
-3. Po wyświetleniu monitu o potwierdzenie, kliknij przycisk **OK**. Powinno to usuwanie szablonu przepustowości. 
-4. Lista aktualizacji szablonów przepustowości celu odzwierciedlenia usunięcia.
+1. Przejdź do usługi StorSimple Menedżer urządzeń i kliknij pozycję **Szablony przepustowości**.
+2. Na liście szablonów przepustowości wybierz szablon, który chcesz usunąć. Kliknij prawym przyciskiem myszy i z menu kontekstowego wybierz polecenie **Usuń**.
+3. Po wyświetleniu monitu o potwierdzenie kliknij przycisk **OK**. Należy usunąć szablon przepustowości. 
+4. Lista szablonów przepustowości, które są aktualizowane w celu odzwierciedlenia usunięcia.
 
 > [!NOTE]
-> Nie można zapisać zmian, jeśli edytowanych harmonogramu pokrywa się z istniejącego harmonogramu w szablonie przepustowości, która jest modyfikowana.
+> Nie można zapisać zmian, jeśli zmodyfikowany harmonogram pokrywa się z istniejącym harmonogramem w modyfikowanym szablonie przepustowości.
 
 ## <a name="delete-a-bandwidth-template"></a>Usuwanie szablonu przepustowości
 
-Wykonaj poniższe kroki, aby usunąć szablon przepustowości.
+Wykonaj następujące kroki, aby usunąć szablon przepustowości.
 
 #### <a name="to-delete-a-bandwidth-template"></a>Aby usunąć szablon przepustowości
 
-1. Przejdź do Menedżera urządzeń StorSimple, usługi, a następnie kliknij przycisk **szablony przepustowości**.
-2. Na liście szablony przepustowości wybierz szablon, który chcesz usunąć. Kliknij prawym przyciskiem myszy, a następnie z menu kontekstowego wybierz polecenie Usuń.
-3. Po wyświetleniu monitu o potwierdzenie, kliknij przycisk **OK**. Powinno to usuwanie szablonu przepustowości.
-4. Lista aktualizacji szablonów przepustowości celu odzwierciedlenia usunięcia.
+1. Przejdź do usługi StorSimple Menedżer urządzeń i kliknij pozycję **Szablony przepustowości**.
+2. Na liście szablonów przepustowości wybierz szablon, który chcesz usunąć. Kliknij prawym przyciskiem myszy i z menu kontekstowego wybierz polecenie Usuń.
+3. Po wyświetleniu monitu o potwierdzenie kliknij przycisk **OK**. Należy usunąć szablon przepustowości.
+4. Lista szablonów przepustowości, które są aktualizowane w celu odzwierciedlenia usunięcia.
 
-Jeśli szablon jest używany przez wszystkie woluminy, nie będzie można go usunąć. Pojawi się komunikat o błędzie wskazujący, że szablon jest używany. Pojawi się okno dialogowe komunikat o błędzie wniosku, że należy usunąć wszystkie odwołania do szablonu.
+Jeśli szablon jest używany przez jakiekolwiek woluminy, nie będzie można go usunąć. Zostanie wyświetlony komunikat o błędzie informujący o tym, że szablon jest w użyciu. Zostanie wyświetlone okno dialogowe komunikat o błędzie z informacją o tym, że wszystkie odwołania do szablonu powinny zostać usunięte.
 
-Możesz usunąć wszystkie odwołania do szablonu, uzyskując dostęp do **kontenery woluminów** strony i modyfikowanie kontenerów woluminów, korzystających z tego szablonu, aby użyć innego szablonu, lub użyj ustawienia przepustowości niestandardowych lub wartością nieograniczoną. Po usunięciu wszystkich odwołań, można usunąć szablonu.
+Wszystkie odwołania do szablonu można usunąć, uzyskując dostęp do strony **kontenery woluminów** i modyfikując kontenery woluminów używające tego szablonu, aby używały innego szablonu lub użyć ustawienia przepustowości niestandardowej lub nieograniczonej. Po usunięciu wszystkich odwołań można usunąć szablon.
 
 ## <a name="use-a-default-bandwidth-template"></a>Użyj domyślnego szablonu przepustowości
 
-Domyślny szablon przepustowości znajduje się i jest używane przez kontenery woluminów domyślnie do wymuszania kontroli przepustowości podczas uzyskiwania dostępu do chmury. Domyślny szablon służy również jako gotowe odwołania dla użytkowników, którzy tworzą własne szablony. Szczegóły tego szablonu domyślnego są:
+Domyślny szablon przepustowości jest dostarczany i domyślnie używany przez kontenery woluminów w celu wymuszenia kontroli przepustowości podczas uzyskiwania dostępu do chmury. Szablon domyślny służy również jako przygotowana Dokumentacja dla użytkowników, którzy tworzą własne szablony. Szczegóły tego szablonu domyślnego:
 
-* **Nazwa** — nieograniczone Noce i weekendy
-* **Harmonogram** — jeden harmonogram od poniedziałku do piątku, która ma zastosowanie przepustowość 1 MB/s od 8: 00 i 17: 00 czasu urządzenia. Przepustowość jest równa bez ograniczeń na pozostałą część tygodnia.
+* **Nazwa** — nieograniczone noclegiy i weekendy
+* **Schedule** — pojedynczy harmonogram od poniedziałku do piątku, który stosuje stawkę przepustowości wynoszącą 1 MB/s między 8 am i 5-godzinnym urządzeniem. Przepustowość jest ustawiona na nieograniczone dla pozostałej części tygodnia.
 
-Można edytować szablonu domyślnego. Użycie tego szablonu (w tym wersje edytowanych) jest śledzone.
+Szablon domyślny można edytować. Śledzenie użycia tego szablonu (w tym edytowane wersje) jest śledzone.
 
-## <a name="create-an-all-day-bandwidth-template-that-starts-at-a-specified-time"></a>Utwórz całodzienne szablonu przepustowości, która rozpoczyna się o określonej godzinie
+## <a name="create-an-all-day-bandwidth-template-that-starts-at-a-specified-time"></a>Utwórz szablon przepustowości całodziennej, który jest uruchamiany w określonym czasie
 
-Wykonaj tę procedurę, aby utworzyć harmonogram, który rozpoczyna się w określonym momencie i jest cały dzień. W tym przykładzie harmonogram rozpoczyna się od 9: 00 rano i działa aż do 9: 00 następnego dnia rano. Należy pamiętać, który godziny rozpoczęcia i zakończenia dla danego harmonogramu muszą być zarówno zawarte na tym samym harmonogramem 24-godzinnego i nie może obejmować wiele dni. Jeśli musisz skonfigurować szablony przepustowości, które rozciągają się wiele dni, należy użyć wielu harmonogramów (jak pokazano w przykładzie).
+Postępuj zgodnie z tą procedurą, aby utworzyć harmonogram, który jest uruchamiany w określonym czasie i uruchomiony cały dzień. W tym przykładzie harmonogram zaczyna się o godzinie 9 rano i działa do 9 godzin następnego rano. Należy pamiętać, że czasy rozpoczęcia i zakończenia danego harmonogramu muszą być zawarte w tym samym harmonogramie 24-godzinnym i nie mogą obejmować wielu dni. Jeśli konieczne jest skonfigurowanie szablonów przepustowości obejmujących wiele dni, należy użyć wielu harmonogramów (jak pokazano w przykładzie).
 
-#### <a name="to-create-an-all-day-bandwidth-template"></a>Aby utworzyć całodzienne szablonu przepustowości
+#### <a name="to-create-an-all-day-bandwidth-template"></a>Aby utworzyć szablon przepustowości całodziennej
 
-1. Utwórz harmonogram, który rozpoczyna się od 9: 00 rano i działa aż do północy.
-2. Dodać kolejny harmonogram. Skonfiguruj drugi harmonogram wykonywania od północy do 9: 00 w nocy.
+1. Utwórz harmonogram, który zaczyna się od 9 rano i działa do północy.
+2. Dodaj kolejny harmonogram. Skonfiguruj drugi harmonogram do uruchamiania od północy do 9 rano.
 3. Zapisz szablon przepustowości.
 
-Harmonogram złożony zostanie następnie uruchomione w czasie wybrane i uruchomisz całodzienne.
+Harmonogram złożony rozpocznie się po wybraniu i uruchomieniu cały dzień.
 
-## <a name="questions-and-answers-about-bandwidth-templates"></a>Pytania i odpowiedzi dotyczące szablonami przepustowości
+## <a name="questions-and-answers-about-bandwidth-templates"></a>Pytania i odpowiedzi dotyczące szablonów przepustowości
 
-**Q**. Co się stanie sterujące przepustowością w przypadku Between harmonogramy? (Zakończeniem jednego harmonogramu i inny nie została jeszcze uruchomiona.)
+**P**. Co się dzieje z kontrolami przepustowości w przypadku zaplanowania? (Harmonogram został zakończony i jeszcze nie uruchomiono innego.)
 
-**A**. W takich przypadkach zostanie zatrudnionych bez kontroli przepustowości. Oznacza to, że urządzenie może używać bez ograniczeń przepustowości podczas obsługi warstw danych w chmurze.
+**A**. W takich przypadkach nie będą stosowane żadne kontrolki przepustowości. Oznacza to, że urządzenie może korzystać z nieograniczonej przepustowości podczas warstwowych danych w chmurze.
 
-**Q**. Można zmodyfikować szablony przepustowości na urządzeniu w trybie offline?
+**P**. Czy można modyfikować szablony przepustowości na urządzeniu w trybie offline?
 
-**A**. Nie można zmodyfikować szablony przepustowości w kontenerach woluminów, jeśli odpowiednie urządzenie jest w trybie offline.
+**A**. Jeśli odpowiednie urządzenie jest w trybie offline, nie będzie można modyfikować szablonów przepustowości w kontenerach woluminów.
 
-**Q**. Można edytować szablon przepustowości skojarzony kontener woluminów, gdy skojarzone woluminy są w trybie offline?
+**P**. Czy można edytować szablon przepustowości skojarzony z kontenerem woluminów, gdy skojarzone woluminy są w trybie offline?
 
-**A**. Można zmodyfikować szablonu przepustowości, skojarzony kontener woluminów, na których woluminy są w trybie offline. Należy pamiętać, że gdy woluminy są w trybie offline, żadne dane nie będą umieszczane z urządzenia do chmury.
+**A**. Istnieje możliwość zmodyfikowania szablonu przepustowości skojarzonego z kontenerem woluminów, którego woluminy są w trybie offline. Należy pamiętać, że gdy woluminy są w trybie offline, żadne dane nie zostaną warstwą z urządzenia do chmury.
 
-**Q**. Można usunąć domyślnego szablonu?
+**P**. Czy można usunąć szablon domyślny?
 
-**A**. Mimo że można usunąć domyślnego szablonu, nie jest dobry pomysł, aby to zrobić. Użycie szablonu domyślnego, w tym wersje edytowanych jest śledzone. Dane śledzenia są analizowane, a w miarę upływu czasu, zostanie użyty do usprawnienia szablonu domyślnego.
+**A**. Mimo że można usunąć szablon domyślny, nie jest to dobrym pomysłem. Śledzenie użycia szablonu domyślnego, w tym edytowane wersje, jest śledzone. Dane śledzenia są analizowane i w miarę upływu czasu są używane do ulepszania szablonu domyślnego.
 
-**Q**. Jak można ustalić, czy trzeba zmodyfikować szablony przepustowości?
+**P**. Jak ustalić, czy należy zmodyfikować szablony przepustowości?
 
-**A**. Jest jednym ze znaków, należy zmodyfikować szablony przepustowości, gdy wykonywanych sieci działa wolno lub podlewka wiele razy w ciągu dnia. W takim przypadku monitorowania sieci magazynu i użycia, patrząc na wykresy wydajności operacji We/Wy i przepływność sieci.
+**A**. Jednym ze znaków koniecznych do zmodyfikowania szablonów przepustowości jest to, że po rozpoczęciu pracy z siecią jest wolniejsze lub wielokrotne podlewka w ciągu dnia. W takim przypadku należy monitorować magazyn i sieć użycia, przeglądając wykresy wydajności operacji we/wy i przepływności sieci.
 
-Dane przepływność sieci należy zidentyfikować godzina i kontenery woluminów, w których występuje wąskich gardeł. Jeśli dzieje, gdy dane są są warstwowe w chmurze (uzyskać te informacje z wydajności operacji We/Wy dla wszystkich kontenerów woluminów dla urządzenia do chmury), a następnie należy zmodyfikować szablony przepustowości skojarzony z kontenerami woluminów.
+W obszarze dane dotyczące przepływności sieci określ godzinę i kontenery woluminów, w których występuje wąskie gardło sieci. Jeśli tak się stanie, gdy dane są warstwowe w chmurze (Pobierz te informacje z wydajności we/wy dla wszystkich kontenerów dla urządzenia do chmury), należy zmodyfikować szablony przepustowości skojarzone z kontenerami woluminów.
 
-Po modyfikacji szablonów są używane, należy monitorować ponownie znaczne opóźnienia sieci. Jeśli te nadal istnieje, będą potrzebne do szablonów przepustowości.
+Po użyciu zmodyfikowanych szablonów należy ponownie monitorować sieć w celu uzyskania znaczących opóźnień. Jeśli nadal istnieją, konieczne będzie ponowne odwiedzenie szablonów przepustowości.
 
-**Q**. Co się stanie, jeśli masz wiele kontenerów woluminów na urządzeniu z systemem planuje tego nakładają się na siebie, ale różnych limity mają zastosowanie do każdego?
+**P**. Co się stanie, jeśli wiele kontenerów woluminów na moim urządzeniu ma harmonogramy, które nakładają się na siebie, ale różne limity mają zastosowanie do każdego
 
-**A**. Załóżmy, że masz urządzenie z 3 kontenery woluminów. Harmonogramy skojarzone z tych kontenerów całkowicie nakładają się na siebie. Dla każdego z tych kontenerów limity przepustowości, używane są 5, 10 lub 15 MB/s. Podczas operacji We/Wy występują we wszystkich tych kontenerów, w tym samym czasie, co najmniej 3 limity przepustowości mogą być stosowane: w tym przypadku 5 MB/s, jak te wychodzących żądań We/Wy udostępnianie tej samej kolejki.
+**A**. Załóżmy, że masz urządzenie z 3 kontenerami woluminów. Harmonogramy skojarzone z tymi kontenerami są całkowicie nakładane. W przypadku każdego z tych kontenerów używane są limity przepustowości odpowiednio 5, 10 i 15 MB/s. Gdy wszystkie te kontenery są wykonywane jednocześnie we/wy, można zastosować co najmniej 3 limity przepustowości: w tym przypadku 5 MB/s jako te wychodzące żądania we/wy współdzielą tę samą kolejkę.
 
 ## <a name="best-practices-for-bandwidth-templates"></a>Najlepsze rozwiązania dotyczące szablonów przepustowości
 
-Wykonaj te najlepsze praktyki dotyczące urządzenia StorSimple:
+Postępuj zgodnie z następującymi najlepszymi rozwiązaniami dotyczącymi urządzenia StorSimple:
 
-* Skonfiguruj szablony przepustowości na urządzeniu, aby włączyć zmiennej ograniczanie przepustowości sieci przez urządzenie o różnych porach dnia. Te szablony przepustowości, gdy jest używane z harmonogramów tworzenia kopii zapasowych mogą efektywnie korzystać z dodatkową przepustowość dla operacji w chmurze poza godzinami szczytu.
-* Oblicz rzeczywiste przepustowość wymaganą dla określonego wdrożenia na podstawie rozmiaru wdrożenia i cel czasu odzyskiwania wymagane (RTO).
+* Skonfiguruj na urządzeniu szablony przepustowości, aby umożliwić ograniczanie przepustowości sieci przez urządzenie w różnych porach dnia. Te szablony przepustowości używane z harmonogramami kopii zapasowych mogą efektywnie wykorzystać dodatkową przepustowość sieci dla operacji w chmurze w godzinach poza godzinami szczytu.
+* Oblicz rzeczywistą przepustowość wymaganą dla określonego wdrożenia na podstawie rozmiaru wdrożenia i wymaganego celu czasu odzyskiwania (RTO).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o [przy użyciu usługi Menedżer urządzeń StorSimple do administrowania urządzeniem StorSimple](storsimple-8000-manager-service-administration.md).
+Dowiedz się więcej o [korzystaniu z usługi StorSimple Menedżer urządzeń w celu administrowania urządzeniem StorSimple](storsimple-8000-manager-service-administration.md).
 

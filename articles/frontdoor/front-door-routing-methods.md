@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure drzwiami frontowymi — metody routingu ruchu | Dokumentacja firmy Microsoft
-description: Ten artykuł pomoże Ci zrozumieć metody routingu ruchu innego, używany przy wejściu
+title: Usługa frontonu platformy Azure — metody routingu ruchu | Microsoft Docs
+description: Ten artykuł ułatwia zapoznanie się z różnymi metodami routingu ruchu używanymi przez tylne drzwi
 services: front-door
 documentationcenter: ''
 author: sharad4u
@@ -12,79 +12,79 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: bd1278db43ba31ed78f13a826a330e16c3bc8d57
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60736228"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382082"
 ---
-# <a name="front-door-routing-methods"></a>Metody routingu drzwi
+# <a name="front-door-routing-methods"></a>Metody routingu przed drzwiami
 
-Usługa Azure drzwiami frontowymi obsługuje różne metody routingu ruchu, aby określić, jak kierować ruch HTTP/HTTPS do różnych punktów końcowych usługi. Dla każdego żądania klienta osiągnięcia drzwiami frontowymi skonfigurowana metoda routingu zostanie zastosowany na upewnij się, że żądania są przekazywane do najlepszych wystąpienia zaplecza. 
+Usługa frontonu platformy Azure obsługuje różne metody routingu ruchu, aby określić sposób kierowania ruchu HTTP/HTTPS do różnych punktów końcowych usługi. W przypadku każdego żądania klientów, który dociera do przodu, skonfigurowana Metoda routingu zostanie zastosowana w celu upewnienia się, że żądania są przekazywane do najlepszego wystąpienia zaplecza. 
 
-Dostępne są cztery główne pojęcia do kierowania ruchu w drzwi wejściowe:
+Istnieją cztery główne koncepcje dotyczące routingu ruchu dostępnego w drzwiach czołowych:
 
-* **[Opóźnienie](#latency):** Routing oparty na opóźnienie gwarantuje, że żądania są wysyłane do najniższego zaplecza opóźnienie dopuszczalne w zakresie poufności. Po prostu żądań użytkownika są wysyłane do zestawu "najbliższy" zapleczy w odniesieniu do opóźnienia sieci.
-* **[Priorytet](#priority):** Jeśli chcesz użyć podstawowa usługa zaplecza dla całego ruchu, a wykonywanie kopii zapasowych w przypadku, gdy główna osoba kontaktowa lub kopii zapasowej zaplecza są niedostępne, można przypisać priorytety do różnych zaplecza.
-* **[Ważona średnia](#weighted):** Jeśli chcesz dystrybuować ruch w zestawie zaplecza, równomiernie lub według wagi współczynniki można przypisać wagi do różnych zaplecza.
-* **Koligacja sesji:** Możesz skonfigurować sesję, którą koligacji dla hostów serwera sieci Web lub domen, jeśli chcesz, że kolejne żądania od użytkownika, są wysyłane do tego samego zaplecza, tak długo, jak sesja użytkownika jest nadal aktywne i wystąpienia wewnętrznej bazy danych nadal zgłasza dobrej kondycji oparte na sond kondycji. 
+* **[Opóźnienie](#latency):** Routing oparty na opóźnieniu gwarantuje, że żądania są wysyłane do najniższych opóźnień zaakceptowanych w zakresie czułości. W zasadzie żądania użytkownika są wysyłane do "najbliższego" zestawu załączeń w odniesieniu do opóźnienia sieci.
+* **[Priorytet](#priority):** Można przypisać priorytety do różnych zaplecza, gdy chcesz użyć podstawowego zaplecze usługi dla całego ruchu, i podać kopie zapasowe w przypadku, gdy podstawowy lub zapasowy frontonu są niedostępne.
+* **[Ważone](#weighted):** Można przypisywać wagi do różnych punktów końcowych, gdy chcesz rozpowszechnić ruch między zestawem założonych punktów końcowych, a nawet zgodnie z współczynnikiem ważenia.
+* **Koligacja sesji:** Koligację sesji dla hostów frontonu lub domen można skonfigurować w taki sposób, aby kolejne żądania od użytkownika były wysyłane do tego samego zaplecza, o ile sesja użytkownika nadal jest aktywna, a wystąpienie zaplecza nadal zgłasza w dobrej kondycji w oparciu o sondy kondycji. 
 
-Wszystkie konfiguracje usługi Front Door obejmują monitorowanie kondycji zaplecza i zautomatyzowane, natychmiastowe przechodzenie do trybu failover w skali globalnej. Aby uzyskać więcej informacji, zobacz [drzwiami frontowymi wewnętrznej bazy danych monitorowania](front-door-health-probes.md). Twoje drzwiami frontowymi można skonfigurować do pracy, albo na podstawie jednej metody routingu i w zależności od aplikacji wymaga służy wielu lub wszystkich tych metod routingu w połączeniu Tworzenie optymalnych topologię routingu.
+Wszystkie konfiguracje usługi Front Door obejmują monitorowanie kondycji zaplecza i zautomatyzowane, natychmiastowe przechodzenie do trybu failover w skali globalnej. Aby uzyskać więcej informacji, zobacz [monitorowanie zaplecza front-drzwi](front-door-health-probes.md). Drzwi frontonu można skonfigurować do pracy na podstawie pojedynczej metody routingu i w zależności od potrzeb aplikacji można użyć wielu lub wszystkich tych metod routingu w połączeniu, aby utworzyć optymalną topologię routingu.
 
-## <a name = "latency"></a>Najniższe opóźnienia na podstawie routing ruchu
+## <a name = "latency"></a>Najniższe opóźnienia oparte na routingu ruchu
 
-Wdrażanie zapleczy w co najmniej dwóch lokalizacjach na całym świecie może zwiększyć szybkość reakcji z wielu aplikacji, kierując ruch do lokalizacji, która jest najbliżej, użytkownikom końcowym. Domyślną metodę routingu ruchu dla danej konfiguracji drzwiami frontowymi przekazuje żądania od użytkowników końcowych do najbliższego serwera zaplecza ze środowiska drzwiami frontowymi, który odebrał żądanie. W połączeniu z architekturą emisji dowolnej usługi Azure Service drzwiami frontowymi takie podejście zapewnia, że każdy z użytkowników końcowych get maksymalną wydajność spersonalizowane na podstawie ich lokalizacji.
+Wdrożenie zaplecza w co najmniej dwóch lokalizacjach na całym świecie może zwiększyć czas odpowiedzi wielu aplikacji przez kierowanie ruchu do lokalizacji najbliżej użytkowników końcowych. Domyślna metoda routingu ruchu dla konfiguracji z drzwiami wstępnymi przekazuje żądania od użytkowników końcowych do najbliższej zaplecza ze środowiska z drzwiami, które odebrało żądanie. W połączeniu z architekturą emisji dowolnej platformy Azure, takie podejście zapewnia, że każdy użytkownik końcowy otrzymuje maksymalną wydajność spersonalizowaną na podstawie ich lokalizacji.
 
-"Najbliższy" wewnętrznej bazy danych nie jest koniecznie najbliższego mierzony geograficznej odległości. Zamiast tego drzwiami frontowymi określa najbliższego zaplecza aplikacji przez dokonywanie pomiarów opóźnienia sieci. Przeczytaj więcej na temat [architekturę routingu drzwiami frontowymi](front-door-routing-architecture.md). 
+Zaplecze "najbliższy" nie musi być najbliżej siebie mierzone przez odległość geograficzną. Zamiast tego drzwi przede wszystkim określają Najbliższe punkty końcowe, mierząc opóźnienia sieci. Dowiedz się więcej o [architekturze routingu frontonu](front-door-routing-architecture.md). 
 
-Poniżej przedstawiono ogólny przepływ decyzyjny:
+Poniżej znajduje się ogólny przepływ decyzyjny:
 
-| Dostępne zaplecza | Priorytet | Czas oczekiwania na sygnał (oparte na sondę kondycji) | Wagi |
+| Dostępne punkty końcowe | Priorytet | Sygnał opóźnienia (na podstawie sondy kondycji) | Ważenie |
 |-------------| ----------- | ----------- | ----------- |
-| Po pierwsze, zaznacz wszystkie zapleczy, które są włączone i zwracane w dobrej kondycji (200 OK) dla sondy kondycji. Załóżmy, że, istnieje sześć zaplecza, A, B, C, D, E i f., a wśród nich C jest w złej kondycji i E jest wyłączona. Dlatego listę dostępnych zapleczy to A, B, D i F.  | Następnie zaplecza o najwyższym priorytecie wśród nich dostępne są zaznaczone. Załóżmy, że wewnętrznej bazy danych A, B i D mają priorytet 1 i zaplecza F o priorytecie 2. Aby wybrane zapleczy będzie A, B i D.| Wybierz zaplecza z zakresem opóźnienia (co najmniej opóźnienia & czułości opóźnienia w ms określone). Powiedz, jeśli jest 15 ms, B jest 30 ms i D jest 60 ms od środowiska drzwiami frontowymi, gdzie żądania Rozważaliśmy i czułość opóźnienia jest 30 ms, a następnie najniższe opóźnienia puli składa się z wewnętrznej bazy danych, A i B, ponieważ D jest wyższy niż 30 ms od najbliższej wewnętrznej bazy danych, który jest A. | Na koniec drzwiami frontowymi będzie działanie okrężne ruch między końcowego wybranej puli zaplecza w stosunku wagi określony. Powiedz, jeśli ma wewnętrznej bazy danych A wadze 5 i wewnętrznej bazy danych B ma wagę 8, a następnie ruch zostanie przekazany w stosunku 5:8 między zapleczem A i B. |
+| Po pierwsze zaznacz wszystkie załączone punkty końcowe, które są włączone i zwracają w dobrej kondycji (200 OK) dla sondy kondycji. Załóżmy, że istnieje sześć zakończonych nieprawidłowych A, B, C, D, E i F, a wśród nich są w złej kondycji, a E jest wyłączone. Dlatego lista dostępnych punktów końcowych to, B, D i F.  | Następnie wybierane są nadmiarowe górne priorytety spośród dostępnych. Załóżmy, zaplecze A, B i D mają priorytet 1, a zaplecze F ma priorytet 2. Dlatego wybrane punkty końcowe będą mieć wartość, B i D.| Wybierz opcję Zastąp z zakresem opóźnień (co najmniej & opóźnienie w określonych MS). Załóżmy, że jeśli jest 15 MS, B to 30 MS, a D jest 60 MS w środowisku z drzwiami przednimi, gdzie załadowane żądanie i czułość opóźnienia wynosi 30 MS, a najniższa Pula opóźnień składa się z zaplecza A i B, ponieważ D jest więcej niż 30 MS, od najbliższej wewnętrznej bazy danych, która jest. | Na koniec drzwiczki z przodu spowodują założenie, że ruch między ostateczną wybraną pulą założeń zostanie określony w stosunku do określonych wag. Załóżmy, że w przypadku zaplecza A ma wagę 5, a zaplecze B ma wagę 8, ruch będzie dystrybuowany w stosunku 5:8 między zakończonymi koniec a i B. |
 
 >[!NOTE]
-> Domyślnie właściwość czułości opóźnienia jest ustawiona na 0 ms, oznacza to, zawsze przesyła żądanie do najszybszych dostępnych wewnętrznej bazy danych.
+> Domyślnie właściwość czułość opóźnienia jest ustawiona na wartość 0 MS, czyli zawsze przekazuje żądanie do najszybszych dostępnych zaplecza.
 
 
-## <a name = "priority"></a>Oparte na priorytetach routingu ruchu
+## <a name = "priority"></a>Ruch oparty na priorytetach — Routing
 
-Często organizacja chce zapewniają niezawodność swoich usług, wdrażając co najmniej jedna usługa tworzenia kopii zapasowych w przypadku, gdy ich podstawowa usługa ulegnie awarii. Ta topologia w branży, jest również określany jako aktywnego/w gotowości, lub aktywny/pasywny topologia wdrażania. Metody routingu ruchu "Priority" umożliwia klientom platformy Azure można łatwo zaimplementować ten wzorzec pracy awaryjnej.
+Często organizacja chce zapewnić niezawodność swoich usług, wdrażając co najmniej jedną usługę tworzenia kopii zapasowych na wypadek awarii usługi podstawowej. W branży Ta topologia jest również nazywana topologią wdrożenia Active/standby lub aktywny/pasywny. Metoda routingu ruchu "Priority" pozwala klientom platformy Azure łatwo zaimplementować ten wzorzec trybu failover.
 
-Domyślne drzwiami frontowymi zawiera listę zaplecza w taki sam priorytet. Domyślnie drzwiami frontowymi wysyła ruch tylko do zaplecza o najwyższym priorytecie (najmniejsza wartość priorytetu) oznacza to, że podstawowy zestaw zaplecza. Jeśli podstawowy zaplecza nie są dostępne, drzwiami frontowymi kieruje ruchem do pomocniczego zestawu zaplecza (drugą najniższą wartość priorytetu). Jeśli podstawowe i pomocnicze zaplecza nie są dostępne, ruch jest przesyłany do innego i tak dalej. Dostępność usługi wewnętrznej bazy danych zależy od skonfigurowanego stanu (włączone lub wyłączone), a następnie sondy stanu kondycji trwającą wewnętrznej bazy danych, zgodnie z ustaleniami kondycji.
+Domyślne drzwi czołowe zawierają listę o równym priorytecie. Domyślnie drzwiczki z przodu wysyłają ruch tylko do frontonu o najwyższym priorytecie (najniższa wartość dla priorytetu), czyli podstawowego zestawu punktów końcowych. Jeśli podstawowe punkty końcowe nie są dostępne, drzwi z przodu kierują ruch do pomocniczego zestawu nadmiarowego (druga najniższa wartość dla priorytetu). Jeśli zarówno podstawowy, jak i pomocniczy punkt końcowy są niedostępne, ruch przechodzi do trzeciego i tak dalej. Dostępność zaplecza jest oparta na skonfigurowanym stanie (włączonym lub wyłączonym) oraz aktualnemu statusowi kondycji zaplecza określonym przez sondy kondycji.
 
-### <a name="configuring-priority-for-backends"></a>Konfigurowanie priorytetu dla zaplecza
+### <a name="configuring-priority-for-backends"></a>Konfigurowanie priorytetu dla frontonów
 
-Każda z zaplecza w puli zaplecza w ramach konfiguracji drzwiami frontowymi ma właściwość o nazwie "Priority", który może być liczbą z przedziału od 1 do 5. Usługa Azure Service drzwiami frontowymi możesz skonfigurować priorytet zaplecza jawnie przy użyciu tej właściwości dla poszczególnych pól zaplecza. Ta właściwość jest wartością z zakresu od 1 do 5. Niższe wartości reprezentują wyższy priorytet. Zaplecza mogą udostępniać wartości priorytetu.
+Każdy z zapleców w puli zaplecza w ramach konfiguracji z drzwiami wstępnymi ma właściwość o nazwie "Priority", która może być liczbą z zakresu od 1 do 5. Za pomocą usługi Azure Front drzwiczk można jawnie skonfigurować priorytet zaplecza przy użyciu tej właściwości dla każdego zaplecza. Ta właściwość jest wartością z przedziału od 1 do 5. Niższe wartości reprezentują wyższy priorytet. Nadkończeniey mogą udostępniać wartości priorytetowe.
 
-## <a name = "weighted"></a>Metody routingu ruchu ważonego
-"Ważona" metody routingu ruchu pozwala równomierne rozłożenie ruchu sieciowego lub użyć wstępnie zdefiniowanych wagi.
+## <a name = "weighted"></a>Ważony ruch sieciowy — Metoda routingu
+"Ważona" Metoda routingu ruchu umożliwia równomierne dystrybuowanie ruchu lub użycie wstępnie zdefiniowanej wagi.
 
-W ważona metody routingu ruchu należy przypisać wagi do poszczególnych pól zaplecza w konfiguracji drzwiami frontowymi puli zaplecza. Waga jest liczbą całkowitą z zakresu od 1 do 1000. Ten parametr używa domyślna grubość "50".
+W przypadku metody routingu ruchu ważonego można przypisać wagę do każdego zaplecza w konfiguracji z drzwiami w puli zaplecza. Waga jest liczbą całkowitą z zakresu od 1 do 1000. Ten parametr używa domyślnej wagi "50".
 
-Wśród listę dostępnych zaplecza w obrębie czułości akceptowane opóźnienia (jak określono) ruch pobiera dystrybuowane w mechanizm działanie okrężne współczynnika wagi określony. Czułość czas oczekiwania jest równa 0 milisekund, następnie właściwość ta nie zostaną uwzględnione, chyba że istnieją dwa zaplecza przy użyciu tego samego opóźnienia sieci. 
+Na liście dostępnych założeń w ramach zaakceptowanej czułości opóźnienia (jak określono) ruch jest dystrybuowany w mechanizmie okrężnym w stosunku do określonych wag. Jeśli wartość ustawienia czułość opóźnienia jest ustawiona na 0 milisekund, ta właściwość nie zacznie obowiązywać, chyba że istnieją dwa punkty końcowe z tym samym opóźnieniem sieci. 
 
-Metoda ważona zapewnia pewne przydatne w scenariuszach:
+Metoda ważona umożliwia kilka przydatnych scenariuszy:
 
-* **Uaktualnienie stopniowe aplikacji**: Przydzielanie procent ruchu sieciowego, aby kierować do nowego zaplecza i stopniowo zwiększać ruchu, wraz z upływem czasu, co par innych zapleczy przełoży się.
-* **Migracja aplikacji na platformie Azure**: Utwórz pulę zaplecza przy użyciu zaplecza aplikacji zarówno dla platformy Azure, jak i zewnętrznych. Dostosuj wagę zaplecza preferowanie nowego zaplecza. Stopniowo skonfigurowaniem to począwszy od konieczności nowych zapleczy, które są wyłączone, następnie przypisując im wag najniższy powoli zwiększenie poziomów, w którym przyjmują większość ruchu. Następnie na końcu wyłączenie mniej preferowanych zaplecza i usunięcie ich z puli.  
-* **Rozszerzanie możliwości chmury za dodatkową pojemność**: Szybko rozbudować wdrożenia lokalnego do chmury, ustawiając dla niego za wejściu. Jeśli potrzebujesz dodatkowej pojemności w chmurze, należy dodać lub włączyć więcej zaplecza i określić, jaka część ruchu jest przesyłany do poszczególnych pól zaplecza.
+* **Stopniowe Uaktualnianie aplikacji**: przydzielanie procentu ruchu, który ma być kierowany do nowego zaplecza, i stopniowe zwiększanie ruchu w czasie, aby zapewnić jego wartość nominalną z innymi założeniami.
+* **Migrowanie aplikacji na platformę Azure**: Utwórz pulę zaplecza z platformą Azure i zewnętrznym zapleczem. Dostosuj grubość założenia, aby preferować nowe założenia. Można stopniowo ustawiać te ustawienia, zaczynając od od momentu wyłączenia nowych załączeń, a następnie przypisując im najniższe wagi, spowalniając je na poziomach, w których są one odbierane. Następnie należy wyłączyć mniej preferowane punkty końcowe i usunąć je z puli.  
+* Przenoszenie w **chmurze w celu uzyskania dodatkowej pojemności**: szybkie rozszerzanie lokalnego wdrożenia na chmurę przez umieszczenie go za drzwiami przednimi. Jeśli potrzebujesz dodatkowej pojemności w chmurze, możesz dodać lub włączyć więcej zaplecza i określić, jaka część ruchu przechodzi do każdego zaplecza.
 
 ## <a name = "affinity"></a>Koligacja sesji
-Domyślnie bez koligacji sesji drzwiami frontowymi przekazuje żądania pochodzące z tego samego klienta do różnych zaplecza na podstawie obciążenia równoważenia szczególnie, jak zmienić opóźnienia do różnych zaplecza, lub jeśli różne żądania z tego samego użytkownika gruntów w innym środowisku wejściu. Jednak w przypadku niektórych aplikacji stanowych lub pewnych innych scenariuszy preferowane jest kierowanie kolejnych żądań pochodzących od danego użytkownika do tego samego zaplecza, które przetworzyło początkowe żądanie. Funkcja koligacji sesji na podstawie plików cookie jest przydatna, gdy chcesz utrzymać sesję użytkownika w ramach jednego zaplecza. Za pomocą plików cookie drzwiami frontowymi zarządzane, Azure drzwiami frontowymi Service można kierować dalszy ruch z sesji użytkownika do tej samej wewnętrznej bazy danych do przetwarzania, tak długo, jak wewnętrznej bazy danych jest w dobrej kondycji i sesji użytkownika nie wygasło. 
+Domyślnie, bez koligacji sesji, przód i przód przesyłają żądania pochodzące z tego samego klienta do różnych punktów końcowych w oparciu o konfigurację równoważenia obciążenia, szczególnie jako opóźnienia do różnych zmian zachodzących lub różne żądania od tego samego użytkownika grunty w innym środowisku przednim. Jednak w przypadku niektórych aplikacji stanowych lub pewnych innych scenariuszy preferowane jest kierowanie kolejnych żądań pochodzących od danego użytkownika do tego samego zaplecza, które przetworzyło początkowe żądanie. Funkcja koligacji sesji na podstawie plików cookie jest przydatna, gdy chcesz utrzymać sesję użytkownika w ramach jednego zaplecza. Dzięki użyciu plików cookie z funkcji front-drzwi usługa Azure Front-drzwiczk może kierować kolejny ruch z sesji użytkownika do tego samego zaplecza na potrzeby przetwarzania, o ile jest w dobrej kondycji, a sesja użytkownika nie wygasła. 
 
 Koligację sesji można włączyć na poziomie hosta frontonu dla każdej skonfigurowanej domeny (lub poddomeny). Po jej włączeniu usługa Front Door dodaje plik cookie do sesji użytkownika. Funkcja koligacji sesji na podstawie plików cookie umożliwia usłudze Front Door identyfikowanie różnych użytkowników, nawet korzystających z tego samego adresu IP, co z kolei umożliwia bardziej równomierne rozłożenia ruchu na różne zaplecza.
 
 Czas życia pliku cookie jest taki sam jak sesji użytkownika, ponieważ usługa Front Door aktualnie obsługuje tylko pliki cookie sesji. 
 
 > [!NOTE]
-> Publiczne serwery proxy może kolidować z koligacją sesji. Jest to spowodowane ustanowienia sesji wymaga drzwiami frontowymi dodać plik cookie koligacji sesji na potrzeby odpowiedzi, której nie można przeprowadzić, jeśli odpowiedź jest podlega buforowaniu, ponieważ mogłoby zakłócać, pliki cookie innych klientów żądających tego samego zasobu. Aby zabezpieczyć się przed tym, koligacja sesji będzie **nie** ustanawiane, jeśli wewnętrznej bazy danych to jest podejmowana próba, wysyła odpowiedź podlega buforowaniu. Jeśli sesja została ustanowiona, nie ma znaczenia, jeśli odpowiedź z wewnętrznej bazy danych jest podlega buforowaniu, na.
-> Koligacja sesji zostanie nawiązane w następujących okolicznościach **chyba że** odpowiedź ma kod stanu HTTP 304:
-> - Odpowiedź ma określone wartości ustawione dla ```Cache-Control``` nagłówka, które uniemożliwiają buforowania, np. "prywatny" lub nie-store ".
-> - Odpowiedź zawiera ```Authorization``` nagłówek, który nie wygasł.
+> Publiczne serwery proxy mogą zakłócać koligację sesji. Wynika to z faktu, że ustanawianie sesji wymaga, aby dodać do odpowiedzi plik cookie koligacji sesji, którego nie można wykonać, jeśli odpowiedź jest buforowana, ponieważ spowodowałoby to zakłócenie plików cookie innych klientów żądających tego samego zasobu. Aby zapewnić ochronę przed tym, koligacja sesji **nie** zostanie ustanowiona, jeśli zaplecze wyśle odpowiedź w pamięci podręcznej, gdy ta próba zostanie podjęta. Jeśli sesja została już ustanowiona, nie ma znaczenia, czy odpowiedź z zaplecza jest buforowana.
+> Koligacja sesji zostanie ustanowiona w następujących sytuacjach, **chyba że** odpowiedź ma kod stanu HTTP 304:
+> - Odpowiedź ma określone wartości ustawione dla nagłówka ```Cache-Control```, które uniemożliwiają buforowanie, takie jak "Private" lub "No-Store".
+> - Odpowiedź zawiera nagłówek ```Authorization```, który nie wygasł.
 > - Odpowiedź ma kod stanu HTTP 302.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się, jak [utworzyć usługę Front Door](quickstart-create-front-door.md).
 - Dowiedz się, [jak działa usługa Front Door](front-door-routing-architecture.md).

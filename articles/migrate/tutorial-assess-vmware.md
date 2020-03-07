@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: hamusa
 ms.openlocfilehash: 7f161afe13bad8c548806d4b4ceb9372dc511cc3
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289445"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388903"
 ---
 # <a name="assess-vmware-vms-by-using-azure-migrate-server-assessment"></a>Ocenianie maszyn wirtualnych VMware za pomocą oceny serwera Azure Migrate
 
@@ -20,7 +20,7 @@ W tym artykule opisano sposób oceny lokalnych maszyn wirtualnych VMware przy u�
 
 [Azure Migrate](migrate-services-overview.md) udostępnia centrum narzędzi, które ułatwiają odnajdywanie, ocenianie i Migrowanie aplikacji, infrastruktury i obciążeń do Microsoft Azure. Centrum obejmuje narzędzia Azure Migrate i oferty niezależnych dostawców oprogramowania (ISV) od partnerów firmy Microsoft.
 
-Ten samouczek jest drugą częścią serii, która pokazuje, jak oceniać i migrować maszyny wirtualne VMware na platformę Azure. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek jest drugą częścią serii, która pokazuje, jak oceniać i migrować maszyny wirtualne VMware na platformę Azure. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
 > * Skonfiguruj projekt Azure Migrate.
 > * Skonfiguruj urządzenie Azure Migrate uruchamiane lokalnie w celu oceny maszyn wirtualnych.
@@ -59,7 +59,7 @@ Skonfiguruj nowy projekt Azure Migrate w następujący sposób:
 
 1. W obszarze **wprowadzenie**wybierz pozycję **Dodaj narzędzia**.
 1. W obszarze **Projekt migracji**wybierz subskrypcję platformy Azure i utwórz grupę zasobów, jeśli jej nie masz.     
-1. W obszarze **szczegóły projektu**Określ nazwę projektu i geografię, w której chcesz utworzyć projekt. Obsługiwane są Azja, Europa, Zjednoczone Królestwo i Stany Zjednoczone.
+1. W obszarze **szczegóły projektu**Określ nazwę projektu i geografię, w której chcesz utworzyć projekt. Obsługiwane są Azja, Europa, Wielka Brytania i Stany Zjednoczone.
 
    Lokalizacja geograficzna projektu jest używana wyłącznie do przechowywania metadanych zebranych z lokalnych maszyn wirtualnych. Podczas przeprowadzania migracji można wybrać dowolny region docelowy.
 

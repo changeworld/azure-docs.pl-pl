@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory
+title: Usługa Azure Active Directory
 description: Dowiedz się, jak używać Azure Active Directory do uwierzytelniania za pomocą SQL Database, wystąpienia zarządzanego i usługi Azure Synapse
 services: sql-database
 ms.service: sql-database
@@ -13,11 +13,11 @@ ms.reviewer: vanto, carlrab
 ms.date: 02/05/2020
 tags: azure-synapse
 ms.openlocfilehash: 818337f478a506f80ba87979aa1915d54e6457cf
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78193785"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374031"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>Używanie uwierzytelniania Azure Active Directory na potrzeby uwierzytelniania przy użyciu programu SQL Server
 

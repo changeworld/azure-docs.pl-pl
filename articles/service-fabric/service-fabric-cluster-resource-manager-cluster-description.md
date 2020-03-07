@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 7142e3f9aaa25e7ba327194c04ad6a9b5f4e3ad1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774471"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389170"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Opisywanie klastra Service Fabric przy użyciu Menedżer zasobów klastra
 Funkcja Menedżer zasobów klastra platformy Azure Service Fabric oferuje kilka mechanizmów opisywania klastra:
@@ -237,7 +237,7 @@ W poprzednim układzie, jeśli wartość **wartość targetreplicasetsize** jest
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
-| **UD0** |ND |ND |ND |ND |ND |ND |
+| **UD0** |Brak |Brak |Brak |Brak |Brak |Brak |
 | **UD1** |R2 | | | | |1 |
 | **UD2** | |R3 |R4 | | |2 |
 | **UD3** | | | |R1 | |1 |
@@ -347,7 +347,7 @@ Czasami (w przypadku większości czasu) należy upewnić się, że pewne obcią
 
 Doskonałym przykładem określania sprzętu dla konkretnych obciążeń jest niemal każda architektura n-warstwowa. Niektóre maszyny służą jako fronton lub strona obsługująca interfejs API aplikacji i są udostępniane klientom lub w Internecie. Różne komputery, często z różnymi zasobami sprzętowymi, obsługują zadania obliczeniowe i warstwy magazynu. Zwykle _nie_ są one ujawniane bezpośrednio klientom ani internetowi. 
 
-Service Fabric oczekuje, że w niektórych przypadkach może być konieczne uruchomienie konkretnych obciążeń w określonych konfiguracjach sprzętu. Przykład:
+Service Fabric oczekuje, że w niektórych przypadkach może być konieczne uruchomienie konkretnych obciążeń w określonych konfiguracjach sprzętu. Na przykład:
 
 * Istniejąca aplikacja n-warstwowa została podniesiona i przeniesiona do środowiska Service Fabric.
 * Obciążenie musi być uruchamiane na określonym sprzęcie dla powodów związanych z wydajnością, skalą lub izolacją zabezpieczeń.
@@ -375,7 +375,7 @@ Wartość określona we właściwości węzła może być ciągiem, wartością 
 
 * Sprawdzanie warunkowe do tworzenia określonych instrukcji:
 
-  | Merge | Składnia |
+  | Wyciąg | Składnia |
   | --- |:---:|
   | "równa się" | "==" |
   | "nie równa się" | "!=" |
@@ -386,7 +386,7 @@ Wartość określona we właściwości węzła może być ciągiem, wartością 
 
 * Instrukcje logiczne dla operacji grupowania i logicznego:
 
-  | Merge | Składnia |
+  | Wyciąg | Składnia |
   | --- |:---:|
   | lub | "&&" |
   | oraz | "&#124;&#124;" |

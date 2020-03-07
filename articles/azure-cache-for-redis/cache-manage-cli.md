@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: yegu
 ms.openlocfilehash: e2b1ed693ea57e3414d465a57a5ba2b1203f67c5
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121887"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78371990"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Jak utworzyć usługę Azure cache for Redis i zarządzać nią przy użyciu klasycznego interfejsu wiersza polecenia platformy Azure
 > [!div class="op_single_selector"]
-> * [Program PowerShell](cache-how-to-manage-redis-cache-powershell.md)
+> * [PowerShell](cache-how-to-manage-redis-cache-powershell.md)
 > * [Klasyczny interfejs wiersza polecenia platformy Azure](cache-manage-cli.md)
 >
 
@@ -50,7 +50,7 @@ Następujące właściwości są używane podczas tworzenia i aktualizowania us�
 | Virtual Network |-v,--Virtual-Network |W przypadku hostowania pamięci podręcznej w sieci wirtualnej określa dokładnego identyfikatora zasobu usługi ARM do wdrożenia pamięci podręcznej platformy Azure dla Redis w systemie. Przykładowy format:/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | Typ klucza |-t,--typ klucza |Typ klucza do odnowienia. Prawidłowe wartości: [podstawowa, pomocnicza] |
 | StaticIP |-p,--Static-IP \<Static-IP\> |W przypadku hostowania pamięci podręcznej w sieci wirtualnej określa unikatowy adres IP w podsieci dla pamięci podręcznej. Jeśli nie zostanie podany, jeden z nich zostanie wybrany dla Ciebie z podsieci. |
-| Subnet |t,--podsieć \<podsieci\> |W przypadku hostowania pamięci podręcznej w sieci wirtualnej określa nazwę podsieci, w której ma zostać wdrożona pamięć podręczna. |
+| Podsieć |t,--podsieć \<podsieci\> |W przypadku hostowania pamięci podręcznej w sieci wirtualnej określa nazwę podsieci, w której ma zostać wdrożona pamięć podręczna. |
 | VirtualNetwork |-v,--Virtual-Network \<Virtual-Network\> |W przypadku hostowania pamięci podręcznej w sieci wirtualnej określa dokładnego identyfikatora zasobu usługi ARM do wdrożenia pamięci podręcznej platformy Azure dla Redis w systemie. Przykładowy format:/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | Subskrypcja |-s,--subskrypcja |Identyfikator subskrypcji. |
 
@@ -86,7 +86,7 @@ Aby wyświetlić wszystkie polecenia usługi Azure cache for Redis i ich paramet
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-## <a name="create-an-azure-cache-for-redis"></a>Tworzenie pamięci podręcznej Azure dla usługi Redis
+## <a name="create-an-azure-cache-for-redis"></a>Tworzenie usługi Azure Cache for Redis
 Aby utworzyć pamięć podręczną platformy Azure dla usługi Redis, użyj następującego polecenia:
 
     azure rediscache create [--name <name> --resource-group <resource-group> --location <location> [options]]

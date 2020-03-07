@@ -1,7 +1,7 @@
 ---
-title: Interpretacja semantyczna — interfejs API usługi Eksploracja wiedzy
+title: Interpretacja semantyczna — interfejs API Knowledge Exploration Service
 titlesuffix: Azure Cognitive Services
-description: Dowiedz się, jak używać interpretacja semantyczna w wiedzy Exploration Service (KES) interfejsu API.
+description: Dowiedz się, jak używać interpretacji semantyki w interfejsie API Knowledge Exploration Service (KES).
 services: cognitive-services
 author: bojunehsu
 manager: nitinme
@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
 ms.openlocfilehash: 26f8d885f8cf85ab849ba221392df206e492aac4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60814471"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385657"
 ---
 # <a name="semantic-interpretation"></a>Interpretacja semantyczna
 
-Interpretacja semantyczna kojarzy semantycznego dane wyjściowe z każdej ścieżki interpretowanych za pośrednictwem gramatyki.  W szczególności usługa oblicza sekwencja instrukcji w `tag` przejść elementów interpretacji do obliczenia z końcowych danych wyjściowych.  
+Interpretacja semantyczna kojarzy dane wyjściowe semantyczne z każdą interpretowaną ścieżką za pomocą gramatyki.  W szczególności usługa szacuje sekwencję instrukcji w `tag` elementy, które przechodzą przez interpretację, aby obliczyć końcowe dane wyjściowe.  
 
-Instrukcja może być przypisanie literałem lub zmienną do innej zmiennej.  On również przypisać dane wyjściowe funkcji z atrybutem 0 lub większą liczbę parametrów do zmiennej.  Każdy parametr funkcji może być określona za pomocą literałem lub zmienną.  Jeśli funkcja nie zwraca żadnych danych wyjściowych, przypisanie zostanie pominięty.
+Instrukcja może być przypisaniem literału lub zmiennej do innej zmiennej.  Może również przypisać dane wyjściowe funkcji z 0 lub więcej parametrów do zmiennej.  Każdy parametr funkcji można określić przy użyciu literału lub zmiennej.  Jeśli funkcja nie zwróci żadnych danych wyjściowych, przypisanie zostanie pominięte.
 
 ```xml
 <tag>x = 1; y = x;</tag>
@@ -29,43 +29,43 @@ Instrukcja może być przypisanie literałem lub zmienną do innej zmiennej.  On
 <tag>AssertEquals(x, 1);</tag>
 ```
 
-Zmienna jest określona za pomocą identyfikator nazwy, który rozpoczyna się od litery i zawiera tylko litery (A – Z), cyfry (0 – 9) i znak podkreślenia (\_).  Niejawnie wywnioskować jej typu z literału lub funkcja wyjścia wartości przypisanej do niego. 
+Zmienna jest określana przy użyciu identyfikatora nazwy, który rozpoczyna się od litery i zawiera tylko litery (A – Z), cyfry (0-9) i podkreślenia (\_).  Jego typ jest niejawnie wnioskowany z przypisanej do niego wartości wyjściowej literału lub funkcji. 
 
-Poniżej znajduje się lista aktualnie obsługiwanych typów danych:
+Poniżej znajduje się lista obecnie obsługiwanych typów danych:
 
 |Typ|Opis|Przykłady|
 |----|----|----|
-|String|Sekwencja 0 lub więcej znaków|"Hello World!"<br/>""|
+|Ciąg|Sekwencja 0 lub więcej znaków|"Hello world!"<br/>""|
 |Bool|Wartość logiczna|true<br/>false|
-|Int32|całkowita 32-bitowych.  -2.1e9 do 2.1e9|123<br/>-321|
-|Int64|Całkowita 64-bitowych. -9.2e18 i 9.2e18|9876543210|
-|Double|Zmiennoprzecinkowe podwójnej precyzji. 308 (15 cyfr) 1, 7e|123.456789<br/>1.23456789e2|
+|Int32|32-bitowa liczba całkowita ze znakiem.  -2.1 E9 do 2.1 E9|123<br/>-321|
+|Int64|64-bitowa liczba całkowita ze znakiem. -9.2 E18 i 9.2 E18|9876543210|
+|Podwójne|Liczba zmiennoprzecinkowa o podwójnej precyzji. 1.7 e +/– 308 (15 cyfr)|123,456789<br/>1.23456789 E2|
 |Guid|Unikatowy identyfikator globalny|"602DD052-CC47-4B23-A16A-26B52D30C05B"|
-|Zapytanie|Wyrażenie zapytania, które określa podzbiór obiektów danych w indeksie|All()<br/>I (*q1*, *q2*)|
+|Zapytanie|Wyrażenie zapytania określające podzestaw obiektów danych w indeksie|Wszystkie ()<br/>I (*Q1*, *Q2*)|
 
 ## <a name="semantic-functions"></a>Funkcje semantyczne
 
-Istnieje zestaw wbudowanych funkcji semantycznego.  Zezwalaj na construction zaawansowanych zapytań i zapewniają kontekstowe kontrolę nad interpretacji gramatyki.
+Istnieje wbudowany zestaw funkcji semantycznych.  Umożliwiają one konstruowanie zaawansowanych zapytań i zapewniają kontrolę kontekstową na interpretacji gramatyki.
 
-### <a name="and-function"></a>I — funkcja
+### <a name="and-function"></a>And — funkcja
 
 `query = And(query1, query2);`
 
-Zwraca zapytanie składające się z część wspólną dwóch danych wejściowych zapytań.
+Zwraca zapytanie złożone z przecięcia dwóch zapytań wejściowych.
 
-### <a name="or-function"></a>Lub — funkcja
+### <a name="or-function"></a>Or — funkcja
 
 `query = Or(query1, query2);`
 
-Zwraca zapytanie składające się z sumę dwóch danych wejściowych zapytań.
+Zwraca zapytanie składające się z Unii dwóch zapytań wejściowych.
 
-### <a name="all-function"></a>Wszystkie funkcje
+### <a name="all-function"></a>All — funkcja
 
 `query = All();`
 
 Zwraca zapytanie, które zawiera wszystkie obiekty danych.
 
-W poniższym przykładzie używamy funkcji All() iteracyjne zaczynały być zapytania opartego na przecięciu 1 lub więcej słów kluczowych.
+W poniższym przykładzie używamy funkcji All () w celu iteracyjnego kompilowania zapytania na podstawie przecięcia z 1 lub więcej słów kluczowych.
 
 ```
 <tag>query = All();</tag>
@@ -75,13 +75,13 @@ W poniższym przykładzie używamy funkcji All() iteracyjne zaczynały być zapy
 </item>
 ```
 
-### <a name="none-function"></a>Brak funkcji
+### <a name="none-function"></a>None — funkcja
 
 `query = None();`
 
-Zwraca zapytanie, które zawiera żadnych obiektów danych.
+Zwraca zapytanie, które nie zawiera żadnych obiektów danych.
 
-W poniższym przykładzie używamy funkcji None() iteracyjne zaczynały być zapytań, w zależności od Unii 1 lub więcej słów kluczowych.
+W poniższym przykładzie używamy funkcji None () w celu iteracyjnego kompilowania zapytania w oparciu o Unię 1 lub więcej słów kluczowych.
 
 ```
 <tag>query = None();</tag>
@@ -91,16 +91,16 @@ W poniższym przykładzie używamy funkcji None() iteracyjne zaczynały być zap
 </item>
 ```
 
-### <a name="query-function"></a>Zapytania — funkcja
+### <a name="query-function"></a>Funkcja zapytania
 
 ```
 query = Query(attrName, value)
 query = Query(attrName, value, op)
 ```
 
-Zwraca zapytanie, które zawiera tylko obiekty danych, których atrybut *attrName* zgodna z wartością *wartość* według określonej operacji *op*, którego wartość domyślna to "eq".  Zazwyczaj używane `attrref` element, aby utworzyć zapytanie na podstawie ciągu kwerendy wejściowej dopasowane.  Jeśli wartość jest podany lub uzyskane w inny sposób, funkcja Query() można utworzyć kwerendę dopasowania tę wartość.
+Zwraca zapytanie, które zawiera tylko obiekty danych, których atrybut *attrName* pasuje do *wartości* wartości zgodnie z *określoną operacją*operacji, której wartością domyślną jest "EQ".  Zazwyczaj Użyj elementu `attrref`, aby utworzyć zapytanie na podstawie dopasowanego ciągu zapytania wejściowego.  Jeśli wartość jest określona lub uzyskana za pośrednictwem innych metod, można użyć funkcji Query (), aby utworzyć zapytanie pasujące do tej wartości.
 
-W poniższym przykładzie używamy funkcji Query() zaimplementować obsługę określania akademickich publikacje z dziesiętnym.
+W poniższym przykładzie użyto funkcji Query () w celu zaimplementowania obsługi określania publikacji akademickich z określonej dekady.
 
 ```xml
 written in the 90s
@@ -111,57 +111,57 @@ written in the 90s
 </tag>
 ```
 
-### <a name="composite-function"></a>Composite — funkcja
+### <a name="composite-function"></a>Funkcja złożona
 
 `query = Composite(innerQuery);`
 
-Zwraca zapytanie, która hermetyzuje *innerQuery* składa się z odpowiedników podrzędnych atrybuty wspólny atrybut złożonego *attr*.  Hermetyzacja wymaga złożonej atrybutu *attr* dowolnego zgodnego obiektu danych, mieć co najmniej jedną wartość, która spełnia indywidualnie *innerQuery*.  Pamiętaj, że zapytania podrzędne atrybutów złożonego atrybutu musi być zhermetyzowany przy użyciu funkcji Composite(), zanim można łączyć z innymi zapytaniami.
+Zwraca zapytanie, które hermetyzuje *innerQuery* złożone z dopasowań względem atrybutów podrzędnych *wspólnego atrybutu złożonej atrybutów.*  Hermetyzacja wymaga, *Aby atrybut złożonego atrybutu każdego* pasującego obiektu danych miał co najmniej jedną wartość, która indywidualnie spełnia *innerQuery*.  Należy pamiętać, że zapytanie dotyczące atrybutów podrzędnych atrybutu złożonego musi być hermetyzowane przy użyciu funkcji złożonej (), aby można było łączyć ją z innymi zapytaniami.
 
-Na przykład następujące zapytanie zwraca akademickich publikacje według "harry shum" podczas zajmował w "microsoft":
+Na przykład następujące zapytanie zwraca publikacje naukowe według "Harry Shuma", podczas gdy miało "Microsoft":
 ```
 Composite(And(Query("academic#Author.Name", "harry shum"), 
               Query("academic#Author.Affiliation", "microsoft")));
 ```
 
-Z drugiej strony następujące zapytanie zwraca akademickich publikacje, gdzie jest on autorzy "harry shum" i jednym przynależności to "microsoft":
+Z drugiej strony następujące zapytanie zwraca Publikacje akademickie, w których jeden z autorów ma wartość "Harry Shuma" i jeden z przynależności do "Microsoft":
 ```
 And(Composite(Query("academic#Author.Name", "harry shum"), 
     Composite(Query("academic#Author.Affiliation", "microsoft")));
 ```
 
-### <a name="getvariable-function"></a>GetVariable — funkcja
+### <a name="getvariable-function"></a>Getvariable — funkcja
 
 `value = GetVariable(name, scope);`
 
-Zwraca wartość zmiennej *nazwa* zdefiniowanego w określonym *zakres*.  *Nazwa* to identyfikator zaczynał się literą, która zawiera tylko litery (A – Z), cyfry (0 – 9) i podkreślenia (_).  *zakres* może być równa "żądanie" lub "system".  Należy pamiętać, że zmienne zdefiniowane w różnych zakresach różnią się od siebie nawzajem, tym zdefiniowane za pomocą danych wyjściowych funkcji semantycznego.
+Zwraca wartość *nazwy* zmiennej zdefiniowanej w określonym *zakresie*.  *Nazwa* jest identyfikatorem rozpoczynającym się od litery i zawiera tylko litery (a – z), cyfry (0-9) i znak podkreślenia (_).  *zakres* może być ustawiony na "Request" lub "system".  Należy zauważyć, że zmienne zdefiniowane w różnych zakresach różnią się od siebie, w tym zdefiniowane za pośrednictwem danych wyjściowych funkcji semantycznych.
 
-Zmienne zakresu żądania są współużytkowane przez wszystkie interpretacji w bieżącym żądaniu interpretację.  One może służyć do kontrolowania Wyszukaj interpretacji za pośrednictwem gramatyki.
+Zmienne zakresu żądania są współużytkowane przez wszystkie interpretacje w ramach bieżącego żądania interpretacji.  Mogą służyć do sterowania wyszukiwaniem interpretacji na potrzeby gramatyki.
 
-Zmienne systemowe są wstępnie zdefiniowane przez usługę i może służyć do pobierania różne statystyki dotyczące bieżącego stanu systemu.  Poniżej znajduje się zestaw zmiennych aktualnie obsługiwany system:
+Zmienne systemowe są wstępnie zdefiniowane przez usługę i mogą być używane do pobierania różnych statystyk dotyczących bieżącego stanu systemu.  Poniżej znajduje się zestaw obecnie obsługiwanych zmiennych systemowych:
 
 |Name (Nazwa)|Typ|Opis|
 |----|----|----|
-|IsAtEndOfQuery|Bool|wartość true, jeśli bieżący interpretacji spowodowało dopasowanie całego tekstu kwerendy wejściowej|
-|IsBeyondEndOfQuery|Bool|wartość true, jeśli bieżący interpretacji proponuje uzupełnienia poza tekst wejściowy zapytania|
+|IsAtEndOfQuery|Bool|prawda, jeśli bieżąca interpretacja pasuje do całego tekstu zapytania wejściowego|
+|IsBeyondEndOfQuery|Bool|prawda, jeśli bieżąca interpretacja ma sugerowane zakończenia poza tekstem zapytania wejściowego|
 
-### <a name="setvariable-function"></a>SetVariable — funkcja
+### <a name="setvariable-function"></a>Setvariable — funkcja
 
 `SetVariable(name, value, scope);`
 
-Przypisuje *wartość* do zmiennej *nazwa* o określonej nazwie *zakres*.  *Nazwa* to identyfikator zaczynał się literą, która zawiera tylko litery (A – Z), cyfry (0 – 9) i podkreślenia (_).  Obecnie jedyną poprawną wartością dla *zakres* jest "żądania".  Nie ma żadnych zmiennych systemowych do ustawienia.
+Przypisuje *wartość* do *nazwy* zmiennej w określonym *zakresie*.  *Nazwa* jest identyfikatorem rozpoczynającym się od litery i zawiera tylko litery (a – z), cyfry (0-9) i znak podkreślenia (_).  Obecnie jedyną prawidłową wartością dla *zakresu* jest "Request".  Nie istnieją żadne zmienne systemowe settable.
 
-Zmienne zakresu żądania są współużytkowane przez wszystkie interpretacji w bieżącym żądaniu interpretację.  One może służyć do kontrolowania Wyszukaj interpretacji za pośrednictwem gramatyki.
+Zmienne zakresu żądania są współużytkowane przez wszystkie interpretacje w ramach bieżącego żądania interpretacji.  Mogą służyć do sterowania wyszukiwaniem interpretacji na potrzeby gramatyki.
 
-### <a name="assertequals-function"></a>AssertEquals — funkcja
+### <a name="assertequals-function"></a>AssertEquals, funkcja
 
 `AssertEquals(value1, value2);`
 
-Jeśli *wartość1* i *wartość2* są równoważne, funkcja zakończy się pomyślnie i zawiera żadnych efektów ubocznych.  W przeciwnym wypadku funkcja zakończy się niepowodzeniem i odrzuca interpretacji.
+Jeśli *wartość1* i *wartość2* są równoważne, funkcja się powiedzie i nie ma żadnych efektów ubocznych.  W przeciwnym razie funkcja kończy się niepowodzeniem i odrzuca interpretację.
 
-### <a name="assertnotequals-function"></a>AssertNotEquals — funkcja
+### <a name="assertnotequals-function"></a>AssertNotEquals, funkcja
 
 `AssertNotEquals(value1, value2);`
 
-Jeśli *wartość1* i *wartość2* czy nie jest równorzędny, funkcja zakończy się pomyślnie i nie ma żadnych efektów ubocznych.  W przeciwnym wypadku funkcja zakończy się niepowodzeniem i odrzuca interpretacji.
+Jeśli *wartość1* i *wartość2* nie są równoważne, funkcja powiedzie się i nie ma żadnych efektów ubocznych.  W przeciwnym razie funkcja kończy się niepowodzeniem i odrzuca interpretację.
 
 

@@ -12,11 +12,11 @@ ms.reviewer: larryfr
 ms.date: 02/27/2020
 ms.custom: seoapril2019
 ms.openlocfilehash: 388f1cf0231d0a7eae7b059656186b067f537d2e
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250968"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355255"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Wdrażanie modeli przy użyciu Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -670,7 +670,7 @@ W poniższej tabeli opisano różne stany usług:
 | Stan usługi WebService | Opis | Końcowy stan?
 | ----- | ----- | ----- |
 | Przechodzenie | Usługa jest w trakcie wdrażania. | Nie |
-| Nieprawidłowy | Usługa została wdrożona, ale jest obecnie nieosiągalna.  | Nie |
+| W złej kondycji | Usługa została wdrożona, ale jest obecnie nieosiągalna.  | Nie |
 | Unschedulable | Nie można teraz wdrożyć usługi z powodu braku zasobów. | Nie |
 | Niepowodzenie | Wdrożenie usługi nie powiodło się z powodu błędu lub awarii. | Yes |
 | W dobrej kondycji | Usługa jest w dobrej kondycji, a punkt końcowy jest dostępny. | Yes |

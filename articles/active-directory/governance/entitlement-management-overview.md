@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1d1faf501aff8960a4b1961b34164be07b1d685d
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932472"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376699"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Co to jest zarządzanie upoważnieniami w usłudze Azure AD?
 
@@ -38,7 +38,7 @@ Organizacje korporacyjne często napotykają problemy związane z zarządzaniem 
 - Użytkownicy mogą nie wiedzieć, jaki ma dostęp, a nawet jeśli tak, mogą mieć problemy z lokalizowaniem właściwych osób w celu zatwierdzenia dostępu
 - Gdy użytkownicy znajdą i uzyskają dostęp do zasobu, mogą uzyskać dostęp do niego dłużej niż jest to wymagane do celów służbowych
 
-Te problemy są złożone dla użytkowników, którzy potrzebują dostępu z innej organizacji, takich jak użytkownicy zewnętrzni z organizacji łańcucha dostaw lub innych partnerów firmy. Przykład:
+Te problemy są złożone dla użytkowników, którzy potrzebują dostępu z innej organizacji, takich jak użytkownicy zewnętrzni z organizacji łańcucha dostaw lub innych partnerów firmy. Na przykład:
 
 - Żadna osoba nie może znać wszystkich konkretnych osób w katalogach innych organizacji, aby móc je zapraszać
 - Nawet jeśli udało Ci się zaprosić tych użytkowników, nikt w tej organizacji nie może pamiętać o konieczności spójnego zarządzania wszystkimi prawami dostępu użytkownika
@@ -71,7 +71,7 @@ Zarządzanie prawami wprowadza do usługi Azure AD pojęcie *pakietu dostępu*. 
 - Przypisywanie do aplikacji usługi Azure AD Enterprise, w tym aplikacji SaaS i aplikacji zintegrowanych niestandardowo obsługujących Federacji/Logowanie jednokrotne i/lub obsługę administracyjną
 - Członkostwo w witrynach usługi SharePoint Online
 
-Można również kontrolować dostęp do innych zasobów, które są zależne od grup zabezpieczeń usługi Azure AD lub grup programu Office 365.  Przykład:
+Można również kontrolować dostęp do innych zasobów, które są zależne od grup zabezpieczeń usługi Azure AD lub grup programu Office 365.  Na przykład:
 
 - Można udzielić użytkownikom licencji na Microsoft Office 365 przy użyciu grupy zabezpieczeń usługi Azure AD w pakiecie dostępu i konfigurowania [licencjonowania opartego na grupach](../users-groups-roles/licensing-groups-assign.md) dla tej grupy.
 - Można udzielić użytkownikom dostępu do zarządzania zasobami platformy Azure za pomocą grupy zabezpieczeń usługi Azure AD w pakiecie dostępu i tworzenia [przypisania roli platformy Azure](../../role-based-access-control/role-assignments-portal.md) dla tej grupy
@@ -114,7 +114,7 @@ Pakiety dostępu nie zastępują innych mechanizmów do przypisywania dostępu. 
 
 Aby lepiej zrozumieć Zarządzanie uprawnieniami i jej dokumentację, można odwołać się z powrotem do poniższej listy warunków.
 
-| Okres obowiązywania Umowy | Opis |
+| Okres | Opis |
 | --- | --- |
 | pakiet dostępu | Zbiór zasobów wymaganych przez zespół lub projekt i podlega zasadom. Pakiet dostępu jest zawsze zawarty w wykazie. Należy utworzyć nowy pakiet dostępu dla scenariusza, w którym użytkownicy muszą zażądać dostępu.  |
 | żądanie dostępu | Żądanie dostępu do zasobów w pakiecie dostępu. Żądanie jest zwykle wykonywane przez przepływ pracy zatwierdzania.  W przypadku zatwierdzenia użytkownik żądający otrzymuje przypisanie do pakietu. |
@@ -158,7 +158,7 @@ Poniżej przedstawiono kilka przykładowych scenariuszy licencjonowania, które 
 
 | Scenariusz | Obliczenia | Liczba licencji |
 | --- | --- | --- |
-| Administrator globalny w banku Woodgrove Bank tworzy katalogi początkowe i deleguje zadania administracyjne do 6 innych użytkowników. Jedna z zasad określa, że **Wszyscy pracownicy** (2 000 pracownicy) mogą zażądać określonego zestawu pakietów dostępu. 150 pracownicy żądają pakietów dostępu. | 2 000 pracowników, którzy **mogą** żądać pakietów dostępu | 2000 |
+| Administrator globalny w banku Woodgrove Bank tworzy katalogi początkowe i deleguje zadania administracyjne do 6 innych użytkowników. Jedna z zasad określa, że **Wszyscy pracownicy** (2 000 pracownicy) mogą zażądać określonego zestawu pakietów dostępu. 150 pracownicy żądają pakietów dostępu. | 2 000 pracowników, którzy **mogą** żądać pakietów dostępu | 2,000 |
 | Administrator globalny w banku Woodgrove Bank tworzy katalogi początkowe i deleguje zadania administracyjne do 6 innych użytkowników. Jedna z zasad określa, że **Wszyscy pracownicy** (2 000 pracownicy) mogą zażądać określonego zestawu pakietów dostępu. Inne zasady określają, że niektórzy użytkownicy z **partnerów firmy Contoso** (Goście) mogą zażądać tych samych pakietów dostępu, które podlegają zatwierdzeniu. Firma Contoso ma 30 000 użytkowników. 150 pracownicy żądają pakietów dostępu i 10 500 użytkowników z żądania dostępu firmy Contoso. | 2 000 pracowników + 500 użytkowników-Gości z firmy Contoso, którzy przekraczają współczynnik 1:5 (10 500-(2 000 * 5)) | 2,500 |
 
 ## <a name="next-steps"></a>Następne kroki

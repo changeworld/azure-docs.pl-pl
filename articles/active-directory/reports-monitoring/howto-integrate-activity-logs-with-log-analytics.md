@@ -3,7 +3,7 @@ title: Przesyłanie strumieniowe dzienników Azure Active Directory do Azure Mon
 description: Informacje na temat integrowania dzienników Azure Active Directory z dziennikami Azure Monitor
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 2c3db9a8-50fa-475a-97d8-f31082af6593
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bffe16d604ac6b86b489092f50fbdc0b856867b3
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 213fb6e73ae2fc4314320d0e3e593632d8eb7f85
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989765"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376458"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Integrowanie dzienników usługi Azure AD z dziennikami Azure Monitor
 
@@ -44,8 +44,8 @@ W tym artykule dowiesz się, jak zintegrować dzienniki usługi Azure Active Dir
 
 Dzienniki aktywności inspekcji i dzienniki aktywności logowania można kierować do dzienników Azure Monitor w celu przeprowadzenia dalszej analizy. 
 
-* **Dzienniki inspekcji**: [Raport działania dzienników inspekcji](concept-audit-logs.md) umożliwia dostęp do historii każdego zadania, które jest wykonywane w dzierżawie.
-* **Dzienniki logowania**: [Raport dotyczący działań](concept-sign-ins.md)związanych z logowaniem pozwala określić, kto wykonał zadania zgłaszane w dziennikach inspekcji.
+* **Dzienniki inspekcji**: [raport działań dotyczący dzienników inspekcji](concept-audit-logs.md) zapewnia dostęp do historii wszystkich zadań wykonanych w dzierżawie.
+* **Dzienniki logowania**: przy użyciu [raportu działań dotyczącego logowań](concept-sign-ins.md) można określić, kto wykonał zadania zgłoszone w dziennikach inspekcji.
 
 > [!NOTE]
 > Dzienniki aktywności inspekcji i logowania związane z funkcjami B2C nie są obecnie obsługiwane.
@@ -62,9 +62,9 @@ Aby używać tej funkcji, potrzebujesz następujących elementów:
 
 ## <a name="send-logs-to-azure-monitor"></a>Wyślij dzienniki do Azure Monitor
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). 
+1. Zaloguj się do [Azure portal](https://portal.azure.com). 
 
-2. Wybierz > pozycję**Ustawienia**diagnostyczne Azure Active Directory Dodaj ustawienie diagnostyczne. ->  Możesz również wybrać opcję **Eksportuj ustawienia** na stronie **dzienniki inspekcji** lub **logowania** , aby przejść do strony Konfiguracja ustawień diagnostycznych.  
+2. Wybierz pozycję **Azure Active Directory** > **Ustawienia diagnostyczne** -> **Dodaj ustawienie diagnostyczne**. Możesz również wybrać opcję **Eksportuj ustawienia** na stronie **dzienniki inspekcji** lub **logowania** , aby przejść do strony Konfiguracja ustawień diagnostycznych.  
     
 3. W menu **Ustawienia diagnostyczne** zaznacz pole wyboru **Wyślij do log Analytics obszar roboczy** , a następnie wybierz pozycję **Konfiguruj**.
 
@@ -76,7 +76,7 @@ Aby używać tej funkcji, potrzebujesz następujących elementów:
 
 6. Wybierz pozycję **Zapisz**, aby zapisać ustawienie.
 
-    ![Ustawienia diagnostyki](./media/howto-integrate-activity-logs-with-log-analytics/Configure.png)
+    ![Ustawienia diagnostyczne](./media/howto-integrate-activity-logs-with-log-analytics/Configure.png)
 
 7. Po około 15 minutach Sprawdź, czy zdarzenia są przesyłane strumieniowo do obszaru roboczego Log Analytics.
 

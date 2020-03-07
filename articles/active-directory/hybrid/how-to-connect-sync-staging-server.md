@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect synchronizacji: Zadania i uwagi operacyjne | Microsoft Docs'
+title: 'Azure AD Connect Sync: zadania operacyjne i zagadnienia | Microsoft Docs'
 description: W tym temacie opisano zadania operacyjne dla Azure AD Connect synchronizacji i przygotowania do obsługi tego składnika.
 services: active-directory
 documentationcenter: ''
@@ -17,13 +17,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bc88640cdff4f716902a80bb149913b961d40ae3
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900056"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376215"
 ---
-# <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Program Azure AD Connect: Serwer przejściowy i odzyskiwanie po awarii
+# <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: przemieszczanie serwera i odzyskiwania po awarii
 Gdy serwer jest w trybie przejściowym, można wprowadzić zmiany w konfiguracji i wyświetlić podgląd zmian przed rozpoczęciem aktywności serwera. Umożliwia również uruchomienie pełnego importu i pełnej synchronizacji w celu sprawdzenia, czy wszystkie zmiany są oczekiwane przed wprowadzeniem zmian w środowisku produkcyjnym.
 
 ## <a name="staging-mode"></a>Tryb przejściowy
@@ -64,17 +64,17 @@ Aby zastosować tę metodę, wykonaj następujące kroki:
 Jeśli wprowadzono niestandardowe zmiany na serwerze podstawowym i chcesz porównać konfigurację z serwerem przemieszczania, użyj [Azure AD Connect documention Configuration](https://github.com/Microsoft/AADConnectConfigDocumenter).
 
 #### <a name="import-and-synchronize"></a>Importowanie i synchronizacja
-1. Wybierzpozycję łączniki i wybierz pierwszy łącznik z typem **Active Directory Domain Services**. Kliknij przycisk **Uruchom**, wybierz pozycję **pełny import**i przycisk **OK**. Wykonaj te kroki dla wszystkich łączników tego typu.
+1. Wybierz pozycję **Łączniki**i wybierz pierwszy łącznik z typem **Active Directory Domain Services**. Kliknij przycisk **Uruchom**, wybierz pozycję **pełny import**i przycisk **OK**. Wykonaj te kroki dla wszystkich łączników tego typu.
 2. Wybierz łącznik z typem **Azure Active Directory (Microsoft)** . Kliknij przycisk **Uruchom**, wybierz pozycję **pełny import**i przycisk **OK**.
 3. Upewnij się, że łączniki kart są nadal zaznaczone. Dla każdego łącznika z typem **Active Directory Domain Services**, kliknij przycisk **Uruchom**, wybierz pozycję **Synchronizacja różnicowa**i **przycisk OK**.
 4. Wybierz łącznik z typem **Azure Active Directory (Microsoft)** . Kliknij przycisk **Uruchom**, wybierz pozycję **Synchronizacja różnicowa**i przycisk **OK**.
 
 Teraz przygotowano zmiany w usłudze Azure AD i lokalnej usłudze AD (Jeśli korzystasz z wdrażania hybrydowego programu Exchange). Następne kroki umożliwiają sprawdzenie, co się zmieniło przed faktycznym rozpoczęciem eksportowania do katalogów.
 
-#### <a name="verify"></a>Sprawdź
-1. Uruchom wiersz polecenia cmd i przejdź do`%ProgramFiles%\Microsoft Azure AD Sync\bin`
-2. Uruchomienie: `csexport "Name of Connector" %temp%\export.xml /f:x`Nazwę łącznika można znaleźć w usłudze synchronizacji. Ma nazwę podobną do "contoso.com — AAD" dla usługi Azure AD.
-3. Uruchomienie: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv`Masz plik w katalogu% Temp% o nazwie Export. csv, który można sprawdzić w programie Microsoft Excel. Ten plik zawiera wszystkie zmiany, które mają zostać wyeksportowane.
+#### <a name="verify"></a>Weryfikuj
+1. Uruchom wiersz polecenia cmd i przejdź do `%ProgramFiles%\Microsoft Azure AD Sync\bin`
+2. Uruchom: `csexport "Name of Connector" %temp%\export.xml /f:x` nazwy łącznika można znaleźć w usłudze synchronizacji. Ma nazwę podobną do "contoso.com — AAD" dla usługi Azure AD.
+3. Uruchom: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` masz plik w katalogu% Temp% o nazwie Export. csv, który można sprawdzić w programie Microsoft Excel. Ten plik zawiera wszystkie zmiany, które mają zostać wyeksportowane.
 4. Wprowadź niezbędne zmiany w danych lub konfiguracji, a następnie ponownie wykonaj te kroki (Zaimportuj i zsynchronizuj), dopóki nie zostaną oczekiwane zmiany, które mają zostać wyeksportowane.
 
 **Informacje o pliku eksportu. csv** Większość plików nie wymaga wyjaśnień. Niektóre skróty do zrozumienia zawartości:
@@ -270,5 +270,5 @@ $objOutputUsers | Export-Csv -path processedusers${outputfilecount}.csv -NoTypeI
 ## <a name="next-steps"></a>Następne kroki
 **Tematy dotyczące omówienia**  
 
-* [Synchronizacja w programie Azure AD Connect: Omówienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)  
+* [Azure AD Connect Sync: omówienie i dostosowanie synchronizacji](how-to-connect-sync-whatis.md)  
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)  

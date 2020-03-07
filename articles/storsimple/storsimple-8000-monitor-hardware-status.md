@@ -1,6 +1,6 @@
 ---
-title: Składniki sprzętowe serii StorSimple 8000 i stan | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak monitorować składniki sprzętowe w urządzeniu StorSimple przy użyciu usługi Menedżer urządzeń StorSimple.
+title: Składniki sprzętowe serii StorSimple 8000 i stan | Microsoft Docs
+description: Dowiedz się, jak monitorować składniki sprzętowe urządzenia StorSimple za pomocą usługi StorSimple Menedżer urządzeń.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,137 +15,137 @@ ms.workload: na
 ms.date: 08/15/2018
 ms.author: alkohli
 ms.openlocfilehash: a987239669e7437a179f5f24034f4dbe45535663
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60632868"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380892"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-monitor-hardware-components-and-status"></a>Usługa Menedżer urządzeń StorSimple składniki sprzętowe monitora i stanu
+# <a name="use-the-storsimple-device-manager-service-to-monitor-hardware-components-and-status"></a>Monitorowanie składników i stanu sprzętu za pomocą usługi StorSimple Menedżer urządzeń
 
 ## <a name="overview"></a>Omówienie
-W tym artykule opisano różne składniki fizyczne i logiczne na urządzeniu serii StorSimple 8000 w środowisku lokalnym. Opisano również sposób monitorować stan składnika urządzenia za pomocą **stan i kondycja sprzętu** bloku usługi Menedżer urządzeń StorSimple.
+W tym artykule opisano różne składniki fizyczne i logiczne w lokalnym urządzeniu z serii StorSimple 8000. Wyjaśniono również sposób monitorowania stanu składnika urządzenia przy użyciu bloku **stan i kondycja sprzętu** w usłudze StorSimple Menedżer urządzeń.
 
-**Stan i kondycja sprzętu** bloku wyświetlany jest stan sprzętu wszystkie składniki urządzenia StorSimple.
+Blok **kondycja stanu i sprzętu** przedstawia stan sprzętu wszystkich składników urządzenia StorSimple.
 
-W obszarze listy składników 8100 istnieją trzy sekcje, które opisują:
+Pod listą składników dla 8100 istnieją trzy sekcje opisujące:
 
-* **Udostępnione składniki** — nie są częścią kontrolerów, takich jak stacje dysków, obudowy, składniki zasilania i chłodzenia modułu PCM () i temperatury PCM napięcia linii i czujniki bieżącego wiersza.
-* **Składniki kontrolera 0** — składniki, które znajdują się na kontrolerze 0, takich jak kontroler, funkcja SAS expander i łącznika, czujnikami temperatury kontrolera i różnych interfejsów sieciowych.
-* **Składniki kontrolera 1** — składników wchodzących w skład kontrolera 1, podobne do tych szczegółowe dla kontrolera 0.
+* **Współużytkowane składniki** — te elementy nie są częścią kontrolerów, takich jak stacje dysków, składniki obudowy, zasilania i chłodzenia modułów (PCM), temperatura PCM, napięcie liniowe i bieżące czujniki liniowe.
+* **Składniki kontrolera 0** — składniki, które znajdują się na kontrolerze 0, takie jak kontroler, Ekspander SAS i łącznik, czujniki temperatury kontrolera i różne interfejsy sieciowe.
+* **Składniki kontrolera 1** — składniki tworzące kontroler 1, podobne do tych szczegółowych dla kontrolera 0.
 
-Do urządzenia 8600 ma dodatkowe składniki, które odpowiadają obudowy rozszerzone wiele z dysków (EBOD). W obszarze lista składników istnieją pięciu sekcji. Z tych opcji istnieją trzy sekcje, które zawierają składniki w obudowie podstawowy i są takie same jak te opisane dla 8100. Istnieją dwa dodatkowe sekcje dla obudowy EBOD, które opisują:
+Na urządzeniu 8600 znajdują się dodatkowe składniki, które odnoszą się do obudowy rozszerzonych dysków (EBOD). W obszarze listy składników znajduje się pięć sekcji. Istnieją trzy sekcje, które zawierają składniki w obudowie podstawowej i są identyczne z tymi opisanymi dla 8100. Istnieją dwie dodatkowe sekcje dla obudowy EBOD, które opisują:
 
-* **Składniki kontrolera EBOD 0** — składniki, które znajdują się w obudowie EBOD 0, takich jak kontrolera EBOD SAS expander i łącznika, a także kontrolera czujników temperatury.
-* **Składniki 1 kontrolera EBOD** — składników wchodzących w skład obudowy EBOD 1, podobne do tych szczegółowe dla obudowy EBOD 0.
-* **Składniki udostępnione obudowy EBOD** — składniki obecne w obudowie EBOD i PCM, które nie są częścią kontrolera EBOD.
+* **Składniki kontrolera EBOD 0** — składniki, które znajdują się w obudowie EBOD 0, takie jak kontroler EBOD, Ekspander SAS i łącznik oraz czujniki temperatury kontrolera.
+* **Składniki kontrolera EBOD 1** — składniki tworzące obudowa EBOD 1, podobne do tych, które zostały przedstawione w przypadku EBOD obudowy 0.
+* **Współużytkowane składniki obudowy EBOD** — składniki obecne w obudowie EBOD i module PCM, które nie są częścią kontrolera EBOD.
 
 > [!NOTE]
-> **Stan sprzętu nie jest dostępne dla urządzenia StorSimple w chmurze (8010/8020).**
+> **Stan sprzętu nie jest dostępny dla urządzenia w chmurze StorSimple (8010/8020).**
 
 
-## <a name="monitor-the-hardware-status"></a>Monitor stanu sprzętu
-Wykonaj poniższe kroki, aby wyświetlić stan sprzętu składnik urządzenia:
+## <a name="monitor-the-hardware-status"></a>Monitorowanie stanu sprzętu
+Wykonaj następujące kroki, aby wyświetlić stan sprzętu składnika urządzenia:
 
-1. Przejdź do **urządzeń**, wybrać konkretne urządzenie StorSimple. Przejdź do **Monitor > kondycja sprzętu**.
+1. Przejdź do opcji **urządzenia**, wybierz określone urządzenie StorSimple. Przejdź do pozycji **monitoruj > kondycja sprzętu**.
 
     ![](./media/storsimple-8000-monitor-hardware-status/hw-health1.png)
 
-2. Znajdź **składniki sprzętowe** sekcji i wybierz jedną z dostępnych składnikach. Po prostu kliknij etykietę składnika, aby rozwinąć listę i wyświetlić stan różnych składników urządzenia. Zobacz [lista składników szczegółowe dla podstawowego obudowy](#component-list-for-primary-enclosure-of-storsimple-device) i [listy szczegółowe części obudowy EBOD](#component-list-for-ebod-enclosure-of-storsimple-device).
+2. Znajdź sekcję **składniki sprzętowe** i wybierz spośród dostępnych składników. Wystarczy kliknąć etykietę składnika, aby rozwinąć listę i wyświetlić stan różnych składników urządzeń. Zapoznaj się z [listą szczegółowych składników dla obudowy podstawowej](#component-list-for-primary-enclosure-of-storsimple-device) i [Szczegółowa lista składników dla obudowy EBOD](#component-list-for-ebod-enclosure-of-storsimple-device).
 
     ![](./media/storsimple-8000-monitor-hardware-status/hw-health2.png)
 
-3. Poniższy schemat kodowania kolorami umożliwia interpretować stan składnika:
+3. Aby interpretować stan składnika, użyj następującego schematu kodowania kolorów:
    
-   * **Kolor zielony wyboru** — oznacza dobrej kondycji składnika za pomocą **OK** stanu.
-   * **Żółty** — oznacza o obniżonym poziomie składnika na liście **ostrzeżenie** stanu.
-   * **Czerwonego wykrzyknika** — Denotes nie powiodło się składnik, który ma **błąd** stanu.
-   * **Biały na czarny tekst** — oznacza składnik, który nie jest obecny.
+   * **Zielone sprawdzenie** — wskazuje składnik dobrej kondycji z **prawidłowym** stanem.
+   * **Żółty** — oznacza, że obniżony składnik jest w stanie **ostrzegawczym** .
+   * **Czerwony wykrzyknik** — wskazuje niepowodzenie składnika, który ma stan **niepowodzenia** .
+   * **Biały z czarnym tekstem** — oznacza nieobecny składnik.
    
-   Poniższy zrzut ekranu przedstawia urządzenia, zawierającej składniki w **OK**, **ostrzeżenie**, i **błąd** stanu.
+   Poniższy zrzut ekranu przedstawia urządzenie ze składnikami w stanie **prawidłowym**, **ostrzegawczym**i **niepowodzenia** .
        
    ![](./media/storsimple-8000-monitor-hardware-status/hw-health3.png)
 
-   Rozwijanie **listy składniki współużytkowane**, możemy zobaczyć uszkodzenie pamięci NVRAM i klastra.
+   Rozwijanie **listy współużytkowanych składników**można zobaczyć, że pamięć NVRAM i klaster mają obniżoną wydajność.
 
    ![](./media/storsimple-8000-monitor-hardware-status/hw-health5.png)
 
-   Rozwijanie **składniki kontrolera 1** listy, widzimy, że węzeł klastra nie powiodło się.  
+   Rozwijanie listy **składników kontrolera 1** , można zobaczyć, że węzeł klastra zakończył się niepowodzeniem.  
 
    ![](./media/storsimple-8000-monitor-hardware-status/hw-health4.png)  
 
-4. Jeśli napotkasz składnik, który nie znajduje się w **dobra kondycja** stanie, skontaktuj się z Microsoft Support. Alerty są włączone na urządzeniu, otrzymasz wiadomość e-mail z alertem. Jeśli trzeba wymienić składnik sprzętowy nie powiodło się, zobacz [wymiana składników sprzętu StorSimple](storsimple-hardware-component-replacement.md).
+4. Jeśli napotkasz składnik, który nie jest w **dobrej kondycji** , skontaktuj się z pomoc techniczna firmy Microsoft. Jeśli na urządzeniu są włączone alerty, zostanie wyświetlony alert e-mail. Jeśli zachodzi potrzeba zastąpienia uszkodzonego składnika sprzętowego, zobacz [StorSimple sprzętu sprzętowego](storsimple-hardware-component-replacement.md).
 
-## <a name="component-list-for-primary-enclosure-of-storsimple-device"></a>Lista składników dla podstawowego Obudowa urządzenia StorSimple
-W poniższej tabeli przedstawiono składniki fizyczne i logiczne, znajdujących się w obudowie głównej (istnieje zarówno w 8100 i 8600) urządzenia StorSimple w środowisku lokalnym.
+## <a name="component-list-for-primary-enclosure-of-storsimple-device"></a>Lista składników dla podstawowej obudowy urządzenia StorSimple
+W poniższej tabeli przedstawiono składniki fizyczne i logiczne zawarte w podstawowej obudowie (obecne zarówno w 8100 i 8600) lokalnego urządzenia StorSimple.
 
-| Składnik | Moduł | Typ | Lokalizacja | Pole (jednostkę FRU replaceable unit)? | Opis |
+| Składnik | Moduł | Typ | Lokalizacja | Jednostka przemieszczenia pola (FRU)? | Opis |
 | --- | --- | --- | --- | --- | --- |
-| Napęd w gnieździe [0-11] |Stacje dysków |Fizyczne |Udostępnione |Tak |Jeden wiersz jest prezentowana dla każdego z dysków SSD i dysków HDD, w obudowie podstawowego. |
-| Czujnik temperatury otoczenia |Obudowy |Fizyczne |Udostępnione |Nie |Mierzy temperatury w obudowie. |
-| Czujnik temperatury środkowa |Obudowy |Fizyczne |Udostępnione |Nie |Mierzy temperatura środkowa. |
-| Alarm dźwiękowy |Obudowy |Fizyczne |Udostępnione |Nie |Wskazuje, czy w podsystemie alarmu w obudowie funkcjonalności. |
-| Obudowy |Obudowy |Fizyczne |Udostępnione |Yes |Wskazuje obecność podstawę. |
-| Ustawienia obudowy |Obudowy |Fizyczne |Udostępnione |Nie |Odnosi się do panelu przedniego obudowy. |
-| Czujnikami napięcia linii |MODUŁU PCM |Fizyczne |Udostępnione |Nie |Liczne czujnikami napięcia linii mają ich stan, który wskazuje, czy mierzonego napięcia mieści się w granicach. |
-| Bieżący czujniki linii |MODUŁU PCM |Fizyczne |Udostępnione |Nie |Wiele czujników bieżący wiersz ma ich stan, który wskazuje, czy bieżący mierzonego w granicach tolerancji. |
-| Czujnikami temperatury w module PCM |MODUŁU PCM |Fizyczne |Udostępnione |Nie |Wiele czujników temperatury wlotu np. informacji o hotspotach czujników się ich stanu wyświetlane, wskazującą, czy temperatura mierzone jest w granicach tolerancji. |
-| Zasilacz [0-1] |MODUŁU PCM |Fizyczne |Udostępnione |Tak |Jeden wiersz jest prezentowana dla każdego zasilacze w dwóch PCMs, znajduje się tyłu na urządzeniu. |
-| Chłodzenie [0-1] |MODUŁU PCM |Fizyczne |Udostępnione |Yes |Dla każdego z czterech wentylatory, znajdującej się w dwóch PCMs znajduje się jeden wiersz. |
-| Bateria [0-1] |MODUŁU PCM |Fizyczne |Udostępnione |Yes |Dla każdego z modułów baterii zapasowej, które są umieszczone w module PCM znajduje się jeden wiersz. |
-| Metis |ND |Logiczny |Udostępnione |ND |Wyświetla stan baterii: czy potrzebujesz, ładowania i zbliża się wycofanych z eksploatacji. |
-| Klaster |ND |Logiczny |Udostępnione |ND |Wyświetla stan klastra, który jest tworzony między dwoma modułami zintegrowanego kontrolera. |
-| Węzeł klastra |ND |Logiczny |Udostępnione |ND |Wskazuje stan kontrolera jako część klastra. |
-| Kworum klastra |ND |Logiczny | |ND |Wskazuje obecność dysku większość należeć pula magazynów dysków Twardych. |
-| Obszar danych dysku |ND |Logiczny |Udostępnione |ND |Miejsce do magazynowania służy do danych w puli magazynu na dysku twardym (HDD). |
-| Obszar zarządzania dysku |ND |Logiczny |Udostępnione |ND |Miejsce zarezerwowane w puli magazynów dysku twardego dla zadań zarządzania. |
-| Obszar kworum |ND |Logiczny |Udostępnione |ND |Miejsce zarezerwowane w puli magazynów dysku dla kworum klastra. |
-| Obszar zamiany dysku twardego |ND |Logiczny |Udostępnione |ND |Miejsce zarezerwowane w puli magazynów dysków Twardych do zastąpienia kontrolera. |
-| Obszar danych dysku SSD |ND |Logiczny |Udostępnione |ND |Używane miejsce w magazynie danych w puli magazynów pełny stan dysku (SSD). |
-| SSD NVRAM space |ND |Logiczny |Udostępnione |ND |Miejsca do magazynowania w puli magazynów dysków SSD, które są przeznaczone do logiki NVRAM. |
-| Pula magazynów dysków Twardych |ND |Logiczny |Udostępnione |ND |Wyświetla stan puli magazynu logicznego, która jest tworzona z urządzenia dysków twardych. |
-| Pula magazynów dysków SSD |ND |Logiczny |Udostępnione |ND |Wyświetla stan puli magazynu logicznego, która jest tworzona na urządzeniu SSD. |
-| Kontroler [0-1] [Stan] |OPERACJE WE/WY |Fizyczne |Kontroler |Tak |Wyświetla stan kontrolera, oraz czy jest w trybie aktywny lub wstrzymania w obudowie. |
-| Czujnikami temperatury w kontrolerze |OPERACJE WE/WY |Fizyczne |Kontroler |Nie |Wiele czujników temperatury, takich jak moduł we/wy, temperatury procesora CPU, czujniki DIMM i PCIe ma ich stan, który wskazuje, czy temperatura napotkano mieści się w granicach. |
-| Funkcja SAS expander |OPERACJE WE/WY |Fizyczne |Kontroler |Nie |Wskazuje stan serial ekspander SCSI (SAS) dołączonego, który jest używany do łączenia z magazynu zintegrowanego z kontrolerem. |
-| Złącze SAS [0-1] |OPERACJE WE/WY |Fizyczne |Kontroler |Nie |Wskazuje stan każdego łącznika sygnatury dostępu Współdzielonego, który jest używany do łączą magazyn zintegrowanego z funkcją SAS expander. |
-| Połączenie warstwy pośredniej SBB |OPERACJE WE/WY |Fizyczne |Kontroler |Nie |Wskazuje stan łącznika środkowa, który jest używany do łączenia każdego kontrolera do warstwy pośredniej. |
-| Rdzeń procesora |OPERACJE WE/WY |Fizyczne |Kontroler |Nie |Wskazuje stan rdzeni procesora w ramach każdego kontrolera. |
-| Zasilanie elementów elektronicznych obudowy |OPERACJE WE/WY |Fizyczne |Kontroler |Nie |Wskazuje stan systemu zasilania, używanego przez obudowa. |
-| Diagnostyka elementów elektronicznych obudowy |OPERACJE WE/WY |Fizyczne |Kontroler |Nie |Wskazuje stan podsystemów diagnostyki, dostarczone przez kontroler. |
-| Kontroler zarządzania płytą główną (BMC) |OPERACJE WE/WY |Fizyczne |Kontroler |Nie |Wskazuje stan kontrolera zarządzania płytą główną (BMC), który jest procesor specjalistycznych usług, który monitoruje urządzenia sprzętowego za pośrednictwem czujników i komunikuje się z administratorem systemu, niezależne połączenie. |
-| Ethernet |OPERACJE WE/WY |Fizyczne |Kontroler |Nie |Wskazuje stan wszystkich interfejsów sieciowych, oznacza to, zarządzania i porty danych podany w kontrolerze. |
-| NVRAM |OPERACJE WE/WY |Fizyczne |Kontroler |Nie |Wskazuje stan pamięci NVRAM, trwałej pamięci objęta baterii, która służy do przechowywania informacji o aplikacji o znaczeniu krytycznym w przypadku awarii zasilania. |
+| Napęd w gnieździe [0-11] |Stacje dysków |Fizyczny |Udostępnione |Yes |Dla każdego dysku SSD lub dysków twarde w obudowie podstawowej jest prezentowany jeden wiersz. |
+| Czujnik temperatury otoczenia |Szaf |Fizyczny |Udostępnione |Nie |Mierzy temperaturę w obudowie. |
+| Czujnik temperatury średniej płaszczyzny |Szaf |Fizyczny |Udostępnione |Nie |Mierzy temperaturę płaszczyzny środkowej. |
+| Alarm dźwiękowy |Szaf |Fizyczny |Udostępnione |Nie |Wskazuje, czy dźwiękowy podsystem alarmowy w obudowie jest funkcjonalny. |
+| Szaf |Szaf |Fizyczny |Udostępnione |Yes |Wskazuje obecność obudowy. |
+| Ustawienia obudowy |Szaf |Fizyczny |Udostępnione |Nie |Odnosi się do panelu przedniego obudowy. |
+| Czujniki napięcia linii |MODUŁU PCM |Fizyczny |Udostępnione |Nie |W przypadku wielu czujników napięcia linii są wyświetlane ich Stany, które wskazują, czy mierzone napięcie jest objęte tolerancją. |
+| Czujniki bieżące liniowe |MODUŁU PCM |Fizyczny |Udostępnione |Nie |Wszystkie czujniki bieżące z wieloma wierszami mają wyświetlany stan, który wskazuje, czy mierzona wartość bieżąca jest równa tolerancji. |
+| Czujniki temperatury w module PCM |MODUŁU PCM |Fizyczny |Udostępnione |Nie |W przypadku wielu czujników temperatury, takich jak czujniki wlotu i hotspotu, są wyświetlane ich Stany, wskazujące, czy zmierzona temperatura jest w zakresie tolerancji. |
+| Zasilacz [0-1] |MODUŁU PCM |Fizyczny |Udostępnione |Yes |Dla każdego zasilacza w dwóch PCMs znajdujących się w tylnej części urządzenia jest prezentowany jeden wiersz. |
+| Chłodzenie [0-1] |MODUŁU PCM |Fizyczny |Udostępnione |Yes |Jeden wiersz jest prezentowany dla każdego z czterech wentylatorów chłodzących znajdujących się w dwóch PCMs. |
+| Bateria [0-1] |MODUŁU PCM |Fizyczny |Udostępnione |Yes |Dla każdego z modułów baterii tworzenia kopii zapasowych, które znajdują się w module PCM, jest prezentowany jeden wiersz. |
+| Funkcja Metis |Nie dotyczy |Logiczny |Udostępnione |Nie dotyczy |Wyświetla stan baterii: czy potrzebują ładowania i zbliżają się do końca okresu użytkowania. |
+| Klaster |Nie dotyczy |Logiczny |Udostępnione |Nie dotyczy |Przedstawia stan klastra utworzonego między dwoma modułami zintegrowanego kontrolera. |
+| Węzeł klastra |Nie dotyczy |Logiczny |Udostępnione |Nie dotyczy |Wskazuje stan kontrolera w ramach klastra. |
+| Kworum klastra |Nie dotyczy |Logiczny | |Nie dotyczy |Wskazuje obecność większościowego członkostwa dysku w puli magazynu dysk twardy. |
+| Obszar danych dysku twardego |Nie dotyczy |Logiczny |Udostępnione |Nie dotyczy |Miejsce do magazynowania używane dla danych w puli magazynów dysków twardych (dysk twardy). |
+| Przestrzeń zarządzania dyskami twardymi |Nie dotyczy |Logiczny |Udostępnione |Nie dotyczy |Miejsce zarezerwowane w puli magazynów dysków twardych na potrzeby zadań zarządzania. |
+| Obszar kworum dysku twardego |Nie dotyczy |Logiczny |Udostępnione |Nie dotyczy |Miejsce zarezerwowane w puli magazynów dysków twardych dla kworum klastra. |
+| Przestrzeń zastępująca dysk twardy |Nie dotyczy |Logiczny |Udostępnione |Nie dotyczy |Miejsce zarezerwowane w puli magazynów dysków twardych do zastępowania kontrolera. |
+| Przestrzeń danych SSD |Nie dotyczy |Logiczny |Udostępnione |Nie dotyczy |Miejsce do magazynowania używane na potrzeby danych w puli magazynów półprzewodnikowych (SSD). |
+| Przestrzeń dyskowa SSD |Nie dotyczy |Logiczny |Udostępnione |Nie dotyczy |Miejsce do magazynowania w puli magazynów SSD dedykowane dla logiki NVRAM. |
+| Pula magazynów dysków twardych |Nie dotyczy |Logiczny |Udostępnione |Nie dotyczy |Przedstawia stan puli magazynu logicznego, która jest tworzona na podstawie urządzenia HDD. |
+| Pula magazynu SSD |Nie dotyczy |Logiczny |Udostępnione |Nie dotyczy |Przedstawia stan puli magazynu logicznego, która jest tworzona na podstawie urządzenia dysków SSD. |
+| Kontroler [0-1] [stan] |WE/WY |Fizyczny |Kontroler |Yes |Wyświetla stan kontrolera i czy jest on w trybie aktywnym lub w stanie wstrzymania w ramach obudowy. |
+| Czujniki temperatury w kontrolerze |WE/WY |Fizyczny |Kontroler |Nie |W przypadku wielu czujników temperatury, takich jak moduł we/wy, czujniki procesora CPU, moduły DIMM i PCIe, są wyświetlane ich Stany, które wskazują, czy napotkana temperatura jest w zakresie tolerancji. |
+| Ekspander SAS |WE/WY |Fizyczny |Kontroler |Nie |Wskazuje stan ekspandera Serial Attached SCSI (SAS), który jest używany do łączenia zintegrowanego magazynu z kontrolerem. |
+| Łącznik SAS [0-1] |WE/WY |Fizyczny |Kontroler |Nie |Wskazuje stan każdego łącznika SAS, który jest używany do łączenia magazynu zintegrowanego z ekspanderem SAS. |
+| SBB — połączenie średniej płaszczyzny |WE/WY |Fizyczny |Kontroler |Nie |Wskazuje stan łącznika środkowej płaszczyzny, który jest używany do łączenia poszczególnych kontrolerów z płaszczyzną środkową. |
+| Rdzeń procesora |WE/WY |Fizyczny |Kontroler |Nie |Wskazuje stan rdzeni procesora w poszczególnych kontrolerach. |
+| Moc elektroniki obudowy |WE/WY |Fizyczny |Kontroler |Nie |Wskazuje stan systemu zasilacza używanego przez obudowę. |
+| Diagnostyka elektroniki obudowy |WE/WY |Fizyczny |Kontroler |Nie |Wskazuje stan podsystemów diagnostyki dostarczonych przez kontroler. |
+| Kontroler zarządzania płytą główną (BMC) |WE/WY |Fizyczny |Kontroler |Nie |Wskazuje stan kontrolera zarządzania płytą główną (BMC), który jest wyspecjalizowanym procesorem usług, który monitoruje urządzenie sprzętowe za pośrednictwem czujników i komunikuje się z administratorem systemu za pośrednictwem niezależnego połączenia. |
+| Obciążony |WE/WY |Fizyczny |Kontroler |Nie |Wskazuje stan każdego z interfejsów sieciowych, czyli portów zarządzania i danych znajdujących się na kontrolerze. |
+| PAMIĘCI |WE/WY |Fizyczny |Kontroler |Nie |Wskazuje stan pamięci NVRAM, czyli nielotną pamięć z dostępem losowym, utworzoną przez baterię, która służy do zachowywania informacji krytycznych dla aplikacji w przypadku awarii zasilania. |
 
-## <a name="component-list-for-ebod-enclosure-of-storsimple-device"></a>Lista składników dla EBOD Obudowa urządzenia StorSimple
-W poniższej tabeli przedstawiono składniki fizyczne i logiczne, znajdujących się w obudowie EBOD (istnieje tylko w modelu 8600) urządzenia StorSimple w środowisku lokalnym.
+## <a name="component-list-for-ebod-enclosure-of-storsimple-device"></a>Lista składników dla obudowy EBOD urządzenia StorSimple
+W poniższej tabeli przedstawiono składniki fizyczne i logiczne zawarte w obudowie EBOD (obecne tylko w modelu 8600) lokalnego urządzenia StorSimple.
 
-| Składnik | Moduł | Typ | Lokalizacja | JEDNOSTKI FRU? | Opis |
+| Składnik | Moduł | Typ | Lokalizacja | FRU? | Opis |
 | --- | --- | --- | --- | --- | --- |
-| Napęd w gnieździe [0-11] |Stacje dysków |Fizyczne |Udostępnione |Tak |Jeden wiersz jest prezentowana dla każdego z stacje dysków Twardych uzyskać obudowy EBOD. |
-| Czujnik temperatury otoczenia |Obudowy |Fizyczne |Udostępnione |Nie |Mierzy temperatury w obudowie. |
-| Czujnik temperatury środkowa |Obudowy |Fizyczne |Udostępnione |Nie |Mierzy temperatura środkowa. |
-| Alarm dźwiękowy |Obudowy |Fizyczne |Udostępnione |Nie |Wskazuje, czy w podsystemie alarmu w obudowie funkcjonalności. |
-| Obudowy |Obudowy |Fizyczne |Udostępnione |Tak |Wskazuje obecność podstawę. |
-| Ustawienia obudowy |Obudowy |Fizyczne |Udostępnione |Nie |Odnosi się do platformy OPS lub z panelu przedniego obudowy. |
-| Czujnikami napięcia linii |MODUŁU PCM |Fizyczne |Udostępnione |Nie |Liczne czujnikami napięcia linii mają ich stan, który wskazuje, czy mierzonego napięcia mieści się w granicach. |
-| Bieżący czujniki linii |MODUŁU PCM |Fizyczne |Udostępnione |Nie |Wiele czujników bieżący wiersz ma ich stan, który wskazuje, czy bieżący mierzonego w granicach tolerancji. |
-| Czujnikami temperatury w module PCM |MODUŁU PCM |Fizyczne |Udostępnione |Nie |Wiele czujników temperatury wlotu np. informacji o hotspotach czujników się ich stan, który wskazuje, czy temperatura mierzonego w granicach tolerancji. |
-| Zasilacz [0-1] |MODUŁU PCM |Fizyczne |Udostępnione |Tak |Jeden wiersz jest prezentowana dla każdego zasilacze w dwóch PCMs, znajduje się tyłu na urządzeniu. |
-| Chłodzenie [0-1] |MODUŁU PCM |Fizyczne |Udostępnione |Yes |Dla każdego z czterech wentylatory, znajdującej się w dwóch PCMs znajduje się jeden wiersz. |
-| Lokalny magazyn [HDD] |ND |Logiczny |Udostępnione |ND |Wyświetla stan puli magazynu logicznego, która jest tworzona z urządzenia dysków twardych. |
-| Kontroler [0-1] [Stan] |OPERACJE WE/WY |Fizyczne |Kontroler |Tak |Wyświetla stan kontrolerów w EBOD module. |
-| Czujnikami temperatury w EBOD |OPERACJE WE/WY |Fizyczne |Kontroler |Nie |Wiele czujników temperatury z każdy kontroler ma ich stan, który wskazuje, czy temperatura napotkano mieści się w granicach. |
-| Funkcja SAS expander |OPERACJE WE/WY |Fizyczne |Kontroler |Nie |Wskazuje stan funkcją SAS expander, który jest używany do łączenia z magazynu zintegrowanego z kontrolerem. |
-| Złącze SAS [0-2] |OPERACJE WE/WY |Fizyczne |Kontroler |Nie |Wskazuje stan każdego łącznika sygnatury dostępu Współdzielonego, który jest używany do łączą magazyn zintegrowanego z funkcją SAS expander. |
-| Połączenie warstwy pośredniej SBB |OPERACJE WE/WY |Fizyczne |Kontroler |Nie |Wskazuje stan łącznika środkowa, który jest używany do łączenia każdego kontrolera do warstwy pośredniej. |
-| Zasilanie elementów elektronicznych obudowy |OPERACJE WE/WY |Fizyczne |Kontroler |Nie |Wskazuje stan systemu zasilania, używanego przez obudowa. |
-| Diagnostyka elementów elektronicznych obudowy |OPERACJE WE/WY |Fizyczne |Kontroler |Nie |Wskazuje stan podsystemów diagnostyki, dostarczone przez kontroler. |
-| Połączenie z kontrolerem urządzeń |OPERACJE WE/WY |Fizyczne |Kontroler |Nie |Wskazuje stan połączenia między modułem EBOD operacji We/Wy i z kontrolerem urządzenia. |
+| Napęd w gnieździe [0-11] |Stacje dysków |Fizyczny |Udostępnione |Yes |Jeden wiersz jest prezentowany dla każdego z dysków twardych znajdujących się na początku obudowy EBOD. |
+| Czujnik temperatury otoczenia |Szaf |Fizyczny |Udostępnione |Nie |Mierzy temperaturę w obudowie. |
+| Czujnik temperatury średniej płaszczyzny |Szaf |Fizyczny |Udostępnione |Nie |Mierzy temperaturę płaszczyzny środkowej. |
+| Alarm dźwiękowy |Szaf |Fizyczny |Udostępnione |Nie |Wskazuje, czy dźwiękowy podsystem alarmowy w obudowie jest funkcjonalny. |
+| Szaf |Szaf |Fizyczny |Udostępnione |Yes |Wskazuje obecność obudowy. |
+| Ustawienia obudowy |Szaf |Fizyczny |Udostępnione |Nie |Odnosi się do działania lub panelu przedniego obudowy. |
+| Czujniki napięcia linii |MODUŁU PCM |Fizyczny |Udostępnione |Nie |W przypadku wielu czujników napięcia linii są wyświetlane ich Stany, które wskazują, czy mierzone napięcie jest objęte tolerancją. |
+| Czujniki bieżące liniowe |MODUŁU PCM |Fizyczny |Udostępnione |Nie |Wszystkie czujniki bieżące z wieloma wierszami mają wyświetlany stan, który wskazuje, czy mierzona wartość bieżąca jest równa tolerancji. |
+| Czujniki temperatury w module PCM |MODUŁU PCM |Fizyczny |Udostępnione |Nie |W przypadku wielu czujników temperatury, takich jak czujniki wlotu i hotspotu, są wyświetlane ich Stany, które wskazują, czy zmierzona temperatura jest w zakresie tolerancji. |
+| Zasilacz [0-1] |MODUŁU PCM |Fizyczny |Udostępnione |Yes |Dla każdego zasilacza w dwóch PCMs znajdujących się w tylnej części urządzenia jest prezentowany jeden wiersz. |
+| Chłodzenie [0-1] |MODUŁU PCM |Fizyczny |Udostępnione |Yes |Jeden wiersz jest prezentowany dla każdego z czterech wentylatorów chłodzących znajdujących się w dwóch PCMs. |
+| Magazyn lokalny [dysk twardy] |Nie dotyczy |Logiczny |Udostępnione |Nie dotyczy |Przedstawia stan puli magazynu logicznego, która jest tworzona na podstawie urządzenia HDD. |
+| Kontroler [0-1] [stan] |WE/WY |Fizyczny |Kontroler |Yes |Wyświetla stan kontrolerów w module EBOD. |
+| Czujniki temperatury w EBOD |WE/WY |Fizyczny |Kontroler |Nie |W przypadku wielu czujników temperatury z każdego kontrolera są wyświetlane ich Stany, które wskazują, czy napotkana temperatura jest tolerancja. |
+| Ekspander SAS |WE/WY |Fizyczny |Kontroler |Nie |Wskazuje stan ekspandera SAS, który jest używany do łączenia magazynu zintegrowanego z kontrolerem. |
+| Łącznik SAS [0-2] |WE/WY |Fizyczny |Kontroler |Nie |Wskazuje stan każdego łącznika SAS, który jest używany do łączenia magazynu zintegrowanego z ekspanderem SAS. |
+| SBB — połączenie średniej płaszczyzny |WE/WY |Fizyczny |Kontroler |Nie |Wskazuje stan łącznika środkowej płaszczyzny, który jest używany do łączenia poszczególnych kontrolerów z płaszczyzną środkową. |
+| Moc elektroniki obudowy |WE/WY |Fizyczny |Kontroler |Nie |Wskazuje stan systemu zasilacza używanego przez obudowę. |
+| Diagnostyka elektroniki obudowy |WE/WY |Fizyczny |Kontroler |Nie |Wskazuje stan podsystemów diagnostyki dostarczonych przez kontroler. |
+| Połączenie z kontrolerem urządzenia |WE/WY |Fizyczny |Kontroler |Nie |Wskazuje stan połączenia między modułem we/wy EBOD i kontrolerem urządzenia. |
 
-## <a name="next-steps"></a>Kolejne kroki
-* Aby korzystać z usługi Menedżer urządzeń StorSimple do administrowania urządzeniem, przejdź do [korzystać z usługi Menedżer urządzeń StorSimple do administrowania urządzeniem StorSimple](storsimple-8000-manager-service-administration.md).
-* Jeśli trzeba rozwiązać składnik urządzenia, który ma nieprawidłowe działanie lub uszkodzenie stan, zapoznaj się [StorSimple wskaźniki monitorowania](storsimple-monitoring-indicators.md).
-* Aby wymienić składnik sprzętowy nie powiodło się, zobacz [wymiana składników sprzętu StorSimple](storsimple-hardware-component-replacement.md).
-* Jeśli nadal występują problemy dotyczące urządzeń, [skontaktuj się z Microsoft Support](storsimple-8000-contact-microsoft-support.md).
+## <a name="next-steps"></a>Następne kroki
+* Aby użyć usługi StorSimple Menedżer urządzeń do administrowania urządzeniem, przejdź do [korzystania z usługi StorSimple Menedżer urządzeń w celu administrowania urządzeniem StorSimple](storsimple-8000-manager-service-administration.md).
+* Jeśli trzeba rozwiązać problem ze składnikiem urządzenia o stanie obniżony lub niepowodzenie, zapoznaj się ze [wskaźnikami monitorowania StorSimple](storsimple-monitoring-indicators.md).
+* Aby zastąpić uszkodzony składnik sprzętowy, zobacz [StorSimple sprzętu sprzętowego](storsimple-hardware-component-replacement.md).
+* Jeśli nadal występują problemy z urządzeniem, [skontaktuj się z firmą pomoc techniczna firmy Microsoft](storsimple-8000-contact-microsoft-support.md).
 

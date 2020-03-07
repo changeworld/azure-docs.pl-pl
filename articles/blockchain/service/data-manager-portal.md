@@ -5,11 +5,11 @@ ms.date: 11/04/2019
 ms.topic: article
 ms.reviewer: chroyal
 ms.openlocfilehash: 03c22a7a23f1579a846746f21ce048b3425399c3
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977027"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387041"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Konfigurowanie menedżera danych łańcucha bloków przy użyciu witryny Azure Portal
 
@@ -32,7 +32,7 @@ Wystąpienie Data Manager łańcucha bloków nawiązuje połączenie i monitoruj
 
 Połączenie wychodzące wysyła dane łańcucha bloków do Azure Event Grid. Podczas tworzenia wystąpienia można skonfigurować pojedyncze połączenie wychodzące. Łańcucha bloków Data Manager obsługuje wiele połączeń wychodzących tematu Event Grid dla danego wystąpienia Data Manager łańcucha bloków. Dane łańcucha bloków można wysyłać do jednego miejsca docelowego lub wysyłać dane łańcucha bloków do wielu miejsc docelowych. Aby dodać kolejne miejsce docelowe, po prostu Dodaj dodatkowe połączenia wychodzące do wystąpienia.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. Przejdź do elementu członkowskiego usługi Azure łańcucha bloków, który chcesz połączyć z łańcucha bloków Data Manager. Wybierz pozycję **łańcucha bloków Data Manager**.
 1. Wybierz pozycję **Dodaj**.
 
@@ -42,7 +42,7 @@ Połączenie wychodzące wysyła dane łańcucha bloków do Azure Event Grid. Po
 
     Ustawienie | Opis
     --------|------------
-    Nazwa | Wprowadź unikatową nazwę połączonego Data Manager łańcucha bloków. Nazwa Data Manager łańcucha bloków może zawierać małe litery i cyfry, a maksymalna długość wynosi 20 znaków.
+    Name (Nazwa) | Wprowadź unikatową nazwę połączonego Data Manager łańcucha bloków. Nazwa Data Manager łańcucha bloków może zawierać małe litery i cyfry, a maksymalna długość wynosi 20 znaków.
     Węzeł transakcji | Wybierz węzeł transakcji. Wyświetlane są tylko węzły transakcji, do których masz dostęp do odczytu.
     Nazwa połączenia | Wprowadź unikatową nazwę połączenia wychodzącego, w którym są wysyłane dane transakcji łańcucha bloków.
     Punkt końcowy siatki zdarzeń | Wybierz temat usługi Event Grid w tej samej subskrypcji co wystąpienie Data Manager łańcucha bloków.
@@ -110,14 +110,14 @@ W poniższym przykładzie przedstawiono pliki *ABI. JSON* i *unformating. JSON* 
 
     | Pole | Opis |
     |-------|-------------|
-    | Nazwa  | Nazwij kontener. Na przykład *smartcontract* |
+    | Name (Nazwa)  | Nazwij kontener. Na przykład *smartcontract* |
     | Poziom dostępu publicznego | Wybierz pozycję *prywatny (brak dostępu anonimowego)* |
 
 1. Wybierz przycisk **OK**, aby utworzyć kontener.
 1. Wybierz kontener, a następnie wybierz pozycję **Przekaż**.
 1. Wybierz pliki JSON, które zostały utworzone w sekcji [Pobierz kontrakt ABI i kod bajtowy](#get-contract-abi-and-bytecode) .
 
-    ![Przekazywanie obiektu blob](./media/data-manager-portal/upload-blobs.png)
+    ![Przekaż obiekt BLOB](./media/data-manager-portal/upload-blobs.png)
 
     Wybierz pozycję **Przekaż**.
 
@@ -146,7 +146,7 @@ Dla każdego obiektu BLOB Wygeneruj sygnaturę dostępu współdzielonego.
 
     Ustawienie | Opis
     --------|------------
-    Nazwa | Wprowadź unikatową nazwę aplikacji łańcucha bloków, która ma być śledzona.
+    Name (Nazwa) | Wprowadź unikatową nazwę aplikacji łańcucha bloków, która ma być śledzona.
     ABI kontraktu | Ścieżka URL do pliku ABI kontraktu. Aby uzyskać więcej informacji, zobacz temat [Tworzenie kontraktu ABI i adresu URL kodu bajtowego](#create-contract-abi-and-bytecode-url).
     Kod bajtowy kontraktu | Ścieżka adresu URL do pliku kodu bajtowego. Aby uzyskać więcej informacji, zobacz temat [Tworzenie kontraktu ABI i adresu URL kodu bajtowego](#create-contract-abi-and-bytecode-url).
 

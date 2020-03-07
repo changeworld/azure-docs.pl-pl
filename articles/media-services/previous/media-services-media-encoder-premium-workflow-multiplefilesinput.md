@@ -16,11 +16,11 @@ ms.date: 03/18/2019
 ms.author: xpouyat
 ms.reviewer: anilmur;juliako
 ms.openlocfilehash: 27bdf82d4515678e28eadf07fe325860fe5df063
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015454"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392956"
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Korzystanie z wielu plików wejściowych i właściwości składników przy użyciu kodera Premium
 ## <a name="overview"></a>Omówienie
@@ -31,7 +31,7 @@ Istnieją scenariusze, w których może być konieczne dostosowanie właściwoś
 * Nałożenie obrazu logo na wejściowym wideo podczas kodowania wideo.
 * Kodowanie wielu języków audio.
 
-Aby **Media Encoder Premium Workflow** wiedzieć, że zmieniasz niektóre właściwości w przepływie pracy podczas tworzenia zadania lub wysyłania wielu plików wejściowych, musisz użyć ciągu konfiguracji, który zawiera **setRuntimeProperties** i/lub  **transcodeSource**. W tym temacie wyjaśniono, jak z nich korzystać.
+Aby **Media Encoder Premium Workflow** wiedzieć, że zmieniasz niektóre właściwości w przepływie pracy podczas tworzenia zadania lub wysyłania wielu plików wejściowych, musisz użyć ciągu konfiguracji, który zawiera **setRuntimeProperties** i/lub **transcodeSource**. W tym temacie wyjaśniono, jak z nich korzystać.
 
 ## <a name="configuration-string-syntax"></a>Składnia ciągu konfiguracji
 Ciąg konfiguracji do ustawienia w zadaniu kodowania używa dokumentu XML, który wygląda następująco:
@@ -131,7 +131,7 @@ Przykład:
 ```
 
 > [!NOTE]
-> Upewnij się, że nie należy umieszczać powrotu karetki `<![CDATA[`tuż po.
+> Upewnij się, że nie należy umieszczać powrotu karetki tuż po `<![CDATA[`.
 
 ### <a name="propertypath-value"></a>propertyPath wartość
 W poprzednich przykładach propertyPath była "/Media pliku Input/filename" lub "/inactiveTimeout" lub "clipListXml".
@@ -151,7 +151,7 @@ Każde zadanie przesyłane do **Media Encoder Premium Workflow** wymaga dwóch z
 
 W przypadku wysyłania wielu plików multimedialnych do kodera **Media Encoder Premium Workflow** są stosowane następujące ograniczenia:
 
-* Wszystkie pliki multimedialne muszą znajdować się w tymsamym elemencie zawartości multimedialnej. Używanie wielu zasobów multimedialnych nie jest obsługiwane.
+* Wszystkie pliki multimedialne muszą znajdować się w tym samym elemencie zawartości *multimedialnej*. Używanie wielu zasobów multimedialnych nie jest obsługiwane.
 * Należy ustawić plik podstawowy w tym nośniku zawartości (najlepiej jest to główny plik wideo, do którego koder ma być przetwarzany).
 * Konieczne jest przekazanie danych konfiguracyjnych obejmujących element **setRuntimeProperties** i/lub **transcodeSource** do procesora.
   * **setRuntimeProperties** służy do przesłonięcia właściwości filename lub innej właściwości w składnikach przepływu pracy.
@@ -269,10 +269,10 @@ Z dodatkowym przycinaniem dokładnej ramki:
   </transcodeRequest>
 ```
 
-## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>Przykład 1: Nałóż obraz na górze wideo
+## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>Przykład 1: nakładanie obrazu na obraz wideo
 
 ### <a name="presentation"></a>Prezentacja
-Rozważmy przykład, w którym chcesz nałożyć obraz logo na wejściowy film wideo podczas kodowania wideo. W tym przykładzie wejściowy film wideo nosi nazwę "Microsoft_HoloLens_Possibilities_816p24. mp4", a logo nosi nazwę "logo. png". Należy wykonać następujące czynności:
+Rozważmy przykład, w którym chcesz nałożyć obraz logo na wejściowy film wideo podczas kodowania wideo. W tym przykładzie wejściowy film wideo ma nazwę "Microsoft_HoloLens_Possibilities_816p24. mp4", a logo nosi nazwę "logo. png". Należy wykonać następujące czynności:
 
 * Utwórz zasób przepływu pracy przy użyciu pliku przepływu pracy (zobacz Poniższy przykład).
 * Utwórz zasób multimedialny, który zawiera dwa pliki: MyInputVideo. mp4 jako plik podstawowy i weblogo. png.
@@ -299,7 +299,7 @@ W powyższym przykładzie nazwa pliku wideo jest wysyłana do składnika danych 
 ### <a name="step-by-step-workflow-creation"></a>Tworzenie przepływu pracy krok po kroku
 Poniżej przedstawiono procedurę tworzenia przepływu pracy, który pobiera dwa pliki jako dane wejściowe: wideo i obraz. Obraz zostanie nałożony na wierzchu wideo.
 
-Otwórz **Projektant przepływu pracy** i wybierz pozycję **plik** > **Nowy obszar roboczy** > **transkodowanie plan**.
+Otwórz **Projektant przepływu pracy** i wybierz pozycję **plik** > **Nowy obszar roboczy** > **Plan transkodowanie**.
 
 Nowy przepływ pracy pokazuje trzy elementy:
 
@@ -352,7 +352,7 @@ Jeśli chcesz zmodyfikować pozycję logo w wideo (na przykład możesz chcieć 
 *Pozycja nakładki*
 
 Aby zakodować strumień wideo do H. 264, Dodaj koder wideo AVC i składniki AAC Encoder do powierzchni projektanta. Połącz numery PIN.
-Skonfiguruj koder AAC i wybierz opcję Konwersja formatu audio/ustawienie wstępne: 2,0 (L, R).
+Skonfiguruj koder AAC i wybierz opcję Konwersja formatu dźwięku/ustawienie wstępne: 2,0 (L, R).
 
 ![Kodery audio i wideo](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture15_encoders.png)
 
@@ -429,7 +429,7 @@ Po zakończeniu zadania plik MP4 w wyjściowym elemencie zawartości wyświetla 
 
 Przykładowy przepływ pracy można pobrać z witryny [GitHub](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/).
 
-## <a name="example-2--multiple-audio-language-encoding"></a>Przykład 2: Kodowanie wielu języków audio
+## <a name="example-2--multiple-audio-language-encoding"></a>Przykład 2: kodowanie wielu języków dźwięku
 
 Przykład wielu przepływów pracy kodowania języka audio jest dostępny w serwisie [GitHub](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/MultilanguageAudioEncoding).
 
@@ -466,7 +466,7 @@ Aby zakodować, wykonaj następujące kroki:
 
 * Zakodowany element zawartości będzie zawierać ścieżki audio w wielu językach, a ścieżki powinny być wybierane w Azure Media Player.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 * [Wprowadzenie kodowania Premium w Azure Media Services](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
 * [Jak używać kodowania Premium w Azure Media Services](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
 * [Kodowanie zawartości na żądanie za pomocą Azure Media Services](media-services-encode-asset.md#media-encoder-premium-workflow)
@@ -477,5 +477,5 @@ Aby zakodować, wykonaj następujące kroki:
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Przekaż opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

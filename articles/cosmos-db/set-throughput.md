@@ -7,11 +7,11 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.openlocfilehash: 31ad7a9d1108adc9071812454419252a813cb93e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78194873"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364504"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Aprowizacja przepływności kontenerów i baz danych
 
@@ -20,7 +20,7 @@ Bazy danych Azure Cosmos jest jednostką zarządzania w usłudze zestaw kontener
 Za pomocą Azure Cosmos DB można zainicjować przepływność przy dwóch stopniach szczegółowości:
  
 - Kontenery usługi Azure Cosmos
-- Bazy danych usługi Azure Cosmos
+- Baz danych Azure Cosmos
 
 ## <a name="set-throughput-on-a-container"></a>Ustawianie przepływności dla kontenera  
 
@@ -109,7 +109,7 @@ W dowolnym momencie można skalować zainicjowaną przepływność kontenera lub
 |Jednostek ru przypisane lub dostępne dla określonego kontenera|Nie gwarancji. Jednostek ru przypisane do danego kontenera zależą od właściwości. Właściwościami mogą być wybór kluczy partycji kontenerów, które współdzielą przepływność, rozkład obciążenia oraz liczbę kontenerów. |Wszystkie jednostki zarezerwowane skonfigurowane w kontenerze są przeznaczone wyłącznie do kontenera.|
 |Maksymalny rozmiar magazynu dla kontenera|Nieograniczona liczba.|Nieograniczona liczba.|
 |Maksymalna przepływność na partycji logicznej kontenera|10K (RUS)|10K (RUS)|
-|Maksymalna pojemność (danych + indeksu) w jednej partycji logicznej kontenera|20 GB|20 GB|
+|Maksymalna pojemność (danych + indeksu) w jednej partycji logicznej kontenera|20 GB|20 GB|
 
 ## <a name="next-steps"></a>Następne kroki
 

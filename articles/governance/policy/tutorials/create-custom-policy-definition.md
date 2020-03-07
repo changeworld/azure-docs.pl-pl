@@ -4,11 +4,11 @@ description: W tym samouczku utworzysz niestandardową definicję zasad Azure Po
 ms.date: 11/25/2019
 ms.topic: tutorial
 ms.openlocfilehash: f7c303956b209b88ce3c697b5b66243e37071c83
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75966026"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386812"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Samouczek: Tworzenie definicji zasad niestandardowych
 
@@ -53,7 +53,7 @@ Zgodnie z wymaganiami biznesowymi zasób platformy Azure do inspekcji przy użyc
 Istnieje wiele sposobów określania właściwości zasobu platformy Azure. Omówimy każdy z nich na potrzeby tego samouczka:
 
 - Rozszerzenie usługi Azure Policy dla programu VS Code
-- Szablony Menedżera zasobów
+- Szablony usługi Resource Manager
   - Eksportowanie istniejącego zasobu
   - Środowisko tworzenia
   - Szablony Szybki start (GitHub)
@@ -64,7 +64,7 @@ Istnieje wiele sposobów określania właściwości zasobu platformy Azure. Omó
 
 [Rozszerzenia vs Code](../how-to/extension-for-vscode.md#search-for-and-view-resources) można użyć do przeglądania zasobów w środowisku i wyświetlania właściwości Menedżer zasobów poszczególnych zasobów.
 
-### <a name="resource-manager-templates"></a>Szablony Menedżera zasobów
+### <a name="resource-manager-templates"></a>Szablony usługi Resource Manager
 
 [Szablon usługi Resource Manager](../../../azure-resource-manager/templates/template-tutorial-create-encrypted-storage-accounts.md) zawierający szukaną właściwość w celu zarządzania nią można sprawdzić na kilka sposobów.
 
@@ -165,8 +165,8 @@ Istnieje kilka sposobów określenia aliasów dla zasobu platformy Azure. Omówi
 
 - Rozszerzenie usługi Azure Policy dla programu VS Code
 - Interfejs wiersza polecenia platformy Azure
-- Program Azure PowerShell
-- Graf zasobów platformy Azure
+- Azure PowerShell
+- Azure Resource Graph
 
 ### <a name="get-aliases-in-vs-code-extension"></a>Pobierz aliasy w VS Code rozszerzeniu
 
@@ -185,7 +185,7 @@ az provider show --namespace Microsoft.Storage --expand "resourceTypes/aliases" 
 
 W wynikach jest widoczny alias o nazwie **supportsHttpsTrafficOnly** obsługiwany przez konta magazynu. Istnienie tego aliasu oznacza, że możemy zapisać zasady, aby wymuszać nasze wymagania biznesowe!
 
-### <a name="azure-powershell"></a>Program Azure PowerShell
+### <a name="azure-powershell"></a>Azure PowerShell
 
 W programie Azure PowerShell polecenie cmdlet `Get-AzPolicyAlias` służy do wyszukiwania aliasów zasobu. Przefiltrujemy przestrzeń nazw **Microsoft.Storage** za pomocą uzyskanych wcześniej szczegółów dotyczących zasobu platformy Azure.
 
@@ -198,7 +198,7 @@ W programie Azure PowerShell polecenie cmdlet `Get-AzPolicyAlias` służy do wys
 
 Podobnie jak w przypadku interfejsu wiersza polecenia platformy Azure, w wynikach jest widoczny alias o nazwie **supportsHttpsTrafficOnly** obsługiwany przez konta magazynu.
 
-### <a name="azure-resource-graph"></a>Graf zasobów platformy Azure
+### <a name="azure-resource-graph"></a>Azure Resource Graph
 
 [Azure Resource Graph](../../resource-graph/overview.md) to usługa, która zapewnia inną metodę znajdowania właściwości zasobów platformy Azure. Tutaj przedstawiono przykładowe zapytanie umożliwiające przejrzenie pojedynczego konta magazynu przy użyciu usługi Resource Graph:
 

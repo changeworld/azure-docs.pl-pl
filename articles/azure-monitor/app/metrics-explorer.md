@@ -4,11 +4,11 @@ description: Jak interpretować wykresy w Eksploratorze metryk oraz jak dostosow
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.openlocfilehash: f85a8fe79e7f4f820d7c0e5b942730305e892095
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670188"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78368269"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>Eksplorowanie metryk w Application Insights
 Metryki w [Application Insights][start] są mierzonymi wartościami i liczbami zdarzeń wysyłanych w ramach telemetrii z aplikacji. Pomagają wykrywać problemy z wydajnością i obserwować trendy w sposobie używania aplikacji. Istnieje szeroki zakres metryk standardowych i można również utworzyć własne, niestandardowe metryki i zdarzenia.

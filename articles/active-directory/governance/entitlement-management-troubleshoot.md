@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e291a032c1aac45ebc783126e69b524e1d0af95b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422489"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376608"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Rozwiązywanie problemów z zarządzaniem prawami usługi Azure AD
 
@@ -35,19 +35,19 @@ W tym artykule opisano niektóre elementy, które należy zaznaczyć, aby pomóc
 
 ## <a name="resources"></a>Zasoby
 
-* Role dla aplikacji są definiowane przez samą aplikację i są zarządzane w usłudze Azure AD. Jeśli aplikacja nie ma żadnych ról zasobów, zarządzanie uprawnieniami przypisuje użytkowników do domyślnej roli **dostępu** .
+* Role aplikacji są definiowane przez samą aplikację i są zarządzane w usłudze Azure AD. Jeśli aplikacja nie ma żadnych ról zasobów, zarządzanie uprawnieniami przypisuje użytkowników do domyślnej roli **dostępu** .
 
-    Należy zauważyć, że Azure Portal mogą również wyświetlać jednostki usługi dla usług, których nie można wybrać jako aplikacji.  W szczególności usługi **Exchange Online** i **SharePoint Online** są usługami, a nie aplikacjami, które mają role zasobów w katalogu, więc nie mogą być uwzględnione w pakiecie dostępu.  Zamiast tego należy użyć licencjonowania opartego na grupach w celu nawiązania odpowiedniej licencji dla użytkownika, który potrzebuje dostępu do tych usług.
+    Należy zauważyć, że Azure Portal mogą również wyświetlać jednostki usługi dla usług, których nie można wybrać jako aplikacji.  W szczególności usługi **Exchange Online** i **SharePoint Online** są usługami, a nie aplikacjami, które mają role zasobów w katalogu, więc nie mogą być uwzględnione w pakiecie dostępu.  Zamiast tego użyj licencjonowania opartego na grupach w celu uzyskania odpowiedniej licencji dla użytkownika, który potrzebuje dostępu do tych usług.
 
-* Aby grupa była zasobem w pakiecie dostępu, musi być w stanie zmodyfikować ją w usłudze Azure AD.  Grup, które pochodzą z lokalnego Active Directory nie można przypisać jako zasobów, ponieważ nie można zmienić ich właściciela ani atrybutów składowych w usłudze Azure AD.   Grupy, które pochodzą z usługi Exchange Online jako grupy dystrybucji, nie mogą być modyfikowane w usłudze Azure AD. 
+* Aby grupa mogła być zasobem w pakiecie dostępu, musi być możliwa do zmodyfikowania w usłudze Azure AD.  Grupy, które pochodzą z lokalnej usługi Active Directory, nie mogą być przypisane jako zasoby, ponieważ nie można zmienić ich atrybutów właściciela ani członków w usłudze Azure AD.   Grupy, które pochodzą z usługi Exchange Online jako grupy dystrybucji, również nie mogą być modyfikowane w usłudze Azure AD. 
 
 * Biblioteki dokumentów usługi SharePoint Online i pojedyncze dokumenty nie mogą być dodawane jako zasoby.  Zamiast tego należy utworzyć [grupę zabezpieczeń usługi Azure AD](../fundamentals/active-directory-groups-create-azure-portal.md), dołączyć tę grupę i rolę lokacji w pakiecie dostępu, a w usłudze SharePoint Online używać tej grupy do kontrolowania dostępu do biblioteki dokumentów lub dokumentu.
 
-* Jeśli istnieją użytkownicy, którzy zostali już przypisani do zasobu, którym chcesz zarządzać za pomocą pakietu dostępu, upewnij się, że użytkownicy są przypisani do pakietu dostępu przy użyciu odpowiednich zasad. Na przykład możesz chcieć uwzględnić grupę w pakiecie dostępu, który ma już użytkowników w grupie. Jeśli Ci użytkownicy w grupie wymagają ciągłego dostępu, muszą mieć odpowiednie zasady dla pakietów dostępu, aby nie utracić dostępu do grupy. Pakiet dostępu można przypisać, prosząc użytkowników o zażądanie pakietu dostępu zawierającego ten zasób lub przez bezpośrednie przypisanie ich do pakietu dostępu. Aby uzyskać więcej informacji, zobacz temat [Zmiana ustawień żądania i zatwierdzania dla pakietu dostępu](entitlement-management-access-package-request-policy.md).
+* Jeśli istnieją użytkownicy, którzy zostali już przypisani do zasobu, którym chcesz zarządzać za pomocą pakietu dostępu, upewnij się, że użytkownicy są przypisani do pakietu dostępu przy użyciu odpowiednich zasad. Na przykład możesz uwzględnić grupę w pakiecie dostępu, który ma już użytkowników w grupie. Jeśli Ci użytkownicy w grupie wymagają ciągłego dostępu, muszą mieć odpowiednie zasady dla pakietów dostępu, aby nie utracić dostępu do grupy. Pakiet dostępu można przypisać, prosząc użytkowników o zażądanie pakietu dostępu zawierającego ten zasób lub przez bezpośrednie przypisanie ich do pakietu dostępu. Aby uzyskać więcej informacji, zobacz temat [Zmiana ustawień żądania i zatwierdzania dla pakietu dostępu](entitlement-management-access-package-request-policy.md).
 
-* Po usunięciu członka zespołu są one również usuwane z grupy Office 365. Usunięcie z funkcjonalności rozmowy zespołu może być opóźnione. Aby uzyskać więcej informacji, zobacz [członkostwo w grupie](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership).
+* Po usunięciu członka zespołu są one również usuwane z grupy usługi Office 365. Usunięcie z funkcji czatu zespołu może być opóźnione. Aby uzyskać więcej informacji, zobacz [członkostwo w grupie](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership).
 
-* Upewnij się, że katalog nie jest skonfigurowany do obsługi geograficznego. Zarządzanie prawami nie obsługuje obecnie lokalizacji geograficznych dla usługi SharePoint Online. Witryny usługi SharePoint Online muszą znajdować się w domyślnej lokalizacji geograficznej, aby podlegać zarządzaniu prawami. Aby uzyskać więcej informacji, zobacz [wiele geograficznie funkcji w usłudze OneDrive i SharePoint Online](https://docs.microsoft.com/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365).
+* Upewnij się, że katalog nie jest skonfigurowany do obsługi wielu regionów geograficznych. Zarządzanie upoważnieniami nie obsługuje obecnie wielu lokalizacji geograficznych na potrzeby usługi SharePoint Online. Lokacje usługi SharePoint Online muszą znajdować się w domyślnej lokalizacji geograficznej, aby podlegać zarządzaniu upoważnieniami. Aby uzyskać więcej informacji, zobacz [wiele geograficznie funkcji w usłudze OneDrive i SharePoint Online](https://docs.microsoft.com/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365).
 
 ## <a name="external-users"></a>Użytkownicy zewnętrzni
 
@@ -55,17 +55,17 @@ W tym artykule opisano niektóre elementy, które należy zaznaczyć, aby pomóc
 
 * Jeśli użytkownik zewnętrzny nie może zażądać dostępu do pakietu dostępu lub nie może uzyskać dostępu do zasobów, należy sprawdzić [Ustawienia dla użytkowników zewnętrznych](entitlement-management-external-users.md#settings-for-external-users).
 
-* Jeśli nowy użytkownik zewnętrzny, który nie został wcześniej podpisany w Twoim katalogu, odbierze pakiet dostępu zawierający witrynę usługi SharePoint Online, jego pakiet dostępu będzie wyświetlany jako nie w pełni dostarczone do momentu aprowizacji konta w usłudze SharePoint Online. Aby uzyskać więcej informacji na temat ustawień udostępniania, zobacz [Przegląd ustawień udostępniania zewnętrznego usługi SharePoint Online](entitlement-management-external-users.md#review-your-sharepoint-online-external-sharing-settings).
+* Jeśli nowy użytkownik zewnętrzny, który nie został wcześniej podpisany w Twoim katalogu, odbierze pakiet dostępu zawierający lokację usługi SharePoint Online, jego pakiet dostępu będzie wyświetlany jako nie w pełni dostarczony do momentu aprowizacji konta w usłudze SharePoint Online. Aby uzyskać więcej informacji na temat ustawień udostępniania, zobacz [Przegląd ustawień udostępniania zewnętrznego usługi SharePoint Online](entitlement-management-external-users.md#review-your-sharepoint-online-external-sharing-settings).
 
 ## <a name="requests"></a>Żądania
 
 * Gdy użytkownik chce zażądać dostępu do pakietu dostępu, należy się upewnić, że korzysta on z **linku my Access Portal** dla pakietu dostępu. Aby uzyskać więcej informacji, zobacz [udostępnianie linku do żądania pakietu dostępu](entitlement-management-access-package-settings.md).
 
-* Jeśli otworzysz Portal dostępu przy użyciu przeglądarki z ustawioną opcją w trybie Private lub incognito, może to spowodować konflikt z zachowaniem logowania. Zaleca się, aby nie używać trybu w trybie prywatnym lub incognito w przeglądarce podczas odwiedzania portalu dostępu.
+* Jeśli otworzysz portal Mój dostęp przy użyciu przeglądarki w trybie prywatnym lub incognito, może to spowodować konflikt z zachowaniem logowania. Zalecamy, aby nie używać trybu prywatnego ani incognito w przeglądarce podczas odwiedzania portalu Mój dostęp.
 
-* Gdy użytkownik, który nie znajduje się jeszcze w katalogu, loguje się do portalu dostępu w celu zażądania pakietu dostępu, upewnij się, że uwierzytelnia się przy użyciu konta organizacyjnego. Konto organizacyjne może być kontem w katalogu zasobów lub w katalogu, który znajduje się w jednej z zasad pakietu dostępu. Jeśli konto użytkownika nie jest kontem organizacyjnym lub katalog, w którym są uwierzytelniane, nie jest uwzględniony w zasadach, wówczas użytkownik nie będzie widział pakietu dostępu. Aby uzyskać więcej informacji, zobacz [żądanie dostępu do pakietu dostępu](entitlement-management-request-access.md).
+* Gdy użytkownik, którego nie ma jeszcze w katalogu, loguje się do portalu Mój dostęp w celu zażądania pakietu dostępu, upewnij się, że uwierzytelnia się przy użyciu konta organizacyjnego. Konto organizacyjne może być kontem w katalogu zasobów lub w katalogu, który znajduje się w jednej z zasad pakietu dostępu. Jeśli konto użytkownika nie jest kontem organizacyjnym lub katalog, w którym użytkownik się uwierzytelnia, nie jest uwzględniony w zasadach, wówczas użytkownik nie będzie widział pakietu dostępu. Aby uzyskać więcej informacji, zobacz [żądanie dostępu do pakietu dostępu](entitlement-management-request-access.md).
 
-* Jeśli użytkownik nie może się zalogować do katalogu zasobów, nie będzie w stanie żądać dostępu w portalu My Access. Aby użytkownik mógł zażądać dostępu, należy usunąć blok logowania z profilu użytkownika. Aby usunąć blok logowania, w Azure Portal kliknij pozycję **Azure Active Directory**, kliknij pozycję **Użytkownicy**, kliknij użytkownika, a następnie kliknij pozycję **profil**. Edytuj sekcję **Ustawienia** i Zmień **blok Zaloguj** się na **nie**. Aby uzyskać więcej informacji, zobacz [Dodawanie lub aktualizowanie informacji o profilu użytkownika przy użyciu Azure Active Directory](../fundamentals/active-directory-users-profile-azure-portal.md).  Możesz również sprawdzić, czy użytkownik został zablokowany ze względu na [Zasady ochrony tożsamości](../identity-protection/howto-unblock-user.md).
+* Jeśli użytkownik nie może się zalogować do katalogu zasobów, nie będzie w stanie zażądać dostępu w portalu Mój dostęp. Aby użytkownik mógł zażądać dostępu, musisz usunąć blokadę logowania z profilu użytkownika. Aby usunąć blok logowania, w Azure Portal kliknij pozycję **Azure Active Directory**, kliknij pozycję **Użytkownicy**, kliknij użytkownika, a następnie kliknij pozycję **profil**. Edytuj sekcję **Ustawienia** i Zmień **blok Zaloguj** się na **nie**. Aby uzyskać więcej informacji, zobacz [Dodawanie lub aktualizowanie informacji o profilu użytkownika przy użyciu Azure Active Directory](../fundamentals/active-directory-users-profile-azure-portal.md).  Możesz również sprawdzić, czy użytkownik został zablokowany ze względu na [Zasady ochrony tożsamości](../identity-protection/howto-unblock-user.md).
 
 * Jeśli użytkownik jest obiektem żądającym i osobą zatwierdzającą, w portalu My Access nie zobaczy żądania dotyczącego pakietu dostępu na stronie **zatwierdzenia** . Takie zachowanie jest celowe — użytkownik nie może zatwierdzić własnego żądania. Upewnij się, że żądany pakiet dostępu ma dodatkowe osoby zatwierdzające skonfigurowane dla zasad. Aby uzyskać więcej informacji, zobacz temat [Zmiana ustawień żądania i zatwierdzania dla pakietu dostępu](entitlement-management-access-package-request-policy.md).
 
@@ -129,7 +129,7 @@ Można anulować tylko oczekujące żądanie, które nie zostało jeszcze dostar
 
 * Gdy mają zastosowanie wiele zasad, automatycznie wybierane są zasady, które są wyświetlane na podstawie następującej logiki priorytetu:
 
-    | Priorytet zasad | Zakres |
+    | Priorytet zasad | Scope |
     | --- | --- |
     | P1 | Określeni użytkownicy i grupy w katalogu lub określonych połączonych organizacjach |
     | P2 | Wszyscy członkowie w katalogu (z wyłączeniem Gości) |

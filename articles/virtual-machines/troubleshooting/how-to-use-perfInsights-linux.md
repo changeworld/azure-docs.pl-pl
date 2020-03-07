@@ -14,11 +14,11 @@ ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
 ms.openlocfilehash: 19b2fcaed2c80d4ca52ada9f9f0898479e73bcf2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70080513"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394763"
 ---
 # <a name="how-to-use-perfinsights"></a>Korzystanie z narzędzia PerfInsights
 
@@ -78,12 +78,12 @@ Zbierane są informacje o maszynie wirtualnej z systemem Linux, systemie operacy
   - Profilowanie przechwytywania użycia procesora CPU i procesów w 5-sekundowych interwałach
   - Profilowanie przechwytywania procesów użycia pamięci w przedziale czasu 5 sekund
 
-- Networking  
+- Sieć  
   - Lista kart sieciowych z statystykami kart
   - Tabela routingu sieciowego
   - Otwarte porty i stan
 
-- Magazyn
+- Storage
   - Lista zablokowanych urządzeń
   - Lista partycji
   - Lista punktów instalacji
@@ -112,7 +112,7 @@ Zbierane są informacje o maszynie wirtualnej z systemem Linux, systemie operacy
 - [Metadane wystąpienia maszyny wirtualnej platformy Azure](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
 
 >[!Note]
->[`*`] Informacje o magistrali PCI nie zostały jeszcze zebrane w ramach dystrybucji Debian i SLES
+>[`*`] Informacje o magistrali PCI nie są jeszcze zbierane w ramach dystrybucji Debian i SLES
 
 ## <a name="run-the-perfinsights-linux-on-your-vm"></a>Uruchamianie że program perfinsights systemu Linux na maszynie wirtualnej
 
@@ -125,12 +125,12 @@ Zbierane są informacje o maszynie wirtualnej z systemem Linux, systemie operacy
 
 - Obecnie obsługiwane są następujące dystrybucje:
 
-    | Dystrybucja               | Version                                         |
+    | Dystrybucja               | Wersja                                         |
     |----------------------------|-------------------------------------------------|
     | Serwer Oracle Linux        | 6,10 [`*`], 7,3, 7,6, 7,5 (Oracle-Database-EE 13,8 — obraz portalu Marketplace)|
     | CentOS                     | 6,5 [`*`], 7,6                                    |
     | RHEL                       | 7,2, 7,5, 8,0 [`*`]                               |
-    | Ubuntu                     | 14.04 16.04, 18.04                               |
+    | Ubuntu                     | 14.04, 16.04, 18.04                               |
     | Debian                     | 8, 9, 10 [`*`]                                    |
     | SLES                       | 12 SP4 [`*`]                                      |
     |                            |                                                   |
@@ -173,7 +173,7 @@ Aby uruchomić narzędzie że program perfinsights, wykonaj następujące kroki:
    tar xzvf PerfInsights.tar.gz
    ```
 
-2. Przejdź do folderu, który zawiera `perfinsights.py` plik, a następnie uruchom `perfinsights.py` polecenie, aby wyświetlić dostępne parametry wiersza polecenia.
+2. Przejdź do folderu, który zawiera plik `perfinsights.py`, a następnie uruchom `perfinsights.py`, aby wyświetlić dostępne parametry wiersza polecenia.
 
     ```bash
     cd <the path of PerfInsights folder>
@@ -205,11 +205,11 @@ Aby uruchomić narzędzie że program perfinsights, wykonaj następujące kroki:
     >
     >Jeśli masz aktywny bilet pomocy technicznej z firmą Microsoft i uruchomiono że program perfinsights na żądanie inżyniera pomocy technicznej, z którym pracujesz, upewnij się, że numer biletu pomocy technicznej jest używany przy użyciu opcji **-s lub--support-Request** .
 
-Po zakończeniu przebiegu nowy plik tar pojawia się w tym samym folderze co że program perfinsights, chyba że zostanie określony folder wyjściowy. Nazwa pliku to **PerformanceDiagnostics\_rrrr-mm\_-dd hh-mm-SS-FFF. tar. gz.** Możesz wysłać ten plik do agenta pomocy technicznej na potrzeby analizy lub otworzyć raport w pliku, aby przejrzeć wyniki i zalecenia.
+Po zakończeniu przebiegu nowy plik tar pojawia się w tym samym folderze co że program perfinsights, chyba że zostanie określony folder wyjściowy. Nazwa pliku to **PerformanceDiagnostics\_rrrr-mm-dd\_HH-mm-SS-FFF. tar. gz.** Możesz wysłać ten plik do agenta pomocy technicznej na potrzeby analizy lub otworzyć raport w pliku, aby przejrzeć wyniki i zalecenia.
 
 ## <a name="review-the-diagnostics-report"></a>Przejrzyj raport diagnostyczny
 
-W pliku **PerformanceDiagnostics\_rrrr-mm-dd\_HH-mm-SS-FFF. tar. gz** można znaleźć raport HTML, który zawiera szczegółowe informacje o wynikach że program perfinsights. Aby przejrzeć raport, rozwiń plik **PerformanceDiagnostics\_\_rrrr-mm-dd hh-mm-SS-FFF. tar. gz** , a następnie otwórz plik **że program perfinsights raportu. html** .
+W pliku **PerformanceDiagnostics\_rrrr-mm-dd\_HH-mm-SS-FFF. tar. gz** można znaleźć raport HTML, który zawiera szczegółowe informacje o wynikach że program perfinsights. Aby przejrzeć raport, rozwiń plik **PerformanceDiagnostics\_rrrr-mm-dd\_HH-mm-SS-FFF. tar. gz** , a następnie otwórz plik **że program perfinsights raportu. html** .
 
 ### <a name="overview-tab"></a>Karta Przegląd
 
@@ -233,7 +233,7 @@ Karta **CPU** zawiera informacje dotyczące użycia procesora CPU w całym syste
 
 Sekcja **spostrzeżenia** zawiera różne wyniki i zalecenia dotyczące magazynu.
 
-**Urządzenia blokowe** i inne powiązane sekcje, takie jak **Partitions**, **LVM**i **MDADM** , opisują sposób, w jaki urządzenia blokujące są skonfigurowane i powiązane ze sobą.
+**Urządzenia blokowe** i inne powiązane sekcje, takie **jak Partitions**, **LVM**i **MDADM** , opisują sposób, w jaki urządzenia blokujące są skonfigurowane i powiązane ze sobą.
 
 ![Zrzut ekranu karty magazyn](media/how-to-use-perfinsights-linux/perfinsights-linux-storage-tab.png)  
 ![Zrzut ekranu przedstawiający kartę MDADM](media/how-to-use-perfinsights-linux/perfinsights-linux-mdadm-config.png)
@@ -254,4 +254,4 @@ Poniższy zrzut ekranu przedstawia komunikat podobny do następującego:
 
 Postępuj zgodnie z instrukcjami wyświetlanymi w komunikacie, aby uzyskać dostęp do obszaru roboczego transferu plików. Aby zwiększyć bezpieczeństwo, należy zmienić hasło przy pierwszym użyciu.
 
-Po zalogowaniu zostanie wyświetlone okno dialogowe z przekazaniem pliku **PerformanceDiagnostics\_rrrr-mm-dd\_HH-mm-SS-FFF. tar. gz** , który został zebrany przez że program perfinsights.
+Po zalogowaniu zostanie wyświetlone okno dialogowe umożliwiające przekazanie pliku **PerformanceDiagnostics\_rrrr-mm-dd\_HH-mm-SS-FFF. tar. gz** , który został zebrany przez że program perfinsights.

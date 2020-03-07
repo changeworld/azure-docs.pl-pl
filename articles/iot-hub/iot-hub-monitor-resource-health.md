@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: kgremban
 ms.openlocfilehash: f801abc40caf273c28a0c01dedf9735f5198c2af
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929688"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359703"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Monitoruj kondycję usługi Azure IoT Hub i szybko Diagnozuj problemy
 
@@ -345,7 +345,7 @@ W tym miejscu `durationMs` nie jest obliczany, ponieważ zegar IoT Hub może nie
 
 | Właściwość | Typ | Opis |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **messageSize** | Liczba całkowita | Rozmiar komunikatu z urządzenia do chmury w bajtach |
+| **messageSize** | Integer | Rozmiar komunikatu z urządzenia do chmury w bajtach |
 | **Identyfikator** | Ciąg znaków alfanumerycznych ASCII 7-bitowych | Tożsamość urządzenia |
 | **callerLocalTimeUtc** | Sygnatura czasowa UTC | Godzina utworzenia komunikatu zgłoszonego przez zegar lokalny urządzenia |
 | **calleeLocalTimeUtc** | Sygnatura czasowa UTC | Godzina przybycia wiadomości w bramie IoT Hubej zgłoszonej przez IoT Hub zegar po stronie usługi |
@@ -379,8 +379,8 @@ W sekcji `properties` ten dziennik zawiera dodatkowe informacje na temat przycho
 
 | Właściwość | Typ | Opis |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **isRoutingEnabled** | Ciąg | Wartość true lub false wskazuje, czy w IoT Hub jest włączona funkcja routingu komunikatów |
-| **parentSpanId** | Ciąg | [Identyfikator zakresu](https://w3c.github.io/trace-context/#parent-id) komunikatu nadrzędnego, który będzie w tym przypadku D2C śledzenia komunikatów |
+| **isRoutingEnabled** | String | Wartość true lub false wskazuje, czy w IoT Hub jest włączona funkcja routingu komunikatów |
+| **parentSpanId** | String | [Identyfikator zakresu](https://w3c.github.io/trace-context/#parent-id) komunikatu nadrzędnego, który będzie w tym przypadku D2C śledzenia komunikatów |
 
 ##### <a name="iot-hub-egress-logs"></a>Dzienniki wychodzące IoT Hub
 
@@ -411,9 +411,9 @@ W sekcji `properties` ten dziennik zawiera dodatkowe informacje na temat przycho
 
 | Właściwość | Typ | Opis |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **Nazwapunktukoncowego** | Ciąg | Nazwa punktu końcowego routingu |
-| **punkt końcowy** | Ciąg | Typ punktu końcowego routingu |
-| **parentSpanId** | Ciąg | [Identyfikator zakresu](https://w3c.github.io/trace-context/#parent-id) komunikatu nadrzędnego, który będzie IoT Hub śledzenia komunikatów przychodzących w tym przypadku |
+| **Nazwapunktukoncowego** | String | Nazwa punktu końcowego routingu |
+| **punkt końcowy** | String | Typ punktu końcowego routingu |
+| **parentSpanId** | String | [Identyfikator zakresu](https://w3c.github.io/trace-context/#parent-id) komunikatu nadrzędnego, który będzie IoT Hub śledzenia komunikatów przychodzących w tym przypadku |
 
 #### <a name="configurations"></a>Konfiguracje
 
@@ -540,7 +540,7 @@ Usługa Azure IoT Hub wskazuje na poziom regionalny kondycję. Jeśli regionalna
 
 Aby sprawdzić kondycję centrów IoT, wykonaj następujące kroki:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 
 2. Przejdź do > Service Health **kondycji zasobów**.
 

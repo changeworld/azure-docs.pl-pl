@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: tagore
 ms.openlocfilehash: 61c794ba03934ae1828ba310f3f776bfb61b652b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972939"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384150"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>Wprowadzenie do monitorowania usługi w chmurze
 
@@ -32,7 +32,7 @@ Podstawowe monitorowanie nie wymaga konta magazynu.
 
 ![podstawowe kafelki monitorowania usługi w chmurze](media/cloud-services-how-to-monitor/basic-tiles.png)
 
-## <a name="advanced-monitoring"></a>Monitorowanie zaawansowane
+## <a name="advanced-monitoring"></a>Zaawansowane monitorowanie
 
 Zaawansowane monitorowanie obejmuje użycie rozszerzenia **Diagnostyka Azure** (i opcjonalnie zestawu SDK Application Insights) na roli, którą chcesz monitorować. Rozszerzenie diagnostyki używa pliku konfiguracji (na rolę) o nazwie **Diagnostics. wadcfgx** , aby skonfigurować monitorowane metryki diagnostyki. Rozszerzenie diagnostyki platformy Azure gromadzi i zapisuje dane na koncie usługi Azure Storage. Te ustawienia są konfigurowane w plikach **. wadcfgx**, [. csdef](cloud-services-model-and-package.md#servicedefinitioncsdef)i [. cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) . Oznacza to, że istnieje dodatkowy koszt związany z zaawansowanym monitorowaniem.
 

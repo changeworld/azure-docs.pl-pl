@@ -11,11 +11,11 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: bfae8147c348c76fa0e406fec283144ebc26e86b
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615517"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390701"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Obsługiwane na maszynie wirtualnej do nauki o danych platformy danych
 
@@ -37,7 +37,7 @@ Na DSVM są obsługiwane następujące narzędzia platformy danych.
 > Wersji SQL Server Developer można używać tylko w celach deweloperskich i testowych. Potrzebujesz licencji lub jednej z maszyn wirtualnych serwera SQL, aby go uruchomić w środowisku produkcyjnym.
 
 
-### <a name="setup"></a>Konfiguracja
+### <a name="setup"></a>Konfigurowanie
 
 Serwer bazy danych jest już wstępnie skonfigurowany i usługi systemu Windows powiązane z SQL Server (takie jak `SQL Server (MSSQLSERVER)`) są skonfigurowane do automatycznego uruchamiania. Jedyny krok ręczny obejmuje włączenie analizy w bazie danych przy użyciu Microsoft Machine Learning Server. Możesz włączyć funkcję analizy, uruchamiając następujące polecenie jako jednorazową akcję w SQL Server Management Studio (SSMS). Uruchom to polecenie po zalogowaniu się jako administrator komputera, Otwórz nowe zapytanie w programie SSMS i upewnij się, że wybrana baza danych jest `master`:
 
@@ -55,7 +55,7 @@ Ponadto DSVM zawiera sterowniki ODBC i JDBC, aby komunikować się z SQL Server,
 
 ### <a name="how-is-it-configured-and-installed-on-the-dsvm"></a>Jak została skonfigurowana i zainstalowana na DSVM? 
 
- SQL Server jest zainstalowany w standardowy sposób. Znajduje się w temacie `C:\Program Files\Microsoft SQL Server`. Wystąpienie Machine Learning Server w bazie danych znajduje się w `C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\R_SERVICES`. DSVM ma również oddzielne autonomiczne wystąpienie Machine Learning Server, które jest instalowane w `C:\Program Files\Microsoft\R Server\R_SERVER`. Te dwa wystąpienia Machine Learning Server nie współdzielą bibliotek.
+ SQL Server jest zainstalowany w standardowy sposób. Można go znaleźć w `C:\Program Files\Microsoft SQL Server`. Wystąpienie Machine Learning Server w bazie danych znajduje się w `C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\R_SERVICES`. DSVM ma również oddzielne autonomiczne wystąpienie Machine Learning Server, które jest instalowane w `C:\Program Files\Microsoft\R Server\R_SERVER`. Te dwa wystąpienia Machine Learning Server nie współdzielą bibliotek.
 
 
 ## <a name="apache-spark-2x-standalone"></a>Apache Spark 2.x (autonomiczny)
@@ -73,7 +73,7 @@ Zadania platformy Spark można przesłać w wierszu polecenia, uruchamiając pol
 
 Platformy Spark można użyć z języka R, korzystając z bibliotek takich jak Spark, Sparklyr i Microsoft Machine Learning Server, które są dostępne w DSVM. Zobacz łącza do przykładów w powyższej tabeli.
 
-### <a name="setup"></a>Konfiguracja
+### <a name="setup"></a>Konfigurowanie
 Przed uruchomieniem w kontekście platformy Spark w Microsoft Machine Learning Server na Ubuntu Linux DSVM Edition należy wykonać jednorazowy krok konfiguracji, aby włączyć lokalny pojedynczy węzeł Hadoop HDFS i wystąpienie przędzenia. Domyślnie usługi Hadoop jest zainstalowany, ale wyłączone na maszyny DSVM. Aby je włączyć, uruchom następujące polecenia jako główne po raz pierwszy:
 
     echo -e 'y\n' | ssh-keygen -t rsa -P '' -f ~hadoop/.ssh/id_rsa

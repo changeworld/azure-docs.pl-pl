@@ -8,11 +8,11 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/15/2019
 ms.openlocfilehash: 31cdef281b1cb26d01a4690c815e3d3621e2c053
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894312"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395116"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>OutOfMemoryError wyjątki dla Apache Spark w usłudze Azure HDInsight
 
@@ -56,7 +56,7 @@ java.lang.OutOfMemoryError
 
 Najbardziej prawdopodobną przyczyną tego wyjątku to, że nie ma wystarczającej ilości pamięci sterty jest przydzielany do maszyny wirtualnej Java (JVMs). Te JVMs są uruchamiane jako elementy wykonawcze lub sterowniki w ramach aplikacji Apache Spark.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 1. Określ maksymalny rozmiar danych obsługiwanych przez aplikację aparatu Spark. Należy oszacować rozmiar na podstawie maksymalnego rozmiaru danych wejściowych, danych pośrednich generowanych przez transformacje danych wejściowych i danych wyjściowych, które wygenerowały dalsze Przekształcanie danych pośrednich. Jeśli wstępne oszacowanie nie jest wystarczające, Zwiększ rozmiar nieco i wykonaj iterację do momentu wystąpienia błędów pamięci.
 
@@ -114,7 +114,7 @@ hadoop fs -du -s -h wasb:///hdp/spark2-events/application_1503957839788_0264_1/
 **2.1 G**  wasb:///hdp/spark2-events/application_1503957839788_0264_1
 ```
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Pamięć serwera historii platformy Spark można zwiększyć, edytując Właściwość `SPARK_DAEMON_MEMORY` w konfiguracji platformy Spark i uruchamiając ponownie wszystkie usługi.
 
@@ -200,7 +200,7 @@ Po nieoczekiwanym zakończeniu działania serwera usługi Livy wszystkie połąc
 
 W przypadku przesyłania dużej liczby zadań za pośrednictwem usługi usługi Livy, w ramach wysokiej dostępności dla serwera usługi Livy są przechowywane te Stany sesji w ZK (w klastrach usługi HDInsight) i odzyskiwać te sesje po ponownym uruchomieniu usługi usługi Livy. Po ponownym uruchomieniu po nieoczekiwanym zakończeniu usługi Livy tworzy jeden wątek dla każdej sesji, co spowoduje zsumowanie określonej liczby sesji do odzyskiwania, co powoduje utworzenie zbyt wielu wątków.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Usuń wszystkie wpisy, wykonując kroki opisane poniżej.
 

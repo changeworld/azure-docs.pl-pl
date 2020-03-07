@@ -8,11 +8,11 @@ ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
 ms.openlocfilehash: d2dfaab3d01ea29b0f9ecba1e9d748415bed2edc
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861289"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391765"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Konfigurowanie odzyskiwania po awarii maszyn wirtualnych VMware na platformie Azure przy użyciu programu PowerShell
 
@@ -118,7 +118,7 @@ W poniższym przykładzie szczegóły magazynu ze zmiennej $vault są używane d
    VMwareDRToAzurePs VMwareDRToAzurePs Microsoft.RecoveryServices vaults
    ```
 
-Zamiast polecenia cmdlet Set-ASRVaultContext, można również użyć polecenia cmdlet Import-AzRecoveryServicesAsrVaultSettingsFile, aby ustawić kontekst magazynu. Określ ścieżkę, w której znajduje się plik klucza rejestracji magazynu jako parametr-path polecenia cmdlet Import-AzRecoveryServicesAsrVaultSettingsFile. Przykład:
+Zamiast polecenia cmdlet Set-ASRVaultContext, można również użyć polecenia cmdlet Import-AzRecoveryServicesAsrVaultSettingsFile, aby ustawić kontekst magazynu. Określ ścieżkę, w której znajduje się plik klucza rejestracji magazynu jako parametr-path polecenia cmdlet Import-AzRecoveryServicesAsrVaultSettingsFile. Na przykład:
 
    ```azurepowershell
    Get-AzRecoveryServicesVaultSettingsFile -SiteRecovery -Vault $Vault -Path "C:\Work\"
@@ -342,7 +342,7 @@ Aby chronić odnalezioną maszynę wirtualną, potrzebne są następujące szcze
 * Element objęty ochroną do replikacji.
 * Konto magazynu, do którego należy replikować maszynę wirtualną (tylko w przypadku replikowania do konta magazynu). 
 * Magazyn dzienników jest wymagany do ochrony maszyn wirtualnych na koncie magazynu w warstwie Premium lub na dysku zarządzanym.
-* Serwer przetwarzania, który ma być używany na potrzeby replikacji. Na liście serwerów dostępnych proces został pobierane i zapisywane w ***$ProcessServers [0]***  *(skalowania ProcessServer)* i ***$ProcessServers [1]*** *(ConfigurationServer)* zmiennych.
+* Serwer przetwarzania, który ma być używany na potrzeby replikacji. Lista dostępnych serwerów procesów została pobrana i zapisana w ***$ProcessServers [0]***  *(skalowania-ProcessServer)* i ***$ProcessServers [1]*** *(ConfigurationServer)* zmiennych.
 * Konto używane do wypychania instalacji oprogramowania usługi mobilności na maszynach. Lista dostępnych kont została pobrana i zapisana w zmiennej ***$AccountHandles*** .
 * Mapowanie kontenera ochrony dla zasad replikacji, które ma być używane na potrzeby replikacji.
 * Grupa zasobów, w której maszyny wirtualne muszą zostać utworzone w trybie failover.
@@ -351,11 +351,11 @@ Aby chronić odnalezioną maszynę wirtualną, potrzebne są następujące szcze
 Teraz Replikuj następujące maszyny wirtualne przy użyciu ustawień określonych w tej tabeli
 
 
-|Maszyna wirtualna  |Serwer przetwarzania        |Konto magazynu              |Konto magazynu dzienników  |Zasady           |Konto do instalacji usługi mobilności|Docelowa grupa zasobów  | Docelowa sieć wirtualna  |Podsieć docelowa  |
+|Maszyna wirtualna  |Serwer przetwarzania        |Konto magazynu              |Konto magazynu dzienników  |Zasady           |Konto do instalacji usługi mobilności|Docelowa Grupa zasobów  | Docelowa sieć wirtualna  |Podsieć docelowa  |
 |-----------------|----------------------|-----------------------------|---------------------|-----------------|-----------------------------------------|-----------------------|-------------------------|---------------|
-|CentOSVM1       |ConfigurationServer   |ND| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |
+|CentOSVM1       |ConfigurationServer   |Nie dotyczy| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |
 |Win2K12VM1       |ScaleOut-ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   
-|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| ND                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   
+|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| Nie dotyczy                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   
 
 
 ```azurepowershell

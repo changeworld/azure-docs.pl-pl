@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: ff608cac9786ebc0d3908ce4d88fb501e621be6c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176601"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374388"
 ---
 # <a name="azure-api-management-page-controls"></a>Kontrolki strony API Management platformy Azure
 Usługa Azure API Management udostępnia następujące kontrolki do użycia w szablonach portalu dla deweloperów.  
@@ -52,7 +52,7 @@ Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [How to dost
   
  ![Kontrola&#45;akcji aplikacji](./media/api-management-page-controls/APIM-app-actions-control.png "Aplikacja APIM — kontrola akcji")  
   
-### <a name="usage"></a>Użycie  
+### <a name="usage"></a>Sposób użycia  
   
 ```xml  
 <app-actions params="{ appId: '{{app.id}}' }"></app-actions>  
@@ -74,7 +74,7 @@ Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [How to dost
   
  ![podstawowa&#45;kontrola logowania](./media/api-management-page-controls/APIM-basic-signin-control.png "APIM — kontrola logowania")  
   
-### <a name="usage"></a>Użycie  
+### <a name="usage"></a>Sposób użycia  
   
 ```xml  
 <basic-SignIn></basic-SignIn>  
@@ -93,7 +93,7 @@ Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [How to dost
   
  ![Kontrolka stronicowania](./media/api-management-page-controls/APIM-paging-control.png "APIM — formant stronicowania")  
   
-### <a name="usage"></a>Użycie  
+### <a name="usage"></a>Sposób użycia  
   
 ```xml  
 <paging-control></paging-control>  
@@ -116,7 +116,7 @@ Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [How to dost
   
  ![Sterowanie dostawcami](./media/api-management-page-controls/APIM-providers-control.png "Kontrolka dostawcy APIM")  
   
-### <a name="usage"></a>Użycie  
+### <a name="usage"></a>Sposób użycia  
   
 ```xml  
 <providers></providers>  
@@ -135,7 +135,7 @@ Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [How to dost
   
  ![Kontrolka wyszukiwania](./media/api-management-page-controls/APIM-search-control.png "APIM — formant wyszukiwania")  
   
-### <a name="usage"></a>Użycie  
+### <a name="usage"></a>Sposób użycia  
   
 ```xml  
 <search-control></search-control>  
@@ -156,7 +156,7 @@ Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [How to dost
   
  ![Kontrola&#45;rejestracji](./media/api-management-page-controls/APIM-sign-up-control.png "APIM — formant rejestracji")  
   
-### <a name="usage"></a>Użycie  
+### <a name="usage"></a>Sposób użycia  
   
 ```xml  
 <sign-up></sign-up>  
@@ -175,7 +175,7 @@ Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [How to dost
   
  ![przycisk&#45;subskrybowania — formant](./media/api-management-page-controls/APIM-subscribe-button-control.png "APIM — formant subskrypcji przycisku")  
   
-### <a name="usage"></a>Użycie  
+### <a name="usage"></a>Sposób użycia  
   
 ```xml  
 <subscribe-button></subscribe-button>  
@@ -194,7 +194,7 @@ Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [How to dost
   
  ![Kontrola&#45;anulowania subskrypcji](./media/api-management-page-controls/APIM-subscription-cancel-control.png "Subskrypcja APIM — anulowanie kontroli")  
   
-### <a name="usage"></a>Użycie  
+### <a name="usage"></a>Sposób użycia  
   
 ```xml  
 <subscription-cancel params="{ subscriptionId: '{{subscription.id}}', cancelUrl: '{{subscription.cancelUrl}}' }">  

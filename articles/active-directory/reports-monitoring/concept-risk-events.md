@@ -17,11 +17,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e1f3755d61b5fa082665cfdb9aa91d1e31e2d4e4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014477"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376389"
 ---
 # <a name="azure-active-directory-risk-detections"></a>Azure Active Directory wykrywania ryzyka
 
@@ -69,7 +69,7 @@ Ciągłe inwestycje firmy Microsoft w proces wykrywania prowadzą do:
 
 Gdy cybernetycznymi naruszają prawidłowe hasła dla uprawnionych użytkowników, często udostępniają te poświadczenia. Jest to zwykle realizowane przez zaksięgowanie ich publicznie w ciemnych witrynach sieci Web lub wklejanie lub przez handel lub sprzedawanie poświadczeń na czarnym rynku. Usługa Microsoft wycieka poświadczeń uzyskuje pary nazw użytkowników i haseł, monitorując publiczne i ciemne witryny sieci Web i wykonując następujące działania:
 
-- Badacze
+- Wizytujących
 - Przepisy prawne
 - Zespoły ds. zabezpieczeń w firmie Microsoft
 - Inne zaufane źródła 

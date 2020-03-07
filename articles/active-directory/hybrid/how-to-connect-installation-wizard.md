@@ -18,13 +18,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5440c54b01f62b3ad61b355f4c622a31910a65c1
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71290936"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376331"
 ---
-# <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect synchronizacji: Uruchamianie kreatora instalacji po raz drugi
+# <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect Sync: Uruchamianie Kreatora instalacji po raz drugi
 Przy pierwszym uruchomieniu Kreatora instalacji Azure AD Connect przeprowadzi Cię przez proces konfigurowania instalacji. Po ponownym uruchomieniu Kreatora instalacji oferuje opcje konserwacji.
 
 >[!IMPORTANT]
@@ -47,7 +47,7 @@ Wybierz jedno z zadań, a następnie kliknij przycisk **dalej** , aby kontynuowa
 >
 >
 
-## <a name="view-current-configuration"></a>Wyświetlanie bieżącej konfiguracji
+## <a name="view-current-configuration"></a>Wyświetl bieżącą konfigurację
 Ta opcja umożliwia szybkie wyświetlenie aktualnie skonfigurowanych opcji.
 
 ![Strona z listą wszystkich opcji i ich Stanów](./media/how-to-connect-installation-wizard/viewconfig.png)
@@ -94,5 +94,5 @@ Aby uzyskać więcej informacji na temat tej opcji, zobacz [Logowanie użytkowni
 
 **Tematy dotyczące omówienia**
 
-* [Synchronizacja w programie Azure AD Connect: Omówienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
+* [Azure AD Connect Sync: omówienie i dostosowanie synchronizacji](how-to-connect-sync-whatis.md)
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)

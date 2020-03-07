@@ -13,11 +13,11 @@ ms.custom: seodec18
 ms.date: 04/15/2019
 ms.author: juliako
 ms.openlocfilehash: ff27ae0fd639316f03fe89ffc906561b3ef85f6f
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76515075"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391322"
 ---
 # <a name="get-a-signing-key-from-the-existing-policy"></a>Pobierz klucz podpisywania z istniejących zasad
 
@@ -25,7 +25,7 @@ Jedną z najważniejszych zasad projektowania interfejsów API w wersji 3 jest l
 
 W przykładzie w tym artykule pokazano, jak za pomocą programu .NET pobrać klucz podpisywania z istniejących zasad. 
  
-## <a name="download"></a>Pobierz 
+## <a name="download"></a>Pobieranie 
 
 Sklonuj repozytorium GitHub zawierające pełny przykład platformy .NET na maszynie przy użyciu następującego polecenia:  
 

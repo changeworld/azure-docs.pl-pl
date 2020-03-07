@@ -14,11 +14,11 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 8080d4cf4c3f0091f7837b3fccead5474c42db55
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695878"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377235"
 ---
 # <a name="single-sign-on-with-msaljs"></a>Logowanie jednokrotne za pomocą biblioteki MSAL.js
 
@@ -87,7 +87,7 @@ Kroki konfigurowania opcjonalnych oświadczeń w manifeście aplikacji można zn
 
 **Korzystanie z wskazówki logowania**
 
-Jeśli nie masz skonfigurowanego lub nie chcesz pominąć monitu wyboru konta w ramach wywołań uwierzytelniania interakcyjnego, możesz to zrobić, podając `login_hint` w parametrach żądania i opcjonalnie `domain_hint` jako `extraQueryParameters` w metodach interaktywnych MSAL. js (`loginPopup`, `loginRedirect`, `acquireTokenPopup` i `acquireTokenRedirect`). Przykład:
+Jeśli nie masz skonfigurowanego lub nie chcesz pominąć monitu wyboru konta w ramach wywołań uwierzytelniania interakcyjnego, możesz to zrobić, podając `login_hint` w parametrach żądania i opcjonalnie `domain_hint` jako `extraQueryParameters` w metodach interaktywnych MSAL. js (`loginPopup`, `loginRedirect`, `acquireTokenPopup` i `acquireTokenRedirect`). Na przykład:
 
 ```javascript
 var request = {

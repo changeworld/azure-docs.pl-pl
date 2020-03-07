@@ -1,7 +1,7 @@
 ---
-title: Obsługa języka — QnA Maker
+title: Obsługa języków — QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Lista kultur, Języki naturalne obsługiwane przez QnA Maker w bazie wiedzy. Nie mieszaj języków w tej samej bazie wiedzy.
+description: Lista kultury, naturalny języki obsługiwane przez narzędzie QnA Maker bazy wiedzy. Nie należy mieszać języki obsługiwane w tej samej bazie wiedzy knowledge base.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,11 +11,11 @@ ms.topic: reference
 ms.date: 09/24/2019
 ms.author: diberry
 ms.openlocfilehash: 96440bf0e9c26e6f222f3bc94c8fabb0bc8f488d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720987"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389318"
 ---
 # <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>Obsługa języka dla zasobów QnA Maker i baz wiedzy
 
@@ -31,7 +31,7 @@ Poniższa lista zawiera języki obsługiwane dla zasobu QnA Maker.
 
 |Język|
 |--|
-|Arabski|
+|arabski|
 |Armeński|
 |Bengalski|
 |Baskijski|
@@ -42,7 +42,7 @@ Poniższa lista zawiera języki obsługiwane dla zasobu QnA Maker.
 |Chorwacki|
 |Czeski|
 |Duński|
-|Holenderski|
+|holenderski|
 |Polski|
 |Estoński|
 |Fiński|
@@ -54,8 +54,8 @@ Poniższa lista zawiera języki obsługiwane dla zasobu QnA Maker.
 |Hebrajski|
 |Hindi|
 |Węgierski|
-|Islandzki|
-|Indonezyjski|
+|islandzki|
+|indonezyjski|
 |Irlandzki|
 |Włoski|
 |Japoński|
@@ -63,13 +63,13 @@ Poniższa lista zawiera języki obsługiwane dla zasobu QnA Maker.
 |Koreański|
 |Łotewski|
 |Litewski|
-|Malayalam|
-|Malajski|
+|Malajalam|
+|malajski|
 |Norweski|
 |Polski|
 |Portugalski|
 |Pendżabski|
-|Rumuński|
+|rumuński|
 |Rosyjski|
 |Serbian_Cyrillic|
 |Serbian_Latin|
@@ -82,8 +82,8 @@ Poniższa lista zawiera języki obsługiwane dla zasobu QnA Maker.
 |Tajski|
 |Turecki|
 |Ukraiński|
-|Urdu|
-|Wietnamski|
+|urdu|
+|wietnamski|
 
 ## <a name="next-steps"></a>Następne kroki
 

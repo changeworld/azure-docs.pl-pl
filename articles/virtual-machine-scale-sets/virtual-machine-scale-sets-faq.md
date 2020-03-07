@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: manayar
 ms.openlocfilehash: 222f26febb7b14c627307295a8cdd68a17694d03
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275900"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394669"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Często zadawane pytania dotyczące zestawów skalowania maszyn wirtualnych platformy Azure
 
@@ -41,7 +41,7 @@ Wszystkie regiony obsługują zestawy skalowania.
 
 ### <a name="how-do-i-create-a-scale-set-by-using-a-custom-image"></a>Jak utworzyć zestaw skalowania za pomocą obrazu niestandardowego?
 
-Tworzenie i przechwytywanie obrazu maszyny Wirtualnej, a następnie używać go jako źródło dla zestawu skalowania. Samouczek dotyczący sposobu tworzenia i używania niestandardowego obrazu maszyny Wirtualnej, można użyć [wiersza polecenia platformy Azure](tutorial-use-custom-image-cli.md) lub [programu Azure PowerShell](tutorial-use-custom-image-powershell.md)
+Tworzenie i przechwytywanie obrazu maszyny Wirtualnej, a następnie używać go jako źródło dla zestawu skalowania. Aby zapoznać się z samouczkiem dotyczącym tworzenia niestandardowego obrazu maszyny wirtualnej i korzystania z niego, można użyć [interfejsu wiersza polecenia platformy Azure](tutorial-use-custom-image-cli.md) lub [Azure PowerShell](tutorial-use-custom-image-powershell.md)
 
 ### <a name="if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed"></a>Jeśli zmniejszę pojemność zestawu skalowania z 20 do 15, które maszyny wirtualne zostaną usunięte?
 
@@ -57,26 +57,26 @@ Tak, można użyć [sekwencjonowania rozszerzeń](virtual-machine-scale-sets-ext
 
 ### <a name="do-scale-sets-work-with-azure-availability-sets"></a>Czy zestawy skalowania współdziałają z zestawami dostępności platformy Azure?
 
-Używa zestawu regionalnych skalowania (innych niż strefowej) *grup umieszczania*, który pełnić rolę zbiór niejawne dostępności z pięcioma domenami błędów i pięcioma domenami aktualizacji. Zestawy skalowania z ponad 100 maszyn wirtualnych obejmują wiele grup umieszczania. Aby uzyskać więcej informacji na temat grup umieszczania, zobacz [Praca z dużymi zestawami skalowania maszyn wirtualnych](virtual-machine-scale-sets-placement-groups.md). Zestaw dostępności maszyn wirtualnych może znajdować się w tej samej sieci wirtualnej co zestaw skalowania maszyn wirtualnych. Typowa konfiguracja polega na umieszczeniu maszyn wirtualnych węzła kontrolnego (często wymagających unikatowej konfiguracji) w zestawie dostępności, a węzłów danych w zestawie skalowania.
+Zestaw skalowania Regionalnego (bez stref) używa *grup umieszczania*, które działają jako niejawny zestaw dostępności z pięcioma domenami błędów i pięcioma domenami aktualizacji. Zestawy skalowania z ponad 100 maszyn wirtualnych obejmują wiele grup umieszczania. Aby uzyskać więcej informacji na temat grup umieszczania, zobacz [Praca z dużymi zestawami skalowania maszyn wirtualnych](virtual-machine-scale-sets-placement-groups.md). Zestaw dostępności maszyn wirtualnych może znajdować się w tej samej sieci wirtualnej co zestaw skalowania maszyn wirtualnych. Typowa konfiguracja polega na umieszczeniu maszyn wirtualnych węzła kontrolnego (często wymagających unikatowej konfiguracji) w zestawie dostępności, a węzłów danych w zestawie skalowania.
 
 ### <a name="do-scale-sets-work-with-azure-availability-zones"></a>Czy zestawy skalowania współdziałają ze strefami dostępności platformy Azure?
 
-Tak. Aby uzyskać więcej informacji, zobacz [strefy dokumentacji zestawu skalowania](./virtual-machine-scale-sets-use-availability-zones.md).
+Tak! Aby uzyskać więcej informacji, zobacz [dokument o strefie zestawu skalowania](./virtual-machine-scale-sets-use-availability-zones.md).
 
 
 ## <a name="autoscale"></a>Automatyczne skalowanie
 
 ### <a name="what-are-best-practices-for-azure-autoscale"></a>Jakie są najlepsze rozwiązania dotyczące skalowania automatycznego platformy Azure?
 
-Najlepsze rozwiązania dotyczące automatycznego skalowania, zobacz [najlepsze rozwiązania dotyczące maszyn wirtualnych skalowania automatycznego](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-autoscale-best-practices).
+Aby zapoznać się z najlepszymi rozwiązaniami dotyczącymi automatycznego skalowania, zobacz [najlepsze rozwiązania dotyczące skalowania maszyn wirtualnych](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-autoscale-best-practices).
 
 ### <a name="where-do-i-find-metric-names-for-autoscaling-that-uses-host-based-metrics"></a>Gdzie znaleźć nazwy metryki automatycznego skalowania, który wykorzystuje oparte na hoście metryki?
 
-Metryki nazw na potrzeby skalowania automatycznego, która wykorzystuje oparte na hoście metryki, zobacz [metryki obsługiwane z usługą Azure Monitor](https://azure.microsoft.com/documentation/articles/monitoring-supported-metrics/).
+Aby uzyskać nazwy metryk skalowania automatycznego, które korzysta z metryk opartych na hoście, zobacz temat [obsługiwane metryki z Azure monitor](https://azure.microsoft.com/documentation/articles/monitoring-supported-metrics/).
 
 ### <a name="are-there-any-examples-of-autoscaling-based-on-an-azure-service-bus-topic-and-queue-length"></a>Czy istnieją przykładami skalowania automatycznego na podstawie długości tematów i kolejek usługi Azure Service Bus?
 
-Tak. Skalowanie automatyczne w oparciu o długości tematów i kolejek usługi Azure Service Bus, zobacz [typowe metryki automatycznego skalowania usługi Azure Monitor](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/).
+Tak. Aby zapoznać się z przykładami skalowania automatycznego na podstawie Azure Service Bus tematu i długości kolejki, zobacz [Azure monitor automatyczne skalowanie typowych metryk](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/).
 
 Kolejki usługi Service Bus można użyć w następujące dane JSON:
 
@@ -101,9 +101,9 @@ Zastąp przykładowe wartości zasobu Uniform Resource Identifier (URI).
 
 Ustawienia automatycznego skalowania można tworzyć na Maszynę wirtualną do używania metryki na poziomie hosta lub metryki na podstawie systemu operacyjnego gościa.
 
-Aby uzyskać listę obsługiwanych metryk, zobacz [typowe metryki automatycznego skalowania usługi Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-autoscale-common-metrics).
+Aby uzyskać listę obsługiwanych metryk, zobacz [Azure monitor skalowanie często spotykane](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-autoscale-common-metrics).
 
-Aby uzyskać pełny przykład dla zestawów skalowania maszyn wirtualnych, zobacz [konfiguracji Zaawansowane automatyczne skalowanie przy użyciu szablonów usługi Resource Manager dla zestawów skalowania maszyn wirtualnych](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets).
+Aby uzyskać pełny przykład dla zestawów skalowania maszyn wirtualnych, zobacz [Zaawansowane Konfigurowanie automatycznego skalowania za pomocą szablonów Menedżer zasobów dla zestawów skalowania maszyn wirtualnych](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets).
 
 W przykładzie użyto pomiar procesora CPU na poziomie hosta i metryki liczby komunikatów.
 
@@ -111,17 +111,17 @@ W przykładzie użyto pomiar procesora CPU na poziomie hosta i metryki liczby ko
 
 ### <a name="how-do-i-set-alert-rules-on-a-virtual-machine-scale-set"></a>Jak ustawić reguły alertów w zestawie skalowania maszyn wirtualnych?
 
-Można tworzyć alerty dotyczące metryk dla zestawów skalowania maszyn wirtualnych za pomocą programu PowerShell lub wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zobacz [przykłady szybkiego startu usługi Azure Monitor PowerShell](https://azure.microsoft.com/documentation/articles/insights-powershell-samples/#create-alert-rules) i [przykładowych Szybki Start interfejsu wiersza polecenia dla wielu platform Azure Monitor](https://azure.microsoft.com/documentation/articles/insights-cli-samples/#work-with-alerts).
+Można tworzyć alerty dotyczące metryk dla zestawów skalowania maszyn wirtualnych za pomocą programu PowerShell lub wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zobacz Azure Monitor samouczków szybki start dla [programu PowerShell](https://azure.microsoft.com/documentation/articles/insights-powershell-samples/#create-alert-rules) i [Azure monitor Międzyplatformowe przykłady interfejsu wiersza polecenia](https://azure.microsoft.com/documentation/articles/insights-cli-samples/#work-with-alerts).
 
 Element TargetResourceId zestawu skalowania maszyn wirtualnych wygląda następująco:
 
 /subscriptions/yoursubscriptionid/resourceGroups/yourresourcegroup/providers/Microsoft.Compute/virtualMachineScaleSets/yourvmssname
 
-Wszelkie licznika wydajności maszyny Wirtualnej można wybrać jako metrykę, aby ustawić alert w przypadku. Aby uzyskać więcej informacji, zobacz [metryk systemu operacyjnego gościa dla maszyn wirtualnych z Windows opartych na usłudze Resource Manager](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/#guest-os-metrics-resource-manager-based-windows-vms) i [metryki systemu operacyjnego gościa dla maszyn wirtualnych systemu Linux](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/#guest-os-metrics-linux-vms) w [typowe metryki automatycznego skalowania usługi Azure Monitor](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/)artykułu.
+Wszelkie licznika wydajności maszyny Wirtualnej można wybrać jako metrykę, aby ustawić alert w przypadku. Aby uzyskać więcej informacji, zobacz [metryki systemu operacyjnego gościa dla maszyn wirtualnych z systemem Windows opartych na Menedżer zasobów](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/#guest-os-metrics-resource-manager-based-windows-vms) i [metryki systemu operacyjnego gościa dla maszyn wirtualnych systemu Linux](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/#guest-os-metrics-linux-vms) w artykule [Azure monitor częsty skalowanie typowych metryk](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/)
 
 ### <a name="how-do-i-set-up-autoscale-on-a-virtual-machine-scale-set-by-using-powershell"></a>Jak skonfigurować automatyczne skalowanie w skali maszyny wirtualnej ustawić przy użyciu programu PowerShell?
 
-Aby skonfigurować automatyczne skalowanie w skali maszyny wirtualnej ustawić przy użyciu programu PowerShell, zobacz [automatyczne skalowanie zestawu skalowania maszyn wirtualnych](tutorial-autoscale-powershell.md). Można również skonfigurować automatyczne skalowanie przy użyciu [wiersza polecenia platformy Azure](tutorial-autoscale-cli.md) i [szablonów platformy Azure](tutorial-autoscale-template.md)
+Aby skonfigurować Skalowanie automatyczne na podstawie zestawu skalowania maszyn wirtualnych przy użyciu programu PowerShell, zobacz sekcję [Automatyczna skalowanie zestawu skalowania maszyn wirtualnych](tutorial-autoscale-powershell.md). Możesz również skonfigurować Skalowanie automatyczne za pomocą [interfejsu wiersza polecenia platformy Azure](tutorial-autoscale-cli.md) i [szablonów platformy Azure](tutorial-autoscale-template.md)
 
 
 ### <a name="if-i-have-stopped-deallocated-a-vm-is-that-vm-started-as-part-of-an-autoscale-operation"></a>Jeśli została zatrzymana (przydział zostanie cofnięty) maszyny Wirtualnej, jest tej maszyny Wirtualnej uruchomiony jako część operacji skalowania automatycznego?
@@ -156,7 +156,7 @@ Użyj następujące dane JSON:
 
 Kod obsługuje Windows i Linux.
 
-Aby uzyskać więcej informacji, zobacz [tworzenia lub aktualizacji zestawu skalowania maszyn wirtualnych](https://msdn.microsoft.com/library/mt589035.aspx).
+Aby uzyskać więcej informacji, zobacz [Tworzenie lub aktualizowanie zestawu skalowania maszyn wirtualnych](https://msdn.microsoft.com/library/mt589035.aspx).
 
 
 ### <a name="how-do-i-use-self-signed-certificates-provisioned-for-azure-service-fabric-clusters"></a>Jak mogę używać certyfikatów z podpisem własnym dla klastrów usługi Azure Service Fabric?
@@ -170,9 +170,9 @@ Certyfikatów z podpisem własnym nie można używać w przypadku dystrybuowanej
 
 ### <a name="can-i-specify-an-ssh-key-pair-to-use-for-ssh-authentication-with-a-linux-virtual-machine-scale-set-from-a-resource-manager-template"></a>Można określić pary kluczy SSH do uwierzytelniania SSH przy użyciu systemu Linux maszyny wirtualnej zestawu skalowania na podstawie szablonu usługi Resource Manager?
 
-Tak. Interfejs API REST **osProfile** jest podobny do standardowego interfejsu API REST maszyny Wirtualnej.
+Tak. Interfejs API REST dla **osProfile** jest podobny do standardowego interfejsu API REST maszyny wirtualnej.
 
-Obejmują **osProfile** w szablonie:
+Dołącz **osProfile** do szablonu:
 
 ```json
 "osProfile": {
@@ -194,7 +194,7 @@ Obejmują **osProfile** w szablonie:
 
 Ten blok JSON jest używany w [tym szablonie szybkiego startu platformy Azure](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json).
 
-Aby uzyskać więcej informacji, zobacz [tworzenia lub aktualizacji zestawu skalowania maszyn wirtualnych](https://msdn.microsoft.com/library/azure/mt589035.aspx#linuxconfiguration).
+Aby uzyskać więcej informacji, zobacz [Tworzenie lub aktualizowanie zestawu skalowania maszyn wirtualnych](https://msdn.microsoft.com/library/azure/mt589035.aspx#linuxconfiguration).
 
 ### <a name="how-do-i-remove-deprecated-certificates"></a>Jak usunąć certyfikaty przestarzałe?
 
@@ -221,23 +221,23 @@ Można podać publicznymi kluczami SSH w postaci zwykłego tekstu, podczas tworz
 }
 ```
 
-Nazwa elementu linuxConfiguration | Wymagane | Typ | Opis
+Nazwa elementu linuxConfiguration | Wymagany | Typ | Opis
 --- | --- | --- | ---
 SSH | Nie | Collection | Określa konfigurację kluczy SSH w systemie operacyjnym Linux
-Ścieżka | Tak | Ciąg | Określa ścieżkę pliku systemu Linux, gdzie klucze SSH lub certyfikatu powinien być zlokalizowany
-Kontenerem | Tak | Ciąg | Określa klucz publiczny SSH algorytmem Base64
+ścieżka | Yes | Ciąg | Określa ścieżkę pliku systemu Linux, gdzie klucze SSH lub certyfikatu powinien być zlokalizowany
+Kontenerem | Yes | Ciąg | Określa klucz publiczny SSH algorytmem Base64
 
-Aby uzyskać przykład, zobacz [szablon szybkiego startu usługi GitHub 101-vm-sshkey](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json).
+Aby zapoznać się z przykładem, zobacz [szablon 101-VM-Sshkey GitHub — szybki start](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json).
 
-### <a name="when-i-run-update-azvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>Po uruchomieniu `Update-AzVmss` po dodaniu więcej niż jeden certyfikat z magazynu kluczy, w tym samym, I zostanie wyświetlony następujący komunikat:
+### <a name="when-i-run-update-azvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>Gdy uruchamiam `Update-AzVmss` po dodaniu więcej niż jednego certyfikatu z tego samego magazynu kluczy, zobaczysz następujący komunikat:
 
 >Polecenie Update-AzVmss: list Secret zawiera powtórzone wystąpienia/subscriptions/\<my-Subscription-ID >/resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev, która jest niedozwolona.
 
-Może to nastąpić, jeśli zostanie podjęta próba ponownego dodania w tym samym magazynie, a nie przy użyciu nowego certyfikatu w magazynie dla istniejącego magazynu źródłowego. `Add-AzVmssSecret` Polecenie nie działa poprawnie, w przypadku dodawania dodatkowych wpisów tajnych.
+Może to nastąpić, jeśli zostanie podjęta próba ponownego dodania w tym samym magazynie, a nie przy użyciu nowego certyfikatu w magazynie dla istniejącego magazynu źródłowego. Polecenie `Add-AzVmssSecret` nie działa prawidłowo w przypadku dodawania dodatkowych wpisów tajnych.
 
 Aby dodać więcej wpisów tajnych z tego samego magazynu kluczy, należy zaktualizować listę $vmss.properties.osProfile.secrets[0].vaultCertificates.
 
-Do oczekiwanej struktury danych wejściowych, zobacz [tworzenia lub aktualizacji zestawu maszyn wirtualnych](https://msdn.microsoft.com/library/azure/mt589035.aspx).
+Aby uzyskać oczekiwaną strukturę danych wejściowych, zobacz [Tworzenie lub aktualizowanie zestawu maszyn wirtualnych](https://msdn.microsoft.com/library/azure/mt589035.aspx).
 
 Znajdź klucz tajny w obiekcie zestaw skali maszyny wirtualnej, który znajduje się w magazynie kluczy. Następnie należy dodać odwołania certyfikatów (adres URL i nazwa magazynu wpisów tajnych) do listy skojarzonej z magazynem.
 
@@ -249,7 +249,7 @@ Nowe maszyny wirtualne nie zostaną starego certyfikatu. Maszyny wirtualne w tym
 
 ### <a name="can-i-push-certificates-to-the-virtual-machine-scale-set-without-providing-the-password-when-the-certificate-is-in-the-secret-store"></a>Czy można wypchnąć certyfikatów, do zestawu bez podawania hasła, gdy certyfikat znajduje się w magazynie wpisu tajnego skalowania maszyn wirtualnych?
 
-Nie musisz kodować sprzętowo hasła w skryptach. Możesz dynamicznie pobrać hasła, za pomocą uprawnień, których można używać do uruchamiania skryptu wdrażania. Jeśli masz skrypt, który przenosi certyfikatu z kluczem magazynu wpisów tajnych magazyn, magazynu wpisów tajnych `get certificate` polecenie również generuje hasło pliku pfx.
+Nie musisz kodować sprzętowo hasła w skryptach. Możesz dynamicznie pobrać hasła, za pomocą uprawnień, których można używać do uruchamiania skryptu wdrażania. Jeśli masz skrypt służący do przenoszenia certyfikatu z magazynu kluczy tajnych magazynu, polecenie tajne magazynu `get certificate` również zapisuje hasło pliku PFX.
 
 ### <a name="how-does-the-secrets-property-of-virtualmachineprofileosprofile-for-a-virtual-machine-scale-set-work-why-do-i-need-the-sourcevault-value-when-i-have-to-specify-the-absolute-uri-for-a-certificate-by-using-the-certificateurl-property"></a>Jak właściwość wpisów tajnych virtualMachineProfile.osProfile skalowania maszyny wirtualnej ustawić pracy? Dlaczego należy wartość sourceVault, gdy trzeba określić bezwzględny identyfikator URI dla certyfikatu, używając właściwości certificateUrl?
 
@@ -261,11 +261,11 @@ Jeśli podasz identyfikator magazynu nieprawidłowe źródło, ale adres URL pra
 
 ### <a name="if-i-add-secrets-to-an-existing-virtual-machine-scale-set-are-the-secrets-injected-into-existing-vms-or-only-into-new-ones"></a>Jeśli klucze tajne I dodać do istniejącej skalowania maszyn wirtualnych z zestawu, wpisy tajne, które są wstrzykiwane do istniejących maszyn wirtualnych lub tylko do nowych?
 
-Certyfikaty są dodawane do wszystkich maszyn wirtualnych, nawet wstępnie istniejące. Jeśli właściwość upgradePolicy w zestawie skalowania maszyn wirtualnych jest ustawiony na **ręczne**, certyfikat zostanie dodany do maszyny Wirtualnej, gdy wykonujesz ręcznej aktualizacji na maszynie Wirtualnej.
+Certyfikaty są dodawane do wszystkich maszyn wirtualnych, nawet wstępnie istniejące. Jeśli właściwość upgradePolicy zestawu skalowania maszyn wirtualnych jest ustawiona na wartość **Ręczna**, certyfikat zostanie dodany do maszyny wirtualnej podczas przeprowadzania ręcznej aktualizacji na maszynie wirtualnej.
 
 ### <a name="where-do-i-put-certificates-for-linux-vms"></a>Gdzie umieścić certyfikaty dla maszyn wirtualnych z systemem Linux?
 
-Aby dowiedzieć się, jak wdrożyć certyfikaty dla maszyn wirtualnych systemu Linux, zobacz [wdrażanie certyfikatów na maszynach wirtualnych z magazynu kluczy zarządzanych przez klienta](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/).
+Aby dowiedzieć się, jak wdrażać certyfikaty dla maszyn wirtualnych z systemem Linux, zobacz [Wdrażanie certyfikatów na maszynach wirtualnych z magazynu kluczy zarządzanego przez klienta](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/).
 
 ### <a name="how-do-i-add-a-new-vault-certificate-to-a-new-certificate-object"></a>Jak dodać nowy certyfikat z magazynu do nowego obiektu certyfikatu?
 
@@ -285,9 +285,9 @@ Jeśli możesz odtworzyć z obrazu maszyny Wirtualnej certyfikaty zostaną usuni
 
 ### <a name="what-happens-if-you-delete-a-certificate-from-the-key-vault"></a>Co się stanie po usunięciu certyfikatu z usługi key vault?
 
-Jeśli klucz tajny został usunięty z usługi key vault, a następnie uruchom `stop deallocate` dla wszystkich maszyn wirtualnych i uruchom je ponownie, wystąpi awaria. Błąd występuje, ponieważ rozwiązanie CRP musi pobrać Wpisy tajne z magazynu kluczy, ale nie jest. W tym scenariuszu należy usunąć certyfikaty z modelu zestawu skalowania maszyn wirtualnych.
+Jeśli klucz tajny został usunięty z magazynu kluczy, a następnie uruchomisz `stop deallocate` dla wszystkich maszyn wirtualnych, a następnie uruchomisz je ponownie, wystąpi błąd. Błąd występuje, ponieważ rozwiązanie CRP musi pobrać Wpisy tajne z magazynu kluczy, ale nie jest. W tym scenariuszu należy usunąć certyfikaty z modelu zestawu skalowania maszyn wirtualnych.
 
-Składnik CRP nie utrwala wpisów tajnych klienta. Jeśli uruchamiasz `stop deallocate` dla wszystkich maszyn wirtualnych w zestawie skalowania maszyn wirtualnych, pamięć podręczna zostanie usunięta. W tym scenariuszu wpisów tajnych są pobierane z usługi key vault.
+Składnik CRP nie utrwala wpisów tajnych klienta. Jeśli uruchomisz `stop deallocate` dla wszystkich maszyn wirtualnych w zestawie skalowania maszyn wirtualnych, pamięć podręczna zostanie usunięta. W tym scenariuszu wpisów tajnych są pobierane z usługi key vault.
 
 Nie wystąpi ten problem, skalowania w poziomie, ponieważ nie istnieje w pamięci podręcznej kopię klucza tajnego w usłudze Azure Service Fabric (w modelu sieci szkieletowej pojedynczej dzierżawy).
 
@@ -299,9 +299,9 @@ Jeśli tworzenie maszyny Wirtualnej, a następnie zaktualizuj klucz tajny w usł
 
 ### <a name="my-team-works-with-several-certificates-that-are-distributed-to-us-as-cer-public-keys-what-is-the-recommended-approach-for-deploying-these-certificates-to-a-virtual-machine-scale-set"></a>Mój zespół w programach kilka certyfikatów, które są dystrybuowane do nas jako klucze publiczne cer. Co to jest ustawiony Zalecanym podejściem do wdrażania tych certyfikatów skalowania maszyn wirtualnych?
 
-Aby wdrożyć cer zestawu kluczy publicznych do skalowania maszyn wirtualnych, możesz wygenerować plik PFX, który zawiera tylko pliki cer. Aby to zrobić, należy użyć `X509ContentType = Pfx`. Na przykład Załaduj plik cer jako obiekt x509Certificate2 w języku C# lub programu PowerShell, a następnie wywołaj metodę.
+Aby wdrożyć cer zestawu kluczy publicznych do skalowania maszyn wirtualnych, możesz wygenerować plik PFX, który zawiera tylko pliki cer. Aby to zrobić, użyj `X509ContentType = Pfx`. Na przykład Załaduj plik cer jako obiekt x509Certificate2 w języku C# lub programu PowerShell, a następnie wywołaj metodę.
 
-Aby uzyskać więcej informacji, zobacz [metoda X509Certificate.Export (X509ContentType, String)](https://msdn.microsoft.com/library/24ww6yzk(v=vs.110.aspx)).
+Aby uzyskać więcej informacji, zobacz [Metoda x509. Export (X509ContentType, String)](https://msdn.microsoft.com/library/24ww6yzk(v=vs.110.aspx)).
 
 ### <a name="how-do-i-pass-in-certificates-as-base64-strings"></a>Jak mogę przekazać certyfikaty jako ciągi Base64?
 
@@ -331,11 +331,11 @@ Z punktu widzenia zgodności zestawy skalowania maszyn wirtualnych są integraln
 
 Aby uzyskać więcej informacji, zobacz [Centrum zaufania firmy Microsoft](https://www.microsoft.com/TrustCenter/Compliance/PCI).
 
-### <a name="does-managed-identities-for-azure-resourceshttpsdocsmicrosoftcomazureactive-directorymsi-overview-work-with-virtual-machine-scale-sets"></a>Jest [zarządzanych tożsamości dla zasobów platformy Azure](https://docs.microsoft.com/azure/active-directory/msi-overview) pracy z zestawami skalowania maszyn wirtualnych?
+### <a name="does-managed-identities-for-azure-resources-work-with-virtual-machine-scale-sets"></a>Czy [zarządzane tożsamości dla zasobów platformy Azure](https://docs.microsoft.com/azure/active-directory/msi-overview) działają z zestawami skalowania maszyn wirtualnych?
 
 Tak. Możesz zobaczyć przykładowe szablony MSI w szablonach szybkiego startu platformy Azure dla [systemów](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) i Windows.
 
-## <a name="deleting"></a>Usuwanie 
+## <a name="deleting"></a>Usunąć 
 
 ### <a name="will-the-locks-i-set-in-place-on-virtual-machine-scale-set-instances-be-respected-when-deleting-instances"></a>Czy po usunięciu wystąpień będą przestrzegane blokady ustawione w miejscu dla wystąpień zestawu skalowania maszyn wirtualnych?
 
@@ -357,7 +357,7 @@ $vmss=Remove-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "extensionName"
 Update-AzVmss -ResourceGroupName "resource_group_name" -VMScaleSetName "vmssName" -VirtualMacineScaleSet $vmss
 ```
 
-Można znaleźć wartości extensionName w `$vmss`.
+Wartość ExtensionName można znaleźć w `$vmss`.
 
 ### <a name="is-there-a-virtual-machine-scale-set-template-example-that-integrates-with-azure-monitor-logs"></a>Czy istnieje przykład szablonu zestawu skalowania maszyn wirtualnych, który integruje się z dziennikami Azure Monitor?
 
@@ -365,13 +365,13 @@ Przykład szablonu zestawu skalowania maszyn wirtualnych, który integruje się 
 
 ### <a name="how-do-i-add-an-extension-to-all-vms-in-my-virtual-machine-scale-set"></a>Jak dodać rozszerzenie do wszystkich maszyn wirtualnych w zestawie skalowania mojej maszyny wirtualnej
 
-Jeśli ustawiono zasady aktualizacji **automatyczne**, ponownego wdrażania szablonu z nowymi właściwościami rozszerzenia aktualizacji wszystkich maszyn wirtualnych.
+Jeśli dla zasad aktualizacji ustawiono wartość **Automatyczne**, ponowne wdrożenie szablonu przy użyciu nowych właściwości rozszerzenia aktualizuje wszystkie maszyny wirtualne.
 
-Jeśli ustawiono zasady aktualizacji **ręczne**, najpierw zaktualizuj rozszerzenie, a następnie ręcznie zaktualizować wszystkie wystąpienia w maszynach wirtualnych.
+Jeśli zasady aktualizacji zostały ustawione na **Ręczne**, najpierw zaktualizuj rozszerzenie, a następnie ręcznie zaktualizuj wszystkie wystąpienia na maszynach wirtualnych.
 
 ### <a name="if-the-extensions-associated-with-an-existing-virtual-machine-scale-set-are-updated-are-existing-vms-affected"></a>Jeśli rozszerzenia skojarzone z istniejącego zestawu skalowania maszyn wirtualnych zostaną zaktualizowane, czy istniejące maszyny wirtualne, których dotyczy problem?
 
-Jeśli definicja rozszerzenia w skali maszyny wirtualnej ustawić modelu zostanie zaktualizowany, i właściwością upgradePolicy **automatyczne**, aktualizuje maszyny wirtualne. Jeśli ustawiono właściwość upgradePolicy **ręczne**, rozszerzenia są oznaczane jako niezgodne modelu.
+Jeśli definicja rozszerzenia w modelu zestawu skalowania maszyn wirtualnych jest aktualizowana, a właściwość upgradePolicy jest ustawiona na **Automatyczne**, aktualizuje maszyny wirtualne. Jeśli właściwość upgradePolicy jest ustawiona na **ręczny**, rozszerzenia są oflagowane jako niezgodne z modelem.
 
 ### <a name="are-extensions-run-again-when-an-existing-machine-is-service-healed-or-reimaged"></a>Czy rozszerzenia są uruchamiane ponownie, gdy istniejąca maszyna jest zaleczona lub odtworzona z obrazu?
 
@@ -462,7 +462,7 @@ Istnieją dwa główne sposoby, aby zmienić hasło dla maszyn wirtualnych w zes
     Update-AzVmss -ResourceGroupName $vmssResourceGroup -Name $vmssName -VirtualMachineScaleSet $vmss
     ```
 
-## <a name="networking"></a>Networking
+## <a name="networking"></a>Sieć
 
 ### <a name="is-it-possible-to-assign-a-network-security-group-nsg-to-a-scale-set-so-that-it-applies-to-all-the-vm-nics-in-the-set"></a>Jest możliwe do przypisania grupy zabezpieczeń sieci (NSG) do zestawu skalowania, tak aby dotyczyła wszystkich maszyn wirtualnych kart interfejsu sieciowego w zestawie?
 
@@ -506,7 +506,7 @@ Tak. Bezpośrednio do odwoływania się do niego w sekcji Dnssettings profil sie
 
 ### <a name="how-do-i-do-a-vip-swap-for-virtual-machine-scale-sets-in-the-same-subscription-and-same-region"></a>Jak? wymiany wirtualnych adresów IP dla zestawów skalowania maszyn wirtualnych w tym samym regionie i tej samej subskrypcji
 
-Jeśli masz dwa zestawy skalowania maszyn wirtualnych za pomocą usługi Azure Load Balancer Frontony i znajdują się w tej samej subskrypcji i regionu, może deallocate publiczne adresy IP z każdej z nich i przypisać do innego. Zobacz [wymiany wirtualnych adresów IP: wdrożenie niebieski zielony w usłudze Azure Resource Manager](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/) na przykład. Pociąga to opóźnienia na poziomie jednak zasoby są z cofniętą alokacją/przydzielany w sieci. Opcja szybsza jest używać usługi Azure Application Gateway z dwóch pul zaplecza i reguły routingu. Alternatywnie można hostować swoją aplikację, za pomocą [usługi Azure App service](https://azure.microsoft.com/services/app-service/) który zapewnia obsługę szybkie przełączanie się między środowiskiem przejściowym i produkcyjnym miejscami.
+Jeśli masz dwa zestawy skalowania maszyn wirtualnych za pomocą usługi Azure Load Balancer Frontony i znajdują się w tej samej subskrypcji i regionu, może deallocate publiczne adresy IP z każdej z nich i przypisać do innego. Zobacz artykuł [wymiana wirtualnych adresów VIP — wdrożenie Blue-zielony w Azure Resource Manager](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/) na przykład. Pociąga to opóźnienia na poziomie jednak zasoby są z cofniętą alokacją/przydzielany w sieci. Opcja szybsza jest używać usługi Azure Application Gateway z dwóch pul zaplecza i reguły routingu. Możesz również hostować aplikację za pomocą [usługi Azure App Service](https://azure.microsoft.com/services/app-service/) , która zapewnia obsługę szybkiego przełączania między miejscami przejściowymi i produkcyjnymi.
 
 ### <a name="how-do-i-specify-a-range-of-private-ip-addresses-to-use-for-static-private-ip-address-allocation"></a>Jak określić zakres prywatnych adresów IP do używania statycznych alokacji prywatnego adresu IP?
 
@@ -516,11 +516,11 @@ Metoda alokacji adresy IP zestawu skalowania maszyn wirtualnych jest zawsze "dyn
 
 ### <a name="how-do-i-deploy-a-virtual-machine-scale-set-to-an-existing-azure-virtual-network"></a>Jak wdrożyć maszynę wirtualną zestawie skalowania do istniejącej sieci wirtualnej platformy Azure?
 
-Aby wdrożyć maszynę wirtualną zestawie skalowania do istniejącej sieci wirtualnej platformy Azure, zobacz [wdrażanie zestawu skalowania maszyn wirtualnych do istniejącej sieci wirtualnej](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-existing-vnet).
+Aby wdrożyć zestaw skalowania maszyn wirtualnych w istniejącej sieci wirtualnej platformy Azure, zobacz [wdrażanie zestawu skalowania maszyn wirtualnych do istniejącej sieci wirtualnej](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-existing-vnet).
 
 ### <a name="can-i-use-scale-sets-with-accelerated-networking"></a>Dzięki przyspieszonej sieci można używać zestawów skalowania?
 
-Tak. Aby korzystać z przyspieszonej łączności sieciowej, właściwości enableAcceleratedNetworking wartość true w zestawie skalowania ustawieniach networkInterfaceConfigurations zestawu. Na przykład:
+Tak. Aby korzystać z przyspieszonej łączności sieciowej, właściwości enableAcceleratedNetworking wartość true w zestawie skalowania ustawieniach networkInterfaceConfigurations zestawu. Na przykład
 ```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
@@ -548,7 +548,7 @@ Aby utworzyć maszyny wirtualnej zestawu skalowania z niestandardową konfigurac
 
 ### <a name="how-can-i-configure-a-scale-set-to-assign-a-public-ip-address-to-each-vm"></a>Jak można skonfigurować zestaw skalowania, aby przypisać publiczny adres IP do każdej maszyny Wirtualnej?
 
-Aby utworzyć zestaw skalowania maszyn wirtualnych, który przypisuje publicznego adresu IP do każdej maszyny Wirtualnej, upewnij się, że wersja interfejsu API zasobu Microsoft.Compute/virtualMachineScaleSets to 2017-03-30, a następnie dodaj _publicipaddressconfiguration_ JSON pakiet do skalowania sekcji ipConfigurations zestawu. Przykład:
+Aby utworzyć zestaw skalowania maszyn wirtualnych, który przypisuje publiczny adres IP do każdej maszyny wirtualnej, upewnij się, że wersja interfejsu API Microsoft. COMPUTE/virtualMachineScaleSets to 2017-03-30, a następnie Dodaj pakiet _publicipaddressconfiguration_ JSON do sekcji elementy ipconfiguration zestawu skalowania. Przykład:
 
 ```json
     "publicipaddressconfiguration": {
@@ -630,11 +630,11 @@ Tak, można przenieść zasobów zestawu skalowania na nową subskrypcję lub gr
 
 ### <a name="how-to-i-update-my-virtual-machine-scale-set-to-a-new-image-how-do-i-manage-patching"></a>Jak można zaktualizować mój zestaw skalowania maszyn wirtualnych do nowego obrazu? Jak zarządzać poprawkami
 
-Aby zaktualizować swoje zestawu skalowania maszyn wirtualnych do nowego obrazu i Zarządzaj stosowaniem poprawek, zobacz [uaktualniania zestawu skalowania maszyn wirtualnych](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set).
+Aby zaktualizować zestaw skalowania maszyn wirtualnych do nowego obrazu i aby zarządzać poprawkami, zobacz [uaktualnianie zestawu skalowania maszyn wirtualnych](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set).
 
 ### <a name="can-i-use-the-reimage-operation-to-reset-a-vm-without-changing-the-image-that-is-i-want-reset-a-vm-to-factory-settings-rather-than-to-a-new-image"></a>Czy można użyć operacji odtworzenia z obrazu, aby przywrócić Maszynę wirtualną bez wprowadzania zmian w obrazie? (Czyli chcę Resetuj Maszynę wirtualną do ustawień fabrycznych, a nie do nowego obrazu.)
 
-Tak, można użyć operacji odtworzenia z obrazu, aby przywrócić Maszynę wirtualną bez wprowadzania zmian w obrazie. Jednakże, jeśli w zestawie skalowania maszyny wirtualnej odwołuje się obrazie platformy z `version = latest`, maszyny Wirtualnej można zaktualizować do nowszej obrazu systemu operacyjnego, podczas wywoływania `reimage`.
+Tak, można użyć operacji odtworzenia z obrazu, aby przywrócić Maszynę wirtualną bez wprowadzania zmian w obrazie. Jeśli jednak zestaw skalowania maszyn wirtualnych odwołuje się do obrazu platformy z `version = latest`, maszyna wirtualna może przeprowadzić aktualizację do nowszej wersji obrazu systemu operacyjnego podczas wywoływania `reimage`.
 
 ### <a name="is-it-possible-to-integrate-scale-sets-with-azure-monitor-logs"></a>Czy możliwe jest zintegrowanie zestawów skalowania z dziennikami Azure Monitor?
 
@@ -645,7 +645,7 @@ az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.Ente
 Wymagany identyfikator workspaceId i klucz workspaceKey można znaleźć w obszarze roboczym usługi Log Analytics w witrynie Azure portal. Na stronie Przegląd kliknij Kafelek ustawienia. Kliknij kartę połączone źródła u góry.
 
 > [!NOTE]
-> Jeśli zestaw skalowania _upgradePolicy_ jest ustawiony na ręczny, należy zastosować rozszerzenie do wszystkich maszyn wirtualnych w zestawie, wywołując na nich uaktualnienie. W interfejsie wiersza polecenia to _az vmss update-instances_.
+> Jeśli zestaw skalowania _upgradePolicy_ jest ustawiony na ręczny, należy zastosować rozszerzenie do wszystkich maszyn wirtualnych w zestawie, wywołując na nich uaktualnienie. W interfejsie wiersza polecenia będzie to _AZ VMSS Update-Instances_.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -677,28 +677,28 @@ Po utworzeniu nowej maszyny Wirtualnej InstanceView własności maszyny Wirtualn
 
 ### <a name="how-do-i-get-property-information-for-each-vm-without-making-multiple-calls-for-example-how-would-i-get-the-fault-domain-for-each-of-the-100-vms-in-my-virtual-machine-scale-set"></a>Jak uzyskać informacje o właściwości dla każdej maszyny Wirtualnej bez wprowadzania wielu wywołań? Na przykład jak będzie uzyskać domenę błędów dla każdej 100 maszyn wirtualnych w mojego zestawu skalowania maszyn wirtualnych?
 
-Aby uzyskać informacje o właściwości dla każdej maszyny Wirtualnej bez wprowadzania wielu wywołań, można wywołać `ListVMInstanceViews` , wykonując interfejsu API REST `GET` na następujący identyfikator URI zasobu:
+Aby uzyskać informacje o właściwościach dla każdej maszyny wirtualnej bez wykonywania wielu wywołań, można wywołać `ListVMInstanceViews`, wykonując interfejs API REST `GET` w następującym identyfikatorze URI zasobu:
 
 /subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Compute/virtualMachineScaleSets/<scaleset_name>/virtualMachines?$expand=instanceView&$select=instanceView
 
 ### <a name="can-i-pass-different-extension-arguments-to-different-vms-in-a-virtual-machine-scale-set"></a>Argumenty inne rozszerzenie można przekazywać do różnych maszyn wirtualnych w zestawie skalowania maszyn wirtualnych?
 
-Nie, nie można przekazać argumenty inne rozszerzenie do różnych maszyn wirtualnych w zestawie skalowania maszyn wirtualnych. Jednak rozszerzenia może działać w oparciu o unikatowe właściwości maszyny wirtualnej są uruchomione na takie jak nazwa maszyny. Rozszerzenia także można zbadać metadanych wystąpienia na http://169.254.169.254 Aby uzyskać więcej informacji o maszynie Wirtualnej.
+Nie, nie można przekazać argumenty inne rozszerzenie do różnych maszyn wirtualnych w zestawie skalowania maszyn wirtualnych. Jednak rozszerzenia może działać w oparciu o unikatowe właściwości maszyny wirtualnej są uruchomione na takie jak nazwa maszyny. Rozszerzenia mogą również wykonywać zapytania dotyczące metadanych wystąpienia w http://169.254.169.254, aby uzyskać więcej informacji o maszynie wirtualnej.
 
 ### <a name="why-are-there-gaps-between-my-virtual-machine-scale-set-vm-machine-names-and-vm-ids-for-example-0-1-3"></a>Dlaczego są luki pomiędzy mojej nazwy maszyn maszyn wirtualnych zestawu skalowania maszyn wirtualnych i identyfikatory maszyn wirtualnych Na przykład: 0, 1, 3...
 
-Istnieją luki między nazwy maszyn maszyn wirtualnych zestawu skalowania maszyn wirtualnych i identyfikatory maszyny Wirtualnej, ponieważ w zestawie skalowania maszyn wirtualnych **overprovision** właściwość jest ustawiona na wartość domyślną **true**. Jeśli ustawiono celi **true**, więcej maszyn wirtualnych, niż żądana są tworzone. Dodatkowe maszyny wirtualne są usuwane. W tym przypadku uzyskiwanie wdrożenia większą niezawodność, ale kosztem nazewnictwa ciągłej i ciągłego translacji adresów sieciowych (NAT) reguły.
+Istnieją przerwy między nazwami maszyn wirtualnych zestawu skalowania maszyn wirtualnych i identyfikatorami maszyn wirtualnych, ponieważ właściwość nadmiernego **udostępniania** zestawu skalowania maszyn wirtualnych jest ustawiona na wartość domyślną **true**. Jeśli nadmierne Inicjowanie obsługi administracyjnej ma **wartość true**, tworzone są więcej maszyn wirtualnych niż żądane. Dodatkowe maszyny wirtualne są usuwane. W tym przypadku uzyskiwanie wdrożenia większą niezawodność, ale kosztem nazewnictwa ciągłej i ciągłego translacji adresów sieciowych (NAT) reguły.
 
-Można ustawić tę właściwość na **false**. Dla małych zestawów skalowania to nie znacznie wpłynąć na niezawodność wdrażania.
+Dla tej właściwości można ustawić **wartość false**. Dla małych zestawów skalowania to nie znacznie wpłynąć na niezawodność wdrażania.
 
 ### <a name="what-is-the-difference-between-deleting-a-vm-in-a-virtual-machine-scale-set-and-deallocating-the-vm-when-should-i-choose-one-over-the-other"></a>Jaka jest różnica między usunięciem maszyny Wirtualnej w zestawie skalowania maszyn wirtualnych i cofanie przydziału maszyny Wirtualnej? Kiedy należy jednej lub drugiej wybrać?
 
-Główna różnica między usunięciem maszyny Wirtualnej w zestawie skalowania maszyn wirtualnych i cofanie przydziału maszyny Wirtualnej jest to, że `deallocate` nie powoduje usunięcia wirtualne dyski twarde (VHD). Istnieją koszty magazynowania związane z uruchomiona `stop deallocate`. Można użyć jednej z nich do jednej z następujących powodów:
+Główna różnica między usuwaniem maszyny wirtualnej w zestawie skalowania maszyn wirtualnych i cofaniem przydziału maszyny wirtualnej polega na tym, że `deallocate` nie usuwa wirtualnych dysków twardych (VHD). Istnieją koszty magazynu skojarzone z uruchomioną `stop deallocate`. Można użyć jednej z nich do jednej z następujących powodów:
 
 - Aby zatrzymać, zwracając koszty operacji obliczeniowych, ale chcesz zachować stan dysku maszyn wirtualnych.
 - Chcesz uruchomić zestaw maszyn wirtualnych szybciej, niż można skalować zestaw skalowania maszyn wirtualnych.
   - Dotyczące tego scenariusza, być może utworzono własny aparat skalowania automatycznego i chcesz szybciej skalowania end-to-end.
-- Masz zestaw skalowania maszyn wirtualnych, które są nierównomiernie rozłożone między domeny błędów i domenach aktualizacji. Może to być, ponieważ selektywnie usunąć maszyny wirtualne lub maszyny wirtualne zostały usunięte po udostępniania. Uruchamianie `stop deallocate` następuje `start` na maszynie wirtualnej zestawu skalowania równomiernie rozdziela maszyny wirtualne między domeny błędów i domenach aktualizacji.
+- Masz zestaw skalowania maszyn wirtualnych, które są nierównomiernie rozłożone między domeny błędów i domenach aktualizacji. Może to być, ponieważ selektywnie usunąć maszyny wirtualne lub maszyny wirtualne zostały usunięte po udostępniania. Uruchomione `stop deallocate`, a następnie `start` w zestawie skalowania maszyn wirtualnych, rozkładają równomiernie maszyny wirtualne między domenami błędów lub domenami aktualizacji.
 
 ### <a name="how-do-i-take-a-snapshot-of-a-virtual-machine-scale-set-instance"></a>Jak mogę utworzyć migawki wystąpienia zestawu skalowania maszyn wirtualnych?
 Utwórz migawkę z wystąpienia zestawu skalowania maszyn wirtualnych.

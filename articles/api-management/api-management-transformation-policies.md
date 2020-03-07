@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
 ms.openlocfilehash: c26cca40b0bf6d02bcec09945043f4ba854fa8e9
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012230"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374338"
 ---
 # <a name="api-management-transformation-policies"></a>Zasady transformacji API Management
 Ten temat zawiera informacje dotyczące następujących zasad API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasady w API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -69,15 +69,15 @@ Ten temat zawiera informacje dotyczące następujących zasad API Management. Ab
 
 ### <a name="elements"></a>Elementy
 
-|Nazwa|Opis|Wymagane|
+|Name (Nazwa)|Opis|Wymagany|
 |----------|-----------------|--------------|
-|JSON-to-XML|Element główny.|Tak|
+|JSON-to-XML|Element główny.|Yes|
 
 ### <a name="attributes"></a>Atrybuty
 
-|Nazwa|Opis|Wymagane|Domyślne|
+|Name (Nazwa)|Opis|Wymagany|Domyślne|
 |----------|-----------------|--------------|-------------|
-|stosowa|Atrybut musi być ustawiony na jedną z następujących wartości.<br /><br /> -zawsze-zawsze stosuje konwersję.<br />-Content-Type-JSON — Konwertuj tylko w przypadku, gdy w nagłówku Content-Type jest obecność JSON.|Tak|Nie dotyczy|
+|apply|Atrybut musi być ustawiony na jedną z następujących wartości.<br /><br /> -zawsze-zawsze stosuje konwersję.<br />-Content-Type-JSON — Konwertuj tylko w przypadku, gdy w nagłówku Content-Type jest obecność JSON.|Yes|Nie dotyczy|
 |consider-accept-header|Atrybut musi być ustawiony na jedną z następujących wartości.<br /><br /> -true — Zastosuj konwersję, jeśli żądanie JSON jest wymagane w nagłówku akceptowania żądania.<br />-false — zawsze stosuj konwersję.|Nie|true|
 |Analiza — Data|Po ustawieniu wartości daty `false` są kopiowane po prostu podczas transformacji|Nie|true|
 
@@ -113,16 +113,16 @@ Ten temat zawiera informacje dotyczące następujących zasad API Management. Ab
 
 ### <a name="elements"></a>Elementy
 
-|Nazwa|Opis|Wymagane|
+|Name (Nazwa)|Opis|Wymagany|
 |----------|-----------------|--------------|
-|xml-to-json|Element główny.|Tak|
+|xml-to-json|Element główny.|Yes|
 
 ### <a name="attributes"></a>Atrybuty
 
-|Nazwa|Opis|Wymagane|Domyślne|
+|Name (Nazwa)|Opis|Wymagany|Domyślne|
 |----------|-----------------|--------------|-------------|
-|Natur|Atrybut musi być ustawiony na jedną z następujących wartości.<br /><br /> -przyjazny dla języka JavaScript — przekonwertowany kod JSON ma postać przyjazną dla deweloperów języka JavaScript.<br />-Direct — przekonwertowane dane JSON odzwierciedlają strukturę oryginalnego dokumentu XML.|Tak|Nie dotyczy|
-|stosowa|Atrybut musi być ustawiony na jedną z następujących wartości.<br /><br /> -zawsze Konwertuj zawsze.<br />-Content-Type-XML-Convert tylko wtedy, gdy w nagłówku Content-Type (odpowiedź) wskazuje obecność XML.|Tak|Nie dotyczy|
+|Natur|Atrybut musi być ustawiony na jedną z następujących wartości.<br /><br /> -przyjazny dla języka JavaScript — przekonwertowany kod JSON ma postać przyjazną dla deweloperów języka JavaScript.<br />-Direct — przekonwertowane dane JSON odzwierciedlają strukturę oryginalnego dokumentu XML.|Yes|Nie dotyczy|
+|apply|Atrybut musi być ustawiony na jedną z następujących wartości.<br /><br /> -zawsze Konwertuj zawsze.<br />-Content-Type-XML-Convert tylko wtedy, gdy w nagłówku Content-Type (odpowiedź) wskazuje obecność XML.|Yes|Nie dotyczy|
 |consider-accept-header|Atrybut musi być ustawiony na jedną z następujących wartości.<br /><br /> -true — Zastosuj konwersję, jeśli zażądano kodu XML w nagłówku akceptowania żądania.<br />-false — zawsze stosuj konwersję.|Nie|true|
 
 ### <a name="usage"></a>Sposób użycia
@@ -149,16 +149,16 @@ Ten temat zawiera informacje dotyczące następujących zasad API Management. Ab
 
 ### <a name="elements"></a>Elementy
 
-|Nazwa|Opis|Wymagane|
+|Name (Nazwa)|Opis|Wymagany|
 |----------|-----------------|--------------|
-|Znajdź i Zamień|Element główny.|Tak|
+|Znajdź i Zamień|Element główny.|Yes|
 
 ### <a name="attributes"></a>Atrybuty
 
-|Nazwa|Opis|Wymagane|Domyślne|
+|Name (Nazwa)|Opis|Wymagany|Domyślne|
 |----------|-----------------|--------------|-------------|
-|from|Ciąg do wyszukania.|Tak|Nie dotyczy|
-|na|Ciąg zastępczy. Określ ciąg zastępczy o zerowej długości, aby usunąć ciąg wyszukiwania.|Tak|Nie dotyczy|
+|from|Ciąg do wyszukania.|Yes|Nie dotyczy|
+|na|Ciąg zastępczy. Określ ciąg zastępczy o zerowej długości, aby usunąć ciąg wyszukiwania.|Yes|Nie dotyczy|
 
 ### <a name="usage"></a>Sposób użycia
  Tych zasad można używać w następujących [sekcjach](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresach](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zasad.
@@ -187,9 +187,9 @@ Ten temat zawiera informacje dotyczące następujących zasad API Management. Ab
 
 ### <a name="elements"></a>Elementy
 
-|Nazwa|Opis|Wymagane|
+|Name (Nazwa)|Opis|Wymagany|
 |----------|-----------------|--------------|
-|redirect-content-urls|Element główny.|Tak|
+|redirect-content-urls|Element główny.|Yes|
 
 ### <a name="usage"></a>Sposób użycia
  Tych zasad można używać w następujących [sekcjach](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresach](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zasad.
@@ -260,13 +260,13 @@ W tym przykładzie zasady kierują żądanie do zaplecza usługi Service Fabric 
 
 ### <a name="elements"></a>Elementy
 
-|Nazwa|Opis|Wymagane|
+|Name (Nazwa)|Opis|Wymagany|
 |----------|-----------------|--------------|
-|Konfiguracja zaplecza — usługa|Element główny.|Tak|
+|Konfiguracja zaplecza — usługa|Element główny.|Yes|
 
 ### <a name="attributes"></a>Atrybuty
 
-|Nazwa|Opis|Wymagane|Domyślne|
+|Name (Nazwa)|Opis|Wymagany|Domyślne|
 |----------|-----------------|--------------|-------------|
 |podstawowy adres URL|Nowy podstawowy adres URL usługi zaplecza.|Jeden z `base-url` lub `backend-id` musi być obecny.|Nie dotyczy|
 |Identyfikator zaplecza|Identyfikator zaplecza do skierowania do. (Jednostki zaplecza są zarządzane za pośrednictwem [interfejsu API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend) i [programu PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)).|Jeden z `base-url` lub `backend-id` musi być obecny.|Nie dotyczy|
@@ -396,13 +396,13 @@ Zasady `set-body` można skonfigurować tak, aby używały języka [Liquid](http
 
 ### <a name="elements"></a>Elementy
 
-|Nazwa|Opis|Wymagane|
+|Name (Nazwa)|Opis|Wymagany|
 |----------|-----------------|--------------|
-|Ustaw treść|Element główny. Zawiera tekst treści lub wyrażenia zwracające treść.|Tak|
+|Ustaw treść|Element główny. Zawiera tekst treści lub wyrażenia zwracające treść.|Yes|
 
 ### <a name="properties"></a>Właściwości
 
-|Nazwa|Opis|Wymagane|Domyślne|
+|Name (Nazwa)|Opis|Wymagany|Domyślne|
 |----------|-----------------|--------------|-------------|
 |szablon|Służy do zmiany trybu tworzenia szablonów, w którym będą uruchamiane zasady zestawu treści. Obecnie jedyną obsługiwaną wartością jest:<br /><br />-Liquid-zasady dotyczące zestawu treści będą używać aparatu ciekłej tworzenia szablonów |Nie||
 
@@ -510,17 +510,17 @@ OriginalUrl.
 
 ### <a name="elements"></a>Elementy
 
-|Nazwa|Opis|Wymagane|
+|Name (Nazwa)|Opis|Wymagany|
 |----------|-----------------|--------------|
-|set-header|Element główny.|Tak|
+|set-header|Element główny.|Yes|
 |wartość|Określa wartość nagłówka, która ma zostać ustawiona. Dla wielu nagłówków o tej samej nazwie Dodaj dodatkowe `value` elementy.|Nie|
 
 ### <a name="properties"></a>Właściwości
 
-|Nazwa|Opis|Wymagane|Domyślne|
+|Name (Nazwa)|Opis|Wymagany|Domyślne|
 |----------|-----------------|--------------|-------------|
-|Istnieje — akcja|Określa akcję, która ma zostać podjęta, gdy nagłówek jest już określony. Ten atrybut musi mieć jedną z następujących wartości.<br /><br /> -override — zastępuje wartość istniejącego nagłówka.<br />-Skip — nie zastępuje istniejącej wartości nagłówka.<br />-Append-dołącza wartość do istniejącej wartości nagłówka.<br />-DELETE — usuwa nagłówek z żądania.<br /><br /> Gdy ustawiona na `override` rejestrowanie wielu wpisów o tej samej nazwie powoduje, że nagłówek jest ustawiany zgodnie ze wszystkimi wpisami (które zostaną wyświetlone wiele razy); w wyniku zostaną ustawione tylko wymienione wartości.|Nie|Mapowań|
-|name|Określa nazwę nagłówka, który ma zostać ustawiony.|Tak|Nie dotyczy|
+|Istnieje — akcja|Określa akcję, która ma zostać podjęta, gdy nagłówek jest już określony. Ten atrybut musi mieć jedną z następujących wartości.<br /><br /> -override — zastępuje wartość istniejącego nagłówka.<br />-Skip — nie zastępuje istniejącej wartości nagłówka.<br />-Append-dołącza wartość do istniejącej wartości nagłówka.<br />-DELETE — usuwa nagłówek z żądania.<br /><br /> Gdy ustawiona na `override` rejestrowanie wielu wpisów o tej samej nazwie powoduje, że nagłówek jest ustawiany zgodnie ze wszystkimi wpisami (które zostaną wyświetlone wiele razy); w wyniku zostaną ustawione tylko wymienione wartości.|Nie|zastąpienie|
+|name|Określa nazwę nagłówka, który ma zostać ustawiony.|Yes|Nie dotyczy|
 
 ### <a name="usage"></a>Sposób użycia
  Tych zasad można używać w następujących [sekcjach](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresach](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zasad.
@@ -570,17 +570,17 @@ OriginalUrl.
 
 ### <a name="elements"></a>Elementy
 
-|Nazwa|Opis|Wymagane|
+|Name (Nazwa)|Opis|Wymagany|
 |----------|-----------------|--------------|
-|Set-Query-Parameter|Element główny.|Tak|
-|wartość|Określa wartość parametru zapytania, która ma zostać ustawiona. Dla wielu parametrów zapytania o tej samej nazwie Dodaj dodatkowe `value` elementy.|Tak|
+|Set-Query-Parameter|Element główny.|Yes|
+|wartość|Określa wartość parametru zapytania, która ma zostać ustawiona. Dla wielu parametrów zapytania o tej samej nazwie Dodaj dodatkowe `value` elementy.|Yes|
 
 ### <a name="properties"></a>Właściwości
 
-|Nazwa|Opis|Wymagane|Domyślne|
+|Name (Nazwa)|Opis|Wymagany|Domyślne|
 |----------|-----------------|--------------|-------------|
-|Istnieje — akcja|Określa akcję, która ma zostać podjęta, gdy parametr zapytania jest już określony. Ten atrybut musi mieć jedną z następujących wartości.<br /><br /> -override — zastępuje wartość istniejącego parametru.<br />-Skip — nie zastępuje istniejącej wartości parametru zapytania.<br />-Append-dołącza wartość do istniejącej wartości parametru zapytania.<br />-DELETE — Usuwa parametr zapytania z żądania.<br /><br /> Gdy ustawiona na `override` rejestracji wielu wpisów o tej samej nazwie powoduje, że parametr zapytania jest ustawiany zgodnie ze wszystkimi wpisami (które zostaną wyświetlone wiele razy); w wyniku zostaną ustawione tylko wymienione wartości.|Nie|Mapowań|
-|name|Określa nazwę parametru zapytania, który ma zostać ustawiony.|Tak|Nie dotyczy|
+|Istnieje — akcja|Określa akcję, która ma zostać podjęta, gdy parametr zapytania jest już określony. Ten atrybut musi mieć jedną z następujących wartości.<br /><br /> -override — zastępuje wartość istniejącego parametru.<br />-Skip — nie zastępuje istniejącej wartości parametru zapytania.<br />-Append-dołącza wartość do istniejącej wartości parametru zapytania.<br />-DELETE — Usuwa parametr zapytania z żądania.<br /><br /> Gdy ustawiona na `override` rejestracji wielu wpisów o tej samej nazwie powoduje, że parametr zapytania jest ustawiany zgodnie ze wszystkimi wpisami (które zostaną wyświetlone wiele razy); w wyniku zostaną ustawione tylko wymienione wartości.|Nie|zastąpienie|
+|name|Określa nazwę parametru zapytania, który ma zostać ustawiony.|Yes|Nie dotyczy|
 
 ### <a name="usage"></a>Sposób użycia
  Tych zasad można używać w następujących [sekcjach](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresach](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zasad.
@@ -649,15 +649,15 @@ OriginalUrl.
 
 ### <a name="elements"></a>Elementy
 
-|Nazwa|Opis|Wymagane|
+|Name (Nazwa)|Opis|Wymagany|
 |----------|-----------------|--------------|
-|ponowne zapisywanie — identyfikator URI|Element główny.|Tak|
+|ponowne zapisywanie — identyfikator URI|Element główny.|Yes|
 
 ### <a name="attributes"></a>Atrybuty
 
-|Atrybut|Opis|Wymagane|Domyślne|
+|Atrybut|Opis|Wymagany|Domyślne|
 |---------------|-----------------|--------------|-------------|
-|szablon|Rzeczywisty adres URL usługi sieci Web z dowolnymi parametrami ciągu zapytania. W przypadku używania wyrażeń cała wartość musi być wyrażeniem.|Tak|Nie dotyczy|
+|szablon|Rzeczywisty adres URL usługi sieci Web z dowolnymi parametrami ciągu zapytania. W przypadku używania wyrażeń cała wartość musi być wyrażeniem.|Yes|Nie dotyczy|
 |copy-unmatched-params|Określa, czy parametry zapytania w żądaniu przychodzącym nie występują w oryginalnym szablonie adresu URL są dodawane do adresu URL zdefiniowanego przez ponowne zapisanie szablonu|Nie|true|
 
 ### <a name="usage"></a>Sposób użycia
@@ -718,11 +718,11 @@ OriginalUrl.
 
 ### <a name="elements"></a>Elementy
 
-|Nazwa|Opis|Wymagane|
+|Name (Nazwa)|Opis|Wymagany|
 |----------|-----------------|--------------|
-|przekształcenia XSL|Element główny.|Tak|
+|przekształcenia XSL|Element główny.|Yes|
 |konstruktora|Używane do definiowania zmiennych używanych w przekształceniu|Nie|
-|xsl: stylesheet|Główny element arkusza stylów. Wszystkie elementy i atrybuty zdefiniowane w ramach standardowej [specyfikacji XSLT](https://www.w3.org/TR/xslt)|Tak|
+|Stylesheet|Główny element arkusza stylów. Wszystkie elementy i atrybuty zdefiniowane w ramach standardowej [specyfikacji XSLT](https://www.w3.org/TR/xslt)|Yes|
 
 ### <a name="usage"></a>Sposób użycia
  Tych zasad można używać w następujących [sekcjach](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresach](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zasad.

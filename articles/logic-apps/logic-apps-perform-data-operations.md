@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: baa6e5732221d120ff71217a3a86a942794c53f4
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666741"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358741"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Wykonywanie operacji na danych w Azure Logic Apps
 
@@ -29,7 +29,7 @@ Te tabele podsumowują operacje na danych, których można użyć i są zorganiz
 
 Te akcje pomagają w pracy z danymi w tablicach.
 
-| Działanie | Opis |
+| Akcja | Opis |
 |--------|-------------|
 | [**Utwórz tabelę CSV**](#create-csv-table-action) | Utwórz tabelę wartości rozdzielanych przecinkami (CSV) z tablicy. |
 | [**Utwórz tabelę HTML**](#create-html-table-action) | Utwórz tabelę HTML z tablicy. |
@@ -42,7 +42,7 @@ Te akcje pomagają w pracy z danymi w tablicach.
 
 Te akcje pomagają w pracy z danymi w formacie JavaScript Object Notation (JSON).
 
-| Działanie | Opis |
+| Akcja | Opis |
 |--------|-------------|
 | [**Compose**](#compose-action) | Utwórz wiadomość lub ciąg z wielu wejść, które mogą mieć różne typy danych. Następnie można użyć tego ciągu jako pojedynczej wartości wejściowej, zamiast wielokrotnie wprowadzać te same dane wejściowe. Na przykład można utworzyć pojedynczy komunikat JSON z różnych danych wejściowych. |
 | [**Analiza JSON**](#parse-json-action) | Utwórz przyjazne dla użytkownika tokeny danych dla właściwości w zawartości JSON, aby łatwiej używać właściwości w aplikacjach logiki. |
@@ -200,7 +200,7 @@ W akcji Zachowaj pustą kolumnę **nagłówka** . W każdym wierszu w kolumnie *
 
    `item()?['<array-property-name>']`
 
-   Przykład:
+   Na przykład:
 
    * `item()?['Description']`
    * `item()?['Product_ID']`
@@ -232,7 +232,7 @@ W definicji JSON akcji w tablicy `columns` ustaw właściwość `header` na pust
    }
    ```
 
-   Przykład:
+   Na przykład:
 
    ```json
    "Create_CSV_table": {
@@ -351,7 +351,7 @@ W akcji Zachowaj pustą kolumnę **nagłówka** . W każdym wierszu w kolumnie *
 
    `item()?['<array-property-name>']`
 
-   Przykład:
+   Na przykład:
 
    * `item()?['Description']`
    * `item()?['Product_ID']`
@@ -383,7 +383,7 @@ W definicji JSON akcji w tablicy `columns` ustaw właściwość `header` na pust
    }
    ```
 
-   Przykład:
+   Na przykład:
 
    ```json
    "Create_HTML_table": {

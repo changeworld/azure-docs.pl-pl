@@ -12,11 +12,11 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: e6e1144043cbbbc8124785351e1e56a776b84527
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692812"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383752"
 ---
 # <a name="using-stored-procedures-in-sql-data-warehouse"></a>Korzystanie z procedur składowanych w SQL Data Warehouse
 Wskazówki dotyczące wdrażania procedur składowanych w Azure SQL Data Warehouse tworzenia rozwiązań.
@@ -82,9 +82,9 @@ Oto one:
 * Opcja replikacji
 * parametry z wartościami przechowywanymi w tabeli
 * parametry tylko do odczytu
-* parametry domyślne
+* domyślne parametry
 * konteksty wykonywania
-* Return — Instrukcja
+* return — Instrukcja
 
 ## <a name="next-steps"></a>Następne kroki
 Aby uzyskać więcej porad programistycznych, zobacz [Omówienie projektowania](sql-data-warehouse-overview-develop.md).

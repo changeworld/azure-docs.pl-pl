@@ -7,11 +7,11 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: sutalasi
 ms.openlocfilehash: 6499c986bef965848303ee9833fd59f5e3f0889c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773433"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391799"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Konfigurowanie odzyskiwania po awarii na platformie Azure dla maszyn wirtualnych funkcji Hyper-V przy użyciu programu PowerShell i Azure Resource Manager
 
@@ -21,7 +21,7 @@ W tym artykule opisano sposób korzystania z programu Windows PowerShell wraz z 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="azure-powershell"></a>Program Azure PowerShell
+## <a name="azure-powershell"></a>Azure PowerShell
 
 Azure PowerShell udostępnia polecenia cmdlet do zarządzania platformą Azure przy użyciu programu Windows PowerShell. Site Recovery polecenia cmdlet programu PowerShell, dostępne w Azure PowerShell dla Azure Resource Manager, pomagają chronić i odzyskiwać serwery na platformie Azure.
 

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 276e691351d852d6dcb0075d47bf33af6767fc10
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226096"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394278"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Kontrola dostępu w usłudze Azure Data Lake magazynu Gen1
 
@@ -27,9 +27,9 @@ Azure Data Lake Storage Gen1 wdraża model kontroli dostępu pochodzący z syste
 
 Istnieją dwa typy list kontroli dostępu (ACL) — **Listy ACL dostępu** i **Domyślne listy ACL**.
 
-* **Listy ACL dostępu**: Kontrolują dostęp do obiektu. Pliki i foldery mają listy ACL dostępu.
+* **Listy ACL dostępu**: listy te kontrolują dostęp do obiektu. Pliki i foldery mają listy ACL dostępu.
 
-* **Domyślne listy ACL**: "Szablon" list ACL skojarzonych z folderem, który określa listy ACL dostępu dla wszelkich elementów podrzędnych, które są tworzone w tym folderze. Pliki nie mają domyślnych list ACL.
+* **Domyślne listy ACL**: „szablon” list ACL skojarzonych z folderem, który określa listy ACL dostępu dla wszelkich elementów podrzędnych, które zostały utworzone w tym folderze. Pliki nie mają domyślnych list ACL.
 
 
 Zarówno listy ACL dostępu, jak i domyślne listy ACL mają tę samą strukturę.
@@ -59,7 +59,7 @@ Skrót **RWX** służy do wskazywania uprawnień do **odczytu, zapisu i wykonani
 |--------------|------------|------------------------|
 | 7            | `RWX`        | Odczyt (R) + zapis (W) + wykonanie (X) |
 | 5            | `R-X`        | Odczyt (R) + wykonanie (X)         |
-| 4            | `R--`        | Odczyt                   |
+| 4            | `R--`        | Odczytywanie                   |
 | 0            | `---`        | Brak uprawnień         |
 
 
@@ -73,10 +73,10 @@ Poniżej przedstawiono kilka typowych scenariuszy, które pomagają zrozumieć, 
 
 | Operacja | Obiekt              |    /      | Seattle /   | Portland /   | Data.txt       |
 |-----------|---------------------|-----------|------------|-------------|----------------|
-| Odczyt      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
+| Odczytywanie      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
 | Dołączanie do | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
-| Usuwanie    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
-| Przycisk Utwórz    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Usuń    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Tworzenie    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | List      | /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
 | List      | /Seattle/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
 | List      | /Seattle/Portland /  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
@@ -108,7 +108,7 @@ Administrator ma najwięcej uprawnień spośród wszystkich użytkowników w ram
 * może zmieniać uprawnienia do dowolnego pliku lub folderu;
 * może zmieniać właściciela lub grupę będącą właścicielem dla dowolnego pliku lub folderu.
 
-Wszyscy użytkownicy, które są częścią **właścicieli** roli konta Data Lake Storage Gen1 są automatycznie administrator.
+Wszyscy użytkownicy będący częścią roli **właściciele** dla konta Data Lake Storage Gen1 są automatycznie administratorami.
 
 ### <a name="the-owning-user"></a>Użytkownik będący właścicielem
 
@@ -124,16 +124,16 @@ Użytkownik, który utworzył element, jest automatycznie właścicielem element
 
 ### <a name="the-owning-group"></a>Grupa będąca właścicielem
 
-**Tło**
+**Tle**
 
 Na listach ACL w modelu POSIX każdy użytkownik jest skojarzony z „grupą główną”. Przykładowo użytkownik „Alicja” może należeć do grupy „Finanse”. Alicja może również należeć do wielu grup, ale jedna grupa jest zawsze wyznaczona jako jej grupa główna. W modelu POSIX, gdy Alicja tworzy plik, na grupę będącą właścicielem tego pliku zostaje ustawiona jej grupa główna. W tym przypadku jest to grupa „Finanse”. Grupa będąca właścicielem w przeciwnym razie działa podobnie do przypisanych uprawnień dla innych użytkowników/grup.
 
 Ponieważ ma skojarzone z użytkownikami w Data Lake Storage Gen1 nie "grupą główną", grupa będąca właścicielem jest przypisany zgodnie z poniższymi instrukcjami.
 
-**Przypisywanie grupa będąca właścicielem dla nowego pliku lub folderu**
+**Przypisywanie grupy będącej właścicielem dla nowego pliku lub folderu**
 
-* **Przypadek 1**: Folder główny "/". Ten folder jest tworzony po utworzeniu konta Data Lake Storage Gen1. W takim przypadku grupa będąca właścicielem jest równa identyfikator GUID wszystko od zera.  Ta wartość nie zezwala na dostęp do wszystkich.  Symbol zastępczy jest do tego czasu, które grupa jest przypisana.
-* **Przypadek 2** (W każdym innym przypadku): Po utworzeniu nowego elementu grupa będąca właścicielem jest kopiowana z folderu nadrzędnego.
+* **Przypadek 1**: folder główny „/”. Ten folder jest tworzony po utworzeniu konta Data Lake Storage Gen1. W takim przypadku grupa będąca właścicielem jest równa identyfikator GUID wszystko od zera.  Ta wartość nie zezwala na dostęp do wszystkich.  Symbol zastępczy jest do tego czasu, które grupa jest przypisana.
+* **Przypadek 2** (każdy inny przypadek): gdy tworzony jest nowy element, grupa będąca właścicielem jest kopiowana z folderu nadrzędnego.
 
 **Zmiana grupy będącej właścicielem**
 
@@ -144,7 +144,7 @@ Grupę będącą właścicielem może zmienić:
 > [!NOTE]
 > Grupa będąca właścicielem *nie może* zmienić list kontroli dostępu do pliku lub folderu.
 >
-> W przypadku kont utworzone przed września 2018 r. grupa będąca właścicielem została ustawiona na użytkownika, który utworzył konto w przypadku folderu głównego elementu **przypadek 1**powyżej.  Pojedyncze konto użytkownika nie jest prawidłową zapewnić uprawnień za pośrednictwem grupy będącej właścicielem, dlatego nie uprawnienia są przyznawane przez to ustawienie domyślne. To uprawnienie można przypisać do prawidłowej grupy użytkowników.
+> W przypadku kont utworzonych w dniu lub przed 2018 września, grupa będąca właścicielem została ustawiona na użytkownika, który utworzył konto w przypadku folderu głównego dla **przypadku 1**, powyżej.  Pojedyncze konto użytkownika nie jest prawidłową zapewnić uprawnień za pośrednictwem grupy będącej właścicielem, dlatego nie uprawnienia są przyznawane przez to ustawienie domyślne. To uprawnienie można przypisać do prawidłowej grupy użytkowników.
 
 
 ## <a name="access-check-algorithm"></a>Algorytm kontroli dostępu
@@ -194,7 +194,7 @@ def access_check( user, desired_perms, path ) :
 
 ### <a name="the-mask"></a>Maska
 
-Jak pokazano w algorytmu kontroli dostępu, maski ogranicza dostęp do **użytkowników nazwanych**, **grupy będącej właścicielem**, i **nazwanych grup**.  
+Jak pokazano w algorytmie kontroli dostępu, maska ogranicza dostęp dla **użytkowników nazwanych**, **grupy będącej właścicielem**i **nazwanych grup**.  
 
 > [!NOTE]
 > W przypadku nowego konta Data Lake Storage Gen1 maski dla listy ACL dostępu folderu głównego ("/") są domyślnie maskami RWX.
@@ -297,6 +297,6 @@ Nie, ale domyślne listy kontroli dostępu mogą być używane do ustawienia lis
 * [Listy ACL modelu POSIX w systemie Ubuntu](https://help.ubuntu.com/community/FilePermissionsACLs)
 * [Listy ACL korzystające z list kontroli dostępu w systemie Linux](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
-* [Omówienie usługi Azure Data Lake Storage Gen1](data-lake-store-overview.md)
+* [Omówienie Azure Data Lake Storage Gen1](data-lake-store-overview.md)

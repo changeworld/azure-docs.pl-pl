@@ -5,11 +5,11 @@ author: diberry
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.openlocfilehash: 1c1a744c06e5347625fb96518bd809481ee797e5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76716295"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361205"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Wyodrębnij dane z wypowiedź tekstu z intencjami i jednostkami
 Usługa LUIS daje możliwość pobrać informacje z wypowiedzi języka naturalnego użytkownika. Informacje są wyodrębniane w sposób, że może służyć przez program, aplikacji lub czatbot podjąć działania. W poniższych sekcjach Dowiedz się, jakie dane są zwracane z intencje i podmioty, wraz z przykładami JSON.
@@ -19,11 +19,11 @@ Najtrudniejsze dane do wyodrębnienia to dane zdobyte na maszynie, ponieważ nie
 ## <a name="data-location-and-key-usage"></a>Użycie danych lokalizacji i klucz
 LUIS udostępnia dane z opublikowanego [punktu końcowego](luis-glossary.md#endpoint). **Żądanie https** (post lub Get) zawiera wypowiedź, a także niektóre opcjonalne konfiguracje, takie jak środowiska przejściowe lub produkcyjne.
 
-#### <a name="v2-prediction-endpoint-requesttabv2"></a>[Żądanie punktu końcowego przewidywania wersji 2](#tab/V2)
+#### <a name="v2-prediction-endpoint-request"></a>[Żądanie punktu końcowego przewidywania wersji 2](#tab/V2)
 
 `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/<appID>?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&q=book 2 tickets to paris`
 
-#### <a name="v3-prediction-endpoint-requesttabv3"></a>[Żądanie punktu końcowego przewidywania v3](#tab/V3)
+#### <a name="v3-prediction-endpoint-request"></a>[Żądanie punktu końcowego przewidywania v3](#tab/V3)
 
 `https://westus.api.cognitive.microsoft.com/luis/v3.0-preview/apps/<appID>/slots/<slot-type>/predict?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&query=book 2 tickets to paris`
 
@@ -38,7 +38,7 @@ Dowiedz się więcej o [punkcie końcowym przewidywania v3](luis-migration-api-v
 ## <a name="data-from-intents"></a>Dane z opcjami
 Dane podstawowe są największą **nazwą przeznaczenie**oceniania. Odpowiedź na punkt końcowy jest:
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
 
 ```JSON
 {
@@ -51,7 +51,7 @@ Dane podstawowe są największą **nazwą przeznaczenie**oceniania. Odpowiedź n
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
 
 ```JSON
 {
@@ -80,7 +80,7 @@ Dowiedz się więcej o [punkcie końcowym przewidywania v3](luis-migration-api-v
 Jeśli aplikacja chatbot lub LUIS-wywołująca podejmuje decyzję na podstawie więcej niż jednego wyniku zamiaru, zwracają wszystkie wyniki założeń.
 
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
 
 Ustaw parametr QueryString, `verbose=true`. Odpowiedź na punkt końcowy jest:
 
@@ -105,7 +105,7 @@ Ustaw parametr QueryString, `verbose=true`. Odpowiedź na punkt końcowy jest:
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
 
 Ustaw parametr QueryString, `show-all-intents=true`. Odpowiedź na punkt końcowy jest:
 
@@ -142,7 +142,7 @@ Intencji są uporządkowane od najwyższego do najniższego wyniku.
 
 W przypadku dodania wstępnie skompilowanych domen nazwa zamierzenia wskazuje domenę, taką jak `Utilties` lub `Communication`, a także zamiar:
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
 
 ```JSON
 {
@@ -168,7 +168,7 @@ W przypadku dodania wstępnie skompilowanych domen nazwa zamierzenia wskazuje do
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
 
 ```JSON
 {
@@ -210,7 +210,7 @@ Więcej niż jednej jednostki może odnosić się pojedynczego wyrazu lub frazy 
 
 Wszystkie jednostki są zwracane w tablicy **jednostek** odpowiedzi z punktu końcowego:
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
 
 ```JSON
 "entities": [
@@ -233,7 +233,7 @@ Wszystkie jednostki są zwracane w tablicy **jednostek** odpowiedzi z punktu ko�
 ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
 
 ```JSON
 "entities": {
@@ -266,7 +266,7 @@ Wstępnie [skompilowane](luis-concept-entity-types.md) jednostki są odnajdywane
 
 `Dec 5th send to +1 360-555-1212`
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
 
 ```JSON
 "entities": [
@@ -347,7 +347,7 @@ Wstępnie [skompilowane](luis-concept-entity-types.md) jednostki są odnajdywane
   ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
 
 Bez parametru QueryString `verbose=true`:
 
@@ -556,7 +556,7 @@ Niektóre aplikacje wymagają można było znaleźć nowe i rozwijające się na
 Role różnią się kontekstowych jednostek.
 
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
 
 Nazwa jednostki jest `Location`, z dwiema rolami `Origin` i `Destination`.
 
@@ -589,7 +589,7 @@ Nazwa jednostki jest `Location`, z dwiema rolami `Origin` i `Destination`.
 ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
 
 W wersji 3 **Nazwa roli** jest nazwą podstawową obiektu.
 
@@ -709,7 +709,7 @@ Dla wszystkich innych języków odpowiedź jest:
 Jednostka wyodrębniania klucza zwraca kluczowe frazy w wypowiedź, dostarczone przez [Analiza tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/).
 
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
 
 ```JSON
 {
@@ -744,7 +744,7 @@ Jednostka wyodrębniania klucza zwraca kluczowe frazy w wypowiedź, dostarczone 
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
 
 Dowiedz się więcej o [punkcie końcowym przewidywania v3](luis-migration-api-v3.md).
 
@@ -822,7 +822,7 @@ Usługa LUIS zwraca wszystkie jednostki w wypowiedź. Co w efekcie Twoja chatbot
 
 Punkt końcowy LUIS może odnaleźć te same dane w różnych jednostkach.
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
 
 ```JSON
 {
@@ -948,7 +948,7 @@ Punkt końcowy LUIS może odnaleźć te same dane w różnych jednostkach.
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
 
 Bez `verbose=true` jako parametr QueryString.
 
@@ -1135,7 +1135,7 @@ Jeśli wyraz lub frazę, pasuje do więcej niż jednej jednostki listy, kwerendy
 
 W przypadku zapytania `when is the best time to go to red rock?`, a aplikacja zawiera słowo `red` w więcej niż jednej liście, LUIS rozpoznaje wszystkie jednostki i zwraca tablicę jednostek jako część odpowiedzi punktu końcowego JSON:
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
 
 ```JSON
 {
@@ -1173,7 +1173,7 @@ W przypadku zapytania `when is the best time to go to red rock?`, a aplikacja za
 
 
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
 
 Bez `verbose=true` w ciągu zapytania:
 

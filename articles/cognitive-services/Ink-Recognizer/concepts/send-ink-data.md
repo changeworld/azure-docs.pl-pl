@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
 ms.openlocfilehash: 0ad961495d44f13522a3c02224a5612aaedaf076
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70274486"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393103"
 ---
 # <a name="send-ink-data-to-the-ink-recognizer-api"></a>Wysyłanie danych pisma odręcznego do interfejsu API rozpoznawania pisma odręcznego 
 
 Cyfrowe pismo odręczne odnosi się do technologii, które umożliwiają tworzenie cyfrowych reprezentacji danych wejściowych, takich jak pismo ręczne i rysunki. Jest to zazwyczaj realizowane przy użyciu dyskretyzatora, który przechwytuje ruchy urządzeń wejściowych, takich jak pióro. Urządzenia udostępniają zaawansowane środowiska cyfrowego pisma odręcznego, dlatego sztuczna inteligencja i systemy uczenia maszynowego umożliwiają rozpoznawanie napisanych kształtów i tekstu w dowolnym kontekście. Interfejs API rozpoznawania pisma odręcznego umożliwia wysyłanie pociągnięć odręcznych i uzyskiwanie szczegółowych informacji o nich. 
 
-## <a name="the-ink-recognizer-api-vs-ocr-services"></a>Interfejs API rozpoznawania pisma odręcznego a Usługi OCR
+## <a name="the-ink-recognizer-api-vs-ocr-services"></a>Interfejs API rozpoznawania atramentu i usługi OCR
 
 Interfejs API rozpoznawania pisma odręcznego nie używa optycznego rozpoznawania znaków (OCR). Usługa OCR przetwarza dane pikseli z obrazów w celu zapewnienia rozpoznawania pisma ręcznego i tekstu. Jest to czasami nazywane rozpoznawaniem w trybie offline. Zamiast tego interfejs API rozpoznawania atramentu wymaga danych cyfrowych pociągnięć odręcznych, które są przechwytywane jako urządzenie wejściowe. Przetwarzanie danych cyfrowych atramentu w ten sposób może dawać dokładniejsze wyniki rozpoznawania w porównaniu z usługami OCR. 
 

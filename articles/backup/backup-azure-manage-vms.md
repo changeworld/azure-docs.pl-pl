@@ -5,11 +5,11 @@ ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.openlocfilehash: dd4e9dc199048b3faf3da0cadfdf60bdcb26c5bc
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989692"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363807"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Zarządzanie kopiami zapasowymi maszyn wirtualnych platformy Azure za pomocą usługi Azure Backup
 
@@ -30,10 +30,10 @@ Kopiami zapasowymi można zarządzać przy użyciu pulpitu nawigacyjnego i przec
 
 Aby wyświetlić maszyny wirtualne na pulpicie nawigacyjnym magazynu:
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Azure portal](https://portal.azure.com/).
 2. W menu centrum wybierz pozycję **Przeglądaj**. Na liście zasobów wpisz **Usługi odzyskiwania**. Podczas wpisywania lista jest filtrowana na podstawie danych wejściowych. Wybierz **Recovery Services magazynów**.
 
-    ![Tworzenie magazynu usługi Recovery Services](./media/backup-azure-manage-vms/browse-to-rs-vaults.png)
+    ![Tworzenie magazynu Usług odzyskiwania](./media/backup-azure-manage-vms/browse-to-rs-vaults.png)
 
 3. Aby ułatwić sobie korzystanie z programu, kliknij prawym przyciskiem myszy magazyn i wybierz pozycję **Przypnij do pulpitu nawigacyjnego**.
 4. Otwórz pulpit nawigacyjny magazynu.
@@ -56,7 +56,7 @@ Aby wyświetlić maszyny wirtualne na pulpicie nawigacyjnym magazynu:
 
 Aby zarządzać zasadami tworzenia kopii zapasowych:
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com/). Otwórz pulpit nawigacyjny magazynu.
+1. Zaloguj się do [Azure portal](https://portal.azure.com/). Otwórz pulpit nawigacyjny magazynu.
 2. Na kafelku **elementy kopii zapasowej** wybierz pozycję **Azure Virtual Machines**.
 
     ![Otwórz kafelek elementy kopii zapasowej](./media/backup-azure-manage-vms/contoso-vault-1606.png)

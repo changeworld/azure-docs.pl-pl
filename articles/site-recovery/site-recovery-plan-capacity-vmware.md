@@ -8,11 +8,11 @@ ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 467c70a722b8a243be6ac2826188a4ba3459aa06
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961356"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362823"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Planowanie pojemności i skalowanie na potrzeby odzyskiwania po awarii oprogramowania VMware na platformę Azure
 
@@ -163,7 +163,7 @@ Aby dodać główny serwer docelowy dla maszyny wirtualnej z systemem Windows:
     ![Zrzut ekranu pokazujący, gdzie wprowadzić adres IP i hasło dla serwera konfiguracji](media/site-recovery-plan-capacity-vmware/cs-ip-passphrase.PNG)
 8. Wybierz pozycję **Zarejestruj**. Po zakończeniu rejestracji wybierz pozycję **Zakończ**.
 
-Po pomyślnym zakończeniu rejestracji serwer jest wymieniony w Azure Portal w **magazynie Recovery Services** > **Site Recovery infrastruktura** > **serwerów konfiguracji**, na głównych serwerach docelowych serwer konfiguracji.
+Po pomyślnym zakończeniu rejestracji serwer jest wymieniony w Azure Portal w **magazynie Recovery Services** > **Site Recovery infrastruktura** > **serwerów konfiguracji**, na głównych serwerach docelowych serwera konfiguracji.
 
  > [!NOTE]
  > Pobierz najnowszą wersję [ujednoliconego pliku instalacji głównego serwera docelowego dla systemu Windows](https://aka.ms/latestmobsvc).

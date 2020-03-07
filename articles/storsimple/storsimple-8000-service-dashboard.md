@@ -1,6 +1,6 @@
 ---
-title: Użyj urządzenia StorSimple 8000 series podsumowania | Dokumentacja firmy Microsoft
-description: W tym artykule opisano bloku podsumowania usługi StorSimple i wyjaśniono, jak korzystać z niego do monitorowania kondycji rozwiązania StorSimple.
+title: Użyj podsumowania urządzeń z serii StorSimple 8000 | Microsoft Docs
+description: Opisuje blok podsumowania usługi StorSimple i wyjaśnia, jak go używać do monitorowania kondycji rozwiązania StorSimple.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,77 +15,77 @@ ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
 ms.openlocfilehash: c174f6ce0fb3d40af953be205a7bfcca60fbfeec
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60633145"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78366781"
 ---
-# <a name="use-the-service-summary-blade-for-storsimple-8000-series-device"></a>Użyj bloku podsumowania usługi dla urządzenia StorSimple 8000 series
+# <a name="use-the-service-summary-blade-for-storsimple-8000-series-device"></a>Korzystanie z bloku podsumowania usługi dla urządzenia z serii StorSimple 8000
 
 ## <a name="overview"></a>Omówienie
 
-Bloku podsumowania usługi Menedżer urządzeń StorSimple zapewnia widok podsumowania wszystkich urządzeń, które są podłączone do usługi Menedżer urządzeń StorSimple, wyróżnianie tych urządzeń, które wymagają uwagi administratora systemu. W tym samouczku przedstawiono bloku podsumowania usługi, opisano zawartości pulpitu nawigacyjnego i funkcji, a następnie w tym artykule opisano zadania, które można wykonywać na tej stronie.
+Blok podsumowania usługi StorSimple Menedżer urządzeń zawiera widok podsumowania wszystkich urządzeń podłączonych do usługi StorSimple Menedżer urządzeń, co umożliwia wyróżnienie tych urządzeń, które wymagają uwagi administratora systemu. W tym samouczku przedstawiono blok podsumowania usługi, wyjaśniono zawartość i funkcję pulpitu nawigacyjnego oraz opisano zadania, które można wykonać na tej stronie.
 
 ![Podsumowanie usługi](./media/storsimple-8000-service-dashboard/service-summary1.png)
 
 
 ## <a name="management-commands"></a>Polecenia zarządzania
 
-W bloku podsumowania usługi StorSimple widać opcji do zarządzania usługi Menedżer urządzeń StorSimple oraz urządzenia serii StorSimple 8000, które są zarejestrowane do tej usługi. Polecenia zarządzania zostanie wyświetlony wzdłuż górnej części bloku i po lewej stronie.
+W bloku podsumowanie usługi StorSimple widoczne są opcje zarządzania usługą StorSimple Menedżer urządzeń i urządzeniami serii StorSimple 8000 zarejestrowanymi w tej usłudze. Zobaczysz polecenia zarządzania w górnej części bloku i po lewej stronie.
 
 ![Pasek poleceń](./media/storsimple-8000-service-dashboard/service-summary2.png)
 
-Użyj tych opcji, aby wykonywać różne operacje, takie jak dodawanie udziałów lub woluminów lub monitor różne zadania, działające na urządzeniach StorSimple.
+Te opcje służą do wykonywania różnych operacji, takich jak dodawanie udziałów lub woluminów lub monitorowanie różnych zadań uruchomionych na urządzeniach StorSimple.
 
 
 ## <a name="essentials"></a>Podstawy
 
-W obszarze essentials przechwytuje niektóre ważne właściwości, takich jak grupy zasobów, lokalizacji i subskrypcji, w którym utworzono Menedżera urządzeń StorSimple.
+Obszar podstawy przechwytuje niektóre ważne właściwości, takie jak, grupę zasobów, lokalizację i subskrypcję, w ramach której utworzono Menedżer urządzeń StorSimple.
 
 ![Podstawy](./media/storsimple-8000-service-dashboard/service-summary3.png)
 
-## <a name="storsimple-device-manager-service-summary"></a>Podsumowanie usługi Menedżer urządzeń StorSimple
+## <a name="storsimple-device-manager-service-summary"></a>Podsumowanie usługi StorSimple Menedżer urządzeń
 
-* **Alerty** Kafelek zawiera migawkę wszystkich aktywnych alertów dla wszystkich urządzeń, pogrupowane według ważności alertu.
+* Kafelek **alerty** zawiera migawkę wszystkich aktywnych alertów na wszystkich urządzeniach pogrupowanych według ważności alertu.
 
     ![Kafelek alerty](./media/storsimple-8000-service-dashboard/service-summary4.png)
 
-    Kliknięcie kafelka spowoduje otworzenie **alerty** bloku, gdzie możesz kliknąć alert indywidualny, aby wyświetlić dodatkowe szczegóły dotyczące tego alertu, wraz ze wszystkimi zalecane akcje. Można także wyczyścić ten alert, jeśli problem został rozwiązany.
+    Kliknięcie kafelka powoduje otwarcie bloku **alerty** , gdzie można kliknąć indywidualny alert, aby wyświetlić dodatkowe szczegóły dotyczące tego alertu, w tym wszystkie zalecane akcje. Możesz również wyczyścić alert, jeśli problem został rozwiązany.
 
-    ![Kliknij Kafelek alerty](./media/storsimple-8000-service-dashboard/service-summary8.png)
+    ![Kliknij kafelek alerty](./media/storsimple-8000-service-dashboard/service-summary8.png)
 
-* **Pojemności** Wyświetla Kafelek pokazuje magazynu podstawowego, który jest obsługiwana i pozostałe na wszystkich urządzeniach względem całkowita ilość miejsca dostępna na wszystkich urządzeniach. **Zainicjowano obsługę administracyjną** odwołuje się do miejsca do magazynowania, który jest przygotowany i przydzielona do użycia, **pozostałe** odwołuje się do pozostałych pojemności, które mogą być udostępniane na wszystkich urządzeniach.
+* Na kafelku **pojemność** są wyświetlane podstawowe magazyny, które są udostępniane i pozostają na wszystkich urządzeniach względem całkowitej ilości dostępnego miejsca na wszystkich urządzeniach. **Przygotowana odnosi się** do ilości miejsca do magazynowania przygotowanego i przystosowanego do użycia, **pozostała** odnosi się do pozostałej pojemności, która może zostać zainicjowana na wszystkich urządzeniach.
 
     ![Kafelek pojemności](./media/storsimple-8000-service-dashboard/service-summary6.png)
 
-    **Pozostałe warstwy** pojemność to dostępnej pojemności, które mogą być udostępniane w chmurze, w tym podczas **pozostałe lokalnego** jest pojemność na dyski dołączone do StorSimple 8000 urządzenia z serii.
+    **Pozostała pojemność warstwowa** to dostępna pojemność, która może zostać zainicjowana, w tym w chmurze, a **pozostała wartość jest** równa pozostałej pojemności na dyskach dołączonych do urządzeń serii StorSimple 8000.
 
 
-* W **użycia** wykresu, zobacz temat istotne metryki dla urządzeń. Możesz wyświetlić podstawowym magazynem używanym dla wszystkich urządzeń i używane przez urządzenia w ciągu ostatnich 7 dni, okres domyślny magazyn w chmurze. 
+* Na wykresie **użycia** można zobaczyć odpowiednie metryki dla urządzeń. Można wyświetlić magazyn podstawowy używany na wszystkich urządzeniach i magazyn w chmurze zużyty przez urządzenia w ciągu ostatnich 7 dni — domyślny okres. 
 
     ![Kafelek użycie](./media/storsimple-8000-service-dashboard/service-summary7.png) 
 
-    Aby wybrać inny czas skalowania, użyj **Edytuj** opcji w prawym górnym rogu wykresu.
+    Aby wybrać inną skalę czasu, użyj opcji **Edytuj** w prawym górnym rogu wykresu.
 
-     ![Kliknij Kafelek użycie](./media/storsimple-8000-service-dashboard/service-summary10.png)
+     ![Kliknij kafelek użycie](./media/storsimple-8000-service-dashboard/service-summary10.png)
 
      ![Eksportuj dane wykresu](./media/storsimple-8000-service-dashboard/service-summary11.png)
 
-* **Urządzeń** Kafelek zawiera podsumowanie liczby urządzeń StorSimple serii 8000 w Menedżera urządzeń StorSimple pogrupowane według stanu urządzenia. 
+* Kafelek **urządzenia** zawiera podsumowanie liczby urządzeń z serii StorSimple 8000 w StorSimple Menedżer urządzeń pogrupowanych według stanu urządzenia. 
 
     ![Kafelek urządzenia](./media/storsimple-8000-service-dashboard/service-summary5.png)
 
-    Kliknij ten Kafelek, aby otworzyć **urządzeń** listy bloku, a następnie kliknij przycisk poszczególnych urządzeń, aby przejść do podsumowanie urządzeń specyficznych dla urządzenia. Można również wykonać akcje specyficzne dla urządzenia w bloku podsumowania danego urządzenia. Aby uzyskać więcej informacji na temat w bloku podsumowanie urządzeń, przejdź do [blok podsumowania urządzenia](storsimple-8000-device-dashboard.md).
+    Kliknij ten kafelek, aby otworzyć blok listy **urządzeń** , a następnie kliknij pojedyncze urządzenie, aby przejść do szczegółów dotyczących urządzenia. Można również wykonywać działania specyficzne dla urządzenia z danego bloku podsumowania urządzenia. Aby uzyskać więcej informacji na temat bloku podsumowanie urządzenia, przejdź do [bloku podsumowanie urządzenia](storsimple-8000-device-dashboard.md).
 
-    ![Kliknij Kafelek urządzenia](./media/storsimple-8000-service-dashboard/service-summary9.png)
+    ![Kliknij kafelek urządzenia](./media/storsimple-8000-service-dashboard/service-summary9.png)
 
 ## <a name="view-the-activity-logs"></a>Wyświetlanie dzienników aktywności
 
-Aby wyświetlić różne operacje przeprowadzane w ramach usługi Menedżer urządzeń StorSimple, kliknij **dzienników aktywności** link po lewej stronie bloku podsumowania usługi StorSimple. Spowoduje to przejście do **dzienników aktywności** bloku, w którym będą widoczne podsumowanie ostatnich czynności wykonywane.
+Aby wyświetlić różne operacje wykonywane w ramach StorSimple Menedżer urządzeń, kliknij link **dzienniki aktywności** po lewej stronie bloku podsumowania usługi StorSimple. Spowoduje to przejście do bloku **dzienniki aktywności** , w którym można zobaczyć podsumowanie ostatnich wykonywanych operacji.
 
 ![Dzienniki aktywności](./media/storsimple-8000-service-dashboard/activity-logs1.png)
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej na temat [korzystać z usługi Menedżer urządzeń StorSimple do administrowania urządzeniem StorSimple](storsimple-8000-manager-service-administration.md).
+* Dowiedz się więcej na temat [używania usługi StorSimple Menedżer urządzeń do administrowania urządzeniem StorSimple](storsimple-8000-manager-service-administration.md).
 

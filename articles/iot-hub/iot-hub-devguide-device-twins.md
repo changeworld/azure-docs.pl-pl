@@ -7,13 +7,13 @@ ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 06/10/2019
-ms.openlocfilehash: 4b80004a3d818e66cc2fb61f3d611bbe3e3ded92
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
-ms.translationtype: MT
+ms.date: 02/01/2020
+ms.openlocfilehash: 51e58de92f111c8854add613a299f2b8ccec0503
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807038"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357326"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Zrozumienie i używanie bliźniaczych reprezentacji urządzeń w IoT Hub
 
@@ -182,7 +182,7 @@ Zaplecze rozwiązania działa na bliźniaczych urządzeniach przy użyciu nastę
 
   - Właściwości
 
-    | Nazwa | Wartość |
+    | Name (Nazwa) | Wartość |
     | --- | --- |
     Typ $content | application/json |
     $iothub-enqueuedtime |  Godzina wysłania powiadomienia |
@@ -245,11 +245,15 @@ Wszystkie poprzednie operacje wymagają uprawnienia **DeviceConnect** , zgodnie 
 
 Tagi, żądane właściwości i raportowane właściwości są obiektami JSON z następującymi ograniczeniami:
 
-* Wszystkie klucze w obiektach JSON są zakodowane w formacie UTF-8, z uwzględnieniem wielkości liter i do 1 KB. Dozwolone znaki wykluczają znaki kontrolne UNICODE (segmenty C0 i C1) oraz `.`, `$`i SP.
+* **Klucze**: wszystkie klucze w obiektach JSON są zakodowane w formacie UTF-8, z uwzględnieniem wielkości liter i do 1 KB. Dozwolone znaki wykluczają znaki kontrolne UNICODE (segmenty C0 i C1) oraz `.`, `$`i SP.
 
-* Wszystkie wartości w obiektach JSON mogą mieć następujące typy JSON: Boolean, Number, String, Object. Tablice są niedozwolone. Maksymalna wartość dla liczb całkowitych to 4503599627370495, a minimalna wartość dla liczb całkowitych to-4503599627370496.
+* **Wartości**: wszystkie wartości w obiektach JSON mogą mieć następujące typy JSON: Boolean, Number, String, Object. Tablice są niedozwolone.
 
-* Wszystkie obiekty JSON w tagach, żądanych i raportowanych właściwościach mogą mieć maksymalną głębokość 10. Na przykład następujący obiekt jest prawidłowy:
+    * Liczby całkowite mogą mieć minimalną wartość-4503599627370496 i maksymalną wartość 4503599627370495.
+
+    * Wartości ciągów są kodowane w formacie UTF-8 i mogą mieć maksymalną długość 4 KB.
+
+* **Głębokość**: Maksymalna głębokość obiektów JSON w tagach, wymaganych właściwościach i raportowanych właściwościach wynosi 10. Na przykład następujący obiekt jest prawidłowy:
 
    ```json
    {
@@ -281,15 +285,23 @@ Tagi, żądane właściwości i raportowane właściwości są obiektami JSON z 
    }
    ```
 
-* Wszystkie wartości ciągu mogą mieć długość maksymalnie 4 KB.
-
 ## <a name="device-twin-size"></a>Rozmiar przędzy urządzenia
 
-IoT Hub wymusza limit rozmiaru 8 KB dla wartości `tags`, a rozmiar 32 KB zostanie ograniczony dla wartości `properties/desired` i `properties/reported`. Te sumy zawierają wyłącznie elementy tylko do odczytu.
+IoT Hub wymusza limit rozmiaru 8 KB dla wartości `tags`, a rozmiar 32 KB zostanie ograniczony dla wartości `properties/desired` i `properties/reported`. Te sumy zawierają wyłącznie elementy tylko do odczytu, takie jak `$etag`, `$version`i `$metadata/$lastUpdated`.
 
-Rozmiar jest obliczany przez liczenie wszystkich znaków, z wyłączeniem znaków kontrolnych UNICODE (segmenty C0 i C1) i spacji, które znajdują się poza stałymi ciągami.
+Rozmiar bliźniaczy jest obliczany w następujący sposób:
 
-IoT Hub odrzuca z powodu błędu wszystkie operacje, które spowodują zwiększenie rozmiaru tych dokumentów powyżej limitu.
+* Dla każdej właściwości w dokumencie JSON IoT Hub zbiorcze obliczenia i dodaje długość klucza i wartości właściwości.
+
+* Klucze właściwości są uznawane za ciągi kodowane w formacie UTF8.
+
+* Proste wartości właściwości są uznawane za ciągi kodowane w formacie UTF8, wartości liczbowe (8 bajtów) lub wartości logicznych (4 bajty).
+
+* Rozmiar ciągów zakodowanych w formacie UTF8 jest obliczany przez liczenie wszystkich znaków, z wyłączeniem znaków kontrolnych UNICODE (segmenty C0 i C1).
+
+* Złożone wartości właściwości (obiekty zagnieżdżone) są obliczane na podstawie zagregowanego rozmiaru kluczy właściwości i wartości właściwości, które zawierają.
+
+IoT Hub odrzuca z powodu błędu wszystkie operacje, które spowodują zwiększenie rozmiaru `tags`, `properties/desired`lub `properties/reported` dokumentów powyżej limitu.
 
 ## <a name="device-twin-metadata"></a>Metadane dotyczące sznurka urządzenia
 
