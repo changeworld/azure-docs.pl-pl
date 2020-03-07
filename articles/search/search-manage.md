@@ -10,19 +10,19 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 3abbf2c8e0734d17aabadd2ae5f61cc03889964b
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754330"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379598"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Administracja usługi dla platformy Azure Wyszukiwanie poznawcze w Azure Portal
 > [!div class="op_single_selector"]
-> * [Program PowerShell](search-manage-powershell.md)
+> * [PowerShell](search-manage-powershell.md)
 > * [Interfejs API REST](https://docs.microsoft.com/rest/api/searchmanagement/)
 > * [Zestaw SDK platformy .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * [Portal](search-manage.md)
-> * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
+> * > [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0) 
 
 Azure Wyszukiwanie poznawcze to w pełni zarządzana usługa wyszukiwania oparta na chmurze służąca do tworzenia bogatego środowiska wyszukiwania w aplikacjach niestandardowych. W tym artykule omówiono zadania administracyjne usługi, które można wykonać w [Azure Portal](https://portal.azure.com) dla usługi wyszukiwania, która została już zainicjowana. Administrowanie usługami jest lekkie przez projektowanie, ograniczone do następujących zadań:
 
@@ -62,8 +62,8 @@ Na pulpicie nawigacyjnym monitorowanie zasobów jest ograniczone do informacji w
 
 Korzystając z interfejsu API REST usługi Search, można programowo uzyskać liczbę dokumentów i indeksów: 
 
-* [Pobieranie statystyki indeksu](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
-* [Liczba dokumentów](https://docs.microsoft.com/rest/api/searchservice/count-documents)
+* [Pobierz statystyki indeksu](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
+* [Liczenie dokumentów](https://docs.microsoft.com/rest/api/searchservice/count-documents)
 
 ## <a name="disaster-recovery-and-service-outages"></a>Odzyskiwanie po awarii i awaria usługi
 
@@ -75,7 +75,7 @@ Klienci używający [indeksatorów](search-indexer-overview.md) do wypełniania 
 
 Jeśli nie używasz indeksatorów, użyj kodu aplikacji do wypychania obiektów i danych do różnych usług wyszukiwania równolegle. Aby uzyskać więcej informacji, zobacz [wydajność i optymalizacja na platformie Azure wyszukiwanie poznawcze](search-performance-optimization.md).
 
-## <a name="backup-and-restore"></a>Tworzenie i przywracanie kopii zapasowych
+## <a name="backup-and-restore"></a>Tworzenie kopii zapasowej i przywracanie
 
 Ponieważ platforma Azure Wyszukiwanie poznawcze nie jest podstawowym rozwiązaniem do przechowywania danych, firma Microsoft nie udostępnia formalnego mechanizmu tworzenia kopii zapasowych i przywracania samoobsługowego. Można jednak użyć przykładowego kodu do **przywracania kopii zapasowej** w ramach tego [przykładowego repozytorium platformy Azure wyszukiwanie poznawcze .NET](https://github.com/Azure-Samples/azure-search-dotnet-samples) , aby utworzyć kopię zapasową definicji indeksu i migawki do serii plików JSON, a następnie użyć tych plików do przywrócenia indeksu, w razie potrzeby. To narzędzie umożliwia również przenoszenie indeksów między warstwami usług.
 

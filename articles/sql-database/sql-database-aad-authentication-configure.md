@@ -13,11 +13,11 @@ ms.reviewer: vanto, carlrab
 ms.date: 01/07/2020
 tags: azure-synapse
 ms.openlocfilehash: 42f79b83d174571d26f49b28ed480f86a004036c
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196131"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357182"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Konfigurowanie i Zarządzanie uwierzytelnianiem Azure Active Directory przy użyciu programu SQL
 
@@ -129,7 +129,7 @@ Wystąpienie zarządzane musi mieć uprawnienia do odczytu usługi Azure AD, aby
 
 5. Po pomyślnym zakończeniu operacji następujące powiadomienie zostanie wyświetlone w prawym górnym rogu:
 
-    ![powodzenie](./media/sql-database-aad-authentication/success.png)
+    ![success](./media/sql-database-aad-authentication/success.png)
 
 6. Teraz możesz wybrać administratora usługi Azure AD dla wystąpienia zarządzanego. W tym celu na stronie Administrator Active Directory wybierz pozycję **Ustaw polecenie administracyjne** .
 
@@ -237,7 +237,7 @@ Aby uzyskać więcej informacji na temat poleceń interfejsu wiersza polecenia, 
 
 W poniższych dwóch procedurach pokazano, jak zainicjować obsługę administracyjną Azure Active Directory administratorem programu Azure SQL Server w Azure Portal i przy użyciu programu PowerShell.
 
-### <a name="azure-portal"></a>Portalu Azure
+### <a name="azure-portal"></a>Azure Portal
 
 1. W witrynie [Azure Portal](https://portal.azure.com/) w prawym górnym rogu wybierz swoje połączenia, aby wyświetlić listę rozwijaną możliwych usług Active Directory. Wybierz odpowiednią usługę Active Directory jako domyślną usługę Azure AD. W tym kroku powiązana z subskrypcją usługa Active Directory zostaje połączona z serwerem Azure SQL. Dzięki temu mamy pewność, że ta sama subskrypcja jest używana zarówno przez usługę Azure AD, jak i SQL Server. (Serwer SQL platformy Azure może obsługiwać Azure SQL Database lub usługę Azure Synapse).
 

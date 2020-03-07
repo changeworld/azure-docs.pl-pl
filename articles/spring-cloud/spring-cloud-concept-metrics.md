@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: brendm
 ms.openlocfilehash: bb23afff2b4b449897d8e420934d038938d20205
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500328"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389563"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Informacje o metrykach dla chmury wiosennej platformy Azure
 
@@ -106,7 +106,7 @@ W poniższych tabelach przedstawiono dostępne metryki i szczegóły.
 >| Podwyższ poziom do starego rozmiaru danych generacji | JVM. GC. Memory. awansowana | Bajty | Liczba pozytywnych wzrostów rozmiaru starej puli pamięci generacji przed GC do po GC. |
 >| Podwyższ poziom do rozmiaru danych dla małych generacji | JVM. GC. Memory. przydzielono | Bajty | Zwiększa się w celu zwiększenia rozmiaru puli pamięci młodej generacji po jednej operacji GC do wcześniejszej. |
 >| Liczba wstrzymań GC | JVM. GC. Pause (łącznie-Count) | Licznik | Łączna liczba GC po rozpoczęciu tego JMV, w tym w przypadku młodych i starych wykazów GC. |
->| Całkowity czas wstrzymania odzyskiwania pamięci | JVM. GC. Pause (całkowity czas) | Milisekundy | Łączny czas, zużyty przez GC po rozpoczęciu tego JMV, w tym dla młodych i starych WYKAZów. |
+>| Całkowity czas wstrzymania odzyskiwania pamięci | JVM. GC. Pause (całkowity czas) | MS | Łączny czas, zużyty przez GC po rozpoczęciu tego JMV, w tym dla młodych i starych WYKAZów. |
 
 ### <a name="request"></a>Żądanie
 >[!div class="mx-tdCol2BreakAll"]
@@ -114,21 +114,21 @@ W poniższych tabelach przedstawiono dostępne metryki i szczegóły.
 >|----|----|----|------------|
 >| Całkowita liczba wysłanych bajtów Tomcat | Tomcat. Global. sent | Bajty | Liczba wysłanych serwerów sieci Web Tomcat danych |
 >| Całkowita liczba odebranych bajtów Tomcat | Tomcat. Global. Receives | Bajty | Liczba odebranych danych Tomcat serwera sieci Web |
->| Łączny czas żądania Tomcat | Tomcat. Global. Request (łącznie-Time) | Milisekundy | Łączny czas przetwarzania żądań przez serwer sieci Web Tomcat |
+>| Łączny czas żądania Tomcat | Tomcat. Global. Request (łącznie-Time) | MS | Łączny czas przetwarzania żądań przez serwer sieci Web Tomcat |
 >| Łączna liczba żądań Tomcat | Tomcat. Global. Request (Total-Count) | Licznik | Łączna liczba żądań przetworzonych przez serwer sieci Web Tomcat |
->| Maksymalny czas żądania Tomcat | Tomcat. Global. Request. Max | Milisekundy | Maksymalny czas przetwarzania żądania przez serwer sieci Web Tomcat |
+>| Maksymalny czas żądania Tomcat | Tomcat. Global. Request. Max | MS | Maksymalny czas przetwarzania żądania przez serwer sieci Web Tomcat |
 
 ### <a name="session"></a>Sesja
 >[!div class="mx-tdCol2BreakAll"]
 >| Name (Nazwa) | Nazwa metryki siłownika | Jednostka | Szczegóły |
 >|----|----|----|------------|
 >| Maksymalna liczba aktywnych sesji Tomcat | Tomcat. Sessions. Active. Max | Licznik | Maksymalna liczba sesji, które były aktywne w tym samym czasie |
->| Maksymalny czas aktywności sesji Tomcat | Tomcat. Sessions. Alive. Max | Milisekundy | Najdłuższy czas (w sekundach) aktywności wygasłej sesji |
+>| Maksymalny czas aktywności sesji Tomcat | Tomcat. Sessions. Alive. Max | MS | Najdłuższy czas (w sekundach) aktywności wygasłej sesji |
 >| Liczba utworzonych sesji Tomcat | Tomcat. Sessions. Created | Licznik | Liczba utworzonych sesji |
 >| Liczba wygasłych sesji Tomcat | Tomcat. Sessions. wygasła | Licznik | Liczba wygasłych sesji |
 >| Liczba odrzuconych sesji Tomcat | Tomcat. Sessions. rejected | Licznik | Liczba sesji, które nie zostały utworzone, ponieważ osiągnięto maksymalną liczbę aktywnych sesji. |
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 * [Wprowadzenie do Eksploratora metryk platformy Azure](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)
 
 * [Analizowanie dzienników i metryk przy użyciu ustawień diagnostycznych](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)

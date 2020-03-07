@@ -4,11 +4,11 @@ description: Utwórz pierwszą aplikację kontenera systemu Windows w usłudze A
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.openlocfilehash: 8e1de48874655721f708bfd1dfdda8d975f94c4b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906247"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78344553"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Tworzenie pierwszej aplikacji kontenera usługi Service Fabric w systemie Windows
 
@@ -343,7 +343,7 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
 
 ## <a name="windows-server-container-os-and-host-os-compatibility"></a>System operacyjny kontenera systemu Windows Server i zgodność systemu operacyjnego hosta
 
-Kontenery systemu Windows Server nie są zgodne ze wszystkimi wersjami systemu operacyjnego hosta. Przykład:
+Kontenery systemu Windows Server nie są zgodne ze wszystkimi wersjami systemu operacyjnego hosta. Na przykład:
  
 - Kontenery systemu Windows Server utworzone przy użyciu systemu Windows Server w wersji 1709 nie działają na hoście z systemem Windows Server w wersji 2016. 
 - Kontenery systemu Windows Server utworzone przy użyciu systemu Windows Server 2016 działają w trybie izolacji funkcji Hyper-V tylko na hoście z systemem Windows Server w wersji 1709. 
@@ -351,7 +351,7 @@ Kontenery systemu Windows Server nie są zgodne ze wszystkimi wersjami systemu o
  
 Aby dowiedzieć się więcej, zobacz [zgodność wersji kontenera systemu Windows](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
 
-Podczas kompilowania i wdrażania kontenerów w klastrze Service Fabric należy wziąć pod uwagę zgodność systemu operacyjnego hosta i systemu operacyjnego kontenera. Przykład:
+Podczas kompilowania i wdrażania kontenerów w klastrze Service Fabric należy wziąć pod uwagę zgodność systemu operacyjnego hosta i systemu operacyjnego kontenera. Na przykład:
 
 - Upewnij się, że wdrożono kontenery z systemem operacyjnym zgodnym z systemem operacyjnym w węzłach klastra.
 - Upewnij się, że tryb izolacji określony dla aplikacji kontenera jest zgodny z obsługą systemu operacyjnego kontenera w węźle, w którym jest wdrażany.

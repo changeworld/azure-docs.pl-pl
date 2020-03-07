@@ -9,11 +9,11 @@ ms.topic: troubleshooting
 ms.date: 08/22/2019
 ms.custom: seodec18
 ms.openlocfilehash: 80bca2dab1d07d9b99e75e283068bff99335fa18
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894289"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395190"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z platformy Apache Spark przy użyciu usługi Azure HDInsight
 
@@ -31,25 +31,25 @@ Wartości konfiguracji platformy Spark można dostrajać w celu uniknięcia wyj�
 
 1. Na liście konfiguracji wybierz i rozwiń pozycję **Custom-spark2-Defaults**.
 
-1. Znajdź ustawienie wartości, które należy dopasować, takich jak **spark.executor.memory**. W tym przypadku wartość **9728m** jest zbyt wysoka.
+1. Wyszukaj ustawienie wartości, które należy dostosować, takie jak **Spark. wykonawca. Memory**. W tym przypadku wartość **9728m** jest zbyt wysoka.
 
     ![Wybierz niestandardowe — spark — ustawienia domyślne](./media/apache-troubleshoot-spark/apache-spark-ambari-config4.png)
 
-1. Ustaw wartość na ustawienie zalecane. Wartość **2048m** jest zalecane w przypadku tego ustawienia.
+1. Ustaw wartość na ustawienie zalecane. Wartość **2048m** jest zalecana dla tego ustawienia.
 
 1. Zapisz wartość, a następnie Zapisz konfigurację. Wybierz pozycję **Zapisz**.
 
     ![Zmień wartość na 2048m](./media/apache-troubleshoot-spark/apache-spark-ambari-config6a.png)
 
-    Wpisz notatkę o zmiany konfiguracji, a następnie wybierz **Zapisz**.
+    Napisz uwagi dotyczące zmian konfiguracji, a następnie wybierz pozycję **Zapisz**.
 
     ![Wprowadź informację o zmianach, które wprowadziłeś](./media/apache-troubleshoot-spark/apache-spark-ambari-config6c.png)
 
-    Otrzymasz powiadomienie, jeśli wszystkie konfiguracje wymagające uwagi. Należy pamiętać, elementy, a następnie wybierz **kontynuować mimo to**.
+    Otrzymasz powiadomienie, jeśli wszystkie konfiguracje wymagające uwagi. Zanotuj elementy, a następnie wybierz pozycję **kontynuować mimo wszystko**.
 
     ![Wybierz kontynuować mimo to](./media/apache-troubleshoot-spark/apache-spark-ambari-config6b.png)
 
-1. Przy każdym zapisaniu konfiguracji pojawia się monit o ponowne uruchomienie usługi. Wybierz **ponowne uruchomienie**.
+1. Przy każdym zapisaniu konfiguracji pojawia się monit o ponowne uruchomienie usługi. Wybierz pozycję **Uruchom ponownie**.
 
     ![Uruchom ponownie](./media/apache-troubleshoot-spark/apache-spark-ambari-config7a.png)
 
@@ -61,13 +61,13 @@ Wartości konfiguracji platformy Spark można dostrajać w celu uniknięcia wyj�
 
     ![Przegląd uruchomionego procesu](./media/apache-troubleshoot-spark/apache-spark-ambari-config7c.png)
 
-1. Można dodać konfiguracji. Na liście konfiguracji, wybierz **Custom-spark2 — ustawienia domyślne**, a następnie wybierz pozycję **Dodaj właściwość**.
+1. Można dodać konfiguracji. Na liście konfiguracji wybierz pozycję **Custom-spark2-Defaults**, a następnie wybierz pozycję **Dodaj właściwość**.
 
     ![Wybierz opcję Dodaj właściwość](./media/apache-troubleshoot-spark/apache-spark-ambari-config8.png)
 
 1. Definiowania nowej właściwości. Można zdefiniować jedną właściwość, za pomocą okno dialogowe dotyczące konkretnych ustawień, takich jak typ danych. Alternatywnie można zdefiniować wiele właściwości, za pomocą jednej definicji dla każdego wiersza.
 
-    W tym przykładzie **spark.driver.memory** właściwość jest zdefiniowana z wartością **4g**.
+    W tym przykładzie właściwość **Spark. Driver. Memory** jest zdefiniowana z wartością **4G**.
 
     ![Zdefiniuj nową właściwość](./media/apache-troubleshoot-spark/apache-spark-ambari-config9.png)
 
@@ -77,7 +77,7 @@ Te zmiany są całego klastra, ale mogą być zastąpione, gdy prześlesz zadani
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>Jak skonfigurować aplikację platformy Apache Spark za pomocą notesu Jupyter w klastrach?
 
-W pierwszej komórki notesu programu Jupyter po **%% skonfigurować** dyrektywy, określanie konfiguracji platformy Spark w prawidłowym formacie JSON. Ustaw rzeczywistymi wartościami:
+W pierwszej komórce notesu Jupyter po określeniu w dyrektywie **%% Configure Skonfiguruj** konfigurację platformy Spark w prawidłowym formacie JSON. Ustaw rzeczywistymi wartościami:
 
 ![Dodaj konfigurację](./media/apache-troubleshoot-spark/add-configuration-cell.png)
 
@@ -99,7 +99,7 @@ spark-submit --master yarn-cluster --class com.microsoft.spark.application --num
 
 ### <a name="additional-reading"></a>Materiały uzupełniające
 
-[Przesyłanie zadań platformy Apache Spark w klastrach HDInsight](https://web.archive.org/web/20190112152841/https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[Apache Spark przesyłanie zadania w klastrach usługi HDInsight](https://web.archive.org/web/20190112152841/https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 ## <a name="next-steps"></a>Następne kroki
 

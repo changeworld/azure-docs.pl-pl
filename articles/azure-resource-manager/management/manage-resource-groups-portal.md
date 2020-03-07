@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
 ms.openlocfilehash: 8087baf7595bfd2497f97fbff4822b356cd1b146
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75485639"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355827"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Zarządzanie grupami zasobów Azure Resource Manager przy użyciu Azure Portal
 
@@ -33,7 +33,7 @@ Grupa zasobów przechowuje metadane dotyczące zasobów. W przypadku określania
 
 ## <a name="create-resource-groups"></a>Tworzenie grup zasobów
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 2. Wybierz **grupy zasobów**
 
     ![Dodaj grupę zasobów](./media/manage-resource-groups-portal/manage-resource-groups-add-group.png)
@@ -53,7 +53,7 @@ Grupa zasobów przechowuje metadane dotyczące zasobów. W przypadku określania
 
 ## <a name="list-resource-groups"></a>Wyświetl listę grup zasobów
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 2. Aby wyświetlić listę grup zasobów, wybierz pozycję **grupy zasobów**
 
     ![Przeglądaj grupy zasobów](./media/manage-resource-groups-portal/manage-resource-groups-list-groups.png)
@@ -62,11 +62,11 @@ Grupa zasobów przechowuje metadane dotyczące zasobów. W przypadku określania
 
 ## <a name="open-resource-groups"></a>Otwórz grupy zasobów
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 2. Wybierz pozycję **Grupy zasobów**.
 3. Wybierz grupę zasobów, którą chcesz otworzyć.
 
-## <a name="delete-resource-groups"></a>Usuń grupy zasobów
+## <a name="delete-resource-groups"></a>Usuwanie grup zasobów
 
 1. Otwórz grupę zasobów, którą chcesz usunąć.  Zobacz [otwieranie grup zasobów](#open-resource-groups).
 2. Wybierz pozycję **Usuń grupę zasobów**.
@@ -106,7 +106,7 @@ Aby uzyskać informacje na temat eksportowania szablonów, zobacz [jeden i wiele
 
 ## <a name="manage-access-to-resource-groups"></a>Zarządzanie dostępem do grup zasobów
 
-[Kontrola dostępu oparta na rolach (RBAC, Role Based Access Control)](../../role-based-access-control/overview.md) to sposób zarządzania dostępem do zasobów na platformie Azure. Aby uzyskać więcej informacji, zobacz temat [Zarządzanie dostępem przy użyciu kontroli RBAC i witryny Azure Portal](../../role-based-access-control/role-assignments-portal.md).
+[Kontrola dostępu oparta na rolach (RBAC, Role Based Access Control)](../../role-based-access-control/overview.md) to sposób zarządzania dostępem do zasobów na platformie Azure. Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem przy użyciu kontroli RBAC i witryny Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

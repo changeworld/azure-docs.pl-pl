@@ -13,11 +13,11 @@ ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: fbaa8c3544b35978786404619879f59ab91a6979
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931918"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358536"
 ---
 # <a name="move-data-by-using-copy-activity"></a>Przenoszenie danych za pomocą działania kopiowania
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -27,7 +27,7 @@ ms.locfileid: "74931918"
 > [!NOTE]
 > Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącej wersji usługi Data Factory, zobacz [działanie Copy in v2](../copy-activity-overview.md).
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 W Azure Data Factory można użyć działania kopiowania do kopiowania danych między lokalnymi i magazynami danych w chmurze. Po skopiowaniu danych można je dodatkowo przekształcane i analizowane. Działanie kopiowania umożliwia również publikować wyniki analizy do analizy biznesowej (BI) i użycie aplikacji i przekształcania.
 
 ![Rola działania kopiowania](media/data-factory-data-movement-activities/copy-activity.png)
@@ -77,7 +77,7 @@ Działanie kopiowania w usłudze Data Factory kopiuje dane z magazynu danych źr
 ### <a name="supported-file-formats"></a>Obsługiwane formaty plików
 Możesz użyć działania kopiowania, aby **skopiować pliki** między dwoma magazynami danych opartymi na plikach, można pominąć [sekcję format](data-factory-create-datasets.md) w definicjach zestawu danych wejściowych i wyjściowych. Dane są kopiowane efektywnie bez serializacji/deserializacji.
 
-Działanie Copy odczytuje również dane z i zapisuje je w plikach w określonych formatach: Avro **Text, JSON,, Orc i Parquet**oraz kompresji kodery-dekoder w formacie **gzip, Wklęśnięcie, BZip2 i ZipDeflate** . Zobacz [obsługiwane formaty plików i kompresji](data-factory-supported-file-and-compression-formats.md) ze szczegółowymi informacjami.
+Działanie Copy odczytuje również dane z i zapisuje je w plikach w określonych formatach: Avro **Text, JSON,, Orc i Parquet**oraz kompresji kodery-dekoder w formacie **gzip, Wklęśnięcie, BZip2 i ZipDeflate** . Zobacz [obsługiwane formaty plików i kompresji](data-factory-supported-file-and-compression-formats.md) ze szczegółami.
 
 Na przykład należy wykonać następujące działania kopiowania:
 
@@ -87,7 +87,7 @@ Na przykład należy wykonać następujące działania kopiowania:
 * Kopiowanie danych w formacie tekstowym skompresowany (CSV) GZip z obiektów Blob platformy Azure i zapisu do usługi Azure SQL Database.
 
 ## <a name="global"></a>Dostępne globalnie przenoszenie danych
-Azure Data Factory jest dostępna tylko w regionach zachodnie stany USA, Wschodnie stany USA i Europa Północna. Jednak usługa, która ma uprawnienia do kopiowania, jest dostępna globalnie w następujących regionach i lokalizacje geograficzne. Dostępnie topologii zapewnia efektywne przenoszenia, zazwyczaj pozwala uniknąć przeskoków między regionami. Zobacz [usługi według regionów](https://azure.microsoft.com/regions/#services) dostępność usługi Data Factory i przenoszenia danych w regionie.
+Azure Data Factory jest dostępna tylko w regionach zachodnie stany USA, Wschodnie stany USA i Europa Północna. Jednak usługa, która ma uprawnienia do kopiowania, jest dostępna globalnie w następujących regionach i lokalizacje geograficzne. Dostępnie topologii zapewnia efektywne przenoszenia, zazwyczaj pozwala uniknąć przeskoków między regionami. Zapoznaj się z tematem [usługi według regionów](https://azure.microsoft.com/regions/#services) , aby uzyskać dostęp do Data Factory i przenoszenia danych w regionie.
 
 ### <a name="copy-data-between-cloud-data-stores"></a>Kopiowanie danych między magazynami danych w chmurze
 Gdy magazyny danych źródła i ujścia znajdują się w chmurze, Data Factory używa wdrożenia usługi w regionie, który znajduje się najbliżej ujścia w tej samej lokalizacji geograficznej, aby przenieść dane. Mapę można znaleźć w poniższej tabeli:
@@ -107,7 +107,7 @@ Gdy magazyny danych źródła i ujścia znajdują się w chmurze, Data Factory u
 | Brazylia | Brazylia Południowa | Brazylia Południowa |
 | Europa | Europa Północna | Europa Północna |
 | &nbsp; | Europa Zachodnia | Europa Zachodnia |
-| Zjednoczone Królestwo | Zachodnie Zjednoczone Królestwo | Południowe Zjednoczone Królestwo |
+| Wielka Brytania | Zachodnie Zjednoczone Królestwo | Południowe Zjednoczone Królestwo |
 | &nbsp; | Południowe Zjednoczone Królestwo | Południowe Zjednoczone Królestwo |
 | Azja i Pacyfik | Azja Południowo-Wschodnia | Azja Południowo-Wschodnia |
 | &nbsp; | Azja Wschodnia | Azja Południowo-Wschodnia |
@@ -118,7 +118,7 @@ Gdy magazyny danych źródła i ujścia znajdują się w chmurze, Data Factory u
 | &nbsp; | Indie Południowe | Indie Środkowe |
 | Japonia | Japonia Wschodnia | Japonia Wschodnia |
 | &nbsp; | Japonia Zachodnia | Japonia Wschodnia |
-| Korea Południowa | Korea Środkowa | Korea Środkowa |
+| Korea | Korea Środkowa | Korea Środkowa |
 | &nbsp; | Korea Południowa | Korea Środkowa |
 
 Alternatywnie można jawnie wskazać region usługi Data Factory, który ma być używany do wykonywania kopii, określając właściwość `executionLocation` w obszarze `typeProperties`działania kopiowania. Obsługiwane wartości dla tej właściwości są wymienione w powyższym **regionie używanym do przenoszenia danych** . Zwróć uwagę na to, że dane przechodzą przez ten region przez sieć podczas kopiowania. Na przykład, aby skopiować między sklepami systemu Azure w Korei, można określić, `"executionLocation": "Japan East"` mają być kierowane przez region Japonia (zobacz [przykładowe dane JSON](#by-using-json-scripts) jako odwołanie).
@@ -191,10 +191,10 @@ Harmonogram zdefiniowany w wyjściowym zestawie danych określa, kiedy działa d
 Można określić więcej niż jeden wejściowy zestaw danych do działania kopiowania. Są one używane do weryfikowania zależności przed uruchomieniem działania. Jednak tylko dane z pierwszego zestawu danych są kopiowane do docelowego zestawu danych. Aby uzyskać więcej informacji, zobacz [Planowanie i wykonywanie](data-factory-scheduling-and-execution.md).  
 
 ## <a name="performance-and-tuning"></a>Wydajności i dostosowywanie
-Zobacz [dostrajania przewodnik dotyczący wydajności działania kopiowania i](data-factory-copy-activity-performance.md), która opisuje kluczowe czynniki wpływające na wydajność przenoszenia danych (działanie kopiowania) w usłudze Azure Data Factory. Ponadto Wyświetla zaobserwowanego podczas testowania wewnętrznego i w tym artykule omówiono różne sposoby, aby zoptymalizować wydajność działania kopiowania.
+Zobacz [Przewodnik dotyczący wydajności i dostrajania działania kopiowania](data-factory-copy-activity-performance.md), który opisuje kluczowe czynniki wpływające na wydajność przenoszenia danych (działanie kopiowania) w Azure Data Factory. Ponadto Wyświetla zaobserwowanego podczas testowania wewnętrznego i w tym artykule omówiono różne sposoby, aby zoptymalizować wydajność działania kopiowania.
 
 ## <a name="fault-tolerance"></a>Odporność na uszkodzenia
-Domyślnie działanie kopiowania spowoduje zatrzymanie kopiowania danych i zwrócenie błędu w przypadku wystąpienia niezgodnych danych między źródłem i ujściam; Mimo że można jawnie skonfigurować program, aby pominąć i zarejestrować niezgodne wiersze i skopiować te zgodne dane, aby kopie powiodło się. Zobacz [działania kopiowania odporności na uszkodzenia](data-factory-copy-activity-fault-tolerance.md) na więcej szczegółów.
+Domyślnie działanie kopiowania spowoduje zatrzymanie kopiowania danych i zwrócenie błędu w przypadku wystąpienia niezgodnych danych między źródłem i ujściam; Mimo że można jawnie skonfigurować program, aby pominąć i zarejestrować niezgodne wiersze i skopiować te zgodne dane, aby kopie powiodło się. Zobacz [odporność na błędy działania kopiowania](data-factory-copy-activity-fault-tolerance.md) , aby uzyskać więcej szczegółów.
 
 ## <a name="security-considerations"></a>Zagadnienia związane z zabezpieczeniami
 Zapoznaj się z [zagadnieniami](data-factory-data-movement-security-considerations.md)dotyczącymi zabezpieczeń, które opisują infrastrukturę zabezpieczeń, która w Azure Data Factory używać usług przenoszenia danych w celu zabezpieczania danych.

@@ -16,11 +16,11 @@ ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: dbce2969ccb508c2bf3ee33730d0b112caa45c9e
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033064"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388648"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Migrowanie z Amazon Web Services (AWS) i innych platform do Managed Disks na platformie Azure
 
@@ -54,7 +54,7 @@ Ta sekcja ułatwia podejmowanie najlepszej decyzji na temat maszyn wirtualnych i
 
 Jeśli planujesz migrację z dysków niezarządzanych do usługi Managed disks, należy pamiętać, że użytkownicy z rolą [współautor maszyny wirtualnej](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) nie będą mogli zmienić rozmiaru maszyny wirtualnej (ponieważ mogą one zostać przebudowane). Wynika to z faktu, że maszyny wirtualne z dyskami zarządzanymi wymagają, aby użytkownik miał uprawnienie Microsoft. COMPUTE/disks/Write na dyskach systemu operacyjnego.
 
-### <a name="location"></a>Lokalizacja
+### <a name="location"></a>Location
 
 Wybierz lokalizację, w której usługa Azure Managed Disks jest dostępna. W przypadku migrowania do Managed Disks Premium należy również upewnić się, że Usługa Premium Storage jest dostępna w regionie, w którym planujesz przeprowadzić migrację. Zobacz [usługi platformy Azure według regionów,](https://azure.microsoft.com/regions/#services) Aby uzyskać aktualne informacje dotyczące dostępnych lokalizacji.
 

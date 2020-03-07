@@ -9,11 +9,11 @@ ms.date: 02/21/2020
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 064fcf618914bca31ad9e7e60c76df8f599cd8bf
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77558880"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359242"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Samouczek: wdrażanie i konfigurowanie usługi Azure Firewall w witrynie Azure Portal
 
@@ -52,7 +52,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Najpierw utwórz grupę zasobów zawierającą zasoby wymagane do wdrożenia zapory. Następnie utwórz sieć wirtualną, podsieci i serwery do obsługi testowania.
 
-### <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 Grupa zasobów zawiera wszystkie zasoby wymagane w tym samouczku.
 
@@ -102,7 +102,7 @@ Teraz utwórz maszyny wirtualne przesiadkową i obciążeń, a następnie umieś
 2. Wybierz pozycję **Compute**, a następnie z listy Polecane wybierz pozycję **Windows Server 2016 Datacenter**.
 3. Wprowadź poniższe wartości dla maszyny wirtualnej:
 
-   |Ustawienie  |Wartość  |
+   |Ustawienie  |Value  |
    |---------|---------|
    |Grupa zasobów     |**Test-PD-RG**|
    |Nazwa maszyny wirtualnej     |**SRV — Przeskocz**|
@@ -123,9 +123,9 @@ Teraz utwórz maszyny wirtualne przesiadkową i obciążeń, a następnie umieś
 
 Skorzystaj z informacji podanych w poniższej tabeli, aby skonfigurować inną maszynę wirtualną o nazwie **SRV**. Pozostała część konfiguracji jest taka sama jak w przypadku maszyny wirtualnej Srv-Jump.
 
-|Ustawienie  |Wartość  |
+|Ustawienie  |Value  |
 |---------|---------|
-|Podsieć|**Obciążenie — SN**|
+|Subnet|**Obciążenie — SN**|
 |Publiczny adres IP|**Dawaj**|
 |Publiczne porty wejściowe|**Dawaj**|
 
@@ -138,12 +138,12 @@ Wdróż zaporę w sieci wirtualnej.
 3. Wybierz opcję **Zapora** , a następnie wybierz pozycję **Utwórz**.
 4. Na stronie **Tworzenie zapory** strony skorzystaj z poniższej tabeli, aby skonfigurować zaporę:
 
-   |Ustawienie  |Wartość  |
+   |Ustawienie  |Value  |
    |---------|---------|
-   |Subskrypcja     |\<Twoja subskrypcja\>|
+   |Subscription     |\<Twoja subskrypcja\>|
    |Grupa zasobów     |**Test-PD-RG** |
    |Name (Nazwa)     |**Test-FW01**|
-   |Lokalizacja     |Wybierz tę samą lokalizację, której użyto poprzednio|
+   |Location     |Wybierz tę samą lokalizację, której użyto poprzednio|
    |Wybieranie sieci wirtualnej     |**Użyj istniejącej**: **test-PD-VN**|
    |Publiczny adres IP     |**Dodaj nowy**. Publiczny adres IP musi mieć typ Standardowa jednostka SKU.|
 

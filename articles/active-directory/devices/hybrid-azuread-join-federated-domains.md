@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 28d6e5362df9f41822525af0d256cfd99568d6de
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512134"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377056"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Samouczek: konfigurowanie dołączania hybrydowego do usługi Azure Active Directory dla domen federacyjnych
 
@@ -106,7 +106,7 @@ Aby skonfigurować hybrydowe dołączanie do usługi Azure AD przy użyciu Azure
 
 1. Uruchom Azure AD Connect, a następnie wybierz pozycję **Konfiguruj**.
 
-   ![Zapraszamy!](./media/hybrid-azuread-join-federated-domains/11.png)
+   ![Witaj](./media/hybrid-azuread-join-federated-domains/11.png)
 
 1. Na stronie **dodatkowe zadania** wybierz pozycję **Konfiguruj opcje urządzenia**, a następnie wybierz przycisk **dalej**.
 
@@ -126,7 +126,7 @@ Aby skonfigurować hybrydowe dołączanie do usługi Azure AD przy użyciu Azure
 
 1. Na stronie **SCP** wykonaj następujące czynności, a następnie wybierz przycisk **dalej**:
 
-   ![Punkt połączenia z usługą](./media/hybrid-azuread-join-federated-domains/16.png)
+   ![SCP](./media/hybrid-azuread-join-federated-domains/16.png)
 
    1. Wybierz las.
    1. Wybierz usługę uwierzytelniania. Należy wybrać opcję **AD FS Server** , chyba że organizacja ma wyłącznie klientów z systemem Windows 10 i skonfigurowano synchronizację komputerów/urządzeń lub organizacja używa bezproblemowego logowania jednokrotnego.
@@ -142,7 +142,7 @@ Aby skonfigurować hybrydowe dołączanie do usługi Azure AD przy użyciu Azure
 
 1. Na stronie **gotowy do skonfigurowania** wybierz pozycję **Konfiguruj**.
 
-   ![Wszystko gotowe do skonfigurowania](./media/hybrid-azuread-join-federated-domains/19.png)
+   ![Wszystko gotowe do konfiguracji](./media/hybrid-azuread-join-federated-domains/19.png)
 
 1. Na stronie **Konfiguracja ukończona** wybierz pozycję **Zakończ**.
 
@@ -188,7 +188,7 @@ Korzystając z polecenia cmdlet **Get-MSolDevice** , można sprawdzić szczegó�
 
 **Aby sprawdzić szczegóły usługi**:
 
-1. Uruchom program Windows PowerShell jako administrator.
+1. Otwórz program Windows PowerShell jako administrator.
 1. Wprowadź `Connect-MsolService`, aby nawiązać połączenie z dzierżawcą platformy Azure.  
 1. Wprowadź polecenie `get-msoldevice -deviceId <deviceId>`.
 1. Upewnij się, że opcja **Włączone** ma wartość **Prawda**.
