@@ -15,13 +15,13 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: b7a561907e3f1968eb9adead3606822d7a1321c8
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155626"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381654"
 ---
-# <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>Rozwiązywanie problemów z błędami uwierzytelniania podczas łączenia się z maszyną wirtualną platformy Azure przy użyciu protokołu RDP
+# <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>Rozwiązywanie problemów z uwierzytelnianiem podczas używania protokołu RDP w celu połączenia z maszyną wirtualną platformy Azure
 
 Ten artykuł może pomóc w rozwiązywaniu problemów z błędami uwierzytelniania występującymi w przypadku korzystania z połączenia Remote Desktop Protocol (RDP) w celu nawiązania połączenia z maszyną wirtualną platformy Azure.
 
@@ -202,7 +202,7 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP
 
 Na podstawie wartości rejestru wykonaj następujące kroki:
 
-* 4 (FIPS): Przejdź do [sprawdzenia połączeń algorytmów zgodnych ze standardem FIPs](#fips-compliant).
+* 4 (FIPS): Przejdź do [sprawdzania zgodnych algorytmów FIPS](#fips-compliant).
 
 * 3 (szyfrowanie 128-bitowe): Ustaw ważność na **2** , uruchamiając następujące polecenie:
 
@@ -210,7 +210,7 @@ Na podstawie wartości rejestru wykonaj następujące kroki:
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel /t REG_DWORD /d 2 /f
     ```
 
-* 2 (najwyższe szyfrowanie jest możliwe, zgodnie z podyktowaniem przez klienta): Możesz spróbować ustawić minimalną wartość **1** , uruchamiając następujące polecenie:
+* 2 (najwyższy możliwy do zaszyfrowania, zgodnie z podanym przez klienta): możesz spróbować ustawić szyfrowanie na wartość minimalną **1** , uruchamiając następujące polecenie:
 
     ```cmd
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel /t REG_DWORD /d 1 /f

@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: 19c136c7f312d800b76aa60f2cab6e8da992591c
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
-ms.translationtype: MT
+ms.openlocfilehash: 1d9f148351e4ce12d6f6bcd699cdd74e94ba09ef
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78161571"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356930"
 ---
 # <a name="azure-functions-premium-plan"></a>Plan Azure Functions Premium
 
@@ -65,7 +65,7 @@ Dodatkowe wystąpienia obliczeniowe są automatycznie dodawane do aplikacji przy
 
 ### <a name="longer-run-duration"></a>Dłuższy czas trwania
 
-Azure Functions w planie zużycia są ograniczone do 10 minut w przypadku pojedynczego wykonania.  W planie Premium wartość czasu trwania przebiegu jest domyślnie równa 30 minut, aby uniemożliwić przemijające wykonania. Można jednak [zmodyfikować konfigurację pliku host. JSON](./functions-host-json.md#functiontimeout) w taki sposób, aby 60 minuty dla aplikacji planu Premium.
+Azure Functions w planie zużycia są ograniczone do 10 minut w przypadku pojedynczego wykonania.  W planie Premium wartość czasu trwania przebiegu jest domyślnie równa 30 minut, aby uniemożliwić przemijające wykonania. Można jednak [zmodyfikować konfigurację pliku host. JSON](./functions-host-json.md#functiontimeout) w taki sposób, aby nie były one powiązane z aplikacjami planu Premium (gwarantowane 60 minut).
 
 ## <a name="plan-and-sku-settings"></a>Ustawienia planu i jednostki SKU
 
@@ -88,7 +88,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 Podczas tworzenia lub skalowania planu można wybrać jeden z trzech rozmiarów wystąpień.  Opłaty zostaną naliczone za łączną liczbę rdzeni i zużywaną pamięć na sekundę.  Aplikacja może automatycznie skalować w poziomie do wielu wystąpień stosownie do potrzeb.  
 
-|SKU|Rdzenie|Pamięć|Storage|
+|SKU|Rdzenie|Memory (Pamięć)|Storage|
 |--|--|--|--|
 |EP1|1|3,5 GB|250|
 |EP2|2|7GB|250|
@@ -103,7 +103,7 @@ Na przykład aplikacja funkcji JavaScript jest ograniczona przez domyślny limit
 
 Poniżej znajdują się obecnie obsługiwane regiony dla każdego systemu operacyjnego.
 
-|Region| Windows | Linux |
+|Region| System Windows | Linux |
 |--| -- | -- |
 |Australia Środkowa| ✔<sup>1</sup> | |
 |Australia Środkowa 2| ✔<sup>1</sup> | |

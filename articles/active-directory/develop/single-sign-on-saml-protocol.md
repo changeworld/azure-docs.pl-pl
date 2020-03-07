@@ -18,11 +18,11 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.openlocfilehash: cecb78a82eb2925813bdc7f6df2503fae94b6437
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701403"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375662"
 ---
 # <a name="single-sign-on-saml-protocol"></a>Protokół SAML logowania jednokrotnego
 
@@ -48,12 +48,12 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 
 | Parametr |  | Opis |
 | --- | --- | --- |
-| ID | Wymagane | Usługa Azure AD używa tego atrybutu do wypełniania atrybutu `InResponseTo` zwróconej odpowiedzi. Identyfikator nie może zaczynać się od liczby, więc typową strategią jest dołączenie ciągu takiego jak "ID" do ciągu reprezentującego identyfikator GUID. Na przykład `id6c1c178c166d486687be4aaf5e482730` jest prawidłowym IDENTYFIKATORem. |
-| Wersja | Wymagane | Dla tego parametru należy ustawić wartość **2,0**. |
-| IssueInstant | Wymagane | Jest to ciąg daty i godziny z wartością czasu UTC i [formatem rundy ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx). Usługa Azure AD oczekuje wartości daty i godziny tego typu, ale nie oblicza ani nie używa wartości. |
-| AssertionConsumerServiceUrl | Opcjonalne | Jeśli ta wartość jest określona, ten parametr musi być zgodny z `RedirectUri` usługi w chmurze w usłudze Azure AD. |
-| ForceAuthn | Opcjonalne | Jest to wartość logiczna. W przypadku wartości true oznacza to, że użytkownik zostanie zmuszony do ponownego uwierzytelnienia, nawet jeśli ma prawidłową sesję z usługą Azure AD. |
-| Ispassy | Opcjonalne | Jest to wartość logiczna określająca, czy usługa Azure AD powinna uwierzytelniać użytkownika w trybie dyskretnym, bez interakcji z użytkownikiem, jeśli taki istnieje. Jeśli ta wartość jest równa true, usługa Azure AD podejmie próbę uwierzytelnienia użytkownika przy użyciu pliku cookie sesji. |
+| ID | Wymagany | Usługa Azure AD używa tego atrybutu do wypełniania atrybutu `InResponseTo` zwróconej odpowiedzi. Identyfikator nie może zaczynać się od liczby, więc typową strategią jest dołączenie ciągu takiego jak "ID" do ciągu reprezentującego identyfikator GUID. Na przykład `id6c1c178c166d486687be4aaf5e482730` jest prawidłowym IDENTYFIKATORem. |
+| Wersja | Wymagany | Dla tego parametru należy ustawić wartość **2,0**. |
+| IssueInstant | Wymagany | Jest to ciąg daty i godziny z wartością czasu UTC i [formatem rundy ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx). Usługa Azure AD oczekuje wartości daty i godziny tego typu, ale nie oblicza ani nie używa wartości. |
+| AssertionConsumerServiceUrl | Optional (Opcjonalność) | Jeśli ta wartość jest określona, ten parametr musi być zgodny z `RedirectUri` usługi w chmurze w usłudze Azure AD. |
+| ForceAuthn | Optional (Opcjonalność) | Jest to wartość logiczna. W przypadku wartości true oznacza to, że użytkownik zostanie zmuszony do ponownego uwierzytelnienia, nawet jeśli ma prawidłową sesję z usługą Azure AD. |
+| Ispassy | Optional (Opcjonalność) | Jest to wartość logiczna określająca, czy usługa Azure AD powinna uwierzytelniać użytkownika w trybie dyskretnym, bez interakcji z użytkownikiem, jeśli taki istnieje. Jeśli ta wartość jest równa true, usługa Azure AD podejmie próbę uwierzytelnienia użytkownika przy użyciu pliku cookie sesji. |
 
 Wszystkie inne atrybuty `AuthnRequest`, takie jak zgody, Destination, AssertionConsumerServiceIndex, AttributeConsumerServiceIndex i ProviderName, są **ignorowane**.
 
@@ -99,7 +99,7 @@ Jeśli ta wartość jest określona, nie należy uwzględniać `ProxyCount` atry
 ### <a name="signature"></a>Sygnatura
 Nie dołączaj `Signature` elementu do elementów `AuthnRequest`, ponieważ usługa Azure AD nie obsługuje podpisanych żądań uwierzytelniania.
 
-### <a name="subject"></a>Temat
+### <a name="subject"></a>Podmiot
 Usługa Azure AD ignoruje `Subject` elementu `AuthnRequest` elementów.
 
 ## <a name="response"></a>Odpowiedź
@@ -186,7 +186,7 @@ Timestamp: 2013-03-18 08:49:24Z</samlp:StatusMessage>
   </samlp:Status>
 ```
 
-### <a name="assertion"></a>Asercja
+### <a name="assertion"></a>Twierdz
 
 Oprócz `ID`, `IssueInstant` i `Version`usługa Azure AD ustawia następujące elementy w elemencie `Assertion` odpowiedzi.
 
@@ -210,7 +210,7 @@ Aby wygenerować ten podpis cyfrowy, usługa Azure AD używa klucza podpisywania
     </ds:Signature>
 ```
 
-#### <a name="subject"></a>Temat
+#### <a name="subject"></a>Podmiot
 
 Określa podmiot zabezpieczeń, który jest podmiotem instrukcji w potwierdzeniu. Zawiera element `NameID`, który reprezentuje uwierzytelnionego użytkownika. Wartość `NameID` jest identyfikatorem ukierunkowanym skierowanym tylko do dostawcy usług, który jest odbiorcą dla tokenu. Jest on trwały — można go odwołać, ale nigdy nie jest ponownie przypisywany. Jest on również nieprzezroczysty, w tym, że nie ujawnia żadnych informacji o użytkowniku i nie może być używany jako identyfikator zapytań dotyczących atrybutów.
 
@@ -242,7 +242,7 @@ Atrybuty `NotBefore` i `NotOnOrAfter` określają interwał, w którym potwierdz
 * Wartość atrybutu `NotBefore` jest równa lub nienieco (mniejsza niż sekunda) późniejsza niż wartość atrybutu `IssueInstant` elementu `Assertion`. Usługa Azure AD nie uwzględnia żadnej różnicy czasu między nią a usługą w chmurze (dostawcy usługi) i nie dodaje żadnych buforów do tej godziny.
 * Wartość atrybutu `NotOnOrAfter` wynosi 70 minut później niż wartość atrybutu `NotBefore`.
 
-#### <a name="audience"></a>Odbiorcy
+#### <a name="audience"></a>Grupy odbiorców
 
 Zawiera identyfikator URI, który identyfikuje zamierzone odbiorcy. Usługa Azure AD ustawia wartość tego elementu na wartość `Issuer` elementu `AuthnRequest`, który zainicjował logowanie. Aby oszacować wartość `Audience`, użyj wartości `App ID URI` określonej podczas rejestracji aplikacji.
 

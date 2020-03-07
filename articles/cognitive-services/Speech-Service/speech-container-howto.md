@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: dapine
 ms.openlocfilehash: 5d30693eb13104504d1cf27ffdbfb8d098d4ef9e
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367761"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390815"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Instalowanie i uruchamianie kontenerów usługi mowy (wersja zapoznawcza)
 
@@ -73,25 +73,25 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 W poniższej tabeli opisano minimalne i zalecane alokacje zasobów dla każdego kontenera mowy.
 
-# <a name="speech-to-texttabstt"></a>[Zamiana mowy na tekst](#tab/stt)
+# <a name="speech-to-text"></a>[Zamiana mowy na tekst](#tab/stt)
 
 | Kontener | Minimalne | Zalecane |
 |-----------|---------|-------------|
 | Zamiana mowy na tekst | 2 rdzeń, 2 GB pamięci | 4 rdzenie, 4 GB pamięci |
 
-# <a name="custom-speech-to-texttabcstt"></a>[Custom Speech do tekstu](#tab/cstt)
+# <a name="custom-speech-to-text"></a>[Custom Speech do tekstu](#tab/cstt)
 
 | Kontener | Minimalne | Zalecane |
 |-----------|---------|-------------|
 | Custom Speech do tekstu | 2 rdzeń, 2 GB pamięci | 4 rdzenie, 4 GB pamięci |
 
-# <a name="text-to-speechtabtts"></a>[Zamiana tekstu na mowę](#tab/tts)
+# <a name="text-to-speech"></a>[Zamiana tekstu na mowę](#tab/tts)
 
 | Kontener | Minimalne | Zalecane |
 |-----------|---------|-------------|
 | Zamiana tekstu na mowę | 1 rdzeń, 2 GB pamięci | 2 rdzeń, 3 GB pamięci |
 
-# <a name="custom-text-to-speechtabctts"></a>[Niestandardowa Zamiana tekstu na mowę](#tab/ctts)
+# <a name="custom-text-to-speech"></a>[Niestandardowa Zamiana tekstu na mowę](#tab/ctts)
 
 | Kontener | Minimalne | Zalecane |
 |-----------|---------|-------------|
@@ -110,25 +110,25 @@ Rdzeń i pamięć odpowiadają ustawieniom `--cpus` i `--memory`, które są uż
 
 Obrazy kontenerów dla mowy są dostępne w następujących Container Registry.
 
-# <a name="speech-to-texttabstt"></a>[Zamiana mowy na tekst](#tab/stt)
+# <a name="speech-to-text"></a>[Zamiana mowy na tekst](#tab/stt)
 
 | Kontener | Repozytorium |
 |-----------|------------|
 | Zamiana mowy na tekst | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest` |
 
-# <a name="custom-speech-to-texttabcstt"></a>[Custom Speech do tekstu](#tab/cstt)
+# <a name="custom-speech-to-text"></a>[Custom Speech do tekstu](#tab/cstt)
 
 | Kontener | Repozytorium |
 |-----------|------------|
 | Custom Speech do tekstu | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text:latest` |
 
-# <a name="text-to-speechtabtts"></a>[Zamiana tekstu na mowę](#tab/tts)
+# <a name="text-to-speech"></a>[Zamiana tekstu na mowę](#tab/tts)
 
 | Kontener | Repozytorium |
 |-----------|------------|
 | Zamiana tekstu na mowę | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest` |
 
-# <a name="custom-text-to-speechtabctts"></a>[Niestandardowa Zamiana tekstu na mowę](#tab/ctts)
+# <a name="custom-text-to-speech"></a>[Niestandardowa Zamiana tekstu na mowę](#tab/ctts)
 
 | Kontener | Repozytorium |
 |-----------|------------|
@@ -140,7 +140,7 @@ Obrazy kontenerów dla mowy są dostępne w następujących Container Registry.
 
 ### <a name="docker-pull-for-the-speech-containers"></a>Wypychanie platformy Docker dla kontenerów mowy
 
-# <a name="speech-to-texttabstt"></a>[Zamiana mowy na tekst](#tab/stt)
+# <a name="speech-to-text"></a>[Zamiana mowy na tekst](#tab/stt)
 
 #### <a name="docker-pull-for-the-speech-to-text-container"></a>Wypychanie platformy Docker dla kontenera zamiany mowy na tekst
 
@@ -169,7 +169,7 @@ Następujący tag jest przykładem formatu:
 
 W przypadku wszystkich obsługiwanych ustawień regionalnych kontenera **zamiany mowy na tekst** należy zapoznać się [ze znacznikami obrazu zamiany mowy na tekst](../containers/container-image-tags.md#speech-to-text).
 
-# <a name="custom-speech-to-texttabcstt"></a>[Custom Speech do tekstu](#tab/cstt)
+# <a name="custom-speech-to-text"></a>[Custom Speech do tekstu](#tab/cstt)
 
 #### <a name="docker-pull-for-the-custom-speech-to-text-container"></a>Wypychanie platformy Docker dla kontenera Custom Speech-to-Text
 
@@ -182,7 +182,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-spee
 > [!NOTE]
 > `locale` i `voice` niestandardowych kontenerów mowy jest określany przez model niestandardowy pozyskiwany przez kontener.
 
-# <a name="text-to-speechtabtts"></a>[Zamiana tekstu na mowę](#tab/tts)
+# <a name="text-to-speech"></a>[Zamiana tekstu na mowę](#tab/tts)
 
 #### <a name="docker-pull-for-the-text-to-speech-container"></a>Wypychanie platformy Docker dla kontenera zamiany tekstu na mowę
 
@@ -214,7 +214,7 @@ W przypadku wszystkich obsługiwanych ustawień regionalnych i odpowiadających 
 > [!IMPORTANT]
 > Podczas konstruowania standardowego wpisu http zamiany *tekstu na mowę* , komunikat [SSML (Speech synteza Markup Language)](speech-synthesis-markup.md) wymaga elementu `voice` z atrybutem `name`. Wartość jest odpowiednimi ustawieniami regionalnymi kontenera i głosem, znanym również jako ["krótka nazwa"](language-support.md#standard-voices). Na przykład tag `latest` ma nazwę głosu `en-US-JessaRUS`.
 
-# <a name="custom-text-to-speechtabctts"></a>[Niestandardowa Zamiana tekstu na mowę](#tab/ctts)
+# <a name="custom-text-to-speech"></a>[Niestandardowa Zamiana tekstu na mowę](#tab/ctts)
 
 #### <a name="docker-pull-for-the-custom-text-to-speech-container"></a>Wypychanie platformy Docker dla niestandardowego kontenera zamiany tekstu na mowę
 
@@ -240,7 +240,7 @@ Gdy kontener znajduje się na [komputerze hosta](#the-host-computer), użyj nast
 
 Użyj polecenia [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) , aby uruchomić kontener. Zapoznaj się z tematem [zbieranie wymaganych parametrów](#gathering-required-parameters) , aby uzyskać szczegółowe informacje na temat pobierania wartości `{Endpoint_URI}` i `{API_Key}`. Dodatkowe [przykłady](speech-container-configuration.md#example-docker-run-commands) polecenia `docker run` są również dostępne.
 
-# <a name="speech-to-texttabstt"></a>[Zamiana mowy na tekst](#tab/stt)
+# <a name="speech-to-text"></a>[Zamiana mowy na tekst](#tab/stt)
 
 Aby uruchomić kontener *zamiany mowy na tekst* , wykonaj następujące `docker run` polecenie.
 
@@ -259,7 +259,7 @@ To polecenie:
 * Udostępnia port TCP 5000 i przydziela pseudo-TTY dla kontenera.
 * Automatycznie usuwa kontener po zakończeniu. Obraz kontenera jest nadal dostępny na komputerze-hoście.
 
-# <a name="custom-speech-to-texttabcstt"></a>[Custom Speech do tekstu](#tab/cstt)
+# <a name="custom-speech-to-text"></a>[Custom Speech do tekstu](#tab/cstt)
 
 Kontener *Custom Speech do tekstu* opiera się na niestandardowym modelu mowy. Model niestandardowy musi być [szkolony](how-to-custom-speech-train-model.md) przy użyciu [portalu mowy niestandardowej](https://speech.microsoft.com/customspeech).
 
@@ -311,7 +311,7 @@ To polecenie:
 * Jeśli model niestandardowy został wcześniej pobrany, `ModelId` jest ignorowany.
 * Automatycznie usuwa kontener po zakończeniu. Obraz kontenera jest nadal dostępny na komputerze-hoście.
 
-# <a name="text-to-speechtabtts"></a>[Zamiana tekstu na mowę](#tab/tts)
+# <a name="text-to-speech"></a>[Zamiana tekstu na mowę](#tab/tts)
 
 Aby uruchomić kontener *zamiany tekstu na mowę* , wykonaj następujące `docker run` polecenie.
 
@@ -330,7 +330,7 @@ To polecenie:
 * Udostępnia port TCP 5000 i przydziela pseudo-TTY dla kontenera.
 * Automatycznie usuwa kontener po zakończeniu. Obraz kontenera jest nadal dostępny na komputerze-hoście.
 
-# <a name="custom-text-to-speechtabctts"></a>[Niestandardowa Zamiana tekstu na mowę](#tab/ctts)
+# <a name="custom-text-to-speech"></a>[Niestandardowa Zamiana tekstu na mowę](#tab/ctts)
 
 *Niestandardowy kontener zamiany tekstu na mowę* zależy od niestandardowego modelu głosu. Model niestandardowy musi być [szkolony](how-to-custom-voice-create-voice.md) przy użyciu [niestandardowego portalu głosowego](https://aka.ms/custom-voice-portal). Niestandardowy **Identyfikator modelu** głosu jest wymagany do uruchomienia kontenera. Można je znaleźć na stronie **uczenie** niestandardowego portalu głosowego. W portalu niestandardowego programu Voice przejdź do strony **szkoleń** i wybierz model.
 <br>

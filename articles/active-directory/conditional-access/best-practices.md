@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ccfbb31c29b9e240a4865c8d7d98d7b6af00d1fd
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963940"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377575"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Najlepsze rozwiązania dotyczące dostępu warunkowego w Azure Active Directory
 
@@ -35,7 +35,7 @@ Podczas tworzenia nowych zasad nie wybrano żadnych użytkowników, grup, aplika
 
 Aby zasady działały, należy skonfigurować:
 
-| Elementy           | Jak                                  | Zalet |
+| Elementy           | Jaka                                  | Zalet |
 | :--            | :--                                  | :-- |
 | **Aplikacje w chmurze** |Wybierz co najmniej jedną aplikację.  | Celem zasad dostępu warunkowego jest umożliwienie kontroli nad sposobem, w jaki autoryzowani użytkownicy mogą uzyskiwać dostęp do aplikacji w chmurze.|
 | **Użytkownicy i grupy** | Wybierz co najmniej jednego użytkownika lub grupę, która ma uprawnienia dostępu do wybranych aplikacji w chmurze. | Zasady dostępu warunkowego, które nie mają przypisanych użytkowników i grup, nigdy nie są wyzwalane. |
@@ -141,7 +141,7 @@ Rozważ Migrowanie zasad, które nie zostały utworzone w Azure Portal, poniewa�
 - Można zarządzać wszystkimi zasadami dostępu warunkowego w jednej centralnej lokalizacji.
 - Klasyczny portal Azure został wycofany.   
 
-Aby uzyskać więcej informacji, zobacz artykuł [Migrate classic policies in the Azure portal (Migrowanie zasad klasycznych w witrynie Azure Portal)](policy-migration.md).
+Aby uzyskać więcej informacji, zobacz [Migrowanie zasad klasycznych w Azure Portal](policy-migration.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

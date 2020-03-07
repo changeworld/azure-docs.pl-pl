@@ -4,11 +4,11 @@ description: Omówienie Azure Resource Health
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.openlocfilehash: 5609c7f09dc81a54a941dea391c0d717ad4bb06a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75356796"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379958"
 ---
 # <a name="resource-health-overview"></a>Przegląd Resource Health
  
@@ -26,7 +26,7 @@ Aby uzyskać więcej informacji na temat oceny kondycji, zobacz listę typów za
 
 Kondycja zasobu jest wyświetlana jako jeden z następujących stanów.
 
-### <a name="available"></a>Dostępna
+### <a name="available"></a>Dostępne
 
 *Dostępne* oznacza, że nie wykryto zdarzeń, które mają wpływ na kondycję zasobu. W przypadku, gdy zasób odzyskał sprawność z nieplanowanego przestoju w ciągu ostatnich 24 godzin, zobaczysz powiadomienie "ostatnio rozwiązane".
 
@@ -60,7 +60,7 @@ W przypadku wystąpienia problemów z zasobem *nieznany* stan kondycji może ozn
 
 ![Stan * nieznane * dla maszyny wirtualnej](./media/resource-health-overview/Unknown.png)
 
-### <a name="degraded"></a>Obniżona wydajność
+### <a name="degraded"></a>Zdegradowany
 
 *Zdegradowane* oznacza, że zasób wykrył utratę wydajności, chociaż nadal jest dostępny do użycia.
 
@@ -80,7 +80,7 @@ Możesz uzyskać dostęp do 14 dni historii w sekcji **historia kondycji** Resou
 
 ![Lista zdarzeń Resource Health w ciągu ostatnich dwóch tygodni](./media/resource-health-overview/history-blade.png)
 
-## <a name="get-started"></a>Rozpocznij
+## <a name="get-started"></a>Rozpoczynanie pracy
 
 Aby otworzyć Resource Health dla jednego zasobu:
 

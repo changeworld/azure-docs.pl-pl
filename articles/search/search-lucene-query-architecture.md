@@ -9,15 +9,15 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: d46d0309b3d2ffb638016e88ba022e49009eedf2
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793552"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379759"
 ---
 # <a name="how-full-text-search-works-in-azure-cognitive-search"></a>Jak działa wyszukiwanie pełnotekstowe na platformie Azure Wyszukiwanie poznawcze
 
-Ten artykuł jest przeznaczony dla deweloperów, którzy potrzebują bardziej szczegółowego wglądu w sposób działania wyszukiwania pełnotekstowego w usłudze Azure Wyszukiwanie poznawcze. W przypadku zapytań tekstowych usługa Azure Wyszukiwanie poznawcze bezproblemowo dostarcza oczekiwane wyniki w większości scenariuszy, ale czasami może zostać wyświetlony wynik "off". W takich sytuacjach posiadanie tła w czterech etapach wykonywania zapytań Lucene (analizowanie zapytań, analiza leksykalna, dopasowywanie dokumentów, ocenianie) może ułatwić identyfikację konkretnych zmian parametrów zapytania lub konfiguracji indeksu, które będą dostarczać odpowiednie wynikiem. 
+Ten artykuł jest przeznaczony dla deweloperów, którzy potrzebują bardziej szczegółowego wglądu w sposób działania wyszukiwania pełnotekstowego w usłudze Azure Wyszukiwanie poznawcze. W przypadku zapytań tekstowych usługa Azure Cognitive Search zwraca oczekiwane wyniki w większości scenariuszy, okazjonalnie jednak możesz otrzymywać wyniki, które wydają się w jakiś sposób „nieprawidłowe”. W takiej sytuacji wiedza na temat czterech etapów wykonywania zapytań Lucene (analizowanie zapytania, analiza leksykalna, dopasowywanie dokumentów i ocenianie) może pomóc w określeniu, jakie zmiany parametrów zapytania lub konfiguracji indeksu umożliwią uzyskanie oczekiwanych wyników. 
 
 > [!Note] 
 > Usługa Azure Wyszukiwanie poznawcze używa Lucene do wyszukiwania pełnotekstowego, ale integracja z usługą Lucene nie jest wyczerpująca. Selektywnie uwidaczniamy i rozszerzył funkcję Lucene, aby umożliwić scenariuszom ważne dla platformy Azure Wyszukiwanie poznawcze. 
@@ -251,7 +251,7 @@ Jest to typowy, ale nie jest wymagany, aby używać tych samych analizatorów dl
 
 Powracamy do naszego przykładu dla pola **title** indeks odwrócony wygląda następująco:
 
-| Okres obowiązywania Umowy | Lista dokumentów |
+| Okres | Lista dokumentów |
 |------|---------------|
 | atman | 1 |
 | sekwencje | 2 |
@@ -265,31 +265,31 @@ W polu title tylko *Hotel* pojawia się w dwóch dokumentach: 1, 3.
 
 W przypadku pola **Description** indeks jest następujący:
 
-| Okres obowiązywania Umowy | Lista dokumentów |
+| Okres | Lista dokumentów |
 |------|---------------|
 | dmuchaw | 3
-| oraz | 4
+| i | 4
 | sekwencje | 1
 | przygotować | 3
-| potrafisz | 3
+| comfortable | 3
 | odległość | 1
 | Wyspa | 2
-| kaua ʻ i | 2
+| kauaʻi | 2
 | znajduje | 2
 | szerokości | 2
 | utworzeniu | 1, 2, 3
 | z | 2
-| z |2
-| otoczeniu | 4
+| włączone |2
+| quiet | 4
 | natrysk  | 1, 3
 | secluded | 4
 | zejście | 2
 | spacious | 1
 | względem zasobu | 1, 2
 | na | 1
-| wyświetl | 1, 2, 3
+| widok | 1, 2, 3
 | wykorzystaniem | 1
-| się | 3
+| with | 3
 
 
 **Pasujące terminy zapytania względem indeksowanych terminów**
@@ -391,9 +391,9 @@ W tym artykule zbadano wyszukiwanie pełnotekstowe w kontekście usługi Azure W
 
 + [Skonfiguruj Niestandardowe analizatory](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search) dla minimalnej ilości przetwarzania lub wyspecjalizowanego przetwarzania dla określonych pól.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
-[Interfejs API REST dokumentów wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
+[Interfejs API REST wyszukiwania dokumentów](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
 
 [Prosta składnia zapytań](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) 
 

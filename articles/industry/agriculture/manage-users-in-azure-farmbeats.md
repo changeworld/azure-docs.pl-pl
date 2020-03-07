@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 12/02/2019
 ms.author: v-umha
 ms.openlocfilehash: 208a302a0702a5c4de4d194c9e72f562aaf758c4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75482298"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392732"
 ---
 # <a name="manage-users"></a>Zarządzanie użytkownikami
 
@@ -67,7 +67,7 @@ Aby usunąć użytkowników z systemu Azure FarmBeats:
 
 Aby dodać użytkowników do usługi Azure AD, wykonaj następujące czynności:
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Azure portal](https://portal.azure.com/).
 2. W prawym górnym rogu wybierz swoje konto, a następnie przejdź do dzierżawy usługi Azure AD, która jest skojarzona z FarmBeats.
 3. Wybierz **Azure Active Directory** > **użytkowników**.
 
