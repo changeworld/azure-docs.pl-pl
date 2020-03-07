@@ -15,11 +15,11 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 40db6e9f429569bc19641aa5f0f371f287db7b18
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77158030"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356648"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Usługa Azure Event Hubs — odzyskiwanie po awarii geograficznie 
 
@@ -57,10 +57,10 @@ Obsługiwane są następujące kombinacje podstawowych i pomocniczych przestrzen
 
 | Podstawowa przestrzeń nazw | Pomocnicza przestrzeń nazw | Obsługiwane | 
 | ----------------- | -------------------- | ---------- |
-| Standard | Standard | Yes | 
-| Standard | Dedykowane | Yes | 
-| Dedykowane | Dedykowane | Yes | 
-| Dedykowane | Standard | Nie | 
+| Standardowa (Standard) | Standardowa (Standard) | Yes | 
+| Standardowa (Standard) | Dedykowany | Yes | 
+| Dedykowany | Dedykowany | Yes | 
+| Dedykowany | Standardowa (Standard) | Nie | 
 
 > [!NOTE]
 > Nie można sparować przestrzeni nazw, które znajdują się w tym samym dedykowanym klastrze. Można sparować przestrzenie nazw, które znajdują się w osobnych klastrach. 

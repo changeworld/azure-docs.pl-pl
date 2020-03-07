@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 9d86fa9bfe9c17867b8a30519b79d9ee8c5af363
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931999"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358581"
 ---
 # <a name="data-management-gateway"></a>Brama zarządzania danymi
 > [!NOTE]
@@ -37,7 +37,7 @@ Bramę zarządzania danymi można skalować w poziomie, kojarząc wiele maszyn l
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 ### <a name="capabilities-of-data-management-gateway"></a>Możliwości bramy zarządzania danymi
 Brama zarządzania danymi zapewnia następujące możliwości:
 
@@ -97,7 +97,7 @@ Bramę zarządzania danymi można zainstalować w następujący sposób:
 4. Na stronie **powitalnej** wybierz **Język** , a następnie kliknij przycisk **dalej**.
 5. **Zaakceptuj** umowę licencyjną użytkownika oprogramowania i kliknij przycisk **dalej**.
 6. Wybierz **folder** , aby zainstalować bramę, a następnie kliknij przycisk **dalej**.
-7. Na **gotowe do zainstalowania** kliknij **zainstalować**.
+7. Na stronie **gotowy do instalacji** kliknij przycisk **Zainstaluj**.
 8. Kliknij przycisk **Zakończ** , aby zakończyć instalację.
 9. Pobierz klucz z Azure Portal. Instrukcje krok po kroku znajdują się w następnej sekcji.
 10. Na stronie **Rejestrowanie bramy** **Zarządzanie danymi bramy Configuration Manager** uruchomionej na maszynie wykonaj następujące czynności:
@@ -364,11 +364,11 @@ Poniższa tabela zawiera opisy kolumn na liście **węzły bramy** :
 
 Właściwość monitorowania | Opis
 :------------------ | :----------
-Nazwa | Nazwa bramy logicznej i węzłów skojarzonych z bramą. Węzeł to lokalna maszyna z systemem Windows, na której zainstalowano bramę. Aby uzyskać informacje na temat posiadania więcej niż jednego węzła (do czterech węzłów) w jednej bramie logicznej, zobacz [Zarządzanie danymi Gateway — wysoka dostępność i skalowalność](data-factory-data-management-gateway-high-availability-scalability.md).
+Name (Nazwa) | Nazwa bramy logicznej i węzłów skojarzonych z bramą. Węzeł to lokalna maszyna z systemem Windows, na której zainstalowano bramę. Aby uzyskać informacje na temat posiadania więcej niż jednego węzła (do czterech węzłów) w jednej bramie logicznej, zobacz [Zarządzanie danymi Gateway — wysoka dostępność i skalowalność](data-factory-data-management-gateway-high-availability-scalability.md).
 Stan | Stan bramy logicznej i węzłów bramy. Przykład: online/offline/Limited/itd. Aby uzyskać informacje o tych Stanach, zobacz sekcję [stan bramy](#gateway-status) .
 Wersja | Pokazuje wersję bramy logicznej i każdego węzła bramy. Wersja bramy logicznej jest określana na podstawie wersji większości węzłów w grupie. Jeśli w instalatorze bramy logicznej istnieją węzły z różnymi wersjami, poprawne jest tylko te węzły, które mają ten sam numer wersji, co funkcja bramy logicznej. Inne są w trybie ograniczonym i muszą zostać ręcznie zaktualizowane (tylko w przypadku niepowodzenia aktualizacji w przypadku awarii).
 Dostępna pamięć | Dostępna pamięć w węźle bramy. Ta wartość jest migawką niemal w czasie rzeczywistym.
-Użycie procesora CPU | Użycie procesora CPU przez węzeł bramy. Ta wartość jest migawką niemal w czasie rzeczywistym.
+Wykorzystanie procesora | Użycie procesora CPU przez węzeł bramy. Ta wartość jest migawką niemal w czasie rzeczywistym.
 Sieć (do/z) | Użycie sieci przez węzeł bramy. Ta wartość jest migawką niemal w czasie rzeczywistym.
 Zadania współbieżne (uruchomione/ograniczone) | Liczba zadań lub zadań uruchomionych w każdym węźle. Ta wartość jest migawką niemal w czasie rzeczywistym. Wartość Ogranicz oznacza maksymalne zadania współbieżne dla każdego węzła. Ta wartość jest definiowana w zależności od rozmiaru maszyny. Można zwiększyć limit skalowania w górę współbieżnego wykonywania zadań w zaawansowanych scenariuszach, w przypadku których wykorzystanie procesora CPU/pamięci/sieci jest używane, ale działania mają limit czasu. Ta funkcja jest również dostępna w przypadku bramy z jednym węzłem (nawet wtedy, gdy funkcja skalowalności i dostępności nie jest włączona).
 Rola | Istnieją dwa typy ról w ramach wielowęzłowej bramy i procesu roboczego. Wszystkie węzły są pracownikami, co oznacza, że mogą być używane do wykonywania zadań. Istnieje tylko jeden węzeł dyspozytora, który jest używany do ściągania zadań/zadań z usług w chmurze i wysyłania ich do różnych węzłów procesu roboczego (w tym samego siebie).
@@ -380,20 +380,20 @@ W poniższej tabeli przedstawiono możliwe stany **węzła bramy**:
 
 Stan  | Komentarze/scenariusze
 :------- | :------------------
-Online | Węzeł połączony z usługą Data Factory.
-W trybie offline | Węzeł jest w trybie offline.
+Sieci | Węzeł połączony z usługą Data Factory.
+Taśma | Węzeł jest w trybie offline.
 Uaktualnianie | Węzeł jest aktualizowany w sposób autouzupełniania.
-Ograniczone | Z powodu problemu z łącznością. Może to być spowodowane problemem z portem HTTP 8050, problemem z łącznością usługi Service Bus lub problemem z synchronizacją poświadczeń.
-Nieaktywna | Węzeł jest w konfiguracji innej niż Konfiguracja innych węzłów większości.<br/><br/> Węzeł może być nieaktywny, jeśli nie może połączyć się z innymi węzłami.
+Separator | Z powodu problemu z łącznością. Może to być spowodowane problemem z portem HTTP 8050, problemem z łącznością usługi Service Bus lub problemem z synchronizacją poświadczeń.
+Nieaktywne | Węzeł jest w konfiguracji innej niż Konfiguracja innych węzłów większości.<br/><br/> Węzeł może być nieaktywny, jeśli nie może połączyć się z innymi węzłami.
 
 W poniższej tabeli przedstawiono możliwe stany **bramy logicznej**. Stan bramy zależy od stanu węzłów bramy.
 
 Stan | Komentarze
 :----- | :-------
 Wymaga rejestracji | Żaden węzeł nie jest jeszcze zarejestrowany w tej bramie logicznej
-Online | Węzły bramy są w trybie online
-W trybie offline | Brak węzła w stanie online.
-Ograniczone | Nie wszystkie węzły w tej bramie są w dobrej kondycji. Ten stan jest ostrzeżeniem, że niektóre węzły mogą być wyłączone. <br/><br/>Może to być spowodowane problemem z synchronizacją poświadczeń w węźle dyspozytora/proces roboczy.
+Sieci | Węzły bramy są w trybie online
+Taśma | Brak węzła w stanie online.
+Separator | Nie wszystkie węzły w tej bramie są w dobrej kondycji. Ten stan jest ostrzeżeniem, że niektóre węzły mogą być wyłączone. <br/><br/>Może to być spowodowane problemem z synchronizacją poświadczeń w węźle dyspozytora/proces roboczy.
 
 ## <a name="scale-up-gateway"></a>Skalowanie bramy w górę
 Można skonfigurować liczbę **współbieżnych zadań przenoszenia danych** , które mogą być uruchamiane w węźle w celu skalowania w górę możliwości przenoszenia danych między lokalnymi i magazynami danych w chmurze.

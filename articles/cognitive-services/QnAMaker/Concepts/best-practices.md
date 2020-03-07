@@ -4,11 +4,11 @@ description: Używania tych najlepszych rozwiązań, aby usprawnić bazy wiedzy 
 ms.topic: conceptual
 ms.date: 02/15/2020
 ms.openlocfilehash: fb935aeed7b492a3a0c213d6d7166bd5d80144c1
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77370101"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389350"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Najlepsze rozwiązania wiedzy usługi QnA Maker
 
@@ -102,7 +102,7 @@ Domyślnie QnA Maker przeszukuje pytania i odpowiedzi. Jeśli chcesz przeszukiwa
 ### <a name="add-alternate-questions"></a>Dodaj alternatywne pytania
 [Alternatywne pytania](../How-To/edit-knowledge-base.md) zwiększają prawdopodobieństwo dopasowania do zapytania użytkownika. Alternatywne pytania są przydatne, gdy istnieje wiele sposobów, w którym może zostać wyświetlony monit tego samego zapytania. Może to obejmować zmiany zdania struktury i style programu word.
 
-|Oryginalne zapytanie|Alternatywnych zapytań|Change|
+|Oryginalne zapytanie|Alternatywnych zapytań|Zmiana|
 |--|--|--|
 |Jest parkowania dostępne?|Czy masz park samochodu?|Struktura zdania|
  |Witaj|Yo<br>Hej tam!|Styl programu Word lub żargonu|
@@ -118,7 +118,7 @@ W przypadku niektórych rodzajów synonimów w języku angielskim należy użyć
 
 |Oryginalny programu word|Synonimy|
 |--|--|
-|Kup|kup<br>Sieć — bankowość<br>Bankowość netto|
+|Kup|zakup<br>Sieć — bankowość<br>Bankowość netto|
 
 ### <a name="use-distinct-words-to-differentiate-questions"></a>Użyj unikatowych słów, aby odróżnić pytania
 Algorytm klasyfikacji QnA Maker, który pasuje do zapytania użytkownika z pytaniem w bazie wiedzy, najlepiej sprawdza się, jeśli każde pytanie odniesie się do różnych potrzeb. Powtórzenie tego samego wyrazu ustawiony między pytania zmniejsza prawdopodobieństwo, że wybrano prawidłowej odpowiedzi dla danego użytkownika zapytania za pomocą tych słów.

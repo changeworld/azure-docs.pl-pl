@@ -4,11 +4,11 @@ description: Dowiedz się, jak utworzyć szablon Menedżer zasobów dla klastra 
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.openlocfilehash: a00f2bc505acd89d9fb9488565b6235bf7d146ba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463249"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396643"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Tworzenie szablonu Menedżer zasobów klastra Service Fabric
 
@@ -252,12 +252,12 @@ Teraz, gdy masz szablon klastra, Dowiedz się, jak [wdrożyć klaster na platfor
 
 Aby dowiedzieć się więcej o składni i właściwościach JSON dla zasobów wdrożonych w tym artykule, zobacz:
 
-* [Microsoft.ServiceFabric/clusters](/azure/templates/microsoft.servicefabric/clusters)
-* [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
+* [Microsoft. servicefabric/klastry](/azure/templates/microsoft.servicefabric/clusters)
+* [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
 * [Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
-* [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
-* [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)
-* [Microsoft.Compute/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets)
+* [Microsoft. Network/adresów publicipaddress](/azure/templates/microsoft.network/publicipaddresses)
+* [Microsoft. Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)
+* [Microsoft. COMPUTE/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets)
 
 <!-- Links -->
 [service-fabric-cluster-security]: service-fabric-cluster-security.md

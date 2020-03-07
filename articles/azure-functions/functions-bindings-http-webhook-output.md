@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: a25658677e436edf4d001599bb4981f527016596
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210907"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356065"
 ---
 # <a name="azure-functions-http-output-bindings"></a>Azure Functions powiązania wyjściowe HTTP
 
@@ -27,8 +27,8 @@ W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane
 
 |Właściwość  |Opis  |
 |---------|---------|
-| **type** |musi być ustawiony na `http`. |
-| **direction** | musi być ustawiony na `out`. |
+| **type** |Musi być ustawiony na `http`. |
+| **direction** | Musi być ustawiony na `out`. |
 | **Nazwij** | Nazwa zmiennej używana w kodzie funkcji dla odpowiedzi lub `$return` do używania wartości zwracanej. |
 
 ## <a name="usage"></a>Sposób użycia

@@ -6,11 +6,11 @@ ms.author: dekapur
 ms.date: 11/28/2018
 ms.topic: conceptual
 ms.openlocfilehash: 0fb65ceeabca9331130083f8ec5b3fe8acce13b8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461891"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391892"
 ---
 # <a name="set-up-service-fabric-mesh-cli"></a>Konfigurowanie interfejsu wiersza polecenia usługi Service Fabric Mesh
 Interfejs wiersza polecenia usługi Service Fabric Mesh jest wymagany do wdrażania zasobów i zarządzania nimi lokalnie oraz w usłudze Azure Service Fabric Mesh. Poniżej przedstawiono sposób konfigurowania tego programu.
@@ -52,7 +52,7 @@ Aby korzystać z interfejsu wiersza polecenia programu Maven, na maszynie muszą
 
 * [Java](https://www.azul.com/downloads/zulu/)
 * [Maven](https://maven.apache.org/download.cgi)
-* [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+* [Usługa Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 * Interfejs wiersza polecenia usługi Azure Mesh (az mesh) — pod kątem usługi Azure Service Fabric Mesh 
 * Interfejs SFCTL (sfctl) — pod kątem klastrów lokalnych 
 

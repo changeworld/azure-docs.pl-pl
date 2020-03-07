@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: ad816f39dd4182dfa41fca975c99824a5d77f860
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961302"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395013"
 ---
 # <a name="about-site-recovery-components-configuration-process-master-target"></a>Informacje o składnikach Site Recovery (Konfiguracja, proces, główny cel)
 

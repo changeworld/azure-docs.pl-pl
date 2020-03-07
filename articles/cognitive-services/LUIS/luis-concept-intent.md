@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: diberry
 ms.openlocfilehash: 309a2592dbac2918aeb532fbe91e33d296f4e5a5
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280885"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393770"
 ---
 # <a name="intents-in-your-luis-app"></a>Intencje w aplikacji LUIS
 
@@ -29,7 +29,7 @@ Przeznaczeniu podróży   |   Przykładowe wypowiedzi   |
  BookFlight     |   "Zarezerwuj mnie lot Rio w następnym tygodniu" <br/> "Podnoszenia mnie do Rio na 24th" <br/> "Potrzebuję bilet płaszczyzny niedzielę dalej do Rio de Janeiro"    |
  Powitanie     |   "Hi" <br/>"Hello" <br/>"Good morning"  |
  CheckWeather | "Co to jest dane takie jak pogody w Bostonie?" <br/> "Pokaż prognozy dla tego weekend" |
- Brak         | "Dostać się ze mną przepisu plik cookie"<br>"Czy Lakers wygrać?" |
+ None         | "Dostać się ze mną przepisu plik cookie"<br>"Czy Lakers wygrać?" |
 
 Wszystkie aplikacje są dostarczane ze wstępnie zdefiniowanym zamiarem "[none](#none-intent)", który jest zamiarem alternatywnym. 
 

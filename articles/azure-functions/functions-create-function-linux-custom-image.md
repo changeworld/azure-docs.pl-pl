@@ -5,12 +5,12 @@ ms.date: 01/15/2020
 ms.topic: tutorial
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: c7c9e66e302c2c4181e6249555a7eaaafcc0a960
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 8c074c677c645dd03e3cf5288d82aa3e65720e8b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78272697"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356162"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Tworzenie funkcji w systemie Linux przy użyciu kontenera niestandardowego
 
@@ -339,8 +339,9 @@ Aplikacja funkcji na platformie Azure zarządza wykonywaniem funkcji w Twoim pla
 
     ```azurecli
     az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv
+    ```
     
-1. Add this setting to the function app by using the [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) command. In the following command, replace `<app_name>` with the name of your function app, and replace `<connection_string>` with the connection string from the previous step (a long encoded string that begins with "DefaultEndpointProtocol="):
+1. Dodaj to ustawienie do aplikacji funkcji przy użyciu polecenia [AZ functionapp config AppSettings Set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) . W poniższym poleceniu Zastąp `<app_name>` nazwą swojej aplikacji funkcji i Zastąp `<connection_string>` parametrami połączenia z poprzedniego kroku (długi zakodowany ciąg zaczynający się od "DefaultEndpointProtocol ="):
  
     ```azurecli
     az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=<connection_string>

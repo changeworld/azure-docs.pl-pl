@@ -7,19 +7,19 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: cbd171e10cc1a8b27de98d9d4d779f345ac5a3ed
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754911"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78371605"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Partycjonowanie i skalowanie w poziomie Azure Cosmos DB
 
-W tym artykule opisano partycje fizyczne i logiczne w Azure Cosmos DB. Omówiono w nim również najlepsze rozwiązania dotyczące skalowania i partycjonowania. 
+W tym artykule opisano partycje fizyczne i logiczne w usłudze Azure Cosmos DB. Omówiono w nim również najlepsze rozwiązania dotyczące skalowania i partycjonowania. 
 
 ## <a name="logical-partitions"></a>Partycje logiczne
 
-Partycja logiczna składa się z zestawu elementów, które mają ten sam klucz partycji. Na przykład w kontenerze, w którym wszystkie elementy zawierają Właściwość `City`, można użyć `City` jako klucza partycji dla kontenera. Grupy elementów, które mają określone wartości `City`, takie jak `London`, `Paris` i `NYC`, tworzą odrębne partycje logiczne. Nie musisz martwić się o usunięcie partycji, gdy dane podstawowe są usuwane.
+Partycja logiczna składa się z zestawu elementów, które mają ten sam klucz partycji. Na przykład w kontenerze, w którym wszystkie elementy zawierają Właściwość `City`, można użyć `City` jako klucza partycji dla kontenera. Grupy elementów, które mają określone wartości `City`, takie jak `London`, `Paris`i `NYC`, tworzą odrębne partycje logiczne. Nie musisz martwić się o usunięcie partycji, gdy dane podstawowe są usuwane.
 
 W Azure Cosmos DB kontener jest podstawową jednostką skalowalności. Dane dodawane do kontenera i przepływność, które są inicjowane w kontenerze, są automatycznie (w poziomie) partycjonowane w zestawie partycji logicznych. Dane i przepływność są partycjonowane na podstawie klucza partycji określonego dla kontenera usługi Azure Cosmos. Aby uzyskać więcej informacji, zobacz [Tworzenie kontenera usługi Azure Cosmos](how-to-create-container.md).
 

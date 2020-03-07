@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 713217a933c646cc4d04759f5697bbc0312827ce
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823397"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360452"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Dokumentacja zarządzanego interfejsu API dla Azure SQL Database wystąpień zarządzanych
 
@@ -72,7 +72,7 @@ Aby tworzyć wystąpienia zarządzane i zarządzać nimi za pomocą [interfejsu 
 Aby utworzyć bazę danych wystąpienia i zarządzać nią po utworzeniu wystąpienia zarządzanego, użyj następujących poleceń języka T-SQL. Te polecenia można wydać przy użyciu Azure Portal [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio), [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is). [Visual Studio Code](https://code.visualstudio.com/docs)lub dowolnego innego programu, który może nawiązać połączenie z serwerem Azure SQL Database i przekazać polecenia języka Transact-SQL.
 
 > [!TIP]
-> Przewodniki Szybki Start przedstawiające Konfigurowanie i nawiązywanie połączenia z wystąpieniem zarządzanym przy użyciu SQL Server Management Studio w systemie Microsoft Windows można znaleźć w artykule [Szybki Start: Konfigurowanie maszyny wirtualnej platformy Azure w celu nawiązania połączenia z wystąpieniem zarządzanym Azure SQL Database](sql-database-managed-instance-configure-vm.md) i [Szybki Start: Skonfiguruj połączenie punkt-lokacja z wystąpieniem zarządzanym Azure SQL Database z lokalnego](sql-database-managed-instance-configure-p2s.md).
+> Przewodniki Szybki Start przedstawiające Konfigurowanie i nawiązywanie połączenia z wystąpieniem zarządzanym przy użyciu SQL Server Management Studio w systemie Microsoft Windows można znaleźć w artykule [Szybki Start: Konfigurowanie maszyny wirtualnej platformy Azure do nawiązywania połączenia z wystąpieniem zarządzanym Azure SQL Database](sql-database-managed-instance-configure-vm.md) i [Szybki Start: Konfigurowanie połączenia punkt-lokacja z wystąpieniem Azure SQL Database zarządzanym lokalnie](sql-database-managed-instance-configure-p2s.md).
 > [!IMPORTANT]
 > Nie można utworzyć lub usunąć wystąpienia zarządzanego przy użyciu języka Transact-SQL.
 
