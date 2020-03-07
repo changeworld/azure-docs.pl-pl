@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: dapine
 ms.openlocfilehash: b39b8712f3e8b869d7dbe496dd30f0599aa4150d
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78254790"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379003"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Ulepszanie syntezy przy użyciu języka znaczników syntezy mowy (SSML)
 

@@ -12,11 +12,11 @@ ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
 ms.openlocfilehash: 16855bb218ba3ae4d221cb1329410c7848aab2c5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818962"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382386"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Nowa usługa DBA w chmurze — zarządzanie bazami danych z jednym i pulą w puli w Azure SQL Database
 
@@ -30,7 +30,7 @@ W tym artykule omówiono niektóre podstawowe cechy Azure SQL Database jako plat
 
 - Monitorowanie bazy danych przy użyciu Azure Portal
 - Ciągłość biznesowa i odzyskiwanie po awarii (BCDR)
-- Zabezpieczenia i zgodność z przepisami
+- Zabezpieczenia i zgodność
 - Inteligentne monitorowanie i konserwacja bazy danych
 - Przenoszenie danych
 
@@ -67,7 +67,7 @@ Nie można tworzyć kopii zapasowych w usłudze Azure SQL DB, ponieważ nie jest
 |Warstwa usług|Okres przechowywania w dniach|
 |---|:---:|
 |Podstawowa|7|
-|Standardowa|35|
+|Standard|35|
 |Premium|35|
 |||
 
@@ -87,7 +87,7 @@ W obszarze Podsumowanie tradycyjnego lokalnego SQL Server instalacji wymagały a
 
 Aby dowiedzieć się więcej na temat odzyskiwania po awarii, zobacz: [usługa Azure SQL DB — odzyskiwanie po awarii 101](https://azure.microsoft.com/blog/azure-sql-databases-disaster-recovery-101/)
 
-## <a name="security-and-compliance"></a>Zabezpieczenia i zgodność z przepisami
+## <a name="security-and-compliance"></a>Zabezpieczenia i zgodność
 
 SQL Database bardzo poważnie zapewnia bezpieczeństwo i ochronę prywatności. Zabezpieczenia w ramach SQL Database są dostępne na poziomie bazy danych i na poziomie platformy i są najlepiej zrozumiałe w przypadku kategoryzowania do kilku warstw. Dla każdej warstwy można kontrolować i zapewniać optymalne zabezpieczenia aplikacji. Są to następujące warstwy:
 
@@ -173,7 +173,7 @@ Aby chronić poufne dane w locie i w spoczynku, SQL Database zapewnia funkcję o
 |**Zakres szyfrowania**|Od końca do końca|Dane w spoczynku|
 |**Serwer bazy danych może uzyskać dostęp do poufnych danych**|Nie|Tak, ponieważ szyfrowanie jest przeznaczone dla danych przechowywanych w spoczynku|
 |**Dozwolone operacje T-SQL**|Porównanie równości|Wszystkie obszary powierzchni T-SQL są dostępne|
-|**Zmiany aplikacji wymagane do korzystania z tej funkcji**|Mniejsze|Bardzo minimalne|
+|**Zmiany aplikacji wymagane do korzystania z tej funkcji**|Minimalny|Bardzo minimalne|
 |**Stopień szczegółowości szyfrowania**|Poziom kolumny|Poziom bazy danych|
 ||||
 
@@ -260,7 +260,7 @@ Tę analizę można także wyświetlić w sekcji "Advisor":
 
 W SQL Database można korzystać z inteligentnego wglądu w dane platformy w celu monitorowania wydajności i odpowiednio dostrajania. Można monitorować wydajność i wykorzystanie zasobów w SQL Database przy użyciu następujących metod:
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Portalu Azure
 
 Azure Portal pokazuje użycie bazy danych, wybierając bazę danych i klikając wykres w okienku Przegląd. Można zmodyfikować wykres, aby pokazać wiele metryk, w tym wartość procentową procesora CPU, procent jednostek DTU, procent operacji we/wy danych, procent sesji i procent rozmiaru bazy danych.
 
@@ -288,7 +288,7 @@ Można wykonać zapytanie dotyczące widoku dynamicznego zarządzania [sys. dm_d
 
 Główna część technik rozwiązywania problemów, która powinna być używana do diagnozowania problemów z wydajnością zapytań i bazy danych, pozostaje taka sama. Gdy wszystkie te same aparaty SQL Server mają uprawnienia do chmury. Jednak platforma — usługa Azure SQL DB została wbudowana w "inteligencję". Może ułatwić rozwiązywanie problemów i diagnozowanie problemów z wydajnością. Może również wykonywać niektóre z tych działań naprawczych w Twoim imieniu, a w niektórych przypadkach automatycznie naprawiać je.
 
-Podejście do rozwiązywania problemów z wydajnością może znacząco korzystać z funkcji inteligentnych, takich jak [szczegółowe informacje o wydajności zapytań (QPI)](sql-database-query-performance.md) i [Database Advisor](sql-database-advisor.md) w połączeniu, a więc różnica w metodologii różni się w zależności od w związku z tym nie musisz już wykonywać ręcznych czynności związanych z tworzeniem istotnych informacji, które mogą pomóc w rozwiązaniu problemu. Platforma działa dla Ciebie. Przykładem jest QPI. Za pomocą QPI można przechodzić do szczegółów na poziomie zapytania i przeglądać trendy historyczne i dowiedzieć się, jak dokładnie kwerenda uległa pogorszeniu. Database Advisor zawiera zalecenia dotyczące zagadnień, które mogą pomóc w ulepszaniu ogólnej wydajności, podobnie jak w przypadku brakujących indeksów, upuszczania indeksów, parametryzacja zapytań itp.
+Twoje podejście do rozwiązywania problemów z wydajnością może znacząco korzystać z funkcji inteligentnych, takich jak [szczegółowe informacje o wydajności zapytań (QPI)](sql-database-query-performance.md) i [Database Advisor](sql-database-advisor.md) w połączeniu z tym, że różnica w metodologii różni się w tym aspekcie — nie trzeba już ręcznie wykonywać ręcznych informacji, które mogą pomóc w rozwiązaniu problemu. Platforma działa dla Ciebie. Przykładem jest QPI. Za pomocą QPI można przechodzić do szczegółów na poziomie zapytania i przeglądać trendy historyczne i dowiedzieć się, jak dokładnie kwerenda uległa pogorszeniu. Database Advisor zawiera zalecenia dotyczące zagadnień, które mogą pomóc w ulepszaniu ogólnej wydajności, podobnie jak w przypadku brakujących indeksów, upuszczania indeksów, parametryzacja zapytań itp.
 
 W przypadku rozwiązywania problemów z wydajnością ważne jest, aby określić, czy jest to tylko aplikacja, czy baza danych, która ma wpływ na wydajność aplikacji. Często problem z wydajnością znajduje się w warstwie aplikacji. Może to być architektura lub wzorzec dostępu do danych. Rozważmy na przykład, że masz aplikację rozmawiania, która jest wrażliwa na opóźnienia sieci. W takim przypadku aplikacja pogorszy się, ponieważ wystąpi wiele krótkich żądań przechodzących ("rozmawiających") między aplikacją a serwerem i w sieci o przeciążonym obciążeniu. Aby poprawić wydajność w tym przypadku, można użyć [zapytań wsadowych](sql-database-performance-guidance.md#batch-queries). Korzystanie z partii pomaga w nieznacznie, ponieważ teraz Twoje żądania są przetwarzane w partii. w ten sposób można w ten sposób skrócić czas oczekiwania na rozbicie i poprawić wydajność aplikacji.
 

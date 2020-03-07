@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 902f3628235cc8a4524ddc4dd8a5327592fe47e7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793213"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379705"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Typy i kompozycje zapytań w usłudze Azure Wyszukiwanie poznawcze
 
@@ -33,7 +33,7 @@ Poniższy przykład to zapytanie reprezentatywne skonstruowane w [interfejsie AP
 }
 ```
 
-+ **`queryType`** ustawia parser, który jest [domyślnym prostym analizatorem zapytań](search-query-simple-examples.md) (optymalnym dla wyszukiwania pełnotekstowego) lub [pełnym analizatorem zapytań Lucene](search-query-lucene-examples.md) , używanym do zaawansowanych konstrukcji zapytań, takich jak wyrażenia regularne, wyszukiwanie w sąsiedztwie, rozmyte i Wyszukiwanie przy użyciu symboli wieloznacznych, aby nawiązać kilka nazw.
++ **`queryType`** ustawia parser, który jest [domyślnym, prostym analizatorem zapytań](search-query-simple-examples.md) (optymalnym dla wyszukiwania pełnotekstowego) lub [pełnym analizatorem zapytań Lucene](search-query-lucene-examples.md) , używanym do zaawansowanych konstrukcji zapytań, takich jak wyrażenia regularne, wyszukiwanie w sąsiedztwie, rozmyte i wieloznaczne wyszukiwanie, aby określić nazwę.
 
 + **`search`** zawiera kryteria dopasowywania, zazwyczaj tekst, ale często towarzyszy operatorom logicznym. Pojedyncze warunki autonomiczne to zapytania *warunkowe* . Zapytania o wiele części zawarte w cudzysłowie są zapytaniami *fraz kluczowych* . Wyszukiwanie może być niezdefiniowane, jak w **`search=*`** , ale bardziej prawdopodobnie składa się z warunków, fraz i operatorów, podobnie jak w przykładzie.
 
@@ -111,7 +111,7 @@ queryType=full&search=ocean historic^3&searchFields=Description, Tags&$select=Ho
 
 Usługa Azure Wyszukiwanie poznawcze obsługuje szeroką gamę typów zapytań. 
 
-| Typ zapytania | Użycie | Przykłady i więcej informacji |
+| Typ zapytania | Sposób użycia | Przykłady i więcej informacji |
 |------------|--------|-------------------------------|
 | Wyszukiwanie tekstu w dowolnym formacie | Parametry wyszukiwania i parser| Wyszukiwanie pełnotekstowe skanuje jeden lub więcej terminów we wszystkich polach z *możliwością wyszukiwania* w indeksie i działa w taki sposób, aby aparat wyszukiwania, taki jak Google lub Bing, mógł działać. Przykład we wprowadzeniu jest wyszukiwaniem pełnotekstowym.<br/><br/>Wyszukiwanie pełnotekstowe jest poddawana analizie tekstu przy użyciu standardowego analizatora Lucene (domyślnie) w przypadku małych i średnich wyrazów, Usuń słowa Stop podobne do "". Wartość domyślną można zastąpić [analizatorami w językach innych niż angielski](index-add-language-analyzers.md#language-analyzer-list) lub [wyspecjalizowanymi analizatorami niezależny od](index-add-custom-analyzers.md#AnalyzerTable) , które modyfikują analizę tekstu. Przykładem jest [słowo kluczowe](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) , które traktuje całą zawartość pola jako pojedynczy token. Jest to przydatne w przypadku danych, takich jak kody ZIP, identyfikatory i nazwy produktów. | 
 | Wyszukiwanie filtrowane | [Wyrażenie filtru OData](query-odata-filter-orderby-syntax.md) i każdy parser | Zapytania filtrujące obliczają wyrażenie logiczne dla wszystkich pól z możliwością *filtrowania* w indeksie. W przeciwieństwie do wyszukiwania, zapytanie filtru dopasowuje dokładną zawartość pola, w tym uwzględnianie wielkości liter w polach ciągów. Inną różnicą jest to, że zapytania filtru są wyrażane w składni protokołu OData. <br/>[Przykład wyrażenia filtru](search-query-simple-examples.md#example-3-filter-queries) |
@@ -151,13 +151,13 @@ Więcej informacji na temat wyników wyszukiwania stronicowania można znaleźć
 ### <a name="ordering-results"></a>Porządkowanie wyników
 Podczas otrzymywania wyników dla zapytania wyszukiwania można zażądać, aby usługa Azure Wyszukiwanie poznawcze służyła wyniki uporządkowane według wartości w określonym polu. Domyślnie usługa Azure Wyszukiwanie poznawcze porządkuje wyniki wyszukiwania na podstawie rangi wyniku wyszukiwania każdego dokumentu, który pochodzi od [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf).
 
-Jeśli chcesz, aby usługa Azure Wyszukiwanie poznawcze zwracała wyniki uporządkowane według wartości innej niż wynik wyszukiwania, możesz użyć parametru wyszukiwania **`orderby`** . Można określić wartość parametru **`orderby`** , aby uwzględnić nazwy pól i wywołania [**funkcji `geo.distance()`** ](query-odata-filter-orderby-syntax.md) dla wartości geoprzestrzennych. Po każdym wyrażeniu może następować `asc`, aby wskazać, że wyniki są żądane w kolejności rosnącej, i **`desc`** , aby wskazać, że wyniki są żądane w kolejności malejącej. Domyślnie jest stosowana kolejność rosnąca.
+Jeśli chcesz, aby usługa Azure Wyszukiwanie poznawcze zwracała wyniki uporządkowane według wartości innej niż wynik wyszukiwania, możesz użyć parametru wyszukiwania **`orderby`** . Można określić wartość parametru **`orderby`** , aby uwzględnić nazwy pól i wywołania [**funkcji`geo.distance()`** ](query-odata-filter-orderby-syntax.md) dla wartości geoprzestrzennych. Po każdym wyrażeniu może następować `asc`, aby wskazać, że wyniki są żądane w kolejności rosnącej, i **`desc`** , aby wskazać, że wyniki są żądane w kolejności malejącej. Domyślnie jest stosowana kolejność rosnąca.
 
 
 ### <a name="hit-highlighting"></a>Wyróżnianie trafień
 Na platformie Azure Wyszukiwanie poznawcze naciskanie dokładnej części wyników wyszukiwania, które pasują do zapytania wyszukiwania, jest łatwe przy użyciu parametrów **`highlight`** , **`highlightPreTag`** i **`highlightPostTag`** . Możesz określić, które pola z *możliwością wyszukiwania* mają być wyróżnione dopasowanym tekstem, a także określić dokładne znaczniki ciągu do dołączenia do początku i końca dopasowanego tekstu zwracanego przez usługę Azure wyszukiwanie poznawcze.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 + [Jak działa wyszukiwanie pełnotekstowe w usłudze Azure Wyszukiwanie poznawcze (architektura analizy zapytań)](search-lucene-query-architecture.md)
 + [Eksplorator wyszukiwania](search-explorer.md)

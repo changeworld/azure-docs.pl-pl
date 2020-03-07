@@ -13,11 +13,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 75fdc59b9110c3bfc29fe52be917a7d6e6636b8a
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963210"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376285"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: historia wersji
 Zespół Azure Active Directory (Azure AD) regularnie aktualizuje Azure AD Connect za pomocą nowych funkcji i funkcji. Nie wszystkie dodatki są stosowane dla wszystkich odbiorców.
@@ -31,7 +31,7 @@ Temat |  Szczegóły
 --------- | --------- |
 Procedura uaktualniania z programu Azure AD Connect | Różne metody [uaktualniania z poprzedniej wersji do najnowszego](how-to-upgrade-previous-version.md) wydania Azure AD Connect.
 Wymagane uprawnienia | Aby uzyskać uprawnienia wymagane do zastosowania aktualizacji, zobacz [konta i uprawnienia](reference-connect-accounts-permissions.md#upgrade).
-Pobierz| [Pobierz Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771).
+Pobieranie| [Pobierz Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771).
 
 >[!NOTE]
 >Wydanie nowej wersji Azure AD Connect to proces, który wymaga kilku kroków kontroli jakości, aby zapewnić działanie usługi i przechodząc przez ten proces, numer wersji nowej wersji, a także stan wydania zostanie zaktualizowany. Aby odzwierciedlić najnowszy stan.
@@ -406,7 +406,7 @@ Status 3/22/2018: wydano do autouaktualnienia i pobrania.
 >"Funkcja autouaktualniania została nieprawidłowo wyłączona dla niektórych dzierżawców, którzy wdrażali kompilacje później niż 1.1.524.0. Aby upewnić się, że wystąpienie Azure AD Connect nadal kwalifikuje się do autouaktualnienia, uruchom następujące polecenie cmdlet programu PowerShell: "Set-ADSyncAutoUpgrade-AutoupGradeState Enabled"
 
 
-### <a name="azure-ad-connect"></a>Program Azure AD Connect
+### <a name="azure-ad-connect"></a>Azure AD Connect
 #### <a name="fixed-issues"></a>Rozwiązane problemy
 
 * Polecenie cmdlet Set-ADSyncAutoUpgrade powinno blokować funkcję autouaktualniania, jeśli stan autouaktualniania jest ustawiony na zawieszone. Ta funkcja została zmieniona, więc nie blokuje autouaktualniania przyszłych kompilacji.
@@ -418,7 +418,7 @@ Stan: wydano, aby wybrać klientów
 >[!NOTE]
 >Po zakończeniu uaktualniania do tej nowej wersji zostanie automatycznie wyzwolona pełna synchronizacja i pełny import dla łącznika usługi Azure AD oraz pełna synchronizacja łącznika usługi AD. Ponieważ może to potrwać pewien czas, w zależności od rozmiaru środowiska Azure AD Connect upewnij się, że wykonano czynności niezbędne do zapewnienia obsługi tego lub wyłączenia podczas uaktualniania do momentu, gdy okaże się to wygodne.
 
-### <a name="azure-ad-connect"></a>Program Azure AD Connect
+### <a name="azure-ad-connect"></a>Azure AD Connect
 #### <a name="fixed-issues"></a>Rozwiązane problemy
 * Usuń okna czasowego na zadania w tle dla strony filtrowanie partycji, podczas przełączania do następnej strony.
 
@@ -480,7 +480,7 @@ Stan: 12 grudnia, 2017
 >[!NOTE]
 >Ta wersja jest poprawką powiązaną z zabezpieczeniami dla Azure AD Connect
 
-### <a name="azure-ad-connect"></a>Program Azure AD Connect
+### <a name="azure-ad-connect"></a>Azure AD Connect
 Dodano ulepszenia do Azure AD Connect wersji 1.1.654.0 (i po), aby upewnić się, że zalecane zmiany uprawnień opisane w sekcji [Zablokuj dostęp do konta AD DS](#lock) są automatycznie stosowane podczas Azure AD Connect tworzenia konta AD DS. 
 
 - Podczas konfigurowania Azure AD Connect administrator może udostępnić istniejące konto AD DS lub pozwolić Azure AD Connect automatycznie utworzyć konto. Zmiany uprawnień są automatycznie stosowane do konta AD DS, które jest tworzone przez Azure AD Connect podczas instalacji. Nie są one stosowane do istniejącego konta AD DS dostarczonego przez administratora instalacji.
@@ -496,18 +496,18 @@ Zablokuj dostęp do konta AD DS, implementując następujące zmiany uprawnień 
 *   Usuń wszystkie wpisy kontroli dostępu do określonego obiektu, z wyjątkiem ACE określonych dla siebie. Chcemy zachować domyślne uprawnienia, które są niezmienione, gdy nastąpi samodzielne.
 *   Przypisz te określone uprawnienia:
 
-Typ     | Nazwa                          | Dostęp               | Dotyczy
+Typ     | Name (Nazwa)                          | Access               | Dotyczy
 ---------|-------------------------------|----------------------|--------------|
-Zezwól    | SYSTEM                        | Pełna kontrola         | Ten obiekt  |
-Zezwól    | Administratorzy przedsiębiorstwa             | Pełna kontrola         | Ten obiekt  |
-Zezwól    | Administratorzy domeny                 | Pełna kontrola         | Ten obiekt  |
-Zezwól    | Administratorzy                | Pełna kontrola         | Ten obiekt  |
-Zezwól    | Kontrolery domeny przedsiębiorstwa | Wyświetl zawartość        | Ten obiekt  |
-Zezwól    | Kontrolery domeny przedsiębiorstwa | Odczyt wszystkich właściwości  | Ten obiekt  |
-Zezwól    | Kontrolery domeny przedsiębiorstwa | Uprawnienia do odczytu     | Ten obiekt  |
-Zezwól    | Uwierzytelnieni użytkownicy           | Wyświetl zawartość        | Ten obiekt  |
-Zezwól    | Uwierzytelnieni użytkownicy           | Odczyt wszystkich właściwości  | Ten obiekt  |
-Zezwól    | Uwierzytelnieni użytkownicy           | Uprawnienia do odczytu     | Ten obiekt  |
+Zezwalaj    | SYSTEM                        | Pełna kontrola         | Ten obiekt  |
+Zezwalaj    | Administratorzy przedsiębiorstwa             | Pełna kontrola         | Ten obiekt  |
+Zezwalaj    | Administratorzy domeny                 | Pełna kontrola         | Ten obiekt  |
+Zezwalaj    | Administratorzy                | Pełna kontrola         | Ten obiekt  |
+Zezwalaj    | Kontrolery domeny przedsiębiorstwa | Wyświetl zawartość        | Ten obiekt  |
+Zezwalaj    | Kontrolery domeny przedsiębiorstwa | Odczyt wszystkich właściwości  | Ten obiekt  |
+Zezwalaj    | Kontrolery domeny przedsiębiorstwa | Uprawnienia do odczytu     | Ten obiekt  |
+Zezwalaj    | Użytkownicy uwierzytelnieni           | Wyświetl zawartość        | Ten obiekt  |
+Zezwalaj    | Użytkownicy uwierzytelnieni           | Odczyt wszystkich właściwości  | Ten obiekt  |
+Zezwalaj    | Użytkownicy uwierzytelnieni           | Uprawnienia do odczytu     | Ten obiekt  |
 
 Aby wzmocnić ustawienia dla konta AD DS można uruchomić [ten skrypt programu PowerShell](https://gallery.technet.microsoft.com/Prepare-Active-Directory-ef20d978). Skrypt programu PowerShell przypisze uprawnienia wymienione powyżej do konta AD DS.
 
@@ -547,7 +547,7 @@ Stan: Październik 27 2017
 >[!NOTE]
 >Ta kompilacja nie jest dostępna dla klientów za pomocą funkcji Azure AD Connect autoupgrade.
 
-### <a name="azure-ad-connect"></a>Program Azure AD Connect
+### <a name="azure-ad-connect"></a>Azure AD Connect
 #### <a name="fixed-issue"></a>Rozwiązano problem
 * Rozwiązano problem ze zgodnością wersji między Azure AD Connect i agentem Azure AD Connect Health (na potrzeby synchronizacji). Ten problem dotyczy klientów, którzy wykonują Azure AD Connect uaktualnieniem w miejscu do wersji 1.1.647.0, ale obecnie ma agenta kondycji w wersji 3.0.127.0. Po uaktualnieniu Agent kondycji nie będzie mógł wysyłać danych o kondycji dotyczących usługi Azure AD Connect Synchronization do Usługa kondycji Azure AD. Ta poprawka powoduje zainstalowanie agenta kondycji w wersji 3.0.129.0 podczas Azure AD Connect uaktualnienia w miejscu. Wersja agenta kondycji 3.0.129.0 nie ma problemu ze zgodnością w wersji 1.1.649.0 Azure AD Connect.
 
@@ -560,7 +560,7 @@ Stan: październik 19 2017
 >
 >
 
-### <a name="azure-ad-connect"></a>Program Azure AD Connect
+### <a name="azure-ad-connect"></a>Azure AD Connect
 #### <a name="fixed-issues"></a>Rozwiązane problemy
 * Rozwiązano problem z kreatorem *zmiany zadania logowania użytkownika* w Azure AD Connect:
 
@@ -617,7 +617,7 @@ Stan: październik 19 2017
 ## <a name="116140"></a>1.1.614.0
 Stan: wrzesień 05 2017
 
-### <a name="azure-ad-connect"></a>Program Azure AD Connect
+### <a name="azure-ad-connect"></a>Azure AD Connect
 
 #### <a name="known-issues"></a>Znane problemy
 * Istnieje znany problem, który powoduje Niepowodzenie uaktualnienia Azure AD Connect z powodu błędu "*nie można uaktualnić usługi synchronizacji*". Ponadto usługa synchronizacji nie może już się zaczynać z powodu błędu zdarzenia "*nie można uruchomić usługi, ponieważ wersja bazy danych jest nowsza niż zainstalowana wersja plików binarnych*". Ten problem występuje, gdy administrator przeprowadzający uaktualnienie nie ma uprawnień administratora systemu do programu SQL Server, który jest używany przez Azure AD Connect. Uprawnienia dbo nie są wystarczające.
@@ -667,7 +667,7 @@ Stan: wrzesień 05 2017
 ## <a name="115610"></a>1.1.561.0
 Stan: Lipiec 23 2017
 
-### <a name="azure-ad-connect"></a>Program Azure AD Connect
+### <a name="azure-ad-connect"></a>Azure AD Connect
 
 #### <a name="fixed-issue"></a>Rozwiązano problem
 
@@ -707,7 +707,7 @@ Stan: Lipiec 23 2017
 ## <a name="115580"></a>1.1.558.0
 Stan: nie zostanie wydana. Zmiany w tej kompilacji są zawarte w wersji 1.1.561.0.
 
-### <a name="azure-ad-connect"></a>Program Azure AD Connect
+### <a name="azure-ad-connect"></a>Azure AD Connect
 
 #### <a name="fixed-issue"></a>Rozwiązano problem
 
@@ -738,7 +738,7 @@ Stan: lipiec 2017
 >[!NOTE]
 >Ta kompilacja nie jest dostępna dla klientów za pomocą funkcji Azure AD Connect autoupgrade.
 
-### <a name="azure-ad-connect"></a>Program Azure AD Connect
+### <a name="azure-ad-connect"></a>Azure AD Connect
 
 #### <a name="fixed-issue"></a>Rozwiązano problem
 * Rozwiązano problem z poleceniem cmdlet Initialize-ADSyncDomainJoinedComputerSync, które spowodowało zmianę zweryfikowanej domeny skonfigurowanej w istniejącym obiekcie punktu połączenia z usługą, nawet jeśli jest ona nadal prawidłową domeną. Ten problem występuje, gdy dzierżawa usługi Azure AD ma więcej niż jedną zweryfikowaną domenę, której można użyć do skonfigurowania punktu połączenia z usługą.
@@ -839,9 +839,9 @@ CBool(
     |CertFriendlyName|CertThumbprint|CertExtensionOids|
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
-    |CertVersion|CertSignatureAlgorithmOid|Wybierz|
+    |CertVersion|CertSignatureAlgorithmOid|Wybierz pozycję|
     |CertKeyAlgorithmParams|CertHashString|Lokalizacja|
-    |||Zawiera|
+    |||With|
 
 * Wprowadzono następujące zmiany schematu, które umożliwiają klientom tworzenie niestandardowych reguł synchronizacji w celu przepływu zasad sAMAccountName, domainNetBios i domainFQDN dla obiektów grup, a także nazwy odróżnionyname dla obiektów użytkownika:
 
@@ -1074,7 +1074,7 @@ Wydanie: listopad 2016
 * Rozwiązano problem polegający na tym, że reguły dołączania nie są ponownie oceniane, gdy obiekt w przestrzeni łącznika jednocześnie staje się poza zakresem dla jednej reguły sprzężenia i staje się zakresem innym. Taka sytuacja może wystąpić, jeśli masz co najmniej dwie reguły sprzężenia, których warunki sprzężenia wykluczają się wzajemnie.
 * Rozwiązano problem polegający na tym, że reguły synchronizacji ruchu przychodzącego (z usługi Azure AD), które nie zawierają reguł sprzężenia, nie są przetwarzane, jeśli mają niższe wartości pierwszeństwa niż te zawierające reguły sprzężenia.
 
-**Ulepszenia:**
+**Poprawek**
 
 * Dodano obsługę instalowania Azure AD Connect w systemie Windows Server 2016 Standard lub nowszym.
 * Dodano obsługę SQL Server 2016 jako zdalnej bazy danych dla Azure AD Connect.
@@ -1093,7 +1093,7 @@ Wydanie: sierpień 2016
 * Kreator Azure AD Connect nie pokazuje rzeczywistej synchronizacji haseł i konfiguracji zapisywania zwrotnego haseł, gdy serwer jest w trybie przejściowym. Są one zawsze wyświetlane jako wyłączone.
 * Zmiany konfiguracji synchronizacji haseł i zapisywania zwrotnego haseł nie są utrwalane przez kreatora Azure AD Connect, gdy serwer jest w trybie przejściowym.
 
-**Ulepszenia:**
+**Poprawek**
 
 * Zaktualizowano polecenie cmdlet Start-ADSyncSyncCycle, aby wskazać, czy można pomyślnie uruchomić nowy cykl synchronizacji, czy nie.
 * Dodano polecenie cmdlet Stop-ADSyncSyncCycle, aby przerwać cykl synchronizacji i operację, które są obecnie w toku.
@@ -1301,7 +1301,7 @@ Opublikowano: kwiecień 2015
 ## <a name="104850222"></a>1.0.485.0222
 Wydanie: luty 2015
 
-**Ulepszenia:**
+**Poprawek**
 
 * Ulepszona wydajność importowania.
 

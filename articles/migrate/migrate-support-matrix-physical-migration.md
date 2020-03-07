@@ -4,18 +4,18 @@ description: Dowiedz się więcej o obsłudze migracji serwera fizycznego w Azur
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: e55cf6dddbc8dafd33b444e4a0dbe378d807aea1
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030239"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388893"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>Macierz obsługi dla migracji serwera fizycznego
 
 Ten artykuł zawiera podsumowanie ustawień i ograniczeń dotyczących migracji serwerów fizycznych z [Azure Migrate: Migracja serwera](migrate-services-overview.md#azure-migrate-server-migration-tool) . Jeśli szukasz informacji na temat oceniania serwerów fizycznych do migracji na platformę Azure, zapoznaj się z [matrycą pomocy technicznej](migrate-support-matrix-physical.md)dotyczącej oceny.
 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Maszyny lokalne można migrować jako serwery fizyczne przy użyciu replikacji opartej na agentach. Za pomocą tego narzędzia można migrować szeroką gamę maszyn na platformę Azure:
 
@@ -48,19 +48,19 @@ W tabeli zestawiono obsługę serwerów fizycznych, które mają być migrowane 
 **Rozmiar dysku** | dysk systemu operacyjnego: 2 TB; 8 TB dla dysków z danymi.
 **Limity dysku** |  Do 63 dysków na maszynę.
 **Zaszyfrowane dyski/woluminy** |  Maszyny z szyfrowanymi dyskami/woluminami nie są obsługiwane na potrzeby migracji.
-**Udostępniony klaster dysków** | Bez pomocy technicznej.
+**Udostępniony klaster dysków** | Nieobsługiwane.
 **Dyski niezależne** | Obsługiwane.
 **Przekazywanie dysków** | Obsługiwane.
 **NFS** | Woluminy NFS zainstalowane jako woluminy na maszynach nie zostaną zreplikowane.
 **obiekty docelowe iSCSI** | Maszyny z obiektami docelowymi iSCSI nie są obsługiwane w przypadku migracji bez wykorzystania agentów.
-**Wielościeżkowe we/wy** | Bez pomocy technicznej.
+**Wielościeżkowe we/wy** | Nieobsługiwane.
 **VMotion magazynu** | Obsługiwane
-**Zespoły kart sieciowych** | Bez pomocy technicznej.
-**If** | Bez pomocy technicznej.
+**Zespoły kart sieciowych** | Nieobsługiwane.
+**If** | Nieobsługiwane.
 
 
 
-## <a name="replication-appliance-requirements"></a>Wymagania dotyczące urządzenia replikacji
+## <a name="replication-appliance-requirements"></a>Wymagania urządzenia replikacji
 
 Jeśli urządzenie replikacji zostanie skonfigurowane ręcznie na serwerze fizycznym, upewnij się, że jest ono zgodne z wymaganiami przedstawionymi w tabeli. Po skonfigurowaniu urządzenia replikacji Azure Migrate jako maszyny wirtualnej VMware przy użyciu szablonu komórki jajowe dostarczonego w centrum Azure Migrate, urządzenie zostanie skonfigurowane z systemem Windows Server 2016 i spełnia wymagania dotyczące pomocy technicznej. 
 
@@ -81,9 +81,9 @@ Liczba dysków systemu operacyjnego | 1 | Sprawdzanie kończy się niepowodzenie
 Liczba dysków danych | 64 lub mniej. | Sprawdzanie kończy się niepowodzeniem, jeśli nie jest obsługiwane.
 Rozmiar dysku danych | Do 4 095 GB | Sprawdzanie kończy się niepowodzeniem, jeśli nie jest obsługiwane.
 Karty sieciowe | Obsługiwane są wiele kart. |
-Udostępniony wirtualny dysk twardy | Bez pomocy technicznej. | Sprawdzanie kończy się niepowodzeniem, jeśli nie jest obsługiwane.
-Dysk FC | Bez pomocy technicznej. | Sprawdzanie kończy się niepowodzeniem, jeśli nie jest obsługiwane.
-BitLocker | Bez pomocy technicznej. | Aby włączyć replikację dla maszyny, należy wyłączyć funkcję BitLocker.
+Udostępniony wirtualny dysk twardy | Nieobsługiwane. | Sprawdzanie kończy się niepowodzeniem, jeśli nie jest obsługiwane.
+Dysk FC | Nieobsługiwane. | Sprawdzanie kończy się niepowodzeniem, jeśli nie jest obsługiwane.
+BitLocker | Nieobsługiwane. | Aby włączyć replikację dla maszyny, należy wyłączyć funkcję BitLocker.
 Nazwa maszyny wirtualnej | Od 1 do 63 znaków.<br/> Ograniczone do liter, cyfr i łączników.<br/><br/> Nazwa maszyny musi rozpoczynać się i kończyć literą lub cyfrą. |  Zaktualizuj wartość we właściwościach komputera w Site Recovery.
 Połącz po migracji — Windows | Aby nawiązać połączenie z maszynami wirtualnymi platformy Azure z systemem Windows po migracji:<br/> -Przed migracją włącza protokół RDP na lokalnej maszynie wirtualnej. Upewnij się, że reguły TCP i UDP zostały dodane do profilu **publicznego** oraz że w pozycji **Zapora systemu Windows** > **Dozwolone aplikacje** zezwolono na użycie protokołu RDP we wszystkich profilach.<br/> W przypadku dostępu do sieci VPN typu lokacja-lokacja Włącz protokół RDP i Zezwalaj na używanie protokołu RDP w **zaporze systemu Windows** -> **dozwolonych aplikacji i funkcji** dla sieci **,** w których są dozwolone. Ponadto sprawdź, czy zasady sieci SAN systemu operacyjnego są ustawione na **OnlineAll**. [Dowiedz się więcej](prepare-for-migration.md). |
 Połącz po migracji — system Linux | Aby nawiązać połączenie z maszynami wirtualnymi platformy Azure po migracji przy użyciu protokołu SSH:<br/> Przed migracją na maszynie lokalnej Sprawdź, czy usługa Secure Shell jest ustawiona do uruchamiania, oraz czy reguły zapory zezwalają na połączenie SSH.<br/> Po przejściu w tryb failover na maszynie wirtualnej platformy Azure Zezwól na połączenia przychodzące do portu SSH dla reguł sieciowej grupy zabezpieczeń na maszynie wirtualnej w trybie failover oraz dla podsieci platformy Azure, do której jest podłączona. Dodatkowo Dodaj publiczny adres IP dla maszyny wirtualnej. |  

@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: pepogors
 ms.openlocfilehash: f40e54f5260f827f0b18c833d23d1f57b5ebc3a3
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77617464"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382851"
 ---
 # <a name="reliable-services-application-and-service-manifest-examples"></a>Przykłady manifestu aplikacji i usługi Reliable Services
 Poniżej przedstawiono przykłady manifestów aplikacji i usług dla Service Fabric aplikacji z frontonem sieci Web ASP.NET Core i zapasowym zapleczem. Te przykłady przedstawiają, jakie ustawienia są dostępne i jak z nich korzystać. Te manifesty aplikacji i usług są oparte na Service Fabric manifestach [szybkiego startu programu .NET](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) .

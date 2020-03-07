@@ -1,5 +1,5 @@
 ---
-title: Co to jest obszar roboczy i projekt? — Translator niestandardowy
+title: Co to jest obszar roboczy i projekt? — Niestandardowy w usłudze Translator
 titleSuffix: Azure Cognitive Services
 description: W tym artykule opisano różnice między obszarem roboczym i projektem, a także kategorie projektu i etykiety dla usługi translatora niestandardowego.
 services: cognitive-services
@@ -11,11 +11,11 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: d2f7903fa85c645357e46a753d1cb043e0893254
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647316"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391435"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>Co to jest obszar roboczy usługi tłumaczenia niestandardowego?
 

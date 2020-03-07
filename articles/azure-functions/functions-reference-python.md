@@ -3,12 +3,12 @@ title: Dokumentacja dla deweloperów języka Python dla Azure Functions
 description: Informacje na temat tworzenia funkcji w języku Python
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: 1b94cb51bcb4e2634cdb04c389efbab44bb024bb
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
-ms.translationtype: MT
+ms.openlocfilehash: 6c625c050652ffac568ac45b06af7a853c75c8c2
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78206337"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356886"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Przewodnik dewelopera w języku Python Azure Functions
 
@@ -65,16 +65,16 @@ Zalecana struktura folderów dla projektu funkcji w języku Python wygląda nast
 
 ```
  __app__
- | - MyFirstFunction
+ | - my_first_function
  | | - __init__.py
  | | - function.json
  | | - example.py
- | - MySecondFunction
+ | - my_second_function
  | | - __init__.py
  | | - function.json
- | - SharedCode
- | | - myFirstHelperFunction.py
- | | - mySecondHelperFunction.py
+ | - shared_code
+ | | - my_first_helper_function.py
+ | | - my_second_helper_function.py
  | - host.json
  | - requirements.txt
  tests
@@ -89,19 +89,47 @@ Główny folder projektu (\_\_aplikacji\_\_) może zawierać następujące pliki
 
 Każda funkcja ma własny plik kodu i plik konfiguracji powiązania (Function. JSON). 
 
-Udostępniony kod powinien być przechowywany w osobnym folderze w \_\_aplikacji\_\_. Aby odwoływać się do modułów w folderze SharedCode, można użyć następującej składni:
-
-```python
-from __app__.SharedCode import myFirstHelperFunction
-```
-
-Aby odwołać się do modułów lokalnych do funkcji, można użyć składni względnego importu w następujący sposób:
-
-```python
-from . import example
-```
-
 Podczas wdrażania projektu w aplikacji funkcji na platformie Azure, cała zawartość folderu głównego projektu ( *\_\_app\_\_* ) powinna być uwzględniona w pakiecie, ale nie do samego folderu. Zalecane jest, aby zachować testy w folderze oddzielonym od folderu projektu, w tym przykładzie `tests`. Dzięki temu można wdrożyć kod testowy w aplikacji. Aby uzyskać więcej informacji, zobacz [testowanie jednostkowe](#unit-testing).
+
+## <a name="import-behavior"></a>Zachowanie importowania
+
+Moduły w kodzie funkcji można importować przy użyciu jawnych odwołań względnych i bezwzględnych. Na podstawie pokazanej powyżej struktury folderów następujące Importy pracują z poziomu pliku funkcji *\_\_aplikacji\_\_\moje\_pierwszej\_funkcji\\_\_init\_\_. PR*:
+
+```python
+from . import example #(explicit relative)
+```
+
+```python
+from ..shared_code import my_first_helper_function #(explicit relative)
+```
+
+```python
+from __app__ import shared_code #(absolute)
+```
+
+```python
+import __app__.shared_code #(absolute)
+```
+
+Następujące Importy *nie działają* w tym samym pliku:
+
+```python
+import example
+```
+
+```python
+from example import some_helper_code
+```
+
+```python
+import shared_code
+```
+
+Udostępniony kod powinien być przechowywany w osobnym folderze w *\_\_aplikacji\_\_* . Aby odwoływać się do modułów w folderze *udostępnionego kodu\_* , można użyć następującej składni:
+
+```python
+from __app__.shared_code import my_first_helper_function
+```
 
 ## <a name="triggers-and-inputs"></a>Wyzwalacze i dane wejściowe
 
