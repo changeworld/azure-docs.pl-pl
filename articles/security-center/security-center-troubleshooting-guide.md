@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
 ms.openlocfilehash: 55a4aa066739203f8697fb4c9083869f5a05ef4f
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603379"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373077"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Przewodnik rozwiązywania problemów z usługą Azure Security Center
 
@@ -107,10 +107,10 @@ W poniższej tabeli przedstawiono zasoby wymagane do komunikacji.
 
 | Zasób agenta | Porty | Obejście inspekcji HTTPS |
 |---|---|---|
-| *.ods.opinsights.azure.com | 443 | Tak |
-| *.oms.opinsights.azure.com | 443 | Tak |
-| *.blob.core.windows.net | 443 | Tak |
-| *.azure-automation.net | 443 | Tak |
+| *.ods.opinsights.azure.com | 443 | Yes |
+| *.oms.opinsights.azure.com | 443 | Yes |
+| *.blob.core.windows.net | 443 | Yes |
+| *.azure-automation.net | 443 | Yes |
 
 Jeśli wystąpią problemy związane z dołączaniem dotyczące agenta, przeczytaj artykuł [How to troubleshoot Operations Management Suite onboarding issues](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues) (Jak rozwiązywać problemy dotyczące przechodzenia do pakietu Operations Management Suite)
 
@@ -136,7 +136,7 @@ Jeśli masz problemy z ładowaniem pulpitu nawigacyjnego usługi Security Center
 
 Niektóre problemy można zidentyfikować za pomocą wskazówek znajdujących się w tym artykule. Inne problemy można znaleźć udokumentowane na publicznym [Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSecurityCenter) usługi Security Center. Jeśli jednak potrzebna jest dalsza pomoc w rozwiązywaniu problemów, możesz otworzyć nowe żądanie obsługi, używając witryny **Azure Portal** w sposób pokazany poniżej:
 
-![Pomoc techniczna Microsoft](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
+![Pomoc techniczna firmy Microsoft](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 
 ## <a name="see-also"></a>Zobacz też
 

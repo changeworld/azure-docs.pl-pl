@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
 ms.openlocfilehash: 4913152125b0fafd74db575f835d53fa992b075e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75439540"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388324"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Korzystanie z działań niestandardowych w potoku usługi Azure Data Factory
 
@@ -99,13 +99,13 @@ W tym przykładzie HelloWorld. exe jest aplikacją niestandardową przechowywan�
 
 W poniższej tabeli opisano nazwy i opisy właściwości, które są specyficzne dla tego działania.
 
-| Właściwość              | Opis                              | Wymagane |
+| Właściwość              | Opis                              | Wymagany |
 | :-------------------- | :--------------------------------------- | :------- |
-| name                  | Nazwa działania w potoku     | Tak      |
+| name                  | Nazwa działania w potoku     | Yes      |
 | description           | Tekst opisujący działanie działania.  | Nie       |
-| type                  | W przypadku działania niestandardowego typem działania jest **niestandardowy**. | Tak      |
-| linkedServiceName     | Połączona usługa do Azure Batch. Aby dowiedzieć się więcej o tej połączonej usłudze, zobacz artykuł dotyczący [połączonych usług obliczeniowych](compute-linked-services.md) .  | Tak      |
-| command               | Polecenie aplikacji niestandardowej do wykonania. Jeśli aplikacja jest już dostępna w węźle puli Azure Batch, można pominąć resourceLinkedService i folderPath. Na przykład możesz określić polecenie, które ma być `cmd /c dir`, które jest natywnie obsługiwane przez węzeł puli usługi Windows Batch. | Tak      |
+| type                  | W przypadku działania niestandardowego typem działania jest **niestandardowy**. | Yes      |
+| linkedServiceName     | Połączona usługa do Azure Batch. Aby dowiedzieć się więcej o tej połączonej usłudze, zobacz artykuł dotyczący [połączonych usług obliczeniowych](compute-linked-services.md) .  | Yes      |
+| command               | Polecenie aplikacji niestandardowej do wykonania. Jeśli aplikacja jest już dostępna w węźle puli Azure Batch, można pominąć resourceLinkedService i folderPath. Na przykład możesz określić polecenie, które ma być `cmd /c dir`, które jest natywnie obsługiwane przez węzeł puli usługi Windows Batch. | Yes      |
 | resourceLinkedService | Połączona usługa Azure Storage z kontem magazynu, w którym jest przechowywana aplikacja niestandardowa | Znaleziono&#42;       |
 | folderPath            | Ścieżka do folderu aplikacji niestandardowej i wszystkich jej zależności<br/><br/>Jeśli istnieją zależności przechowywane w podfolderach, czyli w hierarchicznej strukturze folderów w obszarze *folderPath* — struktura folderów jest obecnie spłaszczona, gdy pliki są kopiowane do Azure Batch. Oznacza to, że wszystkie pliki są kopiowane do jednego folderu bez podfolderów. Aby obejść ten problem, rozważ kompresję plików, Skopiowanie skompresowanego pliku, a następnie rozpakowywanie go z niestandardowym kodem w odpowiedniej lokalizacji. | Znaleziono&#42;       |
 | referenceObjects      | Tablica istniejących połączonych usług i zestawów danych. Połączone usługi i zestawy danych, do których istnieją odwołania, są przesyłane do aplikacji niestandardowej w formacie JSON, dzięki czemu kod niestandardowy może odwoływać się do zasobów Data Factory | Nie       |
@@ -309,7 +309,7 @@ Możesz wysyłać niestandardowe wartości z kodu w niestandardowym działaniu z
 
 ## <a name="retrieve-securestring-outputs"></a>Pobieranie danych wyjściowych SecureString
 
-Poufne wartości właściwości wyznaczono jako typ *SecureString*, jak pokazano w niektórych przykładach w tym artykule, są maskowane na karcie monitorowanie w interfejsie użytkownika Data Factory.  Jednak w rzeczywistym wykonaniu potoku Właściwość *SecureString* jest serializowana jako kod JSON w pliku `activity.json` jako zwykły tekst. Przykład:
+Poufne wartości właściwości wyznaczono jako typ *SecureString*, jak pokazano w niektórych przykładach w tym artykule, są maskowane na karcie monitorowanie w interfejsie użytkownika Data Factory.  Jednak w rzeczywistym wykonaniu potoku Właściwość *SecureString* jest serializowana jako kod JSON w pliku `activity.json` jako zwykły tekst. Na przykład:
 
 ```json
 "extendedProperties": {
@@ -341,7 +341,7 @@ W poniższej tabeli opisano różnice między działaniem niestandardowym Data F
 |Sposób definiowania logiki niestandardowej      |Dostarczając plik wykonywalny      |Przez implementację biblioteki DLL platformy .NET      |
 |Środowisko wykonawcze logiki niestandardowej      |System Windows lub Linux      |Windows (.NET Framework 4.5.2)      |
 |Wykonywanie skryptów      |Obsługuje wykonywanie skryptów bezpośrednio (na przykład "cmd/c echo Hello World" na maszynie wirtualnej z systemem Windows)      |Wymaga implementacji w bibliotece DLL platformy .NET      |
-|Wymagany zestaw danych      |Opcjonalne      |Wymagane do łańcucha działań i przekazywania informacji      |
+|Wymagany zestaw danych      |Optional (Opcjonalność)      |Wymagane do łańcucha działań i przekazywania informacji      |
 |Przekaż informacje z działania do logiki niestandardowej      |Do ReferenceObjects (LinkedServices i zestawy danych) i właściwości ExtendedProperties (właściwości niestandardowe)      |Za poorednictwem Właściwości ExtendedProperties (właściwości niestandardowe), wejściowych i wyjściowych zestawów danych      |
 |Pobieranie informacji z logiki niestandardowej      |Analizuje dane Activity. JSON, linkedServices. JSON i DataSets. JSON przechowywane w tym samym folderze pliku wykonywalnego.      |Za poorednictwem zestawu .NET SDK (ramka .NET w wersji 4.5.2)      |
 |Rejestrowanie      |Zapisuje bezpośrednio w strumieniu STDOUT      |Implementowanie rejestratora w bibliotece DLL platformy .NET      |

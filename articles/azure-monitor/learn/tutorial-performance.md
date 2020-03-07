@@ -8,11 +8,11 @@ ms.author: mbullwin
 ms.date: 08/13/2019
 ms.custom: mvc
 ms.openlocfilehash: 98d7c1552a7b1f2b02ae4df1cad24e20f7ac76e1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661570"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78367701"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Znajdowanie i diagnozowanie problemów z wydajnością za pomocą usługi Azure Application Insights
 
@@ -80,7 +80,7 @@ Usługa Application Insights zbiera informacje o wydajności różnych operacji 
 
 2. Dzienniki są otwierane za pomocą zapytania dla każdego z widoków w panelu.  Zapytania te można uruchomić w proponowanej formie lub dostosować do własnych wymagań.  Pierwsze zapytanie pokazuje czas trwania operacji w miarę upływu czasu.
 
-    ![zapytanie dzienników](media/tutorial-performance/7-request-time-logs.png)
+    ![Zapytanie dzienników](media/tutorial-performance/7-request-time-logs.png)
 
 
 ## <a name="identify-slow-client-operations"></a>Identyfikowanie wolnych operacji klienta

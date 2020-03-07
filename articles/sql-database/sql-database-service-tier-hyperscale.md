@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
 ms.openlocfilehash: efb6cd1a45ac14dcbd5b2b6d8e70f5ee096ddbd8
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587281"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359763"
 ---
 # <a name="hyperscale-service-tier"></a>Warstwa usługi Hiperskala
 
@@ -86,7 +86,7 @@ Na poniższym diagramie przedstawiono różne typy węzłów w bazie danych w sk
 
 Baza danych wieloskali zawiera następujące różne typy składników:
 
-### <a name="compute"></a>Wystąpienia obliczeniowe
+### <a name="compute"></a>Compute
 
 Węzeł obliczeniowy to miejsce, w którym działa silnik relacyjny, więc wszystkie elementy języka, przetwarzanie zapytań i tak dalej występują. Wszystkie interakcje użytkownika z bazą danych w ramach skalowania są wykonywane za pomocą tych węzłów obliczeniowych. Węzły obliczeniowe mają pamięć podręczną opartą na dyskach SSD (z etykietami RBPEX-odporny na błędy w powyższym diagramie), aby zminimalizować liczbę podróży w sieci wymaganych do pobrania strony danych. Istnieje jeden podstawowy węzeł obliczeniowy, w którym są przetwarzane wszystkie obciążenia odczytu i zapisu. Istnieje co najmniej jeden pomocniczy węzeł obliczeniowy działający jako węzły rezerwy aktywnej do pracy w trybie failover, a także działający jako węzeł obliczeniowy tylko do odczytu do odciążania obciążeń odczytu (Jeśli ta funkcja jest wymagana).
 
@@ -181,10 +181,10 @@ Warstwa skalowania Azure SQL Database jest obecnie dostępna w następujących r
 - Japonia Zachodnia
 - Korea Środkowa
 - Korea Południowa
-- Środkowo-północne stany USA
+- Północno-środkowe stany USA
 - Europa Północna
 - Północna Republika Południowej Afryki
-- Środkowo-południowe stany USA
+- Południowo-środkowe stany USA
 - Azja Południowo-Wschodnia
 - Południowe Zjednoczone Królestwo
 - Zachodnie Zjednoczone Królestwo

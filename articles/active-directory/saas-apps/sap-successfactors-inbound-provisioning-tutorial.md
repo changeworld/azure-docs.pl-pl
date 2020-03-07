@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 12/05/2019
 ms.author: chmutali
 ms.openlocfilehash: d9317a68c8967fbe0728e8c47e59dd33367c6163
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77060231"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374782"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning-preview"></a>Samouczek: Konfigurowanie oprogramowania SAP SuccessFactors do Active Directory aprowizacji użytkowników (wersja zapoznawcza)
 Celem tego samouczka jest przedstawienie czynności, które należy wykonać w celu udostępnienia użytkownikom SuccessFactorsego Active Directory w centrum danych (AD) i usługi Azure AD z opcjonalnym zwrotem adresu e-mail na SuccessFactors. Ta integracja jest dostępna w publicznej wersji zapoznawczej i obsługuje pobieranie ponad [70 atrybutów użytkownika](../app-provisioning/sap-successfactors-attribute-reference.md) z SuccessFactors Employee Central.

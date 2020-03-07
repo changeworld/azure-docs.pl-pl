@@ -5,11 +5,11 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
 ms.openlocfilehash: bd9f3bfe1578b632707382cfe422f19514e7ce48
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988111"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358019"
 ---
 > [!NOTE]
 > Microsoft Flow jest teraz automatyzacją. Więcej informacji można znaleźć w tym [blogu](https://aka.ms/flow-now-pa).
@@ -38,7 +38,7 @@ Usługa Microsoft Flow umożliwia każdemu pracownikowi biurowemu wykonywanie pr
 
 Poniższa tabela ułatwia określenie, czy dla danej integracji najlepsza jest usługa Microsoft Flow, czy Logic Apps:
 
-|  | Microsoft Flow | Aplikacje logiki |
+|  | Microsoft Flow | Logic Apps |
 | --- | --- | --- |
 | **Użytkownicy** |Pracownicy biurowi, użytkownicy biznesowi, administratorzy programu SharePoint |Profesjonalni integratorzy i programiści, informatycy |
 | **Scenariusze** |Samoobsługa |Zaawansowane integracje |
@@ -55,7 +55,7 @@ W przypadku usługi Azure Functions tworzenie aranżacji odbywa się przez pisan
 
 Można mieszać i dopasowywać usługi podczas tworzenia aranżacji, wywołując usługę Functions z usługi Logic Apps i na odwrót. Wybierz sposób tworzenia poszczególnych aranżacji na podstawie możliwości usług lub własnych preferencji. W poniższej tabeli wymieniono niektóre kluczowe różnice między tymi elementami:
 
-|  | Trwałe funkcje | Aplikacje logiki |
+|  | Trwałe funkcje | Logic Apps |
 | --- | --- | --- |
 | **Opracowywanie zawartości** | Najpierw kod (imperatywne) | Najpierw projektant (deklaratywne) |
 | **Łączność** | [Około dwunastu wbudowanych typów powiązań](functions-triggers-bindings.md#supported-bindings), pisanie kodu dla powiązań niestandardowych | [Duża kolekcja łączników](../connectors/apis-list.md), [pakiet integracyjny dla przedsiębiorstw dla scenariuszy B2B](../logic-apps/logic-apps-enterprise-integration-overview.md), [tworzenie łączników niestandardowych](../logic-apps/custom-connector-overview.md) |
@@ -80,14 +80,14 @@ Usługa WebJobs i zestaw SDK usługi WebJobs najlepiej działają razem, ale mo�
 
 Usługa Azure Functions bazuje na zestawie SDK usługi WebJobs, dlatego współużytkuje z innymi usługami platformy Azure liczne wyzwalacze i połączenia. Poniżej przedstawiono kilka czynników, które należy wziąć pod uwagę, wybierając między usługą Azure Functions a usługą WebJobs z zestawem WebJobs SDK:
 
-|  | Functions | Usługa WebJobs z zestawem SDK usługi WebJobs |
+|  | Funkcje | Usługa WebJobs z zestawem SDK usługi WebJobs |
 | --- | --- | --- |
 |[Model aplikacji bez użycia serwera](https://azure.microsoft.com/solutions/serverless/) z [automatycznym skalowaniem](functions-scale.md#how-the-consumption-and-premium-plans-work)|✔||
 |[Programowanie i testowanie w przeglądarce](functions-create-first-azure-function.md) |✔||
 |[Płatność za użycie](functions-scale.md#consumption-plan)|✔||
 |[Integracja z usługą Logic Apps](functions-twitter-email.md)|✔||
 | Zdarzenia wyzwalacza |[Czasomierz](functions-bindings-timer.md)<br>[Kolejki i obiekty blob usługi Azure Storage](functions-bindings-storage-blob.md)<br>[Kolejki i tematy usługi Azure Service Bus](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/WebHook (GitHub, Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Czasomierz](functions-bindings-timer.md)<br>[Kolejki i obiekty blob usługi Azure Storage](functions-bindings-storage-blob.md)<br>[Kolejki i tematy usługi Azure Service Bus](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[System plików](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
-| Obsługiwane języki  |C#<br>F#<br>JavaScript<br>Java<br>Python<br>PowerShell |C#<sup>1</sup>|
+| Obsługiwane języki  |C#<br>F#<br>JavaScript<br>Java<br>Python<br>Program PowerShell |C#<sup>1</sup>|
 |Menedżer pakietów|NPM i NuGet|NuGet<sup>2</sup>|
 
 <sup>1</sup> Zadania WebJob (bez zestawu SDK WebJob) obsługują C#, Java, JavaScript, bash,. cmd,. bat, PowerShell, php, TypeScript, Python i innych. To nie jest pełna lista. Zadanie WebJob może uruchomić dowolny program lub skrypt, który można uruchomić w piaskownicy usługi App Service.

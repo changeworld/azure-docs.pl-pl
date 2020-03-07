@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
 ms.openlocfilehash: cae3072a3468b232e95d7c1949948b71059695ea
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842873"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396954"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Wprowadzenie do rozwiązywania problemów dotyczących połączeń w usłudze Azure Network Watcher
 
@@ -46,7 +46,7 @@ W poniższej tabeli przedstawiono właściwości zwracane po zakończeniu rozwi�
 |Przeskoki []. Luk | Kolekcja problemów, które zostały napotkane podczas sprawdzania tego przeskoku. Jeśli nie wystąpiły żadne problemy, wartość jest pusta.|
 |Przeskoki []. Problemy []. Źródł | W bieżącym przeskoku, w którym wystąpił problem. Możliwe wartości:<br/> **Ruch przychodzący** — problem dotyczy linku z poprzedniego przeskoku do bieżącego przeskoku<br/>Ruch **wychodzący** jest związany z linkiem z bieżącego przeskoku do następnego przeskoku<br/>**Lokalne** — problem dotyczy bieżącego przeskoku.|
 |Przeskoki []. Problemy []. Obrażeń | Ważność wykrytego problemu. Możliwe wartości to **Error** i **Warning**. |
-|Przeskoki []. Problemy []. Wprowadź |Typ znalezionego problemu. Możliwe wartości: <br/>**CPU**<br/>**Pamięć**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
+|Przeskoki []. Problemy []. Wprowadź |Typ znalezionego problemu. Możliwe wartości: <br/>**TESTY**<br/>**Rozmiar**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
 |Przeskoki []. Problemy []. Context |Szczegóły dotyczące znalezionego problemu.|
 |Przeskoki []. Problemy []. Context []. Key |Zwrócono klucz pary par klucz-wartość.|
 |Przeskoki []. Problemy []. Context []. wartość |Wartość zwracanej pary kluczy.|
@@ -75,7 +75,7 @@ Rozwiązywanie problemów z połączeniami zwraca typy błędów dotyczące poł
 |Typ  |Opis  |
 |---------|---------|
 |Procesor CPU     | Wysokie wykorzystanie procesora CPU.       |
-|Pamięć     | Duże użycie pamięci.       |
+|Memory (Pamięć)     | Duże użycie pamięci.       |
 |GuestFirewall     | Ruch jest zablokowany z powodu konfiguracji zapory maszyny wirtualnej.        |
 |DNSResolution     | Rozpoznawanie nazw DNS dla adresu docelowego nie powiodło się.        |
 |NetworkSecurityRule    | Ruch jest blokowany przez regułę sieciowej grupy zabezpieczeń (zwracana jest reguła)        |

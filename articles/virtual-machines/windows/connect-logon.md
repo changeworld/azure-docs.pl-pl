@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 152df830f11cd5a73235559c5c5d65ced44f22fa
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842122"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379938"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Jak nawiązać połączenie i zalogować się do maszyny wirtualnej platformy Azure z systemem Windows
 Korzystając z przycisku **Połącz** w witrynie Azure Portal, uruchomisz sesję pulpitu zdalnego z poziomu pulpitu systemu Windows. Najpierw Nawiąż połączenie z maszyną wirtualną, a następnie zaloguj się.

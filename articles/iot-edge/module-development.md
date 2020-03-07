@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 96bd6b461a5374b5f5bc578c5f58dbcd09cd7087
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548632"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358691"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>Opracowywanie własnych modułów IoT Edge
 
@@ -31,9 +31,9 @@ Centrum usługi IoT Edge udostępnia dwie główne funkcje: serwer proxy do Cent
 
 Usługa IoT Hub będzie widział wystąpienia modułu, analogicznie do urządzenia, w tym sensie, że:
 
-* ma ona bliźniaczą reprezentację modułu, który jest odrębna i odizolowane od [bliźniaczej reprezentacji urządzenia](../iot-hub/iot-hub-devguide-device-twins.md) i innych bliźniaczych reprezentacjach modułów tych urządzeń;
-* może wysłać [komunikatów z urządzenia do chmury](../iot-hub/iot-hub-devguide-messaging.md);
-* może ona odbierać [metody bezpośrednie](../iot-hub/iot-hub-devguide-direct-methods.md) przeznaczone specjalnie dla swojej tożsamości.
+* ma dwuosiowy moduł, który jest odrębny i odizolowany od [sznurka urządzenia](../iot-hub/iot-hub-devguide-device-twins.md) i innego modułu bliźniaczych reprezentacji tego urządzenia;
+* może wysyłać [komunikaty z urządzenia do chmury](../iot-hub/iot-hub-devguide-messaging.md);
+* może otrzymywać [bezpośrednie metody](../iot-hub/iot-hub-devguide-direct-methods.md) ukierunkowane na jego tożsamość.
 
 Obecnie moduły nie mogą odbierać komunikatów z chmury do urządzenia ani używać funkcji przekazywania plików.
 
@@ -86,7 +86,7 @@ W przypadku wszystkich języków w poniższej tabeli IoT Edge obsługuje program
 >[!NOTE]
 >Obsługa programowania i debugowania dla urządzeń z systemem ARM64 Linux jest w [publicznej wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Aby uzyskać więcej informacji, zobacz [programowanie i debugowanie modułów IoT Edge arm64 w Visual Studio Code (wersja zapoznawcza)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview).
 
-### <a name="windows"></a>Windows
+### <a name="windows"></a>System Windows
 
 W przypadku wszystkich języków w poniższej tabeli IoT Edge obsługuje programowanie dla urządzeń z systemem AMD64 Windows.
 

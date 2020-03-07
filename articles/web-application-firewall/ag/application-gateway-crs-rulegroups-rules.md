@@ -9,11 +9,11 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 0303f09e5e704a18576bf50d1f00007f7f86f320
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075370"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373101"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Zasady i reguły reguły KSR zapory aplikacji sieci Web
 
@@ -94,7 +94,7 @@ Program KSR 3,0 obejmuje 12 grup reguł, jak pokazano w poniższej tabeli. Każd
 
 Następujące grupy reguł i reguły są dostępne w przypadku używania zapory aplikacji sieci Web na Application Gateway.
 
-# <a name="owasp-31tabowasp31"></a>[OWASP 3,1](#tab/owasp31)
+# <a name="owasp-31"></a>[OWASP 3,1](#tab/owasp31)
 
 ## <a name="owasp31"></a>Zestawy reguł
 
@@ -340,7 +340,7 @@ Następujące grupy reguł i reguły są dostępne w przypadku używania zapory 
 |944130|Podejrzane klasy języka Java|
 |944200|Wykorzystanie deserializacji platformy Apache Commons Attribution|
 
-# <a name="owasp-30tabowasp30"></a>[OWASP 3.0](#tab/owasp30)
+# <a name="owasp-30"></a>[OWASP 3,0](#tab/owasp30)
 
 ## <a name="owasp30"></a>Zestawy reguł
 
@@ -540,7 +540,7 @@ Następujące grupy reguł i reguły są dostępne w przypadku używania zapory 
 |943110|Możliwy atak utrwalania sesji = Nazwa parametru SessionID z odwołującym się poza domenę|
 |943120|Możliwy atak utrwalania sesji = Nazwa parametru SessionID bez odwołującego się|
 
-# <a name="owasp-229tabowasp2"></a>[OWASP 2.2.9](#tab/owasp2)
+# <a name="owasp-229"></a>[OWASP 2.2.9](#tab/owasp2)
 
 ## <a name="owasp229"></a>Zestawy reguł
 

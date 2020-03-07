@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
 ms.openlocfilehash: 15a5770eb2964f0f2039fe93de904af65d4c81ed
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598752"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360165"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Utrwalanie plików w Azure Cloud Shell
 Cloud Shell korzysta z usługi Azure File Storage, aby utrwalać pliki między sesjami. Na początku, Cloud Shell prosi o skojarzenie nowego lub istniejącego udziału plików w celu utrwalenia plików między sesjami.

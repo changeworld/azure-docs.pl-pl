@@ -12,11 +12,11 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
 ms.openlocfilehash: 601c537a51e29ae1f107127e1b83c07448eee9ab
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348879"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396882"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Skonfiguruj aktywną replikację geograficzną dla Azure SQL Database w Azure Portal i zainicjuj pracę w trybie failover
 

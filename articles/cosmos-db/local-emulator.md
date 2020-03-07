@@ -7,11 +7,11 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
 ms.openlocfilehash: 287933de6403d680c5aa5b6c78df49abe5f2ac56
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591374"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364502"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Korzystanie z emulatora usługi Azure Cosmos na potrzeby lokalnego tworzenia i testowania
 

@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
 ms.openlocfilehash: 9d213c8fa03ad2ca5e5fd7e620e52aa502749be2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969337"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390125"
 ---
-# <a name="authoring-and-runtime-keys"></a>Tworzenie i klucze środowiska uruchomieniowego
+# <a name="authoring-and-runtime-keys"></a>Tworzenia i klucze środowiska uruchomieniowego
 
 Language Understanding (LUIS) ma dwie usługi i zestawy interfejsów API: 
 
@@ -46,7 +46,7 @@ LUIS umożliwia korzystanie z trzech typów zasobów platformy Azure:
  
 |Klucz|Przeznaczenie|`kind` usługi poznawczej|`type` usługi poznawczej|
 |--|--|--|--|
-|[Tworzenie klucza](#programmatic-key)|Dostęp do danych aplikacji i zarządzanie nimi za pomocą tworzenia, uczenia, publikowania i testowania. Utwórz klucz tworzenia LUIS, jeśli zamierzasz programowo tworzyć aplikacje LUIS.<br><br>Celem `LUIS.Authoring` klucza jest umożliwienie:<br>* programowe zarządzanie aplikacjami i modelami Language Understanding, w tym szkolenia i publikowanie<br> * Kontroluj uprawnienia do zasobu tworzenia, przypisując osoby do [roli współautor](#contributions-from-other-authors).|`LUIS.Authoring`|`Cognitive Services`|
+|[Klucz tworzenia](#programmatic-key)|Dostęp do danych aplikacji i zarządzanie nimi za pomocą tworzenia, uczenia, publikowania i testowania. Utwórz klucz tworzenia LUIS, jeśli zamierzasz programowo tworzyć aplikacje LUIS.<br><br>Celem `LUIS.Authoring` klucza jest umożliwienie:<br>* programowe zarządzanie aplikacjami i modelami Language Understanding, w tym szkolenia i publikowanie<br> * Kontroluj uprawnienia do zasobu tworzenia, przypisując osoby do [roli współautor](#contributions-from-other-authors).|`LUIS.Authoring`|`Cognitive Services`|
 |[Klucz predykcyjny](#prediction-endpoint-runtime-key)| Zapytania prognozowania żądań punktów końcowych. Utwórz klucz przewidywania LUIS, zanim aplikacja kliencka zażąda prognoz wykraczających poza żądania 1 000 dostarczone przez zasób początkowy. |`LUIS`|`Cognitive Services`|
 |[Klucz zasobu usługi poznawczej — wiele usług](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|Żądania punktu końcowego przewidywania zapytań udostępniane z LUIS i innymi obsługiwanymi Cognitive Services.|`CognitiveServices`|`Cognitive Services`|
 
@@ -123,9 +123,9 @@ Właściciel i wszyscy Współautorzy mają dostęp do tworzenia aplikacji.
 |Importowanie wersji||
 |Upublicznić aplikacji|Gdy aplikacja jest publiczny, każda osoba z kluczem tworzenia lub punkt końcowy kwerendy aplikacji.|
 |Modyfikowanie modelu|
-|Publikuj|
-|Przejrzyj wypowiedzi punktu końcowego dla [aktywne uczenie](luis-how-to-review-endpoint-utterances.md)|
-|Uczenie|
+|Publikowanie|
+|Zapoznaj się z punktem końcowym wyrażenia długości na potrzeby [aktywnego uczenia](luis-how-to-review-endpoint-utterances.md)|
+|Szkolenie|
 
 <a name="prediction-endpoint-runtime-key"></a>
 
@@ -133,11 +133,11 @@ Właściciel i wszyscy Współautorzy mają dostęp do tworzenia aplikacji.
 
 Dostęp do zapytania do punktu końcowego przewidywania jest kontrolowany przez ustawienie na stronie **Informacje o aplikacji** w sekcji **Zarządzanie** . 
 
-|[Prywatnych punktów końcowych](#runtime-security-for-private-apps)|[Publiczny punkt końcowy](#runtime-security-for-public-apps)|
+|[Prywatny punkt końcowy](#runtime-security-for-private-apps)|[Publiczny punkt końcowy](#runtime-security-for-public-apps)|
 |:--|:--|
 |Dostępne dla właściciela i współautorów|Dostępne dla właściciela, współautorów i innych osób, które wiedzą o IDENTYFIKATORze aplikacji|
 
-Można kontrolować, kto widzi klucz środowiska uruchomieniowego LUIS, wywołując go w środowisku serwer-serwer. Usługa LUIS korzystają z robota, połączenie między bot i LUIS jest już bezpieczne. Bezpośrednie wywoływanie punktu końcowego usługi LUIS należy utworzyć interfejs API po stronie serwera (takich jak Azure [funkcja](https://azure.microsoft.com/services/functions/)) przy użyciu kontrolowanego dostępu (takich jak [AAD](https://azure.microsoft.com/services/active-directory/)). Gdy interfejs API po stronie serwera jest wywoływany i uwierzytelniany, a Autoryzacja jest weryfikowana, należy przekazać wywołanie do LUIS. Chociaż ta strategia nie zapobiega atakom typu man-in-the-Middle, zasłania klucz i adres URL punktu końcowego od użytkowników, umożliwia śledzenie dostępu i umożliwia dodanie rejestrowania odpowiedzi na punkt końcowy (na przykład [Application Insights](https://azure.microsoft.com/services/application-insights/)).
+Można kontrolować, kto widzi klucz środowiska uruchomieniowego LUIS, wywołując go w środowisku serwer-serwer. Usługa LUIS korzystają z robota, połączenie między bot i LUIS jest już bezpieczne. W przypadku bezpośredniego wywoływania punktu końcowego LUIS należy utworzyć interfejs API po stronie serwera (na przykład [funkcję](https://azure.microsoft.com/services/functions/)platformy Azure) z dostępem kontrolowanym (na przykład [AAD](https://azure.microsoft.com/services/active-directory/)). Gdy interfejs API po stronie serwera jest wywoływany i uwierzytelniany, a Autoryzacja jest weryfikowana, należy przekazać wywołanie do LUIS. Chociaż ta strategia nie zapobiega atakom typu man-in-the-Middle, zasłania klucz i adres URL punktu końcowego od użytkowników, umożliwia śledzenie dostępu i umożliwia dodanie rejestrowania odpowiedzi na punkt końcowy (na przykład [Application Insights](https://azure.microsoft.com/services/application-insights/)).
 
 #### <a name="runtime-security-for-private-apps"></a>Zabezpieczenia środowiska uruchomieniowego dla prywatnych aplikacji
 
@@ -151,9 +151,9 @@ Można kontrolować, kto widzi klucz środowiska uruchomieniowego LUIS, wywołuj
 
 #### <a name="runtime-security-for-public-apps"></a>Zabezpieczenia środowiska uruchomieniowego dla aplikacji publicznych
 
-Po skonfigurowaniu aplikacji jako publiczne, _wszelkie_ prawidłowe LUIS tworzenia klucza lub klucza punktu końcowego usługi LUIS mogą wysyłać zapytania swojej aplikacji, tak długo, jak klucz nie został użyty przydział całego punktu końcowego.
+Gdy aplikacja zostanie skonfigurowana jako publiczna, _dowolny_ prawidłowy klucz Luis Authoring lub klucz punktu końcowego Luis może wysyłać zapytania do aplikacji, o ile klucz nie użył całego limitu przydziału punktów końcowych.
 
-Użytkownik, który nie jest właścicielem lub współautorem, może uzyskać dostęp do środowiska uruchomieniowego aplikacji publicznej tylko wtedy, gdy podano identyfikator aplikacji. Usługa LUIS nie ma publicznej _rynku_ lub w inny sposób wyszukiwania dla aplikacji w sieci publicznej.  
+Użytkownik, który nie jest właścicielem lub współautorem, może uzyskać dostęp do środowiska uruchomieniowego aplikacji publicznej tylko wtedy, gdy podano identyfikator aplikacji. LUIS nie ma publicznego _rynku_ ani innego sposobu wyszukiwania aplikacji publicznej.  
 
 Opublikowaniu publicznych aplikacji we wszystkich regionach, aby użytkownik z kluczem zależności od regionu zasobu usługi LUIS dostęp do aplikacji w niezależnie od regionu jest skojarzony z kluczem zasobów.
 
@@ -163,9 +163,9 @@ LUIS nie ma koncepcji przenoszenia własności zasobu.
 
 ## <a name="securing-the-endpoint"></a>Zabezpieczanie punktu końcowego 
 
-Można kontrolować, kto może wyświetlać klucz punktu końcowego środowiska uruchomieniowego LUIS prognoz, wywołując go w środowisku serwer-serwer. Usługa LUIS korzystają z robota, połączenie między bot i LUIS jest już bezpieczne. Bezpośrednie wywoływanie punktu końcowego usługi LUIS należy utworzyć interfejs API po stronie serwera (takich jak Azure [funkcja](https://azure.microsoft.com/services/functions/)) przy użyciu kontrolowanego dostępu (takich jak [AAD](https://azure.microsoft.com/services/active-directory/)). Gdy wywoływany jest interfejs API po stronie serwera i uwierzytelnianie i autoryzacja są weryfikowane, Przekaż wywołań do usługi LUIS. Chociaż ta strategia nie zapobiegać atakom typu man-in--middle, zaciemnia punktu końcowego od swoich użytkowników, pozwala na śledzenie dostępu i umożliwia dodawanie rejestrowania odpowiedzi punktu końcowego (takie jak [usługi Application Insights](https://azure.microsoft.com/services/application-insights/)).  
+Można kontrolować, kto może wyświetlać klucz punktu końcowego środowiska uruchomieniowego LUIS prognoz, wywołując go w środowisku serwer-serwer. Usługa LUIS korzystają z robota, połączenie między bot i LUIS jest już bezpieczne. W przypadku bezpośredniego wywoływania punktu końcowego LUIS należy utworzyć interfejs API po stronie serwera (na przykład [funkcję](https://azure.microsoft.com/services/functions/)platformy Azure) z dostępem kontrolowanym (na przykład [AAD](https://azure.microsoft.com/services/active-directory/)). Gdy wywoływany jest interfejs API po stronie serwera i uwierzytelnianie i autoryzacja są weryfikowane, Przekaż wywołań do usługi LUIS. Chociaż ta strategia nie zapobiega atakom typu man-in-the-Middle, zasłania swój punkt końcowy od użytkowników, umożliwia śledzenie dostępu i umożliwia dodanie rejestrowania odpowiedzi na punkt końcowy (na przykład [Application Insights](https://azure.microsoft.com/services/application-insights/)).  
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Zrozumienie [versioning](luis-concept-version.md) pojęcia. 
+* Opis pojęć związanych z [przechowywaniem wersji](luis-concept-version.md) . 
 * Dowiedz się [, jak tworzyć klucze](luis-how-to-azure-subscription.md).

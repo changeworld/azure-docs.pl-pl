@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
-ms.openlocfilehash: 4c6a9a2b5991c9f99bf728ecfed144cc77e4c49a
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: b8dbbb2810277bef20cb3b9b47a63deeea3e0ff9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314338"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355356"
 ---
 # <a name="what-is-azure-machine-learning"></a>Co to jest usługa Azure Machine Learning?
 
@@ -28,7 +28,7 @@ Usługa współpracuje również z popularnymi narzędziami typu "open source", 
 > [!VIDEO https://channel9.msdn.com/Events/Connect/Microsoft-Connect--2018/D240/player]
 
 > [!Tip]
-> **Bezpłatna wersja próbna!**  Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj. Możesz uzyskać środki do wydania na usługi platformy Azure. Nawet po ich wyczerpaniu możesz zachować konto i korzystać z [bezpłatnych usług platformy Azure](https://azure.microsoft.com/free/). Karta kredytowa nie zostanie obciążona, chyba że jawnie zmienisz ustawienia i poprosisz o jej obciążenie.
+> **Bezpłatna wersja próbna!**  Jeśli nie masz subskrypcji na platformie Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj. Możesz uzyskać środki do wydania na usługi platformy Azure. Nawet po ich wyczerpaniu możesz zachować konto i korzystać z [bezpłatnych usług platformy Azure](https://azure.microsoft.com/free/). Karta kredytowa nie zostanie obciążona, chyba że jawnie zmienisz ustawienia i poprosisz o jej obciążenie.
 
 
 ## <a name="what-is-machine-learning"></a>Co to jest uczenie maszynowe?
@@ -66,7 +66,7 @@ Możesz również [zautomatyzować szkolenia i dostrajanie modeli](tutorial-auto
 
 W przypadku szkolenia i wdrożenia z niską ilością kodu, wypróbuj następujące rozwiązania:
 
-+ **Projektant Azure Machine Learning**
++ **Projektant Azure Machine Learning (wersja zapoznawcza)**
 
   Za pomocą projektanta można przygotowywać dane, uczenie, testować, wdrażać i śledzić modele uczenia maszynowego bez konieczności pisania kodu. Nie ma potrzeby programowania, można wizualnie połączyć zestawy danych i moduły, aby utworzyć model. Wypróbuj [samouczek projektanta](tutorial-designer-automobile-price-train-score.md).
 
@@ -104,10 +104,10 @@ Azure Machine Learning współpracuje z innymi usługami na platformie Azure, a 
 
 + Cele obliczeniowe, takie jak __usługa Azure Kubernetes__, __Azure Container Instances__, __Azure Databricks__, __Azure Data Lake Analytics__i __Azure HDInsight__. Aby uzyskać więcej informacji na temat obiektów docelowych obliczeń, zobacz [co to są cele obliczeniowe?](concept-compute-target.md).
 + __Azure Event Grid__. Aby uzyskać więcej informacji, zobacz temat [Korzystanie z zdarzeń Azure Machine Learning](concept-event-grid-integration.md).
-+ __Usługa Azure Monitor__. Aby uzyskać więcej informacji, zobacz [monitorowanie Azure Machine Learning](monitor-azure-machine-learning.md).
++ __Azure monitor__. Aby uzyskać więcej informacji, zobacz [monitorowanie Azure Machine Learning](monitor-azure-machine-learning.md).
 + Magazyny danych, takie jak __konta usługi Azure Storage__, __Azure Data Lake Storage__, __Azure SQL Database__, __Azure Database for PostgreSQL__i __otwarte zestawy danych platformy Azure__. Aby uzyskać więcej informacji, zobacz [dostęp do danych w usługach Azure Storage](how-to-access-data.md) i [Tworzenie zestawów danych za pomocą otwartych zestawów danych platformy Azure](how-to-create-register-datasets.md#create-datasets-with-azure-open-datasets).
 + __Sieci wirtualne platformy Azure__. Aby uzyskać więcej informacji, zobacz temat [bezpieczne eksperymentowanie i wnioskowanie w sieci wirtualnej](how-to-enable-virtual-network.md).
-+ __Potoki usługi Azure__. Aby uzyskać więcej informacji, zobacz [uczenie i wdrażanie modeli uczenia maszynowego](/azure/devops/pipelines/targets/azure-machine-learning).
++ __Azure Pipelines__. Aby uzyskać więcej informacji, zobacz [uczenie i wdrażanie modeli uczenia maszynowego](/azure/devops/pipelines/targets/azure-machine-learning).
 + __Dzienniki repozytorium git__. Aby uzyskać więcej informacji, zobacz Integracja z usługą [git](concept-train-model-git-integration.md).
 + __MLFlow__. Aby uzyskać więcej informacji, zobacz [MLflow do śledzenia metryk i wdrażania modeli](how-to-use-mlflow.md) 
 + __Kubeflow__. Aby uzyskać więcej informacji, zobacz [Tworzenie kompleksowych potoków przepływu pracy](https://www.kubeflow.org/docs/azure/).

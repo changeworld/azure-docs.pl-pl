@@ -6,11 +6,11 @@ author: bwren
 ms.author: bwren
 ms.date: 06/14/2019
 ms.openlocfilehash: 4d0ceacd37748e9761903d02fd7e052d70b10e15
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77668693"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362290"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Zarządzanie agentem Log Analytics dla systemów Windows i Linux i obsługa go
 

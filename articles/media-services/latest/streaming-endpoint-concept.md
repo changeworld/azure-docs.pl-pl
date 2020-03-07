@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
 ms.openlocfilehash: 849d1187d6b854d48ad75ab1e55f600407420346
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562364"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395076"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Punkty końcowe przesyłania strumieniowego (Źródło) w Azure Media Services
 
@@ -150,7 +150,7 @@ Pojedynczy punkt końcowy przesyłania strumieniowego może przesyłać strumien
 
     Rozważmy scenariusz, w którym klienci głównie oglądają zawartość na żywo, ale mogą jedynie czasami oglądać zawartość na żądanie i są obsługiwane z tego samego punktu końcowego przesyłania strumieniowego. Niskie użycie zawartości na żądanie zajmie miejsce w pamięci podręcznej, które będzie lepiej zapisane dla zawartości na żywo. W tym scenariuszu zalecamy obsługę zawartości na żywo z jednego punktu końcowego przesyłania strumieniowego i długiej zawartości z innego punktu końcowego przesyłania strumieniowego. Poprawi to wydajność zawartości zdarzenia na żywo.
     
-## <a name="scaling-streaming-with-cdn"></a>Skalowanie przesyłania strumieniowego przy użyciu usługi CDN
+## <a name="scaling-streaming-with-cdn"></a>Skalowanie przesyłania strumieniowego przy użyciu sieci CDN
 
 Zobacz następujące artykuły:
 

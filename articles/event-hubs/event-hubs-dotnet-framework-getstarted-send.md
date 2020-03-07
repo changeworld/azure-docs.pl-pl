@@ -16,11 +16,11 @@ ms.custom: seodec18
 ms.date: 12/20/2019
 ms.author: shvija
 ms.openlocfilehash: 385430d993afe8b7a0ad57991d3c93eebd46ddcb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437263"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365407"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-net-framework"></a>Szybki Start: wysyłanie zdarzeń do i odbieranie zdarzeń z usługi Azure Event Hubs przy użyciu .NET Framework
 Azure Event Hubs to platforma do pozyskiwania i strumieniowego przesyłania danych, która umożliwia odbieranie i przetwarzanie milionów zdarzeń na sekundę. Usługa Event Hubs pozwala przetwarzać i przechowywać zdarzenia, dane lub dane telemetryczne generowane przez rozproszone oprogramowanie i urządzenia. Dane wysłane do centrum zdarzeń mogą zostać przekształcone i zmagazynowane przy użyciu dowolnego dostawcy analityki czasu rzeczywistego lub adapterów przetwarzania wsadowego/magazynowania. Aby zapoznać się ze szczegółowym omówieniem usługi Event Hubs, zobacz [Omówienie usługi Event Hubs](event-hubs-about.md) i [Funkcje usługi Event Hubs](event-hubs-features.md).
@@ -45,7 +45,7 @@ W programie Visual Studio utwórz nowy projekt aplikacji klasycznej Visual C# za
 ### <a name="add-the-event-hubs-nuget-package"></a>Dodawanie pakietu NuGet usługi Event Hubs
 
 1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy projekt **Nadawca**, a następnie kliknij pozycję **Zarządzaj pakietami NuGet rozwiązania**. 
-2. Kliknij kartę **Przeglądanie**, a następnie wyszukaj ciąg `WindowsAzure.ServiceBus`. Kliknij pozycję **Zainstaluj** i zaakceptuj warunki użytkowania. 
+2. Kliknij kartę **Przeglądanie**, a następnie wyszukaj ciąg `WindowsAzure.ServiceBus`. Kliknij przycisk **Zainstaluj** i zaakceptuj warunki użytkowania. 
    
     ![Zainstaluj pakiet NuGet usługi Service Bus](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp2.png)
    
@@ -59,7 +59,7 @@ W programie Visual Studio utwórz nowy projekt aplikacji klasycznej Visual C# za
     using System.Threading;
     using Microsoft.ServiceBus.Messaging;
     ```
-2. Dodaj następujące pola do klasy **Program**, zastępując symbole zastępcze nazwą centrum zdarzeń utworzonego w poprzedniej sekcji oraz zapisanymi wcześniej parametrami połączenia na poziomie przestrzeni nazw. Możesz skopiować parametry połączenia Centrum zdarzeń z **podstawowe parametry połączenia** klucza w ramach **RootManageSharedAccessKey** na stronie Centrum zdarzeń w witrynie Azure portal. Aby uzyskać szczegółowe instrukcje, zobacz [pobieranie parametrów połączenia](event-hubs-get-connection-string.md#get-connection-string-from-the-portal).
+2. Dodaj następujące pola do klasy **Program**, zastępując symbole zastępcze nazwą centrum zdarzeń utworzonego w poprzedniej sekcji oraz zapisanymi wcześniej parametrami połączenia na poziomie przestrzeni nazw. Parametry połączenia dla centrum zdarzeń można skopiować z **parametrów połączenia — klucz podstawowy** w obszarze **RootManageSharedAccessKey** na stronie centrum zdarzeń w Azure Portal. Aby uzyskać szczegółowe instrukcje, zobacz [pobieranie parametrów połączenia](event-hubs-get-connection-string.md#get-connection-string-from-the-portal).
    
     ```csharp
     static string eventHubName = "Your Event Hub name";
@@ -116,7 +116,7 @@ W programie Visual Studio utwórz nowy projekt aplikacji klasycznej Visual C# za
 ### <a name="add-the-event-hubs-nuget-package"></a>Dodawanie pakietu NuGet usługi Event Hubs
 
 1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy projekt **Odbiornik**, a następnie kliknij pozycję **Zarządzaj pakietami NuGet rozwiązania**.
-2. Kliknij kartę **Przeglądanie**, a następnie wyszukaj ciąg `Microsoft Azure Service Bus Event Hub - EventProcessorHost`. Kliknij pozycję **Zainstaluj** i zaakceptuj warunki użytkowania.
+2. Kliknij kartę **Przeglądanie**, a następnie wyszukaj ciąg `Microsoft Azure Service Bus Event Hub - EventProcessorHost`. Kliknij przycisk **Zainstaluj** i zaakceptuj warunki użytkowania.
    
     ![Wyszukaj pakiet NuGet hosta procesora zdarzeń](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-eph-csharp1.png)
    
@@ -188,7 +188,7 @@ W programie Visual Studio utwórz nowy projekt aplikacji klasycznej Visual C# za
       using Microsoft.ServiceBus.Messaging;
       ```
     
-2. Zastąp `Main` method in Class metoda `Program` klasy następujący kod, zastępując nazwę Centrum zdarzeń i parametry połączenia na poziomie przestrzeni nazw, które zostały zapisane wcześniej oraz konto magazynu i klucz skopiowane we wcześniejszych sekcjach. 
+2. Zastąp metodę `Main` w klasie `Program` następującym kodem, zastępując nazwę centrum zdarzeń i parametry połączenia na poziomie przestrzeni nazw, które zostały zapisane wcześniej, oraz konto magazynu i klucz skopiowane w poprzednich sekcjach. 
     
       ```csharp
       static void Main(string[] args)

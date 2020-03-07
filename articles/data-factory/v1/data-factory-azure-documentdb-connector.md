@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: a638184d5232de916ebd25360147301a93309dd9
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930084"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387524"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Przenoszenie danych do i z Azure Cosmos DB przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -41,7 +41,7 @@ Można utworzyć potok z działaniem kopiowania, które przenosi dane do/z Azure
 
 Najprostszym sposobem utworzenia potoku jest użycie **Kreatora kopiowania**. Zobacz [Samouczek: Tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) na potrzeby szybkiego instruktażu dotyczącego tworzenia potoku przy użyciu Kreatora kopiowania danych.
 
-Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
+Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Aby uzyskać instrukcje krok po kroku dotyczące tworzenia potoku za pomocą działania kopiowania, zobacz [Samouczek dotyczący działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Niezależnie od tego, czy używasz narzędzi, czy interfejsów API, wykonaj następujące kroki, aby utworzyć potok służący do przenoszenia danych ze źródłowego magazynu danych do magazynu danych ujścia:
 
@@ -58,8 +58,8 @@ Poniższa tabela zawiera opis elementów JSON specyficznych dla Azure Cosmos DB 
 
 | **Właściwość** | **Opis** | **Wymagane** |
 | --- | --- | --- |
-| type |Właściwość Type musi mieć wartość: **DocumentDb** |Tak |
-| connectionString |Określ informacje, które są konieczne do nawiązania połączenia z bazą danych Azure Cosmos DB. |Tak |
+| type |Właściwość Type musi mieć wartość: **DocumentDb** |Yes |
+| connectionString |Określ informacje, które są konieczne do nawiązania połączenia z bazą danych Azure Cosmos DB. |Yes |
 
 Przykład:
 
@@ -82,7 +82,7 @@ Sekcja typeProperties jest inna dla każdego typu zestawu danych i zawiera infor
 
 | **Właściwość** | **Opis** | **Wymagane** |
 | --- | --- | --- |
-| collectionName |Nazwa kolekcji dokumentów Cosmos DB. |Tak |
+| collectionName |Nazwa kolekcji dokumentów Cosmos DB. |Yes |
 
 Przykład:
 
@@ -478,21 +478,21 @@ Następnie wyjściowy kod JSON w Cosmos DB będzie:
   "id": "a5e8595c-62ec-4554-a118-3940f4ff70b6"
 }
 ```
-Azure Cosmos DB to Magazyn NoSQL dla dokumentów JSON, w którym zagnieżdżone struktury są dozwolone. Azure Data Factory umożliwia użytkownikowi odróżnienie hierarchii za pośrednictwem **nestingSeparator**, czyli "." w tym przykładzie. Po separatorze działanie kopiowania będzie generować obiekt "name" z trzema elementami podrzędnymi od pierwszej, Środkowej i ostatnich, zgodnie z parametrami "name. First", "name. Middle" i "name. Last" w definicji tabeli.
+Azure Cosmos DB to Magazyn NoSQL dla dokumentów JSON, w którym zagnieżdżone struktury są dozwolone. Azure Data Factory umożliwia użytkownikowi odróżnienie hierarchii za pośrednictwem **nestingSeparator**, czyli "." W tym przykładzie. Po separatorze działanie kopiowania będzie generować obiekt "name" z trzema elementami podrzędnymi od pierwszej, Środkowej i ostatnich, zgodnie z parametrami "name. First", "name. Middle" i "name. Last" w definicji tabeli.
 
 ## <a name="appendix"></a>Dodatek
 1. **Pytanie:** Czy działanie kopiowania obsługuje aktualizację istniejących rekordów?
 
-    **Odpowiedź:** Nie.
+    **Odpowiedź:** Znaleziono.
 2. **Pytanie:** Jak ponowienie kopii w celu Azure Cosmos DB transakcji z już skopiowanymi rekordami?
 
     **Odpowiedź:** Jeśli rekordy mają pole "ID", a operacja kopiowania próbuje wstawić rekord o takim samym IDENTYFIKATORze, operacja kopiowania zgłosi błąd.
 3. **Pytanie:** Czy Data Factory obsługiwać [zakres lub partycjonowanie danych oparte na skrótach](../../cosmos-db/sql-api-partition-data.md)?
 
-    **Odpowiedź:** Nie.
+    **Odpowiedź:** Znaleziono.
 4. **Pytanie:** Czy można określić więcej niż jedną kolekcję Azure Cosmos DB dla tabeli?
 
-    **Odpowiedź:** Nie. W tej chwili można określić tylko jedną kolekcję.
+    **Odpowiedź:** Znaleziono. W tej chwili można określić tylko jedną kolekcję.
 
 ## <a name="performance-and-tuning"></a>Wydajność i dostrajanie
 Zobacz [Przewodnik dostrajania wydajności & działania kopiowania](data-factory-copy-activity-performance.md) , aby poznać kluczowe czynniki wpływające na wydajność przenoszenia danych (działanie kopiowania) w Azure Data Factory i różne sposoby jego optymalizacji.

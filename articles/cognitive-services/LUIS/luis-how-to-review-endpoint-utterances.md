@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 01/27/2020
 ms.author: diberry
 ms.openlocfilehash: 95b7c7446a47fafd26d00b0da4d880786340fcd0
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775116"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393726"
 ---
 # <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>Jak ulepszyć aplikację LUIS, przeglądając punkt końcowy wyrażenia długości
 
@@ -46,7 +46,7 @@ Użyj portalu LUIS, aby utworzyć poprawną kwerendę punktu końcowego.
 
 ## <a name="correct-intent-predictions-to-align-utterances"></a>Popraw przewidywania zamierzeń, aby wyrównać wyrażenia długości
 
-Każdy wypowiedź ma sugerowane przeznaczenie, wyświetlana w **wyrównane intencji** kolumny.
+Każdy wypowiedź ma sugerowane zamierzone w kolumnie **cel** .
 
 > [!div class="mx-imgBorder"]
 > [![punktu końcowego wyrażenia długości, że LUIS nie ma pewności](./media/label-suggested-utterances/review-endpoint-utterances.png)](./media/label-suggested-utterances/review-endpoint-utterances.png#lightbox)
@@ -68,4 +68,4 @@ Aby wyłączyć aktywną naukę, nie Rejestruj zapytań użytkownika. Jest to re
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby sprawdzić, jak wydajność poprawia po etykiety sugerowane wypowiedzi, możesz uzyskać dostęp w konsoli testów wybierając **Test** w górnym panelu. Aby uzyskać instrukcje na temat testowania aplikacji przy użyciu konsoli testów, zobacz [szkolenie i testowanie aplikacji](luis-interactive-test.md).
+Aby sprawdzić, jak wydajność zwiększa się po oznaczeniu sugerowanych wyrażenia długości, możesz uzyskać dostęp do konsoli testowej, wybierając **test** w górnym panelu. Aby uzyskać instrukcje dotyczące testowania aplikacji za pomocą konsoli testowej, zobacz [uczenie i testowanie aplikacji](luis-interactive-test.md).

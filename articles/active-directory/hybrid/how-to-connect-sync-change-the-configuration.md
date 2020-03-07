@@ -13,11 +13,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d77882817934d5ad98f16965aeb9dc246931c495
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919073"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376319"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect Sync: wprowadź zmianę konfiguracji domyślnej
 W tym artykule opisano sposób wprowadzania zmian w konfiguracji domyślnej w programie Azure Active Directory (Azure AD) Connect Sync. Zawiera kroki dla niektórych typowych scenariuszy. Korzystając z tej wiedzy, powinno być możliwe wprowadzanie prostych zmian do własnej konfiguracji w oparciu o własne reguły biznesowe.
@@ -264,10 +264,10 @@ Reguła synchronizacji ruchu przychodzącego zezwala na przepływ wartości atry
 
     | Atrybut | Wartość | Szczegóły |
     | --- | --- | --- |
-    | Nazwa | *Podaj nazwę* | Na przykład *w programie z usługi AD — User UserType* |
+    | Name (Nazwa) | *Podaj nazwę* | Na przykład *w programie z usługi AD — User UserType* |
     | Opis | *Podaj opis* |  |
     | Połączony system | *Wybieranie lokalnego łącznika usługi AD* |  |
-    | Typ połączonego obiektu systemu | **User** |  |
+    | Typ połączonego obiektu systemu | **Użytkownicy** |  |
     | Typ obiektu metaverse | **Sprzedawca** |  |
     | Typ łącza | **Dołącz** |  |
     | Pierwszeństwo | *Wybierz liczbę z zakresu od 1 do 99* | 1 – 99 jest zarezerwowany dla reguł synchronizacji niestandardowej. Nie wybieraj wartości, która jest używana przez inną regułę synchronizacji. |
@@ -282,13 +282,13 @@ Reguła synchronizacji ruchu przychodzącego zezwala na przepływ wartości atry
 
 6. Przejdź do karty **transformacja** i zaimplementuj żądaną regułę transformacji. Na przykład jeśli w atrybucie sourceType wyznaczono nieużywany lokalny atrybut usługi AD (na przykład extensionAttribute1), można zaimplementować bezpośredni przepływ atrybutów:
 
-    | Typ przepływu | Atrybut docelowy | Źródło | Zastosuj raz | Typ scalania |
+    | Typ przepływu | Atrybut docelowy | Element źródłowy | Zastosuj raz | Typ scalania |
     | --- | --- | --- | --- | --- |
     | Direct | UserType | extensionAttribute1 | Unchecked | Aktualizacja |
 
     W innym przykładzie, chcesz utworzyć wartość atrybutu UserType z innych właściwości. Na przykład chcesz zsynchronizować wszystkich użytkowników jako gościa, jeśli ich lokalny atrybut AD userPrincipalName kończy się z częścią domeny <em>@partners.fabrikam123.org</em>. Można zaimplementować wyrażenie podobne do tego:
 
-    | Typ przepływu | Atrybut docelowy | Źródło | Zastosuj raz | Typ scalania |
+    | Typ przepływu | Atrybut docelowy | Element źródłowy | Zastosuj raz | Typ scalania |
     | --- | --- | --- | --- | --- |
     | Wyrażenie | UserType | IIF (isobecny ([userPrincipalName]), IIF (CBool (InStr (LCase ([userPrincipalName]), "@partners.fabrikam123.org") = 0), "member", "Gość"), błąd ("UserPrincipalName nie jest obecny w celu określenia typu użytkownika")) | Unchecked | Aktualizacja |
 
@@ -306,10 +306,10 @@ Reguła synchronizacji danych wychodzących zezwala na przepływ wartości atryb
 
     | Atrybut | Wartość | Szczegóły |
     | ----- | ------ | --- |
-    | Nazwa | *Podaj nazwę* | Na przykład *do usługi AAD — User UserType* |
+    | Name (Nazwa) | *Podaj nazwę* | Na przykład *do usługi AAD — User UserType* |
     | Opis | *Podaj opis* ||
     | Połączony system | *Wybieranie łącznika usługi AAD* ||
-    | Typ połączonego obiektu systemu | **User** ||
+    | Typ połączonego obiektu systemu | **Użytkownicy** ||
     | Typ obiektu metaverse | **Sprzedawca** ||
     | Typ łącza | **Dołącz** ||
     | Pierwszeństwo | *Wybierz liczbę z zakresu od 1 do 99* | 1 – 99 jest zarezerwowany dla reguł synchronizacji niestandardowej. Nie wybieraj wartości, która jest używana przez inną regułę synchronizacji. |
@@ -319,13 +319,13 @@ Reguła synchronizacji danych wychodzących zezwala na przepływ wartości atryb
     | Atrybut | Operator | Wartość |
     | --- | --- | --- |
     | sourceObjectType | WIĘKSZY | Użytkownik |
-    | cloudMastered | NOTEQUAL | Prawda |
+    | cloudMastered | NOTEQUAL | True |
 
     Filtr określania zakresu określa, do których obiektów usługi Azure AD jest stosowana ta reguła synchronizacji danych wychodzących. W tym przykładzie używamy tego samego filtru określania zakresu z reguły synchronizacji Out to on-of-Box z *tożsamością użytkownika* . Uniemożliwia stosowanie reguły synchronizacji do obiektów użytkownika, które nie są zsynchronizowane z Active Directory lokalnych. Może być konieczne dostosowanie filtru określania zakresu zgodnie ze wdrożeniem Azure AD Connect.
 
 6. Przejdź do karty **transformacja** i zaimplementuj następującą regułę przekształcania:
 
-    | Typ przepływu | Atrybut docelowy | Źródło | Zastosuj raz | Typ scalania |
+    | Typ przepływu | Atrybut docelowy | Element źródłowy | Zastosuj raz | Typ scalania |
     | --- | --- | --- | --- | --- |
     | Direct | UserType | UserType | Unchecked | Aktualizacja |
 

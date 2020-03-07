@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: aschhab
 ms.openlocfilehash: 683a28ca3cdabd5a7ffbf6e9ffdc3ed0c58d3247
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264699"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78370483"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Najlepsze rozwiązania dotyczące ulepszeń wydajności przy użyciu Service Bus obsługi komunikatów
 
@@ -29,7 +29,7 @@ W tych sekcjach wprowadzono kilka koncepcji, których Service Bus używa w celu 
 
 Service Bus umożliwia klientom wysyłanie i odbieranie komunikatów za pośrednictwem jednego z trzech protokołów:
 
-1. Zaawansowane usługi kolejkowania Protocol (AMQP)
+1. Advanced Message Queuing Protocol (AMQP)
 2. Service Bus Messaging Protocol (SBMP)
 3. HTTP
 
@@ -84,7 +84,7 @@ Tworzenie wsadowe po stronie klienta umożliwia klientowi kolejki lub tematu op�
 
 Domyślnie klient używa interwału partii 20 ms. Możesz zmienić interwał partii, ustawiając właściwość [BatchFlushInterval][BatchFlushInterval] przed utworzeniem fabryki komunikatów. To ustawienie ma wpływ na wszystkich klientów utworzonych przez tę fabrykę.
 
-Aby wyłączyć tworzenie partii, ustaw właściwość [BatchFlushInterval][BatchFlushInterval] na **TimeSpan. zero**. Przykład:
+Aby wyłączyć tworzenie partii, ustaw właściwość [BatchFlushInterval][BatchFlushInterval] na **TimeSpan. zero**. Na przykład:
 
 ```csharp
 MessagingFactorySettings mfs = new MessagingFactorySettings();
@@ -113,7 +113,7 @@ Aby zwiększyć przepływność kolejki, tematu lub subskrypcji, Service Bus prz
 
 Dodatkowe operacje magazynu występujące w tym interwale są dodawane do zadania wsadowego. Dostęp do magazynu wsadowego ma wpływ tylko na operacje **wysyłania** i **kończenia** . nie ma to żadnego oddziaływania na operacje odbierania. Dostęp do magazynu wsadowego jest właściwością obiektu. Przetwarzanie wsadowe odbywa się we wszystkich jednostkach, które umożliwiają dostęp do magazynu wsadowego.
 
-Podczas tworzenia nowej kolejki, tematu lub subskrypcji dostęp do magazynu wsadowego jest domyślnie włączony. Aby wyłączyć dostęp do magazynu wsadowego, przed utworzeniem jednostki ustaw właściwość [EnableBatchedOperations][EnableBatchedOperations] na **wartość false** . Przykład:
+Podczas tworzenia nowej kolejki, tematu lub subskrypcji dostęp do magazynu wsadowego jest domyślnie włączony. Aby wyłączyć dostęp do magazynu wsadowego, przed utworzeniem jednostki ustaw właściwość [EnableBatchedOperations][EnableBatchedOperations] na **wartość false** . Na przykład:
 
 ```csharp
 QueueDescription qd = new QueueDescription();

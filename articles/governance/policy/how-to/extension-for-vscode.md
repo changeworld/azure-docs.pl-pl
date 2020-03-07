@@ -4,11 +4,11 @@ description: Dowiedz się, jak używać rozszerzenia Azure Policy Visual Studio 
 ms.date: 11/04/2019
 ms.topic: how-to
 ms.openlocfilehash: 48ef098cf970b5128185c40c92f8bb02ad8d9698
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873118"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386774"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Użyj rozszerzenia Azure Policy dla Visual Studio Code
 

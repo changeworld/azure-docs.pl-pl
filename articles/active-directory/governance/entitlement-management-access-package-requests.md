@@ -17,17 +17,17 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: addc7db2aa2f0f9ba16438d2a31d6c7cc6bfa49e
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174499"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376757"
 ---
 # <a name="view-requests-for-an-access-package-in-azure-ad-entitlement-management"></a>Wyświetlanie żądań dotyczących pakietu dostępu w usłudze Azure AD uprawnienia do zarządzania
 
 W usłudze Azure AD uprawnienia do zarządzania można zobaczyć, kto zażądał pakietów dostępu, ich zasad i stanu. W tym artykule opisano sposób wyświetlania żądań dla pakietów dostępu.
 
-## <a name="view-requests"></a>Wyświetl żądania
+## <a name="view-requests"></a>Wyświetlanie żądań
 
 **Rola wymagana wstępnie:** Administrator globalny, administrator użytkownika, właściciel katalogu lub Menedżer pakietów dostępu
 

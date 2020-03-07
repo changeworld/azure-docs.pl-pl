@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
 ms.openlocfilehash: 93b10d56ae34ebdfe78dd20705634dea58721274
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954361"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362879"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>Zarządzanie serwerem konfiguracji na potrzeby odzyskiwania po awarii maszyny wirtualnej lub serwera fizycznego
 
@@ -71,7 +71,7 @@ Jeśli pominięto Dodawanie poświadczeń podczas OVF wdrażania serwera konfigu
 
 1. Po [zalogowaniu](#access-configuration-server)wybierz pozycję **Zarządzaj poświadczeniami maszyny wirtualnej**.
 2. Kliknij pozycję **Dodaj poświadczenia maszyny wirtualnej**.
-    ![add-mobility-credentials](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
+    ![dodawania](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
 3. Wprowadź nowe poświadczenia i kliknij przycisk **Dodaj**.
 
 Możesz również dodać poświadczenia za poorednictwem CSPSConfigtool. exe.
@@ -188,19 +188,19 @@ Uruchom plik instalacyjny w następujący sposób:
 
 |Nazwa parametru| Typ | Opis| Wartości|
 |-|-|-|-|
-| /ServerMode|Wymagane|Określa, czy mają zostać zainstalowane oba serwery, konfiguracji i przetwarzania, czy tylko serwer przetwarzania|CS<br>PS|
-|/InstallLocation|Wymagane|Folder, w którym są instalowane składniki| Dowolny folder na komputerze|
-|/MySQLCredsFilePath|Wymagane|Ścieżka pliku, w której są przechowywane poświadczenia serwera MySQL|Plik powinien mieć format określony poniżej|
-|/VaultCredsFilePath|Wymagane|Ścieżka pliku poświadczeń magazynu|Prawidłowa ścieżka pliku|
-|/EnvType|Wymagane|Typ środowiska, który ma być chroniony |VMware<br>NonVMware|
-|/PSIP|Wymagane|Adres IP karty sieciowej do użytku podczas przesyłania danych replikacji| Dowolny prawidłowy adres IP|
-|/CSIP|Wymagane|Adres IP karty sieciowej, na której nasłuchuje serwer konfiguracji| Dowolny prawidłowy adres IP|
-|/PassphraseFilePath|Wymagane|Pełna ścieżka do lokalizacji pliku hasła|Prawidłowa ścieżka pliku|
+| /ServerMode|Wymagany|Określa, czy mają zostać zainstalowane oba serwery, konfiguracji i przetwarzania, czy tylko serwer przetwarzania|CS<br>PS|
+|/InstallLocation|Wymagany|Folder, w którym są instalowane składniki| Dowolny folder na komputerze|
+|/MySQLCredsFilePath|Wymagany|Ścieżka pliku, w której są przechowywane poświadczenia serwera MySQL|Plik powinien mieć format określony poniżej|
+|/VaultCredsFilePath|Wymagany|Ścieżka pliku poświadczeń magazynu|Prawidłowa ścieżka pliku|
+|/EnvType|Wymagany|Typ środowiska, który ma być chroniony |VMware<br>NonVMware|
+|/PSIP|Wymagany|Adres IP karty sieciowej do użytku podczas przesyłania danych replikacji| Dowolny prawidłowy adres IP|
+|/CSIP|Wymagany|Adres IP karty sieciowej, na której nasłuchuje serwer konfiguracji| Dowolny prawidłowy adres IP|
+|/PassphraseFilePath|Wymagany|Pełna ścieżka do lokalizacji pliku hasła|Prawidłowa ścieżka pliku|
 |/BypassProxy|Optional (Opcjonalność)|Określa, że serwer konfiguracji łączy się z platformą Azure bez serwera proxy|Należy uzyskać tę wartość z Venu|
 |/ProxySettingsFilePath|Optional (Opcjonalność)|Ustawienia serwera proxy (domyślny serwer proxy wymaga uwierzytelniania lub niestandardowy serwer proxy)|Plik powinien mieć format określony poniżej|
 |DataTransferSecurePort|Optional (Opcjonalność)|Numer portu dla protokołu PSIP do użytku z danymi replikacji| Prawidłowy numer portu (wartość domyślna to 9433)|
 |/SkipSpaceCheck|Optional (Opcjonalność)|Pomiń sprawdzanie miejsca dla dysku pamięci podręcznej| |
-|/AcceptThirdpartyEULA|Wymagane|Flaga implikuje akceptację umowy licencyjnej innego producenta| |
+|/AcceptThirdpartyEULA|Wymagany|Flaga implikuje akceptację umowy licencyjnej innego producenta| |
 |/ShowThirdpartyEULA|Optional (Opcjonalność)|Wyświetla umowę licencyjną innej firmy. Jeśli zostanie podany w danych wejściowych, wszystkie inne parametry są ignorowane| |
 
 

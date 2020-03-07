@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: billgib
 ms.date: 09/19/2018
 ms.openlocfilehash: b6802d97b964b8863f6c2fce0cebfe16782b46fe
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822013"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397171"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>Zarządzanie schematem w aplikacji SaaS przy użyciu wzorca bazy danych na dzierżawcę z Azure SQL Database
  
@@ -24,7 +24,7 @@ W miarę rozwoju aplikacji bazy danych zmiany muszą być wprowadzane w schemaci
 
 W tym samouczku przedstawiono dwa scenariusze — wdrażanie aktualizacji danych referencyjnych dla wszystkich dzierżawców i Odbudowywanie indeksu tabeli zawierającej dane referencyjne. Funkcja [zadań elastycznych](elastic-jobs-overview.md) służy do wykonywania tych działań we wszystkich bazach danych dzierżaw oraz w bazie danych szablonów służącej do tworzenia nowych baz danych dzierżawy.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > 
@@ -77,7 +77,7 @@ W aplikacji bilety Wingtip każda baza danych dzierżawy zawiera zestaw obsługi
 Najpierw przejrzyj typy miejsc zawarte w każdej bazie danych dzierżawcy. Połącz się z jedną z baz danych dzierżaw w SQL Server Management Studio (SSMS) i sprawdź tabelę VenueTypes.  Możesz również zbadać tę tabelę w edytorze zapytań w Azure Portal dostępnym ze strony baza danych. 
 
 1. Otwórz narzędzie SSMS i Połącz się z serwerem dzierżawy: *tenants1-DPT-&lt;user&gt;. Database.Windows.NET*
-1. Aby upewnić się, że **nie są** obecnie uwzględniane wyścigi i *kluby* z *motocykla* , przejdź do bazy danych _contosoconcerthall_ na serwerze *tenants1-DPT-&lt;&gt;użytkownika* , a następnie wykonaj zapytanie dotyczące *VenueTypes* tabela.
+1. Aby upewnić się, że **nie są** obecnie uwzględniane wyścigi i *kluby* z *motocykla* , przejdź do bazy danych _contosoconcerthall_ na serwerze *tenants1-DPT-&lt;&gt;użytkownika* , a następnie wykonaj zapytanie dotyczące tabeli *VenueTypes* .
 
 Teraz Utwórzmy zadanie aktualizowania tabeli *VenueTypes* we wszystkich bazach danych dzierżaw, aby dodać nowe typy miejsc.
 

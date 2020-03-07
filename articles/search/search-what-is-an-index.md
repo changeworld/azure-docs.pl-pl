@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: d2b8b2fecbf85e6590294f1fbd7ff2a4453b9e87
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460746"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379738"
 ---
 # <a name="create-a-basic-index-in-azure-cognitive-search"></a>Tworzenie podstawowego indeksu na platformie Azure Wyszukiwanie poznawcze
 

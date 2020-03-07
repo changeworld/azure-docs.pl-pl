@@ -16,11 +16,11 @@ search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a3f7d7c9af807120457b119e0be047c7a342b961
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190538"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378429"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementowanie synchronizacji skrótów haseł z usługą Azure AD Connect sync
 Ten artykuł zawiera informacje potrzebne do synchronizacji haseł użytkowników z lokalnym wystąpieniem usługi Active Directory do wystąpienia usługi Azure Active Directory (Azure AD) oparte na chmurze.

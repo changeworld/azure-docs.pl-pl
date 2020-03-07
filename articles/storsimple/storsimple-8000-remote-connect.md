@@ -8,15 +8,15 @@ ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 70d0246debc532260d287104bacea2f15c1b94d2
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277296"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384931"
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>Zdalne nawiązywanie połączenia z urządzeniem z serii StorSimple 8000
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Możesz zdalnie nawiązać połączenie z urządzeniem za pomocą programu Windows PowerShell. Po nawiązaniu połączenia w ten sposób nie widzisz menu. (Menu jest widoczne tylko wtedy, gdy do nawiązania połączenia jest używana konsola szeregowa na urządzeniu). Komunikacja zdalna programu Windows PowerShell polega na połączeniu z określonym obszarem działania. Możesz również określić język wyświetlania.
 
@@ -189,7 +189,7 @@ Poniżej opisano każdą z tych procedur.
 3. Wybierz pozycję **Umieść wszystkie certyfikaty w następującym magazynie**, a następnie kliknij przycisk **Przeglądaj**. Przejdź do głównego magazynu hosta zdalnego, a następnie kliknij przycisk **Dalej**.
    
     ![Kreator importu certyfikatów 2](./media/storsimple-remote-connect/HCS_CertificateImportWizard2.png)
-4. Kliknij przycisk **Zakończ**. Pojawi się komunikat informujący, że importowanie zakończyło się pomyślnie.
+4. Kliknij przycisk **Finish** (Zakończ). Pojawi się komunikat informujący, że importowanie zakończyło się pomyślnie.
    
     ![Kreator importu certyfikatów 3](./media/storsimple-remote-connect/HCS_CertificateImportWizard3.png)
 
@@ -229,7 +229,7 @@ Wykonaj poniższą procedurę na komputerze, z którego ma zostać utworzone zda
      `$session = New-PSSession -UseSSL -ComputerName <Serial number of target device> -Credential $cred -ConfigurationName "SSAdminConsole"`
    
     Dla parametru-ComputerName w poleceniu cmdlet Podaj <*numer seryjny > urządzenia docelowego*. Ten numer seryjny został zmapowany na adres IP danych 0 w pliku hosts hosta zdalnego. na przykład **SHX0991003G44MT** , jak pokazano na poniższej ilustracji.
-5. Typ:
+5. Wpisz:
    
      `Enter-PSSession $session`
 6. Musisz poczekać kilka minut, a następnie nawiązać połączenie z urządzeniem za pośrednictwem protokołu HTTPS przez protokół SSL. Zostanie wyświetlony komunikat z informacją, że masz połączenie z urządzeniem.

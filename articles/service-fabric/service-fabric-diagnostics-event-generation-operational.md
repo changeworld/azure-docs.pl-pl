@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 2/25/2019
 ms.author: srrengar
 ms.openlocfilehash: e69b407bc7d58a83616daa44272ec008ccff9fad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451759"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361226"
 ---
 # <a name="list-of-service-fabric-events"></a>Lista zdarzeń Service Fabric 
 
@@ -31,7 +31,7 @@ Poniżej znajduje się lista tych zdarzeń Service Fabric zorganizowanych wedłu
 
 Więcej szczegółów na temat uaktualniania klastra można znaleźć [tutaj](service-fabric-cluster-upgrade-windows-server.md).
 
-| Identyfikator zdarzenia | Nazwa | Kategoria | Opis |Źródło (zadanie) | Poziom | 
+| Identyfikator zdarzenia | Name (Nazwa) | Kategoria | Opis |Źródło (zadanie) | Poziom | 
 | --- | --- | --- | --- | --- | --- | 
 | 29627 | ClusterUpgradeStarted | Uaktualnienie | Rozpoczęto Uaktualnianie klastra | CM | Informacyjne |
 | 29628 | ClusterUpgradeCompleted | Uaktualnienie | Ukończono Uaktualnianie klastra | CM | Informacyjne | 
@@ -43,7 +43,7 @@ Więcej szczegółów na temat uaktualniania klastra można znaleźć [tutaj](se
 
 **Zdarzenia cyklu życia węzła** 
 
-| Identyfikator zdarzenia | Nazwa | Kategoria | Opis |Źródło (zadanie) | Poziom |
+| Identyfikator zdarzenia | Name (Nazwa) | Kategoria | Opis |Źródło (zadanie) | Poziom |
 | --- | --- | ---| --- | --- | --- | 
 | 18602 | NodeDeactivateCompleted | Przejścia stanu | Dezaktywacja węzła zakończyła się | FM | Informacyjne | 
 | 18603 | NodeUp | Przejścia stanu | Klaster wykrył, że uruchomiono węzeł | FM | Informacyjne | 
@@ -60,7 +60,7 @@ Więcej szczegółów na temat uaktualniania klastra można znaleźć [tutaj](se
 
 **Zdarzenia cyklu życia aplikacji**
 
-| Identyfikator zdarzenia | Nazwa | Kategoria | Opis |Źródło (zadanie) | Poziom | 
+| Identyfikator zdarzenia | Name (Nazwa) | Kategoria | Opis |Źródło (zadanie) | Poziom | 
 | --- | --- | --- | --- | --- | --- | 
 | 29620 | ApplicationCreated | Witrynę | Utworzono nową aplikację | CM | Informacyjne | 
 | 29625 | ApplicationDeleted | Witrynę | Istniejąca aplikacja została usunięta | CM | Informacyjne | 
@@ -70,7 +70,7 @@ Więcej szczegółów na temat uaktualniania klastra można znaleźć [tutaj](se
 
 Więcej informacji o uaktualnieniach aplikacji można znaleźć [tutaj](service-fabric-application-upgrade.md).
 
-| Identyfikator zdarzenia | Nazwa | Kategoria | Opis |Źródło (zadanie) | Poziom | 
+| Identyfikator zdarzenia | Name (Nazwa) | Kategoria | Opis |Źródło (zadanie) | Poziom | 
 | --- | --- | ---| --- | --- | --- | 
 | 29621 | ApplicationUpgradeStarted | Uaktualnienie | Rozpoczęto Uaktualnianie aplikacji | CM | Informacyjne | 
 | 29622 | ApplicationUpgradeCompleted | Uaktualnienie | Ukończono Uaktualnianie aplikacji | CM | Informacyjne | 
@@ -82,7 +82,7 @@ Więcej informacji o uaktualnieniach aplikacji można znaleźć [tutaj](service-
 
 **Zdarzenia cyklu życia usługi**
 
-| Identyfikator zdarzenia | Nazwa | Kategoria | Opis |Źródło (zadanie) | Poziom | 
+| Identyfikator zdarzenia | Name (Nazwa) | Kategoria | Opis |Źródło (zadanie) | Poziom | 
 | --- | --- | ---| --- | --- | --- |
 | 18657 | Servicecreated | Witrynę | Utworzono nową usługę | FM | Informacyjne | 
 | 18658 | Nie usunięto | Witrynę | Istniejąca usługa została usunięta | FM | Informacyjne | 
@@ -91,15 +91,15 @@ Więcej informacji o uaktualnieniach aplikacji można znaleźć [tutaj](service-
 
 **Zdarzenia przenoszenia partycji**
 
-| Identyfikator zdarzenia | Nazwa | Kategoria | Opis |Źródło (zadanie) | Poziom | 
+| Identyfikator zdarzenia | Name (Nazwa) | Kategoria | Opis |Źródło (zadanie) | Poziom | 
 | --- | --- | ---| --- | --- | --- |
-| 18940 | PartitionReconfigured | Witrynę | Ukończono ponowną konfigurację partycji | RA | Informacyjne | 
+| 18940 | PartitionReconfigured | Witrynę | Ukończono ponowną konfigurację partycji | ZDALNEJ | Informacyjne | 
 
 ## <a name="replica-events"></a>Zdarzenia repliki
 
 **Zdarzenia cyklu życia repliki**
 
-| Identyfikator zdarzenia | Nazwa | Kategoria | Opis |Źródło (zadanie) | Poziom |
+| Identyfikator zdarzenia | Name (Nazwa) | Kategoria | Opis |Źródło (zadanie) | Poziom |
 | --- | --- | ---| --- | --- | --- |
 | 61701 | ReliableDictionaryOpened | Witrynę | Otwarto niezawodny słownik | DistributedDictionary | Informacyjne |
 | 61702 | ReliableDictionaryClosed | Witrynę | Niezawodny słownik został zamknięty | DistributedDictionary | Informacyjne |
@@ -120,20 +120,20 @@ Więcej informacji o uaktualnieniach aplikacji można znaleźć [tutaj](service-
 | 16831 | BuildIdleReplicaStarted | Witrynę | Replika podstawowa rozpoczęła tworzenie repliki bezczynnej | Replikacja | Informacyjne |
 | 16832 | BuildIdleReplicaCompleted | Witrynę | Replika podstawowa ukończyła tworzenie repliki bezczynnej | Replikacja | Informacyjne |
 | 16833 | BuildIdleReplicaFailed | Witrynę | Replika podstawowa nie powiodła się podczas tworzenia repliki bezczynnej | Replikacja | Ostrzeżenie |
-| 16834 | PrimaryReplicationQueueFull | Zdrowie | Kolejka replikacji repliki podstawowej jest pełna | Replikacja | Ostrzeżenie |
-| 16835 | PrimaryReplicationQueueWarning | Zdrowie | Kolejka replikacji repliki podstawowej jest blisko pełna | Replikacja | Ostrzeżenie |
-| 16836 | PrimaryReplicationQueueWarningMitigated | Zdrowie | Kolejka replikacji repliki podstawowej jest niedobrana | Replikacja | Informacyjne |
-| 16837 | SecondaryReplicationQueueFull | Zdrowie | Kolejka replikacji pomocniczej repliki jest pełna | Replikacja | Ostrzeżenie |
-| 16838 | SecondaryReplicationQueueWarning | Zdrowie | Kolejka replikacji pomocniczej repliki jest blisko pełna | Replikacja | Ostrzeżenie |
-| 16839 | SecondaryReplicationQueueWarningMitigated | Zdrowie | Kolejka replikacji pomocniczej repliki jest niedobrana | Replikacja | Informacyjne |
-| 16840 | PrimaryFaultedSlowSecondary | Zdrowie | Replika podstawowa spowodowała awarię wolnej repliki pomocniczej | Replikacja | Ostrzeżenie |
-| 16841 | ReplicatorFaulted | Zdrowie | Replika została uszkodzona | Replikacja | Ostrzeżenie |
+| 16834 | PrimaryReplicationQueueFull | Health | Kolejka replikacji repliki podstawowej jest pełna | Replikacja | Ostrzeżenie |
+| 16835 | PrimaryReplicationQueueWarning | Health | Kolejka replikacji repliki podstawowej jest blisko pełna | Replikacja | Ostrzeżenie |
+| 16836 | PrimaryReplicationQueueWarningMitigated | Health | Kolejka replikacji repliki podstawowej jest niedobrana | Replikacja | Informacyjne |
+| 16837 | SecondaryReplicationQueueFull | Health | Kolejka replikacji pomocniczej repliki jest pełna | Replikacja | Ostrzeżenie |
+| 16838 | SecondaryReplicationQueueWarning | Health | Kolejka replikacji pomocniczej repliki jest blisko pełna | Replikacja | Ostrzeżenie |
+| 16839 | SecondaryReplicationQueueWarningMitigated | Health | Kolejka replikacji pomocniczej repliki jest niedobrana | Replikacja | Informacyjne |
+| 16840 | PrimaryFaultedSlowSecondary | Health | Replika podstawowa spowodowała awarię wolnej repliki pomocniczej | Replikacja | Ostrzeżenie |
+| 16841 | ReplicatorFaulted | Health | Replika została uszkodzona | Replikacja | Ostrzeżenie |
 
 ## <a name="container-events"></a>Zdarzenia kontenera
 
 **Zdarzenia cyklu życia kontenera** 
 
-| Identyfikator zdarzenia | Nazwa | Opis |Źródło (zadanie) | Poziom | Wersja |
+| Identyfikator zdarzenia | Name (Nazwa) | Opis |Źródło (zadanie) | Poziom | Wersja |
 | --- | --- | ---| --- | --- | --- |
 | 23074 | ContainerActivated | Kontener został uruchomiony | Hosting | Informacyjne | 1 |
 | 23075 | ContainerDeactivated | Kontener został zatrzymany | Hosting | Informacyjne | 1 |
@@ -149,21 +149,21 @@ Więcej informacji o uaktualnieniach aplikacji można znaleźć [tutaj](service-
 
 **Zdarzenia raportów kondycji klastra**
 
-| Identyfikator zdarzenia | Nazwa | Opis |Źródło (zadanie) | Poziom | Wersja |
+| Identyfikator zdarzenia | Name (Nazwa) | Opis |Źródło (zadanie) | Poziom | Wersja |
 | --- | --- | --- | --- | --- | --- |
 | 54428 | ClusterNewHealthReport | Dostępny jest nowy raport kondycji klastra | HM | Informacyjne | 1 |
 | 54437 | ClusterHealthReportExpired | Istniejący raport kondycji klastra wygasł | HM | Informacyjne | 1 |
 
 **Zdarzenia raportów kondycji węzłów**
 
-| Identyfikator zdarzenia | Nazwa | Opis |Źródło (zadanie) | Poziom | Wersja |
+| Identyfikator zdarzenia | Name (Nazwa) | Opis |Źródło (zadanie) | Poziom | Wersja |
 | --- | --- | ---| --- | --- | --- |
 | 54423 | NodeNewHealthReport | Dostępny jest nowy raport kondycji węzła | HM | Informacyjne | 1 |
 | 54432 | NodeHealthReportExpired | Istniejący raport kondycji węzła wygasł | HM | Informacyjne | 1 |
 
 **Zdarzenia raportów kondycji aplikacji**
 
-| Identyfikator zdarzenia | Nazwa | Opis |Źródło (zadanie) | Poziom | Wersja |
+| Identyfikator zdarzenia | Name (Nazwa) | Opis |Źródło (zadanie) | Poziom | Wersja |
 | --- | --- | ---| --- | --- | --- |
 | 54425 | ApplicationNewHealthReport | Utworzono nowy raport kondycji aplikacji. Dotyczy to niewdrożonych aplikacji. | HM | Informacyjne | 1 |
 | 54426 | DeployedApplicationNewHealthReport | Utworzono nowy wdrożony Raport kondycji aplikacji | HM | Informacyjne | 1 |
@@ -174,21 +174,21 @@ Więcej informacji o uaktualnieniach aplikacji można znaleźć [tutaj](service-
 
 **Zdarzenia raportów kondycji usługi**
 
-| Identyfikator zdarzenia | Nazwa | Opis |Źródło (zadanie) | Poziom | Wersja |
+| Identyfikator zdarzenia | Name (Nazwa) | Opis |Źródło (zadanie) | Poziom | Wersja |
 | --- | --- | ---| --- | --- | --- |
 | 54424 | ServiceNewHealthReport | Utworzono nowy raport kondycji usługi | HM | Informacyjne | 1 |
 | 54433 | ServiceHealthReportExpired | Istniejący raport kondycji usługi wygasł | HM | Informacyjne | 1 |
 
 **Zdarzenia raportów kondycji partycji**
 
-| Identyfikator zdarzenia | Nazwa | Opis |Źródło (zadanie) | Poziom | Wersja |
+| Identyfikator zdarzenia | Name (Nazwa) | Opis |Źródło (zadanie) | Poziom | Wersja |
 | --- | --- | ---| --- | --- | --- |
 | 54422 | PartitionNewHealthReport | Utworzono nowy raport kondycji partycji | HM | Informacyjne | 1 |
 | 54431 | PartitionHealthReportExpired | Istniejący raport kondycji partycji wygasł | HM | Informacyjne | 1 |
 
 **Zdarzenia raportu kondycji repliki**
 
-| Identyfikator zdarzenia | Nazwa | Opis |Źródło (zadanie) | Poziom | Wersja |
+| Identyfikator zdarzenia | Name (Nazwa) | Opis |Źródło (zadanie) | Poziom | Wersja |
 | --- | --- | ---| --- | --- | --- |
 | 54429 | StatefulReplicaNewHealthReport | Raport kondycji replice stanowej został utworzony | HM | Informacyjne | 1 |
 | 54430 | StatelessInstanceNewHealthReport | Utworzono nowy raport kondycji wystąpienia bezstanowego | HM | Informacyjne | 1 |
@@ -199,28 +199,28 @@ Więcej informacji o uaktualnieniach aplikacji można znaleźć [tutaj](service-
 
 **Zdarzenia sesji chaos**
 
-| Identyfikator zdarzenia | Nazwa | Opis |Źródło (zadanie) | Poziom | Wersja |
+| Identyfikator zdarzenia | Name (Nazwa) | Opis |Źródło (zadanie) | Poziom | Wersja |
 | --- | --- | ---| --- | --- | --- |
 | 50021 | ChaosStarted | Rozpoczęto sesję testową chaos | Testowalności | Informacyjne | 1 |
 | 50023 | ChaosStopped | Sesja testowania chaos została zatrzymana | Testowalności | Informacyjne | 1 |
 
 **Zdarzenia węzła chaos**
 
-| Identyfikator zdarzenia | Nazwa | Opis |Źródło (zadanie) | Poziom | Wersja |
+| Identyfikator zdarzenia | Name (Nazwa) | Opis |Źródło (zadanie) | Poziom | Wersja |
 | --- | --- | ---| --- | --- | --- |
 | 50033 | ChaosNodeRestartScheduled | Zaplanowano ponowne uruchomienie węzła w ramach sesji testowania chaos | Testowalności | Informacyjne | 1 |
 | 50087 | ChaosNodeRestartCompleted | Węzeł zakończył ponowne uruchamianie w ramach sesji testowania chaos | Testowalności | Informacyjne | 1 |
 
 **Zdarzenia aplikacji chaos**
 
-| Identyfikator zdarzenia | Nazwa | Opis |Źródło (zadanie) | Poziom | Wersja |
+| Identyfikator zdarzenia | Name (Nazwa) | Opis |Źródło (zadanie) | Poziom | Wersja |
 | --- | --- | ---| --- | --- | --- |
 | 50053 | ChaosCodePackageRestartScheduled | Zaplanowano ponowne uruchomienie pakietu kodu w trakcie sesji testowania chaos | Testowalności | Informacyjne | 1 |
 | 50101 | ChaosCodePackageRestartCompleted | Zakończono ponowne uruchamianie pakietu kodu podczas sesji testowania chaos | Testowalności | Informacyjne | 1 |
 
 **Zdarzenia partycji chaos**
 
-| Identyfikator zdarzenia | Nazwa | Opis |Źródło (zadanie) | Poziom | Wersja |
+| Identyfikator zdarzenia | Name (Nazwa) | Opis |Źródło (zadanie) | Poziom | Wersja |
 | --- | --- | ---| --- | --- | --- |
 | 50069 | ChaosPartitionPrimaryMoveScheduled | Zaplanowano przechodzenie na partycję podstawową w ramach sesji testowania chaos | Testowalności | Informacyjne | 1 |
 | 50077 | ChaosPartitionSecondaryMoveScheduled | Zaplanowano przechodzenie na partycję pomocniczą w ramach sesji testowania chaos | Testowalności | Informacyjne | 1 |
@@ -228,7 +228,7 @@ Więcej informacji o uaktualnieniach aplikacji można znaleźć [tutaj](service-
 
 **Zdarzenia repliki chaos**
 
-| Identyfikator zdarzenia | Nazwa | Opis |Źródło (zadanie) | Poziom | Wersja |
+| Identyfikator zdarzenia | Name (Nazwa) | Opis |Źródło (zadanie) | Poziom | Wersja |
 | --- | --- | ---| --- | --- | --- |
 | 50047 | ChaosReplicaRestartScheduled | Zaplanowano ponowne uruchomienie repliki w ramach sesji testowania chaos | Testowalności | Informacyjne | 1 |
 | 50051 | ChaosReplicaRemovalScheduled | Zaplanowano usunięcie repliki w ramach sesji testowania chaos | Testowalności | Informacyjne | 1 |
@@ -238,7 +238,7 @@ Więcej informacji o uaktualnieniach aplikacji można znaleźć [tutaj](service-
 
 **Zdarzenia korelacji**
 
-| Identyfikator zdarzenia | Nazwa | Opis |Źródło (zadanie) | Poziom | Wersja |
+| Identyfikator zdarzenia | Name (Nazwa) | Opis |Źródło (zadanie) | Poziom | Wersja |
 | --- | --- | ---| --- | --- | --- |
 | 65011 | CorrelationOperational | Wykryto korelację | Testowalności | Informacyjne | 1 |
 
@@ -246,7 +246,7 @@ Więcej informacji o uaktualnieniach aplikacji można znaleźć [tutaj](service-
 
 Poniżej przedstawiono kompleksową listę zdarzeń dostarczonych przez Service Fabric przed wersjami 6,2.
 
-| Identyfikator zdarzenia | Nazwa | Źródło (zadanie) | Poziom |
+| Identyfikator zdarzenia | Name (Nazwa) | Źródło (zadanie) | Poziom |
 | --- | --- | --- | --- |
 | 25620 | NodeOpening | FabricNode | Informacyjne |
 | 25621 | NodeOpenedSuccess | FabricNode | Informacyjne |

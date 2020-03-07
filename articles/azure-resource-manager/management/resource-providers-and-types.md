@@ -4,11 +4,11 @@ description: Opisuje dostawców zasobów, którzy obsługują Menedżer zasobów
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.openlocfilehash: ce68762dae14f98a751cb4b619b75ff04a5f655b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75478593"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372233"
 ---
 # <a name="azure-resource-providers-and-types"></a>Dostawcy zasobów platformy Azure i typy
 
@@ -29,11 +29,11 @@ Kroki te można wykonać za pomocą Azure Portal, Azure PowerShell lub interfejs
 
 Aby uzyskać listę, która mapuje dostawców zasobów na usługi platformy Azure, zobacz [dostawcy zasobów dla usług platformy Azure](azure-services-resource-providers.md).
 
-## <a name="azure-portal"></a>Portal Azure
+## <a name="azure-portal"></a>Portalu Azure
 
 Aby wyświetlić wszystkich dostawców zasobów i status rejestracji dla Twojej subskrypcji:
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 2. W menu Azure Portal wybierz pozycję **wszystkie usługi**.
 
     ![Wybieranie subskrypcji](./media/resource-providers-and-types/select-all-services.png)
@@ -50,7 +50,7 @@ Aby wyświetlić wszystkich dostawców zasobów i status rejestracji dla Twojej 
 
 Aby wyświetlić informacje dotyczące konkretnego dostawcy zasobów:
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 2. W menu Azure Portal wybierz pozycję **wszystkie usługi**.
 3. W polu **wszystkie usługi** wprowadź **Eksplorator zasobów**, a następnie wybierz pozycję **Eksplorator zasobów**.
 
@@ -72,7 +72,7 @@ Aby wyświetlić informacje dotyczące konkretnego dostawcy zasobów:
 
     ![Pokaż wersje interfejsu API](./media/resource-providers-and-types/show-api-versions.png)
 
-## <a name="azure-powershell"></a>Program Azure PowerShell
+## <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

@@ -16,11 +16,11 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
 ms.openlocfilehash: e8d82011fe4fdd40bb07c77411ad0e948ddad049
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77916527"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376839"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>Role klasycznego administratora subskrypcji, role kontroli na podstawie ról (RBAC) platformy Azure i role administratora usługi Azure AD
 
