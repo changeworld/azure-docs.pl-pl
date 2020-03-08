@@ -3,22 +3,48 @@ title: Informacje o wersji — usługa mowy
 titleSuffix: Azure Cognitive Services
 description: Uruchomiony dziennik wersji funkcji usługi Speech, ulepszenia, poprawki błędów i znane problemy.
 services: cognitive-services
-author: oscholz
-manager: nitinme
+author: brianem
+manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/15/2020
-ms.author: oliversc
+ms.date: 02/25/2020
+ms.author: brianem
 ms.custom: seodec18
-ms.openlocfilehash: 235d8788b47355925d93cb3e3835d32e25c1b51f
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: cbe9c7cbd0f402e38d1163050d77b055f89948ba
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168159"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394807"
 ---
 # <a name="release-notes"></a>Informacje o wersji
+## <a name="speech-sdk-1100-2020-february-release"></a>Speech SDK 1.10.0:2020-luty Release
+
+**Nowe funkcje**
+ - Dodano pakiety języka Python obsługujące nowe wydanie 3,8 języka Python.
+ - Red Hat Enterprise Linux (RHEL)/CentOS 8 x64 (C++, C#, Java, Python).
+   > [!NOTE] 
+   > Klienci muszą skonfigurować OpenSSL zgodnie z [tymi instrukcjami](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-openssl-linux).
+ - Obsługa ARM32 systemu Linux dla Debian i Ubuntu.
+ - DialogServiceConnector obsługuje teraz opcjonalny parametr "bot ID" na BotFrameworkConfig. Ten parametr umożliwia korzystanie z wielu bezpośrednich botów mowy wiersza za pomocą pojedynczego zasobu usługi Azure Speech. Bez określonego parametru zostanie użyta wartość domyślna bot (zgodnie z konfiguracją kanału Direct Speech line).
+ - DialogServiceConnector ma teraz Właściwość SpeechActivityTemplate. Zawartość tego ciągu JSON zostanie użyta w bezpośrednim wierszu mowy, aby wstępnie wypełnić szeroką gamę obsługiwanych pól we wszystkich działaniach, które docierają do bezpośredniego bot mowy liniowej, w tym działań automatycznie generowanych w odpowiedzi na zdarzenia, takie jak rozpoznawanie mowy.
+ - Funkcja TTS używa teraz klucza subskrypcji do uwierzytelniania, co zmniejsza czas opóźnienia pierwszego bajtu z pierwszego wyniku w przypadku tworzenia syntezatora.
+ - Zaktualizowane modele rozpoznawania mowy dla 19 ustawień regionalnych dla średniego współczynnika błędów wyrazu redukcja 18,6% (es-ES, es-MX, fr-CA, fr-FR, it-IT, ja-JP, Ko-KR, pt-BR, zh-CN, zh-HK, NB-NO, Fi-FL, ru-PL, pl-am, "CA-ES", zh-TW, th, pt-PT, TR-TR). Nowe modele zapewniają znaczące ulepszenia w wielu domenach, takich jak Dyktowanie, transkrypcja wyśrodkowania i scenariusze indeksowania wideo.
+
+**Poprawki błędów**
+ - Rozwiązano problem polegający na tym, że w interfejsie API języka JAVA nie Transcriber konwersacji. 
+ - Poprawka emulatora systemu Android x86 dla rozwiązania Xamarin [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/363)
+ - Dodaj brakujące (Pobierz | Ustaw metody właściwości na AudioConfig
+ - Naprawianie usterki TTS, w której nie można zatrzymać audioDataStream w przypadku niepowodzenia połączenia
+ - Użycie punktu końcowego bez regionu spowoduje wystąpienie błędów USP dla translatora konwersacji
+ - Generowanie identyfikatorów w aplikacjach uniwersalnych systemu Windows używa teraz odpowiedniego unikatowego algorytmu identyfikatora GUID; wcześniej i przypadkowo nie została zamierzona domyślna implementacja użyto metod zastępczych, która często wytwarza kolizje w dużych zestawach interakcji.
+ 
+ **Przykłady**
+ - Przykład aparatu Unity do korzystania z zestawu Speech SDK z [mikrofonu Unity i przesyłania strumieniowego w trybie push](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/unity/from-unitymicrophone)
+
+**Inne zmiany**
+ - [Dokumentacja dotycząca konfiguracji OpenSSL dla systemu Linux](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-openssl-linux)
 
 ## <a name="speech-sdk-190-2020-january-release"></a>Speech SDK 1.9.0:2020 — wydanie w styczniu
 

@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/13/2020
-ms.author: sedusch
+ms.date: 03/05/2020
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 48e06ed31de35ad29a0fda271feaaf50b5efaf8a
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 7349c22a2478020c9ac79655ad1e7c23c4cf5034
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616811"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78893019"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Planowanie i wdrażanie Virtual Machines platformy Azure dla oprogramowania SAP NetWeaver
 
@@ -416,85 +416,88 @@ W celu zebrania danych dotyczących planowania wdrożenia na platformie Azure wa
 Szczegółowe informacje na temat obsługiwanych składników SAP na platformie Azure, obsługiwanych jednostek infrastruktury platformy Azure oraz związanych z nimi wersji systemu operacyjnego i wersji DBMS zostały omówione w artykule [co to jest oprogramowanie SAP obsługiwane przez wdrożenia platformy Azure](./sap-supported-product-on-azure.md). Wyniki uzyskane z oceny prawidłowych wydań SAP, systemu operacyjnego i systemów DBMS mają duży wpływ na wysiłki przenoszące systemy SAP na platformę Azure. Wynikiem tej oceny jest określenie, czy może wystąpić znaczący nakład pracy w przypadku, gdy są konieczne uaktualnienia wersji SAP lub zmiany systemów operacyjnych.
 
 
+## <a name="be80d1b9-a463-4845-bd35-f4cebdb5424a"></a>Regiony platformy Azure
+Usługi platformy Azure firmy Microsoft są zbierane w regionach platformy Azure. Region świadczenia usługi Azure to jedna lub kolekcja z centrów danych, które zawierają sprzęt i infrastrukturę, które działają i obsługują różne usługi platformy Azure. Ta infrastruktura obejmuje dużą liczbę węzłów, które działają jako węzły obliczeniowe lub węzły magazynu, lub uruchamiają funkcje sieciowe. 
 
-## <a name="first-steps-planning-a-deployment"></a>Pierwsze kroki planowania wdrożenia
-Pierwszy krok w ramach planowania wdrożenia nie umożliwia sprawdzenia maszyn wirtualnych dostępnych do uruchamiania oprogramowania SAP. Pierwszym krokiem może być czas, który jest czasochłonny, ale najważniejszym rozwiązaniem jest współdziałanie z zespołami ds. zgodności i zabezpieczeń w firmie na temat tego, jakie są warunki graniczne wdrażania tego typu obciążeń lub procesów firmy SAP w chmurze publicznej. Jeśli firma wdrożyła inne oprogramowanie przed platformą Azure, proces ten może być łatwy. Jeśli firma jest więcej na początku podróży, może być więcej dyskusji koniecznych do ustalenia warunków granicznych, warunków zabezpieczeń, które pozwalają na hostowanie niektórych danych SAP i procesów firmy SAP w chmurze publicznej.
+Aby zapoznać się z listą różnych regionów świadczenia usługi Azure, zapoznaj się z artykułem [Azure lokalizacje geograficzne](https://azure.microsoft.com/global-infrastructure/geographies/). Nie wszystkie regiony platformy Azure oferują te same usługi. Zależnie od produktu SAP, który chcesz uruchomić, a także systemu operacyjnego i w systemie DBMS, możesz się dokończyć w sytuacji, w której określony region nie oferuje wymaganych typów maszyn wirtualnych. Jest to szczególnie ważne w przypadku uruchamiania SAP HANA, w którym zwykle są potrzebne maszyny wirtualne z serii maszyn wirtualnych M/Mv2. Te rodziny maszyn wirtualnych są wdrażane tylko w podzbiorze regionów. Możesz sprawdzić dokładną maszynę wirtualną, typy, typy magazynów platformy Azure lub inne usługi platformy Azure, które są dostępne w regionach z ułatwieniami dostępu do [produktów lokacji dostępnych w danym regionie](https://azure.microsoft.com/global-infrastructure/services/). Po rozpoczęciu planowania i przydzielenia określonych regionów jako regionu podstawowego i ostatecznie pomocniczego regionu należy najpierw zbadać, czy wymagane usługi są dostępne w tych regionach. 
 
-Jak przydatna pomoc, możesz wskazać [oferty zgodności firmy Microsoft](https://docs.microsoft.com/microsoft-365/compliance/offering-home) , aby uzyskać listę zgodności oferowanych przez firmę Microsoft. 
+### <a name="availability-zones"></a>Strefy dostępności
+Kilka regionów świadczenia usługi Azure zaimplementował koncepcję o nazwie Strefy dostępności. Strefy dostępności są fizycznie oddzielone lokalizacjami w regionie świadczenia usługi Azure. Każda strefa dostępności składa się z co najmniej jednego centrum danych wyposażonego w niezależną moc, chłodzenie i sieci. Na przykład wdrożenie dwóch maszyn wirtualnych w ramach dwóch Strefy dostępności platformy Azure oraz wdrożenie struktury wysokiej dostępności dla systemu SAP DBMS lub usług SAP Central zapewnia najlepszą umowę SLA na platformie Azure. W przypadku tej konkretnej umowy SLA maszyny wirtualnej na platformie Azure Zapoznaj się z najnowszą wersją [umowy SLA maszyny wirtualnej](https://azure.microsoft.com/support/legal/sla/virtual-machines/). Ponieważ regiony platformy Azure są opracowywane i rozszerzane szybko w ciągu ostatnich lat, topologia regionów świadczenia usługi Azure, liczba fizycznych centrów danych, odległość między centrami danych i odległość między Strefy dostępności platformy Azure mogą być różne. I z tym opóźnieniem sieci.
 
-Inne obszary problemów, takie jak szyfrowanie danych w przypadku przechowywania danych w czasie spoczynku lub inne szyfrowanie w usłudze Azure, zostały udokumentowane w [omówieniu usługi Azure Encryption](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview).
-
-Nie Szacuj nieoszacowanej fazy projektu w planowaniu. Tylko wtedy, gdy masz umowę i zasady dotyczące tego tematu, musisz przejść do następnego kroku, który jest planowaniem architektury sieci wdrażanej na platformie Azure.
+Zasada Strefy dostępności nie ma zastosowania do usługi HANA specyficznej dla [dużych wystąpień platformy Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture). Umowy dotyczące poziomu usług dla dużych wystąpień HANA można znaleźć w artykule [Umowa SLA dla oprogramowanie SAP HANA na platformie Azure — duże wystąpienia](https://azure.microsoft.com/support/legal/sla/sap-hana-large/) 
 
 
+### <a name="df49dc09-141b-4f34-a4a2-990913b30358"></a>Domeny błędów
+Domeny błędów reprezentują fizyczną jednostkę awarii, ściśle powiązane z infrastrukturą fizyczną zawartą w centrach danych, a podczas gdy fizyczny blok lub Stojak może być traktowany jako domena błędów, nie istnieje bezpośrednie mapowanie jeden do jednego między nimi.
 
-## <a name="microsoft-azure-virtual-machine-services"></a>Microsoft Azure usług Virtual Machine Services
-Platforma Microsoft Azure to platforma usług w chmurze w skali internetowej hostowana i obsługiwana w centrach danych firmy Microsoft. Platforma obejmuje Microsoft Azure usługi maszyny wirtualnej (infrastruktura jako usługa lub IaaS) oraz zestaw rozbudowanych możliwości platformy jako usługi (PaaS).
+W przypadku wdrażania wielu Virtual Machines w ramach jednego systemu SAP w Microsoft Azure usługach maszyn wirtualnych można mieć wpływ na kontroler sieci szkieletowej platformy Azure w celu wdrożenia aplikacji w różnych domenach błędów, co spełnia wyższe wymagania Umowy SLA dostępności. Jednak dystrybucja domen błędów za pośrednictwem jednostki skalowania platformy Azure (kolekcja setek węzłów obliczeniowych lub węzłów magazynu i sieci) lub przypisanie maszyn wirtualnych do konkretnej domeny błędów jest czymś, w którym nie masz bezpośredniego sterowania. Aby skierować Kontroler sieci szkieletowej platformy Azure do wdrożenia zestawu maszyn wirtualnych w różnych domenach błędów, należy przypisać zestaw dostępności platformy Azure do maszyn wirtualnych w czasie wdrażania. Aby uzyskać więcej informacji na temat zestawów dostępności platformy Azure, zobacz rozdział [dostępności platformy Azure][planning-guide-3.2.3] w tym dokumencie.
 
-Platforma Azure zmniejsza potrzebę do korzystania z technologii i kupowania infrastruktury. Upraszcza to utrzymywanie i obsługę aplikacji przez zapewnienie obliczeniowych i magazynów na żądanie na potrzeby hostowania, skalowania i zarządzania aplikacją sieci Web i połączonymi aplikacjami. Zarządzanie infrastrukturą jest zautomatyzowane dzięki platformie, która została zaprojektowana w celu zapewnienia wysokiej dostępności i dynamicznego skalowania, aby dopasować potrzeby użytkowania z opcją modelu cen płatność zgodnie z rzeczywistym użyciem.
+
+### <a name="fc1ac8b2-e54a-487c-8581-d3cc6625e560"></a>Uaktualnij domeny
+Domeny uaktualnienia reprezentują jednostkę logiczną, która pomaga określić, jak działa maszyna wirtualna w systemie SAP, która składa się z wystąpień SAP działających na wielu maszynach wirtualnych. Gdy następuje uaktualnienie, Microsoft Azure przechodzi przez proces aktualizacji tych domen uaktualnienia po jednej przez jeden. Dzięki rozproszeniu maszyn wirtualnych w czasie wdrażania w różnych domenach uaktualnienia można chronić system SAP częściowo od potencjalnych przestojów. Aby wymusić wdrożenie przez platformę Azure maszyn wirtualnych systemu SAP w różnych domenach uaktualnienia, należy ustawić określony atrybut w czasie wdrażania każdej maszyny wirtualnej. Podobnie jak w przypadku domen błędów, jednostka skalowania platformy Azure jest dzielona na wiele domen uaktualnienia. Aby skierować Kontroler sieci szkieletowej platformy Azure do wdrożenia zestawu maszyn wirtualnych w różnych domenach uaktualnienia, należy przypisać zestaw dostępności platformy Azure do maszyn wirtualnych w czasie wdrażania. Aby uzyskać więcej informacji na temat zestawów dostępności platformy Azure, zobacz rozdział [Azure Availability Sets][planning-guide-3.2.3] poniżej.
+
+
+### <a name="18810088-f9be-4c97-958a-27996255c665"></a>Zestawy dostępności platformy Azure
+Virtual Machines platformy Azure w ramach jednego zestawu dostępności platformy Azure są dystrybuowane przez kontroler sieci szkieletowej platformy Azure w różnych domenach błędów i uaktualnień. Celem dystrybucji wielu domen błędów i uaktualniania jest uniemożliwienie zamknięcia wszystkich maszyn wirtualnych systemu SAP w przypadku konserwacji infrastruktury lub awarii w ramach jednej domeny błędów. Domyślnie maszyny wirtualne nie są częścią zestawu dostępności. Uczestnictwo maszyny wirtualnej w zestawie dostępności jest zdefiniowane w czasie wdrażania lub później w ramach ponownej konfiguracji i ponownego wdrożenia maszyny wirtualnej.
+
+Aby zrozumieć koncepcję zestawów dostępności platformy Azure i sposób, w jaki zestawy dostępności odnoszą się do domen błędów i uaktualnień, Przeczytaj [ten artykuł][virtual-machines-manage-availability]. 
+
+Podczas definiowania zestawów dostępności i próby zmieszania różnych maszyn wirtualnych różnych rodzin maszyn wirtualnych w ramach jednego zestawu dostępności mogą wystąpić problemy uniemożliwiające dołączenie określonego typu maszyny wirtualnej do takiego zestawu dostępności. Przyczyną jest to, że zestaw dostępności jest powiązany z jednostką skalowania, która zawiera określony typ hostów obliczeniowych. A pewien typ hosta obliczeniowego może uruchamiać tylko niektóre typy rodzin maszyn wirtualnych. Jeśli na przykład utworzysz zestaw dostępności i wdrożono pierwszą maszynę wirtualną w zestawie dostępności i wybierzesz typ maszyny wirtualnej rodziny Esv3, a następnie spróbujesz wdrożyć jako drugą maszynę wirtualną jako MASZYNę wirtualną z rodziny M, zostanie ona odrzucona w drugim przydziale. Przyczyną jest to, że maszyny wirtualne z rodziną Esv3 nie są uruchomione na tym samym sprzęcie hosta, w którym znajdują się maszyny wirtualne z rodziny M. Ten sam problem może wystąpić, gdy użytkownik próbuje zmienić rozmiar maszyn wirtualnych i próbować przenieść maszynę wirtualną z rodziny Esv3 do typu maszyny wirtualnej rodziny M. W przypadku zmiany rozmiaru rodziny maszyn wirtualnych, która nie może być hostowana na tym samym sprzęcie hosta, należy zamknąć wszystkie maszyny wirtualne w zestawie dostępności i zmienić ich rozmiar, aby można było uruchamiać je na innym typie komputera hosta. W przypadku umowy SLA maszyn wirtualnych, które są wdrożone w ramach zestawu dostępności, zapoznaj się z artykułem [umowy SLA maszyny wirtualnej](https://azure.microsoft.com/support/legal/sla/virtual-machines/). 
+
+Zasada zestawu dostępności i powiązanej aktualizacji i domeny błędów nie ma zastosowania do usługi Hana specyficznej dla [dużych wystąpień](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)platformy Hana. Umowy dotyczące poziomu usług dla dużych wystąpień HANA można znaleźć w artykule [Umowa SLA dla oprogramowanie SAP HANA na platformie Azure — duże wystąpienia](https://azure.microsoft.com/support/legal/sla/sap-hana-large/). 
+
+> [!IMPORTANT]
+> Pojęcia dotyczące Strefy dostępności platformy Azure i zestawów dostępności platformy Azure wykluczają się wzajemnie. Oznacza to, że można wdrożyć parę lub wiele maszyn wirtualnych w określonej strefie dostępności lub w zestawie dostępności platformy Azure. Ale nie obu.
+
+
+## <a name="azure-virtual-machine-services"></a>Usługi Azure Virtual Machines
+Platforma Azure oferuje wiele maszyn wirtualnych, które można wybrać do wdrożenia. Nie ma potrzeby dokonywania zakupów z góry i technologii. Oferta usługi maszyny wirtualnej platformy Azure upraszcza konserwację i obsługę aplikacji przez zapewnienie obliczeniowych i magazynów na żądanie na potrzeby hostowania, skalowania i zarządzania aplikacją sieci Web i połączonymi aplikacjami. Zarządzanie infrastrukturą jest zautomatyzowane dzięki platformie, która została zaprojektowana w celu zapewnienia wysokiej dostępności i dynamicznego skalowania w celu dopasowania do potrzeb użycia z opcją kilku różnych modeli cenowych.
 
 ![Pozycjonowanie Microsoft Azure usług Virtual Machine Services][planning-guide-figure-400]
 
-Dzięki usługom Azure Virtual Machines firma Microsoft umożliwia wdrażanie niestandardowych obrazów serwera na platformie Azure jako wystąpienia IaaS. Virtual Machines na platformie Azure są oparte na wirtualnych dyskach twardych (VHD) i mogą uruchamiać różne systemy operacyjne jako system operacyjny gościa.
+Dzięki usłudze Azure Virtual Machines firma Microsoft umożliwia wdrażanie niestandardowych obrazów serwera na platformie Azure jako wystąpienia IaaS. Możesz też wybrać spośród bogatych opcji wzbogacania obrazów systemu operacyjnego z galerii obrazów platformy Azure.
 
-Z punktu widzenia działania usługa Azure Virtual Machines oferuje podobne środowisko w przypadku maszyn wirtualnych wdrożonych lokalnie. Jednak ma znaczący wpływ na to, że nie musisz kupować infrastruktury i zarządzać nią. Deweloperzy i Administratorzy mają pełną kontrolę nad obrazem systemu operacyjnego w ramach tych maszyn wirtualnych. Administratorzy mogą logować się zdalnie na tych maszynach wirtualnych w celu wykonywania zadań konserwacyjnych i rozwiązywania problemów oraz zadań wdrażania oprogramowania. W odniesieniu do wdrożenia jedynymi ograniczeniami są rozmiary i możliwości maszyn wirtualnych platformy Azure. Te rozmiary mogą nie być dokładnie szczegółowe w konfiguracji, ponieważ mogą być wykonywane lokalnie. Istnieje wybór typów maszyn wirtualnych, które reprezentują kombinację:
+Z punktu widzenia działania usługa Azure Virtual Machines oferuje podobne środowisko w przypadku maszyn wirtualnych wdrożonych lokalnie. Użytkownik jest odpowiedzialny za administrację, operacje, a także poprawkę danego systemu operacyjnego, uruchomionego na maszynie wirtualnej platformy Azure i jej aplikacjach na tej maszynie wirtualnej. Firma Microsoft nie zapewnia więcej usług wykraczających poza Hosting maszyn wirtualnych w infrastrukturze platformy Azure (infrastruktura jako Usługa — IaaS). W przypadku obciążeń SAP wdrażanych przez klienta firma Microsoft nie ma żadnych ofert poza ofertą IaaS. 
 
-* Liczba procesorów wirtualnych vCPU
-* Memory (Pamięć)
-* Liczba wirtualnych dysków twardych, które mogą być dołączane
-* Przepustowość sieci i magazynu
+Platforma Microsoft Azure jest platformą z wieloma dzierżawcami. W związku z tym zasoby magazynu, sieci i zasobów obliczeniowych, które obsługują maszyny wirtualne platformy Azure, są z kilkoma wyjątkami współdzielonymi między dzierżawcami. Inteligentne ograniczanie przepływności i logikę przydziałów są używane, aby uniemożliwić jednemu dzierżawie wpływ na wydajność innej dzierżawy (sąsiada) w drastyczny sposób. Szczególnie w przypadku certyfikowania platformy Azure dla SAP HANA, firma Microsoft musi udowodnić izolację zasobów w przypadku, gdy wiele maszyn wirtualnych może działać na tym samym hoście w regularnych odstępach czasu SAP. Chociaż logika na platformie Azure próbuje zachować różnice w przepustowości, środowisko o wysokiej udostępnionej platformie zapewnia większe Wariancje w dostępności zasobów/przepustowości niż klienci mogą korzystać z wdrożeń lokalnych. Prawdopodobieństwo, że system SAP na platformie Azure może mieć większe wariancje niż w systemie lokalnym, należy wziąć pod uwagę.
 
-W tabeli w [tym artykule (Linux)][virtual-machines-sizes-linux] i w [tym artykule (system Windows)][virtual-machines-sizes-windows]można zobaczyć rozmiar i ograniczenia różnych dostępnych rozmiarów maszyn wirtualnych.
+### <a name="azure-virtual-machines-for-sap-workload"></a>Azure Virtual Machines for SAP — obciążenie
 
-Nie wszystkie różne serie maszyn wirtualnych mogą być oferowane w każdym z regionów świadczenia usługi Azure. Należy również pamiętać, że nie wszystkie maszyny wirtualne ani seria maszyn wirtualnych są certyfikowane dla systemu SAP.
+W przypadku obciążeń SAP zawężamy wybór do różnych rodzin maszyn wirtualnych, które są odpowiednie dla obciążenia SAP i bardziej szczegółowego obciążenia SAP HANA. Sposób znalezienia poprawnego typu maszyny wirtualnej i jego możliwości pracy w ramach obciążenia SAP opisano w dokumencie, [jakie oprogramowanie SAP jest obsługiwane przez wdrożenia platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure). 
 
-> [!IMPORTANT]
-> W przypadku korzystania z oprogramowania SAP NetWeaver, S/4HANA i SAP HANA, obsługiwane są tylko podzbiór typów maszyn wirtualnych i konfiguracji wymienione w temacie SAP Uwaga [1928533] . W przypadku SAP HANA certyfikowane jednostki platformy Azure Sprawdź [Katalog sprzętu SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
->
+> [!NOTE]
+> Typy maszyn wirtualnych certyfikowane dla obciążeń SAP nie zapewnia nadmiernej aprowizacji zasobów procesora i pamięci.
 
-Platforma Microsoft Azure jest platformą z wieloma dzierżawcami. W efekcie magazyn, Sieć i inne zasoby są współużytkowane przez dzierżawców. Inteligentne ograniczanie przepływności i logikę przydziałów są używane, aby uniemożliwić jednemu dzierżawie wpływ na wydajność innej dzierżawy (sąsiada) w drastyczny sposób. Szczególnie w przypadku certyfikowania platformy Azure dla SAP HANA, firma Microsoft musi udowodnić izolację zasobów w przypadku, gdy wiele maszyn wirtualnych może działać na tym samym hoście w regularnych odstępach czasu SAP. Chociaż logika na platformie Azure próbuje zachować różnice w przepustowości, środowisko o wysokiej udostępnionej platformie zapewnia większe Wariancje w dostępności zasobów/przepustowości niż klienci mogą korzystać z wdrożeń lokalnych. Prawdopodobieństwo, że system SAP na platformie Azure może mieć większe wariancje niż w systemie lokalnym, należy wziąć pod uwagę.
+Poza wyborem czystych maszyn wirtualnych należy również sprawdzić, czy są one dostępne w określonym regionie w oparciu o dostępne w danym regionie [produkty](https://azure.microsoft.com/global-infrastructure/services/)lokacji. Jednak ważne jest, aby sprawdzić, czy:
 
-W związku z tym klienci muszą znać różne możliwości typów platformy Azure obsługiwane przez oprogramowanie SAP w obszarze:
+- Zasoby procesora i pamięci różnych typów maszyn wirtualnych 
+- Przepustowość IOPS różnych typów maszyn wirtualnych
+- Możliwości sieciowe różnych typów maszyn wirtualnych
+- Liczba dysków, które można dołączyć
+- Możliwość korzystania z określonych typów magazynu platformy Azure
 
-* Zasoby procesora i pamięci różnych typów maszyn wirtualnych 
-* Przepustowość IOPS różnych typów maszyn wirtualnych
-* Możliwości sieciowe różnych typów maszyn wirtualnych
+Dopasuj do potrzeb. Większość tych danych można znaleźć [tutaj (Linux)][virtual-machines-sizes-linux] i [tutaj (Windows)][virtual-machines-sizes-windows] dla określonego typu maszyny wirtualnej.
 
-Większość tych danych można znaleźć [tutaj (Linux)][virtual-machines-sizes-linux] i [tutaj (Windows)][virtual-machines-sizes-windows].
+Model cen zawiera kilka różnych opcji cenowych, takich jak:
+
+- Płatność zgodnie z rzeczywistym użyciem
+- Jeden rok zarezerwowany
+- Zarezerwowane trzy lata
+- Cennik na miejscu
+
+Cennik każdej z różnych ofert z różnymi ofertami usług dotyczących systemów operacyjnych i różnych regionów jest dostępny w witrynie [Linux Virtual Machines ceny](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) i [Windows Virtual Machines cenniku](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). Aby uzyskać szczegółowe informacje i elastyczność jednego roku i 3-roczne wystąpienia zarezerwowane, zapoznaj się z następującymi artykułami:
+
+- [Czym są rezerwacje platformy Azure?](https://docs.microsoft.com/azure/cost-management-billing/reservations/save-compute-costs-reservations)
+- [Elastyczność rozmiaru maszyny wirtualnej w usłudze Reserved VM Instances](https://docs.microsoft.com/azure/virtual-machines/windows/reserved-vm-instance-size-flexibility)
+- [Jak obowiązuje rabat w ramach rezerwacji platformy Azure dla maszyn wirtualnych](https://docs.microsoft.com/azure/cost-management-billing/manage/understand-vm-reservation-charges) 
+
+Aby uzyskać więcej informacji na temat cennika, zapoznaj się z artykułem [Virtual Machines platformy Azure](https://azure.microsoft.com/pricing/spot/). Cennik tego samego typu maszyn wirtualnych może być również różny dla różnych regionów świadczenia usługi Azure. W przypadku niektórych klientów warto wdrożyć ją w tańszym regionie świadczenia usługi Azure.
+
+Ponadto platforma Azure oferuje koncepcje dedykowanego hosta. Dedykowane koncepcje hosta dają większą kontrolę nad cyklami poprawek wykonywanymi przez platformę Azure. Można czasowo zastosować poprawki zgodnie z własnymi harmonogramami. Oferta jest przeznaczona dla klientów korzystających z obciążeń, które mogą nie być zgodne z normalnym cyklem obciążeń. Aby zapoznać się z pojęciami dedykowanych ofert hosta platformy Azure, zapoznaj się z artykułem [dedykowanym hosta platformy Azure](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts). Ta oferta jest obsługiwana w przypadku obciążeń SAP i jest używana przez kilku klientów SAP, którzy chcą mieć większą kontrolę nad stosowaniem poprawek infrastruktury i planów samoobsługowych firmy Microsoft. Aby uzyskać więcej informacji na temat sposobu, w jaki firma Microsoft utrzymuje i aktualizuje infrastrukturę platformy Azure, która obsługuje maszyny wirtualne, zapoznaj się z artykułem [konserwacja maszyn wirtualnych na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates).
 
 
-### <a name="be80d1b9-a463-4845-bd35-f4cebdb5424a"></a>Regiony platformy Azure
-Virtual Machines są wdrażane w taki sposób, zwany *regionami platformy Azure*. Region świadczenia usługi Azure może być jednym lub wieloma centrami danych, które znajdują się w bliskim sąsiedztwie. W przypadku większości regionów geopolitycznych na świecie firma Microsoft ma co najmniej dwa regiony platformy Azure. Na przykład w Europie istnieje region platformy Azure w *Europie Północnej* i jednym z *Europy zachodniej*. Takie dwa regiony platformy Azure w regionie geopolitycznym są oddzielane za pomocą dużej ilości danych, dzięki czemu naturalne lub techniczne klęski żywiołowe nie wpływają na regiony platformy Azure w tym samym regionie geopolitycznym. Ze względu na to, że firma Microsoft stale opracowuje nowe regiony platformy Azure w różnych regionach geopolitycznych, liczba tych regionów stale rośnie i od grudnia 2015 osiągnęła liczbę regionów świadczenia usługi Azure z dodatkowymi regionami ogłoszonymi już. Klient może wdrożyć systemy SAP we wszystkich tych regionach, w tym dwóch regionach świadczenia usługi Azure w Chinach. Aktualne informacje o regionach platformy Azure można znaleźć w witrynie sieci Web: <https://azure.microsoft.com/regions/>
+ 
 
-### <a name="8d8ad4b8-6093-4b91-ac36-ea56d80dbf77"></a>Koncepcja maszyny wirtualnej Microsoft Azure
-Microsoft Azure oferuje rozwiązanie "infrastruktura jako usługa" (IaaS) do hostowania Virtual Machines z podobnymi funkcjami, jak lokalne rozwiązanie do wirtualizacji. Możesz utworzyć Virtual Machines z poziomu Azure Portal, programu PowerShell lub interfejsu wiersza polecenia, który oferuje również możliwości wdrażania i zarządzania.
-
-Azure Resource Manager umożliwia inicjowanie obsługi administracyjnej aplikacji przy użyciu szablonu deklaratywnego. Pojedynczy szablon umożliwia wdrożenie wielu usług wraz z ich zależnościami. Ten sam szablon jest używany do wielokrotnego wdrażania aplikacji na każdym etapie cyklu życia aplikacji.
-
-Więcej informacji o korzystaniu z szablonów Menedżer zasobów można znaleźć tutaj:
-
-* [Wdrażanie maszyn wirtualnych i zarządzanie nimi przy użyciu szablonów Azure Resource Manager i interfejsu wiersza polecenia platformy Azure](../../linux/create-ssh-secured-vm-from-template.md)
-* [Zarządzanie maszynami wirtualnymi przy użyciu Azure Resource Manager i programu PowerShell][virtual-machines-deploy-rmtemplates-powershell]
-* <https://azure.microsoft.com/documentation/templates/>
-
-Kolejną ciekawą funkcją jest możliwość tworzenia obrazów z Virtual Machines, co umożliwia przygotowanie pewnych repozytoriów, z których można szybko wdrażać wystąpienia maszyn wirtualnych, które spełniają Twoje wymagania.
-
-Więcej informacji na temat tworzenia obrazów na podstawie Virtual Machines można znaleźć w [tym artykule (Linux)][virtual-machines-linux-capture-image-resource-manager] i [tym artykule (Windows)][virtual-machines-windows-capture-image-resource-manager].
-
-#### <a name="df49dc09-141b-4f34-a4a2-990913b30358"></a>Domeny błędów
-Domeny błędów reprezentują fizyczną jednostkę awarii, ściśle powiązane z infrastrukturą fizyczną zawartą w centrach danych, a podczas gdy fizyczny blok lub Stojak może być traktowany jako domena błędów, nie istnieje bezpośrednie mapowanie jeden do jednego między nimi.
-
-W przypadku wdrażania wielu Virtual Machines w ramach jednego systemu SAP w Microsoft Azure usługach maszyn wirtualnych można mieć wpływ na kontroler sieci szkieletowej platformy Azure w celu wdrożenia aplikacji w różnych domenach błędów, co spełnia wymagania Microsoft Azure umowy SLA. Jednak dystrybucja domen błędów za pośrednictwem jednostki skalowania platformy Azure (kolekcja setek węzłów obliczeniowych lub węzłów magazynu i sieci) lub przypisanie maszyn wirtualnych do konkretnej domeny błędów jest czymś, w którym nie masz bezpośredniego sterowania. Aby skierować Kontroler sieci szkieletowej platformy Azure do wdrożenia zestawu maszyn wirtualnych w różnych domenach błędów, należy przypisać zestaw dostępności platformy Azure do maszyn wirtualnych w czasie wdrażania. Aby uzyskać więcej informacji na temat zestawów dostępności platformy Azure, zobacz rozdział [dostępności platformy Azure][planning-guide-3.2.3] w tym dokumencie.
-
-#### <a name="fc1ac8b2-e54a-487c-8581-d3cc6625e560"></a>Uaktualnij domeny
-Domeny uaktualnienia reprezentują jednostkę logiczną, która pomaga określić, jak działa maszyna wirtualna w systemie SAP, która składa się z wystąpień SAP działających na wielu maszynach wirtualnych. Gdy następuje uaktualnienie, Microsoft Azure przechodzi przez proces aktualizacji tych domen uaktualnienia po jednej przez jeden. Dzięki rozproszeniu maszyn wirtualnych w czasie wdrażania w różnych domenach uaktualnienia można chronić system SAP częściowo od potencjalnych przestojów. Aby wymusić wdrożenie przez platformę Azure maszyn wirtualnych systemu SAP w różnych domenach uaktualnienia, należy ustawić określony atrybut w czasie wdrażania każdej maszyny wirtualnej. Podobnie jak w przypadku domen błędów, jednostka skalowania platformy Azure jest dzielona na wiele domen uaktualnienia. Aby skierować Kontroler sieci szkieletowej platformy Azure do wdrożenia zestawu maszyn wirtualnych w różnych domenach uaktualnienia, należy przypisać zestaw dostępności platformy Azure do maszyn wirtualnych w czasie wdrażania. Aby uzyskać więcej informacji na temat zestawów dostępności platformy Azure, zobacz rozdział [Azure Availability Sets][planning-guide-3.2.3] poniżej.
-
-#### <a name="18810088-f9be-4c97-958a-27996255c665"></a>Zestawy dostępności platformy Azure
-Virtual Machines platformy Azure w ramach jednego zestawu dostępności platformy Azure są dystrybuowane przez kontroler sieci szkieletowej platformy Azure w różnych domenach błędów i uaktualnień. Celem dystrybucji wielu domen błędów i uaktualniania jest uniemożliwienie zamknięcia wszystkich maszyn wirtualnych systemu SAP w przypadku konserwacji infrastruktury lub awarii w ramach jednej domeny błędów. Domyślnie maszyny wirtualne nie są częścią zestawu dostępności. Uczestnictwo maszyny wirtualnej w zestawie dostępności jest zdefiniowane w czasie wdrażania lub później w ramach ponownej konfiguracji i ponownego wdrożenia maszyny wirtualnej.
-
-Aby zrozumieć koncepcję zestawów dostępności platformy Azure i sposób, w jaki zestawy dostępności odnoszą się do domen błędów i uaktualnień, Przeczytaj [ten artykuł][virtual-machines-manage-availability]
-
-Aby zdefiniować zestawy dostępności dla Azure Resource Manager za pomocą szablonu JSON, zobacz [specyfikacje interfejsu API REST](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-compute/2015-06-15/swagger/compute.json) i wyszukaj "dostępność".
 
 ### <a name="a72afa26-4bf4-4a25-8cf7-855d6032157f"></a>Magazyn: Microsoft Azure Storage i dyski z danymi
 Microsoft Azure Virtual Machines używać różnych typów magazynów. Podczas implementowania oprogramowania SAP w usługach Azure Virtual Machines ważne jest zrozumienie różnic między tymi dwoma głównymi typami magazynu:
@@ -799,6 +802,17 @@ Aby uzyskać informacje na temat instalacji, konfiguracji i sposobu używania po
 
 Zapoznaj się z rozdziałem [interfejsu wiersza polecenia platformy Azure dla maszyn wirtualnych z systemem Linux][deployment-guide-4.5.2] w [przewodniku wdrażania][planning-guide] dotyczącym używania interfejsu wiersza polecenia platformy Azure do wdrożenia rozszerzenia platformy Azure dla oprogramowania SAP
 
+
+## <a name="first-steps-planning-a-deployment"></a>Pierwsze kroki planowania wdrożenia
+Pierwszy krok w ramach planowania wdrożenia nie umożliwia sprawdzenia maszyn wirtualnych dostępnych do uruchamiania oprogramowania SAP. Pierwszym krokiem może być czas, który jest czasochłonny, ale najważniejszym rozwiązaniem jest współdziałanie z zespołami ds. zgodności i zabezpieczeń w firmie na temat tego, jakie są warunki graniczne wdrażania tego typu obciążeń lub procesów firmy SAP w chmurze publicznej. Jeśli firma wdrożyła inne oprogramowanie przed platformą Azure, proces ten może być łatwy. Jeśli firma jest więcej na początku podróży, może być więcej dyskusji koniecznych do ustalenia warunków granicznych, warunków zabezpieczeń, które pozwalają na hostowanie niektórych danych SAP i procesów firmy SAP w chmurze publicznej.
+
+Jak przydatna pomoc, możesz wskazać [oferty zgodności firmy Microsoft](https://docs.microsoft.com/microsoft-365/compliance/offering-home) , aby uzyskać listę zgodności oferowanych przez firmę Microsoft. 
+
+Inne obszary problemów, takie jak szyfrowanie danych w przypadku przechowywania danych w czasie spoczynku lub inne szyfrowanie w usłudze Azure, zostały udokumentowane w [omówieniu usługi Azure Encryption](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview).
+
+Nie Szacuj nieoszacowanej fazy projektu w planowaniu. Tylko wtedy, gdy masz umowę i zasady dotyczące tego tematu, musisz przejść do następnego kroku, który jest planowaniem architektury sieci wdrażanej na platformie Azure.
+
+
 ## <a name="different-ways-to-deploy-vms-for-sap-in-azure"></a>Różne sposoby wdrażania maszyn wirtualnych dla oprogramowania SAP na platformie Azure
 
 W tym rozdziale przedstawiono różne sposoby wdrożenia maszyny wirtualnej na platformie Azure. Dalsze procedury przygotowawcze, jak również Obsługa dysków VHD i maszyn wirtualnych na platformie Azure, zostały omówione w tym rozdziale.
@@ -979,9 +993,9 @@ Aby przekazać istniejącą maszynę wirtualną lub wirtualny dysk twardy z siec
 #### <a name="downloading-vhds-or-managed-disks-to-on-premises"></a>Pobieranie dysków VHD lub Managed Disks do lokalnego
 Infrastruktura platformy Azure jako usługa nie jest jednokierunkową ulicą umożliwiającą przekazywanie wirtualnych dysków twardych i systemów SAP. Systemy SAP można przenieść z platformy Azure z powrotem do lokalnego świata.
 
-Podczas pobierania dyski VHD lub Managed Disks nie mogą być aktywne. Nawet w przypadku pobierania dysków, które są zainstalowane na maszynach wirtualnych, maszyna wirtualna musi zostać wyłączona i cofnięta alokacja. Jeśli chcesz pobrać zawartość bazy danych, która powinna zostać użyta do skonfigurowania nowego systemu lokalnie, a jeśli to możliwe, to w czasie pobierania i instalacji nowego systemu system na platformie Azure nadal może działać można uniknąć długotrwałych przestojów przez wykonywanie skompresowanej kopii zapasowej bazy danych na dysku, a dopiero po prostu pobranie tego dysku zamiast pobierania podstawowej maszyny wirtualnej systemu operacyjnego.
+Podczas pobierania dyski VHD lub Managed Disks nie mogą być aktywne. Nawet w przypadku pobierania dysków, które są zainstalowane na maszynach wirtualnych, maszyna wirtualna musi zostać wyłączona i cofnięta alokacja. Jeśli chcesz pobrać zawartość bazy danych, która powinna zostać użyta w celu skonfigurowania nowego systemu lokalnie, a jeśli jest to akceptowalne w czasie pobierania i instalacji nowego systemu, system na platformie Azure nadal może działać można uniknąć długotrwałych przestojów przez wykonywanie skompresowanej kopii zapasowej bazy danych na dysku, a dopiero po prostu pobranie tego dysku zamiast pobierania podstawowej maszyny wirtualnej systemu operacyjnego.
 
-#### <a name="powershell"></a>PowerShell
+#### <a name="powershell"></a>Program PowerShell
 
 * Pobieranie dysku zarządzanego  
   Najpierw musisz uzyskać dostęp do bazowego obiektu BLOB dysku zarządzanego. Następnie możesz skopiować źródłowy obiekt BLOB do nowego konta magazynu i pobrać obiekt BLOB z tego konta magazynu.
@@ -1041,7 +1055,7 @@ Dyski danych mogą być przechowywane jako pliki VHD na koncie usługi Azure Sto
 
 Dyski danych mogą być również Managed Disks. W takim przypadku dysk zarządzany jest używany do utworzenia nowego dysku zarządzanego przed dołączeniem do maszyny wirtualnej. Nazwa dysku zarządzanego musi być unikatowa w obrębie grupy zasobów.
 
-##### <a name="powershell"></a>PowerShell
+##### <a name="powershell"></a>Program PowerShell
 
 Za pomocą poleceń cmdlet Azure PowerShell można skopiować dysk VHD, jak pokazano w [tym artykule][storage-powershell-guide-full-copy-vhd]. Aby utworzyć nowy dysk zarządzany, użyj polecenie New-AzDiskConfig i New-AzDisk, jak pokazano w poniższym przykładzie.
 
@@ -1052,7 +1066,7 @@ New-AzDisk -ResourceGroupName <resource group name> -DiskName <disk name> -Disk 
 
 ##### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-Możesz użyć interfejsu wiersza polecenia platformy Azure, aby skopiować dysk VHD, jak pokazano w [tym artykule][storage-azure-cli-copy-blobs]. Aby utworzyć nowy dysk zarządzany, użyj polecenie *AZ Disk Create* , jak pokazano w poniższym przykładzie.
+Możesz użyć interfejsu wiersza polecenia platformy Azure, aby skopiować dysk VHD. Aby utworzyć nowy dysk zarządzany, użyj polecenie *AZ Disk Create* , jak pokazano w poniższym przykładzie.
 
 ```
 az disk create --source "/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/disks/<disk name>" --name <disk name> --resource-group <resource group name> --location <location>
@@ -1069,7 +1083,7 @@ Profesjonalne wersje programu Eksplorator usługi Azure Storage można znaleźć
 
 Kopia wirtualnego dysku twardego w ramach konta magazynu to proces, który zajmuje zaledwie kilka sekund (podobnie jak w przypadku sprzętu SAN tworzenie migawek z opóźnionym kopiowaniem i kopiowaniem podczas zapisu). Po utworzeniu kopii pliku VHD można dołączyć ją do maszyny wirtualnej lub użyć jej jako obrazu, aby dołączyć kopie wirtualnego dysku twardego do maszyn wirtualnych.
 
-##### <a name="powershell"></a>PowerShell
+##### <a name="powershell"></a>Program PowerShell
 
 ```powershell
 # attach a vhd to a vm
@@ -1115,7 +1129,7 @@ az vm disk attach --disk <new disk name or managed disk id> --resource-group <re
 #### <a name="9789b076-2011-4afa-b2fe-b07a8aba58a1"></a>Kopiowanie dysków między kontami usługi Azure Storage
 Nie można wykonać tego zadania na Azure Portal. Możesz użyć poleceń cmdlet Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub przeglądarki magazynu innej firmy. Polecenia cmdlet programu PowerShell lub poleceń interfejsu CLI mogą tworzyć obiekty blob i zarządzać nimi, co obejmuje możliwość asynchronicznego kopiowania obiektów BLOB na kontach magazynu i między regionami w ramach subskrypcji platformy Azure.
 
-##### <a name="powershell"></a>PowerShell
+##### <a name="powershell"></a>Program PowerShell
 Istnieje również możliwość kopiowania dysków VHD między subskrypcjami. Aby uzyskać więcej informacji, Przeczytaj [ten artykuł][storage-powershell-guide-full-copy-vhd].
 
 Podstawowy przepływ logiki poleceń cmdlet środowiska PS wygląda następująco:
@@ -1152,8 +1166,6 @@ az storage blob show --name <target blob name> --container <target container nam
 ```
 
 * Dołącz nowy wirtualny dysk twardy do maszyny wirtualnej zgodnie z powyższym opisem.
-
-Aby zapoznać się z przykładami, zobacz [ten artykuł][storage-azure-cli-copy-blobs].
 
 ### <a name="disk-handling"></a>Obsługa dysków
 
@@ -1251,7 +1263,7 @@ Następnie należy zdecydować, czy chcesz utworzyć nowy i pusty dysk, czy chce
 ---
 Jeśli nowy dysk jest pustym dyskiem, należy również sformatować dysk. Do formatowania, szczególnie w przypadku danych i plików dziennika systemu DBMS, mają zastosowanie te same zalecenia jak w przypadku wdrożeń od zera w systemie DBMS.
 
-Jak już wspomniano w rozdziale [Microsoft Azure koncepcji maszyny wirtualnej][planning-guide-3.2], konto usługi Azure Storage nie zapewnia nieskończonych zasobów pod względem woluminu we/wy, liczby operacji we/wyjścia i ilości danych. Zazwyczaj ma to wpływ na maszyny wirtualne DBMS. Najlepszym rozwiązaniem może być użycie oddzielnego konta magazynu dla każdej maszyny wirtualnej, jeśli masz kilka maszyn wirtualnych z dużą ilością operacji we/wy do wdrożenia w celu pozostawania w ramach limitu woluminu konta usługi Azure Storage. W przeciwnym razie musisz zobaczyć, jak można zrównoważyć te maszyny wirtualne między różnymi kontami magazynu bez naciskania na limity poszczególnych pojedynczych kont magazynu. Więcej szczegółów znajduje się w [przewodniku wdrażania systemu DBMS][dbms-guide]. Należy również pamiętać o tych ograniczeniach dla czystych maszyn wirtualnych serwera aplikacji SAP lub innych maszyn wirtualnych, które ostatecznie mogą wymagać dodatkowych dysków VHD. Te ograniczenia nie mają zastosowania w przypadku korzystania z dysku zarządzanego. Jeśli planujesz używać Premium Storage, zalecamy użycie dysku zarządzanego.
+Konto usługi Azure Storage nie zapewnia nieskończonych zasobów w zakresie woluminów we/wy, operacji IOPS i ilości danych. Zazwyczaj ma to wpływ na maszyny wirtualne DBMS. Najlepszym rozwiązaniem może być użycie oddzielnego konta magazynu dla każdej maszyny wirtualnej, jeśli masz kilka maszyn wirtualnych z dużą ilością operacji we/wy do wdrożenia w celu pozostawania w ramach limitu woluminu konta usługi Azure Storage. W przeciwnym razie musisz zobaczyć, jak można zrównoważyć te maszyny wirtualne między różnymi kontami magazynu bez naciskania na limity poszczególnych pojedynczych kont magazynu. Więcej szczegółów znajduje się w [przewodniku wdrażania systemu DBMS][dbms-guide]. Należy również pamiętać o tych ograniczeniach dla czystych maszyn wirtualnych serwera aplikacji SAP lub innych maszyn wirtualnych, które ostatecznie mogą wymagać dodatkowych dysków VHD. Te ograniczenia nie mają zastosowania w przypadku korzystania z dysku zarządzanego. Jeśli planujesz używać Premium Storage, zalecamy użycie dysku zarządzanego.
 
 Innym tematem, który jest istotny dla kont magazynu, jest to, czy wirtualne dyski twarde na koncie magazynu mają mieć replikację geograficzną. Replikacja geograficzna jest włączona lub wyłączona na poziomie konta magazynu, a nie na poziomie maszyny wirtualnej. W przypadku włączenia replikacji geograficznej wirtualne dyski twarde w ramach konta magazynu byłyby replikowane do innego centrum danych platformy Azure w tym samym regionie. Przed podjęciem decyzji o tym należy wziąć pod uwagę następujące ograniczenia:
 
@@ -1354,7 +1366,7 @@ Przyjęto założenie, że utworzono obraz maszyny wirtualnej zgodnie z opisem w
 
 Sekwencja zdarzeń do wdrożenia scenariusza wygląda następująco:
 
-##### <a name="powershell"></a>PowerShell
+##### <a name="powershell"></a>Program PowerShell
 
 * Utwórz nową grupę zasobów dla każdego szkolenia/demonstracji poziomej
 
@@ -1623,9 +1635,7 @@ W tym dokumencie powinno być możliwe otwieranie dedykowanych portów w urządz
 
 Inne środki bezpieczeństwa podczas wdrażania maszyn wirtualnych w tym scenariuszu mogą polegać na utworzeniu [sieciowej grupy zabezpieczeń][virtual-networks-nsg] w celu zdefiniowania reguł dostępu.
 
-### <a name="dealing-with-different-virtual-machine-series"></a>Postępowanie z różnymi seriami maszyn wirtualnych
 
-Firma Microsoft dodała wiele typów maszyn wirtualnych, które różnią się w zależności od liczby procesorów wirtualnych vCPU, pamięci lub ważniejszej konfiguracji sprzętu, na którym działa. Nie wszystkie maszyny wirtualne są obsługiwane za pomocą oprogramowania SAP (zobacz Obsługiwane typy maszyn wirtualnych w programie SAP Note [1928533]). Niektóre z tych maszyn wirtualnych działają na różnych generacjach sprzętu hosta. Te generacje sprzętu hosta są wdrażane w ramach szczegółowości jednostki skalowania platformy Azure. Mogą wystąpić sytuacje, w których wybrane typy maszyn wirtualnych nie mogą być uruchamiane w tej samej jednostce skalowania. Zestaw dostępności ma ograniczoną możliwość rozdzielania jednostek skali na podstawie różnych urządzeń.  Na przykład jeśli używasz warstwy systemu SAP DBMS na E64s_v3, maszyna wirtualna, która znajduje się w zestawie dostępności wraz z maszyną wirtualną z uruchomionym pomocniczym wystąpieniem systemu DBMS w konfiguracji HA, nie można po prostu zatrzymać i ponownie uruchomić pomocniczej maszyny wirtualnej jako maszyny wirtualnej z serii M, ponieważ może być konieczne pgrade maszynę wirtualną. Przyczyną jest to, że maszyny wirtualne serii M i maszyny wirtualne z serii EV3 działają na różnych urządzeniach i w różnych jednostkach skalowania. Należy utworzyć nowy zestaw dostępności, usunąć pomocniczą maszynę wirtualną z serii EV3 bez usuwania magazynu i ponownie wdrożyć maszynę wirtualną jako maszynę wirtualną z serii M w nowym zestawie dostępności.
 
 #### <a name="printing-on-a-local-network-printer-from-sap-instance-in-azure"></a>Drukowanie na lokalnej drukarce sieciowej z wystąpienia SAP na platformie Azure
 

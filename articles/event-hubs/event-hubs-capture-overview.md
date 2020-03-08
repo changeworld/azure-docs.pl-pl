@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2020
 ms.author: shvija
-ms.openlocfilehash: 9b69feef7c6587f7356648e6a6828277ba500aea
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: c166f4cace6a8cc25b36a84f4614033801e69a51
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460079"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925924"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Przechwytywanie zdarzeń za pomocą usługi Azure Event Hubs w usłudze Azure Blob Storage lub magazynu usługi Azure Data Lake
 Usługa Azure Event Hubs umożliwia automatyczne przechwytywanie danych przesyłanych strumieniowo w Event Hubs w usłudze [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) lub w ramach wybranego konta [Azure Data Lake Storage generacji 1 lub generacji 2](https://azure.microsoft.com/services/data-lake-store/) , z dodatkową elastycznością określania interwału czasu lub rozmiaru. Konfigurowanie przechwytywania jest szybkie, nie ma kosztów administracyjnych do uruchomienia i jest automatycznie skalowane przy użyciu [jednostek przepływności](event-hubs-scalability.md#throughput-units)Event Hubs. Funkcja przechwytywania usługi Event Hubs jest najprostszym sposobem ładowania danych strumieniowych na platformę Azure i pozwala skoncentrować się na przetwarzaniu danych zamiast na przechwytywania danych.
@@ -94,10 +94,11 @@ Pełny kompletny przykład jest dostępny w repozytorium przesyłania strumienio
 
 ### <a name="use-apache-spark"></a>Użyj Apache Spark
 
-[Apache Spark][Apache Spark] to "ujednolicony aparat analityczny do przetwarzania danych na dużą skalę". Obsługuje on różne języki, w tym SQL, i może łatwo uzyskać dostęp do usługi Azure Blob Storage. Dostępne są dwie opcje uruchamiania Apache Spark na platformie Azure i umożliwiają łatwy dostęp do usługi Azure Blob Storage:
+[Apache Spark][Apache Spark] to "ujednolicony aparat analityczny do przetwarzania danych na dużą skalę". Obsługuje on różne języki, w tym SQL, i może łatwo uzyskać dostęp do usługi Azure Blob Storage. Istnieje kilka opcji uruchamiania Apache Spark na platformie Azure, a każda z nich zapewnia łatwy dostęp do usługi Azure Blob Storage:
 
 - [HDInsight: pliki adresów w usłudze Azure Storage][HDInsight: Address files in Azure storage]
 - [Azure Databricks: Magazyn obiektów blob platformy Azure][Azure Databricks: Azure Blob Storage]
+- [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/spark-job) 
 
 ### <a name="use-avro-tools"></a>Korzystanie z narzędzi Avro
 

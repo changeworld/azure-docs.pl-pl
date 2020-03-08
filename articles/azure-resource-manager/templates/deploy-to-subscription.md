@@ -2,17 +2,23 @@
 title: Wdrażanie zasobów w ramach subskrypcji
 description: Opisuje sposób tworzenia grupy zasobów w szablonie Azure Resource Manager. Przedstawiono w nim również sposób wdrażania zasobów w zakresie subskrypcji platformy Azure.
 ms.topic: conceptual
-ms.date: 03/02/2020
-ms.openlocfilehash: 2e747b7faa6e9766a577b472cc3e283d6223109e
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.date: 03/06/2020
+ms.openlocfilehash: 1ec761a8136d631c60a7a2021f5462dbf3d7f790
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228115"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925310"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Tworzenie grup zasobów i zasobów na poziomie subskrypcji
 
-Zazwyczaj zasoby platformy Azure są wdrażane w grupie zasobów w ramach subskrypcji platformy Azure. Można jednak również tworzyć zasoby na poziomie subskrypcji. Wdrożenia na poziomie subskrypcji służą do podejmowania działań, które mają sens na tym poziomie, takich jak tworzenie grup zasobów lub przypisywanie [kontroli dostępu opartej na rolach](../../role-based-access-control/overview.md).
+Zazwyczaj zasoby platformy Azure są wdrażane w grupie zasobów w ramach subskrypcji platformy Azure. Można jednak również utworzyć zasoby w:
+
+* poziom subskrypcji (objęty w tym artykule)
+* [poziom grupy zarządzania](deploy-to-management-group.md)
+* [poziom dzierżawy](deploy-to-tenant.md)
+
+Wdrożenia na poziomie subskrypcji służą do podejmowania działań, które mają sens na tym poziomie, takich jak tworzenie grup zasobów lub przypisywanie [kontroli dostępu opartej na rolach](../../role-based-access-control/overview.md).
 
 Aby wdrażać szablony na poziomie subskrypcji, użyj interfejsu wiersza polecenia platformy Azure, programu PowerShell lub API REST. Azure Portal nie obsługuje wdrażania na poziomie subskrypcji.
 
@@ -21,7 +27,7 @@ Aby wdrażać szablony na poziomie subskrypcji, użyj interfejsu wiersza polecen
 Na poziomie subskrypcji można wdrożyć następujące typy zasobów:
 
 * [budżetów](/azure/templates/microsoft.consumption/budgets)
-* [komputerów](/azure/templates/microsoft.resources/deployments)
+* [wdrożenia](/azure/templates/microsoft.resources/deployments) — dla szablonów zagnieżdżonych wdrażanych w grupach zasobów.
 * [peerAsns](/azure/templates/microsoft.peering/peerasns)
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
@@ -88,12 +94,12 @@ W przypadku wdrożeń na poziomie subskrypcji istnieją pewne ważne zagadnienia
 
 * Funkcja [przesourceing ()](template-functions-resource.md#resourcegroup) **nie** jest obsługiwana.
 * Obsługiwane są funkcje [Reference ()](template-functions-resource.md#reference) i [list ()](template-functions-resource.md#list) .
-* Funkcja [ResourceID ()](template-functions-resource.md#resourceid) jest obsługiwana. Służy do uzyskiwania identyfikatora zasobu dla zasobów używanych w ramach wdrożeń na poziomie subskrypcji. Nie należy podawać wartości parametru grupy zasobów.
+* Użyj funkcji [subscriptionResourceId ()](template-functions-resource.md#subscriptionresourceid) , aby uzyskać identyfikator zasobu dla zasobów wdrożonych na poziomie subskrypcji.
 
   Aby na przykład uzyskać identyfikator zasobu definicji zasad, należy użyć:
   
   ```json
-  resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
+  subscriptionResourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
   ```
   
   Identyfikator zwróconego zasobu ma następujący format:
@@ -101,8 +107,6 @@ W przypadku wdrożeń na poziomie subskrypcji istnieją pewne ważne zagadnienia
   ```json
   /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   ```
-
-  Można też użyć funkcji [subscriptionResourceId ()](template-functions-resource.md#subscriptionresourceid) w celu pobrania identyfikatora zasobu dla zasobu poziomu subskrypcji.
 
 ## <a name="create-resource-groups"></a>Tworzenie grup zasobów
 

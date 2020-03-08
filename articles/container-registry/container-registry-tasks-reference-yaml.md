@@ -3,12 +3,12 @@ title: Odwołanie YAML — ACR zadań
 description: Dokumentacja dotycząca definiowania zadań w YAML dla zadań ACR, takich jak właściwości zadania, typy kroków, właściwości kroku i wbudowane zmienne.
 ms.topic: article
 ms.date: 10/23/2019
-ms.openlocfilehash: d86eb0e24233afb536d27f5d0938d4748941e88a
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 9558f698b4a9dbca46431fc02ced6ae30de29121
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945740"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668605"
 ---
 # <a name="acr-tasks-reference-yaml"></a>Informacje o zadaniach ACR: YAML
 
@@ -75,36 +75,36 @@ az configure --defaults acr=myregistry
 
 Właściwości zadania zwykle pojawiają się u góry pliku `acr-task.yaml` i są właściwościami globalnymi, które są stosowane w całym wykonaniu kroków tego zadania. Niektóre z tych właściwości globalnych można przesłonić w ramach pojedynczego kroku.
 
-| Właściwość | Typ | Opcjonalne | Opis | Przesłonięcie obsługiwane | Wartość domyślna |
+| Właściwość | Typ | Optional (Opcjonalność) | Opis | Przesłonięcie obsługiwane | Wartość domyślna |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
-| `version` | string | Tak | Wersja pliku `acr-task.yaml`, przeanalizowana przez usługę zadań ACR. Chociaż zadania ACR dążą do zachowania zgodności z poprzednimi wersjami, ta wartość umożliwia ACR zadań w celu zachowania zgodności w ramach zdefiniowanej wersji. Jeśli nie zostanie określony, wartość domyślna to Najnowsza wersja. | Nie | Brak |
-| `stepTimeout` | int (sekundy) | Tak | Maksymalna liczba sekund, przez jaką krok może zostać uruchomiony. Jeśli właściwość jest określona w zadaniu, ustawia domyślną właściwość `timeout` wszystkich kroków. Jeśli w kroku zostanie określona właściwość `timeout`, zastępuje ona Właściwość dostarczoną przez zadanie. | Tak | 600 (10 minut) |
-| `workingDirectory` | string | Tak | Katalog roboczy kontenera w czasie wykonywania. Jeśli właściwość jest określona w zadaniu, ustawia domyślną właściwość `workingDirectory` wszystkich kroków. Jeśli określono w kroku, zastępuje on Właściwość dostarczoną przez zadanie. | Tak | `/workspace` |
-| `env` | [ciąg, String,...] | Tak |  Tablica ciągów w formacie `key=value`, która definiuje zmienne środowiskowe dla zadania. Jeśli właściwość jest określona w zadaniu, ustawia domyślną właściwość `env` wszystkich kroków. Jeśli jest określony w kroku, zastępuje wszystkie zmienne środowiskowe dziedziczone z zadania. | Brak |
-| `secrets` | [Secret, Secret,...] | Tak | Tablica obiektów [tajnych](#secret) . | Brak |
-| `networks` | [Sieć, Sieć,...] | Tak | Tablica obiektów [sieciowych](#network) . | Brak |
+| `version` | ciąg | Yes | Wersja pliku `acr-task.yaml`, przeanalizowana przez usługę zadań ACR. Chociaż zadania ACR dążą do zachowania zgodności z poprzednimi wersjami, ta wartość umożliwia ACR zadań w celu zachowania zgodności w ramach zdefiniowanej wersji. Jeśli nie zostanie określony, wartość domyślna to Najnowsza wersja. | Nie | None |
+| `stepTimeout` | int (sekundy) | Yes | Maksymalna liczba sekund, przez jaką krok może zostać uruchomiony. Jeśli właściwość jest określona w zadaniu, ustawia domyślną właściwość `timeout` wszystkich kroków. Jeśli w kroku zostanie określona właściwość `timeout`, zastępuje ona Właściwość dostarczoną przez zadanie. | Yes | 600 (10 minut) |
+| `workingDirectory` | ciąg | Yes | Katalog roboczy kontenera w czasie wykonywania. Jeśli właściwość jest określona w zadaniu, ustawia domyślną właściwość `workingDirectory` wszystkich kroków. Jeśli określono w kroku, zastępuje on Właściwość dostarczoną przez zadanie. | Yes | `/workspace` |
+| `env` | [ciąg, String,...] | Yes |  Tablica ciągów w formacie `key=value`, która definiuje zmienne środowiskowe dla zadania. Jeśli właściwość jest określona w zadaniu, ustawia domyślną właściwość `env` wszystkich kroków. Jeśli jest określony w kroku, zastępuje wszystkie zmienne środowiskowe dziedziczone z zadania. | None |
+| `secrets` | [Secret, Secret,...] | Yes | Tablica obiektów [tajnych](#secret) . | None |
+| `networks` | [Sieć, Sieć,...] | Yes | Tablica obiektów [sieciowych](#network) . | None |
 
 ### <a name="secret"></a>wpis tajny
 
 Obiekt tajny ma następujące właściwości.
 
-| Właściwość | Typ | Opcjonalne | Opis | Wartość domyślna |
+| Właściwość | Typ | Optional (Opcjonalność) | Opis | Wartość domyślna |
 | -------- | ---- | -------- | ----------- | ------- |
-| `id` | string | Nie | Identyfikator wpisu tajnego. | Brak |
-| `keyvault` | string | Tak | Azure Key Vault tajny adres URL. | Brak |
-| `clientID` | string | Tak | Identyfikator klienta [zarządzanej tożsamości przypisanej przez użytkownika](container-registry-tasks-authentication-managed-identity.md) dla zasobów platformy Azure. | Brak |
+| `id` | ciąg | Nie | Identyfikator wpisu tajnego. | None |
+| `keyvault` | ciąg | Yes | Azure Key Vault tajny adres URL. | None |
+| `clientID` | ciąg | Yes | Identyfikator klienta [zarządzanej tożsamości przypisanej przez użytkownika](container-registry-tasks-authentication-managed-identity.md) dla zasobów platformy Azure. | None |
 
 ### <a name="network"></a>sieć
 
 Obiekt sieciowy ma następujące właściwości.
 
-| Właściwość | Typ | Opcjonalne | Opis | Wartość domyślna |
+| Właściwość | Typ | Optional (Opcjonalność) | Opis | Wartość domyślna |
 | -------- | ---- | -------- | ----------- | ------- | 
-| `name` | string | Nie | Nazwa sieci. | Brak |
-| `driver` | string | Tak | Sterownik do zarządzania siecią. | Brak |
-| `ipv6` | bool | Tak | Czy jest włączona obsługa sieci IPv6. | `false` |
-| `skipCreation` | bool | Tak | Określa, czy pominąć tworzenie sieci. | `false` |
-| `isDefault` | bool | Tak | Czy sieć jest siecią domyślną zapewnianą przez Azure Container Registry | `false` |
+| `name` | ciąg | Nie | Nazwa sieci. | None |
+| `driver` | ciąg | Yes | Sterownik do zarządzania siecią. | None |
+| `ipv6` | logiczna | Yes | Czy jest włączona obsługa sieci IPv6. | `false` |
+| `skipCreation` | logiczna | Yes | Określa, czy pominąć tworzenie sieci. | `false` |
+| `isDefault` | logiczna | Yes | Czy sieć jest siecią domyślną zapewnianą przez Azure Container Registry | `false` |
 
 ## <a name="task-step-types"></a>Typy kroków zadań
 
@@ -116,7 +116,7 @@ Zadania ACR obsługują trzy typy kroków. Każdy typ kroku obsługuje kilka wł
 | [`push`](#push) | Wykonuje `docker push` nowo utworzonych lub ponownie oznaczonych obrazów do rejestru kontenerów. Obsługiwane są Azure Container Registry, inne rejestry prywatne i publiczne centrum platformy Docker. |
 | [`cmd`](#cmd) | Uruchamia kontener jako polecenie z parametrami przekazaną do `[ENTRYPOINT]`kontenera. Typ kroku `cmd` obsługuje parametry, takie jak `env`, `detach`i inne znane opcje polecenia `docker run`, umożliwiając testowanie jednostkowe i funkcjonalne przy równoczesnym wykonywaniu kontenerów. |
 
-## <a name="build"></a>budować
+## <a name="build"></a>utworzenia
 
 Tworzenie obrazu kontenera. Typ kroku `build` reprezentuje wiele dzierżawców i bezpieczny sposób uruchamiania `docker build` w chmurze jako pierwszej klasy pierwotnej.
 
@@ -131,10 +131,10 @@ steps:
 
 Typ kroku `build` obsługuje parametry w poniższej tabeli. Typ kroku `build` obsługuje także wszystkie opcje kompilacji polecenia [Docker Build](https://docs.docker.com/engine/reference/commandline/build/) , takie jak `--build-arg`, aby ustawić zmienne czasu kompilacji.
 
-| Parametr | Opis | Opcjonalne |
+| Parametr | Opis | Optional (Opcjonalność) |
 | --------- | ----------- | :-------: |
-| `-t` &#124; `--image` | Definiuje w pełni kwalifikowaną `image:tag` skompilowanego obrazu.<br /><br />Ponieważ obrazy mogą być używane do sprawdzania poprawności zadań wewnętrznych, takich jak testy funkcjonalne, nie wszystkie obrazy wymagają `push` do rejestru. Jednak w celu wystąpienia obrazu w ramach wykonywania zadania obraz musi mieć nazwę do odwołania.<br /><br />W przeciwieństwie do `az acr build`, uruchamianie zadań ACR nie zapewnia domyślnego zachowania wypychania. W przypadku zadań ACR w scenariuszu domyślnym założono możliwość kompilowania, weryfikowania i wypychania obrazu. Zobacz [wypychanie](#push) , aby dowiedzieć się, jak opcjonalnie wypchnąć skompilowane obrazy. | Tak |
-| `-f` &#124; `--file` | Określa pliku dockerfile przekazaną do `docker build`. Jeśli nie zostanie określony, przyjmuje się domyślny pliku dockerfile w katalogu głównym kontekstu. Aby określić pliku dockerfile, przekaż nazwę pliku względem katalogu głównego kontekstu. | Tak |
+| `-t` &#124; `--image` | Definiuje w pełni kwalifikowaną `image:tag` skompilowanego obrazu.<br /><br />Ponieważ obrazy mogą być używane do sprawdzania poprawności zadań wewnętrznych, takich jak testy funkcjonalne, nie wszystkie obrazy wymagają `push` do rejestru. Jednak w celu wystąpienia obrazu w ramach wykonywania zadania obraz musi mieć nazwę do odwołania.<br /><br />W przeciwieństwie do `az acr build`, uruchamianie zadań ACR nie zapewnia domyślnego zachowania wypychania. W przypadku zadań ACR w scenariuszu domyślnym założono możliwość kompilowania, weryfikowania i wypychania obrazu. Zobacz [wypychanie](#push) , aby dowiedzieć się, jak opcjonalnie wypchnąć skompilowane obrazy. | Yes |
+| `-f` &#124; `--file` | Określa pliku dockerfile przekazaną do `docker build`. Jeśli nie zostanie określony, przyjmuje się domyślny pliku dockerfile w katalogu głównym kontekstu. Aby określić pliku dockerfile, przekaż nazwę pliku względem katalogu głównego kontekstu. | Yes |
 | `context` | Katalog główny przeszedł do `docker build`. Katalog główny każdego zadania jest ustawiony na [WorkingDirectory](#task-step-properties)udostępnione i zawiera katalog główny skojarzonego sklonowanego katalogu Git. | Nie |
 
 ### <a name="properties-build"></a>Właściwości: kompilacja
@@ -143,26 +143,26 @@ Typ kroku `build` obsługuje następujące właściwości. Szczegółowe informa
 
 | | | |
 | -------- | ---- | -------- |
-| `detach` | bool | Opcjonalne |
-| `disableWorkingDirectoryOverride` | bool | Opcjonalne |
-| `entryPoint` | string | Opcjonalne |
-| `env` | [ciąg, String,...] | Opcjonalne |
-| `expose` | [ciąg, String,...] | Opcjonalne |
-| `id` | string | Opcjonalne |
-| `ignoreErrors` | bool | Opcjonalne |
-| `isolation` | string | Opcjonalne |
-| `keep` | bool | Opcjonalne |
-| `network` | obiekt | Opcjonalne |
-| `ports` | [ciąg, String,...] | Opcjonalne |
-| `pull` | bool | Opcjonalne |
-| `repeat` | int | Opcjonalne |
-| `retries` | int | Opcjonalne |
-| `retryDelay` | int (sekundy) | Opcjonalne |
-| `secret` | obiekt | Opcjonalne |
-| `startDelay` | int (sekundy) | Opcjonalne |
-| `timeout` | int (sekundy) | Opcjonalne |
-| `when` | [ciąg, String,...] | Opcjonalne |
-| `workingDirectory` | string | Opcjonalne |
+| `detach` | logiczna | Optional (Opcjonalność) |
+| `disableWorkingDirectoryOverride` | logiczna | Optional (Opcjonalność) |
+| `entryPoint` | ciąg | Optional (Opcjonalność) |
+| `env` | [ciąg, String,...] | Optional (Opcjonalność) |
+| `expose` | [ciąg, String,...] | Optional (Opcjonalność) |
+| `id` | ciąg | Optional (Opcjonalność) |
+| `ignoreErrors` | logiczna | Optional (Opcjonalność) |
+| `isolation` | ciąg | Optional (Opcjonalność) |
+| `keep` | logiczna | Optional (Opcjonalność) |
+| `network` | obiekt | Optional (Opcjonalność) |
+| `ports` | [ciąg, String,...] | Optional (Opcjonalność) |
+| `pull` | logiczna | Optional (Opcjonalność) |
+| `repeat` | int | Optional (Opcjonalność) |
+| `retries` | int | Optional (Opcjonalność) |
+| `retryDelay` | int (sekundy) | Optional (Opcjonalność) |
+| `secret` | obiekt | Optional (Opcjonalność) |
+| `startDelay` | int (sekundy) | Optional (Opcjonalność) |
+| `timeout` | int (sekundy) | Optional (Opcjonalność) |
+| `when` | [ciąg, String,...] | Optional (Opcjonalność) |
+| `workingDirectory` | ciąg | Optional (Opcjonalność) |
 
 ### <a name="examples-build"></a>Przykłady: kompilacja
 
@@ -183,7 +183,7 @@ steps:
   - build: -t $Registry/hello-world -f hello-world.dockerfile ./subDirectory
 ```
 
-## <a name="push"></a>wypchnij
+## <a name="push"></a>wydajności
 
 Wypychanie co najmniej jednego skompilowanego lub ponownie oznaczonego obrazu do rejestru kontenerów. Obsługuje wypychanie do rejestrów prywatnych, takich jak Azure Container Registry, lub do publicznego centrum Docker.
 
@@ -215,12 +215,12 @@ Typ kroku `push` obsługuje następujące właściwości. Szczegółowe informac
 
 | | | |
 | -------- | ---- | -------- |
-| `env` | [ciąg, String,...] | Opcjonalne |
-| `id` | string | Opcjonalne |
-| `ignoreErrors` | bool | Opcjonalne |
-| `startDelay` | int (sekundy) | Opcjonalne |
-| `timeout` | int (sekundy) | Opcjonalne |
-| `when` | [ciąg, String,...] | Opcjonalne |
+| `env` | [ciąg, String,...] | Optional (Opcjonalność) |
+| `id` | ciąg | Optional (Opcjonalność) |
+| `ignoreErrors` | logiczna | Optional (Opcjonalność) |
+| `startDelay` | int (sekundy) | Optional (Opcjonalność) |
+| `timeout` | int (sekundy) | Optional (Opcjonalność) |
+| `when` | [ciąg, String,...] | Optional (Opcjonalność) |
 
 ### <a name="examples-push"></a>Przykłady: wypychanie
 
@@ -260,26 +260,26 @@ Typ kroku `cmd` obsługuje następujące właściwości:
 
 | | | |
 | -------- | ---- | -------- |
-| `detach` | bool | Opcjonalne |
-| `disableWorkingDirectoryOverride` | bool | Opcjonalne |
-| `entryPoint` | string | Opcjonalne |
-| `env` | [ciąg, String,...] | Opcjonalne |
-| `expose` | [ciąg, String,...] | Opcjonalne |
-| `id` | string | Opcjonalne |
-| `ignoreErrors` | bool | Opcjonalne |
-| `isolation` | string | Opcjonalne |
-| `keep` | bool | Opcjonalne |
-| `network` | obiekt | Opcjonalne |
-| `ports` | [ciąg, String,...] | Opcjonalne |
-| `pull` | bool | Opcjonalne |
-| `repeat` | int | Opcjonalne |
-| `retries` | int | Opcjonalne |
-| `retryDelay` | int (sekundy) | Opcjonalne |
-| `secret` | obiekt | Opcjonalne |
-| `startDelay` | int (sekundy) | Opcjonalne |
-| `timeout` | int (sekundy) | Opcjonalne |
-| `when` | [ciąg, String,...] | Opcjonalne |
-| `workingDirectory` | string | Opcjonalne |
+| `detach` | logiczna | Optional (Opcjonalność) |
+| `disableWorkingDirectoryOverride` | logiczna | Optional (Opcjonalność) |
+| `entryPoint` | ciąg | Optional (Opcjonalność) |
+| `env` | [ciąg, String,...] | Optional (Opcjonalność) |
+| `expose` | [ciąg, String,...] | Optional (Opcjonalność) |
+| `id` | ciąg | Optional (Opcjonalność) |
+| `ignoreErrors` | logiczna | Optional (Opcjonalność) |
+| `isolation` | ciąg | Optional (Opcjonalność) |
+| `keep` | logiczna | Optional (Opcjonalność) |
+| `network` | obiekt | Optional (Opcjonalność) |
+| `ports` | [ciąg, String,...] | Optional (Opcjonalność) |
+| `pull` | logiczna | Optional (Opcjonalność) |
+| `repeat` | int | Optional (Opcjonalność) |
+| `retries` | int | Optional (Opcjonalność) |
+| `retryDelay` | int (sekundy) | Optional (Opcjonalność) |
+| `secret` | obiekt | Optional (Opcjonalność) |
+| `startDelay` | int (sekundy) | Optional (Opcjonalność) |
+| `timeout` | int (sekundy) | Optional (Opcjonalność) |
+| `when` | [ciąg, String,...] | Optional (Opcjonalność) |
+| `workingDirectory` | ciąg | Optional (Opcjonalność) |
 
 Szczegółowe informacje o tych właściwościach można znaleźć w sekcji [Właściwości kroku zadania](#task-step-properties) w tym artykule.
 
@@ -356,30 +356,30 @@ Przy użyciu standardowej konwencji odwołującej się do `docker run` obrazu `c
 
 Każdy typ kroku obsługuje kilka właściwości, które są odpowiednie dla tego typu. W poniższej tabeli zdefiniowano wszystkie dostępne właściwości kroku. Nie wszystkie typy kroków obsługują wszystkie właściwości. Aby zobaczyć, które z tych właściwości są dostępne dla każdego typu kroku, zapoznaj się z sekcjami odwołania dla kroków [cmd](#cmd), [Build](#build)i [push](#push) .
 
-| Właściwość | Typ | Opcjonalne | Opis | Wartość domyślna |
+| Właściwość | Typ | Optional (Opcjonalność) | Opis | Wartość domyślna |
 | -------- | ---- | -------- | ----------- | ------- |
-| `detach` | bool | Tak | Określa, czy kontener ma zostać odłączony podczas uruchamiania. | `false` |
-| `disableWorkingDirectoryOverride` | bool | Tak | Określa, czy należy wyłączyć funkcję przesłonięcia `workingDirectory`. Użyj tej usługi w połączeniu z `workingDirectory`, aby mieć pełną kontrolę nad katalogiem roboczym kontenera. | `false` |
-| `entryPoint` | string | Tak | Zastępuje `[ENTRYPOINT]` kontenera kroku. | Brak |
-| `env` | [ciąg, String,...] | Tak | Tablica ciągów w formacie `key=value`, która definiuje zmienne środowiskowe dla kroku. | Brak |
-| `expose` | [ciąg, String,...] | Tak | Tablica portów, które są udostępniane z kontenera. |  Brak |
-| [`id`](#example-id) | string | Tak | Unikatowy identyfikator kroku w zadaniu. Inne kroki w zadaniu mogą odwoływać się do `id`kroku, na przykład w celu sprawdzenia zależności z `when`.<br /><br />`id` jest również nazwą uruchomionego kontenera. Procesy działające w innych kontenerach w zadaniu mogą odwoływać się do `id` jako nazwy hosta DNS lub do uzyskiwania do niego dostępu przy użyciu dzienników platformy Docker [ID]. | `acb_step_%d`, gdzie `%d` jest indeksem (0) kroku w górnej części pliku YAML |
-| `ignoreErrors` | bool | Tak | Określa, czy krok ma być oznaczany pomyślnie, niezależnie od tego, czy wystąpił błąd podczas wykonywania kontenera. | `false` |
-| `isolation` | string | Tak | Poziom izolacji kontenera. | `default` |
-| `keep` | bool | Tak | Czy kontener kroku powinien być przechowywany po wykonaniu. | `false` |
-| `network` | obiekt | Tak | Identyfikuje sieć, w której działa kontener. | Brak |
-| `ports` | [ciąg, String,...] | Tak | Tablica portów publikowanych z kontenera do hosta. |  Brak |
-| `pull` | bool | Tak | Określa, czy należy wymusić ściąganie kontenera przed jego wykonaniem, aby zapobiec jakimkolwiek zachowaniem buforowania. | `false` |
-| `privileged` | bool | Tak | Określa, czy ma być uruchamiany kontener w trybie uprzywilejowanym. | `false` |
-| `repeat` | int | Tak | Liczba ponownych prób powtarzania wykonywania kontenera. | 0 |
-| `retries` | int | Tak | Liczba ponownych prób, które należy podjąć, jeśli kontener nie zostanie wykonany. Próba ponowienia następuje tylko wtedy, gdy kod zakończenia kontenera jest różny od zera. | 0 |
-| `retryDelay` | int (sekundy) | Tak | Opóźnienie w sekundach między ponownymi próbami wykonania kontenera. | 0 |
-| `secret` | obiekt | Tak | Identyfikuje wpis tajny Azure Key Vault lub [zarządzaną tożsamość dla zasobów platformy Azure](container-registry-tasks-authentication-managed-identity.md). | Brak |
-| `startDelay` | int (sekundy) | Tak | Liczba sekund, przez którą ma zostać opóźnione wykonywanie kontenera. | 0 |
-| `timeout` | int (sekundy) | Tak | Maksymalna liczba sekund, przez jaką krok może zostać wykonany przed zakończeniem. | 600 |
-| [`when`](#example-when) | [ciąg, String,...] | Tak | Konfiguruje zależność kroku od jednego lub kilku innych kroków w ramach zadania. | Brak |
-| `user` | string | Tak | Nazwa użytkownika lub identyfikator UID kontenera | Brak |
-| `workingDirectory` | string | Tak | Ustawia katalog roboczy dla kroku. Domyślnie zadania ACR tworzą katalog główny jako katalog roboczy. Jeśli jednak kompilacja zawiera kilka kroków, wcześniejsze kroki mogą współużytkować artefakty z późniejszymi krokami, określając ten sam katalog roboczy. | `/workspace` |
+| `detach` | logiczna | Yes | Określa, czy kontener ma zostać odłączony podczas uruchamiania. | `false` |
+| `disableWorkingDirectoryOverride` | logiczna | Yes | Określa, czy należy wyłączyć funkcję przesłonięcia `workingDirectory`. Użyj tej usługi w połączeniu z `workingDirectory`, aby mieć pełną kontrolę nad katalogiem roboczym kontenera. | `false` |
+| `entryPoint` | ciąg | Yes | Zastępuje `[ENTRYPOINT]` kontenera kroku. | None |
+| `env` | [ciąg, String,...] | Yes | Tablica ciągów w formacie `key=value`, która definiuje zmienne środowiskowe dla kroku. | None |
+| `expose` | [ciąg, String,...] | Yes | Tablica portów, które są udostępniane z kontenera. |  None |
+| [`id`](#example-id) | ciąg | Yes | Unikatowy identyfikator kroku w zadaniu. Inne kroki w zadaniu mogą odwoływać się do `id`kroku, na przykład w celu sprawdzenia zależności z `when`.<br /><br />`id` jest również nazwą uruchomionego kontenera. Procesy działające w innych kontenerach w zadaniu mogą odwoływać się do `id` jako nazwy hosta DNS lub do uzyskiwania do niego dostępu przy użyciu dzienników platformy Docker [ID]. | `acb_step_%d`, gdzie `%d` jest indeksem (0) kroku w górnej części pliku YAML |
+| `ignoreErrors` | logiczna | Yes | Określa, czy krok ma być oznaczany pomyślnie, niezależnie od tego, czy wystąpił błąd podczas wykonywania kontenera. | `false` |
+| `isolation` | ciąg | Yes | Poziom izolacji kontenera. | `default` |
+| `keep` | logiczna | Yes | Czy kontener kroku powinien być przechowywany po wykonaniu. | `false` |
+| `network` | obiekt | Yes | Identyfikuje sieć, w której działa kontener. | None |
+| `ports` | [ciąg, String,...] | Yes | Tablica portów publikowanych z kontenera do hosta. |  None |
+| `pull` | logiczna | Yes | Określa, czy należy wymusić ściąganie kontenera przed jego wykonaniem, aby zapobiec jakimkolwiek zachowaniem buforowania. | `false` |
+| `privileged` | logiczna | Yes | Określa, czy ma być uruchamiany kontener w trybie uprzywilejowanym. | `false` |
+| `repeat` | int | Yes | Liczba ponownych prób powtarzania wykonywania kontenera. | 0 |
+| `retries` | int | Yes | Liczba ponownych prób, które należy podjąć, jeśli kontener nie zostanie wykonany. Próba ponowienia następuje tylko wtedy, gdy kod zakończenia kontenera jest różny od zera. | 0 |
+| `retryDelay` | int (sekundy) | Yes | Opóźnienie w sekundach między ponownymi próbami wykonania kontenera. | 0 |
+| `secret` | obiekt | Yes | Identyfikuje wpis tajny Azure Key Vault lub [zarządzaną tożsamość dla zasobów platformy Azure](container-registry-tasks-authentication-managed-identity.md). | None |
+| `startDelay` | int (sekundy) | Yes | Liczba sekund, przez którą ma zostać opóźnione wykonywanie kontenera. | 0 |
+| `timeout` | int (sekundy) | Yes | Maksymalna liczba sekund, przez jaką krok może zostać wykonany przed zakończeniem. | 600 |
+| [`when`](#example-when) | [ciąg, String,...] | Yes | Konfiguruje zależność kroku od jednego lub kilku innych kroków w ramach zadania. | None |
+| `user` | ciąg | Yes | Nazwa użytkownika lub identyfikator UID kontenera | None |
+| `workingDirectory` | ciąg | Yes | Ustawia katalog roboczy dla kroku. Domyślnie zadania ACR tworzą katalog główny jako katalog roboczy. Jeśli jednak kompilacja zawiera kilka kroków, wcześniejsze kroki mogą współużytkować artefakty z późniejszymi krokami, określając ten sam katalog roboczy. | `/workspace` |
 
 ### <a name="examples-task-step-properties"></a>Przykłady: właściwości kroku zadania
 
@@ -528,7 +528,7 @@ Następujące aliasy zadań są dostępne do użycia zamiast [zmiennych Run](#ru
 
 W obszarze kroki zadania poprzedź alias z dyrektywą `$`, jak w poniższym przykładzie:
 
-```yaml
+```yml
 version: v1.1.0
 steps:
   - build: -t $Registry/hello-world:$ID -f hello-world.dockerfile .
@@ -538,7 +538,7 @@ steps:
 
 Każdy z następujących aliasów wskazuje stabilny obraz w programie Microsoft Container Registry (MCR). Można odwołać się do każdego z nich w sekcji `cmd` pliku zadania bez używania dyrektywy.
 
-| Alias | Obraz |
+| Alias | Image (Obraz) |
 | ----- | ----- |
 | `acr` | `mcr.microsoft.com/acr/acr-cli:0.1` |
 | `az` | `mcr.microsoft.com/acr/azure-cli:a80af84` |
@@ -547,7 +547,7 @@ Każdy z następujących aliasów wskazuje stabilny obraz w programie Microsoft 
 
 Poniższe przykładowe zadanie używa kilku aliasów do [przeczyszczania](container-registry-auto-purge.md) tagów obrazu starszych niż 7 dni w repozytorium `samples/hello-world` w rejestrze uruchamiania:
 
-```yaml
+```yml
 version: v1.1.0
 steps:
   - cmd: acr tag list --registry $RegistryName --repository samples/hello-world

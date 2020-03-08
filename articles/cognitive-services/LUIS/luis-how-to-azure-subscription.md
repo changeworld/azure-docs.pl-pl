@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 876026b5399631728331c4a9e67482a34f9d0b2d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a5140da32eb6fce03131a42bfa90e71e64552431
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225557"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668518"
 ---
 # <a name="using-authoring-and-runtime-resource-keys"></a>Korzystanie z kluczy zasobów tworzenia i środowiska uruchomieniowego
 
@@ -58,7 +58,7 @@ Gdy wszystko będzie gotowe do opublikowania punktu końcowego przewidywania, Ut
 
     ![Tworzenie zasobu interpretacji języka](./media/luis-how-to-azure-subscription/create-resource-in-azure.png)
 
-    |Nazwa|Przeznaczenie|
+    |Name (Nazwa)|Przeznaczenie|
     |--|--|
     |Nazwa zasobu| Wybrana nazwa niestandardowa, używana jako część adresu URL dla zapytań dotyczących tworzenia i przewidywania punktów końcowych.|
     |Nazwa subskrypcji| subskrypcja, która będzie rozliczana za zasób.|
@@ -81,7 +81,7 @@ Utwórz poszczególne zasoby przy użyciu [interfejsu wiersza polecenia platform
 
 1. Zaloguj się do interfejsu wiersza polecenia platformy Azure:
 
-    ```console
+    ```azurecli
     az login
     ```
 
@@ -89,13 +89,13 @@ Utwórz poszczególne zasoby przy użyciu [interfejsu wiersza polecenia platform
 
 1. Utwórz `LUIS.Authoring`**zasób tworzenia Luis**o nazwie `my-luis-authoring-resource` w _istniejącej_ grupie zasobów o nazwie `my-resource-group` dla regionu `westus`. 
 
-    ```console
+    ```azurecli
     az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
     ```
 
 1. Utwórz `LUIS`**zasób punktu końcowego przewidywania Luis**o nazwie `my-luis-prediction-resource` w _istniejącej_ grupie zasobów o nazwie `my-resource-group` dla regionu `westus`. Jeśli potrzebujesz wyższej przepływności niż warstwa Bezpłatna, Zmień `F0` na `S0`. Dowiedz się więcej o [warstwach cenowych i przepływności](luis-boundaries.md#key-limits).
 
-    ```console
+    ```azurecli
     az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes
     ```
 

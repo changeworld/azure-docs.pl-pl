@@ -4,12 +4,12 @@ description: Ten przewodnik Szybki Start przedstawia sposób tworzenia bazy wied
 ms.topic: quickstart
 ms.date: 01/13/2020
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: 33725eb54e8a78547f4bf82d6a8f6fae58fdb5cb
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 065f88ce12037109773b7023972c151d968840a8
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524422"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389426"
 ---
 # <a name="quickstart-create-and-manage-knowledge-base"></a>Szybki Start: Tworzenie bazy wiedzy i zarządzanie nią
 
@@ -30,7 +30,7 @@ Rozpocznij pracę z biblioteką klienta QnA Maker. Wykonaj następujące kroki, 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
->[Samouczek: Tworzenie i odpowiadanie na KB](../tutorials/create-publish-query-in-portal.md)
+>[Samouczek: testowanie bazy wiedzy przy użyciu pliku wsadowego](./batch-testing.md)
 
 * [Co to jest interfejs API usługi QnA Maker?](../Overview/overview.md)
 * [Edytowanie bazy wiedzy](../how-to/edit-knowledge-base.md)

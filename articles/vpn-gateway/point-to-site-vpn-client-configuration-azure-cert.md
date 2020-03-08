@@ -6,20 +6,20 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/15/2020
+ms.date: 03/04/2020
 ms.author: cherylmc
-ms.openlocfilehash: 18a9578cc454ea5259b9564d64dcd4308ee5ef87
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: d15efee635e131d658cd650b7f80eb9e670a0dea
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77148984"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392092"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Tworzenie i Instalowanie plików konfiguracji klienta sieci VPN dla natywnych konfiguracji P2S uwierzytelniania certyfikatu platformy Azure
 
 Pliki konfiguracji klienta sieci VPN są zawarte w pliku zip. Pliki konfiguracji zapewniają ustawienia wymagane dla natywnych klientów systemu Windows, Mac IKEv2 lub Linux do łączenia się z siecią wirtualną za pośrednictwem połączeń typu punkt-lokacja, które korzystają z natywnego uwierzytelniania certyfikatu platformy Azure.
 
-Pliki konfiguracyjne klienta są specyficzne dla konfiguracji sieci VPN w przypadku połączenia z siecią wirtualną. W przypadku zmiany konfiguracji sieci VPN typu punkt-lokacja po wygenerowaniu plików konfiguracji klienta sieci VPN, takich jak typ protokołu sieci VPN lub typ uwierzytelniania, należy pamiętać o wygenerowaniu nowych plików konfiguracji klienta sieci VPN dla urządzeń użytkowników. 
+Pliki konfiguracji klienta są specyficzne dla konfiguracji sieci VPN dla sieci wirtualnej. W przypadku zmiany konfiguracji sieci VPN typu punkt-lokacja po wygenerowaniu plików konfiguracji klienta sieci VPN, takich jak typ protokołu sieci VPN lub typ uwierzytelniania, należy pamiętać o wygenerowaniu nowych plików konfiguracji klienta sieci VPN dla urządzeń użytkowników. 
 
 * Aby uzyskać więcej informacji na temat połączeń punkt-lokacja, zobacz [About Point-to-Site VPN](point-to-site-about.md) (Informacje o sieci VPN typu punkt-lokacja).
 * Instrukcje OpenVPN można znaleźć w temacie [Configure OpenVPN for P2S](vpn-gateway-howto-openvpn.md) i [Configure OpenVPN clients](vpn-gateway-howto-openvpn-clients.md).
@@ -41,6 +41,8 @@ Można generować pliki konfiguracji klienta przy użyciu programu PowerShell lu
 
 1. W Azure Portal przejdź do bramy sieci wirtualnej dla sieci wirtualnej, z którą chcesz nawiązać połączenie.
 2. Na stronie Brama sieci wirtualnej kliknij pozycję **Konfiguracja punktu do lokacji**.
+
+   ![Pobierz Portal klienta](./media/point-to-site-vpn-client-configuration-azure-cert/client-configuration-portal.png)
 3. W górnej części strony Konfiguracja punktu do lokacji kliknij pozycję **Pobierz klienta sieci VPN**. Generowanie pakietu konfiguracji klienta może potrwać kilka minut.
 4. Twoja przeglądarka wskazuje, że plik zip konfiguracji klienta jest dostępny. Nazwa taka sama nazywa się bramą. Rozpakuj plik, aby wyświetlić foldery.
 
@@ -114,7 +116,7 @@ Wykonaj następujące kroki, aby skonfigurować natywnego klienta sieci VPN na k
    ![identity](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
 8. W polu **Identyfikator lokalny** Określ nazwę certyfikatu (z kroku 6). W tym przykładzie jest to "ikev2Client.com". Następnie kliknij przycisk **Zastosuj** , aby zapisać zmiany.
 
-   ![stosowa](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
+   ![apply](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
 9. W oknie dialogowym **Sieć** kliknij pozycję **Zastosuj** , aby zapisać wszystkie zmiany. Następnie kliknij przycisk **Połącz** , aby rozpocząć połączenie P2S z siecią wirtualną platformy Azure.
 
 ## <a name="linuxgui"></a>Linux (klient strongswan GUI)
@@ -138,7 +140,7 @@ Następujące instrukcje zostały utworzone w witrynie Ubuntu 18.0.4. Ubuntu 16.
    ```
    sudo apt install network-manager-strongswan
    ```
-2. Wybierz pozycję **Ustawienia** , a następnie pozycję **Sieć**.
+2. Wybierz pozycję **Ustawienia**, a następnie pozycję **Sieć**.
 
    ![Edytuj połączenia](./media/point-to-site-vpn-client-configuration-azure-cert/editconnections.png)
 3. Kliknij przycisk **+** , aby utworzyć nowe połączenie.

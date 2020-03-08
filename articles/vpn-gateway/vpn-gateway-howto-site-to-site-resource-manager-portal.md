@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 03/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 2e6aeda0e84b11221af110bda738d6d93f258978
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 857b50a04466f43a25cf80d7930cfb4639dc9d65
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894993"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391148"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Tworzenie połączenia typu lokacja-lokacja w witrynie Azure Portal
 
@@ -21,7 +21,7 @@ Ten artykuł pokazuje, jak używać witryny Azure Portal do tworzenia połączen
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-> * [Program PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
+> * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 > * [Interfejs wiersza polecenia](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [Portal Azure (klasyczny)](vpn-gateway-howto-site-to-site-classic-portal.md)
 > 
@@ -51,7 +51,7 @@ W przykładach w tym artykule są stosowane następujące wartości. Tych warto�
 * **Podsieć:** FrontEnd: 10.1.0.0/24, BackEnd: 10.1.1.0/24 (opcjonalnie w tym ćwiczeniu)
 * **Zakres adresów podsieci bramy:** 10.1.255.0/27
 * **Nazwa bramy sieci wirtualnej:** VNet1GW
-* **Nazwa publicznego adresu IP:** VNet1GWIP
+* **Publiczny adres IP:** VNet1GWpip
 * **Typ sieci VPN:** oparta na trasach
 * **Typ połączenia:** Lokacja-lokacja (IPsec)
 * **Typ bramy:** VPN
@@ -61,7 +61,7 @@ W przykładach w tym artykule są stosowane następujące wartości. Tych warto�
 
 ## <a name="CreatVNet"></a>1. Tworzenie sieci wirtualnej
 
-[!INCLUDE [Create a virtual network](../../includes/vpn-gateway-create-virtual-network-portal-include.md)]
+[!INCLUDE [Create a virtual network](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
 ## <a name="VNetGateway"></a>2. Tworzenie bramy sieci VPN
 
@@ -77,7 +77,7 @@ W tym kroku zostaje utworzona brama dla sieci wirtualnej użytkownika. Tworzenie
 * **Szczegóły wystąpienia > typ bramy:** POŁĄCZENIE
 * **Szczegóły wystąpienia > sieci VPN:** Oparta na trasach
 * **Zakres adresów podsieci bramy > Virtual Network:** 10.1.255.0/27
-* **Publiczny adres ip > nazwa publicznego adresu IP:** VNet1GWIP
+* **Publiczny adres ip > nazwa publicznego adresu IP:** VNet1GWpip
 
 [!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
@@ -101,7 +101,7 @@ Brama sieci lokalnej zazwyczaj odwołuje się do lokalizacji lokalnej. Nadaj lok
 
 Połączenia typu lokacja-lokacja z siecią lokalną wymagają urządzenia sieci VPN. W tym kroku konfigurowane jest urządzenie sieci VPN. Podczas konfigurowania urządzenia sieci VPN potrzebne będą:
 
-- Klucz współużytkowany. To ten sam klucz współużytkowany, który jest określany podczas tworzenia połączenia sieci VPN typu lokacja-lokacja. W naszych przykładach używamy podstawowego klucza współużytkowanego. Zalecamy, aby do użycia wygenerować bardziej złożony klucz.
+- Klucz wspólny. To ten sam klucz wspólny, który jest określany podczas tworzenia połączenia sieci VPN typu lokacja-lokacja. W naszych przykładach używamy podstawowego klucza współużytkowanego. Zalecamy, aby do użycia wygenerować bardziej złożony klucz.
 - Publiczny adres IP bramy sieci wirtualnej. Publiczny adres IP można wyświetlić za pomocą witryny Azure Portal, programu PowerShell lub interfejsu wiersza polecenia. Aby znaleźć publiczny adres IP bramy sieci VPN za pomocą witryny Azure Portal, przejdź do pozycji **Bramy sieci wirtualnej**, a następnie kliknij nazwę bramy.
 
 [!INCLUDE [Configure a VPN device](../../includes/vpn-gateway-configure-vpn-device-include.md)]

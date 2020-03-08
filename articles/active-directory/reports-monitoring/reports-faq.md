@@ -1,6 +1,6 @@
 ---
 title: Raporty Azure Active Directory często zadawane pytania | Microsoft Docs
-description: Często zadawane quesitons wokół raportów Azure Active Directory.
+description: Często zadawane pytania dotyczące Azure Active Directory raportów.
 services: active-directory
 documentationcenter: ''
 author: cawrites
@@ -16,12 +16,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbaf7d4e5a0dee82edf9b6b6bd65b91309e1344d
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 273fdb80475defb0576bcd29d1944c5f6c595cfc
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007690"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668588"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Często zadawane pytania dotyczące Azure Active Directory raportów
 
@@ -37,7 +37,7 @@ Odp **.:** Zapoznaj się z dokumentacją [interfejsu API](https://developer.micr
 
 **P: obecnie używam interfejsów API `https://graph.windows.net/<tenant-name>/reports/` Endpoint do ściągania raportów zabezpieczeń usługi Azure AD (określonych typów wykryć, takich jak nieujawnione poświadczenia lub logowania z anonimowych adresów IP) w naszych systemach raportowania. Z czym mam się przełączyć?**
 
-Odp **.:** Aby uzyskać dostęp do wykrywania zabezpieczeń za pomocą Microsoft Graph, można użyć [interfejsu API wykrywania ryzyka ochrony tożsamości](../identity-protection/graph-get-started.md) . Ten nowy format zapewnia większą elastyczność w zakresie wykonywania zapytań dotyczących danych, z zaawansowanymi filtrowaniem, zaznaczaniem pól i wieloma innymi, a także umożliwia ujednolicenie wykrywania ryzyka w jednym typie w celu łatwiejszej integracji z rozwiązań Siem i innymi narzędziami zbierania danych. Ponieważ dane są w innym formacie, nie można zastąpić nowego zapytania dla starych zapytań. Jednak [Nowy interfejs API używa Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent), który jest standardem firmy Microsoft dla takich interfejsów API jak O365 lub Azure AD. W związku z tym wymagana służba może rozciągnąć bieżące inwestycje programu MS Graph lub ułatwić rozpoczęcie przejścia do nowej platformy standardowej.
+Odp **.:** Aby uzyskać dostęp do wykrywania zabezpieczeń za pomocą Microsoft Graph, można użyć [interfejsu API wykrywania ryzyka ochrony tożsamości](../identity-protection/graph-get-started.md) . Ten nowy format zapewnia większą elastyczność w zakresie wykonywania zapytań dotyczących danych, z zaawansowanymi filtrowaniem, zaznaczaniem pól i wieloma innymi, a także umożliwia ujednolicenie wykrywania ryzyka w jednym typie w celu łatwiejszej integracji z rozwiązań Siem i innymi narzędziami zbierania danych. Ponieważ dane są w innym formacie, nie można zastąpić nowego zapytania dla starych zapytań. Jednak [Nowy interfejs API używa Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent), który jest standardem firmy Microsoft dla takich interfejsów API jak O365 lub Azure AD. W związku z tym wymagana nakład pracy może stanowić zwiększenie bieżącej Microsoft Graph inwestycji lub pomóc Ci w rozpoczęciu przejścia na nową platformę standardową.
 
 ---
 

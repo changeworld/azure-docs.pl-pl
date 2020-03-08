@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: aahi
 ms.openlocfilehash: 0622aca5579c64c6d840761abb151665af559eea
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367640"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78899485"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak używać rozpoznawania jednostek nazwanych w analiza tekstu
 
@@ -47,7 +47,7 @@ Interfejs API analizy tekstu oferuje dwie wersje nazwanego rozpoznawania jednost
 Aby uzyskać informacje, zobacz temat [Obsługa języków](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) .
 
 
-#### <a name="version-30-previewtabversion-3"></a>[Wersja 3,0-Preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Wersja 3,0-Preview](#tab/version-3)
 
 ### <a name="entity-types"></a>Typy jednostek
 
@@ -74,7 +74,7 @@ NER
 
 [!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
 
-#### <a name="version-21tabversion-2"></a>[Wersja 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Wersja 2,1](#tab/version-2)
 
 ### <a name="entity-types"></a>Typy jednostek
 
@@ -130,7 +130,7 @@ Utwórz żądanie POST. Można [użyć programu Poster](text-analytics-how-to-ca
 > [!NOTE]
 > Klucz i punkt końcowy dla zasobu analiza tekstu można znaleźć w witrynie Azure Portal. Zostaną one umieszczone na stronie **szybkiego startu** zasobu w obszarze **Zarządzanie zasobami**. 
 
-#### <a name="version-30-previewtabversion-3"></a>[Wersja 3,0-Preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Wersja 3,0-Preview](#tab/version-3)
 
 [Odwołanie do nazwanego rozpoznawania jednostek v3](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)
 
@@ -144,7 +144,7 @@ NER
 Łączenie jednostek
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
 
-#### <a name="version-21tabversion-2"></a>[Wersja 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Wersja 2,1](#tab/version-2)
 
 [Dokumentacja rozpoznawania jednostek nazwanych (NER) v2](https://eastus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 
@@ -185,7 +185,7 @@ Wszystkie żądania POST zwracają sformatowaną w formacie JSON odpowiedź z id
 Dane wyjściowe są zwracane natychmiast. Wyniki można przesłać strumieniowo do aplikacji, która akceptuje kod JSON, lub zapisać do pliku w systemie lokalnym, a następnie zaimportować do aplikacji, która umożliwia sortowanie i wyszukiwanie danych oraz manipulowanie nimi.
 
 
-#### <a name="version-30-previewtabversion-3"></a>[Wersja 3,0-Preview)](#tab/version-3)
+#### <a name="version-30-preview"></a>[Wersja 3,0-Preview)](#tab/version-3)
 
 ### <a name="example-v3-responses"></a>Przykładowe odpowiedzi v3
 
@@ -242,7 +242,7 @@ Wersja 3 zapewnia oddzielne punkty końcowe dla NER i konsolidacji jednostek. Od
 }
 ```
 
-#### <a name="version-21tabversion-2"></a>[Wersja 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Wersja 2,1](#tab/version-2)
 
 ### <a name="example-ner-v2-response"></a>Przykładowa odpowiedź NER v2
 ```json

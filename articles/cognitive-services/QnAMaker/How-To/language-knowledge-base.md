@@ -10,16 +10,16 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: diberry
-ms.openlocfilehash: a818d84bf3df712190ccc6c1721c26933a9fbcdb
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 38701e8bbef1c5d78eca2242105e81fe7261c0f6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73793934"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389409"
 ---
 # <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>Obsługa języka zawartości bazy wiedzy dla QnA Maker
 
-Język dla usługi jest wybierany podczas tworzenia pierwszej bazy wiedzy w zasobie. Wszystkie dodatkowe bazy wiedzy w zasobie muszą znajdować się w tym samym języku. 
+Język dla usługi jest wybierany podczas tworzenia pierwszej bazy wiedzy w zasobie. Wszystkie dodatkowe bazy wiedzy w zasobie muszą znajdować się w tym samym języku.
 
 Język określa przydatność wyników QnA Maker zapewnia odpowiedzi na zapytania użytkownika.
 
@@ -29,18 +29,18 @@ QnA Maker umożliwia wybranie języka usługi QnA podczas tworzenia pierwszej ba
 
 Tworzenie baz wiedzy w różnych językach w jednym zasobie ma negatywny wpływ na przydatność wyników QnA Maker zapewnia odpowiedzi na zapytania użytkowników.
 
-Przejrzyj listę [obsługiwanych języków](../overview/language-support.md#languages-supported) i sposób, w jaki Języki wpływają na [dopasowanie i zgodność](#query-matching-and-relevance). 
+Przejrzyj listę [obsługiwanych języków](../overview/language-support.md#languages-supported) i sposób, w jaki Języki wpływają na [dopasowanie i zgodność](#query-matching-and-relevance).
 
 ## <a name="select-language-when-creating-first-knowledge-base"></a>Wybierz język podczas tworzenia pierwszej bazy wiedzy
 
-Wybór języka jest częścią czynności, które należy wykonać, aby utworzyć pierwszą bazę wiedzy w zasobie. 
+Wybór języka jest częścią czynności, które należy wykonać, aby utworzyć pierwszą bazę wiedzy w zasobie.
 
 ![Zrzut ekranu portalu QnA Maker wybierania języka dla pierwszej bazy wiedzy](../media/language-support/select-language-when-creating-knowledge-base.png)
 
-## <a name="query-matching-and-relevance"></a>Dopasowanie i zgodność zapytania
-QnA Maker zależy od [analizatorów języka wyszukiwanie poznawcze platformy Azure](https://docs.microsoft.com/rest/api/searchservice/language-support) w celu uzyskania wyników. 
+## <a name="query-matching-and-relevance"></a>Zapytania pasujący i istotność
+QnA Maker zależy od [analizatorów języka wyszukiwanie poznawcze platformy Azure](https://docs.microsoft.com/rest/api/searchservice/language-support) w celu uzyskania wyników.
 
-Gdy możliwości platformy Azure Wyszukiwanie poznawcze są dostępne dla obsługiwanych języków, QnA Maker ma dodatkową rangę, która znajduje się powyżej wyników usługi Azure Search. W tym modelu rangi używamy niektórych specjalnych funkcji semantycznych i opartych na programie Word w następujących językach. 
+Gdy możliwości platformy Azure Wyszukiwanie poznawcze są dostępne dla obsługiwanych języków, QnA Maker ma dodatkową rangę, która znajduje się powyżej wyników usługi Azure Search. W tym modelu rangi używamy niektórych specjalnych funkcji semantycznych i opartych na programie Word w następujących językach.
 
 |Języki z dodatkową rangą|
 |--|
@@ -65,10 +65,10 @@ Ta dodatkowa klasyfikacja jest wewnętrzną pracą rangi QnA Maker.
 
 Język zasobu QnA Maker można sprawdzić na stronie Ustawienia usługi w QnA Maker.
 
-![Zrzut ekranu portalu QnA Maker strony ustawień usługi](../media/language-support/language-knowledge-base.png) 
+![Zrzut ekranu portalu QnA Maker strony ustawień usługi](../media/language-support/language-knowledge-base.png)
 
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Tworzenie QnA bot z Azure Bot Service](../Tutorials/create-qna-bot.md)
+> [Migrowanie bazy wiedzy](../Tutorials/migrate-knowledge-base.md)

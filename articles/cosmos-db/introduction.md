@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: f322a240835d86697ae18c984700f22ca7b00145
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 7fee3a1e2c26bc9fa89a4766c771a3715398b1a2
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882176"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673354"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB — Zapraszamy!
 
@@ -19,7 +19,7 @@ Dzisiejsze aplikacje muszą być bardzo dynamiczne i zawsze w trybie online. Aby
 
 Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Kliknięcie Cosmos DB przycisku umożliwia elastyczne i niezależne skalowanie przepływności i magazynu w dowolnej liczbie regionów świadczenia usługi Azure na całym świecie. Można elastycznie skalować przepływność i magazyn oraz korzystać z szybkiego, jednocyfrowego dostępu do danych za pomocą ulubionego interfejsu API, w tym SQL, MongoDB, Cassandra, tabel lub Gremlin. Cosmos DB oferuje kompleksowe [umowy dotyczące poziomu usług](https://aka.ms/acdbsla) (umowy SLA) w zakresie przepływności, opóźnień, dostępności i gwarancji spójności, a także inne oferty usługi bazy danych.
 
-Możesz [bezpłatnie wypróbować usługę Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) bez subskrypcji platformy Azure — nie wymaga to opłat ani zobowiązań.
+Możesz bezpłatnie [Wypróbować Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) bez subskrypcji platformy Azure, bezpłatnie i zobowiązań lub korzystać z [bezpłatnej warstwy Azure Cosmos DB](optimize-dev-test.md#azure-cosmos-db-free-tier) , aby uzyskać konto z pierwszym 400 ru/s i 5 GB wolnego miejsca w magazynie.
 
 > [!div class="nextstepaction"]
 > [Wypróbuj bezpłatnie usługę Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)
@@ -28,13 +28,13 @@ Możesz [bezpłatnie wypróbować usługę Azure Cosmos DB](https://azure.micros
 
 ## <a name="key-benefits"></a>Najważniejsze korzyści
 
-### <a name="turnkey-global-distribution"></a>Gotowa do użycia funkcja dystrybucji globalnej
+### <a name="turnkey-global-distribution"></a>Gotowa do użycia dystrybucja globalna
 
 Usługa Cosmos DB umożliwia tworzenie bardzo dynamicznych i wysoce dostępnych aplikacji na całym świecie. Cosmos DB w sposób przezroczysty replikuje dane, wszędzie tam, gdzie się znajdują użytkownicy, dzięki czemu użytkownicy mogą korzystać z repliki danych znajdujących się najbliżej nich.
 
 Usługa Cosmos DB umożliwia dodawanie i usuwanie regionów platformy Azure do konta usługi Cosmos w dowolnym momencie, wystarczy kliknąć przycisk. Cosmos DB będzie bezproblemowo replikować dane do wszystkich regionów skojarzonych z kontem usługi Cosmos, gdy aplikacja nadal będzie wysoce dostępna, dzięki możliwościom *wielomultihostingunym* . Aby uzyskać więcej informacji, zobacz artykuł dotyczący [globalnej dystrybucji](distribute-data-globally.md).
 
-### <a name="always-on"></a>Zawsze włączona
+### <a name="always-on"></a>Zawsze włączone
 
 Dzięki głębokiej integracji z infrastrukturą platformy Azure i [przezroczystej replikacji wielu wzorców](global-dist-under-the-hood.md)Cosmos DB zapewnia [wysoką dostępność na 99,999%](high-availability.md) dla operacji odczytu i zapisu. Usługa Cosmos DB zapewnia również możliwość programowego (lub za pomocą portalu) wywoływania regionalnego trybu failover konta usługi Cosmos. Ta funkcja pomaga zapewnić, że aplikacja została zaprojektowana w celu przełączenia w tryb failover w przypadku awarii regionalnej.
 
@@ -48,7 +48,7 @@ Przy użyciu usługi Cosmos DB można tworzyć szybko reagujące aplikacje skalo
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>Wiele dokładnie zdefiniowanych opcji spójności
 
-Podczas kompilowania aplikacji rozproszonych globalnie w Cosmos DB nie trzeba już podejmować wyjątkowo [kompromisów między spójnością, dostępnością, opóźnieniami i przepływności](consistency-levels-tradeoffs.md). Protokół replikacji wielu wzorców Cosmos DB został starannie zaprojektowany w celu zaoferowania [pięciu dobrze zdefiniowanych opcji spójności](consistency-levels.md) - *silnej*, *ograniczonej nieodświeżoności*, *sesji*, *spójnego prefiksu*i *ostateczności* — Intuicyjny model programowania o małym opóźnieniu i wysokiej dostępności dla aplikacji rozproszonej globalnie.
+Podczas kompilowania aplikacji rozproszonych globalnie w Cosmos DB nie trzeba już podejmować wyjątkowo [kompromisów między spójnością, dostępnością, opóźnieniami i przepływności](consistency-levels-tradeoffs.md). Protokół replikacji wielu wzorców Cosmos DB został starannie zaprojektowany w celu zaoferowania [pięciu dobrze zdefiniowanych opcji spójności](consistency-levels.md) - *silnej*, *ograniczonej nieodświeżoności*, *sesji*, *spójnego prefiksu*i *ostateczności* — dla intuicyjnego modelu programowania z małymi opóźnieniami i wysoką dostępnością dla aplikacji rozproszonej globalnie.
 
 ### <a name="no-schema-or-index-management"></a>Bez zarządzania schematami lub indeksami
 
@@ -89,7 +89,7 @@ Cosmos DB oferuje interfejsy API do pracy z danymi przechowywanymi w bazie danyc
 
 ## <a name="solutions-that-benefit-from-azure-cosmos-db"></a>Rozwiązania, które korzystają z zalet usługi Azure Cosmos DB
 
-Wszystkie [aplikacje sieci Web, mobilne, gry i IoT](use-cases.md) , które wymagają obsługi dużych ilości danych, odczytów i zapisów w [skali globalnej](distribute-data-globally.md) z niemal rzeczywistym czasem odpowiedzi dla różnych danych, będą korzystać z [gwarantowanej wysokiej dostępności Cosmos DB ](https://azure.microsoft.com/support/legal/sla/cosmos-db/), Wysoka przepływność, małe opóźnienia i spójność możliwość dostosowania. Dowiedz się, jak można używać usługi Azure Cosmos DB do kompilowania rozwiązań z zakresu [IoT i telematyki](use-cases.md#iot-and-telematics), [sprzedaży i marketingu](use-cases.md#retail-and-marketing), [gier](use-cases.md#gaming) oraz [aplikacji mobilnych i internetowych](use-cases.md#web-and-mobile-applications).
+Wszystkie [aplikacje sieci Web, mobilne, gry i IoT](use-cases.md) , które wymagają obsługi dużych ilości danych, odczytów i zapisów w [skali globalnej](distribute-data-globally.md) z niemal rzeczywistym czasem odpowiedzi dla różnych danych, będą korzystać Cosmos DB z [gwarantowanej wysokiej dostępności](https://azure.microsoft.com/support/legal/sla/cosmos-db/), wysokiej przepustowości, małych opóźnień i możliwość dostosowania spójności. Dowiedz się, jak można używać usługi Azure Cosmos DB do kompilowania rozwiązań z zakresu [IoT i telematyki](use-cases.md#iot-and-telematics), [sprzedaży i marketingu](use-cases.md#retail-and-marketing), [gier](use-cases.md#gaming) oraz [aplikacji mobilnych i internetowych](use-cases.md#web-and-mobile-applications).
 
 ## <a name="next-steps"></a>Następne kroki
 
