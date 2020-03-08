@@ -6,12 +6,12 @@ author: sauryadas
 ms.topic: troubleshooting
 ms.date: 12/13/2019
 ms.author: saudas
-ms.openlocfilehash: b7aa90bd19e52059319570f1e7f6e64b90dee6e4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: f0ad8d503b5280b8cba89d940b99dcd81da71ffc
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390303"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78892841"
 ---
 # <a name="aks-troubleshooting"></a>Rozwiązywanie problemów z AKS
 
@@ -384,7 +384,7 @@ Zalecane ustawienia:
 | 1.12.0 - 1.12.1 | 0755 |
 | 1.12.2 i nowsze | 0777 |
 
-W przypadku używania klastra z Kuberetes w wersji 1.8.5 lub nowszej i dynamicznego tworzenia woluminu trwałego za pomocą klasy magazynu opcje instalacji można określić w obiekcie klasy magazynu. W poniższym przykładzie są ustawiane *0777*:
+W przypadku używania klastra z Kubernetes w wersji 1.8.5 lub nowszej i dynamicznego tworzenia woluminu trwałego za pomocą klasy magazynu opcje instalacji można określić w obiekcie klasy magazynu. W poniższym przykładzie są ustawiane *0777*:
 
 ```yaml
 kind: StorageClass
@@ -491,6 +491,10 @@ E1114 09:58:55.367731 1 static_autoscaler.go:239] Failed to fix node group sizes
 ```
 
 Ten błąd występuje ze względu na sytuację wyścigu w przypadku nadrzędnego skalowania klastra, w którym program automatyczne skalowanie klastra zakończy się inną wartością niż ta, która znajduje się w klastrze. Aby uzyskać dostęp do tego stanu, wystarczy wyłączyć i ponownie włączyć [Automatyczne skalowanie klastra][cluster-autoscaler].
+
+### <a name="slow-disk-attachment-getazuredisklun-takes-10-to-15-minutes-and-you-receive-an-error"></a>Wolne miejsce na dysku, GetAzureDiskLun trwa 10 do 15 minut i występuje błąd
+
+W wersji Kubernetes **starszej niż 1.15.0** może zostać wyświetlony błąd, taki jak **błąd WaitForAttach nie można znaleźć jednostki LUN dla dysku**.  Obejście tego problemu ma potrwać około 15 minut i ponowić próbę.
 
 <!-- LINKS - internal -->
 [view-master-logs]: view-master-logs.md

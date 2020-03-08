@@ -10,12 +10,12 @@ ms.date: 01/23/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 40a7f49cbb2d74b55ccb85dce64eea936a20801e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 8442d3f7ed3e73dc5d7358a9bc1d3ee31d7668cd
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905515"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894525"
 ---
 # <a name="disaster-recovery-and-account-failover-preview"></a>Odzyskiwanie po awarii i tryb failover konta (wersja zapoznawcza)
 
@@ -114,22 +114,17 @@ Konto można zainicjować w trybie failover z poziomu Azure Portal, programu Pow
 
 ## <a name="about-the-preview"></a>Informacje o wersji zapoznawczej
 
-Tryb failover konta jest dostępny w wersji zapoznawczej dla wszystkich klientów korzystających z usługi GRS lub RA-GRS z wdrożeniami Azure Resource Manager. Obsługiwane są tylko typy kont ogólnego przeznaczenia w wersji 1, ogólnego przeznaczenia w wersji 2 i BLOB Storage. Tryb failover konta jest obecnie dostępny w następujących regionach:
-
-- Azja Wschodnia
-- Azja Południowo-wschodnia
-- Australia Wschodnia
-- Australia Południowo-Wschodnia
-- Środkowe stany USA
-- Wschodnie stany USA 2
-- Zachodnio-środkowe stany USA
-- Zachodnie stany USA 2
+Tryb failover konta jest dostępny w wersji zapoznawczej dla wszystkich klientów korzystających z usługi GRS lub RA-GRS z wdrożeniami Azure Resource Manager. Obsługiwane są tylko typy kont ogólnego przeznaczenia w wersji 1, ogólnego przeznaczenia w wersji 2 i BLOB Storage. Tryb failover konta jest obecnie dostępny we wszystkich regionach publicznych. Praca w trybie failover nie jest dostępna w chmurach suwerennych/krajowych.
 
 Wersja zapoznawcza jest przeznaczona wyłącznie do użytku nieprodukcyjnego. Umowy dotyczące poziomu usług produkcyjnych (umowy SLA) nie są obecnie dostępne.
 
 ### <a name="additional-considerations"></a>Dodatkowe zagadnienia
 
 Zapoznaj się z dodatkowymi zagadnieniami opisanymi w tej sekcji, aby zrozumieć, w jaki sposób można mieć wpływ na aplikacje i usługi w przypadku wymuszenia przejścia w tryb failover w okresie zapoznawczym
+
+#### <a name="storage-account-containing-archived-blobs"></a>Konto magazynu zawierające zarchiwizowane obiekty blob
+
+Konta magazynu zawierające zarchiwizowane obiekty blob obsługują tryb failover konta. Po zakończeniu pracy w trybie failover w celu przekonwertowania konta z powrotem do GRS lub RA-GRS wszystkie obiekty blob archieved muszą zostać najpierw przekształcone w warstwę online.
 
 #### <a name="storage-resource-provider"></a>Dostawca zasobów magazynu
 
@@ -162,8 +157,8 @@ Należy pamiętać, że wszystkie dane przechowywane na dysku tymczasowym zostan
 
 Następujące funkcje i usługi nie są obsługiwane w przypadku przełączania do trybu failover dla konta w wersji zapoznawczej:
 
-- Azure File Sync nie obsługuje trybu failover dla konta magazynu. Kont magazynu zawierających udziały plików platformy Azure używane jako punkty końcowe w chmurze w usłudze Azure File Sync nie należy przełączać w tryb failover. Wykonanie tej operacji spowoduje, że synchronizacja przestanie działać, a także może spowodować nieoczekiwaną utratę danych w przypadku nowych plików warstwowych.  
-- Nie można przełączyć konta magazynu zawierającego zarchiwizowane obiekty blob w tryb failover. Obsługa zarchiwizowanych obiektów BLOB na oddzielnym koncie magazynu, które nie są planowane do trybu failover.
+- Azure File Sync nie obsługuje trybu failover dla konta magazynu. Kont magazynu zawierających udziały plików platformy Azure używane jako punkty końcowe w chmurze w usłudze Azure File Sync nie należy przełączać w tryb failover. Wykonanie tej operacji spowoduje, że synchronizacja przestanie działać, a także może spowodować nieoczekiwaną utratę danych w przypadku nowych plików warstwowych.
+- ADLS Gen2 konta magazynu (konta z włączoną hierarchiczną przestrzenią nazw) nie są w tej chwili obsługiwane.
 - Nie można przełączyć konta magazynu zawierającego blokowe obiekty blob w warstwie Premium. Konta magazynu obsługujące blokowe obiekty blob w warstwie Premium nie obsługują obecnie nadmiarowości geograficznej.
 - Nie można przełączyć do trybu failover konta magazynu zawierającego wszystkie kontenery z włączonymi [zasadami niezmiennościymi](../blobs/storage-blob-immutable-storage.md) . Odblokowanie/blokowanie oparte na czasie lub zasady wstrzymania w trybie failover w celu zachowania zgodności.
 - Po zakończeniu pracy w trybie failover następujące funkcje mogą przestać działać, jeśli zostały pierwotnie włączone: [subskrypcje zdarzeń](../blobs/storage-blob-event-overview.md), [Źródło zmian](../blobs/storage-blob-change-feed.md), [zasady cyklu życia](../blobs/storage-lifecycle-management-concepts.md)i [Rejestrowanie analityka magazynu](storage-analytics-logging.md).
@@ -180,7 +175,7 @@ Jeśli konto magazynu jest skonfigurowane dla usługi RA-GRS, masz dostęp do od
 
 W skrajnych okolicznościach, gdy region zostanie utracony ze względu na znaczną awarię, firma Microsoft może zainicjować regionalną pracę w trybie failover. W takim przypadku nie jest wymagana żadna akcja z Twojej strony. Do momentu ukończenia pracy w trybie failover zarządzanej przez firmę Microsoft nie będziesz mieć dostępu do zapisu na koncie magazynu. Aplikacje mogą odczytywać z regionu pomocniczego, jeśli konto magazynu jest skonfigurowane dla usługi RA-GRS. 
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 - [Inicjowanie trybu failover konta (wersja zapoznawcza)](storage-initiate-account-failover.md)
 - [Projektowanie wysoko dostępnych aplikacji przy użyciu magazynu RA-GRS](storage-designing-ha-apps-with-ragrs.md)

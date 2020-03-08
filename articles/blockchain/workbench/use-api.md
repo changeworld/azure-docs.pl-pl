@@ -1,33 +1,25 @@
 ---
 title: Korzystanie z interfejsów API REST usługi Azure łańcucha bloków Workbench
 description: Scenariusze korzystania z interfejsu API REST usługi Azure łańcucha bloków Workbench Preview
-ms.date: 10/14/2019
+ms.date: 03/05/2020
 ms.topic: article
 ms.reviewer: brendal
-ms.openlocfilehash: 188bbb9a9f6d289a7950ff74596352dff36e79f2
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 3084fcf343bc42fe01bf352b6791916d62f63540
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74324202"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672750"
 ---
 # <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>Korzystanie z interfejsu API REST usługi Azure łańcucha bloków Workbench Preview
 
-Interfejs API REST usługi Azure łańcucha bloków Workbench w wersji zapoznawczej oferuje deweloperom i pracownikom przetwarzającym informacje możliwość tworzenia rozbudowanych integracji z aplikacjami łańcucha bloków. Ten dokument zawiera opis kilku najważniejszych metod interfejsu API REST usługi Workbench. Załóżmy na przykład, że deweloper chce utworzyć niestandardowego klienta łańcucha bloków. Ten klient łańcucha bloków umożliwia zalogowanym użytkownikom wyświetlanie ich przypisanych aplikacji łańcucha bloków i korzystanie z nich. Klient umożliwia użytkownikom wyświetlanie wystąpień kontraktu i podejmowanie działań dotyczących kontraktów inteligentnych. Klient korzysta z interfejsu API REST Workbench w kontekście zalogowanego użytkownika w celu wykonania następujących czynności:
-
-* Wyświetlanie listy aplikacji
-* Wyświetlanie listy przepływów pracy dla aplikacji
-* Wyświetlanie listy wystąpień kontraktu inteligentnego dla przepływu pracy
-* Wyświetlanie listy dostępnych akcji dla kontraktu
-* Wykonywanie akcji dla kontraktu
-
-Przykładowe aplikacje łańcucha bloków używane w scenariuszach można [pobrać z witryny GitHub](https://github.com/Azure-Samples/blockchain).
+Interfejs API REST usługi Azure łańcucha bloków Workbench w wersji zapoznawczej oferuje deweloperom i pracownikom przetwarzającym informacje możliwość tworzenia rozbudowanych integracji z aplikacjami łańcucha bloków. W tym artykule przedstawiono kilka scenariuszy korzystania z interfejsu API REST Workbench. Załóżmy na przykład, że chcesz utworzyć niestandardowego klienta łańcucha bloków, który umożliwia zalogowanym użytkownikom wyświetlanie ich przypisanych aplikacji łańcucha bloków i korzystanie z nich. Klient może używać interfejsu API łańcucha bloków Workbench, aby wyświetlać wystąpienia kontraktu i podejmować działania dotyczące inteligentnych kontraktów.
 
 ## <a name="blockchain-workbench-api-endpoint"></a>Punkt końcowy interfejsu API łańcucha bloków Workbench
 
 Interfejsy API usługi łańcucha bloków Workbench są dostępne za poorednictwem punktu końcowego wdrożenia. Aby uzyskać adres URL punktu końcowego interfejsu API dla wdrożenia:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. W okienku nawigacji po lewej stronie wybierz pozycję **grupy zasobów**.
 1. Wybierz nazwę grupy zasobów wdrożonej łańcucha bloków Workbench.
 1. Wybierz nagłówek kolumny **Typ** , aby posortować listę alfabetycznie według typu.
@@ -36,21 +28,125 @@ Interfejsy API usługi łańcucha bloków Workbench są dostępne za poorednictw
 
     ![Adres URL punktu końcowego interfejsu API usługi App Service](media/use-api/app-service-api.png)
 
+## <a name="authentication"></a>Uwierzytelnianie
+
+Żądania do interfejsu API REST usługi łańcucha bloków Workbench są chronione za pomocą Azure Active Directory (Azure AD).
+
+Aby wysłać żądanie do interfejsów API REST, kod klienta wymaga uwierzytelnienia z prawidłowymi poświadczeniami, zanim będzie można wywołać interfejs API. Uwierzytelnianie jest koordynowane między różnymi aktorami przez usługę Azure AD i zapewnia klientowi [token dostępu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#access-token) jako potwierdzenie uwierzytelniania. Token jest następnie wysyłany w nagłówku autoryzacji HTTP żądań interfejsu API REST. Aby dowiedzieć się więcej o uwierzytelnianiu usługi Azure AD, zobacz [Azure Active Directory dla deweloperów](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
+
+Zobacz przykłady [interfejsu API REST](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/rest-api-samples) , aby zapoznać się z przykładami uwierzytelniania.
+
+## <a name="using-postman"></a>Używanie narzędzia Postman
+
+Jeśli chcesz przetestować interfejsy API Workbench lub eksperymentować z nich, możesz użyć programu [Poster](https://www.postman.com) , aby wykonać wywołania interfejsu API do wdrożenia. [Pobierz przykładową kolekcję Workbench żądań interfejsu API](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/rest-api-samples/postman) z usługi GitHub. Zobacz plik Readme, aby uzyskać szczegółowe informacje o uwierzytelnianiu i korzystaniu z przykładowych żądań interfejsu API.
+
+## <a name="create-an-application"></a>Tworzenie aplikacji
+
+Do utworzenia aplikacji łańcucha bloków Workbench służą dwa wywołania interfejsu API. Tę metodę można wykonać tylko przez użytkowników, którzy są administratorami Workbench.
+
+Użyj [interfejsu API Applications post](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationspost) , aby przekazać plik JSON aplikacji i uzyskać identyfikator aplikacji.
+
+### <a name="applications-post-request"></a>Żądanie POST aplikacji
+
+Użyj parametru **appFile** , aby wysłać plik konfiguracyjny jako część treści żądania.
+
+``` http
+POST /api/v1/applications
+Content-Type: multipart/form-data;
+Authorization : Bearer {access token}
+Content-Disposition: form-data; name="appFile"; filename="/C:/smart-contract-samples/HelloWorld.json"
+Content-Type: application/json
+```
+
+### <a name="applications-post-response"></a>Odpowiedź na wpis aplikacji
+
+Utworzony identyfikator aplikacji jest zwracany w odpowiedzi. Musisz mieć identyfikator aplikacji, aby skojarzyć plik konfiguracji z plikiem kodu podczas wywoływania następnego interfejsu API.
+
+``` http
+HTTP/1.1 200 OK
+Content-Type: "application/json"
+1
+```
+
+### <a name="contract-code-post-request"></a>Żądanie POST kodu kontraktu
+
+Aby przesłać plik kodu o stanie trwałym, należy użyć [kodu umowy aplikacji post API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/contractcodepost) przez przekazanie identyfikatora aplikacji. Ładunek może być pojedynczym plikiem SSD lub plikiem skompresowanym zawierającym pliki o pełnej postaci.
+
+Zastąp następujące wartości:
+
+| Parametr | Wartość |
+|-----------|-------|
+| Identyfikator | Wartość zwracana z interfejsu API aplikacji. |
+| {ledgerId} | Indeks księgi. Wartość jest zwykle 1. Możesz również sprawdzić w [tabeli księgi](data-sql-management-studio.md) wartość. |
+
+``` http
+POST /api/v1/applications/{applicationId}/contractCode?ledgerId={ledgerId}
+Content-Type: multipart/form-data;
+Authorization : Bearer {access token}
+Content-Disposition: form-data; name="contractFile"; filename="/C:/smart-contract-samples/HelloWorld.sol"
+```
+
+### <a name="contract-code-post-response"></a>Odpowiedź na wpis kodu kontraktu
+
+Jeśli to się powiedzie, odpowiedź zawiera identyfikator kodu utworzonego kontraktu z [tabeli ContractCode](data-sql-management-studio.md).
+
+``` http
+HTTP/1.1 200 OK
+Content-Type: "application/json"
+2
+```
+
+## <a name="assign-roles-to-users"></a>Przypisywanie ról do użytkowników
+
+Aby utworzyć mapowanie między użytkownikami w określonej aplikacji łańcucha bloków, użyj identyfikatora aplikacji, identyfikatora użytkownika i identyfikatora roli aplikacji do [przypisania roli aplikacji](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/roleassignmentspost) . Tę metodę można wykonać tylko przez użytkowników, którzy są administratorami Workbench.
+
+### <a name="role-assignments-post-request"></a>Żądanie POST przypisań ról
+
+Zastąp następujące wartości:
+
+| Parametr | Wartość |
+|-----------|-------|
+| Identyfikator | Wartość zwracana z interfejsu API aplikacji. |
+| Nazwa | Wartość identyfikatora użytkownika z [tabeli użytkownika](data-sql-management-studio.md). |
+| {applicationRoleId} | Wartość identyfikatora roli aplikacji skojarzona z IDENTYFIKATORem aplikacji z [tabeli ApplicationRole](data-sql-management-studio.md). |
+
+``` http
+POST /api/v1/applications/{applicationId}/roleAssignments
+Content-Type: application/json;
+Authorization : Bearer {access token}
+
+{
+  "userId": {userId},
+  "applicationRoleId": {applicationRoleId}
+}
+```
+
+### <a name="role-assignments-post-response"></a>Odpowiedź po przypisaniu ról
+
+Jeśli to się powiedzie, odpowiedź obejmuje utworzony identyfikator przypisania roli z [tabeli RoleAssignment](data-sql-management-studio.md).
+
+``` http
+HTTP/1.1 200
+1
+```
+
 ## <a name="list-applications"></a>Wyświetlanie listy aplikacji
 
-Po zalogowaniu się użytkownika do klienta usługi łańcucha bloków pierwsze zadanie to pobranie wszystkich aplikacji łańcucha bloków Workbench dla użytkownika. W tym scenariuszu użytkownik ma dostęp do dwóch aplikacji:
+Użyj [interfejsu API Applications Get](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationsget) , aby pobrać wszystkie aplikacje łańcucha bloków Workbench dla użytkownika. W tym przykładzie zalogowany użytkownik ma dostęp do dwóch aplikacji:
 
-1. [Transfer zasobów](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer/readme.md)
-2. [Transport chłodny](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/refrigerated-transportation/readme.md)
+- [Transfer zasobów](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer/readme.md)
+- [Transport chłodny](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/refrigerated-transportation/readme.md)
 
-Użyj [interfejsu API pobierania aplikacji](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationsget):
+### <a name="applications-get-request"></a>Żądania GET aplikacji
 
 ``` http
 GET /api/v1/applications
 Authorization : Bearer {access token}
 ```
 
-Odpowiedź zawiera listę wszystkich aplikacji łańcucha bloków, do których użytkownik ma dostęp w usłudze łańcucha bloków Workbench. Łańcucha bloków Workbench administratorzy uzyskują każdą aplikację łańcucha bloków. Administratorzy niebędący Workbench otrzymują wszystkie blockchains, dla których mają co najmniej jedną skojarzoną rolę aplikacji lub skojarzoną rolę wystąpienia kontraktu inteligentnego.
+### <a name="applications-get-response"></a>Odpowiedź na pobieranie aplikacji
+
+Odpowiedź zawiera listę wszystkich aplikacji łańcucha bloków, do których użytkownik ma dostęp w usłudze łańcucha bloków Workbench. Łańcucha bloków Workbench administratorzy uzyskują każdą aplikację łańcucha bloków. Administratorzy niebędący Workbench otrzymują wszystkie aplikacje łańcucha bloków, dla których mają co najmniej jedną skojarzoną rolę aplikacji lub skojarzoną rolę wystąpienia kontraktu inteligentnego.
 
 ``` http
 HTTP/1.1 200 OK
@@ -84,16 +180,18 @@ Content-type: application/json
 
 ## <a name="list-workflows-for-an-application"></a>Wyświetlanie listy przepływów pracy dla aplikacji
 
-Gdy użytkownik wybierze odpowiednią aplikację łańcucha bloków (na przykład **transfer zasobów**), klient łańcucha bloków pobiera wszystkie przepływy pracy określonej aplikacji łańcucha bloków. Użytkownicy mogą następnie wybrać odpowiedni przepływ pracy, zanim zostaną im wyświetlone wszystkie wystąpienia kontraktu inteligentnego dla przepływu pracy. Każda aplikacja łańcucha bloków ma co najmniej jeden przepływ pracy, a każdy przepływ pracy ma zero lub więcej wystąpień kontraktu inteligentnego. W przypadku aplikacji klienckiej łańcucha bloków, która ma tylko jeden przepływ pracy, zalecamy Pominięcie przepływu pracy użytkownika, który umożliwia użytkownikom wybranie odpowiedniego przepływu. W takim przypadku **transfer zasobów** ma tylko jeden przepływ pracy, nazywany również **transferem zasobów**.
+Za pomocą [przepływów pracy aplikacji Pobierz interfejs API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/workflowsget) , aby wyświetlić listę wszystkich przepływów pracy określonej aplikacji łańcucha bloków, do których użytkownik ma dostęp w usłudze łańcucha bloków Workbench. Każda aplikacja łańcucha bloków ma co najmniej jeden przepływ pracy, a każdy przepływ pracy ma zero lub więcej wystąpień kontraktu inteligentnego. W przypadku aplikacji klienckiej łańcucha bloków, która ma tylko jeden przepływ pracy, zalecamy Pominięcie przepływu pracy użytkownika, który umożliwia użytkownikom wybranie odpowiedniego przepływu.
 
-Użyj [interfejsu API pobierania przepływów pracy aplikacji](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/workflowsget):
+### <a name="application-workflows-request"></a>Żądanie przepływów pracy aplikacji
 
 ``` http
 GET /api/v1/applications/{applicationId}/workflows
 Authorization: Bearer {access token}
 ```
 
-Odpowiedź wyświetla listę wszystkich przepływów pracy określonej aplikacji łańcucha bloków, do których użytkownik ma dostęp w usłudze Blockchain Workbench. Łańcucha bloków Workbench Administratorzy mogą uzyskać każdy przepływ pracy łańcucha bloków. Administratorzy niebędący Workbench otrzymują wszystkie przepływy pracy, dla których mają co najmniej jedną skojarzoną rolę aplikacji lub są skojarzone z rolą wystąpienia kontraktu inteligentnego.
+### <a name="application-workflows-response"></a>Odpowiedź przepływów pracy aplikacji
+
+Łańcucha bloków Workbench Administratorzy mogą uzyskać każdy przepływ pracy łańcucha bloków. Administratorzy niebędący Workbench otrzymują wszystkie przepływy pracy, dla których mają co najmniej jedną skojarzoną rolę aplikacji lub są skojarzone z rolą wystąpienia kontraktu inteligentnego.
 
 ``` http
 HTTP/1.1 200 OK
@@ -114,18 +212,72 @@ Content-type: application/json
 }
 ```
 
+## <a name="create-a-contract-instance"></a>Tworzenie wystąpienia kontraktu
+
+Utwórz nowe wystąpienie kontraktu inteligentnego dla przepływu pracy przy użyciu programu [kontrakty w wersji 2](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/contractsv2/contractpost) . Użytkownicy mogą tworzyć nowe wystąpienie kontraktu inteligentnego tylko wtedy, gdy użytkownik jest skojarzony z rolą aplikacji, która może inicjować wystąpienie kontraktu inteligentnego dla przepływu pracy.
+
+> [!NOTE]
+> W tym przykładzie używany jest program w wersji 2 interfejsu API. Interfejsy API kontraktu w wersji 2 zapewniają większy poziom szczegółowości dla skojarzonych pól ProvisioningStatus.
+
+### <a name="contracts-post-request"></a>Żądanie POST kontraktów
+
+Zastąp następujące wartości:
+
+| Parametr | Wartość |
+|-----------|-------|
+| WorkflowId | Wartość identyfikatora przepływu pracy to ConstructorID kontraktu z [tabeli przepływu pracy](data-sql-management-studio.md). |
+| {contractCodeId} | Wartość identyfikatora kodu kontraktu z [tabeli ContractCode](data-sql-management-studio.md). Skorelowanie identyfikatora aplikacji i identyfikatora księgi dla wystąpienia kontraktu, które chcesz utworzyć. |
+| ConnectionID | Wartość identyfikatora połączenia z [tabeli Connection](data-sql-management-studio.md). |
+
+Dla treści żądania Ustaw wartości przy użyciu następujących informacji:
+
+| Parametr | Wartość |
+|-----------|-------|
+| workflowFunctionID | Identyfikator z [tabeli WorkflowFunction](data-sql-management-studio.md). |
+| workflowActionParameters | Pary nazw wartości parametrów przesłane do konstruktora. Dla każdego parametru należy użyć wartości workflowFunctionParameterID z tabeli [WorkflowFunctionParameter](data-sql-management-studio.md) . |
+
+``` http
+POST /api/v2/contracts?workflowId={workflowId}&contractCodeId={contractCodeId}&connectionId={connectionId}
+Content-Type: application/json;
+Authorization : Bearer {access token}
+
+{
+  "workflowFunctionID": 2,
+  "workflowActionParameters": [
+    {
+      "name": "message",
+      "value": "Hello, world!",
+      "workflowFunctionParameterId": 3
+    }
+  ]
+}
+```
+
+### <a name="contracts-post-response"></a>Odpowiedź POST kontraktów
+
+Jeśli to się powiedzie, interfejs API przypisań ról zwróci ContractActionID z [tabeli ContractActionParameter](data-sql-management-studio.md).
+
+``` http
+HTTP/1.1 200 OK
+4
+```
+
 ## <a name="list-smart-contract-instances-for-a-workflow"></a>Wyświetlanie listy wystąpień kontraktu inteligentnego dla przepływu pracy
 
-Gdy użytkownik wybierze odpowiedni przepływ pracy, ten przypadek **transferu zasobów**spowoduje pobranie wszystkich wystąpień kontraktu inteligentnego dla określonego przepływu pracy. Te informacje służą do wyświetlania wszystkich wystąpień inteligentnych kontraktów dla przepływu pracy. Można też pozwolić użytkownikom na głębokie szczegółowe w dowolne z pokazanych wystąpień kontraktu inteligentnego. W tym przykładzie zakładamy, ze użytkownik chce wejść w interakcję z jednym z wystąpień kontraktu inteligentnego, aby wykonać akcję.
+Aby wyświetlić wszystkie wystąpienia inteligentnej umowy dla przepływu pracy, użyj [funkcji API Get](/rest/api/azure-blockchain-workbench/contractsv2/contractsget) . Można też pozwolić użytkownikom na głębokie szczegółowe w dowolne z pokazanych wystąpień kontraktu inteligentnego.
 
-Użyj [interfejsu API pobierania kontraktów](/rest/api/azure-blockchain-workbench/contractsv2/contractsget):
+### <a name="contracts-request"></a>Żądanie kontraktów
+
+W tym przykładzie zakładamy, ze użytkownik chce wejść w interakcję z jednym z wystąpień kontraktu inteligentnego, aby wykonać akcję.
 
 ``` http
 GET api/v1/contracts?workflowId={workflowId}
 Authorization: Bearer {access token}
 ```
 
-Odpowiedź zawiera listę wszystkich wystąpień kontraktu inteligentnego określonego przepływu pracy. Administratorzy Workbench uzyskują wszystkie wystąpienia inteligentne kontraktu. Administratorzy niebędący Workbench otrzymują każde wystąpienie kontraktu inteligentnego, dla którego ma co najmniej jedną skojarzoną rolę aplikacji lub jest skojarzone z rolą inteligentnego wystąpienia kontraktu.
+### <a name="contracts-response"></a>Odpowiedź na kontrakty
+
+Odpowiedź zawiera listę wszystkich wystąpień kontraktów inteligentnych określonego przepływu pracy. Administratorzy Workbench uzyskują wszystkie wystąpienia inteligentne kontraktu. Administratorzy niebędący Workbench otrzymują każde wystąpienie kontraktu inteligentnego, dla którego ma co najmniej jedną skojarzoną rolę aplikacji lub jest skojarzone z rolą inteligentnego wystąpienia kontraktu.
 
 ``` http
 HTTP/1.1 200 OK
@@ -215,19 +367,25 @@ Content-type: application/json
 
 ## <a name="list-available-actions-for-a-contract"></a>Wyświetlanie listy dostępnych akcji dla kontraktu
 
-Gdy użytkownik zdecyduje się na głębokie szczegółowe kontraktu, klient łańcucha bloków może wyświetlić dostępne akcje użytkownika z uwzględnieniem stanu kontraktu. W tym przykładzie użytkownik przegląda wszystkie dostępne akcje dla nowo utworzonego kontraktu inteligentnego:
+Użyj [interfejsu API akcji kontraktu](/rest/api/azure-blockchain-workbench/contractsv2/contractactionget) , aby wyświetlić dostępne akcje użytkownika z uwzględnieniem stanu kontraktu. 
 
-* Zmień: umożliwia użytkownikowi zmodyfikowanie opisu i ceny zasobu.
-* Przerwij: umożliwia użytkownikowi zakończenie kontraktu elementu zawartości.
+### <a name="contract-action-request"></a>Żądanie akcji kontraktu
 
-Użyj [interfejsu API pobierania akcji kontraktu](/rest/api/azure-blockchain-workbench/contractsv2/contractactionget):
+W tym przykładzie użytkownik przegląda wszystkie dostępne akcje dla nowego utworzonego przez siebie kontraktu inteligentnego.
 
 ``` http
 GET /api/v1/contracts/{contractId}/actions
 Authorization: Bearer {access token}
 ```
 
-Odpowiedź zawiera listę wszystkich akcji, które użytkownik może wykonać dla danego bieżącego stanu określonego wystąpienia kontraktu inteligentnego. Użytkownicy uzyskują wszystkie odpowiednie akcje, jeśli użytkownik ma skojarzoną rolę aplikacji lub jest skojarzony z rolą wystąpienia kontraktu inteligentnego dla bieżącego stanu określonego wystąpienia kontraktu inteligentnego.
+### <a name="contract-action-response"></a>Odpowiedź akcji kontraktu
+
+Odpowiedź zawiera listę wszystkich akcji, które użytkownik może wykonać dla danego bieżącego stanu określonego wystąpienia kontraktu inteligentnego.
+
+* Zmień: umożliwia użytkownikowi zmodyfikowanie opisu i ceny zasobu.
+* Przerwij: umożliwia użytkownikowi zakończenie kontraktu elementu zawartości.
+
+Użytkownicy uzyskują wszystkie odpowiednie akcje, jeśli użytkownik ma skojarzoną rolę aplikacji lub jest skojarzony z rolą wystąpienia kontraktu inteligentnego dla bieżącego stanu określonego wystąpienia kontraktu inteligentnego.
 
 ``` http
 HTTP/1.1 200 OK
@@ -282,12 +440,11 @@ Content-type: application/json
 
 ## <a name="execute-an-action-for-a-contract"></a>Wykonywanie akcji dla kontraktu
 
-Użytkownik może następnie zdecydować się na podjęcie działania dla określonego wystąpienia kontraktu inteligentnego. W tym przypadku Rozważmy scenariusz, w którym użytkownik chce zmodyfikować opis i cenę elementu zawartości do następującej akcji:
+Użyj [funkcji post API akcji kontraktu](/rest/api/azure-blockchain-workbench/contractsv2/contractactionpost) , aby wykonać akcję dla określonego wystąpienia kontraktu inteligentnego.
 
-* Opis: „Mój zaktualizowany samochód”
-* Cena: 54321
+### <a name="contract-action-post-request"></a>Żądanie POST akcji kontraktu
 
-Użyj [interfejsu API tworzenia akcji kontraktu](/rest/api/azure-blockchain-workbench/contractsv2/contractactionpost):
+W tym przypadku Rozważmy scenariusz, w którym użytkownik chce zmodyfikować opis i cenę elementu zawartości.
 
 ``` http
 POST /api/v1/contracts/{contractId}/actions
@@ -307,7 +464,11 @@ actionInformation: {
 }
 ```
 
-Użytkownicy mogą wykonać akcję tylko w przypadku danego bieżącego stanu określonego wystąpienia kontraktu inteligentnego i skojarzonej roli aplikacji lub roli wystąpienia kontraktu inteligentnego użytkownika. Jeśli tworzenie zakończy się pomyślnie, zwrócona zostanie odpowiedź HTTP 200 OK bez treści odpowiedzi.
+Użytkownicy mogą wykonać akcję tylko w przypadku danego bieżącego stanu określonego wystąpienia kontraktu inteligentnego i skojarzonej roli aplikacji lub roli wystąpienia kontraktu inteligentnego użytkownika.
+
+### <a name="contract-action-post-response"></a>Odpowiedź na wpis akcji kontraktu
+
+Jeśli tworzenie zakończy się pomyślnie, zwrócona zostanie odpowiedź HTTP 200 OK bez treści odpowiedzi.
 
 ``` http
 HTTP/1.1 200 OK
@@ -316,5 +477,4 @@ Content-type: application/json
 
 ## <a name="next-steps"></a>Następne kroki
 
-> [!div class="nextstepaction"]
-> [Dokumentacja interfejsu API REST usługi Azure Blockchain Workbench](https://docs.microsoft.com/rest/api/azure-blockchain-workbench)
+Informacje referencyjne dotyczące interfejsów API łańcucha bloków Workbench można znaleźć w [dokumentacji interfejsu API REST usługi Azure łańcucha bloków Workbench](https://docs.microsoft.com/rest/api/azure-blockchain-workbench).

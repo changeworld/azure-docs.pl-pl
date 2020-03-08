@@ -14,12 +14,12 @@ ms.workload: multiple
 ms.date: 10/24/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: 46be210ead3816356b63293b910e1c0e7ffc087b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 9f4831fd60038a2265990c0774106a5ea2f98a5a
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200099"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672087"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Utwórz automatyczną formułę skalowania węzłów obliczeniowych w puli usługi Batch
 
@@ -134,8 +134,8 @@ Możesz uzyskać wartości tych zmiennych zdefiniowanych przez usługę, aby wpr
 | $SucceededTasks |Liczba zadań, które zakończyły się pomyślnie. |
 | $FailedTasks |Liczba zadań, które zakończyły się niepowodzeniem. |
 | $CurrentDedicatedNodes |Bieżąca liczba dedykowanych węzłów obliczeniowych. |
-| $CurrentLowPriorityNodes |Bieżąca liczba węzłów obliczeniowych o niskim priorytecie, w tym wszystkich węzłów, które zostały wstępnie wyparte. |
-| $PreemptedNodeCount | Liczba węzłów w puli, które znajdują się w stanie sprzed wyparte. |
+| $CurrentLowPriorityNodes |Bieżąca liczba węzłów obliczeniowych o niskim priorytecie, w tym wszystkich węzłów, które zostały przeniesiona. |
+| $PreemptedNodeCount | Liczba węzłów w puli, które są w stanie przeniesiona. |
 
 > [!TIP]
 > Zmienne zdefiniowane w ramach usługi, które są wyświetlane w poprzedniej tabeli, to *obiekty* , które udostępniają różne metody uzyskiwania dostępu do danych skojarzonych z każdym z nich. Aby uzyskać więcej informacji, zobacz [Uzyskiwanie przykładowych danych](#getsampledata) w dalszej części tego artykułu.

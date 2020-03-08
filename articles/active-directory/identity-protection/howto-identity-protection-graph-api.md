@@ -11,21 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15b9bae1bd901325efdefeaa4db53df2d6b42b44
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: f6fd62ccab4d6e32b23835d280732797e133ada8
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275883"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671620"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Wprowadzenie do Azure Active Directory Identity Protection i Microsoft Graph
 
 Microsoft Graph to punkt końcowy Microsoft Unified API i Strona główna [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) interfejsów API. Istnieją cztery interfejsy API, które ujawniają informacje o ryzykownych użytkownikach i logowaniach. Pierwszy interfejs API, **riskDetection**, umożliwia wysyłanie zapytań do Microsoft Graph, aby uzyskać listę wykrytych i powiązanych z nimi wykrytych zagrożeń oraz informacje o wykrywaniu. Drugi interfejs API, **riskyUsers**, umożliwia wysyłanie zapytań do Microsoft Graph, aby uzyskać informacje o ochronie tożsamości użytkowników wykryte jako ryzyko. Trzeci interfejs API, usługa **logowania**, umożliwia wysyłanie zapytań do Microsoft Graph, aby uzyskać informacje na temat logowania do usługi Azure AD z określonymi właściwościami związanymi ze stanem ryzyka, szczegółami i poziomami. Czwarty interfejs API, **identityRiskEvents**, umożliwia wysyłanie zapytań do Microsoft Graph, aby uzyskać listę wykrytych [zagrożeń](../reports-monitoring/concept-risk-events.md) i związanych z nimi informacji. Interfejs API identityRiskEvents zostanie uznany za przestarzały 10 stycznia 2020; Zalecamy użycie interfejsu API **riskDetections** . W tym artykule opisano rozpoczęcie łączenia się z Microsoft Graph i wykonywania zapytań dotyczących tych interfejsów API. Aby uzyskać szczegółowe informacje, pełną dokumentację i dostęp do Eksploratora grafów, zapoznaj się z [witryną Microsoft Graph](https://graph.microsoft.io/) lub z konkretną dokumentacją dotyczącą tych interfejsów API:
 
-* [Interfejs API riskDetection](https://docs.microsoft.com/graph/api/resources/riskdetection?view=graph-rest-beta)
-* [Interfejs API riskyUsers](https://docs.microsoft.com/graph/api/resources/riskyuser?view=graph-rest-beta)
-* [Interfejs API logowania](https://docs.microsoft.com/graph/api/resources/signin?view=graph-rest-beta)
-* [interfejs API identityRiskEvents](https://docs.microsoft.com/graph/api/resources/identityriskevent?view=graph-rest-beta) *będzie przestarzały 10 stycznia 2020*
+* [Interfejs API riskDetection](/graph/api/resources/riskdetection?view=graph-rest-beta)
+* [Interfejs API riskyUsers](/graph/api/resources/riskyuser?view=graph-rest-beta)
+* [Interfejs API logowania](/graph/api/resources/signin?view=graph-rest-beta)
+* [interfejs API identityRiskEvents](/graph/api/resources/identityriskevent?view=graph-rest-beta) *będzie przestarzały 10 stycznia 2020*
 
 ## <a name="connect-to-microsoft-graph"></a>Połącz z programem Microsoft Graph
 
@@ -74,7 +74,7 @@ Przed rozpoczęciem należy:
 
    1. W polu tekstowym **adres URL logowania** wpisz `http://localhost`.
 
-   1. Kliknij pozycję **Utwórz**.
+   1. Kliknij przycisk **Utwórz**.
 1. Aby otworzyć stronę **Ustawienia** , na liście Aplikacje kliknij nowo utworzoną rejestrację aplikacji. 
 1. Skopiuj **Identyfikator aplikacji**.
 
@@ -124,7 +124,7 @@ Przed rozpoczęciem należy:
 
    1. W polu tekstowym **Opis klucza** wpisz opis (na przykład *wykrywanie ryzyka w usłudze Azure AD*).
    1. Jako **czas trwania**wybierz **za 1 rok**.
-   1. Kliknij pozycję **Zapisz**.
+   1. Kliknij przycisk **Save** (Zapisz).
    1. Skopiuj wartość klucza, a następnie wklej ją do bezpiecznej lokalizacji.   
    
    > [!NOTE]
@@ -224,7 +224,7 @@ https://graph.microsoft.com/beta/identityRiskEvents?`$filter=userID eq '<userID>
 Gratulacje, wykonano już pierwsze wywołanie do Microsoft Graph!  
 Teraz można wykonywać zapytania dotyczące wykrywania ryzyka tożsamości i używania danych, które są widoczne.
 
-Aby dowiedzieć się więcej o Microsoft Graph i sposobach tworzenia aplikacji przy użyciu interfejs API programu Graph, zapoznaj się z [dokumentacją](https://docs.microsoft.com/graph/overview) i więcej w [witrynie Microsoft Graph](https://developer.microsoft.com/graph). 
+Aby dowiedzieć się więcej o Microsoft Graph i sposobach tworzenia aplikacji przy użyciu interfejs API programu Graph, zapoznaj się z [dokumentacją](/graph/overview) i więcej w [witrynie Microsoft Graph](https://developer.microsoft.com/graph). 
 
 Aby uzyskać powiązane informacje, zobacz:
 

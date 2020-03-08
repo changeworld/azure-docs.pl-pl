@@ -1,19 +1,19 @@
 ---
 title: Uzyskaj pomoc techniczną dla portalu komercyjnej witryny Marketplace w centrum partnerskim
 description: Dowiedz się więcej o opcjach pomocy technicznej w centrum partnerskim, w tym o sposobach tworzenia plików żądania pomocy technicznej.
-author: ChJenk
+author: qianw211
 manager: evansma
 ms.author: jamwall
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/17/2019
-ms.openlocfilehash: 53d6b5b43a028d552c95c58aebf7268353621759
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 03/07/2020
+ms.openlocfilehash: 032d4793576e2fb9b8de9e36666548e5bffb9460
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827900"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898261"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>Wsparcie dla komercyjnego programu w witrynie Marketplace w centrum partnerskim
 
@@ -29,67 +29,55 @@ Firma Microsoft zapewnia pomoc techniczną dla wielu różnych produktów i usł
 
 1. W górnym menu po prawej stronie strony wybierz ikonę **obsługi** . 
  
-   ![Ikona obsługi](./media/commercial-marketplace-support.png)
-
-1. Po prawej stronie strony zostanie wyświetlone okienko **Pomoc i obsługa techniczna** . Dla każdego programu w centrum partnerskim zostanie wyszukany element listy rozwijanej, dla którego Twoje konto jest zarejestrowane. Wybierz menu rozwijane **komercyjne witryny Marketplace** . 
+1. Po prawej stronie strony zostanie wyświetlone okienko **Pomoc i obsługa techniczna** . 
  
    ![Menu rozwijane obsługa](./media/commercial-marketplace-support-pane.png)
+
+    Lub przejdź do okienka **strony głównej** , a następnie wybierz pozycję **Pomoc i obsługa techniczna**.
+
+   ![Pomoc i obsługa techniczna ze strony głównej](./media/homepage-help-support.png)
 
 1. Wybierz **[dokumentację](../index.md)** , aby przejrzeć kompleksowe odpowiedzi na pytania i zasoby. 
 
 1. Wybierz **[forum społeczności partnerów w portalu Marketplace](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** , aby odpowiedzieć na pytania, korzystając z wiedzy innych wydawców firmy Microsoft. 
 
-1. Wybierz **[dodatkową pomoc](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff)** , aby otworzyć **nowy bilet żądania pomocy technicznej** . 
+1. Wybierz **[dodatkową pomoc](https://aka.ms/marketplacepublishersupport)** , aby otworzyć **nowy bilet żądania pomocy technicznej** .  
 
 ## <a name="how-to-open-a-support-ticket"></a>Jak otworzyć bilet pomocy technicznej
 
-Wybranie **dodatkowej pomocy** z menu komercyjnej pomocy technicznej portalu Marketplace w centrum partnerskim spowoduje przekierowanie do strony Pomoc techniczna firmy Microsoft dla firm. Zobaczysz kilka menu rozwijanych. Pierwsze niektóre menu rozwijane są wypełniane automatycznie. Aby uzyskać pomoc techniczną, zidentyfikuj rodzinę produktów jako **usługi w chmurze i online**, produkt jako **wydawcę w portalu Marketplace**oraz wersję produktu jako **publikację w portalu Marketplace**. Nie zmieniaj wstępnie wypełnionych menu rozwijanych. 
+Teraz możesz już otworzyć bilet pomocy technicznej na ekranie **Pomoc i obsługa techniczna** .
 
-- **Wybierz kategorię, która najlepiej opisuje problem**: Wybierz kategorię, która najlepiej odpowiada Twojemu pytania lub problemowi. Wybranie kategorii spowoduje wyświetlenie dodatkowego menu rozwijanego z prośbą o wybranie problemu, który najlepiej opisuje Twój problem.
+![Pomoc i obsługa techniczna](./media/help-and-support.png)
 
-- **Wybierz problem, który najlepiej opisuje**problem: Wybierz problem z wymienionych opcji, które najlepiej odpowiadają temu problemowi. W zależności od tego problemu w nowej sekcji może pojawić się komunikat "Oto kilka informacji, które mogą pomóc" z linkami związanymi z danym problemem. Przejrzyj te linki przed wybraniem przycisku **dalej** , aby sprawdzić, czy pytanie lub problem zostało rozwiązany.
+>[!Note]
+>Jeśli logujesz się w centrum partnerskim, będziesz mieć lepszy komfort obsługi.
 
-Po wybraniu przycisku **dalej** nastąpi przekierowanie do strony **szczegółów problemu** . 
+**Opcja 1:** Wprowadź słowa kluczowe, takie jak: Marketplace, Azure App, SaaS oferta, zarządzanie kontami, zarządzanie potencjalnymi klientami, problem z wdrażaniem, wypłata itp.
 
-#### <a name="tell-us-more-about-your-issue"></a>Przekaż nam więcej informacji o problemie
+**Opcja 2:** Tematy dotyczące przeglądania — > wybierz **kategorię** = komercyjna witryna marketplace — > wybierz odpowiedni **temat** , a następnie **temat podrzędny**.
 
-W sekcji **Szczegóły problemu** Wyjaśnij, czego potrzebujesz, aby uzyskać pomoc.
+Po znalezieniu wybranego tematu wybierz pozycję **Przejrzyj rozwiązania**.
 
-- Wybierz swój kraj.
-- Wybierz język, w którym chcesz uzyskać pomoc techniczną.
-- Wprowadź tytuł problemu (od 3 do 200 znaków).  
-- Wprowadź krótki opis problemu (maks. 2000 znaków).
-- Wybierz opcję **Dalej**.
+![Następny krok](./media/next-step.png)
 
-#### <a name="select-a-support-plan"></a>Wybierz plan pomocy technicznej
+Dostępne są następujące opcje:
 
-W sekcji **planu pomocy technicznej** nie są wymagane żadne informacje. Wybierz opcję **Dalej**. 
+* Aby wybrać inny temat, wybierz inny link tematu w obszarze **wybrany problem**.
+* Przejrzyj opis tego problemu, jeśli jest dostępny.  Jest to tekst wyświetlany powyżej **zalecanych kroków**.
+* Przejrzyj **zalecane kroki**, jeśli są dostępne.
+* Przejrzyj **zalecane dokumenty**, jeśli są dostępne.
 
-#### <a name="select-the-severity-of-your-issue"></a>Wybierz ważność problemu
+![Zalecane rozwiązania](./media/recommended-solutions.png)
 
-W sekcji **ważność** nie są wymagane żadne informacje. Wybierz opcję **Dalej**. 
+Jeśli nie możesz znaleźć odpowiedzi w **zalecanych rozwiązaniach**, kliknij pozycję **Podaj szczegóły problemu**.  Wypełnij formularz i wszystkie wymagane pola, aby przyspieszyć proces rozwiązywania problemów.  Następnie kliknij przycisk **Prześlij**.
 
-#### <a name="who-should-we-contact"></a>Komu się skontaktować
-
-W sekcji **informacje kontaktowe** upewnij się, że nazwa kontaktu podstawowego, numer telefonu i adres e-mail są poprawne. 
-- Zaktualizuj te informacje, Jeśli zobaczysz, że wszystkie elementy są nieprawidłowe
-- W razie potrzeby możesz dodać inne kontakty z Twojej firmy do tego żądania obsługi
-- Wybierz pozycję **Dalej**
-
-#### <a name="review-and-submit-your-support-request"></a>Przejrzyj i prześlij żądanie pomocy technicznej
-
-Zapoznaj się z informacjami dotyczącymi żądania pomocy technicznej w sekcji **Przegląd** . 
-- Jeśli wszystkie informacje są poprawne, wybierz pozycję **Prześlij**. 
-- Jeśli konieczne jest zaktualizowanie wszelkich informacji, należy wybrać przycisk **zmiany** obok sekcji, w której są wymagane aktualizacje.
+>[!Note]
+>Jeśli użytkownik nie zalogował się w centrum partnerskim, a temat wymaga uwierzytelniania, przed kontynuowaniem będzie wymagane zalogowanie się.  W przypadku publicznych tematów uwierzytelnianie nie jest wymagane.
 
 ## <a name="track-your-existing-support-requests"></a>Śledź istniejące żądania obsługi 
 
-Aby śledzić żądanie pomocy technicznej, odwiedź [stronę komercyjnej pomocy technicznej Marketplace](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff). 
-
-Na górnym niebieskim pasku menu obok pozycji "Pomoc techniczna dla firm" Wybierz łącze **żądania pomocy technicznej** . 
-
-Przejrzyj wszystkie otwarte i zamknięte żądania pomocy technicznej w sekcji **pomocy technicznej Microsoft Professional** . 
+Aby przejrzeć wszystkie otwarte i zamknięte bilety, przejdź do **komercyjnej witryny Marketplace** na pasku nawigacyjnym po lewej stronie, a następnie wybierz pozycję **Pomoc techniczna**.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Aktualizowanie istniejącej oferty w komercyjnej witrynie Marketplace](./update-existing-offer.md)
+- [Aktualizowanie istniejącej oferty w witrynie Marketplace dla zastosowań komercyjnych](./update-existing-offer.md)

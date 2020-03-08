@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: 7082ebc4ca3066f84ca9790797cfa04e437f78a3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 6d1ab50e471c9c603c7886130375dc74e9b2a755
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396361"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668500"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>Odwołanie — Wybieranie protokołu komunikacyjnego
 
@@ -48,7 +48,7 @@ Podczas wybierania protokołu dla komunikacji po stronie urządzenia należy wzi
 * **Rozmiar ładunku**. MQTT i AMQP są protokołami binarnymi, co powoduje bardziej kompaktowe ładunki niż HTTPS.
 
 > [!WARNING]
-> W przypadku korzystania z protokołu HTTPS każde urządzenie powinno sondować komunikaty z chmury do urządzenia co 25 minut lub dłużej. Jednak podczas opracowywania można przeprowadzić sondowanie częściej niż co 25 minut.
+> W przypadku korzystania z protokołu HTTPS każde urządzenie powinno sondować komunikaty z chmury do urządzenia nie częściej niż co 25 minut. W trakcie opracowywania poszczególne urządzenia mogą sondować się częściej, w razie potrzeby.
 
 ## <a name="port-numbers"></a>Numery portów
 

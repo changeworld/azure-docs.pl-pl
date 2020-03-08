@@ -3,12 +3,12 @@ title: Przegląd Service Health | Microsoft Docs
 description: Spersonalizowane informacje o tym, w jaki sposób aplikacje platformy Azure wpływają na bieżące i przyszłe problemy z usługą i konserwację platformy Azure.
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: db9d74e2883e755c3e5c3dbbe9d6570f1e78c4a6
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: a1c6a10ab48125c030c9a35864f829438404ad97
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654022"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898439"
 ---
 # <a name="service-health-overview"></a>Przegląd Service Health
 
@@ -16,11 +16,12 @@ Service Health udostępnia dostosowywalny pulpit nawigacyjny, który śledzi kon
 
 ## <a name="service-health-events"></a>Zdarzenia Service Health
 
-Service Health śledzi trzy typy zdarzeń dotyczących kondycji, które mogą mieć wpływ na zasoby:
+Service Health śledzi cztery typy zdarzeń dotyczących kondycji, które mogą mieć wpływ na zasoby:
 
 1. **Problemy z usługą** — problemy z usługami platformy Azure, które już teraz mają wpływ. 
 2. **Planowana konserwacja** — nadchodząca konserwacja, która może mieć wpływ na dostępność usług w przyszłości.  
 3. **Klasyfikatory kondycji** — zmiany w usługach platformy Azure, które wymagają Twojej uwagi. Przykłady obejmują, kiedy funkcje platformy Azure są przestarzałe lub przekroczenia limitu przydziału użycia.
+4. **Klasyfikatory zabezpieczeń (wersja zapoznawcza)** — powiadomienia dotyczące zabezpieczeń, które mogą mieć wpływ na dostępność usług platformy Azure.
 
 > [!NOTE]
 > Aby wyświetlać zdarzenia Service Health, użytkownicy muszą mieć [przydaną rolę czytelnika](../role-based-access-control/role-assignments-portal.md) w ramach subskrypcji.

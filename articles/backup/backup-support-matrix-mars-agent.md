@@ -3,12 +3,12 @@ title: Macierz obsługi dla agenta MARS
 description: Ten artykuł zawiera podsumowanie Azure Backup pomocy technicznej podczas tworzenia kopii zapasowej maszyn, na których jest uruchomiony agent Microsoft Azure Recovery Services (MARS).
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: ef57688dd7b5ccee4e71ac0a54138ac567320aa2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 515ca065914dc535c1ba21fdb5ac574e3987ca32
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392753"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669116"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Macierz obsługi kopii zapasowej za pomocą agenta Microsoft Azure Recovery Services (MARS)
 
@@ -97,7 +97,7 @@ Aby uzyskać więcej informacji, zobacz [wymagania dotyczące routingu ExpressRo
 Kontrola przepustowości | Obsługiwane. W agencie MARS Użyj **właściwości Zmień** , aby dostosować przepustowość.
 Ograniczanie sieci | Niedostępne dla maszyn z kopią zapasową z systemem Windows Server 2008 R2, Windows Server 2008 z dodatkiem SP2 lub Windows 7.
 
-## <a name="support-for-direct-backups"></a>Obsługa bezpośrednich kopii zapasowych
+## <a name="supported-operating-systems"></a>Obsługiwane systemy operacyjne
 
 >[!NOTE]
 > Agent MARS nie obsługuje podstawowych jednostek SKU systemu Windows Server.
@@ -114,7 +114,6 @@ Systemy operacyjne muszą być 64 bitowe i powinny mieć zainstalowane najnowsze
 Windows 10 (Enterprise, Pro, Home) | Yes | Nie |  Sprawdź odpowiednią wersję serwera pod kątem wymagań dotyczących oprogramowania/modułu
 Windows 8.1 (Enterprise, Pro)| Yes |Nie | Sprawdź odpowiednią wersję serwera pod kątem wymagań dotyczących oprogramowania/modułu
 Windows 8 (Enterprise, Pro) | Yes | Nie | Sprawdź odpowiednią wersję serwera pod kątem wymagań dotyczących oprogramowania/modułu
-Windows 7 (Ultimate, Enterprise, Pro, Home Premium/Basic, Starter) | Yes | Nie | Sprawdź odpowiednią wersję serwera pod kątem wymagań dotyczących oprogramowania/modułu
 Windows Server 2016 (wersje Standard, Datacenter, Essentials) | Yes | Yes | — .NET 4,5 <br> — Windows PowerShell <br> -Najnowsza zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0
 Windows Server 2012 R2 (wersje Standard, Datacenter, Foundation, Essentials) | Yes | Yes | — .NET 4,5 <br> — Windows PowerShell <br> -Najnowsza zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0
 Windows Server 2012 (wersje Standard, Datacenter, Foundation) | Yes | Yes |— .NET 4,5 <br> — Windows PowerShell <br> -Najnowsza zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0 <br> — Obsługa i zarządzanie obrazami wdrażania (DISM. exe)
@@ -122,6 +121,20 @@ Windows Storage Server 2016/2012 R2/2012 (standard, Grupa robocza) | Yes | Nie |
 Windows Server 2019 (wersje Standard, Datacenter, Essentials) | Yes | Yes | — .NET 4,5 <br> — Windows PowerShell <br> -Najnowsza zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0
 
 Aby uzyskać więcej informacji, zobacz [obsługiwane systemy operacyjne serwera usługi MAB i DPM](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems).
+
+### <a name="operating-systems-at-end-of-support"></a>Systemy operacyjne na końcu wsparcia
+
+Następujące systemy operacyjne mają na koniec wsparcie i zdecydowanie zaleca się uaktualnienie systemu operacyjnego w celu kontynuowania ochrony.
+
+Jeśli istniejące zobowiązania uniemożliwiają uaktualnienie systemu operacyjnego, należy rozważyć Migrowanie serwerów z systemem Windows do maszyn wirtualnych platformy Azure i korzystanie z kopii zapasowych maszyn wirtualnych platformy Azure w celu kontynuowania ochrony. Odwiedź [stronę migracji tutaj](https://azure.microsoft.com/migration/windows-server/) , aby uzyskać więcej informacji na temat migrowania systemu Windows Server.
+
+W przypadku środowisk lokalnych lub hostowanych, w których nie można uaktualnić systemu operacyjnego ani migrować do platformy Azure, Aktywuj rozszerzone aktualizacje zabezpieczeń dla maszyn, aby nadal były chronione i obsługiwane. Należy zauważyć, że tylko określone wersje kwalifikują się do aktualizacji zabezpieczeń rozszerzonych. Odwiedź [stronę często zadawanych pytań](https://www.microsoft.com/cloud-platform/extended-security-updates) , aby dowiedzieć się więcej.
+
+| **System operacyjny**                                       | **Pliki/foldery** | **Stan systemu** | **Wymagania dotyczące oprogramowania/modułu**                           |
+| ------------------------------------------------------------ | ----------------- | ------------------ | ------------------------------------------------------------ |
+| Windows 7 (Ultimate, Enterprise, Pro, Home Premium/Basic, Starter) | Yes               | Nie                 | Sprawdź odpowiednią wersję serwera pod kątem wymagań dotyczących oprogramowania/modułu |
+| Windows Server 2008 R2 (wersje Standard, Enterprise, Datacenter, Foundation) | Yes               | Yes                | — .NET 3,5, .NET 4,5 <br>  — Windows PowerShell <br>  -Zgodna z pakietem redystrybucyjnym Microsoft VC + + <br>  — Program Microsoft Management Console (MMC) 3,0 <br>  — Obsługa i zarządzanie obrazami wdrażania (DISM. exe) |
+| Windows Server 2008 z dodatkiem SP2 (wersje Standard, Datacenter, Foundation)  | Yes               | Nie                 | — .NET 3,5, .NET 4,5 <br>  — Windows PowerShell <br>  -Zgodna z pakietem redystrybucyjnym Microsoft VC + + <br>  — Program Microsoft Management Console (MMC) 3,0 <br>  — Obsługa i zarządzanie obrazami wdrażania (DISM. exe) <br>  -Virtual Server 2005 Base + KB KB948515 |
 
 ## <a name="backup-limits"></a>Limity kopii zapasowych
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 03/05/2020
 ms.author: dapine
-ms.openlocfilehash: b39b8712f3e8b869d7dbe496dd30f0599aa4150d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 68691ad60542c55db4d381e2923a9f928a22995a
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379003"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674458"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Ulepszanie syntezy przy użyciu języka znaczników syntezy mowy (SSML)
 
@@ -329,7 +329,7 @@ Alfabety fonetyczne składają się z telefonów, które składają się z liter
 
 | Atrybut | Opis | Wymagane / opcjonalne |
 |-----------|-------------|---------------------|
-| `alphabet` | Określa alfabet fonetyczny, który ma być używany podczas syntezowania wymowy ciągu w atrybucie `ph`. Ciąg określający alfabet musi być określony małymi literami. Poniżej przedstawiono możliwe litery, które można określić.<ul><li>IPA &ndash; Międzynarodowy alfabet fonetyczny</li><li>&ndash; SAPI Speech API zestaw telefonu</li><li>Uniwersalny zestaw telefonów &ndash; UPS</li></ul>Litera ma zastosowanie tylko do fonem w elemencie. Aby uzyskać więcej informacji, zobacz [odwołanie do alfabetu fonetycznego](https://msdn.microsoft.com/library/hh362879(v=office.14).aspx). | Optional (Opcjonalność) |
+| `alphabet` | Określa alfabet fonetyczny, który ma być używany podczas syntezowania wymowy ciągu w atrybucie `ph`. Ciąg określający alfabet musi być określony małymi literami. Poniżej przedstawiono możliwe litery, które można określić.<ul><li>`ipa` &ndash; Międzynarodowy alfabet fonetyczny</li><li>`sapi` &ndash; usługa mowy — alfabet fonetyczny</li><li>`ups` &ndash; uniwersalny zestaw telefonu</li></ul><br>Litera ma zastosowanie tylko do `phoneme` w elemencie. Aby uzyskać więcej informacji, zobacz [odwołanie do alfabetu fonetycznego](https://en.wikipedia.org/wiki/International_Phonetic_Alphabet). | Optional (Opcjonalność) |
 | `ph` | Ciąg zawierający telefony, które określają wymowę wyrazu w `phoneme` elementu. Jeśli określony ciąg zawiera nierozpoznane telefony, usługa zamiany tekstu na mowę (TTS) odrzuci cały dokument SSML i nie wygeneruje żadnych danych wyjściowych mowy określonych w dokumencie. | Wymagany, jeśli jest używany fonemów. |
 
 **Przykłady**
@@ -418,13 +418,11 @@ Could you help leave a message to Robert Benigni for me?
 - Rozmiar pliku: niestandardowy limit rozmiaru pliku leksykonu to 100KB, jeśli ten rozmiar zostanie przekroczony, żądanie syntezy zakończy się niepowodzeniem.
 - Odświeżanie pamięci podręcznej leksykonu: niestandardowy Leksykon zostanie zapisany w pamięci podręcznej przy użyciu identyfikatora URI w usłudze TTS podczas pierwszego ładowania. Leksykon z tym samym identyfikatorem URI nie zostanie ponownie załadowany w ciągu 15 minut, więc zmiana leksykonu niestandardowego musi odczekać od 15 minut, aby zaczęła obowiązywać.
 
-**Zestaw telefonu SAPI**
+**Zestawy fonetyczne usługi mowy**
 
-W powyższym przykładzie używamy międzynarodowego zestawu IPA (International Fonetyczn Association). Sugerujemy, aby deweloperzy korzystali z IPA, ponieważ IPA jest standardem międzynarodowym. 
+W powyższym przykładzie używamy międzynarodowego alfabetu fonetycznego, nazywanego również numerem telefonu IPA. Sugerujemy, aby deweloperzy korzystali z IPA, ponieważ jest to standard międzynarodowy. Biorąc pod uwagę, że IPA nie jest łatwy do zapamiętania, usługa mowy definiuje zestaw fonetyczny dla siedmiu języków (`en-US`, `fr-FR`, `de-DE`, `es-ES`, `ja-JP`, `zh-CN`i `zh-TW`).
 
-Biorąc pod uwagę, że IPA nie jest łatwy do zapamiętania, firma Microsoft definiuje zestaw dla numerów telefonów SAPI dla siedmiu języków (`en-US`, `fr-FR`, `de-DE`, `es-ES`, `ja-JP`, `zh-CN`i `zh-TW`). Aby uzyskać więcej informacji o alfabecie, zobacz [odwołanie do alfabetu fonetycznego](https://msdn.microsoft.com/library/hh362879(v=office.14).aspx).
-
-Możesz użyć zestawu telefonów SAPI z niestandardowymi leksykonami, jak pokazano poniżej. Ustaw wartość alfabetu na **SAPI**.
+Możesz użyć `sapi` jako wartość dla atrybutu `alphabet` z niestandardowymi leksykonami, jak pokazano poniżej:
 
 ```xml
 <?xml version="1.0" encoding="UTF-16"?>
@@ -445,7 +443,7 @@ Możesz użyć zestawu telefonów SAPI z niestandardowymi leksykonami, jak pokaz
 </lexicon>
 ```
 
-Aby uzyskać więcej informacji na temat szczegółowego alfabetu SAPI, zobacz [odwołanie do alfabetu SAPI](sapi-phoneset-usage.md).
+Aby uzyskać więcej informacji na temat szczegółowej litery fonetycznej usługi rozpoznawania mowy, zobacz [zestawy fonetyczne usługi Speech](speech-ssml-phonetic-sets.md).
 
 ## <a name="adjust-prosody"></a>Dostosuj Prosody
 

@@ -1,25 +1,26 @@
 ---
-title: Plany i rozliczenia — usługa Azure Scheduler
+title: Plany i rozliczanie
 description: Dowiedz się więcej o planach i rozliczeniach dla usługi Azure Scheduler
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 13a2be8c-dc14-46cc-ab7d-5075bfd4d724
+ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
-ms.openlocfilehash: 4b63367ab9686eee66bf3f00dddc2e2efe4cb941
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: e821036ff4ddb5a9786bc4f4537bb81539ab2c87
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300866"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898475"
 ---
 # <a name="plans-and-billing-for-azure-scheduler"></a>Plany i rozliczenia w usłudze Azure Scheduler
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) zastępuje usługę Azure Scheduler, która jest [wycofywana](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Aby kontynuować pracę z zadaniami skonfigurowanymi w usłudze Scheduler, [Przeprowadź migrację do Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) najszybciej, jak to możliwe.
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) zastępuje usługę Azure Scheduler, która jest [wycofywana](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Aby kontynuować pracę z zadaniami skonfigurowanymi w usłudze Scheduler, [Przeprowadź migrację do Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) najszybciej, jak to możliwe. 
+>
+> Usługa Scheduler nie jest już dostępna w Azure Portal, ale polecenia cmdlet programu PowerShell dla [interfejsu API REST](/rest/api/scheduler) i [usługi Azure Scheduler](scheduler-powershell-reference.md) pozostają dostępne w tym momencie, aby można było zarządzać zadaniami i kolekcjami zadań.
 
 ## <a name="job-collection-plans"></a>Plany zbierania zadań
 
@@ -27,12 +28,12 @@ W usłudze Azure Scheduler kolekcja zadań zawiera określoną liczbę zadań. K
 
 | Plan zbierania zadań | Maksymalna liczba zadań na kolekcję | Maksymalny cykl | Maksymalna liczba kolekcji zadań na subskrypcję | Limity | 
 |:--- |:--- |:--- |:--- |:--- |
-| **Standardowa** | 50 zadań na kolekcję | Jeden na minutę. Nie można uruchamiać zadań częściej niż jeden na minutę. | Każda subskrypcja platformy Azure może mieć do 100 kolekcji zadań w warstwie Standardowa. | Dostęp do pełnego zestawu funkcji usługi Scheduler | 
+| **Standard** | 50 zadań na kolekcję | Jeden na minutę. Nie można uruchamiać zadań częściej niż jeden na minutę. | Każda subskrypcja platformy Azure może mieć do 100 kolekcji zadań w warstwie Standardowa. | Dostęp do pełnego zestawu funkcji usługi Scheduler | 
 | **P10 Premium** | 50 zadań na kolekcję | Jeden na minutę. Nie można uruchamiać zadań częściej niż jeden na minutę. | Każda subskrypcja platformy Azure może mieć do 10 000 P10 Premium kolekcji zadań. Aby uzyskać więcej kolekcji, <a href="mailto:wapteams@microsoft.com">skontaktuj się z nami</a>. | Dostęp do pełnego zestawu funkcji usługi Scheduler |
 | **P20 Premium** | 1000 zadań na kolekcję | Jeden na minutę. Nie można uruchamiać zadań częściej niż jeden na minutę. | Każda subskrypcja platformy Azure może mieć do 5 000 P20 Premium kolekcji zadań. Aby uzyskać więcej kolekcji, <a href="mailto:wapteams@microsoft.com">skontaktuj się z nami</a>. | Dostęp do pełnego zestawu funkcji usługi Scheduler |
 |||||| 
 
-## <a name="pricing"></a>Cennik
+## <a name="pricing"></a>Ceny
 
 Aby uzyskać szczegółowe informacje o cenach, zobacz [Cennik usługi Scheduler](https://azure.microsoft.com/pricing/details/scheduler/).
 
@@ -58,7 +59,7 @@ Standardowa jednostka rozliczeniowa może mieć maksymalnie 10 kolekcji zadań w
 
 ## <a name="p10-premium-billable-units"></a>Jednostki rozliczane w warstwie Premium P10
 
-Jednostka rozliczana w P10 Premium może mieć do 10 000 P10 Premium kolekcji zadań. Ponieważ kolekcja zadań w warstwie Premium P10 może mieć do 50 zadań na kolekcję, jedna jednostka rozliczeniowa Premium P10 umożliwia subskrypcję platformy Azure do 500 000 zadań lub do niemal 22 miliardów wykonywania zadań miesięcznie. 
+Jednostka rozliczana w P10 Premium może mieć do 10 000 P10 Premium kolekcji zadań. Ponieważ kolekcja zadań w warstwie Premium P10 może mieć do 50 zadań na kolekcję, jedna jednostka rozliczeniowa Premium P10 umożliwia subskrypcję platformy Azure do 500 000 zadań lub do niemal 22 *miliardów* wykonywania zadań miesięcznie. 
 
 Kolekcje zadań w warstwie Premium P10 zapewniają te same możliwości co standardowe kolekcje zadań, ale oferują podział cen dla aplikacji, które wymagają wielu kolekcji zadań i zapewniają większą skalowalność. Na tej liście wyjaśniono, w jaki sposób opłaty są naliczane w oparciu o różne liczby kolekcji zadań w warstwie Premium P10:
 
@@ -68,11 +69,11 @@ Kolekcje zadań w warstwie Premium P10 zapewniają te same możliwości co stand
 
 ## <a name="p20-premium-billable-units"></a>Jednostki rozliczane w warstwie Premium P20
 
-Jednostka rozliczana w P20 Premium może mieć do 5 000 P20 Premium kolekcji zadań. Ponieważ kolekcja zadań P20 Premium może mieć do 1 000 zadań dla każdej kolekcji zadań, jedna jednostka rozliczeniowa Premium P20 umożliwia subskrypcję platformy Azure do 5 000 000 zadań lub do niemal 220 miliardów wykonywania zadań miesięcznie.
+Jednostka rozliczana w P20 Premium może mieć do 5 000 P20 Premium kolekcji zadań. Ponieważ kolekcja zadań P20 Premium może mieć do 1 000 zadań dla każdej kolekcji zadań, jedna jednostka rozliczeniowa Premium P20 umożliwia subskrypcję platformy Azure do 5 000 000 zadań lub do niemal 220 *miliardów* wykonywania zadań miesięcznie.
 
 Kolekcje zadań w warstwie Premium P20 zapewniają takie same możliwości jak kolekcje zadań w warstwie Premium P10, ale również obsługują większą liczbę zadań na kolekcję i większą łączną liczbę zadań, które są ogólne niż P10 Premium, zapewniając większą skalowalność.
 
-## <a name="plan-comparison"></a>Porównanie planów
+## <a name="plan-comparison"></a>Porównanie planu
 
 * Jeśli masz więcej niż 100 zbiorów zadań w warstwie Standardowa (10 standardowych jednostek rozliczeniowych), możesz uzyskać lepszą pomoc, tworząc wszystkie kolekcje zadań w planie Premium.
 
@@ -80,8 +81,7 @@ Kolekcje zadań w warstwie Premium P20 zapewniają takie same możliwości jak k
 
   Usługa Scheduler rachunki jest rozliczana na podstawie liczby aktywnych kolekcji zadań w warstwie Standardowa lub Premium.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="next-steps"></a>Następne kroki
 
-* [Czym jest Azure Scheduler?](scheduler-intro.md)
 * [Pojęcia i terminologia dotyczące usługi Azure Scheduler oraz hierarchia jednostek](scheduler-concepts-terms.md)
 * [Limity, wartości domyślne i kody błędów usługi Azure Scheduler](scheduler-limits-defaults-errors.md)

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/30/2018
+ms.date: 03/06/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fa6da347289a12867a2416dea16631ba4758832f
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: c23648d70192607b2a5b977dcdd445931e995154
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78187478"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671810"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj profil techniczny dla wystawcy token JWT w zasadach niestandardowych Azure Active Directory B2C
 
@@ -56,6 +56,7 @@ Elementy **InputClaims**, **OutputClaims**i **PersistClaims** są puste lub nie 
 | allow_infinite_rolling_refresh_token | Nie | W przypadku wybrania wartości `true`okres istnienia okna przewijania tokenu odświeżania nigdy nie wygasa. |
 | IssuanceClaimPattern | Nie | Kontroluje wierzytelność wystawcy (ISS). Jedna z wartości:<ul><li>AuthorityAndTenantGuid — zgłoszenie ISS obejmuje nazwę domeny, taką jak `login.microsoftonline` lub `tenant-name.b2clogin.com`, i identyfikator dzierżawy https:\//login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0/</li><li>AuthorityWithTfp — zgłoszenie ISS obejmuje nazwę domeny, taką jak `login.microsoftonline` lub `tenant-name.b2clogin.com`, identyfikator dzierżawy i Nazwa zasad jednostki uzależnionej. https:\//login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/</li></ul> Wartość domyślna: AuthorityAndTenantGuid |
 | AuthenticationContextReferenceClaimPattern | Nie | Kontroluje `acr` wartość żądania.<ul><li>Brak — Azure AD B2C nie wystawia żądania ACR</li><li>PolicyId — `acr` zawiera nazwę zasad</li></ul>Opcje ustawiania tej wartości to TFP (zasady struktury zaufania) i ACR (odwołanie kontekstu uwierzytelniania). Zaleca się ustawienie tej wartości na TFP, aby ustawić wartość, upewnij się, że `<Item>` z `Key="AuthenticationContextReferenceClaimPattern"` istnieje, a wartość jest `None`. W zasadach jednostki uzależnionej Dodaj `<OutputClaims>` element, Dodaj `<OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />`tego elementu. Upewnij się również, że zasady zawierają typ `<ClaimType Id="trustFrameworkPolicy">   <DisplayName>trustFrameworkPolicy</DisplayName>     <DataType>string</DataType> </ClaimType>` |
+|RefreshTokenUserJourneyId| Nie | Identyfikator przejazdu użytkownika, który powinien zostać wykonany podczas odświeżania żądania opublikowania [tokenu dostępu](authorization-code-flow.md#4-refresh-the-token) do punktu końcowego `/token`. |
 
 ## <a name="cryptographic-keys"></a>Klucze kryptograficzne
 

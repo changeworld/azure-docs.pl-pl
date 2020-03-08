@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 083433d31f088eae1e138dd9cbd5ac05bbe8a304
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: f9d8c0cd803424e117bd4dc7a3382b7b32df2d05
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773303"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672718"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>Jak działa Logowanie jednokrotne do zasobów lokalnych na urządzeniach przyłączonych do usługi Azure AD
 
@@ -28,7 +28,7 @@ W tym artykule wyjaśniono, jak to działa.
 
  Jeśli maszyny przyłączone do usługi Azure AD nie są połączone z siecią organizacji, wymagana jest sieć VPN lub inna infrastruktura sieciowa. Lokalne Logowanie jednokrotne wymaga komunikacji liniowej z lokalnymi kontrolerami domeny AD DS.
 
-## <a name="how-it-works"></a>Zasady działania 
+## <a name="how-it-works"></a>Jak to działa 
 
 Ponieważ musisz pamiętać tylko jedną nazwę użytkownika i hasło, logowanie jednokrotne upraszcza dostęp do zasobów i zwiększa bezpieczeństwo środowiska. W przypadku urządzenia dołączonego do usługi Azure AD użytkownicy mają już środowisko logowania jednokrotnego w aplikacjach w chmurze w Twoim środowisku. Jeśli środowisko ma usługę Azure AD i lokalną usługi AD, prawdopodobnie chcesz rozszerzyć zakres środowiska logowania jednokrotnego do lokalnych aplikacji biznesowych, udziałów plików i drukarek.
 
@@ -42,13 +42,13 @@ Urządzenia przyłączone do usługi Azure AD nie mają znajomości lokalnego ś
 Podczas próby dostępu do zasobu żądającego protokołu Kerberos w środowisku lokalnym użytkownika urządzenie:
 
 1. Wysyła informacje o domenie lokalnej i poświadczenia użytkownika do zlokalizowanego kontrolera domeny w celu uzyskania uwierzytelnienia użytkownika.
-1. Odbiera [bilet uprawniający do przyznania biletu (TGT)](https://docs.microsoft.com/windows/desktop/secauthn/ticket-granting-tickets) protokołu Kerberos, który jest używany do uzyskiwania dostępu do zasobów przyłączonych do usługi AD. Jeśli próba pobrania biletu TGT dla domeny programu AAD Connect nie powiedzie się (powiązana wartość limitu czasu DCLocator może spowodować opóźnienie), podejmowane są wpisy w Menedżerze poświadczeń lub użytkownik może otrzymać wyskakujące uwierzytelnienie żądające poświadczeń dla zasobu docelowego.
+1. Odbiera [bilet uprawniający do przyznania biletu (TGT)](/windows/desktop/secauthn/ticket-granting-tickets) protokołu Kerberos, który jest używany do uzyskiwania dostępu do zasobów przyłączonych do usługi AD. Jeśli próba pobrania biletu TGT dla domeny programu AAD Connect nie powiedzie się (powiązana wartość limitu czasu DCLocator może spowodować opóźnienie), podejmowane są wpisy w Menedżerze poświadczeń lub użytkownik może otrzymać wyskakujące uwierzytelnienie żądające poświadczeń dla zasobu docelowego.
 
 Wszystkie aplikacje, które są skonfigurowane pod kątem **uwierzytelniania zintegrowanego systemu Windows** , bezproblemowo otrzymują Logowanie jednokrotne, gdy użytkownik próbuje uzyskać do niego dostęp.
 
-Funkcja Windows Hello dla firm wymaga dodatkowej konfiguracji umożliwiającej lokalne Logowanie jednokrotne z urządzenia dołączonego do usługi Azure AD. Aby uzyskać więcej informacji, zobacz [Konfigurowanie urządzeń przyłączonych do usługi Azure AD dla lokalnego logowania jednokrotnego przy użyciu funkcji Windows Hello dla firm](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base). 
+Funkcja Windows Hello dla firm wymaga dodatkowej konfiguracji umożliwiającej lokalne Logowanie jednokrotne z urządzenia dołączonego do usługi Azure AD. Aby uzyskać więcej informacji, zobacz [Konfigurowanie urządzeń przyłączonych do usługi Azure AD dla lokalnego logowania jednokrotnego przy użyciu funkcji Windows Hello dla firm](/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base). 
 
-## <a name="what-you-get"></a>Co otrzymujesz
+## <a name="what-you-get"></a>Efekty
 
 Logowanie jednokrotne na urządzeniu dołączonym do usługi Azure AD można: 
 

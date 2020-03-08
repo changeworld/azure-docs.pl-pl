@@ -6,8 +6,8 @@
       href: scheduler-intro.md
 - name: Rozpoczęcie pracy
   items:
-    - name: Tworzenie zadań i zarządzanie nimi — portal
-      href: scheduler-get-started-portal.md
+    - name: Tworzenie harmonogramów i zarządzanie nimi — Azure PowerShell
+      href: scheduler-powershell-reference.md
     - name: Migrowanie z usługi Scheduler do usługi Logic Apps
       href: migrate-from-scheduler-to-logic-apps.md
 - name: Pojęcia

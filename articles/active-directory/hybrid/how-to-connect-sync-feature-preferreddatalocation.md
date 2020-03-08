@@ -16,12 +16,12 @@ ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a493179e6e657a1d99d7cdb808629bae7332567
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: faecb0bc8cbb5ca84e9fc8bfc3cb99e2ccef1f11
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918971"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894566"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect Sync: Konfigurowanie preferowanej lokalizacji danych dla zasobów pakietu Office 365
 W tym temacie opisano sposób konfigurowania atrybutu dla preferowanej lokalizacji danych w programie Azure Active Directory (Azure AD) Connect Sync. Gdy ktoś korzysta z funkcji wieloznacznych w pakiecie Office 365, ten atrybut służy do określania lokalizacji geograficznej danych pakietu Office 365 użytkownika. ( *Region* terminów i *geograficznie* są używane zamiennie).
@@ -49,10 +49,10 @@ Georegiony w pakiecie Office 365 dostępne dla wielogeograficzne:
 | Francja | FRA |
 | Indie | IND |
 | Japonia | JPN |
-| Korea Południowa | KOR |
+| Korea | KOR |
 | Republika Południowej Afryki | ZAF |
 | Zjednoczone Emiraty Arabskie | LEŻĄ |
-| Zjednoczone Królestwo | GBR |
+| Wielka Brytania | GBR |
 | Stany Zjednoczone | Wietnam |
 
 * Jeśli lokalizacja geograficzna nie jest wymieniona w tej tabeli (na przykład Ameryka Południowa), nie można jej używać w przypadku używania wiele lokalizacji geograficznych.
@@ -61,7 +61,7 @@ Georegiony w pakiecie Office 365 dostępne dla wielogeograficzne:
 
 ### <a name="azure-ad-connect-support-for-synchronization"></a>Obsługa Azure AD Connect synchronizacji
 
-Azure AD Connect obsługuje synchronizację atrybutu **preferredDataLocation** dla obiektów **użytkownika** w wersji 1.1.524.0 i nowszych. W szczególności:
+Azure AD Connect obsługuje synchronizację atrybutu **preferredDataLocation** dla obiektów **użytkownika** w wersji 1.1.524.0 i nowszych. Są to:
 
 * Schemat typu obiektu **użytkownika** w łączniku usługi Azure AD został rozszerzony w celu uwzględnienia atrybutu **preferredDataLocation** . Ten atrybut jest typu String o pojedynczej wartości.
 * Schemat **typu obiektu** w obiekcie Metaverse został rozszerzony tak, aby obejmował atrybut **preferredDataLocation** . Ten atrybut jest typu String o pojedynczej wartości.
@@ -141,10 +141,10 @@ Reguła synchronizacji ruchu przychodzącego zezwala na przepływ wartości atry
 
     | Atrybut | Wartość | Szczegóły |
     | --- | --- | --- |
-    | Nazwa | *Podaj nazwę* | Na przykład "w usłudze AD — User preferredDataLocation" |
+    | Name (Nazwa) | *Podaj nazwę* | Na przykład "w usłudze AD — User preferredDataLocation" |
     | Opis | *Podaj niestandardowy opis* |  |
     | Połączony system | *Wybieranie łącznika Active Directory lokalnego* |  |
-    | Typ połączonego obiektu systemu | **User** |  |
+    | Typ połączonego obiektu systemu | **Użytkownicy** |  |
     | Typ obiektu metaverse | **Sprzedawca** |  |
     | Typ łącza | **Dołącz** |  |
     | Pierwszeństwo | *Wybierz liczbę z zakresu od 1 do 99* | 1 – 99 jest zarezerwowany dla reguł synchronizacji niestandardowej. Nie wybieraj wartości, która jest używana przez inną regułę synchronizacji. |
@@ -152,7 +152,7 @@ Reguła synchronizacji ruchu przychodzącego zezwala na przepływ wartości atry
 5. Pozostaw pusty **Filtr zakresu** , aby uwzględnić wszystkie obiekty. Może być konieczne dostosowanie filtru określania zakresu zgodnie ze wdrożeniem Azure AD Connect.
 6. Przejdź do **karty transformacja**i zaimplementuj następującą regułę przekształcania:
 
-    | Typ przepływu | Atrybut docelowy | Źródło | Zastosuj raz | Typ scalania |
+    | Typ przepływu | Atrybut docelowy | Element źródłowy | Zastosuj raz | Typ scalania |
     | --- | --- | --- | --- | --- |
     |Direct | preferredDataLocation | Wybierz atrybut źródłowy | Unchecked | Aktualizacja |
 
@@ -170,10 +170,10 @@ Reguła synchronizacji danych wychodzących zezwala na przepływ wartości atryb
 
     | Atrybut | Wartość | Szczegóły |
     | ----- | ------ | --- |
-    | Nazwa | *Podaj nazwę* | Na przykład "do usługi Azure AD — User preferredDataLocation" |
+    | Name (Nazwa) | *Podaj nazwę* | Na przykład "do usługi Azure AD — User preferredDataLocation" |
     | Opis | *Podaj opis* ||
     | Połączony system | *Wybieranie łącznika usługi Azure AD* ||
-    | Typ połączonego obiektu systemu | **User** ||
+    | Typ połączonego obiektu systemu | **Użytkownicy** ||
     | Typ obiektu metaverse | **Sprzedawca** ||
     | Typ łącza | **Dołącz** ||
     | Pierwszeństwo | *Wybierz liczbę z zakresu od 1 do 99* | 1 – 99 jest zarezerwowany dla reguł synchronizacji niestandardowej. Nie wybieraj wartości, która jest używana przez inną regułę synchronizacji. |
@@ -183,13 +183,13 @@ Reguła synchronizacji danych wychodzących zezwala na przepływ wartości atryb
     | Atrybut | Operator | Wartość |
     | --- | --- | --- |
     | sourceObjectType | WIĘKSZY | Użytkownik |
-    | cloudMastered | NOTEQUAL | Prawda |
+    | cloudMastered | NOTEQUAL | True |
 
-    Filtr określania zakresu określa, do których obiektów usługi Azure AD jest stosowana ta reguła synchronizacji danych wychodzących. W tym przykładzie używamy tego samego filtru określania zakresu od "out do Azure AD — tożsamość użytkownika" OOB (out-of-Box) reguły synchronizacji. Uniemożliwia stosowanie reguły synchronizacji do obiektów **użytkownika** , które nie są zsynchronizowane z Active Directory lokalnych. Może być konieczne dostosowanie filtru określania zakresu zgodnie ze wdrożeniem Azure AD Connect.
+    Filtr określania zakresu określa, do których obiektów usługi Azure AD jest stosowana ta reguła synchronizacji danych wychodzących. W tym przykładzie używamy tego samego filtru określania zakresu od "out do Azure AD — tożsamość użytkownika" OOB (out-of-Box) reguły synchronizacji. Uniemożliwia stosowanie reguły synchronizacji do obiektów **użytkownika** , które nie są zsynchronizowane z Active Directory lokalnego. Może być konieczne dostosowanie filtru określania zakresu zgodnie ze wdrożeniem Azure AD Connect.
 
 6. Przejdź do karty **transformacja** i zaimplementuj następującą regułę przekształcania:
 
-    | Typ przepływu | Atrybut docelowy | Źródło | Zastosuj raz | Typ scalania |
+    | Typ przepływu | Atrybut docelowy | Element źródłowy | Zastosuj raz | Typ scalania |
     | --- | --- | --- | --- | --- |
     | Direct | preferredDataLocation | preferredDataLocation | Unchecked | Aktualizacja |
 
@@ -233,7 +233,7 @@ Ogólnie rzecz biorąc, wymagany jest pełny cykl synchronizacji. Wynika to z fa
 
         a. Ustaw **zakres** na **eksport oczekujący**.<br>
         b. Zaznacz wszystkie trzy pola wyboru, w tym **Dodawanie, modyfikowanie i usuwanie**.<br>
-        d. Aby wyświetlić listę obiektów ze zmianami, które mają zostać wyeksportowane, wybierz pozycję **Wyszukaj**. Aby przejrzeć zmiany dla danego obiektu, kliknij dwukrotnie obiekt.<br>
+        c. Aby wyświetlić listę obiektów ze zmianami, które mają zostać wyeksportowane, wybierz pozycję **Wyszukaj**. Aby przejrzeć zmiany dla danego obiektu, kliknij dwukrotnie obiekt.<br>
         d. Sprawdź, czy zmiany są oczekiwane.
 
 6. Uruchom **Eksportowanie** z **łącznika usługi Azure AD**
@@ -260,7 +260,6 @@ Teraz można sprawdzić konfigurację i włączyć ją dla użytkowników.
 3. Za pomocą programu Exchange Online PowerShell Sprawdź, czy region skrzynki pocztowej został poprawnie ustawiony.  
 ![Zrzut ekranu programu PowerShell usługi Exchange Online](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-mailboxregion.png)  
 Przy założeniu, że dzierżawca został oznaczony do korzystania z tej funkcji, Skrzynka pocztowa jest przenoszona do poprawnej lokalizacji geograficznej. Można to zweryfikować, przeglądając nazwę serwera, na którym znajduje się Skrzynka pocztowa.
-4. Aby sprawdzić, czy to ustawienie jest skuteczne dla wielu skrzynek pocztowych, Użyj skryptu w [galerii TechNet](https://gallery.technet.microsoft.com/office/PowerShell-Script-to-a6bbfc2e). Ten skrypt zawiera również listę prefiksów serwera wszystkich centrów danych pakietu Office 365 i lokalizację geograficzną, w której się znajduje. Może służyć jako odwołanie w poprzednim kroku do zweryfikowania lokalizacji skrzynki pocztowej.
 
 ## <a name="next-steps"></a>Następne kroki
 

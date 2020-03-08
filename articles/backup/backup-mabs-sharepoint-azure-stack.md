@@ -3,12 +3,12 @@ title: Tworzenie kopii zapasowej farmy programu SharePoint na Azure Stack
 description: Użyj Azure Backup Server, aby utworzyć kopię zapasową i przywrócić dane programu SharePoint w Azure Stack. Ten artykuł zawiera informacje dotyczące konfigurowania farmy programu SharePoint w taki sposób, aby wymagane dane mogły być przechowywane na platformie Azure. Chronione dane programu SharePoint można przywrócić z dysku lub z platformy Azure.
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: c503ac7a76872e71d1920765656610dd462d4db3
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: d080605022cadf121fa6be99c9758fe9c0d878ef
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583218"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673038"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>Tworzenie kopii zapasowej farmy programu SharePoint na Azure Stack
 
@@ -20,7 +20,7 @@ Azure Backup for serwera usługi MAB obsługuje następujące scenariusze:
 
 | Obciążenie | Wersja | Wdrożenie programu SharePoint | Ochrona i odzyskiwanie |
 | --- | --- | --- | --- |
-| Program SharePoint |SharePoint 2016, SharePoint 2013, SharePoint 2010 |Program SharePoint wdrożony jako Azure Stacką maszynę wirtualną <br> -------------- <br> SQL AlwaysOn | Ochrona farmy programu SharePoint opcje odzyskiwania: Farma odzyskiwania, baza danych i plik lub element listy z punktów odzyskiwania dysku.  Odzyskiwanie farmy i bazy danych z punktów odzyskiwania platformy Azure. |
+| Sharepoint |SharePoint 2016, SharePoint 2013, SharePoint 2010 |Program SharePoint wdrożony jako Azure Stacką maszynę wirtualną <br> -------------- <br> SQL AlwaysOn | Ochrona farmy programu SharePoint opcje odzyskiwania: Farma odzyskiwania, baza danych i plik lub element listy z punktów odzyskiwania dysku.  Odzyskiwanie farmy i bazy danych z punktów odzyskiwania platformy Azure. |
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
@@ -38,7 +38,7 @@ Agent Azure Backup musi być zainstalowany na serwerze, na którym działa progr
 
 Dla każdego 10 000 000 elementów w farmie musi znajdować się co najmniej 2 GB miejsca na woluminie, na którym znajduje się folder serwera usługi MAB. To miejsce jest wymagane do generacji katalogu. Aby program serwera usługi MAB odzyskał określone elementy (zbiory witryn, witryny, listy, biblioteki dokumentów, foldery, pojedyncze dokumenty i elementy listy), generacja wykazu tworzy listę adresów URL zawartych w poszczególnych bazach danych zawartości. Listę adresów URL można wyświetlić w okienku element możliwy do odzyskania w obszarze zadania **odzyskiwania** serwera usługi MAB Konsola administratora.
 
-### <a name="sql-server"></a>SQL Server
+### <a name="sql-server"></a>Oprogramowanie SQL Server
 
 Azure Backup Server jest uruchamiany jako konto LocalSystem. Aby utworzyć kopię zapasową baz danych SQL Server, serwera usługi MAB musi mieć uprawnienia sysadmin na tym koncie dla serwera, na którym działa program SQL Server. Przed utworzeniem kopii zapasowej należy ustawić NT *NT\SYSTEM na serwerze, na którym* działa SQL Server.
 
@@ -123,7 +123,7 @@ Po skonfigurowaniu serwera usługi MAB i farmy programu SharePoint jako wyjaśni
     ![Online_backup_schedule](./media/backup-azure-backup-sharepoint/specify-online-backup-schedule.png)
 
     > [!NOTE]
-    > Program serwera usługi MAB zapewnia maksymalnie dwa codzienne kopie zapasowe na platformie Azure, które są dostępne dla najnowszego punktu kopii zapasowej dysku. Azure Backup może również kontrolować ilość przepustowości sieci WAN, która może być używana w przypadku kopii zapasowych w godzinach szczytu i poza szczytem przy użyciu funkcji [ograniczania przepustowości sieci Azure Backup](https://azure.microsoft.com/documentation/articles/backup-configure-vault/#enable-network-throttling).
+    > Program serwera usługi MAB zapewnia maksymalnie dwa codzienne kopie zapasowe na platformie Azure, które są dostępne dla najnowszego punktu kopii zapasowej dysku. Azure Backup może również kontrolować ilość przepustowości sieci WAN, która może być używana w przypadku kopii zapasowych w godzinach szczytu i poza szczytem przy użyciu funkcji [ograniczania przepustowości sieci Azure Backup](backup-windows-with-mars-agent.md#enable-network-throttling).
     >
     >
 11. W zależności od wybranego harmonogramu tworzenia kopii zapasowych na stronie **Określanie zasad przechowywania danych online** wybierz zasady przechowywania codziennie, co tydzień, co miesiąc i roczne punkty kopii zapasowej.

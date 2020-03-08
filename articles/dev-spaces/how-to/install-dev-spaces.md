@@ -5,18 +5,18 @@ ms.date: 07/24/2019
 ms.topic: conceptual
 description: Dowiedz się, jak włączyć Azure Dev Spaces w klastrze AKS i zainstalować narzędzia po stronie klienta.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s
-ms.openlocfilehash: 0b7f6cb4a801c84df59bd5157d8c2a1a15eaaf7e
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: a6b3be5ceba5e60b99b2f75e060f3321cd3151f2
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78302903"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898953"
 ---
 # <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>Włącz Azure Dev Spaces w klastrze AKS i zainstaluj narzędzia po stronie klienta
 
 W tym artykule przedstawiono kilka sposobów włączania Azure Dev Spaces w klastrze AKS oraz instalowania narzędzi po stronie klienta.
 
-## <a name="enable-azure-dev-spaces-using-the-cli"></a>Włączanie Azure Dev Spaces przy użyciu interfejsu wiersza polecenia
+## <a name="enable-or-remove-azure-dev-spaces-using-the-cli"></a>Włączanie lub usuwanie Azure Dev Spaces przy użyciu interfejsu wiersza polecenia
 
 Aby można było włączyć funkcję Spaces dev przy użyciu interfejsu wiersza polecenia, potrzebne są:
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, możesz utworzyć [bezpłatne konto][az-portal-create-account].
@@ -49,7 +49,18 @@ Managed Kubernetes cluster 'myAKSCluster' in resource group 'myResourceGroup' is
 
 Polecenie `use-dev-spaces` instaluje również interfejs wiersza polecenia Azure Dev Spaces.
 
-## <a name="enable-azure-dev-spaces-using-the-azure-portal"></a>Włączanie Azure Dev Spaces przy użyciu Azure Portal
+Aby usunąć Azure Dev Spaces z klastra AKS, użyj polecenia `azds remove`. Na przykład:
+
+```azurecli
+$ azds remove -g MyResourceGroup -n MyAKS
+Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that targets resource 'MyAKS' in resource group 'MyResourceGroup' will be deleted. This will remove Azure Dev Spaces instrumentation from the target resource for new workloads. Continue? (y/N): y
+
+Deleting Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that targets resource 'MyAks' in resource group 'MyResourceGroup' (takes a few minutes)...
+```
+
+Powyższe polecenie usuwa Azure Dev Spaces z klastra *MyAKS* w ramach *zasobu*. Wszystkie obszary nazw utworzone za pomocą Azure Dev Spaces pozostaną razem z ich obciążeniami, ale nowe obciążenia w tych obszarach nazw nie będą Instrumentacją Azure Dev Spaces. Ponadto w przypadku ponownego uruchomienia wszystkich istniejących zasobników z Azure Dev Spaces mogą pojawić się błędy. Te zasobniki muszą zostać wdrożone ponownie bez Azure Dev Spaces narzędzi. Aby w pełni usunąć Azure Dev Spaces z klastra, Usuń wszystkie zasobniki ze wszystkich przestrzeni nazw, w których włączono Azure Dev Spaces.
+
+## <a name="enable-or-remove-azure-dev-spaces-using-the-azure-portal"></a>Włączanie lub usuwanie Azure Dev Spaces przy użyciu Azure Portal
 
 Aby można było włączyć funkcję Spaces dev przy użyciu Azure Portal, potrzebne są:
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, możesz utworzyć [bezpłatne konto][az-portal-create-account].
@@ -64,6 +75,8 @@ Aby włączyć Azure Dev Spaces przy użyciu Azure Portal:
 ![Włącz funkcję Spaces dev w Azure Portal](../media/how-to-setup-dev-spaces/enable-dev-spaces-portal.png)
 
 Włączenie Azure Dev Spaces przy użyciu Azure Portal nie **powoduje** zainstalowania żadnych narzędzi po stronie klienta dla programu Azure dev Spaces.
+
+Aby usunąć Azure Dev Spaces z klastra AKS, Zmień pozycję *Włącz opcję miejsca do deweloperów* na *no* i kliknij przycisk *Zapisz*. Wszystkie obszary nazw utworzone za pomocą Azure Dev Spaces pozostaną razem z ich obciążeniami, ale nowe obciążenia w tych obszarach nazw nie będą Instrumentacją Azure Dev Spaces. Ponadto w przypadku ponownego uruchomienia wszystkich istniejących zasobników z Azure Dev Spaces mogą pojawić się błędy. Te zasobniki muszą zostać wdrożone ponownie bez Azure Dev Spaces narzędzi. Aby w pełni usunąć Azure Dev Spaces z klastra, Usuń wszystkie zasobniki ze wszystkich przestrzeni nazw, w których włączono Azure Dev Spaces.
 
 ## <a name="install-the-client-side-tools"></a>Instalowanie narzędzi po stronie klienta
 

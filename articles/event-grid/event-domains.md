@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: df560df21740d5396bc177e20de5d0eb4bf47713
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: f6698f91d7659f9fc2c314a9291380301146f8ed
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76511386"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898866"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Informacje o domenach zdarzeń związanych z zarządzaniem Event Grid tematy
 
@@ -43,13 +43,13 @@ Zapewnia również pojedynczy punkt końcowy, w którym można opublikować wszy
 
 W przypadku domeny uzyskujesz szczegółowe uprawnienia do autoryzacji i kontroli uwierzytelniania poszczególnych tematów za pośrednictwem kontroli dostępu opartej na rolach (RBAC) na platformie Azure. Za pomocą tych ról można ograniczyć dzierżawy w aplikacji tylko do tematów, do których mają być udzielane dostęp.
 
-RBAC w domenach zdarzeń działa tak samo jak [zarządzana kontrola dostępu](security-authentication.md#management-access-control) działa w pozostałej części Event Grid i na platformie Azure. Za pomocą RBAC można tworzyć i wymuszać niestandardowe definicje ról w domenach zdarzeń.
+RBAC w domenach zdarzeń działa tak samo jak [zarządzana kontrola dostępu](security-authorization.md) działa w pozostałej części Event Grid i na platformie Azure. Za pomocą RBAC można tworzyć i wymuszać niestandardowe definicje ról w domenach zdarzeń.
 
 ### <a name="built-in-roles"></a>Wbudowane role
 
 Event Grid ma dwie wbudowane definicje ról, które ułatwiają pracę z domenami zdarzeń. Role te są **EventGrid EventSubscription współautor (wersja zapoznawcza)** i **EventGrid EventSubscription Reader (wersja zapoznawcza**). Te role można przypisać do użytkowników, którzy muszą subskrybować tematy w domenie zdarzeń. Zakres przypisania roli należy określać tylko w temacie, do którego użytkownicy muszą subskrybować.
 
-Informacje o tych rolach znajdują się w temacie [role wbudowane dla Event Grid](security-authentication.md#built-in-roles).
+Informacje o tych rolach znajdują się w temacie [role wbudowane dla Event Grid](security-authorization.md#built-in-roles).
 
 ## <a name="subscribing-to-topics"></a>Subskrybowanie tematów
 
@@ -101,13 +101,13 @@ Oto limity i przydziały związane z domenami zdarzeń:
 
 - 100 000 tematów na domenę zdarzeń 
 - 100 domen zdarzeń na subskrypcję platformy Azure 
-- 500 subskrypcji zdarzeń na temat w domenie zdarzeń
+- 500 subskrypcje zdarzeń na temat w domenie zdarzeń
 - subskrypcje dotyczące zakresu domeny 50 
 - 5 000 zdarzeń na sekundę (do domeny)
 
 Jeśli te limity nie są odpowiednie dla Ciebie, skontaktuj się z zespołem produktu, otwierając bilet pomocy technicznej lub wysyłając wiadomość e-mail do [askgrid@microsoft.com](mailto:askgrid@microsoft.com). 
 
-## <a name="pricing"></a>Cennik
+## <a name="pricing"></a>Ceny
 Domeny zdarzeń używają tych samych [cen operacji](https://azure.microsoft.com/pricing/details/event-grid/) , które są używane przez wszystkie inne funkcje w Event Grid.
 
 Operacje działają tak samo w domenach zdarzeń, jak w tematach niestandardowych. Każdy ruch przychodzący zdarzenia do domeny zdarzeń jest operacją, a każda próba dostarczenia zdarzenia jest operacją.

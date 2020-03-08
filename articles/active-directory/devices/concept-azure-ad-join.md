@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24ec4373bceb3cc3c9e5be2c7a0dab1f62197b3c
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 40f89fbe19b93601f9e0525f0387e402bd175fe4
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512202"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672678"
 ---
 # <a name="azure-ad-joined-devices"></a>Urządzenia dołączone do usługi Azure AD
 
 Usługa Azure AD Join jest przeznaczona dla organizacji, które chcą być w chmurze lub tylko w chmurze. Każda organizacja może wdrożyć urządzenia przyłączone do usługi Azure AD niezależnie od wielkości lub branży. Funkcja Azure AD Join działa nawet w środowisku hybrydowym, umożliwiając dostęp do aplikacji i zasobów zarówno w chmurze, jak i lokalnych.
 
-|   | Sprzężenia Azure AD |
+|   | Azure AD Join |
 | --- | --- |
 | **Definicja** | Przyłączone do usługi Azure AD wymagające konta organizacyjnego do logowania się na urządzeniu |
 | **Odbiorcy podstawowe** | Odpowiednie dla organizacji tylko w chmurze i hybrydowych. |
@@ -31,7 +31,7 @@ Usługa Azure AD Join jest przeznaczona dla organizacji, które chcą być w chm
 | **Systemy operacyjne** | Wszystkie urządzenia z systemem Windows 10 |
 | **Aprowizacja** | Samoobsługowe: OOBE lub ustawienia systemu Windows |
 |   | Rejestrowanie zbiorcze |
-|   | Windows Autopilot |
+|   | Autopilotaż systemu Windows |
 | **Opcje logowania urządzenia** | Konta organizacyjne przy użyciu: |
 |   | Hasło |
 |   | Windows Hello dla firm |
@@ -45,9 +45,9 @@ Usługa Azure AD Join jest przeznaczona dla organizacji, które chcą być w chm
 
 Urządzenia przyłączone do usługi Azure AD są zalogowane do korzystania z konta organizacji usługi Azure AD. Dostęp do zasobów w organizacji może być dodatkowo ograniczony w zależności od tego, czy konto usługi Azure AD i [zasady dostępu warunkowego](../conditional-access/overview.md) są stosowane do tożsamości urządzenia.
 
-Administratorzy mogą bezpiecznie i bardziej kontrolować urządzenia przyłączone do usługi Azure AD za pomocą narzędzi do zarządzania urządzeniami przenośnymi (MDM), takich jak Microsoft Intune lub w scenariuszach współzarządzania przy użyciu usługi Microsoft Endpoint Configuration Manager. Dzięki tym narzędziom można wymusić konfiguracje wymagane przez organizację, takie jak wymaganie zaszyfrowania magazynu, złożoność haseł, instalacje oprogramowania i aktualizacje oprogramowania. Administratorzy mogą udostępniać aplikacje organizacji dla urządzeń przyłączonych do usługi Azure AD przy użyciu Configuration Manager do [zarządzania aplikacjami z Microsoft Store dla firm i edukacji](https://docs.microsoft.com/configmgr/apps/deploy-use/manage-apps-from-the-windows-store-for-business).
+Administratorzy mogą bezpiecznie i bardziej kontrolować urządzenia przyłączone do usługi Azure AD za pomocą narzędzi do zarządzania urządzeniami przenośnymi (MDM), takich jak Microsoft Intune lub w scenariuszach współzarządzania przy użyciu usługi Microsoft Endpoint Configuration Manager. Dzięki tym narzędziom można wymusić konfiguracje wymagane przez organizację, takie jak wymaganie zaszyfrowania magazynu, złożoność haseł, instalacje oprogramowania i aktualizacje oprogramowania. Administratorzy mogą udostępniać aplikacje organizacji dla urządzeń przyłączonych do usługi Azure AD przy użyciu Configuration Manager do [zarządzania aplikacjami z Microsoft Store dla firm i edukacji](/configmgr/apps/deploy-use/manage-apps-from-the-windows-store-for-business).
 
-Funkcję Azure AD Join można wykonać przy użyciu opcji samoobsługowych, takich jak środowisko OOBE (out of Box Experience), rejestracja zbiorcza lub automatyczna [pilotaż systemu Windows](https://docs.microsoft.com/intune/enrollment-autopilot).
+Funkcję Azure AD Join można wykonać przy użyciu opcji samoobsługowych, takich jak środowisko OOBE (out of Box Experience), rejestracja zbiorcza lub automatyczna [pilotaż systemu Windows](/intune/enrollment-autopilot).
 
 Urządzenia przyłączone do usługi Azure AD nadal mogą obsługiwać Logowanie jednokrotne do zasobów lokalnych, gdy znajdują się one w sieci organizacji. Urządzenia, które są przyłączone do usługi Azure AD, mogą nadal być uwierzytelniane na serwerach lokalnych, takich jak pliki, drukowanie i inne aplikacje.
 
@@ -74,8 +74,8 @@ Celem urządzeń dołączonych do usługi Azure AD jest uproszczenie następują
 
 Dołączenie do usługi Azure AD można wdrożyć przy użyciu dowolnej z następujących metod:
 
-- [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot)
-- [Wdrożenie zbiorcze](https://docs.microsoft.com/intune/windows-bulk-enroll)
+- [Windows Autopilot](/windows/deployment/windows-autopilot/windows-10-autopilot)
+- [Wdrożenie zbiorcze](/intune/windows-bulk-enroll)
 - [Środowisko samoobsługowe](azuread-joined-devices-frx.md)
 
 ## <a name="next-steps"></a>Następne kroki

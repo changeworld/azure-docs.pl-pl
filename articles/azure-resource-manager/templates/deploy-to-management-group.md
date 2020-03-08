@@ -2,23 +2,29 @@
 title: Wdrażanie zasobów w grupie zarządzania
 description: Opisuje sposób wdrażania zasobów w zakresie grupy zarządzania w szablonie Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 03/02/2020
-ms.openlocfilehash: 3b2eeaf2c63a50cda1a32fee94c1e5b99822075d
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.date: 03/06/2020
+ms.openlocfilehash: ae561468531b0c3fa584a02793c58ee64ca3610f
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228101"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894892"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>Tworzenie zasobów na poziomie grupy zarządzania
 
-Zazwyczaj zasoby platformy Azure są wdrażane w grupie zasobów w ramach subskrypcji platformy Azure. Można jednak również utworzyć zasoby na poziomie grupy zarządzania. Wdrożenia na poziomie grupy zarządzania umożliwiają podejmowanie działań, które są odpowiednie dla tego poziomu, takich jak przypisywanie [kontroli dostępu opartej na rolach](../../role-based-access-control/overview.md) lub stosowanie [zasad](../../governance/policy/overview.md).
+Zazwyczaj zasoby platformy Azure są wdrażane w grupie zasobów w ramach subskrypcji platformy Azure. Można jednak również utworzyć zasoby w:
+
+* [poziom subskrypcji](deploy-to-subscription.md)
+* poziom grupy zarządzania (objęty w tym artykule)
+* [poziom dzierżawy](deploy-to-tenant.md)
+
+Wdrożenia na poziomie grupy zarządzania umożliwiają podejmowanie działań, które są odpowiednie dla tego poziomu, takich jak przypisywanie [kontroli dostępu opartej na rolach](../../role-based-access-control/overview.md) lub stosowanie [zasad](../../governance/policy/overview.md).
 
 ## <a name="supported-resources"></a>Obsługiwane zasoby
 
 Na poziomie grupy zarządzania można wdrożyć następujące typy zasobów:
 
-* [komputerów](/azure/templates/microsoft.resources/deployments)
+* [wdrożenia](/azure/templates/microsoft.resources/deployments) — dla szablonów zagnieżdżonych wdrażanych w ramach subskrypcji lub grup zasobów.
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)

@@ -1,6 +1,6 @@
 ---
-title: Monitorowanie i rejestrowanie ochrony hasłem — Azure Active Directory
-description: Omówienie monitorowania i rejestrowania ochrony hasłem w usłudze Azure AD
+title: Monitoruj lokalną ochronę hasłem usługi Azure AD
+description: Dowiedz się, jak monitorować i przeglądać dzienniki dla ochrony hasłem w usłudze Azure AD dla środowiska lokalnego Active Directory Domain Services
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,14 +11,14 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c74ea99d3a0e39729bb4d89f012d7b790bf0568b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: fbb533d5565009fb22d686e4082c9b4bfaae6dc1
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847715"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671660"
 ---
-# <a name="azure-ad-password-protection-monitoring-and-logging"></a>Monitorowanie i rejestrowanie w usłudze Azure AD Password Protection
+# <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>Monitorowanie i przeglądanie dzienników lokalnych środowisk ochrony haseł usługi Azure AD
 
 Po wdrożeniu ochrony hasłem usługi Azure AD monitorowanie i raportowanie są istotnymi zadaniami. Ten artykuł zawiera szczegółowe informacje ułatwiające zapoznanie się z różnymi technikami monitorowania, w tym o tym, gdzie każda usługa rejestruje dane i jak raportować użycie ochrony hasłem usługi Azure AD.
 

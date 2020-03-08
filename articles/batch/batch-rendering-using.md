@@ -5,20 +5,20 @@ services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
-ms.date: 08/02/2018
+ms.date: 03/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: d181b9b2495ebd106bb068b78131fa90c2f6d62c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f3b2e641ab187514a7900b2ab7cc75068df00252
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449663"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672005"
 ---
 # <a name="using-azure-batch-rendering"></a>Używanie renderowania Azure Batch
 
 Istnieje kilka sposobów używania renderowania Azure Batch:
 
-* Interfejsy API:
+* Programowania
   * Napisz kod przy użyciu dowolnego interfejsu API usługi Batch.  Deweloperzy mogą integrować możliwości Azure Batch z istniejącymi aplikacjami lub przepływami pracy, zarówno w chmurze, jak i lokalnie.
 * Narzędzia wiersza polecenia:
   * W celu użycia wsadowego skryptu można użyć [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/) lub [programu PowerShell](https://docs.microsoft.com/powershell/azure/overview) .
@@ -32,7 +32,7 @@ Istnieje kilka sposobów używania renderowania Azure Batch:
 
 Najlepszym sposobem na wypróbowanie Azure Batch renderowania i najprostszych sposobów dla użytkowników końcowych, którzy nie są deweloperami i nie są ekspertami platformy Azure, jest użycie Batch Explorer aplikacji bezpośrednio lub wywołania z wtyczki aplikacji klienckiej.
 
-## <a name="using-batch-explorer"></a>Używanie Eksploratora usługi Batch
+## <a name="using-batch-explorer"></a>Używanie Batch Explorer
 
 Aby zapoznać się z samouczkiem krok po kroku dotyczącym używania Batch Explorer do wykonania renderowania, zobacz [samouczek programu Blend](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender).
 
@@ -58,7 +58,8 @@ Sekcja "dane" w Batch Explorer umożliwia kopiowanie plików między lokalnym sy
 
 Wtyczki są dostępne dla niektórych aplikacji klienckich.  Wtyczki umożliwiają tworzenie pul i zadań bezpośrednio z poziomu aplikacji lub wywołaj Batch Explorer.
 
-* [Programem Blender](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
+* [Blender 2,79](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
+* [Blender 2.8 +](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender28)
 * [Autodesk 3ds Max](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/3ds-max)
 * [Autodesk Maya](https://github.com/Azure/azure-batch-maya)
 

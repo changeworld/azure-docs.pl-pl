@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/31/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 9465b77d03fb3dbb668bd40bf2c7e6ded6891a05
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 5718a23e5669de6ba16354a718d72b68d14bbf49
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962065"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894548"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>Scenariusz: aplikacja demona, która wywołuje interfejsy API sieci Web
 
@@ -30,7 +30,7 @@ Dowiedz się, co należy zrobić, aby utworzyć aplikację demona, która wywoł
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Aplikacja może uzyskać token wywołujący internetowy interfejs API w imieniu samego siebie (nie w imieniu użytkownika). Ten scenariusz jest przydatny w przypadku aplikacji demona. Używa on standardowego udzielenia [poświadczeń klienta](v2-oauth2-client-creds-grant-flow.md) OAuth 2,0.
 
@@ -46,7 +46,7 @@ Istnieje inny typowy przypadek, w którym aplikacje niedemonowe korzystają z po
 
 Aplikacje, które uzyskują token dla własnych tożsamości:
 
-- są poufnymi aplikacjami klienckimi. Te aplikacje, z uwzględnieniem, że uzyskują dostęp do zasobów niezależnie od użytkowników, muszą udowodnić swoją tożsamość. Są one również raczej poufnymi aplikacjami. Muszą zostać zatwierdzone przez administratorów dzierżawy usługi Azure Active Directory (Azure AD).
+- Są poufnymi aplikacjami klienckimi. Te aplikacje, z uwzględnieniem, że uzyskują dostęp do zasobów niezależnie od użytkowników, muszą udowodnić swoją tożsamość. Są one również raczej poufnymi aplikacjami. Muszą zostać zatwierdzone przez administratorów dzierżawy usługi Azure Active Directory (Azure AD).
 - Zarejestrowano wpis tajny (hasło aplikacji lub certyfikat) w usłudze Azure AD. Ten wpis tajny jest przesyłany podczas wywołania usługi Azure AD w celu uzyskania tokenu.
 
 ## <a name="specifics"></a>Szczegółowych informacji

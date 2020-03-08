@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: 76f5c1f0cd3186244e9a262358c9c9a652a73fdb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/05/2019
+ms.openlocfilehash: 8466fbcb4325dc244551a3b84fc20581366b7071
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431629"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851151"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics i Power BI: pulpit nawigacyjny analizy w czasie rzeczywistym dla danych przesyłanych strumieniowo
 
@@ -28,7 +28,7 @@ Możesz obejrzeć [film wideo](https://www.youtube.com/watch?v=SGUpT-a99MA) , kt
 Przed rozpoczęciem upewnij się, że dysponujesz następującymi elementami:
 
 * Konto platformy Azure.
-* Konto dla Power BI. Możesz użyć konta służbowego lub szkolnego.
+* Konto dla Power BI Pro. Możesz użyć konta służbowego lub szkolnego.
 * Zakończona wersja samouczka [wykrywania oszustw w czasie rzeczywistym](stream-analytics-real-time-fraud-detection.md) . Samouczek zawiera aplikację, która generuje fikcyjne metadane połączeń telefonicznych. W tym samouczku utworzysz centrum zdarzeń i wyślesz dane połączenia telefonicznego przesyłania strumieniowego do centrum zdarzeń. Napisz zapytanie, które wykrywa fałszywe wywołania (wywołania z tego samego numeru w tym samym czasie w różnych lokalizacjach). 
 
 
@@ -99,7 +99,7 @@ Aby uzyskać więcej informacji na temat Power BI zestawów danych, zobacz temat
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-4. Kliknij pozycję **Zapisz**.
+4. Kliknij przycisk **Save** (Zapisz).
 
 
 ## <a name="test-the-query"></a>Testowanie zapytania
@@ -185,7 +185,7 @@ Zadanie usługi Stream Analytics rozpocznie wyszukiwanie fałszywych wywołań w
      ![Zakończono Power BI pulpit nawigacyjny przedstawiający dwa kafelki dla fałszywych wywołań](./media/stream-analytics-power-bi-dashboard/pbi-dashboard-fraudulent-calls-finished.png)
 
 
-## <a name="learn-more-about-power-bi"></a>Dowiedz się więcej o usłudze Power BI
+## <a name="learn-more-about-power-bi"></a>Dowiedz się więcej o Power BI
 
 W tym samouczku pokazano, jak utworzyć tylko kilka rodzajów wizualizacji dla zestawu danych. Power BI może pomóc w tworzeniu innych narzędzi analizy biznesowej dla klientów w organizacji. Aby uzyskać więcej sugestii, zobacz następujące zasoby:
 
@@ -201,7 +201,7 @@ Możesz użyć poniższego równania, aby obliczyć wartość w ciągu kilku sek
 
 ![Równanie wartości obliczeniowej, aby przyznać okno w sekundach](./media/stream-analytics-power-bi-dashboard/compute-window-seconds-equation.png)  
 
-Przykład:
+Na przykład:
 
 * Masz 1 000 urządzeń wysyłających dane w odstępach jednosekundowych.
 * Używasz jednostki SKU Power BI Pro, która obsługuje 1 000 000 wierszy na godzinę.
@@ -235,10 +235,10 @@ Podobnie, jeśli zadanie rozpoczyna się po wygaśnięciu tokenu, wystąpi błą
 Po odświeżeniu autoryzacji za pomocą Power BI zielony alert pojawi się w obszarze autoryzacji w celu odzwierciedlenia, że problem został rozwiązany.
 
 ## <a name="get-help"></a>Uzyskiwanie pomocy
-Aby uzyskać dalszą pomoc, Wypróbuj nasz [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Aby uzyskać dalszą pomoc, wypróbuj nasze [forum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Następne kroki
-* [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)
+* [Wprowadzenie do Azure Stream Analytics](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics (Rozpoczynanie pracy z usługą Azure Stream Analytics)](stream-analytics-real-time-fraud-detection.md)
 * [Scale Azure Stream Analytics jobs (Skalowanie zadań usługi Azure Stream Analytics)](stream-analytics-scale-jobs.md)
 * [Azure Stream Analytics Dokumentacja języka zapytań](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 9353e5749906aca1f0c91b622c93ba6028cd3bef
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8ab6904a2569e508c0697cc273af4fd40a1767de
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432193"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898751"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>Samouczek 3: Wdrażanie modelu ryzyka kredytowego — Azure Machine Learning Studio (klasyczny)
 
@@ -34,7 +34,7 @@ W [drugiej części samouczka](tutorial-part2-credit-risk-train.md) modele zosta
 W tej części samouczka zostaną wykonane następujące czynności:
 
 > [!div class="checklist"]
-> * Przygotowywanie do wdrażania
+> * Przygotowanie do wdrożenia
 > * Wdrażanie usługi sieci Web
 > * Testowanie usługi internetowej
 > * Zarządzanie usługą internetową
@@ -44,7 +44,7 @@ W tej części samouczka zostaną wykonane następujące czynności:
 
 Ukończona [druga część samouczka](tutorial-part2-credit-risk-train.md).
 
-## <a name="prepare-for-deployment"></a>Przygotowywanie do wdrażania
+## <a name="prepare-for-deployment"></a>Przygotowanie do wdrożenia
 Aby zapewnić innym osobom możliwość użycia modelu predykcyjnego, który został opracowany w ramach tego samouczka, możesz go wdrożyć jako usługę internetową na platformie Azure.
 
 Do tej pory były przeprowadzane eksperymenty z trenowaniem naszego modelu. Ale wdrożona usługa nie będzie już trenowana — będzie generowała nowe przewidywania, generując wyniki dla danych wejściowych użytkownika na podstawie naszego modelu. Zamierzamy więc przeprowadzić pewne przygotowania, aby przekonwertować ten eksperyment z eksperymentu ***szkoleniowego*** w eksperyment ***predykcyjny***. 
@@ -227,11 +227,7 @@ Usługa internetowa to usługa internetowa platformy Azure, która może odbiera
 * **Żądanie/odpowiedź** — użytkownik wysyła co najmniej jeden wiersz danych kredytowych do usługi przy użyciu protokołu HTTP, a usługa odpowiada za pomocą co najmniej jednego zestawu wyników.
 * **Wykonywanie wsadowe** — użytkownik przechowuje jeden lub więcej wierszy danych kredytowych w obiekcie blob platformy Azure, a następnie wysyła lokalizację obiektu blob do usługi. Usługa generuje wyniki dla wszystkich wierszy danych w wejściowym obiekcie blob, zapisuje wyniki w innym obiekcie blob, a następnie zwraca adres URL tego kontenera.  
 
-Jest to najszybszy i najłatwiejszy sposób uzyskania dostępu do klasycznej usługi internetowej za pośrednictwem [aplikacji internetowej usługi Azure ML Request-Response](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlaspnettemplateforrrs/) lub [szablonu aplikacji internetowej usługi Azure ML Batch Execution](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/).
-
-Te szablony aplikacji internetowej mogą tworzyć niestandardową aplikację internetową, która zna Twoje dane wejściowe usługi internetowej i to, co zwróci. Wystarczy, że zapewnisz dostęp do swojej usługi internetowej i danych, a szablon zajmie się resztą.
-
-Aby uzyskać więcej informacji na temat korzystania z szablonów aplikacji internetowych, zobacz [Korzystanie z usługi internetowej Azure Machine Learning za pomocą szablonu aplikacji internetowej](/azure/machine-learning/studio/consume-web-services).
+Aby uzyskać więcej informacji na temat uzyskiwania dostępu do usługi sieci Web i korzystania z niej, zobacz temat [Korzystanie z usługi sieci web Azure Machine Learning z szablonem aplikacji sieci Web](/azure/machine-learning/studio/consume-web-services).
 
 
 
@@ -244,7 +240,7 @@ Aby uzyskać więcej informacji na temat korzystania z szablonów aplikacji inte
 W tym samouczku zostały wykonane następujące kroki:
 
 > [!div class="checklist"]
-> * Przygotowywanie do wdrażania
+> * Przygotowanie do wdrożenia
 > * Wdrażanie usługi sieci Web
 > * Testowanie usługi internetowej
 > * Zarządzanie usługą internetową

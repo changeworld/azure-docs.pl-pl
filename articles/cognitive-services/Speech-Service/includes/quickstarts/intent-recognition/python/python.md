@@ -6,12 +6,12 @@ ms.date: 01/27/2020
 ms.topic: include
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 1a9a85ebc9d883db0415382ecf40de343d300667
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
-ms.translationtype: MT
+ms.openlocfilehash: af7c7d992db9afa0fb7affa0053bd89257a5a30e
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77445413"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668364"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -74,7 +74,7 @@ Wstaw ten kod poniżej `IntentRecognizer`. Upewnij się, że `"YourLanguageUnder
 
 Z obiektu `IntentRecognizer` nastąpi wywołanie metody `recognize_once()`. Ta metoda pozwala usłudze rozpoznawania mowy wysyłać pojedyncze frazy do rozpoznawania, a po zidentyfikowaniu frazy do zatrzymania rozpoznawania mowy.
 
-Wstaw ten kod pod modelem:
+Wstaw ten kod pod modelem.
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=35)]
 
@@ -82,11 +82,13 @@ Wstaw ten kod pod modelem:
 
 Gdy usługa mowy zwróci wynik rozpoznawania, należy wykonać coś z nim. Zajmiemy się tym, że będzie on prosty i będzie drukował wynik do konsoli.
 
-Poniżej Zadzwoń do `recognize_once()`Dodaj następujący kod: [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=38-47)]
+Poniżej Zadzwoń do `recognize_once()`Dodaj ten kod.
+
+[!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=38-47)]
 
 ## <a name="check-your-code"></a>Sprawdź swój kod
 
-W tym momencie kod powinien wyglądać następująco:
+W tym momencie kod powinien wyglądać następująco.
 
 > [!NOTE]
 > Dodaliśmy Komentarze do tej wersji.

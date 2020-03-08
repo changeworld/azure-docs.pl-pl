@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67c42de09c75b7dd6737b80071f1f6eba094b132
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: a6bbecf0e365ba7a8424da775245181fa64c21f6
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512423"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672694"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Instrukcje: Planowanie wdrożenia usługi Azure AD Join
 
@@ -59,7 +59,7 @@ Usługa Azure AD Join współpracuje z obydwoma środowiskami, zarządzanymi i f
 
 ### <a name="managed-environment"></a>Środowisko zarządzane
 
-Środowisko zarządzane można wdrożyć za pomocą [synchronizacji skrótów haseł](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) lub [przekazywania uwierzytelniania](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) przy użyciu bezproblemowego logowania jednokrotnego.
+Środowisko zarządzane można wdrożyć za pomocą [synchronizacji skrótów haseł](/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) lub [przekazywania uwierzytelniania](/azure/active-directory/hybrid/how-to-connect-pta-quick-start) przy użyciu bezproblemowego logowania jednokrotnego.
 
 Te scenariusze nie wymagają konfigurowania serwera federacyjnego na potrzeby uwierzytelniania.
 
@@ -78,7 +78,7 @@ W przypadku korzystania z AD FS należy włączyć następujące punkty końcowe
 Jeśli dostawca tożsamości nie obsługuje tych protokołów, usługa Azure AD Join nie działa w sposób natywny. 
 
 >[!NOTE]
-> Obecnie usługa Azure AD Join nie działa w przypadku [AD FS 2019 skonfigurowanego z zewnętrznymi dostawcami uwierzytelniania jako podstawową metodą uwierzytelniania](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary). Usługa Azure AD Join domyślnie przyjmuje uwierzytelnianie hasła jako podstawową metodę, która powoduje błędy uwierzytelniania w tym scenariuszu
+> Obecnie usługa Azure AD Join nie działa w przypadku [AD FS 2019 skonfigurowanego z zewnętrznymi dostawcami uwierzytelniania jako podstawową metodą uwierzytelniania](/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary). Usługa Azure AD Join domyślnie przyjmuje uwierzytelnianie hasła jako podstawową metodę, która powoduje błędy uwierzytelniania w tym scenariuszu
 
 
 ### <a name="smartcards-and-certificate-based-authentication"></a>Karty inteligentne i uwierzytelnianie oparte na certyfikatach
@@ -91,7 +91,7 @@ Do dołączania urządzeń do usługi Azure AD nie można używać kart intelige
 
 Jeśli tworzysz użytkowników w:
 
-- **Active Directory lokalnych**, należy zsynchronizować je z usługą Azure AD przy użyciu [Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis). 
+- **Active Directory lokalnych**, należy zsynchronizować je z usługą Azure AD przy użyciu [Azure AD Connect](/azure/active-directory/hybrid/how-to-connect-sync-whatis). 
 - **Azure AD**, nie jest wymagana żadna dodatkowa konfiguracja.
 
 Lokalne nazwy UPN, które różnią się od nazw UPN usługi Azure AD, nie są obsługiwane na urządzeniach przyłączonych do usługi Azure AD. Jeśli użytkownicy korzystają z lokalnej nazwy UPN, należy zaplanować przełączenie do korzystania z podstawowej nazwy UPN w usłudze Azure AD.
@@ -127,9 +127,9 @@ Przejrzyj obsługiwane i nieobsługiwane zasady, aby określić, czy można uży
 - Czy są to nieobsługiwane zasady niezbędne dla urządzeń lub użytkowników przyłączonych do usługi Azure AD?
 - Czy nieobsługiwane zasady mają zastosowanie w przypadku wdrożenia opartego na chmurze?
 
-Jeśli rozwiązanie MDM nie jest dostępne za pomocą galerii aplikacji usługi Azure AD, możesz je dodać zgodnie z procesem opisanym w [Azure Active Directory integracji z urządzeniami przenośnymi](https://docs.microsoft.com/windows/client-management/mdm/azure-active-directory-integration-with-mdm). 
+Jeśli rozwiązanie MDM nie jest dostępne za pomocą galerii aplikacji usługi Azure AD, możesz je dodać zgodnie z procesem opisanym w [Azure Active Directory integracji z urządzeniami przenośnymi](/windows/client-management/mdm/azure-active-directory-integration-with-mdm). 
 
-Za pomocą współzarządzania można zarządzać pewnymi aspektami urządzeń za pomocą programu SCCM, a zasady są dostarczane za pomocą platformy MDM. Microsoft Intune umożliwia współzarządzanie z programem SCCM. Aby uzyskać więcej informacji na temat współzarządzania dla urządzeń z systemem Windows 10, zobacz [co to jest współzarządzanie?](https://docs.microsoft.com/configmgr/core/clients/manage/co-management-overview). Jeśli używasz produktu MDM innego niż usługa Intune, skontaktuj się z dostawcą MDM w sprawie odpowiednich scenariuszy współzarządzania.
+Za pomocą współzarządzania można zarządzać pewnymi aspektami urządzeń za pomocą programu SCCM, a zasady są dostarczane za pomocą platformy MDM. Microsoft Intune umożliwia współzarządzanie z programem SCCM. Aby uzyskać więcej informacji na temat współzarządzania dla urządzeń z systemem Windows 10, zobacz [co to jest współzarządzanie?](/configmgr/core/clients/manage/co-management-overview). Jeśli używasz produktu MDM innego niż usługa Intune, skontaktuj się z dostawcą MDM w sprawie odpowiednich scenariuszy współzarządzania.
 
 **Zalecenie:** Rozważ zarządzanie tylko urządzeniami PRZENOŚNYmi dla urządzeń przyłączonych do usługi Azure AD.
 
@@ -155,7 +155,7 @@ Jeśli Twoje aplikacje są niestandardowymi kompilacjami i/lub hostowanymi lokal
 - Włączenie zintegrowanego uwierzytelniania systemu Windows 
 - Zapewnij użytkownikom bezpłatne środowisko logowania jednokrotnego. 
 
-Jeśli używasz AD FS, zobacz [weryfikacja i zarządzanie logowaniem jednokrotnym przy użyciu AD FS](https://docs.microsoft.com/previous-versions/azure/azure-services/jj151809(v%3dazure.100)). 
+Jeśli używasz AD FS, zobacz [weryfikacja i zarządzanie logowaniem jednokrotnym przy użyciu AD FS](/previous-versions/azure/azure-services/jj151809(v%3dazure.100)). 
 
 **Zalecenie:** Weź pod uwagę hosting w chmurze (na przykład Azure) i integrację z usługą Azure AD w celu lepszego środowiska.
 
@@ -163,7 +163,7 @@ Jeśli używasz AD FS, zobacz [weryfikacja i zarządzanie logowaniem jednokrotny
 
 Użytkownicy odbierają Logowanie jednokrotne z urządzeń przyłączonych do usługi Azure AD, jeśli urządzenie ma dostęp do kontrolera domeny. 
 
-**Zalecenie:** Wdróż [aplikacja usługi Azure AD serwer proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) , aby zapewnić bezpieczny dostęp do tych aplikacji.
+**Zalecenie:** Wdróż [aplikacja usługi Azure AD serwer proxy](/azure/active-directory/manage-apps/application-proxy) , aby zapewnić bezpieczny dostęp do tych aplikacji.
 
 ### <a name="on-premises-network-shares"></a>Lokalne udziały sieciowe
 
@@ -171,7 +171,7 @@ Użytkownicy mają Logowanie jednokrotne z urządzeń przyłączonych do usługi
 
 ### <a name="printers"></a>Drukarki
 
-W przypadku drukarek należy wdrożyć drukowanie w [chmurze hybrydowej](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy) w celu odnajdywania drukarek na urządzeniach dołączonych do usługi Azure AD. 
+W przypadku drukarek należy wdrożyć drukowanie w [chmurze hybrydowej](/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy) w celu odnajdywania drukarek na urządzeniach dołączonych do usługi Azure AD. 
 
 Mimo że drukarki nie mogą być automatycznie odnajdywane w środowisku tylko w chmurze, użytkownicy mogą również użyć ścieżki UNC drukarki, aby dodać je bezpośrednio. 
 
@@ -183,25 +183,25 @@ Urządzenia przyłączone do usługi Azure AD nie obsługują aplikacji lokalnyc
 
 ### <a name="remote-desktop-services"></a>Usługi pulpitu zdalnego
 
-Podłączanie pulpitu zdalnego do urządzeń przyłączonych do usługi Azure AD wymaga, aby maszyna hosta była przyłączona do usługi Azure AD lub dołączona do hybrydowej usługi Azure AD. Pulpit zdalny z przyłączonych lub nienależących do systemu Windows urządzeń nie jest obsługiwany. Aby uzyskać więcej informacji, zobacz [nawiązywanie połączenia z zdalnym komputerem przyłączonym do usługi Azure AD](https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc)
+Podłączanie pulpitu zdalnego do urządzeń przyłączonych do usługi Azure AD wymaga, aby maszyna hosta była przyłączona do usługi Azure AD lub dołączona do hybrydowej usługi Azure AD. Pulpit zdalny z przyłączonych lub nienależących do systemu Windows urządzeń nie jest obsługiwany. Aby uzyskać więcej informacji, zobacz [nawiązywanie połączenia z zdalnym komputerem przyłączonym do usługi Azure AD](/windows/client-management/connect-to-remote-aadj-pc)
 
 ## <a name="understand-your-provisioning-options"></a>Zapoznaj się z opcjami aprowizacji
 
 Usługę Azure AD Join można zainicjować przy użyciu następujących metod:
 
-- Samoobsługowe środowisko **OOBE/Settings** — w trybie samoobsługowym użytkownicy przechodzą przez proces dołączania usługi Azure AD podczas pracy z systemem Windows (OOBE) lub z ustawień systemu Windows. Aby uzyskać więcej informacji, zobacz [dołączanie urządzenia służbowego do sieci organizacji](https://docs.microsoft.com/azure/active-directory/user-help/user-help-join-device-on-network). 
-- **Windows autopilotaż** — system Windows autopilotaż umożliwia wstępne konfigurowanie urządzeń w celu zapewnienia sprawnego działania w języku OOBE w celu wykonania sprzężenia usługi Azure AD. Aby uzyskać więcej informacji, zobacz [Omówienie funkcji autopilotażu systemu Windows](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot). 
-- **Rejestracja Zbiorcza** — Rejestracja Zbiorcza umożliwia przełączenie usługi Azure AD sterowanej przez administratora przy użyciu narzędzia udostępniania zbiorczego w celu skonfigurowania urządzeń. Aby uzyskać więcej informacji, zobacz [Rejestrowanie zbiorcze dla urządzeń z systemem Windows](https://docs.microsoft.com/intune/windows-bulk-enroll).
+- Samoobsługowe środowisko **OOBE/Settings** — w trybie samoobsługowym użytkownicy przechodzą przez proces dołączania usługi Azure AD podczas pracy z systemem Windows (OOBE) lub z ustawień systemu Windows. Aby uzyskać więcej informacji, zobacz [dołączanie urządzenia służbowego do sieci organizacji](/azure/active-directory/user-help/user-help-join-device-on-network). 
+- **Windows autopilotaż** — system Windows autopilotaż umożliwia wstępne konfigurowanie urządzeń w celu zapewnienia sprawnego działania w języku OOBE w celu wykonania sprzężenia usługi Azure AD. Aby uzyskać więcej informacji, zobacz [Omówienie funkcji autopilotażu systemu Windows](/windows/deployment/windows-autopilot/windows-10-autopilot). 
+- **Rejestracja Zbiorcza** — Rejestracja Zbiorcza umożliwia przełączenie usługi Azure AD sterowanej przez administratora przy użyciu narzędzia udostępniania zbiorczego w celu skonfigurowania urządzeń. Aby uzyskać więcej informacji, zobacz [Rejestrowanie zbiorcze dla urządzeń z systemem Windows](/intune/windows-bulk-enroll).
  
 Poniżej przedstawiono porównanie tych trzech metod 
  
-|   | Konfiguracja samoobsługowa | Windows Autopilot | Rejestrowanie zbiorcze |
+|   | Konfiguracja samoobsługowa | Autopilotaż systemu Windows | Rejestrowanie zbiorcze |
 | --- | --- | --- | --- |
-| Wymagaj interakcji z użytkownikiem w celu skonfigurowania | Tak | Tak | Nie |
-| Wymaganie nakładu pracy IT | Nie | Tak | Tak |
+| Wymagaj interakcji z użytkownikiem w celu skonfigurowania | Yes | Yes | Nie |
+| Wymaganie nakładu pracy IT | Nie | Yes | Yes |
 | Odpowiednie przepływy | Ustawienia & OOBE | Tylko OOBE | Tylko OOBE |
-| Prawa administratora lokalnego do użytkownika podstawowego | Tak, domyślnie | Konfigurowalny | Nie |
-| Wymagaj obsługi OEM urządzenia | Nie | Tak | Nie |
+| Prawa administratora lokalnego do użytkownika podstawowego | Tak, domyślnie | Skonfigurować | Nie |
+| Wymagaj obsługi OEM urządzenia | Nie | Yes | Nie |
 | Obsługiwane wersje | 1511+ | 1709+ | 1703+ |
  
 Wybierz podejście do wdrożenia lub podejścia, przeglądając powyższą tabelę i zapoznaj się z poniższymi uwagami dotyczącymi przyjęcia obu rozwiązań:  
@@ -266,9 +266,9 @@ Na podstawie Twojego zakresu występuje jedna z następujących sytuacji:
 
 Istnieją trzy adresy URL powiązane z konfiguracją rozwiązania MDM:
 
-- Adres URL warunków użytkowania zarządzania urządzeniami przenośnymi
-- Adres URL odnajdywania zarządzania urządzeniami przenośnymi 
-- Adres URL zgodności zarządzania urządzeniami przenośnymi
+- Adres URL warunków użytkowania MDM
+- Adres URL odnajdywania MDM 
+- Adres URL zgodności MDM
 
 ![Dodawanie aplikacji](./media/azureadjoin-plan/06.png)
 
@@ -296,7 +296,7 @@ Za pomocą tej implementacji można wymagać, aby [zarządzane urządzenia dla d
 
 > [!div class="nextstepaction"]
 > [Dołącz nowe urządzenie z systemem Windows 10 przy użyciu usługi Azure AD podczas pierwszego uruchomienia](azuread-joined-devices-frx.md)
-> [Przyłącz urządzenie służbowe do sieci organizacji](https://docs.microsoft.com/azure/active-directory/user-help/user-help-join-device-on-network)
+> [Przyłącz urządzenie służbowe do sieci organizacji](/azure/active-directory/user-help/user-help-join-device-on-network)
 
 <!--Image references-->
 [1]: ./media/azureadjoin-plan/12.png

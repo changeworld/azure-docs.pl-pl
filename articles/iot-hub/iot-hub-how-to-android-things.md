@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: robinsh
-ms.openlocfilehash: 82f6da54aec7aee94c19fd75a06d2850ca0db8b6
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: a06583e9aab4b082517d47c1022f7bec5184b9bc
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883134"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673397"
 ---
 # <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>Opracowywanie platformy dla systemu Android przy użyciu zestawów SDK usługi Azure IoT
 
@@ -40,16 +40,16 @@ Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw za
 
 1. Uruchom następujące polecenia w usłudze Azure Cloud Shell, aby dodać rozszerzenie interfejsu wiersza polecenia usługi IoT Hub i utworzyć tożsamość urządzenia.
 
-   **YourIoTHubName**: zamień ten symbol zastępczy poniżej na wybraną nazwę centrum IoT Hub.
+   **YourIoTHubName**: zamień ten symbol zastępczy poniżej na wybraną nazwę centrum IoT.
 
-   **MyAndroidThingsDevice** : jest to nazwa nadana dla zarejestrowanego urządzenia. Użyj MyAndroidThingsDevice, jak pokazano. Jeśli wybierzesz inną nazwę dla swojego urządzenia, musisz również używać tej nazwy w tym artykule oraz zaktualizować nazwę urządzenia w przykładowych aplikacjach przed ich uruchomieniem.
+   **MyAndroidThingsDevice** : jest to nazwa podaną dla zarejestrowanego urządzenia. Użyj MyAndroidThingsDevice, jak pokazano. Jeśli wybierzesz inną nazwę dla swojego urządzenia, musisz również używać tej nazwy w tym artykule oraz zaktualizować nazwę urządzenia w przykładowych aplikacjach przed ich uruchomieniem.
 
     ```azurecli-interactive
-    az extension add --name azure-cli-iot-ext
+    az extension add --name azure-iot
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyAndroidThingsDevice
     ```
 
-2. Uruchom następujące polecenia w Azure Cloud Shell, aby uzyskać *Parametry połączenia urządzenia* dla zarejestrowanego urządzenia. Zastąp `YourIoTHubName` wartość poniżej nazwą wybraną dla Centrum IoT Hub.
+2. Uruchom następujące polecenia w Azure Cloud Shell, aby uzyskać *Parametry połączenia urządzenia* dla zarejestrowanego urządzenia. Zastąp `YourIoTHubName` poniżej nazwą wybraną dla Centrum IoT Hub.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyAndroidThingsDevice --output table
@@ -79,7 +79,7 @@ Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw za
 
 4. W Android Studio Otwórz projekt systemu Android w lokalizacji "\azure-iot-samples-java\iot-hub\Samples\device\AndroidSample".
 
-5. Otwórz plik Gradle. Properties i Zastąp ciąg "Device_connection_string" zapisanymi wcześniej parametrami połączenia urządzenia.
+5. Otwórz plik Gradle. Properties i Zastąp ciąg "Device_connection_string" wymienionymi wcześniej parametrami połączenia urządzenia.
  
 6. Kliknij polecenie Uruchom ponownie debugowanie i wybierz urządzenie, aby wdrożyć ten kod na urządzeniach z systemem Android.
 

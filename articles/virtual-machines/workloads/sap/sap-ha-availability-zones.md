@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/17/2020
+ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0ee3d1d896d99d892d0a41799c4c1695633d29c4
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: a7a92bef85cd4ee7530940a065135e88c7530781
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291502"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78675604"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>Konfiguracje obciążenia SAP ze strefami dostępności platformy Azure
 [Strefy dostępności platformy Azure](https://docs.microsoft.com/azure/availability-zones/az-overview) to jedna z funkcji wysokiej dostępności udostępniana przez platformę Azure. Użycie Strefy dostępności zwiększa ogólną dostępność obciążeń SAP na platformie Azure. Ta funkcja jest już dostępna w niektórych [regionach świadczenia usługi Azure](https://azure.microsoft.com/global-infrastructure/regions/). W przyszłości będzie ona dostępna w większej liczbie regionów.
@@ -118,6 +118,9 @@ W tej konfiguracji są stosowane następujące zagadnienia:
 - Trzecia Strefa jest używana do hostowania urządzenia SBD na wypadek skompilowania [klastra systemu SUSE Linux Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) lub dodatkowych wystąpień aplikacji.
 - Aby osiągnąć spójność czasu wykonywania dla krytycznych procesów firmy, możesz spróbować skierować określone zadania usługi Batch i użytkowników do wystąpień aplikacji znajdujących się w strefie z aktywnym wystąpieniem DBMS przy użyciu grup serwera SAP Batch, grup logowania SAP lub grup RFC. Jednak w przypadku trybu failover strefy należy ręcznie przenieść te grupy do wystąpień uruchomionych na maszynach wirtualnych, które znajdują się w strefie z maszyną wirtualną usługi Active DB.  
 - Możesz chcieć wdrożyć nieaktywne wystąpienia okna dialogowego w każdej z tych stref. Jest to umożliwienie natychmiastowego powrotu do dawnej pojemności zasobów, jeśli strefa używana przez część wystąpień aplikacji jest poza usługą.
+
+> [!IMPORTANT]
+> W tym scenariuszu aktywny/aktywny dodatkowe opłaty za przepustowość są ogłaszane przez firmę Microsoft z 04/01/2020 w dniu. Sprawdź [szczegóły cennika dotyczącego przepustowości](https://azure.microsoft.com/pricing/details/bandwidth/). Transfer danych między warstwą aplikacji SAP i warstwą SAP DBMS jest dość intensywnie. W związku z tym scenariusz aktywny/aktywny może przyczynić się do ponoszenia kosztów. Kontynuuj sprawdzanie tego artykułu, aby uzyskać dokładne koszty 
 
 
 ## <a name="activepassive-deployment"></a>Wdrożenie aktywne/pasywne

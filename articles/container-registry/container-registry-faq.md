@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 699ee2c2c3b1a90231f24663619cc590aae9889d
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: c0d51c9c31e4e6859eaedce371efeafaa5fd4f46
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252076"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78403212"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Często zadawane pytania dotyczące Azure Container Registry
 
@@ -241,7 +241,7 @@ Przystawka jest następnie w stanie uwierzytelniać obrazy w rejestrze i uzyskiw
 
 * Aby ściągnąć obraz:
 
-  ```console
+  ```bash
   docker pull myregistry.azurecr.io/hello-world
   ```
 
@@ -297,28 +297,25 @@ grep OPTIONS /etc/sysconfig/docker
 
 Na przykład Fedora 28 Server ma następujące opcje demona platformy Docker:
 
-```
-OPTIONS='--selinux-enabled --log-driver=journald --live-restore'
-```
+`OPTIONS='--selinux-enabled --log-driver=journald --live-restore'`
 
 W przypadku braku `--signature-verification=false` `docker pull` kończy się niepowodzeniem z powodu błędu podobnego do:
 
-```bash
+```output
 Trying to pull repository myregistry.azurecr.io/myimage ...
 unauthorized: authentication required
 ```
 
 Aby rozwiązać ten problem:
 1. Dodaj `--signature-verification=false` opcji do pliku konfiguracji demona platformy Docker `/etc/sysconfig/docker`. Na przykład:
-
-  ```
-  OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'
-  ```
+   
+   `OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'`
+   
 2. Uruchom ponownie usługę Docker demona, uruchamiając następujące polecenie:
-
-  ```bash
-  sudo systemctl restart docker.service
-  ```
+   
+   ```bash
+   sudo systemctl restart docker.service
+   ```
 
 Szczegóły `--signature-verification` można znaleźć, uruchamiając `man dockerd`.
 
@@ -478,9 +475,7 @@ az acr task list-runs -r $myregistry --run-status Running --query '[].runId' -o 
 
 W przypadku przekazania lokalnego folderu źródłowego do polecenia `az acr build` folder `.git` zostanie domyślnie wykluczony z przekazanego pakietu. Plik `.dockerignore` można utworzyć przy użyciu poniższego ustawienia. Instruuje polecenie, aby przywrócić wszystkie pliki w `.git` w przekazanym pakiecie. 
 
-```sh
-!.git/**
-```
+`!.git/**`
 
 To ustawienie dotyczy również polecenia `az acr run`.
 

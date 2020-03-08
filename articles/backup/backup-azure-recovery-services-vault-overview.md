@@ -3,12 +3,12 @@ title: Omówienie magazynów usługi Recovery Services
 description: Omówienie i porównanie między magazynami Recovery Services i magazynami Azure Backup.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 327f17aca29f2787c86269e8dd707f5152285154
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 94a3e5a0865bcc8c0a9ecb866ca013f20a558e1a
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78397042"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673235"
 ---
 # <a name="recovery-services-vaults-overview"></a>Omówienie magazynów Recovery Services
 
@@ -77,4 +77,4 @@ Poniższe sekcje zawierają linki do artykułów, które wyjaśniają, jak używ
 Skorzystaj z następujących artykułów, aby:</br>
 [Tworzenie kopii zapasowej maszyny wirtualnej IaaS](backup-azure-arm-vms-prepare.md)</br>
 [Tworzenie kopii zapasowej Azure Backup Server](backup-azure-microsoft-azure-backup.md)</br>
-[Tworzenie kopii zapasowej systemu Windows Server](backup-configure-vault.md)
+[Tworzenie kopii zapasowej systemu Windows Server](backup-windows-with-mars-agent.md)

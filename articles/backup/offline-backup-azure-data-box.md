@@ -3,12 +3,12 @@ title: Kopia zapasowa offline przy użyciu Azure Data Box
 description: Dowiedz się, w jaki sposób można użyć Azure Data Box, aby wypełniać duże dane początkowej kopii zapasowej w trybie offline z agenta MARS do magazynu Recovery Services.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 9a8288939adba8ec1b0cbe38d2243b1bdd84fa2e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: a031a8cac357e7d212f8f6a3a5dbec749fbccc21
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196473"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672963"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Azure Backup kopii zapasowej offline przy użyciu Azure Data Box
 
@@ -124,7 +124,7 @@ Proces tworzenia kopii zapasowej w trybie offline przy użyciu usług MARS i Azu
 
 1. Upewnij się, że odinstalowano wszystkie poprzednie instalacje agenta MARS.
 1. Pobierz najnowszego agenta MARS z [tej witryny sieci Web](https://aka.ms/azurebackup_agent).
-1. Uruchom program *plik marsagentinstaller. exe*i wykonaj *tylko* te czynności, aby [zainstalować i zarejestrować agenta](https://docs.microsoft.com/azure/backup/backup-configure-vault#install-and-register-the-agent) w magazynie Recovery Services, w którym mają być przechowywane kopie zapasowe.
+1. Uruchom program *plik marsagentinstaller. exe*i wykonaj *tylko* te czynności, aby [zainstalować i zarejestrować agenta](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent) w magazynie Recovery Services, w którym mają być przechowywane kopie zapasowe.
 
    > [!NOTE]
    > Magazyn Recovery Services musi znajdować się w tej samej subskrypcji co zadanie Azure Data Box.
@@ -307,7 +307,7 @@ Na serwerze, który próbujesz skonfigurować do tworzenia kopii zapasowych w tr
     >[!NOTE]
     > Aby uzyskać identyfikator użytkownika platformy Azure, wykonaj jedną z następujących czynności:
     >
-    >* Z poziomu programu PowerShell połączonego z platformą Azure Uruchom polecenie `Get-AzureRmADUser -UserPrincipalName “Account Holder’s email as defined in the portal”`.
+    >* Z poziomu programu PowerShell połączonego z platformą Azure Uruchom polecenie `Get-AzureRmADUser -UserPrincipalName "Account Holder's email as defined in the portal"`.
     > * Przejdź do ścieżki rejestru *Computer \ HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\DbgSettings\OnlineBackup* o nazwie *CurrentUserId*.
 
 6. Kliknij prawym przyciskiem myszy ciąg dodany w poprzednim kroku, a następnie wybierz polecenie **Modyfikuj**. W polu wartość Podaj odcisk palca certyfikatu wyeksportowanego w kroku 2. Kliknij przycisk **OK**.

@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/13/2019
+ms.date: 03/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 530eebea19d9e53f85a0079d6fba91c615ee6dd1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 86dbcdc24c90ba8b161b041af96cbdd0665ad827
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375430"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668955"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>Konfigurowanie alertów zabezpieczeń dla ról usługi Azure AD w Privileged Identity Management
 
@@ -87,13 +87,13 @@ W tej sekcji znajduje się lista wszystkich alertów zabezpieczeń dla ról usł
 | **Jak naprawić?** | Przejrzyj konta na liście. Jeśli nie potrzebują już dostępu, usuń je z ról uprzywilejowanych. |
 | **Zapobiegania** | Upewnij się, że konta, które są udostępnione, obracają silne hasła w przypadku zmiany użytkowników, którzy znają hasło. </br>Regularnie Przeglądaj konta z rolami uprzywilejowanymi przy użyciu [przeglądów dostępu](pim-how-to-start-security-review.md) i usuwaj przypisania ról, które nie są już potrzebne. |
 | **Akcja łagodzenia w portalu** | Usuwa konto z roli uprzywilejowanej. |
-| **Najlepsze rozwiązania** | Konta dostępu współdzielonego, usługi i trybu awaryjnego, które uwierzytelniają się przy użyciu hasła i są przypisane do uprzywilejowanych ról administracyjnych, takich jak Administrator globalny lub administrator zabezpieczeń, powinny być obracane w następujących przypadkach:<ul><li>Po wystąpieniu zdarzenia zabezpieczeń związanego z nieprawidłowym lub naruszeniem praw dostępu administracyjnego</li><li>Po zmianie uprawnień użytkownika, tak aby nie były one już administratorami (na przykład po odejściu pracownika przez administratora lub opuszczenia organizacji)</li><li>W regularnych odstępach czasu (na przykład co kwartał lub co rok) nawet w przypadku braku znanego naruszenia lub zmiany działu IT</li></ul>Ponieważ wielu osób ma dostęp do tych kont, należy je obrócić, aby upewnić się, że osoby, które opuściły swoje role, nie będą miały dostępu do kont. [Dowiedz się więcej](https://aka.ms/breakglass) |
+| **Najlepsze rozwiązania** | Konta dostępu współdzielonego, usługi i trybu awaryjnego, które uwierzytelniają się przy użyciu hasła i są przypisane do uprzywilejowanych ról administracyjnych, takich jak Administrator globalny lub administrator zabezpieczeń, powinny być obracane w następujących przypadkach:<ul><li>Po wystąpieniu zdarzenia zabezpieczeń związanego z nieprawidłowym lub naruszeniem praw dostępu administracyjnego</li><li>Po zmianie uprawnień użytkownika, tak aby nie były one już administratorami (na przykład po odejściu pracownika przez administratora lub opuszczenia organizacji)</li><li>W regularnych odstępach czasu (na przykład co kwartał lub co rok) nawet w przypadku braku znanego naruszenia lub zmiany działu IT</li></ul>Ponieważ wielu osób ma dostęp do tych kont, należy je obrócić, aby upewnić się, że osoby, które opuściły swoje role, nie będą miały dostępu do kont. [Dowiedz się więcej o zabezpieczaniu kont](../users-groups-roles/directory-admin-roles-secure.md) |
 
 ### <a name="roles-are-being-assigned-outside-of-privileged-identity-management"></a>Role są przypisywane poza Privileged Identity Management
 
 | | |
 | --- | --- |
-| **Obrażeń** | Wysoka |
+| **Obrażeń** | Wysoki |
 | **Dlaczego otrzymuję ten alert?** | Przypisania ról uprzywilejowanych wprowadzone poza Privileged Identity Management nie są prawidłowo monitorowane i mogą wskazywać na aktywny atak. |
 | **Jak naprawić?** | Przejrzyj użytkowników na liście i Usuń ich z uprzywilejowanych ról przypisanych poza Privileged Identity Management. |
 | **Zapobiegania** | Sprawdź, gdzie użytkownicy są przypisani do ról uprzywilejowanych spoza Privileged Identity Management i Zabroń w przyszłości. |
@@ -192,7 +192,7 @@ W tej sekcji znajduje się lista wszystkich alertów zabezpieczeń dla ról usł
 
 | | |
 | --- | --- |
-| **Obrażeń** | Wysoka |
+| **Obrażeń** | Wysoki |
 | **Dlaczego otrzymuję ten alert?** | Przypisania ról uprzywilejowanych wprowadzone poza Privileged Identity Management nie są prawidłowo monitorowane i mogą wskazywać na aktywny atak. |
 | **Jak naprawić?** | Przejrzyj użytkowników na liście i Usuń ich z uprzywilejowanych ról przypisanych poza Privileged Identity Management. |
 | **Zapobiegania** | Sprawdź, gdzie użytkownicy są przypisani do ról uprzywilejowanych spoza Privileged Identity Management i Zabroń w przyszłości. |

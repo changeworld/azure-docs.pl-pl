@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 3487de958df100cd43d4191028d0a15d7007067a
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 7a74635551d8416bf60689b1f1403f29883e81bd
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605001"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851369"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Architektury oparte na zdarzeniach bezserwerowych z Azure Cosmos DB i Azure Functions
 
@@ -37,7 +37,7 @@ Aby zaimplementować przepływ oparty na zdarzeniach bezserwerowych, potrzebne s
 Tworzenie funkcji platformy Azure z wyzwalaczem Azure Functions dla Cosmos DB jest teraz obsługiwane dla wszystkich Azure Functions IDE i integracji interfejsu wiersza polecenia:
 
 * [Rozszerzenie programu Visual Studio](../azure-functions/functions-develop-vs.md) dla użytkowników programu Visual Studio.
-* [Podstawowe rozszerzenie programu Visual Studio](/azure/javascript/tutorial-vscode-serverless-node-01) dla użytkowników Visual Studio Code.
+* [Visual Studio Code rozszerzenie](/azure/javascript/tutorial-vscode-serverless-node-01) dla użytkowników Visual Studio Code.
 * A wreszcie [podstawowe narzędzia interfejsu wiersza polecenia](../azure-functions/functions-run-local.md#create-func) dla wieloplatformowego środowiska IDE niezależny od.
 
 ## <a name="run-your-trigger-locally"></a>Uruchamianie wyzwalacza lokalnie

@@ -96,8 +96,12 @@
   items:
     - name: Event Grid — pojęcia
       href: concepts.md
-    - name: Zabezpieczenia i uwierzytelnianie
-      href: security-authentication.md
+    - name: Zabezpieczenia
+      items:
+        - name: Authentication
+          href: security-authentication.md
+        - name: Autoryzacja
+          href: security-authorization.md
     - name: Dostarczanie i ponawianie prób
       href: delivery-and-retry.md
     - name: Filtrowanie zdarzeń

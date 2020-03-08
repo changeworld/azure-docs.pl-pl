@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b9240b863eef4d460cd8d3a47304fb96ffb4bc8
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 9a237ad35d9d5d8abee784926563d972d0ee95f9
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917785"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672647"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Co to jest podstawowy token odświeżania?
 
@@ -33,7 +33,7 @@ Poniższe składniki systemu Windows odgrywają kluczową rolę w żądaniu i pr
 * **Wtyczka usługi Azure AD CloudAP**: określona Wtyczka usługi Azure AD oparta na platformie CloudAP, która weryfikuje poświadczenia użytkownika w usłudze Azure AD podczas logowania do systemu Windows.
 * **Wtyczka usługi Azure AD wam**: wtyczka specyficzna dla usługi Azure AD oparta na ARCHITEKTURZE Menedżera wam, która umożliwia logowanie jednokrotne do aplikacji korzystających z usługi Azure AD na potrzeby uwierzytelniania.
 * **Dsreg**: specyficzny dla systemu Windows 10 składnik usługi Azure AD, który obsługuje proces rejestracji urządzeń dla wszystkich stanów urządzeń.
-* **Moduł TPM** (TPM): moduł TPM to składnik sprzętowy wbudowany w urządzenie, który zapewnia funkcje zabezpieczeń oparte na sprzęcie dla wpisów tajnych użytkowników i urządzeń. Więcej informacji można znaleźć w artykule [moduł TPM Omówienie technologii](https://docs.microsoft.com/windows/security/information-protection/tpm/trusted-platform-module-overview).
+* **Moduł TPM** (TPM): moduł TPM to składnik sprzętowy wbudowany w urządzenie, który zapewnia funkcje zabezpieczeń oparte na sprzęcie dla wpisów tajnych użytkowników i urządzeń. Więcej informacji można znaleźć w artykule [moduł TPM Omówienie technologii](/windows/security/information-protection/tpm/trusted-platform-module-overview).
 
 ## <a name="what-does-the-prt-contain"></a>Co zawiera PRT?
 
@@ -48,7 +48,7 @@ PRT to nieprzezroczysty obiekt BLOB wysyłany z usługi Azure AD, którego zawar
 
 ## <a name="how-is-a-prt-issued"></a>Jak jest wystawiony PRT?
 
-Rejestracja urządzeń jest wymaganiem wstępnym w przypadku uwierzytelniania opartego na urządzeniach w usłudze Azure AD. PRT jest wystawiany dla użytkowników tylko na zarejestrowanych urządzeniach. Aby uzyskać bardziej szczegółowe informacje na temat rejestracji urządzeń, zobacz artykuł [Windows Hello dla firm i rejestracja urządzeń](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-how-it-works-device-registration). Podczas rejestracji urządzenia składnik dsreg generuje dwa zestawy par kluczy kryptograficznych:
+Rejestracja urządzeń jest wymaganiem wstępnym w przypadku uwierzytelniania opartego na urządzeniach w usłudze Azure AD. PRT jest wystawiany dla użytkowników tylko na zarejestrowanych urządzeniach. Aby uzyskać bardziej szczegółowe informacje na temat rejestracji urządzeń, zobacz artykuł [Windows Hello dla firm i rejestracja urządzeń](/windows/security/identity-protection/hello-for-business/hello-how-it-works-device-registration). Podczas rejestracji urządzenia składnik dsreg generuje dwa zestawy par kluczy kryptograficznych:
 
 * Klucz urządzenia (dkpub/dkpriv)
 * Klucz transportu (tkpub/tkpriv)

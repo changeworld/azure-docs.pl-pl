@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: a9de9435c0e2fb2b67733a995ff412978ea02d89
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 711e961bd5eb1607e2e6f11b0b5762423d78c0e7
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386985"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898762"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Słowa kluczowe w Azure Cosmos DB
 W tym artykule opisano słowa kluczowe, które mogą być używane w zapytaniach Azure Cosmos DB SQL.
@@ -108,7 +108,7 @@ Zapytania z zagregowaną funkcją systemową i podzapytaniem z instrukcją DISTI
 SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
 ```
 
-## <a name="in"></a>PODCZAS
+## <a name="in"></a>IN
 
 Użyj słowa kluczowego IN, aby sprawdzić, czy określona wartość pasuje do dowolnej wartości na liście. Na przykład następujące zapytanie zwraca wszystkie elementy rodziny, w których `id` jest `WakefieldFamily` lub `AndersenFamily`.
 
@@ -126,7 +126,9 @@ Poniższy przykład zwraca wszystkie elementy, w których stan jest dowolną z o
     WHERE Families.address.state IN ("NY", "WA", "CA", "PA", "OH", "OR", "MI", "WI", "MN", "FL")
 ```
 
-Interfejs API SQL zapewnia obsługę [iteracji w tablicach JSON](sql-query-object-array.md#Iteration), a nowa konstrukcja dodana za pośrednictwem słowa kluczowego in w źródle from. 
+Interfejs API SQL zapewnia obsługę [iteracji w tablicach JSON](sql-query-object-array.md#Iteration), a nowa konstrukcja dodana za pośrednictwem słowa kluczowego in w źródle from.
+
+Jeśli klucz partycji zostanie uwzględniony w filtrze `IN`, zapytanie zostanie automatycznie przefiltrowane na odpowiednie partycje.
 
 ## <a name="top"></a>Do góry
 

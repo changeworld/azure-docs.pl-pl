@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c8c5e3c2552101437bfed17906f94861e676568
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: e1c75d5022432a9a57b30aabec4dd2c4f76f2f29
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77468441"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671827"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Instrukcje: Planowanie wdrożenia dostępu warunkowego w Azure Active Directory
 
@@ -163,13 +163,13 @@ Plan testu jest istotny do porównania między oczekiwanymi wynikami i rzeczywis
 
 |Zasady |Scenariusz |Oczekiwany wynik | Wynik |
 |---|---|---|---|
-|[Wymagaj uwierzytelniania wieloskładnikowego, gdy nie jest w pracy](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|Autoryzowany użytkownik loguje się do *aplikacji* w ramach zaufanej lokalizacji/pracy|Użytkownik nie jest monitowany o uwierzytelnianie wieloskładnikowe| |
-|[Wymagaj uwierzytelniania wieloskładnikowego, gdy nie jest w pracy](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|Autoryzowany użytkownik loguje się do *aplikacji* , gdy nie znajduje się w zaufanej lokalizacji/pracy|Użytkownik jest monitowany o uwierzytelnianie wieloskładnikowe i może zalogować się pomyślnie| |
-|[Wymagaj uwierzytelniania wieloskładnikowego (dla administratora)](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-baseline-protect-administrators)|Administrator globalny loguje się do *aplikacji*|Administrator jest monitowany o uwierzytelnianie wieloskładnikowe| |
-|[Ryzykowne logowania](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)|Użytkownik loguje się do *aplikacji* przy użyciu [przeglądarki sieci Tor](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-playbook)|Administrator jest monitowany o uwierzytelnianie wieloskładnikowe| |
-|[Zarządzanie urządzeniami](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|Autoryzowany użytkownik próbuje zalogować się z autoryzowanego urządzenia|Udzielony dostęp| |
-|[Zarządzanie urządzeniami](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|Autoryzowany użytkownik próbuje zalogować się z nieautoryzowanego urządzenia|Dostęp zablokowany| |
-|[Zmiana hasła dla ryzykownych użytkowników](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)|Autoryzowany użytkownik próbuje zalogować się przy użyciu złamanych poświadczeń (logowanie wysokiego ryzyka)|Użytkownik jest monitowany o zmianę hasła lub dostęp jest zablokowany na podstawie zasad| |
+|[Wymagaj uwierzytelniania wieloskładnikowego, gdy nie jest w pracy](/azure/active-directory/conditional-access/untrusted-networks)|Autoryzowany użytkownik loguje się do *aplikacji* w ramach zaufanej lokalizacji/pracy|Użytkownik nie jest monitowany o uwierzytelnianie wieloskładnikowe| |
+|[Wymagaj uwierzytelniania wieloskładnikowego, gdy nie jest w pracy](/azure/active-directory/conditional-access/untrusted-networks)|Autoryzowany użytkownik loguje się do *aplikacji* , gdy nie znajduje się w zaufanej lokalizacji/pracy|Użytkownik jest monitowany o uwierzytelnianie wieloskładnikowe i może zalogować się pomyślnie| |
+|[Wymagaj uwierzytelniania wieloskładnikowego (dla administratora)](/azure/active-directory/conditional-access/howto-baseline-protect-administrators)|Administrator globalny loguje się do *aplikacji*|Administrator jest monitowany o uwierzytelnianie wieloskładnikowe| |
+|[Ryzykowne logowania](/azure/active-directory/identity-protection/howto-sign-in-risk-policy)|Użytkownik loguje się do *aplikacji* przy użyciu [przeglądarki sieci Tor](/azure/active-directory/active-directory-identityprotection-playbook)|Administrator jest monitowany o uwierzytelnianie wieloskładnikowe| |
+|[Zarządzanie urządzeniami](/azure/active-directory/conditional-access/require-managed-devices)|Autoryzowany użytkownik próbuje zalogować się z autoryzowanego urządzenia|Udzielony dostęp| |
+|[Zarządzanie urządzeniami](/azure/active-directory/conditional-access/require-managed-devices)|Autoryzowany użytkownik próbuje zalogować się z nieautoryzowanego urządzenia|Dostęp zablokowany| |
+|[Zmiana hasła dla ryzykownych użytkowników](/azure/active-directory/identity-protection/howto-user-risk-policy)|Autoryzowany użytkownik próbuje zalogować się przy użyciu złamanych poświadczeń (logowanie wysokiego ryzyka)|Użytkownik jest monitowany o zmianę hasła lub dostęp jest zablokowany na podstawie zasad| |
 
 ### <a name="configure-the-policy"></a>Konfigurowanie zasad
 

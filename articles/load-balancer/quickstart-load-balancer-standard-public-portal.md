@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 2477d91ac885d4ef39df7b9246f7272d66c3f7ee
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: b424fe315737b84479283eed2d77398c8ce4f148
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251865"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898833"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Szybki Start: Tworzenie Load Balancer równoważenia obciążenia maszyn wirtualnych przy użyciu Azure Portal
 
@@ -34,7 +34,7 @@ Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](http
 
 ## <a name="create-a-load-balancer"></a>Tworzenie Load Balancer
 
-W tej sekcji utworzysz Load Balancer, która pomaga zrównoważyć obciążenie maszyn wirtualnych. Można utworzyć publiczną Load Balancer lub Load Balancer wewnętrzny. Podczas tworzenia Load Balancer publicznego i należy również utworzyć nowy publiczny adres IP, który jest skonfigurowany jako fronton (domyślnie *LoadBalancerFrontend* Load Balancer).
+W tej sekcji utworzysz Load Balancer, która pomaga zrównoważyć obciążenie maszyn wirtualnych. Można utworzyć publiczną Load Balancer lub Load Balancer wewnętrzny. Podczas tworzenia publicznej Load Balancer należy również utworzyć nowy publiczny adres IP, który jest konfigurowany jako fronton (domyślnie przyznana jako *LoadBalancerFrontend* Load Balancer).
 
 1. W lewym górnym rogu ekranu wybierz pozycję **Utwórz zasób** > **sieci** > **Load Balancer**.
 2. Na karcie **Podstawy** na stronie **Tworzenie modułu równoważenia obciążenia** wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Przeglądanie + tworzenie**:

@@ -4,14 +4,14 @@ description: Informacje o klauzuli WHERE języka SQL dla Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 03/06/2020
 ms.author: tisande
-ms.openlocfilehash: 31653b598f0f3a79bf7f9c09231b1d111f167a16
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 483a0533eafc81ef8698d260a753062ae074f6d4
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982233"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898773"
 ---
 # <a name="where-clause-in-azure-cosmos-db"></a>Klauzula WHERE w Azure Cosmos DB
 
@@ -35,10 +35,11 @@ WHERE <filter_condition>
   
    Wyrażenie reprezentujące wartość ma zostać obliczony. Aby uzyskać szczegółowe informacje, zobacz [wyrażenia skalarne](sql-query-scalar-expressions.md) .  
   
-
 ## <a name="remarks"></a>Uwagi
   
-  W kolejności dokumentu, które mają zostać zwrócone wyrażenie określone jako filtr warunek musi zwrócić wartość true. Tylko wartość logiczną PRAWDA będzie spełniać warunek jakakolwiek inna wartość: Niezdefiniowany, null, wartość false, liczby, tablicy lub obiektu nie spełnia warunku. 
+  W kolejności dokumentu, które mają zostać zwrócone wyrażenie określone jako filtr warunek musi zwrócić wartość true. Tylko wartość logiczna `true` będzie spełniać warunek, żadna inna wartość: undefined, null, false, Number, array lub Object nie spełni warunku.
+
+  Jeśli klucz partycji zostanie uwzględniony w klauzuli `WHERE` w ramach filtra równości, zapytanie zostanie automatycznie przefiltrowane na odpowiednie partycje.
 
 ## <a name="examples"></a>Przykłady
 
@@ -110,4 +111,4 @@ Można również użyć odwołań do właściwości w zapytaniach. Na przykład 
 
 - [Rozpoczęcie pracy](sql-query-getting-started.md)
 - [IN — słowo kluczowe](sql-query-keywords.md#in)
-- [FROM — klauzula](sql-query-from.md)
+- [Klauzula FROM](sql-query-from.md)

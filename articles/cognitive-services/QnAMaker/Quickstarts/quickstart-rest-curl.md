@@ -1,14 +1,16 @@
 ---
 title: 'Szybki Start: korzystanie z & zawieszania do zarządzania bazą wiedzy QnA Maker'
 description: W tym przewodniku szybki start przedstawiono sposób tworzenia, publikowania i wysyłania zapytań do bazy wiedzy przy użyciu interfejsów API REST.
+ms.date: 02/27/2020
+ROBOTS: NOINDEX,NOFOLLOW
+ms.custom: RESTCURL2020FEB27
 ms.topic: quickstart
-ms.date: 12/16/2019
-ms.openlocfilehash: d2542a0307387cef1c96ecfb426a8e7c01621ee2
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 00ec52fe20fb0e6a976f3e7142386e835713c98c
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78165460"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851211"
 ---
 # <a name="quickstart-use-curl-and-rest-to-manage-knowledge-base"></a>Szybki Start: używanie zawieszania i REST do zarządzania bazą wiedzy
 
@@ -32,7 +34,7 @@ Aby utworzyć bazę wiedzy z interfejsami API REST i zwinięciem, musisz dyspono
 
 |Informacje|Konfiguracja zwinięcie|Przeznaczenie|
 |--|--|--|
-|Nazwa zasobu QnA Maker|{1&gt;URL&lt;1}|używane do konstruowania adresu URL|
+|Nazwa zasobu QnA Maker|Adres URL|używane do konstruowania adresu URL|
 |Klucz zasobu QnA Maker|`-h` param dla `Ocp-Apim-Subscription-Key` nagłówka|Uwierzytelnianie w usłudze QnA Maker|
 |JSON opisujące bazę wiedzy|`-d` param|[Przykłady](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create#examples) kodu JSON|
 |Rozmiar JSON w bajtach|`-h` param dla `Content-Size` nagłówka||
@@ -66,7 +68,7 @@ Podczas tworzenia bazy wiedzy, ponieważ operacja jest asynchroniczna, odpowied�
 
 |Informacje|Konfiguracja zwinięcie|Przeznaczenie|
 |--|--|--|
-|Nazwa zasobu QnA Maker|{1&gt;URL&lt;1}|używane do konstruowania adresu URL|
+|Nazwa zasobu QnA Maker|Adres URL|używane do konstruowania adresu URL|
 |Identyfikator operacji|Trasa URL|`/operations/REPLACE-WITH-YOUR-OPERATION-ID`|
 |Klucz zasobu QnA Maker|`-h` param dla `Ocp-Apim-Subscription-Key` nagłówka|Uwierzytelnianie w usłudze QnA Maker|
 
@@ -101,7 +103,7 @@ To zadanie służy do publikowania bazy wiedzy. Pobieranie klucza punktu końcow
 
 |Informacje|Konfiguracja zwinięcie|Przeznaczenie|
 |--|--|--|
-|Nazwa zasobu QnA Maker|{1&gt;URL&lt;1}|używane do konstruowania adresu URL|
+|Nazwa zasobu QnA Maker|Adres URL|używane do konstruowania adresu URL|
 |Klucz zasobu QnA Maker|`-h` param dla `Ocp-Apim-Subscription-Key` nagłówka|Uwierzytelnianie w usłudze QnA Maker|
 |Identyfikator bazy wiedzy|Trasa URL|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
 
@@ -129,7 +131,7 @@ Klucz punktu końcowego środowiska uruchomieniowego jest tym samym kluczem dla 
 
 |Informacje|Konfiguracja zwinięcie|Przeznaczenie|
 |--|--|--|
-|Nazwa zasobu QnA Maker|{1&gt;URL&lt;1}|używane do konstruowania adresu URL|
+|Nazwa zasobu QnA Maker|Adres URL|używane do konstruowania adresu URL|
 |Klucz zasobu QnA Maker|`-h` param dla `Ocp-Apim-Subscription-Key` nagłówka|Uwierzytelnianie w usłudze QnA Maker|
 
 Polecenie zwinięcie jest wykonywane z poziomu powłoki BASH. Edytuj to polecenie przy użyciu własnej nazwy zasobu, klucza zasobu.
@@ -158,7 +160,7 @@ Uzyskiwanie odpowiedzi ze wiedzy odbywa się z osobnego środowiska uruchomienio
 
 |Informacje|Konfiguracja zwinięcie|Przeznaczenie|
 |--|--|--|
-|Nazwa zasobu QnA Maker|{1&gt;URL&lt;1}|używane do konstruowania adresu URL|
+|Nazwa zasobu QnA Maker|Adres URL|używane do konstruowania adresu URL|
 |Klucz środowiska uruchomieniowego QnA Maker|`-h` param dla `Authorization` nagłówka|Klucz jest częścią ciągu zawierającego wyraz `Endpointkey `. Uwierzytelnianie w usłudze QnA Maker|
 |Identyfikator bazy wiedzy|Trasa URL|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
 |Zapytanie JSON opisujące|`-d` param|[Parametry treści żądania](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#request-body) i [przykłady](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#examples) kodu JSON|
@@ -183,7 +185,7 @@ Po zakończeniu pracy z bazą wiedzy usuń ją.
 
 |Informacje|Konfiguracja zwinięcie|Przeznaczenie|
 |--|--|--|
-|Nazwa zasobu QnA Maker|{1&gt;URL&lt;1}|używane do konstruowania adresu URL|
+|Nazwa zasobu QnA Maker|Adres URL|używane do konstruowania adresu URL|
 |Klucz zasobu QnA Maker|`-h` param dla `Ocp-Apim-Subscription-Key` nagłówka|Uwierzytelnianie w usłudze QnA Maker|
 |Identyfikator bazy wiedzy|Trasa URL|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
 

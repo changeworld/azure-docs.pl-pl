@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 03/06/2020
 tags: connectors
-ms.openlocfilehash: 24746b7bbbbf3985a9801139b301a829c51a14da
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 1578ca030bc8bab971a44e1afcce1d1ab9e1d5e9
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030085"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674074"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Tworzenie i uruchamianie zautomatyzowanych przepływów zadań opartych na zdarzeniach za pomocą elementów webhook protokołu HTTP w Azure Logic Apps
 
@@ -65,37 +65,49 @@ Aby uzyskać więcej informacji zobacz następujące tematy:
 
 ## <a name="add-an-http-webhook-trigger"></a>Dodawanie wyzwalacza elementu webhook protokołu HTTP
 
-Ten wbudowany wyzwalacz rejestruje adres URL wywołania zwrotnego z określoną usługą i czeka, aż ta usługa wyśle żądanie HTTP POST do tego adresu URL. Gdy to zdarzenie wystąpi, wyzwala i natychmiast uruchamia aplikację logiki.
+Ten wbudowany wyzwalacz wywołuje punkt końcowy subskrypcji w usłudze docelowej i rejestruje adres URL wywołania zwrotnego przy użyciu usługi docelowej. Aplikacja logiki czeka, aż usługa docelowa wyśle żądanie `HTTP POST` do adresu URL wywołania zwrotnego. Po wystąpieniu tego zdarzenia wyzwalacz uruchamia i przekazuje wszystkie dane w żądaniu wraz z przepływem pracy.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com). Otwórz pustą aplikację logiki w Projektancie aplikacji logiki.
+1. Zaloguj się do [Azure portal](https://portal.azure.com). Otwórz pustą aplikację logiki w Projektancie aplikacji logiki.
 
-1. W projektancie w polu wyszukiwania wprowadź ciąg "http webhook" jako filtr. Z listy **wyzwalacze** Wybierz wyzwalacz **http elementu webhook** .
+1. W polu wyszukiwania projektanta wprowadź `http webhook` jako filtr. Z listy **wyzwalacze** Wybierz wyzwalacz **http elementu webhook** .
 
    ![Wybierz wyzwalacz elementu webhook protokołu HTTP](./media/connectors-native-webhook/select-http-webhook-trigger.png)
 
-   Ten przykład zmienia nazwę wyzwalacza na "wyzwalacz elementu webhook protokołu HTTP" tak, aby krok miał bardziej opisową nazwę. Ponadto przykład później dodaje akcję elementu webhook protokołu HTTP i obie nazwy muszą być unikatowe.
+   Ten przykład zmienia nazwę wyzwalacza na `HTTP Webhook trigger` tak, aby krok miał bardziej opisową nazwę. Ponadto przykład później dodaje akcję elementu webhook protokołu HTTP i obie nazwy muszą być unikatowe.
 
-1. Podaj wartości [parametrów wyzwalacza elementu webhook protokołu HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger) , które mają być używane dla wywołań subskrybowania i anulowania subskrypcji, na przykład:
+1. Podaj wartości [parametrów wyzwalacza elementu webhook protokołu HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger) , które mają być używane dla wywołań subskrybowania i anulowania subskrypcji.
+
+   W tym przykładzie wyzwalacz zawiera metody, identyfikatory URI i treści wiadomości, które mają być używane podczas wykonywania operacji subskrybowania i anulowania subskrypcji.
 
    ![Wprowadź parametry wyzwalacza elementu webhook protokołu HTTP](./media/connectors-native-webhook/http-webhook-trigger-parameters.png)
 
-1. Aby dodać inne dostępne parametry, Otwórz listę **Dodaj nowy parametr** i wybierz żądane parametry.
+   | Właściwość | Wymagany | Opis |
+   |----------|----------|-------------|
+   | **Subskrypcja — Metoda** | Yes | Metoda do użycia podczas subskrybowania docelowego punktu końcowego |
+   | **Subskrypcja — identyfikator URI** | Yes | Adres URL, który ma być używany do subskrybowania docelowego punktu końcowego |
+   | **Subskrypcja — treść** | Nie | Każda treść komunikatu do uwzględnienia w żądaniu subskrybowania. Ten przykład zawiera adres URL wywołania zwrotnego, który unikatowo identyfikuje subskrybenta, który jest aplikacją logiki, za pomocą wyrażenia `@listCallbackUrl()` do pobrania adresu URL wywołania zwrotnego aplikacji logiki. |
+   | **Unsubskrybuj — Metoda** | Nie | Metoda do użycia podczas anulowania subskrypcji z docelowego punktu końcowego |
+   | **Anulowanie subskrypcji — identyfikator URI** | Nie | Adres URL, który będzie używany do anulowania subskrypcji z docelowego punktu końcowego |
+   | **Anulowanie subskrypcji — treść** | Nie | Opcjonalna treść komunikatu do uwzględnienia w żądaniu anulowania subskrypcji <p><p>**Uwaga**: Ta właściwość nie obsługuje korzystania z funkcji `listCallbackUrl()`. Jednak wyzwalacz automatycznie uwzględnia i wysyła nagłówki, `x-ms-client-tracking-id` i `x-ms-workflow-operation-name`, których usługa docelowa może użyć do unikatowego identyfikowania abonenta. |
+   ||||
 
-   Aby uzyskać więcej informacji na temat typów uwierzytelniania dostępnych dla elementu webhook protokołu HTTP, zobacz [Dodawanie uwierzytelniania do połączeń wychodzących](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
+1. Aby dodać inne właściwości wyzwalacza, Otwórz listę **Dodaj nowy parametr** .
+
+   ![Dodaj więcej właściwości wyzwalacza](./media/connectors-native-webhook/http-webhook-trigger-add-properties.png)
+
+   Na przykład, jeśli konieczne jest użycie uwierzytelniania, można dodać właściwości **subskrybowania** i uwierzytelniania i **anulowania subskrypcji** . Aby uzyskać więcej informacji na temat typów uwierzytelniania dostępnych dla elementu webhook protokołu HTTP, zobacz [Dodawanie uwierzytelniania do połączeń wychodzących](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
 1. Kontynuuj tworzenie przepływu pracy aplikacji logiki przy użyciu akcji uruchamianych podczas uruchamiania wyzwalacza.
 
 1. Gdy skończysz, pamiętaj, aby zapisać aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
 
-   Zapisanie aplikacji logiki wywołuje punkt końcowy subskrypcji i rejestruje adres URL wywołania zwrotnego dla wyzwalania tej aplikacji logiki.
-
-1. Teraz za każdym razem, gdy usługa docelowa wysyła żądanie `HTTP POST` do adresu URL wywołania zwrotnego, zostanie wyzwolona aplikacja logiki, która zawiera wszystkie dane przesyłane przez żądanie.
+   Zapisanie aplikacji logiki wywołuje punkt końcowy subskrypcji w usłudze docelowej i rejestruje adres URL wywołania zwrotnego. Aplikacja logiki czeka, aż usługa docelowa wyśle żądanie `HTTP POST` do adresu URL wywołania zwrotnego. Po wystąpieniu tego zdarzenia wyzwalacz uruchamia i przekazuje wszystkie dane w żądaniu wraz z przepływem pracy. Jeśli ta operacja zakończy się pomyślnie, wyzwalacz anuluje subskrypcję z punktu końcowego, a aplikacja logiki kontynuuje pozostałe przepływy pracy.
 
 ## <a name="add-an-http-webhook-action"></a>Dodaj akcję elementu webhook protokołu HTTP
 
-Ta wbudowana akcja rejestruje adres URL wywołania zwrotnego z określoną usługą, wstrzymuje przepływ pracy aplikacji logiki i czeka na wysłanie przez tę usługę żądania HTTP POST do tego adresu URL. Po tym zdarzeniu akcja wznawia działanie aplikacji logiki.
+Ta wbudowana akcja wywołuje punkt końcowy subskrypcji w usłudze docelowej i rejestruje adres URL wywołania zwrotnego przy użyciu usługi docelowej. Następnie aplikacja logiki wstrzymuje i czeka, aż usługa docelowa wyśle żądanie `HTTP POST` do adresu URL wywołania zwrotnego. Gdy to zdarzenie wystąpi, Akcja przekazuje wszystkie dane w żądaniu wraz z przepływem pracy. Jeśli operacja zakończy się pomyślnie, Akcja anuluje subskrypcję z punktu końcowego, a aplikacja logiki kontynuuje działanie pozostałego przepływu pracy.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com). Otwórz aplikację logiki w Projektancie aplikacji logiki.
+1. Zaloguj się do [Azure portal](https://portal.azure.com). Otwórz aplikację logiki w Projektancie aplikacji logiki.
 
    Ten przykład używa wyzwalacza elementu webhook protokołu HTTP jako pierwszego kroku.
 
@@ -103,23 +115,37 @@ Ta wbudowana akcja rejestruje adres URL wywołania zwrotnego z określoną usłu
 
    Aby dodać akcję między krokami, przesuń wskaźnik myszy nad strzałkę między krokami. Wybierz wyświetlony znak plus ( **+** ), a następnie wybierz pozycję **Dodaj akcję**.
 
-1. W projektancie w polu wyszukiwania wprowadź ciąg "http webhook" jako filtr. Z listy **Akcje** wybierz akcję **element webhook protokołu HTTP** .
+1. W polu wyszukiwania projektanta wprowadź `http webhook` jako filtr. Z listy **Akcje** wybierz akcję **element webhook protokołu HTTP** .
 
    ![Wybierz akcję elementu webhook protokołu HTTP](./media/connectors-native-webhook/select-http-webhook-action.png)
 
    Ten przykład zmienia nazwę akcji na "akcja elementu webhook protokołu HTTP" tak, aby krok miał bardziej opisową nazwę.
 
-1. Podaj wartości parametrów akcji elementu webhook protokołu HTTP, które są podobne do [parametrów wyzwalacza elementu webhook protokołu HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger) , które mają być używane dla wywołań subskrybowania i anulowania subskrypcji, na przykład:
+1. Podaj wartości parametrów akcji elementu webhook protokołu HTTP, które są podobne do [parametrów wyzwalacza elementu webhook protokołu HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger), które mają być używane dla wywołań subskrybowania i anulowania subskrypcji.
+
+   W tym przykładzie akcja obejmuje metody, identyfikatory URI i treści komunikatów, które mają być używane podczas wykonywania operacji subskrybowania i anulowania subskrypcji.
 
    ![Wprowadź parametry akcji elementu webhook protokołu HTTP](./media/connectors-native-webhook/http-webhook-action-parameters.png)
 
-   Podczas wykonywania, aplikacja logiki wywołuje punkt końcowy subskrypcji podczas wykonywania tej akcji. Następnie aplikacja logiki wstrzymuje przepływ pracy i czeka na wysłanie żądania `HTTP POST` do adresu URL wywołania zwrotnego przez usługę docelową. Jeśli akcja zostanie zakończona pomyślnie, Akcja anuluje subskrypcję z punktu końcowego, a aplikacja logiki wznowi działanie przepływu pracy.
+   | Właściwość | Wymagany | Opis |
+   |----------|----------|-------------|
+   | **Subskrypcja — Metoda** | Yes | Metoda do użycia podczas subskrybowania docelowego punktu końcowego |
+   | **Subskrypcja — identyfikator URI** | Yes | Adres URL, który ma być używany do subskrybowania docelowego punktu końcowego |
+   | **Subskrypcja — treść** | Nie | Każda treść komunikatu do uwzględnienia w żądaniu subskrybowania. Ten przykład zawiera adres URL wywołania zwrotnego, który unikatowo identyfikuje subskrybenta, który jest aplikacją logiki, za pomocą wyrażenia `@listCallbackUrl()` do pobrania adresu URL wywołania zwrotnego aplikacji logiki. |
+   | **Unsubskrybuj — Metoda** | Nie | Metoda do użycia podczas anulowania subskrypcji z docelowego punktu końcowego |
+   | **Anulowanie subskrypcji — identyfikator URI** | Nie | Adres URL, który będzie używany do anulowania subskrypcji z docelowego punktu końcowego |
+   | **Anulowanie subskrypcji — treść** | Nie | Opcjonalna treść komunikatu do uwzględnienia w żądaniu anulowania subskrypcji <p><p>**Uwaga**: Ta właściwość nie obsługuje korzystania z funkcji `listCallbackUrl()`. Jednak akcja automatycznie uwzględnia i wysyła nagłówki, `x-ms-client-tracking-id` i `x-ms-workflow-operation-name`, których usługa docelowa może użyć do unikatowego identyfikowania abonenta. |
+   ||||
 
-1. Aby dodać inne dostępne parametry, Otwórz listę **Dodaj nowy parametr** i wybierz żądane parametry.
+1. Aby dodać inne właściwości akcji, Otwórz listę **Dodaj nowy parametr** .
 
-   Aby uzyskać więcej informacji na temat typów uwierzytelniania dostępnych dla elementu webhook protokołu HTTP, zobacz [Dodawanie uwierzytelniania do połączeń wychodzących](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
+   ![Dodaj więcej właściwości akcji](./media/connectors-native-webhook/http-webhook-action-add-properties.png)
+
+   Na przykład, jeśli konieczne jest użycie uwierzytelniania, można dodać właściwości **subskrybowania** i uwierzytelniania i **anulowania subskrypcji** . Aby uzyskać więcej informacji na temat typów uwierzytelniania dostępnych dla elementu webhook protokołu HTTP, zobacz [Dodawanie uwierzytelniania do połączeń wychodzących](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
 1. Po zakończeniu Pamiętaj, aby zapisać aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
+
+   Teraz po uruchomieniu tej akcji aplikacja logiki wywołuje punkt końcowy subskrypcji w usłudze docelowej i rejestruje adres URL wywołania zwrotnego. Następnie aplikacja logiki wstrzymuje przepływ pracy i czeka na wysłanie żądania `HTTP POST` do adresu URL wywołania zwrotnego przez usługę docelową. Gdy to zdarzenie wystąpi, Akcja przekazuje wszystkie dane w żądaniu wraz z przepływem pracy. Jeśli operacja zakończy się pomyślnie, Akcja anuluje subskrypcję z punktu końcowego, a aplikacja logiki kontynuuje działanie pozostałego przepływu pracy.
 
 ## <a name="connector-reference"></a>Dokumentacja łączników
 
@@ -132,14 +158,14 @@ Poniżej znajduje się więcej informacji na temat danych wyjściowych wyzwalacz
 | Nazwa właściwości | Typ | Opis |
 |---------------|------|-------------|
 | nagłówki | obiekt | Nagłówki żądania |
-| treść | obiekt | JSON — Obiekt | Obiekt z zawartością treści z żądania |
+| jednostce | obiekt | JSON — Obiekt | Obiekt z zawartością treści z żądania |
 | kod stanu | int | Kod stanu z żądania |
 |||
 
 | Kod stanu | Opis |
 |-------------|-------------|
 | 200 | OK |
-| 202 | Zaakceptowano |
+| 202 | Accepted |
 | 400 | Nieprawidłowe żądanie |
 | 401 | Brak autoryzacji |
 | 403 | Forbidden |

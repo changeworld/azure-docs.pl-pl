@@ -4,16 +4,16 @@ description: W tym samouczku dowiesz się, jak używać agenta Microsoft Azure R
 ms.topic: tutorial
 ms.date: 02/14/2018
 ms.custom: mvc
-ms.openlocfilehash: 5958f6574f8c559bae8f500b1cb555e96e007d0e
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: c9258b7f95337330e4f1de36e389f6b8f2276976
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171817"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672948"
 ---
 # <a name="recover-files-from-azure-to-a-windows-server"></a>Odzyskiwanie plików z platformy Azure na serwer z systemem Windows
 
-Usługa Azure Backup umożliwia odzyskiwanie wybranych elementów z kopii zapasowych serwera z systemem Windows. Odzyskiwanie pojedynczych plików to przydatny sposób szybkiego przywracania przypadkowo usuniętych plików. W tym samouczku opisano, jak przy użyciu agenta usługi Microsoft Azure Recovery Services (MARS) odzyskać elementy z kopii zapasowych utworzonych uprzednio na platformie Azure. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Usługa Azure Backup umożliwia odzyskiwanie wybranych elementów z kopii zapasowych serwera z systemem Windows. Odzyskiwanie pojedynczych plików to przydatny sposób szybkiego przywracania przypadkowo usuniętych plików. W tym samouczku opisano, jak przy użyciu agenta usługi Microsoft Azure Recovery Services (MARS) odzyskać elementy z kopii zapasowych utworzonych uprzednio na platformie Azure. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 >
@@ -21,7 +21,7 @@ Usługa Azure Backup umożliwia odzyskiwanie wybranych elementów z kopii zapaso
 > * Wybieranie punktu odzyskiwania
 > * Przywracanie elementów z punktu odzyskiwania
 
-W tym samouczku założono, że wykonano już czynności opisane w temacie [Tworzenie kopii zapasowej serwerów z systemem Windows na platformie Azure](backup-configure-vault.md) i utworzono co najmniej jedną kopię zapasową plików z serwera z systemem Windows na platformie Azure.
+W tym samouczku założono, że wykonano już czynności opisane w temacie [Tworzenie kopii zapasowej serwerów z systemem Windows na platformie Azure](backup-windows-with-mars-agent.md) i utworzono co najmniej jedną kopię zapasową plików z serwera z systemem Windows na platformie Azure.
 
 ## <a name="initiate-recovery-of-individual-items"></a>Rozpoczynanie odzyskiwana pojedynczych plików
 

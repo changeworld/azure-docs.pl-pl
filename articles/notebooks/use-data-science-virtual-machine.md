@@ -6,12 +6,12 @@ manager: andneil
 ms.author: getroyer
 ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: 7a47be46818c633c016c791d0c52eb9393029973
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: b4da63b7b2a6da4316215b85a09ca7420745251c
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646998"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898399"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Korzystanie z usługi Azure Data Science Virtual Machines
 
@@ -38,6 +38,9 @@ Po utworzeniu DSVM wybierz listę rozwijaną **uruchamiania** na pulpicie nawiga
 
 Po wybraniu wystąpienia DSVM, Azure Notebooks może monitować o podanie określonych poświadczeń komputera używanych podczas tworzenia maszyny wirtualnej.
 
+> [!Important]
+> Nazwa użytkownika musi być mała, aby można jej było używać z JupyterHub.
+
 Jeśli którykolwiek z warunków nie zostanie spełniony, nadal możesz połączyć się z DSVM. Z listy rozwijanej wybierz opcję przetwarzanie **bezpośrednie** , która wyświetla komunikat o nazwie (do wyświetlenia na liście), adres IP i port maszyny wirtualnej (zazwyczaj 8000, domyślny port, do którego nasłuchuje JupyterHub) i poświadczenia maszyny wirtualnej:
 
 ![Monituj o zbieranie informacji o serwerze dla opcji przetwarzania bezpośredniego](media/project-compute-tier-direct.png)
@@ -60,7 +63,7 @@ Jeśli wielu użytkowników współużytkuje DSVM, można uniknąć zablokowania
 
 1. Na [Azure Portal](https://portal.azure.com)przejdź do maszyny wirtualnej.
 1. W obszarze **Pomoc techniczna i rozwiązywanie problemów** na lewym marginesie wybierz pozycję **Resetuj hasło**.
-1. Wprowadź nową nazwę użytkownika i hasło, a następnie wybierz pozycję **Aktualizuj**. (Nie dotyczy to istniejących nazw użytkowników).
+1. Wprowadź nową **nazwę użytkownika**. Nazwa użytkownika musi być mała, aby można jej było używać z JupyterHub. Wprowadź hasło. Następnie wybierz pozycję **Aktualizuj**. (Nie dotyczy to istniejących nazw użytkowników).
 1. Powtórz poprzedni krok dla każdego dodatkowego użytkownika.
 
 ## <a name="next-steps"></a>Następne kroki

@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, klam, logicappspm
 ms.topic: article
-ms.date: 02/28/2020
+ms.date: 03/7/2020
 tags: connectors
-ms.openlocfilehash: e7a0791cc2bca672e7fde142650ad25e7e8ab58b
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 0f62fb835fdd2353557a4aff47128bb94ba91a31
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78161878"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851494"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Monitorowanie i tworzenie plików SFTP oraz zarządzanie nimi za pomocą protokołów SSH i Azure Logic Apps
 
@@ -36,29 +36,34 @@ Aby uzyskać różnice między łącznikiem protokołu SFTP-SSH a łącznikiem S
   > [!NOTE]
   > W przypadku aplikacji logiki w [środowisku usługi integracji (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), wersja tego łącznika z oznaczeniem ISE w zamian używa [limitów komunikatów ISE](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) .
 
+  Można zastąpić to zachowanie adaptacyjne w przypadku [określenia stałego rozmiaru fragmentu](#change-chunk-size) do użycia. Ten rozmiar może nawiązać od 5 MB do 50 MB. Załóżmy na przykład, że masz plik 45 MB i sieć, która może obsługiwać ten rozmiar plików bez opóźnień. Adaptacyjne rozdzielenie skutkuje wieloma wywołaniami, a tym samym wywołaniem. Aby zmniejszyć liczbę wywołań, można spróbować ustawić rozmiar fragmentu 50 MB. W innym scenariuszu, jeśli aplikacja logiki ma limit czasu, na przykład w przypadku używania fragmentów 15 MB można spróbować zmniejszyć rozmiar do 5 MB.
+
   Rozmiar fragmentu jest skojarzony z połączeniem, co oznacza, że można użyć tego samego połączenia dla akcji, które obsługują rozdzielenie, a następnie dla akcji, które nie obsługują rozdzielania. W tym przypadku rozmiar fragmentu dla akcji, które nie obsługują zakresów podziału z 5 MB do 50 MB. W tej tabeli przedstawiono, które działania SFTP obsługują fragmenty:
 
-  | Akcja | Obsługa fragmentów |
-  |--------|------------------|
-  | **Kopiuj plik** | Nie |
-  | **Utwórz plik** | Tak |
-  | **Utwórz folder** | Nie dotyczy |
-  | **Usuń plik** | Nie dotyczy |
-  | **Wyodrębnij archiwum do folderu** | Nie dotyczy |
-  | **Pobierz zawartość pliku** | Tak |
-  | **Pobierz zawartość pliku przy użyciu ścieżki** | Tak |
-  | **Pobierz metadane pliku** | Nie dotyczy |
-  | **Pobierz metadane pliku przy użyciu ścieżki** | Nie dotyczy |
-  | **Wyświetl listę plików w folderze** | Nie dotyczy |
-  | **Zmień nazwę pliku** | Nie dotyczy |
-  | **Plik aktualizacji** | Nie |
-  |||
+  | Akcja | Obsługa fragmentów | Przesłoń obsługę rozmiaru fragmentu |
+  |--------|------------------|-----------------------------|
+  | **Kopiuj plik** | Nie | Nie dotyczy |
+  | **Utwórz plik** | Yes | Yes |
+  | **Utwórz folder** | Nie dotyczy | Nie dotyczy |
+  | **Usuń plik** | Nie dotyczy | Nie dotyczy |
+  | **Wyodrębnij archiwum do folderu** | Nie dotyczy | Nie dotyczy |
+  | **Pobierz zawartość pliku** | Yes | Yes |
+  | **Pobierz zawartość pliku przy użyciu ścieżki** | Yes | Yes |
+  | **Pobierz metadane pliku** | Nie dotyczy | Nie dotyczy |
+  | **Pobierz metadane pliku przy użyciu ścieżki** | Nie dotyczy | Nie dotyczy |
+  | **Wyświetl listę plików w folderze** | Nie dotyczy | Nie dotyczy |
+  | **Zmień nazwę pliku** | Nie dotyczy | Nie dotyczy |
+  | **Plik aktualizacji** | Nie | Nie dotyczy |
+  ||||
 
-* Protokół SFTP-SSH nie obsługuje fragmentów. Podczas żądania zawartości pliku wyzwalane są tylko pliki o rozmiarze 15 MB lub mniejszej. Aby uzyskać pliki o rozmiarze większym niż 15 MB, użyj tego wzorca:
+  > [!NOTE]
+  > Aby przekazać duże pliki, musisz mieć uprawnienia do odczytu i zapisu dla folderu głównego na serwerze SFTP.
 
-  * Użyj wyzwalacza SFTP-SSH, który zwraca właściwości pliku, na przykład **gdy plik jest dodawany lub modyfikowany (tylko właściwości)** .
+* Protokół SFTP-SSH wyzwalacze nie obsługują fragmentacji komunikatów. Podczas żądania zawartości pliku wyzwalane są tylko pliki o rozmiarze 15 MB lub mniejszej. Aby uzyskać pliki o rozmiarze większym niż 15 MB, użyj tego wzorca:
 
-  * Śledź wyzwalacz z akcją **Pobierz zawartość pliku** SFTP-SSH, która odczytuje kompletny plik i niejawnie używa fragmenty komunikatów.
+  1. Użyj wyzwalacza SFTP-SSH zwracającego tylko właściwości pliku, na przykład **gdy plik jest dodawany lub modyfikowany (tylko właściwości)** .
+
+  1. Śledź wyzwalacz z akcją **Pobierz zawartość pliku** SFTP-SSH, która odczytuje kompletny plik i niejawnie używa fragmenty komunikatów.
 
 <a name="comparison"></a>
 
@@ -153,11 +158,11 @@ Jeśli klucz prywatny jest w formacie pobierania, który używa rozszerzenia naz
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com)i Otwórz aplikację logiki w Projektancie aplikacji logiki, jeśli nie jest jeszcze otwarta.
 
-1. W przypadku pustych aplikacji logiki w polu wyszukiwania wprowadź ciąg "SFTP SSH" jako filtr. Na liście Wyzwalacze wybierz wyzwalacz, który chcesz.
+1. W przypadku pustych aplikacji logiki w polu wyszukiwania wprowadź `sftp ssh` jako filtr. Na liście Wyzwalacze wybierz wyzwalacz, który chcesz.
 
-   lub
+   — lub —
 
-   W przypadku istniejących aplikacji logiki w ostatnim kroku, w którym chcesz dodać akcję, wybierz pozycję **nowy krok**. W polu wyszukiwania wprowadź ciąg "SFTP SSH" jako filtr. Na liście Akcje wybierz żądaną akcję.
+   W przypadku istniejących aplikacji logiki w ostatnim kroku, w którym chcesz dodać akcję, wybierz pozycję **nowy krok**. W polu wyszukiwania wprowadź `sftp ssh` jako filtr. Na liście Akcje wybierz żądaną akcję.
 
    Aby dodać akcję między krokami, przesuń wskaźnik myszy nad strzałkę między krokami. Wybierz wyświetlony znak plus ( **+** ), a następnie wybierz pozycję **Dodaj akcję**.
 
@@ -180,6 +185,22 @@ Jeśli klucz prywatny jest w formacie pobierania, który używa rozszerzenia naz
 1. Po zakończeniu wprowadzania szczegółów połączenia wybierz pozycję **Utwórz**.
 
 1. Podaj teraz niezbędne szczegóły wybranego wyzwalacza lub akcji i Kontynuuj tworzenie przepływu pracy aplikacji logiki.
+
+<a name="change-chunk-size"></a>
+
+## <a name="override-chunk-size"></a>Przesłoń rozmiar fragmentu
+
+Aby zastąpić domyślne zachowanie adaptacyjne używane do rozdzielania, można określić stały rozmiar fragmentu od 5 MB do 50 MB.
+
+1. W prawym górnym rogu akcji wybierz przycisk wielokropka ( **...** ), a następnie wybierz pozycję **Ustawienia**.
+
+   ![Otwórz ustawienia protokołu SFTP-SSH](./media/connectors-sftp-ssh/sftp-ssh-connector-setttings.png)
+
+1. W obszarze **transfer zawartości**we właściwości **rozmiar fragmentu** wprowadź wartość całkowitą z `5` do `50`, na przykład: 
+
+   ![Określ rozmiar fragmentu do użycia zamiast niego](./media/connectors-sftp-ssh/specify-chunk-size-override-default.png)
+
+1. Po zakończeniu wybierz pozycję **Gotowe**.
 
 ## <a name="examples"></a>Przykłady
 

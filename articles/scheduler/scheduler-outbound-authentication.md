@@ -1,25 +1,26 @@
 ---
-title: Uwierzytelnianie wychodzące — usługa Azure Scheduler
+title: Uwierzytelnianie danych wychodzących
 description: Dowiedz się, jak skonfigurować lub usunąć uwierzytelnianie wychodzące dla usługi Azure Scheduler
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 6707f82b-7e32-401b-a960-02aae7bb59cc
+ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/15/2016
-ms.openlocfilehash: 2ea09330fb8d3d97da5fbc197dba9668f1a4f685
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: bcd14e618323aec1c7ce47fcebb25099fa96be81
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300846"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898510"
 ---
 # <a name="outbound-authentication-for-azure-scheduler"></a>Uwierzytelnianie wychodzące dla usługi Azure Scheduler
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) zastępuje usługę Azure Scheduler, która jest [wycofywana](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Aby kontynuować pracę z zadaniami skonfigurowanymi w usłudze Scheduler, [Przeprowadź migrację do Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) najszybciej, jak to możliwe.
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) zastępuje usługę Azure Scheduler, która jest [wycofywana](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Aby kontynuować pracę z zadaniami skonfigurowanymi w usłudze Scheduler, [Przeprowadź migrację do Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) najszybciej, jak to możliwe. 
+>
+> Usługa Scheduler nie jest już dostępna w Azure Portal, ale polecenia cmdlet programu PowerShell dla [interfejsu API REST](/rest/api/scheduler) i [usługi Azure Scheduler](scheduler-powershell-reference.md) pozostają dostępne w tym momencie, aby można było zarządzać zadaniami i kolekcjami zadań.
 
 Zadania usługi Azure Scheduler mogą wymagać wywołania usług, które wymagają uwierzytelniania, takich jak inne usługi platformy Azure, Salesforce.com, Facebook i Secure Custom websites. Wywołana usługa może określić, czy zadanie usługi Scheduler ma dostęp do żądanych zasobów. 
 
@@ -31,25 +32,25 @@ Usługa Scheduler obsługuje te modele uwierzytelniania:
 
 ## <a name="add-or-remove-authentication"></a>Dodaj lub Usuń uwierzytelnianie
 
-* Aby dodać uwierzytelnianie do zadania usługi Scheduler, podczas tworzenia lub aktualizowania zadania Dodaj `authentication` element podrzędny JavaScript Object Notation (JSON) `request` do elementu. 
+* Aby dodać uwierzytelnianie do zadania usługi Scheduler, podczas tworzenia lub aktualizowania zadania Dodaj element podrzędny `authentication` JavaScript Object Notation (JSON) do elementu `request`. 
 
-  Odpowiedzi nigdy nie zwracają wpisów tajnych, które są przesyłane do usługi Scheduler przez umieszczenie, poprawkę lub żądanie post w `authentication` obiekcie. 
+  Odpowiedzi nigdy nie zwracają wpisów tajnych, które są przesyłane do usługi Scheduler przez żądanie PUT, PATCH lub POST w obiekcie `authentication`. 
   Odpowiedzi ustawiają informacje o kluczach tajnych na wartość null lub mogą korzystać z tokenu publicznego reprezentującego uwierzytelnioną jednostkę. 
 
-* Aby usunąć uwierzytelnianie z zadania usługi Scheduler, jawnie Uruchom żądanie Put lub patch w zadaniu, a następnie ustaw `authentication` dla obiektu wartość null. Odpowiedź nie będzie zawierać żadnych właściwości uwierzytelniania.
+* Aby usunąć uwierzytelnianie z zadania usługi Scheduler, jawnie Uruchom żądanie PUT lub PATCH w zadaniu, a następnie ustaw dla obiektu `authentication` wartość null. Odpowiedź nie będzie zawierać żadnych właściwości uwierzytelniania.
 
 ## <a name="client-certificate"></a>Certyfikat klienta
 
 ### <a name="request-body---client-certificate"></a>Treść żądania — certyfikat klienta
 
-Podczas dodawania uwierzytelniania przy użyciu `ClientCertificate` modelu należy określić te dodatkowe elementy w treści żądania.  
+Podczas dodawania uwierzytelniania przy użyciu modelu `ClientCertificate` należy określić te dodatkowe elementy w treści żądania.  
 
 | Element | Wymagany | Opis |
 |---------|----------|-------------|
 | **uwierzytelnianie** (element nadrzędny) | Obiekt uwierzytelniania używany przez certyfikat klienta SSL |
-| **type** | Tak | Typ uwierzytelniania. W przypadku certyfikatów klienta SSL wartość jest `ClientCertificate`. |
-| **pfx** | Tak | Zawartość pliku PFX zakodowana algorytmem Base64 |
-| **Hasło** | Tak | Hasło do uzyskiwania dostępu do pliku PFX |
+| **type** | Yes | Typ uwierzytelnienia. W przypadku certyfikatów klienta SSL wartość jest `ClientCertificate`. |
+| **PFX** | Yes | Zawartość pliku PFX zakodowana algorytmem Base64 |
+| **hasło** | Yes | Hasło do uzyskiwania dostępu do pliku PFX |
 ||| 
 
 ### <a name="response-body---client-certificate"></a>Treść odpowiedzi — certyfikat klienta 
@@ -59,7 +60,7 @@ Gdy żądanie jest wysyłane z informacjami o uwierzytelnianiu, odpowiedź zawie
 | Element | Opis | 
 |---------|-------------| 
 | **uwierzytelnianie** (element nadrzędny) | Obiekt uwierzytelniania używany przez certyfikat klienta SSL |
-| **type** | Typ uwierzytelniania. W przypadku certyfikatów klienta SSL wartość jest `ClientCertificate`. |
+| **type** | Typ uwierzytelnienia. W przypadku certyfikatów klienta SSL wartość jest `ClientCertificate`. |
 | **certificateThumbprint** |Odcisk palca certyfikatu |
 | **certificateSubjectName** |Nazwa wyróżniająca podmiotu certyfikatu |
 | **certificateExpiration** | Data wygaśnięcia certyfikatu |
@@ -162,14 +163,14 @@ Date: Wed, 16 Mar 2016 19:04:23 GMT
 
 ### <a name="request-body---basic"></a>Treść żądania — podstawowa
 
-Podczas dodawania uwierzytelniania przy użyciu `Basic` modelu należy określić te dodatkowe elementy w treści żądania.
+Podczas dodawania uwierzytelniania przy użyciu modelu `Basic` należy określić te dodatkowe elementy w treści żądania.
 
 | Element | Wymagany | Opis |
 |---------|----------|-------------|
 | **uwierzytelnianie** (element nadrzędny) | Obiekt uwierzytelniania używany do uwierzytelniania podstawowego | 
-| **type** | Tak | Typ uwierzytelniania. W przypadku uwierzytelniania podstawowego wartość jest `Basic`równa. | 
-| **Nazwa użytkownika** | Tak | Nazwa użytkownika do uwierzytelnienia | 
-| **Hasło** | Tak | Hasło do uwierzytelnienia |
+| **type** | Yes | Typ uwierzytelnienia. W przypadku uwierzytelniania podstawowego wartość jest `Basic`. | 
+| **uż** | Yes | Nazwa użytkownika do uwierzytelnienia | 
+| **hasło** | Yes | Hasło do uwierzytelnienia |
 |||| 
 
 ### <a name="response-body---basic"></a>Treść odpowiedzi — podstawowa
@@ -179,8 +180,8 @@ Gdy żądanie jest wysyłane z informacjami o uwierzytelnianiu, odpowiedź zawie
 | Element | Opis | 
 |---------|-------------|
 | **uwierzytelnianie** (element nadrzędny) | Obiekt uwierzytelniania używany do uwierzytelniania podstawowego |
-| **type** | Typ uwierzytelniania. W przypadku uwierzytelniania podstawowego wartość jest `Basic`równa. |
-| **Nazwa użytkownika** | Uwierzytelniona nazwa użytkownika |
+| **type** | Typ uwierzytelnienia. W przypadku uwierzytelniania podstawowego wartość jest `Basic`. |
+| **uż** | Uwierzytelniona nazwa użytkownika |
 ||| 
 
 ### <a name="sample-rest-request---basic"></a>Przykładowe żądanie REST — podstawowe
@@ -276,20 +277,20 @@ Date: Wed, 16 Mar 2016 19:05:06 GMT
 }
 ```
 
-## <a name="active-directory-oauth"></a>Uwierzytelnianie OAuth usługi Active Directory
+## <a name="active-directory-oauth"></a>Active Directory OAuth
 
 ### <a name="request-body---active-directory-oauth"></a>Treść żądania — Active Directory uwierzytelniania OAuth 
 
-Podczas dodawania uwierzytelniania przy użyciu `ActiveDirectoryOAuth` modelu należy określić te dodatkowe elementy w treści żądania.
+Podczas dodawania uwierzytelniania przy użyciu modelu `ActiveDirectoryOAuth` należy określić te dodatkowe elementy w treści żądania.
 
 | Element | Wymagany | Opis |
 |---------|----------|-------------|
-| **uwierzytelnianie** (element nadrzędny) | Tak | Obiekt uwierzytelniania używany do uwierzytelniania ActiveDirectoryOAuth |
-| **type** | Tak | Typ uwierzytelniania. W przypadku uwierzytelniania ActiveDirectoryOAuth wartość jest `ActiveDirectoryOAuth`równa. |
-| **dzierżaw** | Tak | Identyfikator dzierżawy dzierżawy usługi Azure AD. Aby znaleźć identyfikator dzierżawy dzierżawy usługi Azure AD, uruchom `Get-AzureAccount` polecenie w Azure PowerShell. |
-| **audience** | Tak | Ta wartość jest ustawiona na `https://management.core.windows.net/`. | 
-| **clientId** | Tak | Identyfikator klienta aplikacji usługi Azure AD | 
-| **wpisu** | Tak | Wpis tajny klienta żądającego tokenu | 
+| **uwierzytelnianie** (element nadrzędny) | Yes | Obiekt uwierzytelniania używany do uwierzytelniania ActiveDirectoryOAuth |
+| **type** | Yes | Typ uwierzytelnienia. W przypadku uwierzytelniania ActiveDirectoryOAuth wartość jest `ActiveDirectoryOAuth`. |
+| **dzierżaw** | Yes | Identyfikator dzierżawy dzierżawy usługi Azure AD. Aby znaleźć identyfikator dzierżawy dzierżawy usługi Azure AD, uruchom `Get-AzureAccount` w Azure PowerShell. |
+| **publiczn** | Yes | Ta wartość jest ustawiona na `https://management.core.windows.net/`. | 
+| **clientId** | Yes | Identyfikator klienta aplikacji usługi Azure AD | 
+| **wpisu** | Yes | Wpis tajny klienta żądającego tokenu | 
 |||| 
 
 ### <a name="response-body---active-directory-oauth"></a>Treść odpowiedzi — Active Directory uwierzytelniania OAuth
@@ -299,9 +300,9 @@ Gdy żądanie jest wysyłane z informacjami o uwierzytelnianiu, odpowiedź zawie
 | Element | Opis |
 |---------|-------------|
 | **uwierzytelnianie** (element nadrzędny) | Obiekt uwierzytelniania używany do uwierzytelniania ActiveDirectoryOAuth |
-| **type** | Typ uwierzytelniania. W przypadku uwierzytelniania ActiveDirectoryOAuth wartość jest `ActiveDirectoryOAuth`równa. | 
+| **type** | Typ uwierzytelnienia. W przypadku uwierzytelniania ActiveDirectoryOAuth wartość jest `ActiveDirectoryOAuth`. | 
 | **dzierżaw** | Identyfikator dzierżawy dla dzierżawy usługi Azure AD |
-| **audience** | Ta wartość jest ustawiona na `https://management.core.windows.net/`. |
+| **publiczn** | Ta wartość jest ustawiona na `https://management.core.windows.net/`. |
 | **clientId** | Identyfikator klienta aplikacji usługi Azure AD |
 ||| 
 
@@ -403,10 +404,9 @@ Date: Wed, 16 Mar 2016 19:10:02 GMT
 }
 ```
 
-## <a name="see-also"></a>Zobacz także
+## <a name="next-steps"></a>Następne kroki
 
-* [Czym jest Azure Scheduler?](scheduler-intro.md)
 * [Pojęcia i terminologia dotyczące usługi Azure Scheduler oraz hierarchia jednostek](scheduler-concepts-terms.md)
 * [Limity, wartości domyślne i kody błędów usługi Azure Scheduler](scheduler-limits-defaults-errors.md)
-* [Interfejs API REST usługi Azure Scheduler](https://msdn.microsoft.com/library/mt629143)
+* [Dokumentacja interfejsu API REST usługi Azure Scheduler](/rest/api/scheduler)
 * [Dokumentacja poleceń cmdlet programu PowerShell dla usługi Azure Scheduler](scheduler-powershell-reference.md)

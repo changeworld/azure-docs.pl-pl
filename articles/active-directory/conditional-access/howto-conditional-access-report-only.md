@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d63aaa0103715a928cdd5332de738a473b329f2e
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: da44e8482e335c209f45db478797efa5461bbfe1
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186084"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671860"
 ---
 # <a name="configure-a-conditional-access-policy-in-report-only-mode-preview"></a>Konfigurowanie zasad dostępu warunkowego w trybie tylko do raportowania (wersja zapoznawcza)
 
@@ -48,8 +48,8 @@ Aby wyświetlić wynik zasad dotyczących tylko raportów dotyczących określon
 
 Aby wyświetlić zagregowany wpływ zasad dostępu warunkowego przy użyciu nowego skoroszytu dostępu warunkowego, należy zintegrować Azure Monitor z usługą Azure AD i wyeksportować dzienniki logowania. Aby skonfigurować tę integrację, należy wykonać dwie czynności: 
 
-1. [Zarejestruj się, aby uzyskać subskrypcję Azure monitor i utworzyć obszar roboczy](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
-1. [Wyeksportuj dzienniki logowania z usługi Azure AD do Azure monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics).
+1. [Zarejestruj się, aby uzyskać subskrypcję Azure monitor i utworzyć obszar roboczy](/azure/azure-monitor/learn/quick-create-workspace).
+1. [Wyeksportuj dzienniki logowania z usługi Azure AD do Azure monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics).
 
 Więcej informacji o cenach Azure Monitor można znaleźć na [stronie cennika Azure monitor](https://azure.microsoft.com/pricing/details/monitor/). Zasoby do oszacowania kosztów, ustawiania dziennego limitu lub dostosowywania okresu przechowywania danych można znaleźć w artykule, [zarządzać użyciem i kosztami z dzienników Azure monitor](../../azure-monitor/platform/manage-cost-storage.md#estimating-the-costs-to-manage-your-environment).
 

@@ -1,25 +1,26 @@
 ---
-title: Wysoka dostępność i niezawodność — usługa Azure Scheduler
+title: Wysoka dostępność i niezawodność
 description: Dowiedz się więcej o wysokiej dostępności i niezawodności w usłudze Azure Scheduler
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 5ec78e60-a9b9-405a-91a8-f010f3872d50
+ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/16/2016
-ms.openlocfilehash: 6a729df7eb08f8dacff4b0d35d011854208510ff
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 20c2054e168a9b17d9b4ab159cfefbf607ab6d11
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979284"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898559"
 ---
 # <a name="high-availability-and-reliability-for-azure-scheduler"></a>Wysoka dostępność i niezawodność usługi Azure Scheduler
 
 > [!IMPORTANT]
 > [Azure Logic Apps](../logic-apps/logic-apps-overview.md) zastępuje usługę Azure Scheduler, która jest [wycofywana](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Aby kontynuować pracę z zadaniami skonfigurowanymi w usłudze Scheduler, [Przeprowadź migrację do Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) najszybciej, jak to możliwe. 
+>
+> Usługa Scheduler nie jest już dostępna w Azure Portal, ale polecenia cmdlet programu PowerShell dla [interfejsu API REST](/rest/api/scheduler) i [usługi Azure Scheduler](scheduler-powershell-reference.md) pozostają dostępne w tym momencie, aby można było zarządzać zadaniami i kolekcjami zadań.
 
 Usługa Azure Scheduler zapewnia [wysoką dostępność](https://docs.microsoft.com/azure/architecture/framework/#resiliency) i niezawodność zadań. Aby uzyskać więcej informacji, zobacz [Umowa SLA dla usługi Scheduler](https://azure.microsoft.com/support/legal/sla/scheduler).
 
@@ -29,7 +30,7 @@ Usługa Azure Scheduler to [Wysoka dostępność] i używa zarówno geograficzni
 
 ### <a name="geo-redundant-service-deployment"></a>Wdrożenie usługi geograficznie nadmiarowej
 
-Usługa Azure Scheduler jest dostępna w Azure Portal w niemal [każdym regionie geograficznym obecnie obsługiwanym przez platformę Azure](https://azure.microsoft.com/global-infrastructure/regions/#services). W związku z tym, jeśli centrum danych platformy Azure w hostowanym regionie stanie się niedostępne, nadal możesz korzystać z usługi Azure Scheduler, ponieważ możliwości pracy w trybie failover w usłudze udostępniają harmonogram z innego centrum danych.
+Usługa Azure Scheduler jest dostępna w prawie [każdym regionie geograficznym obecnie obsługiwanym przez platformę Azure](https://azure.microsoft.com/global-infrastructure/regions/#services). W związku z tym, jeśli centrum danych platformy Azure w hostowanym regionie stanie się niedostępne, nadal możesz korzystać z usługi Azure Scheduler, ponieważ możliwości pracy w trybie failover w usłudze udostępniają harmonogram z innego centrum danych.
 
 ### <a name="geo-regional-job-replication"></a>Geograficzna replikacja zadań
 
@@ -50,7 +51,7 @@ Usługa Azure Scheduler gwarantuje własną wysoką dostępność, ale ma inne p
 
 <a name="retry-policies"></a>
 
-### <a name="retry-policies"></a>Zasady ponawiania prób
+### <a name="retry-policies"></a>Zasady ponawiania
 
 Usługa Azure Scheduler umożliwia skonfigurowanie zasad ponawiania prób. Jeśli zadanie nie powiedzie się, domyślnie usługa Scheduler ponawia próbę wykonania zadania cztery razy w odstępach 30-sekundowych. Te zasady ponawiania można bardziej agresywnie, na przykład 10 razy w odstępach 30-sekundowych lub mniej agresywnych, takich jak dwa razy w dziennych odstępach czasu.
 
@@ -70,9 +71,9 @@ Typ akcji dla akcji alternatywnej może się różnić od oryginalnej akcji. Na 
 
 Aby dowiedzieć się, jak skonfigurować alternatywny punkt końcowy, zobacz [ErrorAction](scheduler-concepts-terms.md#error-action).
 
-## <a name="see-also"></a>Zobacz także
+## <a name="next-steps"></a>Następne kroki
 
-* [Czym jest Azure Scheduler?](scheduler-intro.md)
 * [Pojęcia, terminologia oraz hierarchia jednostek](scheduler-concepts-terms.md)
-* [Tworzenie złożonych i zaawansowanych harmonogramów cyklicznych](scheduler-advanced-complexity.md)
+* [Dokumentacja interfejsu API REST usługi Azure Scheduler](/rest/api/scheduler)
+* [Dokumentacja poleceń cmdlet programu PowerShell dla usługi Azure Scheduler](scheduler-powershell-reference.md)
 * [Limity, limity przydziału, wartości domyślne i kody błędów](scheduler-limits-defaults-errors.md)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87224c9e3e697b86aab51d1e922af8ab2130ac40
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 2d2ebcc885b4018f4d9c3ff1b525ffc19b1abdda
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186233"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671922"
 ---
 # <a name="building-a-conditional-access-policy"></a>Tworzenie zasad dostępu warunkowego
 
@@ -66,11 +66,11 @@ Ten warunek przypisania umożliwia zasadom dostępu warunkowego kierowanie okre�
 
 Ta kontrolka służy do wykluczania urządzeń, które są dołączone do hybrydowej usługi Azure AD lub oznaczone jako zgodne w usłudze Intune. To wykluczenie można wykonać w celu zablokowania urządzeń niezarządzanych. 
 
-## <a name="access-controls"></a>Kontrola dostępu
+## <a name="access-controls"></a>Kontrole dostępu
 
 Część kontroli dostępu w zasadach dostępu warunkowego steruje sposobem wymuszania zasad.
 
-### <a name="grant"></a>Dawać
+### <a name="grant"></a>Uprawnienie
 
 [Przyznaj](concept-conditional-access-grant.md) administratorom środki wymuszania zasad, które mogą blokować lub przyznawać dostęp.
 
@@ -131,6 +131,6 @@ Artykuł [typowe zasady dostępu warunkowego](concept-conditional-access-policy-
 
 [Planowanie wdrożenia usługi Azure Multi-Factor Authentication opartej na chmurze](../authentication/howto-mfa-getstarted.md)
 
-[Zarządzanie zgodnością urządzeń z usługą Intune](https://docs.microsoft.com/intune/device-compliance-get-started)
+[Zarządzanie zgodnością urządzeń z usługą Intune](/intune/device-compliance-get-started)
 
-[Microsoft Cloud App Security i dostęp warunkowy](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+[Microsoft Cloud App Security i dostęp warunkowy](/cloud-app-security/proxy-intro-aad)

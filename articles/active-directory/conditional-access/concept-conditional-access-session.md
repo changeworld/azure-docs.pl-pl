@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84c794e6fe751bc1c12b90353ef7b285f31a2331
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: e99b9b87f939d614679fdecf24c9d36d99bf2938
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192144"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671885"
 ---
 # <a name="conditional-access-session"></a>Dostęp warunkowy: sesja
 
@@ -30,12 +30,12 @@ Organizacje mogą używać tego formantu, aby wymagać od usługi Azure AD przek
 
 Aby uzyskać więcej informacji o używaniu i konfigurowaniu ograniczeń wymuszonych przez aplikację, zobacz następujące artykuły:
 
-- [Włączanie ograniczonego dostępu za pomocą usługi SharePoint Online](https://docs.microsoft.com/sharepoint/control-access-from-unmanaged-devices)
+- [Włączanie ograniczonego dostępu za pomocą usługi SharePoint Online](/sharepoint/control-access-from-unmanaged-devices)
 - [Włączanie ograniczonego dostępu za pomocą usługi Exchange Online](https://aka.ms/owalimitedaccess)
 
 ## <a name="conditional-access-application-control"></a>Kontrola aplikacji dostępu warunkowego
 
-Kontrola dostępu warunkowego aplikacji używa architektury zwrotnego serwera proxy i jest unikatowo zintegrowany z dostępem warunkowym usługi Azure AD. Dostęp warunkowy usługi Azure AD umożliwia wymuszanie kontroli dostępu w aplikacjach organizacji na podstawie określonych warunków. Warunki definiują użytkowników lub grupę użytkowników oraz informacje o tym, co (w których aplikacjach w chmurze) oraz o tym, gdzie (które lokalizacje i sieci) są stosowane zasady dostępu warunkowego. Po ustaleniu warunków można kierować użytkowników do [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) , gdzie można chronić dane przy użyciu kontrola dostępu warunkowego aplikacji, stosując kontrolki dostępu i sesji.
+Kontrola dostępu warunkowego aplikacji używa architektury zwrotnego serwera proxy i jest unikatowo zintegrowany z dostępem warunkowym usługi Azure AD. Dostęp warunkowy usługi Azure AD umożliwia wymuszanie kontroli dostępu w aplikacjach organizacji na podstawie określonych warunków. Warunki definiują użytkowników lub grupę użytkowników oraz informacje o tym, co (w których aplikacjach w chmurze) oraz o tym, gdzie (które lokalizacje i sieci) są stosowane zasady dostępu warunkowego. Po ustaleniu warunków można kierować użytkowników do [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) , gdzie można chronić dane przy użyciu kontrola dostępu warunkowego aplikacji, stosując kontrolki dostępu i sesji.
 
 Kontroli dostępu warunkowego aplikacji umożliwia dostęp do aplikacji użytkownika i sesji, aby dało się monitorować i kontrolowane w czasie rzeczywistym na podstawie zasad dostępu i sesji. Zasady dostępu i sesji są używane w portalu usługi Cloud App Security do filtrów i połącz dane z zestawu akcje do wykonania na koncie użytkownika. Za pomocą zasad dostępu i sesji możesz wykonywać następujące czynności:
 
@@ -46,7 +46,7 @@ Kontroli dostępu warunkowego aplikacji umożliwia dostęp do aplikacji użytkow
 - Blokuj dostęp: możesz szczegółowo blokować dostęp dla określonych aplikacji i użytkowników w zależności od kilku czynników ryzyka. Można na przykład zablokować je, jeśli używają certyfikatów klienta jako formy zarządzania urządzeniami.
 - Blokuj działania niestandardowe: niektóre aplikacje mają unikatowe scenariusze, które przenoszą ryzyko, na przykład wysyłanie komunikatów z poufną zawartością w aplikacjach, takich jak Microsoft Teams lub zapasowy. W tych rodzajach scenariuszy można skanować komunikaty pod kątem poufnej zawartości i blokować je w czasie rzeczywistym.
 
-Aby uzyskać więcej informacji, zobacz artykuł [wdrażanie kontrola dostępu warunkowego aplikacji dla polecanych aplikacji](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad).
+Aby uzyskać więcej informacji, zobacz artykuł [wdrażanie kontrola dostępu warunkowego aplikacji dla polecanych aplikacji](/cloud-app-security/proxy-deployment-aad).
 
 ## <a name="sign-in-frequency-preview"></a>Częstotliwość logowania (wersja zapoznawcza)
 

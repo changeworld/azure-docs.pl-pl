@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: be1697038674a177eaced03732536c0df5b16983
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 74a4279d347be92b1047a9cf361e233ecc7fcff8
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046150"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674317"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Zapoznaj się z Azure Cosmos DB rachunku
 
@@ -20,7 +20,7 @@ Jako w pełni zarządzana usługa bazy danych w chmurze, Azure Cosmos DB upraszc
 
 W przypadku Azure Cosmos DB opłaty są naliczane godzinowo na podstawie zainicjowanej przepływności i zużywanej pamięci masowej. W przypadku przewidzianych przepływności jednostką rozliczeniową jest 100 RU/s na godzinę, naliczana na $0,008 za godzinę, przy założeniu, że standardowe ceny publiczne są dostępne, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/cosmos-db/). W przypadku zużytego magazynu opłaty są naliczane $0,25 za 1 GB magazynu miesięcznie, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/cosmos-db/). 
 
-W tym artykule przedstawiono kilka przykładów, które ułatwiają zapoznanie się z informacjami wyświetlanymi na rachunku miesięcznym. Liczby pokazane w przykładach mogą się różnić, jeśli kontenery usługi Azure Cosmos mają różną przepływność, jeśli są one dostępne w wielu regionach lub są uruchamiane dla różnych okresów w ciągu miesiąca.
+W tym artykule przedstawiono kilka przykładów, które ułatwiają zapoznanie się z informacjami widocznymi na rachunku miesięcznym. Liczby pokazane w przykładach mogą się różnić, jeśli dla kontenerów usługi Azure Cosmos aprowizowano inną przepływność, jeśli są one dostępne w wielu regionach lub są uruchamiane dla innych okresów w ciągu miesiąca.
 
 > [!NOTE]
 > Opłaty są naliczane za każdą część godziny zegarowej, a nie czas trwania 60 minuty.
@@ -49,7 +49,7 @@ W tym artykule przedstawiono kilka przykładów, które ułatwiają zapoznanie s
 
 ### <a name="billing-rate-if-storage-size-changes"></a>Stawka rozliczeń w przypadku zmiany rozmiaru magazynu
 
-Pojemność magazynu jest rozliczana w jednostkach maksymalnej godzinnej ilości przechowywanych danych (w GB) w miesiącu. Jeśli na przykład w pierwszej połowie miesiąca będzie używane 100 GB miejsca w magazynie, a w drugiej połowie miesiąca będzie używane 50 GB, opłata będzie odpowiadać użyciu 75 GB miejsca w magazynie w tym miesiącu.
+Pojemność magazynu jest rozliczana w jednostkach maksymalnej godzinowej ilości przechowywanych danych, w GB, w okresie miesięcznym. Jeśli na przykład wykorzystano 100 GB miejsca w magazynie przez połowę miesiąca i 50 GB przez drugą połowę miesiąca, opłaty są naliczane za równowartość 75 GB miejsca w magazynie w tym miesiącu.
 
 ### <a name="billing-rate-when-container-or-a-set-of-containers-are-active-for-less-than-an-hour"></a>Stawka rozliczeniowa, gdy kontener lub zestaw kontenerów są aktywne przez czas krótszy niż godzina
 
@@ -97,13 +97,13 @@ W dowolnym momencie możesz dodawać i usuwać regiony platformy Azure w dowolny
 
 Załóżmy, że masz kontener platformy Azure Cosmos w regionie zachodnie stany USA. Kontener jest tworzony z szybkością przepływności na 10 000 jednostek RU/s i przechowujesz 1 TB danych w tym miesiącu. Załóżmy, że dodasz trzy regiony (Wschodnie stany USA, Europa Północna i Azja Wschodnia) do konta usługi Azure Cosmos, z których każdy ma ten sam magazyn i przepływność. Łączny rachunek miesięczny będzie wynosić (przy założeniu 30 dni w miesiącu). Rachunek będzie następujący: 
 
-|**Element** |**Użycie (miesiąc)** |**Częstotliwość** |**Koszt miesięczny** |
+|**Element** |**Użycie (miesiąc)** |**Transmisji** |**Koszt miesięczny** |
 |---------|---------|---------|-------|
-|Rachunek za przepływność dla kontenera w regionie Zachodnie stany USA      | 10 000 RU/s * 24 * 30    |$0,008 za 100 RU/s na godzinę   |$576|
-|Rachunek za przepływność dla 3 dodatkowych regionów — Wschodnie stany USA, Europa Północna i Azja Wschodnia       | 3 * 10 tys./s * 24 * 30    |$0,008 za 100 RU/s na godzinę  |$1 728|
-|Rachunek za przestrzeń dyskową dla kontenera w regionie Zachodnie stany USA      | 250 GB    |$0,25/GB  |$62,50|
-|Rachunek za przestrzeń dyskową dla 3 dodatkowych regionów — Wschodnie stany USA, Europa Północna i Azja Wschodnia      | 3 * 250 GB    |$0,25/GB  |$187,50|
-|**Łączna liczba**     |     |  |**$2 554**|
+|Rachunek przepływności dla kontenera w regionie zachodnie stany USA      | 10 000 RU/s * 24 * 30    |$0,008 za 100 RU/s na godzinę   |$576|
+|Rachunek przepływności dla 3 dodatkowych regionów — Wschodnie stany USA, Europa Północna i Azja Wschodnia       | 3 * 10 tys./s * 24 * 30    |$0,008 za 100 RU/s na godzinę  |$1 728|
+|Magazyn dla kontenera w regionie zachodnie stany USA      | 250 GB    |$0,25/GB  |$62,50|
+|Rachunek za magazyn dla 3 dodatkowych regionów — Wschodnie stany USA, Europa Północna i Azja Wschodnia      | 3 * 250 GB    |$0,25/GB  |$187,50|
+|**Ogólnego**     |     |  |**$2 554**|
 
 *Załóżmy również, że wychodzące 100 GB danych co miesiąc z kontenera w regionie zachodnie stany USA w celu replikowania danych do regionu Wschodnie stany USA, Europa Północna i Azja Wschodnia. Opłaty są naliczane za ruch wychodzący zgodnie z stawkami za transfer danych.*
 
@@ -111,13 +111,13 @@ Załóżmy, że masz kontener platformy Azure Cosmos w regionie zachodnie stany 
 
 Załóżmy, że utworzysz kontener usługi Azure Cosmos w regionie zachodnie stany USA. Kontener jest tworzony z szybkością przepływności na 10 000 jednostek RU/s i przechowujesz 1 TB danych w tym miesiącu. Załóżmy, że dodasz trzy regiony (Wschodnie stany USA, Europa Północna i Azja Wschodnia), z których każdy ma ten sam magazyn i przepływność, i chcesz mieć możliwość zapisu w kontenerach we wszystkich regionach skojarzonych z kontem usługi Azure Cosmos. Łączny rachunek miesięczny będzie wynosić (przy założeniu 30 dni w miesiącu) w następujący sposób:
 
-|**Element** |**Użycie (miesiąc)**|**Częstotliwość** |**Koszt miesięczny** |
+|**Element** |**Użycie (miesiąc)**|**Transmisji** |**Koszt miesięczny** |
 |---------|---------|---------|-------|
 |Rachunek przepływności dla kontenera w regionie zachodnie stany USA (wszystkie regiony są zapisywalne)       | 10 000 RU/s * 24 * 30    |$0,016 za 100 RU/s na godzinę    |$1 152 |
 |Rachunek przepływności dla 3 dodatkowych regionów — Wschodnie stany USA, Europa Północna i Azja Wschodnia (wszystkie regiony są zapisywalne)        | (3 + 1) * 10 000 RU/s * 24 * 30    |$0,016 za 100 RU/s na godzinę   |$4 608 |
-|Rachunek za przestrzeń dyskową dla kontenera w regionie Zachodnie stany USA      | 250 GB    |$0,25/GB  |$62,50|
-|Rachunek za przestrzeń dyskową dla 3 dodatkowych regionów — Wschodnie stany USA, Europa Północna i Azja Wschodnia      | 3 * 250 GB    |$0,25/GB  |$187,50|
-|**Łączna liczba**     |     |  |**$6 010**|
+|Magazyn dla kontenera w regionie zachodnie stany USA      | 250 GB    |$0,25/GB  |$62,50|
+|Rachunek za magazyn dla 3 dodatkowych regionów — Wschodnie stany USA, Europa Północna i Azja Wschodnia      | 3 * 250 GB    |$0,25/GB  |$187,50|
+|**Ogólnego**     |     |  |**$6 010**|
 
 *Załóżmy również, że wychodzące 100 GB danych co miesiąc z kontenera w regionie zachodnie stany USA w celu replikowania danych do regionu Wschodnie stany USA, Europa Północna i Azja Wschodnia. Opłaty są naliczane za ruch wychodzący zgodnie z stawkami za transfer danych.*
 
@@ -181,7 +181,7 @@ Na poniższej ilustracji przedstawiono wizualnie zmiany całkowitej alokowanej p
 
 Łączny rachunek miesięczny (przy założeniu, że 30 dni/720 godzin w miesiącu) będzie obliczany w następujący sposób:
 
-|**Hours**  |**RU/s** |**Element** |**Użycie (co godzinę)** |**Koszty** |
+|**Liczb**  |**RU/s** |**Element** |**Użycie (co godzinę)** |**Koszty** |
 |---------|---------|---------|-------|-------|
 |[0-100] |D1:10 TYS. <br/>D2:30K <br/>C1:20 000 |Rachunek przepływności dla kontenera w regionie zachodnie stany USA (wszystkie regiony są zapisywalne)  | `D1: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br/>`D2: 30 K RU/sec/100 * $0.016 * 100 hours = $480` <br/>`C1: 20 K RU/sec/100 *$0.016 * 100 hours = $320` |$960  |
 | | |Opłaty za przepływność za 2 dodatkowe regiony: Wschodnie stany USA, Europa Północna (wszystkie regiony są zapisywalne)  |`(2 + 1) * (60 K RU/sec /100 * $0.016) * 100 hours = $2,880`  |$2 880  |
@@ -198,6 +198,37 @@ Na poniższej ilustracji przedstawiono wizualnie zmiany całkowitej alokowanej p
 |[701-720] |D1:20 000 <br/>D2:50 000 <br/>C1:-- |Rachunek przepływności dla kontenera w regionie zachodnie stany USA (wszystkie regiony są zapisywalne)  |`D1: 20 K RU/sec/100 *$0.016 * 20 hours = $64` <br/>`D2: 50 K RU/sec/100 *$0.016 * 20 hours = $160` |$224  |
 | | |Opłaty za przepływność za 2 dodatkowe regiony: Wschodnie stany USA, Europa Północna (wszystkie regiony są zapisywalne)  |`(1 + 1) * (70 K RU/sec /100 * $0.016) * 20 hours = $448`  |$224  |
 || |**Łączny koszt miesięczny**  | |**$38 688**   |
+
+## <a name="billing-examples-with-free-tier-accounts"></a>Przykłady rozliczeń z kontami w warstwie Bezpłatna
+Dzięki Azure Cosmos DB warstwy Bezpłatna uzyskasz bezpłatnie 400 RU/s i 5 GB miejsca na koncie, które są stosowane na poziomie konta. Każdy RU/s i magazyn przekraczający 400 RU/s i 5 GB będą rozliczane według zwykłych stawek cenowych na stronie z cennikiem. Na rachunku nie będzie widoczna opłata ani linia za bezpłatny 400 jednostek ru/s i 5 GB, tylko te jednostki, które są objęte bezpłatną warstwą. 400 RU/s dotyczy dowolnego typu przepływności (RU/s), autopilotażu (wersja zapoznawcza) i wielu wzorców.  
+
+### <a name="billing-example---container-or-database-with-provisioned-throughput"></a>Przykład rozliczeń — kontener lub baza danych z zainicjowaną przepływność
+- Załóżmy, że utworzymy bazę danych lub kontener na koncie warstwy Bezpłatna z 400 RU/s i 5 GB miejsca w magazynie.
+- Na rachunku nie będą wyświetlane żadne opłaty za ten zasób. Opłata godzinowa i miesięczna będą $0.
+- Teraz Załóżmy, że na tym samym koncie zostanie dodana kolejna baza danych lub kontener z 1000 RU/s i 10 GB miejsca w magazynie.
+- Na rachunku będzie teraz wyświetlana opłata za 1000 RU/s i 10 GB miejsca w magazynie. 
+
+### <a name="billing-example---container-or-database-with-autopilot-throughput-preview"></a>Przykład rozliczeń — kontener lub baza danych z przepływem przez autopilotaż (wersja zapoznawcza)
+- Załóżmy, że w ramach konta w warstwie Bezpłatna utworzysz bazę danych lub kontener z włączoną funkcją autopilotażu z maksymalną wartością RU/s z 4000 RU/s. Ten zasób będzie automatycznie skalowany między 400 RU/s-4000 RU/s. 
+- Załóżmy, że w ciągu 1 godziny do 10 godzin zasób wynosi co najmniej 400 RU/s. W ciągu godziny 11 zasób jest skalowany w górę do 1000 RU/s, a następnie z powrotem do 400 RU/s w ciągu godziny.
+- W godzinach od 1 do 10 opłaty zostaną naliczone $0 za przepływność, ponieważ 400 RU/s zostały objęte bezpłatną warstwą. 
+- W godzinie 11 zostanie naliczona stawka za rzeczywiste 1000 RU/s-400 RU/s = 600 RU/s, ponieważ jest to najwyższa wartość RU/s w danej godzinie. Będzie to 6 jednostek z 100 RU na godzinę, więc łączny koszt przepływności dla godziny będzie wynosić 6 jednostek * $0,012 = $0,072. 
+- Każdy magazyn przekraczający 5 GB zostanie rozliczony według normalnych stawek za magazyn. 
+
+### <a name="billing-example---multi-region-single-write-region-account"></a>Przykład rozliczeń — wieloregionowe, jedno konto regionu zapisu
+- Załóżmy, że w ramach konta warstwy Bezpłatna utworzysz bazę danych lub kontener z 1200 RU/s i 10 GB miejsca w magazynie. Replikujemy konto do 3 regionów i mamy konto z jednym wzorcem (pojedynczym regionem zapisu).
+- W sumie, bez warstwy Bezpłatna, opłaty są naliczane za 3 * 1200 RU/s = 3600 RU/s i 3 * 10 GB = 30 GB miejsca w magazynie.
+- W przypadku rabatu warstwy Bezpłatna po usunięciu 400 RU/s i 5 GB miejsca do magazynowania zostanie naliczona stawka za rzeczywiste 3200 RU/s (32 jednostek), która ma zainicjowaną przepływność na poziomie jednego regionu zapisu i 25 GB miejsca w magazynie.
+- Miesięczny koszt dla RU/s to: 32 jednostek * $0,008 * 24 godziny * 31 dni = $190,46. Miesięczny koszt magazynu to: 25 GB * 0,25/GB = $6,25. Łączny koszt to $190,46 + $6,25 = $196,71.
+- Uwaga: Jeśli cena jednostkowa obiektu RU/s lub magazynu jest różna w regionach, warstwa Bezpłatna 400 RU/s i 5 GB będzie odzwierciedlać stawki konta, w którym został utworzony region.
+
+### <a name="billing-example---multi-region-multi-master-multiple-write-region-account"></a>Przykład rozliczeń — wiele regionów, wieloregionowe i wieloserwerowe (z wieloma regionami zapisu)
+
+W tym przykładzie uwzględniono [Cennik wieloskładnikowy](https://azure.microsoft.com/pricing/details/cosmos-db/) dla kont utworzonych po 1 grudnia 2019. 
+- Załóżmy, że w ramach konta warstwy Bezpłatna utworzysz bazę danych lub kontener z 1200 RU/s i 10 GB miejsca w magazynie. Replikujemy konto do 3 regionów i mamy wielomaster (wiele regionów zapisu). 
+- W sumie, bez warstwy Bezpłatna, opłaty są naliczane za 3 * 1200 RU/s = 3600 RU/s i 3 * 10 GB = 30 GB miejsca w magazynie.
+- W przypadku rabatu warstwy Bezpłatna po usunięciu 400 RU/s i 5 GB miejsca do magazynowania zostanie naliczona stawka za rzeczywiste 3200 RU/s (32 jednostek), która zapewnia przepływność na poziomie wielu regionów zapisu oraz 25 GB miejsca w magazynie.
+- Miesięczny koszt dla RU/s to: 32 jednostek * $0,016 * 24 godziny * 31 dni = $380,93. Miesięczny koszt magazynu to: 25 GB * 0,25/GB = $6,25. Łączny koszt to $380,93 + $6,25 = $387,18.
 
 ## <a name="proactively-estimating-your-monthly-bill"></a>Proaktywne szacowanie rachunku miesięcznego  
 
@@ -216,8 +247,8 @@ Rozważmy inny przykład, w którym chcesz proaktywnie oszacować swój rachunek
 |**Koszt przepływności** | | | |
 |----|----|----|----|
 |Typ operacji| Liczba żądań na sekundę| Średni/RU/żądanie| Jednostek ru|
-|Zapis| 100 | 5 | 500|
-|Odczyt| 400| 1| 400|
+|Zapisywanie| 100 | 5 | 500|
+|Odczytywanie| 400| 1| 400|
 
 Łączny koszt RU/s: 500 + 400 = 900 godzinowo: 900/100 * $0,008 = $0,072 oczekiwany miesięczny koszt dla przepływności (przy założeniu 31 dni): $0,072 * 24 * 31 = $53,57
 
@@ -256,8 +287,8 @@ Rzeczywiste zakupione dane to kredyt z $8 USD za godzinę dla 100 K/s, przy uży
 |Wschodnie stany USA|$0,008 |50 K|$4|$2 880 |
 |Japonia Wschodnia|$0,009 |50 K| $4,50 |$3 240 |
 |||Płatność zgodnie z rzeczywistym użyciem|$8,50|$6120|
-|Zakupiona pojemność zarezerwowana|$0,0064 (20% rabatu) |100 jednostki RU/s lub $8 pojemności wstępnie kupione |-$8|-$5 760 |
-|Rachunek netto|||(0,50 USD) |$360 |
+|Zarezerwowana pojemność zakupiona|$0,0064 (20% rabatu) |100 jednostki RU/s lub $8 pojemności wstępnie kupione |-$8|-$5 760 |
+|Rachunek netto|||$0,50 |$360 |
 
 ## <a name="next-steps"></a>Następne kroki
 

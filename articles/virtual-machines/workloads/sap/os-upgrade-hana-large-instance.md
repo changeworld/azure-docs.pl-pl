@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 83b86b9bc5c09cc9f97a320e3019ddea68434309
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 3a0a5d39a7cb2162186291ea534a623ef45c40d4
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616457"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78675630"
 ---
 # <a name="operating-system-upgrade"></a>Uaktualnienie systemu operacyjnego
 W tym dokumencie opisano szczegółowe informacje dotyczące uaktualnień systemu operacyjnego w dużych wystąpieniach platformy HANA.
@@ -58,11 +58,11 @@ Konfiguracja systemu operacyjnego może przekroczyć zalecane ustawienia w miar�
   W celu zapewnienia prawidłowej wydajności sieci i stabilności systemu zaleca się zagwarantowanie, że dla systemu operacyjnego odpowiednie wersje sterowników eNIC i fNIC są zainstalowane zgodnie z poniższą tabelą zgodności. Serwery są dostarczane do klientów ze zgodnymi wersjami. Należy pamiętać, że w niektórych przypadkach podczas stosowania poprawek jądra systemu operacyjnego sterowniki mogą zostać przywrócone do domyślnych wersji sterowników. Upewnij się, że w odpowiedniej wersji sterownika działają operacje publikowania poprawek dla systemu operacyjnego/jądra.
        
       
-  |  Dostawca systemu operacyjnego    |  Wersja pakietu systemu operacyjnego     |  Sterownik eNIC  |  Sterownik fNIC |
-  |---------------|-------------------------|---------------|--------------|
-  |   Szło        |  SLES 12 SP2            |   2.3.0.40    |   1.6.0.34   |
-  |   Szło        |  SLES 12 Z DODATKIEM SP3            |   2.3.0.44    |   1.6.0.36   |
-  |   Red Hat     |  RHEL 7,2               |   2.3.0.39    |   1.6.0.34   |
+  |  Dostawca systemu operacyjnego    |  Wersja pakietu systemu operacyjnego     |  Wersja oprogramowania układowego  |  Sterownik eNIC |  Sterownik fNIC | 
+  |---------------|-------------------------|--------------------|--------------|--------------|
+  |   Szło        |  SLES 12 SP2            |   3.1.3 h           |  2.3.0.40    |   1.6.0.34   |
+  |   Szło        |  SLES 12 Z DODATKIEM SP3            |   3.1.3 h           |  2.3.0.44    |   1.6.0.36   |
+  |   Red Hat     |  RHEL 7,2               |   3.1.3 h           |  2.3.0.39    |   1.6.0.34   |
  
 
 ### <a name="commands-for-driver-upgrade-and-to-clean-old-rpm-packages"></a>Polecenia uaktualniania sterowników i czyszczenia starych pakietów rpm

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: helohr
-ms.openlocfilehash: f38fc45411c89351eb9a50a48f22d22905ee34e6
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 353501912836e0f6706f20deed1c1d9d416f1ce6
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367253"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894516"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Skalowanie hostów sesji przy użyciu Azure Automation
 
@@ -37,7 +37,7 @@ W czasie szczytowego użycia zadanie sprawdza bieżącą liczbę sesji i pojemno
 >[!NOTE]
 >*SessionThresholdPerCPU* nie ogranicza liczby sesji na maszynie wirtualnej. Ten parametr określa tylko, kiedy należy uruchomić nowe maszyny wirtualne w celu równoważenia obciążenia połączeń. Aby ograniczyć liczbę sesji, należy postępować zgodnie z instrukcjami [Set-RdsHostPool](/powershell/module/windowsvirtualdesktop/set-rdshostpool/) , aby odpowiednio skonfigurować parametr *MaxSessionLimit* .
 
-W czasie użytkowania poza szczytem zadanie Określa, które maszyny wirtualne hosta sesji powinny zostać zamknięte na podstawie parametru *MinimumNumberOfRDSH* . Zadanie skonfiguruje maszyny wirtualne hosta sesji do trybu opróżniania, aby zapobiec łączeniu się nowych sesji z hostami. Jeśli parametr *LimitSecondsToForceLogOffUser* zostanie ustawiony na wartość różną od zera, skrypt powiadamia wszystkie aktualnie zalogowanych użytkowników o konieczności zapisania swojej pracy, zaczekaj na skonfigurowanie czasu, a następnie wymusić wylogowanie się użytkowników. Po wyrejestrowaniu wszystkich sesji użytkownika na maszynie wirtualnej hosta sesji skrypt zostanie zamknięty.
+W czasie użytkowania poza szczytem zadanie Określa, które maszyny wirtualne hosta sesji powinny zostać zamknięte na podstawie parametru *MinimumNumberOfRDSH* . Zadanie skonfiguruje maszyny wirtualne hosta sesji do trybu opróżniania, aby zapobiec łączeniu się nowych sesji z hostami. Jeśli parametr *LimitSecondsToForceLogOffUser* zostanie ustawiony na wartość różną od zera, zadanie powiadomi wszystkie aktualnie zalogowanych użytkowników, aby zaoszczędzić swoją pracę, zaczekać skonfigurowany czas, a następnie wymusić wylogowanie się użytkowników. Po wyrejestrowaniu wszystkich sesji użytkownika na maszynie wirtualnej hosta sesji zadanie zostanie zamknięte.
 
 Jeśli parametr *LimitSecondsToForceLogOffUser* zostanie ustawiony na wartość zero, zadanie zezwoli na ustawienie konfiguracji sesji w określonych zasadach grupy do obsługi wylogowywania sesji użytkowników. Aby wyświetlić te zasady grupy, przejdź do pozycji **Konfiguracja komputera** > **zasady** > **Szablony administracyjne** > **składników systemu Windows** > **usługach terminalowych** > **limitów czasu sesji** > **serwera terminali** . W przypadku aktywnych sesji na maszynie wirtualnej hosta sesji zadanie pozostawi maszynę wirtualną hosta sesji uruchomioną. Jeśli nie ma aktywnych sesji, zadanie zamknie maszynę wirtualną hosta sesji.
 

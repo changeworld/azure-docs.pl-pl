@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.custom: mvc, cli-validate
-ms.openlocfilehash: edea7a7b4dcb5ed18adcbab973f9f351543c6422
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: af44f4a96567cc86c9f884cdfe5e28ff6b7bd8f3
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78330876"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897699"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Samouczek: zabezpieczanie połączenia usługi Azure SQL Database z usługi App Service za pomocą tożsamości zarządzanej
 
@@ -74,7 +74,7 @@ Aby uzyskać więcej informacji na temat dodawania administratora Active Directo
 
 ## <a name="set-up-visual-studio"></a>Konfigurowanie programu Visual Studio
 
-### <a name="windows"></a>Windows
+### <a name="windows"></a>System Windows
 Program Visual Studio dla systemu Windows jest zintegrowany z uwierzytelnianiem w usłudze Azure AD. Aby włączyć programowanie i debugowanie w programie Visual Studio, Dodaj użytkownika usługi Azure AD w programie Visual Studio, wybierając pozycję **plik** > **Ustawienia konta** z menu, a następnie kliknij przycisk **Dodaj konto**.
 
 Aby ustawić użytkownika usługi Azure AD na potrzeby uwierzytelniania usługi platformy Azure, wybierz pozycję **narzędzia** > **Opcje** z menu, a następnie wybierz pozycję **uwierzytelnianie usługi platformy Azure** > **wybór konta**. Wybierz dodanego użytkownika usługi Azure AD, a następnie kliknij przycisk **OK**.
@@ -126,6 +126,9 @@ W pliku *Web. config*pracują w oparciu o górę i wprowadź następujące zmian
     ```    
 
 - Znajdź parametry połączenia o nazwie `MyDbConnection` i Zastąp wartość `connectionString` wartością `"server=tcp:<server-name>.database.windows.net;database=<db-name>;UID=AnyString;Authentication=Active Directory Interactive"`. Zastąp _\<Server-name >_ i _\<db-Name >_ nazwą serwera i nazwą bazy danych.
+
+> [!NOTE]
+> SqlAuthenticationProvider zarejestrowano na podstawie zainstalowanej wcześniej biblioteki AppAuthentication. Domyślnie używa ona tożsamości przypisanej do systemu. Aby skorzystać z tożsamości przypisanej do użytkownika, należy podać dodatkową konfigurację. Zobacz [obsługę parametrów połączenia](../key-vault/service-to-service-authentication.md#connection-string-support) dla biblioteki AppAuthentication.
 
 Jest to każda czynność, którą należy połączyć z SQL Database. Podczas debugowania w programie Visual Studio kod używa użytkownika usługi Azure AD, który został skonfigurowany w konfiguracji programu [Visual Studio](#set-up-visual-studio). Serwer SQL Database zostanie skonfigurowany później, aby umożliwić połączenie z tożsamości zarządzanej aplikacji App Service.
 
@@ -189,6 +192,9 @@ Wpisz `Ctrl+F5`, aby ponownie uruchomić aplikację. Ta sama aplikacja CRUD w pr
 
 Następnie skonfigurujesz aplikację App Service, aby połączyć się z SQL Database przy użyciu tożsamości zarządzanej przypisanej do systemu.
 
+> [!NOTE]
+> Chociaż instrukcje w tej sekcji dotyczą tożsamości przypisanej do systemu, tożsamość przypisana przez użytkownika może być równie łatwa. W tym celu. należy zmienić `az webapp identity assign command`, aby przypisać żądaną tożsamość przypisaną przez użytkownika. Następnie podczas tworzenia użytkownika SQL upewnij się, że używasz nazwy zasobu tożsamości przypisanej do użytkownika, a nie nazwy lokacji.
+
 ### <a name="enable-managed-identity-on-app"></a>Włącz zarządzaną tożsamość w aplikacji
 
 Aby włączyć tożsamość zarządzanej dla aplikacji platformy Azure, użyj polecenia [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) w usłudze Cloud Shell. W poniższym poleceniu Zastąp *ciąg\<App-name >* .
@@ -237,7 +243,7 @@ ALTER ROLE db_ddladmin ADD MEMBER [<identity-name>];
 GO
 ```
 
-*\<Identity name >* to nazwa zarządzanej tożsamości w usłudze Azure AD. Ponieważ jest ona przypisana przez system, jest zawsze taka sama jak nazwa aplikacji App Service. Aby udzielić uprawnień dla grupy usługi Azure AD, należy zamiast tego użyć nazwy wyświetlanej grupy (na przykład *myAzureSQLDBAccessGroup*).
+*\<Identity name >* to nazwa zarządzanej tożsamości w usłudze Azure AD. Jeśli tożsamość jest przypisana przez system, nazwa jest zawsze taka sama jak nazwa aplikacji App Service. Aby udzielić uprawnień dla grupy usługi Azure AD, należy zamiast tego użyć nazwy wyświetlanej grupy (na przykład *myAzureSQLDBAccessGroup*).
 
 Wpisz polecenie `EXIT`, aby powrócić do wiersza polecenia usługi Cloud Shell.
 

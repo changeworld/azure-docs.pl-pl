@@ -1,26 +1,27 @@
 ---
-title: Pojęcia, terminologia oraz jednostki — Azure Scheduler | Microsoft Docs
+title: Pojęcia, terminy i jednostki
 description: Poznaj pojęcia, terminologię oraz hierarchię jednostek, łącznie z zadaniami i kolekcjami zadań, w usłudze Azure Scheduler.
 services: scheduler
 ms.service: scheduler
 ms.suite: infrastructure-services
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
+ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: 7e31f891cfd758b888e4045566ad2cd2d9ab6fb8
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 0a744c2de320ddad2e7959cae7b62d7990879953
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300952"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898571"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Pojęcia, terminologia i jednostki w usłudze Azure Scheduler
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) zastępuje usługę Azure Scheduler, która jest [wycofywana](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Aby kontynuować pracę z zadaniami skonfigurowanymi w usłudze Scheduler, [Przeprowadź migrację do Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) najszybciej, jak to możliwe.
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) zastępuje usługę Azure Scheduler, która jest [wycofywana](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Aby kontynuować pracę z zadaniami skonfigurowanymi w usłudze Scheduler, [Przeprowadź migrację do Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) najszybciej, jak to możliwe. 
+>
+> Usługa Scheduler nie jest już dostępna w Azure Portal, ale polecenia cmdlet programu PowerShell dla [interfejsu API REST](/rest/api/scheduler) i [usługi Azure Scheduler](scheduler-powershell-reference.md) pozostają dostępne w tym momencie, aby można było zarządzać zadaniami i kolekcjami zadań.
 
 ## <a name="entity-hierarchy"></a>Hierarchia jednostek
 
@@ -75,9 +76,9 @@ Usługa Azure Scheduler obsługuje wiele typów zadań:
 Na wysokim poziomie zadanie usługi Scheduler składa się z następujących elementów podstawowych:
 
 * Akcja uruchamiana po wyzwoleniu czasomierza zadania
-* Opcjonalnie: Czas uruchomienia zadania
-* Opcjonalnie: Kiedy i jak często powtarzać zadanie
-* Opcjonalnie: Akcja błędu, która jest uruchamiana, jeśli akcja podstawowa zakończy się niepowodzeniem
+* Opcjonalnie: czas uruchomienia zadania
+* Opcjonalnie: termin i częstotliwość powtarzania zadania
+* Opcjonalnie: akcja błędu uruchamiana, jeśli akcja podstawowa zakończy się niepowodzeniem
 
 Zadanie zawiera również dane dostarczane przez system, takie jak czas następnego zaplanowanego uruchomienia zadania. Definicją kodu zadania jest obiekt w formacie JavaScript Object Notation (JSON), który zawiera następujące elementy:
 
@@ -245,7 +246,7 @@ Zadanie jest uruchamiane cyklicznie, jeśli definicja JSON zadania zawiera obiek
 },
 ```
 
-| Właściwość | Wymagany | Value | Opis | 
+| Właściwość | Wymagany | Wartość | Opis | 
 |----------|----------|-------|-------------| 
 | **frequency** | Tak, gdy jest używany obiekt **recurrence** | „Minute”, „Hour”, „Day”, „Week”, „Month”, „Year” | Jednostka czasu między wystąpieniami | 
 | **interval** | Nie | od 1 do 1000 (włącznie) | Dodatnia liczba całkowita określająca liczbę jednostek czasu między każdym wystąpieniem na podstawie właściwości **frequency** (częstotliwość) | 
@@ -275,7 +276,7 @@ Dla przypadków, w których zadanie usługi Scheduler może zakończyć się nie
 },
 ```
 
-| Właściwość | Wymagany | Value | Opis | 
+| Właściwość | Wymagany | Wartość | Opis | 
 |----------|----------|-------|-------------| 
 | **retryType** | Yes | **Fixed**, **None** | Określa, czy zasada ponawiania jest zdefiniowana (**fixed**), czy nie (**none**). | 
 | **retryInterval** | Nie | PT30S | Określa interwał i częstotliwość między ponownymi próbami w [formacie ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Wartość minimalna wynosi 15 sekund, natomiast wartość maksymalna to 18 miesięcy. | 
@@ -319,11 +320,9 @@ Na przykład:
 }
 ```
 
-## <a name="see-also"></a>Zobacz też
+## <a name="next-steps"></a>Następne kroki
 
-* [Czym jest Azure Scheduler?](scheduler-intro.md)
-* [Pojęcia, terminologia oraz hierarchia jednostek](scheduler-concepts-terms.md)
 * [Tworzenie złożonych i zaawansowanych harmonogramów cyklicznych](scheduler-advanced-complexity.md)
-* [Limity, limity przydziału, wartości domyślne i kody błędów](scheduler-limits-defaults-errors.md)
 * [Dokumentacja interfejsu API REST usługi Azure Scheduler](/rest/api/scheduler)
 * [Dokumentacja poleceń cmdlet programu PowerShell dla usługi Azure Scheduler](scheduler-powershell-reference.md)
+* [Limity, limity przydziału, wartości domyślne i kody błędów](scheduler-limits-defaults-errors.md)

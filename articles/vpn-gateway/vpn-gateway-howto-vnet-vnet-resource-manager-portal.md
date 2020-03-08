@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: dbdc13b8c861c620bfdbaaf53c0901a51bb9ce08
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 3d91203253c08acdaa159fc70f7a34fa7fca20c8
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/06/2020
-ms.locfileid: "78399213"
+ms.locfileid: "78674149"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Konfigurowanie połączenia bramy sieci VPN między sieciami wirtualnymi przy użyciu witryny Azure Portal
 
@@ -127,7 +127,7 @@ Jeśli masz już sieć wirtualną, sprawdź, czy ustawienia są zgodne z projekt
 ### <a name="to-create-a-virtual-network"></a>Aby utworzyć sieć wirtualną
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
-## <a name="create-a-virtual-network-gateway"></a>Tworzenie bramy sieci wirtualnej
+## <a name="create-the-vnet1-gateway"></a>Tworzenie bramy VNet1
 W tym kroku zostaje utworzona brama dla sieci wirtualnej użytkownika. Tworzenie bramy często może trwać 45 minut lub dłużej, w zależności od wybranej jednostki SKU bramy. W przypadku tworzenia tej konfiguracji w ramach ćwiczenia zobacz [przykładowe ustawienia](#example-settings).
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
@@ -138,7 +138,7 @@ W tym kroku zostaje utworzona brama dla sieci wirtualnej użytkownika. Tworzenie
 [!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
 ## <a name="create-and-configure-vnet4"></a>Utwórz i skonfiguruj sieci vnet4
-Po skonfigurowaniu VNet1 Utwórz sieci vnet4, powtarzając poprzednie kroki i zastępując wartości wartościami sieci vnet4. Nie musisz czekać do momentu zakończenia tworzenia bramy sieci wirtualnej dla usługi VNet1 przed skonfigurowaniem usługi sieci vnet4. Jeśli używasz własnych wartości, upewnij się, że przestrzenie adresowe nie pokrywają się z żadnymi sieciami wirtualnymi, z którymi chcesz się połączyć.
+Po skonfigurowaniu VNet1 Utwórz sieci vnet4 i bramę sieci vnet4, powtarzając poprzednie kroki i zastępując wartości wartościami sieci vnet4. Nie musisz czekać do momentu zakończenia tworzenia bramy sieci wirtualnej dla usługi VNet1 przed skonfigurowaniem usługi sieci vnet4. Jeśli używasz własnych wartości, upewnij się, że przestrzenie adresowe nie pokrywają się z żadnymi sieciami wirtualnymi, z którymi chcesz się połączyć.
 
 ## <a name="configure-the-vnet1-gateway-connection"></a>Konfigurowanie połączenia bramy VNet1
 Po zakończeniu bram sieci wirtualnej dla VNet1 i sieci vnet4 można utworzyć połączenia bramy sieci wirtualnej. W tej sekcji opisano tworzenie połączenia z sieci VNet1 do sieci VNet4. Następujące kroki działają tylko w przypadku sieci wirtualnych należących do tej samej subskrypcji. Jeśli Twoje sieci wirtualne znajdują się w różnych subskrypcjach, do utworzenia połączenia musisz użyć programu [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md). Jeśli jednak Twoje sieci wirtualne znajdują się w różnych grupach zasobów w tej samej subskrypcji, możesz utworzyć połączenie między nimi przy użyciu portalu.
@@ -148,7 +148,7 @@ Po zakończeniu bram sieci wirtualnej dla VNet1 i sieci vnet4 można utworzyć p
    ![Strona połączeń](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections.png "Strona połączeń")
 2. Wybierz pozycję **+ Dodaj** , aby otworzyć stronę **Dodawanie połączenia** .
 
-   ![Dodaj połączenie](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-to-vnet4.png "Dodawanie połączenia")
+   ![Dodaj połączenie](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-vnet4-connection.png "Dodawanie połączenia")
 3. Na stronie **Dodawanie połączenia** wprowadź wartości dla połączenia:
 
    - **Nazwa**: Wprowadź nazwę połączenia. Na przykład *VNet1toVNet4*.

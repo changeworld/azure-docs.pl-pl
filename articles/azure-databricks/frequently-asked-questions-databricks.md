@@ -9,14 +9,14 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
-ms.openlocfilehash: c2cb7a90f0fe57efcd8f4d75aff3b5ee375abd07
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8d7aab43641c6c594ff60368ccb3810e0c060dd7
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75971495"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671575"
 ---
-# <a name="frequently-asked-questions-about-azure-databricks"></a>Często zadawane pytania dotyczące usługi Azure Databricks
+# <a name="frequently-asked-questions-about-azure-databricks"></a>Często zadawane pytania dotyczące Azure Databricks
 
 W tym artykule wymieniono najważniejsze pytania, które mogą być powiązane z Azure Databricks. Znajduje się w nim również kilka typowych problemów, które mogą wystąpić podczas korzystania z kostek. Aby uzyskać więcej informacji, zobacz [co to jest Azure Databricks](what-is-azure-databricks.md). 
 
@@ -71,7 +71,7 @@ Poniżej przedstawiono kilka rozwiązań tego problemu:
 
     b. Dodaj użytkownika z adresem e-mail `@<tenant_name>.onmicrosoft.com`, a nie `@<your_domain>` e-mail. Tę opcję można znaleźć w obszarze **domeny niestandardowe**w obszarze usługi Azure AD w Azure Portal.
     
-    d. Przyznaj temu nowemu użytkownikowi rolę **współautor** w zasobie obszaru roboczego datakostki.
+    c. Przyznaj temu nowemu użytkownikowi rolę **współautor** w zasobie obszaru roboczego datakostki.
     
     d. Zaloguj się do Azure Portal za pomocą nowego użytkownika i Znajdź obszar roboczy datakostki.
     
@@ -88,11 +88,20 @@ Jeśli nie utworzono obszaru roboczego, a użytkownik zostanie dodany jako użyt
 
 #### <a name="error-message"></a>Komunikat o błędzie
 
-"Niepowodzenie uruchomienia dostawcy chmury: Wystąpił błąd dostawcy w chmurze podczas konfigurowania klastra. Aby uzyskać więcej informacji, zobacz Przewodnik po kostkach. Kod błędu platformy Azure: PublicIPCountLimitReached. Komunikat o błędzie platformy Azure: nie można utworzyć więcej niż 60 publicznych adresów IP dla tej subskrypcji w tym regionie ".
+"Niepowodzenie uruchomienia dostawcy chmury: Wystąpił błąd dostawcy w chmurze podczas konfigurowania klastra. Aby uzyskać więcej informacji, zobacz Przewodnik po kostkach. Kod błędu platformy Azure: PublicIPCountLimitReached. Komunikat o błędzie platformy Azure: nie można utworzyć więcej niż 10 publicznych adresów IP dla tej subskrypcji w tym regionie ".
+
+#### <a name="background"></a>Tło
+
+Klastry datakostek używają jeden publiczny adres IP na węzeł (w tym węzeł sterownika). Subskrypcje platformy Azure mają [limity publicznych adresów IP](/azure/azure-resource-manager/management/azure-subscription-service-limits#publicip-address) na region. W ten sposób operacje tworzenia klastrów i skalowania w górę mogą zakończyć się niepowodzeniem, jeśli spowodują, że liczba publicznych adresów IP przydzielono do tej subskrypcji w tym regionie przekroczy limit. Ten limit obejmuje również publiczne adresy IP przystosowane do użycia poza datakostki, takie jak niestandardowe maszyny wirtualne zdefiniowane przez użytkownika.
+
+Ogólnie rzecz biorąc, klastry zużywają tylko publiczne adresy IP, gdy są aktywne. Jednak błędy `PublicIPCountLimitReached` mogą być nadal wykonywane przez krótki czas nawet po zakończeniu innych klastrów. Wynika to z faktu, że podczas kończenia klastra zasoby platformy Azure są tymczasowo buforowane w pamięci podręcznej. Buforowanie zasobów odbywa się według projektu, ponieważ znacznie zmniejsza opóźnienie uruchamiania klastra i skalowanie automatyczne w wielu typowych scenariuszach.
 
 #### <a name="solution"></a>Rozwiązanie
 
-Klastry usługi Databricks używają jednego publicznego adresu IP na węzeł. Jeśli Twoja subskrypcja użyła już wszystkich publicznych adresów IP, należy [poprosić o zwiększenie limitu przydziału](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request). Wybierz pozycję **przydział** jako **typ problemu**i **Sieć: ARM** jako **typ przydziału**. W obszarze **szczegóły**Zażądaj zwiększenia limitu przydziału publicznego adresu IP. Na przykład, jeśli limit jest obecnie 60 i chcesz utworzyć klaster z systemem 100, zażądaj zwiększenia limitu do 160.
+Jeśli Twoja subskrypcja osiągnęła już swój publiczny limit adresów IP dla danego regionu, należy wykonać jedną lub drugą z następujących czynności.
+
+- Utwórz nowe klastry w innym obszarze roboczym datakostki. Drugi obszar roboczy musi znajdować się w regionie, w którym nie osiągnięto limitu publicznego adresu IP Twojej subskrypcji.
+- [Żądanie zwiększenia limitu publicznego adresu IP](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request). Wybierz pozycję **przydział** jako **typ problemu**i **Sieć: ARM** jako **typ przydziału**. W obszarze **szczegóły**Zażądaj zwiększenia limitu przydziału publicznego adresu IP. Na przykład, jeśli limit jest obecnie 60 i chcesz utworzyć klaster z systemem 100, zażądaj zwiększenia limitu do 160.
 
 ### <a name="issue-a-second-type-of-cloud-provider-launch-failure-while-setting-up-the-cluster-missingsubscriptionregistration"></a>Problem: Wystąpił drugi typ błędu uruchamiania dostawcy chmury podczas konfigurowania klastra (MissingSubscriptionRegistration)
 
@@ -123,4 +132,3 @@ Zaloguj się jako Administrator globalny do Azure Portal. W przypadku Azure Acti
 
 - [Szybki Start: Rozpoczynanie pracy z usługą Azure Databricks](quickstart-create-databricks-workspace-portal.md)
 - [Co to jest Azure Databricks?](what-is-azure-databricks.md)
-

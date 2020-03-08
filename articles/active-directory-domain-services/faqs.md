@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: c51387e92a100cabc5b35ccc7abde0483e77b5b1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: cea1664a0418dbe6269c22cffc70e0979dea41f0
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378522"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78893107"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Często zadawane pytania
 
@@ -97,7 +97,7 @@ Każde konto użytkownika, które jest częścią domeny zarządzanej AD DS plat
 Nie. Nie przyznano uprawnień administracyjnych w domenie zarządzanej. Uprawnienia *administratora domeny* i *administratora przedsiębiorstwa* nie są dostępne do użycia w ramach domeny. Członkowie grupy Administratorzy domeny lub Administratorzy przedsiębiorstwa w Active Directory lokalnym nie mają również uprawnień administratora domeny/przedsiębiorstwa w domenie zarządzanej.
 
 ### <a name="can-i-modify-group-memberships-using-ldap-or-other-ad-administrative-tools-on-managed-domains"></a>Czy mogę modyfikować członkostwa w grupach przy użyciu protokołu LDAP lub innych narzędzi administracyjnych usługi AD w domenach zarządzanych?
-Nie. Członkostwa w grupach nie można modyfikować w domenach objętych usługą Azure AD Domain Services. To samo dotyczy atrybutów użytkownika. Można zmienić członkostwa w grupach lub atrybuty użytkownika w usłudze Azure AD lub w domenie lokalnej. Zmiany są automatycznie synchronizowane z Azure AD Domain Services.
+Nie można zmodyfikować użytkowników i grup, które są synchronizowane z Azure Active Directory do Azure AD Domain Services, ponieważ ich źródło pochodzenia jest Azure Active Directory. Dowolny użytkownik lub Grupa, która pochodzi z domeny zarządzanej, może zostać zmodyfikowana.
 
 ### <a name="how-long-does-it-take-for-changes-i-make-to-my-azure-ad-directory-to-be-visible-in-my-managed-domain"></a>Jak długo trwa wprowadzanie zmian wprowadzonych w katalogu usługi Azure AD, aby były widoczne w mojej domenie zarządzanej?
 Zmiany wprowadzone w katalogu usługi Azure AD za pomocą interfejsu użytkownika usługi Azure AD lub programu PowerShell są automatycznie synchronizowane z domeną zarządzaną. Ten proces synchronizacji jest uruchamiany w tle. Nie zdefiniowano okresu dla tej synchronizacji, aby zakończyć wszystkie zmiany obiektu.

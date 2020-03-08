@@ -4,12 +4,12 @@ description: Ten artykuł zawiera omówienie ochrony programu DPM/Azure Backup s
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: b766c0401dde10fdc257044e004de3dbf8a7b84c
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 6640690f725c84899babef6825f817bad447b40f
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586482"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673265"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>Tworzenie kopii zapasowej farmy programu SharePoint na platformie Azure przy użyciu programu DPM
 
@@ -21,7 +21,7 @@ Azure Backup programu DPM obsługuje następujące scenariusze:
 
 | Obciążenie | Wersja | Wdrożenie programu SharePoint | Typ wdrożenia programu DPM | DPM — System Center 2012 R2 | Ochrona i odzyskiwanie |
 | --- | --- | --- | --- | --- | --- |
-| Program SharePoint |SharePoint 2013, SharePoint 2010, SharePoint 2007, SharePoint 3.0 |Program SharePoint wdrożony jako serwer fizyczny lub maszyna wirtualna z funkcją Hyper-V/VMware <br> -------------- <br> SQL AlwaysOn |Serwer fizyczny lub lokalna maszyna wirtualna funkcji Hyper-V |Obsługuje tworzenie kopii zapasowych na platformie Azure z pakietu zbiorczego aktualizacji 5 |Ochrona farmy programu SharePoint opcje odzyskiwania: Farma odzyskiwania, baza danych i plik lub element listy z punktów odzyskiwania dysku.  Odzyskiwanie farmy i bazy danych z punktów odzyskiwania platformy Azure. |
+| Sharepoint |SharePoint 2013, SharePoint 2010, SharePoint 2007, SharePoint 3.0 |Program SharePoint wdrożony jako serwer fizyczny lub maszyna wirtualna z funkcją Hyper-V/VMware <br> -------------- <br> SQL AlwaysOn |Serwer fizyczny lub lokalna maszyna wirtualna funkcji Hyper-V |Obsługuje tworzenie kopii zapasowych na platformie Azure z pakietu zbiorczego aktualizacji 5 |Ochrona farmy programu SharePoint opcje odzyskiwania: Farma odzyskiwania, baza danych i plik lub element listy z punktów odzyskiwania dysku.  Odzyskiwanie farmy i bazy danych z punktów odzyskiwania platformy Azure. |
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
@@ -39,13 +39,13 @@ Agent programu DPM musi być zainstalowany na serwerze, na którym działa progr
 
 Dla każdego 10 000 000 elementów w farmie musi znajdować się co najmniej 2 GB miejsca na woluminie, na którym znajduje się folder programu DPM. To miejsce jest wymagane do generacji katalogu. Aby program DPM odzyskał określone elementy (Kolekcje witryn, witryny, listy, biblioteki dokumentów, foldery, pojedyncze dokumenty i elementy listy), generacja wykazu tworzy listę adresów URL zawartych w poszczególnych bazach danych zawartości. Listę adresów URL można wyświetlić w okienku element możliwy do odzyskania w obszarze zadania **odzyskiwania** Konsola administratora programu DPM.
 
-### <a name="sql-server"></a>SQL Server
+### <a name="sql-server"></a>Oprogramowanie SQL Server
 
 Program DPM działa jako konto LocalSystem. Aby utworzyć kopię zapasową SQL Server baz danych, program DPM musi mieć uprawnienia administratora systemu na tym koncie dla serwera, na którym działa program SQL Server. Przed utworzeniem kopii zapasowej należy ustawić NT *NT\SYSTEM na serwerze, na którym* działa SQL Server.
 
 Jeśli farma programu SharePoint ma SQL Server baz danych, które są skonfigurowane przy użyciu aliasów SQL Server, Zainstaluj składniki klienta SQL Server na serwerze frontonu sieci Web, który będzie chroniony przez program DPM.
 
-### <a name="sharepoint-server"></a>Serwer programu SharePoint
+### <a name="sharepoint-server"></a>Oprogramowanie SharePoint Server
 
 Chociaż wydajność jest zależna od wielu czynników, takich jak rozmiar farmy programu SharePoint, jako ogólne wskazówki jeden serwer DPM może chronić 25 TB farmy programu SharePoint.
 
@@ -133,7 +133,7 @@ Po skonfigurowaniu programu DPM i farmy programu SharePoint w sposób opisany wc
     ![Online_backup_schedule](./media/backup-azure-backup-sharepoint/specify-online-backup-schedule.png)
 
     > [!NOTE]
-    > Program DPM oferuje maksymalnie dwa codzienne kopie zapasowe na platformie Azure w różnych godzinach. Azure Backup może również kontrolować ilość przepustowości sieci WAN, która może być używana w przypadku kopii zapasowych w godzinach szczytu i poza szczytem przy użyciu funkcji [ograniczania przepustowości sieci Azure Backup](https://azure.microsoft.com/documentation/articles/backup-configure-vault/#enable-network-throttling).
+    > Program DPM oferuje maksymalnie dwa codzienne kopie zapasowe na platformie Azure w różnych godzinach. Azure Backup może również kontrolować ilość przepustowości sieci WAN, która może być używana w przypadku kopii zapasowych w godzinach szczytu i poza szczytem przy użyciu funkcji [ograniczania przepustowości sieci Azure Backup](backup-windows-with-mars-agent.md#enable-network-throttling).
     >
     >
 11. W zależności od wybranego harmonogramu tworzenia kopii zapasowych na stronie **Określanie zasad przechowywania danych online** wybierz zasady przechowywania codziennie, co tydzień, co miesiąc i roczne punkty kopii zapasowej.

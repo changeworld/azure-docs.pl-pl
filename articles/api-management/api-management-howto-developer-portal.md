@@ -11,24 +11,20 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/22/2019
+ms.date: 03/05/2020
 ms.author: apimpm
-ms.openlocfilehash: a206ef6eb529fc396ec4ecb82d468c19f9e54b8a
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 1f10a577f681d1df4ba99c987df457ea1ca09470
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77108244"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671602"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Portal deweloperów API Management platformy Azure — omówienie
 
 Portal dla deweloperów to automatycznie generowana, w pełni dostosowywalna witryna sieci Web z dokumentacją interfejsów API. W przypadku, gdy konsumenci interfejsu API mogą odnajdywać interfejsy API, dowiedzieć się, jak ich używać, zażądać dostępu i wypróbować.
 
 W tym artykule opisano różnice między samodzielnymi i zarządzanymi wersjami portalu dla deweloperów w API Management. Wyjaśniono w nim także swoją architekturę i przedstawiono odpowiedzi na często zadawane pytania.
-
-> [!WARNING]
->
-> [Dowiedz się, jak przeprowadzić migrację z wersji zapoznawczej do ogólnie dostępnej wersji](#preview-to-ga) portalu dla deweloperów.
 
 ![Portal dla deweloperów API Management](media/api-management-howto-developer-portal/cover.png)
 
@@ -39,7 +35,7 @@ W tym artykule opisano różnice między samodzielnymi i zarządzanymi wersjami 
 Portal dla deweloperów można skompilować na dwa sposoby:
 
 - **Wersja zarządzana** — edytując i dostosowując Portal, który jest wbudowany w wystąpienie API Management i jest dostępny za pomocą adresu URL `<your-api-management-instance-name>.developer.azure-api.net`. Zapoznaj się z [tym artykułem dokumentacji](api-management-howto-developer-portal-customize.md) , aby dowiedzieć się, jak uzyskać dostęp do portalu zarządzanego i dostosować go.
-- **Samodzielna wersja** — przez wdrożenie i samodzielne hostowanie portalu poza wystąpieniem API Management. Takie podejście umożliwia edytowanie bazy kodu portalu i poszerzanie podanych funkcji podstawowych. Należy również samodzielnie uaktualnić Portal do najnowszej wersji. Aby uzyskać szczegółowe informacje i instrukcje, zapoznaj się z [repozytorium GitHub za pomocą kodu źródłowego portalu][1] i [samouczka dotyczącego implementacji widżetu][3]. Samouczek dotyczący [zarządzanej wersji](api-management-howto-developer-portal-customize.md) przeprowadzi Cię przez panel administracyjny portalu, który jest również oferowany w wersji samohostowanej.
+- **Samodzielna wersja** — przez wdrożenie i samodzielne hostowanie portalu poza wystąpieniem API Management. Takie podejście umożliwia edytowanie bazy kodu portalu i poszerzanie dostarczonych funkcji podstawowych — na przykład zaimplementowanie niestandardowych widżetów dla integracji z systemami innych firm. W tym scenariuszu użytkownik jest odpowiedzialny za aktualizowanie portalu do najnowszej wersji. Aby uzyskać szczegółowe informacje i instrukcje, zapoznaj się z [repozytorium GitHub za pomocą kodu źródłowego portalu][1] i [samouczka dotyczącego implementacji widżetu][3]. Samouczek dotyczący [zarządzanej wersji](api-management-howto-developer-portal-customize.md) przeprowadzi Cię przez panel administracyjny portalu, który jest typowy dla zarządzanych i samodzielnych wersji.
 
 ## <a name="portal-architectural-concepts"></a>Koncepcje architektury portalu
 
@@ -70,7 +66,7 @@ Portal jest oparty na dostosowaniu rozwidlenia [struktury Paperbits](https://pap
 
 ## <a name="faq"></a>Często zadawane pytania
 
-W tej sekcji znajdziesz odpowiedzi na często zadawane pytania dotyczące nowego portalu dla deweloperów, który ma charakter ogólny. Pytania specyficzne dla własnej wersji hostowanej można znaleźć w [sekcji wiki repozytorium GitHub](https://github.com/Azure/api-management-developer-portal/wiki).
+W tej sekcji znajdziesz odpowiedzi na często zadawane pytania dotyczące portalu dla deweloperów, który ma charakter ogólny. Pytania specyficzne dla własnej wersji hostowanej można znaleźć w [sekcji wiki repozytorium GitHub](https://github.com/Azure/api-management-developer-portal/wiki).
 
 ### <a name="a-idpreview-to-ga-how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"/> jak przeprowadzić migrację z wersji zapoznawczej portalu?
 
@@ -86,13 +82,13 @@ Jeśli nie chcesz resetować zawartości portalu, możesz rozważyć użycie now
 
 Jeśli Twój portal został zainicjowany po ogólnym ogłoszeniu dostępności, powinien już obsługiwać nową zawartość domyślną. Nie jest wymagana żadna akcja ze strony użytkownika.
 
-### <a name="how-can-i-migrate-from-the-old-developer-portal-to-the-new-developer-portal"></a>Jak przeprowadzić migrację ze starego portalu dla deweloperów do nowego portalu dla deweloperów?
+### <a name="how-can-i-migrate-from-the-old-developer-portal-to-the-developer-portal"></a>Jak przeprowadzić migrację ze starego portalu dla deweloperów do portalu dla deweloperów?
 
 Portale nie są zgodne i należy przeprowadzić migrację zawartości ręcznie.
 
-### <a name="does-the-new-portal-have-all-the-features-of-the-old-portal"></a>Czy nowy portal ma wszystkie funkcje starego portalu?
+### <a name="does-the-portal-have-all-the-features-of-the-old-portal"></a>Czy Portal ma wszystkie funkcje starego portalu?
 
-Nowy portal dla deweloperów nie obsługuje *aplikacji* i *problemów*. Jeśli w starym portalu są używane *problemy* , które są potrzebne, Opublikuj komentarz w [ramach dedykowanego problemu](https://github.com/Azure/api-management-developer-portal/issues/122)z usługą GitHub.
+Portal dla deweloperów nie obsługuje już *aplikacji* i *problemów*.
 
 Uwierzytelnianie za pomocą protokołu OAuth w interaktywnej konsoli dewelopera nie jest jeszcze obsługiwane. Postęp można śledzić w ramach [problemu usługi GitHub](https://github.com/Azure/api-management-developer-portal/issues/208).
 
@@ -104,23 +100,25 @@ Wycofanie starszych portali zostanie ogłoszone osobno. Jeśli masz pytania, wą
 
 ### <a name="functionality-i-need-isnt-supported-in-the-portal"></a>Wymagana funkcjonalność nie jest obsługiwana w portalu
 
-Użyj samodzielnie hostowanej wersji i [Zaimplementuj własny element widget][3].
+Możesz otworzyć [żądanie funkcji](https://aka.ms/apimwish) lub [samodzielnie zaimplementować brakującą funkcjonalność][3]. W przypadku zaimplementowania funkcji samodzielnie możesz samoobsługowo zarządzać portalem deweloperów lub otworzyć żądanie ściągnięcia w usłudze GitHub, aby uwzględnić zmiany w zarządzanej wersji.
 
 ### <a name="how-can-i-automate-portal-deployments"></a>Jak można zautomatyzować wdrożenia portalu?
 
 Możesz programowo uzyskać dostęp do zawartości portalu dla deweloperów i zarządzać nią za pośrednictwem interfejsu API REST, niezależnie od tego, czy używasz zarządzanej, czy własnej wersji.
 
-Interfejs API jest udokumentowany w [sekcji wiki repozytorium GitHub][2]. Można go również użyć do automatyzowania migracji zawartości portalu między środowiskami — na przykład ze środowiska testowego do środowiska produkcyjnego. Więcej informacji o tym procesie można znaleźć [w tym artykule z dokumentacji](https://aka.ms/apimdocs/migrateportal) w witrynie GitHub.
+Interfejs API jest udokumentowany w [sekcji wiki repozytorium GitHub][2]. Może służyć do automatyzowania migracji zawartości portalu między środowiskami — na przykład ze środowiska testowego do środowiska produkcyjnego. Więcej informacji o tym procesie można znaleźć [w tym artykule z dokumentacji](https://aka.ms/apimdocs/migrateportal) w witrynie GitHub.
 
 ### <a name="does-the-portal-support-azure-resource-manager-templates-andor-is-it-compatible-with-api-management-devops-resource-kit"></a>Czy Portal obsługuje Azure Resource Manager szablonów i/lub jest zgodny z zestawem SDK API Management DevOps?
 
 Nie.
 
-### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-new-managed-portal-dependencies"></a>Czy muszę włączyć dodatkową łączność sieci wirtualnej dla nowych zależności w portalu zarządzanym?
+### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-managed-portal-dependencies"></a>Czy muszę włączyć dodatkową łączność sieci wirtualnej dla zależności zarządzanego portalu?
 
 W większości przypadków — nie.
 
 Jeśli Twoja usługa API Management znajduje się w wewnętrznej sieci wirtualnej, Portal dla deweloperów jest dostępny tylko z poziomu usługi. Nazwa hosta punktu końcowego zarządzania musi zostać rozpoznana jako wewnętrzny adres VIP usługi z komputera, który służy do uzyskiwania dostępu do interfejsu administracyjnego portalu. Upewnij się, że punkt końcowy zarządzania jest zarejestrowany w systemie DNS. W przypadku błędnej konfiguracji zostanie wyświetlony komunikat o błędzie: `Unable to start the portal. See if settings are specified correctly in the configuration (...)`.
+
+Jeśli usługa API Management znajduje się w wewnętrznej sieci wirtualnej i uzyskuje do niej dostęp za pośrednictwem Application Gateway z Internetu, upewnij się, że jest włączona łączność z portalem dla deweloperów i punktami końcowymi zarządzania API Management.
 
 ### <a name="i-have-assigned-a-custom-api-management-domain-and-the-published-portal-doesnt-work"></a>Mam przypisaną niestandardową domenę API Management i opublikowany Portal nie działa
 
@@ -138,7 +136,7 @@ Po skonfigurowaniu delegowania należy [ponownie opublikować Portal](api-manage
 
 Większość zmian konfiguracji (na przykład Sieć wirtualna, logowanie i warunki produktu) wymagają [ponownego opublikowania portalu](api-management-howto-developer-portal-customize.md#publish).
 
-### <a name="im-getting-a-cors-error-when-using-the-interactive-console"></a>Otrzymuję błąd CORS podczas korzystania z konsoli interaktywnej
+### <a name="cors"></a>Otrzymuję błąd CORS podczas korzystania z konsoli interaktywnej
 
 Konsola interaktywna wykonuje żądanie interfejsu API po stronie klienta z przeglądarki. Problem CORS można rozwiązać, dodając [zasady CORS](api-management-cross-domain-policies.md#CORS) w interfejsach API. Możesz określić wszystkie parametry ręcznie lub użyć symboli wieloznacznych `*`. Na przykład:
 

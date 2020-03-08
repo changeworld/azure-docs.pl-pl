@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c26197a14e78b1cf1a1e078ba0145eca207206bf
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 05a3a8cf14a591dd3037175e4eed5b5bd8d3096c
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561974"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672657"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>Informacje na temat bezpiecznych stacji roboczych zarządzanych przez platformę Azure
 
@@ -81,18 +81,18 @@ Strategie zawiera zwiększają bezpieczeństwo przez zwiększenie liczby i typu 
 
 Kluczową podstawą dla zabezpieczonej stacji roboczej jest rozwiązanie łańcucha dostaw, w którym można używać zaufanej stacji roboczej o nazwie "root of Trust". Technologia, którą należy wziąć pod uwagę w wyborze głównego sprzętu z zaufaniem, powinna obejmować następujące technologie zawarte w nowoczesnych laptopach: 
 
-* [Moduł TPM (TPM) 2,0](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-tpm)
-* [szyfrowanie dysków funkcją BitLocker](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-bitlocker)
-* [Bezpieczny rozruch z interfejsem UEFI](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-secure-boot)
-* [Sterowniki i oprogramowanie układowe rozpowszechniane za Windows Update](https://docs.microsoft.com/windows-hardware/drivers/dashboard/understanding-windows-update-automatic-and-optional-rules-for-driver-distribution)
-* [Wirtualizacja i zasady wymagające WYMUSZONEJ włączone](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-vbs)
-* [Sterowniki i aplikacje zasady wymagające WYMUSZONEJ — gotowe](https://docs.microsoft.com/windows-hardware/test/hlk/testref/driver-compatibility-with-device-guard)
-* [Windows Hello](https://docs.microsoft.com/windows-hardware/design/device-experiences/windows-hello-biometric-requirements)
-* [Ochrona we/wy DMA](https://docs.microsoft.com/windows/security/information-protection/kernel-dma-protection-for-thunderbolt)
-* [Ochrona systemu](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-system-guard/system-guard-how-hardware-based-root-of-trust-helps-protect-windows)
-* [Nowoczesne wstrzymanie](https://docs.microsoft.com/windows-hardware/design/device-experiences/modern-standby)
+* [Moduł TPM (TPM) 2,0](/windows-hardware/design/device-experiences/oem-tpm)
+* [szyfrowanie dysków funkcją BitLocker](/windows-hardware/design/device-experiences/oem-bitlocker)
+* [Bezpieczny rozruch z interfejsem UEFI](/windows-hardware/design/device-experiences/oem-secure-boot)
+* [Sterowniki i oprogramowanie układowe rozpowszechniane za Windows Update](/windows-hardware/drivers/dashboard/understanding-windows-update-automatic-and-optional-rules-for-driver-distribution)
+* [Wirtualizacja i zasady wymagające WYMUSZONEJ włączone](/windows-hardware/design/device-experiences/oem-vbs)
+* [Sterowniki i aplikacje zasady wymagające WYMUSZONEJ — gotowe](/windows-hardware/test/hlk/testref/driver-compatibility-with-device-guard)
+* [Windows Hello](/windows-hardware/design/device-experiences/windows-hello-biometric-requirements)
+* [Ochrona we/wy DMA](/windows/security/information-protection/kernel-dma-protection-for-thunderbolt)
+* [Ochrona systemu](/windows/security/threat-protection/windows-defender-system-guard/system-guard-how-hardware-based-root-of-trust-helps-protect-windows)
+* [Nowoczesne wstrzymanie](/windows-hardware/design/device-experiences/modern-standby)
 
-W przypadku tego rozwiązania certyfikat główny zaufania zostanie wdrożony przy użyciu technologii [Microsoft autopilotaż](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-autopilot) ze sprzętem spełniającym nowoczesne wymagania techniczne. Aby zabezpieczyć stację roboczą, program autopilotaż umożliwia korzystanie z urządzeń z systemem Windows 10 zoptymalizowanych od producenta OEM. Te urządzenia są w znanym dobrym stanie od producenta. Zamiast odtwarzania obrazu potencjalnie niezabezpieczonego urządzenia, autopilotaż może przekształcić urządzenie z systemem Windows w stan "gotowe do pracy". Stosuje on ustawienia i zasady, instaluje aplikacje, a nawet zmienia wersję systemu Windows 10. Na przykład funkcja autopilotażu może zmienić instalację systemu Windows w systemie Windows 10 Pro do systemu Windows 10 Enterprise, aby mogła korzystać z zaawansowanych funkcji.
+W przypadku tego rozwiązania certyfikat główny zaufania zostanie wdrożony przy użyciu technologii [Microsoft autopilotaż](/windows/deployment/windows-autopilot/windows-autopilot) ze sprzętem spełniającym nowoczesne wymagania techniczne. Aby zabezpieczyć stację roboczą, program autopilotaż umożliwia korzystanie z urządzeń z systemem Windows 10 zoptymalizowanych od producenta OEM. Te urządzenia są w znanym dobrym stanie od producenta. Zamiast odtwarzania obrazu potencjalnie niezabezpieczonego urządzenia, autopilotaż może przekształcić urządzenie z systemem Windows w stan "gotowe do pracy". Stosuje on ustawienia i zasady, instaluje aplikacje, a nawet zmienia wersję systemu Windows 10. Na przykład funkcja autopilotażu może zmienić instalację systemu Windows w systemie Windows 10 Pro do systemu Windows 10 Enterprise, aby mogła korzystać z zaawansowanych funkcji.
 
 ![Bezpieczeństwo poziomów stacji roboczej](./media/concept-azure-managed-workstation/supplychain.png)
 
@@ -105,7 +105,7 @@ Te wskazówki odnoszą się do kilku profilów zabezpieczeń i ról, które mog�
 
 * **Ulepszone zabezpieczenia** — to na poziomie tego, chronione rozwiązanie jest dobre dla użytkowników domowych, małych użytkowników i deweloperów.
 
-   Ulepszona stacja robocza to oparta na zasadach Metoda zwiększania bezpieczeństwa profilu niskiego poziomu zabezpieczeń. Zapewnia ona bezpieczny sposób pracy z danymi klientów, a także korzysta z narzędzi do produktywności, takich jak poczta e-mail i przeglądanie w sieci Web. Za pomocą zasad inspekcji i usługi Intune można monitorować rozszerzoną stację roboczą w celu zachowania użytkowników i użycia profilów. Ulepszony profil stacji roboczej można wdrożyć za pomocą skryptu Windows10 (1809) i korzystać z zaawansowanej ochrony przed złośliwym oprogramowaniem przy użyciu funkcji [zaawansowanej ochrony przed zagrożeniami (ATP)](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection).
+   Ulepszona stacja robocza to oparta na zasadach Metoda zwiększania bezpieczeństwa profilu niskiego poziomu zabezpieczeń. Zapewnia ona bezpieczny sposób pracy z danymi klientów, a także korzysta z narzędzi do produktywności, takich jak poczta e-mail i przeglądanie w sieci Web. Za pomocą zasad inspekcji i usługi Intune można monitorować rozszerzoną stację roboczą w celu zachowania użytkowników i użycia profilów. Ulepszony profil stacji roboczej można wdrożyć za pomocą skryptu Windows10 (1809) i korzystać z zaawansowanej ochrony przed złośliwym oprogramowaniem przy użyciu funkcji [zaawansowanej ochrony przed zagrożeniami (ATP)](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection).
 
 * **Wysoki poziom zabezpieczeń** — najbardziej skutecznym sposobem na zmniejszenie podatności na ataki stacji roboczej jest usunięcie możliwości samodzielnego administrowania stacją roboczą. Usuwanie lokalnych praw administracyjnych to krok, który zwiększa bezpieczeństwo, ale może mieć wpływ na wydajność, jeśli został zaimplementowany nieprawidłowo. Profil wysokiego poziomu zabezpieczeń jest oparty na ulepszonym profilu zabezpieczeń i ma jedną znaczną zmianę: usunięcie lokalnego administratora. Ten profil jest przeznaczony dla użytkowników z wysokim profilem: dyrektorzy, płace i użytkownicy danych poufnych, osoby zatwierdzające usługi i procesy.
 
@@ -121,8 +121,8 @@ Te wskazówki odnoszą się do kilku profilów zabezpieczeń i ról, które mog�
 
 * **Izolowany** — ten niestandardowy scenariusz w trybie offline reprezentuje skrajne zakończenie spektrum. W tym przypadku nie ma żadnych skryptów instalacyjnych. Może być konieczne zarządzanie funkcją o krytycznym znaczeniu dla firmy, która wymaga nieobsługiwanego lub nieaktualnego starszego systemu operacyjnego. Na przykład linia produkcyjna o wysokiej wartości lub system pomocy technicznej. Ze względu na to, że zabezpieczenia są krytyczne i usługi w chmurze są niedostępne, można je zarządzać i aktualizować ręcznie lub za pomocą izolowanej architektury Active Directory lasu, takiej jak środowisko administracyjne zwiększonych zabezpieczeń (ESAE). W takich sytuacjach należy rozważyć usunięcie wszystkich dostępu z wyjątkiem podstawowych testów kondycji usługi Intune i usługi ATP.
 
-   * [Wymagania dotyczące komunikacji sieciowej usługi Intune](https://docs.microsoft.com/intune/network-bandwidth-use)
-   * [Wymagania dotyczące komunikacji sieciowej ATP](https://docs.microsoft.com/azure-advanced-threat-protection/configure-proxy)
+   * [Wymagania dotyczące komunikacji sieciowej usługi Intune](/intune/network-bandwidth-use)
+   * [Wymagania dotyczące komunikacji sieciowej ATP](/azure-advanced-threat-protection/configure-proxy)
 
 ## <a name="next-steps"></a>Następne kroki
 

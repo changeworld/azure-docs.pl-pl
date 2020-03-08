@@ -7,15 +7,15 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: f7d6e98205afad2ed2c4aea30e635254f79acaa1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5499e8362e1107a18b997a6a485e11343c328d0d
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448086"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898376"
 ---
 # <a name="label-machine-learned-entity-in-an-example-utterance"></a>Etykieta jednostki doznanej przez maszynę w przykładzie wypowiedź
 
@@ -86,7 +86,7 @@ Role jednostek są oznaczone etykietami przy użyciu palety Entity.
 1. Na stronie Szczegóły zamiaru wybierz **paletę jednostki** z poziomu paska narzędzi kontekstu.
 1. Po otwarciu palety jednostki wybierz jednostkę z listy jednostek.
 1. Przejdź do **inspektora jednostek**i wybierz istniejącą rolę lub Utwórz nową rolę.
-1. W przykładowym tekście wypowiedź etykieta tekst z rolą jednostki. 
+1. W przykładowym tekście wypowiedź etykieta tekst z rolą jednostki.
 
 ## <a name="unlabel-entities"></a>Nie etykieta jednostek
 
@@ -96,7 +96,7 @@ Aby usunąć etykietę jednostki, wybierz nazwę jednostki pod tekstem i wybierz
 
 Jeśli wystąpi błąd podczas etykietowania, paleta jednostek jest łatwym narzędziem umożliwiającym szybkie edycję. Na przykład, jeśli etykieta jednostki obejmuje dodatkowe słowo przez pomyłkę i ma już etykietę podskładniki, można użyć palety Entity do pędzla nad wymaganym krótszym zakresem wyrazów.
 
-Przykład:
+Na przykład:
 
 1. Podskładnik typu Pizza składa się z "sera Pizza with", co obejmuje bardzo niepoprawną literę wyrazu "z"
 

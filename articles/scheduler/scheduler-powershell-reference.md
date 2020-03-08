@@ -1,31 +1,32 @@
 ---
-title: Dokumentacja poleceń cmdlet programu PowerShell — usługa Azure Scheduler
+title: Dokumentacja poleceń cmdlet programu PowerShell
 description: Informacje o poleceniach cmdlet programu PowerShell dla usługi Azure Scheduler
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 9a26c457-d7a1-4e4a-bc79-f26592155218
+ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
-ms.openlocfilehash: 1ad1d6b9f59fa51b9e27fe5b70ce4e2a5d36f3ad
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 577e2128cf7e4e9f914ec5504917053acb3c19d5
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300880"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898494"
 ---
 # <a name="powershell-cmdlets-reference-for-azure-scheduler"></a>Dokumentacja poleceń cmdlet programu PowerShell dla usługi Azure Scheduler
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) zastępuje usługę Azure Scheduler, która jest [wycofywana](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Aby kontynuować pracę z zadaniami skonfigurowanymi w usłudze Scheduler, [Przeprowadź migrację do Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) najszybciej, jak to możliwe.
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) zastępuje usługę Azure Scheduler, która jest [wycofywana](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Aby kontynuować pracę z zadaniami skonfigurowanymi w usłudze Scheduler, [Przeprowadź migrację do Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) najszybciej, jak to możliwe. 
+>
+> Usługa Scheduler nie jest już dostępna w Azure Portal, ale polecenia cmdlet programu PowerShell dla [interfejsu API REST](/rest/api/scheduler) i [usługi Azure Scheduler](scheduler-powershell-reference.md) pozostają dostępne w tym momencie, aby można było zarządzać zadaniami i kolekcjami zadań.
 
 Aby tworzyć skrypty do tworzenia zadań harmonogramu i kolekcji zadań oraz zarządzania nimi, można użyć poleceń cmdlet programu PowerShell. Ten artykuł zawiera listę głównych poleceń cmdlet programu PowerShell dla usługi Azure Scheduler z linkami do artykułów referencyjnych. Aby zainstalować Azure PowerShell dla subskrypcji platformy Azure, zobacz [jak zainstalować i skonfigurować Azure PowerShell](/powershell/azure/overview). Więcej informacji o [poleceniach cmdlet Azure Resource Manager](/powershell/azure/overview)można znaleźć w temacie [Using Azure PowerShell with Azure Resource Manager](../powershell-azure-resource-manager.md).
 
-| Polecenia cmdlet | Opis |
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+| Polecenie cmdlet | Opis |
 |--------|-------------|
 | [Disable-AzSchedulerJobCollection](/powershell/module/azurerm.scheduler/disable-azurermschedulerjobcollection) |Wyłącza kolekcję zadań. |
 | [Enable-AzureRmSchedulerJobCollection](/powershell/module/azurerm.scheduler/enable-azurermschedulerjobcollection) |Włącza kolekcję zadań. |
@@ -48,15 +49,14 @@ Aby tworzyć skrypty do tworzenia zadań harmonogramu i kolekcji zadań oraz zar
 
 Aby uzyskać więcej informacji, możesz uruchomić dowolne z następujących poleceń cmdlet: 
 
-```
+```text
 Get-Help <cmdlet name> -Detailed
 Get-Help <cmdlet name> -Examples
 Get-Help <cmdlet name> -Full
 ```
 
-## <a name="see-also"></a>Zobacz także
+## <a name="next-steps"></a>Następne kroki
 
-* [Czym jest Azure Scheduler?](scheduler-intro.md)
-* [Pojęcia, terminologia oraz hierarchia jednostek](scheduler-concepts-terms.md)
-* [Utwórz i Zaplanuj pierwsze zadanie — Azure Portal](scheduler-get-started-portal.md)
-* [Dokumentacja interfejsu API REST usługi Azure Scheduler](https://msdn.microsoft.com/library/mt629143)
+* [Pojęcia i terminologia dotyczące usługi Azure Scheduler oraz hierarchia jednostek](scheduler-concepts-terms.md)
+* [Limity, wartości domyślne i kody błędów usługi Azure Scheduler](scheduler-limits-defaults-errors.md)
+* [Dokumentacja interfejsu API REST usługi Azure Scheduler](/rest/api/scheduler)

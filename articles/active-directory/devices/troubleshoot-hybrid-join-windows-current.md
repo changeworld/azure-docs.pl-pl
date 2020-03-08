@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd53b95472c72d70721612d8684779c206aad74e
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: f3ce27c59ead4e126cb143d1831ece0e93e119ef
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888782"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672226"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Rozwiązywanie problemów z przyłączonymi urządzeniami hybrydowymi Azure Active Directory 
 
@@ -356,7 +356,7 @@ Użyj dzienników Podgląd zdarzeń, aby zlokalizować fazę i kod błędu dla b
    - Rozwiązanie: Wyłącz moduł TPM na urządzeniach z tym błędem. System Windows 1809 automatycznie wykrywa awarie modułu TPM i wykonuje sprzężenie hybrydowe usługi Azure AD bez użycia modułu TPM.
 - **NTE_AUTHENTICATION_IGNORED** (0x80090031/-2146893775)
    - Przyczyna: moduł TPM został zablokowany.
-   - Rozwiązanie: błąd przejściowy. Poczekaj na cooldown okres. Próba dołączenia po pewnym czasie powinna się powieść. Więcej informacji można znaleźć w artykule podstawowe informacje dotyczące [modułów TPM](https://docs.microsoft.com/windows/security/information-protection/tpm/tpm-fundamentals#anti-hammering)
+   - Rozwiązanie: błąd przejściowy. Poczekaj na cooldown okres. Próba dołączenia po pewnym czasie powinna się powieść. Więcej informacji można znaleźć w artykule podstawowe informacje dotyczące [modułów TPM](/windows/security/information-protection/tpm/tpm-fundamentals#anti-hammering)
 
 ##### <a name="network-errors"></a>Błędy sieci
 
@@ -372,13 +372,13 @@ Użyj dzienników Podgląd zdarzeń, aby zlokalizować fazę i kod błędu dla b
 
 ##### <a name="federated-join-server-errors"></a>Błędy serwera dołączania federacyjnego
 
-| Kod błędu serwera | Komunikat o błędzie serwera | Możliwe przyczyny | Rozdzielczość |
+| Kod błędu serwera | Komunikat o błędzie serwera | Możliwe przyczyny | Rozwiązanie |
 | --- | --- | --- | --- |
 | DirectoryError | Twoje żądanie zostało tymczasowo ograniczone. Spróbuj ponownie za 300 sekund. | Oczekiwany błąd. Prawdopodobnie z powodu wykonywania wielu żądań rejestracji w krótkim sukcesie. | Ponów próbę przyłączenia po okresie cooldown |
 
 ##### <a name="sync-join-server-errors"></a>Błędy serwera łączenia z synchronizacją
 
-| Kod błędu serwera | Komunikat o błędzie serwera | Możliwe przyczyny | Rozdzielczość |
+| Kod błędu serwera | Komunikat o błędzie serwera | Możliwe przyczyny | Rozwiązanie |
 | --- | --- | --- | --- |
 | DirectoryError | AADSTS90002: nie znaleziono <UUID> dzierżawy. Ten błąd może wystąpić, jeśli nie ma aktywnych subskrypcji dla dzierżawy. Skontaktuj się z administratorem subskrypcji. | Identyfikator dzierżawy w obiekcie SCP jest nieprawidłowy | Upewnij się, że obiekt SCP jest skonfigurowany z prawidłowym IDENTYFIKATORem dzierżawy usługi Azure AD i aktywnymi subskrypcjami, które znajdują się w dzierżawie. |
 | DirectoryError | Nie znaleziono obiektu urządzenia o podanym IDENTYFIKATORze. | Oczekiwany błąd podczas przyłączania do synchronizacji. Obiekt urządzenia nie został zsynchronizowany z usługi AD z usługą Azure AD | Poczekaj na zakończenie synchronizacji Azure AD Connect, a kolejna próba sprzężenia po zakończeniu synchronizacji rozwiąże problem |

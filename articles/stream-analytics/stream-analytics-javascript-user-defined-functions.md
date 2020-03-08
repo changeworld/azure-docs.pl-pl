@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 04/01/2018
-ms.openlocfilehash: f82add78eef418e3644a5961d984708d3721a8dd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: feb0361b460f5b18b5a8aaa585332e2179023458
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426064"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851166"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>Samouczek: funkcje języka JavaScript zdefiniowane przez użytkownika w usłudze Azure Stream Analytics
  
 Usługa Azure Stream Analytics obsługuje funkcje zdefiniowane przez użytkownika, które napisano w języku JavaScript. Bogaty zestaw metod do obsługi **ciągów**, **wyrażeń regularnych**, **operacji matematycznych**, **tablic** i **danych** oferowanych przez język JavaScript ułatwia tworzenie złożonych transformacji danych w ramach zadań usługi Stream Analytics.
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Określanie funkcji języka JavaScript zdefiniowanej przez użytkownika
@@ -99,10 +99,10 @@ Funkcje języka JavaScript zdefiniowane przez użytkownika w usłudze Azure Stre
 
 Między typami obsługiwanymi przez język zapytań usługi Stream Analytics i język JavaScript występują różnice. Poniższa tabela zawiera mapowania konwersji między typami:
 
-Analiza strumienia | JavaScript
+Stream Analytics | JavaScript
 --- | ---
 bigint | Number (maksymalna liczba całkowita, która może być reprezentowana przez język JavaScript, to 2^53)
-Data i godzina | Date (język JavaScript obsługuje tylko milisekundy)
+DateTime | Date (język JavaScript obsługuje tylko milisekundy)
 double | Liczba
 nvarchar(MAX) | Ciąg
 Rekord | Obiekt
@@ -113,10 +113,10 @@ NULL | Null
 W tym miejscu przedstawiono konwersje typów języka JavaScript na typy usługi Stream Analytics:
 
 
-JavaScript | Analiza strumienia
+JavaScript | Stream Analytics
 --- | ---
 Liczba | Bigint (jeśli liczba jest zaokrąglona i należy do zakresu long.MinValue-long.MaxValue; w przeciwnym razie to double)
-Data | Data i godzina
+Date | DateTime
 Ciąg | nvarchar(MAX)
 Obiekt | Rekord
 Tablica | Tablica
@@ -147,7 +147,7 @@ SELECT
     DataString,
     DataValue,
     HexValue,
-    UDF.json_stringify(input) As InputEvent
+    UDF.jsonstringify(input) As InputEvent
 INTO
     output
 FROM

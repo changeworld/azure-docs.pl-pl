@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 779328f4c21afb4392663e6f8840749ea505c529
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: dac8e0f2e10906f2cc56ecf86e0cc70947cb7e85
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242426"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897781"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-purecloud-by-genesys"></a>Samouczek Azure Active Directory: integracja logowania jednokrotnego (SSO) z usługą PureCloud przez Genesys
 
@@ -123,9 +123,9 @@ Aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal, wykonaj na
 
 1. Ponadto PureCloud przez aplikację Genesys oczekuje kilku atrybutów do przekazania z powrotem do odpowiedzi SAML, jak pokazano w poniższej tabeli. Te atrybuty są również wstępnie wypełnione, ale można je przejrzeć w razie konieczności.
 
-    | Nazwa | Atrybut źródłowy|
+    | Name (Nazwa) | Atrybut źródłowy|
     | ---------------| --------------- |
-    | Adres e-mail | user.userprinicipalname |
+    | Email | user.userprincipalname |
     | OrganizationName | `Your organization name` |
 
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **certyfikat (base64)** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
@@ -182,7 +182,7 @@ W tej sekcji skonfigurujesz usługę B. Simon, aby korzystać z logowania jednok
 
     b. W polu **Identyfikator URI wystawcy usług AD FS** wklej wartość **identyfikatora usługi Azure AD** skopiowaną z Azure Portal.
 
-    d. W polu **docelowy identyfikator URI** wklej wartość **adresu URL logowania** skopiowanego z Azure Portal.
+    c. W polu **docelowy identyfikator URI** wklej wartość **adresu URL logowania** skopiowanego z Azure Portal.
 
     d. W polu wartość **identyfikatora jednostki uzależnionej** przejdź do Azure Portal, a następnie na stronie **PureCloud przez Genesys** integrację aplikacji wybierz kartę **Właściwości** i skopiuj wartość **Identyfikator aplikacji** . Wklej ją do pola **Identyfikator jednostki uzależnionej** .
 
@@ -214,7 +214,7 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do PureCloud przez
 
     b. W polu **adres e-mail** wprowadź adres e-mail użytkownika. Na przykład: **b. simon\@contoso.com**.
 
-    d. Wybierz pozycję **Utwórz**.
+    c. Wybierz pozycję **Utwórz**.
 
 ## <a name="test-sso"></a>Testuj Logowanie jednokrotne
 
@@ -222,7 +222,7 @@ W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure A
 
 Po wybraniu kafelka **PureCloud by Genesys** w panelu dostępu należy automatycznie zalogować się do konta PureCloud przez Genesys, które zostało skonfigurowane jako logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących integrowania aplikacji SaaS z usługą Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

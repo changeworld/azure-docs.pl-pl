@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: chrisgre
-ms.openlocfilehash: 9a7e2d9874f049000dadcb3e46cccb2202b53698
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 381f550f6d64dee3c7649a040c1e24b7c9d42f2c
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429291"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669432"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>Automatyczne zarządzanie urządzeniami i modułami IoT przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -35,9 +35,13 @@ Automatyczne konfiguracje są uruchamiane po raz pierwszy wkrótce po utworzeniu
 
 ## <a name="cli-prerequisites"></a>Wymagania wstępne interfejsu wiersza polecenia
 
-* [Usługi IoT hub](../iot-hub/iot-hub-create-using-cli.md) w subskrypcji platformy Azure. 
-* [Interfejs wiersza polecenia Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) w danym środowisku. Co najmniej z wiersza polecenia platformy Azure musi być w wersji 2.0.24 lub nowszej. Użyj polecenia `az –-version` w celu przeprowadzenia weryfikacji. Ta wersja obsługuje polecenia rozszerzenia az i wprowadza platformę poleceń Knack. 
-* [Rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure](https://github.com/Azure/azure-iot-cli-extension).
+* [Centrum IoT](../iot-hub/iot-hub-create-using-cli.md) w ramach subskrypcji platformy Azure. 
+
+* [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) w Twoim środowisku. Minimalna wersja interfejsu wiersza polecenia platformy Azure musi być 2.0.70 lub nowsza. Użyj polecenia `az –-version` w celu przeprowadzenia weryfikacji. Ta wersja obsługuje polecenia rozszerzenia az i wprowadza platformę poleceń Knack. 
+
+* [Rozszerzenie IoT dla interfejsu wiersza polecenia platformy Azure](https://github.com/Azure/azure-cli).
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="implement-twins"></a>Implementuj bliźniaczych reprezentacji
 
@@ -102,7 +106,7 @@ Oto przykłady zapytań metryk:
 }
 ```
 
-Zapytania dotyczące metryk dla modułów są również podobne do zapytań dotyczących urządzeń, ale wybrane do `moduleId` z `devices.modules`. Przykład: 
+Zapytania dotyczące metryk dla modułów są również podobne do zapytań dotyczących urządzeń, ale wybrane do `moduleId` z `devices.modules`. Na przykład: 
 
 ```json
 {
@@ -125,13 +129,13 @@ Użyj następującego polecenia, aby utworzyć konfigurację:
      --metrics [metric queries]
 ```
 
-* --**config-ID** — nazwa konfiguracji, która zostanie utworzona w usłudze IoT Hub. Nadaj swojej konfiguracji unikatową nazwę, która jest maksymalnie 128 małymi literami. Należy unikać miejsca do magazynowania i następujące nieprawidłowe znaki: `& ^ [ ] { } \ | " < > /`.
+* --**config-ID** — nazwa konfiguracji, która zostanie utworzona w usłudze IoT Hub. Nadaj swojej konfiguracji unikatową nazwę, która jest maksymalnie 128 małymi literami. Unikaj spacji i następujących nieprawidłowych znaków: `& ^ [ ] { } \ | " < > /`.
 
 * **etykiety** --— Dodaj etykiety, aby pomóc w śledzeniu konfiguracji. Etykiety są nazwę i pary wartości, które opisują wdrożenia. Na przykład `HostPlatform, Linux` lub `Version, 3.0.1`
 
 * --**zawartość** w formacie JSON lub ścieżkę pliku do zawartości docelowej, która ma zostać ustawiona jako wartość właściwości. 
 
-* --**nazwę centrum** IoT Hub, w którym zostanie utworzona konfiguracja. Centrum musi znajdować się w bieżącej subskrypcji. Przełącz się do odpowiedniej subskrypcji za pomocą polecenia `az account set -s [subscription name]`
+* --**nazwę centrum** IoT Hub, w którym zostanie utworzona konfiguracja. Centrum musi znajdować się w bieżącej subskrypcji. Przejdź do żądanej subskrypcji za pomocą polecenia `az account set -s [subscription name]`
 
 * -- **— warunek docelowy** — wprowadź warunek docelowy, aby określić, które urządzenia lub moduły będą wskazywane przez tę konfigurację. W przypadku automatycznej konfiguracji urządzenia warunek jest oparty na tagach sznurka urządzenia lub odpowiednich właściwościach urządzenia i powinien być zgodny z formatem wyrażenia. Na przykład `tags.environment='test'` lub `properties.desired.devicemodel='4000x'`. W przypadku automatycznej konfiguracji modułu warunek jest oparty na tagach wieloosiowych modułu lub odpowiednich właściwościach modułu. Na przykład: `from devices.modules where tags.environment='test'` lub `from devices.modules where properties.reported.chillerProperties.model='4000x'`.
 
@@ -150,7 +154,7 @@ az iot hub configuration show --config-id [configuration id] \
 
 * --**config-ID** — nazwa konfiguracji, która istnieje w usłudze IoT Hub.
 
-* --nazwę **centrum** IoT Hub, w której istnieje konfiguracja. Centrum musi znajdować się w bieżącej subskrypcji. Przełącz się do odpowiedniej subskrypcji za pomocą polecenia `az account set -s [subscription name]`
+* --nazwę **centrum** IoT Hub, w której istnieje konfiguracja. Centrum musi znajdować się w bieżącej subskrypcji. Przejdź do żądanej subskrypcji za pomocą polecenia `az account set -s [subscription name]`
 
 Sprawdź konfigurację w oknie poleceń. Właściwość **metryki** zawiera liczbę dla każdej metryki ocenianej przez poszczególne centra:
 
@@ -200,7 +204,7 @@ az iot hub configuration update --config-id [configuration id] \
 
 * --**ustawić** — zaktualizuj właściwość w konfiguracji. Można aktualizować następujące właściwości:
 
-    * targetCondition — przykład `targetCondition=tags.location.state='Oregon'`
+    * targetCondition — na przykład `targetCondition=tags.location.state='Oregon'`
 
     * etykiety 
 

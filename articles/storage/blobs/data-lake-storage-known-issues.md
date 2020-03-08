@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 7d637c2fb3f4a4d5f8deac9cd99c0a44af6568e6
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 7fd76be8d17dc1c632e555a56d038d4f5c1e1486
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359744"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668838"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Znane problemy związane z usługi Azure Data Lake Storage Gen2
 
@@ -102,7 +102,7 @@ Używaj tylko wersji `1.6.0` lub nowszej. Obecnie istnieje usterka magazynu wp
 
 <a id="explorer-in-portal" />
 
-## <a name="storage-explorer-in-the-azure-portal"></a>Eksplorator usługi Storage w witrynie Azure Portal
+## <a name="storage-explorer-in-the-azure-portal"></a>Eksplorator usługi Storage w Azure Portal
 
 Listy ACL nie są jeszcze obsługiwane.
 
@@ -111,6 +111,14 @@ Listy ACL nie są jeszcze obsługiwane.
 ## <a name="thirdpartyapplications"></a>Aplikacje innych firm
 
 Aplikacje innych firm, które używają interfejsów API REST do pracy, będą nadal działały w przypadku używania ich z Data Lake Storage Gen2 aplikacjami, które wywołują interfejsy API obiektów blob, prawdopodobnie będą działały.
+
+## <a name="access-control-lists-acl-and-anonymous-read-access"></a>Listy kontroli dostępu (ACL) i anonimowy dostęp do odczytu
+
+Jeśli [anonimowy dostęp do odczytu](storage-manage-access-to-resources.md) został przyznany do kontenera, listy ACL nie mają wpływu na ten kontener ani pliki w tym kontenerze.
+
+## <a name="windows-azure-storage-blob-wasb-driver"></a>Sterownik Azure Storage Blob systemu Windows (WASB)
+
+Obecnie istnieje kilka problemów skojarzonych z używaniem sterownika WASB wraz z kontami z hierarchiczną przestrzenią nazw. Zalecamy używanie sterownika [systemu plików obiektów blob platformy Azure (ABFS)](data-lake-storage-abfs-driver.md) w obciążeniach. 
 
 
 

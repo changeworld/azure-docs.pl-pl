@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4c85fbc2c1f926f89dbfe9f2a5ae47cc48edf73
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 7b044a4fd4e29bfe35abff7a4b36e5bae783328b
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377611"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671917"
 ---
 # <a name="what-is-conditional-access"></a>Co to jest dostęp warunkowy?
 
@@ -92,7 +92,7 @@ Dowiedz się, w jaki sposób inne organizacje używają dostępu warunkowego us�
 
 [!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
 
-Klienci z [licencjami Microsoft 365 Business](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) również mają dostęp do funkcji dostępu warunkowego. 
+Klienci z [licencjami Microsoft 365 Business](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) również mają dostęp do funkcji dostępu warunkowego. 
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -102,6 +102,6 @@ Aby dowiedzieć się, jak zaimplementować dostęp warunkowy w środowisku, zapo
 
 [Informacje na temat ochrony tożsamości](../identity-protection/overview-v2.md)
 
-[Dowiedz się więcej o Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security)
+[Dowiedz się więcej o Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security)
 
-[Dowiedz się więcej o Microsoft Intune](https://docs.microsoft.com/intune/index)
+[Dowiedz się więcej o Microsoft Intune](/intune/index)

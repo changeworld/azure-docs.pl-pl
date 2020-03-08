@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów z ochroną hasłem — Azure Active Directory
-description: Opis typowego rozwiązywania problemów z ochroną hasłem w usłudze Azure AD
+title: Rozwiązywanie problemów z lokalną ochroną hasłem usługi Azure AD
+description: Dowiedz się, jak rozwiązywać problemy z ochroną hasłem w usłudze Azure AD dla środowiska lokalnego Active Directory Domain Services
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,14 +11,14 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd609eb1f289c0a104bddaa08a60e7dc6202acee
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 79ebf543a3880a4f2c8ee8c0d706c268ef3f08d2
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377991"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671713"
 ---
-# <a name="azure-ad-password-protection-troubleshooting"></a>Rozwiązywanie problemów z ochroną hasłem usługi Azure AD
+# <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>Rozwiązywanie problemów: lokalna Ochrona hasłem w usłudze Azure AD
 
 Po wdrożeniu ochrony hasłem usługi Azure AD może być wymagane rozwiązywanie problemów. W tym artykule szczegółowo przedstawiono kilka typowych kroków rozwiązywania problemów.
 
@@ -82,9 +82,9 @@ Ten problem może mieć kilka przyczyn.
 
 1. Agenci kontrolera domeny nie mogą pobrać zasad lub nie mogą odszyfrować istniejących zasad. Sprawdź możliwe przyczyny w powyższych tematach.
 
-1. Tryb wymuszania zasad haseł nadal jest ustawiony na inspekcję. Jeśli ta konfiguracja jest w tej sytuacji, skonfiguruj ją ponownie, aby wymusić korzystanie z portalu ochrony hasłem usługi Azure AD. Zobacz [Włączanie ochrony hasłem](howto-password-ban-bad-on-premises-operations.md#enable-password-protection).
+1. Tryb wymuszania zasad haseł nadal jest ustawiony na inspekcję. Jeśli ta konfiguracja jest w tej sytuacji, skonfiguruj ją ponownie, aby wymusić korzystanie z portalu ochrony hasłem usługi Azure AD. Aby uzyskać więcej informacji, zobacz [tryby operacji](howto-password-ban-bad-on-premises-operations.md#modes-of-operation).
 
-1. Zasady dotyczące haseł zostały wyłączone. Jeśli ta konfiguracja jest aktywna, skonfiguruj ją ponownie, aby była dostępna przy użyciu portalu ochrony hasłem usługi Azure AD. Zobacz [Włączanie ochrony hasłem](howto-password-ban-bad-on-premises-operations.md#enable-password-protection).
+1. Zasady dotyczące haseł zostały wyłączone. Jeśli ta konfiguracja jest aktywna, skonfiguruj ją ponownie, aby była dostępna przy użyciu portalu ochrony hasłem usługi Azure AD. Aby uzyskać więcej informacji, zobacz [tryby operacji](howto-password-ban-bad-on-premises-operations.md#modes-of-operation).
 
 1. Nie zainstalowano oprogramowania agenta kontrolera domeny na wszystkich kontrolerach domeny w domenie. W takiej sytuacji trudno jest zapewnić, że zdalni klienci systemu Windows będą kierowani do określonego kontrolera domeny podczas operacji zmiany hasła. Jeśli uważasz, że dla konkretnego kontrolera domeny, w którym zainstalowano oprogramowanie Agent DC, został pomyślnie skierowany użytkownik, możesz sprawdzić, sprawdzając, czy dziennik zdarzeń administratora agenta kontrolera domeny będzie miał co najmniej jedno zdarzenie, aby udokumentować wynik hasła zatwierdzenia. Jeśli nie ma żadnego zdarzenia dla użytkownika, którego hasło zostało zmienione, zmiana hasła prawdopodobnie została przetworzona przez inny kontroler domeny.
 
@@ -189,13 +189,13 @@ PS C:\> Get-AzureADPasswordProtectionDCAgent | Where-Object {$_.SoftwareVersion 
 
 W żadnej wersji nie ograniczono czasu na oprogramowanie serwera proxy ochrony hasłem usługi Azure AD. Firma Microsoft w dalszym ciągu zaleca uaktualnienie kontrolerów DC i proxy do najnowszych wersji. Za pomocą polecenia cmdlet `Get-AzureADPasswordProtectionProxy` można znaleźć agentów proxy, którzy wymagają uaktualnień, podobnie jak powyżej w przypadku agentów DC.
 
-Zapoznaj się z tematem [Uaktualnianie agenta kontrolera domeny](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent) i [Uaktualnianie agenta proxy](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-agent) , aby uzyskać więcej szczegółowych informacji na temat określonych procedur uaktualniania.
+Zapoznaj się z tematem [Uaktualnianie agenta kontrolera domeny](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent) i [uaktualnianie usługi proxy](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-service) , aby uzyskać więcej szczegółowych informacji na temat określonych procedur uaktualniania.
 
 ## <a name="emergency-remediation"></a>Korygowanie awaryjne
 
 Jeśli wystąpi sytuacja, w której usługa agenta kontrolera domeny powoduje problemy, usługa agenta kontrolera domeny może zostać natychmiast wyłączona. Biblioteka DLL filtru haseł agenta DC nadal próbuje wywołać niedziałającą usługę i będzie rejestrować zdarzenia ostrzegawcze (10012, 10013), ale w tym czasie wszystkie hasła przychodzące są akceptowane. Usługę agenta kontrolera domeny można również skonfigurować za pomocą Menedżera kontroli usług systemu Windows z typem uruchamiania "wyłączone" zgodnie z wymaganiami.
 
-Kolejną środkiem naprawczym byłoby ustawienie trybu włączania na wartość nie w portalu ochrony hasłem usługi Azure AD. Po pobraniu zaktualizowanych zasad każda usługa agenta kontrolera domeny przejdzie w tryb quiescent, w którym wszystkie hasła są akceptowane jako-is. Aby uzyskać więcej informacji, zobacz [Tryb wymuszania](howto-password-ban-bad-on-premises-operations.md#enforce-mode).
+Kolejną środkiem naprawczym byłoby ustawienie trybu włączania na wartość nie w portalu ochrony hasłem usługi Azure AD. Po pobraniu zaktualizowanych zasad każda usługa agenta kontrolera domeny przejdzie w tryb quiescent, w którym wszystkie hasła są akceptowane jako-is. Aby uzyskać więcej informacji, zobacz [tryby operacji](howto-password-ban-bad-on-premises-operations.md#modes-of-operation).
 
 ## <a name="removal"></a>Praw
 

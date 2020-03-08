@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 28b9c55df8cd7883e05e964b8b67e08c7a3eb8c1
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: e845b44c51b7611cd3f23f8b33e6576aced2d6ca
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74812724"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851455"
 ---
 # <a name="deploy-azure-data-explorer-into-your-virtual-network-preview"></a>Wdróż Eksplorator danych platformy Azure w Virtual Network (wersja zapoznawcza)
 
@@ -48,13 +48,13 @@ Nie można zmienić rozmiaru podsieci używanej do hostowania klastra Eksplorato
 
 Łączna liczba adresów IP:
 
-| Eksploatacja | Liczba adresów |
+| Użycie | Liczba adresów |
 | --- | --- |
 | Usługa aparatu | 1 na wystąpienie |
 | Usługa zarządzania danymi | 2 |
 | Wewnętrzne moduły równoważenia obciążenia | 2 |
 | Adresy zastrzeżone platformy Azure | 5 |
-| **Łączna liczba** | **#engine_instances + 9** |
+| **Ogólnego** | **#engine_instances + 9** |
 
 > [!IMPORTANT]
 > Rozmiar podsieci musi być zaplanowany z wyprzedzeniem, ponieważ nie można go zmienić po wdrożeniu usługi Azure Eksplorator danych. W związku z tym należy odpowiednio zarezerwować wymagany rozmiar podsieci.
@@ -75,16 +75,16 @@ Wdrożenie klastra usługi Azure Eksplorator danych w podsieci pozwala na konfig
 
 #### <a name="inbound-nsg-configuration"></a>Konfiguracja sieciowej grupy zabezpieczeń ruchu przychodzącego
 
-| **Korzystanie**   | **From**   | **Do**   | **Protokół**   |
+| **Korzystanie**   | **Wniosek**   | **Do**   | **Protokół**   |
 | --- | --- | --- | --- |
 | Zarządzanie  |[ADX Management addresses](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement (ServiceTag) | Podsieć ADX: 443  | TCP  |
 | Monitorowanie kondycji  | [ADX adresy monitorowania kondycji](#health-monitoring-addresses)  | Podsieć ADX: 443  | TCP  |
-| Wewnętrzna komunikacja ADX  | Podsieć ADX: wszystkie porty  | Podsieć ADX: wszystkie porty  | Wszystko  |
+| Wewnętrzna komunikacja ADX  | Podsieć ADX: wszystkie porty  | Podsieć ADX: wszystkie porty  | Wszyscy  |
 | Zezwalaj na ruch przychodzący modułu równoważenia obciążenia platformy Azure (sonda kondycji)  | AzureLoadBalancer  | Podsieć ADX: 80443  | TCP  |
 
 #### <a name="outbound-nsg-configuration"></a>Konfiguracja wychodzącej sieciowej grupy zabezpieczeń
 
-| **Korzystanie**   | **From**   | **Do**   | **Protokół**   |
+| **Korzystanie**   | **Wniosek**   | **Do**   | **Protokół**   |
 | --- | --- | --- | --- |
 | Zależność od usługi Azure Storage  | Podsieć ADX  | Magazyn: 443  | TCP  |
 | Zależność od Azure Data Lake  | Podsieć ADX  | AzureDataLake: 443  | TCP  |
@@ -93,7 +93,7 @@ Wdrożenie klastra usługi Azure Eksplorator danych w podsieci pozwala na konfig
 | Pobieranie konfiguracji Azure Monitor  | Podsieć ADX  | [Adresy punktów końcowych konfiguracji Azure monitor](#azure-monitor-configuration-endpoint-addresses): 443 | TCP  |
 | Active Directory (jeśli dotyczy) | Podsieć ADX | Usługi azureactivedirectory: 443 | TCP |
 | Urząd certyfikacji | Podsieć ADX | Internet: 80 | TCP |
-| Komunikacja wewnętrzna  | Podsieć ADX  | Podsieć ADX: wszystkie porty  | Wszystko  |
+| Komunikacja wewnętrzna  | Podsieć ADX  | Podsieć ADX: wszystkie porty  | Wszyscy  |
 | Porty używane na potrzeby wtyczek `sql\_request` i `http\_request`  | Podsieć ADX  | Internet: niestandardowe  | TCP  |
 
 ### <a name="relevant-ip-addresses"></a>Odpowiednie adresy IP
@@ -174,7 +174,7 @@ Wdrożenie klastra usługi Azure Eksplorator danych w podsieci pozwala na konfig
 | Europa Zachodnia | 23.97.212.5 |
 | Indie Zachodnie | 23.99.5.162 |
 | Zachodnie stany USA | 23.99.5.162 |
-| Zachodnie stany USA 2 | 23.99.5.162 | 
+| Zachodnie stany USA 2 | 23.99.5.162 |    
 
 #### <a name="azure-monitor-configuration-endpoint-addresses"></a>Adresy punktów końcowych konfiguracji Azure Monitor
 
@@ -192,7 +192,7 @@ Wdrożenie klastra usługi Azure Eksplorator danych w podsieci pozwala na konfig
 | Środkowe stany USA — EUAP | 13.90.43.231 |
 | Azja Wschodnia | 13.75.117.221 |
 | Wschodnie stany USA | 13.90.43.231 |
-| Wschodnie stany USA 2 | 13.68.89.19 | 
+| Wschodnie stany USA 2 | 13.68.89.19 |    
 | Wschodnie stany USA 2 — EUAP | 13.68.89.19 |
 | Francja środkowa | 52.174.4.112 |
 | Francja Południowa | 52.174.4.112 |
@@ -253,7 +253,7 @@ Należy również zdefiniować [tabelę tras](/azure/virtual-network/virtual-net
 
 Na przykład dla regionu **zachodnie stany USA** należy zdefiniować następujące UDR:
 
-| Nazwa | Przedrostek adresu | Następny przeskok |
+| Name (Nazwa) | Przedrostek adresu | Następny przeskok |
 | --- | --- | --- |
 | ADX_Management | 13.64.38.225/32 | Internet |
 | ADX_Monitoring | 23.99.5.162/32 | Internet |
@@ -263,3 +263,149 @@ Na przykład dla regionu **zachodnie stany USA** należy zdefiniować następuj�
 Aby wdrożyć klaster Eksplorator danych platformy Azure w sieci wirtualnej, użyj szablonu [Wdróż klaster Eksplorator danych platformy Azure w swoim szablonie Azure Resource Manager sieci wirtualnej](https://azure.microsoft.com/resources/templates/101-kusto-vnet/) .
 
 Ten szablon służy do tworzenia klastra, sieci wirtualnej, podsieci, sieciowej grupy zabezpieczeń i publicznych adresów IP.
+
+## <a name="troubleshooting"></a>Rozwiązywanie problemów
+
+W tej sekcji dowiesz się, jak rozwiązywać problemy z łącznością, działaniem i tworzeniem klastra dla klastra wdrożonego w [Virtual Network](/azure/virtual-network/virtual-networks-overview).
+
+### <a name="access-issues"></a>Problemy z dostępem
+
+Jeśli wystąpi problem podczas uzyskiwania dostępu do klastra za pomocą publicznego (cluster.region.kusto.windows.net) lub prywatnego (private-cluster.region.kusto.windows.net) punktu końcowego i podejrzewasz, że jest on powiązany z konfiguracją sieci wirtualnej, wykonaj następujące kroki, aby Rozwiąż problem.
+
+#### <a name="check-tcp-connectivity"></a>Sprawdź łączność TCP
+
+Pierwszy krok obejmuje Sprawdzanie łączności TCP przy użyciu systemu operacyjnego Windows lub Linux.
+
+# <a name="windows"></a>[Windows](#tab/windows)
+
+   1. Pobierz [TCping](https://www.elifulkerson.com/projects/tcping.php) na komputer, który nawiązuje połączenie z klastrem.
+   2. Wyślij polecenie ping do miejsca docelowego z maszyny źródłowej za pomocą następującego polecenia:
+
+    ```cmd
+     C:\> tcping -t yourcluster.kusto.windows.net 443 
+    
+     ** Pinging continuously.  Press control-c to stop **
+    
+     Probing 1.2.3.4:443/tcp - Port is open - time=100.00ms
+     ```
+
+# <a name="linux"></a>[Linux](#tab/linux)
+
+   1. Zainstaluj *netcat* na komputerze łączącym się z klastrem
+
+    ```bash
+    $ apt-get install netcat
+     ```
+
+   2. Wyślij polecenie ping do miejsca docelowego z maszyny źródłowej za pomocą następującego polecenia:
+
+     ```bash
+     $ netcat -z -v yourcluster.kusto.windows.net 443
+    
+     Connection to yourcluster.kusto.windows.net 443 port [tcp/https] succeeded!
+     ```
+---
+
+Jeśli test nie powiedzie się, wykonaj następujące czynności. Jeśli test zakończy się pomyślnie, problem nie jest spowodowany problemem z łącznością TCP. Przejdź do [zagadnień operacyjnych](#cluster-creation-and-operations-issues) , aby rozwiązać problem.
+
+#### <a name="check-the-network-security-group-nsg"></a>Sprawdź sieciową grupę zabezpieczeń (sieciowej grupy zabezpieczeń)
+
+   Sprawdź, czy [sieciowa Grupa zabezpieczeń](/azure/virtual-network/security-overview) (sieciowej grupy zabezpieczeń) dołączona do podsieci klastra ma regułę ruchu przychodzącego zezwalającą na dostęp z adresu IP komputera klienckiego dla portu 443.
+
+#### <a name="check-route-table"></a>Sprawdź tabelę tras
+
+   Jeśli podsieć klastra zawiera konfigurację tunelowania wymuszonego na zaporze (podsieci z [tabelą tras](/azure/virtual-network/virtual-networks-udr-overview) , która zawiera domyślną trasę "0.0.0.0/0"), upewnij się, że adres IP komputera ma trasę z [typem następnego przeskoku](/azure/virtual-network/virtual-networks-udr-overview) do VirtualNetwork/Internet. Jest to wymagane, aby zapobiec problemom z trasą asymetryczną.
+
+### <a name="ingestion-issues"></a>Problemy dotyczące pozyskiwania
+
+Jeśli występują problemy z pozyskiwaniem i podejrzewasz, że jest ona powiązana z konfiguracją sieci wirtualnej, wykonaj następujące czynności.
+
+#### <a name="check-ingestion-health"></a>Sprawdź kondycję pozyskiwania
+
+    Check that the [cluster ingestion metrics](/azure/data-explorer/using-metrics#ingestion-health-and-performance-metrics) indicate a healthy state.
+
+#### <a name="check-security-rules-on-data-source-resources"></a>Sprawdzanie reguł zabezpieczeń dotyczących zasobów źródła danych
+
+Jeśli metryki wskazują, że żadne zdarzenia nie zostały przetworzone ze źródła danych (*zdarzenia przetwarzane* przez Centra zdarzeń/IoT), upewnij się, że zasoby źródła danych (centrum zdarzeń lub magazyn) umożliwiają dostęp z podsieci klastra w regułach zapory lub punktach końcowych usługi.
+
+#### <a name="check-security-rules-configured-on-clusters-subnet"></a>Sprawdź reguły zabezpieczeń skonfigurowane w podsieci klastra
+
+Upewnij się, że podsieć klastra ma sieciowej grupy zabezpieczeń, UDR i reguły zapory są prawidłowo skonfigurowane. Dodatkowo przetestuj łączność sieciową dla wszystkich zależnych punktów końcowych. 
+
+### <a name="cluster-creation-and-operations-issues"></a>Problemy z tworzeniem klastrów i operacjami
+
+Jeśli występują problemy z tworzeniem lub działaniem klastra i podejrzewasz, że jest on związany z konfiguracją sieci wirtualnej, wykonaj następujące kroki, aby rozwiązać problem.
+
+#### <a name="diagnose-the-virtual-network-with-the-rest-api"></a>Diagnozuj sieć wirtualną za pomocą interfejsu API REST
+
+[ARMClient](https://chocolatey.org/packages/ARMClient) jest używany do wywoływania interfejsu API REST przy użyciu programu PowerShell. 
+
+1. Logowanie za pomocą ARMClient
+
+   ```powerShell
+   armclient login
+   ```
+
+1. Wywołaj operację diagnostyki
+
+    ```powershell
+    $subscriptionId = '<subscription id>'
+    $clusterName = '<name of cluster>'
+    $resourceGroupName = '<resource group name>'
+    $apiversion = '2019-11-09'
+    
+    armclient post "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Kusto/clusters/$clusterName/diagnoseVirtualNetwork?api-version=$apiversion" -verbose
+    ```
+
+1. Sprawdź odpowiedź
+
+    ```powershell
+    HTTP/1.1 202 Accepted
+    ...
+    Azure-AsyncOperation: https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Kusto/locations/{location}/operationResults/{operation-id}?api-version=2019-11-09
+    ...
+    ```
+
+1. Poczekaj na zakończenie operacji
+
+    ```powershell
+    armclient get https://management.azure.com/subscriptions/$subscriptionId/providers/Microsoft.Kusto/locations/{location}/operationResults/{operation-id}?api-version=2019-11-09
+    
+    {
+      "id": "/subscriptions/{subscription-id}/providers/Microsoft.Kusto/locations/{location}/operationresults/{operation-id}",
+      "name": "{operation-name}",
+      "status": "[Running/Failed/Completed]",
+      "startTime": "{start-time}",
+      "endTime": "{end-time}",
+      "properties": {...}
+    }
+    ```
+    
+   Poczekaj, aż Właściwość *status* zostanie *zakończona*, a następnie pole *Właściwości* powinno zawierać:
+
+    ```powershell
+    {
+      "id": "/subscriptions/{subscription-id}/providers/Microsoft.Kusto/locations/{location}/operationresults/{operation-id}",
+      "name": "{operation-name}",
+      "status": "Completed",
+      "startTime": "{start-time}",
+      "endTime": "{end-time}",
+      "properties": {
+        "Findings": [...]
+      }
+    }
+    ```
+
+Jeśli właściwość *spostrzeżenia* pokazuje pusty wynik, oznacza to, że wszystkie testy sieci zakończyły się niepowodzeniem, a połączenia nie są przerywane. Jeśli wystąpi błąd w następujący sposób: *zależność wychodząca "{dependencyname}: {Port}" może nie być spełniona (wychodzące)* , klaster nie może połączyć się z punktami końcowymi zależnych usług. Wykonaj następujące kroki, aby rozwiązać problem.
+
+#### <a name="check-network-security-group-nsg"></a>Sprawdź grupę zabezpieczeń sieci (sieciowej grupy zabezpieczeń)
+
+Upewnij się, że [sieciowa Grupa zabezpieczeń](/azure/virtual-network/security-overview) jest prawidłowo skonfigurowana zgodnie z instrukcjami w [zależności od wdrożenia sieci wirtualnej](/azure/data-explorer/vnet-deployment#dependencies-for-vnet-deployment)
+
+#### <a name="check-route-table"></a>Sprawdź tabelę tras
+
+Jeśli podsieć klastra ma ustawioną tunelowanie wymuszone na zaporę (podsieć z [tabelą tras](/azure/virtual-network/virtual-networks-udr-overview) , która zawiera domyślną trasę "0.0.0.0/0"), upewnij się, że adresy IP [zarządzania i administracyjne](#azure-data-explorer-management-ip-addresses) [monitorowanie kondycji](#health-monitoring-addresses) mają trasę z [typem następnego przeskoku](/azure/virtual-network/virtual-networks-udr-overview##next-hop-types-across-azure-tools) *Internet*oraz [prefiksem adresu źródłowego](/azure/virtual-network/virtual-networks-udr-overview#how-azure-selects-a-route) do *"Zarządzanie-IP/32"* i *"kondycja-monitorowanie-IP/32"* . Jest to wymagane, aby zapobiec problemom z trasą asymetryczną.
+
+#### <a name="check-firewall-rules"></a>Sprawdź reguły zapory
+
+Jeśli Wymuś ruch wychodzący z podsieci tunelu do zapory, upewnij się, że w konfiguracji zapory są dozwolone wszystkie nazwy FQDN zależności (na przykład *. blob.Core.Windows.NET*), zgodnie z opisem w temacie [Zabezpieczanie ruchu wychodzącego za pomocą zapory](/azure/data-explorer/vnet-deployment#securing-outbound-traffic-with-firewall).

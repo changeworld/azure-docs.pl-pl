@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87a9c9b808e737f8e72da803085bfebd8263319a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 4ad76835b0c72b691e1ef8810f2c58dedb8f597d
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194351"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672389"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Roaming ustawień i danych — często zadawane pytania
 
@@ -35,7 +35,7 @@ W tym artykule znajdują się odpowiedzi na pytania, które mogą być dostępne
 * *Inne ustawienia systemu Windows*, takie jak ustawienia myszy.
 
 > [!NOTE]
-> Ten artykuł ma zastosowanie do starszej przeglądarki opartej na języku HTML Microsoft Edge, która została uruchomiona z systemem Windows 10 w lipcu 2015. Artykuł nie ma zastosowania do nowej przeglądarki opartej na formacie chromu Microsoft Edge wydanej 15 stycznia 2020. Aby uzyskać więcej informacji na temat zachowania synchronizacji dla nowej przeglądarki Microsoft Edge, zobacz artykuł [Microsoft Edge Sync](https://docs.microsoft.com/deployedge/microsoft-edge-enterprise-sync).
+> Ten artykuł ma zastosowanie do starszej przeglądarki opartej na języku HTML Microsoft Edge, która została uruchomiona z systemem Windows 10 w lipcu 2015. Artykuł nie ma zastosowania do nowej przeglądarki opartej na formacie chromu Microsoft Edge wydanej 15 stycznia 2020. Aby uzyskać więcej informacji na temat zachowania synchronizacji dla nowej przeglądarki Microsoft Edge, zobacz artykuł [Microsoft Edge Sync](/deployedge/microsoft-edge-enterprise-sync).
 
 **Dane aplikacji**: Aplikacje uniwersalne systemu Windows mogą zapisywać dane ustawień w folderze mobilnym, a wszystkie dane zapisane w tym folderze zostaną automatycznie zsynchronizowane. Aby skorzystać z tej możliwości, można zaprojektować aplikację przy użyciu poszczególnych deweloperów aplikacji. Aby uzyskać więcej informacji na temat sposobu tworzenia uniwersalnej aplikacji systemu Windows, która korzysta z roamingu, zobacz blog [interfejsu API magazynu AppData](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) i [Windows 8 AppData mobilnego dewelopera](https://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx).
 

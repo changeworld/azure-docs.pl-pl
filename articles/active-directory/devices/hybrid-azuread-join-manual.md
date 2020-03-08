@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed28b4bb8ec61455168f50058c8cdcaf9f50717d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 6754393bdeabcd67dcf6514102e3c825a26fc3e9
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377034"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672272"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Samouczek: ręczne konfigurowanie urządzeń dołączonych hybrydowo do usługi Azure Active Directory
 
@@ -82,10 +82,10 @@ Skorzystaj z poniższej tabeli, aby uzyskać przegląd kroków wymaganych dla da
 
 | Kroki | Bieżący system Windows i synchronizacja skrótów haseł | Bieżący system Windows i federacja | System Windows niższego poziomu |
 | :--- | :---: | :---: | :---: |
-| Konfigurowanie punktu połączenia usługi | ![Sprawdź][1] | ![Sprawdź][1] | ![Sprawdź][1] |
-| Konfigurowanie wystawiania oświadczeń |     | ![Sprawdź][1] | ![Sprawdź][1] |
-| Włączanie urządzeń z systemem innym niż Windows 10 |       |        | ![Sprawdź][1] |
-| Weryfikowanie dołączonych urządzeń | ![Sprawdź][1] | ![Sprawdź][1] | [Niezaznaczone][1] |
+| Konfigurowanie punktu połączenia usługi | ![Zaznacz][1] | ![Zaznacz][1] | ![Zaznacz][1] |
+| Konfigurowanie wystawiania oświadczeń |     | ![Zaznacz][1] | ![Zaznacz][1] |
+| Włączanie urządzeń z systemem innym niż Windows 10 |       |        | ![Zaznacz][1] |
+| Weryfikowanie dołączonych urządzeń | ![Zaznacz][1] | ![Zaznacz][1] | [Niezaznaczone][1] |
 
 ## <a name="configure-a-service-connection-point"></a>Konfigurowanie punktu połączenia usługi
 
@@ -185,7 +185,7 @@ W przypadku korzystania z AD FS należy włączyć następujące punkty końcowe
 - `/adfs/services/trust/13/certificatemixed`
 
 > [!WARNING]
-> **Usługi ADFS/Services/Trust/2005/windowstransport** lub **ADFS/Services/Trust/13/windowstransport** powinny być włączone tylko jako punkty końcowe dostępne dla intranetu i nie mogą być udostępniane jako punkty końcowe dla ekstranetu za pośrednictwem serwera proxy aplikacji sieci Web. Aby dowiedzieć się więcej na temat wyłączania punktów końcowych usługi WS-Trust systemu Windows, zobacz temat [wyłączanie punktów końcowych systemu Windows WS-Trust na serwerze proxy](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Możesz zobaczyć, jakie punkty końcowe są włączone, za pomocą konsoli zarządzania usług AD FS w obszarze **Usługi** > **Punkty końcowe**.
+> **Usługi ADFS/Services/Trust/2005/windowstransport** lub **ADFS/Services/Trust/13/windowstransport** powinny być włączone tylko jako punkty końcowe dostępne dla intranetu i nie mogą być udostępniane jako punkty końcowe dla ekstranetu za pośrednictwem serwera proxy aplikacji sieci Web. Aby dowiedzieć się więcej na temat wyłączania punktów końcowych usługi WS-Trust systemu Windows, zobacz temat [wyłączanie punktów końcowych systemu Windows WS-Trust na serwerze proxy](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Możesz zobaczyć, jakie punkty końcowe są włączone, za pomocą konsoli zarządzania usług AD FS w obszarze **Usługi** > **Punkty końcowe**.
 
 > [!NOTE]
 >Jeśli nie masz usługi AD FS jako lokalnej usługi federacyjnej, postępuj zgodnie z instrukcjami od dostawcy, aby upewnić się, że obsługuje on punkty końcowe protokołu WS-Trust 1.3 lub 2005, i że są one publikowane za pomocą pliku wymiany metadanych (MEX).
@@ -549,7 +549,7 @@ Aby zarejestrować urządzenia z systemem Windows niższego poziomu, musisz pobr
 
 ## <a name="verify-joined-devices"></a>Weryfikowanie dołączonych urządzeń
 
-Możesz sprawdzić pomyślnie dołączone urządzenia w Twojej organizacji za pomocą polecenia cmdlet [Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice) w [module programu PowerShell usługi Azure Active Directory](/powershell/azure/install-msonlinev1?view=azureadps-2.0).
+Możesz sprawdzić pomyślnie dołączone urządzenia w Twojej organizacji za pomocą polecenia cmdlet [Get-MsolDevice](/powershell/msonline/v1/get-msoldevice) w [module programu PowerShell usługi Azure Active Directory](/powershell/azure/install-msonlinev1?view=azureadps-2.0).
 
 Dane wyjściowe tego polecenia cmdlet pokazują urządzenia, które są zarejestrowane i dołączone w usłudze Azure AD. Aby uzyskać wszystkie urządzenia, użyj parametru **-All**, a następnie filtruj je przy użyciu właściwości **deviceTrustType**. Urządzenia dołączone do domeny mają wartość **Dołączone do domeny**.
 

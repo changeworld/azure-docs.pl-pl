@@ -7,12 +7,12 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 1e27fca86613757c36ac664e2e449cabed68d550
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 6d0a9bf172039adcaa756660d38acc1547e91b49
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772452"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898695"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Obrazy tagów w projekcie etykietowania
 
@@ -58,6 +58,16 @@ System Azure włącza przycisk **Prześlij** , gdy Otagowano wszystkie obrazy na
 
 Po przesłaniu tagów dla danych, platforma Azure Odświeża stronę nowym zestawem obrazów z kolejki roboczej.
 
+### <a name="assisted-machine-learning"></a>Uczenie maszynowe z asystą 
+
+Algorytmy uczenia maszynowego mogą być wyzwalane podczas zadania klasyfikacji wieloklasowej lub wieloetykietowej. Jeśli te algorytmy są włączone w projekcie, mogą pojawić się następujące elementy:
+
+* Po oznaczeniu pewnej ilości obrazów można zobaczyć **zadania klastrowane** w górnej części ekranu obok nazwy projektu.  Oznacza to, że obrazy są pogrupowane w taki sposób, aby przedstawić podobne obrazy na tej samej stronie.  Jeśli tak, przejdź do jednego z widoków wielu obrazów, aby skorzystać z grupowania.  
+
+* W późniejszym czasie można zobaczyć, jakie **zadania są oznaczone** obok nazwy projektu.  Następnie zostaną wyświetlone obrazy z sugerowaną etykietą, która pochodzi z modelu klasyfikacji uczenia maszynowego. Żaden model uczenia maszynowego nie ma dokładności do 100%. Chociaż używamy tylko obrazów, dla których model jest pewny, te obrazy mogą nadal być nieprawidłowo oznaczone etykietami.  Gdy zobaczysz te etykiety, Popraw wszelkie niewłaściwe etykiety przed przesłaniem strony.  
+
+W szczególności przede wszystkim w projekcie etykietowania model uczenia maszynowego może być wystarczająco dokładny tylko, aby można było oznaczyć mały podzestaw obrazów. Gdy te obrazy są oznaczone etykietami, projekt etykietowania powróci do ręcznego etykietowania, aby zebrać więcej danych dla następnej rundy szkolenia modeli. W miarę upływu czasu model będzie bardziej wiedział o większej liczbie obrazów, co spowodowało bardziej szczegółowe zadanie zadań w dalszej części projektu.
+
 ## <a name="tag-images-for-multi-class-classification"></a>Obrazy tagów dla klasyfikacji wieloklasowej
 
 Jeśli projekt jest typu "Klasyfikacja obrazu wiele klas", przypiszesz jeden tag do całego obrazu. Aby zapoznać się ze wskazówkami w dowolnym momencie, przejdź do strony z **instrukcjami** i wybierz pozycję **Wyświetl szczegółowe instrukcje**.
@@ -81,6 +91,7 @@ Aby poprawić błąd, kliknij znak "**X**", aby wyczyścić pojedynczy tag, lub 
 ![Zrzut ekranu przedstawia wiele selektorów](./media/how-to-label-images/multiple-deselection.png)
 
 Na platformie Azure zostanie włączony przycisk **Prześlij** tylko po zastosowaniu co najmniej jednego znacznika do każdego obrazu. Wybierz pozycję **Prześlij** , aby zapisać swoją służbę.
+
 
 ## <a name="tag-images-and-specify-bounding-boxes-for-object-detection"></a>Dodawanie tagów do obrazów i określanie pól ograniczenia na potrzeby wykrywania obiektów
 
@@ -106,7 +117,7 @@ Aby usunąć *wszystkie* pola ograniczające na bieżącym obrazie, wybierz narz
 
 Po utworzeniu pól ograniczenia dla obrazu wybierz pozycję **Prześlij** , aby zapisać swoją służbę lub nie będzie można zapisać pracy w toku.
 
-## <a name="finish-up"></a>Zakończenie
+## <a name="finish-up"></a>Zakończ
 
 Gdy przesyłasz stronę oznakowanych danych, platforma Azure przypisze Ci nowe dane bez etykiet do użytkownika z kolejki służbowej. Jeśli nie ma więcej dostępnych danych bez etykiet, zostanie wyświetlony komunikat z linkiem do strony głównej portalu.
 

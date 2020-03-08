@@ -9,12 +9,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: 948dfd25881a6a90dd441ad640091d88812cc298
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 711e15986265324bbb353fb2b4404cbfeb48dc84
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931829"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851426"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>Szybki Start: wysyłanie danych telemetrycznych z urządzenia do centrum IoT Hub i monitorowanie go za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -35,6 +35,7 @@ Bez względu na to, czy uruchamiasz interfejs wiersza polecenia lokalnie, czy w 
 W tej sekcji uruchomisz wystąpienie Azure Cloud Shell. Jeśli używasz interfejsu wiersza polecenia lokalnie, przejdź do sekcji [przygotowanie dwóch sesji interfejsu wiersza polecenia](#prepare-two-cli-sessions).
 
 Aby uruchomić Cloud Shell:
+
 1. Wybierz przycisk **Cloud Shell** w prawym górnym pasku menu w Azure Portal. 
 
     ![Przycisk Azure Portal Cloud Shell](media/quickstart-send-telemetry-cli/cloud-shell-button.png)
@@ -42,25 +43,30 @@ Aby uruchomić Cloud Shell:
     > [!NOTE]
     > Jeśli używasz Cloud Shell po raz pierwszy, zostanie wyświetlony komunikat z prośbą o utworzenie magazynu, który jest wymagany do korzystania z Cloud Shell.  Wybierz subskrypcję, aby utworzyć konto magazynu i udział plików Microsoft Azure. 
 
-1. Wybierz preferowane środowisko interfejsu wiersza polecenia na liście rozwijanej **Wybierz środowisko** . Ten przewodnik Szybki Start używa środowiska **bash** . W środowisku programu PowerShell są również wykonywane wszystkie następujące polecenia interfejsu CLI. 
+2. Wybierz preferowane środowisko interfejsu wiersza polecenia na liście rozwijanej **Wybierz środowisko** . Ten przewodnik Szybki Start używa środowiska **bash** . W środowisku programu PowerShell są również wykonywane wszystkie następujące polecenia interfejsu CLI. 
 
     ![Wybierz środowisko interfejsu wiersza polecenia](media/quickstart-send-telemetry-cli/cloud-shell-environment.png)
 
 ## <a name="prepare-two-cli-sessions"></a>Przygotuj dwie sesje interfejsu wiersza polecenia
+
 W tej sekcji przygotowasz dwie sesje interfejsu wiersza polecenia platformy Azure. Jeśli używasz Cloud Shell, zostaną uruchomione dwie sesje na osobnych kartach przeglądarki. W przypadku korzystania z lokalnego klienta interfejsu wiersza polecenia uruchamiane są dwa oddzielne wystąpienia interfejsu wiersza polecenia. Będziesz używać pierwszej sesji jako symulowanego urządzenia, a druga sesja do monitorowania i wysyłania komunikatów. Aby uruchomić polecenie, wybierz opcję **Kopiuj** w celu skopiowania bloku kodu w tym przewodniku Szybki Start, wklej go do sesji powłoki i uruchom go.
 
 Interfejs wiersza polecenia platformy Azure wymaga zalogowania się do konta platformy Azure. Cała komunikacja między sesją powłoki interfejsu wiersza polecenia platformy Azure i centrum IoT Hub jest uwierzytelniana i szyfrowana. W związku z tym ten przewodnik Szybki Start nie wymaga dodatkowego uwierzytelniania, którego można używać z rzeczywistym urządzeniem, na przykład z parametrami połączenia.
 
-1. Uruchom polecenie [AZ Extension Add](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-add) , aby dodać rozszerzenie Microsoft Azure IoT dla interfejsu wiersza polecenia platformy Azure do powłoki interfejsu wiersza polecenia. Rozszerzenie IOT dodaje do interfejsu wiersza polecenia platformy Azure IoT Hub, IoT Edge i usługi IoT Device Provisioning Service (DPS).
+*  Uruchom polecenie [AZ Extension Add](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-add) , aby dodać rozszerzenie Microsoft Azure IoT dla interfejsu wiersza polecenia platformy Azure do powłoki interfejsu wiersza polecenia. Rozszerzenie IOT dodaje do interfejsu wiersza polecenia platformy Azure IoT Hub, IoT Edge i usługi IoT Device Provisioning Service (DPS).
 
    ```azurecli
-   az extension add --name azure-cli-iot-ext
+   az extension add --name azure-iot
    ```
-    Po zainstalowaniu rozszerzenia Azure IOT nie trzeba go instalować ponownie w żadnej sesji Cloud Shell. 
+   
+   Po zainstalowaniu rozszerzenia Azure IOT nie trzeba go instalować ponownie w żadnej sesji Cloud Shell. 
 
-1. Otwórz drugą sesję interfejsu wiersza polecenia.  Jeśli używasz Cloud Shell, wybierz pozycję **Otwórz nową sesję**. Jeśli używasz interfejsu wiersza polecenia lokalnie, Otwórz drugie wystąpienie. 
+   [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-    ![Otwórz nową sesję Cloud Shell](media/quickstart-send-telemetry-cli/cloud-shell-new-session.png)
+*  Otwórz drugą sesję interfejsu wiersza polecenia.  Jeśli używasz Cloud Shell, wybierz pozycję **Otwórz nową sesję**. Jeśli używasz interfejsu wiersza polecenia lokalnie, Otwórz drugie wystąpienie. 
+
+    >[!div class="mx-imgBorder"]
+    >![otworzyć nowej sesji Cloud Shell](media/quickstart-send-telemetry-cli/cloud-shell-new-session.png)
 
 ## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
 W tej sekcji utworzysz grupę zasobów i IoT Hub przy użyciu interfejsu wiersza polecenia platformy Azure.  Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. IoT Hub pełni rolę centralnego centrum komunikatów na potrzeby komunikacji dwukierunkowej między Twoją aplikacją IoT a urządzeniami. 

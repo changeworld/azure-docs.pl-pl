@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 99f255d9991b51897ee31671835dabb5f3e359fd
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 9e5b3e633bf35a25a68eb513d0ec691c3254bde4
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77916510"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674218"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Przydziały usługi Azure Cosmos DB
 
@@ -186,6 +186,20 @@ W poniższej tabeli przedstawiono limity dla [Azure Cosmos DB Wypróbuj bezpłat
 | Maksymalna liczba magazynów na konto | 10 GB |
 
 Wypróbuj Cosmos DB obsługuje dystrybucję globalną tylko w regionach Środkowe stany USA, Europa Północna i Azja Południowo-Wschodnia. Nie można utworzyć biletów pomocy technicznej systemu Azure dla usług try Azure Cosmos DB. Jednak pomoc techniczna jest świadczona dla subskrybentów z istniejącymi planami pomocy technicznej.
+
+## <a name="free-tier-account-limits"></a>Limity konta w warstwie Bezpłatna
+W poniższej tabeli wymieniono limity [Azure Cosmos DB kont warstwy bezpłatnej.](optimize-dev-test.md#azure-cosmos-db-free-tier)
+
+| Zasób | Limit domyślny |
+| --- | --- |
+| Liczba kont warstwy Bezpłatna na subskrypcję platformy Azure | 1 |
+| Czas trwania rabatu w warstwie Bezpłatna | Okres istnienia konta. Należy się zadecydować podczas tworzenia konta. |
+| Maksymalna liczba jednostek RU na sekundę | 400 RU/s |
+| Maksymalna ilość miejsca do magazynowania | 5 GB |
+| Maksymalna liczba udostępnionych baz danych przepływności | 5 |
+| Maksymalna liczba kontenerów w udostępnionej bazie danych przepływności | 25 <br>W przypadku kont warstwy Bezpłatna minimalna wartość RU/s dla udostępnionej bazy danych przepływności z maksymalnie 25 kontenerami wynosi 400 RU/s. |
+
+  Oprócz powyższych [wartości limity dla konta](#per-account-limits) są stosowane również do kont warstwy Bezpłatna.
 
 ## <a name="next-steps"></a>Następne kroki
 

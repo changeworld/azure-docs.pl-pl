@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: fa1651e88226080cca970cc756f2c0522b39f1be
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: ef46b86186d1f5e26360de891b3a090ab0ece66b
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670631"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894813"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Rozpoczynanie monitorowania aplikacji internetowej ASP.NET Core
 
@@ -24,10 +24,10 @@ Ten przewodnik Szybki Start przeprowadzi Cię przez proces dodawania zestawu SDK
 
 Aby ukończyć ten przewodnik Szybki Start:
 
-- [Zainstaluj program Visual Studio 2019](https://www.visualstudio.com/downloads/) z następującymi obciążeniami:
+- [Zainstaluj program Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) z następującymi obciążeniami:
   - Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych
   - Tworzenie aplikacji na platformie Azure
-- [Instalowanie zestawu SDK programu .NET Core 2.0](https://www.microsoft.com/net/core)
+- [Instalowanie zestawu SDK programu .NET Core 2.0](https://dotnet.microsoft.com/download)
 - Wymagana jest subskrypcja platformy Azure i istniejąca aplikacja internetowa .NET Core.
 
 Jeśli nie masz aplikacji sieci Web ASP.NET Core, możesz skorzystać z naszego przewodnika krok po kroku, aby [utworzyć aplikację ASP.NET Core i dodać Application Insights.](../../azure-monitor/app/asp-net-core.md)

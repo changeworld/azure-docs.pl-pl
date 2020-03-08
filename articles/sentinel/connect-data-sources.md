@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: yelevin
-ms.openlocfilehash: 311bb367748be98af704ab11919abea6e38d0ff3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 9d2d1985b23e1c7f5e0f7d9fd2795bd85e28ace0
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392461"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668899"
 ---
 # <a name="connect-data-sources"></a>Łączenie ze źródłami danych
 
@@ -56,7 +56,6 @@ Następujące metody łączenia danych są obsługiwane przez wskaźnik na platf
     - [Office 365](connect-office-365.md)
     - [Usługa Microsoft Defender ATP](connect-microsoft-defender-advanced-threat-protection.md)
     - [Zapora aplikacji sieci Web firmy Microsoft](connect-microsoft-waf.md)
-    - [Zdarzenia zabezpieczeń systemu Windows](connect-windows-security-events.md) 
     - [Zapora systemu Windows](connect-windows-firewall.md)
     - [Zdarzenia zabezpieczeń systemu Windows](connect-windows-security-events.md)
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b135b14fb18904901ad78a1f5d9dc66c8a2bc67
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 46be728216ed4b9c9e84c1c7f68c5ddf2051f42b
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538802"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672300"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Instrukcje: Zarządzanie nieodświeżonymi urządzeniami w usłudze Azure AD
 
@@ -57,7 +57,7 @@ Istnieją dwie możliwości uzyskania wartości znacznika czasu aktywności:
 
     ![Znacznik czasu aktywności](./media/manage-stale-devices/01.png)
 
-- Polecenie cmdlet [Get-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/get-msoldevice?view=azureadps-1.0)
+- Polecenie cmdlet [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0)
 
     ![Znacznik czasu aktywności](./media/manage-stale-devices/02.png)
 
@@ -75,7 +75,7 @@ Aby zaktualizować urządzenie w usłudze Azure AD, potrzebne jest konto, które
 
 W zasadach oczyszczania wybierz konta, które mają przypisane wymagane role. 
 
-### <a name="timeframe"></a>Ramy czasowe
+### <a name="timeframe"></a>Przedział czasu
 
 Zdefiniuj przedział czasu, który jest wskaźnikiem służącym do wykrywania nieaktywnego urządzenia. Podczas definiowania przedziału czasu należy wziąć pod uwagę okno w celu zaktualizowania sygnatury czasowej działania do wartości. Na przykład nie należy uwzględniać sygnatury czasowej starszej niż 21 dni (łącznie z wariancją) jako wskaźnika dla nieodświeżonego urządzenia. Istnieją sytuacje, w których urządzenie może wyglądać na nieaktywne, chociaż tak nie jest. Na przykład gdy właściciel urządzenia jest na urlopie lub na zwolnieniu lekarskim  przekraczającym przedział czasu zdefiniowany dla nieaktywnych urządzeń.
 
@@ -129,11 +129,11 @@ Nieaktywne urządzenia można oczyszczać w witrynie Azure Portal, ale bardziej 
 
 Typowa procedura obejmuje następujące czynności:
 
-1. Nawiązywanie połączenia z usługą Azure Active Directory przy użyciu polecenia cmdlet [Connect-MsolService](https://docs.microsoft.com/powershell/module/msonline/connect-msolservice?view=azureadps-1.0)
+1. Nawiązywanie połączenia z usługą Azure Active Directory przy użyciu polecenia cmdlet [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0)
 1. Pobieranie listy urządzeń
-1. Wyłączanie urządzenia przy użyciu polecenia cmdlet [Disable-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/disable-msoldevice?view=azureadps-1.0) 
+1. Wyłączanie urządzenia przy użyciu polecenia cmdlet [Disable-MsolDevice](/powershell/module/msonline/disable-msoldevice?view=azureadps-1.0) 
 1. Przed usunięciem urządzenia poczekaj, aż upłynie wybrana przez Ciebie liczba dni okresu prolongaty.
-1. Usuwanie urządzenia przy użyciu polecenia cmdlet [Remove-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0)
+1. Usuwanie urządzenia przy użyciu polecenia cmdlet [Remove-MsolDevice](/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0)
 
 ### <a name="get-the-list-of-devices"></a>Pobieranie listy urządzeń
 

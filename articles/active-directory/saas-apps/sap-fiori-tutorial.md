@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Azure Active Directory Integracja z logowaniem jednokrotnym (SSO) przy użyciu oprogramowania SAP Fiori | Microsoft Docs'
+title: 'Samouczek: Azure Active Directory Integracja z logowaniem jednokrotnym (SSO) za pomocą oprogramowania SAP Fiori | Microsoft Docs'
 description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i SAP Fiori.
 services: active-directory
 documentationCenter: na
@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50d1875ce2529222e8ff7472c48bf6d4dd878667
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 917ba9274276fec5d01a40bdf7219e8d4fee1395
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772871"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897759"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-fiori"></a>Samouczek: Azure Active Directory Integracja z logowaniem jednokrotnym (SSO) przy użyciu oprogramowania SAP Fiori
 
@@ -83,7 +83,7 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
 1. Zaloguj się do klienta SAP Business Client for SAP system **T01**, gdzie jest wymagane logowanie jednokrotne. Następnie aktywuj zarządzanie sesjami zabezpieczeń protokołu HTTP.
 
-    1. Przejdź do **SICF_SESSIONS**kodu transakcji. Wyświetlane są wszystkie odpowiednie parametry profilu z bieżącymi wartościami. Wyglądają podobnie jak w poniższym przykładzie:
+    1. Przejdź do kodu transakcji **SICF_SESSIONS**. Wyświetlane są wszystkie odpowiednie parametry profilu z bieżącymi wartościami. Wyglądają podobnie jak w poniższym przykładzie:
 
         ```
         login/create_sso2_ticket = 2
@@ -126,11 +126,11 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 1. W polu **Nazwa dostawcy** Zastąp wartość **T01122** nazwą **http:\//T01122**, a następnie wybierz pozycję **Zapisz**.
 
     > [!NOTE]
-    > Domyślnie nazwa dostawcy ma format \<SID >\<> klienta. Usługa Azure AD oczekuje nazwy w protokole formatu \<>://\<Name >. Zalecamy zachowanie nazwy dostawcy jako\:identyfikatora SID protokołu HTTPS//\<>\<> klienta, aby można było skonfigurować wiele aparatów ABAP SAP Fiori w usłudze Azure AD.
+    > Domyślnie nazwa dostawcy ma format \<identyfikator SID >\<> klienta. Usługa Azure AD oczekuje nazwy w formacie \<Protocol >://\<>. Zalecamy zachowanie nazwy dostawcy jako protokołu HTTPS\://\<SID >\<> klienta, aby można było skonfigurować wiele aparatów ABAP SAP Fiori w usłudze Azure AD.
 
     ![Zaktualizowana nazwa dostawcy w konfiguracji SAML 2,0 strony ABAP system T01/122 w oprogramowaniu SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-providername.png)
 
-1. Wybierz pozycję > **metadane** **karty dostawcy lokalnego**.
+1. Wybierz **kartę dostawca lokalna** > **metadane**.
 
 1. W oknie dialogowym **metadane SAML 2,0** Pobierz WYGENEROWANY plik XML metadanych i Zapisz go na komputerze.
 
@@ -161,7 +161,7 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
     > Set-AzureADServicePrincipal -ObjectId $ServicePrincipalObjectId -ReplyUrls "<Your Correct Reply URL(s)>"
     > ``` 
     > 
-    > Identyfikator `ServicePrincipal` obiektu można ustawić samodzielnie przed uruchomieniem skryptu lub przekazać go tutaj.
+    > Identyfikator obiektu `ServicePrincipal` można ustawić samodzielnie przed uruchomieniem skryptu lub przekazać go tutaj.
 
 1. Aplikacja SAP Fiori oczekuje, że potwierdzenia SAML mają być w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Aby zarządzać tymi wartościami atrybutów, w okienku **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** wybierz pozycję **Edytuj**.
 
@@ -173,7 +173,7 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
     1. Na liście **transformacja** wybierz pozycję **ExtractMailPrefix ()** .
 
-    1. Na liście **parametr 1** wybierz pozycję **User. userprinicipalname**.
+    1. Na liście **parametr 1** wybierz pozycję **User. userPrincipalName**.
 
     1. Wybierz pozycję **Zapisz**.
 
@@ -183,7 +183,7 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
     
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **plik XML metadanych Federacji** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/metadataxml.png)
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
 1. W sekcji **Konfigurowanie rozwiązania SAP Fiori** skopiuj odpowiednie adresy URL na podstawie wymagań.
 
@@ -194,10 +194,10 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
 1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-1. Wybierz **nowego użytkownika** w górnej części ekranu.
+1. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 1. We właściwościach **użytkownika** wykonaj następujące kroki:
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
-   1. W polu **Nazwa użytkownika** wprowadź wartość username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
    1. Kliknij przycisk **Utwórz**.
 
@@ -209,7 +209,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 1. Na liście Aplikacje wybierz pozycję **SAP Fiori**.
 1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
 
-   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
+   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
 1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
 
@@ -259,7 +259,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
     ![Opcje wymagań uwierzytelniania i opcja zakończenia w oprogramowaniu SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-authentication.png)
 
-1. Wybierz opcję**Federacja tożsamości**  >  **dostawcy zaufanego**(w dolnej części strony). Wybierz pozycję **Edit** (Edytuj).
+1. Wybierz pozycję **zaufany dostawca** > **tożsamość Federacji** (w dolnej części strony). Wybierz pozycję **Edit** (Edytuj).
 
     ![Karty zaufanych dostawców i tożsamości w oprogramowaniu SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-trustedprovider.png)
 
@@ -273,7 +273,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
     Wartości dla opcji **Źródło identyfikatora użytkownika** i **Mapowanie identyfikatora użytkownika** określają łącze między użytkownikiem SAP a roszczeń usługi Azure AD.  
 
-    **Scenariusz 1**: Mapowanie użytkownika SAP do usługi Azure AD
+    **Scenariusz 1**: mapowanie użytkownika SAP do usługi Azure AD
 
     1. W oprogramowaniu SAP w obszarze **Szczegóły formatu NameID "unnieokreślone"** Zwróć uwagę na szczegóły:
 
@@ -283,7 +283,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
         ![Okno dialogowe atrybuty użytkownika & oświadczenia w Azure Portal](./media/sapfiori-tutorial/claimsaad1.png)
 
-    **Scenariusz 2**: Wybierz identyfikator użytkownika SAP na podstawie skonfigurowanego adresu e-mail w SU01. W takim przypadku Identyfikator poczty e-mail powinien być skonfigurowany w SU01 dla każdego użytkownika, który wymaga logowania jednokrotnego.
+    **Scenariusz 2**: Wybierz identyfikator użytkownika SAP na podstawie skonfigurowanego adresu E-mail w SU01. W takim przypadku Identyfikator poczty e-mail powinien być skonfigurowany w SU01 dla każdego użytkownika, który wymaga logowania jednokrotnego.
 
     1.  W oprogramowaniu SAP w obszarze **Szczegóły formatu NameID "unnieokreślone"** Zwróć uwagę na szczegóły:
 
@@ -309,8 +309,8 @@ W tej sekcji utworzysz użytkownika o nazwie Britta Simon w oprogramowaniu SAP F
 
 1. Po aktywowaniu usługi Azure AD dostawcy tożsamości w programie SAP Fiori spróbuj uzyskać dostęp do jednego z następujących adresów URL w celu przetestowania logowania jednokrotnego (nie należy monitować o podanie nazwy użytkownika i hasła):
 
-    * https:\//sapurl\>/SAP/BC/BSP/SAP/it00/default.htm\<
-    * https:\//sapurl\>/SAP/BC/BSP/SAP/it00/default.htm\<
+    * https:\//\<sapurl\>/sap/bc/bsp/sap/it00/default.htm
+    * https:\//\<sapurl\>/sap/bc/bsp/sap/it00/default.htm
 
     > [!NOTE]
     > Zamień *sapurl* na rzeczywistą nazwę hosta SAP.
@@ -319,7 +319,7 @@ W tej sekcji utworzysz użytkownika o nazwie Britta Simon w oprogramowaniu SAP F
 
     ![Strona standardowej aplikacji testowej w oprogramowaniu SAP](./media/sapfiori-tutorial/testingsso.png)
 
-1. Jeśli zostanie wyświetlony monit o podanie nazwy użytkownika i hasła, Włącz śledzenie, aby ułatwić zdiagnozowanie problemu. Użyj następującego adresu URL\/śledzenia: https:/\<sapurl\>/SAP/BC/WebDynpro/SAP/sec_diag_tool? SAP-Client = 122 & SAP-language = EN #.
+1. Jeśli zostanie wyświetlony monit o podanie nazwy użytkownika i hasła, Włącz śledzenie, aby ułatwić zdiagnozowanie problemu. Użyj następującego adresu URL śledzenia: https:\//\<sapurl\>/SAP/BC/WebDynpro/SAP/sec_diag_tool? SAP-Client = 122 & SAP-language = EN #.
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 

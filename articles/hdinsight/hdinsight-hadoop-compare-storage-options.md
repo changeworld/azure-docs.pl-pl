@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: 593f80583067d28292701353c8a6a62d81282614
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.date: 02/26/2020
+ms.openlocfilehash: 72534225acffa176d248901f363100955e36c6f6
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650830"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898911"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Porównanie opcji magazynu do użycia z klastrami usługi Azure HDInsight
 
@@ -28,7 +28,7 @@ Poniższa tabela zawiera podsumowanie usług Azure Storage, które są obsługiw
 
 | Usługa magazynu | Typ konta | Typ przestrzeni nazw | Obsługiwane usługi | Obsługiwane warstwy wydajności | Obsługiwane warstwy dostępu | Wersja usługi HDInsight | Typ klastra |
 |---|---|---|---|---|---|---|---|
-|Usługa Azure Data Lake Storage 2. generacji| Ogólnego przeznaczenia w wersji 2 | Hierarchiczny (system plików) | Obiekt blob | Standard | Gorąca, chłodna, archiwalna | 3.6 + | Wszystkie z wyjątkiem platformy Spark 2,1 |
+|Usługa Azure Data Lake Storage 2. generacji| Ogólnego przeznaczenia w wersji 2 | Hierarchiczny (system plików) | Obiekt blob | Standard | Gorąca, chłodna, archiwalna | 3.6 + | Wszystkie z wyjątkiem platformy Spark 2,1 i 2,2|
 |Azure Storage| Ogólnego przeznaczenia w wersji 2 | Obiekt | Obiekt blob | Standard | Gorąca, chłodna, archiwalna | 3.6 + | Wszyscy |
 |Azure Storage| Ogólnego przeznaczenia w wersji 1 | Obiekt | Obiekt blob | Standard | Nie dotyczy | Wszyscy | Wszyscy |
 |Azure Storage| Blob Storage * * | Obiekt | Blokowy obiekt BLOB | Standard | Gorąca, chłodna, archiwalna | Wszyscy | Wszyscy |
@@ -58,7 +58,7 @@ Klaster można utworzyć przy użyciu różnych kombinacji usług dla podstawowe
 \* = Może to być jedno lub wiele kont Data Lake Storage Gen2, o ile są one skonfigurowane do używania tej samej tożsamości zarządzanej na potrzeby dostępu do klastra.
 
 > [!Note] 
-> Magazyn podstawowy Data Lake Storage Gen2 nie jest obsługiwany w przypadku klastrów Spark 2,1. 
+> Magazyn podstawowy Data Lake Storage Gen2 nie jest obsługiwany w przypadku klastrów Spark 2,1 lub 2,2. 
 
 ## <a name="use-azure-data-lake-storage-gen2-with-apache-hadoop-in-azure-hdinsight"></a>Używanie Azure Data Lake Storage Gen2 z Apache Hadoop w usłudze Azure HDInsight
 

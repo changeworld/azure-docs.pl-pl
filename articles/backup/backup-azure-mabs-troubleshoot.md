@@ -4,12 +4,12 @@ description: Rozwiązywanie problemów z instalacją, rejestracją Azure Backup 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 018a6cee3f00531752684b12f4988cac174d3d26
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: cc0cf7e91c1aacbc637d33ab1e5546cc54836b28
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77617587"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673111"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Rozwiązywanie problemów ze składnikiem Azure Backup Server
 
@@ -76,7 +76,7 @@ Przed rozpoczęciem rozwiązywania problemów Microsoft Azure Backup Server (ser
 | Operacja | Szczegóły błędu | Obejście |
 | --- | --- | --- |
 | Wypychanie agentów do serwerów chronionych | Poświadczenia określone dla serwera są nieprawidłowe. | **Jeśli zalecana akcja wyświetlana w produkcie nie działa, wykonaj następujące czynności**: <br> Spróbuj zainstalować agenta ochrony ręcznie na serwerze produkcyjnym zgodnie z opisem w [tym artykule](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019).|
-| Agent Azure Backup nie mógł nawiązać połączenia z usługą Azure Backup (Identyfikator: 100050) | Agent Azure Backup nie mógł nawiązać połączenia z usługą Azure Backup. | **Jeśli zalecana akcja wyświetlana w produkcie nie działa, wykonaj następujące czynności**: <br>1. Uruchom następujące polecenie w wierszu polecenia z podwyższonym poziomem uprawnień: **PsExec-i-s "C:\Program Files\Internet Explorer\iexplore.exe**. Spowoduje to otwarcie okna programu Internet Explorer. <br/> 2. Przejdź do pozycji **narzędzia** > **Opcje internetowe** > **połączenia** > **Ustawienia sieci LAN**. <br/> 3. Zmień ustawienia tak, aby korzystały z serwera proxy. Następnie podaj szczegóły serwera proxy.<br/> 4. Jeśli maszyna ma ograniczony dostęp do Internetu, upewnij się, że ustawienia zapory na komputerze lub serwerze proxy zezwalają na te [adresy URL](backup-configure-vault.md#verify-internet-access) i [adres IP](backup-configure-vault.md#verify-internet-access).|
+| Agent Azure Backup nie mógł nawiązać połączenia z usługą Azure Backup (Identyfikator: 100050) | Agent Azure Backup nie mógł nawiązać połączenia z usługą Azure Backup. | **Jeśli zalecana akcja wyświetlana w produkcie nie działa, wykonaj następujące czynności**: <br>1. Uruchom następujące polecenie w wierszu polecenia z podwyższonym poziomem uprawnień: **PsExec-i-s "C:\Program Files\Internet Explorer\iexplore.exe**. Spowoduje to otwarcie okna programu Internet Explorer. <br/> 2. Przejdź do pozycji **narzędzia** > **Opcje internetowe** > **połączenia** > **Ustawienia sieci LAN**. <br/> 3. Zmień ustawienia tak, aby korzystały z serwera proxy. Następnie podaj szczegóły serwera proxy.<br/> 4. Jeśli maszyna ma ograniczony dostęp do Internetu, upewnij się, że ustawienia zapory na komputerze lub serwerze proxy zezwalają na te [adresy URL](install-mars-agent.md#verify-internet-access) i [adres IP](install-mars-agent.md#verify-internet-access).|
 | Niepowodzenie instalacji agenta Azure Backup | Instalacja Microsoft Azure Recovery Services nie powiodła się. Wszystkie zmiany wprowadzone w systemie przez instalację Microsoft Azure Recovery Services zostały wycofane. (IDENTYFIKATOR: 4024) | Ręcznie Zainstaluj agenta platformy Azure.
 
 ## <a name="configuring-protection-group"></a>Konfigurowanie grupy ochrony

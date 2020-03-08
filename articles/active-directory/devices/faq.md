@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cebb59d30dd717e54321ab138f6580947a545961
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: f5345a96e333e0f75264880ee18a95c9ab8dd63c
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377011"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672315"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory często zadawane pytania dotyczące zarządzania urządzeniami
 
@@ -25,7 +25,7 @@ ms.locfileid: "78377011"
 ### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>P: ostatnio zarejestrowano urządzenie. Dlaczego nie widzę urządzenia w obszarze Moje informacje o użytkowniku w Azure Portal? Lub dlaczego właściciel urządzenia jest oznaczony jako N/A dla urządzeń, które są dołączone do hybrydowego Azure Active Directory (Azure AD)?
 
 Odp **.:** Urządzenia z systemem Windows 10, które są dołączone do hybrydowej usługi Azure AD, nie są wyświetlane w obszarze **urządzenia użytkowników**.
-Użyj widoku **wszystkie urządzenia** w Azure Portal. Można również użyć polecenia cmdlet [Get-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) programu PowerShell.
+Użyj widoku **wszystkie urządzenia** w Azure Portal. Można również użyć polecenia cmdlet [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) programu PowerShell.
 
 W obszarze **urządzenia użytkowników**są wyświetlane tylko następujące urządzenia:
 
@@ -62,7 +62,7 @@ Odp **.:** Na urządzeniach z systemem Windows 10 dołączonych lub zarejestrowa
 - Użytkownik wyłącza urządzenie w portalu My Apps. 
 - Administrator (lub użytkownik) usuwa lub wyłącza urządzenie w Azure Portal lub przy użyciu programu PowerShell
 - Tylko dołączona do hybrydowej usługi Azure AD: Administrator usuwa z zakresu synchronizacji urządzenia poza zakresem, co spowodowało usunięcie urządzeń z usługi Azure AD.
-- Uaktualnianie programu Azure AD Connect do wersji 1.4. XX. x. [Zrozumienie Azure AD Connect 1.4. XX. x i znikanie urządzenia](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-device-disappearance).
+- Uaktualnianie programu Azure AD Connect do wersji 1.4. XX. x. [Zrozumienie Azure AD Connect 1.4. XX. x i znikanie urządzenia](/azure/active-directory/hybrid/reference-connect-device-disappearance).
 
 
 Poniżej znajdują się informacje o tym, jak można skorygować te akcje.
@@ -128,7 +128,7 @@ Odp **.:** Rejestracja urządzeń z systemem Windows 10 jest obsługiwana tylko 
 Odp **.:** Aby można było zastosować odwołanie od momentu, gdy urządzenie usługi Azure AD zostanie oznaczone jako wyłączone, zajmie do godziny.
 
 >[!NOTE] 
->W przypadku zarejestrowanych urządzeń zalecamy wyczyszczenie urządzenia, aby upewnić się, że użytkownicy nie będą mogli uzyskać dostępu do zasobów. Aby uzyskać więcej informacji, zobacz [co to jest rejestracja urządzenia?](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune). 
+>W przypadku zarejestrowanych urządzeń zalecamy wyczyszczenie urządzenia, aby upewnić się, że użytkownicy nie będą mogli uzyskać dostępu do zasobów. Aby uzyskać więcej informacji, zobacz [co to jest rejestracja urządzenia?](/intune/deploy-use/enroll-devices-in-microsoft-intune). 
 
 ---
 
@@ -180,13 +180,13 @@ Odp **.:** Obecnie zmiany nazw UPN nie są w pełni obsługiwane na urządzeniac
 
 ### <a name="q-my-users-cant-search-printers-from-azure-ad-joined-devices-how-can-i-enable-printing-from-those-devices"></a>P: Moi użytkownicy nie mogą przeszukiwać drukarek z urządzeń przyłączonych do usługi Azure AD. Jak mogę włączyć drukowanie z tych urządzeń?
 
-Odp **.:** Aby wdrożyć drukarki dla urządzeń przyłączonych do usługi Azure AD, zobacz [Wdrażanie chmury hybrydowej systemu Windows Server przy użyciu funkcji wstępnego uwierzytelniania](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy). Do wdrożenia w chmurze hybrydowej jest potrzebny lokalny serwer systemu Windows. Obecnie usługa drukowania oparta na chmurze jest niedostępna. 
+Odp **.:** Aby wdrożyć drukarki dla urządzeń przyłączonych do usługi Azure AD, zobacz [Wdrażanie chmury hybrydowej systemu Windows Server przy użyciu funkcji wstępnego uwierzytelniania](/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy). Do wdrożenia w chmurze hybrydowej jest potrzebny lokalny serwer systemu Windows. Obecnie usługa drukowania oparta na chmurze jest niedostępna. 
 
 ---
 
 ### <a name="q-how-do-i-connect-to-a-remote-azure-ad-joined-device"></a>P: Jak mogę połączyć się ze zdalnym urządzeniem dołączonym do usługi Azure AD?
 
-Odp **.:** Zobacz [nawiązywanie połączenia z komputerem przyłączonym do zdalnego Azure Active Directory](https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc).
+Odp **.:** Zobacz [nawiązywanie połączenia z komputerem przyłączonym do zdalnego Azure Active Directory](/windows/client-management/connect-to-remote-aadj-pc).
 
 ---
 
@@ -220,7 +220,7 @@ Odp **.:** Typowe przyczyny tego scenariusza są następujące:
 
 ### <a name="q-why-do-i-see-the-oops-an-error-occurred-dialog-when-i-try-to-azure-ad-join-my-pc"></a>P: Dlaczego widzę *... Wystąpił błąd* . Czy podczas próby dołączenia komputera do usługi Azure AD?
 
-Odp **.:** Ten błąd występuje podczas konfigurowania Azure Active Directory rejestracji w usłudze Intune. Upewnij się, że użytkownik, który próbuje nawiązać połączenie z usługą Azure AD, ma przypisaną poprawną licencję usługi Intune. Aby uzyskać więcej informacji, zobacz [Konfigurowanie rejestracji dla urządzeń z systemem Windows](https://docs.microsoft.com/intune/windows-enroll).  
+Odp **.:** Ten błąd występuje podczas konfigurowania Azure Active Directory rejestracji w usłudze Intune. Upewnij się, że użytkownik, który próbuje nawiązać połączenie z usługą Azure AD, ma przypisaną poprawną licencję usługi Intune. Aby uzyskać więcej informacji, zobacz [Konfigurowanie rejestracji dla urządzeń z systemem Windows](/intune/windows-enroll).  
 
 ---
 
@@ -307,7 +307,7 @@ Odp **.:** Tak, ale tylko w przypadku usługi rejestracji urządzeń platformy A
 
 Odp **.:** Wykonaj następujące czynności:
 
-1.  [Tworzenie zasad zgodności](https://docs.microsoft.com/intune/compliance-policy-create-mac-os)
+1.  [Tworzenie zasad zgodności](/intune/compliance-policy-create-mac-os)
 1.  [Definiowanie zasad dostępu warunkowego dla urządzeń macOS](../active-directory-conditional-access-azure-portal.md) 
 
 **Uwagi**

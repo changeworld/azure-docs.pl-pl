@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: juliako
-ms.openlocfilehash: a0b0a4e89242103811f20071b7235c825c9d8bd2
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: d9e42e809443a2dd6cdeb989f692b96d63269f79
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74967528"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673582"
 ---
 # <a name="azure-media-player-overview"></a>Przegląd Azure Media Player
 
@@ -26,8 +26,6 @@ Microsoft Azure Media Services umożliwia obsługę zawartości przy użyciu HLS
 
 > [!NOTE]
 > Odtwarzanie HTTPS jest wymagane do zaszyfrowanej zawartości Widevine.
-
-[Rozpocznij korzystanie z bezpłatnej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/)
 
 ## <a name="use-azure-media-player-demo-page"></a>Użyj Azure Media Player stronie demonstracyjnej
 

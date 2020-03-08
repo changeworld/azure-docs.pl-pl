@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 03/05/2020
-ms.openlocfilehash: 8c55fec08f05352d4587a8821c10600b7d7fad07
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 24ca37f5610589ae675a47a1dd966871b3004800
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396154"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851273"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Wdrażanie modelu przy użyciu niestandardowego obrazu platformy Docker
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -155,6 +155,9 @@ Kroki opisane w tej sekcji przedstawiają Tworzenie niestandardowego obrazu plat
     az acr build --image myimage:v1 --registry <registry_name> --file Dockerfile .
     ```
 
+    > [!TIP]
+    > W tym przykładzie tag `:v1` jest stosowany do obrazu. Jeśli nie podano tagu, zostanie zastosowany tag `:latest`.
+
     W trakcie procesu kompilacji informacje są przesyłane strumieniowo z powrotem do wiersza polecenia. Jeśli kompilacja zakończy się pomyślnie, zostanie wyświetlony komunikat podobny do następującego:
 
     ```text
@@ -170,6 +173,10 @@ Aby uzyskać więcej informacji na temat przekazywania istniejących obrazów do
 Aby użyć obrazu niestandardowego, potrzebne są następujące informacje:
 
 * __Nazwa obrazu__. Na przykład `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` jest ścieżką do podstawowego obrazu platformy Docker dostarczonego przez firmę Microsoft.
+
+    > [!IMPORTANT]
+    > W przypadku obrazów niestandardowych, które zostały utworzone, pamiętaj o uwzględnieniu wszelkich tagów, które były używane w obrazie. Na przykład, jeśli obraz został utworzony przy użyciu określonego tagu, takiego jak `:v1`. Jeśli nie korzystasz z określonego tagu podczas tworzenia obrazu, zostanie zastosowany tag `:latest`.
+
 * Jeśli obraz znajduje się w __repozytorium prywatnym__, potrzebne są następujące informacje:
 
     * __Adres__rejestru. Na przykład `myregistry.azureecr.io`.
@@ -181,7 +188,7 @@ Aby użyć obrazu niestandardowego, potrzebne są następujące informacje:
 
 Firma Microsoft udostępnia kilka obrazów platformy Docker w publicznie dostępnym repozytorium, które może być używane z krokami z tej sekcji:
 
-| Obraz | Opis |
+| Image (Obraz) | Opis |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Obraz podstawowy dla Azure Machine Learning |
 | `mcr.microsoft.com/azureml/onnxruntime:latest` | Zawiera środowisko uruchomieniowe ONNX dla procesora CPU inferencing |

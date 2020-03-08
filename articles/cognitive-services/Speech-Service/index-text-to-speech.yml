@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: Dokumentacja dotycząca zamiany tekstu na mowę
+title: Dokumentacja zamiany tekstu na mowę
 summary: Funkcja zamiany tekstu na mowę z usługi mowy umożliwia aplikacjom, narzędziom i urządzeniom Konwertowanie tekstu na wymowę, przypominającą człowieka.
 metadata:
   title: Dokumentacja dotycząca zamiany tekstu na mowę — samouczki, dokumentacja interfejsu API — Azure Cognitive Services | Microsoft Docs
@@ -12,12 +12,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 02/11/2020
   ms.author: dapine
-  ms.openlocfilehash: 64d8c636aa4b0f8b75ba3a6f92d7792c91a9271d
-  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.openlocfilehash: 11fbb549409afd78f77e194fe45fa0d7626f75a7
+  ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
   ms.translationtype: MT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 02/22/2020
-  ms.locfileid: "77562901"
+  ms.lasthandoff: 03/06/2020
+  ms.locfileid: "78674452"
 landingContent:
 - title: Rozpoczynanie pracy
   linkLists:
@@ -31,7 +31,7 @@ landingContent:
       url: quickstarts/text-to-speech.md
     - text: Syntetyzowanie mowy do pliku dźwiękowego
       url: quickstarts/text-to-speech-audio-file.md
-    - text: Funkcja syntezy mowy za pomocą długiego dźwięku
+    - text: Syntetyzowanie mowy przy użyciu długich plików dźwiękowych
       url: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
 - title: Przewodniki krok po kroku
   linkLists:
@@ -79,6 +79,8 @@ landingContent:
       url: language-support.md#text-to-speech
     - text: Ceny
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
+    - text: SSML zestawy fonetyczne
+      url: speech-ssml-phonetic-sets.md
     - text: Kodeks postępowania
       url: https://aka.ms/custom-neural-code-of-conduct
     - text: Ujawnianie dotyczące aktorów głosowych

@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 44de5878dcc39e09adf24f69b883a29370f00b48
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 97ea98fc38fc8d06dc1bc65ee057241da6f15488
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505729"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851378"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Rozwiązywanie problemów dotyczących uruchamiania/zatrzymywania maszyn wirtualnych poza godzinami
 
@@ -203,7 +203,7 @@ Przyczyną tego problemu może być nieprawidłowo skonfigurowane lub wygasłe k
 
 Aby sprawdzić, czy konto Uruchom jako jest prawidłowo skonfigurowane, przejdź do konta usługi Automation w Azure Portal i wybierz pozycję **konta Uruchom jako** w obszarze **Ustawienia konta**. W tym miejscu zobaczysz stan kont Uruchom jako, jeśli konto Uruchom jako jest nieprawidłowo skonfigurowane lub wygasło jego stan.
 
-Jeśli konto Uruchom jako jest [nieprawidłowo skonfigurowane](../manage-runas-account.md#misconfiguration), należy usunąć i ponownie utworzyć konto Uruchom jako.
+Jeśli konto Uruchom jako jest nieprawidłowo skonfigurowane, należy usunąć i ponownie utworzyć konto Uruchom jako. Zobacz [Zarządzanie kontami Azure Automation Uruchom jako](../manage-runas-account.md).
 
 Jeśli certyfikat wygasł dla konta Uruchom jako, wykonaj czynności opisane w sekcji [odnowienie certyfikatu](../manage-runas-account.md#cert-renewal) z podpisem własnym, aby odnowić certyfikat.
 

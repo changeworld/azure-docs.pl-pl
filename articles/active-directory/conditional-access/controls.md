@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f1df037b66c72177a96f77231cee70782d04992
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 3fff08690eb2807fbbd50f297761c57d3fef88fe
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620716"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671843"
 ---
 # <a name="custom-controls-preview"></a>Formanty niestandardowe (wersja zapoznawcza)
 
@@ -67,22 +67,10 @@ Aby usunąć kontrolkę niestandardową, należy najpierw upewnić się, że nie
 
 Aby edytować kontrolkę niestandardową, należy usunąć bieżącą kontrolkę i utworzyć nową kontrolkę z zaktualizowanymi informacjami.
 
-## <a name="session-controls"></a>Kontrolki sesji
-
-Kontrolki sesji umożliwiają ograniczoną obsługę w ramach aplikacji w chmurze. Kontrolki sesji są wymuszane przez aplikacje w chmurze i polegają na dodatkowych informacjach dostarczonych przez usługę Azure AD do aplikacji dotyczącej sesji.
-
-![Kontrola](./media/controls/31.png)
-
-### <a name="use-app-enforced-restrictions"></a>Użyj ograniczeń wymuszonych przez aplikację
-
-Za pomocą tego formantu można wymagać, aby usługa Azure AD mogła przekazać informacje o urządzeniu do wybranych aplikacji w chmurze. Informacje o urządzeniu umożliwiają aplikacjom w chmurze dowiedzieć się, czy połączenie jest inicjowane z urządzenia zgodnego lub przyłączonego do domeny. Ta kontrolka obsługuje tylko usługi SharePoint Online i Exchange Online jako wybrane aplikacje w chmurze. Po wybraniu tej opcji aplikacja w chmurze korzysta z informacji o urządzeniu, aby zapewnić użytkownikom, w zależności od stanu urządzenia, z ograniczoną lub pełnym doświadczeniem.
-
-Aby dowiedzieć się więcej, zobacz:
-
-- [Włączanie ograniczonego dostępu za pomocą usługi SharePoint Online](https://aka.ms/spolimitedaccessdocs)
-- [Włączanie ograniczonego dostępu za pomocą usługi Exchange Online](https://aka.ms/owalimitedaccess)
-
 ## <a name="next-steps"></a>Następne kroki
 
-- Jeśli chcesz dowiedzieć się, jak skonfigurować zasady dostępu warunkowego, zobacz [Wymagaj uwierzytelniania wieloskładnikowego dla określonych aplikacji, Azure Active Directory dostępu warunkowego](app-based-mfa.md).
-- Aby skonfigurować zasady dostępu warunkowego dla środowiska, zobacz [najlepsze rozwiązania dotyczące dostępu warunkowego w Azure Active Directory](best-practices.md).
+- [Wspólne zasady dostępu warunkowego](concept-conditional-access-policy-common.md)
+
+- [Tryb tylko do raportowania](concept-conditional-access-report-only.md)
+
+- [Symulowanie zachowania logowania za pomocą narzędzia What If dostępu warunkowego](troubleshoot-conditional-access-what-if.md)

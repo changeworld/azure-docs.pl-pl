@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: 478b6cffb6fbb2be7a87b9b61d5b7e2ee71a74c2
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 0723ddc9b0e2f15d5c8e51c96d51f58f1313493a
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840710"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673667"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>Rozwiązywanie problemów z bramą Virtual Network i połączeniami przy użyciu programu Azure Network Watcher PowerShell
 
 > [!div class="op_single_selector"]
 > - [Portal](diagnose-communication-problem-between-networks.md)
-> - [Program PowerShell](network-watcher-troubleshoot-manage-powershell.md)
+> - [PowerShell](network-watcher-troubleshoot-manage-powershell.md)
 > - [Interfejs wiersza polecenia platformy Azure](network-watcher-troubleshoot-manage-cli.md)
 > - [Interfejs API REST](network-watcher-troubleshoot-manage-rest.md)
 
@@ -38,7 +38,7 @@ W tym scenariuszu założono, że wykonano już kroki opisane w temacie [tworzen
 
 Aby zapoznać się z listą obsługiwanych typów bram, należy odwiedzić [obsługiwane typy bram](network-watcher-troubleshoot-overview.md#supported-gateway-types).
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Rozwiązywanie problemów z zasobami zapewnia możliwość rozwiązywania problemów związanych z Virtual Network bramami i połączeniami. Gdy żądanie dotyczy rozwiązywania problemów z zasobami, dzienniki są badane i sprawdzane. Po zakończeniu inspekcji są zwracane wyniki. Żądania rozwiązywania problemów z zasobami są długotrwałymi żądaniami, co może potrwać kilka minut. Dzienniki rozwiązywania problemów są przechowywane w kontenerze na koncie magazynu, które jest określone.
 
@@ -47,7 +47,7 @@ Rozwiązywanie problemów z zasobami zapewnia możliwość rozwiązywania proble
 Pierwszym krokiem jest pobranie wystąpienia Network Watcher. Zmienna `$networkWatcher` jest przenoszona do `Start-AzNetworkWatcherResourceTroubleshooting` polecenia cmdlet w kroku 4.
 
 ```powershell
-$networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
+$networkWatcher = Get-AzNetworkWatcher -Location "WestCentralUS" 
 ```
 
 ## <a name="retrieve-a-virtual-network-gateway-connection"></a>Pobieranie połączenia bramy Virtual Network
