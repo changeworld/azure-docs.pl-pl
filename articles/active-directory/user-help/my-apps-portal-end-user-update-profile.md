@@ -13,11 +13,11 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: a6bcfa7fc58d47e64bff0838ff698bc59eda4e70
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022283"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374735"
 ---
 # <a name="update-your-profile-and-account-information-on-the-my-apps-portal"></a>Aktualizowanie informacji o profilu i koncie w portalu My Apps
 
@@ -114,7 +114,7 @@ Weryfikacja dwuskładnikowa wymaga użycia dwóch informacji weryfikacyjnych, ta
 
     - **Skonfiguruj aplikację Microsoft Authenticator.** Możesz skonfigurować aplikację Microsoft Authenticator, która będzie działała jako metoda weryfikacji. Aby uzyskać więcej informacji na temat aplikacji Microsoft Authenticator, zobacz [co to jest aplikacja Microsoft Authenticator?](user-help-auth-app-overview.md)
 
-3. Wybierz **Zapisz** Aby zapisać zmiany.
+3. Wybierz pozycję **Zapisz** , aby zapisać zmiany.
 
 ## <a name="review-your-organizations-terms-of-use-statement"></a>Przejrzyj instrukcję dotyczącą warunków użytkowania w organizacji
 

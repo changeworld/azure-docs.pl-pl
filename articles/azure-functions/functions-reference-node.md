@@ -5,11 +5,11 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
 ms.date: 12/17/2019
 ms.openlocfilehash: b0cd9541deac106525cfe80244d1867f513825f0
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77584493"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357952"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Przewodnik dla deweloperów Azure Functions JavaScript
 
@@ -100,7 +100,7 @@ module.exports = async function (context, req) {
 ## <a name="bindings"></a>Powiązania 
 W języku JavaScript [powiązania](functions-triggers-bindings.md) są konfigurowane i definiowane w funkcji Function. JSON. Funkcje współdziałają z powiązaniami na wiele sposobów.
 
-### <a name="inputs"></a>Wejścia
+### <a name="inputs"></a>Dane wejściowe
 Dane wejściowe są podzielone na dwie kategorie w Azure Functions: jeden to dane wejściowe wyzwalacza, a drugi to dodatkowe dane wejściowe. Wyzwalacz i inne powiązania wejściowe (powiązania `direction === "in"`) mogą być odczytywane przez funkcję na trzy sposoby:
  - **_[Zalecane]_ Jako parametry przesłane do funkcji.** Są one przenoszone do funkcji w takiej samej kolejności, w jakiej są zdefiniowane w *funkcji Function. JSON*. Właściwość `name` zdefiniowana w *funkcji Function. JSON* nie musi być zgodna z nazwą parametru, chociaż powinna być.
  
@@ -128,7 +128,7 @@ Dane wejściowe są podzielone na dwie kategorie w Azure Functions: jeden to dan
    };
    ```
 
-### <a name="outputs"></a>Wyjścia
+### <a name="outputs"></a>Dane wyjściowe
 Wyniki (powiązania `direction === "out"`) mogą być zapisywane przez funkcję na wiele sposobów. We wszystkich przypadkach Właściwość `name` powiązania, zgodnie z definicją w *Function. JSON* , odnosi się do nazwy składowej obiektu, która jest zapisywana w funkcji. 
 
 Dane można przypisywać do powiązań wyjściowych w jeden z następujących sposobów (nie łącz tych metod):
@@ -696,7 +696,7 @@ module.exports = async function (context) {
 
 ## <a name="next-steps"></a>Następne kroki
 
-Więcej informacji można znaleźć w następujących zasobach:
+Więcej informacji zawierają następujące zasoby:
 
 + [Najlepsze rozwiązania dotyczące usługi Azure Functions](functions-best-practices.md)
 + [Dokumentacja usługi Azure Functions dla deweloperów](functions-reference.md)

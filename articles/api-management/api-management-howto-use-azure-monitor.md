@@ -14,17 +14,17 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: b06301ab424a29d8f0e31e8f4dee26265327896b
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028358"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359664"
 ---
 # <a name="monitor-published-apis"></a>Monitorowanie opublikowanych interfejsów API
 
 Dzięki usłudze Azure Monitor możesz wykonywać wizualizacje i zapytania, ustalać trasy, archiwizować i podejmować działania dotyczące metryk lub dzienników pochodzących z zasobów platformy Azure.
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Wyświetlanie dzienników aktywności
@@ -184,42 +184,42 @@ Usługa API Management udostępnia obecnie dzienniki diagnostyczne (przetwarzane
 | ------------- | ------------- | ------------- |
 | isRequestSuccess | wartość logiczna | Wartość true, jeśli żądanie HTTP zostało zakończone z kodem stanu odpowiedzi z zakresu 2xx lub 3xx |
 | time | data i godzina | Sygnatura czasowa rozpoczęcia przetwarzania żądania przez bramę |
-| operationName | string | Wartość stała „Microsoft.ApiManagement/GatewayLogs” |
-| category | string | Wartość stała „GatewayLogs” |
+| operationName | ciąg | Wartość stała „Microsoft.ApiManagement/GatewayLogs” |
+| category | ciąg | Wartość stała „GatewayLogs” |
 | durationMs | liczba całkowita | Liczba milisekund od momentu odebrania żądania przez bramę do momentu, gdy odpowiedź na chwilę zostanie wysłana w całości. Obejmuje to clienTime, cacheTime i backendTime. |
-| callerIpAddress | string | Adres IP bezpośredniego modułu wywołującego bramy (może być pośrednik) |
-| correlationId | string | Unikatowy identyfikator żądania HTTP przypisany przez usługę API Management |
-| location | string | Nazwa regionu platformy Azure, w którym znajdowała się brama przetwarzająca żądanie |
-| httpStatusCodeCategory | string | Kategoria kodu stanu odpowiedzi HTTP: Powodzenie (301 lub mniej albo 304 lub 307), Bez autoryzacji (401, 403, 429), Błąd (400, od 500 do 600), Inne |
-| resourceId | string | Identyfikator API Management Resource/SUBSCRIPTIONS/\<subskrypcji >/RESOURCEGROUPS/\<Grupa zasobów >/PROVIDERS/MICROSOFT. Nazwa APIMANAGEMENT/SERVICE/\< |
+| callerIpAddress | ciąg | Adres IP bezpośredniego modułu wywołującego bramy (może być pośrednik) |
+| correlationId | ciąg | Unikatowy identyfikator żądania HTTP przypisany przez usługę API Management |
+| location | ciąg | Nazwa regionu platformy Azure, w którym znajdowała się brama przetwarzająca żądanie |
+| httpStatusCodeCategory | ciąg | Kategoria kodu stanu odpowiedzi HTTP: Powodzenie (301 lub mniej albo 304 lub 307), Bez autoryzacji (401, 403, 429), Błąd (400, od 500 do 600), Inne |
+| resourceId | ciąg | Identyfikator API Management Resource/SUBSCRIPTIONS/\<subskrypcji >/RESOURCEGROUPS/\<Grupa zasobów >/PROVIDERS/MICROSOFT. Nazwa APIMANAGEMENT/SERVICE/\<> |
 | properties | obiekt | Właściwości bieżącego żądania |
-| method | string | Metoda HTTP żądania przychodzącego |
-| url | string | Adres URL żądania przychodzącego |
-| clientProtocol | string | Wersja protokołu HTTP żądania przychodzącego |
+| method | ciąg | Metoda HTTP żądania przychodzącego |
+| url | ciąg | Adres URL żądania przychodzącego |
+| clientProtocol | ciąg | Wersja protokołu HTTP żądania przychodzącego |
 | responseCode | liczba całkowita | Kod stanu odpowiedzi HTTP wysłanej do klienta |
-| backendMethod | string | Metoda HTTP żądania wysłanego do zaplecza |
-| backendUrl | string | Adres URL żądania wysłanego do zaplecza |
+| backendMethod | ciąg | Metoda HTTP żądania wysłanego do zaplecza |
+| backendUrl | ciąg | Adres URL żądania wysłanego do zaplecza |
 | backendResponseCode | liczba całkowita | Kod odpowiedzi HTTP odebranej z zaplecza |
-| backendProtocol | string | Wersja protokołu HTTP żądania wysłanego do zaplecza | 
+| backendProtocol | ciąg | Wersja protokołu HTTP żądania wysłanego do zaplecza | 
 | requestSize | liczba całkowita | Liczba bajtów odebranych od klienta podczas przetwarzania żądania | 
 | responseSize | liczba całkowita | Liczba bajtów wysłanych do klienta podczas przetwarzania żądania | 
-| cache | string | Stan zaangażowania pamięci podręcznej usługi API Management w przetwarzanie żądania (tj. trafienie, chybienie, brak) | 
+| cache | ciąg | Stan zaangażowania pamięci podręcznej usługi API Management w przetwarzanie żądania (tj. trafienie, chybienie, brak) | 
 | cacheTime | liczba całkowita | Liczba milisekund spędzonych na wykonywaniu ogólnych operacji we/wy pamięci podręcznej w usłudze API Management (łączenie, wysyłanie i odbieranie bajtów) | 
 | backendTime | liczba całkowita | Liczba milisekund spędzonych na wykonywaniu ogólnych operacji we/wy zaplecza (łączenie, wysyłanie i odbieranie bajtów) | 
 | clientTime | liczba całkowita | Liczba milisekund spędzonych na wykonywaniu ogólnych operacji we/wy klienta (łączenie, wysyłanie i odbieranie bajtów) | 
-| apiId | string | Identyfikator jednostki interfejsu API dla bieżącego żądania | 
-| operationId | string | Identyfikator jednostki operacji dla bieżącego żądania | 
-| productId | string | Identyfikator jednostki produktu dla bieżącego żądania | 
-| userId | string | Identyfikator jednostki użytkownika dla bieżącego żądania | 
-| apimSubscriptionId | string | Identyfikator jednostki subskrypcji dla bieżącego żądania | 
-| backendId | string | Identyfikator jednostki zaplecza dla bieżącego żądania | 
+| apiId | ciąg | Identyfikator jednostki interfejsu API dla bieżącego żądania | 
+| operationId | ciąg | Identyfikator jednostki operacji dla bieżącego żądania | 
+| productId | ciąg | Identyfikator jednostki produktu dla bieżącego żądania | 
+| userId | ciąg | Identyfikator jednostki użytkownika dla bieżącego żądania | 
+| apimSubscriptionId | ciąg | Identyfikator jednostki subskrypcji dla bieżącego żądania | 
+| backendId | ciąg | Identyfikator jednostki zaplecza dla bieżącego żądania | 
 | LastError | obiekt | Ostatni błąd przetwarzania żądania | 
 | elapsed | liczba całkowita | Liczba milisekund upływających od momentu odebrania żądania przez bramę i momentu wystąpienia błędu | 
-| source | string | Nazwa wewnętrznej procedury obsługi przetwarzania lub zasad, które spowodowały błąd | 
-| scope | string | Zakres dokumentu zasad zawierający zasady, które spowodowały błąd | 
-| section | string | Sekcja dokumentu zasad zawierająca zasady, które spowodowały błąd | 
-| reason | string | Przyczyna błędu | 
-| message | string | Komunikat o błędzie | 
+| source | ciąg | Nazwa wewnętrznej procedury obsługi przetwarzania lub zasad, które spowodowały błąd | 
+| scope | ciąg | Zakres dokumentu zasad zawierający zasady, które spowodowały błąd | 
+| section | ciąg | Sekcja dokumentu zasad zawierająca zasady, które spowodowały błąd | 
+| reason | ciąg | Przyczyna błędu | 
+| message | ciąg | Komunikat o błędzie | 
 
 ## <a name="next-steps"></a>Następne kroki
 

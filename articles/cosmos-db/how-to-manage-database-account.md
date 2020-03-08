@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
 ms.openlocfilehash: 61670d757611bd0c1dd11c389282b18edb3d7fa1
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873679"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356548"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Zarządzanie kontem usługi Azure Cosmos
 
-W tym artykule opisano sposób zarządzania różnymi zadaniami na koncie usługi Azure Cosmos za pomocą szablonów Azure Portal, Azure PowerShell, interfejsu wiersza polecenia platformy Azure i Azure Resource Manager.
+W poniższym artykule opisano sposób zarządzania różnymi zadaniami w ramach konta usługi Azure Cosmos przy użyciu witryny Azure Portal, programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure i szablonów usługi Azure Resource Manager.
 
 ## <a name="create-an-account"></a>Tworzenie konta
 
@@ -51,9 +51,9 @@ Ten szablon Azure Resource Manager utworzy konto usługi Azure Cosmos dla interf
 
    ![Menu dodawania lub usuwania regionów](./media/how-to-manage-database-account/add-region.png)
 
-W trybie zapisu z jednym regionem nie można usunąć regionu zapisu. Aby można było usunąć bieżący region zapisu, należy przełączyć się do trybu failover w innym regionie.
+W trybie zapisu w jednym regionie nie można usunąć regionu zapisu. Aby można było usunąć bieżący region zapisu, należy przejść do trybu failover w innym regionie.
 
-W trybie zapisu wieloregionowego można dodać lub usunąć dowolny region, jeśli masz co najmniej jeden region.
+W trybie zapisu w wielu regionach można dodawać lub usuwać dowolne regiony, o ile pozostaje co najmniej jeden region.
 
 ### <a id="add-remove-regions-via-cli"></a>Interfejs wiersza polecenia platformy Azure
 

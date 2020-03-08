@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: 34cb4282f64544e67b3724699380d1d54fd9b806
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660430"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386475"
 ---
 # <a name="sizes-for-cloud-services"></a>Rozmiary dla Cloud Services
 W tym temacie opisano dostępne rozmiary i opcje dla wystąpień ról usługi w chmurze (ról sieci Web i procesów roboczych). Zawiera również zagadnienia dotyczące wdrażania, które należy wziąć pod uwagę podczas planowania użycia tych zasobów. Każdy rozmiar ma identyfikator, który został umieszczony w [pliku definicji usługi](cloud-services-model-and-package.md#csdef). Ceny za każdy rozmiar są dostępne na stronie [cennika Cloud Services](https://azure.microsoft.com/pricing/details/cloud-services/) .
@@ -41,7 +41,7 @@ W podjęciu decyzji o rozmiarze mogą pomóc następujące informacje:
 * Niektóre hosty fizyczne w centrach danych platformy Azure mogą nie obsługiwać większych rozmiarów maszyn wirtualnych, takich jak A5–A11. W efekcie może zostać wyświetlony komunikat o błędzie **nie można skonfigurować maszyny wirtualnej {Name}** lub **nie można utworzyć maszyny wirtualnej {Machine Name}** podczas zmiany rozmiaru istniejącej maszyny wirtualnej na nowy rozmiar; Tworzenie nowej maszyny wirtualnej w sieci wirtualnej utworzonej przed 16 kwietnia 2013; lub dodanie nowej maszyny wirtualnej do istniejącej usługi w chmurze. Zobacz [błąd: "nie można skonfigurować maszyny wirtualnej"](https://social.msdn.microsoft.com/Forums/9693f56c-fcd3-4d42-850e-5e3b56c7d6be/error-failed-to-configure-virtual-machine-with-a5-a6-or-a7-vm-size?forum=WAVirtualMachinesforWindows) na forum pomocy technicznej w celu obejścia tego problemu w każdym scenariuszu wdrażania.
 * Subskrypcja może również ograniczać liczbę rdzeni, które można wdrożyć w rodzinach o określonym rozmiarze. Aby zwiększyć limit przydziału, skontaktuj się z pomocą techniczną platformy Azure.
 
-## <a name="performance-considerations"></a>Zagadnienia związane z wydajnością
+## <a name="performance-considerations"></a>Zagadnienia dotyczące wydajności
 Utworzyliśmy koncepcję jednostki obliczeniowej platformy Azure (ACU), aby zapewnić porównanie wydajności obliczeniowej (CPU) w jednostkach SKU platformy Azure i ustalić, która jednostka SKU najprawdopodobniej spełnia Twoje wymagania dotyczące wydajności.  Jednostka ACU jest obecnie standaryzowana na małej maszynie wirtualnej (Standardowa_A1) jako równa 100, a wszystkie pozostałe jednostki SKU reprezentują w przybliżeniu, o ile szybciej dana jednostka SKU może uruchomić standardowy test porównawczy.
 
 > [!IMPORTANT]
@@ -54,11 +54,11 @@ Utworzyliśmy koncepcję jednostki obliczeniowej platformy Azure (ACU), aby zape
 | Rodzina SKU | ACU/rdzeń |
 | --- | --- |
 | [ExtraSmall](#a-series) |50 |
-| [Small-ExtraLarge](#a-series) |100 |
-| [A5-7](#a-series) |100 |
+| [Małe ExtraLarge](#a-series) |100 |
+| [A5 — 7](#a-series) |100 |
 | [A8–A11](#a-series) |225* |
-| [A v2](#av2-series) |100 |
-| [D](#d-series) |160 |
+| [A wersja 2](#av2-series) |100 |
+| [Wykres](#d-series) |160 |
 | [D v2](#dv2-series) |160 - 190* |
 | [D v3](#dv3-series) |160 - 190* |
 | [E v3](#ev3-series) |160 - 190* |
@@ -79,9 +79,9 @@ W poniższych tabelach przedstawiono rozmiary maszyn wirtualnych i możliwości,
 | Rozmiar            | Rdzenie procesora CPU | Pamięć: GiB  | Magazyn tymczasowy: GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | ExtraSmall      | 1         | 0,768        | 20                   | 1 / niska |
-| Małe           | 1         | 1,75         | 225                  | 1 / średnia |
-| Średnie          | 2         | 3,5          | 490                  | 1 / średnia |
-| Duże           | 4         | 7            | 1000                 | 2 / wysoka |
+| Small           | 1         | 1,75         | 225                  | 1 / średnia |
+| Medium          | 2         | 3,5          | 490                  | 1 / średnia |
+| Large           | 4         | 7            | 1000                 | 2 / wysoka |
 | ExtraLarge      | 8         | 14           | 2040                 | 4 / wysoka |
 | A5              | 2         | 14           | 490                  | 1 / średnia |
 | A6              | 4         | 28           | 1000                 | 2 / wysoka |

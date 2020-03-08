@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: de56ba1281d0f20c8be838fa1bc9ebc24905b26c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666925"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384772"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Monitorowanie potoków Azure Data Factory i zarządzanie nimi za pomocą aplikacji do monitorowania i zarządzania
 > [!div class="op_single_selector"]
@@ -187,7 +187,7 @@ Okna działania mogą mieć jeden z następujących stanów:
 </tr>
 <tr>
 <tr>
-<td rowspan="2">Toku</td><td>Ponownego</td><td>Walidacja jest w toku.</td>
+<td rowspan="2">W toku</td><td>Ponownego</td><td>Walidacja jest w toku.</td>
 </tr>
 <td>-</td>
 <td>Trwa przetwarzanie okna działania.</td>
@@ -210,7 +210,7 @@ Okna działania mogą mieć jeden z następujących stanów:
 <td>Pominięto</td><td>-</td><td>Okno działania nie zostało przetworzone.</td>
 </tr>
 <tr>
-<td>Brak</td><td>-</td><td>Okno działania używane do istnienia z innym stanem, ale zostało zresetowane.</td>
+<td>None</td><td>-</td><td>Okno działania używane do istnienia z innym stanem, ale zostało zresetowane.</td>
 </tr>
 </table>
 
@@ -222,10 +222,10 @@ Po kliknięciu okna działania na liście zostaną wyświetlone szczegółowe in
 ### <a name="refresh-activity-windows"></a>Odśwież okna działania
 Szczegóły nie są odświeżane automatycznie, więc Użyj przycisku Odśwież (drugi przycisk) na pasku poleceń, aby ręcznie odświeżyć listę okien działania.  
 
-### <a name="properties-window"></a>okno Właściwości
+### <a name="properties-window"></a>Okno właściwości
 Okno Właściwości znajduje się w prawym okienku aplikacji monitorowanie i zarządzanie.
 
-![okno Właściwości](./media/data-factory-monitor-manage-app/PropertiesWindow.png)
+![Okno właściwości](./media/data-factory-monitor-manage-app/PropertiesWindow.png)
 
 Wyświetla właściwości dla elementu wybranego w Eksplorator zasobów (widok drzewa), widok diagramu lub lista okien działania.
 
@@ -244,7 +244,7 @@ Karta **skrypt** służy do wyświetlania definicji JSON wybranej jednostki Data
 ![Karta Skrypt](./media/data-factory-monitor-manage-app/ScriptTab.png)
 
 ## <a name="use-system-views"></a>Korzystanie z widoków systemowych
-Aplikacja do monitorowania i zarządzania zawiera wstępnie skompilowane widoki systemowe (**ostatnie okna działania**, okna działania **zakończone niepowodzeniem**, **okna działania w toku**), które umożliwiają wyświetlanie okien działania ostatnich/zakończonych niepowodzeniem/w toku dla danych indywidual.
+Aplikacja do monitorowania i zarządzania zawiera wstępnie skompilowane widoki systemowe (**ostatnie okna działania**, **zakończone niepowodzeniem**okna działania, **okna działania w toku**), które umożliwiają wyświetlanie okien działania ostatnich/zakończonych niepowodzeniem/w toku dla fabryki danych.
 
 Przejdź do karty **widoki monitorowania** po lewej stronie, klikając ją.
 
@@ -270,7 +270,7 @@ Na **liście okna działania**kliknij nazwę kolumny (na przykład: stan).
 
 ![Menu kolumny listy okien działania](./media/data-factory-monitor-manage-app/ActivityWindowsListColumnMenu.png)
 
-Można wykonać następujące czynności:
+Możesz wykonać następujące czynności:
 
 * Sortuj w kolejności rosnącej.
 * Sortuj w kolejności malejącej.

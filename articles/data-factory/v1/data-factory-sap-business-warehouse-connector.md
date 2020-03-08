@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 108bdf057cd375e28b10a6838ec5c8c6f57749a8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929225"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387456"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Przenoszenie danych z programu SAP Business Warehouse przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -46,7 +46,7 @@ Aby włączyć łączność z wystąpieniem SAP BW, Zainstaluj następujące sk�
 Można utworzyć potok za pomocą działania kopiowania, które przenosi dane z lokalnego magazynu danych Cassandra przy użyciu różnych narzędzi/interfejsów API. 
 
 - Najprostszym sposobem utworzenia potoku jest użycie **Kreatora kopiowania**. Zobacz [Samouczek: Tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) na potrzeby szybkiego instruktażu dotyczącego tworzenia potoku przy użyciu Kreatora kopiowania danych. 
-- Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania. 
+- Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Aby uzyskać instrukcje krok po kroku dotyczące tworzenia potoku za pomocą działania kopiowania, zobacz [Samouczek dotyczący działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
 
 Niezależnie od tego, czy używasz narzędzi, czy interfejsów API, wykonaj następujące kroki, aby utworzyć potok służący do przenoszenia danych ze źródłowego magazynu danych do magazynu danych ujścia:
 
@@ -61,15 +61,15 @@ Poniższe sekcje zawierają szczegółowe informacje na temat właściwości JSO
 ## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 Poniższa tabela zawiera opis elementów JSON specyficznych dla połączonej usługi SAP Business Warehouse (BW).
 
-Właściwość | Opis | Dozwolone wartości | Wymagane
+Właściwość | Opis | Dozwolone wartości | Wymagany
 -------- | ----------- | -------------- | --------
-serwer | Nazwa serwera, na którym znajduje się wystąpienie SAP BW. | string | Tak
-systemNumber | Numer systemu SAP BW. | Dwucyfrowa liczba dziesiętna reprezentowana jako ciąg. | Tak
-clientId | Identyfikator klienta klienta w systemie SAP w. | 3-cyfrowa liczba dziesiętna reprezentowana jako ciąg. | Tak
-nazwa użytkownika | Nazwa użytkownika, który ma dostęp do serwera SAP | string | Tak
-hasło | Hasło użytkownika. | string | Tak
-gatewayName | Nazwa bramy, która ma być używana przez usługę Data Factory do łączenia się z lokalnym wystąpieniem SAP BW. | string | Tak
-encryptedCredential | Zaszyfrowany ciąg poświadczeń. | string | Nie
+serwer | Nazwa serwera, na którym znajduje się wystąpienie SAP BW. | ciąg | Yes
+systemNumber | Numer systemu SAP BW. | Dwucyfrowa liczba dziesiętna reprezentowana jako ciąg. | Yes
+clientId | Identyfikator klienta klienta w systemie SAP w. | 3-cyfrowa liczba dziesiętna reprezentowana jako ciąg. | Yes
+nazwa użytkownika | Nazwa użytkownika, który ma dostęp do serwera SAP | ciąg | Yes
+hasło | Hasło użytkownika. | ciąg | Yes
+gatewayName | Nazwa bramy, która ma być używana przez usługę Data Factory do łączenia się z lokalnym wystąpieniem SAP BW. | ciąg | Yes
+encryptedCredential | Zaszyfrowany ciąg poświadczeń. | ciąg | Nie
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 Aby uzyskać pełną listę sekcji & właściwości dostępne do definiowania zestawów danych, zobacz artykuł [Tworzenie zestawów danych](data-factory-create-datasets.md) . Sekcje, takie jak struktura, dostępność i zasady JSON zestawu danych są podobne dla wszystkich typów zestawu danych (Azure SQL, Azure Blob, Azure Table itp.).
@@ -84,9 +84,9 @@ Natomiast właściwości dostępne w sekcji **typeProperties** działania różn
 
 Gdy źródło w działaniu kopiowania jest typu **RelationalSource** (w tym SAP BW), w sekcji typeProperties są dostępne następujące właściwości:
 
-| Właściwość | Opis | Dozwolone wartości | Wymagane |
+| Właściwość | Opis | Dozwolone wartości | Wymagany |
 | --- | --- | --- | --- |
-| query | Określa zapytanie MDX do odczytu danych z wystąpienia SAP BW. | Zapytanie MDX. | Tak |
+| query | Określa zapytanie MDX do odczytu danych z wystąpienia SAP BW. | Zapytanie MDX. | Yes |
 
 
 ## <a name="json-example-copy-data-from-sap-business-warehouse-to-azure-blob"></a>Przykład JSON: kopiowanie danych z programu SAP Business Warehouse do obiektu blob platformy Azure
@@ -291,12 +291,12 @@ Podczas przemieszczania danych z SAP BW następujące mapowania są używane z t
 Typ danych w słowniku ABAP | Typ danych .NET
 -------------------------------- | --------------
 ACCP |  Int
-CHAR | Ciąg
+DELIKATN | Ciąg
 CLNT | Ciąg
-CURR | Decimal
+CURR | Dziesiętna
 CUKY | Ciąg
-GRUDZIEŃ | Decimal
-FLTP | Double
+GRUDZIEŃ | Dziesiętna
+FLTP | Podwójne
 INT1 | Bajtów
 INT2 | Int16
 INT4 | Int
@@ -304,11 +304,11 @@ LANG | Ciąg
 LCHR | Ciąg
 LRAW | Byte[]
 PREC | Int16
-QUAN | Decimal
+QUAN | Dziesiętna
 RAW | Byte[]
 RAWSTRING | Byte[]
 STRING | Ciąg
-JEDNOSTKA | Ciąg
+UNIT | Ciąg
 DATS | Ciąg
 NUMC | Ciąg
 TIMS | Ciąg

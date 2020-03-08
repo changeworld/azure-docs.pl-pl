@@ -4,11 +4,11 @@ description: Dowiedz się, jak znaleźć przychodzące i wychodzące adresy IP d
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.openlocfilehash: a1c4174b8f1f2349cbd35c32cbee468ee5b4cd4a
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612891"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358075"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Adresy IP w Azure Functions
 
@@ -25,9 +25,9 @@ Adresy IP są skojarzone z aplikacjami funkcji, a nie z poszczególnymi funkcjam
 
 Każda aplikacja funkcji ma jeden adres IP ruchu przychodzącego. Aby znaleźć ten adres IP:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 2. Przejdź do aplikacji funkcji.
-3. Wybierz pozycję **Funkcje platformy**.
+3. Wybierz **funkcje platformy**.
 4. Wybierz **Właściwości**, a adres IP ruchu przychodzącego jest wyświetlany w obszarze **wirtualny adres IP**.
 
 ## <a name="find-outbound-ip-addresses"></a>Wychodzące adresy IP aplikacji funkcji
@@ -105,7 +105,7 @@ Aby celowo wymusić zmianę wychodzącego adresu IP:
 2. Odczekaj 10 minut.
 3. Skaluj z powrotem do miejsca, w którym rozpoczęto pracę.
 
-## <a name="ip-address-restrictions"></a>ograniczenia adresów IP
+## <a name="ip-address-restrictions"></a>Ograniczenia adresów IP
 
 Można skonfigurować listę adresów IP, dla których chcesz zezwolić na dostęp lub odmówić dostępu do aplikacji funkcji. Aby uzyskać więcej informacji, zobacz [Azure App Service ograniczeń statycznych adresów IP](../app-service/app-service-ip-restrictions.md).
 
@@ -115,9 +115,9 @@ Jeśli potrzebujesz statycznych, dedykowanych adresów IP, zalecamy [App Service
 
 Aby dowiedzieć się, czy aplikacja funkcji działa w App Service Environment:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 2. Przejdź do aplikacji funkcji.
-3. Wybierz kartę **Omówienie**.
+3. Wybierz kartę **Przegląd** .
 4. Warstwa planu App Service zostanie wyświetlona w obszarze **App Service planu/warstwy cenowej**. Warstwa cenowa App Service Environment jest **izolowana**.
  
 Alternatywnie można użyć [Cloud Shell](../cloud-shell/quickstart.md):

@@ -16,15 +16,15 @@ ms.date: 02/27/2017
 ms.author: twooley
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e58e2d929dd1e4db16ce495ad54045e9dc3a6fb1
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933632"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365758"
 ---
 # <a name="an-introduction-to-storsimple-snapshot-manager"></a>Wprowadzenie do StorSimple Snapshot Manager
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 StorSimple Snapshot Manager jest przystawką programu Microsoft Management Console (MMC), która upraszcza ochronę danych i zarządzanie kopiami zapasowymi w środowisku Microsoft Azure StorSimple. Dzięki StorSimple Snapshot Manager możesz zarządzać danymi Microsoft Azure StorSimple w centrum danych i w chmurze jako jednym zintegrowanym rozwiązaniu magazynu, co upraszcza proces tworzenia kopii zapasowych i obniżanie kosztów.
 
 W tym przeglądzie wprowadzono Snapshot Manager StorSimple, opisano jej funkcje i wyjaśniono jej rolę w Microsoft Azure StorSimple. 

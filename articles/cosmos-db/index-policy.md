@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: thweiss
 ms.openlocfilehash: 886d17098259ddbb78698a3c1280f797e370c714
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597158"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386966"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Zasady indeksowania w Azure Cosmos DB
 
 W Azure Cosmos DB każdy kontener ma zasady indeksowania, które określają sposób indeksowania elementów kontenera. Domyślne zasady indeksowania dla nowo utworzonych kontenerów indeksuje każdą właściwość każdego elementu, wymuszając indeksy zakresów dla dowolnego ciągu lub liczby oraz indeksy przestrzenne dla dowolnego obiektu GEOJSON typu punkt. Dzięki temu można uzyskać wysoką wydajność zapytań bez konieczności zawieszania indeksowania i zarządzania indeksem z góry.
 
-W niektórych sytuacjach może zaistnieć potrzeba zastąpienia tego zachowania automatycznego, aby lepiej spełniało wymagania. Można dostosować zasady indeksowania kontenera, ustawiając jego *tryb indeksowania*i dołączając lub wykluczając *ścieżki właściwości*.
+W niektórych sytuacjach może być potrzebne zastąpienie tego automatycznego zachowania zachowaniem lepiej dostosowanym do wymagań. Można dostosować zasady indeksowania kontenera, ustawiając jego *tryb indeksowania*i dołączając lub wykluczając *ścieżki właściwości*.
 
 > [!NOTE]
 > Metoda aktualizacji zasad indeksowania opisana w tym artykule ma zastosowanie tylko do interfejsu API SQL (Core) Azure Cosmos DB.
@@ -58,7 +58,7 @@ Ponowne wykonanie tego samego przykładu:
     }
 ```
 
-- ścieżka `employees` `headquarters` jest `/headquarters/employees/?`
+- ścieżka `employees` `headquarters`jest `/headquarters/employees/?`
 
 - ścieżka `country` `locations`a jest `/locations/[]/country/?`
 
@@ -73,7 +73,7 @@ Każda zasada indeksowania musi zawierać ścieżkę katalogu głównego `/*` ja
 - Uwzględnij ścieżkę główną, aby wykluczać ścieżki, które nie muszą być indeksowane. Jest to zalecane podejście, które pozwala Azure Cosmos DB aktywnie indeksować wszelkie nowe właściwości, które mogą zostać dodane do modelu.
 - Wyklucz ścieżkę katalogu głównego do selektywnego dołączania ścieżek, które muszą być indeksowane.
 
-- W przypadku ścieżek ze zwykłymi znakami, które zawierają: znaki alfanumeryczne i _ (podkreślenie), nie trzeba określać ciągu ścieżki wokół podwójnych cudzysłowów (na przykład "/Path/?"). W przypadku ścieżek z innymi znakami specjalnymi należy wypróbować ciąg ścieżki wokół podwójnych cudzysłowów (na przykład "/\"path-ABC \"/?"). Jeśli oczekujesz znaków specjalnych w ścieżce, możesz pominąć wszystkie ścieżki w celu zapewnienia bezpieczeństwa. Funkcjonalnie nie ma żadnej różnicy, jeśli wykorzystasz wszystkie ścieżki, a tylko te, które zawierają znaki specjalne.
+- W przypadku ścieżek ze zwykłymi znakami, które zawierają: znaki alfanumeryczne i _ (podkreślenie), nie trzeba określać ciągu ścieżki wokół podwójnych cudzysłowów (na przykład "/Path/?"). W przypadku ścieżek z innymi znakami specjalnymi należy wypróbować ciąg ścieżki wokół podwójnych cudzysłowów (na przykład "/\"ścieżka-ABC\"/?"). Jeśli oczekujesz znaków specjalnych w ścieżce, możesz pominąć wszystkie ścieżki w celu zapewnienia bezpieczeństwa. Funkcjonalnie nie ma żadnej różnicy, jeśli wykorzystasz wszystkie ścieżki, a tylko te, które zawierają znaki specjalne.
 
 - Właściwość systemowa "ETag" jest domyślnie wykluczona z indeksowania, chyba że element ETag zostanie dodany do ścieżki dołączonej do indeksowania.
 
@@ -157,7 +157,7 @@ SELECT * FROM c WHERE c.name = "John" AND c.age = 18
 
 To zapytanie będzie bardziej wydajne, co zajmuje mniej czasu i zużywa mniejszą liczbę jednostek RU, jeśli może wykorzystać indeks złożony w dniu (nazwa ASC, wiek ASC).
 
-Zapytania z filtrami zakresu można także zoptymalizować przy użyciu indeksu złożonego. Jednak zapytanie może mieć tylko jeden filtr zakresu. Filtry zakresu obejmują `>`, `<`, `<=`, `>=` i `!=`. Filtr zakresu powinien być zdefiniowany jako ostatni w indeksie złożonym.
+Zapytania z filtrami zakresu można także zoptymalizować przy użyciu indeksu złożonego. Jednak zapytanie może mieć tylko jeden filtr zakresu. Filtry zakresu obejmują `>`, `<`, `<=`, `>=`i `!=`. Filtr zakresu powinien być zdefiniowany jako ostatni w indeksie złożonym.
 
 Rozważ następujące zapytanie z filtrami równości i zakresu:
 
@@ -171,7 +171,7 @@ Poniższe zagadnienia są używane podczas tworzenia indeksów złożonych dla z
 
 - Właściwości w filtrze zapytania powinny być zgodne z tymi w indeksie złożonym. Jeśli właściwość znajduje się w indeksie złożonym, ale nie jest uwzględniona w zapytaniu jako filtr, zapytanie nie będzie korzystać z indeksu złożonego.
 - Jeśli zapytanie ma dodatkowe właściwości w filtrze, który nie został zdefiniowany w indeksie złożonym, wówczas do obliczenia zapytania zostanie użyta kombinacja indeksów złożonych i zakresów. Będzie to wymagało mniejszej liczby jednostek RU niż w przypadku używania indeksów zakresów.
-- Jeśli właściwość ma filtr zakresu (`>`, `<`, `<=`, `>=` lub `!=`), wówczas ta właściwość powinna być zdefiniowana jako Ostatnia w indeksie złożonym. Jeśli zapytanie ma więcej niż jeden filtr zakresu, nie będzie używać indeksu złożonego.
+- Jeśli właściwość ma filtr zakresu (`>`, `<`, `<=`, `>=`lub `!=`), wówczas ta właściwość powinna być zdefiniowana jako Ostatnia w indeksie złożonym. Jeśli zapytanie ma więcej niż jeden filtr zakresu, nie będzie używać indeksu złożonego.
 - Podczas tworzenia indeksu złożonego do optymalizowania zapytań z wieloma filtrami `ORDER` indeksu złożonego nie będą miały wpływu na wyniki. Ta właściwość jest opcjonalna.
 - Jeśli nie zdefiniujesz indeksu złożonego dla zapytania z filtrami dla wielu właściwości, zapytanie będzie nadal kończyło się pomyślnie. Koszt RU zapytania można jednak zmniejszyć przy użyciu indeksu złożonego.
 

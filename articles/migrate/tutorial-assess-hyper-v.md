@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 01/23/2020
 ms.custom: mvc
 ms.openlocfilehash: e4c505d74ff3bebc21f696b1c4b894afcdaa9974
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845519"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389005"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Ocenianie maszyn wirtualnych funkcji Hyper-V za pomocą oceny serwera Azure Migrate
 
@@ -19,7 +19,7 @@ W tym artykule przedstawiono sposób oceny lokalnych maszyn wirtualnych funkcji 
 
 
 
-Ten samouczek jest drugą częścią serii, która pokazuje, jak oceniać i migrować maszyny wirtualne funkcji Hyper-V na platformę Azure. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek jest drugą częścią serii, która pokazuje, jak oceniać i migrować maszyny wirtualne funkcji Hyper-V na platformę Azure. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Skonfiguruj projekt Azure Migrate.
@@ -63,7 +63,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
     --- | ---
     Azja  | Azja Południowo-Wschodnia
     Europa | Europa Północna lub Europa Zachodnia
-    Zjednoczone Królestwo |  Południowe Zjednoczone Królestwo lub Zachodnie Zjednoczone Królestwo
+    Wielka Brytania |  Południowe Zjednoczone Królestwo lub Zachodnie Zjednoczone Królestwo
     Stany Zjednoczone | Wschodnie stany USA, zachodnie stany USA 2 lub zachodnie stany USA
 
     - Region projektu służy tylko do przechowywania metadanych zebranych z lokalnych maszyn wirtualnych.
@@ -211,7 +211,7 @@ Połącz się z urządzeniem z hostami lub klastrami funkcji Hyper-V, a następn
 
 1. W polu **Nazwa użytkownika** i **hasło**określ poświadczenia konta, które będą używane przez urządzenie do odnajdywania maszyn wirtualnych. Określ przyjazną nazwę dla poświadczeń, a następnie kliknij pozycję **Zapisz szczegóły**.
 2. Kliknij pozycję **Dodaj hosta**i określ szczegóły hosta/klastra funkcji Hyper-V.
-3. Kliknij przycisk **Weryfikuj**. Po walidacji wyświetlana jest liczba maszyn wirtualnych, które mogą zostać odnalezione na każdym hoście/klastrze.
+3. Kliknij pozycję **Validate** (Waliduj). Po walidacji wyświetlana jest liczba maszyn wirtualnych, które mogą zostać odnalezione na każdym hoście/klastrze.
     - Jeśli walidacja nie powiedzie się dla hosta, przejrzyj błąd, umieszczając kursor nad ikoną w kolumnie **stan** . Usuń problemy i ponownie sprawdź poprawność.
     - Aby usunąć hosty lub klastry, wybierz pozycję > **Usuń**.
     - Nie można usunąć określonego hosta z klastra. Można usunąć tylko cały klaster.
@@ -332,7 +332,7 @@ Klasyfikacje zaufania dla oceny są następujące.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku zostały wykonane następujące czynności:
+W tym samouczku zostaną wykonane następujące czynności:
 
 > [!div class="checklist"]
 > * Konfigurowanie urządzenia Azure Migrate

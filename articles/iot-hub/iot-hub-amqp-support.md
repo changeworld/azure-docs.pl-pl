@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/30/2019
 ms.author: robinsh
 ms.openlocfilehash: 7f7e957502419b766f7da63048e8168192ea20da
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286651"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359644"
 ---
 # <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>Komunikacja z Centrum IoT Hub przy użyciu protokołu AMQP
 
@@ -128,11 +128,11 @@ for msg in batch:
 
 Jak pokazano w powyższym kodzie, komunikat z opiniami z chmury do urządzenia ma typ zawartości *Application/VND. Microsoft. iothub.* replika. JSON. Za pomocą właściwości w treści JSON komunikatu można wywnioskować stan dostarczania oryginalnej wiadomości:
 
-* Klucz `statusCode` w treści opinii ma jedną z następujących wartości: *sukces*, *wygasłe*, *DeliveryCountExceeded*, *odrzucone*lub *przeczyszczane*.
+* Klucz `statusCode` w treści opinii ma jedną z następujących wartości: *sukces*, *wygasło*, *DeliveryCountExceeded*, *odrzucone*lub *przeczyszczane*.
 
-* Klucz `deviceId` w treści opinii ma identyfikator urządzenia docelowego.
+* Kluczowy `deviceId` w treści opinii ma identyfikator urządzenia docelowego.
 
-* Klucz `originalMessageId` w treści opinii ma identyfikator oryginalnego komunikatu z chmury do urządzenia, który został wysłany przez usługę. Ten stan dostarczania służy do skorelowania informacji zwrotnych dotyczących komunikatów z chmury do urządzenia.
+* Kluczowy `originalMessageId` w treści opinii ma identyfikator oryginalnego komunikatu z chmury do urządzenia, który został wysłany przez usługę. Ten stan dostarczania służy do skorelowania informacji zwrotnych dotyczących komunikatów z chmury do urządzenia.
 
 ### <a name="receive-telemetry-messages-service-client"></a>Odbieranie komunikatów telemetrycznych (klient usługi)
 
@@ -267,7 +267,7 @@ Następujące ścieżki linków są obsługiwane jako operacje na urządzeniach:
 
 ### <a name="receive-cloud-to-device-commands-device-client"></a>Otrzymywanie poleceń z chmury do urządzenia (klient urządzenia)
 
-Polecenia z chmury do urządzenia, które są wysyłane do urządzeń, docierają do linku `/devices/<deviceID>/messages/devicebound`. Urządzenia mogą odbierać te komunikaty w partiach, a w razie konieczności używać ładunku danych komunikatów, właściwości komunikatu, adnotacji lub właściwości aplikacji.
+Polecenia z chmury do urządzenia, które są wysyłane do urządzeń, docierają do `/devices/<deviceID>/messages/devicebound` linku. Urządzenia mogą odbierać te komunikaty w partiach, a w razie konieczności używać ładunku danych komunikatów, właściwości komunikatu, adnotacji lub właściwości aplikacji.
 
 Poniższy fragment kodu używa [biblioteki uAMQP w języku Python](https://github.com/Azure/azure-uamqp-python)) do odbierania komunikatów z chmury do urządzenia przez urządzenie.
 

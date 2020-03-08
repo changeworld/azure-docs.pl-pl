@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
 ms.openlocfilehash: e890289230b3215bd102d8c5a78dca4f1b7b90f8
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75494970"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386352"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Wdrażanie topologii Apache Storm w usłudze Azure HDInsight i zarządzanie nimi
 
@@ -207,7 +207,7 @@ W sekcji **Akcje topologii** można wybrać następujące przyciski, aby wykona�
 
 | Button | Opis |
 | --- | --- |
-| Aktywuj | Wznawia przetwarzanie zdezaktywowanej topologii. |
+| Activate | Wznawia przetwarzanie zdezaktywowanej topologii. |
 | Dezaktywuj | Wstrzymuje uruchomioną topologię. |
 | Ponownego równoważenia | Dostosowuje równoległość topologii. Należy ponownie zrównoważyć uruchomione topologie po zmianie liczby węzłów w klastrze. Ta operacja pozwala topologii dostosować równoległość, aby skompensować dodatkową lub ograniczoną liczbę węzłów w klastrze.<br/><br/>Aby uzyskać więcej informacji, zobacz <a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">Omówienie równoległości topologii Apache Storm</a>.
 | Killbit | Kończy topologię burzy po określonym limicie czasu. |
@@ -228,7 +228,7 @@ Wybranie elementu Spout z sekcji **elementy Spout** lub **pioruns** wyświetla n
 | Statystyki wyjściowe *(przedział czasu)* | Informacje o strumieniach emitowanych przez elementu Spout lub piorun. |
 | Profilowanie i debugowanie | Kontroluje profilowanie i debugowanie składników na tej stronie. Można ustawić wartość **stan/limit czasu (minuty)** i można wybrać przyciski dla **JStack**, **Uruchom ponownie proces roboczy**i **stertę**. |
 | Wykonawcy *(ramy czasowe)* | Informacje o wystąpieniach elementu Spout lub piorunów. Aby wyświetlić dziennik informacji diagnostycznych generowanych dla tego wystąpienia, wybierz wpis **portu** dla określonego wykonawcy. Możesz również wyświetlić zasoby procesu roboczego skojarzone z określonym wykonawcą, wybierając jego łącze w kolumnie **hosta** . |
-| Errors | Wszystkie informacje o błędzie dla elementu Spout lub pioruna. |
+| Błędy | Wszystkie informacje o błędzie dla elementu Spout lub pioruna. |
 
 Strona Podsumowanie pioruna burzy wygląda podobnie do tej strony sieci Web:
 
@@ -255,7 +255,7 @@ W pełni kwalifikowaną nazwę domeny (FQDN) węzła głównego klastra można z
 | Sieć Web Ambari | Na stronie sieci Web klastra Ambari (`https://CLUSTERNAME.azurehdinsight.net`) wybierz pozycję **usługi** w górnej części strony, a następnie wybierz pozycję **burza**. Na karcie **Podsumowanie** wybierz pozycję **serwer interfejsu użytkownika burzy**. W górnej części strony jest wyświetlana nazwa FQDN węzła, który hostuje interfejs użytkownika burzy i interfejs API REST. |
 | Interfejs API REST usługi Ambari | Użyj `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` polecenia, aby pobrać informacje o węźle, w którym działają interfejs użytkownika burzy i interfejs API REST. Zastąp dwa wystąpienia elementu *ClusterName* nazwą klastra. Po wyświetleniu monitu wprowadź hasło dla konta użytkownika (administratora). W odpowiedzi wpis "host_name" danych wyjściowych JSON zawiera nazwę FQDN węzła. |
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Uwierzytelnianie
 
 Żądania kierowane do interfejsu API REST muszą używać *uwierzytelniania podstawowego*, dlatego należy użyć nazwy administratora i hasła dla klastra usługi HDInsight.
 

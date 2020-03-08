@@ -5,17 +5,17 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 02/28/2020
-ms.openlocfilehash: 8c9732aec73f6387c9d32bb2333a3e7f834c2165
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.date: 03/05/2020
+ms.openlocfilehash: 66c257f940d4345f333aacf95f8efc9051a9566c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249896"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358704"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Nawiązywanie połączenia z sieciami wirtualnymi platformy Azure z Azure Logic Apps przy użyciu środowiska usługi integracji (ISE)
 
-W przypadku scenariuszy, w których aplikacje logiki i konta integracji potrzebują dostępu do [sieci wirtualnej platformy Azure](../virtual-network/virtual-networks-overview.md), Utwórz [ *środowisko usługi integracji* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). ISE to środowisko izolowane korzystające z dedykowanego magazynu i innych zasobów, które są oddzielone od publicznej "globalnej" Logic Apps usługi wielodostępnej. Ta separacja również zmniejsza wpływ innych dzierżawców platformy Azure na wydajność aplikacji. ISE udostępnia także własne statyczne adresy IP. Te adresy IP są niezależne od statycznych adresów IP, które są współużytkowane przez aplikacje logiki w publicznej, wielodostępnej usłudze.
+W przypadku scenariuszy, w których aplikacje logiki i konta integracji potrzebują dostępu do [sieci wirtualnej platformy Azure](../virtual-network/virtual-networks-overview.md), Utwórz [ *środowisko usługi integracji* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). ISE to środowisko izolowane korzystające z dedykowanego magazynu i innych zasobów, które są oddzielone od "globalnej" Logic Apps z wieloma dzierżawcami. Ta separacja również zmniejsza wpływ innych dzierżawców platformy Azure na wydajność aplikacji. ISE udostępnia także własne statyczne adresy IP. Te adresy IP są niezależne od statycznych adresów IP, które są współużytkowane przez aplikacje logiki w publicznej, wielodostępnej usłudze.
 
 Po utworzeniu ISE platforma Azure wprowadza tę ISE do sieci wirtualnej platformy Azure *, która następnie* wdraża usługę Logic Apps w sieci wirtualnej. Podczas tworzenia aplikacji logiki lub konta integracji wybierz swój ISE jako lokalizację. Aplikacja logiki lub konto integracji może następnie bezpośrednio uzyskać dostęp do zasobów, takich jak maszyny wirtualne, serwery, systemy i usługi, w sieci wirtualnej.
 
@@ -55,10 +55,10 @@ W tym artykule przedstawiono sposób wykonywania następujących zadań:
     **Prefiks adresu**: 0.0.0.0/0<br>
     **Następny przeskok**: Internet
 
-* Jeśli chcesz użyć niestandardowych serwerów DNS dla sieci wirtualnej platformy Azure, [Skonfiguruj te serwery, wykonując następujące czynności](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) przed wdrożeniem ISE w sieci wirtualnej. W przeciwnym razie przy każdej zmianie serwera DNS trzeba również ponownie uruchomić ISE.
+* Jeśli chcesz użyć niestandardowych serwerów DNS dla sieci wirtualnej platformy Azure, [Skonfiguruj te serwery, wykonując następujące czynności](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) przed wdrożeniem ISE w sieci wirtualnej. Aby uzyskać więcej informacji na temat zarządzania ustawieniami serwera DNS, zobacz [Tworzenie, zmienianie lub usuwanie sieci wirtualnej](../virtual-network/manage-virtual-network.md#change-dns-servers).
 
-  > [!IMPORTANT]
-  > W przypadku zmiany ustawień serwera DNS po utworzeniu ISE upewnij się, że ponownie uruchomiono ISE. Aby uzyskać więcej informacji na temat zarządzania ustawieniami serwera DNS, zobacz [Tworzenie, zmienianie lub usuwanie sieci wirtualnej](../virtual-network/manage-virtual-network.md#change-dns-servers).
+  > [!NOTE]
+  > W przypadku zmiany ustawień serwera DNS lub serwera DNS należy ponownie uruchomić ISE, aby ISE mógł pobrać te zmiany. Aby uzyskać więcej informacji, zobacz [Ponowne uruchamianie ISE](#restart-ISE).
 
 <a name="enable-access"></a>
 
@@ -277,6 +277,18 @@ Jednostka bazowa ISE Premium ma stałą pojemność, więc jeśli potrzebujesz w
 1. Aby dodać kolejny warunek, wybierz pozycję **Dodaj warunek skalowania**.
 
 1. Po zakończeniu korzystania z ustawień automatycznego skalowania Zapisz zmiany.
+
+<a name="restart-ISE"></a>
+
+## <a name="restart-ise"></a>Uruchom ponownie ISE
+
+W przypadku zmiany ustawień serwera DNS lub serwera DNS należy ponownie uruchomić ISE, aby ISE mógł pobrać te zmiany. Ponowne uruchomienie jednostki SKU Premium ISE nie powoduje przestoju z powodu nadmiarowości i składników, które są ponownie uruchamiane pojedynczo podczas odtwarzania. Jednak jednostka SKU dla deweloperów ISE się przestój, ponieważ nie istnieje nadmiarowość. Aby uzyskać więcej informacji, zobacz [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level).
+
+1. W [Azure Portal](https://portal.azure.com)przejdź do środowiska usługi integracji.
+
+1. W menu ISE wybierz pozycję **Przegląd**. Na pasku narzędzi przegląd **Uruchom ponownie**program.
+
+   ![Uruchom ponownie środowisko usługi integracji](./media/connect-virtual-network-vnet-isolated-environment/restart-integration-service-environment.png)
 
 ## <a name="delete-ise"></a>Usuń ISE
 

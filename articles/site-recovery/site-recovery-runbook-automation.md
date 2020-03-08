@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
 ms.openlocfilehash: ecfe993a137ca63c84438870ec54ac1e6d6707da
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173495"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390487"
 ---
-# <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Dodawanie Azure Automation elementów Runbook do planów odzyskiwania
+# <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Dodawanie elementów Runbook usługi Azure Automation do planów odzyskiwania
 
 W tym artykule opisano sposób integrowania Azure Automation elementów Runbook w celu rozbudowy [Azure Site Recovery](site-recovery-overview.md) planów odzyskiwania. Pokazujemy, jak zautomatyzować podstawowe zadania, w przypadku których w przeciwnym razie będzie potrzebna ręczna interwencja, i jak przekonwertować wieloetapowe odzyskiwanie na akcję pojedynczego kliknięcia.
 

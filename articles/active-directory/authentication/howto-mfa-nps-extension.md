@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 43f355f22774477466d2965cef02adcc4ec4f497
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76908857"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378127"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrowanie istniejącej infrastruktury NPS z usługą Azure Multi-Factor Authentication
 
@@ -47,7 +47,7 @@ Serwery sieci VPN rozsyłają żądania uwierzytelniania, dlatego muszą mieć �
 
 Rozszerzenie serwera NPS jest przeznaczone do pracy z istniejącą infrastrukturą. Przed rozpoczęciem upewnij się, że zostały spełnione następujące wymagania wstępne.
 
-### <a name="licenses"></a>Liczba
+### <a name="licenses"></a>Licencje
 
 Rozszerzenie serwera NPS dla usługi Azure MFA jest dostępne dla klientów z [licencjami na usługę azure Multi-Factor Authentication](multi-factor-authentication.md) (uwzględnioną w ramach Azure AD — wersja Premium, EMS lub autonomicznej licencji usługi MFA). Licencje na korzystanie z usługi Azure MFA, takie jak na użytkownika lub licencje uwierzytelniania, są niezgodne z rozszerzeniem serwera NPS. 
 
@@ -64,11 +64,11 @@ Te biblioteki są instalowane automatycznie z rozszerzeniem.
 
 Moduł Microsoft Azure Active Directory dla Windows PowerShell jest zainstalowany, jeśli jeszcze nie istnieje, za pomocą skryptu konfiguracji uruchamianego w ramach procesu instalacji. Nie ma potrzeby instalowania tego modułu przed czasem, jeśli nie został jeszcze zainstalowany.
 
-### <a name="azure-active-directory"></a>Usługa Active Directory systemu Azure
+### <a name="azure-active-directory"></a>Azure Active Directory
 
 Każdy użytkownik korzystający z rozszerzenia serwera NPS musi być synchronizowany do Azure Active Directory przy użyciu Azure AD Connect i musi być zarejestrowany dla usługi MFA.
 
-Po zainstalowaniu rozszerzenia wymagany jest identyfikator katalogu i poświadczenia administratora dla dzierżawy usługi Azure AD. Można znaleźć Identyfikatora katalogu w [witryny Azure portal](https://portal.azure.com). Zaloguj się jako administrator. Wyszukaj i wybierz **Azure Active Directory**a następnie wybierz pozycję **Właściwości**. Skopiuj identyfikator GUID w polu **Identyfikator katalogu** i Zapisz go. Ten identyfikator GUID jest używany jako identyfikator dzierżawy podczas instalowania rozszerzenia serwera NPS.
+Po zainstalowaniu rozszerzenia wymagany jest identyfikator katalogu i poświadczenia administratora dla dzierżawy usługi Azure AD. Identyfikator katalogu można znaleźć w [Azure Portal](https://portal.azure.com). Zaloguj się jako administrator. Wyszukaj i wybierz **Azure Active Directory**a następnie wybierz pozycję **Właściwości**. Skopiuj identyfikator GUID w polu **Identyfikator katalogu** i Zapisz go. Ten identyfikator GUID jest używany jako identyfikator dzierżawy podczas instalowania rozszerzenia serwera NPS.
 
 ![Znajdź identyfikator katalogu w obszarze Azure Active Directory właściwości](./media/howto-mfa-nps-extension/properties-directory-id.png)
 

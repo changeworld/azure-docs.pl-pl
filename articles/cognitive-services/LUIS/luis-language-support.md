@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
 ms.openlocfilehash: 4b6d954d06f09bef5240bddc4860ddbc83513d69
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77916595"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361178"
 ---
 # <a name="language-and-region-support-for-luis"></a>Obsługa języka i regionu dla usługi LUIS
 
@@ -35,7 +35,7 @@ Usługa LUIS rozumie wypowiedzi w następujących językach:
 | Angielski |`en-US` | ✔ | ✔  |✔|✔|
 | Arabski (wersja zapoznawcza — nowoczesny Standard arabski) |`ar-AR`|-|-|-|-|
 | *[chiński](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
-| holenderski |`nl-NL` |✔|  -   |-|✔|
+| Holenderski |`nl-NL` |✔|  -   |-|✔|
 | Francuski (Francja) |`fr-FR` |✔| ✔ |✔ |✔|
 | Francuski (Kanada) |`fr-CA` |-|   -   |-|✔|
 | Niemiecki |`de-DE` |✔| ✔ |✔ |✔|
@@ -79,9 +79,9 @@ Aby wykonać Uczenie maszynowe, LUIS dzieli wypowiedź na [tokeny](luis-glossary
 
 |Język|  Każdy spacji lub znaku specjalnego | poziom znaków|wyrazy złożone|[zwrócono token jednostki](luis-concept-data-extraction.md#tokenized-entity-returned)
 |--|:--:|:--:|:--:|:--:|
-|arabski|||||
+|Arabski|||||
 |Chiński||✔||✔|
-|holenderski|||✔|✔|
+|Holenderski|||✔|✔|
 |Angielski (en-us)|✔ ||||
 |Francuski (fr-FR)|✔||||
 |Francuski (fr-CA)|✔||||

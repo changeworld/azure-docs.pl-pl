@@ -5,11 +5,11 @@ ms.date: 05/09/2019
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: 573ec477a3e75beb91f90da0545fb7d4c0f9bf39
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74324709"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381610"
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>Zarządzanie użytkownikami w usłudze Azure łańcucha bloków Workbench
 
@@ -25,7 +25,7 @@ Usługa Azure łańcucha bloków Workbench używa usługi Azure Active Directory
 
 Aby można było przypisywać aplikacje i role, użytkownicy programu łańcucha bloków Workbench muszą istnieć w dzierżawie usługi Azure AD. Aby dodać użytkowników do usługi Azure AD, wykonaj następujące czynności:
 
-1.  Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1.  Zaloguj się do [Azure portal](https://portal.azure.com).
 2.  Wybierz swoje konto w prawym górnym rogu i przejdź do dzierżawy usługi Azure AD skojarzonej z łańcucha bloków Workbench.
 3.  Wybierz **Azure Active Directory > użytkowników**. Zostanie wyświetlona lista użytkowników w katalogu.
 4.  Aby dodać użytkowników do katalogu, wybierz pozycję **nowy użytkownik**. W przypadku użytkowników zewnętrznych wybierz pozycję **nowy użytkownik-Gość**.
@@ -42,7 +42,7 @@ Po dodaniu użytkowników do katalogu następnym krokiem jest wybranie użytkown
 
 Aby dodać użytkowników do grupy **administratorów** w katalogu usługi Azure AD:
 
-1.  Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1.  Zaloguj się do [Azure portal](https://portal.azure.com).
 2.  Sprawdź, czy jesteś w dzierżawie usługi Azure AD skojarzonym z łańcucha bloków Workbench, wybierając swoje konto w prawym górnym rogu.
 3.  Wybierz pozycję **Azure Active Directory > aplikacje dla przedsiębiorstw**.
 4.  Wybierz aplikację kliencką usługi Azure AD dla łańcucha bloków Workbench

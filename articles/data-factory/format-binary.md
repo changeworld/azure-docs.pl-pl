@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: jingwang
 ms.openlocfilehash: 8ebb4f0d1a06a7bf29dc46cd696b6acfd2527095
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927395"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386664"
 ---
 # <a name="binary-format-in-azure-data-factory"></a>Format binarny w Azure Data Factory
 
@@ -27,15 +27,15 @@ Można użyć binarnego zestawu danych w działaniach [kopiowania](copy-activity
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez binarny zestaw danych.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz artykuł [zestawy danych](concepts-datasets-linked-services.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez binarny zestaw danych.
 
-| Właściwość         | Opis                                                  | Wymagane |
+| Właściwość         | Opis                                                  | Wymagany |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| type             | Właściwość Type zestawu danych musi być ustawiona na wartość **binarną**. | Tak      |
-| location         | Ustawienia lokalizacji plików. Każdy Łącznik oparty na plikach ma własny typ lokalizacji i obsługiwane właściwości w obszarze `location`. **Zobacz szczegóły w sekcji łącznik — > Właściwości zestawu danych**. | Tak      |
+| type             | Właściwość Type zestawu danych musi być ustawiona na wartość **binarną**. | Yes      |
+| location         | Ustawienia lokalizacji plików. Każdy Łącznik oparty na plikach ma własny typ lokalizacji i obsługiwane właściwości w obszarze `location`. **Zobacz szczegóły w sekcji łącznik — > Właściwości zestawu danych**. | Yes      |
 | compression | Grupa właściwości do konfigurowania kompresji plików. Skonfiguruj tę sekcję, jeśli chcesz przeprowadzić kompresję/dekompresowanie podczas wykonywania działania. | Nie |
 | type | Koder-dekoder kompresji używany do odczytu/zapisu plików binarnych. <br>Dozwolone wartości to **bzip2**, **gzip**, **Wklęśnięcie**, **ZipDeflate**. do użycia podczas zapisywania pliku.<br>Uwaga w przypadku używania działania kopiowania do dekompresowania plików ZipDeflate i zapisywania w magazynie danych ujścia opartych na plikach pliki zostaną wyodrębnione do folderu: `<path specified in dataset>/<folder named as source zip file>/`. | Nie       |
-| level | Współczynnik kompresji. Zastosuj, gdy zestaw danych jest używany w ujścia działania kopiowania.<br>Dozwolone wartości to **optymalne** lub **najszybszy**.<br>- **najszybciej:** operacja kompresji powinna zakończyć się tak szybko, jak to możliwe, nawet jeśli plik nie jest optymalnie kompresowany.<br>- **optymalnie**: operacja kompresji powinna być optymalnie skompresowana, nawet jeśli operacja trwa dłużej. Aby uzyskać więcej informacji, zobacz [poziom kompresji](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) tematu. | Nie       |
+| poziom | Współczynnik kompresji. Zastosuj, gdy zestaw danych jest używany w ujścia działania kopiowania.<br>Dozwolone wartości to **optymalne** lub **najszybszy**.<br>- **najszybciej:** operacja kompresji powinna zakończyć się tak szybko, jak to możliwe, nawet jeśli plik nie jest optymalnie kompresowany.<br>- **optymalnie**: operacja kompresji powinna być optymalnie skompresowana, nawet jeśli operacja trwa dłużej. Aby uzyskać więcej informacji, zobacz temat [poziom kompresji](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) . | Nie       |
 
 Poniżej znajduje się przykładowy binarny zestaw danych na platformie Azure Blob Storage:
 
@@ -64,7 +64,7 @@ Poniżej znajduje się przykładowy binarny zestaw danych na platformie Azure Bl
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło danych binarnych i ujścia.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz artykuł [potoki](concepts-pipelines-activities.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez źródło danych binarnych i ujścia.
 
 >[!NOTE]
 >W przypadku korzystania z binarnego zestawu danych w działaniu kopiowania można kopiować tylko z binarnego zestawu danych do binarnego zestawu danych.
@@ -73,22 +73,22 @@ Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania dz
 
 Następujące właściwości są obsługiwane w sekcji działanie kopiowania ***\*źródło\**** .
 
-| Właściwość      | Opis                                                  | Wymagane |
+| Właściwość      | Opis                                                  | Wymagany |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | Właściwość Type źródła działania Copy musi być ustawiona na wartość **BinarySource**. | Tak      |
+| type          | Właściwość Type źródła działania Copy musi być ustawiona na wartość **BinarySource**. | Yes      |
 | storeSettings | Grupa właściwości do odczytywania danych z magazynu danych. Każdy Łącznik oparty na plikach ma własne obsługiwane ustawienia odczytu w obszarze `storeSettings`. **Zobacz szczegóły w artykule łącznik — > właściwości działania kopiowania**. | Nie       |
 
 ### <a name="binary-as-sink"></a>Dane binarne jako ujścia
 
 Następujące właściwości są obsługiwane w sekcji działanie kopiowania ***\*ujścia\**** .
 
-| Właściwość      | Opis                                                  | Wymagane |
+| Właściwość      | Opis                                                  | Wymagany |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | Właściwość Type źródła działania Copy musi być ustawiona na wartość **BinarySink**. | Tak      |
+| type          | Właściwość Type źródła działania Copy musi być ustawiona na wartość **BinarySink**. | Yes      |
 | storeSettings | Grupa właściwości do zapisywania danych w magazynie danych. Każdy Łącznik oparty na plikach ma własne obsługiwane ustawienia zapisu w obszarze `storeSettings`. **Zobacz szczegóły w artykule łącznik — > właściwości działania kopiowania**. | Nie       |
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Omówienie działania kopiowania](copy-activity-overview.md)
+- [Przegląd działania kopiowania](copy-activity-overview.md)
 - [Działanie GetMetadata](control-flow-get-metadata-activity.md)
 - [Usuń działanie](delete-activity.md)

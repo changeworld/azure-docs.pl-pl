@@ -16,11 +16,11 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 55c9075f28a9ff7e28fcb01352494cd6cff73f14
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121910"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78344220"
 ---
 # <a name="manage-the-availability-of-linux-virtual-machines"></a>Zarządzanie dostępnością maszyn wirtualnych z systemem Linux
 

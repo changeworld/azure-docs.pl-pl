@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie pulami elastycznymi
+title: Zarządzanie elastycznymi pulami
 description: Tworzenie pul elastycznych usługi Azure SQL i zarządzanie nimi.
 services: sql-database
 ms.service: sql-database
@@ -12,11 +12,11 @@ ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 4ae2e84ab5f6108de4e8236c39371cf9658809d8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823851"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359908"
 ---
 # <a name="manage-elastic-pools-in-azure-sql-database"></a>Zarządzanie pulami elastycznymi w Azure SQL Database
 

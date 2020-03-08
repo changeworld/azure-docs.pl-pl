@@ -10,11 +10,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.openlocfilehash: 6e466675a9bd86693ce0ee048480712a55829ce6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280738"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386663"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Potoki i działania w usłudze Azure Data Factory
 
@@ -112,7 +112,7 @@ description | Wprowadź tekst opisujący przeznaczenie potoku. | Ciąg | Nie
 activities | W sekcji **activities** można zdefiniować jedno lub więcej działań. Sprawdź sekcję [Format JSON działania](#activity-json), aby uzyskać szczegółowe informacje na temat elementu JSON activities. | Tablica | Yes
 parameters | Sekcja **parameters** może zawierać jeden lub kilka parametrów zdefiniowanych w potoku, co zwiększa elastyczność i możliwość ponownego zastosowania potoku. | List | Nie
 concurrency | Maksymalna liczba współbieżnych uruchomień potoku. Domyślnie nie ma żadnych wartości maksymalnej. Jeśli limit współbieżności zostanie osiągnięty, kolejne uruchomienia potoku zostaną dodane do kolejki do momentu ukończenia wcześniej | Liczba | Nie 
-Adnotacj | Lista tagów skojarzonych z potokiem | Tablica | Nie
+adnotacje | Lista tagów skojarzonych z potokiem | Tablica | Nie
 
 ## <a name="activity-json"></a>Format JSON działania
 W sekcji **activities** można zdefiniować jedno lub więcej działań. Istnieją dwa główne typy działań: działania wykonywania i sterowania.

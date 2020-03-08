@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 1f42c6c9b0086d49e539040334c83cfc0c6feb42
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75410216"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357897"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Powiązania dla Durable Functions (Azure Functions)
 
@@ -36,7 +36,7 @@ W przypadku pisania funkcji programu Orchestrator w językach skryptów (np. Jav
 
 Wewnętrznie to powiązanie wyzwalacza sonduje serię kolejek w domyślnym koncie magazynu dla aplikacji funkcji. Te kolejki są wewnętrznymi szczegółami implementacji rozszerzenia, dlatego nie są one jawnie skonfigurowane we właściwościach powiązania.
 
-### <a name="trigger-behavior"></a>Zachowanie wyzwalacza
+### <a name="trigger-behavior"></a>Zachowanie wyzwalania
 
 Poniżej znajdują się pewne uwagi dotyczące wyzwalacza aranżacji:
 
@@ -143,7 +143,7 @@ Jeśli używasz VS Code lub Azure Portal do programowania, wyzwalacz aktywności
 
 Wewnętrznie to powiązanie wyzwalacza sonduje kolejkę w domyślnym koncie magazynu dla aplikacji funkcji. Ta kolejka jest wewnętrznymi szczegółami implementacji rozszerzenia, dlatego nie jest on jawnie skonfigurowany we właściwościach powiązania.
 
-### <a name="trigger-behavior"></a>Zachowanie wyzwalacza
+### <a name="trigger-behavior"></a>Zachowanie wyzwalania
 
 Poniżej przedstawiono niektóre uwagi dotyczące wyzwalacza działania:
 
@@ -372,7 +372,7 @@ W przypadku korzystania z narzędzi Visual Studio Tools for Azure Functions wyzw
 
 Wewnętrznie to powiązanie wyzwalacza sonduje serię kolejek w domyślnym koncie magazynu dla aplikacji funkcji. Te kolejki są wewnętrznymi szczegółami implementacji rozszerzenia, dlatego nie są one jawnie skonfigurowane we właściwościach powiązania.
 
-### <a name="trigger-behavior"></a>Zachowanie wyzwalacza
+### <a name="trigger-behavior"></a>Zachowanie wyzwalania
 
 Poniżej przedstawiono niektóre uwagi dotyczące wyzwalacza jednostki:
 

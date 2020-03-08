@@ -4,11 +4,11 @@ description: Dokumentacja referencyjna dotycząca pliku host. JSON Azure Functio
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.openlocfilehash: 2b00e2343e0959e07b195e2e98c6719a1893b8c8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769612"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356080"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Dokumentacja pliku host. JSON dla Azure Functions 1. x
 
@@ -120,7 +120,7 @@ W poniższych sekcjach tego artykułu opisano każdą właściwość najwyższeg
 
 [!INCLUDE [applicationInsights](../../includes/functions-host-json-applicationinsights.md)]
 
-## <a name="documentdb"></a>Baza danych DocumentDB
+## <a name="documentdb"></a>DocumentDB
 
 Ustawienia konfiguracji dla [wyzwalacza Azure Cosmos DB i powiązań](functions-bindings-cosmosdb.md).
 
@@ -139,8 +139,8 @@ Ustawienia konfiguracji dla [wyzwalacza Azure Cosmos DB i powiązań](functions-
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------|
 |GatewayMode|Brama|Tryb połączenia używany przez funkcję podczas nawiązywania połączenia z usługą Azure Cosmos DB. Opcje są `Direct` i `Gateway`|
-|Protocol (Protokół)|Schemat|Protokół połączenia używany przez funkcję podczas nawiązywania połączenia z usługą Azure Cosmos DB.  Przeczytaj [tutaj, aby uzyskać wyjaśnienie obu trybów](../cosmos-db/performance-tips.md#networking)|
-|leasePrefix|nd.|Prefiks dzierżawy do użycia we wszystkich funkcjach w aplikacji.|
+|Protokół|Schemat|Protokół połączenia używany przez funkcję podczas nawiązywania połączenia z usługą Azure Cosmos DB.  Przeczytaj [tutaj, aby uzyskać wyjaśnienie obu trybów](../cosmos-db/performance-tips.md#networking)|
+|leasePrefix|Nie dotyczy|Prefiks dzierżawy do użycia we wszystkich funkcjach w aplikacji.|
 
 ## <a name="durabletask"></a>durableTask
 
@@ -152,7 +152,7 @@ Ustawienia konfiguracji dla [wyzwalaczy i powiązań centrum zdarzeń](functions
 
 [!INCLUDE [functions-host-json-event-hubs](../../includes/functions-host-json-event-hubs.md)]
 
-## <a name="functions"></a>functions
+## <a name="functions"></a>— funkcje
 
 Lista funkcji uruchomionych przez hosta zadań. Pusta tablica oznacza uruchamianie wszystkich funkcji. Przeznaczone do użytku tylko w przypadku [uruchamiania lokalnego](functions-run-local.md). W aplikacjach funkcji na platformie Azure zamiast tego należy wykonać kroki opisane w temacie [Jak wyłączyć funkcje w Azure Functions](disable-function.md) , aby wyłączyć określone funkcje zamiast używać tego ustawienia.
 
@@ -190,7 +190,7 @@ Ustawienia konfiguracji dla [monitora kondycji hosta](https://github.com/Azure/a
 
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
-|włączony|true|Określa, czy funkcja jest włączona. | 
+|dostępny|true|Określa, czy funkcja jest włączona. | 
 |healthCheckInterval|10 sekund|Przedział czasu między okresowymi kontrolami kondycji w tle. | 
 |healthCheckWindow|2 minuty|Przedział czasu, który jest używany w połączeniu z ustawieniem `healthCheckThreshold`.| 
 |healthCheckThreshold|6|Maksymalna liczba przypadków, w których Sprawdzenie kondycji może zakończyć się niepowodzeniem przed zainicjowaniem odtwarzania hosta.| 
@@ -251,9 +251,9 @@ Kontroluje filtrowanie dla dzienników pisanych przez [obiekt ILogger](functions
 
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
-|categoryFilter|nd.|Określa filtrowanie według kategorii| 
+|categoryFilter|Nie dotyczy|Określa filtrowanie według kategorii| 
 |defaultLevel|Informacje|Dla wszystkich kategorii, które nie są określone w tablicy `categoryLevels`, Wyślij dzienniki na tym poziomie i powyżej, aby Application Insights.| 
-|categoryLevels|nd.|Tablica kategorii, która określa minimalny poziom rejestrowania do wysłania do Application Insights dla każdej kategorii. Określona tutaj Kategoria kontroluje wszystkie kategorie, które zaczynają się od tej samej wartości, a dłuższe wartości mają pierwszeństwo. W poprzednim przykładzie pliku *host. JSON* wszystkie kategorie zaczynające się od dziennika "host. agregator" na poziomie `Information`. Wszystkie inne kategorie zaczynające się od "host", takie jak "host. wykonawca", logują się na poziomie `Error`.| 
+|categoryLevels|Nie dotyczy|Tablica kategorii, która określa minimalny poziom rejestrowania do wysłania do Application Insights dla każdej kategorii. Określona tutaj Kategoria kontroluje wszystkie kategorie, które zaczynają się od tej samej wartości, a dłuższe wartości mają pierwszeństwo. W poprzednim przykładzie pliku *host. JSON* wszystkie kategorie zaczynające się od dziennika "host. agregator" na poziomie `Information`. Wszystkie inne kategorie zaczynające się od "host", takie jak "host. wykonawca", logują się na poziomie `Error`.| 
 
 ## <a name="queues"></a>kolejki
 
@@ -292,7 +292,7 @@ Ustawienie konfiguracji dla [powiązania danych wyjściowych SendGrind](function
 
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
-|z|nd.|Adres e-mail nadawcy we wszystkich funkcjach.| 
+|from|Nie dotyczy|Adres e-mail nadawcy we wszystkich funkcjach.| 
 
 ## <a name="servicebus"></a>serviceBus
 
@@ -310,8 +310,8 @@ Ustawienia konfiguracji dla [wyzwalaczy Service Bus i powiązań](functions-bind
 
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
-|maxConcurrentCalls|16|Maksymalna liczba równoczesnych wywołań wywołanie zwrotne, które powinno zainicjować "pompy komunikatów". Domyślnie środowisko uruchomieniowe usługi Functions przetwarza wiele wiadomości jednocześnie. Aby skierowania czasu przetwarzania tylko jednej kolejki lub tematu wiadomości w czasie, należy ustawić `maxConcurrentCalls` 1. | 
-|prefetchCount|nd.|Domyślnie PrefetchCount używanej przez MessageReceiver bazowego.| 
+|maxConcurrentCalls|16|Maksymalna liczba równoczesnych wywołań wywołanie zwrotne, które powinno zainicjować "pompy komunikatów". Domyślnie środowisko uruchomieniowe usługi Functions przetwarza wiele wiadomości jednocześnie. Aby skierować środowisko uruchomieniowe do przetwarzania tylko pojedynczej kolejki lub komunikatu tematu, ustaw `maxConcurrentCalls` na 1. | 
+|prefetchCount|Nie dotyczy|Domyślnie PrefetchCount używanej przez MessageReceiver bazowego.| 
 |Właściwość autorenewtimeout|00:05:00|Maksymalny czas trwania, w którym blokadę komunikatu zostanie odnowiony automatycznie.| 
 
 ## <a name="singleton"></a>Pojedynczego
@@ -336,7 +336,7 @@ Ustawienia konfiguracji dla zachowania pojedynczej blokady. Aby uzyskać więcej
 |listenerLockPeriod|00:01:00|Okres, w którym są wykonywane blokady odbiornika.| 
 |listenerLockRecoveryPollingInterval|00:01:00|Przedział czasu używany do odzyskiwania blokady odbiornika, jeśli nie można uzyskać blokady odbiornika podczas uruchamiania.| 
 |lockAcquisitionTimeout|00:01:00|Maksymalny czas, przez jaki środowisko uruchomieniowe podejmie próbę uzyskania blokady.| 
-|lockAcquisitionPollingInterval|nd.|Interwał między kolejnymi próbami przejęcia blokady.| 
+|lockAcquisitionPollingInterval|Nie dotyczy|Interwał między kolejnymi próbami przejęcia blokady.| 
 
 ## <a name="tracing"></a>śledzenie
 
