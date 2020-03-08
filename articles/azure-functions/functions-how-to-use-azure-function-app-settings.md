@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/14/2019
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 662a04dbcc39f3fa95b0098eb8fe556b18b3495b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230574"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357554"
 ---
 # <a name="manage-your-function-app"></a>Zarządzanie aplikacją funkcji 
 
@@ -25,7 +25,7 @@ W tym artykule opisano sposób konfigurowania aplikacji funkcji i zarządzania n
 > [!TIP]  
 > Wiele opcji konfiguracji można także zarządzać za pomocą [Interfejs wiersza polecenia platformy Azure]. 
 
-## <a name="get-started-in-the-azure-portal"></a>Rozpocznij pracę w witrynie Azure Portal
+## <a name="get-started-in-the-azure-portal"></a>Wprowadzenie do Azure Portal
 
 Aby rozpocząć, przejdź do [Azure Portal] i zaloguj się na koncie platformy Azure. Na pasku wyszukiwania w górnej części portalu wpisz nazwę aplikacji funkcji i wybierz ją z listy. Po wybraniu aplikacji funkcji zostanie wyświetlona następująca strona:
 
@@ -79,7 +79,7 @@ Aplikacje funkcji działają w programie i są obsługiwane przez platformę Azu
 Pozostała część tego artykułu koncentruje się na następujących App Service funkcjach w Azure Portal, które są przydatne w przypadku funkcji:
 
 + [Edytor App Service](#editor)
-+ [Console](#console)
++ [Konsola](#console)
 + [Narzędzia zaawansowane (kudu)](#kudu)
 + [Opcje wdrażania](#deployment)
 + [CORS](#cors)

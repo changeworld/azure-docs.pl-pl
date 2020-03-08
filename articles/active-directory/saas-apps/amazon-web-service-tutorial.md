@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 986aa000102cfed01666c8a95c00847ecc0cd651
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 6970debd3885a513ac0e30d6cc5391b0db66cf9b
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047266"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668667"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z usługą Amazon Web Services (AWS)
 
@@ -130,7 +130,7 @@ W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
    1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij pozycję **Utwórz**.
+   1. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -264,7 +264,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
     b. W polu **Opis**wprowadź następujące zasady umożliwią **pobranie ról z kont usługi AWS**.
 
-    c. Wybierz pozycję **Utwórz zasady**.
+    c. Wybierz pozycję **Create policy** (Utwórz zasady).
 
 17. Utwórz nowe konto użytkownika w usłudze IAM AWS.
 
@@ -337,7 +337,10 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
     ![Zrzut ekranu przedstawiający sekcję ustawień z wyróżnioną pozycją](./media/amazon-web-service-tutorial/provisioning2.png)
 
 > [!NOTE]
-> Usługa aprowizacji będzie importować tylko role z AWS do usługi Azure AD. Ta usługa nie będzie dostarczać użytkowników i grup z usługi Azure AD z powrotem do AWS.
+> Usługa aprowizacji importuje role tylko z AWS do usługi Azure AD. Usługa nie inicjuje obsługi administracyjnej użytkowników i grup z usługi Azure AD do AWS.
+
+> [!NOTE]
+> Po zapisaniu poświadczeń aprowizacji należy poczekać, aż początkowy cykl synchronizacji zostanie uruchomiony. Synchronizacja trwa zwykle około 40 minut. Stan można zobaczyć w dolnej części strony **aprowizacji** w obszarze **bieżący stan**.
 
 ### <a name="create-amazon-web-services-aws-test-user"></a>Tworzenie użytkownika testowego usług Amazon Web Services (AWS)
 

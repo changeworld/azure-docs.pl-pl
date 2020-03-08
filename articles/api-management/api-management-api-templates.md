@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: eee95a2b6acde3ad3b7d94cf5cdd0f74f9f09fd9
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176872"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374448"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Szablony interfejsu API na platformie Azure API Management
 
-Usługa Azure API Management umożliwia dostosowanie zawartości stron portalu dla deweloperów przy użyciu zestawu szablonów, które konfigurują ich zawartość. Korzystając z składni [DotLiquid](http://dotliquidmarkup.org/) i wybranego edytora, takiego jak [DotLiquid dla projektantów](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), i dostępnego zestawu zlokalizowanych [zasobów ciągów](api-management-template-resources.md#strings), [zasobów symboli](api-management-template-resources.md#glyphs)i [kontrolek stron](api-management-page-controls.md), masz doskonałą elastyczność konfigurowania zawartość stron wyświetlanych w postaci dopasowania przy użyciu tych szablonów.  
+Usługa Azure API Management umożliwia dostosowanie zawartości stron portalu dla deweloperów przy użyciu zestawu szablonów, które konfigurują ich zawartość. Korzystając z składni [DotLiquid](http://dotliquidmarkup.org/) i wybranego edytora, takiego jak [DotLiquid dla projektantów](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), i dostępnego zestawu zlokalizowanych [zasobów ciągów](api-management-template-resources.md#strings), [zasobów glifów](api-management-template-resources.md#glyphs)i [kontrolek stron](api-management-page-controls.md), masz doskonałą elastyczność konfigurowania zawartości stron w miarę, w jakiej są one widoczne przy użyciu tych szablonów.  
 
 Szablony w tej sekcji umożliwiają dostosowanie zawartości stron interfejsu API w portalu dla deweloperów.  
   
@@ -346,14 +346,14 @@ Szablony w tej sekcji umożliwiają dostosowanie zawartości stron interfejsu AP
   
 |Właściwość|Typ|Opis|  
 |--------------|----------|-----------------|  
-|`apiId`|string|Identyfikator bieżącego interfejsu API.|  
-|`apiName`|string|Nazwa interfejsu API.|  
-|`apiDescription`|string|Opis interfejsu API.|  
+|`apiId`|ciąg|Identyfikator bieżącego interfejsu API.|  
+|`apiName`|ciąg|Nazwa interfejsu API.|  
+|`apiDescription`|ciąg|Opis interfejsu API.|  
 |`api`|Jednostka [podsumowania interfejsu API](api-management-template-data-model-reference.md#APISummary) .|Bieżący interfejs API.|  
 |`operation`|[Operacja](api-management-template-data-model-reference.md#Operation)|Aktualnie wyświetlana operacja.|  
-|`sampleUrl`|string|Adres URL bieżącej operacji.|  
+|`sampleUrl`|ciąg|Adres URL bieżącej operacji.|  
 |`operationMenu`|[Menu operacje](api-management-template-data-model-reference.md#Menu)|Menu operacji dla tego interfejsu API.|  
-|`consoleUrl`|ADRESU|Identyfikator URI przycisku **try it** .|  
+|`consoleUrl`|Identyfikator URI|Identyfikator URI przycisku **try it** .|  
 |`samples`|Kolekcja [przykładowych jednostek kodu](api-management-template-data-model-reference.md#Sample) .|Przykłady kodu dla bieżącej operacji...|  
   
 ### <a name="sample-template-data"></a>Przykładowe dane szablonu  

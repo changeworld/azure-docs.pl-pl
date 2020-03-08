@@ -3,12 +3,12 @@ title: Obsługa migracji oprogramowania VMware w Azure Migrate
 description: Dowiedz się więcej o obsłudze migracji maszyn wirtualnych VMware w Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: eea2ef1f84e5c31dd18ea4ef65ccf2796231352b
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 9d8dc4dadc975a0fb69ea207f6062b72231460ef
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597987"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388988"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Macierz obsługi migracji VMware
 
@@ -35,7 +35,7 @@ Zapoznaj się z [tym artykułem](server-migrate-overview.md) , aby ustalić, kt�
 --- | ---
 **VMware vCenter Server** | Wersja 5,5, 6,0, 6,5 lub 6,7.
 **VMware vSphere hosta ESXI** | Wersja 5,5, 6,0, 6,5 lub 6,7.
-**uprawnienia vCenter Server** | Migracja bez agentów używa [urządzenia migracji](migrate-appliance.md). Urządzenie musi mieć następujące uprawnienia:<br/><br/> - **datastore. Browse**: Zezwalaj na przeglądanie plików dzienników maszyn wirtualnych w celu rozwiązywania problemów z tworzeniem i usuwaniem migawki.<br/><br/> - **datastore. LowLevelFileOperations**: Zezwalaj na operacje odczytu/zapisu/usuwania/zmiany nazwy w przeglądarce magazynu danych, aby rozwiązywać problemy z tworzeniem i usuwaniem migawki.<br/><br/> - **VirtualMachine. Configuration. DiskChangeTracking**: Zezwalaj na włączanie lub wyłączanie śledzenia zmian dysków maszyn wirtualnych w celu ściągania zmienionych bloków danych między migawkami.<br/><br/> - **VirtualMachine. Configuration. DiskLease**: Zezwalaj na operacje dzierżawy dysku dla maszyny wirtualnej w celu odczytania dysku przy użyciu zestawu VMware vSphere Virtual Disk Development Kit (VDDK).<br/><br/> - **VirtualMachine. Provisioning. AllowDiskAccess**: (w odniesieniu do vSphere 6,0 i nowsze) Zezwalaj na otwieranie dysku na maszynie wirtualnej w celu uzyskania losowego dostępu do odczytu na dysku przy użyciu VDDK.<br/><br/> - **VirtualMachine. Provisioning. AllowReadOnlyDiskAccess**: Zezwól na otwieranie dysku na maszynie wirtualnej w celu odczytania dysku przy użyciu VDDK.<br/><br/>- **VirtualMachine. Provisioning. AllowVirtualMachineDownload**: zezwala na operacje odczytu plików SKOJARZONYCH z maszyną wirtualną, pobieranie dzienników i rozwiązywanie problemów w przypadku wystąpienia błędu.<br/><br/> -* * VirtualMachine. SnapshotManagement. * * *: umożliwia tworzenie migawek maszyn wirtualnych i zarządzanie nimi na potrzeby replikacji.<br/><br/> - **maszynę wirtualną. Interaction. off**: Zezwalaj na wyłączenie maszyny wirtualnej podczas migracji na platformę Azure.
+**uprawnienia vCenter Server** | Migracja bez agentów używa [urządzenia migracji](migrate-appliance.md). Urządzenie musi mieć następujące uprawnienia:<br/><br/> - **datastore. Browse**: Zezwalaj na przeglądanie plików dzienników maszyn wirtualnych w celu rozwiązywania problemów z tworzeniem i usuwaniem migawki.<br/><br/> - **datastore. LowLevelFileOperations**: Zezwalaj na operacje odczytu/zapisu/usuwania/zmiany nazwy w przeglądarce magazynu danych, aby rozwiązywać problemy z tworzeniem i usuwaniem migawki.<br/><br/> - **VirtualMachine. Configuration. DiskChangeTracking**: Zezwalaj na włączanie lub wyłączanie śledzenia zmian dysków maszyn wirtualnych w celu ściągania zmienionych bloków danych między migawkami.<br/><br/> - **VirtualMachine. Configuration. DiskLease**: Zezwalaj na operacje dzierżawy dysku dla maszyny wirtualnej w celu odczytania dysku przy użyciu zestawu VMware vSphere Virtual Disk Development Kit (VDDK).<br/><br/> - **VirtualMachine. Provisioning. AllowDiskAccess**: (w odniesieniu do vSphere 6,0 i nowsze) Zezwalaj na otwieranie dysku na maszynie wirtualnej w celu uzyskania losowego dostępu do odczytu na dysku przy użyciu VDDK.<br/><br/> - **VirtualMachine. Provisioning. AllowReadOnlyDiskAccess**: Zezwól na otwieranie dysku na maszynie wirtualnej w celu odczytania dysku przy użyciu VDDK.<br/><br/> - **VirtualMachine. Provisioning. AllowDiskRandomAccess**: Zezwól na otwieranie dysku na maszynie wirtualnej w celu odczytania dysku przy użyciu VDDK.<br/><br/> - **VirtualMachine. Provisioning. AllowVirtualMachineDownload**: zezwala na operacje odczytu plików SKOJARZONYCH z maszyną wirtualną, pobieranie dzienników i rozwiązywanie problemów w przypadku wystąpienia błędu.<br/><br/> -* * VirtualMachine. SnapshotManagement. * * *: umożliwia tworzenie migawek maszyn wirtualnych i zarządzanie nimi na potrzeby replikacji.<br/><br/> - **maszynę wirtualną. Interaction. off**: Zezwalaj na wyłączenie maszyny wirtualnej podczas migracji na platformę Azure.
 
 
 

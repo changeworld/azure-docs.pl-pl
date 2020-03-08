@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
 ms.openlocfilehash: 4789ef1e0e09df521f8cab539d972e9e669e0a58
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450163"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395540"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Tworzenie kopii zapasowej maszyny wirtualnej platformy Azure przy użyciu Azure Backup za pośrednictwem interfejsu API REST
 
@@ -41,10 +41,10 @@ Operacja "Refresh" jest [operacją asynchroniczną](https://docs.microsoft.com/a
 
 Zwraca dwie odpowiedzi: 202 (zaakceptowane), gdy tworzona jest inna operacja, a następnie 200 (OK) po zakończeniu tej operacji.
 
-|Nazwa  |Typ  |Opis  |
+|Name (Nazwa)  |Typ  |Opis  |
 |---------|---------|---------|
 |204 Brak zawartości     |         |  OK bez zwracanej zawartości      |
-|202 zaakceptowane     |         |     Zaakceptowano    |
+|202 zaakceptowane     |         |     Accepted    |
 
 ##### <a name="example-responses"></a>Przykładowe odpowiedzi
 
@@ -104,7 +104,7 @@ Identyfikator URI *Get* zawiera wszystkie wymagane parametry. Żadna dodatkowa t
 
 #### <a name="responses-1"></a>Reagowani
 
-|Nazwa  |Typ  |Opis  |
+|Name (Nazwa)  |Typ  |Opis  |
 |---------|---------|---------|
 |200 OK     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
 
@@ -180,7 +180,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 Aby utworzyć chroniony element, poniżej przedstawiono składniki treści żądania.
 
-|Nazwa  |Typ  |Opis  |
+|Name (Nazwa)  |Typ  |Opis  |
 |---------|---------|---------|
 |properties     | AzureIaaSVMProtectedItem        |Właściwości zasobów ProtectedItem         |
 
@@ -208,10 +208,10 @@ Tworzenie chronionego elementu jest [operacją asynchroniczną](https://docs.mic
 
 Zwraca dwie odpowiedzi: 202 (zaakceptowane), gdy tworzona jest inna operacja, a następnie 200 (OK) po zakończeniu tej operacji.
 
-|Nazwa  |Typ  |Opis  |
+|Name (Nazwa)  |Typ  |Opis  |
 |---------|---------|---------|
 |200 OK     |    [ProtectedItemResource](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
-|202 zaakceptowane     |         |     Zaakceptowano    |
+|202 zaakceptowane     |         |     Accepted    |
 
 ##### <a name="example-responses"></a>Przykładowe odpowiedzi
 
@@ -294,7 +294,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 Aby wyzwolić kopię zapasową na żądanie, poniżej przedstawiono składniki treści żądania.
 
-|Nazwa  |Typ  |Opis  |
+|Name (Nazwa)  |Typ  |Opis  |
 |---------|---------|---------|
 |properties     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |Właściwości BackupRequestResource         |
 
@@ -319,9 +319,9 @@ Wyzwalanie kopii zapasowej na żądanie jest [operacją asynchroniczną](https:/
 
 Zwraca dwie odpowiedzi: 202 (zaakceptowane), gdy tworzona jest inna operacja, a następnie 200 (OK) po zakończeniu tej operacji.
 
-|Nazwa  |Typ  |Opis  |
+|Name (Nazwa)  |Typ  |Opis  |
 |---------|---------|---------|
-|202 zaakceptowane     |         |     Zaakceptowano    |
+|202 zaakceptowane     |         |     Accepted    |
 
 #### <a name="example-responses-3"></a>Przykładowe odpowiedzi
 
@@ -439,10 +439,10 @@ DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-00000
 
 Zwraca dwie odpowiedzi: 202 (zaakceptowane), gdy tworzona jest inna operacja, a następnie 204 (NoContent) po zakończeniu tej operacji.
 
-|Nazwa  |Typ  |Opis  |
+|Name (Nazwa)  |Typ  |Opis  |
 |---------|---------|---------|
 |204 NoContent     |         |  NoContent       |
-|202 zaakceptowane     |         |     Zaakceptowano    |
+|202 zaakceptowane     |         |     Accepted    |
 
 > [!IMPORTANT]
 > Aby można było chronić przed przypadkowym usunięciem scenariuszy, [dostępna jest funkcja usuwania nietrwałego](use-restapi-update-vault-properties.md#soft-delete-state) dla magazynu usługi Recovery Services. Jeśli stan nietrwałego usuwania magazynu jest ustawiony na włączone, operacja usuwania nie spowoduje natychmiastowego usunięcia danych. Będzie ono przechowywane przez 14 dni, a następnie trwale przeczyszczane. W przypadku tego okresu 14 dni klient nie nalicza opłat za magazyn. Aby cofnąć operację usuwania, zapoznaj się z [sekcją cofanie usunięcia](#undo-the-stop-protection-and-delete-data).
@@ -473,4 +473,4 @@ Odpowiedź będzie zgodna z tym samym formatem, jak wspomniano w [przypadku wyzw
 Aby uzyskać więcej informacji na temat Azure Backup interfejsów API REST, zobacz następujące dokumenty:
 
 - [Interfejs API REST dostawcy usługi Azure Recovery Services](/rest/api/recoveryservices/)
-- [Get started with Azure REST API (Rozpoczęcie pracy z interfejsem API REST platformy Azure)](/rest/api/azure/)
+- [Rozpoczynanie pracy z interfejsem API REST platformy Azure](/rest/api/azure/)

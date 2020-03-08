@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3ec56d37ca2c0a199968707b3d93f4797be2beca
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888672"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376147"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory bezproblemowe logowanie jednokrotne: Szybki Start
 
@@ -115,7 +115,7 @@ Domyślnie przeglądarka automatycznie oblicza poprawną strefę, Internet lub i
 
 Istnieją dwa sposoby modyfikacji ustawień strefy intranetowej użytkowników:
 
-| Opcja | Zagadnienie dla administratorów | Czynności po stronie użytkownika |
+| Opcja | Zagadnienie dla administratorów | Środowisko użytkownika |
 | --- | --- | --- |
 | Zasady grupy | Administrator blokuje Edytowanie ustawień strefy intranetowej | Użytkownicy nie mogą modyfikować własnych ustawień |
 | Preferencja zasad grupy |  Administrator umożliwia edytowanie ustawień strefy intranetowej | Użytkownicy mogą modyfikować własne ustawienia |
@@ -140,7 +140,7 @@ Istnieją dwa sposoby modyfikacji ustawień strefy intranetowej użytkowników:
    > Aby uniemożliwić niektórym użytkownikom korzystanie z bezproblemowego logowania jednokrotnego (na przykład jeśli użytkownicy logują się do współużytkowanych kiosków), należy ustawić powyższe wartości na **4**. Ta akcja powoduje dodanie adresu URL usługi Azure AD do strefy z ograniczeniami i bezproblemowy dostęp do logowania jednokrotnego.
    >
 
-5. Wybierz przycisk **OK**, a następnie ponownie wybierz przycisk **OK**.
+5. Wybierz **przycisk OK**, a następnie ponownie wybierz przycisk **OK** .
 
     ![Logowanie jednokrotne](./media/how-to-connect-sso-quick-start/sso7.png)
 

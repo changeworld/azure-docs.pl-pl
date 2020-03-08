@@ -10,11 +10,11 @@ ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
 ms.openlocfilehash: b8b5de910195b14c279fe395cc35c12768536728
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981840"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365435"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Przechowywanie kluczowych dla działalności danych obiektów blob z niezmiennym magazynem
 
@@ -40,15 +40,15 @@ Niezmienny magazyn obsługuje następujące funkcje:
 
 - **[Pomoc techniczna dotycząca zasad wstrzymania](#legal-holds)** : Jeśli Interwał przechowywania nie jest znany, użytkownicy mogą ustawić blokady prawne na przechowywanie niemodyfikowalnych danych do momentu wyczyszczenia blokady prawnej.  W przypadku ustawienia zasad wstrzymania, obiekty blob można tworzyć i odczytywać, ale nie modyfikować ani usuwać. Każde wstrzymanie prawne jest skojarzone ze zdefiniowanym przez użytkownika tagiem alfanumerycznym (np. IDENTYFIKATORem przypadku, nazwą zdarzenia itp.), który jest używany jako ciąg identyfikatora. 
 
-- **Obsługa wszystkich warstw obiektów BLOB**: zasady dla robaków są niezależne od warstwy magazynu obiektów blob platformy Azure i są stosowane do wszystkich warstw: gorąca, chłodna i archiwalna. Użytkownicy mogą przesyłać dane do warstwy najbardziej zoptymalizowanej pod kątem ich obciążeń, jednocześnie gwarantując ich niezmienność.
+- **Obsługa wszystkich warstw obiektów BLOB**: zasady dla robaków są niezależne od warstwy magazynu obiektów blob platformy Azure i są stosowane do wszystkich warstw: gorąca, chłodna i archiwalna. Użytkownicy mogą przenosić dane do najbardziej zoptymalizowanej warstwy dla swoich obciążeń przy zachowaniu niezmienności danych.
 
-- **Konfiguracja na poziomie kontenera**: użytkownicy mogą konfigurować zasady przechowywania oparte na czasie i znaczniki prawne na poziomie kontenera. Dzięki korzystaniu z prostych ustawień na poziomie kontenera użytkownicy mogą tworzyć i blokować zasady przechowywania na podstawie czasu, wydłużać okresy przechowywania, ustawiać i usuwać stan archiwizacji ze względów prawnych itp. Te zasady są stosowane do wszystkich obiektów blob w kontenerze — zarówno istniejących, jak i nowych.
+- **Konfiguracja na poziomie kontenera**: użytkownicy mogą konfigurować zasady przechowywania oparte na czasie i znaczniki prawne na poziomie kontenera. Korzystając z prostych ustawień na poziomie kontenera, użytkownicy mogą tworzyć i blokować zasady przechowywania oparte na czasie, zwiększać interwały przechowywania, ustawiać i czyścić blokady prawne itd. Te zasady mają zastosowanie do wszystkich obiektów BLOB w kontenerze, zarówno istniejących, jak i nowych.
 
-- **Obsługa rejestrowania inspekcji**: Każdy kontener zawiera dziennik inspekcji zasad. Pokazuje do siedmiu poleceń przechowywania opartych na czasie dla zablokowanych zasad przechowywania opartych na czasie i zawiera identyfikator użytkownika, Typ polecenia, sygnatury czasowe i Interwał przechowywania. W przypadku archiwizacji ze względów prawnych dziennik zawiera identyfikator użytkownika, typ polecenia, znaczniki czasu oraz tagi archiwizacji ze względów prawnych. Ten dziennik jest zachowywany przez okres istnienia zasad, zgodnie z wytycznymi dotyczącymi przepisów w zakresie s 17a-4 (f). [Dziennik aktywności platformy Azure](../../azure-monitor/platform/platform-logs-overview.md) zawiera bardziej obszerny dziennik wszystkich działań płaszczyzny kontroli; podczas włączania [dzienników diagnostycznych platformy Azure](../../azure-monitor/platform/platform-logs-overview.md) są zachowywane i wyświetlane operacje płaszczyzny danych. Przechowywanie tych dzienników w sposób trwały, zgodnie z obowiązującymi wymogami prawnymi lub innymi, należy do obowiązków użytkownika.
+- **Obsługa rejestrowania inspekcji**: Każdy kontener zawiera dziennik inspekcji zasad. Pokazuje do siedmiu poleceń przechowywania opartych na czasie dla zablokowanych zasad przechowywania opartych na czasie i zawiera identyfikator użytkownika, Typ polecenia, sygnatury czasowe i Interwał przechowywania. W przypadku blokad prawnych dziennik zawiera identyfikator użytkownika, Typ polecenia, sygnatury czasowe i urzędowe znaczniki. Ten dziennik jest zachowywany przez okres istnienia zasad, zgodnie z wytycznymi dotyczącymi przepisów w zakresie s 17a-4 (f). [Dziennik aktywności platformy Azure](../../azure-monitor/platform/platform-logs-overview.md) zawiera bardziej obszerny dziennik wszystkich działań płaszczyzny kontroli; podczas włączania [dzienników diagnostycznych platformy Azure](../../azure-monitor/platform/platform-logs-overview.md) są zachowywane i wyświetlane operacje płaszczyzny danych. Użytkownik jest odpowiedzialny za trwałe przechowywanie dzienników, co może być wymagane do celów prawnych lub w innych celach.
 
-## <a name="how-it-works"></a>Zasady działania
+## <a name="how-it-works"></a>Jak to działa
 
-Funkcja magazynu niezmiennego w usłudze Azure Blob Storage obsługuje dwa rodzaje zasad WORM (nazywanych też zasadami magazynu niezmiennego): zasady przechowywania na podstawie czasu i zasady archiwizacji ze względów prawnych. Gdy zasady przechowywania oparte na czasie lub wstrzymanie prawne są stosowane w kontenerze, wszystkie istniejące obiekty blob są przenoszone do niezmiennego stanu ROBAKa w mniej niż 30 sekund. Wszystkie nowe obiekty blob przekazane do tego kontenera chronionego przez zasady również będą przenoszone do niezmiennego stanu. Gdy wszystkie obiekty blob są w niezmiennym stanie, niezmienne zasady są potwierdzane i wszelkie operacje zastępowania lub usuwania w niezmiennym kontenerze są niedozwolone.
+Niezmienny magazyn usługi Azure Blob Storage obsługuje dwa typy ROBAKów lub niemodyfikowalnych zasad: przechowywanie na podstawie czasu i informacje prawne. Gdy zasady przechowywania oparte na czasie lub wstrzymanie prawne są stosowane w kontenerze, wszystkie istniejące obiekty blob są przenoszone do niezmiennego stanu ROBAKa w mniej niż 30 sekund. Wszystkie nowe obiekty blob przekazane do tego kontenera chronionego przez zasady również będą przenoszone do niezmiennego stanu. Gdy wszystkie obiekty blob są w niezmiennym stanie, niezmienne zasady są potwierdzane i wszelkie operacje zastępowania lub usuwania w niezmiennym kontenerze są niedozwolone.
 
 Usunięcie kontenera i konta magazynu nie jest dozwolone, jeśli istnieją obiekty blob w kontenerze, które są chronione przez blokadę prawną lub zablokowanych zasad czasu. Zasady wstrzymania ochrony są chronione przed usunięciem obiektów blob, kontenerów i kont magazynu. Zarówno odblokowane, jak i zablokowane zasady oparte na czasie będą chronić przed usunięciem obiektów BLOB przez określony czas. Zarówno odblokowane, jak i zablokowane zasady oparte na czasie będą chronić przed usunięciem kontenera tylko wtedy, gdy istnieje co najmniej jeden obiekt BLOB w kontenerze. Tylko kontener z *zablokowanymi* zasadami opartymi na czasie będzie chronić przed usuwaniem kont magazynu; Kontenery z odblokowanymi zasadami dotyczącymi czasu nie oferują ochrony usuwania kont magazynu ani zgodności.
 
@@ -59,7 +59,7 @@ Aby uzyskać więcej informacji na temat sposobu ustawiania i blokowania zasad p
 > [!IMPORTANT]
 > Zasady przechowywania oparte na czasie muszą być *zablokowane* , aby obiekt BLOB był zgodny z niezmiennym (zapisem i usuwanie chronione) dla sek. 4 (f) i innych zgodności z przepisami. Zalecamy zablokowanie zasad w rozsądnym czasie, zwykle krótszym niż 24 godziny. Początkowy stan zastosowanych zasad przechowywania oparty na czasie jest *odblokowany*, co pozwala na testowanie funkcji i wprowadzanie zmian zasad przed ich zablokowaniem. Gdy *odblokowany* stan zapewnia ochronę niezmienności, nie zalecamy używania *niezablokowanego* stanu do celów innych niż krótkoterminowe wersje próbne funkcji. 
 
-Gdy zasady przechowywania oparte na czasie są stosowane w kontenerze, wszystkie obiekty blob w kontenerze pozostaną w niezmiennym stanie przez okres *obowiązywania obowiązującego* okresu przechowywania. Obowiązujący okres przechowywania obiektów BLOB jest równy różnicy między **czasem utworzenia** obiektu BLOB a interwałem przechowywania określonym przez użytkownika. Ponieważ użytkownicy mogą rozszerzać okres przechowywania, na potrzeby obliczania obowiązującego okresu przechowywania magazyn niezmienny korzysta z ostatniej wartości okresu przechowywania ustawionej przez użytkownika.
+Gdy zasady przechowywania oparte na czasie są stosowane w kontenerze, wszystkie obiekty blob w kontenerze pozostaną w niezmiennym stanie przez okres *obowiązywania obowiązującego* okresu przechowywania. Obowiązujący okres przechowywania obiektów BLOB jest równy różnicy między **czasem utworzenia** obiektu BLOB a interwałem przechowywania określonym przez użytkownika. Ponieważ użytkownicy mogą zwiększyć Interwał przechowywania, niezmienny magazyn używa najnowszej wartości interwału przechowywania określonego przez użytkownika, aby obliczyć obowiązujący okres przechowywania.
 
 Załóżmy na przykład, że użytkownik tworzy zasady przechowywania oparte na czasie z interwałem przechowywania równym pięciu lat. Istniejący obiekt BLOB w tym kontenerze, _testblob1_, został utworzony jeden rok temu; w związku z tym obowiązuje okres przechowywania dla _testblob1_ wynosi cztery lata. Po przekazaniu nowego obiektu BLOB _testblob2_do kontenera obowiązuje okres przechowywania dla _testblob2_ wynosi pięć lat od momentu jego utworzenia.
 
@@ -98,7 +98,7 @@ Zasady wstrzymania prawnego nie mogą włączać `allowProtectedAppendWrites` i 
 
 Z przyczyn prawnych są tymczasowe, które mogą być używane do celów badania prawnego lub ogólnych zasad ochrony. Każda z zasad blokady prawnej musi być skojarzona z co najmniej jednym tagiem. Tagi są używane jako nazwane identyfikatory, takie jak identyfikator przypadku lub zdarzenie, do kategoryzowania i opisywania celu wstrzymania.
 
-Kontener może jednocześnie mieć zarówno dozwoloną blokadę, jak i zasady przechowywania oparte na czasie. Wszystkie obiekty blob w tym kontenerze pozostają w stanie niezmiennym do momentu usunięcia stanu archiwizacji ze względów prawnych nawet po upływie obowiązującego okresu przechowywania. I odwrotnie — obiekty blob pozostają w stanie niezmiennym przez cały obowiązujący okres przechowywania nawet po usunięciu stanu archiwizacji ze względów prawnych.
+Kontener może jednocześnie mieć zarówno dozwoloną blokadę, jak i zasady przechowywania oparte na czasie. Wszystkie obiekty blob w tym kontenerze pozostają w stanie niezmiennym, dopóki nie zostaną wyczyszczone wszystkie prawne, nawet jeśli ich obowiązujący okres przechowywania wygasł. Z kolei obiekt BLOB pozostaje w niezmiennym stanie do momentu wygaśnięcia obowiązujących okresów przechowywania, mimo że wszystkie blokady prawne zostały wyczyszczone.
 
 Następujące ograniczenia mają zastosowanie do posiadanych przepisów prawnych:
 
@@ -114,13 +114,13 @@ W poniższej tabeli przedstawiono typy operacji magazynu obiektów blob, które 
 |---------|---------|---------|---------|
 |Trwa obowiązujący okres przechowywania obiektu blob i/lub ustawiono stan archiwizacji ze względów prawnych     |Niezmienny: ochrona przed usuwaniem i zapisem         | Put obiekt BLOB<sup>1</sup>, Put blok<sup>1</sup>, Put lista zablokowanych<sup>1</sup>, usuwanie kontenera, usuwanie obiektu BLOB, Ustawianie metadanych obiektów blob, umieszczanie strony, Ustawianie właściwości obiektów blob, obiekt BLOB kopiowania przyrostowego, Dodawanie bloku<sup>2</sup>         |Odmowa usunięcia kontenera; Odmowa usunięcia konta magazynu         |
 |Obowiązujący Interwał przechowywania w obiekcie blob wygasł i nie ustawiono blokady prawnej    |Ochrona tylko przed zapisem (operacje usuwania są dozwolone)         |Put obiekt BLOB<sup>1</sup>, Put blok<sup>1</sup>, Put Block list<sup>1</sup>, Set Metadata BLOB, Put Page, Set BLOB Properties, Snapshot BLOB, obiekt BLOB Copy, Append Block<sup>2</sup>         |Odmowa usuwania kontenera, jeśli w chronionym kontenerze istnieje co najmniej 1 obiekt BLOB; Odmowa usuwania konta magazynu tylko dla *zablokowanych* zasad czasu         |
-|Nie zastosowano żadnych zasad ROBAKów (przechowywanie na podstawie czasu i brak tagu blokady dozwolone)     |Modyfikowalny         |Brak         |Brak         |
+|Nie zastosowano żadnych zasad ROBAKów (przechowywanie na podstawie czasu i brak tagu blokady dozwolone)     |Modyfikowalny         |None         |None         |
 
 <sup>1</sup> usługa BLOB umożliwia wykonywanie tych operacji w celu utworzenia nowego obiektu BLOB raz. Wszystkie kolejne operacje zastępowania w istniejącej ścieżce obiektu BLOB w niezmiennym kontenerze są niedozwolone.
 
 <sup>2</sup> blok Append jest dozwolony tylko dla zasad przechowywania opartych na czasie z włączoną właściwością `allowProtectedAppendWrites`. Aby uzyskać więcej informacji, zobacz sekcję [Zezwalaj na chronione Dodawanie obiektów BLOB](#allow-protected-append-blobs-writes) .
 
-## <a name="pricing"></a>Cennik
+## <a name="pricing"></a>Ceny
 
 Za korzystanie z tej funkcji nie są naliczane dodatkowe opłaty. Zmienne dane są wyceniane w taki sam sposób jak dane modyfikowalne. Aby uzyskać szczegółowe informacje o cenach usługi Azure Blob Storage, zobacz [stronę z cennikiem usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
@@ -140,7 +140,7 @@ Nie. możesz użyć niezmiennego magazynu z wszelkimi istniejącymi lub nowo utw
 
 **Czy mogę zastosować zasady przechowywania zarówno z przyczyn prawnych, jak i czasu?**
 
-Tak. kontener może jednocześnie mieć zarówno dozwoloną blokadę, jak i zasady przechowywania oparte na czasie. Wszystkie obiekty blob w tym kontenerze pozostają w stanie niezmiennym do momentu usunięcia stanu archiwizacji ze względów prawnych nawet po upływie obowiązującego okresu przechowywania. I odwrotnie — obiekty blob pozostają w stanie niezmiennym przez cały obowiązujący okres przechowywania nawet po usunięciu stanu archiwizacji ze względów prawnych.
+Tak. kontener może jednocześnie mieć zarówno dozwoloną blokadę, jak i zasady przechowywania oparte na czasie. Wszystkie obiekty blob w tym kontenerze pozostają w stanie niezmiennym, dopóki nie zostaną wyczyszczone wszystkie prawne, nawet jeśli ich obowiązujący okres przechowywania wygasł. Z kolei obiekt BLOB pozostaje w niezmiennym stanie do momentu wygaśnięcia obowiązujących okresów przechowywania, mimo że wszystkie blokady prawne zostały wyczyszczone.
 
 **Czy zasady są dozwolone tylko w przypadku postępowania sądowego lub czy istnieją inne scenariusze użycia?**
 

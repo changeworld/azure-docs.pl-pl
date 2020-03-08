@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: alkohli
 ms.openlocfilehash: f32f8925bca33d90afa48071d0c0944ba63861cd
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278843"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381869"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>Zarządzanie woluminami (Aktualizacja Update 3 lub nowsza) za pomocą usługi StorSimple Menedżer urządzeń
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tym samouczku wyjaśniono, jak używać usługi StorSimple Menedżer urządzeń do tworzenia woluminów i zarządzania nimi na urządzeniach z serii StorSimple 8000 z aktualizacją Update 3 lub nowszą.
 
@@ -47,7 +47,7 @@ Woluminy warstwowe to woluminy alokowane elastycznie, w których często używan
 Jeśli używasz woluminu warstwowego dla danych archiwalnych, zaznacz pole wyboru **Użyj tego woluminu dla rzadziej używanych danych archiwalnych** , aby zmienić rozmiar fragmentu deduplikacji dla woluminu na 512 KB. Jeśli nie wybierzesz tej opcji, odpowiedni wolumin warstwowy użyje rozmiaru fragmentu wynoszącego 64 KB. Większy rozmiar fragmentu deduplikacji umożliwia urządzeniu usprawnienie transferu dużej ilości danych archiwalnych w chmurze.
 
 
-### <a name="provisioned-capacity"></a>Aprowizowana pojemność
+### <a name="provisioned-capacity"></a>Przyobsługiwana pojemność
 
 Zapoznaj się z poniższą tabelą dotyczącą maksymalnej alokowanej pojemności dla każdego typu urządzenia i woluminu. (Należy zauważyć, że woluminy przypięte lokalnie nie są dostępne na urządzeniu wirtualnym).
 
@@ -57,8 +57,8 @@ Zapoznaj się z poniższą tabelą dotyczącą maksymalnej alokowanej pojemnośc
 | 8100 |64 TB |8 TB |
 | 8600 |64 TB |20 TB |
 | **Urządzenia wirtualne** | | |
-| 8010 |30 TB |ND |
-| 8020 |64 TB |ND |
+| 8010 |30 TB |Nie dotyczy |
+| 8020 |64 TB |Nie dotyczy |
 
 ## <a name="the-volumes-blade"></a>Blok woluminy
 
@@ -157,7 +157,7 @@ Należy zmodyfikować wolumin, gdy trzeba go rozszerzyć lub zmienić hosty, kt�
 
        ![Przejrzyj wpływ przełączenia woluminu w tryb offline](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
 
-5. Kliknij przycisk **Zapisz** Aby zapisać zmiany. Po wyświetleniu monitu o potwierdzenie kliknij przycisk **Tak**. W Azure Portal zostanie wyświetlony komunikat o aktualizowaniu woluminu. Po pomyślnym zaktualizowaniu woluminu zostanie wyświetlony komunikat o powodzeniu.
+5. Kliknij przycisk **Zapisz** , aby zapisać zmiany. Po wyświetleniu monitu o potwierdzenie kliknij przycisk **Tak**. W Azure Portal zostanie wyświetlony komunikat o aktualizowaniu woluminu. Po pomyślnym zaktualizowaniu woluminu zostanie wyświetlony komunikat o powodzeniu.
 
     ![Przejrzyj wpływ przełączenia woluminu w tryb offline](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
 

@@ -15,11 +15,11 @@ ms.date: 08/13/2019
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: c8a78acfa1f3e7332cee337ae1a82ee365fe356a
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022974"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358373"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Limity przydziału i limity usługi Batch
 
@@ -27,7 +27,7 @@ Podobnie jak w przypadku innych usług platformy Azure, istnieją ograniczenia d
 
 Te przydziały należy uwzględnić podczas projektowania i skalowania obciążeń związanych z przetwarzaniem wsadowym. Na przykład jeśli Pula nie osiągnie docelowej liczby węzłów obliczeniowych, być może osiągnięto limit przydziału rdzeni dla konta usługi Batch.
 
-Można uruchomić wiele obciążeń usługi Batch na jednym koncie usługi Batch lub rozdzielić obciążenia pomiędzy konta tej usługi znajdujące się w jednej subskrypcji, ale różnych regionach świadczenia usługi Azure.
+Można uruchomić wiele obciążeń usługi Batch na jednym koncie usługi Batch lub rozdzielić obciążenia między konta tej usługi znajdujące się w jednej subskrypcji, ale w różnych regionach usługi Azure.
 
 Jeśli planujesz uruchamianie obciążeń produkcyjnych w usłudze Batch, może być konieczne zwiększenie co najmniej jednego przydziału powyżej wartości domyślnej. Jeśli chcesz podnieść limit przydziału, możesz bezpłatnie otworzyć [żądanie obsługi klienta](#increase-a-quota) w trybie online.
 
@@ -97,11 +97,11 @@ Wykonaj następujące kroki, aby zażądać zwiększenia przydziału dla konta u
    
     b. Wybierz subskrypcję.
    
-    d. **Typ przydziału** > **Partia zadań**
+    c. **Typ przydziału** > **Partia zadań**
       
     Wybierz opcję **Dalej**.
     
-1. W **szczegóły**:
+1. W obszarze **Szczegóły**:
       
     a. W obszarze **Podaj szczegóły**Określ lokalizację, typ przydziału i konto w usłudze Batch.
     

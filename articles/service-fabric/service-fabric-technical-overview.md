@@ -7,11 +7,11 @@ ms.date: 09/17/2018
 ms.author: masnider
 ms.custom: sfrev
 ms.openlocfilehash: a9266c2a8d2ad179cfdb12e367a14f37d1abc9b3
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76024890"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389191"
 ---
 # <a name="service-fabric-terminology-overview"></a>Przegląd terminologii Service Fabric
 
@@ -164,14 +164,14 @@ Różne środowiska mają różne poziomy obsługi dla struktur i modeli wdraża
 
 | Typ aplikacji | Opisane przez | Azure Service Fabric Mesh | Klastry usługi Azure Service Fabric (każdy system operacyjny)| Klaster lokalny | Klaster autonomiczny |
 |---|---|---|---|---|---|
-| Aplikacje siatki Service Fabric | Model zasobów (YAML & JSON) | Obsługiwane |Brak obsługi | Windows — obsługiwane, Linux i Mac — nieobsługiwane | Windows — nieobsługiwane |
+| Aplikacje siatki Service Fabric | Model zasobów (YAML & JSON) | Obsługiwane |Nieobsługiwane | Windows — obsługiwane, Linux i Mac — nieobsługiwane | Windows — nieobsługiwane |
 |Aplikacje natywne Service Fabric | Natywny model aplikacji (XML) | Nieobsługiwane| Obsługiwane|Obsługiwane|Windows — obsługiwane|
 
 W poniższej tabeli opisano różne modele aplikacji i narzędzia, które istnieją dla nich w odniesieniu do Service Fabric.
 
 | Typ aplikacji | Opisane przez | Visual Studio | Eclipse | SFCTL | AZ CLI | PowerShell|
 |---|---|---|---|---|---|---|
-| Aplikacje siatki Service Fabric | Model zasobów (YAML & JSON) | VS 2017 |Brak obsługi |Brak obsługi | Tylko obsługiwane środowisko siatki | Nieobsługiwane|
+| Aplikacje siatki Service Fabric | Model zasobów (YAML & JSON) | VS 2017 |Nieobsługiwane |Nieobsługiwane | Tylko obsługiwane środowisko siatki | Nieobsługiwane|
 |Aplikacje natywne Service Fabric | Natywny model aplikacji (XML) | VS 2017 i VS 2015| Obsługiwane|Obsługiwane|Obsługiwane|Obsługiwane|
 
 ## <a name="next-steps"></a>Następne kroki

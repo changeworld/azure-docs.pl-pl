@@ -6,17 +6,17 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: dcdc338bdcdb2c04f6b8894ccb358bc773b95c07
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551764"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365083"
 ---
 # <a name="azure-service-fabric-security"></a>Zabezpieczenia usługi Azure Service Fabric 
 
 Aby uzyskać więcej informacji na temat najlepszych rozwiązań dotyczących [zabezpieczeń platformy Azure](https://docs.microsoft.com/azure/security/), zobacz [najlepsze rozwiązania dotyczące usługi Azure Service Fabric Security](https://docs.microsoft.com/azure/security/fundamentals/service-fabric-best-practices)
 
-## <a name="key-vault"></a>Magazyn kluczy
+## <a name="key-vault"></a>Usługa Key Vault
 
 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) to zalecana usługa zarządzania kluczami tajnymi dla aplikacji i klastrów usługi Azure Service Fabric.
 > [!NOTE]

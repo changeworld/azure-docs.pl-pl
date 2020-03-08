@@ -1,5 +1,5 @@
 ---
-title: Samouczek, aby skopiować dane do usługi Azure Data Box za pomocą systemu plików NFS | Dokumentacja firmy Microsoft
+title: Samouczek do kopiowania danych do Azure Data Box za pomocą systemu plików NFS | Microsoft Docs
 description: Dowiedz się, jak skopiować dane na urządzenie Azure Data Box za pośrednictwem systemu plików NFS
 services: databox
 author: alkohli
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 06/25/2019
 ms.author: alkohli
 ms.openlocfilehash: c74ed93383ea880900a5428a6f24b5b44a3ff135
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443148"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380179"
 ---
-# <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Samouczek: Kopiowanie danych na urządzenie Azure Data Box Disk przy użyciu systemu plików NFS
+# <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Samouczek: kopiowanie danych do Azure Data Box za pośrednictwem systemu plików NFS
 
 W tym samouczku opisano sposób nawiązywania połączenia i kopiowania danych z komputera-hosta za pomocą lokalnego internetowego interfejsu użytkownika.
 
@@ -30,7 +30,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 Przed rozpoczęciem upewnij się, że:
 
-1. Ukończono [Samouczek: konfigurowanie usługi Azure Data Box](data-box-deploy-set-up.md).
+1. Ukończono [samouczek dotyczący konfigurowania urządzenia Azure Data Box](data-box-deploy-set-up.md).
 2. Urządzenie Data Box zostało do Ciebie dostarczone, a stan zamówienia w portalu to **Dostarczono**.
 3. Masz komputer-host zawierający dane, które mają zostać skopiowane na urządzenie Data Box. Na komputerze hosta wymagane jest:
     - Korzystanie z [obsługiwanego systemu operacyjnego](data-box-system-requirements.md).
@@ -40,8 +40,8 @@ Przed rozpoczęciem upewnij się, że:
 
 W zależności od wybranego konta magazynu dla urządzenia Data Box są tworzone następujące elementy:
 - Maksymalnie trzy udziały dla każdego skojarzonego konta magazynu (GPv1 i GPv2).
-- Jeden udział dla usługi premium storage. 
-- Jeden udział dla konta usługi blob storage. 
+- Jeden udział w usłudze Premium Storage. 
+- Jeden udział dla konta magazynu obiektów blob. 
 
 W obszarze udziałów blokowych obiektów blob i stronicowych obiektów blob jednostki pierwszego poziomu są kontenerami, a jednostki drugiego poziomu są obiektami blob. W obszarze udziałów dla usługi Azure Files jednostki pierwszego poziomu są udziałami, a jednostki drugiego poziomu są plikami.
 
@@ -88,11 +88,11 @@ Po nawiązaniu połączenia z udziałami urządzenia Data Box następnym krokiem
 - Jeśli dane przekazywane przy użyciu urządzenia Data Box będą jednocześnie przekazywane przez inne aplikacje, poza urządzeniem Data Box, skutkiem może być niepowodzenie zadania przekazywania oraz uszkodzenie danych.
 - Nie zaleca się jednoczesnego używania protokołu SMB i sieciowego systemu plików ani kopiowania tych samych danych do tego samego końcowego miejsca docelowego na platformie Azure. W takich przypadkach nie można określić ostatecznego wyniku.
 - **Zawsze należy utworzyć w udziale folder na pliki, które chcesz skopiować, a następnie skopiować pliki do tego folderu**. Folder utworzony w ramach udziałów blokowych obiektów blob i stronicowych obiektów blob reprezentuje kontener, do którego dane są przekazywane w postaci obiektów blob. Plików nie można kopiować bezpośrednio do folderu *głównego* na koncie magazynu.
-- Jeśli wprowadzane uwzględniana wielkość liter nazwy katalogów i plików z udziału NFS do systemu plików NFS na urządzenie Data Box: 
-    - Wymagane są zachowywane w nazwie.
-    - Pliki jest rozróżniana wielkość liter.
+- W przypadku pozyskania nazw plików z uwzględnieniem wielkości liter i katalogów z udziału NFS do systemu plików NFS na urządzenie Data Box: 
+    - Wielkość liter jest zachowywana w nazwie.
+    - W plikach nie jest rozróżniana wielkość liter.
     
-    Na przykład, jeśli kopiowanie `SampleFile.txt` i `Samplefile.Txt`, przypadku zostaną zachowane w nazwie podczas kopiowania do urządzenia Data Box, ale drugiego pliku spowoduje zastąpienie pierwszy z nich, ponieważ są one traktowane jako ten sam plik.
+    Na przykład w przypadku kopiowania `SampleFile.txt` i `Samplefile.Txt`, wielkość liter zostanie zachowana w nazwie podczas kopiowania do urządzenie Data Box, ale drugi plik zastąpi pierwsze, ponieważ są one uznawane za ten sam plik.
 
 
 Jeśli korzystasz z komputera-hosta z systemem Linux, użyj narzędzia do kopiowania podobnego do narzędzia Robocopy. W systemie Linux są dostępne na przykład narzędzia [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) lub [Ultracopier](https://ultracopier.first-world.info/).  
@@ -134,16 +134,16 @@ W przypadku korzystania z opcji rsync na potrzeby kopiowania wielowątkowego nal
      Na początku zaleca się użycie 16 równoległych kopii i zwiększanie liczby wątków w zależności od dostępności zasobów.
 
 > [!IMPORTANT]
-> Nie są obsługiwane następujące typy plików systemu Linux: łącza symbolicznego, pliki znak, blokowanie plików, gniazda i potoków. Następujące typy plików będą powodować błędy podczas **przygotowywanie do wysłania** kroku.
+> Następujące typy plików systemu Linux nie są obsługiwane: linki symboliczne, pliki znaków, pliki blokowe, gniazda i potoki. Te typy plików spowodują błędy podczas kroku **przygotowanie do wysłania** .
 
-Otwórz folder docelowy, aby wyświetlić i zweryfikować skopiowane pliki. Jeśli podczas procesu kopiowania wystąpiły jakiekolwiek błędy, pobierz pliki z błędami, które pomogą w rozwiązywaniu problemów. Aby uzyskać więcej informacji, zobacz [wyświetlić dzienniki błędów podczas kopiowania danych do urządzenia Data Box](data-box-logs.md#view-error-log-during-data-copy). Aby uzyskać szczegółową listę błędów podczas kopiowania danych, zobacz [wystawia Rozwiązywanie problemów z urządzenia Data Box](data-box-troubleshoot.md).
+Otwórz folder docelowy, aby wyświetlić i zweryfikować skopiowane pliki. Jeśli podczas procesu kopiowania wystąpiły jakiekolwiek błędy, pobierz pliki z błędami, które pomogą w rozwiązywaniu problemów. Aby uzyskać więcej informacji, zobacz [Wyświetlanie dzienników błędów podczas kopiowania danych na urządzenie Data Box](data-box-logs.md#view-error-log-during-data-copy). Aby uzyskać szczegółową listę błędów występujących podczas kopiowania danych, zobacz [Rozwiązywanie problemów z urządzeniem Data Box](data-box-troubleshoot.md).
 
 W celu zapewnienia integralności danych podczas kopiowania obliczana jest suma kontrolna. Po zakończeniu kopiowania sprawdź ilość używanego i wolnego miejsca na urządzeniu.
     
    ![Sprawdzanie wolnego i używanego miejsca na pulpicie nawigacyjnym](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono zagadnienia dotyczące usługi Azure Data Box, takie jak:
 

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
 ms.openlocfilehash: b224de96f6b6baedc3b57e0245a4c4e8748576b4
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76767735"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78344110"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub język zapytań dla urządzeń i modułów bliźniaczych reprezentacji, zadań i routingu komunikatów
 
@@ -328,7 +328,7 @@ SELECT <select_list>
 
 Klauzula **from < from_specification >** może przyjmować tylko trzy wartości: **od urządzeń** do wykonywania zapytań dotyczących urządzeń bliźniaczych reprezentacji, **od urządzeń. modułów** w celu wysyłania zapytań do modułu bliźniaczych reprezentacji lub **z Devices.Jobs** w celu wykonywania zapytań dotyczących poszczególnych urządzeń.
 
-## <a name="where-clause"></a>Klauzula WHERE
+## <a name="where-clause"></a>WHERE — Klauzula
 
 Klauzula **where < filter_condition >** jest opcjonalna. Określa jeden lub więcej warunków, które dokumenty JSON w kolekcji FROM muszą spełniać, aby były uwzględniane jako część wyniku. Każdy dokument JSON musi oszacować określone warunki do wartości "true", aby można je było uwzględnić w wyniku.
 
@@ -453,7 +453,7 @@ Obsługiwane są następujące operatory:
 | Logiczny |AND, OR, NOT |
 | Porównanie |=, !=, <, >, <=, >=, <> |
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>Funkcje
 
 Podczas wykonywania zapytania dotyczącego bliźniaczych reprezentacji i zadań jedyną obsługiwaną funkcją jest:
 

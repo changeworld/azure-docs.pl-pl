@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 2af887f529d57052d8b729fa1a613e8eeb9003ea
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 21e35afc72aa9824baa1076abe0e767ce4935c28
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228291"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391115"
 ---
 # <a name="virtual-network-service-tags"></a>Tagi usługi sieci wirtualnej
 <a name="network-service-tags"></a>
@@ -52,7 +52,7 @@ Domyślnie Tagi usług odzwierciedlają zakresy dla całej chmury. Niektóre Tag
 | **AzureBackup** |Azure Backup.<br/><br/>*Uwaga:* Ten tag ma zależność od tagów **Storage** i **usługi azureactivedirectory** . | Wychodzący | Nie | Yes |
 | **AzureBotService** | Azure Bot Service. | Wychodzący | Nie | Nie |
 | **AzureCloud** | Wszystkie [publiczne adresy IP centrum](https://www.microsoft.com/download/details.aspx?id=56519)danych. | Wychodzący | Yes | Yes |
-| **AzureCognitiveSearch** | Wyszukiwanie poznawcze platformy Azure. <br/><br/>Ten tag lub adresy IP objęte tym tagiem mogą służyć do przyznawania indeksatorów bezpiecznego dostępu do źródeł danych. Aby uzyskać więcej informacji, zapoznaj się z [dokumentacją dotyczącą połączenia indeksatora](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting#connection-errors) . | Przychodzący | Nie | Nie |
+| **AzureCognitiveSearch** | Wyszukiwanie poznawcze platformy Azure. <br/><br/>Ten tag lub adresy IP objęte tym tagiem mogą służyć do przyznawania indeksatorów bezpiecznego dostępu do źródeł danych. Aby uzyskać więcej informacji, zapoznaj się z [dokumentacją dotyczącą połączenia indeksatora](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting#connection-errors) . <br/><br/> *Uwaga*: adres IP usługi wyszukiwania nie jest uwzględniony na liście zakresów adresów IP dla tego tagu usługi, a **także należy dodać** do zapory IP źródeł danych. | Przychodzący | Nie | Nie |
 | **AzureConnectors** | Azure Logic Apps łączniki dla połączeń sondy/zaplecza. | Przychodzący | Yes | Yes |
 | **AzureContainerRegistry** | Azure Container Registry. | Wychodzący | Yes | Yes |
 | **AzureCosmosDB** | Azure Cosmos DB. | Wychodzący | Yes | Yes |

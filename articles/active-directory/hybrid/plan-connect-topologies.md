@@ -1,5 +1,5 @@
 ---
-title: 'Program Azure AD Connect: Obsługiwane topologie | Microsoft Docs'
+title: 'Azure AD Connect: obsługiwane topologie | Microsoft Docs'
 description: W tym temacie opisano obsługiwane i nieobsługiwane topologie dla Azure AD Connect
 services: active-directory
 documentationcenter: ''
@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9618e02f54fbb2a3b92771761c5fcf700d126b5c
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275213"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375958"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologie obsługiwane w programie Azure AD Connect
 W tym artykule opisano różne topologie lokalne i Azure Active Directory (Azure AD), które używają Azure AD Connect synchronizacji jako rozwiązania integracji z kluczami. Ten artykuł zawiera obsługiwane i nieobsługiwane konfiguracje.
@@ -37,12 +37,12 @@ Oto legenda obrazów w artykule:
 | Serwer synchronizacji Azure AD Connect "tryb przejściowy" |![Serwer synchronizacji Azure AD Connect "tryb przejściowy"](./media/plan-connect-topologies/LegendSync2.png) |
 | GALSync z programem Forefront Identity Manager (FIM) 2010 lub Microsoft Identity Manager (MIM) 2016 |![GALSync z programem FIM 2010 lub MIM 2016](./media/plan-connect-topologies/LegendSync3.png) |
 | Serwer synchronizacji Azure AD Connect, szczegółowy |![Serwer synchronizacji Azure AD Connect, szczegółowy](./media/plan-connect-topologies/LegendSync4.png) |
-| Azure AD |![Usługa Azure Active Directory](./media/plan-connect-topologies/LegendAAD.png) |
+| Azure AD |![Azure Active Directory](./media/plan-connect-topologies/LegendAAD.png) |
 | Nieobsługiwany scenariusz |![Nieobsługiwany scenariusz](./media/plan-connect-topologies/LegendUnsupported.png) |
 
 
 > [!IMPORTANT]
-> Firma Microsoft nie obsługuje modyfikowania ani działania Azure AD Connect synchronizacji poza konfiguracją lub akcjami, które są formalnie udokumentowane. Wszystkie te konfiguracje i akcje mogą spowodować niespójny lub nieobsługiwany stan Azure AD Connect synchronizacji. W związku z tym firma Microsoft nie może świadczyć pomocy technicznej w przypadku takich wdrożeń.
+> Firma Microsoft nie obsługuje modyfikowania ani działania Azure AD Connect synchronizacji poza konfiguracją lub akcjami, które są formalnie udokumentowane. Wszystkie te konfiguracje i akcje mogą spowodować niespójny lub nieobsługiwany stan Azure AD Connect synchronizacji. W związku z tym firma Microsoft nie może zapewnić pomocy technicznej dotyczącej takich wdrożeń.
 
 
 ## <a name="single-forest-single-azure-ad-tenant"></a>Pojedynczy las, pojedyncza dzierżawa usługi Azure AD

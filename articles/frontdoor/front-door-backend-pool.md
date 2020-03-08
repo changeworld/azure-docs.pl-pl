@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: b764799d3f40cef24a0412ac950026af650d4ec7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229031"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382106"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door-service"></a>Frontony i pule zaplecza w usłudze Azure front-drzwi
 W tym artykule opisano koncepcje dotyczące mapowania wdrożenia aplikacji za pomocą usługi Azure front-drzwi. Objaśniono w nim również różne terminy związane z konfiguracją drzwi przed końcami aplikacji.

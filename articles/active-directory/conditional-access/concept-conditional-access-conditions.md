@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dff80d849268c770e4227ff8c99b8f4d133c4d78
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: b9e6d2d6cf602bca74c8899586eef0a8108fde3c
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620730"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78892986"
 ---
 # <a name="conditional-access-conditions"></a>Dostęp warunkowy: warunki
 
@@ -72,7 +72,7 @@ Zasady dostępu warunkowego są domyślnie stosowane do aplikacji i aplikacji op
       - Ta opcja obejmuje klientów korzystających z protokołów uwierzytelniania Basic/starszej, które nie obsługują nowoczesnego uwierzytelniania.
          - Uwierzytelniony protokół SMTP używany przez klienta POP i IMAP do wysyłania wiadomości e-mail.
          - Wykrywanie automatyczne — używane przez klientów programu Outlook i EAS do znajdowania skrzynek pocztowych w usłudze Exchange Online i łączenia się z nimi.
-         - Exchange Online PowerShell — służy do łączenia się z usługą Exchange Online przy użyciu zdalnego programu PowerShell. Jeśli zablokujesz uwierzytelnianie podstawowe dla programu Exchange Online PowerShell, musisz użyć modułu programu PowerShell w usłudze Exchange Online, aby nawiązać połączenie. Aby uzyskać instrukcje, zobacz [nawiązywanie połączenia z programem Exchange Online PowerShell przy użyciu uwierzytelniania wieloskładnikowego](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).
+         - Exchange Online PowerShell — służy do łączenia się z usługą Exchange Online przy użyciu zdalnego programu PowerShell. Jeśli zablokujesz uwierzytelnianie podstawowe dla programu Exchange Online PowerShell, musisz użyć modułu programu PowerShell w usłudze Exchange Online, aby nawiązać połączenie. Aby uzyskać instrukcje, zobacz [nawiązywanie połączenia z programem Exchange Online PowerShell przy użyciu uwierzytelniania wieloskładnikowego](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).
          - Usługi sieci Web programu Exchange (EWS) — interfejs programowania używany przez program Outlook, program Outlook dla komputerów Mac i aplikacje innych firm.
          - IMAP4 — używany przez klientów poczty e-mail IMAP.
          - MAPI przez HTTP (MAPI/HTTP) — używany przez program Outlook 2010 i nowsze.
@@ -142,8 +142,8 @@ To ustawienie ma wpływ na próby dostępu wykonane z następujących aplikacji 
 | Aplikacja poczty/kalendarza/osoby, Outlook 2016, Outlook 2013 (z nowoczesnego uwierzytelniania)| Office 365 Exchange Online | Windows 10 |
 | Zasady usługi MFA i lokalizacji dla aplikacji. Zasady oparte na urządzeniach nie są obsługiwane.| Wszystkie aplikacje my App Service | Systemy Android i iOS |
 | Usługi Microsoft Teams — kontroluje wszystkie usługi obsługujące Microsoft Teams i wszystkie jej aplikacje klienckie — Windows Desktop, iOS, Android, WP i klient sieci Web | Microsoft Teams | Windows 10, Windows 8.1, Windows 7, iOS, Android i macOS |
-| Aplikacje pakietu Office 2016, pakiet Office 2013 (z nowoczesnego uwierzytelniania), [klient synchronizacji usługi OneDrive](https://docs.microsoft.com/onedrive/enable-conditional-access) | Pakiet Office 365 SharePoint Online | Windows 8.1, Windows 7 |
-| Aplikacje pakietu Office 2016, uniwersalne aplikacje biurowe, Office 2013 (z nowoczesnego uwierzytelniania), [klient synchronizacji usługi OneDrive](https://docs.microsoft.com/onedrive/enable-conditional-access) | Pakiet Office 365 SharePoint Online | Windows 10 |
+| Aplikacje pakietu Office 2016, pakiet Office 2013 (z nowoczesnego uwierzytelniania), [klient synchronizacji usługi OneDrive](/onedrive/enable-conditional-access) | Pakiet Office 365 SharePoint Online | Windows 8.1, Windows 7 |
+| Aplikacje pakietu Office 2016, uniwersalne aplikacje biurowe, Office 2013 (z nowoczesnego uwierzytelniania), [klient synchronizacji usługi OneDrive](/onedrive/enable-conditional-access) | Pakiet Office 365 SharePoint Online | Windows 10 |
 | Office 2016 (Word, Excel, PowerPoint, tylko OneNote). | Pakiet Office 365 SharePoint Online | macOS |
 | Pakiet Office 2019| Pakiet Office 365 SharePoint Online | Windows 10, macOS |
 | Aplikacje mobilne pakietu Office | Pakiet Office 365 SharePoint Online | Android, iOS |

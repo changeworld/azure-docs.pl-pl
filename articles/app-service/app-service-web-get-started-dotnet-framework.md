@@ -6,11 +6,11 @@ ms.topic: quickstart
 ms.date: 10/21/2019
 ms.custom: seodec18
 ms.openlocfilehash: f2e31723dc2761007994f652d9d6c28ab3f7d47d
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671405"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388200"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>Tworzenie aplikacji internetowej środowiska ASP.NET Framework na platformie Azure
 
@@ -66,7 +66,7 @@ Utwórz aplikację internetową ASP.NET, wykonując następujące czynności:
    >
    >
 
-   ![Zaloguj się w usłudze Azure](./media/app-service-web-get-started-dotnet-framework/sign-in-azure-framework-vs2019.png)
+   ![Logowanie do platformy Azure](./media/app-service-web-get-started-dotnet-framework/sign-in-azure-framework-vs2019.png)
 
    [!INCLUDE [resource group intro text](../../includes/resource-group.md)]
 
@@ -84,7 +84,7 @@ Utwórz aplikację internetową ASP.NET, wykonując następujące czynności:
    |-|-|-|
    |Plan usługi App Service| myAppServicePlan | Nazwa planu usługi App Service. |
    | Lokalizacja | Europa Zachodnia | Centrum danych, w którym hostowana jest aplikacja internetowa. |
-   | Rozmiar | Bezpłatnie | [Warstwa cenowa](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) określa funkcje hostowania. |
+   | Rozmiar | Bezpłatna | [Warstwa cenowa](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) określa funkcje hostowania. |
 
    ![Tworzenie planu usługi App Service](./media/app-service-web-get-started-dotnet-framework/app-service-plan-framework-vs2019.png)
 

@@ -12,14 +12,14 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
-ms.openlocfilehash: 56a5221504a3905855fa5dc713707f34ae357aea
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: MT
+ms.openlocfilehash: d910a76397a40a14d960b59f60561cbee470f5c4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77165139"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358443"
 ---
-# <a name="why-update-to-microsoft-identity-platform-v20"></a>Dlaczego warto aktualizować oprogramowanie Microsoft Identity platform (v 2.0)?
+# <a name="why-update-to-microsoft-identity-platform-v20"></a>Dlaczego warto wykonać aktualizację do platformy tożsamości Microsoft (wersja 2.0)?
 
 Podczas tworzenia nowej aplikacji ważne jest, aby znać różnice między punktami końcowymi Microsoft Identity platform (v 2.0) i Azure Active Directory (v 1.0). W tym artykule opisano główne różnice między punktami końcowymi i niektóre istniejące ograniczenia dotyczące platformy tożsamości firmy Microsoft.
 
@@ -34,7 +34,7 @@ Podczas tworzenia nowej aplikacji ważne jest, aby znać różnice między punkt
 * Punkt końcowy platformy tożsamości firmy Microsoft umożliwia logowanie się przy użyciu kont służbowych z usługi Azure AD i osobistych kont Microsoft (MSA), takich jak hotmail.com, outlook.com i msn.com.
 * Oba punkty końcowe również akceptują logowania *[użytkowników-Gości](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* w katalogu usługi Azure AD dla aplikacji skonfigurowanych jako *[pojedyncze dzierżawy](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* lub dla aplikacji *wielodostępnych* skonfigurowanych tak, aby wskazywały punkt końcowy specyficzny dla dzierżawy (`https://login.microsoftonline.com/{TenantId_or_Name}`).
 
-Punkt końcowy platformy tożsamości firmy Microsoft umożliwia pisanie aplikacji akceptujących logowania z osobistych kont Microsoft oraz kont służbowych. Dzięki temu można napisać aplikację całkowicie Account-niezależny od. Na przykład jeśli aplikacja wywołuje [Microsoft Graph](https://graph.microsoft.io), niektóre dodatkowe funkcje i dane będą dostępne dla kont służbowych, takich jak witryny programu SharePoint lub dane katalogu. Jednak w przypadku wielu akcji, takich jak [odczytywanie wiadomości e-mail](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_messages), ten sam kod może uzyskać dostęp do poczty e-mail zarówno dla kont osobistych, jak i służbowych.
+Punkt końcowy platformy tożsamości firmy Microsoft umożliwia pisanie aplikacji akceptujących logowania z osobistych kont Microsoft oraz kont służbowych. Dzięki temu można napisać aplikację całkowicie Account-niezależny od. Na przykład jeśli aplikacja wywołuje [Microsoft Graph](https://graph.microsoft.io), niektóre dodatkowe funkcje i dane będą dostępne dla kont służbowych, takich jak witryny programu SharePoint lub dane katalogu. Jednak w przypadku wielu akcji, takich jak [odczytywanie wiadomości e-mail](https://docs.microsoft.com/graph/api/user-list-messages?view=graph-rest-1.0), ten sam kod może uzyskać dostęp do poczty e-mail zarówno dla kont osobistych, jak i służbowych.
 
 W przypadku punktu końcowego platformy tożsamości firmy Microsoft można korzystać z biblioteki Microsoft Authentication Library (MSAL) w celu uzyskania dostępu do przedsiębiorstw, programów edukacyjnych i korporacyjnych. Punkt końcowy usługi Azure AD v 1.0 akceptuje logowania tylko z kont służbowych.
 
@@ -70,7 +70,7 @@ W przypadku punktu końcowego v 1.0 żądanie autoryzacji uwierzytelniania OAuth
 ```text
 GET https://login.microsoftonline.com/common/oauth2/authorize?
 client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
-&resource=https://graph.windows.net/
+&resource=https://graph.microsoft.com/
 ...
 ```
 
@@ -81,7 +81,7 @@ W przypadku aplikacji korzystających z punktu końcowego platformy tożsamości
 ```text
 GET https://login.microsoftonline.com/common/oauth2/v2.0/authorize?
 client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
-&scope=https://graph.windows.net/directory.read%20https://graph.windows.net/directory.write
+&scope=https://graph.microsoft.com/directory.read%20https://graph.microsoft.com/directory.write
 ...
 ```
 
