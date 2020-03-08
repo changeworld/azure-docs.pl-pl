@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/17/2019
 ms.author: wolfma
-ms.openlocfilehash: 5cb7cfc0b4d888406f8574ab620667f160bfa118
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 416c2893ebf07cd638f3f1c06c709db2586245d1
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77445424"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925985"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -23,8 +23,7 @@ Przed rozpoczęciem:
 
 > [!div class="checklist"]
 > * [Tworzenie zasobu usługi Azure Speech](../../../../get-started.md)
-> * [Konfigurowanie środowiska deweloperskiego](../../../../quickstarts/setup-platform.md?tabs=windows)
-> * [Tworzenie pustego przykładowego projektu](../../../../quickstarts/create-project.md?tabs=windows)
+> * [Skonfiguruj środowisko deweloperskie i Utwórz pusty projekt](../../../../quickstarts/setup-platform.md?tabs=windows)
 > * Upewnij się, że masz dostęp do mikrofonu do przechwytywania audio
 
 ## <a name="add-sample-code"></a>Dodawanie przykładowego kodu

@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: 447b42fe3fce3baa5b50f8333892a39464b7ee3f
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
-ms.translationtype: HT
+ms.openlocfilehash: 93a5a29c225912a48cf99ba6126690c298dfef9d
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78668909"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925388"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -22,8 +22,7 @@ Przed rozpoczęciem:
 
 > [!div class="checklist"]
 > * [Tworzenie zasobu usługi Azure Speech](../../../../get-started.md)
-> * [Konfigurowanie środowiska deweloperskiego](../../../../quickstarts/setup-platform.md?tabs=uwp)
-> * [Tworzenie pustego przykładowego projektu](../../../../quickstarts/create-project.md?tabs=uwp)
+> * [Skonfiguruj środowisko deweloperskie i Utwórz pusty projekt](../../../../quickstarts/setup-platform.md?tabs=uwp)
 > * Upewnij się, że masz dostęp do mikrofonu do przechwytywania audio
 
 Jeśli to już zrobione, świetnie. Kontynuujmy.

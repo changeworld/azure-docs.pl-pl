@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/30/2020
 ms.author: dapine
-ms.openlocfilehash: 4e8d100000e7191c77c09a1b2e4c28088e247d8f
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: b326f7ebcec3c371839d9bccb95e8bedf9768f1c
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383940"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78924897"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -23,8 +23,7 @@ Przed rozpoczęciem upewnij się, że:
 > [!div class="checklist"]
 > * [Tworzenie zasobu usługi Azure Speech](../../../../get-started.md)
 > * [Tworzenie aplikacji LUIS i pobieranie klucza punktu końcowego](../../../../quickstarts/create-luis.md)
-> * [Konfigurowanie środowiska deweloperskiego](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
-> * [Tworzenie pustego przykładowego projektu](../../../../quickstarts/create-project.md?pivots=programming-language-python)
+> * [Skonfiguruj środowisko deweloperskie i Utwórz pusty projekt](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 

@@ -3,12 +3,12 @@ title: Przegląd Azure Resource Health
 description: Omówienie Azure Resource Health
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 5609c7f09dc81a54a941dea391c0d717ad4bb06a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: f22b41e66f15dd12d973c5744870969fae795bc1
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379958"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925187"
 ---
 # <a name="resource-health-overview"></a>Przegląd Resource Health
  
@@ -38,7 +38,7 @@ Kondycja zasobu jest wyświetlana jako jeden z następujących stanów.
 
 #### <a name="platform-events"></a>Zdarzenia platformy
 
-Zdarzenia platformy są wyzwalane przez wiele składników infrastruktury platformy Azure. Obejmują one zarówno zaplanowane akcje (na przykład zaplanowaną konserwację), jak i nieoczekiwane zdarzenia (na przykład nieplanowany ponowny rozruch hosta).
+Zdarzenia platformy są wyzwalane przez wiele składników infrastruktury platformy Azure. Obejmują one zarówno zaplanowane akcje (na przykład zaplanowaną konserwację), jak i nieoczekiwane zdarzenia (na przykład nieplanowany ponowny rozruch hosta lub niedziałający sprzęt hosta przewidywany niepowodzenie po określonym przedziale czasu).
 
 Resource Health zawiera dodatkowe szczegóły dotyczące zdarzenia i procesu odzyskiwania. Pozwala również kontaktować się z usługą pomoc techniczna firmy Microsoft, nawet jeśli nie masz aktywnej umowy pomocy technicznej.
 
@@ -60,7 +60,7 @@ W przypadku wystąpienia problemów z zasobem *nieznany* stan kondycji może ozn
 
 ![Stan * nieznane * dla maszyny wirtualnej](./media/resource-health-overview/Unknown.png)
 
-### <a name="degraded"></a>Zdegradowany
+### <a name="degraded"></a>Obniżona wydajność
 
 *Zdegradowane* oznacza, że zasób wykrył utratę wydajności, chociaż nadal jest dostępny do użycia.
 

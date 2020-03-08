@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/11/2019
 ms.author: erhopf
-ms.openlocfilehash: 4970f115ee3eee78d7268e3e955e20048b74df0d
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: 7147f0d13c88c1d2e17e81a360a5aee55ee760ed
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383938"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78926026"
 ---
-W tym przewodniku przedstawiono sposób instalowania [zestawu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) dla 64-bitowego języka Java 8 JRE.
+W tym przewodniku przedstawiono sposób instalowania [zestawu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) dla 64-bitowego języka Java 8 JRE. Jeśli chcesz, aby nazwa pakietu była już uruchomiona, zestaw Java SDK nie jest dostępny w repozytorium centralnym Maven. Bez względu na to, czy używasz Gradle, czy pliku zależności `pom.xml`, musisz dodać niestandardowe repozytorium wskazujące `https://csspeechstorage.blob.core.windows.net/maven/` (patrz poniżej w przypadku nazwy pakietu).
 
 > [!NOTE]
 > W przypadku zestawu Speech Devices SDK i urządzenia Roobo zobacz [Speech Devices SDK](~/articles/cognitive-services/speech-service/speech-devices-sdk.md).

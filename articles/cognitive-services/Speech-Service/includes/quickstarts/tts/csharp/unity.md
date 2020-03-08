@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 9/19/2019
 ms.author: yinhew
-ms.openlocfilehash: f3b3d68e0154913e3eb6d101965ad33530502954
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 73a4477547c562a9960fe72b352e906676eadae5
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74818119"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925175"
 ---
 > [!NOTE]
 > Środowisko Unity obsługuje Pulpity systemu Windows (x86 i x64) lub platforma uniwersalna systemu Windows (x86, x64, ARM/ARM64), Android (x86, ARM32/64) i iOS (x64 symulator, ARM32 i ARM64).
@@ -26,8 +26,7 @@ Przed rozpoczęciem upewnij się, że:
 
 > [!div class="checklist"]
 > * [Tworzenie zasobu usługi Azure Speech](../../../../get-started.md)
-> * [Konfigurowanie środowiska deweloperskiego](../../../../quickstarts/setup-platform.md?tabs=unity)
-> * [Tworzenie pustego przykładowego projektu](../../../../quickstarts/create-project.md?tabs=unity)
+> * [Skonfiguruj środowisko deweloperskie i Utwórz pusty projekt](../../../../quickstarts/setup-platform.md?tabs=unity)
 
 ## <a name="add-a-ui"></a>Dodawanie interfejsu użytkownika
 
@@ -66,7 +65,7 @@ Po zakończeniu interfejs użytkownika powinien wyglądać podobnie do tego zrzu
 
 1. Znajdź i Zastąp ciąg `YourSubscriptionKey`m kluczem subskrypcji usługi rozpoznawania mowy.
 
-1. Znajdź i zastąp ciąg `YourServiceRegion` [regionem](~/articles/cognitive-services/Speech-Service/regions.md) skojarzonym z Twoją subskrypcją. Na przykład region jest `westus` w przypadku korzystania z bezpłatnej wersji próbnej.
+1. Znajdź i zastąp ciąg `YourServiceRegion`[regionem](~/articles/cognitive-services/Speech-Service/regions.md) skojarzonym z Twoją subskrypcją. Na przykład region jest `westus` w przypadku korzystania z bezpłatnej wersji próbnej.
 
 1. Zapisz zmiany skryptu.
 
@@ -98,7 +97,7 @@ Zapoznaj się z [przykładowym repozytorium](https://aka.ms/csspeech/samples) w 
 
 [!INCLUDE [footer](./footer.md)]
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 - [Tworzenie niestandardowego głosu](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
 - [Rejestruj niestandardowe przykłady głosu](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

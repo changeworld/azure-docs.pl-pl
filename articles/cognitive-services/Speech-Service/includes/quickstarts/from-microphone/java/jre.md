@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: eb131f3f53e04809ca21efda7367f03a79081bbc
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 95e8a30eaa59762ad7cf5b388326c9d3c9723d8e
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77446866"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925196"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -17,8 +17,7 @@ Przed rozpoczęciem:
 
 > [!div class="checklist"]
 > * [Tworzenie zasobu usługi Azure Speech](../../../../get-started.md)
-> * [Konfigurowanie środowiska deweloperskiego](../../../../quickstarts/setup-platform.md?tabs=jre)
-> * [Tworzenie pustego przykładowego projektu](../../../../quickstarts/create-project.md?tabs=jre)
+> * [Skonfiguruj środowisko deweloperskie i Utwórz pusty projekt](../../../../quickstarts/setup-platform.md?tabs=jre)
 > * Upewnij się, że masz dostęp do mikrofonu do przechwytywania audio
 
 ## <a name="add-sample-code"></a>Dodawanie przykładowego kodu

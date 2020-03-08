@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/10/2019
 ms.author: erhopf
-ms.openlocfilehash: db00398efa638ac945bc188ad0c44f904059e689
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a09b969ee3e11aeb04f338cf035b21b5da9bd952
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75468069"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925398"
 ---
-W tym przewodniku przedstawiono sposób instalowania [zestawu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) dla .NET Framework (Windows).
+W tym przewodniku przedstawiono sposób instalowania [zestawu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) dla .NET Framework (Windows). Jeśli chcesz, aby nazwa pakietu została już rozpoczęta, uruchom `Install-Package Microsoft.CognitiveServices.Speech` w konsoli NuGet.
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
@@ -25,7 +25,7 @@ W tym przewodniku przedstawiono sposób instalowania [zestawu Speech SDK](~/arti
 
 Ten przewodnik Szybki start wymaga następujących elementów:
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+* [Program Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 
 ## <a name="create-a-visual-studio-project-and-install-the-speech-sdk"></a>Tworzenie projektu programu Visual Studio i Instalowanie zestawu Speech SDK
 
@@ -71,7 +71,21 @@ Musisz zainstalować [pakiet NuGet zestawu Speech SDK](https://aka.ms/csspeech/n
 
    Po zainstalowaniu pakietu w oknie **konsola Menedżera pakietów** zostanie wyświetlone potwierdzenie.
 
-Teraz możesz przejść do [kolejnych kroków](#next-steps) poniżej.
+### <a name="choose-target-architecture"></a>Wybieranie architektury docelowej
+
+Aby skompilować i uruchomić aplikację konsolową, Utwórz konfigurację platformy zgodną z architekturą komputera.
+
+1. Na pasku menu wybierz pozycję **kompilacja** > **Configuration Manager**. Zostanie wyświetlone okno dialogowe **Configuration Manager** .
+
+   ![Okno dialogowe Configuration Manager](~/articles/cognitive-services/speech-service/media/sdk/vs-configuration-manager-dialog-box.png)
+
+1. W polu listy rozwijanej **platforma aktywnego rozwiązania** wybierz pozycję **Nowy**. Zostanie wyświetlone okno dialogowe **Nowa platforma rozwiązania** .
+
+1. W polu **Typ lub wybierz nową platformę z** listy rozwijanej:
+   - Jeśli korzystasz z 64-bitowego systemu Windows, wybierz pozycję **x64**.
+   - Jeśli korzystasz z 32-bitowego systemu Windows, wybierz pozycję **x86**.
+
+1. Wybierz przycisk **OK** , a następnie **Zamknij**.
 
 ## <a name="next-steps"></a>Następne kroki
 
