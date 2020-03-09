@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
 ms.openlocfilehash: d687d1d353c1734c5d98121f658003afde2eb182
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74812906"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394818"
 ---
 # <a name="about-voice-assistants"></a>Asystenci głosu — informacje
 
@@ -56,11 +56,11 @@ Bez względu na to, czy wybierasz [bezpośrednią mowę liniową](direct-line-sp
 
 Oferujemy Przewodniki Szybki Start zaprojektowane do uruchamiania kodu w mniej niż 10 minut. Ta tabela zawiera listę przewodników szybki start dla asystenta głosowego uporządkowanych według języka.
 
-| Szybki start | Platforma | Dokumentacja interfejsów API |
+| Szybki start | Platforma | Dokumentacja interfejsu API |
 |------------|----------|---------------|
-| C#, Platformy UWP | Windows | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
-| Java | Windows, macOS, Linux | [Przeglądaj](https://aka.ms/csspeech/javaref) |
-| Java | Android | [Przeglądaj](https://aka.ms/csspeech/javaref) |
+| C#, Platformy UWP | System Windows | [Przycisku](https://aka.ms/csspeech/csharpref) |
+| Java | Windows, macOS, Linux | [Przycisku](https://aka.ms/csspeech/javaref) |
+| Java | Android | [Przycisku](https://aka.ms/csspeech/javaref) |
 
 ## <a name="sample-code"></a>Przykładowy kod
 
@@ -80,7 +80,7 @@ Asystentzy głosu Skompilowani przy użyciu usługi mowy mogą korzystać z peł
 > [!NOTE]
 > Opcje dostosowywania różnią się w zależności od języka/ustawień regionalnych (zobacz [obsługiwane języki](supported-languages.md)).
 
-## <a name="reference-docs"></a>Dokumentacja
+## <a name="reference-docs"></a>Dokumentacja dokumentacji
 
 * [Zestaw SDK rozpoznawania mowy](speech-sdk-reference.md)
 * [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)

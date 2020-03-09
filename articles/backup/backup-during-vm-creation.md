@@ -4,11 +4,11 @@ description: Opisuje sposób włączania tworzenia kopii zapasowej podczas tworz
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.openlocfilehash: 0cfea6579791c4fd23c1b7acdfe722d57b5ec2fd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449913"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363754"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Włączanie tworzenia kopii zapasowej przy tworzeniu maszyny wirtualnej platformy Azure
 
@@ -20,7 +20,7 @@ W tym artykule opisano sposób włączania tworzenia kopii zapasowej podczas two
 
 - [Sprawdź](backup-support-matrix-iaas.md#supported-backup-actions) , które systemy operacyjne są obsługiwane w przypadku włączenia tworzenia kopii zapasowej podczas tworzenia maszyny wirtualnej.
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Jeśli jeszcze nie zalogowano się na koncie, zaloguj się do [Azure Portal](https://portal.azure.com).
 

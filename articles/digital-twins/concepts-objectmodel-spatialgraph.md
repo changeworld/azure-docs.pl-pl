@@ -1,6 +1,6 @@
 ---
 title: Zrozumienie modeli obiektów i grafu analizy przestrzennej — Azure Digital bliźniaczych reprezentacji | Microsoft Docs
-description: Modeluj relacje między osobami, miejscami i urządzeniami za pomocą usługi Azure Digital Twins
+description: Korzystanie z usługi Azure Digital bliźniaczych reprezentacji do modelowania relacji między osobami, miejscami i urządzeniami
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,11 +9,11 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 12/30/2019
 ms.openlocfilehash: cafec321e7c40e27d8de731feda1103451271507
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562599"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382286"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Zrozumienie modeli obiektów Digital bliźniaczych reprezentacji i grafu analizy przestrzennej
 
@@ -78,7 +78,7 @@ Po wdrożeniu Digital bliźniaczych reprezentacji z [Azure Portal](https://porta
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| Nazwa | Zamień na |
+| Name (Nazwa) | Zamień na |
 | --- | --- |
 | YOUR_INSTANCE_NAME | Nazwa używanego wystąpienia usługi Digital Twins |
 | YOUR_LOCATION | Region serwera, w którym jest hostowane używane wystąpienie |

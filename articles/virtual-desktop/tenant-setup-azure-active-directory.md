@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: helohr
-ms.openlocfilehash: f38f0cec336061c97daa02798e94d98844d76ea2
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 600b0f598c54b5db154fd488aebf26a6fcdc0b1d
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368773"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925128"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Samouczek: Tworzenie dzierżawy w programie Virtual Desktop systemu Windows
 
@@ -72,7 +72,7 @@ Przypisanie użytkownika Azure Active Directory rola aplikacji TenantCreator umo
 
 Aby przypisać rolę aplikacji TenantCreator:
 
-1. Przejdź do  [Azure Portal](https://portal.azure.com) , aby zarządzać rolą aplikacji TenantCreator. Wyszukaj i wybierz pozycję **aplikacje dla przedsiębiorstw**. Jeśli pracujesz z wieloma dzierżawcami Azure Active Directory, najlepszym rozwiązaniem jest otwarcie sesji przeglądarki prywatnej i skopiowanie i wklejenie adresów URL na pasku adresu.
+1. Przejdź do [Azure Portal](https://portal.azure.com) , aby zarządzać rolą aplikacji TenantCreator. Wyszukaj i wybierz pozycję **aplikacje dla przedsiębiorstw**. Jeśli pracujesz z wieloma dzierżawcami Azure Active Directory, najlepszym rozwiązaniem jest otwarcie sesji przeglądarki prywatnej i skopiowanie i wklejenie adresów URL na pasku adresu.
 
    ![Zrzut ekranu przedstawiający wyszukiwanie aplikacji dla przedsiębiorstw w Azure Portal](media/azure-portal-enterprise-applications.png)
 2. W obszarze **aplikacje dla przedsiębiorstw**Wyszukaj pozycję **pulpit wirtualny systemu Windows**. Zobaczysz dwie aplikacje, które podano w poprzedniej sekcji. Z tych dwóch aplikacji wybierz pozycję **pulpit wirtualny systemu Windows**.

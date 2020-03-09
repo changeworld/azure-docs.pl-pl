@@ -11,11 +11,11 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: 2399849b87e44c5cb70d2db987ae18d8d2d9c552
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77564044"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355717"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Monitorowanie środowiska Integration Runtime w Azure Data Factory  
 **Integration Runtime** to infrastruktura obliczeniowa używana przez Azure Data Factory, która zapewnia różne możliwości integracji danych w różnych środowiskach sieciowych. Istnieją trzy typy środowisk Integration Runtime oferowanych przez Data Factory:
