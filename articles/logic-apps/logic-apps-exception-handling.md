@@ -9,11 +9,11 @@ ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
 ms.openlocfilehash: 73b116117530e5a2103b604efbf757d691006508
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906702"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359001"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Obsługa błędów i wyjątków w Azure Logic Apps
 
@@ -21,7 +21,7 @@ Sposób, w jaki każda architektura integracji odpowiednio obsługuje przestoje 
 
 <a name="retry-policies"></a>
 
-## <a name="retry-policies"></a>Zasady ponawiania prób
+## <a name="retry-policies"></a>Zasady ponawiania
 
 Aby uzyskać najbardziej podstawowy wyjątek i obsługę błędów, można użyć *zasad ponawiania* w dowolnej akcji lub wyzwalaczu, jeśli jest to obsługiwane, na przykład w temacie [Akcja http](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger). Zasady ponawiania określają, czy i w jaki sposób akcja lub wyzwalacz ponawiają próbę żądania, gdy pierwotne żądanie przekroczy limit czasu lub zakończy się niepowodzeniem, co oznacza każde żądanie, które powoduje wystąpienie odpowiedzi 408, 429 lub 5xx. Jeśli nie zostaną użyte żadne inne zasady ponawiania, zostaną użyte zasady domyślne.
 
@@ -32,7 +32,7 @@ Oto typy zasad ponawiania prób:
 | **Domyślne** | Te zasady wysyłają do czterech ponownych prób w *wykładniczo rosnących* odstępach czasu, które są skalowane o 7,5 sekund, ale są ograniczone do zakresu od 5 do 45 sekund. |
 | **Interwał wykładniczy**  | Te zasady czekają losowy interwał wybrany z wykładniczo rosnącego zakresu przed wysłaniem kolejnego żądania. |
 | **Stały interwał**  | Te zasady czekają określony interwał przed wysłaniem kolejnego żądania. |
-| **Brak**  | Nie wysyłaj ponownie żądania. |
+| **Dawaj**  | Nie wysyłaj ponownie żądania. |
 |||
 
 Aby uzyskać informacje na temat limitów ponowień zasad, zobacz [Logic Apps limity i konfiguracja](../logic-apps/logic-apps-limits-and-config.md#request-limits).
@@ -112,7 +112,7 @@ Chociaż nie zostało to jawnie zdefiniowane w akcji lub wyzwalaczu, poniżej pr
 }
 ```
 
-### <a name="none"></a>Brak
+### <a name="none"></a>None
 
 Aby określić, że akcja lub wyzwalacz nie ponowią prób żądań zakończonych niepowodzeniem, <*ustaw > `none`* .
 

@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: d1a972a1d89066b961f2dcc28fba830e3a04ebc1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670546"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394408"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Źródła danych wydajności systemów Windows i Linux w Azure Monitor
 Liczniki wydajności w systemach Windows i Linux zapewniają wgląd w wydajność składników sprzętowych, systemów operacyjnych i aplikacji.  Azure Monitor może zbierać liczniki wydajności w częstych odstępach czasu dla analizy prawie w czasie rzeczywistym (NRT), a także do agregowania danych dotyczących wydajności na potrzeby analizy i raportowania w dłuższym okresie.
@@ -86,13 +86,13 @@ W poniższej tabeli wymieniono obiekty i liczniki, które można określić w pl
 | Nazwa obiektu | Nazwa licznika |
 |:--|:--|
 | Dysk logiczny | % Wolnego węzłów i |
-| Dysk logiczny | Wartość procentowa wolnego miejsca |
+| Dysk logiczny | % Wolnego miejsca |
 | Dysk logiczny | % Użytych węzłów i |
 | Dysk logiczny | Procent wykorzystania miejsca |
-| Dysk logiczny | Bajty odczytu dysku/s |
+| Dysk logiczny | Bajty odczytu z dysku/s |
 | Dysk logiczny | Odczyty dysku/s |
 | Dysk logiczny | Transfery dyskowe/s |
-| Dysk logiczny | Bajty zapisu dysku/s |
+| Dysk logiczny | Bajty zapisu na dysku/s |
 | Dysk logiczny | Zapisy dysku/s |
 | Dysk logiczny | Wolne megabajty |
 | Dysk logiczny | Bajty dysku logicznego/s |
@@ -136,7 +136,7 @@ W poniższej tabeli wymieniono obiekty i liczniki, które można określić w pl
 | System | Wolna pamięć wirtualna |
 | System | Procesy |
 | System | Rozmiar zapisany w plikach stronicowania |
-| System | Czas działania |
+| System | Czas pracy |
 | System | Użytkownicy |
 
 
@@ -201,7 +201,7 @@ W poniższej tabeli przedstawiono różne przykłady zapytań dzienników, któr
 
 | Zapytanie | Opis |
 |:--- |:--- |
-| Wyd. |Wszystkie dane dotyczące wydajności |
+| Perf |Wszystkie dane dotyczące wydajności |
 | Wydajność &#124; , w której komputer = = "MójKomputer" |Wszystkie dane dotyczące wydajności z określonego komputera |
 | Wydajność &#124; , gdzie CounterName = = "Bieżąca długość kolejki dysku" |Wszystkie dane dotyczące wydajności dla określonego licznika |
 | Wydajność &#124; , gdzie ObjectName = = "Processor" i CounterName = = "% Time procesora" i InstanceName = = " &#124; _TOTAL" podsumowuje AVGCPU = AVG (CounterValue) według komputera |Średnie użycie procesora CPU na wszystkich komputerach |

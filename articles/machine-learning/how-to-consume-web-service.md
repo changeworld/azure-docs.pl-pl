@@ -12,11 +12,11 @@ ms.reviewer: larryfr
 ms.date: 01/07/2020
 ms.custom: seodec18
 ms.openlocfilehash: 4c3e60e9c296dc8e3a1e31a52a262d8462237407
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75765667"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355297"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Korzystanie z modelu usługi Azure Machine Learning, wdrożyć jako usługę sieci web
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -43,12 +43,12 @@ Klasa [Azure. Core. WebService](https://docs.microsoft.com/python/api/azureml-co
 
 * `auth_enabled` — Jeśli uwierzytelnianie klucza jest włączone, `True`; w przeciwnym razie `False`.
 * `token_auth_enabled` — Jeśli uwierzytelnianie tokenu jest włączone, `True`; w przeciwnym razie `False`.
-* `scoring_uri` Adres interfejsu API REST.
+* `scoring_uri` — adres interfejsu API REST.
 * `swagger_uri` — adres specyfikacji OpenAPI. Ten identyfikator URI jest dostępny po włączeniu automatycznego generowania schematu. Aby uzyskać więcej informacji, zobacz [Wdrażanie modeli przy użyciu Azure Machine Learning](how-to-deploy-and-where.md#schema).
 
 Istnieją trzy sposoby, aby pobrać te informacje dotyczące wdrożonymi usługami sieci web:
 
-* Po wdrożeniu modelu, `Webservice` obiekt jest zwracany za pomocą informacji o usłudze:
+* Podczas wdrażania modelu obiekt `Webservice` jest zwracany z informacjami o usłudze:
 
     ```python
     service = Model.deploy(ws, "myservice", [model], inference_config, deployment_config)
@@ -57,7 +57,7 @@ Istnieją trzy sposoby, aby pobrać te informacje dotyczące wdrożonymi usługa
     print(service.swagger_uri)
     ```
 
-* Możesz użyć `Webservice.list` można pobrać listy wdrożonych usług sieci web dla modeli w obszarze roboczym. Można dodać filtry, aby zawęzić listę informacje zwrócone. Aby uzyskać więcej informacji o tym, co można filtrować, zobacz dokumentację dotyczącą usługi [WebService. list](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) .
+* Za pomocą `Webservice.list` można pobrać listę wdrożonych usług sieci Web dla modeli w obszarze roboczym. Można dodać filtry, aby zawęzić listę informacje zwrócone. Aby uzyskać więcej informacji o tym, co można filtrować, zobacz dokumentację dotyczącą usługi [WebService. list](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) .
 
     ```python
     services = Webservice.list(ws)
@@ -102,7 +102,7 @@ Po włączeniu uwierzytelniania dla wdrożenia automatycznie tworzone są klucze
 
 Aby kontrolować uwierzytelnianie, użyj parametru `auth_enabled` podczas tworzenia lub aktualizowania wdrożenia.
 
-Jeśli uwierzytelnianie jest włączone, można użyć `get_keys` metodę, aby pobrać klucz podstawowy i pomocniczy uwierzytelniania:
+W przypadku włączenia uwierzytelniania można użyć metody `get_keys`, aby pobrać podstawowy i pomocniczy klucz uwierzytelniania:
 
 ```python
 primary, secondary = service.get_keys()
@@ -110,7 +110,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> Jeśli konieczne jest ponowne wygenerowanie klucza, użyj [ `service.regen_key` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py).
+> Jeśli musisz ponownie wygenerować klucz, użyj [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py).
 
 #### <a name="authentication-with-tokens"></a>Uwierzytelnianie przy użyciu tokenów
 
@@ -147,7 +147,7 @@ Interfejs API REST oczekuje, że treść żądania jako dokument JSON o następu
 > [!IMPORTANT]
 > Struktury danych wymaga do dopasowania, jakie oceniania skrypt i modelu w oczekiwanej usługi. Skrypt oceniania może modyfikować danych przed przekazaniem go do modelu.
 
-Na przykład modelu w [szkolenie w notesie](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) przykład oczekuje tablicy 10 kolejnych liczb. Skrypt oceniania w tym przykładzie tworzy tablicę numpy z żądania i przekazuje ją do modelu. Poniższy przykład przedstawia dane, które oczekuje na tę usługę:
+Na przykład model w [pouczeniu w ramach](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) przykładu w notesie oczekuje tablicy o wartości 10 cyfr. Skrypt oceniania w tym przykładzie tworzy tablicę numpy z żądania i przekazuje ją do modelu. Poniższy przykład przedstawia dane, które oczekuje na tę usługę:
 
 ```json
 {
@@ -181,7 +181,7 @@ Aby uzyskać informacje na temat włączania obsługi mechanizmu CORS w usłudze
 
 ## <a name="call-the-service-c"></a>Wywołania tej usługi (C#)
 
-W tym przykładzie przedstawiono sposób użycia C# wywołać usługę sieci web utworzone na podstawie [szkolenie w notesie](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) przykładu:
+Ten przykład pokazuje, jak używać C# do wywoływania usługi sieci Web utworzonej na podstawie [szkolenia w ramach przykładu notesu](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) :
 
 ```csharp
 using System;
@@ -270,7 +270,7 @@ Zwrócone wyniki są podobne do następujących dokumentów JSON:
 
 ## <a name="call-the-service-go"></a>Wywoływanie usługi (Przejdź do)
 
-W tym przykładzie pokazano, jak za pomocą języka Go do wywoływania usługi sieci web utworzone na podstawie [szkolenie w notesie](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) przykładu:
+W tym przykładzie pokazano, jak używać języka go do wywoływania usługi sieci Web utworzonej na podstawie [szkolenia w ramach przykładu notesu](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) :
 
 ```go
 package main
@@ -362,7 +362,7 @@ Zwrócone wyniki są podobne do następujących dokumentów JSON:
 
 ## <a name="call-the-service-java"></a>Wywoływanie usługi (Java)
 
-W tym przykładzie pokazano, jak używać języka Java w celu wywoływania usługi sieci web utworzone na podstawie [szkolenie w notesie](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) przykładu:
+W tym przykładzie pokazano, jak używać języka Java do wywoływania usługi sieci Web utworzonej na podstawie [szkolenia w ramach przykładu notesu](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) :
 
 ```java
 import java.io.IOException;
@@ -442,7 +442,7 @@ Zwrócone wyniki są podobne do następujących dokumentów JSON:
 
 ## <a name="call-the-service-python"></a>Wywoływanie usługi (Python)
 
-W tym przykładzie pokazano, jak używać języka Python do wywoływania usługi sieci web utworzone na podstawie [szkolenie w notesie](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) przykładu:
+W tym przykładzie pokazano, jak używać języka Python do wywoływania usługi sieci Web utworzonej na podstawie [szkolenia w ramach przykładu notesu](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) :
 
 ```python
 import requests

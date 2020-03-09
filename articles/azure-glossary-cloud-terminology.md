@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
 ms.openlocfilehash: 7c80ba6b15cec08da9bcefea243493a824ef66bd
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978754"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356563"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Słownik Microsoft Azure: Słownik terminologii w chmurze na platformie Azure
 
@@ -125,11 +125,11 @@ Podpis, który umożliwia przyznanie ograniczonego dostępu do zasobu bez uwidac
 Konto, które zapewnia dostęp do usług Azure Blob, kolejek, tabel i plików w usłudze Azure Storage. Nazwa konta magazynu definiuje unikatową przestrzeń nazw dla obiektów danych usługi Azure Storage.  
 Zobacz [Informacje o kontach usługi Azure Storage](storage/common/storage-create-storage-account.md)
 
-## <a name="subscription"></a>subskrypcja
+## <a name="subscription"></a>subskrypcję
 Umowa klienta z firmą Microsoft, która umożliwia im uzyskanie usług platformy Azure. Cennik subskrypcji i powiązane warunki podlegają ofercie wybranej dla subskrypcji.
 Zobacz [Umowa subskrypcyjna dotycząca usług online firmy Microsoft](https://azure.microsoft.com/support/legal/subscription-agreement/) i [sposób, w jaki subskrypcje platformy Azure są skojarzone z Azure Active Directory](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
-## <a name="tag"></a>tag
+## <a name="tag"></a>seryjn
 Termin indeksowania, który umożliwia kategoryzowanie zasobów zgodnie z wymaganiami dotyczącymi zarządzania lub rozliczeń. Jeśli masz złożoną kolekcję zasobów, możesz użyć tagów do wizualizacji tych zasobów w taki sposób, który jest najbardziej zrozumiały. Można na przykład oznaczyć tagami zasoby, które pełnią podobną rolę w organizacji lub należą do tego samego działu.  
 Zobacz [Używanie tagów do organizowania zasobów platformy Azure](resource-group-using-tags.md)
 
@@ -153,7 +153,7 @@ Zobacz [przegląd Virtual Network](virtual-network/virtual-networks-overview.md)
 ## <a name="web-app"></a>Aplikacja internetowa
 Inna nazwa [aplikacji App Service](#app-service-app).
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 * [Rozpoczynanie pracy z platformą Azure](https://azure.microsoft.com/get-started/)
 * [Centrum zasobów w chmurze](https://azure.microsoft.com/resources/)  

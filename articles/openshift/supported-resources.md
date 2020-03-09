@@ -7,17 +7,17 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.openlocfilehash: 1b794852390141d31a3218a1a434c21133db914c
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274915"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381467"
 ---
 # <a name="azure-red-hat-openshift-resources"></a>Zasoby usługi Azure Red Hat OpenShift
 
 W tym temacie wymieniono regiony platformy Azure i rozmiary maszyn wirtualnych obsługiwane przez Microsoft Azure usługi Red Hat OpenShift.
 
-## <a name="azure-regions"></a>Regiony systemu Azure
+## <a name="azure-regions"></a>Regiony świadczenia usługi Azure
 
 Zobacz temat [produkty dostępne według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=openshift&regions=all) , aby zapoznać się z bieżącą listą regionów, w których można wdrożyć klastry usługi Azure Red Hat OpenShift.
 
@@ -34,31 +34,31 @@ Poniżej przedstawiono obsługiwane rozmiary maszyn wirtualnych, które można o
 
 Następujące rozmiary węzłów obliczeniowych są obsługiwane przez interfejs API REST usługi Azure Red Hat OpenShift:
 
-|Rozmiar|vCPU|Pamięć RAM|
+|Rozmiar|Procesor wirtualny|Pamięć RAM|
 |-|-|-|
 |Standardowa D4S v3|4|16 GB|
 |Standardowa D8s v3|8|32 GB|
-|Standardowa D16s v3|16|64 GB|
+|Standardowa D16s v3|16|64 GB|
 |Standardowa D32s v3|32|128 GB|
 |-|-|-|
 |Standardowa E4s v3|4|32 GB|
-|Standardowa E8s v3|8|64 GB|
+|Standardowa E8s v3|8|64 GB|
 |Standardowa E16s v3|16|128 GB|
 |Standardowa E32s v3|32|256 GB|
 |-|-|-|
 |Standardowa F8s v2|8|16 GB|
 |Standardowa F16s v2|16|32 GB|
-|Standardowa F32s v2|32|64 GB|
+|Standardowa F32s v2|32|64 GB|
 
 ## <a name="master-node-sizes"></a>Rozmiary węzłów głównych
 
 Poniższe rozmiary węzła głównego/infrastruktury są obsługiwane przez interfejs API REST usługi Azure Red Hat OpenShift:
 
-|Rozmiar|vCPU|Pamięć RAM|
+|Rozmiar|Procesor wirtualny|Pamięć RAM|
 |-|-|-|
 |Standardowa D4S v3|4|16 GB|
 |Standardowa D8s v3|8|32 GB|
-|Standardowa D16s v3|16|64 GB|
+|Standardowa D16s v3|16|64 GB|
 |Standardowa D32s v3|32|128 GB|
 
 ## <a name="next-steps"></a>Następne kroki

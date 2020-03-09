@@ -9,11 +9,11 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: e4103f8360f6fa80470b0f8002a61f8ac903bd8b
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749232"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393222"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Lista kontrolna wydajności i skalowalności usługi BLOB Storage
 
@@ -25,24 +25,24 @@ Usługa Azure Storage oferuje cele skalowalności i wydajności dla pojemności,
 
 Ten artykuł organizuje sprawdzone rozwiązania dotyczące wydajności w ramach listy kontrolnej, którą można wykonać podczas tworzenia aplikacji usługi BLOB Storage.
 
-| Gotowe | Kategoria | Zagadnienia związane z projektem |
+| Odbywać | Kategoria | Zagadnienia związane z projektem |
 | --- | --- | --- |
 | &nbsp; |Tarcze skalowalności |[Czy można zaprojektować aplikację tak, aby korzystała z nie więcej niż maksymalna liczba kont magazynu?](#maximum-number-of-storage-accounts) |
 | &nbsp; |Tarcze skalowalności |[Czy unikasz zbliżania się limitów pojemności i transakcji?](#capacity-and-transaction-targets) |
 | &nbsp; |Tarcze skalowalności |[Czy duża liczba klientów uzyskuje dostęp do pojedynczego obiektu BLOB współbieżnie?](#multiple-clients-accessing-a-single-blob-concurrently) |
 | &nbsp; |Tarcze skalowalności |[Czy Twoja aplikacja mieści się w celach skalowalności dla pojedynczego obiektu BLOB?](#bandwidth-and-operations-per-blob) |
 | &nbsp; |Partycjonowanie |[Czy Twoja Konwencja nazewnictwa została zaprojektowana w celu umożliwienia lepszego równoważenia obciążenia?](#partitioning) |
-| &nbsp; |Networking |[Czy urządzenia po stronie klienta mają dostatecznie wysoką przepustowość i małe opóźnienia w celu osiągnięcia wymaganej wydajności?](#throughput) |
-| &nbsp; |Networking |[Czy urządzenia po stronie klienta mają link do sieci o wysokiej jakości?](#link-quality) |
-| &nbsp; |Networking |[Czy aplikacja kliencka znajduje się w tym samym regionie co konto magazynu?](#location) |
+| &nbsp; |Sieć |[Czy urządzenia po stronie klienta mają dostatecznie wysoką przepustowość i małe opóźnienia w celu osiągnięcia wymaganej wydajności?](#throughput) |
+| &nbsp; |Sieć |[Czy urządzenia po stronie klienta mają link do sieci o wysokiej jakości?](#link-quality) |
+| &nbsp; |Sieć |[Czy aplikacja kliencka znajduje się w tym samym regionie co konto magazynu?](#location) |
 | &nbsp; |Bezpośredni dostęp klienta |[Czy używasz sygnatur dostępu współdzielonego (SAS) i udostępniania zasobów między źródłami (CORS), aby umożliwić bezpośredni dostęp do usługi Azure Storage?](#sas-and-cors) |
-| &nbsp; |Pamięć podręczna |[Czy aplikacja buforuje dane, które są często używane i rzadko zmieniane?](#reading-data) |
-| &nbsp; |Pamięć podręczna |[Czy aplikacja wsadowa aktualizuje aktualizacje przez buforowanie ich na kliencie, a następnie przekazywanie ich w większych zestawach?](#uploading-data-in-batches) |
+| &nbsp; |Buforowanie |[Czy aplikacja buforuje dane, które są często używane i rzadko zmieniane?](#reading-data) |
+| &nbsp; |Buforowanie |[Czy aplikacja wsadowa aktualizuje aktualizacje przez buforowanie ich na kliencie, a następnie przekazywanie ich w większych zestawach?](#uploading-data-in-batches) |
 | &nbsp; |Konfiguracja platformy .NET |[Czy używasz platformy .NET Core 2,1 lub nowszej w celu uzyskania optymalnej wydajności?](#use-net-core) |
 | &nbsp; |Konfiguracja platformy .NET |[Czy skonfigurowano klienta tak, aby używał wystarczającej liczby jednoczesnych połączeń?](#increase-default-connection-limit) |
 | &nbsp; |Konfiguracja platformy .NET |[Czy w przypadku aplikacji .NET skonfigurowano platformę .NET do używania wystarczającej liczby wątków?](#increase-minimum-number-of-threads) |
 | &nbsp; |Równoległości |[Czy istnieje pewność, że równoległość jest odpowiednio ograniczona, aby nie można było przeciążać możliwości klienta ani podejścia do celów skalowalności?](#unbounded-parallelism) |
-| &nbsp; |narzędzia |[Czy używasz najnowszych wersji bibliotek i narzędzi klienta dostarczonych przez firmę Microsoft?](#client-libraries-and-tools) |
+| &nbsp; |Narzędzia |[Czy używasz najnowszych wersji bibliotek i narzędzi klienta dostarczonych przez firmę Microsoft?](#client-libraries-and-tools) |
 | &nbsp; |Ponowne próby |[Czy zasady ponawiania są używane z wykładniczą wycofywaniaą do ograniczania błędów i przekroczeń limitu czasu?](#timeout-and-server-busy-errors) |
 | &nbsp; |Ponowne próby |[Czy aplikacja unika ponawiania prób w przypadku błędów, które nie są ponawiane?](#non-retryable-errors) |
 | &nbsp; |Kopiowanie obiektów BLOB |[Czy są kopiowane obiekty blob w sposób najbardziej wydajny?](#blob-copy-apis) |
@@ -52,7 +52,7 @@ Ten artykuł organizuje sprawdzone rozwiązania dotyczące wydajności w ramach 
 | &nbsp; |Użyj metadanych |[Czy są przechowywane często używane metadane dotyczące obiektów BLOB w swoich metadanych?](#use-metadata) |
 | &nbsp; |Szybkie przekazywanie |[Czy podczas próby przekazania jednego obiektu BLOB szybko przekazująsz bloki?](#upload-one-large-blob-quickly) |
 | &nbsp; |Szybkie przekazywanie |[Czy podczas próby przeładowania wielu obiektów BLOB szybko przekazujesz obiekty blob?](#upload-many-blobs-quickly) |
-| &nbsp; |Typ obiektów blob |[Czy używasz stronicowych obiektów blob lub blokowych obiektów BLOB w razie potrzeby?](#choose-the-correct-type-of-blob) |
+| &nbsp; |Typ obiektu BLOB |[Czy używasz stronicowych obiektów blob lub blokowych obiektów BLOB w razie potrzeby?](#choose-the-correct-type-of-blob) |
 
 ## <a name="scalability-targets"></a>Tarcze skalowalności
 
@@ -115,7 +115,7 @@ Aby zmniejszyć częstotliwość takich operacji, można wykonać kilka najlepsz
   
 - Aby uzyskać więcej informacji o schemacie partycjonowania używanym w usłudze Azure Storage, zobacz [Azure Storage: usługa magazynu w chmurze o wysokiej dostępności z silną spójnością](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf).
 
-## <a name="networking"></a>Networking
+## <a name="networking"></a>Sieć
 
 Ograniczenia sieci fizycznej aplikacji mogą mieć znaczący wpływ na wydajność. W poniższych sekcjach opisano niektóre ograniczenia, które mogą napotkać użytkownicy.  
 
@@ -151,7 +151,7 @@ Załóżmy na przykład, że aplikacja sieci Web działająca na platformie Azur
   
 Zarówno sygnatury dostępu współdzielonego, jak i CORS mogą pomóc uniknąć niepotrzebnego obciążenia aplikacji sieci Web.  
 
-## <a name="caching"></a>Pamięć podręczna
+## <a name="caching"></a>Buforowanie
 
 Buforowanie odgrywa ważną rolę w wydajności. W poniższych sekcjach omówiono najlepsze rozwiązania dotyczące buforowania.
 

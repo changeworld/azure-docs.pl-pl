@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fd6cacae9c7af705b0de7b59e0f25f25637a5a89
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962496"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376933"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zasady i ograniczenia haseł w Azure Active Directory
 
@@ -71,7 +71,7 @@ Każde konto użytkownika, które musi zalogować się do usługi Azure AD, musi
 
 | Właściwość | Wymagania UserPrincipalName |
 | --- | --- |
-| Dozwolone znaki |<ul> <li>A – Z</li> <li>a – z</li><li>0 – 9</li> <li> ' \. - \_ ! \# ^ \~</li></ul> |
+| Dozwolone znaki |<ul> <li>A – Z</li> <li>a – z</li><li>0 – 9</li> <li> ' \. - \_! \# ^ \~</li></ul> |
 | Znaki nie są dozwolone |<ul> <li>"\@\" znak, który nie oddziela nazwy użytkownika z domeny.</li> <li>Nie może zawierać znaku kropki "." bezpośrednio przed symbolem "\@\"</li></ul> |
 | Ograniczenia długości |<ul> <li>Łączna długość nie może przekraczać 113 znaków</li><li>Przed symbolem "\@\"" może znajdować się maksymalnie 64 znaków</li><li>Po znaku "\@\"" może znajdować się maksymalnie 48 znaków</li></ul> |
 

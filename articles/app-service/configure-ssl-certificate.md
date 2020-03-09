@@ -7,11 +7,11 @@ ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
 ms.openlocfilehash: 120caf459a7a8ca4e60d5e447a1e4130c0bce389
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226333"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356122"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Dodawanie certyfikatu SSL w Azure App Service
 
@@ -324,7 +324,7 @@ Po zakończeniu operacji odnawiania kliknij pozycję **Synchronizuj**. Operacja 
 > [!NOTE]
 > Jeśli nie klikniesz przycisku **Synchronizuj**, App Service automatycznie zsynchronizuje certyfikat w ciągu 48 godzin.
 
-### <a name="export-certificate"></a>Eksportowanie certyfikatu
+### <a name="export-certificate"></a>Eksportuj certyfikat
 
 Ponieważ Certyfikat usługi App Service jest [Key Vault tajny](../key-vault/about-keys-secrets-and-certificates.md#key-vault-secrets), można wyeksportować kopię pliku PFX i użyć jej do innych usług platformy Azure lub poza platformą Azure.
 

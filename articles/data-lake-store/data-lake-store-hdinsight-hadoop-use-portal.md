@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 1d1368ef8ffb474c6bec1240f567f043961597fb
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838175"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389807"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>Tworzenie klastrów usługi HDInsight z Azure Data Lake Storage Gen1 przy użyciu Azure Portal
 
@@ -45,7 +45,7 @@ W tej sekcji utworzysz klaster usługi HDInsight z kontami Data Lake Storage Gen
 
 Aby utworzyć klaster usługi HDInsight z kontem Data Lake Storage Gen1 jako domyślne konto magazynu:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 2. Aby uzyskać ogólne informacje na temat tworzenia klastrów usługi HDInsight, należy wykonać czynności opisane w tematach [Tworzenie klastrów](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md#create-clusters) .
 3. W bloku **Magazyn** w obszarze **podstawowy typ magazynu**wybierz pozycję **Azure Data Lake Storage Gen1**, a następnie wprowadź następujące informacje:
 
@@ -64,7 +64,7 @@ Poniższe instrukcje tworzą klaster HDInsight z kontem usługi Azure Storage ja
 
 Aby utworzyć klaster usługi HDInsight z kontem Data Lake Storage Gen1 jako dodatkowe konto magazynu:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 2. Aby uzyskać ogólne informacje na temat tworzenia klastrów usługi HDInsight, należy wykonać czynności opisane w tematach [Tworzenie klastrów](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md#create-clusters) .
 3. W bloku **Magazyn** w obszarze **podstawowy typ magazynu**wybierz pozycję **Magazyn Azure**, a następnie wprowadź następujące informacje:
 
