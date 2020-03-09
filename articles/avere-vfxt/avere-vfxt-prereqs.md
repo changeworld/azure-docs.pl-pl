@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
 ms.openlocfilehash: a183989cc666f00da4be077c719c40d2524fd6e0
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547510"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372111"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Przygotowanie do utworzenia systemu Avere vFXT
 
@@ -49,7 +49,7 @@ Sprawdź, czy masz wystarczający przydział dla następujących składników pl
 >
 > Upewnij się, że przydział jest włączony dla regionu, w którym zamierzasz uruchomić przepływ pracy.
 
-|Składnik platformy Azure|Przydział|
+|Składnik platformy Azure|Działa|
 |----------|-----------|
 |Maszyny wirtualne|3 lub więcej E32s_v3 (jeden na węzeł klastra) |
 |Magazyn SSD w warstwie Premium|200 GB na system operacyjny i od 1 TB do 4 TB miejsca obszaru pamięci podręcznej na węzeł |

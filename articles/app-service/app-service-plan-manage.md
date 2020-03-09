@@ -7,11 +7,11 @@ ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
 ms.openlocfilehash: 68cabbd00dd0b738590109cc39d8df82f5b7362d
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75681185"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358134"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Zarządzanie planem App Service na platformie Azure
 
@@ -24,7 +24,7 @@ ms.locfileid: "75681185"
 
 Można utworzyć pusty plan App Service lub utworzyć plan w ramach tworzenia aplikacji.
 
-1. W witrynie [Azure Portal](https://portal.azure.com) wybierz pozycję **Utwórz zasób**.
+1. W [Azure Portal](https://portal.azure.com)wybierz pozycję **Utwórz zasób**.
 
    ![Utwórz zasób w Azure Portal.][createResource] 
 
@@ -65,7 +65,7 @@ Możesz przenieść aplikację do innego planu App Service, o ile plan źródło
    >
    > `Cannot update the site with hostname '<app_name>' because its current SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed SSL configuration is 'Disabled'.`
 
-5. Po zakończeniu wybierz przycisk **OK**.
+5. Po zakończeniu wybierz **przycisk OK**.
    
    ![Selektor planu App Service.][change] 
 

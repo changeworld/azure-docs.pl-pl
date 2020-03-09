@@ -8,11 +8,11 @@ ms.service: marketplace
 ms.topic: guide
 ms.date: 12/10/2019
 ms.openlocfilehash: 6ee6b6f325ba58ecaa3c3acb5d5ded173262bafb
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715436"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78344050"
 ---
 # <a name="payout-reporting"></a>Raportowanie wypłaty
 
@@ -32,7 +32,7 @@ Jeśli sprzedajesz oferty w portalu Azure Marketplace, zobaczysz również infor
 
 ## <a name="roles-and-permission-to-access-the-payout-report"></a>Role i uprawnienia dostępu do raportu wypłaty
 
-| Raporty/strony    | Właściciel konta    | maszyny wirtualnej  | Dla deweloperów | Współautor firmy |  Współautor finansów | Wiodący |
+| Raporty/strony    | Właściciel konta    | maszyny wirtualnej  | Deweloper | Współautor firmy |  Współautor finansów | Wiodący |
 |------------------|------------------|----------|-----------|----|----|-----|
 | Raport pozyskiwania (w tym dane niemal w czasie rzeczywistym) | Może wyświetlać | Może wyświetlać | Brak dostępu | Brak dostępu | Może wyświetlać | Brak dostępu |
 | Raport/odpowiedzi na Opinie | Może wyświetlać i przesyłać opinie | Może wyświetlać i przesyłać opinie | Może wyświetlać i przesyłać opinie | Brak dostępu | Brak dostępu | Może wyświetlać i przesyłać opinie |
@@ -162,7 +162,7 @@ Ta opcja zapewnia pobranie każdego elementu linii zdobywania, który jest widoc
 | taxZipCode       | Sprzedaż do pliku zip klienta                                                                                                                  |
 | LicensingProgramName       |                                                                                                                   |
 | Kod programu       | Ciąg do mapowania przy użyciu nazwy programu                                                                                                                   |
-| EarningAmountInLastPaymentCurrency       | Kwota zarobków w ostatniej walucie płatności (pole będzie puste, jeśli nie zostały uiszczone żadne wcześniejsze płatności)                                                                                                                   |
+| earningAmountInLastPaymentCurrency       | Kwota zarobków w ostatniej walucie płatności (pole będzie puste, jeśli nie zostały uiszczone żadne wcześniejsze płatności)                                                                                                                   |
 | lastPaymentCurrency       | Waluta ostatniej płatności (pole będzie puste, jeśli nie zapłacisz żadnej wcześniejszej płatności)                                                                                                                   |
 | AssetId       | Unikatowy identyfikator zamówień klientów dla usługi w portalu Marketplace.  Reprezentuje elementy wiersza zakupu transakcji transakcyjnych. Może istnieć wiele zasobów.                                                                                                                   |
 | Wartooć       | odnosi się do faktury klienta                                                                                                                   |

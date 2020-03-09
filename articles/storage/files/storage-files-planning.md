@@ -8,11 +8,11 @@ ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 88c35b7b1420b5d89f9215f7da3ccf24870024e9
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597877"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357679"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 [Azure Files](storage-files-introduction.md) można wdrożyć na dwa sposoby: przez bezpośrednie zainstalowanie udziałów plików platformy Azure bezserwerowych lub buforowanie udziałów plików platformy Azure lokalnie przy użyciu Azure File Sync. Wybór opcji wdrożenia powoduje zmianę warunków, które należy wziąć pod uwagę podczas planowania wdrożenia. 
@@ -44,7 +44,7 @@ W przypadku klientów migrowania z lokalnych serwerów plików lub tworzenia now
 
 Jeśli zamierzasz korzystać z klucza konta magazynu w celu uzyskania dostępu do udziałów plików platformy Azure, zalecamy używanie punktów końcowych usługi zgodnie z opisem w sekcji dotyczącej [sieci](#networking) .
 
-## <a name="networking"></a>Networking
+## <a name="networking"></a>Sieć
 Udziały plików platformy Azure są dostępne z dowolnego miejsca za pośrednictwem publicznego punktu końcowego konta magazynu. Oznacza to, że uwierzytelnione żądania, takie jak żądania autoryzowane przez tożsamość logowania użytkownika, mogą bezpiecznie pochodziły z platformy Azure lub spoza niej. W wielu środowiskach klienta początkowa instalacja udziału plików platformy Azure na lokalnej stacji roboczej zakończy się niepowodzeniem, nawet jeśli instalacje z maszyn wirtualnych platformy Azure powiodą się. Przyczyną tego jest to, że wiele organizacji i usługodawców internetowych (ISP) blokują port wykorzystywany przez protokół SMB do komunikacji, port 445. 
 
 Aby odblokować dostęp do udziału plików platformy Azure, masz dwie opcje główne:
@@ -127,7 +127,7 @@ W poniższej tabeli przedstawiono kilka przykładów tych wzorów dla rozmiarów
 |10 240      | 10 240  | Do 30 720  | 675 | 450   |
 |33 792      | 33 792  | Do 100 000 | 2 088 | 1 392   |
 |51 200      | 51 200  | Do 100 000 | 3,132 | 2 088   |
-|102 400     | 100,000 | Do 100 000 | 6 204 | 4 136   |
+|102 400     | 100 000 | Do 100 000 | 6 204 | 4 136   |
 
 > [!NOTE]
 > Wydajność udziałów plików zależy od ograniczeń sieci maszynowych, dostępnej przepustowości sieci, rozmiarów we/wy, równoległości, między wieloma innymi czynnikami. Na przykład w oparciu o testowanie wewnętrzne z 8 KiB rozmiaru we/wy odczytu/zapisu, Pojedyncza maszyna wirtualna z systemem Windows, *standardowa F16s_v2*, połączona z udziałem plików w warstwie Premium za pośrednictwem protokołu SMB, może osiągnąć 20 000 odczyt operacji wejścia/wyjścia (IOPS) i 15 000 W przypadku rozmiaru operacji we/wy odczytu i zapisu na 512 MiB ta sama maszyna wirtualna może osiągnąć 1,1 GiB/s ruch wychodzący i 370 przepływność transferu danych (MiB/s). Aby osiągnąć maksymalną skalę wydajności, należy rozłożyć obciążenie na wiele maszyn wirtualnych. Zapoznaj się [z przewodnikiem rozwiązywania problemów](storage-troubleshooting-files-performance.md) w przypadku niektórych typowych problemów z wydajnością i obejść.

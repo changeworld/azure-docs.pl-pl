@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 113b72ddf7e5d508c8a0b577d4004d4fbd83e8e5
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277082"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365894"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>Rozpakowywanie, montowanie w stojaku i Podłączanie kabli do urządzenia z systemem StorSimple 8100
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Microsoft Azure StorSimple 8100 to jedno obudowa, czyli urządzenie zainstalowane w stojaku. W tym samouczku wyjaśniono, jak rozpakować sprzęt urządzenia z systemem StorSimple 8100 i podłączyć go do niego przed skonfigurowaniem i wdrożeniem urządzenia StorSimple.
 
 ## <a name="unpack-your-storsimple-8100-device"></a>Rozpakowywanie urządzenia z urządzeniem z StorSimple 8100
@@ -42,7 +42,7 @@ Następnie wykonaj następujące kroki, aby rozpakować urządzenie.
    
     **Niepakowany widok urządzenia magazynującego**
    
-   | Etykieta | Opis |
+   | Label | Opis |
    | --- | --- |
    |   1 |Pole pakowania |
    |   2 |Dolna pianka |
@@ -104,7 +104,7 @@ Zestaw szyn montażowych jest dostępny do użycia z 19-calowym szafą w stojaku
 
     **Dołączanie wewnętrznych slajdów szyny do boków obudowy**
    
-    Etykieta | Opis
+    Label | Opis
     ----- | -----------
     1     | M 3x4 — wkręty z przyciskiem
     2     | Slajdy obudowy
@@ -118,7 +118,7 @@ Zestaw szyn montażowych jest dostępny do użycia z 19-calowym szafą w stojaku
    
     **Dołączanie zewnętrznych zestawów szyn do stojaka**
    
-   | Etykieta | Opis |
+   | Label | Opis |
    | --- | --- |
    |   1 |Zawężanie złącza |
    |   2 |Otwór na stojaku w stelażu |
@@ -144,7 +144,7 @@ Przy użyciu szyn stojaków, które zostały właśnie zainstalowane, wykonaj na
    
     **Instalowanie Cap kołnierza**
    
-   | Etykieta | Opis |
+   | Label | Opis |
    | --- | --- |
    |   1 |Złączenie mocujące obudowy |
 
@@ -184,7 +184,7 @@ Aby można było obsługiwać ten nadmiarowy kontroler przełączania do trybu f
    
     **Z tyłu urządzenia pokazującego porty danych**
    
-   | Etykieta | Opis |
+   | Label | Opis |
    | --- | --- |
    |   0,1,4,5 |1 GbE interfejsów sieciowych |
    |   2,3 |Interfejsy sieciowe 10 GbE |
@@ -195,7 +195,7 @@ Aby można było obsługiwać ten nadmiarowy kontroler przełączania do trybu f
 
     **Okablowanie sieci dla urządzenia**
 
-   |Etykieta | Opis |
+   |Label | Opis |
    |----- | ----------- |
    | A    | Sieć LAN z dostępem do Internetu |
    | B    | Kontroler 0 |
