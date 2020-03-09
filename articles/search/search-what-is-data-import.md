@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: cc3f38e9bb96ce76263a3124f8bfdc49dc638bfd
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113782"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379696"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>Omówienie importowania danych — Wyszukiwanie poznawcze platformy Azure
 
@@ -74,7 +74,7 @@ Model polegający na ściąganiu obejmuje przeszukiwanie obsługiwanego źródł
 
 + [Blob Storage](search-howto-indexing-azure-blob-storage.md)
 + [Table Storage](search-howto-indexing-azure-tables.md)
-+ [Usługi Azure Cosmos DB](https://aka.ms/documentdb-search-indexer)
++ [Azure Cosmos DB](https://aka.ms/documentdb-search-indexer)
 + [Baza danych Azure SQL Database i program SQL Server na maszynach wirtualnych platformy Azure](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 
 Indeksatory łączą indeks ze źródłem danych (zwykle tabelą, widokiem lub równoważną strukturą) i mapują pola źródłowe na równoważne pola w indeksie. W czasie wykonywania zestaw wierszy jest automatycznie przekształcany w dane w formacie JSON i ładowany do określonego indeksu. Wszystkie indeksatory obsługują planowanie, dzięki czemu możesz określić, jak często dane mają być odświeżane. Większość indeksatorów udostępnia śledzenie zmian, jeśli źródło danych obsługuje tę funkcję. Dzięki śledzeniu zmian i usuwania istniejących dokumentów oraz rozpoznawaniu nowych dokumentów indeksatory eliminują konieczność aktywnego zarządzania danymi w indeksie. 
@@ -93,7 +93,7 @@ Szybkim sposobem przeprowadzenia wstępnego sprawdzenia w przekazaniu dokumentu 
 > [!TIP]
 > Wiele [przykładów kodu wyszukiwanie poznawcze platformy Azure](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search) obejmuje osadzone lub łatwo dostępne zestawy danych, oferując łatwy sposób na rozpoczęcie pracy. Portal udostępnia również przykładowy indeksator i źródło danych składające się z małego zestawu danych nieruchomości (o nazwie „realestate-us-sample”). Po uruchomieniu wstępnie skonfigurowanego indeksatora w przykładowym źródle danych indeks zostanie utworzony i załadowany z dokumentami, które mogą następnie być badane w Eksploratorze wyszukiwania lub przez zapisanie kodu.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 + [Omówienie indeksatora](search-indexer-overview.md)
 + [Przewodnik po portalu: tworzenie i ładowanie indeksu oraz wykonywanie na nim zapytań](search-get-started-portal.md)

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/27/2019
+ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9a9fb1d64fb27507e4ee42c39be9ea80fbe5f168
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 5dcbc2ee35620d0a29c495b24bd3756769095a17
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184455"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933003"
 ---
 # <a name="localization"></a>Lokalizacja
 
@@ -146,7 +146,7 @@ Element **LocalizedString** zawiera następujące atrybuty:
 
 | Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| ElementType | Yes | Odwołanie do elementu typu "Claim" lub elementu interfejsu użytkownika w zasadach. Możliwe wartości: `ClaimType`, `UxElement`, `ErrorMessage`, `Predicate`lub. Wartość `ClaimType` służy do lokalizowania jednego z atrybutów, jak określono w StringId. Wartość `UxElement` służy do lokalizowania jednego z elementów interfejsu użytkownika określonych w StringId. Wartość `ErrorMessage` służy do lokalizowania jednego z komunikatów o błędach systemu określonych w StringId. Wartość `Predicate` służy do lokalizowania jednego z komunikatów o błędach [predykatu](predicates.md) , jak określono w StringId. Wartość `InputValidation` służy do lokalizowania jednej z komunikatów o błędach grupy [PredicateValidation](predicates.md) określonych w StringId. |
+| ElementType | Yes | Odwołanie do elementu typu "Claim" lub elementu interfejsu użytkownika w zasadach. Możliwe wartości: `ClaimType`, `UxElement`, `ErrorMessage`, `Predicate`lub `GetLocalizedStringsTransformationClaimType`. Wartość `ClaimType` służy do lokalizowania jednego z atrybutów, jak określono w StringId. Wartość `UxElement` służy do lokalizowania jednego z elementów interfejsu użytkownika określonych w StringId. Wartość `ErrorMessage` służy do lokalizowania jednego z komunikatów o błędach systemu określonych w StringId. Wartość `Predicate` służy do lokalizowania jednego z komunikatów o błędach [predykatu](predicates.md) , jak określono w StringId. Wartość `InputValidation` służy do lokalizowania jednej z komunikatów o błędach grupy [PredicateValidation](predicates.md) określonych w StringId. Wartość `GetLocalizedStringsTransformationClaimType` jest używana do kopiowania zlokalizowanych ciągów do oświadczeń. Aby uzyskać więcej informacji, zobacz [GetLocalizedStringsTransformation — przekształcanie oświadczeń](string-transformations.md#getlocalizedstringstransformation)  | 
 | ElementId | Yes | Jeśli **ElementType** ma wartość `ClaimType`, `Predicate`lub `InputValidation`, ten element zawiera odwołanie do typu zgłoszenia już zdefiniowanego w sekcji ClaimsSchema. |
 | StringId | Yes | Jeśli **ElementType** ma wartość `ClaimType`, ten element zawiera odwołanie do atrybutu typu "typ". Możliwe wartości: `DisplayName`, `AdminHelpText`lub `PatternHelpText`. Wartość `DisplayName` służy do ustawiania nazwy wyświetlanej w ramach żądania. Wartość `AdminHelpText` służy do ustawiania nazwy tekstu pomocy użytkownika. Wartość `PatternHelpText` służy do ustawiania tekstu pomocy dla wzorca żądania. Jeśli **ElementType** ma wartość `UxElement`, ten element zawiera odwołanie do atrybutu elementu interfejsu użytkownika. Jeśli **ElementType** ma wartość `ErrorMessage`, ten element określa identyfikator komunikatu o błędzie. Aby uzyskać pełną listę identyfikatorów `UxElement`, zobacz [identyfikatory ciągów lokalizacji](localization-string-ids.md) .|
 

@@ -4,11 +4,11 @@ description: W tym artykule dowiesz się, jak używać Azure Backup Server do tw
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.openlocfilehash: df85cba42118a2e814a4a1c8338f3927e4d75f36
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152871"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392042"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Tworzenie kopii zapasowych maszyn wirtualnych VMware przy użyciu Azure Backup Server
 
@@ -137,7 +137,7 @@ Azure Backup Server musi mieć konto użytkownika z uprawnieniami dostępu do ho
 | Magazyn danych. operacje na plikach niskiego poziomu                          | Global. Zarządzaj atrybutami niestandardowymi                           | Magazyn danych. AllocateSpace                     |
 | Klaster magazynu danych. Konfigurowanie klastra datatstore             | Global. Set — atrybut niestandardowy                               | VirtualMachine.Config.ChangeTracking        |
 | Global. Disable, metody                                       | Operacje hosta. local. Utwórz maszynę wirtualną              | VirtualMachine.State.RemoveSnapshot         |
-| Global. Enable — metody                                        | Sieć — Przypisywanie sieci                                   | VirtualMachine.State.CreateSnapshot         |
+| Global. Enable — metody                                        | NFS. Przypisywanie sieci                                   | VirtualMachine.State.CreateSnapshot         |
 | Globalne. licencje                                              | Zasoby. Przypisz maszynę wirtualną do puli zasobów         | VirtualMachine.Provisioning.DiskRandomRead  |
 | Zdarzenie globalne. log                                             | Maszyna wirtualna. Konfiguracja. Dodaj nowy dysk                | VirtualMachine.Interact.PowerOff            |
 | Global. Zarządzaj atrybutami niestandardowymi                              | Maszyna wirtualna. Konfiguracja. Advanced                    | VirtualMachine. Inventory. Create             |
@@ -281,7 +281,7 @@ Dodaj maszyny wirtualne VMware na potrzeby tworzenia kopii zapasowych. Grupy och
 
 1. Na stronie **Wybierz metodę ochrony danych** wprowadź nazwę grupy ochrony i ustawienia ochrony. Aby utworzyć kopię zapasową na platformie Azure, ustaw krótkoterminową ochronę na **dysku** i Włącz ochronę w trybie online. Następnie kliknij przycisk **Next** (Dalej).
 
-    ![Wybieranie metody ochrony danych](./media/backup-azure-backup-server-vmware/name-protection-group.png)
+    ![Wybierz metodę ochrony danych](./media/backup-azure-backup-server-vmware/name-protection-group.png)
 
 1. W obszarze **Określ cele krótkoterminowe**Określ, jak długo mają być przechowywane kopie zapasowe danych na dysku.
    - W obszarze **Zakres przechowywania**Określ, ile dni mają być przechowywane punkty odzyskiwania dysków.

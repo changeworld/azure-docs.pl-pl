@@ -3,12 +3,12 @@ title: Tabela obsługi usługi Azure Backup
 description: Zawiera podsumowanie ustawień obsługi i ograniczeń dotyczących usługi Azure Backup.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 788da5708178cfa533d4382a4a417cef73f46a5e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: d036e527880a98d323e8de2f3a8721d7e12dbb07
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363840"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78932794"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Macierz obsługi dla Azure Backup
 
@@ -84,7 +84,7 @@ W tym miejscu nowości są obsługiwane, jeśli chcesz utworzyć kopię zapasow�
 
 ## <a name="daylight-saving-time-support"></a>Obsługa czasu letniego
 
-Azure Backup nie obsługuje automatycznego dostosowania zegara w przypadku czasu letniego dla kopii zapasowych maszyny wirtualnej platformy Azure. Zmodyfikuj ręcznie zasady tworzenia kopii zapasowych zgodnie z potrzebami.
+Azure Backup nie obsługuje automatycznego dostosowania zegara w przypadku czasu letniego dla kopii zapasowych maszyny wirtualnej platformy Azure. Nie przesuwa ona godziny tworzenia kopii zapasowej do przodu lub do tyłu. Aby zapewnić, że kopia zapasowa jest uruchamiana w żądanym czasie, należy ręcznie zmodyfikować zasady kopii zapasowej zgodnie z wymaganiami.
 
 ## <a name="disk-deduplication-support"></a>Obsługa deduplikacji dysków
 

@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 11/06/2019
-ms.openlocfilehash: bbc62aa153e6ecb5d9ae65c37392c2697b9beaa2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 03/06/2020
+ms.openlocfilehash: 958794cda60d0ce1b0d223b9b5a6c03283022a6c
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979720"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927566"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Informacje o monitorowaniu usługi Azure Machine Learning
 
@@ -38,11 +38,11 @@ W poniższej tabeli wymieniono właściwości dzienników zasobów Azure Machine
 | CustomerSubscriptionId | Identyfikator subskrypcji, w której eksperyment i zadanie zostały przesłane |
 | WorkspaceName | Nazwa obszaru roboczego uczenia maszynowego |
 | NazwaKlastra | Nazwa klastra |
-| provisioningState | Stan przesłania zadania |
+| ProvisioningState | Stan przesłania zadania |
 | ResourceGroupName | Nazwa grupy zasobów |
 | JobName | Nazwa zadania |
 | ClusterId | Identyfikator klastra |
-| Typ zdarzenia | Typ zdarzenia zadania, np., JobSubmitted, JobRunning, JobFailed, JobSucceeded itd. |
+| Klasę | Typ zdarzenia zadania, np., JobSubmitted, JobRunning, JobFailed, JobSucceeded itd. |
 | ExecutionState | Stan zadania (przebieg), np., w kolejce, uruchomione, zakończone powodzeniem, zakończone niepowodzeniem |
 | ErrorDetails | Szczegóły błędu zadania |
 | CreationApiVersion | Wersja interfejsu API użyta do utworzenia zadania |
@@ -61,9 +61,9 @@ W poniższej tabeli wymieniono właściwości dzienników zasobów Azure Machine
 | TimeGenerated | Godzina wygenerowania wpisu dziennika |
 | OperationName | Nazwa operacji skojarzonej ze zdarzeniem dziennika |
 | Kategoria | Nazwa zdarzenia dziennika, AmlComputeClusterNodeEvent |
-| provisioningState | Stan aprowizacji klastra |
+| ProvisioningState | Stan aprowizacji klastra |
 | NazwaKlastra | Nazwa klastra |
-| Clustertype | Typ klastra |
+| clustertype | Typ klastra |
 | CreatedBy | Użytkownik, który utworzył klaster |
 | CoreCount | Liczba rdzeni w klastrze |
 | VmSize | Rozmiar maszyny wirtualnej klastra |
@@ -73,15 +73,15 @@ W poniższej tabeli wymieniono właściwości dzienników zasobów Azure Machine
 | MinimumNodeCount | Minimalna liczba węzłów klastra |
 | MaximumNodeCount | Maksymalna liczba węzłów klastra |
 | NodeDeallocationOption | Jak ma zostać cofnięty przydział węzła |
-| Publisher | Wydawca typu klastra |
+| Wydawca | Wydawca typu klastra |
 | Oferta | Oferta, w której tworzony jest klaster |
-| Jednostka SKU | Jednostka SKU utworzonego węzła/maszyny wirtualnej w klastrze |
+| SKU | Jednostka SKU utworzonego węzła/maszyny wirtualnej w klastrze |
 | Wersja | Wersja obrazu używana podczas tworzenia węzła/maszyny wirtualnej |
 | SubnetId | SubnetId klastra |
 | AllocationState | Stan alokacji klastra |
 | CurrentNodeCount | Bieżąca liczba węzłów klastra |
 | TargetNodeCount | Liczba węzłów docelowych klastra podczas skalowania w górę/w dół |
-| Typ zdarzenia | Typ zdarzenia podczas tworzenia klastra. |
+| Klasę | Typ zdarzenia podczas tworzenia klastra. |
 | NodeIdleTimeSecondsBeforeScaleDown | Czas bezczynności (w sekundach), po którym klaster będzie skalowany w dół |
 | PreemptedNodeCount | Liczba przeniesiona węzłów klastra |
 | IsResizeGrow | Flaga oznaczająca, że klaster jest skalowany w górę |
@@ -109,9 +109,9 @@ W poniższej tabeli wymieniono właściwości dzienników zasobów Azure Machine
 | VmSize | Rozmiar maszyny wirtualnej węzła |
 | VmFamilyName | Rodzina maszyn wirtualnych, do której należy węzeł |
 | VmPriority | Priorytet utworzonego węzła/LowPriority |
-| Publisher | Wydawca obrazu maszyny wirtualnej, np. Microsoft-dsvm |
+| Wydawca | Wydawca obrazu maszyny wirtualnej, np. Microsoft-dsvm |
 | Oferta | Oferta skojarzona z tworzeniem maszyny wirtualnej |
-| Jednostka SKU | Utworzono jednostkę SKU węzła/maszyny wirtualnej |
+| SKU | Utworzono jednostkę SKU węzła/maszyny wirtualnej |
 | Wersja | Wersja obrazu używana podczas tworzenia węzła/maszyny wirtualnej |
 | ClusterCreationTime | Czas utworzenia klastra |
 | ResizeStartTime | Czas rozpoczęcia skalowania klastra w górę/w dół |
@@ -126,15 +126,15 @@ W poniższej tabeli wymieniono właściwości dzienników zasobów Azure Machine
 
 W poniższych tabelach przedstawiono metryki platformy zebrane dla Azure Machine Learning wszystkie metryki są przechowywane w **obszar roboczy usługi Azure Machine Learning**przestrzeni nazw.
 
-**Model**
+**Wzorów**
 
 | Metryka | Jednostka | Opis |
 | ----- | ----- | ----- |
-| Nie można wdrożyć modelu | Liczba | Liczba wdrożeń modelu zakończonych niepowodzeniem. |
-| Rozpoczęto Wdrażanie modelu | Liczba | Liczba uruchomionych wdrożeń modelu. |
-| Wdrażanie modelu powiodło się | Liczba | Liczba wdrożeń modelu, które zakończyły się powodzeniem. |
-| Nie można zarejestrować modelu | Liczba | Liczba rejestracji modelu zakończonych niepowodzeniem. |
-| Rejestrowanie modelu powiodło się | Liczba | Liczba rejestracji modelu zakończonych powodzeniem. |
+| Nie można wdrożyć modelu | Licznik | Liczba wdrożeń modelu zakończonych niepowodzeniem. |
+| Rozpoczęto Wdrażanie modelu | Licznik | Liczba uruchomionych wdrożeń modelu. |
+| Wdrażanie modelu powiodło się | Licznik | Liczba wdrożeń modelu, które zakończyły się powodzeniem. |
+| Nie można zarejestrować modelu | Licznik | Liczba rejestracji modelu zakończonych niepowodzeniem. |
+| Rejestrowanie modelu powiodło się | Licznik | Liczba rejestracji modelu zakończonych powodzeniem. |
 
 **Limit przydziału**
 
@@ -142,19 +142,19 @@ Informacje o limicie przydziału są przeznaczone tylko dla Azure Machine Learni
 
 | Metryka | Jednostka | Opis |
 | ----- | ----- | ----- |
-| Aktywne rdzenie | Liczba | Liczba aktywnych rdzeni obliczeniowych. |
-| Aktywne węzły | Liczba | Liczba aktywnych węzłów. |
-| Rdzenie bezczynne | Liczba | Liczba rdzeni obliczeniowych w bezczynnym stanie. |
-| Węzły bezczynne | Liczba | Liczba bezczynnych węzłów obliczeniowych. |
-| Opuszczanie rdzeni | Liczba | Liczba rdzeni opuszczających. |
-| Opuszczanie węzłów | Liczba | Liczba pozostałych węzłów. |
-| Występujące rdzenie | Liczba | Liczba przeniesiona rdzeni. |
-| Zastępujące węzły | Liczba | Liczba przeniesiona węzłów. |
+| Aktywne rdzenie | Licznik | Liczba aktywnych rdzeni obliczeniowych. |
+| Aktywne węzły | Licznik | Liczba aktywnych węzłów. |
+| Rdzenie bezczynne | Licznik | Liczba rdzeni obliczeniowych w bezczynnym stanie. |
+| Węzły bezczynne | Licznik | Liczba bezczynnych węzłów obliczeniowych. |
+| Opuszczanie rdzeni | Licznik | Liczba rdzeni opuszczających. |
+| Opuszczanie węzłów | Licznik | Liczba pozostałych węzłów. |
+| Występujące rdzenie | Licznik | Liczba przeniesiona rdzeni. |
+| Zastępujące węzły | Licznik | Liczba przeniesiona węzłów. |
 | Procent wykorzystania przydziałów | Procent | Procent użytego przydziału. |
-| Całkowita liczba rdzeni | Liczba | Łączna liczba rdzeni. |
-| Łączna liczba węzłów | Liczba | Łączna liczba węzłów. |
-| Rdzenie, których nie można używać | Liczba | Liczba rdzeni, których nie można używać. |
-| Węzły niezdatne do użytku | Liczba | Liczba węzłów, które nie są używane. |
+| Łączna liczba rdzeni | Licznik | Łączna liczba rdzeni. |
+| Łączna liczba węzłów | Licznik | Łączna liczba węzłów. |
+| Rdzenie, których nie można używać | Licznik | Liczba rdzeni, których nie można używać. |
+| Węzły niezdatne do użytku | Licznik | Liczba węzłów, które nie są używane. |
 
 Poniżej znajdują się wymiary, których można użyć do filtrowania metryk przydziału:
 
@@ -170,9 +170,9 @@ Informacje o przebiegach szkoleniowych.
 
 | Metryka | Jednostka | Opis |
 | ----- | ----- | ----- |
-| Ukończone uruchomienia | Liczba | Liczba ukończonych uruchomień. |
-| Nieudane uruchomienia | Liczba | Liczba nieudanych uruchomień. |
-| Uruchomione uruchomienia | Liczba | Liczba rozpoczętych uruchomień. |
+| Ukończone uruchomienia | Licznik | Liczba ukończonych uruchomień. |
+| Nieudane uruchomienia | Licznik | Liczba nieudanych uruchomień. |
+| Uruchomione uruchomienia | Licznik | Liczba rozpoczętych uruchomień. |
 
 Poniżej znajdują się wymiary, których można użyć do filtrowania metryk przebiegu:
 
@@ -187,7 +187,7 @@ Prawidłowe wartości dla wymiaru RunType są następujące:
 
 | Wartość | Opis |
 | ----- | ----- |
-| Eksperyment | Uruchomienia bez potoku. |
+| Experiment | Uruchomienia bez potoku. |
 | PipelineRun | Uruchomienie potoku, które jest elementem nadrzędnym elementu StepRun. |
 | StepRun | Przebieg kroku potoku. |
 | ReusedStepRun | Przebieg kroku potoku, który ponownie używa poprzedniego przebiegu. |

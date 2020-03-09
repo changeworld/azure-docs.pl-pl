@@ -4,11 +4,11 @@ description: Opisuje, w jaki sposób definicje zasad są używane do ustanawiani
 ms.date: 02/26/2020
 ms.topic: conceptual
 ms.openlocfilehash: 1100248b43dbdf668dc1164651f3d9f941f3f016
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920216"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360239"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 

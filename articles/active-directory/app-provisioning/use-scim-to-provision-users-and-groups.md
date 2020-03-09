@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/01/2020
+ms.date: 03/07/2020
 ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2fda5d1bdd00a601df363bd930e5f2f6d610c7f
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.openlocfilehash: 42fc10c1e7e88e36e4d2174671702e043fb96538
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78208716"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78926845"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Tworzenie punktu końcowego Standard scim i Konfigurowanie aprowizacji użytkowników przy użyciu Azure Active Directory (Azure AD)
 
@@ -33,7 +33,7 @@ Standard scim jest standardową definicją dwóch punktów końcowych:/Users pun
 
 Schemat obiektów użytkownika standardowego i interfejsy API REST do zarządzania zdefiniowane w Standard scim 2,0 (RFC [7642](https://tools.ietf.org/html/rfc7642), [7643](https://tools.ietf.org/html/rfc7643), [7644](https://tools.ietf.org/html/rfc7644)) umożliwiają dostawcom tożsamości i aplikacjom łatwą integrację ze sobą. Deweloperzy aplikacji tworzący punkt końcowy Standard scim można zintegrować z dowolnym klientem zgodnym z standard scim bez konieczności wykonywania niestandardowych zadań.
 
-Automatyzacja aprowizacji do aplikacji wymaga skompilowania i integracji punktu końcowego Standard scim z usługą Azure AD Standard scim. Wykonaj następujące kroki, aby rozpocząć Inicjowanie obsługi administracyjnej użytkowników i grup w aplikacji. 
+Automatyzacja aprowizacji do aplikacji wymaga skompilowania i integracji punktu końcowego Standard scim z klientem usługi Azure AD Standard scim. Wykonaj następujące kroki, aby rozpocząć Inicjowanie obsługi administracyjnej użytkowników i grup w aplikacji. 
     
   * **[Krok 1. Projektowanie schematu użytkownika i grupy.](#step-1-design-your-user-and-group-schema)** Zidentyfikuj obiekty i atrybuty, których potrzebuje aplikacja, i określ, w jaki sposób są one mapowane na schemat użytkownika i grupy obsługiwane przez implementację usługi Azure AD Standard scim.
 
@@ -100,13 +100,13 @@ Następnie można użyć poniższej tabeli, aby zrozumieć, w jaki sposób atryb
 | Użytkownika usługi Azure Active Directory | "urn: ietf:params:scim:schemas:extension:enterprise:2.0:User" |
 | --- | --- |
 | IsSoftDeleted |aktywne |
-|Dział|urn: IETF: params: Standard scim: schematy: rozszerzenie: Enterprise: 2.0: User: Department|
+|department|urn: IETF: params: Standard scim: schematy: rozszerzenie: Enterprise: 2.0: User: Department|
 | displayName |displayName |
 |employeeId|urn: IETF: params: Standard scim: schematy: rozszerzenie: Enterprise: 2.0: User: employeeNumber|
 | Facsimile-TelephoneNumber |wartość phoneNumbers [typ eq "faksu"] |
 | givenName |name.givenName |
-| Stanowisko |Tytuł |
-| poczta |wiadomości e-mail [typ eq "Praca"] .value |
+| Stanowisko |title |
+| mail (poczta) |wiadomości e-mail [typ eq "Praca"] .value |
 | mailNickname |externalId |
 | Menedżer |urn: IETF: params: Standard scim: schematy: rozszerzenie: Enterprise: 2.0: User: Manager |
 | Telefon komórkowy |wartość phoneNumbers [eq wpisz "wyraz mobile"] |
@@ -114,7 +114,7 @@ Następnie można użyć poniższej tabeli, aby zrozumieć, w jaki sposób atryb
 | proxy-Addresses |wiadomości e-mail [Wpisz eq "other"]. Wartość |
 | physical-Delivery-OfficeName |adresy [Wpisz eq "other"]. Sformatowany |
 | Adres |.streetAddress adresy [typ eq "Praca"] |
-| nazwisko |name.familyName |
+| surname |name.familyName |
 | Numer telefonu |wartość phoneNumbers [typ eq "Praca"] |
 | user-PrincipalName |userName |
 
@@ -124,7 +124,7 @@ Następnie można użyć poniższej tabeli, aby zrozumieć, w jaki sposób atryb
 | Grupa usługi Azure Active Directory | urn:ietf:params:scim:schemas:core:2.0:Group |
 | --- | --- |
 | displayName |displayName |
-| poczta |wiadomości e-mail [typ eq "Praca"] .value |
+| mail (poczta) |wiadomości e-mail [typ eq "Praca"] .value |
 | mailNickname |displayName |
 | członkowie |członkowie |
 | Identyfikator obiektu |externalId |
@@ -560,7 +560,7 @@ Ta sekcja zawiera przykładowe żądania Standard scim emitowane przez klienta u
 * Aktualizacja żądania poprawek grupy powinna spowodować, że w odpowiedzi *nie ma żadnej zawartości HTTP 204* . Zwracanie treści z listą wszystkich elementów członkowskich nie jest zalecane.
 * Nie trzeba obsługiwać zwracania wszystkich elementów członkowskich grupy.
 
-#### <a name="create-group"></a>Utwórz grupę
+#### <a name="create-group"></a>Tworzenie grupy
 
 ##### <a name="request-7"></a>Żądając
 
@@ -752,7 +752,7 @@ Minimalny pasek mechanizmów szyfrowania TLS 1,2:
 
 ## <a name="step-3-build-a-scim-endpoint"></a>Krok 3. Tworzenie punktu końcowego Standard scim
 
-Teraz, gdy desidned schemat i rozumiesz implementację usługi Azure AD Standard scim, możesz rozpocząć tworzenie punktu końcowego Standard scim. Zamiast zaczynać od początku i całkowicie samodzielnie kompilować implementację, możesz polegać na wielu bibliotekach Standard scim typu open source opublikowanych przez Standard scim commuinty.  
+Teraz, Po zaprojektowaniu schematu i zrozumieniu implementacji usługi Azure AD Standard scim, możesz rozpocząć tworzenie punktu końcowego Standard scim. Zamiast zaczynać od początku i całkowicie samodzielnie kompilować implementację, możesz polegać na wielu bibliotekach Standard scim typu open source opublikowanych przez Standard scim commuinty.  
 [Kod referencyjny](https://aka.ms/SCIMReferenceCode) programu .NET Core typu open source Opublikowany przez zespół aprowizacji usługi Azure AD jest jednym z zasobów, które mogą szybko rozpocząć programowanie. Po skompilowaniu punktu końcowego Standard scim należy go przetestować. Można użyć kolekcji [testów post](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint) dostarczonych jako część kodu odwołania lub wykonać przez przykładowe żądania/odpowiedzi podane [powyżej](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#user-operations).  
 
 Uwaga: kod referencyjny ma pomóc w rozpoczęciu tworzenia punktu końcowego Standard scim i jest dostarczany "w takiej postaci, w jakiej jest". Wkłady ze społeczności pomogą Ci pomóc w tworzeniu i utrzymaniu kodu. 
@@ -872,7 +872,7 @@ Aby zwiększyć świadomość i zapotrzebowanie naszej integracji, Zalecamy zakt
 
 Niektóre aplikacje zezwalają na ruch przychodzący do swojej aplikacji. Aby usługa Azure AD Provisioning działała zgodnie z oczekiwaniami, używane adresy IP muszą być dozwolone. Aby uzyskać listę adresów IP dla każdego tagu usługi/regionu, zobacz plik JSON — [zakresy adresów IP platformy Azure i Tagi usług — chmura publiczna](https://www.microsoft.com/download/details.aspx?id=56519). W razie konieczności można pobrać i obsłużyć te adresy IP w zaporze. Zakresy zarezerwowanych adresów IP dla aprowizacji usługi Azure AD można znaleźć w obszarze "AzureActiveDirectoryDomainServices".
 
-## <a name="related-articles"></a>Pokrewne artykuły:
+## <a name="related-articles"></a>Pokrewne artykuły
 
 * [Automatyzowanie aprowizacji użytkowników i anulowanie obsługi aplikacji SaaS](user-provisioning.md)
 * [Dostosuj mapowania atrybutów na potrzeby aprowizacji użytkowników](customize-application-attributes.md)

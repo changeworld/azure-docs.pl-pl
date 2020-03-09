@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/07/2020
-ms.openlocfilehash: 032d4793576e2fb9b8de9e36666548e5bffb9460
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: a85d9ebb03ea0c9ebe078ad49ce6bbf40a5b004d
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78898261"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927541"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>Wsparcie dla komercyjnego programu w witrynie Marketplace w centrum partnerskim
 
@@ -27,9 +27,9 @@ Firma Microsoft zapewnia pomoc techniczną dla wielu różnych produktów i usł
 
 1. Zaloguj się do [komercyjnego programu Marketplace w centrum partnerskim](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) przy użyciu swojego konta służbowego. (Jeśli jeszcze tego nie zrobiono, należy [utworzyć konto Centrum partnerskiego](./create-account.md)).
 
-1. W górnym menu po prawej stronie strony wybierz ikonę **obsługi** . 
+2. W górnym menu po prawej stronie strony wybierz ikonę **obsługi** . 
  
-1. Po prawej stronie strony zostanie wyświetlone okienko **Pomoc i obsługa techniczna** . 
+3. Po prawej stronie strony zostanie wyświetlone okienko **Pomoc i obsługa techniczna** . 
  
    ![Menu rozwijane obsługa](./media/commercial-marketplace-support-pane.png)
 
@@ -37,11 +37,11 @@ Firma Microsoft zapewnia pomoc techniczną dla wielu różnych produktów i usł
 
    ![Pomoc i obsługa techniczna ze strony głównej](./media/homepage-help-support.png)
 
-1. Wybierz **[dokumentację](../index.md)** , aby przejrzeć kompleksowe odpowiedzi na pytania i zasoby. 
+4. Wybierz **[dokumentację](../index.yml)** , aby przejrzeć kompleksowe odpowiedzi na pytania i zasoby. 
 
-1. Wybierz **[forum społeczności partnerów w portalu Marketplace](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** , aby odpowiedzieć na pytania, korzystając z wiedzy innych wydawców firmy Microsoft. 
+5. Wybierz **[forum społeczności partnerów w portalu Marketplace](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** , aby odpowiedzieć na pytania, korzystając z wiedzy innych wydawców firmy Microsoft. 
 
-1. Wybierz **[dodatkową pomoc](https://aka.ms/marketplacepublishersupport)** , aby otworzyć **nowy bilet żądania pomocy technicznej** .  
+6. Wybierz **[dodatkową pomoc](https://aka.ms/marketplacepublishersupport)** , aby otworzyć **nowy bilet żądania pomocy technicznej** .  
 
 ## <a name="how-to-open-a-support-ticket"></a>Jak otworzyć bilet pomocy technicznej
 

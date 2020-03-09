@@ -8,22 +8,22 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: dech
-ms.openlocfilehash: 117d4a5c1c4ac00e6d6a561f7dc4254a15a24f9c
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: 729fd776321a90257289dcf92f13079a8206d9d9
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78330689"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927428"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>Szybki Start: Używanie środowiska Node. js do nawiązywania połączenia i wykonywania zapytań dotyczących danych z Azure Cosmos DB konta interfejsu API SQL
 
 > [!div class="op_single_selector"]
-> * [.NET V3](create-sql-api-dotnet.md)
-> * [.NET V4](create-sql-api-dotnet-V4.md)
-> * [Java](create-sql-api-java.md)
-> * [Node.js](create-sql-api-nodejs.md)
-> * [Python](create-sql-api-python.md)
-> * [Xamarin](create-sql-api-xamarin-dotnet.md)
+> - [.NET V3](create-sql-api-dotnet.md)
+> - [.NET V4](create-sql-api-dotnet-V4.md)
+> - [Java](create-sql-api-java.md)
+> - [Node.js](create-sql-api-nodejs.md)
+> - [Python](create-sql-api-python.md)
+> - [Xamarin](create-sql-api-xamarin-dotnet.md)
 
 W tym przewodniku szybki start utworzysz konto Azure Cosmos DB interfejsu API SQL z Azure Portal i zarządzasz nim, a następnie korzystasz z aplikacji node. js sklonowanej z usługi GitHub. Azure Cosmos DB to wielomodelowa usługa bazy danych, która pozwala szybko tworzyć i wysyłać zapytania dotyczące dokumentów, tabel, kluczy i wartościowych baz danych przy użyciu dystrybucji globalnej i możliwości skalowania w poziomie.
 
@@ -39,7 +39,7 @@ W tym celu szybkiego startu możesz użyć opcji [wypróbuj Azure Cosmos DB bezp
 
 1. Przejdź do strony [wypróbuj Azure Cosmos DB bezpłatnie](https://azure.microsoft.com/try/cosmosdb/) .
 
-1. Wybierz konto interfejsu API **SQL** i wybierz pozycję **Utwórz**. Zaloguj się przy użyciu konto Microsoft, takich jak Outlook.
+1. Wybierz konto interfejsu API **SQL** i wybierz pozycję **Utwórz**. Zaloguj się przy użyciu konto Microsoft.
 
 1. Po pomyślnym zalogowaniu Twoje konto usługi Azure Cosmos powinno być gotowe. Wybierz pozycję **Otwórz w Azure Portal** , aby otworzyć nowo utworzone konto.
 
@@ -47,26 +47,26 @@ Opcja "Wypróbuj Azure Cosmos DB bezpłatnie" nie wymaga subskrypcji platformy A
 
 ## <a name="add-a-container"></a>Dodawanie kontenera
 
-Teraz można użyć narzędzia Eksplorator danych w Azure Portal, aby utworzyć bazę danych i kontener. 
+Teraz można użyć narzędzia Eksplorator danych w Azure Portal, aby utworzyć bazę danych i kontener.
 
-1. Wybierz pozycję **Eksplorator danych** > **nowy kontener**. 
-    
-    Obszar **Dodaj kontener** jest wyświetlany po prawej stronie, może być konieczne przewinięcie w prawo w celu wyświetlenia go.
+1. Wybierz pozycję **Eksplorator danych** > **nowy kontener**.
 
-    ![Azure Portal Eksplorator danych, Dodaj okienko kontenera](./media/create-sql-api-nodejs/azure-cosmosdb-data-explorer.png)
+   Obszar **Dodaj kontener** jest wyświetlany po prawej stronie, może być konieczne przewinięcie w prawo w celu wyświetlenia go.
+
+   ![Azure Portal Eksplorator danych, Dodaj okienko kontenera](./media/create-sql-api-nodejs/azure-cosmosdb-data-explorer.png)
 
 2. Na stronie **Dodawanie kontenera** wprowadź ustawienia dla nowego kontenera.
 
-    |Ustawienie|Sugerowana wartość|Opis
-    |---|---|---|
-    |**Identyfikator bazy danych**|Zadania|Wprowadź *Zadania* jako nazwę nowej bazy danych. Nazwy baz danych muszą zawierać od 1 do 255 znaków i nie mogą zawierać znaków `/, \\, #, ?` ani mieć spacji na końcu. Sprawdź opcję **zainicjuj przepływność bazy danych** , która umożliwia udostępnianie przepływności dla bazy danych we wszystkich kontenerach w bazie danych. Ta opcja pomaga również w obniżyć kosztów. |
-    |**Przepływność**|400|Pozostaw przepływność na 400 jednostek żądań na sekundę (RU/s). Jeśli chcesz zmniejszyć opóźnienie, możesz później przeskalować przepływność w górę.| 
-    |**Identyfikator kontenera**|Items|Wprowadź *elementy* jako nazwę nowego kontenera. Identyfikatory kontenerów mają takie same wymagania dotyczące znaków jak nazwy baz danych.|
-    |**Klucz partycji**| /category| W przykładzie opisanym w tym artykule jest stosowany */Category* jako klucz partycji.|
-    
-    Oprócz powyższych ustawień można opcjonalnie dodać **unikatowe klucze** dla kontenera. W tym przykładzie pozostawmy pole puste. Unikatowe klucze umożliwiają deweloperom dodanie warstwy integralności danych do bazy danych. Tworząc unikatowe Zasady kluczy podczas tworzenia kontenera, należy zapewnić unikatowość jednej lub więcej wartości na klucz partycji. Aby dowiedzieć się więcej, zapoznaj się z artykułem [Unique keys in Azure Cosmos DB (Unikatowe klucze w usłudze Azure Cosmos DB)](unique-keys.md).
-    
-    Kliknij przycisk **OK**. W Eksplorator danych zostanie wyświetlona nowa baza danych i kontener.
+   | Ustawienie           | Sugerowana wartość | Opis                                                                                                                                                                                                                                                                                                                                                                           |
+   | ----------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Identyfikator bazy danych**   | Zadania           | Wprowadź _Zadania_ jako nazwę nowej bazy danych. Nazwy baz danych muszą zawierać od 1 do 255 znaków i nie mogą zawierać znaków `/, \\, #, ?` ani mieć spacji na końcu. Sprawdź opcję **zainicjuj przepływność bazy danych** , która umożliwia udostępnianie przepływności dla bazy danych we wszystkich kontenerach w bazie danych. Ta opcja pomaga również w obniżyć kosztów. |
+   | **Przepływność**    | 400             | Pozostaw przepływność na 400 jednostek żądań na sekundę (RU/s). Jeśli chcesz zmniejszyć opóźnienie, możesz później przeskalować przepływność w górę.                                                                                                                                                                                                                                                    |
+   | **Identyfikator kontenera**  | Items           | Wprowadź _elementy_ jako nazwę nowego kontenera. Identyfikatory kontenerów mają takie same wymagania dotyczące znaków jak nazwy baz danych.                                                                                                                                                                                                                                                               |
+   | **Klucz partycji** | /category       | W przykładzie opisanym w tym artykule jest stosowany _/Category_ jako klucz partycji.                                                                                                                                                                                                                                                                                                           |
+
+   Oprócz powyższych ustawień można opcjonalnie dodać **unikatowe klucze** dla kontenera. W tym przykładzie pozostawmy pole puste. Unikatowe klucze umożliwiają deweloperom dodanie warstwy integralności danych do bazy danych. Tworząc unikatowe Zasady kluczy podczas tworzenia kontenera, należy zapewnić unikatowość jednej lub więcej wartości na klucz partycji. Aby dowiedzieć się więcej, zapoznaj się z artykułem [Unique keys in Azure Cosmos DB (Unikatowe klucze w usłudze Azure Cosmos DB)](unique-keys.md).
+
+   Kliknij przycisk **OK**. W Eksplorator danych zostanie wyświetlona nowa baza danych i kontener.
 
 ## <a name="add-sample-data"></a>Dodawanie danych przykładowych
 
@@ -92,9 +92,21 @@ Ten krok jest opcjonalny. Jeśli chcesz dowiedzieć się, jak zasoby bazy danych
 
 Jeśli znasz poprzednią wersję zestawu SDK JavaScript języka SQL, możesz użyć, aby wyświetlić _kolekcje_ terminów i _dokument_. Ponieważ Azure Cosmos DB obsługuje [wiele modeli interfejsów API](introduction.md), [wersja 2.0 + zestawu JavaScript SDK](https://www.npmjs.com/package/@azure/cosmos) używa _kontenera_warunków ogólnych, który może być kolekcją, wykresem lub tabelą i _elementem_ do opisywania zawartości kontenera.
 
+Cosmos DB zestawu SDK języka JavaScript nazywa się "@azure/cosmos" i można go zainstalować z npm...
+
+```bash
+npm install @azure/cosmos
+```
+
 Wszystkie poniższe fragmenty kodu pochodzą z pliku _app.js_.
 
-- Obiekt `CosmosClient` jest zainicjowany.
+- `CosmosClient` jest zaimportowana z pakietu `@azure/cosmos` npm.
+
+  ```javascript
+  const CosmosClient = require("@azure/cosmos").CosmosClient;
+  ```
+
+- Nowy obiekt `CosmosClient` zostanie zainicjowany.
 
   ```javascript
   const client = new CosmosClient({ endpoint, key });
@@ -123,8 +135,6 @@ Wszystkie poniższe fragmenty kodu pochodzą z pliku _app.js_.
   const { resources: results } = await container.items
     .query(querySpec)
     .fetchAll();
-
-  return results;
   ```
 
 - Utwórz nowy element
@@ -142,8 +152,6 @@ Wszystkie poniższe fragmenty kodu pochodzą z pliku _app.js_.
   const { resource: itemToUpdate } = await container
     .item(id, category)
     .replace(itemToUpdate);
-
-  return result;
   ```
 
 - Usuń element
@@ -175,11 +183,13 @@ Teraz wróć do Azure Portal, aby uzyskać szczegóły parametrów połączenia 
 
 ## <a name="run-the-app"></a>Uruchamianie aplikacji
 
-1. Uruchom polecenie `npm install` w terminalu, aby zainstalować wymagane moduły npm.
+1. Uruchom `npm install` w terminalu, aby zainstalować pakiet npm "@azure/cosmos"
 
 2. Uruchom polecenie `node app.js` w terminalu, aby uruchomić aplikację Node.
 
-Teraz możesz wrócić do Eksplorator danych, modyfikować i pracy z nowymi danymi.
+3. Dwa elementy, które zostały utworzone wcześniej w tym przewodniku Szybki Start, są wymienione na liście. Zostanie utworzony nowy element. Flaga "IsComplete" w tym elemencie jest aktualizowana do wartości "true", a następnie jest usuwana.
+
+Możesz kontynuować eksperymentowanie z tą przykładową aplikacją lub wrócić do Eksplorator danych, modyfikować i pracę z danymi.
 
 ## <a name="review-slas-in-the-azure-portal"></a>Przeglądanie umów SLA w witrynie Azure Portal
 

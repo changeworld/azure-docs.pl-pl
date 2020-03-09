@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/16/2018
+ms.date: 03/06/2020
 ms.author: radeltch
-ms.openlocfilehash: 06c92797f2cab96a9e0c423b0f0f754e57b99b14
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: fb73bf6af46ce8303e1be80d1bfc7303f95cda06
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598446"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927343"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Konfigurowanie program Pacemaker w systemie SUSE Linux Enterprise Server na platformie Azure
 
@@ -328,6 +328,16 @@ Następujące elementy są poprzedzone **[A]** -dotyczy wszystkie węzły, **[1]
    <pre><code>sudo zypper in socat
    </code></pre>
 
+1. **[A]** Zainstaluj składnik Azure-lb, który jest wymagany dla zasobów klastra
+
+   <pre><code>sudo zypper in resource-agents
+   </code></pre>
+
+   > [!NOTE]
+   > Sprawdź wersję agentów zasobów pakietu i upewnij się, że spełnione są wymagania dotyczące minimalnej wersji:  
+   > - W przypadku SLES 12 SP4/SP5 wersja musi być co najmniej równa "Resource-Agents-4.3.018. a7fb5035-3.30.1.  
+   > - W przypadku programu SLES 15/15 z dodatkiem SP1 wersja musi być co najmniej równa "Resource-Agents-4.3.0184.6 ee15eb2-4.13.1.  
+
 1. **[A]** Skonfiguruj system operacyjny
 
    W niektórych przypadkach program Pacemaker tworzy wiele procesów, a tym samym przekroczy dozwolona liczba procesów. W takim przypadku pulsu między węzłami klastra może zakończyć się niepowodzeniem i prowadzić do trybu failover zasobów. Zalecamy zwiększenie maksymalna liczba dozwolonych procesów, ustawiając następujący parametr.
@@ -607,9 +617,9 @@ sudo crm configure primitive <b>stonith-sbd</b> stonith:external/sbd \
 
 Platforma Azure oferuje [zaplanowane zdarzenia](https://docs.microsoft.com/azure/virtual-machines/linux/scheduled-events). Zaplanowane zdarzenia są udostępniane za pośrednictwem usługi meta-danych i umożliwiają czas przygotowania aplikacji do zdarzeń takich jak zamknięcie maszyny wirtualnej, ponowne wdrożenie maszyny wirtualnej itp. Agent zasobów **[Azure — monitorowanie zdarzeń](https://github.com/ClusterLabs/resource-agents/pull/1161)** dla zaplanowanych zdarzeń platformy Azure. Jeśli zostaną wykryte zdarzenia, Agent podejmie próbę zatrzymania wszystkich zasobów na maszynie wirtualnej, której to dotyczy, i przenieść je do innego węzła w klastrze. Aby uzyskać więcej zasobów Pacemaker, należy skonfigurować. 
 
-1. **[A]** Zainstaluj agenta **zdarzeń platformy Azure** . 
+1. **[A]** upewnij się, że pakiet agenta **usługi Azure-Events** jest już zainstalowany i aktualny. 
 
-<pre><code>sudo zypper install resource-agents
+<pre><code>sudo zypper info resource-agents
 </code></pre>
 
 2. **[1]** Skonfiguruj zasoby w Pacemaker. 

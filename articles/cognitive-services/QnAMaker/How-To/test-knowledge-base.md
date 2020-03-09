@@ -1,22 +1,14 @@
 ---
 title: Jak przetestować wiedzy — QnA Maker
-titleSuffix: Azure Cognitive Services
 description: Testowanie bazy wiedzy usługi QnA Maker jest ważną częścią proces iteracyjny, aby poprawić dokładność odpowiedzi zostały zwrócone. Możesz przetestować wiedzy za pośrednictwem czatu rozszerzonego interfejsu, który umożliwia także, że możesz wprowadzać zmiany.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: c139d3a740067e3cecaff90d3171d7b0cb3d52c7
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.date: 03/05/2020
+ms.openlocfilehash: da4988ced0b077952ce64e6227d16e58d40ae329
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091754"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927274"
 ---
 # <a name="test-your-knowledge-base-in-qna-maker"></a>Przetestuj bazę wiedzy w QnA Maker
 
@@ -49,26 +41,26 @@ Sprawdzasz szczegóły wyniku testu w panelu Inspekcja.
 
 ### <a name="correct-the-top-scoring-answer"></a>Popraw górnej oceniania odpowiedzi
 
-Jeśli u góry oceniania odpowiedzi jest niepoprawny, wybierz poprawną odpowiedź z listy i wybierz przycisk **Zapisz i szkolenie**.
+Jeśli Górna odpowiedź oceniania jest niepoprawna, wybierz odpowiednią odpowiedź z listy i wybierz pozycję **Zapisz i pouczenie**.
 
 ![Popraw górnej oceniania odpowiedzi](../media/qnamaker-how-to-test-kb/choose-answer.png)
 
 ### <a name="add-alternate-questions"></a>Dodaj alternatywne pytania
 
-Możesz dodać inne formy pytanie do danej odpowiedzi. Typ odpowiedzi alternatywna w polu tekstowym i kliknij przycisk enter, aby je dodać. Wybierz **Zapisz i szkolenie** do przechowywania aktualizacji.
+Możesz dodać inne formy pytanie do danej odpowiedzi. Typ odpowiedzi alternatywna w polu tekstowym i kliknij przycisk enter, aby je dodać. Wybierz pozycję **Zapisz i pouczenie** , aby zapisać aktualizacje.
 
 ![Dodaj alternatywne pytania](../media/qnamaker-how-to-test-kb/add-alternate-question.png)
 
 ### <a name="add-a-new-answer"></a>Dodaj nową odpowiedź
 
-Jeśli któreś z istniejących odpowiedzi, które zostały dopasowane są niepoprawne lub odpowiedź nie istnieje w bazie wiedzy knowledge base (nie dobre znaleziono odpowiedników w KB), możesz dodać nową odpowiedź. 
+Jeśli któreś z istniejących odpowiedzi, które zostały dopasowane są niepoprawne lub odpowiedź nie istnieje w bazie wiedzy knowledge base (nie dobre znaleziono odpowiedników w KB), możesz dodać nową odpowiedź.
 
-W dolnej części listy odpowiedzi Użyj pola tekstowego, aby wprowadzić nową odpowiedź, i naciśnij klawisz ENTER, aby go dodać. 
+W dolnej części listy odpowiedzi Użyj pola tekstowego, aby wprowadzić nową odpowiedź, i naciśnij klawisz ENTER, aby go dodać.
 
-Wybierz **Zapisz i szkolenie** można utrwalić tej odpowiedzi. Nową parę odpowiedź na pytanie został dodany do bazy wiedzy. 
+Wybierz pozycję **Zapisz i poszkol,** aby zachować tę odpowiedź. Nową parę odpowiedź na pytanie został dodany do bazy wiedzy.
 
 > [!NOTE]
-> Wszystkie zmiany do bazy wiedzy tylko są zapisywane po naciśnięciu klawisza **Zapisz i szkolenie** przycisku.
+> Wszystkie zmiany w bazie wiedzy są zapisywane tylko po naciśnięciu przycisku **Zapisz i pouczenie** .
 
 ### <a name="test-the-published-knowledge-base"></a>Testowanie opublikowanej bazy wiedzy
 
@@ -83,12 +75,14 @@ Użyj narzędzia testowania wsadowego, gdy chcesz:
 * Określanie najważniejszych odpowiedzi i wyników dla zestawu pytań
 * Weryfikuj oczekiwaną odpowiedź dla zestawu pytań
 
-Testy wsadowe są udostępniane za pomocą narzędzia do testowania wsadowego. To narzędzie jest dostępne jako [spakowany plik wykonywalny](https://aka.ms/qnamakerbatchtestingtool) do pobrania lub jako [ C# kod źródłowy](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/batchtesting). 
+Zapoznaj się z [samouczkiem](../Quickstarts/batch-testing.md) dotyczącym testowania partii, aby uzyskać instrukcje krok po kroku.
+
+Testy wsadowe są udostępniane za pomocą narzędzia do testowania wsadowego. To narzędzie jest dostępne jako [spakowany plik wykonywalny](https://aka.ms/qnamakerbatchtestingtool) do pobrania lub jako [ C# kod źródłowy](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/batchtesting).
 
 [Dokumentacja dotycząca narzędzia](../reference-tsv-format-batch-testing.md) zawiera następujące informacje:
 
 * przykładowy wiersz polecenia narzędzia
-* Format plików wejściowych i wyjściowych TSV 
+* Format plików wejściowych i wyjściowych TSV
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -3,12 +3,12 @@ title: Macierz obsługi dla agenta MARS
 description: Ten artykuł zawiera podsumowanie Azure Backup pomocy technicznej podczas tworzenia kopii zapasowej maszyn, na których jest uruchomiony agent Microsoft Azure Recovery Services (MARS).
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 515ca065914dc535c1ba21fdb5ac574e3987ca32
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 6085bc647c06b5907282460a2d8706b8549e1bc2
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78669116"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78932802"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Macierz obsługi kopii zapasowej za pomocą agenta Microsoft Azure Recovery Services (MARS)
 
@@ -158,7 +158,7 @@ Windows 7| 1 700 GB
 
 **Typ** | **Pomoc techniczna**
 --- | ---
-Zaszyfrowane| Obsługiwane.
+Zaszyfrowane<sup>*</sup>| Obsługiwane.
 Skompresowane | Obsługiwane.
 Rozrzedzone | Obsługiwane.
 Skompresowane i rozrzedzone |Obsługiwane.
@@ -169,6 +169,8 @@ Skompresowany strumień| Nieobsługiwane. Pominięto.
 Rozrzedzony strumień| Nieobsługiwane. Pominięto.
 OneDrive (synchronizowane pliki to strumienie rozrzedzone)| Nieobsługiwane.
 Foldery z włączonym Replikacja systemu plików DFS | Nieobsługiwane.
+
+\* upewnij się, że Agent MARS ma dostęp do wymaganych certyfikatów, aby uzyskać dostęp do zaszyfrowanych plików. Niedostępne pliki zostaną pominięte.
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>Obsługiwane dyski lub woluminy na potrzeby tworzenia kopii zapasowych
 

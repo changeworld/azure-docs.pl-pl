@@ -15,11 +15,11 @@ ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 002d374f5be606688121ef4a3952383567c43e85
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685160"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363522"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>Szybki start: tworzenie maszyny wirtualnej z systemem Windows w witrynie Azure Portal
 
@@ -27,7 +27,7 @@ Maszyny wirtualne platformy Azure można utworzyć za pomocą witryny Azure Port
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
@@ -40,7 +40,7 @@ Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
     ![Tworzenie nowej grupy zasobów dla maszyny wirtualnej](./media/quick-create-portal/project-details.png)
 
-1. W obszarze **szczegóły wystąpienia**wpisz *myVM* dla **nazwy maszyny wirtualnej** i wybierz pozycję *Wschodnie stany USA* dla **regionu**, a następnie wybierz pozycję *Windows Server 2019 Datacenter* dla tego **obrazu**. Inne wartości pozostaw domyślne.
+1. W obszarze **szczegóły wystąpienia**wpisz *myVM* dla **nazwy maszyny wirtualnej** i wybierz pozycję *Wschodnie stany USA* dla **regionu**, a następnie wybierz pozycję *Windows Server 2019 Datacenter* dla tego **obrazu**. Pozostaw inne wartości domyślne.
 
     ![Sekcja Szczegóły wystąpienia](./media/quick-create-portal/instance-details.png)
 

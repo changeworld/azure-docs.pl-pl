@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/15/2019
+ms.date: 03/06/2020
 ms.author: radeltch
-ms.openlocfilehash: efba617f9aeefa2e9374f5a7551338e003e70f56
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 58e7eea487c5d00a33338a592dd064072bef3c64
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598735"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78926692"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Wysoka dostępność systemu plików NFS na maszynach wirtualnych platformy Azure na SUSE Linux Enterprise Server
 
@@ -78,7 +78,7 @@ Najpierw przeczytaj następujące informacje i dokumenty SAP
 * [SUSE Linux Enterprise Server for SAP Applications 12 SP3 — wskazówki dotyczące najlepszych rozwiązań][sles-for-sap-bp]
 * [Informacje o wersji w programie SUSE High Availability Extension 12 SP3][suse-ha-12sp3-relnotes]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Aby zapewnić wysoką dostępność, rozwiązanie SAP NetWeaver wymaga serwera NFS. Serwer NFS jest skonfigurowany w osobnym klastrze i może być używany przez wiele systemów SAP.
 
@@ -153,7 +153,7 @@ Najpierw należy utworzyć maszyny wirtualne dla tego klastra systemu plików NF
             1. Wybierz Virtual Network
             1. Kliknij pozycję Dodaj maszynę wirtualną
             1. Wybierz Maszyny wirtualne klastra NFS i ich adresy IP.
-            1. Kliknij przycisk Dodaj.
+            1. Kliknij pozycję Add (Dodaj).
          1. Połączono z podstawowymi interfejsami sieciowymi wszystkich maszyn wirtualnych, które powinny być częścią klastra NFS dla NW2
             * Powtórz powyższe kroki, aby utworzyć pulę zaplecza dla NW2
       1. Tworzenie sond kondycji
@@ -478,7 +478,12 @@ Następujące elementy są poprzedzone **[A]** -dotyczy wszystkie węzły, **[1]
 
    > [!IMPORTANT]
    > Ostatnie testy ujawniły sytuacje, w których netcat przestaje odpowiadać na żądania z powodu zaległości i ograniczenia obsługi tylko jednego połączenia. Zasób netcat przestaje nasłuchiwać żądań modułu równoważenia obciążenia platformy Azure, a przestawny adres IP stał się niedostępny.  
-   > W przypadku istniejących klastrów Pacemaker zalecamy zastępowanie netcat z socat, postępując zgodnie z instrukcjami w obszarze zabezpieczenia [wykrywania modułu równoważenia obciążenia platformy Azure](https://www.suse.com/support/kb/doc/?id=7024128). Należy pamiętać, że zmiana będzie wymagała krótkiego przestoju.  
+   > W przypadku istniejących klastrów Pacemaker zalecamy w przeszłości zastępowanie netcat socat. Obecnie zalecamy korzystanie z agenta zasobów Azure-lb, który jest częścią agentów zasobów pakietu, z następującymi wymaganiami dotyczącymi wersji pakietu:
+   > - W przypadku SLES 12 SP4/SP5 wersja musi być co najmniej równa "Resource-Agents-4.3.018. a7fb5035-3.30.1.  
+   > - W przypadku programu SLES 15/15 z dodatkiem SP1 wersja musi być co najmniej równa "Resource-Agents-4.3.0184.6 ee15eb2-4.13.1.  
+   >
+   > Należy pamiętać, że zmiana będzie wymagała krótkiego przestoju.  
+   > W przypadku istniejących klastrów Pacemaker, jeśli konfiguracja została już zmieniona tak, aby korzystała z socat zgodnie z opisem w zabezpieczeniach [wykrywania modułu równoważenia obciążenia platformy Azure](https://www.suse.com/support/kb/doc/?id=7024128), nie ma potrzeby natychmiastowego przełączania do agenta zasobów Azure-LB.
 
    <pre><code>sudo crm configure rsc_defaults resource-stickiness="200"
 
@@ -515,9 +520,7 @@ Następujące elementy są poprzedzone **[A]** -dotyczy wszystkie węzły, **[1]
      IPaddr2 \
      params ip=<b>10.0.0.4</b> cidr_netmask=<b>24</b> op monitor interval=10 timeout=20
    
-   sudo crm configure primitive nc_<b>NW1</b>_nfs \
-     anything \
-     params binfile="/usr/bin/socat" cmdline_options="-U TCP-LISTEN:<b>61000</b>,backlog=10,fork,reuseaddr /dev/null" op monitor timeout=20s interval=10 depth=0
+   sudo crm configure primitive nc_<b>NW1</b>_nfs azure-lb port=<b>61000</b>
    
    sudo crm configure group g-<b>NW1</b>_nfs \
      fs_<b>NW1</b>_sapmnt exportfs_<b>NW1</b> nc_<b>NW1</b>_nfs vip_<b>NW1</b>_nfs
@@ -554,15 +557,13 @@ Następujące elementy są poprzedzone **[A]** -dotyczy wszystkie węzły, **[1]
    sudo crm configure primitive exportfs_<b>NW2</b> \
      ocf:heartbeat:exportfs \
      params directory="/srv/nfs/<b>NW2</b>" \
-     options="rw,no_root_squash" clientspec="*" fsid=2 wait_for_leasetime_on_stop=true op monitor interval="30s"
+     options="rw,no_root_squash,crossmnt" clientspec="*" fsid=2 wait_for_leasetime_on_stop=true op monitor interval="30s"
    
    sudo crm configure primitive vip_<b>NW2</b>_nfs \
      IPaddr2 \
      params ip=<b>10.0.0.5</b> cidr_netmask=<b>24</b> op monitor interval=10 timeout=20
    
-   sudo crm configure primitive nc_<b>NW2</b>_nfs \
-     anything \
-     params binfile="/usr/bin/socat" cmdline_options="-U TCP-LISTEN:<b>61001</b>,backlog=10,fork,reuseaddr /dev/null" op monitor timeout=20s interval=10 depth=0
+   sudo crm configure primitive nc_<b>NW2</b>_nfs azure-lb port=<b>61001</b>
    
    sudo crm configure group g-<b>NW2</b>_nfs \
      fs_<b>NW2</b>_sapmnt exportfs_<b>NW2</b> nc_<b>NW2</b>_nfs vip_<b>NW2</b>_nfs
@@ -585,5 +586,4 @@ Następujące elementy są poprzedzone **[A]** -dotyczy wszystkie węzły, **[1]
 * [Planowanie i wdrażanie Virtual Machines platformy Azure dla oprogramowania SAP][planning-guide]
 * [Wdrożenie Virtual Machines platformy Azure dla oprogramowania SAP][deployment-guide]
 * [Wdrożenie systemu Azure Virtual Machines DBMS dla oprogramowania SAP][dbms-guide]
-* Aby dowiedzieć się, jak stworzyć wysoką dostępność i zaplanować odzyskiwanie po awarii SAP HANA na platformie Azure (duże wystąpienia), zobacz [SAP HANA (duże wystąpienia) wysoka dostępność i odzyskiwanie po awarii na platformie Azure](hana-overview-high-availability-disaster-recovery.md).
 * Aby dowiedzieć się, jak zapewnić wysoką dostępność i zaplanować odzyskiwanie po awarii SAP HANA na maszynach wirtualnych platformy Azure, zobacz [wysoka dostępność SAP HANA na platformie azure Virtual Machines (maszyny wirtualne)][sap-hana-ha]

@@ -19,11 +19,11 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7249f2077666530964afa16ef47d69731cee846a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085227"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376343"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Zarządzanie Active Directory Federation Servicesami i dostosowywanie ich przy użyciu Azure AD Connect
 W tym artykule opisano sposób zarządzania i dostosowywania Active Directory Federation Services (AD FS) przy użyciu programu Azure Active Directory Connect (Azure AD). Zawiera również inne typowe zadania AD FS, które mogą być konieczne do pełnej konfiguracji farmy AD FSowej.
@@ -49,7 +49,7 @@ Za pomocą Kreatora Azure AD Connect można wykonywać różne zadania związane
 Za pomocą Azure AD Connect można sprawdzić bieżącą kondycję AD FS i zaufania usługi Azure AD i podjąć odpowiednie działania w celu naprawienia zaufania. Wykonaj następujące kroki, aby naprawić usługę Azure AD i AD FS zaufaniem.
 
 1. Wybierz pozycję **napraw usługi AAD i zaufanie ADFS** z listy dodatkowych zadań.
-   ![Naprawa usługi AAD i relacji zaufania usług ADFS](./media/how-to-connect-fed-management/RepairADTrust1.PNG)
+   ![naprawianie](./media/how-to-connect-fed-management/RepairADTrust1.PNG) zaufania usługi AAD i ADFS
 
 2. Na stronie **Połącz z usługą Azure AD** podaj poświadczenia administratora globalnego usługi Azure AD, a następnie kliknij przycisk **dalej**.
    ![Łączenie z usługą Azure AD](./media/how-to-connect-fed-management/RepairADTrust2.PNG)
@@ -64,7 +64,7 @@ Za pomocą Azure AD Connect można sprawdzić bieżącą kondycję AD FS i zaufa
 
     Strona **gotowy do konfiguracji** zawiera listę akcji, które zostaną wykonane w celu naprawy zaufania.
 
-    ![Wszystko gotowe do skonfigurowania](./media/how-to-connect-fed-management/RepairADTrust5.PNG)
+    ![Wszystko gotowe do konfiguracji](./media/how-to-connect-fed-management/RepairADTrust5.PNG)
 
 4. Kliknij przycisk **Instaluj** , aby naprawić zaufanie.
 
@@ -77,7 +77,7 @@ Zaleca się, aby lokalna główna nazwa użytkownika (UPN) i główna nazwa uży
 ![Alternatywny atrybut identyfikatora](./media/how-to-connect-fed-management/attributeselection.png)
 
 Konfigurowanie alternatywnego identyfikatora logowania dla AD FS składa się z dwóch głównych kroków:
-1. **Skonfiguruj właściwy zestaw oświadczeń**wystawiania: Reguły dotyczące roszczeń wystawiania w relacji zaufania jednostki uzależnionej usługi Azure AD są modyfikowane w taki sposób, aby używały wybranego atrybutu UserPrincipalName jako alternatywnego identyfikatora użytkownika.
+1. **Skonfiguruj odpowiedni zestaw oświadczeń wystawiania**: reguły oświadczeń wystawiania w relacji zaufania jednostki uzależnionej usługi Azure AD są modyfikowane tak, aby używały wybranego atrybutu userPrincipalName jako alternatywnego identyfikatora użytkownika.
 2. **Włącz alternatywny identyfikator logowania w konfiguracji AD FS**: Konfiguracja AD FS jest aktualizowana, aby AD FS można wyszukać użytkowników w odpowiednich lasach przy użyciu alternatywnego identyfikatora. Ta konfiguracja jest obsługiwana dla AD FS w systemie Windows Server 2012 R2 (z KB2919355) lub nowszym. Jeśli serwery AD FS są 2012 R2, Azure AD Connect sprawdza obecność wymaganej bazy wiedzy. Jeśli KB nie zostanie wykryta, po zakończeniu konfiguracji zostanie wyświetlone ostrzeżenie, jak pokazano poniżej:
 
     ![Ostrzeżenie o brakującym KB w 2012R2](./media/how-to-connect-fed-management/kbwarning.png)
@@ -112,11 +112,11 @@ Konfigurowanie alternatywnego identyfikatora logowania dla AD FS składa się z 
 
 5. Na stronie **serwery AD FS** wprowadź nazwę serwera lub adres IP, który ma zostać dodany do farmy AD FS.
 
-   ![Serwery usług AD FS](./media/how-to-connect-fed-management/AddNewADFSServer6.PNG)
+   ![Serwery AD FS](./media/how-to-connect-fed-management/AddNewADFSServer6.PNG)
 
 6. Kliknij przycisk **dalej**i przejdź przez ostateczną stronę **konfigurowania** . Po zakończeniu dodawania serwerów do farmy AD FS Azure AD Connect zostanie nadana opcja sprawdzenia łączności.
 
-   ![Wszystko gotowe do skonfigurowania](./media/how-to-connect-fed-management/AddNewADFSServer7.PNG)
+   ![Wszystko gotowe do konfiguracji](./media/how-to-connect-fed-management/AddNewADFSServer7.PNG)
 
     ![Instalacja zakończona](./media/how-to-connect-fed-management/AddNewADFSServer8.PNG)
 
@@ -134,7 +134,7 @@ Konfigurowanie alternatywnego identyfikatora logowania dla AD FS składa się z 
    ![Łączenie z usługą Azure AD](./media/how-to-connect-fed-management/wapserver2.PNG)
 
 3. Na stronie **Określanie certyfikatu SSL** Podaj hasło dla pliku PFX, który został podany podczas konfigurowania farmy AD FS przy użyciu Azure AD Connect.
-   ![Hasło certyfikatu](./media/how-to-connect-fed-management/WapServer3.PNG)
+   ![hasło certyfikatu](./media/how-to-connect-fed-management/WapServer3.PNG)
 
     ![Określ certyfikat SSL](./media/how-to-connect-fed-management/WapServer4.PNG)
 
@@ -144,11 +144,11 @@ Konfigurowanie alternatywnego identyfikatora logowania dla AD FS składa się z 
 
 5. Na stronie **poświadczenia zaufania serwera proxy** podaj poświadczenia administracyjne, aby skonfigurować relację zaufania serwera proxy i uzyskać dostęp do serwera podstawowego w farmie AD FS.
 
-   ![Poświadczenia relacji zaufania serwera proxy](./media/how-to-connect-fed-management/WapServer6.PNG)
+   ![Poświadczenia zaufania serwera proxy](./media/how-to-connect-fed-management/WapServer6.PNG)
 
 6. Na stronie **gotowy do konfiguracji** Kreator wyświetla listę akcji, które zostaną wykonane.
 
-   ![Wszystko gotowe do skonfigurowania](./media/how-to-connect-fed-management/WapServer7.PNG)
+   ![Wszystko gotowe do konfiguracji](./media/how-to-connect-fed-management/WapServer7.PNG)
 
 7. Kliknij przycisk **Instaluj** , aby zakończyć konfigurację. Po zakończeniu konfiguracji Kreator umożliwia zweryfikowanie łączności z serwerami. Kliknij przycisk **Weryfikuj** , aby sprawdzić łączność.
 
@@ -178,7 +178,7 @@ Można łatwo dodać domenę do Federacji z usługą Azure AD przy użyciu Azure
 
 5. Kliknij przycisk **Dalej**. Na stronie **gotowy do konfiguracji** zostanie wyświetlona lista akcji, które zostaną wykonane Azure AD Connect. Kliknij przycisk **Instaluj** , aby zakończyć konfigurację.
 
-   ![Wszystko gotowe do skonfigurowania](./media/how-to-connect-fed-management/AdditionalDomain5.PNG)
+   ![Wszystko gotowe do konfiguracji](./media/how-to-connect-fed-management/AdditionalDomain5.PNG)
 
 > [!NOTE]
 > Aby można było zalogować się do usługi Azure AD, użytkownicy z dodanej domeny federacyjnej muszą zostać zsynchronizowani.
@@ -212,30 +212,30 @@ Azure AD Connect pozwala określić atrybut, który ma być używany jako zakotw
 
 Na przykład można wybrać opcję **MS-ds-consistencyguid** jako atrybut dla kotwicy źródłowej i wydać **ImmutableID** jako **MS-ds-consistencyguid** w przypadku, gdy atrybut ma wartość. Jeśli nie ma wartości dla atrybutu, należy wydać **objectGUID** jako niezmienny identyfikator. Zestaw niestandardowych reguł roszczeń można skonstruować zgodnie z opisem w następnej sekcji.
 
-**Reguła 1: Atrybuty zapytania**
+**Reguła 1: atrybuty zapytania**
 
     c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"]
     => add(store = "Active Directory", types = ("http://contoso.com/ws/2016/02/identity/claims/objectguid", "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"), query = "; objectGuid,ms-ds-consistencyguid;{0}", param = c.Value);
 
 W tej regule są używane zapytania dotyczące wartości **MS-ds-consistencyguid** i **objectGUID** dla użytkownika z Active Directory. Zmień nazwę magazynu na odpowiednią nazwę magazynu we wdrożeniu AD FS. Zmień również typ oświadczenia na odpowiedni typ oświadczenia dla Federacji, zgodnie z definicją dla **objectGUID** i **MS-ds-consistencyguid**.
 
-Ponadto przy użyciu opcji **Dodaj** i nienależy unikać dodawania wychodzącego problemu dla jednostki i można używać wartości jako wartości pośrednich. Po ustaleniu wartości, która ma być używana jako niezmienny identyfikator, zostanie wystawione w późniejszej regule.
+Ponadto przy użyciu opcji **Dodaj** **i nie należy**unikać dodawania wychodzącego problemu dla jednostki i można używać wartości jako wartości pośrednich. Po ustaleniu wartości, która ma być używana jako niezmienny identyfikator, zostanie wystawione w późniejszej regule.
 
-**Reguła 2: Sprawdź, czy dla użytkownika istnieje usługa MS-ds-consistencyguid**
+**Reguła 2. Sprawdź, czy dla użytkownika istnieje usługa MS-ds-consistencyguid**
 
     NOT EXISTS([Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"])
     => add(Type = "urn:anandmsft:tmp/idflag", Value = "useguid");
 
-Ta zasada definiuje tymczasową flagę o nazwie **idflag** , która jest ustawiona na **useguid** , jeśli dla użytkownika nie ma konta **MS-ds-consistencyguid** . Logika w tym przypadku jest faktem, że AD FS nie zezwala na puste oświadczenia. Dlatego po dodaniu oświadczeń http://contoso.com/ws/2016/02/identity/claims/objectguid i http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid w regule 1, można wykonać oświadczenie **msdsconsistencyguid** tylko wtedy, gdy wartość zostanie wypełniona dla użytkownika. Jeśli nie zostanie wypełnione, AD FS widzi, że będzie miał wartość pustą i natychmiast porzuca. Wszystkie obiekty będą mieć **objectGUID**, w związku z czym po wykonaniu reguły 1 będzie ona zawsze istnieć.
+Ta zasada definiuje tymczasową flagę o nazwie **idflag** , która jest ustawiona na **useguid** , jeśli dla użytkownika nie ma konta **MS-ds-consistencyguid** . Logika w tym przypadku jest faktem, że AD FS nie zezwala na puste oświadczenia. Dlatego po dodaniu oświadczeń http://contoso.com/ws/2016/02/identity/claims/objectguid i http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid w regule 1, można się dokończyć **msdsconsistencyguid** , tylko jeśli wartość zostanie wypełniona dla użytkownika. Jeśli nie zostanie wypełnione, AD FS widzi, że będzie miał wartość pustą i natychmiast porzuca. Wszystkie obiekty będą mieć **objectGUID**, w związku z czym po wykonaniu reguły 1 będzie ona zawsze istnieć.
 
-**Reguła 3: Wystawiaj MS-ds-consistencyguid jako niezmienny identyfikator, jeśli jest obecny**
+**Reguła 3: wystawiaj MS-ds-consistencyguid jako niezmienny identyfikator, jeśli jest obecny**
 
     c:[Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"]
     => issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c.Value);
 
-Jest to niejawne sprawdzenie. Jeśli wartość dla tego zgłoszenia istnieje, należy ją wystawić jako niezmienny identyfikator. W poprzednim przykładzie jest stosowane **NameIdentifier** . Należy zmienić to na odpowiedni typ zgłoszenia dla niezmiennego identyfikatora w środowisku.
+Jest to **niejawne** sprawdzenie. Jeśli wartość dla tego zgłoszenia istnieje, należy ją wystawić jako niezmienny identyfikator. W poprzednim przykładzie jest stosowane **NameIdentifier** . Należy zmienić to na odpowiedni typ zgłoszenia dla niezmiennego identyfikatora w środowisku.
 
-**Reguła 4: Jeśli nie istnieje usługa MS-ds-consistencyGuid, należy wydać identyfikator objectGuid jako niezmienny**
+**Reguła 4. wydawanie identyfikatora objectGuid jako niezmiennego ID, jeśli nie istnieje usługa MS-ds-consistencyGuid**
 
     c1:[Type == "urn:anandmsft:tmp/idflag", Value =~ "useguid"]
     && c2:[Type == "http://contoso.com/ws/2016/02/identity/claims/objectguid"]

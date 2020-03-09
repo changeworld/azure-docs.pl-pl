@@ -16,11 +16,11 @@ ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
 ms.openlocfilehash: 20c231e4f3052797eac79a3c97a3d8148690b8c5
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965433"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388727"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurowanie SQL Server wystąpienia klastra trybu failover na maszynach wirtualnych platformy Azure
 
@@ -176,7 +176,7 @@ Po spełnieniu tych wymagań wstępnych można rozpocząć tworzenie klastra try
 
    | Przeznaczenie | Port TCP | Uwagi
    | ------ | ------ | ------
-   | SQL Server | 1433 | Normalny port dla domyślnych wystąpień SQL Server. Jeśli obraz został użyty z galerii, ten port zostanie automatycznie otwarty.
+   | Oprogramowanie SQL Server | 1433 | Normalny port dla domyślnych wystąpień SQL Server. Jeśli obraz został użyty z galerii, ten port zostanie automatycznie otwarty.
    | Sonda kondycji | 59999 | Dowolny otwarty port TCP. W późniejszym kroku należy skonfigurować [sondę kondycji](#probe) modułu równoważenia obciążenia oraz klaster, aby używać tego portu.  
 
 1. Dodaj magazyn do maszyny wirtualnej. Aby uzyskać szczegółowe informacje, zobacz [Dodawanie magazynu](../disks-types.md).
@@ -292,7 +292,7 @@ Monitor w chmurze to nowy typ monitora kworum klastra, który jest przechowywany
 
 1. Skonfiguruj monitor kworum klastra trybu failover. Zobacz [Konfigurowanie monitora kworum w interfejsie użytkownika](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness).
 
-### <a name="add-storage"></a>Dodaj magazyn
+### <a name="add-storage"></a>Dodawanie magazynu
 
 Dyski dla Bezpośrednie miejsca do magazynowania muszą być puste. Nie mogą zawierać partycji ani innych danych. Aby wyczyścić dyski, wykonaj [kroki opisane w tym przewodniku](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct?redirectedfrom=MSDN#step-31-clean-drives).
 
@@ -499,7 +499,7 @@ W przypadku maszyn wirtualnych platformy Azure usługa MSDTC nie jest obsługiwa
 - Nie można skonfigurować klastrowanego zasobu usługi MSDTC do korzystania z magazynu udostępnionego. W systemie Windows Server 2016, jeśli utworzysz zasób MSDTC, nie będzie widoczny żaden magazyn udostępniony dostępny do użycia, nawet jeśli magazyn jest dostępny. Ten problem został rozwiązany w systemie Windows Server 2019.
 - Podstawowa usługa równoważenia obciążenia nie obsługuje portów RPC.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 [Konfigurowanie Bezpośrednie miejsca do magazynowania przy użyciu pulpitu zdalnego (Azure)](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-storage-spaces-direct-deployment)
 

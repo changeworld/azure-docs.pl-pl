@@ -1,19 +1,19 @@
 ---
 title: 'Szybki Start: Tworzenie klastra Apache Spark przy użyciu szablonu — Azure HDInsight'
-description: W tym przewodniku Szybki start pokazano, jak za pomocą szablonu usługi Resource Manager utworzyć klaster Apache Spark w usłudze Azure HDInsight i uruchomić proste zapytanie Spark SQL.
+description: W tym przewodniku szybki start pokazano, jak za pomocą szablonu Menedżer zasobów utworzyć klaster Apache Spark w usłudze Azure HDInsight i uruchomić zapytanie Spark SQL.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
-ms.date: 06/12/2019
 ms.custom: mvc
-ms.openlocfilehash: 2637603fa303d57340aa36786443508f1930a481
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/05/2020
+ms.openlocfilehash: a4c207cdbe4bbd0fdef5e1da8da0f4b582702308
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381319"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78932810"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Szybki Start: Tworzenie klastra Apache Spark w usłudze Azure HDInsight przy użyciu szablonu Menedżer zasobów
 
@@ -21,9 +21,7 @@ W tym przewodniku szybki start utworzysz Klaster Apache Spark w usłudze Azure H
 
 [Przegląd: Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md) | [Apache Spark](https://spark.apache.org/) | [Apache Hive](https://hive.apache.org/) | [Jupyter Notebook](https://jupyter.org/) | [szablonów szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular)
 
-## <a name="prerequisites"></a>Wymagania wstępne
-
-- Konto platformy Azure z aktywną subskrypcją. [Utwórz konto bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="create-an-apache-spark-cluster"></a>Tworzenie klastra platformy Apache Spark
 
@@ -42,18 +40,18 @@ Klaster używa usług Azure Storage Blob jako magazynu klastra. Aby uzyskać wi�
 
     | Właściwość | Wartość |
     |---|---|
-    |**Subskrypcja**|Wybierz subskrypcję platformy Azure, za pomocą której utworzono ten klaster. Subskrypcja używana w tym przewodniku Szybki start to **&lt;Nazwa subskrypcji platformy Azure>** . |
-    | **Grupa zasobów**|Utwórz grupę zasobów lub wybierz istniejącą grupę. Grupa zasobów służy do zarządzania zasobami platformy Azure na potrzeby projektów. Nową nazwą grupy zasobów używaną w tym przewodniku Szybki start jest **myspark20180403rg**.|
-    | **Lokalizacja**|Wybierz lokalizację dla grupy zasobów. Szablon używa tej lokalizacji do tworzenia klastra oraz na potrzeby domyślnego magazynu klastra. Lokalizacja używana w tym przewodniku Szybki start to **Wschodnie stany USA 2**.|
-    | **Nazwa klastra**|Wprowadź nazwę klastra, który chcesz utworzyć. Nazwą nowego klastra używaną w tym przewodniku Szybki start jest **myspark20180403**.|
-    | **Nazwa użytkownika i hasło logowania do klastra**|Domyślna nazwa logowania to admin. Wybierz hasło dla logowania do klastra. Nazwą logowania używaną w tym przewodniku Szybki start jest **admin**.|
-    | **Nazwa użytkownika i hasło SSH**|Wybierz hasło dla użytkownika SSH. Nazwą użytkownika protokołu SSH używaną w tym przewodniku Szybki start jest **sshuser**.|
+    |Subskrypcja|Wybierz subskrypcję platformy Azure, za pomocą której utworzono ten klaster. |
+    | Grupa zasobów|Utwórz grupę zasobów lub wybierz istniejącą grupę. Grupa zasobów służy do zarządzania zasobami platformy Azure na potrzeby projektów. Nową nazwą grupy zasobów używaną w tym przewodniku Szybki start jest **myspark20180403rg**.|
+    | Lokalizacja|Wybierz lokalizację dla grupy zasobów. Szablon używa tej lokalizacji do tworzenia klastra i domyślnego magazynu klastra. Lokalizacja używana w tym przewodniku Szybki start to **Wschodnie stany USA 2**.|
+    | NazwaKlastra|Wprowadź nazwę klastra, który chcesz utworzyć. Nazwą nowego klastra używaną w tym przewodniku Szybki start jest **myspark20180403**.|
+    | Nazwa logowania i hasło klastra|Domyślna nazwa logowania to admin. Wybierz hasło dla logowania do klastra. Nazwą logowania używaną w tym przewodniku Szybki start jest **admin**.|
+    | Nazwa użytkownika i hasło SSH|Wybierz hasło dla użytkownika SSH. Nazwą użytkownika protokołu SSH używaną w tym przewodniku Szybki start jest **sshuser**.|
 
     ![Tworzenie klastra Spark w usłudze HDInsight przy użyciu szablonu Azure Resource Manager](./media/apache-spark-jupyter-spark-sql/create-spark-cluster-in-hdinsight-using-azure-resource-manager-template.png "Tworzenie klastra Spark w usłudze HDInsight przy użyciu szablonu Azure Resource Manager")
 
-3. Wybierz pozycję **Wyrażam zgodę na powyższe warunki i postanowienia** i pozycję **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz przycisk **Kup**. Zostanie wyświetlony nowy kafelek zatytułowany **Wdrażanie szablonu wdrożenia**. Utworzenie klastra trwa około 20 minut. Przed przejściem do następnej sesji należy utworzyć klaster.
+3. Zaznacz pozycję **Wyrażam zgodę na powyższe warunki i postanowienia**, a następnie kliknij przycisk **Kup**. Zostanie wyświetlony nowy kafelek zatytułowany **Wdrażanie szablonu wdrożenia**. Utworzenie klastra trwa około 20 minut. Przed przejściem do następnej sesji należy utworzyć klaster.
 
-Jeśli wystąpi problem z tworzeniem klastrów usługi HDInsight, może to oznaczać, że nie masz odpowiednich uprawnień, aby to zrobić. Aby uzyskać więcej informacji, zobacz [Wymagania dotyczące kontroli dostępu](../hdinsight-hadoop-create-linux-clusters-portal.md).
+Jeśli wystąpi problem z tworzeniem klastrów usługi HDInsight, może to oznaczać, że nie masz odpowiednich uprawnień, aby to zrobić. Aby uzyskać więcej informacji, zobacz [Wymagania dotyczące kontroli dostępu](../hdinsight-hadoop-customize-cluster-linux.md#access-control).
 
 ## <a name="install-intellijeclipse-for-spark-applications"></a>Zainstaluj IntelliJ/zaćmienie dla aplikacji platformy Spark
 
@@ -92,6 +90,7 @@ SQL (Structured Query Language) to najczęściej używany język służący do p
     ![Stan jądra](./media/apache-spark-jupyter-spark-sql/jupyter-spark-kernel-status.png "Stan jądra")
 
     Podczas pierwszego uruchamiania notesu jądro wykonuje pewne zadania w tle. Poczekaj, aż jądro będzie gotowe.
+
 1. Wklej następujący kod do pustej komórki, a następnie naciśnij klawisze **SHIFT + ENTER**, aby go uruchomić. Polecenie wyświetla listę tabel Hive w klastrze:
 
     ```sql
@@ -120,7 +119,7 @@ SQL (Structured Query Language) to najczęściej używany język służący do p
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Usługa HDInsight zapisuje Twoje dane oraz notesy Jupyter w usłudze Azure Storage lub Azure Data Lake Store, więc możesz bezpiecznie usunąć klaster, gdy nie jest używany. Opłaty za klaster usługi HDInsight są naliczane nawet wtedy, gdy nie jest używany. Ponieważ opłaty za klaster są wielokrotnie większe niż opłaty za magazyn, ze względów ekonomicznych warto usuwać klastry, gdy nie są używane. Jeśli planujesz natychmiastowe rozpoczęcie pracy z samouczkiem z listy [Następne kroki](#next-steps), warto zachować klaster.
+Usługa HDInsight zapisuje dane i notesy Jupyter w usłudze Azure Storage lub Azure Data Lake Storage, dzięki czemu można bezpiecznie usunąć klaster, gdy nie jest używany. Opłata jest naliczana również za klaster usługi HDInsight, nawet wtedy, gdy nie jest używana. Ze względu na to, że opłaty za klaster są dużo razy większe niż opłaty za magazyn, sprawia to, że należy usunąć klastry, gdy nie są używane. Jeśli planujesz natychmiastowe rozpoczęcie pracy z samouczkiem z listy [Następne kroki](#next-steps), warto zachować klaster.
 
 Przejdź z powrotem do witryny Azure Portal, a następnie wybierz pozycję **Usuń**.
 
@@ -133,4 +132,4 @@ Dodatkowo możesz wybrać nazwę grupy zasobów, aby otworzyć stronę grupy zas
 W tym przewodniku szybki start przedstawiono sposób tworzenia klastra Apache Spark w usłudze HDInsight i uruchamiania podstawowego zapytania Spark SQL. Przejdź do następnego samouczka, aby dowiedzieć się, jak uruchamiać interakcyjne zapytania dotyczące przykładowych danych za pomocą klastra usługi HDInsight.
 
 > [!div class="nextstepaction"]
->[Uruchamianie interakcyjnych zapytań na platformie Apache Spark](./apache-spark-load-data-run-query.md)
+> [Uruchamianie interakcyjnych zapytań na platformie Apache Spark](./apache-spark-load-data-run-query.md)

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
-ms.date: 10/12/2019
-ms.openlocfilehash: 6a25d5197746e04ffa25ee397e6d8451e24ae176
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.date: 03/03/2020
+ms.openlocfilehash: 9f518df02b1923513fd014be53646a9a1be8465e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615002"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359870"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database często zadawane pytania dotyczące skalowania
 
@@ -39,19 +39,19 @@ Warstwa usługi do skalowania jest dostępna tylko dla pojedynczych baz danych k
 
 Warstwy usług oparte na rdzeń wirtualny są zróżnicowane w zależności od dostępności bazy danych i typu magazynu, wydajności i maksymalnego rozmiaru, zgodnie z opisem w poniższej tabeli.
 
-| | Typ zasobu | Ogólne zastosowanie |  Hiperskalowanie | Krytyczne dla działania firmy |
+| | Typ zasobu | Ogólnego przeznaczenia |  Hiperskala | Krytyczne dla działania firmy |
 |:---:|:---:|:---:|:---:|:---:|
-| **Najlepsze dla** |Wszystko|Oferuje zorientowane na budżety Opcje obliczeniowe i magazynowe.|Większość obciążeń firmowych. Skalowanie automatyczne magazynu o rozmiarze do 100 TB, szybkie skalowanie w pionie i w poziomie, szybkie przywracanie bazy danych.|Aplikacje OLTP o wysokim współczynniku transakcji i niskim opóźnieniu we/wy. Oferuje największą odporność na błędy i szybkie przełączanie w tryb failover przy użyciu wielu replik synchronicznie zaktualizowanych.|
+| **Najlepsze dla** |Wszyscy|Oferuje zorientowane na budżety Opcje obliczeniowe i magazynowe.|Większość obciążeń firmowych. Skalowanie automatyczne magazynu o rozmiarze do 100 TB, szybkie skalowanie w pionie i w poziomie, szybkie przywracanie bazy danych.|Aplikacje OLTP o wysokim współczynniku transakcji i niskim opóźnieniu we/wy. Oferuje największą odporność na błędy i szybkie przełączanie w tryb failover przy użyciu wielu replik synchronicznie zaktualizowanych.|
 |  **Typ zasobu** ||Pojedyncza baza danych/Pula elastyczna/wystąpienie zarządzane | Pojedyncza baza danych | Pojedyncza baza danych/Pula elastyczna/wystąpienie zarządzane |
 | **Rozmiar obliczeń**|Pojedyncza baza danych/Pula elastyczna * | od 1 do 80 rdzeni wirtualnych | od 1 do 80 rdzeni wirtualnych * | od 1 do 80 rdzeni wirtualnych |
-| |Wystąpienie zarządzane | 8, 16, 24, 32, 40, 64, 80 rdzeni wirtualnych | ND | 8, 16, 24, 32, 40, 64, 80 rdzeni wirtualnych |
-| **Typ magazynu** | Wszystko |Magazyn zdalny w warstwie Premium (na wystąpienie) | Niepołączony magazyn z lokalną pamięcią podręczną dysków SSD (na wystąpienie) | Lokalny magazyn SSD o wysokiej szybkości (na wystąpienie) |
+| |Wystąpienie zarządzane | 8, 16, 24, 32, 40, 64, 80 rdzeni wirtualnych | Nie dotyczy | 8, 16, 24, 32, 40, 64, 80 rdzeni wirtualnych |
+| **Typ magazynu** | Wszyscy |Magazyn zdalny w warstwie Premium (na wystąpienie) | Niepołączony magazyn z lokalną pamięcią podręczną dysków SSD (na wystąpienie) | Lokalny magazyn SSD o wysokiej szybkości (na wystąpienie) |
 | **Rozmiar magazynu** | Pojedyncza baza danych/Pula elastyczna *| 5 GB – 4 TB | Do 100 TB | 5 GB – 4 TB |
-| | Wystąpienie zarządzane  | 32 GB – 8 TB | ND | 32 GB – 4 TB |
-| **IOPS** | Pojedyncza baza danych | 500 operacji we/wy na sekundę z 7000 maksymalną liczbą IOPS | Skalowanie jest architekturą wielowarstwową z buforowaniem na wielu poziomach. Efektywne operacje we/wy będą zależeć od obciążenia. | 5000 operacji we/wy z maksymalną liczbą IOPS 200 000|
-| | Wystąpienie zarządzane | Zależy od rozmiaru pliku | ND | 1375 operacji we/wy na sekundę |
-|**Dostępność**|Wszystko|1 replika, brak skalowania do odczytu, brak lokalnej pamięci podręcznej | Wiele replik, do 4 odczyt skalowalny w poziomie, częściowa lokalna pamięć podręczna | 3 repliki, odczyt skalowalny w poziomie, strefa nadmiarowa, pełny magazyn lokalny |
-|**Kopii zapasowych**|Wszystko|RA-GRS, 7-35 dni (domyślnie 7 dni)| RA-GRS, 7 dni, stałe odzyskiwanie do czasu w czasie (kopie) | RA-GRS, 7-35 dni (domyślnie 7 dni) |
+| | Wystąpienie zarządzane  | 32 GB – 8 TB | Nie dotyczy | 32 GB – 4 TB |
+| **Wejścia** | Pojedyncza baza danych | 500 operacji we/wy na sekundę z 7000 maksymalną liczbą IOPS | Skalowanie jest architekturą wielowarstwową z buforowaniem na wielu poziomach. Efektywne operacje we/wy będą zależeć od obciążenia. | 5000 operacji we/wy z maksymalną liczbą IOPS 200 000|
+| | Wystąpienie zarządzane | Zależy od rozmiaru pliku | Nie dotyczy | 1375 operacji we/wy na sekundę |
+|**Dostępność**|Wszyscy|1 replika, brak skalowania do odczytu, brak lokalnej pamięci podręcznej | Wiele replik, do 4 odczyt skalowalny w poziomie, częściowa lokalna pamięć podręczna | 3 repliki, odczyt skalowalny w poziomie, strefa nadmiarowa, pełny magazyn lokalny |
+|**Kopii zapasowych**|Wszyscy|RA-GRS, 7-35 dni (domyślnie 7 dni)| RA-GRS, 7 dni, stałe odzyskiwanie do czasu w czasie (kopie) | RA-GRS, 7-35 dni (domyślnie 7 dni) |
 
 \* pule elastyczne nie są obsługiwane w warstwie usługi w ramach skalowania
 
@@ -95,7 +95,7 @@ Funkcja przedskalowania zapewnia szybką skalowalność na podstawie zapotrzebow
 
 ### <a name="can-i-mix-hyperscale-and-single-databases-in-a-single-logical-server"></a>Czy mogę mieszać pojedyncze bazy danych na jednym serwerze logicznym
 
-Tak, możesz.
+Tak, można.
 
 ### <a name="does-hyperscale-require-my-application-programming-model-to-change"></a>Czy funkcja skalowania wymaga zmiany modelu programowania aplikacji
 
@@ -143,7 +143,7 @@ W bazach danych w ramach skalowania odporność na dane jest zapewniana na pozio
 
 Jeśli jednak istnieje tylko jedna replika, może upłynąć trochę czasu, aby utworzyć lokalną pamięć podręczną w nowej replice po przejściu w tryb failover. W fazie odbudowywania pamięci podręcznej baza danych pobiera dane bezpośrednio z serwerów stronicowania, co skutkuje wyższym opóźnieniem magazynu i obniżeniem wydajności zapytań.
 
-W przypadku aplikacji o krytycznym znaczeniu, które wymagają wysokiej dostępności przy minimalnym wpływie na pracę w trybie failover, należy udostępnić co najmniej 2 repliki obliczeniowe, w tym podstawową replikę obliczeniową. To jest konfiguracja domyślna. W ten sposób dostępna jest replika gorąca w stanie gotowości, która służy jako docelowy tryb failover.
+W przypadku aplikacji o krytycznym znaczeniu, które wymagają wysokiej dostępności przy minimalnym wpływie na pracę w trybie failover, należy udostępnić co najmniej 2 repliki obliczeniowe, w tym podstawową replikę obliczeniową. Jest to konfiguracja domyślna. W ten sposób dostępna jest replika gorąca w stanie gotowości, która służy jako docelowy tryb failover.
 
 ## <a name="data-size-and-storage-questions"></a>Rozmiar danych i pytania dotyczące magazynu
 
@@ -274,11 +274,11 @@ Nie. Kopie zapasowe są zarządzane przez podsystem magazynowania i wykorzystuj�
 
 ### <a name="can-i-perform-geo-restore-with-a-hyperscale-database"></a>Czy można wykonać przywracanie geograficzne za pomocą bazy danych w ramach skalowania
 
-Tak.  Przywracanie geograficzne jest w pełni obsługiwane. W przeciwieństwie do przywracania do punktu w czasie, przywracanie geograficzne może wymagać długotrwałej operacji na danych.
+Tak. Przywracanie geograficzne jest w pełni obsługiwane. W przeciwieństwie do przywracania do punktu w czasie, przywracanie geograficzne wymaga operacji o rozmiarze danych. Pliki danych są kopiowane równolegle, dlatego czas trwania tej operacji zależy głównie od rozmiaru największego pliku w bazie danych, a nie do całkowitego rozmiaru bazy danych. Czas przywracania geograficznego będzie znacznie krótszy, jeśli baza danych zostanie przywrócona w regionie świadczenia usługi Azure, który jest [sparowany](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) z regionem źródłowej bazy danych.
 
 ### <a name="can-i-set-up-geo-replication-with-hyperscale-database"></a>Czy można skonfigurować replikację geograficzną za pomocą bazy danych ze skalowaniem
 
-Obecnie nie.
+Nie w tej chwili.
 
 ### <a name="can-i-take-a-hyperscale-database-backup-and-restore-it-to-my-on-premises-server-or-on-sql-server-in-a-vm"></a>Czy można wykonać kopię zapasową bazy danych i przywrócić ją na serwerze lokalnym lub na SQL Server na maszynie wirtualnej
 
@@ -296,7 +296,7 @@ Nie. Baza Base nie jest obsługiwana w Azure SQL Database.
 
 ### <a name="does-hyperscale-have-support-for-r-and-python"></a>Czy funkcja wieloskalowania obsługuje język R i Python
 
-Obecnie nie.
+Nie w tej chwili.
 
 ### <a name="are-compute-nodes-containerized"></a>Czy węzły obliczeniowe są kontenerami
 

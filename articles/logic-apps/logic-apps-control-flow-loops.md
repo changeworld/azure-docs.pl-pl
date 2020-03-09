@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
 ms.openlocfilehash: 5f6c04c9a57dc8c250d99f2fa944203d2d73c404
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791753"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358926"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Utwórz pętle powtarzające akcje przepływu pracy lub tablice procesów w Azure Logic Apps
 
@@ -176,7 +176,7 @@ Począwszy od 8:00 każdego dnia, Ta przykładowa aplikacja logiki zwiększa zmi
    | Właściwość | Wartość |
    | -------- | ----- |
    | **Interwał** | 1 | 
-   | **Częstotliwość** | Dzień |
+   | **Częstotliwość** | Day |
    | **W tych godzinach** | 8 |
    ||| 
 
@@ -232,7 +232,7 @@ Począwszy od 8:00 każdego dnia, Ta przykładowa aplikacja logiki zwiększa zmi
 
       | Właściwość | Wartość | Opis |
       | -------- | ----- | ----------- | 
-      | **Do** | *adres e-mail \<\@domeny >* | adres e-mail adresata. Na potrzeby testowania użyj własnego adresu e-mail. | 
+      | **Do** | *adres e-mail \<\@domeny >* | Adres e-mail adresata. Na potrzeby testowania użyj własnego adresu e-mail. | 
       | **Temat** | Bieżąca wartość **limitu** | Określ temat wiadomości e-mail. Na potrzeby tego przykładu upewnij się, że dołączysz zmienną **limitu** . | 
       | **Treść** | <*e-mail —> zawartości* | Określ zawartość wiadomości e-mail, która ma zostać wysłana. Na potrzeby tego przykładu wpisz dowolny tekst. | 
       |||| 
@@ -333,7 +333,7 @@ Ta przykładowa pętla "until" wywołuje punkt końcowy HTTP, który tworzy zas�
 }
 ```
 
-## <a name="get-support"></a>Uzyskaj pomoc techniczną
+## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
 * Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * Aby przesłać lub zagłosować na temat funkcji i sugestii, [Azure Logic Apps witrynie opinii użytkowników](https://aka.ms/logicapps-wish).

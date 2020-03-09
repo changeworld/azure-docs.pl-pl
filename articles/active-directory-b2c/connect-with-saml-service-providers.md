@@ -12,12 +12,12 @@ ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1c362cd2924de73b2e40e634fe554ff1526e09d8
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 4cf572b09f1e44faca002528fd00fe5be0b51bc5
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189654"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933031"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Rejestrowanie aplikacji SAML w Azure AD B2C
 
@@ -113,7 +113,7 @@ Następnie Przekaż potwierdzenie SAML i certyfikat podpisywania odpowiedzi do A
 
 ### <a name="21-create-the-saml-token-issuer"></a>2,1 Tworzenie wystawcy tokenów SAML
 
-Teraz Dodaj możliwość dla dzierżawy w celu wystawiania tokenów SAML.
+Teraz Dodaj możliwość dla dzierżawy, aby wystawiać tokeny SAML przy użyciu [wystawcy tokenów języka SAML](saml-issuer-technical-profile.md) i profilów technicznych [dostawcy sesji SAML](custom-policy-reference-sso.md#samlssosessionprovider) .
 
 Otwórz **`TrustFrameworkExtensions.xml`** `SocialAndLocalAccounts\`w ramach pakietu zasad niestandardowych.
 
@@ -297,7 +297,7 @@ Metadane są informacje używane w protokole SAML do ujawnienia konfiguracji str
 
 Jeśli istnieją właściwości określone *zarówno* w adresie URL metadanych SAML, jak i w manifeście rejestracji aplikacji, zostaną one **scalone**. Właściwości określone w adresie URL metadanych są przetwarzane jako pierwsze i mają pierwszeństwo.
 
-Dla tego samouczka korzystającego z aplikacji testowej SAML należy użyć następującej wartości dla `samlMetadataUrl`:
+W tym samouczku, który używa aplikacji testowej SAML, należy użyć następującej wartości dla `samlMetadataUrl`:
 
 ```JSON
 "samlMetadataUrl":"https://samltestapp2.azurewebsites.net/Metadata",

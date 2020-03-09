@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: beb20518d1350335ceed285f4d5cd9da135132e5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 4583c02b52ab6b3a4e5056a47db096d4e34399ca
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393052"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78932618"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z błędem Azure Backup: problemy z agentem lub rozszerzeniem
 
@@ -50,10 +50,11 @@ Po zarejestrowaniu i zaplanowaniu maszyny wirtualnej dla usługi Azure Backup Ba
 **Kod błędu**: UserErrorVmProvisioningStateFailed<br>
 **Komunikat o błędzie**: stan aprowizacji maszyny wirtualnej to niepowodzenie<br>
 
-Ten błąd występuje, gdy jeden z błędów rozszerzenia przełączy maszynę wirtualną w stan niepowodzenia aprowizacji.<br>**Otwórz Azure Portal > maszynę wirtualną ustawienia > > rozszerzenia >** rozszerzenia i sprawdź, czy wszystkie rozszerzenia mają stan **Pomyślne inicjowanie obsługi** .
+Ten błąd występuje, gdy jeden z błędów rozszerzenia przełączy maszynę wirtualną w stan niepowodzenia aprowizacji.<br>**Otwórz Azure Portal > maszynę wirtualną ustawienia > > rozszerzenia >** rozszerzenia i sprawdź, czy wszystkie rozszerzenia mają stan **Pomyślne inicjowanie obsługi** . Aby dowiedzieć się więcej, zobacz [Stany aprowizacji](https://docs.microsoft.com/azure/virtual-machines/windows/states-lifecycle#provisioning-states).
 
 - Jeśli rozszerzenie VMSnapshot jest w stanie niepowodzenia, kliknij prawym przyciskiem myszy nieudane rozszerzenie i usuń je. Wyzwalanie kopii zapasowej na żądanie. Ta akcja spowoduje ponowne zainstalowanie rozszerzeń i uruchomienie zadania tworzenia kopii zapasowej.  <br>
-- Jeśli jakiekolwiek inne rozszerzenie jest w stanie niepowodzenia, może zakłócać tworzenie kopii zapasowej. Upewnij się, że problemy z rozszerzeniem zostały rozwiązane, i spróbuj ponownie wykonać operację tworzenia kopii zapasowej.  
+- Jeśli jakiekolwiek inne rozszerzenie jest w stanie niepowodzenia, może zakłócać tworzenie kopii zapasowej. Upewnij się, że problemy z rozszerzeniem zostały rozwiązane, i spróbuj ponownie wykonać operację tworzenia kopii zapasowej.
+- Jeśli stan aprowizacji maszyn wirtualnych jest w stanie aktualizacji, może to zakłócać tworzenie kopii zapasowej. Upewnij się, że jest w dobrej kondycji i spróbuj ponownie wykonać operację tworzenia kopii zapasowej.
 
 ## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached — Osiągnięto maksymalny limit kolekcji punktów przywracania
 

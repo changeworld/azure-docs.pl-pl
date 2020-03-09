@@ -1,14 +1,14 @@
 ---
 title: Opis języka zapytań
 description: Opisuje tabele grafu zasobów i dostępne typy danych Kusto, operatory i funkcje możliwe do użycia w usłudze Azure Resource Graph.
-ms.date: 12/05/2019
+ms.date: 03/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: a3503ce8d83b5bd47872db4b1de0eadb88be432c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 2f4be4d86a340867e1ad3015ff288f98fc54cecf
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851217"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927495"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Informacje o języku zapytań grafu zasobów platformy Azure
 
@@ -28,8 +28,12 @@ Wykres zasobów zawiera kilka tabel służących do przechowywania danych o typa
 |---|---|
 |Zasoby |Domyślna tabela, jeśli żadna nie została zdefiniowana w zapytaniu. Większość Menedżer zasobów typów zasobów i właściwości jest tutaj. |
 |ResourceContainers |Obejmuje subskrypcję (w wersji zapoznawczej--`Microsoft.Resources/subscriptions`) i typy zasobów (`Microsoft.Resources/subscriptions/resourcegroups`) grupy zasobów. |
+|AdvisorResources |Obejmuje zasoby _dotyczące_ `Microsoft.Advisor`. |
 |AlertsManagementResources |Obejmuje zasoby _dotyczące_ `Microsoft.AlertsManagement`. |
+|MaintenanceResources |Obejmuje zasoby _dotyczące_ `Microsoft.Maintenance`. |
 |SecurityResources |Obejmuje zasoby _dotyczące_ `Microsoft.Security`. |
+
+Pełną listę zawierającą typy zasobów można znaleźć w temacie [Reference: obsługiwane tabele i typy zasobów](../reference/supported-tables-resources.md).
 
 > [!NOTE]
 > _Zasoby_ są tabelami domyślnymi. Podczas wykonywania zapytania względem tabeli _zasobów_ nie jest wymagane podanie nazwy tabeli, chyba że `join` ani `union` są używane. Jednak zalecanym sposobem jest zawsze dołączenie początkowej tabeli do zapytania.
@@ -75,13 +79,13 @@ Poniżej znajduje się lista operatorów tabelarycznych KQL obsługiwanych przez
 |[mvexpand](/azure/kusto/query/mvexpandoperator) | | Starszy operator, zamiast tego użyj `mv-expand`. _RowLimit_ max z 400. Wartość domyślna to 128. |
 |[MV — rozwiń](/azure/kusto/query/mvexpandoperator) |[Wyświetlanie listy Cosmos DB z określonymi lokalizacjami zapisu](../samples/advanced.md#mvexpand-cosmosdb) |_RowLimit_ max z 400. Wartość domyślna to 128. |
 |[porządek](/azure/kusto/query/orderoperator) |[Lista zasobów posortowana według nazwy](../samples/starter.md#list-resources) |Synonim `sort` |
-|[project](/azure/kusto/query/projectoperator) |[Lista zasobów posortowana według nazwy](../samples/starter.md#list-resources) | |
+|[projektu](/azure/kusto/query/projectoperator) |[Lista zasobów posortowana według nazwy](../samples/starter.md#list-resources) | |
 |[projekt — poza](/azure/kusto/query/projectawayoperator) |[Usuń kolumny z wyników](../samples/advanced.md#remove-column) | |
-|[sort](/azure/kusto/query/sortoperator) |[Lista zasobów posortowana według nazwy](../samples/starter.md#list-resources) |Synonim `order` |
+|[porządku](/azure/kusto/query/sortoperator) |[Lista zasobów posortowana według nazwy](../samples/starter.md#list-resources) |Synonim `order` |
 |[Podsumuj](/azure/kusto/query/summarizeoperator) |[Liczba zasobów platformy Azure](../samples/starter.md#count-resources) |Uproszczona tylko pierwsza strona |
-|[take](/azure/kusto/query/takeoperator) |[Lista wszystkich publicznych adresów IP](../samples/starter.md#list-publicip) |Synonim `limit` |
+|[czasochłonn](/azure/kusto/query/takeoperator) |[Lista wszystkich publicznych adresów IP](../samples/starter.md#list-publicip) |Synonim `limit` |
 |[Do góry](/azure/kusto/query/topoperator) |[Pokaż pierwsze pięć maszyn wirtualnych według nazwy i ich typu systemu operacyjnego](../samples/starter.md#show-sorted) | |
-|[union](/azure/kusto/query/unionoperator) |[Łączenie wyników z dwóch zapytań w jeden wynik](../samples/advanced.md#unionresults) |Dozwolona pojedyncza tabela: _T_ `| union` \[`kind=` `inner`\|`outer`\] \[`withsource=`_ColumnName_\] _Table_. Limit 3 `union`ych etapów w pojedynczym zapytaniu. Rozpoznawanie rozmyte tabel nogi `union` nie jest dozwolone. Może być używany w jednej tabeli lub między tabelami _zasobów_ i _ResourceContainers_ . |
+|[Unii](/azure/kusto/query/unionoperator) |[Łączenie wyników z dwóch zapytań w jeden wynik](../samples/advanced.md#unionresults) |Dozwolona pojedyncza tabela: _T_ `| union` \[`kind=` `inner`\|`outer`\] \[`withsource=`_ColumnName_\] _Table_. Limit 3 `union`ych etapów w pojedynczym zapytaniu. Rozpoznawanie rozmyte tabel nogi `union` nie jest dozwolone. Może być używany w jednej tabeli lub między tabelami _zasobów_ i _ResourceContainers_ . |
 |[miejscu](/azure/kusto/query/whereoperator) |[Pokaż zasoby, które zawierają magazyn](../samples/starter.md#show-storage) | |
 
 ## <a name="escape-characters"></a>Znaki ucieczki
@@ -108,7 +112,7 @@ Niektóre nazwy właściwości, takie jak te, które zawierają `.` lub `$`, mus
 
   - **cmd** — nie należy wyznaczać znaku `$`.
 
-  - **PowerShell** - ``` ` ```
+  - ``` ` ``` - **programu PowerShell**
 
     Przykładowe zapytanie, które wyprowadza Właściwość _\$Type_ w programie PowerShell:
 

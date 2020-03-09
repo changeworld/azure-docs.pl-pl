@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/10/2020
+ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 701fb64dd85526bc79cab48bf36d4583da71ca76
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: a4732d780bb241a18e0738c99603799c31c2102f
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184030"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933065"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Zdefiniuj profil techniczny hasła jednorazowego w zasadach niestandardowych Azure AD B2C
 
@@ -69,7 +69,7 @@ Element **OutputClaimsTransformations** może zawierać kolekcję elementów **O
 
 ### <a name="metadata"></a>Metadane
 
-Następujące ustawienia mogą służyć do konfigurowania generowania i obsługi kodu:
+Następujące ustawienia mogą służyć do konfigurowania trybu generowania kodu:
 
 | Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
@@ -77,7 +77,7 @@ Następujące ustawienia mogą służyć do konfigurowania generowania i obsług
 | CodeLength | Nie | Długość kodu. Wartością domyślną jest `6`. |
 | CharacterSet | Nie | Zestaw znaków dla kodu sformatowany do użycia w wyrażeniu regularnym. Na przykład `a-z0-9A-Z`. Wartością domyślną jest `0-9`. Zestaw znaków musi zawierać co najmniej 10 różnych znaków w określonym zestawie. |
 | NumRetryAttempts | Nie | Liczba prób weryfikacji przed kodem jest uznawana za nieprawidłową. Wartością domyślną jest `5`. |
-| Operacja | Yes | Operacja do wykonania. Możliwe wartości: `GenerateCode`lub `VerifyCode`. |
+| Operacja | Yes | Operacja do wykonania. Możliwa wartość: `GenerateCode`. |
 | ReuseSameCode | Nie | Czy należy określić zduplikowany kod zamiast generować nowy kod, gdy dany kod nie wygasł i jest nadal ważny. Wartością domyślną jest `false`. |
 
 ### <a name="returning-error-message"></a>Zwracany komunikat o błędzie
@@ -90,22 +90,22 @@ Poniższy przykład `TechnicalProfile` jest używany do generowania kodu:
 
 ```XML
 <TechnicalProfile Id="GenerateCode">
-    <DisplayName>Generate Code</DisplayName>
-    <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-    <Metadata>
-        <Item Key="Operation">GenerateCode</Item>
-        <Item Key="CodeExpirationInSeconds">600</Item>
-        <Item Key="CodeLength">6</Item>
-        <Item Key="CharacterSet">0-9</Item>
-        <Item Key="NumRetryAttempts">5</Item>
-        <Item Key="ReuseSameCode">false</Item>
-    </Metadata>
-    <InputClaims>
-        <InputClaim ClaimTypeReferenceId="identifier" PartnerClaimType="identifier" />
-    </InputClaims>
-    <OutputClaims>
-        <OutputClaim ClaimTypeReferenceId="otpGenerated" PartnerClaimType="otpGenerated" />
-    </OutputClaims>
+  <DisplayName>Generate Code</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <Metadata>
+    <Item Key="Operation">GenerateCode</Item>
+    <Item Key="CodeExpirationInSeconds">600</Item>
+    <Item Key="CodeLength">6</Item>
+    <Item Key="CharacterSet">0-9</Item>
+    <Item Key="NumRetryAttempts">5</Item>
+    <Item Key="ReuseSameCode">false</Item>
+  </Metadata>
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="identifier" PartnerClaimType="identifier" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="otpGenerated" PartnerClaimType="otpGenerated" />
+  </OutputClaims>
 </TechnicalProfile>
 ```
 
@@ -132,21 +132,23 @@ Element **OutputClaimsTransformations** może zawierać kolekcję elementów **O
 
 ### <a name="metadata"></a>Metadane
 
-Poniższe ustawienia mogą służyć do konfigurowania komunikatu o błędzie wyświetlanego podczas niepowodzenia weryfikacji kodu:
+Do trybu weryfikacji kodu można użyć następujących ustawień:
+
+| Atrybut | Wymagany | Opis |
+| --------- | -------- | ----------- |
+| Operacja | Yes | Operacja do wykonania. Możliwa wartość: `VerifyCode`. |
+
+
+### <a name="error-messages"></a>Komunikaty o błędach
+
+Poniższe ustawienia mogą służyć do konfigurowania komunikatów o błędach wyświetlanych podczas sprawdzania kodu. Metadane należy skonfigurować w profilu technicznym z [własnym potwierdzeniem](self-asserted-technical-profile.md) . Komunikaty o błędach można [lokalizować](localization-string-ids.md#one-time-password-error-messages).
 
 | Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
 | UserMessageIfSessionDoesNotExist | Nie | Komunikat, który ma być wyświetlany użytkownikowi, jeśli sesja weryfikacji kodu wygasła. To albo kod wygasł albo kod nigdy nie został wygenerowany dla danego identyfikatora. |
 | UserMessageIfMaxRetryAttempted | Nie | Komunikat, który ma być wyświetlany użytkownikowi w przypadku przekroczenia maksymalnej dozwolonej liczby prób weryfikacji. |
 | UserMessageIfInvalidCode | Nie | Komunikat, który ma być wyświetlany użytkownikowi, jeśli podał nieprawidłowy kod. |
-
-### <a name="returning-error-message"></a>Zwracany komunikat o błędzie
-
-Zgodnie z opisem w temacie [Metadata](#metadata)można dostosować komunikat o błędzie wyświetlany użytkownikowi dla różnych przypadków błędów. Możesz również lokalizować te komunikaty, wprowadzając prefiksy ustawień regionalnych, na przykład:
-
-```XML
-<Item Key="en.UserMessageIfInvalidCode">Wrong code has been entered.</Item>
-```
+|UserMessageIfSessionConflict|Nie| Komunikat, który ma być wyświetlany użytkownikowi, jeśli nie można zweryfikować kodu.|
 
 ### <a name="example"></a>Przykład
 
@@ -154,24 +156,21 @@ Poniższy przykład `TechnicalProfile` służy do sprawdzania kodu:
 
 ```XML
 <TechnicalProfile Id="VerifyCode">
-    <DisplayName>Verify Code</DisplayName>
-    <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-    <Metadata>
-        <Item Key="Operation">VerifyCode</Item>
-        <Item Key="UserMessageIfInvalidCode">Wrong code has been entered.</Item>
-        <Item Key="UserMessageIfSessionDoesNotExist">Code has expired.</Item>
-        <Item Key="UserMessageIfMaxRetryAttempted">You've tried too many times.</Item>
-    </Metadata>
-    <InputClaims>
-        <InputClaim ClaimTypeReferenceId="identifier" PartnerClaimType="identifier" />
-        <InputClaim ClaimTypeReferenceId="otpGenerated" PartnerClaimType="otpToVerify" />
-    </InputClaims>
+  <DisplayName>Verify Code</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <Metadata>
+    <Item Key="Operation">VerifyCode</Item>
+  </Metadata>
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="identifier" PartnerClaimType="identifier" />
+    <InputClaim ClaimTypeReferenceId="otpGenerated" PartnerClaimType="otpToVerify" />
+  </InputClaims>
 </TechnicalProfile>
 ```
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z poniższym artykułem, aby uzyskać przykład użycia jednorazowego profilu technial haseł z weryfikacją niestandardowej wiadomości e-mail:
+Zapoznaj się z poniższym artykułem, aby uzyskać przykład użycia profilu technicznego hasła jednorazowego z niestandardową weryfikacją wiadomości e-mail:
 
 - [Niestandardowa Weryfikacja poczty e-mail w Azure Active Directory B2C](custom-email.md)
 

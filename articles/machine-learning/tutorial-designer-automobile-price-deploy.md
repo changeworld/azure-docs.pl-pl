@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 6fc6479ccda77bff84319d3244b2bd4a0599dc47
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 390655e3caab89425fe3c8623928c584f8bd3324
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933994"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933162"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Samouczek: Wdrażanie modelu uczenia maszynowego za pomocą narzędzia Projektant (wersja zapoznawcza)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -39,7 +39,7 @@ Aby wdrożyć potok, należy najpierw skonwertować potok szkoleniowy do potoku 
 
 1. Nad kanwą potoku wybierz pozycję **Utwórz potok wnioskowania** > **potoku w czasie rzeczywistym**.
 
-    ![Zrzut ekranu przedstawiający miejsce znalezienia przycisku Utwórz potok](./media/tutorial-designer-automobile-price-deploy/create-inference-pipeline.png)
+    ![Zrzut ekranu przedstawiający miejsce znalezienia przycisku Utwórz potok](./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png)
 
     Potok powinien teraz wyglądać następująco: 
 
@@ -56,7 +56,7 @@ Aby wdrożyć potok, należy najpierw skonwertować potok szkoleniowy do potoku 
     > Domyślnie dane **wejściowe usługi sieci Web** będą oczekiwać tego samego schematu danych co dane szkoleniowe, które są używane do tworzenia potoku predykcyjnego. W tym scenariuszu cena jest uwzględniona w schemacie. Cena nie jest jednak używana jako współczynnik podczas przewidywania.
     >
 
-1. Wybierz pozycję **Uruchom**, a następnie użyj tego samego elementu docelowego obliczeń i eksperymentu, który został użyty w części pierwszej.
+1. Wybierz pozycję **Prześlij**, a następnie użyj tego samego elementu docelowego obliczeń i eksperymentu, który został użyty w części pierwszej.
 
 1. Wybierz pozycję **Wdróż**.
 

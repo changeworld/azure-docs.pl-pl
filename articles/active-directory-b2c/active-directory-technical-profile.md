@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/05/2020
+ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2c36a2c47605e7e672996a4a33734c9281dad042
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 82daf447270fc0413284e3e7a908a8b5237a4f9c
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78397824"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78932983"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj profil techniczny Azure Active Directory w Azure Active Directory B2C zasadach niestandardowych
 
@@ -58,13 +58,13 @@ W poniższym przykładzie przedstawiono profil techniczny usługi **AAD-Common**
 
 ## <a name="input-claims"></a>Oświadczenia wejściowe
 
-Następujące profile techniczne obejmują **InputClaims** kont społecznościowych i lokalnych:
+Element InputClaims zawiera zastrzeżenie, które jest używane do wyszukania konta w katalogu lub utworzenia nowego. W kolekcji oświadczeń wejściowych musi znajdować się tylko jeden element oświadczenie inputclaim dla wszystkich profilów technicznych usługi Azure AD. Może być konieczne zamapowanie nazwy żądania zdefiniowanego w zasadach na nazwę zdefiniowaną w Azure Active Directory.
 
-- Profile techniczne konta społeczności **AAD-UserReadUsingAlternativeSecurityId** i **AAD-UserWriteUsingAlternativeSecurityId** zawierają zgłoszenie **AlternativeSecurityId** . To zgłoszenie zawiera identyfikator użytkownika konta społecznościowego.
-- Profile techniczne dla konta lokalnego **AAD-UserReadUsingEmailAddress** i **AAD-UserWriteUsingLogonEmail** zawierają takie **wnioski.** To zgłoszenie zawiera nazwę logowania konta lokalnego.
-- Ujednolicone profile techniczne (lokalne i społecznościowe) **AAD-UserReadUsingObjectId**, **AAD-UserWritePasswordUsingObjectId**, **AAD-UserWriteProfileUsingObjectId**i **AAD-UserWritePhoneNumberUsingObjectId** zawierają takie **żądania.** Unikatowy identyfikator konta.
+Aby odczytać, zaktualizować lub usunąć istniejące konto użytkownika, jest to klucz, który jednoznacznie identyfikuje konto w katalogu usługi Azure AD. Na przykład **objectid**, **userPrincipalName**, **signInNames. EmailAddress**, **signInNames. username**lub **alternativeSecurityId**. 
 
-Element **InputClaimsTransformations** może zawierać kolekcję elementów **InputClaimsTransformation** , które są używane do modyfikowania oświadczeń wejściowych lub generowania nowych.
+Aby utworzyć nowe konto użytkownika, jest to klucz, który jednoznacznie identyfikuje konto lokalne lub federacyjne. Na przykład konto lokalne: **signInNames. EmailAddress**lub **signInNames. username**. Dla konta federacyjnego: **alternativeSecurityId**.
+
+Element InputClaimsTransformations może zawierać kolekcję elementów transformacji oświadczeń wejściowych, które są używane do modyfikowania oświadczenia wejściowego lub generują nowe.
 
 ## <a name="output-claims"></a>Oświadczenia wyjściowe
 

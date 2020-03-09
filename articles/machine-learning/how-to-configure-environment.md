@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 12/27/2019
 ms.custom: seodec18
 ms.openlocfilehash: 32db7b19b7ec63135c3359f9685dd767dd0921f5
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169859"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355084"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -289,7 +289,7 @@ Utwórz [klaster datakostki](https://docs.microsoft.com/azure/azure-databricks/q
 
 Użyj tych ustawień:
 
-| Ustawienie |Dotyczy| Wartość |
+| Ustawienie |Stosuje się do| Wartość |
 |----|---|---|
 | Nazwa klastra |stałego| yourclustername |
 | Środowisko uruchomieniowe usługi Databricks |stałego|Środowisko uruchomieniowe inne niż ML 6,0 (Scala 2,11, Spark 2.4.3) |
