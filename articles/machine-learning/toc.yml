@@ -75,10 +75,10 @@
       href: samples-notebooks.md
     - name: Zestawy danych licencji Azure Open
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
+    - name: Zestawy danych projektanta
+      href: sample-designer-datasets.md
     - name: Kompleksowe przykłady metodyki MLOps
       href: 'https://github.com/microsoft/MLOps'
-    - name: Przykładowe zestawy danych projektanta
-      href: designer-sample-datasets.md
 - name: Pojęcia
   items:
     - name: Workspace

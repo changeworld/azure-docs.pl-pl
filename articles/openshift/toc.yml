@@ -35,8 +35,8 @@
           href: howto-aad-app-configuration.md
     - name: Wdrażanie autonomicznego rozwiązania Prometheus w klastrze platformy Azure Red Hat OpenShift
       href: howto-deploy-prometheus.md
-    - name: Zarządzanie projektami w klastrze usługi Azure Red Hat OpenShift
-      href: howto-manage-projects.md
+    - name: Tworzenie prywatnego klastra usługi Azure Red Hat OpenShift
+      href: howto-create-private-cluster.md
     - name: Monitorowanie i rejestrowanie
       items:
         - name: Usługa Azure Monitor dla kontenerów (wersja zapoznawcza)

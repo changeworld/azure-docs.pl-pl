@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 102bbfbd1c02c93830f5c7fce89fe95d7fde54c5
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174646"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376518"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Zmiana ról zasobów dla pakietu dostępu w usłudze Azure AD uprawnienia zarządzania
 
@@ -92,10 +92,10 @@ Aby uzyskać więcej informacji, zobacz [porównywanie grup](https://docs.micros
 
     |  |  |
     | --- | --- |
-    | Zabezpieczenia | Służy do udzielania dostępu do zasobów. |
+    | Bezpieczeństwo | Służy do udzielania dostępu do zasobów. |
     | Dystrybucja | Służy do wysyłania powiadomień do grupy osób. |
     | O365 | Grupa pakietu Office 365, która nie jest włączona dla zespołów. Używany do współpracy między użytkownikami i spoza niej. |
-    | Dział | Grupa pakietu Office 365, dla której włączono zespoły. Używany do współpracy między użytkownikami i spoza niej. |
+    | Zespół | Grupa pakietu Office 365, dla której włączono zespoły. Używany do współpracy między użytkownikami i spoza niej. |
 
 1. Na liście **rola** wybierz pozycję **właściciel** lub **członek**.
 
@@ -178,7 +178,7 @@ Usługa Azure AD może automatycznie przypisywać użytkownikom dostęp do witry
 
 W obszarze Zarządzanie prawami usługa Azure AD będzie przetwarzać zmiany zbiorcze dotyczące przypisywania i zasobów w pakietach dostępu kilka razy dziennie. Dlatego w przypadku przypisania lub zmiany ról zasobów pakietu dostępu może upłynąć nawet 24 godziny, gdy zmiana zostanie wprowadzona w usłudze Azure AD, a także czas, w którym konieczne jest propagowanie tych zmian do innych usług online firmy Microsoft lub połączonej aplikacji SaaS wolumin. Jeśli zmiana ma wpływ tylko na kilka obiektów, zmiana będzie prawdopodobnie trwać tylko kilka minut w usłudze Azure AD, po której inne składniki usługi Azure AD będą wykrywać zmiany i aktualizować aplikacje SaaS. Jeśli zmiana wpłynie na tysiące obiektów, zmiana będzie trwać dłużej. Jeśli na przykład masz pakiet dostępu z 2 aplikacjami i przypisaniami użytkowników 100 i zdecydujesz się dodać rolę witryny programu SharePoint do pakietu dostępu, może się zdarzyć, że wszyscy użytkownicy będą częścią tej roli witryny programu SharePoint. Postęp można monitorować w dzienniku inspekcji usługi Azure AD, dzienniku aprowizacji usługi Azure AD oraz w dziennikach inspekcji witryny programu SharePoint.
 
-Po usunięciu członka zespołu są one również usuwane z grupy Office 365. Usunięcie z funkcjonalności rozmowy zespołu może być opóźnione. Aby uzyskać więcej informacji, zobacz [członkostwo w grupie](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership).
+Po usunięciu członka zespołu są one również usuwane z grupy usługi Office 365. Usunięcie z funkcji czatu zespołu może być opóźnione. Aby uzyskać więcej informacji, zobacz [członkostwo w grupie](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership).
 
 ## <a name="next-steps"></a>Następne kroki
 

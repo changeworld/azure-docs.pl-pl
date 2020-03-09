@@ -165,6 +165,22 @@
               href: map-get-information-from-coordinate.md
             - name: Wyświetlanie instrukcji dotyczących trasy z punktu A do punktu B
               href: map-route.md
+        - name: Moduł operacji we/wy danych przestrzennych
+          items:
+            - name: Używanie modułu operacji we/wy danych przestrzennych
+              href: how-to-use-spatial-io-module.md
+            - name: Dodawanie prostej warstwy danych
+              href: spatial-io-add-simple-data-layer.md
+            - name: Odczytywanie i zapisywanie danych przestrzennych
+              href: spatial-io-read-write-spatial-data.md
+            - name: Dodawanie warstwy mapy OGC
+              href: spatial-io-add-ogc-map-layer.md
+            - name: Nawiązywanie połączenia z usługą WFS
+              href: spatial-io-connect-wfs-service.md
+            - name: Korzystanie z podstawowych operacji
+              href: spatial-io-core-operations.md
+            - name: Szczegóły obsługiwanego formatu danych
+              href: spatial-io-supported-data-format-details.md
         - name: Przeglądarki obsługiwane przez zestaw Web SDK
           href: supported-browsers.md
     - name: Tworzenie aplikacji przy użyciu zestawu Android SDK

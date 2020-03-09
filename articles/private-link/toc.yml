@@ -30,6 +30,8 @@
       href: create-private-endpoint-storage-portal.md
     - name: Prywatne połączenie z kontem usługi Cosmos DB
       href: create-private-endpoint-cosmosdb-portal.md
+    - name: Prywatne połączenie z aplikacją internetową
+      href: create-private-endpoint-webapp-portal.md
     - name: Wyłączanie zasad sieciowych dla prywatnego punktu końcowego
       href: disable-private-endpoint-network-policy.md
     - name: Wyłączanie zasad sieciowych dla usługi łącza prywatnego

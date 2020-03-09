@@ -4,23 +4,25 @@ description: Ten artykuł pomaga lepiej zrozumieć dane zawarte w usłudze Azure
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/21/2020
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 44953a3986b5c03afa9cc4668e2563c5c5cd6c46
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: ff3ed7ee65fd34ef9cd3541832f9cffc306e1aa8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560613"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245372"
 ---
 # <a name="understand-cost-management-data"></a>Omówienie danych usługi Cost Management
 
 Ten artykuł pomaga lepiej zrozumieć dane kosztów i użycia platformy Azure, które znajdują się w usłudze Azure Cost Management. Wyjaśniono w nim, jak często dane są przetwarzane, zbierane, pokazywane i zamykane. Opłaty za użycie platformy Azure są naliczane co miesiąc. Mimo że cykle rozliczeniowe są okresami miesięcznymi, daty rozpoczęcia i zakończenia cyklu różnią się w zależności od typu subskrypcji. Częstotliwość, z jaką usługa Cost Management odbiera dane użycia, różni się w zależności od różnych czynników. Takie czynniki obejmują czas potrzebny na przetworzenie danych oraz częstotliwość, z jaką usługi platformy Azure emitują użycie do systemu rozliczeniowego.
 
 W usłudze Cost Management zawarte są dane całego użycia i wszystkich zakupów, w tym rezerwacje i oferty innych firm dla kont z umową Enterprise Agreement (EA). W przypadku kont z Umową z Klientem Microsoft i subskrypcji indywidualnych rozliczanych po stawkach płatności zgodnie z rzeczywistym zawarte są wyłącznie dane użycia z usług platformy Azure i witryny Marketplace. Pomoc techniczna i inne koszty nie są uwzględniane. Do czasu wygenerowania faktury koszty są szacunkowe i nie są uwzględniane w środkach.
+
+Jeśli masz nową subskrypcję, nie możesz od razu korzystać z funkcji usługi Cost Management. Aby można było korzystać ze wszystkich funkcji usługi Cost Management, może upłynąć do 48 godzin.
 
 ## <a name="supported-microsoft-azure-offers"></a>Obsługiwane oferty platformy Microsoft Azure
 

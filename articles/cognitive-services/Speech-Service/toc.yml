@@ -193,10 +193,8 @@
           items:
             - name: Interfejs API REST zamiany tekstu na mowę
               href: rest-text-to-speech.md
-        - name: Użycie zestawu dla rozmów telefonicznych
-          items:
-            - name: Użycie zestawu dla rozmów telefonicznych w interfejsie API usługi Mowa (SAPI)
-              href: sapi-phoneset-usage.md
+        - name: Zestawy fonetyczne SSML
+          href: speech-ssml-phonetic-sets.md
     - name: Zasoby
       items:
         - name: Często zadawane pytania dotyczące zamiany tekstu na mowę
@@ -494,19 +492,14 @@
           href: speech-devices-sdk.md
         - name: Pobieranie zestawu Speech Devices SDK
           href: get-speech-devices-sdk.md
-        - name: Informacje o wersji
-          href: devices-sdk-release-notes.md
-        - name: Szczegóły urządzenia Roobo v1
-          href: speech-devices-sdk-roobo-v1.md
-        - name: Szczegóły urządzenia Roobo v2
-          href: speech-devices-sdk-roobo-v2.md
-        - name: Specyfikacja mikrofonu
     - name: Sprzęt
       items:
         - name: Zalecenia dotyczące zestawu mikrofonów
           href: speech-devices-sdk-microphone.md
-        - name: 'Zestaw Roobo, wersja 1'
+        - name: Szczegóły urządzenia Roobo v1
           href: speech-devices-sdk-roobo-v1.md
+        - name: Szczegóły urządzenia Roobo v2
+          href: speech-devices-sdk-roobo-v2.md
     - name: Szybki start
       items:
         - name: Używanie zestawu Speech Devices SDK

@@ -50,6 +50,8 @@
       href: /learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr
     - name: Uczenie maszynowe przy użyciu biblioteki TensorFlow
       href: functions-machine-learning-tensorflow.md
+    - name: Klasyfikacja obrazów za pomocą platformy PyTorch
+      href: machine-learning-pytorch.md
     - name: Tworzenie obrazu z niestandardowym systemem Linux
       href: functions-create-function-linux-custom-image.md
     - name: Funkcje na urządzeniu usługi IoT Edge

@@ -1,27 +1,29 @@
 ---
 title: Stany subskrypcji platformy Azure
-description: Opis różnych stanów subskrypcji platformy Azure
+description: W tym artykuł opisano różne stany subskrypcji platformy Azure.
 keywords: stan subskrypcji platformy azure
 author: anuragdalmia
-ms.reviewer: andalmia
+ms.reviewer: banders
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/03/2020
 ms.author: andalmia
-ms.openlocfilehash: df8a60c0249eb51168e1a67cdd67116813312626
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 29af3d064b481548cdb9b9518e9735eb34aaf034
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200541"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270240"
 ---
 # <a name="azure-subscription-states"></a>Stany subskrypcji platformy Azure
-W tym artykule opisano różne możliwe stany subskrypcji platformy Azure. Te stany są wyświetlane jako „Stan” w blokach subskrypcji.
+
+W tym artykule opisano różne możliwe stany subskrypcji platformy Azure. Te stany są wyświetlane jako **Stan** w obszarach subskrypcji witryny Azure Portal.
 
 | Stan subskrypcji | Opis |
 |-------------| ----------------|
-| **Aktywna** | Twoja subskrypcja platformy Azure jest aktywna. Możesz używać tej subskrypcji do wdrażania nowych zasobów i zarządzania istniejącymi.|
-| **Minął termin płatności** | Istnieje zaległa płatność za Twoją subskrypcję platformy Azure. Subskrypcja jest nadal aktywna, ale nieopłacenie zaległych płatności może spowodować wyłączenie subskrypcji. [Rozwiąż problem z zaległym saldem za subskrypcję platformy Azure](https://docs.microsoft.com/azure/billing/billing-azure-subscription-past-due-balance). |
-| **Disabled (Wyłączone)** | Twoja subskrypcja platformy Azure jest wyłączona i nie można już używać jej do tworzenia zasobów platformy Azure i zarządzania nimi. W tym stanie przydziały maszyn wirtualnych są wycofane, tymczasowe adresy IP są zwolnione, magazyn jest dostępny tylko do odczytu, a inne usługi są wyłączone. Subskrypcja może zostać wyłączona, ponieważ Twoje środki wygasły, osiągnięto limit wydatków, masz zaległy rachunek, przekroczono limit karty kredytowej lub subskrypcja została jawnie wyłączona/anulowana. Zależnie od typu subskrypcji i przyczyny wyłączenia, subskrypcja może pozostać wyłączona przez 1–90 dni, po czym zostanie trwale usunięta. [Ponownie uaktywnij wyłączoną subskrypcję platformy Azure](https://docs.microsoft.com/azure/billing/billing-subscription-become-disable).|
+| **Aktywna** | Twoja subskrypcja platformy Azure jest aktywna. Możesz używać subskrypcji do wdrażania nowych zasobów i zarządzania istniejącymi.|
 | **Usunięta** | Twoja subskrypcja platformy Azure została usunięta wraz z wszystkimi zasobami/danymi bazowymi. |
+| **Disabled (Wyłączone)** | Twoja subskrypcja platformy Azure jest wyłączona i nie można już używać jej do tworzenia zasobów platformy Azure i zarządzania nimi. W tym stanie przydziały maszyn wirtualnych są wycofane, tymczasowe adresy IP są zwolnione, magazyn jest dostępny tylko do odczytu, a inne usługi są wyłączone. Subskrypcja może zostać wyłączona z następujących powodów: Twoje środki mogły wygasnąć. Prawdopodobnie osiągnięto limit wydatków. Masz zaległy rachunek. Przekroczono limit karty kredytowej. Subskrypcja została jawnie wyłączona lub anulowana. W zależności od typu subskrypcji subskrypcja może pozostać wyłączona od 1 do 90 dni. Po upływie tego czasu zostanie ona trwale usunięta. Aby uzyskać więcej informacji, zobacz [Ponowne uaktywnianie wyłączonej subskrypcji platformy Azure](subscription-disabled.md). |
+| **Wygasła** | Twoja subskrypcja platformy Azure wygasła, ponieważ została anulowana. Możesz ponownie aktywować wygasłą subskrypcję. Aby uzyskać więcej informacji, zobacz [Ponowne uaktywnianie wyłączonej subskrypcji platformy Azure](subscription-disabled.md).|
+| **Minął termin płatności** | Istnieje zaległa płatność za Twoją subskrypcję platformy Azure. Subskrypcja jest nadal aktywna, ale nieopłacenie zaległych płatności może spowodować wyłączenie subskrypcji. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemu z zaległym saldem za subskrypcję platformy Azure](resolve-past-due-balance.md). |

@@ -4,17 +4,17 @@ description: W tym artykule wyjaśniono, w jaki sposób partnerzy używają funk
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/10/2020
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 9f35f0ae2b310fba462a3f45038496854077da27
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: f81ec71ffe5cdf7f70e309282307a1c4bb293219
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77117586"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245477"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Wprowadzenie do usługi Azure Cost Management dla partnerów
 
@@ -140,18 +140,14 @@ Gdy zasady kosztów zostaną ustawione na wartość **Tak**, użytkownicy subskr
 
 Po włączeniu zasad widoczności kosztów wszystkie usługi mające użycie subskrypcji wykazują koszty według stawek płatności zgodnie z rzeczywistym użyciem. Użycie rezerwacji jest wyświetlane z zerowymi opłatami za rzeczywiste i amortyzowane koszty. Zakupy i upoważnienia nie są skojarzone z konkretną subskrypcją. W związku z tym zakupy nie są wyświetlane w zakresie subskrypcji.
 
-Aby wyświetlić koszty dzierżawy klienta, otwórz pozycję **Zarządzanie kosztami i rozliczenia**, a następnie wybierz odpowiednie konto rozliczeniowe z umową Microsoft Partner Agreement.
 
-![Wybieranie konta rozliczeniowego](./media/get-started-partners/select-billing-account.png)
+### <a name="view-customer-costs"></a>Wyświetlanie kosztów klienta
 
-W obszarze **Rozliczenia** wybierz pozycję **Subskrypcje platformy Azure**, a następnie wybierz klienta.
-
-![Wybieranie klienta subskrypcji platformy Azure](./media/get-started-partners/subscriptions-select-customer.png)
-
-Wybierz pozycję **Analiza kosztów** i rozpocznij przeglądanie kosztów.
-Analiza kosztów, budżety i alerty są dostępne dla zakresów subskrypcji i zakresów RBAC grup zasobów z kosztami bazującymi na płatności zgodnie z rzeczywistym użyciem.
+Aby wyświetlić koszty dla dzierżawy klienta, przejdź do obszaru **Zarządzanie kosztami i rozliczenia**. Wybierz pozycję **Analiza kosztów**, a następnie zmień zakres na subskrypcję dzierżawy klienta, aby rozpocząć przegląd kosztów.
 
 ![Wyświetlanie analizy kosztów jako klient ](./media/get-started-partners/customer-tenant-view-cost-analysis.png)
+
+Analiza kosztów, budżety i alerty są dostępne dla zakresów subskrypcji i zakresów RBAC grup zasobów z kosztami bazującymi na płatności zgodnie z rzeczywistym użyciem.
 
 Widoki amortyzowane i rzeczywiste koszty dla wystąpień zarezerwowanych w zakresach RBAC pokazują zero opłat. Koszty wystąpień zarezerwowanych są wyświetlane tylko w zakresach rozliczeniowych, w których dokonano zakupów.
 

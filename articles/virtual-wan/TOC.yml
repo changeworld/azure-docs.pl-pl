@@ -34,24 +34,36 @@
       href: connect-virtual-network-gateway-vwan.md
     - name: Konfigurowanie globalnej komunikacji równorzędnych sieci wirtualnych
       href: global-peering-vnet.md
-    - name: Konfigurowanie szyfrowania w usłudze ExpressRoute
-      href: vpn-over-expressroute.md
     - name: Podwyższanie poziomu jednostki SKU wirtualnej sieci WAN
       href: upgrade-virtual-wan.md
     - name: Konfigurowanie niestandardowych zasad protokołu IPsec
       href: virtual-wan-custom-ipsec-portal.md
-    - name: Konfigurowanie certyfikatów dla sieci VPN użytkownika (punkt-lokacja)
-      href: certificates-point-to-site.md
-    - name: Konfigurowanie dzierżawy usługi Azure AD dla sieci VPN użytkownika
-      href: openvpn-azure-ad-tenant.md
-    - name: Włączanie uwierzytelniania wieloskładnikowego dla sieci VPN użytkownika
-      href: openvpn-azure-ad-mfa.md
-    - name: Konfigurowanie uwierzytelniania w usłudze Azure AD na potrzeby sieci VPN użytkownika
-      href: virtual-wan-point-to-site-azure-ad.md
-    - name: Konfigurowanie uwierzytelniania w usłudze Azure AD dla wielu aplikacji na potrzeby sieci VPN użytkownika
-      href: openvpn-azure-ad-tenant-multi-app.md
-    - name: Pobieranie profili sieci VPN — globalnych i opartych na koncentratorach
-      href: global-hub-profile.md
+    - name: ExpressRoute
+      items:
+        - name: Tworzenie połączenia usługi ExpressRoute
+          href: virtual-wan-expressroute-portal.md
+        - name: Konfigurowanie szyfrowania w usłudze ExpressRoute
+          href: vpn-over-expressroute.md
+    - name: Lokacja-lokacja
+      items:
+        - name: Tworzenie połączenia typu lokacja-lokacja
+          href: virtual-wan-site-to-site-portal.md
+    - name: Sieć VPN użytkownika (punkt-lokacja)
+      items:
+        - name: Tworzenie połączeń sieci VPN użytkownika (punkt-lokacja)
+          href: virtual-wan-point-to-site-portal.md
+        - name: Konfigurowanie certyfikatów dla sieci VPN użytkownika
+          href: certificates-point-to-site.md
+        - name: Konfigurowanie dzierżawy usługi Azure AD dla sieci VPN użytkownika
+          href: openvpn-azure-ad-tenant.md
+        - name: Włączanie uwierzytelniania wieloskładnikowego dla sieci VPN użytkownika
+          href: openvpn-azure-ad-mfa.md
+        - name: Konfigurowanie uwierzytelniania w usłudze Azure AD na potrzeby sieci VPN użytkownika
+          href: virtual-wan-point-to-site-azure-ad.md
+        - name: Konfigurowanie uwierzytelniania w usłudze Azure AD dla wielu aplikacji na potrzeby sieci VPN użytkownika
+          href: openvpn-azure-ad-tenant-multi-app.md
+        - name: Pobieranie profili sieci VPN użytkownika — globalnych i opartych na koncentratorach
+          href: global-hub-profile.md
     - name: Configure routing (Konfigurowanie routingu)
       items:
         - name: Kierowanie ruchem z koncentratora wirtualnego do wirtualnego urządzenia sieciowego
