@@ -5,15 +5,15 @@ ms.topic: tutorial
 ms.date: 08/22/2018
 ms.custom: mvc
 ms.openlocfilehash: 906901ce4792e8b363a3a9b77c9bf6bb4b59aec5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226477"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381419"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Tworzenie kopii zapasowej serwerów z systemem Windows na platformie Azure
 
-Przy użyciu usługi Azure Backup można chronić serwer z systemem Windows przed uszkodzeniem, atakiem czy awarią. Usługa Azure Backup udostępnia proste narzędzie: agenta usługi Microsoft Azure Recovery Services (MARS). Agent usług MARS zainstalowany na serwerze z systemem Windows chroni pliki, foldery i konfigurację serwera przy użyciu stanu systemu Windows Server. W tym samouczku opisano, jak za pomocą agenta usług MARS utworzyć kopię zapasową serwera z systemem Windows na platformie Azure. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Przy użyciu usługi Azure Backup można chronić serwer z systemem Windows przed uszkodzeniem, atakiem czy awarią. Usługa Azure Backup udostępnia proste narzędzie: agenta usługi Microsoft Azure Recovery Services (MARS). Agent usług MARS zainstalowany na serwerze z systemem Windows chroni pliki, foldery i konfigurację serwera przy użyciu stanu systemu Windows Server. W tym samouczku opisano, jak za pomocą agenta usług MARS utworzyć kopię zapasową serwera z systemem Windows na platformie Azure. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 >
@@ -25,7 +25,7 @@ Przy użyciu usługi Azure Backup można chronić serwer z systemem Windows prze
 
 Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
-## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu usługi Recovery Services
+## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu Usług odzyskiwania
 
 Aby umożliwić tworzenie kopii zapasowych serwerów z systemem Windows należy najpierw utworzyć lokalizację przechowywania kopii zapasowych, nazywanych też punktami przywracania. [Magazyn usługi Recovery Services](backup-azure-recovery-services-vault-overview.md) to kontener na platformie Azure, w którym przechowywane są kopie zapasowe serwera z systemem Windows. Wykonaj poniższe czynności, aby utworzyć magazyn usługi Recovery Services w witrynie Azure Portal.
 
@@ -33,7 +33,7 @@ Aby umożliwić tworzenie kopii zapasowych serwerów z systemem Windows należy 
 
    ![Otwieranie magazynu usługi Recovery Services](./media/tutorial-backup-windows-server-to-azure/full-browser-open-rs-vault_2.png)
 
-2. W menu **Magazyny usługi Recovery Services** kliknij pozycję **Dodaj**.
+2. W menu **Magazyny Usług odzyskiwania** kliknij pozycję **Dodaj**.
 
    ![Wprowadzanie informacji o magazynie](./media/tutorial-backup-windows-server-to-azure/provide-vault-detail-2.png)
 
@@ -45,7 +45,7 @@ Aby umożliwić tworzenie kopii zapasowych serwerów z systemem Windows należy 
     * W menu rozwijanym **Lokalizacja** wybierz pozycję *Europa Zachodnia*.
     * Kliknij przycisk **Utwórz**, aby utworzyć magazyn usługi Recovery Services.
 
-Po utworzeniu magazynu pojawi się on na liście magazynów Usług odzyskiwania.
+Po utworzeniu magazynu pojawi się on na liście magazynów usługi Recovery Services.
 
 ## <a name="download-recovery-services-agent"></a>Pobieranie agenta usługi Recovery Services
 
@@ -90,13 +90,13 @@ Agent usługi Microsoft Azure Recovery Services (MARS) tworzy skojarzenie międz
 
 4. Po wyświetleniu monitu podaj hasło szyfrowania na potrzeby szyfrowania kopii zapasowych serwera z systemem Windows. Zapisz hasło w bezpiecznej lokalizacji, ponieważ w przypadku utraty hasła firma Microsoft nie będzie mogła go odzyskać.
 
-5. Kliknij przycisk **Zakończ**.
+5. Kliknij przycisk **Finish** (Zakończ).
 
 ## <a name="configure-backup-and-retention"></a>Konfigurowanie tworzenia i przechowywania kopii zapasowych
 
 Agent usługi Microsoft Azure Recovery Services umożliwia zaplanowanie tworzenia kopii zapasowych serwera z systemem Windows na platformie Azure. Wykonaj następujące czynności na serwerze, na który został pobrany agent.
 
-1. Otwórz agenta usługi Microsoft Azure Recovery Services. Aby go znaleźć, wyszukaj na maszynie łańcuch **Microsoft Azure Backup**.
+1. Otwórz agenta Usług odzyskiwania Microsoft Azure. Aby go znaleźć, wyszukaj na maszynie łańcuch **Microsoft Azure Backup**.
 
 2. W konsoli agenta usługi Recovery Services kliknij pozycję **Zaplanuj wykonywanie kopii zapasowej** w **okienku akcji**.
 
@@ -139,7 +139,7 @@ Podczas pracy z tym samouczkiem wykonano następujące czynności przy użyciu w
 
 > [!div class="checklist"]
 >
-> * Tworzenie magazynu usługi Recovery Services
+> * Tworzenie magazynu Usług odzyskiwania
 > * Pobieranie agenta usługi Microsoft Azure Recovery Services
 > * Instalowanie agenta
 > * Konfigurowanie kopii zapasowej serwera z systemem Windows

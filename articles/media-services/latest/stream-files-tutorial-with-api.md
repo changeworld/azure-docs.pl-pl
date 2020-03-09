@@ -14,11 +14,11 @@ ms.custom: mvc
 ms.date: 03/22/2019
 ms.author: juliako
 ms.openlocfilehash: f8ff3dc71727abf9e276cccc951c4d1143f4200d
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583100"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359542"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-with-media-services-v3"></a>Samouczek: przekazywanie, kodowanie i przesyłanie strumieniowe filmów wideo z Media Services v3
 
@@ -62,7 +62,7 @@ Otwórz plik [appSettings. JSON](https://github.com/Azure-Samples/media-services
 
 W tej sekcji są analizowane funkcje zdefiniowane w pliku [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs) projektu *UploadEncodeAndStreamFiles*.
 
-W przykładzie są wykonywane następujące akcje:
+Przykład wykonuje następujące akcje:
 
 1. Tworzenie nowego **przekształcenia** (najpierw następuje sprawdzenie, czy podane przekształcenie istnieje).
 2. Tworzy element **zawartości** wyjściowej, który jest używany jako dane wyjściowe **zadania**kodowania.
@@ -70,7 +70,7 @@ W przykładzie są wykonywane następujące akcje:
 4. Przesyłanie zadania kodowania przy użyciu utworzonych danych wejściowych i wyjściowych.
 5. Sprawdza stan zadania.
 6. Tworzy **lokalizator przesyłania strumieniowego**.
-7. Utworzenie adresów URL przesyłania strumieniowego.
+7. Tworzenie adresów URL przesyłania strumieniowego.
 
 ### <a name="a-idstart_using_dotnet-start-using-media-services-apis-with-net-sdk"></a><a id="start_using_dotnet" />Rozpoczynanie korzystania z interfejsów API usługi Media Services przy użyciu zestawu .NET SDK
 
@@ -153,7 +153,7 @@ Przykład przedstawiony w tym temacie dotyczy przesyłania strumieniowego, lecz 
 
 ### <a name="get-streaming-urls"></a>Pobieranie adresów URL przesyłania strumieniowego
 
-Teraz, po utworzeniu [lokalizatora przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streaminglocators), możesz pobrać adresy URL przesyłania strumieniowego, jak pokazano w metodzie **GetStreamingURLs**. Aby utworzyć adres URL, musisz połączyć nazwę hosta [punktu końcowego przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streamingendpoints) i ścieżkę **lokalizatora przesyłania strumieniowego**. W tym przykładzie jest używany *domyślny* **punkt końcowy przesyłania strumieniowego**. Po pierwszym utworzeniu konta usługi Media Service ten *domyślny* **punkt końcowy przesyłania strumieniowego** będzie zatrzymany, więc należy wywołać metodę **Start**.
+Teraz, po utworzeniu [lokalizatora przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streaminglocators), możesz pobrać adresy URL przesyłania strumieniowego, jak pokazano w metodzie **GetStreamingURLs**. Aby utworzyć adres URL, musisz połączyć nazwę hosta [punktu końcowego przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streamingendpoints) i ścieżkę **lokalizatora przesyłania strumieniowego**. W tym przykładzie używany jest *domyślny* **punkt końcowy przesyłania strumieniowego** . Podczas pierwszego tworzenia konta usługi multimediów ten *domyślny* **punkt końcowy przesyłania strumieniowego** będzie w stanie zatrzymania, dlatego należy wywołać polecenie **Uruchom**.
 
 > [!NOTE]
 > W przypadku tej metody jest potrzebny element locatorName, który został użyty podczas tworzenia **lokalizatora przesyłania strumieniowego** dla zasobu wyjściowego.

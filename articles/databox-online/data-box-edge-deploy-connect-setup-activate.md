@@ -1,6 +1,6 @@
 ---
-title: Samouczka, aby nawiązać połączenie, konfigurowania, aktywacji usługi Azure Data Box Edge urządzenia w witrynie Azure portal | Dokumentacja firmy Microsoft
-description: Samouczek wdrażania krawędź pola danych powoduje, że możesz się połączyć, konfigurowanie i Aktywuj urządzenie fizyczne.
+title: Samouczek dotyczący nawiązywania połączenia, konfigurowania, aktywowania urządzenia Azure Data Box Edge w Azure Portal | Microsoft Docs
+description: Samouczek wdrażania Data Box Edge powoduje nawiązanie połączenia, skonfigurowanie i aktywowanie urządzenia fizycznego.
 services: databox
 author: alkohli
 ms.service: databox
@@ -10,150 +10,150 @@ ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Data Box Edge so I can use it to transfer data to Azure.
 ms.openlocfilehash: cf2aa9bc1234f8bc92829b107d1a788b75d56a6b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075083"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384689"
 ---
-# <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge"></a>Samouczek: Łączenie, konfigurowanie i aktywowania usługi Azure Data Box Edge 
+# <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge"></a>Samouczek: łączenie, Konfigurowanie i aktywowanie Azure Data Box Edge 
 
-W tym samouczku opisano, jak połączyć, konfigurowanie i aktywacji urządzenia usługi Edge pole danych Azure przy użyciu lokalnego Interfejsu w przeglądarce.
+W tym samouczku opisano sposób nawiązywania połączenia z usługą, konfigurowania i aktywowania urządzenia Azure Data Box Edge przy użyciu lokalnego interfejsu użytkownika sieci Web.
 
-Proces instalacji i aktywacja może potrwać około 20 minut, aby zakończyć.
+Proces instalacji i aktywacji może potrwać około 20 minut.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Nawiązać połączenie z urządzeniem fizycznym
-> * Konfigurowanie i Aktywuj urządzenia fizycznego
+> * Nawiązywanie połączenia z urządzeniem fizycznym
+> * Konfigurowanie i aktywowanie urządzenia fizycznego
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed skonfigurowaniem i skonfiguruj urządzenie brzegowe pole danych, upewnij się, że:
+Przed skonfigurowaniem i skonfigurowaniem urządzenia Data Box Edge upewnij się, że:
 
-* Po zainstalowaniu urządzenia fizycznego zgodnie z opisem w [zainstalować krawędź pola danych](data-box-edge-deploy-install.md).
-* Masz klucz aktywacji usługi krawędź pola danych, utworzony w celu zarządzania urządzeniem krawędź pola danych. Aby uzyskać więcej informacji, przejdź do [przygotowanie do wdrożenia usługi Azure Data Box Edge](data-box-edge-deploy-prep.md).
+* Urządzenie fizyczne zostało zainstalowane zgodnie z opisem w temacie [Install Data Box Edge](data-box-edge-deploy-install.md).
+* Masz klucz aktywacji z usługi Data Box Edge, która została utworzona w celu zarządzania urządzeniem Data Box Edge. Aby uzyskać więcej informacji, przejdź do obszaru [Przygotowywanie do wdrożenia Azure Data Box Edge](data-box-edge-deploy-prep.md).
 
-## <a name="connect-to-the-local-web-ui-setup"></a>Łączenie do lokalnego internetowego interfejsu użytkownika konfiguracji 
+## <a name="connect-to-the-local-web-ui-setup"></a>Nawiązywanie połączenia z konfiguracją lokalnego interfejsu użytkownika sieci Web 
 
-1. Skonfiguruj kartę Ethernet na komputerze, aby połączyć się z urządzeniem krawędź pola danych ze statycznym adresem IP 192.168.100.5 i podsieć 255.255.255.0.
+1. Skonfiguruj kartę Ethernet na komputerze, aby nawiązać połączenie z urządzeniem Data Box Edge przy użyciu statycznego adresu IP 192.168.100.5 i podsieci 255.255.255.0.
 
-2. Podłącz komputer do PORT 1 na urządzeniu. Na poniższej ilustracji umożliwia zidentyfikowanie PORT 1 na urządzeniu.
+2. Podłącz komputer do portu 1 na urządzeniu. Użyj poniższej ilustracji, aby zidentyfikować PORT 1 na urządzeniu.
 
     ![Płyta montażowa okablowanego urządzenia](./media/data-box-edge-deploy-install/backplane-cabled.png)
 
 
-3. Otwórz okno przeglądarki i dostęp do lokalnego internetowego interfejsu użytkownika urządzenia w `https://192.168.100.10`.  
+3. Otwórz okno przeglądarki i uzyskaj dostęp do lokalnego interfejsu użytkownika sieci Web urządzenia w `https://192.168.100.10`.  
     Ta akcja może potrwać kilka minut po włączeniu urządzenia. 
 
-    Zostanie wyświetlony błąd lub ostrzeżenie informujące, że występuje problem z certyfikatem zabezpieczeń witryny sieci Web. 
+    Zostanie wyświetlony komunikat o błędzie lub ostrzeżenie wskazujący, że wystąpił problem z certyfikatem zabezpieczeń witryny sieci Web. 
    
-    ![Komunikat błędu certyfikatu zabezpieczeń witryny sieci Web](./media/data-box-edge-deploy-connect-setup-activate/image2.png)
+    ![Komunikat o błędzie dotyczący certyfikatu zabezpieczeń witryny sieci Web](./media/data-box-edge-deploy-connect-setup-activate/image2.png)
 
-4. Wybierz **Kontynuuj, aby ta strona sieci Web**.  
-    Te kroki mogą różnić się w zależności od przeglądarki, z którego korzystasz.
+4. Wybierz pozycję **Kontynuuj na tej stronie sieci Web**.  
+    Te kroki mogą się różnić w zależności od używanej przeglądarki.
 
-5. Zaloguj się do internetowego interfejsu użytkownika urządzenia. Domyślne hasło jest *Password1*. 
+5. Zaloguj się do internetowego interfejsu użytkownika urządzenia. Domyślne hasło to *Password1*. 
    
-    ![Dane strony logowania dla urządzenia krawędź pola](./media/data-box-edge-deploy-connect-setup-activate/image3.png)
+    ![Strona logowania do urządzenia Data Box Edge](./media/data-box-edge-deploy-connect-setup-activate/image3.png)
 
 6. W wierszu polecenia Zmień hasło administratora urządzenia.  
     Nowe hasło musi zawierać od 8 do 16 znaków. Musi zawierać trzy z następujących znaków: wielkie litery, małe litery, cyfry i znaki specjalne.
 
-Teraz możesz się na pulpicie nawigacyjnym urządzenia.
+Jesteś teraz na pulpicie nawigacyjnym Twojego urządzenia.
 
-## <a name="set-up-and-activate-the-physical-device"></a>Konfigurowanie i Aktywuj urządzenia fizycznego
+## <a name="set-up-and-activate-the-physical-device"></a>Konfigurowanie i aktywowanie urządzenia fizycznego
  
-Pulpit nawigacyjny wyświetla różne ustawienia, które są wymagane, aby skonfigurować i zarejestrować urządzenie fizyczne w usłudze krawędź pola danych. **Nazwy urządzenia**, **ustawienia sieciowe**, **ustawień serwera proxy sieci Web**, i **ustawienia czasu** są opcjonalne. Tylko ustawienia wymagane są **ustawienia chmury**.
+Pulpit nawigacyjny wyświetla różne ustawienia, które są wymagane do skonfigurowania i zarejestrowania urządzenia fizycznego w usłudze Data Box Edge. **Nazwa urządzenia**, **Ustawienia sieci**, **Ustawienia serwera proxy sieci Web**i **Ustawienia czasu** są opcjonalne. Jedyne wymagane ustawienia to **Ustawienia chmury**.
    
-![Lokalnego internetowego interfejsu użytkownika "Pulpit nawigacyjny" strony](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-1.png)
+![Strona "pulpit nawigacyjny" lokalnego interfejsu użytkownika sieci Web](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-1.png)
 
-1. W okienku po lewej stronie wybierz **nazwy urządzenia**, a następnie wprowadź przyjazną nazwę dla danego urządzenia.  
+1. W lewym okienku wybierz pozycję **Nazwa urządzenia**, a następnie wprowadź przyjazną nazwę urządzenia.  
     Przyjazna nazwa musi zawierać od 1 do 15 znaków i zawierać litery, cyfry i łączniki.
 
-    ![Lokalnego internetowego interfejsu użytkownika "Nazwa urządzenia" strony](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-2.png)
+    ![Strona "nazwa urządzenia" lokalnego interfejsu użytkownika sieci Web](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-2.png)
 
-2. (Opcjonalnie) W okienku po lewej stronie wybierz **ustawienia sieciowe** a następnie skonfiguruj ustawienia.  
-    Na urządzenie fizyczne istnieje sześć interfejsów sieciowych. PORT 1 i 2 portu są interfejsów sieciowych 1 GB/s. PORT 3, 4 portu, PORT 5 i 6 portu są wszystkie interfejsy sieciowe 25 GB, które może również służyć jako interfejsów sieciowych 10 GB/s. PORT 1 jest automatycznie konfigurowany jako tylko do zarządzania port i PORT 2 do 6 portu są wszystkie porty danych. **Ustawienia sieciowe** strona jest pokazany poniżej.
+2. Obowiązkowe W okienku po lewej stronie wybierz pozycję **Ustawienia sieci** , a następnie skonfiguruj ustawienia.  
+    Na urządzeniu fizycznym istnieje sześć interfejsów sieciowych. PORT 1 i 2 są interfejsami sieciowymi z 1 GB/s. PORT 3, port 4, PORT 5 i PORT 6 to wszystkie 25 GB/s interfejsów sieciowych, które mogą również działać jako interfejsy sieciowe 10 GB/s. PORT 1 jest automatycznie konfigurowany jako port tylko do zarządzania, a PORT 2 do portu 6 to wszystkie porty danych. Zostanie wyświetlona strona **Ustawienia sieci** .
     
-    ![Strona "Ustawienia sieci" systemu lokalnego internetowego interfejsu użytkownika](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-3.png)
+    ![Strona ustawień sieciowych lokalnego interfejsu użytkownika sieci Web](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-3.png)
    
-    Podczas konfigurowania ustawień sieciowych, należy pamiętać:
+    Podczas konfigurowania ustawień sieci należy pamiętać o następujących kwestiach:
 
-   - Jeżeli w Twoim środowisku włączony jest protokół DHCP, interfejsy sieciowe są automatycznie konfigurowane. Adres IP, podsieci, bramy i DNS są automatycznie przypisywane.
-   - Jeśli nie jest włączony protokół DHCP, możesz przypisać statyczne adresy IP, w razie potrzeby.
-   - Możesz skonfigurować interfejsu sieciowego w przypadku protokołu IPv4.
+   - Jeżeli w Twoim środowisku włączony jest protokół DHCP, interfejsy sieciowe są automatycznie konfigurowane. Adres IP, podsieć, Brama i DNS są przypisywane automatycznie.
+   - Jeśli usługa DHCP nie jest włączona, w razie konieczności można przypisywać statyczne adresy IP.
+   - Interfejs sieciowy można skonfigurować jako adres IPv4.
 
      >[!NOTE] 
-     > Firma Microsoft zaleca, przełącza lokalny adres IP interfejsu sieciowego z statycznego do protokołu DHCP, o ile nie masz innego adresu IP, aby połączyć się z urządzeniem. Jeśli przy użyciu jednego interfejsu sieciowego i przełącz się do protokołu DHCP, będzie można ustalić adres DHCP. Jeśli chcesz zmienić adres DHCP, poczekaj, aż po urządzenia został zarejestrowany w usłudze, a następnie Zmień. Można wyświetlić adresy IP wszystkich kart w **właściwości urządzenia** w witrynie Azure portal dla usługi.
+     > Zaleca się, aby nie przełączać lokalnego adresu IP interfejsu sieciowego ze statycznej do protokół DHCP;, chyba że masz inny adres IP, aby połączyć się z urządzeniem. W przypadku korzystania z jednego interfejsu sieciowego i przełączania do usługi DHCP nie byłoby możliwe określenie adresu DHCP. Jeśli chcesz zmienić adres DHCP, zaczekaj, aż urządzenie zostanie zarejestrowane w usłudze, a następnie Zmień. Następnie można wyświetlić adresy IP wszystkich kart we **właściwościach urządzenia** w Azure Portal dla usługi.
 
-3. (Opcjonalnie) W okienku po lewej stronie wybierz **ustawień serwera proxy sieci Web**, a następnie skonfiguruj serwer proxy sieci web. Mimo, że konfiguracja serwera proxy sieci web jest opcjonalny, jeśli używasz serwera proxy sieci web, możesz go skonfigurować tylko na tej stronie.
+3. Obowiązkowe W okienku po lewej stronie wybierz pozycję **Ustawienia serwera proxy sieci Web**, a następnie skonfiguruj serwer proxy sieci Web. Mimo że konfiguracja serwera proxy sieci Web jest opcjonalna, jeśli używasz serwera proxy sieci Web, możesz go skonfigurować tylko na tej stronie.
    
-   ![Strona "Ustawienia serwera proxy sieci Web" interfejsu użytkownika lokalnego sieci web](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-4.png)
+   ![Strona lokalnego interfejsu użytkownika sieci Web — ustawienia serwera proxy sieci Web](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-4.png)
    
-   Na **ustawień serwera proxy sieci Web** wykonaj następujące czynności:
+   Na stronie **Ustawienia serwera proxy sieci Web** wykonaj następujące czynności:
    
-   a. W **adres URL serwera proxy sieci Web** wprowadź adres URL w następującym formacie: `http://host-IP address or FQDN:Port number`. Adresy URL HTTPS nie są obsługiwane.
+   a. W polu **adres URL serwera proxy sieci Web** wprowadź adres URL w tym formacie: `http://host-IP address or FQDN:Port number`. Adresy URL HTTPS nie są obsługiwane.
 
-   b. W obszarze **uwierzytelniania**, wybierz opcję **Brak** lub **NTLM**.
+   b. W obszarze **uwierzytelnianie**wybierz opcję **Brak** lub **NTLM**.
 
-   c. Jeśli używane jest uwierzytelnianie, wprowadź nazwę użytkownika i hasło.
+   c. Jeśli używasz uwierzytelniania, wprowadź nazwę użytkownika i hasło.
 
-   d. Aby zweryfikować i zastosowania ustawień serwera proxy sieci web skonfigurowany, wybierz pozycję **Zastosuj ustawienia**.
+   d. Aby sprawdzić poprawność skonfigurowanych ustawień serwera proxy sieci Web i zastosować je, wybierz pozycję **Zastosuj ustawienia**.
 
-4. (Opcjonalnie) W okienku po lewej stronie wybierz **ustawienia czasu**, a następnie skonfigurować strefę czasową i podstawowych i pomocniczych serwerów NTP dla urządzenia.  
-    Serwery NTP są wymagane, ponieważ urządzenie musi synchronizować czas, aby zapewnić możliwość uwierzytelnienia przy użyciu dostawców usług w chmurze.
+4. Obowiązkowe W okienku po lewej stronie wybierz pozycję **Ustawienia czasu**, a następnie skonfiguruj strefę czasową i serwery NTP w podstawowym i pomocniczym urządzeniu.  
+    Serwery NTP są wymagane, ponieważ urządzenie musi synchronizować czas, aby można było uwierzytelnić się z dostawcami usług w chmurze.
        
-    Na **ustawienia czasu** wykonaj następujące czynności:
+    Na stronie **Ustawienia czasu** wykonaj następujące czynności:
     
-    1. W **strefa czasowa** listę rozwijaną, wybierz strefę czasową, który odnosi się do lokalizacji geograficznej, w której jest wdrażane urządzenie na liście.
-        Domyślna strefa czasowa dla Twojego urządzenia jest czasu PST. Wszystkie zaplanowane operacje urządzenia będą wykonywane w ramach tej strefy czasowej.
+    1. Z listy rozwijanej **strefa czasowa** wybierz strefę czasową odpowiadającą lokalizacji geograficznej, w której jest wdrażane urządzenie.
+        Domyślna strefa czasowa urządzenia to PST. Wszystkie zaplanowane operacje urządzenia będą wykonywane w ramach tej strefy czasowej.
 
-    2. W **podstawowy serwer NTP** wprowadź serwera podstawowego dla urządzenia lub zaakceptuj wartość domyślną z time.windows.com.  
-        Upewnij się, że sieć zezwala na ruch NTP z centrum danych do Internetu.
+    2. W polu **podstawowy serwer NTP** wprowadź serwer podstawowy dla urządzenia lub Zaakceptuj wartość domyślną Time.Windows.com.  
+        Upewnij się, że sieć zezwala na przekazywanie ruchu NTP z centrum danych do Internetu.
 
-    3. Opcjonalnie w **serwera NTP dodatkowej** wprowadź serwera pomocniczego dla Twojego urządzenia.
+    3. Opcjonalnie w polu **pomocniczy serwer NTP** wprowadź serwer pomocniczy dla urządzenia.
 
-    4. Aby zweryfikować i zastosować ustawienia czasu skonfigurowane, wybierz pozycję **Zastosuj ustawienia**.
+    4. Aby sprawdzić poprawność skonfigurowanych ustawień czasu i zastosować je, wybierz pozycję **Zastosuj ustawienia**.
 
-        ![Strona "Ustawienia czasu" usługi lokalnego internetowego interfejsu użytkownika](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-5.png)
+        ![Strona Ustawienia czasu dla lokalnego interfejsu użytkownika sieci Web](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-5.png)
 
-5. (Opcjonalnie) W okienku po lewej stronie wybierz **ustawienia magazynu** konfiguracji odporności magazynu na urządzeniu. Ta funkcja jest obecnie dostępna w wersji zapoznawczej. Domyślnie magazyn na urządzeniu nie jest odporne na błędy i następuje utrata danych, jeśli nastąpi awaria dysku danych na urządzeniu. Po włączeniu opcji odporne na błędy, konfiguracja magazynu na urządzeniu zostanie zmieniona, a urządzenie może wytrzymać awarii dysk z danymi bez utraty danych. Konfigurowanie magazynu jako odporne na błędy zmniejszy pojemności do wykorzystania w urządzeniu.
+5. Obowiązkowe W okienku po lewej stronie wybierz pozycję **ustawienia magazynu** , aby skonfigurować odporność magazynu na urządzeniu. Ta funkcja jest obecnie dostępna w wersji zapoznawczej. Domyślnie magazyn na urządzeniu nie jest odporny na awarie, a w przypadku awarii dysku danych na urządzeniu następuje utrata danych. Po włączeniu opcji odporności magazyn na urządzeniu zostanie ponownie skonfigurowany i urządzenie może wytrzymać awarię jednego dysku z danymi bez utraty danych. Skonfigurowanie magazynu jako odpornego spowoduje zmniejszenie możliwości użycia urządzenia.
 
     > [!IMPORTANT] 
     > Odporność można skonfigurować tylko przed aktywowaniem urządzenia. 
 
-    ![Strona "Ustawienia magazynu" usługi lokalnego internetowego interfejsu użytkownika](./media/data-box-edge-deploy-connect-setup-activate/storage-settings.png)
+    ![Strona ustawień magazynu lokalnego interfejsu użytkownika sieci Web](./media/data-box-edge-deploy-connect-setup-activate/storage-settings.png)
 
-6. W okienku po lewej stronie wybierz **ustawienia chmury**, a następnie uaktywnić swoje urządzenia w usłudze krawędź pola danych, w witrynie Azure portal.
+6. W okienku po lewej stronie wybierz pozycję **Ustawienia chmury**, a następnie aktywuj urządzenie, korzystając z usługi Data Box Edge w Azure Portal.
     
-    1. W **klucza aktywacji** wprowadź klucz aktywacji, która jest wyświetlana w [Pobierz klucz aktywacji](data-box-edge-deploy-prep.md#get-the-activation-key) do krawędzi ramki danych.
+    1. W polu **klucz aktywacji** wprowadź klucz aktywacji uzyskany w polu [Pobierz klucz aktywacji](data-box-edge-deploy-prep.md#get-the-activation-key) dla Data Box Edge.
     2. Wybierz przycisk **Zastosuj**.
        
-        ![Strona "Ustawienia chmury" usługi lokalnego internetowego interfejsu użytkownika](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-6.png)
+        ![Strona lokalnego interfejsu użytkownika sieci Web "Ustawienia chmury"](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-6.png)
 
-    3. Najpierw aktywowaniu urządzenia. Urządzenie jest następnie skanowane pod kątem wszystkie aktualizacje krytyczne i jeśli to możliwe, są automatycznie stosowane aktualizacje. Zostanie wyświetlone powiadomienie w tym celu.
+    3. Pierwsze urządzenie zostało aktywowane. Urządzenie jest następnie skanowane pod kątem aktualizacji krytycznych i jeśli są dostępne, aktualizacje są automatycznie stosowane. Zobaczysz powiadomienie w tym efekcie.
 
-        Okno dialogowe ma także klucz odzyskiwania, należy skopiować i zapisać go w bezpiecznym miejscu. Ten klucz jest używany, można odzyskać dane, w przypadku, gdy urządzenie nie może uruchomić się.
+        W oknie dialogowym znajduje się również klucz odzyskiwania, który należy skopiować i zapisać w bezpiecznej lokalizacji. Ten klucz służy do odzyskiwania danych w przypadku, gdy urządzenie nie może się uruchomić.
 
-        ![Strona "Ustawienia chmury" lokalnego internetowego interfejsu użytkownika z aktualizacji](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-7.png)
+        ![Strona lokalnego interfejsu użytkownika sieci Web "Ustawienia chmury" została zaktualizowana](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-7.png)
 
-    4. Konieczne może potrwać kilka minut, po pomyślnym zakończeniu aktualizacji. Strona zostanie zaktualizowana, aby wskazać, że urządzenia została pomyślnie aktywowana.
+    4. Po pomyślnym zakończeniu aktualizacji może być konieczne odczekanie kilku minut. Strona zostanie zaktualizowana, aby wskazać, że urządzenie zostało pomyślnie aktywowane.
 
-        ![Strona "Ustawienia chmury" lokalnego internetowego interfejsu użytkownika z aktualizacji](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-8.png)
+        ![Strona lokalnego interfejsu użytkownika sieci Web "Ustawienia chmury" została zaktualizowana](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-8.png)
 
-Konfigurowanie urządzenia zostało zakończone. Teraz możesz dodać akcji na urządzeniu.
+Konfiguracja urządzenia została ukończona. Możesz teraz dodawać udziały na urządzeniu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Nawiązać połączenie z urządzeniem fizycznym
-> * Konfigurowanie i Aktywuj urządzenia fizycznego
+> * Nawiązywanie połączenia z urządzeniem fizycznym
+> * Konfigurowanie i aktywowanie urządzenia fizycznego
 
-Aby dowiedzieć się, jak na przesyłanie danych z urządzenia usługi Edge pole danych, zobacz:
+Aby dowiedzieć się, jak transferować dane za pomocą urządzenia Data Box Edge, zobacz:
 
 > [!div class="nextstepaction"]
-> [Transferowanie danych za pomocą krawędź pola danych](./data-box-edge-deploy-add-shares.md).
+> [Transferuj dane przy użyciu Data Box Edge](./data-box-edge-deploy-add-shares.md).
