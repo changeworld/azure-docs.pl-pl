@@ -1,5 +1,5 @@
 - name: Dokumentacja witryny Azure Marketplace i usługi AppSource
-  href: index.md
+  href: index.yml
   items:
     - name: Harmonogram działania dla usług Azure Marketplace i AppSource
       href: ./marketplace-roadmap.md
@@ -51,9 +51,6 @@
           items:
             - name: Najlepsze rozwiązania dotyczące ofert
               href: ./gtm-offer-listing-best-practices.md
-              items:
-                - name: Kategorie
-                  href: ./gtm-offer-listing-best-practices-categories.md
             - name: 'Jak sprawić, by oferta była polecana'
               href: ./gtm-how-to-get-featured.md
             - name: Weryfikowanie zawartości w witrynie Marketplace

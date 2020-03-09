@@ -4,11 +4,11 @@ description: Dowiedz się, jak można zmienić danych przed prognozy w Language 
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.openlocfilehash: 5547724a6333d248a7ba4e9aeecaaa8f331feb7d
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77148270"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361189"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>Instrukcja ALTER wypowiedź danych przed lub w trakcie prognoz
 Usługa LUIS udostępnia metody do manipulowania wypowiedź przed lub podczas prognozowania. Obejmują one [naprawianie błędów](luis-tutorial-bing-spellcheck.md)i rozwiązywanie problemów ze strefą czasową dla prekompilowanego [datetimeV2](luis-reference-prebuilt-datetimev2.md).
@@ -35,7 +35,7 @@ Punkt końcowy wymaga dwóch parametrów dla korekty pisowni pracę:
 
 Gdy [Sprawdzanie pisowni Bing API wersji 7](https://azure.microsoft.com/services/cognitive-services/spell-check/) wykrywa błąd, oryginalny wypowiedź i poprawione wypowiedź są zwracane wraz z przewidywaniami z punktu końcowego.
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
 
 ```JSON
 {
@@ -49,7 +49,7 @@ Gdy [Sprawdzanie pisowni Bing API wersji 7](https://azure.microsoft.com/services
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
 
 ```JSON
 {
@@ -85,7 +85,7 @@ Strefa czasowa jest korygowana przez dodanie strefy czasowej użytkownika do [pu
 ### <a name="daylight-savings-example"></a>Przykład oszczędność czasu letniego
 Jeśli potrzebujesz dostosowanej wstępnie skompilowanej datetimeV2 w celu dostosowania do czasu letniego, należy użyć parametru `timezoneOffset` QueryString z wartością +/-w minutach dla kwerendy [punktu końcowego](https://go.microsoft.com/fwlink/?linkid=2092356) .
 
-#### <a name="v2-prediction-endpoint-requesttabv2"></a>[Żądanie punktu końcowego przewidywania wersji 2](#tab/V2)
+#### <a name="v2-prediction-endpoint-request"></a>[Żądanie punktu końcowego przewidywania wersji 2](#tab/V2)
 
 Dodaj 60 minut:
 
@@ -95,7 +95,7 @@ Usuń 60 minut:
 
 https://{region}. API. poznawcze. Microsoft. com/Luis/v 2.0/Apps/{appId}? q = włączaj światła? **timezoneOffset =-60**& verbose = {boolean} & sprawdzanie = {boolean} & przejściowe = {boolean} & Bing-pisownia-Check-Subscription-Key = {string} & log = {Boolean}
 
-#### <a name="v3-prediction-endpoint-requesttabv3"></a>[Żądanie punktu końcowego przewidywania v3](#tab/V3)
+#### <a name="v3-prediction-endpoint-request"></a>[Żądanie punktu końcowego przewidywania v3](#tab/V3)
 
 Dodaj 60 minut:
 

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
 ms.openlocfilehash: e58e36b3caa5a5ecd137cb9cb61dad7ddb95ff3a
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986992"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364575"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Usługa Azure Stream Analytics dane wyjściowe usługi Azure Cosmos DB  
 Azure Stream Analytics może kierować [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) do danych wyjściowych JSON, co umożliwia archiwizowanie danych i uruchamianie zapytań o małym opóźnieniu na dane JSON bez struktury. W tym dokumencie opisano najlepsze rozwiązania dotyczące wdrażania tej konfiguracji.
@@ -111,9 +111,9 @@ Użycie Azure Cosmos DB jako danych wyjściowych w Stream Analytics generuje nas
 |Subskrypcja    | Subskrypcja platformy Azure.|
 |Identyfikator konta      | Nazwa lub identyfikator URI punktu końcowego konta Azure Cosmos DB.|
 |Klucz konta     | Współużytkowany klucz dostępu dla konta Azure Cosmos DB.|
-|baza danych        | Nazwa bazy danych Azure Cosmos DB.|
+|Baza danych        | Nazwa bazy danych Azure Cosmos DB.|
 |Nazwa kontenera | Nazwa kontenera, taka jak `MyContainer`. Jeden kontener o nazwie `MyContainer` musi istnieć.  |
-|Identyfikator dokumentu     | Element opcjonalny. Nazwa kolumny w zdarzeniach wyjściowych służąca jako unikatowego klucza, na które insert nebo update operacji musi być oparta. Jeśli pozostawisz ją puste, zostaną wstawione wszystkie zdarzenia bez opcji aktualizacji.|
+|Identyfikator dokumentu     | Opcjonalny. Nazwa kolumny w zdarzeniach wyjściowych służąca jako unikatowego klucza, na które insert nebo update operacji musi być oparta. Jeśli pozostawisz ją puste, zostaną wstawione wszystkie zdarzenia bez opcji aktualizacji.|
 
 Po skonfigurowaniu danych wyjściowych Azure Cosmos DB można użyć jej w zapytaniu jako celu [instrukcji into](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics). Gdy używasz danych wyjściowych Azure Cosmos DB w ten sposób, [klucz partycji musi być ustawiony jawnie](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#partitions-in-sources-and-sinks). 
 

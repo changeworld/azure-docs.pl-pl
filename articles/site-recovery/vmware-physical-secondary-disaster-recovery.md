@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: raynew
 ms.openlocfilehash: 71d230c9fea25edfbf0ca4ea40f15b69779ad060
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620534"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362958"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Konfigurowanie odzyskiwania po awarii lokalnych maszyn wirtualnych VMware lub serwerów fizycznych do lokacji dodatkowej
 
@@ -54,7 +54,7 @@ o dla maszyn fizycznych, postępuj zgodnie z tym [samouczkiem](./physical-azure-
 **Udostępniony klaster dysków** |Nieobsługiwane|Obsługiwane
 **Limity zmian danych (średnia)** |10 MB/s danych na dysk<br> dane 25 MB/s na maszynę wirtualną<br> [Dowiedz się więcej](./site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits) | > 10 MB/s na dysk  <br> > 25 MB/s na maszynę wirtualną
 **Monitorowanie** |Z Azure Portal|Z CX (serwer konfiguracji)
-**Macierz obsługi** | [Kliknij tutaj w celu poznania szczegółów](./vmware-physical-azure-support-matrix.md)|[Pobieranie macierzy zgodnej z systemem ASR Scout](https://aka.ms/asr-scout-cm)
+**Macierz obsługi** | [Kliknij tutaj, aby uzyskać szczegółowe informacje](./vmware-physical-azure-support-matrix.md)|[Pobieranie macierzy zgodnej z systemem ASR Scout](https://aka.ms/asr-scout-cm)
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -81,51 +81,51 @@ Zainstaluj aktualizacje w następujący sposób:
 >Wersja aktualizacji plików wszystkich składników programu Scout nie może być taka sama w pliku Update. zip. Starsza wersja wskazuje, że składnik nie zmienia się od czasu poprzedniej aktualizacji tej aktualizacji.
 
 Pobierz plik [Update](https://aka.ms/asr-scout-update7) . zip i pliki konfiguracji [uaktualnienia MySQL i php](https://aka.ms/asr-scout-u7-mysql-php-manualupgrade) . Plik Update. zip zawiera wszystkie podstawowe pliki binarne i pliki binarne uaktualniania zbiorczego następujących składników: 
-- InMage_ScoutCloud_RX_ 8.0.1.0 _RHEL6-64_GA_02Mar2015. tar. gz
-- RX_ 8.0.7.0 _GA_Update_7_2965621_28Dec18. tar. gz
-- InMage_CX_ 8.0.1.0 _Windows_GA_26Feb2015_release. exe
-- InMage_CX_TP_ 8.0.1.0 _Windows_GA_26Feb2015_release. exe
-- CX_Windows_ 8.0.7.0 _GA_Update_7_2965621_28Dec18. exe
-- InMage_PI_ 8.0.1.0 _Windows_GA_26Feb2015_release. exe
-- InMage_Scout_vContinuum_MT_ 8.0.7.0 _Windows_GA_27Dec2018_release. exe
-- InMage_UA_ 8.0.7.0 _Windows_GA_27Dec2018_release. exe
-- InMage_UA_ 8.0.7.0 _OL5-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _OL5-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _OL6-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _OL6-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _RHEL5-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _RHEL5-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _RHEL6-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _RHEL6-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _RHEL7-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES10-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES10-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES10-SP1-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES10-SP1-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES10-SP2-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES10-SP2-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES10-SP3-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES10-SP3-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES10-SP4-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES10-SP4-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES11-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES11-64_GA_04Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES11-SP1-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES11-SP1-64_GA_04Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES11-SP2-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES11-SP2-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES11-SP3-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES11-SP3-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_ 8.0.7.0 _SLES11-SP4-64_GA_03Dec2018_release. tar. gz
+- InMage_ScoutCloud_RX_8.0.1.0_RHEL6-64_GA_02Mar2015.tar.gz
+- RX_8.0.7.0_GA_Update_7_2965621_28Dec18.tar.gz
+- InMage_CX_8.0.1.0_Windows_GA_26Feb2015_release.exe
+- InMage_CX_TP_8.0.1.0_Windows_GA_26Feb2015_release.exe
+- CX_Windows_8.0.7.0_GA_Update_7_2965621_28Dec18.exe
+- InMage_PI_8.0.1.0_Windows_GA_26Feb2015_release.exe
+- InMage_Scout_vContinuum_MT_8.0.7.0_Windows_GA_27Dec2018_release.exe
+- InMage_UA_8.0.7.0_Windows_GA_27Dec2018_release.exe
+- InMage_UA_8.0.7.0_OL5-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_8.0.7.0_OL5-64_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_OL6-32_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_OL6-64_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_RHEL5-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_8.0.7.0_RHEL5-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_8.0.7.0_RHEL6-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_8.0.7.0_RHEL7-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_8.0.7.0_SLES10-32_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES10-64_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES10-SP1-32_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES10-SP1-64_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES10-SP2-32_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES10-SP2-64_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES10-SP3-32_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES10-SP3-64_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES10-SP4-32_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES10-SP4-64_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES11-32_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES11-64_GA_04Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES11-SP1-32_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES11-SP1-64_GA_04Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES11-SP2-32_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES11-SP2-64_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES11-SP3-32_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES11-SP3-64_GA_03Dec2018_release.tar.gz
+- InMage_UA_8.0.7.0_SLES11-SP4-64_GA_03Dec2018_release.tar.gz
   1. Wyodrębnij pliki. zip.
-  2. **Serwer RX**: Skopiuj **rx_ 8.0.7.0 _ga_update_7_2965621_28dec18. tar. gz** do serwera RX i wyodrębnij go. W wyodrębnionym folderze Uruchom polecenie **/Install**.
-  3. **Serwer konfiguracji i serwer przetwarzania**: Skopiuj **cx_windows_ 8.0.7.0 _ga_update_7_2965621_28dec18. exe** na serwer konfiguracji i serwer przetwarzania. Kliknij dwukrotnie, aby go uruchomić.<br>
-  4. **Główny serwer docelowy systemu Windows**: Aby zaktualizować ujednoliconego agenta, skopiuj **inmage_ua_ 8.0.7.0 _windows_ga_27dec2018_release. exe** na serwer. Kliknij go dwukrotnie, aby go uruchomić. Ten sam plik może być również używany do instalacji nowej. Ta sama ujednolicona aktualizacja agenta ma również zastosowanie do serwera źródłowego.
-  Aktualizacja nie musi być stosowana w głównym miejscu docelowym przygotowanym z **inmage_scout_vcontinuum_mt_ 8.0.7.0 _windows_ga_27dec2018_release. exe** , ponieważ jest to nowy Instalator w wersji GA ze wszystkimi najnowszymi zmianami.
-  5. **serwer vContinuum**: Skopiuj **inmage_scout_vcontinuum_mt_ 8.0.7.0 _windows_ga_27dec2018_release. exe** na serwer.  Upewnij się, że zamknąłeś kreatora vContinuum. Kliknij dwukrotnie plik, aby go uruchomić.
-  6. **Główny serwer docelowy systemu Linux**: Aby zaktualizować ujednoliconego agenta, skopiuj **inmage_ua_ 8.0.7.0 _rhel6-64_ga_03dec2018_release. tar. gz** do głównego serwera docelowego systemu Linux i wyodrębnij go. W wyodrębnionym folderze Uruchom polecenie **/Install**.
-  7. **Serwer źródłowy systemu Windows**: Aby zaktualizować ujednoliconego agenta, skopiuj **inmage_ua_ 8.0.7.0 _windows_ga_27dec2018_release. exe** na serwer źródłowy. Kliknij dwukrotnie plik, aby go uruchomić. 
-  8. **Serwer źródłowy systemu Linux**: Aby zaktualizować ujednoliconego agenta, skopiuj odpowiednią wersję ujednoliconego pliku agenta na serwer z systemem Linux i Wyodrębnij ją. W wyodrębnionym folderze Uruchom polecenie **/Install**.  Przykład: dla serwera RHEL 6,7 64-bitowy, skopiuj **inmage_ua_ 8.0.7.0 _rhel6-64_ga_03dec2018_release. tar. gz** do serwera i wyodrębnij go. W wyodrębnionym folderze Uruchom polecenie **/Install**.
+  2. **Serwer RX**: Skopiuj **RX_8.0.7.0_GA_Update_7_2965621_28Dec18. tar. gz** do serwera RX i wyodrębnij go. W wyodrębnionym folderze Uruchom polecenie **/Install**.
+  3. **Serwer konfiguracji i serwer przetwarzania**: Skopiuj **CX_Windows_8.0.7.0_GA_Update_7_2965621_28Dec18. exe** na serwer konfiguracji i serwer przetwarzania. Kliknij dwukrotnie, aby go uruchomić.<br>
+  4. **Główny serwer docelowy systemu Windows**: Aby zaktualizować ujednoliconego agenta, skopiuj **InMage_UA_8.0.7.0_Windows_GA_27Dec2018_release. exe** na serwer. Kliknij go dwukrotnie, aby go uruchomić. Ten sam plik może być również używany do instalacji nowej. Ta sama ujednolicona aktualizacja agenta ma również zastosowanie do serwera źródłowego.
+  Aktualizacja nie musi zostać zastosowana w głównym miejscu docelowym przygotowanym za pomocą **InMage_Scout_vContinuum_MT_8.0.7.0_Windows_GA_27Dec2018_release. exe** , ponieważ jest to nowy Instalator z aktualizacją Updates ze wszystkimi najnowszymi zmianami.
+  5. **serwer vContinuum**: Skopiuj **InMage_Scout_vContinuum_MT_8.0.7.0_Windows_GA_27Dec2018_release. exe** na serwer.  Upewnij się, że zamknąłeś kreatora vContinuum. Kliknij dwukrotnie plik, aby go uruchomić.
+  6. **Główny serwer docelowy systemu Linux**: Aby zaktualizować ujednoliconego agenta, skopiuj **InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release. tar. gz** do głównego serwera docelowego systemu Linux i wyodrębnij go. W wyodrębnionym folderze Uruchom polecenie **/Install**.
+  7. **Serwer źródłowy systemu Windows**: Aby zaktualizować ujednoliconego agenta, skopiuj **InMage_UA_8.0.7.0_Windows_GA_27Dec2018_release. exe** na serwer źródłowy. Kliknij dwukrotnie plik, aby go uruchomić. 
+  8. **Serwer źródłowy systemu Linux**: Aby zaktualizować ujednoliconego agenta, skopiuj odpowiednią wersję ujednoliconego pliku agenta na serwer z systemem Linux i Wyodrębnij ją. W wyodrębnionym folderze Uruchom polecenie **/Install**.  Przykład: dla serwera RHEL 6,7 64-bitowy, skopiuj **InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release. tar. gz** do serwera i wyodrębnij go. W wyodrębnionym folderze Uruchom polecenie **/Install**.
   9. Po uaktualnieniu serwera konfiguracji, serwera przetwarzania i serwera RX z wymienionymi wyżej instalatorami, biblioteki PHP i MySQL muszą zostać uaktualnione ręcznie z krokami opisanymi w sekcji 7,4 [przewodnika szybkich instalacji](https://aka.ms/asr-scout-quick-install-guide).
 
 ## <a name="enable-replication"></a>Włączanie replikacji
@@ -172,8 +172,8 @@ Scout Update 6 jest aktualizacją zbiorczą. Zawiera wszystkie poprawki z aktual
 * Dodano obsługę dla źródła systemu Windows Server 2016
 * Dodano obsługę następujących systemów operacyjnych Linux:
     - Red Hat Enterprise Linux (RHEL) 6,9
-    - CentOS 6,9
-    - Oracle Linux 5,11
+    - CentOS 6.9
+    - Oracle Linux 5.11
     - Oracle Linux 6,8
 * Dodano obsługę programu VMware Center 6,5
 
@@ -183,28 +183,28 @@ Zainstaluj aktualizacje w następujący sposób:
 >Wersja aktualizacji plików wszystkich składników programu Scout nie może być taka sama w pliku Update. zip. Starsza wersja wskazuje, że składnik nie zmienia się od czasu poprzedniej aktualizacji tej aktualizacji.
 
 Pobierz plik [Update](https://aka.ms/asr-scout-update6) . zip. Plik zawiera następujące składniki: 
-- RX_ 8.0.4.0 _GA_Update_4_8725872_16Sep16. tar. gz
-- CX_Windows_ 8.0.6.0 _GA_Update_6_13746667_18Sep17. exe
-- UA_Windows_ 8.0.5.0 _GA_Update_5_11525802_20Apr17. exe
-- UA_RHEL6-64_ 8.0.4.0 _GA_Update_4_9035261_26Sep16. tar. gz
-- vCon_Windows_ 8.0.6.0 _GA_Update_6_11525767_21Sep17. exe
-- UA Update4 bity dla RHEL5, OL5, OL6, SUSE 10, SUSE 11: UA_\<Linux OS > _ 8.0.4.0 _GA_Update_4_9035261_26Sep16. tar. gz
+- RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz
+- CX_Windows_8.0.6.0_GA_Update_6_13746667_18Sep17.exe
+- UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe
+- UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
+- vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe
+- UA Update4 BITS for RHEL5, OL5, OL6, SUSE 10, SUSE 11: UA_\<Linux OS > _ 8.0.4.0_GA_Update_4_9035261_26Sep16. tar. gz
   1. Wyodrębnij pliki. zip.
-  2. **Serwer RX**: Skopiuj **rx_ 8.0.4.0 _ga_update_4_8725872_16sep16. tar. gz** do serwera RX i wyodrębnij go. W wyodrębnionym folderze Uruchom polecenie **/Install**.
-  3. **Serwer konfiguracji i serwer przetwarzania**: Skopiuj **cx_windows_ 8.0.6.0 _ga_update_6_13746667_18sep17. exe** na serwer konfiguracji i serwer przetwarzania. Kliknij dwukrotnie, aby go uruchomić.<br>
-  4. **Główny serwer docelowy systemu Windows**: Aby zaktualizować ujednoliconego agenta, skopiuj **ua_windows_ 8.0.5.0 _ga_update_5_11525802_20apr17. exe** na serwer. Kliknij go dwukrotnie, aby go uruchomić. Ta sama ujednolicona aktualizacja agenta ma również zastosowanie do serwera źródłowego. Jeśli źródło nie zostało zaktualizowane do aktualizacji Update 4, należy zaktualizować ujednoliconego agenta.
-  Aktualizacja nie musi być stosowana w głównym miejscu docelowym przygotowanym z **inmage_scout_vcontinuum_mt_ 8.0.1.0 _windows_ga_10oct2017_release. exe** , ponieważ jest to nowy Instalator w wersji GA ze wszystkimi najnowszymi zmianami.
-  5. **serwer vContinuum**: Skopiuj **vcon_windows_ 8.0.6.0 _ga_update_6_11525767_21sep17. exe** na serwer.  Upewnij się, że zamknąłeś kreatora vContinuum. Kliknij dwukrotnie plik, aby go uruchomić.
-  Aktualizacja nie musi być stosowana w głównym miejscu docelowym przygotowanym z **inmage_scout_vcontinuum_mt_ 8.0.1.0 _windows_ga_10oct2017_release. exe** , ponieważ jest to nowy Instalator w wersji GA ze wszystkimi najnowszymi zmianami.
-  6. **Główny serwer docelowy systemu Linux**: Aby zaktualizować ujednoliconego agenta, skopiuj **ua_rhel6-64_ 8.0.4.0 _ga_update_4_9035261_26sep16. tar. gz** do głównego serwera docelowego i wyodrębnij go. W wyodrębnionym folderze Uruchom polecenie **/Install**.
-  7. **Serwer źródłowy systemu Windows**: Aby zaktualizować ujednoliconego agenta, skopiuj **ua_windows_ 8.0.5.0 _ga_update_5_11525802_20apr17. exe** na serwer źródłowy. Kliknij dwukrotnie plik, aby go uruchomić. 
-  Nie musisz instalować agenta Update 5 na serwerze źródłowym, jeśli został on już zaktualizowany do wersji Update 4 lub Agent źródłowy jest instalowany z najnowszym instalatorem podstawowym **inmage_ua_ 8.0.1.0 _windows_ga_28sep2017_release. exe**.
-  8. **Serwer źródłowy systemu Linux**: Aby zaktualizować ujednoliconego agenta, skopiuj odpowiednią wersję ujednoliconego pliku agenta na serwer z systemem Linux i Wyodrębnij ją. W wyodrębnionym folderze Uruchom polecenie **/Install**.  Przykład: dla serwera RHEL 6,7 64-bitowy, skopiuj **ua_rhel6-64_ 8.0.4.0 _ga_update_4_9035261_26sep16. tar. gz** do serwera i wyodrębnij go. W wyodrębnionym folderze Uruchom polecenie **/Install**.
+  2. **Serwer RX**: Skopiuj **RX_8.0.4.0_GA_Update_4_8725872_16Sep16. tar. gz** do serwera RX i wyodrębnij go. W wyodrębnionym folderze Uruchom polecenie **/Install**.
+  3. **Serwer konfiguracji i serwer przetwarzania**: Skopiuj **CX_Windows_8.0,6.0_GA_Update_6_13746667_18Sep17. exe** na serwer konfiguracji i serwer przetwarzania. Kliknij dwukrotnie, aby go uruchomić.<br>
+  4. **Główny serwer docelowy systemu Windows**: Aby zaktualizować ujednoliconego agenta, skopiuj **UA_Windows_8.0,5.0_GA_Update_5_11525802_20Apr17. exe** na serwer. Kliknij go dwukrotnie, aby go uruchomić. Ta sama ujednolicona aktualizacja agenta ma również zastosowanie do serwera źródłowego. Jeśli źródło nie zostało zaktualizowane do aktualizacji Update 4, należy zaktualizować ujednoliconego agenta.
+  Aktualizacja nie musi być stosowana w głównym miejscu docelowym przygotowanym przy użyciu **InMage_Scout_vContinuum_MT_8.0,1.0_Windows_GA_10Oct2017_release. exe** , ponieważ jest to nowy Instalator z aktualizacją ga ze wszystkimi najnowszymi zmianami.
+  5. **serwer vContinuum**: Skopiuj **vCon_Windows_8.0,6.0_GA_Update_6_11525767_21Sep17. exe** na serwer.  Upewnij się, że zamknąłeś kreatora vContinuum. Kliknij dwukrotnie plik, aby go uruchomić.
+  Aktualizacja nie musi być stosowana w głównym miejscu docelowym przygotowanym przy użyciu **InMage_Scout_vContinuum_MT_8.0,1.0_Windows_GA_10Oct2017_release. exe** , ponieważ jest to nowy Instalator z aktualizacją ga ze wszystkimi najnowszymi zmianami.
+  6. **Główny serwer docelowy systemu Linux**: Aby zaktualizować ujednoliconego agenta, skopiuj **UA_RHEL6 -64 _ 8.0.4.0_GA_Update_4_9035261_26Sep16. tar. gz** do głównego serwera docelowego i wyodrębnij go. W wyodrębnionym folderze Uruchom polecenie **/Install**.
+  7. **Serwer źródłowy systemu Windows**: Aby zaktualizować ujednoliconego agenta, skopiuj **UA_Windows_8.0,5.0_GA_Update_5_11525802_20Apr17. exe** na serwer źródłowy. Kliknij dwukrotnie plik, aby go uruchomić. 
+  Nie musisz instalować agenta Update 5 na serwerze źródłowym, jeśli został on już zaktualizowany do wersji Update 4 lub Agent źródłowy jest instalowany z najnowszym instalatorem podstawowym **InMage_UA_8.0,1.0_Windows_GA_28Sep2017_release. exe**.
+  8. **Serwer źródłowy systemu Linux**: Aby zaktualizować ujednoliconego agenta, skopiuj odpowiednią wersję ujednoliconego pliku agenta na serwer z systemem Linux i Wyodrębnij ją. W wyodrębnionym folderze Uruchom polecenie **/Install**.  Przykład: dla serwera RHEL 6,7 64-bitowy, skopiuj **UA_RHEL6 -64 _ 8.0.4.0_GA_Update_4_9035261_26Sep16. tar. gz** do serwera i wyodrębnij go. W wyodrębnionym folderze Uruchom polecenie **/Install**.
 
 
 > [!NOTE]
-> * Instalator podstawowego programu Unified Agent (UA) dla systemu Windows został odświeżony w celu obsługi systemu Windows Server 2016. Nowy Instalator **inmage_ua_ 8.0.1.0 _windows_ga_28sep2017_release. exe** jest spakowany z podstawowym pakietem Scout GA (**inmage_scout_standard_ 8.0.1 ga-Oct17. zip**). Ten sam Instalator będzie używany dla wszystkich obsługiwanych wersji systemu Windows. 
-> * Podstawowy Instalator docelowego programu Windows vContinuum & został odświeżony w celu obsługi systemu Windows Server 2016. Nowy Instalator **inmage_scout_vcontinuum_mt_ 8.0.1.0 _windows_ga_10oct2017_release. exe** jest spakowany z podstawowym pakietem Scout GA (**inmage_scout_standard_ 8.0.1 ga-Oct17. zip**). Ten sam Instalator będzie używany do wdrażania systemu Windows 2016 Master Target i głównego elementu docelowego systemu Windows 2012R2.
+> * Instalator podstawowego programu Unified Agent (UA) dla systemu Windows został odświeżony w celu obsługi systemu Windows Server 2016. Nowy Instalator **InMage_UA_8.0,1.0_Windows_GA_28Sep2017_release. exe** jest spakowany z podstawowym pakietem Scout GA (**InMage_Scout_Standard_8.0,1 ga-Oct17. zip**). Ten sam Instalator będzie używany dla wszystkich obsługiwanych wersji systemu Windows. 
+> * Podstawowy Instalator docelowego programu Windows vContinuum & został odświeżony w celu obsługi systemu Windows Server 2016. Nowy Instalator **InMage_Scout_vContinuum_MT_8.0,1.0_Windows_GA_10Oct2017_release. exe** jest spakowany z podstawowym pakietem Scout GA (**InMage_Scout_Standard_8.0,1 ga-Oct17. zip**). Ten sam Instalator będzie używany do wdrażania systemu Windows 2016 Master Target i głównego elementu docelowego systemu Windows 2012R2.
 > * System Windows Server 2016 na serwerze fizycznym nie jest obsługiwany przez usługę ASR Scout. Obsługuje tylko maszynę wirtualną VMware systemu Windows Server 2016. 
 >
 
@@ -217,8 +217,8 @@ Scout Update 5 jest aktualizacją zbiorczą. Zawiera wszystkie poprawki z aktual
 - Jeśli serwery źródłowe, główny serwer docelowy, konfiguracja, proces i odbieranie są już uruchomione w aktualizacji Update 4, zastosuj je tylko na głównym serwerze docelowym. 
 
 #### <a name="new-platform-support"></a>Obsługa nowych platform
-* SUSE Linux Enterprise Server 11 z dodatkiem Service Pack 4 (SP4)
-* SLES 11 SP4 64 bit **inmage_ua_ 8.0.1.0 _sles11-SP4-64_ga_13apr2017_release. tar. gz** jest spakowany z podstawowym pakietem Scout GA (**inmage_scout_standard_ 8.0.1 ga. zip**). Pobierz pakiet GA z portalu zgodnie z opisem w temacie Tworzenie magazynu.
+* SUSE Linux Enterprise Server 11 Service Pack 4(SP4)
+* SLES 11 z dodatkiem SP4 64 bit **InMage_UA_8.0,1.0_SLES11-SP4-64_GA_13Apr2017_release. tar. gz** jest spakowany z podstawowym pakietem Scout GA (**INMAGE_SCOUT_STANDARD_8.0,1 ga. zip**). Pobierz pakiet GA z portalu zgodnie z opisem w temacie Tworzenie magazynu.
 
 
 #### <a name="bug-fixes-and-enhancements"></a>Poprawki błędów i ulepszenia
@@ -249,16 +249,16 @@ Scout Update 4 jest aktualizacją zbiorczą. Zawiera wszystkie poprawki z aktual
   * Red Hat Enterprise Linux (RHEL) 7,0, 7,1 i 7,2
   * CentOS 7,0, 7,1 i 7,2
   * Red Hat Enterprise Linux (RHEL) 6,8
-  * CentOS 6,8
+  * CentOS 6.8
 
 > [!NOTE]
-> RHEL/CentOS 7 64 bit **inmage_ua_ 8.0.1.0 _rhel7-64_ga_06oct2016_release. tar. gz** jest spakowany z podstawowym pakietem Scout ga **inmage_scout_standard_ 8.0.1. zip**. Pobierz pakiet Scout GA z portalu zgodnie z opisem w temacie Tworzenie magazynu.
+> RHEL/CentOS 7 64 bit **InMage_UA_8.0,1.0_RHEL7-64_GA_06Oct2016_release. tar. gz** jest spakowany z podstawowym pakietem Scout ga **InMage_Scout_Standard_8.0,1. zip**. Pobierz pakiet Scout GA z portalu zgodnie z opisem w temacie Tworzenie magazynu.
 
 #### <a name="bug-fixes-and-enhancements"></a>Poprawki błędów i ulepszenia
 
 * Ulepszono obsługę zamykania dla następujących systemów operacyjnych Linux i klonów, aby zapobiec niepożądanym problemom z ponowną synchronizacją:
-    * Red Hat Enterprise Linux (RHEL) 6. x
-    * Oracle Linux (olu) 6. x
+    * Red Hat Enterprise Linux (RHEL) 6.x
+    * Oracle Linux (OL) 6.x
 * W przypadku systemu Linux wszystkie uprawnienia dostępu do folderu w katalogu instalacji ujednoliconego agenta są teraz ograniczone tylko do użytkownika lokalnego.
 * W systemie Windows Naprawiono problem z limitem czasu, który wystąpił podczas wystawiania wspólnych, rozmieszczonych zakładek spójności, na silnie załadowane aplikacje rozproszone, takie jak SQL Server i klastry punktów udostępniania.
 * Poprawka dotycząca dziennika w instalatorze podstawowym serwera konfiguracji.
@@ -275,9 +275,9 @@ Scout Update 4 jest aktualizacją zbiorczą. Zawiera wszystkie poprawki z aktual
   * Stan sterownika Scout na serwerze źródłowym jest dostępny.
 
 > [!NOTE]
-> * Pakiet podstawowy **inmage_scout_standard_ 8.0.1 _ga. zip** :
->     * Zaktualizowany Instalatora podstawowego serwera konfiguracji (**inmage_cx_ 8.0.1.0 _windows_ga_26feb2015_release. exe**)
->     * Instalator podstawowy docelowego systemu Windows (**inmage_scout_vcontinuum_mt_ 8.0.1.0 _windows_ga_26feb2015_release. exe**).
+> * **InMage_Scout_Standard_8 0.1_GA. zip** pakiet:
+>     * Zaktualizowany Instalatora podstawowego serwera konfiguracji (**InMage_CX_8.0,1.0_Windows_GA_26Feb2015_release. exe**)
+>     * Instalator podstawowy docelowego systemu Windows (**InMage_Scout_vContinuum_MT_8.0,1.0_Windows_GA_26Feb2015_release. exe**).
 >     * W przypadku wszystkich nowych instalacji należy użyć nowego serwera konfiguracji i usługi Windows Master Target GA.
 > * Aktualizację Update 4 można zastosować bezpośrednio w witrynie 8.0.1 GA.
 > * Po zastosowaniu aktualizacji serwer konfiguracji i odbieranie nie mogą zostać wycofane.
@@ -332,7 +332,7 @@ Aktualizacja Update 1 zawiera następujące poprawki błędów i nowe funkcje:
     * RHEL 6, aktualizacja 6
     * RHEL 5, aktualizacja 11
     * CentOS 6, aktualizacja 6
-    * CentOS 5, aktualizacja 11
+    * CentOS 5 Update 11
 * Poprawki błędów w celu rozwiązania następujących problemów:
   * Rejestracja magazynu kończy się niepowodzeniem na serwerze konfiguracji lub serwerze RX.
   * Woluminy klastra nie są wyświetlane w oczekiwany sposób, gdy klastrowane maszyny wirtualne są ponownie chronione podczas ich wznawiania.

@@ -4,11 +4,11 @@ description: Utwórz listę wbudowanych inicjatyw zasad dla Azure Policy. Katego
 ms.date: 01/31/2020
 ms.topic: sample
 ms.openlocfilehash: f98a5d611e807875390102d67efd1b0f0f262628
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77172982"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387285"
 ---
 # <a name="azure-policy-built-in-initiative-definitions"></a>Azure Policy wbudowane definicje inicjatyw
 
@@ -20,6 +20,6 @@ Nazwa każdego wbudowanego łącza do źródła definicji inicjatywy w [Azure Po
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Zapoznaj się z wbudowanymi [Azure Policy repozytorium GitHub](https://github.com/Azure/azure-policy).
+- Zobacz wbudowane elementy w [repozytorium GitHub usługi Azure Policy](https://github.com/Azure/azure-policy).
 - Przejrzyj temat [Struktura definicji zasad Azure Policy](../concepts/definition-structure.md).
 - Przejrzyj [wyjaśnienie działania zasad](../concepts/effects.md).

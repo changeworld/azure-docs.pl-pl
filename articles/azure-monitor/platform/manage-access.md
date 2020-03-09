@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 10/22/2019
 ms.openlocfilehash: 24ff081d40d5cd3adf771511ca0b52d66c287b63
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78272624"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373284"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Zarządzanie dostępem do danych dziennika i obszarów roboczych w Azure Monitor
 

@@ -12,11 +12,11 @@ author: Blackmist
 ms.date: 11/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: 5257d9f94f6304c2a8dbea3f1648a71d0ba65e94
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064754"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391034"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Zarządzanie dostępem do obszaru roboczego Azure Machine Learning
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,13 +25,13 @@ W tym artykule dowiesz się, jak zarządzać dostępem do obszaru roboczego Azur
 
 ## <a name="default-roles"></a>Role domyślne
 
-Obszar roboczy Azure Machine Learning jest zasobem platformy Azure. Podobnie jak w przypadku innych zasobów platformy Azure, podczas tworzenia nowego obszaru roboczego Azure Machine Learning dostępne są trzy domyślne role. Możesz dodać użytkowników do obszaru roboczego i przypisać je do jednej z tych wbudowanych ról.
+Obszar roboczy usługi Azure Machine Learning to zasób platformy Azure. Tak jak w przypadku innych zasobów platformy Azure nowo utworzony obszar roboczy usługi Azure Machine Learning ma trzy domyślne role. Możesz dodać użytkowników do obszaru roboczego i przypisać je do jednej z tych wbudowanych ról.
 
 | Rola | Poziom dostępu |
 | --- | --- |
-| **Czytelnik** | Akcje tylko do odczytu w obszarze roboczym. Czytelnicy mogą wyświetlać i przeglądać zasoby w obszarze roboczym, ale nie mogą tworzyć ani aktualizować tych zasobów. |
-| **Współautor** | Wyświetlanie, tworzenie, edytowanie lub usuwanie (jeśli dotyczy) zasobów w obszarze roboczym. Można na przykład utworzyć eksperyment, utworzyć lub dołączyć klaster obliczeniowy, przesłać przebieg i wdrożyć usługę sieci Web. |
-| **Właściciel** | Pełny dostęp do obszaru roboczego, w tym możliwość wyświetlania, tworzenia, edytowania lub usuwania (jeśli dotyczy) zasobów w obszarze roboczym. Ponadto można zmienić przypisania ról. |
+| **Czytelnik** | Akcje tylko do odczytu w obszarze roboczym. Czytelnicy mogą wyświetlać i przeglądać zasoby w obszarze roboczym, ale nie mogą tworzyć ani uaktualniać tych zasobów. |
+| **Współautor** | Wyświetlanie, tworzenie, edytowanie i usuwanie (według potrzeb) zasobów w obszarze roboczym. Współautorzy mogą na przykład tworzyć eksperymenty, tworzyć lub dołączać klastry obliczeniowe, przesyłać przebiegi i wdrażać usługi internetowe. |
+| **Właściciel** | Pełen dostęp do obszaru roboczego, w tym możliwość wyświetlania, tworzenia, edytowania lub usuwania (według potrzeb) zasobów w obszarze roboczym. Dodatkowo może zmieniać przypisania ról. |
 
 > [!IMPORTANT]
 > Dostęp do roli można ograniczyć do wielu poziomów na platformie Azure. Na przykład ktoś z dostępem właściciela do obszaru roboczego może nie mieć dostępu właściciela do grupy zasobów, która zawiera obszar roboczy. Aby uzyskać więcej informacji, zobacz [jak działa RBAC](/azure/role-based-access-control/overview#how-rbac-works).
@@ -40,12 +40,12 @@ Aby uzyskać więcej informacji na temat określonych ról wbudowanych, zobacz [
 
 ## <a name="manage-workspace-access"></a>Zarządzanie dostępem do obszaru roboczego
 
-Jeśli jesteś właścicielem obszaru roboczego, możesz dodawać i usuwać role dla obszaru roboczego. Możesz również przypisywać role do użytkowników. Skorzystaj z poniższych linków, aby dowiedzieć się, jak zarządzać dostępem:
-- [Interfejs użytkownika Azure Portal](/azure/role-based-access-control/role-assignments-portal)
+Jeśli jesteś właścicielem obszaru roboczego, możesz dodawać i usuwać role w obszarze roboczym. Możesz również przypisywać role do użytkowników. Użyj następujących linków, aby dowiedzieć się, jak zarządzać dostępem:
+- [Interfejs użytkownika witryny Azure Portal](/azure/role-based-access-control/role-assignments-portal)
 - [PowerShell](/azure/role-based-access-control/role-assignments-powershell)
 - [Interfejs wiersza polecenia platformy Azure](/azure/role-based-access-control/role-assignments-cli)
 - [Interfejs API REST](/azure/role-based-access-control/role-assignments-rest)
-- [Szablony Azure Resource Manager](/azure/role-based-access-control/role-assignments-template)
+- [Szablony usługi Azure Resource Manager](/azure/role-based-access-control/role-assignments-template)
 
 Jeśli zainstalowano [interfejs wiersza polecenia Azure Machine Learning](reference-azure-machine-learning-cli.md), można także przypisać role do użytkowników za pomocą interfejsu CLI.
 
@@ -61,7 +61,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role Contributor --
 
 ## <a name="create-custom-role"></a>Tworzenie roli niestandardowej
 
-Jeśli wbudowane role są niewystarczające, można utworzyć role niestandardowe. Role niestandardowe mogą mieć uprawnienia do odczytu, zapisu, usuwania i zasobów obliczeniowych w tym obszarze roboczym. Rolę można udostępnić na określonym poziomie obszaru roboczego, na poziomie określonego grupy zasobów lub na określonym poziomie subskrypcji.
+Jeśli wbudowane role nie są wystarczające, można tworzyć role niestandardowe. Role niestandardowe mogą mieć uprawnienia do odczytu, zapisu, usuwania i zasobów obliczeniowych w tym obszarze roboczym. Rolę można udostępnić na określonym poziomie obszaru roboczego, na poziomie określonego grupy zasobów lub na określonym poziomie subskrypcji.
 
 > [!NOTE]
 > Aby utworzyć role niestandardowe w ramach tego zasobu, musisz być właścicielem zasobu na tym poziomie.

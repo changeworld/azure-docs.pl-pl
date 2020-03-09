@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: victorh
 ms.openlocfilehash: a4427c05d16a42879d37fdbd2e8b8be9095fcc9b
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505896"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373565"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Application Gateway — Omówienie monitorowania kondycji
 

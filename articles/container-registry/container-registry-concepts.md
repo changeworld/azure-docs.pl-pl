@@ -3,12 +3,12 @@ title: Informacje o repozytoriach & obrazów
 description: Wprowadzenie do kluczowych pojęć związanych z rejestrami kontenerów platformy Azure, repozytoriami i obrazami kontenerów.
 ms.topic: article
 ms.date: 09/10/2019
-ms.openlocfilehash: 9de0c344b226a0b13e76c7f02977ba3c91ba2d2a
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: ea6e2577d3eee91626dd613617a0b79e4ff3d6a1
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455294"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668337"
 ---
 # <a name="about-registries-repositories-and-images"></a>Rejestry, repozytoria i obrazy — informacje
 
@@ -24,9 +24,7 @@ Oprócz obrazów kontenerów platformy Docker Azure Container Registry obsługuj
 
 Adres artefaktu w rejestrze kontenerów platformy Azure obejmuje następujące elementy. 
 
-```
-[loginUrl]/[namespace]/[artifact:][tag]
-```
+`[loginUrl]/[namespace]/[artifact:][tag]`
 
 * **LoginUrl** — w pełni kwalifikowana nazwa hosta rejestru. Host rejestru w usłudze Azure Container Registry *ma format azurecr.IO*(wszystkie małe litery). Należy określić loginUrl podczas korzystania z platformy Docker lub innych narzędzi klienckich do ściągania i wypychania artefaktów do usługi Azure Container Registry. 
 * rozdzielana przecinkami **przestrzeń nazw** — logiczne grupowanie powiązanych obrazów lub artefaktów — na przykład dla grupy roboczej lub aplikacji
@@ -36,9 +34,7 @@ Adres artefaktu w rejestrze kontenerów platformy Azure obejmuje następujące e
 
 Na przykład Pełna nazwa obrazu w rejestrze kontenerów platformy Azure może wyglądać następująco:
 
-```
-myregistry.azurecr.io/marketing/campaign10-18/email-sender:v2
-```
+*myregistry.azurecr.io/marketing/campaign10-18/email-sender:v2*
 
 Więcej informacji o tych elementach można znaleźć w poniższych sekcjach.
 
@@ -46,21 +42,18 @@ Więcej informacji o tych elementach można znaleźć w poniższych sekcjach.
 
 Rejestry kontenerów zarządzają *repozytoriami*, kolekcjami obrazów kontenerów lub innymi artefaktami o tej samej nazwie, ale różne Tagi. Na przykład następujące trzy obrazy znajdują się w repozytorium "ACR-HelloWorld":
 
-```
-acr-helloworld:latest
-acr-helloworld:v1
-acr-helloworld:v2
-```
+
+- *ACR-HelloWorld: Najnowsze*
+- *ACR — HelloWorld: V1*
+- *ACR — HelloWorld: V2*
 
 Nazwy repozytoriów mogą również zawierać [przestrzenie nazw](container-registry-best-practices.md#repository-namespaces). Przestrzenie nazw umożliwiają grupowanie obrazów przy użyciu nazw repozytoriów, które są rozdzielane ukośnikami, na przykład:
 
-```
-marketing/campaign10-18/web:v2
-marketing/campaign10-18/api:v3
-marketing/campaign10-18/email-sender:v2
-product-returns/web-submission:20180604
-product-returns/legacy-integrator:20180715
-```
+- *Marketing/campaign10 — 18/sieć Web: V2*
+- *Marketing/campaign10 — 18/API: v3*
+- *Marketing/campaign10-18/email-Sender: V2*
+- *produkt — zwraca/przesyła do sieci Web: 20180604*
+- *Product-Returns/Legacy-Integrator: 20180715*
 
 ## <a name="image"></a>Image (Obraz)
 
@@ -92,8 +85,11 @@ az acr repository show-manifests --name <acrName> --repository <repositoryName>
 
 Na przykład Wyświetl listę manifestów dla repozytorium "ACR-HelloWorld":
 
-```console
-$ az acr repository show-manifests --name myregistry --repository acr-helloworld
+```azurecli
+az acr repository show-manifests --name myregistry --repository acr-helloworld
+```
+
+```output
 [
   {
     "digest": "sha256:0a2e01852872580b2c2fea9380ff8d7b637d3928783c55beb3f21a6e58d5d108",
@@ -128,9 +124,7 @@ Można ściągnąć obraz z rejestru, określając jego skrót w operacji ścią
 
 Na przykład Pobierz obraz z repozytorium "ACR-HelloWorld" według skrótu manifestu:
 
-```console
-$ docker pull myregistry.azurecr.io/acr-helloworld@sha256:0a2e01852872580b2c2fea9380ff8d7b637d3928783c55beb3f21a6e58d5d108
-```
+`docker pull myregistry.azurecr.io/acr-helloworld@sha256:0a2e01852872580b2c2fea9380ff8d7b637d3928783c55beb3f21a6e58d5d108`
 
 > [!IMPORTANT]
 > W przypadku wielokrotnego wypychania zmodyfikowanych obrazów z identycznymi tagami można utworzyć oddzielone obrazy — obrazy, które są nieoznakowane, ale nadal zużywają miejsce w rejestrze. Obrazy nieoznakowane nie są wyświetlane w interfejsie wiersza polecenia platformy Azure ani w Azure Portal, gdy wyświetlają lub wyświetlają obrazy według tagów. Jednak ich warstwy nadal istnieją i zużywają miejsce w rejestrze. Usunięcie nieoznaczonego obrazu zwalnia miejsce w rejestrze, gdy manifest jest jedynym, lub ostatnim, wskazując konkretną warstwę. Aby uzyskać informacje o zwalnianiu miejsca używanego przez nieoznakowane obrazy, zobacz [usuwanie obrazów kontenerów w Azure Container Registry](container-registry-delete.md).

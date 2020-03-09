@@ -15,11 +15,11 @@ ms.custom: mvc
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: 44539c6779afaece6d955a907819ef82d8cd7d5a
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759537"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380963"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>Samouczek: konfigurowanie laboratorium przy użyciu usługi Azure DevTest Labs
 W tym samouczku utworzysz laboratorium za pomocą witryny Azure Portal. Administrator laboratorium konfiguruje laboratorium w organizacji, tworzy maszyny wirtualne w laboratorium i konfiguruje zasady. Użytkownicy laboratorium (na przykład deweloper i testerzy) przejmują maszyny wirtualne w laboratorium, nawiązują połączenie z nimi i korzystają z nich. 
@@ -36,7 +36,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="create-a-lab"></a>Tworzenie laboratorium
 Następujące kroki ilustrują tworzenie laboratorium w usłudze Azure DevTest Labs przy użyciu witryny Azure Portal. 
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 2. Z menu głównego po lewej stronie wybierz pozycję **Utwórz zasób** (na początku listy), wskaż pozycję **Narzędzia deweloperskie** i kliknij pozycję **DevTest Labs**. 
 
     ![Menu nowego laboratorium DevTest Labs](./media/tutorial-create-custom-lab/new-custom-lab-menu.png)
@@ -51,7 +51,7 @@ Następujące kroki ilustrują tworzenie laboratorium w usłudze Azure DevTest L
         ![Tworzenie sekcji laboratorium usługi DevTest Labs](./media/tutorial-create-custom-lab/create-custom-lab-blade.png)
 2. Upewnij się, że laboratorium zostało utworzone pomyślnie, sprawdzając powiadomienia. Wybierz pozycję **Przejdź do zasobu**.  
 
-    ![Powiadomienia](./media/tutorial-create-custom-lab/creation-notification.png)
+    ![Powiadomienie](./media/tutorial-create-custom-lab/creation-notification.png)
 3. Upewnij się, że strona **laboratorium DevTest Lab** dla Twojego laboratorium jest widoczna. 
 
     ![Strona główna laboratorium](./media/tutorial-create-custom-lab/lab-home-page.png)

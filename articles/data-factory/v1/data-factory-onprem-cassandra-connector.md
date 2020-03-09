@@ -13,11 +13,11 @@ ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 05cee60fb1f4d43d1b4ce371aa9f22650b4782da
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931822"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387403"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Przenoszenie danych z lokalnej bazy danych Cassandra przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -48,7 +48,7 @@ Podczas instalacji bramy automatycznie instalowany jest sterownik Microsoft Cass
 Można utworzyć potok za pomocą działania kopiowania, które przenosi dane z lokalnego magazynu danych Cassandra przy użyciu różnych narzędzi/interfejsów API.
 
 - Najprostszym sposobem utworzenia potoku jest użycie **Kreatora kopiowania**. Zobacz [Samouczek: Tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) na potrzeby szybkiego instruktażu dotyczącego tworzenia potoku przy użyciu Kreatora kopiowania danych.
-- Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
+- Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Aby uzyskać instrukcje krok po kroku dotyczące tworzenia potoku za pomocą działania kopiowania, zobacz [Samouczek dotyczący działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Niezależnie od tego, czy używasz narzędzi, czy interfejsów API, wykonaj następujące kroki, aby utworzyć potok służący do przenoszenia danych ze źródłowego magazynu danych do magazynu danych ujścia:
 
@@ -63,15 +63,15 @@ Poniższe sekcje zawierają szczegółowe informacje na temat właściwości JSO
 ## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 Poniższa tabela zawiera opis elementów JSON specyficznych dla Cassandra połączonej usługi.
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 | --- | --- | --- |
-| type |Właściwość Type musi mieć wartość: **OnPremisesCassandra** |Tak |
-| host |Co najmniej jeden adres IP lub nazwa hosta serwerów Cassandra.<br/><br/>Określ rozdzieloną przecinkami listę adresów IP lub nazw hostów, które mają być połączone jednocześnie ze wszystkimi serwerami. |Tak |
+| type |Właściwość Type musi mieć wartość: **OnPremisesCassandra** |Yes |
+| host |Co najmniej jeden adres IP lub nazwa hosta serwerów Cassandra.<br/><br/>Określ rozdzieloną przecinkami listę adresów IP lub nazw hostów, które mają być połączone jednocześnie ze wszystkimi serwerami. |Yes |
 | port |Port TCP, którego serwer Cassandra używa do nasłuchiwania połączeń klientów. |Nie, wartość domyślna: 9042 |
-| authenticationType |Podstawowa lub anonimowa |Tak |
+| authenticationType |Podstawowa lub anonimowa |Yes |
 | nazwa użytkownika |Określ nazwę użytkownika dla konta użytkownika. |Tak, Jeśli AuthenticationType ma wartość Basic. |
 | hasło |Określ hasło dla konta użytkownika. |Tak, Jeśli AuthenticationType ma wartość Basic. |
-| gatewayName |Nazwa bramy, która jest używana do nawiązywania połączenia z lokalną bazą danych Cassandra. |Tak |
+| gatewayName |Nazwa bramy, która jest używana do nawiązywania połączenia z lokalną bazą danych Cassandra. |Yes |
 | encryptedCredential |Poświadczenie zaszyfrowane przez bramę. |Nie |
 
 >[!NOTE]
@@ -82,7 +82,7 @@ Aby uzyskać pełną listę sekcji & właściwości dostępne do definiowania ze
 
 Sekcja **typeProperties** jest inna dla każdego typu zestawu danych i zawiera informacje dotyczące lokalizacji danych w magazynie danych. Sekcja typeProperties zestawu danych typu **CassandraTable** ma następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 | --- | --- | --- |
 | przestrzeń kluczy |Nazwa przestrzeni kluczy lub schematu w bazie danych Cassandra. |Tak (jeśli nie zdefiniowano **kwerendy** dla **CassandraSource** ). |
 | tableName |Nazwa tabeli w bazie danych Cassandra. |Tak (jeśli nie zdefiniowano **kwerendy** dla **CassandraSource** ). |
@@ -94,7 +94,7 @@ Natomiast właściwości dostępne w sekcji typeProperties działania różnią 
 
 Jeśli źródło jest typu **CassandraSource**, w sekcji typeProperties są dostępne następujące właściwości:
 
-| Właściwość | Opis | Dozwolone wartości | Wymagane |
+| Właściwość | Opis | Dozwolone wartości | Wymagany |
 | --- | --- | --- | --- |
 | query |Użyj zapytania niestandardowego do odczytywania danych. |Zapytanie SQL-92 zapytania lub CQL. Zobacz [CQL Reference](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>W przypadku korzystania z zapytania SQL określ **nazwę przestrzeni kluczy. nazwa tabeli** do reprezentowania tabeli, którą chcesz zbadać. |Nie (Jeśli określono element TableName i przestrzeń kluczy w zestawie danych). |
 | consistencyLevel |Poziom spójności określa, ile replik musi odpowiedzieć na żądanie odczytu przed zwróceniem danych do aplikacji klienckiej. Cassandra sprawdza określoną liczbę replik dla danych, aby spełnić żądanie odczytu. |JEDEN, DWA, TRZY, KWORUM, WSZYSTKIE, LOCAL_QUORUM, EACH_QUORUM, LOCAL_ONE. Aby uzyskać szczegółowe informacje, zobacz [Konfigurowanie spójności danych](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) . |Nie. Wartość domyślna to 1. |
@@ -265,17 +265,17 @@ Zobacz [właściwości typu RelationalSource](#copy-activity-properties) , aby u
 | BIGINT |Int64 |
 | BLOB |Byte[] |
 | BOOLEAN |Wartość logiczna |
-| DECIMAL |Decimal |
-| WARTOŚĆ DWUBAJTOWA |Double |
-| ZWOLNIJ |Pojedyncze |
+| DECIMAL |Dziesiętna |
+| DOUBLE |Podwójne |
+| FLOAT |Single |
 | INET |Ciąg |
 | INT |Int32 |
 | TEXT |Ciąg |
-| TIMESTAMP |Data i godzina |
-| TIMEUUID |Identyfikator GUID |
-| UUID |Identyfikator GUID |
+| TIMESTAMP |DateTime |
+| TIMEUUID |Guid |
+| UUID |Guid |
 | VARCHAR |Ciąg |
-| VARINT |Decimal |
+| VARINT |Dziesiętna |
 
 > [!NOTE]
 > W przypadku typów kolekcji (map, Set, list itp.) zapoznaj się z sekcją [Work with Cassandra Types using przy użyciu tabeli wirtualnej](#work-with-collections-using-virtual-table) .
@@ -299,7 +299,7 @@ Tabele wirtualne odwołują się do danych w rzeczywistej tabeli, umożliwiając
 ### <a name="example"></a>Przykład
 Na przykład następująca "przykładowy" jest tabelą bazy danych Cassandra, która zawiera kolumnę klucza podstawowego Integer o nazwie "pk_int", kolumna tekstowa o nazwie Value, kolumnie listy, kolumnie mapy i kolumnie zestawu (o nazwie "StringSet").
 
-| pk_int | Wartość | Lista | Mapa | StringSet |
+| pk_int | Wartość | List | Mapa | StringSet |
 | --- | --- | --- | --- | --- |
 | 1 |"przykładowa wartość 1" |["1", "2", "3"] |{"S1": "a", "S2": "b"} |{"A", "B", "C"} |
 | 3 |"przykładowa wartość 3" |["100", "101", "102", "105"] |{"S1": "t"} |{"A", "E"} |

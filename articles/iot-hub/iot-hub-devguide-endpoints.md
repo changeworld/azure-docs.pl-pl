@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.openlocfilehash: da6d17e42407048b7ecbcacade67ef48046d7fe1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457127"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382207"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Punkty końcowe IoT Hub odwołania
 
@@ -27,7 +27,7 @@ Nazwę hosta Centrum IoT Hub, który hostuje punkty końcowe w portalu, można z
 
 Azure IoT Hub to usługa z wieloma dzierżawami, która udostępnia swoje funkcje różnym aktorom. Na poniższym diagramie przedstawiono różne punkty końcowe, które IoT Hub uwidaczniają.
 
-![Punkty końcowe usługi IoT Hub](./media/iot-hub-devguide-endpoints/endpoints.png)
+![Punkty końcowe centrum IoT Hub](./media/iot-hub-devguide-endpoints/endpoints.png)
 
 Na poniższej liście opisano punkty końcowe:
 
@@ -39,7 +39,7 @@ Na poniższej liście opisano punkty końcowe:
 
 * **Zarządzanie zadaniami**. Każde Centrum IoT Hub udostępnia zestaw punktów końcowych protokołu HTTPS opartych na usłudze w celu wykonywania zapytań dotyczących [zadań](iot-hub-devguide-jobs.md)i zarządzania nimi.
 
-* **Punkty końcowe urządzeń**. Dla każdego urządzenia w rejestrze tożsamości usługa IoT Hub uwidacznia zestaw punktów końcowych:
+* **Punkty końcowe urządzeń**. Dla każdego urządzenia w rejestrze tożsamości IoT Hub uwidacznia zestaw punktów końcowych:
 
   * *Wysyłanie komunikatów z urządzenia do chmury*. Urządzenie używa tego punktu końcowego do [wysyłania komunikatów z urządzenia do chmury](iot-hub-devguide-messages-d2c.md).
 
@@ -76,9 +76,9 @@ Istniejące usługi platformy Azure w ramach subskrypcji można połączyć z Ce
 IoT Hub obecnie obsługuje następujące usługi platformy Azure jako dodatkowe punkty końcowe:
 
 * Kontenery usługi Azure Storage
-* Centra zdarzeń
+* Event Hubs
 * Kolejki usługi Service Bus
-* Tematy usługi Service Bus
+* Tematy dotyczące usługi Service Bus
 
 Aby uzyskać limity liczby punktów końcowych, które można dodać, zobacz [przydziały i ograniczanie przepustowości](iot-hub-devguide-quotas-throttling.md).
 
@@ -87,7 +87,7 @@ Aby uzyskać stan kondycji punktów końcowych, można użyć interfejsu API RES
 |Stan kondycji|Opis|
 |---|---|
 |healthy|Punkt końcowy akceptuje komunikaty zgodnie z oczekiwaniami.|
-|Złej kondycji|Punkt końcowy nie akceptuje komunikatów zgodnie z oczekiwaniami, a IoT Hub ponawia próbę wysłania danych do tego punktu końcowego. Stan punktu końcowego w złej kondycji zostanie zaktualizowany w dobrej kondycji, gdy IoT Hub ustanowił ostatecznie spójny stan kondycji.|
+|złej kondycji|Punkt końcowy nie akceptuje komunikatów zgodnie z oczekiwaniami, a IoT Hub ponawia próbę wysłania danych do tego punktu końcowego. Stan punktu końcowego w złej kondycji zostanie zaktualizowany w dobrej kondycji, gdy IoT Hub ustanowił ostatecznie spójny stan kondycji.|
 |nieznany|IoT Hub nie nawiązać połączenia z punktem końcowym. Z tego punktu końcowego nie dostarczono żadnych komunikatów ani nie zostały one odrzucone.|
 |martwy|Punkt końcowy nie akceptuje komunikatów, po IoT Hub ponowieniu próby wysłania komunikatów przez okres próbny.|
 

@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 11/19/2019
 ms.openlocfilehash: fa41649e002bd4845b95e787c1d0589ed1987588
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587247"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391099"
 ---
 # <a name="sql-database-resource-limits-and-resource-governance"></a>Limity zasobów SQL Database i zarządzanie zasobami
 
@@ -27,7 +27,7 @@ Ten artykuł zawiera omówienie limitów zasobów SQL Database dla serwera SQL D
 
 ## <a name="maximum-resource-limits"></a>Maksymalne limity zasobów
 
-| Resource | Limit |
+| Zasób | Limit |
 | :--- | :--- |
 | Bazy danych na serwer | 5000 |
 | Domyślna liczba serwerów na subskrypcję w dowolnym regionie | 20 |
@@ -60,7 +60,7 @@ W przypadku wystąpienia dużej mocy obliczeniowej opcje ograniczenia obejmują:
 - Zwiększenie rozmiaru obliczeniowego bazy danych lub puli elastycznej w celu zapewnienia bazy danych większej ilości zasobów obliczeniowych. Zobacz [skalowanie zasobów pojedynczych baz danych](sql-database-single-database-scale.md) i [skalowanie zasobów puli elastycznej](sql-database-elastic-pool-scale.md).
 - Optymalizowanie zapytań w celu zmniejszenia wykorzystania zasobów dla każdego zapytania. Aby uzyskać więcej informacji, zobacz [dostrajanie/podpowiedzi zapytań](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
-### <a name="storage"></a>Magazyn
+### <a name="storage"></a>Storage
 
 Gdy używane miejsce na bazę danych osiągnie limit rozmiaru, wstawia i aktualizuje bazę danych, która zwiększa niepowodzenie rozmiaru danych, a klienci odbierają [komunikat o błędzie](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md). Instrukcje SELECT i DELETE kontynuują się pomyślnie.
 

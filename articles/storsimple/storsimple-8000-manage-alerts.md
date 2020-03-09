@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: alkohli
 ms.openlocfilehash: ff50836e1438b8d35f26ddfdf165084406f52faf
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76270823"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365910"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>Używanie usługi StorSimple Menedżer urządzeń do wyświetlania alertów StorSimple i zarządzania nimi
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Blok **alertów** w usłudze StorSimple Menedżer urządzeń umożliwia przeglądanie i czyszczenie alertów związanych z urządzeniem StorSimple w czasie rzeczywistym. Z tego bloku można centralnie monitorować problemy z kondycją urządzeń StorSimple i ogólne rozwiązanie Microsoft Azure StorSimple.
 
@@ -35,7 +35,7 @@ Ponadto mogą pojawić się alerty związane z zabezpieczeniami, aktualizacjami 
 
 ## <a name="alert-severity-levels"></a>Poziomy ważności alertu
 
-Alerty mają różne poziomy ważności, w zależności od wpływu działania alertu i konieczności odpowiedzi na alert. Poziomy ważności to:
+Alerty mają różne poziomy ważności, w zależności od wpływu działania alertu i konieczności odpowiedzi na alert. Poziomy ważności są następujące:
 
 * **Krytyczny** — ten alert jest w odpowiedzi na warunek, który ma wpływ na pomyślną wydajność systemu. Wymagana jest akcja, aby upewnić się, że Usługa StorSimple nie została przerwana.
 * **Ostrzeżenie** — ten stan może stać się krytyczny, jeśli nie został rozpoznany. Należy zbadać sytuację i podjąć wszelkie działania wymagane do wyczyszczenia problemu.

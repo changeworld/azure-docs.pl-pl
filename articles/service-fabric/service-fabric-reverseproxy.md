@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: bharatn
 ms.openlocfilehash: 4fa4c6e46dd786b833087f892d995e85b5d2ea47
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464300"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78899362"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Zwrotny serwer proxy na platformie Azure Service Fabric
 Zwrotny serwer proxy wbudowany w usługę Azure Service Fabric ułatwia mikrousługi działające w klastrze Service Fabric odnajdywania i komunikowania się z innymi usługami, które mają punkty końcowe http.
@@ -80,7 +80,7 @@ http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?
   * Gdy usługa docelowa jest bezstanowa, zwrotny serwer proxy wybiera losowo wystąpienie partycji usługi, aby przesłać żądanie do programu.
 * **Limit czasu:**  Określa limit czasu żądania HTTP utworzonego przez zwrotny serwer proxy do usługi w imieniu żądania klienta. Wartość domyślna to 60 sekund. Jest to opcjonalny parametr.
 
-### <a name="example-usage"></a>Przykład użycia
+### <a name="example-usage"></a>Przykładowe użycie
 Na przykład przyjrzyjmy się usłudze *Fabric:/MojaApl/WebService* , która otwiera odbiornik http przy następującym adresie URL:
 
 ```
@@ -117,7 +117,7 @@ Service Fabric zwrotny serwer proxy próbuje ponownie rozpoznać adres usługi i
 
 Jednak repliki lub wystąpienia usług mogą współużytkować proces hosta i mogą również udostępnić port, który jest obsługiwany przez serwer sieci Web oparty na protokole HTTP. sys, w tym:
 
-* [System.Net.HttpListener](https://msdn.microsoft.com/library/system.net.httplistener%28v=vs.110%29.aspx)
+* [System .NET. odbiornika HttpListener](https://msdn.microsoft.com/library/system.net.httplistener%28v=vs.110%29.aspx)
 * [ASP.NET Core webListener](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)
 * [Katana](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.OwinSelfHost/)
 

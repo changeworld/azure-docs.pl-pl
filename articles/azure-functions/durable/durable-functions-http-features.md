@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
 ms.openlocfilehash: a7d8891c6f925cfac326685f01ba5f6149a1b233
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76262864"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357798"
 ---
 # <a name="http-features"></a>Funkcje HTTP
 
@@ -41,11 +41,11 @@ Zobacz artykuł dotyczący [interfejsów API protokołu HTTP](durable-functions-
 
 [Powiązanie klienta aranżacji](durable-functions-bindings.md#orchestration-client) udostępnia interfejsy API, które mogą generować wygodne ładunki odpowiedzi HTTP. Na przykład może utworzyć odpowiedź zawierającą linki do interfejsów API zarządzania dla określonego wystąpienia aranżacji. W poniższych przykładach pokazano funkcję wyzwalacza HTTP, która pokazuje, jak używać tego interfejsu API dla nowego wystąpienia aranżacji:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **index. js**
 
@@ -114,7 +114,7 @@ Począwszy od Durable Functions 2,0, aranżacje mogą natywnie korzystać z inte
 
 Poniższy przykładowy kod przedstawia funkcję programu Orchestrator wykonującą wychodzące żądanie HTTP:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CheckSiteAvailable")]
@@ -134,7 +134,7 @@ public static async Task CheckSiteAvailable(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -166,13 +166,13 @@ Interfejs API "Call HTTP" może automatycznie implementować stronę klienta wzo
 > [!NOTE]
 > Program Orchestrator Functions również natywnie obsługuje wzorzec klienta sondowania po stronie serwera, zgodnie z opisem w temacie [śledzenie operacji asynchronicznych](#async-operation-tracking). Ta pomoc techniczna oznacza, że aranżacje w jednej aplikacji funkcji mogą łatwo koordynować funkcje programu Orchestrator w innych aplikacjach funkcji. Jest to podobne do koncepcji [aranżacji podrzędnej](durable-functions-sub-orchestrations.md) , ale z obsługą komunikacji między aplikacjami. Ta obsługa jest szczególnie przydatna w przypadku tworzenia aplikacji w stylu mikrousług.
 
-### <a name="managed-identities"></a>Tożsamości zarządzane
+### <a name="managed-identities"></a>Zarządzane tożsamości
 
 Durable Functions natywnie obsługuje wywołania interfejsów API, które akceptują tokeny Azure Active Directory (Azure AD) na potrzeby autoryzacji. Ta obsługa używa [tożsamości zarządzanych przez platformę Azure](../../active-directory/managed-identities-azure-resources/overview.md) do uzyskiwania tych tokenów.
 
 Poniższy kod stanowi przykład funkcji programu .NET Orchestrator. Funkcja wykonuje uwierzytelnione wywołania do ponownego uruchomienia maszyny wirtualnej za pomocą [interfejsu API REST maszyn wirtualnych](https://docs.microsoft.com/rest/api/compute/virtualmachines)Azure Resource Manager.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("RestartVm")]
@@ -198,7 +198,7 @@ public static async Task RunOrchestrator(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
