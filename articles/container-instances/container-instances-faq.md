@@ -5,17 +5,17 @@ author: dkkapur
 ms.topic: article
 ms.date: 01/07/2020
 ms.openlocfilehash: 4a3fb4c1818d86f7fe2913790fd9e573c630cbfd
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888042"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365026"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Często zadawane pytania dotyczące Azure Container Instances
 
 W tym artykule opisano często zadawane pytania dotyczące Azure Container Instances.
 
-## <a name="deployment"></a>Wdrażanie
+## <a name="deployment"></a>Wdrożenie
 
 ### <a name="how-large-can-my-container-image-be"></a>Jak duży może być mój obraz kontenera?
 
@@ -85,7 +85,7 @@ Obecnie skalowanie nie jest dostępne dla kontenerów lub grup kontenerów. Jeś
 
 Możesz [wdrożyć grupy kontenerów w wybranej sieci wirtualnej platformy Azure](container-instances-vnet.md) i delegować prywatne adresy IP do grup kontenerów, aby kierować ruchem sieciowym w sieci wirtualnej przez zasoby platformy Azure. Wdrożenie grupy kontenerów w sieci wirtualnej jest obecnie dostępne dla obciążeń produkcyjnych w podzbiorze regionów świadczenia usługi Azure.
 
-## <a name="pricing"></a>Cennik
+## <a name="pricing"></a>Ceny
 
 ### <a name="when-does-the-meter-start-running"></a>Kiedy licznik zacznie działać?
 

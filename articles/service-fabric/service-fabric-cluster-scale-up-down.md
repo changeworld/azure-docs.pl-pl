@@ -4,11 +4,11 @@ description: Skalowanie klastra Service Fabric w celu dopasowania do zapotrzebow
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.openlocfilehash: 26ef13f38d525e4e493ad933bfb906dd36ed0070
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587485"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389864"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>Skalowanie klastra w poziomie lub w pionie
 

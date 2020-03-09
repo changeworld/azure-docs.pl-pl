@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 2/21/2019
 ms.author: dekapur
 ms.openlocfilehash: 461d6021a201ca1fa5722bb44c427baca2a7728e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76903380"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389844"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Tworzenie klastra autonomicznego działającego w systemie Windows Server
 Za pomocą usługi Azure Service Fabric można tworzyć klastry Service Fabric na wszystkich maszynach wirtualnych lub komputerach z systemem Windows Server. Oznacza to, że można wdrażać i uruchamiać aplikacje Service Fabric w dowolnym środowisku zawierającym zestaw połączonych komputerów z systemem Windows Server, być lokalnym lub dowolnym dostawcą chmury. Service Fabric udostępnia pakiet instalacyjny do tworzenia klastrów Service Fabric o nazwie autonomiczny pakiet systemu Windows Server. Tradycyjne Service Fabric klastrów na platformie Azure są dostępne jako usługa zarządzana, natomiast autonomiczne klastry Service Fabric są samoobsługowe. Aby uzyskać więcej informacji na temat różnic, zobacz [porównywanie klastrów na platformie Azure i autonomicznych Service Fabric](./service-fabric-deploy-anywhere.md).
@@ -18,7 +18,7 @@ Za pomocą usługi Azure Service Fabric można tworzyć klastry Service Fabric n
 W tym artykule omówiono procedurę tworzenia klastra autonomicznego Service Fabric.
 
 > [!NOTE]
-> Ten autonomiczny pakiet systemu Windows Server jest dostępny komercyjnie bez opłat i może być używany do wdrożeń produkcyjnych. Ten pakiet może zawierać nowe funkcje Service Fabric, które znajdują się w wersji zapoznawczej. Przewiń w dół do "[funkcji wersji zapoznawczej zawartej w tym pakiecie](#previewfeatures_anchor)". Lista funkcji w wersji zapoznawczej. Możesz [pobrać kopię tej umowy licencyjnej](https://go.microsoft.com/fwlink/?LinkID=733084) teraz.
+> Ten autonomiczny pakiet systemu Windows Server jest dostępny komercyjnie bez opłat i może być używany do wdrożeń produkcyjnych. Ten pakiet może zawierać nowe funkcje Service Fabric, które znajdują się w wersji zapoznawczej. Przewiń w dół do "[funkcji wersji zapoznawczej zawartej w tym pakiecie](#previewfeatures_anchor)". Lista funkcji w wersji zapoznawczej. [Kopię umowy EULA można pobrać](https://go.microsoft.com/fwlink/?LinkID=733084) teraz.
 > 
 > 
 
@@ -126,7 +126,7 @@ Aby nawiązać połączenie z niezabezpieczonym klastrem, uruchom następujące 
 Connect-ServiceFabricCluster -ConnectionEndpoint <*IPAddressofaMachine*>:<Client connection end point port>
 ```
 
-Przykład:
+Na przykład:
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.2345:19000
 ```

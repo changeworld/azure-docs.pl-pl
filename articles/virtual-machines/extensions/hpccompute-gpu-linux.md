@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: akjosh
 ms.openlocfilehash: 6ea61acfc2db3c8f1f5c9c0ac8da8f19897d441e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073745"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383433"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Rozszerzenie sterownika GPU NVIDIA dla systemu Linux
 
@@ -72,7 +72,7 @@ Poniższy kod JSON pokazuje schemat rozszerzenia.
 
 ### <a name="properties"></a>Właściwości
 
-| Nazwa | Wartość / przykład | Typ danych |
+| Name (Nazwa) | Wartość / przykład | Typ danych |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft. HpcCompute | ciąg |
@@ -83,11 +83,11 @@ Poniższy kod JSON pokazuje schemat rozszerzenia.
 
 Wszystkie ustawienia są opcjonalne. Domyślnym zachowaniem jest nieaktualizowanie jądra, jeśli nie jest to wymagane w przypadku instalacji sterownika, zainstaluj najnowszy obsługiwany sterownik i zestaw narzędzi CUDA (zgodnie z potrzebami).
 
-| Nazwa | Opis | Wartość domyślna | Prawidłowe wartości | Typ danych |
+| Name (Nazwa) | Opis | Wartość domyślna | Prawidłowe wartości | Typ danych |
 | ---- | ---- | ---- | ---- | ---- |
-| updateOS | Aktualizowanie jądra nawet wtedy, gdy nie jest to wymagane na potrzeby instalacji sterownika | false | true, false | wartość logiczna |
+| updateOS | Aktualizowanie jądra nawet wtedy, gdy nie jest to wymagane na potrzeby instalacji sterownika | false | wartość true, false | wartość logiczna |
 | driverVersion | NV: wersja sterownika siatki<br> NC/ND: wersja zestawu narzędzi CUDA. Najnowsze sterowniki dla wybranych CUDA są instalowane automatycznie. | najnowsza | GRID: "430,30", "418,70", "410,92", "410,71", "390,75", "390,57", "390,42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | ciąg |
-| installCUDA | Zainstaluj zestaw narzędzi CUDA. Dotyczy tylko maszyn wirtualnych z serii NC/ND. | true | true, false | wartość logiczna |
+| installCUDA | Zainstaluj zestaw narzędzi CUDA. Dotyczy tylko maszyn wirtualnych z serii NC/ND. | true | wartość true, false | wartość logiczna |
 
 
 ## <a name="deployment"></a>Wdrożenie
@@ -97,9 +97,9 @@ Wszystkie ustawienia są opcjonalne. Domyślnym zachowaniem jest nieaktualizowan
 
 Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu szablonów usługi Azure Resource Manager. Szablony są idealne do wdrożenia co najmniej jednej maszyny wirtualnej, która wymaga konfiguracji po wdrożeniu.
 
-Konfiguracji JSON dla rozszerzenia maszyny wirtualnej mogą być zagnieżdżone wewnątrz zasobu maszyny wirtualnej lub umieszczone w katalogu głównego lub najwyższego poziomu szablon JSON usługi Resource Manager. Położenie konfiguracji JSON ma wpływ na wartości nazwy i typu zasobu. Aby uzyskać więcej informacji, zobacz [Ustaw nazwę i typ zasobów podrzędnych](../../azure-resource-manager/resource-manager-template-child-resource.md). 
+Konfiguracji JSON dla rozszerzenia maszyny wirtualnej mogą być zagnieżdżone wewnątrz zasobu maszyny wirtualnej lub umieszczone w katalogu głównego lub najwyższego poziomu szablon JSON usługi Resource Manager. Położenie konfiguracji JSON ma wpływ na wartości nazwy i typu zasobu. Aby uzyskać więcej informacji, zobacz [Ustawianie nazwy i typu dla zasobów podrzędnych](../../azure-resource-manager/resource-manager-template-child-resource.md). 
 
-W poniższym przykładzie przyjęto założenie, że rozszerzenie jest zagnieżdżone w ramach zasobu maszyny wirtualnej. Zagnieżdżanie rozszerzenia zasobu, za pomocą pliku JSON jest umieszczany w `"resources": []` obiektu maszyny wirtualnej.
+W poniższym przykładzie przyjęto założenie, że rozszerzenie jest zagnieżdżone w ramach zasobu maszyny wirtualnej. Podczas zagnieżdżania zasobu rozszerzenia kod JSON jest umieszczany w obiekcie `"resources": []` maszyny wirtualnej.
 
 ```json
 {
@@ -121,7 +121,7 @@ W poniższym przykładzie przyjęto założenie, że rozszerzenie jest zagnieżd
 }
 ```
 
-### <a name="powershell"></a>PowerShell
+### <a name="powershell"></a>Program PowerShell
 
 ```powershell
 Set-AzVMExtension
@@ -188,7 +188,7 @@ Dane wyjściowe wykonywania rozszerzenia jest rejestrowany w następującym plik
 
 ### <a name="support"></a>Pomoc techniczna
 
-Jeśli potrzebujesz dodatkowej pomocy w dowolnym momencie, w tym artykule, możesz skontaktować się ze ekspertów platformy Azure na [forów platformy Azure z subskrypcją MSDN i Stack Overflow](https://azure.microsoft.com/support/community/). Alternatywnie mogą zgłaszać zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) i wybierz Uzyskaj pomoc techniczną. Aby uzyskać informacje o korzystaniu z pomocy technicznej platformy Azure, przeczytaj [pomocy technicznej Microsoft Azure — często zadawane pytania](https://azure.microsoft.com/support/faq/).
+Jeśli potrzebujesz więcej pomocy w dowolnym punkcie tego artykułu, możesz skontaktować się z ekspertami platformy Azure na [forach MSDN i Stack Overflow](https://azure.microsoft.com/support/community/). Alternatywnie mogą zgłaszać zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej systemu Azure](https://azure.microsoft.com/support/options/) i wybierz pozycję Uzyskaj pomoc techniczną. Aby uzyskać informacje o korzystaniu z pomocy technicznej platformy Azure, przeczytaj temat [Microsoft Azure support — często zadawane pytania](https://azure.microsoft.com/support/faq/).
 
 ## <a name="next-steps"></a>Następne kroki
 Aby uzyskać więcej informacji na temat rozszerzeń, zobacz [rozszerzenia i funkcje maszyny wirtualnej dla systemu Linux](features-linux.md).
