@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
 ms.openlocfilehash: 7face572f545153ea92efbdb345bbaabda5dd126
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75485652"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384989"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>Zarządzanie grupami zasobów Azure Resource Manager przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -57,7 +57,7 @@ read resourceGroupName &&
 az group show --name $resourceGroupName
 ```
 
-## <a name="delete-resource-groups"></a>Usuń grupy zasobów
+## <a name="delete-resource-groups"></a>Usuwanie grup zasobów
 
 Następujący skrypt interfejsu wiersza polecenia usuwa grupę zasobów:
 

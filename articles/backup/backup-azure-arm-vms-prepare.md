@@ -4,11 +4,11 @@ description: Zawiera opis sposobu tworzenia kopii zapasowych maszyn wirtualnych 
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.openlocfilehash: aeadd7bc798f690c67eef38c6dc645204ff39115
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705551"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363873"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure w magazynie Recovery Services
 
@@ -41,7 +41,7 @@ Ponadto istnieje kilka rzeczy, które mogą być konieczne w pewnych okolicznoś
 
  Magazyn przechowuje kopie zapasowe i punkty odzyskiwania utworzone wraz z upływem czasu, a następnie przechowuje zasady tworzenia kopii w programie skojarzonych z maszynami z kopii zapasowej. Utwórz magazyn w następujący sposób:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Azure portal](https://portal.azure.com/).
 2. W polu wyszukiwania wpisz **Recovery Services**. W obszarze **usługi**kliknij pozycję **magazyny Recovery Services**.
 
      ![Wyszukaj Recovery Services magazyny](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png)
@@ -51,7 +51,7 @@ Ponadto istnieje kilka rzeczy, które mogą być konieczne w pewnych okolicznoś
      ![Tworzenie magazynu Usług odzyskiwania — krok 2](./media/backup-azure-arm-vms-prepare/rs-vault-menu.png)
 
 4. W obszarze **magazyn Recovery Services**wpisz przyjazną nazwę, aby zidentyfikować magazyn.
-    * Nazwa musi być unikalna w tej subskrypcji platformy Azure.
+    * Nazwa musi być unikalna w ramach subskrypcji platformy Azure.
     * Może zawierać od 2 do 50 znaków.
     * Musi rozpoczynać się od litery i może zawierać tylko litery, cyfry i łączniki.
 5. Wybierz subskrypcję platformy Azure, grupę zasobów i region geograficzny, w którym ma zostać utworzony magazyn. Następnie kliknij pozycję **Utwórz**.
@@ -133,7 +133,7 @@ Jeśli wybrano opcję utworzenia nowych zasad tworzenia kopii zapasowych, Wypeł
     * Migawki do natychmiastowego przywrócenia można zachować przez od 1 do pięciu dni. Ustawienie domyślne to dwa dni.
 4. W obszarze **Zakres przechowywania**Określ, jak długo mają być przechowywane codziennie lub cotygodniowe punkty kopii zapasowych.
 5. W obszarze **przechowywanie miesięcznego punktu kopii zapasowej**Określ, czy chcesz przechowywać kopię zapasową codziennych, czy cotygodniowych kopii zapasowych.
-6. Kliknij przycisk **OK** zapisać zasady.
+6. Kliknij przycisk **OK** , aby zapisać zasady.
 
     ![Nowe zasady tworzenia kopii zapasowych](./media/backup-azure-arm-vms-prepare/new-policy.png)
 
@@ -166,7 +166,7 @@ Zakończenie fazy **transferu danych do magazynu** może zająć wiele dni w zal
 
 Stan zadania może się różnić w zależności od następujących scenariuszy:
 
-**Migawka** | **Transferowanie danych do magazynu** | **Stan zadania**
+**Zdjęcie** | **Transferowanie danych do magazynu** | **Stan zadania**
 --- | --- | ---
 Zakończone | W toku | W toku
 Zakończone | Pominięto | Zakończone
@@ -183,7 +183,7 @@ Przyrostowy punkt odzyskiwania utworzony w magazynie będzie przechwytywał wszy
 
 Azure Backup tworzenia kopii zapasowych maszyn wirtualnych platformy Azure przez zainstalowanie rozszerzenia agenta maszyny wirtualnej platformy Azure uruchomionego na komputerze. Jeśli maszyna wirtualna została utworzona na podstawie obrazu portalu Azure Marketplace, Agent jest zainstalowany i uruchomiony. Jeśli tworzysz niestandardową maszynę wirtualną lub migrujesz maszynę lokalną, może być konieczne ręczne zainstalowanie agenta, zgodnie z podsumowaniem w tabeli.
 
-**VM** | **Szczegóły**
+**MASZYN** | **Szczegóły**
 --- | ---
 **Windows** | 1. [Pobierz i zainstaluj](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) plik msi agenta.<br/><br/> 2. Zainstaluj program z uprawnieniami administratora na komputerze.<br/><br/> 3. Sprawdź instalację. W *C:\WindowsAzure\Packages* na maszynie wirtualnej kliknij prawym przyciskiem myszy pozycję **WaAppAgent. exe** > **Właściwości**. Na karcie **szczegóły** **Wersja produktu** powinna mieć wartość 2.6.1198.718 lub wyższą.<br/><br/> Jeśli aktualizujesz agenta, upewnij się, że nie są uruchomione żadne operacje tworzenia kopii zapasowej, a [następnie ponownie zainstaluj agenta](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
 **Linux** | Zainstaluj program przy użyciu KCO lub pakietu DEB z repozytorium pakietu dystrybucji. Jest to preferowana metoda instalowania i uaktualniania agenta systemu Linux platformy Azure. Wszyscy [pozatwierdzeni dostawcy dystrybucji](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) integrują pakiet agenta platformy Azure z systemem Linux z obrazami i repozytoriami. Agent jest dostępny w serwisie [GitHub](https://github.com/Azure/WALinuxAgent), ale nie zalecamy instalacji.<br/><br/> Jeśli aktualizujesz agenta, upewnij się, że nie są uruchomione żadne operacje tworzenia kopii zapasowej, i zaktualizuj pliki binarne.
