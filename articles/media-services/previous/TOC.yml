@@ -393,6 +393,7 @@
           href: media-services-deliver-asset-download.md
         - name: Scenariusz transmisji strumieniowej w trybie failover
           href: media-services-implement-failover.md
+          displayName: 'HA, high availability'
     - name: Używanie
       items:
         - name: Odtwarzanie multimediów za pomocą istniejących odtwarzaczy
