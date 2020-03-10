@@ -19,11 +19,11 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bbd1ad6178e0120bf8414fc424b79254e306d2c2
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76897274"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375925"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Monitorowanie usług AD FS za pomocą programu Azure AD Connect Health
 Poniższa dokumentacja dotyczy monitorowania infrastruktury usług AD FS przy użyciu programu Azure AD Connect Health. Aby uzyskać informacje na temat monitorowania Azure AD Connect (Sync) z Azure AD Connect Health, zobacz [używanie Azure AD Connect Health do synchronizacji](how-to-connect-health-sync.md). Ponadto aby uzyskać informacje na temat monitorowania Active Directory Domain Services przy użyciu Azure AD Connect Health, zobacz [używanie Azure AD Connect Health z AD DS](how-to-connect-health-adds.md).
@@ -51,7 +51,7 @@ Aby wybrać dodatkowe metryki, określić zakres czasu lub zmienić grupowanie, 
 
 |Grupuj według | Co oznacza grupowanie i dlaczego jest przydatne? |
 | --- | --- |
-| Wszystko | Pokazuje łączną liczbę żądań przetworzonych przez wszystkie serwery usług AD FS.|
+| Wszyscy | Pokazuje łączną liczbę żądań przetworzonych przez wszystkie serwery usług AD FS.|
 | Aplikacja | Grupuj wszystkie żądania na podstawie docelowej jednostki zależnej. To grupowanie przydaje się, aby sprawdzić, która aplikacja ma największy procentowy udział w całkowitym ruchu sieciowym. |
 |  Serwer |Grupuje wszystkie żądania na podstawie serwera, który przetwarzał żądanie. Dzięki takiemu grupowaniu można sprawdzić rozkład obciążenia dla całego ruchu sieciowego.
 | Urządzenia dołączone w miejscu pracy |Grupuje wszystkie te żądania, które pochodzą z urządzeń dołączonych w miejscu pracy (znane). Dzięki takiemu grupowaniu można sprawdzić, czy do Twoich zasobów uzyskują dostęp urządzenia nieznane dla infrastruktury do obsługi tożsamości. |
@@ -72,7 +72,7 @@ Aby wybrać dodatkowe metryki, określić zakres czasu lub zmienić grupowanie, 
 
 |Grupuj według | Co oznacza grupowanie i dlaczego jest przydatne? |
 | --- | --- |
-|Wszystko |Ta metryka zapewnia liczenie średniej liczby użytkowników korzystających z usługi federacyjnej w wybranym przedziale czasu. Użytkownicy nie są zgrupowani. <br>Średnia zależy od wybranego przedziału czasu. |
+|Wszyscy |Ta metryka zapewnia liczenie średniej liczby użytkowników korzystających z usługi federacyjnej w wybranym przedziale czasu. Użytkownicy nie są zgrupowani. <br>Średnia zależy od wybranego przedziału czasu. |
 | Aplikacja |Grupuje średnią liczbę użytkowników na podstawie aplikacji docelowej (jednostki zależnej). Dzięki takiemu grupowaniu można sprawdzić, ilu użytkowników korzysta z danej aplikacji. |
 
 ## <a name="performance-monitoring-for-ad-fs"></a>Monitorowanie wydajności dla usług AD FS

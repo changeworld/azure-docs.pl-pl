@@ -14,11 +14,11 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: ed1f47ae99f6346a932d0fe94be7586dc25a672f
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084603"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377374"
 ---
 # <a name="using-web-browsers-msalnet"></a>Korzystanie z przeglądarek internetowych (MSAL.NET)
 
@@ -45,15 +45,15 @@ Ogólnie rzecz biorąc, zaleca się korzystanie z ustawień domyślnych platform
 
 ### <a name="at-a-glance"></a>Na pierwszy rzut oka
 
-| .NET Framework        | Osadzić | System | Domyślne |
+| .NET Framework        | osadzić | System | Domyślne |
 | ------------- |-------------| -----| ----- |
-| Klasyczny .NET     | Yes | Tak ^ | Osadzić |
+| Klasyczny .NET     | Yes | Tak ^ | osadzić |
 | .NET Core     | Nie | Tak ^ | System |
 | .NET Standard | Nie | Tak ^ | System |
-| Platforma UWP | Yes | Nie | Osadzić |
+| Platforma UWP | Yes | Nie | osadzić |
 | Xamarin.Android | Yes | Yes  | System |
 | Xamarin.iOS | Yes | Yes  | System |
-| Xamarin.Mac| Yes | Nie | Osadzić |
+| Xamarin.Mac| Yes | Nie | osadzić |
 
 ^ Wymaga "http://localhost" identyfikator URI przekierowania
 
@@ -149,7 +149,7 @@ Istnieją pewne różnice wizualne między osadzonym widokiem WebView a przeglą
 
 **Logowanie interakcyjne przy użyciu usługi MSAL.NET z osadzonym widokiem WebView:**
 
-![Osadzić](media/msal-net-web-browsers/embedded-webview.png)
+![osadzić](media/msal-net-web-browsers/embedded-webview.png)
 
 **Interakcyjne logowanie za pomocą usługi MSAL.NET przy użyciu przeglądarki systemowej:**
 

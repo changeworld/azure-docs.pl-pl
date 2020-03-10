@@ -8,13 +8,13 @@ ms.topic: article
 ms.date: 01/09/2020
 ms.author: cherylmc
 ms.openlocfilehash: e3a5807a0ccfa39cc80acacedaa5fb4d3afaaed3
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75862768"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379205"
 ---
-# <a name="reset-a-vpn-gateway"></a>Resetowanie VPN Gateway
+# <a name="reset-a-vpn-gateway"></a>Resetowanie bramy VPN Gateway
 
 Resetowanie bramy Azure VPN Gateway przydaje się w przypadku utraty połączenia sieci VPN obejmującego wiele lokalizacji w jednym lub wielu tunelach VPN typu lokacja-lokacja. W takiej sytuacji urządzenia lokalnej sieci VPN działają prawidłowo, ale nie mogą nawiązać połączenia w ramach tuneli używających protokołu IPsec z bramami sieci VPN Azure. Ten artykuł pomaga zresetować bramę sieci VPN.
 
@@ -50,7 +50,7 @@ Bramę sieci VPN Menedżer zasobów można zresetować przy użyciu Azure Portal
    ![Resetowanie bloku VPN Gateway](./media/vpn-gateway-howto-reset-gateway/reset-vpn-gateway-portal.png)
 3. W bloku Reset kliknij przycisk **Resetuj** .
 
-## <a name="ps"></a>PowerShell
+## <a name="ps"></a>Narzędzia
 
 ### <a name="resource-manager-deployment-model"></a>Model wdrażania usługi Resource Manager
 
@@ -63,7 +63,7 @@ $gw = Get-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1
 Reset-AzVirtualNetworkGateway -VirtualNetworkGateway $gw
 ```
 
-Wynik:
+Wynika
 
 Po otrzymaniu zwracanego wyniku możesz założyć, że Resetowanie bramy zakończyło się pomyślnie. Jednak nie ma nic w wyniku powrotu, który wskazuje jawnie, że Resetowanie zakończyło się pomyślnie. Jeśli chcesz uważnie sprawdzić historię, aby dokładnie zobaczyć, kiedy wystąpiło zresetowanie bramy, możesz wyświetlić te informacje w [Azure Portal](https://portal.azure.com). W portalu przejdź do **"gatewayname"-> Resource Health**.
 
@@ -77,7 +77,7 @@ Poniższy przykład resetuje bramę dla sieci wirtualnej o nazwie "Group TestRG1
 Reset-AzureVNetGateway –VnetName 'Group TestRG1 TestVNet1'
 ```
 
-Wynik:
+Wynika
 
 ```powershell
 Error          :
@@ -96,6 +96,6 @@ Aby zresetować bramę, użyj polecenia [AZ Network VNET-Gateway Reset](https://
 az network vnet-gateway reset -n VNet5GW -g TestRG5
 ```
 
-Wynik:
+Wynika
 
 Po otrzymaniu zwracanego wyniku możesz założyć, że Resetowanie bramy zakończyło się pomyślnie. Jednak nie ma nic w wyniku powrotu, który wskazuje jawnie, że Resetowanie zakończyło się pomyślnie. Jeśli chcesz uważnie sprawdzić historię, aby dokładnie zobaczyć, kiedy wystąpiło zresetowanie bramy, możesz wyświetlić te informacje w [Azure Portal](https://portal.azure.com). W portalu przejdź do **"gatewayname"-> Resource Health**.

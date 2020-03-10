@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
 ms.openlocfilehash: 7886d5a1ad0745550767b7d6f19592ca3c84b00a
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891231"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357030"
 ---
 # <a name="get-started-with-storage-explorer"></a>Wprowadzenie do Eksploratora usługi Storage
 
@@ -25,7 +25,7 @@ Eksplorator usługi Microsoft Azure Storage jest aplikacją autonomiczną, któr
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 Następujące wersje Eksplorator usługi Storage pomocy technicznej systemu Windows:
 
@@ -35,13 +35,13 @@ Następujące wersje Eksplorator usługi Storage pomocy technicznej systemu Wind
 
 Dla wszystkich wersji systemu Windows Eksplorator usługi Storage wymaga .NET Framework 4.6.2 lub nowszego.
 
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
+# <a name="macos"></a>[macOS](#tab/macos)
 
 Następujące wersje macOS obsługują Eksplorator usługi Storage:
 
 * macOS 10,12 Sierra i nowsze wersje
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 Eksplorator usługi Storage jest dostępny w [magazynie Snap](https://snapcraft.io/storage-explorer) dla najbardziej typowych dystrybucji systemu Linux. Zalecamy przeprowadzenie przyciągania do tej instalacji. Przystawka Eksplorator usługi Storage instaluje wszystkie jej zależności i aktualizuje, gdy nowe wersje są publikowane w magazynie Snap.
 
@@ -76,7 +76,7 @@ Eksplorator usługi Storage oferuje kilka sposobów nawiązywania połączenia z
 * [Zaloguj się do platformy Azure, aby uzyskać dostęp do subskrypcji i ich zasobów](#sign-in-to-azure)
 * [Dołącz określony magazyn lub zasób CosmosDB](#attach-a-specific-resource)
 
-### <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+### <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 > [!NOTE]
 > Aby w pełni uzyskać dostęp do zasobów po zalogowaniu, Eksplorator usługi Storage wymaga zarówno uprawnień do zarządzania (Azure Resource Manager), jak i warstwy danych. Oznacza to, że potrzebne są uprawnienia Azure Active Directory (Azure AD), które zapewniają dostęp do konta magazynu, kontenerów na koncie i danych w kontenerach. Jeśli masz uprawnienia tylko w warstwie danych, rozważ [dodanie zasobu za pomocą usługi Azure AD](#add-a-resource-via-azure-ad). Aby uzyskać więcej informacji na temat Eksplorator usługi Storage wymaganych uprawnień, zobacz [Eksplorator usługi Azure Storage Przewodnik rozwiązywania problemów](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting#rbac-permissions-issues).

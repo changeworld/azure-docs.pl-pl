@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: de99e9b1e4adceaf08beaf8ad3b5ea114b31a586
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760525"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380940"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs — często zadawane pytania
 Uzyskaj odpowiedzi na niektóre często zadawane pytania dotyczące Azure DevTest Labs.
@@ -39,7 +39,7 @@ Obecnie pracujemy nad migrowaniem istniejących wpisów w blogu (z wyjątkiem ak
 ### <a name="where-do-i-see-outage-updates"></a>Gdzie mogę zobaczyć aktualizacje przestoju?
 Będziemy ogłaszać aktualizacje przestojów przy użyciu naszego uchwytu Twitter od razu. Zapoznaj się z nami w serwisie Twitter, aby uzyskać najnowsze aktualizacje dotyczące awarii i znanych usterek.
 
-### <a name="twitter"></a>Serwis Twitter
+### <a name="twitter"></a>Twitter
 Nasz uchwyt usługi Twitter: [@azlabservices](https://twitter.com/azlabservices)
 
 ## <a name="general"></a>Ogólne
@@ -76,7 +76,7 @@ Poniżej przedstawiono scenariusze, do których nasi klienci używają DevTest L
 ### <a name="how-am-i-billed-for-devtest-labs"></a>Jak naliczane są opłaty za DevTest Labs?
 DevTest Labs to bezpłatna usługa. Tworzenie laboratoriów oraz Konfigurowanie zasad, szablonów i artefaktów w usłudze DevTest Labs jest bezpłatne. Płacisz tylko za zasoby platformy Azure używane w laboratoriach, takie jak maszyny wirtualne, konta magazynu i sieci wirtualne. Aby uzyskać więcej informacji na temat kosztów zasobów laboratorium, zobacz [Azure DevTest Labs Cennik](https://azure.microsoft.com/pricing/details/devtest-lab/).
 
-## <a name="security"></a>Zabezpieczenia
+## <a name="security"></a>Bezpieczeństwo
 
 ### <a name="what-are-the-different-security-levels-in-devtest-labs"></a>Jakie są różne poziomy zabezpieczeń w DevTest Labs?
 Dostęp zabezpieczeń jest określany przez Access Control oparte na rolach (RBAC). Aby dowiedzieć się, jak działa program Access, można poznać różnice między uprawnieniami, rolą i zakresem zdefiniowanym przez RBAC.
@@ -285,7 +285,7 @@ Aby zautomatyzować przekazywanie plików VHD do tworzenia obrazów niestandardo
 
 Aby znaleźć docelowe konto magazynu skojarzone z Twoim laboratorium:
 
-1.  Zaloguj się do [portalu Azure](https://portal.azure.com).
+1.  Zaloguj się do [Azure portal](https://portal.azure.com).
 2.  Z menu po lewej stronie wybierz pozycję **grupy zasobów**.
 3.  Znajdź i wybierz grupę zasobów, która jest skojarzona z laboratorium.
 4.  W obszarze **Przegląd**wybierz jedno z kont magazynu.
@@ -304,7 +304,7 @@ Portal Azure Marketplace powinien być używany domyślnie, chyba że istnieją 
 - Warunki zgodności lub przepisy prawne (na przykład zasady zabezpieczeń), które muszą być stosowane dla wszystkich maszyn.
 - Używanie obrazów niestandardowych nie powinno być uznawane za jasne. Wprowadzają one dodatkową złożoność, ponieważ teraz trzeba zarządzać plikami VHD dla tych podstawowych obrazów bazowych. Należy również regularnie uaktualniać te obrazy podstawowe przy użyciu aktualizacji oprogramowania. Aktualizacje te obejmują nowe aktualizacje systemu operacyjnego, a także wszelkie aktualizacje lub zmiany konfiguracji, które są potrzebne dla samego pakietu oprogramowania.
 
-## <a name="artifacts"></a>Artifacts
+## <a name="artifacts"></a>Artefakty
 
 ### <a name="what-are-artifacts"></a>Co to są artefakty?
 Artefakty to dostosowywalne elementy, których można użyć do wdrożenia najnowszych bitów lub wdrożenia narzędzi deweloperskich na maszynie wirtualnej. Dołącz artefakty do maszyny wirtualnej podczas tworzenia maszyny wirtualnej. Po aprowizacji maszyny wirtualnej artefakty wdrażają i konfigurują maszynę wirtualną. Różne istniejące już artefakty są dostępne w naszym [publicznym repozytorium GitHub](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts). Możesz również [tworzyć własne artefakty](devtest-lab-artifact-author.md).
@@ -345,7 +345,7 @@ Poniższe wpisy w blogu oferują wskazówki i informacje dotyczące korzystania 
 
 W przypadku innych/Continuous dostarczanych (ciągłej integracji) łańcuchy narzędzi można osiągnąć te same scenariusze, wdrażając [szablony Azure Resource Manager](https://azure.microsoft.com/resources/templates/) przy użyciu [poleceń cmdlet Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md) i [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/). Możesz również używać [interfejsów API REST do DevTest Labs](https://aka.ms/dtlrestapis) , aby zintegrować je z łańcucha narzędzi.
 
-## <a name="networking"></a>Networking
+## <a name="networking"></a>Sieć
 
 ### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>Kiedy należy utworzyć nową sieć wirtualną dla środowiska DevTest Labs a przy użyciu istniejącej sieci wirtualnej?
 Jeśli maszyny wirtualne muszą współdziałać z istniejącą infrastrukturą, rozważ użycie istniejącej sieci wirtualnej w środowisku usługi DevTest Labs. Jeśli używasz ExpressRoute, możesz zminimalizować ilość sieci wirtualnych/podsieci, aby nie dzielić przestrzeni adresowej IP, która jest przypisana do użycia w subskrypcjach.

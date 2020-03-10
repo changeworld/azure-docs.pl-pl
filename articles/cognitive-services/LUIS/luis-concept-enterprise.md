@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
 ms.openlocfilehash: efef3faf3cc4ff04235254f0ff6538d92a831196
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619942"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361150"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>Strategie Enterprise aplikacją usługi LUIS
 Przejrzyj te Strategie projektowania dla aplikacji przedsiębiorstwa.
@@ -31,13 +31,13 @@ Jeśli częstotliwość żądań aplikacji LUIS przekracza dozwoloną [liczbę l
 * Utwórz i [Przypisz wiele kluczy](#assign-multiple-luis-keys-to-same-app) do aplikacji. 
 
 ### <a name="use-multiple-apps-with-same-app-definition"></a>Wiele aplikacji za pomocą tej samej definicji aplikacji
-Eksportuj oryginalnej aplikacji LUIS, a następnie importowania aplikacji do osobnych aplikacji. Każda aplikacja ma swój własny identyfikator aplikacji. Podczas publikowania, zamiast korzystać z tego samego klucza dla wszystkich aplikacji, należy utworzyć oddzielny klucz dla każdej aplikacji. Równoważenie obciążenia wśród wszystkich aplikacji, tak aby nie pojedynczej aplikacji jest przeciążony. Dodaj [usługi Application Insights](luis-tutorial-bot-csharp-appinsights.md) monitorowania użycia. 
+Eksportuj oryginalnej aplikacji LUIS, a następnie importowania aplikacji do osobnych aplikacji. Każda aplikacja ma swój własny identyfikator aplikacji. Podczas publikowania, zamiast korzystać z tego samego klucza dla wszystkich aplikacji, należy utworzyć oddzielny klucz dla każdej aplikacji. Równoważenie obciążenia wśród wszystkich aplikacji, tak aby nie pojedynczej aplikacji jest przeciążony. Dodaj [Application Insights](luis-tutorial-bot-csharp-appinsights.md) , aby monitorować użycie. 
 
 Aby uzyskać ten sam intencji najważniejsze między wszystkie aplikacje, upewnij się, że funkcja prognozowania między pierwszym i drugim celem jest dostatecznie szeroka, że usługa LUIS nie jest mylące, co daje różne wyniki aplikacji dla niewielkich zmian w wypowiedzi. 
 
-W przypadku szkolenia tych elementów równorzędnych upewnij się, że nauczysz się [ze wszystkimi danymi](luis-how-to-train.md#train-with-all-data).
+W przypadku szkolenia tych elementów równorzędnych upewnij się, że [nauczysz się ze wszystkimi danymi](luis-how-to-train.md#train-with-all-data).
 
-Należy określić pojedynczej aplikacji jako wzorzec. Wypowiedzi, które są zalecane dla przeglądu powinien dodane do aplikacji głównej, następnie przeniesiony z powrotem do innych aplikacji. To jest pełny eksportowania aplikacji, lub ładowania etykietami wypowiedzi ze wzorca do elementów podrzędnych. Ładowanie może odbywać się za pomocą albo [LUIS](luis-reference-regions.md) witryny sieci Web lub tworzenia interfejsu API dla [pojedynczy wypowiedź](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c08) lub [partii](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09). 
+Należy określić pojedynczej aplikacji jako wzorzec. Wypowiedzi, które są zalecane dla przeglądu powinien dodane do aplikacji głównej, następnie przeniesiony z powrotem do innych aplikacji. To jest pełny eksportowania aplikacji, lub ładowania etykietami wypowiedzi ze wzorca do elementów podrzędnych. Ładowanie można wykonać z witryny sieci Web [Luis](luis-reference-regions.md) lub interfejsu API tworzenia dla [jednej wypowiedź](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c08) lub dla [partii](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09). 
 
 Zaplanuj okresowe przeglądy, na przykład co dwa tygodnie, [punktu końcowego wyrażenia długości](luis-how-to-review-endpoint-utterances.md) na potrzeby aktywnego uczenia, a następnie ponownie nauczenie i ponowne opublikowanie. 
 
@@ -45,9 +45,9 @@ Zaplanuj okresowe przeglądy, na przykład co dwa tygodnie, [punktu końcowego w
 Jeśli aplikacją usługi LUIS odbiera więcej punktu końcowego trafień, niż zezwala limit przydziału jednego klucza, utworzyć i przypisać więcej kluczy do aplikacji usługi LUIS. Tworzenie Menedżera ruchu lub zarządzać zapytaniami punktu końcowego różnych kluczy punktu końcowego usługi równoważenia obciążenia. 
 
 ## <a name="when-your-monolithic-app-returns-wrong-intent"></a>Gdy aplikacji monolitycznych zwraca niewłaściwy intencji
-Jeśli aplikacja jest przeznaczona do przewidywania szerokiej gamy wypowiedzi użytkownika, rozważ zaimplementowanie [modelu wysyłania](#dispatch-tool-and-model). Podzielenie monolityczną aplikację umożliwia LUIS wykrywania fokus między opcjami pomyślnie zamiast pobieranie mylić między opcjami w aplikacji nadrzędnej i podrzędnej aplikacji. 
+Jeśli aplikacja jest przeznaczona do przewidywania różnorodnych wyrażenia długości użytkowników, rozważ zaimplementowanie [modelu wysyłania](#dispatch-tool-and-model). Podzielenie monolityczną aplikację umożliwia LUIS wykrywania fokus między opcjami pomyślnie zamiast pobieranie mylić między opcjami w aplikacji nadrzędnej i podrzędnej aplikacji. 
 
-Zaplanować okresowe [przeglądu wypowiedzi punktu końcowego](luis-how-to-review-endpoint-utterances.md) dla aktywne uczenie się, co dwa tygodnie, np. następnie ponownie ucz i ponownie opublikuj. 
+Zaplanuj okresowe [przeglądy punktu końcowego wyrażenia długości](luis-how-to-review-endpoint-utterances.md) na potrzeby aktywnego uczenia, na przykład co dwa tygodnie, a następnie ponownie nauczenie i ponowne opublikowanie. 
 
 ## <a name="when-you-need-to-have-more-than-500-intents"></a>Jeśli musisz mieć więcej niż 500 intencji
 Załóżmy, że opracowujesz Asystenta pakietu Office, który ma ponad 500 intencji. Jeśli 200 intencji odnoszą się do planowania spotkań, 200 nastąpi przypomnienia 200 nastąpi uzyskiwanie informacji dotyczących współpracowników i 200 służą do wysyłania wiadomości e-mail, intencji grupy tak, aby każda grupa znajduje się w jednej aplikacji, następnie utwórz aplikację najwyższego poziomu zawierającą każdy intencji. Użyj [modelu wysyłania](#dispatch-tool-and-model) , aby skompilować aplikację najwyższego poziomu. Następnie zmień bot tak, aby korzystał z wywołania kaskadowego, jak pokazano w [samouczku modelu wysyłania](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&branch=master&tabs=cs). 
@@ -60,7 +60,7 @@ Za pomocą narzędzia wiersza polecenia [wysyłania][dispatch-tool] dostępnego 
 
 ![Obrazu koncepcyjnego architektury wysyłania](./media/luis-concept-enterprise/dispatch-architecture.png)
 
-Domena nadrzędna została przedstawiona w LUIS w wersji o nazwie `Dispatch` na liście aplikacji. 
+Domena nadrzędna jest zapisywana w LUIS z wersją o nazwie `Dispatch` na liście aplikacji. 
 
 Usługa Chat bot odbiera wypowiedź, a następnie wysyła do aplikacji nadrzędnej LUIS w celu przewidywania. Najczęściej przewidywane zamierzenie z aplikacji nadrzędnej Określa, która aplikacja podrzędna LUIS jest wywoływana dalej. Bot rozmowy wysyła wypowiedź do aplikacji podrzędnej w celu uzyskania bardziej szczegółowego przewidywania.
 
@@ -76,9 +76,9 @@ Aplikacja wysyłania ma 500 źródeł wysyłania równoważne do 500 intencji ja
 * [Interfejs wiersza polecenia wysyłania](https://github.com/Microsoft/botbuilder-tools)
 * Przykład bot model wysyłania — [.NET](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch), [Node. js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się, jak [test partii](luis-how-to-batch-test.md)
+* Dowiedz się, jak [przetestować partię](luis-how-to-batch-test.md)
 
 [dispatcher-application-tutorial]: https://aka.ms/bot-dispatch
 [dispatch-tool]: https://aka.ms/dispatch-tool

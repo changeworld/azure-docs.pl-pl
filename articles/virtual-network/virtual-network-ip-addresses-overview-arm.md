@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: kumud
 ms.openlocfilehash: 176cd9b0bf72a123bc644ebc27ee0e091aa54e97
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024623"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357533"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Typy adresów IP i metody alokacji na platformie Azure
 
@@ -30,7 +30,7 @@ Do zasobów platformy Azure można przypisać adresy IP w celu komunikowania si�
 Możesz również utworzyć ciągły zakres statycznych publicznych adresów IP za pośrednictwem publicznego prefiksu adresu IP. [Więcej informacji na temat publicznego prefiksu adresu IP.](public-ip-address-prefix.md)
 
 > [!NOTE]
-> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Azure Resource Manager i model klasyczny](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json).  Ten artykuł dotyczy modelu wdrażania usługi Resource Manager zalecanego przez firmę Microsoft w przypadku większości nowych wdrożeń zamiast [klasycznego modelu wdrażania](virtual-network-ip-addresses-overview-classic.md).
+> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Azure Resource Manager i model klasyczny](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json).  Ten artykuł dotyczy używania modelu wdrażania usługi Resource Manager zalecanego przez firmę Microsoft w przypadku większości nowych wdrożeń zamiast [klasycznego modelu wdrażania](virtual-network-ip-addresses-overview-classic.md).
 > 
 
 Jeśli znasz klasyczny model wdrażania, sprawdź [różnice w adresowaniu IP między wersją klasyczną i usługą Resource Manager](/previous-versions/azure/virtual-network/virtual-network-ip-addresses-overview-classic#differences-between-resource-manager-and-classic-deployments).
@@ -43,7 +43,7 @@ W usłudze Azure Resource Manager [publiczny adres IP](virtual-network-public-ip
 
 * Interfejsy sieciowe maszyny wirtualnej
 * Moduły równoważenia obciążenia dostępne z Internetu
-* Bramy VPN Gateway
+* Bramy sieci VPN
 * Bramy aplikacji
 * Azure Firewall
 
@@ -51,14 +51,14 @@ W usłudze Azure Resource Manager [publiczny adres IP](virtual-network-public-ip
 
 Publiczne adresy IP są tworzone przy użyciu adresu IPv4 lub IPv6. 
 
-### <a name="sku"></a>JSZ
+### <a name="sku"></a>SKU
 
 Publiczne adresy IP są tworzone przy użyciu jednej z następujących jednostek SKU:
 
 >[!IMPORTANT]
 > Dla zasobów modułu równoważenia obciążenia i publicznego adresu IP należy użyć zgodnych jednostek SKU. Nie można mieć kombinacji podstawowych i standardowych zasobów SKU. Nie można dołączyć autonomicznych maszyn wirtualnych, maszyn wirtualnych w zasobie zestawu dostępności lub zasobów zestawu skalowania maszyn wirtualnych jednocześnie do obu jednostek SKU.  W nowych projektach należy rozważyć użycie standardowych zasobów SKU.  Zapoznaj się z tematem [Usługa Load Balancer w warstwie Standardowa](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), aby uzyskać szczegółowe informacje.
 
-#### <a name="basic"></a>Basic
+#### <a name="basic"></a>Podstawowa
 
 Wszystkie publiczne adresy IP utworzone przed wprowadzeniem jednostek SKU są publicznymi adresami IP opartymi na podstawowej jednostce SKU. Od momentu wprowadzenia jednostki SKU masz opcję określania, którą jednostką SKU ma być publiczny adres IP. Podstawowe adresy SKU:
 
@@ -68,7 +68,7 @@ Wszystkie publiczne adresy IP utworzone przed wprowadzeniem jednostek SKU są pu
 - Są przypisywane do zasobów platformy Azure, do których można przypisać publiczny adres IP, takich jak interfejsy sieciowe, bramy VPN Gateway, bramy Application Gateway i moduły równoważenia obciążenia dostępne z Internetu.
 - Nie obsługują scenariuszy ze strefą dostępności.  Dla scenariuszy obejmujących strefę dostępności należy użyć standardowego publicznego adresu IP jednostki SKU. Aby dowiedzieć się więcej o strefach dostępności, zobacz [Availability zones overview](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Omówienie stref dostępności) oraz [Usługa Load Balancer w warstwie Standardowa i strefy dostępności](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-#### <a name="standard"></a>Standardowa
+#### <a name="standard"></a>Standard
 
 Standardowe publiczne adresy IP jednostek SKU:
 
@@ -106,7 +106,7 @@ Statyczne publiczne adresy IP są powszechnie używane w następujących scenari
 >
 
 ### <a name="dns-hostname-resolution"></a>Rozpoznawanie nazw hostów DNS
-Możesz określić etykietę nazwy domeny DNS dla publicznego zasobu adresu IP, który tworzy mapowanie witryny *domainnamelabel*.*location*.cloudapp.azure.com na publiczny adres IP na serwerach DNS zarządzanych przez platformę Azure. Jeśli na przykład utworzysz publiczny zasób adresu IP mający **contoso** jako wartość parametru *domainnamelabel* w *lokalizacji* platformy Azure w **Zachodnich stanach USA**, w pełni kwalifikowana nazwa domeny (FQDN) **contoso.westus.cloudapp.azure.com** zostanie rozpoznana jako publiczny adres IP zasobu.
+Możesz określić etykietę nazwy domeny DNS dla publicznego zasobu adresu IP, który tworzy mapowanie witryny *domainnamelabel*.*location*.cloudapp.azure.com na publiczny adres IP na serwerach DNS zarządzanych przez platformę Azure. Jeśli na przykład utworzysz publiczny zasób adresu IP mający **contoso** jako wartość parametru *domainnamelabel* w **lokalizacji** platformy Azure w *Zachodnich stanach USA*, w pełni kwalifikowana nazwa domeny (FQDN) **contoso.westus.cloudapp.azure.com** zostanie rozpoznana jako publiczny adres IP zasobu.
 
 > [!IMPORTANT]
 > Każda utworzona etykieta nazwy domeny musi być unikatowa w swojej lokalizacji na platformie Azure.  
@@ -123,7 +123,7 @@ Możesz skojarzyć publiczny adres IP z maszyną wirtualną systemu [Windows](..
 
 Publiczny adres IP utworzony przy użyciu dowolnej jednostki [SKU](#sku) możesz skojarzyć z usługą [Azure Load Balancer](../load-balancer/load-balancer-overview.md), przypisując go do konfiguracji **frontonu** modułu równoważenia obciążenia. Publiczny adres IP służy jako wirtualny adres IP (VIP) o zrównoważonym obciążeniu. Do frontonu modułu równoważenia obciążenia możesz przypisać dynamiczny lub statyczny publiczny adres IP. Do frontonu modułu równoważenia obciążenia możesz także przypisać wiele publicznych adresów IP, co umożliwiają scenariusze [wielu VIP](../load-balancer/load-balancer-multivip-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), takie jak środowisko wielodostępne z witrynami sieci Web opartymi na protokole SSL. Aby uzyskać więcej informacji na temat jednostek SKU usługi Azure Load Balancer, zobacz [Azure load balancer standard SKU (Usługa Azure Load Balancer — standardowa jednostka SKU)](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-### <a name="vpn-gateways"></a>Bramy VPN Gateway
+### <a name="vpn-gateways"></a>Bramy sieci VPN
 
 Usługa [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) służy do łączenia sieci wirtualnej platformy Azure z innymi sieciami wirtualnymi platformy Azure lub siecią lokalną. Publiczny adres IP jest przypisywany do bramy VPN Gateway w celu umożliwienia komunikacji z siecią zdalną. Do bramy sieci VPN możesz przypisać tylko *dynamiczny* podstawowy publiczny adres IP.
 
@@ -136,9 +136,9 @@ W poniższej tabeli przedstawiono określone właściwości, za pomocą których
 
 | Zasób najwyższego poziomu | Skojarzenie adresu IP | Dynamiczny | Statyczny |
 | --- | --- | --- | --- |
-| Maszyna wirtualna |Interfejs sieciowy |Tak |Tak |
-| Moduł równoważenia obciążenia dostępny z Internetu |Konfiguracja frontonu |Tak |Tak |
-| Brama sieci VPN |Konfiguracja adresu IP bramy |Tak |Nie |
+| Maszyna wirtualna |Interfejs sieciowy |Yes |Yes |
+| Moduł równoważenia obciążenia dostępny z Internetu |Konfiguracja frontonu |Yes |Yes |
+| Brama sieci VPN |Konfiguracja adresu IP bramy |Yes |Nie |
 | Brama aplikacji |Konfiguracja frontonu |Tak (tylko wersja 1) |Tak (tylko wersja 2) |
 
 ## <a name="private-ip-addresses"></a>Prywatne adresy IP
@@ -180,14 +180,14 @@ W poniższej tabeli przedstawiono określone właściwości, za pomocą których
 
 | Zasób najwyższego poziomu | Skojarzenie adresu IP | Dynamiczny | Statyczny |
 | --- | --- | --- | --- |
-| Maszyna wirtualna |Interfejs sieciowy |Tak |Tak |
-| Moduł równoważenia obciążenia |Konfiguracja frontonu |Tak |Tak |
-| Brama aplikacji |Konfiguracja frontonu |Tak |Tak |
+| Maszyna wirtualna |Interfejs sieciowy |Yes |Yes |
+| Moduł równoważenia obciążenia |Konfiguracja frontonu |Yes |Yes |
+| Brama aplikacji |Konfiguracja frontonu |Yes |Yes |
 
 ## <a name="limits"></a>Limity
 Ograniczenia nakładane na adresowanie IP zostały wymienione w pełnym zestawieniu [ograniczeń dla sieci](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) na platformie Azure. Ograniczenia są podzielone według regionu i subskrypcji. [Kontaktując się z pomocą techniczną](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade), możesz zwiększyć domyślne limity do maksimum w zależności od potrzeb biznesowych.
 
-## <a name="pricing"></a>Cennik
+## <a name="pricing"></a>Ceny
 Publiczne adresy IP mogą być związane z nominalnymi opłatami. Aby dowiedzieć się więcej o cenach adresów IP na platformie Azure, przejrzyj stronę [Cennik adresów IP](https://azure.microsoft.com/pricing/details/ip-addresses).
 
 ## <a name="next-steps"></a>Następne kroki

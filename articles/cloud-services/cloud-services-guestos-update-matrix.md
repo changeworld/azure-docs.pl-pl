@@ -13,11 +13,11 @@ ms.workload: tbd
 ms.date: 1/24/2020
 ms.author: raiye
 ms.openlocfilehash: c4bdb6fec5c20940e0afe4ab2e94702a2b21a60c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765315"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78344528"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Wersje systemu operacyjnego gościa platformy Azure i macierz zgodności zestawu SDK
 Program udostępnia aktualne informacje o najnowszych wersjach systemu operacyjnego gościa platformy Azure dla Cloud Services. Te informacje ułatwiają zaplanowanie ścieżki uaktualnienia przed wyłączeniem systemu operacyjnego gościa. Jeśli skonfigurujesz role do korzystania z *automatycznych* aktualizacji systemu operacyjnego gościa zgodnie z opisem w [ustawieniach aktualizacji systemu operacyjnego gościa platformy Azure][Azure Guest OS Update Settings], nie trzeba przeczytywać tej strony.
@@ -99,7 +99,7 @@ Wydano system operacyjny gościa w trybie gościnnym.
 ## <a name="releases"></a>Wydania
 
 ## <a name="family-6-releases"></a>Wydania z rodziny 6
-**Windows Server 2019**
+**System Windows Server 2019**
 
 .NET Framework zainstalowane: 3,5, 4.7.2
 
@@ -127,15 +127,15 @@ Wydano system operacyjny gościa w trybie gościnnym.
 |~~WA-GOŚĆ-OS-6,9 _201907-0~~|26 lipca 2019 | 7 października 2019 |
 |~~WA-GOŚĆ-OS-6,8 _201906-01~~|8 lipca 2019 |4 sierpnia 2019 |
 |~~WA-GOŚĆ-OS-6.7 _201905-01~~ |6 czerwca 2019 |26 lipca 2019 |
-|~~WA-GUEST-OS-6.6_201904-01~~ |7 maja 2019 |8 lipca 2019 |
-|~~WA-GUEST-OS-6.5_201903-01~~ |26 marca 2019 |6 czerwca 2019 |
-|~~WA-GUEST-OS-6.4_201902-01~~ |12 marca 2019 |7 maja 2019 |
-|~~WA-GUEST-OS-6.3_201901-01~~ |5 lutego 2019 |26 marca 2019 |
-|~~WA-GUEST-OS-6.2_201812-01~~ |24 stycznia 2019 |12 marca 2019 |
-|~~WA-GUEST-OS-6.1_201811-01~~ |24 stycznia 2019 |5 lutego 2019 |
+|~~WA-GOŚĆ-OS-6.6 _201904-01~~ |7 maja 2019 |8 lipca 2019 |
+|~~WA-GOŚĆ-OS-6.5 _201903-01~~ |26 marca 2019 |6 czerwca 2019 |
+|~~WA-GOŚĆ-OS-6.4 _201902-01~~ |12 marca 2019 |7 maja 2019 |
+|~~WA-GOŚĆ-OS-6.3 _201901-01~~ |5 lutego 2019 |26 marca 2019 |
+|~~WA-GOŚĆ-OS-6.2 _201812-01~~ |24 stycznia 2019 |12 marca 2019 |
+|~~WA-GOŚĆ-OS-6.1 _201811-01~~ |24 stycznia 2019 |5 lutego 2019 |
 
 ## <a name="family-5-releases"></a>Wersje z rodziny 5
-**Windows Server 2016**
+**System Windows Server 2016**
 
 .NET Framework zainstalowana: 3,5, 4,6
 
@@ -155,17 +155,17 @@ Wydano system operacyjny gościa w trybie gościnnym.
 |~~WA-GOŚĆ-OS-5.33 _201907-01~~| 26 lipca 2019 | 7 października 2019 |  
 |~~WA-GOŚĆ-OS-5.32 _201906-01~~|8 lipca 2019 |4 sierpnia 2019 |
 |~~WA-GOŚĆ-OS-5.31 _201905-01~~ |6 czerwca 2019 |26 lipca 2019 |
-|~~WA-GUEST-OS-5.30_201904-01~~ |7 maja 2019 |8 lipca 2019 |
-|~~WA-GUEST-OS-5.29_201903-01~~ |26 marca 2019 |6 czerwca 2019 |
-|~~WA-GUEST-OS-5.28_201902-01~~ |12 marca 2019 |7 maja 2019 |
-|~~WA-GUEST-OS-5.27_201901-01~~ |5 lutego 2019 |26 marca 2019 |
-|~~WA-GUEST-OS-5.26_201812-01~~ |7 stycznia 2019 |12 marca 2019 |
-|~~WA-GUEST-OS-5.25_201811-01~~ |14 grudnia 2018 |5 lutego 2019 |
-|~~WA-GUEST-OS-5.24_201810-01~~ |8 listopada 2018 |7 stycznia 2019 |
-|~~WA-GUEST-OS-5.23_201809-01~~ |12 października 2018 |14 grudnia 2018 |
+|~~WA-GOŚĆ-OS-5.30 _201904-01~~ |7 maja 2019 |8 lipca 2019 |
+|~~WA-GOŚĆ-OS-5.29 _201903-01~~ |26 marca 2019 |6 czerwca 2019 |
+|~~WA-GOŚĆ-OS-5.28 _201902-01~~ |12 marca 2019 |7 maja 2019 |
+|~~WA-GOŚĆ-OS-5.27 _201901-01~~ |5 lutego 2019 |26 marca 2019 |
+|~~WA-GOŚĆ-OS-5.26 _201812-01~~ |7 stycznia 2019 |12 marca 2019 |
+|~~WA-GOŚĆ-OS-5,25 _201811-01~~ |14 grudnia 2018 |5 lutego 2019 |
+|~~WA-GOŚĆ-OS-5.24 _201810-01~~ |8 listopada 2018 |7 stycznia 2019 |
+|~~WA-GOŚĆ-OS-5.23 _201809-01~~ |12 października 2018 |14 grudnia 2018 |
 
 ## <a name="family-4-releases"></a>Wydania z rodziny 4
-**Windows Server 2012 R2**
+**System Windows Server 2012 R2**
 
 .NET Framework zainstalowane: 3,5, 4.5.1, 4.5.2
 
@@ -180,14 +180,14 @@ Wydano system operacyjny gościa w trybie gościnnym.
 |~~WA-GOŚĆ-OS-4.68 _201907-01~~| 26 lipca 2019  | 7 października 2019 |
 |~~WA-GOŚĆ-OS-4.67 _201906-01~~| 8 lipca 2019 |4 sierpnia 2019 |
 |~~WA-GOŚĆ-OS-4.66 _201905-01~~ |6 czerwca 2019 |26 lipca 2019 |
-|~~WA-GUEST-OS-4.65_201904-01~~ |7 maja 2019 |8 lipca 2019 |
-|~~WA-GUEST-OS-4.64_201903-01~~ |26 marca 2019 |6 czerwca 2019 |
-|~~WA-GUEST-OS-4.63_201902-01~~ |12 marca 2019 |7 maja 2019 |
-|~~WA-GUEST-OS-4.62_201901-01~~ |5 lutego 2019 |26 marca 2019 |
-|~~WA-GUEST-OS-4.61_201812-01~~ |7 stycznia 2019 |12 marca 2019 |
-|~~WA-GUEST-OS-4.60_201811-01~~ |14 grudnia 2018 |5 lutego 2019 |
-|~~WA-GUEST-OS-4.59_201810-01~~ |8 listopada 2018 |7 stycznia 2019 |
-|~~WA-GUEST-OS-4.58_201809-01~~ |12 października 2018 |14 grudnia 2018 |
+|~~WA-GOŚĆ-OS-4.65 _201904-01~~ |7 maja 2019 |8 lipca 2019 |
+|~~WA-GOŚĆ-OS-4.64 _201903-01~~ |26 marca 2019 |6 czerwca 2019 |
+|~~WA-GOŚĆ-OS-4.63 _201902-01~~ |12 marca 2019 |7 maja 2019 |
+|~~WA-GOŚĆ-OS-4.62 _201901-01~~ |5 lutego 2019 |26 marca 2019 |
+|~~WA-GOŚĆ-OS-4.61 _201812-01~~ |7 stycznia 2019 |12 marca 2019 |
+|~~WA-GOŚĆ-OS-4.60 _201811-01~~ |14 grudnia 2018 |5 lutego 2019 |
+|~~WA-GOŚĆ-OS-4.59 _201810-01~~ |8 listopada 2018 |7 stycznia 2019 |
+|~~WA-GOŚĆ-OS-4.58 _201809-01~~ |12 października 2018 |14 grudnia 2018 |
 
 ## <a name="family-3-releases"></a>Wersje z rodziny 3
 **Windows Server 2012**
@@ -205,12 +205,12 @@ Wydano system operacyjny gościa w trybie gościnnym.
 |~~WA-GOŚĆ-OS-3,75 _201907-01~~| 26 lipca 2019 | 7 października 2019 |
 |~~WA-GOŚĆ-OS-3.74 _201906-01~~| 8 lipca 2019 |4 sierpnia 2019 |
 |~~WA-GOŚĆ-OS-3.73 _201905-01~~ |6 czerwca 2019 |26 lipca 2019 |
-|~~WA-GUEST-OS-3.72_201904-01~~ |7 maja 2019 |8 lipca 2019 |
-|~~WA-GUEST-OS-3.71_201903-01~~ |26 marca 2019 |6 czerwca 2019 |
-|~~WA-GUEST-OS-3.70_201902-01~~ |12 marca 2019 |7 maja 2019 |
-|~~WA-GUEST-OS-3.69_201901-01~~ |5 lutego 2019 |26 marca 2019 |
-|~~WA-GUEST-OS-3.68_201812-01~~ |7 stycznia 2019 |12 marca 2019 |
-|~~WA-GUEST-OS-3.67_201811-01~~ |14 grudnia 2018 |5 lutego 2019 |
+|~~WA-GOŚĆ-OS-3.72 _201904-01~~ |7 maja 2019 |8 lipca 2019 |
+|~~WA-GOŚĆ-OS-3.71 _201903-01~~ |26 marca 2019 |6 czerwca 2019 |
+|~~WA-GOŚĆ-OS-3.70 _201902-01~~ |12 marca 2019 |7 maja 2019 |
+|~~WA-GOŚĆ-OS-3.69 _201901-01~~ |5 lutego 2019 |26 marca 2019 |
+|~~WA-GOŚĆ-OS-3.68 _201812-01~~ |7 stycznia 2019 |12 marca 2019 |
+|~~WA-GOŚĆ-OS-3.67 _201811-01~~ |14 grudnia 2018 |5 lutego 2019 |
 |~~WA-GOŚĆ-OS-3.66 _201810-01~~ |8 listopada 2018 |7 stycznia 2019 |
 |~~WA-GOŚĆ-OS-3.65 _201809-01~~ |12 października 2018 |14 grudnia 2018 |
 
@@ -230,14 +230,14 @@ Wydano system operacyjny gościa w trybie gościnnym.
 |~~WA-GOŚĆ-OS-2,88 _201907-01~~| 26 lipca 2019 | 7 października 2019 |
 |~~WA-GOŚĆ-OS-2.87 _201906-01~~|8 lipca 2019 | 4 sierpnia 2019 |
 |~~WA-GOŚĆ-OS-2.86 _201905-01~~ |6 czerwca 2019 |26 lipca 2019 |
-|~~WA-GUEST-OS-2.85_201904-01~~ |7 maja 2019 |8 lipca 2019 |
-|~~WA-GUEST-OS-2.84_201903-01~~ |26 marca 2019 |6 czerwca 2019 |
-|~~WA-GUEST-OS-2.83_201902-01~~ |12 marca 2019 |7 maja 2019 |
-|~~WA-GUEST-OS-2.82_201901-01~~ |5 lutego 2019 |26 marca 2019 |
-|~~WA-GUEST-OS-2.81_201812-01~~ |7 stycznia 2019 |12 marca 2019 |
-|~~WA-GUEST-OS-2.80_201811-01~~ |14 grudnia 2018 |5 lutego 2019 |
-|~~WA-GUEST-OS-2.79_201810-01~~ |8 listopada 2018 |7 stycznia 2019 |
-|~~WA-GUEST-OS-2.78_201809-01~~ |12 października 2018 |14 grudnia 2018 |
+|~~WA-GOŚĆ-OS-2.85 _201904-01~~ |7 maja 2019 |8 lipca 2019 |
+|~~WA-GOŚĆ-OS-2.84 _201903-01~~ |26 marca 2019 |6 czerwca 2019 |
+|~~WA-GOŚĆ-OS-2.83 _201902-01~~ |12 marca 2019 |7 maja 2019 |
+|~~WA-GOŚĆ-OS-2.82 _201901-01~~ |5 lutego 2019 |26 marca 2019 |
+|~~WA-GOŚĆ-OS-2.81 _201812-01~~ |7 stycznia 2019 |12 marca 2019 |
+|~~WA-GOŚĆ-OS-2.80 _201811-01~~ |14 grudnia 2018 |5 lutego 2019 |
+|~~WA-GOŚĆ-OS-2.79 _201810-01~~ |8 listopada 2018 |7 stycznia 2019 |
+|~~WA-GOŚĆ-OS-2.78 _201809-01~~ |12 października 2018 |14 grudnia 2018 |
 
 ## <a name="msrc-patch-updates"></a>Aktualizacje poprawek MSRC
 Lista poprawek, które są dołączone do każdej comiesięcznej wersji systemu operacyjnego gościa, jest dostępna [tutaj][patches].

@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 52d9f7a0b2a7cebefdb5ade8e16417043c5c83d3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425294"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378066"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Raporty w usłudze Azure Multi-Factor Authentication
 
@@ -32,7 +32,7 @@ Usługa Azure Multi-Factor Authentication udostępnia kilka raportów, które mo
 
 ## <a name="view-mfa-reports"></a>Wyświetlanie raportów usługi MFA
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 2. Po lewej stronie wybierz pozycję **Azure Active Directory** > **zabezpieczenia** > **MFA**.
 3. Wybierz raport, który chcesz wyświetlić.
 
@@ -64,7 +64,7 @@ Raporty działania logowania dla usługi MFA umożliwiają dostęp do następuj�
 **Wynik usługi MFA:** więcej informacji na temat tego, czy uwierzytelnianie MFA zostało przeprowadzone pomyślnie, czy też nie:
 
 - Jeśli uwierzytelnianie MFA powiodło się, ta kolumna zawiera więcej informacji na temat sposobu przeprowadzenia uwierzytelnienia MFA.
-   - Usługa Azure Multi-Factor Authentication
+   - Azure Multi-Factor Authentication
       - ukończone w chmurze
       - wygasłe z powodu zasad skonfigurowanych w dzierżawie
       - wyświetlono monit o rejestrację

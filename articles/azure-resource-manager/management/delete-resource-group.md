@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 09/03/2019
 ms.custom: seodec18
 ms.openlocfilehash: db56cf0897cd90f1e6e51199032d0d9712530f1c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75478892"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360682"
 ---
 # <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Azure Resource Manager grupy zasobów i usuwania zasobów
 
@@ -21,7 +21,7 @@ Podczas usuwania grupy zasobów usługi Resource Manager, określa kolejność, 
 
 1. Wszystkie zasoby podrzędne (zagnieżdżona) są usuwane.
 
-2. Zasoby, które zarządzają inne zasoby są następnie usuwane. Zasób może mieć `managedBy` właściwość ustawioną na wskazywanie, czy inny zasób zarządza nim. Gdy ta właściwość jest ustawiona, zasobu, który zarządza inne zasoby zostaną usunięte przed inne zasoby.
+2. Zasoby, które zarządzają inne zasoby są następnie usuwane. Zasób może mieć ustawioną właściwość `managedBy`, aby wskazać, że zarządza innym zasobem. Gdy ta właściwość jest ustawiona, zasobu, który zarządza inne zasoby zostaną usunięte przed inne zasoby.
 
 3. Pozostałe zasoby są usuwane po poprzednich dwóch kategorii.
 
@@ -58,19 +58,19 @@ Dla innych kodów błędu usługi Resource Manager nie usunięcia zasobu.
 
 Aby usunąć grupę zasobów, użyj jednej z poniższych metod.
 
-# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name ExampleResourceGroup
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
+# <a name="azure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
 ```azurecli-interactive
 az group delete --name ExampleResourceGroup
 ```
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. W [portalu](https://portal.azure.com)wybierz grupę zasobów, którą chcesz usunąć.
 
@@ -86,7 +86,7 @@ az group delete --name ExampleResourceGroup
 
 Użyj jednej z poniższych metod, aby usunąć zasób.
 
-# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Remove-AzResource `
@@ -95,7 +95,7 @@ Remove-AzResource `
   -ResourceType Microsoft.Compute/virtualMachines
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
+# <a name="azure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
 ```azurecli-interactive
 az resource delete \
@@ -104,7 +104,7 @@ az resource delete \
   --resource-type "Microsoft.Compute/virtualMachines"
 ```
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. W [portalu](https://portal.azure.com)wybierz zasób, który chcesz usunąć.
 
@@ -119,5 +119,5 @@ az resource delete \
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby zrozumieć pojęcia usługi Resource Manager, zobacz [Omówienie usługi Azure Resource Manager](overview.md).
-* Usuwanie poleceń można znaleźć [PowerShell](/powershell/module/az.resources/Remove-AzResourceGroup), [wiersza polecenia platformy Azure](/cli/azure/group?view=azure-cli-latest#az-group-delete), i [interfejsu API REST](/rest/api/resources/resourcegroups/delete).
+* Aby zrozumieć koncepcje Menedżer zasobów, zobacz [Azure Resource Manager omówienie](overview.md).
+* Polecenia usuwania można znaleźć w temacie [PowerShell](/powershell/module/az.resources/Remove-AzResourceGroup), interfejs [wiersza polecenia platformy Azure](/cli/azure/group?view=azure-cli-latest#az-group-delete)i [interfejs API REST](/rest/api/resources/resourcegroups/delete).

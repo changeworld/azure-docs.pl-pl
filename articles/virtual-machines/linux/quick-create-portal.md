@@ -15,11 +15,11 @@ ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 894fa2f3cda798a409db3ee8e9761c1702baf955
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035213"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372469"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Szybki start: tworzenie maszyny wirtualnej z systemem Linux w witrynie Azure Portal
 
@@ -34,7 +34,7 @@ Do wykonania kroków tego przewodnika Szybki start konieczne jest posiadanie par
 Otwórz powłokę Bash i użyj polecenia [ssh-keygen](https://www.ssh.com/ssh/keygen/), aby utworzyć parę kluczy SSH. Jeśli nie masz powłoki Bash na swoim komputerze lokalnym, możesz użyć usługi [Azure Cloud Shell](https://shell.azure.com/bash).
 
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. W menu w górnej części strony wybierz ikonę `>_`, aby otworzyć Cloud Shell.
 1. Upewnij się, że CloudShell mówi **bash** w lewym górnym rogu. Jeśli mówi programu PowerShell, Użyj listy rozwijanej, aby wybrać **bash** , a następnie wybierz pozycję **Potwierdź** , aby przejść do powłoki bash.
 1. Wpisz `ssh-keygen -t rsa -b 2048`, aby utworzyć klucz SSH. 
@@ -91,7 +91,7 @@ Utwórz połączenie SSH z maszyną wirtualną.
 
 3. Korzystając z tej samej powłoki bash, która została użyta do utworzenia pary kluczy SSH (możesz ponownie otworzyć Cloud Shell, wybierając `>_` lub przechodząc do https://shell.azure.com/bash), Wklej polecenie połączenia SSH do powłoki, aby utworzyć sesję SSH.
 
-## <a name="install-web-server"></a>Instalowanie serwera internetowego
+## <a name="install-web-server"></a>Instalowanie serwera sieci Web
 
 Aby zobaczyć działanie maszyny wirtualnej, zainstaluj serwer internetowy NGINX. Z poziomu sesji SSH zaktualizuj źródła pakietu, a następnie zainstaluj najnowszą wersję pakietu NGINX.
 
@@ -103,7 +103,7 @@ sudo apt-get -y install nginx
 Gdy skończysz, wpisz polecenie `exit`, aby opuścić sesję SSH.
 
 
-## <a name="view-the-web-server-in-action"></a>Oglądanie działającego serwera internetowego
+## <a name="view-the-web-server-in-action"></a>Widok serwera sieci Web w akcji
 
 Użyj wybranej przeglądarki internetowej, aby wyświetlić domyślną strona główną serwera NGINX. Wpisz publiczny adres IP maszyny wirtualnej jako adres sieci Web. Publiczny adres IP można znaleźć na stronie przeglądu maszyny wirtualnej lub jako część wcześniej użytych parametrów połączenia SSH.
 
@@ -115,7 +115,7 @@ Gdy grupa zasobów, maszyna wirtualna i wszystkie pokrewne zasoby nie będą ju�
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki start wdrożono prostą maszynę wirtualną, utworzono sieciową grupę zabezpieczeń i regułę oraz zainstalowano podstawowy serwer internetowy. Aby dowiedzieć się więcej o maszynach wirtualnych platformy Azure, przejdź do samouczka dla maszyn wirtualnych z systemem Linux.
+W tym przewodniku Szybki start została wdrożona prosta maszyna wirtualna, utworzono sieciową grupę zabezpieczeń oraz regułę i zainstalowano podstawowy serwer sieci Web. Aby dowiedzieć się więcej o maszynach wirtualnych platformy Azure, przejdź do samouczka dla maszyn wirtualnych z systemem Linux.
 
 > [!div class="nextstepaction"]
 > [Samouczki dla maszyny wirtualnej platformy Azure z systemem Linux](./tutorial-manage-vm.md)

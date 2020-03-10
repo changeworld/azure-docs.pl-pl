@@ -5,11 +5,11 @@ ms.topic: overview
 ms.date: 12/29/2019
 ms.custom: mvc
 ms.openlocfilehash: c336b2f95a17896edcc7eaad2b2586c6859804f9
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772197"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362146"
 ---
 # <a name="about-azure-migrate"></a>Informacje o usłudze Azure Migrate
 
@@ -37,7 +37,7 @@ Centrum Azure Migrate udostępnia następujące narzędzia.
 **Azure Migrate: Migracja serwera** | Migrowanie serwerów | Migruj maszyny wirtualne VMware, maszyny wirtualne funkcji Hyper-V, serwery fizyczne, a także inne maszyny wirtualne i maszyny wirtualne w chmurze publicznej na platformę Azure. 
 **Asystent migracji bazy danych (DMA)** | Oceniaj lokalne bazy danych SQL Server, aby przeprowadzić migrację do usługi Azure SQL DB, wystąpienia zarządzanego Azure SQL lub maszyn wirtualnych platformy Azure z systemem SQL Server. | DMA zawiera informacje o potencjalnych problemach z blokowaniem migracji. Identyfikuje Nieobsługiwane funkcje, a także nowe funkcje, z których można skorzystać po migracji, i pomaga identyfikować właściwą ścieżkę do migracji bazy danych. [Dowiedz się więcej](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017).
 **Database Migration Service (DMS)** | Migrowanie lokalnych baz danych do maszyn wirtualnych platformy Azure z uruchomionymi usługami SQL, Azure SQL DB i Azure SQL. | [Dowiedz się więcej](https://docs.microsoft.com/azure/dms/dms-overview) o usłudze DMS.
-**Przeniesienie** | Ocenianie serwerów | [Dowiedz się więcej](#movere) o obszarze przenoszenia.
+**Movere** | Ocenianie serwerów | [Dowiedz się więcej](#movere) o obszarze przenoszenia.
 **Asystent migracji aplikacji sieci Web** | Ocenianie i migrowanie lokalnych aplikacji sieci Web na platformę Azure. |  Użyj Asystent migracji Azure App Service do oceny lokalnych witryn sieci Web na potrzeby migracji do Azure App Service.<br/><br/> Migruj aplikacje sieci Web platformy .NET i PHP na platformę Azure przy użyciu Azure App Service Asystent migracji. [Dowiedz się więcej](https://appmigration.microsoft.com/) o Asystencie.
 **Azure Data Box** | Migracja danych w trybie offline. | Użyj Azure Data Box produktów, aby przenieść duże ilości danych w tryb offline na platformę Azure. [Dowiedz się więcej](https://docs.microsoft.com/azure/databox/).
 
@@ -53,7 +53,7 @@ Azure Migrate integruje się z innymi ofertami niezależnych dostawców oprogram
 [Urządzenie 42](https://docs.device42.com/) | Ocenianie serwerów
 [Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | Ocena infrastruktury VDI
 [Stojaki](https://go.microsoft.com/fwlink/?linkid=2102735) | Migrowanie serwerów
-[Platforma turbonomic](https://learn.turbonomic.com/azure-migrate-portal-free-trial) | Ocenianie serwerów
+[Turbonomic](https://learn.turbonomic.com/azure-migrate-portal-free-trial) | Ocenianie serwerów
 [UnifyCloud](https://www.cloudatlasinc.com/cloudrecon/) | Ocenianie serwerów i baz danych
 
 
@@ -79,7 +79,7 @@ Ocena serwera korzysta z uproszczonego urządzenia wdrażanego lokalnie i rejest
 Azure Migrate: Narzędzie do migracji serwera ułatwia Migrowanie lokalnych maszyn wirtualnych programu VMware, maszyn wirtualnych funkcji Hyper-V, serwerów fizycznych, innych maszyn wirtualnych i maszyn wirtualnych w chmurze publicznej na platformie Azure. Po dokonaniu oceny lub migracji maszyn można migrować je bez oceny.
 
 
-## <a name="select-a-tool"></a>Wybór narzędzia
+## <a name="select-a-tool"></a>Wybierz narzędzie
 
 W centrum Azure Migrate wybierz narzędzie, którego chcesz użyć do oceny, i Dodaj je do projektu Azure Migrate. W przypadku dodania narzędzia niezależnego dostawcy oprogramowania lub przenoszenia:
 

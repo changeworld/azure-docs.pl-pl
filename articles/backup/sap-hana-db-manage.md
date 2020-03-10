@@ -4,11 +4,11 @@ description: W tym artykule przedstawiono typowe zadania związane z zarządzani
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.openlocfilehash: a9462f8608fc5ae35255ac321a0742b3f1834fde
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75390637"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382486"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Zarządzanie kopiami zapasowymi baz danych platformy SAP HANA i ich monitorowanie
 
@@ -32,7 +32,7 @@ Aby dowiedzieć się więcej o monitorowaniu, przejdź do [obszaru monitorowanie
 
 Alerty to prosta metoda monitorowania kopii zapasowych baz danych SAP HANA. Alerty ułatwiają skoncentrowanie się na zdarzeniach, których nie można uzyskać w wielu przypadkach, które generują kopie zapasowe. Azure Backup umożliwia Ustawianie alertów i monitorowanie ich w następujący sposób:
 
-* Zaloguj się do [portalu Azure](https://portal.azure.com/).
+* Zaloguj się do [Azure portal](https://portal.azure.com/).
 * Na pulpicie nawigacyjnym magazynu wybierz pozycję **alerty kopii zapasowych**.
 
   ![Alerty kopii zapasowej na pulpicie nawigacyjnym magazynu](./media/sap-hana-db-manage/backup-alerts-dashboard.png)

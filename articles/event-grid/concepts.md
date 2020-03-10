@@ -1,6 +1,6 @@
 ---
-title: Pojęcia dotyczące usługi Azure Event Grid
-description: Opis usługi Azure Event Grid i pojęć z nią związanych. Definiuje kilka najważniejszych składników usługi Event Grid.
+title: Koncepcje Azure Event Grid
+description: Opis usługi Azure Event Grid i pojęć z nią związanych. Definiuje kilka najważniejszych składników Event Grid.
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,84 +8,84 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: spelluru
 ms.openlocfilehash: 0821c749a6cb718e1b8abb74a2925bc041850eaf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66305271"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359434"
 ---
-# <a name="concepts-in-azure-event-grid"></a>Pojęcia dotyczące usługi Azure Event Grid
+# <a name="concepts-in-azure-event-grid"></a>Pojęcia w Azure Event Grid
 
-W tym artykule opisano główne pojęcia w usłudze Azure Event Grid.
+W tym artykule opisano główne koncepcje w Azure Event Grid.
 
-## <a name="events"></a>Events
+## <a name="events"></a>Zdarzenia
 
-Zdarzenie jest najmniejsza ilość informacje opisujące pełni coś, co wydarzyło się w systemie. Każde zdarzenie zawiera wspólne informacje, takie jak: źródło zdarzenia, czas zdarzenia miały miejsce i unikatowy identyfikator. Każde zdarzenie ma również określone informacje, których dotyczy tylko określonych typach zdarzenia. Na przykład zdarzenie o nowy plik tworzonych w usłudze Azure Storage zawiera szczegóły dotyczące pliku, takie jak `lastTimeModified` wartość. Lub zdarzenie usługi Event Hubs ma adres URL pliku przechwytywania. 
+Wydarzenie jest najmniejszą ilością informacji, które w pełni opisują coś, co się stało w systemie. Każde zdarzenie ma typowe informacje, takie jak: Źródło zdarzenia, czas trwania zdarzenia i unikatowy identyfikator. Każde zdarzenie ma także określone informacje, które mają zastosowanie tylko do określonego typu zdarzenia. Na przykład zdarzenie o nowym pliku tworzonym w usłudze Azure Storage zawiera szczegółowe informacje o pliku, takie jak wartość `lastTimeModified`. Lub zdarzenie Event Hubs ma adres URL pliku przechwytywania. 
 
-Zdarzenie o rozmiarze do 64 KB jest objęty przez umowy poziomu usług (SLA) ogólna dostępność (GA). Pomoc techniczna dotycząca zdarzenie o rozmiarze do 1 MB jest obecnie w wersji zapoznawczej. Zdarzenia przekracza 64 KB są naliczane w przyrostach 64 KB. 
+Zdarzenie o rozmiarze do 64 KB jest objęte ogólnym dostępnością Umowa dotycząca poziomu usług (SLA). Obsługa zdarzeń o rozmiarze do 1 MB jest obecnie dostępna w wersji zapoznawczej. Zdarzenia powyżej 64 KB są naliczone w przyrostach 64 KB. 
 
 
-Dla właściwości, które są wysyłane w zdarzeniu, zobacz [schematu zdarzeń usługi Azure Event Grid](event-schema.md).
+Dla właściwości, które są wysyłane w zdarzeniu, zobacz [Azure Event Grid schemacie zdarzeń](event-schema.md).
 
 ## <a name="publishers"></a>Wydawcy
 
-Wydawca jest użytkownika lub organizację, która decyduje się na wysyłanie zdarzeń do usługi Event Grid. Firma Microsoft publikuje zdarzenia dla kilka usług platformy Azure. Mogą publikować zdarzenia z własnych aplikacji. Organizacje, które obsługują usługi spoza platformy Azure mogą publikować zdarzenia przy użyciu usługi Event Grid.
+Wydawca to użytkownik lub organizacja, która podejmuje decyzję o wysłaniu zdarzeń do Event Grid. Firma Microsoft publikuje zdarzenia dla kilku usług platformy Azure. Możesz publikować zdarzenia z własnej aplikacji. Organizacje, które obsługują usługi znajdujące się poza platformą Azure, mogą publikować zdarzenia za pomocą Event Grid.
 
 ## <a name="event-sources"></a>Źródła zdarzeń
 
-Źródłem zdarzenia jest, gdy zdarzenie. Każde źródło zdarzenia jest powiązany z co najmniej jeden typ zdarzenia. Na przykład Azure Storage jest źródła zdarzeń dla zdarzenia utworzony obiekt blob. Usługa IoT Hub jest źródła zdarzeń dla zdarzenia utworzono urządzenie. Aplikacja jest źródła zdarzeń dla zdarzeń niestandardowych, zdefiniowanych przez użytkownika. Źródła zdarzeń jest odpowiedzialny za wysyłanie zdarzeń do usługi Event Grid.
+Źródło zdarzenia to miejsce, w którym występuje zdarzenie. Każde źródło zdarzenia jest powiązane z co najmniej jednym typem zdarzenia. Na przykład usługa Azure Storage jest źródłem zdarzeń dla zdarzeń utworzonych przez obiekty blob. IoT Hub to źródło zdarzeń dla zdarzeń utworzonych przez urządzenie. Aplikacja jest źródłem zdarzeń dla zdefiniowanych niestandardowych zdarzeń. Źródła zdarzeń są odpowiedzialne za wysyłanie zdarzeń do Event Grid.
 
-Aby uzyskać informacji dotyczących implementowania dowolnego z obsługiwanych źródeł usługi Event Grid, zobacz [źródła zdarzeń w usłudze Azure Event Grid](event-sources.md).
+Aby uzyskać informacje na temat implementowania dowolnego z obsługiwanych źródeł Event Grid, zobacz [źródła zdarzeń w Azure Event Grid](event-sources.md).
 
 ## <a name="topics"></a>Tematy
 
-Temat usługi event grid udostępnia punkt końcowy, w którym źródło wysyła zdarzenia. Wydawca tworzy tematu usługi event grid i decyduje, czy źródło zdarzenia musi temat jeden lub więcej niż jeden temat. Temat jest używany dla kolekcji powiązanych zdarzeń. Aby reagować na wybranych typów zdarzeń, subskrybenci zdecydować, które tematy, aby subskrybować.
+Temat GridY zdarzeń zawiera punkt końcowy, w którym źródło wysyła zdarzenia. Wydawca tworzy temat siatka zdarzeń i decyduje o tym, czy źródło zdarzenia wymaga jednego tematu, czy też więcej niż jednego tematu. Temat służy do zbierania powiązanych zdarzeń. Aby odpowiedzieć na określone typy zdarzeń, subskrybenci decydują, które tematy zasubskrybować.
 
-System tematy dotyczą wbudowanych udostępnianego przez usługi platformy Azure. Nie widzisz tematów systemu w ramach subskrypcji platformy Azure, ponieważ wydawca jest właścicielem tematy, ale można subskrybować ich. Aby zamówić subskrypcję, możesz podać informacje o zasobie, że chcesz odbierać zdarzenia z. Tak długo, jak długo użytkownik ma dostęp do zasobu, możesz zasubskrybować ze zdarzeniami.
+Tematy systemowe to wbudowane tematy udostępniane przez usługi platformy Azure. Nie widzisz tematów systemowych w subskrypcji platformy Azure, ponieważ Wydawca jest właścicielem tematów, ale możesz je subskrybować. Aby subskrybować, należy podać informacje o zasobach, z których mają zostać odebrane zdarzenia. O ile masz dostęp do zasobu, możesz subskrybować jego zdarzenia.
 
-Tematy niestandardowe są tematy innych firm i aplikacji. Podczas tworzenia lub dostępem do tematu niestandardowego, zobaczysz tego niestandardowego tematu, w ramach subskrypcji.
+Tematy niestandardowe są tematami aplikacji i innych firm. Gdy tworzysz lub masz przypisany dostęp do tematu niestandardowego, zobaczysz ten temat niestandardowy w subskrypcji.
 
-Podczas projektowania aplikacji, należy elastyczność, podejmując decyzję o ile tematy, aby utworzyć. W przypadku dużych rozwiązań tworzenie tematu niestandardowego dla każdej kategorii powiązanych zdarzeń. Na przykład rozważmy aplikację, która wysyła zdarzenia związane z modyfikowanie kont użytkowników i przetwarzanie zamówień. Jest mało prawdopodobne, każdy program obsługi zdarzeń chce, aby obie kategorie zdarzeń. Utwórz dwa tematy niestandardowe i umożliwić subskrybować ten, który je interesujące programy obsługi zdarzeń. W przypadku małych rozwiązań warto wszystkie zdarzenia są wysyłane do jednego tematu. Typy zdarzeń, które zechcą subskrybentów zdarzeń można filtrować.
+Podczas projektowania aplikacji masz elastyczność podczas decydowania o liczbie tematów do utworzenia. W przypadku dużych rozwiązań Utwórz niestandardowy temat dla każdej kategorii powiązanych zdarzeń. Rozważmy na przykład aplikację, która wysyła zdarzenia związane z modyfikowaniem kont użytkowników i przetwarzania zamówień. Jest mało prawdopodobne, że procedura obsługi zdarzeń potrzebuje obu kategorii zdarzeń. Utwórz dwa tematy niestandardowe i pozwól obsłudze zdarzeń subskrybować te, które je interesują. W przypadku małych rozwiązań można chcieć wysłać wszystkie zdarzenia do jednego tematu. Subskrybenci zdarzeń mogą odfiltrować żądane typy zdarzeń.
 
 ## <a name="event-subscriptions"></a>Subskrypcje zdarzeń
 
-Subskrypcję usługi Event Grid informuje o zdarzenia na temat interesujących Cię odbieranie. Podczas tworzenia subskrypcji, udostępniasz punkt końcowy dla obsługi zdarzenia. Można filtrować zdarzenia, które są wysyłane do punktu końcowego. Można filtrować według typu zdarzenia lub wzorzec podmiotu. Aby uzyskać więcej informacji, zobacz [schemat subskrypcji usługi Event Grid](subscription-creation-schema.md).
+Subskrypcja informuje Event Grid, które zdarzenia zostały odebrane w temacie. Podczas tworzenia subskrypcji jest udostępniany punkt końcowy do obsługi zdarzenia. Można filtrować zdarzenia, które są wysyłane do punktu końcowego. Można filtrować według typu zdarzenia lub wzorca podmiotu. Aby uzyskać więcej informacji, zobacz [Event Grid schematu subskrypcji](subscription-creation-schema.md).
 
-Aby uzyskać przykłady tworzenia subskrypcji zobacz:
+Przykłady tworzenia subskrypcji można znaleźć w temacie:
 
-* [Przykłady interfejsu wiersza polecenia platformy Azure dla usługi Event Grid](cli-samples.md)
-* [Przykłady programu Azure PowerShell dla usługi Event Grid](powershell-samples.md)
-* [Szablony usługi Azure Resource Manager dla usługi Event Grid](template-samples.md)
+* [Przykłady interfejsu wiersza polecenia platformy Azure dla Event Grid](cli-samples.md)
+* [Przykłady Azure PowerShell dla Event Grid](powershell-samples.md)
+* [Szablony Azure Resource Manager dla Event Grid](template-samples.md)
 
-Aby dowiedzieć się, jak pobieranie bieżącego zdarzenia subskrypcji siatki, zobacz [subskrypcji usługi Event Grid zapytania](query-event-subscriptions.md).
+Aby uzyskać informacje na temat pobierania bieżących subskrypcji usługi Event Grid, zobacz temat [zapytanie Event Grid subskrypcje](query-event-subscriptions.md).
 
 ## <a name="event-subscription-expiration"></a>Wygaśnięcie subskrypcji zdarzeń
-Subskrypcja zdarzeń automatycznie wygaśnie po tej dacie. Ustawienia okresu ważności subskrypcji zdarzeń, które są wymagane tylko przez ograniczony czas, a nie chcesz martwić się o czyszczenia tych subskrypcjach. Na przykład podczas tworzenia subskrypcji zdarzeń, aby przetestować scenariusz, możesz chcieć ustawienia okresu ważności. 
+Subskrypcja zdarzeń automatycznie wygaśnie po tej dacie. Ustaw wygasanie dla subskrypcji zdarzeń, które są wymagane tylko przez ograniczony czas i nie chcesz martwić się o czyszczenie tych subskrypcji. Na przykład podczas tworzenia subskrypcji zdarzeń do testowania scenariusza może zajść potrzeba ustawienia wygaśnięcia. 
 
-Na przykład ustawienia wygaśnięcia, zobacz [subskrypcji z zaawansowanych filtrów](how-to-filter-events.md#subscribe-with-advanced-filters).
+Aby zapoznać się z przykładem ustawiania wygaśnięcia, zobacz [Subskrybuj with Advanced Filters](how-to-filter-events.md#subscribe-with-advanced-filters).
 
 ## <a name="event-handlers"></a>Procedury obsługi zdarzeń
 
-Z perspektywy usługi Event Grid program obsługi zdarzeń jest miejscem, w którym zdarzenie jest wysyłane. Program obsługi ma kilka dalszych działań do przetworzenia zdarzenia. Usługa Event Grid obsługuje kilka typów programu obsługi. Obsługiwane usługi platformy Azure lub własnego elementu webhook można użyć jako program obsługi. W zależności od typu obsługi usługi Event Grid następuje różne mechanizmy gwarantuje dostarczenia zdarzeń. Dla programów obsługi zdarzeń elementu webhook protokołu HTTP, zdarzenie jest ponawiana dopóki metoda obsługi zwraca kod stanu `200 – OK`. Dla usługi Azure Storage Queue zdarzenia są ponawiana do wypychania komunikatów w kolejce pomyślnie przetwarzania przez usługę kolejki.
+W perspektywie Event Grid program obsługi zdarzeń jest miejscem, w którym zdarzenie jest wysyłane. Procedura obsługi wykonuje kilka dalszych działań w celu przetworzenia zdarzenia. Event Grid obsługuje kilka typów obsługi. Możesz użyć obsługiwanej usługi platformy Azure lub własnego elementu webhook jako procedury obsługi. W zależności od typu procedury obsługi Event Grid są zgodne z różnymi mechanizmami w celu zagwarantowania dostarczania zdarzenia. W przypadku obsługi zdarzeń elementu webhook protokołu HTTP zdarzenie jest ponawiane do momentu, gdy procedura obsługi zwróci kod stanu `200 – OK`. W przypadku kolejki usługi Azure Storage zdarzenia są ponawiane, dopóki usługa kolejki pomyślnie przetworzy komunikat wypchnięcie do kolejki.
 
-Aby uzyskać informacje o implementowaniu dowolnej obsługiwanej procedury obsługi usługi Event Grid, zobacz [procedury obsługi zdarzeń w usłudze Azure Event Grid](event-handlers.md).
+Aby uzyskać informacje dotyczące implementowania dowolnego obsługiwanego programu obsługi Event Grid, zobacz [programy obsługi zdarzeń w programie Azure Event Grid](event-handlers.md).
 
 ## <a name="security"></a>Bezpieczeństwo
 
-Usługa Event Grid zapewnia zabezpieczenia subskrybowanie tematów i publikowanie tematów. Podczas subskrybowania, musi mieć odpowiednie uprawnienia na temat siatki zasobów lub zdarzenia. Podczas publikowania, musisz mieć uwierzytelniania za pomocą tokenu sygnatury dostępu Współdzielonego lub klucza dla tematu. Aby uzyskać więcej informacji, zobacz [usługi Event Grid zabezpieczeń i uwierzytelniania](security-authentication.md).
+Event Grid zapewnia zabezpieczenia subskrybowania tematów i publikowania tematów. Podczas subskrybowania musisz mieć odpowiednie uprawnienia do tematu zasobów lub siatki zdarzeń. Podczas publikowania należy mieć token SAS lub uwierzytelnianie klucza dla tematu. Aby uzyskać więcej informacji, zobacz [Event Grid zabezpieczenia i uwierzytelnianie](security-authentication.md).
 
 ## <a name="event-delivery"></a>Dostarczanie zdarzeń
 
-Jeśli usługa Event Grid można potwierdzić, że zdarzenia zostały odebrane przez punkt końcowy subskrybenta, redelivers zdarzenia. Aby uzyskać więcej informacji, zobacz [dostarczanie komunikatów usługi Event Grid i ponów próbę](delivery-and-retry.md).
+Jeśli Event Grid nie może potwierdzić, że zdarzenie zostało odebrane przez punkt końcowy subskrybenta, ponownie dostarcza zdarzenie. Aby uzyskać więcej informacji, zobacz [Event Grid dostarczania komunikatów i ponów próbę](delivery-and-retry.md).
 
 ## <a name="batching"></a>Tworzenie partii
 
-Korzystając z niestandardowego tematu, zawsze należy opublikować zdarzenia w tablicy. Można w tym zadaniu wsadowym jednego dla scenariuszy niskiej przepustowości, jednak dla dużej liczby przypadków użycia, zalecane jest, batch kilka zdarzeń, które razem na publikowanie osiągnąć wyższą wydajność. Partie można maksymalnie 1 MB. Każde zdarzenie nadal nie powinna być dłuższa niż 64 KB (ogólnie) lub 1 MB (wersja zapoznawcza).
+W przypadku korzystania z tematu niestandardowego zdarzenia muszą być zawsze publikowane w tablicy. Może to być partia dla scenariuszy o niskiej przepływności, jednak w przypadku dużych przypadków użycia należy wykonać wiele zadań wsadowych na potrzeby publikowania, aby osiągnąć wyższą wydajność. Liczba partii może wynosić do 1 MB. Każde zdarzenie nie powinno być większe niż 64 KB (ogólna dostępność) lub 1 MB (wersja zapoznawcza).
 
 > [!NOTE]
-> Zdarzenie o rozmiarze do 64 KB jest objęty przez umowy poziomu usług (SLA) ogólna dostępność (GA). Pomoc techniczna dotycząca zdarzenie o rozmiarze do 1 MB jest obecnie w wersji zapoznawczej. Zdarzenia przekracza 64 KB są naliczane w przyrostach 64 KB. 
+> Zdarzenie o rozmiarze do 64 KB jest objęte ogólnym dostępnością Umowa dotycząca poziomu usług (SLA). Obsługa zdarzeń o rozmiarze do 1 MB jest obecnie dostępna w wersji zapoznawczej. Zdarzenia powyżej 64 KB są naliczone w przyrostach 64 KB. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Aby zapoznać się z wprowadzeniem do usługi Event Grid, zobacz [Wprowadzenie do usługi Azure Event Grid](overview.md).
-* Aby szybko rozpocząć pracę, przy użyciu usługi Event Grid, zobacz [Utwórz i wyznaczać trasy zdarzeń niestandardowych za pomocą usługi Azure Event Grid](custom-event-quickstart.md).
+* Aby szybko rozpocząć korzystanie z Event Grid, zobacz [Tworzenie i kierowanie zdarzeń niestandardowych z Azure Event Grid](custom-event-quickstart.md).

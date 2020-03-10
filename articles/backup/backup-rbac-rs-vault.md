@@ -5,11 +5,11 @@ ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.openlocfilehash: e2e32ac6981635e3b9885119fdf397783ac32cc9
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156390"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363765"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Zarządzanie Azure Backup punktów odzyskiwania przy użyciu Access Control opartych na rolach
 
@@ -36,7 +36,7 @@ W poniższej tabeli przedstawiono akcje zarządzania kopiami zapasowymi i odpowi
 | Włącz tworzenie kopii zapasowych maszyn wirtualnych platformy Azure | Operator kopii zapasowych | Grupa zasobów zawierająca magazyn |
 | | Współautor maszyny wirtualnej | Zasób maszyny wirtualnej |
 | Tworzenie kopii zapasowej maszyny wirtualnej na żądanie | Operator kopii zapasowych | Magazyn usługi Recovery Services |
-| Przywracanie maszyny wirtualnej | Operator kopii zapasowych | Magazyn usługi Recovery Services |
+| Przywróć maszynę wirtualną | Operator kopii zapasowych | Magazyn usługi Recovery Services |
 | | Współautor | Grupa zasobów, w której zostanie wdrożona maszyna wirtualna |
 | | Współautor maszyny wirtualnej | Źródłowa maszyna wirtualna, której kopię zapasową utworzono |
 | Przywróć dyski niezarządzane kopia zapasowa maszyny wirtualnej | Operator kopii zapasowych | Magazyn usługi Recovery Services |
@@ -71,7 +71,7 @@ W poniższej tabeli przedstawiono akcje zarządzania kopiami zapasowymi i odpowi
 | | Współautor konta magazynu | Zasoby konta magazynu, w których znajdują się źródła przywracania i docelowe udziały plików |
 | Przywróć pojedyncze pliki | Operator kopii zapasowych | Magazyn usługi Recovery Services |
 | |Współautor konta magazynu|Zasoby konta magazynu, w których znajdują się źródła przywracania i docelowe udziały plików |
-| Zatrzymywanie ochrony |Współautor kopii zapasowej | Magazyn usługi Recovery Services |
+| Zatrzymaj ochronę |Współautor kopii zapasowej | Magazyn usługi Recovery Services |
 | Wyrejestrowywanie konta magazynu z magazynu |Współautor kopii zapasowej | Magazyn usługi Recovery Services |
 | |Współautor konta magazynu | Zasób konta magazynu|
 
@@ -79,7 +79,7 @@ W poniższej tabeli przedstawiono akcje zarządzania kopiami zapasowymi i odpowi
 
 * [Access Control oparte na rolach](../role-based-access-control/role-assignments-portal.md): wprowadzenie do kontroli RBAC w Azure Portal.
 * Dowiedz się, jak zarządzać dostępem przy użyciu:
-  * [Program PowerShell](../role-based-access-control/role-assignments-powershell.md)
+  * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Interfejs wiersza polecenia platformy Azure](../role-based-access-control/role-assignments-cli.md)
   * [Interfejs API REST](../role-based-access-control/role-assignments-rest.md)
 * [Rozwiązywanie problemów Access Control opartych na rolach](../role-based-access-control/troubleshooting.md): Uzyskaj sugestie dotyczące rozwiązywania typowych problemów.

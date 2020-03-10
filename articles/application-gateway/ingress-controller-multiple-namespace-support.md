@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 83650e7cf46ec1dede5f25e32114d6469bab24be
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795555"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373473"
 ---
 # <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>Włączanie obsługi wielu przestrzeni nazw w klastrze AKS przy użyciu kontrolera Application Gateway transferu danych przychodzących
 
@@ -23,7 +23,7 @@ Począwszy od wersji 0,7 [Azure Application Gateway Kubernetes IngressController
 
 Wersja 0,7 programu AGIC będzie nadal dotyczyć wyłącznie obszaru nazw `default`, chyba że zostanie to jawnie zmienione do co najmniej jednego innego obszaru nazw w konfiguracji Helm (patrz sekcja poniżej).
 
-## <a name="enable-multiple-namespace-support"></a>Włącz obsługę wielu przestrzeni nazw
+## <a name="enable-multiple-namespace-support"></a>Włączanie obsługi wielu przestrzeni nazw
 Aby włączyć obsługę wielu przestrzeni nazw:
 1. Zmodyfikuj plik [Helm-config. YAML](#sample-helm-config-file) w jeden z następujących sposobów:
    - Usuń klucz `watchNamespace` całkowicie z [Helm-config. YAML](#sample-helm-config-file) -AGIC zaobserwuje wszystkie przestrzenie nazw
@@ -83,8 +83,8 @@ spec:
 
 Pomimo tego, że oba zasoby związane z ruchem przychodzącym w celu `www.contoso.com` być kierowane do odpowiednich przestrzeni nazw Kubernetes, tylko jeden z zaplecza może obsłużyć ten ruch. AGIC utworzy konfigurację dla jednego z zasobów na podstawie "pierwsze, pierwsze obsłużone". Jeśli dwa zasoby ingresses są tworzone w tym samym czasie, pierwszeństwo ma ten sam w alfabecie. Z powyższego przykładu będzie można tworzyć ustawienia dla `production` ruchu przychodzącego. Application Gateway zostaną skonfigurowane przy użyciu następujących zasobów:
 
-  - Odbiornik: `fl-www.contoso.com-80`
-  - Reguła routingu: `rr-www.contoso.com-80`
+  - Odbiornik: `fl- www.contoso.com-80`
+  - Reguła routingu: `rr- www.contoso.com-80`
   - Pula zaplecza: `pool-production-contoso-web-service-80-bp-80`
   - Ustawienia protokołu HTTP: `bp-production-contoso-web-service-80-80-websocket-ingress`
   - Sonda kondycji: `pb-production-contoso-web-service-80-websocket-ingress`

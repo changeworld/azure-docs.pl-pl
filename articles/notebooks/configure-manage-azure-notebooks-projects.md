@@ -4,11 +4,11 @@ description: Dowiedz się, jak zarządzać metadanymi projektu, plikami projektu
 ms.topic: how-to
 ms.date: 02/28/2020
 ms.openlocfilehash: 1674effda2cb9bda45f49c91ca618225b0a75f0c
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197695"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360643"
 ---
 # <a name="a-idmanage-and-configure-projects--manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" /> zarządzanie projektami i konfigurowanie ich w programie Azure Notebooks Preview
 
@@ -76,11 +76,11 @@ Każdy element na liście plik projektu zawiera poleceń w menu kontekstowym kli
 | Polecenie | Skrót klawiaturowy | Akcja |
 | --- | --- | --- |
 | Uruchom polecenie | r (lub kliknij przycisk) | Uruchamia plik notesu. Inne typy plików są otwarte do wyświetlenia.  |
-| Kopiuj łącze | Y | Kopiuje łącza do pliku do Schowka. |
+| Kopiuj łącze | {1&gt;y&lt;1} | Kopiuje łącza do pliku do Schowka. |
 | Uruchom w laboratorium Jupyter | "j" | Jest uruchamiany Notes w JupyterLab, który jest bardziej zorientowanego na dewelopera interfejsu niż zazwyczaj zapewnia Jupyter. |
 | Wersja zapoznawcza | p | Otwiera podgląd pliku; w formacie HTML w przypadku notesów korzystania z wersji zapoznawczej jest tylko do odczytu renderowania notesu. Aby uzyskać więcej informacji, zobacz sekcję [wersja zapoznawcza](#preview) . |
 | Edytuj plik | Czy mogę | Zostanie otwarty plik do edycji. |
-| Pobieranie | d. | Pobieranie pliku zip, który zawiera plik lub zawartość folderu. |
+| Pobieranie | {1&gt;d&lt;1} | Pobieranie pliku zip, który zawiera plik lub zawartość folderu. |
 | Zmiana nazwy | a | Wyświetla monit o nową nazwę dla pliku lub folderu. |
 | Usuń | x | Monituje o potwierdzenie, a następnie trwale usuwa plik z projektu. Usunięcie nie może być cofnięte. |
 | Move | ś | Przenosi plik do innego folderu, w tym samym projekcie. |
@@ -93,10 +93,10 @@ Na stronie (wersja zapoznawcza) obsługuje kilka poleceń narzędzi za pomocą s
 
 | Polecenie | Skrót klawiaturowy | Akcja |
 | --- | --- | --- |
-| Udostępnij | s | Wyświetla udostępniania okna podręcznego, z którego można uzyskać link, Udostępnij w mediach społecznościowych, uzyskać osadzenia HTML i Wyślij wiadomość e-mail. |
+| Udział | s | Wyświetla udostępniania okna podręcznego, z którego można uzyskać link, Udostępnij w mediach społecznościowych, uzyskać osadzenia HTML i Wyślij wiadomość e-mail. |
 | Klonowanie | c  | Klonuj Notes do Twojego konta. |
 | Uruchom polecenie | r | Uruchamia Notes, jeśli możesz to zrobić. |
-| Pobieranie | d. | Pobiera kopię notesu. |
+| Pobieranie | {1&gt;d&lt;1} | Pobiera kopię notesu. |
 
 ## <a name="configure-the-project-environment"></a>Konfigurowanie środowiska programu project
 
