@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.openlocfilehash: 4d729a0117c7c409d1a3e0c3fd440aed96153203
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75893332"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396527"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Kopiowanie danych z usługi Amazon RedShift przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -24,7 +24,7 @@ ms.locfileid: "75893332"
 > * [Bieżąca wersja](connector-amazon-redshift.md)
 
 
-W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z usługi Amazon RedShift. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
+W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z usługi Amazon RedShift. Jest ona oparta na [przeglądzie działania kopiowania](copy-activity-overview.md) , która przedstawia ogólne omówienie działania kopiowania.
 
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
@@ -33,7 +33,7 @@ Ten łącznik Amazon RedShift jest obsługiwany dla następujących działań:
 - [Działanie kopiowania](copy-activity-overview.md) z [obsługiwaną macierzą źródłową/ujścia](copy-activity-overview.md)
 - [Działanie Lookup](control-flow-lookup-activity.md)
 
-Dane z usługi Amazon RedShift można skopiować do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
+Dane z usługi Amazon RedShift można skopiować do dowolnego obsługiwanego magazynu danych ujścia. Listę magazynów danych obsługiwanych jako źródła/ujścia przez działanie kopiowania można znaleźć w tabeli [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) .
 
 W każdym przypadku ten łącznik usługi Amazon RedShift obsługuje pobieranie danych z usługi RedShift przy użyciu zapytania lub wbudowanej obsługi ZWALNIAnia RedShift.
 
@@ -57,13 +57,13 @@ Dla połączonej usługi Amazon RedShift są obsługiwane następujące właści
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type musi mieć wartość: **AmazonRedshift** | Tak |
-| serwer |Adres IP lub nazwa hosta serwera Amazon RedShift. |Tak |
-| port |Numer portu TCP używanego przez serwer Amazon RedShift do nasłuchiwania połączeń klientów. |Nie, wartość domyślna to 5439 |
+| typ | Właściwość Type musi mieć wartość: **AmazonRedshift** | Tak |
+| zarządzania |Adres IP lub nazwa hosta serwera Amazon RedShift. |Tak |
+| Port |Numer portu TCP używanego przez serwer Amazon RedShift do nasłuchiwania połączeń klientów. |Nie, wartość domyślna to 5439 |
 | baza danych |Nazwa bazy danych Amazon RedShift. |Tak |
 | nazwa użytkownika |Nazwa użytkownika, który ma dostęp do bazy danych programu. |Tak |
-| hasło |Hasło konta użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Tak |
-| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. (Jeśli Twój magazyn danych znajduje się w sieci prywatnej), można użyć środowiska Azure Integration Runtime lub środowiskiem Integration Runtime. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
+| hasło |Hasło konta użytkownika. Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory, lub [odwoływać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). |Tak |
+| connectVia | [Integration Runtime](concepts-integration-runtime.md) używany do nawiązywania połączenia z magazynem danych. (Jeśli Twój magazyn danych znajduje się w sieci prywatnej), można użyć środowiska Azure Integration Runtime lub środowiskiem Integration Runtime. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
 
 **Przykład:**
 
@@ -93,15 +93,15 @@ Dla połączonej usługi Amazon RedShift są obsługiwane następujące właści
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych Amazon RedShift.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz artykuł [zestawy danych](concepts-datasets-linked-services.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych Amazon RedShift.
 
 Aby skopiować dane z usługi Amazon RedShift, obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **AmazonRedshiftTable** | Tak |
-| schema | Nazwa schematu. |Nie (Jeśli określono parametr "query" w źródle działania)  |
-| table | Nazwa tabeli. |Nie (Jeśli określono parametr "query" w źródle działania)  |
+| typ | Właściwość Type zestawu danych musi być ustawiona na wartość: **AmazonRedshiftTable** | Tak |
+| schemat | Nazwa schematu. |Nie (Jeśli określono parametr "query" w źródle działania)  |
+| tabela | Nazwa tabeli. |Nie (Jeśli określono parametr "query" w źródle działania)  |
 | tableName | Nazwa tabeli ze schematem. Ta właściwość jest obsługiwana w celu zapewnienia zgodności z poprzednimi wersjami. Użyj `schema` i `table` dla nowego obciążenia. | Nie (Jeśli określono parametr "query" w źródle działania) |
 
 **Przykład**
@@ -126,16 +126,16 @@ Jeśli używasz zestawu danych `RelationalTable` z określonym typem, nadal jest
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło Amazon RedShift.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz artykuł [potoki](concepts-pipelines-activities.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez źródło Amazon RedShift.
 
 ### <a name="amazon-redshift-as-source"></a>Amazon RedShift jako źródło
 
-Aby skopiować dane z Amazon RedShift, ustaw typ źródła w działaniu Copy na **AmazonRedshiftSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
+Aby skopiować dane z Amazon RedShift, ustaw typ źródła w działaniu Copy na **AmazonRedshiftSource**. W sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type źródła działania Copy musi być ustawiona na wartość: **AmazonRedshiftSource** | Tak |
-| query |Użyj zapytania niestandardowego do odczytywania danych. Na przykład: select * from MyTable. |Nie (Jeśli określono parametr "tableName" w zestawie danych) |
+| typ | Właściwość Type źródła działania Copy musi być ustawiona na wartość: **AmazonRedshiftSource** | Tak |
+| zapytanie |Użyj zapytania niestandardowego do odczytywania danych. Na przykład: select * from MyTable. |Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 | redshiftUnloadSettings | Grupa właściwości podczas korzystania z narzędzia Amazon RedShift UNLOAD. | Nie |
 | s3LinkedServiceName | Odwołuje się do usługi Amazon S3, która ma być używana jako magazyn tymczasowy, określając nazwę połączonej usług typu "AmazonS3". | Tak, jeśli używasz opcji UNLOAD |
 | bucketName | Wskaż zasobnik S3, aby przechowywać dane pośrednie. Jeśli nie zostanie podany, Usługa Data Factory automatycznie wygeneruje ją.  | Tak, jeśli używasz opcji UNLOAD |
@@ -214,21 +214,21 @@ W przypadku tego przykładowego przypadku użycia działanie Copy powoduje odła
 
 ## <a name="data-type-mapping-for-amazon-redshift"></a>Mapowanie typu danych dla Amazon RedShift
 
-Podczas kopiowania danych z usługi Amazon RedShift następujące mapowania są używane z typów danych Amazon RedShift do Azure Data Factory danych pośrednich. Zobacz [schemat i dane mapowanie typu](copy-activity-schema-and-type-mapping.md) Aby poznać sposób działania kopiowania mapowania typ schematu i danych źródła do ujścia.
+Podczas kopiowania danych z usługi Amazon RedShift następujące mapowania są używane z typów danych Amazon RedShift do Azure Data Factory danych pośrednich. Zobacz [Mapowanie schematu i typu danych](copy-activity-schema-and-type-mapping.md) , aby dowiedzieć się, jak działanie kopiowania mapuje schemat źródłowy i typ danych do ujścia.
 
 | Amazon RedShift — typ danych | Typ danych tymczasowych fabryki danych |
 |:--- |:--- |
 | BIGINT |Int64 |
 | BOOLEAN |Ciąg |
 | DELIKATN |Ciąg |
-| DATE |Data i godzina |
-| DECIMAL |Decimal |
-| DOUBLE PRECISION |Double |
+| DATE |DateTime |
+| DECIMAL |Dziesiętna |
+| DOUBLE PRECISION |Podwójne |
 | INTEGER |Int32 |
-| REAL |Pojedyncze |
+| REAL |Single |
 | SMALLINT |Int16 |
 | TEXT |Ciąg |
-| TIMESTAMP |Data i godzina |
+| TIMESTAMP |DateTime |
 | VARCHAR |Ciąg |
 
 ## <a name="lookup-activity-properties"></a>Właściwości działania Lookup
@@ -236,4 +236,4 @@ Podczas kopiowania danych z usługi Amazon RedShift następujące mapowania są 
 Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (wyszukiwanie](control-flow-lookup-activity.md)).
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Listę magazynów danych obsługiwanych jako źródła i ujścia przez działanie kopiowania w Azure Data Factory można znaleźć w temacie [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

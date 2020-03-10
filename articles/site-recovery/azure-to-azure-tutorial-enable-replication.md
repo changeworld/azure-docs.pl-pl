@@ -6,20 +6,20 @@ ms.date: 1/24/2020
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 979b390f65363b43f33ce2f09d26844c3cc1a2e8
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759793"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379891"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure
 
 Usługa [Azure Site Recovery](site-recovery-overview.md) przyczynia się do realizacji strategii odzyskiwania po awarii przez zarządzanie replikacją, przełączaniem do trybu failover i powrotem po awarii maszyn lokalnych oraz maszyn wirtualnych platformy Azure, a także orkiestrację tych procesów.
 
-W tym samouczku pokazano, jak skonfigurować odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure przez replikowanie ich z jednego regionu świadczenia usługi Azure do innego. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+W tym samouczku pokazano, jak skonfigurować odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure przez replikowanie ich z jednego regionu świadczenia usługi Azure do innego. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Tworzenie magazynu usługi Recovery Services
+> * Tworzenie magazynu Usług odzyskiwania
 > * Sprawdzanie ustawień zasobów docelowych
 > * Konfigurowanie wychodzącej łączności sieciowej dla maszyn wirtualnych
 > * Włączanie replikacji maszyny wirtualnej
@@ -34,11 +34,11 @@ W celu ukończenia tego samouczka:
 - Zapoznaj się ze [składnikami i architekturą scenariusza](concepts-azure-to-azure-architecture.md).
 - Zapoznaj się z wymaganiami dotyczącymi [obsługi](site-recovery-support-matrix-azure-to-azure.md) przed rozpoczęciem.
 
-## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu usługi Recovery Services
+## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu Usług odzyskiwania
 
 Magazyn można utworzyć w dowolnym regionie, z wyjątkiem regionu źródłowego.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. W menu Azure Portal lub na stronie **głównej** wybierz pozycję **Utwórz zasób**. Następnie wybierz pozycję **IT & narzędzia do zarządzania** > **kopia zapasowa i Site Recovery**.
 1. W polu **Nazwa** wprowadź przyjazną nazwę identyfikującą magazyn. Jeśli masz więcej niż jedną subskrypcję, wybierz jedną z nich.
 1. Utwórz grupę zasobów lub wybierz istniejącą grupę. Określ region platformy Azure. Aby sprawdzić obsługiwane regiony, zobacz sekcję dotyczącą dostępności geograficznej w temacie [Szczegóły cennika usługi Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/).
@@ -46,7 +46,7 @@ Magazyn można utworzyć w dowolnym regionie, z wyjątkiem regionu źródłowego
 
    ![Nowy magazyn](./media/azure-to-azure-tutorial-enable-replication/new-vault-settings.png)
 
-Nowy magazyn zostanie dodany do sekcji **Pulpit nawigacyjny** w obszarze **Wszystkie zasoby** oraz pojawi się na stronie głównej **Magazyny usługi Recovery Services**.
+Nowy magazyn zostanie dodany do sekcji **Pulpit nawigacyjny** w obszarze **Wszystkie zasoby** oraz pojawi się na stronie głównej **Magazyny usług Recovery Services**.
 
 ## <a name="verify-target-resource-settings"></a>Sprawdzanie ustawień zasobów docelowych
 

@@ -17,11 +17,11 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8a49bc979923bf52d099e30615910c5bdb0601b6
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591935"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395296"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Przygotowanie infrastruktury platformy Azure dla oprogramowania SAP HA przy użyciu klastra trybu failover systemu Windows i dysku udostępnionego dla oprogramowania SAP ASCS/SCS
 
@@ -554,7 +554,7 @@ Aby dodać wpisy rejestru na obu węzłach klastra wystąpienia SAP ASCS/SCS, na
 | --- | --- |
 | Nazwa zmiennej |`KeepAliveTime` |
 | Typ zmiennej |REG_DWORD (liczba dziesiętna) |
-| Value |120000 |
+| Wartość |120000 |
 | Link do dokumentacji |[https://technet.microsoft.com/library/cc957549.aspx](https://technet.microsoft.com/library/cc957549.aspx) |
 
 **Tabela 3:** Zmiana pierwszego parametru TCP/IP
@@ -565,7 +565,7 @@ Następnie Dodaj ten wpis rejestru systemu Windows na obu węzłach klastra syst
 | --- | --- |
 | Nazwa zmiennej |`KeepAliveInterval` |
 | Typ zmiennej |REG_DWORD (liczba dziesiętna) |
-| Value |120000 |
+| Wartość |120000 |
 | Link do dokumentacji |[https://technet.microsoft.com/library/cc957548.aspx](https://technet.microsoft.com/library/cc957548.aspx) |
 
 **Tabela 4:** Zmień drugi parametr TCP/IP

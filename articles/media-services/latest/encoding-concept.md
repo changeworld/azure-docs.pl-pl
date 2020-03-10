@@ -13,18 +13,21 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 6a134d2bdfe7f370503b80703933ff646970d976
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7f3825a2d87d5948de4bb4a9b86be8e3050f2100
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981104"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78893108"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Kodowanie wideo i audio przy użyciu Media Services
 
 Termin kodowanie w Media Services ma zastosowanie do procesu konwertowania plików zawierających cyfrowe wideo i/lub dźwięk z jednego formatu standardowego na inny, w celu zmniejszenia rozmiaru plików i/lub (b) tworzenia formatu zgodnego z szeroką gamą urządzeń i aplikacji. Ten proces jest również nazywany kompresją wideo lub transkodowaniem. Zapoznaj się z [kompresją danych](https://en.wikipedia.org/wiki/Data_compression) i [kodowaniem i transkodowaniem?](https://www.streamingmedia.com/Articles/Editorial/What-Is-/What-Is-Encoding-and-Transcoding-75025.aspx) , aby uzyskać więcej informacji na temat pojęć.
 
 Wideo są zwykle dostarczane do urządzeń i aplikacji przez [pobieranie progresywne](https://en.wikipedia.org/wiki/Progressive_download) lub [przesyłanie strumieniowe z adaptacyjną szybkością transmisji bitów](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming).
+
+> [!IMPORTANT]
+> W Media Services nie są naliczane opłaty za anulowane lub błędne zadania. Na przykład zadanie, które osiągnęło postęp 50% i anulowane, nie jest rozliczane o 50% minut zadań. Opłata jest naliczana tylko za ukończone zadania.
 
 * Aby zapewnić pobieranie progresywne, można użyć Azure Media Services do przekonwertowania pliku multimediów cyfrowych (Mezzanine) do pliku [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) , który zawiera wideo zakodowane za pomocą kodera-dekoder [H. 264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) , i dźwięk, który został zakodowany za pomocą kodera-dekoder [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) . Ten plik MP4 jest zapisywana w elemencie zawartości na koncie magazynu. Aby pobrać plik bezpośrednio, można użyć interfejsów API lub zestawów SDK usługi Azure Storage (na przykład [interfejsu API REST magazynu](../../storage/common/storage-rest-api-auth.md) lub [zestawu SDK platformy .NET](../../storage/blobs/storage-quickstart-blobs-dotnet.md)). Jeśli w magazynie został utworzony zasób wyjściowy z określoną nazwą kontenera, Użyj tej lokalizacji. W przeciwnym razie możesz użyć Media Services, aby [wyświetlić listę adresów URL kontenerów zasobów](https://docs.microsoft.com/rest/api/media/assets/listcontainersas). 
 * Aby przygotować zawartość do dostarczenia przez przesyłanie strumieniowe z adaptacyjną szybkością transmisji bitów, plik Mezzanine musi być zakodowany na wielu szybkościach transmisji bitów (wysoka do niskich). Aby zapewnić płynne przejście do jakości, rozdzielczość wideo jest obniżana, ponieważ zmniejsza się szybkość transmisji bitów. Powoduje to, że jest to nazywane drabinem kodowania — tabelą rozdzielczości i szybkości transmisji bitów (zobacz [automatycznie wygenerowana drabina szybkość transmisji bitów](autogen-bitrate-ladder.md)). Media Services do kodowania plików mezzanine przy użyciu wielu szybkości transmisji bitów. W tym celu uzyskasz zestaw plików MP4 i skojarzonych z nimi plików konfiguracji przesyłania strumieniowego, które są zapisywane do zasobu na koncie magazynu. Można następnie użyć funkcji tworzenia [pakietów dynamicznych](dynamic-packaging-overview.md) w Media Services, aby dostarczyć wideo za pośrednictwem protokołów przesyłania strumieniowego, takich jak [MPEG-kreska](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) i [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming). Wymaga to utworzenia [lokalizatora przesyłania strumieniowego](streaming-locators-concept.md) i adresów URL przesyłania strumieniowego, które są zgodne z obsługiwanymi protokołami, które można następnie przełączać do urządzeń/aplikacji na podstawie ich możliwości.
@@ -41,7 +44,7 @@ Aby kodować z Media Services v3, należy utworzyć [transformację](https://doc
 
 Podczas kodowania za pomocą usługi Media Services, umożliwia wstępne Poinformuj kodera w przetwarzaniu multimedialnych plików wejściowych. Na przykład można określić rozdzielczość wideo i/lub liczbę kanałów audio, który ma w zakodowanej zawartości.
 
-Użytkownik może szybko rozpocząć pracę z jedną z zalecanych wbudowane ustawienia wstępne, oparte na najlepszych branżowych rozwiązań lub można utworzyć niestandardowe ustawienie wstępne pod kątem określonych wymagań scenariusza lub urządzenia. Aby uzyskać więcej informacji, zobacz [kodowanie przy użyciu niestandardowej transformacji](customize-encoder-presets-how-to.md).
+Użytkownik może szybko rozpocząć pracę z jedną z zalecanych wbudowane ustawienia wstępne, oparte na najlepszych branżowych rozwiązań lub można utworzyć niestandardowe ustawienie wstępne pod kątem określonych wymagań scenariusza lub urządzenia. Aby uzyskać więcej informacji, zobacz [kodowanie przy użyciu transformacji niestandardowej](customize-encoder-presets-how-to.md).
 
 Począwszy od stycznia 2019, gdy kodowanie przy użyciu Media Encoder Standard do tworzenia plików MP4, nowy plik MPI jest generowany i dodawany do wyjściowego elementu zawartości. Ten plik MPI jest przeznaczony do poprawiania wydajności dla scenariuszy [dynamicznego tworzenia pakietów](dynamic-packaging-overview.md) i przesyłania strumieniowego.
 
@@ -135,6 +138,12 @@ W Media Services v3, ustawienia wstępne są jednoznacznie określonymi jednostk
 ## <a name="scaling-encoding-in-v3"></a>Skalowanie kodowania w wersji 3
 
 Aby skalować przetwarzanie multimediów, zobacz [skalowanie przy użyciu interfejsu wiersza polecenia](media-reserved-units-cli-how-to.md).
+
+## <a name="billing"></a>Rozliczenia
+
+W Media Services nie są naliczane opłaty za anulowane lub błędne zadania. Na przykład zadanie, które osiągnęło postęp 50% i anulowane, nie jest rozliczane o 50% minut zadań. Opłata jest naliczana tylko za ukończone zadania.
+
+Aby uzyskać więcej informacji, zobacz [cennik](https://azure.microsoft.com/pricing/details/media-services/).
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Zadawaj pytania, Przekaż opinię, uzyskaj aktualizacje
 

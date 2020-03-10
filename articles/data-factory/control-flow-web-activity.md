@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.openlocfilehash: c700c9786f3bec4c79cae904a95deb5fd1c670b4
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110015"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394477"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Aktywność sieci Web w Azure Data Factory
 Działanie WebActivity może być używane do wywoływania niestandardowego punktu końcowego REST z potoku usługi Data Factory. Można przekazywać zestawy danych i połączone usługi do zużycia i dostępu przez działanie.
@@ -63,17 +63,17 @@ Działanie WebActivity może być używane do wywoływania niestandardowego punk
 
 ## <a name="type-properties"></a>Właściwości typu
 
-Właściwość | Opis | Dozwolone wartości | Wymagany
+Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
-name | Nazwa działania sieci Web | Ciąg | Yes
-type | Musi być ustawiona na **webactivity**. | Ciąg | Yes
-method | Metoda interfejsu API REST dla docelowego punktu końcowego. | Ciąg. <br/><br/>Obsługiwane typy: "GET", "POST", "PUT" | Yes
-url | Docelowy punkt końcowy i ścieżka | Ciąg (lub wyrażenie z typem ResultType ciągu). Działanie zostanie przekroczenie limitu czasu na 1 minutę z błędem, jeśli nie otrzyma odpowiedzi z punktu końcowego. | Yes
+{1&gt;nazwa&lt;1} | Nazwa działania sieci Web | Ciąg | Tak
+typ | Musi być ustawiona na **webactivity**. | Ciąg | Tak
+metoda | Metoda interfejsu API REST dla docelowego punktu końcowego. | Ciąg. <br/><br/>Obsługiwane typy: "GET", "POST", "PUT" | Tak
+url | Docelowy punkt końcowy i ścieżka | Ciąg (lub wyrażenie z typem ResultType ciągu). Działanie zostanie przekroczenie limitu czasu na 1 minutę z błędem, jeśli nie otrzyma odpowiedzi z punktu końcowego. | Tak
 nagłówki | Nagłówki wysyłane do żądania. Na przykład, aby ustawić język i typ na żądanie: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`. | Ciąg (lub wyrażenie z typem ResultType ciągu) | Tak, nagłówek Content-Type jest wymagany. `"headers":{ "Content-Type":"application/json"}`
 jednostce | Reprezentuje ładunek, który jest wysyłany do punktu końcowego.  | Ciąg (lub wyrażenie z typem ResultType ciągu). <br/><br/>Zobacz schemat ładunku żądania w sekcji [schematu ładunku żądania](#request-payload-schema) . | Wymagane dla metod POST/PUT.
 uwierzytelnianie | Metoda uwierzytelniania używana do wywoływania punktu końcowego. Obsługiwane typy to "podstawowa" lub "ClientCertificate". Aby uzyskać więcej informacji, zobacz sekcję [uwierzytelnianie](#authentication) . Jeśli uwierzytelnianie nie jest wymagane, Wyklucz tę właściwość. | Ciąg (lub wyrażenie z typem ResultType ciągu) | Nie
-datasets | Lista zestawów danych przeniesiona do punktu końcowego. | Tablica odwołań do zestawu danych. Może być pustą tablicą. | Yes
-linkedServices | Lista połączonych usług przeniesiona do punktu końcowego. | Tablica odwołań do połączonych usług. Może być pustą tablicą. | Yes
+zbiory danych | Lista zestawów danych przeniesiona do punktu końcowego. | Tablica odwołań do zestawu danych. Może być pustą tablicą. | Tak
+linkedServices | Lista połączonych usług przeniesiona do punktu końcowego. | Tablica odwołań do połączonych usług. Może być pustą tablicą. | Tak
 
 > [!NOTE]
 > Punkty końcowe REST, które wywołuje działanie sieci Web, muszą zwracać odpowiedź typu JSON. Działanie zostanie przekroczenie limitu czasu na 1 minutę z błędem, jeśli nie otrzyma odpowiedzi z punktu końcowego.
@@ -108,7 +108,7 @@ Określ nazwę użytkownika i hasło, które mają być używane z uwierzytelnia
 }
 ```
 
-### <a name="client-certificate"></a>certyfikat klienta
+### <a name="client-certificate"></a>Certyfikat klienta
 
 Określ zawartość pliku PFX i hasło w formacie base64.
 

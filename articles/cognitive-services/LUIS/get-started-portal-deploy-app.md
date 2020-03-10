@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: diberry
 ms.openlocfilehash: 0ee2b33aa3388b3cb99aa42c338ded800c9679a4
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772492"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393711"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Szybki Start: wdrażanie aplikacji w portalu LUIS
 
@@ -39,7 +39,7 @@ Tworzysz zasób punktu końcowego przewidywania w Azure Portal. Tego zasobu nale
 
    |Ustawienie|Wartość|Przeznaczenie|
    |--|--|--|
-   |Nazwa|`my-luis-resource`|Nazwa zasobu platformy Azure. Ta nazwa jest potrzebna podczas przypisywania zasobu do aplikacji w portalu LUIS.|
+   |Name (Nazwa)|`my-luis-resource`|Nazwa zasobu platformy Azure. Ta nazwa jest potrzebna podczas przypisywania zasobu do aplikacji w portalu LUIS.|
    |Subskrypcja|Twoja subskrypcja|Wybierz jedną z subskrypcji skojarzonych z Twoim kontem.|
    |Grupa zasobów|`my-resource-group`|Utwórz nową grupę zasobów dla wszystkich zasobów usługi poznawczej. Po zakończeniu pracy z zasobami możesz usunąć grupę zasobów, aby oczyścić subskrypcję. |
    |Lokalizacja autorstwa|**Zachodnie stany USA**|Region świadczenia usługi Azure na potrzeby tworzenia.|
@@ -67,7 +67,7 @@ Za każdym razem, gdy tworzysz nowy zasób dla LUIS, musisz przypisać zasób do
 
     ![Aby dodać zasób przewidywania LUIS, wybierz pozycję Dodaj zasób predykcyjny](./media/get-started-portal-deploy-app/azure-resources-add-prediction-resource.png)
 
-1. Wybierz dzierżawę, subskrypcję i nazwę zasobu. Wybierz **przypisany zasób**.
+1. Wybierz dzierżawę, subskrypcję i nazwę zasobu. Wybierz pozycję **Przypisz zasób**.
 
    ![Przydziel zasób do aplikacji](./media/get-started-portal-deploy-app/assign-resource.png)
 

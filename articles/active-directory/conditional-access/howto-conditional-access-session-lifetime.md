@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb094d04a7210d76a98f3e47af750e49b617e493
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 6e9c0c88064c00c97de7dc58a500910e81c04eef
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77195066"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671870"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurowanie zarządzania sesjami uwierzytelniania przy użyciu dostępu warunkowego
 
@@ -37,7 +37,7 @@ Częstotliwość logowania określa czas, po którym użytkownik zostanie popros
 
 Domyślna konfiguracja Azure Active Directory (Azure AD) dla częstotliwości logowania użytkownika jest oknem kroczącym 90 dni. Monitowanie użytkowników o poświadczenia często wygląda na to, że jest to rozsądne działanie, ale może się to wiązać z atakami: Użytkownicy, którzy są przeszkoleni, aby wprowadzić swoje poświadczenia bez względu na to, że mogą przypadkowo dostarczyć je do złośliwego monitu o poświadczenia.
 
-Może to spowodować, że dźwięk nie zostanie poproszony o ponowne zalogowanie się użytkownika, w rzeczywistości wszystkie zasady IT odwołują sesję. Niektóre przykłady obejmują (ale nie ograniczone do) zmianę hasła, niezgodne urządzenie lub wyłączone konto. Możesz również jawnie [odwołać sesje użytkowników przy użyciu programu PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). Domyślna konfiguracja usługi Azure AD to "nie Monituj użytkowników o podanie swoich poświadczeń, jeśli zabezpieczenia stan ich sesji nie zostały zmienione".
+Może to spowodować, że dźwięk nie zostanie poproszony o ponowne zalogowanie się użytkownika, w rzeczywistości wszystkie zasady IT odwołują sesję. Niektóre przykłady obejmują (ale nie ograniczone do) zmianę hasła, niezgodne urządzenie lub wyłączone konto. Możesz również jawnie [odwołać sesje użytkowników przy użyciu programu PowerShell](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). Domyślna konfiguracja usługi Azure AD to "nie Monituj użytkowników o podanie swoich poświadczeń, jeśli zabezpieczenia stan ich sesji nie zostały zmienione".
 
 Ustawienie częstotliwości logowania działa z aplikacjami, które mają wdrożone protokoły OAUTH2 lub OIDC zgodnie ze standardami. Większość aplikacji natywnych firmy Microsoft dla systemów Windows, Mac i Mobile, w tym z uwzględnieniem następujących aplikacji sieci Web, jest zgodnych z tym ustawieniem.
 
@@ -55,13 +55,13 @@ Ustawienie częstotliwości logowania działa z aplikacjami, które mają wdroż
 
 W przypadku przyłączenia do usługi Azure AD hybrydowej usługi Azure AD lub zarejestrowanych urządzeń usługi Azure AD, gdy użytkownik odblokowuje urządzenie lub loguje się interaktywnie, to zdarzenie będzie również spełniało zasady częstotliwości logowania. W następującej 2 Przykładowa częstotliwość logowania użytkownika jest ustawiona na 1 godzinę:
 
-Przykład 1:
+Przykład 1.
 
 - W dniu 00:00 użytkownik loguje się do urządzenia dołączonego do usługi Azure AD systemu Windows 10 i zaczyna pracę nad dokumentem przechowywanym w usłudze SharePoint Online.
 - Użytkownik kontynuuje pracę nad tym samym dokumentem na swoim urządzeniu przez godzinę.
 - W dniu 01:00 użytkownik jest monitowany o ponowne zalogowanie się na podstawie wymagań dotyczących częstotliwości logowania w zasadach dostępu warunkowego skonfigurowanych przez administratora.
 
-Przykład 2:
+Przykład 2.
 
 - W dniu 00:00 użytkownik loguje się do urządzenia dołączonego do usługi Azure AD systemu Windows 10 i zaczyna pracę nad dokumentem przechowywanym w usłudze SharePoint Online.
 - O godzinie 00:30 użytkownik otrzymuje i zablokuje zablokowanie urządzenia.
@@ -72,7 +72,7 @@ Przykład 2:
 
 W trwałej sesji przeglądarki użytkownicy mogą pozostać zalogowani po zamknięciu i ponownym otwarciu okna przeglądarki.
 
-Wartość domyślna usługi Azure AD na potrzeby trwałości sesji przeglądarki umożliwia użytkownikom na urządzeniach osobistych wybieranie, czy sesja ma być utrwalana, pokazując "pozostania w rejestracji". Monituj po pomyślnym uwierzytelnieniu. Jeśli trwałość przeglądarki jest skonfigurowana w AD FS przy użyciu wskazówek w artykule [AD FS ustawienia logowania](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
+Wartość domyślna usługi Azure AD na potrzeby trwałości sesji przeglądarki umożliwia użytkownikom na urządzeniach osobistych wybieranie, czy sesja ma być utrwalana, pokazując "pozostania w rejestracji". Monituj po pomyślnym uwierzytelnieniu. Jeśli trwałość przeglądarki jest skonfigurowana w AD FS przy użyciu wskazówek w artykule [AD FS ustawienia logowania](/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
 )jednokrotnego, firma Microsoft będzie przestrzegać tych zasad i utrzymywać również sesję usługi Azure AD. Możesz również określić, czy użytkownicy w dzierżawie zobaczą "pozostania w Twojej rejestracji"? Monituj o zmianę odpowiedniego ustawienia w okienku znakowanie firmowe w Azure Portal przy użyciu wskazówek w artykule [Dostosowywanie strony logowania usługi Azure AD](../fundamentals/customize-branding.md).
 
 ## <a name="configuring-authentication-session-controls"></a>Konfigurowanie kontrolek sesji uwierzytelniania

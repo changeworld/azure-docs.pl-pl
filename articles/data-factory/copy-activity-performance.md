@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/24/2019
 ms.openlocfilehash: 28d0da369083d75bc175111d808828e186a366fc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444135"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355805"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Przewodnik dotyczący wydajności i skalowalności działania kopiowania
 
@@ -115,9 +115,9 @@ Wykonaj następujące kroki, aby dostroić wydajność usługi Azure Data Factor
 
    Ponadto należy pamiętać o następujących funkcjach optymalizacji wydajności:
 
-   - [Kopiuj równoległe](#parallel-copy)
+   - [Kopiowanie równoległe](#parallel-copy)
    - [Jednostki integracji danych](#data-integration-units)
-   - [Kopiowania przejściowego](#staged-copy)
+   - [Kopia przygotowana](#staged-copy)
    - [Samoobsługowa skalowalność środowiska Integration Runtime](concepts-integration-runtime.md#self-hosted-integration-runtime)
 
 5. **Rozwiń konfigurację do całego zestawu danych.** Gdy wyniki wykonywania i wydajność są zadowalające, można rozwinąć definicję i potok, aby pokryć cały zestaw danych.
@@ -126,9 +126,9 @@ Wykonaj następujące kroki, aby dostroić wydajność usługi Azure Data Factor
 
 Azure Data Factory zapewnia następujące funkcje optymalizacji wydajności:
 
-- [Kopiuj równoległe](#parallel-copy)
+- [Kopiowanie równoległe](#parallel-copy)
 - [Jednostki integracji danych](#data-integration-units)
-- [Kopiowania przejściowego](#staged-copy)
+- [Kopia przygotowana](#staged-copy)
 
 ### <a name="data-integration-units"></a>Jednostki integracji danych
 
@@ -144,7 +144,7 @@ Dozwolony DIUs do upoważnienia do uruchomienia działania kopiowania jest z **p
 | Kopiuj dane do Azure SQL Database lub Azure Cosmos DB |Od 4 do 16 w zależności od warstwy Azure SQL Database ujścia lub Cosmos DB (liczba DTU/jednostek ru) |
 | Wszystkie inne scenariusze kopiowania | 4 |
 
-Aby zastąpić to ustawienie domyślne, należy określić wartość dla **dataIntegrationUnits** właściwości w następujący sposób. *Rzeczywista liczba DIUs* używany w czasie wykonywania operacji kopiowania jest równa lub mniejsza niż skonfigurowana wartość, w zależności od wzorca usługi danych.
+Aby zastąpić to ustawienie domyślne, określ wartość właściwości **dataIntegrationUnits** w następujący sposób. *Rzeczywista liczba DIUs* , których operacja kopiowania używa w czasie wykonywania, jest równa lub mniejsza niż skonfigurowana wartość, w zależności od wzorca danych.
 
 Można zobaczyć DIUs używane dla każdej kopii przebiegu w danych wyjściowych działania kopiowania podczas monitorowania uruchomienia działania. Aby uzyskać więcej informacji, zobacz [monitorowanie aktywności kopiowania](copy-activity-overview.md#monitoring).
 
@@ -224,7 +224,7 @@ Aby kontrolować obciążenie maszyn, które obsługują magazyny danych, lub do
 
 Podczas kopiowania danych z magazynu danych źródłowych do magazynu danych ujścia, można użyć magazynu obiektów Blob jako tymczasowego magazynu przejściowego. Przemieszczania jest szczególnie użyteczna w następujących przypadkach:
 
-- **Chcesz pozyskać dane z różnych magazynów danych do SQL Data Warehouse za pośrednictwem bazy.** Usługa SQL Data Warehouse używa programu PolyBase jako mechanizm o wysokiej przepływności ładowanie dużej ilości danych do usługi SQL Data Warehouse. Dane źródłowe muszą znajdować się w magazynie obiektów blob lub Azure Data Lake Store i muszą spełniać dodatkowe kryteria. Podczas ładowania danych z magazynem danych innych niż usługi Blob storage lub Azure Data Lake Store, możesz aktywować dane kopiowanie za pośrednictwem tymczasowego przejściowego magazynu obiektów Blob. W takim przypadku Azure Data Factory wykonuje wymagane przekształcenia danych, aby upewnić się, że spełnia on wymagania bazy. Następnie używa programu PolyBase do ładowania danych do usługi SQL Data Warehouse wydajnie. Aby uzyskać więcej informacji, zobacz [przy użyciu technologii PolyBase do ładowania danych do usługi Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse).
+- **Chcesz pozyskać dane z różnych magazynów danych do SQL Data Warehouse za pośrednictwem bazy.** Usługa SQL Data Warehouse używa programu PolyBase jako mechanizm o wysokiej przepływności ładowanie dużej ilości danych do usługi SQL Data Warehouse. Dane źródłowe muszą znajdować się w magazynie obiektów blob lub Azure Data Lake Store i muszą spełniać dodatkowe kryteria. Podczas ładowania danych z magazynem danych innych niż usługi Blob storage lub Azure Data Lake Store, możesz aktywować dane kopiowanie za pośrednictwem tymczasowego przejściowego magazynu obiektów Blob. W takim przypadku Azure Data Factory wykonuje wymagane przekształcenia danych, aby upewnić się, że spełnia on wymagania bazy. Następnie używa programu PolyBase do ładowania danych do usługi SQL Data Warehouse wydajnie. Aby uzyskać więcej informacji, zobacz [Korzystanie z bazy danych w celu ładowania do Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse).
 - **Czasami trwa przeprowadzenie hybrydowego przenoszenia danych (czyli kopiowania z lokalnego magazynu danych do magazynu danych w chmurze) przez wolne połączenie sieciowe.** Aby zwiększyć wydajność, można użyć kopii przygotowanej do skompresowania danych w środowisku lokalnym, co pozwala na przenoszenie danych do tymczasowego magazynu danych w chmurze. Następnie można zdekompresować dane w magazynie przemieszczania przed załadowaniem do docelowego magazynu danych.
 - **Nie chcesz otwierać portów innych niż port 80 i port 443 w zaporze ze względu na firmowe zasady IT.** Na przykład podczas kopiowania danych z lokalnego magazynu danych ujścia Azure SQL Database lub ujścia Azure SQL Data Warehouse, musisz aktywować komunikacja wychodząca TCP na porcie 1433 dla zapory Windows i zaporą firmową. W tym scenariuszu kopia przygotowana może korzystać z własnego środowiska Integration Runtime, aby najpierw skopiować dane do wystąpienia tymczasowego magazynu obiektów BLOB za pośrednictwem protokołu HTTP lub HTTPS na porcie 443. Następnie może załadować dane do SQL Database lub SQL Data Warehouse z przemieszczania magazynu obiektów BLOB. W tym przepływie nie trzeba włączyć port 1433.
 
@@ -238,15 +238,15 @@ W przypadku aktywowania przenoszenia danych przy użyciu magazynu przemieszczani
 
 Obecnie nie można kopiować danych między dwoma magazynami danych, które są połączone za pośrednictwem różnych urzędów certyfikacji samodzielnych, ani z kopią etapową lub bez niej. W tym scenariuszu można skonfigurować dwa jawne działanie kopiowania w łańcuchu w celu skopiowania danych ze źródła do przemieszczania z miejsca przejściowego do ujścia.
 
-#### <a name="configuration"></a>Konfigurowanie
+#### <a name="configuration"></a>Konfiguracja
 
 Skonfiguruj ustawienie **enableStaging** w działaniu kopiowania, aby określić, czy dane mają zostać przygotowane w magazynie obiektów BLOB przed załadowaniem ich do docelowego magazynu danych. Po ustawieniu **enableStaging** na `TRUE`należy określić dodatkowe właściwości wymienione w poniższej tabeli. Należy również utworzyć usługę Azure Storage lub usługi połączonej sygnatury dostępu współdzielonego na potrzeby przemieszczania, jeśli nie istnieje.
 
 | Właściwość | Opis | Wartość domyślna | Wymagane |
 | --- | --- | --- | --- |
 | enableStaging |Określ, czy chcesz skopiować dane za pośrednictwem tymczasowego magazynu przejściowego. |Fałsz |Nie |
-| linkedServiceName |Określ nazwę [AzureStorage](connector-azure-blob-storage.md#linked-service-properties) połączone usługi, która odnosi się do wystąpienia magazynu, którego używasz jako tymczasowy magazyn przejściowy. <br/><br/> Nie można użyć magazynu z sygnaturą dostępu współdzielonego w celu załadowania danych do SQL Data Warehouse za pośrednictwem bazy. Można go użyć w innych scenariuszach. |ND |Tak, gdy **enableStaging** jest ustawiona na wartość TRUE |
-| Ścieżka |Określ ścieżkę magazynu obiektów Blob, która ma zawierać użycia przemieszczonych danych. Jeśli nie podano ścieżki, usługa tworzy kontener do przechowywania danych tymczasowych. <br/><br/> Określ ścieżkę, tylko wtedy, gdy używasz magazynu przy użyciu sygnatury dostępu współdzielonego lub wymagają danych tymczasowych w określonej lokalizacji. |ND |Nie |
+| linkedServiceName |Określ nazwę połączonej usługi [AzureStorage](connector-azure-blob-storage.md#linked-service-properties) , która odwołuje się do wystąpienia magazynu, którego używasz jako tymczasowego magazynu przemieszczania. <br/><br/> Nie można użyć magazynu z sygnaturą dostępu współdzielonego w celu załadowania danych do SQL Data Warehouse za pośrednictwem bazy. Można go użyć w innych scenariuszach. |N/D |Tak, gdy **enableStaging** jest ustawiona na wartość true |
+| ścieżka |Określ ścieżkę magazynu obiektów Blob, która ma zawierać użycia przemieszczonych danych. Jeśli nie podano ścieżki, usługa tworzy kontener do przechowywania danych tymczasowych. <br/><br/> Określ ścieżkę, tylko wtedy, gdy używasz magazynu przy użyciu sygnatury dostępu współdzielonego lub wymagają danych tymczasowych w określonej lokalizacji. |N/D |Nie |
 | Ustawieniem EnableCompression |Określa, czy dane mają być kompresowane przed skopiowaniem do lokalizacji docelowej. To ustawienie powoduje zmniejszenie ilości przesyłanych danych. |Fałsz |Nie |
 
 >[!NOTE]
@@ -289,7 +289,7 @@ Opłata jest naliczana na podstawie dwóch kroków: Kopiuj czas trwania i typ ko
 * W przypadku korzystania z przemieszczania podczas kopiowania w chmurze, który kopiuje dane z magazynu danych w chmurze do innego magazynu danych w chmurze, to oba etapy, które są uprawnione przez środowisko uruchomieniowe Azure Integration Runtime, są obciążani [łączny czas trwania kopiowania dla kroku 1 i 2] x [cena jednostkowa kopiowania w chmurze].
 * W przypadku korzystania z przemieszczania w ramach kopii hybrydowej, która polega na kopiowaniu danych z lokalnego magazynu danych do magazynu danych w chmurze, jednym etapem nieobsługiwanym przez środowisko Integration Runtime jest naliczana opłata za [okres kopiowania hybrydowego] x [cena jednostki kopiowania hybrydowego] + [czas trwania kopiowania w chmurze] x [cena jednostkowa kopiowania w chmurze].
 
-## <a name="references"></a>Informacje
+## <a name="references"></a>Dokumentacja
 
 Poniżej znajdują się informacje dotyczące monitorowania wydajności i dostrajania dla niektórych obsługiwanych magazynów danych:
 
@@ -304,6 +304,6 @@ Poniżej znajdują się informacje dotyczące monitorowania wydajności i dostra
 ## <a name="next-steps"></a>Następne kroki
 Zapoznaj się z innymi artykułami dotyczącymi działania kopiowania:
 
-- [Omówienie działania kopiowania](copy-activity-overview.md)
+- [Przegląd działania kopiowania](copy-activity-overview.md)
 - [Używanie Azure Data Factory do migrowania danych z usługi Data Lake lub magazynu danych na platformę Azure](data-migration-guidance-overview.md)
 - [Migrowanie danych z usług Amazon S3 do usługi Azure Storage](data-migration-guidance-s3-azure-storage.md)

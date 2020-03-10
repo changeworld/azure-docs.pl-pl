@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: erhopf
 ms.openlocfilehash: d076d2520bda4d6209fbdd991df57c4eedaa3938
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75379882"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394784"
 ---
 # <a name="what-is-text-to-speech"></a>Co to jest zamiana tekstu na mowę?
 
@@ -37,7 +37,7 @@ Funkcja zamiany tekstu na mowę z usługi mowy umożliwia aplikacjom, narzędzio
 
 * Język znaczników syntezy mowy (SSML) — język znaczników oparty na języku XML używany do dostosowywania danych wyjściowych zamiany mowy na tekst. Za pomocą SSML można dostosować gęstość, dodać pauzy, poprawić wymowę, przyspieszyć lub spowalniać liczbę mówienia, zwiększyć lub zmniejszyć ilość, a także dodać wiele głosów do jednego dokumentu. Zobacz [SSML](speech-synthesis-markup.md).
 
-## <a name="get-started"></a>Rozpocznij
+## <a name="get-started"></a>Rozpoczynanie pracy
 
 Usługa zamiany tekstu na mowę jest dostępna za pośrednictwem [zestawu Speech SDK](speech-sdk.md). Istnieje kilka typowych scenariuszy dostępnych w ramach przewodników szybki start w różnych językach i platformach:
 
@@ -72,7 +72,7 @@ Aby uzyskać szczegółowe informacje, zobacz [Cennik](https://azure.microsoft.c
 > [!IMPORTANT]
 > Każdy znak w języku chińskim, japońskim i koreańskim jest traktowany jako dwa znaki do rozliczania.
 
-## <a name="reference-docs"></a>Dokumentacja
+## <a name="reference-docs"></a>Dokumentacja dokumentacji
 
 - [Zestaw SDK rozpoznawania mowy](speech-sdk.md)
 - [Interfejs API REST: zamiana tekstu na mowę](rest-text-to-speech.md)

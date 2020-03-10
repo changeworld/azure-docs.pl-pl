@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 06/24/2019
 ms.author: alkohli
 ms.openlocfilehash: 7ce4b9dda853e63e427757317abc2f7c878ba3a4
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68253158"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384697"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-edge"></a>Zarządzanie dostępem, możliwością i trybem łączności dla Azure Data Box Edge
 
@@ -48,12 +48,12 @@ Resetowanie przepływu pracy nie wymaga od użytkownika odwoływania starego has
 
 1. W Azure Portal przejdź do **omówienia > Resetowanie hasła administratora**.
 
-    ![Resetowanie hasła](media/data-box-edge-manage-access-power-connectivity-mode/reset-password-1.png)
+    ![Zresetuj hasło](media/data-box-edge-manage-access-power-connectivity-mode/reset-password-1.png)
 
 
 2. Wprowadź nowe hasło, a następnie potwierdź je. Podane hasło musi zawierać od 8 do 16 znaków. Hasło musi zawierać 3 z następujących znaków: wielkie litery, małe litery, cyfry i znaki specjalne. Wybierz pozycję **Zresetuj**.
 
-    ![Resetowanie hasła](media/data-box-edge-manage-access-power-connectivity-mode/reset-password-2.png)
+    ![Zresetuj hasło](media/data-box-edge-manage-access-power-connectivity-mode/reset-password-2.png)
 
 ## <a name="manage-resource-access"></a>Zarządzanie dostępem do zasobów
 
@@ -66,7 +66,7 @@ Podczas generowania klucza aktywacji dla urządzenia Data Box Edge lub wykonywan
 -  Tworzenie udziału ze skojarzonym kontem magazynu.
 -  Tworzenie użytkownika, który może uzyskiwać dostęp do udziałów na urządzeniu.
 
-Musisz mieć `User` dostęp do Active Directory dzierżawy, ponieważ musisz mieć `Read all directory objects`możliwość. Nie możesz być użytkownikiem-gościem, ponieważ nie ma uprawnień `Read all directory objects`do programu. Jeśli jesteś gościem, operacjami takimi jak generacja klucza aktywacji, utworzenie udziału na urządzeniu Data Box Edge, utworzenie użytkownika, konfiguracja roli obliczeń brzegowych spowoduje niepowodzenie wszystkich operacji resetowania hasła urządzenia.
+Musisz mieć `User` dostęp do dzierżawy Active Directory, ponieważ musisz mieć możliwość `Read all directory objects`. Nie możesz być użytkownikiem-gościem, ponieważ nie ma uprawnień do `Read all directory objects`. Jeśli jesteś gościem, operacjami takimi jak generacja klucza aktywacji, utworzenie udziału na urządzeniu Data Box Edge, utworzenie użytkownika, konfiguracja roli obliczeń brzegowych spowoduje niepowodzenie wszystkich operacji resetowania hasła urządzenia.
 
 Aby uzyskać więcej informacji na temat zapewniania dostępu użytkownikom w celu Azure Active Directory interfejs API programu Graph, zobacz [domyślny dostęp dla administratorów, użytkowników i użytkowników-Gości](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
 
@@ -80,7 +80,7 @@ Nie musisz przyznawać uprawnień dostępu dla poziomu subskrypcji, aby użytkow
 
 Przed podjęciem próby utworzenia dowolnego zasobu upewnij się, że dostawca zasobów został zarejestrowany w ramach subskrypcji. Jeśli dostawca zasobów nie jest zarejestrowany, należy się upewnić, że użytkownik tworzący nowy zasób ma wystarczającą ilość uprawnień do zarejestrowania wymaganego dostawcy zasobów na poziomie subskrypcji. Jeśli nie zostało to jeszcze zrobione, zobaczysz następujący komunikat o błędzie:
 
-*Nazwa subskrypcji \<subskrypcji > nie ma uprawnień do rejestrowania dostawców zasobów: Microsoft.DataBoxEdge.*
+*Nazwa subskrypcji \<subskrypcji > nie ma uprawnień do rejestrowania dostawców zasobów: Microsoft. DataBoxEdge.*
 
 
 Aby uzyskać listę zarejestrowanych dostawców zasobów w bieżącej subskrypcji, uruchom następujące polecenie:
@@ -89,7 +89,7 @@ Aby uzyskać listę zarejestrowanych dostawców zasobów w bieżącej subskrypcj
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-W przypadku urządzenia `Microsoft.DataBoxEdge` Data Box Edge należy zarejestrować. Aby zarejestrować `Microsoft.DataBoxEdge`się, administrator subskrypcji powinien uruchomić następujące polecenie:
+W przypadku urządzenia Data Box Edge `Microsoft.DataBoxEdge` powinny być zarejestrowane. Aby zarejestrować `Microsoft.DataBoxEdge`, administrator subskrypcji powinien uruchomić następujące polecenie:
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
@@ -132,6 +132,6 @@ Możesz zamknąć lub ponownie uruchomić urządzenie fizyczne przy użyciu loka
 > [!NOTE]
 > Jeśli urządzenie fizyczne zostanie wyłączone, należy wypchnąć przycisk energia na urządzeniu, aby go włączyć.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się, jak [zarządzać udziałami](data-box-edge-manage-shares.md).

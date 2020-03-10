@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
 ms.openlocfilehash: 1d244d7b62fcfefeec6f628f473274ae982bf4d8
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120233"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394288"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Rozwiązywanie problemów & ograniczenia Azure Cloud Shell
 
@@ -188,7 +188,7 @@ Program PowerShell:
   ((Invoke-WebRequest -Uri https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -Headers @{Authorization = "Bearer $token"}).Content | ConvertFrom-Json).properties | Format-List
 ```
 
-### <a name="delete"></a>Usuwanie
+### <a name="delete"></a>Usuń
 Aby **usunąć** ustawienia użytkownika Cloud Shell zapisywanych danych, takich jak preferowana powłoka, rozmiar czcionki i typ czcionki, uruchom następujące polecenia. Przy następnym uruchomieniu Cloud Shell zostanie wyświetlony monit o ponowne dołączenie udziału plików. 
 
 >[!Note]

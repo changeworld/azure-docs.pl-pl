@@ -11,11 +11,11 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: e7b32579712e89c0d5595303ee7e03d8b2462607
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615426"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390664"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>Języki obsługiwane na maszynie wirtualnej do nauki o danych 
 
@@ -157,7 +157,7 @@ Data Science Virtual Machine (DSVM) zawiera kilka wstępnie utworzonych językó
 | ------------- | ------------- |
 | Obsługiwane wersje językowe | Update 0.6 |
 | Obsługiwane wersje DSVM      | Linux, Windows     |
-| Jak jest ona skonfigurowana / zainstalowanym maszyny DSVM?  | Windows: Instalować `C:\JuliaPro-VERSION`<br /> Systemu Linux: Instalować `/opt/JuliaPro-VERSION`    |
+| Jak jest ona skonfigurowana / zainstalowanym maszyny DSVM?  | System Windows: zainstalowany w `C:\JuliaPro-VERSION`<br /> Linux: zainstalowano w `/opt/JuliaPro-VERSION`    |
 | Zawiera linki do przykładów      | Dołączono przykładowe notesy Jupyter dla Julia.     |
 | Narzędzia pokrewne na DSVM      | Python, R      |
 ### <a name="how-to-use-and-run-it"></a>Jak używać i uruchamiać    

@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 06/07/2017
 ms.author: motanv
 ms.openlocfilehash: 4bdb00eec38addc0c9f88eba8b73185ec5721277
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465592"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394450"
 ---
 # <a name="testability-actions"></a>Akcje dotyczące testowania
 W celu zasymulowania niezawodnej infrastruktury usługa Azure Service Fabric zapewnia deweloperom sposoby symulowania różnych rzeczywistych awarii i przejść do stanu. Są one dostępne jako akcje testowania. Akcje są interfejsami API niskiego poziomu, które powodują konkretną iniekcję błędów, zmianę stanu lub weryfikację. Łącząc te akcje, można napisać kompleksowe scenariusze testów dla usług.
@@ -28,7 +28,7 @@ Akcje dotyczące testowania są klasyfikowane do dwóch głównych zasobników:
 Aby zapewnić lepszą weryfikację jakości, należy uruchomić usługę i obciążenie biznesowe przy jednoczesnym wykorzystaniu różnych błędów. Niebłędne scenariusze ćwiczeń, w których proces usługi nieoczekiwanie opuszcza się w środku pewnego przepływu pracy. Spowoduje to sprawdzenie ścieżki odzyskiwania po przywróceniu repliki usługi przez Service Fabric. Pomoże to w testowaniu spójności danych oraz o tym, czy stan usługi jest prawidłowo obsługiwany po błędach. Drugi zestaw błędów (łagodne błędy) test, że usługa prawidłowo reaguje na repliki, które są przenoszone przez Service Fabric. To testuje obsługę anulowania w metodzie RunAsync. Usługa musi sprawdzić, czy ustawiono token anulowania, prawidłowo zapisać jego stan i zamknąć metodę RunAsync.
 
 ## <a name="testability-actions-list"></a>Lista działań związanych z testowaniem
-| Działanie | Opis | Zarządzany interfejs API | Polecenie cmdlet programu PowerShell | Błędy bezpiecznego/nieprolongaty |
+| Akcja | Opis | Zarządzany interfejs API | Polecenie cmdlet programu PowerShell | Błędy bezpiecznego/nieprolongaty |
 | --- | --- | --- | --- | --- |
 | CleanTestState |Usuwa wszystkie Stany testów z klastra w przypadku nieprawidłowego zamknięcia sterownika testowego. |CleanTestStateAsync |Remove-ServiceFabricTestState |Nie dotyczy |
 | InvokeDataLoss |Wywołuje utratę danych w partycji usługi. |InvokeDataLossAsync |Invoke-ServiceFabricPartitionDataLoss |Zamknięcie |

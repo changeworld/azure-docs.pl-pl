@@ -4,11 +4,11 @@ description: Dokumentacja referencyjna dotycząca pliku Azure Functions hosta. J
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.openlocfilehash: 949d4f2c5d8c1d8034ccc392915bc40f1f2fddda
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605138"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356520"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Dokumentacja pliku host. JSON dla Azure Functions 2. x i nowszych 
 
@@ -143,7 +143,7 @@ Aby uzyskać pełną strukturę JSON, zobacz wcześniejszy [przykład pliku host
 > [!NOTE]
 > Próbkowanie dziennika może spowodować, że niektóre wykonania nie są wyświetlane w bloku monitora Application Insights. Aby uniknąć próbkowania dziennika, Dodaj `samplingExcludedTypes: "Request"` do wartości `applicationInsights`.
 
-| Właściwość | Domyślny | Opis |
+| Właściwość | Domyślne | Opis |
 | --------- | --------- | --------- | 
 | samplingSettings | Nie dotyczy | Zobacz [applicationInsights. samplingSettings](#applicationinsightssamplingsettings). |
 | samplingExcludedTypes | {1&gt;null&lt;1} | Rozdzielana średnikami lista typów, które nie mają być próbkowane. Rozpoznawane typy to: zależność, zdarzenie, wyjątek, PageView, żądanie, śledzenie. Wszystkie wystąpienia określonych typów są przesyłane; typy, które nie są określone, są próbkowane. |
@@ -157,7 +157,7 @@ Aby uzyskać pełną strukturę JSON, zobacz wcześniejszy [przykład pliku host
 
 ### <a name="applicationinsightssamplingsettings"></a>applicationInsights. samplingSettings
 
-|Właściwość | Domyślny | Opis |
+|Właściwość | Domyślne | Opis |
 | --------- | --------- | --------- | 
 | isEnabled | {1&gt;true&lt;1} | Włącza lub wyłącza próbkowanie. | 
 | maxTelemetryItemsPerSecond | 20 | Docelowa liczba elementów telemetrii zarejestrowanych na sekundę na każdym hoście serwera. Jeśli aplikacja działa na wielu hostach, Zmniejsz tę wartość, aby pozostała w ogólnym docelowym wskaźniku ruchu. | 
@@ -171,7 +171,7 @@ Aby uzyskać pełną strukturę JSON, zobacz wcześniejszy [przykład pliku host
 
 ### <a name="applicationinsightshttpautocollectionoptions"></a>applicationInsights. httpAutoCollectionOptions
 
-|Właściwość | Domyślny | Opis |
+|Właściwość | Domyślne | Opis |
 | --------- | --------- | --------- | 
 | enableHttpTriggerExtendedInfoCollection | {1&gt;true&lt;1} | Włącza lub wyłącza rozszerzone informacje żądania HTTP dla wyzwalaczy HTTP: nagłówki korelacji żądań przychodzących, obsługa kluczy wielu instrumentacji, metoda HTTP, ścieżka i odpowiedź. |
 | enableW3CDistributedTracing | {1&gt;true&lt;1} | Włącza lub wyłącza obsługę protokołu śledzenia rozproszonego W3C (i włącza starszą wersję schematu korelacji). Włączone domyślnie, jeśli `enableHttpTriggerExtendedInfoCollection` ma wartość true. Jeśli `enableHttpTriggerExtendedInfoCollection` ma wartość false, ta flaga ma zastosowanie tylko do żądań wychodzących, a nie do żądań przychodzących. |
@@ -181,10 +181,10 @@ Aby uzyskać pełną strukturę JSON, zobacz wcześniejszy [przykład pliku host
 
 Aby uzyskać więcej informacji na temat migawek, zobacz [debugowanie migawek na wyjątkach w aplikacjach .NET](/azure/azure-monitor/app/snapshot-debugger) i [Rozwiązywanie problemów z włączaniem Application Insights Snapshot Debugger lub wyświetlania migawek](/azure/azure-monitor/app/snapshot-debugger-troubleshoot).
 
-|Właściwość | Domyślny | Opis |
+|Właściwość | Domyślne | Opis |
 | --------- | --------- | --------- | 
 | agentEndpoint | {1&gt;null&lt;1} | Punkt końcowy używany do nawiązywania połączenia z usługą Application Insights Snapshot Debugger. Jeśli wartość jest równa null, używany jest domyślny punkt końcowy. |
-| captureSnapshotMemoryWeight | 0.5 | Waga określona dla bieżącego rozmiaru pamięci procesu podczas sprawdzania, czy jest wystarczająca ilość pamięci, aby wykonać migawkę. Oczekiwana wartość jest większa niż 0 prawidłowy ułamek (0 < CaptureSnapshotMemoryWeight < 1). |
+| captureSnapshotMemoryWeight | 0,5 | Waga określona dla bieżącego rozmiaru pamięci procesu podczas sprawdzania, czy jest wystarczająca ilość pamięci, aby wykonać migawkę. Oczekiwana wartość jest większa niż 0 prawidłowy ułamek (0 < CaptureSnapshotMemoryWeight < 1). |
 | failedRequestLimit | 3 | Limit liczby żądań zakończonych niepowodzeniem do żądania migawek przed wyłączeniem procesora telemetrii.|
 | handleUntrackedExceptions | {1&gt;true&lt;1} | Włącza lub wyłącza śledzenie wyjątków, które nie są śledzone przez Application Insights dane telemetryczne. |
 | isEnabled | {1&gt;true&lt;1} | Włącza lub wyłącza kolekcje migawek | 
@@ -268,7 +268,7 @@ Ustawienia konfiguracji dla [monitora kondycji hosta](https://github.com/Azure/a
 }
 ```
 
-|Właściwość  |Domyślny | Opis |
+|Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
 |dostępny|{1&gt;true&lt;1}|Określa, czy funkcja jest włączona. | 
 |healthCheckInterval|10 sekund|Przedział czasu między okresowymi kontrolami kondycji w tle. | 
@@ -300,7 +300,7 @@ Steruje zachowaniem rejestrowania aplikacji funkcji, w tym Application Insights.
 }
 ```
 
-|Właściwość  |Domyślny | Opis |
+|Właściwość  |Domyślne | Opis |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Określa, jaki poziom rejestrowania plików jest włączony.  Dostępne są `never`, `always`, `debugOnly`. |
 |logLevel|Nie dotyczy|Obiekt, który definiuje filtrowanie kategorii dzienników dla funkcji w aplikacji. W wersji 2. x i nowszych postępuj zgodnie z układem ASP.NET Core dla filtrowania kategorii dzienników. To ustawienie umożliwia filtrowanie rejestrowania dla określonych funkcji. Aby uzyskać więcej informacji, zobacz [filtrowanie dzienników](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) w dokumentacji ASP.NET Core. |
@@ -323,7 +323,7 @@ To ustawienie jest elementem podrzędnym [rejestrowania](#logging). Kontroluje R
 }
 ```
 
-|Właściwość  |Domyślny | Opis |
+|Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
 |isEnabled|{1&gt;false&lt;1}|Włącza lub wyłącza rejestrowanie konsoli.| 
 
@@ -351,7 +351,7 @@ Ustawienie konfiguracji można znaleźć w [SendGrid wyzwalaczach i powiązaniac
 
 Ustawienie konfiguracji można znaleźć w [Service Bus wyzwalacze i powiązania](functions-bindings-service-bus-output.md#host-json).
 
-## <a name="singleton"></a>Pojedynczego
+## <a name="singleton"></a>pojedynczego
 
 Ustawienia konfiguracji dla zachowania pojedynczej blokady. Aby uzyskać więcej informacji, zobacz [temat problem z usługą GitHub dotyczący pojedynczej pomocy technicznej](https://github.com/Azure/azure-webjobs-sdk-script/issues/912).
 
@@ -367,7 +367,7 @@ Ustawienia konfiguracji dla zachowania pojedynczej blokady. Aby uzyskać więcej
 }
 ```
 
-|Właściwość  |Domyślny | Opis |
+|Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|Okres, w którym są wykonywane blokady poziomu funkcji. Blokady autorenew.| 
 |listenerLockPeriod|00:01:00|Okres, w którym są wykonywane blokady odbiornika.| 

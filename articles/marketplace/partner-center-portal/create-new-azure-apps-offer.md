@@ -9,11 +9,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.openlocfilehash: 69d7bc81f5adc4797be86f946fdb656b4b6cc682
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760906"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391461"
 ---
 # <a name="create-an-azure-application-offer"></a>Tworzenie oferty aplikacji platformy Azure
 
@@ -169,7 +169,7 @@ Musisz zdefiniować szczegóły witryny Marketplace (nazwę oferty, opis, obrazy
 > [!NOTE]
 > Oferta zawartości oferty (na przykład opis, dokumenty, zrzuty ekranu, warunki użytkowania itp.) nie jest wymagana w języku angielskim, tak długo, jak opis oferty zaczyna się od frazy "Ta aplikacja jest dostępna tylko w języku innym niż angielski]". Można także zapewnić *przydatny adres URL linku* do oferowania zawartości w języku innym niż ten, który jest używany w ofercie dotyczącej oferty.
 
-### <a name="name"></a>Nazwa
+### <a name="name"></a>Name (Nazwa)
 
 Nazwa wprowadzona w tym miejscu będzie wyświetlana klientom jako tytuł oferty. To pole jest wstępnie wypełniane tekstem wprowadzonym dla **aliasu oferty** podczas tworzenia oferty, ale można zmienić tę wartość. Ta nazwa może być znakiem towarowym (i może zawierać znaki towarowe lub autorskie). Nazwa nie może być dłuższa niż 50 znaków i nie może zawierać żadnych znaków emoji.
 
@@ -196,7 +196,7 @@ Niektóre porady dotyczące pisania opisu:
 - Korzystaj z specyficznych dla branży słownictwa lub takich słów, jak to możliwe. 
 - Rozważ użycie tagów HTML, aby sformatować swój opis i zwiększyć jego atrakcyjność.
 
-### <a name="search-keywords"></a>Wyszukaj słowa kluczowe
+### <a name="search-keywords"></a>Słowa kluczowe wyszukiwania
 
 Opcjonalnie możesz wprowadzić do trzech słów kluczowych wyszukiwania, aby pomóc klientom w znalezieniu oferty w portalu Marketplace. Aby uzyskać najlepsze wyniki, spróbuj użyć tych słów kluczowych również w opisie.
 
@@ -234,7 +234,7 @@ Obraz Hero jest opcjonalny. Jeśli postanowisz jeden, musi on mierzyć 815 x 290
 
 Dodaj zrzuty ekranu pokazujące, jak działa Twoja oferta. Można dodać maksymalnie pięć zrzutów ekranu. Wszystkie zrzuty ekranu muszą mieć 1280 x 720 pikseli.
 
-#### <a name="videos"></a>Filmy
+#### <a name="videos"></a>Filmy wideo
 
 Opcjonalnie możesz dodać maksymalnie pięć filmów wideo, które demonstrują Twoją ofertę. Te filmy wideo powinny być hostowane w usłudze YouTube i/lub Vimeo. Dla każdej z nich wprowadź nazwę filmu wideo, jego adres URL i obraz miniatury filmu wideo (1280 x 720 pikseli).
 
@@ -309,7 +309,7 @@ Usługi Azure Government Services obsługują dane, które podlegają określony
 
 Na karcie **lista planów** wyświetlane są informacje o wykorzystaniu planu, które mogą być różne dla różnych planów dla tej samej oferty.
 
-### <a name="name"></a>Nazwa
+### <a name="name"></a>Name (Nazwa)
 
 Wstępnie wypełnione na podstawie nazwy przypisanej do planu podczas jego tworzenia.  Ta nazwa będzie wyświetlana jako tytuł tego "planu oprogramowania" wyświetlanego w portalu Marketplace.  Może zawierać do 100 znaków.
 
@@ -352,7 +352,7 @@ Każdy plan musi być dostępny na co najmniej jednym rynku. Zaznacz pole wyboru
 
 Jeśli już ustawisz ceny dla planu w Stany Zjednoczone dolarów (USD) i dodasz kolejną lokalizację na rynku, cena nowego rynku zostanie obliczona zgodnie z bieżącymi stawkami za wymianę. Zawsze sprawdzaj ceny poszczególnych rynków przed opublikowaniem. Cennik można przejrzeć przy użyciu linku "Eksport cen (xlsx)" po zapisaniu zmian.
 
-### <a name="pricing"></a>Cennik
+### <a name="pricing"></a>Ceny
 
 Podaj cenę za miesiąc dla tego planu.  Ta cena jest uzupełnieniem usługi Azure Infrastructure lub kosztów związanych z płatność zgodnie z rzeczywistym użyciem w przypadku zasobów wdrożonych w ramach tego rozwiązania.
 

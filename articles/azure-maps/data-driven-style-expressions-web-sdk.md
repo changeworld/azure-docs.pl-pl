@@ -10,11 +10,11 @@ services: azure-maps
 manager: cpendleton
 ms.custom: codepen
 ms.openlocfilehash: c3f5fb2a387db6e672290fcf03d46c476b6211b6
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77657107"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78368927"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Wyrażenia stylów oparte na danych (zestaw SDK sieci Web)
 
@@ -85,12 +85,12 @@ Wyrażenia danych zapewniają dostęp do danych właściwości w funkcji.
 |------------|-------------|-------------|
 | `['at', number, array]` | obiekt | Pobiera element z tablicy. |
 | `['geometry-type']` | ciąg | Pobiera typ geometrii funkcji: punkt, MultiPoint, LineString, MultiLineString, Wielokąt, MultiPolygon. |
-| `['get', string]` | wartość | Pobiera wartość właściwości z właściwości bieżącej funkcji. Zwraca wartość null, jeśli brakuje żądanej właściwości. |
-| `['get', string, object]` | wartość | Pobiera wartość właściwości z właściwości podanego obiektu. Zwraca wartość null, jeśli brakuje żądanej właściwości. |
+| `['get', string]` | {1&gt;value&lt;1} | Pobiera wartość właściwości z właściwości bieżącej funkcji. Zwraca wartość null, jeśli brakuje żądanej właściwości. |
+| `['get', string, object]` | {1&gt;value&lt;1} | Pobiera wartość właściwości z właściwości podanego obiektu. Zwraca wartość null, jeśli brakuje żądanej właściwości. |
 | `['has', string]` | wartość logiczna | Określa, czy właściwości funkcji mają określoną właściwość. |
 | `['has', string, object]` | wartość logiczna | Określa, czy właściwości obiektu mają określoną właściwość. |
-| `['id']` | wartość | Pobiera identyfikator funkcji, jeśli ma. |
-| `['length', string | array]` | numer | Pobiera długość ciągu lub tablicy. |
+| `['id']` | {1&gt;value&lt;1} | Pobiera identyfikator funkcji, jeśli ma. |
+| `['length', string | array]` | liczba | Pobiera długość ciągu lub tablicy. |
 | `['in', boolean | string | number, array]` | wartość logiczna | Określa, czy element istnieje w tablicy |
 | `['in', substring, string]` | wartość logiczna | Określa, czy podciąg istnieje w ciągu |
 
@@ -143,32 +143,32 @@ Wyrażenia matematyczne zapewniają operatory matematyczne do wykonywania oblicz
 
 | Wyrażenie | Zwracany typ | Opis |
 |------------|-------------|-------------|
-| `['+', number, number, …]` | numer | Oblicza sumę podanych liczb. |
-| `['-', number]` | numer | Odejmuje 0 według podanej liczby. |
-| `['-', number, number]` | numer | Odejmuje pierwsze numery według drugiej liczby. |
-| `['*', number, number, …]` | numer | Mnoży określone liczby razem. |
-| `['/', number, number]` | numer | Dzieli pierwszą liczbę przez drugą liczbę. |
-| `['%', number, number]` | numer | Oblicza resztę podczas dzielenia pierwszej liczby przez drugą liczbę. |
-| `['^', number, number]` | numer | Oblicza wartość pierwszej wartości podniesioną do potęgi drugiej liczby. |
-| `['abs', number]` | numer | Oblicza wartość bezwzględną podanej liczby. |
-| `['acos', number]` | numer | Oblicza arcus cosinus podanej liczby. |
-| `['asin', number]` | numer | Oblicza arcus sinus dla podanej liczby. |
-| `['atan', number]` | numer | Oblicza arcus tangens podanej liczby. |
-| `['ceil', number]` | numer | Zaokrągla liczbę w górę do najbliższej liczby całkowitej. |
-| `['cos', number]` | numer | Oblicza cos o podanej liczbie. |
-| `['e']` | numer | Zwraca stałą matematyczną `e`. |
-| `['floor', number]` | numer | Zaokrągla liczbę w dół do poprzedniej wartości całkowitej. |
-| `['ln', number]` | numer | Oblicza logarytm naturalny podanej liczby. |
-| `['ln2']` | numer | Zwraca stałą matematyczną `ln(2)`. |
-| `['log10', number]` | numer | Oblicza logarytm dziesiętny dla podanej liczby. |
-| `['log2', number]` | numer | Oblicza logarytm dziesiętny dla podanej liczby. |
-| `['max', number, number, …]` | numer | Oblicza maksymalną liczbę w określonym zestawie liczb. |
-| `['min', number, number, …]` | numer | Oblicza minimalną liczbę w określonym zestawie liczb. |
-| `['pi']` | numer | Zwraca stałą matematyczną `PI`. |
-| `['round', number]` | numer | Zaokrągla liczbę do najbliższej liczby całkowitej. Połowy wartości są zaokrąglane w kierunku od zera. Na przykład `['round', -1.5]` oblicza wartość-2. |
-| `['sin', number]` | numer | Oblicza sinus dla podanej liczby. |
-| `['sqrt', number]` | numer | Oblicza pierwiastek kwadratowy z podanej liczby. |
-| `['tan', number]` | numer | Oblicza tangens podanej liczby. |
+| `['+', number, number, …]` | liczba | Oblicza sumę podanych liczb. |
+| `['-', number]` | liczba | Odejmuje 0 według podanej liczby. |
+| `['-', number, number]` | liczba | Odejmuje pierwsze numery według drugiej liczby. |
+| `['*', number, number, …]` | liczba | Mnoży określone liczby razem. |
+| `['/', number, number]` | liczba | Dzieli pierwszą liczbę przez drugą liczbę. |
+| `['%', number, number]` | liczba | Oblicza resztę podczas dzielenia pierwszej liczby przez drugą liczbę. |
+| `['^', number, number]` | liczba | Oblicza wartość pierwszej wartości podniesioną do potęgi drugiej liczby. |
+| `['abs', number]` | liczba | Oblicza wartość bezwzględną podanej liczby. |
+| `['acos', number]` | liczba | Oblicza arcus cosinus podanej liczby. |
+| `['asin', number]` | liczba | Oblicza arcus sinus dla podanej liczby. |
+| `['atan', number]` | liczba | Oblicza arcus tangens podanej liczby. |
+| `['ceil', number]` | liczba | Zaokrągla liczbę w górę do najbliższej liczby całkowitej. |
+| `['cos', number]` | liczba | Oblicza cos o podanej liczbie. |
+| `['e']` | liczba | Zwraca stałą matematyczną `e`. |
+| `['floor', number]` | liczba | Zaokrągla liczbę w dół do poprzedniej wartości całkowitej. |
+| `['ln', number]` | liczba | Oblicza logarytm naturalny podanej liczby. |
+| `['ln2']` | liczba | Zwraca stałą matematyczną `ln(2)`. |
+| `['log10', number]` | liczba | Oblicza logarytm dziesiętny dla podanej liczby. |
+| `['log2', number]` | liczba | Oblicza logarytm dziesiętny dla podanej liczby. |
+| `['max', number, number, …]` | liczba | Oblicza maksymalną liczbę w określonym zestawie liczb. |
+| `['min', number, number, …]` | liczba | Oblicza minimalną liczbę w określonym zestawie liczb. |
+| `['pi']` | liczba | Zwraca stałą matematyczną `PI`. |
+| `['round', number]` | liczba | Zaokrągla liczbę do najbliższej liczby całkowitej. Połowy wartości są zaokrąglane w kierunku od zera. Na przykład `['round', -1.5]` oblicza wartość-2. |
+| `['sin', number]` | liczba | Oblicza sinus dla podanej liczby. |
+| `['sqrt', number]` | liczba | Oblicza pierwiastek kwadratowy z podanej liczby. |
+| `['tan', number]` | liczba | Oblicza tangens podanej liczby. |
 
 ## <a name="aggregate-expression"></a>Wyrażenie agregujące
 
@@ -404,8 +404,8 @@ Wyrażenia typu dostarczają narzędzia do testowania i konwertowania różnych 
 | `['literal', array]`<br/><br/>`['literal', object]` | Array \| — obiekt | Zwraca tablicę literałową lub wartość obiektu. Użyj tego wyrażenia, aby zapobiec ocenie tablicy lub obiektu jako wyrażenia. Jest to konieczne, gdy tablica lub obiekt musi zostać zwrócony przez wyrażenie. |
 | `['image', string]` | ciąg | Sprawdza, czy określony identyfikator obrazu jest ładowany do Sprite obrazu mapy. Jeśli jest, zwracany jest identyfikator, w przeciwnym razie zwracana jest wartość null. |
 | `['to-boolean', value]` | wartość logiczna | Konwertuje wartość wejściową do wartości logicznej. Wynik jest `false`, gdy dane wejściowe są pustym ciągiem, `0`, `false`, `null`lub `NaN`. w przeciwnym razie `true`. |
-| `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | color | Konwertuje wartość wejściową na kolor. Jeśli podano wiele wartości, każda z nich jest szacowana w kolejności do momentu uzyskania pierwszej pomyślnej konwersji. Jeśli żadne dane wejściowe nie mogą być konwertowane, wyrażenie jest błędem. |
-| `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | numer | Konwertuje wartość wejściową na liczbę, jeśli jest to możliwe. Jeśli dane wejściowe są `null` lub `false`, wynik wynosi 0. Jeśli dane wejściowe są `true`, wynik wynosi 1. Jeśli dane wejściowe są ciągami, są konwertowane na liczbę przy użyciu funkcji [ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) String specyfikacji języka ECMAScript. Jeśli podano wiele wartości, każda z nich jest szacowana w kolejności do momentu uzyskania pierwszej pomyślnej konwersji. Jeśli żadne dane wejściowe nie mogą być konwertowane, wyrażenie jest błędem. |
+| `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | kolor | Konwertuje wartość wejściową na kolor. Jeśli podano wiele wartości, każda z nich jest szacowana w kolejności do momentu uzyskania pierwszej pomyślnej konwersji. Jeśli żadne dane wejściowe nie mogą być konwertowane, wyrażenie jest błędem. |
+| `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | liczba | Konwertuje wartość wejściową na liczbę, jeśli jest to możliwe. Jeśli dane wejściowe są `null` lub `false`, wynik wynosi 0. Jeśli dane wejściowe są `true`, wynik wynosi 1. Jeśli dane wejściowe są ciągami, są konwertowane na liczbę przy użyciu funkcji [ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) String specyfikacji języka ECMAScript. Jeśli podano wiele wartości, każda z nich jest szacowana w kolejności do momentu uzyskania pierwszej pomyślnej konwersji. Jeśli żadne dane wejściowe nie mogą być konwertowane, wyrażenie jest błędem. |
 | `['to-string', value]` | ciąg | Konwertuje wartość wejściową na ciąg. Jeśli dane wejściowe są `null`, wynik jest `""`. Jeśli dane wejściowe są wartością logiczną, wynik jest `"true"` lub `"false"`. Jeśli dane wejściowe są liczbami, są konwertowane na ciąg przy użyciu funkcji [ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) Number specyfikacji języka ECMAScript. Jeśli dane wejściowe są kolorem, są konwertowane na ciąg koloru RGBA CSS `"rgba(r,g,b,a)"`. W przeciwnym razie dane wejściowe są konwertowane na ciąg przy użyciu funkcji [JSON. stringify](https://tc39.github.io/ecma262/#sec-json.stringify) specyfikacji języka ECMAScript. |
 | `['typeof', value]` | ciąg | Zwraca ciąg opisujący typ danej wartości. |
 
@@ -437,8 +437,8 @@ Wyrażenia kolorów ułatwiają tworzenie wartości kolorów i manipulowanie nim
 
 | Wyrażenie | Zwracany typ | Opis |
 |------------|-------------|-------------|
-| `['rgb', number, number, number]` | color | Tworzy wartość koloru dla składników *czerwony*, *zielony*i *niebieski* , które muszą namieścić się w zakresie między `0` i `255`, i składnika alfa `1`. Jeśli dowolny składnik znajduje się poza zakresem, wyrażenie jest błędem. |
-| `['rgba', number, number, number, number]` | color | Tworzy wartość koloru na podstawie *czerwonych*, *zielonych*, *niebieskich* składników, które muszą należeć do zakresu `0` i `255`, i składnika alfa w zakresie `0` i `1`. Jeśli dowolny składnik znajduje się poza zakresem, wyrażenie jest błędem. |
+| `['rgb', number, number, number]` | kolor | Tworzy wartość koloru dla składników *czerwony*, *zielony*i *niebieski* , które muszą namieścić się w zakresie między `0` i `255`, i składnika alfa `1`. Jeśli dowolny składnik znajduje się poza zakresem, wyrażenie jest błędem. |
+| `['rgba', number, number, number, number]` | kolor | Tworzy wartość koloru na podstawie *czerwonych*, *zielonych*, *niebieskich* składników, które muszą należeć do zakresu `0` i `255`, i składnika alfa w zakresie `0` i `1`. Jeśli dowolny składnik znajduje się poza zakresem, wyrażenie jest błędem. |
 | `['to-rgba']` | \[Number, Number, Number, Number\] | Zwraca tablicę z czterema elementami zawierającą składniki *czerwony*, *zielony*, *niebieski*i *alfa* koloru wejścia w tej kolejności. |
 
 **Przykład**

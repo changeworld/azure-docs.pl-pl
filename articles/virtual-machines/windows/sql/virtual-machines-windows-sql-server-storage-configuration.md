@@ -14,11 +14,11 @@ ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
 ms.openlocfilehash: 9d8fce0772f13c6e009b2441ecd85779a7622c5c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981732"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388709"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Konfiguracja magazynu dla maszyn wirtualnych SQL Server
 
@@ -40,7 +40,7 @@ Aby można było korzystać z ustawień konfiguracji automatycznego magazynu, ma
 
 W poniższych sekcjach opisano sposób konfigurowania magazynu dla nowych maszyn wirtualnych SQL Server.
 
-### <a name="azure-portal"></a>Portal Azure
+### <a name="azure-portal"></a>Portalu Azure
 
 Podczas aprowizacji maszyny wirtualnej platformy Azure przy użyciu obrazu galerii SQL Server wybierz pozycję **Zmień konfigurację** na karcie **Ustawienia SQL Server** , aby otworzyć stronę Konfiguracja magazynu zoptymalizowanego pod kątem wydajności. Możesz pozostawić wartości domyślne lub zmodyfikować typ konfiguracji dysku, który najlepiej odpowiada Twoim potrzebom, na podstawie obciążenia. 
 
@@ -99,7 +99,7 @@ W przypadku istniejących maszyn wirtualnych SQL Server można zmodyfikować nie
 * Dane SQL
 * Dziennik SQL
 * Inne (magazyn inny niż SQL)
-* Dostępna
+* Dostępne
 
 Aby zmodyfikować ustawienia magazynu, wybierz pozycję **Konfiguruj** w obszarze **Ustawienia**. 
 
@@ -127,7 +127,7 @@ Platforma Azure używa następujących ustawień do utworzenia puli magazynów n
 | --- | --- |
 | Rozmiar paska |256 KB (magazynowanie danych); 64 KB (transakcyjna) |
 | Rozmiary dysków |1 TB każdego |
-| Cache |Odczyt |
+| Pamięć podręczna |Odczyt |
 | Rozmiar alokacji |rozmiar jednostki alokacji systemu plików NTFS 64 KB |
 | Odzyskiwanie | Odzyskiwanie proste (bez odporności) |
 | Liczba kolumn |Liczba dysków z danymi do 8<sup>1</sup> |
@@ -142,9 +142,9 @@ W poniższej tabeli opisano trzy dostępne opcje typu obciążenia oraz ich odpo
 
 | Typ obciążenia | Opis | Optymalizacje |
 | --- | --- | --- |
-| **Ogólne** |Ustawienie domyślne obsługujące większość obciążeń |Brak |
+| **Ogólne** |Ustawienie domyślne obsługujące większość obciążeń |None |
 | **Przetwarzanie transakcyjne** |Optymalizuje magazyn dla tradycyjnych obciążeń OLTP bazy danych |Flaga śledzenia 1117<br/>Flaga śledzenia 1118 |
-| **Magazynowania danych** |Optymalizuje magazyn do obciążeń analitycznych i sprawozdawczych |Flaga śledzenia 610<br/>Flaga śledzenia 1117 |
+| **Magazynowanie danych** |Optymalizuje magazyn do obciążeń analitycznych i sprawozdawczych |Flaga śledzenia 610<br/>Flaga śledzenia 1117 |
 
 > [!NOTE]
 > Typ obciążenia można określić tylko podczas inicjowania obsługi administracyjnej maszyny wirtualnej SQL, wybierając ją w kroku konfiguracji magazynu.

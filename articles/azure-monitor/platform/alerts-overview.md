@@ -5,11 +5,11 @@ ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
 ms.openlocfilehash: 7ca77531ed3e1fae8ec297e430597452c7512aea
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77665668"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395750"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Przegląd alertów w Microsoft Azure 
 
@@ -107,7 +107,7 @@ Możesz filtrować ten widok, wybierając wartości z menu rozwijanego w górnej
 |:---|:---|
 | Subskrypcja | Wybierz subskrypcje platformy Azure, dla których chcesz wyświetlić alerty. Opcjonalnie możesz wybrać wszystkie subskrypcje. W widoku są uwzględniane tylko alerty, do których masz dostęp w wybranych subskrypcjach. |
 | Grupa zasobów | Wybierz pojedynczą grupę zasobów. W widoku są uwzględniane tylko alerty z obiektami docelowymi w wybranej grupie zasobów. |
-| Przedział czasu | W widoku są uwzględniane tylko alerty wywoływane w wybranym zakresie czasu. Obsługiwane wartości to Ostatnia godzina, ostatnie 24 godziny, ostatnie 7 dni i ostatnie 30 dni. |
+| Zakres czasu | W widoku są uwzględniane tylko alerty wywoływane w wybranym zakresie czasu. Obsługiwane wartości to Ostatnia godzina, ostatnie 24 godziny, ostatnie 7 dni i ostatnie 30 dni. |
 
 Wybierz następujące wartości w górnej części strony alerty, aby otworzyć kolejną stronę:
 
@@ -156,7 +156,7 @@ Widok można filtrować, wybierając następujące wartości z menu rozwijanego 
 | Warunek monitorowania | Wybierz warunek monitorowania lub wybierz pozycję **wszystkie** , aby uwzględnić alerty wszystkich warunków. |
 | Stan alertu | Wybierz stan alertu lub wybierz pozycję **wszystkie** , aby uwzględnić alerty wszystkich stanów. |
 | Monitorowanie usługi | Wybierz usługę lub wybierz pozycję **wszystkie** , aby uwzględnić wszystkie usługi. Uwzględniane są tylko alerty utworzone przez reguły korzystające z usługi jako celu. |
-| Przedział czasu | W widoku są uwzględniane tylko alerty wywoływane w wybranym zakresie czasu. Obsługiwane wartości to Ostatnia godzina, ostatnie 24 godziny, ostatnie 7 dni i ostatnie 30 dni. |
+| Zakres czasu | W widoku są uwzględniane tylko alerty wywoływane w wybranym zakresie czasu. Obsługiwane wartości to Ostatnia godzina, ostatnie 24 godziny, ostatnie 7 dni i ostatnie 30 dni. |
 
 Zaznacz **kolumny** w górnej części strony, aby wybrać kolumny, które mają być wyświetlane. 
 

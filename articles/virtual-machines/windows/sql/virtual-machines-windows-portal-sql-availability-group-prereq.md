@@ -16,11 +16,11 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
 ms.openlocfilehash: 4c89489964410104726b65e1b1fc3577945ce14a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224766"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388750"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Wymagania wstępne dotyczące tworzenia zawsze dostępnych grup dostępności na SQL Server na maszynach wirtualnych platformy Azure
 
@@ -37,11 +37,11 @@ Na poniższym diagramie przedstawiono sposób kompilowania w samouczku.
 W tym samouczku przyjęto założenie, że masz podstawową wiedzę na temat SQL Server zawsze włączonymi grupami dostępności. Jeśli nie znasz tej technologii, zobacz temat [Omówienie zawsze włączonych grup dostępności (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx).
 
 
-## <a name="create-an-azure-account"></a>Utwórz konto systemu Azure
+## <a name="create-an-azure-account"></a>Utwórz konto platformy Azure
 Musisz mieć konto platformy Azure. Możesz [otworzyć bezpłatne konto platformy Azure](https://signup.azure.com/signup?offer=ms-azr-0044p&appId=102&ref=azureplat-generic&redirectURL=https:%2F%2Fazure.microsoft.com%2Fget-started%2Fwelcome-to-azure%2F&correlationId=24f9d452-1909-40d7-b609-2245aa7351a6&l=en-US) lub [aktywować korzyści dla subskrybentów programu Visual Studio](https://docs.microsoft.com/visualstudio/subscriptions/subscriber-benefits).
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 2. Kliknij przycisk **+** , aby utworzyć nowy obiekt w portalu.
 
    ![Nowy obiekt](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-portalplus.png)
@@ -50,7 +50,7 @@ Musisz mieć konto platformy Azure. Możesz [otworzyć bezpłatne konto platform
 
    ![Grupa zasobów](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroupsymbol.png)
 4. Kliknij pozycję **Grupa zasobów**.
-5. Kliknij pozycję **Utwórz**.
+5. Kliknij przycisk **Utwórz**.
 6. W polu **Nazwa grupy zasobów**wpisz nazwę grupy zasobów. Na przykład wpisz **SQL-ha-RG**.
 7. Jeśli masz wiele subskrypcji platformy Azure, sprawdź, czy subskrypcja jest subskrypcją platformy Azure, w której chcesz utworzyć grupę dostępności.
 8. Wybierz lokalizację. Lokalizacja jest regionem świadczenia usługi Azure, w którym chcesz utworzyć grupę dostępności. Ten artykuł kompiluje wszystkie zasoby w jednej lokalizacji platformy Azure.
@@ -94,7 +94,7 @@ Aby utworzyć sieć wirtualną:
 
    W przykładzie jest użyta nazwa podsieci **administrator**. Ta podsieć jest dla kontrolerów domeny.
 
-5. Kliknij pozycję **Utwórz**.
+5. Kliknij przycisk **Utwórz**.
 
    ![Konfigurowanie sieci wirtualnej](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/06-configurevirtualnetwork.png)
 
@@ -189,7 +189,7 @@ W poniższej tabeli przedstawiono ustawienia tych dwóch maszyn:
 | **Publiczny adres IP** |*Taka sama nazwa jak maszyna wirtualna* |
 | **Sieciowa grupa zabezpieczeń** |*Taka sama nazwa jak maszyna wirtualna* |
 | **Zestaw dostępności** |adavailabilityset </br>**Domeny błędów**: 2 </br>**Domeny aktualizacji**: 2|
-| **Diagnostyka** |Enabled (Włączony) |
+| **Diagnostyka** |Aktywny |
 | **Konto magazynu diagnostyki** |*Utworzone automatycznie* |
 
    >[!IMPORTANT]
@@ -220,7 +220,7 @@ W poniższych krokach skonfiguruj komputer **AD-Primary-DC** jako kontroler dome
 
     ![Okno dialogowe Dodawanie ról](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/23-addroles.png)
 7. Klikaj przycisk **dalej** , aż przejdziesz do sekcji **potwierdzenie** . Zaznacz pole wyboru **Automatycznie uruchom ponownie serwer docelowy, jeśli** jest to wymagane.
-8. Kliknij pozycję **Zainstaluj**.
+8. Kliknij polecenie **Zainstaluj**.
 9. Po zakończeniu instalacji funkcji Wróć do pulpitu nawigacyjnego **Menedżer serwera** .
 10. Wybierz opcję Nowy **AD DS** w okienku po lewej stronie.
 11. Kliknij link **więcej** na żółtym pasku ostrzegawczym.
@@ -234,7 +234,7 @@ W poniższych krokach skonfiguruj komputer **AD-Primary-DC** jako kontroler dome
     | **Konfiguracja wdrożenia** |**Dodawanie nowego lasu**<br/> **Nazwa domeny głównej** = Corp.contoso.com |
     | **Opcje kontrolera domeny** |**Hasło DSRM** = contoso! 0000<br/>**Potwierdź hasło** = contoso! 0000 |
 14. Kliknij przycisk **dalej** , aby przejść przez pozostałe strony kreatora. Na stronie **Sprawdzanie wymagań wstępnych** Sprawdź, czy jest wyświetlany następujący komunikat: **wszystkie testy wymagań wstępnych zostały pomyślnie zakończone**powodzeniem. Możesz przejrzeć wszystkie odpowiednie komunikaty ostrzegawcze, ale można kontynuować instalację.
-15. Kliknij pozycję **Zainstaluj**. Maszyna wirtualna **AD-podstawowa-DC** automatycznie wykonuje ponowny rozruch.
+15. Kliknij polecenie **Zainstaluj**. Maszyna wirtualna **AD-podstawowa-DC** automatycznie wykonuje ponowny rozruch.
 
 ### <a name="note-the-ip-address-of-the-primary-domain-controller"></a>Zanotuj adres IP podstawowego kontrolera domeny
 
@@ -261,7 +261,7 @@ Po utworzeniu pierwszego kontrolera domeny i włączeniu usługi DNS na pierwszy
 
 3. Kliknij pozycję **niestandardowe**i wpisz prywatny adres IP podstawowego kontrolera domeny.
 
-4. Kliknij pozycję **Zapisz**.
+4. Kliknij przycisk **Save** (Zapisz).
 
 ### <a name="configure-the-second-domain-controller"></a>Skonfiguruj drugi kontroler domeny
 Po ponownym uruchomieniu podstawowego kontrolera domeny można skonfigurować drugi kontroler domeny. Ten opcjonalny krok zapewnia wysoką dostępność. Wykonaj następujące kroki, aby skonfigurować drugi kontroler domeny:
@@ -272,7 +272,7 @@ Po ponownym uruchomieniu podstawowego kontrolera domeny można skonfigurować dr
 4. W **Centrum sieci i udostępniania**kliknij interfejs sieciowy.
    ![Interfejs sieciowy](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/26-networkinterface.png)
 
-5. Kliknij pozycję **Właściwości**.
+5. Kliknij polecenie **Właściwości**.
 6. Wybierz pozycję **Protokół internetowy w wersji 4 (TCP/IPv4)** , a następnie kliknij pozycję **Właściwości**.
 7. Wybierz opcję **Użyj następujących adresów serwerów DNS** i określ adres podstawowego kontrolera domeny w **preferowanym serwerze DNS**.
 8. Kliknij przycisk **OK**, a następnie **Zamknij** , aby zatwierdzić zmiany. Teraz można przyłączyć maszynę wirtualną do **Corp.contoso.com**.
@@ -364,7 +364,7 @@ Przed rozpoczęciem należy wziąć pod uwagę następujące decyzje dotyczące 
 Następnie utwórz trzy maszyny wirtualne — dwie SQL Server maszyny wirtualne oraz maszynę wirtualną dla dodatkowego węzła klastra. Aby utworzyć wszystkie maszyny wirtualne, Wróć do grupy zasobów **SQL-ha-RG** , kliknij przycisk **Dodaj**, wyszukaj odpowiedni element galerii, kliknij pozycję **maszyna wirtualna**, a następnie kliknij pozycję **z galerii**. Informacje w poniższej tabeli ułatwiają tworzenie maszyn wirtualnych:
 
 
-| Strona | VM1 | VM2 | VM3 |
+| Stronic | VM1 | VM2 | VM3 |
 | --- | --- | --- | --- |
 | Wybierz odpowiedni element galerii |**System Windows Server 2016 Datacenter** |**SQL Server 2016 z dodatkiem SP1 Enterprise w systemie Windows Server 2016** |**SQL Server 2016 z dodatkiem SP1 Enterprise w systemie Windows Server 2016** |
 | **Podstawowe informacje** o konfiguracji maszyny wirtualnej |**Nazwa** = Cluster-FSW<br/>**Nazwa użytkownika** = administrator domeny<br/>**Hasło** = contoso! 0000<br/>**Subskrypcja** = subskrypcja<br/>**Grupa zasobów** = SQL-ha-RG<br/>**Lokalizacja** = Twoja lokalizacja na platformie Azure |**Nazwa** = SqlServer-0<br/>**Nazwa użytkownika** = administrator domeny<br/>**Hasło** = contoso! 0000<br/>**Subskrypcja** = subskrypcja<br/>**Grupa zasobów** = SQL-ha-RG<br/>**Lokalizacja** = Twoja lokalizacja na platformie Azure |**Nazwa** = SqlServer-1<br/>**Nazwa użytkownika** = administrator domeny<br/>**Hasło** = contoso! 0000<br/>**Subskrypcja** = subskrypcja<br/>**Grupa zasobów** = SQL-ha-RG<br/>**Lokalizacja** = Twoja lokalizacja na platformie Azure |

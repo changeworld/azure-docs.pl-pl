@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 02/01/2020
-ms.openlocfilehash: 20c93d214195f8fe389f4982e1d8b10998c7057d
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.date: 03/09/2020
+ms.openlocfilehash: 97ce402045cfd2c990b457c5d4d06888cda632d5
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78192391"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945697"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>Wybierz między rdzeń wirtualny i modelami zakupów jednostek DTU
 
@@ -85,6 +85,11 @@ Aby przekonwertować model zakupu oparty na jednostkach DTU na model zakupu opar
 
 - Co 100 DTU w warstwie Standardowa wymaga co najmniej 1 rdzeń wirtualny w warstwie usług Ogólnego przeznaczenia.
 - Co 125 DTU w warstwie Premium wymaga co najmniej 1 rdzeń wirtualny w warstwie usług Krytyczne dla działania firmy.
+
+> [!NOTE]
+> Wskazówki dotyczące ustalania wielkości jednostek DTU do rdzeń wirtualny są przybliżone i są udostępniane w celu uzyskania pomocy w początkowej ocenie docelowego celu usługi bazy danych. Optymalna konfiguracja docelowej bazy danych jest zależna od obciążenia. 
+> 
+> Osiągnięcie optymalnego współczynnika cen/wydajności może wymagać wykorzystania elastyczności modelu rdzeń wirtualny w celu dostosowania liczby rdzeni wirtualnych, [generowania sprzętu](sql-database-service-tiers-vcore.md#hardware-generations), [usługi](sql-database-service-tiers-vcore.md#service-tiers) i warstw [obliczeniowych](sql-database-service-tiers-vcore.md#compute-tiers) , a także dostrajania innych parametrów konfiguracji bazy danych, takich jak [Maksymalny stopień równoległości](https://docs.microsoft.com/sql/relational-databases/query-processing-architecture-guide#parallel-query-processing).
 
 ## <a name="dtu-based-purchasing-model"></a>Model zakupu oparty na jednostkach DTU
 

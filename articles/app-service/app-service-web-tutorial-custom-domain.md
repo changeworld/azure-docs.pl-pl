@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 06/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: 37bb1193056894ea824f4aa1723fb327f54bccae
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672075"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373645"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Samouczek: mapowanie istniejącej niestandardowej nazwy DNS na Azure App Service
 
@@ -47,7 +47,7 @@ Aby zamapować niestandardową nazwę DNS na aplikację internetową, dla tej ap
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-### <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+### <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Otwórz witrynę [Azure Portal](https://portal.azure.com) i zaloguj się przy użyciu konta platformy Azure.
 
@@ -340,7 +340,7 @@ az webapp config hostname add \
 
 Aby uzyskać więcej informacji, zobacz [Map a custom domain to a web app](scripts/cli-configure-custom-domain.md) (Mapowanie domeny niestandardowej na aplikację internetową).
 
-### <a name="azure-powershell"></a>Program Azure PowerShell 
+### <a name="azure-powershell"></a>Azure PowerShell 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

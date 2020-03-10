@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: philmea
 ms.openlocfilehash: 173be8207df2f0128dfc9ae3c36aa3c3dc392bee
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748570"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392580"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub wysokiej dostępności i odzyskiwania po awarii
 
@@ -123,11 +123,11 @@ Aby uprościć ten krok, należy użyć operacji idempotentne. Operacje idempote
 
 Poniżej znajduje się podsumowanie opcji HA/DR przedstawionych w tym artykule, których można użyć jako ramki odwołania w celu wybrania odpowiedniej opcji, która działa dla danego rozwiązania.
 
-| HA/DR — opcja | RTO | ODZYSKIWANIA | Czy wymaga ręcznej interwencji? | Złożoność implementacji | Dodatkowy wpływ na koszty|
+| HA/DR — opcja | RTO | RPO | Czy wymaga ręcznej interwencji? | Złożoność implementacji | Dodatkowy wpływ na koszty|
 | --- | --- | --- | --- | --- | --- |
-| Tryb failover zainicjowany przez firmę Microsoft |2-26 godzin|Odwołaj się do tabeli celu punktu odzyskiwania|Nie|Brak|Brak|
-| Ręczna praca awaryjna |10 min-2 godz.|Odwołaj się do tabeli celu punktu odzyskiwania|Tak|Bardzo niska. Musisz tylko wyzwolić tę operację z portalu.|Brak|
-| HA w różnych regionach |< 1 min|Zależy od częstotliwości replikacji niestandardowego rozwiązania o wysokiej dostępności|Nie|Wysoka|> 1x koszt 1 IoT Hub|
+| Tryb failover zainicjowany przez firmę Microsoft |2-26 godzin|Odwołaj się do tabeli celu punktu odzyskiwania|Nie|None|None|
+| Ręczna praca awaryjna |10 min-2 godz.|Odwołaj się do tabeli celu punktu odzyskiwania|Tak|Bardzo niska. Musisz tylko wyzwolić tę operację z portalu.|None|
+| HA w różnych regionach |< 1 min|Zależy od częstotliwości replikacji niestandardowego rozwiązania o wysokiej dostępności|Nie|Wysoki|> 1x koszt 1 IoT Hub|
 
 ## <a name="next-steps"></a>Następne kroki
 

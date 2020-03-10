@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
 ms.openlocfilehash: 8435663dcf92e2617ea2fe9218649e94243272d2
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073209"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383447"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Azure Disk Encryption dla systemu Windows (Microsoft. Azure. Security. AzureDiskEncryption)
 
@@ -71,7 +71,7 @@ Schemat v 2.2 jest zalecany dla wszystkich nowych maszyn wirtualnych i nie wymag
 
 Schemat 1,1 wymaga `aadClientID` i `aadClientSecret` lub `AADClientCertificate` i nie jest zalecany dla nowych maszyn wirtualnych.
 
-Używanie `aadClientSecret`:
+Korzystanie z programu `aadClientSecret`:
 
 ```json
 {
@@ -101,7 +101,7 @@ Używanie `aadClientSecret`:
 }
 ```
 
-Używanie `AADClientCertificate`:
+Korzystanie z programu `AADClientCertificate`:
 
 ```json
 {
@@ -134,11 +134,11 @@ Używanie `AADClientCertificate`:
 
 ### <a name="property-values"></a>Wartości właściwości
 
-| Nazwa | Wartość / przykład | Typ danych |
+| Name (Nazwa) | Wartość / przykład | Typ danych |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.Azure.Security | ciąg |
-| type | AzureDiskEncryptionForLinux | ciąg |
+| typ | AzureDiskEncryptionForLinux | ciąg |
 | typeHandlerVersion | 1,1, 2,2 | ciąg |
 | (schemat 1,1) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
 | (schemat 1,1) AADClientSecret | hasło | ciąg |
@@ -167,7 +167,7 @@ Zapoznaj się z [przewodnikiem rozwiązywania problemów Azure Disk Encryption](
 
 ### <a name="support"></a>Pomoc techniczna
 
-Jeśli potrzebujesz dodatkowej pomocy w dowolnym momencie, w tym artykule, możesz skontaktować się ze ekspertów platformy Azure na [forów platformy Azure z subskrypcją MSDN i Stack Overflow](https://azure.microsoft.com/support/community/). Alternatywnie mogą zgłaszać zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) i wybierz Uzyskaj pomoc techniczną. Aby uzyskać informacje o korzystaniu z pomocy technicznej platformy Azure, przeczytaj [pomocy technicznej Microsoft Azure — często zadawane pytania](https://azure.microsoft.com/support/faq/).
+Jeśli potrzebujesz więcej pomocy w dowolnym punkcie tego artykułu, możesz skontaktować się z ekspertami platformy Azure na [forach MSDN i Stack Overflow](https://azure.microsoft.com/support/community/). Alternatywnie mogą zgłaszać zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej systemu Azure](https://azure.microsoft.com/support/options/) i wybierz pozycję Uzyskaj pomoc techniczną. Aby uzyskać informacje o korzystaniu z pomocy technicznej platformy Azure, przeczytaj temat [Microsoft Azure support — często zadawane pytania](https://azure.microsoft.com/support/faq/).
 
 ## <a name="next-steps"></a>Następne kroki
 Aby uzyskać więcej informacji na temat rozszerzeń, zobacz [rozszerzenia i funkcje maszyny wirtualnej dla systemu Windows](features-windows.md).

@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 462d54a9d89d6f03aed5e221fa02609da786c8c1
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918734"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387651"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Przenoszenie danych do i z tabeli platformy Azure przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -38,7 +38,7 @@ Można utworzyć potok za pomocą działania kopiowania, które przenosi dane do
 
 Najprostszym sposobem utworzenia potoku jest użycie **Kreatora kopiowania**. Zobacz [Samouczek: Tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) na potrzeby szybkiego instruktażu dotyczącego tworzenia potoku przy użyciu Kreatora kopiowania danych.
 
-Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania. 
+Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Aby uzyskać instrukcje krok po kroku dotyczące tworzenia potoku za pomocą działania kopiowania, zobacz [Samouczek dotyczący działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
 
 Niezależnie od tego, czy używasz narzędzi, czy interfejsów API, wykonaj następujące kroki, aby utworzyć potok służący do przenoszenia danych ze źródłowego magazynu danych do magazynu danych ujścia: 
 
@@ -82,7 +82,7 @@ Właściwości dostępne w sekcji typeProperties działania z drugiej strony ró
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
 | azureTableSourceQuery |Użyj zapytania niestandardowego do odczytywania danych. |Ciąg zapytania w tabeli platformy Azure. Zobacz przykłady w następnej sekcji. |Nie. Gdy tabelaname jest określona bez azureTableSourceQuery, wszystkie rekordy z tabeli są kopiowane do lokalizacji docelowej. Jeśli określono również azureTableSourceQuery, rekordy z tabeli, która spełnia zapytanie, są kopiowane do miejsca docelowego. |
-| azureTableSourceIgnoreTableNotFound |Wskazuje, czy w trakcie połknięcia wyjątek tabeli nie istnieje. |PRAWDA<br/>Fałsz |Nie |
+| azureTableSourceIgnoreTableNotFound |Wskazuje, czy w trakcie połknięcia wyjątek tabeli nie istnieje. |TRUE<br/>FALSE |Nie |
 
 ### <a name="azuretablesourcequery-examples"></a>Przykłady azureTableSourceQuery
 Jeśli kolumna tabeli platformy Azure jest typu String:
@@ -104,7 +104,7 @@ Jeśli kolumna tabeli platformy Azure jest typu DateTime:
 | azureTableDefaultPartitionKeyValue |Domyślna wartość klucza partycji, która może być używana przez ujścia. |Wartość ciągu. |Nie |
 | azureTablePartitionKeyName |Określ nazwę kolumny, której wartości są używane jako klucze partycji. Jeśli nie zostanie określony, AzureTableDefaultPartitionKeyValue jest używany jako klucz partycji. |Nazwa kolumny. |Nie |
 | azureTableRowKeyName |Określ nazwę kolumny, której wartości kolumn są używane jako klucz wiersza. Jeśli nie zostanie określony, użyj identyfikatora GUID dla każdego wiersza. |Nazwa kolumny. |Nie |
-| azureTableInsertType |Tryb wstawiania danych do tabeli platformy Azure.<br/><br/>Ta właściwość określa, czy istniejące wiersze w tabeli wyjściowej ze zgodnymi partycjami i kluczami wierszy mają zamienione lub scalone wartości. <br/><br/>Aby dowiedzieć się, jak działają te ustawienia (Scalanie i zamienianie), zobacz sekcję [Wstawianie lub scalanie jednostek](https://msdn.microsoft.com/library/azure/hh452241.aspx) oraz [Wstawianie lub zastępowanie](https://msdn.microsoft.com/library/azure/hh452242.aspx) tematów. <br/><br> To ustawienie jest stosowane na poziomie wiersza, a nie na poziomie tabeli, a żadna opcja usuwa wiersze w tabeli wyjściowej, które nie istnieją w danych wejściowych. |Scal (domyślnie)<br/>Zastąp |Nie |
+| azureTableInsertType |Tryb wstawiania danych do tabeli platformy Azure.<br/><br/>Ta właściwość określa, czy istniejące wiersze w tabeli wyjściowej ze zgodnymi partycjami i kluczami wierszy mają zamienione lub scalone wartości. <br/><br/>Aby dowiedzieć się, jak działają te ustawienia (Scalanie i zamienianie), zobacz sekcję [Wstawianie lub scalanie jednostek](https://msdn.microsoft.com/library/azure/hh452241.aspx) oraz [Wstawianie lub zastępowanie](https://msdn.microsoft.com/library/azure/hh452242.aspx) tematów. <br/><br> To ustawienie jest stosowane na poziomie wiersza, a nie na poziomie tabeli, a żadna opcja usuwa wiersze w tabeli wyjściowej, które nie istnieją w danych wejściowych. |Scal (domyślnie)<br/>replace |Nie |
 | writeBatchSize |Wstawia dane do tabeli platformy Azure po trafieniu writeBatchSize lub writeBatchTimeout. |Liczba całkowita (liczba wierszy) |Nie (domyślnie: 10000) |
 | writeBatchTimeout |Wstawia dane do tabeli platformy Azure po trafieniu writeBatchSize lub writeBatchTimeout |TimeSpan<br/><br/>Przykład: "00:20:00" (20 minut) |Nie (Domyślnie wartość domyślna limitu czasu klienta magazynu 90 s) |
 
@@ -474,13 +474,13 @@ Jak wspomniano w artykule [działania związane z przenoszeniem danych](data-fac
 
 Podczas przeniesienia danych do & z tabeli platformy Azure następujące [mapowania zdefiniowane przez usługę azure Table Service](https://msdn.microsoft.com/library/azure/dd179338.aspx) są używane w ramach typów OData w tabeli platformy Azure do typu .NET i na odwrót.
 
-| Typ danych protokołu OData | Typ .NET | Szczegóły |
+| Typ danych OData | Typ .NET | Szczegóły |
 | --- | --- | --- |
 | Edm.Binary |byte[] |Tablica bajtów do 64 KB. |
-| Edm.Boolean |bool |Wartość logiczna. |
-| Edm.DateTime |Data i godzina |Wartość 64-bitowa wyrażona jako uniwersalny czas koordynowany (UTC). Obsługiwany zakres DateTime rozpoczyna się od 12:00 północy, 1 stycznia 1601 N.E. (C.E.), UTC. Zakres zostaje zakończony 31 grudnia 9999. |
+| Edm.Boolean |logiczna |Wartość logiczna. |
+| Edm.DateTime |DateTime |Wartość 64-bitowa wyrażona jako uniwersalny czas koordynowany (UTC). Obsługiwany zakres DateTime rozpoczyna się od 12:00 północy, 1 stycznia 1601 N.E. (C.E.), UTC. Zakres zostaje zakończony 31 grudnia 9999. |
 | Edm.Double |double |64-bitowa wartość zmiennoprzecinkowa. |
-| Edm.Guid |Identyfikator GUID |128-bitowy unikatowy identyfikator globalny. |
+| Edm.Guid |Guid |128-bitowy unikatowy identyfikator globalny. |
 | Edm.Int32 |Int32 |32-bitowa liczba całkowita. |
 | Edm.Int64 |Int64 |64-bitowa liczba całkowita. |
 | Edm.String |Ciąg |Wartość zakodowana w formacie UTF-16. Wartości ciągu mogą należeć do 64 KB. |
@@ -537,7 +537,7 @@ Uwzględniając mapowanie typu z tabeli platformy Azure typu OData na typ .NET, 
 | Nazwa kolumny | Typ |
 | --- | --- |
 | userid |Edm.Int64 |
-| name |Edm.String |
+| {1&gt;nazwa&lt;1} |Edm.String |
 | lastlogindate |Edm.DateTime |
 
 Następnie zdefiniuj zestaw danych tabeli platformy Azure w następujący sposób. Nie trzeba określać sekcji "Structure" z informacjami o typie, ponieważ informacje o typie zostały już określone w źródłowym magazynie danych.

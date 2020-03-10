@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: jgao
 ms.openlocfilehash: 585e2773ea5d6af184f85e65b63d39b60d632146
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483598"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388137"
 ---
 # <a name="use-visual-studio-code-to-create-azure-resource-manager-templates"></a>Tworzenie Azure Resource Manager szablonów przy użyciu Visual Studio Code
 
@@ -39,7 +39,7 @@ Parametry, zmienne, funkcje, nazwy i wyrażenia są kodowane kolorami, jak pokaz
 
 Widok konspektu szablonu ułatwia nawigowanie po dużych szablonach.
 
-### <a name="intellisense"></a>Intellisense
+### <a name="intellisense"></a>Technologia
 
 Rozszerzenie szablonu Menedżer zasobów wie, że możliwe jest uzupełnianie nazw funkcji, parametrów, zmiennych i odwołań. Sugestie IntelliSense pojawiają się w trakcie wpisywania. Jeśli będziesz kontynuować wpisywanie znaków, lista elementów członkowskich (zmiennych, metod itp.) zostanie przefiltrowana w celu uwzględnienia tylko elementów członkowskich zawierających wpisane znaki. Naciśnięcie klawisza **Tab** lub **Enter** spowoduje wstawienie wybranego elementu członkowskiego.
 

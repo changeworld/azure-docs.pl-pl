@@ -10,11 +10,11 @@ ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: 0d78f3cc4f2b12b2d9f45878a0c1b91263112689
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118546"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385613"
 ---
 # <a name="what-is-form-recognizer"></a>Co to jest rozpoznawanie formularzy?
 
@@ -51,7 +51,7 @@ Aparat rozpoznawania formularzy zawiera również model służący do odczytywan
 
 Aparat rozpoznawania formularzy może również wyodrębnić strukturę tekstu i tabeli (numery wierszy i kolumn skojarzonych z tekstem) za pomocą optycznego rozpoznawania znaków (OCR) o wysokiej rozdzielczości. 
 
-## <a name="get-started"></a>Wprowadzenie
+## <a name="get-started"></a>Rozpoczynanie pracy
 
 Skorzystaj z przewodnika Szybki Start, aby rozpocząć wyodrębnianie danych z formularzy. Zalecamy korzystanie z bezpłatnej usługi podczas nauki technologii. Należy pamiętać, że liczba bezpłatnych stron jest ograniczona do 500 miesięcznie.
 

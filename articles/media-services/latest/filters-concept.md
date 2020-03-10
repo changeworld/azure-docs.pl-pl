@@ -1,5 +1,5 @@
 ---
-title: Definiowanie filtrów w usłudze Azure Media Services
+title: Definiowanie filtrów w Azure Media Services
 description: W tym temacie opisano sposób tworzenia filtrów, więc klienta można ich używać do określonych sekcji strumienia strumienia. Usługa Media Services tworzy manifestów dynamicznych w celu uzyskania tego selektywne przesyłania strumieniowego.
 services: media-services
 documentationcenter: ''
@@ -14,75 +14,75 @@ ms.topic: article
 ms.date: 05/23/2019
 ms.author: juliako
 ms.openlocfilehash: fdf29924da31db0347938df89e698cb258c2336b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66225410"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388098"
 ---
 # <a name="filters"></a>Filtry
 
-Podczas dostarczania zawartości do klientów (zdarzeń transmisji strumieniowej na żywo lub wideo na żądanie) klienta może wymagać większej elastyczności niż opisane w pliku manifestu zasobu domyślnego. Usługa Azure Media Services oferuje [manifestów dynamicznych](filters-dynamic-manifest-overview.md) oparte na wstępnie zdefiniowane filtry. 
+Podczas dostarczania zawartości do klientów (zdarzeń przesyłania strumieniowego na żywo lub wideo na żądanie) klient może potrzebować większej elastyczności niż to, co opisano w pliku manifestu domyślnego elementu zawartości. Azure Media Services oferuje [dynamiczne manifesty](filters-dynamic-manifest-overview.md) na podstawie wstępnie zdefiniowanych filtrów. 
 
-Filtry są reguły po stronie serwera, które umożliwiają klientom wykonywać następujące czynności: 
+Filtry są reguł po stronie serwera, które umożliwiają klientom wykonywanie następujących czynności: 
 
-- Odtwarzanie tylko na część wideo (zamiast odtwarzanie całego). Na przykład:
-  - Zmniejsz manifestu, aby pokazać klipów podrzędnych wydarzenia na żywo ("podklipów filtering"), lub
-  - Przytnij początku wideo ("Przycinanie wideo").
-- Dostarczaj tylko określonej wersji i/lub ścieżek określonego języka, które są obsługiwane przez urządzenia, które służy do odtwarzania zawartości ("odwzorowanie filtering"). 
-- Dostosuj prezentacji okna (DVR) w celu zapewnienia ograniczona długość okna funkcji DVR w odtwarzaczu ("Dostosowywanie prezentacji okno").
+- Odtwarzaj tylko sekcję filmu wideo (zamiast odtwarzać cały film wideo). Na przykład:
+  - Zmniejsz manifest, aby pokazać podrzędny klip zdarzenia na żywo ("filtrowanie podklipu") lub
+  - Przytnij początek filmu wideo ("przycinanie filmu wideo").
+- Dostarczaj tylko określone wersje i/lub określone ścieżki języka, które są obsługiwane przez urządzenie używane do odtwarzania zawartości ("filtrowanie wersji"). 
+- Dostosuj okno prezentacji (DVR), aby zapewnić ograniczoną długość okna DVR w odtwarzaczu ("Dostosowywanie okna prezentacji").
 
-Usługi Media Services pozwala na tworzenie **konta filtry** i **filtry zasobów** dotyczące Twojej zawartości. Ponadto można skojarzyć filtry wstępnie utworzonych za pomocą **lokalizatora przesyłania strumieniowego**.
+Media Services umożliwia tworzenie **filtrów kont** i **filtrów zasobów** dla zawartości. Ponadto można skojarzyć wstępnie utworzone filtry z **lokalizatorem przesyłania strumieniowego**.
 
 ## <a name="defining-filters"></a>Definiowanie filtrów
 
 Istnieją dwa typy filtrów: 
 
-* [Konto filtry](https://docs.microsoft.com/rest/api/media/accountfilters) (globalna) — można zastosować do dowolnego zasobu w ramach konta usługi Azure Media Services, okres istnienia konta.
-* [Filtry zasobów](https://docs.microsoft.com/rest/api/media/assetfilters) (local) — można stosować tylko do elementu zawartości, z którym filtr został skojarzony po utworzeniu, okres istnienia zasobu. 
+* [Filtry kont](https://docs.microsoft.com/rest/api/media/accountfilters) (globalne) — mogą być stosowane do każdego elementu zawartości w ramach konta Azure Media Services, które mają okres istnienia konta.
+* [Filtry zasobów](https://docs.microsoft.com/rest/api/media/assetfilters) (lokalne) — mogą być stosowane tylko do zasobu, z którym filtr został skojarzony podczas tworzenia, mają okres istnienia elementu zawartości. 
 
-**Konto filtry** i **filtry zasobów** typy mają te same właściwości, definiując/opisu filtru. Podczas tworzenia, z wyjątkiem **filtr zasobów**, należy określić nazwę zasobu za pomocą którego chcesz skojarzyć z filtrem.
+**Filtry konta** i typy **filtrów zasobów** mają dokładnie te same właściwości, które definiują/opisują filtr. Oprócz tworzenia **filtru zasobów**należy określić nazwę elementu zawartości, z którym ma zostać skojarzony filtr.
 
-W zależności od scenariusza możesz zdecydować, jakiego rodzaju filtru jest bardziej odpowiednie (filtr zasobu lub Filtr konta). Filtry kont są odpowiednie dla profilów urządzeń (odwzorowanie filtrowanie) gdzie filtry zasobów może służyć można przycięcia do określonego zasobu.
+W zależności od danego scenariusza decyduje o tym, jaki typ filtru jest bardziej odpowiedni (filtr zasobów lub filtr konta). Filtry kont są odpowiednie dla profilów urządzeń (filtrowanie wersji), gdzie filtry zasobów mogą być używane do przycinania określonego elementu zawartości.
 
-Możesz użyć następujących właściwości do opisania filtry. 
+Do opisywania filtrów służą następujące właściwości. 
 
 |Name (Nazwa)|Opis|
 |---|---|
-|firstQuality|Pierwszy bitrate jakości filtru.|
-|presentationTimeRange|Zakres czasu prezentacji. Ta właściwość jest używana do filtrowania punktów manifestu rozpoczęcia/zakończenia, długość okna prezentacji i pozycja początkowa na żywo. <br/>Aby uzyskać więcej informacji, zobacz [PresentationTimeRange](#presentationtimerange).|
-|ścieżki|Warunki wybór ścieżki. Aby uzyskać więcej informacji, zobacz [ścieżki](#tracks)|
+|firstQuality|Pierwsza szybkość transmisji bitów filtru.|
+|presentationTimeRange|Zakres czasu prezentacji. Ta właściwość służy do filtrowania punktów początkowych i końcowych manifestu, długości okna prezentacji i pozycji początkowej na żywo. <br/>Aby uzyskać więcej informacji, zobacz [PresentationTimeRange](#presentationtimerange).|
+|służąc|Śledzi warunki wyboru. Aby uzyskać więcej informacji, zobacz [ścieżki](#tracks)|
 
 ### <a name="presentationtimerange"></a>presentationTimeRange
 
-Użyj tej właściwości, za pomocą **filtry zasobów**. Nie zaleca się ustawienie właściwości z **filtrów kont**.
+Użyj tej właściwości z **filtrami zasobów**. Nie zaleca się ustawiania właściwości przy użyciu **filtrów konta**.
 
 |Name (Nazwa)|Opis|
 |---|---|
-|**endTimestamp**|Ma zastosowanie do materiałów wideo na żądanie (VoD).<br/>Prezentacji transmisji strumieniowej na żywo jest dyskretnie ignorowana i stosowane po zakończeniu prezentacji i dane ze strumienia staje się wideo na żądanie.<br/>Jest to wartość typu long reprezentujący punkt końcowy bezwzględne prezentacji zaokrąglona do najbliższej następnym uruchomieniu GOP. Jednostka jest skala czasu, więc będzie endTimestamp 1800000000 dla więcej niż trzy minuty.<br/>Użyj startTimestamp i endTimestamp można przycięcia fragmentów, które będą znajdować się na liście odtwarzania (manifest).<br/>Na przykład startTimestamp = 40000000 i endTimestamp = 100000000 przy użyciu skali czasu domyślne wygeneruje listy odtwarzania, który zawiera fragmenty znajdujące 4 sekundy, a następnie 10 sekund prezentacja wideo na żądanie. Jeśli fragment pokrywającej granicy, całego fragmentu będą uwzględniane w manifeście.|
-|**forceEndTimestamp**|Ma zastosowanie do transmisji strumieniowej na żywo tylko.<br/>Wskazuje, czy właściwość endTimestamp musi być obecny. W przypadku opcji true endTimestamp musi być określona, lub zostanie zwrócony kod nieprawidłowe żądanie.<br/>Dozwolone wartości: FAŁSZ, PRAWDA.|
-|**liveBackoffDuration**|Ma zastosowanie do transmisji strumieniowej na żywo tylko.<br/> Ta wartość określa najnowsze na żywo pozycji klient może próbować.<br/>Używanie tej właściwości, można opóźnić pozycji odtwarzania na żywo i tworzyć bufor po stronie serwera dla graczy.<br/>W tej właściwości jest jednostka skali czasu (patrz poniżej).<br/>Maksimum na żywo wycofania czas trwania to 300 sekund (3000000000).<br/>Na przykład wartość 2000000000 oznacza, że najnowsza wersja zawartości jest 20 sekund opóźnienia od rzeczywistego na żywo krawędzi.|
-|**presentationWindowDuration**|Ma zastosowanie do transmisji strumieniowej na żywo tylko.<br/>Użyj presentationWindowDuration do zastosowania przesuwającego się okna fragmentów, które mają zostać objęte listy odtwarzania.<br/>W tej właściwości jest jednostka skali czasu (patrz poniżej).<br/>Na przykład ustawić presentationWindowDuration = 1200000000, aby zastosować przesuwającego się okna dwie minuty. Nośnik w ciągu 2 minut na żywo edge zostaną uwzględnione w listy odtwarzania. Jeśli fragment pokrywającej granicy, całego fragmentu zostaną uwzględnione na liście odtwarzania. Czas trwania okna prezentacji minimalna wynosi 60 sekund.|
-|**startTimestamp**|Ma zastosowanie do wideo na żądanie (VoD) lub transmisji strumieniowej na żywo.<br/>Jest to wartość typu long reprezentujący punkt początkowy bezwzględne strumienia. Wartość jest zaokrąglana do najbliższej następnym uruchomieniu GOP. Jednostka jest skala czasu, więc będzie startTimestamp 150000000 15 sekund.<br/>Użyj startTimestamp i endTimestampp można przycięcia fragmentów, które będą znajdować się na liście odtwarzania (manifest).<br/>Na przykład startTimestamp = 40000000 i endTimestamp = 100000000 przy użyciu skali czasu domyślne wygeneruje listy odtwarzania, który zawiera fragmenty znajdujące 4 sekundy, a następnie 10 sekund prezentacja wideo na żądanie. Jeśli fragment pokrywającej granicy, całego fragmentu będą uwzględniane w manifeście.|
-|**Skala czasu**|Dotyczy wszystkich sygnatur czasowych i czasów trwania prezentacji zakres czasu, w jednej sekundy jako liczbę przyrostów określono.<br/>Domyślna to przyrosty 10000000 - dziesięć milionów w 1 sekundę, gdy każdy przyrost jest długa 100 nanosekund.<br/>Na przykład jeśli chcesz ustawić startTimestamp na 30 sekund, można użyć wartości 300000000 podczas korzystania z domyślnej skali czasu.|
+|**endTimestamp**|Dotyczy wideo na żądanie (VoD).<br/>W przypadku prezentacji przesyłania strumieniowego na żywo jest ona dyskretnie ignorowana i stosowana, gdy prezentacja się zakończy, a strumień zostaje VoD.<br/>Jest to długa wartość reprezentująca bezwzględny punkt końcowy prezentacji, zaokrąglona do najbliższego następnego uruchomienia grupę GOP. Jednostką jest skala czasu, więc endTimestamp 1800000000 będzie przez 3 minuty.<br/>Użyj startTimestamp i endTimestamp, aby przyciąć fragmenty, które będą znajdować się na liście odtwarzania (manifest).<br/>Na przykład startTimestamp = 40000000 i endTimestamp = 100000000 przy użyciu domyślnej skali czasu spowoduje wygenerowanie listy odtwarzania zawierającej fragmenty od 4 sekund do 10 sekund prezentacji VoD. Jeśli fragment znajduje się na granicy, cały fragment zostanie uwzględniony w manifeście.|
+|**forceEndTimestamp**|Dotyczy tylko przesyłania strumieniowego na żywo.<br/>Wskazuje, czy właściwość endTimestamp musi być obecna. Jeśli wartość jest równa true, endTimestamp musi być określony lub zwracany jest nieprawidłowy kod żądania.<br/>Dozwolone wartości: false, true.|
+|**liveBackoffDuration**|Dotyczy tylko przesyłania strumieniowego na żywo.<br/> Ta wartość definiuje najnowszą pozycję na żywo, do której może się odbiegać klient.<br/>Za pomocą tej właściwości można opóźnić położenie odtwarzania na żywo i utworzyć bufor po stronie serwera dla graczy.<br/>Jednostką tej właściwości jest skala czasu (patrz poniżej).<br/>Maksymalny czas trwania wycofywania na żywo wynosi 300 sekund (3000000000).<br/>Na przykład wartość 2000000000 oznacza, że najnowsza dostępna zawartość wynosi 20 sekund opóźnionych od rzeczywistej aktywnej krawędzi.|
+|**presentationWindowDuration**|Dotyczy tylko przesyłania strumieniowego na żywo.<br/>Użyj presentationWindowDuration, aby zastosować przedziały ruchome fragmentów do dołączenia do listy odtwarzania.<br/>Jednostką tej właściwości jest skala czasu (patrz poniżej).<br/>Na przykład ustaw presentationWindowDuration = 1200000000, aby zastosować dwuminutowe okno przesuwania. Multimedia w ciągu 2 minut od aktywnej krawędzi zostaną uwzględnione na liście odtwarzania. Jeśli fragment znajduje się na granicy, cały fragment zostanie uwzględniony na liście odtwarzania. Minimalny czas trwania okna prezentacji wynosi 60 sekund.|
+|**startTimestamp**|Dotyczy wideo na żądanie (VoD) lub przesyłania strumieniowego na żywo.<br/>Jest to długa wartość, która reprezentuje bezwzględny punkt początkowy strumienia. Wartość jest zaokrąglana do najbliższego następnego uruchomienia grupę GOP. Jednostką jest skala czasu, więc startTimestamp 150000000 będzie wynosić 15 sekund.<br/>Użyj startTimestamp i endTimestampp, aby przyciąć fragmenty, które będą znajdować się na liście odtwarzania (manifest).<br/>Na przykład startTimestamp = 40000000 i endTimestamp = 100000000 przy użyciu domyślnej skali czasu spowoduje wygenerowanie listy odtwarzania zawierającej fragmenty od 4 sekund do 10 sekund prezentacji VoD. Jeśli fragment znajduje się na granicy, cały fragment zostanie uwzględniony w manifeście.|
+|**Dział**|Dotyczy wszystkich sygnatur czasowych i czasów trwania w przedziale czasu prezentacji, określony jako liczba przyrostów w jednej sekundzie.<br/>Wartość domyślna to 10000000-10 000 000 przyrosty w jednej sekundie, gdzie każdy przyrost może być przy100 padać w nanosekundach.<br/>Na przykład jeśli chcesz ustawić startTimestamp o 30 sekund, użyj wartości 300000000 przy użyciu domyślnej skali czasu.|
 
-### <a name="tracks"></a>ścieżki
+### <a name="tracks"></a>służąc
 
-Należy określić listę warunków właściwość śledzenie filtru (FilterTrackPropertyConditions) podstawie, na którym ścieżki strumienia (transmisji strumieniowej na żywo lub wideo na żądanie) powinny zostać uwzględnione w manifeście utworzony dynamicznie. Filtry są połączone przy użyciu logicznych **i** i **lub** operacji.
+Należy określić listę warunków właściwości śledzenia filtru (FilterTrackPropertyConditions), na podstawie których ścieżki strumienia (przesyłanie strumieniowe na żywo lub wideo na żądanie) powinny być włączone do dynamicznie utworzonego manifestu. Filtry są łączone przy użyciu operacji logicznych **i** i **.**
 
-Warunki właściwości śledzenie filtru opisano typy ścieżek, wartości (opisanych w poniższej tabeli) i operacje (równe, NotEqual). 
+Filtrowanie warunków właściwości śledzenia opisują typy śledzenia, wartości (opisane w poniższej tabeli) i operacje (równe, NotEqual). 
 
 |Name (Nazwa)|Opis|
 |---|---|
-|**Szybkość transmisji bitów**|Szybkość transmisji bitów toru używana w celu filtrowania.<br/><br/>Zalecana wartość to zakresu szybkości transmisji w bitach na sekundę. Na przykład, "0-2427000".<br/><br/>Uwaga: podczas korzystania z wartością o określonej szybkości transmisji bitów, takich jak 250000 (liczba bitów na sekundę), to podejście nie jest zalecane, ponieważ dokładne szybkości transmisji mogą się zmieniać z jednego zasobu do innego.|
-|**FourCC**|Użyj wartości FourCC ścieżki do filtrowania.<br/><br/>Wartość pierwszego elementu formatu koderów-dekoderów, jak to określono w [RFC 6381](https://tools.ietf.org/html/rfc6381). Obecnie obsługiwane są następujące kodery-dekodery: <br/>Wideo:: "avc1", "hev1", "hvc1"<br/>Audio: "Mp4a" (".", "WE 3"<br/><br/>Aby określić wartości FourCC ścieżek w zasobie, Pobierz i zapoznaj się z plikiem manifestu.|
-|**Język**|Użyj języka ścieżki do filtrowania.<br/><br/>Wartość tagu języka, który chcesz dołączyć, jak określono w dokumencie RFC 5646. Na przykład "en".|
-|**Nazwa**|Użyj nazwy ścieżki w celu filtrowania.|
+|**Multimedia**|Użyj szybkości transmisji bitów ścieżki do filtrowania.<br/><br/>Zalecana wartość jest zakresem szybkości transmisji bitów w bitach na sekundę. Na przykład "0-2427000".<br/><br/>Uwaga: w przypadku użycia określonej wartości szybkości transmisji, takiej jak 250000 (bity na sekundę), takie podejście nie jest zalecane, ponieważ dokładne szybkości transmisji bitów mogą ulegać zmianom z jednego zasobu na inny.|
+|**FourCC**|Użyj wartości FourCC ścieżki do filtrowania.<br/><br/>Wartość jest pierwszym elementem w formacie koderów-dekoder, zgodnie z opisem w [dokumencie RFC 6381](https://tools.ietf.org/html/rfc6381). Obecnie obsługiwane są następujące kodeki: <br/>Dla filmu wideo: "avc1", "hev1", "hvc1"<br/>Dla dźwięku: "mp4a", "EC-3"<br/><br/>Aby określić wartości FourCC dla ścieżek w elemencie zawartości, Pobierz i sprawdź plik manifestu.|
+|**Język**|Użyj języka ścieżki do filtrowania.<br/><br/>Wartość jest tagiem języka, który ma zostać uwzględniony, zgodnie z opisem w dokumencie RFC 5646. Na przykład "en".|
+|**Nazwa**|Użyj nazwy ścieżki do filtrowania.|
 |**Typ**|Użyj typu ścieżki do filtrowania.<br/><br/>Dozwolone są następujące wartości: "wideo", "audio" lub "text".|
 
 ### <a name="example"></a>Przykład
 
-W poniższym przykładzie zdefiniowano filtr transmisji strumieniowej na żywo: 
+W poniższym przykładzie zdefiniowano filtr przesyłania strumieniowego na żywo: 
 
 ```json
 {
@@ -137,26 +137,26 @@ W poniższym przykładzie zdefiniowano filtr transmisji strumieniowej na żywo:
 }
 ```
 
-## <a name="associating-filters-with-streaming-locator"></a>Kojarzenie filtrów z lokalizatora przesyłania strumieniowego
+## <a name="associating-filters-with-streaming-locator"></a>Kojarzenie filtrów z lokalizatorem przesyłania strumieniowego
 
-Można określić listę [aktywów lub filtry](filters-concept.md) na Twoje [lokalizatora przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body). [Funkcji dynamicznego pakowania](dynamic-packaging-overview.md) ma zastosowanie ta lista filtrów wraz z tymi klienta określa się w adresie URL. Ta kombinacja generuje [manifestów dynamicznych](filters-dynamic-manifest-overview.md), która jest oparta na filtry w adresie URL i filtry, możesz określić na lokalizatora przesyłania strumieniowego. 
+Możesz określić listę [filtrów zasobów lub kont](filters-concept.md) w [lokalizatorze przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body). [Pakowarka dynamiczna](dynamic-packaging-overview.md) stosuje tę listę filtrów razem z tymi, które są określone przez klienta w adresie URL. Ta kombinacja generuje [manifest dynamiczny](filters-dynamic-manifest-overview.md), który jest oparty na filtrach w adresach URL i filtrach określonych w lokalizatorze przesyłania strumieniowego. 
 
 Zobacz poniższe przykłady:
 
-* [Kojarzenie filtrów z lokalizatora przesyłania strumieniowego — .NET](filters-dynamic-manifest-dotnet-howto.md#associate-filters-with-streaming-locator)
-* [Kojarzenie filtrów z lokalizatora przesyłania strumieniowego — interfejs wiersza polecenia](filters-dynamic-manifest-cli-howto.md#associate-filters-with-streaming-locator)
+* [Kojarzenie filtrów z lokalizatorem przesyłania strumieniowego — .NET](filters-dynamic-manifest-dotnet-howto.md#associate-filters-with-streaming-locator)
+* [Kojarzenie filtrów z lokalizatorem przesyłania strumieniowego — interfejs wiersza polecenia](filters-dynamic-manifest-cli-howto.md#associate-filters-with-streaming-locator)
 
 ## <a name="updating-filters"></a>Aktualizowanie filtrów
  
-**Lokalizatory przesyłania strumieniowego** nie nadają się natomiast filtry mogą być aktualizowane. 
+**Lokalizatory przesyłania strumieniowego** nie są aktualizowane, gdy można aktualizować filtry. 
 
-Nie zaleca się do aktualizacji definicji filtrów skojarzonych z aktywnie opublikowanych **lokalizatora przesyłania strumieniowego**, szczególnie w przypadku, gdy usługa sieć CDN jest włączona. Przesyłanie strumieniowe, serwerów i sieci CDN mogą mieć wewnętrznej pamięci podręczne, które mogą spowodować stare dane w pamięci podręcznej do zwrócenia. 
+Nie zaleca się aktualizowania definicji filtrów skojarzonych z aktywnie opublikowanym **lokalizatorem przesyłania strumieniowego**, szczególnie w przypadku włączenia sieci CDN. Serwery przesyłania strumieniowego i sieci CDN mogą mieć wewnętrznej pamięci podręcznej, co może spowodować zwrócenie starych danych z pamięci. 
 
-Jeśli musi zostać zmienione w definicji filtra należy wziąć pod uwagę tworzenia nowego filtru, a następnie dodanie go do **lokalizatora przesyłania strumieniowego** adres URL lub publikowania nowej **lokalizatora przesyłania strumieniowego** , która odwołuje się filtr bezpośrednio.
+Jeśli należy zmienić definicję filtru, rozważ utworzenie nowego filtru i dodanie go do adresu URL **lokalizatora przesyłania strumieniowego** lub opublikowanie nowego **lokalizatora przesyłania strumieniowego** , który odwołuje się bezpośrednio do filtru.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Następujące artykuły pokazują, jak programowo utworzyć filtry.  
+W poniższych artykułach pokazano, jak programowo utworzyć filtry.  
 
 - [Tworzenie filtrów za pomocą interfejsów API REST](filters-dynamic-manifest-rest-howto.md)
 - [Tworzenie filtrów za pomocą programu .NET](filters-dynamic-manifest-dotnet-howto.md)

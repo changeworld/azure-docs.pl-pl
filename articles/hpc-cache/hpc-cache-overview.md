@@ -7,11 +7,11 @@ ms.topic: overview
 ms.date: 10/30/2019
 ms.author: rohogue
 ms.openlocfilehash: 2a008d22de5df8d091e868153205697b4bb343ee
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582124"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388249"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Co to jest usługa Azure HPC Cache?
 
@@ -45,7 +45,7 @@ Pamięć podręczna Azure HPC może być również wykorzystywana w celu zwięks
 
 Wdrożenie pamięci podręcznej platformy Azure HPC może ułatwić przyspieszenie obliczeń analizy ilościowej, obciążeń związanych z analizą ryzyka i symulacji Monte Carlo, aby zapewnić firmom usług finansowych lepszy wgląd w podejmowanie decyzji strategicznych.
 
-## <a name="region-availability"></a>Dostępność w poszczególnych regionach
+## <a name="region-availability"></a>Dostępność w danym regionie
 
 Pamięć podręczna Azure HPC jest dostępna w następujących regionach platformy Azure:
 
@@ -60,7 +60,7 @@ Pamięć podręczna Azure HPC jest dostępna w następujących regionach platfor
 
 Aby uzyskać najnowsze informacje o dostępności, należy zapoznać się ze [stroną produktu Azure HPC cache](https://azure.microsoft.com/services/hpc-cache) .
 
-## <a name="service-availability"></a>Dostępność usług
+## <a name="service-availability"></a>Dostępność usługi
 
 Musisz zażądać dostępu dla każdej subskrypcji, która będzie używana z pamięcią podręczną platformy Azure HPC. To ograniczenie pomaga zapewnić jakość usługi w początkowych miesiącach dostępności ogólnej.
 

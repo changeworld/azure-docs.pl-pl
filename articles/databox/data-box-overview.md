@@ -10,11 +10,11 @@ ms.topic: overview
 ms.date: 09/17/2019
 ms.author: alkohli
 ms.openlocfilehash: a3e27cf427de3a33f71d6f4a0af9b1590abeb573
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066999"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380335"
 ---
 # <a name="what-is-azure-data-box"></a>Co to jest usługa Azure Data Box?
 
@@ -59,16 +59,16 @@ Urządzenie Data Box ma w tej wersji następujące cechy.
 | Specyfikacje                                          | Opis              |
 |---------------------------------------------------------|--------------------------|
 | Waga                                                  | Poniżej 50 funtów                |
-| Wymiary                                              | Urządzenie — Szerokość: 309,0 mm; Wysokość: 430,4 mm; Głębokość: 502,0 mm |            
+| Wymiary                                              | Urządzenie — szerokość: 309,0 mm, wysokość: 430,4 mm, głębokość: 502,0 mm |            
 | Miejsce w stojaku                                              | 7 U po umieszczeniu w stojaku na boku (nie może być montowane w stojaku)|
 | Wymagane przewody                                         | 1 przewód zasilający (dołączony) <br> 2 przewody RJ-45 <br> 2 przewody miedziane SFP+ Twinax|
 | Pojemność magazynu                                        | Urządzenie o pojemności 100 TB ma 80 TB dostępnej pojemności po zastosowaniu ochrony RAID 5|
 | Moc znamionowa                                            | Zasilacz jest przystosowany do mocy 700 W. <br> Na ogół zasilacz pobiera 375 W.|
 | Interfejsy sieciowe                                      | 2 interfejsy 1 GbE — MGMT, DATA 3. <br> Interfejs MGMT — do zarządzania, bez możliwości konfigurowania przez użytkownika, używany do konfiguracji początkowej. <br> Interfejs DATA 3 — do danych, z możliwością konfigurowania przez użytkownika, domyślnie dynamiczny. <br> Interfejsy MGMT i DATA 3 mogą być również interfejsami 10 GbE. <br> 2 interfejsy 10 GbE — DATA 1, DATA 2. <br> Oba interfejsy są przeznaczone do danych, mogą być skonfigurowane jako dynamiczne (domyślnie) lub statyczne. |
 | Nośniki do transferu danych                                     | Przewody 10 GbE Ethernet, RJ45 i miedziany SFP+  |
-| Bezpieczeństwo                                                | Wytrzymała obudowa urządzenia z antywłamaniowymi śrubami. <br> Nalepki umożliwiające wykrycie naruszenia umieszczone w dolnej części urządzenia.|
+| Zabezpieczenia                                                | Wytrzymała obudowa urządzenia z antywłamaniowymi śrubami. <br> Nalepki umożliwiające wykrycie naruszenia umieszczone w dolnej części urządzenia.|
 | Szybkość transferu danych                                      | Do 80 TB w ciągu jednego dnia przy zastosowaniu interfejsu sieciowego 10 GbE.        |
-| Zarządzanie                                              | Lokalny internetowy interfejs użytkownika — jednorazowa konfiguracja początkowa. <br> Witryna Azure Portal — bieżące zarządzanie urządzeniem.        |
+| Serwer                                              | Lokalny internetowy interfejs użytkownika — jednorazowa konfiguracja początkowa. <br> Witryna Azure Portal — bieżące zarządzanie urządzeniem.        |
 
 ## <a name="data-box-components"></a>Składniki rozwiązania Data Box
 

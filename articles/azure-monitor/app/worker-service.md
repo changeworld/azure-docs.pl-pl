@@ -4,11 +4,11 @@ description: Monitorowanie aplikacji .NET Core/. NET Framework bez protokołu HT
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.openlocfilehash: 2d4b3a38b059d603c96fc9267b44707ed32c8c1d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669339"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362149"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Application Insights aplikacji usługi Worker (aplikacje inne niż HTTP)
 
@@ -353,10 +353,10 @@ Najczęściej używane ustawienia w `ApplicationInsightsServiceOptions`
 
 |Ustawienie | Opis | Domyślne
 |---------------|-------|-------
-|EnableQuickPulseMetricStream | Włącz/Wyłącz funkcję LiveMetrics | true
-|EnableAdaptiveSampling | Włącz/Wyłącz próbkowanie adaptacyjne | true
-|EnableHeartbeat | Funkcja włączania/wyłączania pulsu, która okresowo (domyślnie 15-minutowa) wysyła metrykę niestandardową o nazwie "HeartBeatState" z informacjami o środowisku uruchomieniowym, takim jak wersja platformy .NET, informacje dotyczące środowiska platformy Azure, jeśli ma to zastosowanie itd. | true
-|AddAutoCollectedMetricExtractor | Włącz/Wyłącz Ekstraktor AutoCollectedMetrics, który jest TelemetryProcessor, który wysyła wstępnie zagregowane metryki dotyczące żądań/zależności przed pobraniem próbek. | true
+|EnableQuickPulseMetricStream | Włącz/Wyłącz funkcję LiveMetrics | {1&gt;true&lt;1}
+|EnableAdaptiveSampling | Włącz/Wyłącz próbkowanie adaptacyjne | {1&gt;true&lt;1}
+|EnableHeartbeat | Funkcja włączania/wyłączania pulsu, która okresowo (domyślnie 15-minutowa) wysyła metrykę niestandardową o nazwie "HeartBeatState" z informacjami o środowisku uruchomieniowym, takim jak wersja platformy .NET, informacje dotyczące środowiska platformy Azure, jeśli ma to zastosowanie itd. | {1&gt;true&lt;1}
+|AddAutoCollectedMetricExtractor | Włącz/Wyłącz Ekstraktor AutoCollectedMetrics, który jest TelemetryProcessor, który wysyła wstępnie zagregowane metryki dotyczące żądań/zależności przed pobraniem próbek. | {1&gt;true&lt;1}
 
 Zobacz [ustawienia konfigurowalne w `ApplicationInsightsServiceOptions`](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs) , aby uzyskać najbardziej aktualną listę.
 

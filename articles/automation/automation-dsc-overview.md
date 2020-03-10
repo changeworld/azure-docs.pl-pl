@@ -11,11 +11,11 @@ ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 787cade13a0636bb25afa1d4043a977f512484f9
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850894"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372345"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Przegląd konfiguracji stanu Azure Automation
 
@@ -45,7 +45,7 @@ Węzły, które są zarządzane za pomocą Azure Automation stanu Configuration,
 
 Podczas korzystania z konfiguracji stanu Azure Automation (DSC) należy wziąć pod uwagę poniższe wymagania.
 
-### <a name="operating-system-requirements"></a>Wymagania systemu operacyjnego
+### <a name="operating-system-requirements"></a>Wymagania dotyczące systemu operacyjnego
 
 W przypadku węzłów z systemem Windows obsługiwane są następujące wersje:
 
@@ -56,7 +56,7 @@ W przypadku węzłów z systemem Windows obsługiwane są następujące wersje:
 - Windows Server 2008 R2 SP1
 - Windows 10
 - Windows 8.1
-- Windows 7
+- Windows 7
 
 Autonomiczna jednostka SKU produktu [Microsoft Hyper-V Server](/windows-server/virtualization/hyper-v/hyper-v-server-2016) nie zawiera implementacji żądanego stanu konfiguracją, więc nie może być zarządzana przez program PowerShell DSC lub konfigurację stanu Azure Automation.
 
@@ -106,7 +106,7 @@ Jeśli masz konto usługi Automation zdefiniowane dla określonego regionu, moż
 | Kanada Środkowa |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
 | Europa Zachodnia |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |
 | Europa Północna |ne-jobruntimedata-prod-su1.azure-automation.net</br>ne-agentservice-prod-1.azure-automation.net |
-| Azja Południowo-wschodnia |sea-jobruntimedata-prod-su1.azure-automation.net</br>sea-agentservice-prod-1.azure-automation.net|
+| Azja Południowo-Wschodnia |sea-jobruntimedata-prod-su1.azure-automation.net</br>sea-agentservice-prod-1.azure-automation.net|
 | Indie Środkowe |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
 | Japonia Wschodnia |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
 | Australia Południowo-Wschodnia |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |

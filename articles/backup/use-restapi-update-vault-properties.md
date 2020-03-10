@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
 ms.openlocfilehash: 6cecbb18e0cd6f548e1688ef978f10dcee7d9fbc
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78204501"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395544"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Aktualizowanie konfiguracji magazynu Recovery Services platformy Azure przy użyciu interfejsu API REST
 
@@ -83,11 +83,11 @@ Następujące typowe definicje są używane do tworzenia treści żądania
 
 Aby uzyskać więcej informacji, zapoznaj się z [dokumentacją interfejsu API REST](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/update#request-body) .
 
-|Name (Nazwa)  |Wymagany  |Typ  |Opis  |
+|Name (Nazwa)  |Wymagane  |Typ  |Opis  |
 |---------|---------|---------|---------|
 |Element ETag     |         |   Ciąg      |  Opcjonalny element eTag       |
-|location     |  true       |Ciąg         |   Lokalizacja zasobu      |
-|properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Właściwości magazynu       |
+|lokalizacja     |  {1&gt;true&lt;1}       |Ciąg         |   Lokalizacja zasobu      |
+|właściwości     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Właściwości magazynu       |
 |tagów     |         | Obiekt        |     Tagi zasobów    |
 
 #### <a name="example-request-body"></a>Przykładowa treść żądania

@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: f0c7b966b9fa7580809d2df0f4d05a7146ca0fd1
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895270"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395139"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z Apache Hadoop PRZĘDZą przy użyciu usługi Azure HDInsight
 
@@ -24,24 +24,24 @@ Dowiedz się więcej o najważniejszych problemach i ich rozwiązania podczas pr
 
 Wykonaj następujące kroki w Ambari, aby utworzyć nową kolejkę usługi YARN, a następnie równoważyć przydziału pojemności wśród wszystkich kolejek.
 
-W tym przykładzie dwie istniejącej kolejki (**domyślne** i **thriftsvr**) są zarówno zmieniła się z 50% pojemność przepustowości 25%, co daje nową pojemność kolejki (spark) w 50%.
+W tym przykładzie dwie istniejące kolejki (**domyślne** i **thriftsvr**) są zmieniane z pojemności 50% na 25% pojemności, która zapewnia nową kolejkę (Spark) 50% pojemności.
 
 | Kolejka | Pojemność | Maksymalna pojemność |
 | --- | --- | --- |
-| default | 25% | 50% |
+| {1&gt;default&lt;1} | 25% | 50% |
 | thrftsvr | 25% | 50% |
 | spark | 50% | 50% |
 
-1. Wybierz **widoków Ambari** ikonę, a następnie wybierz wzorca siatki. Następnie wybierz pozycję **menedżera kolejki YARN**.
+1. Wybierz ikonę **widoki Ambari** , a następnie wybierz wzorzec siatki. Następnie wybierz pozycję **Menedżer kolejki przędzy**.
 
     ![Menedżer kolejki PRZĘDZy Ambari pulpitu nawigacyjnego Apache](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
-2. Wybierz **domyślne** kolejki.
+2. Wybierz kolejkę **domyślną** .
 
     ![Apache Ambari — wybór kolejki domyślnej](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
-3. Dla **domyślne** kolejki i zmienić **pojemności** z 50%, 25%. Aby uzyskać **thriftsvr** kolejki, zmień **pojemności** 25%.
+3. Dla kolejki **domyślnej** Zmień **pojemność** z 50% na 25%. W przypadku kolejki **thriftsvr** Zmień **pojemność** na 25%.
 
     ![Zmienianie pojemności do 25% domyślnej i thriftsvr kolejek](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
-4. Aby utworzyć nową kolejkę, wybierz **Dodaj kolejkę**.
+4. Aby utworzyć nową kolejkę, wybierz pozycję **Dodaj kolejkę**.
 
     ![Kolejka dodawania pulpitu nawigacyjnego PRZĘDZy Ambari Apache](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
 
@@ -49,10 +49,10 @@ W tym przykładzie dwie istniejącej kolejki (**domyślne** i **thriftsvr**) są
 
     ![Kolejka nazw pulpitu nawigacyjnego PRZĘDZy Ambari](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
 
-6. Pozostaw **pojemności** wartości na 50%, a następnie wybierz **akcje** przycisku.
+6. Pozostaw wartości **wydajności** o 50%, a następnie wybierz przycisk **Akcje** .
 
     ![Akcja wybierania nici Ambari Apache](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
-7. Wybierz **Zapisz i Odśwież kolejek**.
+7. Wybierz pozycję **Zapisz i Odśwież kolejki**.
 
     ![Wybierz pozycję Zapisz i Odśwież kolejek](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png)  
 
@@ -66,7 +66,7 @@ Te zmiany są widoczne od razu po Interfejsie użytkownika YARN harmonogramu.
 
 ### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
-1. Nawiąż połączenie z klastrem HDInsight przy użyciu klienta Secure Shell (SSH). Aby uzyskać więcej informacji, zobacz [dodatkowe materiały](#additional-reading-2).
+1. Nawiąż połączenie z klastrem HDInsight przy użyciu klienta Secure Shell (SSH). Aby uzyskać więcej informacji, zobacz [dodatkowy odczyt](#additional-reading-2).
 
 1. Aby wyświetlić listę wszystkich identyfikatorów aplikacji w aplikacji usługi YARN, które są aktualnie uruchomione, uruchom następujące polecenie:
 
@@ -74,7 +74,7 @@ Te zmiany są widoczne od razu po Interfejsie użytkownika YARN harmonogramu.
     yarn top
     ```
 
-    Identyfikatory są wymienione w **APPLICATIONID** kolumny. Możesz pobrać dzienniki z **APPLICATIONID** kolumny.
+    Identyfikatory są wymienione w kolumnie Identyfikator **aplikacji** . Dzienniki można pobrać z kolumny Identyfikator **aplikacji** .
 
     ```apache
     YARN top - 18:00:07, up 19d, 0:14, 0 active users, queue(s): root
@@ -129,10 +129,10 @@ Te zmiany są widoczne od razu po Interfejsie użytkownika YARN harmonogramu.
 
     To polecenie tworzy plik dziennika o nazwie containerlogs.txt.
 
-### <a name="additional-reading-2"></a>Materiały uzupełniające
+### <a name="additional-reading-2"></a>Dodatkowy odczyt
 
 - [Nawiązywanie połączenia z usługą HDInsight (Apache Hadoop) przy użyciu protokołu SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
-- [Apache Hadoop YARN pojęcia i aplikacji](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html#Concepts_and_Flow)
+- [Apache Hadoop koncepcji i aplikacji PRZĘDZy](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html#Concepts_and_Flow)
 
 ## <a name="next-steps"></a>Następne kroki
 

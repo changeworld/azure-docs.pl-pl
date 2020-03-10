@@ -15,11 +15,11 @@ ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1c46facb2d43137175730bf04fea0efec9c1ecbd
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063853"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389980"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpieczanie uprzywilejowanego dostępu dla wdrożeń hybrydowych i w chmurze w usłudze Azure AD
 
@@ -348,9 +348,9 @@ Ustal, czy bieżące wbudowane role administratora usługi Azure AD są nadal ak
 
 Aby uzyskać więcej informacji, zobacz [How to configure hybryded Azure Active Directory Devices Join](../device-management-hybrid-azuread-joined-devices-setup.md).
 
-#### <a name="review-members-of-built-in-office-365-admin-roleshttpssupportofficecomarticleabout-office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d"></a>Przejrzyj członków [wbudowanych ról administratora pakietu Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)
+#### <a name="review-members-of-built-in-office-365-admin-roles"></a>Przejrzyj członków [wbudowanych ról administratora pakietu Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)
 Jeśli korzystasz z pakietu Office 365.
-‎
+⏎
 #### <a name="validate-incident-response-plan"></a>Sprawdź poprawność planu reagowania na zdarzenia
 
 Aby ulepszyć plan, firma Microsoft zaleca regularne Weryfikowanie, czy plan działa zgodnie z oczekiwaniami:
@@ -363,7 +363,7 @@ Aby ulepszyć plan, firma Microsoft zaleca regularne Weryfikowanie, czy plan dzi
 ### <a name="additional-steps-for-organizations-managing-access-to-azure"></a>Dodatkowe kroki dla organizacji zarządzających dostępem do platformy Azure 
 
 Ustal, czy musisz [przenieść własność subskrypcji platformy Azure na inne konto](../../cost-management-billing/manage/billing-subscription-transfer.md).
-‎
+⏎
 
 ## <a name="break-glass-what-to-do-in-an-emergency"></a>"Szkło ze znakami": co zrobić w przypadku awarii
 

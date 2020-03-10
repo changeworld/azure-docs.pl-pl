@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.openlocfilehash: a834c68119340d796f87971912a07fc0524a6d21
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718611"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365480"
 ---
 # <a name="language-support-for-computer-vision"></a>Obsługa języka dla przetwarzanie obrazów
 
@@ -29,12 +29,12 @@ OCR automatycznie wykrywa język materiału wejściowego, dlatego nie trzeba okr
 
 |Język| Kod języka | INTERFEJS API OCR |
 |:-----|:----:|:-----:|
-|Arabski | `ar`|✔ |
-|Chiński (uproszczony) | `zh-Hans`|✔ |
-|Chiński (tradycyjny) | `zh-Hant`|✔ |
+|arabski | `ar`|✔ |
+|Chiński uproszczony | `zh-Hans`|✔ |
+|Chiński tradycyjny | `zh-Hant`|✔ |
 |Czeski | `cs` |✔ |
 |Duński | `da` |✔ |
-|Holenderski | `nl` |✔ |
+|holenderski | `nl` |✔ |
 |Polski | `en` |✔ |
 |Fiński | `fi` |✔ |
 |Francuski | `fr` |✔ |
@@ -46,8 +46,8 @@ OCR automatycznie wykrywa język materiału wejściowego, dlatego nie trzeba okr
 |Koreański | `ko` |✔ |
 |Norweski | `nb` |✔ |
 |Polski | `pl` |✔ |
-|Portugalski | `pt` |✔ |
-|Rumuński | `ro` |✔ |
+|portugalski | `pt` |✔ |
+|rumuński | `ro` |✔ |
 |Rosyjski | `ru` |✔ |
 |Serbski (Cyrylica) | `sr-Cyrl` |✔ |
 |Serbski (łaciński) | `sr-Latn` |✔ |
@@ -60,12 +60,12 @@ OCR automatycznie wykrywa język materiału wejściowego, dlatego nie trzeba okr
 
 Niektóre akcje interfejsu API [analizy obrazu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) mogą zwracać wyniki w innych językach, określone za pomocą `language` parametru zapytania. Inne akcje zwracają wyniki w języku angielskim niezależnie od tego, jaki język jest określony, a inne zgłaszają wyjątek dla nieobsługiwanych języków. Akcje są określone za pomocą parametrów zapytania `visualFeatures` i `details`; Zapoznaj się z [omówieniem](home.md) , aby zapoznać się z listą wszystkich akcji, które można wykonać za pomocą analizy obrazu.
 
-|Język | Kod języka | Kategorie | Tagi | Opis | Dla dorosłych | Marki | Kolor | Twarze | Typ obrazu | Obiekty | Celebryci | Charakterystycznych elementów krajobrazu |
+|Język | Kod języka | Kategorie | Tagi | Opis | Treści | Marki | Kolor | Twarze | ImageType | Obiekty | Celebryci | Charakterystycznych elementów krajobrazu |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |Chiński | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Polski | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|
 |Japoński | `ja`   | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
-|Portugalski | `pt` | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
+|portugalski | `pt` | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Hiszpański | `es`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 
 ## <a name="next-steps"></a>Następne kroki

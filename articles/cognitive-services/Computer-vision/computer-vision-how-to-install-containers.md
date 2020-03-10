@@ -12,11 +12,11 @@ ms.date: 11/21/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 383abc674674fc024052b2c04d3c538838b83856
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120210"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394099"
 ---
 # <a name="install-and-run-read-containers-preview"></a>Instalowanie i uruchamianie kontenerów odczytu (wersja zapoznawcza)
 
@@ -30,7 +30,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Przed użyciem kontenerów należy spełnić następujące wymagania wstępne:
 
-|Wymagany|Przeznaczenie|
+|Wymagane|Przeznaczenie|
 |--|--|
 |Aparat platformy Docker| Aparat platformy Docker musi być zainstalowany na [komputerze-hoście](#the-host-computer). Platforma Docker zawiera pakiety, które konfigurują środowisko platformy Docker w systemach [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)i [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Podstawowe informacje dotyczące platformy Docker i kontenera można znaleźć w temacie [Omówienie platformy Docker](https://docs.docker.com/engine/docker-overview/).<br><br> Docker należy skonfigurować w taki sposób, aby umożliwić kontenerów, aby nawiązać połączenie z, a następnie wysyłać danych dotyczących rozliczeń do platformy Azure. <br><br> **W systemie Windows**program Docker musi być również skonfigurowany do obsługi kontenerów systemu Linux.<br><br>|
 |Znajomość platformy Docker | Należy dysponować podstawową wiedzą na temat pojęć platformy Docker, takich jak rejestry, repozytoria, kontenery i obrazy kontenerów, a także znajomość podstawowych poleceń `docker`.| 
@@ -64,9 +64,9 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 Dostępne są obrazy kontenerów do odczytu.
 
-| Kontener | Container Registry/repozytorium/nazwa obrazu |
+| Container | Container Registry/repozytorium/nazwa obrazu |
 |-----------|------------|
-| Odczytywanie | `containerpreview.azurecr.io/microsoft/cognitive-services-read:latest` |
+| Odczyt | `containerpreview.azurecr.io/microsoft/cognitive-services-read:latest` |
 
 Użyj [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) polecenie, aby pobrać obraz kontenera.
 

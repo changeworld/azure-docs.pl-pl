@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 03/09/2020
 ms.author: iainfou
-ms.openlocfilehash: cea1664a0418dbe6269c22cffc70e0979dea41f0
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.openlocfilehash: a57826c79babded6e616548879a5ec0c223307d0
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78893107"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78946433"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Często zadawane pytania
 
@@ -36,6 +36,7 @@ Ta strona zawiera odpowiedzi na często zadawane pytania dotyczące Azure Active
 * [Czy można dodać kontrolery domeny do Azure AD Domain Services domeny zarządzanej?](#can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain)
 * [Czy użytkownicy-Goście zaproszeni do mojego katalogu używają Azure AD Domain Services?](#can-guest-users-invited-to-my-directory-use-azure-ad-domain-services)
 * [Czy można przenieść istniejącą Azure AD Domain Servicesą domenę zarządzaną do innej subskrypcji, grupy zasobów, regionu lub sieci wirtualnej?](#can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network)
+* [Czy Azure AD Domain Services zawierają opcje wysokiej dostępności?](#does-azure-ad-domain-services-include-high-availability-options)
 
 ### <a name="can-i-create-multiple-managed-domains-for-a-single-azure-ad-directory"></a>Czy mogę utworzyć wiele domen zarządzanych dla jednego katalogu usługi Azure AD?
 Nie. Można utworzyć tylko jedną domenę zarządzaną, Azure AD Domain Services dla jednego katalogu usługi Azure AD.
@@ -74,6 +75,10 @@ Nie. Użytkownicy-Goście zaproszeni do katalogu usługi Azure AD przy użyciu p
 
 ### <a name="can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network"></a>Czy można przenieść istniejącą Azure AD Domain Servicesą domenę zarządzaną do innej subskrypcji, grupy zasobów, regionu lub sieci wirtualnej?
 Nie. Po utworzeniu domeny zarządzanej Azure AD Domain Services nie można przenieść wystąpienia do innej grupy zasobów, sieci wirtualnej, subskrypcji itd. Podczas wdrażania wystąpienia usługi Azure AD DS należy zadbać o wybranie najbardziej odpowiedniej subskrypcji, grupy zasobów, regionu i sieci wirtualnej.
+
+### <a name="does-azure-ad-domain-services-include-high-availability-options"></a>Czy Azure AD Domain Services zawierają opcje wysokiej dostępności?
+
+Tak. Każda Azure AD Domain Services domeny zarządzanej zawiera dwa kontrolery domeny. Nie są zarządzane ani nie można łączyć się z tymi kontrolerami domeny, są one częścią usługi zarządzanej. W przypadku wdrażania Azure AD Domain Services w regionie, który obsługuje Strefy dostępności, kontrolery domeny są dystrybuowane między strefami. W regionach, które nie obsługują Strefy dostępności, kontrolery domeny są dystrybuowane w zestawach dostępności. Ta dystrybucja nie zawiera żadnych opcji konfiguracji ani kontroli zarządzania. Aby uzyskać więcej informacji, zobacz [Opcje dostępności dla maszyn wirtualnych na platformie Azure](../virtual-machines/windows/availability.md).
 
 ## <a name="administration-and-operations"></a>Administracja i operacje
 

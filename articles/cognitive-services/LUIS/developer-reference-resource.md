@@ -3,12 +3,12 @@ title: Zasoby dla deweloperów — Language Understanding
 description: Zestawy SDK, interfejsy API REST, interfejs wiersza polecenia ułatwiają tworzenie aplikacji Language Understanding (LUIS) w języku programowania. Zarządzaj zasobami platformy Azure i przewidywaniami LUIS.
 ms.topic: reference
 ms.date: 02/11/2020
-ms.openlocfilehash: fda4301a0851e6a36cbb6493dcf48293b2c5db37
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: f9d531f800ba0729a1f679c0bf3b11c8958c78ed
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152690"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391946"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>Zasoby deweloperskie zestawu SDK, REST i interfejsu wiersza polecenia dla Language Understanding (LUIS)
 
@@ -56,7 +56,7 @@ LUIS ma obecnie 2 typy punktów końcowych:
 * Tworzenie w punkcie końcowym szkolenia
 * przewidywanie zapytania w punkcie końcowym środowiska uruchomieniowego.
 
-|Przeznaczenie|Adres URL|
+|Przeznaczenie|{1&gt;URL&lt;1}|
 |--|--|
 |Tworzenie w punkcie końcowym szkolenia|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/api/v2.0/apps/{appID}/`|
 |Środowisko uruchomieniowe v2 — wszystkie przewidywania w punkcie końcowym środowiska uruchomieniowego|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q={q}[&timezoneOffset][&verbose][&spellCheck][&staging][&bing-spell-check-subscription-key][&log]`|
@@ -109,7 +109,7 @@ Bot Framework udostępnia [kilka narzędzi](https://github.com/microsoft/botbuil
 ## <a name="next-steps"></a>Następne kroki
 
 * Informacje o typowych [kodach błędów HTTP](luis-reference-response-codes.md)
-* [Dokumentacja referencyjna](https://docs.microsoft.com/azure/index#pivot=sdkstools) dla wszystkich interfejsów API i zestawów SDK
+* [Dokumentacja referencyjna](https://docs.microsoft.com/azure/index) dla wszystkich interfejsów API i zestawów SDK
 * [Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) i [Azure bot Service](https://dev.botframework.com/)
 * [LUDown](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown)
 * [Kontenery poznawcze](../cognitive-services-container-support.md)

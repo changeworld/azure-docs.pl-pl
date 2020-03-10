@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/08/2019
 ms.author: dapine
 ms.openlocfilehash: 308a474970db54022e5351fdf349d9572fbafb0d
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888570"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390158"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Instalowanie i uruchamianie kontenerów platformy Docker LUIS
  
@@ -24,7 +24,7 @@ Kontener Language Understanding (LUIS) ładuje swój przeszkolony lub opublikowa
 
 Poniższy film wideo demonstruje użycie tego kontenera.
 
-[![Pokaz kontener dla usług Cognitive Services](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
+[Demonstracja ![kontenera dla Cognitive Services](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -34,7 +34,7 @@ Aby uruchomić kontener LUIS, należy zwrócić uwagę na następujące wymagani
 
 |Wymagane|Przeznaczenie|
 |--|--|
-|Aparat platformy Docker| Aparat platformy Docker musi być zainstalowany na [komputerze-hoście](#the-host-computer). Platforma Docker zawiera pakiety, które konfigurują środowisko platformy Docker w systemach [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)i [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Aby uzyskać podstawowe informacje na temat platformy Docker i kontenerów, zobacz [Docker — omówienie](https://docs.docker.com/engine/docker-overview/).<br><br> Docker należy skonfigurować w taki sposób, aby umożliwić kontenerów, aby nawiązać połączenie z, a następnie wysyłać danych dotyczących rozliczeń do platformy Azure. <br><br> **W systemie Windows**program Docker musi być również skonfigurowany do obsługi kontenerów systemu Linux.<br><br>|
+|Aparat platformy Docker| Aparat platformy Docker musi być zainstalowany na [komputerze-hoście](#the-host-computer). Platforma Docker zawiera pakiety, które konfigurują środowisko platformy Docker w systemach [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)i [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Podstawowe informacje dotyczące platformy Docker i kontenera można znaleźć w temacie [Omówienie platformy Docker](https://docs.docker.com/engine/docker-overview/).<br><br> Docker należy skonfigurować w taki sposób, aby umożliwić kontenerów, aby nawiązać połączenie z, a następnie wysyłać danych dotyczących rozliczeń do platformy Azure. <br><br> **W systemie Windows**program Docker musi być również skonfigurowany do obsługi kontenerów systemu Linux.<br><br>|
 |Znajomość platformy Docker | Należy dysponować podstawową wiedzą na temat pojęć platformy Docker, takich jak rejestry, repozytoria, kontenery i obrazy kontenerów, a także znajomość podstawowych poleceń `docker`.| 
 |Zasób platformy Azure `Cognitive Services` i plik [spakowanej aplikacji](luis-how-to-start-new-app.md) Luis |Aby można było używać kontenera, musisz mieć:<br><br>* Zasób platformy Azure _Cognitive Services_ i skojarzony klucz rozliczeniowy identyfikator URI punktu końcowego rozliczenia. Obie wartości są dostępne na stronach przeglądów i kluczy dla zasobu i są wymagane do uruchomienia kontenera. <br>* Przeszkolone lub opublikowana aplikacja spakowana jako zainstalowano dane wejściowe do kontenera ze skojarzonym IDENTYFIKATORem aplikacji. Spakowany plik można pobrać z portalu LUIS lub interfejsów API tworzenia. Jeśli otrzymujesz spakowaną aplikację LUIS z [interfejsów API tworzenia](#authoring-apis-for-package-file), będziesz również potrzebować _klucza tworzenia_.<br><br>Te wymagania są używane do przekazywania argumentów wiersza polecenia do następujących zmiennych:<br><br>**{AUTHORING_KEY}** : ten klucz służy do uzyskiwania spakowanej aplikacji z usługi Luis w chmurze i przekazywania dzienników zapytań z powrotem do chmury. Format jest `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.<br><br>**{App_id}** : ten identyfikator jest używany do wybierania aplikacji. Format jest `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.<br><br>**{API_KEY}** : ten klucz jest używany do uruchamiania kontenera. Klucz punktu końcowego można znaleźć w dwóch miejscach. Pierwszy to Azure Portal na liście kluczy zasobu _Cognitive Services_ . Klucz punktu końcowego jest również dostępny w portalu LUIS na stronie ustawień klucze i punkt końcowy. Nie używaj klucza początkowego.<br><br>**{ENDPOINT_URI}** : punkt końcowy określony na stronie Przegląd.<br><br>[Klucz tworzenia i klucz punktu końcowego](luis-boundaries.md#key-limits) mają różne cele. Nie należy ich używać zamiennie. |
 
@@ -55,7 +55,7 @@ Tworzenie interfejsów API dla spakowanych aplikacji:
 
 Ten kontener obsługuje minimalne i zalecane wartości ustawień:
 
-|Kontener| Minimalne | Zalecane | TPS<br>(Minimum, maksimum)|
+|Container| Minimalne | Zalecane | TPS<br>(Minimum, maksimum)|
 |-----------|---------|-------------|--|
 |LUIS|1 rdzeń, 2 GB pamięci|1 rdzeń, 4 GB pamięci|20, 40|
 
@@ -108,7 +108,7 @@ Wejściowy katalog instalacji może jednocześnie zawierać modele **produkcyjne
 |Typ pakietu|Interfejs API punktu końcowego zapytania|Dostępność zapytania|Format nazwy pliku pakietu|
 |--|--|--|--|
 |Systemową|POBIERZ, OPUBLIKUJ|Tylko kontener|`{APP_ID}_v{APP_VERSION}.gz`|
-|Przejściowe|POBIERZ, OPUBLIKUJ|Platforma Azure i kontener|`{APP_ID}_STAGING.gz`|
+|Przygotowanie|POBIERZ, OPUBLIKUJ|Platforma Azure i kontener|`{APP_ID}_STAGING.gz`|
 |Produkcja|POBIERZ, OPUBLIKUJ|Platforma Azure i kontener|`{APP_ID}_PRODUCTION.gz`|
 
 > [!IMPORTANT]
@@ -146,7 +146,7 @@ Pakiet opublikowanej aplikacji jest dostępny na stronie listy **Moje aplikacje*
 Pakiet aplikacji z wersjami jest dostępny na stronie listy **wersji** .
 
 1. Zaloguj się do [portalu](https://www.luis.ai)Luis.
-1. Wybierz aplikację na liście. 
+1. Wybierz aplikację z listy. 
 1. Wybierz pozycję **Zarządzaj** na pasku nawigacyjnym aplikacji.
 1. Wybierz pozycję **wersje** na lewym pasku nawigacyjnym.
 1. Zaznacz pole wyboru po lewej stronie nazwy wersji na liście.
@@ -198,7 +198,7 @@ Aby pobrać pakiet z wersjami, zapoznaj się z [dokumentacją interfejsu API w t
 
 Użyj polecenia [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) , aby uruchomić kontener. Zapoznaj się z tematem [zbieranie wymaganych parametrów](#gathering-required-parameters) , aby uzyskać szczegółowe informacje na temat pobierania wartości `{ENDPOINT_URI}` i `{API_KEY}`.
 
-[Przykłady](luis-container-configuration.md#example-docker-run-commands) polecenia są dostępne. `docker run`
+[Przykłady](luis-container-configuration.md#example-docker-run-commands) polecenia `docker run` są dostępne.
 
 ```console
 docker run --rm -it -p 5000:5000 ^
@@ -228,7 +228,7 @@ To polecenie:
 Więcej [przykładów](luis-container-configuration.md#example-docker-run-commands) polecenia `docker run` są dostępne. 
 
 > [!IMPORTANT]
-> `Eula`, `Billing`, I `ApiKey` opcje muszą być określone w celu uruchomienia kontenera; w przeciwnym razie nie uruchamia się kontener.  Aby uzyskać więcej informacji, zobacz [rozliczeń](#billing).
+> Aby można było uruchomić kontener, należy określić opcje `Eula`, `Billing`i `ApiKey`. w przeciwnym razie kontener nie zostanie uruchomiony.  Aby uzyskać więcej informacji, zobacz [rozliczenia](#billing).
 > Wartość ApiKey jest **kluczem** ze strony **zasobów platformy Azure** w portalu Luis i jest również dostępna na stronie klucze zasobów usługi Azure `Cognitive Services`.  
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
@@ -243,38 +243,38 @@ Kontener udostępnia interfejsy API punktu końcowego przewidywania zapytań. Pu
 
 Użyj hosta `http://localhost:5000`w przypadku interfejsów API kontenerów.
 
-# <a name="v3-prediction-endpointtabv3"></a>[Punkt końcowy przewidywania v3](#tab/v3)
+# <a name="v3-prediction-endpoint"></a>[Punkt końcowy przewidywania v3](#tab/v3)
 
 |Typ pakietu|Czasownik HTTP|Trasa|Parametry zapytania|
 |--|--|--|--|
-|Opublikowano|POBIERZ, OPUBLIKUJ|`/luis/v3.0/apps/{appId}/slots/{slotName}/predict?`|`query={query}`<br>[`&verbose`]<br>[`&log`]<br>[`&show-all-intents`]|
+|Opublikowane|POBIERZ, OPUBLIKUJ|`/luis/v3.0/apps/{appId}/slots/{slotName}/predict?`|`query={query}`<br>[`&verbose`]<br>[`&log`]<br>[`&show-all-intents`]|
 |Systemową|POBIERZ, OPUBLIKUJ|`/luis/v3.0/apps/{appId}/versions/{versionId}/predict?`|`query={query}`<br>[`&verbose`]<br>[`&log`]<br>[`&show-all-intents`]|
 
 Parametry zapytania konfigurują sposób i wartość zwracaną w odpowiedzi na zapytanie:
 
 |Parametr zapytania|Typ|Przeznaczenie|
 |--|--|--|
-|`query`|string|Wypowiedź użytkownika.|
+|`query`|ciąg|Wypowiedź użytkownika.|
 |`verbose`|wartość logiczna|Wartość logiczna wskazująca, czy zwracać wszystkie metadane dla modeli predykcyjnych. Wartość domyślna to false.|
 |`log`|wartość logiczna|Rejestruje zapytania, które mogą być używane później w przypadku [aktywnej nauki](luis-how-to-review-endpoint-utterances.md). Wartość domyślna to false.|
 |`show-all-intents`|wartość logiczna|Wartość logiczna wskazująca, czy zwrócić wszystkie intencje lub górne przeznaczenie tylko do oceny. Wartość domyślna to false.|
 
-# <a name="v2-prediction-endpointtabv2"></a>[Punkt końcowy przewidywania wersji 2](#tab/v2)
+# <a name="v2-prediction-endpoint"></a>[Punkt końcowy przewidywania wersji 2](#tab/v2)
 
 |Typ pakietu|Czasownik HTTP|Trasa|Parametry zapytania|
 |--|--|--|--|
-|Opublikowano|[Pobierz](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78), [Opublikuj](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|`/luis/v2.0/apps/{appId}?`|`q={q}`<br>`&staging`<br>[`&timezoneOffset`]<br>[`&verbose`]<br>[`&log`]<br>|
+|Opublikowane|[Pobierz](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78), [Opublikuj](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|`/luis/v2.0/apps/{appId}?`|`q={q}`<br>`&staging`<br>[`&timezoneOffset`]<br>[`&verbose`]<br>[`&log`]<br>|
 |Systemową|POBIERZ, OPUBLIKUJ|`/luis/v2.0/apps/{appId}/versions/{versionId}?`|`q={q}`<br>[`&timezoneOffset`]<br>[`&verbose`]<br>[`&log`]|
 
 Parametry zapytania konfigurują sposób i wartość zwracaną w odpowiedzi na zapytanie:
 
 |Parametr zapytania|Typ|Przeznaczenie|
 |--|--|--|
-|`q`|string|Wypowiedź użytkownika.|
-|`timezoneOffset`|numer|TimezoneOffset umożliwia [zmianę strefy czasowej](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) używanej przez wstępnie utworzoną jednostkę datetimeV2.|
+|`q`|ciąg|Wypowiedź użytkownika.|
+|`timezoneOffset`|liczba|TimezoneOffset umożliwia [zmianę strefy czasowej](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) używanej przez wstępnie utworzoną jednostkę datetimeV2.|
 |`verbose`|wartość logiczna|Zwraca wszystkie intencje i ich wyniki po ustawieniu na wartość true. Wartość domyślna to false, która zwraca tylko najwyższy cel.|
 |`staging`|wartość logiczna|Zwraca zapytanie z wyników środowiska przejściowego, jeśli ma wartość true. |
-|`log`|wartość logiczna|Rejestruje zapytania, które mogą być używane później w przypadku [aktywnej nauki](luis-how-to-review-endpoint-utterances.md). Wartość domyślna to „true”.|
+|`log`|wartość logiczna|Rejestruje zapytania, które mogą być używane później w przypadku [aktywnej nauki](luis-how-to-review-endpoint-utterances.md). Wartość domyślna to true.|
 
 ***
 
@@ -282,7 +282,7 @@ Parametry zapytania konfigurują sposób i wartość zwracaną w odpowiedzi na z
 
 Przykładowe polecenie ZWINIĘCIE dla kwerendy kontenera dla opublikowanej aplikacji to:
 
-# <a name="v3-prediction-endpointtabv3"></a>[Punkt końcowy przewidywania v3](#tab/v3)
+# <a name="v3-prediction-endpoint"></a>[Punkt końcowy przewidywania v3](#tab/v3)
 
 Aby zbadać model w gnieździe, użyj następującego interfejsu API:
 
@@ -308,7 +308,7 @@ curl -G \
 "http://localhost:5000/luis/v3.0/apps/{APP_ID}/versions/{APP_VERSION}/predict"
 ```
 
-# <a name="v2-prediction-endpointtabv2"></a>[Punkt końcowy przewidywania wersji 2](#tab/v2)
+# <a name="v2-prediction-endpoint"></a>[Punkt końcowy przewidywania wersji 2](#tab/v2)
 
 Aby zbadać model w gnieździe, użyj następującego interfejsu API:
 
@@ -351,7 +351,7 @@ Po przekazaniu dziennika [zapoznaj się z punktem końcowym](https://docs.micros
 
 [!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
-## <a name="stop-the-container"></a>Zatrzymywanie kontenera
+## <a name="stop-the-container"></a>Zatrzymaj kontener
 
 Aby zamknąć kontener, w środowisku wiersza polecenia, w którym jest uruchomiony kontener, naciśnij **klawisze CTRL + C**.
 
@@ -367,7 +367,7 @@ Kontener LUIS wysyła informacje o rozliczeniach do platformy Azure przy użyciu
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
-Aby uzyskać więcej informacji o tych opcjach, zobacz [skonfigurować kontenery](luis-container-configuration.md).
+Aby uzyskać więcej informacji na temat tych opcji, zobacz [Konfigurowanie kontenerów](luis-container-configuration.md).
 
 <!--blogs/samples/video courses -->
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]

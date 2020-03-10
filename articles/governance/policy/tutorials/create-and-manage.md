@@ -4,11 +4,11 @@ description: W tym samouczku użyjesz zasad, aby wymusić standardy, kontrolowa�
 ms.date: 12/20/2019
 ms.topic: tutorial
 ms.openlocfilehash: a4e4190e5ff6a87098c349cde99572df2dba4331
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436277"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384526"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Samouczek: Tworzenie zasad i zarządzanie nimi w celu wymuszenia zgodności
 
@@ -55,7 +55,7 @@ Pierwszym krokiem w celu wymuszenia zgodności za pomocą usługi Azure Policy j
 
    ![Korzystanie z filtru wyszukiwania do lokalizowania zasad](../media/create-and-manage/select-available-definition.png)
 
-1. W polu **Nazwa przypisania** jest automatycznie wpisywana nazwa wybranej zasady, ale można ją zmienić. Na potrzeby tego przykładu należy *dodać lub zamienić tag w zasobach*. Można również dodać opcjonalny **Opis**. Opis zawiera szczegóły dotyczące danego przypisania zasad.
+1. Pole **Nazwa przypisania** jest automatycznie wypełniane przy użyciu nazwy wybranych zasad, ale można ją zmienić. Na potrzeby tego przykładu należy *dodać lub zamienić tag w zasobach*. Można również dodać opcjonalny **Opis**. Opis zawiera szczegóły dotyczące danego przypisania zasad.
 
 1. Pozostaw **wymuszanie zasad** jako _włączone_. Gdy to ustawienie jest _wyłączone_, umożliwia testowanie wyników zasad bez wyzwalania efektu. Aby uzyskać więcej informacji, zobacz [Tryb wymuszania](../concepts/assignment-structure.md#enforcement-mode).
 
@@ -358,10 +358,10 @@ Za pomocą definicji inicjatywy możesz grupować kilka definicji zasad w celu o
 1. Przejrzyj listę **Dostępne definicje** (w lewej części strony**Definicja inicjatywy**) i wybierz definicje zasad, które chcesz dodać do tej inicjatywy. W przypadku inicjatywy **Get Secure** należy dodać następujące wbudowane definicje zasad, wybierając **+** obok informacji o definicji zasad lub wybierając wiersz definicji zasad, a następnie opcję **+ Dodaj** na stronie szczegółów:
 
    - Dozwolone lokalizacje
-   - Monitoruj brakujący program Endpoint Protection w usłudze Azure Security Center
+   - Monitoruj brakujące Endpoint Protection w Azure Security Center
    - Reguły sieciowej grupy zabezpieczeń dla maszyn wirtualnych mających dostęp do Internetu powinny być zaostrzone
    - Azure Backup powinna być włączona dla Virtual Machines
-   - Należy zastosować szyfrowanie dysków na maszynach wirtualnych
+   - Szyfrowanie dysków powinno być stosowane na maszynach wirtualnych
 
    Po wybraniu definicji zasad z listy, każda zostanie dodana poniżej **kategorii**.
 
@@ -505,7 +505,7 @@ Jeśli wykonujesz pracę z zasobami z tego samouczka, wykonaj następujące krok
 
 1. Kliknij prawym przyciskiem myszy wiersz albo wybierz wielokropek na końcu definicji lub przypisania, a następnie wybierz pozycję **Usuń definicję** (lub **Usuń przypisanie**).
 
-## <a name="review"></a>Przegląd
+## <a name="review"></a>Recenzja
 
 W tym samouczku pomyślnie wykonano następujące czynności:
 

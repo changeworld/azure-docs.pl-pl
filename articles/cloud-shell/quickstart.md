@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
 ms.openlocfilehash: 574841b3a89385a3b8bf048d5ed36f40fac99a83
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757397"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394507"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Przewodnik Szybki Start dla usługi Bash w Azure Cloud Shell
 

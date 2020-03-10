@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: cb4bec8170466f0fc667b592d44b0858c41ccd84
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184831"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392421"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Najlepsze rozwiązania w zakresie używania Key Vault
 

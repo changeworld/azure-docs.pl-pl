@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
 ms.openlocfilehash: 8435bb82afddd0070679768bb8d22ad9290f2279
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464626"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388430"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Monitorowanie i diagnozowanie usług w konfiguracji lokalnego tworzenia maszyn
 > [!div class="op_single_selector"]
@@ -21,7 +21,7 @@ ms.locfileid: "75464626"
 
 Monitorowanie, wykrywanie, diagnozowanie i rozwiązywanie problemów, dzięki czemu usługi mogą kontynuować minimalne zakłócenia środowiska użytkownika. Chociaż monitorowanie i Diagnostyka mają kluczowe znaczenie w rzeczywistym wdrożonym środowisku produkcyjnym, wydajność będzie zależeć od zastosowania podobnego modelu podczas tworzenia usług, aby zapewnić, że będą one działały po przejściu do rzeczywistego Instalatora. Service Fabric ułatwia deweloperom usług implementację diagnostyki, która może bezproblemowo współpracować zarówno z lokalnymi konfiguracjami programistycznymi na jednym komputerze, jak i rzeczywistymi konfiguracjami klastrów produkcyjnych.
 
-## <a name="event-tracing-for-windows"></a>Śledzenie zdarzeń systemu Windows
+## <a name="event-tracing-for-windows"></a>Śledzenie zdarzeń dla systemu Windows
 [Śledzenie zdarzeń systemu Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) jest zalecaną technologią śledzenia komunikatów w Service Fabric. Niektóre zalety korzystania z funkcji ETW to:
 
 * **Funkcja ETW jest szybka.** Została skompilowana jako technologia śledzenia, która ma minimalny wpływ na czasy wykonywania kodu.

@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a721d1e486010e22927512985611cccdd99f4505
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 47bd3b5da79bdb9c7dca75d521aa39d3652ab1ab
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78248316"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945833"
 ---
 # <a name="what-are-managed-identities-for-azure-resources"></a>Jakie są zarządzane tożsamości dla zasobów platformy Azure?
 
@@ -56,7 +56,7 @@ Przy użyciu tożsamości zarządzanej kod może zażądać tokenów dostępu dl
 
 Na poniższym diagramie pokazano, jak tożsamości usługi zarządzanej współpracują z maszynami wirtualnymi platformy Azure:
 
-![Tożsamości usługi zarządzanej i maszyny wirtualne platformy Azure](media/overview/msi-vm-vmextension-imds-example.png)
+![Tożsamości usługi zarządzanej i maszyny wirtualne platformy Azure](media/overview/data-flow.png)
 
 |  Właściwość    | Tożsamość zarządzana przypisana przez system | Tożsamość zarządzana przypisana przez użytkownika |
 |------|----------------------------------|--------------------------------|

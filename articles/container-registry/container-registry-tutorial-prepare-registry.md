@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 04/30/2017
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 70dc664d27fde3b7cf9fe4e5e3a99c041236ac16
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454440"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384333"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Samouczek: przygotowywanie rejestru kontenerów platformy Azure z replikacją geograficzną
 
@@ -37,7 +37,7 @@ Usługa Azure Cloud Shell nie zawiera składników platformy Docker wymaganych d
 
 ## <a name="create-a-container-registry"></a>Tworzenie rejestru kontenerów
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+Zaloguj się do [Azure portal](https://portal.azure.com).
 
 Wybierz pozycję **Utwórz zasób** > **Kontenery** > **Azure Container Registry**.
 

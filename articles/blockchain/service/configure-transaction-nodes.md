@@ -5,11 +5,11 @@ ms.date: 11/20/2019
 ms.topic: article
 ms.reviewer: janders
 ms.openlocfilehash: 4a9a4f660dd171e65b600ec4cd66714ca476b091
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326304"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395247"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Konfigurowanie węzłów transakcji usługi Azure łańcucha bloków Service
 
@@ -17,7 +17,7 @@ Węzły transakcji są używane do wysyłania transakcji łańcucha bloków do u
 
 Aby wyświetlić szczegóły domyślnego węzła transakcji:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. Przejdź do elementu członkowskiego usługi Azure łańcucha bloków. Wybierz **węzły transakcji**.
 
     ![Wybierz domyślny węzeł transakcji](./media/configure-transaction-nodes/nodes.png)
@@ -37,7 +37,7 @@ Aby dodać węzeł transakcji:
 
     | Ustawienie | Opis |
     |---------|-------------|
-    | Nazwa | Nazwa węzła transakcji. Nazwa służy do tworzenia adresu DNS dla punktu końcowego węzła transakcji. Na przykład `newnode-myblockchainmember.blockchain.azure.com`. Nazwy węzła nie można zmienić po jego utworzeniu. |
+    | Name (Nazwa) | Nazwa węzła transakcji. Nazwa służy do tworzenia adresu DNS dla punktu końcowego węzła transakcji. Na przykład `newnode-myblockchainmember.blockchain.azure.com`. Nazwy węzła nie można zmienić po jego utworzeniu. |
     | Hasło | Ustaw silne hasło. Użyj hasła, aby uzyskać dostęp do punktu końcowego węzła transakcji z uwierzytelnianiem podstawowym.
 
 1. Wybierz pozycję **Utwórz**.
@@ -56,7 +56,7 @@ Aby wyświetlić szczegóły punktu końcowego węzła transakcji:
 
 Punkty końcowe węzła transakcji są bezpieczne i wymagają uwierzytelniania. Można nawiązać połączenie z punktem końcowym transakcji przy użyciu uwierzytelniania usługi Azure AD, uwierzytelniania podstawowego HTTPS i przy użyciu klucza dostępu za pośrednictwem protokołu HTTPS lub protokołu WebSocket za pośrednictwem protokołu SSL.
 
-### <a name="azure-active-directory-access-control"></a>Kontrola dostępu za pomocą usługi Azure Active Directory
+### <a name="azure-active-directory-access-control"></a>Azure Active Directory kontroli dostępu
 
 Punkty końcowe węzła transakcji usługi Azure łańcucha bloków obsługują uwierzytelnianie Azure Active Directory (Azure AD). Możesz udzielić użytkownikowi, grupie i dostępowi jednostki usługi Azure AD do punktu końcowego.
 
@@ -71,7 +71,7 @@ Aby udzielić kontroli dostępu usługi Azure AD do punktu końcowego:
     |---------|-------------|
     | Rola | Wybierz **właściciela**, **współautora**lub **czytelnika**.
     | Przypisywanie dostępu do | Wybierz pozycję **użytkownik, Grupa lub nazwa główna usługi Azure AD**.
-    | Wybierz pozycję | Wyszukaj użytkownika, grupę lub jednostkę usługi, którą chcesz dodać.
+    | Wybierz | Wyszukaj użytkownika, grupę lub jednostkę usługi, którą chcesz dodać.
 
 1. Wybierz pozycję **Zapisz** , aby dodać przypisanie roli.
 

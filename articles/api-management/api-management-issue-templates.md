@@ -14,14 +14,14 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 1dac90053797caf66af79e458b9dbb95b682cd17
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176641"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374402"
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Szablony problemów na platformie Azure API Management
-Usługa Azure API Management umożliwia dostosowanie zawartości stron portalu dla deweloperów przy użyciu zestawu szablonów, które konfigurują ich zawartość. Korzystając z składni [DotLiquid](http://dotliquidmarkup.org/) i wybranego edytora, takiego jak [DotLiquid dla projektantów](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), i dostępnego zestawu zlokalizowanych [zasobów ciągów](api-management-template-resources.md#strings), [zasobów symboli](api-management-template-resources.md#glyphs)i [kontrolek stron](api-management-page-controls.md), masz doskonałą elastyczność konfigurowania zawartość stron wyświetlanych w postaci dopasowania przy użyciu tych szablonów.  
+Usługa Azure API Management umożliwia dostosowanie zawartości stron portalu dla deweloperów przy użyciu zestawu szablonów, które konfigurują ich zawartość. Korzystając z składni [DotLiquid](http://dotliquidmarkup.org/) i wybranego edytora, takiego jak [DotLiquid dla projektantów](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), i dostępnego zestawu zlokalizowanych [zasobów ciągów](api-management-template-resources.md#strings), [zasobów glifów](api-management-template-resources.md#glyphs)i [kontrolek stron](api-management-page-controls.md), masz doskonałą elastyczność konfigurowania zawartości stron w miarę, w jakiej są one widoczne przy użyciu tych szablonów.  
   
  Szablony w tej sekcji umożliwiają dostosowanie zawartości stron problemu w portalu dla deweloperów.  
   
@@ -104,7 +104,7 @@ Usługa Azure API Management umożliwia dostosowanie zawartości stron portalu d
 |`Paging`|Jednostka [stronicowania](api-management-template-data-model-reference.md#Paging) .|Informacje o stronicowaniu dla kolekcji aplikacji.|  
 |`IsAuthenticated`|wartość logiczna|Czy bieżący użytkownik jest zalogowany do portalu dla deweloperów.|  
 |`CanReportIssues`|wartość logiczna|Czy bieżący użytkownik ma uprawnienia do pliku problemu.|  
-|`Search`|string|Ta właściwość jest przestarzała i nie powinna być używana.|  
+|`Search`|ciąg|Ta właściwość jest przestarzała i nie powinna być używana.|  
   
 ### <a name="sample-template-data"></a>Przykładowe dane szablonu  
   

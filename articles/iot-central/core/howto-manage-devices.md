@@ -9,11 +9,11 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: dfbfd65223ddad5e8a20958d62ef86b5aa16af43
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023484"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391562"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Zarządzanie urządzeniami w aplikacji IoT Central platformy Azure
 
@@ -51,7 +51,7 @@ Aby dodać urządzenie do aplikacji usługi Azure IoT Central:
 
 1. Zmień przełącznik **symulowany** na **włączony** lub **wyłączony**. Rzeczywiste urządzenie dotyczy urządzenia fizycznego połączonego z aplikacją Azure IoT Central. Urządzenie symulowane ma przykładowe dane wygenerowane przez usługę Azure IoT Central.
 
-1. Kliknij pozycję **Utwórz**.
+1. Kliknij przycisk **Utwórz**.
 
 1. To urządzenie jest teraz widoczne na liście urządzeń dla tego szablonu. Wybierz urządzenie, aby wyświetlić stronę szczegóły urządzenia, która zawiera wszystkie widoki dla urządzenia.
 
@@ -124,7 +124,7 @@ Aby wyeksportować zbiorczo urządzenia z aplikacji:
 
 1. Wybierz urządzenia, które chcesz wyeksportować, a następnie wybierz akcję **Eksportuj** .
 
-    ![Eksportuj](./media/howto-manage-devices/export1a.png)
+    ![Eksportowanie](./media/howto-manage-devices/export1a.png)
 
 
 1. Rozpocznie się proces eksportowania. Stan można śledzić za pomocą panelu Operacje na urządzeniu.

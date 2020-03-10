@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: chrisgre
 ms.openlocfilehash: 75c6b7d89e7ae540e7428afde127281aa3f15fc6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429332"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386094"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>Automatyczne zarządzanie urządzeniami i modułami IoT przy użyciu Azure Portal
 
@@ -54,7 +54,7 @@ Przed utworzeniem konfiguracji należy określić, które urządzenia lub moduł
 
 ## <a name="create-a-configuration"></a>Utwórz konfigurację
 
-1. W [witryny Azure portal](https://portal.azure.com), przejdź do Centrum IoT hub. 
+1. W [Azure Portal](https://portal.azure.com)przejdź do centrum IoT Hub. 
 
 2. Wybierz pozycję **Konfiguracja urządzenia IoT**.
 
@@ -66,7 +66,7 @@ Istnieje pięć kroków, które należy wykonać, aby utworzyć konfigurację. P
 
 ### <a name="name-and-label"></a>Nazwa i etykieta
 
-1. Nadaj swojej konfiguracji unikatową nazwę, która jest maksymalnie 128 małymi literami. Należy unikać miejsca do magazynowania i następujące nieprawidłowe znaki: `& ^ [ ] { } \ | " < > /`.
+1. Nadaj swojej konfiguracji unikatową nazwę, która jest maksymalnie 128 małymi literami. Unikaj spacji i następujących nieprawidłowych znaków: `& ^ [ ] { } \ | " < > /`.
 
 2. Dodaj etykiety, aby pomóc w śledzeniu konfiguracji. Etykiety to **nazwy**i pary **wartości** opisujące konfigurację. Na przykład: `HostPlatform, Linux` lub `Version, 3.0.1`.
 
@@ -106,7 +106,7 @@ Każda konfiguracja może mieć maksymalnie pięć metryk niestandardowych.
 
 2. Wprowadź zapytanie dla **kryteriów metryki**.  Zapytanie jest oparte na raportowanych właściwościach urządzenia.  Metryka reprezentuje liczbę wierszy zwracanych przez zapytanie.
 
-Przykład:
+Na przykład:
 
 ```sql
 SELECT deviceId FROM devices 
@@ -121,7 +121,7 @@ SELECT deviceId FROM devices
   WHERE configurations.[[yourconfigname]].status='Applied'
 ```
 
-Jeśli tworzysz metrykę do raportowania w skonfigurowanych modułach, wybierz `moduleId` z `devices.modules`. Przykład:
+Jeśli tworzysz metrykę do raportowania w skonfigurowanych modułach, wybierz `moduleId` z `devices.modules`. Na przykład:
 
 ```sql
 SELECT deviceId, moduleId FROM devices.modules
@@ -144,7 +144,7 @@ Ponieważ wiele konfiguracji może wskazywać na to samo urządzenie lub moduł,
    
    W celu automatycznego konfigurowania modułów należy użyć zapytania, aby określić Tagi lub zgłoszone właściwości z modułów zarejestrowanych w centrum IoT Hub. Na przykład: `from devices.modules where tags.environment='test'` lub `from devices.modules where properties.reported.chillerProperties.model='4000x'`. Symbol wieloznaczny nie może być używany jako element docelowy wszystkich modułów. 
 
-3. Wybierz **dalej** można przenieść do ostatniego kroku.
+3. Wybierz przycisk **dalej** , aby przejść do ostatniego kroku.
 
 ### <a name="review-configuration"></a>Przegląd konfiguracji
 
@@ -154,7 +154,7 @@ Przejrzyj informacje o konfiguracji, a następnie wybierz pozycję **Prześlij**
 
 Aby wyświetlić szczegóły konfiguracji i monitorować urządzenia, na których działa, wykonaj następujące czynności:
 
-1. W [witryny Azure portal](https://portal.azure.com), przejdź do Centrum IoT hub. 
+1. W [Azure Portal](https://portal.azure.com)przejdź do centrum IoT Hub. 
 
 2. Wybierz pozycję **Konfiguracja urządzenia IoT**.
 
@@ -198,7 +198,7 @@ Jeśli zaktualizujesz warunek docelowy, zachodzą następujące aktualizacje:
 
 Aby zmodyfikować konfigurację, wykonaj następujące czynności: 
 
-1. W [witryny Azure portal](https://portal.azure.com), przejdź do Centrum IoT hub. 
+1. W [Azure Portal](https://portal.azure.com)przejdź do centrum IoT Hub. 
 
 2. Wybierz pozycję **Konfiguracja urządzenia IoT**. 
 
@@ -219,7 +219,7 @@ Aby zmodyfikować konfigurację, wykonaj następujące czynności:
 
 Po usunięciu konfiguracji wszystkie urządzenia bliźniaczych reprezentacjią swoją konfigurację o najwyższym priorytecie. Jeśli bliźniaczych reprezentacji urządzeń nie spełnia warunku docelowego żadnej innej konfiguracji, nie są stosowane żadne inne ustawienia. 
 
-1. W [witryny Azure portal](https://portal.azure.com), przejdź do Centrum IoT hub. 
+1. W [Azure Portal](https://portal.azure.com)przejdź do centrum IoT Hub. 
 
 2. Wybierz pozycję **Konfiguracja urządzenia IoT**. 
 

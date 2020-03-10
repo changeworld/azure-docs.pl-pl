@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
 ms.openlocfilehash: f10be8efcd2d8e838b4b5f62310eb405f6ed0158
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714640"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356436"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Jak skonfigurować usługę Azure cache for Redis
 W tym temacie opisano konfiguracje dostępne dla usługi Azure cache dla wystąpień Redis. W tym temacie opisano również domyślną konfigurację serwera Redis dla usługi Azure cache dla wystąpień Redis.
@@ -49,7 +49,7 @@ Poniższe ustawienia można wyświetlać i konfigurować za pomocą **menu zasó
     * [Aœciwoœci](#properties)
     * [Zamki](#locks)
     * [Skrypt automatyzacji](#automation-script)
-* Administracja
+* {1&gt;Administracja&lt;1}
     * [Importowanie danych](#importexport)
     * [Eksportowanie danych](#importexport)
     * [Ponowne uruchamianie](#reboot)
@@ -193,7 +193,7 @@ Każda warstwa cenowa ma różne limity dla połączeń klientów, pamięci i pr
 Aby uaktualnić pamięć podręczną, kliknij pozycję **Uaktualnij teraz** , aby zmienić warstwę cenową i [skalować](#scale) pamięć podręczną. Aby uzyskać więcej informacji na temat wybierania warstwy cenowej, zobacz, w [jaki sposób usługa Azure cache for Redis i jakiej wielkości mam używać?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
 
 
-### <a name="scale"></a>Skalowanie
+### <a name="scale"></a>Skala
 Kliknij pozycję **skalowanie** , aby wyświetlić lub zmienić warstwę cenową pamięci podręcznej. Aby uzyskać więcej informacji na temat skalowania, zobacz [Jak skalować pamięć podręczną platformy Azure dla Redis](cache-how-to-scale.md).
 
 ![Pamięć podręczna platformy Azure dla warstwy cenowej Redis](./media/cache-configure/pricing-tier.png)
@@ -288,7 +288,7 @@ Kliknij pozycję **skrypt automatyzacji** , aby skompilować i wyeksportować sz
 ## <a name="administration-settings"></a>Ustawienia administracyjne
 Ustawienia w sekcji **Administracja** umożliwiają wykonywanie następujących zadań administracyjnych dla pamięci podręcznej.
 
-![Administracja](./media/cache-configure/redis-cache-administration.png)
+![{1&gt;Administracja&lt;1}](./media/cache-configure/redis-cache-administration.png)
 
 * [Importowanie danych](#importexport)
 * [Eksportowanie danych](#importexport)

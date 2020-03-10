@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: alkohli
 ms.openlocfilehash: a56610dd81d6e50da11bbd65bcf0682e399b1783
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76273964"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78366817"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>Wdrażanie lokalnego urządzenia StorSimple (z aktualizacją Update 3 lub nowszą)
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Witamy w procesie wdrażania urządzenia Microsoft Azure StorSimple. Te samouczki wdrażania dotyczą urządzenia StorSimple 8000 Series z aktualizacją Update 3 lub nowszą. W tej serii samouczków uwzględniono listę kontrolną i wymagania wstępne dotyczące konfiguracji oraz szczegółowe opisy kroków konfiguracji dla urządzenia StorSimple.
 
 Informacje podane w tych samouczkach mają zastosowanie po zapoznaniu się ze środkami ostrożności i dopiero wówczas, gdy urządzenie StorSimple zostało rozpakowane i zamontowane w stojaku oraz podłączono do niego kable. Jeśli nadal trzeba wykonać te zadania, należy rozpocząć od sprawdzenia [środków ostrożności](storsimple-8000-safety.md). Wykonaj instrukcje dotyczące rozpakowania określonego urządzenia, zamontowania go w stojaku oraz podłączania do niego kabli.
@@ -34,7 +34,7 @@ Do ukończenia procesu instalacji i konfiguracji niezbędne są uprawnienia admi
 ## <a name="deployment-steps"></a>Kroki wdrażania
 Wykonaj wymagane kroki, aby skonfigurować urządzenie StorSimple i połączyć je z usługą Menedżer urządzeń StorSimple. Oprócz kroków wymaganych istnieją również opcjonalne kroki i procedury, które być może trzeba będzie wykonać podczas wdrażania. W szczegółowych instrukcjach dotyczących wdrażania wskazano, w którym momencie należy wykonać poszczególne kroki opcjonalne.
 
-| Czynność | Opis |
+| Krok | Opis |
 | --- | --- |
 | **WYMAGANIA WSTĘPNE** |Te czynności muszą zostać wykonane w ramach przygotowań do przyszłego wdrożenia. |
 | [Lista kontrolna dotycząca konfiguracji wdrożenia](#deployment-configuration-checklist) |Ta lista kontrolna umożliwia zbieranie i rejestrowanie informacji przed wdrożeniem i w jego trakcie. |
@@ -62,7 +62,7 @@ Przed wdrożeniem urządzenia należy zebrać informacje w celu skonfigurowania 
 
 * [Pobieranie listy kontrolnej dotyczącej konfiguracji wdrożenia urządzenia StorSimple](https://www.microsoft.com/download/details.aspx?id=49159)
 
-## <a name="deployment-prerequisites"></a>Wymagania wstępne wdrożenia
+## <a name="deployment-prerequisites"></a>Wymagania wstępne dotyczące wdrożenia
 Poniższe sekcje zawierają opis wymagań wstępnych dotyczących konfiguracji usługi Menedżer urządzeń StorSimple oraz urządzenia StorSimple.
 
 ### <a name="for-the-storsimple-device-manager-service"></a>Usługa Menedżer urządzeń StorSimple

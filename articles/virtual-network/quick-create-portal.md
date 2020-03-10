@@ -15,11 +15,11 @@ ms.workload: infrastructure
 ms.date: 07/08/2019
 ms.author: kumud
 ms.openlocfilehash: d8e95f9c345a943eb458800b852640e3f1fde907
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488471"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393112"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>Szybki start: tworzenie sieci wirtualnej przy użyciu witryny Azure Portal
 
@@ -28,9 +28,9 @@ Sieć wirtualna jest podstawowym blokiem konstrukcyjnym sieci prywatnej na platf
 
 Jeśli nie masz subskrypcji platformy Azure, utwórz teraz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+Zaloguj się do [Azure portal](https://portal.azure.com).
 
 ## <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 
@@ -42,7 +42,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
     | Ustawienie | Wartość |
     | ------- | ----- |
-    | Nazwa | Wpisz *myVirtualNetwork*. |
+    | Name (Nazwa) | Wpisz *myVirtualNetwork*. |
     | Przestrzeń adresowa | Wprowadź adres *10.1.0.0/16*. |
     | Subskrypcja | Wybierz subskrypcję.|
     | Grupa zasobów | Wybierz pozycję **Utwórz nową**, wprowadź nazwę *myResourceGroup*, a następnie wybierz przycisk **OK**. |
@@ -73,7 +73,7 @@ W sieci wirtualnej utwórz dwie maszyny wirtualne:
     | Nazwa maszyny wirtualnej | Wprowadź nazwę *myVm1*. |
     | Region | Wybierz pozycję **Wschodnie stany USA**. |
     | Opcje dostępności | Pozostaw wartość domyślną **Brak wymaganej nadmiarowości infrastruktury**. |
-    | Image (Obraz) | Pozostaw domyślne **centrum systemu Windows Server 2019**. |
+    | Obraz | Pozostaw domyślne **centrum systemu Windows Server 2019**. |
     | Rozmiar | Pozostaw wartość domyślną **Standardowy DS1, wersja 2**. |
     | **KONTO ADMINISTRATORA** |  |
     | Nazwa użytkownika | Wprowadź wybraną nazwę użytkownika. |
@@ -106,7 +106,7 @@ W sieci wirtualnej utwórz dwie maszyny wirtualne:
 
     | Ustawienie | Wartość |
     | ------- | ----- |
-    | Nazwa | Wprowadź nazwę *myvmstorageaccount*. Jeśli ta nazwa jest wykonywana, utwórz unikatową nazwę.|
+    | Name (Nazwa) | Wprowadź nazwę *myvmstorageaccount*. Jeśli ta nazwa jest wykonywana, utwórz unikatową nazwę.|
     | Rodzaj konta | Pozostaw wartość domyślną **Magazyn (ogólnego przeznaczenia, wersja 1)** . |
     | Wydajność | Pozostaw wartość domyślną **Standardowa**. |
     | Replikacja | Pozostaw wartość domyślną **Magazyn lokalnie nadmiarowy (LRS)** . |
@@ -142,7 +142,7 @@ Po utworzeniu *myVm1*Połącz się z Internetem.
 
     Po wybraniu przycisku **Połącz** zostanie otwarta strona **Łączenie z maszyną wirtualną**.
 
-3. Wybierz opcję **Pobierz plik RDP**. Na platformie Azure zostanie utworzony plik Remote Desktop Protocol (*rdp*), który zostanie pobrany na komputer.
+3. Wybierz opcję **Pobierz plik RDP**. Plik Remote Desktop Protocol ( *.rdp*) zostanie utworzony na platformie Azure, a następnie pobrany na komputer.
 
 4. Otwórz pobrany plik *rdp*.
 

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: wesmc
 ms.openlocfilehash: 2a7e0932d226b1533c039b8529c2c11de06cf525
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453802"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396051"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Kontrola dostępu do IoT Hub Device Provisioning Service platformy Azure
 
@@ -39,7 +39,7 @@ Musisz mieć odpowiednie uprawnienia, aby uzyskać dostęp do dowolnych punktów
 > [!NOTE]
 > Aby uzyskać szczegółowe informacje, zobacz [uprawnienia](#device-provisioning-service-permissions) .
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Uwierzytelnianie
 
 Usługa Azure IoT Hub Device Provisioning Service udziela dostępu do punktów końcowych przez Weryfikowanie tokenu względem zasad dostępu współdzielonego. Poświadczenia zabezpieczeń, takie jak klucze symetryczne, nigdy nie są wysyłane przez sieć.
 
@@ -141,7 +141,7 @@ Składniki usługi mogą generować tylko tokeny zabezpieczające przy użyciu z
 
 Poniżej przedstawiono funkcje usługi uwidocznione w punktach końcowych:
 
-| Punkt końcowy | Funkcjonalność |
+| Endpoint | Funkcjonalność |
 | --- | --- |
 | `{your-service}.azure-devices-provisioning.net/enrollments` |Zapewnia operacje rejestracji urządzeń w usłudze Device Provisioning. |
 | `{your-service}.azure-devices-provisioning.net/enrollmentGroups` |Zawiera operacje zarządzania grupami rejestracji urządzeń. |
@@ -179,7 +179,7 @@ Poniższa tabela zawiera listę uprawnień, których można użyć do kontrolowa
 
 | Uprawnienie | Uwagi |
 | --- | --- |
-| **ServiceConfig** |Przyznaje dostęp do zmiany konfiguracji usługi. <br/>To uprawnienie jest używane przez usługi w chmurze zaplecza. |
+| **Konfiguracja ServiceConfig** |Przyznaje dostęp do zmiany konfiguracji usługi. <br/>To uprawnienie jest używane przez usługi w chmurze zaplecza. |
 | **EnrollmentRead** |Przyznaje dostęp do odczytu do rejestracji urządzeń i grup rejestracji. <br/>To uprawnienie jest używane przez usługi w chmurze zaplecza. |
 | **EnrollmentWrite** |Przyznaje dostęp do zapisu do rejestracji urządzeń i grup rejestracji. <br/>To uprawnienie jest używane przez usługi w chmurze zaplecza. |
 | **RegistrationStatusRead** |Zezwala na dostęp do odczytu do stanu rejestracji urządzenia. <br/>To uprawnienie jest używane przez usługi w chmurze zaplecza. |

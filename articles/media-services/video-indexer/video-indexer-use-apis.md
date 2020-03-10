@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: juliako
 ms.openlocfilehash: 8b6d160f71bfe8b2e5c447296d511b54ce6542c8
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989777"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382915"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Samouczek: używanie interfejsu API usługi Video Indexer
 
@@ -99,7 +99,7 @@ Identyfikator konta to parametr wymagany we wszystkich wywołaniach interfejsu A
     https://www.videoindexer.ai/accounts/00000000-f324-4385-b142-f77dacb0a368/videos/d45bf160b5/
     ```
 
-## <a name="recommendations"></a>Polecane elementy
+## <a name="recommendations"></a>Zalecenia
 
 W tej sekcji przedstawiono kilka zaleceń dotyczących korzystania z interfejsu API usługi Video Indexer.
 
@@ -207,7 +207,7 @@ Debug.WriteLine(playerWidgetLink);
 
 ```
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 - [Omówienie usługi Video Indexer](video-indexer-overview.md)
 - [Regiony](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)

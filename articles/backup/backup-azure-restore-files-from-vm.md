@@ -3,12 +3,12 @@ title: Odzyskiwanie plików i folderów z kopii zapasowej maszyny wirtualnej pla
 description: W tym artykule dowiesz się, jak odzyskiwać pliki i foldery z punktu odzyskiwania maszyny wirtualnej platformy Azure.
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: d80fb1060eca766305ecbfffe151d975472f8b3c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 0e3061ea8fc26adcf39fe415cd9a662de739543a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77660924"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363895"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Odzyskiwanie plików z kopii zapasowej maszyny wirtualnej platformy Azure
 
@@ -125,7 +125,7 @@ Aby wyświetlić listę wszystkich woluminów logicznych, nazw i ich ścieżek w
 
 ```bash
 #!/bin/bash
-lvdisplay <volume-group-name from the pvs command’s results>
+lvdisplay <volume-group-name from the pvs command's results>
 ```
 
 Aby zainstalować woluminy logiczne do wybranej ścieżki:
@@ -202,10 +202,10 @@ W przypadku uruchamiania skryptu na komputerze z ograniczonym dostępem upewnij 
 
 - `download.microsoft.com`
 - Adresy URL usługi odzyskiwania (nazwa geograficzna odnosi się do regionu, w którym znajduje się magazyn usługi odzyskiwania)
-  - <https://pod01-rec2.geo-name.backup.windowsazure.com> (dla Georegiony publicznego platformy Azure)
-  - <https://pod01-rec2.geo-name.backup.windowsazure.cn> (w przypadku platformy Azure — Chiny)
-  - <https://pod01-rec2.geo-name.backup.windowsazure.us> (dla instytucji rządowych USA platformy Azure)
-  - <https://pod01-rec2.geo-name.backup.windowsazure.de> (dla platformy Azure (Niemcy)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.com` (dla Georegiony publicznego platformy Azure)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.cn` (w przypadku platformy Azure — Chiny)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.us` (dla instytucji rządowych USA platformy Azure)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.de` (dla platformy Azure (Niemcy)
 - Porty wychodzące 53 (DNS), 443, 3260
 
 > [!NOTE]
@@ -253,7 +253,7 @@ Ponieważ proces odzyskiwania plików dołącza wszystkie dyski z kopii zapasowe
 
 Jeśli występują problemy podczas odzyskiwania plików z maszyn wirtualnych, zapoznaj się z poniższą tabelą, aby uzyskać dodatkowe informacje.
 
-| Komunikat o błędzie/scenariusz | Prawdopodobna przyczyna | Zalecana akcja |
+| Komunikat o błędzie/scenariusz | Prawdopodobna przyczyna | Zalecane działanie |
 | ------------------------ | -------------- | ------------------ |
 | Wyjście exe: *Przechwycono wyjątek podczas łączenia z miejscem docelowym* | Skrypt nie może uzyskać dostępu do punktu odzyskiwania.    | Sprawdź, czy maszyna spełnia [poprzednie wymagania dotyczące dostępu](#access-requirements). |  
 | Wyjściowy plik exe: *element docelowy został już zalogowany za pośrednictwem sesji iSCSI.* | Skrypt został już wykonany na tym samym komputerze, a dyski zostały podłączone | Woluminy punktu odzyskiwania zostały już dołączone. Mogą nie być zainstalowane z tymi samymi literami dysków oryginalnej maszyny wirtualnej. Przejrzyj wszystkie dostępne woluminy w Eksploratorze plików dla danego pliku. |
@@ -263,7 +263,7 @@ Jeśli występują problemy podczas odzyskiwania plików z maszyn wirtualnych, z
 | Specyficzne dla systemu Linux: nie można wyświetlić żądanych woluminów | System operacyjny maszyny, na której jest uruchamiany skrypt, może nie rozpoznać podstawowego systemu plików chronionej maszyny wirtualnej | Sprawdź, czy punkt odzyskiwania jest spójny pod kątem awarii lub spójny z plikiem. Jeśli plik jest spójny, uruchom skrypt na innym komputerze, którego system operacyjny rozpoznaje chronioną system plików maszyny wirtualnej. |
 | Specyficzne dla systemu Windows: nie można wyświetlić żądanych woluminów | Dyski mogły zostać dołączone, ale nie skonfigurowano woluminów | Na ekranie Zarządzanie dyskami Zidentyfikuj dodatkowe dyski związane z punktem odzyskiwania. Jeśli którykolwiek z tych dysków znajduje się w stanie offline, spróbuj przełączyć je w tryb online, klikając dysk prawym przyciskiem myszy, a następnie kliknij pozycję **online**.|
 
-## <a name="security"></a>Bezpieczeństwo
+## <a name="security"></a>Zabezpieczenia
 
 W tej sekcji omówiono różne miary zabezpieczeń związane z wdrażaniem odzyskiwania plików z kopii zapasowych maszyn wirtualnych platformy Azure.
 
@@ -295,7 +295,7 @@ Aby przeglądać pliki i foldery, skrypt używa inicjatora iSCSI na komputerze i
 
 Używamy mechanizmu uwierzytelniania wzajemnego CHAP, aby każdy składnik uwierzytelniał inne. Oznacza to, że niezwykle trudne jest, aby fałszywy inicjator łączył się z obiektem docelowym iSCSI i dla fałszywego obiektu docelowego był połączony z maszyną, na której uruchomiono skrypt.
 
-Przepływ danych między usługą odzyskiwania i komputerem jest chroniony przez utworzenie bezpiecznego tunelu SSL za pośrednictwem protokołu TCP (protokół[TLS 1,2 powinien być obsługiwany](#system-requirements) na komputerze, na którym jest uruchamiany skrypt).
+Przepływ danych między usługą odzyskiwania i komputerem jest chroniony przez utworzenie bezpiecznego tunelu protokołu TLS za pośrednictwem protokołu TCP (protokół[tls 1,2 powinien być obsługiwany](#system-requirements) na komputerze, na którym jest uruchamiany skrypt).
 
 Wszystkie pliki Access Control List (ACL) obecne w nadrzędnej/kopii zapasowej maszyny wirtualnej są zachowane również w zainstalowanym systemie plików.
 

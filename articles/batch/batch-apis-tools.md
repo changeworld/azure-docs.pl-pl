@@ -10,11 +10,11 @@ ms.date: 12/07/2018
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: 00d2a74946957f690979eec1d3a03a9b766299d8
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025881"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394901"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>Omówienie narzędzi i interfejsów API usługi Batch
 
@@ -37,9 +37,9 @@ Podczas opracowywania rozwiązań usługi Batch potrzebne są następujące kont
 
 Aplikacje i usługi mogą wykonywać bezpośrednie wywołania interfejsu API REST lub użyć co najmniej jednej z następujących bibliotek klienckich do uruchamiania obciążeń usługi Azure Batch i zarządzania nimi.
 
-| API | Dokumentacja interfejsów API | Pobierz | Samouczek | Przykłady kodu | Więcej informacji |
+| Interfejs API | Dokumentacja interfejsu API | Pobieranie | Samouczek | Przykłady kodu | Więcej informacji |
 | --- | --- | --- | --- | --- | --- |
-| **Batch REST** |[docs.microsoft.com][batch_rest] |ND |- |- | [Obsługiwane wersje](/rest/api/batchservice/batch-service-rest-api-versioning) |
+| **Batch REST** |[docs.microsoft.com][batch_rest] |N/D |- |- | [Obsługiwane wersje](/rest/api/batchservice/batch-service-rest-api-versioning) |
 | **Batch .NET** |[docs.microsoft.com][api_net] |[NuGet][api_net_nuget] |[Samouczek](tutorial-parallel-dotnet.md) |[GitHub][api_sample_net] | [Informacje o wersji](https://aka.ms/batch-net-dataplane-changelog) |
 | **Batch Python** |[docs.microsoft.com][api_python] |[PyPI][api_python_pypi] |[Samouczek](tutorial-parallel-python.md)|[GitHub][api_sample_python] | [Plik Readme](https://github.com/Azure/azure-sdk-for-python/blob/master/doc/batch.rst) |
 | **Batch Node.js** |[docs.microsoft.com][api_nodejs] |[npm][api_nodejs_npm] |[Samouczek](batch-nodejs-get-started.md) |- | [Plik Readme](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/batch) |
@@ -49,9 +49,9 @@ Aplikacje i usługi mogą wykonywać bezpośrednie wywołania interfejsu API RES
 
 Interfejsy API usługi Azure Resource Manager dla usługi Batch zapewniają dostęp programowy do kont usługi Batch. Za pomocą tych interfejsów API możesz programowo zarządzać kontami usługi Batch, limitami przydziału, pakietami aplikacji i innymi zasobami za pośrednictwem dostawcy Microsoft.Batch.  
 
-| API | Dokumentacja interfejsów API | Pobierz | Samouczek | Przykłady kodu |
+| Interfejs API | Dokumentacja interfejsu API | Pobieranie | Samouczek | Przykłady kodu |
 | --- | --- | --- | --- | --- |
-| **Batch Management REST (Interfejs REST zarządzania usługą Batch)** |[docs.microsoft.com][api_rest_mgmt] |ND |- |[GitHub](https://github.com/Azure-Samples/batch-dotnet-manage-batch-accounts) |
+| **Batch Management REST (Interfejs REST zarządzania usługą Batch)** |[docs.microsoft.com][api_rest_mgmt] |N/D |- |[GitHub](https://github.com/Azure-Samples/batch-dotnet-manage-batch-accounts) |
 | **Batch Management .NET** |[docs.microsoft.com][api_net_mgmt] |[NuGet][api_net_mgmt_nuget] | [Samouczek](batch-management-dotnet.md) |[GitHub][api_sample_net] |
 | **Zarządzanie usługą Batch za pomocą języka Python** |[docs.microsoft.com][api_python_mgmt] |[PyPI][api_python_mgmt_pypi] |- |- |
 | **Zarządzanie usługą Batch za pomocą oprogramowania Node.js** |[docs.microsoft.com][api_nodejs_mgmt] |[npm][api_nodejs_mgmt_npm] |- |- | 
@@ -72,7 +72,7 @@ Oto niektóre dodatkowe narzędzia, które mogą być przydatne do budowania i d
 * [Azure Batch stocznie](https://github.com/Azure/batch-shipyard): stoczniowe narzędzie do obsługi inicjowania, wykonywania i monitorowania przetwarzania wsadowego opartego na kontenerach i obciążeń HPC na Azure Batch.
 * [Eksplorator usługi Azure Storage][storage_explorer]: Chociaż nie jest to dokładnie narzędzie Azure Batch, Eksplorator usługi Storage jest innym przydatnym narzędziem, które trzeba uzyskać podczas tworzenia i debugowania rozwiązań wsadowych.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - Aby dowiedzieć się więcej o rejestrowaniu zdarzeń z aplikacji usługi Batch, zobacz [Log events for diagnostic evaluation and monitoring of Batch solutions](batch-diagnostics.md) (Rejestrowanie zdarzeń na potrzeby ewaluacji diagnostycznej i monitorowania rozwiązań usługi Batch). Aby zapoznać się z dokumentacją zdarzeń zgłaszanych przez usługę Batch, zobacz [Analiza danych usługi Batch](batch-analytics.md).
 - Aby uzyskać informacje o zmiennych środowiskowych dla węzłów obliczeniowych, zobacz [Zmienne środowiskowe węzła obliczeniowego usługi Azure Batch](batch-compute-node-environment-variables.md).

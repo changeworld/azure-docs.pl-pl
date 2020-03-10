@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: e3f09d4e2500b98a7ce68139cd97a04c0d60d73e
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: f6817c1ec308e75a4af88825d46848b504775e19
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612555"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383702"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>Samouczek: Tworzenie i Konfigurowanie wystąpienia Azure Active Directory Domain Services z zaawansowanymi opcjami konfiguracji
 
@@ -139,7 +139,7 @@ Wypełnij pola w oknie *sieci* w następujący sposób:
 
 Specjalna grupa administracyjna o nazwie *Administratorzy usługi AAD* jest używana do zarządzania domeną AD DS platformy Azure. Członkowie tej grupy mają uprawnienia administracyjne na maszynach wirtualnych, które są przyłączone do domeny zarządzanej. Na maszynach wirtualnych przyłączonych do domeny ta grupa jest dodawana do lokalnej grupy administratorów. Członkowie tej grupy mogą również używać Pulpit zdalny do zdalnego nawiązywania połączenia z maszynami wirtualnymi przyłączonymi do domeny.
 
-Nie masz uprawnień *administratora domeny* ani *administratora przedsiębiorstwa* w domenie zarządzanej przy użyciu usługi Azure AD DS. Te uprawnienia są zastrzeżone przez usługę i nie są dostępne dla użytkowników w ramach dzierżawy. Zamiast tego grupa *Administratorzy usługi AAD DC* umożliwia wykonywanie niektórych operacji uprzywilejowanych. Te operacje obejmują Przyłączanie komputerów do domeny, należących do grupy administracyjnej na maszynach wirtualnych przyłączonych do domeny i Konfigurowanie zasady grupy.
+Nie masz uprawnień *administratora domeny* ani *administratora przedsiębiorstwa* w domenie zarządzanej przy użyciu usługi Azure AD DS. Te uprawnienia są zastrzeżone przez usługę i nie są dostępne dla użytkowników w ramach dzierżawy. Zamiast tego grupa *Administratorzy usługi AAD DC* umożliwia wykonywanie niektórych operacji uprzywilejowanych. Te operacje obejmują grupę administracyjną na maszynach wirtualnych przyłączonych do domeny i konfigurując zasady grupy.
 
 Kreator automatycznie tworzy grupę *administratorów DC w usłudze AAD* w katalogu usługi Azure AD. Jeśli masz istniejącą grupę o tej nazwie w katalogu usługi Azure AD, Kreator wybierze tę grupę. Opcjonalnie możesz wybrać opcję dodawania dodatkowych użytkowników do tej grupy *administratorów domeny usługi AAD* w procesie wdrażania. Kroki te można wykonać później.
 

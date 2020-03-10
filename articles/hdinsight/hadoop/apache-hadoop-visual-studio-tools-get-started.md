@@ -10,11 +10,11 @@ ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.openlocfilehash: 4ad58bc2d61f063dce2c23f60a65dcbec48a2303
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825092"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382152"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Używanie Data Lake narzędzi dla programu Visual Studio do nawiązywania połączenia z usługą Azure HDInsight i uruchamiania zapytań Apache Hive
 
@@ -46,7 +46,7 @@ Postępuj zgodnie z odpowiednimi instrukcjami, aby zainstalować narzędzia Data
 
   ![Wybór obciążenia, Instalator programu Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/vs-installation.png)
 
-- Dla programu Visual Studio 2015:
+- For Visual Studio 2015:
 
     [Pobierz narzędzia Data Lake](https://www.microsoft.com/download/details.aspx?id=49504). Należy wybrać wersję narzędzi Data Lake Tools zgodną z używaną wersją programu Visual Studio.
 

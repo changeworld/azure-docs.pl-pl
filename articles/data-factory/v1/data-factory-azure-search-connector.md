@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 5b1170f721cf8521cfe1762df0cc616c938ddf28
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929978"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387514"
 ---
 # <a name="push-data-to-an-azure-cognitive-search-index-by-using-azure-data-factory"></a>Wypychanie danych do indeksu Wyszukiwanie poznawcze platformy Azure przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -39,7 +39,7 @@ Można utworzyć potok za pomocą działania kopiowania, które wypycha dane ze 
 
 Najprostszym sposobem utworzenia potoku jest użycie **Kreatora kopiowania**. Zobacz [Samouczek: Tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) na potrzeby szybkiego instruktażu dotyczącego tworzenia potoku przy użyciu Kreatora kopiowania danych.
 
-Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
+Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Aby uzyskać instrukcje krok po kroku dotyczące tworzenia potoku za pomocą działania kopiowania, zobacz [Samouczek dotyczący działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Niezależnie od tego, czy używasz narzędzi, czy interfejsów API, wykonaj następujące kroki, aby utworzyć potok służący do przenoszenia danych ze źródłowego magazynu danych do magazynu danych ujścia:
 
@@ -57,7 +57,7 @@ Poniższa tabela zawiera opisy elementów JSON, które są specyficzne dla poł�
 
 | Właściwość | Opis | Wymagane |
 | -------- | ----------- | -------- |
-| type | Właściwość Type musi mieć wartość: **AzureSearch**. | Tak |
+| typ | Właściwość Type musi mieć wartość: **AzureSearch**. | Tak |
 | url | Adres URL usługi wyszukiwania. | Tak |
 | key | Klucz administratora dla usługi wyszukiwania. | Tak |
 
@@ -67,7 +67,7 @@ Aby zapoznać się z pełną listą sekcji i właściwości, które są dostępn
 
 | Właściwość | Opis | Wymagane |
 | -------- | ----------- | -------- |
-| type | Właściwość Type musi być ustawiona na wartość **AzureSearchIndex**.| Tak |
+| typ | Właściwość Type musi być ustawiona na wartość **AzureSearchIndex**.| Tak |
 | indexName | Nazwa indeksu wyszukiwania. Data Factory nie tworzy indeksu. Indeks musi istnieć na platformie Azure Wyszukiwanie poznawcze. | Tak |
 
 
@@ -78,7 +78,7 @@ W przypadku działania kopiowania, gdy ujścia ma typ **AzureSearchIndexSink**, 
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | -------- | ----------- | -------------- | -------- |
-| WriteBehavior | Określa, czy należy scalić lub zamienić, gdy dokument już istnieje w indeksie. Zobacz [Właściwość WriteBehavior](#writebehavior-property).| Scal (domyślnie)<br/>Przekazywanie| Nie |
+| WriteBehavior | Określa, czy należy scalić lub zamienić, gdy dokument już istnieje w indeksie. Zobacz [Właściwość WriteBehavior](#writebehavior-property).| Scal (domyślnie)<br/>Przekaż| Nie |
 | WriteBatchSize | Przekazuje dane do indeksu wyszukiwania, gdy rozmiar buforu osiągnie writeBatchSize. Aby uzyskać szczegółowe informacje, zobacz [Właściwość WriteBatchSize](#writebatchsize-property) . | od 1 do 1 000. Wartość domyślna to 1000. | Nie |
 
 ### <a name="writebehavior-property"></a>Właściwość WriteBehavior
@@ -102,7 +102,7 @@ W poniższej tabeli określono, czy typ danych Wyszukiwanie poznawcze platformy 
 | Ciąg | Tak |
 | Int32 | Tak |
 | Int64 | Tak |
-| Double | Tak |
+| Podwójne | Tak |
 | Wartość logiczna | Tak |
 | DataTimeOffset | Tak |
 | String Array | N |

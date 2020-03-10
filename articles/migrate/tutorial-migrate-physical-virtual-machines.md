@@ -4,12 +4,12 @@ description: W tym artykule opisano sposób migrowania maszyn fizycznych na plat
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.custom: MVC
-ms.openlocfilehash: 908a5915cbb7f5aeb9f641da18024d5dbf497707
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: bd55f422451df935301245eef3e9dd10f7ab55b1
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134936"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78946088"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Migrowanie maszyn jako serwerów fizycznych na platformę Azure
 
@@ -321,7 +321,10 @@ Po zweryfikowaniu, że migracja testowa działa zgodnie z oczekiwaniami, można 
 
 ## <a name="complete-the-migration"></a>Kończenie migracji
 
-1. Po zakończeniu migracji kliknij prawym przyciskiem myszy maszynę wirtualną > **Zatrzymaj migrację**. Spowoduje to zatrzymanie replikacji maszyny lokalnej i oczyszczenie informacji o stanie replikacji dla maszyny wirtualnej.
+1. Po zakończeniu migracji kliknij prawym przyciskiem myszy maszynę wirtualną > **Zatrzymaj migrację**. Spowoduje to wykonanie następujących czynności:
+    - Wyłącza replikację maszyny lokalnej.
+    - Usuwa maszynę z liczby **serwerów replikowania** w Azure Migrate: Migracja serwera.
+    - Czyści informacje o stanie replikacji maszyny.
 2. Zainstaluj agenta maszyny wirtualnej platformy Azure dla [systemu Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) lub [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) na zmigrowanych maszynach.
 3. Po zakończeniu migracji wykonaj wszystkie potrzebne czynności konfiguracyjne, takie jak aktualizacja parametrów połączenia bazy danych i serwera sieci Web.
 4. Wykonaj dla zmigrowanej aplikacji uruchomionej na platformie Azure testy końcowe aplikacji i akceptacji migracji.

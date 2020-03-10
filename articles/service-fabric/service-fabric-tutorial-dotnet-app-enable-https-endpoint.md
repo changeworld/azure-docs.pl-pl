@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: 077c2ab67efa51542baa3048eb678fa22b0bc2eb
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614081"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382808"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Samouczek: Dodawanie punktu końcowego HTTPS do usługi frontonu internetowego interfejsu API platformy ASP.NET Core za pomocą usługi Kestrel
 
@@ -40,9 +40,9 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 
 Przed rozpoczęciem tego samouczka:
 
-* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Zainstaluj program Visual Studio 2019](https://www.visualstudio.com/) w wersji 15,5 lub nowszej przy użyciu obciążeń deweloperskich i **ASP.NET** na **platformie Azure** .
-* [Instalowanie zestawu SDK usługi Service Fabric](service-fabric-get-started.md)
+* [Zainstaluj zestaw SDK usługi Service Fabric.](service-fabric-get-started.md)
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>Uzyskaj certyfikat lub utwórz certyfikat programistyczny z podpisem własnym
 
@@ -347,7 +347,7 @@ Przed wdrożeniem aplikacji na platformie Azure należy zainstalować certyfikat
 
 Najpierw należy wyeksportować certyfikat do pliku PFX. Otwórz aplikację certlm.msc i przejdź do pozycji **Personal**>**Certificates**.  Kliknij prawym przyciskiem myszy certyfikat *mytestcert*, a następnie wybierz pozycję **Wszystkie zadania**>**Eksportowanie**.
 
-![Eksportowanie certyfikatu][image4]
+![Eksportuj certyfikat][image4]
 
 W kreatorze eksportu wybierz opcję **Tak, eksportuj klucz prywatny** i wybierz format Wymiana informacji osobistych (PFX).  Wyeksportuj plik do pliku *C:\Users\sfuser\votingappcert.pfx*.
 

@@ -10,11 +10,11 @@ ms.date: 09/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Data Box Edge so I can use it to transform the data before sending it to Azure.
 ms.openlocfilehash: b641ae62ba6e0cdacaeb46b1ffee2f02c7544763
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277293"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397309"
 ---
 # <a name="tutorial-transform-data-with-azure-data-box-edge"></a>Samouczek: Przekształcanie danych za pomocą Azure Data Box Edge
 
@@ -50,10 +50,10 @@ Aby skonfigurować obliczenia na Data Box Edge, utworzysz zasób IoT Hub.
 3. W bloku **Konfigurowanie obliczeń krawędzi** wprowadź następujące dane:
 
    
-    |Pole  |Value  |
+    |Pole  |Wartość  |
     |---------|---------|
-    |IoT Hub     | Wybierz pozycję **Nowy** lub **istniejący**. <br> Domyślnie warstwa standardowa (S1) jest używana do tworzenia zasobu IoT. Aby użyć zasobu IoT warstwy Bezpłatna, utwórz go, a następnie wybierz istniejący zasób. <br> W każdym przypadku zasób IoT Hub używa tej samej subskrypcji i grupy zasobów, która jest używana przez zasób Data Box Edge.     |
-    |Name     |Wprowadź nazwę dla zasobu IoT Hub.         |
+    |Centrum IoT     | Wybierz pozycję **Nowy** lub **istniejący**. <br> Domyślnie warstwa standardowa (S1) jest używana do tworzenia zasobu IoT. Aby użyć zasobu IoT warstwy Bezpłatna, utwórz go, a następnie wybierz istniejący zasób. <br> W każdym przypadku zasób IoT Hub używa tej samej subskrypcji i grupy zasobów, która jest używana przez zasób Data Box Edge.     |
+    |Name (Nazwa)     |Wprowadź nazwę dla zasobu IoT Hub.         |
 
     ![Wprowadzenie do obliczeń](./media/data-box-edge-deploy-configure-compute/configure-compute-2.png)
 
@@ -109,9 +109,9 @@ W tej sekcji dodasz do urządzenia usługi IoT Edge moduł niestandardowy utworz
 2. W bloku **Konfigurowanie i Dodawanie modułu** wprowadź następujące wartości:
 
     
-    |Pole  |Value  |
+    |Pole  |Wartość  |
     |---------|---------|
-    |Name     | Unikatowa nazwa modułu. Ten moduł jest kontenerem platformy Docker, który można wdrożyć na urządzeniu IoT Edge, które jest skojarzone z Data Box Edge.        |
+    |Name (Nazwa)     | Unikatowa nazwa modułu. Ten moduł jest kontenerem platformy Docker, który można wdrożyć na urządzeniu IoT Edge, które jest skojarzone z Data Box Edge.        |
     |Identyfikator URI obrazu     | Identyfikator URI obrazu dla odpowiedniego obrazu kontenera modułu.        |
     |Wymagane są poświadczenia     | Jeśli ta opcja jest zaznaczona, nazwa użytkownika i hasło są używane do pobierania modułów z pasującym adresem URL.        |
     |Udział wejściowy     | Wybierz udział wejściowy. Udział lokalny krawędzi jest w tym przypadku udziałem wejściowym. Używany tutaj moduł przenosi pliki z udziału lokalnego Edge do udziału granicznego, w którym są przekazywane do chmury.        |

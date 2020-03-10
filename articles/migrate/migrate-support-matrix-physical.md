@@ -4,18 +4,18 @@ description: Dowiedz się więcej o obsłudze oceny serwera fizycznego za pomoc�
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.openlocfilehash: f2698d0ff046147599a8c5c791a0980a54090932
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990338"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393327"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Macierz obsługi dla oceny serwera fizycznego 
 
 Za pomocą [usługi Azure Migrate](migrate-overview.md) można oceniać i migrować maszyny do chmury Microsoft Azure. Ten artykuł podsumowuje ustawienia i ograniczenia dotyczące obsługi oceniania i migrowania lokalnych serwerów fizycznych.
 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Aby ocenić maszyny lokalne na potrzeby migracji na platformę Azure z tego artykułu, należy dodać Azure Migrate: Narzędzie do oceny serwera do projektu Azure Migrate. Należy wdrożyć [urządzenie Azure Migrate](migrate-appliance.md). Urządzenie stale odnajduje maszyny lokalne i wysyła dane dotyczące konfiguracji i wydajności na platformę Azure. Po odnajdywaniu maszyn można zebrać odnalezione maszyny do grup i uruchomić ocenę dla grupy
 
@@ -25,7 +25,7 @@ Aby ocenić maszyny lokalne na potrzeby migracji na platformę Azure z tego arty
 --- | ---
 **Limity oceny**| Odnajdź i Oceń maksymalnie 35 000 serwerów fizycznych w jednym [projekcie](migrate-support-matrix.md#azure-migrate-projects).
 **Limity projektu** | Możesz utworzyć wiele projektów w ramach subskrypcji platformy Azure. Projekt może obejmować maszyny wirtualne VMware, maszyny wirtualne funkcji Hyper-V i serwery fizyczne oraz limity oceny.
-**Discovery** (Odnajdywanie) | Urządzenie Azure Migrate może odnajdywać maksymalnie 250 serwerów fizycznych.
+**Odnajdowa** | Urządzenie Azure Migrate może odnajdywać maksymalnie 250 serwerów fizycznych.
 **Ocena** | Można dodać do 35 000 maszyn w jednej grupie.<br/><br/> W ramach jednej oceny można ocenić do 35 000 maszyn.
 
 [Dowiedz się więcej](concepts-assessment-calculation.md) na temat ocen.
@@ -53,7 +53,7 @@ Azure Migrate używa [urządzenia Azure Migrate](migrate-appliance.md) do odnajd
 
 Poniższa tabela zawiera podsumowanie wymagań dotyczących portów dla oceny.
 
-**urządzenia** | **Połączenie**
+**Pliku** | **Połączenie**
 --- | ---
 **Wprowadzony** | Połączenia przychodzące na porcie TCP 3389, aby zezwolić na połączenia pulpitu zdalnego z urządzeniem.<br/> Połączenia przychodzące na porcie 44368 do zdalnego dostępu do aplikacji do zarządzania urządzeniami przy użyciu adresu URL: ``` https://<appliance-ip-or-name>:44368 ```<br/> Połączenia wychodzące na portach 443 (HTTPS), 5671 i 5672 (AMQP) do wysyłania metadanych odnajdywania i wydajności do Azure Migrate.
 **Serwery fizyczne** | **System Windows:** Połączenia przychodzące na portach usługi WinRM 5985 (HTTP) i 5986 (HTTPS) do ściągania metadanych konfiguracji i wydajności z serwerów z systemem Windows. <br/> System **Linux:**  Połączenia przychodzące na porcie 22 (UDP) do ściągania metadanych konfiguracji i wydajności z serwerów z systemem Linux. |

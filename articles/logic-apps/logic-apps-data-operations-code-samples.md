@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.openlocfilehash: c56c31bb6f56efb10808ce25b6b232089391e831
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428694"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358763"
 ---
 # <a name="data-operation-code-samples-for-azure-logic-apps"></a>Przykłady kodu operacji danych dla Azure Logic Apps
 
@@ -263,7 +263,7 @@ Aby wypróbować [przykład operacji **Join** ](../logic-apps/logic-apps-perform
 
 <a name="parse-json-action-example"></a>
 
-## <a name="parse-json"></a>Przeanalizuj dane JSON
+## <a name="parse-json"></a>Analiza JSON
 
 Aby wypróbować [przykładową akcję **Przeanalizuj dane JSON** ](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action), poniżej przedstawiono definicje akcji, których można użyć:
 

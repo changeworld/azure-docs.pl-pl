@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: wesmc
 ms.openlocfilehash: d1de29124825a7f398b9722bb2455d1105e9c9f7
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023644"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393657"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Wybieranie odpowiedniej warstwy IoT Hub dla rozwiązania
 
@@ -35,14 +35,14 @@ Standardowa warstwa IoT Hub włącza wszystkie funkcje i jest wymagana dla wszys
 
 Na IoT Hub można wybrać tylko jeden typ [wersji](https://azure.microsoft.com/pricing/details/iot-hub/) w ramach warstwy. Można na przykład utworzyć IoT Hub z wieloma jednostkami S1, ale nie z różnymi jednostkami, takimi jak S1 i S2.
 
-| Możliwość | Warstwa Basic | Warstwa Bezpłatna/standardowa |
+| Możliwości | Warstwa Podstawowa | Warstwa Bezpłatna/standardowa |
 | ---------- | ---------- | ------------- |
 | [Dane telemetryczne z urządzenia do chmury](iot-hub-devguide-messaging.md) | Tak | Tak |
 | [Tożsamość dla urządzenia](iot-hub-devguide-identity-registry.md) | Tak | Tak |
 | [Routing komunikatów](iot-hub-devguide-messages-read-custom.md), [wzbogacanie komunikatów](iot-hub-message-enrichments-overview.md)i [integracja Event Grid](iot-hub-event-grid.md) | Tak | Tak |
 | [Protokoły HTTP, AMQP i MQTT](iot-hub-devguide-protocols.md) | Tak | Tak |
 | [Usługa Device Provisioning](../iot-dps/about-iot-dps.md) | Tak | Tak |
-| [Monitorowanie i Diagnostyka](iot-hub-monitor-resource-health.md) | Tak | Tak |
+| [Monitorowanie i diagnostyka](iot-hub-monitor-resource-health.md) | Tak | Tak |
 | [Obsługa komunikatów z chmury do urządzenia](iot-hub-devguide-c2d-guidance.md) |   | Tak |
 | [Bliźniaczych reprezentacji urządzeń](iot-hub-devguide-device-twins.md), [moduł bliźniaczych reprezentacji](iot-hub-devguide-module-twins.md)i [Zarządzanie urządzeniami](iot-hub-device-management-overview.md) |   | Tak |
 | [Strumienie urządzeń (wersja zapoznawcza)](iot-hub-device-streams-overview.md) |   | Tak |
@@ -66,11 +66,11 @@ Konfiguracja partycji pozostaje niezmieniona podczas migracji z warstwy Podstawo
 > [!NOTE]
 > Warstwa Bezpłatna nie obsługuje uaktualniania do wersji podstawowa lub standardowa.
 
-## <a name="iot-hub-rest-apis"></a>Interfejsy API REST usługi IoT Hub
+## <a name="iot-hub-rest-apis"></a>Interfejsy API REST IoT Hub
 
 Różnica w obsługiwanych możliwościach między warstwami podstawowa i Standardowa IoT Hub oznacza, że niektóre wywołania interfejsu API nie działają w przypadku centrów warstwy Podstawowa. W poniższej tabeli przedstawiono dostępne interfejsy API:
 
-| API | Warstwa Basic | Warstwa Bezpłatna/standardowa |
+| Interfejs API | Warstwa Podstawowa | Warstwa Bezpłatna/standardowa |
 | --- | ---------- | ------------- |
 | [Usuń urządzenie](https://docs.microsoft.com/rest/api/iothub/service/deletedevice) | Tak | Tak |
 | [Pobierz urządzenie](https://docs.microsoft.com/rest/api/iothub/service/getdevice) | Tak | Tak |

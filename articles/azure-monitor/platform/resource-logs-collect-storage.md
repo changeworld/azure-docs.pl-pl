@@ -8,11 +8,11 @@ ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: 843c179826b2064a1be24d3cee84b398987b4aed
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77658975"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394929"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>Archiwizuj dzienniki zasobów platformy Azure na koncie magazynu
 [Dzienniki platformy](platform-logs-overview.md) na platformie Azure, w tym dziennik aktywności platformy Azure i dzienniki zasobów, zapewniają szczegółowe informacje diagnostyczne i inspekcji dla zasobów platformy Azure oraz platformy platformy Azure, od których zależą.  W tym artykule opisano zbieranie dzienników platformy na koncie usługi Azure Storage w celu zachowania danych do archiwizacji.

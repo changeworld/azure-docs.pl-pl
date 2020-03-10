@@ -5,11 +5,11 @@ ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
 ms.openlocfilehash: cf48090b2c32f0c3a1c8170873cb8d6a771fe21f
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294307"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397057"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Co to jest usługa Azure Backup?
 
@@ -25,7 +25,7 @@ Usługa Azure Backup udostępnia proste, bezpieczne i ekonomiczne rozwiązania d
 - **SQL Server na maszynach wirtualnych platformy azure** -  [tworzenia kopii zapasowych SQL Server baz danych działających na maszynach wirtualnych platformy Azure](backup-azure-sql-database.md)
 - **SAP HANA baz danych w maszynach wirtualnych platformy azure** - [kopii zapasowych SAP HANA baz danych uruchomionych na maszynach wirtualnych](backup-azure-sap-hana-database.md)
 
-![Omówienie usługi Azure Backup](./media/backup-overview/azure-backup-overview.png)
+![Przegląd Azure Backup](./media/backup-overview/azure-backup-overview.png)
 
 ## <a name="why-use-azure-backup"></a>Dlaczego warto używać usługi Azure Backup?
 

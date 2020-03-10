@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 05/26/2017
 ms.author: tagore
 ms.openlocfilehash: 6ddb7001f770a9d8aea38d1a4698e15c167aeaa4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75386769"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385386"
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>Konfigurowanie protokołu SSL dla aplikacji na platformie Azure
 
-Szyfrowanie SSL (Secure Socket Layer) to najczęściej stosowana metoda zabezpieczania danych wysyłanych przez Internet. W ramach tego często wykonywanego zadania omówiono sposób określania punktu końcowego HTTPS dla roli sieci Web oraz przekazywania certyfikatu SSL w celu zabezpieczenia aplikacji.
+Szyfrowanie SSL (Secure Socket Layer) to najczęściej stosowana Metoda zabezpieczania danych wysyłanych przez Internet. W ramach tego typowego zadania omówiono sposób określania punktu końcowego HTTPS dla roli sieci Web oraz przekazywania certyfikatu SSL w celu zabezpieczenia aplikacji.
 
 > [!NOTE]
 > Procedury opisane w tym zadaniu dotyczą platformy Azure Cloud Services; Aby uzyskać App Services, zobacz [ten](../app-service/configure-ssl-bindings.md)temat.

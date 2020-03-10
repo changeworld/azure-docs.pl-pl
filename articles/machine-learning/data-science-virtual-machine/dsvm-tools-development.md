@@ -11,11 +11,11 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: bc1f40760c1602d81da042bf6909e44a540d35de
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612159"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390636"
 ---
 # <a name="development-tools-on-the-azure-data-science-virtual-machine"></a>Narzędzia programistyczne na platformie Azure Data Science Virtual Machine
 
@@ -28,7 +28,7 @@ Data Science Virtual Machine (DSVM) udostępnia kilka popularnych narzędzi w wy
 | Co to jest?   | Środowisko IDE ogólnego przeznaczenia      |
 | Obsługiwane wersje DSVM      | Windows: Visual Studio 2017, Windows 2019 (wersja zapoznawcza): Visual Studio 2019      |
 | Typowe zastosowania      | Programowanie oprogramowania    |
-| Jak została skonfigurowana i zainstalowana na DSVM?      | Obciążenie analizy danych (Narzędzia języka Python i R), obciążenie platformy Azure (Hadoop, Data Lake), Node.js, narzędzia programu SQL Server [usługi Azure Machine Learning dla programu Visual Studio Code](https://github.com/Microsoft/vs-tools-for-ai)    |
+| Jak została skonfigurowana i zainstalowana na DSVM?      | Obciążenie analizy danych (narzędzia Python i R), obciążenie platformy Azure (Hadoop, Data Lake), Node. js, SQL Server Tools, [Azure Machine Learning dla Visual Studio Code](https://github.com/Microsoft/vs-tools-for-ai)    |
 | Jak używać i uruchamiać      | Skrót na pulpicie (`C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\devenv.exe`). Graficznie Otwórz program Visual Studio, korzystając z ikony pulpitu lub menu **Start** . Wyszukaj programy (logo systemu Windows + S), a następnie **program Visual Studio**. W tym miejscu możesz tworzyć projekty w językach takich jak C#, Python, R i Node. js.   |
 | Narzędzia pokrewne na DSVM      |     Visual Studio Code, RStudio, Juno  |
 

@@ -10,18 +10,18 @@ ms.topic: article
 ms.date: 11/28/2016
 ms.author: memccror
 ms.openlocfilehash: d65f4b55be317234c10a0e90cfe413d9e38a6a90
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75360603"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397083"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services"></a>Włączanie Podłączanie pulpitu zdalnego roli na platformie Azure Cloud Services
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
-> * [Program PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
-> * [Program Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
+> * [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
+> * [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
 
 Pulpit zdalny umożliwia dostęp do pulpitu roli działającej na platformie Azure. Połączenia Pulpit zdalny można użyć do rozwiązywania problemów i diagnozowania problemów z aplikacją, gdy jest ona uruchomiona.
 
@@ -63,6 +63,6 @@ Po włączeniu Pulpit zdalny na rolach można zainicjować połączenie bezpośr
 >[!NOTE]
 > Jeśli usługa w chmurze znajduje się za sieciowej grupy zabezpieczeń, może być konieczne utworzenie reguł zezwalających na ruch na portach **3389** i **20000**.  Pulpit zdalny używa portu **3389**.  Wystąpienia usługi w chmurze są zrównoważone obciążenia, więc nie można bezpośrednio kontrolować tego, z którym wystąpieniem ma zostać nawiązane połączenie.  Agenci *RemoteForwarder* i *RemoteAccess* zarządzają ruchem RDP i umożliwiają klientowi wysyłanie plików cookie RDP i określanie poszczególnych wystąpień do nawiązania połączenia.  Agenci *RemoteForwarder* i *RemoteAccess* wymagają, aby port **20000*** był otwarty, co może być zablokowane, jeśli masz sieciowej grupy zabezpieczeń.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 [Jak skonfigurować Cloud Services](cloud-services-how-to-configure-portal.md)

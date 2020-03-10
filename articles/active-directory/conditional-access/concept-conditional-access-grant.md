@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 03/04/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10d3f18fb11dc54f560d867e2b5ff87251e2c836
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
-ms.translationtype: MT
+ms.openlocfilehash: 09a720be10b09e11adc8acdc8ab26a06870311b0
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249102"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78892776"
 ---
 # <a name="conditional-access-grant"></a>Dostęp warunkowy: Udziel
 
@@ -35,7 +35,7 @@ Block to zaawansowana kontrolka, która powinna być wielded z odpowiednią wied
 Administratorzy mogą zdecydować się na wymuszenie co najmniej jednej kontrolki podczas udzielania dostępu. Te kontrolki obejmują następujące opcje: 
 
 - [Wymagaj uwierzytelniania wieloskładnikowego (Azure Multi-Factor Authentication)](../authentication/concept-mfa-howitworks.md)
-- [Wymagaj, aby urządzenie było oznaczone jako zgodne (Microsoft Intune)](https://docs.microsoft.com/intune/protect/device-compliance-get-started)
+- [Wymagaj, aby urządzenie było oznaczone jako zgodne (Microsoft Intune)](/intune/protect/device-compliance-get-started)
 - [Wymagaj hybrydowego urządzenia dołączonego do usługi Azure AD](../devices/concept-azure-ad-join-hybrid.md)
 - [Wymagaj zatwierdzonej aplikacji klienckiej](app-based-conditional-access.md)
 - [Wymagaj zasad ochrony aplikacji](app-protection-based-conditional-access.md)
@@ -53,7 +53,7 @@ Zaznaczenie tego pola wyboru spowoduje, że użytkownicy będą musieli wykonać
 
 ### <a name="require-device-to-be-marked-as-compliant"></a>Wymagaj, aby urządzenie było oznaczone jako zgodne
 
-Organizacje, które wdrożyły Microsoft Intune mogą korzystać z informacji zwróconych z urządzeń w celu identyfikowania urządzeń spełniających określone wymagania w zakresie zgodności. Te informacje o zgodności z tymi zasadami są przekazywane z usługi Intune w usłudze Azure AD, gdzie dostęp warunkowy może podejmować decyzje o udzieleniu lub zablokowaniu dostępu do zasobów. Aby uzyskać więcej informacji na temat zasad zgodności, zobacz artykuł [Ustawianie reguł na urządzeniach w celu zezwalania na dostęp do zasobów w organizacji przy użyciu usługi Intune](https://docs.microsoft.com/intune/protect/device-compliance-get-started).
+Organizacje, które wdrożyły Microsoft Intune mogą korzystać z informacji zwróconych z urządzeń w celu identyfikowania urządzeń spełniających określone wymagania w zakresie zgodności. Te informacje o zgodności z tymi zasadami są przekazywane z usługi Intune w usłudze Azure AD, gdzie dostęp warunkowy może podejmować decyzje o udzieleniu lub zablokowaniu dostępu do zasobów. Aby uzyskać więcej informacji na temat zasad zgodności, zobacz artykuł [Ustawianie reguł na urządzeniach w celu zezwalania na dostęp do zasobów w organizacji przy użyciu usługi Intune](/intune/protect/device-compliance-get-started).
 
 Urządzenie może być oznaczone jako zgodne przez usługę Intune (dla dowolnego systemu operacyjnego urządzenia) lub przez system MDM innej firmy dla urządzeń z systemem Windows 10. Jamf Pro jest jedynym obsługiwanym systemem zarządzania urządzeniami przenośnymi innej firmy. Więcej informacji na temat integracji można znaleźć w artykule integracja usługi [Jamf Pro z usługą Intune w celu zapewnienia zgodności](/intune/protect/conditional-access-integrate-jamf).
 
@@ -67,7 +67,35 @@ Organizacje mogą zdecydować się na użycie tożsamości urządzenia jako czę
 
 Organizacje mogą wymagać od zatwierdzonej aplikacji klienckiej próby dostępu do wybranych aplikacji w chmurze. Te zatwierdzone aplikacje klienckie obsługują [Zasady ochrony aplikacji usługi Intune](/intune/app-protection-policy) niezależnie od dowolnego rozwiązania do zarządzania urządzeniami przenośnymi (MDM).
 
-Obsługiwane aplikacje można znaleźć w artykule [Microsoft Intune chronione aplikacje](/intune/apps/apps-supported-intune-apps).
+To ustawienie dotyczy następujących aplikacji klienckich:
+
+- Microsoft Azure Information Protection
+- Rezerwacje firmy Microsoft
+- Microsoft Cortana
+- Microsoft Dynamics 365
+- Microsoft Edge
+- Microsoft Excel
+- Microsoft Flow
+- Microsoft Intune Managed Browser
+- Microsoft Invoicing
+- Microsoft Kaizala
+- Microsoft Launcher
+- Microsoft OneDrive
+- Microsoft OneNote
+- Microsoft Outlook
+- Microsoft Planner
+- Microsoft PowerApps
+- Microsoft Power BI
+- Microsoft PowerPoint
+- Microsoft SharePoint
+- Microsoft Skype dla firm
+- Microsoft StaffHub
+- Microsoft Stream
+- Microsoft Teams
+- Microsoft To-Do
+- Microsoft Visio
+- Microsoft Word
+- Microsoft Yammer
 
 **Uwagi**
 
@@ -76,17 +104,26 @@ Obsługiwane aplikacje można znaleźć w artykule [Microsoft Intune chronione a
    - Obsługuje tylko warunek platformy dla systemów iOS i Android.
 - Dostęp warunkowy nie może rozważyć Microsoft Edge w trybie InPrivate w zatwierdzonej aplikacji klienckiej.
 
+Zapoznaj się z artykułem [: jak wymagać zatwierdzonych aplikacji klienckich do uzyskiwania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego](app-based-conditional-access.md) na potrzeby przykładów konfiguracyjnych.
+
 ### <a name="require-app-protection-policy"></a>Wymaganie zasad ochrony aplikacji
 
 W zasadach dostępu warunkowego można wymagać, aby [Zasady ochrony aplikacji usługi Intune](/intune/app-protection-policy) były obecne w aplikacji klienckiej przed udostępnieniem dostępu do wybranych aplikacji w chmurze. 
 
-Obsługiwane aplikacje można znaleźć w artykule [Microsoft Intune chronione aplikacje](/intune/apps/apps-supported-intune-apps).
+To ustawienie dotyczy następujących aplikacji klienckich:
+
+- Microsoft Cortana
+- Microsoft OneDrive
+- Microsoft Outlook
+- Microsoft Planner
 
 **Uwagi**
 
 - Aplikacje dla zasad ochrony aplikacji obsługują funkcję zarządzania aplikacjami mobilnymi w usłudze Intune z ochroną zasad.
 - Wymagania dotyczące wymagań **zasad ochrony aplikacji** :
     - Obsługuje tylko warunek platformy dla systemów iOS i Android.
+
+Zapoznaj się z artykułem [instrukcje: wymaganie zasad ochrony aplikacji oraz zatwierdzonej aplikacji klienckiej do uzyskiwania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego](app-protection-based-conditional-access.md) na potrzeby przykładów konfiguracyjnych.
 
 ### <a name="terms-of-use"></a>Warunki użytkowania
 

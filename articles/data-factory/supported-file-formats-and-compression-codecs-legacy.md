@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
 ms.openlocfilehash: 423706c391e8d8c2c609798d9f50e5a22f5c39bb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483221"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358466"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-legacy"></a>Obsługiwane formaty plików i kodeki kompresji w Azure Data Factory (starsza wersja)
 
@@ -28,18 +28,18 @@ ms.locfileid: "75483221"
 >[!NOTE]
 >Zapoznaj się z nowym modelem w artykule [Formatowanie tekstu rozdzielonego](format-delimited-text.md) . Następujące konfiguracje zestawu danych opartego na plikach są nadal obsługiwane, tak jak w przypadku compabitility z poprzednimi wersjami. Zamierzasz użyć nowego modelu do przodu.
 
-Jeśli chcesz odczytać z pliku tekstowego lub zapisać do pliku tekstowego, ustaw `type` właściwość `format` części zestawu danych na **TextFormat**. Ponadto możesz określić następujące **opcjonalne** właściwości w sekcji `format`. Aby uzyskać informacje na temat sposobu konfigurowania, zobacz sekcję [Przykład formatu TextFormat](#textformat-example).
+Jeśli chcesz czytać z pliku tekstowego lub zapisywać do pliku tekstowego, ustaw właściwość `type` w sekcji `format` zestawu danych na wartość **TextFormat**. Ponadto możesz określić następujące **opcjonalne** właściwości w sekcji `format`. Aby uzyskać informacje na temat sposobu konfigurowania, zobacz sekcję [Przykład formatu TextFormat](#textformat-example).
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| columnDelimiter |Znak używany do rozdzielania kolumn w pliku. Aby wziąć pod uwagę do użycia rzadkich znak niedrukowalny, który nie istnieje w danych. Na przykład określić "\u0001", który reprezentuje Start z nagłówkiem (raportu o kondycji). |Dozwolony jest tylko jeden znak. Wartość **domyślna** to **przecinek (,)** . <br/><br/>Aby użyć znaku Unicode, zobacz [znaków Unicode](https://en.wikipedia.org/wiki/List_of_Unicode_characters) można uzyskać odpowiedni kod. |Nie |
+| columnDelimiter |Znak używany do rozdzielania kolumn w pliku. Aby wziąć pod uwagę do użycia rzadkich znak niedrukowalny, który nie istnieje w danych. Na przykład określić "\u0001", który reprezentuje Start z nagłówkiem (raportu o kondycji). |Dozwolony jest tylko jeden znak. Wartość **domyślna** to **przecinek (,)** . <br/><br/>Aby użyć znaku Unicode, zapoznaj się ze [znakami Unicode](https://en.wikipedia.org/wiki/List_of_Unicode_characters) w celu uzyskania odpowiedniego kodu. |Nie |
 | rowDelimiter |Znak używany do rozdzielania wierszy w pliku. |Dozwolony jest tylko jeden znak. Wartością **domyślną** jest dowolna z następujących wartości przy odczycie: **[„\r\n”, „\r”, „\n”]** oraz wartość **„\r\n”** przy zapisie. |Nie |
 | escapeChar |Znak specjalny służący do zmiany interpretacji ogranicznika kolumny w zawartości pliku wejściowego. <br/><br/>W przypadku tabeli nie można określić zarówno właściwości escapeChar, jak i quoteChar. |Dozwolony jest tylko jeden znak. Brak wartości domyślnej. <br/><br/>Przykład: jeśli ogranicznikiem kolumny jest przecinek (,), ale chcesz, aby znak przecinka występował w tekście (przykładowo: „Witaj, świecie”), możesz zdefiniować znak „$” jako znak ucieczki i użyć ciągu „Witaj$, świecie” w źródle. |Nie |
 | quoteChar |Znak używany do umieszczania wartości ciągu w cudzysłowie. Ograniczniki kolumny i wiersza umieszczone w cudzysłowie są traktowane jako część wartości ciągu. Ta właściwość ma zastosowanie zarówno do wejściowych, jak i wyjściowych zestawów danych.<br/><br/>W przypadku tabeli nie można określić zarówno właściwości escapeChar, jak i quoteChar. |Dozwolony jest tylko jeden znak. Brak wartości domyślnej. <br/><br/>Na przykład jeśli ogranicznikiem kolumny jest przecinek (,), ale chcesz, aby znak przecinka występował w tekście (przykład: <Witaj, świecie>), możesz zdefiniować cudzysłów (") jako znak cudzysłowu i użyć ciągu "Witaj, świecie" w źródle. |Nie |
 | nullValue |Co najmniej jeden znak służący do reprezentowania wartości null. |Co najmniej jeden znak. Wartości **domyślne** to **„\N” i „NULL”** przy odczycie oraz **„\N”** przy zapisie. |Nie |
 | encodingName |Określa nazwę kodowania. |Prawidłowa nazwa kodowania. Zobacz [właściwość Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx). Przykład: windows-1250 lub shift_jis. Wartość **domyślna** to **UTF-8**. |Nie |
-| firstRowAsHeader |Określa, czy pierwszy wiersz ma być traktowany jako nagłówek. W przypadku zestawu danych wejściowych usługa Data Factory odczytuje pierwszy wiersz jako nagłówek. W przypadku zestawu danych wyjściowych usługa Data Factory zapisuje pierwszy wiersz jako nagłówek. <br/><br/>Aby uzyskać przykładowe scenariusze, zobacz sekcję [Scenariusze użycia właściwości `firstRowAsHeader` oraz `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount). |Prawda<br/><b>False (domyślnie)</b> |Nie |
-| skipLineCount |Wskazuje liczbę **niepuste** wierszy do pominięcia podczas odczytywania danych z plików wejściowych. Jeśli określono zarówno właściwość skipLineCount, jak i firstRowAsHeader, najpierw zostaną pominięte wiersze, a następnie zostaną odczytane informacje nagłówka z pliku wejściowego. <br/><br/>Aby uzyskać przykładowe scenariusze, zobacz sekcję [Scenariusze użycia właściwości `firstRowAsHeader` oraz `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount). |Liczba całkowita |Nie |
+| firstRowAsHeader |Określa, czy pierwszy wiersz ma być traktowany jako nagłówek. W przypadku zestawu danych wejściowych usługa Data Factory odczytuje pierwszy wiersz jako nagłówek. W przypadku zestawu danych wyjściowych usługa Data Factory zapisuje pierwszy wiersz jako nagłówek. <br/><br/>Aby uzyskać przykładowe scenariusze, zobacz sekcję [Scenariusze użycia właściwości `firstRowAsHeader` oraz `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount). |True<br/><b>False (domyślnie)</b> |Nie |
+| skipLineCount |Wskazuje liczbę **niepustych** wierszy do pominięcia podczas odczytywania danych z plików wejściowych. Jeśli określono zarówno właściwość skipLineCount, jak i firstRowAsHeader, najpierw zostaną pominięte wiersze, a następnie zostaną odczytane informacje nagłówka z pliku wejściowego. <br/><br/>Aby uzyskać przykładowe scenariusze, zobacz sekcję [Scenariusze użycia właściwości `firstRowAsHeader` oraz `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount). |Liczba całkowita |Nie |
 | treatEmptyAsNull |Określa, czy ciąg pusty lub o wartości null ma być traktowany jako wartość null podczas odczytu danych z pliku wejściowego. |**True (domyślnie)**<br/>Fałsz |Nie |
 
 ### <a name="textformat-example"></a>Przykład formatu TextFormat
@@ -82,9 +82,9 @@ Aby użyć właściwości `escapeChar` zamiast `quoteChar`, zastąp wiersz z wł
 >[!NOTE]
 >Poznaj nowy model z artykułu w [formacie JSON](format-json.md) . Następujące konfiguracje zestawu danych opartego na plikach są nadal obsługiwane, tak jak w przypadku compabitility z poprzednimi wersjami. Zamierzasz użyć nowego modelu do przodu.
 
-Do **importu/eksportu plik w formacie JSON jako — importowanie / z usługi Azure Cosmos DB**, zawiera sekcja dokumentów JSON Import/export w [przenoszenie danych do i z usługi Azure Cosmos DB](connector-azure-cosmos-db.md) artykułu.
+Aby **zaimportować/wyeksportować plik JSON w postaci-do/z Azure Cosmos DB**, zobacz sekcję importowanie/eksportowanie dokumentów JSON w artykule [przenoszenie danych do/z Azure Cosmos DB](connector-azure-cosmos-db.md) .
 
-Jeśli chcesz analizować pliki JSON lub zapisywać dane w formacie JSON, ustaw `type` właściwość `format` sekcji **JsonFormat**. Ponadto możesz określić następujące **opcjonalne** właściwości w sekcji `format`. Aby uzyskać informacje na temat sposobu konfigurowania, zobacz sekcję [Przykład formatu JsonFormat](#jsonformat-example).
+Jeśli chcesz przeanalizować pliki JSON lub zapisać dane w formacie JSON, ustaw właściwość `type` w sekcji `format` na **formatu jsonformat**. Ponadto możesz określić następujące **opcjonalne** właściwości w sekcji `format`. Aby uzyskać informacje na temat sposobu konfigurowania, zobacz sekcję [Przykład formatu JsonFormat](#jsonformat-example).
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
@@ -228,8 +228,8 @@ i chcesz skopiować ją do tabeli usługi Azure SQL w następującym formacie pr
 
 Zestaw danych wejściowych typu **JsonFormat** jest zdefiniowany następująco: (częściowa definicja zawierająca tylko stosowne fragmenty). Więcej szczegółów:
 
-- Sekcja `structure` definiuje niestandardowe nazwy kolumn i odpowiedni typ danych podczas konwersji na dane tabelaryczne. Ta sekcja jest **opcjonalna**, o ile nie trzeba wykonać mapowania kolumn. Aby uzyskać więcej informacji, zobacz [mapowanie kolumny zestawu danych źródła do docelowego zestawu danych kolumn](copy-activity-schema-and-type-mapping.md).
-- Właściwość `jsonPathDefinition` określa ścieżkę JSON dla każdej kolumny, wskazując, skąd mają zostać wyodrębnione dane. Aby skopiować dane z tablicy, możesz użyć `array[x].property` do wyodrębnienia wartości danej właściwości z `xth` obiektu, lub użyć `array[*].property` do odnalezienia wartości z dowolnych obiektów zawierających taką właściwość.
+- Sekcja `structure` definiuje niestandardowe nazwy kolumn i odpowiedni typ danych podczas konwersji na dane tabelaryczne. Ta sekcja jest **opcjonalna**, o ile nie trzeba wykonać mapowania kolumn. Aby uzyskać więcej informacji, zobacz [Mapowanie kolumn źródłowych zestawów danych do docelowych kolumn zestawu danych](copy-activity-schema-and-type-mapping.md).
+- Właściwość `jsonPathDefinition` określa ścieżkę JSON dla każdej kolumny, wskazując, skąd mają zostać wyodrębnione dane. Aby skopiować dane z tablicy, można użyć `array[x].property` do wyodrębnienia wartości danej właściwości z obiektu `xth` lub można użyć `array[*].property`, aby znaleźć wartość z dowolnego obiektu zawierającego taką właściwość.
 
 ```json
 "properties": {
@@ -303,9 +303,9 @@ i chcesz ją skopiować do tabeli Azure SQL w następującym formacie, spłaszcz
 
 Zestaw danych wejściowych typu **JsonFormat** jest zdefiniowany następująco: (częściowa definicja zawierająca tylko stosowne fragmenty). Więcej szczegółów:
 
-- Sekcja `structure` definiuje niestandardowe nazwy kolumn i odpowiedni typ danych podczas konwersji na dane tabelaryczne. Ta sekcja jest **opcjonalna**, o ile nie trzeba wykonać mapowania kolumn. Aby uzyskać więcej informacji, zobacz [mapowanie kolumny zestawu danych źródła do docelowego zestawu danych kolumn](copy-activity-schema-and-type-mapping.md).
-- `jsonNodeReference` Wskazuje, iteracja i ekstrakcja danych z obiektów o tym samym wzorcem, w obszarze **tablicy** `orderlines`.
-- Właściwość `jsonPathDefinition` określa ścieżkę JSON dla każdej kolumny, wskazując, skąd mają zostać wyodrębnione dane. W tym przykładzie `ordernumber`, `orderdate`, i `city` są w obiekcie głównym przy użyciu formatu JSON ścieżki począwszy od `$.`, podczas gdy `order_pd` i `order_price` są definiowane przy użyciu ścieżki pochodzącej od elementu tablicy bez `$.` .
+- Sekcja `structure` definiuje niestandardowe nazwy kolumn i odpowiedni typ danych podczas konwersji na dane tabelaryczne. Ta sekcja jest **opcjonalna**, o ile nie trzeba wykonać mapowania kolumn. Aby uzyskać więcej informacji, zobacz [Mapowanie kolumn źródłowych zestawów danych do docelowych kolumn zestawu danych](copy-activity-schema-and-type-mapping.md).
+- `jsonNodeReference` wskazuje na iterację i wyodrębnienie danych z obiektów z tym samym wzorcem w obszarze `orderlines`**tablicy** .
+- Właściwość `jsonPathDefinition` określa ścieżkę JSON dla każdej kolumny, wskazując, skąd mają zostać wyodrębnione dane. W tym przykładzie `ordernumber`, `orderdate`i `city` znajdują się pod obiektem głównym z ścieżką JSON rozpoczynającą się od `$.`, podczas gdy `order_pd` i `order_price` są zdefiniowane przy użyciu ścieżki pochodnej elementu Array bez `$.`.
 
 ```json
 "properties": {
@@ -373,7 +373,7 @@ i dla każdego rekordu będziesz zapisywać w obiekcie JSON w następującym for
 }
 ```
 
-Zestaw danych wyjściowych typu **JsonFormat** jest zdefiniowany następująco: (częściowa definicja zawierająca tylko stosowne fragmenty). W szczególności `structure` sekcji zdefiniowano nazwy właściwości niestandardowe w pliku docelowym `nestingSeparator` (wartość domyślna to ".") są używane do identyfikowania warstwy zagnieżdżenia nazwę. Ta sekcja jest **opcjonalna**, o ile nie chcesz zmieniać nazwy właściwości na podstawie porównania z nazwą kolumny źródłowej ani zagnieżdżać właściwości.
+Zestaw danych wyjściowych typu **JsonFormat** jest zdefiniowany następująco: (częściowa definicja zawierająca tylko stosowne fragmenty). Dokładniej, `structure` sekcja definiuje niestandardowe nazwy właściwości w pliku docelowym, `nestingSeparator` (wartość domyślna to ".") służy do identyfikowania warstwy zagnieżdżonej na podstawie nazwy. Ta sekcja jest **opcjonalna**, o ile nie chcesz zmieniać nazwy właściwości na podstawie porównania z nazwą kolumny źródłowej ani zagnieżdżać właściwości.
 
 ```json
 "properties": {
@@ -409,7 +409,7 @@ Zestaw danych wyjściowych typu **JsonFormat** jest zdefiniowany następująco: 
 >[!NOTE]
 >Poznaj nowy model z artykułu [Parquet format](format-parquet.md) . Następujące konfiguracje zestawu danych opartego na plikach są nadal obsługiwane, tak jak w przypadku compabitility z poprzednimi wersjami. Zamierzasz użyć nowego modelu do przodu.
 
-Jeśli chcesz analizować pliki Parquet lub zapisywać dane w formacie Parquet, ustaw właściwość `format` `type` na wartość **ParquetFormat**. Nie musisz określać żadnych właściwości w sekcji Format należącej do sekcji typeProperties. Przykład:
+Jeśli chcesz analizować pliki Parquet lub zapisywać dane w formacie Parquet, ustaw właściwość `format` `type` na **ParquetFormat**. Nie musisz określać żadnych właściwości w sekcji Format należącej do sekcji typeProperties. Przykład:
 
 ```json
 "format":
@@ -443,7 +443,7 @@ Przykład: Ustaw zmienną `_JAVA_OPTIONS` przy użyciu `-Xms256m -Xmx16g`wartoś
 
 | Typ danych tymczasowych fabryki danych | Typ pierwotny parquet | Parquet oryginalny typ (deserializacji) | Parquet oryginalny typ (serializować) |
 |:--- |:--- |:--- |:--- |
-| Wartość logiczna | Wartość logiczna | ND | ND |
+| Wartość logiczna | Wartość logiczna | N/D | N/D |
 | Sbyte — | Int32 | Int8 | Int8 |
 | Bajtów | Int32 | UInt8 | Int16 |
 | Int16 | Int32 | Int16 | Int16 |
@@ -451,25 +451,25 @@ Przykład: Ustaw zmienną `_JAVA_OPTIONS` przy użyciu `-Xms256m -Xmx16g`wartoś
 | Int32 | Int32 | Int32 | Int32 |
 | UInt32 | Int64 | UInt32 | Int64 |
 | Int64 | Int64 | Int64 | Int64 |
-| UInt64 | Int64/dane binarne | UInt64 | Decimal |
-| Pojedyncze | float | ND | ND |
-| Double | Double | ND | ND |
-| Decimal | Binary | Decimal | Decimal |
-| Ciąg | Binary | Utf8 | Utf8 |
-| Data i godzina | Int96 | ND | ND |
-| TimeSpan | Int96 | ND | ND |
-| DateTimeOffset | Int96 | ND | ND |
-| ByteArray | Binary | ND | ND |
-| Identyfikator GUID | Binary | Utf8 | Utf8 |
-| char | Binary | Utf8 | Utf8 |
-| CharArray | Brak obsługi | ND | ND |
+| UInt64 | Int64/dane binarne | UInt64 | Dziesiętna |
+| Single | Float | N/D | N/D |
+| Podwójne | Podwójne | N/D | N/D |
+| Dziesiętna | Binarny | Dziesiętna | Dziesiętna |
+| Ciąg | Binarny | Utf8 | Utf8 |
+| DateTime | Int96 | N/D | N/D |
+| przedział_czasu | Int96 | N/D | N/D |
+| DateTimeOffset | Int96 | N/D | N/D |
+| ByteArray | Binarny | N/D | N/D |
+| Guid | Binarny | Utf8 | Utf8 |
+| Char | Binarny | Utf8 | Utf8 |
+| CharArray | Nieobsługiwane | N/D | N/D |
 
 ## <a name="orc-format"></a>Format ORC (starsza wersja)
 
 >[!NOTE]
 >Poznaj nowy model z artykułu [Orc format](format-orc.md) . Następujące konfiguracje zestawu danych opartego na plikach są nadal obsługiwane, tak jak w przypadku compabitility z poprzednimi wersjami. Zamierzasz użyć nowego modelu do przodu.
 
-Jeśli chcesz analizować pliki ORC lub zapisywać dane w formacie ORC, ustaw właściwość `format` `type` na wartość **OrcFormat**. Nie musisz określać żadnych właściwości w sekcji Format należącej do sekcji typeProperties. Przykład:
+Jeśli chcesz analizować pliki ORC lub zapisywać dane w formacie ORC, ustaw właściwość `format` `type` na **OrcFormat**. Nie musisz określać żadnych właściwości w sekcji Format należącej do sekcji typeProperties. Przykład:
 
 ```json
 "format":
@@ -505,23 +505,23 @@ W przypadku kopiowania uruchomionego na samoobsługowym środowisku IR przy uży
 | UInt32 | Długie |
 | Int64 | Długie |
 | UInt64 | Ciąg |
-| Pojedyncze | float |
-| Double | Double |
-| Decimal | Decimal |
+| Single | Float |
+| Podwójne | Podwójne |
+| Dziesiętna | Dziesiętna |
 | Ciąg | Ciąg |
-| Data i godzina | Znacznik czasu |
+| DateTime | Znacznik czasu |
 | DateTimeOffset | Znacznik czasu |
-| TimeSpan | Znacznik czasu |
-| ByteArray | Binary |
-| Identyfikator GUID | Ciąg |
-| char | Char(1) |
+| przedział_czasu | Znacznik czasu |
+| ByteArray | Binarny |
+| Guid | Ciąg |
+| Char | Char(1) |
 
 ## <a name="avro-format"></a>Format AVRO (starsza wersja)
 
 >[!NOTE]
 >Poznaj nowy model z artykułu [Avro format](format-avro.md) . Następujące konfiguracje zestawu danych opartego na plikach są nadal obsługiwane, tak jak w przypadku compabitility z poprzednimi wersjami. Zamierzasz użyć nowego modelu do przodu.
 
-Jeśli chcesz analizować pliki Avro lub zapisywać dane w formacie Avro, ustaw właściwość `format` `type` na wartość **AvroFormat**. Nie musisz określać żadnych właściwości w sekcji Format należącej do sekcji typeProperties. Przykład:
+Jeśli chcesz analizować pliki Avro lub zapisywać dane w formacie Avro, ustaw właściwość `format` `type` na **AvroFormat**. Nie musisz określać żadnych właściwości w sekcji Format należącej do sekcji typeProperties. Przykład:
 
 ```json
 "format":
@@ -534,18 +534,18 @@ Aby użyć formatu Avro w tabeli programu Hive, możesz zapoznać się z [samouc
 
 Pamiętaj o następujących kwestiach:
 
-* [Złożone typy danych](https://avro.apache.org/docs/current/spec.html#schema_complex) nie są obsługiwane (rekordy, wyliczenia, tablice, mapy, unie i stała).
+* [Złożone typy danych](https://avro.apache.org/docs/current/spec.html#schema_complex) nie są obsługiwane (rekordy, wyliczenia, tablice, mapy, Unii i stałe).
 
 ## <a name="compression-support"></a>Obsługa kompresji (starsza wersja)
 
-Usługa Azure Data Factory obsługuje Kompresuj/dekompresji danych podczas kopiowania. Po określeniu `compression` właściwości w wejściowego zestawu danych, działanie kopiowania odczytu skompresowane dane ze źródła i dekompresowanie; i po określeniu właściwość w zestawie danych wyjściowych działania kopiowania kompresowanie, a następnie zapisać danych do ujścia. Poniżej przedstawiono kilka przykładowych scenariuszy:
+Usługa Azure Data Factory obsługuje Kompresuj/dekompresji danych podczas kopiowania. Po określeniu właściwości `compression` w wejściowym zestawie danych działanie kopiowania odczytuje skompresowane dane ze źródła i dekompresuje je. Po określeniu właściwości w wyjściowym zestawie danych działanie kopiowania kompresuje następnie dane do ujścia. Poniżej przedstawiono kilka przykładowych scenariuszy:
 
-* GZIP odczytu skompresowane dane z obiektu blob platformy Azure zdekompresować go i zapisać dane wynikowe do usługi Azure SQL database. Zdefiniuj wejściowy zestaw danych obiektów Blob platformy Azure za pomocą `compression` `type` właściwość jako GZIP.
-* Odczytywanie danych z pliku tekstowego z systemu plików w środowisku lokalnym, skompresować je w formacie GZip i zapisać skompresowane dane obiektu blob platformy Azure. Zdefiniuj wyjściowego zestawu danych obiektów Blob platformy Azure za pomocą `compression` `type` właściwość jako GZip.
-* Odczytaj plik zip z serwera FTP Dekompresuj ją, aby pobrać pliki wewnątrz i te pliki znajdą się w usłudze Azure Data Lake Store. Zdefiniuj wejściowy zestaw danych FTP za pomocą `compression` `type` właściwość jako ZipDeflate.
-* Odczytywanie danych z kompresji GZIP obiektu blob platformy Azure, zdekompresować, skompresować je przy użyciu BZIP2 i zapisać dane wynikowe do usługi Azure blob. Zdefiniuj wejściowy zestaw danych obiektów Blob platformy Azure za pomocą `compression` `type` GZIP i wyjściowy zestaw danych z ustawioną `compression` `type` równa BZIP2.
+* GZIP odczytu skompresowane dane z obiektu blob platformy Azure zdekompresować go i zapisać dane wynikowe do usługi Azure SQL database. Należy zdefiniować zestaw danych wejściowych obiektów blob platformy Azure z właściwością `compression` `type` jako GZIP.
+* Odczytywanie danych z pliku tekstowego z systemu plików w środowisku lokalnym, skompresować je w formacie GZip i zapisać skompresowane dane obiektu blob platformy Azure. Można zdefiniować wyjściowy zestaw danych obiektów blob platformy Azure z właściwością `compression` `type` jako GZip.
+* Odczytaj plik zip z serwera FTP Dekompresuj ją, aby pobrać pliki wewnątrz i te pliki znajdą się w usłudze Azure Data Lake Store. Można zdefiniować wejściowy zestaw danych FTP z właściwością `compression` `type` jako ZipDeflate.
+* Odczytywanie danych z kompresji GZIP obiektu blob platformy Azure, zdekompresować, skompresować je przy użyciu BZIP2 i zapisać dane wynikowe do usługi Azure blob. Zdefiniuj zestaw danych wejściowych obiektów blob platformy Azure z `compression` `type` ustawionym na GZIP, a wyjściowy zestaw danych z `compression` `type` ustawiony na BZIP2.
 
-Aby określić kompresji dla zestawu danych, użyj **kompresji** właściwość w zestawie danych JSON, jak w poniższym przykładzie:
+Aby określić kompresję zestawu danych, należy użyć właściwości **Compression** w kodzie JSON zestawu danych, jak w poniższym przykładzie:
 
 ```json
 {
@@ -571,18 +571,18 @@ Aby określić kompresji dla zestawu danych, użyj **kompresji** właściwość 
 }
 ```
 
-**Kompresji** sekcji ma dwie właściwości:
+Sekcja **kompresji** ma dwie właściwości:
 
-* **Typ:** kodera-dekodera kompresji, który może być **GZIP**, **Deflate**, **BZIP2**, lub **ZipDeflate**. Uwaga w przypadku używania działania kopiowania do dekompresowania plików ZipDeflate i zapisywania w magazynie danych ujścia opartych na plikach pliki zostaną wyodrębnione do folderu: `<path specified in dataset>/<folder named as source zip file>/`.
-* **Poziom:** kompresji, który może być **optymalna** lub **najszybciej**.
+* **Typ:** koder-dekoder kompresji, który może być **gzip**, **Wklęśnięcie**, **bzip2**lub **ZipDeflate**. Uwaga w przypadku używania działania kopiowania do dekompresowania plików ZipDeflate i zapisywania w magazynie danych ujścia opartych na plikach pliki zostaną wyodrębnione do folderu: `<path specified in dataset>/<folder named as source zip file>/`.
+* **Poziom:** współczynnik kompresji, który może być **optymalny** lub **najszybszy**.
 
-  * **Najszybszy:** operacji kompresji powinno zakończyć się jak najszybciej, nawet wtedy, gdy wynikowy plik nie jest optymalnie skompresowany.
-  * **Optymalne**: operacja kompresji powinien być optymalnie skompresowany, nawet wtedy, gdy operacja trwa dłużej.
+  * **Najszybsze:** Operacja kompresji powinna zostać ukończona tak szybko, jak to możliwe, nawet jeśli plik nie jest optymalnie kompresowany.
+  * **Optymalnie**: operacja kompresji powinna być optymalnie skompresowana, nawet jeśli operacja trwa dłużej.
 
-    Aby uzyskać więcej informacji, zobacz [poziom kompresji](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) tematu.
+    Aby uzyskać więcej informacji, zobacz temat [poziom kompresji](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) .
 
 > [!NOTE]
-> Ustawienia kompresji nie są obsługiwane dla danych w **AvroFormat**, **OrcFormat**, lub **ParquetFormat**. Podczas odczytywania plików w tych formatach, Data Factory wykrywa i używa kodera-dekodera kompresji w metadanych. Podczas zapisywania plików w tych formatach, Data Factory wybiera natomiast opcję domyślną kodera-dekodera kompresji dla tego formatu. Na przykład ZLIB OrcFormat i SNAPPY dla ParquetFormat.
+> Ustawienia kompresji nie są obsługiwane w przypadku danych w **AvroFormat**, **OrcFormat**lub **ParquetFormat**. Podczas odczytywania plików w tych formatach, Data Factory wykrywa i używa kodera-dekodera kompresji w metadanych. Podczas zapisywania plików w tych formatach, Data Factory wybiera natomiast opcję domyślną kodera-dekodera kompresji dla tego formatu. Na przykład ZLIB OrcFormat i SNAPPY dla ParquetFormat.
 
 ## <a name="unsupported-file-types-and-compression-formats"></a>Nieobsługiwane typy plików i formaty kompresji
 

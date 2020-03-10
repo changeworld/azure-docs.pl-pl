@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: kgremban
 ms.openlocfilehash: e3f55f9be28a8b53f012e111e43ba1f495b1d585
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186469"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395688"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Zainstaluj środowisko uruchomieniowe Azure IoT Edge w systemie Windows
 

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
 ms.openlocfilehash: 21b46ba0012b71ed0e09dc09d041ceb020824843
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967460"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375389"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management — często zadawane pytania
 Uzyskaj odpowiedzi na często zadawane pytania, wzorce oraz najlepsze rozwiązania dotyczące usługi Azure API Management.
@@ -59,7 +59,7 @@ Możesz skontaktować się z nami przy użyciu jednej z następujących opcji:
 Gdy funkcja jest w wersji zapoznawczej, oznacza to, że aktywnie szukamy opinii na temat sposobu działania tej funkcji. Funkcja w wersji zapoznawczej jest funkcjonalnie kompletna, ale istnieje możliwość, że w odpowiedzi na Opinie klientów wprowadzimy istotną zmianę. Zalecamy, aby nie zależały od funkcji, która jest w wersji zapoznawczej w środowisku produkcyjnym. Jeśli masz opinię na temat funkcji wersji zapoznawczej, skontaktuj się z nami za pomocą jednej z opcji kontaktu w temacie [jak zadać pytania Microsoft Azure API Management zespołu?](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question)
 
 ### <a name="how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services"></a>Jak zabezpieczyć połączenie między bramą API Management a usługą zaplecza?
-Istnieje kilka opcji zabezpieczania połączenia między bramą API Management i usługami zaplecza. Przekonaj się:
+Istnieje kilka opcji zabezpieczania połączenia między bramą API Management i usługami zaplecza. Możesz:
 
 * Użyj uwierzytelniania podstawowego protokołu HTTP. Aby uzyskać więcej informacji, zobacz [Importowanie i publikowanie pierwszego interfejsu API](import-and-publish.md).
 * Użyj uwierzytelniania wzajemnego SSL zgodnie z opisem w artykule [jak zabezpieczyć usługi zaplecza przy użyciu uwierzytelniania certyfikatu klienta w usłudze Azure API Management](api-management-howto-mutual-certificates.md).
@@ -67,13 +67,13 @@ Istnieje kilka opcji zabezpieczania połączenia między bramą API Management i
 * Połącz wystąpienie API Management z usługą Azure Virtual Network.
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>Jak mogę skopiować wystąpienia usługi API Management do nowego wystąpienia?
-Istnieje kilka opcji, jeśli chcesz skopiować wystąpienie API Management do nowego wystąpienia. Przekonaj się:
+Istnieje kilka opcji, jeśli chcesz skopiować wystąpienie API Management do nowego wystąpienia. Możesz:
 
 * Użyj funkcji tworzenia kopii zapasowych i przywracania w API Management. Aby uzyskać więcej informacji, zobacz [jak zaimplementować odzyskiwanie awaryjne przy użyciu kopii zapasowej i przywracania usługi w usłudze Azure API Management](api-management-howto-disaster-recovery-backup-restore.md).
 * Utwórz własną funkcję tworzenia kopii zapasowych i przywracania za pomocą [interfejsu API REST API Management](/rest/api/apimanagement/). Za pomocą interfejsu API REST Zapisz i Przywróć jednostki z wystąpienia usługi, które chcesz.
 * Pobierz konfigurację usługi za pomocą narzędzia Git, a następnie przekaż ją do nowego wystąpienia. Aby uzyskać więcej informacji, zobacz [jak zapisać i skonfigurować konfigurację usługi API Management za pomocą narzędzia Git](api-management-configuration-repository-git.md).
 
-### <a name="can-i-manage-my-api-management-instance-programmatically"></a>Czy mogę programowo zarządzać wystąpieniem usługi API Management?
+### <a name="can-i-manage-my-api-management-instance-programmatically"></a>Czy mogę programowo zarządzać moim wystąpieniem API Management?
 Tak, możesz zarządzać API Management programowo przy użyciu:
 
 * [Interfejs API REST API Management](/rest/api/apimanagement/).
@@ -83,7 +83,7 @@ Tak, możesz zarządzać API Management programowo przy użyciu:
 ### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>Jak mogę dodać użytkownika do grupy administratorów?
 Oto jak można dodać użytkownika do grupy Administratorzy:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 2. Przejdź do grupy zasobów, która ma API Management wystąpienia, które chcesz zaktualizować.
 3. W API Management Przypisz do użytkownika rolę **współautor usługi API Management** .
 
@@ -98,12 +98,12 @@ Teraz nowo dodany współautor może używać Azure PowerShell [poleceń cmdlet]
 Jeśli zasady, które mają zostać dodane, są wyszarzone lub wyszarzone w edytorze zasad, upewnij się, że jesteś w prawidłowym zakresie dla zasad. Każda instrukcja zasad jest przeznaczona do użycia w określonych zakresach i sekcjach zasad. Aby zapoznać się z sekcjami zasad i zakresami zasad, zobacz sekcję użycie zasad w temacie [zasady API Management](/azure/api-management/api-management-policies).
 
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>Jak mogę skonfigurować wiele środowisk w jednym interfejsie API?
-Aby skonfigurować wiele środowisk, na przykład środowisko testowe i środowisko produkcyjne, w jednym interfejsie API dostępne są dwie opcje. Przekonaj się:
+Aby skonfigurować wiele środowisk, na przykład środowisko testowe i środowisko produkcyjne, w jednym interfejsie API dostępne są dwie opcje. Możesz:
 
 * Hostowanie różnych interfejsów API w tej samej dzierżawie.
 * Hostowanie tych samych interfejsów API w różnych dzierżawach.
 
-### <a name="can-i-use-soap-with-api-management"></a>Czy mogę używać protokołu SOAP z usługą API Management?
+### <a name="can-i-use-soap-with-api-management"></a>Czy można używać protokołu SOAP z API Management?
 Obsługa [przekazywania protokołu SOAP](https://blogs.msdn.microsoft.com/apimanagement/2016/10/13/soap-pass-through/) jest teraz dostępna. Administratorzy mogą zaimportować WSDL usługi SOAP, a platforma Azure API Management utworzy fronton protokołu SOAP. Dokumentacja portalu dla deweloperów, konsola testowa, zasady i analiza są dostępne dla usług SOAP.
 
 ### <a name="can-i-configure-an-oauth-20-authorization-server-with-ad-fs-security"></a>Czy można skonfigurować serwer autoryzacji OAuth 2,0 z zabezpieczeniami AD FS?

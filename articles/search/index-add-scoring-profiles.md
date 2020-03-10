@@ -20,11 +20,11 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 516637b812afece1966006ce6d894dd1e32e6293
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666311"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379679"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>Dodawanie profilów oceniania do indeksu Wyszukiwanie poznawcze platformy Azure
 
@@ -280,11 +280,11 @@ Wynik wyszukiwania jest obliczany na podstawie właściwości statystycznych dan
 |1 dzień|"P1D"|  
 |2 dni i 12 godzin|"P2DT12H"|  
 |15 minut|"PT15M"|  
-|30 dni, 5 godzin, 10 minut i 6,334 sekund|"P30DT5H10M 6.334 S"|  
+|30 dni, 5 godzin, 10 minut i 6,334 sekund|"P30DT5H10M6.334S"|  
 
  Aby uzyskać więcej przykładów, zobacz [schemat XML: typy danych (witryna sieci web w3.org)](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration).  
 
-## <a name="see-also"></a>Zobacz także  
+## <a name="see-also"></a>Zobacz też  
    [usługi Azure wyszukiwanie POZNAWCZE REST](https://docs.microsoft.com/rest/api/searchservice/)  
  [Tworzenie indeksu &#40;interfejsu API&#41; REST w usłudze Azure wyszukiwanie poznawcze](https://docs.microsoft.com/rest/api/searchservice/create-index)   
  [Azure Wyszukiwanie poznawcze .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  

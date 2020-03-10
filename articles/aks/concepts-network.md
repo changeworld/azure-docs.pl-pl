@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 02/28/2019
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 5800254ab44b5b0f1048ce2200f90c06a8d1666a
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596168"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357110"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Pojęcia dotyczące sieci dla aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -94,7 +94,7 @@ Zarówno korzystającą wtyczki kubenet, jak i Azure CNI zapewniają łącznoś�
 
 Między korzystającą wtyczki kubenet i Azure CNI istnieją następujące różnice dotyczące zachowań:
 
-| Możliwość                                                                                   | Korzystającą wtyczki kubenet   | Azure CNI |
+| Możliwości                                                                                   | Korzystającą wtyczki kubenet   | Azure CNI |
 |----------------------------------------------------------------------------------------------|-----------|-----------|
 | Wdróż klaster w istniejącej lub nowej sieci wirtualnej                                            | Obsługiwane — UDR ręcznie | Obsługiwane |
 | Łączność pod kątem                                                                         | Obsługiwane | Obsługiwane |

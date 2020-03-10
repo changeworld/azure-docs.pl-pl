@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: erhopf
 ms.openlocfilehash: 873898ce321100edbaa800d2436d0413c06ce175
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255668"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390813"
 ---
 # <a name="speech-to-text-rest-api"></a>Interfejs API REST zamiany mowy na tekst
 
@@ -51,7 +51,7 @@ Te parametry mogą być zawarte w ciągu zapytania żądania REST.
 
 | Parametr | Opis | Wymagane / opcjonalne |
 |-----------|-------------|---------------------|
-| `language` | Określa język mówiony, który jest rozpoznawany. Zobacz [obsługiwane języki](language-support.md#speech-to-text). | Wymagany |
+| `language` | Określa język mówiony, który jest rozpoznawany. Zobacz [obsługiwane języki](language-support.md#speech-to-text). | Wymagane |
 | `format` | Określa format wyniku. Akceptowane wartości to `simple` i `detailed`. Proste wyniki obejmują `RecognitionStatus`, `DisplayText`, `Offset`i `Duration`. Precyzyjne reakcje obejmują wiele wyników z wartościami zaufania i cztery różne reprezentacje. Ustawieniem domyślnym jest `simple`. | Optional (Opcjonalność) |
 | `profanity` | Określa sposób obsługi wulgaryzmów w wyniki rozpoznawania. Akceptowane wartości to `masked`, które zastępują braki z gwiazdkami, `removed`, które usuwają wszystkie niewulgarności z wyniku lub `raw`, które zawierają braki w wyniku. Ustawieniem domyślnym jest `masked`. | Optional (Opcjonalność) |
 | `cid` | W przypadku tworzenia niestandardowych modeli przy użyciu [portalu Custom Speech](how-to-custom-speech.md) można użyć niestandardowych modeli za pośrednictwem ich **identyfikatora punktu końcowego** na stronie **wdrożenia** . Użyj **identyfikatora punktu końcowego** jako argumentu dla parametru `cid` ciągu zapytania. | Optional (Opcjonalność) |
@@ -64,7 +64,7 @@ Ta tabela zawiera wymagane i opcjonalne nagłówki dla żądania zamiany mowy na
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | Klucz subskrypcji usługi rozpoznawania mowy. | Wymagany jest ten nagłówek lub `Authorization`. |
 | `Authorization` | Token autoryzacji poprzedzony słowem `Bearer`. Aby uzyskać więcej informacji, zobacz [Authentication](#authentication) (Uwierzytelnianie). | Wymagany jest ten nagłówek lub `Ocp-Apim-Subscription-Key`. |
-| `Content-type` | W tym artykule opisano format i kodera-dekodera audio podanych danych. Akceptowane wartości to `audio/wav; codecs=audio/pcm; samplerate=16000` i `audio/ogg; codecs=opus`. | Wymagany |
+| `Content-type` | W tym artykule opisano format i kodera-dekodera audio podanych danych. Akceptowane wartości to `audio/wav; codecs=audio/pcm; samplerate=16000` i `audio/ogg; codecs=opus`. | Wymagane |
 | `Transfer-Encoding` | Określa, czy fragmentaryczne dane audio są wysyłane, zamiast pojedynczego pliku. Ten nagłówek należy używać tylko, jeśli dane audio. | Optional (Opcjonalność) |
 | `Expect` | W przypadku używania transferu fragmentarycznego Wyślij `Expect: 100-continue`. Usługa mowy potwierdza wstępne żądanie i czeka na dodatkowe dane.| Wymagany, jeśli wysyłanie danych audio podzielonego. |
 | `Accept` | Jeśli jest podany, musi być `application/json`. Usługa mowy zapewnia wyniki w formacie JSON. Niektóre platformy żądań zapewniają niezgodną wartość domyślną. Dobrym sposobem jest zawsze uwzględnienie `Accept`. | Opcjonalne, ale zalecane. |
@@ -104,7 +104,7 @@ Kod stanu HTTP dla każdej odpowiedzi wskazuje sukces lub typowych błędów.
 | `100` | Kontynuuj | Wstępne żądanie zostało zaakceptowane. Czy kontynuować wysyłanie pozostałe dane. (Używany z transferem fragmentarycznym) |
 | `200` | OK | Żądanie powiodło się; treść odpowiedzi jest obiekt JSON. |
 | `400` | Nieprawidłowe żądanie | Nie podano kodu języka, nie jest to obsługiwanego języka, nieprawidłowy plik audio itd. |
-| `401` | Brak autoryzacji | Klucz subskrypcji lub autoryzacji token jest nieprawidłowy w określonym regionie lub nieprawidłowy punkt końcowy. |
+| `401` | Nieupoważniony | Klucz subskrypcji lub autoryzacji token jest nieprawidłowy w określonym regionie lub nieprawidłowy punkt końcowy. |
 | `403` | Forbidden | Brak klucz subskrypcji lub autoryzacji tokenu. |
 
 ## <a name="chunked-transfer"></a>Fragmentaryczne transferu

@@ -8,22 +8,22 @@ ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: dcf6160c3650975431bf50fcf5bcba67f833a717
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750453"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381229"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Ustawienia serwera proxy i zapory usługi Azure File Sync
 Azure File Sync nawiązuje połączenie z serwerami lokalnymi w celu Azure Files, włączając synchronizację z obsługą wielolokacją i funkcjami obsługi warstw w chmurze. W związku z tym serwer lokalny musi być połączony z Internetem. Administrator IT musi zdecydować najlepszą ścieżkę serwera, aby uzyskać dostęp do usług Azure Cloud Services.
 
 W tym artykule zawarto szczegółowe informacje o określonych wymaganiach i opcjach dostępnych w celu pomyślnego i bezpiecznego połączenia Twojego serwera z Azure File Sync.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Azure File Sync pełni rolę usługi aranżacji między serwerem systemu Windows, udziałem plików platformy Azure i kilkoma innymi usługami platformy Azure, aby synchronizować dane zgodnie z opisem w grupie synchronizacji. Aby program Azure File Sync działał prawidłowo, należy skonfigurować serwery do komunikowania się z następującymi usługami platformy Azure:
 
 - Azure Storage
-- Usługa Azure File Sync
+- Azure File Sync
 - Azure Resource Manager
 - Usługi uwierzytelniania
 
@@ -89,13 +89,13 @@ Jak wspomniano w poprzedniej sekcji, port 443 musi być otwarty dla ruchu wychod
 
 W poniższej tabeli opisano wymagane domeny do komunikacji:
 
-| Usługa | Punkt końcowy chmury publicznej | Azure Government punkt końcowy | Użycie |
+| NDES | Punkt końcowy chmury publicznej | Azure Government punkt końcowy | Sposób użycia |
 |---------|----------------|---------------|------------------------------|
 | **Azure Resource Manager** | https://management.azure.com | https://management.usgovcloudapi.net | Każde wywołanie użytkownika (na przykład program PowerShell) przechodzi do/za pomocą tego adresu URL, łącznie z początkowym wywołaniem rejestracji serwera. |
 | **Azure Active Directory** | https://login.windows.net<br>https://login.microsoftonline.com | https://login.microsoftonline.us | Wywołania Azure Resource Manager muszą być wykonywane przez uwierzytelnionego użytkownika. Aby pomyślnie, ten adres URL jest używany do uwierzytelniania użytkowników. |
 | **Azure Active Directory** | https://graph.windows.net/ | https://graph.windows.net/ | W ramach wdrażania Azure File Sync zostanie utworzona jednostka usługi w Azure Active Directory subskrypcji. Ten adres URL jest używany dla tego programu. Ten podmiot zabezpieczeń jest używany do delegowania minimalnego zestawu praw do usługi Azure File Sync. Użytkownik wykonujący początkową konfigurację Azure File Sync musi być uwierzytelnionym użytkownikiem z uprawnieniami właściciela subskrypcji. |
-| **Azure Storage** | &ast;.core.windows.net | &ast;.core.usgovcloudapi.net | Gdy serwer pobiera plik, serwer przeprowadzi bardziej wydajne przenoszenie danych podczas rozmowy bezpośrednio z udziałem plików platformy Azure na koncie magazynu. Serwer ma klucz sygnatury dostępu współdzielonego, który zezwala tylko na dostęp do udziału plików. |
-| **Azure File Sync** | &ast;.one.microsoft.com<br>&ast;. afs.azure.net | &ast;. afs.azure.us | Po początkowej rejestracji serwera serwer otrzymuje regionalny adres URL dla wystąpienia usługi Azure File Sync w tym regionie. Serwer może używać adresu URL do bezpośredniego i wydajnego komunikowania się z wystąpieniem obsługującym jego synchronizację. |
+| **Azure Storage** | &ast;. core.windows.net | &ast;. core.usgovcloudapi.net | Gdy serwer pobiera plik, serwer przeprowadzi bardziej wydajne przenoszenie danych podczas rozmowy bezpośrednio z udziałem plików platformy Azure na koncie magazynu. Serwer ma klucz sygnatury dostępu współdzielonego, który zezwala tylko na dostęp do udziału plików. |
+| **Azure File Sync** | &ast;. one.microsoft.com<br>&ast;. afs.azure.net | &ast;. afs.azure.us | Po początkowej rejestracji serwera serwer otrzymuje regionalny adres URL dla wystąpienia usługi Azure File Sync w tym regionie. Serwer może używać adresu URL do bezpośredniego i wydajnego komunikowania się z wystąpieniem obsługującym jego synchronizację. |
 | **Infrastruktura PKI firmy Microsoft** | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | Po zainstalowaniu agenta Azure File Sync, adres URL infrastruktury PKI jest używany do pobierania certyfikatów pośrednich wymaganych do komunikowania się z usługą Azure File Sync i udziałem plików platformy Azure. Adres URL protokołu OCSP służy do sprawdzania stanu certyfikatu. |
 
 > [!Important]
@@ -132,8 +132,8 @@ Ze względu na ciągłość działania i odzyskiwanie po awarii (BCDR), możesz 
 | Publiczne | Europa Zachodnia | https:\//kailani6.one.microsoft.com | Europa Północna | https:\//tm-kailani6.one.microsoft.com |
 | Publiczne | Zachodnie stany USA | https:\//kailani.one.microsoft.com | Wschodnie stany USA | https:\//tm-kailani.one.microsoft.com |
 | Publiczne | Zachodnie stany USA 2 | https:\//westus201.afs.azure.net | Zachodnio-środkowe stany USA | https:\//tm-westus201.afs.azure.net |
-| Administracja | US Gov Arizona | https:\//usgovarizona01.afs.azure.us | US Gov Teksas | https:\//tm-usgovarizona01.afs.azure.us |
-| Administracja | US Gov Teksas | https:\//usgovtexas01.afs.azure.us | US Gov Arizona | https:\//tm-usgovtexas01.afs.azure.us |
+| Instytucje rządowe | US Gov Arizona | https:\//usgovarizona01.afs.azure.us | US Gov Teksas | https:\//tm-usgovarizona01.afs.azure.us |
+| Instytucje rządowe | US Gov Teksas | https:\//usgovtexas01.afs.azure.us | US Gov Arizona | https:\//tm-usgovtexas01.afs.azure.us |
 
 - W przypadku korzystania z kont magazynu lokalnie nadmiarowego (LRS) lub strefy nadmiarowe (ZRS) należy włączyć tylko adres URL wymieniony w obszarze "podstawowy adres URL punktu końcowego".
 

@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: harahma
 ms.openlocfilehash: 69c7edb08693937aad5a658e0b22b00cd2a81647
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464593"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391413"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Model hostingu Service Fabric platformy Azure
 Ten artykuł zawiera omówienie modeli hostingu aplikacji udostępnianych przez usługę Azure Service Fabric i opisuje różnice między **procesem udostępnionym** i modelami **procesów wyłącznych** . Opisano w nim, jak wdrożona aplikacja szuka węzła Service Fabric i relacji między replikami (lub wystąpieniami) usługi i procesem hosta usługi.
@@ -38,7 +38,7 @@ Service Fabric aktywowano "MyServicePackage", który uruchomił element "MyCodeP
 ![Diagram widoku węzła wdrożonej aplikacji][node-view-two]
 
 
-Service Fabric umieścić nową replikę dla partycji **P3** usługi Service **Fabric:/APP1/ServiceB** w istniejącej aktywacji elementu "MyServicePackage". Teraz. Utwórz kolejną **sieć szkieletową aplikacji:/APP2** typu "mojaapltype". Wewnątrz **sieci szkieletowej:/APP2**, tworzenie usługi Service **Fabric:/APP2/Service**. Ta usługa ma dwie partycje (**P4** i **P5**) oraz trzy repliki na partycję. Na poniższym diagramie przedstawiono nowy widok węzła:
+Service Fabric umieścić nową replikę dla partycji **P3** usługi Service **Fabric:/APP1/ServiceB** w istniejącej aktywacji elementu "MyServicePackage". Znajdź. Utwórz kolejną **sieć szkieletową aplikacji:/APP2** typu "mojaapltype". Wewnątrz **sieci szkieletowej:/APP2**, tworzenie usługi Service **Fabric:/APP2/Service**. Ta usługa ma dwie partycje (**P4** i **P5**) oraz trzy repliki na partycję. Na poniższym diagramie przedstawiono nowy widok węzła:
 
 
 ![Diagram widoku węzła wdrożonej aplikacji][node-view-three]

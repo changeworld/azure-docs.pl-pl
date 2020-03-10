@@ -16,11 +16,11 @@ ms.workload: media
 ms.date: 02/28/2020
 ms.author: juliako
 ms.openlocfilehash: 2a670c7bce113de8854b33e407c7de2236edd794
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197865"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393513"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Wskazówki dotyczące migracji dotyczące przenoszenia z Media Services V2 do wersji v3
 
@@ -83,7 +83,7 @@ Jeśli masz już zainstalowaną usługę wideo na [starszej wersji interfejsów 
     string cbcsIV =  Convert.ToBase64String(HexStringToByteArray(cbcsGuid.ToString().Replace("-", string.Empty)));
     ```
 
-    with
+    elementem
 
     ``` 
     public static byte[] HexStringToByteArray(string hex)

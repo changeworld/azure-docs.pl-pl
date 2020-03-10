@@ -8,11 +8,11 @@ ms.date: 12/06/2019
 ms.author: mjbrown
 ms.reviewer: sngun
 ms.openlocfilehash: 0f024bac535ed792d8480c991e470cf5d85932b8
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77083016"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357635"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Wysoka dostępność dzięki Azure Cosmos DB
 
@@ -103,8 +103,8 @@ Poniższa tabela zawiera podsumowanie możliwości wysokiej dostępności różn
 |Cena | Stawka rozliczenia w jednym regionie | Stawka rozliczenia strefy dostępności pojedynczego regionu | Wieloregionowa stawka rozliczeniowa |
 |Awarie stref — utrata danych | Utrata danych | Brak utraty danych | Brak utraty danych |
 |Awarie stref — dostępność | Utrata dostępności | Brak utraty dostępności | Brak utraty dostępności |
-|Opóźnienie odczytu | Między regionami | Między regionami | Małe |
-|Opóźnienie zapisu | Między regionami | Między regionami | Małe |
+|Opóźnienie odczytu | Między regionami | Między regionami | Niski |
+|Opóźnienie zapisu | Między regionami | Między regionami | Niski |
 |Awaria regionalna — utrata danych | Utrata danych |  Utrata danych | Utrata danych <br/><br/> W przypadku używania ograniczonej spójności niezgodności z wieloma wzorcami i więcej niż jednym regionem utrata danych jest ograniczona do granicy nieaktualnej konfiguracji skonfigurowanej na Twoim koncie. <br /><br />Można uniknąć utraty danych podczas regionalnej awarii, konfigurując silną spójność z wieloma regionami. Ta opcja ma wpływ na dostępność i wydajność. Można ją skonfigurować tylko na kontach, które są skonfigurowane do zapisu w jednym regionie. |
 |Awaria regionalna — dostępność | Utrata dostępności | Utrata dostępności | Brak utraty dostępności |
 |Przepływność | X RU/s zainicjowana przepływność | X RU/s zainicjowana przepływność | przepustowość z obsługą jednostki RU/s <br/><br/> Ten tryb konfiguracji wymaga dwukrotnej ilości przepływności w porównaniu do jednego regionu z Strefy dostępności, ponieważ istnieją dwa regiony. |

@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
 ms.openlocfilehash: 20a595e1386a8d33c919ad4ff151d65e30b31eda
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75358279"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383186"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Tworzenie maszyny wirtualnej z systemem Windows i zarządzanie nią z wieloma kartami sieciowymi
 Maszyny wirtualne na platformie Azure mogą mieć dołączone do nich wiele kart interfejsów sieci wirtualnej (nic). Typowym scenariuszem jest posiadanie różnych podsieci na potrzeby łączności frontonu i zaplecza. Można skojarzyć wiele kart sieciowych na maszynie wirtualnej z wieloma podsieciami, ale te podsieci muszą znajdować się w tej samej sieci wirtualnej (vNet). W tym artykule szczegółowo opisano sposób tworzenia maszyny wirtualnej, do której dołączono wiele kart sieciowych. Dowiesz się również, jak dodawać i usuwać karty sieciowe z istniejącej maszyny wirtualnej. Różne [rozmiary maszyn wirtualnych](sizes.md) obsługują różną liczbę kart sieciowych, dlatego należy odpowiednio zmienić rozmiar maszyny wirtualnej.

@@ -20,11 +20,11 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: b966e9cfa3ef40666dbbd62135f8f964e5eb2023
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113199"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390324"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>Składnia $filter OData na platformie Azure Wyszukiwanie poznawcze
 
@@ -78,7 +78,7 @@ Jeśli piszesz wyrażenie filtru bez nawiasów wokół jego wyrażeń podrzędny
 | Grupa | Operatorzy: |
 | --- | --- |
 | Operatory logiczne | `not` |
-| Operatory porównania | `eq`, `ne`, `gt`, `lt`, `ge`, `le` |
+| Operatory porównania | `eq`, `ne`, `gt`, `lt`, `ge``le` |
 | Operatory logiczne | `and` |
 | Operatory logiczne | `or` |
 

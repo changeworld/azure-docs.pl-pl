@@ -10,11 +10,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.openlocfilehash: edddd100bddab1d642a8169353298a2d20620274
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928131"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387642"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Przenoszenie danych z MongoDB za pomocą Azure Data Factory
 
@@ -46,7 +46,7 @@ Można utworzyć potok za pomocą działania kopiowania, które przenosi dane z 
 
 Najprostszym sposobem utworzenia potoku jest użycie **Kreatora kopiowania**. Zobacz [Samouczek: Tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) na potrzeby szybkiego instruktażu dotyczącego tworzenia potoku przy użyciu Kreatora kopiowania danych.
 
-Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
+Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Aby uzyskać instrukcje krok po kroku dotyczące tworzenia potoku za pomocą działania kopiowania, zobacz [Samouczek dotyczący działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Niezależnie od tego, czy używasz narzędzi, czy interfejsów API, wykonaj następujące kroki, aby utworzyć potok służący do przenoszenia danych ze źródłowego magazynu danych do magazynu danych ujścia:
 
@@ -63,16 +63,16 @@ Poniższa tabela zawiera opis elementów JSON specyficznych dla **OnPremisesMong
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| type |Właściwość Type musi mieć wartość: **OnPremisesMongoDb** |Tak |
-| serwer |Adres IP lub nazwa hosta serwera MongoDB. |Tak |
-| port |Port TCP, którego serwer MongoDB używa do nasłuchiwania połączeń klientów. |Opcjonalna, wartość domyślna: 27017 |
+| typ |Właściwość Type musi mieć wartość: **OnPremisesMongoDb** |Tak |
+| zarządzania |Adres IP lub nazwa hosta serwera MongoDB. |Tak |
+| Port |Port TCP, którego serwer MongoDB używa do nasłuchiwania połączeń klientów. |Opcjonalna, wartość domyślna: 27017 |
 | authenticationType |Podstawowa lub anonimowa. |Tak |
 | nazwa użytkownika |Konto użytkownika do uzyskiwania dostępu do MongoDB. |Tak (jeśli jest używane uwierzytelnianie podstawowe). |
 | hasło |Hasło użytkownika. |Tak (jeśli jest używane uwierzytelnianie podstawowe). |
 | authSource |Nazwa bazy danych MongoDB, która ma zostać użyta do sprawdzenia poświadczeń w celu uwierzytelnienia. |Opcjonalne (jeśli jest używane uwierzytelnianie podstawowe). Domyślnie: używa konta administratora i bazy danych określonej przy użyciu właściwości databaseName. |
 | databaseName |Nazwa bazy danych MongoDB, do której chcesz uzyskać dostęp. |Tak |
 | gatewayName |Nazwa bramy, która uzyskuje dostęp do magazynu danych. |Tak |
-| encryptedCredential |Poświadczenie zaszyfrowane przez bramę. |Opcjonalne |
+| encryptedCredential |Poświadczenie zaszyfrowane przez bramę. |Optional (Opcjonalność) |
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 Aby uzyskać pełną listę sekcji & właściwości dostępne do definiowania zestawów danych, zobacz artykuł [Tworzenie zestawów danych](data-factory-create-datasets.md) . Sekcje, takie jak struktura, dostępność i zasady JSON zestawu danych są podobne dla wszystkich typów zestawu danych (Azure SQL, Azure Blob, Azure Table itp.).
@@ -92,7 +92,7 @@ Gdy źródło jest typu **MongoDbSource** , w sekcji typeProperties są dostępn
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| query |Użyj zapytania niestandardowego do odczytywania danych. |Ciąg zapytania SQL-92. Na przykład: select * from MyTable. |Nie (Jeśli określono **CollectionName** **zestawu danych** ) |
+| zapytanie |Użyj zapytania niestandardowego do odczytywania danych. |Ciąg zapytania SQL-92. Na przykład: select * from MyTable. |Nie (Jeśli określono **CollectionName** **zestawu danych** ) |
 
 
 
@@ -290,17 +290,17 @@ Jak wspomniano w artykule [działania związane z przenoszeniem danych](data-fac
 
 Podczas przesuwania danych do MongoDB następujące mapowania są używane z typów MongoDB do typów .NET.
 
-| Typ MongoDB | Typ programu .NET Framework |
+| Typ MongoDB | Typ .NET Framework |
 | --- | --- |
-| Binary |Byte[] |
+| Binarny |Byte[] |
 | Wartość logiczna |Wartość logiczna |
-| Data |Data i godzina |
-| NumberDouble |Double |
+| Date |DateTime |
+| NumberDouble |Podwójne |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
-| ObjectID |Ciąg |
+| Obiektu |Ciąg |
 | Ciąg |Ciąg |
-| UUID |Identyfikator GUID |
+| UUID |Guid |
 | Obiekt |Reznormalizowany do spłaszczonych kolumn z "_" jako separatorem zagnieżdżonym |
 
 > [!NOTE]
@@ -321,7 +321,7 @@ Tabele wirtualne odwołują się do danych w rzeczywistej tabeli, umożliwiając
 ### <a name="example"></a>Przykład
 Na przykład "przykład" poniżej jest tabelą MongoDB, która zawiera jedną kolumnę z tablicą obiektów w każdej komórce — faktury i jedną kolumnę z tablicą typów skalarnych — klasyfikacje.
 
-| _id | Nazwa klienta | Faktury | Poziom usług | Klasyfikacje |
+| _id | Nazwa klienta | Faktury | Poziom usług | Klasyfikowani |
 | --- | --- | --- | --- | --- |
 | 1111 |ABC |[{invoice_id: "123", Item: "wyskakujący", Cena: "456", Rabat: "0,2"}, {invoice_id: "124", Item: "piekarnik", Cena: "1235", Rabat: "0,2"}] |Srebrny |[5,6] |
 | 2222 |XYZ |[{invoice_id: "135", element: "lodówki", Cena: "12543", Rabat: "0,0"}] |Złoty |[1,2] |
@@ -341,7 +341,7 @@ W poniższych tabelach przedstawiono tabele wirtualne, które reprezentują oryg
 
 Tabela "ExampleTable_Invoices":
 
-| _id | ExampleTable_Invoices_dim1_idx | invoice_id | element | price | Rabat |
+| _id | ExampleTable_Invoices_dim1_idx | invoice_id | elementów | price | Liczyć |
 | --- | --- | --- | --- | --- | --- |
 | 1111 |0 |123 |wyskakujący |456 |0.2 |
 | 1111 |1 |124 |laboratoryjn |1235 |0.2 |

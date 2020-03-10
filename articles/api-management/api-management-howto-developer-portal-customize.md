@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/22/2019
+ms.date: 03/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 8629d07830622770c3b30dacdd1fabc8417d7f52
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: af7c995c11322a538dd9e27a905f1ddbc723e8ab
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454422"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78892894"
 ---
 # <a name="access-and-customize-developer-portal"></a>Dostęp i dostosowywanie portalu dla deweloperów
 
@@ -125,6 +125,10 @@ Aby Portal i najnowsze zmiany były dostępne dla odwiedzających, należy je op
 ## <a name="visit-the-published-portal"></a>Odwiedź opublikowany Portal
 
 Po opublikowaniu portalu możesz uzyskać do niego dostęp przy użyciu tego samego adresu URL, który jest panelem administracyjnym, na przykład `https://contoso-api.developer.azure-api.net`. Wyświetl je w oddzielnym sesji przeglądarki (incognito/Private Mode) jako gość zewnętrzny.
+
+## <a name="apply-the-cors-policy-on-apis"></a>Stosowanie zasad CORS w interfejsach API
+
+Musisz włączyć funkcję CORS (Udostępnianie zasobów między źródłami) w interfejsach API, aby umożliwić odwiedzającym portalu testowanie interfejsów API za pomocą wbudowanej konsoli interaktywnej. Aby uzyskać więcej informacji, zapoznaj się z [artykułem dotyczącym tej dokumentacji](api-management-howto-developer-portal.md#cors) .
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: alkohli
 ms.openlocfilehash: 54f6473954c73de6ec29602c3d1563579b3e8cc6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60754447"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384651"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Rozwiązywanie problemów związanych z usługą Azure Data Box Gateway 
 
@@ -106,6 +106,6 @@ Wszelkie błędy występujące podczas procesów przekazywania i odświeżania s
     |    16002           |    RefreshWorkNeededException                              |    Nie można odświeżyć tego pliku, ponieważ nie został on w całości przekazany.                                                                                                                                                                          | 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się więcej o [znanych problemach w tej wersji](data-box-gateway-release-notes.md).

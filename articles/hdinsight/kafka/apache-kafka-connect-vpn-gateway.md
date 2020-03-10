@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/28/2019
-ms.openlocfilehash: 66bb054ab75c5a4e387995bc64dbc026c073413f
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.custom: hdinsightactive
+ms.date: 03/04/2020
+ms.openlocfilehash: 36ff0d5f1fc96b2013555d37a869ebf629a22be7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122619"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397276"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Łączenie się z usługą Apache Kafka w usłudze HDInsight za pomocą usługi Azure Virtual Network
 
@@ -38,7 +38,7 @@ Usługa HDInsight nie zezwala na bezpośrednie łączenie się z usługą Kafka 
   4. Skonfiguruj przekazywanie między serwerem DNS w każdej sieci.
   5. Utwórz Kafka w klastrze usługi HDInsight w sieci wirtualnej.
 
-     Aby uzyskać więcej informacji, zobacz sekcję [łączenie się z Apache Kafka w sieci lokalnej](#on-premises) . 
+     Aby uzyskać więcej informacji, zobacz sekcję [łączenie się z Apache Kafka w sieci lokalnej](#on-premises) .
 
 * Połącz poszczególne maszyny z siecią wirtualną przy użyciu bramy sieci VPN i klienta sieci VPN. Aby włączyć tę konfigurację, wykonaj następujące zadania:
 
@@ -72,7 +72,7 @@ W tym kroku opisano tworzenie następującej konfiguracji:
 * Konto usługi Azure Storage (używane przez usługę HDInsight)
 * Usługa Kafka w usłudze HDInsight
 
-Aby sprawdzić, czy klient Kafka może połączyć się z klastrem lokalnie, wykonaj czynności opisane w tym [przykładzie: Sekcja klienta](#python-client) języka Python.
+Aby sprawdzić, czy klient Kafka może połączyć się z klastrem ze środowiska lokalnego, wykonaj kroki opisane w sekcji [przykład: klient języka Python](#python-client) .
 
 ## <a id="vpnclient"></a>Nawiązywanie połączenia z Apache Kafka z klientem sieci VPN
 
@@ -242,7 +242,7 @@ Wykonaj kroki opisane w tej sekcji, aby utworzyć następującą konfigurację:
 
 Domyślnie Apache dozorcy zwraca nazwę domeny brokerów Kafka do klientów. Ta konfiguracja nie działa z klientem oprogramowania sieci VPN, ponieważ nie może używać rozpoznawania nazw dla jednostek w sieci wirtualnej. W przypadku tej konfiguracji wykonaj następujące kroki, aby skonfigurować Kafka do anonsowania adresów IP zamiast nazw domen:
 
-1. Korzystając z przeglądarki sieci Web, przejdź `https://CLUSTERNAME.azurehdinsight.net`do. Zamień `CLUSTERNAME` na nazwę Kafka w klastrze usługi HDInsight.
+1. Korzystając z przeglądarki sieci Web, przejdź do `https://CLUSTERNAME.azurehdinsight.net`. Zastąp `CLUSTERNAME` nazwą Kafka w klastrze usługi HDInsight.
 
     Po wyświetleniu monitu użyj nazwy użytkownika i hasła protokołu HTTPS dla klastra. Zostanie wyświetlony interfejs użytkownika sieci Web Ambari dla klastra.
 
@@ -270,7 +270,7 @@ Domyślnie Apache dozorcy zwraca nazwę domeny brokerów Kafka do klientów. Ta 
 
 6. Aby skonfigurować interfejs, który Kafka nasłuchuje, wprowadź `listeners` w polu __filtru__ w prawym górnym rogu.
 
-7. Aby skonfigurować Kafka do nasłuchiwania na wszystkich interfejsach sieciowych, Zmień wartość w polu `PLAINTEXT://0.0.0.0:9092` __detektory__ na.
+7. Aby skonfigurować Kafka do nasłuchiwania na wszystkich interfejsach sieciowych, Zmień wartość w polu __odbiorniki__ na `PLAINTEXT://0.0.0.0:9092`.
 
 8. Aby zapisać zmiany konfiguracji, użyj przycisku __Zapisz__ . Wprowadź wiadomość tekstową opisującą zmiany. Po zapisaniu zmian wybierz __przycisk OK__ .
 
@@ -290,7 +290,7 @@ Domyślnie Apache dozorcy zwraca nazwę domeny brokerów Kafka do klientów. Ta 
 
 Aby nawiązać połączenie z bramą sieci VPN, użyj sekcji __łączenie z platformą Azure__ w dokumencie [Konfigurowanie połączenia punkt-lokacja](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#connect) .
 
-## <a id="python-client"></a>Przyklad Klient języka Python
+## <a id="python-client"></a>Przykład: klient języka Python
 
 Aby sprawdzić poprawność łączności z usługą Kafka, wykonaj następujące kroki, aby utworzyć i uruchomić producenta i klienta języka Python:
 
@@ -316,7 +316,7 @@ Aby sprawdzić poprawność łączności z usługą Kafka, wykonaj następujące
     az network nic list --resource-group <resourcegroupname> --output table --query "[?contains(name,'node')].{NICname:name,InternalIP:ipConfigurations[0].privateIpAddress,InternalFQDN:dnsSettings.internalFqdn}"
     ```
 
-    Ten skrypt zakłada, `$resourceGroupName` że jest nazwą grupy zasobów platformy Azure, która zawiera sieć wirtualną.
+    Ten skrypt zakłada, że `$resourceGroupName` jest nazwą grupy zasobów platformy Azure, która zawiera sieć wirtualną.
 
     Zapisz zwrócone informacje do użycia w następnych krokach.
 
@@ -337,14 +337,14 @@ Aby sprawdzić poprawność łączności z usługą Kafka, wykonaj następujące
       producer.send('testtopic', b'test message')
    ```
 
-    `'kafka_broker'` Zamień wpisy na adresy zwrócone z kroku 1 w tej sekcji:
+    Zastąp wpisy `'kafka_broker'` adresami zwróconymi z kroku 1 w tej sekcji:
 
-   * Jeśli używasz __klienta sieci VPN oprogramowania__, Zastąp `kafka_broker` wpisy adresem IP węzłów procesu roboczego.
+   * Jeśli używasz __klienta sieci VPN oprogramowania__, Zastąp wpisy `kafka_broker` adresem IP węzłów procesu roboczego.
 
-   * Jeśli __włączono rozpoznawanie nazw za pomocą niestandardowego serwera DNS__, Zastąp `kafka_broker` wpisy nazwą FQDN węzłów procesu roboczego.
+   * Jeśli __włączono rozpoznawanie nazw za pomocą niestandardowego serwera DNS__, Zastąp wpisy `kafka_broker` nazwą FQDN węzłów procesu roboczego.
 
      > [!NOTE]
-     > Ten kod wysyła ciąg `test message` do tematu. `testtopic` Domyślną konfiguracją Kafka w usłudze HDInsight jest utworzenie tematu, jeśli nie istnieje.
+     > Ten kod wysyła `test message` ciągu do `testtopic`tematu. Domyślną konfiguracją Kafka w usłudze HDInsight jest utworzenie tematu, jeśli nie istnieje.
 
 4. Aby pobrać komunikaty z Kafka, użyj następującego kodu w języku Python:
 
@@ -360,11 +360,11 @@ Aby sprawdzić poprawność łączności z usługą Kafka, wykonaj następujące
      print (msg)
    ```
 
-    `'kafka_broker'` Zamień wpisy na adresy zwrócone z kroku 1 w tej sekcji:
+    Zastąp wpisy `'kafka_broker'` adresami zwróconymi z kroku 1 w tej sekcji:
 
-    * Jeśli używasz __klienta sieci VPN oprogramowania__, Zastąp `kafka_broker` wpisy adresem IP węzłów procesu roboczego.
+    * Jeśli używasz __klienta sieci VPN oprogramowania__, Zastąp wpisy `kafka_broker` adresem IP węzłów procesu roboczego.
 
-    * Jeśli __włączono rozpoznawanie nazw za pomocą niestandardowego serwera DNS__, Zastąp `kafka_broker` wpisy nazwą FQDN węzłów procesu roboczego.
+    * Jeśli __włączono rozpoznawanie nazw za pomocą niestandardowego serwera DNS__, Zastąp wpisy `kafka_broker` nazwą FQDN węzłów procesu roboczego.
 
 ## <a name="next-steps"></a>Następne kroki
 

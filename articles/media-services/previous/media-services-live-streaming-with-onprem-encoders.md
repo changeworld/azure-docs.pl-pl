@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: f6366f162cb09898b694b14440718401c57c0adf
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74887105"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390539"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>Praca z kanałami odbierającymi strumień na żywo o wysokiej szybkości transmisji bitów z koderów lokalnych
 
 > [!NOTE]
 > Od 12 maja 2018 kanały na żywo nie będą już obsługiwać protokołu pozyskiwania strumienia transportowego RTP/MPEG-2. Przeprowadź migrację z protokołów RTP/MPEG-2 do protokołu RTMP lub pofragmentowanych plików MP4 (Smooth Streaming).
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 W Azure Media Services *kanał* reprezentuje potok do przetwarzania zawartości przesyłania strumieniowego na żywo. Kanał odbiera strumienie wejściowe na żywo na jeden z dwóch sposobów:
 
 * Lokalny koder na żywo wysyła strumień RTMP o dużej szybkości transmisji bitów lub Smooth Streaming (pofragmentowany plik MP4) do kanału, w którym nie włączono kodowania na żywo z Media Services. Pozyskiwane strumienie są przekazywane przez kanały bez dalszych procesów. Ta metoda jest nazywana *przekazywaniem*. Koder na żywo może również wysyłać strumień o pojedynczej szybkości transmisji bitów do kanału, w którym nie włączono obsługi kodowania na żywo, ale nie zalecamy tego. Media Services dostarcza strumieniu do klientów, którzy go żądają.
@@ -176,15 +176,15 @@ Nawet po zatrzymaniu i usunięciu programu użytkownicy będą mogli przesyłać
 ## <a id="states"></a>Stany kanału i rozliczenia
 Możliwe wartości bieżącego stanu kanału to:
 
-* **Zatrzymano**: jest to początkowy stan kanału po jego utworzeniu. W tym stanie właściwości kanału mogą być aktualizowane, ale transmisja strumieniowa jest niedozwolona.
-* **Uruchamianie**: kanał jest uruchamiany. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa. Jeśli wystąpi błąd, kanał powróci do stanu **zatrzymany** .
+* **Zatrzymano**: jest to początkowy stan kanału po jego utworzeniu. W tym stanie właściwości kanału mogą być aktualizowane, ale przesyłanie strumieniowe jest niedozwolone.
+* **Uruchamianie**: kanał jest uruchamiany. W tym stanie nie są dozwolone żadne aktualizacje ani przesyłanie strumieniowe. Jeśli wystąpi błąd, kanał powróci do stanu **zatrzymany** .
 * **Uruchomiono**: kanał może przetwarzać strumienie na żywo.
-* **Zatrzymywanie**: kanał jest zatrzymywany. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa.
-* **Usuwanie**: kanał jest usuwany. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa.
+* **Zatrzymywanie**: kanał jest zatrzymywany. W tym stanie nie są dozwolone żadne aktualizacje ani przesyłanie strumieniowe.
+* **Usuwanie**: kanał jest usuwany. W tym stanie nie są dozwolone żadne aktualizacje ani przesyłanie strumieniowe.
 
-W tabeli poniżej pokazano, jak stany kanału przekładają się na naliczanie opłat.
+W poniższej tabeli przedstawiono sposób, w jaki Stany kanałów mapują się do trybu rozliczania.
 
-| Stan kanału | Wskaźniki w interfejsie użytkownika portalu | Naliczanie opłat? |
+| Stan kanału | Wskaźniki interfejsu użytkownika portalu | Rozliczane? |
 | --- | --- | --- |
 | **Uruchamianie** |**Uruchamianie** |Nie (stan przejściowy) |
 | **Uruchomiono** |**Gotowe** (brak uruchomionych programów)<p><p>lub<p>**Przesyłanie strumieniowe** (co najmniej jeden uruchomiony program) |Tak |
@@ -194,7 +194,7 @@ W tabeli poniżej pokazano, jak stany kanału przekładają się na naliczanie o
 ## <a id="cc_and_ads"></a>Napisy i wstawianie AD
 W poniższej tabeli przedstawiono obsługiwane standardy dla podpisów kodowanych i wstawiania do usługi AD.
 
-| Standardowa (Standard) | Uwagi |
+| Standardowy | Uwagi |
 | --- | --- |
 | CEA-708 i EIA-608 (708/608) |CEA-708 i EIA-608 to standardy zamykania podpisów dla Stany Zjednoczone i Kanady.<p><p>Obecnie podpisy są obsługiwane tylko wtedy, gdy są wykonywane w zakodowanym strumieniu wejściowym. Musisz użyć kodera multimediów na żywo, który może wstawić 608 lub 708 podpisy w zakodowanym strumieniu, który jest wysyłany do Media Services. Media Services dostarcza zawartość z wstawionymi napisami do Twoich przeglądających. |
 | TTML wewnątrz. ISMT (Smooth Streaming ścieżek tekstowych) |Media Services dynamiczne pakowanie umożliwia klientom przesyłanie strumieniowe zawartości w jednym z następujących formatów: PAUZy, HLS lub Smooth Streaming. Jeśli jednak pozyskasz pofragmentowany plik MP4 (Smooth Streaming) z napisami wewnątrz. ISMT (Smooth Streaming ścieżki tekstowe), możesz dostarczyć strumień tylko do Smooth Streaming klientów. |
@@ -225,10 +225,10 @@ Poniżej przedstawiono inne zagadnienia związane z pracą z kanałami i powiąz
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="feedback"></a>Opinia
+## <a name="feedback"></a>Opinie
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="related-topics"></a>Powiązane tematy
+## <a name="related-topics"></a>Tematy pokrewne
 [Zalecane w przypadku koderów lokalnych](media-services-recommended-encoders.md)
 
 [Azure Media Services fragmentacja — Specyfikacja pozyskiwania danych MP4](../media-services-fmp4-live-ingest-overview.md)

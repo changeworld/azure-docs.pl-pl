@@ -3,12 +3,12 @@ title: Tworzenie kopii zapasowych plików i folderów — często zadawane pytan
 description: Rozwiązuje często zadawane pytania dotyczące tworzenia kopii zapasowych plików i folderów za pomocą Azure Backup.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 7b80932d49038bb42fa93f71b3ac0194c2869489
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: adcbf5c3b404de46634423f8f59c4798d44bebe0
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425072"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673074"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Często zadawane pytania dotyczące tworzenia kopii zapasowych plików i folderów
 
@@ -149,7 +149,7 @@ Folder pamięci podręcznej i dysk VHD metadanych nie mają wymaganych atrybutó
 
 ### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-for-backup"></a>Czy istnieje sposób dostosowania przepustowości używanej do tworzenia kopii zapasowych?
 
-Tak, możesz użyć opcji **Zmień właściwości** w agencie Mars, aby dostosować przepustowość i chronometraż. [Dowiedz się więcej](backup-configure-vault.md#enable-network-throttling).
+Tak, możesz użyć opcji **Zmień właściwości** w agencie Mars, aby dostosować przepustowość i chronometraż. [Dowiedz się więcej](backup-windows-with-mars-agent.md#enable-network-throttling).
 
 ## <a name="restore"></a>Przywracanie
 

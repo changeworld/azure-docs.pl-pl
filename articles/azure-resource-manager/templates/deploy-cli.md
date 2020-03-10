@@ -3,12 +3,12 @@ title: Wdrażanie zasobów przy użyciu interfejsu wiersza polecenia platformy A
 description: Użyj Azure Resource Manager i interfejsu wiersza polecenia platformy Azure, aby wdrożyć zasoby na platformie Azure. Zasoby są zdefiniowane w szablonie usługi Resource Manager.
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: 64f60a6e15a0c51e5ee506340c064804f7588693
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 17307b1657afc133a7e1b1d7714363329573e48c
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250656"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945990"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Deploy resources with Resource Manager templates and Azure CLI (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i interfejsu wiersza polecenia platformy Azure)
 
@@ -24,13 +24,13 @@ Wdrożenie można określić w ramach subskrypcji platformy Azure lub grupy zaso
 
 Aby wdrożyć w **grupie zasobów**, użyj polecenie [AZ Group Deployment Create](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create):
 
-```azurecli
+```azurecli-interactive
 az group deployment create --resource-group <resource-group-name> --template-file <path-to-template>
 ```
 
 Aby wdrożyć w **ramach subskrypcji**, użyj polecenie [AZ Deployment Create](/cli/azure/deployment?view=azure-cli-latest#az-deployment-create):
 
-```azurecli
+```azurecli-interactive
 az deployment create --location <location> --template-file <path-to-template>
 ```
 
@@ -103,7 +103,7 @@ Aby przekazać wartości parametrów, można użyć parametrów wbudowanych lub 
 
 Aby przekazać parametry wbudowane, podaj wartości w `parameters`. Na przykład, aby przekazać ciąg i tablicę do szablonu, jest powłoką bash, użyj:
 
-```azurecli
+```azurecli-interactive
 az group deployment create \
   --resource-group testgroup \
   --template-file demotemplate.json \
@@ -114,7 +114,7 @@ Jeśli używasz interfejsu wiersza polecenia platformy Azure z wierszem poleceń
 
 Możesz również pobrać zawartość pliku i podać tę zawartość jako parametr wbudowany.
 
-```azurecli
+```azurecli-interactive
 az group deployment create \
   --resource-group testgroup \
   --template-file demotemplate.json \

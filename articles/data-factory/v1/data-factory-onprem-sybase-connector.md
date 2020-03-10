@@ -13,11 +13,11 @@ ms.date: 02/02/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: cefa0c15dd50f95780034dcb63f888a2e1c6b65e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929036"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387444"
 ---
 # <a name="move-data-from-sybase-using-azure-data-factory"></a>Przenoszenie danych z programu Sybase przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -48,7 +48,7 @@ Obsługiwane są oprogramowanie SAP Sybase SQL wszędzie (ASA) w wersji 16 lub n
 Można utworzyć potok za pomocą działania kopiowania, które przenosi dane z lokalnego magazynu danych Cassandra przy użyciu różnych narzędzi/interfejsów API. 
 
 - Najprostszym sposobem utworzenia potoku jest użycie **Kreatora kopiowania**. Zobacz [Samouczek: Tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) na potrzeby szybkiego instruktażu dotyczącego tworzenia potoku przy użyciu Kreatora kopiowania danych. 
-- Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania. 
+- Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Aby uzyskać instrukcje krok po kroku dotyczące tworzenia potoku za pomocą działania kopiowania, zobacz [Samouczek dotyczący działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
 
 Niezależnie od tego, czy używasz narzędzi, czy interfejsów API, wykonaj następujące kroki, aby utworzyć potok służący do przenoszenia danych ze źródłowego magazynu danych do magazynu danych ujścia:
 
@@ -65,10 +65,10 @@ Poniższa tabela zawiera opis elementów JSON specyficznych dla połączonej us�
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| type |Właściwość Type musi mieć wartość: **OnPremisesSybase** |Tak |
-| serwer |Nazwa serwera programu Sybase. |Tak |
+| typ |Właściwość Type musi mieć wartość: **OnPremisesSybase** |Tak |
+| zarządzania |Nazwa serwera programu Sybase. |Tak |
 | baza danych |Nazwa bazy danych programu Sybase. |Tak |
-| schema |Nazwa schematu w bazie danych programu. |Nie |
+| schemat |Nazwa schematu w bazie danych programu. |Nie |
 | authenticationType |Typ uwierzytelniania używany do nawiązywania połączenia z bazą danych programu Sybase. Możliwe wartości to: Anonymous, Basic i Windows. |Tak |
 | nazwa użytkownika |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowego lub systemu Windows. |Nie |
 | hasło |Określ hasło dla konta użytkownika określonego dla nazwy użytkownika. |Nie |
@@ -92,7 +92,7 @@ Gdy źródłem jest typ **RelationalSource** (w tym Sybase), w sekcji **typeProp
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| query |Użyj zapytania niestandardowego do odczytywania danych. |Ciąg zapytania SQL. Na przykład: select * from MyTable. |Nie (Jeśli określono element **TableName** **zestawu danych** ) |
+| zapytanie |Użyj zapytania niestandardowego do odczytywania danych. |Ciąg zapytania SQL. Na przykład: select * from MyTable. |Nie (Jeśli określono element **TableName** **zestawu danych** ) |
 
 
 ## <a name="json-example-copy-data-from-sybase-to-azure-blob"></a>Przykład JSON: kopiowanie danych z programu Sybase do obiektu blob platformy Azure

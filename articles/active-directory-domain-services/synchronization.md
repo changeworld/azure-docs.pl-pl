@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
 ms.openlocfilehash: 7e0e904b182a57a51b5d76f0acebc13bce5902b2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378501"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944429"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>Jak obiekty i poświadczenia są synchronizowane w Azure AD Domain Servicesej domenie zarządzanej
 
@@ -65,7 +65,7 @@ W poniższej tabeli przedstawiono, w jaki sposób konkretne atrybuty obiektów u
 | facsimileTelephoneNumber |facsimileTelephoneNumber |
 | givenName |givenName |
 | Stanowisko |title |
-| mail (poczta) |mail (poczta) |
+| poczta |poczta |
 | mailNickname |msDS-AzureADMailNickname |
 | mailNickname |SAMAccountName (czasami może być generowane automatycznie) |
 | Telefon komórkowy |Telefon komórkowy |
@@ -89,7 +89,7 @@ W poniższej tabeli przedstawiono, w jaki sposób konkretne atrybuty obiektów g
 |:--- |:--- |
 | displayName |displayName |
 | displayName |SAMAccountName (czasami może być generowane automatycznie) |
-| mail (poczta) |mail (poczta) |
+| poczta |poczta |
 | mailNickname |msDS-AzureADMailNickname |
 | obiektu |msDS-AzureADObjectId |
 | onPremiseSecurityIdentifier |Skopiowano element SIDHistory |

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: cherylmc
 ms.openlocfilehash: 5d80cb2f2ed844126d1e9311151e6c53fcb11840
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894866"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391264"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Konfigurowanie połączenia typu punkt-lokacja przy użyciu uwierzytelniania certyfikatu (wersja klasyczna)
 
@@ -22,7 +22,7 @@ W tym artykule pokazano, jak utworzyć sieć wirtualną z połączeniem typu pun
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
-> * [Program PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
+> * [PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
 > * [Portal Azure (klasyczny)](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
 >
 
@@ -79,7 +79,7 @@ Przed rozpoczęciem sprawdź, czy masz subskrypcję platformy Azure. Jeśli nie 
 
 ### <a name="part-1-create-a-virtual-network"></a>Część 1. Tworzenie sieci wirtualnej
 
-Jeśli nie masz jeszcze sieci wirtualnej, utwórz ją. Zamieszczone zrzuty ekranu są przykładowe. Przedstawione na nich wartości należy zastąpić własnymi. Aby utworzyć sieć wirtualną przy użyciu witryny Azure Portal, wykonaj poniższe kroki:
+Jeśli nie masz jeszcze sieci wirtualnej, utwórz ją. Zamieszczone zrzuty ekranu są przykładowe. Przedstawione wartości należy zastąpić własnymi. Aby utworzyć sieć wirtualną przy użyciu witryny Azure Portal, wykonaj poniższe kroki:
 
 1. W menu [Azure Portal](https://portal.azure.com) lub na stronie **głównej** wybierz pozycję **Utwórz zasób**. Zostanie otwarta strona **Nowy**.
 
@@ -140,7 +140,7 @@ W tym kroku tworzona jest podsieć bramy i brama o dynamicznym routingu. W klasy
 
 Na platformie Azure certyfikaty są używane do uwierzytelniania klientów sieci VPN w obrębie sieci VPN typu punkt-lokacja. Informacje o kluczu publicznym certyfikatu głównego należy przekazać na platformę Azure. Klucz publiczny jest wtedy uważany za *zaufany*. Certyfikaty klienta muszą zostać wygenerowane na podstawie zaufanego certyfikatu głównego, a następnie zainstalowane na każdym komputerze klienckim w magazynie certyfikatów Certificates-Current User\Personal\Certificates. Certyfikat jest używany do uwierzytelniania klienta, gdy inicjuje on połączenie z siecią wirtualną. 
 
-Jeśli używasz certyfikatów z podpisem własnym, musisz je utworzyć przy użyciu określonych parametrów. Certyfikat z podpisem własnym możesz utworzyć przy użyciu polecenia [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md) lub instrukcji dotyczących [środowiska PowerShell i systemu Windows 10](vpn-gateway-certificates-point-to-site.md). Ważne jest, aby wykonać kroki opisane w tych instrukcjach w przypadku używania certyfikatów głównych z podpisem własnym i generowania certyfikatów klienta na podstawie certyfikatu głównego z podpisem własnym. W przeciwnym razie utworzone przez Ciebie certyfikaty nie będą zgodne z połączeniami typu punkt-lokacja i zostanie wyświetlony błąd połączenia.
+Jeśli używasz certyfikatów z podpisem własnym, musisz je utworzyć przy użyciu określonych parametrów. Certyfikat z podpisem własnym możesz utworzyć przy użyciu polecenia [MakeCert](vpn-gateway-certificates-point-to-site.md) lub instrukcji dotyczących [środowiska PowerShell i systemu Windows 10](vpn-gateway-certificates-point-to-site-makecert.md). Ważne jest, aby wykonać kroki opisane w tych instrukcjach w przypadku używania certyfikatów głównych z podpisem własnym i generowania certyfikatów klienta na podstawie certyfikatu głównego z podpisem własnym. W przeciwnym razie utworzone przez Ciebie certyfikaty nie będą zgodne z połączeniami typu punkt-lokacja i zostanie wyświetlony błąd połączenia.
 
 ### <a name="acquire-the-public-key-cer-for-the-root-certificate"></a>Uzyskiwanie klucza publicznego (pliku cer) dla certyfikatu głównego
 
@@ -175,7 +175,7 @@ Po utworzeniu bramy przekaż plik cer (który zawiera informacje o kluczu public
 
 Aby nawiązać połączenie z siecią wirtualną przy użyciu połączenia sieci VPN typu punkt-lokacja, na każdym kliencie trzeba zainstalować pakiet do konfiguracji natywnego klienta sieci VPN systemu Windows. Pakiet konfiguracji powoduje skonfigurowanie natywnego klienta sieci VPN systemu Windows za pomocą ustawień koniecznych do łączenia się z siecią wirtualną.
 
-Tego samego pakietu konfiguracji klienta VPN można użyć na każdym komputerze klienckim, o ile wersja jest zgodna z architekturą dla klienta. Lista obsługiwanych systemów operacyjnych klientów znajduje się w sekcji [Często zadawane pytania dotyczące połączeń typu punkt-lokacja](#point-to-site-faq).
+Tego samego pakietu konfiguracyjnego klienta VPN można użyć na każdym komputerze klienckim, o ile wersja jest zgodna z architekturą dla klienta. Lista obsługiwanych systemów operacyjnych klientów znajduje się w sekcji [Często zadawane pytania dotyczące połączeń typu punkt-lokacja](#point-to-site-faq).
 
 ### <a name="generate-and-install-a-vpn-client-configuration-package"></a>Generowanie i instalowanie pakietu konfiguracji klienta sieci VPN
 
@@ -186,7 +186,7 @@ Tego samego pakietu konfiguracji klienta VPN można użyć na każdym komputerze
    * Dla klientów 64-bitowych wybierz pakiet **Klient sieci VPN (64-bitowy)** .
    * Dla klientów 32-bitowych wybierz pakiet **Klient sieci VPN (32-bitowy)** .
 
-   ![Pobieranie pakietu konfiguracyjnego klienta VPN](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/dlclient.png)
+   ![Pobieranie pakietu konfiguracji klienta VPN](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/dlclient.png)
 
 3. Gdy pakiet zostanie wygenerowany, pobierz go, a następnie zainstaluj na komputerze klienckim. Jeśli zostanie wyświetlone okno podręczne SmartScreen, wybierz pozycję **Więcej informacji**, a następnie pozycję **Uruchom mimo to**. Możesz także zapisać pakiet w celu zainstalowania go na innych komputerach klienckich.
 

@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.openlocfilehash: 3d9dec0065bb62821fcedcbc4f6e5b578c061caf
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934558"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386326"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informacje dotyczące korzystania z usługi HDInsight w systemie Linux
 
@@ -199,8 +199,8 @@ W przypadku korzystania z __usługi Azure Storage__zobacz następujące linki, a
 
 Jeśli używasz __Azure Data Lake Storage__, zobacz następujące linki, aby poznać sposoby dostępu do danych:
 
-* [Przeglądarka internetowa](../data-lake-store/data-lake-store-get-started-portal.md)
-* [Program PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)
+* [Przeglądarka sieci Web](../data-lake-store/data-lake-store-get-started-portal.md)
+* [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)
 * [Interfejs wiersza polecenia platformy Azure](../data-lake-store/data-lake-store-get-started-cli-2.0.md)
 * [Interfejs API REST usługi WebHDFS](../data-lake-store/data-lake-store-get-started-rest-api.md)
 * [Narzędzia Data Lake Tools for Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504)

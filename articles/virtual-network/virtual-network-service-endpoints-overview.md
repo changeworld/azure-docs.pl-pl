@@ -14,11 +14,11 @@ ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
 ms.openlocfilehash: 72c2c90f7a71bd9bf251adb492168fa5d2baa60a
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74378691"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380137"
 ---
 # <a name="virtual-network-service-endpoints"></a>Punkty końcowe usługi dla sieci wirtualnej
 
@@ -80,7 +80,7 @@ Punkty końcowe usługi oferują następujące korzyści:
 
 ![Zabezpieczanie usług platformy Azure w sieciach wirtualnych](./media/virtual-network-service-endpoints-overview/VNet_Service_Endpoints_Overview.png)
 
-### <a name="configuration"></a>Konfigurowanie
+### <a name="configuration"></a>Konfiguracja
 
 - Skonfiguruj punkty końcowe usługi w podsieci w sieci wirtualnej. Punkty końcowe współpracują z wystąpieniami obliczeniowymi dowolnego typu uruchomionymi w danej podsieci.
 - W podsieci można skonfigurować wiele punktów końcowych usługi dla wszystkich obsługiwanych usług platformy Azure (na przykład Azure Storage lub Azure SQL Database).
@@ -119,7 +119,7 @@ Po skonfigurowaniu punktów końcowych usługi do określonej usługi Sprawdź, 
 >[!NOTE]
 > Trasy punktu końcowego usługi zastępują trasy BGP lub UDR dla dopasowania prefiksu adresu usługi platformy Azure. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z obowiązującymi trasami](diagnose-network-routing-problem.md).
 
-## <a name="provisioning"></a>Inicjowanie obsługi
+## <a name="provisioning"></a>Aprowizacja
 
 Punkty końcowe usługi można konfigurować w sieciach wirtualnych niezależnie od użytkownika z dostępem do zapisu w sieci wirtualnej. Aby zabezpieczyć zasoby usługi platformy Azure w sieci wirtualnej, użytkownik musi mieć uprawnienia do *witryny Microsoft. Network/virtualNetworks/Subnets/joinViaServiceEndpoint/Action* dla dodanych podsieci. Wbudowane role administratora usługi domyślnie obejmują to uprawnienie. Uprawnienia można modyfikować, tworząc role niestandardowe.
 

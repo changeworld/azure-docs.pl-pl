@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: kumud
 ms.openlocfilehash: fe8ea4dfb4de45a1e09648ac51fe8d74f93a6b9e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979616"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356655"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Tworzenie, zmienianie lub usuwanie tabeli tras
 
@@ -30,7 +30,7 @@ Platforma Azure automatycznie kieruje ruchem między podsieciami platformy Azure
 Przed wykonaniem kroków opisanych w sekcji tego artykułu wykonaj następujące zadania:
 
 * Jeśli nie masz jeszcze konta platformy Azure, Utwórz [konto bezpłatnej wersji próbnej](https://azure.microsoft.com/free).<br>
-* Jeśli używasz portalu, Otwórz https://portal.azure.com i zaloguj się przy użyciu konta platformy Azure.<br>
+* Jeśli używasz portalu, Otwórz https://portal.azure.comi zaloguj się przy użyciu konta platformy Azure.<br>
 * W przypadku wykonywania zadań w tym artykule przy użyciu poleceń programu PowerShell uruchom polecenia w [Azure Cloud Shell](https://shell.azure.com/powershell)lub przez uruchomienie programu PowerShell z komputera. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Ten samouczek wymaga modułu Azure PowerShell w wersji 1.0.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure.<br>
 * W przypadku korzystania z poleceń interfejsu wiersza polecenia (CLI) platformy Azure w celu wykonania zadań w tym artykule Uruchom polecenia w [Azure Cloud Shell](https://shell.azure.com/bash)lub przez uruchomienie interfejsu wiersza polecenia na komputerze. Ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.31 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia platformy Azure lokalnie, musisz również uruchomić `az login`, aby utworzyć połączenie z platformą Azure.
 
@@ -123,7 +123,7 @@ Jeśli tabela tras jest skojarzona z podsieciami, nie można jej usunąć. [Usu�
 
 1. W polu wyszukiwania w górnej części portalu wprowadź *tabele tras* w polu wyszukiwania. Gdy **tabele tras** są wyświetlane w wynikach wyszukiwania, wybierz je.
 1. Wybierz pozycję **...** znajdującą się po prawej stronie tabeli tras, która ma zostać usunięta.
-1. Wybierz pozycję **Usuń**, a następnie wybierz pozycję **Tak**.
+1. Wybierz pozycję **Usuń**, a następnie wybierz pozycję **tak**.
 
 ### <a name="delete-a-route-table---commands"></a>Usuwanie tabeli tras — polecenia
 
@@ -236,7 +236,7 @@ Możesz określić typ następnego przeskoku między maszyną wirtualną i adres
 
 Aby wykonać zadania dotyczące tabel tras i tras, Twoje konto musi być przypisane do roli [współautor sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) lub do roli [niestandardowej](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , do której przypisano odpowiednie działania wymienione w poniższej tabeli:
 
-| Działanie                                                          |   Nazwa                                                  |
+| Akcja                                                          |   Name (Nazwa)                                                  |
 |--------------------------------------------------------------   |   -------------------------------------------           |
 | Microsoft.Network/routeTables/read                              |   Odczytaj tabelę tras                                    |
 | Microsoft.Network/routeTables/write                             |   Tworzenie lub aktualizowanie tabeli tras                        |

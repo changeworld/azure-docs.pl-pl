@@ -9,11 +9,11 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 741d4718b5e6140f4ddd2bb22e1a2ec830763176
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74029944"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389632"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Konfigurowanie odzyskiwania po awarii lokalnych maszyn wirtualnych funkcji Hyper-V na platformie Azure
 
@@ -49,7 +49,7 @@ Jest to trzeci samouczek z tej serii. Przyjęto założenie, że zadania został
 4. W obszarze **gdzie chcesz replikować maszyny?** wybierz pozycję **na platformie Azure**.
 5. W obszarze **czy maszyny są zwirtualizowane?** wybierz pozycję **tak, używając funkcji Hyper-V**.
 6. Czy w programie **System Center VMM jest używany do zarządzania hostami funkcji Hyper-V?** wybierz pozycję **nie**.
-7. Wybierz **OK**.
+7. Kliknij przycisk **OK**.
 
     ![Cel replikacji](./media/hyper-v-azure-tutorial/replication-goal.png)
 

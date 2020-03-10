@@ -17,11 +17,11 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 446091263596a1fd5503f38c6a60316f9b0b6843
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598514"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395295"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -254,7 +254,7 @@ Pełna krajobraz z dwoma systemami SAP wysokiej dostępności będzie wyglądać
 
 Aby przygotować infrastrukturę, można zainstalować dodatkowe wystąpienie SAP ASCS/SCS z następującymi parametrami:
 
-| Nazwa parametru | Value |
+| Nazwa parametru | Wartość |
 | --- | --- |
 | SAP ASCS/SCS SID |PR1-lb-ASCS |
 | Wewnętrzny moduł równoważenia obciążenia SAP DBMS | PR5 |

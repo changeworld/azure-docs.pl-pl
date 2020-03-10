@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: db7b2787df68e5e9baadddc7e6e6159cfff26097
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 69627c961d9224a124fda09f40901f837d627281
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887244"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78932654"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Planowanie pojemności klastrów usługi HDInsight
 
@@ -56,7 +56,7 @@ Klaster może uzyskać dostęp do kombinacji różnych kont magazynu. Typowe prz
 * Gdy chcesz wprowadzić dane, przekazano już do kontenera obiektów BLOB dostępnego w klastrze.
 * Jeśli chcesz wyizolować różne części magazynu z powodu zabezpieczeń lub uprościć administrację.
 
-W przypadku klastra z 48 węzłami zalecamy od 4 do 8 kont magazynu. Mimo że może już być wystarczająca ilość miejsca w magazynie, każde konto magazynu oferuje dodatkową przepustowość sieci dla węzłów obliczeniowych. Jeśli masz wiele kont magazynu, użyj nazwy losowej dla każdego konta magazynu, bez prefiksu. Celem przypadkowego nazewnictwa jest zmniejszenie ryzyka związanego z wąskimi gardłami magazynowania (ograniczanie) lub awariami trybu wspólnego na wszystkich kontach. Aby uzyskać lepszą wydajność, należy użyć tylko jednego kontenera na konto magazynu.
+Aby uzyskać lepszą wydajność, należy użyć tylko jednego kontenera na konto magazynu.
 
 ## <a name="choose-a-cluster-type"></a>Wybierz typ klastra
 
@@ -96,7 +96,7 @@ Po określeniu rozmiaru, skali i typu docelowej maszyny wirtualnej klastra spraw
 
 Aby sprawdzić dostępne rdzenie, wykonaj następujące czynności:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Azure portal](https://portal.azure.com/).
 2. Przejdź do strony **Przegląd** klastra usługi HDInsight. 
 3. W menu po lewej stronie kliknij pozycję **limity przydziałów**.
 
@@ -104,7 +104,7 @@ Aby sprawdzić dostępne rdzenie, wykonaj następujące czynności:
 
 Jeśli musisz zażądać zwiększenia limitu przydziału, wykonaj następujące czynności:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Azure portal](https://portal.azure.com/).
 1. Wybierz pozycję **Pomoc i obsługa techniczna** w lewej dolnej części strony.
 1. Wybierz pozycję **Nowe żądanie obsługi**.
 1. Na stronie **nowe żądanie obsługi** w obszarze **podstawowe** karty wybierz następujące opcje:

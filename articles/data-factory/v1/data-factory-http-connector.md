@@ -12,11 +12,11 @@ ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: e668f44bbc3d2e381edeb80c568a41355584a4ee
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74924182"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387336"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Przenoszenie danych ze źródła HTTP przy użyciu Azure Data Factory
 
@@ -38,7 +38,7 @@ Za pomocą tego łącznika protokołu HTTP można pobrać dane z *chmury i lokal
 
 Podczas kopiowania danych z lokalnego punktu końcowego HTTP należy zainstalować bramę Zarządzanie danymi w środowisku lokalnym lub na maszynie wirtualnej platformy Azure. Aby dowiedzieć się więcej na temat bramy Zarządzanie danymi i uzyskać instrukcje krok po kroku dotyczące konfigurowania bramy, zobacz temat [przeniesienie danych między lokalizacjami lokalnymi i chmurą](data-factory-move-data-between-onprem-and-cloud.md).
 
-## <a name="get-started"></a>Rozpocznij
+## <a name="get-started"></a>Rozpoczynanie pracy
 
 Można utworzyć potok z działaniem kopiowania, aby przenieść dane ze źródła HTTP przy użyciu różnych narzędzi lub interfejsów API:
 
@@ -52,7 +52,7 @@ W poniższej tabeli opisano elementy JSON, które są specyficzne dla połączon
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| type | Właściwość **Type** musi być ustawiona na wartość **http**. | Tak |
+| typ | Właściwość **Type** musi być ustawiona na wartość **http**. | Tak |
 | url | Podstawowy adres URL serwera sieci Web. | Tak |
 | authenticationType | Określa typ uwierzytelniania. Dozwolone wartości to **anonimowe**, **podstawowe**, **szyfrowane**, **Windows**i **ClientCertificate**. <br><br> Zapoznaj się z nowszymi sekcjami w tym artykule, aby uzyskać więcej właściwości i próbek JSON dla tych typów uwierzytelniania. | Tak |
 | enableServerCertificateValidation | Określa, czy włączyć sprawdzanie poprawności certyfikatu protokołu SSL serwera, jeśli źródłem jest serwer sieci Web HTTPS. Gdy serwer HTTPS używa certyfikatu z podpisem własnym, ustaw tę wartość na **false**. | Nie<br /> (wartość domyślna to **true**) |
@@ -159,13 +159,13 @@ Sekcja **typeProperties** jest inna dla każdego typu zestawu danych. Sekcja **t
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | **Typ** zestawu danych musi być ustawiony na wartość **http**. | Tak |
+| typ | **Typ** zestawu danych musi być ustawiony na wartość **http**. | Tak |
 | relativeUrl | Względny adres URL do zasobu, który zawiera dane. Jeśli ścieżka nie jest określona, używana jest tylko adres URL określony w definicji połączonej usługi. <br><br> Aby utworzyć dynamiczny adres URL, można użyć [funkcji Data Factory i zmiennych systemowych](data-factory-functions-variables.md). Przykład: **relativeUrl**: **$ $Text. Format ("/My/Report? miesiąc = {0: rrrr}-{0: mm} & FMT = CSV", parametru slicestart)** . | Nie |
 | requestMethod | Metoda HTTP. Dozwolone wartości to **Get** i **post**. | Nie <br />(wartość domyślna to **Get**) |
 | additionalHeaders | Dodatkowe nagłówki żądań HTTP. | Nie |
 | Elemencie requestbody | Treść żądania HTTP. | Nie |
 | format | Jeśli chcesz *pobrać dane z punktu końcowego http, tak jakby się* nie przeanalizować, Pomiń ustawienie **formatu** . <br><br> Jeśli chcesz przeanalizować zawartość odpowiedzi HTTP podczas kopiowania, obsługiwane są następujące typy formatów: **TextFormat**, **formatu jsonformat**, **AvroFormat**, **OrcFormat**i **ParquetFormat**. Aby uzyskać więcej informacji, zobacz [format tekstowy](data-factory-supported-file-and-compression-formats.md#text-format), [Format JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Format Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [Format Orc](data-factory-supported-file-and-compression-formats.md#orc-format)i [Format Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format). |Nie |
-| compression | Określ typ i poziom kompresji danych. Obsługiwane typy: **gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**. Obsługiwane poziomy: **optymalne** i **najszybszy**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
+| kompresja | Określ typ i poziom kompresji danych. Obsługiwane typy: **gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**. Obsługiwane poziomy: **optymalne** i **najszybszy**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
 
 **Przykład: użycie metody GET (default)**
 

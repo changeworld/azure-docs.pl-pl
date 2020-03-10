@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
 ms.openlocfilehash: 1a3651f82d7818ad105c0a8a7b5fd9fcf073b4a1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982551"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387850"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-powershell"></a>Przyrostowe ładowanie danych z bazy danych Azure SQL Database do usługi Azure Blob Storage przy użyciu programu PowerShell
 
@@ -33,7 +33,7 @@ Ten samouczek obejmuje następujące procedury:
 > * Uruchamianie potoku.
 > * Monitorowanie uruchomienia potoku.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Diagram ogólny rozwiązania wygląda następująco:
 
 ![Przyrostowe ładowanie danych](media/tutorial-Incrementally-copy-powershell/incrementally-load.png)
@@ -259,7 +259,7 @@ Połączone usługi tworzy się w fabryce danych w celu połączenia magazynów 
     ProvisioningState :
     ```
 
-## <a name="create-datasets"></a>Utwórz zestawy danych
+## <a name="create-datasets"></a>Tworzenie zestawów danych
 W tym kroku utworzysz zestawy danych reprezentujące dane źródłowe i ujścia.
 
 ### <a name="create-a-source-dataset"></a>Tworzenie zestawu danych źródłowych

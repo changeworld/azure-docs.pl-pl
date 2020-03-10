@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
 ms.openlocfilehash: 13d642597fdf5d0eae6c6fd4f0cab16181f033c2
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383957"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390963"
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Twórz i Zarządzaj maszynami wirtualnymi z możliwością domagania w Azure DevTest Labs
 Możesz dodać maszynę wirtualną z możliwością przechodzenia do laboratorium w podobny sposób, aby [dodać standardową maszynę wirtualną](devtest-lab-add-vm.md) — od *podstawowej* , która jest [obrazem niestandardowym](devtest-lab-create-template.md), [formułą](devtest-lab-manage-formulas.md)lub [obrazem witryny Marketplace](devtest-lab-configure-marketplace-images.md). Ten samouczek przeprowadzi Cię przez proces używania Azure Portal, aby dodać maszynę wirtualną do laboratorium w środowisku DevTest Labs i wyświetlić procesy, do których użytkownik może zatwierdzić i odrościć maszynę wirtualną.
 
 ## <a name="steps-to-add-a-claimable-vm-to-a-lab-in-azure-devtest-labs"></a>Kroki umożliwiające dodanie maszyny wirtualnej z zastrzeżeniem do laboratorium w Azure DevTest Labs
-1. Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Zaloguj się do [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Wybierz pozycję **wszystkie usługi**, a następnie wybierz pozycję **DevTest Labs** w sekcji **DEVOPS** . Jeśli wybierzesz pozycję * (gwiazdka) obok pozycji **DevTest Labs** w sekcji **DEVOPS** . Ta akcja dodaje **DevTest Labs** do menu nawigacji po lewej stronie, aby można było łatwo uzyskać do niego dostęp. Następnie możesz wybrać pozycję **DevTest Labs** w menu nawigacji po lewej stronie.
 
     ![Wszystkie usługi — wybierz pozycję DevTest Labs](./media/devtest-lab-create-lab/all-services-select.png)

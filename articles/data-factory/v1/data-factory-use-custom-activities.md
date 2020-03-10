@@ -13,11 +13,11 @@ ms.author: abnarain
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: 54cb06f1c77ab68818d8531b57d6eb936deda8d7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438822"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385355"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Korzystanie z działań niestandardowych w potoku usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -70,7 +70,7 @@ Aby zapoznać się z samouczkiem, Utwórz konto Azure Batch z pulą maszyn wirtu
    5. Kliknij przycisk **OK**, aby utworzyć pulę.
    6. Zanotuj **Identyfikator** puli.
 
-### <a name="high-level-steps"></a>Kroki ogólne
+### <a name="high-level-steps"></a>Ogólne kroki
 Poniżej przedstawiono dwa kroki wysokiego poziomu, które należy wykonać w ramach tego przewodnika:
 
 1. Utwórz niestandardowe działanie, które zawiera prostą logikę przetwarzania i przekształcania danych.
@@ -377,7 +377,7 @@ Metoda zwraca słownik, który może służyć do łańcucha działań niestanda
     > [!IMPORTANT]
     > Wszystkie pliki w archiwum ZIP działania niestandardowego muszą znajdować się na **najwyższym poziomie**, bez podfolderów.
 
-    ![Wyjściowe pliki binarne](./media/data-factory-use-custom-activities/Binaries.png)
+    ![Binarne pliki wyjściowe](./media/data-factory-use-custom-activities/Binaries.png)
 14. Utwórz kontener obiektów BLOB o nazwie **customactivitycontainer** , jeśli jeszcze nie istnieje.
 15. Przekaż plik. zip jako obiekt BLOB do customactivitycontainer w **ogólnym** magazynie obiektów blob platformy Azure (nie gorącą/chłodny magazyn obiektów BLOB), który jest określany przez AzureStorageLinkedService.
 
@@ -1021,7 +1021,7 @@ namespace DataFactoryAPITestApp
 Przykład [środowiska Azure Data Factory-Local](https://github.com/gbrueckl/Azure.DataFactory.LocalEnvironment) w witrynie GitHub zawiera narzędzie, które pozwala debugować niestandardowe działania programu .NET w programie Visual Studio.
 
 ## <a name="sample-custom-activities-on-github"></a>Przykładowe działania niestandardowe w serwisie GitHub
-| Przykład | Jakie działanie niestandardowe wykonuje |
+| Sample | Jakie działanie niestandardowe wykonuje |
 | --- | --- |
 | Narzędzie do [pobierania danych http](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample). |Pobiera dane z punktu końcowego HTTP do platformy Azure Blob Storage przy C# użyciu działania niestandardowego w Data Factory. |
 | [Przykład analiza tonacji Twitter](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Wywołuje model Azure Machine Learning Studio i tonacji analizę, ocenianie, prognozowanie itp. |

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 tags: connectors
 ms.openlocfilehash: 0949e50c5a4993dfbcc83b41ef01d2cea82350a8
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76900269"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386521"
 ---
 # <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>Odbieraj przychodzące wywołania HTTPS i odpowiadaj na nie przy użyciu Azure Logic Apps
 
@@ -48,7 +48,7 @@ Za pomocą [Azure Logic Apps](../logic-apps/logic-apps-overview.md) i wbudowaneg
 
 Ten wbudowany wyzwalacz tworzy ręcznie możliwy do przełączenia punkt końcowy HTTPS, który może odbierać *tylko* przychodzące żądania HTTPS. Po wystąpieniu tego zdarzenia wyzwalacz uruchamia i uruchamia aplikację logiki. Aby uzyskać więcej informacji na temat podstawowej definicji JSON wyzwalacza i sposobu wywoływania tego wyzwalacza, zobacz [Typ wyzwalacza żądania](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) oraz [przepływy pracy wywołania, wyzwalacza lub zagnieżdżania z punktami końcowymi http w Azure Logic Apps](../logic-apps/logic-apps-http-endpoint.md).
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com). Tworzenia pustej aplikacji logiki.
+1. Zaloguj się do [Azure portal](https://portal.azure.com). Tworzenia pustej aplikacji logiki.
 
 1. Gdy zostanie otwarty projektant aplikacji logiki, w polu wyszukiwania wprowadź ciąg "żądanie HTTP" jako filtr. Z listy Wyzwalacze wybierz wyzwalacz **po odebraniu żądania HTTP** , który jest pierwszym krokiem w przepływie pracy aplikacji logiki.
 

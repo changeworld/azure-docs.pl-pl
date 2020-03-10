@@ -8,11 +8,11 @@ ms.author: bwren
 ms.date: 01/09/2018
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 999177f821b98adfa015520252bd3323d0892533
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77662541"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395625"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Tworzenie pliku rozwiązania do zarządzania na platformie Azure (wersja zapoznawcza)
 > [!NOTE]
@@ -63,7 +63,7 @@ W poniższej tabeli opisano atrybuty parametru.
 
 | Atrybut | Opis |
 |:--- |:--- |
-| type |Typ danych dla parametru. Kontrolka wejściowa wyświetlana dla użytkownika zależy od typu danych.<br><br>pole listy rozwijanej bool<br>ciąg — pole tekstowe<br>pole tekstowe int<br>SecureString — pole hasła<br> |
+| typ |Typ danych dla parametru. Kontrolka wejściowa wyświetlana dla użytkownika zależy od typu danych.<br><br>pole listy rozwijanej bool<br>ciąg — pole tekstowe<br>pole tekstowe int<br>SecureString — pole hasła<br> |
 | category |Opcjonalna kategoria dla parametru.  Parametry w tej samej kategorii są grupowane razem. |
 | control |Dodatkowa funkcjonalność parametrów ciągu.<br><br>wyświetlana jest kontrolka DateTime-DateTime.<br>Identyfikator GUID — wartość GUID jest generowana automatycznie, a parametr nie jest wyświetlany. |
 | description |Opcjonalny opis parametru.  Wyświetlany w dymku informacyjnym obok parametru. |
@@ -217,9 +217,9 @@ Jednostka **planu** zasobu rozwiązania ma właściwości w poniższej tabeli.
 
 | Właściwość | Opis |
 |:--- |:--- |
-| name |Nazwa rozwiązania. |
-| version |Wersja rozwiązania określona przez autora. |
-| product |Unikatowy ciąg identyfikujący rozwiązanie. |
+| {1&gt;nazwa&lt;1} |Nazwa rozwiązania. |
+| wersja |Wersja rozwiązania określona przez autora. |
+| produkt |Unikatowy ciąg identyfikujący rozwiązanie. |
 | publisher |Wydawca rozwiązania. |
 
 

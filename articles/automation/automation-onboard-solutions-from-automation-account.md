@@ -5,18 +5,18 @@ services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: f61fdedcd3c910ef5d09685fea00473a83b321f1
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: cf82dddf281e8e6f1348884702e32330dee4781b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834284"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372947"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Dołączanie rozwiązań Update Management, Change Tracking i spisu
 
 Azure Automation udostępnia rozwiązania do zarządzania aktualizacjami zabezpieczeń systemu operacyjnego, śledzenia zmian i spisu, co jest zainstalowane na komputerach. Istnieje wiele sposobów na dołączenie maszyn, można dołączyć rozwiązanie [z maszyny wirtualnej](automation-onboard-solutions-from-vm.md), [przeglądać wiele maszyn](automation-onboard-solutions-from-browse.md), z poziomu konta usługi Automation lub przez [element Runbook](automation-onboard-solutions.md). W tym artykule opisano dołączanie tych rozwiązań z konta usługi Automation.
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do platformy Azure w witrynie https://portal.azure.com
 
@@ -35,11 +35,11 @@ Wybierz obszar roboczy Log Analytics i konto usługi Automation, a następnie kl
 
 Rozwiązanie Change Tracking and Inventory umożliwia [śledzenie zmian](automation-vm-change-tracking.md) i tworzenie [spisu](automation-vm-inventory.md) na maszynach wirtualnych. W tym kroku włączysz rozwiązanie na maszynie wirtualnej.
 
-Po zakończeniu powiadomienia o dołączeniu rozwiązania do śledzenia zmian i spisu kliknij pozycję **Update Management** w obszarze **ZARZĄDZANIE KONFIGURACJĄ**.
+Po zakończeniu powiadamiania o rozwiązaniu śledzenia zmian i spisu wybierz pozycję **Update Management** w obszarze **Update Management**.
 
-Rozwiązanie Update Management umożliwia zarządzanie aktualizacjami i poprawkami dla maszyn wirtualnych z systemem Windows platformy Azure. Można ocenić stan dostępnych aktualizacji, zaplanować instalację wymaganych aktualizacji i przejrzeć wyniki wdrażania, aby sprawdzić, czy aktualizacje zostały zastosowane pomyślnie do maszyny wirtualnej. Ta akcja umożliwiła rozwiązanie dla maszyny wirtualnej.
+Rozwiązanie Update Management umożliwia zarządzanie aktualizacjami i poprawkami dla maszyn wirtualnych platformy Azure i hybrydowych. Można ocenić stan dostępnych aktualizacji, zaplanować instalację wymaganych aktualizacji i przejrzeć wyniki wdrożenia w celu sprawdzenia, czy aktualizacje zostały pomyślnie zastosowane do nich.
 
-Wybierz pozycję **Update Management** w obszarze **Update Management**. Wybrany obszar roboczy Log Analytics jest tym samym obszarem roboczym, który jest używany w poprzednim kroku. Kliknij przycisk **Włącz**, aby dołączyć rozwiązanie Update management. Włączanie rozwiązania może trwać do 15 minut.
+Na stronie Włączanie rozwiązania wybrany obszar roboczy Log Analytics jest tym samym obszarem roboczym, który jest używany w poprzednim kroku. Kliknij pozycję **Włącz** , aby dołączyć Update Management rozwiązanie. Włączanie rozwiązania może trwać do 15 minut.
 
 ![Dołączanie rozwiązania aktualizacji](media/automation-onboard-solutions-from-automation-account/onboardsolutions2.png)
 
@@ -49,9 +49,9 @@ Każde rozwiązanie korzysta z konfiguracji zakresu w obszarze roboczym, aby kie
 
 Jeśli wybrany obszar roboczy nie ma jeszcze rozwiązań Update Management ani Change Tracking, zostaną utworzone następujące konfiguracje zakresów:
 
-* **MicrosoftDefaultScopeConfig-ChangeTracking**
+* **MicrosoftDefaultScopeConfig — śledzenia zmian**
 
-* **MicrosoftDefaultScopeConfig-Updates**
+* **MicrosoftDefaultScopeConfig — aktualizacje**
 
 Jeśli wybrany obszar roboczy ma już rozwiązanie, rozwiązanie nie zostanie jeszcze wdrożone i nie zostanie do niego dodana konfiguracja zakresu.
 
@@ -61,9 +61,9 @@ Po dodaniu komputera do Update Management lub rozwiązań Change Tracking i spis
 
 Przejdź do obszaru roboczego Log Analytics i wybierz pozycję **zapisane wyszukiwania** w obszarze **Ogólne**. Dwa zapisane wyszukiwania używane przez te rozwiązania można zobaczyć w poniższej tabeli:
 
-|Nazwa     |Kategoria  |Alias  |
+|Name (Nazwa)     |Kategoria  |Alias  |
 |---------|---------|---------|
-|MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
+|MicrosoftDefaultComputerGroup     |  Śledzenia zmian       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | Aktualizacje        | Updates__MicrosoftDefaultComputerGroup         |
 
 Wybierz opcję zapisane wyszukiwanie, aby wyświetlić zapytanie używane do wypełniania grupy. Na poniższej ilustracji przedstawiono zapytanie i jego wyniki:
@@ -133,7 +133,7 @@ Po usunięciu tych rozwiązań możesz wykonać następujące czynności, aby od
 
 Jeśli użyto rozwiązania Update Management, opcjonalnie możesz chcieć usunąć następujące elementy, które nie są już potrzebne po usunięciu rozwiązania.
 
-* Harmonogramy aktualizacji — każda z nich będzie mieć nazwy zgodne z utworzonymi wdrożeniami aktualizacji)
+* Harmonogramy aktualizacji — każda z nich będzie mieć nazwy zgodne z utworzonymi wdrożeniami aktualizacji.
 
 * Grupy hybrydowych procesów roboczych utworzone dla rozwiązania — każda z nich będzie podobna do maszyna1. contoso. com_9ceb8108-26c9-4051-b6b3-227600d715c8).
 

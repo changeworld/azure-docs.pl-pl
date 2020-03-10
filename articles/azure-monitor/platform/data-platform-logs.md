@@ -11,11 +11,11 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
 ms.openlocfilehash: 06b35fdcd9da333c3c9d94d41c84a2f25ede59ad
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77666569"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362163"
 ---
 # <a name="logs-in-azure-monitor"></a>Dzienniki w usłudze Azure Monitor
 
@@ -44,7 +44,7 @@ W poniższej tabeli wymieniono różne sposoby używania dzienników w Azure Mon
 |:---|:---|
 | Analiza | Użyj [log Analytics](../log-query/get-started-portal.md) w Azure Portal, aby napisać [zapytania dzienników](../log-query/log-query-overview.md) i interaktywnie przeanalizować dane dzienników przy użyciu zaawansowanego aparatu analizy Eksplorator danych.<br>Użyj [konsoli Application Insights Analytics](../app/analytics.md) w Azure Portal, aby napisać zapytania dziennika i interaktywnie przeanalizować dane dziennika z Application Insights. |
 | Wizualizacja | Przypnij wyniki zapytania jako tabele lub wykresy do [pulpitu nawigacyjnego platformy Azure](../../azure-portal/azure-portal-dashboards.md).<br>Utwórz [skoroszyt](../app/usage-workbooks.md) , aby połączyć się z wieloma zestawami danych w raporcie interaktywnym. <br>Eksportuj wyniki zapytania, aby [Power BI](powerbi.md) do używania różnych wizualizacji i udostępniania użytkownikom spoza platformy Azure.<br>Eksportuj wyniki zapytania do [Grafana](grafana-plugin.md) , aby wykorzystać jego pulpit nawigacyjny i połączyć się z innymi źródłami danych.|
-| Alerty | Skonfiguruj [regułę alertu dziennika](alerts-log.md) , która wysyła powiadomienie lub wykonuje [automatyczne działanie](action-groups.md) , gdy wyniki zapytania pasują do określonego wyniku.<br>Skonfiguruj [regułę alertu metryki](alerts-metric-logs.md) dla niektórych dzienników danych dziennika wyodrębnionych jako metryki. |
+| Alert | Skonfiguruj [regułę alertu dziennika](alerts-log.md) , która wysyła powiadomienie lub wykonuje [automatyczne działanie](action-groups.md) , gdy wyniki zapytania pasują do określonego wyniku.<br>Skonfiguruj [regułę alertu metryki](alerts-metric-logs.md) dla niektórych dzienników danych dziennika wyodrębnionych jako metryki. |
 | Odczytać | Uzyskiwanie dostępu do wyników zapytania dziennika z wiersza polecenia przy użyciu [interfejsu CLI platformy Azure](/cli/azure/ext/log-analytics/monitor/log-analytics).<br>Uzyskuj dostęp do wyników zapytania dziennika z wiersza polecenia przy użyciu [poleceń cmdlet programu PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights).<br>Uzyskiwanie dostępu do wyników zapytania dziennika z aplikacji niestandardowej przy użyciu [interfejsu API REST](https://dev.loganalytics.io/). |
 | Eksportowanie | Utwórz przepływ pracy w celu pobrania danych dziennika i skopiuj go do lokalizacji zewnętrznej przy użyciu [Logic Apps](~/articles/logic-apps/index.yml). |
 
@@ -121,7 +121,7 @@ Azure Monitor może zbierać dane dzienników z różnych źródeł zarówno w r
 | Interfejs API REST | Zapisuj dane w obszarze roboczym Log Analytics z dowolnego klienta REST. Aby uzyskać szczegółowe informacje [, zobacz Wysyłanie danych dzienników do Azure monitor z interfejsem API modułu zbierającego dane http](data-collector-api.md) .
 | Aplikacja logiki | Zapisuj dowolne dane w obszarze roboczym Log Analytics z przepływu pracy aplikacji logiki za pomocą akcji **modułu zbierającego dane log Analytics Azure** . |
 
-### <a name="security"></a>Bezpieczeństwo
+### <a name="security"></a>Zabezpieczenia
 
 | Dane | Opis |
 |:---|:---|

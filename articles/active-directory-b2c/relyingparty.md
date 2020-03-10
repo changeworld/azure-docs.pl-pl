@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5911f7235f1469fed460f173b808fbfdf9c853e8
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 90ac6f35cafbe63e8c6cdb77450089d00c0e3099
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78183877"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925523"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -102,9 +102,9 @@ Zasady *B2C_1A_signup_signin* :
 
 Element **DefaultUserJourney** zawiera następujący atrybut:
 
-| Atrybut | Wymagany | Opis |
+| Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| ReferenceId | Yes | Identyfikator podróży użytkownika w zasadach. Aby uzyskać więcej informacji, zobacz [podróże użytkownika](userjourneys.md) |
+| ReferenceId | Tak | Identyfikator podróży użytkownika w zasadach. Aby uzyskać więcej informacji, zobacz [podróże użytkownika](userjourneys.md) |
 
 ## <a name="userjourneybehaviors"></a>UserJourneyBehaviors
 
@@ -123,10 +123,10 @@ Element **UserJourneyBehaviors** zawiera następujące elementy:
 
 Element **SingleSignon** zawiera następujący atrybut:
 
-| Atrybut | Wymagany | Opis |
+| Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Zakres | Yes | Zakres zachowania logowania jednokrotnego. Możliwe wartości: `Suppressed`, `Tenant`, `Application`lub `Policy`. Wartość `Suppressed` wskazuje, że zachowanie jest pomijane. Na przykład w przypadku sesji logowania jednokrotnego dla użytkownika nie jest utrzymywana żadna sesja, a użytkownik jest zawsze monitowany o wybranie dostawcy tożsamości. Wartość `TrustFramework` wskazuje, że zachowanie jest stosowane dla wszystkich zasad w strukturze zaufania. Na przykład użytkownik przechodzenia przez dwie przejazdy zasad dla struktury zaufania nie jest monitowany o wybranie dostawcy tożsamości. Wartość `Tenant` wskazuje, że zachowanie jest stosowane do wszystkich zasad w dzierżawie. Na przykład użytkownik przechodzenia przez dwie przejazdy zasad dla dzierżawy nie jest monitowany o wybranie dostawcy tożsamości. Wartość `Application` wskazuje, że zachowanie jest stosowane do wszystkich zasad dla aplikacji wysyłającej żądanie. Na przykład użytkownik przechodzenia przez dwie przejazdy zasad dla aplikacji nie jest monitowany o wybranie dostawcy tożsamości. Wartość `Policy` wskazuje, że zachowanie dotyczy tylko zasad. Na przykład użytkownik przechodzący przez dwie przedziały zasad dla struktury zaufania jest monitowany o wybranie dostawcy tożsamości podczas przełączania między zasadami. |
-| KeepAliveInDays | Yes | Określa, jak długo użytkownik jest zalogowany. Ustawienie wartości 0 powoduje wyłączenie funkcji KMSI. Aby uzyskać więcej informacji, zobacz temat nie [wylogowuj mnie](custom-policy-keep-me-signed-in.md). |
+| Zakres | Tak | Zakres zachowania logowania jednokrotnego. Możliwe wartości: `Suppressed`, `Tenant`, `Application`lub `Policy`. Wartość `Suppressed` wskazuje, że zachowanie jest pomijane. Na przykład w przypadku sesji logowania jednokrotnego dla użytkownika nie jest utrzymywana żadna sesja, a użytkownik jest zawsze monitowany o wybranie dostawcy tożsamości. Wartość `TrustFramework` wskazuje, że zachowanie jest stosowane dla wszystkich zasad w strukturze zaufania. Na przykład użytkownik przechodzenia przez dwie przejazdy zasad dla struktury zaufania nie jest monitowany o wybranie dostawcy tożsamości. Wartość `Tenant` wskazuje, że zachowanie jest stosowane do wszystkich zasad w dzierżawie. Na przykład użytkownik przechodzenia przez dwie przejazdy zasad dla dzierżawy nie jest monitowany o wybranie dostawcy tożsamości. Wartość `Application` wskazuje, że zachowanie jest stosowane do wszystkich zasad dla aplikacji wysyłającej żądanie. Na przykład użytkownik przechodzenia przez dwie przejazdy zasad dla aplikacji nie jest monitowany o wybranie dostawcy tożsamości. Wartość `Policy` wskazuje, że zachowanie dotyczy tylko zasad. Na przykład użytkownik przechodzący przez dwie przedziały zasad dla struktury zaufania jest monitowany o wybranie dostawcy tożsamości podczas przełączania między zasadami. |
+| KeepAliveInDays | Tak | Określa, jak długo użytkownik jest zalogowany. Ustawienie wartości 0 powoduje wyłączenie funkcji KMSI. Aby uzyskać więcej informacji, zobacz temat nie [wylogowuj mnie](custom-policy-keep-me-signed-in.md). |
 |EnforceIdTokenHintOnLogout| Nie|  Wymuś przekazania wcześniej wystawionego tokenu ID do punktu końcowego wylogowania jako wskazówkę dotyczącą bieżącej uwierzytelnionej sesji użytkownika końcowego z klientem. Możliwe wartości: `false` (wartość domyślna) lub `true`. Aby uzyskać więcej informacji, zobacz [Logowanie w sieci Web za pomocą usługi OpenID Connect Connect](openid-connect.md).  |
 
 
@@ -134,14 +134,14 @@ Element **SingleSignon** zawiera następujący atrybut:
 
 Element **JourneyInsights** zawiera następujące atrybuty:
 
-| Atrybut | Wymagany | Opis |
+| Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| TelemetryEngine | Yes | Wartość musi być `ApplicationInsights`. |
-| InstrumentationKey | Yes | Ciąg, który zawiera klucz Instrumentacji dla elementu Application Insights. |
-| Deweloper | Yes | Możliwe wartości: `true` lub `false`. Jeśli `true`, Application Insights przyspiesza dane telemetryczne za pomocą potoku przetwarzania. To ustawienie jest dobre w przypadku programowania, ale jest ograniczone do dużych woluminów, szczegółowe dzienniki działań są przeznaczone tylko do pomocy w opracowywaniu zasad niestandardowych. Nie używaj trybu deweloperskiego w środowisku produkcyjnym. Dzienniki zbierają wszystkie oświadczenia wysyłane do i od dostawców tożsamości podczas opracowywania. Jeśli jest używany w środowisku produkcyjnym, programista przyjmuje odpowiedzialność za dane OSOBowe (informacje z możliwością zidentyfikowaną prywatnie) zebrane w dzienniku usługi App Insights. Te szczegółowe dzienniki są zbierane tylko wtedy, gdy ta wartość jest ustawiona na `true`.|
-| ClientEnabled | Yes | Możliwe wartości: `true` lub `false`. Jeśli `true`, program wyśle Application Insights skrypt po stronie klienta do śledzenia widoku strony i błędów po stronie klienta. |
-| ServerEnabled | Yes | Możliwe wartości: `true` lub `false`. Jeśli `true`, program wysyła istniejący kod JSON UserJourneyRecorder jako zdarzenie niestandardowe do Application Insights. |
-| TelemetryVersion | Yes | Wartość musi być `1.0.0`. |
+| TelemetryEngine | Tak | Wartość musi być `ApplicationInsights`. |
+| InstrumentationKey | Tak | Ciąg, który zawiera klucz Instrumentacji dla elementu Application Insights. |
+| Deweloper | Tak | Możliwe wartości: `true` lub `false`. Jeśli `true`, Application Insights przyspiesza dane telemetryczne za pomocą potoku przetwarzania. To ustawienie jest dobre w przypadku programowania, ale jest ograniczone do dużych woluminów, szczegółowe dzienniki działań są przeznaczone tylko do pomocy w opracowywaniu zasad niestandardowych. Nie używaj trybu deweloperskiego w środowisku produkcyjnym. Dzienniki zbierają wszystkie oświadczenia wysyłane do i od dostawców tożsamości podczas opracowywania. Jeśli jest używany w środowisku produkcyjnym, programista przyjmuje odpowiedzialność za dane OSOBowe (informacje z możliwością zidentyfikowaną prywatnie) zebrane w dzienniku usługi App Insights. Te szczegółowe dzienniki są zbierane tylko wtedy, gdy ta wartość jest ustawiona na `true`.|
+| ClientEnabled | Tak | Możliwe wartości: `true` lub `false`. Jeśli `true`, program wyśle Application Insights skrypt po stronie klienta do śledzenia widoku strony i błędów po stronie klienta. |
+| ServerEnabled | Tak | Możliwe wartości: `true` lub `false`. Jeśli `true`, program wysyła istniejący kod JSON UserJourneyRecorder jako zdarzenie niestandardowe do Application Insights. |
+| TelemetryVersion | Tak | Wartość musi być `1.0.0`. |
 
 Aby uzyskać więcej informacji, zobacz [zbieranie dzienników](troubleshoot-with-application-insights.md)
 
@@ -161,9 +161,9 @@ Element **ContentDefinitionParameters** zawiera następujący element:
 
 Element **ContentDefinitionParameter** zawiera następujący atrybut:
 
-| Atrybut | Wymagany | Opis |
+| Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Name (Nazwa) | Yes | Nazwa pary klucz wartość. |
+| Name (Nazwa) | Tak | Nazwa pary klucz wartość. |
 
 Aby uzyskać więcej informacji, zobacz [Konfigurowanie interfejsu użytkownika z zawartością dynamiczną przy użyciu zasad niestandardowych](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri)
 
@@ -171,9 +171,9 @@ Aby uzyskać więcej informacji, zobacz [Konfigurowanie interfejsu użytkownika 
 
 Element **profilu technicznym** zawiera następujący atrybut:
 
-| Atrybut | Wymagany | Opis |
+| Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator | Yes | Wartość musi być `PolicyProfile`. |
+| Identyfikator | Tak | Wartość musi być `PolicyProfile`. |
 
 **Profilu technicznym** zawiera następujące elementy:
 
@@ -188,9 +188,9 @@ Element **profilu technicznym** zawiera następujący atrybut:
 
 Element **Protocol** zawiera następujący atrybut:
 
-| Atrybut | Wymagany | Opis |
+| Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Name (Nazwa) | Yes | Nazwa prawidłowego protokołu obsługiwanego przez Azure AD B2C, który jest używany jako część profilu technicznego. Możliwe wartości: `OpenIdConnect` lub `SAML2`. Wartość `OpenIdConnect` reprezentuje standard protokołu OpenID Connect Connect 1,0 zgodnie ze specyfikacją OpenID Connect Foundation. `SAML2` reprezentuje standard protokołu SAML 2,0 zgodnie ze specyfikacją języka Oasis. Nie używaj tokenu SAML w środowisku produkcyjnym. |
+| Name (Nazwa) | Tak | Nazwa prawidłowego protokołu obsługiwanego przez Azure AD B2C, który jest używany jako część profilu technicznego. Możliwe wartości: `OpenIdConnect` lub `SAML2`. Wartość `OpenIdConnect` reprezentuje standard protokołu OpenID Connect Connect 1,0 zgodnie ze specyfikacją OpenID Connect Foundation. `SAML2` reprezentuje standard protokołu SAML 2,0 zgodnie ze specyfikacją języka Oasis. Nie używaj tokenu SAML w środowisku produkcyjnym. |
 
 ## <a name="outputclaims"></a>OutputClaims
 
@@ -202,9 +202,9 @@ Element **OutputClaims** zawiera następujący element:
 
 Element **oświadczenie outputclaim** zawiera następujące atrybuty:
 
-| Atrybut | Wymagany | Opis |
+| Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | Yes | Odwołanie do elementu **ClaimType** zdefiniowanego już w sekcji **ClaimsSchema** w pliku zasad. |
+| ClaimTypeReferenceId | Tak | Odwołanie do elementu **ClaimType** zdefiniowanego już w sekcji **ClaimsSchema** w pliku zasad. |
 | DefaultValue | Nie | Wartość domyślna, która może być używana, jeśli wartość jest pusta. |
 | PartnerClaimType | Nie | Wysyła oświadczenia w innej nazwie, zgodnie z konfiguracją w definicji elementu ClaimType. |
 
@@ -216,9 +216,9 @@ Element **SubjectNameingInfo** umożliwia kontrolowanie wartości podmiotu token
 
 Element **SubjectNamingInfo** zawiera następujący atrybut:
 
-| Atrybut | Wymagany | Opis |
+| Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Claim | Yes | Odwołanie do **PartnerClaimType**zgłoszenia danych wyjściowych. Oświadczenia wyjściowe muszą być zdefiniowane w kolekcji **OutputClaims** zasad jednostki uzależnionej. |
+| Claim | Tak | Odwołanie do **PartnerClaimType**zgłoszenia danych wyjściowych. Oświadczenia wyjściowe muszą być zdefiniowane w kolekcji **OutputClaims** zasad jednostki uzależnionej. |
 
 Poniższy przykład pokazuje, jak zdefiniować jednostkę uzależnioną OpenID Connect Connect. Informacje o nazwie podmiotu są konfigurowane jako `objectId`:
 

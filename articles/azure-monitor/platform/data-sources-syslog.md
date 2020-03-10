@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 03/22/2019
 ms.openlocfilehash: 8d68a8d6d28d79c50a92cd2d18df2abab26c30ec
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670495"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394419"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Źródła danych dziennika systemowego w Azure Monitor
 SYSLOG jest protokołem rejestrowania zdarzeń, który jest wspólny dla systemu Linux. Aplikacje będzie wysyłać komunikaty, które mogą być przechowywane na komputerze lokalnym lub dostarczane do modułu zbierającego Syslog. Po zainstalowaniu agenta Log Analytics dla systemu Linux program skonfiguruje lokalny demon dziennika systemowego, aby przekazywać komunikaty do agenta. Następnie Agent wysyła komunikat do Azure Monitor, w którym zostanie utworzony odpowiedni rekord.  
@@ -27,7 +27,7 @@ W module zbierającym dziennik systemu są obsługiwane następujące obiekty:
 
 * Kerning
 * Użytkownik
-* mail (poczta)
+* poczta
 * Demon
 * uwierzytelniania
 * syslog
@@ -210,7 +210,7 @@ Poniższa tabela zawiera przykłady różnych zapytań dziennika, które pobiera
 
 | Zapytanie | Opis |
 |:--- |:--- |
-| Dziennik systemu |Wszystkie dzienniki SYSLOG. |
+| Syslog |Wszystkie dzienniki SYSLOG. |
 | SYSLOG &#124; gdzie SeverityLevel == "error" |Wszystkie rekordy Syslog z ważność błędu. |
 | SYSLOG &#124; summarize AggregatedValue = count() by komputera |Liczba Syslog rejestruje przez komputer. |
 | SYSLOG &#124; summarize AggregatedValue = count() by funkcji |Liczba Syslog rekordy według funkcji. |
