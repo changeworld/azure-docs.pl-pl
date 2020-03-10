@@ -145,10 +145,6 @@
             - name: Dane wyjściowe
               displayName: 'iteration,copy'
               href: copy-outputs.md
-        - name: Zasoby na poziomie subskrypcji
-          href: deploy-to-subscription.md
-        - name: Zasoby na poziomie grupy zarządzania
-          href: deploy-to-management-group.md
     - name: Używanie narzędzi do tworzenia
       items:
         - name: VS Code
@@ -182,7 +178,15 @@
           href: rollback-on-error.md
         - name: Zabezpieczanie szablonu przy użyciu tokenu SAS
           href: secure-template-with-sas-token.md
-        - name: Wdrażanie w wielu grupach zasobów lub subskrypcjach
+    - name: Wdrożenia w zakresie
+      items:
+        - name: Subskrypcja
+          href: deploy-to-subscription.md
+        - name: Grupa zarządzania
+          href: deploy-to-management-group.md
+        - name: Dzierżawa
+          href: deploy-to-tenant.md
+        - name: Wiele grup zasobów lub subskrypcji
           href: cross-resource-group-deployment.md
     - name: Podawanie parametrów
       items:

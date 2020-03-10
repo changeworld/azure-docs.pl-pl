@@ -26,21 +26,15 @@
           href: quickstarts/ruby.md
     - name: SDK
       items:
-        - name: 'Przy użyciu języka C#'
-          href: image-search-sdk-quickstart.md
-        - name: Używanie środowiska Node.js
-          href: image-search-sdk-node-quickstart.md
-        - name: Korzystanie z języka Python
-          href: image-sdk-python-quickstart.md
-        - name: Korzystanie z języka Java
-          href: image-sdk-java-quickstart.md
+        - name: Biblioteki klienckie wyszukiwania obrazów Bing
+          href: ./quickstarts/client-libraries.md
 - name: Samouczki
   items:
     - name: Tworzenie aplikacji internetowej do wyszukiwania obrazów
       href: tutorial-bing-image-search-single-page-app.md
     - name: Wyodrębnianie szczegółów obrazu
       href: tutorial-image-post.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Przykłady kodu
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Image+Search'

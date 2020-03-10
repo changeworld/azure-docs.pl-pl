@@ -1,41 +1,52 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentacja usługi Windows Virtual Desktop
+summary: Dostarczaj środowisko pulpitu wirtualnego i aplikacje zdalne na każde urządzenie. Połącz usługę Microsoft 365 i platformę Azure, aby udostępnić użytkownikom jedyne środowisko systemu Windows 10 obsługujące wiele sesji — przy wyjątkowej skali i obniżonych kosztach IT.
 metadata:
-  title: Dokumentacja usługi Windows Virtual Desktop | Microsoft Docs
+  title: Dokumentacja usługi Windows Virtual Desktop
   description: Usługa Windows Virtual Desktop dla platformy Azure to środowisko systemu Windows 10 Enterprise dla wielu użytkowników wirtualizowane w chmurze.
-  author: Heidilohr
-  manager: lizross
   ms.service: virtual-desktop
   services: virtual-desktop
   ms.topic: landing-page
-  ms.date: 02/20/2019
+  manager: lizross
+  author: Heidilohr
   ms.author: helohr
-abstract:
-  description: 'Dostarczaj środowisko pulpitu wirtualnego i aplikacje zdalne na każde urządzenie. Połącz usługę Microsoft 365 i platformę Azure, aby udostępnić użytkownikom jedyne środowisko systemu Windows 10 obsługujące wiele sesji — przy wyjątkowej skali i obniżonych kosztach IT.'
-sections:
-  - title: Omówienie
-    items:
-      - type: paragraph
-        text: 'Poznaj usługę Windows Virtual Desktop i dowiedz się, jak z niej korzystać. Samouczki, poradniki, dokumentacja i inna zawartość pokazują, jak konfigurować pule hostów i dzierżawy oraz przypisywać role użytkownikom dla środowiska usługi Windows Virtual Desktop.'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/virtual-desktop/overview">Co to jest Windows Virtual Desktop?</a>
-  - title: Samouczki krok po kroku
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak zainstalować i skonfigurować usługę Windows Virtual Desktop oraz jak nawiązywać połączenie z klientem, gdy będzie ona gotowa.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/virtual-desktop/tenant-setup-azure-active-directory">Tworzenie dzierżawy w usłudze Windows Virtual Desktop</a>
-          - html: <a href="/azure/virtual-desktop/create-host-pools-azure-marketplace">Tworzenie puli hostów za pomocą witryny Azure Marketplace</a>
-          - html: <a href="/azure/virtual-desktop/manage-app-groups">Zarządzanie grupami aplikacji dla usługi Windows Virtual Desktop</a>
-          - html: <a href="/azure/virtual-desktop/create-service-principal-role-powershell">Tworzenie jednostek usługi i przypisań ról za pomocą programu PowerShell</a>
-  - title: Dokumentacja
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/powershell/windows-virtual-desktop/overview">Program PowerShell</a>
+  ms.date: 03/06/2020
+  ms.openlocfilehash: f37b0cd68c62813dd4c642d9e45a20a91d08c31c
+  ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 03/07/2020
+  ms.locfileid: "78898667"
+landingContent:
+- title: Informacje o usłudze Windows Virtual Desktop
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest Windows Virtual Desktop?
+      url: overview.md
+- title: Rozpoczęcie pracy
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Tworzenie dzierżawy w usłudze Windows Virtual Desktop
+      url: tenant-setup-azure-active-directory.md
+    - text: Tworzenie puli hostów za pomocą witryny Azure Marketplace
+      url: create-host-pools-azure-marketplace.md
+    - text: Zarządzanie grupami aplikacji dla usługi Windows Virtual Desktop
+      url: manage-app-groups.md
+    - text: Tworzenie jednostek usługi i przypisań ról za pomocą programu PowerShell
+      url: create-service-principal-role-powershell.md
+- title: Łączenie się z usługą Windows Virtual Desktop
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Klient klasyczny systemu Windows
+      url: connect-windows-7-and-10.md
+    - text: Klient internetowy
+      url: connect-web.md
+    - text: Klient systemu Android
+      url: connect-android.md
+    - text: Klient systemu macOS
+      url: connect-macos.md
+    - text: Klient systemu iOS
+      url: connect-ios.md
