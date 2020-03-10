@@ -6,12 +6,12 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/20/2019
-ms.openlocfilehash: efe8c1a2726054c54934926f652e338797d4efa1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 78cd5945e394219be0551bbe97afef07f18b61f7
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776549"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945466"
 ---
 # <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>Uwierzytelnianie chmury Azure wiosennej za pomocą Key Vault w akcjach GitHub
 Magazyn kluczy jest bezpiecznym miejscem do przechowywania kluczy. Użytkownicy przedsiębiorstwa muszą przechowywać poświadczenia dla środowisk CI/CD w zakresie, który kontroluje. Klucz pobierania poświadczeń w magazynie kluczy powinien być ograniczony do zakresu zasobów.  Ma dostęp tylko do zakresu magazynu kluczy, a nie całego zakresu platformy Azure. Jest to klucz, który może jedynie otworzyć silne pole nie jest kluczem głównym, który może otwierać wszystkie drzwi w budynku. Jest to sposób, aby uzyskać klucz z innym kluczem, który jest przydatny w przepływie pracy CICD. 
@@ -32,7 +32,6 @@ Z wynikami:
     "tenantId": "<GUID>",
     "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
     "resourceManagerEndpointUrl": "https://management.azure.com/",
-    "activeDirectoryGraphResourceId": "https://graph.windows.net/",
     "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
     "galleryEndpointUrl": "https://gallery.azure.com/",
     "managementEndpointUrl": "https://management.core.windows.net/"
@@ -49,7 +48,7 @@ Przejdź do pulpitu nawigacyjnego **Key Vault** w Azure Portal, kliknij **menu k
 
 Skopiuj nazwę poświadczenia, na przykład `azure-cli-2020-01-19-04-39-02`. Otwórz menu **zasady dostępu** , a następnie kliknij pozycję **+ Dodaj zasady dostępu** .  Wybierz pozycję `Secret Management` dla **szablonu**, a następnie wybierz pozycję **podmiot zabezpieczeń**. Wklej nazwę poświadczenia w obszarze **głównym**/**zaznacz** pole wejściowe:
 
- ![Wybierz](./media/github-actions/key-vault2.png)
+ ![Wybierz pozycję](./media/github-actions/key-vault2.png)
 
  Kliknij przycisk **Dodaj** w oknie dialogowym **Dodawanie zasad dostępu** , a następnie kliknij przycisk **Zapisz**.
 
@@ -69,7 +68,6 @@ Wyniki:
     "tenantId": "<GUID>",
     "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
     "resourceManagerEndpointUrl": "https://management.azure.com/",
-    "activeDirectoryGraphResourceId": "https://graph.windows.net/",
     "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
     "galleryEndpointUrl": "https://gallery.azure.com/",
     "managementEndpointUrl": "https://management.core.windows.net/"

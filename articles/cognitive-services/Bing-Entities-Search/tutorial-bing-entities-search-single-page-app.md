@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: tutorial
-ms.date: 12/11/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 875a83501b00f0b23aa13317493ab6d341e4e283
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d45b9a153b770dd10da9dd61e8a7b3d138345b8a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448590"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943132"
 ---
 # <a name="tutorial-single-page-web-app"></a>Samouczek: jednostronicowa aplikacja internetowa
 
@@ -56,6 +56,10 @@ W tym samouczku omówimy tylko wybrane części kodu źródłowego. Pełny kod �
 > [!NOTE]
 > Ten samouczek jest bardzo podobny do [samouczka dotyczącego jednostronicowej aplikacji wyszukiwania w Internecie Bing](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md), ale dotyczy tylko wyników wyszukiwania jednostek.
 
+## <a name="prerequisites"></a>Wymagania wstępne
+
+Aby wykonać kroki opisane w samouczku, musisz dysponować kluczami subskrypcji dla interfejsu API Wyszukiwanie Bing i interfejsu API Maps usługi Bing. Jeśli ich nie masz, możesz użyć [klucza próbnego](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) i [podstawowego klucza mapy usługi Bing](https://www.microsoft.com/maps/create-a-bing-maps-key).
+
 ## <a name="app-components"></a>Składniki aplikacji
 
 Podobnie jak każda inna aplikacja internetowa, aplikacja w tym samouczku zawiera trzy części:
@@ -67,7 +71,7 @@ Podobnie jak każda inna aplikacja internetowa, aplikacja w tym samouczku zawier
 
 Ten samouczek nie obejmuje szczegółowej prezentacji większości kodu HTML lub CSS, ponieważ jest on dosyć prosty.
 
-Część HTML zawiera formularz wyszukiwania, w którym użytkownik wprowadza zapytanie i wybiera opcje wyszukiwania. Formularz jest połączony z kodem JavaScript, który wykonuje wyszukiwanie przy użyciu atrybutu `onsubmit` tagu `<form>`:
+Część HTML zawiera formularz wyszukiwania, w którym użytkownik wprowadza zapytanie i wybiera opcje wyszukiwania. Formularz jest połączony z kodem JavaScript, który wykonuje wyszukiwanie przy użyciu atrybutu `<form>` tagu `onsubmit`:
 
 ```html
 <form name="bing" onsubmit="return newBingEntitySearch(this)">
@@ -380,7 +384,7 @@ function handleBingResponse() {
 
 Większość kodu w obu poprzednich funkcjach jest przeznaczona do obsługi błędów. Błędy mogą wystąpić na następujących etapach:
 
-|Stage|Potencjalne błędy|Obsługiwane przez|
+|Etap|Potencjalne błędy|Obsługiwane przez|
 |-|-|-|
 |Tworzenie obiektu żądania języka JavaScript|Nieprawidłowy adres URL|Blok `try`/`catch`|
 |Wykonywanie żądania|Błędy sieci, przerwane połączenia|Obsługa zdarzeń `error` i `abort`|
@@ -451,7 +455,7 @@ Funkcja renderująca może akceptować następujące parametry:
 
 Parametry `index` i `count` mogą służyć do numerowania wyników, do generowania specjalnego kodu HTML wstawianego na początku lub końcu kolekcji, do wstawiania podziałów wiersza po określonej liczbie elementów i tak dalej. Jeśli funkcja renderująca nie wymaga takiej funkcjonalności, nie musi akceptować tych dwóch parametrów. W rzeczywistości nie używamy ich w funkcjach renderujących w naszej aplikacji samouczka.
 
-Przyjrzyjmy się bliżej programowi renderującemu `entities`:
+Przyjrzyjmy się bliżej funkcji renderującej `entities`:
 
 ```javascript
     entities: function(item) {
@@ -514,7 +518,7 @@ Nasza funkcja renderująca jednostki:
 
 ## <a name="persisting-client-id"></a>Trwały identyfikator klienta
 
-Odpowiedzi z interfejsów API wyszukiwania Bing mogą zawierać nagłówek `X-MSEdge-ClientID`, który powinien być wysłany z powrotem do interfejsu API z kolejnymi żądaniami. Jeśli jest używanych wiele interfejsów API wyszukiwania Bing, dla każdego z nich powinien być stosowany ten sam identyfikator klienta, jeśli jest to możliwe.
+Odpowiedzi z interfejsów API wyszukiwania Bing mogą zawierać nagłówek `X-MSEdge-ClientID`, który powinien być wysyłany z powrotem do interfejsu API z kolejnymi żądaniami. Jeśli jest używanych wiele interfejsów API wyszukiwania Bing, dla każdego z nich powinien być stosowany ten sam identyfikator klienta, jeśli jest to możliwe.
 
 Podanie nagłówka `X-MSEdge-ClientID` umożliwia interfejsom API usługi Bing skojarzenie wszystkich wyszukiwań użytkownika, co ma dwie ważne korzyści.
 
@@ -525,7 +529,7 @@ Po drugie usługa Bing może losowo wybierać użytkowników, którzy będą kor
 Zasady zabezpieczeń przeglądarki (CORS) mogą powodować, że nagłówek `X-MSEdge-ClientID` będzie niedostępny dla kodu JavaScript. To ograniczenie występuje, gdy odpowiedź wyszukiwania ma inne źródło niż strona, z której pochodzi żądanie. W środowisku produkcyjnym, aby rozwiązać ten problem, należy udostępnić skrypt po stronie serwera, który wykonuje wywołanie interfejsu API w tej samej domenie, co strona internetowa. Ponieważ skrypt ma to samo źródło co strona internetowa, nagłówek `X-MSEdge-ClientID` jest dostępny dla kodu JavaScript.
 
 > [!NOTE]
-> W aplikacji internetowej w środowisku produkcyjnym należy mimo to wykonać to żądanie po stronie serwera. W przeciwnym razie należy dołączyć klucz interfejsu API wyszukiwania Bing do strony internetowej, aby był on dostępny dla każdego, kto wyświetli źródło. Płacisz za wszystkie użycia związane z Twoim kluczem subskrypcji interfejsu API, nawet za żądania wykonane przez osoby nieupoważnione, zatem ważne jest, aby nie ujawniać swojego klucza.
+> W aplikacji internetowej w środowisku produkcyjnym należy wykonać to żądanie po stronie serwera. W przeciwnym razie należy dołączyć klucz interfejsu API wyszukiwania Bing do strony internetowej, aby był on dostępny dla każdego, kto wyświetli źródło. Płacisz za wszystkie użycia związane z Twoim kluczem subskrypcji interfejsu API, nawet za żądania wykonane przez osoby nieupoważnione, zatem ważne jest, aby nie ujawniać swojego klucza.
 
 W celach programistycznych możesz wykonywać żądania interfejsu API wyszukiwania w sieci Web Bing za pośrednictwem serwera proxy CORS. Odpowiedź z tego serwera proxy zawiera nagłówek `Access-Control-Expose-Headers`, który zezwala na nagłówki odpowiedzi i udostępnia je dla języka JavaScript.
 

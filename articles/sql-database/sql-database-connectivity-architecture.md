@@ -13,11 +13,11 @@ ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/02/2019
 ms.openlocfilehash: 6a90e9ba264c4abddf2c26cb7b1761a7a51b1778
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647683"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360360"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architektura łączności usługi Azure SQL
 
@@ -104,8 +104,8 @@ Szczegóły dotyczące sposobu migrowania ruchu do nowych bram w określonych re
 | Północna Republika Południowej Afryki   | 102.133.152.0      |
 | Zachodnia Republika Południowej Afryki    | 102.133.24.0       |
 | Południowo-środkowe stany USA     | 13.66.62.124, 23.98.162.75, 104.214.16.32   | 
-| Azja Południowo-wschodnia      | 104.43.15.0, 23.100.117.95, 40.78.232.3   | 
-| Środkowe Zjednoczone Emiraty Arabskie          | 20.37.72.64        |
+| Azja Południowo-Wschodnia      | 104.43.15.0, 23.100.117.95, 40.78.232.3   | 
+| Środkowy Zjednoczone Emiraty Arabskie          | 20.37.72.64        |
 | Północne Zjednoczone Emiraty Arabskie            | 65.52.248.0        |
 | Południowe Zjednoczone Królestwo             | 51.140.184.11      |
 | Zachodnie Zjednoczone Królestwo              | 51.141.8.11        |

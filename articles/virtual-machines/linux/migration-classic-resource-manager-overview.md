@@ -1,25 +1,19 @@
 ---
 title: Przegląd obsługiwanej przez platformę migracji zasobów IaaS z wersji klasycznej do Azure Resource Manager
 description: W tym artykule przedstawiono migrację zasobów z klasycznej do Azure Resource Manager obsługiwane przez platformę
-services: virtual-machines-linux
-documentationcenter: ''
 author: tanmaygore
 manager: vashan
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 78492a2c-2694-4023-a7b8-c97d3708dcb7
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 3a053e0b5ee767b14f76f2a36a006365b260a62d
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: d548af6cba6d35b497f67a0dc774171088a91010
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77912685"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944685"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Migracja zasobów IaaS z wersji klasycznej do Azure Resource Manager obsługiwana przez platformę
 

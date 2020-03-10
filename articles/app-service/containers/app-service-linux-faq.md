@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c590a27f61c1a555ae30828332e4140a6116f95f
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 2413601db629fda62976b75e349b0340749dc6fa
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443860"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944086"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service w systemie Linux — często zadawane pytania
 
@@ -180,6 +180,10 @@ Poniżej przedstawiono reguły określania, który kontener jest dostępny — w
 Naliczanie opłat za normalne Azure App Service są naliczone za liczbę godzin uruchomienia aplikacji.
 
 ## <a name="other-questions"></a>Inne pytania
+
+**Co oznacza "żądana funkcja jest niedostępna w grupie zasobów"?**
+
+Ten komunikat może zostać wyświetlony podczas tworzenia aplikacji sieci Web przy użyciu Azure Resource Manager (ARM). W oparciu o bieżące ograniczenie dla tej samej grupy zasobów, nie można mieszać aplikacji systemu Windows i Linux w tym samym regionie.
 
 **Jakie są obsługiwane znaki w nazwach ustawień aplikacji?**
 

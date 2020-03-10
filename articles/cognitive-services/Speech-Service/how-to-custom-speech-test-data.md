@@ -3,19 +3,19 @@ title: Przygotowywanie danych testowych dla usługi Custom Speech-Speech
 titleSuffix: Azure Cognitive Services
 description: Podczas testowania dokładności rozpoznawania mowy firmy Microsoft lub uczenia modeli niestandardowych będziesz potrzebować danych audio i tekstowych. Na tej stronie omówiono typy danych, sposób ich używania i zarządzania nimi.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.author: erhopf
-ms.openlocfilehash: 6100ac6a6b01a7d0eac74b0e83539bf4e671cb89
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.date: 03/09/2020
+ms.author: dapine
+ms.openlocfilehash: 969c1450966d2754e6e8f00126da52a1e88181fc
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660413"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942710"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Przygotuj dane dla Custom Speech
 
@@ -27,9 +27,9 @@ Ta tabela zawiera listę akceptowanych typów danych, gdy należy użyć poszcze
 
 | Typ danych | Używany do testowania | Zalecana ilość | Używany do szkolenia | Zalecana ilość |
 |-----------|-----------------|----------|-------------------|----------|
-| [Audio](#audio-data-for-testing) | Tak<br>Używane na potrzeby inspekcji wizualnej | 5 plików audio | Nie | Nie dotyczy |
-| [Zapisy audio + oznakowane przez człowieka](#audio--human-labeled-transcript-data-for-testingtraining) | Tak<br>Służy do obliczania dokładności | 0,5 – 5 godzin audio | Tak | 1 – 1000 godzin audio |
-| [Powiązany tekst](#related-text-data-for-training) | Nie | Nie dotyczy | Tak | 1-200 MB powiązanego tekstu |
+| [Dźwięku](#audio-data-for-testing) | Yes<br>Używane na potrzeby inspekcji wizualnej | 5 plików audio | Nie | nie dotyczy |
+| [Zapisy audio + oznakowane przez człowieka](#audio--human-labeled-transcript-data-for-testingtraining) | Yes<br>Służy do obliczania dokładności | 0,5 – 5 godzin audio | Yes | 1 – 1000 godzin audio |
+| [Powiązany tekst](#related-text-data-for-training) | Nie | nie dotyczy | Yes | 1-200 MB powiązanego tekstu |
 
 Pliki powinny być pogrupowane według typu w zestawie danych i przekazywane jako plik. zip. Każdy zestaw danych może zawierać tylko jeden typ danych.
 
@@ -55,15 +55,17 @@ Dane audio są optymalne do testowania dokładności linii bazowej "zamiany mowy
 
 Użyj tej tabeli, aby upewnić się, że pliki audio są poprawnie sformatowane do użytku z Custom Speech:
 
-| Właściwość | Wartość |
-|----------|-------|
-| Format pliku | RIFF (WAV) |
-| Częstotliwość próbkowania | 8 000 Hz lub 16 000 Hz |
-| Kanały | 1 (mono) |
-| Maksymalna długość na dźwięk | 2 godziny |
-| Przykładowy format | PCM, 16-bitowe |
-| Format archiwum | zip |
-| Maksymalny rozmiar archiwum | 2 GB |
+| Właściwość                 | Wartość                 |
+|--------------------------|-----------------------|
+| Format pliku              | RIFF (WAV)            |
+| Częstotliwość próbkowania              | 8 000 Hz lub 16 000 Hz |
+| Kanały                 | 1 (mono)              |
+| Maksymalna długość na dźwięk | 2 godziny               |
+| Przykładowy format            | PCM, 16-bitowe           |
+| Format archiwum           | zip                  |
+| Maksymalny rozmiar archiwum     | 2 GB                  |
+
+[!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
 > [!TIP]
 > Podczas przekazywania szkoleń i testowania danych rozmiar pliku zip nie może przekroczyć 2 GB. Jeśli potrzebujesz więcej danych do szkolenia, Podziel je na kilka plików zip i przekaż je oddzielnie. Później możesz wybrać opcję uczenia się z *wielu* zestawów danych. Jednak można testować tylko z *jednego* zestawu danych.
@@ -79,22 +81,24 @@ Aby sprawdzić właściwości dźwięku lub przekonwertować istniejące audio n
 
 Aby zmierzyć dokładność dokładności zamiany mowy na tekst firmy Microsoft podczas przetwarzania plików audio, należy zapewnić, aby porównanie było oznaczone przez człowieka (słowo-by-Word). Chociaż transkrypcja przez człowieka jest często czasochłonna, konieczne jest oszacowanie dokładności i uczenie modelu dla przypadków użycia. Należy pamiętać, że ulepszenia w zakresie rozpoznawania będą tylko tak dobre jak dostarczone dane. Z tego powodu ważne jest, aby przekazywać tylko transkrypcje o wysokiej jakości.
 
-| Właściwość | Wartość |
-|----------|-------|
-| Format pliku | RIFF (WAV) |
-| Częstotliwość próbkowania | 8 000 Hz lub 16 000 Hz |
-| Kanały | 1 (mono) |
+| Właściwość                 | Wartość                               |
+|--------------------------|-------------------------------------|
+| Format pliku              | RIFF (WAV)                          |
+| Częstotliwość próbkowania              | 8 000 Hz lub 16 000 Hz               |
+| Kanały                 | 1 (mono)                            |
 | Maksymalna długość na dźwięk | 2 godziny (testowanie)/60 s (szkolenie) |
-| Przykładowy format | PCM, 16-bitowe |
-| Format archiwum | zip |
-| Maksymalny rozmiar pliku zip | 2 GB |
+| Przykładowy format            | PCM, 16-bitowe                         |
+| Format archiwum           | zip                                |
+| Maksymalny rozmiar pliku zip         | 2 GB                                |
+
+[!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
 > [!NOTE]
-> Podczas przekazywania szkoleń i testowania danych rozmiar pliku zip nie może przekroczyć 2 GB. Uou można testować tylko z *jednego* zestawu danych, pamiętając, aby zachować go w odpowiednim rozmiarze pliku.
+> Podczas przekazywania szkoleń i testowania danych rozmiar pliku zip nie może przekroczyć 2 GB. Można testować tylko z *jednego* zestawu danych, pamiętając, aby zachować go w odpowiednim rozmiarze pliku. Ponadto każdy plik szkoleniowy nie może przekroczyć 60 sekund, w przeciwnym razie wystąpi błąd.
 
 Aby rozwiązać problemy, takie jak usuwanie lub podstawianie wyrazów, wymagana jest znaczna ilość danych w celu usprawnienia rozpoznawania. Ogólnie rzecz biorąc, zaleca się dostarczenie transkrypcji słów-by-Word dla około 10 do 1 000 godzin. Transkrypcje dla wszystkich plików WAV powinny znajdować się w jednym pliku tekstowym (zwykły tekst). Każdy wiersz pliku z transkrypcją powinien zawierać nazwę jednego z plików dźwiękowych, a następnie odpowiednią transkrypcję. Nazwę pliku i transkrypcję należy rozdzielać przy użyciu tabulatora (\t).
 
-  Przykład:
+  Na przykład:
 ```
   speech01.wav  speech recognition is awesome
   speech02.wav  the quick brown fox jumped all over the place
@@ -178,5 +182,5 @@ Skorzystaj z poniższej tabeli, aby upewnić się, że pokrewny plik danych dla 
 
 * [Inspekcja danych](how-to-custom-speech-inspect-data.md)
 * [Oceń dane](how-to-custom-speech-evaluate-data.md)
-* [Szkolenie modelu](how-to-custom-speech-train-model.md)
+* [Uczenie modelu](how-to-custom-speech-train-model.md)
 * [Wdrażanie modelu](how-to-custom-speech-deploy-model.md)

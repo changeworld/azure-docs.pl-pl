@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: tutorial
-ms.date: 12/18/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: decfeb9c46c32c6388228de6597db0c840354c19
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9227417d28eb09a322dd4757033ee62fee97d91c
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448587"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943905"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Samouczek: tworzenie aplikacji jednostronicowej przy użyciu interfejsu API wyszukiwania obrazów Bing
 
@@ -318,7 +318,7 @@ Interfejs API wyszukiwania obrazów Bing może zwrócić cztery rodzaje sugestii
 
 | Sugestia         | Opis                                                                                                                                                                                                         |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `pivotSuggestions` | Zapytania, które zamieniają wyraz przestawny w oryginalnym wyszukiwaniu na inny. Jeśli na przykład wyszukujesz frazę „czerwone kwiaty”, wyrazem przestawnym może być „czerwone” i sugestia przestawna może brzmieć „żółte kwiaty”. |
+| `pivotSuggestions` | Zapytania, które zamieniają wyraz przestawny w oryginalnym wyszukiwania na inny. Jeśli na przykład wyszukujesz frazę „czerwone kwiaty”, wyrazem przestawnym może być „czerwone” i sugestia przestawna może brzmieć „żółte kwiaty”. |
 | `queryExpansions`  | Zapytania, które zawężają oryginalne wyszukiwanie, dodając więcej terminów. Jeśli na przykład wyszukujesz frazę „Microsoft Surface”, rozszerzeniem zapytania może być fraza „Microsoft Surface Pro”.                                   |
 | `relatedSearches`  | Zapytania, które również zostały wprowadzone przez innych użytkowników, którzy wprowadzili oryginalne wyszukiwanie. Jeśli na przykład wyszukujesz frazę „Mount Rainier”, powiązanym wyszukiwaniem może być fraza „Mt. Saint Helens”.                       |
 | `similarTerms`     | Zapytania, które mają podobne znaczenie, co oryginalne wyszukiwanie. Jeśli na przykład wyszukujesz wyraz „kotki”, podobnym terminem może być „milusie”.                                                                   |
@@ -347,7 +347,7 @@ Te funkcje modułu renderowania akceptują następujące parametry:
 Parametry `index` i `count` są używane do numerowania wyników, generowania kodu HTML dla kolekcji i organizowania zawartości. W szczególności:
 
 * oblicza rozmiar miniatury obrazu (szerokość jest różna i wynosi co najmniej 120 pikseli, a wysokość jest stała i wynosi 90 pikseli);
-* tworzy tag `<img>` kodu HTML, aby wyświetlić miniaturę obrazu;
+* tworzy tag `<img>` kodu HTML, aby wyświetlić miniaturę obrazu.
 * tworzy tagi `<a>` kodu HTML, które prowadzą do obrazu i do zawierającej go strony;
 * tworzy opis, który wyświetla informacje dotyczące obrazu i witryny, w której się znajduje.
 
@@ -373,7 +373,7 @@ Wymiary `height` i `width` obrazu miniatury są używane zarówno w tagu `<img>`
 
 ## <a name="persisting-client-id"></a>Trwały identyfikator klienta
 
-Odpowiedzi z interfejsów API wyszukiwania Bing mogą zawierać nagłówek `X-MSEdge-ClientID`, który powinien być wysłany z powrotem do interfejsu API z kolejnymi żądaniami. Jeśli jest używanych wiele interfejsów API wyszukiwania Bing, dla każdego z nich powinien być stosowany ten sam identyfikator klienta, jeśli jest to możliwe.
+Odpowiedzi z interfejsów API wyszukiwania Bing mogą zawierać nagłówek `X-MSEdge-ClientID`, który powinien być wysyłany z powrotem do interfejsu API z kolejnymi żądaniami. Jeśli jest używanych wiele interfejsów API wyszukiwania Bing, dla każdego z nich powinien być stosowany ten sam identyfikator klienta, jeśli jest to możliwe.
 
 Podanie nagłówka `X-MSEdge-ClientID` umożliwia interfejsom API usługi Bing skojarzenie wszystkich wyszukiwań użytkownika, co jest użyteczne z następujących względów.
 
@@ -384,7 +384,7 @@ Po drugie usługa Bing może losowo wybierać użytkowników, którzy będą kor
 Zasady zabezpieczeń przeglądarki (CORS) mogą powodować, że nagłówek `X-MSEdge-ClientID` będzie niedostępny dla kodu JavaScript. To ograniczenie występuje, gdy odpowiedź wyszukiwania ma inne źródło niż strona, z której pochodzi żądanie. W środowisku produkcyjnym, aby rozwiązać ten problem, należy udostępnić skrypt po stronie serwera, który wykonuje wywołanie interfejsu API w tej samej domenie, co strona internetowa. Ponieważ skrypt ma to samo źródło co strona internetowa, nagłówek `X-MSEdge-ClientID` jest dostępny dla kodu JavaScript.
 
 > [!NOTE]
-> W aplikacji internetowej w środowisku produkcyjnym należy mimo to wykonać to żądanie po stronie serwera. W przeciwnym razie należy dołączyć klucz interfejsu API wyszukiwania Bing do strony internetowej, aby był on dostępny dla każdego, kto wyświetli źródło. Płacisz za wszystkie użycia związane z Twoim kluczem subskrypcji interfejsu API, nawet za żądania wykonane przez osoby nieupoważnione, zatem ważne jest, aby nie ujawniać swojego klucza.
+> W aplikacji internetowej w środowisku produkcyjnym należy wykonać to żądanie po stronie serwera. W przeciwnym razie należy dołączyć klucz interfejsu API wyszukiwania Bing do strony internetowej, aby był on dostępny dla każdego, kto wyświetli źródło. Płacisz za wszystkie użycia związane z Twoim kluczem subskrypcji interfejsu API, nawet za żądania wykonane przez osoby nieupoważnione, zatem ważne jest, aby nie ujawniać swojego klucza.
 
 W celach programistycznych możesz wykonywać żądania interfejsu API wyszukiwania w sieci Web Bing za pośrednictwem serwera proxy CORS. Odpowiedź z takiego serwera proxy ma `Access-Control-Expose-Headers` nagłówek, który umożliwia nagłówki odpowiedzi i udostępnia je dla języka JavaScript.
 
@@ -407,6 +407,6 @@ Podczas korzystania z aplikacji samouczka pozostaw okno polecenia otwarte, ponie
 > [!div class="nextstepaction"]
 > [Wyodrębnianie szczegółów obrazu przy użyciu interfejsu API wyszukiwania obrazów Bing](tutorial-image-post.md)
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 * [Dokumentacja interfejsu API wyszukiwania obrazów Bing](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

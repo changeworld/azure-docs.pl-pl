@@ -1,21 +1,18 @@
 ---
 title: Migrowanie maszyn wirtualnych z systemem Linux do usługi Azure Premium Storage z usługą Azure Site Recovery
 description: Przeprowadź migrację istniejących maszyn wirtualnych do usługi Azure Premium Storage przy użyciu Site Recovery. Premium Storage oferuje wysoką wydajność, obsługę dysków o niskich opóźnieniach dla obciążeń intensywnie korzystających z operacji we/wy działających na platformie Azure Virtual Machines.
-services: virtual-machines-linux,storage
-cloud: Azure
 author: luywang
 ms.service: virtual-machines-linux
-ms.tgt_pltfrm: linux
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: b8c299869da003d8dc4e9ac111ba8c5e8bb27345
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 0d03c2df720a4e3ccf57fe0be00c2af4fcf72eb0
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035827"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944826"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrowanie do Premium Storage przy użyciu Azure Site Recovery
 
@@ -161,7 +158,7 @@ Aby sprawdzić, czy serwer konfiguracji został pomyślnie skojarzony z zasadami
    4. W kroku 3 Dodaj chronione maszyny wirtualne według adresu IP. (Może być potrzebny wewnętrzny adres IP, aby je znaleźć).
    5. W kroku 4 skonfiguruj właściwości, wybierając konta, które zostały wcześniej skonfigurowane na serwerze przetwarzania.
    6. W kroku 5 wybierz zasady replikacji utworzone wcześniej w sekcji "krok 5. Konfigurowanie ustawień replikacji".
-   7. Wybierz **OK**.
+   7. Kliknij przycisk **OK**.
 
    > [!NOTE]
    > Po cofnięciu przydziału i ponownym uruchomieniu maszyny wirtualnej platformy Azure nie ma gwarancji, że będzie ona mieć ten sam adres IP. Jeśli adres IP serwera konfiguracji/serwera przetwarzania lub chronionych maszyn wirtualnych platformy Azure ulegnie zmianie, replikacja w tym scenariuszu może nie funkcjonować prawidłowo.

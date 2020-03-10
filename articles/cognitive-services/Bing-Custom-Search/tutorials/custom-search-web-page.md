@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: tutorial
-ms.date: 12/09/2019
+ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: c3d571f494d5f08c7c9e3c551eba88fb86e1ec23
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c7b41f77f8eb57c39489f1e5a69b0ac1c3c9c7d4
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448785"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943908"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Samouczek: tworzenie strony internetowej z funkcją wyszukiwania niestandardowego
 
@@ -34,7 +34,7 @@ Wykonane zadania:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Aby skorzystać z samouczka, potrzebny jest klucz subskrypcji interfejsu API wyszukiwania niestandardowego Bing.  Aby uzyskać klucz, zobacz [Wypróbuj usługi Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search).
+- Aby skorzystać z samouczka, potrzebny jest klucz subskrypcji interfejsu API wyszukiwania niestandardowego Bing.  Aby uzyskać klucz, [Utwórz zasób wyszukiwanie niestandardowe Bing](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) w Azure Portal. Możesz również użyć [klucza próbnego](https://azure.microsoft.com/try/cognitive-services).
 - Jeśli nie masz jeszcze zainstalowanego programu Visual Studio 2017 lub nowszego, możesz pobrać i korzystać **bezpłatnie** z programu [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-a-custom-search-instance"></a>Tworzenie wystąpienia wyszukiwania niestandardowego
@@ -45,9 +45,9 @@ Aby utworzyć wystąpienie wyszukiwania niestandardowego Bing:
   
 2. Przejdź do [portalu](https://customsearch.ai) wyszukiwania niestandardowego.  
   
-3. Zaloguj się do portalu przy użyciu konta Microsoft (MSA). Jeśli nie masz konta MSA, kliknij pozycję **Create a Microsoft account** (Utwórz konto Microsoft). Jeśli korzystasz z portalu po raz pierwszy, zostanie wyświetlony monit o udzielenie uprawnień dostępu do danych. Kliknij przycisk **Tak**.  
+3. Zaloguj się do portalu przy użyciu konta Microsoft (MSA). Jeśli nie masz konta MSA, kliknij przycisk **utwórz konto Microsoft**. Jeśli korzystasz z portalu po raz pierwszy, zostanie wyświetlony zapytanie o uprawnienia dostępu do danych. Kliknij przycisk **Yes** (Tak).  
   
-4. Po zalogowaniu się kliknij pozycję **New custom search** (Nowe wyszukiwanie niestandardowe). W oknie **Create a new custom search instance** (Tworzenie nowego wystąpienia wyszukiwania niestandardowego) wprowadź istotną nazwę opisową typu zawartości zwracanej przez funkcję wyszukiwania. Nazwę można zmienić w dowolnym momencie.  
+4. Po zalogowaniu się kliknij pozycję **New custom search** (Nowe wyszukiwanie niestandardowe). W oknie **Tworzenie nowego wystąpienia wyszukiwania niestandardowego** wprowadź nazwę zrozumiałą i opisującą typ zawartości zwracanej przez wyszukiwanie. Nazwę można zmienić w dowolnym momencie.  
   
    ![Zrzut ekranu pola Create a new custom search instance (Tworzenie nowego wystąpienia wyszukiwania niestandardowego)](../media/newCustomSrch.png)  
   
@@ -60,11 +60,11 @@ Aby utworzyć wystąpienie wyszukiwania niestandardowego Bing:
 
 Aby uwzględnić wyniki z określonych witryn internetowych lub adresów URL, dodaj je do karty **Active** (Aktywne).
 
-1.  Na stronie **Configuration** (Konfiguracja) kliknij kartę **Active** (Aktywne) i wprowadź adres URL jednej lub większej liczby witryn internetowych, które mają zostać uwzględnione w wyszukiwaniu.
+1.       Na stronie **Configuration** (Konfiguracja) kliknij kartę **Active** (Aktywne) i wprowadź adres URL jednej lub większej liczby witryn internetowych, które mają zostać uwzględnione w wyszukiwaniu.
 
     ![Zrzut ekranu przedstawiający kartę wpisów aktywnych w edytorze definicji](../media/customSrchEditor.png)
 
-2.  Aby upewnić się, że wystąpienie zwraca wyniki, wprowadź zapytanie w okienku podglądu po prawej stronie. Wyszukiwarka Bing zwraca tylko wyniki z witryn publicznych, które zostały przez nią zindeksowane.
+2.       Aby upewnić się, że wystąpienie zwraca wyniki, wprowadź zapytanie w okienku podglądu po prawej stronie. Wyszukiwarka Bing zwraca tylko wyniki z witryn publicznych, które zostały przez nią zindeksowane.
 
 ## <a name="add-blocked-entries"></a>Dodawanie wpisów zablokowanych
 
@@ -79,7 +79,7 @@ Aby wykluczyć wyniki z określonych witryn internetowych lub adresów URL, doda
 
 ## <a name="add-pinned-entries"></a>Dodawanie wpisów przypiętych
 
-Aby przypiąć określoną stronę sieci Web na początku wyników wyszukiwania, Dodaj stronę sieci Web i termin zapytania do **przypiętej** karty. **Przypięta** karta zawiera listę par terminów na stronie sieci Web i zapytań, które określają stronę sieci Web wyświetlaną jako górny wynik konkretnego zapytania. Ta strona internetowa zostaje przypięta tylko wtedy, gdy ciąg zapytania użytkownika jest zgodny z ciągiem zapytania przypiętego elementu na podstawie jego warunku dopasowania. W wyszukiwaniach będą wyświetlane tylko indeksowane strony internetowe. Aby uzyskać więcej informacji, zobacz [Define your custom view (Definiowanie widoku niestandardowego)](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results).
+Aby przypiąć określoną stronę sieci Web na początku wyników wyszukiwania, Dodaj stronę sieci Web i termin zapytania do **przypiętej** karty. **Przypięta** karta zawiera listę par terminów na stronie sieci Web i zapytań, które określają stronę sieci Web wyświetlaną jako górny wynik konkretnego zapytania. Strona sieci Web jest przypięta tylko wtedy, gdy ciąg zapytania użytkownika pasuje do ciągu zapytania kodu PIN na podstawie warunku dopasowania numeru PIN. W wyszukiwaniach będą wyświetlane tylko indeksowane strony internetowe. Aby uzyskać więcej informacji, zobacz [Define your custom view (Definiowanie widoku niestandardowego)](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results).
 
 1. Na stronie **Configuration** (Konfiguracja) kliknij kartę **Pinned** (Przypięte) i wprowadź stronę internetową oraz termin zapytania strony internetowej, które mają być zwracane jako najlepszy wynik.  
   

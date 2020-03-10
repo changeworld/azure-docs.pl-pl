@@ -4,12 +4,12 @@ description: Dowiedz się, jak utworzyć prywatny klaster usługi Azure Kubernet
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.openlocfilehash: 4b4ba130d9ff63291abdd46617b0692e844a60bf
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 0a05bd15fff97d4f0020f6ce82ee90a2fe995edf
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649511"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944196"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Tworzenie prywatnego klastra usługi Azure Kubernetes Service (wersja zapoznawcza)
 
@@ -100,6 +100,14 @@ az provider register --namespace Microsoft.Network
 ```
 ## <a name="create-a-private-aks-cluster"></a>Tworzenie prywatnego klastra AKS
 
+### <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+
+Utwórz grupę zasobów lub Użyj istniejącej grupy zasobów dla klastra AKS.
+
+```azurecli-interactive
+az group create -l westus -n MyResourceGroup
+```
+
 ### <a name="default-basic-networking"></a>Domyślna sieć podstawowa 
 
 ```azurecli-interactive
@@ -126,35 +134,29 @@ Where *--enable-Private-Cluster* jest obowiązkową flagą dla klastra prywatneg
 > [!NOTE]
 > Jeśli adres CIDR (172.17.0.1/16) mostka platformy Docker koliduje z maską CIDR podsieci, należy odpowiednio zmienić adres mostka platformy Docker.
 
-## <a name="connect-to-the-private-cluster"></a>Nawiązywanie połączenia z klastrem prywatnym
+## <a name="options-for-connecting-to-the-private-cluster"></a>Opcje łączenia się z klastrem prywatnym
 
-Punkt końcowy serwera interfejsu API nie ma publicznego adresu IP. W związku z tym należy utworzyć maszynę wirtualną platformy Azure w sieci wirtualnej i połączyć się z serwerem interfejsu API. Aby to zrobić, wykonaj następujące czynności:
+Punkt końcowy serwera interfejsu API nie ma publicznego adresu IP. Aby zarządzać serwerem interfejsu API, należy użyć maszyny wirtualnej, która ma dostęp do Virtual Network platformy Azure klastra AKS. Istnieje kilka opcji ustanawiania łączności sieciowej z klastrem prywatnym.
 
-1. Pobierz poświadczenia, aby połączyć się z klastrem.
+* Utwórz maszynę wirtualną w tej samej usłudze Azure Virtual Network (VNet) jako klaster AKS.
+* Użyj maszyny wirtualnej w oddzielnym sieci i skonfiguruj [komunikację równorzędną sieci wirtualnej][virtual-network-peering].  Zapoznaj się z sekcją poniżej, aby uzyskać więcej informacji na temat tej opcji.
+* Użyj usługi [Express Route lub połączenia sieci VPN][express-route-or-VPN] .
 
-   ```azurecli-interactive
-   az aks get-credentials --name MyManagedCluster --resource-group MyResourceGroup
-   ```
+Najłatwiej jest utworzyć maszynę wirtualną w tej samej sieci wirtualnej, co klaster AKS.  Funkcja Express Route i sieci VPN zwiększa koszty i wymaga dodatkowej złożoności sieci.  Komunikacja równorzędna sieci wirtualnych wymaga zaplanowania zakresów CIDR sieci, aby upewnić się, że nie ma nakładających się zakresów.
 
-1. Wykonaj jedną z następujących czynności:
-   * Utwórz MASZYNę wirtualną w tej samej sieci wirtualnej co klaster AKS.  
-   * Utwórz MASZYNę wirtualną w innej sieci wirtualnej i równorzędną sieć wirtualną z siecią wirtualną klastra AKS.
+## <a name="virtual-network-peering"></a>Wirtualne sieci równorzędne
 
-     Jeśli tworzysz MASZYNę wirtualną w innej sieci wirtualnej, skonfiguruj link między tą siecią wirtualną i prywatną strefą DNS. W tym celu:
+Jak wspomniano, Komunikacja równorzędna sieci wirtualnej jest jednym ze sposobów uzyskiwania dostępu do klastra prywatnego. Aby można było użyć komunikacji równorzędnej sieci wirtualnej, należy skonfigurować łącze między siecią wirtualną i prywatną strefą DNS.
     
-     a. Przejdź do grupy zasobów MC_ * w Azure Portal.  
-     b. Wybierz prywatną strefę DNS.   
-     c. W lewym okienku wybierz łącze **Sieć wirtualna** .  
-     d. Utwórz nowy link, aby dodać sieć wirtualną maszyny wirtualnej do prywatnej strefy DNS. Udostępnienie linku strefy DNS może potrwać kilka minut.  
-     e. Wróć do grupy zasobów MC_ * w Azure Portal.  
-     f. W prawym okienku wybierz sieć wirtualną. Nazwa sieci wirtualnej ma postać *AKS-VNET-\** .  
-     g. W lewym okienku wybierz pozycję **Komunikacja równorzędna**.  
-     h. Wybierz pozycję **Dodaj**, Dodaj sieć wirtualną maszyny wirtualnej, a następnie utwórz komunikację równorzędną.  
-     i. Przejdź do sieci wirtualnej, w której znajduje się maszyna wirtualna, wybierz pozycję **Komunikacja równorzędna**, wybierz sieć wirtualną AKS, a następnie utwórz komunikację równorzędną. Jeśli zakresy adresów w sieci wirtualnej AKS i konflikty sieci wirtualnej maszyn wirtualnych są niepowodzeniem, Komunikacja równorzędna nie powiedzie się. Aby uzyskać więcej informacji, zobacz [wirtualne sieci równorzędne][virtual-network-peering].
-
-1. Uzyskaj dostęp do maszyny wirtualnej za pośrednictwem Secure Shell (SSH).
-1. Zainstaluj narzędzie polecenia kubectl i uruchom polecenia polecenia kubectl.
-
+1. Przejdź do grupy zasobów MC_ * w Azure Portal.  
+2. Wybierz prywatną strefę DNS.   
+3. W lewym okienku wybierz łącze **Sieć wirtualna** .  
+4. Utwórz nowy link, aby dodać sieć wirtualną maszyny wirtualnej do prywatnej strefy DNS. Udostępnienie linku strefy DNS może potrwać kilka minut.  
+5. Wróć do grupy zasobów MC_ * w Azure Portal.  
+6. W prawym okienku wybierz sieć wirtualną. Nazwa sieci wirtualnej ma postać *AKS-VNET-\** .  
+7. W lewym okienku wybierz pozycję **Komunikacja równorzędna**.  
+8. Wybierz pozycję **Dodaj**, Dodaj sieć wirtualną maszyny wirtualnej, a następnie utwórz komunikację równorzędną.  
+9. Przejdź do sieci wirtualnej, w której znajduje się maszyna wirtualna, wybierz pozycję **Komunikacja równorzędna**, wybierz sieć wirtualną AKS, a następnie utwórz komunikację równorzędną. Jeśli zakresy adresów w sieci wirtualnej AKS i konflikty sieci wirtualnej maszyn wirtualnych są niepowodzeniem, Komunikacja równorzędna nie powiedzie się. Aby uzyskać więcej informacji, zobacz [wirtualne sieci równorzędne][virtual-network-peering].
 
 ## <a name="dependencies"></a>Zależności  
 * Usługa link prywatny jest obsługiwana tylko w przypadku standardowej Azure Load Balancer. Podstawowa Azure Load Balancer nie jest obsługiwana.  
@@ -179,6 +181,8 @@ Punkt końcowy serwera interfejsu API nie ma publicznego adresu IP. W związku z
 [az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
-[private-link-service]: https://docs.microsoft.com/azure/private-link/private-link-service-overview
+[private-link-service]: /private-link/private-link-service-overview
 [virtual-network-peering]: ../virtual-network/virtual-network-peering-overview.md
+[azure-bastion]: ../bastion/bastion-create-host-portal.md
+[express-route-or-vpn]: ../expressroute/expressroute-about-virtual-network-gateways.md
 

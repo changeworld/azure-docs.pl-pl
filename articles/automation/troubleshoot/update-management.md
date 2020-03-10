@@ -8,12 +8,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 1b0047cda3664759f4f1b6499c8a54ee22f98ab3
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 359f78cabbe0372e6892695c092ae49b62df7bfa
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78227454"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944178"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Rozwiązywanie problemów z Update Management
 
@@ -219,14 +219,17 @@ Ten błąd może mieć jedną z następujących przyczyn:
 
 W razie potrzeby użyj [grup dynamicznych](../automation-update-management-groups.md) do wdrożeń aktualizacji. Dodatkowo:
 
-* Sprawdź, czy maszyna nadal istnieje i jest osiągalna. Jeśli nie istnieje, Edytuj wdrożenie i Usuń maszynę.
+* Sprawdź, czy maszyna nadal istnieje i jest osiągalna. 
+* Jeśli maszyna nie istnieje, Edytuj wdrożenie i Usuń maszynę.
 * Zapoznaj się z sekcją [Planowanie sieci](../automation-update-management.md#ports) , aby uzyskać listę portów i adresów wymaganych do Update Management, a następnie sprawdź, czy maszyna spełnia te wymagania.
-* Uruchom następujące zapytanie w Log Analytics, aby znaleźć maszyny w środowisku, których `SourceComputerId` uległy zmianie. Wyszukaj komputery mające taką samą `Computer` wartość, ale inną wartość `SourceComputerId`. 
+* Sprawdź łączność z hybrydowym procesem roboczym elementu Runbook za pomocą narzędzia do rozwiązywania problemów z agentem hybrydowego elementu Runbook. Aby dowiedzieć się więcej na temat narzędzia do rozwiązywania problemów, zobacz [Rozwiązywanie problemów z aktualizowaniem agentów](update-agent-issues.md).
+* Uruchom następujące zapytanie w Log Analytics, aby znaleźć maszyny w środowisku, dla których `SourceComputerId` uległy zmianie. Wyszukaj komputery mające taką samą `Computer` wartość, ale inną wartość `SourceComputerId`.
 
    ```loganalytics
    Heartbeat | where TimeGenerated > ago(30d) | distinct SourceComputerId, Computer, ComputerIP
    ```
-   Po znalezieniu odpowiednich maszyn należy zmodyfikować wdrożenia aktualizacji przeznaczone dla tych maszyn, a następnie je usunąć i dodać ponownie, tak aby `SourceComputerId` odzwierciedlały poprawną wartość.
+
+* Po znalezieniu odpowiednich maszyn należy zmodyfikować wdrożenia aktualizacji przeznaczone dla tych maszyn, a następnie je usunąć i dodać ponownie, tak aby `SourceComputerId` odzwierciedlały poprawną wartość.
 
 ## <a name="updates-nodeployment"></a>Scenariusz: aktualizacje są instalowane bez wdrożenia
 

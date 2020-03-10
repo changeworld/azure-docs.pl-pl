@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: tutorial
-ms.date: 12/09/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 1acc17f9c2fbeb53b992891174866433d14f128d
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: f692367ad431dc8f1623e1b3d5109c313e351934
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986665"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943874"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Samouczek: tworzenie aplikacji jednostronicowej przy użyciu interfejsu API wyszukiwania w sieci Web Bing
 
@@ -37,8 +37,7 @@ Do używania tej aplikacji wymagane jest konto w usłudze [Azure Cognitive Servi
 Składniki wymagane do uruchomienia aplikacji:
 
 * Środowisko Node.js 8 lub nowsze
-* Klucz subskrypcji
-
+* Klucz subskrypcji dla interfejsu API Wyszukiwanie Bing. Jeśli go nie masz, [Utwórz zasób wyszukiwanie Bing wersji 7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). Możesz również użyć [klucza próbnego](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
 ## <a name="get-the-source-code-and-install-dependencies"></a>Pobranie kodu źródłowego oraz instalowanie zależności
 
 Pierwszą czynnością jest sklonowanie repozytorium z kodem źródłowym przykładowej aplikacji.
@@ -287,7 +286,7 @@ function handleBingResponse() {
 
 Większość kodu w obu poprzednich funkcjach jest przeznaczona do obsługi błędów. Błędy mogą wystąpić na następujących etapach:
 
-| Stage | Potencjalne błędy | Obsługiwane przez |
+| Etap | Potencjalne błędy | Obsługiwane przez |
 |-------|--------------------|------------|
 | Tworzenie obiektu żądania | Nieprawidłowy adres URL | Blok `try` / `catch` |
 | Wykonywanie żądania | Błędy sieci, przerwane połączenia | Obsługa zdarzeń `error` i `abort` |
@@ -391,7 +390,7 @@ Argumenty kontekstu to:
 | `section` | Sekcja wyników (`pole`, `mainline` lub `sidebar`), w której zostaje wyświetlony element. |
 | `index`<br>`count` | Dostępny, gdy element `RankingResponse` określa, że powinny być wyświetlane wszystkie wyniki w danej kolekcji; `undefined` w pozostałych przypadkach. Indeks elementu w kolekcji i łączna liczba elementów w tej kolekcji. Tych informacji można użyć do ponumerowania wyników, wygenerowania innego kodu HTML dla pierwszego lub ostatniego wyniku itd. |
 
-W przykładowej aplikacji oba programy renderujące `images` i `relatedSearches` używają argumentów kontekstu, aby dostosować wygenerowany kod HTML. Przyjrzyjmy się bliżej programowi renderującemu `images`:
+W przykładowej aplikacji oba programy renderujące `images` i `relatedSearches` używają argumentów kontekstu, aby dostosować wygenerowany kod HTML. Przyjrzyjmy się bliżej funkcji renderującej `images`:
 
 ```javascript
 searchItemRenderers = {
@@ -421,7 +420,7 @@ Program renderujący do obrazów:
 * oblicza rozmiar miniatury obrazu (szerokość jest zmienna, a wysokość stała i wynosi 60 pikseli);
 * wstawia kod HTML, który poprzedza wynik obrazów w zależności od kontekstu;
 * tworzy tag `<a>` kodu HTML prowadzący do strony, która zawiera obraz;
-* tworzy tag `<img>` kodu HTML, aby wyświetlić miniaturę obrazu;
+* tworzy tag `<img>` kodu HTML, aby wyświetlić miniaturę obrazu.
 
 Program renderujący do obrazów używa zmiennych `section` i `index` do wyświetlania wyników w różny sposób w zależności od tego, gdzie występują. Podział wiersza (tag `<br>`) jest wstawiany między wynikami obrazów na pasku bocznym, na którym zostaje wyświetlona kolumna obrazów. W pozostałych sekcjach pierwszy wynik obrazów `(index === 0)` jest poprzedzony tagiem `<p>`.
 
@@ -440,7 +439,7 @@ Podanie nagłówka `X-MSEdge-ClientID` umożliwia interfejsom API usługi Bing s
 Zasady zabezpieczeń przeglądarki, takie jak współużytkowanie zasobów między źródłami (CORS), mogą uniemożliwić przykładowej aplikacji uzyskanie dostępu do nagłówka `X-MSEdge-ClientID`. To ograniczenie występuje, gdy odpowiedź wyszukiwania ma inne źródło niż strona, z której pochodzi żądanie. W środowisku produkcyjnym, aby rozwiązać ten problem, należy udostępnić skrypt po stronie serwera, który wykonuje wywołanie interfejsu API w tej samej domenie, co strona internetowa. Ponieważ skrypt ma to samo źródło co strona internetowa, nagłówek `X-MSEdge-ClientID` jest dostępny dla kodu JavaScript.
 
 > [!NOTE]
-> W aplikacji internetowej w środowisku produkcyjnym należy mimo to wykonać to żądanie po stronie serwera. W przeciwnym razie należy dołączyć klucz subskrypcji interfejsu API wyszukiwania Bing do strony sieci Web, aby był dostępny dla każdego, kto wyświetli źródło. Płacisz za wszystkie użycia związane z Twoim kluczem subskrypcji interfejsu API, nawet za żądania wykonane przez osoby nieupoważnione, zatem ważne jest, aby nie ujawniać swojego klucza.
+> W aplikacji internetowej w środowisku produkcyjnym należy wykonać to żądanie po stronie serwera. W przeciwnym razie należy dołączyć klucz subskrypcji interfejsu API wyszukiwania Bing do strony sieci Web, aby był dostępny dla każdego, kto wyświetli źródło. Płacisz za wszystkie użycia związane z Twoim kluczem subskrypcji interfejsu API, nawet za żądania wykonane przez osoby nieupoważnione, zatem ważne jest, aby nie ujawniać swojego klucza.
 
 W celach programistycznych możesz wykonywać żądania za pośrednictwem serwera proxy CORS. Odpowiedź z serwera proxy tego typu zawiera nagłówek `Access-Control-Expose-Headers`, który zezwala na nagłówki odpowiedzi i udostępnia je dla języka JavaScript.
 

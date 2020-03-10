@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
-ms.date: 08/05/2019
-ms.openlocfilehash: 16ba90aab52c00f77af590f854217cd989df53b3
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.date: 03/09/2020
+ms.openlocfilehash: 822fab5c00501d415c3c184587141e869523e417
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251910"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945391"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL Database i kontrola dostępu do sieci hurtowni danych
 
@@ -27,19 +27,28 @@ ms.locfileid: "77251910"
 > [!IMPORTANT]
 > Ten artykuł *nie* dotyczy **Azure SQL Database wystąpienia zarządzanego**. Aby uzyskać więcej informacji na temat konfiguracji sieci, zobacz [nawiązywanie połączenia z wystąpieniem zarządzanym](sql-database-managed-instance-connect-app.md) .
 
-Po utworzeniu nowego SQL Server platformy Azure [z Azure Portal](sql-database-single-database-get-started.md), wynik będzie publicznym punktem końcowym w formacie *yourservername.Database.Windows.NET*. Po zaprojektowaniu odmówiono dostępu do publicznego punktu końcowego. Następnie można użyć następujących kontroli dostępu do sieci, aby selektywnie zezwolić na dostęp do bazy danych SQl za pośrednictwem publicznego punktu końcowego
-- Zezwalaj na usługi platformy Azure: — po ustawieniu na wartość włączone inne zasoby w ramach granicy platformy Azure, na przykład maszyna wirtualna platformy Azure, mogą uzyskać dostęp do SQL Database
+Po utworzeniu nowego SQL Server platformy Azure z [Azure Portal](sql-database-single-database-get-started.md), wynik będzie publicznym punktem końcowym w formacie, *yourservername.Database.Windows.NET*.
 
-- Reguły zapory adresów IP: Użyj tej funkcji, aby jawnie zezwolić na połączenia z określonego adresu IP, na przykład z maszyn lokalnych.
+Aby selektywnie zezwolić na dostęp do bazy danych SQl za pośrednictwem publicznego punktu końcowego, można użyć następujących kontroli dostępu do sieci:
+- Zezwalaj na usługi platformy Azure: po ustawieniu na włączone inne zasoby w ramach granicy platformy Azure, na przykład maszyna wirtualna platformy Azure, mogą uzyskać dostęp do SQL Database
 
+- Reguły zapory adresów IP: Użyj tej funkcji, aby jawnie zezwolić na połączenia z określonego adresu IP, na przykład z maszyn lokalnych
+
+Możesz również zezwolić na prywatny dostęp do SQL Database z [sieci wirtualnych](../virtual-network/virtual-networks-overview.md) za pośrednictwem:
 - Virtual Network reguł zapory: Użyj tej funkcji, aby zezwolić na ruch z określonego Virtual Network w ramach granicy platformy Azure
 
+- Link prywatny: Ta funkcja służy do tworzenia prywatnego punktu końcowego dla usługi Azure SQL Server w ramach określonego Virtual Network
+
+
+
+Zapoznaj się z poniższym wideo, aby zapoznać się z ogólnymi objaśnieniami tych kontroli dostępu i ich działaniami:
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Data-Exposed--SQL-Database-Connectivity-Explained/player?WT.mc_id=dataexposed-c9-niner]
+
 
 ## <a name="allow-azure-services"></a>Zezwalaj na usługi platformy Azure 
 Po utworzeniu nowego SQL Server platformy Azure [z poziomu Azure Portal](sql-database-single-database-get-started.md)to ustawienie nie jest zaznaczone.
 
- ![Zrzut ekranu przedstawiający tworzenie nowego serwera][1]
+
 
 Możesz również zmienić to ustawienie za pośrednictwem okienka Zapora po utworzeniu SQL Server platformy Azure w następujący sposób.
   
@@ -129,6 +138,9 @@ Reguły sieci wirtualnej są łatwiejsze do ustanowienia i zarządzania dostępe
 > [!NOTE]
 > Nie można jeszcze mieć SQL Database w podsieci. Jeśli serwer Azure SQL Database był węzłem w podsieci w sieci wirtualnej, wszystkie węzły w sieci wirtualnej mogą komunikować się z SQL Database. W takim przypadku maszyny wirtualne mogą komunikować się z SQL Database bez konieczności używania reguł sieci wirtualnej ani reguł adresów IP.
 
+## <a name="private-link"></a>Link prywatny 
+Link prywatny umożliwia nawiązanie połączenia z usługą Azure SQL Server za pośrednictwem **prywatnego punktu końcowego**. Prywatny punkt końcowy to prywatny adres IP w ramach określonego [Virtual Network](../virtual-network/virtual-networks-overview.md) i podsieci.
+
 ## <a name="next-steps"></a>Następne kroki
 
 - Aby zapoznać się z przewodnikiem Szybki Start dotyczącym tworzenia reguły zapory adresów IP na poziomie serwera, zobacz [Tworzenie bazy danych Azure SQL Database](sql-database-single-database-get-started.md).
@@ -146,3 +158,4 @@ Reguły sieci wirtualnej są łatwiejsze do ustanowienia i zarządzania dostępe
 <!--Image references-->
 [1]: ./media/sql-database-get-started-portal/new-server2.png
 [2]: ./media/sql-database-get-started-portal/manage-server-firewall.png
+

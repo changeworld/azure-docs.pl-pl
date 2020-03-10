@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: b330b6176ba9cadc85fad81876caf2583021d503
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 0ad780c04954c09ddfd432b3c7de3dc65f0841bf
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988638"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942999"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Wprowadzenie do magazynów wiedzy na platformie Azure Wyszukiwanie poznawcze
 
@@ -131,7 +131,7 @@ Po wprowadzeniu wzbogaceń do magazynu dowolne narzędzie lub technologia, któr
 
 <a name="kstore-rest-api"></a>
 
-## <a name="api-reference"></a>Dokumentacja interfejsów API
+## <a name="api-reference"></a>Dokumentacja interfejsu API
 
 Wersja interfejsu API REST `2019-05-06-Preview` zapewnia magazyn wiedzy za poorednictwem dodatkowych definicji w witrynie umiejętności. Oprócz odwołania, aby uzyskać szczegółowe informacje na temat wywoływania interfejsów API, zobacz artykuł [Tworzenie sklepu merytorycznego korzystającego z programu Poster](knowledge-store-create-rest.md) .
 
@@ -147,3 +147,13 @@ Najprostszym podejściem do tworzenia wzbogaconych dokumentów jest użycie port
 
 > [!div class="nextstepaction"]
 > [Tworzenie sklepu z wiedzą przy użyciu programu Poster i REST](knowledge-store-create-rest.md)
+
+Aby dowiedzieć się więcej o projekcjach, możliwościach i sposobach [ich definiowania w zestawu umiejętności](knowledge-store-projection-overview.md)
+
+> [!div class="nextstepaction"]
+> [Projekcje w sklepie merytorycznym](knowledge-store-projection-overview.md)
+
+Samouczek obejmujący zaawansowane koncepcje dotyczące projekcji, takich jak dzielenie, kształtowanie i relacje w tekście, rozpoczyna się od [definiowania projekcji w sklepie z wiedzą](knowledge-store-projections-examples.md)
+
+> [!div class="nextstepaction"]
+> [Definiowanie prognoz w sklepie z bazami danych](knowledge-store-projections-examples.md)

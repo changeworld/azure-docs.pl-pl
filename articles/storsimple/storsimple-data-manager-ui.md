@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: d485a2655b569b3def6162934857b02dbe4f75ea
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 85be49ad88ac62d90235c3da6b89b0da6a11487c
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76273981"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933756"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>Zarządzanie usługą StorSimple Data Manager w programie Azure Portal
 
@@ -102,7 +102,7 @@ Wykonaj następujące kroki, aby utworzyć definicję zadania.
 
    3. W podsekcji **filtru** wprowadź katalog główny zawierający Twoje dane interesujące w formacie _\MyRootDirectory\Data_ . Litery dysków takie jak _\c: \data_ nie są obsługiwane. W tym miejscu możesz również dodać dowolne filtry plików.
 
-   4. Usługa przekształcania danych działa na danych, które są wypychane do platformy Azure za pośrednictwem migawek. Po uruchomieniu tego zadania możesz wybrać opcję tworzenia kopii zapasowej za każdym razem, gdy to zadanie zostanie uruchomione (w celu wykonania najnowszych danych) lub Użyj ostatniej istniejącej kopii zapasowej w chmurze (Jeśli pracujesz nad niektórymi archiwizowanymi danymi).
+   4. Usługa transformacji danych działa tylko na najnowszej migawce danych, które są wypychane do platformy Azure.
 
    5. Kliknij przycisk **OK**.
 
@@ -133,7 +133,7 @@ Wykonaj następujące kroki, aby utworzyć definicję zadania.
 
 ### <a name="run-the-job-definition"></a>Uruchom definicję zadania
 
-Za każdym razem, gdy zachodzi potrzeba przeniesienia danych z StorSimple na konto magazynu określone w definicji zadania, należy je uruchomić. W czasie wykonywania niektóre parametry można określić inaczej. Dostępne są następujące czynności:
+Za każdym razem, gdy zachodzi potrzeba przeniesienia danych z StorSimple na konto magazynu określone w definicji zadania, należy je uruchomić. W czasie wykonywania niektóre parametry można określić inaczej. Czynności procedury są następujące:
 
 1. Wybierz usługę StorSimple Data Manager i przejdź do pozycji **zarządzanie > Definicje zadań**. Wybierz i kliknij definicję zadania, która ma zostać uruchomiona.
      
@@ -150,6 +150,11 @@ Za każdym razem, gdy zachodzi potrzeba przeniesienia danych z StorSimple na kon
 4. Aby monitorować to zadanie, przejdź do obszaru **zadania** w StorSimple Data Manager. Oprócz monitorowania w bloku **zadania** można także nasłuchiwać kolejki magazynu, do której wiadomość jest dodawana za każdym razem, gdy plik zostanie przeniesiony z StorSimple na konto magazynu.
 
     ![Uruchom zadanie 4](./media/storsimple-data-manager-ui/start-job-run4.png)
+
+### <a name="view-logs-after-job-completion"></a>Wyświetl dzienniki po zakończeniu zadania
+
+Po zakończeniu zadania można wyświetlić stan zadania. Stan zadania może być **zakończony powodzeniem**, **częściowe** powodzenie i **Niepowodzenie**. Można wyświetlić listę plików, które zostały pomyślnie skopiowane, i pliki, których skopiowanie nie powiodło się. Te listy są dostępne w kontenerze o nazwie **"StorSimple-Data-Manager-joblogs"** w docelowym koncie magazynu. W tym kontenerze można szukać folderu o takiej samej nazwie jak definicja zadania. W tym celu zostanie utworzony folder dla każdego przebiegu zadania, który będzie zawierać listy. Nazwa tego folderu będzie identyfikatorem GUID zadania, które można uzyskać ze strony Szczegóły zadania. Alternatywnie, w większości przypadków zostanie wyświetlony link do dzienników kopiowania na stronie zadania.
+Istnieje 2 zbiór plików CSV, które będą widoczne w tym folderze. Wszystkie pliki, które zaczynają się od **copiedfilelist...** , będą zawierać listę pomyślnie skopiowanych plików. Wszystkie pliki, które zaczynają się od **failedfilelist...** zawierają pliki, które nie mogły zostać skopiowane wraz z komunikatem o błędzie.
 
 
 ## <a name="next-steps"></a>Następne kroki

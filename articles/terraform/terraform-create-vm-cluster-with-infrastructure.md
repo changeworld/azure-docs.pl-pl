@@ -1,14 +1,15 @@
 ---
 title: Samouczek — Tworzenie klastra maszyn wirtualnych platformy Azure z Terraform i HCL
-description: Tworzenie klastra maszyn wirtualnych z systemem Linux przy użyciu modułu równoważenia obciążenia na platformie Azure przy użyciu Terraform i HCL
+description: W tym samouczku użyto Terraform i HCL do utworzenia klastra maszyn wirtualnych z systemem Linux przy użyciu modułu równoważenia obciążenia na platformie Azure
+keywords: klaster maszyny wirtualnej usługi Azure DevOps Terraform VM
 ms.topic: tutorial
-ms.date: 10/26/2019
-ms.openlocfilehash: 39e9857ad0119c08e949bbe5f6accb07432f3469
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.date: 03/09/2020
+ms.openlocfilehash: ae1b8eac15309ff27297d9472e70d32e68acaaac
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470874"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945269"
 ---
 # <a name="tutorial-create-an-azure-vm-cluster-with-terraform-and-hcl"></a>Samouczek: Tworzenie klastra maszyn wirtualnych platformy Azure z Terraform i HCL
 
@@ -49,6 +50,8 @@ W tej sekcji wygenerujesz jednostkę usługi platformy Azure i dwa pliki konfigu
    variable client_secret {}
   
    provider "azurerm" {
+      version = "~>1.40"
+     
       subscription_id = var.subscription_id
       tenant_id = var.tenant_id
       client_id = var.client_id
@@ -129,7 +132,6 @@ W tej sekcji utworzysz plik zawierający definicje zasobów dla infrastruktury.
       name                          = "testConfiguration"
       subnet_id                     = azurerm_subnet.test.id
       private_ip_address_allocation = "dynamic"
-      load_balancer_backend_address_pools_ids = [azurerm_lb_backend_address_pool.test.id]
     }
    }
 

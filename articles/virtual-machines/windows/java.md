@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 618d9a8d941202db05981566203bf96c02f415a5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 35d5569cb36cb538585b9d2c85a392b668e9fc34
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75358313"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944499"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Tworzenie maszyn wirtualnych z systemem Windows i zarządzanie nimi na platformie Azure przy użyciu języka Java
 
@@ -130,7 +130,7 @@ Przed rozpoczęciem tego kroku upewnij się, że masz dostęp do jednostki [usł
     managementURI=https://management.core.windows.net/
     baseURL=https://management.azure.com/
     authURL=https://login.windows.net/
-    graphURL=https://graph.windows.net/
+    graphURL=https://graph.microsoft.com/
     ```
 
     Zastąp **&lt;Identyfikator subskrypcji&gt;** identyfikatorem subskrypcji, **&lt;identyfikatorem aplikacji&gt;** z identyfikatorem aplikacji Active Directory, **&lt;klucz uwierzytelniania**&gt;z kluczem aplikacji, a **&lt;identyfikator dzierżawy&gt;** z identyfikatorem dzierżawy.

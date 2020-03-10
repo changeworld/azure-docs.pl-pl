@@ -8,12 +8,12 @@ ms.author: xshi
 ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 42431c0db55219c3cb49968986c1a0c7f071b219
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 10c8008d73390174c44ec503f708c1e2c0011e09
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509279"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944314"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Użyj Visual Studio Code do tworzenia i debugowania modułów dla Azure IoT Edge
 
@@ -37,7 +37,7 @@ Najpierw zainstaluj [Visual Studio Code](https://code.visualstudio.com/) a nast�
 - [Narzędzia usługi Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 - [Rozszerzenie platformy Docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
 - Rozszerzenia programu Visual Studio specyficzne dla języka, w którym tworzysz program:
-  - C#, w tym Azure Functions: [ C# rozszerzenie](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
+  - C#, w tym Azure Functions: [ C# rozszerzenie](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
   - Python: [rozszerzenie Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
   - Java: [pakiet rozszerzeń Java dla Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
   - C: [c/C++ rozszerzenie](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
@@ -56,7 +56,7 @@ Do kompilowania i wdrażania obrazu modułu potrzebna jest platforma Docker umo�
 
 - Platforma [Docker Community Edition](https://docs.docker.com/install/) na komputerze deweloperskim.
 
-- [Usługa Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) lub [usługi Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
+- [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) lub [centrum Docker](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
 
     > [!TIP]
     > Można użyć lokalnego rejestru platformy Docker prototypów i testowania zamiast rejestru chmury.
@@ -78,9 +78,9 @@ Aby przetestować moduł na urządzeniu, musisz mieć aktywne Centrum IoT z co n
 
 W poniższych krokach pokazano, jak utworzyć moduł IoT Edge w preferowanym języku programistycznym (w C#tym Azure Functions) przy użyciu Visual Studio Code i narzędzi Azure IoT Tools. Zacznij od utworzenia rozwiązania, a następnie wygenerowania pierwszego modułu w tym rozwiązaniu. Każde rozwiązanie może zawierać wiele modułów.
 
-1. Wybierz **widoku** > **polecenia palety**.
+1. Wybierz pozycję **wyświetl** > **palecie poleceń**.
 
-1. W palecie poleceń, należy wprowadzić, a następnie uruchom polecenie **usługi Azure IoT Edge: nowe rozwiązanie graniczne IoT**.
+1. W palecie poleceń wprowadź i uruchom polecenie **Azure IoT Edge: nowe IoT Edge rozwiązanie**.
 
    ![Uruchom nowe rozwiązanie IoT Edge](./media/how-to-develop-csharp-module/new-solution.png)
 
@@ -121,8 +121,8 @@ Aby dodać dodatkowe moduły do rozwiązania, uruchom polecenie **Azure IoT Edge
 
 Domyślny kod modułu dostarczany wraz z rozwiązaniem znajduje się w następującej lokalizacji:
 
-- Funkcja platformy AzureC#(): **moduły >  *&lt;nazwą&gt;*  >  *&gt;modułu Nazwa modułu. cs&lt;***
-- C#: **moduły >  *&lt;nazwą&gt; modułu* > program.cs**
+- Funkcja platformy AzureC#(): **moduły > *&lt;nazwę modułu&gt;*  >  *&lt;nazwą modułu&gt;* . cs**
+- C#: **moduły > *&lt;nazwą modułu&gt;* > program.cs**
 - Python: **moduły > *&lt;nazwą modułu&gt;* > Main.py**
 - Node. js: **moduły > *&lt;nazwę modułu&gt;* > App. js**
 - Java: **moduły > *&lt;nazwę modułu&gt;* > src > main > java > com > edgemodulemodules > App. Java**
@@ -198,7 +198,7 @@ Aby skonfigurować i uruchomić symulator, uruchom polecenie **Azure IoT Edge: U
    > [!NOTE]
    > Jeśli używasz systemu Windows, upewnij się, że powłoka Visual Studio Code zintegrowanym terminalem jest **git bash** lub **WSL bash**. Nie można uruchomić polecenia `curl` z programu PowerShell lub wiersza polecenia.
    > [!TIP]
-   > Można również użyć [PostMan](https://www.getpostman.com/) lub innych narzędzi interfejsu API, aby wysyłać komunikaty za pośrednictwem zamiast `curl`.
+   > Możesz również użyć narzędzia do [publikowania](https://www.getpostman.com/) lub innych narzędzi interfejsu API do wysyłania komunikatów zamiast `curl`.
 
 1. W widoku debugowanie Visual Studio Code widoczne są zmienne w lewym panelu.
 
@@ -367,4 +367,4 @@ Aby uzyskać więcej informacji i instrukcje krok po kroku, zobacz ten [wpis na 
 
 Po skompilowaniu modułu należy dowiedzieć się, jak [wdrożyć moduły Azure IoT Edge z Visual Studio Code](how-to-deploy-modules-vscode.md).
 
-Tworzenie modułów na urządzeniach usługi IoT Edge [poznawanie i używanie usługi Azure IoT Hub SDKs](../iot-hub/iot-hub-devguide-sdks.md).
+Aby opracowywać moduły dla urządzeń IoT Edge, należy zapoznać się z zestawami [sdk IoT Hub platformy Azure i korzystać](../iot-hub/iot-hub-devguide-sdks.md)z nich.

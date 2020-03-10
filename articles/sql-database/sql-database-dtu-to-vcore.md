@@ -1,5 +1,5 @@
 ---
-title: Migrowanie z jednostek DTU do rdzeń wirtualny
+title: Migrowanie z modelu jednostek DTU do modelu rdzeni wirtualnych
 description: Migruj z modelu DTU do modelu rdzeń wirtualny. Migrowanie do rdzeń wirtualny jest podobne do uaktualniania lub obniżenia poziomu w warstwach Standardowa i Premium.
 services: sql-database
 ms.service: sql-database
@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 10/08/2019
-ms.openlocfilehash: f34439b7750ca1858e71d4a36121eb65001fff50
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 03/09/2020
+ms.openlocfilehash: 693065046f92e0e9eade14c43e9942772440937d
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811270"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945398"
 ---
 # <a name="migrate-from-the-dtu-based-model-to-the-vcore-based-model"></a>Migrowanie z modelu opartego na jednostkach DTU do modelu opartego na rdzeń wirtualny
 
@@ -35,17 +35,17 @@ W poniższej tabeli przedstawiono wskazówki dotyczące określonych scenariuszy
 
 |Bieżąca warstwa usługi|Docelowa warstwa usługi|Typ migracji|Akcje użytkownika|
 |---|---|---|---|
-|Standardowa|Zastosowania ogólne|Linię|Można migrować w dowolnej kolejności, ale trzeba zapewnić odpowiednie rozmiary rdzeń wirtualny *|
+|Standard|Zastosowania ogólne|Linię|Można migrować w dowolnej kolejności, ale trzeba zapewnić odpowiednie rozmiary rdzeń wirtualny *|
 |Premium|Krytyczne dla działania firmy|Linię|Można migrować w dowolnej kolejności, ale trzeba zapewnić odpowiednie rozmiary rdzeń wirtualny *|
-|Standardowa|Krytyczne dla działania firmy|Uaktualnienie|Najpierw należy przeprowadzić migrację pomocniczą|
-|Krytyczne dla działania firmy|Standardowa|Zmiana na starszą lub mniej zaawansowaną wersję|Najpierw należy zmigrować podstawowe|
+|Standard|Krytyczne dla działania firmy|Uaktualnienie|Najpierw należy przeprowadzić migrację pomocniczą|
+|Krytyczne dla działania firmy|Standard|Zmiana na starszą lub mniej zaawansowaną wersję|Najpierw należy zmigrować podstawowe|
 |Premium|Zastosowania ogólne|Zmiana na starszą lub mniej zaawansowaną wersję|Najpierw należy zmigrować podstawowe|
 |Zastosowania ogólne|Premium|Uaktualnienie|Najpierw należy przeprowadzić migrację pomocniczą|
 |Krytyczne dla działania firmy|Zastosowania ogólne|Zmiana na starszą lub mniej zaawansowaną wersję|Najpierw należy zmigrować podstawowe|
 |Zastosowania ogólne|Krytyczne dla działania firmy|Uaktualnienie|Najpierw należy przeprowadzić migrację pomocniczą|
 ||||
 
-\* co 100 DTU w warstwie Standardowa wymaga co najmniej 1 rdzeń wirtualny, a każdy 125 DTU w warstwie Premium wymaga co najmniej 1 rdzeń wirtualny.
+\* jako reguła DTU, co 100 w warstwie Standardowa wymaga co najmniej 1 rdzeń wirtualny, a każdy 125 DTU w warstwie Premium wymaga co najmniej 1 rdzeń wirtualny. Aby uzyskać więcej informacji, zobacz [model zakupu oparty na rdzeń wirtualny](https://docs.microsoft.com/azure/sql-database/sql-database-purchase-models#vcore-based-purchasing-model).
 
 ## <a name="migrate-failover-groups"></a>Migrowanie grup trybu failover
 

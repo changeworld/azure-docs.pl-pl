@@ -1,26 +1,18 @@
 ---
 title: Przykład Przewodnik dotyczący infrastruktury platformy Azure
 description: Poznaj wytyczne dotyczące projektowania i wdrażania przykładowej infrastruktury na platformie Azure.
-documentationcenter: ''
-services: virtual-machines-linux
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 281fc2c0-b533-45fa-81a3-728c0049c73d
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cf63db18dac5fa202bbf339723c6555c4acb2ca2
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6040bf8862131f5a8a5564cd2f5d845fa0490a95
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036030"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944899"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>Przykład Przewodnik dotyczący infrastruktury platformy Azure dla maszyn wirtualnych z systemem Linux
 W tym artykule omówiono Tworzenie przykładowej infrastruktury aplikacji. Szczegółowo projektujemy infrastrukturę dla prostego magazynu online, który łączy wszystkie wytyczne i decyzje dotyczące konwencji nazewnictwa, zestawów dostępności, sieci wirtualnych i modułów równoważenia obciążenia, a także w rzeczywistości wdrażają maszyny wirtualne.
@@ -60,7 +52,7 @@ Wszystkie powyższe zasady nazewnictwa są następujące:
 ## <a name="azure-subscriptions-and-accounts"></a>Subskrypcje i konta platformy Azure
 Cykle Adventure Works korzystają z subskrypcji przedsiębiorstwa o nazwie Adventure Works Enterprise Subscription, aby zapewnić rozliczenia dla tego obciążenia.
 
-## <a name="storage"></a>Magazyn
+## <a name="storage"></a>Storage
 Cykle Adventure Works ustaliły, że powinni używać platformy Azure Managed Disks. Podczas tworzenia maszyn wirtualnych są używane warstwy magazynowania dostępne dla magazynu:
 
 * **Magazyn w warstwie Standardowa** dla serwerów sieci Web, serwerów aplikacji i kontrolerów domeny oraz ich dysków z danymi.

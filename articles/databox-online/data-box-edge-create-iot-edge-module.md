@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: alkohli
-ms.openlocfilehash: f57a0431bbdafee2d38038d0039b47a34e5454c7
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 3aa1190fb713c2fbdedcb1ce84a65d4263693827
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315833"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942553"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>Opracowywanie C# modułu IoT Edge do przenoszenia plików na Data Box Edge
 
@@ -53,7 +53,7 @@ Przed rozpoczęciem upewnij się, że masz następujące elementy:
 - Następujące zasoby programistyczne:
 
     - [Program Visual Studio Code](https://code.visualstudio.com/)
-    - [Rozszerzenie C# for Visual Studio Code (obsługiwane przez technologię OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
+    - [Rozszerzenie C# for Visual Studio Code (obsługiwane przez technologię OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
     - [Rozszerzenie usługi Azure IoT Edge dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)
     - [Zestaw .NET Core 2.1 SDK](https://www.microsoft.com/net/download).
     - [Program Docker CE](https://store.docker.com/editions/community/docker-ce-desktop-windows). Może być konieczne utworzenie konta w celu pobrania i zainstalowania oprogramowania.
@@ -63,7 +63,7 @@ Przed rozpoczęciem upewnij się, że masz następujące elementy:
 Usługa Azure Container Registry to rejestr prywatny platformy Docker na platformie Azure, w którym można przechowywać prywatne obrazy kontenerów Docker i zarządzać nimi. Dwie popularne usługi rejestru platformy Docker dostępne w chmurze to Azure Container Registry i Docker Hub. W tym artykule jest wykorzystywany Container Registry.
 
 1. Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
-2. Wybierz pozycję **Utwórz zasób > kontenery > Container Registry**. Kliknij pozycję **Utwórz**.
+2. Wybierz pozycję **Utwórz zasób > kontenery > Container Registry**. Kliknij przycisk **Utwórz**.
 3. Oferować
 
    1. Unikatowa **Nazwa rejestru** na platformie Azure, która zawiera od 5 do 50 znaków alfanumerycznych.
@@ -92,8 +92,8 @@ Poniższe kroki tworzą projekt modułu IoT Edge na podstawie zestawu .NET Core 
 Utwórz szablon rozwiązania w języku C#, który można dostosować przy użyciu własnego kodu.
 
 1. W Visual Studio Code wybierz pozycję **wyświetl > paletę poleceń** , aby otworzyć paletę poleceń vs Code.
-2. W palecie poleceń wprowadź i uruchom polecenie **Azure: Sign in (Azure: zaloguj się)** , a następnie postępuj zgodnie z instrukcjami, aby zalogować się na swoim koncie platformy Azure. Jeśli już się zalogowano, można pominąć ten krok.
-3. W palecie poleceń wprowadź i uruchom polecenie **Azure IoT Edge: New IoT Edge solution** (Azure IoT Edge: nowe rozwiązanie usługi IoT Edge). W palecie poleceń podaj następujące informacje, aby utworzyć rozwiązanie:
+2. W palecie poleceń wprowadź i uruchom polecenie **Azure: zaloguj się**, a następnie postępuj zgodnie z instrukcjami, aby zalogować się na koncie platformy Azure. Jeśli już się zalogowano, można pominąć ten krok.
+3. W palecie poleceń wprowadź i uruchom polecenie **Azure IoT Edge: nowe rozwiązanie usługi IoT Edge**. W palecie poleceń podaj następujące informacje, aby utworzyć rozwiązanie:
 
     1. Wybierz folder, w którym chcesz utworzyć rozwiązanie.
     2. Podaj nazwę rozwiązania lub zaakceptuj nazwę domyślną **EdgeSolution**.
@@ -107,7 +107,7 @@ Utwórz szablon rozwiązania w języku C#, który można dostosować przy użyci
 
     5. Określ rejestr kontenerów utworzony w poprzedniej sekcji jako repozytorium obrazów dla pierwszego modułu. Zastąp ciąg **localhost:5000** skopiowaną wartością serwera logowania.
 
-        Końcowy ciąg wygląda następująco `<Login server name>/<Module name>`. W tym przykładzie ciąg: `mycontreg2.azurecr.io/filecopymodule`.
+        Końcowy ciąg wygląda jak `<Login server name>/<Module name>`. W tym przykładzie ciąg jest: `mycontreg2.azurecr.io/filecopymodule`.
 
         ![Utwórz nowe rozwiązanie 3](./media/data-box-edge-create-iot-edge-module/create-new-solution-3.png)
 
@@ -272,7 +272,7 @@ W poprzedniej sekcji utworzono rozwiązanie IoT Edge i dodano kod do FileCopyMod
 
     *Program. cs (77, 44): ostrzeżenie CS1998: Ta metoda asynchroniczna nie zawiera operatorów "await" i zostanie uruchomiona synchronicznie. Rozważ użycie operatora "await" do oczekiwania na nieblokujące wywołania interfejsu API lub "await Task. Run (...)" w celu wykonania pracy związanej z PROCESORem w wątku w tle.*
 
-4. Pełny adres obrazu kontenera możesz wyświetlić za pomocą tagu w zintegrowanym terminalu programu VS Code. Adres obrazu jest tworzony na podstawie informacji znajdujących się w pliku module. JSON w formacie `<repository>:<version>-<platform>`. W tym artykule powinien wyglądać tak `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64`.
+4. Pełny adres obrazu kontenera możesz wyświetlić za pomocą tagu w zintegrowanym terminalu programu VS Code. Adres obrazu jest tworzony na podstawie informacji znajdujących się w pliku module. JSON o formacie `<repository>:<version>-<platform>`. W tym artykule powinien wyglądać jak `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64`.
 
 ## <a name="next-steps"></a>Następne kroki
 

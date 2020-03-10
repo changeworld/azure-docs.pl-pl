@@ -8,33 +8,32 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 9ee5eec5a5c17e443fe71f0093f09c96cf81ece0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 60fd5476d687d9f44aec885cdf888572e8e523a4
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60754791"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78946116"
 ---
-# <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-gateway"></a>Zarządzanie użytkownikami w usłudze Azure Data Box Gateway przy użyciu witryny Azure Portal 
+# <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-gateway"></a>Zarządzanie użytkownikami w usłudze Azure Data Box Gateway przy użyciu witryny Azure Portal
 
-W tym artykule opisano sposób zarządzania użytkownikami w usłudze Azure Data Box Gateway. Usługą Azure Data Box Gateway można zarządzać w witrynie Azure Portal lub za pomocą lokalnego internetowego interfejsu użytkownika. Witryna Azure Portal umożliwia dodawanie, modyfikowanie i usuwanie użytkowników.
+W tym artykule opisano sposób zarządzania harmonogramami przepustowości w usłudze Azure Data Box Gateway. Usługą Azure Data Box Gateway można zarządzać w witrynie Azure Portal lub za pomocą lokalnego internetowego interfejsu użytkownika. Witryna Azure Portal umożliwia dodawanie, modyfikowanie i usuwanie użytkowników.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
 > * Dodawanie użytkownika
-> * Modyfikowanie harmonogramu
-> * Usuwanie użytkownika 
+> * Modyfikowanie użytkownika
+> * Usuwanie użytkownika
 
 ## <a name="about-users"></a>Informacje o użytkownikach
 
-Użytkownicy mogą mieć prawo tylko do odczytu lub pełne uprawnienia. Jak sugerują nazwy, użytkownicy z prawem tylko do odczytu mogą wyłącznie wyświetlać dane udziału. Użytkownicy z pełnymi uprawnieniami mogą odczytywać dane udziału, dokonywać zapisu w tych udziałach oraz modyfikować lub usuwać dane udziału. 
+Użytkownicy mogą mieć prawo tylko do odczytu lub pełne uprawnienia. Jak sugerują nazwy, użytkownicy z prawem tylko do odczytu mogą wyłącznie wyświetlać dane udziału. Użytkownicy z pełnymi uprawnieniami mogą odczytywać dane udziału, dokonywać zapisu w tych udziałach oraz modyfikować lub usuwać dane udziału.
 
- - **Użytkownik z pełnymi uprawnieniami** — użytkownik lokalny z pełnym dostępem. 
+ - **Użytkownik z pełnymi uprawnieniami** — użytkownik lokalny z pełnym dostępem.
  - **Użytkownik z prawem tylko do odczytu** — użytkownik lokalny z dostępem tylko do odczytu. Ci użytkownicy są powiązani z udziałami, które umożliwiają wykonywanie operacji tylko do odczytu.
 
-Uprawnienia użytkownika są definiowane podczas jego tworzenia w czasie tworzenia udziału. Po zdefiniowaniu uprawnień związanych z użytkownikiem można je zmodyfikować za pomocą Eksploratora plików. 
-
+Uprawnienia użytkownika są definiowane podczas jego tworzenia w czasie tworzenia udziału. Modyfikowanie uprawnień na poziomie udziału nie jest obecnie obsługiwane.
 
 ## <a name="add-a-user"></a>Dodawanie użytkownika
 
@@ -49,7 +48,7 @@ Wykonaj następujące czynności w witrynie Azure Portal, aby dodać użytkownik
     ![Klikanie przycisku Dodaj użytkownika](media/data-box-gateway-manage-users/add-user-2.png)
 
     > [!IMPORTANT] 
-    > Ci użytkownicy są zastrzeżone przez system i nie powinny być używane: Administrator, EdgeUser EdgeSupport, HcsSetupUser, WDAGUtilityAccount, CLIUSR, konta domyślnego, gościa.  
+    > Oto użytkownicy zarezerwowani przez system, których nie należy używać: Administrator, EdgeUser, EdgeSupport, HcsSetupUser, WDAGUtilityAccount, CLIUSR, DefaultAccount, Guest.  
 
 3. Otrzymasz powiadomienie, gdy tworzenie użytkownika zostanie rozpoczęte i zakończone. Po utworzeniu użytkownika na pasku poleceń kliknij przycisk **Odśwież**, aby wyświetlić zaktualizowaną listę użytkowników.
 
@@ -58,7 +57,7 @@ Wykonaj następujące czynności w witrynie Azure Portal, aby dodać użytkownik
 
 Po utworzeniu użytkownika możesz zmienić przypisane do niego hasło. Kliknij wybraną pozycję na liście użytkowników. Podaj i potwierdź nowe hasło. Zapisz zmiany.
  
-![Modyfikowanie harmonogramu](media/data-box-gateway-manage-users/modify-user-1.png)
+![Modyfikowanie użytkownika](media/data-box-gateway-manage-users/modify-user-1.png)
 
 
 ## <a name="delete-a-user"></a>Usuwanie użytkownika
@@ -78,6 +77,6 @@ Lista użytkowników zostanie zaktualizowana w celu uwzględnienia usuniętego u
 ![Usuwanie użytkownika](media/data-box-gateway-manage-users/delete-user-3.png)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się, jak [zarządzać przepustowością](data-box-gateway-manage-bandwidth-schedules.md).

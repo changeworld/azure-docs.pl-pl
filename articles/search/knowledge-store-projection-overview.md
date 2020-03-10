@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: d8302b69f1e868536eb954a650a62f41e4006b82
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: d264768bf27967d1a778400ae4e9e6f2e054d746
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754528"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942967"
 ---
 # <a name="projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Projekcje w sklepie z bazami danych na platformie Azure Wyszukiwanie poznawcze
 
@@ -211,3 +211,8 @@ Następnym krokiem jest utworzenie pierwszego sklepu z wiedzą przy użyciu przy
 
 > [!div class="nextstepaction"]
 > [Utwórz magazyn wiedzy w usłudze REST](knowledge-store-create-rest.md).
+
+Samouczek obejmujący zaawansowane koncepcje dotyczące projekcji, takich jak dzielenie, kształtowanie i relacje w tekście, rozpoczyna się od [definiowania projekcji w sklepie z wiedzą](knowledge-store-projections-examples.md)
+
+> [!div class="nextstepaction"]
+> [Definiowanie prognoz w sklepie z bazami danych](knowledge-store-projections-examples.md)

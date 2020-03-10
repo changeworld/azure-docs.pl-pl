@@ -4,12 +4,12 @@ description: Jak wdrożyć usługę Azure łańcucha bloków Workbench w wersji 
 ms.date: 01/08/2020
 ms.topic: article
 ms.reviewer: brendal
-ms.openlocfilehash: fab61b5850815e480b4a380fdccd6c1df5b449cd
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 141bb8825e47eb2309f9f551990a2976e8f4e209
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77189186"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943199"
 ---
 # <a name="deploy-azure-blockchain-workbench-preview"></a>Wdrażanie usługi Azure łańcucha bloków Workbench w wersji zapoznawczej
 
@@ -135,7 +135,7 @@ Po zakończeniu wdrożenia programu łańcucha bloków Workbench Nowa grupa zaso
 
     ![Podstawowe informacje o usłudze App Service](media/deploy/app-service.png)
 
-Aby skojarzyć niestandardową nazwę domeny z łańcucha bloków Workbench, zobacz [Konfigurowanie niestandardowej nazwy domeny dla aplikacji sieci Web w Azure App Service przy użyciu Traffic Manager](../../app-service/web-sites-traffic-manager-custom-domain-name.md).
+Aby skojarzyć niestandardową nazwę domeny z łańcucha bloków Workbench, zobacz [Konfigurowanie niestandardowej nazwy domeny dla aplikacji sieci Web w Azure App Service przy użyciu Traffic Manager](../../app-service/configure-domain-traffic-manager.md).
 
 ## <a name="azure-ad-configuration-script"></a>Skrypt konfiguracji usługi Azure AD
 

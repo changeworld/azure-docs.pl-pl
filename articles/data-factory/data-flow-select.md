@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/12/2019
-ms.openlocfilehash: a255d89aa4850d1249f1af9bdd0cb43b0826914f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 03/08/2020
+ms.openlocfilehash: 2d04de420f743e4fef4cff4bd2912559dae0886a
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930243"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78934181"
 ---
 # <a name="mapping-data-flow-select-transformation"></a>Mapowanie wybierania przepływu danych
 
@@ -55,6 +55,11 @@ Jeśli jednak chcesz dodać reguły niestandardowe, kliknij pozycję "Dodaj mapo
 Po wybraniu mapowania opartego na regułach, nastąpi naliczanie PODAJNIKa, aby oszacować pasujące wyrażenie zgodne z regułami przychodzącego wzorca i zdefiniować nazwy pól wychodzących. Możesz dodać dowolną kombinację mapowań pól i reguł. Nazwy pól są następnie generowane w czasie wykonywania przez moduł ADF na podstawie przychodzących metadanych ze źródła. Podczas debugowania można wyświetlać nazwy wygenerowanych pól i korzystać z okienka Podgląd danych.
 
 Więcej szczegółów na temat dopasowywania do wzorca jest dostępnych w [dokumentacji wzorca kolumny](concepts-data-flow-column-pattern.md).
+
+### <a name="use-rule-based-mapping-to-parameterize-the-select-transformation"></a>Użycie mapowania opartego na regułach do Sparametryzuj transformacji SELECT
+Można Sparametryzuj Mapowanie pól w ramach wybierz transformację przy użyciu mapowania opartego na regułach. Użyj słowa kluczowego ```name```, aby sprawdzić nazwy kolumn przychodzących względem parametru. Na przykład jeśli masz parametr przepływu danych o nazwie ```mycolumn``` można utworzyć pojedynczą regułę przekształcania, która zawsze mapuje każdą nazwę kolumny ustawioną ```mycolumn``` na nazwę pola w ten sposób:
+
+```name == $mycolumn```
 
 ## <a name="next-steps"></a>Następne kroki
 * Po użyciu opcji wybierz, aby zmienić nazwę, kolejność i aliasowanie kolumn Użyj [transformacji ujścia](data-flow-sink.md) , aby wyrównać dane do magazynu danych.

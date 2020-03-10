@@ -15,12 +15,12 @@ ms.date: 03/28/2019
 ms.author: mimart
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64f73dd8dbef3f08cd4ea5841e4ec21bac2f55bf
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 70cdb4b42e835a9bfa03f4551ba25088ef8c5226
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276501"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942852"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Używanie ograniczeń dzierżawy do zarządzania dostępem do aplikacji w chmurze SaaS
 
@@ -68,7 +68,7 @@ Aby włączyć ograniczenia dzierżawy za pomocą infrastruktury serwera proxy, 
 
 - Ta funkcja jest uwzględniona w subskrypcjach pakietu Office 365, ale jeśli chcesz użyć ograniczeń dzierżawy do kontrolowania dostępu do innych aplikacji SaaS, wówczas wymagane są Azure AD — wersja Premium 1 licencji.
 
-#### <a name="configuration"></a>Konfigurowanie
+#### <a name="configuration"></a>Konfiguracja
 
 Dla każdego żądania przychodzącego do login.microsoftonline.com, login.microsoft.com i login.windows.net, Wstaw dwa nagłówki HTTP: *ograniczanie dostępu do dzierżawców* i *ograniczanie dostępu do kontekstu*.
 
@@ -93,7 +93,7 @@ Ta sekcja zawiera opis środowiska zarówno dla użytkowników końcowych, jak i
 
 Przykładowy użytkownik znajduje się w sieci firmy Contoso, ale próbuje uzyskać dostęp Fabrikam wystąpienie udostępnione aplikacji SaaS takich jak program Outlook online. Jeśli firma Fabrikam jest niedozwolonym dzierżawcą dla wystąpienia contoso, użytkownik zobaczy komunikat odmowy dostępu, który informuje, że próbujesz uzyskać dostęp do zasobu, który należy do organizacji niezatwierdzonej przez dział IT.
 
-### <a name="admin-experience"></a>Środowisko pracy administratora
+### <a name="admin-experience"></a>Środowisko administratora
 
 Podczas konfigurowania ograniczeń dzierżawy w firmowej infrastrukturze serwerów proxy Administratorzy mogą uzyskać bezpośredni dostęp do raportów ograniczeń dzierżawy w Azure Portal. Aby wyświetlić raporty:
 
@@ -104,6 +104,9 @@ Podczas konfigurowania ograniczeń dzierżawy w firmowej infrastrukturze serwer�
 3. W polu **inne możliwości** wybierz pozycję **ograniczenia dzierżawy**.
 
 Administrator dzierżawy określony jako dzierżawca kontekstu ograniczonego dostępu może użyć tego raportu, aby zobaczyć, że logowanie zostało zablokowane z powodu zasad ograniczeń dzierżawy, w tym użytych tożsamości i identyfikatora katalogu docelowego. Logowania są uwzględnione, jeśli użytkownik dzierżawy lub zasobów dzierżawy dla logowania jest ustawienie ograniczenia dzierżawy.
+
+> [!NOTE]
+> Raport może zawierać ograniczone informacje, takie jak identyfikator katalogu docelowego, gdy użytkownik, który znajduje się w dzierżawie poza dzierżawcą z ograniczonym dostępem, loguje się. W takim przypadku informacje identyfikowane przez użytkownika, takie jak nazwa i główna nazwa użytkownika, są maskowane w celu ochrony danych użytkownika w innych dzierżawcach.
 
 Podobnie jak inne raporty w witrynie Azure portal można użyć filtrów, aby określić zakres raportu. Można filtrować według określonego przedziału czasu, użytkownika, aplikacji, klienta lub stanu. Jeśli wybierzesz przycisk **kolumny** , możesz wybrać wyświetlanie danych z dowolną kombinacją następujących pól:
 

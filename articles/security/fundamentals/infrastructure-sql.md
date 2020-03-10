@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2018
+ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: 74b0fa4643907493904e77ce333d1ec1dba01f49
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: ad6d3992f03802174eb03aa30b57b8d3dac1d6c4
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727103"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942955"
 ---
 # <a name="azure-sql-database-security-features"></a>Azure SQL Database funkcje zabezpieczeń    
 Azure SQL Database zapewnia usługi relacyjnej bazy danych na platformie Azure. W celu ochrony danych klienta i zapewnienia mocnych funkcji zabezpieczeń, których klienci oczekują od usługi relacyjnej bazy danych, SQL Database mają własne zestawy funkcji zabezpieczeń. Te możliwości są kompilowane na kontrolkach, które są dziedziczone z platformy Azure.
@@ -62,9 +62,9 @@ Ze względu na to, że kontroler sieci szkieletowej (FC) jest centralnym koordyn
 ### <a name="vlan-isolation"></a>Izolacja sieci VLAN
 Sieć produkcyjna platformy Azure jest logicznie segregowana na trzy podstawowe sieci VLAN:
 
-- Główna sieć VLAN: Nawiązuje połączenie z niezaufanymi węzłami klientów.
-- Sieć VLAN FC: Zawiera zaufane systemy FCs i pomocnicze.
-- Sieć VLAN urządzenia: Zawiera zaufane sieci i inne urządzenia infrastruktury.
+- Główna sieć VLAN: wzajemnie nawiązuje połączenie z niezaufanymi węzłami klienta.
+- Sieć VLAN FC: zawiera zaufane systemy FCs i pomocnicze.
+- Urządzenie VLAN: zawiera zaufane sieci i inne urządzenia infrastruktury.
 
 ### <a name="packet-filtering"></a>Filtrowanie pakietów
 IPFilter i zapory oprogramowania zaimplementowane w głównym systemie operacyjnym i systemie operacyjnym gościa węzłów wymuszają ograniczenia łączności i uniemożliwiają nieautoryzowany ruch między maszynami wirtualnymi.
@@ -75,7 +75,7 @@ Izolacja głównego systemu operacyjnego z maszyn wirtualnych gościa i maszyn w
 ### <a name="types-of-rules-on-firewalls"></a>Typy reguł na zaporach
 Reguła jest definiowana jako:
 
-{Security Response Center (SRC) adres IP, port src, docelowy adres IP, port docelowy, protokół docelowy, ruch przychodzący/bezstanowy, limit czasu przepływu Stanów}.
+{SRC IP, port src, docelowy adres IP, port docelowy, protokół docelowy, ruch przychodzący/out, stanowy/bezstanowy, limit czasu przepływu Stanów}.
 
 Asynchroniczny znak bezczynności (SYN) jest dozwolony tylko w przypadku, gdy jedna z reguł zezwala na to. W przypadku protokołu TCP platforma Azure korzysta z reguł bezstanowych, w których zasada jest, że umożliwia tylko wszystkie Niesyn pakietów do lub z maszyny wirtualnej. Lokalne zabezpieczenia polegają na tym, że każdy stos hosta jest odporny na ignorowanie, jeśli nie zostanie użyty wcześniej pakiet SYN. Sam protokół TCP jest stanowy, a w połączeniu z regułą bezstanowej SYN pozwala uzyskać ogólne zachowanie implementacji stanowej.
 
@@ -92,7 +92,7 @@ Zmiany są monitorowane pod kątem sukcesu. W scenariuszu awarii zmiana zostanie
 
 Podobnie zmiany sprzętu i sieci zostały ustalone w celu ocenienia ich zgodności z wymaganiami kompilacji. Wersje są przeglądane i autoryzowane za pośrednictwem skoordynowanej tablicy doradcy zmian (CAB) odpowiednich grup na stosie.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej na temat sposobu zabezpieczania infrastruktury platformy Azure przez firmę Microsoft, zobacz:
 
 - [Funkcje platformy Azure, lokalne i zabezpieczenia fizyczne](physical-security.md)
@@ -104,5 +104,3 @@ Aby dowiedzieć się więcej na temat sposobu zabezpieczania infrastruktury plat
 - [Monitorowanie infrastruktury platformy Azure](infrastructure-monitoring.md)
 - [Integralność infrastruktury platformy Azure](infrastructure-integrity.md)
 - [Ochrona danych klienta platformy Azure](protection-customer-data.md)
-
-

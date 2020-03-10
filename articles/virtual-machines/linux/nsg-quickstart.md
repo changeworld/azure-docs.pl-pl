@@ -1,27 +1,22 @@
 ---
-title: Otwieranie portów na maszynie wirtualnej z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure
-description: Dowiedz się, jak otworzyć port/utworzyć punkt końcowy na maszynie wirtualnej z systemem Linux przy użyciu modelu wdrażania usługi Azure Resource Manager i interfejsu wiersza polecenia platformy Azure
-services: virtual-machines-linux
-documentationcenter: ''
+title: Otwieranie portów dla maszyny wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure
+description: Dowiedz się, jak otworzyć port/utworzyć punkt końcowy na maszynie wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure.
 author: cynthn
 manager: gwallace
-editor: ''
-ms.assetid: eef9842b-495a-46cf-99a6-74e49807e74e
-ms.service: virtual-machines-linux
-ms.devlang: azurecli
+ms.service: virtual-machines
+ms.subservice: networking
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: cfcea8c775b2d6a9bee3c078cf67f0a942af5984
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d9488b7a466dfc67edbf2dcbee966fc1fc72e8b7
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75354047"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944542"
 ---
-# <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>Otwieranie portów i punktów końcowych na maszynie wirtualnej z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure
+# <a name="open-ports-and-endpoints-to-a-vm-with-the-azure-cli"></a>Otwieranie portów i punktów końcowych na maszynie wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure
 
 Możesz otworzyć port lub utworzyć punkt końcowy na maszynie wirtualnej na platformie Azure, tworząc filtr sieci dla podsieci lub interfejsu sieciowego maszyny wirtualnej. Należy umieścić te filtry, które kontrolują ruch przychodzący i wychodzący, w sieciowej grupie zabezpieczeń dołączonej do zasobu, który odbiera ruch. Użyjmy typowego przykładu ruchu w sieci Web na porcie 80. W tym artykule pokazano, jak otworzyć port do maszyny wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure. 
 

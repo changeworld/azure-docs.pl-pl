@@ -5,12 +5,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: W tym samouczku pokazano, jak używać Azure Dev Spaces i Visual Studio Code do debugowania i szybkiego iterowania aplikacji platformy .NET Core w usłudze Azure Kubernetes Service
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s
-ms.openlocfilehash: e23685d410b2d663efde8c530be01adaab637bf8
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 306e1c7a43ddd10faa0a537d567257fe95336c23
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252422"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942502"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-net-core-with-azure-dev-spaces"></a>Utwórz przestrzeń Kubernetes dev: Visual Studio Code i .NET Core z Azure Dev Spaces
 
@@ -81,7 +81,7 @@ Wpisz następujące polecenie interfejsu wiersza polecenia platformy Azure, poda
 Rozbudowane funkcje, takie jak debugowanie rozwiązania Kubernetes, są dostępne dla deweloperów platformy .NET Core i środowiska Node.js korzystających z programu VS Code.
 
 1. Jeśli nie masz programu [VS Code](https://code.visualstudio.com/Download), zainstaluj go.
-1. Pobierz i zainstaluj program [VS Azure dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) i [C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) rozszerzenia. Dla każdego rozszerzenia kliknij przycisk Zainstaluj na stronie witryny Marketplace rozszerzenia i ponownie w VS Code.
+1. Pobierz i zainstaluj program [VS Azure dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) i [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) rozszerzenia. Dla każdego rozszerzenia kliknij przycisk Zainstaluj na stronie witryny Marketplace rozszerzenia i ponownie w VS Code.
 
 ## <a name="create-a-web-app-running-in-a-container"></a>Tworzenie aplikacji internetowej uruchomionej w kontenerze
 

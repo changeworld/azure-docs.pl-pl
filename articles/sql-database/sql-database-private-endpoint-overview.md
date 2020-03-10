@@ -1,5 +1,5 @@
 ---
-title: Łącze prywatne
+title: Link prywatny
 description: Omówienie funkcji prywatnego punktu końcowego
 author: rohitnayakmsft
 ms.author: rohitna
@@ -7,15 +7,15 @@ titleSuffix: Azure SQL Database and SQL Data Warehouse
 ms.service: sql-database
 ms.topic: overview
 ms.reviewer: vanto
-ms.date: 09/17/2019
-ms.openlocfilehash: 427ba0e46f8f4090ce8c2080b1d6780b165e864c
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.date: 03/09/2020
+ms.openlocfilehash: ab9c5c5c1134d2e09a790a788a3b7e55f807dd9b
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121084"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945369"
 ---
-# <a name="private-link-for-azure-sql-database-and-data-warehouse-preview"></a>Link prywatny dla Azure SQL Database i magazynu danych (wersja zapoznawcza)
+# <a name="private-link-for-azure-sql-database-and-data-warehouse"></a>Prywatny link do Azure SQL Database i magazynu danych
 
 Link prywatny umożliwia nawiązanie połączenia z różnymi usługami PaaS na platformie Azure za pośrednictwem **prywatnego punktu końcowego**. Aby uzyskać listę PaaS usług, które obsługują funkcję linku prywatnego, przejdź do strony [dokumentacji link prywatny](../private-link/index.yml) . Prywatny punkt końcowy to prywatny adres IP w obrębie określonej sieci [wirtualnej](../virtual-network/virtual-networks-overview.md) i podsieci. 
 
@@ -49,7 +49,7 @@ Za pomocą linku prywatnego klienci mogą włączyć dostęp między lokalizacja
 ### <a name="creation-process"></a>Proces tworzenia
 Prywatne punkty końcowe można tworzyć przy użyciu portalu, programu PowerShell lub interfejsu wiersza polecenia platformy Azure:
 - [Portal](../private-link/create-private-endpoint-portal.md)
-- [Program PowerShell](../private-link/create-private-endpoint-powershell.md)
+- [PowerShell](../private-link/create-private-endpoint-powershell.md)
 - [Interfejs wiersza polecenia](../private-link/create-private-endpoint-cli.md)
 
 ### <a name="approval-process"></a>Proces zatwierdzania
@@ -82,7 +82,7 @@ W tym scenariuszu przyjęto założenie, że utworzono maszynę wirtualną platf
 
 1. [Uruchom sesję pulpit zdalny (RDP) i Połącz się z maszyną wirtualną](../virtual-machines/windows/connect-logon.md#connect-to-the-virtual-machine). 
 1. Następnie można wykonać podstawowe testy łączności, aby upewnić się, że maszyna wirtualna nawiązuje połączenie z SQL Database za pośrednictwem prywatnego punktu końcowego przy użyciu następujących narzędzi:
-    1. Protokół Telnet
+    1. Program
     1. Psping
     1. Nmap
     1. SQL Server Management Studio (SSMS)
@@ -145,7 +145,7 @@ Wynik pokazuje, że jeden adres IP jest w użyciu. odpowiada adresowi IP dla pry
 
 ### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>Sprawdź łączność przy użyciu SQL Server Management Studio (SSMS)
 > [!NOTE]
->Użyj w **pełni kwalifikowanej nazwy domeny (FQDN)** serwera w parametrach połączenia dla klientów. Wszystkie próby logowania wprowadzone bezpośrednio do adresu IP nie będą działać zgodnie z projektem.
+> Użyj w **pełni kwalifikowanej nazwy domeny (FQDN)** serwera w parametrach połączenia dla klientów. Wszystkie próby logowania wprowadzone bezpośrednio do adresu IP nie powiodą się. To zachowanie jest zgodne z projektem, ponieważ prywatny punkt końcowy kieruje ruch do bramy SQL w regionie i należy określić nazwę FQDN, aby logowanie powiodło się.
 
 Wykonaj kroki opisane tutaj, aby użyć programu [SSMS do nawiązania połączenia z SQL Database](sql-database-connect-query-ssms.md). Po nawiązaniu połączenia z SQL Database przy użyciu programu SSMS Sprawdź, czy łączysz się z prywatnego adresu IP maszyny wirtualnej platformy Azure, uruchamiając następujące zapytanie:
 
@@ -153,8 +153,9 @@ Wykonaj kroki opisane tutaj, aby użyć programu [SSMS do nawiązania połączen
 select client_net_address from sys.dm_exec_connections 
 where session_id=@@SPID
 ````
-> [!NOTE]
-> W wersji zapoznawczej połączenia z prywatnym punktem końcowym obsługują tylko **serwer proxy** jako [zasady połączenia](sql-database-connectivity-architecture.md#connection-policy)
+
+## <a name="limitations"></a>Ograniczenia 
+Połączenia z prywatnym punktem końcowym obsługują tylko **serwer proxy** jako [zasady połączenia](sql-database-connectivity-architecture.md#connection-policy)
 
 
 ## <a name="connecting-from-an-azure-vm-in-peered-virtual-network-vnet"></a>Łączenie z maszyny wirtualnej platformy Azure w Virtual Network komunikacji równorzędnej (VNet) 

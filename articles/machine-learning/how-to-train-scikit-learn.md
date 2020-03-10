@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: maxluk
 author: maxluk
-ms.date: 08/02/2019
+ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: d61e33568297e6f72aca0ab736f8a14f1758ffa1
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: bdd2cc400c3df75742689258caea8cb87ee8ccc6
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255127"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942271"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Kompiluj scikit — Poznaj modele na dużą skalę dzięki Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ Uruchom ten kod w dowolnym z następujących środowisk:
     - [Utwórz plik konfiguracji obszaru roboczego](how-to-configure-environment.md#workspace).
     - Pobierz zestaw danych i przykładowy plik skryptu 
         - [zestaw danych Iris](https://archive.ics.uci.edu/ml/datasets/iris)
-        - [`train_iris.py`](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/scikit-learn/training/train-hyperparameter-tune-deploy-with-sklearn)
+        - [train_iris. PR](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/scikit-learn/training/train-hyperparameter-tune-deploy-with-sklearn)
     - Ukończoną [wersję Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/scikit-learn/training/train-hyperparameter-tune-deploy-with-sklearn/train-hyperparameter-tune-deploy-with-sklearn.ipynb) tego przewodnika można również znaleźć na stronie przykładów usługi GitHub. Notes zawiera rozszerzoną sekcję obejmującą dostrajanie inteligentnego parametru i pobierającą najlepszy model przy użyciu metryk głównych.
 
 ## <a name="set-up-the-experiment"></a>Konfigurowanie eksperymentu
@@ -180,7 +180,7 @@ import joblib
 joblib.dump(svm_model_linear, 'model.joblib')
 ```
 
-Zarejestruj model w obszarze roboczym przy użyciu następującego kodu. Określając parametry `model_framework`, `model_framework_version`i `resource_configuration`, wdrożenie modelu No-Code nie zostanie udostępnione. Dzięki temu można bezpośrednio wdrożyć model jako usługę sieci Web z zarejestrowanego modelu, a obiekt `ResourceConfiguration` definiuje zasób obliczeniowy dla usługi sieci Web.
+Zarejestruj model w obszarze roboczym przy użyciu następującego kodu. Określając parametry `model_framework`, `model_framework_version`i `resource_configuration`, wdrożenie modelu No-Code nie zostanie udostępnione. Dzięki temu można bezpośrednio wdrożyć model jako usługę sieci Web z zarejestrowanego modelu, a obiekt [`ResourceConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.resource_configuration.resourceconfiguration?view=azure-ml-py) definiuje zasób obliczeniowy dla usługi sieci Web.
 
 ```Python
 from azureml.core import Model
@@ -199,7 +199,7 @@ Właśnie zarejestrowany model można wdrożyć w taki sam sposób jak każdy in
 
 ### <a name="preview-no-code-model-deployment"></a>Przeglądania Wdrożenie modelu bez kodu
 
-Zamiast tradycyjnej trasy wdrożenia można również użyć funkcji wdrażania bez kodu (wersja zapoznawcza) dla scikit — uczenie się. Nie jest obsługiwane wdrożenie modelu bez kodu dla wszystkich wbudowanych typów modeli scikit. Rejestrując model, jak pokazano powyżej, za pomocą parametrów `model_framework`, `model_framework_version`i `resource_configuration`, można po prostu użyć funkcji statycznej `deploy()` do wdrożenia modelu.
+Zamiast tradycyjnej trasy wdrożenia można również użyć funkcji wdrażania bez kodu (wersja zapoznawcza) dla scikit — uczenie się. Nie jest obsługiwane wdrożenie modelu bez kodu dla wszystkich wbudowanych typów modeli scikit. Rejestrując model, jak pokazano powyżej, za pomocą parametrów `model_framework`, `model_framework_version`i `resource_configuration`, można po prostu użyć funkcji statycznej [`deploy()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) do wdrożenia modelu.
 
 ```python
 web_service = Model.deploy(ws, "scikit-learn-service", [model])

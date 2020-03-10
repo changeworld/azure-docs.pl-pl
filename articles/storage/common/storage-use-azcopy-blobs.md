@@ -8,12 +8,12 @@ ms.date: 10/22/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: f218c64d3ffe4955877516551a29376372144598
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: fbdb447905ae43fe92693dfe45c1add710f76355
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526726"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933586"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Transferowanie danych za pomocą AzCopy i magazynu obiektów BLOB
 
@@ -73,7 +73,8 @@ Aby uzyskać szczegółowe dokumenty referencyjne, zobacz [AzCopy Copy](storage-
 Możesz również przekazać plik za pomocą symbolu wieloznacznego (*) w dowolnym miejscu w ścieżce lub nazwie pliku. Na przykład: `'C:\myDirectory\*.txt'`lub `C:\my*\*.txt`.
 
 > [!NOTE]
-> AzCopy domyślnie przekazuje dane do blokowych obiektów BLOB. Aby przekazać pliki jako Dołącz obiekty blob lub stronicowe obiekty blob, Użyj flagi `--blob-type=[BlockBlob|PageBlob|AppendBlob]`.
+> AzCopy domyślnie przekazuje dane jako blokowe obiekty blob. Aby przekazać pliki jako Dołącz obiekty blob lub stronicowe obiekty blob, Użyj flagi `--blob-type=[BlockBlob|PageBlob|AppendBlob]`.
+> AzCopy domyślnie przekazuje dane w celu dziedziczenia warstwy dostępu do konta. Aby przekazać pliki do określonej [warstwy dostępu](../blobs/storage-blob-storage-tiers.md), użyj flagi `--block-blob-tier=[Hot|Cool|Archive]`.
 
 ### <a name="upload-a-directory"></a>Przekaż katalog
 
@@ -139,7 +140,7 @@ Można również wykluczać pliki przy użyciu opcji `--exclude-pattern`. Aby do
 
 Opcje `--include-pattern` i `--exclude-pattern` mają zastosowanie tylko do nazw plików, a nie do ścieżki.  Jeśli chcesz skopiować wszystkie pliki tekstowe, które istnieją w drzewie katalogów, użyj opcji `–recursive`, aby uzyskać całe drzewo katalogów, a następnie użyj `–include-pattern` i określ `*.txt`, aby pobrać wszystkie pliki tekstowe.
 
-## <a name="download-files"></a>Pobierz pliki
+## <a name="download-files"></a>Pobieranie plików
 
 Aby pobrać obiekty blob, katalogi i kontenery na komputer lokalny, można użyć polecenia [copy AzCopy](storage-ref-azcopy-copy.md) .
 

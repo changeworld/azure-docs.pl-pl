@@ -8,72 +8,63 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 03/09/2020
 ms.author: amishu
-ms.openlocfilehash: 2b530da06b02091ce66ff7c116f3e17ddcc22497
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+zone_pivot_groups: programming-languages-set-twelve
+ms.openlocfilehash: 3fab02d3dc567a2c54edad5bfb05abe7d99f7b7c
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78331114"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943775"
 ---
-# <a name="using-codec-compressed-audio-input-with-the-speech-sdk"></a>Używanie kodera-dekoder skompresowanego audio z zestawem Speech SDK
+# <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>Korzystanie z kodera-dekoder skompresowanego audio przy użyciu zestawu Speech SDK
 
-Interfejs API **strumienia danych wejściowych audio** zestawu Speech SDK umożliwia przesyłanie strumieniowo skompresowanego dźwięku do usługi mowy przy użyciu PullStream lub PushStream.
+Interfejs API **strumienia danych wejściowych audio** usługi Speech Service SDK umożliwia przesyłanie strumieniowe skompresowanego dźwięku do usługi mowy przy użyciu `PullStream` lub `PushStream`.
 
 > [!IMPORTANT]
-> Przesyłane strumieniowo skompresowane audio wejściowe jest obecnie C++obsługiwane C#dla systemów, i Java w systemie Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8). Jest ona również obsługiwana w przypadku [języka Java w systemach Android](how-to-use-codec-compressed-audio-input-streams-android.md) i [C na platformie iOS](how-to-use-codec-compressed-audio-input-streams-ios.md) .
+> Przesyłane strumieniowo skompresowane audio wejściowe jest obecnie C#obsługiwane C++przez program,, Java w systemie Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8). Jest ona również obsługiwana w przypadku języka Java w systemach Android i C na platformie iOS.
 > Wymagany jest program Speech SDK w wersji 1.7.0 lub nowszej (w wersji 1.10.0 lub nowszej dla RHEL 8, CentOS 8).
 
-W przypadku WAV/PCM zapoznaj się z dokumentacją mowy linii głównej.  Na zewnątrz WAV/PCM obsługiwane są następujące skompresowane formaty danych wejściowych kodera-dekoder:
-
-- MP3
-- OPUS/OGG
-- FLAC
-- ALAW w kontenerze WAV
-- MULAW w kontenerze WAV
+[!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Obsługa skompresowanego dźwięku jest implementowana przy użyciu [GStreamer](https://gstreamer.freedesktop.org). W przypadku danych binarnych GStreamer z przyczyn licencjonowania nie są kompilowane i połączone z zestawem Speech SDK. Deweloper aplikacji musi zainstalować następujące elementy w systemach 18,04, 16,04 i Debian 9, aby użyć skompresowanego audio wejściowego.
+::: zone pivot="programming-language-csharp"
+[!INCLUDE [prerequisites](includes/how-tos/compressed-audio-input/csharp/prerequisites.md)]
+::: zone-end
 
-```sh
-sudo apt install libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
-```
+::: zone pivot="programming-language-cpp"
+[!INCLUDE [prerequisites](includes/how-tos/compressed-audio-input/cpp/prerequisites.md)]
+::: zone-end
 
-W systemie RHEL/CentOS 8:
+::: zone pivot="programming-language-java"
+[!INCLUDE [prerequisites](includes/how-tos/compressed-audio-input/java/prerequisites.md)]
+::: zone-end
 
-```sh
-sudo yum install gstreamer1 gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-bad-free gstreamer1-plugins-ugly-free
-```
-
-> [!NOTE]
-> W systemie RHEL/CentOS 8 postępuj zgodnie z instrukcjami dotyczącymi [sposobu konfigurowania OpenSSL dla systemu Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
+::: zone pivot="programming-language-objectivec"
+[!INCLUDE [prerequisites](includes/how-tos/compressed-audio-input/objectivec/prerequisites.md)]
+::: zone-end
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Przykładowy kod przy użyciu kodera skompresowanego sygnału audio
 
-Aby przesłać strumieniowo w skompresowanym formacie audio do usługi mowy, Utwórz `PullAudioInputStream` lub `PushAudioInputStream`. Następnie utwórz `AudioConfig` z wystąpienia klasy Stream, określając format kompresji strumienia.
+::: zone pivot="programming-language-csharp"
+[!INCLUDE [prerequisites](includes/how-tos/compressed-audio-input/csharp/examples.md)]
+::: zone-end
 
-Załóżmy, że masz klasę strumienia wejściowego o nazwie `myPushStream` i używają OPUS/OGG. Twój kod może wyglądać następująco:
+::: zone pivot="programming-language-cpp"
+[!INCLUDE [prerequisites](includes/how-tos/compressed-audio-input/cpp/examples.md)]
+::: zone-end
 
-```csharp
-using Microsoft.CognitiveServices.Speech;
-using Microsoft.CognitiveServices.Speech.Audio;
+::: zone pivot="programming-language-java"
+[!INCLUDE [prerequisites](includes/how-tos/compressed-audio-input/java/examples.md)]
+::: zone-end
 
-var speechConfig = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
-
-// Create an audio config specifying the compressed audio format and the instance of your input stream class.
-var audioFormat = AudioStreamFormat.GetCompressedFormat(AudioStreamContainerFormat.OGG_OPUS);
-var audioConfig = AudioConfig.FromStreamInput(myPushStream, audioFormat);
-
-var recognizer = new SpeechRecognizer(speechConfig, audioConfig);
-
-var result = await recognizer.RecognizeOnceAsync();
-
-var text = result.GetText();
-```
+::: zone pivot="programming-language-objectivec"
+[!INCLUDE [prerequisites](includes/how-tos/compressed-audio-input/objectivec/examples.md)]
+::: zone-end
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Pobierz subskrypcję usługi mowy w wersji próbnej](https://azure.microsoft.com/try/cognitive-services/)
-* [Zobacz jak rozpoznać mowę w języku Java](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)
+> [!div class="nextstepaction"]
+> [Dowiedz się, jak rozpoznać mowę](quickstarts/speech-to-text-from-microphone.md)

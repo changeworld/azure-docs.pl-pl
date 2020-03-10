@@ -15,11 +15,11 @@ ms.date: 02/16/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
 ms.openlocfilehash: aefd7a55090da7f55404d6f551ab61268582ff5a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039645"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394496"
 ---
 # <a name="configure-a-load-balancer-for-an-availability-group-on-azure-sql-server-vms"></a>Konfigurowanie modułu równoważenia obciążenia dla grupy dostępności na maszynach wirtualnych usługi Azure SQL Server
 W tym artykule wyjaśniono, jak utworzyć moduł równoważenia obciążenia dla SQL Server zawsze włączona Grupa dostępności w usłudze Azure Virtual Machines z programem Azure Resource Manager. Grupa dostępności wymaga modułu równoważenia obciążenia, gdy wystąpienia SQL Server znajdują się na maszynach wirtualnych platformy Azure. Moduł równoważenia obciążenia przechowuje adres IP dla odbiornika grupy dostępności. Jeśli grupa dostępności obejmuje wiele regionów, każdy region wymaga modułu równoważenia obciążenia.
@@ -75,7 +75,7 @@ Najpierw Utwórz moduł równoważenia obciążenia.
    | **Grupa zasobów** |Wybierz grupę zasobów, w której znajdują się wystąpienia SQL Server. |
    | **Lokalizacja** |Wybierz lokalizację platformy Azure, w której znajdują się wystąpienia SQL Server. |
 
-6. Kliknij pozycję **Utwórz**. 
+6. Kliknij przycisk **Utwórz**. 
 
 Platforma Azure tworzy moduł równoważenia obciążenia. Moduł równoważenia obciążenia należy do określonej sieci, podsieci, grupy zasobów i lokalizacji. Po zakończeniu zadania przez platformę Azure Sprawdź ustawienia modułu równoważenia obciążenia na platformie Azure. 
 
@@ -142,7 +142,7 @@ Reguły równoważenia obciążenia umożliwiają skonfigurowanie sposobu, w jak
    | **Port** |*1433* |
    | **Port zaplecza** |*1433*. Ta wartość jest ignorowana, ponieważ ta reguła używa **zmiennoprzecinkowego adresu IP (bezpośredni zwrot serwera)** . |
    | **Badane** |Użyj nazwy sondy utworzonej dla tego modułu równoważenia obciążenia. |
-   | **Trwałość sesji** |**Brak** |
+   | **Trwałość sesji** |**Dawaj** |
    | **Limit czasu bezczynności (minuty)** |*4* |
    | **Zmienny adres IP (bezpośredni zwrot serwera)** |**Enabled (Włączone)** |
 
@@ -244,7 +244,7 @@ Aby dodać adres IP do modułu równoważenia obciążenia z Azure Portal, wykon
     |**Port zaplecza** |Użyj tej samej wartości co **port**.
     |**Pula zaplecza** |Pula zawierająca maszyny wirtualne z wystąpieniami SQL Server. 
     |**Sonda kondycji** |Wybierz utworzoną sondę.
-    |**Trwałość sesji** |Brak
+    |**Trwałość sesji** |None
     |**Limit czasu bezczynności (minuty)** |Wartość domyślna (4)
     |**Zmienny adres IP (bezpośredni zwrot serwera)** | Enabled (Włączony)
 
@@ -293,7 +293,7 @@ Jeśli grupa dostępności uczestniczy w rozproszonej grupie dostępności, modu
    |**Port zaplecza** | 5022 — Użyj tej samej wartości co **port**.
    |**Pula zaplecza** |Pula zawierająca maszyny wirtualne z wystąpieniami SQL Server. 
    |**Sonda kondycji** |Wybierz utworzoną sondę.
-   |**Trwałość sesji** |Brak
+   |**Trwałość sesji** |None
    |**Limit czasu bezczynności (minuty)** |Wartość domyślna (4)
    |**Zmienny adres IP (bezpośredni zwrot serwera)** | Enabled (Włączony)
 

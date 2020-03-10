@@ -1,25 +1,18 @@
 ---
 title: Logowanie do maszyny wirtualnej z systemem Linux przy użyciu poświadczeń Azure Active Directory
 description: Dowiedz się, jak utworzyć i skonfigurować maszynę wirtualną z systemem Linux, aby zalogować się przy użyciu uwierzytelniania Azure Active Directory.
-services: virtual-machines-linux
-documentationcenter: ''
 author: iainfoulds
-manager: gwallace
-editor: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
-ms.openlocfilehash: 9980ad7af4a9e5db1d93ffb389ef7b04209b8c43
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: eb303ecb5657e9312445093841cfa6c501efda18
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544620"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944791"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Wersja zapoznawcza: Logowanie do maszyny wirtualnej z systemem Linux na platformie Azure przy użyciu uwierzytelniania Azure Active Directory
 
@@ -81,7 +74,7 @@ Aby włączyć uwierzytelnianie usługi Azure AD dla maszyn wirtualnych z system
 > [!NOTE]
 > Obecnie nie można skonfigurować grup zabezpieczeń sieci platformy Azure dla maszyn wirtualnych z włączoną funkcją uwierzytelniania usługi Azure AD.
 
-## <a name="create-a-linux-virtual-machine"></a>Utwórz maszynę wirtualną z systemem Linux
+## <a name="create-a-linux-virtual-machine"></a>Tworzenie maszyny wirtualnej z systemem Linux
 
 Utwórz grupę zasobów za pomocą polecenia [AZ Group Create](/cli/azure/group#az-group-create), a następnie utwórz maszynę wirtualną z funkcją [AZ VM Create](/cli/azure/vm#az-vm-create) przy użyciu obsługiwanego dystrybucji i w obsługiwanym regionie. W poniższym przykładzie wdrożono maszynę wirtualną o nazwie *myVM* , która używa *Ubuntu 16,04 LTS* do grupy zasobów o nazwie Moja *resourceName* w regionie *southcentralus* . W poniższych przykładach można podać własną grupę zasobów i nazwy maszyn wirtualnych zgodnie z potrzebami.
 
@@ -113,7 +106,7 @@ az vm extension set \
     --vm-name myVM
 ```
 
-*ProvisioningState* *powiodło* się, gdy rozszerzenie zostanie pomyślnie zainstalowane na maszynie wirtualnej.
+*ProvisioningState* *powiodło* się, gdy rozszerzenie zostanie pomyślnie zainstalowane na maszynie wirtualnej. Aby można było zainstalować rozszerzenie, maszyna wirtualna musi być uruchomionym agentem maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [Omówienie agenta maszyny wirtualnej](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows).
 
 ## <a name="configure-role-assignments-for-the-vm"></a>Konfigurowanie przypisań ról dla maszyny wirtualnej
 
@@ -175,7 +168,7 @@ Przy pierwszym uruchomieniu sudo zostanie wyświetlony monit o uwierzytelnienie 
 ```bash
 %aad_admins ALL=(ALL) ALL
 ```
-Z tym wierszem:
+z tym wierszem:
 
 ```bash
 %aad_admins ALL=(ALL) NOPASSWD:ALL

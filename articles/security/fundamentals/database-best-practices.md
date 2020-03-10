@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 72b15d77baedae318d4503f2d481b08202730459
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 316c3ef3c5bd16b52291029924d04fc159375bc8
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928001"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943660"
 ---
 # <a name="azure-database-security-best-practices"></a>Najlepsze rozwiązania dotyczące zabezpieczeń bazy danych na platformie Azure
 W tym artykule opisano najlepsze rozwiązania dotyczące zabezpieczeń bazy danych.
@@ -72,7 +72,7 @@ Jeśli używasz uwierzytelniania SQL Server, musisz:
 
 - Samodzielne zarządzanie silnymi poświadczeniami.
 - Zabezpiecz poświadczenia w parametrach połączenia.
-- (Potencjalnie) Chroń poświadczenia przesyłane przez sieć z serwera sieci Web do bazy danych programu. Aby uzyskać więcej informacji, zobacz [jak: Połącz się z SQL Server przy użyciu uwierzytelniania SQL w](/previous-versions/msp-n-p/ff648340(v=pandp.10))ASP.NET 2,0.
+- (Potencjalnie) Chroń poświadczenia przesyłane przez sieć z serwera sieci Web do bazy danych programu. Aby uzyskać więcej informacji, zobacz [How to: Connect to a SQL Server Using SQL Authentication in ASP.NET 2,0](/previous-versions/msp-n-p/ff648340(v=pandp.10)).
 
 ### <a name="azure-active-directory-ad-authentication"></a>*Uwierzytelnianie Azure Active Directory (AD)*
 Uwierzytelnianie w usłudze Azure AD to mechanizm łączenia się z Azure SQL Database i [SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) przy użyciu tożsamości w usłudze Azure AD. Uwierzytelnianie za pomocą usługi Azure AD umożliwia zarządzanie tożsamościami użytkowników bazy danych i innych usług firmy Microsoft w jednej centralnej lokalizacji. Centralne zarządzanie IDENTYFIKATORami zapewnia pojedyncze miejsce do zarządzania użytkownikami bazy danych i upraszcza zarządzanie uprawnieniami.
@@ -90,12 +90,12 @@ Oto przykładowe korzyści:
 - Używa użytkowników zawartej bazy danych do uwierzytelniania tożsamości na poziomie bazy danych.
 - Obsługuje uwierzytelnianie oparte na tokenach dla aplikacji łączących się z SQL Database.
 - Obsługuje ona AD FS (Federacja domen) lub natywne uwierzytelnianie użytkownika/hasła dla lokalnego wystąpienia Azure Active Directory bez synchronizacji domeny.
-- Usługa Azure AD obsługuje połączenia z SQL Server Management Studio korzystających z Active Directory uwierzytelniania uniwersalnego, które obejmuje uwierzytelnianie wieloskładnikowe. Uwierzytelnianie wieloskładnikowe zapewnia silne uwierzytelnianie z zakresu opcji weryfikacji — połączenia telefonicznego, wiadomości tekstowej, kart inteligentnych z numerem PIN lub powiadomień aplikacji mobilnej. Aby uzyskać więcej informacji, zobacz temat [Obsługa uwierzytelniania wieloskładnikowego w usłudze Azure AD przy użyciu SQL Database i SQL Data Warehouse](../../sql-database/sql-database-ssms-mfa-authentication.md).
+- Usługa Azure AD obsługuje połączenia z SQL Server Management Studio korzystających z Active Directory uwierzytelniania uniwersalnego, w tym Multi-Factor Authentication. Multi-Factor Authentication zapewnia silne uwierzytelnianie z zakresu opcji weryfikacji — połączenie telefoniczne, wiadomość tekstowa, karty inteligentne z numerem PIN lub powiadomieniem aplikacji mobilnej. Aby uzyskać więcej informacji, zobacz temat [Obsługa programu SSMS dla usługi Azure AD Multi-Factor Authentication z SQL Database i SQL Data Warehouse](../../sql-database/sql-database-ssms-mfa-authentication.md).
 
 Czynności konfiguracyjne obejmują następujące procedury dotyczące konfigurowania i używania uwierzytelniania usługi Azure AD:
 
 - Utwórz i wypełnij usługę Azure AD.
-- Opcjonalnie: Skojarz lub Zmień wystąpienie Active Directory, które jest aktualnie skojarzone z subskrypcją platformy Azure.
+- Opcjonalne: Skojarz lub Zmień wystąpienie Active Directory, które jest aktualnie skojarzone z subskrypcją platformy Azure.
 - Utwórz Azure Active Directory administratora Azure SQL Database lub [Azure SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/).
 - Skonfiguruj komputery klienckie.
 - Utwórz użytkowników zawartej bazy danych w bazie danych zamapowanej na tożsamości usługi Azure AD.
@@ -115,7 +115,7 @@ Ponieważ autoryzowany użytkownik, taki jak administrator zabezpieczeń lub adm
 - Włącz uwierzytelnianie SQL Server na poziomie bazy danych.
 - Użyj uwierzytelniania usługi Azure AD przy użyciu [ról RBAC](/azure/role-based-access-control/overview).
 - Upewnij się, że użytkownicy i aplikacje używają osobnych kont do uwierzytelniania. W ten sposób można ograniczyć uprawnienia przyznawane użytkownikom i aplikacjom oraz zmniejszyć ryzyko złośliwych działań.
-- Implementowanie zabezpieczeń na poziomie bazy danych przy użyciu stałych ról bazy danych (takich jak db_datareader lub db_datawriter). Możesz też utworzyć niestandardowe role dla aplikacji, aby udzielić jawnych uprawnień do wybranych obiektów bazy danych.
+- Zaimplementuj zabezpieczenia na poziomie bazy danych przy użyciu stałych ról bazy danych (takich jak db_datareader lub db_datawriter). Możesz też utworzyć niestandardowe role dla aplikacji, aby udzielić jawnych uprawnień do wybranych obiektów bazy danych.
 
 Aby uzyskać inne sposoby zabezpieczania danych, należy rozważyć następujące kwestie:
 
@@ -145,18 +145,18 @@ Ochrona przed zagrożeniami wykracza poza wykrywanie. Ochrona bazy danych przed 
 - Implementowanie bezpiecznych konfiguracji w bazie danych, dzięki czemu możesz chronić swoją bazę danych.
 - Wykrywanie potencjalnych zagrożeń i reagowanie na nie w miarę ich występowania, aby można było szybko reagować i skorygować.
 
-**Najlepsze rozwiązanie**: Odkryj, klasyfikuj i Oznacz poufne dane w bazach danych.   
-**Szczegóły**: Klasyfikowanie danych w bazie danych SQL przez włączenie [odnajdowania i klasyfikacji danych](/azure/sql-database/sql-database-data-discovery-and-classification) w Azure SQL Database. Możesz monitorować dostęp do poufnych danych na pulpicie nawigacyjnym platformy Azure lub pobierać raporty.
+**Najlepsze rozwiązanie**: odkrywanie, klasyfikowanie i etykietowanie poufnych danych w bazach danych.   
+**Szczegóły**: klasyfikowanie danych w bazie danych SQL przez włączenie [odnajdowania i klasyfikacji danych](/azure/sql-database/sql-database-data-discovery-and-classification) w Azure SQL Database. Możesz monitorować dostęp do poufnych danych na pulpicie nawigacyjnym platformy Azure lub pobierać raporty.
 
-**Najlepsze rozwiązanie**: Śledź luki w zabezpieczeniach bazy danych, aby umożliwić proaktywne ulepszanie zabezpieczeń bazy danych.   
-**Szczegóły**: Użyj usługi [oceny luk](/azure/sql-database/sql-vulnerability-assessment) w zabezpieczeniach Azure SQL Database, która skanuje potencjalne luki w zabezpieczeniach bazy danych. Usługa korzysta z bazy wiedzy o regułach, które flagą luki w zabezpieczeniach i pokazują odchylenia od najlepszych rozwiązań, takich jak niepotrzebne konfiguracje, nadmierne uprawnienia i niechronione dane poufne.
+**Najlepsze rozwiązanie**: śledzenie luk w zabezpieczeniach baz danych, aby umożliwić proaktywne ulepszanie zabezpieczeń bazy danych.   
+**Szczegóły**: Użyj usługi [oceny luk w zabezpieczeniach](/azure/sql-database/sql-vulnerability-assessment) Azure SQL Database, która skanuje potencjalne luki w zabezpieczeniach bazy danych. Usługa korzysta z bazy wiedzy o regułach, które flagą luki w zabezpieczeniach i pokazują odchylenia od najlepszych rozwiązań, takich jak niepotrzebne konfiguracje, nadmierne uprawnienia i niechronione dane poufne.
 
 Zasady są oparte na najlepszych rozwiązaniach firmy Microsoft i koncentrują się na problemach z bezpieczeństwem, które stanowią największe ryzyko dla bazy danych i jej cennych danych. Obejmują one zarówno problemy na poziomie bazy danych, jak i problemy z zabezpieczeniami na poziomie serwera, takie jak ustawienia zapory serwera i uprawnienia na poziomie serwera. Te reguły reprezentują także wiele wymagań od organów prawnych do spełnienia ich standardów zgodności.
 
-**Najlepsze rozwiązanie**: Włącz wykrywanie zagrożeń.  
-**Szczegóły**:  Włącz [wykrywanie zagrożeń](/azure/sql-database/sql-database-threat-detection) Azure SQL Database, aby uzyskać alerty zabezpieczeń i zalecenia dotyczące sposobu badania i łagodzenia zagrożeń. Otrzymujesz alerty dotyczące podejrzanych działań bazy danych, potencjalnych luk w zabezpieczeniach i ataków wstrzykiwania kodu SQL, a także nietypowego dostępu do bazy danych i wzorców zapytań.
+**Najlepsze rozwiązanie**: Włączanie wykrywania zagrożeń.  
+**Szczegóły**: Włącz [wykrywanie zagrożeń](/azure/sql-database/sql-database-threat-detection) Azure SQL Database, aby otrzymywać alerty zabezpieczeń i zalecenia dotyczące sposobu badania i łagodzenia zagrożeń. Otrzymujesz alerty dotyczące podejrzanych działań bazy danych, potencjalnych luk w zabezpieczeniach i ataków wstrzykiwania kodu SQL, a także nietypowego dostępu do bazy danych i wzorców zapytań.
 
-[Zaawansowana ochrona przed zagrożeniami](/azure/sql-database/sql-advanced-threat-protection) to ujednolicony pakiet zaawansowanych funkcji zabezpieczeń SQL. Obejmuje ona wymienione wcześniej usługi: Odnajdywanie i Klasyfikacja danych, Ocena luk w zabezpieczeniach i wykrywanie zagrożeń. Zapewnia ona jedną lokalizację do włączania i zarządzania tymi funkcjami.
+[Zaawansowana ochrona przed zagrożeniami](/azure/sql-database/sql-advanced-threat-protection) to ujednolicony pakiet zaawansowanych funkcji zabezpieczeń SQL. Obejmuje ona wymienione wcześniej usługi: odnajdywanie i Klasyfikacja danych, Ocena luk w zabezpieczeniach i wykrywanie zagrożeń. Zapewnia ona jedną lokalizację do włączania i zarządzania tymi funkcjami.
 
 Włączenie tych funkcji ułatwia:
 
@@ -167,13 +167,9 @@ Włączenie tych funkcji ułatwia:
 
 Ponadto wykrywanie zagrożeń integruje alerty z Azure Security Center, aby uzyskać centralny widok stanu zabezpieczeń wszystkich zasobów platformy Azure.
 
-## <a name="enable-feature-restrictions"></a>Włącz ograniczenia funkcji
-
-Dane zawarte w bazach danych mogą być narażone osobom atakującym przy użyciu wektorów ataków, które wykorzystują błędy bazy danych i czasy wykonywania zapytań. Azure SQL Database udostępnia wiele mechanizmów ograniczeń funkcji chroniących bazę danych. Aby dowiedzieć się więcej, zobacz [SQL Database ograniczenia dotyczące funkcji](/azure/sql-database/sql-database-feature-restrictions).
-
 ## <a name="next-steps"></a>Następne kroki
 Zobacz [najlepsze rozwiązania i wzorce dotyczące zabezpieczeń platformy Azure](best-practices-and-patterns.md) , aby uzyskać więcej najlepszych rozwiązań w zakresie zabezpieczeń, które są używane podczas projektowania i wdrażania rozwiązań w chmurze oraz zarządzania nimi przy użyciu platformy Azure.
 
 Dostępne są następujące zasoby umożliwiające dostarczenie bardziej ogólnych informacji na temat zabezpieczeń platformy Azure i powiązanych usług firmy Microsoft:
 * [Blog zespołu ds. zabezpieczeń platformy Azure](https://blogs.msdn.microsoft.com/azuresecurity/) — na bieżąco z najnowszymi informacjami na temat zabezpieczeń platformy Azure
-* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) — w przypadku których luki w zabezpieczeniach firmy Microsoft, w tym problemy z platformą Azure, mogą być zgłaszane lub wysyłane pocztą e-mailsecure@microsoft.com
+* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) — w przypadku których luki w zabezpieczeniach firmy Microsoft, w tym problemy z platformą Azure, mogą być zgłaszane lub wysyłane pocztą e-mail do secure@microsoft.com

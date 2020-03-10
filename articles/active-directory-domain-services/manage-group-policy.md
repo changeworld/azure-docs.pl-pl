@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 03/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 74d9aa8228e841b17313fb3c15efe459ccd7339a
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: bce71355eef19ec3cc85525033274f57b1a3e0b9
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613588"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78946421"
 ---
 # <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>Administrowanie zasady grupy w Azure AD Domain Servicesej domenie zarządzanej
 
@@ -42,7 +42,11 @@ Aby wykonać ten artykuł, potrzebne są następujące zasoby i uprawnienia:
 * Konto użytkownika, które jest członkiem grupy *administratorów DC usługi Azure AD* w dzierżawie usługi Azure AD.
 
 > [!NOTE]
-> Ponieważ nie ma [dostępu do kontrolerów domeny w usłudze Azure AD DS](faqs.md#can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop), nie można utworzyć i używać magazynu centralnego dla szablonów administracyjnych zasad grupy w domenie zarządzanej. [Folder SYSVOL nie jest uwzględniony w lokalnej synchronizacji Azure AD Connect](synchronization.md#what-isnt-synchronized-to-azure-ad-ds), więc nie można również utworzyć lokalnego magazynu centralnego i zsynchronizować go z usługą Azure AD DS za pomocą usługi Azure AD.
+> Możesz użyć Szablony administracyjne zasady grupy, kopiując nowe szablony do stacji roboczej zarządzania. Skopiuj pliki *ADMX* do `%SYSTEMROOT%\PolicyDefinitions` i skopiuj pliki *ADML* specyficzne dla ustawień regionalnych do `%SYSTEMROOT%\PolicyDefinitions\[Language-CountryRegion]`, gdzie `Language-CountryRegion` pasuje do języka i regionu plików *. adml* .
+>
+> Na przykład skopiuj angielską Stany Zjednoczone wersji plików *. adml* do folderu `\en-us`.
+>
+> Alternatywnie można centralnie przechowywać szablon administracyjny zasady grupy na kontrolerach domeny, które są częścią domeny zarządzanej AD DS platformy Azure. Aby uzyskać więcej informacji, zobacz [jak utworzyć magazyn centralny dla zasady grupy Szablony administracyjne w systemie Windows i zarządzać](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra)nim.
 
 ## <a name="install-group-policy-management-tools"></a>Instalowanie zasady grupy narzędzia do zarządzania
 

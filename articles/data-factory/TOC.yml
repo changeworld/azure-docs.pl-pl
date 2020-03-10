@@ -491,6 +491,8 @@
           href: data-flow-exists.md
         - name: Filtr
           href: data-flow-filter.md
+        - name: Spłaszcz
+          href: data-flow-flatten.md
         - name: Join
           href: data-flow-join.md
         - name: Wyszukiwanie
@@ -515,8 +517,6 @@
           href: data-flow-unpivot.md
         - name: Okno
           href: data-flow-window.md
-        - name: Spłaszcz
-          href: data-flow-flatten.md
     - name: Parametryzacja
       items:
         - name: Parametryzacja połączonych usług

@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 05/09/2019
 ms.author: alkohli
 ms.openlocfilehash: b7d58bb13644c992894510f26a4848ea80c9df00
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471843"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380162"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Samouczek: kopiowanie danych do Azure Data Box magazynu obiektów BLOB za pośrednictwem interfejsów API REST  
 
@@ -100,7 +100,7 @@ Wykonaj następujące kroki, aby zaimportować plik `.cer` do magazynu główneg
 #### <a name="use-windows-powershell"></a>Korzystanie z programu Windows PowerShell
 
 1. Uruchom sesję programu Windows PowerShell jako administrator.
-2. W wierszu polecenia wpisz:
+2. W wierszu polecenia wpisz polecenie:
 
     ```
     Import-Certificate -FilePath C:\temp\localuihttps.cer -CertStoreLocation Cert:\LocalMachine\Root
@@ -189,7 +189,7 @@ Użyj narzędzia AzCopy, aby przekazać wszystkie pliki w folderze do magazynu o
         --dest-key <key> \
         --recursive
 
-#### <a name="windows"></a>Windows
+#### <a name="windows"></a>System Windows
 
     AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S
 
@@ -214,7 +214,7 @@ Jeśli chcesz skopiować tylko zasoby źródłowe, które nie istnieją w miejsc
     --recursive \
     --exclude-older
 
-#### <a name="windows"></a>Windows
+#### <a name="windows"></a>System Windows
 
     AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
 

@@ -6,28 +6,37 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: 992d165d323aab79bb7b5475aa396d4432691530
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: d2ca7b7e4b637802df6a78c2493e3cc088f09881
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754897"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673331"
 ---
 # <a name="optimize-development-and-testing-cost-in-azure-cosmos-db"></a>Optymalizacja kosztów tworzenia i testowania w Azure Cosmos DB
 
-W tym artykule opisano różne opcje używania Azure Cosmos DB do programowania i testowania pod kątem bezpłatnego kosztu.
+W tym artykule opisano różne opcje umożliwiające korzystanie z Azure Cosmos DB na potrzeby tworzenia i testowania bez ponoszenia kosztów, a także technik optymalizacji kosztów na kontach deweloperskich i testowych.
 
 ## <a name="azure-cosmos-db-emulator-locally-downloadable-version"></a>Emulator Azure Cosmos DB (wersja do pobrania lokalnego)
 
 [Azure Cosmos DB emulator](local-emulator.md) to lokalna wersja do pobrania, która naśladuje Azure Cosmos DB usługi w chmurze. Możesz pisać i testować kod, który używa interfejsów API Azure Cosmos DB, nawet jeśli nie masz połączenia sieciowego i nie poniesiesz żadnych kosztów. Emulator Azure Cosmos DB zapewnia środowisko lokalne do celów deweloperskich z wysoką dokładnością do usługi w chmurze. Możesz tworzyć i testować aplikację lokalnie, bez tworzenia subskrypcji platformy Azure. Gdy wszystko będzie gotowe do wdrożenia aplikacji w chmurze, zaktualizuj parametry połączenia w celu nawiązania połączenia z punktem końcowym Azure Cosmos DB w chmurze, a żadne inne modyfikacje nie są wymagane. Możesz również skonfigurować potok ciągłej integracji/ciągłego wdrażania [za pomocą zadania kompilacji emulatora Azure Cosmos DB](tutorial-setup-ci-cd.md) w usłudze Azure DevOps, aby uruchomić testy. Możesz zacząć od odwiedzenia artykułu [emulatora Azure Cosmos DB](local-emulator.md) .
 
+## <a name="azure-cosmos-db-free-tier"></a>Azure Cosmos DB warstwy Bezpłatna 
+Azure Cosmos DB bezpłatna warstwa ułatwia rozpoczęcie pracy, opracowywanie i testowanie aplikacji, a nawet uruchamianie niewielkich obciążeń produkcyjnych. Po włączeniu warstwy Bezpłatna na koncie uzyskasz pierwsze 400 RU/s i 5 GB miejsca do magazynowania w ramach konta. Istnieje również możliwość utworzenia udostępnionej bazy danych przepływności z 25 kontenerami, które współużytkują 400 RU/s na poziomie bazy danych, z uwzględnieniem warstwy Bezpłatna (ograniczenie 5 udostępnionych baz danych przepływności na koncie w warstwie Bezpłatna). Bezpłatna warstwa obowiązuje przez okres istnienia konta i zawiera wszystkie [zalety i funkcje](introduction.md#key-benefits) regularnego konta Azure Cosmos DB, w tym nieograniczony magazyn i przepływność (ru/s), umowy SLA, wysoką dostępność, gotowe Global Distribution we wszystkich regionach świadczenia usługi Azure i innych. W ramach każdej subskrypcji platformy Azure można korzystać z maksymalnie jednego konta warstwy bezpłatnej i musi on być w trakcie tworzenia konta. Aby rozpocząć, [Utwórz nowe konto z włączoną obsługą warstwy Bezpłatna](create-cosmosdb-resources-portal.md). Więcej szczegółów można znaleźć na [stronie cennika](https://azure.microsoft.com/pricing/details/cosmos-db/). 
+
 ## <a name="try-azure-cosmos-db-for-free"></a>Wypróbuj usługę Azure Cosmos DB bezpłatnie
 
-Usługa [Azure Cosmos DB bezpłatnie](https://azure.microsoft.com/try/cosmosdb/) to bezpłatna usługa umożliwiająca tworzenie baz danych i kolekcji oraz eksperymentowanie z Azure Cosmos DB w chmurze. Nie musisz logować się na platformie Azure ani płacić za nie. Konta usługi try Azure Cosmos DB są dostępne przez ograniczony czas, obecnie przez 30 dni. Można je odnowić w dowolnym momencie. Wypróbuj Azure Cosmos DB konta, które ułatwiają ocenę Azure Cosmos DB, kompilowanie i testowanie aplikacji przy użyciu przewodników Szybki Start i samouczków. Możesz utworzyć demonstrację lub wykonać testy jednostkowe bez ponoszenia kosztów. Korzystając z usługi try Azure Cosmos DB w przypadku bezpłatnych kont, możesz bezpłatnie oszacować możliwości Azure Cosmos DB Premium, w tym gotowe Global Distribution, umowy SLA i model spójności. Można utworzyć bazę danych z maksymalnie 25 kontenerami Cosmos platformy Azure i 10 000 RU/s przepływności. Możesz uruchomić przykładową aplikację bez subskrybowania konta platformy Azure lub korzystania z karty kredytowej. Korzystając z bezpłatnych Azure Cosmos DB, możesz utworzyć konto platformy Azure Cosmos z obsługą wielu regionów i uruchomić aplikację w ciągu zaledwie kilku minut. Aby rozpocząć, zobacz sekcję [wypróbuj Azure Cosmos DB dla bezpłatnej](https://azure.microsoft.com/try/cosmosdb/) strony.
+Usługa [Azure Cosmos DB bezpłatnie](https://azure.microsoft.com/try/cosmosdb/) jest bezpłatnym doświadczeniem, który pozwala na eksperymentowanie z Azure Cosmos DB w chmurze bez konieczności rejestrowania się w ramach konta platformy Azure lub korzystania z karty kredytowej. Konta usługi try Azure Cosmos DB są dostępne przez ograniczony czas, obecnie przez 30 dni. Można je odnowić w dowolnym momencie. Wypróbuj Azure Cosmos DB konta ułatwiają ocenę Azure Cosmos DB, kompilowanie i testowanie aplikacji oraz korzystanie z przewodników Szybki Start i samouczków. Możesz również utworzyć demonstrację, przeprowadzić testy jednostkowe, a nawet utworzyć konto wieloregionowe i uruchomić na nim aplikację bez ponoszenia kosztów. Na koncie try Azure Cosmos DB można mieć jedną udostępnioną bazę danych przepływności z maksymalnie 25 kontenerami i 20 000 RU/s przepływności lub jeden kontener z maksymalnie 5000 RU/s. Aby rozpocząć, zobacz sekcję [wypróbuj Azure Cosmos DB dla bezpłatnej](https://azure.microsoft.com/try/cosmosdb/) strony.
 
 ## <a name="azure-free-account"></a>Bezpłatne konto platformy Azure
 
 Azure Cosmos DB jest uwzględniona na [koncie bezpłatnej platformy Azure](https://azure.microsoft.com/free), które oferuje bezpłatnie środki na korzystanie z platformy Azure i za pewien czas. W odniesieniu do Azure Cosmos DB to bezpłatne konto oferuje 5 GB pamięci masowej i 400 jednostek ru przepływności dla całego roku. Dzięki temu każdy deweloper może łatwo przetestować funkcje Azure Cosmos DB lub zintegrować ją z innymi usługami platformy Azure bez ponoszenia kosztów. Bezpłatne konto platformy Azure pozwala uzyskać środki na korzystanie z $200 USD za pierwsze 30 dni. Opłata nie zostanie naliczona, nawet jeśli zaczniesz korzystać z usług, dopóki nie zdecydujesz się na uaktualnienie. Aby rozpocząć, odwiedź stronę [bezpłatnego konta platformy Azure](https://azure.microsoft.com/free) .
+
+## <a name="use-shared-throughput-databases"></a>Korzystanie z udostępnionych baz danych przepływności
+
+W [udostępnionej bazie danych przepływności](set-throughput.md#set-throughput-on-a-database)wszystkie kontenery wewnątrz bazy danych współużytkują zainicjowaną przepływność (ru/s) bazy danych. Jeśli na przykład baza danych zostanie zainicjowana z 400 RU/s i ma cztery kontenery, wszystkie cztery kontenery będą współużytkować 400 RU/s. W środowisku deweloperskim lub testowym, w którym można uzyskać dostęp do każdego kontenera rzadziej i w ten sposób wymagać mniejszej niż minimum 400 RU/s, umieszczenie kontenerów w udostępnionej bazie danych przepływności może pomóc zoptymalizować koszt. 
+
+Załóżmy na przykład, że Twoje konto deweloperskie lub testowe ma cztery kontenery. Jeśli utworzysz cztery kontenery z dedykowaną przepływność (minimum 400 RU/s), Łączna liczba RU/s będzie 1600 RU/s. Natomiast w przypadku utworzenia udostępnionej bazy danych przepływności (minimum 400 RU/s) i umieszczenia w niej kontenerów łączna liczba jednostek RU/s będzie wynosić tylko 400 RU/s. Ogólnie udostępniona baza danych przepływności doskonale nadaje się do scenariuszy, w których nie jest wymagana gwarantowana przepływność na żadnym konkretnym kontenerze.  Dowiedz się więcej o [udostępnionych bazach danych przepływności.](set-throughput.md#set-throughput-on-a-database)
 
 ## <a name="next-steps"></a>Następne kroki
 

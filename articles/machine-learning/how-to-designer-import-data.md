@@ -9,12 +9,12 @@ ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
-ms.openlocfilehash: d41b0499df1a62440e8c1991e29f7963224a50d6
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 8cd49f9714746578ec701e22f9e6b0ccce772c6b
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77138154"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942294"
 ---
 # <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>Importowanie danych do programu Azure Machine Learning Designer (wersja zapoznawcza)
 
@@ -56,6 +56,8 @@ Chociaż zalecamy używanie zestawów danych do importowania danych, można rów
 
 Aby uzyskać szczegółowe informacje na temat korzystania z modułu Importuj dane, zobacz [stronę Importowanie danych źródłowych](algorithm-module-reference/import-data.md).
 
+[!NOTE]
+> Jeśli dane zawierają wiele kolumn, może wystąpić błąd "Walidacja nie powiodła się z powodu ograniczenia rozmiaru" w module importu danych. Wynika to z faktu, że kolumny nie zawierają długości parametru modułu Maxmium po kodowaniu. W takim przypadku zalecamy [zarejestrowanie zestawu danych w interfejsie użytkownika DataSets](how-to-create-register-datasets.md#use-the-ui), który może uniknąć błędu.  
 
 ## <a name="supported-sources"></a>Obsługiwane źródła
 

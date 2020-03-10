@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 82daf447270fc0413284e3e7a908a8b5237a4f9c
-ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
+ms.openlocfilehash: f7a6c5872c5e2b7e1b47b40e32ddb047641e8b2e
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/09/2020
-ms.locfileid: "78932983"
+ms.locfileid: "78944226"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj profil techniczny Azure Active Directory w Azure Active Directory B2C zasadach niestandardowych
 
@@ -56,7 +56,7 @@ W poniższym przykładzie przedstawiono profil techniczny usługi **AAD-Common**
 </TechnicalProfile>
 ```
 
-## <a name="input-claims"></a>Oświadczenia wejściowe
+## <a name="inputclaims"></a>InputClaims
 
 Element InputClaims zawiera zastrzeżenie, które jest używane do wyszukania konta w katalogu lub utworzenia nowego. W kolekcji oświadczeń wejściowych musi znajdować się tylko jeden element oświadczenie inputclaim dla wszystkich profilów technicznych usługi Azure AD. Może być konieczne zamapowanie nazwy żądania zdefiniowanego w zasadach na nazwę zdefiniowaną w Azure Active Directory.
 
@@ -66,7 +66,7 @@ Aby utworzyć nowe konto użytkownika, jest to klucz, który jednoznacznie ident
 
 Element InputClaimsTransformations może zawierać kolekcję elementów transformacji oświadczeń wejściowych, które są używane do modyfikowania oświadczenia wejściowego lub generują nowe.
 
-## <a name="output-claims"></a>Oświadczenia wyjściowe
+## <a name="outputclaims"></a>OutputClaims
 
 Element **OutputClaims** zawiera listę oświadczeń zwracanych przez profil techniczny usługi Azure AD. Może być konieczne zamapowanie nazwy żądania zdefiniowanego w zasadach na nazwę zdefiniowaną w Azure Active Directory. Można również uwzględnić oświadczenia, które nie są zwracane przez Azure Active Directory, o ile atrybut `DefaultValue` jest ustawiony.
 

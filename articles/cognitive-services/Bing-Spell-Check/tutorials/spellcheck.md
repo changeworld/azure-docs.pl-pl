@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: tutorial
-ms.date: 12/20/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 038716f43c18432b1b8e7c86c3ffbcab46f1db8f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fa10ab5a4b1c69b359936edf91da767da08d2f98
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75382800"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943093"
 ---
 # <a name="tutorial-build-a-web-page-spell-check-client"></a>Samouczek: tworzenie klienta sprawdzania pisowni w postaci strony internetowej
 
@@ -29,7 +29,7 @@ Ten samouczek przedstawia sposób wykonania następujących czynności:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skorzystać z samouczka, potrzebny jest klucz subskrypcji interfejsu API sprawdzania pisowni Bing. Jeśli jej nie masz, utwórz konto [bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api).
+Aby skorzystać z samouczka, potrzebny jest klucz subskrypcji interfejsu API sprawdzania pisowni Bing. Jeśli go nie masz, [Utwórz zasób sprawdzanie pisowni Bing](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7) w Azure Portal. Możesz również użyć [klucza próbnego](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api).
 
 ## <a name="create-a-new-web-page"></a>Tworzenie nowej strony internetowej
 

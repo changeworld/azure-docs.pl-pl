@@ -1,25 +1,19 @@
 ---
 title: Tworzenie zapory na platformie Azure przy użyciu filtru pakietów FreeBSD
 description: Dowiedz się, jak wdrożyć zaporę NAT przy użyciu funkcji PF FreeBSD na platformie Azure.
-services: virtual-machines-linux
-documentationcenter: ''
 author: KylieLiang
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2017
 ms.author: kyliel
-ms.openlocfilehash: 5daceeb2c8f2497288c7891dbe3fb3e0771b2ed5
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 9b78c0d93b57a3e3f4963088d0b93f121f57483c
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036094"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945103"
 ---
 # <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>Jak utworzyć bezpieczną zaporę na platformie Azure przy użyciu filtru pakietów FreeBSD
 W tym artykule przedstawiono sposób wdrażania zapory NAT przy użyciu filtru Azure Resource Manager Pack dla wspólnego scenariusza serwera sieci Web.
@@ -27,7 +21,7 @@ W tym artykule przedstawiono sposób wdrażania zapory NAT przy użyciu filtru A
 ## <a name="what-is-pf"></a>Co to jest PF?
 PF (filtr pakietów, również zapisany PF) to filtr pakietów stanowych z licencją BSD, centralne oprogramowanie do obsługi zapór. PF został szybko rozwijający i ma kilka zalet w porównaniu do innych dostępnych zapór. Translator adresów sieciowych (NAT) jest w wersji PF od pierwszego dnia, a następnie usługa Harmonogram pakietów i zarządzanie kolejkami aktywnymi została zintegrowana z PF, przez integrację ALTQ i Konfigurowanie jej przy użyciu konfiguracji PF. Funkcje, takie jak pfsync i KARPia na potrzeby przełączania do trybu failover i nadmiarowości, authpf do uwierzytelniania sesji i FTP-proxy w celu ułatwienia zapory dla trudnego protokołu FTP, również rozszerzonego programu PF. W skrócie PF to zaawansowane i bogate w funkcje zapory. 
 
-## <a name="get-started"></a>Rozpoczęcie pracy
+## <a name="get-started"></a>Rozpoczynanie pracy
 Jeśli chcesz skonfigurować bezpieczną zaporę w chmurze dla serwerów sieci Web, zacznijmy pracę. Można również zastosować skrypty używane w tym Azure Resource Manager szablonu do skonfigurowania topologii sieci.
 Szablon Azure Resource Manager skonfiguruje maszynę wirtualną FreeBSD, która wykonuje translację NAT/Redirection przy użyciu PF i dwóch maszyn wirtualnych FreeBSD z zainstalowanym i skonfigurowanym serwerem sieci Web Nginx. Oprócz wykonywania translacji adresów sieciowych dla dwóch serwerów sieci Web ruch wychodzący, maszyna wirtualna NAT/przekierowanie przechwytuje żądania HTTP i przekierowuje je do dwóch serwerów sieci Web w sposób okrężny. Sieć wirtualna korzysta z prywatnej przestrzeni adresowej IP bez obsługi routingu 10.0.0.2/24 i można modyfikować parametry szablonu. Szablon Azure Resource Manager definiuje również tabelę tras dla całej sieci wirtualnej, która jest kolekcją pojedynczych tras służących do przesłaniania domyślnych tras platformy Azure na podstawie docelowego adresu IP. 
 

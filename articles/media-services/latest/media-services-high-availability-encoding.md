@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 02/24/2020
 ms.author: juliako
-ms.openlocfilehash: f5b02376111a3deba33cd5688330018bd7c370d8
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: afaa7545fbcbab016249e73a2247817310c5cdfc
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78899219"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78934198"
 ---
 # <a name="media-services-high-availability-encoding"></a>Media Services kodowanie wysokiej dostępności 
 
@@ -42,8 +42,8 @@ Postępując zgodnie z wytycznymi i najlepszymi rozwiązaniami opisanymi w artyk
     * [Microsoft. Azure. EVENTGRID SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/) (który obsługuje zdarzenia Media Services natywnie).
 
     Możesz również wykorzystać zdarzenia Event Grid za pośrednictwem Azure Functions.
-*    Podczas tworzenia [zadania](transforms-jobs-concept.md):
-    
+* Podczas tworzenia [zadania](transforms-jobs-concept.md):
+
     * Losowo wybierz konto z listy obecnie używanych kont (Ta lista będzie zazwyczaj zawierać oba konta, ale w przypadku wykrycia problemów może ono zawierać tylko jedno konto). Jeśli lista jest pusta, Zgłoś alert, aby operator mógł zbadać.
     * Ogólne wskazówki to wymagana jedna [Jednostka zarezerwowana multimediów](media-reserved-units-cli-how-to.md) na [JobOutput](https://docs.microsoft.com/rest/api/media/jobs/create#joboutputasset) (chyba że używasz [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) , gdzie 3 jednostki zarezerwowane multimediów na JobOutput).
     * Pobierz liczbę jednostek zarezerwowanych multimediów (MRUs) dla wybranego konta. Jeśli bieżąca liczba **jednostek zarezerwowanych multimediów** nie jest jeszcze wartością maksymalną, należy dodać liczbę MRUs wymaganych przez zadanie i zaktualizować usługę. Jeśli szybkość przesyłania zadań jest wysoka i często trwa badanie MRUs w celu znalezienia maksymalnego limitu, użyj rozproszonej pamięci podręcznej dla wartości z rozsądnym limitem czasu.

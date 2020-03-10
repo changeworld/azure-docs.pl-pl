@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/15/2020
-ms.openlocfilehash: daaedf346bed78a93e0762a37687b623d25ef753
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 23c370289669c2dde4f8969a2921018cd0abc08c
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77441973"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943678"
 ---
 # <a name="knowledge-store-projections-how-to-shape-and-export-enrichments"></a>Projekcje magazynu wiedzy: jak kształtować i eksportować wzbogacania
 
@@ -671,7 +671,13 @@ Podczas definiowania projekcji istnieje kilka typowych problemów, które mogą 
 
 W przykładach w tym artykule przedstawiono typowe wzorce tworzenia projekcji. Teraz, gdy znasz już koncepcje, lepiej jest dowiedzieć się, jak tworzyć projekcje w konkretnym scenariuszu.
 
-Podczas iteracji nad definicjami sklepu z bazami danych Rozważ możliwość wzbogacania przyrostowego jako kolejnego kroku. Zwiększanie przyrostowe jest oparte na pamięci podręcznej, dzięki czemu można ponownie wykorzystać wszelkie wzbogacania, w przypadku których modyfikacje zestawu umiejętności nie wpływają w inny sposób. Jest to szczególnie przydatne w przypadku potoków zawierających OCR i analizę obrazu.
+Podczas eksplorowania nowych funkcji Rozważ możliwość wzbogacania przyrostowego jako kolejnego kroku. Zwiększanie przyrostowe jest oparte na pamięci podręcznej, dzięki czemu można ponownie wykorzystać wszelkie wzbogacania, w przypadku których modyfikacje zestawu umiejętności nie wpływają w inny sposób. Jest to szczególnie przydatne w przypadku potoków zawierających OCR i analizę obrazu.
 
 > [!div class="nextstepaction"]
 > [Wprowadzenie do przyrostowego wzbogacania i buforowania](cognitive-search-incremental-indexing-conceptual.md)
+
+Aby zapoznać się z omówieniem projekcji, Dowiedz się więcej o możliwościach, takich jak grupy i plasterki, oraz sposobie [ich definiowania w zestawu umiejętności](knowledge-store-projection-overview.md)
+
+> [!div class="nextstepaction"]
+> [Projekcje w sklepie merytorycznym](knowledge-store-projection-overview.md)
+

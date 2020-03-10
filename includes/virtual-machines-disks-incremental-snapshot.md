@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 083051fd621194d39d0092046e187e0809fd62d9
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 2316b52115cc23d11dfb26d951a7f1820f2737cc
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77520632"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78946053"
 ---
 Migawki przyrostowe (wersja zapoznawcza) są kopiami zapasowymi w czasie dla dysków zarządzanych, które w razie potrzeby składają się tylko ze wszystkich zmian od ostatniej migawki. Podczas próby pobrania lub użycia migawki przyrostowej jest używany pełny dysk VHD. Ta nowa możliwość tworzenia migawek dysków zarządzanych może potencjalnie spowodować, że nie są już wymagane do przechowywania całego dysku przy każdej pojedynczej migawce, chyba że zostanie wybrana opcja. Podobnie jak regularne migawki, migawki przyrostowe mogą służyć do tworzenia pełnego dysku zarządzanego lub do regularnej migawki.
 
@@ -25,10 +25,9 @@ Migawki przyrostowe oferują również funkcję różnicową, która jest unikat
 
 Obecnie obsługiwane są tylko następujące regiony:
 
-- Dostępna jako nasza oferta w regionach zachodnio-środkowe stany USA, Kanada Wschodnia, Kanada środkowa.
-- Dostępna jako publiczna wersja zapoznawcza w regionach Wschodnie stany USA, Wschodnie stany USA 2, środkowe stany USA, Europa Północna, regiony Południowe Azja Wschodnia.
+- Dostępna jako nasza oferta w regionach zachodnie stany USA, Wschodnie stany USA, Wschodnie stany USA 2, środkowe stany USA, Kanada Wschodnia, Kanada środkowa, Europa Północna, regiony Południowe Azja Wschodnia.
 
-## <a name="restrictions"></a>{1&gt;Ograniczenia&lt;1}
+## <a name="restrictions"></a>Ograniczenia
 - Nie można obecnie utworzyć migawek przyrostowych po zmianie rozmiaru dysku (tylko w wersji zapoznawczej).
 - Obecnie nie można przenosić migawek przyrostowych między subskrypcjami.
 - Obecnie można generować identyfikatory URI SAS maksymalnie pięć migawek określonej rodziny migawek w danym momencie.

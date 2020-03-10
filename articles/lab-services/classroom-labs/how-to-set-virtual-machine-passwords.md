@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 0af2b5f7d756060d463d2b4f3ef71bdd135710ee
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 0ff464936025a20cb6925adc7ef6eb44c2fe1f0e
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591527"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933819"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>Konfigurowanie puli maszyn wirtualnych i zarządzanie nią 
 W tym artykule przedstawiono sposób wykonywania następujących zadań:
@@ -102,6 +102,13 @@ Twórca laboratorium (instruktor/profesor) może nawiązać połączenie z maszy
 
 > [!NOTE]
 > Gdy profesor uruchomi maszynę wirtualną i nawiąże połączenie z nią, nie ma to żadnego limitu. 
+
+## <a name="export-list-of-virtual-machines-to-a-csv-file"></a>Eksportowanie listy maszyn wirtualnych do pliku CSV
+
+1. Przejdź do karty **Pula maszyn wirtualnych** .
+2. Wybierz pozycję **...** (wielokropek) na pasku narzędzi, a następnie wybierz pozycję **Eksportuj plik CSV**. 
+
+    ![Eksportowanie listy maszyn wirtualnych](../media/how-to-export-users-virtual-machines-csv/virtual-machines-export-csv.png)
 
 ## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej o opcjach użycia ucznia (jako właściciel laboratorium), zobacz następujący artykuł: [Konfigurowanie użycia ucznia](how-to-configure-student-usage.md).

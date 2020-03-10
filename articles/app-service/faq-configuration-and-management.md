@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: afa3b0f3ed345ccc7f4c627ec485351838ab2bee
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 300294f37c809b01fe8fba7e627d6bc5bdc9903a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649282"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942945"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Często zadawane pytania dotyczące konfiguracji i zarządzania dla Web Apps na platformie Azure
 
@@ -212,7 +212,7 @@ Aby uzyskać więcej informacji, zobacz [jak utworzyć App Service Environment](
 Czasami tworzenie App Service Environment kończy się niepowodzeniem. W takim przypadku w dziennikach aktywności zostanie wyświetlony następujący błąd:
 ```
 ResourceID: /subscriptions/{SubscriptionID}/resourceGroups/Default-Networking/providers/Microsoft.Web/hostingEnvironments/{ASEname}
-Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provision operation did not complete within the allowed timeout period.”}}
+Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provision operation did not complete within the allowed timeout period."}}
 ```
 
 Aby rozwiązać ten problem, upewnij się, że żaden z następujących warunków nie jest spełniony:
@@ -248,7 +248,7 @@ Aby przeprowadzić testowanie penetracji, [Prześlij żądanie](https://portal.m
 
 ## <a name="how-do-i-configure-a-custom-domain-name-for-an-app-service-web-app-that-uses-traffic-manager"></a>Jak mogę skonfigurować niestandardową nazwę domeny dla App Service aplikacji internetowej korzystającej z Traffic Manager?
 
-Aby dowiedzieć się, jak używać niestandardowej nazwy domeny z aplikacją App Service, która korzysta z usługi Azure Traffic Manager do równoważenia obciążenia, zobacz [Konfigurowanie niestandardowej nazwy domeny dla aplikacji sieci Web platformy Azure przy użyciu Traffic Manager](web-sites-traffic-manager-custom-domain-name.md).
+Aby dowiedzieć się, jak używać niestandardowej nazwy domeny z aplikacją App Service, która korzysta z usługi Azure Traffic Manager do równoważenia obciążenia, zobacz [Konfigurowanie niestandardowej nazwy domeny dla aplikacji sieci Web platformy Azure przy użyciu Traffic Manager](configure-domain-traffic-manager.md).
 
 ## <a name="my-app-service-certificate-is-flagged-for-fraud-how-do-i-resolve-this"></a>Certyfikat mojego App Service jest oflagowany dla oszustwa. Jak mogę rozwiązać ten problem?
 

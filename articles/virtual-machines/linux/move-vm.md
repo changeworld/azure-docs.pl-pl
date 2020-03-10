@@ -1,36 +1,26 @@
 ---
-title: Przenoszenie maszyny wirtualnej z systemem Linux na platformie Azure
-description: Przenieś maszynę wirtualną z systemem Linux do innej subskrypcji platformy Azure lub grupy zasobów w Menedżer zasobów model wdrażania.
-services: virtual-machines-linux
-documentationcenter: ''
+title: Przenoszenie maszyny wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure
+description: Przenieś maszynę wirtualną do innej subskrypcji platformy Azure lub grupy zasobów przy użyciu interfejsu wiersza polecenia platformy Azure.
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: d635f0a5-4458-4b95-a5f8-eed4f41eb4d4
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 2ba8a8cdc324f46e25f9665cfce0aa07fc948e88
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ebcd5f166fd1876f67121787c23d23860c9fa4b6
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979042"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944600"
 ---
-# <a name="move-a-linux-vm-to-another-subscription-or-resource-group"></a>Przenoszenie maszyny wirtualnej z systemem Linux do innej subskrypcji lub grupy zasobów
-W tym artykule pokazano, jak przenieść maszynę wirtualną z systemem Linux między grupami zasobów lub subskrypcjami. Przenoszenie maszyny wirtualnej między subskrypcjami może być przydatne, jeśli utworzono maszynę wirtualną w osobistej subskrypcji, a teraz chcesz przenieść ją do subskrypcji firmy.
+# <a name="move-a-vm-to-another-subscription-or-resource-group"></a>Przenoszenie maszyny wirtualnej do innej subskrypcji lub grupy zasobów
+W tym artykule omówiono sposób przenoszenia maszyny wirtualnej między grupami zasobów lub subskrypcjami. Przenoszenie maszyny wirtualnej między subskrypcjami może być przydatne, jeśli utworzono maszynę wirtualną w osobistej subskrypcji, a teraz chcesz przenieść ją do subskrypcji firmy.
 
 > [!IMPORTANT]
->W tej chwili nie można przenieść Managed Disks platformy Azure.
->
 >Nowe identyfikatory zasobów są tworzone w ramach przenoszenia. Po przeniesieniu maszyny wirtualnej należy zaktualizować narzędzia i skrypty w celu użycia nowych identyfikatorów zasobów.
 >
->
+
 
 ## <a name="use-the-azure-cli-to-move-a-vm"></a>Przenoszenie maszyny wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure
 

@@ -4,12 +4,12 @@ description: Dowiedz się, jak przeprowadzić migrację lokalnych maszyn wirtual
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.custom: MVC
-ms.openlocfilehash: a321c3e731a6649f0831f7d515f1c464b311c9ac
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: e1b670db3399857278c646d3793e8ec946d385b0
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76545912"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943297"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Migrowanie maszyn wirtualnych funkcji Hyper-V do platformy Azure 
 
@@ -17,7 +17,7 @@ W tym artykule opisano sposób migrowania lokalnych maszyn wirtualnych funkcji H
 
 [Azure Migrate](migrate-services-overview.md) udostępnia centralne centrum do śledzenia odnajdywania, oceny i migracji lokalnych aplikacji i obciążeń oraz maszyn wirtualnych chmur prywatnych/publicznych na platformie Azure. Centrum udostępnia Azure Migrate narzędzia do oceny i migracji, a także oferty niezależnych dostawców oprogramowania (ISV) innych firm.
 
-Ten samouczek jest trzecią częścią serii, która przedstawia sposób oceny i migracji funkcji Hyper-V do platformy Azure przy użyciu Azure Migrate oceny i migracji serwera. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek jest trzecią częścią serii, która przedstawia sposób oceny i migracji funkcji Hyper-V do platformy Azure przy użyciu Azure Migrate oceny i migracji serwera. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 
 > [!div class="checklist"]
@@ -58,7 +58,7 @@ Jeśli wykonano drugi samouczek i masz już projekt Azure Migrate, Dodaj Azure M
 2. W obszarze **odnajdywanie, ocenianie i**Migrowanie serwerów kliknij pozycję **Oceń i Przeprowadź migrację serwerów**.
 3. W obszarze **Narzędzia migracji**wybierz **pozycję kliknij tutaj, aby dodać narzędzie do migracji, gdy wszystko jest gotowe do migracji**.
 
-    ![Wybór narzędzia](./media/tutorial-migrate-hyper-v/select-migration-tool.png)
+    ![Wybierz narzędzie](./media/tutorial-migrate-hyper-v/select-migration-tool.png)
 
 4. Z listy narzędzia wybierz **Azure Migrate: Migracja serwera** > **Dodaj narzędzie**
 
@@ -143,7 +143,7 @@ Po ukończeniu odnajdywania można rozpocząć replikację maszyn wirtualnych fu
 
 4. W obszarze **Maszyny wirtualne** wyszukaj potrzebne maszyny wirtualne i sprawdź każdą maszynę wirtualną, którą chcesz migrować. Następnie kliknij przycisk **Dalej: ustawienia docelowe**.
 
-    ![Wybierz maszyny wirtualne](./media/tutorial-migrate-hyper-v/select-vms.png)
+    ![Wybieranie maszyn wirtualnych](./media/tutorial-migrate-hyper-v/select-vms.png)
 
 5. W obszarze **ustawienia docelowe**wybierz region docelowy, do którego zostanie przeprowadzona migracja, subskrypcja i Grupa zasobów, w której będą znajdować się maszyny wirtualne platformy Azure po migracji.
 7. W obszarze **konto magazynu replikacji**wybierz konto usługi Azure Storage, w którym będą przechowywane zreplikowane dane na platformie Azure.
@@ -243,7 +243,10 @@ Po zweryfikowaniu, że migracja testowa działa zgodnie z oczekiwaniami, można 
 
 ## <a name="complete-the-migration"></a>Kończenie migracji
 
-1. Po zakończeniu migracji kliknij prawym przyciskiem myszy maszynę wirtualną > **Zatrzymaj migrację**. Spowoduje to zatrzymanie replikacji maszyny lokalnej i oczyszczenie informacji o stanie replikacji dla maszyny wirtualnej.
+1. Po zakończeniu migracji kliknij prawym przyciskiem myszy maszynę wirtualną > **Zatrzymaj migrację**. Spowoduje to wykonanie następujących czynności:
+    - Wyłącza replikację maszyny lokalnej.
+    - Usuwa maszynę z liczby **serwerów replikowania** w Azure Migrate: Migracja serwera.
+    - Czyści informacje o stanie replikacji maszyny wirtualnej.
 2. Zainstaluj agenta maszyny wirtualnej platformy Azure dla [systemu Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) lub [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) na zmigrowanych maszynach.
 3. Po zakończeniu migracji wykonaj wszystkie potrzebne czynności konfiguracyjne, takie jak aktualizacja parametrów połączenia bazy danych i serwera sieci Web.
 4. Wykonaj dla zmigrowanej aplikacji uruchomionej na platformie Azure testy końcowe aplikacji i akceptacji migracji.

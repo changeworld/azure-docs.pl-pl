@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 12/12/2019
+ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: e128daa82eca8142a636df0958ddca574e398713
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 801bfcf02174c5dd98d4c7231c674299ef411aff
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75383119"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943115"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>Samouczek: Tworzenie jednostronicowej aplikacji sieci Web
 
@@ -39,6 +39,12 @@ Aplikacja samouczka ilustruje sposób wykonywania następujących czynności:
 > * Obsługa błędów, które mogą wystąpić
 
 Strona samouczka jest całkowicie niezależna. Nie używa żadnych zewnętrznych struktur, arkuszy stylów ani plików obrazów. Korzysta jedynie z powszechnie obsługiwanych funkcji języka JavaScript i działa w aktualnych wersjach wszystkich popularnych przeglądarek internetowych.
+
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+Aby wykonać czynności opisane w samouczku, należy dysponować kluczami subskrypcji dla interfejsu API Wyszukiwanie Bing. Jeśli ich nie masz, możesz użyć [klucza próbnego](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) i [podstawowego klucza mapy usługi Bing](https://www.microsoft.com/maps/create-a-bing-maps-key).
+
 
 ## <a name="app-components"></a>Składniki aplikacji
 Podobnie jak każda inna aplikacja internetowa, aplikacja w tym samouczku zawiera trzy części:
@@ -271,7 +277,7 @@ function handleBingResponse() {
 
 Większość kodu w obu poprzednich funkcjach jest przeznaczona do obsługi błędów. Błędy mogą wystąpić na następujących etapach:
 
-|Stage|Potencjalne błędy|Obsługiwane przez|
+|Etap|Potencjalne błędy|Obsługiwane przez|
 |-|-|-|
 |Tworzenie obiektu żądania języka JavaScript|Nieprawidłowy adres URL|Blok `try`/`catch`|
 |Wykonywanie żądania|Błędy sieci, przerwane połączenia|Obsługa zdarzeń `error` i `abort`|
@@ -317,7 +323,7 @@ Interfejs API wyszukiwania wiadomości Bing zwraca maksymalnie cztery różne ro
 
 |Relacja|Opis|
 |-|-|
-|`pivotSuggestions`|Zapytania, które zamieniają wyraz przestawny w oryginalnym wyszukiwaniu na inny. Jeśli na przykład wyszukujesz frazę „czerwone kwiaty”, wyrazem przestawnym może być „czerwone” i sugestia przestawna może brzmieć „żółte kwiaty”.|
+|`pivotSuggestions`|Zapytania, które zamieniają wyraz przestawny w oryginalnym wyszukiwania na inny. Jeśli na przykład wyszukujesz frazę „czerwone kwiaty”, wyrazem przestawnym może być „czerwone” i sugestia przestawna może brzmieć „żółte kwiaty”.|
 |`queryExpansions`|Zapytania, które zawężają oryginalne wyszukiwanie, dodając więcej terminów. Jeśli na przykład wyszukujesz frazę „Microsoft Surface”, rozszerzeniem zapytania może być fraza „Microsoft Surface Pro”.|
 |`relatedSearches`|Zapytania, które również zostały wprowadzone przez innych użytkowników, którzy wprowadzili oryginalne wyszukiwanie. Jeśli na przykład wyszukujesz frazę „Mount Rainier”, powiązanym wyszukiwaniem może być fraza „Mt. Saint Helens”.|
 |`similarTerms`|Zapytania, które mają podobne znaczenie, co oryginalne wyszukiwanie. Jeśli na przykład wyszukujesz wyraz „szkoły”, podobnym terminem może być „edukacja”.|
@@ -377,7 +383,7 @@ Funkcja renderująca wiadomości:
 > [!div class="checklist"]
 > * tworzy tag akapitu, przypisuje go do klasy `news` i wypycha go do tablicy html;
 > * oblicza rozmiar miniatury obrazu (szerokość jest stała i wynosi 60 pikseli, wysokość jest obliczana proporcjonalnie);
-> * tworzy tag `<img>` kodu HTML, aby wyświetlić miniaturę obrazu; 
+> * tworzy tag `<img>` kodu HTML, aby wyświetlić miniaturę obrazu. 
 > * tworzy tagi `<a>` kodu HTML, które prowadzą do obrazu i do zawierającej go strony;
 > * tworzy opis, który wyświetla informacje dotyczące obrazu i witryny, w której się znajduje.
 

@@ -8,12 +8,12 @@ ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 75bd27f0945c66b9757055c0777b43a050ba67d7
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 2f920e29fafdc55478e0e2c16d683bd1c3bc81d8
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920998"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942930"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Wprowadzenie do Azure Data Lake Storage Gen2
 
@@ -25,15 +25,15 @@ Data Lake Storage Gen2 sprawia, że usługi Azure Storage jako podstawa tworzeni
 
 Podstawową częścią Data Lake Storage Gen2 jest dodanie [hierarchicznej przestrzeni nazw](data-lake-storage-namespace.md) do magazynu obiektów BLOB. Hierarchicznej przestrzeni nazw organizuje pliki/obiekty w hierarchii katalogów dla dostępu do danych wydajne. Typowych konwencji nazewnictwa magazynu obiektów używa ukośników w nazwie, aby mógł naśladować strukturę katalogów hierarchicznych. Ta struktura staje się rzeczywistych za pomocą Data Lake Storage Gen2. Operacje, takie jak zmiana nazwy lub usunięcie katalogu stają się operacje dotyczące metadanych atomic pojedynczego katalogu zamiast wyliczanie i przetwarzanie wszystkich obiektów, które mają prefiks nazwy katalogu.
 
-W przeszłości funkcje analizy chmurowej — było naruszenia bezpieczeństwa w zakresie wydajności, zarządzania i zabezpieczeń. Data Lake Storage Gen2 dotyczy każdego z tych aspektów w następujący sposób:
+Data Lake Storage Gen2 kompiluje w usłudze BLOB Storage i zwiększa wydajność, zarządzanie i bezpieczeństwo w następujący sposób:
 
--   **Wydajność** jest zoptymalizowana, ponieważ nie trzeba kopiować ani przekształcać danych jako wymaganie wstępne do analizy. Hierarchicznej przestrzeni nazw znacznie poprawia wydajność operacji zarządzania katalogu, co zwiększa ogólną wydajność zadania.
+-   **Wydajność** jest zoptymalizowana, ponieważ nie trzeba kopiować ani przekształcać danych jako wymaganie wstępne do analizy. W porównaniu do płaskiej przestrzeni nazw w usłudze BLOB Storage, hierarchiczna przestrzeń nazw znacznie zwiększa wydajność operacji zarządzania katalogami, co zwiększa ogólną wydajność zadań.
 
 -   **Zarządzanie** jest łatwiejsze, ponieważ pliki można organizować i manipulować nimi za poorednictwem katalogów i podkatalogów.
 
 -   **Zabezpieczenia** są wymuszane, ponieważ można DEFINIOWAĆ uprawnienia POSIX do katalogów lub pojedynczych plików.
 
--   **Jest to** możliwe, ponieważ Data Lake Storage Gen2 jest tworzona w oparciu o niski koszt [magazynu obiektów blob platformy Azure](storage-blobs-introduction.md). Dodatkowe funkcje dodatkowo obniżyć całkowity koszt posiadania, uruchamiania analizy danych big data na platformie Azure.
+Ponadto Data Lake Storage Gen2 jest bardzo opłacalne, ponieważ jest ona oparta na [usłudze Azure Blob Storage](storage-blobs-introduction.md). Dodatkowe funkcje dodatkowo obniżyć całkowity koszt posiadania, uruchamiania analizy danych big data na platformie Azure.
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>Najważniejsze funkcje Data Lake Storage Gen2
 
@@ -76,7 +76,7 @@ Aby uzyskać listę obsługiwanych funkcji usługi BLOB Storage, zobacz [BLOB St
 
 Data Lake Storage Gen2 obsługuje kilka usług platformy Azure, których można użyć do pozyskiwania danych, wykonywania analiz i tworzenia reprezentacji wizualnych. Aby uzyskać listę obsługiwanych usług platformy Azure, zobacz [usługi platformy Azure, które obsługują Azure Data Lake Storage Gen2](data-lake-storage-supported-azure-services.md).
 
-## <a name="supported-open-source-platforms"></a>Obsługiwane platformy typu open source
+## <a name="supported-open-source-platforms"></a>Obsługiwane platformy open source
 
 Wiele platform typu open source obsługi Gen2 magazynu programu Data Lake. Aby uzyskać pełną listę, zobacz [platformy typu "open source" obsługujące Azure Data Lake Storage Gen2](data-lake-storage-supported-open-source-platforms.md).
 

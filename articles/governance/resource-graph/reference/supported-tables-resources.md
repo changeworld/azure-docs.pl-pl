@@ -1,14 +1,14 @@
 ---
 title: Obsługiwane Menedżer zasobów typy zasobów
 description: Podaj listę typów zasobów Menedżer zasobów obsługiwanych przez usługę Azure Resource Graph i historię zmian.
-ms.date: 03/05/2020
+ms.date: 03/09/2020
 ms.topic: reference
-ms.openlocfilehash: 597e1c2f7e04a7861099763d809ac09978e09805
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 9844b2fe7f1cbaf069789a4083229b4a6f37f38f
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78399591"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943976"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Informacje o tabeli i typie zasobów usługi Azure Resource Graph
 
@@ -122,6 +122,7 @@ Wykres zasobów platformy Azure obsługuje następujące **typy zasobów** [Azur
 - Microsoft. COMPUTE/virtualmachinescalesets
 - Microsoft. containerinstance/containergroups
 - Microsoft. containerregistry/rejestry
+- Microsoft. containerregistry/rejestry/agentpools
 - Microsoft. containerregistry/rejestry/BuildTasks
 - Microsoft. containerregistry/rejestry/replikacje
 - Microsoft. containerregistry/rejestry/taskruns
@@ -152,6 +153,7 @@ Wykres zasobów platformy Azure obsługuje następujące **typy zasobów** [Azur
 - Microsoft. dbforpostgresql/ServerGroups
 - Microsoft. dbforpostgresql/serwery
 - Microsoft. dbforpostgresql/serversv2
+- Microsoft. dbforpostgresql/singleservers
 - Microsoft. deploymentmanager/artifactsources
 - Microsoft. deploymentmanager/wdrożenia
 - Microsoft. deploymentmanager/servicetopologie
@@ -413,6 +415,7 @@ Wykres zasobów platformy Azure obsługuje następujące **typy zasobów** [Azur
 - Microsoft. Web/Connections
 - Microsoft. Web/customapis
 - Microsoft. Web/hostingenvironments
+- Microsoft. Web/kubeenvironments
 - Microsoft. Web/dopuszczalna
 - Microsoft. Web/witryny
 - Microsoft. Web/Sites/premieraddons

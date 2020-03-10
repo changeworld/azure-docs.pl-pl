@@ -6,23 +6,23 @@ ms.author: cynthn
 ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-manager: gwallace
-ms.openlocfilehash: 1bac04bbb67c7472de92c6da322121bafc20a560
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.subservice: imaging
+ms.openlocfilehash: 15a3b39b1466ffec87971b8f054ca916567d89d7
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695428"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944953"
 ---
-# <a name="preview-create-a-linux-vm-with-azure-image-builder"></a>Wersja zapoznawcza: Tworzenie maszyny wirtualnej z systemem Linux przy użyciu programu Azure Image Builder
+# <a name="preview-create-a-linux-vm-with-azure-image-builder"></a>Wersja zapoznawcza: Tworzenie maszyny wirtualnej z systemem Linux przy użyciu usługi Azure Image Builder
 
-W tym artykule opisano sposób tworzenia dostosowanego obrazu systemu Linux przy użyciu narzędzia Azure Image Builder i interfejsu wiersza polecenia platformy Azure. W przykładzie w tym artykule są stosowane trzy [](image-builder-json.md#properties-customize) różne konfiguratorzy dostosowywania obrazu:
+W tym artykule opisano sposób tworzenia dostosowanego obrazu systemu Linux przy użyciu narzędzia Azure Image Builder i interfejsu wiersza polecenia platformy Azure. W przykładzie w tym artykule są stosowane trzy różne [konfiguratorzy](image-builder-json.md#properties-customize) dostosowywania obrazu:
 
 - Shell (ScriptUri) — pobiera i uruchamia [skrypt powłoki](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript.sh).
 - Powłoka (wbudowana) — uruchamia określone polecenia. W tym przykładzie polecenia wbudowane obejmują tworzenie katalogu i aktualizowanie systemu operacyjnego.
 - Plik — kopiuje [plik z usługi GitHub](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html) do katalogu na maszynie wirtualnej.
 
-Można również określić `buildTimeoutInMinutes`. Wartość domyślna to 240 minut i można zwiększyć czas kompilacji, aby umożliwić dłuższe wykonywanie kompilacji.
+Możesz również określić `buildTimeoutInMinutes`. Wartość domyślna to 240 minut i można zwiększyć czas kompilacji, aby umożliwić dłuższe wykonywanie kompilacji.
 
 Aby skonfigurować obraz, będziemy używać szablonu przykład. JSON. Używany plik JSON jest tutaj: [helloImageTemplateLinux. JSON](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Linux_Managed_Image/helloImageTemplateLinux.json). 
 
@@ -75,7 +75,7 @@ imageName=myBuilderImage
 runOutputName=aibLinux
 ```
 
-Utwórz zmienną dla identyfikatora subskrypcji. Można to zrobić za pomocą `az account show | grep id`polecenia.
+Utwórz zmienną dla identyfikatora subskrypcji. Można to zrobić przy użyciu `az account show | grep id`.
 
 ```azurecli-interactive
 subscriptionID=<Your subscription ID>
@@ -91,7 +91,7 @@ az group create -n $imageResourceGroup -l $location
 ## <a name="set-permissions-on-the-resource-group"></a>Ustawianie uprawnień do grupy zasobów
 Nadaj elementowi "Współautor" konstruktora obrazu uprawnienia do tworzenia obrazu w grupie zasobów. Bez odpowiednich uprawnień kompilacja obrazu zakończy się niepowodzeniem. 
 
-`--assignee` Wartość to identyfikator rejestracji aplikacji dla usługi Image Builder. 
+Wartość `--assignee` to identyfikator rejestracji aplikacji dla usługi Image Builder. 
 
 ```azurecli-interactive
 az role assignment create \
@@ -114,14 +114,14 @@ sed -i -e "s/<imageName>/$imageName/g" helloImageTemplateLinux.json
 sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateLinux.json
 ```
 
-W razie konieczności można zmodyfikować ten przykład. JSON. Na przykład można zwiększyć wartość `buildTimeoutInMinutes` , aby zezwolić na dłuższe kompilacje. Plik można edytować w Cloud Shell przy użyciu edytora tekstu, takiego jak `vi`.
+W razie konieczności można zmodyfikować ten przykład. JSON. Na przykład można zwiększyć wartość `buildTimeoutInMinutes`, aby zezwolić na dłuższe kompilacje. Plik można edytować w Cloud Shell przy użyciu edytora tekstu, takiego jak `vi`.
 
 ```azurecli-interactive
 vi helloImageTemplateLinux.json
 ```
 
 > [!NOTE]
-> W przypadku obrazu źródłowego należy zawsze [określić wersję](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure), której nie można użyć `latest`.
+> W przypadku obrazu źródłowego należy zawsze [określić wersję](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure), nie można użyć `latest`.
 >
 > W przypadku dodania lub zmiany grupy zasobów, w której jest dystrybuowany obraz, należy upewnić się, że [uprawnienia zostały ustawione dla grupy zasobów](#set-permissions-on-the-resource-group).
 
@@ -143,7 +143,7 @@ Jeśli zakończyło się pomyślnie, zwróci komunikat o powodzeniu i utworzysz 
 Ponadto w tle Konstruktor obrazów tworzy tymczasową grupę zasobów w ramach subskrypcji. Konstruktor obrazów używa tymczasowej grupy zasobów dla kompilacji obrazu. Nazwa grupy zasobów będzie w tym formacie: `IT_<DestinationResourceGroup>_<TemplateName>`.
 
 > [!IMPORTANT]
-> Nie usuwaj bezpośrednio tymczasowej grupy zasobów. Usunięcie artefaktu szablonu obrazu spowoduje automatyczne usunięcie grupy zasobów tymczasowych. Aby uzyskać więcej informacji, zobacz [](#clean-up) sekcję oczyszczanie na końcu tego artykułu.
+> Nie usuwaj bezpośrednio tymczasowej grupy zasobów. Usunięcie artefaktu szablonu obrazu spowoduje automatyczne usunięcie grupy zasobów tymczasowych. Aby uzyskać więcej informacji, zobacz sekcję [oczyszczanie](#clean-up) na końcu tego artykułu.
 
 Jeśli usługa zgłasza błąd podczas przekazywania szablonu konfiguracji obrazu, zobacz kroki [rozwiązywania problemów](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting) . Należy również usunąć szablon przed ponowną próbą przesłania kompilację. Aby usunąć szablon:
 
