@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/26/2020
+ms.date: 03/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 155498aeaea30bf2da1d5aa0dbcb322aeb43bbdd
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 4b469c098db4f8d90147b491bcb54bd55d326b03
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661298"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080312"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Konfiguracje magazynu maszyn wirtualnych platformy Azure SAP HANA
 
@@ -279,6 +279,9 @@ Podczas projektowania infrastruktury dla oprogramowania SAP na platformie Azure 
 [Limity przepływności Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels) na 1 TIB przydziału woluminu są następujące:
 - Warstwa Premium Storage-64 MiB/s  
 - Warstwa Ultra Storage — 128 MiB/s  
+
+> [!IMPORTANT]
+> Niezależna od pojemności wdrożonej na pojedynczym woluminie systemu plików NFS przepływność oczekuje na Plateau w zakresie przepustowości 1,2-1.4 GB/s wykorzystanej przez odbiorcę na maszynie wirtualnej. Należy to zrobić z podstawową architekturą oferty ANF i powiązanymi limitami sesji systemu Linux w systemie plików NFS. Numery wydajności i przepływności zgodnie z opisem w artykule [wyniki testów porównawczych wydajności artykułu dla Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-performance-benchmarks) zostały wykonane na jednym udostępnionym woluminie NFS z wieloma maszynami wirtualnymi klienta i w wyniku wielu sesji. Ten scenariusz jest różny dla scenariusza, który mierzę w oprogramowaniu SAP. Gdzie mierzy przepływność z pojedynczej maszyny wirtualnej do woluminu systemu plików NFS. hostowane w witrynie ANF.
 
 W celu spełnienia minimalnych wymagań dotyczących przepływności SAP dla danych i dziennika oraz zgodnie z wytycznymi dla `/hana/shared`zalecane rozmiary będą wyglądać następująco:
 

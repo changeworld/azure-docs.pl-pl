@@ -3,15 +3,16 @@ title: Tworzenie i szyfrowanie maszyny wirtualnej z systemem Linux przy użyciu 
 description: W tym przewodniku szybki start dowiesz się, jak za pomocą Azure Portal utworzyć i zaszyfrować maszynę wirtualną z systemem Linux.
 author: msmbaldwin
 ms.author: mbaldwin
-ms.service: security
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: 20802cf9f9934a85e00bce41b6bbe21a6ff95579
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9f09f28dc63e7f061946a66beb59bd4c62be70aa
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772299"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970557"
 ---
 # <a name="quickstart-create-and-encrypt-a-virtual-machine-with-the-azure-portal"></a>Szybki Start: Tworzenie i szyfrowanie maszyny wirtualnej przy użyciu Azure Portal
 
@@ -19,9 +20,9 @@ Maszyny wirtualne platformy Azure można utworzyć za pomocą witryny Azure Port
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do [portalu Azure](https://portal.azure.com).
+Zaloguj się do [Azure portal](https://portal.azure.com).
 
 ## <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
@@ -63,7 +64,7 @@ Wdrożenie maszyny wirtualnej potrwa kilka minut. Po zakończeniu wdrażania prz
 1. Wybierz pozycję **Przegląd + utwórz**.  
 1. Po przekazaniu walidacji magazynu kluczy wybierz pozycję **Utwórz**. Spowoduje to powrót do ekranu **wyboru z Azure Key Vault** .
 1. Pozostaw pole **klucza** puste i wybierz **pozycję Wybierz**.
-1. W górnej części ekranu szyfrowania kliknij przycisk **Zapisz**. W oknie podręcznym zostanie wyświetlone ostrzeżenie o ponownym uruchomieniu maszyny wirtualnej. Kliknij przycisk **Tak**.
+1. W górnej części ekranu szyfrowania kliknij przycisk **Zapisz**. W oknie podręcznym zostanie wyświetlone ostrzeżenie o ponownym uruchomieniu maszyny wirtualnej. Kliknij przycisk **Yes** (Tak).
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

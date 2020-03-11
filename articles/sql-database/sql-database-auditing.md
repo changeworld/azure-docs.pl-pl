@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/11/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 27d65c7e6bbc0af20d01d91f1472433f3e7142a9
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 1cac52dcee91e57a22b6d18595b067de888aba73
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365448"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082543"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Wprowadzenie do inspekcji bazy danych SQL
 
@@ -255,12 +255,6 @@ W środowisku produkcyjnym można okresowo odświeżać klucze magazynu. Podczas
 - Inspekcja Azure SQL Database jest zoptymalizowana pod kątem dostępności & wydajności. Podczas bardzo dużego działania Azure SQL Database umożliwia wykonywanie operacji i może nie rejestrować niektórych zdarzeń poddawanych inspekcji.
 
 - Aby skonfigurować niezmienne inspekcje na koncie magazynu, zobacz [Zezwalanie na chronione Dodawanie obiektów BLOB](../storage/blobs/storage-blob-immutable-storage.md#allow-protected-append-blobs-writes). Należy pamiętać, że nazwa kontenera do inspekcji to **sqldbauditlogs**.
-
-    > [!IMPORTANT]
-    > Ustawienie Zezwalaj na chronione Dodawanie obiektów BLOB w obszarze przechowywanie na podstawie czasu jest obecnie dostępne i widoczne tylko w następujących regionach:
-    > - Wschodnie stany USA
-    > - Południowo-środkowe stany USA
-    > - Zachodnie stany USA 2
 
 
 ## <a id="subheading-7"></a>Zarządzanie usługą Azure SQL Server i inspekcją bazy danych przy użyciu Azure PowerShell

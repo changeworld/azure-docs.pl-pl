@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: 8208bbf4d196091a6fe4cd962ddc7373d303e125
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 78a6e7fa8d030185f537136a3a2124d8bc59d808
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312434"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037627"
 ---
-# <a name="what-is-azure-machine-learning-designer"></a>Co to jest Azure Machine Learning Designer? 
+# <a name="what-is-azure-machine-learning-designer-preview"></a>Co to jest Azure Machine Learning Designer (wersja zapoznawcza)? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 Projektant Azure Machine Learning umożliwia wizualne łączenie [zestawów danych](#datasets) i [modułów](#module) na interaktywnej kanwie w celu tworzenia modeli uczenia maszynowego. Aby dowiedzieć się, jak rozpocząć pracę z projektantem, zobacz [Samouczek: przewidywanie ceny za samochód dla urządzeń przenośnych za pomocą projektanta](tutorial-designer-automobile-price-train-score.md)
@@ -88,14 +88,14 @@ Aby uzyskać pomoc dotyczącą przechodzenia przez bibliotekę dostępnych algor
 
 Użyj zasobów obliczeniowych z obszaru roboczego, aby uruchomić potok i hostować wdrożone modele jako punkty końcowe w czasie rzeczywistym lub punkty końcowe potoku (na potrzeby wnioskowania wsadowego). Są obsługiwane obliczeniowych elementów docelowych:
 
-| Docelowy zasób obliczeniowy | Szkolenie | Wdrażanie |
+| Docelowy zasób obliczeniowy | Szkolenia | Wdrożenie |
 | ---- |:----:|:----:|
 | Obliczeniowe platformy Azure Machine Learning | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
 Elementy docelowe obliczeń są dołączone do [obszaru roboczego Azure Machine Learning](concept-workspace.md). Obiektami docelowymi obliczeń można zarządzać w obszarze roboczym w [Azure Machine Learning Studio (klasyczny)](https://ml.azure.com).
 
-## <a name="deploy"></a>Implementacja
+## <a name="deploy"></a>Wdrażanie
 
 Aby wykonać inferencing w czasie rzeczywistym, należy wdrożyć potok jako **punkt końcowy w czasie rzeczywistym**. Punkt końcowy w czasie rzeczywistym tworzy interfejs między aplikacją zewnętrzną a modelem oceniania. Wywołanie punktu końcowego w czasie rzeczywistym zwraca wyniki prognozowania do aplikacji w czasie rzeczywistym. Aby wykonać wywołanie do punktu końcowego w czasie rzeczywistym, należy przekazać klucz interfejsu API, który został utworzony podczas wdrażania punktu końcowego. Punkt końcowy jest oparty na pozostałej, popularnej architekturze dla projektów programowania w sieci Web.
 
@@ -103,7 +103,7 @@ Punkty końcowe w czasie rzeczywistym muszą zostać wdrożone w klastrze usług
 
 Aby dowiedzieć się, jak wdrożyć model, zobacz [Samouczek: Wdrażanie modelu uczenia maszynowego za pomocą projektanta](tutorial-designer-automobile-price-deploy.md).
 
-## <a name="publish"></a>Publikuj
+## <a name="publish"></a>Publikowanie
 
 Możesz również opublikować potok w **punkcie końcowym potoku**. Podobnie jak w przypadku punktu końcowego w czasie rzeczywistym, punkt końcowy potoku umożliwia przesyłanie nowych uruchomień potoków z aplikacji zewnętrznych przy użyciu wywołań REST. Nie można jednak wysyłać ani odbierać danych w czasie rzeczywistym za pomocą punktu końcowego potoku.
 
@@ -116,7 +116,7 @@ Projektant tworzy ten sam obiekt [PublishedPipeline](https://docs.microsoft.com/
 
 ## <a name="moving-from-the-visual-interface-to-the-designer"></a>Przechodzenie z interfejsu wizualizacji do projektanta
 
-Interfejs wizualny (wersja zapoznawcza) został zaktualizowany i teraz Azure Machine Learning projektanta. Projektant został przeprojektowany tak, aby korzystał z zaplecza opartego na potoku, który jest w pełni zintegrowany z innymi funkcjami Azure Machine Learning. 
+Interfejs wizualny (wersja zapoznawcza) został zaktualizowany i jest teraz Azure Machine Learning projektanta (wersja zapoznawcza). Projektant został przeprojektowany tak, aby korzystał z zaplecza opartego na potoku, który jest w pełni zintegrowany z innymi funkcjami Azure Machine Learning. 
 
 W wyniku tych aktualizacji niektóre koncepcje i terminy dla interfejsu wizualizacji zostały zmienione lub zmieniono ich nazwy. Zapoznaj się z poniższą tabelą, aby poznać najważniejsze zmiany pojęciowe. 
 
@@ -135,13 +135,5 @@ Istniejące eksperymenty interfejsu wizualizacji i usługi sieci Web można prze
 ## <a name="next-steps"></a>Następne kroki
 
 * Poznaj podstawy analizy predykcyjnej i uczenia maszynowego za pomocą [samouczka: przewidywanie ceny za samochód z użyciem projektanta](tutorial-designer-automobile-price-train-score.md)
-* Użyj jednego z przykładów i zmodyfikuj, aby wymusić Twoje potrzeby:
-
-- [Przykład 1-regresja: przewidywanie ceny za samochód](how-to-designer-sample-regression-automobile-price-basic.md)
-- [Przykład 2-Regresja: porównanie algorytmów do prognozowania cen samochodów](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [Przykład 3 — Klasyfikacja z wyborem funkcji: prognozowanie dochodu](how-to-designer-sample-classification-predict-income.md)
-- [Przykład 4 — Klasyfikacja: przewidywanie ryzyka kredytowego (z uwzględnieniem kosztów)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [Przykład 5 — Klasyfikacja: przewidywalność zmian](how-to-designer-sample-classification-churn.md)
-- [Przykład 6 — Klasyfikacja: przewidywanie opóźnień lotów](how-to-designer-sample-classification-flight-delay.md)
-- [Przykład 7 — Klasyfikacja tekstu: zestaw danych witryny Wikipedia SP 500](how-to-designer-sample-text-classification.md)
+* Dowiedz się, jak modyfikować istniejące [przykłady projektanta](samples-designer.md) , aby dostosować je do swoich potrzeb.
 

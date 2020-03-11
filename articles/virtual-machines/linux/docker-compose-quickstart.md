@@ -1,26 +1,17 @@
 ---
-title: Używanie Docker Compose na maszynie wirtualnej z systemem Linux na platformie Azure
-description: Jak zainstalować i używać platformy Docker i tworzyć maszyny wirtualne z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure
-services: virtual-machines-linux
-documentationcenter: ''
+title: Korzystanie z narzędzia Docker Compose
+description: Jak zainstalować i używać platformy Docker i tworzyć maszyny wirtualne z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure.
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 02ab8cf9-318d-4a28-9d0c-4a31dccc2a84
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 02/14/2019
 ms.author: cynthn
-ms.openlocfilehash: 4f2f12e0124743ad31e083cf4ece83bcb608bce0
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 434a3ef8c9bc1738252d59a5dca5bec16d85e45e
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036272"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970303"
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Wprowadzenie do platformy Docker i redagowanie w celu zdefiniowania i uruchomienia aplikacji wielokontenera na platformie Azure
 Dzięki [redagowaniu](https://github.com/docker/compose)można użyć prostego pliku tekstowego do zdefiniowania aplikacji składającej się z wielu kontenerów platformy Docker. Następnie można uruchomić aplikację w pojedynczym poleceniu, które wykonuje wszystkie czynności w celu wdrożenia określonego środowiska. Na przykład w tym artykule pokazano, jak szybko skonfigurować blog WordPress z bazą danych SQL zaplecza MariaDB na maszynie wirtualnej Ubuntu. Można również użyć opcji Zredaguj, aby skonfigurować bardziej złożone aplikacje.

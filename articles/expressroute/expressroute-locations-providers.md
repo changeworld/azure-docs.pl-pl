@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: d6dba6f68238327c1c5c51c75cc5a65ceec2838f
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: aa0deaf00a5121d50a2621d146ac83f97ee45df4
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78942379"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081713"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partnerzy i lokalizacje komunikacji równorzędnej usługi ExpressRoute
 
@@ -95,7 +95,7 @@ W poniższej tabeli przedstawiono lokalizacje połączeń i dostawców usług dl
 | **Dubaj** | [PCCS](https://www.pacificcontrols.net/cloudservices/index.html) | 3 | Północne Zjednoczone Emiraty Arabskie | Nie dotyczy | Etisalat Zjednoczone Emiraty Arabskie |
 | **Dubai2** | [du datamena](http://datamena.com/solutions/data-centre) | 3 | Północne Zjednoczone Emiraty Arabskie | Nie dotyczy | du datamena, Megaport, pomarańczowy, Orixcom |
 | **Dublin** | [Equinix DB3](https://www.equinix.com/locations/europe-colocation/ireland-colocation/dublin-data-centers/db3/) | 1 | Europa Północna | 10G, 100G | Colt, EIR, Equinix, euNetworks, Interxion, Megaport |
-| **Frankfurt** | [Interxion FRA11](https://www.interxion.com/Locations/frankfurt/) | 1 | Niemcy Środkowo-Zachodnie | 10G, 100G | Colt, DE-CIX, GEANT, Interxion, Megaport, pomarańczowy, Telia |
+| **Frankfurt** | [Interxion FRA11](https://www.interxion.com/Locations/frankfurt/) | 1 | Niemcy Środkowo-Zachodnie | 10G, 100G | CenturyLink Cloud Connect, Colt, DE-CIX, GEANT, Interxion, Megaport, pomarańczowy, Telia Carrier |
 | **Genewie** | [Equinix GV2](https://www.equinix.com/locations/europe-colocation/switzerland-colocation/geneva-data-centers/gv2/) | 1 | Szwajcaria Zachodnia | 10G, 100G | Equinix, Megaport |
 | **SRA Hongkong** | [Equinix HK1](https://www.equinix.com/locations/asia-colocation/hong-kong-colocation/hong-kong-data-center/hk1/) | 2 | Azja Wschodnia | Nie dotyczy | Sieci aryaka networkse, telekomunikacyjne brytyjskie, CenturyLink Cloud Connect, dyrektor Telecom, Chiny Telecom, Equinix, międzychmurowe, Megaport, NTT Communications, pomarańcze, PCCW Global Limited, Tata Communications, Telia, Verizon |
 | **Kong2 Hongkong** | [I](https://www.iadvantage.net/index.php/locations/mega-i) | 2 | Nie dotyczy | ° | |

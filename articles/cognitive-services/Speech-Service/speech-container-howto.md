@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 03/09/2020
 ms.author: dapine
-ms.openlocfilehash: 5d30693eb13104504d1cf27ffdbfb8d098d4ef9e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 7265cd0e2d292a2d8cc7273d2746348629ec4a06
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390815"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082188"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Instalowanie i uruchamianie kontenerów usługi mowy (wersja zapoznawcza)
 
@@ -28,8 +28,8 @@ Kontenery mowy umożliwiają klientom tworzenie architektury aplikacji mowy, kt�
 
 | Funkcja | Funkcje | Ostatnia |
 |--|--|--|
-| Zamiana mowy na tekst | Przekształca ciągłe nagrywanie mowy w czasie rzeczywistym lub nagrania audio w trybie wsadowym do tekstu z wynikami pośrednimi. | 2.0.0 |
-| Custom Speech do tekstu | Korzystając z modelu niestandardowego z [portalu Custom Speech](https://speech.microsoft.com/customspeech), przekształca ciągłe nagrywanie mowy w czasie rzeczywistym lub przetwarzanie wsadowe audio do tekstu z wynikami pośrednimi. | 2.0.0 |
+| Zamiana mowy na tekst | Przekształca ciągłe nagrywanie mowy w czasie rzeczywistym lub nagrania audio w trybie wsadowym do tekstu z wynikami pośrednimi. | 2.1.1 |
+| Custom Speech do tekstu | Korzystając z modelu niestandardowego z [portalu Custom Speech](https://speech.microsoft.com/customspeech), przekształca ciągłe nagrywanie mowy w czasie rzeczywistym lub przetwarzanie wsadowe audio do tekstu z wynikami pośrednimi. | 2.1.1 |
 | Zamiana tekstu na mowę | Konwertuje tekst na mowę dźwiękową przy użyciu zwykłego tekstu lub języka SSML (Speech Syntezing Language). | 1.3.0 |
 | Niestandardowa Zamiana tekstu na mowę | Przy użyciu modelu niestandardowego z [niestandardowego portalu głosowego](https://aka.ms/custom-voice-portal)program konwertuje tekst na mowę dźwiękową przy użyciu zwykłego tekstu lub języka SSML (Speech syntezing Language). | 1.3.0 |
 
@@ -164,7 +164,7 @@ Wszystkie Tagi, z wyjątkiem `latest` są w następującym formacie i są rozró
 Następujący tag jest przykładem formatu:
 
 ```
-2.0.0-amd64-en-us-preview
+2.1.1-amd64-en-us-preview
 ```
 
 W przypadku wszystkich obsługiwanych ustawień regionalnych kontenera **zamiany mowy na tekst** należy zapoznać się [ze znacznikami obrazu zamiany mowy na tekst](../containers/container-image-tags.md#speech-to-text).

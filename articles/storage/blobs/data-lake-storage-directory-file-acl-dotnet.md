@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: article
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 76fab93543310252bb9003029573f9d3f1ff62b6
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 0c279118df3a9205e82f8444b261922c688578da
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834992"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969079"
 ---
 # <a name="use-net-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Korzystanie z platformy .NET do zarządzania katalogami, plikami i listami ACL w Azure Data Lake Storage Gen2 (wersja zapoznawcza)
 
@@ -27,7 +27,7 @@ W tym artykule przedstawiono sposób korzystania z platformy .NET do tworzenia k
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 > [!div class="checklist"]
-> * Subskrypcja platformy Azure. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
+> * Subskrypcja platformy Azure. Zobacz artykuł [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 > * Konto magazynu z włączoną hierarchiczną przestrzenią nazw (SNS). Postępuj zgodnie z [tymi](data-lake-storage-quickstart-create-account.md) instrukcjami, aby je utworzyć.
 
 ## <a name="set-up-your-project"></a>konfigurowanie projektu
@@ -41,6 +41,7 @@ Następnie Dodaj te instrukcje using na początku pliku kodu.
 ```csharp
 using Azure.Storage.Files.DataLake;
 using Azure.Storage.Files.DataLake.Models;
+using Azure.Storage;
 using System.IO;
 using Azure;
 ```
@@ -99,7 +100,7 @@ public async Task<DataLakeDirectoryClient> CreateDirectory
 }
 ```
 
-## <a name="rename-or-move-a-directory"></a>Zmienianie nazwy lub przenoszenie katalogu
+## <a name="rename-or-move-a-directory"></a>Zmiana nazwy lub przeniesienie katalogu
 
 Zmień nazwę lub Przenieś katalog, wywołując metodę [DataLakeDirectoryClient. RenameAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.renameasync) . Przekaż ścieżkę do żądanego katalogu jako parametr. 
 
@@ -302,7 +303,7 @@ public async Task ListFilesInDirectory(DataLakeFileSystemClient fileSystemClient
 }
 ```
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 * [Dokumentacja interfejsu API](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake)
 * [Pakiet (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files.DataLake)

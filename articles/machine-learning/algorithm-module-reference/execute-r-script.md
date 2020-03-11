@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/19/2019
-ms.openlocfilehash: d39ac40e8e29c7ff90e2accc3a519449571c1d58
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.date: 03/10/2020
+ms.openlocfilehash: 2e12952c04373fe47eaebb24b61a4fc563121185
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917411"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037120"
 ---
 # <a name="execute-r-script"></a>Wykonywanie skryptu języka R
 
@@ -67,11 +67,43 @@ azureml_main <- function(dataframe1, dataframe2){
  > [!NOTE]
   > Sprawdź, czy pakiet już istnieje przed zainstalowaniem go, aby uniknąć powtarzania instalacji. Jak `  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")` w powyższym przykładowym kodzie. Powtórzenie instalacji może spowodować przekroczenie limitu czasu żądania usługi sieci Web.     
 
+## <a name="upload-files"></a>Przekazywanie plików
+**Skrypt Execute języka r** obsługuje przekazywanie plików przy użyciu Azure Machine Learning języka r SDK.
+
+Poniższy przykład pokazuje, jak przekazać plik obrazu w **skrypcie Execute języka R**:
+```R
+
+# R version: 3.5.1
+# The script MUST contain a function named azureml_main
+# which is the entry point for this module.
+
+# The entry point function can contain up to two input arguments:
+#   Param<dataframe1>: a R DataFrame
+#   Param<dataframe2>: a R DataFrame
+azureml_main <- function(dataframe1, dataframe2){
+  print("R script run.")
+
+  # Generate a jpeg graph
+  img_file_name <- "rect.jpg"
+  jpeg(file=img_file_name)
+  example(rect)
+  dev.off()
+
+  upload_files_to_run(names = list(file.path("graphic", img_file_name)), paths=list(img_file_name))
+
+
+  # Return datasets as a Named List
+  return(list(dataset1=dataframe1, dataset2=dataframe2))
+}
+```
+
+Po pomyślnym przesłaniu potoku można wyświetlić podgląd obrazu w prawym panelu modułu ![przekazanego obrazu](media/module/upload-image-in-r-script.png)
+
 ## <a name="how-to-configure-execute-r-script"></a>Jak skonfigurować skrypt wykonywania skryptu języka R
 
 Moduł **wykonywania skryptu języka R** zawiera przykładowy kod, którego można użyć jako punktu wyjścia. Aby skonfigurować moduł **wykonywania skryptu języka R** , podaj zestaw wejść i kod do wykonania.
 
-![R-module](media/module/execute-r-script.png)
+![R-module](media/module/upload-image-in-r-script.png)
 
 Zestawy danych przechowywane w projektancie są automatycznie konwertowane na ramkę z danymi języka R po załadowaniu tego modułu.
 
@@ -284,7 +316,7 @@ Bieżąca lista wstępnie zainstalowanych pakietów języka R dostępnych do uż
 | crayon       | 1.3.4      | 
 | Odsłon         | 3.3        | 
 | Data. Table   | 1.12.2     | 
-| zbiory danych     | 3.5.1      | 
+| datasets     | 3.5.1      | 
 | DBI          | 1.0.0      | 
 | dbplyr       | 1.4.1      | 
 | digest       | 0.6.19     | 

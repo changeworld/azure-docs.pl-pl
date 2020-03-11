@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
-ms.openlocfilehash: 97515b308323452e88cf6fd8a517c1f169c9ba6f
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 2cc6c577abdb3698ef6aca1f1f04d239f09d119c
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587417"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082969"
 ---
 # <a name="what-is-azure-private-link-service"></a>Co to jest usługa Azure Private Link Service?
 
@@ -108,11 +108,11 @@ Szczegóły niestandardowego TLV:
 |---------|---------|----------|
 |Typ  |1        |PP2_TYPE_AZURE (0xEE)|
 |Długość  |2      |Długość wartości|
-|Value  |1     |PP2_SUBTYPE_AZURE_PRIVATEENDPOINT_LINKID (0x01)|
+|Wartość  |1     |PP2_SUBTYPE_AZURE_PRIVATEENDPOINT_LINKID (0x01)|
 |  |4        |UINT32 (4 bajty) reprezentujący LINKID prywatnego punktu końcowego. Zakodowane w formacie little endian.|
 
  > [!NOTE]
- > Dostawca usług jest odpowiedzialny za upewnienie się, że usługa znajdująca się za standardowym modułem równoważenia obciążenia jest skonfigurowana do analizowania nagłówka protokołu proxy zgodnie ze [specyfikacją](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt) , gdy protokół proxy jest włączony w usłudze linku prywatnego. Żądanie zakończy się niepowodzeniem, jeśli ustawienie protokołu proxy jest włączone w usłudze linku prywatnego i usługa nie jest skonfigurowana do analizowania nagłówka. Podobnie żądanie zakończy się niepowodzeniem, jeśli usługa oczekuje nagłówka protokołu proxy, gdy to ustawienie nie zostanie włączone w usłudze link prywatny. Po włączeniu ustawienia protokołu proxy nagłówek protokołu proxy również będzie uwzględniał sondy kondycji protokołu HTTP/TCP z hosta do maszyn wirtualnych zaplecza, nawet jeśli w nagłówku nie będzie żadnych informacji o kliencie. 
+ > Dostawca usług jest odpowiedzialny za upewnienie się, że usługa znajdująca się za standardowym modułem równoważenia obciążenia jest skonfigurowana do analizowania nagłówka protokołu proxy zgodnie ze [specyfikacją](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt) , gdy protokół proxy jest włączony w usłudze linku prywatnego. Żądanie zakończy się niepowodzeniem, jeśli ustawienie protokołu proxy jest włączone w usłudze link prywatny, ale usługa dostawcy usług nie jest skonfigurowana do analizowania nagłówka. Podobnie żądanie zakończy się niepowodzeniem, jeśli usługa dostawcy usług oczekuje nagłówka protokołu proxy, gdy to ustawienie nie zostanie włączone w usłudze link prywatny. Po włączeniu ustawienia protokołu proxy nagłówek protokołu proxy również będzie uwzględniał sondy kondycji protokołu HTTP/TCP z hosta do maszyn wirtualnych zaplecza, nawet jeśli w nagłówku nie będzie żadnych informacji o kliencie. 
 
 ## <a name="limitations"></a>Ograniczenia
 

@@ -1,24 +1,17 @@
 ---
 title: Używanie funkcji Cloud-init na maszynie wirtualnej z systemem Linux na platformie Azure
 description: Jak używać funkcji Cloud-init do aktualizowania i instalowania pakietów na maszynie wirtualnej z systemem Linux podczas tworzenia przy użyciu interfejsu wiersza polecenia platformy Azure
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: cynthn
-ms.openlocfilehash: 7bb48ec11ec042f021203c1716968daa9ab45047
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7b7a03572a001fc6d5114635b33510f1a4b1bc70
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973139"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969155"
 ---
 # <a name="use-cloud-init-to-update-and-install-packages-in-a-linux-vm-in-azure"></a>Używanie funkcji Cloud-init do aktualizowania i instalowania pakietów na maszynie wirtualnej z systemem Linux na platformie Azure
 W tym artykule pokazano, jak za pomocą usługi [Cloud-init](https://cloudinit.readthedocs.io) aktualizować pakiety na maszynie wirtualnej z systemem Linux lub w zestawach skalowania maszyn wirtualnych w czasie aprowizacji na platformie Azure. Te skrypty usługi Cloud-init są uruchamiane podczas pierwszego rozruchu po udostępnieniu zasobów przez platformę Azure. Aby uzyskać więcej informacji na temat sposobu, w jaki usługa Cloud-init działa natywnie na platformie Azure i obsługiwanych dystrybucje z systemem Linux, zobacz [Omówienie usługi Cloud-init](using-cloud-init.md)

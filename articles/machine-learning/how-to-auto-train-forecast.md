@@ -9,13 +9,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 93695b407762766b0bdd40c9d99a0bf4965f59a8
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.date: 03/09/2020
+ms.openlocfilehash: d4e36c0d3838af85768453496a51ecd295c22b93
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78328783"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081849"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Autouczenie modelu prognozowania szeregów czasowych
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -113,7 +113,7 @@ W przypadku zadań prognozowania automatyczne Uczenie maszynowe korzysta z krok�
 
 Obiekt [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) definiuje ustawienia i dane niezbędne do automatycznego zadania uczenia maszynowego. Podobnie jak w przypadku problemu z regresją, definiuje się standardowe parametry szkolenia, takie jak typ zadania, liczba iteracji, dane szkoleniowe i liczba operacji krzyżowych. W przypadku zadań prognozowania należy ustawić dodatkowe parametry, które mają wpływ na eksperyment. W poniższej tabeli opisano każdy parametr i jego użycie.
 
-| Nazwa&nbsp;parametru | Opis | Wymagane |
+| Nazwa&nbsp;parametru | Opis | Wymagany |
 |-------|-------|-------|
 |`time_column_name`|Służy do określania kolumny DateTime w danych wejściowych używanych do kompilowania szeregów czasowych i wywnioskowania jej częstotliwości.|✓|
 |`grain_column_names`|Nazwy definiujące poszczególne grupy serii w danych wejściowych. Jeśli ziarno nie jest zdefiniowane, zakłada się, że zestaw danych jest jedną serią czasową.||

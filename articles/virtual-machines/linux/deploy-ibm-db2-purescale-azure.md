@@ -1,25 +1,17 @@
 ---
 title: Wdrażanie programu IBM DB2 pureScale na platformie Azure
 description: Dowiedz się, jak wdrożyć przykładową architekturę ostatnio używanej do migrowania przedsiębiorstwa z środowiska IBM DB2 działającego w systemie z/OS do programu IBM DB2 pureScale na platformie Azure.
-services: virtual-machines-linux
-documentationcenter: ''
 author: njray
-manager: edprice
-editor: edprice
-tags: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: c4db27b938934aafa350866991ff174cbdbed0ac
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 98e912894a4d93a057a2f6a2153d0690deaed250
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291553"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968896"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Wdrażanie programu IBM DB2 pureScale na platformie Azure
 
@@ -27,7 +19,7 @@ W tym artykule opisano, jak wdrożyć [przykładową architekturę](ibm-db2-pure
 
 Aby wykonać kroki używane do migracji, zobacz Skrypty instalacji w repozytorium [DB2onAzure](https://aka.ms/db2onazure) w witrynie GitHub. Skrypty te są oparte na architekturze typowego, średniego obciążenia przetwarzania transakcji online (OLTP).
 
-## <a name="get-started"></a>Rozpocznij
+## <a name="get-started"></a>Rozpoczynanie pracy
 
 Aby wdrożyć tę architekturę, Pobierz i uruchom skrypt deploy.sh znaleziony w repozytorium [DB2onAzure](https://aka.ms/db2onazure) w witrynie GitHub.
 
@@ -81,9 +73,9 @@ Repozytorium GitHub zawiera plik odpowiedzi DB2server. rsp, odpowiedź (. RSP), 
 
 | Nazwa ekranu               | Pole                                        | Wartość                                                                                                 |
 |---------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| Zapraszamy!                   |                                              | Nowa instalacja                                                                                           |
+| Powitanie                   |                                              | Nowa instalacja                                                                                           |
 | Wybierz produkt          |                                              | 11.1.3.3 wersja programu DB2. Wersje serwera z programem DB2 pureScale                                              |
-| Konfigurowanie             | Katalog                                    | /data1/opt/ibm/db2/V11.1                                                                              |
+| Konfiguracja             | Katalog                                    | /data1/opt/ibm/db2/V11.1                                                                              |
 |                           | Wybierz typ instalacji                 | Normalne                                                                                               |
 |                           | Akceptuję warunki firmy IBM                     | Zaznaczone                                                                                               |
 | Właściciel wystąpienia            | Istniejący użytkownik na przykład, nazwa użytkownika        | DB2sdin1                                                                                              |

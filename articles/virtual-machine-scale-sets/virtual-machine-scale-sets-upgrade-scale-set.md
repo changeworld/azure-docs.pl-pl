@@ -1,19 +1,19 @@
 ---
 title: Modyfikowanie zestawu skalowania maszyn wirtualnych platformy Azure
 description: Dowiedz się, jak modyfikować i aktualizować zestaw skalowania maszyn wirtualnych platformy Azure przy użyciu interfejsów API REST, Azure PowerShell i interfejsu wiersza polecenia platformy Azure
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
-ms.date: 02/14/2018
-ms.author: manayar
-ms.openlocfilehash: 49327ff0c3aeab25de02fc67c049f24597215d45
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/10/2020
+ms.author: mimckitt
+ms.openlocfilehash: af5998a4207521d49ea4fd7956256aa6c880e6e9
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390419"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082390"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Modyfikowanie zestawu skalowania maszyn wirtualnych
 
@@ -311,7 +311,7 @@ Aby zaktualizować istniejące maszyny wirtualne, należy wykonać "ręczne uakt
 >[!NOTE]
 > Klastry Service Fabric mogą korzystać tylko z trybu *automatycznego* , ale aktualizacja jest obsługiwana inaczej. Aby uzyskać więcej informacji, zobacz [Service Fabric uaktualnień aplikacji](../service-fabric/service-fabric-application-upgrade.md).
 
-Istnieje jeden typ modyfikacji właściwości globalnego zestawu skalowania, które nie są zgodne z zasadami uaktualniania. Zmiany w profilu systemu operacyjnego zestawu skalowania (takie jak nazwa użytkownika i hasło administratora) można zmienić tylko w interfejsie API w wersji *2017-12-01* lub nowszej. Te zmiany stosują się tylko do maszyn wirtualnych utworzonych po zmianie modelu zestawu skalowania. Aby zapewnić aktualność istniejących maszyn wirtualnych, musisz wykonać "reobraz" każdej istniejącej maszyny wirtualnej. Ten obraz można wykonać za pomocą:
+Istnieje jeden typ modyfikacji właściwości globalnego zestawu skalowania, które nie są zgodne z zasadami uaktualniania. Zmiany w systemie operacyjnym zestawu skalowania i profilu dysku danych (takie jak nazwa użytkownika i hasło administratora) można zmienić tylko w interfejsie API w wersji *2017-12-01* lub nowszej. Te zmiany stosują się tylko do maszyn wirtualnych utworzonych po zmianie modelu zestawu skalowania. Aby zapewnić aktualność istniejących maszyn wirtualnych, musisz wykonać "reobraz" każdej istniejącej maszyny wirtualnej. Ten obraz można wykonać za pomocą:
 
 - Interfejs API REST z [obliczeniami/virtualmachinescalesets/](/rest/api/compute/virtualmachinescalesets/reimage) odtwarzaniem obrazu w następujący sposób:
 

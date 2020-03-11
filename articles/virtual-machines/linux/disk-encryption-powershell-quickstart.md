@@ -3,19 +3,20 @@ title: Tworzenie i szyfrowanie maszyny wirtualnej z systemem Linux przy użyciu 
 description: W tym przewodniku szybki start dowiesz się, jak utworzyć i zaszyfrować maszynę wirtualną z systemem Linux przy użyciu programu Azure PowerShell
 author: msmbaldwin
 ms.author: mbaldwin
-ms.service: security
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: quickstart
 ms.date: 05/17/2019
-ms.openlocfilehash: 14cdd1e15212141e8c631b589c9c470bbdfe38a9
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a2cb8919ac0752c42f22e064d6201c7120fbc9b6
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71829907"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970547"
 ---
 # <a name="quickstart-create-and-encrypt-a-linux-vm-in-azure-with-azure-powershell"></a>Szybki Start: Tworzenie i szyfrowanie maszyny wirtualnej z systemem Linux na platformie Azure przy użyciu Azure PowerShell
 
-Moduł Azure PowerShell umożliwia tworzenie zasobów platformy Azure i zarządzanie nimi za pomocą wiersza polecenia programu PowerShell lub skryptów. W tym przewodniku szybki start pokazano, jak za pomocą modułu Azure PowerShell utworzyć maszynę wirtualną z systemem Linux, utworzyć Key Vault do przechowywania kluczy szyfrowania i zaszyfrować maszynę wirtualną. Ten przewodnik Szybki Start używa obrazu z witryny Marketplace z systemem Ubuntu 16,04 LTS w formacie kanonicznym i rozmiarze Standard_D2S_V3 maszyny wirtualnej. 
+Moduł Azure PowerShell umożliwia tworzenie zasobów platformy Azure i zarządzanie nimi za pomocą wiersza polecenia programu PowerShell lub skryptów. W tym przewodniku szybki start pokazano, jak za pomocą modułu Azure PowerShell utworzyć maszynę wirtualną z systemem Linux, utworzyć Key Vault do przechowywania kluczy szyfrowania i zaszyfrować maszynę wirtualną. Ten przewodnik Szybki Start używa obrazu Ubuntu 16,04 LTS Marketplace z kanonicznej i Standard_D2S_V3 rozmiaru maszyny wirtualnej. 
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

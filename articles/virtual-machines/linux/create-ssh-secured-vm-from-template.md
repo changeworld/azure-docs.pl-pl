@@ -1,27 +1,17 @@
 ---
 title: Tworzenie maszyny wirtualnej z systemem Linux na platformie Azure na podstawie szablonu
 description: Jak utworzyć maszynę wirtualną z systemem Linux przy użyciu szablonu Menedżer zasobów za pomocą interfejsu wiersza polecenia platformy Azure
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 721b8378-9e47-411e-842c-ec3276d3256a
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: cynthn
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cf440542e8b16231514447ddcddca081b4b89368
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 581eadc60835b758f67ae616d4413800f1d6d718
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979047"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969525"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>Jak utworzyć maszynę wirtualną z systemem Linux przy użyciu szablonów Azure Resource Manager
 
@@ -84,8 +74,8 @@ W tym przykładzie utworzono podstawową maszynę wirtualną z systemem Linux. A
 
 Aby dowiedzieć się więcej na temat tworzenia szablonów, Wyświetl składnię i właściwości JSON dla wdrożonych typów zasobów:
 
-- [Microsoft.Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)
-- [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
+- [Microsoft. Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)
+- [Microsoft. Network/adresów publicipaddress](/azure/templates/microsoft.network/publicipaddresses)
 - [Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
-- [Microsoft.Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)
-- [Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)
+- [Microsoft. Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)
+- [Microsoft. COMPUTE/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)

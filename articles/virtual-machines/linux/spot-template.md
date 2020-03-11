@@ -14,41 +14,38 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 457f1008b75fe0605c0d2934f2de09937fac8d21
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 0e635fe7ce9b442a9cc8f0fdf614feef5a3a756a
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162450"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082799"
 ---
 # <a name="deploy-spot-vms-using-a-resource-manager-template"></a>Wdrażanie maszyn wirtualnych przy użyciu szablonu Menedżer zasobów
 
 Korzystanie z [maszyn wirtualnych na miejscu](spot-vms.md) pozwala korzystać z nieużywanej pojemności przy znaczącym obciążeniu kosztów. W dowolnym momencie, gdy platforma Azure wymaga przywrócenia pojemności, infrastruktura platformy Azure wyłączy maszyny wirtualne. W związku z tym maszyny wirtualne są doskonałe dla obciążeń, które mogą obsłużyć przerwy, takie jak zadania przetwarzania wsadowego, środowiska deweloperskie/testowe, duże obciążenia obliczeniowe i inne.
 
-Ceny maszyn wirtualnych na miejscu są zmienne, na podstawie regionu i jednostki SKU. Aby uzyskać więcej informacji, zobacz cennik maszyn wirtualnych dla [systemów](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) i Windows. 
+Ceny maszyn wirtualnych na miejscu są zmienne, na podstawie regionu i jednostki SKU. Aby uzyskać więcej informacji, zobacz cennik maszyn wirtualnych dla [systemów](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) i Windows.
 
 Dla maszyny wirtualnej można ustawić maksymalną cenę, która ma być płacona za godzinę. Maksymalna cena maszyny wirtualnej na miejscu może być ustawiona w dolarach amerykańskich (USD) przy użyciu maksymalnie 5 miejsc dziesiętnych. Na przykład wartość `0.98765`będzie cena maksymalna $0,98765 USD za godzinę. Jeśli ustawisz maksymalną wartość `-1`, maszyna wirtualna nie zostanie wykluczona na podstawie ceny. Cena maszyny wirtualnej to aktualna cena za ilość miejsca lub cena standardowej maszyny wirtualnej, która kiedykolwiek jest mniejsza, o ile jest dostępna pojemność i przydział. Aby uzyskać więcej informacji na temat ustawiania ceny maksymalnej, zobacz [punkt maszyny wirtualne — Cennik](spot-vms.md#pricing).
 
 > [!IMPORTANT]
 > Wystąpienia punktowe są obecnie dostępne w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest zalecana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ta wersja zapoznawcza nie jest zalecana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
+> Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
 
+## <a name="use-a-template"></a>Korzystanie z szablonu
 
-
-## <a name="use-a-template"></a>Korzystanie z szablonu 
-
-W przypadku wdrożeń szablonów dodatkowych Użyj`"apiVersion": "2019-03-01"` lub nowszych. Dodaj `priority`, `evictionPolicy` i `billingProfile` właściwości do w szablonie: 
+W przypadku wdrożeń szablonów dodatkowych Użyj`"apiVersion": "2019-03-01"` lub nowszych. Dodaj `priority`, `evictionPolicy` i `billingProfile` właściwości do w szablonie:
 
 ```json
-                "priority": "Spot",
-                "evictionPolicy": "Deallocate",
-                "billingProfile": {
-                    "maxPrice": -1
-                }
+"priority": "Spot",
+"evictionPolicy": "Deallocate",
+"billingProfile": {
+    "maxPrice": -1
+}
 ```
-
-
 
 Oto przykładowy szablon z dodanymi właściwościami dla maszyny wirtualnej. Zastąp nazwy zasobów własnymi i `<password>` przy użyciu hasła dla konta administratora lokalnego na maszynie wirtualnej.
 
@@ -163,7 +160,7 @@ Oto przykładowy szablon z dodanymi właściwościami dla maszyny wirtualnej. Za
                 "evictionPolicy": "Deallocate",
                 "billingProfile": {
                     "maxPrice": -1
-                }               
+                }
             }
         },
         {

@@ -1,25 +1,17 @@
 ---
 title: Pobieranie wirtualnego dysku twardego z systemem Linux z platformy Azure
 description: Pobierz dysk VHD z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure i Azure Portal.
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-windows
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
+ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: cynthn
-ms.openlocfilehash: 257f3f723fc8a971b8253699f4beb002cf46ce52
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 02c3ee483e6a31960fd5123070a49f568ac4c690
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036286"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968796"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Pobieranie wirtualnego dysku twardego z systemem Linux z platformy Azure
 
@@ -56,12 +48,12 @@ Aby użyć dysku VHD jako obrazu do tworzenia innych maszyn wirtualnych, wykonaj
 
 Aby użyć dysku VHD jako dysku dla nowego wystąpienia istniejącej maszyny wirtualnej lub dysku danych, wykonaj następujące kroki:
 
-1.  Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1.  Zaloguj się do [Azure portal](https://portal.azure.com/).
 2.  Z menu po lewej stronie wybierz pozycję **Virtual Machines**.
 3.  Z listy wybierz maszynę wirtualną.
 4.  Na stronie maszyny wirtualnej wybierz pozycję **Zatrzymaj**.
 
-    ![Zatrzymaj maszynę wirtualną](./media/download-vhd/export-stop.png)
+    ![Zatrzymanie maszyny wirtualnej](./media/download-vhd/export-stop.png)
 
 ## <a name="generate-sas-url"></a>Generuj adres URL SAS
 

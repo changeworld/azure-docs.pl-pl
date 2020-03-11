@@ -11,13 +11,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 197e93946a52303f312912e4ebd2487f8c1360b2
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 03/10/2020
+ms.openlocfilehash: 12a38b08fd429280f34b4eb02d4b72187b622261
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75536735"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79078417"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Miejsce zapisywania i zapisywania plików do Azure Machine Learning eksperymentów
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -30,7 +30,7 @@ Podczas uruchamiania szkoleń w [obiekcie docelowym obliczeń](how-to-set-up-tra
 
 Przed zainicjowaniem eksperymentu w elemencie docelowym obliczeń lub na komputerze lokalnym należy upewnić się, że wymagane pliki są dostępne dla tego obiektu docelowego obliczeń, takich jak pliki zależności i pliki danych, które muszą zostać uruchomione w kodzie.
 
-Azure Machine Learning uruchamia skrypty szkoleniowe, kopiując cały folder skryptu do docelowego kontekstu obliczeniowego, a następnie pobiera migawkę. Limit magazynu migawek eksperymentu wynosi 300 MB i/lub 2000 plików.
+Azure Machine Learning uruchamia skrypty szkoleniowe, kopiując cały folder skryptu do docelowego kontekstu obliczeniowego, a następnie pobiera migawkę. Limit magazynu dla migawek eksperymentu to 300 MB i/lub 2000 plików.
 
 Z tego powodu zalecamy:
 

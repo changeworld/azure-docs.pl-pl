@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09a720be10b09e11adc8acdc8ab26a06870311b0
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
-ms.translationtype: HT
+ms.openlocfilehash: 0716c2d4475bb538c06b9a591521fbdcfc0c80e4
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78892776"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968252"
 ---
 # <a name="conditional-access-grant"></a>Dostęp warunkowy: Udziel
 
@@ -67,7 +67,7 @@ Organizacje mogą zdecydować się na użycie tożsamości urządzenia jako czę
 
 Organizacje mogą wymagać od zatwierdzonej aplikacji klienckiej próby dostępu do wybranych aplikacji w chmurze. Te zatwierdzone aplikacje klienckie obsługują [Zasady ochrony aplikacji usługi Intune](/intune/app-protection-policy) niezależnie od dowolnego rozwiązania do zarządzania urządzeniami przenośnymi (MDM).
 
-To ustawienie dotyczy następujących aplikacji klienckich:
+To ustawienie dotyczy następujących aplikacji dla systemów iOS i Android:
 
 - Microsoft Azure Information Protection
 - Rezerwacje firmy Microsoft
@@ -80,6 +80,7 @@ To ustawienie dotyczy następujących aplikacji klienckich:
 - Microsoft Invoicing
 - Microsoft Kaizala
 - Microsoft Launcher
+- Microsoft Office
 - Microsoft OneDrive
 - Microsoft OneNote
 - Microsoft Outlook

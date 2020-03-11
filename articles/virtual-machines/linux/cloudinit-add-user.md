@@ -1,25 +1,17 @@
 ---
 title: Dodawanie użytkownika do maszyny wirtualnej z systemem Linux na platformie Azure przy użyciu funkcji Cloud-init
 description: Jak używać funkcji Cloud-init do dodawania użytkownika do maszyny wirtualnej z systemem Linux podczas tworzenia przy użyciu interfejsu wiersza polecenia platformy Azure
-services: virtual-machines-linux
-documentationcenter: ''
 author: rickstercdn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 428f489a24c24b173cb1cef0980dd17c1d8483ce
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f1782bfe0c14e3b44703f89ec7f78590c1bb74c5
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036782"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969236"
 ---
 # <a name="use-cloud-init-to-add-a-user-to-a-linux-vm-in-azure"></a>Dodawanie użytkownika do maszyny wirtualnej z systemem Linux na platformie Azure przy użyciu funkcji Cloud-init
 W tym artykule pokazano, jak za pomocą funkcji [Cloud-init](https://cloudinit.readthedocs.io) dodać użytkownika do maszyny wirtualnej lub zestawu skalowania maszyn wirtualnych (VMSS) w czasie aprowizacji na platformie Azure. Ten skrypt usługi Cloud-init jest uruchamiany podczas pierwszego rozruchu po udostępnieniu zasobów przez platformę Azure. Aby uzyskać więcej informacji na temat sposobu, w jaki usługa Cloud-init działa natywnie na platformie Azure i obsługiwanych dystrybucje z systemem Linux, zobacz [Omówienie usługi Cloud-init](using-cloud-init.md).

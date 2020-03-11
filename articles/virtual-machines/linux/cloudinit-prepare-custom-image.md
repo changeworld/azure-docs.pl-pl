@@ -1,25 +1,17 @@
 ---
 title: Przygotowanie obrazu maszyny wirtualnej platformy Azure do użycia z usługą Cloud-init
 description: Jak przygotować istniejący obraz maszyny wirtualnej platformy Azure do wdrożenia przy użyciu funkcji Cloud-init
-services: virtual-machines-linux
-documentationcenter: ''
 author: danis
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: danis
-ms.openlocfilehash: a75bceebe584522ee999f86664b8afb9fa00f17b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 73df3a12ebea3b94563d02eda8f1211401d1ae3f
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036745"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969182"
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>Przygotowywanie istniejącego obrazu maszyny wirtualnej z systemem Linux na potrzeby użycia z usługą Cloud-init
 W tym artykule opisano sposób tworzenia istniejącej maszyny wirtualnej platformy Azure i przygotowania jej do ponownego wdrożenia i gotowości do korzystania z funkcji Cloud-init. Ten obraz może służyć do wdrażania nowej maszyny wirtualnej lub zestawów skalowania maszyn wirtualnych, z których można następnie dostosowywać program Cloud-init w czasie wdrażania.  Te skrypty usługi Cloud-init są uruchamiane podczas pierwszego rozruchu po udostępnieniu zasobów przez platformę Azure. Aby uzyskać więcej informacji na temat sposobu, w jaki usługa Cloud-init działa natywnie na platformie Azure i obsługiwanych dystrybucje z systemem Linux, zobacz [Omówienie usługi Cloud-init](using-cloud-init.md)

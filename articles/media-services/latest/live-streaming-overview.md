@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: juliako
-ms.openlocfilehash: b366262ce7849658eb84444d873956c25ab38804
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: af7bfe74d8df177650cea76a9bed7b0d7311f87e
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78244660"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968999"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Przesyłanie strumieniowe na żywo z Azure Media Services v3
 
@@ -33,7 +33,7 @@ Azure Media Services pozwala na dostarczanie na żywo wydarzeń klientom w chmur
 Ten artykuł zawiera omówienie i wskazówki dotyczące przesyłania strumieniowego na żywo z Media Services i linki do innych odpowiednich artykułów.
  
 > [!NOTE]
-> Obecnie nie można zarządzać zasobami w wersji 3 z witryny Azure Portal. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), [interfejsu wiersza polecenia](https://aka.ms/ams-v3-cli-ref) lub jednego z obsługiwanych [zestawów SDK](media-services-apis-overview.md#sdks).
+> Za pomocą [Azure Portal](https://portal.azure.com/) można zarządzać [zdarzeniami na żywo](live-events-outputs-concept.md)v3, przeglądać [zasoby](assets-concept.md)v3 i uzyskać informacje o uzyskiwaniu dostępu do interfejsów API. W przypadku wszystkich innych zadań zarządzania (na przykład transformacji i zadań) należy użyć [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), interfejsu [wiersza polecenia](https://aka.ms/ams-v3-cli-ref)lub jednego z obsługiwanych [zestawów SDK](media-services-apis-overview.md#sdks).
 
 ## <a name="dynamic-packaging"></a>Pakowanie dynamiczne
 
@@ -125,5 +125,6 @@ Zapoznaj się z artykułem [community Azure Media Services](media-services-commu
 
 ## <a name="next-steps"></a>Następne kroki
 
+* [Szybki start przesyłania strumieniowego na żywo] (live-events-wirecast-quickstart.md (
 * [Samouczek przesyłania strumieniowego na żywo](stream-live-tutorial-with-api.md)
 * [Wskazówki dotyczące migracji dotyczące przenoszenia z Media Services V2 do wersji v3](migrate-from-v2-to-v3.md)

@@ -1,6 +1,6 @@
 ---
-title: Zasoby dotyczące migrowania aplikacji do usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Zasoby pomagające w migracji do usługi Azure Active Directory (Azure AD) dostęp do aplikacji i uwierzytelniania.
+title: Zasoby do migrowania aplikacji do Azure Active Directory | Microsoft Docs
+description: Zasoby ułatwiające Migrowanie dostępu do aplikacji i ich uwierzytelniania do Azure Active Directory (Azure AD).
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -8,30 +8,30 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/19/2018
+ms.date: 02/29/2020
 ms.author: mimart
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b39704b25c26998e16ca8080c4e44dd1adf6965c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b30469858a5dd83f7f5f707f74466302b3000510
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108210"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968728"
 ---
-# <a name="resources-for-migrating-applications-to-azure-active-directory"></a>Zasoby dotyczące migrowania aplikacji do usługi Azure Active Directory
+# <a name="resources-for-migrating-applications-to-azure-active-directory"></a>Zasoby do migrowania aplikacji do Azure Active Directory
 
-Zasoby pomagające w migracji do usługi Azure Active Directory (Azure AD) dostęp do aplikacji i uwierzytelniania. Wypełnienie tej krótkiej ankiety (https://aka.ms/AppsMigrationFeedback) się opinią na temat doświadczeń migrowanie aplikacji do usługi Azure AD (w tym blockery migracji, należy dla narzędzia / wskazówki lub powody Zachowywanie lokalnego dostawcy tożsamości). 
+Zasoby ułatwiające Migrowanie dostępu do aplikacji i ich uwierzytelniania do Azure Active Directory (Azure AD). Zapoznaj się z tą krótką ankietą (https://aka.ms/AppsMigrationFeedback), aby przekazać opinię na temat doświadczenia w zakresie migrowania aplikacji do usługi Azure AD (włącznie z blokowaniem do migracji, potrzebować narzędzi/wskazówek lub przyczyn zatrzymywania lokalnego dostawcy tożsamości). 
 
-| Resource  | Opis  |
+| Zasób  | Opis  |
 |:-----------|:-------------|
-|[Migrowanie aplikacji do usługi Azure AD](https://aka.ms/migrateapps/whitepaper) | Ten oficjalny dokument przedstawia korzyści wynikające z migracji i opisuje sposób planowania migracji w czterech fazach jasno opisane: Odnajdywanie, klasyfikacja, migracji i bieżące zarządzanie. Poprowadzą Cię kolejne kroki sposobu myślenia o procesie i podzielić projekt na łatwe gotowego do konsumpcji części. W całym dokumencie podano linki do ważnych zasobów, które pomogą Ci po drodze. |
-|[Przewodnik po rozwiązaniu: Migrowanie aplikacji z usługi Active Directory Federation Services (AD FS) do usługi Azure AD](https://aka.ms/migrateapps/adfssolutionguide) | Ten przewodnik przeprowadzi Cię przez ten sam cztery fazy planowania i wykonywania opisanych na wyższym poziomie w oficjalnym dokumencie migracji projektu migracji aplikacji. W tym przewodniku dowiesz się, jak zastosować te etapy do określonego celu, przenoszenie aplikacji z usług federacyjnych Azure Directory (AD FS) do usługi Azure AD.|
-| [Narzędzie: Active Directory Federation Services Migration Readiness Script](https://aka.ms/migrateapps/adfstools) | To jest skrypt można uruchomić na serwerze usługi Active Directory Federation Services (AD FS) w środowisku lokalnym w celu określenia gotowości aplikacji pod kątem migracji do usługi Azure AD.|
-| [Plan wdrożenia: Migrowanie z usług AD FS do synchronizacji skrótów haseł](https://aka.ms/ADFSTOPHSDPDownload) | Z synchronizacji skrótów haseł skróty haseł użytkowników są synchronizowane z usługi Active Directory środowiska lokalnego do usługi Azure AD. Dzięki temu usługa Azure AD do uwierzytelniania użytkowników bez interakcji z usługą Active Directory w środowisku lokalnym.| 
-| [Plan wdrożenia: Migrowanie z usług AD FS do uwierzytelniania przekazywanego](https://aka.ms/ADFSTOPTADPDownload)|Uwierzytelnianie przekazywane usługi Azure AD pomaga użytkownikom na logowanie się zarówno lokalnie, jak i aplikacji działających w chmurze przy użyciu tego samego hasła. Ta funkcja zapewnia użytkownikom lepsze środowisko, ponieważ mają one mniej jedno hasło do zapamiętania. Zmniejsza to także koszty pomocy technicznej IT, ponieważ użytkownicy są mniej prawdopodobne, należy zapominać, jak mają logować się, gdy potrzebują do zapamiętania hasło. Gdy użytkownicy logują się za pomocą usługi Azure AD, ta funkcja weryfikuje ich hasła bezpośrednio w lokalnej usłudze Active Directory.|
-| [Plan wdrożenia: Włączanie logowania jednokrotnego do aplikacji SaaS z usługą Azure AD](https://aka.ms/SSODPDownload) | Pojedynczego logowania jednokrotnego (SSO) ułatwia dostęp wszystkie aplikacje i zasoby niezbędne do prowadzenia firmy, podczas logowania się tylko raz, za pomocą jednego konta użytkownika. Na przykład po zalogowaniu się użytkownika, użytkownik może przechodzić z Microsoft Office, do usługi SalesForce do usługi Box bez uwierzytelniania (na przykład wpisanie hasła) po raz drugi. 
-| [Plan wdrożenia: Rozszerzanie aplikacji do usługi Azure AD przy użyciu serwera Proxy aplikacji](https://aka.ms/AppProxyDPDownload)| Dostęp z komputerów przenośnych pracowników i innych urządzeń do lokalnych aplikacji został użyty tradycyjnie, wirtualnych sieci prywatnych (VPN) lub stref zdemilitaryzowaną (stref DMZ). Te rozwiązania nie tylko są skomplikowane i trudne do zabezpieczenia, ale też mają wysokie koszty konfigurowania i zarządzania. Serwer Proxy aplikacji usługi Azure AD ułatwia dostęp do aplikacji lokalnych. |
-| [Plany wdrożenia](../fundamentals/active-directory-deployment-plans.md) | Znajdź więcej planów wdrożenia dotyczące wdrażania funkcji, takich jak uwierzytelnianie wieloskładnikowe, dostęp warunkowy, inicjowanie obsługi użytkowników, bezproblemowe logowanie Jednokrotne, Samoobsługowe resetowanie haseł i więcej! |
+|[Migrowanie aplikacji do usługi Azure AD](https://aka.ms/migrateapps/whitepaper) | Ten oficjalny dokument przedstawia zalety migracji i opisuje sposób planowania migracji w czterech jasno dostępnych fazach: odnajdywanie, klasyfikacja, migracja i bieżące zarządzanie. Zapoznaj się z informacjami o tym, jak myśleć o procesie i podzielić projekt na łatwe w użyciu elementy. W dokumencie znajdują się linki do ważnych zasobów, które pomogą Ci w tym czasie. |
+|[Przewodnik po rozwiązaniu: Migrowanie aplikacji z Active Directory Federation Services (AD FS) do usługi Azure AD](https://aka.ms/migrateapps/adfssolutionguide) | Ten przewodnik po rozwiązaniu przeprowadzi Cię przez te same cztery etapy planowania i wykonywania projektu migracji aplikacji opisanego na wyższym poziomie w oficjalnym dokumencie dotyczącym migracji. W tym przewodniku dowiesz się, jak zastosować te fazy do określonego celu przeniesienia aplikacji z usług federacyjnych w usłudze Azure Directory (AD FS) do usługi Azure AD.|
+| [Narzędzie: skrypt gotowości do Active Directory Federation Services migracji](https://aka.ms/migrateapps/adfstools) | Jest to skrypt, który można uruchomić na serwerze lokalnym Active Directory Federation Services (AD FS), aby określić gotowość aplikacji do migracji do usługi Azure AD.|
+| [Plan wdrożenia: Migrowanie z AD FS do synchronizacji skrótów haseł](https://aka.ms/ADFSTOPHSDPDownload) | W przypadku synchronizacji skrótów haseł skróty użytkowników są synchronizowane z Active Directory lokalnych do usługi Azure AD. Dzięki temu usługa Azure AD może uwierzytelniać użytkowników bez konieczności korzystania z Active Directory lokalnych.| 
+| [Plan wdrożenia: Migrowanie z AD FS do uwierzytelniania przekazywanego](https://aka.ms/ADFSTOPTADPDownload)|Uwierzytelnianie przekazywane przez usługę Azure AD ułatwia użytkownikom logowanie się do aplikacji lokalnych i opartych na chmurze przy użyciu tego samego hasła. Ta funkcja zapewnia użytkownikom lepszy komfort pracy, ponieważ mają one mniej hasła. Zmniejsza to również koszty pomocy technicznej działu IT, ponieważ użytkownicy nie mogą zapomnieć, jak zalogować się tylko po zapamiętaniu jednego hasła. Gdy użytkownicy logują się za pomocą usługi Azure AD, ta funkcja weryfikuje ich hasła bezpośrednio w lokalnej usłudze Active Directory.|
+| [Plan wdrożenia: Włączanie logowania jednokrotnego do aplikacji SaaS przy użyciu usługi Azure AD](https://aka.ms/SSODPDownload) | Logowanie jednokrotne (SSO) pomaga uzyskać dostęp do wszystkich aplikacji i zasobów, które są potrzebne do prowadzenia działalności, podczas logowania tylko raz przy użyciu jednego konta użytkownika. Na przykład po zalogowaniu się użytkownika użytkownik może przejść z Microsoft Office, do usługi SalesForce, do usługi Box bez uwierzytelniania (na przykład wpisując hasło) po raz drugi. 
+| [Plan wdrożenia: rozszerzanie aplikacji do usługi Azure AD za pomocą serwera proxy aplikacji](https://aka.ms/AppProxyDPDownload)| Zapewnianie dostępu od laptopów pracowników i innych urządzeń do aplikacji lokalnych ma tradycyjnie związane wirtualne sieci prywatne (VPN) lub strefy zdemilitaryzowana (stref DMZ). Te rozwiązania nie tylko są skomplikowane i trudne do zabezpieczenia, ale też mają wysokie koszty konfigurowania i zarządzania. Usługa Azure serwer proxy aplikacji usługi Azure AD ułatwia dostęp do aplikacji lokalnych. |
+| [Plany wdrożenia](../fundamentals/active-directory-deployment-plans.md) | Znajdź więcej planów wdrażania dotyczących wdrażania funkcji, takich jak uwierzytelnianie wieloskładnikowe, dostęp warunkowy, Inicjowanie obsługi użytkowników, bezproblemowe logowanie jednokrotne, Samoobsługowe resetowanie haseł i inne funkcje. |
 
 

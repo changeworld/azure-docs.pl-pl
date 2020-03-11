@@ -3,12 +3,12 @@ title: Odnajdywanie, Ocena i analiza zależności — często zadawane pytania
 description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące odnajdywania, oceny i analizy zależności w programie Azure Migrate.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 7733213f78452b3f35b835eec847ec837138b8e5
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.openlocfilehash: e46d1e6ee1dd404e6e040eb394e89dd86a3d4d8e
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2020
-ms.locfileid: "78932781"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082139"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Wykrywanie, Ocena i analiza zależności — typowe pytania
 
@@ -68,6 +68,12 @@ Po utworzeniu oceny na platformie Azure, w zależności od czasu trwania wydajno
 Na przykład jeśli ustawisz czas trwania wydajności na jeden dzień i wartość percentylu na używany 95. percentyl, Azure Migrate sortuje 15-minutowe punkty próbkowania wysyłane przez moduł zbierający dla ostatniego dnia w kolejności rosnącej. Wybiera wartość percentylu używany 95. jako efektywne wykorzystanie.
 
 Użycie wartości percentylu używany 95. gwarantuje, że elementy odstające są ignorowane. Elementy odstające mogą być dołączane, jeśli Azure Migrate używa percentylu 99. Aby wybrać szczytowe użycie dla tego okresu bez braku żadnych wartości odstających, ustaw Azure Migrate na użycie 99 percentyl.
+
+## <a name="how-are-import-based-assessments-different-from-assessments-with-discovery-source-as-appliance"></a>Jak są oceniane oceny oparte na imporcie, które różnią się od ocen ze źródłem odnajdywania jako urządzenie?
+
+Oceny oparte na imporcie są ocenami utworzonymi w przypadku maszyn zaimportowanych do Azure Migrate przy użyciu pliku CSV. Tylko cztery pola są wymagane do zaimportowania: Nazwa serwera, rdzenie, pamięć i system operacyjny. Poniżej przedstawiono kilka kwestii, które należy zwrócić uwagę: 
+ - Kryteria gotowości są mniej rygorystyczne w przypadku ocen opartych na imporcie w parametrze typu rozruchu. Jeśli typ rozruchu nie zostanie podany, zakłada się, że maszyna ma typ rozruchu w systemie BIOS, a maszyna nie jest oznaczona jako **warunkowo gotowa**. W obszarze oceny ze źródłem odnajdywania jako urządzenie gotowość jest oznaczona jako **warunkowo gotowa** , jeśli brakuje typu rozruchu. Różnica w obliczaniu gotowości wynika z faktu, że użytkownicy mogą nie mieć wszystkich informacji na maszynach na wczesnych etapach planowania migracji w przypadku wykonywania ocen opartych na imporcie. 
+ - Oceny importowe oparte na wydajności używają wartości wykorzystania dostarczonej przez użytkownika do obliczeń o odpowiednim wymiarze. Ponieważ wartość użycia jest dostarczana przez użytkownika, w oknie właściwości oceny są wyłączone opcje **historia wydajności** i **użycie percentylu** . W obszarze oceny ze źródłem odnajdywania jako urządzenie wybrana wartość percentylu jest wybierana z danych wydajności zbieranych przez urządzenie.
 
 ## <a name="what-is-dependency-visualization"></a>Co to jest Wizualizacja zależności?
 

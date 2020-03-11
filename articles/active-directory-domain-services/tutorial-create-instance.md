@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: iainfou
-ms.openlocfilehash: 86097a8706956a768def107dd312c9a20c63c6ff
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 14b3292a08e9bb0a60710053cd0b7ffc9d0db115
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378430"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082113"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Samouczek: Tworzenie i Konfigurowanie wystąpienia Azure Active Directory Domain Services
 
@@ -136,7 +136,7 @@ Pomyślnie wdrożono usługę Azure AD DS, teraz skonfigurujesz sieć wirtualną
 
 1. Karta **Przegląd** dla domeny zarządzanej zawiera kilka **wymaganych czynności konfiguracyjnych**. Pierwszym krokiem konfiguracji jest aktualizacja ustawień serwera DNS dla sieci wirtualnej. Po poprawnym skonfigurowaniu ustawień DNS ten krok nie jest już pokazywany.
 
-    Wymienione adresy są kontrolerami domeny do użycia w sieci wirtualnej. W tym przykładzie te adresy to *10.1.0.4* i *10.1.0.5*. Te adresy IP można później znaleźć na karcie **Właściwości** .
+    Wymienione adresy są kontrolerami domeny do użycia w sieci wirtualnej. W tym przykładzie te adresy to *10.0.1.4* i *10.0.1.5*. Te adresy IP można później znaleźć na karcie **Właściwości** .
 
     ![Skonfiguruj ustawienia DNS dla sieci wirtualnej przy użyciu Azure AD Domain Services adresów IP](./media/tutorial-create-instance/configure-dns.png)
 

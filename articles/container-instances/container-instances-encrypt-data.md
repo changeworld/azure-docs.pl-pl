@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: 41c7fc7380ca2b58326c4a35a3b5fdab1c64c4a3
-ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
+ms.openlocfilehash: ad232c5d9df9f6bfae3a79dbd72e2c68143be949
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77544321"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080364"
 ---
 # <a name="encrypt-deployment-data"></a>Szyfrowanie danych wdrożenia
 
@@ -41,6 +41,10 @@ Pozostała część dokumentu obejmuje kroki wymagane do zaszyfrowania danych wd
 
 Pierwszym krokiem jest upewnienie się, że [dzierżawa platformy Azure](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) ma nazwę główną usługi przypisaną do przyznawania uprawnień do usługi Azure Container Instances. 
 
+> [!IMPORTANT]
+> Aby uruchomić następujące polecenie i utworzyć jednostkę usługi pomyślnie, potwierdź, że masz uprawnienia do tworzenia jednostek usługi w dzierżawie.
+>
+
 Następujące polecenie interfejsu wiersza polecenia spowoduje skonfigurowanie ACI SP w środowisku platformy Azure:
 
 ```azurecli-interactive
@@ -48,6 +52,10 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 ```
 
 Dane wyjściowe z uruchamiania tego polecenia powinny zawierać nazwę główną usługi, która została skonfigurowana przy użyciu "displayName" usługi wystąpienia kontenera platformy Azure.
+
+Jeśli nie możesz pomyślnie utworzyć jednostki usługi:
+* Potwierdź, że masz uprawnienia do tego w dzierżawie
+* Sprawdź, czy jednostka usługi już istnieje w dzierżawie, aby można było wdrożyć ją w usłudze ACI. Możesz to zrobić, uruchamiając `az ad sp show --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9` i zamiast tego użyj tej nazwy głównej usługi
 
 ### <a name="create-a-key-vault-resource"></a>Tworzenie zasobu Key Vault
 

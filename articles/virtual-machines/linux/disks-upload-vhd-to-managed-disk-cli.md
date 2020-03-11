@@ -1,20 +1,19 @@
 ---
-title: Przekazywanie wirtualnego dysku twardego do platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure
+title: Przekazywanie wirtualnego dysku twardego przy użyciu interfejsu wiersza polecenia platformy Azure
 description: Dowiedz się, jak przekazać dysk VHD do dysku zarządzanego platformy Azure i skopiować dysk zarządzany między regionami przy użyciu interfejsu wiersza polecenia platformy Azure za pośrednictwem bezpośredniego przekazywania.
-services: virtual-machines-linux,storage
+services: virtual-machines,storage
 author: roygara
 ms.author: rogarana
 ms.date: 09/20/2019
 ms.topic: article
-ms.service: virtual-machines-linux
-ms.tgt_pltfrm: linux
+ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 51c3933b5ee585c96ad81fe04d379b6771ae81e3
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 2a5bfec08546d6cf00b1e04017b3879db8f016ee
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457594"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970342"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-cli"></a>Przekazywanie wirtualnego dysku twardego do platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure
 

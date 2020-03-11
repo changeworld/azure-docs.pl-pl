@@ -1,6 +1,6 @@
 ---
-title: Jak naprawić zmodyfikowane domyślne reguły — program Azure AD Connect | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak naprawić modyfikacji domyślnych reguł, które pochodzą z programem Azure AD Connect.
+title: Jak naprawić zmodyfikowane reguły domyślne — Azure AD Connect | Microsoft Docs
+description: Dowiedz się, jak naprawić zmodyfikowane domyślne reguły, które są dostępne w Azure AD Connect.
 services: active-directory
 author: billmath
 manager: daveba
@@ -13,184 +13,184 @@ ms.date: 03/21/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2f0956b44d6df64fb73e5eee7844574237d8755
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4626e0149028a140d143fb8d0969a03b732201fa
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067632"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79036979"
 ---
-# <a name="fix-modified-default-rules-in-azure-ad-connect"></a>Napraw modyfikacji domyślnych reguł w programie Azure AD Connect
+# <a name="fix-modified-default-rules-in-azure-ad-connect"></a>Naprawianie zmodyfikowanych reguł domyślnych w Azure AD Connect
 
-Usługa Azure Active Directory (Azure AD) Connect używa domyślnych reguł synchronizacji.  Niestety nie mają zastosowanie następujące reguły powszechnie posiadać wszystkie organizacje. Zgodnie z wymaganiami, konieczne może być ich modyfikować. W tym artykule omówiono dwa przykłady typowych dostosowań i wyjaśnia, prawidłowym sposobem, aby osiągnąć te dostosowania.
+Program Azure Active Directory (Azure AD) Connect używa domyślnych reguł do synchronizacji.  Niestety te reguły nie są powszechnie stosowane do wszystkich organizacji. Na podstawie Twoich wymagań może być konieczne ich zmodyfikowanie. W tym artykule omówiono dwa przykłady najbardziej typowych dostosowań i wyjaśniono poprawny sposób osiągnięcia tych dostosowań.
 
 >[!NOTE] 
-> Modyfikowanie istniejącej reguły domyślne do osiągnięcia wymaganych dostosowań nie jest obsługiwane. Jeśli to zrobisz, więc uniemożliwia, aktualizowanie tych reguł do najnowszej wersji w przyszłych wersjach. Nie będą otrzymywać poprawek, które są potrzebne i nowych funkcji. W tym dokumencie wyjaśniono, jak ten sam efekt bez modyfikowania istniejących reguł domyślnych. 
+> Modyfikowanie istniejących reguł domyślnych w celu osiągnięcia wymaganego dostosowania nie jest obsługiwane. Jeśli to zrobisz, uniemożliwi to zaktualizowanie tych reguł do najnowszej wersji w przyszłych wersjach. Nie uzyskasz potrzebnych poprawek lub nowych funkcji. W tym dokumencie wyjaśniono, jak osiągnąć ten sam wynik bez modyfikowania istniejących reguł domyślnych. 
 
-## <a name="how-to-identify-modified-default-rules"></a>Sposób identyfikacji zmodyfikowanego domyślnych reguł
-Począwszy od wersji 1.3.7.0 programu Azure AD Connect jest łatwo identyfikować ich modyfikacji domyślną regułę. Przejdź do **aplikacji na pulpicie**i wybierz **Synchronization Rules Editor**.
+## <a name="how-to-identify-modified-default-rules"></a>Jak zidentyfikować zmodyfikowane reguły domyślne
+Począwszy od wersji 1.3.7.0 Azure AD Connect, można łatwo zidentyfikować zmodyfikowaną regułę domyślną. Przejdź do pozycji **aplikacje na pulpicie**, a następnie wybierz pozycję **Edytor reguł synchronizacji**.
 
-![Program Azure AD Connect, Synchronization Rules Editor wyróżniony](media/how-to-connect-fix-default-rules/default1.png)
+![Azure AD Connect, z wyróżnionym edytorem reguł synchronizacji](media/how-to-connect-fix-default-rules/default1.png)
 
-W edytorze żadnych modyfikacji domyślnych reguł są wyświetlane z ikoną ostrzeżenia przed nazwą.
+W edytorze wszystkie zmodyfikowane reguły domyślne są wyświetlane z ikoną ostrzeżenia przed nazwą.
 
-![ikona ostrzeżenia](media/how-to-connect-fix-default-rules/default2.png)
+![Ikona ostrzeżenia](media/how-to-connect-fix-default-rules/default2.png)
 
- Wyłączone reguły o takiej samej nazwie obok jest także wyświetlany (jest to standardowy domyślna reguła).
+ Zostanie wyświetlona reguła o tej samej nazwie obok niej (jest to standardowa reguła domyślna).
 
-![Synchronization Rules Editor, pokazujący standardowe, domyślne reguły i modyfikacji domyślną regułę](media/how-to-connect-fix-default-rules/default2a.png)
+![Edytor reguł synchronizacji, wyświetlanie standardowej reguły domyślnej i zmodyfikowanej reguły domyślnej](media/how-to-connect-fix-default-rules/default2a.png)
 
-## <a name="common-customizations"></a>Typowe dostosowania
-Poniżej przedstawiono typowe dostosowania domyślnych reguł:
+## <a name="common-customizations"></a>Wspólne dostosowania
+Poniżej przedstawiono typowe dostosowania reguł domyślnych:
 
-- Zmiana przepływu atrybutów
-- Zmiana filtru określania zakresu
+- Zmień przepływ atrybutów
+- Zmień filtr zakresu
 - Zmień warunek sprzężenia
 
-Zanim będzie można zmienić żadnych reguł:
+Przed zmianą jakichkolwiek reguł:
 
-- Wyłącz harmonogram synchronizacji. Harmonogram domyślnie jest uruchamiane co 30 minut. Upewnij się, że nie jest uruchamiana, gdy one wprowadzania zmian i rozwiązywanie problemów z nowych zasad. Aby tymczasowo wyłączyć harmonogram, uruchom program PowerShell i uruchom `Set-ADSyncScheduler -SyncCycleEnabled $false`.
- ![Polecenia programu PowerShell, aby wyłączyć harmonogram synchronizacji](media/how-to-connect-fix-default-rules/default3.png)
+- Wyłączenie harmonogramu synchronizacji. Harmonogram jest domyślnie uruchamiany co 30 minut. Upewnij się, że nie jest on uruchamiany podczas wprowadzania zmian i rozwiązywania problemów z nowymi regułami. Aby tymczasowo wyłączyć harmonogram, uruchom program PowerShell i uruchom `Set-ADSyncScheduler -SyncCycleEnabled $false`.
+ ![polecenia programu PowerShell w celu wyłączenia harmonogramu synchronizacji](media/how-to-connect-fix-default-rules/default3.png)
 
-- Zmiana filtru określania zakresu może spowodować usunięcie obiektów w katalogu docelowym. Należy zachować ostrożność, przed wprowadzeniem jakichkolwiek zmian z zakresu obiektów. Firma Microsoft zaleca, wprowadzić zmiany na serwerze tymczasowym, przed wprowadzeniem zmian na aktywnym serwerze.
-- Uruchom Podgląd na pojedynczy obiekt, zgodnie z opisem w [sprawdzania poprawności reguły synchronizacji](#validate-sync-rule) sekcji po dodaniu nowej reguły.
-- Uruchom pełną synchronizację po dodaniu nowej reguły lub zmodyfikowanie reguły synchronizacji niestandardowych. Tej synchronizacji ma zastosowanie nowych zasad do wszystkich obiektów.
+- Zmiana w filtrze zakresu może spowodować usunięcie obiektów w katalogu docelowym. Należy zachować ostrożność przed wprowadzeniem jakichkolwiek zmian w zakresie określania zakresu obiektów. Przed wprowadzeniem zmian na aktywnym serwerze zalecamy wprowadzenie zmian do serwera przejściowego.
+- Uruchom podgląd na pojedynczym obiekcie, jak wspomniano w sekcji [Weryfikowanie reguły synchronizacji](#validate-sync-rule) , po dodaniu nowej reguły.
+- Uruchom pełną synchronizację po dodaniu nowej reguły lub zmodyfikowaniu dowolnej niestandardowej reguły synchronizacji. Ta synchronizacja stosuje nowe reguły do wszystkich obiektów.
 
-## <a name="change-attribute-flow"></a>Zmiana przepływu atrybutów
+## <a name="change-attribute-flow"></a>Zmień przepływ atrybutów
 Istnieją trzy różne scenariusze zmiany przepływu atrybutów:
 - Dodawanie nowego atrybutu.
-- Zastępowanie wartości istniejący atrybut.
-- Wybranie tej opcji nie można zsynchronizować istniejący atrybut.
+- Zastępowanie wartości istniejącego atrybutu.
+- Nie można zsynchronizować istniejącego atrybutu.
 
-Możesz tworzyć je bez zmieniania domyślnych standardowych reguł.
+Można to zrobić bez zmiany standardowych reguł domyślnych.
 
 ### <a name="add-a-new-attribute"></a>Dodaj nowy atrybut
-Jeśli okaże się, że atrybutu nie przesyła danych z katalogu źródłowego do katalogu docelowego, użyj [synchronizacji programu Azure AD Connect: Rozszerzenia katalogów](how-to-connect-sync-feature-directory-extensions.md) Aby rozwiązać ten problem.
+Jeśli okaże się, że atrybut nie przepływa z katalogu źródłowego do katalogu docelowego, użyj [Azure AD Connect synchronizacji: rozszerzenia katalogów](how-to-connect-sync-feature-directory-extensions.md) , aby rozwiązać ten problem.
 
-Jeśli rozszerzenia nie działa, spróbuj dodać dwa nowe reguły synchronizacji, opisane w poniższych sekcjach.
+Jeśli rozszerzenia nie działają, spróbuj dodać dwie nowe reguły synchronizacji opisane w poniższych sekcjach.
 
 
-#### <a name="add-an-inbound-sync-rule"></a>Dodaj regułę synchronizacji ruchu przychodzącego
-Regułę synchronizacji ruchu przychodzącego oznacza, że źródło atrybutu jest obszaru łącznika i miejsce docelowe jest metaverse. Na przykład być nowy atrybut przepływać z lokalnej usługi Active Directory do usługi Azure Active Directory, Utwórz nową regułę synchronizacji ruchu przychodzącego. Uruchom **Synchronization Rules Editor**, wybierz opcję **przychodzący** jako kierunku, a następnie wybierz **Dodaj nową regułę**. 
+#### <a name="add-an-inbound-sync-rule"></a>Dodawanie reguły synchronizacji ruchu przychodzącego
+Reguła synchronizacji ruchu przychodzącego oznacza Źródło dla atrybutu, który jest obszarem łącznika, a obiektem docelowym jest Metaverse. Na przykład, aby utworzyć nowy przepływ atrybutów z Active Directory lokalnego do Azure Active Directory, Utwórz nową regułę synchronizacji ruchu przychodzącego. Uruchom **Edytor reguł synchronizacji**, wybierz pozycję **przychodzące** jako kierunek i wybierz pozycję **Dodaj nową regułę**. 
 
- ! Editor](media/how-to-connect-fix-default-rules/default3a.png) reguły synchronizacji
+ ![Edytor reguł synchronizacji](media/how-to-connect-fix-default-rules/default3a.png)
 
-Postępuj zgodnie z konwencji nazewnictwa do nazwę reguły. W tym miejscu użyjemy **niestandardowe w AD — użytkownik**. Oznacza to, czy reguły niestandardowe reguły i jest Reguła ruchu przychodzącego z obszaru łącznika usługi Active Directory do obiektu metaverse.   
+Postępuj zgodnie z własną konwencją nazewnictwa, aby nazwać regułę. W tym miejscu używamy **niestandardowej usługi AD-User**. Oznacza to, że reguła jest regułą niestandardową i jest regułą ruchu przychodzącego z obszaru łącznika Active Directory do Metaverse.   
 
  ![Utwórz regułę synchronizacji ruchu przychodzącego](media/how-to-connect-fix-default-rules/default3b.png)
 
-Podaj opis reguły, dzięki czemu przyszłych konserwacji reguły jest proste. Na przykład opis może opierać się na cel reguły jest i dlaczego jest potrzebny.
+Podaj własny opis reguły, aby umożliwić łatwą konserwację zasady. Na przykład opis może opierać się na tym, jaki jest cel reguły, i dlaczego jest to potrzebne.
 
-Wybierz odpowiednie opcje **połączony System**, **połączony System typu obiektu**, i **typ obiektu Metaverse** pola.
+Wybierz odpowiednie opcje dla **połączonego systemu**, **Typ połączonego obiektu systemu**i pola **typu obiektu metaverse** .
 
-Określ wartość priorytetu z zakresu od 0 do 99 (niższy numer, tym wyższy priorytet). Dla **Tag**, **Włączanie synchronizacji haseł**, i **wyłączone** polach, będą używane wartości domyślne.
+Określ wartość priorytetu od 0 do 99 (niższy numer, wyższy priorytet). Dla **tagów**, **Włącz synchronizację haseł**i **wyłączone** pola, użyj domyślnych ustawień.
 
-Zachowaj **filtru Scoping** puste. Oznacza to, że ta reguła ma zastosowanie do wszystkich obiektów przyłączone między połączone systemu usługi Active Directory i obiektu metaverse.
+Pozostaw pusty **Filtr zakresu** . Oznacza to, że reguła ma zastosowanie do wszystkich obiektów przyłączonych między Active Directory połączonym i Metaverse.
 
-Zachowaj **Dołącz zasady** puste. Oznacza to, że ta zasada używa warunek sprzężenia, zdefiniowane w regule Standardowy domyślny. Jest to kolejny powód, nie można wyłączyć lub usunąć regułę Standardowy domyślny. Jeśli nie ma żadnego warunku join, nie będzie przepływu atrybutu. 
+Zachowaj puste **reguły sprzężenia** . Oznacza to, że ta reguła używa warunku sprzężenia zdefiniowanego w standardowej regule domyślnej. Jest to kolejny powód, aby nie wyłączać ani usuwać standardowej reguły domyślnej. Jeśli nie ma warunku sprzężenia, atrybut nie będzie przepływać. 
 
-Dodaj odpowiednie przekształcenia swojej atrybutu. Możesz przypisać stałą, aby stała wartość przepływu do swojej atrybut target. Umożliwia bezpośrednie mapowanie między atrybutem źródłowym lub docelowym. Alternatywnie można użyć wyrażenia dla atrybutu. Oto różnych [wyrażenia funkcji](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-sync-functions-reference) można użyć.
+Dodaj odpowiednie przekształcenia dla atrybutu. Możesz przypisać stałą, aby zapewnić ciągły przepływ wartości do atrybutu docelowego. Można użyć bezpośredniego mapowania między atrybut źródłowy lub docelowy. Lub można użyć wyrażenia dla atrybutu. Poniżej przedstawiono różne [funkcje wyrażeń](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-sync-functions-reference) , których można użyć.
 
-#### <a name="add-an-outbound-sync-rule"></a>Dodaj regułę synchronizacji ruchu wychodzącego
-Aby połączyć ten atrybut do katalogu docelowego, musisz utworzyć regułę dla ruchu wychodzącego. Oznacza to, że źródłem jest metaverse, a element docelowy połączonego systemu. Aby utworzyć regułę dla ruchu wychodzącego, uruchom **Synchronization Rules Editor**, zmień **kierunek** do **ruchu wychodzącego**i wybierz **Dodaj nową regułę**. 
+#### <a name="add-an-outbound-sync-rule"></a>Dodawanie reguły synchronizacji danych wychodzących
+Aby połączyć atrybut z katalogiem docelowym, należy utworzyć regułę wychodzącą. Oznacza to, że źródłem jest element Metaverse, a obiektem docelowym jest połączony system. Aby utworzyć regułę ruchu wychodzącego, uruchom **Edytor reguł synchronizacji**, Zmień **kierunek** na **wychodzący**, a następnie wybierz pozycję **Dodaj nową regułę**. 
 
 ![Edytor reguł synchronizacji](media/how-to-connect-fix-default-rules/default3c.png)
 
-Za pomocą reguły dla ruchu przychodzącego, można używać konwencji nazewnictwa do nazwę reguły. Wybierz **połączony System** jako dzierżawy usługi Azure AD, a następnie wybierz połączonego systemu obiektu, do którego chcesz ustawić wartość atrybutu. Ustaw priorytet z zakresu od 0 do 99. 
+Podobnie jak w przypadku reguły ruchu przychodzącego, możesz użyć własnej konwencji nazewnictwa, aby nazwać regułę. Wybierz **podłączony system** jako dzierżawę usługi Azure AD, a następnie wybierz obiekt połączonego systemu, do którego chcesz ustawić wartość atrybutu. Ustaw pierwszeństwo od 0 do 99. 
 
 ![Utwórz regułę synchronizacji ruchu wychodzącego](media/how-to-connect-fix-default-rules/default3d.png)
 
-Zachowaj **filtru Scoping** i **Dołącz zasady** puste. Wypełnij przekształcenia jako stała, bezpośrednio lub wyrażenie. 
+Zachowaj puste ustawienia **filtru zakresu** i **sprzężenia** . Wypełnij transformację jako stałą, bezpośredni lub wyrażenie. 
 
-Teraz wiesz, jak utworzyć nowy atrybut przepływ obiektu użytkownika z usługi Active Directory do usługi Azure Active Directory. Te kroki można użyć do mapowania dowolnego atrybutu z dowolnych obiektów źródłowych i docelowych. Aby uzyskać więcej informacji, zobacz [tworzenia reguł niestandardowych synchronizacji](how-to-connect-create-custom-sync-rule.md) i [przygotowanie do świadczenia użytkownikom](https://docs.microsoft.com/office365/enterprise/prepare-for-directory-synchronization).
+Teraz wiesz, jak utworzyć nowy atrybut przepływu obiektu użytkownika z Active Directory, aby Azure Active Directory. Za pomocą tych kroków można mapować dowolny atrybut z dowolnego obiektu na źródłowy i docelowy. Aby uzyskać więcej informacji, zobacz [Tworzenie niestandardowych reguł synchronizacji](how-to-connect-create-custom-sync-rule.md) i [przygotowanie do aprowizacji użytkowników](https://docs.microsoft.com/office365/enterprise/prepare-for-directory-synchronization).
 
 ### <a name="override-the-value-of-an-existing-attribute"></a>Zastąp wartość istniejącego atrybutu
-Możesz zastąpić wartość atrybutu, który został już zamapowany. Na przykład jeśli chcesz, zawsze można ustawić wartości null do atrybutu w usłudze Azure AD, po prostu utworzyć tylko reguły dla ruchu przychodzącego. Wprowadź wartość stała `AuthoritativeNull`, przepływ do atrybutu docelowego. 
+Możesz chcieć przesłonić wartość atrybutu, który został już zamapowany. Na przykład, jeśli zawsze chcesz ustawić wartość null dla atrybutu w usłudze Azure AD, wystarczy utworzyć tylko regułę ruchu przychodzącego. Wprowadź wartość stałą, `AuthoritativeNull`, Flow do atrybutu Target. 
 
 >[!NOTE] 
-> Użyj `AuthoritativeNull` zamiast `Null` w tym przypadku. Jest to spowodowane wartość inną niż null zastępuje wartość null, nawet wtedy, gdy ma niższy priorytet (wyższa wartość liczbową w regule). `AuthoritativeNull`, z drugiej strony, nie jest zastępowana wartością inną niż null przez inne zasady. 
+> W takim przypadku należy użyć `AuthoritativeNull`, a nie `Null`. Wynika to z faktu, że wartość o wartości innej niż null zastępuje wartość null, nawet jeśli ma ona niższy priorytet (wyższą wartość liczbową w regule). `AuthoritativeNull`z drugiej strony nie jest zastępowana wartością inną niż null przez inne zasady. 
 
-### <a name="dont-sync-existing-attribute"></a>Nie są synchronizowane istniejący atrybut
-Jeśli chcesz wykluczyć atrybut synchronizowanie, użyj atrybutu filtrowanie funkcji dostarczanej w programie Azure AD Connect. Uruchom **program Azure AD Connect** z ikony pulpitu, a następnie wybierz **Dostosowywanie opcji synchronizacji**.
+### <a name="dont-sync-existing-attribute"></a>Nie Synchronizuj istniejącego atrybutu
+Jeśli chcesz wykluczyć atrybut z synchronizacji, użyj funkcji filtrowania atrybutów dostępnej w Azure AD Connect. Uruchom **Azure AD Connect** z ikony pulpitu, a następnie wybierz pozycję **Dostosuj opcje synchronizacji**.
 
-![Opcje dodatkowe zadania w usłudze Azure AD Connect](media/how-to-connect-fix-default-rules/default4.png)
+![Azure AD Connect opcje dodatkowych zadań](media/how-to-connect-fix-default-rules/default4.png)
 
- Upewnij się, że **filtrowanie atrybutów i aplikacji usługi Azure AD** jest zaznaczone i wybierz **dalej**.
+ Upewnij się, że jest zaznaczona opcja **filtrowanie aplikacji i atrybutów usługi Azure AD** , a następnie wybierz przycisk **dalej**.
 
-![Opcjonalne funkcje usługi Azure AD Connect](media/how-to-connect-fix-default-rules/default5.png)
+![Azure AD Connect funkcje opcjonalne](media/how-to-connect-fix-default-rules/default5.png)
 
-Wyczyść atrybuty, które chcesz wykluczyć z synchronizacji.
+Wyczyść atrybuty, które mają zostać wykluczone z synchronizacji.
 
-![Atrybuty usługi Azure AD Connect](media/how-to-connect-fix-default-rules/default6a.png)
+![Atrybuty Azure AD Connect](media/how-to-connect-fix-default-rules/default6a.png)
 
-## <a name="change-scoping-filter"></a>Zmiana filtru określania zakresu
-Synchronizacja programu Azure AD zajmuje się większość obiektów. Możesz ograniczyć zakres obiektów i zmniejszyć liczbę obiektów, które mają zostać wyeksportowane bez konieczności zmieniania domyślnych standardowych reguł synchronizacji. 
+## <a name="change-scoping-filter"></a>Zmień filtr zakresu
+Azure AD Sync zajmuje się większością obiektów. Można zmniejszyć zakres obiektów i zmniejszyć liczbę obiektów do wyeksportowania, bez zmiany standardowych domyślnych reguł synchronizacji. 
 
-Aby zawęzić zakres obiektów, których synchronizowania, użyj jednej z następujących metod:
+Użyj jednej z następujących metod, aby zmniejszyć zakres synchronizowanych obiektów:
 
-- Atrybut cloudFiltered
-- Jednostka organizacyjna filtrowania
+- cloudFiltered — atrybut
+- Filtrowanie jednostek organizacyjnych
 
-Zmniejszenie zakresu użytkowników są synchronizowane, synchronizowanie skrótów haseł również nie będzie możliwy dla użytkowników filtrowane w poziomie. Jeśli obiekty już objęte synchronizacją, to po można zmniejszyć zakres obiektów poza filtrowane są usuwane z katalogu docelowego. Z tego powodu upewnij się, zakres bardzo ostrożnie.
+W przypadku zmniejszenia zakresu synchronizowanych użytkowników synchronizacja skrótu hasła również zostaje zatrzymana dla użytkowników odfiltrowanych. Jeśli obiekty są już zsynchronizowane, po zmniejszeniu zakresu obiekty odfiltrowane są usuwane z katalogu docelowego. Z tego powodu należy upewnić się, że zakres jest bardzo uważnie.
 
 >[!IMPORTANT] 
-> Zwiększyć zakres obiektów, które skonfigurowano przy użyciu usługi Azure AD Connect nie jest zalecane. Ten sposób utrudnia zespołem pomocy technicznej firmy Microsoft zrozumieć dostosowania. Jeśli musisz zwiększyć zakres obiektów, Edytuj istniejącą regułę, sklonować ten projekt i Wyłącz istniejącą regułę. 
+> Nie zaleca się zwiększania zakresu obiektów skonfigurowanych przez Azure AD Connect. Dzięki temu zespół pomocy technicznej firmy Microsoft może być trudny do zrozumienia dostosowań. Jeśli trzeba zwiększyć zakres obiektów, edytować istniejącą regułę, sklonować ją i wyłączyć oryginalną regułę. 
 
-### <a name="cloudfiltered-attribute"></a>Atrybut cloudFiltered
-Nie można ustawić tego atrybutu w usłudze Active Directory. Ustaw wartość tego atrybutu, dodając nową regułę dla ruchu przychodzącego. Następnie można użyć **przekształcania** i **wyrażenie** można ustawić tego atrybutu w magazynie metaverse. W poniższym przykładzie pokazano, że nie chcesz synchronizować wszystkich użytkowników, których nazwa działu zaczyna się od **HRD** (bez uwzględniania wielkości liter):
+### <a name="cloudfiltered-attribute"></a>cloudFiltered — atrybut
+Nie można ustawić tego atrybutu w Active Directory. Ustaw wartość tego atrybutu przez dodanie nowej reguły ruchu przychodzącego. Następnie można użyć **transformacji** i **wyrażenia** , aby ustawić ten atrybut w obiekcie Metaverse. Poniższy przykład pokazuje, że nie chcesz synchronizować wszystkich użytkowników, których nazwa działu rozpoczyna się od **HRD** (bez uwzględniania wielkości liter):
 
 `cloudFiltered <= IIF(Left(LCase([department]), 3) = "hrd", True, NULL)`
 
-Firma Microsoft najpierw konwertowany dział ze źródła (Active Directory) na małe litery. Następnie za pomocą `Left` funkcji, firma Microsoft miała tylko pierwsze trzy znaki i porównać ją z `hrd`. Jeśli był zgodny, wartość jest równa `True`, w przeciwnym razie `NULL`. Podczas ustawiania wartości null, inna reguła o niższym priorytecie (wyższa wartość liczbową) może zapisywać do niego przy użyciu różnych warunków. Uruchom Podgląd w jeden obiekt do sprawdzania poprawności reguły synchronizacji, zgodnie z opisem w [sprawdzania poprawności reguły synchronizacji](#validate-sync-rule) sekcji.
+Najpierw przeprowadzono konwersję działu ze źródła (Active Directory) na małe litery. Następnie korzystając z funkcji `Left`, mamy tylko trzy pierwsze znaki i porównano ją z `hrd`. Jeśli zostanie ona dopasowana, wartość jest ustawiona na `True`, w przeciwnym razie `NULL`. W przypadku ustawiania wartości null inna reguła o niższym priorytecie (wyższa wartość liczbowa) może zapisywać w tym samym stanie z innym warunkiem. Uruchom podgląd na jednym obiekcie, aby sprawdzić poprawność reguły synchronizacji, jak wspomniano w sekcji [Weryfikowanie reguły synchronizacji](#validate-sync-rule) .
 
-![Utwórz opcje reguły synchronizacji ruchu przychodzącego](media/how-to-connect-fix-default-rules/default7a.png)
+![Utwórz Opcje reguły synchronizacji ruchu przychodzącego](media/how-to-connect-fix-default-rules/default7a.png)
 
-### <a name="organizational-unit-filtering"></a>Jednostka organizacyjna, filtrowanie
-Można utworzyć co najmniej jedną jednostkę organizacyjną (OU) i przenieść obiekty, których nie chcesz, aby zsynchronizować do tych jednostek organizacyjnych. Następnie należy skonfigurować jednostkę Organizacyjną, filtrowanie w usłudze Azure AD Connect. Uruchom **program Azure AD Connect** z ikony pulpitu, a następnie wybierz następujące opcje. Można również skonfigurować jednostki Organizacyjnej, filtrowania w czasie instalacji programu Azure AD Connect. 
+### <a name="organizational-unit-filtering"></a>Filtrowanie jednostek organizacyjnych
+Można utworzyć co najmniej jedną jednostkę organizacyjną (OU) i przenieść obiekty, które nie mają być synchronizowane z tymi jednostkami organizacyjnymi. Następnie należy skonfigurować filtrowanie jednostek organizacyjnych w Azure AD Connect. Uruchom **Azure AD Connect** z ikony pulpitu i wybierz poniższe opcje. Można również skonfigurować filtrowanie jednostek organizacyjnych w czasie instalacji Azure AD Connect. 
 
-![Dodatkowe zadania usługi Azure AD Connect](media/how-to-connect-fix-default-rules/default8.png)
+![Azure AD Connect dodatkowe zadania](media/how-to-connect-fix-default-rules/default8.png)
 
-Wykonaj instrukcje kreatora, a następnie wyczyść jednostki organizacyjne nie mają być synchronizowane.
+Postępuj zgodnie z instrukcjami wyświetlanymi w kreatorze, a następnie wyczyść jednostki organizacyjne, które nie mają być synchronizowane.
 
-![Usługa Azure AD Connect domeny i jednostki Organizacyjnej, opcje filtrowania](media/how-to-connect-fix-default-rules/default9.png)
+![Azure AD Connect opcje filtrowania domeny i jednostki organizacyjnej](media/how-to-connect-fix-default-rules/default9.png)
 
 ## <a name="change-join-condition"></a>Zmień warunek sprzężenia
-Użyj warunki sprzężenia domyślne, które są skonfigurowane przy użyciu usługi Azure AD Connect. Zmiana domyślnego warunki sprzężenia utrudnia pomocy technicznej firmy Microsoft zrozumieć, dostosowania i obsługa techniczna produktu.
+Użyj domyślnych warunków sprzężenia skonfigurowanych przez Azure AD Connect. Zmiana domyślnych warunków przyłączania utrudnia pomoc techniczną firmy Microsoft w zrozumieniu dostosowań i obsłudze produktu.
 
-## <a name="validate-sync-rule"></a>Sprawdź poprawność reguły synchronizacji
-Reguły synchronizacji nowo dodanych można sprawdzić za pomocą funkcji w wersji zapoznawczej, bez konieczności uruchamiania cyklu pełną synchronizację. W programie Azure AD Connect, należy wybrać **usługi synchronizacji**.
+## <a name="validate-sync-rule"></a>Weryfikuj regułę synchronizacji
+Można sprawdzić poprawność nowo dodanej reguły synchronizacji przy użyciu funkcji Podgląd, bez uruchamiania pełnego cyklu synchronizacji. W Azure AD Connect wybierz pozycję **usługa synchronizacji**.
 
-![Program Azure AD Connect, za pomocą usługi synchronizacji z wyróżnioną pozycją](media/how-to-connect-fix-default-rules/default10.png)
+![Azure AD Connect, z wyróżnioną usługą synchronizacji](media/how-to-connect-fix-default-rules/default10.png)
 
-Wybierz **wyszukiwanie magazynu Metaverse**. Wybierz obiekt zakresu jako **osoby**, wybierz opcję **Dodaj klauzulę**i wymienić kryteria wyszukiwania. Następnie wybierz pozycję **wyszukiwania**i kliknij dwukrotnie obiekt w wynikach wyszukiwania. Upewnij się, że dane w programie Azure AD Connect jest aktualne dla tego obiektu, uruchamiając importowania i synchronizacji w lesie, przed wykonaniem tego kroku.
+Wybieranie **wyszukiwania Metaverse**. Wybierz obiekt zakresu jako **osobę**, wybierz pozycję **Dodaj klauzulę**i podaj kryteria wyszukiwania. Następnie wybierz pozycję **Wyszukaj**, a następnie kliknij dwukrotnie obiekt w wynikach wyszukiwania. Upewnij się, że dane w Azure AD Connect są aktualne dla tego obiektu, przez uruchomienie importowania i synchronizowania w lesie przed uruchomieniem tego kroku.
 
 ![Synchronization Service Manager](media/how-to-connect-fix-default-rules/default11.png)
 
-Na **właściwości obiektu Metaverse**, wybierz opcję **łączników**, zaznacz obiekt w odpowiedni łącznik (las) i wybierz **właściwości...** .
+We **właściwościach obiektu metaverse**wybierz pozycję **Łączniki**, wybierz obiekt w odpowiednim łączniku (Las), a następnie wybierz pozycję **właściwości.**
 
 ![Właściwości obiektu Metaverse](media/how-to-connect-fix-default-rules/default12.png)
 
-Wybierz **podglądu...**
+Wybierz **Podgląd...**
 
 ![Właściwości obiektu obszaru łącznika](media/how-to-connect-fix-default-rules/default13a.png)
 
-W oknie podglądu wybierz **Generowanie podglądu** i **przepływu atrybutu importowania** w okienku po lewej stronie.
+W oknie Podgląd Wybierz pozycję **Generuj Podgląd** i **zaimportuj przepływ atrybutów** w okienku po lewej stronie.
 
 ![Wersja zapoznawcza](media/how-to-connect-fix-default-rules/default14.png)
  
-Zauważ, nowo dodane zasady jest uruchamiany na obiekt i ustawił `cloudFiltered` atrybut na wartość true.
+Należy zauważyć, że nowo dodana reguła jest uruchamiana na obiekcie i ma ustawiony atrybut `cloudFiltered` wartość true.
 
 ![Wersja zapoznawcza](media/how-to-connect-fix-default-rules/default15a.png)
  
-Aby porównać zmodyfikowano regułę za pomocą reguły domyślnej, wyeksportuj obu reguł oddzielnie, jako pliki tekstowe. Te reguły są eksportowane jako plik skryptu programu PowerShell. Możesz porównać ich za pomocą dowolnego narzędzie do porównywania plików (na przykład windiff), aby zobaczyć zmiany. 
+Aby porównać zmodyfikowaną regułę z regułą domyślną, należy wyeksportować obie reguły osobno, jako pliki tekstowe. Te reguły są eksportowane jako plik skryptu programu PowerShell. Można je porównać przy użyciu dowolnego narzędzia do porównywania plików (na przykład Windiff), aby zobaczyć zmiany. 
  
-Należy zauważyć, że w zmodyfikowano regułę `msExchMailboxGuid` atrybutu jest zmieniana na **wyrażenie** typu, zamiast **bezpośredniego**. Ponadto wartość zostanie zmieniona na **NULL** i **ExecuteOnce** opcji. Możesz zignorować Identified i pierwszeństwo różnice. 
+Zwróć uwagę, że w zmodyfikowanej regule atrybut `msExchMailboxGuid` jest zmieniany na typ **wyrażenia** , a nie **bezpośrednio**. Ponadto wartość zostanie zmieniona na wartość **null** i opcję **ExecuteOnce** . Można zignorować różnice zidentyfikowane i priorytetowe. 
 
 ![dane wyjściowe narzędzia Windiff](media/how-to-connect-fix-default-rules/default17.png)
  
-Aby rozwiązać problem z reguł, aby je zmienić przywrócone do domyślnych ustawień, usuwanie modyfikacji reguły i włączyć regułę domyślną. Upewnij się, że nie tracisz dostosowywania, które próbujesz osiągnąć. Gdy wszystko będzie gotowe, uruchamianie **pełną synchronizację**.
+Aby naprawić reguły w celu zmiany ustawień domyślnych, Usuń zmodyfikowaną regułę i Włącz regułę domyślną. Upewnij się, że nie utracisz dostosowania, które chcesz uzyskać. Gdy wszystko będzie gotowe, uruchom **pełną synchronizację**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - [Sprzęt i wymagania wstępne](how-to-connect-install-prerequisites.md) 
 - [Ustawienia ekspresowe](how-to-connect-install-express.md)
 - [Ustawienia dostosowane](how-to-connect-install-custom.md)

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b375ea8fdebd876bdc7ecf157a4cebd5e614dfd0
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 411ffb9c05b0f6b4d8b7d37a11d0838c8734ec5e
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443739"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79079807"
 ---
 # <a name="what-is-azure-maps"></a>Co to jest usługa Azure Maps?
 
@@ -57,7 +57,7 @@ Użyj Android SDK Azure Maps, aby utworzyć aplikacje do mapowania aplikacji mob
 
 Azure Maps składa się z następujących dziewięciu usług, które mogą zapewnić kontekst geograficzny aplikacji platformy Azure.
 
-### <a name="data-service"></a>Usługa danych
+### <a name="data-service"></a>Usługa Data Service
 
 Dane są konieczne dla map. Usługa danych umożliwia przekazywanie i przechowywanie danych geoprzestrzennych do użycia z operacjami przestrzennymi i kompozycjami obrazów.  Przełączenie danych klienta bliżej usługi Azure Maps spowoduje skrócenie opóźnienia, zwiększenie produktywności i utworzenie nowych scenariuszy w aplikacjach. Aby uzyskać szczegółowe informacje na temat tej usługi, zobacz [dokumentację interfejsu API usługi danych](https://docs.microsoft.com/rest/api/maps/data).
 
@@ -170,6 +170,8 @@ Ponadto Azure Maps oferuje wygodną [kontrolkę mapy JavaScript](https://docs.mi
 Uzyskiwanie dostępu do Azure Maps usług jest kwestią przechodzenia do [Azure Portal](https://portal.azure.com) i tworzenia konta Azure Maps.
 
 Usługa Azure Maps korzysta ze schematu uwierzytelniania opartego na kluczach. Twoje konto zawiera dwa klucze już wygenerowane dla Ciebie, Użyj obu kluczy. Rozpocznij integrację możliwości tej lokalizacji w aplikacji i wprowadź żądania do usług Azure Maps.
+
+Uwaga: Azure Maps udostępnia zapytania o adres/lokalizację dostarczone przez klienta ("zapytania") za pomocą TomTom innych firm na potrzeby mapowania funkcji. Zapytania nie są połączone z żadnym klientem ani użytkownikiem końcowym, gdy są udostępniane za pomocą TomTom i nie mogą być używane do identyfikowania osób. Firma Microsoft jest obecnie w trakcie dodawania TomTom do listy podwykonawców usług online. Należy pamiętać, że usługi mobilności i pogody, które obejmują integrację z Moovit i AccuWeather są obecnie w [wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="supported-regions"></a>Obsługiwane regiony
 

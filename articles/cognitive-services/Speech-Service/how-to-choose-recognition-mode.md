@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/13/2020
+ms.date: 03/10/2020
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 51bf005bdad4197120fed96894ac1cdd150738ee
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: d997cb592d9d648998f2b44d9f61f465f05faeb0
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75935228"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79079820"
 ---
 # <a name="choose-a-speech-recognition-mode"></a>Wybierz tryb rozpoznawania mowy
 
@@ -33,7 +33,7 @@ Po zakończeniu jednego rozpoznanego wypowiedź usługa przerywa przetwarzanie d
 Aby uzyskać więcej informacji na temat korzystania z funkcji `RecognizeOnceAsync`, zobacz dokumentację [zestawu Speech SDK dla programu .NET](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognizeonceasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechRecognizer_RecognizeOnceAsync).
 
 ```csharp
-var result = await recognizer.RecognizeOnceAsync().ConfigureAwait(false);
+var result = await recognizer.RecognizeOnceAsync();
 ```
 
 ::: zone-end
@@ -72,7 +72,7 @@ Dodatkowe języki można znaleźć w [dokumentacji referencyjnej dotyczącej zes
 
 ## <a name="continuous"></a>Ciągłe
 
-Jeśli potrzebujesz długotrwałego rozpoznawania, użyj funkcji Start i odpowiednich zatrzymywania do ciągłego rozpoznawania. Funkcja Start zostanie uruchomiona i kontynuuje przetwarzanie wszystkich wyrażenia długości do momentu wywołania funkcji zatrzymania lub do czasu przekroczenia zbyt dużo czasu. W przypadku korzystania z trybu ciągłego należy zadbać o zarejestrowanie się w różnych zdarzeniach, które będą uruchamiane po wystąpieniu. Na przykład zdarzenie "rozpoznane" wyzwalane w przypadku wystąpienia funkcji rozpoznawania mowy. Musisz mieć procedurę obsługi zdarzeń w celu obsługi rozpoznawania. Limit całkowitego czasu rozpoznawania mowy wynoszący 10 minut jest wymuszany przez usługę mowy.
+Jeśli potrzebujesz długotrwałego rozpoznawania, użyj funkcji Start i odpowiednich zatrzymywania do ciągłego rozpoznawania. Funkcja Start zostanie uruchomiona i kontynuuje przetwarzanie wszystkich wyrażenia długości do momentu wywołania funkcji zatrzymania lub do czasu przekroczenia zbyt dużo czasu. W przypadku korzystania z trybu ciągłego należy zadbać o zarejestrowanie się w różnych zdarzeniach, które będą uruchamiane po wystąpieniu. Na przykład zdarzenie "rozpoznane" wyzwalane w przypadku wystąpienia funkcji rozpoznawania mowy. Musisz mieć procedurę obsługi zdarzeń w celu obsługi rozpoznawania.
 
 ::: zone pivot="programming-language-csharp"
 
@@ -88,10 +88,10 @@ recognizer.Recognized += (s, e) =>
 };
 
 // Start continuous speech recognition
-await recognizer.StartContinuousRecognitionAsync().ConfigureAwait(false);
+await recognizer.StartContinuousRecognitionAsync();
 
 // Stop continuous speech recognition
-await recognizer.StopContinuousRecognitionAsync().ConfigureAwait(false);
+await recognizer.StopContinuousRecognitionAsync();
 ```
 
 ::: zone-end

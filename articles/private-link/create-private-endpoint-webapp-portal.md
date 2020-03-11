@@ -8,12 +8,12 @@ ms.date: 03/12/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: f19e4e34b2ec8cebc9e1841f277f26fba941bb89
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: bb78536326885e043279de1ff77e6e8efcd95193
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78674017"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037147"
 ---
 # <a name="connect-privately-to-a-web-app-using-azure-private-endpoint-preview"></a>Połącz się prywatnie z aplikacją internetową przy użyciu prywatnego punktu końcowego platformy Azure (wersja zapoznawcza)
 
@@ -73,6 +73,9 @@ Zachowaj ustawienia domyślne.
 ## <a name="create-your-web-app-and-private-endpoint"></a>Tworzenie aplikacji sieci Web i prywatnego punktu końcowego
 
 W tej sekcji utworzysz prywatną aplikację sieci Web przy użyciu prywatnego punktu końcowego.
+
+> [!Note]
+>Funkcja prywatnego punktu końcowego jest dostępna tylko dla wersji Premium v2 i jest izolowana z zewnętrzną jednostką SKU środowiska ASE
 
 ### <a name="web-app"></a>Aplikacja internetowa
 

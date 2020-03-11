@@ -12,12 +12,12 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d305f3354e7b1af6d43f31f0dd5fe9f54ef3e66f
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 5d7c7d9f6d59ffd57ddb14f7c060d0a3f6f2a6eb
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242278"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78967751"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Współdziałanie z istniejącymi lokalnymi serwerami proxy
 
@@ -113,8 +113,8 @@ Zezwól na dostęp do następujących adresów URL:
 | Adres URL | Zastosowanie |
 | --- | --- |
 | \*.msappproxy.net<br>\*.servicebus.windows.net | Komunikacja między łącznikiem a usługą serwera proxy aplikacji w chmurze |
-| mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Platforma Azure używa tych adresów URL do weryfikacji certyfikatów |
-| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*. microsoftonline.com<br>* . microsoftonline-p.com<br>*. msauth.net<br>* . msauthimages.NET<br>*. msecnd.net<br>* . msftauth.NET<br>*. msftauthimages.net<br>* . PhoneFactor.NET<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net | Łącznik używa tych adresów URL podczas procesu rejestracji. |
+| mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Łącznik używa tych adresów URL do weryfikowania certyfikatów |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*. microsoftonline.com<br>* . microsoftonline-p.com<br>*. msauth.net<br>* . msauthimages.NET<br>*. msecnd.net<br>* . msftauth.NET<br>*. msftauthimages.net<br>* . PhoneFactor.NET<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctdl.windowsupdate.com:80 | Łącznik używa tych adresów URL podczas procesu rejestracji. |
 
 Jeśli zapora lub serwer proxy umożliwia skonfigurowanie list dozwolonych DNS, można zezwolić na połączenia z \*. msappproxy.net i \*. servicebus.windows.net. W przeciwnym razie musisz zezwolić na dostęp do [zakresów adresów IP centrum danych platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653). Zakresy adresów IP są aktualizowane co tydzień.
 

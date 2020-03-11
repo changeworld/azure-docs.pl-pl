@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: wieastbu
 ms.custom: fasttrack-new
-ms.openlocfilehash: daf38baf9daff5fd192091be977a996c9bd5cfc2
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: fde48d63bd343fbed1f82e60819131ffb043a795
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539866"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78967634"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>Ochrona zaplecza SPA przy użyciu protokołu OAuth 2,0 Azure Active Directory B2C i platformy Azure API Management
 
 W tym scenariuszu pokazano, jak skonfigurować wystąpienie usługi Azure API Management, aby chronić interfejs API.
-Użyjemy protokołu Connect OpenID Connect z Azure AD B2C, obok API Management do zabezpieczenia Azure Functions zaplecza przy użyciu EasyAuth.
+Użyjemy protokołu OAuth 2,0 z Azure AD B2C, obok API Management do zabezpieczenia Azure Functions zaplecza przy użyciu EasyAuth.
 
 ## <a name="aims"></a>Osiągnięcia
 Będziemy widzieć, jak API Management mogą być używane w uproszczonym scenariuszu z Azure Functions i Azure AD B2C. Utworzysz aplikację JavaScript (JS) wywołującą interfejs API, która umożliwia użytkownikom Azure AD B2C. Następnie do ochrony interfejsu API zaplecza używana jest funkcja zasad walidacji API Management.
@@ -66,11 +66,11 @@ Otwórz blok Azure AD B2C w portalu i wykonaj następujące czynności.
    * Klient frontonu.
    * Interfejs API funkcji zaplecza.
    * Obowiązkowe Portal dla deweloperów API Management (o ile nie korzystasz z platformy Azure API Management w warstwie zużycia więcej informacji w tym scenariuszu).
-1. Ustaw WebApp/Web API i Zezwalaj na niejawny przepływ na wartość tak
+1. Ustaw WebApp/Web API dla wszystkich 3 aplikacji i ustaw opcję "Zezwalaj na niejawny przepływ" na wartość tak tylko dla klienta frontonu.
 1. Teraz ustaw identyfikator URI aplikacji, wybierz unikatową i istotną dla tworzonej usługi.
 1. Użyj symboli zastępczych dla adresów URL odpowiedzi dla teraz, takich jak https://localhost, zaktualizujemy te adresy URL później.
 1. Kliknij przycisk Utwórz, a następnie powtórz kroki 2-5 dla każdej z trzech aplikacji powyżej, rejestrując identyfikator URI AppID, nazwę i identyfikator aplikacji do późniejszego użycia dla wszystkich trzech aplikacji.
-1. Otwórz interfejs API zaplecza z listy aplikacji i wybierz kartę *klucze* (w obszarze Ogólne), a następnie kliknij pozycję Generuj klucz, aby wygenerować klucz uwierzytelniania.
+1. Otwórz aplikację Portal dla deweloperów API Management z listy aplikacji i wybierz kartę *klucze* (w obszarze Ogólne), a następnie kliknij pozycję Generuj klucz, aby wygenerować klucz uwierzytelniania.
 1. Po kliknięciu przycisku Zapisz Zarejestruj klucz w bezpiecznym miejscu do późniejszego użycia — Pamiętaj, że w tym miejscu można wyświetlić i skopiować ten klucz.
 1. Teraz wybierz kartę *opublikowane zakresy* (w obszarze dostęp do interfejsu API)
 1. Utwórz zakres dla interfejsu API funkcji i nadaj mu nazwę, a następnie zanotuj zakres i wypełnioną pełną wartość zakresu, a następnie kliknij pozycję "Zapisz".
@@ -85,7 +85,7 @@ Otwórz blok Azure AD B2C w portalu i wykonaj następujące czynności.
 1. Następnie wybierz pozycję "Przepływy użytkownika (zasady)", a następnie kliknij pozycję "nowy przepływ użytkownika".
 1. Wybierz typ przepływu użytkownika "Rejestracja i logowanie"
 1. Nadaj zasadom nazwę i Zapisz ją w późniejszym czasie.
-1. Następnie w obszarze "dostawcy tożsamości" Sprawdź pozycję "identyfikator użytkownika — Rejestracja" i kliknij przycisk OK. 
+1. Następnie w obszarze "dostawcy tożsamości" Sprawdź pozycję "Logowanie do konta użytkownika" (może to dotyczyć "Rejestracja w wiadomości E-mail"), a następnie kliknij przycisk OK. 
 1. W obszarze "atrybuty użytkownika i oświadczenia" kliknij pozycję "Pokaż więcej..." następnie wybierz opcje dotyczące roszczeń, które użytkownicy mają wprowadzać i które zwracają w tokenie. Sprawdź co najmniej nazwę wyświetlaną i adres E-mail, aby zebrać i zwrócić, a następnie kliknij przycisk "OK", a następnie kliknij przycisk "Utwórz".
 1. Wybierz zasady, które zostały utworzone na liście, a następnie kliknij przycisk Uruchom przepływ użytkownika.
 1. Ta akcja spowoduje otwarcie bloku uruchamianie przepływu użytkownika, wybranie aplikacji frontonu, a następnie zapisanie adresu domeny b2clogin.com, która jest wyświetlana na liście rozwijanej dla opcji "Wybierz domenę".
@@ -98,6 +98,7 @@ Otwórz blok Azure AD B2C w portalu i wykonaj następujące czynności.
    > Jeśli chcesz, możesz kliknąć przycisk "Uruchom przepływ użytkownika" tutaj (aby przejść przez proces tworzenia konta lub logowania) i uzyskać informacje o tym, co będzie w toku, ale krok przekierowania na końcu zakończy się niepowodzeniem, ponieważ aplikacja nie została jeszcze wdrożona.
 
 ## <a name="build-the-function-api"></a>Tworzenie interfejsu API funkcji
+1. Przełącz się z powrotem do standardowej dzierżawy usługi Azure AD w Azure Portal, aby umożliwić ponowne skonfigurowanie elementów w ramach subskrypcji 
 1. Przejdź do bloku aplikacje funkcji Azure Portal, Otwórz pustą aplikację funkcji, a następnie utwórz nową funkcję "webhook" w portalu za pośrednictwem przewodnika Szybki Start.
 1. Wklej przykładowy kod z poniższych do Run. CSX na istniejącym kodzie, który zostanie wyświetlony.
 
@@ -156,15 +157,16 @@ Otwórz blok Azure AD B2C w portalu i wykonaj następujące czynności.
 1. Następnie wybierz kartę "funkcje platformy" i wybierz pozycję "uwierzytelnianie/autoryzacja".
 1. Włącz funkcję uwierzytelniania App Service.
 1. W obszarze "dostawcy uwierzytelniania" Wybierz pozycję "Azure Active Directory" i wybierz pozycję "Zaawansowane" z przełącznika trybu zarządzania.
-1. Wklej identyfikator aplikacji interfejsu API zaplecza (z Azure AD B2C do pola "identyfikator klienta")
+1. Wklej identyfikator aplikacji interfejsu API funkcji zaplecza (z Azure AD B2C do pola "identyfikator klienta")
 1. Wklej dobrze znany punkt końcowy konfiguracji Open-ID z zasad rejestracji lub logowania do pola adresu URL wystawcy (Ta konfiguracja została zarejestrowana wcześniej).
-1. Dodaj trzy (lub dwa, jeśli używasz API Management modelem użycia) identyfikatory aplikacji, które zostały zarejestrowane wcześniej dla aplikacji Azure AD B2C, do dozwolonych odbiorców tokenów. to ustawienie instruuje EasyAuth, które wartości roszczeń AUD są dozwolone w otrzymanych tokenach.
-1. Wybierz pozycję OK, a następnie kliknij przycisk Zapisz.
+1. Wybierz przycisk OK.
+1. Ustaw akcję do wykonania, gdy żądanie nie zostanie uwierzytelnione na liście rozwijanej "Zaloguj się za pomocą Azure Active Directory", a następnie kliknij przycisk Zapisz.
 
    > [!NOTE]
-   > Teraz interfejs API funkcji jest wdrożony i powinien zgłosić błędy 401 lub 403 dla nieautoryzowanych żądań i powinien zwrócić dane, gdy zostanie wyświetlone prawidłowe żądanie.
-   > Jednak nadal nie ma zabezpieczeń IP, jeśli masz prawidłowy klucz, możesz go wywoływać z dowolnego miejsca — najlepiej będzie wymusić, aby wszystkie żądania były realizowane za pośrednictwem API Management.
-   > Ponadto, jeśli używasz warstwy zużycia API Management, nie będzie możliwe przeprowadzenie tej blokady przez adres VIP, ponieważ dla tej warstwy nie istnieje dedykowany statyczny adres IP, musisz polegać na metodzie blokowania wywołań interfejsu API za pomocą klucza wspólnych funkcji tajnych. , dlatego kroki 11-14 nie będą możliwe.
+   > Teraz interfejs API funkcji jest wdrożony i powinien zgłosić 401 odpowiedzi, jeśli nie podano poprawnego klucza i powinien zwrócić dane, gdy zostanie wyświetlone prawidłowe żądanie.
+   > Dodano dodatkowe zabezpieczenia dotyczące zabezpieczeń w programie EasyAuth przez skonfigurowanie opcji "Logowanie za pomocą usługi Azure AD" w celu obsługi nieuwierzytelnionych żądań. Należy pamiętać, że spowoduje to zmianę zachowania nieautoryzowanego żądania między aplikacja funkcji wewnętrznej bazy danych i prze302 stawieniem SPA, ponieważ EasyAuth nastąpi przekierowanie do usługi AAD zamiast nieautoryzowanej odpowiedzi 401, nastąpi poprawienie przy użyciu API Management później.
+   > Nadal nie stosujemy zabezpieczeń IP, jeśli masz prawidłowy klucz i token OAuth2, każdy z nich może wywoływać z dowolnego miejsca — najlepiej będzie wymusić, aby wszystkie żądania były realizowane za pośrednictwem API Management.
+   > Jeśli używasz warstwy zużycia API Management, nie będzie możliwe przeprowadzenie tej blokady przez adres VIP, ponieważ dla tej warstwy nie istnieje dedykowany statyczny adres IP, należy zastanowić się nad metodą blokowania wywołań interfejsu API za pomocą klucza wspólnych funkcji tajnych. , dlatego kroki 11-13 nie będą możliwe.
 
 1. Zamknij blok uwierzytelnianie/autoryzacja 
 1. Wybierz pozycję Sieć, a następnie wybierz pozycję ograniczenia dostępu.
@@ -172,13 +174,13 @@ Otwórz blok Azure AD B2C w portalu i wykonaj następujące czynności.
 1. Jeśli chcesz kontynuować pracę z portalem funkcji i wykonać opcjonalne czynności opisane poniżej, należy również dodać własny publiczny adres IP lub zakres CIDR.
 1. Gdy na liście znajduje się wpis Zezwalaj, platforma Azure dodaje niejawną regułę odmowy, aby zablokować wszystkie inne adresy. 
 
-Musisz dodać bloki z formatowaniem CIDR do panelu ograniczenia adresów IP. Gdy musisz dodać pojedynczy adres, taki jak adres VIP API Management, musisz go dodać w formacie XX. XX. XX. XX/32.
+Musisz dodać bloki z formatowaniem CIDR do panelu ograniczenia adresów IP. Gdy musisz dodać pojedynczy adres, taki jak adres VIP API Management, musisz go dodać w formacie XX. XX. XX. XX.
 
    > [!NOTE]
    > Teraz interfejs API funkcji nie powinien być wywoływany z innych lokalizacji niż za pośrednictwem usługi API Management ani Twojego adresu.
-
+   
 ## <a name="import-the-function-app-definition"></a>Importowanie definicji aplikacji funkcji
-1. Otwórz blok Portal API Management i wybierz wystąpienie API Management.
+1. Otwórz *blok API Management*, a następnie otwórz *wystąpienie*.
 1. Wybierz blok interfejsy API z sekcji API Management tego wystąpienia.
 1. W okienku "Dodawanie nowego interfejsu API" Wybierz pozycję "aplikacja funkcji", a następnie wybierz pozycję "pełne" w górnej części okna podręcznego.
 1. Kliknij przycisk Przeglądaj, wybierz aplikację funkcji, w której znajduje się interfejs API, a następnie kliknij przycisk Wybierz.
@@ -186,13 +188,13 @@ Musisz dodać bloki z formatowaniem CIDR do panelu ograniczenia adresów IP. Gdy
 1. Upewnij się, że adres URL podstawowy został zarejestrowany do późniejszego użycia, a następnie kliknij przycisk Utwórz.
 
 ## <a name="configure-oauth2-for-api-management"></a>Skonfiguruj OAuth2 dla API Management
-1. Przełącz się z powrotem do standardowej dzierżawy usługi Azure AD w Azure Portal, aby można było ponownie skonfigurować elementy w ramach subskrypcji i otworzyć *blok API Management*, a następnie otwórz *wystąpienie*.
+
 1. Następnie wybierz blok OAuth 2,0 na karcie Zabezpieczenia, a następnie kliknij pozycję "Dodaj".
 1. Podaj wartości w polu *Nazwa wyświetlana* i *Opis* dla dodanego punktu końcowego OAuth (te wartości będą wyświetlane w następnym kroku jako punkt końcowy OAuth2).
 1. Możesz wprowadzić dowolną wartość w adresie URL strony rejestracji klienta, ponieważ ta wartość nie będzie używana.
-1. Sprawdź *niejawny* typ przydziału uwierzytelniania i opcjonalnie Usuń zaznaczenie pola typ przydziału kodu autoryzacji.
+1. Sprawdź *niejawny* typ przydziału uwierzytelniania i pozostaw zaznaczone pole wyboru Przydziel kod autoryzacji.
 1. Przejdź do pól *autoryzacja* i punkt końcowy *tokenu* , a następnie wprowadź wartości przechwycone ze znanego wcześniej dokumentu XML konfiguracji.
-1. Przewiń w dół i wypełnij *dodatkowy parametr treści* o nazwie "Resource" przy użyciu identyfikatora klienta interfejsu API funkcji z Azure AD B2C rejestracji aplikacji
+1. Przewiń w dół i wypełnij *dodatkowy parametr treści* o nazwie "Resource" z identyfikatorem klienta interfejsu API funkcji zaplecza z Azure AD B2C rejestracji aplikacji
 1. Wybierz pozycję "poświadczenia klienta", ustaw identyfikator klienta na identyfikator aplikacji konsoli dewelopera — Pomiń ten krok, jeśli używany jest model API Management użycia.
 1. Ustaw klucz tajny klienta na nagrany wcześniej — Pomiń ten krok, jeśli używasz modelu API Management użycia.
 1. Teraz Zapisz redirect_uri kodu uwierzytelniania przyznany z API Management do późniejszego użycia.
@@ -242,7 +244,6 @@ Musisz dodać bloki z formatowaniem CIDR do panelu ograniczenia adresów IP. Gdy
    ```
 1. Edytuj adres URL OpenID Connect-config, aby dopasować dobrze znany Azure AD B2C punkt końcowy dla zasad rejestracji lub logowania.
 1. Edytuj wartość usługi Claim w celu dopasowania do prawidłowego identyfikatora aplikacji, znanego również jako identyfikator klienta dla aplikacji interfejsu API zaplecza i Zapisz.
-1. Wybierz operację interfejsu API poniżej "wszystkie interfejsy API"
 
    > [!NOTE]
    > Teraz funkcja zarządzania interfejsami API umożliwia reagowanie na żądania między źródłami na aplikacje typu JS SPA i przekroczenie limitu szybkości i wstępnego sprawdzania poprawności tokenu uwierzytelniania JWT przesyłanego przed przekazaniem żądania do interfejsu API funkcji.

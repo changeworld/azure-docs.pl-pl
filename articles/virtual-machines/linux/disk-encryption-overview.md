@@ -2,17 +2,18 @@
 title: Włączanie Azure Disk Encryption dla maszyn wirtualnych z systemem Linux
 description: Ten artykuł zawiera instrukcje dotyczące włączania Microsoft Azure szyfrowania dysków dla maszyn wirtualnych z systemem Linux.
 author: msmbaldwin
-ms.service: security
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 96ac1becfed74141b3b1544646f5d82bd0985045
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 28d37ba6796799ea27bbd5338247a504ea82388f
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396827"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970495"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption dla maszyn wirtualnych z systemem Linux 
 

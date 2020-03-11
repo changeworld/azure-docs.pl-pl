@@ -9,12 +9,12 @@ ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.date: 03/03/2020
-ms.openlocfilehash: 7c5087a15210dff7c2a51aa5af38b8f7c26e28cc
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 943e23aa9d83df33bbe636ce7aee62e6e5a2950e
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673481"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037304"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-designer-preview"></a>Korzystanie z przykładowych zestawów danych w programie Azure Machine Learning Designer (wersja zapoznawcza)
 
@@ -44,4 +44,4 @@ Przykładowe zestawy danych są dostępne w obszarze **zestawy danych**-**Sample
 
 * Poznaj podstawy analizy predykcyjnej i uczenia maszynowego za pomocą [samouczka: przewidywanie ceny za samochód z użyciem projektanta](tutorial-designer-automobile-price-train-score.md)
 
-* Importowanie przykładowych zestawów danych przy użyciu modułu [Importuj dane](./algorithm-module-reference/import-data.md)
+* Dowiedz się, jak modyfikować istniejące [przykłady projektanta](samples-designer.md) , aby dostosować je do swoich potrzeb.

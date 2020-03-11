@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d0491a5178331c53248d9c764d9ff1c6a6970683
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 3de4baa4eafe26cff18d9b1bcfb59398439994b0
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425786"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969785"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Key Vault rozszerzenie maszyny wirtualnej dla systemu Windows
 
@@ -70,13 +70,13 @@ Poniższy kod JSON przedstawia schemat rozszerzenia maszyny wirtualnej Key Vault
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | publisher | Microsoft.Azure.KeyVault | ciąg |
-| typ | KeyVaultForWindows | ciąg |
+| type | KeyVaultForWindows | ciąg |
 | typeHandlerVersion | 1.0 | int |
 | pollingIntervalInS | 3600 | ciąg |
 | certificateStoreName | MY | ciąg |
-| linkOnRenewal | {1&gt;false&lt;1} | wartość logiczna |
+| linkOnRenewal | false | wartość logiczna |
 | certificateStoreLocation  | LocalMachine | ciąg |
-| requiredInitialSync | {1&gt;true&lt;1} | wartość logiczna |
+| requiredInitialSync | true | wartość logiczna |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | Tablica ciągów
 
 
@@ -101,6 +101,7 @@ Konfiguracja JSON rozszerzenia maszyny wirtualnej musi być zagnieżdżona w ram
       "typeHandlerVersion": "1.0",
       "autoUpgradeMinorVersion": true,
       "settings": {
+        "secretsManagementSettings": {
           "pollingIntervalInS": <polling interval in seconds, e.g: "3600">,
           "certificateStoreName": <certificate store name, e.g.: "MY">,
           "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,

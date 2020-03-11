@@ -16,12 +16,12 @@ ms.date: 11/01/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a78a69301ab2ae637531f8643d9d57a8b44b563f
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 99de022b7259b33baab3aa825673a8f85e932bff
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608932"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968740"
 ---
 # <a name="review-access-of-an-access-package-in-azure-ad-entitlement-management"></a>Przeglądanie dostępu do pakietu dostępu w usłudze Azure AD uprawnienia zarządzania
 
@@ -47,7 +47,7 @@ Aby znaleźć i otworzyć przegląd dostępu, wykonaj następujące kroki:
 
 1. Kliknij link **Przejrzyj dostęp użytkownika** , aby otworzyć przegląd dostępu. 
 
-1. Jeśli nie masz wiadomości e-mail, możesz znaleźć oczekujące przeglądy dostępu, przechodząc bezpośrednio do https://myaccess.microsoft.com.
+1. Jeśli nie masz wiadomości e-mail, możesz znaleźć oczekujące przeglądy dostępu, przechodząc bezpośrednio do https://myaccess.microsoft.com.  (W przypadku instytucji rządowych USA Użyj `https://myaccess.microsoft.us` zamiast tego).
 
 1. Kliknij przycisk **przeglądy dostępu** na lewym pasku nawigacyjnym, aby wyświetlić listę oczekujących przeglądów dostępu przypisanych do użytkownika.
     

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 11/27/2019
-ms.openlocfilehash: 72006f907a1c1641308c8ee43e7a405765410789
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.date: 03/09/2020
+ms.openlocfilehash: 75ac5a7fc352f877573d79a004d8da761c6f1cef
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770887"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082884"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Monitorowanie wydajności klastra w usłudze Azure HDInsight
 
@@ -33,7 +33,7 @@ Aby uzyskać ogólne omówienie węzłów klastra i ich ładowania, zaloguj się
 | Orange | Co najmniej jeden składnik pomocniczy na hoście nie działa. Umieść kursor w celu wyświetlenia etykietki narzędzia, która wyświetla listę składników, których to dotyczy. |
 | Kryje | Serwer Ambari nie otrzymał pulsu od hosta przez więcej niż 3 minuty. |
 | Znacznika | Normalny stan działania. |
- 
+
 Zobaczysz również kolumny przedstawiające liczbę rdzeni i ilość pamięci RAM dla każdego hosta, a także użycie dysku i średnie obciążenie.
 
 ![Karta Apache Ambari hosts — Omówienie](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-hosts-tab.png)
@@ -81,6 +81,46 @@ Jeśli magazyn zapasowy klastra jest Azure Data Lake Storage (ADLS), ograniczeni
 * [Wskazówki dotyczące dostrajania wydajności Apache Hive w usłudze HDInsight i Azure Data Lake Storage](../data-lake-store/data-lake-store-performance-tuning-hive.md)
 * [Wskazówki dotyczące dostrajania wydajności dla MapReduce w usłudze HDInsight i Azure Data Lake Storage](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)
 * [Wskazówki dotyczące dostrajania wydajności Apache Storm w usłudze HDInsight i Azure Data Lake Storage](../data-lake-store/data-lake-store-performance-tuning-storm.md)
+
+## <a name="troubleshoot-sluggish-node-performance"></a>Rozwiązywanie problemów z powolnymi węzłami
+
+W niektórych przypadkach może wystąpić pomniejszanie z powodu małej ilości miejsca na dysku w klastrze. Zbadaj następujące kroki:
+
+1. Użyj [polecenia SSH](./hdinsight-hadoop-linux-use-ssh-unix.md) do nawiązania połączenia z każdym węzłem.
+
+1. Sprawdź użycie dysku, uruchamiając jedno z następujących poleceń:
+
+    ```bash
+    df -h
+    du -h --max-depth=1 / | sort -h
+    ```
+
+1. Przejrzyj dane wyjściowe i sprawdź obecność dużych plików w folderze `mnt` lub innych folderach. Zwykle foldery `usercache`i `appcache` (mnt/Resource/Hadoop/przędzy/Local/usercache/Hive/appcache/) zawierają duże pliki.
+
+1. W przypadku dużych plików, bieżące zadanie powoduje wzrost rozmiaru pliku lub zakończyło się niepowodzeniem poprzednie zadanie mogło zostać wniesione do tego problemu. Aby sprawdzić, czy to zachowanie jest spowodowane przez bieżące zadanie, uruchom następujące polecenie:
+
+    ```bash
+    sudo du -h --max-depth=1 /mnt/resource/hadoop/yarn/local/usercache/hive/appcache/
+    ```
+
+1. Jeśli to polecenie wskazuje określone zadanie, możesz przerwać zadanie przy użyciu polecenia podobnego do następującego:
+
+    ```bash
+    yarn application -kill -applicationId <application_id>
+    ```
+
+    Zastąp `application_id` IDENTYFIKATORem aplikacji. Jeśli nie określono konkretnych zadań, przejdź do następnego kroku.
+
+1. Po zakończeniu powyższego polecenia lub jeśli nie określono konkretnych zadań, usuń duże pliki, które zostały zidentyfikowane przez uruchomienie polecenia podobnego do następującego:
+
+    ```bash
+    rm -rf filecache usercache
+    ```
+
+Aby uzyskać więcej informacji dotyczących problemów z miejscem na dysku, zobacz [miejsce na dysku](./hadoop/hdinsight-troubleshoot-out-disk-space.md).
+
+> [!NOTE]  
+> Jeśli masz duże pliki, które chcesz zachować, ale mają one wpływ na problem z małą ilością wolnego miejsca na dysku, musisz skalować klaster usługi HDInsight i ponownie uruchomić usługę. Po wykonaniu tej procedury i poczekaniu przez kilka minut można zauważyć, że magazyn zostanie zwolniony i zostanie przywrócona zwykła wydajność węzła.
 
 ## <a name="next-steps"></a>Następne kroki
 

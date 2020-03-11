@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d383acae83f0f42f9c16fcb5d4ea7efbdf2b5f8
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: ccc64fb8dd8bd8abc198d9bfc9d643ef618188ea
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493977"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78967777"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>Samouczek: Azure Active Directory Włączanie funkcji zapisywania zwrotnego do samoobsługowego resetowania haseł w środowisku lokalnym
 
@@ -42,6 +42,7 @@ Do ukończenia tego samouczka potrzebne są następujące zasoby i uprawnienia:
     * W razie potrzeby [Wykonaj poprzedni samouczek, aby włączyć usługę Azure AD SSPR](tutorial-enable-sspr.md).
 * Istniejące lokalne środowisko AD DS skonfigurowane z bieżącą wersją Azure AD Connect.
     * W razie konieczności Skonfiguruj Azure AD Connect przy użyciu ustawień [ekspresowych](../hybrid/how-to-connect-install-express.md) lub [niestandardowych](../hybrid/how-to-connect-install-custom.md) .
+    * Aby można było używać funkcji zapisywania zwrotnego haseł, kontrolery domeny muszą być systemu Windows Server 2008 R2 lub nowszego.
 
 ## <a name="configure-account-permissions-for-azure-ad-connect"></a>Konfigurowanie uprawnień konta dla Azure AD Connect
 

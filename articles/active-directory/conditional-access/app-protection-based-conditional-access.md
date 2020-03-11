@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d8cdb32e04f9ba1274291430ac230107f3150c6
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 9859c884f6a1e22a1ac2bd21106ef51ead23fa41
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78298381"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080077"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>Instrukcje: wymaganie zasad ochrony aplikacji oraz zatwierdzonej aplikacji klienckiej do uzyskiwania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego
 
@@ -30,6 +30,9 @@ W tym artykule przedstawiono dwa scenariusze konfigurowania zasad dostępu warun
 W przypadku dostępu warunkowego te aplikacje klienckie są nazywane ochroną za pomocą zasad ochrony aplikacji. Więcej informacji na temat zasad ochrony aplikacji można znaleźć w artykule [Omówienie zasad ochrony aplikacji](/intune/apps/app-protection-policy)
 
 Aby uzyskać listę kwalifikujących się aplikacji klienckich, zobacz [wymagania dotyczące zasad ochrony aplikacji](concept-conditional-access-grant.md).
+
+> [!NOTE]
+>    Klauzula or jest używana w ramach zasad, aby umożliwić użytkownikom korzystanie z aplikacji, które obsługują kontrolki **Wymagaj ochrony aplikacji** lub **wymagają zatwierdzonej aplikacji klienckiej** . Aby uzyskać więcej informacji o tym, które aplikacje obsługują kontrolę przydzielenia **zasad ochrony aplikacji** , zobacz [wymagania dotyczące zasad ochrony aplikacji](concept-conditional-access-grant.md).
 
 ## <a name="scenario-1-office-365-apps-require-approved-apps-with-app-protection-policies"></a>Scenariusz 1: aplikacje pakietu Office 365 wymagają zatwierdzonych aplikacji przy użyciu zasad ochrony aplikacji
 
@@ -56,7 +59,7 @@ Aby wymagać użycia zatwierdzonej aplikacji klienckiej na urządzeniach przeno�
 1. W obszarze **kontroli dostępu** > **Udziel**wybierz następujące opcje:
    - **Wymagaj zatwierdzonej aplikacji klienckiej**
    - **Wymagaj zasad ochrony aplikacji (wersja zapoznawcza)**
-   - **Wymagaj wszystkich zaznaczonych kontrolek**
+   - **Wymagaj jednej z wybranych kontrolek**
 1. Potwierdź ustawienia i ustaw opcję **Włącz zasady** na **włączone**.
 1. Wybierz pozycję **Utwórz** , aby utworzyć i włączyć zasady.
 
@@ -75,7 +78,7 @@ W przypadku zasad dostępu warunkowego w tym kroku skonfiguruj następujące sk�
    1. **Aplikacje klienckie (wersja zapoznawcza)** :
       1. Ustaw **wartość** **tak**.
       1. Wybierz pozycję **aplikacje mobilne i klienci stacjonarni** oraz **klienci programu Exchange ActiveSync**.
-1. W obszarze **kontroli dostępu** > **Udziel**wybierz pozycję **Udziel dostępu**, **Wymagaj zatwierdzonej aplikacji klienckiej**, a następnie wybierz pozycję **Wybierz**.
+1. W obszarze **kontroli dostępu** > **Udziel**wybierz pozycję **Udziel dostępu**, **Wymagaj zasad ochrony aplikacji**i wybierz pozycję **Wybierz**.
 1. Potwierdź ustawienia i ustaw opcję **Włącz zasady** na **włączone**.
 1. Wybierz pozycję **Utwórz** , aby utworzyć i włączyć zasady.
 
@@ -108,7 +111,7 @@ Aby wymagać użycia zatwierdzonej aplikacji klienckiej na urządzeniach przeno�
 1. W obszarze **kontroli dostępu** > **Udziel**wybierz następujące opcje:
    - **Wymagaj zatwierdzonej aplikacji klienckiej**
    - **Wymagaj zasad ochrony aplikacji (wersja zapoznawcza)**
-   - **Wymagaj wszystkich zaznaczonych kontrolek**
+   - **Wymagaj jednej z wybranych kontrolek**
 1. Potwierdź ustawienia i ustaw opcję **Włącz zasady** na **włączone**.
 1. Wybierz pozycję **Utwórz** , aby utworzyć i włączyć zasady.
 
@@ -125,7 +128,7 @@ Aby wymagać użycia zatwierdzonej aplikacji klienckiej na urządzeniach przeno�
    1. **Aplikacje klienckie (wersja zapoznawcza)** :
       1. Ustaw **wartość** **tak**.
       1. Wybierz pozycję **aplikacje mobilne i klienci stacjonarni** oraz **klienci programu Exchange ActiveSync**.
-1. W obszarze **kontroli dostępu** > **Udziel**wybierz pozycję **Udziel dostępu**, **Wymagaj zatwierdzonej aplikacji klienckiej**, a następnie wybierz pozycję **Wybierz**.
+1. W obszarze **kontroli dostępu** > **Udziel**wybierz pozycję **Udziel dostępu**, **Wymagaj zasad ochrony aplikacji**i wybierz pozycję **Wybierz**.
 1. Potwierdź ustawienia i ustaw opcję **Włącz zasady** na **włączone**.
 1. Wybierz pozycję **Utwórz** , aby utworzyć i włączyć zasady.
 

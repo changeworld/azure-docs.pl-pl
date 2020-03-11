@@ -1,26 +1,18 @@
 ---
 title: Konfigurowanie RAID oprogramowania na maszynie wirtualnej z systemem Linux
 description: Dowiedz się, jak skonfigurować macierz RAID w systemie Linux na platformie Azure przy użyciu mdadm.
-services: virtual-machines-linux
-documentationcenter: na
 author: rickstercdn
-manager: gwallace
-editor: tysonn
-tag: azure-service-management,azure-resource-manager
-ms.assetid: f3cb2786-bda6-4d2c-9aaf-2db80f490feb
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: f59e4b9ee85803ab5635e72b3607e82e958d9696
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 122abda51b907491b322908c3c2c689bc1723e87
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380626"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968181"
 ---
 # <a name="configure-software-raid-on-linux"></a>Konfigurowanie RAID oprogramowania w systemie Linux
 Typowym scenariuszem jest używanie oprogramowania RAID na maszynach wirtualnych z systemem Linux na platformie Azure, aby przedstawić wiele dołączonych dysków danych jako pojedyncze urządzenie RAID. Zwykle może to służyć do zwiększenia wydajności i zapewnienia lepszej przepływności w porównaniu z użyciem jednego dysku.

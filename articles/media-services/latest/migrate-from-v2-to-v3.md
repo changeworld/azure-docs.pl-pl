@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 02/28/2020
+ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: 2a670c7bce113de8854b33e407c7de2236edd794
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: ffbac18b3172dd0cd3d430bae5060be0a8d1bb21
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393513"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082008"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Wskazówki dotyczące migracji dotyczące przenoszenia z Media Services V2 do wersji v3
 
@@ -31,7 +31,7 @@ W tym artykule opisano zmiany wprowadzone w Azure Media Services v3, przedstawio
 Jeśli masz już zainstalowaną usługę wideo na [starszej wersji interfejsów api Media Services V2](../previous/media-services-overview.md), przed migracją do interfejsów API v3 należy zapoznać się z poniższymi wskazówkami i kwestiami. Istnieje wiele zalet i nowych funkcji w interfejsie API v3, które zwiększają możliwości środowiska deweloperskiego i funkcje Media Services. Jednak zgodnie z opisem w sekcji [znane problemy](#known-issues) w tym artykule istnieją także pewne ograniczenia związane z zmianami między wersjami interfejsu API. Ta strona będzie utrzymywana, gdy zespół Media Services wprowadza dalsze ulepszenia interfejsów API v3 i rozwiązuje luki między wersjami. 
 
 > [!NOTE]
-> Obecnie nie można zarządzać zasobami w wersji 3 z witryny Azure Portal. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), [interfejsu wiersza polecenia](https://aka.ms/ams-v3-cli-ref) lub jednego z obsługiwanych [zestawów SDK](media-services-apis-overview.md#sdks).
+> Za pomocą [Azure Portal](https://portal.azure.com/) można zarządzać [zdarzeniami na żywo](live-events-outputs-concept.md)v3, przeglądać (nie zarządzać) v3 [,](assets-concept.md)uzyskać informacje o uzyskiwaniu dostępu do interfejsów API. Aby uzyskać więcej informacji, zobacz [często zadawane pytania](frequently-asked-questions.md#can-i-use-the-azure-portal-to-manage-v3-resources). 
 
 ## <a name="benefits-of-media-services-v3"></a>Zalety Media Services v3
   
@@ -83,7 +83,7 @@ Jeśli masz już zainstalowaną usługę wideo na [starszej wersji interfejsów 
     string cbcsIV =  Convert.ToBase64String(HexStringToByteArray(cbcsGuid.ToString().Replace("-", string.Empty)));
     ```
 
-    elementem
+    with
 
     ``` 
     public static byte[] HexStringToByteArray(string hex)
@@ -131,7 +131,13 @@ W poniższej tabeli przedstawiono różnice w kodzie między wersjami 2 i V3 dla
 
 ## <a name="known-issues"></a>Znane problemy
 
-* Obecnie nie można zarządzać zasobami w wersji 3 z witryny Azure Portal. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-sdk), interfejsu wiersza polecenia lub jednego z obsługiwanych zestawów SDK.
+*  Obecnie można użyć [Azure Portal](https://portal.azure.com/) , aby:
+
+    * Zarządzaj [zdarzeniami na żywo](live-events-outputs-concept.md)Media Services v3, 
+    * Wyświetl [zasoby](assets-concept.md)v3 (nie Zarządzaj), 
+    * [Uzyskaj informacje na temat uzyskiwania dostępu do interfejsów API](access-api-portal.md). 
+
+W przypadku wszystkich innych zadań zarządzania (na przykład [transformacji i zadań](transforms-jobs-concept.md) oraz [ochrony zawartości](content-protection-overview.md)) należy użyć [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), [interfejsu wiersza polecenia](https://aka.ms/ams-v3-cli-ref)lub jednego z obsługiwanych [zestawów SDK](media-services-apis-overview.md#sdks).
 * Musisz zainicjować obsługę jednostek zarezerwowanych multimediów (MRUs) na koncie, aby kontrolować współbieżność i wydajność zadań, w szczególności na potrzeby analizy wideo lub audio. Aby uzyskać więcej informacji, zobacz [Scaling Media Processing](../previous/media-services-scale-media-processing-overview.md) (Skalowanie przetwarzania multimediów). MRUs można zarządzać za pomocą [interfejsu wiersza polecenia 2,0 dla Media Services v3](media-reserved-units-cli-how-to.md)przy użyciu [Azure Portal](../previous/media-services-portal-scale-media-processing.md)lub przy użyciu [interfejsów API v2](../previous/media-services-dotnet-encoding-units.md). Należy udostępnić MRUs, niezależnie od tego, czy są Media Services używane interfejsy API w wersji 2 i v3.
 * Media Services jednostek utworzonych za pomocą interfejsu API V3 nie można zarządzać za pomocą interfejsu API v2.  
 * Nie wszystkie jednostki w interfejsie API v2 są automatycznie wyświetlane w interfejsie API v3.  Poniżej przedstawiono przykłady jednostek w dwóch niezgodnych wersjach:  

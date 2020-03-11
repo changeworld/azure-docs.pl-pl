@@ -3,15 +3,16 @@ title: Tworzenie i szyfrowanie maszyny wirtualnej z systemem Linux przy użyciu 
 description: W tym przewodniku szybki start dowiesz się, jak utworzyć i zaszyfrować maszynę wirtualną z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure
 author: msmbaldwin
 ms.author: mbaldwin
-ms.service: security
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: quickstart
 ms.date: 05/17/2019
-ms.openlocfilehash: f6883e627644f9bea68ddce401162d269509c67e
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 14b6f07ead59f3d86b80489460956dd37fb7378b
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750113"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970697"
 ---
 # <a name="quickstart-create-and-encrypt-a-linux-vm-with-the-azure-cli"></a>Szybki Start: Tworzenie i szyfrowanie maszyny wirtualnej z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -21,7 +22,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten przewodnik Szybki start wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create). Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
 

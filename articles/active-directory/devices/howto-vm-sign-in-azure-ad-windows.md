@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8fe33f78b96dbfe780c94fbddfc5c8821148279
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: ffb0f7cdb320d009eb1549efabac60d7710b9b0e
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78672586"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080088"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Logowanie do maszyny wirtualnej z systemem Windows na platformie Azure przy użyciu uwierzytelniania Azure Active Directory (wersja zapoznawcza)
 
@@ -152,6 +152,7 @@ Po utworzeniu maszyny wirtualnej należy skonfigurować zasady RBAC platformy Az
 
 > [!NOTE]
 > Aby zezwolić użytkownikowi na logowanie do maszyny wirtualnej za pośrednictwem protokołu RDP, należy przypisać rolę logowania administratora maszyny wirtualnej lub użytkownika maszyny wirtualnej. Użytkownik platformy Azure z rolami właściciela lub współautora przypisany do maszyny wirtualnej nie ma automatycznie uprawnień do logowania się do maszyny wirtualnej za pośrednictwem protokołu RDP. Ma to na celu zapewnienie przeprowadzenia inspekcji między zbiorem osób kontrolujących maszyny wirtualne a zestawem osób, które mogą uzyskiwać dostęp do maszyn wirtualnych.
+
 Istnieje wiele sposobów konfigurowania przypisań ról dla maszyny wirtualnej:
 
 - Korzystanie z portalu usługi Azure AD
@@ -194,7 +195,7 @@ Aby uzyskać więcej informacji na temat używania RBAC do zarządzania dostępe
 - [Zarządzanie dostępem do zasobów platformy Azure przy użyciu RBAC i interfejsu wiersza polecenia platformy Azure](/azure/role-based-access-control/role-assignments-cli)
 - [Zarządzanie dostępem do zasobów platformy Azure za pomocą kontroli dostępu opartej na rolach i witryny Azure Portal](/azure/role-based-access-control/role-assignments-portal)
 - [Zarządzanie dostępem do zasobów platformy Azure przy użyciu RBAC i Azure PowerShell](/azure/role-based-access-control/role-assignments-powershell).
-'
+
 ## <a name="using-conditional-access"></a>Korzystanie z dostępu warunkowego
 
 Można wymusić zasady dostępu warunkowego, takie jak uwierzytelnianie wieloskładnikowe lub sprawdzanie ryzyka logowania użytkownika przed autoryzacją dostępu do maszyn wirtualnych z systemem Windows na platformie Azure, które są włączone przy użyciu usługi Azure AD. Aby zastosować zasady dostępu warunkowego, należy wybrać opcję "Logowanie do maszyny wirtualnej platformy Azure" w opcji przypisywania aplikacji lub akcji w chmurze, a następnie użyć ryzyka związanego z logowaniem jako warunku i/lub wymagać uwierzytelniania wieloskładnikowego jako udzielenia kontroli dostępu. 
@@ -363,4 +364,5 @@ Jeśli usługa Windows Hello dla firm nie została wdrożona, a jeśli nie jest 
 Podziel się swoją opinią na temat tej funkcji w wersji zapoznawczej lub zgłoś problemy przy użyciu jej na [forum opinii usługi Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać więcej informacji na temat Azure Active Directory, zobacz [co to jest Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis) "
+
+Aby uzyskać więcej informacji na temat Azure Active Directory, zobacz [co to jest Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis)

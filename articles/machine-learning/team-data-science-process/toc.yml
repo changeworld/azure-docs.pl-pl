@@ -185,47 +185,29 @@
         - name: Tworzenie i uczenie modeli
           items:
             - name: Wybieranie algorytmów
-              href: /azure/machine-learning/studio/algorithm-choice?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: /azure/machine-learning/how-to-select-algorithms?context=azure/machine-learning/team-data-science-process/context/ml-context
             - name: Ściągawka dotycząca algorytmów
-              href: /azure/machine-learning/studio/algorithm-cheat-sheet?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: /azure/machine-learning/algorithm-cheat-sheet?context=azure/machine-learning/team-data-science-process/context/ml-context
     - name: Wdrażanie modeli w środowisku produkcyjnym
       href: deploy-models-in-production.md
 - name: Powiązane
   items:
     - name: Azure Machine Learning
       href: ../
-    - name: Galeria sztucznej inteligencji platformy Azure
-      href: 'https://gallery.azure.ai'
-    - name: Cortana Analytics
+    - name: Cognitive Services
+      href: 'https://docs.microsoft.com/azure/cognitive-services/'
+    - name: Wykrywanie anomalii
+      href: apps-anomaly-detection-api.md
+    - name: Konserwacja zapobiegawcza
       items:
-        - name: Wykrywanie anomalii
-          href: apps-anomaly-detection-api.md
-        - name: Cognitive Services
-          href: 'https://docs.microsoft.com/azure/cognitive-services/'
-        - name: Konserwacja zapobiegawcza
-          items:
-            - name: Omówienie
-              href: cortana-analytics-playbook-predictive-maintenance.md
-            - name: Architektura
-              href: cortana-analytics-architecture-predictive-maintenance.md
-            - name: Podręcznik techniczny
-              href: cortana-analytics-technical-guide-predictive-maintenance.md
+        - name: Omówienie
+          href: predictive-maintenance-playbook.md
+        - name: Architektura
+          href: predictive-maintenance-architecture.md
+        - name: Podręcznik techniczny
+          href: predictive-maintenance-technical-guide.md
 - name: Zasoby
   items:
-    - name: Blogi
-      items:
-        - name: Najnowsze aktualizacje dla przetwarzania TDSP
-          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/10/09/the-microsoft-team-data-science-process-tdsp-recent-updates/'
-        - name: Korzystanie z przetwarzania TDSP w usłudze Azure Machine Learning
-          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/09/25/using-the-team-data-science-process-tdsp-in-azure-machine-learning/'
-        - name: Narzędzia Data Science Utilities v0.11 dla środowiska TDSP
-          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/01/11/announcing-data-science-utilities-version-0-11-for-the-team-data-science-process/'
-        - name: Najnowsze narzędzia dla przetwarzania TDSP
-          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/04/05/latest-rev-of-utilities-for-microsoft-team-data-science-process-tdsp-now-available/'
-        - name: Szablon planowania projektu nauki o danych
-          href: 'https://blogs.msdn.microsoft.com/buckwoody/2017/10/24/a-data-science-microsoft-project-template-you-can-use-in-your-solutions/'
-        - name: Blog dotyczący pakietu Cortana Intelligence i usługi Machine Learning
-          href: 'https://blogs.technet.microsoft.com/machinelearning/'
     - name: Organizacje korzystające z przetwarzania TDSP
       items:
         - name: Nowy podpis

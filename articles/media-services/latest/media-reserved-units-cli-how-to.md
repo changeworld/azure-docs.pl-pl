@@ -11,19 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/26/2019
+ms.date: 03/09/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 13fa733417558ab8be9ff1e5a9f1e484fb40f445
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9f0a7425fc09d391828a748832f662f02c6022cf
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102944"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970782"
 ---
 # <a name="scaling-media-processing"></a>Skalowanie przetwarzania multimediów
 
-Usługa Azure Media Services umożliwia skalowanie przetwarzania multimediów w ramach Twojego konta, umożliwiając zarządzanie jednostek zarezerwowanych multimediów (lokalizacje MRU). MRUs określić szybkość przetwarzania zadań przetwarzania multimediów. Można wybrać jeden z następujących typów jednostki zarezerwowanej: **S1**, **S2** lub **S3**. Na przykład to samo zadanie kodowania jest wykonywane szybciej przy użyciu typu jednostki zarezerwowanej **S2** niż w przypadku użycia typu **S1**. 
+Usługa Azure Media Services umożliwia skalowanie przetwarzania multimediów w ramach konta dzięki funkcji zarządzania jednostkami zarezerwowanymi multimediów (MRU, Media Reserved Units). MRUs określić szybkość przetwarzania zadań przetwarzania multimediów. Można wybrać jeden z następujących typów jednostki zarezerwowanej: **S1**, **S2** lub **S3**. Na przykład to samo zadanie kodowania jest wykonywane szybciej przy użyciu typu jednostki zarezerwowanej **S2** niż w przypadku użycia typu **S1**. 
 
 Oprócz określania typu jednostki zarezerwowanej możesz określić, aby udostępnić konto za pomocą jednostek zarezerwowanych. Liczba zainicjowanych jednostek zarezerwowanych określa liczbę zadań multimedialnych, które mogą być przetwarzane jednocześnie w ramach danego konta. Na przykład jeśli konto ma pięć jednostek zarezerwowanych, pięć zadań multimedialnych będzie wykonywanych współbieżnie, o ile istnieją zadania do przetworzenia. Pozostałe zadania czekają w kolejce i zostaną pobrane do przetwarzania sekwencyjnego po zakończeniu uruchomionego zadania. Jeśli dla konta nie zainicjowano obsługi żadnych jednostek zarezerwowanych, zadania będą wybierane sekwencyjnie. W takim przypadku czas oczekiwania między kolejnymi zadaniami zostanie zależał od dostępności zasobów w systemie.
 
@@ -45,9 +45,7 @@ Poniższa tabela ułatwia podejmowanie decyzji podczas wybierania różnych szyb
 W pozostałej części artykułu pokazano, jak używać [interfejsu wiersza polecenia Media Services v3](https://aka.ms/ams-v3-cli-ref) do skalowania MRUs.
 
 > [!NOTE]
-> Analiza Audio i wideo zadania analizy, które są wyzwalane przez usługi Media Services v3 lub Video Indexer, aby uzyskać zaleca aprowizację swojego konta za pomocą 10 S3 lokalizacje MRU. Jeśli potrzebujesz więcej niż 10 S3 lokalizacje MRU, otwórz bilet pomocy technicznej przy użyciu [witryny Azure portal](https://portal.azure.com/).
->
-> Obecnie nie można używać Azure Portal do zarządzania innymi zasobami v3. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), [interfejsu wiersza polecenia](https://aka.ms/ams-v3-cli-ref) lub jednego z obsługiwanych [zestawów SDK](media-services-apis-overview.md#sdks).
+> Zdecydowanie zaleca się, aby w przypadku zadań analizy audio i analizy wideo, które są wyzwalane przez usługi Media Services wersji 3 lub Video Indexer, aby przeprowadzać aprowizację konta przy użyciu 10 jednostek MRU typu S3. Jeśli potrzebujesz więcej niż 10 MRUs S3, Otwórz bilet pomocy technicznej przy użyciu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 
@@ -59,7 +57,7 @@ W pozostałej części artykułu pokazano, jak używać [interfejsu wiersza pole
 
 Uruchom polecenie `mru`.
 
-Następujące [az ams account mru](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) zestawy jednostek zarezerwowanych multimediów na "amsaccount" konta przy użyciu polecenia **liczba** i **typu** parametrów.
+Następujące polecenie [AZ AMS Account MRU](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) ustawia jednostki zarezerwowane multimediów na koncie "amsaccount" przy użyciu parametrów **Count** i **Type** .
 
 ```azurecli
 az ams account mru set -n amsaccount -g amsResourceGroup --count 10 --type S3
@@ -67,13 +65,13 @@ az ams account mru set -n amsaccount -g amsResourceGroup --count 10 --type S3
 
 ## <a name="billing"></a>Rozliczenia
 
-Opłata jest naliczana na podstawie liczby minut, w ciągu których zainicjowano alokację jednostek zarezerwowanych multimediów na Twoim koncie. Zdarza się to niezależnie od tego, czy na Twoim koncie są uruchomione jakieś zadania. Aby uzyskać szczegółowy opis, zobacz sekcję Często zadawane pytania dotyczące [cennika usługi Media Services](https://azure.microsoft.com/pricing/details/media-services/) strony.   
+Opłata jest naliczana na podstawie liczby minut, w ciągu których zainicjowano alokację jednostek zarezerwowanych multimediów na Twoim koncie. Zdarza się to niezależnie od tego, czy na Twoim koncie są uruchomione jakieś zadania. Szczegółowe wyjaśnienie można znaleźć w sekcji często zadawane pytania na stronie [cennika Media Services](https://azure.microsoft.com/pricing/details/media-services/) .   
 
 ## <a name="next-step"></a>Następny krok
 
 [Analizowanie plików wideo](analyze-videos-tutorial-with-api.md) 
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 * [Limity przydziału i ograniczenia](limits-quotas-constraints.md)
 * [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)

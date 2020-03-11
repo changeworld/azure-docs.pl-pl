@@ -1,25 +1,17 @@
 ---
-title: Szczegółowe kroki — para kluczy SSH dla maszyn wirtualnych platformy Azure z systemem Linux
+title: Szczegółowe instrukcje dotyczące tworzenia pary kluczy SSH
 description: Zapoznaj się ze szczegółowymi instrukcjami tworzenia pary kluczy publicznych i prywatnych SSH dla maszyn wirtualnych z systemem Linux na platformie Azure.
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: eea078a4fb8287a4f07db478adf059eecce9ed82
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c34a88c39104d3af2c5747d1cd6d3dea6929379a
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929712"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969537"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Szczegółowe kroki: tworzenie kluczy SSH i zarządzanie nimi na potrzeby uwierzytelniania na maszynie wirtualnej z systemem Linux na platformie Azure 
 Za pomocą pary kluczy Secure Shell (SSH) można utworzyć maszynę wirtualną z systemem Linux na platformie Azure, która domyślnie używa kluczy SSH do uwierzytelniania, eliminując konieczność logowania przy użyciu haseł. Maszyny wirtualne utworzone przy użyciu Azure Portal, interfejsu wiersza polecenia platformy Azure, szablonów Menedżer zasobów lub innych narzędzi mogą zawierać klucz publiczny SSH w ramach wdrożenia, które konfiguruje uwierzytelnianie klucza SSH dla połączeń SSH. 
@@ -31,7 +23,7 @@ Aby uzyskać dodatkowe sposoby generowania i używania kluczy SSH na komputerze 
 [!INCLUDE [virtual-machines-common-ssh-overview](../../../includes/virtual-machines-common-ssh-overview.md)]
 
 ### <a name="private-key-passphrase"></a>Hasło klucza prywatnego
-Klucz prywatny SSH powinien mieć bardzo bezpieczne hasło do zabezpieczenia. To hasło służy wyłącznie do uzyskiwania dostępu do prywatnego pliku klucza SSH i *nie jest* hasłem do konta użytkownika. Dodanie hasła do klucza SSH spowoduje zaszyfrowanie klucza prywatnego przy użyciu 128-bitowego standardu AES, co oznacza, że klucz prywatny jest bezużyteczny bez hasła do jego odszyfrowania. Jeśli osoba atakująca stole klucz prywatny i klucz nie miał hasła, może użyć tego klucza prywatnego do zalogowania się do wszystkich serwerów, które mają odpowiadający mu klucz publiczny. Jeśli klucz prywatny jest chroniony hasłem, nie może być używany przez osobę atakującą, zapewniając dodatkową warstwę zabezpieczeń dla infrastruktury na platformie Azure.
+Klucz prywatny SSH powinien mieć bardzo bezpieczne hasło do zabezpieczenia. To hasło służy wyłącznie do uzyskiwania dostępu do prywatnego pliku klucza SSH i *nie jest* hasłem do konta użytkownika. Po dodaniu hasła do klucza SSH szyfruje on klucz prywatny przy użyciu 128-bitowego algorytmu AES, dzięki czemu klucz prywatny będzie bezużyteczny bez hasła do odszyfrowania. Jeśli osoba atakująca stole klucz prywatny i klucz nie miał hasła, może użyć tego klucza prywatnego do zalogowania się do wszystkich serwerów, które mają odpowiadający mu klucz publiczny. Jeśli klucz prywatny jest chroniony hasłem, nie może być używany przez osobę atakującą, zapewniając dodatkową warstwę zabezpieczeń dla infrastruktury na platformie Azure.
 
 [!INCLUDE [virtual-machines-common-ssh-support](../../../includes/virtual-machines-common-ssh-support.md)]
 
@@ -80,7 +72,7 @@ ssh-keygen \
 
 `-C "azureuser@myserver"` — komentarz dodany na końcu pliku klucza publicznego, aby umożliwić jego łatwą identyfikację. Zwykle jako komentarz używany jest adres e-mail, ale użycie dowolnego z nich najlepiej sprawdza się w przypadku Twojej infrastruktury.
 
-`-f ~/.ssh/mykeys/myprivatekey` = nazwa pliku klucza prywatnego, jeśli nie zostanie użyta nazwa domyślna. Odpowiedni plik klucza publicznego dołączony do `.pub` jest generowany w tym samym katalogu. Ten katalog musi istnieć.
+`-f ~/.ssh/mykeys/myprivatekey` = nazwa pliku klucza prywatnego, jeśli nie zostanie użyta nazwa domyślna. Odpowiedni plik klucza publicznego dołączony do `.pub` jest generowany w tym samym katalogu. Katalog musi istnieć.
 
 `-N mypassphrase` = dodatkowe hasło używane do uzyskiwania dostępu do pliku klucza prywatnego. 
 

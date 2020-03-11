@@ -1,24 +1,17 @@
 ---
-title: Opcje rozpoznawania nazw DNS dla maszyn wirtualnych z systemem Linux na platformie Azure
+title: Opcje rozpoznawania nazw DNS dla maszyn wirtualnych z systemem Linux
 description: Scenariusze rozpoznawania nazw dla maszyn wirtualnych z systemem Linux w usłudze Azure IaaS, w tym z uwzględnieniem usług DNS, hybrydowego serwera DNS i przyłączania do własnych serwerów DNS.
-services: virtual-machines
-documentationcenter: na
 author: RicksterCDN
-manager: gwallace
-editor: tysonn
-ms.assetid: 787a1e04-cebf-4122-a1b4-1fcf0a2bbf5f
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: 16dc7d16b3e8f2a4c95e93f9b85c74027291ce19
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3d5ecaf67dcff182c7dace474b7bda45cdfd5c58
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084039"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969319"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Opcje rozpoznawania nazw DNS dla maszyn wirtualnych z systemem Linux na platformie Azure
 System Azure domyślnie udostępnia rozpoznawanie nazw DNS dla wszystkich maszyn wirtualnych, które znajdują się w jednej sieci wirtualnej. Możesz zaimplementować własne rozwiązanie rozpoznawania nazw DNS, konfigurując własne usługi DNS na maszynach wirtualnych hostowanych przez platformę Azure. Poniższe scenariusze powinny pomóc w wyborze tego, który działa w przypadku danej sytuacji.
@@ -30,7 +23,7 @@ Typ rozpoznawania nazw, którego używasz, zależy od tego, jak maszyny wirtualn
 
 W poniższej tabeli przedstawiono scenariusze i odpowiednie rozwiązania rozpoznawania nazw:
 
-| **Scenariusz** | **Rozwiązanie** | **Suffix** |
+| **Scenariusz** | **Rozwiązanie** | **Przedrostk** |
 | --- | --- | --- |
 | Rozpoznawanie nazw między wystąpieniami roli lub maszynami wirtualnymi w tej samej sieci wirtualnej |Rozpoznawanie nazw zapewniane przez platformę Azure |nazwy hosta lub w pełni kwalifikowana nazwa domeny (FQDN) |
 | Rozpoznawanie nazw między wystąpieniami roli lub maszynami wirtualnymi w różnych sieciach wirtualnych |Serwery DNS zarządzane przez klienta, które przesyłają dalej zapytania między sieciami wirtualnymi w celu rozpoznania ich przez platformę Azure (DNS proxy). Zobacz [rozpoznawanie nazw przy użyciu własnego serwera DNS](#name-resolution-using-your-own-dns-server). |Tylko nazwa FQDN |
@@ -75,7 +68,7 @@ Dostępnych jest kilka różnych pakietów buforowania DNS, takich jak dnsmasq. 
 1. Zainstaluj pakiet dnsmasq ("sudo użyciu narzędzia zypper Install dnsmasq").
 2. Włącz usługę dnsmasq ("systemctl Enable dnsmasq. Service").
 3. Uruchom usługę dnsmasq ("systemctl Start dnsmasq. Service").
-4. Edytuj "/etc/sysconfig/Network/config" i Zmień NETCONFIG_DNS_FORWARDER = "" na "dnsmasq".
+4. Edytuj "/etc/sysconfig/Network/config" i zmień wartość NETCONFIG_DNS_FORWARDER = "" na "dnsmasq".
 5. Aktualizacja plik resolv. conf ("Konfiguracja aktualizacji") w celu ustawienia pamięci podręcznej jako lokalnego programu rozpoznawania nazw DNS.
 
 **CentOS przez nieautoryzowane oprogramowanie Wave (dawniej OpenLogic; używa programu NetworkManager)**
@@ -107,12 +100,12 @@ Plik plik resolv. conf został wygenerowany automatycznie i nie powinien być ed
 1. Dodaj wiersz opcji do pozycji "/etc/resolveconf/resolv.conf.d/Head".
 2. Uruchom element "resolvconf-u", aby przeprowadzić aktualizację.
 
-**SUSE** (używa w usłudze. conf)
+**SUSE** (używa proconf)
 1. Dodaj element "timeout: 1 próby: 5" do parametru NETCONFIG_DNS_RESOLVER_OPTIONS = "" w elemencie "/etc/sysconfig/Network/config".
 2. Uruchom plik "config Update", aby zaktualizować.
 
-**CentOS przez oprogramowanie nieautoryzowane Wave (dawniej OpenLogic)** (korzysta z gniazd sieciowych)
-1. Dodaj element "RES_OPTIONS =" timeout: 1 próby: 5 "" do "/etc/sysconfig/Network".
+**CentOS przez nieautoryzowane oprogramowanie Wave (dawniej OpenLogic)** (używa programu NetworkManager)
+1. Dodaj element "RES_OPTIONS =" timeout: 1 próby: 5 "" na "/etc/sysconfig/Network".
 2. Uruchom "ponowne uruchomienie sieci usługi", aby przeprowadzić aktualizację.
 
 ## <a name="name-resolution-using-your-own-dns-server"></a>Rozpoznawanie nazw przy użyciu własnego serwera DNS
@@ -126,7 +119,7 @@ Przesyłanie dalej DNS umożliwia również rozpoznawanie nazw DNS między sieci
 
 W przypadku korzystania z rozpoznawania nazw udostępnianej przez platformę Azure, wewnętrzny sufiks DNS jest dostarczany dla każdej maszyny wirtualnej przy użyciu protokołu DHCP. W przypadku korzystania z własnego rozwiązania rozpoznawania nazw ten sufiks nie jest dostarczany do maszyn wirtualnych, ponieważ ten sufiks zakłóca inne architektury DNS. Aby odwołać się do maszyn przy użyciu nazwy FQDN lub skonfigurować sufiks na maszynach wirtualnych, można użyć programu PowerShell lub interfejsu API do określenia sufiksu:
 
-* W przypadku sieci wirtualnych zarządzanych przez Azure Resource Manager sufiks jest dostępny za pośrednictwem zasobu [karty interfejsu sieciowego](https://msdn.microsoft.com/library/azure/mt163668.aspx) . Możesz również uruchomić `azure network public-ip show <resource group> <pip name>` polecenie, aby wyświetlić szczegóły publicznego adresu IP, w tym nazwę FQDN karty sieciowej.
+* W przypadku sieci wirtualnych zarządzanych przez Azure Resource Manager sufiks jest dostępny za pośrednictwem zasobu [karty interfejsu sieciowego](https://msdn.microsoft.com/library/azure/mt163668.aspx) . Możesz również uruchomić polecenie `azure network public-ip show <resource group> <pip name>`, aby wyświetlić szczegóły publicznego adresu IP, w tym nazwę FQDN karty sieciowej.
 
 Jeśli przekazywanie zapytań do platformy Azure nie odpowiada Twoim potrzebom, należy podać własne rozwiązanie DNS.  Rozwiązanie DNS musi:
 

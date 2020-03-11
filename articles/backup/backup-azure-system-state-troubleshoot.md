@@ -4,12 +4,12 @@ description: W tym artykule dowiesz się, jak rozwiązywać problemy z tworzenie
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: f311de435d813cb0e6f8a2c3d932e05d695603f3
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 28647b72334d592692c5fe1b031735330d1a0509
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583303"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969571"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Rozwiązywanie problemów z kopią zapasową stanu systemu
 
@@ -35,7 +35,7 @@ Przed rozpoczęciem rozwiązywania problemów z kopiami zapasowymi stanu systemu
 - Jeśli jest to kopia zapasowa offline, przed rozpoczęciem operacji tworzenia kopii zapasowej w trybie offline upewnij się, że Azure PowerShell wersja 3.7.0 jest zainstalowana na komputerze źródłowym i skopiuj
 - [Uwzględnianie, gdy Agent kopii zapasowej jest uruchomiony na maszynie wirtualnej platformy Azure](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-backup-agent-running-on-an-azure-virtual-machine)
 
-### <a name="limitation"></a>Ograniczenie
+### <a name="limitation"></a>Ograniczenia
 
 - Odzyskiwanie na inny komputer przy użyciu funkcji odzyskiwania stanu systemu nie jest zalecane przez firmę Microsoft.
 - Kopia zapasowa stanu systemu obsługuje obecnie serwery z systemem Windows "lokalne". Ta funkcja jest niedostępna dla maszyn wirtualnych platformy Azure.
@@ -97,8 +97,8 @@ Upewnij się, że poniższe usługi są w stanie uruchomienia:
 Zdalne wywołanie procedury (RPC) | Automatyczny
 System zdarzeń modelu COM+ (EventSystem) | Automatyczny
 Usługa powiadamiania o zdarzeniach systemowych (SENS) | Automatyczny
-Kopiowanie woluminów w tle (VSS) | Ręczny
-Dostawca kopiowania oprogramowania w tle firmy Microsoft (SWPRV) | Ręczny
+Kopiowanie woluminów w tle (VSS) | Ręcznie
+Dostawca kopiowania oprogramowania w tle firmy Microsoft (SWPRV) | Ręcznie
 
 ### <a name="validate-windows-server-backup-status"></a>Weryfikuj stan Kopia zapasowa systemu Windows Server
 
@@ -137,7 +137,7 @@ Jeśli zadanie nie powiedzie się, wskazuje to na problem z WSB, który spowoduj
 
 | Objaw | Rozwiązanie
 | -- | --
-| -Agent MARS kończy się niepowodzeniem z komunikatem o błędzie: wykonywanie kopii zapasowej nie powiodło się, ponieważ nie można było zwiększyć woluminu kopii w tle z powodu niewystarczającej ilości miejsca na woluminach <br/><br/> — Następujący dziennik błędów/ostrzeżeń jest obecny w dzienniku zdarzeń systemu Volsnap: "za mało miejsca na dysku w woluminie C:, aby zwiększyć magazyn kopii w tle dla kopii w tle C: z powodu tego błędu wszystkie kopie w tle woluminu C: są zagrożone. | -Zwolnij miejsce na wyróżnionym woluminie w dzienniku zdarzeń, tak że jest wystarczająca ilość miejsca na zwiększenie rozmiaru kopii w tle, gdy trwa wykonywanie kopii zapasowej <br/><br/> — Podczas konfigurowania obszaru kopiowania w tle możemy ograniczyć ilość miejsca używanego do kopiowania w tle. Aby uzyskać więcej informacji, zobacz ten [artykuł](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc788050(v=ws.11)#syntax)
+| -Agent MARS kończy się niepowodzeniem z komunikatem o błędzie: wykonywanie kopii zapasowej nie powiodło się, ponieważ nie można było zwiększyć woluminu kopii w tle z powodu niewystarczającej ilości miejsca na woluminach <br/><br/> — Następujący dziennik błędów/ostrzeżeń jest obecny w dzienniku zdarzeń systemu Volsnap: "za mało miejsca na dysku w woluminie C:, aby zwiększyć magazyn kopii w tle dla kopii w tle C: z powodu tego błędu wszystkie kopie w tle woluminu C: są zagrożone. | -Zwolnij miejsce na wyróżnionym woluminie w dzienniku zdarzeń, tak że jest wystarczająca ilość miejsca na zwiększenie rozmiaru kopii w tle, gdy trwa wykonywanie kopii zapasowej <br/><br/> — Podczas konfigurowania obszaru kopiowania w tle możemy ograniczyć ilość miejsca używanego do kopiowania w tle. Aby uzyskać więcej informacji, zobacz ten [artykuł](https://docs.microsoft.com/windows-server/administration/windows-commands/vssadmin-resize-shadowstorage)
 
 ### <a name="efi-partition-locked"></a>Zablokowana partycja EFI
 

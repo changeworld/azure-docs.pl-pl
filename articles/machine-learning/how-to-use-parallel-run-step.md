@@ -11,12 +11,12 @@ ms.author: vaidyas
 author: vaidya-s
 ms.date: 01/15/2020
 ms.custom: Ignite2019
-ms.openlocfilehash: ff366468c994d8ba151dd476a5bcccc52bb7309f
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 313ba2c02fd65a967ab1969b6f99893de9a3bdb4
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122852"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037346"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Uruchamiaj wnioskowanie wsadowe dla dużych ilości danych za pomocą Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ Ten artykuł zawiera informacje o następujących zadaniach:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree).
+* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree).
 
 * Aby zapoznać się z przewodnikiem Szybki Start, Wypełnij [samouczek Instalatora](tutorial-1st-experiment-sdk-setup.md) , jeśli nie masz jeszcze obszaru roboczego Azure Machine Learning lub maszyny wirtualnej notesu. 
 
@@ -85,7 +85,7 @@ Teraz musisz skonfigurować dane wejściowe i wyjściowe, w tym:
 - Katalog, który zawiera etykiety.
 - Katalog dla danych wyjściowych.
 
-`Dataset` to Klasa do eksplorowania, przekształcania i zarządzania danymi w Azure Machine Learning. Ta klasa ma dwa typy: `TabularDataset` i `FileDataset`. W tym przykładzie użyjesz `FileDataset` jako danych wejściowych kroku potoku wnioskowania o partie. 
+[`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) to Klasa do eksplorowania, przekształcania i zarządzania danymi w Azure Machine Learning. Ta klasa ma dwa typy: [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) i [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py). W tym przykładzie użyjesz `FileDataset` jako danych wejściowych kroku potoku wnioskowania o partie. 
 
 > [!NOTE] 
 > Obsługa `FileDataset` w wnioskach wsadowych jest obecnie ograniczona do usługi Azure Blob Storage. 
@@ -94,7 +94,7 @@ Możesz również odwoływać się do innych zestawów danych w skrypcie wniosko
 
 Aby uzyskać więcej informacji na temat Azure Machine Learning zestawów danych, zobacz [Tworzenie zestawów danych i uzyskiwanie do nich dostępu (wersja zapoznawcza)](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets).
 
-obiekty `PipelineData` są używane do przesyłania danych pośrednich między etapami potoku. W tym przykładzie używa się go do wyprowadzania danych.
+obiekty [`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) są używane do przesyłania danych pośrednich między etapami potoku. W tym przykładzie używa się go do wyprowadzania danych.
 
 ```python
 from azureml.core.dataset import Dataset
@@ -190,7 +190,7 @@ Skrypt *musi zawierać* dwie funkcje:
 - `init()`: Użyj tej funkcji do dowolnego kosztu lub wspólnego przygotowania do późniejszego wnioskowania. Na przykład użyj go do załadowania modelu do obiektu globalnego. Ta funkcja zostanie wywołana tylko raz na początku procesu.
 -  `run(mini_batch)`: funkcja będzie uruchamiana dla każdego wystąpienia `mini_batch`.
     -  `mini_batch`: krok Run Parallel wywoła metodę Run i przekaże element list lub Pandas Dataframe jako argument do metody. Każdy wpis w min_batch będzie ścieżką pliku, jeśli dane wejściowe to FileDataset, Pandas Dataframe, jeśli dane wejściowe to TabularDataset.
-    -  `response`: Metoda Run () powinna zwracać element Pandas Dataframe lub tablicę. W przypadku append_row output_action te zwrócone elementy są dołączane do wspólnego pliku wyjściowego. W przypadku summary_only zawartość elementów jest ignorowana. Dla wszystkich akcji wyjściowych każdy zwrócony element wyjściowy wskazuje jeden udany przebieg elementu wejściowego w danych wejściowych. Użytkownik powinien upewnić się, że w wyniku uruchomienia są zawarte wystarczające dane, aby zamapować dane wejściowe w wyniku uruchomienia. Dane wyjściowe uruchamiania będą zapisywane w pliku wyjściowym i nie będą gwarantowane w kolejności, użytkownik powinien użyć pewnego klucza w danych wyjściowych, aby zmapować go na dane wejściowe.
+    -  `response`: Metoda Run () powinna zwracać element Pandas Dataframe lub tablicę. W przypadku append_row output_action te zwrócone elementy są dołączane do wspólnego pliku wyjściowego. W przypadku summary_only zawartość elementów jest ignorowana. Dla wszystkich akcji wyjściowych każdy zwrócony element wyjściowy wskazuje jeden udany przebieg elementu wejściowego w danych wejściowych. Należy upewnić się, że w wyniku uruchomienia są zawarte wystarczające dane, aby zamapować dane wejściowe w wyniku uruchomienia. Dane wyjściowe uruchamiania będą zapisywane w pliku wyjściowym i nie będą gwarantowane w kolejności, dlatego należy użyć pewnego klucza w danych wyjściowych, aby zamapować go na dane wejściowe.
 
 ```python
 # Snippets from a sample script.
@@ -331,7 +331,7 @@ parallelrun_step = ParallelRunStep(
 
 ### <a name="run-the-pipeline"></a>Uruchamianie potoku
 
-Teraz uruchom potok. Najpierw Utwórz obiekt `Pipeline` przy użyciu odwołania do obszaru roboczego i utworzonego etapu potoku. Parametr `steps` jest tablicą kroków. W takim przypadku istnieje tylko jeden krok oceniania partii. Aby utworzyć potoki, które mają wiele kroków, należy umieścić kroki w kolejności w tej tablicy.
+Teraz uruchom potok. Najpierw Utwórz obiekt [`Pipeline`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) przy użyciu odwołania do obszaru roboczego i utworzonego etapu potoku. Parametr `steps` jest tablicą kroków. W takim przypadku istnieje tylko jeden krok oceniania partii. Aby utworzyć potoki, które mają wiele kroków, należy umieścić kroki w kolejności w tej tablicy.
 
 Następnie użyj funkcji `Experiment.submit()`, aby przesłać potok do wykonania.
 

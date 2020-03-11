@@ -1,25 +1,17 @@
 ---
-title: Tworzenie i przekazywanie obrazu maszyny wirtualnej OpenBSD na platformę Azure
+title: Tworzenie i przekazywanie obrazu OpenBSD
 description: Dowiedz się, jak utworzyć i przekazać wirtualny dysk twardy (VHD) zawierający system operacyjny OpenBSD, aby utworzyć maszynę wirtualną platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure
-services: virtual-machines-linux
-documentationcenter: ''
 author: thomas1206
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 1ef30f32-61c1-4ba8-9542-801d7b18e9bf
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: huishao
-ms.openlocfilehash: 809216aadb77f014b7fb461ba8439070c5e23d43
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: d4ecc539d71933c4aecc9124b903c57cb72838de
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291893"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969495"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>Tworzenie i przekazywanie obrazu dysku OpenBSD na platformę Azure
 W tym artykule przedstawiono sposób tworzenia i przekazywania wirtualnego dysku twardego (VHD) zawierającego system operacyjny OpenBSD. Po przekazaniu można użyć go jako własnego obrazu do utworzenia maszyny wirtualnej na platformie Azure za pomocą interfejsu wiersza polecenia platformy Azure.

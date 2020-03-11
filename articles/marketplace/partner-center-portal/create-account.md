@@ -1,19 +1,19 @@
 ---
 title: Utwórz komercyjne konto witryny Marketplace w centrum partnerskim
 description: Dowiedz się, jak utworzyć komercyjne konto witryny Marketplace w centrum partnerskim.
-author: ChJenk
+author: qianw211
 manager: evansma
-ms.author: v-chjen
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
-ms.date: 09/26/2019
-ms.openlocfilehash: df857fb938ade329a971578ac206f16f1357d7e5
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.date: 03/10/2020
+ms.openlocfilehash: 59f37585dfea08e9343cf052f680fd6e9531852b
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838760"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968823"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Utwórz komercyjne konto witryny Marketplace w centrum partnerskim
 
@@ -50,7 +50,7 @@ Tej metody należy użyć, jeśli jesteś nowym centrum partnerskim i nie są on
 
 ### <a name="register-on-the-partner-center-enrollment-page"></a>Zarejestruj się na stronie rejestracji Centrum partnerskiego
 
-Przejrzyj informacje na stronie [**Zapraszamy do rejestracji w centrum partnerskim firmy Microsoft**](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) , a następnie zarejestruj się w celu uzyskania konta.
+Przejrzyj informacje na stronie [**Zapraszamy do rejestracji w centrum partnerskim firmy Microsoft**](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) , a następnie zarejestruj się w celu uzyskania konta.
 
 ### <a name="sign-in-with-a-work-account"></a>Zaloguj się przy użyciu konta służbowego
 

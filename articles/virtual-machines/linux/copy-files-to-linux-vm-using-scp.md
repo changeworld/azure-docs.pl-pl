@@ -1,26 +1,19 @@
 ---
 title: Przenoszenie plików do i z maszyn wirtualnych z systemem Linux platformy Azure przy użyciu usługi SCP
 description: Bezpieczne przenoszenie plików do i z maszyny wirtualnej z systemem Linux na platformie Azure przy użyciu punktu połączenia usługi i pary kluczy SSH.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: d78a8e59a55718048df2022cec75c7a2b56f1a6b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a0837790b70de42073338bf085ee0f3976b866f6
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036594"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969602"
 ---
 # <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>Przenoszenie plików do i z maszyny wirtualnej z systemem Linux przy użyciu usługi SCP
 
@@ -72,7 +65,7 @@ Następujące polecenie kopiuje pliki z katalogu */Home/azureuser/Logs/* na masz
 scp -r azureuser@myserver.eastus.cloudapp.com:/home/azureuser/logs/. /tmp/
 ```
 
-Flaga interfejsu wiersza polecenia `-r` instruuje punkt SCP, aby rekursywnie skopiował pliki i katalogi z punktu katalogu wymienionego w poleceniu.  Zauważ również, że składnia wiersza polecenia jest podobna do `cp` Kopiuj polecenie.
+Flaga `-r` instruuje punkt SCP, aby rekursywnie skopiował pliki i katalogi z punktu katalogu wymienionego w poleceniu.  Zauważ również, że składnia wiersza polecenia jest podobna do `cp` Kopiuj polecenie.
 
 ## <a name="next-steps"></a>Następne kroki
 

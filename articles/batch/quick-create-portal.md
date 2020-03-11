@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 07/03/2018
 ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 8d725834cb2dd86163909b2ae598e61026ae4bb9
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 6ce0066765de3d99f8309bf568b467518f38923e
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379108"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082588"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Szybki start: uruchamianie pierwszego zadania usługi Batch w witrynie Azure Portal
 
@@ -24,7 +24,7 @@ Ten przewodnik Szybki start przedstawia sposób tworzenia konta usługi Batch, *
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure 
 
-Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
+Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-a-batch-account"></a>Tworzenie konta usługi Batch
 

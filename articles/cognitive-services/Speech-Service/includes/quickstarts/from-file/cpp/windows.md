@@ -1,20 +1,15 @@
 ---
-title: 'Szybki Start: Rozpoznawanie mowy z pliku audio C++ (Windows) — usługa mowy'
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 01/14/2020
-ms.author: erhopf
-ms.openlocfilehash: cacf326c96fd03a956c2ffe2d259101221a5c139
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.date: 03/10/2020
+ms.author: dapine
+ms.openlocfilehash: 2f029725ff53c6bf01481f7a188e070cf84550c9
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78924725"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081953"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 

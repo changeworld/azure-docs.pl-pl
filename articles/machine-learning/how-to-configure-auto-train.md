@@ -9,14 +9,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7018100c830f22c3ed5e924b5096911b1f8135cb
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: c3ea40ed02fd6b585cfdc9c30fe59bd4e247395c
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78942339"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081832"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurowanie zautomatyzowanych eksperymentów ML w języku Python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -130,8 +130,8 @@ Użyj niestandardowego zestawu danych walidacji, jeśli podział losowy nie jest
 ## <a name="compute-to-run-experiment"></a>Zasoby obliczeniowe, uruchamianie eksperymentu
 
 Następnie określić, gdzie będzie uczony model. Automatyczne eksperymentu uczenia maszynowego, szkolenia można uruchomić na następujących opcji obliczeniowych:
-*   Komputer lokalny, takich jak lokalne stacjonarnym lub przenośnym — zazwyczaj, gdy masz mały zestaw danych i są nadal w fazie eksploracji.
-*   Maszyna zdalna w chmurze — [Azure Machine Learning zarządzane obliczenia](concept-compute-target.md#amlcompute) to usługa zarządzana, która umożliwia uczenie modeli uczenia maszynowego w klastrach maszyn wirtualnych platformy Azure.
+*    Komputer lokalny, takich jak lokalne stacjonarnym lub przenośnym — zazwyczaj, gdy masz mały zestaw danych i są nadal w fazie eksploracji.
+*    Maszyna zdalna w chmurze — [Azure Machine Learning zarządzane obliczenia](concept-compute-target.md#amlcompute) to usługa zarządzana, która umożliwia uczenie modeli uczenia maszynowego w klastrach maszyn wirtualnych platformy Azure.
 
     Zobacz tę [witrynę usługi GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning) , aby poznać przykłady notesów z lokalnymi i zdalnymi obiektami docelowymi obliczeniowymi.
 
@@ -147,7 +147,7 @@ Istnieje kilka opcji, które umożliwiają skonfigurowanie Twoje zautomatyzowane
 
 Oto niektóre przykłady:
 
-1.  Eksperyment klasyfikacji korzystający z AUC ważone jako Metryka podstawowa z limitem czasu eksperymentu w minutach ustawionym na 30 minut i 2 zgięcia wzajemnej walidacji.
+1.    Eksperyment klasyfikacji korzystający z AUC ważone jako Metryka podstawowa z limitem czasu eksperymentu w minutach ustawionym na 30 minut i 2 zgięcia wzajemnej walidacji.
 
     ```python
     automl_classifier=AutoMLConfig(
@@ -159,7 +159,7 @@ Oto niektóre przykłady:
         label_column_name=label,
         n_cross_validations=2)
     ```
-2.  Poniżej znajduje się przykład zestawu eksperymentów regresji, który ma zostać zakończony po 60 minutach z pięcioma zgięciami krzyżowymi walidacji.
+2.    Poniżej znajduje się przykład zestawu eksperymentów regresji, który ma zostać zakończony po 60 minutach z pięcioma zgięciami krzyżowymi walidacji.
 
     ```python
     automl_regressor = AutoMLConfig(

@@ -2,17 +2,18 @@
 title: Azure Disk Encryption z wymaganiami wstępnymi aplikacji usługi Azure AD (poprzednia wersja)
 description: Ten artykuł zawiera wymagania wstępne dotyczące korzystania z systemu Microsoft Azure Disk Encryption dla maszyn wirtualnych IaaS.
 author: msmbaldwin
-ms.service: security
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: e1b9df750886af050163a85e2c6a3539bd63c733
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: f38fd7c8e14f58052912f68a277f194fd3866f2e
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457187"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970579"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>Azure Disk Encryption z usługą Azure AD (poprzednia wersja)
 
@@ -46,7 +47,7 @@ Aby włączyć funkcję Azure Disk Encryption przy użyciu starszej składni par
             "SchUseStrongCrypto"=dword:00000001` 
          
     
-### <a name="group-policy"></a>zasady grupy
+### <a name="group-policy"></a>Zasady grupy
  - Rozwiązanie Azure Disk Encryption dla maszyn wirtualnych IaaS Windows korzysta z zewnętrznego ochrony klucza funkcji BitLocker. W przypadku maszyn wirtualnych przyłączonych do domeny nie wypychanie żadnych zasad grupy, które wymuszają funkcje ochrony modułu TPM. Aby uzyskać informacje na temat zasady grupy opcji **Zezwalaj na funkcję BitLocker bez zgodnego modułu TPM**, zobacz [BitLocker zasady grupy Reference](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1).
 
 - Zasady funkcji BitLocker na maszynach wirtualnych przyłączonych do domeny z niestandardowym zasady grupy muszą zawierać następujące ustawienie: [Konfigurowanie magazynu użytkownika dla informacji odzyskiwania funkcji BitLocker — > Zezwalaj na 256-bitowy klucz odzyskiwania](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). Azure Disk Encryption nie powiedzie się, gdy niestandardowe ustawienia zasady grupy funkcji BitLocker są niezgodne. Na maszynach, które nie mają poprawnego ustawienia zasad, Zastosuj nowe zasady, Wymuś aktualizację nowych zasad (gpupdate. exe/Force), a następnie uruchom ponownie, jeśli jest to wymagane. 

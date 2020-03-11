@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: e5bf99e2ea84f41054ff57d08882bfa8ab4d6be5
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: 49959ff12744f28e930959c43a449800c76818f5
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114226"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969800"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Informacje o wersji Azure Media Services v3
 
@@ -32,7 +32,7 @@ Aby uzyskać najnowsze informacje o najnowszych zmianach, w tym artykule przedst
 ## <a name="known-issues"></a>Znane problemy
 
 > [!NOTE]
-> Obecnie nie można zarządzać zasobami w wersji 3 z witryny Azure Portal. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-sdk), interfejsu wiersza polecenia lub jednego z obsługiwanych zestawów SDK.
+> Za pomocą [Azure Portal](https://portal.azure.com/) można zarządzać [zdarzeniami na żywo](live-events-outputs-concept.md)v3, przeglądać [zasoby](assets-concept.md)v3 i uzyskać informacje o uzyskiwaniu dostępu do interfejsów API. W przypadku wszystkich innych zadań zarządzania (na przykład transformacji i zadań) należy użyć [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), interfejsu [wiersza polecenia](https://aka.ms/ams-v3-cli-ref)lub jednego z obsługiwanych [zestawów SDK](media-services-apis-overview.md#sdks).
 
 Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące migracji dotyczące przenoszenia z Media Services V2 do wersji v3](migrate-from-v2-to-v3.md#known-issues).
  

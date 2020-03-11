@@ -1,7 +1,7 @@
 ---
-title: Kompiluj & Wdrażaj zautomatyzowane modele ML
+title: Tworzenie modeli & wdrażanie przy użyciu programu autoML
 titleSuffix: Azure Machine Learning
-description: Twórz i wdrażaj automatyczne eksperymenty uczenia maszynowego w programie Azure Machine Learning Studio oraz zarządzaj nimi.
+description: Twórz, Przeglądaj i wdrażaj automatyczne modele uczenia maszynowego za pomocą Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,30 +10,32 @@ ms.author: nibaccam
 author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 02/04/2020
-ms.openlocfilehash: a2bf15c8778a6ff549284b1053cf0978d182b802
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/10/2020
+ms.openlocfilehash: 706b67216d1037440fd1641d9bc82deee2c43109
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355695"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79078430"
 ---
-# <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Twórz, eksploruj i wdrażaj zautomatyzowane eksperymenty uczenia maszynowego za pomocą programu Azure Machine Learning Studio
+# <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Twórz, Przeglądaj i wdrażaj automatyczne modele uczenia maszynowego za pomocą Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
- W tym artykule dowiesz się, jak tworzyć, eksplorować i wdrażać zautomatyzowane eksperymenty uczenia maszynowego w programie Azure Machine Learning Studio bez pojedynczego wiersza kodu. Funkcja automatycznego uczenia maszynowego automatyzuje proces wybierania najlepszego algorytmu dla określonych danych, dzięki czemu można szybko generować model uczenia maszynowego. [Dowiedz się więcej o automatycznym uczeniu maszynowym](concept-automated-ml.md).
+W tym artykule dowiesz się, jak tworzyć, eksplorować i wdrażać zautomatyzowane modele uczenia maszynowego bez jednego wiersza kodu w interfejsie Azure Machine Learning Studio. Automatyczne Uczenie maszynowe to proces, w którym jest wybierany najlepszy algorytm uczenia maszynowego dla konkretnych danych. Ten proces umożliwia szybkie generowanie modeli uczenia maszynowego. [Dowiedz się więcej o automatycznym uczeniu maszynowym](concept-automated-ml.md).
+ 
+Aby zapoznać się z kompleksowym przykładem, wypróbuj [Samouczek dotyczący tworzenia modelu klasyfikacji przy użyciu zautomatyzowanego interfejsu ML Azure Machine Learning](tutorial-first-experiment-automated-ml.md). 
 
- Jeśli wolisz skorzystać z większej ilości kodu, możesz również [skonfigurować automatyczne eksperymenty uczenia maszynowego w języku Python](how-to-configure-auto-train.md) za pomocą [zestawu SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
+W przypadku środowiska języka Python można [skonfigurować automatyczne eksperymenty uczenia maszynowego](how-to-configure-auto-train.md) za pomocą zestawu SDK Azure Machine Learning.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji na platformie Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
 
 * Obszar roboczy Azure Machine Learning z typem **wersji Enterprise Edition**. Zobacz [Tworzenie obszaru roboczego Azure Machine Learning](how-to-manage-workspace.md).  Aby uaktualnić istniejący obszar roboczy do wersji Enterprise, zobacz [uaktualnianie do wersji Enterprise Edition](how-to-manage-workspace.md#upgrade).
 
 ## <a name="get-started"></a>Rozpoczynanie pracy
 
-1. Zaloguj się do [Azure Machine Learning Studio](https://ml.azure.com). 
+1. Zaloguj się do Azure Machine Learning w https://ml.azure.com. 
 
 1. Wybierz swoją subskrypcję i obszar roboczy. 
 
@@ -184,8 +186,8 @@ Guardrail|Stan|&nbsp;warunku dla wyzwalacza&nbsp;
 ---|---|---
 Brak wartości&nbsp;&nbsp;ich przypisywaniu |**Przeniesione** <br> <br> **FIXED**|    Brak wartości w żadnej z&nbsp;wejściowych kolumn <br> <br> Niektóre kolumny mają brakujące wartości
 Krzyżowe sprawdzanie poprawności|**Odbywać**|Jeśli nie podano jawnego zestawu walidacji
-Wysoka&nbsp;kardynalności&nbsp;funkcja wykrywania&nbsp;|  **Przeniesione** <br> <br>**Odbywać**|   Nie wykryto żadnych funkcji wysokiej kardynalności <br><br> Wykryto wysoką liczebność kolumn wejściowych
-Wykrywanie balansu klas |**Przeniesione** <br><br><br>**Alerty** |Klasy są zrównoważone w danych szkoleniowych; Zestaw danych jest uznawany za zrównoważony, jeśli każda klasa ma dobrą reprezentację w zestawie danych, zgodnie z liczbą i stosunkiem próbek <br> <br> Klasy w danych szkoleniowych są niezrównoważone
+Wysoka&nbsp;kardynalności&nbsp;funkcja wykrywania&nbsp;|    **Przeniesione** <br> <br>**Odbywać**|    Nie wykryto żadnych funkcji wysokiej kardynalności <br><br> Wykryto wysoką liczebność kolumn wejściowych
+Wykrywanie balansu klas    |**Przeniesione** <br><br><br>**Alerty** |Klasy są zrównoważone w danych szkoleniowych; Zestaw danych jest uznawany za zrównoważony, jeśli każda klasa ma dobrą reprezentację w zestawie danych, zgodnie z liczbą i stosunkiem próbek <br> <br> Klasy w danych szkoleniowych są niezrównoważone
 Spójność danych szeregów czasowych|**Przeniesione** <br><br><br><br> **FIXED** |<br> Przeanalizowane wartości wybranych elementów {Horizon, lag, kroczących} i nie wykryto problemów braku związanych z pamięcią. <br> <br>Przeanalizowane zostały wartości wybrane w polu {Horizon, zwłoka, krocząca}, co może spowodować, że w Twoim doświadczeniu zabrakło pamięci. Okno zwłoki lub stopniowe zostało wyłączone.
 
 ## <a name="run-experiment-and-view-results"></a>Uruchamianie eksperymentu i wyświetlanie wyników
@@ -240,7 +242,6 @@ Teraz masz działającą usługę sieci Web do generowania prognoz! Możesz prze
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Wypróbuj kompleksowy samouczek dotyczący [tworzenia pierwszego zautomatyzowanego eksperymentu ml przy użyciu programu Azure Machine Learning Studio](tutorial-first-experiment-automated-ml.md). 
-* [Dowiedz się więcej o zautomatyzowanym uczeniu maszynowym](concept-automated-ml.md) i Azure Machine Learning.
-* Zapoznaj się z [automatycznymi wynikami uczenia maszynowego](how-to-understand-automated-ml.md).
 * [Dowiedz się, jak korzystać z usługi sieci Web](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service).
+* Zapoznaj się z [automatycznymi wynikami uczenia maszynowego](how-to-understand-automated-ml.md).
+* [Dowiedz się więcej o zautomatyzowanym uczeniu maszynowym](concept-automated-ml.md) i Azure Machine Learning.

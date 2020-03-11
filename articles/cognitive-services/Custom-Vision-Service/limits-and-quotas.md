@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: anroth
-ms.openlocfilehash: e4fc3555d7d880dcbd4f76d8f507300e98c237db
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 5f481ebf219eea8ae31e9802144bbf771a24e8b8
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718349"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081781"
 ---
 # <a name="limits-and-quotas"></a>Limity przydziału i ograniczenia
 
@@ -25,7 +25,7 @@ Liczba obrazów szkoleniowych na projekt i Tagi dla projektu powinna wzrosnąć 
 
 ||**F0**|**S0**|
 |-----|-----|-----|
-|projektami|2|100|
+|Projekty|2|100|
 |Obrazy szkoleniowe na projekt |5000|100 000|
 |Przewidywania/miesiąc|10 000 |Nieograniczona liczba|
 |Tagi/projekt|50|500|
@@ -42,8 +42,8 @@ Liczba obrazów szkoleniowych na projekt i Tagi dla projektu powinna wzrosnąć 
 |Maksymalna wysokość/szerokość obrazu (w pikselach)|bez ograniczeń|bez ograniczeń|
 |Maksymalny rozmiar obrazu (przekazywanie obrazów szkoleniowych) |6 MB|6 MB|
 |Maksymalny rozmiar obrazu (przewidywanie)|4 MB|4 MB|
-|Obraz szkoleń dotyczących liczby regionów na wykrycie obiektu|200|200|
-|Maksymalna liczba tagów na obraz klasyfikacji|30|30|
+|Obraz szkoleń dotyczących liczby regionów na wykrycie obiektu|300|300|
+|Maksymalna liczba tagów na obraz klasyfikacji|100|100|
 
 > [!NOTE]
 > Obrazy o rozmiarze mniejszym niż 256 pikseli zostaną zaakceptowane, ale przeskalowane.

@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: b8b5de910195b14c279fe395cc35c12768536728
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 55dbcc15afb12c03c98fb8d6e4e7f4acb269f620
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365435"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968243"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Przechowywanie kluczowych dla działalności danych obiektów blob z niezmiennym magazynem
 
@@ -68,7 +68,7 @@ Odblokowanie zasad przechowywania opartych na czasie jest zalecane tylko w przyp
 Zasady przechowywania dotyczą następujących ograniczeń:
 
 - W przypadku konta magazynu Maksymalna liczba kontenerów z niezmiennymi zasadami opartymi na czasie wynosi 10 000.
-- Minimalny interwał przechowywania to jeden dzień. Wartość maksymalna to 146 000 dni (400 lat).
+- Minimalny interwał przechowywania to 1 dzień. Wartość maksymalna to 146 000 dni (400 lat).
 - W przypadku kontenera Maksymalna liczba zmian w celu zwiększenia interwału przechowywania dla zabudowanych, opartych na czasie limitów zasad wynosi 5.
 - W przypadku kontenera do zablokowanych zasad są zachowywane maksymalnie siedem dzienników inspekcji zasad przechowywania opartych na czasie.
 
@@ -84,15 +84,7 @@ Załóżmy na przykład, że użytkownik tworzy zasady przechowywania oparte na 
 
 Zablokowane zasady przechowywania oparte na czasie umożliwiają włączenie i wyłączenie ustawienia `allowProtectedAppendWrites` w dowolnym momencie. Po zablokowaniu zasad przechowywania na podstawie czasu nie można zmienić ustawienia `allowProtectedAppendWrites`.
 
-Zasady wstrzymania prawnego nie mogą włączać `allowProtectedAppendWrites` i nie zezwalać na dołączanie nowych bloków do dołączania obiektów BLOB. Jeśli do zasad przechowywania opartych na czasie z włączonym `allowProtectedAppendWrites` jest stosowane zawieszenie prawne, interfejs API *AppendBlock* zakończy się niepowodzeniem do momentu zniesienia prawnego wstrzymania.
-
-> [!IMPORTANT] 
-> Ustawienie Zezwalaj na chronione Dodawanie obiektów BLOB w obszarze przechowywanie na podstawie czasu jest obecnie dostępne w następujących regionach:
-> - Wschodnie stany USA
-> - Południowo-środkowe stany USA
-> - Zachodnie stany USA 2
->
-> W tej chwili zdecydowanie zaleca się, aby nie włączać `allowProtectedAppendWrites` w innych regionach poza tymi określonymi, ponieważ może to spowodować Sporadyczne awarie i wpływać na zgodność z dołączanymi obiektami BLOB. Aby uzyskać więcej informacji na temat sposobu ustawiania i blokowania zasad przechowywania opartych na czasie, zobacz [Włączanie funkcji Zezwalaj na chronione Dodawanie obiektów BLOB](storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes).
+Zasady wstrzymania z przyczyn prawnych nie mogą włączać `allowProtectedAppendWrites`, a wszystkie blokady prawne zniesieniają Właściwość "allowProtectedAppendWrites". Jeśli do zasad przechowywania opartych na czasie z włączonym `allowProtectedAppendWrites` jest stosowane zawieszenie prawne, interfejs API *AppendBlock* zakończy się niepowodzeniem do momentu zniesienia prawnego wstrzymania.
 
 ## <a name="legal-holds"></a>Archiwizacja ze względów prawnych
 
@@ -140,7 +132,7 @@ Nie. możesz użyć niezmiennego magazynu z wszelkimi istniejącymi lub nowo utw
 
 **Czy mogę zastosować zasady przechowywania zarówno z przyczyn prawnych, jak i czasu?**
 
-Tak. kontener może jednocześnie mieć zarówno dozwoloną blokadę, jak i zasady przechowywania oparte na czasie. Wszystkie obiekty blob w tym kontenerze pozostają w stanie niezmiennym, dopóki nie zostaną wyczyszczone wszystkie prawne, nawet jeśli ich obowiązujący okres przechowywania wygasł. Z kolei obiekt BLOB pozostaje w niezmiennym stanie do momentu wygaśnięcia obowiązujących okresów przechowywania, mimo że wszystkie blokady prawne zostały wyczyszczone.
+Tak. kontener może jednocześnie mieć zarówno dozwoloną blokadę, jak i zasady przechowywania oparte na czasie; ustawienie "allowProtectedAppendWrites" nie będzie jednak stosowane do momentu wyczyszczenia blokady z przyczyn prawnych. Wszystkie obiekty blob w tym kontenerze pozostają w stanie niezmiennym, dopóki nie zostaną wyczyszczone wszystkie prawne, nawet jeśli ich obowiązujący okres przechowywania wygasł. Z kolei obiekt BLOB pozostaje w niezmiennym stanie do momentu wygaśnięcia obowiązujących okresów przechowywania, mimo że wszystkie blokady prawne zostały wyczyszczone. 
 
 **Czy zasady są dozwolone tylko w przypadku postępowania sądowego lub czy istnieją inne scenariusze użycia?**
 
@@ -164,7 +156,7 @@ Tak, możesz użyć polecenia Set BLOB warstwy, aby przenieść dane między war
 
 **Co się stanie, jeśli nie uiszczę opłaty, a okres przechowywania jeszcze nie wygasł?**
 
-W przypadku braku płatności normalne zasady przechowywania danych będą stosowane zgodnie z warunkami i postanowieniami kontraktu z firmą Microsoft.
+W przypadku braku płatności normalne zasady przechowywania danych będą stosowane zgodnie z warunkami i postanowieniami kontraktu z firmą Microsoft. Aby uzyskać ogólne informacje, zobacz [Zarządzanie danymi w firmie Microsoft](https://www.microsoft.com/en-us/trust-center/privacy/data-management). 
 
 **Czy jest oferowany okres próbny, umożliwiający przetestowanie tej funkcji?**
 

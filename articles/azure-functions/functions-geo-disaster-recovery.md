@@ -1,17 +1,15 @@
 ---
 title: Azure Functions geograficznie — odzyskiwanie po awarii i wysoka dostępność
 description: Jak używać regionów geograficznych w celu zapewnienia nadmiarowości i przełączania do trybu failover w Azure Functions.
-author: wesmc7777
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 08/29/2019
-ms.author: jehollan
-ms.openlocfilehash: bdeff0194bda620250481a215c145b1ec3b2207e
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 481a716bd6ced5c304da41c70fdcfc687b76661d
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75920792"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080228"
 ---
 # <a name="azure-functions-geo-disaster-recovery"></a>Azure Functions geograficznie — odzyskiwanie po awarii
 

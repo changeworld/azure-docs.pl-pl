@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/05/2020
+ms.date: 03/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4a02fb7ab7e42f2a56041638a3d883287da3eb42
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: be403815838233350929c7d4ca0eed979d7dfa8c
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78674500"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080329"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Korzystanie z platformy Azure do hostowania i uruchamiania scenariuszy obciążeń SAP
 
@@ -110,7 +110,8 @@ Aby uzyskać informacje na temat integracji usług platformy Azure z składnikam
 
 
 ## <a name="change-log"></a>Dziennik zmiany
-
+- 03/10/2020: Zmień [konfigurację magazynu maszyn wirtualnych platformy Azure na SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) , aby wyjaśnić rzeczywiste istniejące limity PRZEPŁYWności ANF
+- 03/09/2020: Zmień [wysoką dostępność dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy Azure na SUSE Linux Enterprise Server dla aplikacji SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse), [wysokiej dostępności dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy azure na platformie SUSE Linux Enterprise Server z Azure NETAPP Files dla aplikacji SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files), wysokiej dostępności dla [systemu plików NFS SUSE Linux Enterprise Server na](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)maszynach wirtualnych platformy azure na [platformie Microsoft Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)na [SUSE Linux Enterprise Server z Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm), [Wysoka dostępność SAP HANA na maszynach wirtualnych platformy Azure na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability) i [wysokiej dostępności dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy Azure w systemie RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid) , aby zaktualizować zasoby klastra przy użyciu agenta zasobów Azure-lb 
 - 03/05/2020: zmiany struktury i zmiany zawartości dla regionów świadczenia usługi Azure i usługi Azure Virtual Machines na [platformie azure Virtual Machines planowanie i wdrażanie oprogramowania SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)
 - 03/03/2020: zmiana [wysokiej dostępności dla oprogramowania SAP NW na maszynach wirtualnych platformy Azure w systemie SLES z ANF dla aplikacji SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files) , aby zmienić bardziej wydajny układ woluminu ANF
 - 03/01/2020: Przewodnik dotyczący [tworzenia kopii zapasowych SAP HANA na platformie Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide) do uwzględnienia usługi Azure Backup. Zmniejszona i wąska zawartość w [SAP HANA Azure Backup na poziomie pliku](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-file-level) i usunięta trzeci dokument zawierający kopię zapasową za pomocą migawek dysków. Zawartość jest obsługiwana w przewodniku tworzenia kopii zapasowych SAP HANA na platformie Azure Virtual Machines 

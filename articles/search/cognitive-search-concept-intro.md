@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 14c120af69a94331586f9264a12f5d2333a5d87d
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 0a4dd3247a9931de3ae2c699bdf7800407695c86
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586754"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080221"
 ---
 # <a name="introduction-to-ai-in-azure-cognitive-search"></a>Wprowadzenie do AI na platformie Azure Wyszukiwanie poznawcze
 
@@ -21,7 +21,7 @@ Wzbogacanie AI jest funkcją indeksowania Wyszukiwanie poznawcze platformy Azure
 
 + Umiejętności **przetwarzania języka naturalnego** obejmują [rozpoznawanie jednostek](cognitive-search-skill-entity-recognition.md), [wykrywanie języka](cognitive-search-skill-language-detection.md), [wyodrębnianie kluczowych fraz](cognitive-search-skill-keyphrases.md), manipulowanie tekstem, [wykrywanie tonacji](cognitive-search-skill-sentiment.md)i [wykrywanie](cognitive-search-skill-pii-detection.md)wielu osób. Dzięki tym umiejętnościom tekst niestrukturalny może przyjąć nowe formularze, zamapowane jako pola umożliwiające wyszukiwanie i filtrowanie w indeksie.
 
-+ Umiejętności **przetwarzania obrazów** obejmują [optyczne rozpoznawanie znaków (OCR)](cognitive-search-skill-ocr.md) i identyfikację [funkcji wizualizacji](cognitive-search-skill-image-analysis.md), takich jak wykrywanie twarzy, interpretacja obrazu, rozpoznawanie obrazu (sławę osoby i punkty orientacyjne) lub atrybuty, takie jak kolory lub Orientacja obrazu. Możesz utworzyć tekstową reprezentację zawartości obrazu, którą można przeszukiwać przy użyciu wszystkich możliwości zapytań w usłudze Azure Wyszukiwanie poznawcze.
++ Umiejętności **przetwarzania obrazów** obejmują [optyczne rozpoznawanie znaków (OCR)](cognitive-search-skill-ocr.md) i identyfikację [funkcji wizualizacji](cognitive-search-skill-image-analysis.md), takich jak wykrywanie twarzy, interpretacja obrazu, rozpoznawanie obrazu (sławę osoby i punkty orientacyjne) lub atrybuty, takie jak Orientacja obrazu. Możesz utworzyć tekstową reprezentację zawartości obrazu, którą można przeszukiwać przy użyciu wszystkich możliwości zapytań w usłudze Azure Wyszukiwanie poznawcze.
 
 ![Diagram potoku wzbogacania](./media/cognitive-search-intro/cogsearch-architecture.png "Przegląd potoku wzbogacania")
 

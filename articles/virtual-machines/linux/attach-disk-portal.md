@@ -1,26 +1,18 @@
 ---
 title: Dołączanie dysku danych do maszyny wirtualnej z systemem Linux
 description: Użyj portalu, aby dołączyć nowy lub istniejący dysk danych do maszyny wirtualnej z systemem Linux.
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 5e1c6212-976c-4962-a297-177942f90907
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 3071effeb2d5eeaafc48fd742559b093a0517c1c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 746cef8dfe026c731a677cbf77f729d36342f007
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851676"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969350"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Dołączanie dysku danych do maszyny wirtualnej z systemem Linux przy użyciu portalu 
 W tym artykule opisano sposób dołączania nowych i istniejących dysków do maszyny wirtualnej z systemem Linux za pomocą Azure Portal. Możesz również [dołączyć dysk danych do maszyny wirtualnej z systemem Windows w Azure Portal](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -108,7 +100,7 @@ Podziel dysk na partycje za pomocą polecenia `fdisk`. Jeśli rozmiar dysku wyno
 sudo fdisk /dev/sdc
 ```
 
-Nową partycję możesz dodać za pomocą polecenia `n`. W tym przykładzie wybieramy również `p` dla partycji podstawowej i akceptuję resztę wartości domyślnych. Dane wyjściowe będą mieć postać podobną do następującej:
+Użyj `n` polecenie, aby dodać nową partycję. W tym przykładzie wybieramy również `p` dla partycji podstawowej i akceptuję resztę wartości domyślnych. Dane wyjściowe będą podobne do następujących:
 
 ```bash
 Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
@@ -204,7 +196,7 @@ Aby zainstalować system plików, użyj `mount`. Poniższy przykład powoduje za
 sudo mount /dev/sdc1 /datadrive
 ```
 
-Aby upewnić się, że dysk zostanie automatycznie zainstalowany po ponownym uruchomieniu, należy dodać go do pliku */etc/fstab* . Zdecydowanie zaleca się również, aby identyfikator UUID (uniwersalny) był używany w */etc/fstab* , aby można było odwołać się do dysku, a nie tylko nazwy urządzenia (na przykład */dev/sdc1*). Jeśli system operacyjny wykryje błąd dysku podczas rozruchu, w przypadku używania identyfikatora UUID w danej lokalizacji nie zostanie zainstalowany nieprawidłowy dysk. Do pozostałych dysków danych zostałyby w takiej sytuacji przypisane te same identyfikatory urządzeń. Identyfikator UUID nowego dysku możesz znaleźć za pomocą narzędzia `blkid`:
+Aby upewnić się, że dysk zostanie automatycznie zainstalowany po ponownym uruchomieniu, należy dodać go do pliku */etc/fstab* . Zdecydowanie zaleca się również, aby identyfikator UUID (uniwersalny) był używany w */etc/fstab* , aby można było odwołać się do dysku, a nie tylko nazwy urządzenia (na przykład */dev/sdc1*). Jeśli system operacyjny wykryje błąd dysku podczas rozruchu, użycie identyfikatora UUID pozwala uniknąć błędnego dysku instalowanego w danej lokalizacji. Do pozostałych dysków danych zostaną przypisane te same identyfikatory urządzeń. Aby znaleźć identyfikator UUID nowego dysku, użyj narzędzia `blkid`:
 
 ```bash
 sudo -i blkid
@@ -219,7 +211,7 @@ Dane wyjściowe wyglądają podobnie do poniższego przykładu:
 ```
 
 > [!NOTE]
-> Niewłaściwe edytowanie pliku **/etc/fstab** może spowodować, że system nie zostanie rozruchowy. Jeśli nie masz pewności, jak to zrobić, sprawdź informacje na temat prawidłowego edytowania tego pliku w dokumentacji dystrybucji. Przed rozpoczęciem edycji zaleca się również utworzenie kopii zapasowej pliku/etc/fstab.
+> Niewłaściwe edytowanie pliku **/etc/fstab** może spowodować, że system nie zostanie rozruchowy. W razie wątpliwości zapoznaj się z dokumentacją dystrybucji, aby uzyskać informacje o tym, jak prawidłowo edytować ten plik. Przed rozpoczęciem edycji zaleca się również utworzenie kopii zapasowej pliku/etc/fstab.
 
 Następnie otwórz plik */etc/fstab* w edytorze tekstów w następujący sposób:
 

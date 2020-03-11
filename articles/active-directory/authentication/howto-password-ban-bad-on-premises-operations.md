@@ -11,14 +11,14 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d4c0b0c6ec68c818f107c7e3e3241e4acc0edb7
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: d00a8b84477226b68913f95c5121bbbdfc2eb09d
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78671684"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082279"
 ---
-# <a name="enable-on-premises-azure-active-password-protection"></a>Włącz lokalną ochronę hasłem platformy Azure
+# <a name="enable-on-premises-azure-active-directory-password-protection"></a>Włącz ochronę hasłem Azure Active Directory lokalnych
 
 Użytkownicy często tworzą hasła używające zwykłych słów lokalnych, takich jak szkoła, zespół sportowy lub osoba sławę. Hasła te są łatwe do odgadnięcia i są słabe przed atakami opartymi na słownikach. Aby wymusić silne hasła w organizacji, usługa Ochrona hasłem w usłudze Azure Active Directory (Azure AD) zapewnia globalną i niestandardową listę wykluczonych haseł. Żądanie zmiany hasła nie powiedzie się, jeśli na liście wykluczone hasła znajduje się dopasowanie.
 

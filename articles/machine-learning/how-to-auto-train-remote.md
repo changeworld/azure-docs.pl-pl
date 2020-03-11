@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: bad957a70079a5513f103968066e2ff6a436cd77
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 03/09/2020
+ms.openlocfilehash: 9e499d609a3f78dc5f422b9ed90df09be30f2e7c
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754158"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080415"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Szkolenie modeli za pomocą automatycznych machine learning w chmurze
 
@@ -24,7 +24,7 @@ ms.locfileid: "75754158"
 
 W usłudze Azure Machine Learning podstawie uczyć modele na różnego rodzaju zasobów obliczeniowych, którymi zarządzasz. Obiekt docelowy obliczeń może być komputerem lokalnym lub zasobem w chmurze.
 
-Eksperyment uczenia maszynowego można łatwo skalować w górę lub w poziomie, dodając dodatkowe cele obliczeniowe, takie jak Azure Machine Learning COMPUTE (AmlCompute). AmlCompute to zarządzana infrastruktura obliczeniowa, która umożliwia łatwe tworzenie obliczeń jednego lub wielowęzłowego.
+Eksperyment uczenia maszynowego można łatwo skalować w górę lub w poziomie, dodając dodatkowe cele obliczeniowe, takie jak Azure Machine Learning COMPUTE (AmlCompute). AmlCompute to zarządzana infrastruktura obliczeniowa, która umożliwia łatwe tworzenie obliczeń z jednym lub wieloma węzłami.
 
 W tym artykule dowiesz się, jak skompilować model przy użyciu zautomatyzowanej ML z AmlCompute.
 
@@ -32,7 +32,7 @@ W tym artykule dowiesz się, jak skompilować model przy użyciu zautomatyzowane
 
 Samouczek "[uczenie modelu klasyfikacji przy użyciu automatycznego uczenia maszynowego](tutorial-auto-train-models.md)" uczy się, w jaki sposób używać komputera lokalnego do uczenia modelu o zautomatyzowanej ml. Przepływ pracy podczas szkolenia lokalnie ma zastosowanie również do celów zdalnego, a także. Jednak za pomocą zdalnego mocy obliczeniowej, zautomatyzowane iteracjami eksperymentów uczenia Maszynowego są wykonywane asynchronicznie. Ta funkcja umożliwia anulowanie konkretnej iteracji, obejrzyj stan wykonania lub kontynuować pracę na innych komórek w notesie Jupyter. Aby przeprowadzić uczenie zdalne, należy najpierw utworzyć zdalne miejsce docelowe obliczeń, takie jak AmlCompute. Następnie skonfiguruj zasób zdalny i przesyłać tam kod.
 
-W tym artykule przedstawiono dodatkowe kroki niezbędne do uruchomienia zautomatyzowanego eksperymentu ML na zdalnym miejscu docelowym AmlCompute. Obiekt workspace `ws`, w tym samouczku jest używana w całym kodzie, w tym miejscu.
+W tym artykule przedstawiono dodatkowe kroki niezbędne do uruchomienia zautomatyzowanego eksperymentu ML na zdalnym miejscu docelowym AmlCompute. Obiekt obszaru roboczego, `ws`, z samouczka jest używany w całym kodzie tutaj.
 
 ```python
 ws = Workspace.from_config()
@@ -79,11 +79,11 @@ else:
     print(compute_target.get_status().serialize())
 ```
 
-Teraz możesz używać `compute_target` obiektu jako zdalnego obliczeniowego elementu docelowego.
+Teraz można użyć obiektu `compute_target` jako elementu docelowego obliczeń zdalnych.
 
 Ograniczenia nazw klastrów obejmują:
 + Musi zawierać mniej niż 64 znaki.
-+ Nie może zawierać żadnego z następujących znaków: `\` ~! @ # $ % ^ & * () = + _ [] {} \\ \\ |;: \' \\", < > /?. `
++ Nie może zawierać żadnego z następujących znaków: `\` ~! @ # $% ^ & * () = + _ [] {} \\\\ |; : \' \\", < >/?. `
 
 ## <a name="access-data-using-tabulardataset-function"></a>Dostęp do danych za pomocą funkcji TabularDataset
 
@@ -123,7 +123,7 @@ training_data = Dataset.Tabular.from_delimited_files(path=ds.path('digitsdata/di
 ```
 
 ## <a name="configure-experiment"></a>Konfigurowanie eksperymentu
-Określ ustawienia `AutoMLConfig`.  (Zobacz [pełną listę parametrów](how-to-configure-auto-train.md#configure-experiment) i ich możliwe wartości.)
+Określ ustawienia dla `AutoMLConfig`.  (Zobacz [pełną listę parametrów](how-to-configure-auto-train.md#configure-experiment) i ich wartości).
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -226,5 +226,5 @@ W poniższym [notesie](https://github.com/Azure/MachineLearningNotebooks/blob/ma
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się, [jak skonfigurować ustawienia automatycznego szkolenia](how-to-configure-auto-train.md).
+* Dowiedz się [, jak skonfigurować ustawienia automatycznego szkolenia](how-to-configure-auto-train.md).
 * Zapoznaj się z artykułem [jak](how-to-machine-learning-interpretability-automl.md) włączyć funkcję interpretacji modelu w zautomatyzowanych eksperymentach ml.

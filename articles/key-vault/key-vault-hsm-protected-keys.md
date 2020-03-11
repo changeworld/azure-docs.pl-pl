@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: ambapat
-ms.openlocfilehash: d7f9527aa5aa3353dc9087f4bcc5f3a5fb241637
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 048e5072c592cf2de32e533014c99034572a1c47
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184557"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082901"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault"></a>Importuj klucze chronione przez moduł HSM do Key Vault
 
@@ -31,10 +31,19 @@ Ta funkcja jest niedostępna dla platformy Azure w Chinach.
 
 Transferowanie kluczy chronionych przez moduł HSM do Key Vault jest obsługiwane za pośrednictwem dwóch różnych metod, w zależności od używanej sprzętowych modułów zabezpieczeń. Skorzystaj z poniższej tabeli, aby określić, która metoda powinna zostać użyta do generowania sprzętowych modułów zabezpieczeń, a następnie przenieść własne klucze chronione przez moduł HSM do użycia z Azure Key Vault. 
 
-|Nazwa dostawcy modułu HSM|Obsługiwane modele HSM|Obsługiwana metoda modułu HSM — transfer klucza|
-|---|---|---|
-|Firmy Thales|<ul><li>Rodzina SafeNet Luna modułu HSM 7 z oprogramowaniem układowym w wersji 7,3 lub nowszej</li></ul>| [Użyj nowej metody BYOK (wersja zapoznawcza)](hsm-protected-keys-vendor-agnostic-byok.md)|
-|Oprogramowanie wspomagające nCipher|<ul><li>Rodzina sprzętowego nshield sprzętowych modułów zabezpieczeń</li></ul>|[Użyj starszej metody BYOK](hsm-protected-keys-legacy.md)|
+|Nazwa dostawcy|Typ dostawcy|Obsługiwane modele HSM|Obsługiwana metoda modułu HSM — transfer klucza|
+|---|---|---|---|
+|Oprogramowanie wspomagające nCipher|Producent|<ul><li>Rodzina sprzętowego nshield sprzętowych modułów zabezpieczeń</li></ul>|[Użyj starszej metody BYOK](hsm-protected-keys-legacy.md)|
+|Firmy Thales|Producent|<ul><li>Rodzina SafeNet Luna modułu HSM 7 z oprogramowaniem układowym w wersji 7,3 lub nowszej</li></ul>| [Użyj nowej metody BYOK (wersja zapoznawcza)](hsm-protected-keys-vendor-agnostic-byok.md)|
+|Fortanix|Moduł HSM jako usługa|<ul><li>Samoobsługowa usługa zarządzania kluczami (SDKMS)</li></ul>|[Użyj nowej metody BYOK (wersja zapoznawcza)](hsm-protected-keys-vendor-agnostic-byok.md)|
+
+
+
+
+
+
+
+
 
 
 ## <a name="next-steps"></a>Następne kroki

@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 02/17/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 564e8dd8e6d7c4c0e3747469875e030be30b1a9b
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: a875cee7e6796a2c865bde4a62f2f0463eb12130
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046710"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78967722"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce"></a>Samouczek Azure Active Directory: integracja z logowaniem jednokrotnym (SSO) w usłudze Salesforce
 
@@ -121,7 +121,7 @@ W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
    1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij pozycję **Utwórz**.
+   1. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -180,7 +180,7 @@ W tej sekcji włączysz funkcję B. Simon, aby korzystać z logowania jednokrotn
 
     ![Konfigurowanie logowania jednokrotnego](./media/salesforce-tutorial/xmlchoose.png)
 
-1. Na stronie **Ustawienia logowania jednokrotnego SAML** pola zostaną wypełnione automatycznie. Kliknij pozycję Zapisz.
+1. Na stronie **Ustawienia rejestracji** jednokrotnej protokołu SAML pola są wypełniane automatycznie, wybierz opcję **Inicjowanie obsługi użytkownika** , a następnie kliknij przycisk **Zapisz**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/salesforce-tutorial/salesforcexml.png)
 

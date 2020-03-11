@@ -3,12 +3,12 @@ title: Obsługa oceny VMware w Azure Migrate
 description: Dowiedz się więcej o obsłudze oceny VMware w Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 19ed506228bac425ad05edee1586740e6c33f69e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: b887508fb8e422bd83aa9d13e42085d7a6bd2283
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362188"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080392"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Macierz obsługi dla oceny oprogramowania VMware 
 
@@ -43,6 +43,7 @@ Oprócz odnajdywania maszyn Azure Migrate: Ocena serwera może wykrywać aplikac
 **poświadczenia vCenter** | Konto vCenter Server z dostępem tylko do odczytu i uprawnienia do Virtual Machines > operacji gościa.
 **Poświadczenia maszyny wirtualnej** | Obecnie obsługuje użycie jednego poświadczenia dla wszystkich serwerów z systemem Windows i jedno poświadczenie dla wszystkich serwerów z systemem Linux.<br/><br/> Tworzysz konto użytkownika-gościa dla maszyn wirtualnych z systemem Windows oraz normalne/normalne konto użytkownika (dostęp sudo) dla wszystkich maszyn wirtualnych z systemem Linux.
 **Narzędzia VMware** | Narzędzia VMware muszą być zainstalowane i uruchomione na maszynach wirtualnych, które mają zostać odnajdywane. <br/> Jeśli wersja narzędzi VMware jest z zakresu od 9,10 do 10.2.0, upewnij się, że została ona uaktualniona do ponad 10.2.0.
+**PowerShell** | Maszyny wirtualne muszą mieć program PowerShell w wersji 2,0 lub nowszej
 **Dostęp do portu** | Na hostach ESXi z uruchomionymi maszynami wirtualnymi urządzenie Azure Migrate musi mieć możliwość nawiązania połączenia z portem TCP 443.
 **Limity** | W przypadku odnajdywania aplikacji można odkryć do 10000 na urządzenie. 
 
@@ -100,6 +101,7 @@ Ta opcja jest obecnie w wersji zapoznawczej. [Dowiedz się więcej](how-to-creat
 **Konto systemu Linux** | Wizualizacja wymaga konta użytkownika z uprawnieniami głównymi.<br/><br/> Alternatywnie konto użytkownika wymaga tych uprawnień w przypadku plików/bin/netstat i/bin/ls: CAP_DAC_READ_SEARCH i CAP_SYS_PTRACE.
 **Agenci maszyn wirtualnych** | Na maszynach wirtualnych nie jest wymagany żaden Agent.
 **Narzędzia VMware** | Narzędzia VMware muszą być zainstalowane i uruchomione na maszynach wirtualnych, które mają być analizowane. <br/> Jeśli wersja narzędzi VMware jest z zakresu od 9,10 do 10.2.0, upewnij się, że została ona uaktualniona do ponad 10.2.0.
+**PowerShell** | Maszyny wirtualne muszą mieć program PowerShell w wersji 2,0 lub nowszej
 **poświadczenia vCenter** | Konto vCenter Server z dostępem tylko do odczytu i uprawnienia do Virtual Machines > operacji gościa.
 **Dostęp do portu** | Na hostach ESXi z maszynami wirtualnymi, które chcesz analizować, urządzenie Azure Migrate musi mieć możliwość nawiązania połączenia z portem TCP 443.
 

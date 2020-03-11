@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a49c69b0f96add61501d9e2c5fc00ba564eba2a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 4b1ccde2f1f92237978ab4e68acaa26393bbb9d8
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376494"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968333"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>Zażądaj dostępu do pakietu dostępu w usłudze Azure AD uprawnienia do zarządzania
 
@@ -35,7 +35,7 @@ Pierwszym krokiem jest zalogowanie się w portalu do mojego dostępu, w którym 
 
 **Rola wymagana wstępnie:** Obiektu żądającego
 
-1. Poszukaj wiadomości e-mail lub wiadomości z programu Project lub Business Manager, z którym pracujesz. Wiadomość e-mail powinna zawierać link do pakietu dostępu, do którego będzie potrzebny dostęp. Łącze rozpoczyna się od `myaccess`, zawiera wskazówkę katalogu i kończą się IDENTYFIKATORem pakietu dostępu.
+1. Poszukaj wiadomości e-mail lub wiadomości z programu Project lub Business Manager, z którym pracujesz. Wiadomość e-mail powinna zawierać link do pakietu dostępu, do którego będzie potrzebny dostęp. Łącze rozpoczyna się od `myaccess`, zawiera wskazówkę katalogu i kończą się IDENTYFIKATORem pakietu dostępu.  (W przypadku instytucji rządowych Stanów Zjednoczonych domena może być `https://myaccess.microsoft.us`).
  
     `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 

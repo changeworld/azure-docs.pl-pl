@@ -1,25 +1,17 @@
 ---
-title: Tworzenie maszyny wirtualnej z systemem Linux przy użyciu interfejsu API REST platformy Azure
+title: Tworzenie maszyny wirtualnej z systemem Linux przy użyciu interfejsu API REST
 description: Dowiedz się, jak utworzyć maszynę wirtualną z systemem Linux na platformie Azure, która używa Managed Disks i uwierzytelniania SSH przy użyciu interfejsu API REST platformy Azure.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: c1010bf4bde01920449e9252de563d79bfc61997
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1594c030839cccdd48c4b032c6ad92f746f78e26
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036443"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970270"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Tworzenie maszyny wirtualnej z systemem Linux korzystającej z uwierzytelniania SSH przy użyciu interfejsu API REST
 
@@ -54,7 +46,7 @@ Wymagane są następujące nagłówki:
 | Nagłówek żądania   | Opis |
 |------------------|-----------------|
 | *Content-Type:*  | Wymagany. Ustaw wartość `application/json`. |
-| *Authorization:* | Wymagany. Ustawiony na prawidłowy `Bearer`token dostępu[ ](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
+| *Authorization:* | Wymagany. Ustaw na prawidłowy `Bearer`token dostępu[ ](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
 
 Aby uzyskać ogólne informacje na temat pracy z żądaniami interfejsu API REST, zobacz [składniki żądania/odpowiedzi interfejsu API REST](/rest/api/azure/#components-of-a-rest-api-requestresponse).
 
@@ -62,12 +54,12 @@ Aby uzyskać ogólne informacje na temat pracy z żądaniami interfejsu API REST
 
 Następujące typowe definicje są używane do kompilowania treści żądania:
 
-| Nazwa                       | Wymagany | Typ                                                                                | Opis  |
+| Name (Nazwa)                       | Wymagany | Typ                                                                                | Opis  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
-| location                   | Prawda     | ciąg                                                                              | Lokalizacja zasobu. |
+| location                   | True     | ciąg                                                                              | Lokalizacja zasobu. |
 | name                       |          | ciąg                                                                              | Nazwa maszyny wirtualnej. |
 | properties.hardwareProfile |          | [— Obiekt hardwareprofile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | Określa ustawienia sprzętu dla maszyny wirtualnej. |
-| properties.storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | Określa ustawienia magazynu dla dysków maszyny wirtualnej. |
+| properties.storageProfile  |          | [Obszarze storageprofile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | Określa ustawienia magazynu dla dysków maszyny wirtualnej. |
 | properties.osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | Określa ustawienia systemu operacyjnego dla maszyny wirtualnej. |
 | properties.networkProfile  |          | [NetworkProfile](/rest/api/compute/virtualmachines/createorupdate#networkprofile)   | Określa interfejsy sieciowe maszyny wirtualnej. |
 
@@ -136,7 +128,7 @@ Aby wysłać to żądanie HTTP, można użyć klienta z preferencją. Możesz r�
 
 Istnieją dwie Pomyślne odpowiedzi na operację tworzenia lub aktualizowania maszyny wirtualnej:
 
-| Nazwa        | Typ                                                                              | Opis |
+| Name (Nazwa)        | Typ                                                                              | Opis |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 OK      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
 | 201 Utworzono | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Utworzone     |

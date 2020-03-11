@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/16/2019
+ms.date: 03/09/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee0dd0cd83ab27dd728a7572b6fcd69c40bb1b00
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 5a82c69575e82a7cf397955f08c3f114e449ba6b
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848752"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968770"
 ---
 # <a name="what-are-authentication-methods"></a>Co to są metody uwierzytelniania?
 
@@ -26,7 +26,7 @@ Administratorzy mogą definiować w zasadach, które metody uwierzytelniania są
 
 Firma Microsoft zdecydowanie zaleca administratorów pozwala użytkownikom wybrać więcej niż minimalną wymaganą liczbę metod uwierzytelniania na wypadek, gdyby nie mieli dostępu do jednego.
 
-|Metoda uwierzytelniania|Użycie|
+|Metoda uwierzytelniania|Sposób użycia|
 | --- | --- |
 | Hasło | Uwierzytelnianie MFA i SSPR |
 | Pytania zabezpieczające | Tylko SSPR |
@@ -129,7 +129,7 @@ Aplikacja Microsoft Authenticator jest dostępna dla systemów [Android](https:/
 > Użytkownicy nie będą mogli zarejestrować swojej aplikacji mobilnej podczas rejestrowania się w celu samoobsługowego resetowania hasła. Zamiast tego użytkownicy mogą rejestrować swoją aplikację mobilną w [https://aka.ms/mfasetup](https://aka.ms/mfasetup) lub w wersji zapoznawczej rejestracji informacji o zabezpieczeniach w [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo).
 >
 
-### <a name="notification-through-mobile-app"></a>Powiadomienie przez aplikację mobilną
+### <a name="notification-through-mobile-app"></a>Powiadomienie za poorednictwem aplikacji mobilnej
 
 Aplikacja Microsoft Authenticator może pomóc zapobiec nieautoryzowanemu dostępowi do kont i zatrzymywać fałszywe transakcje przez wypychanie powiadomienia do telefonu lub tabletu. Użytkownicy wyświetlają powiadomienie i jeśli są wiarygodne, wybierz pozycję Weryfikuj. W przeciwnym razie można wybrać opcję Odmów.
 
@@ -146,7 +146,7 @@ Jeśli włączysz powiadomienia za pośrednictwem aplikacji mobilnej i kodu wery
 
 ### <a name="verification-code-from-mobile-app"></a>Kod weryfikacyjny z aplikacji mobilnej
 
-Aplikacja Microsoft Authenticator lub inne aplikacje innych firm mogą służyć jako token oprogramowania do generowania kodu weryfikacyjnego OATH. Po wprowadzeniu nazwy użytkownika i hasła wprowadzasz kod dostarczony przez aplikację na ekranie logowania. Kod weryfikacyjny stanowi drugą formę uwierzytelniania.
+Aplikacja Microsoft Authenticator lub inne aplikacje innych firm mogą służyć jako token oprogramowania do generowania kodu weryfikacyjnego OATH. Po wprowadzeniu nazwy użytkownika i hasła wprowadzasz kod dostarczony przez aplikację na ekranie logowania. Kod weryfikacyjny zapewnia drugą formę uwierzytelniania.
 
 > [!WARNING]
 > Do samoobsługowego resetowania hasła, gdy tylko jedna metoda jest wymagana do resetowania kodu weryfikacyjnego jest jedyną opcją dostępną dla użytkowników **w celu zapewnienia najwyższego poziomu zabezpieczeń**.
@@ -156,25 +156,25 @@ Użytkownicy mogą mieć kombinację maksymalnie pięciu tokenów sprzętowych O
 
 ## <a name="oath-hardware-tokens-public-preview"></a>Tokeny sprzętowe OATH (publiczna wersja zapoznawcza)
 
-OATH to otwarty standard, który określa sposób generowania kodów haseł jednorazowych (OTP). Usługa Azure AD będzie obsługiwać użycie tokenów SHA-TOTP w liczbie 2 sekund lub 60 sekund. Klienci mogą odliczać te tokeny od wybranego przez siebie dostawcy. Klucze tajne są ograniczone do 128 znaków, które mogą nie być zgodne ze wszystkimi tokenami. Klucze tajne muszą być zakodowane w Base32.
+OATH to otwarty standard, który określa sposób generowania kodów haseł jednorazowych (OTP). Usługa Azure AD będzie obsługiwać użycie tokenów SHA-TOTP w liczbie 2 sekund lub 60 sekund. Klienci mogą odliczać te tokeny od wybranego przez siebie dostawcy. Klucze tajne są ograniczone do 128 znaków, które mogą nie być zgodne ze wszystkimi tokenami. Klucz tajny może zawierać tylko znaki *a-z* lub *a-z* i cyfry *1-7*, a także musi być zakodowany w Base32.
 
-![Przekazywanie tokenów OATH do bloku tokenów OATH serwera usługi MFA](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
+![Przekazywanie tokenów OATH do bloku tokenów OATH usługi MFA](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
 
 Tokeny sprzętowe OATH są obsługiwane w ramach publicznej wersji zapoznawczej. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz [dodatkowe warunki użytkowania wersji](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) zapoznawczych Microsoft Azure
 
-Po uzyskaniu tokenów należy przekazać je w formacie pliku wartości rozdzielanych przecinkami (CSV), w tym nazwy UPN, numeru seryjnego, klucza tajnego, interwału czasu, producenta i modelu, jak pokazano poniżej.
+Po uzyskaniu tokenów należy je przekazać w formacie pliku wartości rozdzielanych przecinkami (CSV), w tym nazwy UPN, numeru seryjnego, klucza tajnego, interwału czasu, producenta i modelu, jak pokazano w następującym przykładzie:
 
 ```csv
 upn,serial number,secret key,time interval,manufacturer,model
-Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKey
+Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
 ```
 
 > [!NOTE]
-> Upewnij się, że w pliku CSV znajduje się wiersz nagłówka, jak pokazano powyżej.
+> Upewnij się, że dołączysz wiersz nagłówka do pliku CSV.
 
-Po prawidłowym sformatowaniu pliku CSV administrator może następnie zalogować się do Azure Portal i przejść do **Azure Active Directory**, **serwera MFA**, **tokenów Oath**i przekazać plik CSV z wynikiem.
+Po poprawnym sformatowaniu pliku CSV administrator może następnie zalogować się do Azure Portal, przejść do **Azure Active Directory** > **zabezpieczenia** > **MFA** > **tokeny Oath**i przekazać plik CSV.
 
-Proces może potrwać kilka minut, w zależności od rozmiaru pliku CSV. Kliknij przycisk **Odśwież** , aby uzyskać bieżący stan. W przypadku wystąpienia błędów w pliku można pobrać plik CSV zawierający listę błędów, które należy rozwiązać.
+Proces może potrwać kilka minut, w zależności od rozmiaru pliku CSV. Kliknij przycisk **Odśwież** , aby uzyskać bieżący stan. W przypadku wystąpienia błędów w pliku można pobrać plik CSV zawierający listę błędów, które należy rozwiązać. Nazwy pól w pobranym pliku CSV różnią się od przekazanej wersji.
 
 Po rozwiązaniu jakichkolwiek błędów administrator może aktywować każdy klucz, klikając **Aktywuj** dla tokenu, który ma zostać aktywowany, i wprowadzając uwierzytelnianie OTP wyświetlane na tokenie.
 

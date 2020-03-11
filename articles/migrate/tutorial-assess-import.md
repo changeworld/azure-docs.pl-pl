@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 060399952545c903fec8ecf08d99e438883c9fd1
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 91b9c71e7c735fca08f71ca37ed28734c8d634a1
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902536"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79079864"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>Ocenianie serwerów za pomocą zaimportowanych danych
 
@@ -32,7 +32,7 @@ Należy pamiętać o następujących kwestiach:
 - Informacje o serwerze można przekazać do oceny serwera wiele razy przy użyciu woluminu CSV.
 - Zbieranie informacji o aplikacji jest przydatne w ocenie środowiska lokalnego do migracji. Jednak Ocena serwera nie przeprowadza obecnie oceny poziomu aplikacji ani nie uwzględnia aplikacji podczas tworzenia oceny.
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
 > * Skonfiguruj projekt Azure Migrate.
 > * Wypełnij plik CSV informacjami o serwerze.
@@ -105,11 +105,11 @@ Poniższa tabela zawiera podsumowanie pól plików do wypełnienia:
 
 **Nazwa pola** | **Wypełnione** | **Szczegóły**
 --- | --- | ---
-**Nazwa serwera** | Tak | Zalecamy określenie w pełni kwalifikowanej nazwy domeny (FQDN).
+**Nazwa serwera** | Yes | Zalecamy określenie w pełni kwalifikowanej nazwy domeny (FQDN).
 **Adres IP** | Nie | Adres serwera.
-**Rdzeni** | Tak | Liczba rdzeni procesora przypisanych do serwera.
-**Pamięć** | Tak | Całkowita ilość pamięci RAM w MB przypisana do serwera.
-**Nazwa systemu operacyjnego** | Tak | System operacyjny serwera.
+**Rdzeni** | Yes | Liczba rdzeni procesora przypisanych do serwera.
+**Rozmiar** | Yes | Całkowita ilość pamięci RAM w MB przypisana do serwera.
+**Nazwa systemu operacyjnego** | Yes | System operacyjny serwera. <br/> Nazwy systemu operacyjnego, które pasują lub zawierają nazwy na [tej](#supported-operating-system-names) liście, są rozpoznawane przez ocenę.
 **Wersja systemu operacyjnego** | Nie | Wersja systemu operacyjnego serwera.
 **Liczba dysków** | Nie | Niepotrzebna, jeśli podano szczegółowe szczegóły dysku.
 **Rozmiar dysku 1**  | Nie | Maksymalny rozmiar dysku (w GB).<br/>Możesz dodać szczegóły do większej liczby dysków, [dodając kolumny](#add-multiple-disks) w szablonie. Można dodać maksymalnie osiem dysków.
@@ -179,7 +179,7 @@ Na przykład aby określić wszystkie pola dla drugiej aplikacji, Dodaj następu
 Po dodaniu informacji do szablonu CSV zaimportuj serwery do oceny serwera.
 
 1. W Azure Migrate w obszarze **odnajdywanie maszyn**przejdź do ukończonego szablonu.
-2. Wybierz pozycję **Import** (Importuj).
+2. Wybierz pozycję **Importuj**.
 3. Stan importowania jest pokazywany.
     - Jeśli w stanie pojawiły się ostrzeżenia, możesz je rozwiązać lub kontynuować bez rozwiązywania problemów.
     - Aby poprawić dokładność oceny, Popraw informacje o serwerze zgodnie z opisem w ostrzeżeniach.
@@ -261,7 +261,7 @@ Ocena zawiera opis:
 
 ### <a name="review-cost-details"></a>Przejrzyj szczegóły kosztów
 
-Ten widok przedstawia szacowany koszt obliczeń i magazynu dla uruchomionych maszyn wirtualnych na platformie Azure. Przekonaj się:
+Ten widok przedstawia szacowany koszt obliczeń i magazynu dla uruchomionych maszyn wirtualnych na platformie Azure. Możesz:
 
 - Zapoznaj się z miesięcznymi kosztami obliczeniowymi i magazynem. Koszty są agregowane dla wszystkich serwerów w ocenianej grupie.
 
@@ -409,7 +409,7 @@ Ten widok przedstawia szacowany koszt obliczeń i magazynu dla uruchomionych mas
       Windows 10<br/>
       Windows 2000<br/>
       System Windows 3<br/>
-      Windows 7<br/>
+      Windows 7<br/>
       Windows 8<br/>
       Windows 95<br/>
       Windows 98<br/>
@@ -426,14 +426,14 @@ Ten widok przedstawia szacowany koszt obliczeń i magazynu dla uruchomionych mas
       Windows Server 2019<br/>
       Próg systemu Windows Server<br/>
       Windows Vista<br/>
-      Windows Web Server 2008 R2<br/>
+      Serwer sieci Web systemu Windows 2008 R2<br/>
       Windows XP Professional
    :::column-end:::
 :::row-end:::
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku zostały wykonane następujące czynności:
+W tym samouczku zostaną wykonane następujące czynności:
 
 > [!div class="checklist"]
 > * Zaimportowane serwery do Azure Migrate: Ocena serwera przy użyciu woluminu CSV.

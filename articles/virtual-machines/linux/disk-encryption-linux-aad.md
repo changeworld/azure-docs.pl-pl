@@ -2,17 +2,18 @@
 title: Usługa Azure Disk Encryption przy użyciu maszyn wirtualnych IaaS z systemem Linux aplikacji usługi Azure AD (poprzedniej wersji)
 description: Ten artykuł zawiera instrukcje na temat włączania systemu Microsoft Azure Disk Encryption dla maszyn wirtualnych IaaS z systemem Linux.
 author: msmbaldwin
-ms.service: security
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: d41f2138a453e4a34354c10bbebad41724a18d1d
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: ee365d37a957350fa8a68da0f34149d3210d6238
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457488"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970604"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>Włączanie Azure Disk Encryption z usługą Azure AD na maszynach wirtualnych z systemem Linux (poprzednia wersja)
 

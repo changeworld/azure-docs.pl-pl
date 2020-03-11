@@ -1,18 +1,18 @@
 ---
 title: Tworzenie i Konfigurowanie magazynu kluczy dla Azure Disk Encryption
 description: Ten artykuł zawiera instrukcje dotyczące tworzenia i konfigurowania magazynu kluczy do użycia z usługą Azure Disk Encryption
-ms.service: virtual-machines
+ms.service: virtual-machines-linux
 ms.topic: article
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 90306c55d976670f432d146d94764c4d90b8667d
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a818d9fe9707d1789fbe8e77489fc380fd2c92dd
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828498"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970621"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>Tworzenie i Konfigurowanie magazynu kluczy dla Azure Disk Encryption
 
@@ -30,7 +30,7 @@ Tworzenie i Konfigurowanie magazynu kluczy do użycia z Azure Disk Encryption ob
 Te kroki przedstawiono w następujących przewodnikach szybki start:
 
 - [Tworzenie i szyfrowanie maszyny wirtualnej z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure](disk-encryption-cli-quickstart.md)
-- [Tworzenie i szyfrowanie maszyny wirtualnej z systemem Linux przy użyciu Azure PowerShell](disk-encryption-cli-quickstart.md)
+- [Tworzenie i szyfrowanie maszyny wirtualnej z systemem Linux przy użyciu programu Azure PowerShell](disk-encryption-cli-quickstart.md)
 
 Możesz również, jeśli chcesz, wygenerować lub zaimportować klucz szyfrowania klucza (KEK).
 
@@ -43,7 +43,7 @@ Kroki opisane w tym artykule można wykonać przy użyciu [interfejsu wiersza po
 
 Gdy Portal jest dostępny za pomocą przeglądarki, interfejs wiersza polecenia platformy Azure i Azure PowerShell wymagają instalacji lokalnej; Zobacz [Azure Disk Encryption dla systemu Linux: Zainstaluj narzędzia](disk-encryption-linux.md#install-tools-and-connect-to-azure) , aby uzyskać szczegółowe informacje.
 
-### <a name="connect-to-your-azure-account"></a>Nawiązywanie połączenia z kontem platformy Azure
+### <a name="connect-to-your-azure-account"></a>Nawiąż połączenie z kontem platformy Azure
 
 Przed rozpoczęciem korzystania z interfejsu wiersza polecenia platformy Azure lub Azure PowerShell należy najpierw nawiązać połączenie z subskrypcją platformy Azure. Można to zrobić, [logując się przy użyciu interfejsu wiersza polecenia platformy Azure](/cli/azure/authenticate-azure-cli?view=azure-cli-latest), [logując się przy użyciu programu Azure PowerShell](/powershell/azure/authenticate-azureps?view=azps-2.5.0)lub dostarczając poświadczenia do Azure Portal po wyświetleniu monitu.
 
@@ -55,11 +55,11 @@ az login
 Connect-AzAccount
 ```
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 *Jeśli masz już grupę zasobów, możesz pominąć, aby [utworzyć magazyn kluczy](#create-a-key-vault).*
 
-Grupa zasobów jest kontenerem logicznym, w którym są wdrażane i zarządzane zasoby platformy Azure. 
+Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. 
 
 Utwórz grupę zasobów za pomocą polecenia [AZ Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create) Azure CLI, polecenia [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) Azure PowerShell lub z [Azure Portal](https://portal.azure.com).
 
@@ -99,7 +99,7 @@ Podczas tworzenia magazynu kluczy przy użyciu Azure PowerShell należy dodać f
 ```azurepowershell-interactive
 New-AzKeyvault -name "<your-unique-keyvault-name>" -ResourceGroupName "myResourceGroup" -Location "eastus" -EnabledForDiskEncryption
 ```
-### <a name="resource-manager-template"></a>Szablon Menedżer zasobów
+### <a name="resource-manager-template"></a>Szablon usługi Resource Manager
 
 Możesz również utworzyć magazyn kluczy przy użyciu [szablonu Menedżer zasobów](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create).
 
@@ -109,7 +109,7 @@ Możesz również utworzyć magazyn kluczy przy użyciu [szablonu Menedżer zaso
 
 ##  <a name="set-key-vault-advanced-access-policies"></a>Ustawianie zaawansowanych zasad dostępu magazynu kluczy
 
-Platforma Azure wymaga dostępu do kluczy szyfrowania lub wpisów tajnych w magazynie kluczy, aby udostępnić je na maszynie wirtualnej w celu rozruchu i odszyfrowywania woluminów. 
+Platforma Azure wymaga dostępu do kluczy szyfrowania i wpisy tajne w magazynie kluczy, aby udostępnić je do maszyny Wirtualnej do rozruchu i odszyfrowywania woluminów. 
 
 Jeśli nie włączono magazynu kluczy na potrzeby wdrożenia szyfrowania dysku, wdrożenia lub szablonu w momencie tworzenia (jak pokazano w poprzednim kroku), należy zaktualizować zaawansowane zasady dostępu.  
 
@@ -155,30 +155,30 @@ Użyj [AZ Key Update](/cli/azure/keyvault#az-keyvault-update) , aby włączyć s
      Set-AzKeyVaultAccessPolicy -VaultName "<your-unique-keyvault-name>" -ResourceGroupName "MyResourceGroup" -EnabledForTemplateDeployment
      ```
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Portalu Azure
 
 1. Wybierz magazyn kluczy, przejdź do pozycji **zasady dostępu**, a **następnie kliknij, aby wyświetlić zaawansowane zasady dostępu**.
 2. Zaznacz pole o nazwie **Włącz dostęp do Azure Disk Encryption na potrzeby szyfrowania woluminów**.
 3. Wybierz pozycję **Włącz dostęp do usługi Azure Virtual Machines w celu wdrożenia** i/lub **włącz dostęp do Azure Resource Manager na potrzeby wdrożenia szablonu**, jeśli jest to konieczne. 
-4. Kliknij przycisk **Zapisz**.
+4. Kliknij przycisk **Save** (Zapisz).
 
-    ![Zaawansowane zasady dostępu magazynu kluczy platformy Azure](./media/disk-encryption/keyvault-portal-fig4.png)
+    ![Zaawansowane zasady dostępu magazynu kluczy Azure](./media/disk-encryption/keyvault-portal-fig4.png)
 
 
 ## <a name="set-up-a-key-encryption-key-kek"></a>Skonfiguruj klucz szyfrowania klucza (KEK)
 
-Jeśli chcesz użyć klucza szyfrowania klucza (KEK) w celu uzyskania dodatkowej warstwy zabezpieczeń dla kluczy szyfrowania, Dodaj KEK do magazynu kluczy. W przypadku określenia klucza szyfrowania klucza Azure Disk Encryption używa tego klucza do zawijania wpisów tajnych szyfrowania przed zapisem w Key Vault.
+Jeśli chcesz użyć klucz szyfrowania klucza (KEK) Aby uzyskać dodatkową warstwę zabezpieczeń dla kluczy szyfrowania, należy dodać KEK do magazynu kluczy. Jeśli klucz szyfrowania jest określony, usługi Azure Disk Encryption używa tego klucza do opakowania wpisów tajnych szyfrowania przed zapisaniem w usłudze Key Vault.
 
 Nowy KEK można wygenerować przy użyciu interfejsu wiersza polecenia platformy Azure [AZ Key magazynu create](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) Azure PowerShell, polecenie cmdlet [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) lub [Azure Portal](https://portal.azure.com/). Musisz wygenerować typ klucza RSA; Azure Disk Encryption nie obsługuje jeszcze kluczy krzywej eliptycznej.
 
 Zamiast tego możesz zaimportować KEK z lokalnego modułu HSM zarządzania kluczami. Aby uzyskać więcej informacji, zobacz [dokumentację Key Vault](../../key-vault/key-vault-hsm-protected-keys.md). 
 
-Adresy URL KEK magazynu kluczy muszą być w wersji. System Azure wymusza to ograniczenie wersji. Aby uzyskać prawidłowe tajne i KEK adresy URL, zobacz następujące przykłady:
+Adresy URL KEK magazynu kluczy muszą być w wersji. Azure wymusza to ograniczenie wersji. Nieprawidłowy klucz tajny i adresy URL KEK zobacz następujące przykłady:
 
 * Przykładowy prawidłowy tajny adres URL: *https://contosovault.vault.azure.net/secrets/EncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 * Przykład prawidłowego adresu URL KEK: *https://contosovault.vault.azure.net/keys/diskencryptionkek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
-Azure Disk Encryption nie obsługuje określania numerów portów jako części wpisów tajnych magazynu kluczy i adresów URL KEK. Przykłady nieobsługiwanych i obsługiwanych adresów URL magazynu kluczy można znaleźć w następujących przykładach:
+Usługa Azure Disk Encryption nie obsługuje określania numerów portów jako część wpisy tajne usługi key vault i KEK adresów URL. Aby zapoznać się z przykładami adresów URL obsługiwane i nieobsługiwane key vault zobacz następujące przykłady:
 
   * Akceptowalny adres URL magazynu kluczy: *https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
   * Nieakceptowalny adres URL magazynu kluczy: *https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*

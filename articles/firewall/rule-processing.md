@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 02/26/2020
+ms.date: 03/10/2020
 ms.author: victorh
-ms.openlocfilehash: 69c0c13c7027707cdadb2f1f1de9cc1655c9c625
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: d3f8e52b4582c9467ae3ec61ee984771b801fe4f
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396050"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082645"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Logika przetwarzania reguł usługi Azure Firewall
 Reguły translatora adresów sieciowych, reguły sieci i aplikacje można skonfigurować w zaporze platformy Azure. Reguły są przetwarzane zgodnie z typem reguły. 
@@ -24,7 +24,7 @@ Reguły translatora adresów sieciowych, reguły sieci i aplikacje można skonfi
 
 ### <a name="network-rules-and-applications-rules"></a>Reguły sieci i zasady dotyczące aplikacji
 
-W przypadku konfigurowania reguł sieci i reguł aplikacji reguły sieci są stosowane w kolejności priorytetu przed regułami aplikacji. Reguły są przerywane. Dlatego w przypadku znalezienia dopasowania w regule sieciowej nie są przetwarzane żadne inne reguły.  Jeśli nie ma dopasowania reguły sieci, a protokół to HTTP, HTTPS lub MSSQL, pakiet jest następnie oceniany przez reguły aplikacji w kolejności priorytetów. Jeśli nadal nie zostanie znalezione dopasowanie, pakiet jest oceniany względem [kolekcji reguł infrastruktury](infrastructure-fqdns.md). Jeśli wciąż nie zostanie znalezione dopasowanie, pakiet zostanie domyślnie odrzucony.
+W przypadku konfigurowania reguł sieci i reguł aplikacji reguły sieci są stosowane w kolejności priorytetu przed regułami aplikacji. Reguły są przerywane. Dlatego w przypadku znalezienia dopasowania w regule sieciowej nie są przetwarzane żadne inne reguły.  Jeśli nie ma dopasowania reguły sieci i jeśli protokół to HTTP, HTTPS lub MSSQL, pakiet jest następnie oceniany przez reguły aplikacji w kolejności priorytetów. Jeśli nadal nie zostanie znalezione dopasowanie, pakiet jest oceniany względem [kolekcji reguł infrastruktury](infrastructure-fqdns.md). Jeśli wciąż nie zostanie znalezione dopasowanie, pakiet zostanie domyślnie odrzucony.
 
 ## <a name="inbound"></a>Przychodzący
 
@@ -90,6 +90,10 @@ Odmowa ruchu SSH, ponieważ wyższy priorytet *odmówi* kolekcji reguł sieci.
 **Wynika**
 
 Odmowa połączeń SSH, ponieważ kolekcja reguł sieci o wyższym priorytecie jest blokowana. Przetwarzanie reguły zostało zatrzymane w tym momencie.
+
+## <a name="rule-changes"></a>Zmiany reguły
+
+Jeśli zmienisz regułę tak, aby odmówił wcześniej dozwolony ruch, wszelkie odpowiednie istniejące sesje zostaną usunięte.
 
 ## <a name="next-steps"></a>Następne kroki
 

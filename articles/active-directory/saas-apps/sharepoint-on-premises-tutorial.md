@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 60ff8769192191ba112008e7baee23740147dfe9
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: bd9e916d1e50d9d5bc0717a1d283b3dcf5d383c9
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367034"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037007"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Samouczek: integracja Azure Active Directory z lokalnym programem SharePoint
 
@@ -271,7 +271,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 10. Skonfiguruj AzureCP w farmie lokalnej programu SharePoint lub alternatywne rozwiązanie niestandardowego dostawcy oświadczeń.  W tym przykładzie korzystamy z AzureCP.
 
     > [!NOTE]
-    > Należy pamiętać, że AzureCP nie jest produktem firmy Microsoft ani nie jest obsługiwany przez pomoc techniczną firmy Microsoft. Pobierz, zainstaluj i skonfiguruj AzureCP na lokalnej farmie programu SharePoint na https://yvand.github.io/AzureCP/ 
+    > Należy pamiętać, że AzureCP nie jest produktem firmy Microsoft ani nie jest obsługiwany przez pomoc techniczną firmy Microsoft. Pobierz, zainstaluj i skonfiguruj AzureCP na lokalnej farmie programu SharePoint na [https://yvand.github.io/AzureCP/](https://yvand.github.io/AzureCP/) 
 
 11. **Przyznaj dostęp do Azure Active Directory grupy zabezpieczeń w lokalnym programie SharePoint** : — grupy muszą mieć udzielony dostęp do aplikacji w lokalnym programie SharePoint.  Wykonaj następujące kroki, aby ustawić uprawnienia dostępu do aplikacji sieci Web.
 

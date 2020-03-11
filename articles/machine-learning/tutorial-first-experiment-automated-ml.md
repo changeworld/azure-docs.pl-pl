@@ -1,7 +1,7 @@
 ---
-title: Tworzenie pierwszego zautomatyzowanego eksperymentu ML
+title: Tworzenie zautomatyzowanych modeli klasyfikacji ML
 titleSuffix: Azure Machine Learning
-description: Dowiedz się, jak nauczyć i wdrożyć model klasyfikacji przy użyciu automatycznego uczenia maszynowego w programie Azure Machine Learning Studio.
+description: Dowiedz się, jak uczenie & wdrażać modele klasyfikacji przy użyciu interfejsu zautomatyzowanego uczenia maszynowego Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 02/04/2020
-ms.openlocfilehash: 70fcdb1c22664a0bd3091fea88c8e23e3d1b81e5
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 84d539f35919293522f05abdeabeca936138c140
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048287"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081628"
 ---
-# <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Samouczek: Tworzenie pierwszego modelu klasyfikacji przy użyciu automatycznej uczenia maszynowego
+# <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Samouczek: Tworzenie modelu klasyfikacji przy użyciu zautomatyzowanej ML w Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-W tym samouczku dowiesz się, jak utworzyć pierwszy zautomatyzowany eksperyment uczenia maszynowego za pomocą programu Azure Machine Learning Studio bez konieczności pisania jednego wiersza kodu. Ten przykład tworzy model klasyfikacji, aby przewidzieć, czy klient zasubskrybuje stały termin wpłaty z instytucją finansową.
+W tym samouczku dowiesz się, jak utworzyć podstawowy model klasyfikacji bez pisania pojedynczego wiersza kodu przy użyciu automatycznego interfejsu uczenia maszynowego Azure Machine Learning. Ten model klasyfikacji przewiduje, czy klient zasubskrybuje stały termin złożenia przez instytucję finansową.
 
 Dzięki zautomatyzowanej usłudze Machine Learning można zautomatyzować czasochłonne zadania. Automatyczne Uczenie maszynowe szybko iteruje wiele kombinacji algorytmów i parametrów, aby ułatwić znalezienie najlepszego modelu w oparciu o pomyślną metrykę wybrania.
 
@@ -34,7 +34,7 @@ W tym samouczku dowiesz się, jak wykonywać następujące zadania:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, Utwórz [bezpłatne konto](https://aka.ms/AMLFree).
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://aka.ms/AMLFree).
 
 * Pobierz plik danych [**bankmarketing_train. csv**](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) . Kolumna **y** wskazuje, czy klient subskrybuje stały termin wpłaty, który jest później zidentyfikowany jako kolumna docelowa dla prognoz w tym samouczku. 
 
@@ -42,7 +42,7 @@ W tym samouczku dowiesz się, jak wykonywać następujące zadania:
 
 Obszar roboczy Azure Machine Learning to podstawowe zasoby w chmurze, za pomocą których można eksperymentować, uczeniować i wdrażać modele uczenia maszynowego. Łączy ona Twoją subskrypcję i grupę zasobów platformy Azure z łatwym w użyciu obiektem w usłudze. 
 
-Aby zarządzać zasobami platformy Azure, możesz utworzyć obszar roboczy za pośrednictwem Azure Machine Learning Studio.
+Aby zarządzać zasobami platformy Azure, można utworzyć obszar roboczy za pośrednictwem Azure Portal konsoli internetowej.
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal-enterprise.md)]
 
@@ -51,9 +51,9 @@ Aby zarządzać zasobami platformy Azure, możesz utworzyć obszar roboczy za po
 
 ## <a name="create-and-run-the-experiment"></a>Tworzenie i uruchamianie eksperymentu
 
-Należy wykonać następujące czynności w celu skonfigurowania i uruchomienia kroków w programie Azure Machine Learning Studio — skonsolidowany interfejs, który obejmuje narzędzia uczenia maszynowego do wykonywania scenariuszy analizy danych dla lekarzy danych wszystkich poziomów umiejętności. Program Studio nie jest obsługiwany w przeglądarkach programu Internet Explorer.
+Należy wykonać następujące czynności w celu skonfigurowania i uruchomienia kroków za pośrednictwem usługi Azure Machine Learning w https://ml.azure.com, skonsolidowanego interfejsu sieci Web zawierającego narzędzia uczenia maszynowego w celu przeprowadzenia scenariuszy analizy danych dla lekarzy danych wszystkich poziomów umiejętności. Ten interfejs nie jest obsługiwany w przeglądarkach programu Internet Explorer.
 
-1. Zaloguj się do [Azure Machine Learning Studio](https://ml.azure.com).
+1. Zaloguj się do Azure Machine Learning w https://ml.azure.com.
 
 1. Wybierz swoją subskrypcję i utworzony obszar roboczy.
 
@@ -63,13 +63,13 @@ Należy wykonać następujące czynności w celu skonfigurowania i uruchomienia 
 
    Ponieważ jest to pierwszy zautomatyzowany eksperyment z ML, zobaczysz pustą listę i linki do dokumentacji.
 
-   ![Studio uczenia maszynowego Azure](./media/tutorial-first-experiment-automated-ml/get-started.png)
+   ![Strona Wprowadzenie](./media/tutorial-first-experiment-automated-ml/get-started.png)
 
 1. Wybierz kolejno pozycje **Nowy zautomatyzowany przebieg**. 
 
 1. Utwórz nowy zestaw danych, wybierając pozycję **z plików lokalnych** z listy rozwijanej **+ Utwórz zestaw danych** . 
 
-    1. W **podstawowym formularzu informacji** nadaj zestawowi danych nazwę i podaj opcjonalny opis. Automatyczna ML w Azure Machine Learning Studio obecnie obsługuje tylko tabelaryczne zestawy danych, więc typ DataSet powinien domyślnie mieć wartość tabelaryczną.
+    1. W **podstawowym formularzu informacji** nadaj zestawowi danych nazwę i podaj opcjonalny opis. Interfejs zautomatyzowanej sieci obsługuje obecnie tylko TabularDatasets, więc typ DataSet powinien domyślnie mieć wartość *tabelaryczną*.
 
     1. Wybierz pozycję **dalej** w lewym dolnym rogu
 
@@ -163,9 +163,9 @@ Poniżej przedstawiono **Informacje o modelu** i kartach **wizualizacje** , aby 
 
 ![Szczegóły przebiegu iteracji](./media/tutorial-first-experiment-automated-ml/run-detail.gif)
 
-## <a name="deploy-the-model"></a>Wdrażanie modelu
+## <a name="deploy-the-best-model"></a>Wdróż najlepszy model
 
-Automatyczne Uczenie maszynowe w programie Azure Machine Learning Studio umożliwia wdrożenie najlepszego modelu jako usługi sieci Web w kilku krokach. Wdrożenie to integracja modelu, dzięki czemu można przewidzieć nowe dane i identyfikować potencjalne obszary szans sprzedaży. 
+Zautomatyzowany interfejs uczenia maszynowego umożliwia wdrożenie najlepszego modelu jako usługi sieci Web w kilku krokach. Wdrożenie to integracja modelu, dzięki czemu można przewidzieć nowe dane i identyfikować potencjalne obszary szans sprzedaży. 
 
 W przypadku tego eksperymentu wdrożenie do usługi sieci Web oznacza, że instytucja finansowa ma teraz iteracyjne i skalowalne rozwiązanie sieci Web służące do identyfikowania potencjalnych klientów z krótkoterminowymi wpłatami. 
 
@@ -201,9 +201,9 @@ Pliki wdrożeń są większe niż pliki danych i eksperymenty, dzięki czemu są
 
 ### <a name="delete-the-deployment-instance"></a>Usuwanie wystąpienia wdrożenia
 
-Usuń tylko wystąpienie wdrożenia z programu Azure Machine Learning Studio, jeśli chcesz zachować grupę zasobów i obszar roboczy dla innych samouczków i eksploracji. 
+Usuń tylko wystąpienie wdrożenia z Azure Machine Learning na https://ml.azure.com/, jeśli chcesz zachować grupę zasobów i obszar roboczy dla innych samouczków i eksploracji. 
 
-1. Przejdź do [Azure Machine Learning Studio](https://ml.azure.com/). Przejdź do obszaru roboczego i po lewej stronie okienka **elementy zawartości** wybierz pozycję **punkty końcowe**. 
+1. Przejdź do Azure Machine Learning w https://ml.azure.com/. Przejdź do obszaru roboczego i po lewej stronie okienka **elementy zawartości** wybierz pozycję **punkty końcowe**. 
 
 1. Wybierz wdrożenie, które chcesz usunąć, a następnie wybierz pozycję **Usuń**. 
 
@@ -215,15 +215,15 @@ Usuń tylko wystąpienie wdrożenia z programu Azure Machine Learning Studio, je
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku zautomatyzowanym uczenia maszynowego użyto Azure Machine Learning Studio do utworzenia i wdrożenia modelu klasyfikacji. Zobacz następujące artykuły, aby uzyskać więcej informacji i następnych kroków:
+W tym samouczku zautomatyzowanym uczenia maszynowego użyto zautomatyzowanego interfejsu ML Azure Machine Learning, aby utworzyć i wdrożyć model klasyfikacji. Zobacz następujące artykuły, aby uzyskać więcej informacji i następnych kroków:
 
 > [!div class="nextstepaction"]
 > [Korzystanie z usługi sieci Web](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
-+ Dowiedz się więcej o [cechowania](how-to-create-portal-experiments.md#featurization).
-+ Dowiedz się więcej na temat [profilowania danych](how-to-create-portal-experiments.md#profile).
 + Dowiedz się więcej o [automatycznym uczeniu maszynowym](concept-automated-ml.md).
-+ Aby uzyskać więcej informacji na temat metryk i wykresów klasyfikacji, zobacz artykuł [Omówienie automatycznego uczenia maszynowego](how-to-understand-automated-ml.md#classification) .
++ Aby uzyskać więcej informacji na temat metryk i wykresów klasyfikacji, zobacz artykuł [Omówienie zautomatyzowanych wyników uczenia maszynowego](how-to-understand-automated-ml.md#classification) . + Dowiedz się więcej na temat [cechowania](how-to-create-portal-experiments.md#featurization).
++ Dowiedz się więcej na temat [profilowania danych](how-to-create-portal-experiments.md#profile).
+
 
 >[!NOTE]
 > Ten zestaw danych marketingu dla banku jest udostępniany w ramach [licencji Creative Commons Attribution (CCO: Public Domain)](https://creativecommons.org/publicdomain/zero/1.0/). Wszystkie prawa do poszczególnych treści bazy danych są licencjonowane w ramach [licencji na zawartość bazy danych](https://creativecommons.org/publicdomain/zero/1.0/) i dostępne w witrynie [Kaggle](https://www.kaggle.com/janiobachmann/bank-marketing-dataset). Ten zestaw danych był początkowo dostępny w [bazie danych Machine Learning UCI](https://archive.ics.uci.edu/ml/datasets/bank+marketing).<br><br>

@@ -7,17 +7,20 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/06/2020
 keywords: ARO, OpenShift, AZ ARO, Red Hat, CLI
-ms.openlocfilehash: 81f8edb42be1f73692062d36440890ef5a1e7c9a
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 3c336a1fbfb9f991ff824e8deafe84f3d899771d
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78899310"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082833"
 ---
 # <a name="create-access-and-manage-an-azure-red-hat-openshift-43-cluster"></a>Tworzenie klastra usługi Azure Red Hat OpenShift 4,3, uzyskiwanie do niego dostępu i zarządzanie nim
 
 > [!IMPORTANT]
-> Azure Red Hat OpenShift (ARO) 4,3 jest oferowany w wersji zapoznawczej. Funkcje w wersji zapoznawczej są samoobsługowe i udostępniane jako dostępne i są wykluczone z umowy dotyczącej poziomu usług (SLA) i ograniczonej rękojmi. W związku z tym funkcje te nie są przeznaczone do użytku produkcyjnego.
+> Pamiętaj, że usługa Azure Red Hat OpenShift 4,3 jest obecnie dostępna tylko w prywatnej wersji zapoznawczej w regionie Wschodnie stany USA. Zaakceptowanie prywatnej wersji zapoznawczej odbywa się tylko przez zaproszenie. Przed podjęciem próby włączenia tej funkcji upewnij się, że subskrypcja została zarejestrowana: [Azure Red Hat OpenShift — Rejestracja w prywatnej wersji zapoznawczej](https://aka.ms/aro-preview-register)
+
+> [!NOTE]
+> Funkcje w wersji zapoznawczej są samoobsługowe i udostępniane jako dostępne i są wykluczone z umowy dotyczącej poziomu usług (SLA) i ograniczonej rękojmi. W związku z tym funkcje te nie są przeznaczone do użytku produkcyjnego.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

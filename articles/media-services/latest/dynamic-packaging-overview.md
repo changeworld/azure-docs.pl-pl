@@ -12,20 +12,23 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 01/23/2020
+ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: dac5f75216a8addcaa65407d945a06363e4cbf9d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: d408a862c18038f64b816bb54fc235d1b9d84179
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359506"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968178"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamiczne pakowanie w Media Services v3
 
 Microsoft Azure Media Services może służyć do kodowania wielu formatów plików źródłowych multimediów. Udostępnia je za pośrednictwem różnych protokołów przesyłania strumieniowego z ochroną zawartości lub bez niej, aby dotrzeć do wszystkich głównych urządzeń (takich jak urządzenia z systemem iOS lub Android). Ci klienci rozumieją różne protokoły. Na przykład system iOS wymaga dostarczania strumieni w formacie HTTP Live Streaming (HLS), a urządzenia z systemem Android obsługują HLS, a także KRESKę MPEG.
 
 W Media Services [punkt końcowy przesyłania strumieniowego](streaming-endpoint-concept.md) reprezentuje dynamiczny (just-in-Time) pakiet i pierwotną usługę, która umożliwia dostarczanie zawartości na żywo i na żądanie bezpośrednio do aplikacji odtwarzacza klienckiego. Używa jednego z popularnych protokołów multimediów przesyłania strumieniowego, które wymieniono w poniższej sekcji. Dynamiczne tworzenie pakietów to funkcja, w którą są standardowo wyposażone wszystkie punkty końcowe przesyłania strumieniowego (w warstwie Standard lub Premium).
+
+> [!NOTE]
+> Za pomocą [Azure Portal](https://portal.azure.com/) można zarządzać [zdarzeniami na żywo](live-events-outputs-concept.md)v3, przeglądać [zasoby](assets-concept.md)v3 i uzyskać informacje o uzyskiwaniu dostępu do interfejsów API. W przypadku wszystkich innych zadań zarządzania (na przykład transformacji i zadań) należy użyć [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), interfejsu [wiersza polecenia](https://aka.ms/ams-v3-cli-ref)lub jednego z obsługiwanych [zestawów SDK](media-services-apis-overview.md#sdks).
 
 ## <a name="a-iddelivery-protocolsto-prepare-your-source-files-for-delivery"></a><a id="delivery-protocols"/>przygotowywania plików źródłowych do dostarczenia
 
@@ -302,7 +305,4 @@ Możesz otworzyć bilet pomocy technicznej, przechodząc do [nowego żądania po
 
 ## <a name="next-steps"></a>Następne kroki
 
-> [!NOTE]
-> Obecnie nie można zarządzać zasobami w wersji 3 z witryny Azure Portal. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), [interfejsu wiersza polecenia](https://aka.ms/ams-v3-cli-ref) lub jednego z obsługiwanych [zestawów SDK](media-services-apis-overview.md#sdks).
-
-Dowiedz się [, jak przekazywanie, kodowanie i przesyłanie strumieniowe filmów wideo](stream-files-tutorial-with-api.md).
+[Przekazywanie, kodowanie i przesyłanie strumieniowe filmów wideo](stream-files-tutorial-with-api.md)

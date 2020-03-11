@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: 600ca893e6d6b81fe24626a99cc1f6de80efb3e8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 5414a70180a82be8253dace7d800c90c1ae6a9bd
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78368270"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082509"
 ---
 # <a name="application-insights-for-web-pages"></a>Usługa Application Insights dla stron sieci Web
 
@@ -51,11 +51,11 @@ Jeśli aplikacja nie korzysta z npm, możesz bezpośrednio instrumentować stron
 
 ```html
 <script type="text/javascript">
-var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){t[e]=function(){var n=arguments;t.queue.push(function(){t[e].apply(t,n)})}}var t={config:e};t.initialize=!0;var i=document,a=window;setTimeout(function(){var n=i.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",i.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{t.cookie=i.cookie}catch(e){}t.queue=[],t.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var s="Track"+r[0];if(n("start"+s),n("stop"+s),n("addTelemetryInitializer"),n("setAuthenticatedUserContext"),n("clearAuthenticatedUserContext"),n("flush"),t.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4},!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var o=a[r];a[r]=function(e,n,i,a,s){var c=o&&o(e,n,i,a,s);return!0!==c&&t["_"+r]({message:e,url:n,lineNumber:i,columnNumber:a,error:s}),c},e.autoExceptionInstrumented=!0}return t}(
+var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(n){var o={config:n,initialize:!0},t=document,e=window,i="script";setTimeout(function(){var e=t.createElement(i);e.src=n.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",t.getElementsByTagName(i)[0].parentNode.appendChild(e)});try{o.cookie=t.cookie}catch(e){}function a(n){o[n]=function(){var e=arguments;o.queue.push(function(){o[n].apply(o,e)})}}o.queue=[],o.version=2;for(var s=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];s.length;)a("track"+s.pop());var r="Track",c=r+"Page";a("start"+c),a("stop"+c);var u=r+"Event";if(a("start"+u),a("stop"+u),a("addTelemetryInitializer"),a("setAuthenticatedUserContext"),a("clearAuthenticatedUserContext"),a("flush"),o.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4},!(!0===n.disableExceptionTracking||n.extensionConfig&&n.extensionConfig.ApplicationInsightsAnalytics&&!0===n.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){a("_"+(s="onerror"));var p=e[s];e[s]=function(e,n,t,i,a){var r=p&&p(e,n,t,i,a);return!0!==r&&o["_"+s]({message:e,url:n,lineNumber:t,columnNumber:i,error:a}),r},n.autoExceptionInstrumented=!0}return o}(
 {
   instrumentationKey:"INSTRUMENTATION_KEY"
 }
-);window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
+);(window[aiName]=aisdk).queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
 </script>
 ```
 
@@ -95,6 +95,7 @@ appInsights.trackTrace({message: 'This message will use a telemetry initializer'
 appInsights.addTelemetryInitializer(() => false); // Nothing is sent after this is executed
 appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ```
+
 ## <a name="configuration"></a>Konfiguracja
 Większość pól konfiguracji ma takie nazwy, że można je domyślnie określić jako FAŁSZ. Wszystkie pola są opcjonalne z wyjątkiem `instrumentationKey`.
 
@@ -155,7 +156,7 @@ Obecnie oferujemy osobne wtyczki do [reagowania](#react-extensions) , które mo�
 
 ## <a name="explore-browserclient-side-data"></a>Eksplorowanie danych po stronie przeglądarki i klienta
 
-Dane przeglądarki/strony klienta można wyświetlać, przechodząc do **metryk** i dodając indywidualne metryki, które Cię interesują: 
+Dane przeglądarki/strony klienta można wyświetlać, przechodząc do **metryk** i dodając indywidualne metryki, które Cię interesują:
 
 ![](./media/javascript/page-view-load-time.png)
 
@@ -165,7 +166,7 @@ Wybierz pozycję **przeglądarka** , a następnie wybierz pozycję **Błędy** l
 
 ![](./media/javascript/browser.png)
 
-### <a name="performance"></a>Wydajność 
+### <a name="performance"></a>Wydajność
 
 ![](./media/javascript/performance-operations.png)
 
@@ -173,7 +174,7 @@ Wybierz pozycję **przeglądarka** , a następnie wybierz pozycję **Błędy** l
 
 ![](./media/javascript/performance-dependencies.png)
 
-### <a name="analytics"></a>Analiza 
+### <a name="analytics"></a>Analiza
 
 Aby wysłać zapytanie do telemetrii zebranej przez zestaw JavaScript SDK, wybierz przycisk **Wyświetl w dziennikach (analiza)** . Dodanie `where` instrukcji `client_Type == "Browser"`powoduje, że będą widoczne tylko dane z zestawu SDK języka JavaScript, a wszystkie Telemetria po stronie serwera zebrane przez inne zestawy SDK zostaną wykluczone.
  
@@ -194,7 +195,14 @@ dataset
 
 ### <a name="source-map-support"></a>Obsługa mapy źródłowej
 
-Zminimalizowanego stosu wywołań danych telemetrycznych dotyczących wyjątków może być unminified w Azure Portal. Wszystkie istniejące integracje w panelu Szczegóły wyjątku będą działały z nowo unminified stosu wywołań. Przeciąganie i upuszczanie mapy źródłowej unminifying obsługuje wszystkie istniejące i przyszłe zestawy SDK JS (+ Node. JS), więc nie trzeba uaktualniać wersji zestawu SDK. Aby wyświetlić unminified stosu wywołań,
+Zminimalizowanego stosu wywołań danych telemetrycznych dotyczących wyjątków może być unminified w Azure Portal. Wszystkie istniejące integracje w panelu Szczegóły wyjątku będą działały z nowo unminified stosu wywołań.
+
+#### <a name="link-to-blob-storage-account"></a>Link do konta magazynu obiektów BLOB
+
+Możesz połączyć zasób Application Insights z własnym kontenerem Blob Storage platformy Azure, aby automatycznie unminify stosy wywołań. Aby rozpocząć, zobacz [Automatyczne wsparcie mapy źródłowej](./source-map-support.md).
+
+### <a name="drag-and-drop"></a>Przeciągnij i upuść
+
 1. Wybierz element telemetrii wyjątku w Azure Portal, aby wyświetlić jego "kompleksowe" Szczegóły transakcji.
 2. Określ, które mapy źródłowe odpowiadają temu stosowi wywołań. Mapa źródłowa musi być zgodna z plikiem źródłowym ramki stosu, ale z sufiksem `.map`
 3. Przeciągnij i upuść mapy źródłowe na stos wywołań w Azure Portal ![](https://i.imgur.com/Efue9nU.gif)

@@ -6,18 +6,18 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: 7fee3a1e2c26bc9fa89a4766c771a3715398b1a2
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 2a09d5af013e804f33327855fb7b9f2104bc225c
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673354"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082521"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB — Zapraszamy!
 
 Dzisiejsze aplikacje muszą być bardzo dynamiczne i zawsze w trybie online. Aby zapewnić małe opóźnienia i wysoką dostępność, wystąpienia tych aplikacji powinny być wdrażane w centrach danych, które są blisko ich użytkowników. Aplikacje muszą reagować w czasie rzeczywistym na duże zmiany użycia w godzinach szczytu, przechowywać coraz większe ilości danych i udostępniać je użytkownikom w ciągu kilku milisekund.
 
-Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Kliknięcie Cosmos DB przycisku umożliwia elastyczne i niezależne skalowanie przepływności i magazynu w dowolnej liczbie regionów świadczenia usługi Azure na całym świecie. Można elastycznie skalować przepływność i magazyn oraz korzystać z szybkiego, jednocyfrowego dostępu do danych za pomocą ulubionego interfejsu API, w tym SQL, MongoDB, Cassandra, tabel lub Gremlin. Cosmos DB oferuje kompleksowe [umowy dotyczące poziomu usług](https://aka.ms/acdbsla) (umowy SLA) w zakresie przepływności, opóźnień, dostępności i gwarancji spójności, a także inne oferty usługi bazy danych.
+Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Kliknięcie Cosmos DB przycisku umożliwia elastyczne i niezależne skalowanie przepływności i magazynu w dowolnej liczbie regionów świadczenia usługi Azure na całym świecie. Można elastycznie skalować przepływność i magazyn oraz korzystać z szybkiego, jednocyfrowego dostępu do danych za pomocą ulubionego interfejsu API, w tym: SQL, MongoDB, Cassandra, tabele lub Gremlin. Cosmos DB oferuje kompleksowe [umowy dotyczące poziomu usług](https://aka.ms/acdbsla) (umowy SLA) w zakresie przepływności, opóźnień, dostępności i gwarancji spójności, a także inne oferty usługi bazy danych.
 
 Możesz bezpłatnie [Wypróbować Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) bez subskrypcji platformy Azure, bezpłatnie i zobowiązań lub korzystać z [bezpłatnej warstwy Azure Cosmos DB](optimize-dev-test.md#azure-cosmos-db-free-tier) , aby uzyskać konto z pierwszym 400 ru/s i 5 GB wolnego miejsca w magazynie.
 

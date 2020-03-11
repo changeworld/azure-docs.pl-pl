@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: 13c51f0db468c1591ca29de17f1744752589a1c8
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/09/2020
+ms.openlocfilehash: 77a451cb9f6598bbe7013f4215cfa7cab40186bd
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77663749"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037541"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Korzystanie z klienta Apache Z usługi Beeline z usługą Apache Hive
 
@@ -54,6 +54,12 @@ beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD
 ```
 
 Zastąp `<username>` nazwą konta w domenie uprawnieniami dostępu do klastra. Zastąp `<AAD-DOMAIN>` nazwą Azure Active Directory (AAD), do której jest dołączony klaster. Użyj ciągu wielką literą dla wartości `<AAD-DOMAIN>`, w przeciwnym razie nie zostanie znalezione poświadczenie. W razie potrzeby Sprawdź `/etc/krb5.conf` nazw obszarów.
+
+Aby znaleźć adres URL JDBC z Ambari:
+
+1. W przeglądarce sieci Web przejdź do `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary`, gdzie `CLUSTERNAME` jest nazwą klastra. Upewnij się, że serwera hiveserver2 jest uruchomiony.
+
+1. Użyj schowka, aby skopiować adres URL serwera hiveserver2 JDBC.
 
 ---
 

@@ -3,12 +3,12 @@ title: Wizualizacja zależności w usłudze Azure Migrate
 description: Zawiera omówienie obliczeń oceny w usłudze oceny serwera w Azure Migrate
 ms.topic: conceptual
 ms.date: 02/24/2020
-ms.openlocfilehash: f24656d02e19f422ff26e6b06d1631a9128dff43
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: fd069ed98fa34fd6f281c98a061925f96c7bb2cd
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362205"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082511"
 ---
 # <a name="dependency-visualization"></a>Wizualizacja zależności
 
@@ -55,7 +55,7 @@ Dostępne są dwie opcje wdrażania wizualizacji zależności:
 **Obsługiwane systemy operacyjne** | Przejrzyj [systemy operacyjne](migrate-support-matrix-vmware.md#agentless-dependency-visualization) obsługiwane w przypadku wizualizacji bez wykorzystania agentów.
 **Maszyny wirtualne** | **Narzędzia VMware**: narzędzia VMware muszą być zainstalowane i uruchomione na maszynach wirtualnych, które mają być analizowane.<br/><br/> **Konto**: na urządzeniu Azure Migrate należy dodać konto użytkownika, za pomocą którego można uzyskiwać dostęp do maszyn wirtualnych w celu analizy.<br/><br/> **Maszyny wirtualne z systemem Windows**: konto użytkownika musi być kontem lokalnym lub administratorem domeny na komputerze.<br/><br/> **Maszyny wirtualne z systemem Linux**: uprawnienie główne jest wymagane na koncie. Alternatywnie konto użytkownika wymaga tych dwóch możliwości w plikach/bin/netstat i/bin/ls: CAP_DAC_READ_SEARCH i CAP_SYS_PTRACE. | [Dowiedz się więcej o](migrate-appliance.md) urządzeniu Azure Migrate.
 **VMware** | **vCenter**: urządzenie wymaga konta vCenter Server z dostępem tylko do odczytu i ma uprawnienia do Virtual Machines > operacji gościa.<br/><br/> **Hosty ESXi**: na hostach ESXi z maszynami wirtualnymi, które chcesz analizować, urządzenie Azure Migrate musi mieć możliwość nawiązania połączenia z portem TCP 443.
-**Zebrane dane** |  Wizualizacja zależności bez agenta działa przez przechwytywanie danych połączenia TCP z maszyn, dla których jest włączona. Po rozpoczęciu odnajdywania zależności urządzenie zbiera te dane z maszyn, sondowanie co pięć minut:<br/> — Połączenia protokołu TCP.<br/> — Nazwy procesów z aktywnymi połączeniami.<br/> — Nazwy zainstalowanych aplikacji uruchamiających proces z aktywnymi połączeniami.<br/> -Liczba wykrytych połączeń podczas każdego interwału sondowania.
+**Zebrane dane** |  Analiza zależności bez agenta działa przez przechwytywanie danych połączenia TCP z maszyn, na których jest włączona. Po włączeniu odnajdowania zależności urządzenie zbiera dane połączeń TCP co 5 minut z maszyn wirtualnych gościa. Te dane są zbierane z maszyn wirtualnych gościa za pośrednictwem vCenter Server przy użyciu interfejsów API vSphere. Zebrane dane są przetwarzane na urządzeniu w celu ustalenia informacji o zależnościach i wysłania ich do Azure Migrate co 6 godzin. Na każdym komputerze zbierane są następujące dane: <br/> — Nazwy procesów z aktywnymi połączeniami.<br/> — Nazwy aplikacji, które uruchamiają proces z aktywnymi połączeniami.<br/> -Port docelowy dla aktywnych połączeń.
 
 
 ## <a name="next-steps"></a>Następne kroki

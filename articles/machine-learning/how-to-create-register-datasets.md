@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: bb3a18af89b0baa532309ac76905aa5550af98e5
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 817ff90c10a29d7db7037d89f3c3d51e7f997175
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78398242"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037199"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Tworzenie zestawów danych Azure Machine Learning
 
@@ -33,8 +33,7 @@ Za pomocą Azure Machine Learning zestawów danych można:
 * Udostępnianie danych i współpraca z innymi użytkownikami.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-
-Aby tworzyć zestawy danych i korzystać z nich, potrzebne są:
+"Aby utworzyć zestawy danych i korzystać z nich, potrzebne są:
 
 * Subskrypcja platformy Azure. Jeśli go nie masz, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree).
 
@@ -44,6 +43,16 @@ Aby tworzyć zestawy danych i korzystać z nich, potrzebne są:
 
 > [!NOTE]
 > Niektóre klasy zestawu danych mają zależności w pakiecie [Azure preprodukcyjnym](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) . W przypadku użytkowników systemu Linux te klasy są obsługiwane tylko w następujących dystrybucjach: Red Hat Enterprise Linux, Ubuntu, Fedora i CentOS.
+
+## <a name="compute-size-guidance"></a>Wskazówki dotyczące rozmiaru obliczeń
+
+Podczas tworzenia zestawu danych sprawdź moc obliczeniową obliczeniową i rozmiar danych w pamięci. Rozmiar danych w magazynie nie jest taki sam jak rozmiar danych w ramce Dataframe. Na przykład dane w plikach CSV można rozszerzyć o do 10X w ramce Dataframe, dzięki czemu plik CSV o pojemności 1 GB może być 10 GB w ramce Dataframe. 
+
+Głównym czynnikiem jest to, jak duży zestaw danych znajduje się w pamięci, tj. jako ramka Dataframe. Zalecamy, aby rozmiar obliczeń i moc obliczeniowa zawierały rozmiar pamięci RAM. Dlatego jeśli ramka danych ma rozmiar 10GB, chcesz, aby obiekt docelowy obliczeń miał 20 + GB pamięci RAM, aby upewnić się, że ramka danych może być dopasowana do pamięci i przetworzona. Jeśli dane są skompresowane, można zwiększyć ich rozmiar. 20 GB stosunkowo rozrzedzonych danych przechowywanych w skompresowanym formacie Parquet można zwiększyć do ~ 800 GB w pamięci. Ponieważ pliki Parquet przechowują dane w formacie kolumnowym, w przypadku, gdy potrzebna jest tylko połowa kolumn, wystarczy załadować ~ 400 GB w pamięci.
+ 
+Jeśli używasz Pandas, nie ma potrzeby używania więcej niż 1 vCPU, ponieważ będzie on używany przez cały siebie. W razie potrzeby można łatwo zrównoleglanie wiele procesorów wirtualnych vCPU na Azure Machine Learning jednym `import pandas as pd` wystąpienia obliczeniowego za pośrednictwem Modin i Dask/ray oraz skalować w poziomie do dużego klastra, zmieniając do `import modin.pandas as pd`. 
+ 
+Jeśli nie możesz uzyskać wystarczającej ilości danych wirtualnych na dużą liczbę, masz dwie opcje: Użyj struktury, takiej jak Spark lub Dask, do przeprowadzenia przetwarzania danych "Brak pamięci", co oznacza, że element Dataframe jest ładowany do partycji pamięci RAM przez partycjonowanie i przetworzone, a końcowy wynik jest zbierany Ed na końcu. Jeśli jest za mała, platforma Spark lub Dask umożliwia skalowanie w poziomie do klastra, który nadal może być używany interaktywnie. 
 
 ## <a name="dataset-types"></a>Typy zestawów danych
 
@@ -57,9 +66,9 @@ Aby dowiedzieć się więcej o nadchodzących zmianach interfejsu API, zobacz te
 
 ## <a name="create-datasets"></a>Tworzenie zestawów danych
 
-Tworząc zestaw danych, utworzysz odwołanie do lokalizacji źródła danych wraz z kopią jej metadanych. Ponieważ dane pozostają w istniejącej lokalizacji, nie pociągnie za sobą dodatkowych kosztów magazynowania. Można utworzyć zarówno `TabularDataset`, jak i `FileDataset` zestawy danych za pomocą zestawu SDK języka Python lub https://ml.azure.com.
+Tworząc zestaw danych, utworzysz odwołanie do lokalizacji źródła danych wraz z kopią jej metadanych. Ponieważ dane pozostają w istniejącej lokalizacji, nie pociągnie za sobą dodatkowych kosztów magazynowania. Zestawy danych `TabularDataset` i `FileDataset` można utworzyć przy użyciu zestawu SDK języka Python lub w https://ml.azure.com.
 
-Aby można było uzyskać dostęp do danych przez Azure Machine Learning, zestawy danych muszą zostać utworzone na podstawie ścieżek w [usłudze Azure datastores](how-to-access-data.md) lub publicznych adresów URL sieci Web.
+Aby można było uzyskać dostęp do danych przez Azure Machine Learning, zestawy danych muszą zostać utworzone na podstawie ścieżek w [usłudze Azure datastores](how-to-access-data.md) lub publicznych adresów URL sieci Web. 
 
 ### <a name="use-the-sdk"></a>Korzystanie z zestawu SDK
 
@@ -70,7 +79,6 @@ Aby utworzyć zestawy danych z [usługi Azure datastore](how-to-access-data.md) 
 2. Utwórz zestaw danych, odwołując się do ścieżek w magazynie danych.
 > [!Note]
 > Można utworzyć zestaw danych z wielu ścieżek w wielu magazynach. Nie ma żadnego sztywnego limitu liczby plików lub rozmiaru danych, z których można utworzyć zestaw danych. Jednak dla każdej ścieżki danych do usługi magazynu wysyłane są kilka żądań, aby sprawdzić, czy wskazuje ona plik lub folder. To obciążenie może prowadzić do obniżenia wydajności lub niepowodzenia. Zestaw danych odwołujący się do jednego folderu z plikami 1000 wewnątrz jest traktowany jako odwołujący się do jednej ścieżki danych. Zalecamy utworzenie zestawu danych, do którego odwołuje się mniej niż 100 ścieżek w sklepach datastores w celu uzyskania optymalnej wydajności.
-
 
 #### <a name="create-a-tabulardataset"></a>Utwórz TabularDataset
 

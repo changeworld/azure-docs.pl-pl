@@ -7,24 +7,24 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/27/2019
-ms.openlocfilehash: 6027978b50ca72de5d18ff474b36814e22a94e85
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: cd515bfd1dc57e78a041ed96686e1ba692bf6d3f
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552223"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082867"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Dostęp do usługi Grafana w usłudze Azure HDInsight
 
 [Grafana](https://grafana.com/) to popularny, oparty na grafie i Konstruktor pulpitu nawigacyjnego. Grafana to funkcja rozbudowana; Umożliwia to nie tylko użytkownikom tworzenie dostosowywalnych i udostępnianych pulpitów nawigacyjnych, a także udostępnia pulpity nawigacyjne z szablonami, integrację z protokołem LDAP, wiele źródeł danych i nie tylko.
 
-Obecnie w usłudze Azure HDInsight Grafana jest obsługiwana w przypadku typów klastrów HBase, Kafka i Interactive zapytania. Nie jest obsługiwana w przypadku klastrów z włączonym pakietem Enterprise Security Pack.
+Obecnie w usłudze Azure HDInsight Grafana jest obsługiwana w przypadku typów klastra Spark, HBase, Kafka i Interactive. Nie jest obsługiwana w przypadku klastrów z włączonym pakietem Enterprise Security Pack.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="create-an-apache-hadoop-cluster"></a>Tworzenie klastra Apache Hadoop
 
-Zobacz [Tworzenie klastrów Apache Hadoop przy użyciu Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md). W obszarze **Typ klastra**wybierz opcję **Kafka**, **HBase**lub **Interactive Query**.
+Zobacz [Tworzenie klastrów Apache Hadoop przy użyciu Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md). W **obszarze Typ klastra**wybierz pozycję **Spark**, **Kafka**, **HBase**lub **zapytanie interaktywne**.
 
 ## <a name="access-the-grafana-dashboard"></a>Dostęp do pulpitu nawigacyjnego Grafana
 
@@ -40,7 +40,7 @@ Zobacz [Tworzenie klastrów Apache Hadoop przy użyciu Azure Portal](../hdinsigh
 
 Jeśli nie chcesz nadal korzystać z tej aplikacji, Usuń klaster, który został utworzony, wykonując następujące czynności:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Azure portal](https://portal.azure.com/).
 
 1. W polu **Wyszukaj** w górnej części wpisz **HDInsight**.
 

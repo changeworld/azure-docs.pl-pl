@@ -1,26 +1,18 @@
 ---
 title: Wprowadzenie z Cloud Foundry na Microsoft Azure
 description: Uruchom Cloud Foundry OSS lub Pivoting na Microsoft Azure
-services: virtual-machines-linux
-documentationcenter: ''
 author: seanmck
-manager: gwallace
-editor: ''
-tags: ''
-keywords: ''
-ms.assetid: 2a15ffbf-9f86-41e4-b75b-eb44c1a2a7ab
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 01/19/2017
 ms.author: seanmck
-ms.openlocfilehash: 447550d2f6bca570869c9fa93724e4dbaba02132
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: ba0b4a636d8f785f1c169e4066c9cf6d25ba81db
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036818"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970049"
 ---
 # <a name="cloud-foundry-on-azure"></a>Usługa Cloud Foundry na platformie Azure
 
@@ -36,7 +28,7 @@ Cloud Foundry można wdrożyć na platformie Azure, wdrażając dyrektora BOSH, 
 
 Firma Microsoft zapewnia najlepszą pomoc techniczną dla usługi OSS CF przez następujące kanały społecznościowe:
 
-- #<a name="bosh-azure-cpi-channel-on-cloud-foundry-slackhttpsslackcloudfoundryorg"></a>Bosh — kanał Azure-CPI w [Cloud Foundry zapasu czasu](https://slack.cloudfoundry.org/)
+- #<a name="bosh-azure-cpi-channel-on-cloud-foundry-slack"></a>Bosh — kanał Azure-CPI w [Cloud Foundry zapasu czasu](https://slack.cloudfoundry.org/)
 - [Lista adresowa CF-Bosh](https://lists.cloudfoundry.org/pipermail/cf-bosh)
 - Problemy z usługą GitHub dotyczące usługi [CPI](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/issues) i programu [Service Broker](https://github.com/Azure/meta-azure-service-broker/issues)
 

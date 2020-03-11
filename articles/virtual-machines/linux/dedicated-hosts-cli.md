@@ -1,20 +1,17 @@
 ---
-title: Wdrażanie dedykowanych hostów platformy Azure przy użyciu interfejsu wiersza polecenia
+title: Wdrażanie maszyn wirtualnych z systemem Linux na dedykowanych hostach przy użyciu interfejsu wiersza polecenia
 description: Wdróż maszyny wirtualne na dedykowanych hostach przy użyciu interfejsu wiersza polecenia platformy Azure.
-services: virtual-machines-linux
 author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure
 ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: ab9d7128748e99b75b7e1a7187a7958e18300759
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: f712d1be76a9bb3dc4856b9f1fa7c7b805296dea
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77483486"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970768"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Wdrażanie maszyn wirtualnych na dedykowanych hostach przy użyciu interfejsu wiersza polecenia platformy Azure
  

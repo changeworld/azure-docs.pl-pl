@@ -1,26 +1,18 @@
 ---
 title: Wdróż pierwszą aplikację do Cloud Foundry na Microsoft Azure
 description: Wdrażanie aplikacji do Cloud Foundry na platformie Azure
-services: virtual-machines-linux
-documentationcenter: ''
 author: seanmck
-manager: gwallace
-editor: ''
-tags: ''
-keywords: ''
-ms.assetid: 8fa04a58-56ad-4e6c-bef4-d02c80d4b60f
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: b1f9ab5289a41aacb5514e954f1ca01f6ad66152
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 45ae8979a2617d4f380e417e3f0910182ebe145e
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036825"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970071"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Wdróż pierwszą aplikację do Cloud Foundry na Microsoft Azure
 
@@ -39,7 +31,7 @@ Istnieje kilka opcji tworzenia środowiska Cloud Foundry na platformie Azure:
 
 ## <a name="connect-to-the-cloud-controller"></a>Nawiązywanie połączenia z kontrolerem chmury
 
-Kontroler chmury jest głównym punktem wejścia do środowiska Cloud Foundryego do wdrażania aplikacji i zarządzania nimi. Podstawowy interfejs API kontrolera chmury (CCAPI) jest interfejsem API REST, ale jest dostępny za pomocą różnych narzędzi. W takim przypadku współdziała z nim za pomocą [interfejsu wiersza polecenia Cloud Foundry][cf-cli]. Możesz zainstalować interfejs wiersza polecenia w systemie Linux, MacOS lub Windows, ale jeśli wolisz nie instalować go w ogóle, jest on dostępny wstępnie na [Azure Cloud Shell][cloudshell-docs].
+Kontroler chmury jest głównym punktem wejścia do środowiska Cloud Foundryego do wdrażania aplikacji i zarządzania nimi. Podstawowy interfejs API kontrolera chmury (CCAPI) jest interfejsem API REST, ale jest dostępny za pomocą różnych narzędzi. W takim przypadku współdziała z nim za pomocą [interfejsu wiersza polecenia Cloud Foundry][cf-cli]. Możesz zainstalować interfejs wiersza polecenia w systemie Linux, macOS lub Windows, ale jeśli wolisz nie instalować go w ogóle, jest on dostępny wstępnie na [Azure Cloud Shell][cloudshell-docs].
 
 Aby się zalogować, poprzedź `api` do SYSTEMDOMAINURL uzyskanego w ramach wdrożenia w portalu Marketplace. Ponieważ domyślne wdrożenie używa certyfikatu z podpisem własnym, należy również uwzględnić przełącznik `skip-ssl-validation`.
 

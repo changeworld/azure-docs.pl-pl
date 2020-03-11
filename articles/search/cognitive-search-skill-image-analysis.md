@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 106f83e4c8fdf33ac8752e5942dbb22a2df78693
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f2703994d3fe8765662e6a0205d63cef9327e17a
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840506"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080198"
 ---
 # <a name="image-analysis-cognitive-skill"></a>Umiejętność analizy obrazów
 
@@ -35,7 +35,7 @@ W parametrach jest rozróżniana wielkość liter.
 | Nazwa parametru     | Opis |
 |--------------------|-------------|
 | defaultLanguageCode   |  Ciąg wskazujący język, który ma zostać zwrócony. Usługa zwraca wyniki rozpoznawania w określonym języku. Jeśli ten parametr nie jest określony, wartością domyślną jest "en". <br/><br/>Obsługiwane są następujące języki: <br/>*pl* — angielski (wartość domyślna) <br/> *es* — hiszpański <br/> *ja* — japoński <br/> *pt* — portugalski <br/> *zh* — chiński uproszczony|
-| visualFeatures |  Tablica ciągów wskazująca typy funkcji wizualizacji do zwrócenia. Prawidłowe typy funkcji wizualizacji to:  <ul><li>*osoba dorosła* — wykrywa, czy obraz jest pornograficznej z natury (przedstawia nagość lub akt płci), czy też jest gorii (przedstawia skrajną przemoc lub krew). Wykryto również zawartość z sugestią seksualną (alias erotycznej Content).</li><li>*marki* — wykrywa różne marki w obrazie, w tym przybliżoną lokalizację. Funkcja wizualizacji *marek* jest dostępna tylko w języku angielskim.</li><li> *Kategorie* — klasyfikuje zawartość obrazu zgodnie z taksonomią zdefiniowaną w [dokumentacji przetwarzanie obrazów](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)Cognitive Services. </li><li> *Color* — określa kolor akcentu, kolor dominujący oraz to, czy obraz jest czarny & biały.</li><li>*Opis* — zawiera opis zawartości obrazu z kompletnymi zdaniami w obsługiwanych językach.</li><li>*twarze* — wykrywa, czy twarze są obecne. Jeśli jest obecny, program generuje współrzędne, płeć i wiek.</li><li>  *ImageType* — wykrywa, czy obraz jest obiektem clipart czy rysowaniem linii.</li><li>  *obiekty* — wykrywa różne obiekty w obrazie, w tym przybliżoną lokalizację. Funkcja wizualizacji *obiektów* jest dostępna tylko w języku angielskim.</li><li> *znaczniki* — znaczniki obrazu ze szczegółową listą wyrazów związanych z zawartością obrazu.</li></ul> Nazwy funkcji wizualnych są rozróżniane wielkości liter.|
+| visualFeatures |  Tablica ciągów wskazująca typy funkcji wizualizacji do zwrócenia. Prawidłowe typy funkcji wizualizacji to:  <ul><li>*osoba dorosła* — wykrywa, czy obraz jest pornograficznej z natury (przedstawia nagość lub akt płci), czy też jest gorii (przedstawia skrajną przemoc lub krew). Wykryto również zawartość z sugestią seksualną (alias erotycznej Content).</li><li>*marki* — wykrywa różne marki w obrazie, w tym przybliżoną lokalizację. Funkcja wizualizacji *marek* jest dostępna tylko w języku angielskim.</li><li> *Kategorie* — klasyfikuje zawartość obrazu zgodnie z taksonomią zdefiniowaną w [dokumentacji przetwarzanie obrazów](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)Cognitive Services. </li><li>*Opis* — zawiera opis zawartości obrazu z kompletnymi zdaniami w obsługiwanych językach.</li><li>*twarze* — wykrywa, czy twarze są obecne. Jeśli jest obecny, program generuje współrzędne, płeć i wiek.</li><li> *obiekty* — wykrywa różne obiekty w obrazie, w tym przybliżoną lokalizację. Funkcja wizualizacji *obiektów* jest dostępna tylko w języku angielskim.</li><li> *znaczniki* — znaczniki obrazu ze szczegółową listą wyrazów związanych z zawartością obrazu.</li></ul> Nazwy funkcji wizualnych są rozróżniane wielkości liter. Należy zauważyć, że funkcje wizualne *Color* i *ImageType* zostały wycofane, ale dostęp do tej funkcji można uzyskać za pośrednictwem [niestandardowej umiejętności](https://go.microsoft.com/fwlink/?linkid=2121117).|
 | details informacje   | Tablica ciągów wskazująca, które szczegóły dotyczące domeny mają być zwracane. Prawidłowe typy funkcji wizualizacji to: <ul><li>*osobistości* — identyfikuje osobistości, jeśli został wykryty w obrazie.</li><li>*punkty orientacyjne* — wskazuje punkty orientacyjne, jeśli zostały wykryte na obrazie. </li></ul> |
 
 ## <a name="skill-inputs"></a>Dane wejściowe kwalifikacji
@@ -470,20 +470,6 @@ Można zdefiniować mapowania pól wyjściowych na właściwości niższego pozi
             ]
           }
         ],
-        "color": {
-          "dominantColorForeground": "Brown",
-          "dominantColorBackground": "Brown",
-          "dominantColors": [
-            "Brown",
-            "Black"
-          ],
-          "accentColor": "873B59",
-          "isBwImg": false
-        },
-        "imageType": {
-          "clipArtType": 0,
-          "lineDrawingType": 0
-        },
         "objects": [
           {
             "rectangle": {
@@ -543,7 +529,7 @@ Jeśli zostanie wyświetlony komunikat o błędzie podobny do `"One or more skil
             ]
 ```
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 + [Wbudowane umiejętności](cognitive-search-predefined-skills.md)
 + [Jak zdefiniować zestawu umiejętności](cognitive-search-defining-skillset.md)

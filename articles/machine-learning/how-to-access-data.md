@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: keli19
-author: likebupt
+ms.author: sihhu
+author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 02/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5527d58f140074279d6b9feac13803f29eb0bda5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 36d622bf2873b7e629a0f6abeecded33e32898f5
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396198"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082099"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Dostęp do danych w usługach Azure Storage
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +27,7 @@ Magazyny danych można tworzyć na podstawie [tych rozwiązań usługi Azure Sto
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Będą potrzebne:
-- Subskrypcja platformy Azure. Jeśli nie masz subskrypcji na platformie Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree).
+- Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree).
 
 - Konto usługi Azure Storage z [kontenerem obiektów blob platformy Azure](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) lub [udziałem plików platformy Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction).
 
@@ -224,7 +224,7 @@ ws.set_default_datastore('your datastore name')
 
 Metody [`upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#upload-src-dir--target-path-none--overwrite-false--show-progress-true-) i [`download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-) opisane w poniższych przykładach są specyficzne dla i działają identycznie dla klas [AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py) i [AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py) .
 
-### <a name="upload"></a>Przekaż
+### <a name="upload"></a>Upload
 
 Przekaż katalog lub pojedyncze pliki do magazynu danych przy użyciu zestawu SDK języka Python:
 

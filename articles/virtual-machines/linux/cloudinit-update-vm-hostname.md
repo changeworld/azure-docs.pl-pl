@@ -1,25 +1,17 @@
 ---
-title: Używanie funkcji Cloud-init do ustawiania nazwy hosta dla maszyny wirtualnej z systemem Linux na platformie Azure
+title: Używanie funkcji Cloud-init do ustawiania nazwy hosta dla maszyny wirtualnej z systemem Linux
 description: Jak używać funkcji Cloud-init do dostosowywania maszyny wirtualnej z systemem Linux podczas tworzenia przy użyciu interfejsu wiersza polecenia platformy Azure
-services: virtual-machines-linux
-documentationcenter: ''
 author: rickstercdn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: adac9dc41aaba7ce6bfd9f01917d647174b41282
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 631b8ef83d5fbf10ec401df7432b23238f2ae2e6
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036713"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969163"
 ---
 # <a name="use-cloud-init-to-set-hostname-for-a-linux-vm-in-azure"></a>Używanie funkcji Cloud-init do ustawiania nazwy hosta dla maszyny wirtualnej z systemem Linux na platformie Azure
 W tym artykule pokazano, jak za pomocą usługi [Cloud-init](https://cloudinit.readthedocs.io) skonfigurować konkretną nazwę hosta na maszynie wirtualnej lub w zestawach skalowania maszyn wirtualnych (VMSS) w czasie aprowizacji na platformie Azure. Te skrypty usługi Cloud-init są uruchamiane podczas pierwszego rozruchu po udostępnieniu zasobów przez platformę Azure. Aby uzyskać więcej informacji na temat sposobu, w jaki usługa Cloud-init działa natywnie na platformie Azure i obsługiwanych dystrybucje z systemem Linux, zobacz [Omówienie usługi Cloud-init](using-cloud-init.md)

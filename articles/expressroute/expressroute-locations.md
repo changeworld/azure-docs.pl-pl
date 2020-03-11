@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: f46dfdb0b92e2a5c5f9b98ac93889ca49bd8c471
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: cd2562974a689ecbca0d7016d3d970895ea211d9
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78942362"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081764"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partnerzy i lokalizacje komunikacji równorzędnej usługi ExpressRoute
 
@@ -88,7 +88,7 @@ W poniższej tabeli przedstawiono lokalizacje według dostawcy usług. Jeśli ch
 | **[British Telecom](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)** |Obsługiwane |Obsługiwane |Amsterdam, Hongkong SAR, Johannesburg, Londyn, Newport (Walia), Wyspy Świętego Paulo, Dolina Krzemowa, Singapur, Sydney, Tokio, Waszyngton |
 | **[C3ntro](https://www.c3ntro.com/data1/express-route1.php)** |Obsługiwane |Obsługiwane |Miami |
 | **CDC** | Obsługiwane | Obsługiwane | Canberra, Canberra2 |
-| **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |Obsługiwane |Obsługiwane |Amsterdam2, Chicago, Hongkong, Las Vegas, London2, Nowy Jork, Paryż, San Antonio, Dolina Krzemowa, Tokio, Toronto, Waszyngton DC, Waszyngton |
+| **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |Obsługiwane |Obsługiwane |Amsterdam2, Chicago, Frankfurt, Hongkong, Las Vegas, London2, Nowy Jork, Paryż, San Antonio, Dolina Krzemowa, Tokio, Toronto, Waszyngton DC, Waszyngton DC2 |
 | **[Dyrektor naczelny](https://www.chief.com.tw/dispPageBox/ct.aspx?ddsPageID=ENCLOUDSERVICE&dbid=4852937342)** |Obsługiwane |Obsługiwane |Hongkong, Tajpej |
 | **Chiny międzynarodowe dla urządzeń przenośnych** |Obsługiwane |Obsługiwane | Singapur |
 | **China Telecom Global** |Obsługiwane |Obsługiwane |SRA Hongkong |
@@ -245,7 +245,7 @@ Jeśli jesteś zdalny i nie masz łączności z włóknami lub chcesz poznać in
 | **[BICS](https://bics.com/bics-solutions-suite/cloud-connect/)** | Equinix | Amsterdam, Frankfurt, Londyn, Singapur, Waszyngton |
 | **[BroadBand Tower, Inc.](https://www.bbtower.co.jp/product-service/data-center/network/dcconnect-for-azure/)** | Equinix | Tokio |
 | **[C3ntro Telecom](https://www.c3ntro.com/data/express-route)** | Equinix, Megaport | Dallas |
-| **[Chief](https://www.chief.com.tw/dispPageBox/ct.aspx?ddsPageID=ENCLOUDSERVICE&dbid=4852937342)** | Equinix | Hongkong |
+| **[Chief](https://www.chief.com.tw/dispPageBox/ct.aspx?ddsPageID=ENCLOUDSERVICE&dbid=4852937342)** | Equinix | SRA Hongkong |
 | **[Cinia](https://www.cinia.fi/en/services/connectivity-services/direct-public-cloud-connection.html)** | Equinix, Megaport | Frankfurt, Hamburg |
 | **[CloudXpress](https://www2.telenet.be/fr/business/produits-services/internet/cloudxpress/)** | Equinix | Amsterdam | 
 | **[CMC Telecom](https://cmctelecom.vn/san-pham/value-added-service-and-it/cmc-telecom-cloud-express-en/)** | Equinix | Singapur | 
@@ -265,7 +265,7 @@ Jeśli jesteś zdalny i nie masz łączności z włóknami lub chcesz poznać in
 | **[IVedha Inc](http://www.ivedha.com/cloud/manage-azure-cloud/express-route-4/)**| Equinix | Toronto |
 | **[Kaalam Telecom Bahrajn B. S. C](http://www.kalaam-telecom.com/en/inbusiness/expressroute.html)**| Level 3 Communications |Amsterdam |
 | **LGA Telecom** |Equinix |Singapur|
-| **[Macroview Telecom](http://www.macroview.com/en/scripts/catitem.php?catid=solution&sectionid=expressroute)** |Equinix |Hongkong 
+| **[Macroview Telecom](http://www.macroview.com/en/scripts/catitem.php?catid=solution&sectionid=expressroute)** |Equinix |SRA Hongkong 
 | **[Macquarie Telecom Group](https://macquariegovernment.com/secure-cloud/secure-cloud-exchange/)** | Megaport | Sydney |
 | **[MainOne](https://www.mainone.net/services/connectivity/cloud-connect/)** |Equinix | Amsterdam |
 | **[Masergy](https://www.masergy.com/solutions/hybrid-networking/cloud-marketplace/microsoft-azure)** | Equinix | Waszyngton |

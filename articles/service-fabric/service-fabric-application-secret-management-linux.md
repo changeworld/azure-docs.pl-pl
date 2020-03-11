@@ -5,12 +5,12 @@ author: shsha
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: shsha
-ms.openlocfilehash: 350718e4ce890fcbfaa7f2b10cc4c47dfac4da90
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: b8e0a19e3f654fc561e7c7e26c6a2da463e24d5f
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614710"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969028"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-linux-clusters"></a>Konfigurowanie certyfikatu szyfrowania i szyfrowanie wpisów tajnych w klastrach systemu Linux
 W tym artykule przedstawiono sposób konfigurowania certyfikatu szyfrowania i używania go do szyfrowania wpisów tajnych w klastrach systemu Linux. W przypadku klastrów systemu Windows Zobacz [Konfigurowanie certyfikatu szyfrowania i szyfrowanie wpisów tajnych w klastrach systemu Windows][secret-management-windows-specific-link].
@@ -31,12 +31,12 @@ Certyfikat szyfrowanie danych jest używany wyłącznie do szyfrowania i odszyfr
 ## <a name="install-the-certificate-in-your-cluster"></a>Instalowanie certyfikatu w klastrze
 Certyfikat musi być zainstalowany na każdym węźle klastra w obszarze `/var/lib/sfcerts`. Konto użytkownika, na którym jest uruchomiona usługa (domyślnie sfuser) **powinno mieć dostęp do odczytu** do zainstalowanego certyfikatu (czyli `/var/lib/sfcerts/TestCert.pem` dla bieżącego przykładu).
 
-## <a name="encrypt-secrets"></a>Szyfrowanie wpisów tajnych
+## <a name="encrypt-secrets"></a>Szyfruj wpisy tajne
 Poniższego fragmentu kodu można użyć do szyfrowania klucza tajnego. Ten fragment kodu szyfruje wartość. **nie podpisuje** tekstu szyfru. **Musisz użyć** tego samego certyfikatu szyfrowania, który jest zainstalowany w klastrze w celu utworzenia tekstu szyfrowanego dla wartości tajnych.
 
 ```console
 user@linux:$ echo "Hello World!" > plaintext.txt
-user@linux:$ iconv -f ASCII -t UTF-16LE plaintext.txt -o plaintext_UTF-16.txt
+user@linux:$ iconv -f ASCII -t UTF-16LE plaintext.txt | tr -d '\n' > plaintext_UTF-16.txt
 user@linux:$ openssl smime -encrypt -in plaintext_UTF-16.txt -binary -outform der TestCert.pem | base64 > encrypted.txt
 ```
 Wynikowy tekst zakodowany w formacie Base-64 do szyfrowanego. txt zawiera zarówno klucz tajny, jak i informacje o certyfikacie użytym do jego zaszyfrowania. Aby sprawdzić jego prawidłowość, można je odszyfrować za pomocą OpenSSL.

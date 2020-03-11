@@ -6,17 +6,20 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/06/2020
-ms.openlocfilehash: 1a372ef12ef7b0afb06ed3c540daaee5e38c3374
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: a784fc070400995c56d16a3bc264d589bcb1f64e
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78899167"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082850"
 ---
 # <a name="azure-monitor-integration-for-azure-red-hat-openshift-43"></a>Azure Monitor integrację z usługą Azure Red Hat OpenShift 4,3
 
-> [!IMPORTANT]
-> Usługa Azure Red Hat OpenShift 4,3 jest oferowana w wersji zapoznawczej. Funkcje w wersji zapoznawczej są samoobsługowe i udostępniane jako dostępne i są wykluczone z umowy dotyczącej poziomu usług (SLA) i ograniczonej rękojmi. W związku z tym funkcje te nie są przeznaczone do użytku produkcyjnego. 
+> [!IMPORTANT] 
+> Pamiętaj, że usługa Azure Red Hat OpenShift 4,3 jest obecnie dostępna tylko w prywatnej wersji zapoznawczej w regionie Wschodnie stany USA. Zaakceptowanie prywatnej wersji zapoznawczej odbywa się tylko przez zaproszenie. Przed podjęciem próby włączenia tej funkcji upewnij się, że subskrypcja została zarejestrowana: [Azure Red Hat OpenShift — Rejestracja w prywatnej wersji zapoznawczej](https://aka.ms/aro-preview-register)
+
+> [!NOTE]
+> Funkcje w wersji zapoznawczej są samoobsługowe i udostępniane jako dostępne i są wykluczone z umowy dotyczącej poziomu usług (SLA) i ograniczonej rękojmi. W związku z tym funkcje te nie są przeznaczone do użytku produkcyjnego.
 
 W tym artykule opisano, jak włączyć prywatną wersję zapoznawczą Azure Monitor dla kontenerów dla klastrów OpenShift 4,3 hostowanych w Premium lub w dowolnym środowisku chmury. Te same instrukcje mają również zastosowanie do włączania monitorowania dla klastrów usługi Azure Red Hat OpenShift (ARO) 4,3.  
 

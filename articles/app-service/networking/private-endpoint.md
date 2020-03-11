@@ -1,6 +1,6 @@
 ---
-title: Połącz się prywatnie z aplikacją internetową i Zabezpiecz eksfiltracji danych przy użyciu prywatnego punktu końcowego platformy Azure
-description: Połącz się prywatnie z aplikacją internetową i Zabezpiecz eksfiltracji danych przy użyciu prywatnego punktu końcowego platformy Azure
+title: Połącz się prywatnie z aplikacją internetową przy użyciu prywatnego punktu końcowego platformy Azure
+description: Połącz się prywatnie z aplikacją internetową przy użyciu prywatnego punktu końcowego platformy Azure
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
@@ -8,24 +8,23 @@ ms.date: 03/12/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: aa1fd341e60a71ad1ffbb535120e63db5a8bfd0b
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.openlocfilehash: 893a7a2c7483fccc3bbc7bd198929f65917457b3
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78851236"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79036946"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Używanie prywatnych punktów końcowych dla usługi Azure Web App (wersja zapoznawcza)
 
-Możesz użyć prywatnego punktu końcowego dla aplikacji sieci Web platformy Azure, aby umożliwić klientom znajdującym się w sieci prywatnej bezpieczny dostęp do aplikacji za pośrednictwem prywatnego linku. Prywatny punkt końcowy używa adresu IP z przestrzeni adresowej sieci wirtualnej platformy Azure. Ruch sieciowy między klientem w sieci prywatnej a aplikacją sieci Web przechodzi przez sieć wirtualną oraz prywatny link do sieci szkieletowej firmy Microsoft, eliminując ekspozycję z publicznego Internetu. Za pomocą prywatnego punktu końcowego można wyłączyć wychodzące przepływy sieciowe z podsieci z sieciowej grupy zabezpieczeń i wyeliminować ryzyko wycieku danych.
+Możesz użyć prywatnego punktu końcowego dla aplikacji sieci Web platformy Azure, aby umożliwić klientom znajdującym się w sieci prywatnej bezpieczny dostęp do aplikacji za pośrednictwem prywatnego linku. Prywatny punkt końcowy używa adresu IP z przestrzeni adresowej sieci wirtualnej platformy Azure. Ruch sieciowy między klientem w sieci prywatnej a aplikacją sieci Web przechodzi przez sieć wirtualną oraz prywatny link do sieci szkieletowej firmy Microsoft, eliminując ekspozycję z publicznego Internetu.
 
 Korzystanie z prywatnego punktu końcowego dla aplikacji sieci Web umożliwia:
 
 - Zabezpiecz swoją aplikację sieci Web przez skonfigurowanie punktu końcowego usługi, eliminując publiczne ujawnianie
-- Zwiększ bezpieczeństwo sieci wirtualnej, umożliwiając blokowanie eksfiltracji danych z sieci wirtualnej
 - Bezpiecznie łącz się z aplikacją internetową z sieci lokalnych, które łączą się z siecią wirtualną za pomocą sieci VPN lub prywatnej komunikacji równorzędnej ExpressRoute.
 
-Jeśli potrzebujesz bezpiecznego połączenia między siecią wirtualną a aplikacją sieci Web, punkt końcowy usługi jest najprostszym rozwiązaniem. Jeśli potrzebujesz ochrony przed eksfiltracji danych lub kierowaniem dostępu z lokalnego, prywatny punkt końcowy to rozwiązanie.
+Jeśli potrzebujesz bezpiecznego połączenia między siecią wirtualną a aplikacją sieci Web, punkt końcowy usługi jest najprostszym rozwiązaniem. Jeśli trzeba również skontaktować się z aplikacją internetową z poziomu lokalnego za pośrednictwem bramy platformy Azure, z regionalną równorzędną siecią wirtualną lub z wirtualną siecią równorzędną, prywatny punkt końcowy to rozwiązanie.  
 
 Aby uzyskać więcej informacji na temat [punktu końcowego usługi][serviceendpoint]
 
@@ -36,20 +35,24 @@ Utworzenie prywatnego punktu końcowego dla aplikacji sieci Web zapewnia bezpiec
 Połączenie między prywatnym punktem końcowym a aplikacją sieci Web używa bezpiecznego [linku prywatnego][privatelink]. Prywatny punkt końcowy jest używany tylko w przypadku przepływów przychodzących do aplikacji sieci Web. Przepływy wychodzące nie będą używać tego prywatnego punktu końcowego, ale można wstrzyknąć przepływy wychodzące do sieci w innej podsieci za pomocą [funkcji integracji sieci wirtualnej][vnetintegrationfeature].
 
 Podsieć, w której jest podłączony prywatny punkt końcowy, może zawierać inne zasoby, nie jest potrzebna dedykowana pusta podsieć.
+Prywatny punkt końcowy można wdrożyć w innym regionie niż aplikacja internetowa. 
+
 > [!Note]
 >Funkcja integracji sieci wirtualnej nie może używać tej samej podsieci niż prywatny punkt końcowy. jest to ograniczenie funkcji integracji sieci wirtualnej.
 
 Z perspektywy zabezpieczeń:
 
 - Po włączeniu punktu końcowego usługi do aplikacji sieci Web należy wyłączyć dostęp publiczny
-- Można włączyć wiele prywatnych punktów końcowych w innych sieci wirtualnych i podsieciach
+- Możesz włączyć wiele prywatnych punktów końcowych w innych sieci wirtualnych i podsieciach, w tym sieci wirtualnych w innych regionach
+- Adres IP karty sieciowej prywatnego punktu końcowego musi być dynamiczny, ale pozostanie taki sam do momentu usunięcia prywatnego punktu końcowego
 - Karta sieciowa prywatnego punktu końcowego nie może mieć skojarzonej sieciowej grupy zabezpieczeń
-- W podsieci, w której znajduje się prywatny punkt końcowy, może być skojarzona sieciowej grupy zabezpieczeń, ale należy wyłączyć wymuszanie zasad sieciowych dla prywatnego punktu końcowego, zobacz [ten artykuł] [disablesecuritype]. W związku z tym nie można filtrować według sieciowej grupy zabezpieczeń dostępu do prywatnego punktu końcowego.
+- W podsieci, w której znajduje się prywatny punkt końcowy, może być skojarzona sieciowej grupy zabezpieczeń, ale należy wyłączyć wymuszanie zasad sieciowych dla prywatnego punktu końcowego, zobacz [ten artykuł][disablesecuritype]. W związku z tym nie można filtrować według sieciowej grupy zabezpieczeń dostępu do prywatnego punktu końcowego
 - Po włączeniu prywatnego punktu końcowego w aplikacji sieci Web konfiguracja [ograniczeń dostępu][accessrestrictions] aplikacji sieci Web nie jest szacowana.
+- Możesz zmniejszyć ryzyko związane z eksfiltracji danych z sieci wirtualnej, usuwając wszystkie reguły sieciowej grupy zabezpieczeń, w których miejsce docelowe jest znacznikiem internetowym lub usług platformy Azure. Jednak dodanie punktu końcowego App Service sieci Web w podsieci spowoduje nawiązanie połączenia z aplikacją sieci Web hostowaną w tej samej sygnaturze i uwidocznioną w Internecie.
 
-Prywatny punkt końcowy dla aplikacji sieci Web jest dostępny dla warstwy Standard, PremiumV2 i izolowany z zewnętrznym środowiskiem ASE.
+Prywatny punkt końcowy dla aplikacji sieci Web jest dostępny dla warstwy PremiumV2 i izolowany z zewnętrznym środowiskiem ASE.
 
-W dziennikach http sieci Web aplikacji sieci Web zobaczysz, że adres IP źródła klienta jest świadomy. Protokół proxy protokołu TCP został wdrożony, przesyłając dalej do aplikacji sieci Web adres IP klienta. Więcej informacji znajduje się w [tym artykule][tcpproxy].
+W dziennikach http sieci Web aplikacji sieci Web znajduje się adres IP źródła klienta. Protokół proxy protokołu TCP został wdrożony, przesyłając dalej do aplikacji sieci Web Właściwość IP klienta. Więcej informacji znajduje się w [tym artykule][tcpproxy].
 
 ![Przegląd globalny][1]
 

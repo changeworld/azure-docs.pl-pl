@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 2/1/2020
-ms.openlocfilehash: aaff56ba1de69485d1c3b93bc7ed95ce1a3cbd88
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.date: 3/9/2020
+ms.openlocfilehash: 3e99263f6bf472c256e1747b8567249bbd62a445
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983553"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969631"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Funkcje w wersji zapoznawczej usługa Azure Stream Analytics
 
@@ -33,13 +33,6 @@ Deweloperzy mogą wykorzystać możliwości Azure Stream Analytics, aby przetwar
 
 Deweloperzy tworzący moduły Stream Analytics w chmurze lub na IoT Edge mogą zapisywać i ponownie używać C# funkcji niestandardowych i wywoływać je bezpośrednio w zapytaniu za pomocą [funkcji zdefiniowanych przez użytkownika](stream-analytics-edge-csharp-udf-methods.md).
 
-### <a name="managed-identity-authentication-with-power-bi"></a>Uwierzytelnianie tożsamości zarządzanej za pomocą Power BI
-
-Azure Stream Analytics oferuje pełną obsługę uwierzytelniania opartego na tożsamościach przy użyciu Power BI na potrzeby dynamicznego środowiska pulpitu nawigacyjnego.
-
-### <a name="anomaly-detection"></a>Wykrywanie anomalii
-
-Azure Stream Analytics "modele uczenia maszynowego mają obsługę wykrywania i wyrzucania *DIP* oprócz dwukierunkowego, powolnego pozytywnego *i wolniejszego* wykrywania negatywnych trendów. Aby uzyskać więcej informacji, zobacz [wykrywanie anomalii w Azure Stream Analytics](stream-analytics-machine-learning-anomaly-detection.md).
 
 ### <a name="debug-query-steps-in-visual-studio"></a>Kroki zapytania debugowania w programie Visual Studio
 
@@ -56,17 +49,17 @@ Azure Stream Analytics zadania mogą być tworzone w Visual Studio Code. Zapozna
 
 ### <a name="integration-with-azure-machine-learning"></a>Integracja z usługą Azure Machine Learning
 
-Możesz skalować zadania usługi Stream Analytics, za pomocą usługi Machine Learning () ml. Aby dowiedzieć się więcej na temat wykorzystania funkcji uczenia Maszynowego w ramach zadania usługi Stream Analytics, odwiedź stronę [skalować zadania usługi Stream Analytics przy użyciu funkcji usługi Azure Machine Learning](stream-analytics-scale-with-machine-learning-functions.md). Zapoznaj się z rzeczywistych scenariuszy za pomocą [przeprowadzania analizy tonacji za pomocą usługi Azure Stream Analytics i Azure Machine Learning](stream-analytics-machine-learning-integration-tutorial.md).
+Możesz skalować zadania usługi Stream Analytics, za pomocą usługi Machine Learning () ml. Aby dowiedzieć się więcej na temat używania funkcji ML w zadaniu Stream Analytics, odwiedź stronę [skalowanie zadania Stream Analytics za pomocą funkcji Azure Machine Learning](stream-analytics-scale-with-machine-learning-functions.md). Zapoznaj się z rzeczywistym scenariuszem, który [przeprowadza analizę tonacji przy użyciu Azure Stream Analytics i Azure Machine Learning](stream-analytics-machine-learning-integration-tutorial.md).
 
 
 ### <a name="live-data-testing-in-visual-studio"></a>Na żywo danych testowania w programie Visual Studio
 
-Visual Studio tools dla usługi Azure Stream Analytics pozwala zwiększyć lokalnego testowania funkcji, dająca możliwość testowania zapytań dla strumieni zdarzeń na żywo ze źródeł w chmurze takich jak Centrum zdarzeń lub IoT hub. Dowiedz się, jak [danych na żywo lokalnie przy użyciu usługi Azure Stream Analytics tools for Visual Studio Test](stream-analytics-live-data-local-testing.md).
+Visual Studio tools dla usługi Azure Stream Analytics pozwala zwiększyć lokalnego testowania funkcji, dająca możliwość testowania zapytań dla strumieni zdarzeń na żywo ze źródeł w chmurze takich jak Centrum zdarzeń lub IoT hub. Dowiedz się, jak [testować dane na żywo lokalnie przy użyciu narzędzi Azure Stream Analytics Tools for Visual Studio](stream-analytics-live-data-local-testing.md).
 
 
 ### <a name="net-user-defined-functions-on-iot-edge"></a>Funkcje zdefiniowane przez użytkownika platformy .NET na brzegowych urządzeniach IoT
 
-Za pomocą platformy .NET standard funkcje zdefiniowane przez użytkownika może uruchamiać kod .NET Standard, jako część potoku transmisji strumieniowych. Można utworzyć proste klas języka C# lub zaimportować pełny projektu i bibliotek. Pełne tworzenia i obsługi debugowania jest obsługiwana w programie Visual Studio. Aby uzyskać więcej informacji, odwiedź stronę [opracowywanie .NET Standard funkcje zdefiniowane przez użytkownika dla zadań usługi Azure Stream Analytics Edge](stream-analytics-edge-csharp-udf-methods.md).
+Za pomocą platformy .NET standard funkcje zdefiniowane przez użytkownika może uruchamiać kod .NET Standard, jako część potoku transmisji strumieniowych. Można utworzyć proste klas języka C# lub zaimportować pełny projektu i bibliotek. Pełne tworzenia i obsługi debugowania jest obsługiwana w programie Visual Studio. Aby uzyskać więcej informacji, odwiedź stronę [opracowywanie .NET standard funkcji zdefiniowanych przez użytkownika dla Azure Stream Analytics zadań brzegowych](stream-analytics-edge-csharp-udf-methods.md).
 
 ## <a name="other-previews"></a>Inne wersje zapoznawcze
 
