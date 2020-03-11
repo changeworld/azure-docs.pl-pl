@@ -8,15 +8,15 @@ ms.date: 10/23/2019
 ms.author: mjbrown
 ms.custom: seodec18
 ms.openlocfilehash: 978f37d08275de704dd01c0251dde42665fca552
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882104"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364498"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>Zarządzanie Azure Cosmos DB zasobami interfejsu API SQL przy użyciu programu PowerShell
 
-W poniższym przewodniku opisano sposób użycia programu PowerShell do tworzenia skryptów i automatyzowania zarządzania zasobami Azure Cosmos DB, w tym konta, bazy danych, kontenera i przepływności. Zarządzanie Azure Cosmos DB jest obsługiwane za pomocą polecenia cmdlet AzResource bezpośrednio dla Azure Cosmos DB dostawcy zasobów. Aby wyświetlić wszystkie właściwości, które mogą być zarządzane za pomocą programu PowerShell dla dostawcy zasobów Azure Cosmos DB, zobacz [Azure Cosmos DB schematu dostawcy zasobów](/azure/templates/microsoft.documentdb/allversions)
+W poniższym przewodniku opisano sposób użycia programu PowerShell do tworzenia skryptów i automatyzowania zarządzania zasobami usługi Azure Cosmos DB, w tym kontem, bazą danych, kontenerem i przepływnością. Zarządzanie usługą Azure Cosmos DB odbywa się za pomocą polecenia cmdlet AzResource bezpośrednio w ramach dostawcy zasobów usługi Azure Cosmos DB. Aby wyświetlić wszystkie właściwości, które mogą być zarządzane za pomocą programu PowerShell dla dostawcy zasobów Azure Cosmos DB, zobacz [Azure Cosmos DB schematu dostawcy zasobów](/azure/templates/microsoft.documentdb/allversions)
 
 W przypadku zarządzania różnymi platformami Azure Cosmos DB można korzystać z [interfejsu][rp-rest-api] [wiersza polecenia platformy Azure](manage-with-cli.md)lub [Azure Portal](create-sql-api-dotnet.md#create-account).
 
@@ -27,7 +27,7 @@ W przypadku zarządzania różnymi platformami Azure Cosmos DB można korzystać
 Postępuj zgodnie z instrukcjami w temacie [jak zainstalować i skonfigurować Azure PowerShell][powershell-install-configure] , aby zainstalować i zalogować się do konta platformy Azure w programie PowerShell.
 
 * Jeśli chcesz wykonać następujące polecenia, nie wymagając potwierdzenia przez użytkownika, Dołącz flagę `-Force` do polecenia.
-* Wszystkie poniższe polecenia są synchroniczne.
+* Następujące polecenia są synchroniczne.
 
 ## <a name="azure-cosmos-accounts"></a>Konta usługi Azure Cosmos
 
@@ -243,7 +243,7 @@ Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a id="list-keys"></a>Wyświetl listę kluczy konta
 
-Podczas tworzenia konta Azure Cosmos DB Usługa generuje dwa główne klucze dostępu, których można użyć do uwierzytelniania podczas uzyskiwania dostępu do konta Azure Cosmos DB. Dostarczając dwa klucze dostępu, Azure Cosmos DB umożliwia ponowne wygenerowanie kluczy bez przerw na koncie Azure Cosmos DB. Dostępne są również klucze tylko do odczytu służące do uwierzytelniania operacji tylko do odczytu. Istnieją dwa klucze do odczytu i zapisu (podstawowe i pomocnicze) oraz dwie klucze tylko do odczytu (podstawowe i pomocnicze).
+Podczas tworzenia konta usługi Azure Cosmos DB, Usługa generuje dwa klucze wzorca dostępu, których można użyć do uwierzytelniania podczas uzyskiwania dostępu do konta usługi Azure Cosmos DB. Zapewniając dwa klucze dostępu, usługi Azure Cosmos DB pozwala na ponowne generowanie kluczy nie zakłóceń z kontem usługi Azure Cosmos DB. Dostępne są również klucze tylko do odczytu w celu uwierzytelniania operacji tylko do odczytu. Istnieją dwa klucze odczytu i zapisu (podstawowych i pomocniczych) i dwa klucze tylko do odczytu (podstawowych i pomocniczych).
 
 ```azurepowershell-interactive
 # List keys for an Azure Cosmos Account
@@ -261,7 +261,7 @@ Write-Host "SecondaryKey =" $keys.secondaryMasterKey
 
 ### <a id="list-connection-strings"></a>Wyświetlanie listy parametrów połączenia
 
-W przypadku kont usługi MongoDB parametry połączenia służące do łączenia aplikacji MongoDB z kontem bazy danych można pobrać przy użyciu następującego polecenia.
+W przypadku kont bazy danych MongoDB przy użyciu następującego polecenia można pobrać parametry połączenia, które umożliwiają połączenie aplikacji bazy danych MongoDB z kontem bazy danych.
 
 ```azurepowershell-interactive
 # List connection strings for an Azure Cosmos Account

@@ -10,11 +10,11 @@ ms.date: 09/01/2019
 ms.author: ramkris
 ms.reviewer: sngun
 ms.openlocfilehash: d7600267dcd196a9a5c06c29774ea21d582cd7ce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442193"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365503"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Użycie zbiorczej biblioteki programu .NET do wykonywania operacji zbiorczych w Azure Cosmos DB
 
@@ -100,17 +100,17 @@ Aplikacja "BulkImportSample" generuje losowe dokumenty i zbiorczo importuje je d
    ```
    **Metoda BulkImportAsync akceptuje następujące parametry:**
    
-   |**Parametr**  |**Opis** |
+   |**Konstruktora**  |**Opis** |
    |---------|---------|
    |enableUpsert    |   Flaga włączenia operacji upsert na dokumentach. Jeśli dokument o podanym IDENTYFIKATORze już istnieje, zostanie zaktualizowany. Domyślnie jest ustawiona wartość false.      |
    |disableAutomaticIdGeneration    |    Flagi, aby wyłączyć automatyczne generowanie identyfikatora. Domyślnie jest ustawiona na wartość true.     |
    |maxConcurrencyPerPartitionKeyRange    | Maksymalny stopień współbieżności dla zakresu kluczy partycji, ustawienie na wartość null spowoduje, że biblioteka użyje wartości domyślnej równej 20. |
    |maxInMemorySortingBatchSize     |  Maksymalna liczba dokumentów pobieranych z modułu wyliczającego dokumenty, które są przesyłane do wywołania interfejsu API na każdym etapie. W przypadku fazy sortowania w pamięci, która jest wykonywana przed importem zbiorczym, ustawienie tego parametru na wartość null spowoduje użycie przez bibliotekę domyślnej wartości minimalnej (Documents. Count, 1000000).       |
-   |CancellationToken    |    Token anulowania, aby bezpiecznie opuścić operację importu zbiorczego.     |
+   |cancellationToken    |    Token anulowania, aby bezpiecznie opuścić operację importu zbiorczego.     |
 
    **Definicja obiektu odpowiedzi importu zbiorczego** Wynik wywołania interfejsu API importu zbiorczego zawiera następujące atrybuty:
 
-   |**Parametr**  |**Opis**  |
+   |**Konstruktora**  |**Opis**  |
    |---------|---------|
    |NumberOfDocumentsImported (Long)   |  Całkowita liczba dokumentów, które zostały pomyślnie zaimportowane z całkowitej liczby dokumentów dostarczonych do wywołania interfejsu API importu zbiorczego.       |
    |TotalRequestUnitsConsumed (Double)   |   Łączna liczba jednostek żądania (RU) używane przez większość zaimportować wywołania interfejsu API.      |
@@ -151,15 +151,15 @@ Należy zaktualizować istniejące dokumenty przy użyciu interfejsu API BulkUpd
    ```  
    **Metoda BulkUpdateAsync akceptuje następujące parametry:**
 
-   |**Parametr**  |**Opis** |
+   |**Konstruktora**  |**Opis** |
    |---------|---------|
    |maxConcurrencyPerPartitionKeyRange    |   Maksymalny stopień współbieżności na zakres kluczy partycji, ustawienie dla tego parametru wartości null spowoduje, że biblioteka będzie używać wartości domyślnej (20).   |
    |maxInMemorySortingBatchSize    |    Maksymalna liczba elementów aktualizacji pobranych z numeratora elementów aktualizacji została przeniesiona do wywołania interfejsu API na każdym etapie. Dla fazy sortowania w pamięci, która jest wykonywana przed aktualizacją zbiorczą, ustawienie dla tego parametru wartości null spowoduje użycie domyślnej wartości minimalnej (updateItems. Count, 1000000).     |
-   | CancellationToken|Token anulowania, aby bezpiecznie opuścić operację aktualizacji zbiorczej. |
+   | cancellationToken|Token anulowania, aby bezpiecznie opuścić operację aktualizacji zbiorczej. |
 
    **Definicja obiektu odpowiedzi aktualizacji zbiorczej** Wynik wywołania interfejsu API aktualizacji zbiorczej zawiera następujące atrybuty:
 
-   |**Parametr**  |**Opis** |
+   |**Konstruktora**  |**Opis** |
    |---------|---------|
    |NumberOfDocumentsUpdated (Long)    |   Liczba dokumentów, które zostały pomyślnie zaktualizowane z całkowitej liczby dokumentów dostarczonych do wywołania interfejsu API aktualizacji zbiorczej.      |
    |TotalRequestUnitsConsumed (Double)   |    Łączna liczba jednostek żądań (jednostek ru) zużytych przez wywołanie interfejsu API aktualizacji zbiorczej.    |

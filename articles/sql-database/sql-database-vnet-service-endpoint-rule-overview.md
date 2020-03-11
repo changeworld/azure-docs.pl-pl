@@ -12,11 +12,11 @@ ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
 ms.openlocfilehash: 0562d609231d69d95f1d2b5b838663b704f8f2f3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972716"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357228"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Korzystanie z punktów końcowych usługi sieci wirtualnej i reguł dla serwerów baz danych
 
@@ -235,7 +235,7 @@ Musisz mieć już podsieć, która jest otagowana przy użyciu konkretnej *nazwy
 
 ## <a name="azure-portal-steps"></a>Azure Portal kroki
 
-1. Zaloguj się do [portalu Azure][http-azure-portal-link-ref-477t].
+1. Zaloguj się do [Azure portal][http-azure-portal-link-ref-477t].
 
 2. Wyszukaj i wybierz pozycję **serwery SQL**, a następnie wybierz serwer. W obszarze **zabezpieczenia**wybierz pozycję **zapory i sieci wirtualne**.
 
@@ -271,7 +271,7 @@ Musisz mieć już podsieć, która jest otagowana przy użyciu konkretnej *nazwy
 
 <a name="anchor-how-to-links-60h" />
 
-## <a name="related-articles"></a>Pokrewne artykuły:
+## <a name="related-articles"></a>Pokrewne artykuły
 
 - [Punkty końcowe usługi sieci wirtualnej platformy Azure][vm-virtual-network-service-endpoints-overview-649d]
 - [Azure SQL Database reguły zapory na poziomie serwera i na poziomie bazy danych][sql-db-firewall-rules-config-715d]

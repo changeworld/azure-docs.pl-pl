@@ -9,11 +9,11 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 4969a1f14e53aabf79495e179213f9763d4c8803
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75893629"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362942"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Przygotowywanie lokalnych serwerów VMware do odzyskiwania po awarii na platformie Azure
 
@@ -31,7 +31,7 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 > * Przygotuj się do łączenia się z maszynami wirtualnymi platformy Azure po przejściu
 
 > [!NOTE]
-> Samouczki pokazują najprostszą ścieżkę wdrożenia dla scenariusza. Jeśli jest to możliwe, są używane opcje domyślne, i nie są przedstawione wszystkie ustawienia i ścieżki. Aby uzyskać szczegółowe instrukcje, zapoznaj się z artykułem w sekcji jak to zrobić w spisie treści Site Recovery.
+> Samouczki pokazują najprostszą ścieżkę wdrożenia dla scenariusza. Jeśli to możliwe, używają opcji domyślnych i nie przedstawiają wszystkich możliwych ustawień i ścieżek. Aby uzyskać szczegółowe instrukcje, zapoznaj się z artykułem w sekcji jak to zrobić w spisie treści Site Recovery.
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 

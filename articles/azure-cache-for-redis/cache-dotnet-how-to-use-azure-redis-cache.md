@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 05/18/2018
 ms.openlocfilehash: b22d40e29d2150592f2753edd789458fbf25911f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433527"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356428"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>Szybki Start: korzystanie z usługi Azure cache for Redis z aplikacją .NET Framework
 
@@ -22,7 +22,7 @@ W tym przewodniku szybki start dodaliśmy usługę Azure cache for Redis do apli
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/)
-- [Visual Studio 2019](https://www.visualstudio.com/downloads/)
+- [Program Visual Studio 2019](https://www.visualstudio.com/downloads/)
 - [.NET Framework 4 lub więcej](https://www.microsoft.com/net/download/dotnet-framework-runtime), co jest wymagane przez klienta stackexchange. Redis.
 
 ## <a name="create-a-cache"></a>Tworzenie pamięci podręcznej
@@ -92,7 +92,7 @@ using StackExchange.Redis;
 using System.Configuration;
 ```
 
-Połączenie z usługą Azure Cache for Redis jest zarządzane przez klasę `ConnectionMultiplexer`. Ta klasa powinna być udostępniana i wielokrotnie używana w aplikacji klienta. Nie należy tworzyć nowego połączenia dla każdej operacji. 
+Połączenie z usługą Azure Cache for Redis jest zarządzane przez klasę `ConnectionMultiplexer`. Ta klasa powinien być udostępniana i używana ponownie w aplikacji klienta. Nie należy tworzyć nowego połączenia dla każdej operacji. 
 
 Nigdy nie należy przechowywać poświadczeń w kodzie źródłowym. Aby przykład był prosty, używam tylko pliku konfiguracji zewnętrznych wpisów tajnych. Lepszym rozwiązaniem byłoby użycie [usługi Azure Key Vault z certyfikatami](https://docs.microsoft.com/rest/api/keyvault/certificate-scenarios).
 
@@ -168,7 +168,7 @@ Usługa Redis przechowuje większość danych w formie ciągów Redis, ale ciąg
 
 Naciśnij klawisze **Ctrl+F5**, aby skompilować i uruchomić aplikację konsolową.
 
-W poniższym przykładzie widać, że klucz `Message` miał wcześniej w pamięci podręcznej wartość, która została ustawiona za pomocą konsoli pamięci podręcznej Redis w witrynie Azure Portal. Aplikacja zaktualizowała tę wartość w pamięci podręcznej. Aplikacja również wykonała polecenia `PING` i `CLIENT LIST`.
+W poniższym przykładzie widać, że klucz `Message` miał już w pamięci podręcznej wartość, która została ustawiona za pomocą konsoli Redis w witrynie Azure Portal. Aplikacja zaktualizowała tę wartość w pamięci podręcznej. Aplikacja również wykonała polecenia `PING` i `CLIENT LIST`.
 
 ![Częściowa aplikacja konsolowa](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-console-app-partial.png)
 
@@ -227,7 +227,7 @@ W dolnej części procedury `Main()` w pliku *Program.cs* i przed wywołaniem do
 
 Naciśnij klawisze **Ctrl+F5**, aby skompilować i uruchomić aplikację konsolową na potrzeby testowania serializacji obiektów platformy .NET. 
 
-![Ukończono tworzenie aplikacji konsolowej](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-console-app-complete.png)
+![Ukończona aplikacja konsolowa](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-console-app-complete.png)
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
@@ -256,7 +256,7 @@ Po krótkim czasie grupa zasobów i wszystkie zawarte w niej zasoby zostaną usu
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki start przedstawiono sposób użycia usługi Azure Cache for Redis z poziomu aplikacji platformy .NET. Przejdź do kolejnego Szybkiego startu, w którym wyjaśniono, jak używać usługi Microsoft Azure Cache for Redis z poziomu aplikacji internetowej ASP.NET.
+W tym przewodniku Szybki start przedstawiono sposób użycia usługi Azure Cache for Redis z poziomu aplikacji platformy .NET. Przejdź do kolejnego Szybkiego startu, w którym wyjaśniono użycie usługi Microsoft Azure Cache for Redis z poziomu aplikacji internetowej ASP.NET.
 
 > [!div class="nextstepaction"]
 > [Tworzenie na platformie ASP.NET aplikacji internetowej, która korzysta z usługi Microsoft Azure Cache for Redis.](./cache-web-app-howto.md)

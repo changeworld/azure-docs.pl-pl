@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 08/15/2019
 ms.author: cherylmc
 ms.openlocfilehash: 9c5e6d5aca51bd560a46837ba47de86362665773
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861918"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379234"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>Praca z jednostkami SKU bramy sieci wirtualnej (starszą wersją SKU)
 

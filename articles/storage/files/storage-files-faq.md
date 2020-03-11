@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 5cbb819ef1300f16a40dbdd0da52a35bdf578e59
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: f1be146a5173c86a8b19bca5c7b3b8c72d72b9c5
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598191"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362429"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Często zadawane pytania dotyczące Azure Files
 [Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem standardowego [protokołu bloku komunikatów serwera (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Udziały plików platformy Azure można instalować jednocześnie w chmurze lub lokalnych wdrożeniach systemów Windows, Linux i macOS. Możesz również buforować udziały plików platformy Azure na maszynach z systemem Windows Server, używając Azure File Sync, aby szybko uzyskać dostęp do miejsca, w którym są używane dane.
@@ -179,12 +179,12 @@ W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące 
 * <a id="ad-support-rest-apis"></a>
 istnieją **interfejsy API REST obsługujące pobieranie/Ustawianie/kopiowanie katalogów/plików list ACL systemu plików NTFS?**
 
-    Tak. Obsługujemy interfejsy API REST, które pobierają, ustawiają lub kopiują listy ACL systemu plików NTFS dla katalogów lub plików w przypadku korzystania z interfejsu API REST [2019-02-02](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-02-02) (lub nowszego).
+    Tak. Obsługujemy interfejsy API REST, które pobierają, ustawiają lub kopiują listy ACL systemu plików NTFS dla katalogów lub plików w przypadku korzystania z interfejsu API REST [2019-07-07](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (lub nowszego).
 
 * <a id="ad-vm-subscription"></a>
 **mogę uzyskać dostęp do Azure Files przy użyciu poświadczeń usługi Azure AD z maszyny wirtualnej w ramach innej subskrypcji?**
 
-    Jeśli subskrypcja, w ramach której wdrożono udział plików, jest skojarzona z tą samą dzierżawą usługi Azure AD, co wdrożenie Azure AD Domain Services, do którego jest przyłączona maszyna wirtualna, można uzyskać dostęp do Azure Files przy użyciu tych samych poświadczeń usługi Azure AD. Ograniczenie jest nakładane nie na subskrypcję, ale w skojarzonej dzierżawie usługi Azure AD.    
+    Jeśli subskrypcja, w ramach której wdrożono udział plików, jest skojarzona z tą samą dzierżawą usługi Azure AD, co wdrożenie Azure AD Domain Services, do którego jest przyłączona maszyna wirtualna, można uzyskać dostęp do Azure Files przy użyciu tych samych poświadczeń usługi Azure AD. Ograniczenie jest nakładane nie na subskrypcję, ale w skojarzonej dzierżawie usługi Azure AD.
     
 * <a id="ad-support-subscription"></a>
 **można włączyć Azure Files AD DS platformy Azure lub uwierzytelnianie usługi AD przy użyciu dzierżawy usługi Azure AD, która różni się od głównej dzierżawy, z którą jest skojarzony udział plików?**

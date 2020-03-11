@@ -9,11 +9,11 @@ ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 58997b20c01f33037a5e5e149caa59e1630373ff
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978470"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360937"
 ---
 # <a name="azure-importexport-system-requirements"></a>Wymagania dotyczące systemu Azure Import/Export
 
@@ -21,13 +21,13 @@ W tym artykule opisano ważne wymagania dotyczące usługi Azure Import/Export. 
 
 ## <a name="supported-operating-systems"></a>Obsługiwane systemy operacyjne
 
-Aby przygotować dyski twarde, za pomocą narzędzia WAImportExport, następujące **64-bitowego systemu operacyjnego, który obsługuje szyfrowanie dysków funkcją BitLocker** są obsługiwane.
+Aby przygotować dyski twarde przy użyciu narzędzia WAImportExport, obsługiwane są następujące **64-bitowe systemy operacyjne, które obsługują szyfrowanie dysków funkcją BitLocker** .
 
 
 |Platforma |Wersja |
 |---------|---------|
-|Windows     | Windows 7 Enterprise, Windows 7 Ultimate <br> Windows 8.1 Pro, Windows 8 Enterprise, Windows 8 Pro, Windows 8.1 Enterprise <br> Windows 10        |
-|Windows Server     |Windows Server 2008 R2 <br> Windows Server 2012, Windows Server 2012 R2         |
+|System Windows     | Windows 7 Enterprise, Windows 7 Ultimate <br> Windows 8.1 Pro, Windows 8 Enterprise, Windows 8 Pro, Windows 8.1 Enterprise <br> Windows 10        |
+|Oprogramowanie Windows Server     |Windows Server 2008 R2 <br> Windows Server 2012, Windows Server 2012 R2         |
 
 ## <a name="other-required-software-for-windows-client"></a>Inne wymagane oprogramowanie klienta Windows
 
@@ -45,22 +45,22 @@ Usługa Azure Import/Export obsługuje następujące typy kont magazynu:
 - Konta usługi Blob Storage
 - Konta magazynu Ogólnego przeznaczenia V1 (zarówno w przypadku wdrożeń klasycznych, jak i Azure Resource Manager),
 
-Aby uzyskać więcej informacji na temat kont magazynu, zobacz [omówienie kont magazynu platformy Azure](storage-account-overview.md).
+Aby uzyskać więcej informacji na temat kont magazynu, zobacz [Omówienie kont usługi Azure Storage](storage-account-overview.md).
 
-Każde zadanie może służyć do przesyłania danych do lub z tylko jednego konta magazynu. Innymi słowy zadanie importu/eksportu pojedynczej nie mogą rozciągać się na wielu kontach magazynu. Aby uzyskać informacje dotyczące tworzenia nowego konta magazynu, zobacz [sposób tworzenia konta magazynu](storage-account-create.md).
+Każde zadanie może służyć do przesyłania danych do lub z tylko jednego konta magazynu. Innymi słowy zadanie importu/eksportu pojedynczej nie mogą rozciągać się na wielu kontach magazynu. Aby uzyskać informacje dotyczące tworzenia nowego konta magazynu, zobacz [jak utworzyć konto magazynu](storage-account-create.md).
 
 > [!IMPORTANT]
-> Usługa Azure Import/Eksport obsługują kont magazynu, gdzie [punkty końcowe usługi sieci wirtualnej](../../virtual-network/virtual-network-service-endpoints-overview.md) funkcja została włączona. 
+> Usługa eksportu Azure import nie obsługuje kont magazynu, w których włączono funkcję [punktów końcowych Virtual Network usługi](../../virtual-network/virtual-network-service-endpoints-overview.md) . 
 
 ## <a name="supported-storage-types"></a>Obsługiwane typy
 
 Poniższa lista typów magazynu jest obsługiwana przy użyciu usługi Azure Import/Export.
 
 
-|Zadanie  |Usługa Storage |Obsługiwane  |Brak obsługi  |
+|Zadanie  |Usługa Storage |Obsługiwane  |Nieobsługiwane  |
 |---------|---------|---------|---------|
 |Import     |  Azure Blob Storage <br><br> Usługa Azure File storage       | Blokowe obiekty BLOB i stronicowe obiekty BLOB, obsługiwane <br><br> Obsługiwane pliki          |
-|Eksportuj     |   Azure Blob Storage       | Blokowe obiekty BLOB, stronicowe obiekty BLOB i obiekty BLOB dołączania obsługiwane         | Usługa pliki systemu Azure nie jest obsługiwane
+|Eksportowanie     |   Azure Blob Storage       | Blokowe obiekty BLOB, stronicowe obiekty BLOB i obiekty BLOB dołączania obsługiwane         | Usługa pliki systemu Azure nie jest obsługiwane
 
 
 ## <a name="supported-hardware"></a>Obsługiwane usługi sprzętowego
@@ -95,4 +95,4 @@ Podczas przygotowywania dysków twardych i kopiowanie danych przy użyciu narzę
 
 * [Konfigurowanie narzędzia WAImportExport](storage-import-export-tool-how-to.md)
 * [Transfer danych za pomocą narzędzia wiersza polecenia AzCopy](storage-use-azcopy.md)
-* [Przykład interfejsu API REST wyeksportować importu Azure](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/)
+* [Przykład interfejsu API REST usługi Azure Import Export](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/)

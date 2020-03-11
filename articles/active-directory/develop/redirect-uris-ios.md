@@ -18,11 +18,11 @@ ms.author: marsma
 ms.reviewer: jak
 ms.custom: aaddev
 ms.openlocfilehash: c36c6b1b1b08de6d2db9a7f7f9ebd3b162c02383
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77085642"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377131"
 ---
 # <a name="using-redirect-uris-with-the-microsoft-authentication-library-for-ios-and-macos"></a>Używanie identyfikatorów URI przekierowania z biblioteką uwierzytelniania firmy Microsoft dla systemów iOS i macOS
 

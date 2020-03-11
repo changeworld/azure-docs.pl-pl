@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: jingwang
 ms.openlocfilehash: 874c685491774e2a318ae0a8b7394945a51b2f7f
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77423814"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358486"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopiowanie danych z i do programu Oracle przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -65,10 +65,10 @@ Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które
 
 Połączona usługa Oracle obsługuje następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| typ | Właściwość Type musi mieć wartość **Oracle**. | Tak |
-| connectionString | Określa informacje, które są konieczne do nawiązania połączenia z wystąpieniem Oracle Database. <br/>Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć konfigurację `password` z parametrów połączenia. Zapoznaj się z poniższymi przykładami i [Zapisz poświadczenia w Azure Key Vault](store-credentials-in-key-vault.md) , aby uzyskać więcej szczegółów. <br><br>**Obsługiwany typ połączenia**: możesz użyć **identyfikatora SID Oracle** lub **nazwy usługi Oracle** , aby zidentyfikować swoją bazę danych:<br>— Jeśli używasz identyfikatora SID: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>— Jeśli używasz nazwy usługi: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;`<br>Aby skorzystać z zaawansowanych opcji połączenia z natywnym oprogramowaniem Oracle, możesz dodać wpis w [pliku tnsnames. Plik ORA](http://www.orafaq.com/wiki/Tnsnames.ora) na serwerze Oracle i w połączonej usłudze Oracle ADF, wybierz, aby użyć typu połączenia nazwa usługi Oracle i skonfigurować odpowiednią nazwę usługi. | Tak |
+| type | Właściwość Type musi mieć wartość **Oracle**. | Yes |
+| connectionString | Określa informacje, które są konieczne do nawiązania połączenia z wystąpieniem Oracle Database. <br/>Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć konfigurację `password` z parametrów połączenia. Zapoznaj się z poniższymi przykładami i [Zapisz poświadczenia w Azure Key Vault](store-credentials-in-key-vault.md) , aby uzyskać więcej szczegółów. <br><br>**Obsługiwany typ połączenia**: możesz użyć **identyfikatora SID Oracle** lub **nazwy usługi Oracle** , aby zidentyfikować swoją bazę danych:<br>— Jeśli używasz identyfikatora SID: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>— Jeśli używasz nazwy usługi: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;`<br>Aby skorzystać z zaawansowanych opcji połączenia z natywnym oprogramowaniem Oracle, możesz dodać wpis w [pliku tnsnames. Plik ORA](http://www.orafaq.com/wiki/Tnsnames.ora) na serwerze Oracle i w połączonej usłudze Oracle ADF, wybierz, aby użyć typu połączenia nazwa usługi Oracle i skonfigurować odpowiednią nazwę usługi. | Yes |
 | connectVia | [Środowisko Integration Runtime](concepts-integration-runtime.md) służy do nawiązywania połączenia z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określona, używana jest domyślna Azure Integration Runtime. |Nie |
 
 >[!TIP]
@@ -170,9 +170,9 @@ Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych Oracl
 
 Aby skopiować dane z i do programu Oracle, ustaw właściwość Type zestawu danych na `OracleTable`. Następujące właściwości są obsługiwane.
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| typ | Właściwość Type zestawu danych musi być ustawiona na `OracleTable`. | Tak |
+| type | Właściwość Type zestawu danych musi być ustawiona na `OracleTable`. | Yes |
 | schemat | Nazwa schematu. |Brak źródła tak dla ujścia  |
 | tabela | Nazwa tabeli/widoku. |Brak źródła tak dla ujścia  |
 | tableName | Nazwa tabeli/widoku ze schematem. Ta właściwość jest obsługiwana w celu zapewnienia zgodności z poprzednimi wersjami. W przypadku nowych obciążeń Użyj `schema` i `table`. | Brak źródła tak dla ujścia |
@@ -209,9 +209,9 @@ Ta sekcja zawiera listę właściwości obsługiwanych przez źródło i ujścia
 
 Aby skopiować dane z programu Oracle, należy ustawić typ źródła w działaniu kopiowania na `OracleSource`. W sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości.
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| typ | Właściwość Type źródła działania Copy musi mieć wartość `OracleSource`. | Tak |
+| type | Właściwość Type źródła działania Copy musi mieć wartość `OracleSource`. | Yes |
 | oracleReaderQuery | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Może to być na przykład `"SELECT * FROM MyTable"`.<br>Po włączeniu obciążenia partycjonowanego należy podłączyć wszystkie odpowiednie wbudowane parametry partycji w zapytaniu. Przykłady można znaleźć w sekcji [Kopiowanie równoległe z programu Oracle](#parallel-copy-from-oracle) . | Nie |
 | partitionOptions | Określa opcje partycjonowania danych używane do ładowania danych z programu Oracle. <br>Dozwolone wartości to **none** (wartość domyślna), **PhysicalPartitionsOfTable** i **DynamicRange**.<br>Gdy opcja partycji jest włączona (to nie `None`), stopień równoległości do współbieżnego ładowania danych z bazy danych Oracle jest kontrolowany przez ustawienie [`parallelCopies`](copy-activity-performance.md#parallel-copy) dla działania kopiowania. | Nie |
 | partitionSettings | Określ grupę ustawień partycjonowania danych. <br>Zastosuj, gdy opcja partycji nie jest `None`. | Nie |
@@ -256,9 +256,9 @@ Aby skopiować dane z programu Oracle, należy ustawić typ źródła w działan
 
 Aby skopiować dane do programu Oracle, ustaw typ ujścia w działaniu kopiowania na `OracleSink`. W sekcji **ujścia** działania kopiowania są obsługiwane następujące właściwości.
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| typ | Właściwość Type ujścia działania Copy musi mieć wartość `OracleSink`. | Tak |
+| type | Właściwość Type ujścia działania Copy musi mieć wartość `OracleSink`. | Yes |
 | writeBatchSize | Wstawia dane do tabeli SQL, gdy rozmiar buforu osiągnie `writeBatchSize`.<br/>Dozwolone wartości to liczba całkowita (liczba wierszy). |Nie (domyślnie 10 000) |
 | writeBatchTimeout | Czas oczekiwania na zakończenie operacji wstawiania partii przed przekroczeniem limitu czasu.<br/>Dozwolone wartości to TimeSpan. Przykładem jest 00:30:00 (30 minut). | Nie |
 | preCopyScript | Określ zapytanie SQL dla działania kopiowania, które ma zostać uruchomione przed zapisaniem danych w programie Oracle w każdym przebiegu. Ta właściwość służy do czyszczenia wstępnie załadowanych danych. | Nie |

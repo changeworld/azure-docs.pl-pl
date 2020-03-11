@@ -11,11 +11,11 @@ ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a0576a70b1b345d31ffc11c55f7fa5cbd288acd5
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425514"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357918"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Usługi obsługujące zarządzane tożsamości dla zasobów platformy Azure
 
@@ -40,7 +40,7 @@ Zapoznaj się z poniższą listą, aby skonfigurować tożsamość zarządzaną 
 - [Azure Portal](qs-configure-portal-windows-vm.md)
 - [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Interfejs wiersza polecenia platformy Azure](qs-configure-cli-windows-vm.md)
-- [Szablony Azure Resource Manager](qs-configure-template-windows-vm.md)
+- [Szablony usługi Azure Resource Manager](qs-configure-template-windows-vm.md)
 - [REST](qs-configure-rest-vm.md)
 
 ### <a name="azure-virtual-machine-scale-sets"></a>Virtual Machine Scale Sets platformy Azure
@@ -55,7 +55,7 @@ Zapoznaj się z poniższą listą, aby skonfigurować tożsamość zarządzaną 
 - [Azure Portal](qs-configure-portal-windows-vm.md)
 - [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Interfejs wiersza polecenia platformy Azure](qs-configure-cli-windows-vm.md)
-- [Szablony Azure Resource Manager](qs-configure-template-windows-vm.md)
+- [Szablony usługi Azure Resource Manager](qs-configure-template-windows-vm.md)
 - [REST](qs-configure-rest-vm.md)
 
 ### <a name="azure-app-service"></a>Azure App Service
@@ -164,8 +164,8 @@ Zapoznaj się z poniższą listą, aby skonfigurować tożsamość zarządzaną 
 
 Typ tożsamości zarządzanej | Wszystkie ogólnie dostępne<br>Globalne regiony platformy Azure | Azure Government | Azure (Niemcy) | Azure w Chinach — 21Vianet |
 | --- | --- | --- | --- | --- |
-| Przypisany system | Dostępne | Niedostępny | Niedostępny | Niedostępne |
-| Przypisane przez użytkownika | Dostępne | Niedostępny | Niedostępny |Niedostępny |
+| Przypisany system | Dostępne | Niedostępne | Niedostępne | Niedostępne |
+| Przypisane przez użytkownika | Dostępne | Niedostępne | Niedostępne |Niedostępne |
 
 Zapoznaj się z poniższą listą, aby skonfigurować tożsamość zarządzaną dla aplikacji Service Fabric platformy Azure we wszystkich regionach:
 - [Szablon usługi Azure Resource Manager](https://github.com/Azure-Samples/service-fabric-managed-identity/tree/anmenard-docs)
@@ -183,7 +183,7 @@ Zapoznaj się z poniższą listą, aby skonfigurować dostęp do Azure Resource 
 - [Przypisywanie dostępu za pośrednictwem interfejsu wiersza polecenia platformy Azure](howto-assign-access-CLI.md)
 - [Przypisywanie dostępu za pomocą szablonu Azure Resource Manager](../../role-based-access-control/role-assignments-template.md)
 
-| Chmura | Identyfikator zasobu | Stan |
+| Chmurowa | Identyfikator zasobu | Stan |
 |--------|------------|--------|
 | Globalne platformy Azure | `https://management.azure.com/`| Dostępne |
 | Azure Government | `https://management.usgovcloudapi.net/` | Dostępne |
@@ -192,7 +192,7 @@ Zapoznaj się z poniższą listą, aby skonfigurować dostęp do Azure Resource 
 
 ### <a name="azure-key-vault"></a>W usłudze Azure Key Vault
 
-| Chmura | Identyfikator zasobu | Stan |
+| Chmurowa | Identyfikator zasobu | Stan |
 |--------|------------|--------|
 | Globalne platformy Azure | `https://vault.azure.net`| Dostępne |
 | Azure Government | `https://vault.usgovcloudapi.net` | Dostępne |
@@ -201,16 +201,16 @@ Zapoznaj się z poniższą listą, aby skonfigurować dostęp do Azure Resource 
 
 ### <a name="azure-data-lake"></a>Azure Data Lake 
 
-| Chmura | Identyfikator zasobu | Stan |
+| Chmurowa | Identyfikator zasobu | Stan |
 |--------|------------|--------|
 | Globalne platformy Azure | `https://datalake.azure.net/` | Dostępne |
-| Azure Government |  | Niedostępny |
-| Azure (Niemcy) |   | Niedostępny |
-| Azure w Chinach — 21Vianet |  | Niedostępny |
+| Azure Government |  | Niedostępne |
+| Azure (Niemcy) |   | Niedostępne |
+| Azure w Chinach — 21Vianet |  | Niedostępne |
 
 ### <a name="azure-sql"></a>Azure SQL 
 
-| Chmura | Identyfikator zasobu | Stan |
+| Chmurowa | Identyfikator zasobu | Stan |
 |--------|------------|--------|
 | Globalne platformy Azure | `https://database.windows.net/` | Dostępne |
 | Azure Government | `https://database.usgovcloudapi.net/` | Dostępne |
@@ -219,21 +219,21 @@ Zapoznaj się z poniższą listą, aby skonfigurować dostęp do Azure Resource 
 
 ### <a name="azure-event-hubs"></a>Azure Event Hubs
 
-| Chmura | Identyfikator zasobu | Stan |
+| Chmurowa | Identyfikator zasobu | Stan |
 |--------|------------|--------|
 | Globalne platformy Azure | `https://eventhubs.azure.net` | Dostępne |
-| Azure Government |  | Niedostępny |
-| Azure (Niemcy) |   | Niedostępny |
-| Azure w Chinach — 21Vianet |  | Niedostępny |
+| Azure Government |  | Niedostępne |
+| Azure (Niemcy) |   | Niedostępne |
+| Azure w Chinach — 21Vianet |  | Niedostępne |
 
 ### <a name="azure-service-bus"></a>Azure Service Bus
 
-| Chmura | Identyfikator zasobu | Stan |
+| Chmurowa | Identyfikator zasobu | Stan |
 |--------|------------|--------|
 | Globalne platformy Azure | `https://servicebus.azure.net`  | Dostępne |
 | Azure Government |  | Dostępne |
-| Azure (Niemcy) |   | Niedostępny |
-| Azure w Chinach — 21Vianet |  | Niedostępny |
+| Azure (Niemcy) |   | Niedostępne |
+| Azure w Chinach — 21Vianet |  | Niedostępne |
 
 
 
@@ -245,7 +245,7 @@ Zapoznaj się z poniższą listą, aby skonfigurować dostęp do Azure Resource 
 
 ### <a name="azure-storage-blobs-and-queues"></a>Obiekty blob i kolejki usługi Azure Storage
 
-| Chmura | Identyfikator zasobu | Stan |
+| Chmurowa | Identyfikator zasobu | Stan |
 |--------|------------|--------|
 | Globalne platformy Azure | `https://storage.azure.com/` <br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | Dostępne |
 | Azure Government | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.usgovcloudapi.net` <br /><br />`https://<account>.queue.core.usgovcloudapi.net` | Dostępne |
@@ -263,7 +263,7 @@ Zapoznaj się z poniższą listą, aby skonfigurować dostęp do Azure Resource 
 
 ### <a name="azure-analysis-services"></a>Azure Analysis Services
 
-| Chmura | Identyfikator zasobu | Stan |
+| Chmurowa | Identyfikator zasobu | Stan |
 |--------|------------|--------|
 | Globalne platformy Azure | `https://*.asazure.windows.net` | Dostępne |
 | Azure Government | `https://*.asazure.usgovcloudapi.net` | Dostępne |

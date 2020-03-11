@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: anavin
 ms.openlocfilehash: 66cbb843369dee103f102c9c743da544a833ccf1
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646397"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356609"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Przypisywanie wielu adresów IP do maszyn wirtualnych przy użyciu Azure Portal
 
@@ -55,7 +55,7 @@ Wykonaj czynności opisane w jednej z poniższych sekcji, na podstawie typu adre
 Aby dodać nowy prywatny adres IP, wykonaj następujące kroki:
 
 1. Wykonaj kroki opisane w sekcji [podstawowe kroki](#coreadd) tego artykułu.
-2. Kliknij pozycję **Dodaj**. W wyświetlonym okienku **Dodawanie konfiguracji protokołu IP** Utwórz konfigurację adresu IP o nazwie *ipconfig-4* z *10.0.0.7* jako *statyczny* prywatny adres IP, a następnie kliknij przycisk **OK**.
+2. Kliknij pozycję **Add** (Dodaj). W wyświetlonym okienku **Dodawanie konfiguracji protokołu IP** Utwórz konfigurację adresu IP o nazwie *ipconfig-4* z *10.0.0.7* jako *statyczny* prywatny adres IP, a następnie kliknij przycisk **OK**.
 
     > [!NOTE]
     > Podczas dodawania statycznego adresu IP należy określić nieużywany, prawidłowy adres w podsieci, z którą jest połączona karta sieciowa. Jeśli wybrany adres nie jest dostępny, w portalu zostanie wyświetlony symbol X dla adresu IP i należy wybrać inny.
@@ -87,7 +87,7 @@ Publiczny adres IP jest jednym ustawieniem dla zasobu publicznego adresu IP. Je�
 #### <a name="associate-the-public-ip-address-resource-to-a-new-ip-configuration"></a>Skojarz zasób publicznego adresu IP z nową konfiguracją adresu IP
 
 1. Wykonaj kroki opisane w sekcji [podstawowe kroki](#coreadd) tego artykułu.
-2. Kliknij pozycję **Dodaj**. W wyświetlonym okienku **Dodawanie konfiguracji protokołu IP** Utwórz konfigurację adresu IP o nazwie *ipconfig-4*. W wyświetlonym okienku **Wybierz publiczny** adres IP Włącz **publiczny adres IP** i wybierz istniejący, dostępny zasób publicznego adresu IP.
+2. Kliknij pozycję **Add** (Dodaj). W wyświetlonym okienku **Dodawanie konfiguracji protokołu IP** Utwórz konfigurację adresu IP o nazwie *ipconfig-4*. W wyświetlonym okienku **Wybierz publiczny** adres IP Włącz **publiczny adres IP** i wybierz istniejący, dostępny zasób publicznego adresu IP.
 
     Po wybraniu zasobu publiczny adres IP kliknij przycisk **OK** , a okienko zostanie zamknięte. Jeśli nie masz istniejącego publicznego adresu IP, możesz go utworzyć, wykonując kroki opisane w sekcji [Tworzenie zasobu publicznego adresu IP](#create-public-ip) w tym artykule. 
 

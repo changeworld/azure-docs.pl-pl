@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
 ms.openlocfilehash: a2a85d98bf29e78d58bf0c578ce79943bae21fc1
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543090"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355981"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Dodawanie, zmienianie lub usuwanie adresów IP dla interfejsu sieciowego platformy Azure
 
@@ -35,7 +35,7 @@ Jeśli musisz utworzyć, zmienić lub usunąć interfejs sieciowy, zapoznaj się
 Przed wykonaniem kroków opisanych w sekcji tego artykułu wykonaj następujące zadania:
 
 - Jeśli nie masz jeszcze konta platformy Azure, Utwórz [konto bezpłatnej wersji próbnej](https://azure.microsoft.com/free).
-- Jeśli używasz portalu, Otwórz https://portal.azure.com i zaloguj się przy użyciu konta platformy Azure.
+- Jeśli używasz portalu, Otwórz https://portal.azure.comi zaloguj się przy użyciu konta platformy Azure.
 - W przypadku wykonywania zadań w tym artykule przy użyciu poleceń programu PowerShell uruchom polecenia w [Azure Cloud Shell](https://shell.azure.com/powershell)lub przez uruchomienie programu PowerShell z komputera. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Ten samouczek wymaga modułu Azure PowerShell w wersji 1.0.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure.
 - W przypadku korzystania z poleceń interfejsu wiersza polecenia (CLI) platformy Azure w celu wykonania zadań w tym artykule Uruchom polecenia w [Azure Cloud Shell](https://shell.azure.com/bash)lub przez uruchomienie interfejsu wiersza polecenia na komputerze. Ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.31 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia platformy Azure lokalnie, musisz również uruchomić `az login`, aby utworzyć połączenie z platformą Azure.
 
@@ -53,9 +53,9 @@ Możesz dodać dowolną liczbę [prywatnych](#private) i [publicznych](#public) 
 
    |Ustawienie|Wymagana?|Szczegóły|
    |---|---|---|
-   |Nazwa|Tak|Musi być unikatowa dla interfejsu sieciowego|
-   |Typ|Tak|Ponieważ dodawana jest konfiguracja protokołu IP do istniejącego interfejsu sieciowego, a każdy interfejs sieciowy musi mieć [podstawową](#primary) konfigurację adresu IP, jedyną opcją jest **pomocnicza**.|
-   |Metoda przypisania prywatnego adresu IP|Tak|[**Dynamiczny**](#dynamic): platforma Azure przypisuje następny dostępny adres dla zakresu adresów podsieci, w którym jest wdrożony interfejs sieciowy. [**Statyczny**](#static): przypiszesz nieużywany adres dla zakresu adresów podsieci, w którym jest wdrożony interfejs sieciowy.|
+   |Name (Nazwa)|Yes|Musi być unikatowa dla interfejsu sieciowego|
+   |Typ|Yes|Ponieważ dodawana jest konfiguracja protokołu IP do istniejącego interfejsu sieciowego, a każdy interfejs sieciowy musi mieć [podstawową](#primary) konfigurację adresu IP, jedyną opcją jest **pomocnicza**.|
+   |Metoda przypisania prywatnego adresu IP|Yes|[**Dynamiczny**](#dynamic): platforma Azure przypisuje następny dostępny adres dla zakresu adresów podsieci, w którym jest wdrożony interfejs sieciowy. [**Statyczny**](#static): przypiszesz nieużywany adres dla zakresu adresów podsieci, w którym jest wdrożony interfejs sieciowy.|
    |Publiczny adres IP|Nie|**Wyłączone:** Z konfiguracją IP nie jest obecnie skojarzony żaden zasób publicznego adresu IP. **Włączone:** Wybierz istniejący publiczny adres IP IPv4 lub Utwórz nowy. Aby dowiedzieć się, jak utworzyć publiczny adres IP, zapoznaj się z artykułem [publiczne adresy IP](virtual-network-public-ip-address.md#create-a-public-ip-address) .|
 6. Ręcznie Dodaj pomocnicze prywatne adresy IP do systemu operacyjnego maszyny wirtualnej, wykonując instrukcje podane w artykule [przypisywanie wielu adresów IP do systemów operacyjnych maszyn wirtualnych](virtual-network-multiple-ip-addresses-portal.md#os-config) . Zapoznaj się z [prywatnymi](#private) adresami IP, aby uzyskać specjalne uwagi przed ręcznym dodaniem adresów IP do systemu operacyjnego maszyny wirtualnej. Nie należy dodawać żadnych publicznych adresów IP do systemu operacyjnego maszyny wirtualnej.
 
@@ -63,8 +63,8 @@ Możesz dodać dowolną liczbę [prywatnych](#private) i [publicznych](#public) 
 
 |Narzędzie|Polecenie|
 |---|---|
-|Interfejs CLI|[az network nic ip-config create](/cli/azure/network/nic/ip-config)|
-|PowerShell|[Add-AzNetworkInterfaceIpConfig](/powershell/module/az.network/add-aznetworkinterfaceipconfig)|
+|Interfejs wiersza polecenia|[az network nic ip-config create](/cli/azure/network/nic/ip-config)|
+|Program PowerShell|[Add-AzNetworkInterfaceIpConfig](/powershell/module/az.network/add-aznetworkinterfaceipconfig)|
 
 ## <a name="change-ip-address-settings"></a>Zmień ustawienia adresu IP
 
@@ -84,8 +84,8 @@ Może być konieczna zmiana metody przypisania adresu IPv4, zmiana statycznego a
 
 |Narzędzie|Polecenie|
 |---|---|
-|Interfejs CLI|[AZ Network nic IP-config Update](/cli/azure/network/nic/ip-config)|
-|PowerShell|[Set-AzNetworkInterfaceIpConfig](/powershell/module/az.network/set-aznetworkinterfaceipconfig)|
+|Interfejs wiersza polecenia|[AZ Network nic IP-config Update](/cli/azure/network/nic/ip-config)|
+|Program PowerShell|[Set-AzNetworkInterfaceIpConfig](/powershell/module/az.network/set-aznetworkinterfaceipconfig)|
 
 ## <a name="remove-ip-addresses"></a>Usuń adresy IP
 
@@ -100,8 +100,8 @@ Można usunąć [prywatne](#private) i [publiczne](#public) adresy IP z interfej
 
 |Narzędzie|Polecenie|
 |---|---|
-|Interfejs CLI|[AZ Network nic IP-config Delete](/cli/azure/network/nic/ip-config)|
-|PowerShell|[Remove-AzNetworkInterfaceIpConfig](/powershell/module/az.network/remove-aznetworkinterfaceipconfig)|
+|Interfejs wiersza polecenia|[AZ Network nic IP-config Delete](/cli/azure/network/nic/ip-config)|
+|Program PowerShell|[Remove-AzNetworkInterfaceIpConfig](/powershell/module/az.network/remove-aznetworkinterfaceipconfig)|
 
 ## <a name="ip-configurations"></a>Konfiguracje protokołu IP
 
@@ -129,7 +129,7 @@ Oprócz podstawowej konfiguracji adresu IP, interfejs sieciowy może mieć przyp
 
 Do [konfiguracji protokołu IP](#ip-configurations)można przypisać następujące typy adresów IP:
 
-### <a name="private"></a>Prywatne
+### <a name="private"></a>Private
 
 Prywatne adresy [IPv4](#ipv4) lub IPv6 umożliwiają maszynie wirtualnej komunikowanie się z innymi zasobami w sieci wirtualnej lub innych połączonych sieciach. 
 
@@ -150,7 +150,7 @@ Zgodnie z powyższymi krokami prywatny adres IP przypisany do interfejsu sieciow
 
 Poza umożliwieniem, aby maszyna wirtualna mogła komunikować się z innymi zasobami w ramach tych samych lub połączonych sieci wirtualnych, prywatny adres IP również umożliwia maszynie wirtualnej komunikację wychodzącą z Internetem. Połączenia wychodzące to adresy sieci źródłowej tłumaczone przez platformę Azure na nieprzewidywalny publiczny adres IP. Aby dowiedzieć się więcej na temat wychodzącej łączności z Internetem na platformie Azure, przeczytaj artykuł dotyczący [wychodzącego połączenia z Internetem](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Nie można przekazać komunikacji przychodzącej do prywatnego adresu IP maszyny wirtualnej z Internetu. Jeśli połączenia wychodzące wymagają przewidywalnego publicznego adresu IP, skojarz zasób publicznego adresu IP z interfejsem sieciowym.
 
-### <a name="public"></a>Publiczne
+### <a name="public"></a>Public
 
 Publiczne adresy IP przypisane za pośrednictwem zasobu publicznego adresu IP umożliwiają komunikację przychodzącą z maszyną wirtualną z Internetu. Połączenia wychodzące z Internetem używają przewidywalnego adresu IP. Aby uzyskać szczegółowe informacje, zobacz [Opis połączeń wychodzących na platformie Azure](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) . Do konfiguracji adresu IP można przypisać publiczny adres IP, ale nie jest to wymagane. Jeśli publiczny adres IP nie zostanie przypisany do maszyny wirtualnej przez skojarzenie zasobu publicznego adresu IP, maszyna wirtualna może nadal komunikować się z Internetem. W tym przypadku prywatny adres IP jest adresem sieci źródłowej przetłumaczonym przez platformę Azure do nieprzewidywalnego publicznego adresu IP. Aby dowiedzieć się więcej na temat zasobów publicznego adresu IP, zobacz [zasób publicznego adresu IP](virtual-network-public-ip-address.md).
 

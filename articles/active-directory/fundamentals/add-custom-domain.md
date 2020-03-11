@@ -14,11 +14,11 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: de91bd7e1e4c5f9909213f663dd3ede0f979d4de
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073528"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376867"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Dodawanie niestandardowej nazwy domeny za pomocą portalu Azure Active Directory
 
@@ -26,13 +26,13 @@ Każda nowa dzierżawa usługi Azure AD zawiera początkową nazwę domeny, *\<n
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Aby można było dodać niestandardową nazwę domeny, należy utworzyć nazwę domeny przy użyciu rejestratora domen. Aby rejestratora domen akredytowanych, zobacz [rejestratorów ICANN-Accredited](https://www.icann.org/registrar-reports/accredited-list.html).
+Aby można było dodać niestandardową nazwę domeny, należy utworzyć nazwę domeny przy użyciu rejestratora domen. W przypadku akredytowanego rejestratora domen zobacz [rejestratory akredytowane przez ICANN](https://www.icann.org/registrar-reports/accredited-list.html).
 
 ## <a name="create-your-directory-in-azure-ad"></a>Tworzenie katalogu w usłudze Azure AD
 
 Po otrzymaniu nazwy domeny, można utworzyć pierwszy katalog usługi Azure AD. Zaloguj się do Azure Portal dla katalogu przy użyciu konta z rolą **właściciela** dla subskrypcji.
 
-Tworzenie nowego katalogu, wykonując kroki opisane w [utworzyć nową dzierżawę dla organizacji](active-directory-access-create-new-tenant.md#create-a-new-tenant-for-your-organization).
+Utwórz nowy katalog, wykonując kroki opisane w temacie [Tworzenie nowej dzierżawy dla organizacji](active-directory-access-create-new-tenant.md#create-a-new-tenant-for-your-organization).
 
 >[!IMPORTANT]
 >Osoba, która tworzy dzierżawy jest automatycznie administratorem globalnym dla tej dzierżawy. Administrator globalny może dodać dodatkowych administratorów do dzierżawy.
@@ -98,15 +98,15 @@ Po zweryfikowaniu nazwy domeny niestandardowej można usunąć plik TXT lub MX w
 
 Jeśli usługa Azure AD nie można zweryfikować niestandardowej nazwy domeny, należy spróbować wykonać następujące czynności:
 
-- **Poczekaj co najmniej godzinę i spróbuj ponownie**. Rekordy DNS muszą zostać poddane propagacji, aby usługa Azure AD mogła zweryfikować domenę. Ten proces może potrwać godzinę lub dłużej.
+- **Zaczekaj co najmniej godzinę i spróbuj ponownie**. Rekordy DNS muszą zostać poddane propagacji, aby usługa Azure AD mogła zweryfikować domenę. Ten proces może potrwać godzinę lub dłużej.
 
-- **Upewnij się, że rekord DNS jest poprawna.** Wróć do lokacji rejestratora nazw domen. Upewnij się, że wpis istnieje i że jest zgodny z informacjami o wpisie DNS dostarczonymi przez usługę Azure AD.
+- **Upewnij się, że rekord DNS jest prawidłowy.** Wróć do lokacji rejestratora nazw domen. Upewnij się, że wpis istnieje i że jest zgodny z informacjami o wpisie DNS dostarczonymi przez usługę Azure AD.
 
   Jeśli nie możesz zaktualizować rekordu w witrynie rejestratora, Udostępnij wpis osobie, która ma uprawnienia do dodawania wpisu i sprawdź, czy jest poprawna.
 
 - **Upewnij się, że nazwa domeny nie jest już używana w innym katalogu.** Nazwę domeny można zweryfikować tylko w jednym katalogu. Jeśli nazwa domeny jest obecnie weryfikowana w innym katalogu, nie można jej zweryfikować w nowym katalogu. Aby rozwiązać ten problem duplikatów, należy usunąć nazwę domeny z katalogu stare. Aby uzyskać więcej informacji na temat usuwania nazw domen, zobacz [Zarządzanie niestandardowymi nazwami domen](../users-groups-roles/domains-manage.md).
 
-- **Upewnij się, że nie ma żadnych niezarządzanych dzierżawach usługi Power BI.** Jeśli użytkownicy aktywowano usługi Power BI za pośrednictwem samoobsługowego tworzenia nowego konta, a utworzona niezarządzana dzierżawa dla Twojej organizacji, należy wykonać nad zarządzaniem jako administrator wewnętrzny lub zewnętrzny przy użyciu programu PowerShell. Aby uzyskać więcej informacji, zobacz temat [Take over an unmanaged directory as administrator in Azure Active Directory](../users-groups-roles/domains-admin-takeover.md) (Przejmowanie niezarządzanego katalogu jako administrator w usłudze Azure Active Directory).
+- **Upewnij się, że nie masz żadnych niezarządzanych dzierżawców Power BI.** Jeśli użytkownicy aktywowano usługi Power BI za pośrednictwem samoobsługowego tworzenia nowego konta, a utworzona niezarządzana dzierżawa dla Twojej organizacji, należy wykonać nad zarządzaniem jako administrator wewnętrzny lub zewnętrzny przy użyciu programu PowerShell. Aby uzyskać więcej informacji, zobacz temat [Take over an unmanaged directory as administrator in Azure Active Directory](../users-groups-roles/domains-admin-takeover.md) (Przejmowanie niezarządzanego katalogu jako administrator w usłudze Azure Active Directory).
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -116,4 +116,4 @@ Jeśli usługa Azure AD nie można zweryfikować niestandardowej nazwy domeny, n
 
 - Zarządzanie z informacjami dotyczącymi nazwy domeny w usłudze Azure AD. Aby uzyskać więcej informacji, zobacz [Zarządzanie niestandardowymi nazwami domen](../users-groups-roles/domains-manage.md).
 
-- Jeśli masz lokalne wersje systemu Windows Server, który chcesz użyć wraz z usługi Azure Active Directory, zobacz [integrowanie katalogów lokalnych z usługą Azure Active Directory](../connect/active-directory-aadconnect.md).
+- Jeśli masz lokalne wersje systemu Windows Server, które mają być używane razem z Azure Active Directory, zobacz [integrowanie katalogów lokalnych z Azure Active Directory](../connect/active-directory-aadconnect.md).

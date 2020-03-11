@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 01/30/2020
 ms.author: juliako
 ms.openlocfilehash: 1d28fc37b98493322b9e201ac899b7911dd1d705
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988349"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359461"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Analizowanie plików wideo i audio przy użyciu Azure Media Services
 
@@ -28,7 +28,7 @@ Aby analizować zawartość przy użyciu ustawień wstępnych Media Services v3,
 > [!NOTE]
 > Jeśli używasz wstępnych ustawień analizatora wideo lub dźwięku, skorzystaj z witryny Azure Portal i ustaw na koncie 10 jednostek zarezerwowanych multimediów S3. Aby uzyskać więcej informacji, zobacz temat [Scale media processing (Skalowanie przetwarzania multimediów)](media-reserved-units-cli-how-to.md).
 
-## <a name="compliance-privacy-and-security"></a>Zgodność, prywatność i zabezpieczenia
+## <a name="compliance-privacy-and-security"></a>Zgodność, ochrona prywatności i zabezpieczenia
 
 Ważną kwestią jest przestrzeganie wszystkich obowiązujących przepisów dotyczących używania Video Indexer i nie można używać Video Indexer lub żadnej innej usługi platformy Azure w sposób naruszający prawa innych lub mogą być szkodliwe dla innych osób. Przed przekazaniem jakichkolwiek filmów wideo, w tym wszelkich danych biometrycznych, do usługi Video Indexer na potrzeby przetwarzania i przechowywania, należy dysponować wszystkimi właściwymi prawami, w tym wszystkimi odpowiednimi komunikatami o zgodzie, z poszczególnych osób w filmie wideo. Aby dowiedzieć się o zgodności, ochronie prywatności i bezpieczeństwie w Video Indexer, [warunki Cognitive Services](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)firmy Microsoft. W celu zachowania poufności informacji firmy Microsoft i obsługi danych należy zapoznać się z zasadami [zachowania poufności informacji](https://privacy.microsoft.com/PrivacyStatement)firmy Microsoft, tematami dotyczącymi [usług online](https://www.microsoft.com/licensing/product-licensing/products) ("Ost") i [uzupełnieniem przetwarzania danych](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA"). Dodatkowe informacje o ochronie prywatności, takie jak przechowywanie danych, usuwanie/niszczenie, są dostępne w pliku OST i [tutaj](../video-indexer/faq.md). Korzystając z Video Indexer, wyrażasz zgodę na związanie Cognitive Services warunkami, OST, DPA i zasad zachowania poufności informacji.
 
@@ -67,7 +67,7 @@ Dane wyjściowe obejmują plik JSON (Insights. JSON) ze wszystkimi szczegółowy
 
 ### <a name="transcript"></a>zapisy
 
-|Nazwa|Opis|
+|Name (Nazwa)|Opis|
 |---|---|
 |id|Identyfikator wiersza.|
 |tekst|Samego transkrypcji.|
@@ -105,7 +105,7 @@ Przykład:
 
 ### <a name="ocr"></a>aparat
 
-|Nazwa|Opis|
+|Name (Nazwa)|Opis|
 |---|---|
 |id|Identyfikator wiersza OCR.|
 |tekst|Tekst OCR.|
@@ -148,7 +148,7 @@ Przykład:
 
 ### <a name="faces"></a>ściank
 
-|Nazwa|Opis|
+|Name (Nazwa)|Opis|
 |---|---|
 |id|Identyfikator kroju.|
 |name|Nazwa kroju. Może to być "nieznany #0", zidentyfikowanego osobistości lub osoby przeszkolonej przez klienta.|
@@ -193,7 +193,7 @@ Przykład:
 
 ### <a name="shots"></a>zrzutów
 
-|Nazwa|Opis|
+|Name (Nazwa)|Opis|
 |---|---|
 |id|Identyfikator zrzutu.|
 |Ramki kluczowe|Lista kluczowych klatek w ramach zrzutu (każdy ma identyfikator i listę zakresów czasu wystąpienia). Wystąpienia klatek kluczowych mają pole thumbnailId z IDENTYFIKATORem miniatury klatki kluczowej.|
@@ -250,7 +250,7 @@ Przykład:
 
 ### <a name="statistics"></a>Statystyki
 
-|Nazwa|Opis|
+|Name (Nazwa)|Opis|
 |---|---|
 |CorrespondenceCount|Liczba zbieżności wideo.|
 |WordCount|Liczba wyrazów na prelegenta.|
@@ -263,7 +263,7 @@ Przykład:
 
 Mową są agregowane według pola sentimentType (pozytywna/neutralna/ujemna). Na przykład 0-0,1, 0,1-0,2.
 
-|Nazwa|Opis|
+|Name (Nazwa)|Opis|
 |---|---|
 |id|Identyfikator tonacji.|
 |averageScore |Średnia wszystkich ocen wszystkich wystąpień tego typu tonacji — wartość dodatnia/neutralna/ujemna|
@@ -298,7 +298,7 @@ Mową są agregowane według pola sentimentType (pozytywna/neutralna/ujemna). Na
 
 ### <a name="labels"></a>etykiety
 
-|Nazwa|Opis|
+|Name (Nazwa)|Opis|
 |---|---|
 |id|Identyfikator etykiety.|
 |name|Nazwa etykiety (na przykład "Computer", "TV").|
@@ -356,7 +356,7 @@ Mową są agregowane według pola sentimentType (pozytywna/neutralna/ujemna). Na
 
 ### <a name="keywords"></a>słowa kluczowe
 
-|Nazwa|Opis|
+|Name (Nazwa)|Opis|
 |---|---|
 |id|Identyfikator słowa kluczowego.|
 |tekst|Tekst słowa kluczowego.|
@@ -407,7 +407,7 @@ Blok visualContentModeration zawiera zakresy czasu, które Video Indexer mogły 
 
 Filmy wideo, które mają zawierać zawartość dla dorosłych lub erotycznej, mogą być dostępne tylko w widoku prywatnym. Użytkownicy mogą przesłać żądanie dotyczące przeglądu zawartości przez człowieka, w takim przypadku atrybut `IsAdult` będzie zawierał wynik przeglądu przez człowieka.
 
-|Nazwa|Opis|
+|Name (Nazwa)|Opis|
 |---|---|
 |id|Identyfikator moderowania zawartości wizualnej.|
 |adultScore|Wynik dla dorosłych (z usługi Content moderator).|

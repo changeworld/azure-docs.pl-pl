@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 11/14/2019
 ms.openlocfilehash: 26aa9948a44727ff4c8092eb5131b1c054bf5442
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082447"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357657"
 ---
 # <a name="sql-database-application-development-overview"></a>Omówienie tworzenia aplikacji SQL Database
 
@@ -32,7 +32,7 @@ Możesz użyć różnych [języków programowania i platform](sql-database-conne
 
 Możesz korzystać z narzędzi typu "open source", takich jak [Cheetah](https://github.com/wunderlist/cheetah), [SQL-CLI](https://www.npmjs.com/package/sql-cli), [vs Code](https://code.visualstudio.com/). Ponadto usługa Azure SQL Database współpracuje z narzędziami firmy Microsoft, takimi jak [Visual Studio](https://www.visualstudio.com/downloads/) i [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx). Możesz również użyć interfejsów API Azure Portal, PowerShell i REST, aby zwiększyć produktywność.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Uwierzytelnianie
 
 Dostęp do Azure SQL Database jest chroniony za pomocą nazw logowania i zapór. Azure SQL Database obsługuje zarówno użytkowników uwierzytelniania SQL Server i [Azure Active Directory (AAD)](sql-database-aad-authentication.md) , jak i logowania. Nazwy logowania usługi AAD są dostępne tylko w wystąpieniu zarządzanym. 
 

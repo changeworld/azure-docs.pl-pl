@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 7fc0b2822195d952c2a4f9c02bf3758c0e2b809a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928087"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361470"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-using-azure-data-factory"></a>Kopiowanie danych do i z Azure SQL Database przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -46,7 +46,7 @@ Można utworzyć potok z działaniem kopiowania, które przenosi dane do/z Azure
 
 Najprostszym sposobem utworzenia potoku jest użycie **Kreatora kopiowania**. Zobacz [Samouczek: Tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) na potrzeby szybkiego instruktażu dotyczącego tworzenia potoku przy użyciu Kreatora kopiowania danych.
 
-Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
+Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Aby uzyskać instrukcje krok po kroku dotyczące tworzenia potoku za pomocą działania kopiowania, zobacz [Samouczek dotyczący działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Niezależnie od tego, czy używasz narzędzi, czy interfejsów API, wykonaj następujące kroki, aby utworzyć potok służący do przenoszenia danych ze źródłowego magazynu danych do magazynu danych ujścia:
 
@@ -62,10 +62,10 @@ Poniższe sekcje zawierają szczegółowe informacje na temat właściwości JSO
 ## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 Połączona usługa Azure SQL łączy bazę danych SQL Azure z fabryką danych. Poniższa tabela zawiera opis elementów JSON specyficznych dla połączonej usługi Azure SQL.
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 | --- | --- | --- |
-| type |Właściwość Type musi mieć wartość: **AzureSqlDatabase** |Tak |
-| connectionString |Określ informacje, które są konieczne do nawiązania połączenia z wystąpieniem Azure SQL Database dla właściwości connectionString. Obsługiwane jest tylko uwierzytelnianie podstawowe. |Tak |
+| type |Właściwość Type musi mieć wartość: **AzureSqlDatabase** |Yes |
+| connectionString |Określ informacje, które są konieczne do nawiązania połączenia z wystąpieniem Azure SQL Database dla właściwości connectionString. Obsługiwane jest tylko uwierzytelnianie podstawowe. |Yes |
 
 > [!IMPORTANT]
 > Skonfiguruj [Azure SQL Database zaporą](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) serwera bazy danych, aby [umożliwić usługom platformy Azure dostęp do serwera](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure). Ponadto, jeśli kopiujesz dane do Azure SQL Database spoza platformy Azure, w tym z lokalnych źródeł danych za pomocą bramy usługi Data Factory, skonfiguruj odpowiedni zakres adresów IP dla maszyny wysyłającej dane do Azure SQL Database.
@@ -77,9 +77,9 @@ Aby uzyskać pełną listę sekcji & właściwości dostępne do definiowania ze
 
 Sekcja typeProperties jest inna dla każdego typu zestawu danych i zawiera informacje dotyczące lokalizacji danych w magazynie danych. Sekcja **typeProperties** zestawu danych typu **wartość azuresqltable** ma następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 | --- | --- | --- |
-| tableName |Nazwa tabeli lub widoku w wystąpieniu Azure SQL Database, do którego odwołuje się połączona usługa. |Tak |
+| tableName |Nazwa tabeli lub widoku w wystąpieniu Azure SQL Database, do którego odwołuje się połączona usługa. |Yes |
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 Aby uzyskać pełną listę sekcji & właściwości dostępne do definiowania działań, zobacz artykuł [Tworzenie potoków](data-factory-create-pipelines.md) . Właściwości, takie jak nazwa, opis, tabele wejściowe i wyjściowe, oraz zasady są dostępne dla wszystkich typów działań.
@@ -94,7 +94,7 @@ Jeśli przenosisz dane z bazy danych Azure SQL, ustaw typ źródła w działaniu
 ### <a name="sqlsource"></a>SqlSource
 W działaniu kopiowania, gdy źródłem jest typ **sqlsource**, w sekcji **typeProperties** są dostępne następujące właściwości:
 
-| Właściwość | Opis | Dozwolone wartości | Wymagane |
+| Właściwość | Opis | Dozwolone wartości | Wymagany |
 | --- | --- | --- | --- |
 | sqlReaderQuery |Użyj zapytania niestandardowego do odczytywania danych. |Ciąg zapytania SQL. Przykład: `select * from MyTable`. |Nie |
 | sqlReaderStoredProcedureName |Nazwa procedury składowanej, która odczytuje dane z tabeli źródłowej. |Nazwa procedury składowanej. Ostatnią instrukcję SQL musi być instrukcja SELECT w procedurze składowanej. |Nie |
@@ -144,7 +144,7 @@ GO
 ### <a name="sqlsink"></a>SqlSink
 **Obiekt sqlsink** obsługuje następujące właściwości:
 
-| Właściwość | Opis | Dozwolone wartości | Wymagane |
+| Właściwość | Opis | Dozwolone wartości | Wymagany |
 | --- | --- | --- | --- |
 | writeBatchTimeout |Czas oczekiwania na zakończenie operacji wstawiania partii przed upływem limitu czasu. |TimeSpan<br/><br/> Przykład: "00: 30:00" (30 minut). |Nie |
 | writeBatchSize |Wstawia dane do tabeli SQL, gdy rozmiar buforu osiągnie writeBatchSize. |Liczba całkowita (liczba wierszy) |Nie (domyślnie: 10000) |
@@ -634,37 +634,37 @@ Jak wspomniano w artykule [działania związane z przenoszeniem danych](data-fac
 
 Podczas przemieszczania danych do i z Azure SQL Database następujące mapowania są używane z typu SQL do typu .NET i na odwrót. Mapowanie jest takie samo jak mapowanie typu danych SQL Server ADO.NET.
 
-| Typ aparatu bazy danych SQL Server | Typ programu .NET Framework |
+| Typ aparatu bazy danych SQL Server | Typ .NET Framework |
 | --- | --- |
 | bigint |Int64 |
 | binary |Byte[] |
 | bit |Wartość logiczna |
 | char |String, Char[] |
-| date |Data i godzina |
-| Datetime |Data i godzina |
-| datetime2 |Data i godzina |
+| date |DateTime |
+| Data/godzina |DateTime |
+| datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
-| Decimal |Decimal |
+| Dziesiętna |Dziesiętna |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
-| float |Double |
+| Float |Podwójne |
 | image |Byte[] |
 | int |Int32 |
-| money |Decimal |
+| money |Dziesiętna |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
-| numeric |Decimal |
+| numeric |Dziesiętna |
 | nvarchar |String, Char[] |
-| real |Pojedyncze |
+| real |Single |
 | rowversion |Byte[] |
-| smalldatetime |Data i godzina |
+| smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |Decimal |
+| smallmoney |Dziesiętna |
 | sql_variant |Object * |
 | tekst |String, Char[] |
-| time |TimeSpan |
+| time |przedział_czasu |
 | sygnatura czasowa |Byte[] |
 | tinyint |Bajtów |
-| uniqueidentifier |Identyfikator GUID |
+| uniqueidentifier |Guid |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
 | xml |Xml |

@@ -4,11 +4,11 @@ description: Użyj Azure Portal i Zarządzaj zasobami platformy Azure, aby wdro�
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.openlocfilehash: 32c807b4881bc59b6bec0d26ab3664abdb200628
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75485106"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358290"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Deploy resources with Resource Manager templates and Azure portal (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i witryny Azure Portal)
 
@@ -23,7 +23,7 @@ Ponadto można również wdrożyć szablon Azure Resource Manager, aby utworzyć
 
 W tym artykule przedstawiono obie metody.
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 1. Aby utworzyć nową grupę zasobów, wybierz pozycję **grupy zasobów** z [Azure Portal](https://portal.azure.com).
 

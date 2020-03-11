@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: e318e5f9b192b9f857a0b97d076ce4cc87cfb73d
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
-ms.translationtype: MT
+ms.openlocfilehash: 9ed2b81c12c698822b9542bb6903189c865b572b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76710986"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358316"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions powiązania SendGrid
 
@@ -32,13 +32,17 @@ Powiązania SendGrid są dostępne w pakiecie NuGet [Microsoft. Azure. WebJobs. 
 
 ## <a name="example"></a>Przykład
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Poniższy przykład pokazuje [ C# funkcję](functions-dotnet-class-library.md) , która używa wyzwalacza kolejki Service Bus i powiązania danych wyjściowych SendGrid.
 
 ### <a name="synchronous"></a>Wykonywane
 
 ```cs
+using SendGrid.Helpers.Mail;
+
+...
+
 [FunctionName("SendEmail")]
 public static void Run(
     [ServiceBusTrigger("myqueue", Connection = "ServiceBusConnection")] Message email,
@@ -65,6 +69,10 @@ public class OutgoingEmail
 ### <a name="asynchronous"></a>Komunikacji
 
 ```cs
+using SendGrid.Helpers.Mail;
+
+...
+
 [FunctionName("SendEmail")]
 public static async void Run(
  [ServiceBusTrigger("myqueue", Connection = "ServiceBusConnection")] Message email,
@@ -92,7 +100,7 @@ public class OutgoingEmail
 
 Możesz pominąć ustawienie właściwości `ApiKey` atrybutu, jeśli masz klucz interfejsu API w ustawieniu aplikacji o nazwie "AzureWebJobsSendGridApiKey".
 
-# <a name="c-scripttabcsharp-script"></a>[C#Napisy](#tab/csharp-script)
+# <a name="c-script"></a>[C#Napisy](#tab/csharp-script)
 
 Poniższy przykład przedstawia powiązanie danych wyjściowych SendGrid w pliku *Function. JSON* i [ C# funkcji skryptu](functions-reference-csharp.md) , która używa powiązania.
 
@@ -151,7 +159,7 @@ public class Message
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Poniższy przykład przedstawia powiązanie danych wyjściowych SendGrid w pliku *Function. JSON* i [funkcję języka JavaScript](functions-reference-node.md) , która używa powiązania.
 
@@ -193,7 +201,7 @@ module.exports = function (context, input) {
 };
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Poniższy przykład pokazuje funkcję wyzwalaną przez protokół HTTP, która wysyła wiadomość e-mail przy użyciu powiązania SendGrid. W konfiguracji powiązania można podać wartości domyślne. Na przykład adres e-mail *od* jest konfigurowany w *funkcji Function. JSON*. 
 
@@ -250,7 +258,7 @@ def main(req: func.HttpRequest, sendGridMessage: func.Out[str]) -> func.HttpResp
     return func.HttpResponse(f"Sent")
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 W poniższym przykładzie użyto adnotacji `@SendGridOutput` z [biblioteki środowiska uruchomieniowego usługi Java Functions](/java/api/overview/azure/functions/runtime) do wysłania wiadomości e-mail za pomocą powiązania danych wyjściowych SendGrid.
 
@@ -306,7 +314,7 @@ public class HttpTriggerSendGrid {
 
 ## <a name="attributes-and-annotations"></a>Atrybuty i adnotacje
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj atrybutu [SendGrid](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs) .
 
@@ -324,19 +332,19 @@ public static void Run(
 
 Aby zapoznać się z pełnym przykładem, zobacz [ C# przykład](#example).
 
-# <a name="c-scripttabcsharp-script"></a>[C#Napisy](#tab/csharp-script)
+# <a name="c-script"></a>[C#Napisy](#tab/csharp-script)
 
 Atrybuty nie są obsługiwane przez C# skrypt.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Atrybuty nie są obsługiwane przez język JavaScript.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Atrybuty nie są obsługiwane przez język Python.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Adnotacja [SendGridOutput](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/SendGridOutput.java) umożliwia deklaratywne skonfigurowanie powiązania SendGrid przez podanie wartości konfiguracyjnych. Więcej szczegółów można znaleźć w sekcjach [przykładowych](#example) i [konfiguracyjnych](#configuration) .
 
@@ -348,8 +356,8 @@ W poniższej tabeli wymieniono właściwości konfiguracji powiązań dostępne 
 
 | *Function. JSON* — Właściwość | Właściwość atrybutu/adnotacji | Opis | Optional (Opcjonalność) |
 |--------------------------|-------------------------------|-------------|----------|
-| type |Nie dotyczy| musi być ustawiony na `sendGrid`.| Nie |
-| kierunek |Nie dotyczy| musi być ustawiony na `out`.| Nie |
+| type |Nie dotyczy| Musi być ustawiony na `sendGrid`.| Nie |
+| kierunek |Nie dotyczy| Musi być ustawiony na `out`.| Nie |
 | name |Nie dotyczy| Nazwa zmiennej używana w kodzie funkcji dla żądania lub treści żądania. Ta wartość jest `$return`, gdy istnieje tylko jedna wartość zwracana. | Nie |
 | apiKey | apiKey | Nazwa ustawienia aplikacji, która zawiera klucz interfejsu API. Jeśli nie zostanie ustawiona, domyślna nazwa ustawienia aplikacji to *AzureWebJobsSendGridApiKey*.| Nie |
 | na| Do | Adres e-mail adresata. | Yes |

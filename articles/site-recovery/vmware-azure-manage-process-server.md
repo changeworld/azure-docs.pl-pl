@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/28/2019
 ms.author: ramamill
 ms.openlocfilehash: ef16e3b75ca8e051b1b7abb1a92843279884c697
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954345"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362868"
 ---
 # <a name="manage-process-servers"></a>Zarządzanie serwerami przetwarzania
 
@@ -43,7 +43,7 @@ Należy zrównoważyć obciążenie przez przeniesienie maszyn wirtualnych międ
 
     ![LoadBalance](media/vmware-azure-manage-process-server/LoadBalance.png)
 
-4. Kliknij pozycję **równoważenie obciążenia**i wybierz docelowy serwer przetwarzania, do którego chcesz przenieść maszyny. Następnie kliknij przycisk **OK** .
+4. Kliknij pozycję **równoważenie obciążenia**i wybierz docelowy serwer przetwarzania, do którego chcesz przenieść maszyny. Następnie kliknij przycisk **OK**.
 
     ![LoadPS](media/vmware-azure-manage-process-server/LoadPS.PNG)
 
@@ -59,7 +59,7 @@ Przenieś całe obciążenie obsługiwane przez serwer przetwarzania na inny ser
 1. W magazynie w obszarze **Zarządzaj** kliknij **Site Recovery infrastruktura**. W obszarze **dla maszyn fizycznych VMware &** kliknij pozycję **serwery konfiguracji**.
 2. Kliknij serwer konfiguracji, z którym są zarejestrowane serwery przetwarzania.
 3. Kliknij serwer przetwarzania, z którego chcesz przełączyć obciążenie.
-4. Kliknij pozycję **przełącznik**, wybierz docelowy serwer przetwarzania, do którego chcesz przenieść obciążenie. Następnie kliknij przycisk **OK** .
+4. Kliknij pozycję **przełącznik**, wybierz docelowy serwer przetwarzania, do którego chcesz przenieść obciążenie. Następnie kliknij przycisk **OK**.
 
     ![Przełącznik](media/vmware-azure-manage-process-server/Switch.PNG)
 

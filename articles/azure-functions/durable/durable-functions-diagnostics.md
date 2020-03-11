@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4cb832f8fe11ac2581e97d9cdcc777eaff702ee9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231466"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357835"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Diagnostyka w Durable Functions na platformie Azure
 
@@ -381,7 +381,7 @@ Azure Functions obsługuje kod funkcji debugowania bezpośrednio, a ta sama obs�
 > [!TIP]
 > Jeśli ustawienia punktów przerwania w funkcjach programu Orchestrator mają być przerywane tylko w przypadku wykonywania bez powtarzania, można ustawić warunkowy punkt przerwania, który jest dzielony tylko wtedy, gdy `IsReplaying` jest `false`.
 
-## <a name="storage"></a>Magazyn
+## <a name="storage"></a>Storage
 
 Domyślnie magazyny Durable Functions są przechowywane w usłudze Azure Storage. To zachowanie oznacza, że można sprawdzić stan swoich aranżacji przy użyciu narzędzi, takich jak [Eksplorator usługi Microsoft Azure Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
 

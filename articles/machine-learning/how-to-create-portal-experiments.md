@@ -12,11 +12,11 @@ manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/04/2020
 ms.openlocfilehash: a2bf15c8778a6ff549284b1053cf0978d182b802
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116889"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355695"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Twórz, eksploruj i wdrażaj zautomatyzowane eksperymenty uczenia maszynowego za pomocą programu Azure Machine Learning Studio
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "77116889"
 
 * Obszar roboczy Azure Machine Learning z typem **wersji Enterprise Edition**. Zobacz [Tworzenie obszaru roboczego Azure Machine Learning](how-to-manage-workspace.md).  Aby uaktualnić istniejący obszar roboczy do wersji Enterprise, zobacz [uaktualnianie do wersji Enterprise Edition](how-to-manage-workspace.md#upgrade).
 
-## <a name="get-started"></a>Wprowadzenie
+## <a name="get-started"></a>Rozpoczynanie pracy
 
 1. Zaloguj się do [Azure Machine Learning Studio](https://ml.azure.com). 
 

@@ -16,11 +16,11 @@ ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: d97323f1916ee46e6b1f8d4ca8723b950baca39c
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74064796"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373096"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>Samouczek: monitorowanie zmian i aktualizowanie maszyny wirtualnej z systemem Windows na platformie Azure
 

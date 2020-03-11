@@ -15,17 +15,17 @@ ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 01ce952ea774ba852c83d0d6aa3fe38d5dfd677e
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965725"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78366805"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Wdrażanie urządzenia StorSimple w chmurze oraz zarządzanie nim na platformie Azure (aktualizacja Update 3 i nowsze)
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Urządzenie z serii StorSimple 8000 w chmurze oferuje dodatkową funkcję dołączoną do rozwiązania Microsoft Azure StorSimple. Urządzenie StorSimple w chmurze działa na maszynie wirtualnej w sieci wirtualnej platformy Microsoft Azure i służy do tworzenia kopii zapasowych oraz klonowania danych z hostów.
 
@@ -50,9 +50,9 @@ Dostępne są dwa modele urządzenia StorSimple w chmurze: standardowy — 8010 
 | **Typ magazynu** |Używa usługi Azure Standard Storage dla dysków lokalnych<br></br> Informacje na temat [tworzenia konta Standard Storage](../storage/common/storage-create-storage-account.md) |Używa usługi Azure Premium Storage dla dysków lokalnych<sup>2</sup> <br></br> |
 | **Wskazówki dotyczące obciążenia** |Pobieranie plików z kopii zapasowych na poziomie elementu |Scenariusze tworzenia i testowania w chmurze <br></br>Obciążenia o małych opóźnieniach i większej wydajności<br></br>Urządzenie pomocnicze do odzyskiwania po awarii |
 
-<sup>1</sup> *Poprzednia nazwa: 1100*.
+<sup>1</sup> *dawniej znany jako 1100*.
 
-<sup>2</sup> *Urządzenia 8010 i 8020 korzystają z usługi Azure Standard Storage dla warstwy chmury. Różnica istnieje tylko w warstwie lokalnej urządzenia*.
+<sup>2</sup> *8010 i 8020 używają usługi Azure Standard Storage w warstwie chmurowej. Różnica istnieje tylko w warstwie lokalnej urządzenia*.
 
 ## <a name="how-the-cloud-appliance-differs-from-the-physical-device"></a>Czym urządzenie w chmurze różni się od urządzenia fizycznego
 
@@ -64,8 +64,8 @@ W poniższej tabeli przedstawiono niektóre podstawowe różnice między urządz
 
 |  | Urządzenie fizyczne | Urządzenie w chmurze |
 | --- | --- | --- |
-| **Location** |Znajduje się w centrum danych. |Działa w systemie Azure. |
-| **Interfejsy sieciowe** |Ma sześć interfejsów sieciowych: od DATA 0 do DATA 5. |Ma tylko jeden interfejs sieciowy: DATA 0. |
+| **Lokalizacja** |Znajduje się w centrum danych. |Działa w systemie Azure. |
+| **Interfejsy sieciowe** |Ma sześć interfejsów sieciowych: DANE 0 do DANE 5. |Ma tylko jeden interfejs sieciowy: DANE 0. |
 | **Rejestracja** |Rejestrowane podczas wykonywania kroku konfiguracji początkowej. |Rejestracja jest osobnym zadaniem. |
 | **Klucz szyfrowania danych usługi** |Należy wygenerować ponownie w urządzeniu fizycznym, a następnie zaktualizować urządzenie w chmurze za pomocą nowego klucza. |Nie można ponownie wygenerować z urządzenia w chmurze. |
 | **Obsługiwane typy woluminów** |Obsługiwane są zarówno woluminy przypięte lokalnie, jak i woluminy warstwowe. |Obsługiwane są tylko woluminy warstwowe. |
@@ -110,7 +110,7 @@ Przed wykonaniem tych procedur upewnij się, że spełniono [wymagania wstępne 
 
 Wykonaj poniższe kroki, aby utworzyć urządzenie StorSimple w chmurze.
 
-### <a name="step-1-create-a-cloud-appliance"></a>Krok 1: Tworzenie urządzenia w chmurze
+### <a name="step-1-create-a-cloud-appliance"></a>Krok 1. Tworzenie urządzenia w chmurze
 
 Wykonaj poniższe kroki, aby utworzyć urządzenie StorSimple w chmurze.
 
@@ -118,7 +118,7 @@ Wykonaj poniższe kroki, aby utworzyć urządzenie StorSimple w chmurze.
 
 Jeśli tworzenie urządzenia w chmurze zakończy się niepowodzeniem w trakcie tego kroku, może to oznaczać brak łączności z Internetem. Aby uzyskać więcej informacji, przejdź do sekcji [rozwiązywania problemów z błędami łączności internetowej](#troubleshoot-internet-connectivity-errors) podczas tworzenia urządzenia w chmurze.
 
-### <a name="step-2-configure-and-register-the-cloud-appliance"></a>Krok 2: Konfigurowanie i rejestrowanie urządzenia w chmurze
+### <a name="step-2-configure-and-register-the-cloud-appliance"></a>Krok 2. Konfigurowanie i rejestrowanie urządzenia w chmurze
 
 Przed rozpoczęciem tej procedury upewnij się, że masz kopię klucza szyfrowania danych usługi. Klucz szyfrowania danych usługi jest tworzony podczas rejestrowania pierwszego urządzenia fizycznego StorSimple w usłudze Menedżer urządzeń StorSimple. Zgodnie z instrukcją należy przechowywać go w bezpiecznym miejscu. Jeśli nie masz kopii klucza szyfrowania danych usługi, w celu uzyskania pomocy musisz skontaktować się z działem pomocy firmy Microsoft.
 
@@ -126,7 +126,7 @@ Wykonaj poniższe kroki, aby skonfigurować i zarejestrować urządzenie StorSim
 
 [!INCLUDE [Configure and register a cloud appliance](../../includes/storsimple-8000-configure-register-cloud-appliance.md)]
 
-### <a name="step-3-optional-modify-the-device-configuration-settings"></a>Krok 3: (Opcjonalny) Modyfikowanie ustawień konfiguracji urządzenia
+### <a name="step-3-optional-modify-the-device-configuration-settings"></a>Krok 3 (opcjonalny): Modyfikowanie ustawień konfiguracji dla urządzeń
 
 W poniższej sekcji opisano ustawienia konfiguracji dla urządzeń wymagane dla urządzenia StorSimple w chmurze, jeśli chcesz użyć protokołu CHAP lub przystawki StorSimple Snapshot Manager albo zmienić hasło administratora urządzenia.
 

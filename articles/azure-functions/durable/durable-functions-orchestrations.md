@@ -6,11 +6,11 @@ ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
 ms.openlocfilehash: caa62483373a240991cfec96437cea7849d9b19c
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76261555"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356666"
 ---
 # <a name="durable-orchestrations"></a>Nietrwałe aranżacje
 
@@ -57,7 +57,7 @@ Gdy funkcja aranżacji ma więcej pracy do wykonania (na przykład komunikat odp
 
 Zachowanie związane ze źródłem zdarzenia trwałej struktury zadań jest ściśle powiązane z kodem funkcji programu Orchestrator, który napiszesz. Załóżmy, że masz funkcję programu Orchestrator służącą do łańcucha aktywności, taką jak następująca funkcja programu Orchestrator:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -75,7 +75,7 @@ public static async Task<List<string>> Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -110,7 +110,7 @@ Po zakończeniu punktu kontrolnego funkcja programu Orchestrator jest bezpłatna
 
 Po zakończeniu historia funkcji pokazanej wcześniej wygląda podobnie do poniższej tabeli na platformie Azure Table Storage (skrócony dla celów ilustracyjnych):
 
-| PartitionKey (identyfikator wystąpienia)                     | Typ zdarzenia             | Znacznik czasu               | Dane wejściowe | Nazwa             | Wynik                                                    | Stan |
+| PartitionKey (identyfikator wystąpienia)                     | Klasę             | Znacznik czasu               | Dane wejściowe | Name (Nazwa)             | Wynik                                                    | Stan |
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
 | eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | null  | E1_HelloSequence |                                                           |                     |
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     |
@@ -216,7 +216,7 @@ Funkcja sekcji krytycznej jest również przydatna do koordynowania zmian w trwa
 
 Funkcje programu Orchestrator nie zezwalają na wykonywanie operacji we/wy, zgodnie z opisem w temacie [ograniczenia kodu funkcji](durable-functions-code-constraints.md)w programie Orchestrator. Typowym obejściem tego ograniczenia jest Zawijanie dowolnego kodu, który musi wykonać operacje we/wy w funkcji działania. Aranżacje, które współdziałają z systemami zewnętrznymi, często używają funkcji działania, aby nawiązywać wywołania HTTP i zwracać wynik do aranżacji.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Aby uprościć ten wspólny wzorzec, funkcje programu Orchestrator mogą używać metody `CallHttpAsync` do bezpośredniego wywoływania interfejsów API protokołu HTTP.
 
@@ -238,7 +238,7 @@ public static async Task CheckSiteAvailable(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -265,7 +265,7 @@ Aby uzyskać więcej informacji i zapoznać się z szczegółowymi przykładami,
 
 Nie jest możliwe bezpośrednie przekazywanie wielu parametrów do funkcji działania. Zalecenie jest przekazywane do tablicy obiektów lub obiektów złożonych.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 W programie .NET można także używać obiektów [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) . Poniższy przykład korzysta z nowych funkcji [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) dodanych z [ C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples):
 
@@ -304,7 +304,7 @@ public static async Task<object> Mapper([ActivityTrigger] IDurableActivityContex
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 #### <a name="orchestrator"></a>Orchestrator
 

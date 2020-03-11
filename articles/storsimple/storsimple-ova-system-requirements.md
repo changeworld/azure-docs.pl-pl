@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 38f9c432191ac613c1c0f8c02458e8bc4bf8232a
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76273771"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365721"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>Wymagania systemowe macierzy wirtualnej StorSimple
 
 [!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tym artykule opisano ważne wymagania systemowe dla Microsoft Azure StorSimple macierzy wirtualnej oraz dla klientów magazynu uzyskujących dostęp do macierzy. Zalecamy dokładne zapoznanie się z informacjami przed wdrożeniem systemu StorSimple, a następnie odwoływanie się do niego w razie potrzeby podczas wdrażania i późniejszej operacji.
 
@@ -69,7 +69,7 @@ Poniższe wymagania dotyczące oprogramowania dotyczą inicjatorów iSCSI, któr
 
 | **Obsługiwane systemy operacyjne** | **Wymagana wersja** | **Dodatkowe wymagania/uwagi** |
 | --- | --- | --- |
-| Windows Server |2008R2 Z DODATKIEM SP1, 2012, 2012R2 |StorSimple mogą tworzyć woluminy alokowane elastycznie i w pełni inicjowane. Nie można utworzyć woluminów częściowo zainicjowanych. Woluminy iSCSI StorSimple są obsługiwane tylko w programie: <ul><li>Proste woluminy na dyskach podstawowych systemu Windows.</li><li>System Windows NTFS służący do formatowania woluminu.</li> |
+| Oprogramowanie Windows Server |2008R2 Z DODATKIEM SP1, 2012, 2012R2 |StorSimple mogą tworzyć woluminy alokowane elastycznie i w pełni inicjowane. Nie można utworzyć woluminów częściowo zainicjowanych. Woluminy iSCSI StorSimple są obsługiwane tylko w programie: <ul><li>Proste woluminy na dyskach podstawowych systemu Windows.</li><li>System Windows NTFS służący do formatowania woluminu.</li> |
 
 Poniższe wymagania dotyczące oprogramowania dotyczą klientów SMB, którzy uzyskują dostęp do macierzy wirtualnej StorSimple (skonfigurowany jako serwer plików).
 
@@ -91,12 +91,12 @@ Poniższa tabela zawiera listę portów, które należy otworzyć w zaporze, aby
 
 | **Port nr<sup>1</sup>** | **Do lub do zewnątrz** | **Zakres portów** | **Wymagane** | **Uwagi** |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP) |Out |WAN |Nie |Port wychodzący jest używany na potrzeby dostępu do Internetu w celu pobierania aktualizacji. <br></br>Wychodzący serwer proxy sieci Web jest konfigurowany przez użytkownika. |
-| TCP 443 (HTTPS) |Out |WAN |Tak |Port wychodzący służy do uzyskiwania dostępu do danych w chmurze. <br></br>Wychodzący serwer proxy sieci Web jest konfigurowany przez użytkownika. |
-| UDP 53 (DNS) |Out |WAN |W niektórych przypadkach: Zobacz uwagi. |Ten port jest wymagany tylko wtedy, gdy jest używany internetowy serwer DNS. <br></br> Należy pamiętać, że w przypadku wdrażania serwera plików zalecamy użycie lokalnego serwera DNS. |
-| UDP 123 (NTP) |Out |WAN |W niektórych przypadkach: Zobacz uwagi. |Ten port jest wymagany tylko wtedy, gdy jest używany internetowy serwer NTP.<br></br> Należy pamiętać, że w przypadku wdrażania serwera plików zalecamy synchronizowanie czasu z Active Directory kontrolerami domeny. |
-| TCP 80 (HTTP) |W |Sieć LAN |Tak |Jest to port wejściowy dla lokalnego interfejsu użytkownika na urządzeniu StorSimple na potrzeby lokalnego zarządzania. <br></br> Należy pamiętać, że dostęp do lokalnego interfejsu użytkownika za pośrednictwem protokołu HTTP zostanie automatycznie przekierowany do protokołu HTTPS. |
-| TCP 443 (HTTPS) |W |Sieć LAN |Tak |Jest to port wejściowy dla lokalnego interfejsu użytkownika na urządzeniu StorSimple na potrzeby lokalnego zarządzania. |
+| TCP 80 (HTTP) |Określoną |WAN |Nie |Port wychodzący jest używany na potrzeby dostępu do Internetu w celu pobierania aktualizacji. <br></br>Wychodzący serwer proxy sieci Web jest konfigurowany przez użytkownika. |
+| TCP 443 (HTTPS) |Określoną |WAN |Yes |Port wychodzący służy do uzyskiwania dostępu do danych w chmurze. <br></br>Wychodzący serwer proxy sieci Web jest konfigurowany przez użytkownika. |
+| UDP 53 (DNS) |Określoną |WAN |W niektórych przypadkach: Zobacz uwagi. |Ten port jest wymagany tylko wtedy, gdy jest używany internetowy serwer DNS. <br></br> Należy pamiętać, że w przypadku wdrażania serwera plików zalecamy użycie lokalnego serwera DNS. |
+| UDP 123 (NTP) |Określoną |WAN |W niektórych przypadkach: Zobacz uwagi. |Ten port jest wymagany tylko wtedy, gdy jest używany internetowy serwer NTP.<br></br> Należy pamiętać, że w przypadku wdrażania serwera plików zalecamy synchronizowanie czasu z Active Directory kontrolerami domeny. |
+| TCP 80 (HTTP) |W |Sieć LAN |Yes |Jest to port wejściowy dla lokalnego interfejsu użytkownika na urządzeniu StorSimple na potrzeby lokalnego zarządzania. <br></br> Należy pamiętać, że dostęp do lokalnego interfejsu użytkownika za pośrednictwem protokołu HTTP zostanie automatycznie przekierowany do protokołu HTTPS. |
+| TCP 443 (HTTPS) |W |Sieć LAN |Yes |Jest to port wejściowy dla lokalnego interfejsu użytkownika na urządzeniu StorSimple na potrzeby lokalnego zarządzania. |
 | TCP 3260 (iSCSI) |W |Sieć LAN |Nie |Ten port służy do uzyskiwania dostępu do danych za pośrednictwem protokołu iSCSI. |
 
 <sup>1</sup> w publicznym Internecie nie trzeba otwierać żadnych portów przychodzących.
@@ -120,7 +120,7 @@ Zalecamy ustawienie reguł zapory dla ruchu wychodzącego na podstawie stałych 
 
 | Wzorzec adresu URL | Składnik/funkcjonalność |
 | --- | --- |
-| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` <br>`https://login.windows.net`|Usługa Menedżer urządzeń StorSimple<br>Usługa kontroli dostępu<br>Azure Service Bus<br>Usługa uwierzytelniania|
+| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` <br>`https://login.windows.net`|Usługa Menedżer urządzeń StorSimple<br>Access Control Service<br>Azure Service Bus<br>Usługa uwierzytelniania|
 | `http://*.backup.windowsazure.com` |Rejestracja urządzenia |
 | `https://crl.microsoft.com/pki/*`<br>`https://www.microsoft.com/pki/*` |Odwoływanie certyfikatów |
 | `https://*.core.windows.net/*`<br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Konta usługi Azure Storage i monitorowanie |

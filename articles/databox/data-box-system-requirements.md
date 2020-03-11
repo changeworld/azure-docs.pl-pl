@@ -1,5 +1,5 @@
 ---
-title: Wymagania dotyczące systemu Microsoft Azure Data Box | Dokumentacja firmy Microsoft
+title: Microsoft Azure urządzenie Data Box wymagania systemowe | Microsoft Docs
 description: Informacje na temat wymagań dotyczących oprogramowania i sieci dla urządzenia Azure Data Box
 services: databox
 author: alkohli
@@ -9,35 +9,35 @@ ms.topic: article
 ms.date: 07/11/2019
 ms.author: alkohli
 ms.openlocfilehash: e232ad131b1c0930afcf5e7e78b386aba2c9490b
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839741"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380585"
 ---
-# <a name="azure-data-box-system-requirements"></a>Wymagania systemowe w usłudze Azure Data Box
+# <a name="azure-data-box-system-requirements"></a>Wymagania systemowe Azure Data Box
 
-W tym artykule opisano wymagania systemowe dla usługi Microsoft Azure Data Box i klientom połączenie do urządzenia Data Box. Zaleca się, że starannie Przejrzyj informacje przed wdrożeniem usługi Data Box i następnie wrócić do niego zgodnie z potrzebami podczas wdrażania i kolejna operacja.
+W tym artykule opisano ważne wymagania systemowe dotyczące urządzenie Data Box Microsoft Azure i dla klientów nawiązujących połączenie z urządzenie Data Box. Zalecamy dokładne zapoznanie się z informacjami przed wdrożeniem urządzenie Data Box, a następnie odwoływanie się do niego w razie potrzeby podczas wdrażania i kolejnej operacji.
 
-Wymagania systemowe, obejmują:
+Wymagania systemowe obejmują:
 
-* **Wymagania programowe dotyczące hostów połączenie do urządzenia Data Box** — w tym artykule opisano obsługiwanych platform, przeglądarki dla lokalnego Interfejsu w przeglądarce, klientów protokołu SMB i wszelkie dodatkowe wymagania dla hostów, które można połączyć do urządzenia Data Box.
-* **Wymagania dotyczące sieci dla urządzenia Data Box** — informacje na temat wymagań sieciowych, aby umożliwić optymalne działanie urządzenia Data Box.
+* **Wymagania dotyczące oprogramowania dla hostów łączących się z urządzenie Data Box** — opisuje obsługiwane platformy, przeglądarki dla lokalnego interfejsu użytkownika sieci Web, klientów protokołu SMB i dodatkowe wymagania dotyczące hostów, które mogą łączyć się z urządzenie Data Box.
+* **Wymagania sieciowe dotyczące urządzenie Data Box** — zawiera informacje o wymaganiach sieciowych dla optymalnej operacji urządzenie Data Box.
 
 
 ## <a name="software-requirements"></a>Wymagania dotyczące oprogramowania
 
-Wymagania dotyczące oprogramowania zawierają informacje o obsługiwane systemy operacyjne, przeglądarki obsługiwane przez lokalnego Interfejsu w przeglądarce i klienci SMB.
+Wymagania dotyczące oprogramowania obejmują informacje w obsługiwanych systemach operacyjnych, obsługiwane przeglądarki dla lokalnego interfejsu użytkownika sieci Web i klientów SMB.
 
 ### <a name="supported-operating-systems-for-clients"></a>Obsługiwane systemy operacyjne dla klientów
 
 [!INCLUDE [data-box-supported-os-clients](../../includes/data-box-supported-os-clients.md)]
 
-### <a name="supported-file-systems-for-linux-clients"></a>Systemy plików obsługiwane przez klientów systemu Linux
+### <a name="supported-file-systems-for-linux-clients"></a>Obsługiwane systemy plików dla klientów z systemem Linux
 
 [!INCLUDE [data-box-supported-file-systems-clients](../../includes/data-box-supported-file-systems-clients.md)]
 
-### <a name="supported-storage-accounts"></a>Konta magazynu obsługiwane
+### <a name="supported-storage-accounts"></a>Obsługiwane konta magazynu
 
 [!INCLUDE [data-box-supported-storage-accounts](../../includes/data-box-supported-storage-accounts.md)]
 
@@ -51,15 +51,15 @@ Wymagania dotyczące oprogramowania zawierają informacje o obsługiwane systemy
 
 ## <a name="networking-requirements"></a>Wymagania dotyczące sieci
 
-Twoje centrum danych musi mieć dostęp do szybkiej sieci. Zdecydowanie zaleca się posiadanie co najmniej jednego połączenia 10 GbE. Jeśli połączenie 10 GbE nie jest dostępna, łącza 1 GbE danych może służyć do skopiowania danych, ale kopiowania, które ma wpływ szybkości.
+Twoje centrum danych musi mieć dostęp do szybkiej sieci. Zdecydowanie zaleca się posiadanie co najmniej jednego połączenia 10 GbE. Jeśli połączenie 10-GbE nie jest dostępne, za pomocą linku danych 1 GbE można kopiować dane, ale mają wpływ na szybkości kopiowania.
 
 ### <a name="port-requirements"></a>Wymagania dotyczące portów
 
-Poniższa tabela zawiera listę portów, które muszą być otwarte w zaporze, aby umożliwić ruch SMB lub NFS. W tej tabeli *w* lub *dla ruchu przychodzącego* odnosi się do kierunku z które dostępu przychodzących żądań klienta do Twojego urządzenia. *Limit* lub *wychodzącego* Określa kierunek, w którym urządzenie Data Box wysyła dane zewnętrznie, poza wdrożenia: na przykład, ruch wychodzący do Internetu.
+Poniższa tabela zawiera listę portów, które należy otworzyć w zaporze, aby zezwalać na ruch SMB lub NFS. W tej tabeli *w programie lub w* *ruchu przychodzącym* odwołuje się do kierunku, w którym klient przychodzący żąda dostępu do urządzenia. *Out* lub *wychodzący* odnosi się do kierunku, w którym urządzenie urządzenie Data Box wysyła dane zewnętrznie, poza wdrożeniem: na przykład wychodzące do Internetu.
 
 [!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Wdrażanie usługi Azure Data Box](data-box-deploy-ordered.md)
+* [Wdrażanie Azure Data Box](data-box-deploy-ordered.md)

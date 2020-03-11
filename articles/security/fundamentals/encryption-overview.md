@@ -16,17 +16,17 @@ ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
 ms.openlocfilehash: 541039c82d5ea21c43a847da2710bef4162a2bc7
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72804043"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358969"
 ---
 # <a name="azure-encryption-overview"></a>Omówienie usługi Azure Encryption
 
 Ten artykuł zawiera omówienie sposobu użycia szyfrowania w Microsoft Azure. Obejmuje to główne obszary szyfrowania, w tym szyfrowanie w spoczynku, szyfrowanie w locie i zarządzanie kluczami za pomocą Azure Key Vault. Każda sekcja zawiera linki do bardziej szczegółowych informacji.
 
-## <a name="encryption-of-data-at-rest"></a>Szyfrowanie nieużywanych danych
+## <a name="encryption-of-data-at-rest"></a>Szyfrowanie danych magazynowanych
 
 Dane przechowywane w programie obejmują informacje, które znajdują się w magazynie trwałym na nośniku fizycznym, w dowolnym formacie cyfrowym. Nośnik może zawierać pliki na nośnikach magnetycznych lub optycznych, zarchiwizowane dane i kopie zapasowe danych. Microsoft Azure oferuje różne rozwiązania do magazynowania danych, które są zgodne z różnymi potrzebami, w tym plikami, dyskami, obiektami BLOB i magazynem tabel. Firma Microsoft udostępnia również szyfrowanie w celu ochrony [Azure SQL Database](../../sql-database/sql-database-technical-overview.md), [Azure Cosmos DB](../../data-factory/introduction.md)i Azure Data Lake.
 
@@ -63,7 +63,7 @@ Maszyny wirtualne z systemem Windows i Linux można chronić za pomocą [usługi
 
 Klucze szyfrowania i wpisy tajne są chronione w [subskrypcji Azure Key Vault](../../key-vault/key-vault-overview.md). Za pomocą usługi Azure Backup można tworzyć kopie zapasowe i przywracać zaszyfrowane maszyny wirtualne (VM) korzystające z konfiguracji klucza szyfrowania kluczy (KEK).
 
-### <a name="azure-storage-service-encryption"></a>Szyfrowanie usługi Azure Storage
+### <a name="azure-storage-service-encryption"></a>szyfrowanie usługi Storage platformy Azure
 
 Dane przechowywane w usłudze Azure Blob Storage i udziały plików platformy Azure mogą być szyfrowane zarówno w scenariuszach po stronie serwera, jak i po stronie klienta.
 
@@ -87,7 +87,7 @@ Na koniec można także użyć biblioteki klienta usługi Azure Storage dla jęz
 
 [Azure SQL Database](../../sql-database/sql-database-technical-overview.md) to usługa relacyjnej bazy danych ogólnego przeznaczenia na platformie Azure, która obsługuje struktury, takie jak dane relacyjne, JSON, przestrzenne i XML. SQL Database obsługuje szyfrowanie po stronie serwera za pomocą funkcji Transparent Data Encryption (TDE) i szyfrowania po stronie klienta za pośrednictwem funkcji Always Encrypted.
 
-#### <a name="transparent-data-encryption"></a>Przezroczyste szyfrowanie danych
+#### <a name="transparent-data-encryption"></a>Niewidoczne szyfrowanie danych
 
 [TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) jest używany do szyfrowania plików danych [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016), [Azure SQL Database](../../sql-database/sql-database-technical-overview.md)i [Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) w czasie rzeczywistym przy użyciu klucza szyfrowania bazy danych, który jest przechowywany w rekordzie rozruchowym bazy danych w celu zapewnienia dostępności podczas odzyskiwania.
 
@@ -105,7 +105,7 @@ CLE ma wbudowane funkcje, których można użyć do szyfrowania danych przy uży
 
 ### <a name="cosmos-db-database-encryption"></a>Cosmos DB szyfrowanie bazy danych
 
-[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md) to globalnie dystrybuowana, wielomodelowa baza danych firmy Microsoft. Dane użytkownika przechowywane w Cosmos DB w magazynie nietrwałym (dyski półprzewodnikowe) są domyślnie szyfrowane. Brak kontrolek do włączenia lub wyłączenia. Szyfrowanie w spoczynku jest implementowane przy użyciu wielu technologii zabezpieczeń, w tym bezpiecznych systemów magazynowania kluczy, szyfrowanych sieci i kryptograficznych interfejsów API. Klucze szyfrowania są zarządzane przez firmę Microsoft i obracane zgodnie ze wskazówkami wewnętrznymi firmy Microsoft.
+[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md) to globalnie dystrybuowana, wielomodelowa baza danych firmy Microsoft. Dane użytkownika przechowywane w Cosmos DB w magazynie nietrwałym (dyski półprzewodnikowe) są domyślnie szyfrowane. Brak kontrolek do włączenia lub wyłączenia. Szyfrowanie w spoczynku jest implementowany przy użyciu wielu technologii zabezpieczeń, w tym systemów bezpiecznego magazynu kluczy, sieci szyfrowane i interfejsów API usług kryptograficznych. Klucze szyfrowania są zarządzane przez firmę Microsoft i obracane zgodnie ze wskazówkami wewnętrznymi firmy Microsoft.
 
 ### <a name="at-rest-encryption-in-data-lake"></a>Szyfrowanie w usłudze REST w Data Lake
 

@@ -1,6 +1,6 @@
 ---
-title: Modyfikowanie konfiguracji urządzenia StorSimple 8000 series | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak zmienić konfigurację urządzenia StorSimple, która została już wdrożona za pomocą usługi Menedżer urządzeń StorSimple.
+title: Modyfikowanie konfiguracji urządzenia z serii StorSimple 8000 | Microsoft Docs
+description: Opisuje sposób korzystania z usługi StorSimple Menedżer urządzeń w celu ponownego skonfigurowania już wdrożonego urządzenia StorSimple.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,158 +15,158 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: 774f5a73a5fc30352698c0af0c279fbbe488c480
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60632236"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365866"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>Modyfikowanie konfiguracji urządzenia StorSimple przy użyciu usługi Menedżer urządzeń StorSimple
+# <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>Modyfikowanie konfiguracji urządzenia StorSimple przy użyciu usługi StorSimple Menedżer urządzeń
 
 ## <a name="overview"></a>Omówienie
 
-Witryna Azure portal **ustawienia urządzenia** sekcji **ustawienia** blok zawiera wszystkie parametry urządzenia, które można skonfigurować ponownie na urządzeniu StorSimple, który jest zarządzany przez usługę Menedżer urządzeń StorSimple . W tym samouczku wyjaśniono, jak można użyć **ustawienia** bloku, aby wykonać poniższe zadania poziom urządzenia:
+Sekcja **Ustawienia urządzenia** Azure Portal w bloku **Ustawienia** zawiera wszystkie parametry urządzeń, które można ponownie skonfigurować na urządzeniu StorSimple zarządzanym przez usługę StorSimple Menedżer urządzeń. W tym samouczku wyjaśniono, jak można użyć bloku **Ustawienia** do wykonywania następujących zadań na poziomie urządzenia:
 
-* Modyfikowanie przyjazna nazwa urządzenia
-* Zmodyfikuj ustawienia czasu urządzenia
-* Przypisz pomocniczy serwer DNS
+* Modyfikuj przyjazną nazwę urządzenia
+* Modyfikowanie ustawień czasu urządzenia
+* Przypisywanie pomocniczego serwera DNS
 * Modyfikowanie interfejsów sieciowych
-* Zamień lub ponowne przypisywanie adresów IP
+* Zamiana lub zmiana przypisania adresów IP
 
-## <a name="modify-device-friendly-name"></a>Modyfikowanie przyjazna nazwa urządzenia
+## <a name="modify-device-friendly-name"></a>Modyfikuj przyjazną nazwę urządzenia
 
-Aby zmienić nazwę urządzenia i przypisz go unikatową przyjazną nazwę wybranego, można użyć witryny Azure portal. Użyj **ustawienia ogólne** bloku na urządzeniu, aby zmodyfikować przyjazna nazwa urządzenia. Przyjazna nazwa może zawierać dowolne znaki oraz może zawierać maksymalnie 64 znaki.
+Aby zmienić nazwę urządzenia i przypisać mu unikatową przyjazną nazwę, można użyć Azure Portal. Użyj bloku **Ustawienia ogólne** na urządzeniu, aby zmienić przyjazną nazwę urządzenia. Przyjazna nazwa może zawierać znaki i może składać się z maksymalnie 64 znaków.
 
 > [!NOTE] 
-> Nazwa urządzenia w witrynie Azure portal można modyfikować tylko przed ukończeniem instalacji urządzenia. Po ukończeniu minimalnej konfiguracji urządzenia nie można zmienić nazwy urządzenia.
+> Nazwę urządzenia można modyfikować tylko w Azure Portal przed ukończeniem konfigurowania urządzenia. Po zakończeniu minimalnej konfiguracji urządzenia nie można zmienić nazwy urządzenia.
 
-![Urządzenie ogólnie rzecz biorąc Nazwa ustawienia](./media/storsimple-8000-modify-device-config/modify-general-settings3.png)
+![Nazwa urządzenia w ustawieniach ogólnych](./media/storsimple-8000-modify-device-config/modify-general-settings3.png)
 
-Urządzenia StorSimple, która jest połączona z usługą Menedżera urządzeń StorSimple, ma przypisaną nazwę domyślną. Domyślna nazwa zazwyczaj odzwierciedla numer seryjny urządzenia. Na przykład domyślna nazwa urządzenia jest 15 znaków, takich jak 8600-SHX0991003G44HT wskazuje następujące czynności:
+Do urządzenia StorSimple połączonego z usługą StorSimple Menedżer urządzeń jest przypisana nazwa domyślna. Nazwa domyślna zazwyczaj odzwierciedla numer seryjny urządzenia. Na przykład domyślna nazwa urządzenia o długości 15 znaków, taka jak 8600-SHX0991003G44HT, wskazuje następujące elementy:
 
-* **8600** — wskazuje, model urządzenia.
-* **SHX** — wskazuje witryny produkcyjnej.
+* **8600** — wskazuje model urządzenia.
+* **SHX** — wskazuje lokację produkcyjną.
 * **0991003** — wskazuje określony produkt.
-* **G44HT**-5 ostatnich cyfr są zwiększane, aby utworzyć unikatowe numery seryjne. Może być zestaw sekwencyjne.
+* **G44HT**— ostatnie 5 cyfr są zwiększane, aby utworzyć unikatowe numery seryjne. Nie może to być zestaw sekwencyjny.
 
-## <a name="modify-device-description"></a>Modyfikacja opisu urządzenia
+## <a name="modify-device-description"></a>Modyfikowanie opisu urządzenia
 
-Użyj **ustawienia ogólne** bloku na urządzeniu, aby modyfikacja opisu urządzenia.
+Użyj bloku **Ustawienia ogólne** na urządzeniu, aby zmodyfikować opis urządzenia.
 
-![Opis urządzenia w obszarze Ustawienia ogólne](./media/storsimple-8000-modify-device-config/modify-general-settings4.png)
+![Opis urządzenia w ustawieniach ogólnych](./media/storsimple-8000-modify-device-config/modify-general-settings4.png)
 
-Opis urządzenia niemniej przykład często pomoże zidentyfikować właściciela i fizycznej lokalizacji urządzenia. Pole Opis musi zawierać mniej niż 256 znaków.
+Opis urządzenia zazwyczaj pomaga identyfikować właściciela i fizyczną lokalizację urządzenia. Pole opisu musi zawierać mniej niż 256 znaków.
 
-## <a name="modify-time-settings"></a>Zmodyfikuj ustawienia czasu
+## <a name="modify-time-settings"></a>Modyfikowanie ustawień czasu
 
-Urządzenie musi synchronizować czas w celu uwierzytelniania za pomocą dostawcę usługi magazynu w chmurze. Użyj **ustawienia ogólne** bloku na urządzeniu, aby zmodyfikować ustawienia czasu urządzenia.
+Urządzenie musi zsynchronizować czas, aby można było uwierzytelnić się u dostawcy usług magazynu w chmurze. Aby zmodyfikować ustawienia czasu urządzenia, użyj bloku **Ustawienia ogólne** na urządzeniu.
 
-![Opis urządzenia w obszarze Ustawienia ogólne](./media/storsimple-8000-modify-device-config/modify-general-settings2.png)
+![Opis urządzenia w ustawieniach ogólnych](./media/storsimple-8000-modify-device-config/modify-general-settings2.png)
 
- Wybierz strefę czasową z listy rozwijanej. Można określić maksymalnie dwa serwery protokołu NTP (Network Time):
+ Z listy rozwijanej wybierz swoją strefę czasową. Można określić maksymalnie dwa serwery protokołu NTP (Network Time Protocol):
 
- - **Podstawowy serwer NTP** -konfiguracja jest wymagana i jest określony, kiedy używać środowiska Windows PowerShell dla usługi StorSimple do skonfigurowania urządzenia. Można określić domyślne systemu Windows Server **time.windows.com** serwer NTP. Podstawowa konfiguracja serwera NTP przy użyciu witryny Azure portal można wyświetlić, ale należy użyć interfejsu programu Windows PowerShell, aby ją zmienić. Użyj `Set-HcsNTPClientServerAddress` polecenia cmdlet, aby zmodyfikować podstawowy serwer NTP dla urządzenia. Aby uzyskać więcej informacji, przejdź do składnia [HcsNTPClientServerAddress zestaw](https://technet.microsoft.com/library/dn688138.aspx) polecenia cmdlet.
+ - **Podstawowy serwer NTP** — konfiguracja jest wymagana i jest określana podczas konfigurowania urządzenia za pomocą program Windows PowerShell dla usługi StorSimple. Jako serwer NTP można określić domyślny serwer **Time.Windows.com** systemu Windows Server. Konfigurację podstawowego serwera NTP można wyświetlić za pomocą Azure Portal, ale w celu jego zmiany należy użyć interfejsu programu Windows PowerShell. Użyj polecenia cmdlet `Set-HcsNTPClientServerAddress`, aby zmodyfikować podstawowy serwer NTP na urządzeniu. Aby uzyskać więcej informacji, przejdź do składni polecenia cmdlet [Set-HcsNTPClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) .
 
-- **Pomocniczy serwer NTP** -konfiguracja jest opcjonalne. Portal umożliwia Konfigurowanie zapasowego serwera NTP.
+- **Pomocniczy serwer NTP** — konfiguracja jest opcjonalna. Za pomocą portalu można skonfigurować pomocniczy serwer NTP.
 
-Podczas konfigurowania serwera NTP, upewnij się, że sieć zezwala na ruch NTP z centrum danych do Internetu. Podczas określania publiczny serwer NTP, upewnij się, że zapory sieciowe i inne urządzenia zabezpieczeń są skonfigurowane i umożliwiają ruch NTP przesyłane do i z siecią zewnętrzną. Jeśli dwukierunkowy ruch NTP nie jest dozwolona, należy użyć wewnętrzny serwer NTP (kontroler domeny Windows zapewnia tę funkcję). Jeśli urządzenie nie może zsynchronizować czasu, nie można może komunikować się z dostawcą magazynu w chmurze.
+Podczas konfigurowania serwera NTP upewnij się, że sieć umożliwia przekazywanie ruchu z centrum danych do Internetu. Podczas określania publicznego serwera NTP należy upewnić się, że zapory sieciowe i inne urządzenia zabezpieczeń są skonfigurowane tak, aby zezwalały na ruch NTP do i z sieci zewnętrznej. Jeśli ruch NTP dwukierunkowych nie jest dozwolony, należy użyć wewnętrznego serwera NTP (kontroler domeny systemu Windows udostępnia tę funkcję). Jeśli urządzenie nie może zsynchronizować czasu, może nie być w stanie komunikować się z dostawcą magazynu w chmurze.
 
-Aby wyświetlić listę serwerów NTP publicznych, przejdź do [Serwery NTP w sieci Web](https://support.ntp.org/bin/view/Servers/WebHome).
+Aby wyświetlić listę publicznych serwerów NTP, przejdź do [serwerów NTP w sieci Web](https://support.ntp.org/bin/view/Servers/WebHome).
 
-### <a name="what-happens-if-the-device-is-deployed-in-a-different-time-zone"></a>Co się stanie, jeśli urządzenie jest wdrażana w innej strefie czasowej?
+### <a name="what-happens-if-the-device-is-deployed-in-a-different-time-zone"></a>Co się stanie, jeśli urządzenie zostanie wdrożone w innej strefie czasowej?
 
-Jeśli urządzenie jest wdrażana w innej strefie czasowej, strefę czasową urządzenia zostanie zmieniona. Biorąc pod uwagę, że wszystkie zasady tworzenia kopii zapasowych Użyj strefę czasową urządzenia, zasady tworzenia kopii zapasowych spowoduje automatyczne dopasowanie zgodnie z nowej strefy czasowej. Interwencja użytkownika nie jest wymagane.
+Jeśli urządzenie zostanie wdrożone w innej strefie czasowej, strefa czasowa urządzenia ulegnie zmianie. Uwzględniając, że wszystkie zasady tworzenia kopii zapasowych używają strefy czasowej urządzenia, zasady tworzenia kopii zapasowych zostaną automatycznie dostosowane zgodnie z nową strefą czasową. Nie jest wymagana interwencja użytkownika.
 
 ## <a name="modify-dns-settings"></a>Modyfikowanie ustawień DNS
 
-Serwer DNS jest używany, gdy urządzenie próbuje nawiązać połączenia z usługą dostawcę usługi magazynu w chmurze. Użyj **ustawienia sieciowe** bloku na urządzeniu, aby wyświetlać i modyfikować skonfigurowane ustawienia systemu DNS. 
+Serwer DNS jest używany, gdy urządzenie próbuje skomunikować się z dostawcą usługi magazynu w chmurze. Użyj bloku **Ustawienia sieci** na urządzeniu, aby wyświetlić i zmodyfikować SKONFIGUROWANE ustawienia DNS. 
 
-![Ustawienia DNS w ustawieniach sieci](./media/storsimple-8000-modify-device-config/modify-network-settings1.png)
+![Ustawienia DNS w ustawieniach sieciowych](./media/storsimple-8000-modify-device-config/modify-network-settings1.png)
 
-Wysoką dostępność są wymagane do skonfigurowania podstawowy i pomocniczy serwery DNS podczas wdrażania urządzenie początkowe.
+Aby zapewnić wysoką dostępność, należy skonfigurować zarówno podstawowy, jak i pomocniczy serwer DNS podczas początkowego wdrażania urządzenia.
 
-**Podstawowy serwer DNS** — Użyj programu Windows PowerShell dla usługi StorSimple najpierw określić podstawowy serwer DNS podczas początkowej konfiguracji. Można ponownie skonfigurować podstawowy serwer DNS tylko za pośrednictwem interfejsu programu Windows PowerShell. Użyj `Set-HcsDNSClientServerAddress` polecenia cmdlet, aby zmodyfikować podstawowy serwer DNS w urządzeniu. Aby uzyskać więcej informacji, przejdź do składnia [HcsDNSClientServerAddress zestaw](https://technet.microsoft.com/library/dn688138.aspx) polecenia cmdlet.
+**Podstawowy serwer DNS** — Użyj program Windows PowerShell dla usługi StorSimple, aby najpierw określić podstawowy serwer DNS podczas początkowej konfiguracji. Podstawowy serwer DNS można skonfigurować ponownie tylko za pomocą interfejsu programu Windows PowerShell. Użyj polecenia cmdlet `Set-HcsDNSClientServerAddress`, aby zmodyfikować podstawowy serwer DNS urządzenia. Aby uzyskać więcej informacji, przejdź do składni polecenia cmdlet [Set-HcsDNSClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) .
 
-**Pomocniczy serwer DNS** — Aby zmodyfikować pomocniczy serwer DNS, należy użyć `Set-HcsDNSClientServerAddress` polecenia cmdlet w interfejsie programu Windows PowerShell urządzenia lub **ustawienia sieciowe** bloku urządzenia StorSimple w witrynie Azure portal.
+**Pomocniczy serwer DNS** — aby zmodyfikować pomocniczy serwer DNS, należy użyć polecenia cmdlet `Set-HcsDNSClientServerAddress` w interfejsie programu Windows PowerShell w bloku ustawienia urządzenia lub **sieci** urządzenia StorSimple w Azure Portal.
 
-Aby zmodyfikować pomocniczy serwer DNS w witrynie Azure portal, wykonaj następujące czynności.
+Aby zmodyfikować pomocniczy serwer DNS w Azure Portal, wykonaj następujące czynności.
 
-1. Przejdź do usługi Menedżer urządzeń StorSimple. Z listy urządzeń wybierz i kliknij swoje urządzenie.
+1. Przejdź do usługi Menedżer urządzeń StorSimple. Z listy urządzeń wybierz i kliknij urządzenie.
 
-2. W **ustawienia** przejdź do bloku **ustawienia urządzenia > sieć**. Spowoduje to otwarcie **ustawienia sieciowe** bloku. Kliknij przycisk **ustawienia DNS** kafelka. Zmodyfikuj adres IP pomocniczego serwera DNS.
+2. W bloku **Ustawienia** przejdź do pozycji **Ustawienia urządzenia > Sieć**. Spowoduje to otwarcie bloku **Ustawienia sieci** . Kliknij kafelek **Ustawienia DNS** . Zmodyfikuj adres IP pomocniczego serwera DNS.
 
-    ![Zmodyfikuj adres IP pomocniczego serwera DNS](./media/storsimple-8000-modify-device-config/modify-secondary-dns1.png)
+    ![Modyfikuj adres IP pomocniczego serwera DNS](./media/storsimple-8000-modify-device-config/modify-secondary-dns1.png)
 
-4. Na pasku poleceń kliknij **Zapisz** i po wyświetleniu monitu o potwierdzenie, kliknij przycisk **OK**.
+4. Na pasku poleceń kliknij przycisk **Zapisz** i po wyświetleniu monitu o potwierdzenie kliknij przycisk **OK**.
 
-    ![Zapisz i Potwierdź zmiany](./media/storsimple-8000-modify-device-config/modify-secondary-dns-2.png)
+    ![Zapisz i potwierdź zmiany](./media/storsimple-8000-modify-device-config/modify-secondary-dns-2.png)
 
 
 
 ## <a name="modify-network-interfaces"></a>Modyfikowanie interfejsów sieciowych
 
-Urządzenie ma sześć interfejsów sieciowych urządzenia, z których cztery są 1 GbE i dwa z nich są 10 GbE. Te interfejsy są oznaczone jako interfejs DATA 0 – 5 danych. Interfejs DATA 0, 1 danych, dane 4 i 5 danych są 1 GbE dane 2 i DATA 3 są interfejsów sieciowych 10 GbE.
+Urządzenie ma sześć interfejsów sieciowych urządzeń, cztery z nich to 1 GbE i dwa z nich 10 GbE. Te interfejsy są oznaczone jako dane 0 – DATA 5. DANE 0, dane 1, dane 4 i DATA 5 to 1 GbE, natomiast dane 2 i DATA 3 to 10 GbE interfejsów sieciowych.
 
-Użyj **ustawienia sieciowe** blok umożliwiający skonfigurowanie wszystkich interfejsów, które ma być używany.
+Użyj bloku **Ustawienia sieciowe** , aby skonfigurować poszczególne interfejsy, które mają być używane.
 
-![Skonfiguruj interfejsy sieciowe za pośrednictwem ustawień sieci](./media/storsimple-8000-modify-device-config/modify-network-settings3.png)
+![Konfigurowanie interfejsów sieciowych za pomocą ustawień sieciowych](./media/storsimple-8000-modify-device-config/modify-network-settings3.png)
 
-Aby zapewnić wysoką dostępność, zaleca się mieć co najmniej dwóch interfejsów iSCSI i dwóch interfejsów z włączoną obsługę chmury na urządzenia. Firma Microsoft zaleca się, ale nie wymagają wyłączone nieużywane interfejsy.
+Aby zapewnić wysoką dostępność, zalecamy posiadanie co najmniej dwóch interfejsów iSCSI i dwóch interfejsów z obsługą chmury na urządzeniu. Zalecamy, ale nie wymagają wyłączenia nieużywanych interfejsów.
 
-Dla każdego interfejsu sieciowego są wyświetlane następujące parametry:
+Dla każdego interfejsu sieciowego wyświetlane są następujące parametry:
 
-* **Szybkość** — nie jest parametrem konfigurowanych przez użytkownika. Interfejs DATA 0, 1 danych, dane 4 i 5 dane są zawsze 1 GbE, dane 2 i DATA 3 są interfejsów 10 GbE.
+* **Szybkość** — nie jest to konfigurowalny przez użytkownika parametr. DANE 0, dane 1, dane 4 i DATA 5 są zawsze 1 GbE, natomiast dane 2 i DATA 3 to 10 GbE.
   
   > [!NOTE]
-  > Szybkość i dupleks są zawsze auto negocjowane. Duże ramki nie są obsługiwane.
+  > Szybkość i dupleks są zawsze negocjowane ponownie. Duże ramki nie są obsługiwane.
   
-* **Stan interfejsu** — interfejs może zostać włączona lub wyłączona. Jeśli włączona, urządzenie będzie podejmować próby przy użyciu interfejsu. Firma Microsoft zaleca włączenie tylko te interfejsy, które są połączone z siecią i używane. Wyłącz wszystkie interfejsy, które nie korzystają.
-* **Typ interfejsu** — ten parametr umożliwia do izolacji ruchu iSCSI z ruchu magazynu w chmurze. Ten parametr może być jedną z następujących czynności:
+* **Stan interfejsu** — interfejs może być włączony lub wyłączony. Jeśli ta funkcja jest włączona, urządzenie podejmie próbę użycia interfejsu. Zaleca się włączenie tylko tych interfejsów, które są podłączone do sieci. Wyłącz wszystkie interfejsy, które nie są używane.
+* **Typ interfejsu** — ten parametr umożliwia odizolowanie ruchu iSCSI od ruchu magazynu w chmurze. Ten parametr może mieć jedną z następujących wartości:
   
-  * **Chmura włączona** — po włączeniu urządzenia będzie używać tego interfejsu do komunikowania się z chmurą.
-  * **włączoną obsługę iSCSI** — po włączeniu urządzenia będzie używać tego interfejsu do komunikacji z hostem iSCSI.
+  * **Cloud Enabled** — gdy ta funkcja jest włączona, urządzenie będzie używać tego interfejsu do komunikowania się z chmurą.
+  * Protokół **iSCSI włączony** — po włączeniu tego interfejsu do komunikacji z hostem iSCSI.
     
-    Zalecamy izolowanie ruchu iSCSI z ruchu magazynu w chmurze. Należy również zauważyć, jeśli hosta w tej samej podsieci co urządzenie, nie trzeba przypisać bramę; jednak hosta znajduje się w innej podsieci niż urządzenie, należy przypisać bramy.
-* **Adres IP** — po skonfigurowaniu wszystkich interfejsów sieciowych, należy skonfigurować wirtualnego adresu IP (VIP). Może to być IPv4 lub IPv6 lub oba. Rodziny adresów IPv4 i IPv6 są obsługiwane w przypadku interfejsów sieciowych urządzenia. Korzystając z protokołu IPv4, określ adres IP, 32-bitowych (*xxx.xxx.xxx.xxx*) w zapisie kropkowo-cyfrowym. Korzystając z protokołu IPv6, po prostu podać prefiks 4-cyfrowego i 128-bitowy adres zostanie automatycznie wygenerowany dla interfejsu sieciowego urządzenia na podstawie tego prefiksu.
-* **Podsieci** — to odnosi się do maski podsieci i jest skonfigurowany za pośrednictwem interfejsu programu Windows PowerShell.
-* **Brama** — jest to brama domyślna, które mają być używane przez ten interfejs, podczas próby komunikacji z węzłów, które nie są dostępne w ramach tej samej przestrzeni adresów IP (podsieć). Brama domyślna musi być w tej samej przestrzeni adresowej (podsieć), co interfejs adres IP, zgodnie z ustaleniami maskę podsieci.
-* **Ustalone adresu IP** — to pole jest dostępne tylko wtedy, gdy Konfigurowanie DATA 0 interfejsu. Dla operacji takich jak aktualizacje lub Rozwiązywanie problemów z urządzeniem może być konieczne do nawiązania bezpośredniego połączenia z kontrolerem urządzenia. Stały adres IP można uzyskać dostęp, aktywnych i pasywnych kontrolera na urządzeniu z systemem.
+    Zalecamy odizolowanie ruchu iSCSI od ruchu magazynu w chmurze. Zwróć również uwagę, że host znajduje się w tej samej podsieci co urządzenie, nie musisz przypisywać bramy; Jeśli jednak host znajduje się w innej podsieci niż urządzenie, należy przypisać bramę.
+* **Adres IP** — podczas konfigurowania dowolnego interfejsu sieciowego należy skonfigurować wirtualny adres IP (VIP). Może to być adres IPv4 lub IPv6 lub oba te elementy. W przypadku interfejsów sieciowych urządzeń obsługiwane są zarówno rodziny adresów IPv4, jak i IPv6. W przypadku korzystania z protokołu IPv4 należy określić 32-bitowy adres IP (*xxx.xxx.xxx.xxx*) w notacji kropkowo-dziesiętnej. W przypadku korzystania z protokołu IPv6 wystarczy podać 4-cyfrowy prefiks, a adres 128-bitowy zostanie automatycznie wygenerowany dla interfejsu sieciowego urządzenia na podstawie tego prefiksu.
+* **Podsieć** — odnosi się do maski podsieci i jest konfigurowana za pomocą interfejsu programu Windows PowerShell.
+* **Brama** — Brama domyślna, która powinna być używana przez ten interfejs, gdy próbuje skomunikować się z węzłami, które nie znajdują się w tej samej przestrzeni adresów IP (podsieci). Brama domyślna musi znajdować się w tej samej przestrzeni adresowej (podsieci) co adres IP interfejsu, zgodnie z maską podsieci.
+* **Stały adres IP** — to pole jest dostępne tylko podczas KONFIGUROWANIA interfejsu Data 0. W przypadku operacji, takich jak aktualizacje lub Rozwiązywanie problemów z urządzeniem, może być konieczne bezpośrednie połączenie z kontrolerem urządzenia. Stały adres IP może służyć do uzyskiwania dostępu do kontrolera aktywnego i pasywnego na urządzeniu.
 
 > [!NOTE]
-> * Aby zapewnić prawidłowe działanie, sprawdź szybkość interfejsu i dupleks na przełącznik, który jest połączony interfejs każdego urządzenia. Interfejsy przełącznik należy albo negocjowania za pomocą lub można skonfigurować sieci Gigabit Ethernet (1000 MB/s) i być pełny dupleks. Interfejsy działających w wolniejszej lub półdupleksu spowoduje problemy z wydajnością.
-> * Aby zminimalizować zakłócenia i przestoje, firma Microsoft zaleca, aby włączyć portfast na wszystkich portów przełącznika które będą łączyć interfejsu sieci iSCSI urządzenia. Pozwoli to zagwarantować, że połączenie sieciowe może zostać szybko ustanowiona zdarzenia na pracę awaryjną.
+> * Aby zapewnić prawidłową operację, sprawdź szybkość interfejsu i dupleks na przełączniku, z którym jest połączony każdy interfejs urządzenia. Interfejsy przełączników powinny być negocjowane z lub skonfigurowane dla sieci Gigabit Ethernet (1000 MB/s) i być w trybie pełnego dupleksu. Interfejsy działające z wolniejszymi szybkościami lub w połowie dupleksu powodują problemy z wydajnością.
+> * Aby zminimalizować zakłócenia i przestoje, zalecamy włączenie PortFast na każdym z portów przełącznika, z którymi będzie nawiązywane połączenie interfejs sieciowy iSCSI urządzenia. Dzięki temu będzie można szybko ustalić łączność sieciową w przypadku przejścia w tryb failover.
 
-### <a name="configure-data-0"></a>Skonfiguruj interfejs DATA 0
+### <a name="configure-data-0"></a>Konfiguruj dane 0
 
-Interfejs DATA 0 jest chmura włączona domyślnie. Podczas konfigurowania interfejs DATA 0, również musieli skonfigurować dwie stałe adresy IP, jeden dla każdego kontrolera. Te stałe adresy IP można uzyskać bezpośredni dostęp kontrolery urządzeń pamięci i są przydatne podczas instalowania aktualizacji na urządzeniu, do wyrzucania elementów bezużytecznych zapewnić prawidłowe działanie, lub gdy uzyskujesz dostęp do kontrolerów na potrzeby rozwiązywania problemów.
+DANE 0 są domyślnie włączone w chmurze. Podczas konfigurowania danych 0 wymagane jest również skonfigurowanie dwóch stałych adresów IP, po jednym dla każdego kontrolera. Te stałe adresy IP mogą być używane do bezpośredniego dostępu do kontrolerów urządzeń i są przydatne podczas instalowania aktualizacji na urządzeniu, aby odzyskiwanie pamięci działało prawidłowo lub w przypadku uzyskiwania dostępu do kontrolerów na potrzeby rozwiązywania problemów.
 
-Można ponownie skonfigurować stały kontrolerów IP za pomocą bloku ustawienia 0 danych.
+Stałe kontrolery IP można skonfigurować ponownie za pomocą bloku ustawienia danych 0.
 
-![Skonfiguruj interfejs sieciowy — DATA 0](./media/storsimple-8000-modify-device-config/modify-network-settings2.png)
+![Konfigurowanie interfejsu sieciowego — dane 0](./media/storsimple-8000-modify-device-config/modify-network-settings2.png)
 
 > [!NOTE]
-> Stałe adresy IP dla kontrolera są używane do obsługi aktualizacji urządzenia i algorytmy odzyskiwanie miejsca (wyrzucania elementów bezużytecznych), aby zapewnić prawidłowe działanie. W związku z tym stałe adresy IP muszą być routowalne i mieć możliwość łączenia z Internetem.
+> Stałe adresy IP dla kontrolera są używane do obsługi aktualizacji na urządzeniu oraz do prawidłowego działania algorytmów odzyskiwania pamięci (wyrzucania elementów bezużytecznych). W związku z tym stałe adresy IP muszą być routowalne i mieć możliwość łączenia z Internetem.
 
-### <a name="configure-data-1---data-5"></a>Konfigurowanie danych 1 — dane 5
+### <a name="configure-data-1---data-5"></a>Konfigurowanie danych 1 — DATA 5
 
-Dla danych 1 - interfejsów sieciowych 5 danych, można skonfigurować ustawienia sieciowe, jak pokazano na poniższym zrzucie ekranu:
+W przypadku interfejsów sieciowych DATA 1 — DATA 5 można skonfigurować wszystkie ustawienia sieciowe, jak pokazano na poniższym zrzucie ekranu:
 
-![Skonfiguruj interfejsy sieciowe DATA 1 - 5 danych](./media/storsimple-8000-modify-device-config/modify-network-settings4.png)
+![Konfigurowanie interfejsów sieciowych dane 1 — DATA 5](./media/storsimple-8000-modify-device-config/modify-network-settings4.png)
 
 
-## <a name="swap-or-reassign-ips"></a>Zamień lub ponowne przypisywanie adresów IP
+## <a name="swap-or-reassign-ips"></a>Zamiana lub zmiana przypisania adresów IP
 
-Obecnie każdy interfejs sieciowy na kontrolerze jest przypisany adres VIP, która jest używana (za pomocą tego samego urządzenia lub innego urządzenia w sieci), następnie kontrolera zakończy się niepowodzeniem przez. Wymiany lub ponownego przypisania adresów VIP dla interfejsu sieciowego urządzenia, należy wykonać procedury właściwe jako można utworzyć zduplikowanego sytuacji IP.
+Obecnie Jeśli dowolny interfejs sieciowy na kontrolerze ma przypisany adres VIP używany przez to samo urządzenie lub inne urządzenie w sieci, kontroler przejdzie w tryb failover. W przypadku wymiany lub ponownego przypisywania adresów VIP dla interfejsu sieciowego urządzenia należy wykonać odpowiednią procedurę, ponieważ można utworzyć zduplikowaną sytuację IP.
 
-Wykonaj poniższe kroki, aby zamienić lub ponowne przypisywanie adresów VIP dla wszystkich interfejsów sieciowych:
+Wykonaj następujące kroki, aby zamienić lub ponownie przypisać wirtualne adresy IP dla dowolnego z interfejsów sieciowych:
 
-#### <a name="to-reassign-ips"></a>Ponowne przypisywanie adresów IP
+#### <a name="to-reassign-ips"></a>Aby ponownie przypisać adresy IP
 
 1. Wyczyść adres IP dla obu interfejsów.
-2. Po adresy IP są wyczyszczone, należy przypisać nowe adresy IP do odpowiednich interfejsów.
+2. Po wyczyszczeniu adresów IP Przypisz nowe adresy IP do odpowiednich interfejsów.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się, jak [konfigurowanie wielościeżkowego wejścia/wyjścia dla urządzenia StorSimple](storsimple-8000-configure-mpio-windows-server.md).
-* Dowiedz się, jak [korzystać z usługi Menedżer urządzeń StorSimple do administrowania urządzeniem StorSimple](storsimple-8000-manager-service-administration.md).
+* Dowiedz się, jak [skonfigurować wielościeżkowe wejście/wyjście dla urządzenia z StorSimple](storsimple-8000-configure-mpio-windows-server.md).
+* Dowiedz się [, jak zarządzać urządzeniem StorSimple przy użyciu usługi StorSimple Menedżer urządzeń](storsimple-8000-manager-service-administration.md).
 

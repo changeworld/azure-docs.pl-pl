@@ -12,11 +12,11 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cf2ca3bde0cfee97adee8bb875df1522e95b1f53
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74869317"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374930"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Dodawanie Azure Active Directory użytkowników współpracy B2B w Azure Portal
 
@@ -63,7 +63,7 @@ Po wysłaniu zaproszenia konto użytkownika zostanie automatycznie dodane do kat
 
 ![Pokazuje użytkownika B2B z typem użytkownika-gościa](./media/add-users-administrator/GuestUserType.png)  
 
-## <a name="add-guest-users-to-a-group"></a>Dodawanie użytkowników-gości do grupy
+## <a name="add-guest-users-to-a-group"></a>Dodawanie użytkowników-Gości do grupy
 Jeśli musisz ręcznie dodać użytkowników współpracy B2B do grupy, wykonaj następujące kroki:
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator usługi Azure AD.
@@ -79,7 +79,7 @@ Jeśli musisz ręcznie dodać użytkowników współpracy B2B do grupy, wykonaj 
    
 Możesz również użyć grup dynamicznych z funkcją współpracy B2B usługi Azure AD. Aby uzyskać więcej informacji, zobacz [grupy dynamiczne i Azure Active Directory współpracy B2B](use-dynamic-groups.md).
 
-## <a name="add-guest-users-to-an-application"></a>Dodawanie użytkowników-gości do aplikacji
+## <a name="add-guest-users-to-an-application"></a>Dodawanie użytkowników-Gości do aplikacji
 
 Aby dodać użytkowników współpracy B2B do aplikacji, wykonaj następujące kroki:
 
@@ -107,7 +107,7 @@ Aby dodać użytkowników współpracy B2B do aplikacji, wykonaj następujące k
    - Kliknij pozycję **Wybierz**.
    - Kliknij przycisk **Przypisz**.
  
-## <a name="resend-invitations-to-guest-users"></a>Ponowne wysyłanie zaproszeń do użytkowników-gości
+## <a name="resend-invitations-to-guest-users"></a>Wyślij ponownie zaproszenia do użytkowników-Gości
 
 Jeśli użytkownik-Gość nie zakończył jeszcze zaproszenia, możesz ponownie wysłać wiadomość e-mail z zaproszeniem.
 

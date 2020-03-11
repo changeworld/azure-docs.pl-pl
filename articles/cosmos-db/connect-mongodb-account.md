@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 0f2cd1b7228f2cc9cadb84232222f658a512a81f
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872166"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373851"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Łączenie aplikacji MongoDB z usługą Azure Cosmos DB
-Dowiedz się, jak połączyć aplikację MongoDB z Azure Cosmos DB przy użyciu parametrów połączenia MongoDB. Następnie możesz użyć bazy danych usługi Azure Cosmos jako magazynu danych dla aplikacji MongoDB. 
+Dowiedz się, jak połączyć aplikację MongoDB z usługą Azure Cosmos DB przy użyciu parametrów połączenia bazy danych MongoDB. Następnie możesz użyć bazy danych usługi Azure Cosmos jako magazynu danych dla aplikacji MongoDB. 
 
-Ten samouczek zawiera dwa sposoby pobierania informacji o parametrach połączenia:
+Ten samouczek opisuje dwa sposoby pobierania informacji o parametrach połączenia:
 
 - [Metoda szybkiego startu](#QuickstartConnection), używana z sterownikami .NET, Node. js, MongoDB Shell, Java i Python
 - [Niestandardowa metoda parametrów połączenia](#GetCustomConnection)do użycia z innymi sterownikami

@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
 ms.openlocfilehash: 84098901d58e2087c7ece77049e445bb5c76f2a9
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923780"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357256"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopiowanie danych z programu SAP Business Warehouse za pośrednictwem usługi Open Hub przy użyciu Azure Data Factory
 
-W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z programu SAP Business Warehouse (BW) za pośrednictwem usługi Open Hub. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
+W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z programu SAP Business Warehouse (BW) za pośrednictwem usługi Open Hub. Jest ona oparta na [przeglądzie działania kopiowania](copy-activity-overview.md) , która przedstawia ogólne omówienie działania kopiowania.
 
 >[!TIP]
 >Aby poznać ogólną pomoc techniczną w scenariuszu integracji danych w systemie SAP, zobacz [integracja danych SAP przy użyciu Azure Data Factory oficjalny dokument](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) z szczegółowym wprowadzeniem, comparsion i wskazówkami.
@@ -33,7 +33,7 @@ Ten magazyn SAP Business Warehouse za pośrednictwem łącznika Open Hub jest ob
 - [Działanie kopiowania](copy-activity-overview.md) z [obsługiwaną macierzą źródłową/ujścia](copy-activity-overview.md)
 - [Działanie Lookup](control-flow-lookup-activity.md)
 
-Dane z programu SAP Business Warehouse można skopiować do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
+Dane z programu SAP Business Warehouse można skopiować do dowolnego obsługiwanego magazynu danych ujścia. Listę magazynów danych obsługiwanych jako źródła/ujścia przez działanie kopiowania można znaleźć w tabeli [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) .
 
 W ramach tego łącznika centrum danych programu SAP Business Warehouse obsługuje następujące rozwiązania:
 
@@ -77,7 +77,7 @@ W celu zapewnienia prawidłowej obsługi różnic nie można mieć identyfikator
 
 Aby użyć tego łącznika centrum danych SAP Business Warehouse, należy wykonać następujące czynności:
 
-- Skonfiguruj własne Integration Runtime w wersji 3,13 lub nowszej. Zobacz [własne środowisko IR](create-self-hosted-integration-runtime.md) artykuł, aby uzyskać szczegółowe informacje.
+- Skonfiguruj własne Integration Runtime w wersji 3,13 lub nowszej. Aby uzyskać szczegółowe informacje, zobacz artykuł [Integration Runtime samodzielny](create-self-hosted-integration-runtime.md) .
 
 - Pobierz **64-bitowy [Łącznik SAP .NET 3,0](https://support.sap.com/en/product/connectors/msnet.html)**  z witryny sieci Web SAP i zainstaluj go na samoobsługowej maszynie IR. W przypadku instalowania programu w oknie opcjonalne kroki instalacji upewnij się, że wybrano opcję **Zainstaluj zestawy do GAC** , jak pokazano na poniższej ilustracji. 
 
@@ -104,16 +104,16 @@ W poniższych sekcjach znajdują się szczegółowe informacje o właściwościa
 
 Następujące właściwości są obsługiwane w przypadku usługi SAP Business Warehouse Open Hub połączonej:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type musi mieć wartość: **SapOpenHub** | Tak |
-| serwer | Nazwa serwera, na którym znajduje się wystąpienie SAP BW. | Tak |
-| systemNumber | Numer systemu SAP BW.<br/>Dozwolona wartość: dwucyfrowa liczba dziesiętna reprezentowana jako ciąg. | Tak |
-| clientId | Identyfikator klienta klienta w systemie SAP w.<br/>Dozwolona wartość: 3-cyfrowa liczba dziesiętna reprezentowana jako ciąg. | Tak |
+| type | Właściwość Type musi mieć wartość: **SapOpenHub** | Yes |
+| serwer | Nazwa serwera, na którym znajduje się wystąpienie SAP BW. | Yes |
+| systemNumber | Numer systemu SAP BW.<br/>Dozwolona wartość: dwucyfrowa liczba dziesiętna reprezentowana jako ciąg. | Yes |
+| clientId | Identyfikator klienta klienta w systemie SAP w.<br/>Dozwolona wartość: 3-cyfrowa liczba dziesiętna reprezentowana jako ciąg. | Yes |
 | language | Język, którego używa System SAP. | Nie (wartość domyślna to **EN**)|
-| userName | Nazwa użytkownika, który ma dostęp do serwera SAP. | Tak |
-| hasło | Hasło użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
-| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Samodzielna Integration Runtime jest wymagana, jak wspomniano w [wymaganiach wstępnych](#prerequisites). |Tak |
+| userName | Nazwa użytkownika, który ma dostęp do serwera SAP. | Yes |
+| hasło | Hasło użytkownika. Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory, lub [odwoływać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| connectVia | [Integration Runtime](concepts-integration-runtime.md) używany do nawiązywania połączenia z magazynem danych. Samodzielna Integration Runtime jest wymagana, jak wspomniano w [wymaganiach wstępnych](#prerequisites). |Yes |
 
 **Przykład:**
 
@@ -142,14 +142,14 @@ Następujące właściwości są obsługiwane w przypadku usługi SAP Business W
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez SAP BW otwartego centrum danych.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz artykuł [zestawy danych](concepts-datasets-linked-services.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez SAP BW otwartego centrum danych.
 
 Aby skopiować dane z i do SAP BW Otwórz Centrum, ustaw właściwość Type zestawu danych na **SapOpenHubTable**. Następujące właściwości są obsługiwane.
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type musi być ustawiona na wartość **SapOpenHubTable**.  | Tak |
-| openHubDestinationName | Nazwa miejsca docelowego typu Open Hub, z którego mają zostać skopiowane dane. | Tak |
+| type | Właściwość Type musi być ustawiona na wartość **SapOpenHubTable**.  | Yes |
+| openHubDestinationName | Nazwa miejsca docelowego typu Open Hub, z którego mają zostać skopiowane dane. | Yes |
 
 Jeśli ustawienia `excludeLastRequest` i `baseRequestId` w zestawie danych, nadal są obsługiwane w stanie takim, w jakim będziesz mieć możliwość użycia nowego modelu w źródle aktywności.
 
@@ -174,15 +174,15 @@ Jeśli ustawienia `excludeLastRequest` i `baseRequestId` w zestawie danych, nada
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez SAP BW Otwórz źródło centrum.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz artykuł [potoki](concepts-pipelines-activities.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez SAP BW Otwórz źródło centrum.
 
 ### <a name="sap-bw-open-hub-as-source"></a>SAP BW otworzyć Centrum jako źródło
 
 Aby skopiować dane z SAP BW Otwórz Centrum, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość **Type** źródła działania Copy musi być ustawiona na wartość **SapOpenHubSource**. | Tak |
+| type | Właściwość **Type** źródła działania Copy musi być ustawiona na wartość **SapOpenHubSource**. | Yes |
 | excludeLastRequest | Określa, czy mają zostać wykluczone rekordy ostatniego żądania. | Nie (wartość domyślna to **true**) |
 | baseRequestId | Identyfikator żądania dla ładowania różnicowego. Po jego ustawieniu zostaną pobrane tylko dane z identyfikatorem żądania **większym niż** wartość tej właściwości.  | Nie |
 
@@ -226,16 +226,16 @@ Aby przyspieszyć ładowanie danych, można ustawić [`parallelCopies`](copy-act
 
 ## <a name="data-type-mapping-for-sap-bw-open-hub"></a>Mapowanie typu danych dla SAP BW Open Hub
 
-Podczas kopiowania danych z SAP BW otwartego centrum następujące mapowania są używane z poziomu SAP BW danych do Azure Data Factory pośrednich typów danych. Zobacz [schemat i dane mapowanie typu](copy-activity-schema-and-type-mapping.md) Aby poznać sposób działania kopiowania mapowania typ schematu i danych źródła do ujścia.
+Podczas kopiowania danych z SAP BW otwartego centrum następujące mapowania są używane z poziomu SAP BW danych do Azure Data Factory pośrednich typów danych. Zobacz [Mapowanie schematu i typu danych](copy-activity-schema-and-type-mapping.md) , aby dowiedzieć się, jak działanie kopiowania mapuje schemat źródłowy i typ danych do ujścia.
 
 | Typ SAP ABAP | Typ danych tymczasowych fabryki danych |
 |:--- |:--- |
 | C (String) | Ciąg |
 | I (integer) | Int32 |
-| F (Float) | Double |
+| F (Float) | Podwójne |
 | D (Date) | Ciąg |
 | T (Time) | Ciąg |
-| P (BCD Packed, Currency, Decimal, Qty) | Decimal |
+| P (BCD Packed, Currency, Decimal, Qty) | Dziesiętna |
 | N (NUMC) | Ciąg |
 | X (Binary and Raw) | Ciąg |
 
@@ -245,4 +245,4 @@ Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (w
 
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Listę magazynów danych obsługiwanych jako źródła i ujścia przez działanie kopiowania w Azure Data Factory można znaleźć w temacie [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

@@ -16,11 +16,11 @@ ms.date: 12/10/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 244965da4e22c0808fd1ea9088aa182b27eaf484
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430016"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375523"
 ---
 # <a name="create-list-and-delete-a-user-assigned-managed-identity-using-azure-resource-manager"></a>Tworzenie, wyświetlanie i usuwanie tożsamości zarządzanej przypisanej przez użytkownika przy użyciu Azure Resource Manager
 
@@ -35,7 +35,7 @@ Nie można wyświetlać i usuwać tożsamości zarządzanej przypisanej przez u�
 - [Usuwanie tożsamości zarządzanej przypisanej przez użytkownika](how-to-manage-ua-identity-cli.md#delete-a-user-assigned-managed-identity)
   ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Jeśli jesteś zaznajomiony z zarządzanych tożsamości dla zasobów platformy Azure, zapoznaj się z [sekcji Przegląd](overview.md). **Należy przejrzeć [różnicę między przypisana przez system i przypisanych przez użytkownika tożsamości zarządzanej](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
+- Jeśli nie znasz tożsamości zarządzanych dla zasobów platformy Azure, zapoznaj się z [sekcją przegląd](overview.md). **Pamiętaj, aby zapoznać się z [różnicą między przypisaną przez system i tożsamością zarządzaną przez użytkownika](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
 - Jeśli nie masz jeszcze konta platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed kontynuowaniem.
 
 ## <a name="template-creation-and-editing"></a>Tworzenie i edytowanie szablonu

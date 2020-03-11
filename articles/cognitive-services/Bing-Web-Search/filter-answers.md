@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fa022f181e2061c6a7f3e08d1f2f501ddd9cac3
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111419"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381816"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>Filtrowanie odpowiedzi uwzględnionych w odpowiedzi wyszukiwania  
 
@@ -100,7 +100,7 @@ Mimo że usługa Bing nie zwraca wideo i wiadomości w poprzedniej odpowiedzi, n
 
 Nie zaleca się używania `responseFilter`, aby uzyskać wyniki z pojedynczego interfejsu API. Jeśli chcesz uzyskać zawartość z pojedynczego interfejsu API Bing, wywołaj ten interfejs API bezpośrednio. Na przykład, aby odbierać tylko obrazy, Wyślij żądanie do punktu końcowego interfejsu API wyszukiwanie obrazów, `https://api.cognitive.microsoft.com/bing/v7.0/images/search` lub jeden z innych punktów końcowych [obrazów](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#endpoints) . Wywołanie pojedynczego interfejsu API jest ważne nie tylko ze względu na wydajność, ale ponieważ interfejsy API specyficzne dla zawartości zapewniają bogatsze wyniki. Można na przykład użyć filtrów, które nie są dostępne dla interfejsu API wyszukiwanie w sieci Web, aby przefiltrować wyniki.  
 
-### <a name="site"></a>lokacji
+### <a name="site"></a>Lokacji
 
 Aby uzyskać wyniki wyszukiwania z określonej domeny, należy uwzględnić parametr zapytania `site:` w ciągu zapytania.  
 
@@ -111,7 +111,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies+site:con
 > [!NOTE]
 > W zależności od zapytania, jeśli używasz operatora kwerendy `site:`, istnieje możliwość, że odpowiedź może zawierać zawartość dla dorosłych niezależnie od ustawienia [bezpieczne wyszukiwanie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#safesearch) . Operatora `site:` używaj tylko wtedy, gdy znasz zawartość witryny i w swoim scenariuszu uwzględniasz możliwość pojawienia się zawartości dla dorosłych.
 
-### <a name="freshness"></a>Aktualność
+### <a name="freshness"></a>Świeżości
 
 Aby ograniczyć wyniki odpowiedzi sieci Web do stron internetowych, które zostały odnalezione przez usługę Bing w określonym przedziale czasu, ustaw parametr zapytania [Aktualności](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#freshness) na jedną z następujących wartości bez uwzględniania wielkości liter:
 

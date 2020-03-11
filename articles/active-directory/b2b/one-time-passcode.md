@@ -13,11 +13,11 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6d897bb983eb06baa4f1573f1f875eea8bb8afc
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74272321"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376577"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>Wyślij wiadomość e-mail do jednorazowego uwierzytelniania kodu dostępu (wersja zapoznawcza)
 
@@ -81,7 +81,7 @@ Wykonanie akcji zgody może potrwać kilka minut. Po tym czasie tylko nowo zapro
 Najpierw należy zainstalować najnowszą wersję programu Azure AD PowerShell dla modułu Graph (AzureADPreview). Następnie określ, czy zasady B2B już istnieją, i uruchom odpowiednie polecenia.
 
 #### <a name="prerequisite-install-the-latest-azureadpreview-module"></a>Wymaganie wstępne: Zainstaluj najnowszy moduł AzureADPreview
-Najpierw sprawdź, które moduły zostały zainstalowane. Otwórz program PowerShell jako użytkownik z podwyższonym poziomem uprawnień (Uruchom jako administrator) i uruchom następujące polecenie:
+Najpierw sprawdź, które moduły zostały zainstalowane. Otwórz program Windows PowerShell jako użytkownik z podwyższonym poziomem uprawnień (Uruchom jako administrator) i uruchom następujące polecenie:
  
 ```powershell  
 Get-Module -ListAvailable AzureAD*

@@ -9,11 +9,11 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 897ae1fa474de8726ed0caa1def162a00e142dbe
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514780"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360982"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Metryki usługi Azure Storage Analytics (klasyczne)
 
@@ -53,11 +53,11 @@ Analityka magazynu mogą przechowywać metryki, które obejmują zagregowane sta
 
 |Poziom metryk|Nazwy tabel|Obsługiwane w wersjach|  
 |-------------------|-----------------|----------------------------|  
-|Metryki godzinowe, podstawowa lokalizacja|-$MetricsTransactionsBlob<br />-$MetricsTransactionsTable<br />-$MetricsTransactionsQueue|Wersje wcześniejsze niż 2013-08-15. Mimo że te nazwy są nadal obsługiwane, zaleca się przełączenie do korzystania z tabel wymienionych poniżej.|  
+|Metryki godzinowe, podstawowa lokalizacja|-$MetricsTransactionsBlob<br />-$MetricsTransactionsTable<br />-   $MetricsTransactionsQueue|Wersje wcześniejsze niż 2013-08-15. Mimo że te nazwy są nadal obsługiwane, zaleca się przełączenie do korzystania z tabel wymienionych poniżej.|  
 |Metryki godzinowe, podstawowa lokalizacja|-$MetricsHourPrimaryTransactionsBlob<br />-$MetricsHourPrimaryTransactionsTable<br />-$MetricsHourPrimaryTransactionsQueue<br />-$MetricsHourPrimaryTransactionsFile|Wszystkie wersje. Obsługa metryk usługi plików jest dostępna tylko w wersji 2015-04-05 i nowszych.|  
 |Metryki minut, lokalizacja podstawowa|-$MetricsMinutePrimaryTransactionsBlob<br />-$MetricsMinutePrimaryTransactionsTable<br />-$MetricsMinutePrimaryTransactionsQueue<br />-$MetricsMinutePrimaryTransactionsFile|Wszystkie wersje. Obsługa metryk usługi plików jest dostępna tylko w wersji 2015-04-05 i nowszych.|  
 |Metryki godzinowe, lokacja dodatkowa|-$MetricsHourSecondaryTransactionsBlob<br />-$MetricsHourSecondaryTransactionsTable<br />-$MetricsHourSecondaryTransactionsQueue|Wszystkie wersje. Replikacja geograficznie nadmiarowa do odczytu musi być włączona.|  
-|Metryki minutowe, lokalizacja dodatkowa|-$MetricsMinuteSecondaryTransactionsBlob<br />-$MetricsMinuteSecondaryTransactionsTable<br />-$MetricsMinuteSecondaryTransactionsQueue|Wszystkie wersje. Replikacja geograficznie nadmiarowa do odczytu musi być włączona.|  
+|Metryki minutowe, lokalizacja dodatkowa|-   $MetricsMinuteSecondaryTransactionsBlob<br />-   $MetricsMinuteSecondaryTransactionsTable<br />-   $MetricsMinuteSecondaryTransactionsQueue|Wszystkie wersje. Replikacja geograficznie nadmiarowa do odczytu musi być włączona.|  
 |Pojemność (tylko Blob service)|$MetricsCapacityBlob|Wszystkie wersje.|  
 
  Te tabele są tworzone automatycznie, gdy analityka magazynu jest włączona dla punktu końcowego usługi magazynu. Są one dostępne za pośrednictwem przestrzeni nazw konta magazynu, na przykład: `https://<accountname>.table.core.windows.net/Tables("$MetricsTransactionsBlob")`. Tabele metryk nie są wyświetlane w operacji tworzenia listy i muszą być dostępne bezpośrednio za pośrednictwem nazwy tabeli.  
@@ -75,7 +75,7 @@ Wykonaj następujące kroki, aby włączyć metryki w [Azure Portal](https://por
 [Azure Portal](https://portal.azure.com) obecnie nie umożliwia konfigurowania metryk minut na koncie magazynu. należy włączyć metryki minut przy użyciu programu PowerShell lub programowo.
 
 ## <a name="enable-storage-metrics-using-powershell"></a>Włącz metryki magazynu przy użyciu programu PowerShell  
-Aby skonfigurować metryki magazynu na koncie magazynu przy Azure PowerShell użyciu polecenia cmdlet **Get-AzStorageServiceMetricsProperty** w programie PowerShell, można użyć narzędzia do pobierania bieżących ustawień, a polecenie cmdlet  **Set-AzStorageServiceMetricsProperty** , aby zmienić bieżące ustawienia.  
+Aby skonfigurować metryki magazynu na koncie magazynu przy Azure PowerShell użyciu polecenia cmdlet **Get-AzStorageServiceMetricsProperty** w programie PowerShell, można użyć narzędzia do pobierania bieżących ustawień oraz polecenia cmdlet **Set-AzStorageServiceMetricsProperty** w celu zmiany bieżących ustawień.  
 
 Polecenia cmdlet kontrolujące metryki magazynu wykorzystują następujące parametry:  
 
@@ -114,7 +114,7 @@ Aby uzyskać informacje dotyczące sposobu konfigurowania Azure PowerShell polec
 ## <a name="enable-storage-metrics-programmatically"></a>Programowo Włącz metryki magazynu  
 Oprócz używania Azure Portal lub Azure PowerShell poleceń cmdlet do kontrolowania metryk magazynu, można również użyć jednego z interfejsów API usługi Azure Storage. Jeśli na przykład używasz języka .NET, możesz użyć biblioteki klienta usługi Storage.  
 
-Klasy **CloudBlobClient**, **CloudQueueClient**, **CloudTableClient**i **CloudFileClient** mają takie metody jak **SetServiceProperties** i **SetServicePropertiesAsync** , które przyjmują  **Obiekt serviceproperties** jako parametr. Aby skonfigurować metryki magazynu, można użyć obiektu **serviceproperties** . Na przykład poniższy C# fragment kodu przedstawia sposób zmiany poziomu metryk i dni przechowywania dla metryk kolejki godzinowej:  
+Klasy **CloudBlobClient**, **CloudQueueClient**, **CloudTableClient**i **CloudFileClient** mają takie metody jak **SetServiceProperties** i **SetServicePropertiesAsync** , które przyjmują obiekt **serviceproperties** jako parametr. Aby skonfigurować metryki magazynu, można użyć obiektu **serviceproperties** . Na przykład poniższy C# fragment kodu przedstawia sposób zmiany poziomu metryk i dni przechowywania dla metryk kolejki godzinowej:  
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);  
@@ -155,10 +155,10 @@ Wszystkie szczegóły schematów dla tych tabel można znaleźć w [schemacie ta
 ||||||||||||  
 |-|-|-|-|-|-|-|-|-|-|-|  
 |**PartitionKey**|**RowKey**|**Sygnatura czasowa**|**TotalRequests**|**TotalBillableRequests**|**TotalIngress**|**TotalEgress**|**Dostępność**|**Niską averagee2elatency**|**Wartość averageserverlatency**|**PercentSuccess**|  
-|20140522T1100|Użytkownicy Całą|2014-05-22T11:01:16.7650250 Z|7|7|4003|46801|100|104,4286|6,857143|100|  
-|20140522T1100|Użytkownicy QueryEntities|2014-05-22T11:01:16.7640250 Z|5|5|2694|45951|100|143,8|7,8|100|  
-|20140522T1100|Użytkownicy QueryEntity|2014-05-22T11:01:16.7650250 Z|1|1|538|633|100|3|3|100|  
-|20140522T1100|Użytkownicy UpdateEntity|2014-05-22T11:01:16.7650250 Z|1|1|771|217|100|9|6|100|  
+|20140522T1100|user;All|2014-05-22T11:01:16.7650250Z|7|7|4003|46801|100|104.4286|6.857143|100|  
+|20140522T1100|Użytkownicy QueryEntities|2014-05-22T11:01:16.7640250Z|5|5|2694|45951|100|143.8|7.8|100|  
+|20140522T1100|user;QueryEntity|2014-05-22T11:01:16.7650250Z|1|1|538|633|100|3|3|100|  
+|20140522T1100|user;UpdateEntity|2014-05-22T11:01:16.7650250Z|1|1|771|217|100|9|6|100|  
 
 W tym przykładowym czasie dane metryk są wykorzystywane przez klucz partycji. Klucz wiersza określa typ informacji przechowywanych w wierszu i składa się z dwóch informacji, typu dostępu i typu żądania:  
 
@@ -166,7 +166,7 @@ W tym przykładowym czasie dane metryk są wykorzystywane przez klucz partycji. 
 
 -   Typem żądania jest **wszystko** , co oznacza, że jest wierszem podsumowania lub identyfikuje określony interfejs API, taki jak **QueryEntity** lub **UpdateEntity**.  
 
-Powyższe dane przykładowe pokazują wszystkie rekordy przez pojedynczą minutę (począwszy od 11:10:00), więc liczbę żądań **QueryEntities** i liczbę żądań **QueryEntity** oraz liczbę żądań **UpdateEntity** dodają do siedmiu, co jest suma pokazywana na **użytkowniku: cały** wiersz. Analogicznie, można utworzyć średni czas oczekiwania na zakończenie na 104,4286 dla **użytkownika: cały** wiersz przez obliczenie ((143,8 * 5) + 3 + 9)/7.  
+Powyższe dane przykładowe pokazują wszystkie rekordy przez pojedynczą minutę (począwszy od 11:10:00), więc liczbę żądań **QueryEntities** i liczbę żądań **QueryEntity** oraz liczbę żądań **UpdateEntity** dodają do siedmiu, która jest sumą pokazywaną przez **użytkownika: wszystkie** wiersze. Analogicznie, można utworzyć średni czas oczekiwania na zakończenie na 104,4286 dla **użytkownika: cały** wiersz przez obliczenie ((143,8 * 5) + 3 + 9)/7.  
 
 ## <a name="metrics-alerts"></a>Alerty metryk
 Należy rozważyć skonfigurowanie alertów w [Azure Portal](https://portal.azure.com) , aby otrzymywać powiadomienia o ważnych zmianach w zachowaniu usług magazynu. W przypadku pobierania tych danych metryk przy użyciu narzędzia Eksplorator magazynu w formacie rozdzielanym można użyć programu Microsoft Excel do przeanalizowania danych. Zobacz [narzędzia klienckie usługi Azure Storage](/azure/storage/storage-explorers) , aby zapoznać się z listą dostępnych narzędzi Eksploratora magazynu. Alerty można skonfigurować w bloku **alertu (klasycznego)** dostępnym w obszarze **monitorowanie (klasyczne)** w bloku menu konto magazynu.

@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
 ms.openlocfilehash: f443f0362ecad8448895322686a7175b2813141e
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084611"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78367107"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Zarządzanie serwerem konfiguracji na potrzeby odzyskiwania po awarii serwera fizycznego
 
@@ -32,7 +32,7 @@ Tabela zawiera podsumowanie wymagań wstępnych dotyczących wdrażania lokalneg
 | Wolne miejsce na dysku (pamięć podręczna serwera przetwarzania) | 600 GB
 | Wolne miejsce na dysku (dysk przechowywania) | 600 GB|
 | System operacyjny  | Windows Server 2012 R2 <br> Windows Server 2016 |
-| Ustawienia regionalne systemu operacyjnego | English (US)|
+| Ustawienia regionalne systemu operacyjnego | {1&gt;Polski (PL)&lt;1}|
 | Wersja programu VMware vSphere PowerCLI | Niewymagane|
 | Role systemu Windows Server | Nie należy włączać tych ról: <br> - Active Directory Domain Services <br>- Internet Information Services <br> - Hyper-V |
 | Zasady grupy| Nie włączaj tych zasad grupy: <br> -Uniemożliwianie dostępu do wiersza polecenia <br> — Uniemożliwianie dostępu do narzędzi edycji rejestru <br> — Logika zaufania dla plików załączników <br> -Włącz wykonywanie skryptu <br> [Dowiedz się więcej](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
@@ -110,19 +110,19 @@ Uruchom plik instalacyjny w następujący sposób:
 
 |Nazwa parametru| Typ | Opis| Wartości|
 |-|-|-|-|
-| /ServerMode|Wymagane|Określa, czy mają zostać zainstalowane oba serwery, konfiguracji i przetwarzania, czy tylko serwer przetwarzania|CS<br>PS|
-|/InstallLocation|Wymagane|Folder, w którym są instalowane składniki| Dowolny folder na komputerze|
-|/MySQLCredsFilePath|Wymagane|Ścieżka pliku, w której są przechowywane poświadczenia serwera MySQL|Plik powinien mieć format określony poniżej|
-|/VaultCredsFilePath|Wymagane|Ścieżka pliku poświadczeń magazynu|Prawidłowa ścieżka pliku|
-|/EnvType|Wymagane|Typ środowiska, który ma być chroniony |VMware<br>NonVMware|
-|/PSIP|Wymagane|Adres IP karty sieciowej do użytku podczas przesyłania danych replikacji| Dowolny prawidłowy adres IP|
-|/CSIP|Wymagane|Adres IP karty sieciowej, na której nasłuchuje serwer konfiguracji| Dowolny prawidłowy adres IP|
-|/PassphraseFilePath|Wymagane|Pełna ścieżka do lokalizacji pliku hasła|Prawidłowa ścieżka pliku|
+| /ServerMode|Wymagany|Określa, czy mają zostać zainstalowane oba serwery, konfiguracji i przetwarzania, czy tylko serwer przetwarzania|CS<br>PS|
+|/InstallLocation|Wymagany|Folder, w którym są instalowane składniki| Dowolny folder na komputerze|
+|/MySQLCredsFilePath|Wymagany|Ścieżka pliku, w której są przechowywane poświadczenia serwera MySQL|Plik powinien mieć format określony poniżej|
+|/VaultCredsFilePath|Wymagany|Ścieżka pliku poświadczeń magazynu|Prawidłowa ścieżka pliku|
+|/EnvType|Wymagany|Typ środowiska, który ma być chroniony |VMware<br>NonVMware|
+|/PSIP|Wymagany|Adres IP karty sieciowej do użytku podczas przesyłania danych replikacji| Dowolny prawidłowy adres IP|
+|/CSIP|Wymagany|Adres IP karty sieciowej, na której nasłuchuje serwer konfiguracji| Dowolny prawidłowy adres IP|
+|/PassphraseFilePath|Wymagany|Pełna ścieżka do lokalizacji pliku hasła|Prawidłowa ścieżka pliku|
 |/BypassProxy|Optional (Opcjonalność)|Określa, że serwer konfiguracji łączy się z platformą Azure bez serwera proxy|Należy uzyskać tę wartość z Venu|
 |/ProxySettingsFilePath|Optional (Opcjonalność)|Ustawienia serwera proxy (domyślny serwer proxy wymaga uwierzytelniania lub niestandardowy serwer proxy)|Plik powinien mieć format określony poniżej|
 |DataTransferSecurePort|Optional (Opcjonalność)|Numer portu dla protokołu PSIP do użytku z danymi replikacji| Prawidłowy numer portu (wartość domyślna to 9433)|
 |/SkipSpaceCheck|Optional (Opcjonalność)|Pomiń sprawdzanie miejsca dla dysku pamięci podręcznej| |
-|/AcceptThirdpartyEULA|Wymagane|Flaga implikuje akceptację umowy licencyjnej innego producenta| |
+|/AcceptThirdpartyEULA|Wymagany|Flaga implikuje akceptację umowy licencyjnej innego producenta| |
 |/ShowThirdpartyEULA|Optional (Opcjonalność)|Wyświetla umowę licencyjną innej firmy. Jeśli zostanie podany w danych wejściowych, wszystkie inne parametry są ignorowane| |
 
 
@@ -175,7 +175,7 @@ Ustawienia serwera proxy dla komputera serwera konfiguracji można modyfikować 
 2. Uruchom cspsconfigtool. exe przy użyciu skrótu na pulpicie.
 3. Kliknij kartę **rejestracja w magazynie** .
 4. Pobierz nowy plik rejestracji z portalu i podaj go jako dane wejściowe do narzędzia.
-      ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
+      ![Register-Configuration-Server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
 5. Podaj szczegóły serwera proxy, a następnie kliknij przycisk **zarejestruj** .  
 6. Otwórz okno poleceń administracyjnych programu PowerShell.
 7. Uruchom następujące polecenie

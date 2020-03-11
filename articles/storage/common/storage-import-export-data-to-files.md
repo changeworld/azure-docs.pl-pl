@@ -9,11 +9,11 @@ ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 201d0c0a545c5ba7ae1bb0b5e119f7acb1ae362f
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029958"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363912"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Importowanie danych do Azure Files za pomocą usługi Azure Import/Export
 
@@ -26,7 +26,7 @@ Usługa Import/Export obsługuje tylko importowanie Azure Files do usługi Azure
 Przed utworzeniem zadania importowania w celu transferu danych do Azure Files należy uważnie przejrzeć i wykonać poniższą listę wymagań wstępnych. Należy:
 
 - Mieć aktywną subskrypcję platformy Azure do użycia z usługą Import/Export.
-- Mieć co najmniej jedno konto usługi Azure Storage. Zapoznaj się z listą [obsługiwanych kont magazynu i typów magazynów dla usługi Import/Export](storage-import-export-requirements.md). Aby uzyskać informacje dotyczące tworzenia nowego konta magazynu, zobacz [sposób tworzenia konta magazynu](storage-account-create.md).
+- Mieć co najmniej jedno konto usługi Azure Storage. Zapoznaj się z listą [obsługiwanych kont magazynu i typów magazynów dla usługi Import/Export](storage-import-export-requirements.md). Aby uzyskać informacje dotyczące tworzenia nowego konta magazynu, zobacz [jak utworzyć konto magazynu](storage-account-create.md).
 - Ma wystarczającą liczbę dysków [obsługiwanych typów](storage-import-export-requirements.md#supported-disks).
 - System Windows z uruchomioną [obsługiwaną wersją systemu operacyjnego](storage-import-export-requirements.md#supported-operating-systems).
 - [Pobierz WAImportExport w wersji 2](https://aka.ms/waiev2) w systemie Windows. Rozpakuj do domyślnego folderu `waimportexport`. Na przykład `C:\WaImportExport`.

@@ -3,15 +3,15 @@ title: Zarządzane tożsamości
 description: Dowiedz się, jak zarządzane tożsamości działają w Azure App Service i Azure Functions, jak skonfigurować tożsamość zarządzaną i wygenerować token dla zasobu zaplecza.
 author: mattchenderson
 ms.topic: article
-ms.date: 10/30/2019
+ms.date: 03/04/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 3e414e40cb92f5c7e8c2e1d083419d57e06a0995
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 6e3169f2bfcba0a02af1490f875cbab8a14d02f6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161923"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365531"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Jak używać tożsamości zarządzanych do App Service i Azure Functions
 
@@ -24,7 +24,7 @@ Aplikacja może mieć przyznane dwa typy tożsamości:
 - **Tożsamość przypisana do systemu** jest powiązana z aplikacją i jest usuwana, jeśli aplikacja zostanie usunięta. Aplikacja może mieć tylko jedną tożsamość przypisaną do systemu.
 - **Tożsamość przypisana przez użytkownika** to autonomiczny zasób platformy Azure, który można przypisać do aplikacji. Aplikacja może mieć wiele tożsamości przypisanych do użytkownika.
 
-## <a name="adding-a-system-assigned-identity"></a>Dodawanie tożsamości przypisanej do systemu
+## <a name="add-a-system-assigned-identity"></a>Dodawanie tożsamości przypisanej do systemu
 
 Utworzenie aplikacji z tożsamością przypisaną przez system wymaga, aby w aplikacji była ustawiona dodatkowa właściwość.
 
@@ -146,10 +146,10 @@ Gdy witryna zostanie utworzona, ma następujące dodatkowe właściwości:
 }
 ```
 
-Gdzie `<TENANTID>` i `<PRINCIPALID>` są zastępowane identyfikatorami GUID. Właściwość tenantId identyfikuje dzierżawcę usługi AAD, do której należy tożsamość. PrincipalId jest unikatowym identyfikatorem nowej tożsamości aplikacji. W usłudze AAD nazwa główna usługi ma taką samą nazwę, która została nadana App Service lub Azure Functions wystąpieniem.
+Właściwość tenantId identyfikuje dzierżawcę usługi AAD, do której należy tożsamość. PrincipalId jest unikatowym identyfikatorem nowej tożsamości aplikacji. W usłudze AAD nazwa główna usługi ma taką samą nazwę, która została nadana App Service lub Azure Functions wystąpieniem.
 
 
-## <a name="adding-a-user-assigned-identity"></a>Dodawanie tożsamości przypisanej do użytkownika
+## <a name="add-a-user-assigned-identity"></a>Dodawanie tożsamości przypisanej do użytkownika
 
 Utworzenie aplikacji z tożsamością przypisaną przez użytkownika wymaga utworzenia tożsamości, a następnie dodania jej identyfikatora zasobu do konfiguracji aplikacji.
 
@@ -230,15 +230,17 @@ Gdy witryna zostanie utworzona, ma następujące dodatkowe właściwości:
 }
 ```
 
-Gdzie `<PRINCIPALID>` i `<CLIENTID>` są zastępowane identyfikatorami GUID. PrincipalId jest unikatowym identyfikatorem tożsamości, która jest używana do administrowania usługą AAD. ClientId jest unikatowym identyfikatorem nowej tożsamości aplikacji, która jest używana do określania tożsamości, która ma być używana podczas wywołań środowiska uruchomieniowego.
+PrincipalId jest unikatowym identyfikatorem tożsamości, która jest używana do administrowania usługą AAD. ClientId jest unikatowym identyfikatorem nowej tożsamości aplikacji używanej do określania tożsamości, która ma być używana podczas wywołań środowiska uruchomieniowego.
 
 
-## <a name="obtaining-tokens-for-azure-resources"></a>Uzyskiwanie tokenów dla zasobów platformy Azure
+## <a name="obtain-tokens-for-azure-resources"></a>Uzyskaj tokeny dla zasobów platformy Azure
 
 Aplikacja może używać swojej tożsamości zarządzanej, aby uzyskiwać tokeny umożliwiające dostęp do innych zasobów chronionych przez usługi AAD, takich jak Azure Key Vault. Te tokeny reprezentują aplikację, która uzyskują dostęp do zasobu, a nie do określonego użytkownika aplikacji. 
 
+Może być konieczne skonfigurowanie zasobu docelowego, aby zezwalać na dostęp z poziomu aplikacji. Na przykład, Jeśli zażądasz tokenu dostępu do Key Vault, musisz upewnić się, że dodano zasady dostępu zawierające tożsamość aplikacji. W przeciwnym razie wywołania Key Vault będą odrzucane, nawet jeśli zawierają token. Aby dowiedzieć się więcej o tym, które zasoby obsługują tokeny Azure Active Directory, zobacz [usługi platformy Azure, które obsługują uwierzytelnianie usługi Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
+
 > [!IMPORTANT]
-> Może być konieczne skonfigurowanie zasobu docelowego, aby zezwalać na dostęp z poziomu aplikacji. Na przykład, Jeśli zażądasz tokenu dostępu do Key Vault, musisz upewnić się, że dodano zasady dostępu zawierające tożsamość aplikacji. W przeciwnym razie wywołania Key Vault będą odrzucane, nawet jeśli zawierają token. Aby dowiedzieć się więcej o tym, które zasoby obsługują tokeny Azure Active Directory, zobacz [usługi platformy Azure, które obsługują uwierzytelnianie usługi Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
+> Usługi zaplecza dla tożsamości zarządzanych przechowują pamięć podręczną według identyfikatora URI zasobu przez około 8 godzin. W przypadku aktualizacji zasad dostępu określonego zasobu docelowego i natychmiastowego pobrania tokenu dla tego zasobu można nadal uzyskać buforowany token z nieaktualnymi uprawnieniami do momentu wygaśnięcia tego tokenu. Obecnie nie ma możliwości wymuszenia odświeżenia tokenu.
 
 Istnieje prosty protokół REST umożliwiający uzyskanie tokenu w App Service i Azure Functions. Można go używać dla wszystkich aplikacji i języków. W przypadku platformy .NET i środowiska Java zestaw Azure SDK zapewnia streszczenie za pośrednictwem tego protokołu i ułatwia lokalne środowisko programistyczne.
 
@@ -301,7 +303,7 @@ Content-Type: application/json
 
 ### <a name="code-examples"></a>Przykłady kodu
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 > [!TIP]
 > W przypadku języków .NET można także samodzielnie użyć [Microsoft. Azure. Services. AppAuthentication](#asal) zamiast tego żądania.
@@ -317,7 +319,7 @@ public async Task<HttpResponseMessage> GetToken(string resource)  {
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const rp = require('request-promise');
@@ -333,7 +335,7 @@ const getToken = function(resource, cb) {
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```python
 import os
@@ -352,7 +354,7 @@ def get_bearer_token(resource_uri):
     return access_token
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 $resourceURI = "https://<AAD-resource-URI-for-resource-to-obtain-token>"
@@ -413,7 +415,7 @@ W przypadku aplikacji i funkcji języka Java Najprostszym sposobem pracy z zarz�
 
 ## <a name="remove"></a>Usuwanie tożsamości
 
-Tożsamość przypisana przez system można usunąć, wyłączając funkcję przy użyciu portalu, programu PowerShell lub interfejsu wiersza polecenia w taki sam sposób, jak został utworzony. Tożsamości przypisane do użytkownika można usuwać pojedynczo. Aby usunąć wszystkie tożsamości, w protokole szablonu REST/ARM można to zrobić, ustawiając typ na "none" (brak):
+Tożsamość przypisana przez system można usunąć, wyłączając funkcję przy użyciu portalu, programu PowerShell lub interfejsu wiersza polecenia w taki sam sposób, jak został utworzony. Tożsamości przypisane do użytkownika można usuwać pojedynczo. Aby usunąć wszystkie tożsamości, dla opcji Typ Ustaw wartość "Brak" w [szablonie ARM](#using-an-azure-resource-manager-template):
 
 ```json
 "identity": {

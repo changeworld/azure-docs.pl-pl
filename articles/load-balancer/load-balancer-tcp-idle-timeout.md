@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2020
 ms.author: allensu
 ms.openlocfilehash: 39cd5b5d6e9d6007994ccc29732186ec6a8bdc2e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023892"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381032"
 ---
 # <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>Skonfiguruj ustawienia limitu czasu bezczynności protokołu TCP dla Azure Load Balancer
 
@@ -55,7 +55,7 @@ Parametr `IdleTimeoutInMinutes` jest opcjonalny. Jeśli nie jest ustawiona, domy
 
 ## <a name="set-the-tcp-timeout-on-a-load-balanced-rule-to-15-minutes"></a>Ustaw limit czasu TCP dla reguły ze zrównoważonym obciążeniem na 15 minut
 
-Aby ustawić limit czasu bezczynności dla modułu równoważenia obciążenia, wartość "IdleTimeoutInMinutes" jest ustawiana dla reguły ze zrównoważonym obciążeniem. Przykład:
+Aby ustawić limit czasu bezczynności dla modułu równoważenia obciążenia, wartość "IdleTimeoutInMinutes" jest ustawiana dla reguły ze zrównoważonym obciążeniem. Na przykład:
 
 ```azurepowershell-interactive
 $lb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroup "MyResourceGroup"

@@ -10,11 +10,11 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: f90ada6b6cd1760b3b779010625f252533fa611d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595768"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381796"
 ---
 # <a name="how-to-manage-settings"></a>Jak zarządzać ustawieniami
 
@@ -85,11 +85,11 @@ W przypadku translatora niestandardowego możesz udostępnić obszar roboczy inn
 
 ## <a name="sharing-permissions"></a>Uprawnienia do udostępniania
 
-1.  **Czytnika** Czytnik w obszarze roboczym będzie mógł wyświetlić wszystkie informacje w obszarze roboczym.
+1.  **Czytelnik:** Czytnik w obszarze roboczym będzie mógł wyświetlić wszystkie informacje w obszarze roboczym.
 
-2.  **Edytora** Edytor w obszarze roboczym będzie mógł dodawać dokumenty, przeszkolić modele i usuwać dokumenty i projekty. Mogą oni dodać klucz subskrypcji, ale nie może modyfikować osoby, którym udostępniono obszar roboczy, usunąć obszar roboczy lub zmienić nazwę obszaru roboczego.
+2.  **Edytor:** Edytor w obszarze roboczym będzie mógł dodawać dokumenty, przeszkolić modele i usuwać dokumenty i projekty. Mogą oni dodać klucz subskrypcji, ale nie może modyfikować osoby, którym udostępniono obszar roboczy, usunąć obszar roboczy lub zmienić nazwę obszaru roboczego.
 
-3.  **Właociciela** Właściciel ma pełne uprawnienia do obszaru roboczego.
+3.  **Właściciel:** Właściciel ma pełne uprawnienia do obszaru roboczego.
 
 ## <a name="change-sharing-permission"></a>Uprawnienie do zmiany udostępniania
 

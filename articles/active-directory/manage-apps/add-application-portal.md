@@ -12,11 +12,11 @@ ms.date: 10/29/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 650a4f643f170fc64dd0e0643d645a7dcbffdfbc
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420469"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379791"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-tenant"></a>Szybki start: dodawanie aplikacji do dzierżawy usługi Azure Active Directory
 

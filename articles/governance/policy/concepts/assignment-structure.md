@@ -4,11 +4,11 @@ description: Zawiera opis definicji przypisania zasad używanej przez Azure Poli
 ms.date: 09/23/2019
 ms.topic: conceptual
 ms.openlocfilehash: f03c654dfc4c8dfdf2bdc5103a5961b4d8ce1e64
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747207"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357397"
 ---
 # <a name="azure-policy-assignment-structure"></a>Struktura przypisań usługi Azure Policy
 
@@ -61,8 +61,8 @@ Ta właściwość ma następujące wartości:
 
 |Tryb |Wartość JSON |Typ |Koryguj ręcznie |Wpis dziennika aktywności |Opis |
 |-|-|-|-|-|-|
-|Enabled (Włączony) |Domyślne |string |Tak |Tak |Efekt zasad jest wymuszany podczas tworzenia lub aktualizowania zasobu. |
-|Disabled (Wyłączony) |DoNotEnforce |string |Tak |Nie | Efekt zasad nie jest wymuszany podczas tworzenia lub aktualizowania zasobu. |
+|Enabled (Włączony) |Domyślne |ciąg |Yes |Yes |Efekt zasad jest wymuszany podczas tworzenia lub aktualizowania zasobu. |
+|Disabled (Wyłączony) |DoNotEnforce |ciąg |Yes |Nie | Efekt zasad nie jest wymuszany podczas tworzenia lub aktualizowania zasobu. |
 
 Jeśli w definicji zasad lub inicjatywy nie określono **wymuszania** , używana jest wartość _Domyślna_ . [Zadania korygowania](../how-to/remediate-resources.md) można uruchamiać dla zasad [deployIfNotExists](./effects.md#deployifnotexists) , nawet jeśli ustawienie **wymuszania** ma wartość _DoNotEnforce_.
 

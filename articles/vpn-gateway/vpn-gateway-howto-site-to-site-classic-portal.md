@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 02/11/2020
 ms.author: cherylmc
 ms.openlocfilehash: e386e5fc9c4d62266e0ca23869bf30ccaffeb91d
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201564"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379225"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Tworzenie sieci wirtualnej za pomocą połączenia typu lokacja-lokacja przy użyciu witryny Azure Portal (model klasyczny)
 
