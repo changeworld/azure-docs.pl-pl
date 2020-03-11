@@ -213,6 +213,8 @@
               items:
                 - name: Język JavaScript po stronie klienta
                   href: app/javascript.md
+                - name: Mapa źródła języka JavaScript
+                  href: app/source-map-support.md
             - name: Podsumowanie interfejsu API usługi Application Insights
               displayname: 'SDK, API, custom events, custom metrics, trackevent,trackmetric, getmetric, trackrequest, trackexception, tracktrace, trackdependency'
               href: app/api-custom-events-metrics.md
@@ -1005,6 +1007,8 @@
               href: platform/alerts-activity-log.md
             - name: Migrowanie zdarzeń zarządzania do alertów dziennika aktywności
               href: platform/migrate-management-alerts.md
+            - name: Schemat elementów webhook
+              href: platform/activity-log-alerts-webhook.md
         - name: Alerty dotyczące kondycji usługi w dzienniku aktywności
           items:
             - name: Wyświetlanie powiadomień
@@ -1023,8 +1027,6 @@
               href: platform/alerts-common-schema-definitions.md
             - name: Integracja typowego schematu alertów z usługą Logic Apps
               href: platform/alerts-common-schema-integrations.md
-            - name: Schemat elementów webhook
-              href: platform/activity-log-alerts-webhook.md
             - name: Zachowanie alertów SMS
               href: platform/alerts-sms-behavior.md
             - name: Ograniczanie częstotliwości powiadomień

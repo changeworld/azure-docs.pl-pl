@@ -12,6 +12,17 @@
       href: quick-create-powershell.md
     - name: Tworzenie sieci wirtualnej — interfejs wiersza polecenia platformy Azure
       href: quick-create-cli.md
+    - name: NAT
+      items:
+        - name: Tworzenie bramy translatora adresów sieciowych — portal
+          href: quickstart-create-nat-gateway-portal.md
+        - name: Tworzenie bramy translatora adresów sieciowych — PowerShell
+          href: quickstart-create-nat-gateway-powershell.md
+        - name: Tworzenie bramy translatora adresów sieciowych — interfejs wiersza polecenia
+          href: quickstart-create-nat-gateway-cli.md
+        - name: Tworzenie bramy translatora adresów sieciowych — szablon usługi Resource Manager
+          displayname: Resource Manager
+          href: quickstart-create-nat-gateway-template.md
   expanded: true
 - name: Samouczki
   items:
@@ -23,6 +34,14 @@
       href: tutorial-restrict-network-access-to-resources.md
     - name: Łączenie sieci wirtualnych
       href: tutorial-connect-virtual-networks-portal.md
+    - name: NAT
+      items:
+        - name: Tworzenie i weryfikowanie bramy translatora adresów sieciowych — portal
+          href: tutorial-create-validate-nat-gateway-portal.md
+        - name: Tworzenie i weryfikowanie bramy translatora adresów sieciowych — PowerShell
+          href: tutorial-create-validate-nat-gateway-powershell.md
+        - name: Tworzenie i weryfikowanie bramy translatora adresów sieciowych — interfejs wiersza polecenia
+          href: tutorial-create-validate-nat-gateway-cli.md
 - name: Samples
   items:
     - name: Interfejs wiersza polecenia platformy Azure
@@ -123,20 +142,6 @@
           href: virtual-network-nsg-manage-log.md
     - name: Łączność
       items:
-        - name: NAT
-          items:
-            - name: Tworzenie bramy translatora adresów sieciowych — portal
-              href: quickstart-create-nat-gateway-portal.md
-            - name: Tworzenie bramy translatora adresów sieciowych — PowerShell
-              href: quickstart-create-nat-gateway-powershell.md
-            - name: Tworzenie bramy translatora adresów sieciowych — interfejs wiersza polecenia
-              href: quickstart-create-nat-gateway-cli.md
-            - name: Tworzenie i weryfikowanie bramy translatora adresów sieciowych — portal
-              href: tutorial-create-validate-nat-gateway-portal.md
-            - name: Tworzenie i weryfikowanie bramy translatora adresów sieciowych — PowerShell
-              href: tutorial-create-validate-nat-gateway-powershell.md
-            - name: Tworzenie i weryfikowanie bramy translatora adresów sieciowych — interfejs wiersza polecenia
-              href: tutorial-create-validate-nat-gateway-cli.md
         - name: Routing ruchu sieciowego
           items:
             - name: Azure Portal

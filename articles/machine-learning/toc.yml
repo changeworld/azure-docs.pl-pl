@@ -79,6 +79,8 @@
       href: sample-designer-datasets.md
     - name: Kompleksowe przykłady metodyki MLOps
       href: 'https://github.com/microsoft/MLOps'
+    - name: Potoki projektanta
+      href: samples-designer.md
 - name: Pojęcia
   items:
     - name: Workspace
@@ -216,30 +218,6 @@
           href: how-to-cicd-data-ingestion.md
     - name: Szkolenie modeli
       items:
-        - name: Korzystanie z projektanta
-          displayName: sample designer experiments
-          items:
-            - name: Przewidywanie ceny
-              displayName: 'regression, studio'
-              href: how-to-designer-sample-regression-automobile-price-basic.md
-            - name: Przewidywanie ceny (zaawansowane)
-              displayName: 'regression, studio'
-              href: how-to-designer-sample-regression-automobile-price-compare-algorithms.md
-            - name: Przewidywanie dochodu
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-classification-predict-income.md
-            - name: Przewidywanie ryzyka kredytowego (zaawansowane)
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-classification-credit-risk-cost-sensitive.md
-            - name: Przewidywanie zmian
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-classification-churn.md
-            - name: Przewidywanie opóźnień lotów
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-classification-flight-delay.md
-            - name: Klasyfikacja tekstu
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-text-classification.md
         - name: Używanie narzędzi do szacowania w uczeniu maszynowym
           items:
             - name: Tworzenie estymatorów na potrzeby trenowania

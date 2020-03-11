@@ -251,8 +251,8 @@
       items:
         - name: Korzystanie z interfejsu wiersza polecenia
           href: create-cli-complete.md
-        - name: Korzystanie z szablonu
-          displayName: 'Azure Resource Manager, ARM'
+        - name: Korzystanie z szablonu usługi Resource Manager
+          displayName: Azure Resource Manager
           href: create-ssh-secured-vm-from-template.md
         - name: Korzystanie z interfejsu API REST
           href: create-vm-rest-api.md
@@ -270,8 +270,9 @@
               href: spot-cli.md
             - name: Portal
               href: ../windows/spot-portal.md?toc=/azure/virtual-machines/linux/toc.json
-            - name: Szablon
+            - name: Szablon ARM
               href: spot-template.md
+              displayName: Azure Resource Manager
             - name: Kody błędów
               href: ../error-codes-spot.md?toc=/azure/virtual-machines/linux/toc.json
     - name: Migrowanie z wersji klasycznej do usługi Azure Resource Manager
@@ -462,8 +463,9 @@
               href: image-builder-overview.md
             - name: Interfejs wiersza polecenia platformy Azure
               href: image-builder.md
-            - name: Dokumentacja dotycząca szablonów
+            - name: Dokumentacja szablonu usługi Resource Manager
               href: image-builder-json.md
+              displayName: 'ARM,Resource Manager'
             - name: Tworzenie dla galerii obrazów
               href: image-builder-gallery.md
             - name: Aktualizowanie istniejącego obrazu
@@ -631,7 +633,7 @@
               href: attach-disk-portal.md
         - name: Odłączanie dysku
           href: detach-disk.md
-        - name: Wdrażanie dysków za pomocą szablonu
+        - name: Wdrażanie dysków za pomocą szablonu usługi Resource Manager
           displayName: 'Azure Resource Manager, ARM'
           href: using-managed-disks-template-deployments.md
         - name: Włączanie dysków udostępnionych
@@ -757,9 +759,10 @@
       href: /rest/api/compute
     - name: Szablon usługi Resource Manager
       href: /azure/templates/microsoft.compute/allversions
+      displayName: ARM
 - name: Zasoby
   items:
-    - name: Tworzenie szablonów
+    - name: Tworzenie szablonów usługi Resource Manager
       displayName: 'Azure Resource Manager, ARM'
       href: /azure/azure-resource-manager/
     - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
