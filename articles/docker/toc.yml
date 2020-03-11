@@ -1,5 +1,5 @@
 - name: Dokumentacja platformy Docker
-  href: index.md
+  href: index.yml
 - name: Szybki start
   expanded: true
   items:

@@ -45,10 +45,6 @@
           href: how-to-automatic-language-detection.md
         - name: Używanie skompresowanych formatów dźwiękowych danych wejściowych
           href: how-to-use-codec-compressed-audio-input-streams.md
-        - name: Używanie skompresowanych formatów dźwiękowych danych wejściowych (iOS)
-          href: how-to-use-codec-compressed-audio-input-streams-ios.md
-        - name: Używanie skompresowanych formatów dźwiękowych danych wejściowych (Android)
-          href: how-to-use-codec-compressed-audio-input-streams-android.md
     - name: Dostosowywanie
       items:
         - name: Przygotowywanie danych
@@ -63,6 +59,10 @@
           href: how-to-custom-speech-deploy-model.md
         - name: Tworzenie transkrypcji oznaczonych etykietą przez użytkownika
           href: how-to-custom-speech-human-labeled-transcriptions.md
+        - name: Wskazówki dotyczące nazewnictwa niestandardowych słów kluczowych
+          href: speech-devices-sdk-kws-guidelines.md
+        - name: Wykrywanie niestandardowych słów kluczowych
+          href: speech-devices-sdk-create-kws.md
     - name: Dokumentacja
       items:
         - name: Interfejsy API zestawu SDK usługi Mowa
@@ -156,10 +156,6 @@
               href: how-to-custom-voice-create-voice.md
             - name: Nagrywanie próbek głosu
               href: record-custom-voice-samples.md
-            - name: Wskazówki dotyczące nazewnictwa niestandardowych słów kluczowych
-              href: speech-devices-sdk-kws-guidelines.md
-            - name: Wykrywanie niestandardowych słów kluczowych
-              href: speech-devices-sdk-create-kws.md
         - name: Tworzenie zawartości audio
           items:
             - name: Tworzenie zawartości audio
@@ -413,6 +409,12 @@
           items:
             - name: Często zadawane pytania dotyczące asystentów głosowych
               href: faq-voice-assistants.md
+    - name: Custom — słowo kluczowe
+      items:
+        - name: Wskazówki dotyczące nazewnictwa niestandardowych słów kluczowych
+          href: speech-devices-sdk-kws-guidelines.md
+        - name: Wykrywanie niestandardowych słów kluczowych
+          href: speech-devices-sdk-create-kws.md
 - name: Hosting
   expanded: false
   items:

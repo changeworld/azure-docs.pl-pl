@@ -11,13 +11,13 @@ metadata:
   ms.collection: na
   author: mumian
   ms.author: jgao
-  ms.date: 03/04/2020
-  ms.openlocfilehash: 0ea805d87db78d0a7fadad0a07e01e9387d568a5
-  ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+  ms.date: 03/09/2020
+  ms.openlocfilehash: f05b14039f5b83b4f214d7fa479a3ab809e859c6
+  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 03/05/2020
-  ms.locfileid: "78299248"
+  ms.lasthandoff: 03/09/2020
+  ms.locfileid: "78943228"
 landingContent:
 - title: Informacje o szablonach usługi ARM
   linkLists:
@@ -33,8 +33,6 @@ landingContent:
       url: deployment-modes.md
     - text: Połączone szablony
       url: linked-templates.md
-    - text: Wdrażanie poziomu subskrypcji
-      url: deploy-to-subscription.md
   - linkListType: video
     links:
     - text: Co nowego?
@@ -85,26 +83,26 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Przy użyciu programu PowerShell
+    - text: PowerShell
       url: deploy-powershell.md
-    - text: Przy użyciu interfejsu wiersza polecenia
+    - text: Interfejs wiersza polecenia platformy Azure
       url: deploy-cli.md
-    - text: Przy użyciu portalu
+    - text: Portal
       url: deploy-portal.md
-    - text: Przy użyciu interfejsu API REST
+    - text: Interfejs API REST
       url: deploy-rest.md
     - text: Wdrożenie warunkowe
       url: template-deploy-what-if.md
-    - text: Wyświetlanie historii wdrażania
-      url: deployment-history.md
-- title: Zarządzanie szablonami
+- title: Wdrożenia w zakresie
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Eksportowanie szablonów
-      url: export-template-portal.md
-    - text: CI/CD
-      url: add-template-to-azure-pipelines.md
+    - text: Subskrypcja
+      url: deploy-to-subscription.md
+    - text: Grupa zarządzania
+      url: deploy-to-management-group.md
+    - text: Dzierżawa
+      url: deploy-to-tenant.md
 - title: Eksplorowanie zawartości referencyjnej
   linkLists:
   - linkListType: reference
@@ -123,3 +121,13 @@ landingContent:
       url: /java/api/com.microsoft.azure.management.resources
     - text: Python
       url: /python/api/overview/azure/resources?view=azure-python
+- title: Zarządzanie szablonami
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Eksportowanie szablonów
+      url: export-template-portal.md
+    - text: CI/CD
+      url: add-template-to-azure-pipelines.md
+    - text: Wyświetlanie historii wdrażania
+      url: deployment-history.md

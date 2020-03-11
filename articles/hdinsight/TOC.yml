@@ -708,6 +708,8 @@
               href: ./interactive-query/interactive-query-troubleshoot-zookeeperhiveclientexception-hiveserver-configs.md
             - name: Rozwiązywanie problemów z usługą Apache HIVE
               href: ./hdinsight-troubleshoot-hive.md
+            - name: Dzienniki usługi Apache Hive zajmują całe miejsce na dysku w węźle głównym
+              href: ./interactive-query/interactive-query-troubleshoot-hive-logs-diskspace-full-headnodes.md
 - name: Usługi ML
   items:
     - name: Omówienie

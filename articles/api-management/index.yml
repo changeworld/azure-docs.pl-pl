@@ -1,56 +1,71 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentacja usługi API Management
+summary: Dowiedz się, jak usługa API Management umożliwia bezpieczne publikowanie interfejsów API w skali do deweloperów zewnętrznych, deweloperów będących partnerami i deweloperów będących pracownikami. Zawiera opis sposobu tworzenia nowoczesnych bram interfejsów API dla istniejących usług zaplecza hostowanych w dowolnym miejscu oraz zarządzania tymi bramami.
 metadata:
-  title: Dokumentacja usługi Azure API Management — samouczki i dokumentacja interfejsu API | Microsoft Docs
-  description: 'Dowiedz się, jak usługa API Management umożliwia bezpieczne publikowanie interfejsów API w skali do deweloperów zewnętrznych, deweloperów będących partnerami i deweloperów będących pracownikami. W samouczkach, dokumentacji interfejsu API i innych dokumentach pokazano, jak tworzyć nowoczesne bramy interfejsu API dla istniejących usług zaplecza hostowanych w dowolnym miejscu oraz jak nimi zarządzać.'
+  title: Dokumentacja usługi API Management
+  description: Dowiedz się, jak usługa API Management umożliwia bezpieczne publikowanie interfejsów API w skali do deweloperów zewnętrznych, deweloperów będących partnerami i deweloperów będących pracownikami. Zawiera opis sposobu tworzenia nowoczesnych bram interfejsów API dla istniejących usług zaplecza hostowanych w dowolnym miejscu oraz zarządzania tymi bramami.
   services: api-management
-  author: georgewallace
-  manager: gwallace
   ms.service: api-management
   ms.topic: landing-page
-  ms.date: 11/15/2017
+  author: georgewallace
   ms.author: gwallace
-abstract:
-  description: 'Dowiedz się, jak usługa API Management umożliwia bezpieczne publikowanie interfejsów API w skali do deweloperów zewnętrznych, deweloperów będących partnerami i deweloperów będących pracownikami. W samouczkach, dokumentacji interfejsu API i innych dokumentach pokazano, jak tworzyć nowoczesne bramy interfejsu API dla istniejących usług zaplecza hostowanych w dowolnym miejscu oraz jak nimi zarządzać.'
-sections:
-  - title: 5-minutowe przewodniki Szybki start
-    items:
-      - type: paragraph
-        text: Tworzenie wystąpienia usługi API Management
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/sql-database/media/index/portal.svg'
-            text: Tworzenie wystąpienia — portal
-            href: /azure/api-management/get-started-create-service-instance
-          - image:
-              src: 'https://docs.microsoft.com/azure/sql-database/media/index/logo_powershell.svg'
-            text: Tworzenie wystąpienia — PowerShell
-            href: /azure/api-management/powershell-create-service-instance
-  - title: Samouczki krok po kroku
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak zarządzać usługą API Management.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/api-management/import-and-publish">Importowanie i publikowanie pierwszego interfejsu API</a>
-          - html: <a href="/azure/api-management/api-management-howto-add-products">Tworzenie i publikowanie produktu</a>
-          - html: <a href="/azure/api-management/mock-api-responses">Testowanie odpowiedzi interfejsu API</a>
-          - html: <a href="/azure/api-management/transform-api">Przekształcanie i ochrona interfejsu API</a>
-          - html: <a href="/azure/api-management/api-management-howto-use-azure-monitor">Monitorowanie opublikowanych interfejsów API</a>
-          - html: <a href="/azure/api-management/api-management-howto-api-inspector">Debugowanie interfejsów API za pomocą funkcji śledzenia żądań</a>
-          - html: <a href="/azure/api-management/api-management-get-started-revise-api">Bezpieczne wprowadzanie zmian niewymagających przerw przy użyciu poprawek</a>
-          - html: <a href="/azure/api-management/api-management-get-started-publish-versions">Publikowanie wielu wersji interfejsu API</a>
-          - html: <a href="/azure/api-management/api-management-customize-styles">Dostosowywanie stylu stron portalu dla deweloperów</a>
-  - title: Przykłady
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/api-management/policy-samples">Zasady</a>
-          - html: <a href="/azure/api-management/powershell-samples">Azure PowerShell</a>
-          - html: '<a href="https://docs.microsoft.com/azure/architecture/reference-architectures/enterprise-integration/basic-enterprise-integration">Architektura referencyjna</a>'
+  ms.date: 03/08/2020
+  ms.openlocfilehash: 2ed84dfdfcabafe7222b8cb64a853ed04e2335a2
+  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 03/09/2020
+  ms.locfileid: "78944163"
+landingContent:
+- title: Informacje o usłudze API Management
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest API Management?
+      url: api-management-key-concepts.md
+    - text: Dostępność funkcji
+      url: api-management-features.md
+- title: Tworzenie wystąpienia
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure Portal
+      url: get-started-create-service-instance.md
+    - text: Azure PowerShell
+      url: powershell-create-service-instance.md
+- title: Zarządzanie usługą API Management
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 1. Importowanie i publikowanie pierwszego interfejsu API
+      url: import-and-publish.md
+    - text: 2. Tworzenie i publikowanie produktu
+      url: api-management-howto-add-products.md
+    - text: 3. Pozorowanie odpowiedzi interfejsu API
+      url: mock-api-responses.md
+    - text: 4. Przekształcanie i ochrona interfejsu API
+      url: transform-api.md
+    - text: 5. Monitorowanie opublikowanych interfejsów API
+      url: api-management-howto-use-azure-monitor.md
+    - text: 6. Debugowanie interfejsów API za pomocą funkcji śledzenia żądań
+      url: api-management-howto-api-inspector.md
+    - text: 7. Bezpieczne wprowadzanie zmian niepowodujących niezgodności przy użyciu poprawek
+      url: api-management-get-started-revise-api.md
+    - text: 8. Publikowanie wielu wersji interfejsu API
+      url: api-management-get-started-publish-versions.md
+    - text: 9. Dostosowywanie stylu stron portalu deweloperów
+      url: api-management-customize-styles.md
+- title: Samples
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: Zasady
+      url: policy-samples.md
+    - text: Azure PowerShell
+      url: powershell-samples.md
+- title: Architektura
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: Podstawowa integracja dla przedsiębiorstw
+      url: https://docs.microsoft.com/azure/architecture/reference-architectures/enterprise-integration/basic-enterprise-integration

@@ -1,0 +1,63 @@
+### YamlMime:Landing
+title: Dokumentacja usług Azure Cloud Services
+summary: Dowiedz się, jak przy użyciu usług Cloud Services hostować i uruchamiać wysoce dostępne, skalowalne aplikacje w chmurze i interfejsy API. Pokazuje, jak zarządzać hostami maszyn wirtualnych oraz konfigurować i instalować oprogramowanie oraz stosować względem niego poprawki.
+metadata:
+  title: Dokumentacja usług Azure Cloud Services
+  description: Opisuje, jak przy użyciu usług Cloud Services hostować i uruchamiać wysoce dostępne i skalowalne aplikacje w chmurze oraz interfejsy API.
+  ms.service: cloud-services
+  service: cloud-services
+  ms.topic: landing-page
+  author: tgore03
+  ms.author: tagore
+  ms.date: 03/06/2020
+  ms.openlocfilehash: 11699a28ab3b5863812c9c171428896aeaaefec1
+  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 03/09/2020
+  ms.locfileid: "78943179"
+landingContent:
+- title: Informacje o usługach Cloud Services
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest Cloud Services?
+      url: cloud-services-choose-me.md
+  - linkListType: video
+    links:
+    - text: Cloud Services — biblioteka wideo
+      url: https://azure.microsoft.com/documentation/videos/index/?services=cloud-services
+- title: Rozpoczęcie pracy
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: ASP.NET
+      url: cloud-services-dotnet-get-started.md
+    - text: Python for Visual Studio
+      url: cloud-services-python-ptvs.md
+- title: Programowanie
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Tworzenie roli internetowej i procesu roboczego PHP
+      url: ../cloud-services-php-create-web-role.md
+    - text: Tworzenie i wdrażanie aplikacji Node.js
+      url: cloud-services-nodejs-develop-deploy-app.md
+    - text: Tworzenie i wdrażanie aplikacji internetowej Node.js za pomocą usługi Express
+      url: cloud-services-nodejs-develop-deploy-express-app.md
+- title: Wdrażanie
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Tworzenie i wdrażanie usługi w chmurze w portalu
+      url: cloud-services-how-to-create-deploy-portal.md
+    - text: Tworzenie pustego kontenera usługi w chmurze w programie PowerShell
+      url: cloud-services-powershell-create-cloud-container.md
+- title: Zarządzanie
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Typowe zadania zarządzania
+      url: cloud-services-how-to-manage-portal.md
+    - text: Konfigurowanie usługi w chmurze
+      url: cloud-services-how-to-configure-portal.md

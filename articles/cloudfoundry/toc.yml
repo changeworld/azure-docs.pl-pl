@@ -1,5 +1,5 @@
 - name: Dokumentacja usługi Cloud Foundry
-  href: index.md
+  href: index.yml
 - name: Przewodniki Szybki start
   expanded: true
   items:

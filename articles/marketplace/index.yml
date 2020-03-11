@@ -1,0 +1,131 @@
+### YamlMime:Landing
+title: Witamy na platformie handlowej firmy Microsoft
+summary: Poznaj platformę handlową firmy Microsoft — rynek aplikacji i usług w trybie online, który umożliwia różnym firmom — od startupów do korporacji — oferowanie swoich rozwiązań klientom na całym świecie.
+metadata:
+  title: Witamy na platformie handlowej firmy Microsoft
+  description: Poznaj platformę handlową firmy Microsoft — rynek aplikacji i usług w trybie online, który umożliwia różnym firmom — od startupów do korporacji — oferowanie swoich rozwiązań klientom na całym świecie.
+  ms.service: marketplace
+  ms.subservice: partnercenter-marketplace-publisher
+  ms.topic: landing-page
+  author: MaggiePucciEvans
+  ms.author: evansma
+  ms.date: 03/04/2020
+  ms.openlocfilehash: 3dced8953c09520b96a9aa24cf7b5db1022de6ce
+  ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 03/08/2020
+  ms.locfileid: "78927600"
+landingContent:
+- title: Praca na platformie handlowej firmy Microsoft
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Tworzenie nowego konta
+      url: ./partner-center-portal/create-account.md
+    - text: Określanie opcji publikowania
+      url: ./determine-your-listing-type.md
+    - text: Platforma handlowa firmy Microsoft — często zadawane pytania
+      url: ./marketplace-faq-publisher-guide.md
+    - text: Informacje o wersji
+      url: https://aka.ms/publicmarketplaceroadmap
+    - text: Zasady i postanowienia
+      url: ./policies-terms.md
+- title: Typowe scenariusze i zadania
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Najlepsze rozwiązania marketingowe
+      url: ./gtm-marketing-best-practices.md
+    - text: Najlepsze rozwiązania dotyczące ofert
+      url: ./gtm-offer-listing-best-practices.md
+    - text: Przewodnik publikowania ofert w aplikacjach SaaS
+      url: ./marketplace-saas-applications-technical-publishing-guide.md
+  - linkListType: get-started
+    links:
+    - text: Uczestnictwo w witrynie Azure Marketplace i forum społeczności usługi AppSource
+      url: https://aka.ms/MarketplaceCommunity
+    - text: Rejestracja w celu dołączenia do seminariów internetowych i prowadzenia dyskusji lub oglądanie później na żądanie
+      url: https://aka.ms/allwebinars
+    - text: Udostępnianie rozwiązań w usłudze Microsoft AppSource i w pakiecie Office
+      url: https://docs.microsoft.com/office/dev/store/submit-to-appsource-via-partner-center
+- title: Analizowanie oferty i danych klienta
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Pulpit nawigacyjny Podsumowanie
+      url: ./partner-center-portal/summary-dashboard.md
+    - text: Pulpit nawigacyjny Zamówienia
+      url: ./partner-center-portal/orders-dashboard.md
+    - text: Pulpit nawigacyjny Klient
+      url: ./partner-center-portal/customer-dashboard.md
+    - text: Pulpit nawigacyjny Użycie
+      url: ./partner-center-portal/usage-dashboard.md
+    - text: Pulpit nawigacyjny Szczegółowe informacje na temat platformy handlowej
+      url: ./partner-center-portal/insights-dashboard.md
+    - text: Pulpit nawigacyjny Pobieranie
+      url: ./partner-center-portal/downloads-dashboard.md
+    - text: Pulpit nawigacyjny Oceny i recenzje
+      url: ./partner-center-portal/ratings-reviews.md
+- title: Zarządzaj ofertami
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Oferta aplikacji platformy Azure
+      url: ./partner-center-portal/create-new-azure-apps-offer.md
+    - text: Oferty dotyczące platformy Dynamics 365 for Customer Engagement i usługi PowerApps
+      url: ./partner-center-portal/create-new-customer-engagement-offer.md
+    - text: Oferty dotyczące usługi Oferta Dynamics 365 for Operations
+      url: ./partner-center-portal/create-new-operations-offer.md
+    - text: Oferty dotyczące usługi Dynamics 365 Business Central
+      url: ./partner-center-portal/create-new-business-central-offer.md
+    - text: Oferty SaaS
+      url: ./partner-center-portal/create-new-saas-offer.md
+    - text: Oferty dotyczące maszyn wirtualnych
+      url: ./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md
+    - text: Więcej typów ofert
+      url: ./cloud-partner-portal/cpp-marketplace-offers.md
+- title: Uzyskiwanie środków
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Konfigurowanie konta do wypłaty i formularzy podatkowych
+      url: ./partner-center-portal/set-up-your-payout-account-tax-forms.md
+    - text: Rozliczenia za platformę handlową
+      url: ./partner-center-portal/billing-details.md
+    - text: Progi, metody i horyzonty czasowe płatności
+      url: ./partner-center-portal/payment-thresholds-methods-timeframes.md
+    - text: Raportowanie wypłaty
+      url: ./partner-center-portal/payout-summary.md
+    - text: Szczegóły podatku
+      url: ./partner-center-portal/tax-details-paid-transactions.md
+- title: Dokumentacja interfejsu API
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Wymagania wstępne dotyczące interfejsu API
+      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-prerequisites.md
+    - text: Interfejsy API realizacji SaaS
+      url: ./partner-center-portal/pc-saas-fulfillment-api-v2.md
+    - text: Dokumentacja interfejsu API portalu Cloud Partner
+      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-overview.md
+    - text: Interfejsy API usługi pomiaru w witrynie Marketplace
+      url: ./partner-center-portal/marketplace-metering-service-apis-faq.md
+    - text: Tworzenie lub modyfikowanie oferty
+      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-creating-offer.md
+    - text: Pobieranie oferty
+      url: .//cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-offers.md
+    - text: Udostępnianie
+      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-go-live.md
+    - text: Cennik ofert maszyn wirtualnych
+      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-setting-price.md
+- title: Uzyskiwanie pomocy technicznej
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Opcje pomocy technicznej
+      url: ./partner-center-portal/support.md
+    - text: Dostępność geograficzna i waluty
+      url: ./marketplace-geo-availability-currencies.md
+    - text: Rozwiązywanie problemów z uwierzytelnianiem
+      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-troubleshooting-authentication-errors.md

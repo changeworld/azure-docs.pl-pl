@@ -1,0 +1,52 @@
+### YamlMime:Landing
+title: Dokumentacja rozwiązania Cloud Foundry na platformie Azure
+summary: Cloud Foundry to platforma jako usługa (PaaS) typu „open source” służąca do tworzenia, wdrażania i obsługi aplikacji 12-factor opracowanych w różnych językach i strukturach.
+metadata:
+  title: Dokumentacja rozwiązania Cloud Foundry na platformie Azure
+  description: Cloud Foundry to platforma jako usługa (PaaS) typu „open source” służąca do tworzenia, wdrażania i obsługi aplikacji 12-factor opracowanych w różnych językach i strukturach.
+  services: multiple
+  ms.service: multiple
+  ms.devlang: devops
+  ms.topic: landing-page
+  author: georgewallace
+  ms.author: gwallace
+  ms.date: 03/08/2020
+  ms.openlocfilehash: 5c2ad3d9e471c339223ad21092b89e6aee64995d
+  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 03/09/2020
+  ms.locfileid: "78943172"
+landingContent:
+- title: Informacje dotyczące usługi rozwiązania Cloud Foundry na platformie Azure
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Omówienie rozwiązania Cloud Foundry na platformie Azure
+      url: ../virtual-machines/linux/cloudfoundry-get-started.md
+- title: Rozpoczęcie pracy
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Wdrażanie rozwiązania Cloud Foundry na platformie Azure
+      url: https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry
+  - linkListType: how-to-guide
+    links:
+    - text: Wdrażanie pierwszej aplikacji
+      url: ../virtual-machines/linux/cloudfoundry-deploy-your-first-app.md
+- title: Zasoby
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Rozwiązanie Pivotal Cloud Foundry na platformie Azure
+      url: https://pivotal.io/partners/microsoft
+    - text: Integracja usługi Cloud Foundry z platformą Azure
+      url: how-cloud-foundry-integrates-with-azure.md
+    - text: Instalowanie rozwiązania Cloud Foundry na platformie Azure
+      url: https://docs.pivotal.io/pivotalcf/1-11/customizing/pcf_azure.html
+    - text: Wtyczka usługi Azure DevOps dla rozwiązania Cloud Foundry
+      url: https://github.com/Microsoft/vsts-cloudfoundry
+    - text: Dodatek Microsoft Log Analytics Nozzle dla rozwiązania Cloud Foundry
+      url: https://github.com/Azure/oms-log-analytics-firehose-nozzle
+    - text: Informacje na temat usługi Cloud Foundry
+      url: https://docs.cloudfoundry.org/

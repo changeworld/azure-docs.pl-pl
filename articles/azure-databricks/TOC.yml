@@ -31,12 +31,6 @@
   items:
     - name: Wprowadzenie
       items:
-        - name: Wypróbuj usługę Azure Databricks
-          href: /azure/databricks/getting-started/try-databricks
-          maintainContext: true
-        - name: Rozpoczynanie pracy z usługą Azure Databricks
-          href: /azure/databricks/getting-started/quick-start
-          maintainContext: true
         - name: Omówienie danych
           href: /azure/databricks/getting-started/data
           maintainContext: true
@@ -1662,6 +1656,9 @@
           items:
             - name: Informacje o wersji platformy
               href: /azure/databricks/release-notes/product/index
+              maintainContext: true
+            - name: Marzec 2020 r.
+              href: /azure/databricks/release-notes/product/2020/march
               maintainContext: true
             - name: "Luty 2020\_r."
               href: /azure/databricks/release-notes/product/2020/february
