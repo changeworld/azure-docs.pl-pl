@@ -4,12 +4,12 @@ description: Dowiedz się, jakie porty i adresy są wymagane do sterowania ruche
 services: container-service
 ms.topic: article
 ms.date: 01/21/2020
-ms.openlocfilehash: d69921ce23e961879fea6be68838f86bfcc703d0
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
-ms.translationtype: MT
+ms.openlocfilehash: b40415fa78b48d506800049e72c864fb3cab3e29
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191303"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78946399"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Sterowanie ruchem wychodzącym węzłów klastra w usłudze Azure Kubernetes Service (AKS)
 
@@ -34,7 +34,7 @@ Do zabezpieczenia ruchu wychodzącego i definiowania wymaganych portów i adres�
 
 > [!IMPORTANT]
 > W przypadku korzystania z zapory platformy Azure w celu ograniczenia ruchu wychodzącego i utworzenia trasy zdefiniowanej przez użytkownika (UDR) w celu wymuszenia całego ruchu wychodzącego upewnij się, że utworzono odpowiednią regułę DNAT w zaporze, aby prawidłowo zezwolić na ruch przychodzący. Używanie zapory platformy Azure z UDR powoduje przerwanie konfiguracji transferu danych przychodzących z powodu routingu asymetrycznego. (Problem występuje, jeśli podsieć AKS ma trasę domyślną, która przechodzi do prywatnego adresu IP zapory, ale używasz publicznego modułu równoważenia obciążenia — ruchu przychodzącego lub usługi Kubernetes typu: moduł równoważenia danych). W takim przypadku ruch przychodzącego modułu równoważenia obciążenia jest odbierany za pośrednictwem jego publicznego adresu IP, ale ścieżka zwrotna przechodzi przez prywatny adres IP zapory. Ze względu na to, że Zapora jest stanowa, opuszcza pakiet, ponieważ Zapora nie rozpoznaje ustanowionej sesji. Aby dowiedzieć się, jak zintegrować zaporę platformy Azure z ruchem przychodzącym lub usługą równoważenia obciążenia, zobacz [integrowanie zapory platformy Azure z usługą azure usługa Load Balancer w warstwie Standardowa](https://docs.microsoft.com/azure/firewall/integrate-lb).
-> Ruch dla portów TCP 9000 i TCP 22 można zablokować przy użyciu reguły sieci między adresami IP węzła procesu roboczego i adresem IP serwera interfejsu API.
+> Można zablokować ruch dla portu TCP 9000, port TCP 22 i port UDP 1194 przy użyciu reguły sieci między adresami IP węzła procesu roboczego i adresem IP dla serwera interfejsu API.
 
 W programie AKS istnieją dwa zestawy portów i adresów:
 
@@ -50,7 +50,7 @@ Następujące porty wychodzące/reguły sieciowe są wymagane dla klastra AKS:
 
 * Port TCP *443*
 * TCP [IPAddrOfYourAPIServer]: 443 jest wymagane, jeśli masz aplikację, która musi komunikować się z serwerem interfejsu API.  Tę zmianę można ustawić po utworzeniu klastra.
-* Port TCP *9000* i port TCP *22* dla frontonu tunelu do komunikacji z końcem tunelu na serwerze interfejsu API.
+* Port TCP *9000*, port TCP *22* i port UDP *1194* dla frontonu tunelu w celu komunikowania się z końcem tunelu na serwerze interfejsu API.
     * Aby uzyskać bardziej szczegółowe informacje, zobacz*lokalizację *. HCP.\<\>. azmk8s.IO* i * *. TUN.\<lokalizacji\>. azmk8s.IO* w poniższej tabeli.
 * Port UDP *123* dla synchronizacji czasu protokołu NTP (Network Time Protocol) (węzły systemu Linux).
 * Port UDP *53* dla systemu DNS jest wymagany również w przypadku bezpośredniego dostępu do serwera interfejsu API.
@@ -60,29 +60,34 @@ Wymagane są następujące reguły dotyczące nazwy FQDN/aplikacji:
 > [!IMPORTANT]
 > * **. blob.Core.Windows.NET i aksrepos.azurecr.IO** nie są już wymaganymi regułami FQDN dla blokady ruchu wychodzącego.  W przypadku istniejących klastrów [Wykonaj operację uaktualniania klastra][aks-upgrade] przy użyciu polecenia `az aks upgrade`, aby usunąć te reguły.
 
+> [!IMPORTANT]
+> *. cdn.mscr.io został zastąpiony przez *. data.mcr.microsoft.com dla regionów chmury publicznej platformy Azure. Uaktualnij istniejące reguły zapory, aby zmiany zaczęły obowiązywać.
+
 - Globalne platformy Azure
 
 | NAZWA FQDN                       | Port      | Użycie      |
 |----------------------------|-----------|----------|
-| *.hcp.\<lokalizacji\>. azmk8s.io | HTTPS:443, TCP:22, TCP:9000 | Ten adres jest punktem końcowym serwera interfejsu API. Zastąp *\<lokalizację\>* z regionem, w którym wdrożono klaster AKS. |
-| *.tun.\<lokalizacji\>. azmk8s.io | HTTPS:443, TCP:22, TCP:9000 | Ten adres jest punktem końcowym serwera interfejsu API. Zastąp *\<lokalizację\>* z regionem, w którym wdrożono klaster AKS. |
+| *.hcp.\<lokalizacji\>. azmk8s.io | HTTPS: 443, TCP: 22, TCP: 9000, UDP: 1194 | Ten adres jest wymagany do komunikacji z serwerem interfejsu API < węzła >. Zastąp *\<lokalizację\>* z regionem, w którym wdrożono klaster AKS. |
+| *.tun.\<lokalizacji\>. azmk8s.io | HTTPS: 443, TCP: 22, TCP: 9000, UDP: 1194 | Ten adres jest wymagany do komunikacji z serwerem interfejsu API < węzła >. Zastąp *\<lokalizację\>* z regionem, w którym wdrożono klaster AKS. |
+| *.cdn.mscr.io       | HTTPS:443 | Ten adres jest wymagany dla magazynu MCR obsługiwanego przez usługę Azure Content Delivery Network (CDN). |
 | mcr.microsoft.com          | HTTPS:443 | Ten adres jest wymagany w celu uzyskania dostępu do obrazów w programie Microsoft Container Registry (MCR). Ten Rejestr zawiera obrazy i wykresy pierwszej strony (na przykład Moby itp.) wymagane do działania klastra podczas uaktualniania i skalowania klastra |
-| *.cdn.mscr.io              | HTTPS:443 | Ten adres jest wymagany dla magazynu MCR obsługiwanego przez usługę Azure Content Delivery Network (CDN). |
+| *. data.mcr.microsoft.com             | HTTPS:443 | Ten adres jest wymagany dla magazynu MCR obsługiwanego przez usługę Azure Content Delivery Network (CDN). |
 | management.azure.com       | HTTPS:443 | Ten adres jest wymagany do Kubernetes operacji pobierania/UMIESZCZAnia. |
 | login.microsoftonline.com  | HTTPS:443 | Ten adres jest wymagany na potrzeby uwierzytelniania Azure Active Directory. |
 | ntp.ubuntu.com             | UDP:123   | Ten adres jest wymagany w przypadku synchronizacji czasu NTP w węzłach systemu Linux. |
 | packages.microsoft.com     | HTTPS:443 | Ten adres jest repozytorium pakietów firmy Microsoft używanym do buforowanych operacji *apt-get* .  Przykładowe pakiety to Moby, PowerShell i interfejs wiersza polecenia platformy Azure. |
-| acs-mirror.azureedge.net   | HTTPS:443 | Ten adres dotyczy repozytorium wymaganego do instalacji wymaganych plików binarnych, takich jak korzystającą wtyczki kubenet i Azure CNI. |
+| acs-mirror.azureedge.net      | HTTPS:443 | Ten adres dotyczy repozytorium wymaganego do instalacji wymaganych plików binarnych, takich jak korzystającą wtyczki kubenet i Azure CNI. |
 
 - Azure w Chinach — 21Vianet
 
 | NAZWA FQDN                       | Port      | Użycie      |
 |----------------------------|-----------|----------|
-| *.hcp.\<lokalizacji\>. cx.prod.service.azk8s.cn | HTTPS:443, TCP:22, TCP:9000 | Ten adres jest punktem końcowym serwera interfejsu API. Zastąp *\<lokalizację\>* z regionem, w którym wdrożono klaster AKS. |
-| *.tun.\<lokalizacji\>. cx.prod.service.azk8s.cn | HTTPS:443, TCP:22, TCP:9000 | Ten adres jest punktem końcowym serwera interfejsu API. Zastąp *\<lokalizację\>* z regionem, w którym wdrożono klaster AKS. |
+| *.hcp.\<lokalizacji\>. cx.prod.service.azk8s.cn | HTTPS: 443, TCP: 22, TCP: 9000, UDP: 1194 | Ten adres jest wymagany do komunikacji z serwerem interfejsu API < węzła >. Zastąp *\<lokalizację\>* z regionem, w którym wdrożono klaster AKS. |
+| *.tun.\<lokalizacji\>. cx.prod.service.azk8s.cn | HTTPS: 443, TCP: 22, TCP: 9000, UDP: 1194 | Ten adres jest wymagany do komunikacji z serwerem interfejsu API < węzła >. Zastąp *\<lokalizację\>* z regionem, w którym wdrożono klaster AKS. |
 | *. azk8s.cn        | HTTPS:443 | Ten adres jest wymagany do pobrania wymaganych plików binarnych i obrazów|
 | mcr.microsoft.com          | HTTPS:443 | Ten adres jest wymagany w celu uzyskania dostępu do obrazów w programie Microsoft Container Registry (MCR). Ten Rejestr zawiera obrazy i wykresy pierwszej strony (na przykład Moby itp.) wymagane do działania klastra podczas uaktualniania i skalowania klastra |
-| *.cdn.mscr.io              | HTTPS:443 | Ten adres jest wymagany dla magazynu MCR obsługiwanego przez usługę Azure Content Delivery Network (CDN). |
+| *.cdn.mscr.io       | HTTPS:443 | Ten adres jest wymagany dla magazynu MCR obsługiwanego przez usługę Azure Content Delivery Network (CDN). |
+| *. data.mcr.microsoft.com             | HTTPS:443 | Ten adres jest wymagany dla magazynu MCR obsługiwanego przez usługę Azure Content Delivery Network (CDN). |
 | management.chinacloudapi.cn       | HTTPS:443 | Ten adres jest wymagany do Kubernetes operacji pobierania/UMIESZCZAnia. |
 | login.chinacloudapi.cn  | HTTPS:443 | Ten adres jest wymagany na potrzeby uwierzytelniania Azure Active Directory. |
 | ntp.ubuntu.com             | UDP:123   | Ten adres jest wymagany w przypadku synchronizacji czasu NTP w węzłach systemu Linux. |
@@ -92,15 +97,16 @@ Wymagane są następujące reguły dotyczące nazwy FQDN/aplikacji:
 
 | NAZWA FQDN                       | Port      | Użycie      |
 |----------------------------|-----------|----------|
-| *.hcp.\<lokalizacji\>. cx.aks.containerservice.azure.us | HTTPS:443, TCP:22, TCP:9000 | Ten adres jest punktem końcowym serwera interfejsu API. Zastąp *\<lokalizację\>* z regionem, w którym wdrożono klaster AKS. |
-| *.tun.\<lokalizacji\>. cx.aks.containerservice.azure.us | HTTPS:443, TCP:22, TCP:9000 | Ten adres jest punktem końcowym serwera interfejsu API. Zastąp *\<lokalizację\>* z regionem, w którym wdrożono klaster AKS. |
+| *.hcp.\<lokalizacji\>. cx.aks.containerservice.azure.us | HTTPS: 443, TCP: 22, TCP: 9000, UDP: 1194 | Ten adres jest wymagany do komunikacji z serwerem interfejsu API < węzła >. Zastąp *\<lokalizację\>* z regionem, w którym wdrożono klaster AKS. |
+| *.tun.\<lokalizacji\>. cx.aks.containerservice.azure.us | HTTPS: 443, TCP: 22, TCP: 9000, UDP: 1194 | Ten adres jest wymagany do komunikacji z serwerem interfejsu API < węzła >. Zastąp *\<lokalizację\>* z regionem, w którym wdrożono klaster AKS. |
 | mcr.microsoft.com          | HTTPS:443 | Ten adres jest wymagany w celu uzyskania dostępu do obrazów w programie Microsoft Container Registry (MCR). Ten Rejestr zawiera obrazy i wykresy pierwszej strony (na przykład Moby itp.) wymagane do działania klastra podczas uaktualniania i skalowania klastra |
-| *.cdn.mscr.io              | HTTPS:443 | Ten adres jest wymagany dla magazynu MCR obsługiwanego przez usługę Azure Content Delivery Network (CDN). |
+|*.cdn.mscr.io              | HTTPS:443 | Ten adres jest wymagany dla magazynu MCR obsługiwanego przez usługę Azure Content Delivery Network (CDN). |
+| *. data.mcr.microsoft.com             | HTTPS:443 | Ten adres jest wymagany dla magazynu MCR obsługiwanego przez usługę Azure Content Delivery Network (CDN). |
 | management.usgovcloudapi.net       | HTTPS:443 | Ten adres jest wymagany do Kubernetes operacji pobierania/UMIESZCZAnia. |
 | login.microsoftonline.us  | HTTPS:443 | Ten adres jest wymagany na potrzeby uwierzytelniania Azure Active Directory. |
 | ntp.ubuntu.com             | UDP:123   | Ten adres jest wymagany w przypadku synchronizacji czasu NTP w węzłach systemu Linux. |
 | packages.microsoft.com     | HTTPS:443 | Ten adres jest repozytorium pakietów firmy Microsoft używanym do buforowanych operacji *apt-get* .  Przykładowe pakiety to Moby, PowerShell i interfejs wiersza polecenia platformy Azure. |
-| acs-mirror.azureedge.net   | HTTPS:443 | Ten adres dotyczy repozytorium wymaganego do instalacji wymaganych plików binarnych, takich jak korzystającą wtyczki kubenet i Azure CNI. |
+| acs-mirror.azureedge.net      | HTTPS:443 | Ten adres dotyczy repozytorium wymaganego do instalacji wymaganych plików binarnych, takich jak korzystającą wtyczki kubenet i Azure CNI. |
 
 ## <a name="optional-recommended-addresses-and-ports-for-aks-clusters"></a>Opcjonalne zalecane adresy i porty dla klastrów AKS
 
@@ -128,8 +134,8 @@ Następujące reguły dotyczące nazwy FQDN/aplikacji są wymagane dla klastrów
 
 | NAZWA FQDN                                    | Port      | Użycie      |
 |-----------------------------------------|-----------|----------|
-| dc.services.visualstudio.com | HTTPS:443  | Jest to poprawne metryki i monitorowanie danych telemetrycznych przy użyciu Azure Monitor. |
-| *.ods.opinsights.azure.com    | HTTPS:443 | Jest on używany przez Azure Monitor do pozyskiwania danych usługi log Analytics. |
+| dc.services.visualstudio.com | HTTPS:443    | Jest to poprawne metryki i monitorowanie danych telemetrycznych przy użyciu Azure Monitor. |
+| *.ods.opinsights.azure.com    | HTTPS:443    | Jest on używany przez Azure Monitor do pozyskiwania danych usługi log Analytics. |
 | *.oms.opinsights.azure.com | HTTPS:443 | Ten adres jest używany przez omsagent, który jest używany do uwierzytelniania usługi log Analytics. |
 |*.microsoftonline.com | HTTPS:443 | Jest on używany do uwierzytelniania i wysyłania metryk do Azure Monitor. |
 |*. monitoring.azure.com | HTTPS:443 | Służy do wysyłania danych metryk do Azure Monitor. |
@@ -156,7 +162,7 @@ Następujące reguły dotyczące nazwy FQDN/aplikacji są wymagane dla klastrów
 |-----------------------------------------|-----------|----------|
 | gov-prod-policy-data.trafficmanager.net | HTTPS:443 | Ten adres jest używany do poprawnego działania Azure Policy. (obecnie w wersji zapoznawczej w AKS) |
 | raw.githubusercontent.com | HTTPS:443 | Ten adres służy do ściągania wbudowanych zasad z usługi GitHub w celu zapewnienia prawidłowego działania Azure Policy. (obecnie w wersji zapoznawczej w AKS) |
-| *. gk.\<lokalizacji\>. azmk8s.io | HTTPS:443   | Dodatek Azure Policy, który komunikuje się ze Strażnikiem punktu końcowego inspekcji działającego na serwerze głównym, aby uzyskać wyniki inspekcji. |
+| *. gk.\<lokalizacji\>. azmk8s.io | HTTPS:443    | Dodatek Azure Policy, który komunikuje się ze Strażnikiem punktu końcowego inspekcji działającego na serwerze głównym, aby uzyskać wyniki inspekcji. |
 | dc.services.visualstudio.com | HTTPS:443 | Dodatek zasad platformy Azure, który wysyła dane telemetryczne do punktu końcowego usługi Application Insights. |
 
 ## <a name="required-by-windows-server-based-nodes-in-public-preview-enabled"></a>Wymagane przez węzły oparte na systemie Windows Server (w publicznej wersji zapoznawczej) włączone
