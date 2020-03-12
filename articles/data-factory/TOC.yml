@@ -479,6 +479,8 @@
           href: control-flow-webhook-activity.md
     - name: Przekształcenia przepływu danych
       items:
+        - name: Omówienie przekształcania
+          href: data-flow-transformation-overview.md
         - name: Agregacja
           href: data-flow-aggregate.md
         - name: Modyfikuj wiersz

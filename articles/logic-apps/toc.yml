@@ -105,8 +105,10 @@
           href: logic-apps-diagnosing-failures.md
     - name: Dostęp do sieci wirtualnych platformy Azure
       items:
-        - name: Łączenie z sieciami wirtualnymi za pomocą środowisk usługi integracji
+        - name: Tworzenie środowiska usługi integracji — Azure Portal
           href: connect-virtual-network-vnet-isolated-environment.md
+        - name: Tworzenie środowiska usługi integracji — interfejs API REST
+          href: create-integration-service-environment-rest-api.md
         - name: Konfigurowanie dostępu dla wielu środowisk usługi integracji
           href: connect-virtual-network-vnet-set-up-single-ip-address.md
         - name: Dodawanie zasobów do środowisk usługi integracji

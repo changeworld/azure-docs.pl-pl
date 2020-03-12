@@ -206,11 +206,15 @@
   items:
     - name: Rozpoczęcie pracy
       items:
+        - name: Tworzenie konta — portal
+          href: create-account-portal.md
         - name: Tworzenie konta — interfejs wiersza polecenia
           href: create-account-cli-how-to.md
           displayName: storage
         - name: Resetowanie poświadczeń konta — interfejs wiersza polecenia
           href: cli-reset-account-credentials.md
+        - name: Dostęp do interfejsów API — portal
+          href: access-api-portal.md
         - name: Dostęp do interfejsów API — interfejs wiersza polecenia
           href: access-api-cli-how-to.md
         - name: Skalowanie jednostek zarezerwowanych multimediów — interfejs wiersza polecenia

@@ -10,6 +10,8 @@
   items:
     - name: Konfigurowanie grupy dostępności maszyn wirtualnych Azure RHEL za pomocą technologii STONITH
       href: sql-server-linux-rhel-ha-stonith-tutorial.md
+    - name: Konfigurowanie odbiornika grupy dostępności dla programu SQL Server na maszynach wirtualnych RHEL na platformie Azure
+      href: sql-server-linux-rhel-ha-listener-tutorial.md
 - name: Dokumentacja
   items:
     - name: Interfejs wiersza polecenia platformy Azure

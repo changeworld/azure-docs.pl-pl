@@ -181,6 +181,8 @@
               href: container-registry-tasks-authentication-key-vault.md
         - name: Kompilowanie obrazu za pomocą pakietów kompilacji (wersja zapoznawcza)
           href: container-registry-tasks-pack-build.md
+        - name: Wyświetlanie dzienników zadań
+          href: container-registry-tasks-logs.md
 - name: Dokumentacja
   expanded: false
   items:

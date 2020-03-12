@@ -120,6 +120,8 @@
           href: blob-output-managed-identity.md
         - name: Uwierzytelnianie przy użyciu tożsamości zarządzanej — Power BI
           href: powerbi-output-managed-identity.md
+        - name: Szyfrowanie danych
+          href: data-protection.md
     - name: Tworzenie rozwiązań
       items:
         - name: Analiza tonacji w usłudze Twitter
@@ -167,6 +169,8 @@
           href: 'https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick'
         - name: Korzystanie z interfejsu API dla zadań usługi IoT Edge
           href: stream-analytics-cicd-api.md
+        - name: Eksportowanie i wdrażanie za pomocą usługi Azure Resource Manager
+          href: resource-manager-export.md
     - name: Visual Studio
       items:
         - name: Instalowanie narzędzi

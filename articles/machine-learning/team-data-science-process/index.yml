@@ -1,37 +1,41 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentacja dotycząca zespołowego przetwarzania danych dla celów naukowych
+summary: Dowiedz się, jak korzystać z zespołowego przetwarzania danych dla celów naukowych, czyli elastycznej, iteracyjnej metodologii nauki o danych opartej na współpracy, która umożliwia dostarczanie rozwiązań analizy predykcyjnej i inteligentnych aplikacji.
 metadata:
   title: Dokumentacja dotycząca zespołowego przetwarzania danych dla celów naukowych
-  description: 'Dowiedz się, jak korzystać z zespołowego przetwarzania danych dla celów naukowych, czyli elastycznej, iteracyjnej metodologii nauki o danych opartej na współpracy, która umożliwia efektywne dostarczanie rozwiązań analizy predykcyjnej i inteligentnych aplikacji. Pomaga to zwiększyć jakość uczenia i współpracy w zespole. Ta metodologia obejmuje wybrane najlepsze rozwiązania i struktury firmy Microsoft oraz innych podmiotów w branży, które ułatwiają pomyślne implementowanie inicjatyw w zakresie nauki o danych. Ma ona na celu pomoc firmom w pełnym wykorzystaniu zalet programu analitycznego.'
-  services: machine-learning
-  author: marktab
+  description: Dowiedz się, jak korzystać z zespołowego przetwarzania danych dla celów naukowych, czyli elastycznej, iteracyjnej metodologii nauki o danych opartej na współpracy, która umożliwia dostarczanie rozwiązań analizy predykcyjnej i inteligentnych aplikacji.
   ms.service: machine-learning
   ms.subservice: team-data-science-process
   ms.topic: landing-page
-  ms.date: 01/10/2020
+  author: marktab
   ms.author: marktab
-abstract:
-  description: 'Zespołowe przetwarzanie danych dla celów naukowych to elastyczna, iteracyjna metodologia nauki o danych oparta na współpracy, która umożliwia efektywne dostarczanie rozwiązań analizy predykcyjnej i inteligentnych aplikacji. Pomaga to zwiększyć jakość uczenia i współpracy w zespole. Ta metodologia obejmuje wybrane najlepsze rozwiązania i struktury firmy Microsoft oraz innych podmiotów w branży, które ułatwiają pomyślne implementowanie inicjatyw w zakresie nauki o danych. Ma ona na celu pomoc firmom w pełnym wykorzystaniu zalet programu analitycznego.'
-sections:
-  - title: 5-minutowe przewodniki Szybki start
-    items:
-      - type: paragraph
-        text: 'Uzyskaj informacje o zespołowym przetwarzaniu danych dla celów naukowych:'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="overview">Omówienie</a>
-          - html: <a href="lifecycle">Cykl życia</a>
-  - title: Samouczki krok po kroku
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak korzystać z zespołowego przetwarzania danych dla celów naukowych w różnych scenariuszach:'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="walkthroughs-spark">Spark with PySpark and Scala (Platforma Spark z interfejsem PySpark i środowiskiem Scala)</a>
-          - html: <a href="walkthroughs-hdinsight-hadoop">Hive with HDInsight Hadoop (Technologia Hive w usłudze HDInsight Hadoop)</a>
-          - html: <a href="walkthroughs-azure-data-lake">U-SQL with Azure Data Lake (Język U-SQL w usłudze Azure Data Lake)</a>
-          - html: '<a href="walkthroughs-sql-server">R, Python and T-SQL with SQL Server (Języki R, Python i T-SQL w programie SQL Server)</a>'
-          - html: <a href="walkthroughs-sql-data-warehouse">T-SQL and Python with SQL DW (Języki T-SQL i Python w magazynie danych SQL)</a>
+  ms.date: 03/10/2020
+  ms.openlocfilehash: 5090cbcf6c177b99f4932eb77647520c3602a832
+  ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 03/11/2020
+  ms.locfileid: "79087376"
+landingContent:
+- title: Poznaj proces
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest zespołowe przetwarzanie danych dla celów naukowych?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Cykl życia procesu
+      url: lifecycle.md
+    - text: Poznawanie firmy
+      url: lifecycle-business-understanding.md
+    - text: Pozyskiwanie danych
+      url: lifecycle-data.md
+- title: Planowanie i opracowywanie projektu
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Planowanie projektu
+      url: team-data-science-process-project-templates.md
+    - text: Zwinne wytwarzanie oprogramowania
+      url: agile-development.md

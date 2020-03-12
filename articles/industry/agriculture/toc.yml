@@ -9,6 +9,8 @@
       href: generate-soil-moisture-map-in-azure-farmbeats.md
     - name: Pozyskiwanie historycznych danych telemetrycznych
       href: ingest-historical-telemetry-data-in-azure-farmbeats.md
+    - name: Dane telemetryczne pozyskiwane z zapytań
+      href: query-telemetry-data-from-azure-farmbeats.md
 - name: Pojęcia
   items:
     - name: Wzorce integracji
