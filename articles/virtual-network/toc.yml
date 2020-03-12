@@ -12,17 +12,6 @@
       href: quick-create-powershell.md
     - name: Tworzenie sieci wirtualnej — interfejs wiersza polecenia platformy Azure
       href: quick-create-cli.md
-    - name: NAT
-      items:
-        - name: Tworzenie bramy translatora adresów sieciowych — portal
-          href: quickstart-create-nat-gateway-portal.md
-        - name: Tworzenie bramy translatora adresów sieciowych — PowerShell
-          href: quickstart-create-nat-gateway-powershell.md
-        - name: Tworzenie bramy translatora adresów sieciowych — interfejs wiersza polecenia
-          href: quickstart-create-nat-gateway-cli.md
-        - name: Tworzenie bramy translatora adresów sieciowych — szablon usługi Resource Manager
-          displayname: Resource Manager
-          href: quickstart-create-nat-gateway-template.md
   expanded: true
 - name: Samouczki
   items:
@@ -36,6 +25,15 @@
       href: tutorial-connect-virtual-networks-portal.md
     - name: NAT
       items:
+        - name: Tworzenie bramy translatora adresów sieciowych — portal
+          href: quickstart-create-nat-gateway-portal.md
+        - name: Tworzenie bramy translatora adresów sieciowych — PowerShell
+          href: quickstart-create-nat-gateway-powershell.md
+        - name: Tworzenie bramy translatora adresów sieciowych — interfejs wiersza polecenia
+          href: quickstart-create-nat-gateway-cli.md
+        - name: Tworzenie bramy translatora adresów sieciowych — szablon usługi Resource Manager
+          displayname: Resource Manager
+          href: quickstart-create-nat-gateway-template.md
         - name: Tworzenie i weryfikowanie bramy translatora adresów sieciowych — portal
           href: tutorial-create-validate-nat-gateway-portal.md
         - name: Tworzenie i weryfikowanie bramy translatora adresów sieciowych — PowerShell

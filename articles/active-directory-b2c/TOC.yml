@@ -182,9 +182,13 @@
             - name: Dostosowywanie interfejsu użytkownika
               href: custom-policy-ui-customization.md
               displayName: 'ux, input, cors, html, css'
+            - name: Dostosowywanie języka
+              href: custom-policy-localization.md
             - name: Niestandardowy adres e-mail
               href: custom-email.md
               displayName: verification
+            - name: Wyłączanie weryfikacji e-mail
+              href: custom-policy-disable-email-verification.md
             - name: Włączanie języka JavaScript
               href: javascript-samples.md
             - name: Złożoność hasła
