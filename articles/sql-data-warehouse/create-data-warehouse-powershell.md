@@ -1,6 +1,6 @@
 ---
-title: 'Szybki Start: Tworzenie magazynu danych (PowerShell)'
-description: Szybko Utwórz serwer logiczny magazynu danych usługi Azure Synapse Analytics z regułą zapory na poziomie serwera przy użyciu Azure PowerShell.
+title: Tworzenie puli SQL Synapse i wykonywanie na niej zapytań za pomocą Azure PowerShell
+description: Szybko Utwórz serwer logiczny Synapse puli SQL z regułą zapory na poziomie serwera przy użyciu Azure PowerShell.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -11,23 +11,23 @@ ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 9df9b4b1bdb33a856d9e31d65981e8654af049d2
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 3cf55a400c1894794d555e1362f2197aad44a96b
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78200009"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79130297"
 ---
-# <a name="quickstart-create--query-a-data-warehouse-with-azure-powershell"></a>Szybki Start: Tworzenie & Wysyłanie zapytań do magazynu danych za pomocą Azure PowerShell
+# <a name="quickstart-create-and-query-a-synapse-sql-pool-with-azure-powershell"></a>Szybki Start: Tworzenie puli SQL Synapse i wykonywanie na niej zapytań za pomocą Azure PowerShell
 
-Utwórz magazyn danych usługi Azure Synapse Analytics, udostępniając pulę SQL przy użyciu Azure PowerShell.
+Utwórz pulę SQL Synapse (magazyn danych) w usłudze Azure Synapse Analytics przy użyciu Azure PowerShell.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
-> [!NOTE]
-> Utworzenie magazynu może spowodować powstanie nowej usługi do obciążania.  Aby uzyskać więcej informacji, zobacz [Cennik usługi Azure Synapse Analytics](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+> [!IMPORTANT]
+> Utworzenie puli SQL może spowodować powstanie nowej usługi do obciążania.  Aby uzyskać więcej informacji, zobacz [Cennik usługi Azure Synapse Analytics](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -94,7 +94,9 @@ New-AzSqlServer -ResourceGroupName $resourcegroupname `
 
 ## <a name="configure-a-server-firewall-rule"></a>Konfigurowanie reguły zapory serwera
 
-Utwórz [regułę zapory na poziomie serwera Azure SQL Server](../sql-database/sql-database-firewall-configure.md) przy użyciu polecenia [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) . Reguła zapory na poziomie serwera pozwala aplikacji zewnętrznej, takiej jak SQL Server Management Studio lub Narzędzie SQLCMD, połączyć się z SQL Data Warehouse za pomocą zapory usługi SQL Data Warehouse. W poniższym przykładzie zapora jest otwarta tylko dla innych zasobów platformy Azure. Aby włączyć łączność zewnętrzną, zmień adres IP na adres odpowiedni dla danego środowiska. Aby otworzyć wszystkie adresy IP, użyj wartości 0.0.0.0 jako początkowego adresu IP i wartości 255.255.255.255 jako adresu końcowego.
+Utwórz [regułę zapory na poziomie serwera Azure SQL Server](../sql-database/sql-database-firewall-configure.md) przy użyciu polecenia [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) . Reguła zapory na poziomie serwera pozwala aplikacji zewnętrznej, takiej jak SQL Server Management Studio lub Narzędzie SQLCMD, nawiązać połączenie z pulą SQL za pomocą zapory usługi puli SQL. 
+
+W poniższym przykładzie zapora jest otwarta tylko dla innych zasobów platformy Azure. Aby włączyć łączność zewnętrzną, zmień adres IP na adres odpowiedni dla danego środowiska. Aby otworzyć wszystkie adresy IP, użyj wartości 0.0.0.0 jako początkowego adresu IP i wartości 255.255.255.255 jako adresu końcowego.
 
 ```powershell
 New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
@@ -107,8 +109,8 @@ New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 >
 
 
-## <a name="create-a-data-warehouse"></a>Tworzenie magazynu danych
-Ten przykład tworzy magazyn danych przy użyciu wcześniej zdefiniowanych zmiennych.  Określa cel usługi jako DW100c, który jest tańszym punktem wyjścia dla hurtowni danych. 
+## <a name="create-a-sql-pool"></a>Tworzenie puli SQL
+Poniższy przykład tworzy pulę SQL przy użyciu wcześniej zdefiniowanych zmiennych.  Określa cel usługi jako DW100c, który jest tańszym punktem wyjścia dla puli SQL. 
 
 ```Powershell
 New-AzSqlDatabase `
@@ -124,10 +126,10 @@ New-AzSqlDatabase `
 Wymagane parametry:
 
 * **RequestedServiceObjectiveName**: ilość żądanych [jednostek magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md) . Zwiększenie tej kwoty zwiększa koszt obliczeń. Aby uzyskać listę obsługiwanych wartości, zobacz [limity pamięci i współbieżności](memory-concurrency-limits.md).
-* **DatabaseName**: Nazwa tworzonego magazynu danych.
+* **DatabaseName**: Nazwa tworzonej puli SQL.
 * **Servername**: Nazwa serwera, który jest używany do tworzenia.
 * **ResourceGroupName**: Grupa zasobów, której używasz. Aby znaleźć grupy zasobów dostępne w ramach subskrypcji, użyj polecenia cmdlet Get-AzureResource.
-* **Edition**: musi być "DataWarehouse", aby utworzyć magazyn danych.
+* **Edition**: musi mieć wartość "DataWarehouse", aby utworzyć pulę SQL.
 
 Opcjonalne parametry:
 
@@ -151,6 +153,4 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="next-steps"></a>Następne kroki
 
-Utworzono magazyn danych, utworzono regułę zapory, połączono z magazynem danych i uruchomiono kilka zapytań. Aby dowiedzieć się więcej, przejdź do samouczka dotyczącego ładowania danych.
-> [!div class="nextstepaction"]
->[Ładowanie danych do magazynu danych](load-data-from-azure-blob-storage-using-polybase.md)
+Utworzono pulę SQL, utworzono regułę zapory, połączoną z pulą SQL i uruchomimy kilka zapytań. Aby dowiedzieć się więcej, przejdź do artykułu [ładowanie danych do puli SQL](load-data-from-azure-blob-storage-using-polybase.md) .

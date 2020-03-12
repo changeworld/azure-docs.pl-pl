@@ -11,92 +11,55 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2019
+ms.date: 03/06/2020
 ms.author: memildin
-ms.openlocfilehash: 6b262baddd10c9d0dff4b196b733972b97d99872
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 183b81134b2fe72a539cc6460a05d828342aafbb
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552988"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086490"
 ---
-# <a name="monitor-identity-and-access-preview"></a>Monitoruj tożsamość i dostęp (wersja zapoznawcza)
+# <a name="monitor-identity-and-access"></a>Monitorowanie tożsamość i dostępu
+
+> [!TIP]
+> Od marca 2020 zalecenia dotyczące tożsamości i dostępu Azure Security Center są zawarte we wszystkich subskrypcjach w warstwie cenowej bezpłatna. Jeśli masz subskrypcje w warstwie Bezpłatna, ich bezpieczny wynik będzie miał oddziaływać na to, co nie oceniono wcześniej pod kątem ich tożsamości i zabezpieczeń dostępu. 
+
 Gdy Security Center identyfikuje potencjalne luki w zabezpieczeniach, tworzy zalecenia, które przeprowadzą Cię przez proces konfigurowania wymaganych kontrolek do zabezpieczania i zabezpieczania zasobów.
 
-W tym artykule objaśniono stronę informacje o **tożsamości i dostępie** w sekcji zabezpieczenia zasobów Azure Security Center.
+Obwód zabezpieczeń został rozwijający się od obwodu sieci do obwodu tożsamości. Zabezpieczenia są mniej dotyczące obrony sieci i więcej informacji na temat obrony danych, a także do zarządzania zabezpieczeniami aplikacji i użytkowników. Dzisiaj, w związku z przeniesieniem większej ilości danych i aplikacji do chmury, tożsamość staje się nową strefą.
 
-Aby zapoznać się z pełną listą zaleceń, które mogą zostać wyświetlone na tej stronie, zobacz [zalecenia dotyczące tożsamości i dostępu](recommendations-reference.md#recs-identity).
+Dzięki monitorowaniu działań związanych z tożsamością możesz podejmować prewencyjne działania przed wystąpieniem zdarzenia i reagować na próby ataku. Przykłady zaleceń, które mogą być widoczne w sekcji zabezpieczenia dotyczące **tożsamości i dostępu do** zasobów Azure Security Center obejmują:
 
-> [!NOTE]
-> Monitorowanie tożsamości i dostępu jest w wersji zapoznawczej i dostępne tylko w warstwie Standardowa Security Center. Zobacz [cennik](security-center-pricing.md), aby dowiedzieć się więcej na temat warstw cenowych usługi Security Center.
->
+- Uwierzytelnianie wieloskładnikowe powinno być włączone na kontach z uprawnieniami właściciela w ramach subskrypcji
+- Dla subskrypcji należy wyznaczyć maksymalnie 3 właścicieli
+- Przestarzałe konta powinny zostać usunięte z subskrypcji
+- Konta zewnętrzne z uprawnieniami do odczytu powinny zostać usunięte z subskrypcji
 
-Tożsamość powinna być płaszczyzną kontroli dla przedsiębiorstwa, a Ochrona tożsamości powinna stanowić najwyższy priorytet. Obwód zabezpieczeń został rozwijający się od obwodu sieci do obwodu tożsamości. Zabezpieczenia są mniej dotyczące obrony sieci i więcej informacji na temat obrony danych, a także do zarządzania zabezpieczeniami aplikacji i użytkowników. Dzisiaj, w związku z przeniesieniem większej ilości danych i aplikacji do chmury, tożsamość staje się nową strefą.
-
-Dzięki monitorowaniu działań związanych z tożsamością możesz podejmować prewencyjne działania przed wystąpieniem zdarzenia i reagować na próby ataku. Na pulpicie nawigacyjnym dostępu & tożsamości są dostępne zalecenia, takie jak:
-
-- Włącz usługę MFA dla kont uprzywilejowanych w ramach subskrypcji
-- Usuń konta zewnętrzne z uprawnieniami do zapisu z subskrypcji
-- Usuń uprzywilejowane konta zewnętrzne z subskrypcji
+Aby zapoznać się z pełną listą zaleceń, które mogą pojawić się w tym miejscu, zobacz [zalecenia dotyczące tożsamości i dostępu](recommendations-reference.md#recs-identity).
 
 > [!NOTE]
 > Jeśli subskrypcja ma więcej niż 600 kont, Security Center nie może uruchomić zaleceń dotyczących tożsamości dla subskrypcji. Zalecenia, które nie są uruchamiane, znajdują się w obszarze "oceny niedostępne" poniżej.
 Security Center nie może uruchomić zaleceń dotyczących tożsamości dla agentów administratora dostawcy rozwiązań w chmurze (CSP).
 >
 
-## <a name="monitor-identity-and-access"></a>Monitorowanie tożsamość i dostępu
 
-Otwórz listę zidentyfikowanych problemów dotyczących tożsamości i dostępu, wybierając pozycję **tożsamość & dostęp** z paska bocznego Security Center (w obszarze **zasoby**) lub na stronie Przegląd. 
+Wszystkie zalecenia dotyczące tożsamości i dostępu są dostępne w ramach dwóch kontrolek zabezpieczeń na stronie **zalecenia** :
 
-W obszarze **tożsamość & dostęp**istnieją dwie karty:
+- Zarządzanie dostępem i uprawnieniami 
+- Włączanie usługi MFA
 
-- **Przegląd**: zalecenia zidentyfikowane przez Security Center.
-- **Subskrypcje**: Lista subskrypcji i bieżący stan zabezpieczeń każdego z nich.
+![Dwie kontrole zabezpieczeń z zaleceniami dotyczącymi tożsamości i dostępu](media/security-center-identity-access/two-security-controls-for-identity-and-access.png)
 
-[![& dostępu do tożsamości](./media/security-center-identity-access/identity-dashboard.png)](./media/security-center-identity-access/identity-dashboard.png#lightbox)
 
-### <a name="overview-section"></a>Sekcja Omówienie
-W obszarze **Przegląd**znajduje się lista zaleceń. W pierwszej kolumnie wyświetlane są zalecenia. Druga kolumna zawiera łączną liczbę subskrypcji, których dotyczy to zalecenie. Trzecia kolumna przedstawia ważność problemu.
+## <a name="enable-multi-factor-authentication-mfa"></a>Włączanie uwierzytelniania wieloskładnikowego (MFA)
 
-1. Wybierz zalecenie. Zostanie otwarte okno rekomendacje zawierające następujące elementy:
+Włączenie usługi MFA wymaga [uprawnień dzierżawy Azure Active Directory (AD)](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles). 
 
-   - Opis zalecenia
-   - Lista nieprawidłowych i zdrowych subskrypcji
-   - Lista zasobów, które są odskanowane z powodu niepowodzenia oceny lub zasób jest objęty subskrypcją w warstwie Bezpłatna i nie został oceniony
+- Jeśli masz wersję Premium usługi AD, Włącz uwierzytelnianie wieloskładnikowe przy użyciu [dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/overview).
 
-    [okno rekomendacje ![](./media/security-center-identity-access/select-subscription.png)](./media/security-center-identity-access/select-subscription.png#lightbox)
+- Użytkownicy wersji bezpłatnej usługi AD mogą włączyć **domyślne ustawienia zabezpieczeń** w Azure Active Directory zgodnie z opisem w [dokumentacji usługi AD](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults) , ale zalecenie Security Center do włączenia usługi MFA nadal będzie widoczne.
 
-1. Wybierz subskrypcję z listy, aby uzyskać dodatkowe szczegóły.
-
-### <a name="subscriptions-section"></a>Sekcja subskrypcje
-W obszarze **subskrypcje**istnieje lista subskrypcji. W pierwszej kolumnie są wyświetlane subskrypcje. Druga kolumna zawiera łączną liczbę zaleceń dla każdej subskrypcji. Trzecia kolumna przedstawia liczbę problemów.
-
-[Karta subskrypcje ![](./media/security-center-identity-access/subscriptions.png)](./media/security-center-identity-access/subscriptions.png#lightbox)
-
-1. Wybierz subskrypcję. Otwiera widok podsumowania z trzema kartami:
-
-   - **Zalecenia dotyczące**: oparte na ocen wykonywane przez usługę Security Center, który uległ awarii.
-   - **Przekazano ocen**: Lista ocen wykonywane przez usługę Security Center, które przekazane.
-   - **Niedostępne oceny**: Lista ocen, których uruchomienie nie powiodło się z powodu błędu lub ponieważ subskrypcja ma więcej niż 600 kont.
-
-   W obszarze **zalecenia** znajduje się lista zaleceń dotyczących wybranej subskrypcji i ważności poszczególnych zaleceń.
-
-   [Zalecenia dotyczące ![wyboru subskrypcji](./media/security-center-identity-access/recommendations.png)](./media/security-center-identity-access/recommendations.png#lightbox)
-
-1. Wybierz zalecenie dotyczące opisu zalecenia, listę nieprawidłowych i zdrowych subskrypcji oraz listę niezeskanowanych zasobów.
-
-   [![opis rekomendacji](./media/security-center-identity-access/designate.png)](./media/security-center-identity-access/designate.png#lightbox)
-
-   W obszarze **przekazywane ocen** znajduje się lista oceny zakończone pomyślnie.  Ważność te oceny zawsze ma kolor zielony.
-
-   [![przekazywać oceny](./media/security-center-identity-access/passed-assessments.png)](./media/security-center-identity-access/passed-assessments.png#lightbox)
-
-1. Wybierz przekazaną ocenę z listy, aby uzyskać opis oceny i listę subskrypcji w dobrej kondycji. Istnieje karta dla subskrypcji w złej kondycji, która wyświetla listę wszystkich subskrypcji, które nie powiodły się.
-
-   [![przekazywać oceny](./media/security-center-identity-access/remove.png)](./media/security-center-identity-access/remove.png#lightbox)
-
-> [!NOTE]
-> Jeśli zostały utworzone zasady dostępu warunkowego, które wymagają uwierzytelniania wieloskładnikowego, ale mają ustawione wykluczenia, Ocena rekomendacji Security Center MFA uważa, że zasady nie są zgodne, ponieważ umożliwia ona użytkownikom logowanie się na platformie Azure bez uwierzytelniania wieloskładnikowego.
 
 ## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej o zaleceniach dotyczących innych typów zasobów platformy Azure, zobacz następujące artykuły:

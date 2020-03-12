@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 11/1/2019
+ms.date: 03/05/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6da9aed857524e9b71aad4dfc99f1d2e54306dc9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 72c18e48c27942c7bea47931ec79a31af941064e
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74272877"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126663"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Dodaj firmę Google jako dostawcę tożsamości dla użytkowników gościa B2B
 
@@ -39,7 +39,7 @@ Jeśli użytkownik-Gość widzi błąd "nagłówek jest zbyt długi", może wypr
 
 Zespoły w pełni obsługują użytkowników gościa Google na wszystkich urządzeniach. Użytkownicy usługi Google mogą logować się do zespołów z wspólnego punktu końcowego, takiego jak `https://teams.microsoft.com`.
 
-Wspólne punkty końcowe aplikacji mogą nie obsługiwać użytkowników usługi Google. Użytkownicy usługi Google Guest muszą się zalogować przy użyciu linku zawierającego informacje o dzierżawie. Poniżej przedstawiono przykłady:
+Wspólne punkty końcowe aplikacji mogą nie obsługiwać użytkowników usługi Google. Użytkownicy usługi Google Guest muszą się zalogować przy użyciu linku zawierającego informacje o dzierżawie. Oto przykłady:
   * `https://myapps.microsoft.com/?tenantid=<your tenant id>`
   * `https://portal.azure.com/<your tenant id>`
   * `https://myapps.microsoft.com/<your verified domain>.onmicrosoft.com`
@@ -55,25 +55,24 @@ Najpierw utwórz nowy projekt w konsoli firmy Google Developers w celu uzyskania
    
    ![Zrzut ekranu przedstawiający nową stronę projektu dla usługi Google](media/google-federation/google-new-project.png)
 
-3. Upewnij się, że nowy projekt został wybrany w menu Projekt. Następnie otwórz menu w lewym górnym rogu i wybierz pozycję **interfejsy api & usługi** > **poświadczenia**.
+3. Upewnij się, że nowy projekt został wybrany w menu Projekt. Następnie w obszarze **interfejsy api & usługi**wybierz pozycję **ekran wyrażania zgody na uwierzytelnianie OAuth**.
 
-   ![Zrzut ekranu przedstawiający opcję poświadczeń usługi Google API](media/google-federation/google-api.png)
- 
-4. Wybierz kartę **ekran wyrażania zgody na uwierzytelnianie OAuth** i wprowadź **nazwę aplikacji**. (Pozostaw pozostałe ustawienia).
+4. Wybierz pozycję **zewnętrzny**, a następnie wybierz pozycję **Utwórz**. 
+5. Na **ekranie wyrażanie zgody na uwierzytelnianie OAuth**wprowadź **nazwę aplikacji**. (Pozostaw pozostałe ustawienia).
 
    ![Zrzut ekranu przedstawiający opcję Ekran zgody usługi Google OAuth](media/google-federation/google-oauth-consent-screen.png)
 
-5. Przewiń do sekcji **autoryzowane domeny** i wprowadź microsoftonline.com.
+6. Przewiń do sekcji **autoryzowane domeny** i wprowadź microsoftonline.com.
 
    ![Zrzut ekranu przedstawiający sekcję autoryzowane domeny](media/google-federation/google-oauth-authorized-domains.png)
 
-6. Wybierz pozycję **Zapisz**.
+7. Wybierz pozycję **Zapisz**.
 
-7. Wybierz kartę **poświadczenia** . W menu **Tworzenie poświadczeń** wybierz pozycję **Identyfikator klienta OAuth**.
+8. Wybierz pozycję **poświadczenia**. W menu **Tworzenie poświadczeń** wybierz pozycję **Identyfikator klienta OAuth**.
 
    ![Zrzut ekranu przedstawiający opcję tworzenia poświadczeń usługi Google API](media/google-federation/google-api-credentials.png)
 
-8. W obszarze **Typ aplikacji**wybierz pozycję **aplikacja sieci Web**, a następnie w obszarze **autoryzowane identyfikatory URI przekierowania**wprowadź następujące identyfikatory URI:
+9. W obszarze **Typ aplikacji**wybierz pozycję **aplikacja sieci Web**, a następnie w obszarze **autoryzowane identyfikatory URI przekierowania**wprowadź następujące identyfikatory URI:
    - `https://login.microsoftonline.com` 
    - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(gdzie `<directory id>` jest IDENTYFIKATORem katalogu)
    
@@ -82,7 +81,7 @@ Najpierw utwórz nowy projekt w konsoli firmy Google Developers w celu uzyskania
 
    ![Zrzut ekranu przedstawiający sekcję autoryzowane identyfikatory URI przekierowania](media/google-federation/google-create-oauth-client-id.png)
 
-9. Wybierz pozycję **Utwórz**. Skopiuj identyfikator klienta i klucz tajny klienta, który będzie używany podczas dodawania dostawcy tożsamości w portalu usługi Azure AD.
+10. Wybierz pozycję **Utwórz**. Skopiuj identyfikator klienta i klucz tajny klienta, który będzie używany podczas dodawania dostawcy tożsamości w portalu usługi Azure AD.
 
    ![Zrzut ekranu przedstawiający identyfikator klienta OAuth i klucz tajny klienta](media/google-federation/google-auth-client-id-secret.png)
 

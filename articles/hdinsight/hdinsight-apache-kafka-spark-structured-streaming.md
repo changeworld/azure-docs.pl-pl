@@ -5,19 +5,19 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,seodec18
 ms.topic: tutorial
-ms.date: 10/08/2019
-ms.openlocfilehash: 96420a3ea4ddc8c3d8210f1b35d6606257eba5ff
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive,seodec18
+ms.date: 03/11/2020
+ms.openlocfilehash: 66bfa0d3ee4cb03f1b48e2db24be7a90d97f60d6
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494384"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117217"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Samouczek: używanie strumieni ze strukturą platformy Apache Spark z platformą Kafka w usłudze HDInsight
 
-W tym samouczku przedstawiono sposób użycia [przesyłania strumieniowego platformy Apache Spark](https://spark.apache.org/docs/latest/structured-streaming-programming-guide) do odczytywania i zapisywania danych przy użyciu platformy [Apache Kafka](https://kafka.apache.org/) w usłudze Azure HDInsight.
+W tym samouczku przedstawiono sposób użycia [przesyłania strumieniowego platformy Apache Spark](https://spark.apache.org/docs/latest/structured-streaming-programming-guide) do odczytywania i zapisywania danych przy użyciu platformy [Apache Kafka](./kafka/apache-kafka-introduction.md) w usłudze Azure HDInsight.
 
 Strumień strukturalny platformy Spark jest aparatem przetwarzania strumienia opartym na platformie Spark SQL. Aparat ten umożliwia wyrażanie obliczeń strumieniowych tak samo jak obliczeń wsadowych na danych statycznych.  
 
@@ -27,7 +27,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Tworzenie klastrów przy użyciu szablonu Azure Resource Manager
 > * Używanie przesyłania strumieniowego Spark ze strukturą Kafka
 
-Po zakończeniu pracy z tym dokumentem pamiętaj o usunięciu tych klastrów, aby uniknąć naliczania opłat.
+Po wykonaniu kroków opisanych w tym dokumencie należy pamiętać o usunięciu klastrów w celu uniknięcia nadmiarowych opłat.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -88,7 +88,7 @@ kafkaStreamDF.select(from_json(col("value").cast("string"), schema) as "trip")
 
 W obu fragmentach dane są odczytywane z platformy Kafka i zapisywane do pliku. Różnice między przykładami:
 
-| Partia zadań | Przesyłanie strumieniowe |
+| Batch | Przesyłanie strumieniowe |
 | --- | --- |
 | `read` | `readStream` |
 | `write` | `writeStream` |
@@ -112,7 +112,7 @@ W przypadku Jupyter Notebook używanych w tym samouczku następująca komórka �
 
 ## <a name="create-the-clusters"></a>Tworzenie klastrów
 
-Platforma Apache Kafka w usłudze HDInsight nie zapewnia dostępu do brokerów Kafka za pośrednictwem publicznego Internetu. Wszystkie elementy, które używają platformy Kafka, muszą znajdować się w tej samej sieci wirtualnej platformy Azure. W tym samouczku zarówno klaster Kafka, jak i klaster Spark znajdują się w tej samej sieci wirtualnej platformy Azure.
+Apache Kafka w usłudze HDInsight nie zapewnia dostępu do brokerów Kafka za pośrednictwem publicznego Internetu. Wszystkie elementy, które używają platformy Kafka, muszą znajdować się w tej samej sieci wirtualnej platformy Azure. W tym samouczku zarówno klaster Kafka, jak i klaster Spark znajdują się w tej samej sieci wirtualnej platformy Azure.
 
 Na poniższym diagramie przedstawiono przepływ komunikacji między platformami Spark i Kafka:
 
@@ -154,7 +154,7 @@ Aby utworzyć usługę Azure Virtual Network, a następnie utworzyć w niej klas
 
     ![Zrzut ekranu przedstawiający dostosowany szablon](./media/hdinsight-apache-kafka-spark-structured-streaming/spark-kafka-template.png)
 
-3. Przeczytaj **Warunki i postanowienia**, a następnie wybierz pozycję **Wyrażam zgodę na powyższe warunki i postanowienia**.
+3. Przeczytaj **warunki i postanowienia**, a następnie wybierz **Akceptuję warunki i postanowienia podane powyżej**.
 
 4. Wybierz pozycję **Kup**.
 
@@ -168,23 +168,21 @@ W tym przykładzie pokazano, jak używać przesyłania strumieniowego Spark ze s
 1. Zbierz informacje o hoście. Użyj poniższych poleceń zwinięcie i [JQ](https://stedolan.github.io/jq/) , aby uzyskać informacje o Kafka dozorcy i brokera. Polecenia są przeznaczone dla wiersza polecenia systemu Windows, jednak nieznaczne różnice będą wymagały w innych środowiskach. Zastąp `KafkaCluster` nazwą klastra Kafka i `KafkaPassword` przy użyciu hasła logowania do klastra. Ponadto Zastąp `C:\HDI\jq-win64.exe` rzeczywistą ścieżką do instalacji JQ. Wprowadź polecenia w wierszu polecenia systemu Windows i Zapisz dane wyjściowe do użycia w dalszych krokach.
 
     ```cmd
+    REM Enter cluster name in lowercase
+
     set CLUSTERNAME=KafkaCluster
     set PASSWORD=KafkaPassword
-    
+
     curl -u admin:%PASSWORD% -G "https://%CLUSTERNAME%.azurehdinsight.net/api/v1/clusters/%CLUSTERNAME%/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" | C:\HDI\jq-win64.exe -r "["""\(.host_components[].HostRoles.host_name):2181"""] | join(""",""")"
-    
+
     curl -u admin:%PASSWORD% -G "https://%CLUSTERNAME%.azurehdinsight.net/api/v1/clusters/%CLUSTERNAME%/services/KAFKA/components/KAFKA_BROKER" | C:\HDI\jq-win64.exe -r "["""\(.host_components[].HostRoles.host_name):9092"""] | join(""",""")"
     ```
 
-2. W przeglądarce internetowej połącz się z notesem Jupyter w klastrze Spark. Zastąp element `CLUSTERNAME` w poniższym adresie URL nazwą klastra __Spark__:
+1. W przeglądarce sieci Web przejdź do `https://CLUSTERNAME.azurehdinsight.net/jupyter`, gdzie `CLUSTERNAME` jest nazwą klastra. Po wyświetleniu monitu wprowadź nazwę użytkownika klastra (administratora) i hasło użyte podczas tworzenia klastra.
 
-        https://CLUSTERNAME.azurehdinsight.net/jupyter
+1. Wybierz pozycję **New > Spark** , aby utworzyć Notes.
 
-    Po wyświetleniu monitu wprowadź nazwę użytkownika klastra (administratora) i hasło użyte podczas tworzenia klastra.
-
-3. Wybierz pozycję **New > Spark** , aby utworzyć Notes.
-
-4. Przesyłanie strumieniowe platformy Spark ma mikropartii, co oznacza, że dane są uruchamiane jako partie i uruchomienia na partiach danych. Jeśli wykonawca ma limit czasu bezczynności krótszy niż czas przetwarzania partii, zostaną one ciągle dodane i usunięte. Jeśli limit czasu bezczynności wykonawców jest większy niż czas trwania partii, program wykonujący nigdy nie zostanie usunięty. Dlatego **zalecamy wyłączenie dynamicznego przydzielenia przez ustawienie dla platformy Spark. dynamicAllocation. Enabled wartości false podczas uruchamiania aplikacji przesyłania strumieniowego.**
+1. Przesyłanie strumieniowe platformy Spark ma mikropartii, co oznacza, że dane są uruchamiane jako partie i uruchomienia na partiach danych. Jeśli wykonawca ma limit czasu bezczynności krótszy niż czas przetwarzania wsadowego, wówczas zostaną one ciągle dodane i usunięte. Jeśli limit czasu bezczynności wykonawców jest większy niż czas trwania partii, program wykonujący nigdy nie zostanie usunięty. Dlatego **zalecamy wyłączenie dynamicznego przydzielenia przez ustawienie dla platformy Spark. dynamicAllocation. Enabled wartości false podczas uruchamiania aplikacji przesyłania strumieniowego.**
 
     Ładowanie pakietów używanych przez Notes, wprowadzając następujące informacje w komórce notesu. Uruchom polecenie za pomocą **klawiszy Ctrl + Enter**.
 
@@ -199,7 +197,7 @@ W tym przykładzie pokazano, jak używać przesyłania strumieniowego Spark ze s
     }
     ```
 
-5. Utwórz temat Kafka. Edytuj poniższe polecenie, zastępując `YOUR_ZOOKEEPER_HOSTS` informacjami o hoście dozorcy, które zostały wyodrębnione w pierwszym kroku. Wprowadź edytowane polecenie w Jupyter Notebook, aby utworzyć temat `tripdata`.
+1. Utwórz temat Kafka. Edytuj poniższe polecenie, zastępując `YOUR_ZOOKEEPER_HOSTS` informacjami o hoście dozorcy, które zostały wyodrębnione w pierwszym kroku. Wprowadź edytowane polecenie w Jupyter Notebook, aby utworzyć temat `tripdata`.
 
     ```scala
     %%bash
@@ -208,7 +206,7 @@ W tym przykładzie pokazano, jak używać przesyłania strumieniowego Spark ze s
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic tripdata --zookeeper $KafkaZookeepers
     ```
 
-6. Pobieranie danych w podróży z taksówką. Wprowadź polecenie w następnej komórce, aby załadować dane do podróży z taksówką w Nowym Jorku. Dane są ładowane do ramki Dataframe, a następnie są wyświetlane jako dane wyjściowe komórki.
+1. Pobieranie danych w podróży z taksówką. Wprowadź polecenie w następnej komórce, aby załadować dane do podróży z taksówką w Nowym Jorku. Dane są ładowane do ramki Dataframe, a następnie są wyświetlane jako dane wyjściowe komórki.
 
     ```scala
     import spark.implicits._
@@ -224,7 +222,7 @@ W tym przykładzie pokazano, jak używać przesyłania strumieniowego Spark ze s
     taxiDF.show()
     ```
 
-7. Ustaw informacje o hostach brokera Kafka. Zastąp `YOUR_KAFKA_BROKER_HOSTS` informacjami o brokerach, które zostały wyodrębnione w kroku 1.  Wprowadź edytowane polecenie w następnej komórce Jupyter Notebook.
+1. Ustaw informacje o hostach brokera Kafka. Zastąp `YOUR_KAFKA_BROKER_HOSTS` informacjami o brokerach, które zostały wyodrębnione w kroku 1.  Wprowadź edytowane polecenie w następnej komórce Jupyter Notebook.
 
     ```scala
     // The Kafka broker hosts and topic used to write to Kafka
@@ -234,7 +232,7 @@ W tym przykładzie pokazano, jak używać przesyłania strumieniowego Spark ze s
     println("Finished setting Kafka broker and topic configuration.")
     ```
 
-8. Wyślij dane do Kafka. W poniższym poleceniu pole `vendorid` jest używane jako wartość klucza dla komunikatu Kafka. Klucz jest używany przez Kafka podczas partycjonowania danych. Wszystkie pola są przechowywane w komunikacie Kafka jako wartość ciągu JSON. Wprowadź następujące polecenie w Jupyter, aby zapisać dane do Kafka przy użyciu zapytania wsadowego.
+1. Wyślij dane do Kafka. W poniższym poleceniu pole `vendorid` jest używane jako wartość klucza dla komunikatu Kafka. Klucz jest używany przez Kafka podczas partycjonowania danych. Wszystkie pola są przechowywane w komunikacie Kafka jako wartość ciągu JSON. Wprowadź następujące polecenie w Jupyter, aby zapisać dane do Kafka przy użyciu zapytania wsadowego.
 
     ```scala
     // Select the vendorid as the key and save the JSON string as the value.
@@ -243,7 +241,7 @@ W tym przykładzie pokazano, jak używać przesyłania strumieniowego Spark ze s
     println("Data sent to Kafka")
     ```
 
-9. Zadeklaruj schemat. Następujące polecenie pokazuje, jak używać schematu podczas odczytywania danych JSON z Kafka. Wprowadź polecenie w następnej komórce Jupyter.
+1. Zadeklaruj schemat. Następujące polecenie pokazuje, jak używać schematu podczas odczytywania danych JSON z Kafka. Wprowadź polecenie w następnej komórce Jupyter.
 
     ```scala
     // Import bits useed for declaring schemas and working with JSON data
@@ -279,7 +277,7 @@ W tym przykładzie pokazano, jak używać przesyłania strumieniowego Spark ze s
     println("Schema declared")
     ```
 
-10. Wybierz pozycję dane i uruchom strumień. Następujące polecenie pokazuje, jak pobrać dane z Kafka za pomocą zapytania wsadowego, a następnie zapisać wyniki do systemu plików HDFS w klastrze Spark. W tym przykładzie `select` pobiera komunikat (pole wartości) z Kafka i stosuje do niego schemat. Dane są następnie zapisywane w systemie plików HDFS (WASB lub ADL) w formacie Parquet. Wprowadź polecenie w następnej komórce Jupyter.
+1. Wybierz pozycję dane i uruchom strumień. Następujące polecenie pokazuje, jak pobrać dane z Kafka za pomocą zapytania wsadowego, a następnie zapisać wyniki do systemu plików HDFS w klastrze Spark. W tym przykładzie `select` pobiera komunikat (pole wartości) z Kafka i stosuje do niego schemat. Dane są następnie zapisywane w systemie plików HDFS (WASB lub ADL) w formacie Parquet. Wprowadź polecenie w następnej komórce Jupyter.
 
     ```scala
     // Read a batch from Kafka
@@ -291,14 +289,14 @@ W tym przykładzie pokazano, jak używać przesyłania strumieniowego Spark ze s
     println("Wrote data to file")
     ```
 
-11. Można sprawdzić, czy pliki zostały utworzone, wprowadzając polecenie w następnej komórce Jupyter. Wyświetla listę plików w katalogu `/example/batchtripdata`.
+1. Można sprawdzić, czy pliki zostały utworzone, wprowadzając polecenie w następnej komórce Jupyter. Wyświetla listę plików w katalogu `/example/batchtripdata`.
 
     ```scala
     %%bash
     hdfs dfs -ls /example/batchtripdata
     ```
 
-12. Podczas poprzedniego przykładu użyto zapytania wsadowego, następujące polecenie pokazuje, jak wykonać to samo przy użyciu zapytania przesyłania strumieniowego. Wprowadź polecenie w następnej komórce Jupyter.
+1. Podczas poprzedniego przykładu użyto zapytania wsadowego, następujące polecenie pokazuje, jak wykonać to samo przy użyciu zapytania przesyłania strumieniowego. Wprowadź polecenie w następnej komórce Jupyter.
 
     ```scala
     // Stream from Kafka
@@ -309,7 +307,7 @@ W tym przykładzie pokazano, jak używać przesyłania strumieniowego Spark ze s
     println("Wrote data to file")
     ```
 
-13. Uruchom następującą komórkę, aby sprawdzić, czy pliki zostały zapisaną przez zapytanie przesyłane strumieniowo.
+1. Uruchom następującą komórkę, aby sprawdzić, czy pliki zostały zapisaną przez zapytanie przesyłane strumieniowo.
 
     ```scala
     %%bash
@@ -322,7 +320,7 @@ Aby wyczyścić zasoby utworzone w tym samouczku, możesz usunąć grupę zasob�
 
 Aby usunąć grupę zasobów za pomocą witryny Azure Portal:
 
-1. W witrynie Azure Portal rozwiń menu po lewej stronie, aby otworzyć menu usług, a następnie wybierz pozycję __Grupy zasobów__, aby wyświetlić listę grup zasobów.
+1. W [Azure Portal](https://portal.azure.com/)rozwiń menu po lewej stronie, aby otworzyć menu usług, a następnie wybierz pozycję __grupy zasobów__ , aby wyświetlić listę grup zasobów.
 2. Znajdź grupę zasobów do usunięcia, a następnie kliknij prawym przyciskiem myszy przycisk __Więcej (...)__ po prawej stronie listy.
 3. Wybierz pozycję __Usuń grupę zasobów__ i potwierdź.
 
@@ -333,7 +331,7 @@ Aby usunąć grupę zasobów za pomocą witryny Azure Portal:
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób użycia [przesyłania strumieniowego ze strukturą platformy Apache Spark](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) do zapisywania danych na platformie [Apache Kafka](https://kafka.apache.org/) w usłudze HDInsight i odczytywania z niej danych. Korzystając z poniższego linku, możesz dowiedzieć się, jak używać systemu [Apache Storm](https://storm.apache.org/) z platformą Kafka.
+W tym samouczku przedstawiono sposób użycia [przesyłania strumieniowego ze strukturą platformy Apache Spark](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) do zapisywania danych na platformie [Apache Kafka](./kafka/apache-kafka-introduction.md) w usłudze HDInsight i odczytywania z niej danych. Korzystając z poniższego linku, możesz dowiedzieć się, jak używać systemu [Apache Storm](./storm/apache-storm-overview.md) z platformą Kafka.
 
 > [!div class="nextstepaction"]
 > [Używanie systemu Apache Storm z platformą Apache Kafka](hdinsight-apache-storm-with-kafka.md)

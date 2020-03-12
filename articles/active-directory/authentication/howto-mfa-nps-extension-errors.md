@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8d67d1d318bf823145a57d2e55774695d151996
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f4f086b7c2f24cfe5d3fe74c25f6f5690b090800
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425318"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086404"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Rozwiązywanie komunikatów o błędach z rozszerzenia serwera NPS dla platformy Azure Multi-Factor Authentication
 
@@ -98,9 +98,9 @@ Jeśli użytkownicy mają [problemy z weryfikacją dwuetapową](../user-help/mul
 
 ### <a name="health-check-script"></a>Skrypt sprawdzania kondycji
 
-[Skrypt sprawdzania kondycji rozszerzenia serwera NPS usługi Azure MFA](https://gallery.technet.microsoft.com/Azure-MFA-NPS-Extension-648de6bb) jest dostępny w galerii TechNet, aby przeprowadzić podstawowe Sprawdzanie kondycji podczas rozwiązywania problemów z rozszerzeniem serwera NPS. Uruchom skrypt i wybierz opcję 3.
+[Skrypt kontroli kondycji rozszerzenia serwera NPS usługi Azure MFA](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/) wykonuje podstawowe Sprawdzanie kondycji podczas rozwiązywania problemów z rozszerzeniem serwera NPS. Uruchom skrypt i wybierz opcję 3.
 
-### <a name="contact-microsoft-support"></a>Kontaktowanie się z pomocą techniczną firmy Microsoft
+### <a name="contact-microsoft-support"></a>Skontaktuj się z pomocą techniczną firmy Microsoft
 
 Jeśli potrzebujesz dodatkowej pomocy, skontaktuj się z specjalistą pomocy technicznej za pomocą [usługi Azure serwer Multi-Factor Authentication support](https://support.microsoft.com/oas/default.aspx?prid=14947). Gdy kontaktuje się z nami, jest to przydatne, jeśli możesz dołączyć tyle informacji o problemie, ile to możliwe. Informacje, które można podać, obejmują stronę, na której wystąpił błąd, konkretny kod błędu, identyfikator konkretnej sesji, identyfikator użytkownika, który obsłużył błąd, oraz Dzienniki debugowania.
 

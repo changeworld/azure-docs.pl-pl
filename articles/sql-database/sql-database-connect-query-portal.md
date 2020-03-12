@@ -12,12 +12,12 @@ author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 10/24/2019
-ms.openlocfilehash: 3990d7ec63c312d38168fe76269e1a920f1a6817
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b3ccc2a5343cf02127990dca80a1300959fa06a3
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827110"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087187"
 ---
 # <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Szybki Start: używanie Edytora zapytań SQL Azure Portal do łączenia i wykonywania zapytań dotyczących danych
 
@@ -33,7 +33,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
   |:--- |:--- |
   | Tworzenie| [Portal](sql-database-single-database-get-started.md) |
   || [Interfejs wiersza polecenia](scripts/sql-database-create-and-configure-database-cli.md) |
-  || [Program PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) |
+  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) |
   | Konfigurowanie | [Reguła zapory bazująca na adresach IP na poziomie serwera](sql-database-server-level-firewall-rule.md)|
   |||
 
@@ -42,7 +42,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 ## <a name="sign-in-the-azure-portal"></a>Logowanie w witrynie Azure Portal
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+Zaloguj się do [Azure portal](https://portal.azure.com/).
 
 ## <a name="connect-using-sql-authentication"></a>Nawiązywanie połączenia przy użyciu uwierzytelniania SQL
 
@@ -167,6 +167,8 @@ Jest kilka rzeczy, o których trzeba wiedzieć podczas pracy z edytorem zapytań
 
 * Edytor zapytań używa portów 443 i 1443 do komunikacji.  Upewnij się, że włączono ruch wychodzący HTTPS na tych portach. Należy również dodać wychodzący adres IP do reguł zapory dozwolonych na serwerze, aby uzyskać dostęp do baz danych i magazynów.
 
+* Edytor zapytań współpracuje z prywatnym linkiem bez konieczności dodawania adresu IP klienta do zapory SQL Database
+
 * Naciśnięcie klawisza F5 powoduje odświeżenie strony edytora i utratę tworzonego zapytania.
 
 * Edytor zapytań nie obsługuje nawiązywania połączeń z bazą danych `master`.
@@ -176,6 +178,8 @@ Jest kilka rzeczy, o których trzeba wiedzieć podczas pracy z edytorem zapytań
 * Edytor zapytań obsługuje tylko cylindryczne projekcje dla typów danych geograficznych.
 
 * Tabele i widoki bazy danych nie obsługują funkcji IntelliSense. Jednak edytor obsługuje funkcję automatycznego uzupełniania dla nazw, które zostały już wpisane.
+
+
 
 
 ## <a name="next-steps"></a>Następne kroki

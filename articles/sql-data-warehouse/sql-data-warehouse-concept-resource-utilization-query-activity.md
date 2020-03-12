@@ -7,19 +7,19 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 02/04/2020
+ms.date: 03/11/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 47f142a19ac470fb29e9542941cd94a6b29ce240
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 82bf6f9a78a46659cc2e0955895c6e1a6e6eb3aa
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78195927"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096627"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Monitorowanie działania użycia zasobów i zapytań w usłudze Azure Synapse Analytics
-Usługa Azure Synapse Analytics zapewnia rozbudowane środowisko monitorowania w Azure Portal do uzyskiwania szczegółowych informacji o obciążeniu magazynu danych. Azure Portal jest zalecanym narzędziem do monitorowania magazynu danych, ponieważ umożliwia on Konfigurowanie okresów przechowywania, alertów, zaleceń oraz dostosowywalnych wykresów i pulpitów nawigacyjnych na potrzeby metryk i dzienników. Portal umożliwia także integrację z innymi usługami monitorowania platformy Azure, takimi jak Operations Management Suite (OMS) i Azure Monitor (dzienniki), aby zapewnić kompleksowe środowisko monitorowania nie tylko dla magazynu danych, ale również całą analizę platformy Azure Platforma umożliwiająca zintegrowane środowisko monitorowania. W tej dokumentacji opisano, jakie funkcje monitorowania są dostępne, aby zoptymalizować platformę analityczną i zarządzać nią za pomocą usługi SQL Analytics. 
+Usługa Azure Synapse Analytics zapewnia rozbudowane środowisko monitorowania w ramach Azure Portal, aby uzyskać wgląd w dane dotyczące obciążenia magazynu danych. Azure Portal jest zalecanym narzędziem do monitorowania magazynu danych, ponieważ umożliwia on Konfigurowanie okresów przechowywania, alertów, zaleceń oraz dostosowywalnych wykresów i pulpitów nawigacyjnych na potrzeby metryk i dzienników. Portal umożliwia także integrację z innymi usługami monitorowania platformy Azure, takimi jak Azure Monitor (dzienniki) z usługą log Analytics, aby zapewnić kompleksowe środowisko monitorowania nie tylko dla magazynu danych, ale również całą platformę analityczną platformy Azure na potrzeby zintegrowanego środowisko monitorowania. W tej dokumentacji opisano, jakie funkcje monitorowania są dostępne, aby zoptymalizować platformę analityczną i zarządzać nią za pomocą usługi SQL Analytics. 
 
 ## <a name="resource-utilization"></a>Wykorzystanie zasobów 
 Następujące metryki są dostępne w Azure Portal dla usługi SQL Analytics. Te metryki są [naAzure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection#metrics).
@@ -41,9 +41,13 @@ Następujące metryki są dostępne w Azure Portal dla usługi SQL Analytics. Te
 | Procent trafień w pamięci podręcznej    | (trafienia w pamięci podręcznej/chybień w pamięci podręcznej) * 100, gdzie trafienia pamięci podręcznej jest sumą wszystkich trafień segmentów magazynu kolumn w lokalnej pamięci podręcznej dysków SSD i Chybienia pamięci podręcznej to segmenty magazynu kolumn chybień w lokalnej pamięci | Średnia, minimum, maksimum    |
 | Procent użycia pamięci podręcznej   | (użyta pamięć podręczna/pojemność pamięci podręcznej) * 100 gdzie używana pamięć podręczna jest sumą wszystkich bajtów w lokalnej pamięci podręcznej SSD między wszystkimi węzłami i pojemnością pamięci podręcznej jest sumą pojemności magazynu lokalnej pamięci podręcznej SSD dla wszystkich węzłów | Średnia, minimum, maksimum    |
 | Procent lokalnej bazy danych tempdb | Użycie lokalnej bazy danych tempdb we wszystkich węzłach obliczeniowych — wartości są emitowane co pięć minut. | Średnia, minimum, maksimum    |
+| Rozmiar magazynu danych | Łączny rozmiar danych załadowanych do bazy danych. Obejmuje to dane znajdujące się w tabelach WIK i innych niż WIK, w których rozmiary tabel bez WIK są mierzone przez łączny rozmiar pliku bazy danych | Suma |
+| Rozmiar odzyskiwania po awarii | Łączny rozmiar geograficznej kopii zapasowej wykonany co 24 godziny | Suma |
+| Rozmiar magazynu migawek | Łączny rozmiar migawek wykonanych w celu zapewnienia punktów przywracania bazy danych. Obejmuje to zautomatyzowane i zdefiniowane przez użytkownika migawki. | Suma |
 
 Zagadnienia, które należy wziąć pod uwagę podczas przeglądania metryk i ustawień alertów:
 
+- JEDNOSTEK dwu używany reprezentuje tylko **reprezentację poziomu użycia** w ramach puli SQL i nie jest to kompleksowy wskaźnik użycia. Aby określić, czy skalować w górę, czy w dół, należy wziąć pod uwagę wszystkie czynniki, na które może mieć wpływ jednostek dwu, takie jak współbieżność, pamięć, baza danych tempdb i adaptacyjna pojemność pamięci podręcznej. Zalecamy [Uruchamianie obciążeń w różnych ustawieniach jednostek dwu](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-compute-overview#finding-the-right-size-of-data-warehouse-units) , aby określić, co najlepiej sprawdza się w celu spełnienia celów firmy.
 - Nie powiodło się i pomyślne połączenia są raportowane dla określonego magazynu danych — nie dla serwera logicznego
 - Procent pamięci odzwierciedla użycie, nawet jeśli magazyn danych jest w stanie bezczynności — nie odzwierciedla aktywnego zużycia pamięci obciążeń. Użyj i śledź tę metrykę wraz z innymi (tempdb, Gen2 cache), aby wykonać całościową decyzję, czy skalowanie dla dodatkowej pojemności pamięci podręcznej spowoduje zwiększenie wydajności obciążeń w celu spełnienia wymagań.
 

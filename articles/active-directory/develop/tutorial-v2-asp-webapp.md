@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 50eb88373b05d979d7f4b67b317e98c2a944459b
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: e33f52d5c1f9c06a5acbae5c66b051ca82ef14c0
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701334"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126640"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Dodawanie logowania do firmy Microsoft do aplikacji sieci Web ASP.NET
 
@@ -30,6 +30,9 @@ W tym przewodniku pokazano, jak zaimplementować logowanie do firmy Microsoft za
 Po ukończeniu tego przewodnika aplikacja będzie mogła akceptować logowania do kont osobistych za pomocą polubień outlook.com i live.com. Ponadto konta służbowe z dowolnej firmy lub organizacji zintegrowanej z platformą tożsamości firmy Microsoft będą mogły zalogować się do aplikacji.
 
 > Ten przewodnik wymaga Microsoft Visual Studio 2019.  Nie masz tego programu?  [Pobierz bezpłatnie program Visual Studio 2019](https://www.visualstudio.com/downloads/).
+
+>[!NOTE]
+> Jeśli dopiero zaczynasz pracę z platformą tożsamości firmy Microsoft, zalecamy rozpoczęcie od [dodania do aplikacji sieci Web programu ASP.NET](quickstart-v2-aspnet-webapp.md).
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Jak działa Przykładowa aplikacja generowana przez ten przewodnik
 
@@ -429,8 +432,8 @@ Po przejściu do widoku kontrolera powinna zostać wyświetlona tabela zawieraj�
 |---|---|---|
 |**Nazwa** |Pełna nazwa użytkownika | Imię i nazwisko użytkownika
 |**Nazwa użytkownika** |<span>@domain.com</span> użytkownika | Nazwa użytkownika używana do identyfikowania użytkownika|
-|**Temat** |Temat |Ciąg, który jednoznacznie identyfikuje użytkownika w sieci Web|
-|**Tenant ID (Identyfikator dzierżawy)** |Identyfikator GUID | **Identyfikator GUID** , który jednoznacznie reprezentuje organizację usługi Azure AD użytkownika|
+|**Temat** |Podmiot |Ciąg, który jednoznacznie identyfikuje użytkownika w sieci Web|
+|**Tenant ID (Identyfikator dzierżawy)** |Guid | **Identyfikator GUID** , który jednoznacznie reprezentuje organizację usługi Azure AD użytkownika|
 
 Ponadto powinna zostać wyświetlona tabela wszystkich oświadczeń, które znajdują się w żądaniu uwierzytelniania. Aby uzyskać więcej informacji, zobacz [listę oświadczeń, które znajdują się w tokenie identyfikatora](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
 

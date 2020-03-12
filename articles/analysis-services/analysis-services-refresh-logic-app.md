@@ -6,12 +6,12 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
-ms.openlocfilehash: a44aa5b355bea675f5d99761d97b8876a9b2a7d7
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 78bc629598c0635b7760285d0507b7a85a4ab551
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572337"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126858"
 ---
 # <a name="refresh-with-logic-apps"></a>Odświeżanie za pomocą usługi Logic Apps
 
@@ -19,14 +19,14 @@ Za pomocą Logic Apps i wywołań REST można wykonywać automatyczne operacje o
 
 Aby dowiedzieć się więcej o korzystaniu z interfejsów API REST z Azure Analysis Services, zobacz [odświeżanie asynchroniczne za pomocą interfejsu API REST](analysis-services-async-refresh.md).
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Uwierzytelnianie
 
 Wszystkie wywołania muszą zostać uwierzytelnione z prawidłowym tokenem Azure Active Directory (OAuth 2).  W przykładach w tym artykule zostanie użyta nazwa główna usługi (SPN) do uwierzytelniania w Azure Analysis Services. Aby dowiedzieć się więcej, zobacz [Tworzenie jednostki usługi przy użyciu Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md).
 
 ## <a name="design-the-logic-app"></a>Projektowanie aplikacji logiki
 
 > [!IMPORTANT]
-> W poniższych przykładach założono, że Zapora Azure Analysis Services jest wyłączona.  Jeśli Zapora jest włączona, publiczny adres IP inicjatora żądania musi być listy dozwolonych w zaporze Azure Analysis Services. Aby dowiedzieć się więcej o zakresach IP aplikacji logiki na region, zobacz [Informacje o limitach i konfiguracji Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses).
+> W poniższych przykładach założono, że Zapora Azure Analysis Services jest wyłączona. Jeśli Zapora jest włączona, publiczny adres IP inicjatora żądania musi być listy dozwolonych w zaporze Azure Analysis Services. Aby dowiedzieć się więcej o Azure Logic Apps zakresach adresów IP na region, zobacz [Informacje o limitach i konfiguracji Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#configuration).
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
@@ -64,13 +64,13 @@ Skonfiguruj działanie HTTP w następujący sposób:
 
 |Właściwość  |Wartość  |
 |---------|---------|
-|**Metoda**     |POUBOJOWEGO         |
+|**Metoda**     |POST         |
 |**ADRESU**     | https://*serwera*/Servers/*AAS nazwa serwera*/models/*Nazwa bazy danych*/refreshes <br /> <br /> Na przykład: https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes|
 |**Nagłówki**     |   Content-Type, Application/JSON <br /> <br />  ![Nagłówki](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**Treść**     |   Aby dowiedzieć się więcej na temat tworzenia treści żądania, zobacz [odświeżanie asynchroniczne za pomocą interfejsu API REST — post/refreshes](analysis-services-async-refresh.md#post-refreshes). |
 |**Uwierzytelnianie**     |Active Directory OAuth         |
 |**Dzierżaw**     |Wypełnij Azure Active Directory TenantId         |
-|**Publiczn**     |https://*. asazure. Windows. NET         |
+|**Publiczn**     |https://*.asazure.windows.net         |
 |**Client ID (Identyfikator klienta)**     |Wprowadź nazwę główną usługi ClientID         |
 |**Typ poświadczeń**     |Wpis tajny         |
 |**Wpis tajny**     |Wprowadź klucz tajny nazwy głównej usługi         |

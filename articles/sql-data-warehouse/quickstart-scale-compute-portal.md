@@ -1,6 +1,6 @@
 ---
-title: 'Szybki Start: skalowanie obliczeniowe — Azure Portal '
-description: Skalowanie obliczeń w puli SQL w Azure Portal. Skalowanie zasobów obliczeniowych w poziomie zapewnia lepszą wydajność, a ich ponowne przeskalowanie pozwala ograniczyć koszty.
+title: Skalowanie obliczeń dla puli SQL Synapse (Azure Portal)
+description: Obliczenia można skalować dla puli SQL Synapse (magazyn danych) przy użyciu Azure Portal.
 services: sql-data-warehouse
 author: Antvgski
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 7463849223fdf81466237c7d0c912763988e80e6
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: df0b21e98812faf99b6e67f262cec6e9c29db2f1
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78200355"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79130263"
 ---
-# <a name="quickstart-scale-compute-in-azure-synapse-analytics-sql-pool-in-the-azure-portal"></a>Szybki Start: skalowanie zasobów obliczeniowych w puli SQL usługi Azure Synapse Analytics w Azure Portal
+# <a name="quickstart-scale-compute-for-synapse-sql-pool-with-the-azure-portal"></a>Szybki Start: skalowanie zasobów obliczeniowych dla puli SQL Synapse przy użyciu Azure Portal
 
-Skalowanie obliczeń w puli SQL w Azure Portal. [Skalowanie zasobów obliczeniowych w poziomie](sql-data-warehouse-manage-compute-overview.md) zapewnia lepszą wydajność, a ich ponowne przeskalowanie pozwala ograniczyć koszty. 
+Obliczenia można skalować dla puli SQL Synapse (magazyn danych) przy użyciu Azure Portal. [Skalowanie zasobów obliczeniowych w poziomie](sql-data-warehouse-manage-compute-overview.md) zapewnia lepszą wydajność, a ich ponowne przeskalowanie pozwala ograniczyć koszty. 
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
@@ -30,9 +30,9 @@ Zaloguj się do [Azure portal](https://portal.azure.com/).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Możesz skalować pulę SQL, która już istnieje, lub użyć [szybkiego startu: Tworzenie i łączenie — Portal](create-data-warehouse-portal.md) , aby utworzyć pulę SQL o nazwie **mySampleDataWarehouse**.  W tym przewodniku Szybki start jest skalowana baza danych **mySampleDataWarehouse**.
+Możesz skalować pulę SQL, która już istnieje, lub korzystać z [przewodnika Szybki Start: Tworzenie i łączenie — Portal](create-data-warehouse-portal.md) , aby utworzyć pulę SQL o nazwie **mySampleDataWarehouse**. W tym przewodniku Szybki start jest skalowana baza danych **mySampleDataWarehouse**.
 
->[!Note]
+>[!IMPORTANT] 
 >Pula SQL musi być w trybie online, aby można było skalować ją. 
 
 ## <a name="scale-compute"></a>Skalowanie zasobów obliczeniowych
@@ -52,7 +52,4 @@ Aby zmienić jednostki magazynu danych:
     ![Przesuwanie suwaka](media/quickstart-scale-compute-portal/scale-dwu.png)
 
 ## <a name="next-steps"></a>Następne kroki
-Teraz wiesz już, jak skalować obliczenia dla puli SQL. Aby dowiedzieć się więcej o puli SQL, przejdź do samouczka dotyczącego ładowania danych.
-
-> [!div class="nextstepaction"]
->[Ładowanie danych do puli SQL](load-data-from-azure-blob-storage-using-polybase.md)
+Aby dowiedzieć się więcej o puli SQL, przejdź do samouczka [ładowanie danych do puli SQL](load-data-from-azure-blob-storage-using-polybase.md) . 

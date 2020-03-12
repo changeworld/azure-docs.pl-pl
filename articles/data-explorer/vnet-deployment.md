@@ -1,5 +1,5 @@
 ---
-title: Wdróż Eksplorator danych platformy Azure w Virtual Network (wersja zapoznawcza)
+title: Wdróż Eksplorator danych platformy Azure w Virtual Network
 description: Dowiedz się, jak wdrożyć usługę Azure Eksplorator danych w Virtual Network
 author: basaba
 ms.author: basaba
@@ -7,14 +7,14 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: e845b44c51b7611cd3f23f8b33e6576aced2d6ca
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.openlocfilehash: 5a2731e26ba4f371177cf2ae649f0695f27e6304
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78851455"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096765"
 ---
-# <a name="deploy-azure-data-explorer-into-your-virtual-network-preview"></a>Wdróż Eksplorator danych platformy Azure w Virtual Network (wersja zapoznawcza)
+# <a name="deploy-azure-data-explorer-into-your-virtual-network"></a>Wdróż Eksplorator danych platformy Azure w Virtual Network
 
 W tym artykule opisano zasoby, które są obecne podczas wdrażania klastra usługi Azure Eksplorator danych w niestandardowym Virtual Network platformy Azure. Te informacje ułatwią Wdrożenie klastra w podsieci w Virtual Network (VNet). Aby uzyskać więcej informacji na temat sieci wirtualnych platformy Azure, zobacz [co to jest usługa azure Virtual Network?](/azure/virtual-network/virtual-networks-overview)
 
@@ -25,9 +25,6 @@ Usługa Azure Eksplorator danych obsługuje wdrażanie klastra w podsieci Virtua
 * Wymuś reguły [sieciowej grupy zabezpieczeń](/azure/virtual-network/security-overview) (sieciowej grupy zabezpieczeń) w ruchu klastra Eksplorator danych platformy Azure.
 * Połącz sieć lokalną z podsiecią klastra Eksplorator danych platformy Azure.
 * Zabezpiecz źródła połączenia danych ([centrum zdarzeń](/azure/event-hubs/event-hubs-about) i [Event Grid](/azure/event-grid/overview)) za pomocą [punktów końcowych usługi](/azure/virtual-network/virtual-network-service-endpoints-overview).
-
-> [!NOTE]
-> Integracja Virtual Network i wdrożenie jest w trybie podglądu. Aby włączyć tę funkcję, Otwórz [bilet pomocy technicznej](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
 ## <a name="access-your-azure-data-explorer-cluster-in-your-vnet"></a>Uzyskiwanie dostępu do klastra usługi Azure Eksplorator danych w sieci wirtualnej
 

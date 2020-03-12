@@ -3,12 +3,12 @@ title: Przeczyszczanie tagów i manifestów
 description: Użyj przeczyszczania polecenia, aby usunąć wiele tagów i manifestów z usługi Azure Container Registry na podstawie wieku i filtru tagów, i opcjonalnie Zaplanuj operacje przeczyszczania.
 ms.topic: article
 ms.date: 08/14/2019
-ms.openlocfilehash: 0ec1f5f6f5c3c572b8558c971b58e46cce36e3fd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f9d86b628bdd0ce0db3067b02a47517d8aadcba3
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923112"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087328"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>Automatycznie Przeczyść obrazy z usługi Azure Container Registry
 
@@ -47,7 +47,7 @@ Podczas uruchamiania `acr purge`należy określić co najmniej następujące ele
 
 Aby uzyskać dodatkowe parametry, uruchom `acr purge --help`. 
 
-`acr purge` obsługuje inne funkcje poleceń ACR Tasks, w tym [uruchamiania zmiennych](container-registry-tasks-reference-yaml.md#run-variables) i [dzienników uruchamiania zadań](container-registry-tasks-overview.md#view-task-logs) , które są przesyłane strumieniowo, a także zapisane do późniejszego pobrania.
+`acr purge` obsługuje inne funkcje poleceń ACR Tasks, w tym [uruchamiania zmiennych](container-registry-tasks-reference-yaml.md#run-variables) i [dzienników uruchamiania zadań](container-registry-tasks-logs.md) , które są przesyłane strumieniowo, a także zapisane do późniejszego pobrania.
 
 ### <a name="run-in-an-on-demand-task"></a>Uruchamianie w ramach zadania na żądanie
 

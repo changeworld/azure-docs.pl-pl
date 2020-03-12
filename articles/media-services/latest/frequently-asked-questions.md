@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 06/21/2019
+ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: c9da29ad288811bbed225fd906f2a7eb1fd9edf7
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a2619293bf3641cdca370ff528a87ae879460a3b
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977730"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086780"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 — często zadawane pytania
 
@@ -28,9 +28,13 @@ W tym artykule przedstawiono odpowiedzi na często zadawane pytania dotyczące A
 
 Zobacz [kontroli dostępu opartej na rolach (RBAC) dla kont Media Services](rbac-overview.md).
 
+### <a name="how-do-you-stream-to-apple-ios-devices"></a>Jak można przesyłać strumieniowo do urządzeń z systemem Apple iOS?
+
+Upewnij się, że masz "(format = M3U8-AAPL)" na końcu ścieżki (po części "/manifest" adresu URL), aby poinformować serwer źródłowy przesyłania strumieniowego, aby zwracał zawartość HLS do użycia na urządzeniach natywnych Apple iOS (Aby uzyskać szczegółowe informacje, zobacz [dostarczanie zawartości](dynamic-packaging-overview.md)).
+
 ### <a name="how-do-i-configure-media-reserved-units"></a>Jak mogę skonfigurować jednostki zarezerwowane multimediów?
 
-Zdecydowanie zaleca się, aby w przypadku zadań analizy audio i analizy wideo, które są wyzwalane przez usługi Media Services wersji 3 lub Video Indexer, aby przeprowadzać aprowizację konta przy użyciu 10 jednostek MRU typu S3. Jeśli potrzebujesz więcej niż 10 S3 lokalizacje MRU, otwórz bilet pomocy technicznej przy użyciu [witryny Azure portal](https://portal.azure.com/).
+Zdecydowanie zaleca się, aby w przypadku zadań analizy audio i analizy wideo, które są wyzwalane przez usługi Media Services wersji 3 lub Video Indexer, aby przeprowadzać aprowizację konta przy użyciu 10 jednostek MRU typu S3. Jeśli potrzebujesz więcej niż 10 MRUs S3, Otwórz bilet pomocy technicznej przy użyciu [Azure Portal](https://portal.azure.com/).
 
 Aby uzyskać szczegółowe informacje, zobacz [Skalowanie przetwarzania multimediów przy użyciu interfejsu wiersza polecenia](media-reserved-units-cli-how-to.md).
 
@@ -38,13 +42,17 @@ Aby uzyskać szczegółowe informacje, zobacz [Skalowanie przetwarzania multimed
 
 Za pomocą [transformacji](https://docs.microsoft.com/rest/api/media/transforms) można skonfigurować typowe zadania związane z kodowaniem lub analizowaniem filmów wideo. Każde **przekształcenie** opisuje przepis lub przepływ pracy zadań do przetwarzania plików wideo lub audio. [Zadanie](https://docs.microsoft.com/rest/api/media/jobs) to rzeczywiste żądanie Media Services, aby zastosować **transformację** do danych wejściowych wideo lub audio. Po utworzeniu przekształcenia można przesłać zadania przy użyciu interfejsów API Media Services lub dowolnego z opublikowanych zestawów SDK. Aby uzyskać więcej informacji, zobacz [Przekształcenia i zadania](transforms-jobs-concept.md).
 
+### <a name="i-uploaded-encoded-and-published-a-video-what-would-be-the-reason-the-video-does-not-play-when-i-try-to-stream-it"></a>Wideo zostało przekazane, zakodowane i opublikowane. Co to jest powód, w którym wideo nie będzie odtwarzane, gdy próbuję przesłać strumieniowo?
+
+Jedną z najczęstszych przyczyn nie jest punkt końcowy przesyłania strumieniowego, z którego próbujesz odtworzyć stan uruchomiony.
+
 ### <a name="how-does-pagination-work"></a>Jak działa stronicowanie?
 
 W przypadku korzystania z stronicowania należy zawsze używać następnego linku do wyliczania kolekcji i nie zależy od określonego rozmiaru strony. Aby uzyskać szczegółowe informacje i przykłady, zobacz [filtrowanie, porządkowanie, stronicowanie](entities-overview.md).
 
 ### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>Jakie funkcje nie są jeszcze dostępne w wersji Azure Media Services v3?
 
-Aby uzyskać szczegółowe informacje, zobacz [luki w funkcji w odniesieniu do interfejsów API w wersji 2](migrate-from-v2-to-v3.md#feature-gaps-with-respect-to-v2-apis).
+Aby uzyskać szczegółowe informacje, zobacz [luki w funkcji w odniesieniu do interfejsów API w wersji 2](media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis).
 
 ### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>Jaki jest proces przechodzenia konta Media Services między subskrypcjami?  
 
@@ -76,11 +84,11 @@ Aby uzyskać więcej informacji, zobacz [Ochrona zawartości przy użyciu Media 
 
 ### <a name="how-and-where-to-get-jwt-token-before-using-it-to-request-license-or-key"></a>Jak i gdzie można uzyskać tokenu JWT token przed użyciem w celu żądania licencji lub klucza?
 
-1. W przypadku produkcji należy mieć usługi bezpiecznego tokenu (STS) (usługa sieci Web), która wystawia token JWT przy żądaniu HTTPS. Dla testu, można użyć kod przedstawiony w **GetTokenAsync** metody zdefiniowanej w [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs).
-2. Odtwarzacz należy wysłać żądanie, po uwierzytelnieniu użytkownika do usługi STS do takich token i przypisz ją jako wartość tokenu. Możesz użyć [interfejsu API usługi Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/).
+1. W przypadku produkcji należy mieć usługi bezpiecznego tokenu (STS) (usługa sieci Web), która wystawia token JWT przy żądaniu HTTPS. Dla testu można użyć kodu podanego w metodzie **GetTokenAsync** zdefiniowanej w [program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs).
+2. Odtwarzacz należy wysłać żądanie, po uwierzytelnieniu użytkownika do usługi STS do takich token i przypisz ją jako wartość tokenu. Możesz użyć [interfejsu API Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/).
 
-* Na przykład uruchomienia usługi STS, przy użyciu klucza symetrycznego i asymetrycznym można znaleźć [ https://aka.ms/jwt ](https://aka.ms/jwt). 
-* Na przykład odtwarzacza, w oparciu o usługi Azure Media Player przy użyciu takich tokenu JWT zobacz [ https://aka.ms/amtest ](https://aka.ms/amtest) (expand link "player_settings", aby wyświetlić dane wejściowe tokenu).
+* Aby zapoznać się z przykładem uruchamiania usługi STS z kluczem symetrycznym i asymetryczny, zobacz [https://aka.ms/jwt](https://aka.ms/jwt). 
+* Przykład odtwarzacza oparty na Azure Media Player użyciu takiego tokenu JWT można znaleźć w sekcji [https://aka.ms/amtest](https://aka.ms/amtest) (rozwiń link "player_settings", aby wyświetlić dane wejściowe tokenu).
 
 ### <a name="how-do-you-authorize-requests-to-stream-videos-with-aes-encryption"></a>Jak autoryzować żądania strumieniowo pliki wideo przy użyciu szyfrowania AES?
 
@@ -126,13 +134,19 @@ Często klienci inwestowanych w farmie serwerów licencji albo we własnych cent
 
 ### <a name="can-i-use-the-azure-portal-to-manage-v3-resources"></a>Czy mogę używać Azure Portal do zarządzania zasobami v3?
 
-Obecnie nie można zarządzać zasobami w wersji 3 z witryny Azure Portal. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), [interfejsu wiersza polecenia](https://aka.ms/ams-v3-cli-ref) lub jednego z obsługiwanych [zestawów SDK](media-services-apis-overview.md#sdks).
+Obecnie można użyć [Azure Portal](https://portal.azure.com/) , aby:
+
+* Zarządzaj [zdarzeniami na żywo](live-events-outputs-concept.md)Media Services v3, 
+* Wyświetl [zasoby](assets-concept.md)v3 (nie Zarządzaj), 
+* [Uzyskaj informacje na temat uzyskiwania dostępu do interfejsów API](access-api-portal.md). 
+
+W przypadku wszystkich innych zadań zarządzania (na przykład [transformacji i zadań](transforms-jobs-concept.md) oraz [ochrony zawartości](content-protection-overview.md)) należy użyć [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), [interfejsu wiersza polecenia](https://aka.ms/ams-v3-cli-ref)lub jednego z obsługiwanych [zestawów SDK](media-services-apis-overview.md#sdks).
 
 ### <a name="is-there-an-assetfile-concept-in-v3"></a>Czy istnieje koncepcja AssetFile w wersji 3?
 
 AssetFiles zostały usunięte z interfejsu API usługi AMS w celu oddzielenia Media Services od zależności zestawu SDK magazynu. Teraz magazyn, nie Media Services, utrzymuje informacje, które należą do magazynu. 
 
-Aby uzyskać więcej informacji, zobacz [Migrowanie do Media Services v3](migrate-from-v2-to-v3.md).
+Aby uzyskać więcej informacji, zobacz [Migrowanie do Media Services v3](media-services-v2-vs-v3.md).
 
 ### <a name="where-did-client-side-storage-encryption-go"></a>Gdzie działa szyfrowanie magazynu po stronie klienta?
 

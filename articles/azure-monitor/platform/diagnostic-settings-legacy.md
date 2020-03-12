@@ -1,17 +1,17 @@
 ---
-title: Zbierz dziennik aktywności platformy Azure przy użyciu ustawień diagnostycznych (wersja zapoznawcza) — Azure Monitor | Microsoft Docs
+title: Zbierz dziennik aktywności platformy Azure przy użyciu ustawień diagnostycznych — Azure Monitor | Microsoft Docs
 description: Użyj ustawień diagnostycznych do przesyłania dalej dzienników aktywności platformy Azure do dzienników Azure Monitor, Azure Storage lub Azure Event Hubs.
 author: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: fcf7eef269c9fa8b62217fb64ed792aece1fce4e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 6d4c724c7cfb4c1779f0fc6592a7e61e060755b9
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670342"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096891"
 ---
 # <a name="update-to-azure-activity-log-collection-and-export"></a>Aktualizacja kolekcji i eksportu dzienników aktywności platformy Azure
 [Dziennik aktywności platformy Azure](platform-logs-overview.md) to [Dziennik platformy](platform-logs-overview.md) , który zapewnia wgląd w zdarzenia na poziomie subskrypcji, które wystąpiły na platformie Azure. Metoda wysyłania wpisów dziennika aktywności do [centrum zdarzeń lub konta magazynu](activity-log-export.md) lub do [log Analyticsego obszaru roboczego](activity-log-collect.md) została zmieniona w celu korzystania z [ustawień diagnostycznych](diagnostic-settings.md). W tym artykule opisano różnice między metodami oraz sposób czyszczenia starszych ustawień w obszarze przygotowanie do zmiany ustawień diagnostycznych.

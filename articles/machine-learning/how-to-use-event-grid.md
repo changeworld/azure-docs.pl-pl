@@ -9,26 +9,30 @@ ms.topic: conceptual
 ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
-ms.date: 03/05/2020
-ms.openlocfilehash: 8a9dc92baf47242af502862edebffe686263dd5d
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.date: 03/11/2020
+ms.openlocfilehash: fe6125682f669e453100488b7e0afc4c49409588
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78399663"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129737"
 ---
 # <a name="create-event-driven-machine-learning-workflows-preview"></a>Tworzenie przepływów pracy uczenia maszynowego opartego na zdarzeniach (Podgląd)
 
-[Azure Event Grid](https://docs.microsoft.com/azure/event-grid/) obsługuje zdarzenia Azure Machine Learning. Można na przykład użyć zdarzeń od ukończenia przebiegu, rejestracji modelu, wdrożenia modelu i wykrywania dryfowania danych w zakresie obszaru roboczego.
+[Azure Event Grid](https://docs.microsoft.com/azure/event-grid/) obsługuje zdarzenia Azure Machine Learning. Można subskrybować i korzystać z zdarzeń, takich jak zmiana stanu uruchomienia, zakończenie przebiegu, rejestracja modelu, wdrożenie modelu i wykrywanie dryfowania danych w obszarze roboczym.
 
-Aby uzyskać więcej informacji, zobacz [Azure Machine Learning integrację z Event Grid](concept-event-grid-integration.md) i [schematem usługi Event Grid Azure Machine Learning](/azure/event-grid/event-schema-machine-learning).
+Aby uzyskać więcej informacji na temat typów zdarzeń, zobacz [Azure Machine Learning Integration with Event Grid](concept-event-grid-integration.md) i [schemat usługi Event Grid Azure Machine Learning](/azure/event-grid/event-schema-machine-learning).
 
 Użyj Event Grid, aby włączyć typowe scenariusze, takie jak:
 
-* Wyślij wiadomości e-mail po zakończeniu przebiegu
+* Wyślij wiadomości e-mail w przypadku niepowodzenia przebiegu i zakończenie przebiegu
 * Użyj funkcji platformy Azure po zarejestrowaniu modelu
 * Przesyłanie strumieniowe zdarzeń z Azure Machine Learning do różnych punktów końcowych
 * Wyzwalanie potoku ML w przypadku wykrycia dryfu
+
+> [!NOTE] 
+> Obecnie zdarzenia runStatusChanged wyzwalają się tylko wtedy, gdy stan uruchomienia jest **zakończony niepowodzeniem**
+>
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * Dostęp współautora lub właściciela do obszaru roboczego Azure Machine Learning, dla którego będą tworzone zdarzenia.
@@ -43,13 +47,14 @@ Użyj Event Grid, aby włączyć typowe scenariusze, takie jak:
 
 1. Wybierz typ zdarzenia do użycia. Na przykład na poniższym zrzucie ekranu __zarejestrowano wybrany model__, __wdrożono model__, __wykonano przebieg__i __wykryto dryf zestawu danych__:
 
-    ![Dodaj typ zdarzenia](./media/how-to-use-event-grid/add-event-type.png)
+    ![Dodaj typ zdarzenia](./media/how-to-use-event-grid/add-event-type-updated.png)
 
 1. Wybierz punkt końcowy, do którego ma zostać opublikowane wydarzenie. Na poniższym zrzucie ekranu __centrum zdarzeń__ jest wybranym punktem końcowym:
 
     ![Procedura obsługi zaznaczania zdarzeń](./media/how-to-use-event-grid/select-event-handler.png)
 
 Po potwierdzeniu wyboru, kliknij przycisk __Utwórz__. Po zakończeniu konfiguracji te zdarzenia zostaną wypchnięte do punktu końcowego.
+
 
 ### <a name="configure-eventgrid-using-the-cli"></a>Konfigurowanie EventGrid przy użyciu interfejsu wiersza polecenia
 
@@ -76,13 +81,17 @@ az eventgrid event-subscription create \
   --subject-begins-with "models/mymodelname"
 ```
 
+## <a name="filter-events"></a>Filtruj zdarzenia
+
+Podczas konfigurowania zdarzeń można zastosować filtry tylko do wyzwalania tylko dla określonych danych zdarzeń. W poniższym przykładzie dla zdarzeń zmiany stanu uruchomienia można filtrować według typów uruchomienia. Zdarzenie jest wyzwalane tylko wtedy, gdy kryteria są spełnione. Zapoznaj się z [schematem siatki zdarzeń Azure Machine Learning](/azure/event-grid/event-schema-machine-learning) , aby dowiedzieć się więcej o danych zdarzeń, które można filtrować według. 
+
+1. Przejdź do Azure Portal, wybierz nową subskrypcję lub istniejącą. 
+
+1. Wybierz kartę Filtry i przewiń w dół do opcji filtry zaawansowane. W **kluczu** i **wartości** Podaj typy właściwości, według których chcesz filtrować. W tym miejscu można zobaczyć, że zdarzenie będzie wyzwalane tylko wtedy, gdy typem uruchomienia jest uruchomienie potoku lub krok potoku.  
+
+    :::image type="content" source="media/how-to-use-event-grid/select-event-filters.png" alt-text="Filtruj zdarzenia":::
+
 ## <a name="sample-scenarios"></a>Przykładowe scenariusze
-
-### <a name="use-azure-functions-to-deploy-a-model-based-on-tags"></a>Użyj Azure Functions, aby wdrożyć model na podstawie tagów
-
-Obiekt modelu Azure Machine Learning zawiera parametry, które można przestawiać wdrożenia, takie jak nazwa modelu, wersja, tag i właściwość. Zdarzenie rejestracji modelu może wyzwolić punkt końcowy i można użyć funkcji platformy Azure do wdrożenia modelu na podstawie wartości tych parametrów.
-
-Aby zapoznać się z przykładem, zobacz repozytorium [https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid) i postępuj zgodnie z instrukcjami w pliku **README** .
 
 ### <a name="use-a-logic-app-to-send-email-alerts"></a>Wysyłanie alertów e-mail za pomocą aplikacji logiki
 
@@ -100,7 +109,7 @@ Skorzystaj z [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) , 
 
     ![SELECT-Event-runcomplete](./media/how-to-use-event-grid/select-event-runcomplete.png)
 
-1. Możesz również dodać filtry, aby wyzwolić aplikację logiki tylko w podzestawie typów zdarzeń. Na poniższym zrzucie ekranu jest używany __Filtr prefiksu__ __/datadriftID/runs/__ .
+1. Możesz użyć metody filtrowania w powyższej sekcji lub dodać filtry, aby wyzwolić aplikację logiki tylko w podzestawie typów zdarzeń. Na poniższym zrzucie ekranu jest używany __Filtr prefiksu__ __/datadriftID/runs/__ .
 
     ![Filtrowanie — zdarzenia](./media/how-to-use-event-grid/filtering-events.png)
 
@@ -164,6 +173,11 @@ Teraz potok fabryki danych jest wyzwalany, gdy nastąpi dryf. Wyświetl szczegó
 
 ![Widok w obszarze roboczym](./media/how-to-use-event-grid/view-in-workspace.png)
 
+### <a name="use-azure-functions-to-deploy-a-model-based-on-tags"></a>Użyj Azure Functions, aby wdrożyć model na podstawie tagów
+
+Obiekt modelu Azure Machine Learning zawiera parametry, które można przestawiać wdrożenia, takie jak nazwa modelu, wersja, tag i właściwość. Zdarzenie rejestracji modelu może wyzwolić punkt końcowy i można użyć funkcji platformy Azure do wdrożenia modelu na podstawie wartości tych parametrów.
+
+Aby zapoznać się z przykładem, zobacz repozytorium [https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid) i postępuj zgodnie z instrukcjami w pliku **README** .
 
 ## <a name="next-steps"></a>Następne kroki
 

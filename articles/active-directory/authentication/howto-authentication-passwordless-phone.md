@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 736a543a6f28697dd4f1ddf85317e97a87b86e78
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 7c684d6f1fbd8128ae020b6fd29da928b286aa18
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78227065"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126681"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Włącz logowanie bez hasła przy użyciu aplikacji Microsoft Authenticator (wersja zapoznawcza)
 
@@ -62,7 +62,7 @@ Funkcje rejestracji dla metod uwierzytelniania bezhaseł polegają na połączon
 1. W **Microsoft Authenticator**wybierz pozycję **Włącz logowanie** za pomocą telefonu z menu rozwijanego konto
 1. Postępuj zgodnie z instrukcjami w aplikacji, aby zakończyć rejestrację w celu logowania za pomocą telefonu bezhasłem. 
 
-Organizacje mogą wskazywać, że użytkownicy będą [logować się za pomocą telefonu, a nie hasła](../user-help/microsoft-authenticator-app-phone-signin-faq.md) do dalszej pomocy w konfigurowaniu w aplikacji Microsoft Authenticator i włączeniu logowania do telefonu.
+Organizacje mogą wskazywać, że użytkownicy będą [logować się za pomocą telefonu, a nie hasła](../user-help/microsoft-authenticator-app-phone-signin-faq.md) do dalszej pomocy w konfigurowaniu w aplikacji Microsoft Authenticator i włączeniu logowania do telefonu. Aby można było zastosować te ustawienia, może być konieczne wylogowanie się i zalogowanie się do dzierżawy. 
 
 ## <a name="sign-in-with-passwordless-credential"></a>Zaloguj się przy użyciu poświadczeń bez hasła
 

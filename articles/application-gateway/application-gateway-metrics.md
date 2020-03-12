@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/5/2019
 ms.author: absha
-ms.openlocfilehash: 2d1e6e484fd704669951bd37b17356fd3689cc91
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 8b63233aa2b20862e4654c89f1a6dd5d00c78940
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485186"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096066"
 ---
 # <a name="metrics-for-application-gateway"></a>Metryki dla Application Gateway
 
@@ -125,10 +125,6 @@ W przypadku Application Gateway dostępne są następujące metryki:
 
    Liczba pomyślnych żądań obsłużonych przez Application Gateway. Liczbę żądań można w dalszej odfiltrować, aby pokazać liczbę dla każdej lub określonej puli zaplecza — kombinację ustawień http.
 
-- **Reguły dopasowane do zapory aplikacji sieci Web**
-
-- **Reguły wyzwalane przez zaporę aplikacji sieci Web**
-
 ### <a name="backend-metrics"></a>Metryki zaplecza
 
 W przypadku Application Gateway dostępne są następujące metryki:
@@ -180,9 +176,9 @@ W przypadku Application Gateway dostępne są następujące metryki:
 
   Liczba pomyślnych żądań obsłużonych przez Application Gateway. Liczbę żądań można w dalszej odfiltrować, aby pokazać liczbę dla każdej lub określonej puli zaplecza — kombinację ustawień http.
 
-- **Reguły dopasowane do zapory aplikacji sieci Web**
-
-- **Reguły wyzwalane przez zaporę aplikacji sieci Web**
+- **Liczba zablokowanych żądań zapory aplikacji sieci Web**
+- **Dystrybucja żądań zablokowanych przez zaporę aplikacji sieci Web**
+- **Dystrybucja reguł dla zapory aplikacji sieci Web**
 
 ### <a name="backend-metrics"></a>Metryki zaplecza
 

@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: b90b6f8eabbda229fbed4dcef6a5d863ea721faf
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 001dfbc78c0027249143e933684523d47af383d1
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77659139"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096782"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-platform-logs-archived-to-a-storage-account"></a>Przygotuj się do zmiany formatu Azure Monitor dzienników platformy zarchiwizowanych na koncie magazynu
 
 > [!WARNING]
-> W przypadku wysyłania [dzienników zasobów platformy Azure lub metryk do konta magazynu przy użyciu ustawień diagnostycznych](resource-logs-collect-storage.md) lub [dzienników aktywności do konta magazynu przy użyciu profilów dzienników](activity-log-export.md), format danych w ramach konta magazynu zmieni się na wiersz JSON na lis. 1, 2018. Poniższe instrukcje opisują wpływ i sposobu aktualizowania narzędzi do obsługi nowego formatu.
+> W przypadku wysyłania [dzienników zasobów platformy Azure lub metryk do konta magazynu przy użyciu ustawień diagnostycznych](resource-logs-collect-storage.md) lub [dzienników aktywności do konta magazynu przy użyciu profilów dzienników](resource-logs-collect-storage.md), format danych w ramach konta magazynu zmieni się na wiersz JSON na lis. 1, 2018. Poniższe instrukcje opisują wpływ i sposobu aktualizowania narzędzi do obsługi nowego formatu.
 >
 
 ## <a name="what-changed"></a>Co zostało zmienione

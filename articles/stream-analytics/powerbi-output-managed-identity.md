@@ -1,21 +1,21 @@
 ---
-title: Użyj tożsamości zarządzanej do uwierzytelniania zadania Azure Stream Analytics do Power BI danych wyjściowych (wersja zapoznawcza)
+title: Użyj tożsamości zarządzanej do uwierzytelnienia zadania Azure Stream Analytics do Power BI danych wyjściowych
 description: W tym artykule opisano sposób używania tożsamości zarządzanych do uwierzytelniania zadania Azure Stream Analytics do Power BI danych wyjściowych.
 author: cedarbaum
 ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/31/2019
-ms.openlocfilehash: 264c434849d5d5afb5934873c75d172a3783ac86
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 3/10/2020
+ms.openlocfilehash: 8a7dfd7c690d79d8430f7c33a25b38949dbd06c4
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459676"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086324"
 ---
-# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi-preview"></a>Użyj tożsamości zarządzanej do uwierzytelniania zadania Azure Stream Analytics do Power BI (wersja zapoznawcza)
+# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>Za pomocą tożsamości zarządzanej można uwierzytelniać zadanie Azure Stream Analytics w Power BI
 
-[Uwierzytelnianie tożsamości zarządzanej](../active-directory/managed-identities-azure-resources/overview.md) dla danych wyjściowych do Power BI jest dostępne dla Azure Stream Analytics jako wersja zapoznawcza. Dzięki temu Stream Analytics zadania bezpośredniego dostępu do obszaru roboczego w ramach konta Power BI. Ta funkcja umożliwia wdrażanie Stream Analytics zadań w pełni zautomatyzowanej, ponieważ nie jest już wymagane, aby użytkownik mógł interakcyjnie zalogować się do Power BI za pośrednictwem Azure Portal. Ponadto, długotrwałe zadania, które zapisują w Power BI są teraz lepiej obsługiwane, ponieważ nie trzeba okresowo ponownie autoryzować zadania.
+[Uwierzytelnianie tożsamości zarządzanej](../active-directory/managed-identities-azure-resources/overview.md) dla danych wyjściowych do Power BI daje Stream Analytics zadania bezpośredniego dostępu do obszaru roboczego w ramach konta Power BI. Ta funkcja umożliwia wdrażanie Stream Analytics zadań w pełni zautomatyzowanej, ponieważ nie jest już wymagane, aby użytkownik mógł interakcyjnie zalogować się do Power BI za pośrednictwem Azure Portal. Ponadto, długotrwałe zadania, które zapisują w Power BI są teraz lepiej obsługiwane, ponieważ nie trzeba okresowo ponownie autoryzować zadania.
 
 W tym artykule opisano sposób włączania zarządzanej tożsamości dla Power BI danych wyjściowych zadania Stream Analytics za pomocą Azure Portal oraz wdrożenia Azure Resource Manager.
 
@@ -224,4 +224,4 @@ Poniżej przedstawiono ograniczenia tej funkcji:
 ## <a name="next-steps"></a>Następne kroki
 
 * [Power BI integrację pulpitu nawigacyjnego z Azure Stream Analytics](./stream-analytics-power-bi-dashboard.md)
-* [Zrozumieć dane wyjściowe z usługi Azure Stream Analytics](./stream-analytics-define-outputs.md)
+* [Poznanie danych wyjściowych z Azure Stream Analytics](./stream-analytics-define-outputs.md)

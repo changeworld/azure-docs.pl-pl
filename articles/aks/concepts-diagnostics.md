@@ -6,16 +6,18 @@ author: yunjchoi
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: yunjchoi
-ms.openlocfilehash: 11b469425a80d588462e0332c973260cc3b56992
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 03bb7b786280dfcbb64190adac51b8d001d59c18
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596185"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126611"
 ---
-# <a name="azure-kubernetes-service-aks-diagnostics-overview"></a>Omówienie diagnostyki usługi Azure Kubernetes Service (AKS)
+# <a name="azure-kubernetes-service-diagnostics-preview-overview"></a>Omówienie usługi Azure Kubernetes Service Diagnostics (wersja zapoznawcza)
 
 Rozwiązywanie problemów z klastrem usługi Azure Kubernetes Service (AKS) jest ważną częścią obsługi klastra, zwłaszcza jeśli klaster działa w przypadku obciążeń o kluczowym znaczeniu. Diagnostyka AKS to inteligentne środowisko do samodzielnej diagnostyki, które ułatwia identyfikowanie i rozwiązywanie problemów z klastrem. Diagnostyka AKS jest natywna w chmurze i można jej używać bez dodatkowych opłat.
+
+Ta funkcja jest teraz dostępna w publicznej wersji zapoznawczej.
 
 ## <a name="open-aks-diagnostics"></a>Otwórz diagnostykę AKS
 

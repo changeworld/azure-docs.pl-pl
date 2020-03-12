@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 33333f8df1e4809a330815e34074d1bca556cd14
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: c2a0dde496d6af66387210ca9b2ebf9cb4bdae7f
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561837"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087949"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>Samouczek: łączenie, konfigurowanie, aktywowanie Azure Data Box Gateway
 
@@ -92,6 +92,11 @@ Pulpit nawigacyjny wyświetla różne ustawienia, które są wymagane do skonfig
    2. W obszarze **uwierzytelnianie**wybierz opcję **Brak** lub **NTLM**.
    3. Jeśli używasz uwierzytelniania, wprowadź **nazwę użytkownika** i **hasło**.
    4. Aby sprawdzić poprawność skonfigurowanych ustawień serwera proxy sieci Web i zastosować je, wybierz pozycję **Zastosuj**.
+
+   > [!NOTE]
+   > Pliki proxy-autoconfig (PAC) nie są obsługiwane. Plik PAC definiuje, w jaki sposób przeglądarki sieci Web i inni agenci użytkowników mogą automatycznie wybierać odpowiedni serwer proxy (metoda dostępu) do pobierania danego adresu URL.
+   > Serwery proxy próbujące przechwycić i odczytać cały ruch (a następnie ponownie podpisać wszystko z własnym certyfikatem) nie są zgodne, ponieważ certyfikat serwera proxy nie jest zaufany.
+   > Zazwyczaj przezroczyste serwery proxy działają dobrze z Azure Data Box Gateway.
 
 4. Obowiązkowe W okienku po lewej stronie wybierz pozycję **Ustawienia czasu**, a następnie skonfiguruj strefę czasową i serwery NTP w podstawowym i pomocniczym urządzeniu. 
 

@@ -9,12 +9,12 @@ ms.date: 02/11/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7529cfbd0ab75d0113e5cea666bc04aa1b15d30b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 76e34736238273f2af3fccae0ac2b5ed0ff491f0
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157722"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128334"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>Inicjowanie trybu failover konta magazynu (wersja zapoznawcza)
 
@@ -31,7 +31,6 @@ W tym artykule pokazano, jak zainicjować tryb failover konta dla konta magazynu
 
 Przed przełączeniem w tryb failover na koncie magazynu upewnij się, że wykonano następujące czynności:
 
-- Zarejestruj się w wersji zapoznawczej trybu failover konta. Aby uzyskać informacje na temat sposobu rejestracji, zobacz [Informacje o wersji zapoznawczej](storage-disaster-recovery-guidance.md#about-the-preview).
 - Upewnij się, że konto magazynu jest skonfigurowane do korzystania z magazynu geograficznie nadmiarowego (GRS) lub magazynu geograficznie nadmiarowego do odczytu (RA-GRS). Aby uzyskać więcej informacji na temat magazynu geograficznie nadmiarowego, zobacz [nadmiarowość usługi Azure Storage](storage-redundancy.md).
 
 ## <a name="important-implications-of-account-failover"></a>Ważne konsekwencje przełączenia w tryb failover
@@ -44,7 +43,7 @@ Po przejściu w tryb failover typ konta magazynu zostanie automatycznie przekonw
 
 Po ponownym włączeniu GRS dla konta magazynu firma Microsoft rozpocznie replikowanie danych z konta do nowego regionu pomocniczego. Czas replikacji zależy od ilości replikowanych danych.  
 
-## <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+## <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Aby zainicjować tryb failover konta z Azure Portal, wykonaj następujące kroki:
 
@@ -60,7 +59,7 @@ Aby zainicjować tryb failover konta z Azure Portal, wykonaj następujące kroki
 
     ![Zrzut ekranu przedstawiający okno dialogowe potwierdzenia dla konta w trybie failover](media/storage-initiate-account-failover/portal-failover-confirm.png)
 
-## <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+## <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Aby można było zainicjować pracę w trybie failover przy użyciu programu PowerShell, należy najpierw zainstalować moduł 6.0.1 w wersji zapoznawczej. Wykonaj następujące kroki, aby zainstalować moduł:
 
@@ -97,7 +96,7 @@ Aby zainicjować tryb failover konta z programu PowerShell, wykonaj następując
 Invoke-AzStorageAccountFailover -ResourceGroupName <resource-group-name> -Name <account-name> 
 ```
 
-## <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
+## <a name="azure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
 Aby zainicjować tryb failover na koncie przy użyciu interfejsu wiersza polecenia platformy Azure, wykonaj następujące polecenia:
 

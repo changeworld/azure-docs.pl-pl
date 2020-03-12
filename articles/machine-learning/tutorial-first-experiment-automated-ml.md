@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 02/04/2020
-ms.openlocfilehash: 84d539f35919293522f05abdeabeca936138c140
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 96af942ab68d4ae738df56bf94d8410ee5d8cc34
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79081628"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129669"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Samouczek: Tworzenie modelu klasyfikacji przy użyciu zautomatyzowanej ML w Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -221,8 +221,8 @@ W tym samouczku zautomatyzowanym uczenia maszynowego użyto zautomatyzowanego in
 > [Korzystanie z usługi sieci Web](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
 + Dowiedz się więcej o [automatycznym uczeniu maszynowym](concept-automated-ml.md).
-+ Aby uzyskać więcej informacji na temat metryk i wykresów klasyfikacji, zobacz artykuł [Omówienie zautomatyzowanych wyników uczenia maszynowego](how-to-understand-automated-ml.md#classification) . + Dowiedz się więcej na temat [cechowania](how-to-create-portal-experiments.md#featurization).
-+ Dowiedz się więcej na temat [profilowania danych](how-to-create-portal-experiments.md#profile).
++ Aby uzyskać więcej informacji na temat metryk i wykresów klasyfikacji, zobacz artykuł [Omówienie zautomatyzowanych wyników uczenia maszynowego](how-to-understand-automated-ml.md#classification) . + Dowiedz się więcej na temat [cechowania](how-to-use-automated-ml-for-ml-models.md#featurization).
++ Dowiedz się więcej na temat [profilowania danych](how-to-use-automated-ml-for-ml-models.md#profile).
 
 
 >[!NOTE]

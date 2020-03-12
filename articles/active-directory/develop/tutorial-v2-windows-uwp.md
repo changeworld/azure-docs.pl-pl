@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 4a62026ecec2317173361f166adcc3a7981f6d1c
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 68473ff5a3faddd36bd4299dfdc882f679acd068
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701182"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129880"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Wywoływanie interfejsu API Microsoft Graph z aplikacji platforma uniwersalna systemu Windows (XAML)
 
@@ -32,6 +32,9 @@ Na końcu tego przewodnika aplikacja wywołuje chroniony interfejs API przy uży
 
 >[!NOTE]
 > Ten przewodnik wymaga programu Visual Studio z zainstalowaną platforma uniwersalna systemu Windows programowaniem. Zobacz sekcję [Pobierz konfigurację](https://docs.microsoft.com/windows/uwp/get-started/get-set-up) , aby uzyskać instrukcje dotyczące pobierania i konfigurowania programu Visual Studio do opracowywania aplikacji platforma uniwersalna systemu Windows.
+
+>[!NOTE]
+> Jeśli dopiero zaczynasz pracę z platformą tożsamości firmy Microsoft, zalecamy rozpoczęcie od [wywołania interfejsu API Microsoft Graph z aplikacji platforma uniwersalna systemu Windows (platformy UWP)](quickstart-v2-uwp.md).
 
 ## <a name="how-this-guide-works"></a>Jak działa ten przewodnik
 
@@ -45,7 +48,7 @@ W tym przewodniku zastosowano następujący pakiet NuGet:
 
 |Biblioteka|Opis|
 |---|---|
-|[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Biblioteka uwierzytelniania firmy Microsoft|
+|[Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Biblioteka uwierzytelniania firmy Microsoft|
 
 ## <a name="set-up-your-project"></a>konfigurowanie projektu
 
@@ -343,8 +346,8 @@ Dodaj następującą nową metodę do *MainPage.XAML.cs*:
 
 Teraz musisz zarejestrować aplikację:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
-1. Wybierz **usługi Azure Active Directory** > **rejestracje aplikacji**.
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
+1. Wybierz **Azure Active Directory** > **rejestracje aplikacji**.
 1. Wybierz pozycję **Nowa rejestracja**. Wprowadź zrozumiałą nazwę aplikacji, która będzie wyświetlana użytkownikom aplikacji, na przykład *platformy UWP-App-Call-MSGraph*.
 1. W obszarze **obsługiwane typy kont**wybierz pozycję **konta w dowolnym katalogu organizacyjnym i osobiste konta Microsoft (np. Skype, Xbox)** , a następnie wybierz pozycję **zarejestruj** , aby kontynuować.
 1. Na stronie Przegląd Znajdź wartość **Identyfikator aplikacji (klienta)** i skopiuj ją. Wróć do programu Visual Studio, Otwórz *MainPage.XAML.cs*i Zastąp wartość `ClientId` tą wartością.

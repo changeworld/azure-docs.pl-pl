@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 381f1486f13907aa52558029789e49bc4e5c4961
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 65352b8f8f85f5e7a2e25ae99d5ca3368ad78711
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687613"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126517"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Wprowadzenie do usługi Azure App Service w systemie Linux
 
@@ -27,7 +27,7 @@ Usługa App Service w systemie Linux obsługuje szereg wbudowanych obrazów w ce
 
 * FTP
 * Lokalna usługa Git
-* Witryna GitHub
+* GitHub
 * Bitbucket
 
 ## <a name="devops"></a>DevOps
@@ -40,7 +40,7 @@ Usługa App Service w systemie Linux obsługuje szereg wbudowanych obrazów w ce
 * Środowiska
 * Wdrożenia
 * Podstawowa konsola
-* SSH
+* Protokół SSH
 
 ## <a name="scaling"></a>Skalowanie
 
@@ -91,7 +91,7 @@ Aby uzyskać więcej informacji na temat usługi App Service dla systemu Linux, 
 * [Konfigurowanie środowisk przejściowych w usłudze App Service](../../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 * [Ciągłe wdrażanie w usłudze Docker Hub](app-service-linux-ci-cd.md)
 
-Pytania i uwagi można zamieszczać na [naszym forum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview).
+Pytania i uwagi można zamieszczać na [naszym forum](https://docs.microsoft.com/answers/topics/azure-webapps.html).
 
 <!--Image references-->
 [1]: ./media/app-service-linux-intro/kudu-docker-logs.png

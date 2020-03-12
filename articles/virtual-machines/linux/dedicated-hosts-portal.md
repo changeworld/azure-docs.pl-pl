@@ -4,14 +4,15 @@ description: Wdróż maszyny wirtualne na dedykowanych hostach przy użyciu Azur
 author: cynthn
 ms.service: virtual-machines
 ms.topic: article
-ms.date: 01/09/2020
+ms.workload: infrastructure
+ms.date: 03/10/2020
 ms.author: cynthn
-ms.openlocfilehash: 5af09cf7ef6c811a239a64c5c6349c3625316177
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
-ms.translationtype: HT
+ms.openlocfilehash: 195a19ef881f235ad8e42f23b53da9e667ef88d0
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970750"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086756"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-portal"></a>Wdrażanie maszyn wirtualnych na dedykowanych hostach przy użyciu portalu
 
@@ -38,6 +39,26 @@ W tym artykule opisano sposób tworzenia [dedykowanego hosta](dedicated-hosts.md
 1. Gdy zobaczysz komunikat, że Walidacja zakończyła się pomyślnie, wybierz pozycję **Utwórz**.
 
 Wdrożenie maszyny wirtualnej potrwa kilka minut.
+
+## <a name="add-an-existing-vm"></a>Dodawanie istniejącej maszyny wirtualnej 
+
+Możesz dodać maszynę wirtualną z wykończeniami do dedykowanego hosta, ale najpierw należy Stop\Deallocated. maszynę wirtualną Przed przeniesieniem maszyny wirtualnej do dedykowanego hosta upewnij się, że konfiguracja maszyny wirtualnej jest obsługiwana:
+
+- Rozmiar maszyny wirtualnej musi znajdować się w tej samej rodzinie rozmiarów co dedykowany host. Na przykład jeśli dedykowany host to DSv3, rozmiar maszyny wirtualnej może być Standard_D4s_v3, ale nie Standard_A4_v2. 
+- Maszyna wirtualna musi znajdować się w tym samym regionie co dedykowany host.
+- Maszyna wirtualna nie może być częścią grupy umieszczania sąsiedztwa. Usuń maszynę wirtualną z grupy położenia zbliżeniowe przed przeniesieniem jej do dedykowanego hosta. Aby uzyskać więcej informacji, zobacz [Przenoszenie maszyny wirtualnej z grupy umieszczania sąsiedztwa](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#move-an-existing-vm-out-of-a-proximity-placement-group)
+- Maszyna wirtualna nie może znajdować się w zestawie dostępności.
+- Jeśli maszyna wirtualna znajduje się w strefie dostępności, musi to być ta sama strefa dostępności co grupa hostów. Ustawienia strefy dostępności dla maszyny wirtualnej i grupy hostów muszą być zgodne.
+
+Przenieś maszynę wirtualną na dedykowanego hosta przy użyciu [portalu](https://portal.azure.com).
+
+1. Otwórz stronę dla maszyny wirtualnej.
+1. Wybierz pozycję **Zatrzymaj** , aby stop\deallocate maszynę wirtualną.
+1. Z menu po lewej stronie wybierz pozycję **Konfiguracja** .
+1. Wybierz grupę hostów i hosta z menu rozwijanego.
+1. Gdy skończysz, wybierz pozycję **Zapisz** w górnej części strony.
+1. Po dodaniu maszyny wirtualnej do hosta z menu po lewej stronie wybierz pozycję **Przegląd** .
+1. W górnej części strony wybierz pozycję **Rozpocznij** , aby ponownie uruchomić maszynę wirtualną.
 
 ## <a name="next-steps"></a>Następne kroki
 

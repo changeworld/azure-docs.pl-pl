@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: Wstrzymywanie & wznawianie obliczeń Azure Portal '
+title: Wstrzymywanie i wznawianie obliczeń w Synapse puli SQL za pośrednictwem Azure Portal
 description: Użyj Azure Portal, aby wstrzymać obliczenia dla puli SQL w celu oszczędności kosztów. Wznów obliczanie, gdy wszystko jest gotowe do korzystania z magazynu danych.
 services: sql-data-warehouse
 author: kevinvngo
@@ -11,18 +11,16 @@ ms.date: 04/18/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 49684e6844c2d9f58e9b750b12991428218e4426
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 3a131c1ebbf2a69f1c738cbc3421635406500d3c
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78200642"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79130368"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-azure-synapse-analytics-sql-pool-in-the-azure-portal"></a>Szybki Start: Wstrzymywanie i wznawianie obliczeń w puli SQL usługi Azure Synapse Analytics w Azure Portal
+# <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-via-the-azure-portal"></a>Szybki Start: Wstrzymywanie i wznawianie obliczeń w Synapse puli SQL za pośrednictwem Azure Portal
 
-Użyj Azure Portal, aby wstrzymać obliczenia dla puli SQL w celu oszczędności kosztów. [Wznów Obliczanie](sql-data-warehouse-manage-compute-overview.md) , gdy wszystko jest gotowe do korzystania z magazynu danych.
-
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
+Za pomocą Azure Portal można wstrzymywać i wznawiać zasoby obliczeniowe puli SQL (Data Warehouse) Synapse. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
@@ -34,9 +32,11 @@ Użyj instrukcji [Create i Connect-Portal](create-data-warehouse-portal.md) , ab
 
 ## <a name="pause-compute"></a>Wstrzymywanie obliczeń
 
-Aby zaoszczędzić koszty, możesz wstrzymywać i wznawiać zasoby obliczeniowe na żądanie. Na przykład jeśli baza danych nie będzie używana w porze nocnej i w weekendy, możesz ją wstrzymać w tych godzinach i wznowić ją w ciągu dnia. Nie będzie naliczana opłata za zasoby obliczeniowe, gdy baza danych jest wstrzymana. Opłata za magazyn będzie jednak nadal naliczana. 
+Aby obniżyć koszty, możesz wstrzymywać i wznawiać zasoby obliczeniowe na żądanie. Na przykład jeśli baza danych nie będzie używana w porze nocnej i w weekendy, możesz ją wstrzymać w tych godzinach i wznowić ją w ciągu dnia. 
+>[!NOTE]
+>Nie będzie naliczana opłata za zasoby obliczeniowe, gdy baza danych jest wstrzymana. Opłata za magazyn będzie jednak nadal naliczana. 
 
-Wykonaj następujące kroki, aby wstrzymać pulę SQL.
+Wykonaj następujące kroki, aby wstrzymać pulę SQL:
 
 1. Zaloguj się do [Azure portal](https://portal.azure.com/).
 2. Kliknij pozycję **Azure Synapse Analytics (wcześniej SQL DW)** na lewej stronie nawigacyjnej Azure Portal.
@@ -80,7 +80,7 @@ Wykonaj następujące kroki, aby wznowić pulę SQL.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Opłaty są naliczane za jednostki magazynu danych i dane przechowywane w magazynie danych. Opłaty za te zasoby obliczeniowe i magazynowe są naliczane osobno. 
+Opłaty są naliczane za jednostki magazynu danych i dane przechowywane w puli SQL. Opłaty za te zasoby obliczeniowe i magazynowe są naliczane osobno. 
 
 - Jeśli chcesz zachować dane w magazynie, Wstrzymaj obliczenia.
 - Jeśli chcesz usunąć przyszłe opłaty, możesz usunąć pulę SQL. 
@@ -95,14 +95,15 @@ Wykonaj następujące kroki, aby wyczyścić zasoby zgodnie z potrzebami.
 
 2. Aby usunąć pulę SQL, aby nie naliczać opłat za zasoby obliczeniowe i magazynowanie, kliknij przycisk **Usuń**.
 
-3. Aby usunąć utworzony serwer SQL, kliknij pozycję **sqlpoolservername.Database.Windows.NET**, a następnie kliknij pozycję **Usuń**.  Należy zachować ostrożność podczas usuwania, ponieważ usunięcie serwera spowoduje również usunięcie wszystkich baz danych przypisanych do tego serwera.
+3. Aby usunąć utworzony serwer SQL, kliknij pozycję **sqlpoolservername.Database.Windows.NET**, a następnie kliknij pozycję **Usuń**.  
 
-4. Aby usunąć grupę zasobów, kliknij pozycję **myResourceGroup**, a następnie kliknij pozycję **Usuń grupę zasobów**.
+   > [!CAUTION]
+   > Należy zachować ostrożność podczas usuwania, ponieważ usunięcie serwera spowoduje również usunięcie wszystkich baz danych przypisanych do tego serwera.
+
+5. Aby usunąć grupę zasobów, kliknij pozycję **myResourceGroup**, a następnie kliknij pozycję **Usuń grupę zasobów**.
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz wstrzymane i wznowione obliczenia dla puli SQL. Aby kontynuować, przejdź do samouczka dotyczącego ładowania danych.
+Teraz wstrzymane i wznowione obliczenia dla puli SQL. Przejdź do następnego artykułu, aby dowiedzieć się więcej na temat [ładowania danych do puli SQL](load-data-from-azure-blob-storage-using-polybase.md). Aby uzyskać dodatkowe informacje na temat zarządzania możliwościami obliczeniowymi, zobacz artykuł [Zarządzanie obliczeniami obliczeniowymi](sql-data-warehouse-manage-compute-overview.md) . 
 
-> [!div class="nextstepaction"]
-> [Ładowanie danych do puli SQL](load-data-from-azure-blob-storage-using-polybase.md)

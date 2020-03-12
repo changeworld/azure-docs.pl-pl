@@ -9,12 +9,12 @@ ms.date: 02/10/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 950580048f0496fd8436901938a5b6768c61bab6
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: e27135d09da7060f2a948e37f6026fe66fbef5b3
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132077"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096611"
 ---
 # <a name="set-directory-level-inactivity-timeout"></a>Ustaw limit czasu nieaktywności poziomu katalogu
 
@@ -43,7 +43,7 @@ Aby upewnić się, że zasady limitu czasu bezczynności są ustawione prawidło
 Ustawienie zacznie obowiązywać w przypadku nowych sesji. Nie będzie od razu stosowana dla wszystkich użytkowników, którzy są już zalogowani.
 
 > [!NOTE]
-> Jeśli administrator skonfigurował ustawienie limitu czasu na poziomie katalogu, użytkownicy mogą przesłonić zasady i ustawić własny czas nieaktywnego wylogowania. Użytkownik musi jednak wybrać przedział czasu, który jest mniejszy niż ustawiony na poziomie katalogu.
+> Jeśli administrator globalny skonfigurował ustawienie limitu czasu poziomu katalogu, użytkownicy mogą przesłonić zasady i ustawić własne nieaktywne okresy wylogowania. Użytkownik musi jednak wybrać przedział czasu, który jest mniejszy niż ustawiony na poziomie katalogu przez administratora globalnego.
 >
 
 ## <a name="next-steps"></a>Następne kroki

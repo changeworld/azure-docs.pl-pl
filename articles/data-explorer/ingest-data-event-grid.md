@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: a07a5a5956d8ea295d269d81ed264177bc8805f2
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 47870410741cf96e289014fab5a9c2eab26759b1
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77424987"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096422"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Pozyskiwanie obiektów BLOB na platformie Azure Eksplorator danych przez Subskrybowanie powiadomień Event Grid
 
@@ -118,7 +118,7 @@ Teraz Połącz się z Event Grid z poziomu usługi Azure Eksplorator danych, aby
      **Ustawienie** | **Sugerowana wartość** | **Opis pola**
     |---|---|---|
     | Tabela | *TestTable* | Tabela utworzona przez Ciebie w obszarze **TestDatabase**. |
-    | Format danych | *JSON* | Obsługiwane formaty to: Avro, CSV, JSON, MULTILINE JSON, PSV, SOH, SCSV, TSV i TXT. Obsługiwane opcje kompresji: zip i GZip |
+    | Format danych | *JSON* | Obsługiwane formaty to Avro, CSV, JSON, WIELOWIERSZOWY kod JSON, PSV, raport o kondycji, SCSV, TSV, RAW i TXT. Obsługiwane opcje kompresji: zip i GZip |
     | Mapowanie kolumn | *TestMapping* | Mapowanie utworzone przez Ciebie w obszarze **TestDatabase**, które mapuje przychodzące dane JSON na nazwy kolumn i typy danych tabeli **TestTable**.|
     | | |
     
@@ -150,13 +150,32 @@ Zapisz dane w pliku i przekaż je za pomocą tego skryptu:
     az storage container create --name $container_name
 
     echo "Uploading the file..."
-    az storage blob upload --container-name $container_name --file $file_to_upload --name $blob_name
+    az storage blob upload --container-name $container_name --file $file_to_upload --name $blob_name --metadata "rawSizeBytes=1024"
 
     echo "Listing the blobs..."
     az storage blob list --container-name $container_name --output table
 
     echo "Done"
 ```
+
+> [!NOTE]
+> Aby osiągnąć najlepszą wydajność pozyskiwania, należy przekazać *nieskompresowany* rozmiar skompresowanych obiektów BLOB przekazanych do pozyskiwania. Ponieważ powiadomienia Event Grid zawierają tylko podstawowe szczegóły, informacje o rozmiarze muszą być przekazywane jawnie. Informacje o nieskompresowanym rozmiarze można podać przez ustawienie właściwości `rawSizeBytes` w metadanych obiektu BLOB z *nieskompresowanym* rozmiarem danych w bajtach.
+
+### <a name="ingestion-properties"></a>Właściwości pozyskiwania
+
+Możesz określić [Właściwości](https://docs.microsoft.com/azure/kusto/management/data-ingestion/#ingestion-properties) pozyskiwania obiektu BLOB za pomocą metadanych obiektu BLOB.
+
+Można ustawić następujące właściwości:
+
+|**Właściwość** | **Opis właściwości**|
+|---|---|
+| `rawSizeBytes` | Rozmiar nieprzetworzonych (nieskompresowanych) danych. W przypadku Avro/ORC/Parquet jest to rozmiar przed zastosowaniem kompresji specyficznej dla formatu.|
+| `kustoTable` |  Nazwa istniejącej tabeli docelowej. Zastępuje zestaw `Table` w bloku `Data Connection`. |
+| `kustoDataFormat` |  Format danych. Zastępuje zestaw `Data format` w bloku `Data Connection`. |
+| `kustoIngestionMappingReference` |  Nazwa istniejącego mapowania pozyskiwania do użycia. Zastępuje zestaw `Column mapping` w bloku `Data Connection`.|
+| `kustoIgnoreFirstRecord` | Jeśli ustawiona na `true`, Kusto ignoruje pierwszy wiersz obiektu BLOB. Użyj w danych formatu tabelarycznego (CSV, TSV lub podobne) do ignorowania nagłówków. |
+| `kustoExtentTags` | Ciąg reprezentujący [Tagi](/azure/kusto/management/extents-overview#extent-tagging) , które będą dołączane do wynikającego zakresu. |
+| `kustoCreationTime` |  Przesłania [$IngestionTime](/azure/kusto/query/ingestiontimefunction?pivots=azuredataexplorer) dla obiektu BLOB sformatowane jako ciąg ISO 8601. Używany do wypełniania. |
 
 > [!NOTE]
 > Usługa Azure Eksplorator danych nie usunie obiektów BLOB po pozyskaniu.

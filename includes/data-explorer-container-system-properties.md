@@ -2,41 +2,57 @@
 author: orspod
 ms.service: data-explorer
 ms.topic: include
-ms.date: 01/08/2020
+ms.date: 02/27/2020
 ms.author: orspodek
-ms.openlocfilehash: f9788e4623ce60ad55d79558d1d77a17eb2a9f26
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: a2297301a0b9c0540c73c0f50483cccfc3181a0f
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779958"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129267"
 ---
 ### <a name="event-system-properties-mapping"></a>Mapowanie właściwości systemu zdarzeń
 
-W przypadku wybrania **Właściwości systemu zdarzeń** w sekcji **Źródło danych** w powyższej tabeli przejdź do [interfejsu użytkownika sieci Web](https://dataexplorer.azure.com/) , aby uruchomić odpowiednie polecenie KQL w celu utworzenia odpowiedniego mapowania.
+> [!Note]
+> * Właściwości systemu są obsługiwane dla zdarzeń z pojedynczym rekordem.
+> * Na potrzeby mapowania `csv` na początku rekordu są dodawane właściwości. Na potrzeby mapowania `json` właściwości są dodawane według nazwy, która pojawia się na liście rozwijanej.
 
-   **Dla mapowania woluminów CSV:**
+W przypadku wybrania **Właściwości systemu zdarzeń** w sekcji **Źródło danych** tabeli należy uwzględnić następujące właściwości w schemacie i mapowaniu tabeli.
 
-    ```kusto
-    .create table MyTable ingestion csv mapping "CsvMapping1"
+**Przykład schematu tabeli**
+
+Jeśli dane zawierają trzy kolumny (`Timespan`, `Metric`i `Value`) i uwzględnione właściwości są `x-opt-enqueued-time` i `x-opt-offset`, Utwórz lub Zmień schemat tabeli przy użyciu tego polecenia:
+
+```kusto
+    .create-merge table TestTable (TimeStamp: datetime, Metric: string, Value: int, EventHubEnqueuedTime:datetime, EventHubOffset:string)
+```
+
+**Przykład mapowania CSV**
+
+Uruchom następujące polecenia, aby dodać dane na początku rekordu. Zwróć uwagę na wartości porządkowe.
+
+```kusto
+    .create table TestTable ingestion csv mapping "CsvMapping1"
     '['
-    '   { "column" : "messageid", "DataType":"string", "Properties":{"Ordinal":"0"}},'
-    '   { "column" : "userid", "DataType":"string", "Properties":{"Ordinal":"1"}},'
-    '   { "column" : "other", "DataType":"int", "Properties":{"Ordinal":"2"}}'
+    '   { "column" : "Timespan", "Properties":{"Ordinal":"2"}},'
+    '   { "column" : "Metric", "Properties":{"Ordinal":"3"}},'
+    '   { "column" : "Value", "Properties":{"Ordinal":"4"}},'
+    '   { "column" : "EventHubEnqueuedTime", "Properties":{"Ordinal":"0"}},'
+    '   { "column" : "EventHubOffset", "Properties":{"Ordinal":"1"}}'
     ']'
-    ```
+```
  
-   **Dla mapowania JSON:**
+**Przykład mapowania JSON**
 
-    ```kusto
-    .create table MyTable ingestion json mapping "JsonMapping1"
+Dane są dodawane przy użyciu nazw właściwości systemu, które są wyświetlane na liście **Właściwości systemu zdarzeń** bloku **połączenia danych** . Uruchom następujące polecenia:
+
+```kusto
+    .create table TestTable ingestion json mapping "JsonMapping1"
     '['
-    '    { "column" : "messageid", "datatype" : "string", "Properties":{"Path":"$.message-id"}},'
-    '    { "column" : "userid", "Properties":{"Path":"$.user-id"}},'
-    '    { "column" : "other", "Properties":{"Path":"$.other"}}'
+    '    { "column" : "Timespan", "Properties":{"Path":"$.timestamp"}},'
+    '    { "column" : "Metric", "Properties":{"Path":"$.metric"}},'
+    '    { "column" : "Value", "Properties":{"Path":"$.metric_value"}},'
+    '    { "column" : "EventHubEnqueuedTime", "Properties":{"Path":"$.x-opt-enqueued-time"}},'
+    '    { "column" : "EventHubOffset", "Properties":{"Path":"$.x-opt-offset"}}'
     ']'
-    ```
-
-   > [!TIP]
-   > * W mapowaniu należy uwzględnić wszystkie wybrane właściwości. 
-   > * Kolejność właściwości jest ważna w mapowaniu woluminów CSV. Właściwości systemu muszą być wymienione przed wszystkimi innymi właściwościami i w takiej samej kolejności, w jakiej są wyświetlane na liście rozwijanej **Właściwości systemu zdarzeń** .
+```

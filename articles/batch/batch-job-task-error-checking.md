@@ -5,14 +5,14 @@ services: batch
 author: mscurrell
 ms.service: batch
 ms.topic: article
-ms.date: 12/01/2019
+ms.date: 03/10/2019
 ms.author: markscu
-ms.openlocfilehash: c4e36d76bf85b9715a817dbeb7c690aa77f8d978
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 4ace0de6d252680eb64990277b9478adf752f54d
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74852187"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087016"
 ---
 # <a name="job-and-task-error-checking"></a>Sprawdzanie błędów zadania i zadania
 
@@ -72,6 +72,17 @@ We wszystkich przypadkach następujące właściwości muszą być sprawdzane po
 Należy rozważyć wpływ niepowodzeń zadań na zadanie i wszelkie zależności zadań.  Właściwość [exitConditions](https://docs.microsoft.com/rest/api/batchservice/task/add#exitconditions) może być określona dla zadania w celu skonfigurowania akcji dla zależności i zadania.
 - W przypadku zależności, [DependencyAction](https://docs.microsoft.com/rest/api/batchservice/task/add#dependencyaction) kontroluje, czy zadania zależne od zadania zakończonego niepowodzeniem są blokowane czy uruchamiane.
 - Dla zadania [JobAction](https://docs.microsoft.com/rest/api/batchservice/task/add#jobaction) kontroluje, czy zadanie zakończone niepowodzeniem prowadzi do zadania, które zostało wyłączone, przerwane lub pozostawione bez zmian.
+
+### <a name="task-command-line-failures"></a>Błędy wiersza polecenia zadania
+
+Po uruchomieniu wiersza polecenia zadania, dane wyjściowe są zapisywane do `stderr.txt` i `stdout.txt`. Ponadto aplikacja może zapisywać w plikach dziennika specyficznych dla aplikacji.
+
+Jeśli węzeł puli, na którym zadanie zostało uruchomione nadal istnieje, można uzyskać i wyświetlić pliki dziennika. Na przykład Azure Portal list i może wyświetlać pliki dzienników dla danego zadania lub węzła puli. Wiele interfejsów API umożliwia również wyświetlanie i uzyskiwanie plików zadań, takich jak [pobieranie z zadania](https://docs.microsoft.com/rest/api/batchservice/file/getfromtask).
+
+Ze względu na to, że pule i węzły puli często są trwałe, a węzły są ciągle dodawane i usuwane, zaleca się zachowywanie plików dziennika. [Pliki wyjściowe zadania](https://docs.microsoft.com/azure/batch/batch-task-output-files) są wygodnym sposobem zapisywania plików dziennika w usłudze Azure Storage.
+
+### <a name="output-file-failures"></a>Błędy plików wyjściowych
+W przypadku każdego przekazywania plików Batch zapisuje dwa pliki dziennika do węzła obliczeniowego, `fileuploadout.txt` i `fileuploaderr.txt`. Możesz sprawdzić te pliki dziennika, aby dowiedzieć się więcej na temat konkretnego błędu. W przypadkach, gdy nigdy nie podjęto próby przekazania pliku, na przykład ponieważ nie można uruchomić samego zadania, te pliki dziennika nie będą istnieć.  
 
 ## <a name="next-steps"></a>Następne kroki
 

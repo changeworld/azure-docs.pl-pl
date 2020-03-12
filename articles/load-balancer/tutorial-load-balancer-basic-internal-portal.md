@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: d167a157935c6d51c025d2fbb11586343a2ef3f2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6f62771d707d1aebccbfaf809dee7d0dedf5fefa
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453517"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096117"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>Samouczek: równoważenie obciążenia ruchu wewnętrznego przy użyciu podstawowego modułu równoważenia obciążenia w witrynie Azure Portal
 
@@ -93,13 +93,13 @@ Utwórz podstawowy wewnętrzny moduł równoważenia obciążenia przy użyciu p
     | ---                     | ---                                                |
     | Subskrypcja               | Wybierz subskrypcję.    |    
     | Grupa zasobów         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupLB* w polu tekstowym.|
-    | Nazwa                   | *myLoadBalancer*                                   |
+    | Name (Nazwa)                   | *myLoadBalancer*                                   |
     | Region         | Wybierz pozycję **East US 2** (Wschodnie stany USA 2).                                        |
-    | Typ          | Wybierz pozycję **wewnętrzne**.                                        |
-    | JSZ           | Wybierz pozycję **Podstawowa**.                          |
+    | Typ          | wybierz pozycję **Wewnętrzny**.                                        |
+    | SKU           | Wybierz pozycję **Podstawowa**.                          |
     | Sieć wirtualna           | Wybierz wartość *MojaSiećWirtualna*.                          |    
     | Przypisanie adresu IP              | Wybierz wartość **Statyczny**.   |
-    | Prywatny adres IP|Wpisz adres znajdujący się w przestrzeni adresowej sieci wirtualnej i podsieci, na przykład *10.3.0.7*.  |
+    | Prywatny adres IP|wpisz adres, który znajduje się w przestrzeni adresowej sieci wirtualnej i podsieci, na przykład *10.3.0.7*.  |
 
 3. Na karcie **Przeglądanie + tworzenie** kliknij pozycję **Utwórz**. 
    
@@ -121,10 +121,10 @@ Aby dystrybuować ruch do maszyn wirtualnych, moduł równoważenia obciążenia
 1. Na stronie **Dodawanie puli zaplecza** wpisz lub wybierz następujące wartości:
    
    - **Nazwa**: wpisz *MyBackendPool*.
-   - **Skojarzone z**: rozwiń listę i wybierz pozycję **Zestaw dostępności**.
-   - **Zestaw dostępności**: wybierz pozycję **MyAvailabilitySet**.
+   - **Skojarzone z**: Lista rozwijana i wybierz **maszynę wirtualną**.
    
-1. Wybierz pozycję **Dodaj docelową konfigurację protokołu IP sieci**. 
+   
+1. Wybierz pozycję **maszyna wirtualna**. 
    1. Dodaj maszyny wirtualne **MyVM1** i **MyVM2** do puli zaplecza.
    2. Po dodaniu każdej maszyny otwórz listę rozwijaną i wybierz dla niej pozycję **Konfiguracja adresu IP sieci**. 
    

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/19/2019
-ms.openlocfilehash: b2ec9fd70d1eb64c5968de0312941bfbc98d3033
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 2a5d1178bd6dbd6f7cfdd2ec2af17b78836a38d7
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670529"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096736"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Źródła danych monitorowania dla Azure Monitor
 Azure Monitor jest oparta na [wspólnej platformie danych monitorowania](data-platform.md) , która obejmuje [dzienniki](data-platform-logs.md) i [metryki](data-platform-metrics.md). Zbieranie danych do tej platformy pozwala analizować dane z wielu zasobów wspólnie przy użyciu wspólnego zestawu narzędzi w Azure Monitor. Dane monitorowania mogą być również wysyłane do innych lokalizacji w celu obsługi niektórych scenariuszy, a niektóre zasoby mogą zapisywać w innych lokalizacjach, zanim będą mogły być zbierane w dziennikach lub metrykach.
@@ -72,8 +72,8 @@ Dane telemetryczne związane z kondycją i działaniem subskrypcji platformy Azu
 |:---|:---|
 | Dziennik aktywności | Dziennik aktywności jest zbierany do własnego magazynu danych, który można wyświetlić z menu Azure Monitor lub użyć do tworzenia alertów dziennika aktywności. | [Wykonaj zapytanie dotyczące dziennika aktywności w Azure Portal](activity-log-view.md#azure-portal) |
 | Dzienniki usługi Azure Monitor | Skonfiguruj dzienniki Azure Monitor w celu zebrania dziennika aktywności w celu przeanalizowania go przy użyciu innych danych monitorowania. | [Zbieranie i analizowanie dzienników aktywności platformy Azure w obszarze roboczym Log Analytics w Azure Monitor](activity-log-collect.md) |
-| Azure Storage | Wyeksportuj dziennik aktywności do usługi Azure Storage w celu archiwizacji. | [Archiwizowanie dziennika aktywności](activity-log-export.md#archive-activity-log)  |
-| Event Hubs | Strumieniowe przesyłanie dziennika aktywności do innych lokalizacji przy użyciu Event Hubs | [Przesyłaj strumieniowo dziennik aktywności do centrum zdarzeń](activity-log-export.md#stream-activity-log-to-event-hub). |
+| Azure Storage | Wyeksportuj dziennik aktywności do usługi Azure Storage w celu archiwizacji. | [Archiwizowanie dziennika aktywności](resource-logs-collect-storage.md)  |
+| Event Hubs | Strumieniowe przesyłanie dziennika aktywności do innych lokalizacji przy użyciu Event Hubs | [Przesyłaj strumieniowo dziennik aktywności do centrum zdarzeń](resource-logs-stream-event-hubs.md). |
 
 ### <a name="azure-service-health"></a>Azure Service Health
 [Azure Service Health](../../service-health/service-health-overview.md) zawiera informacje o kondycji usług platformy Azure w ramach subskrypcji, na których zależą Twoje aplikacje i zasoby.

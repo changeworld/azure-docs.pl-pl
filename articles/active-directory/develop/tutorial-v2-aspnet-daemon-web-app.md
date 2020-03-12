@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: ec6664e7c55057c29c5b741203b326ce460c6e91
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 635b12cc2ffc4d318eaaa74fffc17e4ce4d58c0b
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701233"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129951"
 ---
 # <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>Samouczek: Tworzenie demona wielodostępnego, która używa punktu końcowego platformy tożsamości firmy Microsoft
 
@@ -39,7 +39,8 @@ Aplikacja została skompilowana jako aplikacja ASP.NET MVC. Używa ona oprogramo
 
 Składnik "Demon" w tym przykładzie jest kontrolerem interfejsu API, `SyncController.cs`. Gdy kontroler jest wywoływany, pobiera listę użytkowników w dzierżawie Azure Active Directory klienta (Azure AD) z Microsoft Graph. `SyncController.cs` jest wyzwalane przez wywołanie AJAX w aplikacji sieci Web. Używa [biblioteki Microsoft Authentication Library (MSAL) dla platformy .NET](msal-overview.md) , aby uzyskać token dostępu dla Microsoft Graph.
 
-Aby uprościć aplikację demona konsoli, zobacz [prestart demona .NET Core](quickstart-v2-netcore-daemon.md).
+>[!NOTE]
+> Jeśli dopiero zaczynasz pracę z platformą tożsamości firmy Microsoft, zalecamy rozpoczęcie pracy z programem [.NET Core DAEMON — szybki](quickstart-v2-netcore-daemon.md)Start.
 
 ## <a name="scenario"></a>Scenariusz
 
@@ -57,7 +58,7 @@ Aby uruchomić przykład w tym przewodniku Szybki Start, potrzebne są:
 - Dzierżawa usługi Azure AD. Aby uzyskać więcej informacji, zobacz [jak uzyskać dzierżawę usługi Azure AD](quickstart-create-new-tenant.md).
 - Co najmniej jedno konto użytkownika w dzierżawie usługi Azure AD. Ten przykład nie będzie działał z konto Microsoft (dawniej konto usługi Windows Live). Jeśli zalogowano się do [Azure Portal](https://portal.azure.com) za pomocą konto Microsoft i nigdy nie utworzono konta użytkownika w katalogu, należy to zrobić teraz.
 
-## <a name="clone-or-download-this-repository"></a>Klonuj lub pobrać to repozytorium
+## <a name="clone-or-download-this-repository"></a>Klonuj lub Pobierz to repozytorium
 
 W powłoce lub wierszu polecenia wprowadź następujące polecenie:
 
@@ -154,7 +155,7 @@ Wyczyść rozwiązanie, ponownie skompiluj rozwiązanie, uruchom aplikację User
 
 Po zalogowaniu aplikacja najpierw wyświetli monit o podanie uprawnień do zalogowania się i odczytania profilu użytkownika. Dzięki temu aplikacja może mieć pewność, że jesteś użytkownikiem biznesowym.
 
-![Zgoda użytkownika](./media/tutorial-v2-aspnet-daemon-webapp/firstconsent.png)
+![Wyrażanie zgody użytkownika](./media/tutorial-v2-aspnet-daemon-webapp/firstconsent.png)
 
 Następnie aplikacja próbuje zsynchronizować listę użytkowników z dzierżawy usługi Azure AD za pośrednictwem Microsoft Graph. Jeśli nie jest to możliwe, prosi użytkownika (administratora dzierżawy) o połączenie dzierżawy z aplikacją.
 
@@ -215,7 +216,7 @@ Ten projekt zawiera projekty aplikacji sieci Web i interfejsów API sieci Web. W
 
 ### <a name="create-and-publish-dotnet-web-daemon-v2-to-an-azure-website"></a>Tworzenie i publikowanie dotnet-Web-DAEMON-v2 w witrynie sieci Web platformy Azure
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. W lewym górnym rogu wybierz pozycję **Utwórz zasób**.
 1. Wybierz pozycję **web** > **Web App**, a następnie nadaj nazwę witrynie sieci Web. Na przykład nadaj mu nazwę **dotnet-Web-DAEMON-v2-contoso.azurewebsites.NET**.
 1. Wybierz informacje dotyczące **subskrypcji**, **grupy zasobów**i **planu i lokalizacji usługi App Service**. System **operacyjny** to **Windows**i **publikuje** **kod**.
@@ -268,7 +269,7 @@ Aby uzyskać więcej informacji, zobacz następującą dokumentację koncepcyjn�
 - [Opis środowisk zgody dla aplikacji usługi Azure AD](application-consent-experience.md)
 - [Zaloguj dowolnego użytkownika Azure Active Directory przy użyciu wzorca aplikacji wielodostępnej](howto-convert-app-to-be-multi-tenant.md)
 - [Zrozumienie zgody użytkownika i administratora](howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent)
-- [Obiekty aplikacji i jednostki usługi w usłudze Azure Active Directory](app-objects-and-service-principals.md)
+- [Obiekty główne aplikacji i usług w Azure Active Directory](app-objects-and-service-principals.md)
 - [Szybki Start: rejestrowanie aplikacji na platformie tożsamości firmy Microsoft](quickstart-register-app.md)
 - [Szybki Start: Konfigurowanie aplikacji klienckiej w celu uzyskiwania dostępu do interfejsów API sieci Web](quickstart-configure-app-access-web-apis.md)
 - [Uzyskiwanie tokenu dla aplikacji za pomocą przepływów poświadczeń klienta](msal-client-applications.md)

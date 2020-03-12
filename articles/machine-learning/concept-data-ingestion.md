@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
-ms.openlocfilehash: 71a02e47db288890d1392f5423da0ef817ecd690
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 6b1c671d2079c7d8ab59e9afe981ccef3f58ef27
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303124"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086890"
 ---
 # <a name="data-ingestion-in-azure-machine-learning"></a>Pozyskiwanie danych w Azure Machine Learning
 
@@ -26,7 +26,7 @@ W tym artykule poznasz zalety i wady następujących opcji pozyskiwania danych d
 
 Pozyskiwanie danych to proces, w którym dane bez struktury są wyodrębniane z jednego lub wielu źródeł, a następnie przygotowane do szkolenia modeli uczenia maszynowego. Jest to również czasochłonne, szczególnie jeśli jest wykonywane ręcznie, i jeśli masz duże ilości danych z wielu źródeł. Automatyzacja tego wysiłku powoduje zwolnienie zasobów i gwarantuje, że modele korzystają z najnowszych i odpowiednich danych.
 
-Zalecane jest, aby najpierw oszacować przy użyciu Azure Data Factory (ADF), ponieważ jest on przeznaczony specjalnie do wyodrębniania, ładowania i przekształcania danych. Jeśli nie możesz spełnić wymagań przy użyciu podajnika APD, możesz użyć zestawu SDK języka Python do opracowania niestandardowego rozwiązania kodu lub użyć funkcji ADF i zestawu SDK języka Python, aby utworzyć ogólny przepływ pracy pozyskiwania danych, który spełnia Twoje potrzeby.
+Azure Data Factory (ADF) jest specjalnie skonstruowany do wyodrębniania, ładowania i przekształcania danych, ale zestaw SDK języka Python umożliwia tworzenie niestandardowych rozwiązań kodu dla podstawowych zadań pozyskiwania danych. Jeśli żaden z nich nie jest w żaden sposób, możesz również użyć ADF i zestawu SDK języka Python, aby utworzyć ogólny przepływ pracy pozyskiwania danych, który spełnia Twoje potrzeby. 
 
 ## <a name="use-azure-data-factory"></a>Za pomocą usługi Azure Data Factory
 
@@ -52,6 +52,8 @@ Te kroki i Poniższy diagram ilustrują przepływ pracy pozyskiwania danych Azur
 
 
     ![Pozyskiwanie danych ADF](media/concept-data-ingestion/data-ingest-option-one.svg)
+    
+Dowiedz się, jak utworzyć potok pozyskiwania danych dla Machine Learning z [Azure Data Factory](how-to-data-ingest-adf.md).
 
 ## <a name="use-the-python-sdk"></a>Korzystanie z zestawu SDK języka Python 
 

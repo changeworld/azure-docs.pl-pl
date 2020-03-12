@@ -1,23 +1,18 @@
 ---
-title: Wdrażanie dedykowanych hostów platformy Azure przy użyciu Azure Portal
-description: Wdróż maszyny wirtualne na dedykowanych hostach przy użyciu Azure Portal.
-services: virtual-machines-windows
+title: Wdrażanie dedykowanych hostów platformy Azure przy użyciu portalu
+description: Wdrażaj maszyny wirtualne na dedykowanych hostach przy użyciu portalu.
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 07/26/2019
+ms.date: 03/10/2020
 ms.author: cynthn
-ms.openlocfilehash: aa19c343e003bf1cd55e3d12b18e595113a7189e
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: b6f5e155b76535c4d9e0080983d5f54cec3adb01
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833943"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086934"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-portal"></a>Wdrażanie maszyn wirtualnych na dedykowanych hostach przy użyciu portalu
 
@@ -40,6 +35,25 @@ W tym artykule opisano sposób tworzenia [dedykowanego hosta](dedicated-hosts.md
 1. Pozostaw pozostałe wartości domyślne, a następnie wybierz przycisk **Przejrzyj + utwórz** znajdujący się u dołu strony.
 1. Gdy zobaczysz komunikat, że Walidacja zakończyła się pomyślnie, wybierz pozycję **Utwórz**.
 
+## <a name="add-an-existing-vm"></a>Dodawanie istniejącej maszyny wirtualnej 
+
+Możesz dodać maszynę wirtualną z wykończeniami do dedykowanego hosta, ale najpierw należy Stop\Deallocated. maszynę wirtualną Przed przeniesieniem maszyny wirtualnej do dedykowanego hosta upewnij się, że konfiguracja maszyny wirtualnej jest obsługiwana:
+
+- Rozmiar maszyny wirtualnej musi znajdować się w tej samej rodzinie rozmiarów co dedykowany host. Na przykład jeśli dedykowany host to DSv3, rozmiar maszyny wirtualnej może być Standard_D4s_v3, ale nie Standard_A4_v2. 
+- Maszyna wirtualna musi znajdować się w tym samym regionie co dedykowany host.
+- Maszyna wirtualna nie może być częścią grupy umieszczania sąsiedztwa. Usuń maszynę wirtualną z grupy położenia zbliżeniowe przed przeniesieniem jej do dedykowanego hosta. Aby uzyskać więcej informacji, zobacz [Przenoszenie maszyny wirtualnej z grupy umieszczania sąsiedztwa](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#move-an-existing-vm-out-of-a-proximity-placement-group)
+- Maszyna wirtualna nie może znajdować się w zestawie dostępności.
+- Jeśli maszyna wirtualna znajduje się w strefie dostępności, musi to być ta sama strefa dostępności co grupa hostów. Ustawienia strefy dostępności dla maszyny wirtualnej i grupy hostów muszą być zgodne.
+
+Przenieś maszynę wirtualną na dedykowanego hosta przy użyciu [portalu](https://portal.azure.com).
+
+1. Otwórz stronę dla maszyny wirtualnej.
+1. Wybierz pozycję **Zatrzymaj** , aby stop\deallocate maszynę wirtualną.
+1. Z menu po lewej stronie wybierz pozycję **Konfiguracja** .
+1. Wybierz grupę hostów i hosta z menu rozwijanego.
+1. Gdy skończysz, wybierz pozycję **Zapisz** w górnej części strony.
+1. Po dodaniu maszyny wirtualnej do hosta z menu po lewej stronie wybierz pozycję **Przegląd** .
+1. W górnej części strony wybierz pozycję **Rozpocznij** , aby ponownie uruchomić maszynę wirtualną.
 
 ## <a name="next-steps"></a>Następne kroki
 

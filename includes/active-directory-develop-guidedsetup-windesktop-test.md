@@ -14,48 +14,48 @@ ms.workload: identity
 ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: a11b291ab89dc9f8159e00e1f2304706f041068e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: f121be4ec8c3d3ab618e2955d9dbd8ab5eea461d
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183409"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128805"
 ---
 ## <a name="test-your-code"></a>testowanie kodu
 
-Aby uruchomić projekt, w programie Visual Studio, wybierz **F5**. Aplikacja **MainWindow** jest wyświetlana, jak pokazano poniżej:
+Aby uruchomić projekt, w programie Visual Studio wybierz **F5**. Zostanie wyświetlona **MainWindow** aplikacji, jak pokazano poniżej:
 
 ![Testowanie aplikacji](./media/active-directory-develop-guidedsetup-windesktop-test/samplescreenshot.png)
 
-Przy pierwszym uruchomieniu aplikacji i wybierz **wywołania interfejsu API Microsoft Graph** przycisku, zostanie wyświetlony monit do logowania. Użyj konta usługi Azure Active Directory (konto służbowe) lub konta Microsoft (live.com, outlook.com), aby ją przetestować.
+Przy pierwszym uruchomieniu aplikacji i wybraniu przycisku **Microsoft Graph API wywołania** zostanie wyświetlony monit o zalogowanie się. Użyj konta Azure Active Directory (konto służbowe) lub konto Microsoft (live.com, outlook.com), aby je przetestować.
 
 ![Logowanie się do aplikacji](./media/active-directory-develop-guidedsetup-windesktop-test/signinscreenshot.png)
 
-### <a name="provide-consent-for-application-access"></a>Podanie zgody na dostęp do aplikacji
+### <a name="provide-consent-for-application-access"></a>Wyrażanie zgody na dostęp do aplikacji
 
-Przy pierwszym logowaniu do aplikacji, zostanie również wyświetlony monit zapewnienie zgody, aby umożliwić aplikacji dostęp do Twojego profilu i logowanie się w programie, jak pokazano poniżej:
+Przy pierwszym zalogowaniu się do aplikacji zostanie również wyświetlony monit o wyrażenie zgody na uzyskanie dostępu do Twojego profilu przez aplikację i zalogowanie się, jak pokazano poniżej:
 
-![Wyrażenie zgody na dostęp do aplikacji](./media/active-directory-develop-guidedsetup-windesktop-test/consentscreen.png)
+![Wyrażanie zgody na dostęp do aplikacji](./media/active-directory-develop-guidedsetup-windesktop-test/consentscreen.png)
 
-### <a name="view-application-results"></a>Wyświetl wyniki aplikacji
+### <a name="view-application-results"></a>Wyświetlanie wyników aplikacji
 
-Po zalogowaniu, powinny być widoczne informacje o profilu użytkownika, który jest zwracany przez wywołanie interfejsu API programu Microsoft Graph. Wyniki są wyświetlane w **wyników wywołań interfejsu API** pole. Podstawowe informacje o token, który został uzyskany za pośrednictwem wywołania `AcquireTokenInteractive` lub `AcquireTokenSilent` powinny być widoczne w **informacje o tokenie** pole. Wyniki obejmują następujące właściwości:
+Po zalogowaniu powinna zostać wyświetlona informacja o profilu użytkownika, która jest zwracana przez wywołanie do interfejsu API Microsoft Graph. Wyniki są wyświetlane w polu **wyniki wywołania interfejsu API** . Podstawowe informacje o tokenie uzyskanym za pośrednictwem wywołania do `AcquireTokenInteractive` lub `AcquireTokenSilent` powinny być widoczne w polu **Informacje o tokenie** . Wyniki zawierają następujące właściwości:
 
 |Właściwość  |Format  |Opis |
 |---------|---------|---------|
-
-|**Nazwa użytkownika**  | <span> user@domain.com </span> | Nazwa użytkownika, który służy do identyfikowania użytkownika. | | **Wygaśnięcia ważności tokenu** | Data i godzina | Czas, w którym token jest ważny. Biblioteka MSAL rozszerza datę wygaśnięcia, odnawianie tokenu zgodnie z potrzebami. |
+|**Nazwa użytkownika** |<span>user@domain.com</span> |Nazwa użytkownika służąca do identyfikowania użytkownika.|
+|**Token wygasa** |DateTime |Godzina wygaśnięcia tokenu. MSAL rozszerza datę wygaśnięcia przez odnowienie tokenu w razie potrzeby.|
 
 
 <!--start-collapse-->
-### <a name="more-information-about-scopes-and-delegated-permissions"></a>Więcej informacji o zakresach i delegowane uprawnienia
+### <a name="more-information-about-scopes-and-delegated-permissions"></a>Więcej informacji na temat zakresów i uprawnień delegowanych
 
-Interfejsu API programu Microsoft Graph wymaga *user.read* zakresu na odczytywanie profilu użytkownika. Ten zakres jest automatycznie dodawany domyślnie każda aplikacja, która jest zarejestrowana w portalu rejestracji aplikacji. Inne interfejsy API dla programu Microsoft Graph, a także niestandardowych interfejsów API dla serwera zaplecza, może być wymagane dodatkowe zakresy. Interfejsu API programu Microsoft Graph wymaga *Calendars.Read* zakres, aby wyświetlić listę kalendarzy użytkownika.
+Interfejs API Microsoft Graph wymaga, aby *użytkownik. Read* miał zakres do odczytu profilu użytkownika. Ten zakres jest automatycznie dodawany domyślnie w każdej aplikacji, która jest zarejestrowana w portalu rejestracji aplikacji. Inne interfejsy API dla Microsoft Graph, a także niestandardowe interfejsy API dla serwera zaplecza mogą wymagać dodatkowych zakresów. Interfejs API Microsoft Graph wymaga zakresu *Calendars. Read* , aby wyświetlić kalendarze użytkownika.
 
-Aby uzyskać dostęp do kalendarzy użytkownika w kontekście aplikacji, należy dodać *Calendars.Read* delegowane uprawnienia do rejestrowania informacji o aplikacji. Następnie należy dodać *Calendars.Read* ograniczyć zakres do `acquireTokenSilent` wywołania.
+Aby uzyskać dostęp do kalendarzy użytkownika w kontekście aplikacji, Dodaj *kalendarze. Odczytaj* delegowane uprawnienia do informacji rejestracyjnych aplikacji. Następnie Dodaj zakres *Calendars. Read* do wywołania `acquireTokenSilent`.
 
 >[!NOTE]
->Użytkownik może być monitowany o dodatkowe zgody, jak zwiększyć liczbę zakresów.
+>Użytkownik może zostać poproszony o dodatkowe przesłanie w miarę zwiększania liczby zakresów.
 
 <!--end-collapse-->
 

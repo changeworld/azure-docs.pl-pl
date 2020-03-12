@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/05/2019
-ms.openlocfilehash: 24ecf90c2ffc88415afbf84f54af3efa7d5f4a39
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/10/2020
+ms.openlocfilehash: a72753d5553e79a8ed28c3afcc7e54af6c2d230c
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435433"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117237"
 ---
 # <a name="network-security-group-nsg-service-tags-for-azure-hdinsight"></a>Tagi usług sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń) dla usługi Azure HDInsight
 
@@ -40,7 +40,7 @@ Najprostszym sposobem rozpoczęcia korzystania z tagów usług w klastrze usług
 
 1. Z listy rozwijanej **tag usługi źródłowej** wybierz pozycję **HDInsight**.
 
-    ![Azure Portal Dodaj tag usługi](./media/hdinisght-service-tags/azure-portal-add-service-tag.png)
+    ![Azure Portal Dodaj tag usługi](./media/hdinsight-service-tags/azure-portal-add-service-tag.png)
 
 Ten tag zawiera adresy IP usług kondycji i zarządzania dla wszystkich regionów, w których Usługa HDInsight jest dostępna, i zapewnia, że klaster będzie mógł komunikować się z niezbędnymi usługami kondycji i zarządzania niezależnie od miejsca, w którym została utworzona.
 
@@ -66,16 +66,17 @@ Jeśli wolisz używać opcji tagów usługi dwa, a klaster znajduje się w jedny
 | &nbsp; | Zachodnio-środkowe stany USA | HDInsight. WestCentralUS |
 | Kanada | Kanada Wschodnia | HDInsight. CanadaEast |
 | Brazylia | Brazylia Południowa | HDInsight. BrazilSouth |
-| Korea Południowa | Korea Środkowa | HDInsight. KoreaCentral |
+| Korea | Korea Środkowa | HDInsight. KoreaCentral |
 | &nbsp; | Korea Południowa | HDInsight. KoreaSouth |
 | Indie | Indie Środkowe | HDInsight. CentralIndia |
 | &nbsp; | Indie Południowe | HDInsight. SouthIndia |
 | Japonia | Japonia Zachodnia | HDInsight. JapanWest |
 | Francja | Francja Środkowa| HDInsight. FranceCentral |
 | Zjednoczone Królestwo | Południowe Zjednoczone Królestwo | HDInsight. UKSouth |
-| Platforma Azure dla instytucji rządowych | USDoD środkowe   | HDInsight. USDoDCentral |
+| Azure Government | USDoD środkowe   | HDInsight. USDoDCentral |
 | &nbsp; | USGov Texas | HDInsight. USGovTexas |
 | &nbsp; | UsDoD wschód | HDInsight. USDoDEast |
+| &nbsp; | USGov Arizona | HDInsight. USGovArizona |
 
 ### <a name="use-multiple-regional-service-tags"></a>Używanie wielu tagów usługi regionalnej
 

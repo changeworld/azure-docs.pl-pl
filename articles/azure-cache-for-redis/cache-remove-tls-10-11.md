@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 77f526470204204ef2a801575bb4e8d7e364ffed
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 6130c934f9a718baab840dae714222e4153bfcf6
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260160"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126341"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>Usuń protokoły TLS 1,0 i 1,1 z używania z usługą Azure cache for Redis
 
@@ -19,7 +19,7 @@ Na wyłączne korzystanie z Transport Layer Security (TLS) w wersji 1,2 lub nows
 
 W ramach tego wysiłku wprowadzamy następujące zmiany w usłudze Azure cache dla Redis:
 
-* **Faza 1:** Skonfigurujemy domyślną minimalną wersję protokołu TLS do 1,2 dla nowo utworzonych wystąpień pamięci podręcznej.  Istniejące wystąpienia pamięci podręcznej nie zostaną zaktualizowane w tym momencie.  W razie potrzeby będziesz mieć możliwość [zmiany minimalnej wersji protokołu TLS](cache-configure.md#access-ports) z powrotem do 1,0 lub 1,1 w celu zapewnienia zgodności z poprzednimi wersjami.  Tę zmianę można wykonać za pomocą Azure Portal lub innych interfejsów API zarządzania.
+* **Faza 1:** Skonfigurujemy domyślną minimalną wersję protokołu TLS do 1,2 dla nowo utworzonych wystąpień pamięci podręcznej. (Używany do protokołu TLS 1,0). Istniejące wystąpienia pamięci podręcznej nie zostaną zaktualizowane w tym momencie. W razie potrzeby będziesz mieć możliwość [zmiany minimalnej wersji protokołu TLS](cache-configure.md#access-ports) z powrotem do 1,0 lub 1,1 w celu zapewnienia zgodności z poprzednimi wersjami. Tę zmianę można wykonać za pomocą Azure Portal lub innych interfejsów API zarządzania.
 * **Faza 2:** Zatrzymamy obsługę protokołu TLS w wersji 1,0 i 1,1. Po tej zmianie aplikacja będzie musiała korzystać z protokołu TLS 1,2 lub nowszego do komunikowania się z pamięcią podręczną.
 
 Ponadto w ramach tej zmiany zostanie usunięta pomoc techniczna dla starszych, niezabezpieczonych pakietów szyfr.  Nasze obsługiwane pakiety szyfr zostaną ograniczone do następujących, gdy pamięć podręczna zostanie skonfigurowana z minimalną wersją protokołu TLS 1,2.
@@ -31,12 +31,12 @@ Ten artykuł zawiera ogólne wskazówki dotyczące wykrywania zależności od wc
 
 Daty wprowadzenia tych zmian są następujące:
 
-| Chmura               | Data rozpoczęcia fazy 1 | Data rozpoczęcia fazy 2 |
+| Chmurowa               | Data rozpoczęcia fazy 1 | Data rozpoczęcia fazy 2 |
 |---------------------|--------------------|--------------------|
 | Azure (globalny)      |  13 stycznia 2020  | 31 marca 2020     |
-| Platforma Azure dla instytucji rządowych    |  13 marca 2020    | 11 maja 2020       |
+| Azure Government    |  13 marca 2020    | 11 maja 2020       |
 | Azure (Niemcy)       |  13 marca 2020    | 11 maja 2020       |
-| Azure (Chiny)         |  13 marca 2020    | 11 maja 2020       |
+| Azure China         |  13 marca 2020    | 11 maja 2020       |
 
 ## <a name="check-whether-your-application-is-already-compliant"></a>Sprawdź, czy aplikacja jest już zgodna
 
@@ -87,21 +87,27 @@ Węzeł Redis i IORedis domyślnie używają protokołu TLS 1,2.
 
 ### <a name="php"></a>PHP
 
-Predis w języku PHP 7 nie będzie działał, ponieważ PHP 7 obsługuje tylko protokół TLS 1,0. W przypadku środowiska PHP w wersji 7.2.1 lub starszej Predis domyślnie używa protokołu TLS 1,0 lub 1,1. Podczas tworzenia wystąpienia klienta można określić protokół TLS 1,2:
+#### <a name="predis"></a>Predis
+ 
+* Wersje wcześniejsze niż PHP 7: Predis obsługują tylko protokół TLS 1,0. Te wersje nie współpracują z protokołem TLS 1,2; należy przeprowadzić uaktualnienie, aby użyć protokołu TLS 1,2.
+ 
+* PHP 7,0 do PHP 7.2.1: Predis domyślnie używa tylko protokołu TLS 1,0 lub 1,1. Aby użyć protokołu TLS 1,2, można użyć następującego obejścia. Podczas tworzenia wystąpienia klienta należy określić protokół TLS 1,2:
 
-``` PHP
-$redis=newPredis\Client([
-    'scheme'=>'tls',
-    'host'=>'host',
-    'port'=>6380,
-    'password'=>'password',
-    'ssl'=>[
-        'crypto_type'=>STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT,
-    ],
-]);
-```
+  ``` PHP
+  $redis=newPredis\Client([
+      'scheme'=>'tls',
+      'host'=>'host',
+      'port'=>6380,
+      'password'=>'password',
+      'ssl'=>[
+          'crypto_type'=>STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT,
+      ],
+  ]);
+  ```
 
-W przypadku języka PHP 7,3 lub nowszego Predis używa najnowszej wersji protokołu TLS.
+* PHP 7,3 i nowsze wersje: Predis używa najnowszej wersji protokołu TLS.
+
+#### <a name="phpredis"></a>PhpRedis
 
 PhpRedis nie obsługuje protokołu TLS w żadnej wersji języka PHP.
 

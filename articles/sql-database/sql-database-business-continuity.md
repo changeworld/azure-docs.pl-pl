@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 5a6a96f478c4402a830cc522657f56cfd11fa56f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4f30bf112175742566c2957d78154e5a7abd1733
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821824"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096868"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Omówienie zagadnień dotyczących ciągłości działalności biznesowej zapewnianej przez usługę Azure SQL Database
 
@@ -63,13 +63,13 @@ Jeśli maksymalny obsługiwany okres przechowywania kopii zapasowej dla operacji
 
 |                                              | Replikacja geograficzna | Grupy trybu failover  |
 |:---------------------------------------------| :-------------- | :----------------|
-| Automatyczna praca awaryjna                           |     Nie          |      Tak         |
-| Równoczesne przełączanie wielu baz danych  |     Nie          |      Tak         |
-| Zaktualizuj parametry połączenia po przejściu w tryb failover      |     Tak         |      Nie          |
-| Obsługiwane wystąpienie zarządzane                   |     Nie          |      Tak         |
-| Może znajdować się w tym samym regionie co podstawowa             |     Tak         |      Nie          |
-| Wiele replik                            |     Tak         |      Nie          |
-| Obsługuje skalę odczytu                          |     Tak         |      Tak         |
+| Automatyczna praca awaryjna                           |     Nie          |      Yes         |
+| Równoczesne przełączanie wielu baz danych  |     Nie          |      Yes         |
+| Użytkownik musi zaktualizować parametry połączenia po przejściu w tryb failover      |     Yes         |      Nie          |
+| Obsługiwane wystąpienie zarządzane                   |     Nie          |      Yes         |
+| Może znajdować się w tym samym regionie co podstawowa             |     Yes         |      Nie          |
+| Wiele replik                            |     Yes         |      Nie          |
+| Obsługuje skalę odczytu                          |     Yes         |      Yes         |
 | &nbsp; | &nbsp; | &nbsp; |
 
 
@@ -85,7 +85,7 @@ Podczas opracowywania planu zapewniania ciągłości działalności biznesowej n
 
 Różne metody odzyskiwania oferują różne poziomy RPO i RTO. Można wybrać określoną metodę odzyskiwania lub użyć kombinacji metod w celu zapewnienia pełnego odzyskiwania aplikacji. Poniższa tabela zawiera porównanie celu punktu odzyskiwania i RTO każdej opcji odzyskiwania. Grupy autotrybu failover upraszczają wdrażanie i użycie replikacji geograficznej oraz dodaje dodatkowe możliwości zgodnie z opisem w poniższej tabeli.
 
-| Metoda odzyskiwania | RTO | ODZYSKIWANIA |
+| Metoda odzyskiwania | RTO | RPO |
 | --- | --- | --- | 
 | Przywracanie geograficzne z kopii zapasowych replikowanych geograficznie | 12 h | 1 h |
 | Grupy automatycznego trybu failover | 1 h | 5 s |

@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/14/2020
-ms.openlocfilehash: 14b04f7d6068863c79c7060d29b58232be1f40cb
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 03/10/2020
+ms.openlocfilehash: 8f22b1ff97826dc318794aca58973b1276e74209
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201802"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087855"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Poziom zgodności dla zadań usługi Azure Stream Analytics
 
@@ -25,11 +25,9 @@ Poziom zgodności steruje zachowaniem czasu wykonywania zadania usługi stream a
 
 Azure Stream Analytics obecnie obsługuje trzy poziomy zgodności:
 
-* 1,0 — poprzednie zachowanie
-* 1,1 — zachowanie domyślne
+* 1,0 — oryginalny poziom zgodności wprowadzony podczas ogólnej dostępności Azure Stream Analytics kilku lat temu.
+* 1,1 — poprzednie zachowanie
 * 1,2 — najnowsze zachowanie z najnowszymi ulepszeniami
-
-Oryginalny poziom zgodności 1,0 został wprowadzony podczas ogólnej dostępności Azure Stream Analytics kilku lat temu.
 
 Gdy tworzysz nowe zadanie Stream Analytics, najlepszym rozwiązaniem jest utworzenie go przy użyciu najnowszego poziomu zgodności. Rozpocznij projektowanie zadań, opierając się na najnowszych zachowaniach, aby uniknąć późniejszej zmiany i złożoności.
 

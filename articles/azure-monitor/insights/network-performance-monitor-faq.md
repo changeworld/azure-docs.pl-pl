@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 0ef50dfd4d9c6eb0066e54b76167b9934fbb9cf0
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 443e4b44633e949dd9bd55df1ec7d18ca93d6e04
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654437"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096225"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Rozwiązanie Network Performance Monitor — często zadawane pytania
 
@@ -183,7 +183,7 @@ Przeskok może nie reagować na traceroute w co najmniej jednym z poniższych sc
 * Urządzenia sieciowe nie zezwalają na ruch ICMP_TTL_EXCEEDED.
 * Zapora blokuje ICMP_TTL_EXCEEDED odpowiedzi z urządzenia sieciowego.
 
-Gdy jeden z punktów końcowych bazuje na platformie Azure, traceroute pokazuje niezidentyfikowane przeskoki, ponieważ usługa Azure ndrastructure nie ujawnia tożsamości do traceroute. 
+Gdy jeden z punktów końcowych znajduje się na platformie Azure, traceroute pokazuje niezidentyfikowane przeskoki, ponieważ infrastruktura platformy Azure nie ujawnia tożsamości do traceroute. 
 
 ### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy"></a>Otrzymuję alerty dotyczące testów w złej kondycji, ale nie widzę wysokich wartości w grafie strat i opóźnień NPM. Jak mogę sprawdzić, co jest w złej kondycji?
 NPM zgłasza alert, jeśli opóźnienie końca między źródłem a miejscem docelowym przekracza próg dla każdej ścieżki między nimi. Niektóre sieci mają wiele ścieżek łączących te same źródła i miejsce docelowe. NPM wywołuje alert, każda ścieżka jest w złej kondycji. Utrata i opóźnienie widoczne na wykresach to średnia wartość dla wszystkich ścieżek, dlatego nie może być pokazywana dokładna wartość pojedynczej ścieżki. Aby zrozumieć, gdzie próg został naruszony, poszukaj kolumny "podtyp" w alercie. Jeśli problem jest spowodowany przez ścieżkę, wartość podtypu będzie wartość networkpath ((dla testów monitora wydajności), EndpointPath (dla testów monitora łączności usług) i ExpressRoutePath (dla testów monitora ExpressRotue). 

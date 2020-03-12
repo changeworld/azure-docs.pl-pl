@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 03/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5386cace7191be60534f0d2fbf4a85b592d1ecdd
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 762f62fa0901672c447da42f416e5b003e7419b2
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151622"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127298"
 ---
 # <a name="about-p2s-vpn-client-profiles"></a>Informacje o profilach klienta sieci VPN P2S
 
@@ -60,7 +60,7 @@ Po dodaniu połączenia użyj informacji zebranych w poprzednim kroku dla strony
 
 ## <a name="folder-contents"></a>Zawartość folderu
 
-* **Folder OpenVPN** zawiera profil *OVPN* , który należy zmodyfikować w taki sposób, aby zawierał klucz i certyfikat. Aby uzyskać więcej informacji, zobacz [Konfigurowanie klientów OpenVPN dla platformy Azure VPN Gateway](vpn-gateway-howto-openvpn-clients.md#windows).
+* **Folder OpenVPN** zawiera profil *OVPN* , który należy zmodyfikować w taki sposób, aby zawierał klucz i certyfikat. Aby uzyskać więcej informacji, zobacz [Konfigurowanie klientów OpenVPN dla platformy Azure VPN Gateway](vpn-gateway-howto-openvpn-clients.md#windows). Jeśli na bramie sieci VPN wybrano uwierzytelnianie usługi Azure AD, ten folder nie będzie obecny w pliku zip. Zamiast tego azurevpnconfig. XML będzie znajdować się w folderze AzureVPN.
 
 * **Folder ogólny** zawiera publiczny certyfikat serwera i plik VpnSettings. XML. Plik VpnSettings. xml zawiera informacje, które są konieczne do skonfigurowania klienta ogólnego.
 

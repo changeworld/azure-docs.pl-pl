@@ -10,17 +10,17 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 08/29/2019
+ms.date: 03/09/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: ce32343faefbcf2484ec0b1b39f752654a2d8514
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 9b04941a5799955097fbd54ad9bdf50eccb87541
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303617"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087902"
 ---
-# <a name="assets-in-azure-media-services"></a>Zasoby w Azure Media Services
+# <a name="assets-in-azure-media-services-v3"></a>Zasoby w Azure Media Services v3
 
 W Azure Media Services, element [zawartości](https://docs.microsoft.com/rest/api/media/assets) jest podstawową koncepcją. Jest to miejsce, w którym można wprowadzać multimedia (na przykład za pośrednictwem przekazywania lub pozyskiwania na żywo), nośniki wyjściowe (z danych wyjściowych zadania) i publikować multimedia z (na potrzeby przesyłania strumieniowego). 
 
@@ -39,37 +39,6 @@ Nazwy zasobów muszą być unikatowe. Nazwy zasobów Media Services v3 (na przyk
 ### <a name="blobs"></a>Obiekty blob
 
 Nazwy plików/obiektów BLOB w obrębie elementu zawartości muszą spełniać zarówno [wymagania dotyczące nazw obiektów BLOB](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) , jak i [wymagania dotyczące nazw NTFS](https://docs.microsoft.com/windows/win32/fileio/naming-a-file). Przyczyną tych wymagań jest możliwość skopiowania plików z magazynu obiektów BLOB do lokalnego dysku NTFS w celu przetworzenia.
-
-## <a name="map-v3-asset-properties-to-v2"></a>Mapuj właściwości zasobu v3 do wersji 2
-
-W poniższej tabeli przedstawiono sposób, w jaki właściwości [zasobu](https://docs.microsoft.com/rest/api/media/assets/createorupdate#asset)w wersji v3 mapują się na właściwości zasobu w 2.
-
-|Właściwości v3|Właściwości v2|
-|---|---|
-|`id` — (unikatowy) pełna ścieżka Azure Resource Manager, zobacz przykłady w elemencie [zawartości](https://docs.microsoft.com/rest/api/media/assets/createorupdate)||
-|`name` — (unikatowy) zobacz [konwencje nazewnictwa](media-services-apis-overview.md#naming-conventions) ||
-|`alternateId`|`AlternateId`|
-|`assetId`|wartość `Id`-(Unique) rozpoczyna się od prefiksu `nb:cid:UUID:`.|
-|`created`|`Created`|
-|`description`|`Name`|
-|`lastModified`|`LastModified`|
-|`storageAccountName`|`StorageAccountName`|
-|`storageEncryptionFormat`| `Options` (opcje tworzenia)|
-|`type`||
-
-## <a name="storage-side-encryption"></a>Szyfrowanie po stronie magazynu
-
-Aby chronić Twoje zasoby w spoczynku, zasoby mają zostać zaszyfrowane za pomocą szyfrowania po stronie magazynu. W poniższej tabeli przedstawiono, jak działa szyfrowanie po stronie magazynu w usłudze Media Services:
-
-|Opcja szyfrowania|Opis|Media Services v2|Media Services v3|
-|---|---|---|---|
-|Szyfrowanie magazynu usługi Media Services|Szyfrowanie AES-256, klucz zarządzany przez Media Services.|Obsługiwane<sup>(1)</sup>|Nieobsługiwane<sup>(2)</sup>|
-|[szyfrowanie usługi Storage danych magazynowanych](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Szyfrowanie po stronie serwera oferowane przez usługę Azure Storage, klucz zarządzany przez platformę Azure lub przez klienta.|Obsługiwane|Obsługiwane|
-|[Szyfrowanie po stronie klienta magazynu](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Szyfrowanie po stronie klienta oferowane przez usługę Azure Storage, klucz zarządzany przez klienta w Key Vault.|Nieobsługiwane|Nieobsługiwane|
-
-<sup>1</sup> , gdy Media Services obsługuje obsługę zawartości w trybie Wyczyść/bez żadnej formy szyfrowania, nie jest to zalecane.
-
-<sup>2</sup> w Media Services v3, szyfrowanie magazynu (szyfrowanie AES-256) jest obsługiwane tylko w przypadku zgodności z poprzednimi wersjami, gdy zasoby zostały utworzone przy użyciu Media Services V2. Oznacza to, że wersja v3 współpracuje z istniejącymi zasobami zaszyfrowanymi magazynu, ale nie umożliwia tworzenia nowych.
 
 ## <a name="next-steps"></a>Następne kroki
 

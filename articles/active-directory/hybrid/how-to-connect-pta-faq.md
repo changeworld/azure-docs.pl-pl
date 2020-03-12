@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/15/2019
+ms.date: 03/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cfa5e2117b2d6fce525e66b25ec44f696d7d450
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: dd923a47c49bfa7a6ab16e822a80c8e7f4f9a3e0
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484421"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096059"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory uwierzytelnianie przekazywane: często zadawane pytania
 
@@ -44,7 +44,7 @@ Nie. Uwierzytelnianie przekazywane jest dostępne tylko w świecie wystąpienia 
 Tak. Wszystkie możliwości dostępu warunkowego, w tym Azure Multi-Factor Authentication, działają z uwierzytelnianiem przekazującym.
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>Czy uwierzytelnianie przekazywane obsługuje "alternatywny identyfikator" jako nazwę użytkownika, a nie "userPrincipalName"?
-W ograniczonym zakresie uwierzytelnianie przekazywane obsługuje alternatywny identyfikator jako nazwę użytkownika w przypadku skonfigurowania w Azure AD Connect. Jako wymaganie wstępne Azure AD Connect musi synchronizować lokalny atrybut Active Directory `UserPrincipalName` z usługą Azure AD. Dzięki temu `UserPrincipalName` lokalnej usługi AD i usługi Azure AD staną się takie same. Jeśli chcesz użyć innego atrybutu do synchronizowania z lokalnej usługi AD jako nazwy UPN z usługą Azure AD, musisz użyć dowolnej synchronizacji skrótów haseł lub AD FS. Aby uzyskać więcej informacji, zobacz [Instalacja Niestandardowa Azure AD Connect](how-to-connect-install-custom.md). Nie wszystkie aplikacje pakietu Office 365 obsługują `Alternate ID`. Zapoznaj się z instrukcją obsługi dokumentacji konkretnej aplikacji.
+Zaloguj się przy użyciu wartości innej niż UPN, takiej jak alternatywny adres e-mail, jest obecnie testowany w prywatnej wersji zapoznawczej dla uwierzytelniania przekazywanego (PTA) i synchronizacji skrótów haseł (PHS).
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>Czy synchronizacja skrótów haseł działa jako rezerwowa do uwierzytelniania przekazywanego?
 

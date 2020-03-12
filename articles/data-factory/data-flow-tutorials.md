@@ -6,12 +6,12 @@ ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 03/04/2020
-ms.openlocfilehash: e87e5ec14f4475218cff4338a37d6bd6fb7fbb3a
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: bb996b0abc16a3d6171c8f7ab2ac0e64dd0c1075
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78403044"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096802"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>Samouczki wideo dotyczące przepływów mapowania danych
 
@@ -72,6 +72,8 @@ Gdy aktualizacje są stale wprowadzane do produktu, niektóre funkcje zostały d
 [Istnieje transformacja](http://youtu.be/GS8JVgNBMfs?hd=1)
 
 [Sprzężenia dynamiczne i dynamiczne wyszukiwania](https://youtu.be/CMOPPie9bXM)
+
+[Spłaszcz transformację](https://youtu.be/VY2tFQJoAXE)
 
 ## <a name="source-and-sink"></a>Źródło i ujścia
 

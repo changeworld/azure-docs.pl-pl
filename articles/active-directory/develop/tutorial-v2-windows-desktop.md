@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1864b4867b8e1367a2397c5ed2ed9a77001dadb4
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 422251da25ae0ef911eb723bb0342a84fe99559c
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701199"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129927"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Wywoływanie interfejsu API Microsoft Graph z aplikacji klasycznej systemu Windows
 
@@ -30,6 +30,9 @@ Po zakończeniu przewodnika aplikacja będzie mogła wywołać chroniony interfe
 
 > [!NOTE]
 > Przewodnik wymaga programu Visual Studio 2015 Update 3, Visual Studio 2017 lub Visual Studio 2019. Nie masz żadnej z tych wersji? [Pobierz bezpłatnie program Visual Studio 2019](https://www.visualstudio.com/downloads/).
+
+>[!NOTE]
+> Jeśli dopiero zaczynasz pracę z platformą tożsamości firmy Microsoft, zalecamy rozpoczęcie od [aplikacji klasycznej z systemem Windows za pomocą interfejsu API pozyskiwania tokenu i wywołania Microsoft Graph](quickstart-v2-windows-desktop.md).
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Jak działa Przykładowa aplikacja generowana przez ten przewodnik
 
@@ -51,7 +54,7 @@ W tym przewodniku są stosowane następujące pakiety NuGet:
 
 |Biblioteka|Opis|
 |---|---|
-|[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Biblioteka uwierzytelniania firmy Microsoft (MSAL.NET)|
+|[Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Biblioteka uwierzytelniania firmy Microsoft (MSAL.NET)|
 
 ## <a name="set-up-your-project"></a>konfigurowanie projektu
 

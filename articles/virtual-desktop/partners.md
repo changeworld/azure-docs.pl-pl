@@ -5,14 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/10/2020
 ms.author: helohr
-ms.openlocfilehash: f75e404e37ff45eb7d9f540cf6acba71fa83349f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+manager: lizross
+ms.openlocfilehash: e10908a3ce0ad372ab7d05fda9a15481d0efc5a8
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201785"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127577"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integracja z partnerem pulpitu wirtualnego systemu Windows
 
@@ -159,7 +160,7 @@ Jako certyfikowany partner Integration Liquit pomaga przyspieszyć przejście do
 
 VSI logowania to dostawca usług dodanego pulpitu wirtualnego systemu Windows i partner firmy Microsoft dostarczający oprogramowanie do testowania wydajności aplikacji w środowiskach pulpitu wirtualnego systemu Windows. Klienci przenoszący lokalne usługi biznesowe na pulpit wirtualny systemu Windows używają logowania VSI Enterprise Edition, aby oszacować i zapewnić optymalną wydajność, skalowalność i dostępność systemu Windows 10 Enterprise wielosesyjnego, Windows 10 Enterprise i System Windows 7 włączony z aplikacjami o znaczeniu krytycznym dla firmy.
 
-- [Przejdź do witryny sieci Web partnera](https://www.loginvsi.com).
+- [Przejdź do witryny sieci Web partnera](https://www.loginvsi.com/use-cases-initiatives/windows-virtual-desktop).
 
 ## <a name="nerdio"></a>Nerdio
 
@@ -253,6 +254,16 @@ Tricerat oferuje znakomite rozwiązanie do zarządzania drukowaniem dla pulpitó
 Dzięki Tricerat drukowanie jest płynne w klasycznym pulpicie systemu Windows. Tricerat oprogramowanie umożliwia administratorom łatwe łączenie drukarek lokalnych z chmurą, rozszerzając Zarządzanie drukowaniem w przedsiębiorstwie z tradycyjnych środowisk na nowe, nowoczesne obszary robocze.
 
 - [Przejdź do witryny sieci Web partnera](https://www.tricerat.com/microsoft-printing).
+
+## <a name="vast-limits"></a>ogromne limity
+
+![logo ogromnych limitów](./media/partners/vast-limits.png)
+
+ogromne limity, firma uberAgent, zapewnia widoczność dla wdrożeń pulpitów wirtualnych systemu Windows. Tworzy oprogramowanie dla przedsiębiorstwa, ponieważ wie, w jaki sposób informatyków i jakie narzędzia potrzebują. Jego produkty pomagają specjalistom IT pracować bardziej wydajnie, zapewniając im dokładnie te, czego potrzebują, aby wykonać swoje zadania; nie więcej, nie mniej.
+
+uberAgent to produkt monitorujący i analityczny przeznaczony do obliczeń dla użytkowników końcowych, który nie zbiera danych tylko — zapewnia klientom informacje, które mają znaczenie. uberAgent ma swoje własne metryki, które obejmują kluczowe aspekty środowiska użytkownika, wydajności aplikacji i zabezpieczeń punktów końcowych, informując wszystko, co musisz wiedzieć o maszynach wirtualnych z systemem Windows, bez wpływu na gęstość użytkownika w systemie. uberAgent upraszcza Rozwiązywanie problemów, pomaga w ustalaniu wielkości i oferuje bogate informacje niezbędne do zapewnienia bezpieczeństwa informacji.
+
+- [Przejdź do witryny sieci Web partnera](https://uberagent.com/docs/uberagent/latest/about-uberagent/system-requirements/#windows-virtual-desktop)
 
 ## <a name="workspot"></a>Workspot
 

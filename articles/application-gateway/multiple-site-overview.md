@@ -4,19 +4,19 @@ description: Ten artykuł zawiera omówienie obsługi wielolokacjowej platformy 
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 1/7/2020
+ms.date: 03/11/2020
 ms.author: amsriva
 ms.topic: conceptual
-ms.openlocfilehash: ac9dd31e01b1915642951aeddb10d3eae118d943
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: c43ac0923e0d3d76c25657f4870a0a0431bc8b6e
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77523785"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096428"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Hostowanie wielu witryn usługi Application Gateway
 
-Obsługa wielu witryn umożliwia skonfigurowanie więcej niż jednej aplikacji sieci Web na tym samym porcie bramy aplikacji. Ta funkcja umożliwia skonfigurowanie bardziej wydajnej topologii dla wdrożeń przez dodanie maksymalnie 100 witryn internetowych do jednej bramy aplikacji. Każdą witrynę sieci Web można skierować do jej puli zaplecza. W poniższym przykładzie usługa Application Gateway obsługuje ruch dla domen contoso.com i fabrikam.com z dwóch pul serwerów zaplecza o nazwach ContosoServerPool i FabrikamServerPool.
+Obsługa wielu witryn umożliwia skonfigurowanie więcej niż jednej aplikacji sieci Web na tym samym porcie bramy aplikacji. Ta funkcja umożliwia skonfigurowanie bardziej wydajnej topologii dla wdrożeń przez dodanie maksymalnie 100 witryn internetowych do jednej bramy aplikacji. Każdą witrynę sieci Web można skierować do jej puli zaplecza. W poniższym przykładzie Brama Application Gateway obsługuje ruch dla `contoso.com` i `fabrikam.com` z dwóch pul serwera zaplecza o nazwie puli contososerverpool i puli fabrikamserverpool.
 
 ![imageURLroute](./media/multiple-site-overview/multisite.png)
 
@@ -25,7 +25,7 @@ Obsługa wielu witryn umożliwia skonfigurowanie więcej niż jednej aplikacji s
 
 Żądania dotyczące adresu `http://contoso.com` są kierowane do puli ContosoServerPool, a żądania dotyczące adresu `http://fabrikam.com` — do puli FabrikamServerPool.
 
-Podobnie dwie domeny podrzędne tej samej domeny nadrzędnej mogą być hostowane na tym samym wdrożeniu usługi Application Gateway. Przykłady użycia domen podrzędnych mogą obejmować domeny `http://blog.contoso.com` i `http://app.contoso.com` hostowane w jednym wdrożeniu bramy Application Gateway.
+Analogicznie, można hostować wiele poddomen w tej samej domenie nadrzędnej w ramach tego samego wdrożenia bramy aplikacji. Na przykład można hostować `http://blog.contoso.com` i `http://app.contoso.com` w ramach jednego wdrożenia bramy aplikacji.
 
 ## <a name="host-headers-and-server-name-indication-sni"></a>Nagłówki hosta i oznaczanie nazwy serwera (SNI, Server Name Indication)
 
@@ -35,11 +35,17 @@ Istnieją trzy popularne mechanizmy włączania hostingu wielu witryn w tej same
 2. Użycie nazwy hosta do hostowania wielu aplikacji internetowych na tym samym adresie IP.
 3. Użycie różnych portów do hostowania wielu aplikacji internetowych na tym samym adresie IP.
 
-Obecnie usługa Application Gateway pobiera jeden publiczny adres IP, na którym nasłuchuje ruchu. Z tego względu obsługiwanie wielu aplikacji z oddzielnym adresem IP dla każdej z nich nie jest obecnie obsługiwane. Usługa Application Gateway obsługuje hostowanie wielu aplikacji, z których każda nasłuchuje na innym porcie, ale ten scenariusz wymaga, aby aplikacje akceptowały ruch na portach niestandardowych, co często nie jest pożądaną konfiguracją. Usługa Application Gateway bazuje na nagłówkach hosta HTTP 1.1 w celu hostowania więcej niż jednej witryny sieci Web na tym samym publicznym adresie IP i porcie. Witryny hostowane w usłudze Application Gateway mogą także obsługiwać odciążanie protokołu SSL za pomocą rozszerzenia TLS oznaczania nazwy serwera. Ten scenariusz oznacza, że przeglądarka i farma sieci Web zaplecza klienta muszą obsługiwać protokół HTTP/1.1 i rozszerzenie TLS zgodnie ze standardem RFC 6066.
+Obecnie Application Gateway obsługuje jeden publiczny adres IP, na którym nasłuchuje ruch. W związku z tym wiele aplikacji, z których każdy ma własny adres IP, nie jest obecnie obsługiwane. 
+
+Application Gateway obsługuje wiele aplikacji, które nasłuchują na różnych portach, ale ten scenariusz wymaga, aby aplikacje akceptowały ruch na portach niestandardowych. Często nie jest to konfiguracja, której chcesz użyć.
+
+Usługa Application Gateway bazuje na nagłówkach hosta HTTP 1.1 w celu hostowania więcej niż jednej witryny sieci Web na tym samym publicznym adresie IP i porcie. Witryny hostowane w usłudze Application Gateway mogą także obsługiwać odciążanie protokołu SSL za pomocą rozszerzenia TLS oznaczania nazwy serwera. Ten scenariusz oznacza, że przeglądarka i farma sieci Web zaplecza klienta muszą obsługiwać protokół HTTP/1.1 i rozszerzenie TLS zgodnie ze standardem RFC 6066.
 
 ## <a name="listener-configuration-element"></a>Element konfiguracji odbiornika
 
-Istniejący element konfiguracji HTTPListener został ulepszony na potrzeby obsługi elementów oznaczania nazwy hosta i nazwy serwera, co jest używane przez usługę Application Gateway w celu kierowania ruchu do odpowiedniej puli zaplecza. Poniższy przykład kodu jest fragmentem elementu HttpListeners z pliku szablonu.
+Istniejące elementy konfiguracji odbiornika HttpListener są rozszerzane do obsługi elementów wskazujących nazwę hosta i nazwę serwera. Jest on używany przez Application Gateway do kierowania ruchu do odpowiedniej puli zaplecza. 
+
+Poniższy przykład kodu jest fragmentem elementu HttpListeners z pliku szablonu:
 
 ```json
 "httpListeners": [
@@ -81,7 +87,7 @@ Możesz odwiedzić stronę [Resource Manager template using multiple site hostin
 
 ## <a name="routing-rule"></a>Reguła routingu
 
-Reguła routingu nie wymaga żadnej zmiany. Nadal należy wybierać podstawową regułę routingu „Basic” w celu powiązania odpowiedniego odbiornika witryny z właściwą pulą adresów zaplecza.
+W regule routingu nie jest wymagana żadna zmiana. Nadal należy wybierać podstawową regułę routingu „Basic” w celu powiązania odpowiedniego odbiornika witryny z właściwą pulą adresów zaplecza.
 
 ```json
 "requestRoutingRules": [

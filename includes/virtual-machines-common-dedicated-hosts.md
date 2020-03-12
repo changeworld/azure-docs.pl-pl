@@ -5,20 +5,19 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/26/2019
+ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 3369dc7cde7082659df556e008adb5e45b4c011c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 2daaf9bbdf90029f0aad4333ab94e2d1d1d3d7ff
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246199"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129172"
 ---
 ## <a name="limitations"></a>Ograniczenia
 
 - Zestawy skalowania maszyn wirtualnych nie są obecnie obsługiwane na dedykowanych hostach.
-- Obsługiwane są następujące serie maszyn wirtualnych: DSv3, ESv3 i Fsv2. 
 
 ## <a name="benefits"></a>Korzyści 
 
@@ -101,17 +100,15 @@ Aby uzyskać więcej informacji, zobacz [Cennik dedykowanego hosta platformy Azu
 
 Można także zaoszczędzić na kosztach przy użyciu [zarezerwowanego wystąpienia dedykowanych hostów platformy Azure](../articles/virtual-machines/prepay-dedicated-hosts-reserved-instances.md).
  
-## <a name="vm-families-and-hardware-generations"></a>Rodziny maszyn wirtualnych i generacja sprzętu
+## <a name="sizes-and-hardware-generations"></a>Rozmiary i generacja sprzętu
 
-Jednostka SKU jest definiowana dla hosta i reprezentuje serię i typ rozmiaru maszyny wirtualnej. Można mieszać wiele maszyn wirtualnych o różnych rozmiarach w ramach jednego hosta, o ile mają one taką samą serię rozmiarów. Typ to generacja sprzętowa aktualnie dostępna w regionie.
+Jednostka SKU jest definiowana dla hosta i reprezentuje serię i typ rozmiaru maszyny wirtualnej. Można mieszać wiele maszyn wirtualnych o różnych rozmiarach w ramach jednego hosta, o ile mają one taką samą serię rozmiarów. 
 
-Różne `types` dla tej samej serii maszyn wirtualnych będą należeć od różnych dostawców procesora CPU i mają różne generacji procesora CPU oraz liczbę rdzeni.
+*Typ* to generacja sprzętowa. Różne typy sprzętu dla tej samej serii maszyn wirtualnych będą należeć od różnych dostawców procesora CPU i mają różne generacji procesora CPU oraz liczbę rdzeni. 
 
-Więcej informacji można znaleźć na [stronie cennika](https://aka.ms/ADHPricing) hosta.
+Rozmiary i typy sprzętu różnią się w zależności od regionu. Więcej informacji można znaleźć na [stronie cennika](https://aka.ms/ADHPricing) hosta.
 
-Dedykowane hosty obsługują następujące SKU\types hosta: DSv3_Type1 i ESv3_Type1
 
- 
 ## <a name="host-life-cycle"></a>Cykl życia hosta
 
 

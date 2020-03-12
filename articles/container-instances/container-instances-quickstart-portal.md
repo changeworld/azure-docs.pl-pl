@@ -1,20 +1,15 @@
 ---
 title: Szybki Start — wdrażanie kontenera platformy Docker do wystąpienia kontenera — Portal
 description: W tym przewodniku szybki start użyjesz Azure Portal, aby szybko wdrożyć aplikację sieci Web, która działa w izolowanym wystąpieniu kontenera platformy Azure
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: quickstart
-ms.date: 04/17/2019
-ms.author: danlep
+ms.date: 03/09/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: e0c5ba57c7664a64c1b11bed215f419f31630d39
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 7a872e955db46b76d3b12f8ffc38d4a8e497ea63
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533527"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087955"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>Szybki Start: Wdrażanie wystąpienia kontenera na platformie Azure przy użyciu Azure Portal
 
@@ -24,7 +19,7 @@ W tym przewodniku szybki start użyjesz Azure Portal do wdrożenia izolowanego k
 
 ![Aplikacja wdrożona w usłudze Azure Container Instances widziana w przeglądarce][aci-portal-07]
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
@@ -40,15 +35,16 @@ Na stronie **podstawowe** wprowadź następujące wartości w polach tekstowych 
 
 * Grupa zasobów: **Utwórz nową** > `myresourcegroup`
 * Nazwa kontenera: `mycontainer`
-* Obraz kontenera: `mcr.microsoft.com/azuredocs/aci-helloworld`
+* Źródło obrazu: **obrazy szybkiego startu**
+* Obraz kontenera: `mcr.microsoft.com/azuredocs/aci-helloworld` (Linux)
 
 ![Konfigurowanie podstawowych ustawień nowego wystąpienia kontenera w witrynie Azure Portal][aci-portal-03]
 
-W tym przewodniku szybki start użyjesz domyślnego ustawienia **typu obrazu** **Public** do wdrożenia publicznego obrazu `aci-helloworld` firmy Microsoft. W tym obrazie systemu Linux jest to mała aplikacja internetowa zapisywana w języku Node. js, która obsługuje statyczną stronę HTML.
+W tym przewodniku szybki start użyjesz domyślnych ustawień do wdrożenia publicznego obrazu programu Microsoft `aci-helloworld`. W tym przykładowym obrazie systemu Linux jest to mała aplikacja internetowa zapisywana w języku Node. js, która obsługuje statyczną stronę HTML. Możesz również umieścić własne obrazy kontenerów przechowywane w Azure Container Registry, Docker Hub lub innych rejestrach.
 
 Na stronie **Sieć** Określ **etykietę nazwy DNS** dla kontenera. Nazwa musi być unikatowa w regionie świadczenia usługi Azure, w którym tworzysz wystąpienie kontenera. Twój kontener będzie dostępny publicznie pod adresem `<dns-name-label>.<region>.azurecontainer.io`. Jeśli zostanie wyświetlony komunikat o błędzie „Etykieta nazwy DNS nie jest dostępna”, spróbuj użyć innej etykiety nazwy DNS.
 
-![Konfigurowanie nowego wystąpienia kontenera w witrynie Azure Portal][aci-portal-04]
+![Konfigurowanie ustawień sieciowych dla nowego wystąpienia kontenera w Azure Portal][aci-portal-04]
 
 Pozostaw wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Przegląd + Utwórz**.
 
@@ -56,7 +52,7 @@ Po zakończeniu weryfikacji zostanie wyświetlone podsumowanie ustawień kontene
 
 ![Podsumowanie ustawień nowego wystąpienia kontenera w witrynie Azure Portal][aci-portal-05]
 
-Po rozpoczęciu wdrażania zostanie wyświetlone powiadomienie wskazujące postęp wdrażania. Kolejne powiadomienie zostanie wyświetlone, gdy grupa kontenerów zostanie wdrożona.
+Po rozpoczęciu wdrażania zostanie wyświetlone powiadomienie informujące o tym, że wdrożenie jest w toku. Kolejne powiadomienie zostanie wyświetlone, gdy grupa kontenerów zostanie wdrożona.
 
 Otwórz przegląd dla grupy kontenerów, przechodząc do **grup zasobów** ** > zasobu** ** > .** Zwróć uwagę na wartość **FQDN** (w pełni kwalifikowana nazwa domeny) wystąpienia kontenera, a także na jego **Stan**.
 

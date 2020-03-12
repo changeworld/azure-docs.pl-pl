@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: helohr
-ms.openlocfilehash: 354ee312099902372863ce2ea636d2f9f9943d5c
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+manager: lizross
+ms.openlocfilehash: 37c3e57fd96a0161564b23ce18d01573d0dd73f9
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566428"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127899"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Rozwiń istniejącą pulę hostów przy użyciu nowych hostów sesji
 
@@ -76,13 +77,13 @@ Postępuj zgodnie z instrukcjami w temacie [Tworzenie puli hostów za pomocą wi
 
 Wszystkie wartości w tej sekcji powinny być zgodne z informacjami podanymi podczas pierwszego tworzenia puli hostów i maszyn wirtualnych hosta sesji, z wyjątkiem *domyślnego użytkownika pulpitu*:
 
-1.  W obszarze *subskrypcja*wybierz subskrypcję, w której najpierw utworzono pulę hostów.
-2.  W obszarze *Grupa zasobów*wybierz tę samą grupę zasobów, w której znajdują się maszyny wirtualne hosta sesji istniejącej puli hostów.
-3.  W polu *region*wybierz ten sam region, w którym znajdują się maszyny wirtualne hosta sesji istniejącej puli hostów.
-4.  W polu *Nazwa Hostpool*wprowadź nazwę istniejącej puli hostów.
-5.  W *polu Typ pulpitu*wybierz typ pulpitu pasujący do istniejącej puli hostów.
-6.  W przypadku *domyślnych użytkowników pulpitu*wprowadź rozdzieloną przecinkami listę wszelkich dodatkowych użytkowników, którzy chcą zalogować się do klientów pulpitu wirtualnego systemu Windows i uzyskać dostęp do pulpitu po zakończeniu oferty portalu Azure Marketplace. Jeśli na przykład chcesz przypisać dostęp user3@contoso.com i user4@contoso.com, wprowadź user3@contoso.comuser4@contoso.com.
-7.  Wybierz pozycję **Dalej: Skonfiguruj maszynę wirtualną**.
+1.    W obszarze *subskrypcja*wybierz subskrypcję, w której najpierw utworzono pulę hostów.
+2.    W obszarze *Grupa zasobów*wybierz tę samą grupę zasobów, w której znajdują się maszyny wirtualne hosta sesji istniejącej puli hostów.
+3.    W polu *region*wybierz ten sam region, w którym znajdują się maszyny wirtualne hosta sesji istniejącej puli hostów.
+4.    W polu *Nazwa Hostpool*wprowadź nazwę istniejącej puli hostów.
+5.    W *polu Typ pulpitu*wybierz typ pulpitu pasujący do istniejącej puli hostów.
+6.    W przypadku *domyślnych użytkowników pulpitu*wprowadź rozdzieloną przecinkami listę wszelkich dodatkowych użytkowników, którzy chcą zalogować się do klientów pulpitu wirtualnego systemu Windows i uzyskać dostęp do pulpitu po zakończeniu oferty portalu Azure Marketplace. Jeśli na przykład chcesz przypisać dostęp user3@contoso.com i user4@contoso.com, wprowadź user3@contoso.comuser4@contoso.com.
+7.    Wybierz pozycję **Dalej: Skonfiguruj maszynę wirtualną**.
 
 >[!NOTE]
 >Z wyjątkiem *domyślnych użytkowników pulpitu*wszystkie pola muszą być zgodne z tym, co zostało skonfigurowane w istniejącej puli hostów. W przypadku niezgodności, która spowoduje powstanie nowej puli hostów.

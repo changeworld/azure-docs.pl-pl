@@ -14,12 +14,12 @@ ms.workload: multiple
 ms.date: 10/24/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: 9f4831fd60038a2265990c0774106a5ea2f98a5a
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: f3edbc4fc48abd9c7df92aedcdea50dd77a0fd4b
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78672087"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086266"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Utwórz automatyczną formułę skalowania węzłów obliczeniowych w puli usługi Batch
 
@@ -128,7 +128,7 @@ Możesz uzyskać wartości tych zmiennych zdefiniowanych przez usługę, aby wpr
 | $NetworkInBytes |Liczba bajtów przychodzących. |
 | $NetworkOutBytes |Liczba bajtów wychodzących. |
 | $SampleNodeCount |Liczba węzłów obliczeniowych. |
-| $ActiveTasks |Liczba zadań, które są gotowe do wykonania, ale jeszcze nie są wykonywane. Liczba $ActiveTasks obejmuje wszystkie zadania znajdujące się w stanie aktywnym, których zależności zostały spełnione. Wszystkie zadania, które znajdują się w stanie aktywnym, ale których zależności nie zostały spełnione, są wykluczone z liczby $ActiveTasks.|
+| $ActiveTasks |Liczba zadań, które są gotowe do wykonania, ale jeszcze nie są wykonywane. Liczba $ActiveTasks obejmuje wszystkie zadania znajdujące się w stanie aktywnym, których zależności zostały spełnione. Wszystkie zadania, które znajdują się w stanie aktywnym, ale których zależności nie zostały spełnione, są wykluczone z liczby $ActiveTasks. W przypadku zadania o wielu wystąpieniach $ActiveTasks będzie zawierać liczbę wystąpień ustawionych dla zadania.|
 | $RunningTasks |Liczba zadań w stanie uruchomienia. |
 | $PendingTasks |Suma $ActiveTasks i $RunningTasks. |
 | $SucceededTasks |Liczba zadań, które zakończyły się pomyślnie. |

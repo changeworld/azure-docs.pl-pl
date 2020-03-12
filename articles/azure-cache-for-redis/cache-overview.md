@@ -1,38 +1,37 @@
 ---
 title: Co to jest usługa Azure Cache for Redis?
-description: Dowiedz się, co to jest usługa Azure cache for Redis i typowe zastosowania, w tym pamięć podręczna, buforowanie zawartości, buforowanie sesji użytkownika, obsługa zadań i kolejkowanie komunikatów oraz transakcje rozproszone.
+description: Dowiedz się więcej o usłudze Azure cache for Redis, dzięki której można włączyć buforowanie pamięci podręcznej, przechowywanie zawartości, buforowanie sesji użytkowników, zadania i kolejkowanie komunikatów oraz transakcje rozproszone.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: overview
-ms.custom: mvc
-ms.date: 03/26/2018
-ms.openlocfilehash: 5224be999ff8ff52c2f52568a504095dc5962398
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/11/2020
+ms.openlocfilehash: 38936000e426d560237295105b5456429d9ae16d
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433420"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126367"
 ---
 # <a name="azure-cache-for-redis-description"></a>Opis usługi Azure cache for Redis
 
-Usługa Azure Cache for Redis opiera się na popularnym oprogramowaniu [Redis](https://redis.io/). Zazwyczaj jest używana jako pamięć podręczna w celu poprawy wydajności i skalowalności systemów, które są silnie uzależnione od magazynów danych na zapleczu. Poprawa wydajności jest możliwa dzięki tymczasowemu kopiowaniu często używanych danych do szybkiego magazynu znajdującego się blisko aplikacji. W przypadku usługi [Azure Cache for Redis](https://redis.io/) ten szybki magazyn jest umieszczany w pamięci za pomocą usługi Azure Cache for Redis zamiast ładowania z dysku przez bazę danych.
+Pamięć podręczna systemu Azure dla usługi Redis zapewnia magazyn danych w pamięci na podstawie [Redis](https://redis.io/)oprogramowania open source. W przypadku użycia jako pamięci podręcznej program Redis poprawia wydajność i skalowalność systemów, które opierają się na zastosowaniach magazynów danych zaplecza. Ulepszona wydajność dzięki kopiowaniu często używanych danych do szybkiego magazynu znajdującego się blisko aplikacji. Dzięki usłudze Azure cache for Redis ten szybki magazyn znajduje się w pamięci, a nie jest ładowany z dysku przez bazę danych.
 
-Pamięć podręczna platformy Azure dla usługi Redis może być również używana jako magazyn struktury danych w pamięci, rozproszona baza danych nierelacyjna i Broker komunikatów. Wydajność aplikacji jest zwiększana dzięki wykorzystaniu małego opóźnienia i wysokiej przepustowości aparatu Redis.
+Pamięć podręczna platformy Azure dla usługi Redis może być używana jako magazyn struktury danych w pamięci, rozproszona baza danych nierelacyjna i Broker komunikatów. Wydajność aplikacji jest zwiększana dzięki wykorzystaniu małego opóźnienia i wysokiej przepustowości aparatu Redis.
 
 Pamięć podręczna systemu Azure dla usługi Redis zapewnia dostęp do bezpiecznej, dedykowanej pamięci podręcznej Redis. Usługa Azure cache for Redis jest zarządzana przez firmę Microsoft, hostowana na platformie Azure i dostępna dla dowolnej aplikacji w ramach platformy Azure lub poza nią.
 
 ## <a name="using-azure-cache-for-redis"></a>Korzystanie z usługi Azure cache for Redis
 
-Istnieje wiele typowych wzorców wykorzystania usługi Azure Cache for Redis do obsługi architektury aplikacji lub poprawy wydajności aplikacji. Niektóre z najczęstszych obejmują następujące:
+Pamięć podręczna systemu Azure dla usługi Redis umożliwia zwiększenie wydajności aplikacji dzięki obsłudze typowych wzorców architektury aplikacji. Niektóre z najczęstszych obejmują następujące:
 
 | Wzorce      | Opis                                        |
 | ------------ | -------------------------------------------------- |
-| [Odkładanie do pamięci podręcznej](cache-web-app-cache-aside-leaderboard.md) | Ponieważ baza danych może być duża, ładowanie całej bazy danych do pamięci podręcznej nie jest zalecane. Często stosuje się wzorzec [odkładania do pamięci podręcznej](https://docs.microsoft.com/azure/architecture/patterns/cache-aside), aby do pamięci podręcznej ładować elementy danych tylko w razie potrzeby. Gdy system dokonuje zmian w danych zaplecza, może w tym samym czasie zaktualizować też pamięć podręczną, która jest dystrybuowana do innych klientów. Ponadto system może ustawić okres ważności dla elementów danych albo stosować zasady eksmisji, które doprowadzą do ponownego załadowania aktualizacji danych do pamięci podręcznej.|
-| [Buforowanie zawartości](cache-aspnet-output-cache-provider.md) | Większość stron sieci Web jest generowanych z szablonów z nagłówkami, stopkami, paskami narzędzi, menu itd. Nie zmieniają się często i nie powinny być generowane dynamicznie. Zastosowanie wewnątrzpamięciowej pamięci podręcznej, takiej jak usługa Azure Cache for Redis, zapewni serwerom internetowym szybki dostęp do tego typu zawartości statycznej w porównaniu z magazynami danych na zapleczu. Ten wzorzec skraca czas przetwarzania i obciążenie serwera w stosunku do wymaganych przy dynamicznym generowaniu zawartości. Dzięki niemu serwery internetowe mogą odpowiadać szybciej, a Ty możesz zmniejszyć liczbę serwerów wymaganych do obsługi obciążeń. Usługa Azure Cache for Redis udostępnia dostawcę Redis Output Cache Provider, aby obsługiwać ten wzorzec przy użyciu platformy ASP.NET.|
-| [Buforowanie sesji użytkownika](cache-aspnet-session-state-provider.md) | Ten wzorzec jest najczęściej używany dla koszyków z zakupami i innego typu informacji o historii użytkownika, które aplikacja internetowa może chcieć skojarzyć z plikami cookie użytkownika. Przechowywanie zbyt wielu danych w pliku cookie może mieć negatywny wpływ na wydajność, ponieważ rozmiar pliku cookie rośnie, a plik jest przekazywany i weryfikowany przy każdym żądaniu. Typowym rozwiązaniem jest używanie pliku cookie jako klucza do wykonywania zapytania o dane w bazie danych zaplecza. Skojarzenie informacji z użytkownikiem za pomocą wewnątrzpamięciowej pamięci podręcznej, takiej jak usługa Azure Cache for Redis, jest znacznie szybsze niż interakcja z pełną relacyjną bazą danych. |
-| Kolejkowanie zadań i komunikatów | Gdy aplikacje odbierają żądania, operacje skojarzone z żądaniem często potrzebują dodatkowego czasu na wykonanie. Typowym wzorcem odroczenia dłużej wykonywanych operacji jest dodanie ich do kolejki, która jest przetwarzana później i w miarę możliwości przez inny serwer. Ta metoda odraczania pracy jest nazywana kolejkowaniem zadań. Istnieje wiele składników oprogramowania przeznaczonych do obsługi kolejek zadań. Pamięć podręczna systemu Azure dla usługi Redis również służy do obsługi kolejki rozproszonej.|
-| Transakcje rozproszone | Częstym wymaganiem względem aplikacji jest, aby były w stanie wykonywać serie poleceń względem magazynu danych na zapleczu w ramach jednej operacji (niepodzielnej). Wszystkie polecenia muszą się powieść lub wszystkie muszą zostać wycofane do stanu początkowego. Usługa Azure Cache for Redis obsługuje wykonywanie partii poleceń jako jednej operacji w formie [transakcji](https://redis.io/topics/transactions). |
+| [Odkładanie do pamięci podręcznej](cache-web-app-cache-aside-leaderboard.md) | Bazy danych są często zbyt duże, aby można je było załadować bezpośrednio do pamięci podręcznej. Często można użyć wzorca z odkładaniem do [pamięci podręcznej](https://docs.microsoft.com/azure/architecture/patterns/cache-aside) w celu załadowania danych do pamięci podręcznej tylko w razie potrzeby. Gdy system wprowadza zmiany w danych, system może również zaktualizować pamięć podręczną, która następnie jest dystrybuowana do innych klientów. Ponadto system może ustawić wygaśnięcie danych lub użyć zasad wykluczenia do wyzwalania aktualizacji danych w pamięci podręcznej.|
+| [Buforowanie zawartości](cache-aspnet-output-cache-provider.md) | Wiele stron sieci Web jest generowanych z szablonów, które używają zawartości statycznej, takiej jak nagłówki, stopki, transparenty. Te elementy statyczne nie powinny być często zmieniane. Użycie pamięci podręcznej w pamięci zapewnia szybki dostęp do zawartości statycznej w porównaniu do magazynów danych zaplecza. Ten wzorzec skraca czas przetwarzania i obciążenie serwera, dzięki czemu serwery sieci Web mogą być bardziej reagujące. Pozwala to zmniejszyć liczbę serwerów potrzebnych do obsługi obciążeń. Pamięć podręczna systemu Azure dla usługi Redis udostępnia dostawcę wyjściowej pamięci podręcznej Redis do obsługi tego wzorca przy użyciu ASP.NET.|
+| [Buforowanie sesji użytkownika](cache-aspnet-session-state-provider.md) | Ten wzorzec jest często używany w przypadku koszyków i innych danych historii użytkowników, które aplikacja sieci Web może chcieć skojarzyć z plikami cookie użytkownika. Przechowywanie zbyt wielu danych w pliku cookie może mieć negatywny wpływ na wydajność, ponieważ rozmiar pliku cookie rośnie, a plik jest przekazywany i weryfikowany przy każdym żądaniu. Typowym rozwiązaniem jest użycie pliku cookie jako klucza do wykonywania zapytań dotyczących danych w bazie danych. Skojarzenie informacji z użytkownikiem za pomocą wewnątrzpamięciowej pamięci podręcznej, takiej jak usługa Azure Cache for Redis, jest znacznie szybsze niż interakcja z pełną relacyjną bazą danych. |
+| Kolejkowanie zadań i komunikatów | Aplikacje często dodają zadania do kolejki w czasie wykonywania operacji skojarzonych z żądaniem. Dłużej działające operacje są umieszczane w kolejce w celu przetworzenia w sekwencji, często przez inny serwer.  Ta metoda odraczania pracy jest nazywana kolejkowaniem zadań. Pamięć podręczna systemu Azure dla usługi Redis udostępnia kolejkę rozproszoną, która umożliwia włączenie tego wzorca w aplikacji.|
+| Transakcje rozproszone | Aplikacje czasami wymagają szeregu poleceń dla magazynu danych zaplecza, aby można było wykonać pojedynczą niepodzielną operację. Wszystkie polecenia muszą się powieść lub wszystkie muszą zostać wycofane do stanu początkowego. Usługa Azure cache for Redis obsługuje wykonywanie partii poleceń jako pojedynczej [transakcji](https://redis.io/topics/transactions). |
 
 ## <a name="azure-cache-for-redis-offerings"></a>Oferta usługi Azure Cache for Redis
 
@@ -40,27 +39,27 @@ Usługa Azure Cache for Redis jest dostępna w następujących warstwach:
 
 | Warstwa | Opis |
 |---|---|
-Basic | Pamięć podręczna z jednym węzłem. Ta warstwa obsługuje wiele rozmiarów pamięci (250 MB–53 GB). Idealnie nadaje się do programowania/testowania i obsługi obciążeń niekrytycznych. Warstwa Podstawowa nie ma umowy dotyczącej poziomu usług (SLA) |
-| Standardowa | Replikowana pamięć podręczna w postaci dwóch węzłów (podstawowy/dodatkowy) zarządzanych przez firmę Microsoft i objętych umową SLA zapewniającą wysoką dostępność (99,9%). |
+Podstawowa | Pamięć podręczna z jednym węzłem. Ta warstwa obsługuje wiele rozmiarów pamięci (250 MB – 53 GB) i idealnie nadaje się do tworzenia i testowania i niekrytycznych obciążeń. Warstwa Podstawowa nie ma umowy dotyczącej poziomu usług (SLA) |
+| Standard | Replikowana pamięć podręczna w dwóch węzłach: podstawowa/pomocnicza, konfiguracja zarządzana przez platformę Azure z umową SLA o wysokiej dostępności (99,9%) |
 | Premium | Warstwa Premium jest warstwą gotową dla przedsiębiorstw. Pamięci podręczne w warstwie Premium obsługują więcej funkcji i mają większą przepływność przy niższych opóźnieniach. Pamięci podręczne w warstwie Premium są wdrażane na mocniejszym sprzęcie, zapewniając większą wydajność w porównaniu do warstw Podstawowa i Standardowa. Ta zaleta oznacza, że przepływność dla pamięci podręcznej o takim samym rozmiarze będzie wyższa w porównaniu do warstwy Standardowa. |
 
 > [!TIP]
 > Więcej informacji na temat rozmiaru, przepływności i przepustowości pamięci podręcznych w warstwie Premium znajduje się w [często zadawanych pytaniach na temat usługi Azure Cache for Redis](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use).
 >
 
-Pamięć podręczną można po utworzeniu skalować w górę do wyższej warstwy. Skalowanie w dół do niższej warstwy nie jest obsługiwane. Aby uzyskać instrukcje skalowania krok po kroku, zobacz [Jak skalować usługę Azure Cache for Redis](cache-how-to-scale.md) i [Jak zautomatyzować operację skalowania](cache-how-to-scale.md#how-to-automate-a-scaling-operation).
+Pamięć podręczną można skalować do wyższej warstwy po jej utworzeniu. Skalowanie w dół do niższej warstwy nie jest obsługiwane. Aby uzyskać instrukcje skalowania krok po kroku, zobacz [Jak skalować usługę Azure Cache for Redis](cache-how-to-scale.md) i [Jak zautomatyzować operację skalowania](cache-how-to-scale.md#how-to-automate-a-scaling-operation).
 
 ### <a name="feature-comparison"></a>Porównanie funkcji
 
 Strona [Azure Cache for Redis — cennik](https://azure.microsoft.com/pricing/details/cache/) zawiera szczegółowe porównanie wszystkich warstw. W poniższej tabeli opisano niektóre funkcje obsługiwane przez warstwy:
 
-| Opis funkcji | Premium | Standardowa | Basic |
+| Opis funkcji | Premium | Standard | Podstawowa |
 | ------------------- | :-----: | :------: | :---: |
 | [Umowa dotycząca poziomu usług (SLA)](https://azure.microsoft.com/support/legal/sla/cache/v1_0/) |✔|✔|-|
 | [Trwałość danych Redis](cache-how-to-premium-persistence.md) |✔|-|-|
 | [Klaster Redis](cache-how-to-premium-clustering.md) |✔|-|-|
 | [Zabezpieczanie za pomocą reguł zapory](cache-configure.md#firewall) |✔|✔|✔|
-| Szyfrowanie danych przesyłanych |✔|✔|✔|
+| Szyfrowanie podczas przesyłania |✔|✔|✔|
 | [Większe bezpieczeństwo i izolacja z użyciem sieci wirtualnej](cache-how-to-premium-vnet.md) |✔|-|-|
 | [Import/Export](cache-how-to-import-export-data.md) |✔|-|-|
 | [Zaplanowane aktualizacje](cache-administration.md#schedule-updates) |✔|✔|✔|

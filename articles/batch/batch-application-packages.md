@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 04/26/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6cad3b3b01a98462e37a4b4b96ba02a1b61a5f62
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 30301832381bdc7b5f001eec2c449c571f9fd671
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025932"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086223"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Wdrażanie aplikacji w węzłach obliczeniowych za pomocą pakietów aplikacji wsadowych
 
@@ -90,13 +90,11 @@ Usługa Batch używa skojarzonego konta magazynu do przechowywania pakietów apl
 
 Zalecamy utworzenie konta magazynu *przeznaczonego* do użycia z kontem usługi Batch i wybranie go w tym miejscu. Po utworzeniu konta magazynu można połączyć je z kontem usługi Batch przy użyciu okna **konto magazynu** .
 
-> [!NOTE] 
-> Obecnie nie można używać pakietów aplikacji z kontem usługi Azure Storage skonfigurowanym przy użyciu [reguł zapory](../storage/common/storage-network-security.md).
-> 
+> [!IMPORTANT] 
+> - Obecnie nie można używać pakietów aplikacji z kontem usługi Azure Storage skonfigurowanym przy użyciu [reguł zapory](../storage/common/storage-network-security.md).
+> - Konta usługi Azure Storage z **hierarchiczną przestrzenią nazw** ustawioną na wartość **Enabled** nie można używać dla pakietów aplikacji.
 
 Usługa Batch używa usługi Azure Storage do przechowywania pakietów aplikacji jako blokowych obiektów BLOB. Opłaty są [naliczone jako normalne][storage_pricing] dla danych blokowych obiektów blob, a rozmiar każdego pakietu nie może przekroczyć maksymalnego rozmiaru bloku obiektów BLOB. Aby uzyskać więcej informacji, zobacz [cele dotyczące skalowalności i wydajności usługi Azure Storage dla kont magazynu](../storage/blobs/scalability-targets.md). Należy wziąć pod uwagę rozmiar i liczbę pakietów aplikacji oraz okresowe usuwanie przestarzałych pakietów w celu zminimalizowania kosztów.
-> 
-> 
 
 ### <a name="view-current-applications"></a>Wyświetl bieżące aplikacje
 Aby wyświetlić aplikacje na koncie w usłudze Batch, kliknij element menu **aplikacje** w menu po lewej stronie podczas przeglądania konta w usłudze **Batch**.
@@ -260,7 +258,7 @@ Windows:
 AZ_BATCH_APP_PACKAGE_APPLICATIONID#version
 ```
 
-W węzłach systemu Linux format jest nieco inny. Kropki (.), łączniki (-) i znaki liczbowe (#) są spłaszczone do podkreślenia w zmiennej środowiskowej. Należy również pamiętać, że sprawa identyfikatora aplikacji jest zachowywana. Przykład:
+W węzłach systemu Linux format jest nieco inny. Kropki (.), łączniki (-) i znaki liczbowe (#) są spłaszczone do podkreślenia w zmiennej środowiskowej. Należy również pamiętać, że sprawa identyfikatora aplikacji jest zachowywana. Na przykład:
 
 ```
 Linux:

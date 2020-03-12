@@ -7,14 +7,15 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 11/09/2019
 ms.author: helohr
-ms.openlocfilehash: dd9fd135536fc2cb222b908f3d61c1d1430e65b0
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+manager: lizross
+ms.openlocfilehash: 9d07ba42e83d9eec071ab047e9e1e92bac1f1411
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905617"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127483"
 ---
-# <a name="troubleshoot-the-windows-virtual-desktop-management-tool"></a>Rozwiązywanie problemów z narzędziem do zarządzania pulpitami wirtualnymi systemu Windows
+# <a name="troubleshoot-the-windows-virtual-desktop-management-tool"></a>Rozwiązywanie problemów z narzędziem zarządzania Windows Virtual Desktop
 
 W tym artykule opisano problemy, które mogą wystąpić podczas wdrażania narzędzia do zarządzania pulpitami wirtualnymi systemu Windows i sposoby ich naprawiania.
 
