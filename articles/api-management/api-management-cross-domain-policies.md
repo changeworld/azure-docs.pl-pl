@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: db64a2f64c592a62f621355047a7bc9844d66457
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: b72abf4e208c57987375a105865046f194460058
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375072"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126550"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies (Zasady usługi API Management obejmujące różne domeny)
 Ten temat zawiera informacje dotyczące następujących zasad API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasady w API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -127,7 +127,7 @@ W tym przykładzie pokazano, jak obsługiwać żądania przed inspekcją, takie 
 |specyfikacji|Element główny.|Yes|Nie dotyczy|
 |dozwolone źródła|Zawiera elementy `origin`, które opisują dozwolone źródła dla żądań międzydomenowych. `allowed-origins` może zawierać pojedynczy `origin` element, który określa `*`, aby zezwolić na dowolne źródło, lub jeden lub więcej elementów `origin`, które zawierają identyfikator URI.|Yes|Nie dotyczy|
 |źródło|Wartość może być `*`, aby zezwolić na wszystkie źródła, lub identyfikator URI, który określa pojedyncze źródło. Identyfikator URI musi zawierać schemat, hosta i port.|Yes|Jeśli port zostanie pominięty w identyfikatorze URI, port 80 jest używany dla protokołu HTTP, a port 443 jest używany w przypadku protokołu HTTPS.|
-|dozwolone — metody|Ten element jest wymagany, jeśli dozwolone są metody inne niż GET lub POST. Zawiera elementy `method`, które określają obsługiwane zlecenia HTTP.|Nie|Jeśli ta sekcja nie jest obecna, obsługiwane są pozycje GET i POST.|
+|dozwolone — metody|Ten element jest wymagany, jeśli dozwolone są metody inne niż GET lub POST. Zawiera elementy `method`, które określają obsługiwane zlecenia HTTP. Wartość `*` wskazuje wszystkie metody.|Nie|Jeśli ta sekcja nie jest obecna, obsługiwane są pozycje GET i POST.|
 |method|Określa czasownik HTTP.|Jeśli istnieje sekcja `allowed-methods`, wymagany jest co najmniej jeden element `method`.|Nie dotyczy|
 |dozwolone — nagłówki|Ten element zawiera `header` elementy określające nazwy nagłówków, które mogą zostać uwzględnione w żądaniu.|Nie|Nie dotyczy|
 |Uwidacznianie — nagłówki|Ten element zawiera `header` elementy określające nazwy nagłówków, które będą dostępne dla klienta.|Nie|Nie dotyczy|

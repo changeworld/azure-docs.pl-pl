@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 12/20/2019
 ms.author: aschhab
 ms.openlocfilehash: c381d9413c4003bc2ab9a9357ff2769e84d14c3e
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
-ms.translationtype: MT
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121747"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117169"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Service Bus kontroli dostępu z sygnaturami dostępu współdzielonego
 
@@ -264,18 +264,18 @@ W poniższej tabeli przedstawiono prawa dostępu wymagane do różnych operacji 
 | Operacja | Wymagane jest żądanie | Zakres roszczeń |
 | --- | --- | --- |
 | **Przestrzeń nazw** | | |
-| Konfigurowanie reguły autoryzacji w przestrzeni nazw |Zarządzaj |Dowolny adres przestrzeni nazw |
+| Konfigurowanie reguły autoryzacji w przestrzeni nazw |Zarządzanie |Dowolny adres przestrzeni nazw |
 | **Rejestr usługi** | | |
-| Wyliczanie zasad prywatnych |Zarządzaj |Dowolny adres przestrzeni nazw |
+| Wyliczanie zasad prywatnych |Zarządzanie |Dowolny adres przestrzeni nazw |
 | Rozpocznij nasłuchiwanie w przestrzeni nazw |Nasłuchiwanie |Dowolny adres przestrzeni nazw |
-| Wysyłanie komunikatów do odbiornika w przestrzeni nazw |Wyślij |Dowolny adres przestrzeni nazw |
-| **Kolejka** | | |
-| Tworzenie kolejki |Zarządzaj |Dowolny adres przestrzeni nazw |
-| Usuwanie kolejki |Zarządzaj |Dowolny prawidłowy adres kolejki |
-| Wyliczanie kolejek |Zarządzaj |/$Resources/Queues |
-| Pobierz opis kolejki |Zarządzaj |Dowolny prawidłowy adres kolejki |
-| Konfigurowanie reguły autoryzacji dla kolejki |Zarządzaj |Dowolny prawidłowy adres kolejki |
-| Wyślij do kolejki |Wyślij |Dowolny prawidłowy adres kolejki |
+| Wysyłanie komunikatów do odbiornika w przestrzeni nazw |Wysyłanie |Dowolny adres przestrzeni nazw |
+| **Niej** | | |
+| Tworzenie kolejki |Zarządzanie |Dowolny adres przestrzeni nazw |
+| Usuwanie kolejki |Zarządzanie |Dowolny prawidłowy adres kolejki |
+| Wyliczanie kolejek |Zarządzanie |/$Resources/Queues |
+| Pobierz opis kolejki |Zarządzanie |Dowolny prawidłowy adres kolejki |
+| Konfigurowanie reguły autoryzacji dla kolejki |Zarządzanie |Dowolny prawidłowy adres kolejki |
+| Wyślij do kolejki |Wysyłanie |Dowolny prawidłowy adres kolejki |
 | Odbieranie komunikatów z kolejki |Nasłuchiwanie |Dowolny prawidłowy adres kolejki |
 | Porzucanie lub kończenie komunikatów po odebraniu komunikatu w trybie wglądu w tryb blokady |Nasłuchiwanie |Dowolny prawidłowy adres kolejki |
 | Odłóż komunikat do późniejszego pobrania |Nasłuchiwanie |Dowolny prawidłowy adres kolejki |
@@ -284,26 +284,26 @@ W poniższej tabeli przedstawiono prawa dostępu wymagane do różnych operacji 
 | Ustawianie stanu skojarzonego z sesją kolejki komunikatów |Nasłuchiwanie |Dowolny prawidłowy adres kolejki |
 | Zaplanuj wiadomość w celu późniejszego dostarczenia; na przykład [ScheduleMessageAsync ()](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_) |Nasłuchiwanie | Dowolny prawidłowy adres kolejki
 | **Temat** | | |
-| Tworzenie tematu |Zarządzaj |Dowolny adres przestrzeni nazw |
-| Usuwanie tematu |Zarządzaj |Dowolny prawidłowy adres tematu |
-| Wyliczenie tematów |Zarządzaj |/$Resources/topics |
-| Pobierz opis tematu |Zarządzaj |Dowolny prawidłowy adres tematu |
-| Konfigurowanie reguły autoryzacji tematu |Zarządzaj |Dowolny prawidłowy adres tematu |
-| Wyślij do tematu |Wyślij |Dowolny prawidłowy adres tematu |
+| Tworzenie tematu |Zarządzanie |Dowolny adres przestrzeni nazw |
+| Usuwanie tematu |Zarządzanie |Dowolny prawidłowy adres tematu |
+| Wyliczenie tematów |Zarządzanie |/$Resources/topics |
+| Pobierz opis tematu |Zarządzanie |Dowolny prawidłowy adres tematu |
+| Konfigurowanie reguły autoryzacji tematu |Zarządzanie |Dowolny prawidłowy adres tematu |
+| Wyślij do tematu |Wysyłanie |Dowolny prawidłowy adres tematu |
 | **Subskrypcja** | | |
-| Tworzenie subskrypcji |Zarządzaj |Dowolny adres przestrzeni nazw |
-| Usuwanie subskrypcji |Zarządzaj |.. /myTopic/Subscriptions/mySubscription |
-| Wyliczanie subskrypcji |Zarządzaj |.. /myTopic/Subscriptions |
-| Pobierz opis subskrypcji |Zarządzaj |.. /myTopic/Subscriptions/mySubscription |
+| Tworzenie subskrypcji |Zarządzanie |Dowolny adres przestrzeni nazw |
+| Usuwanie subskrypcji |Zarządzanie |.. /myTopic/Subscriptions/mySubscription |
+| Wyliczanie subskrypcji |Zarządzanie |.. /myTopic/Subscriptions |
+| Pobierz opis subskrypcji |Zarządzanie |.. /myTopic/Subscriptions/mySubscription |
 | Porzucanie lub kończenie komunikatów po odebraniu komunikatu w trybie wglądu w tryb blokady |Nasłuchiwanie |.. /myTopic/Subscriptions/mySubscription |
 | Odłóż komunikat do późniejszego pobrania |Nasłuchiwanie |.. /myTopic/Subscriptions/mySubscription |
 | Wiadomość utracona |Nasłuchiwanie |.. /myTopic/Subscriptions/mySubscription |
 | Pobierz stan skojarzony z sesją tematu |Nasłuchiwanie |.. /myTopic/Subscriptions/mySubscription |
 | Ustawianie stanu skojarzonego z sesją tematu |Nasłuchiwanie |.. /myTopic/Subscriptions/mySubscription |
-| **reguły** | | |
-| Tworzenie reguły |Zarządzaj |.. /myTopic/Subscriptions/mySubscription |
-| Usuwanie reguły |Zarządzaj |.. /myTopic/Subscriptions/mySubscription |
-| Wyliczanie zasad |Zarządzanie lub nasłuchiwanie |.. /myTopic/Subscriptions/mySubscription/Rules
+| **Przepisy** | | |
+| Tworzenie reguły |Zarządzanie |.. /myTopic/Subscriptions/mySubscription |
+| Usuwanie reguły |Zarządzanie |.. /myTopic/Subscriptions/mySubscription |
+| Wyliczanie reguł |Zarządzanie lub nasłuchiwanie |.. /myTopic/Subscriptions/mySubscription/Rules
 
 ## <a name="next-steps"></a>Następne kroki
 

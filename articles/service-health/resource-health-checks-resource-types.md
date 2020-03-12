@@ -3,12 +3,12 @@ title: Obsługiwane typy zasobów za poorednictwem Azure Resource Health | Micro
 description: Obsługiwane typy zasobów za pomocą usługi Azure Resource Health
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: ec194287e8a8e06d3bb14c4b202cc2f11063d1dd
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 3ba7b308c0c7671df8a652194830cb910cb89acc
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78924874"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129043"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy zasobów i kontrole kondycji w usłudze Azure Resource Health
 Poniżej znajduje się kompletna lista wszystkich testów wykonywanych przez zasoby według typów zasobów.
@@ -188,6 +188,11 @@ Poniżej znajduje się kompletna lista wszystkich testów wykonywanych przez zas
 |Wykonane sprawdzenia|
 |---|
 |<ul><li>Czy klienci napotykali błędy wygenerowane przez użytkownika Service Bus?</li><li>Czy użytkownicy napotykają wzrost błędów przejściowych ze względu na uaktualnienie Service Bus przestrzeni nazw?</li></ul>|
+
+## <a name="microsoftservicefabricclusters"></a>Microsoft.ServiceFabric/clusters
+|Wykonane sprawdzenia|
+|---|
+|<ul><li>Czy klaster Service Fabric jest uruchomiony?</li><li>Czy klaster Service Fabric może być zarządzany przez Azure Resource Manager?</li></ul>|
 
 ## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft. SQL/managedInstances/bazy danych
 |Wykonane sprawdzenia|

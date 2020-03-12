@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 02/28/2020
-ms.openlocfilehash: 9739c0a6b66099a2bebb1d42922d8653a92e650b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 501158ffa8d05bc34dd39c21680012b1f3308def
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396429"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127207"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co to jest automatyczna usługi machine learning?
 
@@ -95,9 +95,9 @@ W każdym automatycznym doświadczeniu uczenia maszynowego Twoje dane są automa
 
 ### <a name="advanced-preprocessing-optional-featurization"></a>Zaawansowane przetwarzanie wstępne: opcjonalne cechowania
 
-Dostępne są również dodatkowe zaawansowane procesy przetwarzania wstępnego i cechowania, takie jak guardrails danych, kodowanie i przekształcenia. [Dowiedz się więcej na temat tego, co obejmuje cechowania](how-to-create-portal-experiments.md#featurization). Włącz to ustawienie przy użyciu:
+Dostępne są również dodatkowe zaawansowane procesy przetwarzania wstępnego i cechowania, takie jak guardrails danych, kodowanie i przekształcenia. [Dowiedz się więcej na temat tego, co obejmuje cechowania](how-to-use-automated-ml-for-ml-models.md#featurization). Włącz to ustawienie przy użyciu:
 
-+ Azure Machine Learning Studio: Włącz **Automatyczne cechowania** w sekcji **Wyświetl dodatkową konfigurację** , [wykonując następujące kroki](how-to-create-portal-experiments.md#create-and-run-experiment).
++ Azure Machine Learning Studio: Włącz **Automatyczne cechowania** w sekcji **Wyświetl dodatkową konfigurację** , [wykonując następujące kroki](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment).
 
 + Zestaw SDK języka Python: Określanie `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` dla [klasy`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig). 
 
@@ -153,7 +153,7 @@ Model **C** reprezentuje wyraźny przypadek nadmiernego dopasowania; dokładnoś
 
 ## <a name="classification--regression"></a>Klasyfikacja & regresja
 
-Klasyfikacja i regresja to najczęściej spotykane typy zadań uczenia maszynowego. Oba są typami nadzorowanych szkoleń, w których modele uczyją się korzystać z danych szkoleniowych i stosują te informacje do nowych danych. Azure Machine Learning oferuje featurizations dla tych zadań, takich jak głębokie neuronowych Network Text featurizers for klasyfikacji. Dowiedz się więcej o [opcjach cechowania](how-to-create-portal-experiments.md#featurization). 
+Klasyfikacja i regresja to najczęściej spotykane typy zadań uczenia maszynowego. Oba są typami nadzorowanych szkoleń, w których modele uczyją się korzystać z danych szkoleniowych i stosują te informacje do nowych danych. Azure Machine Learning oferuje featurizations dla tych zadań, takich jak głębokie neuronowych Network Text featurizers for klasyfikacji. Dowiedz się więcej o [opcjach cechowania](how-to-use-automated-ml-for-ml-models.md#featurization). 
 
 Głównym celem modeli klasyfikacji jest przewidywanie, do których kategorii nowe dane będą się opierać na podstawie informacji szkoleniowych. Typowe przykłady klasyfikacji obejmują wykrywanie oszustw, rozpoznawanie pisma ręcznego i wykrywanie obiektów.  Dowiedz się więcej i zapoznaj się z przykładem [klasyfikacji przy użyciu automatycznej uczenia maszynowego](tutorial-train-models-with-aml.md).
 
@@ -286,7 +286,7 @@ Zobacz przykłady i Dowiedz się, jak tworzyć modele przy użyciu automatyczneg
 + Postępuj zgodnie z [samouczkiem: automatyczne uczenie modelu regresji z Azure Machine Learning](tutorial-auto-train-models.md)
 
 + Skonfiguruj ustawienia dla eksperymentu automatycznego szkolenia:
-  + W programie Azure Machine Learning Studio [wykonaj te kroki](how-to-create-portal-experiments.md).
+  + W programie Azure Machine Learning Studio [wykonaj te kroki](how-to-use-automated-ml-for-ml-models.md).
   + Za pomocą zestawu SDK języka Python [wykonaj te kroki](how-to-configure-auto-train.md).
 
 + Dowiedz się, jak korzystać z funkcji autouczenia przy użyciu danych szeregów czasowych, [wykonując następujące kroki](how-to-auto-train-forecast.md).

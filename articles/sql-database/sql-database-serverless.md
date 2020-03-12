@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 12/03/2019
-ms.openlocfilehash: 750d08f3667317e9e1e396cff50884101d7ff55d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 3/11/2020
+ms.openlocfilehash: 5c36dbfbe63314ef97edfa3dfbaae34667db002d
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359808"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129005"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database bezserwerowe
 
@@ -68,7 +68,7 @@ W poniższej tabeli zestawiono różnice między warstwą obliczeniową bezserwe
 |**Wzorzec użycia bazy danych**| Sporadyczne, nieprzewidywalne użycie z niższym średnim wykorzystaniem obliczeń w czasie. |  Bardziej regularne wzorce użycia z wyższym średnim wykorzystaniem obliczeń w czasie lub wielu bazach danych korzystających z pul elastycznych.|
 | **Nakład pracy zarządzania wydajnością** |Dołu|Większych|
 |**Skalowanie obliczeniowe**|Automatyczny|Ręcznie|
-|**Czas odpowiedzi obliczeń**|Poniżej nieaktywnych okresów|Pośredni|
+|**Czas odpowiedzi obliczeń**|Poniżej nieaktywnych okresów|Natychmiastowe|
 |**Stopień szczegółowości rozliczeń**|Na sekundę|Za godzinę|
 
 ## <a name="purchasing-model-and-service-tier"></a>Model zakupów i warstwa usług
@@ -148,6 +148,10 @@ Jeśli bezserwerowa baza danych jest wstrzymana, pierwsze logowanie spowoduje wz
 ### <a name="latency"></a>Opóźnienie
 
 Opóźnienie autowznawiania i autowstrzymanie bazy danych bezserwerowych jest zazwyczaj kolejnością od 1 minuty do autowznawiania i 1-10 minut do autowstrzymywania.
+
+### <a name="customer-managed-transparent-data-encryption-byok"></a>Zarządzane szyfrowanie danych przez klienta (BYOK)
+
+W przypadku korzystania z funkcji [niewidocznego szyfrowania danych przez klienta](transparent-data-encryption-byok-azure-sql.md) (BYOK) i bezserwerowa baza danych jest wstrzymywana, gdy następuje usunięcie klucza lub odwołanie, baza danych pozostanie w stanie autowstrzymania.  W takim przypadku podczas kolejnej próby wznowienia baza danych pozostanie wstrzymana do momentu przejścia do stanu niedostępności po około 10 minutach lub mniej.  Gdy baza danych będzie niedostępna, proces odzyskiwania jest taki sam jak w przypadku zainicjowanych baz danych obliczeniowych.  Jeśli bezserwerowa baza danych jest w trybie online, gdy następuje usunięcie klucza lub odwołanie, baza danych również stanie się niedostępna po około 10 minutach lub mniej w taki sam sposób jak w przypadku zainicjowanych baz danych obliczeniowych.
 
 ## <a name="onboarding-into-serverless-compute-tier"></a>Dołączanie do warstwy obliczeń bezserwerowych
 

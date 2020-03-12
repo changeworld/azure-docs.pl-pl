@@ -10,12 +10,12 @@ ms.date: 02/25/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 6b36694c2fe1bf264c876944b054d39371db616c
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 7ae5f59a1bd96362d5466b2f6363185ba168d942
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78674270"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79130012"
 ---
 # <a name="azure-storage-redundancy"></a>Nadmiarowość usługi Azure Storage
 
@@ -61,7 +61,7 @@ W poniższej tabeli przedstawiono typy kont magazynu obsługujące ZRS, w który
 
 |    Typ konta magazynu    |    Obsługiwane regiony    |    Obsługiwane usługi    |
 |----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-|    Ogólnego przeznaczenia<sup>w wersji 2</sup>    | Azja Południowo-Wschodnia<br /> Europa Północna<br />  Europa Zachodnia<br /> Francja Środkowa<br /> Japonia Wschodnia<br /> Południowe Zjednoczone Królestwo<br /> Środkowe stany USA<br /> Wschodnie stany USA<br /> Wschodnie stany USA 2<br /> Zachodnie stany USA 2    |    Blokowe obiekty blob<br /> Stronicowe obiekty blob<sup>2</sup><br /> Udziały plików (wersja standardowa)<br /> Tabele<br /> Kolejki<br /> |
+|    Ogólnego przeznaczenia<sup>w wersji 2</sup>    | Azja Południowo-Wschodnia<br /> Australia Wschodnia<br /> Europa Północna<br />  Europa Zachodnia<br /> Francja Środkowa<br /> Japonia Wschodnia<br /> Północna Republika Południowej Afryki<br /> Południowe Zjednoczone Królestwo<br /> Środkowe stany USA<br /> Wschodnie stany USA<br /> Wschodnie stany USA 2<br /> Zachodnie stany USA 2    |    Blokowe obiekty blob<br /> Stronicowe obiekty blob<sup>2</sup><br /> Udziały plików (wersja standardowa)<br /> Tabele<br /> Kolejki<br /> |
 |    BlockBlobStorage<sup>1</sup>    | Europa Zachodnia<br /> Wschodnie stany USA    |    Blokuj tylko obiekty blob    |
 |    FileStorage    | Europa Zachodnia<br /> Wschodnie stany USA    |    Tylko Azure Files    |
 
@@ -109,10 +109,12 @@ GZRS i RA-GZRS są obecnie dostępne w wersji zapoznawczej w następujących reg
 - Azja Południowo-Wschodnia
 - Europa Północna
 - Europa Zachodnia
+- Japonia Wschodnia
 - Południowe Zjednoczone Królestwo
 - Wschodnie stany USA
 - Wschodnie stany USA 2
 - Środkowe stany USA
+- Zachodnie stany USA 2
 
 Firma Microsoft nadal włącza GZRS i RA-GZRS w dodatkowych regionach świadczenia usługi Azure. Sprawdź regularnie informacje o obsługiwanych regionach na stronie [aktualizacji usługi platformy Azure](https://azure.microsoft.com/updates/) .
 

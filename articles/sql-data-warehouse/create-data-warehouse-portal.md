@@ -1,6 +1,6 @@
 ---
-title: Tworzenie i wykonywanie zapytań względem magazynu danych (Azure Portal)
-description: Utwórz i zbadaj pulę SQL usługi Azure Synapse Analytics przy użyciu Azure Portal
+title: Tworzenie puli SQL Synapse (Azure Portal) i wykonywanie na niej zapytań
+description: Tworzenie puli SQL Synapse i wykonywanie na niej zapytań przy użyciu Azure Portal
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 7a3dbe5d74dc1e88d0615937b8c6e6d2a77b64a7
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 6966932e95ff538de4b2f9be1ac06516311a0919
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381094"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129295"
 ---
-# <a name="quickstart-create-and-query-an-azure-synapse-analytics-sql-pool-using-the-azure-portal"></a>Szybki Start: Tworzenie puli SQL usługi Azure Synapse Analytics i wykonywanie na nich zapytań przy użyciu Azure Portal
+# <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>Szybki Start: Tworzenie puli SQL Synapse i wykonywanie na niej zapytań przy użyciu Azure Portal
 
-Szybko Twórz magazyn danych i wysyłaj do nich zapytania, udostępniając pulę SQL w usłudze Azure Synapse Analytics (dawniej SQL DW) przy użyciu Azure Portal.
+Szybko Twórz i badaj pulę SQL Synapse (magazyn danych) w usłudze Azure Synapse Analytics (dawniej SQL DW) przy użyciu Azure Portal.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -39,7 +39,7 @@ Zaloguj się do [Azure portal](https://portal.azure.com/).
 
 Magazyny danych są tworzone przy użyciu puli SQL w usłudze Azure Synapse Analytics. Zostanie utworzona Pula SQL ze zdefiniowanym zestawem [zasobów obliczeniowych](memory-concurrency-limits.md). Baza danych jest tworzona w [grupie zasobów platformy Azure](../azure-resource-manager/management/overview.md) oraz na [serwerze logicznym SQL platformy Azure](../sql-database/sql-database-servers.md).
 
-Wykonaj następujące kroki, aby utworzyć magazyn danych zawierający przykładowe dane **AdventureWorksDW** .
+Wykonaj następujące kroki, aby utworzyć pulę SQL zawierającą przykładowe dane **AdventureWorksDW** .
 
 1. Wybierz pozycję **Utwórz zasób** w lewym górnym rogu Azure Portal.
 
@@ -55,7 +55,7 @@ Wykonaj następujące kroki, aby utworzyć magazyn danych zawierający przykład
    | :------ | :-------------- | :---------- |
    | **Subskrypcja** | Twoja subskrypcja | Aby uzyskać szczegółowe informacje o subskrypcjach, zobacz [Subskrypcje](https://account.windowsazure.com/Subscriptions). |
    | **Grupa zasobów** | myResourceGroup | Prawidłowe nazwy grup zasobów opisano w artykule [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming) (Reguły i ograniczenia nazewnictwa). |
-   | **Nazwa magazynu danych** | Dowolna globalnie unikatowa nazwa (przykład to *mySampleDataWarehouse*) | Prawidłowe nazwy baz danych opisano w artykule [Database Identifiers](/sql/relational-databases/databases/database-identifiers) (Identyfikatory baz danych). Pamiętaj, że magazyn danych jest jednym z typów bazy danych. |
+   | **Nazwa puli SQL** | Dowolna globalnie unikatowa nazwa (przykład to *mySampleDataWarehouse*) | Prawidłowe nazwy baz danych opisano w artykule [Database Identifiers](/sql/relational-databases/databases/database-identifiers) (Identyfikatory baz danych). Należy pamiętać, że Pula SQL jest jednym z typów bazy danych. |
    | **Serwer** | Dowolna nazwa unikatowa w skali globalnej | Wybierz pozycję istniejący serwer lub Utwórz nową nazwę serwera, a następnie wybierz pozycję **Utwórz nowy**. Prawidłowe nazwy serwera opisano w artykule [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming) (Reguły i ograniczenia nazewnictwa). |
 
    ![Tworzenie podstawowych szczegółów magazynu danych](media/create-data-warehouse-portal/create-sql-pool-basics.png)
@@ -66,7 +66,7 @@ Wykonaj następujące kroki, aby utworzyć magazyn danych zawierający przykład
 
    Aby uzyskać więcej informacji na temat poziomów wydajności, zobacz [Zarządzanie obliczeniami w Azure SQL Data Warehouse](sql-data-warehouse-manage-compute-overview.md).
 
-5. Po zakończeniu karty podstawowe w formularzu analizy usługi Azure Synapse wybierz pozycję **Przegląd + Utwórz** , a następnie **Utwórz** , aby utworzyć magazyn danych w puli SQL. Aprowizacja zajmuje kilka minut.
+5. Po zakończeniu karty podstawowe w formularzu analizy usługi Azure Synapse wybierz pozycję **Przegląd + Utwórz** , a następnie **Utwórz** , aby utworzyć pulę SQL. Aprowizacja zajmuje kilka minut.
 
    ![Wybieranie opcji Recenzja + tworzenie](media/create-data-warehouse-portal/create-sql-pool-review-create.png)
 
@@ -74,7 +74,7 @@ Wykonaj następujące kroki, aby utworzyć magazyn danych zawierający przykład
 
 6. Na pasku narzędzi wybierz pozycję **powiadomienia** , aby monitorować proces wdrażania.
 
-   ![— powiadomienie](media/create-data-warehouse-portal/notification.png)
+   ![powiadomienie](media/create-data-warehouse-portal/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>Tworzenie reguły zapory na poziomie serwera
 
@@ -105,7 +105,7 @@ Usługa Azure Synapse tworzy zaporę na poziomie serwera. Ta zapora uniemożliwi
 
 8. Wybierz przycisk **OK** , a następnie zamknij stronę **Ustawienia zapory** .
 
-Teraz możesz łączyć się z serwerem SQL i jego magazynami danych przy użyciu tego adresu IP. Połączenie działa z programu SQL Server Management Studio lub dowolnego innego narzędzia. Przy łączeniu się używaj wcześniej utworzonego konta administratora serwera.
+Teraz można nawiązać połączenie z serwerem SQL i jego pulami SQL przy użyciu tego adresu IP. Połączenie działa z programu SQL Server Management Studio lub dowolnego innego narzędzia. Przy łączeniu się używaj wcześniej utworzonego konta administratora serwera.
 
 > [!IMPORTANT]
 > Domyślnie dostęp za pośrednictwem zapory usługi SQL Database jest włączony dla wszystkich usług platformy Azure. Wybierz pozycję **wyłączone** na tej stronie, a następnie wybierz pozycję **Zapisz** , aby wyłączyć zaporę dla wszystkich usług platformy Azure.
@@ -116,7 +116,7 @@ Uzyskaj w pełni kwalifikowaną nazwę serwera dla swojego serwera SQL w witryni
 
 1. Zaloguj się do [Azure portal](https://portal.azure.com/).
 
-2. Wybierz pozycję **Azure Synapse Analytics** z menu po lewej stronie, a następnie wybierz magazyn danych w witrynie **Azure Synapse Analytics** .
+2. Wybierz pozycję **Azure Synapse Analytics** z menu po lewej stronie, a następnie wybierz pozycję ze strony **usługi Azure Synapse Analytics** .
 
 3. W okienku **Essentials** na stronie bazy danych w witrynie Azure Portal zlokalizuj i skopiuj **nazwę serwera**. W tym przykładzie w pełni kwalifikowana nazwa to sqlpoolservername.database.windows.net.
 
@@ -174,21 +174,21 @@ Usługa SQL Data Warehouse używa T-SQL jako języka zapytań. Aby otworzyć okn
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Opłaty są naliczane za jednostki magazynu danych i dane przechowywane w magazynie danych. Opłaty za te zasoby obliczeniowe i magazynowe są naliczane osobno.
+Opłaty są naliczane za jednostki magazynu danych i dane przechowywane w puli SQL. Opłaty za te zasoby obliczeniowe i magazynowe są naliczane osobno.
 
-- Jeśli chcesz przechowywać dane w magazynie, możesz wstrzymać obliczenia, gdy nie korzystasz z magazynu danych. Przez wstrzymywanie obliczeń opłata jest naliczana tylko za magazyn danych. Obliczenia można wznowić za każdym razem, gdy wszystko będzie gotowe do pracy z danymi.
+- Jeśli chcesz zachować dane w magazynie, możesz wstrzymać obliczenia, gdy nie używasz puli SQL. Przez wstrzymywanie obliczeń opłata jest naliczana tylko za magazyn danych. Obliczenia można wznowić za każdym razem, gdy wszystko będzie gotowe do pracy z danymi.
 
-- Aby uniknąć opłat w przyszłości, możesz usunąć magazyn danych.
+- Jeśli chcesz usunąć przyszłe opłaty, możesz usunąć pulę SQL.
 
 Wykonaj następujące kroki, aby wyczyścić zasoby, które nie są już potrzebne.
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com), wybierz pozycję Magazyn danych.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com), wybierz swoją pulę SQL.
 
    ![Oczyszczanie zasobów](media/create-data-warehouse-portal/clean-up-resources.png)
 
-2. Aby wstrzymać obliczenia, wybierz przycisk **Wstrzymaj** . Gdy magazyn danych jest wstrzymany, zobaczysz przycisk **Wznów** . Aby wznowić obliczanie, wybierz pozycję **Wznów**.
+2. Aby wstrzymać obliczenia, wybierz przycisk **Wstrzymaj** . Gdy pula SQL jest wstrzymana, zobaczysz przycisk **Wznów** . Aby wznowić obliczanie, wybierz pozycję **Wznów**.
 
-3. Aby usunąć magazyn danych, aby nie naliczać opłat za zasoby obliczeniowe i magazynowanie, wybierz pozycję **Usuń**.
+3. Aby usunąć pulę SQL, aby nie naliczać opłat za zasoby obliczeniowe i magazynowe, wybierz pozycję **Usuń**.
 
 4. Aby usunąć utworzony serwer SQL, wybierz pozycję **sqlpoolservername.Database.Windows.NET** na poprzednim obrazie, a następnie wybierz pozycję **Usuń**. Należy zachować ostrożność podczas usuwania, ponieważ usunięcie serwera spowoduje również usunięcie wszystkich baz danych przypisanych do tego serwera.
 
@@ -196,7 +196,4 @@ Wykonaj następujące kroki, aby wyczyścić zasoby, które nie są już potrzeb
 
 ## <a name="next-steps"></a>Następne kroki
 
-Utworzono magazyn danych, utworzono regułę zapory, połączono z magazynem danych i uruchomiono kilka zapytań. Aby dowiedzieć się więcej na temat usługi Azure SQL Data Warehouse, przejdź do samouczka na temat ładowania danych.
-
-> [!div class="nextstepaction"]
-> [Ładowanie danych do SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md)
+Aby dowiedzieć się więcej na temat ładowania danych do puli SQL, przejdź do artykułu [ładowanie danych do puli SQL](load-data-from-azure-blob-storage-using-polybase.md) . 

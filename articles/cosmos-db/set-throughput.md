@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.openlocfilehash: 31ad7a9d1108adc9071812454419252a813cb93e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: e7a64776cba00a6840af70cecad5bf9c02b3f38e
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78364504"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128887"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Aprowizacja przepływności kontenerów i baz danych
 
@@ -20,7 +20,7 @@ Bazy danych Azure Cosmos jest jednostką zarządzania w usłudze zestaw kontener
 Za pomocą Azure Cosmos DB można zainicjować przepływność przy dwóch stopniach szczegółowości:
  
 - Kontenery usługi Azure Cosmos
-- Baz danych Azure Cosmos
+- Bazy danych usługi Azure Cosmos
 
 ## <a name="set-throughput-on-a-container"></a>Ustawianie przepływności dla kontenera  
 
@@ -87,11 +87,11 @@ Można połączyć te dwa modele. Przepływność aprowizacji zarówno dla bazy 
 
 ## <a name="update-throughput-on-a-database-or-a-container"></a>Aktualizowanie przepływności dla bazy danych lub kontenera
 
-Po utworzeniu kontenera usługi Azure Cosmos lub bazy danych można zaktualizować zainicjowaną przepływność. Nie ma żadnego limitu maksymalnej alokowanej przepływności, którą można skonfigurować dla bazy danych lub kontenera. Minimalna zainicjowana przepływność zależy od następujących czynników: 
+Po utworzeniu kontenera usługi Azure Cosmos lub bazy danych można zaktualizować zainicjowaną przepływność. Nie ma żadnego limitu maksymalnej alokowanej przepływności, którą można skonfigurować dla bazy danych lub kontenera. [Minimalna zainicjowana przepływność](concepts-limits.md#storage-and-throughput) zależy od następujących czynników: 
 
 * Maksymalny rozmiar danych, który został kiedykolwiek przechowywany w kontenerze
 * Maksymalna przepływność, która została kiedykolwiek zainicjowana w kontenerze
-* Maksymalna liczba kontenerów usługi Azure Cosmos, które kiedykolwiek tworzysz w bazie danych o udostępnionej przepływności. 
+* Bieżąca liczba kontenerów usługi Azure Cosmos, które znajdują się w bazie danych o udostępnionej przepływności. 
 
 Minimalną przepływność kontenera lub bazy danych można pobrać programowo przy użyciu zestawów SDK lub wyświetlić wartość w Azure Portal. W przypadku korzystania z zestawu .NET SDK Metoda [DocumentClient. ReplaceOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync?view=azure-dotnet) umożliwia skalowanie wartości przepływności. W przypadku korzystania z zestawu SDK języka Java [RequestOptions. setOfferThroughput](sql-api-java-samples.md#offer-examples) Metoda pozwala skalować wartość przepływności. 
 
@@ -109,7 +109,7 @@ W dowolnym momencie można skalować zainicjowaną przepływność kontenera lub
 |Jednostek ru przypisane lub dostępne dla określonego kontenera|Nie gwarancji. Jednostek ru przypisane do danego kontenera zależą od właściwości. Właściwościami mogą być wybór kluczy partycji kontenerów, które współdzielą przepływność, rozkład obciążenia oraz liczbę kontenerów. |Wszystkie jednostki zarezerwowane skonfigurowane w kontenerze są przeznaczone wyłącznie do kontenera.|
 |Maksymalny rozmiar magazynu dla kontenera|Nieograniczona liczba.|Nieograniczona liczba.|
 |Maksymalna przepływność na partycji logicznej kontenera|10K (RUS)|10K (RUS)|
-|Maksymalna pojemność (danych + indeksu) w jednej partycji logicznej kontenera|20 GB|20 GB|
+|Maksymalna pojemność (danych + indeksu) w jednej partycji logicznej kontenera|20 GB|20 GB|
 
 ## <a name="next-steps"></a>Następne kroki
 

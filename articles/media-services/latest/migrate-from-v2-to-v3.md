@@ -15,23 +15,25 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: ffbac18b3172dd0cd3d430bae5060be0a8d1bb21
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: b432f381bae79d783663130d06dbf874f00a9994
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082008"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128688"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Wskazówki dotyczące migracji dotyczące przenoszenia z Media Services V2 do wersji v3
 
 >Otrzymuj powiadomienia o tym, kiedy ponownie odwiedzasz Tę stronę pod kątem aktualizacji przez skopiowanie i wklejenie tego adresu URL: `https://docs.microsoft.com/api/search/rss?search=%22Migrate+from+Azure+Media+Services+v2+to+v3%22&locale=en-us` do czytnika kanału informacyjnego RSS.
 
-W tym artykule opisano zmiany wprowadzone w Azure Media Services v3, przedstawiono różnice między dwiema wersjami i przedstawiono wskazówki dotyczące migracji.
+Ten artykuł zawiera wskazówki dotyczące migracji z Media Services V2 do wersji v3.
 
 Jeśli masz już zainstalowaną usługę wideo na [starszej wersji interfejsów api Media Services V2](../previous/media-services-overview.md), przed migracją do interfejsów API v3 należy zapoznać się z poniższymi wskazówkami i kwestiami. Istnieje wiele zalet i nowych funkcji w interfejsie API v3, które zwiększają możliwości środowiska deweloperskiego i funkcje Media Services. Jednak zgodnie z opisem w sekcji [znane problemy](#known-issues) w tym artykule istnieją także pewne ograniczenia związane z zmianami między wersjami interfejsu API. Ta strona będzie utrzymywana, gdy zespół Media Services wprowadza dalsze ulepszenia interfejsów API v3 i rozwiązuje luki między wersjami. 
 
-> [!NOTE]
-> Za pomocą [Azure Portal](https://portal.azure.com/) można zarządzać [zdarzeniami na żywo](live-events-outputs-concept.md)v3, przeglądać (nie zarządzać) v3 [,](assets-concept.md)uzyskać informacje o uzyskiwaniu dostępu do interfejsów API. Aby uzyskać więcej informacji, zobacz [często zadawane pytania](frequently-asked-questions.md#can-i-use-the-azure-portal-to-manage-v3-resources). 
+## <a name="prerequisites"></a>Wymagania wstępne
+
+* Przegląd [Media Services V2 a v3](media-services-v2-vs-v3.md)
+* [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="benefits-of-media-services-v3"></a>Zalety Media Services v3
   
@@ -57,78 +59,6 @@ Jeśli masz już zainstalowaną usługę wideo na [starszej wersji interfejsów 
 * Bezpieczne pozyskiwanie RTMP.<br/>Gdy tworzysz wydarzenie na żywo, otrzymujesz 4 adresy URL pozyskiwania. 4 adresy URL pozyskiwania są prawie identyczne, mają ten sam token przesyłania strumieniowego (AppId), tylko część numeru portu. Dwa z adresów URL to podstawowy i zapasowy dla RTMP.   
 * Kontrola dostępu oparta na rolach (RBAC) jest dostępna dla jednostek. 
 
-## <a name="changes-from-v2"></a>Zmiany z wersji 2
-
-* W przypadku zasobów utworzonych w wersji 3 Media Services obsługuje tylko [szyfrowanie magazynu po stronie serwera usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
-    * Można używać interfejsów API v3 z zasobami utworzonymi przy użyciu interfejsów API v2, które mają [szyfrowanie magazynu](../previous/media-services-rest-storage-encryption.md) (AES 256) zapewniane przez Media Services.
-    * Nie można tworzyć nowych zasobów przy użyciu starszej wersji [szyfrowania pamięci](../previous/media-services-rest-storage-encryption.md) AES 256 z użyciem interfejsów API v3.
-* Właściwości [zasobu](assets-concept.md)w wersji 3 różnią się od v2, zobacz [jak mapa właściwości](assets-concept.md#map-v3-asset-properties-to-v2).
-* Zestawy SDK V3 są teraz rozłączone z ZESTAWem danych magazynu, co zapewnia większą kontrolę nad wersją zestawu SDK magazynu, którego chcesz używać, oraz pozwala uniknąć problemów z przechowywaniem wersji. 
-* W przypadku interfejsów API V3 wszystkie stawki bitów kodowania są w bitach na sekundę. Różni się to od ustawień wstępnych w wersji 2 Media Encoder Standard. Na przykład szybkość transmisji bitów w v2 zostanie określona jako 128 (KB/s), ale w wersji 3 będzie 128000 (bity/s). 
-* Jednostki AssetFiles, AccessPolicies i IngestManifests nie istnieją w wersji 3.
-* Właściwość IAsset. ParentAssets nie istnieje w wersji 3.
-* ContentKeys nie jest już jednostką, jest teraz właściwością lokalizatora przesyłania strumieniowego.
-* Obsługa Event Grid zastępuje NotificationEndpoints.
-* Zmieniono nazwy następujących jednostek:
-    * Dane wyjściowe zadania zastępują zadanie i są teraz częścią zadania.
-    * Lokalizator przesyłania strumieniowego zastępuje lokalizator.
-    * Wydarzenie na żywo zastępuje kanał.<br/>Rozliczenia wydarzeń na żywo opierają się na licznikach kanału na żywo. Aby uzyskać więcej informacji, zobacz temat [rozliczenia](live-event-states-billing.md) i [Cennik](https://azure.microsoft.com/pricing/details/media-services/).
-    * Wyjście na żywo zastępuje program.
-* Dane wyjściowe na żywo są uruchamiane w momencie utworzenia i zatrzymywane podczas usuwania. Programy pracowały inaczej w interfejsach API v2, musiały zostać uruchomione po utworzeniu.
-* Aby uzyskać informacje o zadaniu, należy znać nazwę przekształcenia, w której utworzono zadanie. 
-* W wersji 2 pliki metadanych [danych wejściowych](../previous/media-services-input-metadata-schema.md) i [wyjściowych](../previous/media-services-output-metadata-schema.md) XML są generowane w wyniku zadania kodowania. W wersji 3 format metadanych został zmieniony z XML na JSON. 
-* W Media Services V2 można określić wektor inicjalizacji (IV). W Media Services V3 nie można określić FairPlay IV. Chociaż nie ma to wpływu na klientów korzystających z Media Services w przypadku dostarczania pakietów i licencji, może to być problem w przypadku korzystania z systemu DRM innej firmy w celu dostarczenia licencji FairPlay (Tryb hybrydowy). W takim przypadku ważne jest, aby wiedzieć, że FairPlay IV pochodzi od identyfikatora klucza cbcs i można go pobrać za pomocą tej formuły:
-
-    ```
-    string cbcsIV =  Convert.ToBase64String(HexStringToByteArray(cbcsGuid.ToString().Replace("-", string.Empty)));
-    ```
-
-    with
-
-    ``` 
-    public static byte[] HexStringToByteArray(string hex)
-    {
-        return Enumerable.Range(0, hex.Length)
-            .Where(x => x % 2 == 0)
-            .Select(x => Convert.ToByte(hex.Substring(x, 2), 16))
-            .ToArray();
-    }
-    ```
-
-    Aby uzyskać więcej informacji, zobacz [kod C# Azure Functions dla Media Services V3 w trybie hybrydowym dla operacji na żywo i VOD](https://github.com/Azure-Samples/media-services-v3-dotnet-core-functions-integration/tree/master/LiveAndVodDRMOperationsV3).
- 
-> [!NOTE]
-> Zapoznaj się z konwencjami nazewnictwa, które są stosowane do [zasobów Media Services v3](media-services-apis-overview.md#naming-conventions). Przejrzyj również [nazwy obiektów BLOB](assets-concept.md#naming).
-
-## <a name="feature-gaps-with-respect-to-v2-apis"></a>Luki w funkcjach w odniesieniu do interfejsów API v2
-
-Interfejs API v3 ma następujące luki w odniesieniu do interfejsu API w wersji 2. Zamknięcie przerw jest w toku.
-
-* [Koder w warstwie Premium](../previous/media-services-premium-workflow-encoder-formats.md) i starsze [procesory analizy multimediów](../previous/media-services-analytics-overview.md) (Azure Media Services Indexer 2 — wersja zapoznawcza, Front redactor itp.) nie są dostępne za pośrednictwem wersji 3.<br/>Klienci, którzy chcą przeprowadzić migrację z Media Indexer 1 lub 2 wersji zapoznawczej, mogą natychmiast użyć ustawień wstępnych AudioAnalyzer w interfejsie API v3.  To nowe ustawienie wstępne zawiera więcej funkcji niż starszy Media Indexer 1 lub 2. 
-* Wiele [zaawansowanych funkcji Media Encoder standard w](../previous/media-services-advanced-encoding-with-mes.md) interfejsie API v2 nie są obecnie dostępne w wersji 3, na przykład:
-  
-    * Łączenie elementów zawartości
-    * Nakładki
-    * Przycinanie
-    * Miniaturowe sprites
-    * Wstawianie dyskretnej ścieżki audio, gdy dane wejściowe nie zawierają dźwięku
-    * Wstawianie ścieżki wideo, gdy dane wejściowe nie zawierają wideo
-* Zdarzenia na żywo z transkodowaniem obecnie nie obsługują wstawiania poza strumień i znacznik usługi AD za pośrednictwem wywołania interfejsu API. 
-
-> [!NOTE]
-> Oznacz ten artykuł zakładką i Kontynuuj sprawdzanie aktualizacji.
- 
-## <a name="code-differences"></a>Różnice w kodzie
-
-W poniższej tabeli przedstawiono różnice w kodzie między wersjami 2 i V3 dla typowych scenariuszy.
-
-|Scenariusz|INTERFEJS API V2|INTERFEJS API V3|
-|---|---|---|
-|Tworzenie elementu zawartości i przekazywanie pliku |[przykład v2 .NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[przykład .NET w wersji 3](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
-|Przesyłanie zadania|[przykład v2 .NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[przykład .NET w wersji 3](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>Pokazuje, jak najpierw utworzyć transformację, a następnie przesłać zadanie.|
-|Publikowanie elementu zawartości przy użyciu szyfrowania AES |1. Utwórz ContentKeyAuthorizationPolicyOption<br/>2. Utwórz ContentKeyAuthorizationPolicy<br/>3. Utwórz AssetDeliveryPolicy<br/>4. Utwórz element zawartości i przekaż zawartość lub Prześlij zadanie, a następnie użyj elementu zawartości wyjściowej<br/>5. Skojarz AssetDeliveryPolicy z elementem zawartości<br/>6. Utwórz ContentKey<br/>7. Dołącz ContentKey do zasobu<br/>8. Utwórz AccessPolicy<br/>9. Tworzenie lokalizatora<br/><br/>[przykład v2 .NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1. Utwórz zasady klucza zawartości<br/>2. Utwórz element zawartości<br/>3. Przekaż zawartość lub użyj elementu zawartości jako JobOutput<br/>4. Tworzenie lokalizatora przesyłania strumieniowego<br/><br/>[przykład .NET w wersji 3](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
-|Pobierz szczegóły zadania i Zarządzaj zadaniami |[Zarządzanie zadaniami za pomocą wersji 2](../previous/media-services-dotnet-manage-entities.md#get-a-job-reference) |[Zarządzanie zadaniami za pomocą wersji 3](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L546)|
-
 ## <a name="known-issues"></a>Znane problemy
 
 *  Obecnie można użyć [Azure Portal](https://portal.azure.com/) , aby:
@@ -153,5 +83,4 @@ Zapoznaj się z artykułem [community Azure Media Services](media-services-commu
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby sprawdzić, jak łatwo rozpocząć kodowanie i strumieniowe przesyłanie plików wideo, zobacz [Strumieniowe przesyłanie plików](stream-files-dotnet-quickstart.md). 
-
+[Samouczek: kodowanie pliku zdalnego na podstawie adresu URL i strumieniowego wideo — .NET](stream-files-dotnet-quickstart.md)

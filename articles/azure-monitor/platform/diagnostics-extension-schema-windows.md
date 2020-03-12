@@ -6,12 +6,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
-ms.openlocfilehash: 3adf4b59c0605859ada75577c083094541815984
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 4c711e1b0a63fbcf978c0e4467eadaed8d91f3de
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384125"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129333"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Schemat rozszerzenia diagnostyki systemu Windows
 Diagnostyka Azure Extension to Agent w Azure Monitor, który zbiera dane monitorowania z systemu operacyjnego gościa i obciążeń zasobów obliczeniowych platformy Azure. W tym artykule opisano Schemat używany do konfiguracji rozszerzenia diagnostyki na maszynach wirtualnych z systemem Windows i innych zasobów obliczeniowych.
@@ -506,7 +506,7 @@ Element najwyższego poziomu pliku konfiguracji diagnostyki.
 ```
 
 > [!NOTE]
-> Publiczna Definicja konfiguracji ujścia Azure Monitor ma dwie właściwości, *PrincipalId* i *Secret*. Są one wymagane tylko w przypadku klasycznych maszyn wirtualnych i klasycznych usług Cloud Services. Tych właściwości nie należy używać w przypadku innych zasobów.
+> Kolekcja prywatnych Azure Monitor konfiguracji ujścia ma dwie właściwości, *PrincipalId* i *Secret*. Są one wymagane tylko w przypadku klasycznych maszyn wirtualnych i klasycznych usług Cloud Services. Tych właściwości nie należy używać w przypadku innych zasobów.
 
 
 ```json

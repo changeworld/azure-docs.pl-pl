@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/18/2019
+ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: a6a1371553ccd9b810ba4649af448fb8847d0ed8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 1d8a42a4ec106418b481ac705d3ce1b33f58a312
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380717"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086485"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Zalecenia dotyczące zabezpieczeń — Przewodnik referencyjny
 
@@ -25,7 +25,10 @@ Ten artykuł zawiera listę zaleceń, które mogą być widoczne w Azure Securit
 
 Aby dowiedzieć się, jak odpowiedzieć na te zalecenia, zobacz temat [korygowanie zaleceń w Azure Security Center](security-center-remediate-recommendations.md).
 
-Twój bezpieczny wynik jest oparty na liczbie Security Center zaleceń, które zostały przez Ciebie skorygowane. Aby określić priorytety rekomendacji do rozwiązania, należy wziąć pod uwagę ważność każdego z nich.
+Twój bezpieczny wynik jest oparty na liczbie Security Center zaleceń, które zostały ukończone. Aby zdecydować, które zalecenia należy rozwiązać w pierwszej kolejności, należy zapoznać się z ważnością każdego z nich i potencjalnym wpływem na bezpieczny wynik.
+
+>[!TIP]
+> Jeśli opis zalecenia brzmi "Brak powiązanych zasad", zazwyczaj jest to spowodowane tym, że zalecenie jest zależne od innego zalecenia i *jego* zasad. Na przykład zalecenie "błędy kondycji programu Endpoint Protection należy skorygować...", zależy od zalecenia, które sprawdza, czy rozwiązanie Endpoint Protection jest *zainstalowane* nawet ("rozwiązanie Endpoint Protection powinno być zainstalowane..."). Odpowiednie *zalecenie ma* zasady. Ograniczenie zasad wyłącznie do zalecenia podstawy upraszcza zarządzanie zasadami.
 
 ## <a name="recs-network"></a>Zalecenia dotyczące sieci
 
@@ -106,7 +109,7 @@ Twój bezpieczny wynik jest oparty na liczbie Security Center zaleceń, które z
 |**Usterki należy skorygować przez rozwiązanie do oceny luk w zabezpieczeniach**|Maszyny wirtualne, dla których wdrożono luk w zabezpieczeniach 3rd strona rozwiązania do oceny są stale oceniane względem aplikacji i luk w zabezpieczeniach systemu operacyjnego. Zawsze, gdy zostaną znalezione lukami umożliwiającymi takie ataki, są dostępne, aby uzyskać więcej informacji, w ramach zalecenia.<br>(Powiązane zasady: usterki należy skorygować przez rozwiązanie do oceny luk w zabezpieczeniach)|Wysoka|Nie|Maszyna|
 |**Luki w zabezpieczeniach konfiguracji zabezpieczeń na maszynach należy skorygować**|Korygowanie luk w zabezpieczeniach w konfiguracji zabezpieczeń na maszynach w taki sposób, aby chronić je przed atakami.<br>(Powiązane zasady: luki w zabezpieczeniach konfiguracyjnych na maszynach należy skorygować)|Małe|Nie|Maszyna|
 |**Luki w zabezpieczeniach w konfiguracjach zabezpieczeń kontenerów należy skorygować**|Skoryguj luki w zabezpieczeniach konfiguracji zabezpieczeń na maszynach z zainstalowaną platformą Docker, aby ochronić je przed atakami.<br>(Powiązane zasady: usterki w konfiguracjach zabezpieczeń kontenera należy skorygować)|Wysoka|Nie|Maszyna|
-|**Na maszynach należy rozwiązać problemy dotyczące kondycji programu Endpoint Protection**|Dla pełnej ochrony usługa Security Center należy rozwiązać problemy dotyczące monitorowania agenta na maszynach, postępując zgodnie z instrukcjami w przewodniku rozwiązywania problemów.<br>(Żadne powiązane zasady nie są zależne od "Zainstaluj rozwiązanie Endpoint Protection na swoich maszynach")|Medium|Nie|Maszyna|
+|**Na maszynach należy rozwiązać problemy dotyczące kondycji programu Endpoint Protection**|Dla pełnej ochrony usługa Security Center należy rozwiązać problemy dotyczące monitorowania agenta na maszynach, postępując zgodnie z instrukcjami w przewodniku rozwiązywania problemów.<br>(To zalecenie jest zależne od rekomendacji "Instalowanie rozwiązania Endpoint Protection na maszynach" i jego zasad)|Medium|Nie|Maszyna|
 ||||||
 
 

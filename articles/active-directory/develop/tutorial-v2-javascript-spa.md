@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5657a2d2c348b371f81aed74c92e52b5199cdc61
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 51a456a05e1d41057e80b92e44f997e1b52cb132
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377423"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128462"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Logowanie użytkowników i wywoływanie interfejsu API Microsoft Graph z aplikacji JavaScript jednostronicowej (SPA)
 
@@ -28,6 +28,9 @@ W tym przewodniku przedstawiono sposób, w jaki aplikacja obsługująca skrypty 
 - Zaloguj się do kont osobistych, a także kont służbowych 
 - Uzyskiwanie tokenu dostępu
 - Wywołaj interfejs API Microsoft Graph lub inne interfejsy API, które wymagają tokenów dostępu z *punktu końcowego platformy tożsamości firmy Microsoft*
+
+>[!NOTE]
+> Jeśli dopiero zaczynasz korzystać z platformy tożsamości firmy Microsoft, zalecamy rozpoczęcie od [użytkowników logowania i uzyskanie tokenu dostępu za pomocą przewodnika Szybki Start dotyczącego języka JavaScript](quickstart-v2-javascript.md).
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Jak działa Przykładowa aplikacja generowana przez ten przewodnik
 

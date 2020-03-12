@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43f355f22774477466d2965cef02adcc4ec4f497
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: b3cd858653d54ae622758d218bb887d94bceb697
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378127"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086381"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrowanie istniejącej infrastruktury NPS z usługą Azure Multi-Factor Authentication
 
@@ -250,9 +250,9 @@ Możesz utworzyć ten klucz i ustawić dla niego wartość FALSE, gdy użytkowni
 
 ### <a name="nps-extension-health-check-script"></a>Skrypt sprawdzania kondycji rozszerzenia serwera NPS
 
-Poniższy skrypt jest dostępny w galerii TechNet, aby wykonać podstawowe kroki kontroli kondycji podczas rozwiązywania problemów z rozszerzeniem serwera NPS.
+Następujący skrypt jest dostępny do wykonywania podstawowych kroków kontroli kondycji podczas rozwiązywania problemów z rozszerzeniem serwera NPS.
 
-[MFA_NPS_Troubleshooter. ps1](https://gallery.technet.microsoft.com/Azure-MFA-NPS-Extension-648de6bb)
+[MFA_NPS_Troubleshooter. ps1](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)
 
 ---
 
@@ -334,6 +334,8 @@ Zaleca się, aby starsze i słabsze mechanizmy szyfrowania były wyłączone lub
 Dodatkowe wskazówki dotyczące rozwiązywania problemów i możliwe rozwiązania można znaleźć w artykule [Rozwiązywanie komunikatów o błędach z rozszerzenia serwera NPS dla usługi Azure Multi-Factor Authentication](howto-mfa-nps-extension-errors.md).
 
 ## <a name="next-steps"></a>Następne kroki
+
+- [Omówienie i konfiguracja serwera zasad sieciowych w systemie Windows Server](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)
 
 - Skonfiguruj Alternatywne identyfikatory logowania lub skonfiguruj listę wyjątków dla adresów IP, które nie powinny przeprowadzać weryfikacji dwuetapowej w [zaawansowanych opcjach konfiguracji dla rozszerzenia serwera NPS dla Multi-Factor Authentication](howto-mfa-nps-extension-advanced.md)
 

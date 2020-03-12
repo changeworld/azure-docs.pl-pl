@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 6c7112b6b5944042036fd3e7af6ec6f6dfbde0c0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 795acd67a8d4a9f8b8b7d78799a92134f249cf8d
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359011"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126961"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Model cen dla Azure Logic Apps
 
@@ -64,7 +64,7 @@ Dowiedz się więcej o tym, jak rozliczenia działają dla [wyzwalaczy](#trigger
 
   Aby uzyskać więcej informacji na temat limitów kont integracji, zobacz [Logic Apps limity i konfiguracja](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits). Więcej informacji na temat [warstw kont integracji i ich modelu cen](#integration-accounts) można znaleźć w dalszej części tego tematu.
 
-W przypadku wybrania jednostki SKU Premium ISE jednostka podstawowa ma stałą pojemność. Jeśli potrzebujesz większej przepływności, możesz [dodać więcej jednostek skalowania](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity)podczas tworzenia lub później. Jednostka SKU ISE dewelopera nie ma możliwości dodawania większej liczby jednostek skalowania. Aplikacje logiki, które działają w ISE, nie wiążą się z kosztami przechowywania danych.
+W przypadku wybrania jednostki SKU Premium ISE jednostka podstawowa ma stałą pojemność. Jeśli potrzebujesz większej przepływności, możesz [dodać więcej jednostek skalowania](../logic-apps/ise-manage-integration-service-environment.md#add-capacity)podczas tworzenia lub później. Jednostka SKU ISE dewelopera nie ma możliwości dodawania większej liczby jednostek skalowania. Aplikacje logiki, które działają w ISE, nie wiążą się z kosztami przechowywania danych.
 
 Stawki cenowe znajdują się w temacie [Logic Apps cenniku](https://azure.microsoft.com/pricing/details/logic-apps).
 

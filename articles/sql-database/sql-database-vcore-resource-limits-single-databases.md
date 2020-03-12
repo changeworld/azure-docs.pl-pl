@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 01/22/2020
-ms.openlocfilehash: 267779afc749fccba41935741630a759576d6e77
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/11/2020
+ms.openlocfilehash: a8f62a24ff2c6571b5267fdbf4f23bd9e05ee499
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359791"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128782"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Limity zasobów dla pojedynczych baz danych przy użyciu modelu zakupu rdzeń wirtualny
 
@@ -102,6 +102,7 @@ Możesz ustawić warstwę usług, rozmiar obliczeń i ilość miejsca do magazyn
 |Maksymalny rozmiar danych TempDB (GB)|32|64|96|128|160|192|
 |Typ magazynu| [Uwaga 1](#notes) |[Uwaga 1](#notes)|[Uwaga 1](#notes) |[Uwaga 1](#notes) |[Uwaga 1](#notes) |[Uwaga 1](#notes) |
 |Maksymalna liczba operacji we/wy danych *|[Uwaga 2](#notes)|[Uwaga 2](#notes)|[Uwaga 2](#notes)|[Uwaga 2](#notes)|[Uwaga 2](#notes)|[Uwaga 2](#notes)|
+|Maksymalny współczynnik rejestrowania (MB/s)|105 |105 |105 |105 |105 |105 |
 |We/Wy, czas oczekiwania (w przybliżeniu)|[Uwaga 3](#notes)|[Uwaga 3](#notes)|[Uwaga 3](#notes)|[Uwaga 3](#notes)|[Uwaga 3](#notes)|[Uwaga 3](#notes)|
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|200|400|600|800|1000|1200|
 |Maksymalna liczba współbieżnych sesji|30,000|30,000|30,000|30,000|30,000|30,000|
@@ -126,6 +127,7 @@ Możesz ustawić warstwę usług, rozmiar obliczeń i ilość miejsca do magazyn
 |Maksymalny rozmiar danych TempDB (GB)|224|256|288|320|512|768|
 |Typ magazynu| [Uwaga 1](#notes) |[Uwaga 1](#notes) |[Uwaga 1](#notes) |[Uwaga 1](#notes) |[Uwaga 1](#notes) |[Uwaga 1](#notes) |
 |Maksymalna liczba operacji we/wy danych *|[Uwaga 2](#notes)|[Uwaga 2](#notes)|[Uwaga 2](#notes)|[Uwaga 2](#notes)|[Uwaga 2](#notes)|[Uwaga 2](#notes)|
+|Maksymalny współczynnik rejestrowania (MB/s)|105 |105 |105 |105 |105 |105 |
 |We/Wy, czas oczekiwania (w przybliżeniu)|[Uwaga 3](#notes)|[Uwaga 3](#notes)|[Uwaga 3](#notes)|[Uwaga 3](#notes)|[Uwaga 3](#notes)|[Uwaga 3](#notes)|
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|1400|1600|1800|2000|3200|4800|
 |Maksymalna liczba współbieżnych sesji|30,000|30,000|30,000|30,000|30,000|30,000|
@@ -154,6 +156,7 @@ Możesz ustawić warstwę usług, rozmiar obliczeń i ilość miejsca do magazyn
 |Maksymalny rozmiar danych TempDB (GB)|64|128|192|256|320|384|448|
 |Typ magazynu| [Uwaga 1](#notes) |[Uwaga 1](#notes)|[Uwaga 1](#notes) |[Uwaga 1](#notes) |[Uwaga 1](#notes) |[Uwaga 1](#notes) |[Uwaga 1](#notes) |
 |Maksymalna liczba operacji we/wy danych *|[Uwaga 2](#notes)|[Uwaga 2](#notes)|[Uwaga 2](#notes)|[Uwaga 2](#notes)|[Uwaga 2](#notes)|[Uwaga 2](#notes)|[Uwaga 2](#notes)|
+|Maksymalny współczynnik rejestrowania (MB/s)|105 |105 |105 |105 |105 |105 |105 |
 |We/Wy, czas oczekiwania (w przybliżeniu)|[Uwaga 3](#notes)|[Uwaga 3](#notes)|[Uwaga 3](#notes)|[Uwaga 3](#notes)|[Uwaga 3](#notes)|[Uwaga 3](#notes)|[Uwaga 3](#notes)|
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|200|400|600|800|1000|1200|1400|
 |Maksymalna liczba współbieżnych sesji|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
@@ -180,6 +183,7 @@ Możesz ustawić warstwę usług, rozmiar obliczeń i ilość miejsca do magazyn
 |Maksymalny rozmiar danych TempDB (GB)|512|576|640|768|1024|1280|2560|
 |Typ magazynu| [Uwaga 1](#notes) |[Uwaga 1](#notes)|[Uwaga 1](#notes)|[Uwaga 1](#notes) |[Uwaga 1](#notes) |[Uwaga 1](#notes) |[Uwaga 1](#notes) |
 |Maksymalna liczba operacji we/wy danych *|[Uwaga 2](#notes)|[Uwaga 2](#notes)|[Uwaga 2](#notes)|[Uwaga 2](#notes)|[Uwaga 2](#notes)|[Uwaga 2](#notes)|[Uwaga 2](#notes)|
+|Maksymalny współczynnik rejestrowania (MB/s)|105 |105 |105 |105 |105 |105 |105 |
 |We/Wy, czas oczekiwania (w przybliżeniu)|[Uwaga 3](#notes)|[Uwaga 3](#notes)|[Uwaga 3](#notes)|[Uwaga 3](#notes)|[Uwaga 3](#notes)|[Uwaga 3](#notes)|[Uwaga 3](#notes)|
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|1600|1800|2000|2400|3200|4000|8000|
 |Maksymalna liczba współbieżnych sesji|30,000|30,000|30,000|30,000|30,000|30,000|30,000|

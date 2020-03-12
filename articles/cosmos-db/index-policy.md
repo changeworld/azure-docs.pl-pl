@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: thweiss
-ms.openlocfilehash: 886d17098259ddbb78698a3c1280f797e370c714
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 86dbcee7150adacd0e961dbe07cf66ad117d2041
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386966"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128840"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Zasady indeksowania w Azure Cosmos DB
 
@@ -34,7 +34,7 @@ Azure Cosmos DB obsługuje dwa tryby indeksowania:
 
 Domyślnie zasady indeksowania są ustawione na `automatic`. Jest to osiągane przez ustawienie właściwości `automatic` w zasadach indeksowania, aby `true`. Ustawienie tej właściwości na `true` umożliwia usłudze Azure CosmosDB Automatyczne indeksowanie dokumentów w miarę ich pisania.
 
-## <a name="including-and-excluding-property-paths"></a>Uwzględnianie i wykluczanie ścieżek właściwości
+## <a id="include-exclude-paths"></a>Uwzględnianie i wykluczanie ścieżek właściwości
 
 Niestandardowe zasady indeksowania mogą określać ścieżki właściwości, które są jawnie dołączone lub wykluczone z indeksowania. Przez optymalizację liczby indeksowanych ścieżek można obniżyć ilość miejsca używanego przez kontener i poprawić opóźnienia operacji zapisu. Te ścieżki są zdefiniowane po [metodzie opisanej w sekcji Omówienie indeksowania](index-overview.md#from-trees-to-property-paths) z następującymi dodatkami:
 
@@ -75,7 +75,7 @@ Każda zasada indeksowania musi zawierać ścieżkę katalogu głównego `/*` ja
 
 - W przypadku ścieżek ze zwykłymi znakami, które zawierają: znaki alfanumeryczne i _ (podkreślenie), nie trzeba określać ciągu ścieżki wokół podwójnych cudzysłowów (na przykład "/Path/?"). W przypadku ścieżek z innymi znakami specjalnymi należy wypróbować ciąg ścieżki wokół podwójnych cudzysłowów (na przykład "/\"ścieżka-ABC\"/?"). Jeśli oczekujesz znaków specjalnych w ścieżce, możesz pominąć wszystkie ścieżki w celu zapewnienia bezpieczeństwa. Funkcjonalnie nie ma żadnej różnicy, jeśli wykorzystasz wszystkie ścieżki, a tylko te, które zawierają znaki specjalne.
 
-- Właściwość systemowa "ETag" jest domyślnie wykluczona z indeksowania, chyba że element ETag zostanie dodany do ścieżki dołączonej do indeksowania.
+- Właściwość systemowa "_etag" jest domyślnie wykluczona z indeksowania, chyba że element ETag zostanie dodany do ścieżki dołączonej do indeksowania.
 
 W przypadku dołączania i wykluczania ścieżek mogą wystąpić następujące atrybuty:
 

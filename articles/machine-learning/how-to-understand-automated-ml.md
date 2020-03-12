@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/05/2019
-ms.openlocfilehash: 69cf79f8258f85f2fb5e787f91aa843837d0a3a1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: c5f12da3606361b504d4581916d9645fa3cd24f0
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393364"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129686"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Informacje o zautomatyzowanych wynikach uczenia maszynowego
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,12 +29,12 @@ Dowiedz się więcej o usługach:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji na platformie Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
 
 * Utwórz eksperyment dla automatycznego przebiegu uczenia maszynowego z zestawem SDK lub w programie Azure Machine Learning Studio.
 
     * Użyj zestawu SDK, aby utworzyć [model klasyfikacji](how-to-auto-train-remote.md) lub [model regresji](tutorial-auto-train-models.md)
-    * Użyj [Azure Machine Learning Studio](how-to-create-portal-experiments.md) , aby utworzyć model klasyfikacji lub regresji przez przekazanie odpowiednich danych.
+    * Użyj [Azure Machine Learning Studio](how-to-use-automated-ml-for-ml-models.md) , aby utworzyć model klasyfikacji lub regresji przez przekazanie odpowiednich danych.
 
 ## <a name="view-the-run"></a>Wyświetlanie przebiegu
 
@@ -89,7 +89,7 @@ balanced_accuracy|Dokładność o zrównoważonym obciążeniu jest średnią ar
 f1_score_macro|F1 wynik jest harmoniczna dokładności i odwołania. Makro jest średnią arytmetyczną wyniku F1 dla każdej klasy.|[Podstaw](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|Średni = "makro"|
 f1_score_micro|F1 wynik jest harmoniczna dokładności i odwołania. Mikro jest obliczany globalnie przez zliczanie całkowitej liczby pozytywnych dodatnich, fałszywych wartości ujemnych i fałszywych dodatnich.|[Podstaw](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|Średni = "micro"|
 f1_score_weighted|F1 wynik jest harmoniczna dokładności i odwołania. Średnia ważona przez klasy częstotliwość oceny F1 dla każdej klasy|[Podstaw](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|Średni = "ważona"|
-log_loss|To jest funkcja utraty używanych w regresji logistycznej (wielomian) i rozszerzenia takich jak sieci neuronowych, zdefiniowane jako ujemny dziennika prawdopodobieństwo true etykiet podane przewidywania prawdopodobieństwa klasyfikatora. Dla pojedynczego przykładu o prawdziwej etykiecie yt w {0,1} i szacowanego prawdopodobieństwa YP yt = 1, utrata dziennika to-log P (&#124;yt YP) =-(YT log (YP) + (1-yt) log (1-YP)).|[Podstaw](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|None|
+log_loss|Jest to funkcja strat użyta w (MULTINOMIAL) logistyki i rozszerzenia, takie jak sieci neuronowych, zdefiniowane jako negatywna prawdopodobieństwo rejestrowania dla prawdziwych etykiet z przewidywaniami klasyfikatora probabilistyczne. Dla pojedynczego przykładu o prawdziwej etykiecie yt w {0,1} i szacowanego prawdopodobieństwa YP yt = 1, utrata dziennika to-log P (&#124;yt YP) =-(YT log (YP) + (1-yt) log (1-YP)).|[Podstaw](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|None|
 norm_macro_recall|Odwołaj znormalizowane — makro jest makro odwołania znormalizowane, dzięki czemu losowe wydajności ma wynik 0 i doskonałe wydajności ma wynik 1. Jest to osiągane przez norm_macro_recall: = (recall_score_macro-R)/(1-R), gdzie R jest oczekiwaną wartością recall_score_macro dla prognoz losowych (tj. R = 0,5 dla klasyfikacji binarnej i języka R = (1/C) dla błędów klasyfikacji klasy C).|[Podstaw](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|Average = "Macro" |
 precision_score_macro|Precyzja to procent nieprzewidywalnych elementów, które są poprawnie oznaczone etykietami. Makro jest arytmetyczną dokładnością dla każdej klasy.|[Podstaw](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|Średni = "makro"|
 precision_score_micro|Precyzja to procent nieprzewidywalnych elementów, które są poprawnie oznaczone etykietami. Mikro jest obliczany globalnie przez obliczenie całkowitej liczby pozytywnych dodatnich i fałszywych wartości dodatnich.|[Podstaw](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|Średni = "micro"|
@@ -190,7 +190,7 @@ Użyj wykresu skumulowanego zyski ułatwiające wybór odcięcia Klasyfikacja za
 ### <a name="calibration-chart"></a>Wykres kalibracyjny
 
 #### <a name="what-is-a-calibration-chart"></a>Co to jest wykres kalibracyjny?
-Wykres odwzorowania służy do wyświetlania zaufania modelu predykcyjnego. Odbywa się to poprzez przedstawiający relację między prawdopodobieństwa przewidywanych i rzeczywistych prawdopodobieństwo, gdzie "prawdopodobieństwo" oznacza prawdopodobieństwo, że konkretnego wystąpienia, należy w ramach niektóre etykiety.
+Wykres odwzorowania służy do wyświetlania zaufania modelu predykcyjnego. Robi to, pokazując zależność między przewidywanym prawdopodobieństwem a rzeczywistym prawdopodobieństwem, gdzie "prawdopodobieństwo" oznacza prawdopodobieństwo, że określone wystąpienie należy do pewnej etykiety.
 #### <a name="what-does-automated-ml-do-with-the-calibration-chart"></a>Co robią automatyczne ML z wykresem kalibracyjnym?
 W przypadku wszystkich problemów klasyfikacji możesz przejrzeć odwzorowania linii średniej micro, średnia — makro i każda klasa w danym modelu predykcyjnego.
 

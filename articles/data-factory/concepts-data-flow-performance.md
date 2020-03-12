@@ -6,19 +6,22 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 02/24/2020
-ms.openlocfilehash: cca22c499efde74bb1469222d2f8a6e576452aa2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/11/2020
+ms.openlocfilehash: 1a6b50456a5dc3ff89fe7b513f406dc68bd2401e
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381958"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129167"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Przewodnik dotyczący wydajności i dostrajania przepływu danych
 
 Mapowanie przepływów danych w Azure Data Factory zapewnia interfejs bez kodu do projektowania, wdrażania i organizowania transformacji danych na dużą skalę. Jeśli nie masz doświadczenia w mapowaniu przepływów danych, zobacz [Omówienie przepływu danych mapowania](concepts-data-flow-overview.md).
 
 Podczas projektowania i testowania przepływów danych z poziomu środowiska ADF APD upewnij się, że jest włączona opcja tryb debugowania, aby wykonać przepływy danych w czasie rzeczywistym bez oczekiwania na rozgrzewanie się klastra. Aby uzyskać więcej informacji, zobacz [tryb debugowania](concepts-data-flow-debug-mode.md).
+
+Ten film wideo pokazuje przykładowy chronometraż przekształcania danych za pomocą przepływów danych:
+> [!VIDEO https://www.youtube.com/watch?v=6CSbWm4lRhw]
 
 ## <a name="monitoring-data-flow-performance"></a>Monitorowanie wydajności przepływu danych
 

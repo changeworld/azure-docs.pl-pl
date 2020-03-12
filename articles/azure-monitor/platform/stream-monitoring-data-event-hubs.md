@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: b22f779d616751ebaa3dad853d5aa23ec4969f23
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 08177165439ff7d3205e31757e5d1e28759a9836
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381156"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129595"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>Przesyłanie strumieniowe danych monitorowania platformy Azure do centrum zdarzeń
 Azure Monitor zapewnia pełne rozwiązanie do monitorowania stosu dla aplikacji i usług na platformie Azure, w innych chmurach i lokalnie. Oprócz Azure Monitor do analizowania danych i korzystania z nich w różnych scenariuszach monitorowania może być konieczne wysłanie ich do innych narzędzi do monitorowania w środowisku. Najbardziej efektywną metodą przesyłania strumieniowego danych monitorowania do zewnętrznych narzędzi w większości przypadków jest użycie [usługi Azure Event Hubs](/azure/event-hubs/). Ten artykuł zawiera krótki opis sposobu przesyłania strumieniowego danych monitorowania z różnych źródeł do centrum zdarzeń oraz linki do szczegółowych wskazówek.
@@ -35,7 +35,7 @@ Przed skonfigurowaniem przesyłania strumieniowego dla dowolnego źródła danyc
 | Warstwa | Dane | Metoda |
 |:---|:---|:---|
 | [Dzierżawa platformy Azure](data-sources.md#azure-tenant) | Azure Active Directory dzienników inspekcji | Skonfiguruj ustawienia diagnostyczne dzierżawy w dzierżawie usługi AAD. Aby uzyskać szczegółowe informacje, zobacz [Samouczek: przesyłanie strumieniowe dzienników Azure Active Directory do centrum zdarzeń platformy Azure](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) . |
-| [Subskrypcja platformy Azure](data-sources.md#azure-subscription) | Dziennik aktywności platformy Azure | Utwórz profil dziennika, aby wyeksportować zdarzenia dziennika aktywności do Event Hubs.  Aby uzyskać szczegółowe informacje [, zobacz Eksportowanie dziennika aktywności platformy Azure do magazynu lub Event Hubs platformy Azure](activity-log-export.md) . |
+| [Subskrypcja platformy Azure](data-sources.md#azure-subscription) | Dziennik aktywności platformy Azure | Utwórz profil dziennika, aby wyeksportować zdarzenia dziennika aktywności do Event Hubs.  Aby uzyskać szczegółowe informacje [, zobacz Przesyłanie strumieniowe dzienników platformy Azure do usługi azure Event Hubs](resource-logs-stream-event-hubs.md) . |
 | [Zasoby platformy Azure](data-sources.md#azure-resources) | Metryki platformy<br> Dzienniki zasobów |Oba typy danych są wysyłane do centrum zdarzeń przy użyciu ustawienia diagnostycznego zasobu. Aby uzyskać szczegółowe informacje [, zobacz Przesyłanie strumieniowe dzienników zasobów platformy Azure do centrum zdarzeń](resource-logs-stream-event-hubs.md) . |
 | [System operacyjny (gościa)](data-sources.md#operating-system-guest) | Maszyny wirtualne platformy Azure | Zainstaluj [rozszerzenie Diagnostyka Azure](diagnostics-extension-overview.md) na maszynach wirtualnych z systemem Windows i Linux na platformie Azure. Zobacz [przesyłanie strumieniowe danych Diagnostyka Azure w ścieżce aktywnej przy użyciu Event Hubs](diagnostics-extension-stream-event-hubs.md) , aby uzyskać szczegółowe informacje na temat maszyn wirtualnych z systemem Windows i [użyć rozszerzenia diagnostyki systemu Linux do monitorowania metryk i dzienników](../../virtual-machines/extensions/diagnostics-linux.md#protected-settings) w celu uzyskania szczegółowych informacji na temat maszyn wirtualnych |
 | [Kod aplikacji](data-sources.md#application-code) | Application Insights | Application Insights nie zapewnia bezpośredniej metody przesyłania strumieniowego danych do centrów zdarzeń. Można [skonfigurować ciągły eksport](../../azure-monitor/app/export-telemetry.md) danych Application Insights do konta magazynu, a następnie użyć aplikacji logiki do wysłania danych do centrum zdarzeń zgodnie z opisem w artykule [Ręczne przesyłanie strumieniowe za pomocą aplikacji logiki](#manual-streaming-with-logic-app). |
@@ -56,7 +56,7 @@ Kierowanie danych monitorowania do centrum zdarzeń za pomocą Azure Monitor poz
 | ArcSight | Nie | Łącznik inteligentny ArcSight usługi Azure Event Hub jest dostępny jako część [kolekcji inteligentnych łączników ArcSight](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852). |
 | Serwer Syslog | Nie | Jeśli chcesz przesyłać strumieniowo Azure Monitor dane bezpośrednio do serwera dziennika systemowego, możesz użyć [rozwiązania na podstawie funkcji platformy Azure](https://github.com/miguelangelopereira/azuremonitor2syslog/).
 | LogRhythm | Nie| Instrukcje dotyczące konfigurowania LogRhythm do zbierania dzienników z centrum zdarzeń są dostępne [tutaj](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/). 
-|Logz.io | Tak | Aby uzyskać więcej informacji, zobacz [wprowadzenie do monitorowania i rejestrowania przy użyciu programu Logz.IO for Java Apps uruchomionego na platformie Azure](https://docs.microsoft.com/azure/java/java-get-started-with-logzio)
+|Logz.io | Yes | Aby uzyskać więcej informacji, zobacz [wprowadzenie do monitorowania i rejestrowania przy użyciu programu Logz.IO for Java Apps uruchomionego na platformie Azure](https://docs.microsoft.com/azure/java/java-get-started-with-logzio)
 
 
 ## <a name="next-steps"></a>Następne kroki

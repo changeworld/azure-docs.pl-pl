@@ -6,12 +6,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: rogarana
-ms.openlocfilehash: 223906343c2391d03d8526026d3daad3174791ed
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 1f904435622c8128810bb0e381308c8a308dd360
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362374"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128575"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>Włącz uwierzytelnianie Active Directory za pośrednictwem protokołu SMB dla udziałów plików platformy Azure
 
@@ -159,7 +159,7 @@ Następnie skrypt włączy tę funkcję na koncie magazynu. Aby ręcznie wykona�
 ```PowerShell
 #Set the feature flag on the target storage account and provide the required AD domain information
 
-Set-AzStorageAccount -ResourceGroupName "<your-resource-group-name-here>" -Name "<your-storage-account-name-here>" -EnableActiveDirectoryDomainServiesForFile $true -ActiveDirectoryDomainName "<your-domain-name-here>" -ActiveDirectoryNetBiosDomainName "<your-netbios-domain-name-here>" -ActiveDirectoryForestName "<your-forest-name-here>" -ActiveDirectoryDomainGuid "<your-guid-here>" -ActiveDirectoryDomainsid "<your-domain-sid-here>" -ActiveDirectoryAzureStorageSid "<your-storage-account-sid>"
+Set-AzStorageAccount -ResourceGroupName "<your-resource-group-name-here>" -Name "<your-storage-account-name-here>" -EnableActiveDirectoryDomainServicesForFile $true -ActiveDirectoryDomainName "<your-domain-name-here>" -ActiveDirectoryNetBiosDomainName "<your-netbios-domain-name-here>" -ActiveDirectoryForestName "<your-forest-name-here>" -ActiveDirectoryDomainGuid "<your-guid-here>" -ActiveDirectoryDomainsid "<your-domain-sid-here>" -ActiveDirectoryAzureStorageSid "<your-storage-account-sid>"
 ```
 
 

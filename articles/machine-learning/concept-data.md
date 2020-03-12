@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 12/09/2019
-ms.openlocfilehash: 4149e90e07bbcd03a0df41060b42b8902b89e774
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: a2af1e87ce7b17183ae09fb02b2652a04f585e84
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396185"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129170"
 ---
 # <a name="data-access-in-azure-machine-learning"></a>Dostęp do danych w Azure Machine Learning
 
@@ -83,7 +83,7 @@ Zestawy danych umożliwiają wykonywanie wielu zadań uczenia maszynowego poprze
 
 + [Uczenie modeli uczenia maszynowego](how-to-train-with-datasets.md).
 + Korzystanie z zestawów danych w 
-     + [zautomatyzowane eksperymenty ML](how-to-create-portal-experiments.md)
+     + [zautomatyzowane eksperymenty ML](how-to-use-automated-ml-for-ml-models.md)
      + [Projektant](tutorial-designer-automobile-price-train-score.md#import-data) 
 + Uzyskaj dostęp do zestawów danych do oceniania za pomocą wnioskowania wsadowego w [potokach uczenia maszynowego](how-to-create-your-first-pipeline.md).
 + Utwórz [projekt etykietowania danych](#label).

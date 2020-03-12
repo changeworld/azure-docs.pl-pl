@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: cf2aa9bc1234f8bc92829b107d1a788b75d56a6b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 144c59c8bc24e8e10584702ec6cd48f7aa8c15c1
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384689"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128532"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge"></a>Samouczek: łączenie, Konfigurowanie i aktywowanie Azure Data Box Edge 
 
@@ -101,6 +101,11 @@ Pulpit nawigacyjny wyświetla różne ustawienia, które są wymagane do skonfig
    c. Jeśli używasz uwierzytelniania, wprowadź nazwę użytkownika i hasło.
 
    d. Aby sprawdzić poprawność skonfigurowanych ustawień serwera proxy sieci Web i zastosować je, wybierz pozycję **Zastosuj ustawienia**.
+   
+   > [!NOTE]
+   > Pliki proxy-autoconfig (PAC) nie są obsługiwane. Plik PAC definiuje, w jaki sposób przeglądarki sieci Web i inni agenci użytkowników mogą automatycznie wybierać odpowiedni serwer proxy (metoda dostępu) do pobierania danego adresu URL.
+   > Serwery proxy próbujące przechwycić i odczytać cały ruch (a następnie ponownie podpisać wszystko z własnym certyfikatem) nie są zgodne, ponieważ certyfikat serwera proxy nie jest zaufany.
+   > Zazwyczaj przezroczyste serwery proxy działają dobrze z Azure Data Box Edge.
 
 4. Obowiązkowe W okienku po lewej stronie wybierz pozycję **Ustawienia czasu**, a następnie skonfiguruj strefę czasową i serwery NTP w podstawowym i pomocniczym urządzeniu.  
     Serwery NTP są wymagane, ponieważ urządzenie musi synchronizować czas, aby można było uwierzytelnić się z dostawcami usług w chmurze.

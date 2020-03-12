@@ -3,12 +3,12 @@ title: Samouczek — Tworzenie kopii zapasowych baz danych SAP HANA na maszynach
 description: W tym samouczku dowiesz się, jak utworzyć kopię zapasową SAP HANA baz danych działających na maszynie wirtualnej platformy Azure do magazynu Azure Backup Recovery Services.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 6273b4d5745b3c13b48622cde842c0222a47c5d4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 435668dedc7efa33fd5fbfeea8671f05d070a385
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382432"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128485"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Samouczek: Tworzenie kopii zapasowych baz danych SAP HANA na maszynie wirtualnej platformy Azure
 
@@ -96,7 +96,23 @@ Uruchamianie skryptu przed rejestracją wykonuje następujące funkcje:
 
 * Instaluje lub aktualizuje wszelkie niezbędne pakiety wymagane przez agenta Azure Backup w dystrybucji.
 * Przeprowadza ona kontrolę łączności sieciowej wychodzącej za pomocą serwerów Azure Backup i usług zależnych, takich jak Azure Active Directory i Azure Storage.
-* Loguje się do systemu HANA przy użyciu klucza użytkownika podanego w ramach [wymagań wstępnych](#prerequisites). Ten klucz służy do tworzenia użytkownika kopii zapasowej (AZUREWLBACKUPHANAUSER) w systemie HANA i można go usunąć po pomyślnym uruchomieniu skryptu przed rejestracją. Ten użytkownik kopii zapasowej (AZUREWLBACKUPHANAUSER) zezwoli agentowi kopii zapasowej na odnajdywanie, tworzenie kopii zapasowych i przywracanie baz danych w systemie HANA.
+* Loguje się do systemu HANA przy użyciu klucza użytkownika podanego w ramach [wymagań wstępnych](#prerequisites). Klucz użytkownika służy do tworzenia kopii zapasowej użytkownika (AZUREWLBACKUPHANAUSER) w systemie HANA, a klucz użytkownika można usunąć po pomyślnym uruchomieniu skryptu przed rejestracją.
+* Do AZUREWLBACKUPHANAUSER są przypisane następujące wymagane role i uprawnienia:
+  * Administrator bazy danych: tworzenie nowych baz danych podczas przywracania.
+  * Odczyt wykazu: odczytywanie wykazu kopii zapasowych.
+  * SAP_INTERNAL_HANA_SUPPORT: Aby uzyskać dostęp do kilku tabel prywatnych.
+* Skrypt dodaje klucz do **hdbuserstore** for AZUREWLBACKUPHANAUSER dla wtyczki Hana w celu obsługi wszystkich operacji (zapytań bazy danych, operacji przywracania, konfigurowania i uruchamiania kopii zapasowej).
+
+Aby potwierdzić utworzenie klucza, uruchom polecenie HDBSQL na maszynie HANA z poświadczeniami SIDADM:
+
+```hdbsql
+hdbuserstore list
+```
+
+W danych wyjściowych polecenia powinien być wyświetlany klucz {SID} {dbname}, który jest wyświetlany jako AZUREWLBACKUPHANAUSER.
+
+>[!NOTE]
+> Upewnij się, że masz unikatowy zestaw plików SSFS w obszarze `/usr/sap/{SID}/home/.hdb/`. W tej ścieżce powinien znajdować się tylko jeden folder.
 
 ## <a name="create-a-recovery-service-vault"></a>Utwórz magazyn usługi Recovery Service
 
