@@ -5,11 +5,11 @@ services: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.openlocfilehash: f7f8fe85b0a0e149859715b86abb08753a6ea65e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390289"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253002"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Konfigurowanie sieci Azure CNI w usłudze Azure Kubernetes Service (AKS)
 
@@ -61,7 +61,7 @@ Maksymalna liczba zasobników na węzeł w klastrze AKS to 250. *Domyślna* Maks
 | -- | :--: | :--: | -- |
 | Interfejs wiersza polecenia platformy Azure | 110 | 30 | Tak (do 250) |
 | Szablon usługi Resource Manager | 110 | 30 | Tak (do 250) |
-| wielodostępowy | 110 | 30 | Nie |
+| Portal | 110 | 30 | Nie |
 
 ### <a name="configure-maximum---new-clusters"></a>Konfigurowanie nowych klastrów
 

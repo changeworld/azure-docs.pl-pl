@@ -13,17 +13,17 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/24/2020
+ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 28a9de63bb04a95fc2e655b05727963feaa3ec40
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 564c648a550b41017ffc684ca19ff03612fc63d3
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77599186"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137632"
 ---
-# <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Scenariusze obsługi obciążeń SAP w maszynach wirtualnych platformy Azure
+# <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Obsługiwane scenariusze obciążenia SAP na maszynie wirtualnej na platformie Azure
 Projektowanie architektury SAP NetWeaver, Business One, `Hybris` lub S/4HANA system na platformie Azure otwiera wiele różnych możliwości dla różnych architektur i narzędzi, które mogą być używane do skalowalnego, wydajnego i wysokiej dostępności wdrożenia. Jednak zależnie od używanego systemu operacyjnego lub DBMS istnieją ograniczenia. Ponadto nie wszystkie scenariusze, które są obsługiwane lokalnie, są obsługiwane w taki sam sposób na platformie Azure. Ten dokument przeprowadzi Cię przez obsługiwane konfiguracje bez wysokiej dostępności i konfiguracje wysokiej dostępności oraz architektury korzystające wyłącznie z maszyn wirtualnych platformy Azure. W przypadku scenariuszy obsługiwanych z [dużymi wystąpieniami Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)zapoznaj się z artykułem [obsługiwane scenariusze dotyczące dużych wystąpień platformy Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario). 
 
 
@@ -66,7 +66,8 @@ Ten typ wdrożenia systemu DBMS jest obsługiwany przez:
 - SQL Server w systemie Windows
 - IBM DB2. Znajdowanie szczegółowych informacji w artykule [wiele wystąpień (Linux, UNIX)](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.dbobj.doc/doc/c0004904.html)
 - Dla firmy Oracle. Aby uzyskać szczegółowe informacje, zobacz [uwagi dotyczące pomocy technicznej sap #1778431](https://launchpad.support.sap.com/#/notes/1778431) i powiązane uwagi SAP
-- W przypadku SAP HANA, jest obsługiwana wiele wystąpień na jednej maszynie wirtualnej, a rozwiązanie SAP wywołuje tę metodę wdrażania MCOS. Aby uzyskać szczegółowe informacje, zobacz artykuł SAP w [wielu SAP HANA systemach na jednym hoście (MCOS)](https://help.sap.com/viewer/eb3777d5495d46c5b2fa773206bbfb46/2.0.02/en-US/b2751fd43bec41a9a14e01913f1edf18.html)
+- W przypadku SAP HANA, jest obsługiwana wiele wystąpień na jednej maszynie wirtualnej, a rozwiązanie SAP wywołuje tę metodę wdrażania MCOS. Aby uzyskać szczegółowe informacje, zobacz artykuł SAP [wiele SAP HANA systemów na jednym hoście (MCOS)] (https://help.sap.com/viewer/eb3777d5495d46c5b2fa773206bbfb46/2.0.02/
+- /b2751fd43bec41a9a14e01913f1edf18.html)
 
 Uruchamianie wielu wystąpień bazy danych na jednym hoście, należy się upewnić, że różne wystąpienia nie konkurują o zasoby, a tym samym przekraczają limity zasobów fizycznych maszyny wirtualnej. Jest to szczególnie istotne w przypadku pamięci, w której należy zwolnić pamięć, którą mogą przydzielić każdy z wystąpień, które udostępniają maszynę wirtualną. Może to również dotyczyć zasobów procesora CPU, których mogą użyć różne wystąpienia bazy danych. Wszystkie wymienione systemy DBMS mają konfiguracje umożliwiające ograniczenie alokacji pamięci i zasobów procesora na poziomie wystąpienia.
 Aby można było obsłużyć taką konfigurację dla maszyn wirtualnych platformy Azure, oczekuje się, że dyski lub woluminy, które są używane dla plików dziennika danych i dzienników/ponawiania baz danych zarządzanych przez różne wystąpienia, są oddzielone. Lub innymi słowy pliki dzienników danych lub dzienników/ponawiania baz danych zarządzanych przez różne wystąpienie systemu DBMS nie powinny udostępniać tych samych dysków ani woluminów. 
@@ -121,6 +122,8 @@ W przypadku maszyn wirtualnych platformy Azure następujące konfiguracje wysoki
 
 > [!IMPORTANT]
 > W przypadku żadnego z opisanych powyżej scenariuszy obsługiwane są konfiguracje wielu wystąpień systemu DBMS na jednej maszynie wirtualnej. W każdym z tych przypadków można wdrożyć tylko jedno wystąpienie bazy danych na maszynę wirtualną i chronić je za pomocą opisanych metod wysokiej dostępności. Ochrona wielu wystąpień DBMS w ramach tego samego klastra trybu failover systemu Windows lub Pacemaker **nie** jest obsługiwana w tym momencie. Ponadto funkcja Oracle Data Guard jest obsługiwana tylko w przypadku pojedynczych wystąpień na maszynę wirtualną. 
+
+Różne systemy baz danych umożliwiają hostowanie wielu baz danych w ramach jednego wystąpienia systemu DBMS. Tak jak w przypadku SAP HANA wiele baz danych może być hostowanych w wielu kontenerach baz danych (MDC). W przypadku, gdy te konfiguracje wielu baz danych działają w ramach jednego zasobu klastra trybu failover, te konfiguracje są obsługiwane. Konfiguracje, które nie są obsługiwane, są sytuacje, w których wymagane jest wiele zasobów klastra. Podobnie jak w przypadku konfiguracji, w których zdefiniowano wiele SQL Server grup dostępności, w ramach jednego wystąpienia SQL Server.
 
 
 ![Konfiguracja systemu DBMS HA](./media/sap-planning-supported-configurations/database-high-availability-configuration.png)

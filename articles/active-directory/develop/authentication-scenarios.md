@@ -13,12 +13,12 @@ ms.date: 02/03/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 6e14284b5d653af01631d56acf954f9c2a1f10ab
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 3ec965318da1361454b4a6bb78ed7147562b5fea
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194999"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138522"
 ---
 # <a name="authentication-basics"></a>Podstawowe informacje o uwierzytelnianiu
 
@@ -50,9 +50,9 @@ Usługa Azure AD udostępnia również Azure Active Directory B2C, dzięki czemu
 
 Tokeny zabezpieczające zawierają informacje o użytkownikach i aplikacjach. Usługa Azure AD korzysta z tokenów opartych na notacji JSON (JWTs) zawierających oświadczenia.
 
-Twierdzenie zawiera potwierdzenia dotyczące jednej jednostki, takiej jak [aplikacja kliencka](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#client-application) lub [właściciel zasobu](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#resource-owner)), do innej jednostki, takiej jak [serwer zasobów](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#resource-server)).
+Twierdzenie zawiera potwierdzenia dotyczące jednej jednostki, takiej jak [aplikacja kliencka](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#client-application) lub [właściciel zasobu](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#resource-owner), do innej jednostki, takiej jak [serwer zasobów](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#resource-server).
 
-Oświadczenia są parami nazw/wartości, które przekazują fakty dotyczące podmiotu tokenu. Na przykład zgłoszenie może zawierać fakty dotyczące podmiotu zabezpieczeń, który został uwierzytelniony przez [serwer autoryzacji](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#authorization-server)). Oświadczenia obecne w danym tokenie zależą od wielu elementów, w tym typu tokenu, typu poświadczenia używanego do uwierzytelniania podmiotu, konfiguracji aplikacji i tak dalej.
+Oświadczenia są parami nazw/wartości, które przekazują fakty dotyczące podmiotu tokenu. Na przykład zgłoszenie może zawierać fakty dotyczące podmiotu zabezpieczeń, który został uwierzytelniony przez [serwer autoryzacji](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#authorization-server). Oświadczenia obecne w danym tokenie zależą od wielu elementów, w tym typu tokenu, typu poświadczenia używanego do uwierzytelniania podmiotu, konfiguracji aplikacji i tak dalej.
 
 Aplikacje mogą używać oświadczeń dla różnych zadań, takich jak:
 

@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: zarhoads
-ms.openlocfilehash: 3c22f63b7085c7ab8d6b54e383528568dc9c12e7
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 9ae8f5072573dcc91dd3e8bdcd08968790f6444d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917037"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79205211"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Obróć certyfikaty w usłudze Azure Kubernetes Service (AKS)
 
@@ -37,7 +37,7 @@ AKS generuje i używa następujących certyfikatów, urzędów certyfikacji i ko
 * Klient `kubectl` ma certyfikat do komunikacji z klastrem AKS.
 
 > [!NOTE]
-> W przypadku klastrów AKS utworzonych przed Marzec 2019 istnieją certyfikaty, które wygasną po upływie dwóch lat. Każdy klaster utworzony po marcu 2019 lub dowolny klaster, który ma swoje certyfikaty, został obrócony, ma certyfikaty, które wygasną po 30 latach. Aby sprawdzić, kiedy klaster został utworzony, użyj `kubectl get nodes`, aby zobaczyć *wiek* pul węzłów.
+> W przypadku klastrów AKS utworzonych przed Marzec 2019 istnieją certyfikaty, które wygasną po upływie dwóch lat. Każdy klaster utworzony po marcu 2019 lub dowolny klaster, który ma swoje certyfikaty, został obrócony, ma certyfikaty urzędu certyfikacji klastra, które wygasną po 30 latach. Wszystkie inne certyfikaty wygasną po upływie dwóch lat. Aby sprawdzić, kiedy klaster został utworzony, użyj `kubectl get nodes`, aby zobaczyć *wiek* pul węzłów.
 > 
 > Ponadto możesz sprawdzić datę wygaśnięcia certyfikatu klastra. Na przykład następujące polecenie wyświetla szczegóły certyfikatu dla klastra *myAKSCluster* .
 > ```console

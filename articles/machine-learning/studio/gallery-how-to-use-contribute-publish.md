@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 6a82c4d6eecec3a3a9ef690536988c8402444ffc
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 882b52b74603465bd0a55a12fd9ef03f7b625046
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168547"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204328"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Udostępnianie i odnajdywanie zasobów w Azure AI Gallery
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 **[Azure AI Gallery](https://gallery.azure.ai)** to oparta na społeczności witryna do odnajdywania i udostępniania rozwiązań utworzonych przy użyciu systemu Azure AI.
 Galeria zawiera różne zasoby, których można użyć do opracowania własnych rozwiązań analitycznych.
@@ -86,7 +88,7 @@ Możesz też zalogować się za pomocą narzędzia do dyskusji, takiego jak Disq
 
 1. Na liście akcji poniżej kanwy eksperymentu wybierz pozycję **Publikuj w galerii**.
 
-1. W galerii wprowadź **nazwę** i **Tagi** , które są opisowe. Wyróżnij stosowane techniki lub problemy, które są rozwiązywane. Na przykład eksperymentu opisowy tytuł "Klasyfikacja binarna: analiza tonacji w usłudze Twitter."
+1. W galerii wprowadź **nazwę** i **Tagi** , które są opisowe. Wyróżnij stosowane techniki lub problemy, które są rozwiązywane. Przykładem tytułu eksperymentu opisowego jest "klasyfikacja binarna: Twitter analiza tonacji".
 
 1. W polu **Podsumowanie** wprowadź podsumowanie eksperymentu. Zwięźle opisz problem rozwiązuje eksperymentu, a jak złożoną.
 

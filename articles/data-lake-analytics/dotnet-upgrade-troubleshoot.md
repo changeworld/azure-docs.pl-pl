@@ -1,6 +1,6 @@
 ---
-title: Jak rozwiązać problemy związane z błędami zadań U-SQL Azure Data Lake Analytics z powodu uaktualnienia programu .NET 4.7.2
-description: Rozwiązywanie błędów zadań U-SQL z powodu uaktualnienia do programu .NET 4.7.2.
+title: Jak rozwiązywać problemy związane z błędami Azure Data Lake Analytics zadania U-SQL z powodu .NET Framework uaktualnienia 4.7.2
+description: Rozwiązywanie błędów zadań U-SQL z powodu uaktualnienia do .NET Framework 4.7.2.
 services: data-lake-analytics
 author: guyhay
 ms.author: guyhay
@@ -9,12 +9,12 @@ ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.workload: big-data
 ms.date: 10/11/2019
-ms.openlocfilehash: 2be2f50558fef41659c9a3313871b17961f6ad6d
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: f909419810cbd837e57b19a13b2df6ae9ad2ee97
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873237"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79213584"
 ---
 # <a name="azure-data-lake-analytics-is-upgrading-to-the-net-framework-v472"></a>Azure Data Lake Analytics jest uaktualniana do .NET Framework v 4.7.2
 
@@ -22,12 +22,12 @@ Azure Data Lake Analytics domyślne środowisko uruchomieniowe uaktualnia .NET F
 
 To uaktualnienie z .NET Framework 4.5.2 do wersji 4.7.2 oznacza, że .NET Framework wdrożone w środowisku uruchomieniowym U-SQL (domyślne środowisko uruchomieniowe) będzie teraz zawsze 4.7.2. Nie ma opcji obok siebie dla wersji .NET Framework.
 
-Po zakończeniu tego uaktualnienia do programu .NET 4.7.2 kod zarządzany przez system będzie uruchamiany jako wersja 4.7.2, biblioteki udostępnione przez użytkownika, takie jak niestandardowe zestawy U-SQL, będą działać w trybie zgodności z poprzednimi wersjami odpowiednim dla wersji wygenerowanej przez zestaw dla.
+Po zakończeniu tego uaktualnienia do .NET Framework 4.7.2, kod zarządzany przez system będzie uruchamiany jako wersja 4.7.2, biblioteki udostępnione przez użytkownika, takie jak niestandardowe zestawy U-SQL będą działać w trybie zgodności z poprzednimi wersjami odpowiednim dla wersji, która została wygenerowane dla.
 
 - Jeśli biblioteki DLL zestawu są generowane dla wersji 4.5.2, wdrożone środowisko będzie traktować je jako 4.5.2 biblioteki, dostarczając (z kilkoma wyjątkami) semantykę.
 - Można teraz używać niestandardowych zestawów U-SQL, które korzystają z funkcji 4.7.2 w wersji, jeśli są przeznaczone dla .NET Framework 4.7.2.
 
-W związku z tym uaktualnieniem do programu .NET 4.7.2 istnieje możliwość wprowadzenia istotnych zmian w zadaniach U-SQL, które używają niestandardowych zestawów platformy .NET. Zalecamy sprawdzenie w poszukiwaniu problemów ze zgodnością z poprzednimi wersjami przy użyciu poniższej procedury.
+W związku z tym uaktualnieniem do .NET Framework 4.7.2 istnieje możliwość wprowadzenia istotnych zmian w zadaniach U-SQL, które używają niestandardowych zestawów platformy .NET. Zalecamy sprawdzenie w poszukiwaniu problemów ze zgodnością z poprzednimi wersjami przy użyciu poniższej procedury.
 
 ## <a name="how-to-check-for-backwards-compatibility-issues"></a>Jak wyszukiwać problemy ze zgodnością z poprzednimi wersjami
 
@@ -57,10 +57,10 @@ Możesz przesłać zadanie do starej wersji środowiska uruchomieniowego (która
 
 ### <a name="what-are-the-most-common-backwards-compatibility-issues-you-may-encounter"></a>Jakie są najczęstsze problemy ze zgodnością z poprzednimi wersjami, które mogą wystąpić
 
-Najbardziej typowe niezgodności z poprzednimi wersjami, które mogą identyfikować kontroler, to (Ta lista została wygenerowana przez uruchomienie narzędzia sprawdzania w ramach własnych wewnętrznych zadań ADLA), które biblioteki mają wpływ ważne, aby wykonać wymaganą akcję #1, aby sprawdzić, czy wpływ na zadania) i możliwe działania zaradcze. Uwaga: w prawie wszystkie przypadki związane z własnymi zadaniami ostrzeżenia zostały wyłączone, aby były fałszywie dodatnie ze względu na wąski charakter najnowszych zmian.
+Najbardziej typowe niezgodności z poprzednimi wersjami, które mogą identyfikować moduł sprawdzania, to (Ta lista została wygenerowana przez uruchomienie narzędzia sprawdzania w ramach własnych wewnętrznych zadań ADLA), które biblioteki mają wpływ (Uwaga: że można wywołać biblioteki tylko pośrednio), dlatego ważne jest, aby wykonać wymaganą akcję #1, aby sprawdzić, czy wpływ na zadania) i możliwe działania zaradcze. Uwaga: w prawie wszystkie przypadki związane z własnymi zadaniami ostrzeżenia zostały wyłączone, aby były fałszywie dodatnie ze względu na wąski charakter najnowszych zmian.
 
 - Właściwość IAsyncResult. CompletedSynchronously musi być poprawna, aby wynikowe zadanie zostało ukończone
-  - Podczas wywoływania metody TaskFactory. wywołaniach metody FromAsync implementacja właściwości IAsyncResult. CompletedSynchronously musi być poprawna, aby wynikowe zadanie zostało ukończone. Oznacza to, że właściwość musi zwracać wartość true, jeśli i tylko wtedy, gdy implementacja została ukończona synchronicznie. Wcześniej właściwość nie był sprawdzane.
+  - Podczas wywoływania metody TaskFactory. wywołaniach metody FromAsync implementacja właściwości IAsyncResult. CompletedSynchronously musi być poprawna, aby wynikowe zadanie zostało ukończone. Oznacza to, że właściwość musi zwracać wartość true, jeśli i tylko wtedy, gdy implementacja została ukończona synchronicznie. Wcześniej właściwość nie została sprawdzona.
   - Biblioteki, których dotyczy problem: mscorlib, system. Threading. Tasks
   - Sugerowana akcja: Upewnij się, że TaskFactory. wywołaniach metody FromAsync zwraca wartość PRAWDA prawidłowo
 

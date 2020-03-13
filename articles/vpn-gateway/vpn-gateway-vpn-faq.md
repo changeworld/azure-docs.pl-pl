@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 03/05/2020
 ms.author: yushwang
-ms.openlocfilehash: c556b71acf814203a67317039dafeede5f7b65a6
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 027047a212df72479a4f1b2511729365f3fa09e4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357816"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279886"
 ---
 # <a name="vpn-gateway-faq"></a>Brama sieci VPN — często zadawane pytania
 
@@ -168,6 +168,10 @@ Jest to oczekiwane zachowanie bram sieci VPN opartych na zasadach (znanych takż
 W ramach konfiguracji typu lokacja-lokacja obejmującej wiele lokalizacji obsługiwane są serwery Windows Server 2012 usługi Routing i dostęp zdalny (RRAS).
 
 Inne rozwiązania o charakterze oprogramowania pełniącego rolę sieci VPN powinny współpracować z bramą, o ile są one zgodne ze standardowymi implementacjami protokołu IPsec stosowanymi w branży. W celu uzyskania pomocy technicznej oraz instrukcji konfiguracji należy skontaktować się z dostawcą oprogramowania.
+
+## <a name="how-do-i-change-the-authentication-type-for-my-point-to-site-connections"></a>Jak mogę zmienić typ uwierzytelniania dla połączeń typu punkt-lokacja?
+
+Metodę uwierzytelniania dla połączeń punkt-lokacja można zmienić, przechodząc do sekcji **Konfiguracja punktu do lokacji** w obszarze VPN Gateway i sprawdzając żądany przycisk radiowy. Bieżące opcje to **certyfikat platformy Azure, uwierzytelnianie usługi RADIUS i Azure Active Directory**. Należy pamiętać, że bieżący klienci **mogą nie być w stanie nawiązać połączenia** po zmianie, dopóki nowy profil nie zostanie pobrany i skonfigurowany na kliencie.
 
 ## <a name="P2S"></a>Punkt-lokacja przy użyciu natywnego uwierzytelniania certyfikatu platformy Azure
 

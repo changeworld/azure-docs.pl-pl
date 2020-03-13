@@ -11,12 +11,12 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 633c3ffc8e266087c88116a15c43469727a9a50d
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: e5b07ac0e9421cbca034b17c573cab16641f49f7
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133648"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214474"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>Tworzenie, Konfigurowanie i zarządzanie zadaniami elastycznymi
 
@@ -35,7 +35,7 @@ Jeśli nie korzystasz z zadań elastycznych, [Dowiedz się więcej na temat konc
 
 1. Utwórz poświadczenie wykonywania zadania w *bazie danych zadań* przy użyciu [programu PowerShell](elastic-jobs-powershell.md) lub [T-SQL](elastic-jobs-tsql.md#create-a-credential-for-job-execution).
 2. Zdefiniuj grupę docelową (bazy danych, dla których chcesz uruchomić zadanie) przy użyciu [programu PowerShell](elastic-jobs-powershell.md) lub [T-SQL](elastic-jobs-tsql.md#create-a-target-group-servers).
-3. Utwórz poświadczenia agenta zadań w każdej bazie danych, w której będzie wykonywane zadanie [(dodaj użytkownika lub rolę do każdej bazy danych w grupie)](sql-database-control-access.md). Aby uzyskać przykład, zobacz [samouczek programu PowerShell](elastic-jobs-powershell.md).
+3. Utwórz poświadczenia agenta zadań w każdej bazie danych, w której będzie wykonywane zadanie [(dodaj użytkownika lub rolę do każdej bazy danych w grupie)](sql-database-manage-logins.md). Aby uzyskać przykład, zobacz [samouczek programu PowerShell](elastic-jobs-powershell.md).
 4. Utwórz zadanie przy użyciu [programu PowerShell](elastic-jobs-powershell.md) lub [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases).
 5. Dodaj kroki zadania za pomocą programu [PowerShell](elastic-jobs-powershell.md) lub języka [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases).
 6. Uruchom zadanie przy użyciu [programu PowerShell](elastic-jobs-powershell.md#run-the-job) lub [T-SQL](elastic-jobs-tsql.md#begin-ad-hoc-execution-of-a-job).

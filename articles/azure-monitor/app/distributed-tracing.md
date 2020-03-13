@@ -6,12 +6,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 49e61a7677007c52d1a584c4b49ccaadc3a02df3
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: d9f67250a232d4666e4655f83e9bdc7622754331
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669594"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136744"
 ---
 # <a name="what-is-distributed-tracing"></a>Co to jest śledzenie rozproszone?
 
@@ -38,7 +38,7 @@ Zestawy SDK Application Insights dla platform .NET, .NET Core, Java, Node. js i 
 * [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
 * [Node.js](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
 * [JavaScript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
-* [Python (wersja zapoznawcza)](opencensus-python.md)
+* [Python](opencensus-python.md)
 
 Po zainstalowaniu i skonfigurowaniu odpowiedniego zestawu Application Insights SDK informacje o śledzeniu są automatycznie zbierane dla popularnych struktur, bibliotek i technologii przez automatyczne zbieranie zależności zestawu SDK. Pełną listę obsługiwanych technologii można znaleźć w dokumentacji dotyczącej [autozbierania zależności](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies).
 
@@ -48,7 +48,7 @@ Po zainstalowaniu i skonfigurowaniu odpowiedniego zestawu Application Insights S
 
 Oprócz zestawów SDK Application Insights, Application Insights obsługuje również śledzenie rozproszone za pomocą [OpenCensus](https://opencensus.io/). OpenCensus to model typu open source, Vendor-niezależny od, pojedynczej dystrybucji bibliotek, aby zapewnić zbieranie metryk i rozproszone śledzenie dla usług. Umożliwia również społeczności typu "open source" Włączenie śledzenia rozproszonego przy użyciu popularnych technologii, takich jak Redis, Memcached lub MongoDB. [Firma Microsoft współpracuje z usługą OpenCensus przy użyciu kilku innych partnerów monitorujących i w chmurze](https://open.microsoft.com/2018/06/13/microsoft-joins-the-opencensus-project/).
 
-[Python (wersja zapoznawcza)](opencensus-python.md) 
+[Python](opencensus-python.md) 
 
 Witryna sieci Web OpenCensus przechowuje dokumentację referencyjną interfejsu API dla języka [Python](https://opencensus.io/api/python/trace/usage.html) i języka [go](https://godoc.org/go.opencensus.io), a także różne różne przewodniki dotyczące korzystania z OpenCensus. 
 

@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c2f774401f32ff02ced690173c418dafc4c789b5
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 178f56354120bf7a65c51f1c9cf54e34bd011d97
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278807"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137292"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Wersje interfejsu API na platformie Azure Wyszukiwanie poznawcze
 
@@ -34,10 +34,10 @@ Poniżej znajduje się migawka bieżących wersji wszystkich interfejsów progra
 | --- | --- | --- |
 | [Zestaw SDK platformy .NET](https://aka.ms/search-sdk) |9.0 |Ogólnie dostępne, wydane mogą 2019 |
 | [.NET SDK — wersja zapoznawcza](https://aka.ms/search-sdk-preview) |8,0 — wersja zapoznawcza |Wersja zapoznawcza, wydana kwiecień 2019 |
-| [Interfejs API REST usługi](https://docs.microsoft.com/rest/api/searchservice/) |2019-05-06 |Ogólnie dostępne |
+| [Interfejs API REST usługi](https://docs.microsoft.com/rest/api/searchservice/) |2019-05-06 |Ogólnie dostępna |
 | [Interfejs API REST usługi 2019-05-06 — wersja zapoznawcza](search-api-preview.md) |2019-05-06 — wersja zapoznawcza |Wersja zapoznawcza |
-| [.NET Management SDK](https://aka.ms/search-mgmt-sdk) |3.0 |Ogólnie dostępne |
-| [Interfejs API REST zarządzania](https://docs.microsoft.com/rest/api/searchmanagement/) |2015-08-19 |Ogólnie dostępne |
+| [.NET Management SDK](https://aka.ms/search-mgmt-sdk) |3.0 |Ogólnie dostępna |
+| [Interfejs API REST zarządzania](https://docs.microsoft.com/rest/api/searchmanagement/) |2020-03-13|Ogólnie dostępna |
 
 W przypadku interfejsów API REST, w tym `api-version` na każdym wywołaniu jest wymagane. Używanie `api-version` ułatwia kierowanie określonych wersji, takich jak interfejs API w wersji zapoznawczej. Poniższy przykład ilustruje sposób określenia parametru `api-version`:
 

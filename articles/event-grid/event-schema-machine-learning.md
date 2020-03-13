@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 10/18/2019
 ms.author: jenns
-ms.openlocfilehash: 5f2d23b3fe33691d37dc00b2d4e79036293252d9
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 4051598a9abd787f6707e67a8c4dab12fc6d626a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132877"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79202148"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-machine-learning"></a>Schemat zdarzeń Azure Event Grid dla Azure Machine Learning
 
@@ -30,6 +30,7 @@ Azure Machine Learning emituje następujące typy zdarzeń:
 | Microsoft. MachineLearningServices. ModelDeployed | Uruchamiany, gdy modele zostały pomyślnie wdrożone w punkcie końcowym. |
 | Microsoft. MachineLearningServices. RunCompleted | Uruchamiany, gdy przebieg został pomyślnie ukończony. |
 | Microsoft. MachineLearningServices. DatasetDriftDetected | Uruchamiany, gdy monitor dryfowania zestawu danych wykryje dryf. |
+| Microsoft. MachineLearningServices. RunStatusChanged | Uruchamiany, gdy stan uruchomienia zmieni się na "Niepowodzenie". |
 
 ## <a name="the-contents-of-an-event-response"></a>Zawartość odpowiedzi na zdarzenie
 
@@ -148,6 +149,46 @@ Ta sekcja zawiera przykład sposobu, w jaki będą wyglądały dane dla każdego
 }]
 ```
 
+### <a name="microsoftmachinelearningservicesrunstatuschanged-event"></a>Zdarzenie Microsoft. MachineLearningServices. RunStatusChanged
+
+```json
+[{
+  "topic": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearningServices/workspaces/{workspace-name}",
+  "subject": "experiments/0fa9dfaa-cba3-4fa7-b590-23e48548f5c1/runs/AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5",
+  "eventType": "Microsoft.MachineLearningServices.RunCompleted",
+  "eventTime": "2017-06-26T18:41:00.9584103Z",
+  "id": "831e1650-001e-001b-66ab-eeb76e069631",
+  "data": {
+    "ExperimentId": "0fa9dfaa-cba3-4fa7-b590-23e48548f5c1",
+    "ExperimentName": "automl-local-regression",
+    "RunId": "AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5",
+    "RunType": null,
+    "RunTags": {},
+    "RunProperties": {
+        "runTemplate": "automl_child",
+        "pipeline_id": "5adc0a4fe02504a586f09a4fcbb241f9a4012062",
+        "pipeline_spec": "{\"objects\": [{\"class_name\": \"StandardScaler\", \"module\": \"sklearn.preprocessing\", \"param_args\": [], \"param_kwargs\": {\"with_mean\": true, \"with_std\": false}, \"prepared_kwargs\": {}, \"spec_class\": \"preproc\"}, {\"class_name\": \"LassoLars\", \"module\": \"sklearn.linear_model\", \"param_args\": [], \"param_kwargs\": {\"alpha\": 0.001, \"normalize\": true}, \"prepared_kwargs\": {}, \"spec_class\": \"sklearn\"}], \"pipeline_id\": \"5adc0a4fe02504a586f09a4fcbb241f9a4012062\"}",
+        "training_percent": "100",
+        "predicted_cost": "0.062226144097381045",
+        "iteration": "5",
+        "run_template": "automl_child",
+        "run_preprocessor": "StandardScalerWrapper",
+        "run_algorithm": "LassoLars",
+        "conda_env_data_location": "aml://artifact/ExperimentRun/dcid.AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5/outputs/conda_env_v_1_0_0.yml",
+        "model_name": "AutoMLad912b2d65",
+        "scoring_data_location": "aml://artifact/ExperimentRun/dcid.AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5/outputs/scoring_file_v_1_0_0.py",
+        "model_data_location": "aml://artifact/ExperimentRun/dcid.AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5/outputs/model.pkl"
+    },
+   "RunStatus": "failed"
+   },
+  "dataVersion": "",
+  "metadataVersion": "1"
+}]
+```
+
+
+
+
 ## <a name="event-properties"></a>Właściwości zdarzenia
 
 Zdarzenie ma następujące dane najwyższego poziomu:
@@ -170,7 +211,7 @@ Obiekt danych ma następujące właściwości dla każdego typu zdarzenia:
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
 | ModelName | ciąg | Nazwa zarejestrowanego modelu. |
-| ModelVersion | int | Wersja zarejestrowanego modelu. |
+| ModelVersion | ciąg | Wersja zarejestrowanego modelu. |
 | ModelTags | obiekt | Tagi modelu, który został zarejestrowany. |
 | ModelProperties | obiekt | Właściwości modelu, który został zarejestrowany. |
 
@@ -208,6 +249,17 @@ Obiekt danych ma następujące właściwości dla każdego typu zdarzenia:
 | StartTime | datetime | Godzina rozpoczęcia serii czasu docelowej zestawu danych, która spowodowała wykrywanie dryfu.  |
 | EndTime | datetime | Godzina zakończenia serii czasu docelowej zestawu danych, która spowodowała wykrywanie dryfu. |
 
+### <a name="microsoftmachinelearningservicesrunstatuschanged"></a>Microsoft. MachineLearningServices. RunStatusChanged
+
+| Właściwość | Typ | Opis |
+| -------- | ---- | ----------- |
+| ExperimentId | ciąg | Identyfikator eksperymentu, do którego należy uruchomienie. |
+| Eksperymentname | ciąg | Nazwa eksperymentu, do którego należy uruchomienie. |
+| RunId | ciąg | Identyfikator przebiegu, który został ukończony. |
+| RunType | ciąg | Typ uruchomienia ukończonego przebiegu. |
+| RunTags | obiekt | Tagi ukończonego przebiegu. |
+| RunProperties | obiekt | Właściwości ukończonego uruchomienia. |
+| RunStatus | ciąg | Stan uruchomienia. |
 
 ## <a name="next-steps"></a>Następne kroki
 

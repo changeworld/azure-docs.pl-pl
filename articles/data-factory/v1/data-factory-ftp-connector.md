@@ -13,11 +13,11 @@ ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 55c8bf2210eb0990a91aeff1f90e4af4db2c22ab
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387320"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281407"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Przenoszenie danych z serwera FTP przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -159,7 +159,7 @@ Sekcja **typeProperties** jest inna dla każdego typu zestawu danych. Zawiera in
 | fileFilter |Określ filtr, który ma być używany do wybierania podzbioru plików w **folderPath**, a nie wszystkich plików.<br/><br/>Dozwolone wartości to: `*` (wiele znaków) i `?` (pojedynczy znak).<br/><br/>Przykład 1: `"fileFilter": "*.log"`<br/>Przykład 2: `"fileFilter": 2014-1-?.txt"`<br/><br/> **FileFilter** ma zastosowanie do wejściowego zestawu danych. Ta właściwość nie jest obsługiwana w rozproszony system plików Hadoop (HDFS). |Nie |
 | partitionedBy |Służy do określania dynamicznej **folderPath** i **nazwy pliku** dla danych szeregów czasowych. Na przykład można określić **folderPath** , który jest sparametryzowane dla każdej godziny danych. |Nie |
 | format | Obsługiwane są następujące typy formatów: **TextFormat**, **formatu jsonformat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ustaw właściwość **Type** w polu Format na jedną z tych wartości. Aby uzyskać więcej informacji, zobacz sekcję [Format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [Format JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Format Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [Format Orc](data-factory-supported-file-and-compression-formats.md#orc-format)i [Parquet format](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Jeśli chcesz skopiować pliki między magazynami opartymi na plikach (kopia binarna), Pomiń sekcję format w definicjach zestawu danych wejściowych i wyjściowych. |Nie |
-| compression | Określ typ i poziom kompresji danych. Obsługiwane typy to **gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**, a obsługiwane poziomy są **optymalne** i **najszybszy**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
+| kompresja | Określ typ i poziom kompresji danych. Obsługiwane typy to **gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**, a obsługiwane poziomy są **optymalne** i **najszybszy**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
 | useBinaryTransfer |Określ, czy używać trybu transferu binarnego. Wartości mają wartość true w przypadku trybu binarnego (jest to wartość domyślna), a wartość false dla kodu ASCII. Tej właściwości można użyć tylko wtedy, gdy skojarzony typ połączonej usługi jest typu: FtpServer. |Nie |
 
 > [!NOTE]
@@ -205,7 +205,7 @@ W działaniu kopiowania, gdy źródłem jest typ **FileSystemSource**, następuj
 
 | Właściwość | Opis | Dozwolone wartości | Wymagany |
 | --- | --- | --- | --- |
-| recursive |Wskazuje, czy dane są odczytane cyklicznie z podfolderów, czy tylko z określonego folderu. |Prawda, FAŁSZ (wartość domyślna) |Nie |
+| cyklicznie |Wskazuje, czy dane są odczytane cyklicznie z podfolderów, czy tylko z określonego folderu. |Prawda, FAŁSZ (wartość domyślna) |Nie |
 
 ## <a name="json-example-copy-data-from-ftp-server-to-azure-blob"></a>Przykład JSON: kopiowanie danych z serwera FTP do obiektu blob platformy Azure
 Ten przykład pokazuje, jak skopiować dane z serwera FTP do usługi Azure Blob Storage. Dane można jednak skopiować bezpośrednio do dowolnego ujścia określonego w [obsługiwanych magazynach i formatach danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats)za pomocą działania kopiowania w Data Factory.

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: alzam
-ms.openlocfilehash: fc48b0ae9cf4162b4b9abba14c6e909ca091fd23
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 3559a139ff89c949ee691310ae25af7d6950abdf
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251612"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138964"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>Konfigurowanie klienta VPN dla połączeń protokołu P2S OpenVPN: uwierzytelnianie usługi Azure AD
 
@@ -38,7 +38,7 @@ Podczas pracy z profilem opartym na certyfikatach upewnij się, że odpowiednie 
 
 ### <a name="radius"></a>Aby utworzyć profil klienta usługi RADIUS
 
-  ![promienie](./media/openvpn-azure-ad-client/create/create-radius1.jpg)
+  ![Promienie](./media/openvpn-azure-ad-client/create/create-radius1.jpg)
   
 > [!NOTE]
 > Wpis tajny serwera można wyeksportować w profilu klienta sieci VPN P2S.  Instrukcje dotyczące sposobu eksportowania profilu klienta można znaleźć [tutaj](about-vpn-profile-download.md).
@@ -184,6 +184,10 @@ Można zmodyfikować pobrany plik XML profilu i dodać **\<dnsservers >\<serwer 
 </clientconfig>
 </azvpnprofile>
 ```
+
+> [!NOTE]
+> Klient usługi OpenVPN Azure AD korzysta z wpisów tabeli zasad rozpoznawania nazw DNS (NRPT), co oznacza, że serwery DNS nie będą wyświetlane w danych wyjściowych `ipconfig /all`. Aby potwierdzić używane ustawienia usługi DNS, zapoznaj się z tematem [Get-DnsClientNrptPolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps) w programie PowerShell.
+>
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>Jak mogę dodać trasy niestandardowe do klienta sieci VPN?
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: c90278eccf889595378d3b6b07de2468910c660c
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 5b05cd31a1747da0170556003e7a8534752e2fde
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79080880"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137198"
 ---
 # <a name="use-the-azure-portal-to-create-a-media-services-account"></a>Użyj Azure Portal, aby utworzyć konto Media Services
 
@@ -54,8 +54,6 @@ Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Aby uzyskać
     
 1. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**, aby wyświetlić postęp wdrażania konta.
 1. Kliknij opcję **Utwórz** w dolnej części formularza.
-   
-    Po pomyślnym utworzeniu konta zostanie załadowana strona przeglądu. W tabeli punktów końcowych przesyłania strumieniowego konto będzie mieć domyślny punkt końcowy przesyłania strumieniowego w stanie **zatrzymanym** . 
 
     Po utworzeniu konta usług Media Services do Twojego konta dodawany jest **domyślny** punkt końcowy przesyłania strumieniowego w stanie **Zatrzymany**. Aby rozpocząć przesyłanie strumieniowe zawartości i korzystać z [dynamicznego tworzenia pakietów](dynamic-packaging-overview.md) i [szyfrowania dynamicznego](content-protection-overview.md), punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać zawartość, musi być w stanie **uruchomienia** . 
 

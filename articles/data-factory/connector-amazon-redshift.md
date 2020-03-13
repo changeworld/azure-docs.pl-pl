@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.openlocfilehash: 4d729a0117c7c409d1a3e0c3fd440aed96153203
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396527"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79243590"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Kopiowanie danych z usługi Amazon RedShift przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -55,14 +55,14 @@ Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które
 
 Dla połączonej usługi Amazon RedShift są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| typ | Właściwość Type musi mieć wartość: **AmazonRedshift** | Tak |
-| zarządzania |Adres IP lub nazwa hosta serwera Amazon RedShift. |Tak |
-| Port |Numer portu TCP używanego przez serwer Amazon RedShift do nasłuchiwania połączeń klientów. |Nie, wartość domyślna to 5439 |
-| baza danych |Nazwa bazy danych Amazon RedShift. |Tak |
-| nazwa użytkownika |Nazwa użytkownika, który ma dostęp do bazy danych programu. |Tak |
-| hasło |Hasło konta użytkownika. Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory, lub [odwoływać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). |Tak |
+| type | Właściwość Type musi mieć wartość: **AmazonRedshift** | Yes |
+| serwer |Adres IP lub nazwa hosta serwera Amazon RedShift. |Yes |
+| port |Numer portu TCP używanego przez serwer Amazon RedShift do nasłuchiwania połączeń klientów. |Nie, wartość domyślna to 5439 |
+| database |Nazwa bazy danych Amazon RedShift. |Yes |
+| nazwa użytkownika |Nazwa użytkownika, który ma dostęp do bazy danych programu. |Yes |
+| hasło |Hasło konta użytkownika. Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory, lub [odwoływać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
 | connectVia | [Integration Runtime](concepts-integration-runtime.md) używany do nawiązywania połączenia z magazynem danych. (Jeśli Twój magazyn danych znajduje się w sieci prywatnej), można użyć środowiska Azure Integration Runtime lub środowiskiem Integration Runtime. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
 
 **Przykład:**
@@ -97,9 +97,9 @@ Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania 
 
 Aby skopiować dane z usługi Amazon RedShift, obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| typ | Właściwość Type zestawu danych musi być ustawiona na wartość: **AmazonRedshiftTable** | Tak |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **AmazonRedshiftTable** | Yes |
 | schemat | Nazwa schematu. |Nie (Jeśli określono parametr "query" w źródle działania)  |
 | tabela | Nazwa tabeli. |Nie (Jeśli określono parametr "query" w źródle działania)  |
 | tableName | Nazwa tabeli ze schematem. Ta właściwość jest obsługiwana w celu zapewnienia zgodności z poprzednimi wersjami. Użyj `schema` i `table` dla nowego obciążenia. | Nie (Jeśli określono parametr "query" w źródle działania) |
@@ -132,10 +132,10 @@ Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania 
 
 Aby skopiować dane z Amazon RedShift, ustaw typ źródła w działaniu Copy na **AmazonRedshiftSource**. W sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| typ | Właściwość Type źródła działania Copy musi być ustawiona na wartość: **AmazonRedshiftSource** | Tak |
-| zapytanie |Użyj zapytania niestandardowego do odczytywania danych. Na przykład: select * from MyTable. |Nie (Jeśli określono parametr "tableName" w zestawie danych) |
+| type | Właściwość Type źródła działania Copy musi być ustawiona na wartość: **AmazonRedshiftSource** | Yes |
+| query |Użyj zapytania niestandardowego do odczytywania danych. Na przykład: select * from MyTable. |Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 | redshiftUnloadSettings | Grupa właściwości podczas korzystania z narzędzia Amazon RedShift UNLOAD. | Nie |
 | s3LinkedServiceName | Odwołuje się do usługi Amazon S3, która ma być używana jako magazyn tymczasowy, określając nazwę połączonej usług typu "AmazonS3". | Tak, jeśli używasz opcji UNLOAD |
 | bucketName | Wskaż zasobnik S3, aby przechowywać dane pośrednie. Jeśli nie zostanie podany, Usługa Data Factory automatycznie wygeneruje ją.  | Tak, jeśli używasz opcji UNLOAD |

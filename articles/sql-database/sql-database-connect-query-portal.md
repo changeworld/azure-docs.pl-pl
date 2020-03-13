@@ -1,7 +1,7 @@
 ---
-title: 'Azure Portal: zapytanie przy użyciu edytora zapytań'
-description: Dowiedz się, jak nawiązać połączenie z bazą danych SQL w witrynie Azure Portal za pomocą edytora zapytań SQL. Następnie uruchom instrukcje Transact-SQL (T-SQL), aby wykonać zapytanie i edytować dane.
-keywords: połącz z bazą danych sql, azure portal, portal, edytor zapytań
+title: Wykonywanie zapytania dotyczącego SQL Database przy użyciu edytora zapytań w Azure Portal
+description: Dowiedz się, jak używać edytora zapytań do uruchamiania zapytań Transact-SQL (T-SQL) względem Azure SQL Database.
+keywords: Nawiązywanie połączenia z usługą SQL Database, tworzenie zapytań do bazy danych SQL, witryna Azure Portal, portal, Edytor zapytań
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,86 +11,92 @@ ms.topic: quickstart
 author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
-ms.date: 10/24/2019
-ms.openlocfilehash: b3ccc2a5343cf02127990dca80a1300959fa06a3
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.date: 03/12/2020
+ms.openlocfilehash: 5847ef3033d257faef4831785b8abd864d54e835
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79087187"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79209603"
 ---
-# <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Szybki Start: używanie Edytora zapytań SQL Azure Portal do łączenia i wykonywania zapytań dotyczących danych
+# <a name="quickstart-use-the-azure-portals-query-editor-to-query-a-sql-database"></a>Szybki Start: używanie Edytora zapytań Azure Portal do wykonywania zapytań w bazie danych SQL
 
-Edytor zapytań SQL jest narzędziem przeglądarki portalu Azure, które ułatwia wykonywanie zapytań SQL w bazie danych Azure SQL Database lub usłudze Azure SQL Data Warehouse. W tym przewodniku skorzystasz z edytora zapytań w celu nawiązania połączenia z bazą danych SQL, a następnie uruchomisz instrukcje języka Transact-SQL, aby wykonywać zapytania o dane oraz wstawiać, aktualizować i usuwać dane.
+Edytor zapytań jest narzędziem w Azure Portal do uruchamiania zapytań SQL dotyczących bazy danych Azure SQL lub Azure SQL Data Warehouse. 
+
+W tym przewodniku szybki start użyjesz edytora zapytań, aby uruchomić zapytania Transact-SQL (T-SQL) dla usługi Azure SQL Database.
+
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do ukończenia tego samouczka niezbędne są następujące elementy:
+Ukończenie tego przewodnika Szybki Start wymaga przykładowej bazy danych AdventureWorksLT. Jeśli nie masz działającej kopii bazy danych SQL AdventureWorksLT, następnym przewodnikiem Szybki Start utworzysz:
 
-- Baza danych Azure SQL Database. Aby utworzyć, a następnie skonfigurować bazę danych w usłudze Azure SQL Database, można użyć instrukcji z jednego z tych przewodników Szybki start:
+- [Szybki Start: Tworzenie pojedynczej bazy danych Azure SQL Database przy użyciu programu Azure Portal, programu PowerShell lub interfejsu wiersza polecenia platformy Azure](sql-database-single-database-get-started.md) 
 
-  || Pojedyncza baza danych |
-  |:--- |:--- |
-  | Tworzenie| [Portal](sql-database-single-database-get-started.md) |
-  || [Interfejs wiersza polecenia](scripts/sql-database-create-and-configure-database-cli.md) |
-  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) |
-  | Konfigurowanie | [Reguła zapory bazująca na adresach IP na poziomie serwera](sql-database-server-level-firewall-rule.md)|
-  |||
+### <a name="configure-network-settings"></a>Konfigurowanie ustawień sieciowych
 
-> [!NOTE]
-> Edytor zapytań używa portów 443 i 1443 do komunikacji.  Upewnij się, że włączono ruch wychodzący HTTPS na tych portach. Należy również dodać wychodzący adres IP do reguł zapory dozwolonych na serwerze, aby uzyskać dostęp do baz danych i magazynów.
+Jeśli w edytorze zapytań zostanie wyświetlony jeden z następujących błędów: *Ustawienia sieci lokalnej mogą uniemożliwiać wygenerowanie zapytań przez Edytor zapytań. Kliknij tutaj, aby uzyskać instrukcje dotyczące sposobu konfigurowania ustawień sieciowych*lub nie można *nawiązać połączenia z serwerem. Może to wskazywać na problem z konfiguracją lokalnej zapory lub ustawieniami serwera proxy sieci*, dlatego następujące ważne informacje powinny pomóc w rozwiązaniu:
 
-## <a name="sign-in-the-azure-portal"></a>Logowanie w witrynie Azure Portal
+> [!IMPORTANT]
+> Edytor zapytań używa portów 443 i 1443 do komunikacji. Upewnij się, że włączono ruch wychodzący HTTPS na tych portach. Należy również [dodać wychodzący adres IP do reguł zapory dozwolonych na serwerze](sql-database-server-level-firewall-rule.md) , aby uzyskać dostęp do baz danych i magazynów.
 
-Zaloguj się do [Azure portal](https://portal.azure.com/).
 
-## <a name="connect-using-sql-authentication"></a>Nawiązywanie połączenia przy użyciu uwierzytelniania SQL
+## <a name="open-the-sql-database-query-editor"></a>Otwórz Edytor zapytań SQL Database
 
-1. Przejdź do Azure Portal, aby nawiązać połączenie z bazą danych SQL. Wyszukaj i wybierz pozycję **bazy danych SQL**.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com/) i wybierz bazę danych SQL, do której chcesz wykonać zapytanie.
 
-    ![Przejdź do listy SQL Database, Azure Portal](./media/sql-database-connect-query-portal/search-for-sql-databases.png)
-
-2. Wybierz bazę danych SQL.
-
-    ![Wybierz bazę danych SQL, Azure Portal](./media/sql-database-connect-query-portal/select-a-sql-database.png)
-
-3. W menu **bazy danych SQL** wybierz pozycję **Edytor zapytań (wersja zapoznawcza)** .
+2. W menu **bazy danych SQL** wybierz pozycję **Edytor zapytań (wersja zapoznawcza)** .
 
     ![znajdowanie edytora zapytań](./media/sql-database-connect-query-portal/find-query-editor.PNG)
 
-4. Na stronie **logowania** w obszarze Etykieta **uwierzytelniania programu SQL Server** wprowadź identyfikator **logowania** i **hasło** do konta administratora serwera użytego do utworzenia bazy danych. Następnie wybierz przycisk **OK**.
+
+## <a name="establish-a-connection-to-the-database"></a>Nawiąż połączenie z bazą danych
+
+Mimo że logujesz się do portalu, nadal musisz podać poświadczenia, aby uzyskać dostęp do bazy danych SQL. Możesz połączyć się przy użyciu uwierzytelniania SQL lub Azure Active Directory, aby nawiązać połączenie z bazą danych.
+
+### <a name="connect-using-sql-authentication"></a>Nawiązywanie połączenia przy użyciu uwierzytelniania SQL
+
+1. Na stronie **Logowanie** w obszarze **uwierzytelnianie programu SQL Server**wprowadź **Identyfikator logowania** i **hasło** użytkownika, który ma dostęp do bazy danych. Jeśli nie masz pewności, użyj nazwy logowania i hasła administratora serwera bazy danych.
 
     ![logowanie](./media/sql-database-connect-query-portal/login-menu.png)
 
-## <a name="connect-using-azure-active-directory"></a>Nawiązywanie połączenia przy użyciu usługi Azure Active Directory
+2. Kliknij przycisk **OK**.
 
-Skonfigurowanie administratora usługi Azure Active Directory (Azure AD) umożliwia użycie pojedynczej tożsamości do logowania się do Azure Portal i bazy danych SQL. Wykonaj poniższe kroki, aby skonfigurować administratora usługi Azure AD dla programu SQL Server.
+
+### <a name="connect-using-azure-active-directory"></a>Nawiązywanie połączenia przy użyciu usługi Azure Active Directory
+
+Skonfigurowanie administratora usługi Azure Active Directory (Azure AD) umożliwia użycie pojedynczej tożsamości do logowania się do Azure Portal i bazy danych SQL. Aby nawiązać połączenie z bazą danych przy użyciu usługi Azure AD, wykonaj poniższe kroki, aby skonfigurować administratora usługi Azure AD dla programu SQL Server.
 
 > [!NOTE]
 > * Konta e-mail (na przykład outlook.com, gmail.com, yahoo.com itd.) nie są jeszcze obsługiwane jako Administratorzy usługi Azure AD. Wybierz użytkownika utworzonego natywnie w usłudze Azure AD lub sfederowanego z usługą Azure AD.
 > * Logowanie administratora usługi Azure AD nie działa w przypadku kont, dla których włączono uwierzytelnianie 2-etapowe.
 
-1. W menu Azure Portal lub na stronie **głównej** wybierz pozycję **wszystkie zasoby**.
+#### <a name="set-an-active-directory-admin-for-the-database-server"></a>Ustawianie administratora Active Directory dla serwera bazy danych
 
-2. Wybierz serwer SQL.
+1. W Azure Portal wybierz swój serwer SQL.
 
-3. W menu **programu SQL Server** w obszarze **Ustawienia**wybierz pozycję **administrator Active Directory**.
+2. W menu **programu SQL Server** wybierz **Active Directory administrator**.
 
-4. Na pasku narzędzi strony **administratora** programu SQL Server Active Directory wybierz pozycję **Ustaw administratora** , a następnie wybierz użytkownika lub grupę jako administratora usługi Azure AD.
+3. Na pasku narzędzi strony **administratora** programu SQL Server Active Directory wybierz pozycję **Ustaw administratora** , a następnie wybierz użytkownika lub grupę jako administratora usługi Azure AD.
 
     ![wybierz usługę active directory](./media/sql-database-connect-query-portal/select-active-directory.png)
 
-5. Na stronie **Dodawanie administratora** w polu wyszukiwania wprowadź użytkownika lub grupę do znalezienia, wybierz ją jako administratora, a następnie wybierz przycisk **Wybierz** .
+4. Na stronie **Dodawanie administratora** w polu wyszukiwania wprowadź użytkownika lub grupę do znalezienia, wybierz ją jako administratora, a następnie wybierz przycisk **Wybierz** .
 
-6. Z powrotem na pasku narzędzi strony administratora programu SQL Server **Active Directory** wybierz pozycję **Zapisz**.
+5. Z powrotem na pasku narzędzi strony administratora programu SQL Server **Active Directory** wybierz pozycję **Zapisz**.
 
-7. W menu **programu SQL Server** wybierz opcję **bazy danych SQL**, a następnie wybierz bazę danych SQL.
+### <a name="connect-to-the-database"></a>Łączenie z bazą danych
 
-8. W menu **bazy danych SQL** wybierz pozycję **Edytor zapytań (wersja zapoznawcza)** . Na stronie **logowania** na etykiecie **uwierzytelniania Active Directory** zostanie wyświetlony komunikat informujący, że użytkownik został zalogowany, jeśli jesteś administratorem usługi Azure AD. Następnie wybierz przycisk **Kontynuuj jako** *\<identyfikator użytkownika lub grupy >* .
+6. W menu **programu SQL Server** wybierz opcję **bazy danych SQL**, a następnie wybierz bazę danych SQL.
 
-## <a name="view-data"></a>Wyświetlanie danych
+7. W menu **bazy danych SQL** wybierz pozycję **Edytor zapytań (wersja zapoznawcza)** . Na stronie **logowania** na etykiecie **uwierzytelniania Active Directory** zostanie wyświetlony komunikat informujący, że użytkownik został zalogowany, jeśli jesteś administratorem usługi Azure AD. Następnie wybierz przycisk **Kontynuuj jako** *\<identyfikator użytkownika lub grupy >* . Jeśli strona wskazuje, że użytkownik nie zalogował się pomyślnie, może być konieczne odświeżenie strony.
 
-1. Po uwierzytelnieniu wklej następujący kod SQL w edytorze zapytań, aby uzyskać 20 najważniejszych produktów według kategorii.
+## <a name="query-a-sql-database"></a>Tworzenie zapytań względem bazy danych SQL
+
+Następujące przykładowe zapytania powinny zostać pomyślnie wykonane względem przykładowej bazy danych AdventureWorksLT.
+
+### <a name="run-a-select-query"></a>Uruchamianie zapytania SELECT
+
+1. Wklej następujące zapytanie do edytora zapytań:
 
    ```sql
     SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName
@@ -99,13 +105,15 @@ Skonfigurowanie administratora usługi Azure Active Directory (Azure AD) umożli
     ON pc.productcategoryid = p.productcategoryid;
    ```
 
-2. Na pasku narzędzi wybierz pozycję **Uruchom**, a następnie przejrzyj dane wyjściowe w okienku **Wyniki**.
+2. Wybierz pozycję **Uruchom** , a następnie przejrzyj dane wyjściowe w okienku **wyników** .
 
    ![wyniki edytora zapytań](./media/sql-database-connect-query-portal/query-editor-results.png)
 
-## <a name="insert-data"></a>Wstawianie danych
+3. Opcjonalnie można zapisać zapytanie jako plik. SQL lub wyeksportować zwrócone dane jako plik JSON, CSV lub XML.
 
-Uruchom następującą instrukcję [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) języka Transact-SQL, aby dodać nowy produkt do tabeli `SalesLT.Product`.
+### <a name="run-an-insert-query"></a>Uruchom zapytanie INSERT
+
+Uruchom następującą instrukcję [INSERT](/sql/t-sql/statements/insert-transact-sql/) -SQL, aby dodać nowy produkt do tabeli `SalesLT.Product`.
 
 1. Zastąp poprzednie zapytanie tym.
 
@@ -133,9 +141,9 @@ Uruchom następującą instrukcję [INSERT](https://msdn.microsoft.com/library/m
 2. Wybierz polecenie **Uruchom**, aby wstawić nowy wiersz do tabeli `Product`. W okienku **komunikaty** zostanie wyświetlone **zapytanie zakończone powodzeniem: uwzględnione wiersze: 1**.
 
 
-## <a name="update-data"></a>Aktualizowanie danych
+### <a name="run-an-update-query"></a>Uruchamianie zapytania UPDATE
 
-Uruchom następującą instrukcję [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) języka Transact-SQL, aby zmodyfikować nowy produkt.
+Aby zmodyfikować nowy produkt, uruchom następującą instrukcję [Update](/sql/t-sql/queries/update-transact-sql/) T-SQL.
 
 1. Zastąp poprzednie zapytanie tym.
 
@@ -147,9 +155,9 @@ Uruchom następującą instrukcję [UPDATE](https://msdn.microsoft.com/library/m
 
 2. Wybierz polecenie **Uruchom**, aby zaktualizować określony wiersz w tabeli `Product`. W okienku **komunikaty** zostanie wyświetlone **zapytanie zakończone powodzeniem: uwzględnione wiersze: 1**.
 
-## <a name="delete-data"></a>Usuwanie danych
+### <a name="run-a-delete-query"></a>Uruchamianie kwerendy usuwania
 
-Uruchom następującą instrukcję [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) języka Transact-SQL, aby usunąć nowy produkt.
+Uruchom następującą instrukcję [delete](/sql/t-sql/statements/delete-transact-sql/) T-SQL, aby usunąć nowy produkt.
 
 1. Zastąp poprzednie zapytanie następującym:
 
@@ -165,11 +173,11 @@ Uruchom następującą instrukcję [DELETE](https://msdn.microsoft.com/library/m
 
 Jest kilka rzeczy, o których trzeba wiedzieć podczas pracy z edytorem zapytań.
 
-* Edytor zapytań używa portów 443 i 1443 do komunikacji.  Upewnij się, że włączono ruch wychodzący HTTPS na tych portach. Należy również dodać wychodzący adres IP do reguł zapory dozwolonych na serwerze, aby uzyskać dostęp do baz danych i magazynów.
+* Edytor zapytań używa portów 443 i 1443 do komunikacji. Upewnij się, że włączono ruch wychodzący HTTPS na tych portach. Należy również dodać wychodzący adres IP do reguł zapory dozwolonych na serwerze, aby uzyskać dostęp do baz danych i magazynów.
 
 * Edytor zapytań współpracuje z prywatnym linkiem bez konieczności dodawania adresu IP klienta do zapory SQL Database
 
-* Naciśnięcie klawisza F5 powoduje odświeżenie strony edytora i utratę tworzonego zapytania.
+* Naciśnięcie klawisza **F5** spowoduje odświeżenie strony edytora zapytań, a wszystkie wykonywane zapytania są tracone.
 
 * Edytor zapytań nie obsługuje nawiązywania połączeń z bazą danych `master`.
 
@@ -177,11 +185,11 @@ Jest kilka rzeczy, o których trzeba wiedzieć podczas pracy z edytorem zapytań
 
 * Edytor zapytań obsługuje tylko cylindryczne projekcje dla typów danych geograficznych.
 
-* Tabele i widoki bazy danych nie obsługują funkcji IntelliSense. Jednak edytor obsługuje funkcję automatycznego uzupełniania dla nazw, które zostały już wpisane.
+* W przypadku tabel i widoków bazy danych nie jest obsługiwana funkcja IntelliSense, ale Edytor obsługuje Autouzupełnianie dla nazw, które zostały już wpisane.
 
 
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej o języku Transact-SQL obsługiwanym w bazach danych Azure SQL Database, zobacz [Resolving Transact-SQL differences during migration to SQL Database (Rozwiązywanie różnic w języku Transact-SQL podczas migracji do usługi SQL Database)](sql-database-transact-sql-information.md).
+Aby dowiedzieć się więcej na temat języka Transact-SQL (T-SQL) obsługiwanego w bazach danych Azure SQL, zobacz [Rozwiązywanie różnic w języku Transact-SQL podczas migracji do SQL Database](sql-database-transact-sql-information.md).

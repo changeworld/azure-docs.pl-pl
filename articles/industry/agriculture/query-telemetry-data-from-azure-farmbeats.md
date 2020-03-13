@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 03/11/2020
 ms.author: sunasing
-ms.openlocfilehash: 2786519bfc54b39c986ba57c78d9d6409a596351
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: b871ccb5cb110cfc6154a415059541c4b94f4106
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79129781"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137309"
 ---
 # <a name="query-ingested-telemetry-data"></a>Kwerenda pozyskiwania danych telemetrycznych
 
@@ -108,8 +108,8 @@ Dane telemetryczne są odbierane w centrum EventHub, a następnie przetwarzane i
 
 Postępuj zgodnie z poniższymi instrukcjami, aby wizualizować dane w TSI
 
-1. Przejdź do witryny Azure Portal — > FarmBeats DataHub grupę zasobów — > kliknij pozycję środowisko Time Series Insights środowisku (TSI-xxxx) — > zasad dostępu do danych. Dodaj użytkownika z dostępem czytelnika lub współautorem.
-2. Przejdź do strony Przegląd środowiska Time Series Insights (TSI-xxxx), a następnie kliknij pozycję "adres URL Eksploratora Time Series Insights". Teraz będzie można wizualizować pozyskiwaną telemetrię.
+1. Przejdź do witryny Azure Portal — > FarmBeats DataHub Grupa zasobów — > wybierz pozycję środowisko Time Series Insightse (TSI-xxxx) — > zasad dostępu do danych. Dodaj użytkownika z dostępem czytelnika lub współautorem.
+2. Przejdź do strony Przegląd środowiska Time Series Insights (TSI-xxxx) i wybierz pozycję "adres URL Eksploratora Time Series Insights". Teraz będzie można wizualizować pozyskiwaną telemetrię.
 
 Oprócz przechowywania, wykonywania zapytań i wizualizacji danych telemetrycznych, TSI również umożliwia integrację z pulpitem nawigacyjnym Power BI. Więcej szczegółowych [informacji]( https://docs.microsoft.com/azure/time-series-insights/how-to-connect-power-bi)
 

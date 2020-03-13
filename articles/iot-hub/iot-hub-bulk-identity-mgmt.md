@@ -1,6 +1,6 @@
 ---
-title: Importowanie eksportu tożsamości urządzeń IoT Hub platformy Azure | Microsoft Docs
-description: Jak używać zestawu SDK usługi Azure IoT do wykonywania operacji zbiorczych w rejestrze tożsamości w celu importowania i eksportowania tożsamości urządzeń. Operacje importowania umożliwiają zbiorcze tworzenie, aktualizowanie i usuwanie tożsamości urządzeń.
+title: Importowanie/Eksportowanie tożsamości urządzeń IoT Hub platformy Azure | Microsoft Docs
+description: Jak używać zestawu SDK usługi Azure IoT do uruchamiania operacji zbiorczych w rejestrze tożsamości w celu importowania i eksportowania tożsamości urządzeń. Operacje importowania umożliwiają zbiorcze tworzenie, aktualizowanie i usuwanie tożsamości urządzeń.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
-ms.openlocfilehash: 0d0643adc56a3dcdeef163708c26f2425ab8af43
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d217025a847c33ceff49feac22023f80fde2b109
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429258"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218414"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>Zbiorczo Importuj i Eksportuj IoT Hub tożsamości urządzeń
 
@@ -26,7 +26,6 @@ Operacje importowania i eksportowania odbywają się w kontekście *zadań* , kt
 Klasa **registrymanager** zawiera metody **ExportDevicesAsync** i **ImportDevicesAsync** , które korzystają z platformy **zadań** . Te metody umożliwiają eksportowanie, importowanie i synchronizację całości rejestru tożsamości Centrum IoT Hub.
 
 W tym temacie omówiono użycie klasy **registrymanager** i systemu **zadań** do wykonywania importu zbiorczego i eksportu urządzeń do i z rejestru tożsamości Centrum IoT Hub. Możesz również użyć IoT Hub Device Provisioning Service platformy Azure, aby włączyć funkcję bezobsługowego udostępniania w czasie just-in-Time do jednego lub kilku centrów IoT, bez konieczności interwencji człowieka. Aby dowiedzieć się więcej, zobacz [dokumentację usługi aprowizacji](/azure/iot-dps).
-
 
 ## <a name="what-are-jobs"></a>Co to są zadania?
 
@@ -259,9 +258,9 @@ Użyj **opcjonalnej** właściwości ImportMode w Importuj dane serializacji dla
 
 | portmode | Opis |
 | --- | --- |
-| **createOrUpdate** |Jeśli urządzenie nie istnieje o określonym **identyfikatorze**, jest ono nowo zarejestrowane. <br/>Jeśli urządzenie już istnieje, istniejące informacje są zastępowane przez podane dane wejściowe bez względu na wartość **ETag** . <br> Użytkownik może opcjonalnie określić dane przędzy wraz z danymi urządzenia. Element ETag o przędze, jeśli jest określony, jest przetwarzany niezależnie od elementu ETag urządzenia. W przypadku niezgodności z elementem ETag istniejącej przędzy w pliku dziennika jest zapisywana błąd. |
+| **Metodę createorupdate** |Jeśli urządzenie nie istnieje o określonym **identyfikatorze**, jest ono nowo zarejestrowane. <br/>Jeśli urządzenie już istnieje, istniejące informacje są zastępowane przez podane dane wejściowe bez względu na wartość **ETag** . <br> Użytkownik może opcjonalnie określić dane przędzy wraz z danymi urządzenia. Element ETag o przędze, jeśli jest określony, jest przetwarzany niezależnie od elementu ETag urządzenia. W przypadku niezgodności z elementem ETag istniejącej przędzy w pliku dziennika jest zapisywana błąd. |
 | **create** |Jeśli urządzenie nie istnieje o określonym **identyfikatorze**, jest ono nowo zarejestrowane. <br/>Jeśli urządzenie już istnieje, w pliku dziennika zostanie zapisany błąd. <br> Użytkownik może opcjonalnie określić dane przędzy wraz z danymi urządzenia. Element ETag o przędze, jeśli jest określony, jest przetwarzany niezależnie od elementu ETag urządzenia. W przypadku niezgodności z elementem ETag istniejącej przędzy w pliku dziennika jest zapisywana błąd. |
-| **update** |Jeśli urządzenie już istnieje o określonym **identyfikatorze**, istniejące informacje są zastępowane dostarczonymi danymi wejściowymi bez względu na wartość **ETag** . <br/>Jeśli urządzenie nie istnieje, w pliku dziennika zostanie zapisany błąd. |
+| **aktualizacji** |Jeśli urządzenie już istnieje o określonym **identyfikatorze**, istniejące informacje są zastępowane dostarczonymi danymi wejściowymi bez względu na wartość **ETag** . <br/>Jeśli urządzenie nie istnieje, w pliku dziennika zostanie zapisany błąd. |
 | **updateIfMatchETag** |Jeśli urządzenie już istnieje o określonym **identyfikatorze**, istniejące informacje są zastępowane danymi wejściowymi tylko wtedy, gdy istnieje element **ETag** Match. <br/>Jeśli urządzenie nie istnieje, w pliku dziennika zostanie zapisany błąd. <br/>Jeśli występuje niezgodność elementu **ETag** , w pliku dziennika jest zapisywana błąd. |
 | **createOrUpdateIfMatchETag** |Jeśli urządzenie nie istnieje o określonym **identyfikatorze**, jest ono nowo zarejestrowane. <br/>Jeśli urządzenie już istnieje, istniejące informacje są zastępowane przez podane dane wejściowe tylko wtedy, gdy istnieje element **ETag** Match. <br/>Jeśli występuje niezgodność elementu **ETag** , w pliku dziennika jest zapisywana błąd. <br> Użytkownik może opcjonalnie określić dane przędzy wraz z danymi urządzenia. Element ETag o przędze, jeśli jest określony, jest przetwarzany niezależnie od elementu ETag urządzenia. W przypadku niezgodności z elementem ETag istniejącej przędzy w pliku dziennika jest zapisywana błąd. |
 | **usuwanie** |Jeśli urządzenie już istnieje o określonym **identyfikatorze**, zostanie usunięte bez względu na wartość **ETag** . <br/>Jeśli urządzenie nie istnieje, w pliku dziennika zostanie zapisany błąd. |

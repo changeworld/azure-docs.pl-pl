@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: 804aeee112d060c411a4e37b5d19e4766307b0a0
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 218c1c98a2ed775ae86c1657156991879708cc7a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169169"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217936"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Ponowne uczenie i wdrażanie modelu uczenia maszynowego
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Przeszkolenie jest jednym ze sposobów zapewnienia, że modele uczenia maszynowego są dokładne i oparte na najbardziej przydatnych dostępnych danych. W tym artykule pokazano, jak ponownie nauczyć i wdrożyć model uczenia maszynowego jako nową usługę sieci Web w programie Studio (klasyczna). Jeśli chcesz ponownie przeprowadzić uczenie klasycznej usługi sieci Web, [zapoznaj się z tym artykułem.](retrain-classic-web-service.md)
 

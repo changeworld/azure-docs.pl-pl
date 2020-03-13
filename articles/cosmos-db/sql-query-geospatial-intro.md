@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.openlocfilehash: 0fe83b8e28b96f1d89a7c98cfe86a6e924f1bc49
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 655c3a96792fba83ac73365f02d48ce0347e9048
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566350"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137890"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Dane lokalizacji geograficznej i GEOJSON w Azure Cosmos DB
 
@@ -25,7 +25,10 @@ Ten artykuł stanowi wprowadzenie do funkcji geoprzestrzennych w usłudze Azure 
 
 Dane przestrzenne w tym artykule opisano położenie i kształt obiektów w przestrzeni. W większości aplikacji te odnoszą się do obiektów na ziemi i dane geograficzne danych. Dane przestrzenne może służyć do reprezentowania lokalizacji osoby, miejsca lub granic mieście lub usługi Data lake. Typowe przypadki użycia często obejmują zapytań dotyczących odległości, na przykład, "Znajdź wszystkich kawiarnie blisko swojej bieżącej lokalizacji."
 
-Interfejs API SQL Azure Cosmos DB obsługuje typ danych **Geografia** . Typ **geografii** reprezentuje dane w układzie współrzędnych rundy-ziemi.
+Interfejs API SQL Azure Cosmos DB obsługuje dwa typy danych przestrzennych: typ danych **geometrii** i typ danych **Geografia** .
+
+- Typ **geometrii** reprezentuje dane w układzie współrzędnych Euclidean (płaski)
+- Typ **geografii** reprezentuje dane w układzie współrzędnych rundy-ziemi.
 
 ## <a name="supported-data-types"></a>Obsługiwane typy danych
 
@@ -70,7 +73,11 @@ Typy danych przestrzennych można osadzić w dokumencie Azure Cosmos DB, jak pok
 }
 ```
 
-### <a name="points-in-geography-coordinate-system"></a>Punkty w układzie współrzędnych geograficznych
+### <a name="points-in-a-geometry-coordinate-system"></a>Punkty w układzie współrzędnych geometrii
+
+W przypadku typu danych **geometria** Specyfikacja GEOJSON określa najpierw oś poziomą i drugą oś pionową.
+
+### <a name="points-in-a-geography-coordinate-system"></a>Punkty w układzie współrzędnych geograficznych
 
 W przypadku typu danych **Geografia** Specyfikacja GEOJSON określa długość i szerokość geograficzną. Podobnie jak w innych aplikacjach mapowania długości i szerokości geograficznej są kąty i reprezentowane w stopniach. Wartości długości geograficznej jest mierzony od południków Prime należą do zakresu od stopni-180 i 180.0 stopni i wartości szerokości geograficznej jest mierzony od równika i należą do zakresu od stopni-90.0 i 90.0 stopni.
 

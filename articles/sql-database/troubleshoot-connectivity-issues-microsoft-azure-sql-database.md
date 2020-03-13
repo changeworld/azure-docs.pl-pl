@@ -9,16 +9,16 @@ author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: carlrab,vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 6baf9d4edba9ba8db008c5c6a8d7af6832ba3273
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 578d076dfc2fc383051c0c3a8528cdbb0fbcdb15
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591238"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79208782"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-microsoft-azure-sql-database"></a>Rozwiązywanie problemów z łącznością i innych błędów przy użyciu Microsoft Azure SQL Database
 
-Gdy nawiązywanie połączenia z usługą Azure SQL Database nie powiedzie się, pojawią się komunikaty o błędach. Te problemy z połączeniem mogą być spowodowane przez Azure SQL Database ponowną konfigurację, ustawienia zapory, przekroczenie limitu czasu połączenia, nieprawidłowe informacje logowania lub niepowodzenie zastosowania najlepszych praktyk i wytyczne dotyczące projektowania w [projektowanie aplikacji] ( sql-database-develop-overview.md). Ponadto w przypadku osiągnięcia maksymalnego limitu dla niektórych zasobów Azure SQL Database nie można nawiązać połączenia z Azure SQL Database.
+Gdy nawiązywanie połączenia z usługą Azure SQL Database nie powiedzie się, pojawią się komunikaty o błędach. Te problemy z połączeniem mogą być spowodowane przez Azure SQL Database ponowną konfigurację, ustawienia zapory, przekroczenie limitu czasu połączenia, nieprawidłowe informacje o logowaniu lub niepowodzenie zastosowania najlepszych rozwiązań i projektowanie wytycznych podczas procesu [projektowania aplikacji](sql-database-develop-overview.md) . Ponadto w przypadku osiągnięcia maksymalnego limitu dla niektórych zasobów Azure SQL Database nie można nawiązać połączenia z Azure SQL Database.
 
 ## <a name="transient-fault-error-messages-40197-40613-and-others"></a>Komunikaty o błędach przejściowych (40197, 40613 i inne)
 
@@ -316,7 +316,7 @@ Następujące błędy są związane z tworzeniem i używaniem pul elastycznych:
 |:--- |:--- |:--- |:--- |
 | 1132 | 17 |Osiągnięto limit magazynowania elastycznej puli. Użycie magazynu dla puli elastycznej nie może przekroczyć (% d) MB. Podjęto próbę zapisu danych w bazie danych, gdy osiągnięto limit magazynowania puli elastycznej. Aby uzyskać informacje na temat limitów zasobów, zobacz: <br/>&bull; &nbsp;[limity jednostek DTU dla pul elastycznych](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[limity rdzeń wirtualny dla pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md). <br/> |Rozważ zwiększenie DTU i/lub dodanie magazynu do puli elastycznej, jeśli jest to możliwe, aby zwiększyć jej limit magazynowania, zmniejszyć ilość miejsca używanego przez pojedyncze bazy danych w puli elastycznej lub usunąć bazy danych z puli elastycznej. Aby uzyskać skalowanie puli elastycznej, zobacz [skalowanie zasobów w puli elastycznej](sql-database-elastic-pool-scale.md).|
 | 10929 | 16 |Minimalna gwarancja% s wynosi% d, maksymalny limit wynosi% d, a bieżące użycie bazy danych to% d. Jednak serwer jest obecnie zbyt zajęty, aby obsługiwać żądania większe niż% d dla tej bazy danych. Aby uzyskać informacje na temat limitów zasobów, zobacz: <br/>&bull; &nbsp;[limity jednostek DTU dla pul elastycznych](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[limity rdzeń wirtualny dla pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md). <br/> W przeciwnym razie spróbuj ponownie później. Wartość DTU/rdzeń wirtualny min na bazę danych; Maksymalna liczba jednostek DTU/rdzeń wirtualny na bazę danych. Całkowita liczba współbieżnych procesów roboczych (żądań) dla wszystkich baz danych w puli elastycznej podjęła próbę przekroczenia limitu puli. |Rozważ zwiększenie DTU lub rdzeni wirtualnych puli elastycznej, jeśli jest to możliwe, aby zwiększyć jej limit procesów roboczych lub usunąć bazy danych z puli elastycznej. |
-| 40844 | 16 |Baza danych "% ls" na serwerze "% ls" jest bazą danych wersji "% ls" w puli elastycznej i nie może mieć relacji ciągłego kopiowania.  |N/D |
+| 40844 | 16 |Baza danych "% ls" na serwerze "% ls" jest bazą danych wersji "% ls" w puli elastycznej i nie może mieć relacji ciągłego kopiowania.  |Nie dotyczy |
 | 40857 | 16 |Nie znaleziono puli elastycznej dla serwera: "% ls", Nazwa puli elastycznej: "% ls". Określona Pula elastyczna nie istnieje na określonym serwerze. | Podaj prawidłową nazwę puli elastycznej. |
 | 40858 | 16 |Pula elastyczna "% ls" już istnieje na serwerze: "% ls". Określona Pula elastyczna już istnieje w określonym SQL Database serwerze. | Podaj nazwę nowej puli elastycznej. |
 | 40859 | 16 |Pula elastyczna nie obsługuje warstwy usług "% ls". Określona warstwa usług nie jest obsługiwana w przypadku aprowizacji elastycznej puli. |Wprowadź poprawną wersję lub pozostaw pustą warstwę usługi, aby użyć domyślnej warstwy usług. |

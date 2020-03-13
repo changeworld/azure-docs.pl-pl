@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: d920bde856521f1e662536c1187881e143612039
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.openlocfilehash: d78828b2e439668dbc0cd8567560a709256dad5f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359094"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217006"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>Projektowanie sieci wirtualnych z użyciem zasobów bramy translatora adresów sieciowych (publiczna wersja zapoznawcza)
 
@@ -31,10 +31,6 @@ Zasoby bramy translatora adresów sieciowych są częścią [Virtual Network NAT
 </p>
 
 *Rysunek: Virtual Network translator adresów sieciowych dla ruchu wychodzącego do Internetu*
-
-
->[!NOTE] 
->Virtual Network translator adresów sieciowych jest w tej chwili dostępny jako publiczna wersja zapoznawcza. Jest ono obecnie dostępne tylko w ograniczonym zestawie [regionów](nat-overview.md#region-availability). Ta wersja zapoznawcza jest świadczona bez umowy dotyczącej poziomu usług i nie jest zalecana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
 
 ## <a name="how-to-deploy-nat"></a>Jak wdrożyć translator adresów sieciowych
 
@@ -147,7 +143,7 @@ Przejrzyj tę sekcję, aby zapoznać się z zagadnieniami dotyczącymi projektow
 
 ### <a name="cost-optimization"></a>Optymalizacja kosztów
 
-[Punkty końcowe usługi](virtual-network-service-endpoints-overview.md) i [linki prywatne](../private-link/private-link-overview.md) to dwie opcje, które należy wziąć pod uwagę w przypadku optymalizacji kosztów, gdy translator adresów sieciowych nie jest wymagany.  Każdy ruch kierowany do punktów końcowych usługi lub link prywatny nie jest przetwarzany przez translatora adresów sieciowych sieci wirtualnej.  
+[Punkty końcowe usługi](virtual-network-service-endpoints-overview.md) i [link prywatny](../private-link/private-link-overview.md) są opcjami, które należy wziąć pod uwagę w przypadku optymalizacji kosztów. Translator adresów sieciowych nie jest wymagany w przypadku tych usług. Ruch kierowany do punktów końcowych usługi lub link prywatny nie jest przetwarzany przez translator adresów sieciowych sieci wirtualnej.  
 
 Punkty końcowe usługi wiążą zasoby usługi platformy Azure z siecią wirtualną i kontrolują dostęp do zasobów usługi platformy Azure. Na przykład podczas uzyskiwania dostępu do usługi Azure Storage należy użyć punktu końcowego dla magazynu, aby uniknąć naliczania opłat za dane dotyczące translatora adresów sieciowych. Punkty końcowe usługi są bezpłatne.
 
@@ -339,33 +335,29 @@ Port dla tego elementu jest dostępny do ponownego użycia w tym samym docelowym
 - Rejestrowanie przepływu sieciowej grupy zabezpieczeń nie jest obsługiwane w przypadku korzystania z translatora adresów sieciowych.
 - Translator adresów sieciowych nie może obejmować wielu sieci wirtualnych.
 
-## <a name="preview-participation"></a>Podgląd udziału
-
-Postępuj zgodnie [z instrukcjami, aby włączyć subskrypcję](nat-overview.md#public-preview-participation).
 
 ## <a name="feedback"></a>Opinia
 
-Chcemy wiedzieć, jak możemy ulepszyć usługę. Udostępnij nam swoją [opinię na temat publicznej wersji zapoznawczej](https://aka.ms/natfeedback) .  Możesz zaproponować i zagłosować, co będziemy kompilować dalej w usłudze [UserVoice dla translatora adresów sieciowych](https://aka.ms/natuservoice).
+Chcemy wiedzieć, jak możemy ulepszyć usługę. Zaproponuj i zagłosuj na to, co będziemy kompilować dalej w usłudze [UserVoice dla translatora adresów sieciowych](https://aka.ms/natuservoice).
 
 ## <a name="next-steps"></a>Następne kroki
 
 * Dowiedz się więcej o [translatorze adresów sieciowych sieci wirtualnych](nat-overview.md).
 * Informacje o [metrykach i alertach dotyczących zasobów bramy translatora adresów sieciowych](nat-metrics.md).
 * Informacje o [rozwiązywaniu problemów z zasobami bramy translatora adresów sieciowych](troubleshoot-nat.md).
-* [Powiedz nam, co należy utworzyć obok Virtual Network translatora adresów sieciowych w usłudze UserVoice](https://aka.ms/natuservoice).
-* [Prześlij opinię na temat publicznej wersji zapoznawczej](https://aka.ms/natfeedback).
 * Samouczek dotyczący weryfikowania bramy translatora adresów sieciowych
-  - [Interfejs wiersza polecenia platformy Azure](tutorial-create-validate-nat-gateway-cli.md),
-  - Program [PowerShell](tutorial-create-validate-nat-gateway-cli.md),
+  - [Interfejs wiersza polecenia platformy Azure](tutorial-create-validate-nat-gateway-cli.md)
+  - [PowerShell](tutorial-create-validate-nat-gateway-cli.md)
   - [Portal](tutorial-create-validate-nat-gateway-cli.md)
 * Przewodnik Szybki Start dotyczący wdrażania zasobu bramy translatora adresów sieciowych
-  - [Interfejs wiersza polecenia platformy Azure](./quickstart-create-nat-gateway-cli.md),
-  - Program [PowerShell](./quickstart-create-nat-gateway-powershell.md),
-  - [Portal](./quickstart-create-nat-gateway-portal.md).
+  - [Interfejs wiersza polecenia platformy Azure](./quickstart-create-nat-gateway-cli.md)
+  - [PowerShell](./quickstart-create-nat-gateway-powershell.md)
+  - [Portal](./quickstart-create-nat-gateway-portal.md)
 * Informacje o interfejsie API zasobów bramy translatora adresów sieciowych
-  - [interfejs API REST](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways),
-  - [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest),
-  - [Program PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway).
+  - [Interfejs API REST](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
+  - [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest)
+  - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)
+
 * Dowiedz się więcej o [strefach dostępności](../availability-zones/az-overview.md).
 * Dowiedz się więcej na temat usługi [równoważenia obciążenia w warstwie Standardowa](../load-balancer/load-balancer-standard-overview.md).
 * Dowiedz się więcej na temat [stref dostępności i standardowego modułu równoważenia obciążenia](../load-balancer/load-balancer-standard-availability-zones.md).

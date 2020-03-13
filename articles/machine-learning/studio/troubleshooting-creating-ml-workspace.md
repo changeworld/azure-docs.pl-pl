@@ -10,17 +10,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: ba792c225c9875bbad50e3fb460c84ed012ce615
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 58ccd63e16382aca8e16eb67efba951a055eb254
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169113"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217832"
 ---
 # <a name="troubleshooting-guide-create-and-connect-to-an-azure-machine-learning-studio-classic-workspace"></a>Przewodnik rozwiązywania problemów: Tworzenie obszaru roboczego Azure Machine Learning Studio (klasyczny) i nawiązywanie z nim połączenia
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 Ten przewodnik zawiera rozwiązania niektórych często spotykanych problemów podczas konfigurowania obszarów roboczych Azure Machine Learning Studio (klasycznych).
-
-
 
 ## <a name="workspace-owner"></a>Właściciel obszaru roboczego
 Aby otworzyć obszar roboczy w Machine Learning Studio (klasyczny), użytkownik musi być zalogowany na koncie Microsoft użytym do utworzenia obszaru roboczego lub uzyskać zaproszenia od właściciela, aby dołączyć do obszaru roboczego. Z Azure Portal można zarządzać obszarem roboczym, który obejmuje możliwość konfigurowania dostępu.

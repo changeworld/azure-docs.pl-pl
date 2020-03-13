@@ -9,11 +9,11 @@ ms.date: 12/17/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 6a70e52771828de6cc9fad7998097d70c28a64fd
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127439"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238818"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Samouczek: Tworzenie dzierżawy w programie Virtual Desktop systemu Windows
 

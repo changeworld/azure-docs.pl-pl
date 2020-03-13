@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: thweiss
-ms.openlocfilehash: fde8829da3e523ced44143db0dee6b93cf9152bd
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 466f870f257ca4d93764cbfdb4208e8cf1f75553
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74147770"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79205037"
 ---
-# <a name="configure-azure-private-link-for-an-azure-cosmos-account-preview"></a>Konfigurowanie prywatnego linku platformy Azure dla konta usługi Azure Cosmos (wersja zapoznawcza)
+# <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Konfigurowanie prywatnego linku platformy Azure dla konta usługi Azure Cosmos
 
 Za pomocą prywatnego linku platformy Azure można nawiązać połączenie z kontem usługi Azure Cosmos za pośrednictwem prywatnego punktu końcowego. Prywatny punkt końcowy to zestaw prywatnych adresów IP w podsieci w sieci wirtualnej. Następnie możesz ograniczyć dostęp do konta usługi Azure Cosmos za pośrednictwem prywatnych adresów IP. Jeśli łącze prywatne jest połączone z ograniczonymi zasadami sieciowej grupy zabezpieczeń, pomaga zmniejszyć ryzyko związane z eksfiltracji danych. Aby dowiedzieć się więcej o prywatnych punktach końcowych, zobacz artykuł [prywatny link do platformy Azure](../private-link/private-link-overview.md) .
 
@@ -22,6 +22,9 @@ Link prywatny umożliwia użytkownikom dostęp do konta usługi Azure Cosmos z p
 Można nawiązać połączenie z kontem usługi Azure Cosmos skonfigurowanym za pomocą linku prywatnego przy użyciu metody zatwierdzania automatyczne lub ręczne. Aby dowiedzieć się więcej, zapoznaj się z sekcją [przepływ pracy zatwierdzania](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow) w dokumentacji łącza prywatnego. 
 
 W tym artykule opisano kroki tworzenia prywatnego punktu końcowego. Przyjęto założenie, że używasz metody automatycznego zatwierdzania.
+
+> [!NOTE]
+> Obsługa prywatnego punktu końcowego jest obecnie ogólnie dostępna w obsługiwanych regionach tylko w trybie połączenia bramy. W trybie bezpośrednim jest dostępna jako funkcja w wersji zapoznawczej.
 
 ## <a name="create-a-private-endpoint-by-using-the-azure-portal"></a>Tworzenie prywatnego punktu końcowego za pomocą Azure Portal
 
@@ -33,7 +36,7 @@ Wykonaj następujące kroki, aby utworzyć prywatny punkt końcowy dla istnieją
 
    ![Wybory dla tworzenia prywatnego punktu końcowego w Azure Portal](./media/how-to-configure-private-endpoints/create-private-endpoint-portal.png)
 
-1. W okienku **Tworzenie prywatnego punktu końcowego (wersja zapoznawcza)** wprowadź lub wybierz następujące szczegóły:
+1. W okienku **Utwórz prywatny punkt końcowy — podstawowe** wprowadź lub wybierz następujące szczegóły:
 
     | Ustawienie | Wartość |
     | ------- | ----- |
@@ -41,7 +44,7 @@ Wykonaj następujące kroki, aby utworzyć prywatny punkt końcowy dla istnieją
     | Subskrypcja | Wybierz subskrypcję. |
     | Grupa zasobów | Wybierz grupę zasobów.|
     | **Szczegóły wystąpienia** |  |
-    | Nazwa | Wprowadź dowolną nazwę prywatnego punktu końcowego. Jeśli ta nazwa jest wykonywana, utwórz unikatową. |
+    | Name (Nazwa) | Wprowadź dowolną nazwę prywatnego punktu końcowego. Jeśli ta nazwa jest wykonywana, utwórz unikatową. |
     |Region| Wybierz region, w którym chcesz wdrożyć link prywatny. Utwórz prywatny punkt końcowy w tej samej lokalizacji, w której znajduje się Twoja sieć wirtualna.|
     |||
 1. Wybierz pozycję **Dalej: zasób**.
@@ -57,13 +60,13 @@ Wykonaj następujące kroki, aby utworzyć prywatny punkt końcowy dla istnieją
     |||
 
 1. Wybierz pozycję **Dalej: Konfiguracja**.
-1. W obszarze **Tworzenie prywatnego punktu końcowego (wersja zapoznawcza) — Konfiguracja**wprowadź lub wybierz następujące informacje:
+1. W obszarze **Tworzenie prywatnego punktu końcowego — konfiguracja**wprowadź lub wybierz następujące informacje:
 
     | Ustawienie | Wartość |
     | ------- | ----- |
     |**Sieć**| |
     | Sieć wirtualna| Wybierz sieć wirtualną. |
-    | Subnet | Wybierz podsieć. |
+    | Podsieć | Wybierz podsieć. |
     |**Integracja Prywatna strefa DNS**||
     |Integracja z prywatną strefą DNS |Wybierz pozycję **Tak**. <br><br/> Aby połączyć się prywatnie z prywatnym punktem końcowym, potrzebny jest rekord DNS. Zalecamy integrację prywatnego punktu końcowego z prywatną strefą DNS. Możesz również użyć własnych serwerów DNS lub utworzyć rekordy DNS przy użyciu plików hosta na maszynach wirtualnych. |
     |Strefa Prywatna strefa DNS |Wybierz pozycję **privatelink.Documents.Azure.com**. <br><br/> Prywatna strefa DNS jest określana automatycznie. Nie można go zmienić za pomocą Azure Portal.|
@@ -349,7 +352,7 @@ Użyj poniższego kodu, aby utworzyć szablon Menedżer zasobów o nazwie "Priva
         },
         "VNetId": {
             "type": "string"
-        }       
+        }        
     },
     "resources": [
         {
@@ -374,7 +377,7 @@ Użyj poniższego kodu, aby utworzyć szablon Menedżer zasobów o nazwie "Priva
                     "id": "[parameters('VNetId')]"
                 }
             }
-        }       
+        }        
     ]
 }
 ```
@@ -391,7 +394,7 @@ Użyj poniższego kodu, aby utworzyć szablon Menedżer zasobów o nazwie "Priva
         },
         "IPAddress": {
             "type":"string"
-        }       
+        }        
     },
     "resources": [
          {
@@ -406,7 +409,7 @@ Użyj poniższego kodu, aby utworzyć szablon Menedżer zasobów o nazwie "Priva
                     }
                 ]
             }
-        }   
+        }    
     ]
 }
 ```
@@ -548,29 +551,13 @@ W przypadku korzystania z prywatnego linku w połączeniu z regułami zapory są
 
 ## <a name="update-a-private-endpoint-when-you-add-or-remove-a-region"></a>Aktualizowanie prywatnego punktu końcowego po dodaniu lub usunięciu regionu
 
-Dodawanie lub usuwanie regionów na koncie usługi Azure Cosmos wymaga dodania lub usunięcia wpisów DNS dla tego konta. Zaktualizuj te zmiany odpowiednio w prywatnym punkcie końcowym, wykonując następujące czynności:
-
-1. Gdy administrator Azure Cosmos DB dodaje lub usuwa regiony, administrator sieci otrzymuje powiadomienie o oczekujących zmianach. Dla prywatnego punktu końcowego zamapowanego na konto usługi Azure Cosmos wartość właściwości `ActionsRequired` zmienia się z `None` na `Recreate`. Następnie administrator sieci aktualizuje prywatny punkt końcowy, wysyłając żądanie PUT z tym samym ładunkiem Menedżer zasobów, który został użyty do jego utworzenia.
-
-1. Po zaktualizowaniu prywatnego punktu końcowego można zaktualizować prywatną strefę DNS podsieci w celu odzwierciedlenia dodanych lub usuniętych wpisów DNS oraz odpowiednich prywatnych adresów IP.
+Dodawanie lub usuwanie regionów na koncie usługi Azure Cosmos wymaga dodania lub usunięcia wpisów DNS dla tego konta. Po dodaniu lub usunięciu regionów można zaktualizować prywatną strefę DNS podsieci w celu odzwierciedlenia dodanych lub usuniętych wpisów DNS oraz odpowiednich prywatnych adresów IP.
 
 Załóżmy na przykład, że wdrożono konto usługi Azure Cosmos w trzech regionach: "zachodnie stany USA", "środkowe stany USA" i "Europa Zachodnia". W przypadku tworzenia prywatnego punktu końcowego dla konta cztery prywatne adresy IP są zastrzeżone w podsieci. Istnieje jeden adres IP dla każdego z trzech regionów i istnieje jeden adres IP dla punktu końcowego Global/region-niezależny od.
 
-Później możesz dodać nowy region (na przykład "Wschodnie stany USA") do konta usługi Azure Cosmos. Domyślnie nowy region nie jest dostępny z istniejącego prywatnego punktu końcowego. Administrator konta usługi Azure Cosmos powinien odświeżyć połączenie prywatnego punktu końcowego przed uzyskaniem dostępu do niego z nowego regionu. 
+Później możesz dodać nowy region (na przykład "Wschodnie stany USA") do konta usługi Azure Cosmos. Po dodaniu nowego regionu należy dodać odpowiedni rekord DNS do prywatnej strefy DNS lub do niestandardowego serwera DNS.
 
-Po uruchomieniu polecenia ` Get-AzPrivateEndpoint -Name <your private endpoint name> -ResourceGroupName <your resource group name>` dane wyjściowe polecenia zawierają parametr `actionsRequired`. Ten parametr jest ustawiony na `Recreate`. Ta wartość wskazuje, że prywatny punkt końcowy powinien być odświeżony. Następnie administrator konta usługi Azure Cosmos uruchamia polecenie `Set-AzPrivateEndpoint`, aby wyzwolić odświeżanie prywatnego punktu końcowego.
-
-```powershell
-$pe = Get-AzPrivateEndpoint -Name <your private endpoint name> -ResourceGroupName <your resource group name>
-
-Set-AzPrivateEndpoint -PrivateEndpoint $pe
-```
-
-Nowy prywatny adres IP jest automatycznie zarezerwowany w podsieci w tym prywatnym punkcie końcowym. Wartość `actionsRequired` jest `None`. Jeśli nie masz prywatnej integracji strefy DNZ (innymi słowy, jeśli używasz niestandardowej prywatnej strefy DNS), musisz skonfigurować prywatną strefę DNS, aby dodać nowy rekord DNS dla prywatnego adresu IP, który odnosi się do nowego regionu.
-
-Po usunięciu regionu można użyć tych samych kroków. Prywatny adres IP usuniętego regionu jest automatycznie odzyskiwany, a flaga `actionsRequired` zostanie `None`. Jeśli nie masz żadnej integracji prywatnej strefy DNZ, musisz skonfigurować prywatną strefę DNS, aby usunąć rekord DNS dla usuniętego regionu.
-
-Rekordy DNS w prywatnej strefie DNS nie są usuwane automatycznie po usunięciu prywatnego punktu końcowego lub usunięciu regionu z konta usługi Azure Cosmos. Należy ręcznie usunąć rekordy DNS.
+Po usunięciu regionu można użyć tych samych kroków. Po usunięciu regionu należy usunąć odpowiedni rekord DNS z prywatnej strefy DNS lub niestandardowego serwera DNS.
 
 ## <a name="current-limitations"></a>Bieżące ograniczenia
 
@@ -582,6 +569,8 @@ W przypadku korzystania z prywatnego linku do konta usługi Azure Cosmos stosowa
   > Aby utworzyć prywatny punkt końcowy, upewnij się, że zarówno sieć wirtualna, jak i konto usługi Azure Cosmos są obsługiwane w regionach.
 
 * Jeśli używasz prywatnego linku z kontem usługi Azure Cosmos przy użyciu połączenia trybu bezpośredniego, możesz użyć tylko protokołu TCP. Protokół HTTP nie jest jeszcze obsługiwany.
+
+* Obsługa prywatnego punktu końcowego jest obecnie ogólnie dostępna w obsługiwanych regionach tylko w trybie połączenia bramy. W trybie bezpośrednim jest dostępna jako funkcja w wersji zapoznawczej.
 
 * W przypadku korzystania z interfejsu API Azure Cosmos DB dla kont MongoDB prywatny punkt końcowy jest obsługiwany tylko dla kont na serwerze w wersji 3,6 (to oznacza, że konta używają punktu końcowego w formacie `*.mongo.cosmos.azure.com`). Link prywatny nie jest obsługiwany dla kont na serwerze w wersji 3,2 (oznacza to, że konta używają punktu końcowego w formacie `*.documents.azure.com`). Aby użyć linku prywatnego, należy przeprowadzić migrację starych kont do nowej wersji.
 

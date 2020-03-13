@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: e2e752ec37f71ea501dcee586e7daf0fc950919d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 34c50795567615637e31446ad3dc51a5e1b355f6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822231"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214471"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Monitorowanie wydajności baz danych i pul usługi Azure SQL w wielodostępnej aplikacji SaaS oraz zarządzanie nią
 
@@ -24,7 +24,7 @@ W tym samouczku przedstawiono kilka kluczowych scenariuszy zarządzania wydajno�
 
 Wingtip bilety SaaS baza danych dla dzierżawców korzysta z modelu danych o pojedynczej dzierżawie, gdzie każdy z nich ma własną bazę danych. Podobnie jak w przypadku wielu innych aplikacji SaaS, oczekiwany wzorzec obciążenia dzierżawy charakteryzuje się nieprzewidywalnością i sporadycznością występowania. Innymi słowy, sprzedaż biletów może nastąpić w dowolnej chwili. Aby skorzystać z tego typowego wzorca użycia bazy danych, bazy danych dzierżaw są wdrażane do pul elastycznych. Elastyczne pule umożliwiają optymalizację kosztu rozwiązania dzięki udostępnieniu zasobów pomiędzy wieloma bazami danych. W przypadku tego typu wzorca ważne jest, aby monitorować użycie zasobów bazy danych i puli, co ma na celu rozsądne równoważenie obciążenia między pulami. Należy także upewnić się, że pojedyncze bazy danych posiadają odpowiednie zasoby, i że pule nie zbliżają się do swoich limitów liczby jednostek [eDTU](sql-database-purchase-models.md#dtu-based-purchasing-model). W tym samouczku przedstawiono metody monitorowania baz danych i pul oraz zarządzania nimi, a także wykonywanie akcji naprawczych w odpowiedzi na wahania obciążenia.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > 
@@ -52,11 +52,11 @@ Pule i bazy danych w pulach powinny być monitorowane w celu zapewnienia, że po
 * Aby uniknąć konieczności ręcznego monitorowania wydajności, najbardziej efektywne jest **ustawienie alertów wyzwalanych w przypadku, gdy bazy danych lub pule są nienormalne dla normalnych zakresów**.
 * Aby odpowiedzieć na krótkoterminowe fluktuacje zagregowanego rozmiaru obliczeń puli, **poziom eDTU puli można skalować w górę lub w dół**. Jeśli takie wahania występują regularnie lub są przewidywalne, **można zaplanować automatyczne skalowanie puli**. Na przykład skalowanie w dół może nastąpić, kiedy przewidywane jest niskie obciążenie — w nocy lub podczas weekendów.
 * Odpowiedzią na wahania długoterminowe lub zmiany liczby baz danych jest **przeniesienie pojedynczych baz danych do innych pul**.
-* Aby odpowiedzieć na krótkoterminowe wzrosty *pojedynczych* **baz danych, można wypróbować każdą z pul, a następnie przypisać indywidualny rozmiar**. Po zmniejszeniu obciążenia można zwrócić bazę danych do puli. Gdy jest to znane z wyprzedzeniem, bazy danych można przenieść przed emptively, aby upewnić się, że baza danych ma zawsze potrzebne zasoby, i aby uniknąć wpływu na inne bazy danych w puli. Jeśli takie wymaganie jest przewidywalne, na przykład w przypadku oczekiwania na wzmożone zakupy biletów na popularną imprezę, wówczas takie działanie funkcji zarządzania można uwzględnić w aplikacji.
+* Aby odpowiedzieć na krótkoterminowe wzrosty *pojedynczych* **baz danych, można wypróbować każdą z pul, a następnie przypisać indywidualny rozmiar**. Po zmniejszeniu obciążenia można zwrócić bazę danych do puli. Gdy jest to znane z wyprzedzeniem, można przenieść bazy danych zapobiegawczo, aby zapewnić, że baza danych zawsze ma potrzebne zasoby, i aby uniknąć wpływu na inne bazy danych w puli. Jeśli takie wymaganie jest przewidywalne, na przykład w przypadku oczekiwania na wzmożone zakupy biletów na popularną imprezę, wówczas takie działanie funkcji zarządzania można uwzględnić w aplikacji.
 
 Witryna [Azure Portal](https://portal.azure.com) udostępnia wbudowane funkcje monitorowania i alertów dla większości zasobów. W usłudze SQL Database funkcje monitorowania i zgłaszania alertów są dostępne na poziomie baz danych i pul. Ta wbudowana funkcja monitorowania i generowania alertów jest zależna od zasobów, dlatego jest wygodnie używana w przypadku małych liczb zasobów, ale nie jest bardzo wygodna podczas pracy z wieloma zasobami.
 
-W przypadku scenariuszy o dużej ilości, w których pracujesz z wieloma zasobami, można użyć [dzienników Azure monitor](saas-dbpertenant-log-analytics.md) . Jest to oddzielna usługa platformy Azure, która zapewnia analizę za pośrednictwem emitowanych dzienników diagnostycznych i danych telemetrycznych zebranych w obszarze roboczym Log Analytics. Dzienniki Azure Monitor mogą zbierać dane telemetryczne z wielu usług i używać ich do wykonywania zapytań i ustawiania alertów.
+W przypadku scenariuszy o dużej ilości, w których pracujesz z wieloma zasobami, można użyć [dzienników Azure monitor](saas-dbpertenant-log-analytics.md) . Jest to oddzielna usługa platformy Azure, która zapewnia analizę za pośrednictwem emitowanych dzienników zebranych w obszarze roboczym Log Analytics. Dzienniki Azure Monitor mogą zbierać dane telemetryczne z wielu usług i używać ich do wykonywania zapytań i ustawiania alertów.
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Pobierz Wingtip bilety bazy danych SaaS na skrypty aplikacji dzierżawców
 
@@ -74,7 +74,7 @@ Jeśli masz już zainicjowaną partię dzierżawców w poprzednim samouczku, prz
 
 Ten skrypt wdroży 17 dzierżaw w czasie krótszym niż pięć minut.
 
-Skrypt *New-TenantBatch* używa zagnieżdżonego lub połączonego zestawu [Menedżer zasobów](../azure-resource-manager/index.yml) szablonów, które tworzą partię dzierżawców, które domyślnie kopiuje bazę danych **basetenantdb** na serwerze wykazu w celu utworzenia nowych baz danych dzierżawy, a następnie rejestruje je w wykazie, a następnie inicjuje je przy użyciu nazwy dzierżawy i typu miejsca. Jest to zgodne ze sposobem, w jaki aplikacja inicjuje nową dzierżawę. Wszelkie zmiany wprowadzone do *basetenantdb* są stosowane do wszystkich nowych dzierżawców, które zostały udostępnione w późniejszym czasie. Zobacz [samouczek zarządzania schematami](saas-tenancy-schema-management.md) , aby dowiedzieć się, jak wprowadzać zmiany schematu do *istniejących* baz danych dzierżaw (w tym bazy danych *basetenantdb* ).
+Skrypt *New-TenantBatch* używa zagnieżdżonego lub połączonego zestawu [Menedżer zasobów](../azure-resource-manager/index.yml) szablonów, które tworzą partię dzierżawców, które domyślnie kopiuje bazę danych **basetenantdb** na serwerze wykazu w celu utworzenia nowych baz danych dzierżawy, a następnie rejestruje je w wykazie i inicjuje je przy użyciu nazwy dzierżawy i typu miejsca. Jest to zgodne ze sposobem, w jaki aplikacja inicjuje nową dzierżawę. Wszelkie zmiany wprowadzone do *basetenantdb* są stosowane do wszystkich nowych dzierżawców, które zostały udostępnione w późniejszym czasie. Zobacz [samouczek zarządzania schematami](saas-tenancy-schema-management.md) , aby dowiedzieć się, jak wprowadzać zmiany schematu do *istniejących* baz danych dzierżaw (w tym bazy danych *basetenantdb* ).
 
 ## <a name="simulate-usage-on-all-tenant-databases"></a>Symulowanie użycia we wszystkich baz danych dzierżaw
 
@@ -177,7 +177,7 @@ Alternatywnym rozwiązaniem w stosunku do skalowania puli w górę jest utworzen
    1. Kliknij pozycję **Dodaj bazy danych** , aby wyświetlić listę baz danych na serwerze, które mogą zostać dodane do *Pool2*.
    1. Wybierz dowolną 10 baz danych, aby przenieść je do nowej puli, a następnie kliknij przycisk **Wybierz**. Jeśli używasz generatora obciążenia, usługa już wie, że profil wydajności wymaga większej puli niż domyślny 50 jednostek eDTU i zaleca się rozpoczęcie od ustawienia jednostki eDTU 100.
 
-      ![Zaleca](media/saas-dbpertenant-performance-monitoring/configure-pool.png)
+      ![zaleca](media/saas-dbpertenant-performance-monitoring/configure-pool.png)
 
    1. Na potrzeby tego samouczka pozostaw wartość domyślną na 50 jednostek eDTU, a następnie kliknij pozycję **Wybierz** ponownie.
    1. Wybierz **przycisk OK** , aby utworzyć nową pulę i przenieść do niej wybrane bazy danych.
@@ -206,7 +206,7 @@ W tym ćwiczeniu zostanie zasymulowane zwiększone obciążenie dotyczące miejs
 
 1. Sprawdź wykres **monitorowania puli elastycznej** i poszukaj zwiększonych obciążeń jednostek eDTU puli. Po minucie lub dwóch powinno być widoczne wyższe obciążenie, które wkrótce osiągnie poziom 100% wykorzystania puli.
 2. Zbadaj wyświetlacz **monitorowania Elastic Database** , który pokazuje bazy danych okienko w ciągu ostatniej godziny. Baza danych *contosoconcerthall* powinna wkrótce pojawić się jako jedna z pięciu baz danych okienko.
-3. **Kliknij wykres monitorowania Elastic Database** , aby otworzyć stronę **użycie zasobów bazy danych** , na której można monitorować dowolną bazę danych. Umożliwia to wyizolowanie ekranu dla bazy danych *contosoconcerthall* .
+3. **Kliknij wykres monitorowania Elastic Database** **chart** , aby otworzyć stronę **użycie zasobów bazy danych** , na której można monitorować dowolną bazę danych. Umożliwia to wyizolowanie ekranu dla bazy danych *contosoconcerthall* .
 4. Z listy baz danych kliknij pozycję **contosoconcerthall**.
 5. Kliknij pozycję **warstwa cenowa (DTU skalowania)** , aby otworzyć stronę **Konfigurowanie wydajności** , na której można ustawić autonomiczny rozmiar obliczeń dla bazy danych.
 6. Kliknij kartę **Standardowa**, aby otworzyć opcje skalowania w warstwie Standardowa.
@@ -218,7 +218,7 @@ Po nawiązaniu wysokiego obciążenia bazy danych contosoconcerthall należy nat
 
 ## <a name="other-performance-management-patterns"></a>Inne wzorce zarządzania wydajnością
 
-**Skalowanie przed prewencyjne** W tym ćwiczeniu, w którym opisano sposób skalowania izolowanej bazy danych, wiesz, która baza danych ma być wyszukiwana. Jeśli zarządzanie korytarzem w firmie Contoso zostało poinformowane Wingtips o zbliżającej się sprzedaży biletów, baza danych mogła zostać przeniesiona z puli pre-emptively. W przeciwnym razie konieczne byłoby skonfigurowanie alertów dla puli lub bazy danych w celu informowania o zmieniającej się sytuacji. Byłoby wysoce nieprzyjemne, gdyby wiadomość o zdarzeniu pochodziła od innych dzierżawców w puli, skarżących się na pogorszenie wydajności. Jeśli jednak dzierżawca może przewidzieć, jak długo będą mu potrzebne dodatkowe zasoby, możesz tak skonfigurować element Runbook usługi Azure Automation, aby przenieść bazę danych z puli, a następnie z powrotem do puli zgodnie z ustalonym harmonogramem.
+**Skalowanie przed prewencyjne** W tym ćwiczeniu, w którym opisano sposób skalowania izolowanej bazy danych, wiesz, która baza danych ma być wyszukiwana. Jeśli zarządzanie korytarzem w firmie Contoso zostało poinformowane Wingtips o zbliżającej się sprzedaży biletów, baza danych mogła zostać przeniesiona z puli zapobiegawczo. W przeciwnym razie konieczne byłoby skonfigurowanie alertów dla puli lub bazy danych w celu informowania o zmieniającej się sytuacji. Byłoby wysoce nieprzyjemne, gdyby wiadomość o zdarzeniu pochodziła od innych dzierżawców w puli, skarżących się na pogorszenie wydajności. Jeśli jednak dzierżawca może przewidzieć, jak długo będą mu potrzebne dodatkowe zasoby, możesz tak skonfigurować element Runbook usługi Azure Automation, aby przenieść bazę danych z puli, a następnie z powrotem do puli zgodnie z ustalonym harmonogramem.
 
 **Samoobsługowe skalowanie przez dzierżawcę** Ponieważ skalowanie jest zadaniem łatwo wywoływanym za pośrednictwem interfejsu API zarządzania, można w prosty sposób wbudować możliwość skalowania baz danych dzierżawy w aplikację używaną przez dzierżawcę i zaoferować ją jako funkcję usługi SaaS. Na przykład, można umożliwić dzierżawcom samodzielne administrowanie skalowaniem w górę i w dół, być może bezpośrednio powiązane z ich rozliczeniami!
 
@@ -230,7 +230,7 @@ W przypadku, gdy zagregowane wykorzystanie dzierżaw jest zgodne z przewidywalny
 
 ## <a name="next-steps"></a>Następne kroki
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Symulowanie korzystania z baz danych dzierżaw przy użyciu dostarczonego generatora obciążenia

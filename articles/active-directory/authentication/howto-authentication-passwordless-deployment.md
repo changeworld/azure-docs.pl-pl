@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cc8a62bd75a01cb6b7184cb52585c4f8b08cadb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 145439ebedd2ddf7c081339146010c66f37fe1af
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378181"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136538"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Planowanie wdrożenia uwierzytelniania bezhaseł w Azure Active Directory
 
@@ -130,7 +130,7 @@ Zapoznaj [się z najlepszymi rozwiązaniami dla pilotażu](https://aka.ms/deploy
 
 ## <a name="plan-passwordless-authentication-with-the-microsoft-authenticator-app"></a>Planowanie uwierzytelniania bezhasła przy użyciu aplikacji Microsoft Authenticator
 
-Aplikacja Microsoft Authenticator jest bezpłatnym pobieraniem z Google Play lub sklepu Apple App Store. [Dowiedz się więcej o pobieraniu aplikacji Microsoft Authenticator](https://www.microsoft.com/account/authenticator?cmp=h66ftb_42hbak). Użytkownicy pobierają aplikację Microsoft Authenticator. i postępuj zgodnie z instrukcjami, aby włączyć logowanie za pomocą telefonu. 
+Aplikacja Microsoft Authenticator jest bezpłatnym pobieraniem z Google Play lub sklepu Apple App Store. [Dowiedz się więcej o pobieraniu aplikacji Microsoft Authenticator](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6). Użytkownicy pobierają aplikację Microsoft Authenticator. i postępuj zgodnie z instrukcjami, aby włączyć logowanie za pomocą telefonu. 
 
 Powoduje to włączenie dowolnego telefonu z systemem iOS lub Android do silnego poświadczenia bez hasła. Użytkownicy logują się do dowolnej platformy lub przeglądarki, uzyskując powiadomienie na telefonie, dopasowując liczbę wyświetlaną na ekranie na telefonie, a następnie używając biometrii lub numeru PIN do potwierdzenia. [Zobacz szczegóły dotyczące działania aplikacji Microsoft Authenticator](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless#user-using-microsoft-authenticator-for-passwordless-sign-in). 
 

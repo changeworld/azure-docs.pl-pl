@@ -9,11 +9,11 @@ ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
 ms.openlocfilehash: a19eb19c3a25d3856d5cf333bd64be888f65a6e2
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78892786"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239938"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Samouczek: Konfigurowanie metryk i dzienników diagnostycznych za pomocą Centrum IoT Hub oraz korzystanie z nich
 

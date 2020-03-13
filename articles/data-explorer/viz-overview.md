@@ -8,12 +8,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 32ccc5ad236c87d3609798a8432db14ee440d067
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 7b1c7825beb769b610d661cb9644fc3f3919d548
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064567"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79139066"
 ---
 # <a name="data-visualization-with-azure-data-explorer"></a>Wizualizacja danych za pomocą usługi Azure Eksplorator danych 
 
@@ -42,6 +42,10 @@ Usługa Azure Eksplorator danych oferuje możliwość nawiązywania połączenia
 ## <a name="grafana"></a>Grafana
 
 [Grafana](https://grafana.com) zapewnia wtyczkę Eksplorator danych platformy Azure, która umożliwia wizualizację danych z usługi Azure Eksplorator danych. Należy [skonfigurować Eksplorator danych platformy Azure jako źródło danych dla Grafana, a następnie wizualizować dane](/azure/data-explorer/grafana). 
+
+## <a name="kibana"></a>Kibana
+
+Usługa Azure Eksplorator danych oferuje możliwość nawiązywania połączenia z usługą [Kibana (strona odnajdowania)](https://www.elastic.co/guide/en/kibana/6.8/discover.html) przy użyciu łącznika programu K2Bridge o postaci Open Source. Należy [skonfigurować Eksplorator danych platformy Azure jako źródło danych dla Kibana, a następnie wizualizować dane](/azure/data-explorer/k2bridge).
 
 ## <a name="odbc-connector"></a>Łącznik ODBC
 

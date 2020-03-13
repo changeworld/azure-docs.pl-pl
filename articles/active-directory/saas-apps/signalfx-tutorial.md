@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc8ba01ea8a443c4f8a3a8e7b911dcc605ee61ea
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 149718dcd325ef6bd6a6754ba100ffdc34be0a07
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78967707"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136418"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-signalfx"></a>Samouczek: Azure Active Directory integracji logowania jednokrotnego (SSO) z usługą SignalFx
 
@@ -30,7 +30,7 @@ W tym samouczku dowiesz się, jak zintegrować usługę SignalFx z usługą Azur
 * Zezwól użytkownikom na automatyczne logowanie do SignalFx przy użyciu kont usługi Azure AD; lub
 * Zarządzaj kontami w jednej lokalizacji (Azure Portal).
 
-Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -57,7 +57,7 @@ Użyj tych instrukcji, aby dodać aplikację SignalFx do listy zarządzanych apl
 1. Wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
 1. Wybierz pozycję **Nowa aplikacja**.
 1. W sekcji **Dodaj z galerii** w polu wyszukiwania wprowadź i wybierz pozycję **SignalFx**.
-    * Może być konieczne odczekanie kilku minut, aż aplikacja zostanie dodana do dzierżawy.
+     * Może być konieczne odczekanie kilku minut, aż aplikacja zostanie dodana do dzierżawy.
 1. Pozostaw Azure Portal Otwórz, a następnie otwórz nową kartę sieci Web.    
 
 ## <a name="step-2-begin-signalfx-sso-configuration"></a>Krok 2. rozpoczęcie konfiguracji SignalFx SSO
@@ -175,7 +175,7 @@ Zapoznaj się z poniższymi informacjami dotyczącymi testowania logowania jedno
 
 - [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

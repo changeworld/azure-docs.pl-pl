@@ -3,12 +3,12 @@ title: Zarządzanie magazynami i serwerami usługi Azure Recovery Services
 description: W tym artykule dowiesz się, jak monitorować magazyny Recovery Services i zarządzać nimi za pomocą pulpitu nawigacyjnego Omówienie magazynu Recovery Services.
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 5ae875b2e767768e90a9fbc6ff4ecfc6efb239c5
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: b57d6eff5f5dfa2163962a47eee079d7e26257b5
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586448"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136960"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Monitorowanie magazynów usługi Recovery Services i zarządzanie nimi
 
@@ -49,7 +49,7 @@ Pulpit nawigacyjny **Omówienie** magazynu Recovery Services zawiera kafelki dot
 Sekcja monitorowanie zawiera wyniki wstępnie zdefiniowanych **alertów kopii zapasowych** i zapytań **zadań tworzenia kopii zapasowych** . Kafelki monitorowania udostępniają aktualne informacje dotyczące:
 
 * Alerty krytyczne i ostrzeżenia dla zadań tworzenia kopii zapasowej (w ciągu ostatnich 24 godzin)
-* Sprawdzenie stanu wstępnego na potrzeby maszyn wirtualnych platformy Azure — Aby uzyskać pełne informacje na temat stanu przed sprawdzeniem, zapoznaj się z [blogiem dotyczącym tworzenia kopii zapasowej w usłudze Backup](https://azure.microsoft.com/blog/azure-vm-backup-pre-checks/).
+* Sprawdzenie stanu wstępnego dla maszyn wirtualnych platformy Azure. Aby uzyskać pełne informacje na temat stanu przed sprawdzeniem, zobacz [Stan wstępnego sprawdzania kopii zapasowej](#backup-pre-check-status).
 * Zadania tworzenia kopii zapasowej w toku i zadania, które zakończyły się niepowodzeniem (w ciągu ostatnich 24 godzin).
 
 Kafelki użycia zapewniają:
@@ -62,6 +62,22 @@ Kliknij kafelki (z wyjątkiem magazynu kopii zapasowych), aby otworzyć menu sko
 ![Menu alertów kopii zapasowej odfiltrowane pod kątem alertów krytycznych](./media/backup-azure-manage-windows-server/critical-backup-alerts.png)
 
 Menu alerty kopii zapasowej na powyższym obrazie jest filtrowane według: stan jest aktywny, ważność ma krytyczne znaczenie, a czas to ostatnie 24 godziny.
+
+### <a name="backup-pre-check-status"></a>Stan wstępnego sprawdzania kopii zapasowej
+
+Wstępne sprawdzanie kopii zapasowej Sprawdź konfigurację maszyn wirtualnych pod kątem problemów, które mogą mieć negatywny wpływ na kopie zapasowe. Te informacje są agregowane, aby można było je wyświetlić bezpośrednio z poziomu pulpitu nawigacyjnego magazynu Recovery Services i zapewnić zalecenia dotyczące środków naprawczych w celu zapewnienia zgodności z kopiami zapasowymi spójnymi na poziomie plików lub aplikacjami. Nie wymagają one infrastruktury i nie mają dodatkowych kosztów.  
+
+Wstępne sprawdzanie kopii zapasowej przebiegu w ramach zaplanowanych operacji tworzenia kopii zapasowej maszyn wirtualnych platformy Azure. Znajdują się one w jednym z następujących stanów:
+
+* **Zakończony powodzeniem**: ten stan wskazuje, że konfiguracja maszyny wirtualnej powinna prowadzić do pomyślnego wykonywania kopii zapasowych i nie trzeba wykonywać żadnych działań naprawczych.
+* **Ostrzeżenie**: ten stan wskazuje co najmniej jeden problem w konfiguracji maszyny wirtualnej, który *może* prowadzić do błędów kopii zapasowych. Zapewnia to *zalecane* kroki, aby zapewnić pomyślne tworzenie kopii zapasowych. Na przykład nie ma zainstalowanego najnowszego agenta maszyny wirtualnej może spowodować sporadyczne niepowodzenie wykonywania kopii zapasowych. Ta sytuacja zapewnia stan ostrzegawczy.
+* **Krytyczny**: ten stan wskazuje co najmniej jeden krytyczny problem w konfiguracji maszyny wirtualnej, który *będzie* prowadzić do błędów kopii zapasowych i zawiera *wymagane* kroki, aby zapewnić pomyślne tworzenie kopii zapasowych. Na przykład problem z siecią spowodowaną aktualizacją reguł sieciowej grupy zabezpieczeń maszyny wirtualnej spowoduje niepowodzenie wykonywania kopii zapasowych, ponieważ uniemożliwia to maszynie wirtualnej komunikowanie się z usługą Azure Backup. Ta sytuacja zapewni stan krytyczny.
+
+Postępuj zgodnie z poniższymi instrukcjami, aby rozpocząć rozwiązywanie wszelkich problemów zgłoszonych przez program Backup wstępne sprawdzanie kopii zapasowych maszyn wirtualnych w magazynie Recovery Services.
+
+* Wybierz kafelek **Stan wstępnego sprawdzania kopii zapasowej (maszyny wirtualne platformy Azure)** na pulpicie nawigacyjnym magazynu Recovery Services.
+* Wybierz maszynę wirtualną z stanem wstępnego sprawdzania kopii zapasowej **krytyczne** lub **Ostrzeżenie**. Ta akcja spowoduje otwarcie okienka **Szczegóły maszyny wirtualnej** .
+* Wybierz powiadomienie okienka w górnej części okienka, aby wyświetlić opis problemu z konfiguracją i czynności zaradcze.
 
 ## <a name="manage-backup-alerts"></a>Zarządzanie alertami kopii zapasowych
 
@@ -81,7 +97,7 @@ Na liście alerty kopii zapasowej są wyświetlane wybrane informacje dotyczące
 | ----------- | ----------- |
 | Krytyczny | Alerty krytyczne są wyświetlane, gdy: zadania tworzenia kopii zapasowej kończą się niepowodzeniem, zadania odzyskiwania kończą się niepowodzeniem i po zatrzymaniu ochrony na serwerze, zachowując dane.|
 | Ostrzeżenie | Alerty ostrzegawcze są odbierane, gdy: zadania tworzenia kopii zapasowej zostały zakończone z ostrzeżeniami, na przykład gdy nie jest tworzona kopia zapasowa mniej niż 100 plików z powodu problemów z uszkodzeniem lub po pomyślnym wykonaniu kopii zapasowej więcej niż 1 000 000 plików). |
-| Informacyjny | Obecnie żadne alerty informacyjne nie są używane. |
+| Informacyjne | Obecnie żadne alerty informacyjne nie są używane. |
 
 ### <a name="viewing-alert-details"></a>Wyświetlanie szczegółów alertu
 
@@ -91,11 +107,11 @@ Raport alerty kopii zapasowej śledzi osiem szczegółowych informacji o każdym
 
 Domyślnie wszystkie szczegóły, z wyjątkiem **ostatniego wystąpienia czasu**, są wyświetlane w raporcie.
 
-* Alert
+* Alerty
 * Element kopii zapasowej
 * Serwer chroniony
 * Ważność
-* Duration
+* Czas trwania
 * Godzina utworzenia
 * Stan
 * Ostatni czas wystąpienia
@@ -215,7 +231,7 @@ Typ elementu to typ zarządzania kopiami zapasowymi chronionego wystąpienia. Is
 Można wyświetlić jedną operację lub wszystkie operacje. Nie można wybrać dwóch lub trzech operacji. Dostępne są następujące operacje:
 
 * Wszystkie operacje
-* Rejestracja
+* Zarejestruj subskrypcję
 * Konfigurowanie kopii zapasowych
 * Backup
 * Przywracanie
@@ -272,4 +288,3 @@ Kafelek magazyn kopii zapasowych na pulpicie nawigacyjnym pokazuje Magazyn używ
 
 * [Przywracanie systemu Windows Server lub klienta systemu Windows z platformy Azure](backup-azure-restore-windows-server.md)
 * Aby dowiedzieć się więcej na temat Azure Backup, zobacz [omówienie Azure Backup](backup-introduction-to-azure-backup.md)
-

@@ -4,12 +4,12 @@ description: Omówienie usługi Azure łańcucha bloków Workbench w wersji zapo
 ms.date: 09/05/2019
 ms.topic: overview
 ms.reviewer: brendal
-ms.openlocfilehash: 88c162539e5d0480d7f938c674b96c2f396774e3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 162626ba2303ab04bd2963a5add61c556615ebec
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75387075"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79203648"
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>Czym jest usługa Azure Blockchain Workbench?
 
@@ -29,7 +29,7 @@ Usługa Azure Blockchain Workbench udostępnia aplikację internetową i interfe
 
 Interfejsy API REST usługi Blockchain Workbench i interfejsy API oparte na komunikatach umożliwiają integrację z istniejącymi systemami. Interfejsy API zapewniają interfejs umożliwiający zastępowanie lub korzystanie z wielu technologii rejestru rozproszonego, magazynu i ofert baz danych.
 
-Usługa Blockchain Workbench umożliwia przekształcanie komunikatów wysłanych do jej interfejsu API opartego na komunikatach w celu tworzenia transakcji w formacie oczekiwanym przez natywny interfejs API tego łańcucha bloków.  Usługa Workbench umożliwia rejestrowanie transakcji i kierowanie ich do odpowiedniego łańcucha bloków. 
+Łańcucha bloków Workbench może przekształcać komunikaty wysyłane do interfejsu API opartego na komunikatach w celu kompilowania transakcji w formacie oczekiwanym przez natywny interfejs API łańcucha bloków.  Usługa Workbench umożliwia rejestrowanie transakcji i kierowanie ich do odpowiedniego łańcucha bloków. 
 
 Usługa Workbench automatycznie dostarcza zdarzenia do usług Service Bus i Event Grid w celu wysyłania wiadomości do użytkowników podrzędnych. Deweloperzy mogą zintegrować usługę z jednym z tych systemów obsługi wiadomości, aby realizować transakcje i przyglądać się wynikom.
 
@@ -51,7 +51,7 @@ W przypadku usługi Azure łańcucha bloków News odwiedź [blog usługi Azure �
 
 Aby przekazać opinie o produkcie lub zażądać nowych funkcji, Opublikuj głos na pomysł za pośrednictwem [forum opinii platformy Azure dla usługi łańcucha bloków](https://aka.ms/blockchainuservoice).
 
-### <a name="community-support"></a>Pomoc techniczna społeczności
+### <a name="community-support"></a>Pomoc techniczna w społeczności
 
 Współpracuj z inżynierami firmy Microsoft i ekspertów społeczności Azure łańcucha bloków.
 

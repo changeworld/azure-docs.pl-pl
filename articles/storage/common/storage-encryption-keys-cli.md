@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/10/2020
+ms.date: 03/10/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: bf21cd27fa290b9b9b863803aef043eccc815573
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: fcb4636263843143e685de2e3d2a27bf87cc5a90
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75912712"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137411"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-azure-cli"></a>Konfigurowanie kluczy zarządzanych przez klienta za pomocą Azure Key Vault przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -120,11 +120,21 @@ Podczas tworzenia nowej wersji klucza należy zaktualizować konto magazynu, aby
 
 Aby zmienić klucz używany do szyfrowania usługi Azure Storage, wywołaj polecenie [AZ Storage account Update](/cli/azure/storage/account#az-storage-account-update) , jak pokazano w temacie [Konfigurowanie szyfrowania przy użyciu kluczy zarządzanych przez klienta](#configure-encryption-with-customer-managed-keys) i podaj nową nazwę klucza i wersję. Jeśli nowy klucz znajduje się w innym magazynie kluczy, należy również zaktualizować identyfikator URI magazynu kluczy.
 
+## <a name="revoke-customer-managed-keys"></a>Odwołaj klucze zarządzane przez klienta
+
+Jeśli uważasz, że klucz mógł zostać naruszony, możesz odwołać klucze zarządzane przez klienta, usuwając zasady dostępu do magazynu kluczy. Aby odwołać klucz zarządzany przez klienta, wywołaj polecenie [AZ Key Delete-Policy](/cli/azure/keyvault#az-keyvault-delete-policy) , jak pokazano w poniższym przykładzie. Pamiętaj, aby zastąpić wartości symboli zastępczych w nawiasach własnymi wartościami i użyć zmiennych zdefiniowanych w poprzednich przykładach.
+
+```azurecli-interactive
+az keyvault delete-policy \
+    --name <key-vault> \
+    --object-id $storage_account_principal
+```
+
 ## <a name="disable-customer-managed-keys"></a>Wyłącz klucze zarządzane przez klienta
 
-Po wyłączeniu kluczy zarządzanych przez klienta konto magazynu zostanie następnie zaszyfrowane przy użyciu kluczy zarządzanych przez firmę Microsoft. Aby wyłączyć klucze zarządzane przez klienta, wywołaj polecenie [AZ Storage account Update](/cli/azure/storage/account#az-storage-account-update) i ustaw `--encryption-key-source parameter` na `Microsoft.Storage`, jak pokazano w poniższym przykładzie. Pamiętaj, aby zastąpić wartości symboli zastępczych w nawiasach własnymi wartościami i użyć zmiennych zdefiniowanych w poprzednich przykładach.
+Po wyłączeniu kluczy zarządzanych przez klienta konto magazynu będzie ponownie szyfrowane przy użyciu kluczy zarządzanych przez firmę Microsoft. Aby wyłączyć klucze zarządzane przez klienta, wywołaj polecenie [AZ Storage account Update](/cli/azure/storage/account#az-storage-account-update) i ustaw `--encryption-key-source parameter` na `Microsoft.Storage`, jak pokazano w poniższym przykładzie. Pamiętaj, aby zastąpić wartości symboli zastępczych w nawiasach własnymi wartościami i użyć zmiennych zdefiniowanych w poprzednich przykładach.
 
-```powershell
+```azurecli-interactive
 az storage account update
     --name <storage-account> \
     --resource-group <resource_group> \

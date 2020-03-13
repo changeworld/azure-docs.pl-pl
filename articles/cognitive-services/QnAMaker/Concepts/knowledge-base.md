@@ -4,11 +4,11 @@ description: Baza wiedzy QnA Maker składa się z zestawu zestawów pytań i odp
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: d47d994366a8057521c1cc2ab1ab8a7ec3393965
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389156"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219688"
 ---
 # <a name="importing-from-data-sources"></a>Importowanie ze źródeł danych
 
@@ -28,7 +28,7 @@ Zestaw zawartości Chit Chat QnA jest oferowany jako kompletne źródło danych 
 
 Importowanie bazy wiedzy zastępuje zawartości istniejącej bazie wiedzy knowledge base. Import wymaga strukturalnego pliku `.tsv` zawierającego pytania i odpowiedzi. Te informacje pomagają w QnA Maker zgrupować zestawy odpowiedzi i atrybutów do określonego źródła danych.
 
-| Pytanie  | Odpowiedź  | Źródło| Metadane (1 klucz: 1 wartość) |
+| Pytanie  | Odpowiedź  | Element źródłowy| Metadane (1 klucz: 1 wartość) |
 |-----------|---------|----|---------------------|
 | Question1 | Answer1 | Url1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
 | Question2 | Answer2 | Redakcyjna|    `Key:Value`       |
@@ -63,7 +63,7 @@ Jeśli nie wiesz, jak reprezentować zestaw QnA w pliku `.tsv`, Utwórz zestaw w
 > [!div class="nextstepaction"]
 > [Cykl życia rozwoju bazy wiedzy](./development-lifecycle-knowledge-base.md)
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 Skorzystaj z QnA Maker informacji o [promocji](../reference-markdown-format.md) , aby ułatwić formatowanie odpowiedzi.
 

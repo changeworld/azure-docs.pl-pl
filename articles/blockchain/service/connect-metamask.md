@@ -4,16 +4,16 @@ description: Nawiązywanie połączenia z siecią usługi Azure łańcucha blok�
 ms.date: 09/12/2019
 ms.topic: quickstart
 ms.reviewer: janders
-ms.openlocfilehash: 21e45b80a9a08dd6bdeefb0ab01fadabaa08cbce
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: c0bad9efde44ce53f6b0656af3ac4af32ffe051d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456023"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79205108"
 ---
 # <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>Szybki Start: używanie maskowania do łączenia i wdrażania kontraktu inteligentnego
 
-W tym przewodniku szybki start użyjemy do łączenia się z siecią usługi Azure łańcucha bloków i używania Remix do wdrażania kontraktu inteligentnego. Dbmask to rozszerzenie przeglądarki umożliwiające zarządzanie portfelem eteru i wykonywanie akcji inteligentnych kontraktu.
+W tym przewodniku szybki start nawiążesz połączenie z siecią usługi Azure łańcucha bloków i używasz Remix do wdrożenia inteligentnego kontraktu. Dbmask to rozszerzenie przeglądarki umożliwiające zarządzanie portfelem eteru i wykonywanie akcji inteligentnych kontraktu.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -25,15 +25,16 @@ W tym przewodniku szybki start użyjemy do łączenia się z siecią usługi Azu
 
 ## <a name="get-endpoint-address"></a>Pobierz adres punktu końcowego
 
-Do nawiązania połączenia z siecią łańcucha bloków potrzebny jest adres punktu końcowego usługi Azure łańcucha bloków. Adres punktu końcowego i klucze dostępu można znaleźć w Azure Portal.
+Do nawiązania połączenia z siecią łańcucha bloków potrzebny jest adres punktu końcowego usługi Azure łańcucha bloków. Adresy punktu końcowego i klucze dostępu znajdują się w Azure Portal.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Przejdź do elementu członkowskiego usługi Azure łańcucha bloków. Wybierz pozycję **węzły transakcji** i domyślne łącze węzła transakcji.
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
+1. Przejdź do elementu członkowskiego usługi Azure łańcucha bloków.
+1. Wybierz pozycję **węzły transakcji** i domyślne łącze węzła transakcji.
 
     ![Wybierz domyślny węzeł transakcji](./media/connect-metamask/transaction-nodes.png)
 
 1. Wybierz **Parametry połączenia > klucze dostępu**.
-1. Skopiuj adres punktu końcowego z **protokołu HTTPS (dostęp do klucza 1)** . Potrzebujesz adresu dla następnej sekcji.
+1. Skopiuj adres punktu końcowego z **protokołu HTTPS (dostęp do klucza 1)** .
 
     ![Parametry połączenia](./media/connect-metamask/connection-string.png)
 
@@ -44,10 +45,10 @@ Do nawiązania połączenia z siecią łańcucha bloków potrzebny jest adres pu
 
     ![Niestandardowe wywołanie RPC](./media/connect-metamask/custom-rpc.png)
 
-1. W obszarze **nowy > sieciowej nowy adres URL usługi RPC**wprowadź adres punktu końcowego skopiowany z poprzedniej sekcji.
+1. W obszarze **Nowa sieć > nowy adres URL usługi RPC**wklej skopiowany powyżej adres punktu końcowego.
 1. Wybierz pozycję **Zapisz**.
 
-    Jeśli połączenie zakończyło się pomyślnie, Sieć prywatna zostanie wyświetlona na liście rozwijanej sieć.
+    W przypadku pomyślnego nawiązania połączenia sieć prywatna jest wyświetlana na liście rozwijanej sieć.
 
     ![Nowa sieć](./media/connect-metamask/new-network.png)
 
@@ -86,7 +87,7 @@ Remix to środowisko programistyczne oparte na przeglądarce. Korzystając z fun
     ```
 
     **Prosta umowa** deklaruje zmienną stanu o nazwie **Saldo**. Zdefiniowano dwie funkcje. Funkcja **Dodaj** dodaje liczbę do **zrównoważenia**. Funkcja **Get** zwraca wartość **Saldo**.
-1. Aby skompilować kontrakt, najpierw wybierz okienko kompilatora o pełnej trwałość, a następnie wybierz opcję **Kompiluj Simple. peruwiański**. 
+1. Aby skompilować kontrakt, najpierw wybierz okienko kompilatora o pełnej trwałość, a następnie wybierz opcję **Kompiluj Simple. peruwiański**.
 
     ![Kompilacji](./media/connect-metamask/compile.png)
 
@@ -94,12 +95,12 @@ Remix to środowisko programistyczne oparte na przeglądarce. Korzystając z fun
 
     ![Karta przebieg](./media/connect-metamask/injected-web3.png)
 
-1. Wybierz kontrakt **prosty** , a następnie **Wdróż**.
+1. Wybierz **prosty** kontrakt, a następnie **Wdróż**.
 
     ![Wdrażanie](./media/connect-metamask/deploy.png)
 
 
-1. Zostanie wyświetlone powiadomienie o niewystarczającej masce do wykonania transakcji.
+1. Powiadomienie o niewystarczającej masce pozwala wykonać transakcję.
 
     W przypadku sieci publicznej łańcucha bloków należy ponieść Eter, aby płacić za koszt transakcji. Ponieważ jest to sieć prywatna w konsorcjum, można ustawić cenę gazu na zero.
 
@@ -114,24 +115,24 @@ Remix to środowisko programistyczne oparte na przeglądarce. Korzystając z fun
 
     ![Wdrożony kontrakt](./media/connect-metamask/deployed-contract.png)
 
-    Istnieją dwie akcje, które umożliwiają **Dodawanie** i **pobieranie** mapy do funkcji zdefiniowanych w kontrakcie.
+    Dwie akcje, **Dodawanie** i **pobieranie**, mapowanie do funkcji zdefiniowanych w kontrakcie.
 
-1. Aby wykonać operację **Dodaj** transakcję na łańcucha bloków, wprowadź liczbę, która ma zostać dodana, a następnie wybierz pozycję **Dodaj**. Może zostać wyświetlony komunikat o niepowodzeniu oceny gazu z Remix. Wysyłasz transakcję do prywatnego łańcucha bloków, która nie wymaga gazu. Wybierz pozycję **Wyślij transakcję** , aby wymusić transakcję.
-1. Podobnie jak w przypadku wdrożenia kontraktu, wyświetlane jest powiadomienie o niewystarczającej masce do wykonania transakcji.
+1. Aby wykonać operację **Dodaj** transakcję na łańcucha bloków, wprowadź liczbę, która ma zostać dodana, a następnie wybierz pozycję **Dodaj**. Może zostać wyświetlony komunikat o niepowodzeniu oceny gazu z remix: "wysyłasz transakcję do prywatnego łańcucha bloków, która nie wymaga gazu". Wybierz pozycję **Wyślij transakcję** , aby wymusić transakcję.
+1. Podobnie jak w przypadku wdrożenia kontraktu, powiadomienie o niewystarczającej masce zostanie wykonane z powodu niewystarczających środków do wykonania transakcji.
 
     Ponieważ jest to sieć prywatna w ramach konsorcjum, można ustawić cenę gazu na zero.
 
-1.  Wybierz pozycję **opłata za gaz > edytuj > zaawansowane**, ustaw **cenę gazu** na 0, a następnie wybierz pozycję **Zapisz**.
+1. Wybierz pozycję **opłata za gaz > edytuj > zaawansowane**, ustaw **cenę gazu** na 0, a następnie wybierz pozycję **Zapisz**.
 1. Wybierz pozycję **Potwierdź** , aby wysłać transakcję do łańcucha bloków.
 1. Wybierz pozycję **Pobierz** akcję. Jest to wywołanie do zapytania o dane węzła. Transakcja nie jest wymagana.
-1. W okienku debugowanie elementu Remix można zobaczyć szczegóły dotyczące transakcji w łańcucha bloków.
 
-    ![Historia debugowania](./media/connect-metamask/debug.png)
+Okienko debugowanie Remix zawiera szczegółowe informacje o transakcjach w łańcucha bloków:
 
-    Możesz zobaczyć **proste** tworzenie kontraktu, transakcję dla **prostego. Dodaj**i Wywołaj metodę **Simple. Get**.
+    ![Debug history](./media/connect-metamask/debug.png)
 
-1. Możesz również wyświetlić historię transakcji w ramach maski. Otwórz rozszerzenie przeglądarki z maską.
-1. W sekcji **historia** można zobaczyć dziennik wdrożonego kontraktu i transakcji.
+    You can see the **simple** contract creation, transaction for **simple.add**, and call to **simple.get**.
+
+Aby wyświetlić historię transakcji w ramach klasy dbmasking, Otwórz rozszerzenie przeglądarki z maską i zapoznaj się z sekcją **historia** dziennika wdrożonego kontraktu i transakcji.
 
 ## <a name="next-steps"></a>Następne kroki
 

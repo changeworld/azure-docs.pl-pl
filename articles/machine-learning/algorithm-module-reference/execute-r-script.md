@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/10/2020
-ms.openlocfilehash: 2e12952c04373fe47eaebb24b61a4fc563121185
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.openlocfilehash: 1cf8c208e83950706278e2cff5d13951393eec8f
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79037120"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79140777"
 ---
 # <a name="execute-r-script"></a>Wykonywanie skryptu języka R
 
@@ -97,13 +97,16 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 
-Po pomyślnym przesłaniu potoku można wyświetlić podgląd obrazu w prawym panelu modułu ![przekazanego obrazu](media/module/upload-image-in-r-script.png)
+Po pomyślnym przesłaniu potoku można wyświetlić podgląd obrazu w prawym panelu modułu
+
+[!div class="mx-imgBorder"]
+![przekazane —](media/module/upload-image-in-r-script.png) obrazu
 
 ## <a name="how-to-configure-execute-r-script"></a>Jak skonfigurować skrypt wykonywania skryptu języka R
 
 Moduł **wykonywania skryptu języka R** zawiera przykładowy kod, którego można użyć jako punktu wyjścia. Aby skonfigurować moduł **wykonywania skryptu języka R** , podaj zestaw wejść i kod do wykonania.
 
-![R-module](media/module/upload-image-in-r-script.png)
+![R-module](media/module/execute-r-script.png)
 
 Zestawy danych przechowywane w projektancie są automatycznie konwertowane na ramkę z danymi języka R po załadowaniu tego modułu.
 
@@ -123,25 +126,25 @@ Zestawy danych przechowywane w projektancie są automatycznie konwertowane na ra
 
     Aby ułatwić rozpoczęcie pracy, pole tekstowe **skryptu języka R** jest wstępnie wypełnione z przykładowym kodem, który można edytować lub zamienić.
     
-```R
-# R version: 3.5.1
-# The script MUST contain a function named azureml_main
-# which is the entry point for this module.
+    ```R
+    # R version: 3.5.1
+    # The script MUST contain a function named azureml_main
+    # which is the entry point for this module.
 
-# The entry point function can contain up to two input arguments:
-#   Param<dataframe1>: a R DataFrame
-#   Param<dataframe2>: a R DataFrame
-azureml_main <- function(dataframe1, dataframe2){
-  print("R script run.")
+    # The entry point function can contain up to two input arguments:
+    #   Param<dataframe1>: a R DataFrame
+    #   Param<dataframe2>: a R DataFrame
+    azureml_main <- function(dataframe1, dataframe2){
+    print("R script run.")
 
-  # If a zip file is connected to the third input port, it is
-  # unzipped under "./Script Bundle". This directory is added
-  # to sys.path.
+    # If a zip file is connected to the third input port, it is
+    # unzipped under "./Script Bundle". This directory is added
+    # to sys.path.
 
-  # Return datasets as a Named List
-  return(list(dataset1=dataframe1, dataset2=dataframe2))
-}
-```
+    # Return datasets as a Named List
+    return(list(dataset1=dataframe1, dataset2=dataframe2))
+    }
+    ```
 
  * Skrypt musi zawierać funkcję o nazwie `azureml_main`, która jest punktem wejścia dla tego modułu.
 
@@ -174,9 +177,9 @@ Istnieje wiele sposobów na rozbudowanie potoku za pomocą niestandardowego skry
 
 Moduł **wykonywania skryptu języka r** obsługuje dowolne pliki skryptów języka r jako dane wejściowe. W tym celu należy przekazać je do obszaru roboczego jako część pliku ZIP.
 
-1. Aby przekazać plik ZIP zawierający kod R do obszaru roboczego, kliknij pozycję **Nowy**, kliknij pozycję **zestaw danych**, a następnie wybierz pozycję **z pliku lokalnego** i opcję **plik zip** .  
+1. Aby przekazać plik ZIP zawierający kod R do obszaru roboczego, przejdź do strony zasobów **zestawy** danych, kliknij pozycję **Utwórz zestaw danych**, a następnie wybierz pozycję **z pliku lokalnego** i opcję **Typ zestawu danych** .  
 
-1. Sprawdź, czy spakowany plik jest dostępny na liście **zapisane zestawy danych** .
+1. Sprawdź, czy spakowany plik jest dostępny na liście **Moje zestawy danych** w obszarze Kategorie **zestawy danych** w lewym drzewie modułu.
 
 1.  Połącz zestaw danych z portem wejściowym **pakietu skryptu** .
 
@@ -316,7 +319,7 @@ Bieżąca lista wstępnie zainstalowanych pakietów języka R dostępnych do uż
 | crayon       | 1.3.4      | 
 | Odsłon         | 3.3        | 
 | Data. Table   | 1.12.2     | 
-| datasets     | 3.5.1      | 
+| zbiory danych     | 3.5.1      | 
 | DBI          | 1.0.0      | 
 | dbplyr       | 1.4.1      | 
 | digest       | 0.6.19     | 

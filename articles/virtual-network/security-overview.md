@@ -14,11 +14,11 @@ ms.date: 02/27/2020
 ms.author: kumud
 ms.reviewer: kumud
 ms.openlocfilehash: 3837b2af31ddab3c35abf877a74f980bd34e933d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357559"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280224"
 ---
 # <a name="network-security-groups"></a>Grupy zabezpieczeń sieci
 <a name="network-security-groups"></a>

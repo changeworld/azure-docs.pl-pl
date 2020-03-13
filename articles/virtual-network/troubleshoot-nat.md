@@ -1,6 +1,6 @@
 ---
 title: Rozwiązywanie problemów z łącznością NAT na platformie Azure Virtual Network
-titleSuffix: Azure Virtual Network NAT troubleshooting
+titleSuffix: Azure Virtual Network
 description: Rozwiązywanie problemów z Virtual Network translatora adresów sieciowych.
 services: virtual-network
 documentationcenter: na
@@ -14,19 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2020
 ms.author: allensu
-ms.openlocfilehash: c629b3425cd095a6ac9d305b5cd6de58ed9d572a
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 43e6853fd5e7583883f79e70c8dbcd558f137834
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78674330"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79202165"
 ---
-# <a name="troubleshoot-azure-virtual-network-nat-connectivity-problems"></a>Rozwiązywanie problemów z łącznością NAT na platformie Azure Virtual Network
+# <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Rozwiązywanie problemów z łącznością NAT na platformie Azure Virtual Network
 
 Ten artykuł ułatwia administratorom diagnozowanie i rozwiązywanie problemów z łącznością podczas korzystania z Virtual Network translatora adresów sieciowych.
-
->[!NOTE] 
->Virtual Network translator adresów sieciowych jest w tej chwili dostępny jako publiczna wersja zapoznawcza. Jest ono obecnie dostępne tylko w ograniczonym zestawie [regionów](nat-overview.md#region-availability). Ta wersja zapoznawcza jest świadczona bez umowy dotyczącej poziomu usług i nie jest zalecana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
 
 ## <a name="problems"></a>Problemy
 
@@ -54,7 +51,7 @@ Często głównym powodem wyczerpania adresów w ramach ruchu przychodzącego je
 
 #### <a name="design-patterns"></a>Wzorce projektowe
 
-Zawsze korzystaj z zalet użycia połączenia i puli połączeń, jeśli to możliwe.  Wzorce te pozwolą uniknąć problemów z wyczerpaniem zasobów i powodować przewidywalne, niezawodne i skalowalne zachowanie. Elementy pierwotne dla tych wzorców można znaleźć w wielu bibliotekach i strukturach programistycznych.
+Zawsze korzystaj z zalet użycia połączenia i puli połączeń, jeśli to możliwe.  Wzorce te pozwolą uniknąć problemów z wyczerpaniem zasobów i powodować przewidywalne zachowanie. Elementy pierwotne dla tych wzorców można znaleźć w wielu bibliotekach i strukturach programistycznych.
 
 _**Rozwiązanie:**_ Użyj odpowiednich wzorców
 
@@ -90,7 +87,7 @@ W poniższej tabeli można użyć punktu wyjścia, dla którego narzędzia do ur
 
 ### <a name="connectivity-failures"></a>Błędy łączności
 
-Problemy z łącznością z [translatorem adresów sieciowych Virtual Network](nat-overview.md) mogą być spowodowane kilkoma różnymi problemami:
+Problemy z łącznością z [Virtual Network translatora adresów sieciowych](nat-overview.md) mogą być spowodowane kilkoma różnymi problemami:
 
 * przejściowe lub trwałe [wyczerpanie](#snat-exhaustion) elementu przekroczenia bramy TRANSLATORA adresów sieciowych,
 * Błędy przejściowe w infrastrukturze platformy Azure, 
@@ -110,7 +107,7 @@ Przejrzyj sekcję dotyczącą [wyczerpania adresów](#snat-exhaustion) w tym art
 
 #### <a name="azure-infrastructure"></a>Infrastruktura platformy Azure
 
-Mimo że platforma Azure monitoruje i obsługuje jej infrastrukturę z dużą ostrożnością, przejściowe awarie mogą wystąpić, ponieważ nie ma żadnej gwarancji, że transmisje są bezstratne.  Użyj wzorców projektowych, które pozwalają na retransmisję SYN dla aplikacji TCP. Limity czasu połączenia są wystarczająco duże, aby zezwolić na ponowną transmisję protokołu TCP SYN w celu ograniczenia przejściowych wpływów spowodowanych przez utracony pakiet SYN.
+Platforma Azure monitoruje i współpracuje z infrastrukturą. Mogą wystąpić błędy przejściowe, nie ma gwarancji, że transmisje są bezstratne.  Użyj wzorców projektowych, które pozwalają na retransmisję SYN dla aplikacji TCP. Limity czasu połączenia są wystarczająco duże, aby zezwolić na ponowną transmisję protokołu TCP SYN w celu ograniczenia przejściowych wpływów spowodowanych przez utracony pakiet SYN.
 
 _**Narzędzie**_
 
@@ -122,20 +119,20 @@ Nie zalecamy sztucznego zmniejszania limitu czasu połączenia TCP ani dostrajan
 
 #### <a name="public-internet-transit"></a>publiczne tranzyt internetowy
 
-Prawdopodobieństwo błędów przejściowych wzrasta z dłuższą ścieżką do miejsca docelowego i większej liczby systemów pośrednich. Oczekuje się, że przejściowe błędy mogą zwiększyć częstotliwość w przypadku [infrastruktury platformy Azure](#azure-infrastructure). 
+Szanse na błędy przejściowe zwiększają się o dłuższą ścieżkę do miejsca docelowego i większej liczby systemów pośrednich. Oczekuje się, że przejściowe błędy mogą zwiększyć częstotliwość w przypadku [infrastruktury platformy Azure](#azure-infrastructure). 
 
 Postępuj zgodnie z tymi samymi wskazówkami jak w poprzedniej sekcji [infrastruktury platformy Azure](#azure-infrastructure) .
 
 #### <a name="internet-endpoint"></a>Internetowy punkt końcowy
 
-Powyższe sekcje zawierają uzupełnienie zagadnień związanych z internetowym punktem końcowym, z którym nawiązuje się komunikacja. Inne czynniki, które mogą mieć wpływ na łączność, są następujące:
+Poprzednie sekcje dotyczą programu wraz z internetowym punktem końcowym, z którym nawiązuje się komunikacja. Inne czynniki, które mogą mieć wpływ na łączność, są następujące:
 
 * zarządzanie ruchem na stronie docelowej, w tym
 - Ograniczanie szybkości interfejsu API nakładane po stronie docelowej
 - Pomiarowe środki zaradcze DDoS lub transkształtowanie ruchu warstwy transportowej
 * Zapora lub inne składniki w miejscu docelowym 
 
-Zwykle przechwycenia pakietu w źródle oraz miejsce docelowe (jeśli są dostępne) są wymagane do określenia, co ma miejsce.
+Zwykle przechwycenia pakietu w lokalizacji źródłowej i docelowej (jeśli jest dostępna) jest wymagana do określenia, co ma miejsce.
 
 _**Narzędzie**_
 
@@ -147,9 +144,11 @@ _**Narzędzie**_
 
 #### <a name="tcp-resets-received"></a>Odebrane resety TCP
 
-Jeśli zaobserwujesz Resetowanie TCP (pakiety TCP RST) otrzymane na źródłowej maszynie wirtualnej, mogą one być generowane przez bramę translatora adresów sieciowych po stronie prywatnej dla przepływów, które nie są rozpoznawane jako w toku.  Jedną z możliwych przyczyn jest to, że połączenie TCP ma limit czasu bezczynności.  Limit czasu bezczynności można dostosować z 4 minut do 120 minut.
+Brama translatora adresów sieciowych generuje resety TCP na źródłowej maszynie wirtualnej dla ruchu, który nie jest rozpoznawany jako w toku.
 
-Resetowanie protokołu TCP nie jest generowane po stronie publicznej zasobów bramy translatora adresów sieciowych. Jeśli po stronie docelowej są odbierane resety TCP, są one generowane przez stos źródłowej maszyny wirtualnej, a nie zasób bramy translatora adresów sieciowych.
+Jedną z możliwych przyczyn jest to, że połączenie TCP ma limit czasu bezczynności.  Limit czasu bezczynności można dostosować z 4 minut do 120 minut.
+
+Resetowanie protokołu TCP nie jest generowane po stronie publicznej zasobów bramy translatora adresów sieciowych. Resetowanie protokołu TCP po stronie docelowej jest generowane przez źródłową maszynę wirtualną, a nie zasób bramy translatora adresów sieciowych.
 
 _**Narzędzie**_
 
@@ -158,7 +157,7 @@ _**Narzędzie**_
 
 ### <a name="ipv6-coexistence"></a>Współistnienie IPv6
 
-[Virtual Network translator adresów sieciowych](nat-overview.md) obsługuje protokoły UDP IPv4 i TCP oraz wdrażanie w [podsieci z prefiksem IPv6 nie jest obsługiwane](nat-overview.md#limitations).
+[Virtual Network translator adresów sieciowych](nat-overview.md) obsługuje protokoły UDP IPv4 i TCP oraz wdrożenie w [podsieci z prefiksem IPv6 nie jest obsługiwane](nat-overview.md#limitations).
 
 _**Rozwiązanie:**_ Wdróż bramę translatora adresów sieciowych w podsieci bez prefiksu IPv6.
 

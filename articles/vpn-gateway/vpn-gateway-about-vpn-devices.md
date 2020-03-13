@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: yushwang
 ms.openlocfilehash: f4caa9160280b0f65f84bed36b5209d08d7f7c11
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379166"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279431"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Informacje na temat urządzeń sieci VPN i parametrów protokołu IPsec/IKE dla połączeń bramy VPN typu lokacja-lokacja
 
@@ -45,7 +45,7 @@ Aby skonfigurować urządzenie sieci VPN, zapoznaj się z linkami odpowiadający
 | Cisco |ASR |PolicyBased: IOS 15.1<br>RouteBased: IOS 15.2 |Obsługiwane |Obsługiwane |
 | Cisco | PRZEDSTAWICIEL | RouteBased: IOS-XE 16,10 | (nie przetestowano) | [Skrypt konfiguracji](vpn-gateway-download-vpndevicescript.md) |
 | Cisco |ISR |PolicyBased: IOS 15.0<br>RouteBased*: IOS 15.1 |Obsługiwane |Obsługiwane |
-| Cisco |Meraki |N/D |Niezgodne |Niezgodne |
+| Cisco |Meraki |Nie dotyczy |Niezgodne |Niezgodne |
 | Cisco | vEdge (Viptela system operacyjny) | 18.4.0 (Tryb aktywny/pasywny)<br><br>19,2 (Tryb aktywny/aktywny) | Niezgodne |  [Konfiguracja ręczna (aktywna/pasywna)](https://community.cisco.com/t5/networking-documents/how-to-configure-ipsec-vpn-connection-between-cisco-vedge-and/ta-p/3841454)<br><br>[Konfiguracja onrampy chmury (aktywna/aktywna)](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/Network-Optimization-and-High-Availability/Network-Optimization-High-Availability-book/b_Network-Optimization-and-HA_chapter_00.html) |
 | Citrix |NetScaler MPX, SDX, VPX |10.1 lub nowsze |[Przewodnik po konfiguracji](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |Niezgodne |
 | F5 |Seria BIG-IP |12.0 |[Przewodnik po konfiguracji](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[Przewodnik po konfiguracji](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
@@ -58,7 +58,7 @@ Aby skonfigurować urządzenie sieci VPN, zapoznaj się z linkami odpowiadający
 | Juniper |SSG |ScreenOS 6.2 |Obsługiwane |[Skrypt konfiguracji](vpn-gateway-download-vpndevicescript.md) |
 | Juniper |MX |JunOS 12.x|Obsługiwane |[Skrypt konfiguracji](vpn-gateway-download-vpndevicescript.md) |
 | Microsoft |Routing and Remote Access Service |Windows Server 2012 |Niezgodne |Obsługiwane |
-| Open Systems AG |Mission Control Security Gateway |N/D |[Przewodnik po konfiguracji](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |Niezgodne |
+| Open Systems AG |Mission Control Security Gateway |Nie dotyczy |[Przewodnik po konfiguracji](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |Niezgodne |
 | Palo Alto Networks |Wszystkie urządzenia z systemem PAN-OS |PAN-OS<br>PolicyBased: wersja 6.1.5 lub nowsza<br>RouteBased: 7.1.4 |Obsługiwane |[Przewodnik po konfiguracji](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000Cm6WCAS) |
 | Sentrium (deweloper) | VyOS | VyOS 1.2.2 | (nie przetestowano) | [Przewodnik konfiguracji](https://vyos.readthedocs.io/en/latest/appendix/examples/azure-vpn-bgp.html)|
 | ShareTech | UTM następnej generacji (seria NU) | 9.0.1.3 | Niezgodne | [Przewodnik po konfiguracji](http://www.sharetech.com.tw/images/file/Solution/NU_UTM/S2S_VPN_with_Azure_Route_Based_en.pdf) |
@@ -66,7 +66,7 @@ Aby skonfigurować urządzenie sieci VPN, zapoznaj się z linkami odpowiadający
 | Sophos | XG Next Gen Firewall | XG v17 | (nie przetestowano) | [Przewodnik po konfiguracji](https://community.sophos.com/kb/127546)<br><br>[Przewodnik konfiguracji — wiele sygnatur dostępu współdzielonego](https://community.sophos.com/kb/en-us/133154) |
 | Synology | MR2200ac <br>RT2600ac <br>RT1900ac | SRM1.1.5/VpnPlusServer-1.2.0 | (nie przetestowano) | [Przewodnik po konfiguracji](https://www.synology.com/en-global/knowledgebase/SRM/tutorial/VPN/How_to_set_up_Site_to_Site_VPN_between_Synology_Router_and_MS_Azure) |
 | Ubiquiti | EdgeRouter | EdgeOS v1.10 | (nie przetestowano) | [BGP przez protokół IKEv2/IPsec](https://help.ubnt.com/hc/en-us/articles/115012374708)<br><br>[VTI za pośrednictwem protokołu IKEv2/IPsec](https://help.ubnt.com/hc/en-us/articles/115012305347)
-| WatchGuard |Wszystkie |Fireware XTM<br> PolicyBased: v11.11.x<br>RouteBased: v11.12.x |[Przewodnik po konfiguracji](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[Przewodnik po konfiguracji](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
+| WatchGuard |Wszyscy |Fireware XTM<br> PolicyBased: v11.11.x<br>RouteBased: v11.12.x |[Przewodnik po konfiguracji](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[Przewodnik po konfiguracji](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
 | Zyxel |Seria USG ZyWALL<br>Seria ATP ZyWALL<br>Seria sieci VPN ZyWALL | ZLD v 4.32 + | (nie przetestowano) | [VTI za pośrednictwem protokołu IKEv2/IPsec](https://businessforum.zyxel.com/discussion/2648/)<br><br>[BGP przez protokół IKEv2/IPsec](https://businessforum.zyxel.com/discussion/2650/)|
 
 > [!NOTE]

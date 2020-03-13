@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 0a629a86ab9029bf7c12470e582a72bd3671fc86
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: a2eade6c5a9c826d28d435a09861ba58463ae8c4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78942073"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280536"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Active Directory integrację z usługą Azure Red Hat OpenShift
 
@@ -92,12 +92,20 @@ Aby uzyskać szczegółowe informacje na temat tworzenia nowej aplikacji usługi
 
 ## <a name="add-api-permissions"></a>Dodawanie uprawnień interfejsu API
 
-1. W sekcji **Zarządzanie** kliknij pozycję **uprawnienia interfejsu API**, a następnie kliknij pozycję **+ Dodaj uprawnienie**. 
-3. W okienku **uprawnienia do interfejsu API żądania** wybierz kartę **interfejsy API firmy Microsoft** , a następnie wybierz kafelek **Microsoft Graph** . Wybierz pozycję **Uprawnienia aplikacji**.
-4. Wyszukaj **użytkownika** i Włącz uprawnienie **User. Read** . Wyszukaj **katalog** i Włącz **katalog. Read. All**.
-5. Kliknij przycisk **Dodaj uprawnienia** , aby zaakceptować zmiany.
-6. Panel uprawnień interfejsu API powinien teraz wyświetlać zarówno *użytkownika. odczyt* i *katalog. Read. All*. Zwróć uwagę na ostrzeżenie w kolumnie **wymagana zgoda administratora** obok pozycji *katalog. odczyt. wszystkie*.
-7. Jeśli jesteś *administratorem subskrypcji platformy Azure*, kliknij pozycję * * Udziel zgody administratora na * nazwę subskrypcji * * *. Jeśli nie jesteś *administratorem subskrypcji platformy Azure*, zażądaj zgody od administratora.
+[//]: # (Nie zmieniaj na Microsoft Graph. Nie działa z Microsoft Graph.)
+1. W sekcji **Zarządzanie** kliknij pozycję **uprawnienia interfejsu API**
+2. Kliknij pozycję **Dodaj uprawnienie** , a następnie wybierz pozycję **Azure Active Directory Graph** następnie **uprawnienia delegowane**.
+> [!NOTE]
+> Upewnij się, że została wybrana opcja "Azure Active Directory Graph", a nie kafelek "Microsoft Graph".
+
+3. Rozwiń pozycję **użytkownik** na poniższej liście i Włącz uprawnienie **User. Read** . Jeśli **użytkownik. Read** jest włączony domyślnie, upewnij się, że jest to **Azure Active Directory** **.**
+4. Przewiń w górę i wybierz pozycję **uprawnienia aplikacji**.
+5. Rozwiń **katalog** znajdujący się na poniższej liście i Włącz **katalog. readal**.
+6. Kliknij przycisk **Dodaj uprawnienia** , aby zaakceptować zmiany.
+7. Panel uprawnień interfejsu API powinien teraz wyświetlać zarówno *użytkownika. Read* i *Directory. readal*. Zwróć uwagę na ostrzeżenie w kolumnie **wymagana zgoda administratora** obok *katalogu Directory. readal*.
+8. Jeśli jesteś *administratorem subskrypcji platformy Azure*, kliknij przycisk **Udziel zgody administratora na *nazwę subskrypcji***  poniżej. Jeśli nie jesteś *administratorem subskrypcji platformy Azure*, zażądaj zgody od administratora.
+
+![Zrzut ekranu przedstawiający panel uprawnień interfejsu API. Uprawnienia User. Read i Directory. readal dodane, zgoda administratora wymagana dla katalogu.](./media/howto-aad-app-configuration/permissions-required.png)
 
 > [!IMPORTANT]
 > Synchronizacja grupy Administratorzy klastra będzie działała dopiero po udzieleniu zgody. Zobaczysz zielony okrąg z zaznaczeniem i komunikatem "udzielono dla *nazwy subskrypcji*" w kolumnie *wymagana zgoda administratora* .

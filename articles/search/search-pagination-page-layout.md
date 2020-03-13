@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/24/2020
-ms.openlocfilehash: c32e58a43b5409fd9f8ede536167d185270c6a22
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: e83ecb3888ed4b19933233f3ab511d1e86fb37af
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721578"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136994"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Jak korzystać z wyników wyszukiwania w usłudze Azure Wyszukiwanie poznawcze
 Ten artykuł zawiera wskazówki dotyczące implementowania standardowych elementów strony wyników wyszukiwania, takich jak łączna liczba, pobieranie dokumentów, kolejność sortowania i nawigacja. Opcje dotyczące strony, które tworzą dane lub informacje w wynikach wyszukiwania, są określane za pomocą żądań [przeszukiwania dokumentów](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) wysyłanych do usługi Azure wyszukiwanie poznawcze. 
@@ -25,7 +25,7 @@ Aby szybko wygenerować stronę wyszukiwania dla klienta, zapoznaj się z nastę
 + Użyj [generatora aplikacji](search-create-app-portal.md) w portalu, aby utworzyć stronę HTML z paskiem wyszukiwania, nawigacją aspektową i obszarem wyników.
 + Postępuj zgodnie z samouczkiem [Tworzenie C# pierwszej aplikacji w](tutorial-csharp-create-first-app.md) celu utworzenia klienta funkcjonalnego.
 
-Kilka przykładów kodu obejmuje interfejs frontonu sieci Web, który można znaleźć tutaj: [aplikacja demonstracyjna zadań w Nowym Jorku](https://azjobsdemo.azurewebsites.net/), [przykładowy kod JavaScript z aktywną witryną demonstracyjną](https://github.com/liamca/azure-search-javascript-samples)i [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
+Kilka przykładów kodu obejmuje interfejs frontonu sieci Web, który można znaleźć tutaj: [aplikacja demonstracyjna zadań w Nowym Jorku](https://aka.ms/azjobsdemo), [przykładowy kod JavaScript z aktywną witryną demonstracyjną](https://github.com/liamca/azure-search-javascript-samples)i [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
 
 > [!NOTE]
 > Prawidłowe żądanie zawiera wiele elementów, takich jak adres URL usługi i ścieżka, zlecenie HTTP, `api-version`itd. W przypadku zwięzłości zostały przycięte przykłady w celu wyróżnienia tylko składni, która jest istotna dla dzielenia na strony. Aby uzyskać więcej informacji na temat składni żądania, zobacz [interfejsy API REST platformy Azure wyszukiwanie poznawcze](https://docs.microsoft.com/rest/api/searchservice).

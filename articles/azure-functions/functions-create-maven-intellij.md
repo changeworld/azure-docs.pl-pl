@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 46044d4c6dd65944291aff157229be0abc60d3d7
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 7003dc19a7bfc405809de91534028aba8e0416c5
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913246"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136854"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>Tworzenie pierwszej funkcji platformy Azure przy użyciu języka Java i IntelliJ
 
@@ -46,8 +46,8 @@ Aby opracować funkcję przy użyciu języka Java i IntelliJ, Zainstaluj następ
 1. W oknie **Dodawanie Archetype** Wypełnij pola w następujący sposób:
     - _GroupID_: com. Microsoft. Azure
     - _ArtifactId_: Azure-Functions-Archetype
-    - _Wersja_: Użyj najnowszej wersji **1,22** z [centralnego repozytorium](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
-    ![utworzyć projekt Maven z Archetype w IntelliJ pomysł](media/functions-create-first-java-intellij/functions-create-intellij.png)  
+    - _Wersja_: Sprawdź i użyj najnowszej wersji z [centralnego repozytorium](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
+    ![Utwórz projekt Maven z archetype w IntelliJ pomysł](media/functions-create-first-java-intellij/functions-create-intellij.png)  
 1. Wybierz przycisk **OK**, a następnie wybierz przycisk **dalej**.
 1. Wprowadź szczegóły dla bieżącego projektu i wybierz pozycję **Zakończ**.
 

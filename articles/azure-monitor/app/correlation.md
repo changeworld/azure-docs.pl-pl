@@ -7,11 +7,11 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: 06897fffda490cdfcbb2a9cf6f55c7945e8afda0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78367662"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276129"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelacja telemetrii w Application Insights
 
@@ -33,7 +33,7 @@ W środowisku mikrousług ślady składników mogą przechodzić do różnych el
 
 ## <a name="example"></a>Przykład
 
-Przyjrzyjmy się przykładowi. Aplikacja o nazwie ceny giełdowe pokazuje aktualną cenę rynkową przy użyciu zewnętrznego interfejsu API o nazwie Stock. Aplikacja do cen giełdowych ma stronę o nazwie Strona giełdowa, którą otwiera przeglądarka klienta sieci Web przy użyciu `GET /Home/Stock`. Aplikacja wysyła zapytanie do interfejsu API spisu przy użyciu `GET /api/stock/value`wywołania HTTP.
+Spójrzmy na przykład. Aplikacja o nazwie ceny giełdowe pokazuje aktualną cenę rynkową przy użyciu zewnętrznego interfejsu API o nazwie Stock. Aplikacja do cen giełdowych ma stronę o nazwie Strona giełdowa, którą otwiera przeglądarka klienta sieci Web przy użyciu `GET /Home/Stock`. Aplikacja wysyła zapytanie do interfejsu API spisu przy użyciu `GET /api/stock/value`wywołania HTTP.
 
 Dane telemetryczne mogą być analizowane przez uruchomienie zapytania:
 
@@ -45,11 +45,11 @@ Dane telemetryczne mogą być analizowane przez uruchomienie zapytania:
 
 Zwróć uwagę, że wszystkie elementy telemetrii współużytkują główny `operation_Id`. Po wykonaniu wywołania AJAX ze strony nowy unikatowy identyfikator (`qJSXU`) jest przypisywany do telemetrii zależności, a identyfikator pageView jest używany jako `operation_ParentId`. Żądanie serwera używa identyfikatora AJAX jako `operation_ParentId`.
 
-| ItemType   | name                      | ID           | operation_ParentId | operation_Id |
+| itemType   | name                      | ID           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
 | pageView   | Strona giełdowa                |              | STYz               | STYz         |
 | zależność | Pobierz/Home/Stock           | qJSXU        | STYz               | STYz         |
-| request    | Pobierz domowy/giełdowy            | KqKwlrSt9PA= | qJSXU              | STYz         |
+| żądanie    | Pobierz domowy/giełdowy            | KqKwlrSt9PA= | qJSXU              | STYz         |
 | zależność | Pobierz/API/Stock/Value      | bBrf2L7mm2g= | KqKwlrSt9PA=       | STYz         |
 
 Gdy wywołanie `GET /api/stock/value` jest nawiązywane w usłudze zewnętrznej, należy znać tożsamość tego serwera, aby można było odpowiednio ustawić pole `dependency.target`. Gdy usługa zewnętrzna nie obsługuje monitorowania, `target` jest ustawiona na nazwę hosta usługi (na przykład `stock-prices-api.com`). Jeśli jednak usługa identyfikuje siebie przez zwrócenie wstępnie zdefiniowanego nagłówka HTTP, `target` zawiera tożsamość usługi umożliwiającą Application Insights kompilowania rozproszonego śledzenia przez przeszukiwanie danych telemetrycznych z tej usługi.

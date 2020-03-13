@@ -13,11 +13,11 @@ ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 90fccba016a3db9ff85f8ec7c8fd426ef3c896a2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387349"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281290"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Przenoszenie danych z programu MySQL przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -65,23 +65,23 @@ Poniższe sekcje zawierają szczegółowe informacje na temat właściwości JSO
 ## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 Poniższa tabela zawiera opis elementów JSON specyficznych dla połączonej usługi MySQL.
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 | --- | --- | --- |
-| typ |Właściwość Type musi mieć wartość: **OnPremisesMySql** |Tak |
-| zarządzania |Nazwa serwera MySQL. |Tak |
-| baza danych |Nazwa bazy danych MySQL. |Tak |
+| type |Właściwość Type musi mieć wartość: **OnPremisesMySql** |Yes |
+| serwer |Nazwa serwera MySQL. |Yes |
+| database |Nazwa bazy danych MySQL. |Yes |
 | schemat |Nazwa schematu w bazie danych programu. |Nie |
-| authenticationType |Typ uwierzytelniania używany do łączenia się z bazą danych MySQL. Możliwe wartości to: `Basic`. |Tak |
-| userName |Określ nazwę użytkownika w celu nawiązania połączenia z bazą danych MySQL. |Tak |
-| hasło |Określ hasło dla podanego konta użytkownika. |Tak |
-| gatewayName |Nazwa bramy, która ma być używana przez usługę Data Factory do łączenia się z lokalną bazą danych MySQL. |Tak |
+| authenticationType |Typ uwierzytelniania używany do łączenia się z bazą danych MySQL. Możliwe wartości to: `Basic`. |Yes |
+| userName |Określ nazwę użytkownika w celu nawiązania połączenia z bazą danych MySQL. |Yes |
+| hasło |Określ hasło dla podanego konta użytkownika. |Yes |
+| gatewayName |Nazwa bramy, która ma być używana przez usługę Data Factory do łączenia się z lokalną bazą danych MySQL. |Yes |
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 Aby uzyskać pełną listę sekcji & właściwości dostępne do definiowania zestawów danych, zobacz artykuł [Tworzenie zestawów danych](data-factory-create-datasets.md) . Sekcje, takie jak struktura, dostępność i zasady JSON zestawu danych są podobne dla wszystkich typów zestawu danych (Azure SQL, Azure Blob, Azure Table itp.).
 
 Sekcja **typeProperties** jest inna dla każdego typu zestawu danych i zawiera informacje dotyczące lokalizacji danych w magazynie danych. Sekcja typeProperties dla zestawu danych typu **relacyjnego** (który zawiera zestaw danych MySQL) ma następujące właściwości
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 | --- | --- | --- |
 | tableName |Nazwa tabeli w wystąpieniu bazy danych MySQL, do której odwołuje się połączona usługa. |Nie (Jeśli **kwerenda** **RelationalSource** jest określona) |
 
@@ -92,9 +92,9 @@ Natomiast właściwości dostępne w sekcji **typeProperties** działania różn
 
 Gdy źródło w działaniu kopiowania jest typu **RelationalSource** (co obejmuje MySQL), w sekcji typeProperties są dostępne następujące właściwości:
 
-| Właściwość | Opis | Dozwolone wartości | Wymagane |
+| Właściwość | Opis | Dozwolone wartości | Wymagany |
 | --- | --- | --- | --- |
-| zapytanie |Użyj zapytania niestandardowego do odczytywania danych. |Ciąg zapytania SQL. Na przykład: select * from MyTable. |Nie (Jeśli określono element **TableName** **zestawu danych** ) |
+| query |Użyj zapytania niestandardowego do odczytywania danych. |Ciąg zapytania SQL. Na przykład: select * from MyTable. |Nie (Jeśli określono element **TableName** **zestawu danych** ) |
 
 
 ## <a name="json-example-copy-data-from-mysql-to-azure-blob"></a>Przykład JSON: kopiowanie danych z programu MySQL do obiektu blob platformy Azure

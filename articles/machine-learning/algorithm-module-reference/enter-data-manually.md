@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 949cdb4c53531a548380a6f0116fb45f91d7ba66
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 736b128e5207e58220afa69b4cf5dc4e8fea4a26
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268778"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79140811"
 ---
 # <a name="enter-data-manually-module"></a>Wprowadź ręcznie moduł danych
 
@@ -62,13 +62,13 @@ Ten moduł może być przydatny w następujących scenariuszach:
   
     -   **ARFF**: Wklej w istniejącym pliku formatu ARFF. W przypadku wpisywania wartości bezpośrednio należy pamiętać o dodaniu opcjonalnego nagłówka i wymaganych pól atrybutów na początku danych. 
     
-        Na przykład następujące wiersze nagłówka i atrybutu można dodać do prostej listy. Nagłówek kolumny będzie `SampleText`.
+        Na przykład następujące wiersze nagłówka i atrybutu można dodać do prostej listy. Nagłówek kolumny będzie `SampleText`. Należy zauważyć, że typ ciągu nie jest obsługiwany.
     
         ```text
-        % Title: SampleText.ARFF  
-        % Source: Enter Data module  
-        @ATTRIBUTE SampleText STRING  
-        @DATA  
+        % Title: SampleText.ARFF
+        % Source: Enter Data module
+        @ATTRIBUTE SampleText NUMERIC
+        @DATA
         \<type first data row here>  
         ```
 

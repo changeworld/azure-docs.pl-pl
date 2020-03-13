@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: ac61c01c5e45b6e8e001a68781f93c3962cb581f
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 9b8c44f99953d4518f0bc3f558f396250657c632
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78297850"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138947"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Zaloguj się do swoich kont przy użyciu aplikacji Microsoft Authenticator
 
@@ -112,7 +112,7 @@ Na urządzeniu z systemem iOS:
 
 ## <a name="sign-in-using-two-factor-verification-for-your-account"></a>Zaloguj się przy użyciu weryfikacji dwuskładnikowej dla swojego konta
 
-Standardowa metoda weryfikacji dwuskładnikowej wymaga wprowadzenia nazwy użytkownika i hasła do urządzenia, do którego się logujesz, a następnie wybrania, czy aplikacja Microsoft Authenticator otrzymuje Microsoft Authenticator aplikację. Na urządzeniu z systemem Android te kody weryfikacyjne można znaleźć na ekranie konta. Na urządzeniu z systemem iOS te kody weryfikacyjne można znaleźć na ekranie **konta** lub w widoku pełny ekran konta, w zależności od typu konta. Należy włączyć weryfikację dwuskładnikową dla Twojego konta w ramach procesu dodawania konta do aplikacji Microsoft Authenticator.
+Standardowa metoda weryfikacji dwuskładnikowej wymaga wprowadzenia nazwy użytkownika i hasła do urządzenia, do którego się logujesz. Następnie otwórz aplikację Microsoft Authenticator i wpisz losowo wygenerowany kod dla swojego konta w polu **Wprowadź kod** . Na urządzeniu z systemem Android te kody weryfikacyjne można znaleźć na ekranie **konta** . Na urządzeniu z systemem iOS te kody weryfikacyjne można znaleźć na ekranie **konta** lub w widoku pełny ekran konta, w zależności od typu konta. Należy włączyć weryfikację dwuskładnikową dla Twojego konta w ramach procesu dodawania konta do aplikacji Microsoft Authenticator.
 
 >[!Note]
 >Jeśli nie widzisz konta służbowego lub konta osobistego na ekranie **konta** aplikacji Microsoft Authenticator, oznacza to, że konto nie zostało dodane do aplikacji Microsoft Authenticator. Aby dodać konto, zobacz [Dodawanie konta służbowego](user-help-auth-app-add-work-school-account.md) lub [Dodawanie konta osobistego](user-help-auth-app-add-personal-ms-account.md).

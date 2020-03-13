@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/08/2019
+ms.date: 3/11/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 9ea3388cb65b18c093ffff3ec8b8c9f2764ef189
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 23d83b59c510f2565b2f66f78dad56c9c9592dd0
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78300072"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136521"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Instrukcje: dostarczanie opcjonalnych oświadczeń do aplikacji usługi Azure AD
 
@@ -85,10 +85,10 @@ Te oświadczenia są zawsze uwzględniane w tokenach usługi Azure AD w wersji 1
 | `pwd_exp`     | Czas wygaśnięcia hasła        | Data i godzina wygaśnięcia hasła. |       |
 | `pwd_url`     | Zmień adres URL hasła             | Adres URL, który użytkownik może odwiedzić, aby zmienić hasło.   |   |
 | `in_corp`     | Wewnątrz sieci firmowej        | Sygnalizuje, czy klient loguje się z sieci firmowej. W przeciwnym razie oświadczenia nie są uwzględniane.   |  Na podstawie ustawień [zaufanych adresów IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) w usłudze MFA.    |
-| `nickname`    | pseudonim                        | Dodatkowa nazwa dla użytkownika. Pseudonim jest oddzielony od imienia i nazwiska. | 
-| `family_name` | Nazwisko                       | Zawiera nazwisko, nazwisko lub nazwę rodziny użytkownika, zgodnie z definicją w obiekcie użytkownika. <br>"family_name":"Miller" | Obsługiwane w usłudze MSA i usłudze Azure AD   |
-| `given_name`  | Imię                      | Określa imię i nazwisko użytkownika, zgodnie z ustawieniem obiektu użytkownika.<br>"given_name": "Piotr"                   | Obsługiwane w usłudze MSA i usłudze Azure AD  |
-| `upn`         | Nazwa główna użytkownika | Identyfikator dla użytkownika, którego można użyć z parametrem username_hint.  Nie jest to trwały identyfikator użytkownika i nie należy go używać do kluczowych danych. | Zapoznaj się z [dodatkowymi właściwościami](#additional-properties-of-optional-claims) poniżej w celu skonfigurowania żądania. |
+| `nickname`    | pseudonim                        | Dodatkowa nazwa dla użytkownika. Pseudonim jest oddzielony od imienia i nazwiska. Wymaga zakresu `profile`.| 
+| `family_name` | Nazwisko                       | Zawiera nazwisko, nazwisko lub nazwę rodziny użytkownika, zgodnie z definicją w obiekcie użytkownika. <br>"family_name":"Miller" | Obsługiwane w usłudze MSA i usłudze Azure AD. Wymaga zakresu `profile`.   |
+| `given_name`  | Imię                      | Określa imię i nazwisko użytkownika, zgodnie z ustawieniem obiektu użytkownika.<br>"given_name": "Piotr"                   | Obsługiwane w usłudze MSA i usłudze Azure AD.  Wymaga zakresu `profile`. |
+| `upn`         | Nazwa główna użytkownika | Identyfikator dla użytkownika, którego można użyć z parametrem username_hint.  Nie jest to trwały identyfikator użytkownika i nie należy go używać do kluczowych danych. | Zapoznaj się z [dodatkowymi właściwościami](#additional-properties-of-optional-claims) poniżej w celu skonfigurowania żądania. Wymaga zakresu `profile`.|
 
 ### <a name="additional-properties-of-optional-claims"></a>Dodatkowe właściwości oświadczeń opcjonalnych
 
@@ -117,12 +117,13 @@ Niektóre opcjonalne oświadczenia można skonfigurować w celu zmiany sposobu z
         }
     ```
 
-Ten obiekt OptionalClaims powoduje, że token identyfikatora zwracany do klienta zawiera inną nazwę UPN z dodatkowymi informacjami dzierżawy głównej i dzierżawy zasobów. To `upn` jest zmieniana tylko w tokenie, jeśli użytkownik jest gościem w dzierżawie (który korzysta z innego dostawcy tożsamości na potrzeby uwierzytelniania). 
+Ten obiekt OptionalClaims powoduje, że token identyfikatora zwrócony klientowi do uwzględnienia oświadczenie nazwy UPN z dodatkowymi informacjami dzierżawy głównej i dzierżawy zasobów. To `upn` jest zmieniana tylko w tokenie, jeśli użytkownik jest gościem w dzierżawie (który korzysta z innego dostawcy tożsamości na potrzeby uwierzytelniania). 
 
 ## <a name="configuring-optional-claims"></a>Konfigurowanie oświadczeń opcjonalnych
 
 > [!IMPORTANT]
 > Tokeny dostępu są **zawsze** generowane przy użyciu manifestu zasobu, a nie klienta.  Dlatego w żądaniu `...scope=https://graph.microsoft.com/user.read...` zasób jest Microsoft Graphm interfejsem API.  W takim przypadku token dostępu jest tworzony przy użyciu manifestu interfejsu API Microsoft Graph, a nie manifestu klienta.  Zmiana manifestu dla aplikacji nigdy nie spowoduje, że tokeny dla interfejsu API Microsoft Graph będą wyglądały inaczej.  Aby potwierdzić, że zmiany `accessToken` są obowiązujące, zażądaj tokenu dla aplikacji, a nie innej aplikacji.  
+
 
 Opcjonalne oświadczenia dla aplikacji można skonfigurować za pomocą interfejsu użytkownika lub manifestu aplikacji.
 
@@ -207,7 +208,7 @@ Jeśli jest to obsługiwane przez określone zgłoszenie, można również zmody
 | `additionalProperties` | Kolekcja (EDM. String) | Dodatkowe właściwości żądania. Jeśli właściwość istnieje w tej kolekcji, modyfikuje zachowanie opcjonalnego żądania określonego we właściwości Nazwa.                                                                                                                                               |
 ## <a name="configuring-directory-extension-optional-claims"></a>Konfigurowanie opcjonalnych oświadczeń rozszerzenia katalogu
 
-Oprócz standardowego opcjonalnego zestawu oświadczeń można także skonfigurować tokeny do dołączania rozszerzeń. Ta funkcja jest przydatna do dołączania dodatkowych informacji o użytkownikach, które mogą być używane przez aplikację — na przykład dodatkowego identyfikatora lub ważnej opcji konfiguracji ustawionej przez użytkownika. Przykład znajduje się na końcu tej strony.
+Oprócz standardowego opcjonalnego zestawu oświadczeń można także skonfigurować tokeny do dołączania rozszerzeń. Aby uzyskać więcej informacji, zobacz [dokumentację dotyczącą Microsoft Graph extensionProperty](https://docs.microsoft.com/graph/api/resources/extensionproperty?view=graph-rest-1.0) — należy zauważyć, że nie są one obsługiwane przez opcjonalne oświadczenia, tylko rozszerzenia katalogu stylów usługi AAD-Graph. Ta funkcja jest przydatna do dołączania dodatkowych informacji o użytkownikach, które mogą być używane przez aplikację — na przykład dodatkowego identyfikatora lub ważnej opcji konfiguracji ustawionej przez użytkownika. Przykład znajduje się na końcu tej strony.
 
 > [!NOTE]
 > - Rozszerzenia schematu katalogu to funkcja tylko usługi Azure AD, więc jeśli manifest aplikacji żąda niestandardowego rozszerzenia i loguje się do aplikacji, te rozszerzenia nie zostaną zwrócone.
@@ -269,7 +270,7 @@ W tej sekcji omówiono opcje konfiguracji w obszarze opcjonalne oświadczenia do
    Jeśli chcesz, aby grupy w tokenie zawierały atrybuty lokalnych grup usługi AD w sekcji opcjonalne oświadczenia Określ, które opcjonalne oświadczenie o typie tokenu należy zastosować do, nazwę opcjonalnego oświadczenia, a także wszystkie wymagane właściwości.  Można wymienić wiele typów tokenów:
 
    - idToken dla tokenu identyfikatora OIDC
-   - accessToken dla tokenu dostępu OAuth/OIDC
+   - accessToken dla tokenu dostępu OAuth
    - Saml2Token dla tokenów SAML.
 
    > [!NOTE]

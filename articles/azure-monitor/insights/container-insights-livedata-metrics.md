@@ -3,12 +3,12 @@ title: Wyświetl metryki w czasie rzeczywistym za pomocą Azure Monitor dla kont
 description: W tym artykule opisano widok metryk w czasie rzeczywistym bez używania polecenia kubectl z Azure Monitor for Containers.
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: fbb08a8ed3deeff061065916241ee2d724603be3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4604635c985057ec0b7f49a0d1cca7111dfc8eec
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75404931"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79216584"
 ---
 # <a name="how-to-view-metrics-in-real-time"></a>Jak wyświetlać metryki w czasie rzeczywistym
 
@@ -24,7 +24,7 @@ Ten artykuł zawiera szczegółowe omówienie i pomaga zrozumieć, jak korzysta�
 
 Aby uzyskać pomoc dotyczącą konfigurowania lub rozwiązywania problemów dotyczących danych na żywo (wersja zapoznawcza), zapoznaj się z naszym [przewodnikiem Instalatora](container-insights-livedata-setup.md).
 
-## <a name="how-it-works"></a>Zasada działania 
+## <a name="how-it-works"></a>Jak to działa 
 
 Funkcja dane dynamiczne (wersja zapoznawcza) bezpośrednio uzyskuje dostęp do interfejsu API Kubernetes. dodatkowe informacje o modelu uwierzytelniania można znaleźć [tutaj](https://kubernetes.io/docs/concepts/overview/kubernetes-api/). 
 
@@ -34,7 +34,7 @@ Ta funkcja wykonuje operację sondowania dla punktów końcowych metryk (w tym `
 
 Interwał sondowania jest konfigurowany z listy rozwijanej **ustaw interwał** , co pozwala na ustawienie sondowania dla nowych danych co 1, 5, 15 i 30 sekund. 
 
-![Przechodzenie do listy rozwijanej interwału sondowania](./media/container-insights-livedata-metrics/cluster-view-polling-interval-dropdown.ping.png)
+![Przechodzenie do listy rozwijanej interwału sondowania](./media/container-insights-livedata-metrics/cluster-view-polling-interval-dropdown.png)
 
 >[!IMPORTANT]
 >Zalecamy ustawienie interwału sondowania na jeden sekund podczas rozwiązywania problemu przez krótki czas. Te żądania mogą mieć wpływ na dostępność i ograniczenie interfejsu API Kubernetes w klastrze. Następnie skonfiguruj ponownie do dłuższego interwału sondowania. 

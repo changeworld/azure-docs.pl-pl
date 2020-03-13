@@ -10,12 +10,12 @@ ms.topic: sample
 ms.workload: infrastructure
 ms.date: 06/14/2018
 ms.author: allensu
-ms.openlocfilehash: 8ef4a0d1eca76ffaad7136c9b55756b96b80925f
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 3e0c86fdf97ec2882858a0a92e22e020001816cd
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274593"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218344"
 ---
 # <a name="azure-cli-script-example-load-balance-vms-across-availability-zones"></a>Przykład skryptu dla interfejsu wiersza polecenia platformy Azure: równoważenie obciążenia maszyn wirtualnych w różnych strefach dostępności
 
@@ -50,7 +50,7 @@ Ten przykładowy skrypt interfejsu wiersza polecenia platformy Azure umożliwia 
 
   # Create an Azure Load Balancer.
    az network lb create \
-    --resource-group myResourceGroupLB \
+    --resource-group myResourceGroup \
     --name myLoadBalancer \
     --public-ip-address myPublicIP \
     --frontend-ip-name myFrontEndPool \

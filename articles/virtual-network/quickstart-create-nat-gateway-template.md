@@ -15,19 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 03/09/2020
 ms.author: allensu
 ms.custom: subject-armqs
-ms.openlocfilehash: 0f6a303bfa42538bf56efa7e9f669588c8bff66c
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 051b1bd22b2e04f92c02b63a416160d824d1be10
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082731"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217003"
 ---
 # <a name="quickstart-create-a-nat-gateway---resource-manager-template"></a>Szybki Start: Tworzenie Menedżer zasobów szablonu bramy translatora adresów sieciowych
 
 Rozpocznij pracę z Virtual Network translatora adresów sieciowych przy użyciu szablonu Azure Resource Manager.  Ten szablon służy do wdrażania sieci wirtualnej, bramy translatora adresów sieciowych i Ubuntu maszyny wirtualnej. Maszyna wirtualna Ubuntu jest wdrażana w podsieci skojarzonej z bramą translatora adresów sieciowych.
-
->[!NOTE] 
->Usługa Azure Virtual Network translator adresów sieciowych jest teraz dostępna jako publiczna wersja zapoznawcza i dostępna w ograniczonym zestawie [regionów](https://azure.microsoft.com/global-infrastructure/regions/). Ta wersja zapoznawcza jest świadczona bez umowy dotyczącej poziomu usług i nie jest zalecana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 

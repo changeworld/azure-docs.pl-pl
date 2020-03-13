@@ -10,25 +10,24 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 01/25/2019
-ms.openlocfilehash: c4923e43613653bf3dfe8055754039ab0cf57fca
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.date: 03/10/2020
+ms.openlocfilehash: 739bba7ed9ab4770a762c08fccc422ce048ae11d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587383"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214090"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Rozwiązywanie problemów z wydajnością Azure SQL Database przy użyciu Intelligent Insights
 
-Ta strona zawiera informacje dotyczące Azure SQL Database i problemów z wydajnością wystąpienia zarządzanego wykrytych w dzienniku diagnostyki wydajności bazy danych [Intelligent Insights](sql-database-intelligent-insights.md) Database. Dane telemetryczne dzienników diagnostycznych mogą być przesyłane strumieniowo do [Azure monitor dzienników](../azure-monitor/insights/azure-sql.md), [platformy Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md), [usługi Azure Storage](sql-database-metrics-diag-logging.md#stream-diagnostic-telemetry-into-azure-storage)lub rozwiązania innej firmy w celu uzyskania niestandardowych funkcji alertów DevOps i raportowania.
+Ta strona zawiera informacje dotyczące Azure SQL Database i problemów z wydajnością wystąpienia zarządzanego wykrytych w dzienniku [Intelligent Insights](sql-database-intelligent-insights.md) zasobów. Metryki i dzienniki zasobów można przesyłać strumieniowo do [Azure monitor dzienników](../azure-monitor/insights/azure-sql.md), [platformy Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md), [usługi Azure Storage](sql-database-metrics-diag-logging.md#stream-into-azure-storage)lub rozwiązania innej firmy w celu uzyskania niestandardowych funkcji alertów DevOps i raportowania.
 
 > [!NOTE]
 > Aby uzyskać szybki SQL Database Przewodnik rozwiązywania problemów z wydajnością przy użyciu Intelligent Insights, zapoznaj się ze schematem blokowym [przepływu rozwiązywania problemów](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) w tym dokumencie.
->
 
 ## <a name="detectable-database-performance-patterns"></a>Wykryte wzorce wydajności bazy danych
 
-Intelligent Insights automatycznie wykrywa problemy z wydajnością z bazami danych wystąpienia SQL Database i zarządzanymi w oparciu o czasy oczekiwania, błędy lub limity czasu wykonywania zapytania. Dane wyjściowe są wykrytymi wzorcami wydajności w dzienniku diagnostyki. Wykrywalne wzorce wydajności są podsumowane w poniższej tabeli.
+Intelligent Insights automatycznie wykrywa problemy z wydajnością z bazami danych w Azure SQL Database na podstawie czasów oczekiwania, błędów lub limitów czasu wykonywania zapytania. Intelligent Insights dane wyjściowe wykryły wzorce wydajności do SQL Database dziennika zasobów. Wykrywalne wzorce wydajności są podsumowane w poniższej tabeli.
 
 | Wykrywalne wzorce wydajności | Opis Azure SQL Database i pul elastycznych | Opis dla baz danych w wystąpieniu zarządzanym |
 | :------------------- | ------------------- | ------------------- |
@@ -82,7 +81,7 @@ Ten wzorzec wydajności służy do identyfikowania problemów spowodowanych wzro
 
 To wykrywanie odbywa się za pomocą kombinacji kilku metryk. Mierzona Metryka podstawowa polega na wykryciu wzrostu obciążenia w porównaniu z linią bazową wcześniejszego obciążenia. Druga forma wykrywania opiera się na pomiarach dużego wzrostu aktywnych wątków roboczych, które są wystarczająco duże, aby wpływać na wydajność zapytań.
 
-W bardziej poważniejszej postaci obciążenie może być ciągle sterty ze względu na niezdolność do obsługi obciążenia bazy danych SQL. Wynikiem jest ciągły wzrost rozmiaru obciążenia, który jest stanem sterty obciążenia. Ze względu na ten warunek czas, w którym obciążenie oczekuje na wykonanie, rośnie. Ten stan reprezentuje jeden z najważniejszych problemów z wydajnością bazy danych. Ten problem został wykryty przez monitorowanie wzrostu liczby przerwanych wątków roboczych. 
+W bardziej poważniejszej postaci obciążenie może być ciągle sterty ze względu na niezdolność do obsługi obciążenia bazy danych SQL. Wynikiem jest ciągły wzrost rozmiaru obciążenia, który jest stanem sterty obciążenia. Ze względu na ten warunek czas, w którym obciążenie oczekuje na wykonanie, rośnie. Ten stan reprezentuje jeden z najważniejszych problemów z wydajnością bazy danych. Ten problem został wykryty przez monitorowanie wzrostu liczby przerwanych wątków roboczych.
 
 ### <a name="troubleshooting"></a>Rozwiązywanie problemów
 
@@ -102,29 +101,29 @@ Bardziej silna forma wykorzystania pamięci to warunek sterty pamięci. Ten stan
 
 ### <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Dziennik diagnostyczny wyprowadza szczegóły magazynu obiektów pamięci z pracownikiem (to jest wątek roboczy) oznaczony jako najwyższy powód dla dużego użycia pamięci i odpowiednich sygnatur czasowych. Tych informacji można użyć jako podstawy rozwiązywania problemów. 
+Dziennik diagnostyczny wyprowadza szczegóły magazynu obiektów pamięci z pracownikiem (to jest wątek roboczy) oznaczony jako najwyższy powód dla dużego użycia pamięci i odpowiednich sygnatur czasowych. Tych informacji można użyć jako podstawy rozwiązywania problemów.
 
 Można zoptymalizować lub usunąć zapytania związane z urzędnikami z największą ilością pamięci. Możesz również upewnić się, że nie są wyświetlane zapytania o dane, których nie planujesz używać. Dobrym sposobem jest zawsze używanie klauzuli WHERE w zapytaniach. Ponadto zalecamy utworzenie indeksów nieklastrowanych w celu wyszukiwania danych zamiast ich skanowania.
 
 Możesz również zmniejszyć obciążenie, optymalizując lub rozpowszechniając je w wielu bazach danych. Można też rozesłać obciążenie między wieloma bazami danych. Jeśli te rozwiązania nie są możliwe, należy rozważyć zwiększenie warstwy cenowej subskrypcji usługi SQL Database, aby zwiększyć ilość zasobów pamięci dostępnej dla bazy danych.
 
-Aby uzyskać dodatkowe sugestie dotyczące rozwiązywania problemów, zobacz część [Grants Meditation: The tajemniczymi SQL Server Memory Consumer z wieloma nazwami](https://blogs.msdn.microsoft.com/sqlmeditation/20../../memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/).
+Aby uzyskać dodatkowe sugestie dotyczące rozwiązywania problemów, zobacz część [Grants Meditation: The tajemniczymi SQL Server Memory Consumer z wieloma nazwami](https://techcommunity.microsoft.com/t5/sql-server-support/memory-grants-meditation-the-mysterious-sql-server-memory/ba-p/333994).
 
 ## <a name="locking"></a>Blokowan
 
 ### <a name="what-is-happening"></a>Co się dzieje
 
-Ten wzorzec wydajności wskazuje spadek wydajności bieżącej bazy danych, w którym wykryto nadmierne blokowanie bazy danych w porównaniu do ostatnich siedmiu dni. 
+Ten wzorzec wydajności wskazuje spadek wydajności bieżącej bazy danych, w którym wykryto nadmierne blokowanie bazy danych w porównaniu do ostatnich siedmiu dni.
 
 W nowoczesnych RDBMS zablokowanie jest niezbędne do implementowania systemów wielowątkowych, w których wydajność jest maksymalizowana przez uruchamianie wielu jednoczesnych pracowników i równoległych transakcji bazy danych, jeśli jest to możliwe. Blokowanie w tym kontekście odnosi się do wbudowanego mechanizmu dostępu, w którym tylko pojedyncza transakcja może uzyskiwać dostęp wyłącznie do wierszy, stron, tabel i plików, które są wymagane i nie konkurują z inną transakcją dla zasobów. Gdy transakcja, w której są blokowane zasoby, jest wykonywana z tymi zasobami, zostaje wydana blokada tych zasobów, co umożliwi innym transakcjom dostęp do wymaganych zasobów. Aby uzyskać więcej informacji na temat blokowania, zobacz [blokada w aparacie bazy danych](https://msdn.microsoft.com/library/ms190615.aspx).
 
-Jeśli transakcje wykonywane przez aparat SQL oczekują na długotrwały okres uzyskiwania dostępu do zasobów zablokowanych do użycia, ten czas oczekiwania spowoduje spowolnienie wydajności wykonywania obciążeń. 
+Jeśli transakcje wykonywane przez aparat SQL oczekują na długotrwały okres uzyskiwania dostępu do zasobów zablokowanych do użycia, ten czas oczekiwania spowoduje spowolnienie wydajności wykonywania obciążeń.
 
 ### <a name="troubleshooting"></a>Rozwiązywanie problemów
 
 Dziennik diagnostyczny generuje szczegóły, których można użyć jako podstawy do rozwiązywania problemów. Można analizować zgłoszone zapytania blokujące, czyli zapytania, które powodują spadek wydajności i je usunąć. W niektórych przypadkach może się okazać, że optymalizacja zakończyła się powodzeniem.
 
-Najprostszym i najbezpieczniejszym sposobem na ograniczenie problemu jest utrzymywanie transakcji krótko i zmniejszenie rozmiaru blokady najbardziej kosztownych zapytań. Duża partia operacji można podzielić na mniejsze operacje. Dobrym rozwiązaniem jest zredukowanie poziomu blokady zapytań, co sprawia, że zapytanie jest możliwie wydajne. Zmniejsz duże skanowania, ponieważ zwiększają one szanse zakleszczenii i niekorzystnie wpływają na ogólną wydajność bazy danych. Dla zidentyfikowanych zapytań, które powodują blokowanie, można utworzyć nowe indeksy lub dodać kolumny do istniejącego indeksu, aby uniknąć skanowania tabeli. 
+Najprostszym i najbezpieczniejszym sposobem na ograniczenie problemu jest utrzymywanie transakcji krótko i zmniejszenie rozmiaru blokady najbardziej kosztownych zapytań. Duża partia operacji można podzielić na mniejsze operacje. Dobrym rozwiązaniem jest zredukowanie poziomu blokady zapytań, co sprawia, że zapytanie jest możliwie wydajne. Zmniejsz duże skanowania, ponieważ zwiększają one szanse zakleszczenii i niekorzystnie wpływają na ogólną wydajność bazy danych. Dla zidentyfikowanych zapytań, które powodują blokowanie, można utworzyć nowe indeksy lub dodać kolumny do istniejącego indeksu, aby uniknąć skanowania tabeli.
 
 Aby uzyskać więcej sugestii, zobacz [jak rozwiązać problemy z blokowaniem, które są spowodowane eskalacją blokady w SQL Server](https://support.microsoft.com/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in).
 
@@ -136,7 +135,7 @@ Ten wykrywalny wzorzec wydajności wskazuje stan, w którym wybrany plan wykonan
 
 System ekspercki analizuje bieżącą wydajność bazy danych w porównaniu z okresem bazowym. Określa, czy poprzednio uruchomione zapytanie działa wolniej niż poprzednio, ponieważ plan wykonania zapytania jest bardziej równoległy niż powinien.
 
-Opcja konfiguracji serwera MAXDOP na SQL Database służy do kontrolowania liczby rdzeni procesora CPU, które mogą być używane do równoległego wykonywania tego samego zapytania. 
+Opcja konfiguracji serwera MAXDOP na SQL Database służy do kontrolowania liczby rdzeni procesora CPU, które mogą być używane do równoległego wykonywania tego samego zapytania.
 
 ### <a name="troubleshooting"></a>Rozwiązywanie problemów
 
@@ -164,7 +163,7 @@ Dziennik diagnostyki wyświetla szczegóły rywalizacji PAGELATCH. Tych informac
 
 Ponieważ PAGELATCH jest mechanizmem wewnętrznego sterowania SQL Database, automatycznie określa, kiedy należy ich używać. Decyzje dotyczące aplikacji, w tym projekt schematu, mogą mieć wpływ na zachowanie PAGELATCH ze względu na deterministyczne zachowanie zamków.
 
-Jedną z metod obsługi rywalizacji zamka jest zastępowanie sekwencyjnego klucza indeksu z niesekwencyjnym kluczem, aby równomiernie rozłożyć wstawki przez zakres indeksów. Zazwyczaj wiodąca kolumna w indeksie dystrybuuje obciążenie proporcjonalnie do obciążenia. Inną metodą, którą należy wziąć pod uwagę, jest partycjonowanie tabeli. Tworzenie schematu partycjonowania skrótów z kolumną obliczaną w tabeli partycjonowanej jest typowym podejściem do łagodzenia nadmiernej rywalizacji zamków. W przypadku rywalizacji o PAGELATCH we/wy, wprowadzenie indeksów pomaga wyeliminować ten problem z wydajnością. 
+Jedną z metod obsługi rywalizacji zamka jest zastępowanie sekwencyjnego klucza indeksu z niesekwencyjnym kluczem, aby równomiernie rozłożyć wstawki przez zakres indeksów. Zazwyczaj wiodąca kolumna w indeksie dystrybuuje obciążenie proporcjonalnie do obciążenia. Inną metodą, którą należy wziąć pod uwagę, jest partycjonowanie tabeli. Tworzenie schematu partycjonowania skrótów z kolumną obliczaną w tabeli partycjonowanej jest typowym podejściem do łagodzenia nadmiernej rywalizacji zamków. W przypadku rywalizacji o PAGELATCH we/wy, wprowadzenie indeksów pomaga wyeliminować ten problem z wydajnością.
 
 Aby uzyskać więcej informacji, zobacz [diagnozowanie i rozwiązywanie rywalizacji o zatrzaski na SQL Server](https://download.microsoft.com/download/B/9/E/B9EDF2CD-1DBF-4954-B81E-82522880A2DC/SQLServerLatchContention.pdf) (pobieranie plików PDF).
 
@@ -208,13 +207,13 @@ Rozważ użycie [Szczegółowe informacje o wydajności zapytań Azure SQL Datab
 
 Ten wykrywalny wzorzec wydajności wskazuje spadek wydajności obciążeń, w którym zidentyfikowano niezadowalające zapytania w porównaniu do ostatnich siedmiu dni.
 
-W takim przypadku system nie może sklasyfikować niewłaściwie wykonywanych zapytań w ramach żadnych innych standardowych, wykrywalnych kategorii wydajności, ale wykrył statystykę oczekiwania dla regresji. W związku z tym traktuje je jako zapytania z *zwiększoną statystyką oczekiwania*, gdzie jest również uwidoczniona Statystyka oczekiwania dla regresji. 
+W takim przypadku system nie może sklasyfikować niewłaściwie wykonywanych zapytań w ramach żadnych innych standardowych, wykrywalnych kategorii wydajności, ale wykrył statystykę oczekiwania dla regresji. W związku z tym traktuje je jako zapytania z *zwiększoną statystyką oczekiwania*, gdzie jest również uwidoczniona Statystyka oczekiwania dla regresji.
 
 ### <a name="troubleshooting"></a>Rozwiązywanie problemów
 
 Dziennik diagnostyczny zawiera informacje na temat zwiększonych szczegółów czasu oczekiwania i skrótów zapytań dotyczących zaatakowanych zapytań.
 
-Ponieważ system nie mógł pomyślnie zidentyfikować głównej przyczyny nieprawidłowych zapytań, informacje diagnostyczne są dobrym punktem wyjścia do ręcznego rozwiązywania problemów. Możesz zoptymalizować wydajność tych zapytań. Dobrym sposobem jest pobranie tylko tych danych, które są potrzebne, i uproszczenie i rozbicie złożonych zapytań na mniejsze. 
+Ponieważ system nie mógł pomyślnie zidentyfikować głównej przyczyny nieprawidłowych zapytań, informacje diagnostyczne są dobrym punktem wyjścia do ręcznego rozwiązywania problemów. Możesz zoptymalizować wydajność tych zapytań. Dobrym sposobem jest pobranie tylko tych danych, które są potrzebne, i uproszczenie i rozbicie złożonych zapytań na mniejsze.
 
 Aby uzyskać więcej informacji na temat optymalizowania wydajności zapytań, zobacz [dostrajanie zapytań](https://msdn.microsoft.com/library/ms176005.aspx).
 
@@ -226,15 +225,15 @@ Ten wykryty wzorzec wydajności wskazuje warunek wydajności bazy danych, w któ
 
 ### <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Szczegóły rywalizacji o zawartość bazy danych w dzienniku diagnostyki. Możesz użyć informacji jako punktu wyjścia do rozwiązywania problemów. Istnieją dwie rzeczy, które można wykonać, aby uniknąć tego rodzaju rywalizacji i zwiększyć przepływność całego obciążenia: można zatrzymać korzystanie z tabel tymczasowych. Można również użyć tabel zoptymalizowanych pod kątem pamięci. 
+Szczegóły rywalizacji o zawartość bazy danych w dzienniku diagnostyki. Możesz użyć informacji jako punktu wyjścia do rozwiązywania problemów. Istnieją dwie rzeczy, które można wykonać, aby uniknąć tego rodzaju rywalizacji i zwiększyć przepływność całego obciążenia: można zatrzymać korzystanie z tabel tymczasowych. Można również użyć tabel zoptymalizowanych pod kątem pamięci.
 
-Aby uzyskać więcej informacji, zobacz [wprowadzenie do tabel zoptymalizowanych pod kątem pamięci](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables). 
+Aby uzyskać więcej informacji, zobacz [wprowadzenie do tabel zoptymalizowanych pod kątem pamięci](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables).
 
 ## <a name="elastic-pool-dtu-shortage"></a>Niedobory jednostek DTU puli elastycznej
 
 ### <a name="what-is-happening"></a>Co się dzieje
 
-Ten wykrywalny wzorzec wydajności wskazuje spadek wydajności bieżącej bazy danych w porównaniu do ostatnich siedmiu dni. Jest to spowodowane brakiem dostępnego DTU w elastycznej puli subskrypcji. 
+Ten wykrywalny wzorzec wydajności wskazuje spadek wydajności bieżącej bazy danych w porównaniu do ostatnich siedmiu dni. Jest to spowodowane brakiem dostępnego DTU w elastycznej puli subskrypcji.
 
 Zasoby na SQL Database są zwykle określane jako [zasoby jednostek DTU](sql-database-purchase-models.md#dtu-based-purchasing-model), które składają się z mieszanej miary zasobów procesora CPU i operacji we/wy (IO danych i dziennika transakcji). [Zasoby puli elastycznej platformy Azure](sql-database-elastic-pool.md) są używane jako pula dostępnych zasobów eDTU współdzielona między wieloma bazami danych w celu skalowania. Gdy dostępne zasoby eDTU w puli elastycznej nie są wystarczająco duże, aby zapewnić obsługę wszystkich baz danych w puli, w systemie wykryto problem z wydajnością niedoborów jednostek DTU puli elastycznej.
 
@@ -258,13 +257,13 @@ Ten wykrywalny wzorzec wydajności łączy trzy różne przypadki regresji planu
 
 Nowy warunek regresji planu odnosi się do stanu, w którym SQL Database zaczyna wykonywania nowego planu wykonywania zapytania, który nie jest tak wydajny jak stary plan. Stary warunek regresji planu odnosi się do stanu, gdy SQL Database przełącza z używania nowego, bardziej wydajnego planu do starego planu, który nie jest tak wydajny jak nowy plan. W istniejących planach zmiana regresji obciążenia odnosi się do stanu, w którym stare i nowe plany są stale alternatywne, z saldem, które zwiększają się w kierunku niezadowalającego planu.
 
-Aby uzyskać więcej informacji na temat regresji planu, zobacz [co to jest regresja planu w SQL Server?](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../what-is-plan-regression-in-sql-server/). 
+Aby uzyskać więcej informacji na temat regresji planu, zobacz [co to jest regresja planu w SQL Server?](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../what-is-plan-regression-in-sql-server/).
 
 ### <a name="troubleshooting"></a>Rozwiązywanie problemów
 
 Dziennik diagnostyczny wyprowadza wartości skrótów zapytań, dobry identyfikator planu, nieprawidłowy identyfikator planu i identyfikatory zapytań. Tych informacji można użyć jako podstawy rozwiązywania problemów.
 
-Można analizować, który plan jest lepiej wykonywany dla określonych zapytań, które można zidentyfikować za pomocą podanych skrótów zapytań. Po ustaleniu, który plan działa lepiej dla zapytań, można go wymusić ręcznie. 
+Można analizować, który plan jest lepiej wykonywany dla określonych zapytań, które można zidentyfikować za pomocą podanych skrótów zapytań. Po ustaleniu, który plan działa lepiej dla zapytań, można go wymusić ręcznie.
 
 Aby uzyskać więcej informacji, zobacz [Informacje o tym, jak SQL Server uniemożliwiają regresje planu](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../you-shall-not-regress-how-sql-server-2017-prevents-plan-regressions/).
 
@@ -300,7 +299,7 @@ Ten warunek jest generowany tylko w przypadku wykrycia regresji wydajności w po
 
 Ten wykrywalny wzorzec wydajności wskazuje warunek po stronie klienta. W przypadku aplikacji po stronie klienta lub sieci po stronie klienta jest wymagane rozwiązywanie problemów. W dzienniku diagnostycznym są wyprowadzane wartości skrótów zapytań i czasy oczekiwania, które pozornie oczekują, aby klient korzystał z nich w ciągu ostatnich dwóch godzin. Tych informacji można użyć jako podstawy rozwiązywania problemów.
 
-Możesz zoptymalizować wydajność aplikacji w celu użycia tych zapytań. Można również rozważyć potencjalne problemy z opóźnieniami w sieci. Ze względu na to, że problem spadek wydajności został spowodowany zmianą w ciągu ostatnich siedmiu dni, można sprawdzić, czy ostatnie zmiany stanu aplikacji lub sieci spowodowały to zdarzenie regresji wydajności. 
+Możesz zoptymalizować wydajność aplikacji w celu użycia tych zapytań. Można również rozważyć potencjalne problemy z opóźnieniami w sieci. Ze względu na to, że problem spadek wydajności został spowodowany zmianą w ciągu ostatnich siedmiu dni, można sprawdzić, czy ostatnie zmiany stanu aplikacji lub sieci spowodowały to zdarzenie regresji wydajności.
 
 ## <a name="pricing-tier-downgrade"></a>Obniżenie warstwy cenowej
 
@@ -318,7 +317,7 @@ W przypadku zredukowania warstwy cenowej i w związku z tym DTU są dostępne dl
 
  Postępuj zgodnie ze schematem blokowym, aby uzyskać zalecane podejście do rozwiązywania problemów z wydajnością przy użyciu Intelligent Insights.
 
-Uzyskaj dostęp do Intelligent Insights za pośrednictwem Azure Portal, przechodząc do Azure SQL Analytics. Spróbuj zlokalizować alert wydajności dla ruchu przychodzącego, a następnie wybierz go. Określ, co dzieje się na stronie wykrywania. Obserwuj podaną analizę głównej przyczyny problemu, tekstu zapytania, trendów czasu zapytania i ewolucji incydentu. Podjęto próbę rozwiązania problemu, korzystając z zalecenia Intelligent Insights w celu ograniczenia problemu z wydajnością. 
+Uzyskaj dostęp do Intelligent Insights za pośrednictwem Azure Portal, przechodząc do Azure SQL Analytics. Spróbuj zlokalizować alert wydajności dla ruchu przychodzącego, a następnie wybierz go. Określ, co dzieje się na stronie wykrywania. Obserwuj podaną analizę głównej przyczyny problemu, tekstu zapytania, trendów czasu zapytania i ewolucji incydentu. Podjęto próbę rozwiązania problemu, korzystając z zalecenia Intelligent Insights w celu ograniczenia problemu z wydajnością.
 
 [Wykres przepływu ![rozwiązywania problemów](./media/sql-database-intelligent-insights/intelligent-insights-troubleshooting-flowchart.png)](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/intelligent-insight/Troubleshoot%20Azure%20SQL%20Database%20performance%20issues%20using%20Intelligent%20Insight.pdf)
 
@@ -328,6 +327,7 @@ Uzyskaj dostęp do Intelligent Insights za pośrednictwem Azure Portal, przechod
 Intelligent Insights zwykle potrzebuje jednej godziny, aby przeprowadzić analizę głównej przyczyny problemu z wydajnością. Jeśli nie możesz znaleźć problemu w Intelligent Insights i ma on krytyczne znaczenie, użyj magazynu zapytań, aby ręcznie zidentyfikować główną przyczynę problemu z wydajnością. (Zwykle te problemy są krótsze niż godzina starego). Aby uzyskać więcej informacji, zobacz [monitorowanie wydajności przy użyciu magazynu zapytań](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store).
 
 ## <a name="next-steps"></a>Następne kroki
+
 - Poznaj [Intelligent Insights](sql-database-intelligent-insights.md) pojęcia.
 - Użyj [dziennika diagnostyki wydajności Azure SQL Database Intelligent Insights](sql-database-intelligent-insights-use-diagnostics-log.md).
 - Monitoruj [Azure SQL Database przy użyciu Azure SQL Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql).

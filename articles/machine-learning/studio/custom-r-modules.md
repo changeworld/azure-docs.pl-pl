@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 35046d33a85eaed913454f188f2a4526715526a9
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 5b8dab14a9416795eccef1f71988a048c8bedb48
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168783"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218165"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>Definiowanie niestandardowych modułów R dla Azure Machine Learning Studio (klasyczny)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 W tym temacie opisano sposób tworzenia i wdrażania niestandardowego programu R Studio (klasycznego). Wyjaśniono, czym są niestandardowych modułów R i jakie pliki są używane do definiowania ich. Przedstawia on sposób tworzenia plików, które definiują modułu i jak można zarejestrować modułu dla wdrożenia w obszarze roboczym usługi Machine Learning. Elementy i atrybuty używane w definicji niestandardowego modułu następnie są opisane bardziej szczegółowo. Również omówiono sposób użycia funkcji pomocniczych, plików i wiele wyjść. 
 
@@ -200,7 +202,7 @@ Na przykład jeśli chcesz zmodyfikować **niestandardowy moduł dodawania wiers
     </Ports> 
 
 
-I zwracają listę obiektów na liście w odpowiedniej kolejności w "CustomAddRows.R":
+I zwróć listę obiektów na liście w odpowiedniej kolejności w "CustomAddRows. R":
 
     CustomAddRows <- function(dataset1, dataset2, swap=FALSE) { 
         if (swap) { dataset <- rbind(dataset2, dataset1)) } 
@@ -333,11 +335,11 @@ Parametr modułu jest definiowany przy użyciu elementu podrzędnego **ARG** w s
 Dowolny plik, który znajduje się w pliku ZIP niestandardowego modułu będzie dostępna do użycia w czasie wykonywania. Wszelkich struktur katalogów obecne są zachowywane. Oznacza to, że pozyskiwanie plików działa tak samo lokalnie i w Azure Machine Learning Studio (klasyczne). 
 
 > [!NOTE]
-> Należy zauważyć, że wszystkie pliki są wyodrębniane do katalogu "src", więc powinny mieć wszystkie ścieżki "src /" prefiks.
+> Zwróć uwagę, że wszystkie pliki są wyodrębniane do katalogu "src", więc wszystkie ścieżki powinny mieć prefiks "src/".
 > 
 > 
 
-Na przykład załóżmy, że chcesz usunąć wszystkie wiersze z NAs z zestawu danych, a także usunąć wszelkie zduplikowane wiersze przed podawania go do CustomAddRows, i zostały już wpisane funkcji języka R, tak, że w pliku RemoveDupNARows.R:
+Na przykład załóżmy, że chcesz usunąć wszystkie wiersze z zestawem danych, a także usunąć wszystkie zduplikowane wiersze, zanim przeniesiesz je do CustomAddRows, i już napisane funkcję języka R, która robi w pliku RemoveDupNARows. R:
 
     RemoveDupNARows <- function(dataFrame) {
         #Remove Duplicate Rows:
@@ -359,7 +361,7 @@ Można źródłowego pliku pomocniczego RemoveDupNARows.R w funkcji CustomAddRow
         return (dataset)
     }
 
-Następnie przekaż plik zip zawierający "CustomAddRows.R", "CustomAddRows.xml" i "RemoveDupNARows.R" jako niestandardowego modułu R.
+Następnie Przekaż plik zip zawierający "CustomAddRows. R", "CustomAddRows. xml" i "RemoveDupNARows. R" jako niestandardowy moduł języka R.
 
 ## <a name="execution-environment"></a>Środowisko wykonawcze
 Środowisko wykonawcze dla skryptu języka R używa tej samej wersji języka R jak modułu **wykonywania skryptu języka r** i może korzystać z tych samych pakietów domyślnych. Dodatkowe pakiety R można również dodać do Twojego niestandardowego modułu, umieszczając je w pakiecie niestandardowego modułu w pliku zip. Po prostu załadować je w skrypcie języka R tak jak w środowisku R. 

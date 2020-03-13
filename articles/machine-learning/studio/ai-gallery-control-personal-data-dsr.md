@@ -11,14 +11,16 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
-ms.openlocfilehash: a4ce383959b10836791ea065ffe8a9c243f6ad0d
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 03341b9e663398f2c42266dead0d2dd01e97c3f3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168988"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204549"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Wyświetlanie i usunąć dane użytkownika w produkcie z galerii sztucznej Inteligencji platformy Azure
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Można wyświetlić i usunąć dane użytkowników w ramach produktu z galerii sztucznej Inteligencji platformy Azure przy użyciu interfejsu lub interfejs API wykazu galerii sztucznej Inteligencji. W tym artykule wyjaśniono sposób.
 
@@ -30,9 +32,9 @@ Można wyświetlić i usunąć dane użytkowników w ramach produktu z galerii s
 
 Można wyświetlić elementy, które są publikowane za pośrednictwem interfejsu użytkownika witryny galerii sztucznej Inteligencji platformy Azure. Użytkownicy mogą wyświetlać, zarówno publiczne, jak i spoza listy rozwiązań, projektów, eksperymenty i inne elementy opublikowane:
 
-1.  Zaloguj się do [Azure AI Gallery](https://gallery.azure.ai/).
-2.  Kliknij obraz profilu w prawym górnym rogu, a następnie nazwę konta, aby załadować stronę profilu.
-3.  Strona profilu Wyświetla wszystkie elementy opublikowanych w galerii łącznie z wpisy nieznajdujące się na liście.
+1.    Zaloguj się do [Azure AI Gallery](https://gallery.azure.ai/).
+2.    Kliknij obraz profilu w prawym górnym rogu, a następnie nazwę konta, aby załadować stronę profilu.
+3.    Strona profilu Wyświetla wszystkie elementy opublikowanych w galerii łącznie z wpisy nieznajdujące się na liście.
 
 ## <a name="use-the-ai-gallery-catalog-api-to-view-your-data"></a>Wyświetl dane usługi przy użyciu interfejsu API wykazu galerii sztucznej Inteligencji
 
@@ -43,9 +45,9 @@ Wykaz odpowiedzi są zwracane w formacie JSON.
 ### <a name="get-an-author-id"></a>Uzyskiwanie Identyfikatora autora
 Identyfikator Autor opiera się na adres e-mail używany w przypadku publikowania do galerii sztucznej Inteligencji platformy Azure. Nie zmienia się on:
 
-1.  Zaloguj się do [Azure AI Gallery](https://gallery.azure.ai/).
-2.  Kliknij obraz profilu w prawym górnym rogu, a następnie nazwę konta, aby załadować stronę profilu.
-3.  Adres URL na pasku adresu zawiera alfanumeryczny identyfikator następujący `authorId=`. Na przykład dla adresu URL: `https://gallery.azure.ai/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
+1.    Zaloguj się do [Azure AI Gallery](https://gallery.azure.ai/).
+2.    Kliknij obraz profilu w prawym górnym rogu, a następnie nazwę konta, aby załadować stronę profilu.
+3.    Adres URL na pasku adresu zawiera alfanumeryczny identyfikator następujący `authorId=`. Na przykład dla adresu URL: `https://gallery.azure.ai/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
         
     Identyfikator autora: `99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
 
@@ -55,12 +57,12 @@ Należy tokenu dostępu, aby wyświetlić nieznajdujące się na liście jednost
 
 Aby uzyskać token dostępu, musisz sprawdzić nagłówek `DataLabAccessToken` żądania HTTP, gdy przeglądarka przetworzy interfejs API wykazu podczas logowania:
 
-1.  Zaloguj się do [Azure AI Gallery](https://gallery.azure.ai/).
-2.  Kliknij obraz profilu w prawym górnym rogu, a następnie nazwę konta, aby załadować stronę profilu.
-3.  Otwórz okienko narzędzi dla deweloperów przeglądarki, naciskając klawisz F12, wybierz kartę sieci i Odśwież stronę. 
+1.    Zaloguj się do [Azure AI Gallery](https://gallery.azure.ai/).
+2.    Kliknij obraz profilu w prawym górnym rogu, a następnie nazwę konta, aby załadować stronę profilu.
+3.    Otwórz okienko narzędzi dla deweloperów przeglądarki, naciskając klawisz F12, wybierz kartę sieci i Odśwież stronę. 
 4. Przefiltruj żądania w *wykazie* ciągów, wpisując je w polu tekstowym filtr.
-5.  W obszarze żądania kierowane do adresu URL `https://catalog.cortanaanalytics.com/entities`Znajdź żądanie GET i wybierz kartę *nagłówki* . Przewiń w dół do sekcji *żądania nagłówków* .
-6.  Pod nagłówkiem `DataLabAccessToken` jest token alfanumeryczny. Aby zachować bezpieczeństwo danych, nie udostępniaj tego tokenu.
+5.    W obszarze żądania kierowane do adresu URL `https://catalog.cortanaanalytics.com/entities`Znajdź żądanie GET i wybierz kartę *nagłówki* . Przewiń w dół do sekcji *żądania nagłówków* .
+6.    Pod nagłówkiem `DataLabAccessToken` jest token alfanumeryczny. Aby zachować bezpieczeństwo danych, nie udostępniaj tego tokenu.
 
 ### <a name="view-user-information"></a>Wyświetlanie informacji o użytkowniku
 Używając identyfikatora autora podanego w poprzednich krokach, Wyświetl informacje w profilu użytkownika, zastępując `[AuthorId]` następujący adres URL:
@@ -92,9 +94,9 @@ Na przykład:
 
 To zapytanie wyświetla tylko publiczne jednostki. Aby wyświetlić wszystkie swoje jednostki, w tym nieznajdujące się na liście, zapewniają dostęp token uzyskany w poprzedniej sekcji.
 
-1.  Za pomocą narzędzia takiego jak [Poster](https://www.getpostman.com)Utwórz żądanie HTTP GET w adresie URL wykazu, zgodnie z opisem w artykule [pobieranie tokenu dostępu](#get-your-access-token).
-2.  Utwórz nagłówek żądania HTTP o nazwie `DataLabAccessToken`, z wartością ustawioną na token dostępu.
-3.  Prześlij żądanie HTTP.
+1.    Za pomocą narzędzia takiego jak [Poster](https://www.getpostman.com)Utwórz żądanie HTTP GET w adresie URL wykazu, zgodnie z opisem w artykule [pobieranie tokenu dostępu](#get-your-access-token).
+2.    Utwórz nagłówek żądania HTTP o nazwie `DataLabAccessToken`, z wartością ustawioną na token dostępu.
+3.    Prześlij żądanie HTTP.
 
 > [!TIP]
 > Jeśli nieznajdujące się na liście jednostek nie są wyświetlane w odpowiedzi z interfejsu API wykazu, użytkownik może być nieprawidłowy lub wygasły token dostępu. Wyloguj się z Azure AI Gallery, a następnie powtórz kroki opisane w sekcji [Uzyskiwanie tokenu dostępu](#get-your-access-token) w celu odnowienia tokenu. 

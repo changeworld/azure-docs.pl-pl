@@ -10,13 +10,13 @@ author: linda33wj
 manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 09/09/2019
-ms.openlocfilehash: e25b860417333d458bdde870d20968fce7dda715
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 03/12/2020
+ms.openlocfilehash: cfa53d480120ec75623a6a372b258b63e6264f92
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75892883"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136047"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Kopiowanie danych do i z Azure SQL Database wystąpienia zarządzanego przy użyciu Azure Data Factory
 
@@ -41,16 +41,13 @@ W tym Azure SQL Database łącznik wystąpienia zarządzanego obsługuje:
 >[!NOTE]
 >[Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=azuresqldb-mi-current) Azure SQL Database wystąpienia zarządzanego nie jest teraz obsługiwane przez ten łącznik. Aby obejść ten krok, można użyć [ogólnego łącznika ODBC](connector-odbc.md) i sterownika SQL Server ODBC za pośrednictwem własnego środowiska Integration Runtime. Postępuj zgodnie z [tymi wskazówkami](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=azuresqldb-mi-current) przy użyciu opcji pobierania sterowników ODBC i parametrów połączenia.
 
->[!NOTE]
->Nazwy główne usługi i uwierzytelnienia tożsamości zarządzanej obecnie nie są obsługiwane przez ten łącznik. Aby obejść ten element, wybierz łącznik Azure SQL Database i ręcznie Określ serwer wystąpienia zarządzanego.
-
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby uzyskać dostęp do [publicznego punktu końcowego](../sql-database/sql-database-managed-instance-public-endpoint-securely.md)Azure SQL Database wystąpienia zarządzanego, można użyć Azure Data Factory zarządzanego środowiska Azure Integration Runtime. Upewnij się, że włączono publiczny punkt końcowy, a także Zezwól na ruch publicznego punktu końcowego w sieciowej grupie zabezpieczeń, tak aby Azure Data Factory mógł nawiązać połączenie z bazą danych. Aby uzyskać więcej informacji, zobacz [te wskazówki](../sql-database/sql-database-managed-instance-public-endpoint-configure.md).
 
 Aby uzyskać dostęp do prywatnego punktu końcowego Azure SQL Database wystąpienia zarządzanego, skonfiguruj [własne środowisko Integration Runtime](create-self-hosted-integration-runtime.md) , które może uzyskać dostęp do bazy danych. Jeśli udostępniasz własne środowisko Integration Runtime w tej samej sieci wirtualnej co wystąpienie zarządzane, upewnij się, że maszyna Integration Runtime znajduje się w innej podsieci niż wystąpienie zarządzane. Jeśli udostępniasz własne środowisko Integration Runtime w innej sieci wirtualnej niż wystąpienie zarządzane, możesz użyć komunikacji równorzędnej sieci wirtualnej lub sieci wirtualnej do połączenia sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [łączenie aplikacji z wystąpieniem zarządzanym Azure SQL Database](../sql-database/sql-database-managed-instance-connect-app.md).
 
-## <a name="get-started"></a>Rozpocznij
+## <a name="get-started"></a>Rozpoczynanie pracy
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -60,14 +57,14 @@ Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które
 
 Dla połączonej usługi wystąpienia zarządzanego Azure SQL Database są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type musi być ustawiona na wartość **AzureSqlMI**. | Tak |
-| connectionString |Ta właściwość określa informacje o **ConnectionString** , które są konieczne do nawiązania połączenia z wystąpieniem zarządzanym przy użyciu uwierzytelniania SQL. Więcej informacji można znaleźć w poniższych przykładach. <br/>Domyślny port to 1433. Jeśli używasz Azure SQL Database wystąpienia zarządzanego z publicznym punktem końcowym, jawnie określ port 3342.<br> Można również umieścić hasło w Azure Key Vault. Jeśli jest to uwierzytelnianie SQL, należy ściągnąć konfigurację `password` z parametrów połączenia. Aby uzyskać więcej informacji, zobacz przykład JSON po zalogowaniu do tabeli i [przechowywania w Azure Key Vault](store-credentials-in-key-vault.md). |Tak |
+| type | Właściwość Type musi być ustawiona na wartość **AzureSqlMI**. | Yes |
+| connectionString |Ta właściwość określa informacje o **ConnectionString** , które są konieczne do nawiązania połączenia z wystąpieniem zarządzanym przy użyciu uwierzytelniania SQL. Więcej informacji można znaleźć w poniższych przykładach. <br/>Domyślny port to 1433. Jeśli używasz Azure SQL Database wystąpienia zarządzanego z publicznym punktem końcowym, jawnie określ port 3342.<br> Można również umieścić hasło w Azure Key Vault. Jeśli jest to uwierzytelnianie SQL, należy ściągnąć konfigurację `password` z parametrów połączenia. Aby uzyskać więcej informacji, zobacz przykład JSON po zalogowaniu do tabeli i [przechowywania w Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
 | servicePrincipalId | Określ identyfikator klienta aplikacji. | Tak, w przypadku korzystania z uwierzytelniania usługi Azure AD za pomocą nazwy głównej usługi |
 | servicePrincipalKey | Określ klucz aplikacji. Oznacz to pole jako element **SecureString** , aby bezpiecznie przechowywać go w Azure Data Factory lub [odwołać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). | Tak, w przypadku korzystania z uwierzytelniania usługi Azure AD za pomocą nazwy głównej usługi |
 | tenant | Określ informacje o dzierżawie, takie jak nazwa domeny lub identyfikator dzierżawy, w której znajduje się aplikacja. Pobierz ją przez umieszczenie kursora myszy w prawym górnym rogu Azure Portal. | Tak, w przypadku korzystania z uwierzytelniania usługi Azure AD za pomocą nazwy głównej usługi |
-| connectVia | To [środowisko Integration Runtime](concepts-integration-runtime.md) służy do nawiązywania połączenia z magazynem danych. Możesz użyć własnego środowiska Integration Runtime lub środowiska Azure Integration Runtime, jeśli zarządzane wystąpienie ma publiczny punkt końcowy i umożliwia Azure Data Factory dostępu do niego. Jeśli nie zostanie określony, zostanie użyta domyślna usługa Azure Integration Runtime. |Tak |
+| connectVia | To [środowisko Integration Runtime](concepts-integration-runtime.md) służy do nawiązywania połączenia z magazynem danych. Możesz użyć własnego środowiska Integration Runtime lub środowiska Azure Integration Runtime, jeśli zarządzane wystąpienie ma publiczny punkt końcowy i umożliwia Azure Data Factory dostępu do niego. Jeśli nie zostanie określony, zostanie użyta domyślna usługa Azure Integration Runtime. |Yes |
 
 Różnymi typami uwierzytelniania można znaleźć w następnych sekcjach dotyczących wymagań wstępnych i przykłady kodu JSON odpowiednio:
 
@@ -177,7 +174,7 @@ Aby skorzystać z uwierzytelniania tokena aplikacji opartego na jednostce usług
 }
 ```
 
-### <a name="managed-identity"></a> Zarządzanych tożsamości do uwierzytelniania zasobów platformy Azure
+### <a name="managed-identity"></a>Zarządzane tożsamości na potrzeby uwierzytelniania zasobów platformy Azure
 
 Fabryka danych może być skojarzona z [zarządzaną tożsamością dla zasobów platformy Azure](data-factory-service-identity.md) , które reprezentują określoną fabrykę danych. Tej tożsamości zarządzanej można użyć do Azure SQL Database uwierzytelniania wystąpienia zarządzanego. Wydaną fabrykę mogą uzyskać dostęp do danych z lub do bazy danych lub z niej kopiować przy użyciu tej tożsamości.
 
@@ -229,11 +226,11 @@ Pełną listę sekcji i właściwości dostępnych do definiowania zestawów dan
 
 Aby skopiować dane do i z Azure SQL Database wystąpienia zarządzanego, obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type zestawu danych musi być ustawiona na wartość **AzureSqlMITable**. | Tak |
-| schema | Nazwa schematu. |Brak źródła tak dla ujścia  |
-| table | Nazwa tabeli/widoku. |Brak źródła tak dla ujścia  |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość **AzureSqlMITable**. | Yes |
+| schemat | Nazwa schematu. |Brak źródła tak dla ujścia  |
+| tabela | Nazwa tabeli/widoku. |Brak źródła tak dla ujścia  |
 | tableName | Nazwa tabeli/widoku ze schematem. Ta właściwość jest obsługiwana w celu zapewnienia zgodności z poprzednimi wersjami. W przypadku nowych obciążeń Użyj `schema` i `table`. | Brak źródła tak dla ujścia |
 
 **Przykład**
@@ -265,12 +262,13 @@ Aby zapoznać się z pełną listą sekcji i właściwości dostępnych do defin
 
 Aby skopiować dane z wystąpienia zarządzanego Azure SQL Database, w sekcji Źródło działania kopiowania są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type źródła działania Copy musi być ustawiona na wartość **SqlMISource**. | Tak |
+| type | Właściwość Type źródła działania Copy musi być ustawiona na wartość **SqlMISource**. | Yes |
 | sqlReaderQuery |Ta właściwość używa niestandardowego zapytania SQL do odczytywania danych. Może to być na przykład `select * from MyTable`. |Nie |
 | sqlReaderStoredProcedureName |Ta właściwość jest nazwą procedury składowanej, która odczytuje dane z tabeli źródłowej. Ostatnią instrukcję SQL musi być instrukcja SELECT w procedurze składowanej. |Nie |
 | storedProcedureParameters |Te parametry dotyczą procedury składowanej.<br/>Dozwolone wartości to pary nazw ani wartości. Nazwy i wielkość liter parametrów muszą być zgodne z nazwami i wielkością liter parametrów procedury składowanej. |Nie |
+| isolationLevel | Określa zachowanie blokowania transakcji dla źródła SQL. Dozwolone wartości to: **READCOMMITTED** (wartość domyślna), **READUNCOMMITTED**, **REPEATABLEREAD**, **Serializable**, **migawka**. Aby uzyskać więcej informacji, zapoznaj się z [tym dokumentem](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel) . | Nie |
 
 **Pamiętaj o następujących kwestiach:**
 
@@ -371,9 +369,9 @@ GO
 
 Aby skopiować dane do Azure SQL Database wystąpienia zarządzanego, w sekcji ujścia działania kopiowania są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type ujścia działania Copy musi być ustawiona na wartość **SqlMISink**. | Tak |
+| type | Właściwość Type ujścia działania Copy musi być ustawiona na wartość **SqlMISink**. | Yes |
 | writeBatchSize |Liczba wierszy do wstawienia do tabeli SQL *na partię*.<br/>Dozwolone wartości to liczby całkowite dla liczby wierszy. Domyślnie Azure Data Factory dynamicznie określa odpowiedni rozmiar wsadu na podstawie rozmiaru wiersza.  |Nie |
 | writeBatchTimeout |Ta właściwość określa czas oczekiwania na zakończenie operacji wstawiania wsadowego przed upływem limitu czasu.<br/>Dozwolone wartości są dla przedziału czasu. Przykładem jest "00:30:00", co to 30 minut. |Nie |
 | preCopyScript |Ta właściwość określa zapytanie SQL do uruchomienia działania kopiowania przed zapisaniem danych w zarządzanym wystąpieniu. Jest on wywoływany tylko raz dla każdego przebiegu kopiowania. Ta właściwość służy do czyszczenia wstępnie załadowanych danych. |Nie |
@@ -578,31 +576,31 @@ Gdy dane są kopiowane do i z Azure SQL Database wystąpienia zarządzanego, nas
 | binary |Byte[] |
 | bit |Wartość logiczna |
 | char |String, Char[] |
-| date |Data i godzina |
-| Datetime |Data i godzina |
-| datetime2 |Data i godzina |
+| date |DateTime |
+| Data/godzina |DateTime |
+| datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
-| Decimal |Decimal |
+| Dziesiętna |Dziesiętna |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
-| float |Double |
+| Float |Podwójne |
 | image |Byte[] |
 | int |Int32 |
-| money |Decimal |
+| money |Dziesiętna |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
-| numeric |Decimal |
+| numeric |Dziesiętna |
 | nvarchar |String, Char[] |
-| real |Pojedyncze |
+| real |Single |
 | rowversion |Byte[] |
-| smalldatetime |Data i godzina |
+| smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |Decimal |
+| smallmoney |Dziesiętna |
 | sql_variant |Obiekt |
 | tekst |String, Char[] |
-| time |TimeSpan |
+| time |przedział_czasu |
 | sygnatura czasowa |Byte[] |
 | tinyint |Int16 |
-| uniqueidentifier |Identyfikator GUID |
+| uniqueidentifier |Guid |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
 | xml |Xml |

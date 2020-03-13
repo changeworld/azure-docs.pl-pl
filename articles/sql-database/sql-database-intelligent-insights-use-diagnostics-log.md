@@ -10,17 +10,17 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 12/19/2018
-ms.openlocfilehash: 8272867f5b6144b92dbffcf96cc539eb82f75801
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.date: 03/10/2020
+ms.openlocfilehash: bb62b087451140261aee7aaa2fab0de14ea36283
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587355"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79209446"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Korzystanie z dziennika diagnostyki wydajności Azure SQL Database Intelligent Insights
 
-Ta strona zawiera informacje dotyczące sposobu korzystania z dziennika diagnostyki wydajności Azure SQL Database wygenerowanego przez [Intelligent Insights](sql-database-intelligent-insights.md), jego format oraz zawartych w nich danych na potrzeby niestandardowych potrzeb deweloperskich. Ten dziennik diagnostyki można wysłać do [Azure monitor dzienników](../azure-monitor/insights/azure-sql.md), [platformy Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md), [usługi Azure Storage](sql-database-metrics-diag-logging.md#stream-diagnostic-telemetry-into-azure-storage)lub rozwiązania innej firmy w celu uzyskania niestandardowych funkcji alertów DevOps i raportowania.
+Ta strona zawiera informacje dotyczące sposobu korzystania z dziennika diagnostyki wydajności Azure SQL Database wygenerowanego przez [Intelligent Insights](sql-database-intelligent-insights.md), jego format oraz zawartych w nich danych na potrzeby niestandardowych potrzeb deweloperskich. Ten dziennik diagnostyki można wysłać do [Azure monitor dzienników](../azure-monitor/insights/azure-sql.md), [platformy Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md), [usługi Azure Storage](sql-database-metrics-diag-logging.md#stream-into-azure-storage)lub rozwiązania innej firmy w celu uzyskania niestandardowych funkcji alertów DevOps i raportowania.
 
 ## <a name="log-header"></a>Nagłówek dziennika
 
@@ -47,8 +47,8 @@ Właściwość puli elastycznej (elasticPoolName_s) wskazuje, do której puli el
 ```json
 "intervalStartTime_t": "2017-9-25 11:00", // start of the issue reported time stamp
 "intervalEndTme_t":"2017-9-25 12:00", // end of the issue reported time stamp
-"elasticPoolName_s" : "", // resource elastic pool (if applicable) 
-"databaseName_s" : "db_name",  // database name
+"elasticPoolName_s" : "", // resource elastic pool (if applicable)
+"databaseName_s" : "db_name", // database name
 "issueId_d" : 1525, // unique ID of the issue detected
 "status_s" : "Active" // status of the issue – possible values: "Active", "Verifying", and "Complete"
 ```
@@ -64,7 +64,7 @@ Wykryte problemy z wydajnością są raportowane przy użyciu następującej str
 "impact" : 1 to 3, // impact of the issue detected, possible values 1-3 (1 low, 2 moderate, 3 high impact)
 "category" : "Detectable performance pattern", // performance issue detected, see the table
 "details": <Details outputted> // details of an issue (see the table)
-}] 
+}]
 ```
 
 Możliwe do wykrycia wzorce wydajności i szczegółowe informacje, które zostały wprowadzone do dziennika diagnostycznego, znajdują się w poniższej tabeli.
@@ -105,7 +105,7 @@ W poniższym przykładzie dziennika wykryto, że zapytanie z 0x9102EXZ4em skrót
 
 ```json
 "impact" : [{
-"entity" : { 
+"entity" : {
 "Type" : "Query", // type of entity - query
 "Value" : "query hash value", // for example "0x9102EXZ4" query hash value },
 "Metric" : "DurationIncreaseSeconds", // measured metric and the measurement unit (in this case seconds)
@@ -137,10 +137,8 @@ Ostatnia część dziennika wydajności Intelligent Insights odnosi się do zaut
 Można użyć dziennika wydajności Intelligent Insights z [dziennikami Azure monitor]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) lub rozwiązania innych firm do obsługi alertów niestandardowych DevOps i funkcji raportowania.
 
 ## <a name="next-steps"></a>Następne kroki
+
 - Dowiedz się więcej na temat pojęć [Intelligent Insights](sql-database-intelligent-insights.md) .
 - Dowiedz się, jak [rozwiązywać problemy z wydajnością Azure SQL Database przy użyciu Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
 - Dowiedz się [, jak monitorować Azure SQL Database przy użyciu Azure SQL Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql).
 - Dowiedz się [, jak zbierać dane dzienników z zasobów platformy Azure i korzystać z nich](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs).
-
-
-

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: terrylan
-ms.openlocfilehash: f7d993799fed637fbec55afc8f06d90c8fc6910f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 1b0a4627d377f5fa9ca997d1cc96bc38b0a6c37f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726783"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217220"
 ---
 # <a name="best-practices-for-securing-paas-databases-in-azure"></a>Najlepsze rozwiązania dotyczące zabezpieczania baz danych PaaS na platformie Azure
 
@@ -48,7 +48,7 @@ Bazy danych Azure SQL Database można skonfigurować do korzystania z jednego z 
 - Używa użytkowników zawartej bazy danych do uwierzytelniania tożsamości na poziomie bazy danych.
 - Obsługuje uwierzytelnianie oparte na tokenach dla aplikacji łączących się z SQL Database.
 - Obsługuje Federacji domeny z Active Directory Federation Services (ADFS) lub natywne uwierzytelnianie użytkownika/hasła dla lokalnej usługi Azure AD bez synchronizacji z domeną.
-- Obsługuje połączenia z SQL Server Management Studio korzystających z Active Directory uwierzytelniania uniwersalnego, w tym [uwierzytelniania wieloskładnikowego (MFA)](/azure/active-directory/authentication/multi-factor-authentication). Usługa MFA obejmuje silne uwierzytelnianie z szerokim zakresem prostych opcji weryfikacji, takich jak połączenia telefoniczne, wiadomości SMS, karty inteligentne z numerem PIN lub powiadomienia przez aplikacje mobilne. Aby uzyskać więcej informacji, zobacz [uniwersalne uwierzytelnianie przy użyciu SQL Database i SQL Data Warehouse](../../sql-database/sql-database-ssms-mfa-authentication.md).
+- Obsługuje połączenia z SQL Server Management Studio, które używają Active Directory uwierzytelniania uniwersalnego, w tym [Multi-Factor Authentication (MFA)](/azure/active-directory/authentication/multi-factor-authentication). Usługa MFA obejmuje silne uwierzytelnianie z szerokim zakresem prostych opcji weryfikacji, takich jak połączenia telefoniczne, wiadomości SMS, karty inteligentne z numerem PIN lub powiadomienia przez aplikacje mobilne. Aby uzyskać więcej informacji, zobacz [uniwersalne uwierzytelnianie przy użyciu SQL Database i SQL Data Warehouse](../../sql-database/sql-database-ssms-mfa-authentication.md).
 
 Aby dowiedzieć się więcej o uwierzytelnianiu usługi Azure AD, zobacz:
 
@@ -68,7 +68,7 @@ SQL Database domyślnych ograniczeń źródłowych adresów IP Zezwalaj na dost�
 
 Aby dowiedzieć się więcej na temat ograniczeń dotyczących zapory i adresów IP usługi Azure SQL, zobacz:
 
-- [Azure SQL Database i SQL Data Warehouse kontroli dostępu](../../sql-database/sql-database-control-access.md)
+- [Azure SQL Database i SQL Data Warehouse kontroli dostępu](../../sql-database/sql-database-manage-logins.md)
 - [Reguły zapory Azure SQL Database i SQL Data Warehouse](../../sql-database/sql-database-firewall-configure.md)
 
 

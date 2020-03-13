@@ -1,6 +1,6 @@
 ---
 title: Kody błędów interfejsu API REST — Azure Machine Learning Studio (klasyczny) | Microsoft Docs
-description: Te kody błędów mogą być zwracane przez operację na Azure Machine Learning usłudze sieci Web.
+description: Te kody błędów mogą być zwracane przez operację usługi sieci web Azure Machine Learning.
 keywords: ''
 services: machine-learning
 author: xiaoharper
@@ -12,14 +12,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: reference
 ms.date: 11/16/2016
-ms.openlocfilehash: 15e73740f5d932d0fa4cfb9a56c9fe7b155555cc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9e25f2fbc10eb07cc71f2a7bd34247c0191f61b9
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468160"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217771"
 ---
 # <a name="azure-machine-learning-studio-classic-rest-api-error-codes"></a>Azure Machine Learning Studio (klasyczny) kody błędów interfejsu API REST
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
  
 Operacje w usłudze sieci Web Azure Machine Learning Studio (klasycznej) mogą zwrócić następujące kody błędów.
  
@@ -27,102 +29,102 @@ Operacje w usłudze sieci Web Azure Machine Learning Studio (klasycznej) mogą z
  
 Podano nieprawidłowy argument.
  
-Ta klasa błędów oznacza, że argument podany w miejscu jest nieprawidłowy. Może to być poświadczenie lub lokalizacja usługi Azure Storage w przypadku, gdy przejdziesz do sieci Web. Zapoznaj się z błędem "kod" w sekcji "Szczegóły", aby zdiagnozować, który konkretny argument był nieprawidłowy.
+Ta klasa błędy oznacza, że gdzieś podany argument był nieprawidłowy. Może to być poświadczenia lub lokalizacji magazynu platformy Azure na coś przekazany do usługi sieci web. Zapoznaj się z błędem "kod" w sekcji "Szczegóły", aby zdiagnozować, który konkretny argument był nieprawidłowy.
  
-| Kod błędu | Komunikat użytkownika |
+| Kod błędu | Dla użytkownika komunikat o |
 | ---------- |--------------|
-| BadParameterValue | Podana wartość parametru nie spełnia wymagań reguły parametru na parametrze |
-| BadSubscriptionId | Identyfikator subskrypcji, który jest używany do oceny, nie jest obecny w zasobie |
-| BadVersionCall | Podczas wywołania interfejsu API przekazano nieprawidłowy parametr wersji: {0}. Sprawdź stronę pomocy interfejsu API, aby przekazywać poprawną wersję, i spróbuj ponownie. |
-| BatchJobInputsNotSpecified | Następujące wymagane dane wejściowe nie zostały określone przy użyciu żądania: {0}. Upewnij się, że wszystkie dane wejściowe są określone, i spróbuj ponownie. |
-| BatchJobInputsTooManySpecified | Żądanie określiło więcej danych wejściowych niż zdefiniowano w usłudze. Lista zaakceptowanych danych wejściowych (s): {0}. Upewnij się, że wszystkie dane wejściowe zostały określone prawidłowo, i spróbuj ponownie. |
+| BadParameterValue | Podana wartość parametru nie spełnia warunków reguły parametru w parametrze |
+| BadSubscriptionId | Identyfikator służący do generowania wyników na subskrypcji nie jest obecny w zasobach |
+| BadVersionCall | Podczas wywołania interfejsu API przekazano nieprawidłowy parametr wersji: {0}. Strona pomocy interfejsu API do przekazywania poprawnej wersji i spróbuj ponownie. |
+| BatchJobInputsNotSpecified | Następujące wymagane dane wejściowe nie zostały określone przy użyciu żądania: {0}. Upewnij się, że wszystkie dane wejściowe jest określony i spróbuj ponownie. |
+| BatchJobInputsTooManySpecified | Żądanie określone więcej danych wejściowych niż zdefiniowane w usłudze. Lista zaakceptowanych danych wejściowych (s): {0}. Upewnij się, że wszystkie dane wejściowe jest prawidłowa i spróbuj ponownie. |
 | BlobNameTooLong | Ścieżka magazynu obiektów blob platformy Azure podana dla danych wyjściowych diagnostyki jest zbyt długa: {0}. Skróć ścieżkę i spróbuj ponownie. |
 | BlobNotFound | Nie można uzyskać dostępu do podanego obiektu blob platformy Azure — {0}.  Komunikat o błędzie platformy Azure: {1}. |
-| ContainerIsEmpty | Nie podano nazwy kontenera usługi Azure Storage. Podaj prawidłową nazwę kontenera i spróbuj ponownie. |
-| ContainerSegmentInvalid | Nieprawidłowa nazwa kontenera. Podaj prawidłową nazwę kontenera i spróbuj ponownie. |
+| ContainerIsEmpty | Brak nazwy kontenera usługi Azure storage została dostarczona. Podaj nazwę prawidłowego kontenera, a następnie spróbuj ponownie. |
+| ContainerSegmentInvalid | Nieprawidłowej nazwy kontenera. Podaj nazwę prawidłowego kontenera, a następnie spróbuj ponownie. |
 | ContainerValidationFailed | Sprawdzanie poprawności kontenera obiektów BLOB nie powiodło się z powodu błędu: {0}. |
-| DataTypeNotSupported | Podano nieobsługiwany typ danych. Podaj prawidłowe typy danych i spróbuj ponownie. |
-| DuplicateInputInBatchCall | Żądanie wsadowe jest nieprawidłowe. Nie można jednocześnie określić pojedynczych i wielu danych wejściowych. Usuń jeden z tych elementów z żądania i spróbuj ponownie. |
-| ExpiryTimeInThePast | Czas wygaśnięcia podany w przeszłości: {0}. Podaj przyszły czas wygaśnięcia w formacie UTC i spróbuj ponownie. Aby nigdy nie wygasnąć, ustaw czas wygaśnięcia na NULL. |
-| IncompleteSettings | Ustawienia diagnostyki są niekompletne. |
-| InputBlobRelativeLocationInvalid | Nie podano nazwy obiektu BLOB usługi Azure Storage. Podaj prawidłową nazwę obiektu BLOB i spróbuj ponownie. |
-| InvalidBlob | Nieprawidłowa specyfikacja obiektu BLOB dla obiektu BLOB: {0}. Sprawdź poprawność parametrów połączenia/ścieżki względnej lub tokenu sygnatury dostępu współdzielonego, a następnie spróbuj ponownie. |
-| InvalidBlobConnectionString | Parametry połączenia określone dla jednego z danych wejściowych/wyjściowych obiektów BLOB są nieprawidłowe: {0}. Popraw to i spróbuj ponownie. |
+| DataTypeNotSupported | Nieobsługiwany typ danych pod warunkiem. Podaj prawidłowe dane typy, a następnie spróbuj ponownie. |
+| DuplicateInputInBatchCall | Żądanie wsadowe jest nieprawidłowe. Nie można określić zarówno pojedynczych i wielu danych wejściowych w tym samym czasie. Usuń jeden z tych elementów z żądania i spróbuj ponownie. |
+| ExpiryTimeInThePast | Czas wygaśnięcia podany w przeszłości: {0}. Podaj czas wygaśnięcia w przyszłości, w formacie UTC, a następnie spróbuj ponownie. Nigdy nie wygasa, ustaw czas wygaśnięcia na wartość NULL. |
+| IncompleteSettings | Ustawienia diagnostyczne są niekompletne. |
+| InputBlobRelativeLocationInvalid | Nie podano nazwy obiektu blob magazynu platformy Azure. Podaj nazwę prawidłowy obiekt blob, a następnie spróbuj ponownie. |
+| InvalidBlob | Nieprawidłowa specyfikacja obiektu BLOB dla obiektu BLOB: {0}. Sprawdź te parametry połączenia / ścieżkę względną lub specyfikacji tokenu sygnatury dostępu Współdzielonego jest poprawny i spróbuj ponownie. |
+| InvalidBlobConnectionString | Parametry połączenia określone dla jednego z danych wejściowych/wyjściowych obiektów BLOB są nieprawidłowe: {0}. Rozwiązać ten problem i spróbuj ponownie. |
 | InvalidBlobExtension | Odwołanie do obiektu BLOB: {0} zawiera nieprawidłowe lub brak rozszerzenia pliku. Obsługiwane rozszerzenia plików dla tego typu danych wyjściowych to: "{1}". |
-| InvalidInputNames | W żądaniu określono nieprawidłowe nazwy wejściowe usługi: {0}. Zamapuj dane wejściowe na prawidłowe dane wejściowe usługi i spróbuj ponownie. |
-| InvalidOutputOverrideName | Nieprawidłowa nazwa przesłonięcia danych wyjściowych: {0}. Usługa nie ma węzła wyjściowego o tej nazwie. Przekaż poprawną nazwę węzła wyjściowego, aby przesłonić (dotyczy uwzględniania wielkości liter). |
+| InvalidInputNames | W żądaniu określono nieprawidłowe nazwy wejściowe usługi: {0}. Mapowanie danych wejściowych do usługi poprawne dane wejściowe i spróbuj ponownie. |
+| InvalidOutputOverrideName | Nieprawidłowa nazwa przesłonięcia danych wyjściowych: {0}. Usługa nie ma węzła danych wyjściowych o tej nazwie. Przekaż nazwę węzła poprawne dane wyjściowe do zastąpienia (dotyczy rozróżnianie wielkości liter). |
 | InvalidQueryParameter | Nieprawidłowy parametr zapytania "{0}". {1} |
-| MissingInputBlobInformation | Brak informacji o obiekcie blob usługi Azure Storage. Podaj prawidłowe parametry połączenia oraz ścieżkę względną lub identyfikator URI i spróbuj ponownie. |
-| MissingJobId | Nie podano identyfikatora zadania. Identyfikator zadania jest zwracany, gdy zadanie zostało przesłane po raz pierwszy. Sprawdź, czy identyfikator zadania jest poprawny, i spróbuj ponownie. |
-| MissingKeys | Nie podano kluczy lub nie podano klucza podstawowego lub pomocniczego. |
-| MissingModelPackage | Nie podano identyfikatora pakietu modelu lub pakietu modelu. Podaj prawidłowy identyfikator pakietu modelu lub pakiet modelu i spróbuj ponownie. |
-| MissingOutputOverrideSpecification | W żądaniu brakuje specyfikacji obiektu BLOB dla zastąpienia danych wyjściowych {0}. Określ prawidłową lokalizację obiektu BLOB z żądaniem lub Usuń specyfikację wyjściową, jeśli nie podano przesłonięcia lokalizacji. |
-| MissingRequestInput | Usługa sieci Web oczekuje danych wejściowych, ale nie podano danych wejściowych. Upewnij się, że na podstawie opublikowanych portów wejściowych w modelu znajdują się prawidłowe dane wejściowe, i spróbuj ponownie. |
-| MissingRequiredGlobalParameters | Nie wszystkie wymagane parametry usługi sieci Web. Sprawdź, czy parametry oczekiwane dla modułów są poprawne, i spróbuj ponownie. |
-| MissingRequiredOutputOverrides | Podczas wywoływania punktu końcowego usługi zaszyfrowanej obowiązkowe jest przekazywanie danych wyjściowych dla wszystkich wyników usługi. W tej chwili brak zastąpień dla następujących danych wyjściowych: {0} |
-| MissingWebServiceGroupId | Nie podano identyfikatora grupy usług sieci Web. Podaj prawidłowy identyfikator grupy usług sieci Web i spróbuj ponownie. |
-| MissingWebServiceId | Nie podano identyfikatora usługi sieci Web. Podaj prawidłowy identyfikator usługi sieci Web i spróbuj ponownie. |
-| MissingWebServicePackage | Nie podano pakietu usługi sieci Web. Podaj prawidłowy pakiet usługi sieci Web i spróbuj ponownie. |
-| MissingWorkspaceId | Nie podano identyfikatora obszaru roboczego. Podaj prawidłowy identyfikator obszaru roboczego i spróbuj ponownie. |
-| ModelConfigurationInvalid | Nieprawidłowa konfiguracja modelu w pakiecie modelu. Upewnij się, że konfiguracja modelu zawiera wyjściową definicję punktów końcowych, standardowy punkt końcowy błędu oraz punkt końcowy o wartości STD i spróbuj ponownie. |
+| MissingInputBlobInformation | Brak informacji o obiekcie blob magazynu platformy Azure. Podaj prawidłowe parametry połączenia i ścieżką względną lub identyfikator URI i spróbuj ponownie. |
+| MissingJobId | Brak podany identyfikator zadania. Zadanie identyfikator jest zwracany, jeśli zadanie zostało przesłane po raz pierwszy. Sprawdź, czy identyfikatora zadania jest poprawny i spróbuj ponownie. |
+| MissingKeys | Brak kluczy podane lub jednego z podstawowej maszyny wirtualnej lub klucz pomocniczy jest niedostępny. |
+| MissingModelPackage | Nie identyfikator pakietu modelu lub model pakietów. Podaj identyfikator pakietu prawidłowego modelu lub modelu pakietu i spróbuj ponownie. |
+| MissingOutputOverrideSpecification | W żądaniu brakuje specyfikacji obiektu BLOB dla zastąpienia danych wyjściowych {0}. Określ lokalizację prawidłowy obiekt blob z żądaniem lub usuń specyfikację dane wyjściowe, jeśli żadne przesłonięcie lokalizacji. |
+| MissingRequestInput | Usługa sieci web oczekuje danych wejściowych, ale nie dostarczono żadnych dane wejściowe. Upewnij się, że podano prawidłowe dane wejściowe na podstawie opublikowanych portów wejściowych w modelu, a następnie spróbuj ponownie. |
+| MissingRequiredGlobalParameters | Nie wszystkie wymagane parametry usługi sieci web, pod warunkiem. Sprawdź, czy parametry oczekiwanego przez moduły są poprawne i spróbuj ponownie. |
+| MissingRequiredOutputOverrides | Podczas wywoływania punktu końcowego szyfrowanie usług, które jest wymagane, aby przekazać dane wyjściowe wartości zastąpień dla wszystkich usług w danych wyjściowych. W tej chwili brak zastąpień dla następujących danych wyjściowych: {0} |
+| MissingWebServiceGroupId | Podany identyfikator żadna grupa usługi sieci web. Podaj identyfikator grupy usługi web prawidłową i spróbuj ponownie. |
+| MissingWebServiceId | Podany identyfikator żadnej usługi sieci web. Usługi sieci web prawidłowy identyfikator i spróbuj ponownie. |
+| MissingWebServicePackage | Nie podano pakiet usługi sieci web. Podaj pakiet usługi sieci web prawidłową i spróbuj ponownie. |
+| MissingWorkspaceId | Podany identyfikator żadnego obszaru roboczego. Podaj prawidłowy identyfikator obszaru roboczego, a następnie spróbuj ponownie. |
+| ModelConfigurationInvalid | Nieprawidłowy model konfiguracji w pakiecie modelu. Upewnij się, Konfiguracja modelu zawiera dane wyjściowe punkty końcowe: definicji punktu końcowego błędów standardowe, i standardowe out punktu końcowego i spróbuj ponownie. |
 | ModelPackageIdInvalid | Nieprawidłowy identyfikator pakietu modelu. Sprawdź, czy identyfikator pakietu modelu jest poprawny, i spróbuj ponownie. |
-| RequestBodyInvalid | Nie podano treści żądania lub wystąpił błąd podczas deserializacji treści żądania. |
-| RequestIsEmpty | Nie podano żądania. Podaj prawidłowe żądanie i spróbuj ponownie. |
-| UnexpectedParameter | Podano nieoczekiwane parametry. Sprawdź, czy wszystkie nazwy parametrów są wpisane prawidłowo, czy są spełnione tylko oczekiwane parametry, i spróbuj ponownie. |
-| UnknownError | Nieznany błąd. |
+| RequestBodyInvalid | Nie treści żądania, pod warunkiem lub wystąpił błąd podczas deserializacji treści żądania. |
+| RequestIsEmpty | Żądanie nie podano. Podaj prawidłowy żądania i spróbuj ponownie. |
+| UnexpectedParameter | Podano nieoczekiwany parametrów. Sprawdź wszystkie nazwy parametrów jest poprawna, tylko oczekiwanych parametrów są przekazywane, a następnie spróbuj ponownie. |
+| Nieznany błąd zostanie | Nieznany błąd. |
 | UserParameterInvalid | {0} |
 | WebServiceConcurrentRequestRequirementInvalid | Nie można zmienić wymagań współbieżnych żądań dla usługi sieci Web {0}. |
-| WebServiceIdInvalid | Podano nieprawidłowy identyfikator usługi sieci Web. Identyfikator usługi sieci Web powinien być prawidłowym identyfikatorem GUID. |
+| WebServiceIdInvalid | Podany identyfikator usługi sieci web nieprawidłowy. Identyfikator usługi sieci Web musi być prawidłowym identyfikatorem guid. |
 | WebServiceTooManyConcurrentRequestRequirement | Nie można ustawić współbieżnego wymagania żądania na więcej niż {0}. |
-| WebServiceTypeInvalid | Podano nieprawidłowy typ usługi sieci Web. Sprawdź, czy prawidłowy typ usługi sieci Web jest poprawny, i spróbuj ponownie. Prawidłowe typy usługi sieci Web: {0}. |
+| WebServiceTypeInvalid | Nieprawidłowy typ sieci web usługi udostępniane. Sprawdź, czy typ usługi sieci web prawidłowe jest poprawny i spróbuj ponownie. Prawidłowe typy usługi sieci Web: {0}. |
  
 ## <a name="baduserargument-http-status-code-400"></a>BadUserArgument (kod stanu HTTP 400)
  
-Podano nieprawidłowy argument użytkownika.
+Podany argument nieprawidłowego użytkownika.
  
-| Kod błędu | Komunikat użytkownika |
+| Kod błędu | Dla użytkownika komunikat o |
 | ---------- |--------------|
-| InputMismatchError | Dane wejściowe nie pasują do schematu portu wejściowego. |
-| InputParseError | Analizowanie wektora wejściowego nie powiodło się.  Sprawdź, czy wektor wejściowy ma poprawną liczbę kolumn i typów danych.  Dodatkowe szczegóły: {0}. |
-| MissingRequiredGlobalParameters | Brak parametrów oczekiwanych przez usługę sieci Web. Sprawdź, czy wszystkie wymagane parametry oczekiwane przez usługę sieci Web są poprawne, i spróbuj ponownie. |
-| UnexpectedParameter | Sprawdź, czy są spełnione tylko wymagane parametry oczekiwane przez usługę sieci Web, i spróbuj ponownie. |
+| InputMismatchError | Dane wejściowe jest niezgodna z portem wejściowym schematu. |
+| InputParseError | Analizowanie danych wejściowych wektora nie powiodło się.  Sprawdź, czy wektor wejściowy ma poprawną liczbę kolumn i typy danych.  Dodatkowe szczegóły: {0}. |
+| MissingRequiredGlobalParameters | Brak parametrów oczekiwaną przez usługę sieci web. Sprawdź, czy wszystkie wymagane parametry oczekiwaną przez usługę sieci web są prawidłowe i spróbuj ponownie. |
+| UnexpectedParameter | Sprawdź tylko wymagane parametry oczekiwaną przez usługę sieci web są przekazywane i spróbuj ponownie. |
 | UserParameterInvalid | {0} |
  
-## <a name="invalidoperation-http-status-code-400"></a>InvalidOperation (kod stanu HTTP 400)
+## <a name="invalidoperation-http-status-code-400"></a>Invalidoperation powodujący zakończenie działania (kod stanu HTTP 400)
  
-Żądanie jest nieprawidłowe w bieżącym kontekście.
+Żądanie jest nieprawidłowy w bieżącym kontekście.
  
-| Kod błędu | Komunikat użytkownika |
+| Kod błędu | Dla użytkownika komunikat o |
 | ---------- |--------------|
 | CannotStartJob | Nie można uruchomić zadania, ponieważ jest ono w stanie {0}. |
-| IncompatibleModel | Model jest niezgodny z wersją żądania. Wersja żądania obsługuje tylko pojedyncze modele wyjściowe elementu DataTable. |
-| MultipleInputsNotAllowed | Model nie zezwala na używanie wielu danych wejściowych. |
+| IncompatibleModel | Model jest niezgodna z wersją żądania. Wersja żądania obsługuje tylko modele danych wyjściowych jednego elementu datatable. |
+| MultipleInputsNotAllowed | Model nie zezwala na wielu danych wejściowych. |
  
 ## <a name="libraryexecutionerror-http-status-code-400"></a>LibraryExecutionError (kod stanu HTTP 400)
  
-Wykonanie modułu napotkało błąd wewnętrzny biblioteki.
+Wykonanie modułu wystąpił błąd wewnętrznej biblioteki.
  
  
 ## <a name="moduleexecutionerror-http-status-code-400"></a>ModuleExecutionError (kod stanu HTTP 400)
  
-Wykonanie modułu napotkało błąd.
+Operacja uruchamiania modułu wystąpił błąd.
  
  
 ## <a name="webservicepackageerror-http-status-code-400"></a>WebServicePackageError (kod stanu HTTP 400)
  
-Nieprawidłowy pakiet usługi sieci Web. Upewnij się, że podany pakiet usługi sieci Web jest poprawny, i spróbuj ponownie.
+Pakiet usługi sieci web nieprawidłowy. Sprawdź poprawność pakietu usługi sieci web, pod warunkiem i spróbuj ponownie.
  
-| Kod błędu | Komunikat użytkownika |
+| Kod błędu | Dla użytkownika komunikat o |
 | ---------- |--------------|
-| FormatError | Pakiet usługi sieci Web jest źle sformułowany. Szczegóły: {0} |
-| RuntimesError | Wykres pakietu usługi sieci Web jest nieprawidłowy. Szczegóły: {0} |
-| ValidationError | Wykres pakietu usługi sieci Web jest nieprawidłowy. Szczegóły: {0} |
+| FormatError | Pakiet usługi sieci web jest źle sformułowany. Szczegóły: {0} |
+| RuntimesError | Wykres pakietów usługi sieci web jest nieprawidłowy. Szczegóły: {0} |
+| ValidationError | Wykres pakietów usługi sieci web jest nieprawidłowy. Szczegóły: {0} |
  
 ## <a name="unauthorized-http-status-code-401"></a>Nieautoryzowany (kod stanu HTTP 401)
  
-Żądanie nie ma autoryzacji dostępu do zasobu.
+Żądanie nie ma autoryzacji do dostępu do zasobu.
  
-| Kod błędu | Komunikat użytkownika |
+| Kod błędu | Dla użytkownika komunikat o |
 | ---------- |--------------|
 | AdminRequestUnauthorized | Brak autoryzacji |
 | ManagementRequestUnauthorized | Brak autoryzacji |
@@ -132,50 +134,50 @@ Nieprawidłowy pakiet usługi sieci Web. Upewnij się, że podany pakiet usługi
  
 Nie znaleziono zasobu.
  
-| Kod błędu | Komunikat użytkownika |
+| Kod błędu | Dla użytkownika komunikat o |
 | ---------- |--------------|
-| ModelPackageNotFound | Nie znaleziono pakietu modelu. Sprawdź, czy identyfikator pakietu modelu jest poprawny, i spróbuj ponownie. |
-| WebServiceIdNotFoundInWorkspace | Nie znaleziono usługi sieci Web w tym obszarze roboczym. Występuje niezgodność między webServiceId i identyfikator obszaru roboczego. Sprawdź, czy podana usługa sieci Web jest częścią obszaru roboczego, i spróbuj ponownie. |
-| WebServiceNotFound | Nie znaleziono usługi sieci Web. Sprawdź, czy identyfikator usługi sieci Web jest poprawny, i spróbuj ponownie. |
-| Zgłosić workspacenotfound | Nie znaleziono obszaru roboczego. Sprawdź, czy identyfikator obszaru roboczego jest poprawny, i spróbuj ponownie. |
+| ModelPackageNotFound | Nie odnaleziono pakietu modelu. Upewnij się, że identyfikator pakietu modelu jest poprawny i spróbuj ponownie. |
+| WebServiceIdNotFoundInWorkspace | Usługa sieci Web w obszarze nie znaleziono obszaru roboczego. Występuje niezgodność między webServiceId i identyfikator obszaru roboczego. Sprawdź usługę sieci web, pod warunkiem jest częścią obszaru roboczego i spróbuj ponownie. |
+| WebServiceNotFound | Nie można odnaleźć usługi sieci Web. Sprawdź, czy identyfikator usługi sieci web jest poprawny i spróbuj ponownie. |
+| WorkspaceNotFound | Nie znaleziono obszaru roboczego. Sprawdź, czy identyfikator obszaru roboczego jest prawidłowy i spróbuj ponownie. |
  
 ## <a name="requesttimeout-http-status-code-408"></a>RequestTimeout (kod stanu HTTP 408)
  
-Nie można ukończyć operacji w dozwolonym czasie.
+Nie można zakończyć operacji w dozwolonym czasie.
  
-| Kod błędu | Komunikat użytkownika |
+| Kod błędu | Dla użytkownika komunikat o |
 | ---------- |--------------|
 | RequestCanceled | Żądanie zostało anulowane przez klienta. |
-| ScoreRequestTimeout | Przekroczono limit czasu żądania wykonania. |
+| ScoreRequestTimeout | Upłynął limit czasu wykonywania żądania. |
  
 ## <a name="conflict-http-status-code-409"></a>Konflikt (kod stanu HTTP 409)
  
 Zasób już istnieje.
  
-| Kod błędu | Komunikat użytkownika |
+| Kod błędu | Dla użytkownika komunikat o |
 | ---------- |--------------|
-| ModelOutputMetadataMismatch | Nieprawidłowa nazwa parametru wyjściowego. Spróbuj użyć modułu edytora metadanych, aby zmienić nazwę kolumn i spróbuj ponownie. |
+| ModelOutputMetadataMismatch | Nazwa parametru nieprawidłowe dane wyjściowe. Spróbuj użyć modułu Edytor metadanych zmiana nazw kolumn i spróbuj ponownie. |
  
 ## <a name="memoryquotaviolation-http-status-code-413"></a>MemoryQuotaViolation (kod stanu HTTP 413)
  
-Model przekroczył przydzielony przydział pamięci.
+Model przekroczył limit przydziału pamięci do niej przypisany.
  
-| Kod błędu | Komunikat użytkownika |
+| Kod błędu | Dla użytkownika komunikat o |
 | ---------- |--------------|
-| OutOfMemoryLimit | Model zużywał więcej pamięci niż jest to odpowiednie dla niego. Maksymalna dozwolona ilość pamięci dla modelu wynosi {0} MB. Sprawdź, czy w modelu występują problemy. |
+| OutOfMemoryLimit | Model używany więcej pamięci niż była przeznaczona dla niego. Maksymalna dozwolona ilość pamięci dla modelu wynosi {0} MB. Sprawdź, czy model problemów. |
  
-## <a name="internalerror-http-status-code-500"></a>InternalError (kod stanu HTTP 500)
+## <a name="internalerror-http-status-code-500"></a>Błąd wewnętrzny (kod stanu HTTP 500)
  
-Wykonanie napotkało błąd wewnętrzny.
+Wykonanie napotkał błąd wewnętrzny.
  
-| Kod błędu | Komunikat użytkownika |
+| Kod błędu | Dla użytkownika komunikat o |
 | ---------- |--------------|
 | AdminAuthenticationFailed |  |
 | BackendArgumentError |  |
 | BackendBadRequest |  |
 | ClusterConfigBlobMisconfigured |  |
-| ContainerProcessTerminatedWithSystemError | Proces kontenera uległ awarii z powodu błędu systemu |
-| ContainerProcessTerminatedWithUnknownError | Proces kontenera uległ awarii z nieznanym błędem |
+| ContainerProcessTerminatedWithSystemError | Proces kontenera, który uległ awarii z powodu błędu systemu |
+| ContainerProcessTerminatedWithUnknownError | Proces kontenera, który uległ awarii z powodu nieznanego błędu |
 | ContainerValidationFailed | Sprawdzanie poprawności kontenera obiektów BLOB nie powiodło się z powodu błędu: {0}. |
 | DeleteWebServiceResourceFailed |  |
 | ExceptionDeserializationError |  |
@@ -185,7 +187,7 @@ Wykonanie napotkało błąd wewnętrzny.
 | InvalidResourceCacheConfiguration |  |
 | InvalidResourceDownloadConfiguration |  |
 | InvalidWebServiceResources |  |
-| MissingTaskInstance | Nie dostarczono żadnych argumentów. Sprawdź, czy poprawne argumenty są przekazane, i spróbuj ponownie. |
+| MissingTaskInstance | Nie podano argumentów. Sprawdź, czy prawidłowe argumenty są przekazywane, a następnie spróbuj ponownie. |
 | ModelPackageInvalid |  |
 | ModuleExecutionFailed |  |
 | ModuleLoadFailed |  |
@@ -198,7 +200,7 @@ Wykonanie napotkało błąd wewnętrzny.
 | SwaggerGeneration | Generowanie struktury Swagger nie powiodło się, szczegóły: {0} |
 | UnexpectedScoreStatus |  |
 | UnknownBackendErrorResponse |  |
-| UnknownError |  |
+| Nieznany błąd zostanie |  |
 | UnknownJobStatusCode | Nieznany kod stanu zadania {0}. |
 | UnknownModuleError |  |
 | UpdateWebServiceResourceFailed |  |
@@ -209,45 +211,45 @@ Wykonanie napotkało błąd wewnętrzny.
  
 ## <a name="internalerrorsystemlowonmemory-http-status-code-500"></a>InternalErrorSystemLowOnMemory (kod stanu HTTP 500)
  
-Wykonanie napotkało błąd wewnętrzny. Brak pamięci w systemie. Spróbuj ponownie.
+Wykonanie napotkał błąd wewnętrzny. Mało pamięci systemu. Spróbuj ponownie później.
  
  
 ## <a name="modelpackageformaterror-http-status-code-500"></a>ModelPackageFormatError (kod stanu HTTP 500)
  
-Nieprawidłowy pakiet modelu. Sprawdź, czy podany pakiet modelu jest poprawny, i spróbuj ponownie.
+Nieprawidłowy model pakiet. Sprawdź podany pakiet modelu jest poprawny i spróbuj ponownie.
  
  
 ## <a name="webservicepackageinternalerror-http-status-code-500"></a>WebServicePackageInternalError (kod stanu HTTP 500)
  
-Nieprawidłowy pakiet usługi sieci Web. Sprawdź, czy podany pakiet internetowy jest poprawny, i spróbuj ponownie.
+Pakiet usługi sieci web nieprawidłowy. Sprawdź poprawność pakiet sieci web, pod warunkiem i spróbuj ponownie.
  
-| Kod błędu | Komunikat użytkownika |
+| Kod błędu | Dla użytkownika komunikat o |
 | ---------- |--------------|
-| ModuleError | Wykres pakietu usługi sieci Web jest nieprawidłowy. Szczegóły: {0} |
+| ModuleError | Wykres pakietów usługi sieci web jest nieprawidłowy. Szczegóły: {0} |
  
 ## <a name="initializingcontainers-http-status-code-503"></a>InitializingContainers (kod stanu HTTP 503)
  
-Nie można wykonać żądania, ponieważ kontenery są inicjowane.
+Jako kontenery są inicjowania, nie można wykonać żądania.
  
  
-## <a name="serviceunavailable-http-status-code-503"></a>Serviceniedostępne (kod stanu HTTP 503)
+## <a name="serviceunavailable-http-status-code-503"></a>ServiceUnavailable (kod stanu HTTP 503)
  
 Usługa jest tymczasowo niedostępna.
  
-| Kod błędu | Komunikat użytkownika |
+| Kod błędu | Dla użytkownika komunikat o |
 | ---------- |--------------|
-| NoMoreResources | Brak dostępnych zasobów dla żądania. |
+| NoMoreResources | Brak dostępnych zasobów do żądania. |
 | RequestThrottled | Żądanie zostało ograniczone dla {0} punktu końcowego. Maksymalna współbieżność punktu końcowego jest {1}. |
-| TooManyConcurrentRequests | Wysłano zbyt wiele współbieżnych żądań. |
-| TooManyHostsBeingInitialized | Zbyt wiele hostów jest inicjowanych w tym samym czasie. Rozważ ograniczenie/ponowną próbę. |
-| TooManyHostsBeingInitializedPerModel | Zbyt wiele hostów jest inicjowanych w tym samym czasie. Rozważ ograniczenie/ponowną próbę. |
+| TooManyConcurrentRequests | Wysłano zbyt wiele żądań równoczesnych. |
+| TooManyHostsBeingInitialized | Zbyt wiele hostów inicjowania w tym samym czasie. Należy rozważyć ograniczenie / ponawianie próby. |
+| TooManyHostsBeingInitializedPerModel | Zbyt wiele hostów inicjowania w tym samym czasie. Należy rozważyć ograniczenie / ponawianie próby. |
  
 ## <a name="gatewaytimeout-http-status-code-504"></a>GatewayTimeout (kod stanu HTTP 504)
  
-Nie można ukończyć operacji w dozwolonym czasie.
+Nie można zakończyć operacji w dozwolonym czasie.
  
-| Kod błędu | Komunikat użytkownika |
+| Kod błędu | Dla użytkownika komunikat o |
 | ---------- |--------------|
-| BackendInitializationTimeout | Nie można ukończyć inicjowania usługi sieci Web w dozwolonym czasie. |
-| BackendScoreTimeout | Nie można ukończyć wykonywania żądania usługi sieci Web w dozwolonym czasie. |
+| BackendInitializationTimeout | Nie można wykonać inicjowania usługi sieci web w dozwolonym czasie. |
+| BackendScoreTimeout | Nie można ukończyć wykonywania żądania usługi sieci web w dozwolonym czasie. |
  

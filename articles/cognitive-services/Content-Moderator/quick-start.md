@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 03/13/2020
 ms.author: pafarley
-ms.openlocfilehash: a641893fece37c759480ab31f505b1673f50e2b9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 666b70ba8b632cb2cadf20de384e3e615acb2b3d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973615"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79203579"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>Szybki Start: Wypróbuj Content Moderator w sieci Web
 
@@ -32,9 +32,23 @@ Narzędzie do przeglądu Content Moderator jest narzędziem opartym na sieci Web
 
 ## <a name="create-a-review-team"></a>Tworzenie zespołu do przeprowadzania przeglądu
 
-Następnie utwórz zespół recenzji. W scenariuszu roboczym będzie to grupa osób, które będą ręcznie sprawdzać decyzje o moderowaniu usługi. Na razie wystarczy utworzyć nazwę zespołu. Jeśli chcesz zaprosić współpracowników do zespołu, możesz to zrobić, wprowadzając tutaj ich adresy e-mail.
+Następnie utwórz zespół recenzji. W scenariuszu roboczym będzie to grupa osób, które będą ręcznie sprawdzać decyzje o moderowaniu usługi. Aby utworzyć zespół, należy wybrać **region**i podać **nazwę zespołu** i **Identyfikator zespołu**. Jeśli chcesz zaprosić współpracowników do zespołu, możesz to zrobić, wprowadzając tutaj ich adresy e-mail.
 
-![Zaproś członka zespołu](images/QuickStart-2-small.png)
+> [!NOTE]
+> **Nazwa zespołu** jest przyjazną nazwą Twojego zespołu ds. recenzji. Jest to nazwa wyświetlana w Azure Portal. **Identyfikator zespołu** jest używany do identyfikowania zespołu recenzji programowo.
+
+> [!div class="mx-imgBorder"]
+> ![Zaproś członka zespołu](images/create-team.png)
+
+Jeśli zdecydujesz się na szyfrowanie danych przy użyciu klucza zarządzanego przez klienta (CMK), zostanie wyświetlony monit o podanie **identyfikatora zasobu** dla zasobu Content moderator w warstwie cenowej E0. Zasób, który należy podać, musi być nowy. 
+
+> [!div class="mx-imgBorder"]
+> ![zapraszać członka zespołu za pomocą CMK](images/create-team-cmk.png)
+
+Jeśli spróbujesz ponownie użyć zasobu Content Moderator, zobaczysz następujące ostrzeżenie: 
+
+> [!div class="mx-imgBorder"]
+> ![błąd CMK](images/create-team-cmk-fail.png)
 
 ## <a name="upload-sample-content"></a>Przekaż przykładową zawartość
 

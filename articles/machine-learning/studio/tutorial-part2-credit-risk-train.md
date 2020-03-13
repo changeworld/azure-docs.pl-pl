@@ -10,14 +10,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 9aeaed6565e69409bc55a71985296b2393226ba4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8feca17f10bb891f0ca5577b2363f95901da4a46
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427482"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217873"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>Samouczek 2: uczenie modeli ryzyka kredytowego — Azure Machine Learning Studio (klasyczny)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 W tym samouczku szczegółowo przedstawiono proces opracowywania rozwiązania analizy predykcyjnej. Tworzysz prosty model w Machine Learning Studio (klasyczny).  Następnie wdrożysz model jako usługę internetową w ramach usługi Azure Machine Learning.  Wdrożony model może tworzyć przewidywania przy użyciu nowych danych. Ten samouczek jest **drugą częścią trzyczęściowej serii samouczków**.
 
@@ -88,7 +90,7 @@ Teraz musisz poinformować moduł [modelu uczenia][train-model] , że model ma p
 
 1. Kliknij znacznik wyboru **OK**.
 
-### <a name="two-class-support-vector-machine"></a>Algorytm SVM dla problemu dwuklasowego
+### <a name="two-class-support-vector-machine"></a>Two-Class Support Vector Machine (Dwuklasowa maszyna wektorów nośnych)
 
 Następnie skonfigurujesz model SVM.  
 

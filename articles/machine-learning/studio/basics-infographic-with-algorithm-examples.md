@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodc18
 ms.date: 03/04/2019
-ms.openlocfilehash: 7a82c8af518ec062eb38f921ebf85848d10da129
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 34316b13c93ca2739e87262dd09dcbaf38186b16
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168919"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204481"
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Grafika informacyjna do pobrania: podstawy uczenia maszynowego z przykładowymi algorytmami
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Pobierz to omówienie informacyjna łatwych do zrozumienia podstawy uczenia maszyny, aby dowiedzieć się więcej na temat popularnych algorytmów odpowiedzi na często zadawane pytania dotyczące machine learning. Algorytmami pomóc początkującym learning maszyny, zrozumieć, jakie algorytmy będzie używany wraz z ich używania.
 

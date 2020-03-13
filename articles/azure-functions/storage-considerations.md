@@ -3,12 +3,12 @@ title: Zagadnienia dotyczące magazynu Azure Functions
 description: Dowiedz się więcej o wymaganiach dotyczących magazynu Azure Functions i o szyfrowaniu przechowywanych danych.
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: f094996ca44ec36d46330e54eac56b28794ef22e
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 3bacc93ad6c1851d9165e8efb7d27b427050e6f0
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190298"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276584"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Zagadnienia dotyczące magazynu Azure Functions
 
@@ -56,6 +56,25 @@ Istnieje możliwość udostępnienia tego samego konta magazynu dla wielu aplika
 Usługa Azure Storage szyfruje wszystkie dane na koncie magazynu w stanie spoczynku. Aby uzyskać więcej informacji, zobacz [szyfrowanie usługi Azure Storage dla danych magazynowanych](../storage/common/storage-service-encryption.md).
 
 Domyślnie dane są szyfrowane przy użyciu kluczy zarządzanych przez firmę Microsoft. Aby uzyskać dodatkową kontrolę nad kluczami szyfrowania, można podać klucze zarządzane przez klienta do szyfrowania obiektów blob i danych plików. Te klucze muszą być obecne w Azure Key Vault, aby funkcje mogły uzyskiwać dostęp do konta magazynu. Aby dowiedzieć się więcej, zobacz [Konfigurowanie kluczy zarządzanych przez klienta za pomocą Azure Key Vault przy użyciu Azure Portal](../storage/common/storage-encryption-keys-portal.md).  
+
+## <a name="mount-file-shares-linux"></a>Zainstaluj udziały plików (Linux)
+
+Istniejące udziały Azure Files można zainstalować w aplikacjach funkcji systemu Linux. Instalując udział w aplikacji funkcji systemu Linux, możesz korzystać z istniejących modeli uczenia maszynowego lub innych danych w swoich funkcjach. Możesz użyć [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) polecenie, aby zainstalować istniejący udział w aplikacji funkcji systemu Linux. 
+
+W tym poleceniu `share-name` jest nazwą istniejącego udziału Azure Files, a `custom-id` może być dowolnym ciągiem, który jednoznacznie definiuje udział w przypadku zamontowania w aplikacji funkcji. `mount-path` jest również ścieżką, z której uzyskuje się dostęp do udziału w aplikacji funkcji. `mount-path` musi mieć format `/dir-name`i nie może rozpoczynać się od `/home`.
+
+Pełny przykład można znaleźć w artykule skrypty w temacie [Tworzenie aplikacji funkcji języka Python i Instalowanie udziału Azure Files](scripts/functions-cli-mount-files-storage-linux.md). 
+
+Obecnie obsługiwane są tylko `storage-type` `AzureFiles`. Można zainstalować tylko pięć udziałów w danej aplikacji funkcji. Zainstalowanie udziału plików może wydłużyć czas zimnego uruchomienia o co najmniej 200-300ms lub jeszcze więcej, gdy konto magazynu znajduje się w innym regionie.
+
+Zainstalowany udział jest dostępny dla kodu funkcji w określonym `mount-path`. Na przykład gdy `mount-path` jest `/path/to/mount`, można uzyskać dostęp do katalogu docelowego za pomocą interfejsów API systemu plików, jak w poniższym przykładzie w języku Python:
+
+```python
+import os
+...
+
+files_in_share = os.listdir("/path/to/mount")
+```
 
 ## <a name="next-steps"></a>Następne kroki
 

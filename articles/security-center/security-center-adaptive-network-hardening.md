@@ -1,6 +1,6 @@
 ---
 title: Adaptacyjne Zabezpieczanie sieci w Azure Security Center | Microsoft Docs
-description: Dowiedz się, jak zabezpieczyć się na podstawie rzeczywistych wzorców ruchu, zasad sieciowych grup zabezpieczeń (sieciowej grupy zabezpieczeń) i dalszych usprawnień stan zabezpieczeń.
+description: Dowiedz się, jak używać rzeczywistych wzorców ruchu do ochrony reguł sieciowych grup zabezpieczeń (sieciowej grupy zabezpieczeń), a także ulepszania stan zabezpieczeń.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/24/2019
+ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: fb1e381f9b956a0c6414a82505aced2cbdb2d680
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: bc610fa1d7a5fa1a10db3298164404b92d5d9f85
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559274"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79139593"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptacyjne Zabezpieczanie sieci w Azure Security Center
 Dowiedz się, jak konfigurować adaptacyjną ochronę sieci w Azure Security Center.
@@ -30,10 +30,12 @@ Adaptacyjne zwiększanie przepustowości sieci zapewnia rekomendacje w celu dals
 
 Załóżmy na przykład, że istniejąca reguła sieciowej grupy zabezpieczeń ma zezwalać na ruch z 140.20.30.10/24 na porcie 22. Zalecane zalecenie dotyczące ograniczania przepustowości sieci oparte na analizie zawęża zakres i zezwala na ruch z 140.23.30.10/29 — który jest węższym zakresem adresów IP i odmówi cały ruch do tego portu.
 
+>[!TIP]
+> Zalecenia dotyczące zabezpieczania sieci adaptacyjnej są obsługiwane tylko na określonych portach. Aby uzyskać pełną listę, zobacz, [które porty są obsługiwane?](#which-ports-are-supported) poniżej. 
+
+
 ![Widok ograniczania funkcjonalności sieci](./media/security-center-adaptive-network-hardening/traffic-hardening.png)
 
-> [!NOTE]
-> Zalecenia z adaptacyjnymi ograniczeniami sieci są obsługiwane przez następujące porty: 22, 3389, 21, 23, 445, 4333, 3306, 1433, 1434, 53, 20, 5985, 5986, 5432, 139, 66, 1128
 
 ## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>Wyświetl alerty i reguły ograniczania przepustowości sieci
 
@@ -73,7 +75,7 @@ Załóżmy na przykład, że istniejąca reguła sieciowej grupy zabezpieczeń m
     ![Wymuś reguły](./media/security-center-adaptive-network-hardening/enforce-hard-rule2.png)
 
 
-### Modyfikowanie reguły <a name ="modify-rule"></a>
+### Modyfikowanie reguły <a name ="modify-rule"> </a>
 
 Możesz chcieć zmodyfikować parametry reguły, która została zalecana. Na przykład możesz chcieć zmienić zalecane zakresy adresów IP.
 
@@ -106,7 +108,7 @@ Niektóre ważne wskazówki dotyczące modyfikowania reguły ograniczania funkcj
 
     ![Wymuś regułę](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 
-### Dodaj nową regułę <a name ="add-rule"></a>
+### Dodaj nową regułę <a name ="add-rule"> </a>
 
 Można dodać regułę "Zezwalaj", która nie jest zalecana przez Security Center.
 
@@ -129,7 +131,7 @@ Można dodać regułę "Zezwalaj", która nie jest zalecana przez Security Cente
     ![Wymuś regułę](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 
 
-### Usuwanie reguły <a name ="delete-rule"></a>
+### Usuwanie reguły <a name ="delete-rule"> </a>
 
 W razie potrzeby można usunąć zalecaną regułę dla bieżącej sesji. Na przykład można określić, że stosowanie sugerowanej reguły może blokować wiarygodny ruch.
 
@@ -139,11 +141,72 @@ W razie potrzeby można usunąć zalecaną regułę dla bieżącej sesji. Na prz
 
     ![zasady ograniczania funkcjonalności](./media/security-center-adaptive-network-hardening/delete-hard-rule.png)
 
-
-
-
-
-
-
  
 
+## <a name="which-ports-are-supported"></a>Które porty są obsługiwane?
+
+Zalecenia dotyczące zabezpieczania sieci adaptacyjnej są obsługiwane tylko na określonych portach. W tej tabeli przedstawiono pełną listę:
+
+|Port|Protokół|Skojarzona usługa|
+|:---:|:----:|:----|
+|13|UDP|Usługa Daytime|
+|17|UDP|QOTD — protokół|
+|19|UDP|Protokół CHARGEN|
+|22|TCP|Protokół SSH|
+|23|TCP|Program|
+|53|UDP|DNS|
+|69|UDP|TFTP|
+|81|TCP|Potencjalnie złośliwe (węzeł wyjścia sieci TOR)|
+|111|TCP/UDP|RPC|
+|119|TCP|SERWERÓW|
+|123|UDP|NTP|
+|135|TCP/UDP|Mapowanie punktów końcowych; RPC DCE|
+|137|TCP/UDP|Usługa nazw NetBIOS|
+|138|TCP/UDP|Usługa datagramów NetBIOS|
+|139|TCP|Usługa sesji NetBIOS|
+|161|TCP/UDP|SNMP|
+|162|TCP/UDP|SNMP|
+|389|TCP|LDAP|
+|445|TCP|SMB|
+|512|TCP|Rexec|
+|514|TCP|Powłoka zdalna|
+|593|TCP/UDP|HTTP RPC|
+|636|TCP|LDAP|
+|873|TCP|rsync|
+|1433|TCP|MS SQL|
+|1434|UDP|MS SQL|
+|1900|UDP|Użycie SSDP|
+|1900|UDP|Użycie SSDP|
+|2049|TCP/UDP|NFS|
+|2301|TCP|Usługa zarządzania Compaq|
+|2323|TCP|3W — nfsd|
+|2381|TCP|Usługa zarządzania Compaq|
+|3268|TCP|LDAP|
+|3306|TCP|MySQL|
+|3389|TCP|RDP|
+|4333|TCP|mSQL|
+|5353|UDP|mDNS|
+|5432|TCP|PostgreSQL|
+|5555|TCP|Agent osobisty; HP OmniBack|
+|5800|TCP|VNC|
+|5900|TCP|Bufor ramki zdalnego; VNC|
+|5900|TCP|VNC|
+|5985|TCP|Windows PowerShell|
+|5986|TCP|Windows PowerShell|
+|6379|TCP|Redis|
+|6379|TCP|Redis|
+|7000|TCP|Cassandra|
+|7001|TCP|Cassandra|
+|7199|TCP|Cassandra|
+|8081|TCP|CosmosDB Administrator Sun proxy|
+|8089|TCP|Splunk|
+|8545|TCP|Potencjalnie złośliwe (Cryptominer)|
+|9042|TCP|Cassandra|
+|9160|TCP|Cassandra|
+|9300|TCP|Elasticsearch|
+|11211|UDP|Memcached|
+|16379|TCP|Redis|
+|26379|TCP|Redis|
+|27017|TCP|MongoDB|
+|37215|TCP|Potencjalnie złośliwe|
+||||

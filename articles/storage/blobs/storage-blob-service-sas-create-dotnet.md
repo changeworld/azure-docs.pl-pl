@@ -10,18 +10,18 @@ ms.date: 12/20/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 0d911d67eeaeae4b48198e95dc3df01e4740dc00
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 10045a760d7e0fcb02a754bc9bb52a5ebca970f4
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75372078"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137215"
 ---
 # <a name="create-a-service-sas-for-a-container-or-blob-with-net"></a>Tworzenie sygnatury dostępu współdzielonego usługi dla kontenera lub obiektu BLOB przy użyciu platformy .NET
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-W tym artykule pokazano, jak za pomocą klucza konta magazynu utworzyć sygnaturę dostępu współdzielonego dla kontenera lub obiektu BLOB za pomocą [biblioteki klienta usługi Azure Storage dla platformy .NET](/dotnet/api/overview/azure/storage/client).
+W tym artykule pokazano, jak za pomocą klucza konta magazynu utworzyć sygnaturę dostępu współdzielonego dla kontenera lub obiektu BLOB za pomocą [biblioteki klienta usługi Azure Storage dla platformy .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet).
 
 ## <a name="create-a-service-sas-for-a-blob-container"></a>Tworzenie sygnatury dostępu współdzielonego usługi dla kontenera obiektów BLOB
 

@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6280f3784247b671521a4994be1f233d4913d90c
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: f6953fb5d016c802db260c55bc4970c3f029ab1a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194504"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240828"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>Microsoft Identity platform (v 2.0) — Omówienie
 
@@ -33,7 +33,7 @@ Platforma tożsamości firmy Microsoft jest ewolucją platformy deweloperskiej A
   - Konta społecznościowe lub lokalne (za pośrednictwem Azure AD B2C)
 - **Biblioteki Open Source**: biblioteki uwierzytelniania firmy Microsoft (MSAL) i obsługa innych bibliotek zgodnych ze standardami
 - **Portal zarządzania aplikacjami**: środowisko rejestracji i konfiguracji wbudowane w Azure Portal oraz wszystkie inne możliwości zarządzania platformy Azure.
-- **Interfejs API konfiguracji aplikacji i program PowerShell**: umożliwiające programistyczną konfigurację aplikacji za poorednictwem interfejsu API REST (Microsoft Graph i Azure Active Directory Graph 1,6) i programu PowerShell, dzięki czemu można zautomatyzować zadania DevOps.
+- **Interfejs API konfiguracji aplikacji i program PowerShell**: umożliwiające programistyczną konfigurację aplikacji za pomocą interfejsu API Microsoft Graph i programu PowerShell, dzięki czemu można zautomatyzować zadania DevOps.
 - **Zawartość dla deweloperów**: Dokumentacja dotycząca pojęć i referencyjnych, przykłady przewodnika Szybki Start, przykłady kodu, samouczki i przewodniki dotyczące wykonywania instrukcji.
 
 W przypadku deweloperów platforma tożsamości firmy Microsoft oferuje bezproblemową integrację innowacji w zakresie tożsamości i miejsca zabezpieczeń, takich jak uwierzytelnianie bez hasła, uwierzytelnianie krok po kroku i dostęp warunkowy.  Nie musisz wprowadzać takich funkcji samodzielnie: Aplikacje zintegrowane z platformą tożsamości firmy Microsoft w sposób natywny wykorzystują takie innowacje.

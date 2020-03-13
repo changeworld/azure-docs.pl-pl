@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: b432f381bae79d783663130d06dbf874f00a9994
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
-ms.translationtype: HT
+ms.openlocfilehash: 5083dc79b146598142ac27eb6ac7ef9ed436f37d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128688"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251559"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Wskazówki dotyczące migracji dotyczące przenoszenia z Media Services V2 do wersji v3
 
@@ -67,7 +67,7 @@ Jeśli masz już zainstalowaną usługę wideo na [starszej wersji interfejsów 
     * Wyświetl [zasoby](assets-concept.md)v3 (nie Zarządzaj), 
     * [Uzyskaj informacje na temat uzyskiwania dostępu do interfejsów API](access-api-portal.md). 
 
-W przypadku wszystkich innych zadań zarządzania (na przykład [transformacji i zadań](transforms-jobs-concept.md) oraz [ochrony zawartości](content-protection-overview.md)) należy użyć [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), [interfejsu wiersza polecenia](https://aka.ms/ams-v3-cli-ref)lub jednego z obsługiwanych [zestawów SDK](media-services-apis-overview.md#sdks).
+    W przypadku wszystkich innych zadań zarządzania (na przykład [transformacji i zadań](transforms-jobs-concept.md) oraz [ochrony zawartości](content-protection-overview.md)) należy użyć [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), [interfejsu wiersza polecenia](https://aka.ms/ams-v3-cli-ref)lub jednego z obsługiwanych [zestawów SDK](media-services-apis-overview.md#sdks).
 * Musisz zainicjować obsługę jednostek zarezerwowanych multimediów (MRUs) na koncie, aby kontrolować współbieżność i wydajność zadań, w szczególności na potrzeby analizy wideo lub audio. Aby uzyskać więcej informacji, zobacz [Scaling Media Processing](../previous/media-services-scale-media-processing-overview.md) (Skalowanie przetwarzania multimediów). MRUs można zarządzać za pomocą [interfejsu wiersza polecenia 2,0 dla Media Services v3](media-reserved-units-cli-how-to.md)przy użyciu [Azure Portal](../previous/media-services-portal-scale-media-processing.md)lub przy użyciu [interfejsów API v2](../previous/media-services-dotnet-encoding-units.md). Należy udostępnić MRUs, niezależnie od tego, czy są Media Services używane interfejsy API w wersji 2 i v3.
 * Media Services jednostek utworzonych za pomocą interfejsu API V3 nie można zarządzać za pomocą interfejsu API v2.  
 * Nie wszystkie jednostki w interfejsie API v2 są automatycznie wyświetlane w interfejsie API v3.  Poniżej przedstawiono przykłady jednostek w dwóch niezgodnych wersjach:  

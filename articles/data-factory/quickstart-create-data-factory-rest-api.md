@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 06/10/2019
 ms.author: jingwang
 ms.openlocfilehash: fbfd3e2577655e8cfccd84fffe2971ff509bd2f4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977457"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240772"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Szybki Start: Tworzenie fabryki danych Azure i potoku przy użyciu interfejsu API REST
 
@@ -188,7 +188,7 @@ Oto przykładowe dane wyjściowe:
     "etag":"07011a57-0000-0100-0000-5d6e14a20000"
 }
 ```
-## <a name="create-datasets"></a>Utwórz zestawy danych
+## <a name="create-datasets"></a>Tworzenie zestawów danych
 
 Zdefiniuj zestaw danych, który reprezentuje dane do skopiowania ze źródła do ujścia. W tym przykładzie utworzysz dwa zestawy danych: InputDataset i OutputDataset. Odwołują się one do połączonej usługi Azure Storage utworzonej w poprzedniej sekcji. Wejściowy zestaw danych reprezentuje dane źródłowe w folderze wejściowym. W definicji wejściowego zestawu danych określany jest kontener obiektów BLOB (adftutorial), folder (Input) i plik (EMP. txt), który zawiera dane źródłowe. Wyjściowy zestaw danych reprezentuje dane, które są kopiowane do lokalizacji docelowej. W definicji wyjściowego zestawu danych należy określić kontener obiektów BLOB (adftutorial), folder (Output) i plik, do którego kopiowane są dane.
 

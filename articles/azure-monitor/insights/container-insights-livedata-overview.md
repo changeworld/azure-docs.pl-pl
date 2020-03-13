@@ -3,12 +3,12 @@ title: Wyświetlanie danych na żywo (wersja zapoznawcza) za pomocą Azure Monit
 description: W tym artykule opisano widok Kubernetes dzienników, zdarzeń i metryk w czasie rzeczywistym bez używania polecenia kubectl w Azure Monitor for Containers.
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 18ae091a32d0256288d27ad1439ffc7be26db5f1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9e7c7a7b7bf276b3451cee1d289b8b07ac0f40ba
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75404751"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79216538"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>Jak wyświetlać dzienniki Kubernetes, zdarzenia i metryki pod względem czasu rzeczywistego
 
@@ -26,7 +26,7 @@ Aby uzyskać pomoc w konfigurowaniu lub rozwiązywaniu problemów dotyczących a
 
 ## <a name="live-data-preview-functionality-overview"></a>Przegląd funkcji danych na żywo (wersja zapoznawcza)
 
-### <a name="search"></a>Search
+### <a name="search"></a>Wyszukiwanie
 
 ![Przykład filtru okienka konsoli danych dynamicznych](./media/container-insights-livedata-overview/livedata-pane-filter-example.png)
 
@@ -65,7 +65,7 @@ Po pomyślnym uwierzytelnieniu okienko konsoli dane dynamiczne (wersja zapoznawc
 
 W tytule okienka wyświetlana jest nazwa, pod którą jest zgrupowany kontener.
 
-## <a name="view-events"></a>Wyświetl wydarzenia
+## <a name="view-events"></a>Wyświetlanie zdarzeń
 
 Dane zdarzeń w czasie rzeczywistym można wyświetlać w miarę ich generowania przez aparat kontenera z **węzłów**, **kontrolerów**, **kontenerów**i **wdrożeń (wersja zapoznawcza)** , gdy jest zaznaczone kontenery, na przykład, ReplicaSet, elementu daemonset, zadanie, CronJob lub wdrożenie. Aby wyświetlić zdarzenia, wykonaj następujące czynności.
 
@@ -84,7 +84,7 @@ Po pomyślnym uwierzytelnieniu okienko konsoli dane dynamiczne (wersja zapoznawc
     
 Jeśli wybrany obiekt jest kontenerem, wybierz opcję **zdarzenia** w okienku. Jeśli wybrano węzeł, pod lub kontroler, Wyświetlanie zdarzeń jest automatycznie wybierane. 
 
-    ![Controller properties pane view events](./media/container-insights-livedata-overview/controller-properties-live-events.png)  
+![Okienko właściwości kontrolera — zdarzenia](./media/container-insights-livedata-overview/controller-properties-live-event.png)  
 
 W tytule okienka wyświetlana jest nazwa, pod którą jest zgrupowany kontener.
 
@@ -113,6 +113,6 @@ Po pomyślnym uwierzytelnieniu okienko konsoli dane dynamiczne (wersja zapoznawc
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby kontynuować, jak używać usługi Azure Monitor i monitorowanie innych aspektów wybranego działania klastra usługi AKS, zobacz [widok usługi Azure Kubernetes Service health](container-insights-analyze.md).
+- Aby kontynuować uczenie się, jak używać Azure Monitor i monitorować inne aspekty klastra AKS, zobacz [Wyświetlanie usługi Azure Kubernetes Service Health](container-insights-analyze.md).
 
 - Wyświetl [przykłady zapytań dzienników](container-insights-log-search.md#search-logs-to-analyze-data) , aby wyświetlić wstępnie zdefiniowane zapytania i przykłady do tworzenia alertów, wizualizacji lub przeprowadzenia dalszej analizy klastrów.

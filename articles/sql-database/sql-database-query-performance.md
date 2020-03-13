@@ -1,6 +1,6 @@
 ---
 title: Szczegółowe informacje o wydajności zapytań
-description: Monitorowanie wydajności zapytań identyfikuje większość zapytań zużywających procesor CPU dla bazy danych SQL Azure.
+description: Program Query Performance Monitoring identyfikuje większość czasochłonnych i długotrwałych zapytań dla pojedynczych baz danych i w puli w usłudze Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -10,35 +10,31 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 01/03/2019
-ms.openlocfilehash: 56daca0aa817d03298bad971506402739d71482e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 03/10/2020
+ms.openlocfilehash: f5998fde6659715de4fcb533cb0f41a8939b1c48
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821252"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214057"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Szczegółowe informacje o wydajności zapytań Azure SQL Database
 
-Zarządzanie i dostrajanie wydajności relacyjnych baz danych wymaga znajomości i czasu. Szczegółowe informacje o wydajności zapytań jest częścią Azure SQL Database liniowej wydajności produktu. Pomaga poświęcać mniej czasu na rozwiązywanie problemów z wydajnością bazy danych, zapewniając:
+Szczegółowe informacje o wydajności zapytań oferuje inteligentne analizy zapytań dla baz danych z pojedynczym i pulą. Pomaga identyfikować największe zużywane zasoby i długotrwałe zapytania w obciążeniu. Dzięki temu można znaleźć zapytania, które mają zostać zoptymalizowane w celu poprawy ogólnej wydajności obciążeń i wydajnego użycia zastosowanego zasobu. Szczegółowe informacje o wydajności zapytań pomaga poświęcać mniej czasu na rozwiązywanie problemów z wydajnością bazy danych, zapewniając:
 
-* Dokładniejsze informacje o zużyciu zasobów baz danych (DTU).
-* Szczegóły dotyczące najważniejszych zapytań bazy danych według procesora CPU, czasu trwania i liczby wykonań (możliwe jest dostrojenie kandydatów na potrzeby ulepszeń wydajności).
-* Możliwość przechodzenia do szczegółów zapytania, aby wyświetlić tekst zapytania i historię użycia zasobów.
-* Adnotacje pokazujące zalecenia dotyczące wydajności [SQL Database Advisor](sql-database-advisor.md).
+* Dokładniejsze informacje o zużyciu zasobów baz danych (DTU)
+* Szczegóły dotyczące najważniejszych zapytań bazy danych według procesora CPU, czasu trwania i liczby wykonań (potencjalne sugestie kandydatów na potrzeby ulepszeń wydajności)
+* Możliwość przechodzenia do szczegółów zapytania, aby wyświetlić tekst zapytania i historię wykorzystania zasobów
+* Adnotacje pokazujące zalecenia dotyczące wydajności w [klasyfikatorach baz danych](sql-database-advisor.md)
 
 ![Szczegółowe informacje o wydajności zapytań](./media/sql-database-query-performance/opening-title.png)
-
-> [!TIP]
-> W przypadku podstawowego monitorowania wydajności przy użyciu Azure SQL Database zalecamy Szczegółowe informacje o wydajności zapytań. Zanotuj ograniczenia dotyczące produktu opublikowane w tym artykule. Aby uzyskać zaawansowane monitorowanie wydajności bazy danych na dużą skalę, zalecamy [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md). Ma wbudowaną analizę, która umożliwia automatyczne rozwiązywanie problemów z wydajnością. Aby automatycznie dostosowywać niektóre najczęstsze problemy z wydajnością bazy danych, zalecamy [dostrajanie automatyczne](sql-database-automatic-tuning.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Szczegółowe informacje o wydajności zapytań wymaga, aby [Magazyn zapytań](https://msdn.microsoft.com/library/dn817826.aspx) był aktywny w Twojej bazie danych. Domyślnie jest automatycznie włączona dla wszystkich baz danych usługi Azure SQL. Jeśli magazyn zapytań nie jest uruchomiony, Azure Portal wyświetli monit o jego włączenie.
 
 > [!NOTE]
-> Jeśli w portalu zostanie wyświetlony komunikat "magazyn zapytań jest niepoprawnie skonfigurowany w tej bazie danych", zobacz [Optymalizacja konfiguracji magazynu zapytań](#optimize-the-query-store-configuration-for-query-performance-insight).
->
+> Jeśli w portalu zostanie wyświetlony komunikat "magazyn zapytań jest niepoprawnie skonfigurowany w tej bazie danych", zobacz [Optymalizacja konfiguracji magazynu zapytań](#optimize-the-query-store-configuration).
 
 ## <a name="permissions"></a>Uprawnienia
 
@@ -65,6 +61,11 @@ Szczegółowe informacje o wydajności zapytań jest łatwe w użyciu:
 
 > [!NOTE]
 > Aby SQL Database renderować informacje w Szczegółowe informacje o wydajności zapytań, magazyn zapytań musi przechwycić kilka godzin. Jeśli baza danych nie ma działania lub magazyn zapytań był nieaktywny w określonym czasie, wykresy będą puste, gdy Szczegółowe informacje o wydajności zapytań wyświetla ten zakres czasu. Magazyn zapytań można włączyć w dowolnym momencie, jeśli nie jest uruchomiony. Aby uzyskać więcej informacji, zobacz [najlepsze rozwiązania z magazynem zapytań](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store).
+>
+
+W przypadku zaleceń dotyczących wydajności bazy danych wybierz pozycję [zalecenia](sql-database-advisor.md) w bloku nawigacji szczegółowe informacje o wydajności zapytań.
+
+![Karta zalecenia](./media/sql-database-query-performance/ia.png)
 
 ## <a name="review-top-cpu-consuming-queries"></a>Przeglądanie najważniejszych zapytań zużywających procesor CPU
 
@@ -72,9 +73,9 @@ Domyślnie Szczegółowe informacje o wydajności zapytań pokazuje pięć najwa
 
 1. Zaznacz lub wyczyść pojedyncze zapytania, aby dołączyć lub wykluczyć je z wykresu przy użyciu pól wyboru.
 
-    Górna linia pokazuje całkowity procent jednostek DTU dla bazy danych. Na paskach są wyświetlane wartości procentowe procesora, które zostały zużyte przez wybrane zapytania w wybranym interwale. Na przykład jeśli wybrano **ubiegły tydzień** , każdy pasek reprezentuje pojedynczy dzień.
+   Górna linia pokazuje całkowity procent jednostek DTU dla bazy danych. Na paskach są wyświetlane wartości procentowe procesora, które zostały zużyte przez wybrane zapytania w wybranym interwale. Na przykład jeśli wybrano **ubiegły tydzień** , każdy pasek reprezentuje pojedynczy dzień.
 
-    ![Najpopularniejsze zapytania](./media/sql-database-query-performance/top-queries.png)
+   ![Najpopularniejsze zapytania](./media/sql-database-query-performance/top-queries.png)
 
    > [!IMPORTANT]
    > Pokazana linia DTU jest agregowana do wartości maksymalnego zużycia w okresach jednogodzinnych. Jest to przeznaczone do porównania wysokiego poziomu tylko z statystykami wykonywania zapytań. W niektórych przypadkach użycie jednostek DTU może wydawać się zbyt wysokie w porównaniu do wykonywanych zapytań, ale może to nie być przypadek.
@@ -217,7 +218,7 @@ W niektórych przypadkach, ze względu na poziom powiększenia, istnieje możliw
 
 Skorelowane kwerendy i akcje dostrajania wydajności mogą pomóc w lepszym zrozumieniu obciążenia.
 
-## <a name="optimize-the-query-store-configuration-for-query-performance-insight"></a>Optymalizuj konfigurację magazynu zapytań dla Szczegółowe informacje o wydajności zapytań
+## <a name="optimize-the-query-store-configuration"></a>Optymalizowanie konfiguracji magazynu zapytań
 
 Podczas korzystania z Szczegółowe informacje o wydajności zapytań mogą pojawić się następujące komunikaty o błędach magazynu zapytań:
 
@@ -260,7 +261,7 @@ Zalecamy ustawienie dla wszystkich zasad opcji **autoi czyszczenia na 30** dni, 
 
 Zwiększ rozmiar magazynu zapytań, łącząc się z bazą danych za pomocą programu [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) lub Azure Portal i uruchamiając następujące zapytanie. (Zastąp `YourDB` nazwą bazy danych).
 
-```T-SQL
+```SQL
     ALTER DATABASE [YourDB]
     SET QUERY_STORE (MAX_STORAGE_SIZE_MB = 1024);
 ```
@@ -274,16 +275,6 @@ Zastosowanie tych ustawień spowoduje, że magazyn zapytań zbiera dane telemetr
     ALTER DATABASE [YourDB] SET QUERY_STORE CLEAR;
 ```
 
-## <a name="summary"></a>Podsumowanie
-
-Szczegółowe informacje o wydajności zapytań pomaga zrozumieć wpływ obciążeń związanych z zapytaniami i odnoszących się do użycia zasobów bazy danych. Korzystając z tej funkcji, dowiesz się więcej na temat najważniejszych zapytań w bazie danych i znajdziesz zapytania do optymalizacji, zanim staną się one problemem.
-
 ## <a name="next-steps"></a>Następne kroki
 
-* W przypadku zaleceń dotyczących wydajności bazy danych wybierz pozycję [zalecenia](sql-database-advisor.md) w bloku nawigacji szczegółowe informacje o wydajności zapytań.
-
-    ![Karta zalecenia](./media/sql-database-query-performance/ia.png)
-
-* Rozważ włączenie [dostrajania automatycznego](sql-database-automatic-tuning.md) dla typowych problemów z wydajnością bazy danych.
-* Dowiedz się, jak [Intelligent Insights](sql-database-intelligent-insights.md) może pomóc w automatycznym rozwiązywaniu problemów z wydajnością bazy danych.
-* Należy rozważyć użycie [Azure SQL Analytics]( ../azure-monitor/insights/azure-sql.md) do zaawansowanego monitorowania wydajności dużej floty baz danych SQL, pul elastycznych i wystąpień zarządzanych z wbudowaną inteligencją.
+Należy rozważyć użycie [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md) do zaawansowanego monitorowania wydajności dużej floty z pojedynczą i pulą baz danych, pul elastycznych, wystąpieniami zarządzanymi i bazami danych wystąpień.

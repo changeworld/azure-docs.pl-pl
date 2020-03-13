@@ -9,14 +9,16 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 03/28/2017
-ms.openlocfilehash: fa9c5e5fa84a1ea6718bd82cd349f9248d283722
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 061c340f8c4952d5a0f2a3873f7475e4f733c290
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168850"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204515"
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio-classic"></a>Jak przygotować model do wdrożenia w Azure Machine Learning Studio (klasyczny)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Azure Machine Learning Studio (klasyczny) oferuje narzędzia potrzebne do opracowania modelu analizy predykcyjnej, a następnie operacjonalizować go przez wdrożenie go jako usługi sieci Web platformy Azure.
 

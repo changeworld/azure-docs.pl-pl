@@ -7,11 +7,11 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 12/9/2019
 ms.openlocfilehash: ba091d05aa243fab08138c96827d2f657d9755de
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363555"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251507"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>Jak skonfigurować parametry serwera w Azure Database for MariaDB przy użyciu Azure Portal
 
@@ -41,12 +41,12 @@ Pula buforów InnoDB i Maksymalna liczba połączeń nie są konfigurowane i pow
 |---|---|---|
 |Podstawowa| 1| 1024|
 |Podstawowa| 2| 2560|
-|Ogólne zastosowanie| 2| 3584|
-|Ogólne zastosowanie| 4| 7680|
-|Ogólne zastosowanie| 8| 15360|
-|Ogólne zastosowanie| 16| 31232|
-|Ogólne zastosowanie| 32| 62976|
-|Ogólne zastosowanie| 64| 125952|
+|Ogólnego przeznaczenia| 2| 3584|
+|Ogólnego przeznaczenia| 4| 7680|
+|Ogólnego przeznaczenia| 8| 15360|
+|Ogólnego przeznaczenia| 16| 31232|
+|Ogólnego przeznaczenia| 32| 62976|
+|Ogólnego przeznaczenia| 64| 125952|
 |Pamięć| 2| 7168|
 |Pamięć| 4| 15360|
 |Pamięć| 8| 30720|

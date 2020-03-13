@@ -9,16 +9,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: f67351fa38543504d63dbf8d86c9537feea24a4f
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: b14759ed39037bfa172366a2ed8f8ca089786ec6
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312621"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137615"
 ---
 # <a name="event-hubs-net-framework-api-overview"></a>Omówienie interfejsu API Event Hubs .NET Framework
 
-W tym artykule przedstawiono podsumowanie najważniejszych interfejsów API usługi Azure Event Hubs [.NET Framework Client](https://www.nuget.org/packages/WindowsAzure.ServiceBus/). Istnieją dwie kategorie: zarządzanie i interfejsy API czasu wykonywania. Interfejsy API czasu wykonywania zawierają wszystkie operacje, które są konieczne do wysyłania i odbierania wiadomości. Operacje zarządzania umożliwiają zarządzanie Event Hubs stanem jednostki przez tworzenie, aktualizowanie i usuwanie jednostek.
+W tym artykule przedstawiono podsumowanie najważniejszych interfejsów API usługi Azure Event Hubs [.NET Framework Client](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/). Istnieją dwie kategorie: zarządzanie i interfejsy API czasu wykonywania. Interfejsy API czasu wykonywania zawierają wszystkie operacje, które są konieczne do wysyłania i odbierania wiadomości. Operacje zarządzania umożliwiają zarządzanie Event Hubs stanem jednostki przez tworzenie, aktualizowanie i usuwanie jednostek.
 
 [Scenariusze monitorowania](event-hubs-metrics-azure-monitor.md) obejmują zarówno zarządzanie, jak i czas wykonywania. Aby uzyskać szczegółowe informacje na temat dokumentacji dotyczącej interfejsów API platformy .NET, zobacz odwołania do [interfejsów api](/dotnet/api/microsoft.azure.eventhubs.processor) [.NET Framework](/dotnet/api/microsoft.servicebus.messaging.eventhubclient), [.NET Standard](/dotnet/api/microsoft.azure.eventhubs)i klasy eventprocessorhost.
 
@@ -26,7 +26,7 @@ W tym artykule przedstawiono podsumowanie najważniejszych interfejsów API usł
 
 Aby wykonać następujące operacje zarządzania, musisz mieć uprawnienia do **zarządzania** w przestrzeni nazw Event Hubs:
 
-### <a name="create"></a>Create
+### <a name="create"></a>Tworzenie
 
 ```csharp
 // Create the event hub
@@ -184,4 +184,4 @@ Aby dowiedzieć się więcej o scenariuszach usługi Event Hubs, skorzystaj z na
 Dokumentacja interfejsu API platformy .NET jest tutaj:
 
 * [Microsoft.ServiceBus.Messaging](/dotnet/api/microsoft.servicebus.messaging)
-* [Microsoft.Azure.EventHubs.EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost)
+* [Microsoft. Azure. EventHubs. klasy eventprocessorhost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost)

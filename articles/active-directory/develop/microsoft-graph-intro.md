@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
-ms.openlocfilehash: 65465c6897853617f7f33a989f97d01fb0518a5e
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 6c1b4390282f6d54178365714b1e2e665b4cf061
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78304422"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136504"
 ---
 # <a name="microsoft-graph-api"></a>Interfejs API Microsoft Graph
 
@@ -57,4 +57,4 @@ Po zakończeniu przewodnika Szybki Start masz aplikację, która jest gotowa do 
 
 Microsoft Graph Explorer to narzędzie oparte na sieci Web, za pomocą którego można tworzyć i testować żądania przy użyciu Microsoft Graph interfejsów API. Dostęp do Microsoft Graph Explorer można uzyskać w witrynie: `https://developer.microsoft.com/graph/graph-explorer`.
 
-Poster to narzędzie, za pomocą którego można tworzyć i testować żądania przy użyciu Microsoft Graph interfejsów API. Możesz pobrać wpis: `https://www.getpostman.com/`. Aby móc korzystać z Microsoft Graph w programie Poster, Użyj kolekcji Microsoft Graph w programie Poster. Aby uzyskać więcej informacji, zobacz [Korzystanie z programu Poster przy użyciu interfejsu API Microsoft Graph](https://docs.microsoft.comgraph/use-postman?context=graph%2Fapi%2Fbeta&view=graph-rest-beta).
+Poster to narzędzie, za pomocą którego można tworzyć i testować żądania przy użyciu Microsoft Graph interfejsów API. Możesz pobrać wpis: `https://www.getpostman.com/`. Aby móc korzystać z Microsoft Graph w programie Poster, Użyj kolekcji Microsoft Graph w programie Poster. Aby uzyskać więcej informacji, zobacz [Korzystanie z programu Poster przy użyciu interfejsu API Microsoft Graph](/graph/use-postman?context=graph%2Fapi%2Fbeta&view=graph-rest-beta).

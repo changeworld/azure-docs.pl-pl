@@ -3,14 +3,14 @@ title: Tworzenie zapytań dotyczących dzienników usługi Azure Update Manageme
 description: W tym artykule opisano sposób wykonywania zapytań w dziennikach pod kątem Update Management w obszarze roboczym Log Analytics.
 services: automation
 ms.subservice: update-management
-ms.date: 01/10/2020
+ms.date: 03/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5a1979b0e714f35694999c04e1f890b710d54ac9
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: f31168d47f31d8e740c95cb3d9e449f473cc78dc
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867064"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79216842"
 ---
 # <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>Kwerendy aktualizacji rekordów dla Update Management w dziennikach Azure Monitor
 
@@ -28,10 +28,10 @@ Tworzony jest rekord typu `RequiredUpdate`, który reprezentuje aktualizacje wym
 
 | Właściwość | Opis | 
 |----------|-------------|
-| Computer (Komputer) | W pełni kwalifikowana nazwa domeny komputera raportowania. |
+| Computer | W pełni kwalifikowana nazwa domeny komputera raportowania. |
 | KBID | Identyfikator artykułu bazy wiedzy dla usługi Windows Update. |
 | ManagementGroupName | Nazwa grupy zarządzania Operations Manager lub Log Analytics obszaru roboczego. | 
-| Produkt | Produkty, dla których ma zastosowanie aktualizacja. | 
+| Product (Produkt) | Produkty, dla których ma zastosowanie aktualizacja. | 
 | PublishDate | Data gotowości do pobrania i zainstalowania aktualizacji z Windows Update. |
 | Serwer | | 
 | SourceHealthServiceId | Unikatowy identyfikator reprezentujący identyfikator Log Analytics agenta systemu Windows. |
@@ -40,7 +40,7 @@ Tworzony jest rekord typu `RequiredUpdate`, który reprezentuje aktualizacje wym
 | TimeGenerated | Data i godzina utworzenia rekordu. | 
 | Typ | *Aktualizacja* | 
 | UpdateClassification | Wskazuje typ aktualizacji, które mogą być stosowane. W przypadku systemu Windows:<br> *Aktualizacje krytyczne*<br> *Aktualizacje zabezpieczeń*<br> *Pakiety zbiorcze aktualizacji*<br> *Pakiety Feature Pack*<br> *Dodatki Service Pack*<br> *Aktualizacje definicji*<br> *Narzędzia*<br> *Aktualizacje*. W przypadku systemu Linux:<br> *Aktualizacje krytyczne i zabezpieczeń*<br> *Inne* |
-| UpdateSeverity | Klasyfikacja ważności luki w zabezpieczeniach. Wartości to:<br> *Najistotniejsz*<br> *Ważne*<br> *Umiarkowany*<br> *Niski* |
+| UpdateSeverity | Klasyfikacja ważności luki w zabezpieczeniach. Wartości to:<br> *Najistotniejsz*<br> *Ważne*<br> *Zawartość*<br> *Małą* |
 | UpdateTitle | Tytuł aktualizacji.|
 
 ### <a name="update"></a>Aktualizacja
@@ -52,15 +52,15 @@ Tworzony jest rekord typu `Update`, który reprezentuje dostępne aktualizacje i
 | ApprovalSource | Dotyczy tylko systemu operacyjnego Windows. Wartość jest *Microsoft Update*. |
 | Approved (Zatwierdzono) | *Prawda* lub *Fałsz* |
 | Klasyfikacja | *Aktualizacje* |
-| Computer (Komputer) | W pełni kwalifikowana nazwa domeny komputera raportowania. |
+| Computer | W pełni kwalifikowana nazwa domeny komputera raportowania. |
 | ComputerEnvironment | *Azure* lub *innym niż Azure*. |
 | MSRCBulletinID | Numer IDENTYFIKACYJNy biuletynu zabezpieczeń | 
-| MSRCSeverity | Klasyfikacja ważności luki w zabezpieczeniach. Wartości to:<br> *Najistotniejsz*<br> *Ważne*<br> *Umiarkowany*<br> *Niski* |  
+| MSRCSeverity | Klasyfikacja ważności luki w zabezpieczeniach. Wartości to:<br> *Najistotniejsz*<br> *Ważne*<br> *Zawartość*<br> *Małą* |  
 | KBID | Identyfikator artykułu bazy wiedzy dla usługi Windows Update. |
 | ManagementGroupName | Nazwa grupy zarządzania Operations Manager lub Log Analytics obszaru roboczego. |
 | UpdateID | Unikatowy identyfikator aktualizacji oprogramowania. |
 | RevisionNumber | Numer poprawki określonej poprawki aktualizacji. |
-| Opcjonalne | *Prawda* lub *Fałsz* | 
+| Optional (Opcjonalność) | *Prawda* lub *Fałsz* | 
 | RebootBehavior | Zachowanie ponownego uruchomienia po zainstalowaniu/odinstalowaniu aktualizacji. |
 | _ResourceId | Unikatowy identyfikator zasobu, z którym jest skojarzony rekord. |
 | Typ | *Aktualizacja* |
@@ -73,7 +73,7 @@ Tworzony jest rekord typu `Update`, który reprezentuje dostępne aktualizacje i
 | Tytuł | Tytuł aktualizacji. |
 | PublishedDate (UTC) | Data gotowości do pobrania i zainstalowania aktualizacji z Windows Update.  |
 | UpdateState | Bieżący stan aktualizacji. | 
-| Produkt | Produkty, dla których ma zastosowanie aktualizacja. |
+| Product (Produkt) | Produkty, dla których ma zastosowanie aktualizacja. |
 | SubscriptionId | Unikatowy identyfikator subskrypcji platformy Azure. | 
 | ResourceGroup | Nazwa grupy zasobów, do której należy zasób. | 
 | ResourceProvider | Określa dostawcę zasobów. | 
@@ -88,7 +88,7 @@ Tworzony jest rekord typu `UpdateAgent`, który zawiera szczegółowe informacje
 |----------|-------------|
 | AgeofOldestMissingRequiredUpdate | | 
 | AutomaticUpdateEnabled | | 
-| Computer (Komputer) | W pełni kwalifikowana nazwa domeny komputera raportowania. |
+| Computer | W pełni kwalifikowana nazwa domeny komputera raportowania. |
 | DaySinceLastUpdateBucket | | 
 | ManagementGroupName | Nazwa grupy zarządzania Operations Manager lub Log Analytics obszaru roboczego. |
 | OSVersion | Wersja systemu operacyjnego. |
@@ -107,7 +107,7 @@ Tworzony jest rekord typu `UpdateRunProgress`, który zapewnia stan wdrożenia a
 
 | Właściwość | Opis | 
 |----------|-------------|
-| Computer (Komputer) | W pełni kwalifikowana nazwa domeny komputera raportowania. |
+| Computer | W pełni kwalifikowana nazwa domeny komputera raportowania. |
 | ComputerEnvironment | *Azure* lub *innym niż Azure*. | 
 | CorrelationId | Unikatowy identyfikator zadania elementu Runbook uruchomionego dla aktualizacji. |
 | EndTime | Godzina, o której zakończył się proces synchronizacji. | 
@@ -116,7 +116,7 @@ Tworzony jest rekord typu `UpdateRunProgress`, który zapewnia stan wdrożenia a
 | KBID | Identyfikator artykułu bazy wiedzy dla usługi Windows Update. | 
 | ManagementGroupName | Nazwa grupy zarządzania Operations Manager lub Log Analytics obszaru roboczego. |
 | OSType | Określa typ systemu operacyjnego, *Windows* lub *Linux*. | 
-| Produkt | Produkty, dla których ma zastosowanie aktualizacja. |
+| Product (Produkt) | Produkty, dla których ma zastosowanie aktualizacja. |
 | Zasób | Nazwa zasobu. | 
 | ResourceId | Unikatowy identyfikator zasobu, z którym jest skojarzony rekord. |
 | ResourceProvider | Określa dostawcę zasobów. | 
@@ -139,13 +139,13 @@ Tworzony jest rekord typu `UpdateSummary`, który udostępnia podsumowanie aktua
 
 | Właściwość | Opis | 
 |----------|-------------|
-| Computer (Komputer) | W pełni kwalifikowana nazwa domeny komputera raportowania. |
+| Computer | W pełni kwalifikowana nazwa domeny komputera raportowania. |
 | ComputerEnvironment | *Azure* lub *innym niż Azure*. | 
 | CriticalUpdatesMissing | Liczba krytycznych aktualizacji, które mają zastosowanie. | 
 | ManagementGroupName | Nazwa grupy zarządzania Operations Manager lub Log Analytics obszaru roboczego. |
 | NETRuntimeVersion | Wersja .NET Framework zainstalowana na komputerze z systemem Windows. |
-| OldestMissingSecurityUpdateBucket | | 
-| OldestMissingSecurityUpdateInDays | |
+| OldestMissingSecurityUpdateBucket | Wartości to:<br> *Najnowsze*<br> *30 dni temu*<br> *60 dni temu*<br> *Starsze* | 
+| OldestMissingSecurityUpdateInDays | Całkowita liczba dni dla najstarszej wykrytej aktualizacji, która nie została zainstalowana. |
 | OsVersion | Wersja systemu operacyjnego. |
 | OtherUpdatesMissing | Brak liczby wykrytych aktualizacji. |
 | Zasób |  Nazwa zasobu. | 
@@ -182,7 +182,7 @@ Heartbeat
 | where OSType == "Linux" | summarize arg_max(TimeGenerated, *) by SourceComputerId | top 500000 by Computer asc | render table
 ```
 
-#### <a name="windows"></a>Windows
+#### <a name="windows"></a>System Windows
 
 ```loganalytics
 Heartbeat
@@ -192,7 +192,7 @@ Heartbeat
 Na komputerze z systemem Windows można przejrzeć następujące informacje w celu zweryfikowania łączności agentów z dziennikami Azure Monitor:
 
 1. W panelu sterowania Otwórz **Microsoft Monitoring Agent**. Na karcie **log Analytics Azure** Agent wyświetli następujący komunikat: **Microsoft Monitoring Agent pomyślnie nawiązał połączenie z log Analytics**.
-2. Otwórz dziennik zdarzeń systemu Windows. Przejdź do pozycji **Application and Services Logs\Operations Manager** i Wyszukaj zdarzenia o identyfikatorze 3000 i identyfikatorze 5002 z **łącznika usługi**źródłowej. Te zdarzenia informują o tym, że komputer został zarejestrowany w obszarze roboczym usługi Log Analytics i odbiera konfigurację.
+2. Otwórz dziennik zdarzeń systemu Windows. Przejdź do pozycji **Application and Services Logs\Operations Manager** i Wyszukaj zdarzenia o identyfikatorze 3000 i identyfikatorze 5002 z **łącznika usługi**źródłowej. Te zdarzenia wskazują, że komputer został zarejestrowany w obszarze roboczym Log Analytics i otrzymuje konfigurację.
 
 Jeśli Agent nie może komunikować się z dziennikami Azure Monitor i Agent jest skonfigurowany do komunikacji z Internetem za pomocą zapory lub serwera proxy, upewnij się, że zapora lub serwer proxy zostały prawidłowo skonfigurowane. Aby dowiedzieć się, jak upewnić się, że zapora lub serwer proxy są prawidłowo skonfigurowane, zobacz [Konfiguracja sieci dla agenta systemu Windows](../azure-monitor/platform/agent-windows.md) lub [Konfiguracja sieci dla agentów](../log-analytics/log-analytics-agent-linux.md)z systemem Linux.
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 ms.date: 01/25/2019
-ms.openlocfilehash: eca2dbe7589fdc7d59a84d21ecf59749d986ade9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7429a9d5e9a803f0e9a6f900c5d81e77e7477a48
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826408"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214501"
 ---
 # <a name="set-up-and-use-azure-monitor-logs-with-a-multitenant-sql-database-saas-app"></a>Konfigurowanie i używanie dzienników Azure Monitor z wielodostępnym SQL Database aplikacji SaaS
 
@@ -24,7 +24,7 @@ W tym samouczku przedstawiono Konfigurowanie [dzienników Azure monitor](/azure/
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Instalowanie i Konfigurowanie dzienników Azure Monitor.
@@ -41,7 +41,7 @@ Zapoznaj się z [samouczkiem dotyczącym monitorowania i zarządzania wydajnośc
 
 W przypadku Azure SQL Database, monitorowanie i alerty są dostępne w bazach danych i pulach w Azure Portal. To wbudowane monitorowanie i alerty jest wygodne, ale jest również specyficzne dla zasobów. Oznacza to, że jest mniej dobrze dostosowany do monitorowania dużych instalacji lub zapewnienia ujednoliconego widoku w ramach zasobów i subskrypcji.
 
-W przypadku scenariuszy o dużej ilości można użyć dzienników Azure Monitor do monitorowania i generowania alertów. Azure Monitor to oddzielna usługa platformy Azure, która umożliwia analizowanie danych z dzienników diagnostycznych i danych telemetrycznych zebranych w obszarze roboczym z potencjalnie wielu usług. Dzienniki Azure Monitor udostępniają wbudowane narzędzia do wizualizacji danych, które umożliwiają analizę danych operacyjnych. Rozwiązanie SQL Analytics zawiera kilka wstępnie zdefiniowanych pul elastycznych i monitorowania baz danych oraz wyświetlenie alertów i zapytań. Dzienniki Azure Monitor udostępniają również projektanta widoków niestandardowych.
+W przypadku scenariuszy o dużej ilości można użyć dzienników Azure Monitor do monitorowania i generowania alertów. Azure Monitor to oddzielna usługa platformy Azure, która umożliwia analizowanie za pośrednictwem dzienników zebranych w obszarze roboczym z potencjalnie wielu usług. Dzienniki Azure Monitor udostępniają wbudowane narzędzia do wizualizacji danych, które umożliwiają analizę danych operacyjnych. Rozwiązanie SQL Analytics zawiera kilka wstępnie zdefiniowanych pul elastycznych i monitorowania baz danych oraz wyświetlenie alertów i zapytań. Dzienniki Azure Monitor udostępniają również projektanta widoków niestandardowych.
 
 Obszary robocze OMS są teraz nazywane obszarami roboczymi usługi Log Analytics. Log Analytics obszary robocze i rozwiązania do analiz otwierają się w Azure Portal. Azure Portal to nowszy punkt dostępu, ale może znajdować się za portalem pakietu Operations Management Suite w niektórych obszarach.
 
@@ -93,7 +93,7 @@ W tym ćwiczeniu Otwórz Log Analytics obszar roboczy w Azure Portal, aby wyszuk
 
 1. Wybierz kafelek **Azure SQL Analytics** , aby go otworzyć.
 
-    ![Kafelek przegląd](media/saas-dbpertenant-log-analytics/overview.png)
+    ![Kafelek Omówienie](media/saas-dbpertenant-log-analytics/overview.png)
 
 1. Widoki w rozwiązaniu przesuwają się w bok z własnym wewnętrznym paskiem przewijania u dołu. W razie potrzeby Odśwież stronę.
 
@@ -128,7 +128,7 @@ W tym ćwiczeniu Otwórz Log Analytics obszar roboczy w Azure Portal, aby wyszuk
 
 1. W obszarze roboczym Log Analytics wybierz pozycję **Portal pakietu OMS** , aby otworzyć obszar roboczy.
 
-    ![Log Analytics obszar roboczy](media/saas-dbpertenant-log-analytics/log-analytics-workspace-oms-portal.png)
+    ![Obszar roboczy usługi Log Analytics](media/saas-dbpertenant-log-analytics/log-analytics-workspace-oms-portal.png)
 
 W obszarze roboczym Log Analytics można bardziej szczegółowo eksplorować dane dziennika i metryki. 
 

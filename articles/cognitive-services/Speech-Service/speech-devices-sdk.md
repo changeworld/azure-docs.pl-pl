@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: erhopf
-ms.openlocfilehash: 43d08b466076672587e7f6545193e326283c0031
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: 40179c7d421a26fd9a77b435668f75ec6fde8ab1
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78330791"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136977"
 ---
 # <a name="about-the-speech-devices-sdk"></a>Informacje o zestawie Speech Devices SDK
 
@@ -39,7 +39,7 @@ Zestaw SDK urządzeń mowy umożliwia korzystanie z różnych scenariuszy z obs�
 
 W przypadku systemu Android urządzenia pobierają najnowszą wersję [zestawu SDK urządzeń z systemem Android Speech](https://aka.ms/sdsdk-download-android).
 
-### <a name="windows"></a>Windows
+### <a name="windows"></a>System Windows
 
 W przypadku systemu Windows Przykładowa aplikacja jest udostępniana jako aplikacja Java dla wielu platform. Pobierz najnowszą wersję [zestawu SDK urządzeń mowy środowiska JRE](https://aka.ms/sdsdk-download-JRE).
 Aplikacja została skompilowana przy użyciu pakietu zestawu Speech SDK, a środowisko IDE środowiska Java (v4) w systemie 64-bitowym. Działa ona w 64-bitowym środowisku uruchomieniowym Java 8 języka Java (JRE).
@@ -49,7 +49,7 @@ Aplikacja została skompilowana przy użyciu pakietu zestawu Speech SDK, a środ
 W przypadku systemu Linux Przykładowa aplikacja jest udostępniana jako aplikacja w języku Java dla wielu platform. Pobierz najnowszą wersję [zestawu SDK urządzeń mowy środowiska JRE](https://aka.ms/sdsdk-download-JRE).
 Aplikacja została skompilowana przy użyciu pakietu SDK mowy, a środowisko IDE języka Java (v4) w systemie 64-bitowym Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8). Działa ona w 64-bitowym środowisku uruchomieniowym Java 8 języka Java (JRE).
 
-Dodatkowe pliki binarne są udostępniane do obsługi nadchodzących urządzeń, [zestawu DDK dla systemu roobo v2](https://aka.ms/sdsdk-download-roobov2)i [zestawu DDK Urbetter](https://aka.ms/sdsdk-download-urbetter).
+Dodatkowe pliki binarne są udostępniane do obsługi nadchodzących urządzeń, [roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2), [Urbetter DDK](https://aka.ms/sdsdk-download-urbetter)i [GGEC](https://aka.ms/sdsdk-download-speaker).
 
 ## <a name="next-steps"></a>Następne kroki
 

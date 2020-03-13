@@ -10,16 +10,16 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 05ea21f7b3221425e5b052797d79e629fdfe3ba5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 9e3c5c12157a007bcad59a78b4623ff4d5a0041f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818032"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238832"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>Samouczek: Zabezpieczanie jednej lub puli baz danych
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > - Tworzenie reguł zapory na poziomie serwera i na poziomie bazy danych
@@ -149,7 +149,7 @@ Aby uzyskać informacje na temat konfigurowania usługi Azure AD, zobacz:
 
 ## <a name="manage-database-access"></a>Zarządzanie dostępem do bazy danych
 
-Możesz zarządzać dostępem do bazy danych, dodając do niej użytkowników lub zezwalając na dostęp użytkowników za pomocą bezpiecznych parametrów połączenia. Parametry połączenia są przydatne w przypadku aplikacji zewnętrznych. Aby dowiedzieć się więcej, zobacz [Azure SQL access control (Kontrola dostępu w usłudze Azure SQL)](sql-database-control-access.md) i [AD authentication (Uwierzytelnianie usługi AD)](sql-database-aad-authentication.md).
+Możesz zarządzać dostępem do bazy danych, dodając do niej użytkowników lub zezwalając na dostęp użytkowników za pomocą bezpiecznych parametrów połączenia. Parametry połączenia są przydatne w przypadku aplikacji zewnętrznych. Aby dowiedzieć się więcej, zobacz Zarządzanie nazwami [logowania i kontami użytkowników](sql-database-manage-logins.md) i [uwierzytelnianiem usługi AD](sql-database-aad-authentication.md).
 
 Aby dodać użytkowników, wybierz typ uwierzytelniania bazy danych:
 

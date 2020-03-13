@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 9afac1adef801956f176dd339c795e2df533a2c7
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 648dbdb7e9e9d1b20c55d3fa5b314b7e4657d5e7
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169116"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204186"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-an-on-premises-sql-server-database"></a>Wykonywanie analizy z Azure Machine Learning Studio (klasyczny) przy użyciu lokalnej bazy danych SQL Server
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Często w przypadku przedsiębiorstw, które działają z danymi lokalnymi chce wykorzystują skali i elastyczności chmury w celu ich usługi machine learning obciążeń. Ale nie chcesz przerwać bieżącego procesów biznesowych i przepływów pracy przez przeniesienie ich danych lokalnych do chmury. Azure Machine Learning Studio (klasyczny) obsługuje teraz odczytywanie danych z lokalnej SQL Server bazy danych, a następnie uczenie i ocenianie modelu przy użyciu tych danych. Nie masz już ręcznie skopiować i synchronizowanie danych między chmurą a serwerem w środowisku lokalnym. Zamiast tego moduł **Importuj dane** w Azure Machine Learning Studio (klasyczny) można teraz odczytywać bezpośrednio z lokalnej bazy danych SQL Server do celów szkoleniowych i oceniających.
 
@@ -43,7 +45,7 @@ Data Factory środowiskiem Integration Runtime ma następujące wymagania wstęp
 * Integracja własne fabryki danych wymaga 64-bitowego systemu operacyjnego za pomocą programu .NET Framework 4.6.1 lub nowszej.
 * Obsługiwane wersje systemu operacyjnego Windows są systemu Windows 10, Windows Server 2012, Windows Server 2012 R2, Windows Server 2016. 
 * Zalecana konfiguracja maszyny IR jest co najmniej 2 GHz, 4 rdzenie Procesora, 8GB pamięci RAM i 80GB dysku.
-* Jeśli komputer hosta przechodzi w stan hibernacji, środowisko IR nie będzie odpowiadać na żądania danych. W związku z tym skonfigurować plan zasilania odpowiednich na komputerze przed zainstalowaniem IR. Jeśli komputer jest skonfigurowany do hibernacji, instalacja środowiska IR wyświetla komunikat.
+* Jeśli maszyna hosta przechodzi w stan hibernacji, środowisko IR nie będzie odpowiadać na żądania danych. W związku z tym skonfigurować plan zasilania odpowiednich na komputerze przed zainstalowaniem IR. Jeśli komputer jest skonfigurowany do hibernacji, instalacja środowiska IR wyświetla komunikat.
 * Ponieważ działania kopiowania odbywa się na określonej częstotliwości, użycie zasobów (procesor CPU, pamięci) na maszynie również zgodna z szczytowe i czasach bezczynności tego samego wzorca. Wykorzystanie zasobów zależy również od intensywnie ilości danych przenoszonych. W przypadku wielu zadań kopiowania w toku, zauważysz użycia zasobów wzrosną godzinami szczytu. W trakcie z technicznego punktu widzenia wystarczające minimalnej konfiguracji wymienionych powyżej można mieć konfigurację więcej zasobów niż minimalna konfiguracja, w zależności od określonego obciążenia w przypadku przenoszenia danych.
 
 Rozważ następujące opcje podczas konfigurowania i używania danych fabryki własne środowisko IR:
@@ -51,7 +53,7 @@ Rozważ następujące opcje podczas konfigurowania i używania danych fabryki w�
 * Można zainstalować tylko jedno wystąpienie środowiska IR na pojedynczym komputerze.
 * Za pomocą jednego środowiska IR do wielu źródeł danych w środowisku lokalnym.
 * Do tego samego źródła danych w środowisku lokalnym, możesz połączyć wiele środowisk IR na różnych komputerach.
-* Urząd Skarbowy można skonfigurować tylko dla jednego obszaru roboczego. Obecnie IRs nie można udostępnić w obszarach roboczych.
+* Urząd Skarbowy można skonfigurować tylko dla jednego obszaru roboczego. Obecnie urząd skarbowy nie może być współużytkowany przez obszary robocze.
 * Można skonfigurować wiele IRs dla jednego obszaru roboczego. Na przykład możesz chcieć użyć podczerwieni połączonej ze źródłami danych testowych podczas opracowywania i produkcyjnego środowiska IR, gdy wszystko jest gotowe do operacjonalizować.
 * Środowisko IR nie musi znajdować się na tym samym komputerze co źródło danych. Jednak dokonywanie aktualizacji na bliżej źródła danych skraca czas dla bramy do połączenia ze źródłem danych. Firma Microsoft zaleca instalowanie środowiska IR na komputerze, który jest inny niż ten, który jest hostem lokalnym źródłem danych, aby bramy i źródła danych nie konkurują o zasoby.
 * Jeśli na komputerze zainstalowano już środowisko IR obsługujące Power BI lub Azure Data Factory scenariusze, zainstaluj oddzielne środowisko IR dla Azure Machine Learning Studio (klasycznego) na innym komputerze.
@@ -118,7 +120,7 @@ Pierwszym krokiem jest do tworzenia i konfigurowania bramy, dostęp do bazy dany
 Spowoduje to zakończenie procesu instalacji bramy w Azure Machine Learning Studio (klasyczny).
 Teraz możesz użyć danych w środowisku lokalnym.
 
-Można utworzyć i skonfigurować wiele bram w programie Studio (klasyczny) dla każdego obszaru roboczego. Na przykład masz bramy, który chcesz połączyć ze źródłami danych testowych podczas tworzenia i inną bramę dla źródła danych produkcyjnych. Azure Machine Learning Studio (klasyczny) zapewnia elastyczność konfigurowania wielu bram w zależności od środowiska firmowego. Obecnie nie można udostępniać bramy między obszarami roboczymi i na jednym komputerze można zainstalować tylko jedną bramę. Aby uzyskać więcej informacji, zobacz [przenoszenie danych między źródłami lokalnymi i chmurą przy użyciu bramy zarządzanie danymi](../../data-factory/tutorial-hybrid-copy-portal.md).
+Można utworzyć i skonfigurować wiele bram w programie Studio (klasyczny) dla każdego obszaru roboczego. Na przykład masz bramy, który chcesz połączyć ze źródłami danych testowych podczas tworzenia i inną bramę dla źródła danych produkcyjnych. Azure Machine Learning Studio (klasyczny) zapewnia elastyczność konfigurowania wielu bram w zależności od środowiska firmowego. Obecnie nie można udostępnić bramy między obszarami roboczymi, a na jednym komputerze można zainstalować tylko jedną bramę. Aby uzyskać więcej informacji, zobacz [przenoszenie danych między źródłami lokalnymi i chmurą przy użyciu bramy zarządzanie danymi](../../data-factory/tutorial-hybrid-copy-portal.md).
 
 ### <a name="step-2-use-the-gateway-to-read-data-from-an-on-premises-data-source"></a>Krok 2: Używania bramy można odczytać danych z lokalnego źródła danych
 Po skonfigurowaniu bramy można dodać do eksperymentu moduł **danych importu** , który wprowadza dane z lokalnej bazy danych SQL Server.
