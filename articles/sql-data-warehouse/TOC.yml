@@ -94,7 +94,7 @@
         - name: Kontrola dostępu
           items:
             - name: Omówienie
-              href: ../sql-database/sql-database-control-access.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+              href: ../sql-database/sql-database-manage-logins.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
             - name: Zabezpieczenia na poziomie kolumny
               href: column-level-security.md
             - name: Zabezpieczenia na poziomie wiersza

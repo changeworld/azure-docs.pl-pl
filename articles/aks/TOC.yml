@@ -117,18 +117,12 @@
   items:
     - name: Operacje klastra
       items:
-        - name: Tworzenie klastra AKS
-          href: '/cli/azure/aks#az-aks-create'
-          maintainContext: true
         - name: Skalowanie klastra AKS
           href: scale-cluster.md
         - name: Uaktualnianie klastra AKS
           href: upgrade-cluster.md
         - name: Przetwarzanie aktualizacji systemu operacyjnego węzła
           href: node-updates-kured.md
-        - name: Usuwanie klastra AKS
-          href: '/cli/azure/aks#az-aks-delete'
-          maintainContext: true
         - name: Integrowanie rekordu ACR przy użyciu klastra AKS
           href: cluster-container-registry-integration.md
         - name: Tworzenie węzłów wirtualnych
