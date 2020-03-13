@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 33705d0c9f2f405be733fd21c88cb83e96aec781
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 04148b482cb07665f43df5bd86a77175cbbaf08b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168967"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218271"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio-classic"></a>Wybierz parametry, aby zoptymalizować algorytmy w Azure Machine Learning Studio (klasyczny)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 W tym temacie opisano, jak wybrać prawy parametr ustawiony dla algorytmu w Azure Machine Learning Studio (klasyczny). Większość algorytmów uczenia maszynowego parametrów wymaganych do zestawu. Ucząc model, konieczne jest podanie wartości tych parametrów. Skuteczność uczonego modelu zależy od parametrów modelu, które wybierzesz. Proces znajdowania optymalnego zestawu parametrów jest znany jako *wybór modelu*.
 
@@ -41,7 +43,7 @@ Można zdefiniować parametrem ustawionym na etapie inicjowania modelu. Okienko 
 
 ![Dwuklasowych wzmocnione drzewo decyzyjnego, jeden parametr](./media/algorithm-parameters-optimize/fig2.png)
 
- Alternatywnie można zdefiniować maksymalne i minimalne punkty siatki oraz całkowitą liczbę punktów do wygenerowania przy użyciu **konstruktora zakresu użycia**. Domyślne wartości parametrów są generowane na skali liniowej. Jeśli jednak **skalowanie dziennika** jest zaznaczone, wartości są generowane w skali dziennika (to oznacza, że proporcja sąsiadujących punktów jest stała, a nie różnica). Dla parametrów, liczba całkowita można zdefiniować zakres przy użyciu łącznika. Na przykład "1-10" oznacza, że wszystkie liczby całkowite z zakresu od 1 do 10 (oba włącznie) tworzą zestaw parametrów. Tryb mieszany jest również obsługiwany. Na przykład, ustaw parametr "1-10, 20, 50" obejmuje liczb całkowitych 1-10, 20 do 50.
+ Alternatywnie można zdefiniować maksymalne i minimalne punkty siatki oraz całkowitą liczbę punktów do wygenerowania przy użyciu **konstruktora zakresu użycia**. Domyślne wartości parametrów są generowane na skali liniowej. Jeśli jednak **skalowanie dziennika** jest zaznaczone, wartości są generowane w skali dziennika (to oznacza, że proporcja sąsiadujących punktów jest stała, a nie różnica). Dla parametrów, liczba całkowita można zdefiniować zakres przy użyciu łącznika. Na przykład "1-10" oznacza, że wszystkie liczby całkowite z zakresu od 1 do 10 (włącznie) tworzą zestaw parametrów. Tryb mieszany jest również obsługiwany. Na przykład, zestaw parametrów "1-10, 20, 50" będzie zawierać liczby całkowite 1-10, 20 i 50.
 
 ![Dwuklasowych wzmocnione drzewo decyzyjnego, parametr zakresu](./media/algorithm-parameters-optimize/fig3.png)
 

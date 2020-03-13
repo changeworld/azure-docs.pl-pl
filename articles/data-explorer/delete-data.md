@@ -1,41 +1,56 @@
 ---
-title: Usuwanie danych z Eksploratora danych platformy Azure
-description: W tym artykule opisano zbiorczego usuwania scenariuszy w Eksploratorze danych platformy Azure, w tym przeczyszczania i usuwa przechowywania na podstawie.
+title: Usuwanie danych z usługi Azure Eksplorator danych
+description: W tym artykule opisano usuwanie scenariuszy w usłudze Azure Eksplorator danych, w tym przeczyszczanie, usuwanie zakresów i usuwanie danych przechowywanych na podstawie przechowywania.
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: avneraa
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 9c1b21e119a38c6d306b9c564ab7958ba21a1c41
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 03/12/2020
+ms.openlocfilehash: 681cfd71d2666630b192935d66ba32eaf16c92de
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60445672"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204617"
 ---
-# <a name="delete-data-from-azure-data-explorer"></a>Usuwanie danych z Eksploratora danych platformy Azure
+# <a name="delete-data-from-azure-data-explorer"></a>Usuwanie danych z usługi Azure Eksplorator danych
 
-Eksplorator danych usługi Azure obsługuje kilka zbiorczego usuwania metod, które zostaną przedstawione w tym artykule. Program nie obsługuje usuwania każdego rekordu w czasie rzeczywistym, ponieważ jest zoptymalizowany do szybkiego dostępu do odczytu.
+Usługa Azure Eksplorator danych obsługuje różne scenariusze usuwania opisane w tym artykule. 
 
-* Jeśli co najmniej jedna tabela nie jest już potrzebny, usuń je przy użyciu tabeli docelowej lub porzucić tabel polecenia.
+## <a name="delete-data-using-the-retention-policy"></a>Usuwanie danych przy użyciu zasad przechowywania
 
-    ```Kusto
-    .drop table <TableName>
+Usługa Azure Eksplorator danych automatycznie usuwa dane na podstawie [zasad przechowywania](/azure/kusto/management/retentionpolicy). Ta metoda to najbardziej wydajny i nieefektywny sposób usuwania danych. Ustaw zasady przechowywania na poziomie bazy danych lub tabeli.
 
-    .drop tables (<TableName1>, <TableName2>,...)
+Rozważ użycie bazy danych lub tabeli, która jest ustawiona na 90 dni przechowywania. Jeśli potrzebne są tylko 60 dni, Usuń starsze dane w następujący sposób:
+
+```kusto
+.alter-merge database <DatabaseName> policy retention softdelete = 60d
+
+.alter-merge table <TableName> policy retention softdelete = 60d
+```
+
+## <a name="delete-data-by-dropping-extents"></a>Usuń dane poprzez upuszczenie zakresów
+
+[Zakres (Data fragmentu)](/azure/kusto/management/extents-overview) to wewnętrzna struktura, w której są przechowywane dane. Każdy zakres może zawierać do milionów rekordów. Zakresy można usuwać pojedynczo lub jako grupę przy użyciu [poleceń usuwania zakresów](/azure/kusto/management/extents-commands#drop-extents). 
+
+### <a name="examples"></a>Przykłady
+
+Można usunąć wszystkie wiersze w tabeli lub tylko określony zakres.
+
+* Usuń wszystkie wiersze w tabeli:
+
+    ```kusto
+    .drop extents from TestTable
     ```
 
-* Jeśli stare dane nie jest potrzebna, usuń go, zmieniając okresu przechowywania na poziomie bazy danych lub tabeli.
+* Usuń określony zakres:
 
-    Należy wziąć pod uwagę bazy danych lub tabeli, który jest ustawiony przez 90 dni przechowywania. Business musi ulec zmianie, więc teraz tylko 60 dni dla danych jest wymagana. W takim przypadku usuń starszych danych w jednym z następujących sposobów.
-
-    ```Kusto
-    .alter-merge database <DatabaseName> policy retention softdelete = 60d
-
-    .alter-merge table <TableName> policy retention softdelete = 60d
+    ```kusto
+    .drop extent e9fac0d2-b6d5-4ce3-bdb4-dea052d13b42
     ```
 
-    Aby uzyskać więcej informacji, zobacz [zasady przechowywania](https://docs.microsoft.com/azure/kusto/concepts/retentionpolicy).
+## <a name="delete-individual-rows-using-purge"></a>Usuwanie pojedynczych wierszy przy użyciu przeczyszczania
 
-Jeśli potrzebujesz pomocy z problemami usuwania danych, otwórz żądanie pomocy technicznej w [witryny Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
+[Przeczyszczanie danych](/azure/kusto/management/data-purge) może służyć do usuwania pojedynczych wierszy. Usuwanie nie jest natychmiastowe i wymaga znaczących zasobów systemowych. W związku z tym jest zalecane tylko w przypadku scenariuszy zgodności.  
+

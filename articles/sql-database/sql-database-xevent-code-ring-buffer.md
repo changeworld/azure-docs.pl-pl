@@ -3,7 +3,7 @@ title: Kod buforu pierścienia systemu XEvent
 description: Zawiera przykładowy kod języka Transact-SQL, który jest łatwy i szybki dzięki użyciu obiektu docelowego buforu pierścieniowego w Azure SQL Database.
 services: sql-database
 ms.service: sql-database
-ms.subservice: monitor
+ms.subservice: performance
 ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: 7adffac045ddb2ba369993b1b805e3ce2304fb38
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ad98b61d6339388551af93671b3d4d892942f4e4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822312"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79213967"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>Kod docelowy buforu pierścieniowego dla zdarzeń rozszerzonych w SQL Database
 
@@ -57,7 +57,7 @@ W tym temacie przedstawiono przykładowy kod języka Transact-SQL, który:
 W przypadku bardzo drobnej modyfikacji Poniższy przykład kodu buforu pierścieniowego można uruchomić na Azure SQL Database lub Microsoft SQL Server. Różnica polega na obecności węzła "_database" w nazwie niektórych dynamicznych widoków zarządzania (widoków DMV) użytego w klauzuli FROM w kroku 5. Na przykład:
 
 * sys. dm_xe<strong>_database</strong>_session_targets
-* sys. dm_xe_session_targets
+* sys.dm_xe_session_targets
 
 &nbsp;
 

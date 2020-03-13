@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
-ms.date: 12/19/2018
-ms.openlocfilehash: bea6a572e55f1a79515c385fd7b79881c54ae65e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 03/10/2020
+ms.openlocfilehash: 958dcd441d35b5c28746ff79a0b341e5aa7383a6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73802917"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214025"
 ---
 # <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>Monitorowanie wydajności Azure SQL Database przy użyciu dynamicznych widoków zarządzania
 
@@ -28,7 +28,7 @@ SQL Database częściowo obsługuje trzy kategorie dynamicznych widoków zarząd
 - Dynamiczne widoki zarządzania powiązane z wykonywaniem.
 - Dynamiczne widoki zarządzania powiązane z transakcjami.
 
-Aby uzyskać szczegółowe informacje na temat dynamicznych widoków zarządzania, zobacz [dynamiczne widoki zarządzania i funkcje (Transact-SQL)](https://msdn.microsoft.com/library/ms188754.aspx) w SQL Server książki online. 
+Aby uzyskać szczegółowe informacje na temat dynamicznych widoków zarządzania, zobacz [dynamiczne widoki zarządzania i funkcje (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) w SQL Server książki online.
 
 ## <a name="permissions"></a>Uprawnienia
 
@@ -40,6 +40,17 @@ GRANT VIEW DATABASE STATE TO database_user;
 ```
 
 W wystąpieniu SQL Server lokalnego, dynamiczne widoki zarządzania zwracają informacje o stanie serwera. W SQL Database zwracają informacje dotyczące tylko bieżącej logicznej bazy danych.
+
+Ten artykuł zawiera kolekcję zapytań DMV, które można wykonać za pomocą SQL Server Management Studio lub Azure Data Studio w celu wykrycia następujących typów problemów z wydajnością zapytań:
+
+- [Identyfikowanie zapytań dotyczących nadmiernego użycia procesora CPU](#identify-cpu-performance-issues)
+- [PAGELATCH_ * i WRITE_LOG czekają na wąskie gardła we/wy](#identify-io-performance-issues)
+- [PAGELATCH_ * czeka na bytTempDB rywalizację](#identify-tempdb-performance-issues)
+- [RESOURCE_SEMAHPORE czeka na problemy z przydzieleniem pamięci](#identify-memory-grant-wait-performance-issues)
+- [Identyfikowanie rozmiarów bazy danych i obiektów](#calculating-database-and-objects-sizes)
+- [Pobieranie informacji o aktywnych sesjach](#monitoring-connections)
+- [Pobierz informacje o użyciu zasobów dla całego systemu i bazy danych](#monitor-resource-use)
+- [Pobieranie informacji o wydajności zapytań](#monitoring-query-performance)
 
 ## <a name="identify-cpu-performance-issues"></a>Identyfikowanie problemów z wydajnością procesora CPU
 
@@ -56,11 +67,11 @@ Użyj następującego zapytania, aby zidentyfikować Najważniejsze skróty zapy
 ```sql
 PRINT '-- top 10 Active CPU Consuming Queries (aggregated)--';
 SELECT TOP 10 GETDATE() runtime, *
-FROM(SELECT query_stats.query_hash, SUM(query_stats.cpu_time) 'Total_Request_Cpu_Time_Ms', SUM(logical_reads) 'Total_Request_Logical_Reads', MIN(start_time) 'Earliest_Request_start_Time', COUNT(*) 'Number_Of_Requests', SUBSTRING(REPLACE(REPLACE(MIN(query_stats.statement_text), CHAR(10), ' '), CHAR(13), ' '), 1, 256) AS "Statement_Text"
-     FROM(SELECT req.*, SUBSTRING(ST.text, (req.statement_start_offset / 2)+1, ((CASE statement_end_offset WHEN -1 THEN DATALENGTH(ST.text)ELSE req.statement_end_offset END-req.statement_start_offset)/ 2)+1) AS statement_text
+FROM (SELECT query_stats.query_hash, SUM(query_stats.cpu_time) 'Total_Request_Cpu_Time_Ms', SUM(logical_reads) 'Total_Request_Logical_Reads', MIN(start_time) 'Earliest_Request_start_Time', COUNT(*) 'Number_Of_Requests', SUBSTRING(REPLACE(REPLACE(MIN(query_stats.statement_text), CHAR(10), ' '), CHAR(13), ' '), 1, 256) AS "Statement_Text"
+    FROM (SELECT req.*, SUBSTRING(ST.text, (req.statement_start_offset / 2)+1, ((CASE statement_end_offset WHEN -1 THEN DATALENGTH(ST.text)ELSE req.statement_end_offset END-req.statement_start_offset)/ 2)+1) AS statement_text
           FROM sys.dm_exec_requests AS req
-               CROSS APPLY sys.dm_exec_sql_text(req.sql_handle) AS ST ) AS query_stats
-     GROUP BY query_hash) AS t
+                CROSS APPLY sys.dm_exec_sql_text(req.sql_handle) AS ST ) AS query_stats
+    GROUP BY query_hash) AS t
 ORDER BY Total_Request_Cpu_Time_Ms DESC;
 ```
 
@@ -72,14 +83,14 @@ Użyj następującego zapytania, aby zidentyfikować te zapytania:
 PRINT '--top 10 Active CPU Consuming Queries by sessions--';
 SELECT TOP 10 req.session_id, req.start_time, cpu_time 'cpu_time_ms', OBJECT_NAME(ST.objectid, ST.dbid) 'ObjectName', SUBSTRING(REPLACE(REPLACE(SUBSTRING(ST.text, (req.statement_start_offset / 2)+1, ((CASE statement_end_offset WHEN -1 THEN DATALENGTH(ST.text)ELSE req.statement_end_offset END-req.statement_start_offset)/ 2)+1), CHAR(10), ' '), CHAR(13), ' '), 1, 512) AS statement_text
 FROM sys.dm_exec_requests AS req
-     CROSS APPLY sys.dm_exec_sql_text(req.sql_handle) AS ST
+    CROSS APPLY sys.dm_exec_sql_text(req.sql_handle) AS ST
 ORDER BY cpu_time DESC;
 GO
 ```
 
 ### <a name="the-cpu-issue-occurred-in-the-past"></a>Wystąpił problem z procesorem CPU w przeszłości
 
-Jeśli problem wystąpił w przeszłości i chcesz przeprowadzić analizę głównej przyczyny, użyj [magazynu zapytań](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store). Użytkownicy z dostępem do bazy danych mogą używać języka T-SQL do wykonywania zapytań dotyczących danych magazynu zapytań.  Domyślne konfiguracje magazynu zapytań korzystają z stopnia szczegółowości 1 godziny.  Użyj następującego zapytania, aby przyjrzeć się działaniu w przypadku dużych zapytań zużywających procesor CPU. To zapytanie zwraca 15 najważniejszych zapytań zużywających procesor CPU.  Pamiętaj, aby zmienić `rsi.start_time >= DATEADD(hour, -2, GETUTCDATE()`:
+Jeśli problem wystąpił w przeszłości i chcesz przeprowadzić analizę głównej przyczyny, użyj [magazynu zapytań](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store). Użytkownicy z dostępem do bazy danych mogą używać języka T-SQL do wykonywania zapytań dotyczących danych magazynu zapytań. Domyślne konfiguracje magazynu zapytań korzystają z stopnia szczegółowości 1 godziny. Użyj następującego zapytania, aby przyjrzeć się działaniu w przypadku dużych zapytań zużywających procesor CPU. To zapytanie zwraca 15 najważniejszych zapytań zużywających procesor CPU. Pamiętaj, aby zmienić `rsi.start_time >= DATEADD(hour, -2, GETUTCDATE()`:
 
 ```sql
 -- Top 15 CPU consuming queries by query hash
@@ -512,7 +523,7 @@ Możesz również monitorować użycie przy użyciu następujących dwóch widok
 - [sys. dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx)
 - [sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx)
 
-### <a name="sysdm_db_resource_stats"></a>sys. dm_db_resource_stats
+### <a name="sysdm_db_resource_stats"></a>sys.dm_db_resource_stats
 
 W każdej bazie danych SQL można użyć widoku [sys. dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) . Widok **sys. dm_db_resource_stats** pokazuje ostatnie dane użycia zasobów względem warstwy usług. Średnia wartość procentowa dla procesora CPU, operacji we/wy danych, zapisów dziennika i pamięci są rejestrowane co 15 sekund i są przechowywane przez 1 godzinę.
 
@@ -533,7 +544,7 @@ FROM sys.dm_db_resource_stats;
 
 Inne zapytania można znaleźć w przykładach w tabeli [sys. dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx).
 
-### <a name="sysresource_stats"></a>sys. resource_stats
+### <a name="sysresource_stats"></a>sys.resource_stats
 
 Widok [sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) w bazie danych **Master** zawiera dodatkowe informacje, które mogą pomóc w monitorowaniu wydajności bazy danych SQL w określonej warstwie usług i rozmiarze obliczeniowym. Dane są zbierane co 5 minut i są przechowywane przez około 14 dni. Ten widok jest przydatny do długoterminowej analizy historycznej, w jaki sposób baza danych SQL używa zasobów.
 
@@ -612,7 +623,7 @@ W następnym przykładzie pokazano różne sposoby używania widoku wykazu **sys
 
    | Średni procent procesora CPU | Maksymalny procent użycia procesora CPU |
    | --- | --- |
-   | 24,5 |100,00 |
+   | 24.5 |100.00 |
 
     Średni procesor CPU jest około kwartału limitu rozmiaru obliczeniowego, który może być również dopasowany do rozmiaru obliczeniowego bazy danych. Jednak wartość maksymalna pokazuje, że baza danych osiągnie limit rozmiaru obliczeń. Czy chcesz przejść do kolejnego większego rozmiaru obliczeń? Sprawdź, ile razy obciążenie osiągnie 100 procent, a następnie porównaj je z celem obciążenia bazy danych.
 
@@ -635,19 +646,19 @@ W przypadku pul elastycznych można monitorować pojedyncze bazy danych w puli z
 
 Aby sprawdzić liczbę równoczesnych żądań, Uruchom to zapytanie Transact-SQL w bazie danych SQL:
 
-    ```sql
-    SELECT COUNT(*) AS [Concurrent_Requests]
-    FROM sys.dm_exec_requests R;
-    ```
+```sql
+SELECT COUNT(*) AS [Concurrent_Requests]
+FROM sys.dm_exec_requests R;
+```
 
 Aby analizować obciążenie lokalnej bazy danych SQL Server, zmodyfikuj to zapytanie w celu odfiltrowania konkretnej bazy danych, którą chcesz analizować. Na przykład jeśli masz lokalną bazę danych o nazwie Moja baza danych, zapytanie Transact-SQL zwraca liczbę równoczesnych żądań w tej bazie danych:
 
-    ```sql
-    SELECT COUNT(*) AS [Concurrent_Requests]
-    FROM sys.dm_exec_requests R
-    INNER JOIN sys.databases D ON D.database_id = R.database_id
-    AND D.name = 'MyDatabase';
-    ```
+```sql
+SELECT COUNT(*) AS [Concurrent_Requests]
+FROM sys.dm_exec_requests R
+INNER JOIN sys.databases D ON D.database_id = R.database_id
+AND D.name = 'MyDatabase';
+```
 
 Jest to tylko migawka w jednym punkcie w czasie. Aby lepiej zrozumieć obciążenie i współbieżne wymagania dotyczące żądań, należy zebrać wiele próbek w czasie.
 
@@ -664,16 +675,20 @@ Jeśli wielu klientów używa tych samych parametrów połączenia, usługa uwie
 
 Aby wyświetlić liczbę bieżących aktywnych sesji, Uruchom to zapytanie Transact-SQL w bazie danych SQL:
 
-    SELECT COUNT(*) AS [Sessions]
-    FROM sys.dm_exec_connections
+```sql
+SELECT COUNT(*) AS [Sessions]
+FROM sys.dm_exec_connections
+```
 
 W przypadku analizowania obciążenia SQL Server lokalnego należy zmodyfikować zapytanie, aby skoncentrować się na określonej bazie danych. To zapytanie pomaga określić możliwe potrzeby sesji dla bazy danych, Jeśli rozważasz przechodzenie do Azure SQL Database.
 
-    SELECT COUNT(*)  AS [Sessions]
-    FROM sys.dm_exec_connections C
-    INNER JOIN sys.dm_exec_sessions S ON (S.session_id = C.session_id)
-    INNER JOIN sys.databases D ON (D.database_id = S.database_id)
-    WHERE D.name = 'MyDatabase'
+```sql
+SELECT COUNT(*) AS [Sessions]
+FROM sys.dm_exec_connections C
+INNER JOIN sys.dm_exec_sessions S ON (S.session_id = C.session_id)
+INNER JOIN sys.databases D ON (D.database_id = S.database_id)
+WHERE D.name = 'MyDatabase'
+```
 
 Ponownie te zapytania zwracają liczbę punktów w czasie. Jeśli zbierasz wiele przykładów z upływem czasu, będziesz mieć najlepszą wiedzę na temat użycia sesji.
 
@@ -687,22 +702,22 @@ Zapytania powolne lub długotrwałe mogą zużywać znaczne zasoby systemowe. W 
 
 Poniższy przykład zwraca informacje o pięciu pierwszych zapytania sklasyfikowanych według średniego czasu procesora CPU. Ten przykład agreguje zapytania według ich wartości skrótu zapytania, tak aby logicznie równoważne zapytania były pogrupowane według ich łącznego zużycia zasobów.
 
-    ```sql
-    SELECT TOP 5 query_stats.query_hash AS "Query Hash",
-       SUM(query_stats.total_worker_time) / SUM(query_stats.execution_count) AS "Avg CPU Time",
-       MIN(query_stats.statement_text) AS "Statement Text"
-    FROM
-       (SELECT QS.*,
+```sql
+SELECT TOP 5 query_stats.query_hash AS "Query Hash",
+    SUM(query_stats.total_worker_time) / SUM(query_stats.execution_count) AS "Avg CPU Time",
+     MIN(query_stats.statement_text) AS "Statement Text"
+FROM
+    (SELECT QS.*,
         SUBSTRING(ST.text, (QS.statement_start_offset/2) + 1,
-        ((CASE statement_end_offset
-           WHEN -1 THEN DATALENGTH(ST.text)
-           ELSE QS.statement_end_offset END
-           - QS.statement_start_offset)/2) + 1) AS statement_text
-    FROM sys.dm_exec_query_stats AS QS
-    CROSS APPLY sys.dm_exec_sql_text(QS.sql_handle) as ST) as query_stats
-    GROUP BY query_stats.query_hash
-    ORDER BY 2 DESC;
-    ```
+            ((CASE statement_end_offset
+                WHEN -1 THEN DATALENGTH(ST.text)
+                ELSE QS.statement_end_offset END
+            - QS.statement_start_offset)/2) + 1) AS statement_text
+FROM sys.dm_exec_query_stats AS QS
+CROSS APPLY sys.dm_exec_sql_text(QS.sql_handle) as ST) as query_stats
+GROUP BY query_stats.query_hash
+ORDER BY 2 DESC;
+```
 
 ### <a name="monitoring-blocked-queries"></a>Monitorowanie zablokowanych zapytań
 
@@ -712,25 +727,25 @@ Wykonywanie wolnych lub długotrwałych zapytań może współtworzyć nadmierne
 
 Nieefektywny plan zapytania może również zwiększyć użycie procesora CPU. Poniższy przykład używa widoku [sys. dm_exec_query_stats](https://msdn.microsoft.com/library/ms189741.aspx) , aby określić, które zapytanie używa najbardziej SKUMULOWANEGO procesora CPU.
 
-    ```sql
-    SELECT
-       highest_cpu_queries.plan_handle,
-       highest_cpu_queries.total_worker_time,
-       q.dbid,
-       q.objectid,
-       q.number,
-       q.encrypted,
-       q.[text]
-    FROM
-       (SELECT TOP 50
+```sql
+SELECT
+    highest_cpu_queries.plan_handle,
+    highest_cpu_queries.total_worker_time,
+    q.dbid,
+    q.objectid,
+    q.number,
+    q.encrypted,
+    q.[text]
+FROM
+    (SELECT TOP 50
         qs.plan_handle,
         qs.total_worker_time
     FROM
         sys.dm_exec_query_stats qs
-    ORDER BY qs.total_worker_time desc) AS highest_cpu_queries
-    CROSS APPLY sys.dm_exec_sql_text(plan_handle) AS q
-    ORDER BY highest_cpu_queries.total_worker_time DESC;
-    ```
+ORDER BY qs.total_worker_time desc) AS highest_cpu_queries
+CROSS APPLY sys.dm_exec_sql_text(plan_handle) AS q
+ORDER BY highest_cpu_queries.total_worker_time DESC;
+```
 
 ## <a name="see-also"></a>Zobacz też
 

@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f7fbc82c08d89d73d671a49fb31b9d3cca01c721
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 6962a264787bd8a55b6f6a2ebdb6eeb615c33d5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78195519"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218399"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Konfigurowanie Azure Key Vault przy użyciu rotacji kluczy i inspekcji
 
@@ -23,21 +23,16 @@ ms.locfileid: "78195519"
 
 Po utworzeniu magazynu kluczy można rozpocząć korzystanie z niego w celu przechowywania kluczy i wpisów tajnych. Aplikacje nie muszą już utrwalać kluczy lub wpisów tajnych, ale mogą żądać ich z magazynu zgodnie z potrzebami. Magazyn kluczy umożliwia aktualizowanie kluczy i wpisów tajnych bez wpływu na zachowanie aplikacji, co umożliwia otwarcie szeregu możliwości klucza i tajnego zarządzania.
 
->[!IMPORTANT]
-> Przykłady w tym artykule są dostępne wyłącznie na potrzeby ilustracji. Nie są one przeznaczone do użycia w środowisku produkcyjnym. 
+W tym artykule omówiono sposób implementacji planowanej rotacji kluczy konta magazynu, monitorowania dzienników inspekcji magazynu kluczy i zgłaszania alertów w przypadku nieoczekiwanych żądań. 
 
-W tym artykule przedstawiono następujące instrukcje:
+Najpierw należy utworzyć magazyn kluczy przy użyciu wybranej metody:
 
-- Przykład użycia Azure Key Vault do przechowywania klucza tajnego. W tym artykule wpis tajny jest kluczem konta usługi Azure Storage, do którego uzyskuje dostęp aplikacja. 
-- Jak zaimplementować zaplanowany obrót tego klucza konta magazynu.
-- Monitorowanie dzienników inspekcji magazynu kluczy i zgłaszanie alertów w przypadku nieoczekiwanych żądań.
+- [Ustawianie i pobieranie klucza tajnego z Azure Key Vault przy użyciu interfejsu wiersza polecenia platformy Azure](quick-create-cli.md)
+- [Ustawianie i pobieranie klucza tajnego z Azure Key Vault przy użyciu Azure PowerShell](quick-create-powershell.md)
+- [Ustawianie i pobieranie klucza tajnego z Azure Key Vault przy użyciu Azure Portal](quick-create-portal.md)
 
-> [!NOTE]
-> W tym artykule nie wyjaśniono szczegółowo wstępnej konfiguracji magazynu kluczy. Aby uzyskać więcej informacji, zobacz [co to jest Azure Key Vault?](key-vault-overview.md). Instrukcje dotyczące międzyplatformowego interfejsu wiersza polecenia można znaleźć w temacie [Manage Key Vault using the Azure CLI](key-vault-manage-with-cli2.md).
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-## <a name="set-up-key-vault"></a>Konfigurowanie usługi Key Vault
+## <a name="store-a-secret"></a>Przechowywanie klucza tajnego
 
 Aby umożliwić aplikacji pobranie wpisu tajnego z Key Vault, musisz najpierw utworzyć klucz tajny i przekazać go do magazynu.
 

@@ -5,15 +5,15 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 03/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: eb91dfd5d774e591d3c3c3964668dcc626086181
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7c49892f97d9c15efcaecccb6133c67133e81c87
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512576"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137564"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Co to jest filtrowanie geograficzne w domenie dla drzwi platformy Azure z przodu?
 
@@ -21,11 +21,11 @@ Domyślnie usługa Azure Front Door Service odpowiada na żądania użytkownikó
 
 Zasady WAF zazwyczaj obejmują zestaw reguł niestandardowych. Reguła składa się z warunków dopasowań, akcji i priorytetu. W warunku dopasowania należy zdefiniować zmienną dopasowania, operator i wartość dopasowania.  W przypadku reguły filtrowania geograficznego zmienna dopasowania to REMOTE_ADDR, operator to GeoMatch, a wartość to dwuliterowy kod kraju. Możesz połączyć warunek GeoMatch i warunek dopasowania ciągu REQUEST_URI, aby utworzyć regułę filtrowania geograficznego opartą na ścieżkach.
 
-Można skonfigurować zasady filtrowania geograficznego dla drzwi z przodu przy użyciu [Azure PowerShell](waf-front-door-tutorial-geo-filtering.md) lub przy użyciu naszego [szablonu szybkiego startu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering).
+Można skonfigurować zasady filtrowania geograficznego dla drzwi przednich przy użyciu szablonu Azure Portal, [Azure PowerShell](waf-front-door-tutorial-geo-filtering.md) lub naszego [przewodnika Szybki Start](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering).
 
 ## <a name="country-code-reference"></a>Odwołanie do kodu kraju
 
-|Kod kraju | Nazwa kraju |
+|Numer kierunkowy kraju | Nazwa kraju |
 | ----- | ----- |
 | AD | Andora |
 | AE | Zjednoczone Emiraty Arabskie|
@@ -68,7 +68,7 @@ Można skonfigurować zasady filtrowania geograficznego dla drzwi z przodu przy 
 | CO | Kolumbia|
 | CR | Kostaryka|
 | CU | Kuba|
-| CV | Wyspy Zielonego Przylądka|
+| CV | Cabo Verde|
 | CY | Cypr|
 | CZ | Czechy|
 | DE | Niemcy|
@@ -93,7 +93,7 @@ Można skonfigurować zasady filtrowania geograficznego dla drzwi z przodu przy 
 | GR | Grecja|
 | GT | Gwatemala|
 | GY | Gujana|
-| HK | Hongkong SAR|
+| HK | Hongkong|
 | HN | Honduras|
 | HR | Chorwacja|
 | HT | Haiti|
@@ -128,15 +128,15 @@ Można skonfigurować zasady filtrowania geograficznego dla drzwi z przodu przy 
 | LT | Litwa|
 | LU | Luksemburg|
 | LV | Łotwa|
-| LY | Libia |
+| LY | Libya |
 | MA | Maroko|
 | MD | Republika Mołdawii|
 | MG | Madagaskar|
-| MK | Macedonia Północna|
+| MK | Północna Macedonia|
 | ML | Mali|
 | MM | Myanmar|
 | MN | Mongolia|
-| MO | Makau SAR|
+| MO | SRA Makau|
 | MQ | Martynika|
 | MR | Mauretania|
 | MT | Malta|
@@ -183,7 +183,7 @@ Można skonfigurować zasady filtrowania geograficznego dla drzwi z przodu przy 
 | SV | Salwador|
 | SY | Arabska Republika Syryjska|
 | SZ | Suazi|
-| TC | Turks i Caicos|
+| TC | Wyspy Turks i Caicos|
 | TG | Togo|
 | TH | Tajlandia|
 | TN | Tunezja|

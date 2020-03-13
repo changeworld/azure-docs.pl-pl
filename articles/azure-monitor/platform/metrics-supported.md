@@ -8,11 +8,11 @@ ms.date: 12/18/2019
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: 3e43d2baf4337e7a986d59c47f805183a920c7a1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78354953"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79275388"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Obsługiwane metryki z Azure Monitor
 
@@ -32,7 +32,7 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
 |qpu_metric|QPU|Licznik|Średnia|QPU. Zakres 0-100 dla S1, 0-200 dla S2 i 0-400 dla S4|ServerResourceType|
-|memory_metric|Pamięć|Bajty|Średnia|Rozmiar. Zakres 0-25 GB dla S1, 0-50 GB dla S2 i 0-100 GB dla S4|ServerResourceType|
+|memory_metric|Memory (Pamięć)|Bajty|Średnia|Rozmiar. Zakres 0-25 GB dla S1, 0-50 GB dla S2 i 0-100 GB dla S4|ServerResourceType|
 |private_bytes_metric|Prywatne bajty|Bajty|Średnia|Bajty prywatne.|ServerResourceType|
 |virtual_bytes_metric|Bajty wirtualne|Bajty|Średnia|Bajty wirtualne.|ServerResourceType|
 |TotalConnectionRequests|Łączna liczba żądań połączenia|Licznik|Średnia|Łączna liczba żądań połączenia. Są to wejścia.|ServerResourceType|
@@ -1710,7 +1710,7 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |Długość kolejki Average_Processor|Długość kolejki procesora|Licznik|Średnia|Długość kolejki Average_Processor|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
 |Puls|Puls|Licznik|Łącznie|Puls|Komputer, OSType, wersja, SourceComputerId|
 |Aktualizacja|Aktualizacja|Licznik|Średnia|Aktualizacja|Komputer, produkt, klasyfikacja, UpdateState, opcjonalne, zatwierdzone|
-|Zdarzenie|Zdarzenie|Licznik|Średnia|Zdarzenie|Source, EventLog, Computer, EventCategory, EventLevel, EventLevelName, EventID|
+|Wydarzenie|Wydarzenie|Licznik|Średnia|Wydarzenie|Source, EventLog, Computer, EventCategory, EventLevel, EventLevelName, EventID|
 
 ## <a name="microsoftpeeringpeeringservices"></a>Microsoft. Komunikacja równorzędna/peeringServices
 
@@ -1734,7 +1734,7 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |QueryDuration|Czas trwania zapytania|Milisekundy|Średnia|Czas trwania zapytania języka DAX w ostatnim interwale|Nie wymiarów|
 |QueryPoolJobQueueLength|Wątki: Długość kolejki zadań puli zapytań|Licznik|Średnia|Liczba zadań w kolejce puli wątków zapytań.|Nie wymiarów|
 |qpu_high_utilization_metric|QPU wysokie wykorzystanie|Licznik|Łącznie|QPU wysokie użycie w ciągu ostatnich minut, 1 do dużego użycia QPU, w przeciwnym razie 0|Nie wymiarów|
-|memory_metric|Pamięć|Bajty|Średnia|Rozmiar. Zakres 0-3 GB dla a1, 0-5 GB dla a2, 0-10 GB dla a3, 0-25 GB dla A4, 0-50 GB dla A5 i 0-100 GB dla A6|Nie wymiarów|
+|memory_metric|Memory (Pamięć)|Bajty|Średnia|Rozmiar. Zakres 0-3 GB dla a1, 0-5 GB dla a2, 0-10 GB dla a3, 0-25 GB dla A4, 0-50 GB dla A5 i 0-100 GB dla A6|Nie wymiarów|
 |memory_thrashing_metric|Migotanie pamięci|Procent|Średnia|Średnia pamięć migotanie.|Nie wymiarów|
 
 

@@ -14,11 +14,11 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: ace636152f6a0c9bf3896860eb17cc291bef2887
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77085132"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262908"
 ---
 # <a name="authentication-flows"></a>Przepływy uwierzytelniania
 
@@ -74,7 +74,7 @@ Wiele nowoczesnych aplikacji sieci Web jest zbudowanych jako aplikacje jednostro
 
 Ten przepływ uwierzytelniania nie obejmuje scenariuszy aplikacji, które wykorzystują Międzyplatformowe platformy JavaScript, takie jak elektron i reagowanie na aplikacje natywne, ponieważ wymagają one dalszych możliwości interakcji z platformami macierzystymi.
 
-## <a name="authorization-code"></a>Kod autoryzacji
+## <a name="authorization-code"></a>kod autoryzacji
 
 MSAL obsługuje [przyznawanie kodu autoryzacji OAuth 2](v2-oauth2-auth-code-flow.md). Tego uprawnienia można używać w aplikacjach zainstalowanych na urządzeniu w celu uzyskania dostępu do chronionych zasobów, takich jak interfejsy API sieci Web. Pozwala to na dodawanie funkcji logowania i dostępu do interfejsu API do aplikacji mobilnych i klasycznych. 
 

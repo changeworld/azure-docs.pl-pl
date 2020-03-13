@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: wieastbu
 ms.custom: fasttrack-new
-ms.openlocfilehash: fde48d63bd343fbed1f82e60819131ffb043a795
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: ae776fc3fb1f9eb4b7fa9747f2769dcccb25e042
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78967634"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136350"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>Ochrona zaplecza SPA przy użyciu protokołu OAuth 2,0 Azure Active Directory B2C i platformy Azure API Management
 
@@ -250,7 +250,7 @@ Musisz dodać bloki z formatowaniem CIDR do panelu ograniczenia adresów IP. Gdy
 
    > [!NOTE]
    > Poniższa sekcja jest opcjonalna i nie dotyczy warstwy **zużycia** , która nie obsługuje portalu dla deweloperów.
-   > Jeśli nie zamierzasz korzystać z portalu dla deweloperów lub nie możesz go użyć od czasu korzystania z warstwy zużycia, Pomiń ten krok i Przeskocz bezpośrednio do ["Kompilowanie Spa JavaScript w celu korzystania z interfejsu API"](##build-the-javascript-spa-to-consume-the-api).
+   > Jeśli nie zamierzasz korzystać z portalu dla deweloperów lub nie możesz go użyć od czasu korzystania z warstwy zużycia, Pomiń ten krok i Przeskocz bezpośrednio do ["Kompilowanie Spa JavaScript w celu korzystania z interfejsu API"](#build-the-javascript-spa-to-consume-the-api).
 
 ## <a name="optional-configure-the-developer-portal"></a>Obowiązkowe Konfigurowanie portalu dla deweloperów
 
