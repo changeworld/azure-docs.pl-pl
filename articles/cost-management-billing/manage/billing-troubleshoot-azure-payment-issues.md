@@ -10,20 +10,37 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/12/2020
+ms.date: 03/06/2020
 ms.author: jaserano
-ms.openlocfilehash: 199d32efef256fe3b56dbcf0a5d3ac6351f2d0b3
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: cd9d17eb365937035919b7e712a4b5824f747bda
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200918"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942587"
 ---
 # <a name="troubleshoot-azure-payment-issues"></a>Rozwiązywanie problemów z płatnościami na platformie Azure
 
 Przy próbie aktualizacji konta z informacjami o płatności w witrynie Microsoft Azure Portal lub w Centrum konta może wystąpić problem lub błąd.
 
 Aby rozwiązać problem, wybierz poniżej temat, który najlepiej odpowiada występującemu błędowi.
+
+## <a name="my-credit-card-was-declined-when-i-tried-to-sign-up-for-azure"></a>Moja karta kredytowa została odrzucona podczas próby utworzenia konta na platformie Azure
+
+Aby rozwiązać problemy dotyczące odrzuconej karty, zobacz temat [Rozwiązywanie problemów z kartą odrzuconą podczas tworzenia konta platformy Azure](troubleshoot-declined-card.md).
+
+## <a name="unable-to-see-subscriptions-under-my-account-to-update-the-payment-method"></a>Nie można wyświetlić subskrypcji w obszarze mojego konta w celu zaktualizowania formy płatności
+
+Być może używasz identyfikatora poczty e-mail, który jest inny niż ten używany na potrzeby subskrypcji.
+
+Aby rozwiązać ten problem, zobacz temat [No subscriptions found sign-in error for Azure portal or Azure account center](no-subscriptions-found.md) (Błąd rejestracji „Nie odnaleziono żadnych subskrypcji” w witrynie Azure Portal lub w Centrum konta).
+
+## <a name="unable-to-use-a-virtual-or-prepaid-credit-or-debit-card-as-a-payment-method"></a>Jako formy płatności nie można użyć wirtualnej bądź przedpłaconej karty kredytowej lub debetowej.
+
+*   Wirtualne bądź przedpłacone karty kredytowe nie są akceptowane jako płatność za subskrypcje platformy Azure.
+*   Karty debetowe nie są akceptowane jako płatność za subskrypcje platformy Azure.
+
+Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z kartą odrzuconą podczas tworzenia konta platformy Azure](troubleshoot-declined-card.md).
 
 ## <a name="unable-to-remove-a-credit-card-from-a-saved-billing-payment-method"></a>Nie można usunąć karty kredytowej z zapisanych form płatności
 
@@ -33,19 +50,11 @@ Jeśli istniejąca karta musi zostać usunięta, do subskrypcji należy dodać n
 
 ## <a name="unable-to-delete-an-old-payment-method-after-adding-a-new-payment-method"></a>Nie można usunąć starej formy płatności po dodaniu nowej
 
-Nowy instrument płatniczy może nie być skojarzony z subskrypcją. Aby ułatwić skojarzenie instrumentu płatniczego z subskrypcją, zobacz temat [Add, update, or remove a credit or debit card for Azure (Dodawanie, aktualizowanie lub usuwanie karty kredytowej lub debetowej dla platformy Azure)](change-credit-card.md).
-
-Aby rozwiązać problemy dotyczące odrzuconej karty, zobacz temat [How to troubleshoot a declined card at Azure sign-up](troubleshoot-declined-card.md) (Jak rozwiązywać problemy z odrzuconą kartą podczas rejestracji na platformie Azure).
+Nowy instrument płatniczy może nie być skojarzony z subskrypcją. Aby ułatwić skojarzenie instrumentu płatniczego z subskrypcją, zobacz temat [Dodawanie, aktualizowanie lub usuwanie karty kredytowej dla platformy Azure](change-credit-card.md).
 
 ## <a name="unable-to-delete-a-payment-method-because-of-cannot-delete-payment-method-error"></a>Nie można usunąć formy płatności z powodu komunikatu o błędzie *Nie można usunąć formy płatności*
 
 Dzieje się tak z powodu zaległego salda. Ureguluj zaległe salda przed usunięciem formy płatności.
-
-## <a name="unable-to-see-subscriptions-under-my-account-to-update-the-payment-method"></a>Nie można wyświetlić subskrypcji w obszarze mojego konta w celu zaktualizowania formy płatności
-
-Być może używasz identyfikatora poczty e-mail, który jest inny niż ten używany na potrzeby subskrypcji.
-
-Aby rozwiązać ten problem, zobacz temat [No subscriptions found sign-in error for Azure portal or Azure account center](no-subscriptions-found.md) (Błąd rejestracji „Nie odnaleziono żadnych subskrypcji” w witrynie Azure Portal lub w Centrum konta).
 
 ## <a name="unable-to-make-payment-for-a-subscription"></a>Nie można dokonać płatności za subskrypcję
 

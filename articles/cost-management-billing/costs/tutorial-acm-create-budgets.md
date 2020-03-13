@@ -4,17 +4,17 @@ description: Ten samouczek ułatwia planowanie i uwzględnianie kosztów używan
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/02/2020
+ms.date: 03/11/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: f5943e37267a79ad342fbd9afe0256a4ca7182e6
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: b81236fd63d9289f797056cf7aaceb7d826511af
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251173"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128356"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Samouczek: Tworzenie budżetów platformy Azure i zarządzanie nimi
 
@@ -54,7 +54,7 @@ Aby uzyskać więcej informacji na temat przypisywania uprawnień do danych usł
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-- Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
+- Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-a-budget-in-the-azure-portal"></a>Tworzenie budżetu w witrynie Azure Portal
 
@@ -164,7 +164,7 @@ New-AzureRmConsumptionBudget -Amount 100 -Name TestPSBudget -Category Cost -Star
 ```
 ## <a name="create-a-budget-with-an-azure-resource-manager-template"></a>Tworzenie budżetu za pomocą szablonu usługi Azure Resource Manager
 
-Budżet można utworzyć za pomocą szablonu usługi Azure Resource Manager. Szablon ułatwia utworzenie budżetu w ramach grupy zasobów. Szablon obsługuje tylko klientów z umową Enterprise Agreement.
+Budżet można utworzyć za pomocą szablonu usługi Azure Resource Manager. Szablon ułatwia utworzenie budżetu w ramach grupy zasobów. 
 
 Wybierz następujący obraz, aby zalogować się do witryny Azure Portal i otworzyć szablon:
 

@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: tutorial
-ms.date: 03/03/2020
+ms.date: 03/06/2020
 ms.author: banders
-ms.openlocfilehash: ca1064ce3414f4a796110c022125b68c0674e0d6
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 5de6baf81f67ef6bee43b54e7aa0d62088c15be9
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78270188"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898649"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Omówienie rachunku za umowę Enterprise platformy Azure
 
@@ -118,7 +118,7 @@ W poniższej tabeli przedstawiono i wyjaśniono terminy używane na fakturze ora
 
 Ta sekcja ma zastosowanie tylko w przypadku klientów w Australii, Japonii lub Singapurze.
 
-Porównaj sumę opłat z platformy Azure Marketplace w sekcji **Raporty** > **Podsumowanie użycia** w witrynie Enterprise Portal z fakturą dotyczącą platformy Marketplace. Faktura witryny Marketplace dotyczy tylko zakupów w witrynie Azure Marketplace i jej użycia. Kwoty w raporcie **Podsumowanie użycia** nie zawierają podatku.
+Porównaj sumę opłat z platformy Azure Marketplace w sekcji **Raporty** > **Podsumowanie użycia** w witrynie Enterprise Portal z fakturą dotyczącą platformy Marketplace. Faktura witryny Marketplace dotyczy tylko zakupów w witrynie Azure Marketplace i jej użycia. Kwoty w raporcie **Podsumowanie użycia** obejmują już podatek, który jest określany przez wydawcę.
 
 Zaloguj się do witryny [Enterprise Portal](https://ea.azure.com), a następnie wybierz pozycję **Raporty**. W prawym górnym rogu karty przełącz widok z **M** na **C** i dopasuj okres na fakturze.  
 

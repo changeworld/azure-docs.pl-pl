@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: c96caf7a90f35913bcba04a00553ad1df2689999
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: dbf3531f84d218543b0ab1fb2199a66bdbde2926
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514429"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117251"
 ---
 ::: zone target = "docs"
 
@@ -100,7 +100,7 @@ Wykonaj poniższe kroki, aby podłączyć kable do urządzenia.
 
 Na jednym z węzłów urządzenia wykonaj następujące kroki, aby podłączyć kable sieciowe.
 
-1. Za pomocą kabla sieciowego CAT 6 RJ-45 (niebieski kabel na ilustracji) podłącz komputer hosta do portu zarządzania o przepustowości 1 Gb/s.
+1. Aby podłączyć komputer hosta do portu zarządzania 1 GB/s, należy użyć kabla sieciowego CAT 6 RJ-45 (górny kabel z prawej strony na ilustracji, podłączony do wtyczki oznaczonej MGMT).
 2. Za pomocą kabla QSFP+ (światłowodowego lub miedzianego) podłącz co najmniej jeden interfejs sieciowy o przepustowości 40 Gb/s (preferowany względem interfejsu 1 Gb/s) do przesyłania danych. W przypadku korzystania z przełącznika 10 Gb/s użyj kabla SFP+ z adapterem QSFP+ do SFP+ (adapter QSA) w celu podłączenia interfejsu sieciowego 40 Gb/s do przesyłania danych.
 
     ![Okablowanie portów urządzenia Data Box Heavy](media/data-box-heavy-deploy-set-up/data-box-heavy-ports-cabled.png)
