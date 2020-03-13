@@ -4,11 +4,15 @@
   items:
     - name: Informacje o usłudze Azure Bastion
       href: bastion-overview.md
+- name: Przewodniki Szybki start
+  items:
+    - name: Tworzenie hosta-bastionu na podstawie ustawień maszyny wirtualnej
+      href: quickstart-host-portal.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Tworzenie hosta bastionu
       items:
-        - name: Portal Azure
+        - name: Azure Portal
           href: bastion-create-host-portal.md
         - name: Azure PowerShell
           href: bastion-create-host-powershell.md

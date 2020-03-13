@@ -161,6 +161,9 @@
         - name: Dane galerii
           displayName: export
           href: ai-gallery-control-personal-data-dsr.md
+        - name: Pobieranie notesów
+          displayName: export
+          href: download-notebooks-data.md
 - name: Dokumentacja
   items:
     - name: Dokumentacja algorytmów i modułów

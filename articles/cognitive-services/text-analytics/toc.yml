@@ -50,6 +50,8 @@
       href: named-entity-types.md
     - name: Obsługa języków i regionów
       href: language-support.md
+    - name: Przesunięcia tekstu
+      href: concepts/text-offsets.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Wywoływanie interfejsu API usługi Text Analytics

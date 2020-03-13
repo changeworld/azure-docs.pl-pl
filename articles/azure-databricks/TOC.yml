@@ -31,43 +31,8 @@
   items:
     - name: Wprowadzenie
       items:
-        - name: Omówienie danych
-          href: /azure/databricks/getting-started/data
-          maintainContext: true
         - name: Pojęcia dotyczące usługi Azure Databricks
           href: /azure/databricks/getting-started/concepts
-          maintainContext: true
-        - name: Zestawy danych usługi Azure Databricks
-          href: /azure/databricks/getting-started/databricks-datasets
-          maintainContext: true
-        - name: Apache Spark
-          items:
-            - name: Omówienie platformy Apache Spark
-              href: /azure/databricks/getting-started/spark/index
-              maintainContext: true
-            - name: Wprowadzenie do platformy Apache Spark
-              href: /azure/databricks/getting-started/spark/quick-start
-              maintainContext: true
-            - name: Ramki danych
-              href: /azure/databricks/getting-started/spark/dataframes
-              maintainContext: true
-            - name: Zestawy danych
-              href: /azure/databricks/getting-started/spark/datasets
-              maintainContext: true
-            - name: Uczenie maszynowe
-              href: /azure/databricks/getting-started/spark/machine-learning
-              maintainContext: true
-            - name: Przesyłanie strumieniowe ze strukturą
-              href: /azure/databricks/getting-started/spark/streaming
-              maintainContext: true
-            - name: Co dalej
-              href: /azure/databricks/getting-started/spark/next
-              maintainContext: true
-        - name: Trenowanie i często zadawane pytania
-          href: /azure/databricks/getting-started/training-faq
-          maintainContext: true
-        - name: Obsługiwane przeglądarki
-          href: /azure/databricks/getting-started/supported-browsers
           maintainContext: true
     - name: Środowiska uruchomieniowe usługi Databricks
       items:
@@ -220,6 +185,9 @@
       maintainContext: true
     - name: Dane
       items:
+        - name: Omówienie danych
+          href: /azure/databricks/getting-started/data
+          maintainContext: true
         - name: Bazy danych i tabele
           href: /azure/databricks/data/tables
           maintainContext: true
@@ -310,6 +278,9 @@
               maintainContext: true
         - name: System plików usługi Databricks (DBFS)
           href: /azure/databricks/data/databricks-file-system
+          maintainContext: true
+        - name: Zestawy danych usługi Azure Databricks
+          href: /azure/databricks/getting-started/databricks-datasets
           maintainContext: true
         - name: FileStore
           href: /azure/databricks/data/filestore
@@ -731,6 +702,9 @@
           maintainContext: true
         - name: Program RStudio w usłudze Azure Databricks
           href: /azure/databricks/spark/latest/sparkr/rstudio
+          maintainContext: true
+        - name: Program Shiny w usłudze Azure Databricks
+          href: /azure/databricks/spark/latest/sparkr/shiny
           maintainContext: true
     - name: Uczenie maszynowe
       items:
@@ -1385,6 +1359,9 @@
             - name: Zapewnianie idempotentności
               href: /azure/databricks/kb/jobs/jobs-idempotency
               maintainContext: true
+            - name: Długie zadania kończą się niepowodzeniem w przypadku przekazywania poświadczeń
+              href: /azure/databricks/kb/jobs/azure-long-job-failed-auth
+              maintainContext: true
         - name: Biblioteki
           items:
             - name: Nie można odinstalować biblioteki za pomocą interfejsu użytkownika
@@ -1494,6 +1471,12 @@
               maintainContext: true
             - name: Uruchamianie zapytań SQL
               href: /azure/databricks/kb/python/sql-in-python
+              maintainContext: true
+            - name: Odczytywanie plików w języku Python za pomocą interfejsu API HDFS
+              href: /azure/databricks/kb/python/hdfs-to-read-files
+              maintainContext: true
+            - name: Stan wycofania języka Python 2
+              href: /azure/databricks/kb/python/python-2-eol
               maintainContext: true
         - name: Język R z platformą Spark
           items:
@@ -1650,6 +1633,35 @@
       href: /azure/templates/microsoft.databricks/workspaces
 - name: Zasoby
   items:
+    - name: Apache Spark
+      items:
+        - name: Omówienie platformy Apache Spark
+          href: /azure/databricks/getting-started/spark/index
+          maintainContext: true
+        - name: Wprowadzenie do platformy Apache Spark
+          href: /azure/databricks/getting-started/spark/quick-start
+          maintainContext: true
+        - name: Ramki danych
+          href: /azure/databricks/getting-started/spark/dataframes
+          maintainContext: true
+        - name: Zestawy danych
+          href: /azure/databricks/getting-started/spark/datasets
+          maintainContext: true
+        - name: Uczenie maszynowe
+          href: /azure/databricks/getting-started/spark/machine-learning
+          maintainContext: true
+        - name: Przesyłanie strumieniowe ze strukturą
+          href: /azure/databricks/getting-started/spark/streaming
+          maintainContext: true
+        - name: Co dalej
+          href: /azure/databricks/getting-started/spark/next
+          maintainContext: true
+    - name: Trenowanie i często zadawane pytania
+      href: /azure/databricks/getting-started/training-faq
+      maintainContext: true
+    - name: Obsługiwane przeglądarki
+      href: /azure/databricks/getting-started/supported-browsers
+      maintainContext: true
     - name: Informacje o wersji
       items:
         - name: Platforma

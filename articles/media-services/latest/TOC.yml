@@ -199,9 +199,14 @@
         - name: Przesyłanie strumieniowe
           displayName: 'failover, bcdr, HA, high availability'
           href: media-services-high-availability-streaming.md
-    - name: Wskazówki dotyczące migracji z wersji 2 do wersji 3
-      href: migrate-from-v2-to-v3.md
-      displayName: naming
+    - name: Migracja z wersji 2 do 3
+      items:
+        - name: Porównanie wersji 2 i 3
+          displayName: 'migrate, v2 to v3'
+          href: media-services-v2-vs-v3.md
+        - name: Wskazówki dotyczące migracji
+          href: migrate-from-v2-to-v3.md
+          displayName: naming
 - name: Przewodniki z instrukcjami
   items:
     - name: Rozpoczęcie pracy
@@ -328,6 +333,18 @@
           href: download-results-howto.md
         - name: Dźwięk opisowy sygnału
           href: signal-descriptive-audio-howto.md
+    - name: Rozwiązywanie problemów
+      items:
+        - name: Często zadawane pytania
+          href: frequently-asked-questions.md
+        - name: Kody błędów
+          items:
+            - name: Kody błędów punktu końcowego przesyłania strumieniowego
+              href: streaming-endpoint-error-codes.md
+            - name: Kody błędów zdarzeń na żywo
+              href: live-event-error-codes.md
+            - name: Kody błędów zadań
+              href: job-error-codes.md
 - name: Dokumentacja
   items:
     - name: Specyfikacja interfejsu OpenAPI (Swagger)
@@ -351,14 +368,6 @@
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Szablon usługi Resource Manager
       href: /azure/templates/microsoft.media/allversions
-    - name: Kody błędów
-      items:
-        - name: Kody błędów punktu końcowego przesyłania strumieniowego
-          href: streaming-endpoint-error-codes.md
-        - name: Kody błędów zdarzeń na żywo
-          href: live-event-error-codes.md
-        - name: Kody błędów zadań
-          href: job-error-codes.md
 - name: Zasoby
   items:
     - name: Społeczność usługi Azure Media Services
@@ -392,7 +401,5 @@
       href: 'https://github.com/Azure/Azure-Media-Services-Explorer'
     - name: Limity przydziału i ograniczenia
       href: limits-quotas-constraints.md
-    - name: Często zadawane pytania
-      href: frequently-asked-questions.md
     - name: Chmury i regiony platformy Azure
       href: azure-clouds-regions.md

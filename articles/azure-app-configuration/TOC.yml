@@ -88,6 +88,8 @@
           href: concept-disaster-recovery.md
 - name: Przewodniki z instrukcjami
   items:
+    - name: Włączanie funkcji dla podzbioru użytkowników
+      href: howto-feature-filters-aspnet-core.md
     - name: Importowanie lub eksportowanie danych konfiguracji
       href: howto-import-export-data.md
     - name: Kierowanie zdarzeń do niestandardowego punktu końcowego

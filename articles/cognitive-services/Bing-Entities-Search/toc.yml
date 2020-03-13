@@ -26,19 +26,13 @@
           href: quickstarts/ruby.md
     - name: SDK
       items:
-        - name: 'Przy użyciu języka C#'
-          href: quickstarts/entity-sdk-csharp-quickstart.md
-        - name: Używanie środowiska Node.js
-          href: quickstarts/entity-sdk-node-quickstart.md
-        - name: Korzystanie z języka Python
-          href: quickstarts/entity-sdk-python-quickstart.md
-        - name: Korzystanie z języka Java
-          href: quickstarts/entity-sdk-java-quickstart.md
+        - name: Biblioteki klienta wyszukiwania jednostek Bing
+          href: ./quickstarts/client-libraries.md
 - name: Samouczki
   items:
     - name: Tworzenie jednostronicowej aplikacji internetowej
       href: tutorial-bing-entities-search-single-page-app.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Przykłady kodu
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Entity+Search'
