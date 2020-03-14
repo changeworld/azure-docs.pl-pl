@@ -1,9 +1,9 @@
 ---
-title: Rozszerzone zdarzenia
+title: Zdarzenia rozszerzone
 description: Opisuje zdarzenia rozszerzone (XEvents) w Azure SQL Database oraz sposób różnicowania sesji zdarzeń w przypadku sesji zdarzeń w Microsoft SQL Server.
 services: sql-database
 ms.service: sql-database
-ms.subservice: monitor
+ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: cab5b5baf318eb9eadc398ce525e0de716d0df2d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: cb4eb4474ad074a3e69dc146c97b48d54343595b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822300"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79213959"
 ---
 # <a name="extended-events-in-sql-database"></a>Zdarzenia rozszerzone w SQL Database
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -48,7 +48,7 @@ Przed wybraniem pliku zdarzenia jako [obiektu docelowego](#AzureXEventsTargets)p
 - [Usługa Azure Storage](https://azure.microsoft.com/services/storage/)
 
 
-- PowerShell
+- Program PowerShell
     - [Używanie Azure PowerShell z usługą Azure Storage](../storage/common/storage-powershell-guide-full.md) — zawiera wyczerpujące informacje na temat programu PowerShell i usługi Azure Storage.
 
 ## <a name="code-samples"></a>Przykłady kodu
@@ -91,7 +91,7 @@ Funkcja zdarzeń rozszerzonych jest obsługiwana przez kilka [widoków wykazu](h
 
 W Microsoft SQL Server podobne widoki wykazu mają nazwy, które obejmują *. serwer\_* zamiast *. baza danych\_* . Wzorzec nazwy jest podobny do wykazu **sys. server_event_%** .
 
-## <a name="new-dynamic-management-views-dmvshttpsmsdnmicrosoftcomlibraryms188754aspx"></a>Nowe dynamiczne widoki zarządzania [(widoków DMV)](https://msdn.microsoft.com/library/ms188754.aspx)
+## <a name="new-dynamic-management-views-dmvs"></a>Nowe dynamiczne widoki zarządzania [(widoków DMV)](https://msdn.microsoft.com/library/ms188754.aspx)
 
 Azure SQL Database ma [dynamiczne widoki zarządzania (widoków DMV)](https://msdn.microsoft.com/library/bb677293.aspx) , które obsługują zdarzenia rozszerzone. Widoków DMV informacje o *aktywnych* sesjach zdarzeń.
 
@@ -142,7 +142,7 @@ SELECT
 ```
 
 
-<a name="AzureXEventsTargets" id="AzureXEventsTargets"></a> &nbsp;
+<a name="AzureXEventsTargets" id="AzureXEventsTargets"></a>&nbsp;
 
 ## <a name="targets-for-your-sql-database-event-sessions"></a>Cele dla sesji zdarzeń SQL Database
 
@@ -154,7 +154,7 @@ Poniżej znajdują się elementy docelowe, które mogą przechwytywać wyniki z 
 
 Interfejs API [śledzenia zdarzeń systemu Windows (ETW)](https://msdn.microsoft.com/library/ms751538.aspx) nie jest dostępny dla zdarzeń rozszerzonych w SQL Database.
 
-## <a name="restrictions"></a>Ograniczenia
+## <a name="restrictions"></a>{1&gt;Ograniczenia&lt;1}
 
 Istnieje kilka różnic związanych z zabezpieczeniami befitting środowisko chmury SQL Database:
 
@@ -169,8 +169,8 @@ Musisz mieć uprawnienie **Kontrola** w bazie danych, aby wystawić instrukcję 
 
 Token sygnatury dostępu współdzielonego generowany dla kontenera usługi Azure Storage musi określać **RWL** dla uprawnień. Wartość **RWL** zapewnia następujące uprawnienia:
 
-- Odczytywanie
-- Zapisywanie
+- Odczyt
+- Zapis
 - List
 
 ## <a name="performance-considerations"></a>Zagadnienia dotyczące wydajności

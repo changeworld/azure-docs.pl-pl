@@ -3,12 +3,12 @@ title: Tabela obsługi dla maszyn wirtualnych platformy Azure
 description: Zawiera podsumowanie ustawień i ograniczeń pomocy technicznej podczas tworzenia kopii zapasowych maszyn wirtualnych platformy Azure przy użyciu usługi Azure Backup.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 93ee900eb936bdc3f03c96d0b1196227d05dd03f
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: c30a1d1b30fcc7a12449b44d35704b3b43daa385
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78669079"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247906"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Tabela obsługi dla maszyn wirtualnych platformy Azure
 
@@ -43,8 +43,6 @@ Dowiedz się więcej o usłudze Backup [przy użyciu serwera zapasowego](backup-
 
 **Akcja** | **Pomoc techniczna**
 --- | ---
-Włącz tworzenie kopii zapasowej podczas tworzenia maszyny wirtualnej z systemem Windows Azure | Obsługiwane dla: <br/><br/> -Windows Server 2019 (Datacenter/Datacenter/standard) <br/><br/> -Windows Server 2016 (Datacenter/Datacenter/standard) <br/><br/> — Windows Server 2012 R2 (Datacenter/standard) <br/><br/> -Windows Server 2008 R2 (wersja RTM i SP1 standard)
-Włączanie tworzenia kopii zapasowej podczas tworzenia maszyny wirtualnej z systemem Linux | Obsługiwane dla:<br/><br/> -Ubuntu Server: 18,04, 17,10, 17,04, 16,04 (LTS), 14,04 (LTS)<br/><br/> -Red Hat: RHEL 6,7, 6,8, 6,9, 7,2, 7,3, 7,4<br/><br/> -SUSE Linux Enterprise Server: 11 SP4, 12 SP2, 12 SP3, 15 <br/><br/> -Debian: 8, 9<br/><br/> -CentOS: 6,9, 7,3<br/><br/> -Oracle Linux: 6,7, 6,8, 6,9, 7,2, 7,3
 Tworzenie kopii zapasowej maszyny wirtualnej, która jest zamykana/maszyną wirtualną w trybie offline | Obsługiwane.<br/><br/> Migawka jest tylko w przypadku awarii, a nie spójna z aplikacją.
 Tworzenie kopii zapasowych dysków po migracji na dyski zarządzane | Obsługiwane.<br/><br/> Kopia zapasowa będzie nadal działała. Nie jest wymagana żadna akcja.
 Tworzenie kopii zapasowych dysków zarządzanych po włączeniu blokady grupy zasobów | Nieobsługiwane.<br/><br/> Azure Backup nie może usunąć starszych punktów przywracania, a kopie zapasowe rozpoczną się niepowodzeniem po osiągnięciu maksymalnego limitu punktów przywracania.
@@ -213,10 +211,10 @@ Bezpieczeństwo danych:
 
 **Maszyna** | **Przesyłanie** | **Magazynowanie**
 --- | --- | ---
-Lokalne maszyny z systemem Windows bez programu DPM/usługi MABS | ![Yes][green] | ![Yes][green]
-Maszyny wirtualne platformy Azure | ![Yes][green] | ![Yes][green]
-Lokalne maszyny wirtualne/maszyny wirtualne platformy Azure z programem DPM | ![Yes][green] | ![Yes][green]
-Lokalne maszyny wirtualne/maszyny wirtualne platformy Azure z usługą MABS | ![Yes][green] | ![Yes][green]
+Lokalne maszyny z systemem Windows bez programu DPM/usługi MABS | ![Tak][green] | ![Tak][green]
+Maszyny wirtualne platformy Azure | ![Tak][green] | ![Tak][green]
+Lokalne maszyny wirtualne/maszyny wirtualne platformy Azure z programem DPM | ![Tak][green] | ![Tak][green]
+Lokalne maszyny wirtualne/maszyny wirtualne platformy Azure z usługą MABS | ![Tak][green] | ![Tak][green]
 
 ## <a name="vm-compression-support"></a>Obsługa kompresji maszyny wirtualnej
 
@@ -227,10 +225,10 @@ Funkcja Backup obsługuje kompresję ruchu kopii zapasowej, jak przedstawiono w 
 
 **Maszyna** | **Kompresja do usługi MABS/programu DPM (TCP)** | **Kompresuj do magazynu (HTTPS)**
 --- | --- | ---
-Lokalne maszyny z systemem Windows bez programu DPM/usługi MABS | Nie dotyczy | ![Yes][green]
+Lokalne maszyny z systemem Windows bez programu DPM/usługi MABS | Nie dotyczy | ![Tak][green]
 Maszyny wirtualne platformy Azure | Nie dotyczy | Nie dotyczy
-Lokalne maszyny wirtualne/maszyny wirtualne platformy Azure z programem DPM | ![Yes][green] | ![Yes][green]
-Lokalne maszyny wirtualne/maszyny wirtualne platformy Azure z usługą MABS | ![Yes][green] | ![Yes][green]
+Lokalne maszyny wirtualne/maszyny wirtualne platformy Azure z programem DPM | ![Tak][green] | ![Tak][green]
+Lokalne maszyny wirtualne/maszyny wirtualne platformy Azure z usługą MABS | ![Tak][green] | ![Tak][green]
 
 ## <a name="next-steps"></a>Następne kroki
 

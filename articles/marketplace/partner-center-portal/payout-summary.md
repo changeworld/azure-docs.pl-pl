@@ -8,11 +8,11 @@ ms.service: marketplace
 ms.topic: guide
 ms.date: 12/10/2019
 ms.openlocfilehash: 6ee6b6f325ba58ecaa3c3acb5d5ded173262bafb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78344050"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269902"
 ---
 # <a name="payout-reporting"></a>Raportowanie wypłaty
 
@@ -74,11 +74,11 @@ Na przykład jeśli klient kupi przy użyciu karty kredytowej.
 |Zakończenie okresu (miesiąc)   | 30 sie 2019 | | |
 |Data rozliczenia | Września 1, 2019 | | |
 |Data płatności klienta | Września 1, 2019 | | |
-|Okres płatności (tylko karty kredytowe:, 30 dni) | Września 1, 2019 – września 30, 2019 | | **Kolejność atrybutów korelacji:** <br> <ul><li>AssetId</li> <li>Identyfikator klienta</li> <li> Nazwa klienta</li> </ul> <br> **Użycie** <br> <ul> <li>AssetId</li> <li>Identyfikator</li> <li>Nazwa klienta</li> <li>Wartooć</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Stan wypłaty:** Nieprzetworzone |
+|Okres płatności (tylko karty kredytowe:, 30 dni) | Września 1, 2019 – września 30, 2019 | | **Kolejność atrybutów korelacji:** <br> <ul><li>AssetId</li> <li>Identyfikator klienta</li> <li> Nazwa klienta</li> </ul> <br> **Użycie** <br> <ul> <li>AssetId</li> <li>Identyfikator</li> <li>Nazwa klienta</li> <li>Wartooć</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **Stan wypłaty:** Nieprzetworzone |
 |Początek okresu zbierania | Września 1, 2019 | | |
 |Koniec okresu zbierania danych (maksymalnie 30 dni) | Września 30, 2019 | | |
-|Data wyliczenia wypłaty (co miesiąc 15) | 1 października 2019 | | **Atrybuty korelacji** <br> <ul><li>AssetId</li> <li>Identyfikator klienta</li> <li>Nazwa klienta</li> </ul> <br> **Użycie** <br> <ul> <li>AssetId</li> <li>Identyfikator</li> <li>Nazwa klienta</li> <li>Wartooć</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Stan wypłaty:** Nowego |
-|Data wypłaty | 15 października 2019 | | **Atrybuty korelacji** <br> <ul><li>AssetId</li> <li>Identyfikator klienta</li> <li> Nazwa klienta</li> </ul> <br> **Użycie** <br> <ul> <li>AssetId</li> <li>Identyfikator</li> <li>Nazwa klienta</li> <li>Wartooć</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Stan wypłaty:** Płatność wysłana |
+|Data wyliczenia wypłaty (co miesiąc 15) | 1 października 2019 | | **Atrybuty korelacji** <br> <ul><li>AssetId</li> <li>Identyfikator klienta</li> <li>Nazwa klienta</li> </ul> <br> **Użycie** <br> <ul> <li>AssetId</li> <li>Identyfikator</li> <li>Nazwa klienta</li> <li>Wartooć</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **Stan wypłaty:** Nowego |
+|Data wypłaty | 15 października 2019 | | **Atrybuty korelacji** <br> <ul><li>AssetId</li> <li>Identyfikator klienta</li> <li> Nazwa klienta</li> </ul> <br> **Użycie** <br> <ul> <li>AssetId</li> <li>Identyfikator</li> <li>Nazwa klienta</li> <li>Wartooć</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **Stan wypłaty:** Płatność wysłana |
 
 ### <a name="enterprise-agreement-quarterlymonthly-customers"></a>Umowa Enterprise Agreement (kwartalne/miesięczne klienci)
 
@@ -93,7 +93,7 @@ Na przykład jeśli klient kupi przy użyciu karty kredytowej.
 |Koniec okresu zbierania danych (maksymalnie 90 dni) | 15 stycznia 2020 | | |
 |Data płatności klienta | 30 grudnia, 2019 | | |
 |Obliczanie wypłaty | 15 stycznia 2020 | | |
-|Data wypłaty | 15 lutego 2020 | | **Dla kwartalnych klientów** <br> <br> **Raport o zamówieniach** <br> <ul><li>AssetId</li> <li>Identyfikator klienta</li> <li> Nazwa klienta</li> </ul> <br> **Użycie** <br> <ul> <li>AssetId</li> <li>Identyfikator</li> <li>Nazwa klienta</li> <li>Wartooć</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Stan wypłaty:** wysłano |
+|Data wypłaty | 15 lutego 2020 | | **Dla kwartalnych klientów** <br> <br> **Raport o zamówieniach** <br> <ul><li>AssetId</li> <li>Identyfikator klienta</li> <li> Nazwa klienta</li> </ul> <br> **Użycie** <br> <ul> <li>AssetId</li> <li>Identyfikator</li> <li>Nazwa klienta</li> <li>Wartooć</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **Stan wypłaty:** wysłano |
 
 ## <a name="transaction-history-download-export"></a>Pobieranie historii transakcji — eksport
 
@@ -162,7 +162,7 @@ Ta opcja zapewnia pobranie każdego elementu linii zdobywania, który jest widoc
 | taxZipCode       | Sprzedaż do pliku zip klienta                                                                                                                  |
 | LicensingProgramName       |                                                                                                                   |
 | Kod programu       | Ciąg do mapowania przy użyciu nazwy programu                                                                                                                   |
-| earningAmountInLastPaymentCurrency       | Kwota zarobków w ostatniej walucie płatności (pole będzie puste, jeśli nie zostały uiszczone żadne wcześniejsze płatności)                                                                                                                   |
+| EarningAmountInLastPaymentCurrency       | Kwota zarobków w ostatniej walucie płatności (pole będzie puste, jeśli nie zostały uiszczone żadne wcześniejsze płatności)                                                                                                                   |
 | lastPaymentCurrency       | Waluta ostatniej płatności (pole będzie puste, jeśli nie zapłacisz żadnej wcześniejszej płatności)                                                                                                                   |
 | AssetId       | Unikatowy identyfikator zamówień klientów dla usługi w portalu Marketplace.  Reprezentuje elementy wiersza zakupu transakcji transakcyjnych. Może istnieć wiele zasobów.                                                                                                                   |
 | Wartooć       | odnosi się do faktury klienta                                                                                                                   |

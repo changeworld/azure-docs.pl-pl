@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
 ms.openlocfilehash: afb40d0f3681bc02351e43166fccfaafe7741128
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023416"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259281"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Kup niestandardową nazwę domeny dla Azure App Service
 
@@ -31,7 +31,7 @@ W celu ukończenia tego samouczka:
 
 Aby można było używać domen niestandardowych w Azure App Service, [plan App Service](https://azure.microsoft.com/pricing/details/app-service/) aplikacji musi być płatną warstwą **(współdzielona**, **podstawowa**, **standardowa**lub **Premium**). W tym kroku upewnij się, że aplikacja jest w obsługiwanej warstwie cenowej.
 
-### <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+### <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Otwórz witrynę [Azure Portal](https://portal.azure.com) i zaloguj się przy użyciu konta platformy Azure.
 
@@ -72,7 +72,7 @@ Wyświetlenie następującego powiadomienia oznacza zakończenie operacji skalow
 ### <a name="pricing-information"></a>Informacje o cenach
 Aby uzyskać informacje o cenach Azure App Service domenach, odwiedź [stronę cennika App Service](https://azure.microsoft.com/pricing/details/app-service/windows/) i przewiń w dół do App Service domeny.
 
-### <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+### <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 Otwórz witrynę [Azure Portal](https://portal.azure.com/) i zaloguj się przy użyciu konta platformy Azure.
 
 ### <a name="launch-buy-domains"></a>Uruchamianie kupowania domen
@@ -108,7 +108,7 @@ Następnie wybierz odpowiednie opcje dla domeny. Zapoznaj się z poniższymi tab
 
 | Ustawienie | Sugerowana wartość | Opis |
 |-|-|-|
-|Ochrona prywatności | Włączenie | Zezwól na "ochronę prywatności", która jest oferowana _bezpłatnie_w cenie zakupu. Niektóre domeny najwyższego poziomu są zarządzane przez rejestratory, które nie obsługują ochrony prywatności i są wyświetlane na stronie **Ochrona prywatności** . |
+|Ochrona prywatności | Włączanie | Zezwól na "ochronę prywatności", która jest oferowana _bezpłatnie_w cenie zakupu. Niektóre domeny najwyższego poziomu są zarządzane przez rejestratory, które nie obsługują ochrony prywatności i są wyświetlane na stronie **Ochrona prywatności** . |
 | Przypisywanie domyślnych nazw hostów | **www** i **\@** | Wybierz żądane powiązania nazwy hosta, jeśli jest to wymagane. Po zakończeniu operacji zakupu domeny dostęp do aplikacji można uzyskać na wybranych nazwach hostów. Jeśli aplikacja jest za [Traffic managerem platformy Azure](https://azure.microsoft.com/services/traffic-manager/), nie widzisz opcji przypisywania domeny głównej (@), ponieważ Traffic Manager nie obsługuje rekordów. Po zakończeniu zakupu domeny możesz wprowadzić zmiany w przypisaniach do nazwy hosta. |
 
 ### <a name="accept-terms-and-purchase"></a>Zaakceptuj warunki i zakup
@@ -168,7 +168,7 @@ Upewnij się, że zakupiona domena znajduje się na liście w sekcji **domeny Ap
 Wybierz przycisk **Dodaj nazwę hosta**.
 
 ### <a name="configure-hostname"></a>Konfigurowanie nazwy hosta
-W oknie dialogowym **Dodawanie nazwy hosta** wpisz w pełni kwalifikowaną nazwę domeny domeny App Service lub dowolna poddomena. Przykład:
+W oknie dialogowym **Dodawanie nazwy hosta** wpisz w pełni kwalifikowaną nazwę domeny domeny App Service lub dowolna poddomena. Na przykład:
 
 - kontoso.net
 - kontoso.net www\.

@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: victorh
 ms.openlocfilehash: a4427c05d16a42879d37fdbd2e8b8be9095fcc9b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373565"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279132"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Application Gateway — Omówienie monitorowania kondycji
 
@@ -62,7 +62,7 @@ Po określeniu kryteriów dopasowania można je dołączyć do konfiguracji sond
 | Właściwość sondy | Wartość | Opis |
 | --- | --- | --- |
 | Adres URL sondy |http://127.0.0.1:\<port\>/ |Ścieżka adresu URL |
-| Interval |30 |Czas oczekiwania (w sekundach) przed wysłaniem następnej sondy kondycji.|
+| Interwał |30 |Czas oczekiwania (w sekundach) przed wysłaniem następnej sondy kondycji.|
 | Limit czasu |30 |Czas w sekundach, przez który Brama aplikacji czeka na odpowiedź sondy przed oznaczeniem sondy jako złej kondycji. Jeśli sonda jest powracana w dobrej kondycji, odpowiednie zaplecze jest natychmiast oznaczone jako w dobrej kondycji.|
 | Próg złej kondycji |3 |Decyduje o liczbie sond do wysłania w przypadku niepowodzenia regularnej sondy kondycji. Te dodatkowe sondy kondycji są wysyłane w krótkim czasie, aby szybko określić kondycję zaplecza i nie czekać na interwał sondowania. Serwer zaplecza jest oznaczony jako wyłączony po kolejnej liczbie błędów sondy osiągnie próg złej kondycji. |
 
@@ -91,7 +91,7 @@ Poniższa tabela zawiera definicje właściwości niestandardowej sondy kondycji
 | Protokół |Protokół używany do wysyłania sondy. Sonda używa protokołu zdefiniowanego w ustawieniach protokołu HTTP zaplecza |
 | Host |Nazwa hosta do wysłania sondy. Dotyczy tylko sytuacji, gdy wiele witryn jest skonfigurowanych na Application Gateway, w przeciwnym razie użyj "127.0.0.1". Ta wartość różni się od nazwy hosta maszyny wirtualnej. |
 | Ścieżka |Ścieżka względna sondy. Prawidłowa ścieżka zaczyna się od znaku "/". |
-| Interval |Interwał sondy (w sekundach). Ta wartość jest przedziałem czasu między dwoma kolejnymi sondami. |
+| Interwał |Interwał sondy (w sekundach). Ta wartość jest przedziałem czasu między dwoma kolejnymi sondami. |
 | Limit czasu |Limit czasu sondy w sekundach. Jeśli prawidłowa odpowiedź nie zostanie odebrana w tym okresie, sonda zostanie oznaczona jako niepowodzenie.  |
 | Próg złej kondycji |Liczba ponownych prób sondowania. Serwer zaplecza jest oznaczony jako wyłączony po kolejnej liczbie błędów sondy osiągnie próg złej kondycji. |
 

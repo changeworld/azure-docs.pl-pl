@@ -9,18 +9,20 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 55dbcc15afb12c03c98fb8d6e4e7f4acb269f620
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: a980c7bd068a463956191eece43ec1be233e7890
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79255563"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367622"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Przechowywanie kluczowych dla działalności danych obiektów blob z niezmiennym magazynem
 
 Niezmienny magazyn usługi Azure Blob Storage umożliwia użytkownikom przechowywanie obiektów danych o kluczowym znaczeniu dla firmy w ROBAKu (zapis jeden raz, odczyt wielu). Ten stan sprawia, że dane nie są wymazywane i nie są modyfikowane dla interwału określonego przez użytkownika. W czasie trwania interwału przechowywania obiekty blob mogą być tworzone i odczytywane, ale nie można ich modyfikować ani usuwać. Niezmienny magazyn jest dostępny dla kont ogólnego przeznaczenia w wersji 1, w wersji 2, BlobStorage i BlockBlobStorage we wszystkich regionach świadczenia usługi Azure.
 
 Aby uzyskać informacje na temat sposobu ustawiania i czyszczenia lub tworzenia zasad przechowywania opartych na czasie za pomocą Azure Portal, programu PowerShell lub interfejsu wiersza polecenia platformy Azure, zobacz [Set and Manage niezmienności Policy for BLOB Storage](storage-blob-immutability-policies-manage.md).
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="about-immutable-blob-storage"></a>Informacje o niezmiennym magazynie obiektów BLOB
 

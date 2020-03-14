@@ -17,17 +17,17 @@ ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e291a032c1aac45ebc783126e69b524e1d0af95b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376608"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261686"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Rozwiązywanie problemów z zarządzaniem prawami usługi Azure AD
 
 W tym artykule opisano niektóre elementy, które należy zaznaczyć, aby pomóc w rozwiązywaniu problemów z zarządzaniem prawami Azure Active Directory (Azure AD).
 
-## <a name="administration"></a>Administracja
+## <a name="administration"></a>{1&gt;Administracja&lt;1}
 
 * Jeśli zostanie wyświetlony komunikat o odmowie dostępu podczas konfigurowania zarządzania uprawnieniami, a jesteś administratorem globalnym, upewnij się, że katalog ma [licencję na Azure AD — wersja Premium P2 (lub EMS E5)](entitlement-management-overview.md#license-requirements).
 
@@ -129,7 +129,7 @@ Można anulować tylko oczekujące żądanie, które nie zostało jeszcze dostar
 
 * Gdy mają zastosowanie wiele zasad, automatycznie wybierane są zasady, które są wyświetlane na podstawie następującej logiki priorytetu:
 
-    | Priorytet zasad | Scope |
+    | Priorytet zasad | Zakres |
     | --- | --- |
     | P1 | Określeni użytkownicy i grupy w katalogu lub określonych połączonych organizacjach |
     | P2 | Wszyscy członkowie w katalogu (z wyłączeniem Gości) |

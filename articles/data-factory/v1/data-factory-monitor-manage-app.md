@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: de56ba1281d0f20c8be838fa1bc9ebc24905b26c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384772"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260373"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Monitorowanie potoków Azure Data Factory i zarządzanie nimi za pomocą aplikacji do monitorowania i zarządzania
 > [!div class="op_single_selector"]
@@ -204,7 +204,7 @@ Okna działania mogą mieć jeden z następujących stanów:
 <tr>
 <td>-</td><td>Nie można wygenerować lub sprawdzić poprawności okna działania.</td>
 </tr>
-<td>Gotowy</td><td>-</td><td>Okno działania jest gotowe do użycia.</td>
+<td>Gotowe</td><td>-</td><td>Okno działania jest gotowe do użycia.</td>
 </tr>
 <tr>
 <td>Pominięto</td><td>-</td><td>Okno działania nie zostało przetworzone.</td>

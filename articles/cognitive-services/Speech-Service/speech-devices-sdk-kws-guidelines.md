@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/11/2019
+ms.date: 03/11/2020
 ms.author: dapine
-ms.openlocfilehash: 3c3943f7269fa2d0ed25acf2215549635b5f16ac
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 1d363f9f6f9cb5b1ea28e6ae15a9cef857304cab
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79219567"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370682"
 ---
 # <a name="guidelines-for-creating-an-effective-keyword"></a>Wskazówki dotyczące tworzenia efektywnego słowa kluczowego
 
@@ -25,21 +25,15 @@ Tworzenie efektywnego słowa kluczowego jest niezbędne do zapewnienia spójnej 
 
 Podczas wybierania słowa kluczowego należy wziąć pod uwagę następujące wytyczne:
 
-* Słowo kluczowe powinno być słowem lub frazą w języku angielskim.
-
-* Powinno zająć maksymalnie dwóch sekund powiedzieć.
-
-* Najlepiej słów sylab 4 do 7. Na przykład "Hej, Computer" jest dobrym słowem kluczowym. Po prostu "Hej," jest niska.
-
-* Słowa kluczowe powinny być zgodne z typowymi regułami wymowy w języku angielskim
-
-* Unikatowy lub nawet gotowych słowa występującego typowych reguł Wymowa angielskie może zmniejszyć liczbę fałszywych alarmów. Na przykład "computerama" może być dobrym słowem kluczowym.
-
-* Nie należy wybierać wspólnego programu word. Na przykład "jedzenie" i "Przejdź" to słowa, które ludzie mówią, często w zwykłych konwersacji. Mogą one false wyzwalaczy dla Twojego urządzenia.
-
-* Unikaj używania słowa kluczowego, które może mieć alternatywne wymowy. Użytkownicy musi znać "prawo" Wymowa można pobrać swoje urządzenie. Na przykład "509" mogą występować w "pięć 9, zero" "pięć AHA dziewięć," lub "pięć sto i dziewięć." "R.E.I." mogą występować w "r-e-i" lub "ray." Może być wymawiane "Live", "/līv/" lub "/liv/".
-
-* Nie należy używać znaków specjalnych, symbole i cyfry. Na przykład "go #" i "20 + koty" mogą być problematycznymi słowami kluczowymi. Jednak "Przejdź do sharp" lub "dwadzieścia plus koty" może działać. Można nadal stosować symbole w znakowanie i używać marketingowych i dokumentacji wzmocnienie Wymowa odpowiednie.
+> [!div class="checklist"]
+> * Słowo kluczowe powinno być słowem lub frazą w języku angielskim.
+> * Powinno zająć maksymalnie dwóch sekund powiedzieć.
+> * Najlepiej słów sylab 4 do 7. Na przykład "Hej, Computer" jest dobrym słowem kluczowym. Po prostu "Hej," jest niska.
+> * Słowa kluczowe powinny być zgodne z typowymi regułami wymowy w języku angielskim
+> * Unikatowy lub nawet gotowych słowa występującego typowych reguł Wymowa angielskie może zmniejszyć liczbę fałszywych alarmów. Na przykład "computerama" może być dobrym słowem kluczowym.
+> * Nie należy wybierać wspólnego programu word. Na przykład "jedzenie" i "Przejdź" to słowa, które ludzie mówią, często w zwykłych konwersacji. Mogą one false wyzwalaczy dla Twojego urządzenia.
+> * Unikaj używania słowa kluczowego, które może mieć alternatywne wymowy. Użytkownicy musi znać "prawo" Wymowa można pobrać swoje urządzenie. Na przykład "509" mogą występować w "pięć 9, zero" "pięć AHA dziewięć," lub "pięć sto i dziewięć." "R.E.I." mogą występować w "r-e-i" lub "ray." Może być wymawiane "Live", "/līv/" lub "/liv/".
+> * Nie należy używać znaków specjalnych, symbole i cyfry. Na przykład "go #" i "20 + koty" mogą być problematycznymi słowami kluczowymi. Jednak "Przejdź do sharp" lub "dwadzieścia plus koty" może działać. Można nadal stosować symbole w znakowanie i używać marketingowych i dokumentacji wzmocnienie Wymowa odpowiednie.
 
 > [!NOTE]
 > Jeśli wybierzesz słowo znakowe jako słowo kluczowe, upewnij się, że jesteś właścicielem tego znaku towarowego lub że masz uprawnienia od właściciela znaku towarowego do korzystania z tego słowa. Firma Microsoft nie ponosi odpowiedzialności za wszelkie problemy prawne, które mogą wystąpić przy wyborze słowa kluczowego.

@@ -7,11 +7,11 @@ ms.reviewer: deli, klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/25/2019
 ms.openlocfilehash: 0f6ec158cf6ab855191e6796be3abec7d37439a0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359186"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270565"
 ---
 # <a name="schedule-and-run-recurring-automated-tasks-processes-and-workflows-with-azure-logic-apps"></a>Planowanie i uruchamianie cyklicznych zautomatyzowanych zadań, procesów i przepływów pracy przy użyciu Azure Logic Apps
 
@@ -126,7 +126,7 @@ W związku z tym niezależnie od tego, jak daleko w przeszłości określisz cza
 
 Poniżej przedstawiono różne przykładowe cykle, które można skonfigurować dla wyzwalaczy, które obsługują opcje:
 
-| Wyzwalacz | Cykl | Interval | Częstotliwość | Godzina rozpoczęcia | W tych dniach | W tych godzinach | W tych minutach | Uwaga |
+| Wyzwalacz | Cykl | Interwał | Częstotliwość | Godzina rozpoczęcia | W tych dniach | W tych godzinach | W tych minutach | Uwaga |
 |---------|------------|----------|-----------|------------|---------------|----------------|------------------|------|
 | Wystąpieniu <br>Okno przewijania | Uruchamiaj co 15 minut (bez daty i godziny rozpoczęcia) | 15 | Minuta | dawaj | {unavailable} | dawaj | dawaj | Ten harmonogram zaczyna się od razu, a następnie oblicza przyszłe cykle na podstawie czasu ostatniego uruchomienia. |
 | Wystąpieniu <br>Okno przewijania | Uruchamiany co 15 minut (z datą i godziną rozpoczęcia) | 15 | Minuta | *StartDate* T*StartTime*Z | {unavailable} | dawaj | dawaj | Ten harmonogram nie jest uruchamiany *wcześniej* niż określona data i godzina rozpoczęcia, a następnie oblicza przyszłe cykle na podstawie czasu ostatniego uruchomienia. |
@@ -134,13 +134,13 @@ Poniżej przedstawiono różne przykładowe cykle, które można skonfigurować 
 | Wystąpieniu <br>Okno przewijania | Uruchamiaj co godzinę, codziennie (bez daty i godziny rozpoczęcia) | 1 | Godzina | dawaj | {unavailable} | dawaj | dawaj | Ten harmonogram zaczyna się od razu i oblicza przyszłe cykle na podstawie czasu ostatniego uruchomienia. <p>Jeśli częstotliwość wynosi "tydzień" lub "miesiąc", ten harmonogram odpowiednio uruchamia tylko jeden dzień na tydzień lub jeden dzień miesięcznie. |
 | Wystąpieniu <br>Okno przewijania | Uruchamiaj co godzinę, codziennie (z datą i godziną rozpoczęcia) | 1 | Godzina | *StartDate* T*StartTime*Z | {unavailable} | dawaj | dawaj | Ten harmonogram nie jest uruchamiany *wcześniej* niż określona data i godzina rozpoczęcia, a następnie oblicza przyszłe cykle na podstawie czasu ostatniego uruchomienia. <p>Jeśli częstotliwość wynosi "tydzień" lub "miesiąc", ten harmonogram odpowiednio uruchamia tylko jeden dzień na tydzień lub jeden dzień miesięcznie. |
 | Wystąpieniu <br>Okno przewijania | Uruchamiany co 15 minut po godzinie, co godzinę (z datą i godziną rozpoczęcia) | 1 | Godzina | *StartDate* T00:15:00Z | {unavailable} | dawaj | dawaj | Ten harmonogram nie jest uruchamiany *wcześniej* niż określona data i godzina rozpoczęcia. Przyszłe cykle są uruchamiane z oznaczeniem "15" minut, który jest obliczany na podstawie czasu rozpoczęcia, więc o 00:15 AM, 1:15 AM, 2:15 AM i tak dalej. |
-| Cykl | Uruchamiaj co 15 minut za godzinę, co godzinę (bez daty i godziny rozpoczęcia) | 1 | Day | dawaj | {unavailable} | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 15 | Ten harmonogram jest uruchamiany o godzinie 00:15, 1:15, 2:15 AM i tak dalej. Ponadto ten harmonogram jest równoważny z częstotliwością "godzina" i godziną rozpoczęcia z "15" min. |
-| Cykl | Uruchamiany co 15 minut w określonych minutach (bez daty i godziny rozpoczęcia). | 1 | Day | dawaj | {unavailable} | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 0, 15, 30, 45 | Ten harmonogram nie zostanie uruchomiony do następnego określonego 15-minutowego znacznika. |
-| Cykl | Uruchamiaj codziennie o godzinie *8 am i od* momentu zapisania aplikacji logiki | 1 | Day | dawaj | {unavailable} | 8 | dawaj | Bez daty i godziny rozpoczęcia ten harmonogram jest uruchamiany w oparciu o godzinę zapisywania aplikacji logiki (PUT operację). |
-| Cykl | Uruchom codziennie o godzinie 8:00 (z datą i godziną rozpoczęcia) | 1 | Day | *StartDate* T08:00:00Z | {unavailable} | dawaj | dawaj | Ten harmonogram nie jest uruchamiany *wcześniej* niż określona data i godzina rozpoczęcia. Przyszłe wystąpienia są uruchamiane codziennie o godzinie 8:00. | 
-| Cykl | Uruchom codziennie o godzinie 8:30 (bez daty i godziny rozpoczęcia) | 1 | Day | dawaj | {unavailable} | 8 | 30 | Ten harmonogram jest uruchamiany codziennie o godzinie 8:30. |
-| Cykl | Uruchom codziennie o godzinie 8:30 AM i 4:30 PM | 1 | Day | dawaj | {unavailable} | 8, 16 | 30 | |
-| Cykl | Uruchom codziennie o godzinie 8:30, 8:45, 4:30 PM i 4:45 PM | 1 | Day | dawaj | {unavailable} | 8, 16 | 30, 45 | |
+| Cykl | Uruchamiaj co 15 minut za godzinę, co godzinę (bez daty i godziny rozpoczęcia) | 1 | Dzień | dawaj | {unavailable} | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 15 | Ten harmonogram jest uruchamiany o godzinie 00:15, 1:15, 2:15 AM i tak dalej. Ponadto ten harmonogram jest równoważny z częstotliwością "godzina" i godziną rozpoczęcia z "15" min. |
+| Cykl | Uruchamiany co 15 minut w określonych minutach (bez daty i godziny rozpoczęcia). | 1 | Dzień | dawaj | {unavailable} | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 0, 15, 30, 45 | Ten harmonogram nie zostanie uruchomiony do następnego określonego 15-minutowego znacznika. |
+| Cykl | Uruchamiaj codziennie o godzinie *8 am i od* momentu zapisania aplikacji logiki | 1 | Dzień | dawaj | {unavailable} | 8 | dawaj | Bez daty i godziny rozpoczęcia ten harmonogram jest uruchamiany w oparciu o godzinę zapisywania aplikacji logiki (PUT operację). |
+| Cykl | Uruchom codziennie o godzinie 8:00 (z datą i godziną rozpoczęcia) | 1 | Dzień | *StartDate* T08:00:00Z | {unavailable} | dawaj | dawaj | Ten harmonogram nie jest uruchamiany *wcześniej* niż określona data i godzina rozpoczęcia. Przyszłe wystąpienia są uruchamiane codziennie o godzinie 8:00. | 
+| Cykl | Uruchom codziennie o godzinie 8:30 (bez daty i godziny rozpoczęcia) | 1 | Dzień | dawaj | {unavailable} | 8 | 30 | Ten harmonogram jest uruchamiany codziennie o godzinie 8:30. |
+| Cykl | Uruchom codziennie o godzinie 8:30 AM i 4:30 PM | 1 | Dzień | dawaj | {unavailable} | 8, 16 | 30 | |
+| Cykl | Uruchom codziennie o godzinie 8:30, 8:45, 4:30 PM i 4:45 PM | 1 | Dzień | dawaj | {unavailable} | 8, 16 | 30, 45 | |
 | Cykl | Uruchamiaj każdą sobotę o godzinie 5 PM (bez daty i godziny rozpoczęcia) | 1 | Tydzień | dawaj | Sobotę | 17 | 00 | Ten harmonogram jest uruchamiany w każdą sobotę o godzinie 5:00 PM. |
 | Cykl | Uruchamiaj każdą sobotę o godzinie 5 PM (z datą i godziną rozpoczęcia) | 1 | Tydzień | *StartDate* T17:00:00Z | Sobotę | dawaj | dawaj | Ten harmonogram nie jest uruchamiany *wcześniej* niż określona data i godzina rozpoczęcia, w tym przypadku 9 września 2017 o 5:00 PM. Przyszłe cykle są uruchamiane w każdą sobotę o godzinie 5:00 PM. |
 | Cykl | Uruchamiaj każdy wtorek, czwartek o godzinie 5 PM *oraz* oznaczenie minuty od momentu zapisania aplikacji logiki| 1 | Tydzień | dawaj | "Wtorek", "czwartek" | 17 | dawaj | |

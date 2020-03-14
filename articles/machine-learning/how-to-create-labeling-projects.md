@@ -7,12 +7,12 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 03/01/2020
-ms.openlocfilehash: 9974b42f582a3b5f26df0b6e77b42a03f23c47dd
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: d39cf8745c6f53cb11bb12561fd452325fe52ac6
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78898719"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79296952"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Utwórz projekt etykietowania danych i Eksportuj etykiety 
 
@@ -140,14 +140,14 @@ Strona **etykietowania** z pomocąą ml umożliwia wyzwalanie automatycznych mod
 Ta funkcja jest dostępna dla zadań klasyfikacji obrazów (wiele klas lub wieloetykietowe).  
 
 Wybierz opcję *Włącz oznaczenie ml z etykietami* i określ procesor GPU, aby włączyć obsługę etykietowania, która składa się z dwóch faz:
-* Klastrowanie
+* Obsługa klastrów
 * Etykietowanie
 
 Dokładna liczba obrazów z etykietami, które są niezbędne do rozpoczęcia etykietowania pomocy, nie jest ustalona.  Może się to różnić w zależności od jednego projektu etykietowego do innego. W przypadku niektórych projektów czasami możliwe jest wyświetlenie przednich lub zadań klastra po ręcznym etykietowaniu obrazów 300. Przy pomocy zatytułowanej do uczenia maszynowego jest stosowana technika o nazwie *nauka przekazu*, która korzysta ze wstępnie przeszkolonego modelu, aby przeskoczyć proces szkolenia. Jeśli klasy zestawu danych są podobne do tych w modelu wstępnie szkolonym, etykietki wstępne mogą być dostępne po tylko kilku setkach obrazów oznaczonych ręcznie. Jeśli zestaw danych znacznie różni się od danych używanych do wstępnego uczenia modelu, może to zająć dużo czasu.
 
 Ponieważ końcowe etykiety nadal opierają się na danych wejściowych z Labeler, Technologia ta jest czasami wywoływana *przez człowieka w pętli* etykiet.
 
-### <a name="clustering"></a>Klastrowanie
+### <a name="clustering"></a>Obsługa klastrów
 
 Po przesłaniu pewnej liczby etykiet model uczenia maszynowego zacznie grupować podobne obrazy.  Te podobne obrazy są prezentowane na etykietach na tym samym ekranie w celu przyspieszenia ręcznego tagowania. Klastrowanie jest szczególnie przydatne, gdy Labeler przegląda siatkę obrazów 4, 6 lub 9. 
 

@@ -5,11 +5,11 @@ ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
 ms.openlocfilehash: d57b196bf95ebdf31bc459ad4b9d718fd32ca495
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358121"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280835"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Zaawansowane użycie uwierzytelniania i autoryzacji w Azure App Service
 
@@ -176,7 +176,7 @@ Gdy token dostępu dostawcy (nie [token sesji](#extend-session-token-expiration-
 - **Konto Microsoft**: podczas [konfigurowania ustawień uwierzytelniania konta microsoft](configure-authentication-provider-microsoft.md)wybierz zakres `wl.offline_access`.
 - **Azure Active Directory**: w [https://resources.azure.com](https://resources.azure.com)wykonaj następujące czynności:
     1. W górnej części strony wybierz pozycję **Odczyt/zapis**.
-    2. W przeglądarce po lewej stronie przejdź do **subskrypcji** >  **_\<subskrypcja\_nazwa_**  > **resourceGroups** >  **_\<zasobów\__** \_nazwa > > **dostawców** > **witryną** **sieci Web > Microsoft.**  > \<\_ >  >  
+    2. W przeglądarce po lewej stronie przejdź do **subskrypcji** >  **_\<subskrypcja\_nazwa_**  > **resourceGroups** >  **_\<zasobów\__** \_nazwa > > **dostawców** > **witryną** **sieci Web > Microsoft.** **_\<app\_name>_** **config** **authsettings** >  >  >  
     3. Kliknij pozycję **Edytuj**.
     4. Zmodyfikuj następującą właściwość. Zastąp _\<identyfikator\_aplikacji, >_ z identyfikatorem aplikacji Azure Active Directory usługi, do której chcesz uzyskać dostęp.
 
@@ -223,7 +223,7 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 Zarówno konto Microsoft, jak i Azure Active Directory umożliwiają logowanie się z wielu domen. Na przykład konto Microsoft umożliwia korzystanie z kont _Outlook.com_, _Live.com_i _hotmail.com_ . Usługa Azure AD umożliwia dowolna liczba domen niestandardowych dla kont logowania. Można jednak przyspieszyć użytkowników bezpośrednio do własnej, oznakowanej strony logowania do usługi Azure AD (np. `contoso.com`). Aby zasugerować nazwę domeny kont logowania, wykonaj następujące kroki.
 
-W [https://resources.azure.com](https://resources.azure.com)przejdź do **subskrypcji** >  **_\<subskrypcja\_nazwa_**  > **resourceGroups** >  **_\<zasobów_** \_\_nazwa > > **dostawcy** >  > **authsettings**. > \<\_ >  >  
+W [https://resources.azure.com](https://resources.azure.com)przejdź do **subskrypcji** >  **_\<subskrypcja\_nazwa_**  > **resourceGroups** >  **_\<zasobów_** \_\_nazwa > > **dostawcy** > **Microsoft.Web** > **authsettings**. **sites** **_\<app\_name>_** **config** >  >  >  
 
 Kliknij przycisk **Edytuj**, zmodyfikuj następującą właściwość, a następnie kliknij przycisk **Put**. Pamiętaj, aby zastąpić _nazwę domeny\<\_>_ z żądaną domeną.
 

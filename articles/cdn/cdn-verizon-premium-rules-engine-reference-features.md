@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
 ms.openlocfilehash: 9177ac544c83305ae95ad681d3dc9f84ac64ea36
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381831"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247581"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Azure CDN z funkcji aparatu reguł Verizon Premium
 
@@ -153,7 +153,7 @@ Name (Nazwa) | Przeznaczenie
 -----|--------
 [Metody HTTP w pamięci podręcznej](#cacheable-http-methods) | Określa zestaw dodatkowych metod HTTP, które mogą być buforowane w sieci.
 [Rozmiar treści żądania pamięci podręcznej](#cacheable-request-body-size) | Definiuje próg określania, czy odpowiedź na wpis może być buforowana.
-[Zmienna użytkownika](#user-variable) | Tylko do użytku wewnętrznego.
+[Zmienna użytkownika](#user-variable) | Przeznaczone tylko do użytku wewnętrznego.
 
 ## <a name="url-features"></a>Funkcje adresu URL
 
@@ -175,8 +175,8 @@ Name (Nazwa) | Przeznaczenie
 
 Wartość|Wynik
 --|--
-Enabled (Włączony) | Nagłówek odpowiedzi na wiek jest uwzględniany w odpowiedzi wysyłanej do osoby żądającej.
-Disabled (Wyłączony) | Nagłówek odpowiedzi na wiek jest wykluczony z odpowiedzi wysyłanej do osoby żądającej.
+Aktywny | Nagłówek odpowiedzi na wiek jest uwzględniany w odpowiedzi wysyłanej do osoby żądającej.
+Wyłączono | Nagłówek odpowiedzi na wiek jest wykluczony z odpowiedzi wysyłanej do osoby żądającej.
 
 **Zachowanie domyślne**: wyłączone.
 
@@ -194,8 +194,8 @@ Parametry ograniczania przepustowości określają, czy szybkość transferu dan
 
 Wartość|Wynik
 --|--
-Enabled (Włączony)|Umożliwia punktom pop uznawanie żądań ograniczenia przepustowości.
-Disabled (Wyłączony)|Powoduje ignorowanie parametrów ograniczenia przepustowości. Żądana zawartość jest zwykle obsługiwana (bez ograniczania przepustowości).
+Aktywny|Umożliwia punktom pop uznawanie żądań ograniczenia przepustowości.
+Wyłączono|Powoduje ignorowanie parametrów ograniczenia przepustowości. Żądana zawartość jest zwykle obsługiwana (bez ograniczania przepustowości).
 
 **Zachowanie domyślne:** Dostępny.
 
@@ -230,8 +230,8 @@ Prebuf sekund|Ustaw tę opcję na liczbę sekund oczekiwania dla punktów obecno
 
 Wartość|Wynik
 --|--
-Enabled (Włączony)|Powoduje, że wszystkie żądania przepadają na serwer pierwotny, nawet jeśli zawartość była wcześniej buforowana w punktach obecności.
-Disabled (Wyłączony)|Powoduje, że punkty obecności buforują zasoby zgodnie z zasadami pamięci podręcznej zdefiniowanymi w jego nagłówkach odpowiedzi.
+Aktywny|Powoduje, że wszystkie żądania przepadają na serwer pierwotny, nawet jeśli zawartość była wcześniej buforowana w punktach obecności.
+Wyłączono|Powoduje, że punkty obecności buforują zasoby zgodnie z zasadami pamięci podręcznej zdefiniowanymi w jego nagłówkach odpowiedzi.
 
 **Zachowanie domyślne:**
 
@@ -301,7 +301,7 @@ Wartość|Wynik
 Zastąp|Zapewnia, że wystąpią następujące akcje:<br/> -Zastępuje nagłówek `Cache-Control` wygenerowany przez serwer pochodzenia. <br/>-Dodaje nagłówek `Cache-Control` utworzony przez zewnętrzną funkcję max-age do odpowiedzi.
 Przekazuj|Zapewnia, że nagłówek `Cache-Control` utworzony przez zewnętrzną funkcję max-age nigdy nie zostanie dodany do odpowiedzi. <br/> Jeśli serwer pierwotny generuje nagłówek `Cache-Control`, przechodzi do użytkownika końcowego. <br/> Jeśli serwer pierwotny nie tworzy nagłówka `Cache-Control`, ta opcja może spowodować, że nagłówek odpowiedzi nie zawiera nagłówka `Cache-Control`.
 Dodaj, jeśli brakuje|Jeśli nagłówek `Cache-Control` nie został odebrany z serwera pochodzenia, ta opcja spowoduje dodanie nagłówka `Cache-Control` utworzonego przez zewnętrzną funkcję max-age. Ta opcja jest przydatna do zapewnienia, że wszystkie zasoby są przypisane do nagłówka `Cache-Control`.
-Remove| Ta opcja zapewnia, że nagłówek `Cache-Control` nie jest zawarty z odpowiedzią nagłówka. Jeśli nagłówek `Cache-Control` został już przypisany, zostaje on usunięty z odpowiedzi nagłówka.
+Usuwanie| Ta opcja zapewnia, że nagłówek `Cache-Control` nie jest zawarty z odpowiedzią nagłówka. Jeśli nagłówek `Cache-Control` został już przypisany, zostaje on usunięty z odpowiedzi nagłówka.
 
 **Zachowanie domyślne:** Pisz.
 
@@ -443,8 +443,8 @@ Zachowaj domyślną konfigurację dla dużej platformy HTTP, ponieważ zmniejsza
 
 Wartość|Wynik
 --|--
-Enabled (Włączony)|Przywraca zachowanie domyślne. Domyślnym zachowaniem jest wymuszenie, aby wymusić zainicjowanie przez punkt obecności w tle pobierania elementu zawartości z serwera pochodzenia. Następnie zasób będzie znajdować się w lokalnej pamięci podręcznej.
-Disabled (Wyłączony)|Zapobiega wykonaniu przez punkt obecności pobierania w tle dla elementu zawartości. W efekcie następne żądanie dla tego elementu zawartości z tego regionu powoduje, że punkt obecności zażąda go od serwera pochodzenia klienta.
+Aktywny|Przywraca zachowanie domyślne. Domyślnym zachowaniem jest wymuszenie, aby wymusić zainicjowanie przez punkt obecności w tle pobierania elementu zawartości z serwera pochodzenia. Następnie zasób będzie znajdować się w lokalnej pamięci podręcznej.
+Wyłączono|Zapobiega wykonaniu przez punkt obecności pobierania w tle dla elementu zawartości. W efekcie następne żądanie dla tego elementu zawartości z tego regionu powoduje, że punkt obecności zażąda go od serwera pochodzenia klienta.
 
 **Zachowanie domyślne:** Dostępny.
 
@@ -553,8 +553,8 @@ X-we-Debug: x-we-cache, x-we-Check-Cached, x-EC-cache-Key, x-EC-cache-State
 
 Wartość|Wynik
 -|-
-Enabled (Włączony)|Żądania dla nagłówków odpowiedzi w pamięci podręcznej debugowania zwracają odpowiedź obejmującą nagłówek X-we-Debug.
-Disabled (Wyłączony)|Nagłówek odpowiedzi X-we-Debug zostanie wykluczony z odpowiedzi.
+Aktywny|Żądania dla nagłówków odpowiedzi w pamięci podręcznej debugowania zwracają odpowiedź obejmującą nagłówek X-we-Debug.
+Wyłączono|Nagłówek odpowiedzi X-we-Debug zostanie wykluczony z odpowiedzi.
 
 **Zachowanie domyślne:** Wyłączony.
 
@@ -614,8 +614,8 @@ Ze względu na sposób, w jaki są śledzone ustawienia pamięci podręcznej, ta
 
 Wartość | Wynik
 ------|-------
-Enabled (Włączony)| Powoduje, że wszystkie żądania, które spełniają kryteria dopasowywania, zostaną odrzucone z niedostępną odpowiedzią 403.
-Disabled (Wyłączony)| Przywraca zachowanie domyślne. Domyślne zachowanie polega na umożliwieniu serwerowi pochodzenia określenia typu odpowiedzi, która zostanie zwrócona.
+Aktywny| Powoduje, że wszystkie żądania, które spełniają kryteria dopasowywania, zostaną odrzucone z niedostępną odpowiedzią 403.
+Wyłączono| Przywraca zachowanie domyślne. Domyślne zachowanie polega na umożliwieniu serwerowi pochodzenia określenia typu odpowiedzi, która zostanie zwrócona.
 
 **Zachowanie domyślne**: wyłączone
 
@@ -639,7 +639,7 @@ Wartość|Wynik
 Zastąp|Zapewnia następujące działania:<br/>-Zastępuje nagłówek `Expires` wygenerowany przez serwer pochodzenia.<br/>-Dodaje nagłówek `Expires` utworzony przez zewnętrzną funkcję max-age do odpowiedzi.
 Przekazuj|Zapewnia, że nagłówek `Expires` utworzony przez zewnętrzną funkcję max-age nigdy nie zostanie dodany do odpowiedzi. <br/> Jeśli serwer pierwotny generuje nagłówek `Expires`, przejdzie do użytkownika końcowego. <br/>Jeśli serwer pierwotny nie tworzy nagłówka `Expires`, ta opcja może spowodować, że nagłówek odpowiedzi nie zawiera nagłówka `Expires`.
 Dodaj, jeśli brakuje| Jeśli nagłówek `Expires` nie został odebrany z serwera pochodzenia, ta opcja spowoduje dodanie nagłówka `Expires` utworzonego przez zewnętrzną funkcję max-age. Ta opcja jest przydatna do zapewnienia, że wszystkim zasobom zostanie przypisany nagłówek `Expires`.
-Remove| Zapewnia, że nagłówek `Expires` nie jest zawarty z odpowiedzią nagłówka. Jeśli nagłówek `Expires` został już przypisany, zostaje on usunięty z odpowiedzi nagłówka.
+Usuwanie| Zapewnia, że nagłówek `Expires` nie jest zawarty z odpowiedzią nagłówka. Jeśli nagłówek `Expires` został już przypisany, zostaje on usunięty z odpowiedzi nagłówka.
 
 **Zachowanie domyślne:** Pisz
 
@@ -680,8 +680,8 @@ Informacje o kluczu:
 
 Wartość|Wynik
 -|-
-Enabled (Włączony)|Żądania mogą być przekierowywane.
-Disabled (Wyłączony)|Żądania nie zostaną przekierowane.
+Aktywny|Żądania mogą być przekierowywane.
+Wyłączono|Żądania nie zostaną przekierowane.
 
 **Zachowanie domyślne:** Wyłączony.
 
@@ -760,8 +760,8 @@ Informacje o kluczu:
 
 Wartość|Wynik
 --|--
-Enabled (Włączony)|Zezwala na przekazywanie żądań braku pamięci podręcznej klienta HTTP do serwera pochodzenia, a serwer pochodzenia zwróci nagłówki odpowiedzi i treść z powrotem do klienta HTTP.
-Disabled (Wyłączony)|Przywraca zachowanie domyślne. Domyślnym zachowaniem jest uniemożliwienie przekazywania żądań braku pamięci podręcznej do serwera pochodzenia.
+Aktywny|Zezwala na przekazywanie żądań braku pamięci podręcznej klienta HTTP do serwera pochodzenia, a serwer pochodzenia zwróci nagłówki odpowiedzi i treść z powrotem do klienta HTTP.
+Wyłączono|Przywraca zachowanie domyślne. Domyślnym zachowaniem jest uniemożliwienie przekazywania żądań braku pamięci podręcznej do serwera pochodzenia.
 
 W przypadku całego ruchu produkcyjnego zdecydowanie zaleca się pozostawienie tej funkcji w domyślnym stanie Disabled. W przeciwnym razie serwery pierwotne nie będą chronione przed użytkownikami końcowymi, którzy mogą przypadkowo wyzwolić wiele żądań braku pamięci podręcznej podczas odświeżania stron sieci Web lub z wielu popularnych odtwarzaczy multimedialnych, które są kodowane w celu wysyłania nagłówka bez pamięci podręcznej z każdym żądaniem wideo. Jednak ta funkcja może być przydatna w przypadku niektórych nieprodukcyjnych katalogów przemieszczania lub testowania, aby umożliwić ściąganie nowej zawartości na żądanie z serwera pochodzenia.
 
@@ -827,8 +827,8 @@ Domyślnie ten kod stanu jest zwracany, gdy określone żądanie zakresu bajtów
 
 Wartość|Wynik
 -|-
-Enabled (Włączony)|Uniemożliwia punktom obecności reagowanie na nieprawidłowe żądanie zakresu bajtów o 416 żądany zakres nie niewłaściwego kodu stanu. Zamiast tego serwery będą dostarczać żądany zasób i zwracają 200 OK do klienta.
-Disabled (Wyłączony)|Przywraca zachowanie domyślne. Domyślnym zachowaniem 416 jest przestrzeganie kodu stanu niewłaściwego żądanego zakresu.
+Aktywny|Uniemożliwia punktom obecności reagowanie na nieprawidłowe żądanie zakresu bajtów o 416 żądany zakres nie niewłaściwego kodu stanu. Zamiast tego serwery będą dostarczać żądany zasób i zwracają 200 OK do klienta.
+Wyłączono|Przywraca zachowanie domyślne. Domyślnym zachowaniem 416 jest przestrzeganie kodu stanu niewłaściwego żądanego zakresu.
 
 **Zachowanie domyślne:** Wyłączony.
 
@@ -893,8 +893,8 @@ Ze względu na sposób, w jaki są śledzone ustawienia pamięci podręcznej, ta
 
 Wartość|Wynik
 -|-
-Enabled (Włączony)|Umożliwia przechowywanie ciągów zapytań podczas rejestrowania adresów URL w dzienniku dostępu. Jeśli adres URL nie zawiera ciągu zapytania, ta opcja nie będzie miała żadnego efektu.
-Disabled (Wyłączony)|Przywraca zachowanie domyślne. Domyślnym zachowaniem jest ignorowanie ciągów zapytań podczas rejestrowania adresów URL w dzienniku dostępu.
+Aktywny|Umożliwia przechowywanie ciągów zapytań podczas rejestrowania adresów URL w dzienniku dostępu. Jeśli adres URL nie zawiera ciągu zapytania, ta opcja nie będzie miała żadnego efektu.
+Wyłączono|Przywraca zachowanie domyślne. Domyślnym zachowaniem jest ignorowanie ciągów zapytań podczas rejestrowania adresów URL w dzienniku dostępu.
 
 **Zachowanie domyślne:** Wyłączony.
 
@@ -996,7 +996,7 @@ Informacje o kluczu:
     - content-length
     - zakres zawartości
     - date
-    - serwer
+    - zarządzania
     - końcowy
     - Transfer-Encoding
     - upgrade
@@ -1019,8 +1019,8 @@ Tej częściowej pamięci podręcznej można następnie użyć do spełnienia no
 
 Wartość|Wynik
 -|-
-Enabled (Włączony)|Żądania mogą generować częściowo buforowaną zawartość.
-Disabled (Wyłączony)|Żądania mogą generować tylko w pełni buforowaną wersję wymaganej zawartości.
+Aktywny|Żądania mogą generować częściowo buforowaną zawartość.
+Wyłączono|Żądania mogą generować tylko w pełni buforowaną wersję wymaganej zawartości.
 
 **Zachowanie domyślne:** Wyłączony.
 
@@ -1083,8 +1083,8 @@ Prawidłowe wartości:
 
 Wartość|Wynik
 --|--
-Enabled (Włączony)|Powoduje, że punkt obecności ponownie pobierze zasób z serwera pochodzenia.
-Disabled (Wyłączony)|Przywraca zachowanie domyślne. Domyślnym zachowaniem jest zapełnienie prawidłowych zasobów pamięci podręcznej na żądanie.
+Aktywny|Powoduje, że punkt obecności ponownie pobierze zasób z serwera pochodzenia.
+Wyłączono|Przywraca zachowanie domyślne. Domyślnym zachowaniem jest zapełnienie prawidłowych zasobów pamięci podręcznej na żądanie.
 
 Ta funkcja nie jest wymagana do poprawnego buforowania i dostarczania zawartości, ale może być przydatna jako obejście problemu. Na przykład dynamiczne generatory zawartości na serwerach pochodzenia mogą przypadkowo spowodować, że odpowiedzi są przesyłane do punktów obecności. Te typy odpowiedzi są zwykle zapisywane w pamięci podręcznej przez punkty obecności. Jeśli wiesz, że odpowiedź 0-bajtowa nigdy nie jest prawidłową odpowiedzią na tę zawartość, ta funkcja może uniemożliwić klientom obsługę tych typów zasobów.
 
@@ -1150,8 +1150,8 @@ Upewnij się, że określona nazwa nagłówka nie jest zgodna z żadną z nastę
 
 Wartość|Wynik
 -|-
-Enabled (Włączony)|Nieodświeżona zawartość jest obsługiwana dla żądającego, gdy wystąpi błąd podczas nawiązywania połączenia z serwerem pochodzenia.
-Disabled (Wyłączony)|Błąd serwera pochodzenia jest przekazywany do osoby żądającej.
+Aktywny|Nieodświeżona zawartość jest obsługiwana dla żądającego, gdy wystąpi błąd podczas nawiązywania połączenia z serwerem pochodzenia.
+Wyłączono|Błąd serwera pochodzenia jest przekazywany do osoby żądającej.
 
 **Zachowanie domyślne:** Wyłączony
 
@@ -1194,8 +1194,8 @@ Ta funkcja ma pierwszeństwo przed większością funkcji, z wyjątkiem funkcji 
 
 Wartość | Wynik
 ------|---------
-Enabled (Włączony) | Chroni żądaną zawartość przy użyciu uwierzytelniania opartego na tokenach. Zostaną uznane tylko żądania od klientów, którzy dostarczają prawidłowy token i spełniają jego wymagania. Transakcje FTP są wykluczone z uwierzytelniania opartego na tokenach.
-Disabled (Wyłączony)| Przywraca zachowanie domyślne. Domyślne zachowanie polega na umożliwieniu konfiguracji uwierzytelniania opartego na tokenach w celu ustalenia, czy żądanie zostanie zabezpieczone.
+Aktywny | Chroni żądaną zawartość przy użyciu uwierzytelniania opartego na tokenach. Zostaną uznane tylko żądania od klientów, którzy dostarczają prawidłowy token i spełniają jego wymagania. Transakcje FTP są wykluczone z uwierzytelniania opartego na tokenach.
+Wyłączono| Przywraca zachowanie domyślne. Domyślne zachowanie polega na umożliwieniu konfiguracji uwierzytelniania opartego na tokenach w celu ustalenia, czy żądanie zostanie zabezpieczone.
 
 #### <a name="compatibility"></a>Zgodność
 
@@ -1218,7 +1218,7 @@ Kod odpowiedzi|Nazwa odpowiedzi|Opis
 301|Przeniesiono trwale|Ten kod stanu przekierowuje nieautoryzowanych użytkowników do adresu URL określonego w nagłówku lokalizacji.
 302|Uznan|Ten kod stanu przekierowuje nieautoryzowanych użytkowników do adresu URL określonego w nagłówku lokalizacji. Ten kod stanu jest standardową metodą wykonywania przekierowania.
 307|Tymczasowe przekierowanie|Ten kod stanu przekierowuje nieautoryzowanych użytkowników do adresu URL określonego w nagłówku lokalizacji.
-401|Brak autoryzacji|Połączenie tego kodu stanu z nagłówkiem odpowiedzi WWW-Authentication umożliwia wyświetlenie monitu o uwierzytelnienie użytkownika.
+401|Nieupoważniony|Połączenie tego kodu stanu z nagłówkiem odpowiedzi WWW-Authentication umożliwia wyświetlenie monitu o uwierzytelnienie użytkownika.
 403|Forbidden|Ten komunikat jest komunikatem o stanie niedostępnym w standardzie 403, który zostanie wyświetlony przez nieautoryzowanego użytkownika podczas próby uzyskania dostępu do chronionej zawartości.
 404|Nie znaleziono pliku|Ten kod stanu wskazuje, że klient HTTP mógł komunikować się z serwerem, ale nie znaleziono wymaganej zawartości.
 
@@ -1272,8 +1272,8 @@ Prawidłowe wartości:
 
 Wartość|Wynik
 ---|----
-Enabled (Włączony)|Powoduje ignorowanie wielkości liter podczas porównywania adresów URL dla parametrów uwierzytelniania opartych na tokenach.
-Disabled (Wyłączony)|Przywraca zachowanie domyślne. Domyślnym zachowaniem porównania adresów URL w przypadku uwierzytelniania tokenu jest uwzględnianie wielkości liter.
+Aktywny|Powoduje ignorowanie wielkości liter podczas porównywania adresów URL dla parametrów uwierzytelniania opartych na tokenach.
+Wyłączono|Przywraca zachowanie domyślne. Domyślnym zachowaniem porównania adresów URL w przypadku uwierzytelniania tokenu jest uwzględnianie wielkości liter.
 
 **Zachowanie domyślne:** Wyłączony.
 
@@ -1295,8 +1295,8 @@ Informacje o kluczu:
 
 Wartość|Wynik
 ----|----
-Enabled (Włączony)|Opcja wartość definiuje nazwę parametru ciągu zapytania, za pomocą którego mają być zdefiniowane tokeny.
-Disabled (Wyłączony)|Token może być określony jako niezdefiniowany parametr ciągu zapytania w adresie URL żądania.
+Aktywny|Opcja wartość definiuje nazwę parametru ciągu zapytania, za pomocą którego mają być zdefiniowane tokeny.
+Wyłączono|Token może być określony jako niezdefiniowany parametr ciągu zapytania w adresie URL żądania.
 
 **Zachowanie domyślne:** Wyłączony. Token może być określony jako niezdefiniowany parametr ciągu zapytania w adresie URL żądania.
 

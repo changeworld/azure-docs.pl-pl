@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: 7c9f22d27351b0f57c5a0158821f347073ae60b4
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: dc0da82447b5df0735b16f46298a2f473ee61ea0
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187810"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371379"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Ciągła integracja i dostarczanie w Azure Data Factory
 
@@ -60,7 +60,7 @@ Poniżej znajduje się przykładowy przegląd cyklu życia ciągłej integracji/
 
    ![Tworzenie własnego szablonu](media/continuous-integration-deployment/custom-deployment-build-your-own-template.png) 
 
-1. Wybierz pozycję **Załaduj plik**, a następnie wybierz wygenerowany szablon Menedżer zasobów.
+1. Wybierz pozycję **Załaduj plik**, a następnie wybierz wygenerowany szablon Menedżer zasobów. Jest to plik **arm_template. JSON** znajdujący się w pliku zip, który został wyeksportowany w kroku 1.
 
    ![Edytuj szablon](media/continuous-integration-deployment/custom-deployment-edit-template.png)
 
@@ -171,7 +171,7 @@ Istnieją dwa sposoby obsługi wpisów tajnych:
 
     Plik parametrów musi znajdować się również w rozgałęzieniu publikacji.
 
--  Dodaj [zadanie Azure Key Vault](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault) przed zadaniem wdrażania Azure Resource Manager opisanym w poprzedniej sekcji:
+1. Dodaj [zadanie Azure Key Vault](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault) przed zadaniem wdrażania Azure Resource Manager opisanym w poprzedniej sekcji:
 
     1.  Na karcie **zadania** Utwórz nowe zadanie. Wyszukaj **Azure Key Vault** i dodaj go.
 
@@ -179,9 +179,9 @@ Istnieją dwa sposoby obsługi wpisów tajnych:
 
     ![Dodawanie zadania Key Vault](media/continuous-integration-deployment/continuous-integration-image8.png)
 
-   #### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Przyznawanie uprawnień agentowi Azure Pipelines
+#### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Przyznawanie uprawnień agentowi Azure Pipelines
 
-   Jeśli nie ustawiono prawidłowych uprawnień, zadanie Azure Key Vault może zakończyć się niepowodzeniem z powodu błędu odmowy dostępu. Pobierz dzienniki wydania i Znajdź plik. ps1, który zawiera polecenie udzielenia uprawnień agentowi Azure Pipelines. Można uruchomić polecenie bezpośrednio. Można też skopiować Identyfikator podmiotu zabezpieczeń z pliku i ręcznie dodać zasady dostępu w Azure Portal. wymagane są minimalne uprawnienia `Get` i `List`.
+Jeśli nie ustawiono prawidłowych uprawnień, zadanie Azure Key Vault może zakończyć się niepowodzeniem z powodu błędu odmowy dostępu. Pobierz dzienniki wydania i Znajdź plik. ps1, który zawiera polecenie udzielenia uprawnień agentowi Azure Pipelines. Można uruchomić polecenie bezpośrednio. Można też skopiować Identyfikator podmiotu zabezpieczeń z pliku i ręcznie dodać zasady dostępu w Azure Portal. wymagane są minimalne uprawnienia `Get` i `List`.
 
 ### <a name="update-active-triggers"></a>Aktualizuj aktywne wyzwalacze
 
@@ -471,7 +471,10 @@ Jeśli korzystasz z trybu GIT, możesz zastąpić domyślne właściwości w sza
 * Używasz zautomatyzowanej ciągłej integracji/ciągłego dostarczania i chcesz zmienić niektóre właściwości podczas wdrażania Menedżer zasobów, ale właściwości nie są domyślnie sparametryzowane.
 * Fabryka jest tak duża, że domyślny szablon Menedżer zasobów jest nieprawidłowy, ponieważ ma więcej niż maksymalna dozwolona liczba parametrów (256).
 
-W tych warunkach, aby zastąpić domyślny szablon parametryzacja, Utwórz plik o nazwie ARM-template-parameters-Definition. JSON w folderze wskazanym jako folder główny integracji narzędzia Git usługi Fabryka danych. Należy użyć tej dokładnej nazwy pliku. Data Factory odczytuje ten plik z niezależnej gałęzi, która jest obecnie dostępna w portalu Azure Data Factory, a nie tylko z gałęzi współpracy. Można utworzyć lub edytować plik z gałęzi prywatnej, gdzie można testować zmiany, wybierając pozycję **Eksportuj szablon ARM** w interfejsie użytkownika. Następnie można scalić plik z gałęzią współpracy. Jeśli plik nie zostanie znaleziony, zostanie użyty szablon domyślny.
+W tych warunkach, aby zastąpić domyślny szablon parametryzacja, Utwórz plik o nazwie **ARM-template-parameters-Definition. JSON** w folderze wskazanym jako folder główny integracji narzędzia Git usługi Fabryka danych. Należy użyć tej dokładnej nazwy pliku. Data Factory odczytuje ten plik z niezależnej gałęzi, która jest obecnie dostępna w portalu Azure Data Factory, a nie tylko z gałęzi współpracy. Można utworzyć lub edytować plik z gałęzi prywatnej, gdzie można testować zmiany, wybierając pozycję **Eksportuj szablon ARM** w interfejsie użytkownika. Następnie można scalić plik z gałęzią współpracy. Jeśli plik nie zostanie znaleziony, zostanie użyty szablon domyślny.
+
+> [!NOTE]
+> Niestandardowy szablon parametryzacja nie zmienia limitu parametru szablonu ARM 256. Umożliwia wybór i zmniejszenie liczby właściwości sparametryzowanych.
 
 ### <a name="syntax-of-a-custom-parameters-file"></a>Składnia pliku parametrów niestandardowych
 
@@ -657,7 +660,7 @@ Poniżej znajduje się bieżący domyślny szablon parametryzacja. Jeśli musisz
                     "database": "=",
                     "serviceEndpoint": "=",
                     "batchUri": "=",
-            "poolName": "=",
+                    "poolName": "=",
                     "databaseName": "=",
                     "systemNumber": "=",
                     "server": "=",

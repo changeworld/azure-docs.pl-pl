@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: cc8ccbbde56b57af684ad47840002a846bdcd8c0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0af476b69f2effd836fe76d62059259076c16f53
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827963"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214158"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Monitorowanie i zarządzanie wydajnością podzielonej na fragmenty wielodostępnej bazy danych Azure SQL Database w aplikacji SaaS z wieloma dzierżawcami
 
@@ -24,7 +24,7 @@ W tym samouczku przedstawiono kilka kluczowych scenariuszy zarządzania wydajno�
 
 Wingtip bilety SaaS wielodostępnej aplikacji bazy danych korzystają z modelu danych wielodostępnego podzielonej na fragmenty, gdzie dane o miejscu (dzierżawcy) są dystrybuowane według identyfikatora dzierżawy w przypadku potencjalnie wielu baz danych. Podobnie jak w przypadku wielu innych aplikacji SaaS, oczekiwany wzorzec obciążenia dzierżawy charakteryzuje się nieprzewidywalnością i sporadycznością występowania. Innymi słowy, sprzedaż biletów może nastąpić w dowolnej chwili. Aby skorzystać z tego typowego wzorca użycia bazy danych, bazy danych można skalować w górę i w dół w celu zoptymalizowania kosztów rozwiązania. W przypadku tego typu wzorca ważne jest monitorowanie użycia zasobów bazy danych w celu zapewnienia, że obciążenia są rozsądnie zrównoważone dla potencjalnie wielu baz danych. Należy również upewnić się, że poszczególne bazy danych mają odpowiednie zasoby i nie będą przekraczać limitów [jednostek DTU](sql-database-purchase-models.md#dtu-based-purchasing-model) . W tym samouczku przedstawiono sposoby monitorowania baz danych i zarządzania nimi oraz podejmowanie działań naprawczych w odpowiedzi na różnice w obciążeniu.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > 
@@ -47,11 +47,11 @@ Zarządzanie wydajnością bazy danych polega na zbieraniu danych dotyczących w
 * Aby uniknąć konieczności ręcznego monitorowania wydajności, najprawdopodobniej **ustawisz alerty wyzwalane w przypadku nienormalnego przedziału baz danych**.
 * Aby odpowiedzieć na krótkoterminowe fluktuacje w rozmiarze obliczeniowym bazy danych, **poziom jednostek DTU można skalować w górę lub w dół**. Jeśli ta fluktuacja występuje regularnie lub przewidywalna, **skalowanie bazy danych może odbywać się automatycznie**. Na przykład skalowanie w dół może nastąpić, kiedy przewidywane jest niskie obciążenie — w nocy lub podczas weekendów.
 * Aby odpowiedzieć na dłuższe wahania lub zmiany w dzierżawach, **poszczególne dzierżawy można przenieść do innej bazy danych**.
-* Aby odpowiedzieć na krótkoterminowe wzrosty obciążenia *poszczególnych* dzierżawców, **poszczególne dzierżawy mogą być wyłączane z bazy danych i mieć przypisany indywidualny rozmiar obliczeniowy**. Po zmniejszeniu obciążenia dzierżawa może zostać zwrócona do bazy danych z wieloma dzierżawcami. Gdy jest to znane z wyprzedzeniem, dzierżawy mogą być przenoszone przed emptivelyem, aby zapewnić, że baza danych zawsze ma potrzebne zasoby, i nie ma wpływu na inne dzierżawców w bazie danych z wieloma dzierżawcami. Jeśli takie wymaganie jest przewidywalne, na przykład w przypadku oczekiwania na wzmożone zakupy biletów na popularną imprezę, wówczas takie działanie funkcji zarządzania można uwzględnić w aplikacji.
+* Aby odpowiedzieć na krótkoterminowe wzrosty obciążenia *poszczególnych* dzierżawców, **poszczególne dzierżawy mogą być wyłączane z bazy danych i mieć przypisany indywidualny rozmiar obliczeniowy**. Po zmniejszeniu obciążenia dzierżawa może zostać zwrócona do bazy danych z wieloma dzierżawcami. Gdy jest to znane z wyprzedzeniem, dzierżawy mogą być przenoszone zapobiegawczo, aby zapewnić, że baza danych zawsze ma potrzebne zasoby, i nie ma wpływu na inne dzierżawców w bazie danych z wieloma dzierżawcami. Jeśli takie wymaganie jest przewidywalne, na przykład w przypadku oczekiwania na wzmożone zakupy biletów na popularną imprezę, wówczas takie działanie funkcji zarządzania można uwzględnić w aplikacji.
 
 Witryna [Azure Portal](https://portal.azure.com) udostępnia wbudowane funkcje monitorowania i alertów dla większości zasobów. W przypadku SQL Database, monitorowanie i alerty są dostępne w bazach danych. Ta wbudowana funkcja monitorowania i generowania alertów jest zależna od zasobów, dlatego jest wygodnie używana w przypadku małych liczb zasobów, ale nie jest wygodna podczas pracy z wieloma zasobami.
 
-W przypadku scenariuszy o dużej ilości, w których pracujesz z wieloma zasobami, można użyć [dzienników Azure monitor](https://azure.microsoft.com/services/log-analytics/) . Jest to oddzielna usługa platformy Azure, która zapewnia analizę za pośrednictwem emitowanych dzienników diagnostycznych i danych telemetrycznych zebranych w obszarze roboczym Log Analytics. Dzienniki Azure Monitor mogą zbierać dane telemetryczne z wielu usług i używać ich do wykonywania zapytań i ustawiania alertów.
+W przypadku scenariuszy o dużej ilości, w których pracujesz z wieloma zasobami, można użyć [dzienników Azure monitor](https://azure.microsoft.com/services/log-analytics/) . Jest to oddzielna usługa platformy Azure, która zapewnia analizę za pośrednictwem emitowanych dzienników zebranych w obszarze roboczym Log Analytics. Dzienniki Azure Monitor mogą zbierać dane telemetryczne z wielu usług i używać ich do wykonywania zapytań i ustawiania alertów.
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>Pobierz Wingtip bilety SaaS kodu źródłowego i skryptów aplikacji bazy danych z wieloma dzierżawcami
 
@@ -185,7 +185,7 @@ W przypadku agregowania użycia dzierżawy poniżej przewidywalnych wzorców uż
 
 ## <a name="next-steps"></a>Następne kroki
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Symulowanie użycia dla wielodostępnej bazy danych podzielonej na fragmenty przez uruchomienie dostarczonego generatora obciążenia

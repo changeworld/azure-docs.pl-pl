@@ -7,11 +7,11 @@ ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
 ms.date: 05/26/2017
 ms.openlocfilehash: bb6c99ea12e5b53631d42a04b36b7bfef2337e42
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358986"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270539"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Tworzenie niestandardowych interfejsów API, które można wywołać z Azure Logic Apps
 
@@ -172,7 +172,7 @@ Na przykład aby okresowo sprawdzać usługę pod kątem nowych plików, można 
 | Żądanie zawiera `triggerState`? | Odpowiedź interfejsu API | 
 | -------------------------------- | -------------| 
 | Nie | Zwróć `202 ACCEPTED` stanu i `location` nagłówka z `triggerState` ustawiony na bieżącą godzinę, a interwał `retry-after` do 15 sekund. | 
-| Yes | Sprawdź, czy usługa zawiera pliki dodane po `DateTime` dla `triggerState`. | 
+| Tak | Sprawdź, czy usługa zawiera pliki dodane po `DateTime` dla `triggerState`. | 
 ||| 
 
 | Liczba znalezionych plików | Odpowiedź interfejsu API | 

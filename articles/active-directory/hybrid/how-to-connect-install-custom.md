@@ -15,11 +15,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c99a6e018edd0806daac7cd429135e522f217f23
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376126"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261452"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Niestandardowa instalacja programu Azure AD Connect
 Opcja **Ustawienia niestandardowe** programu Azure AD Connect umożliwia skorzystanie z większej liczby opcji instalacji. Jest używana w przypadku występowania wielu lasów lub w celu skonfigurowania funkcji opcjonalnych, których nie obejmuje instalacja ekspresowa. Jest przydatna w każdej sytuacji, gdy opcja [**instalacji ekspresowej**](how-to-connect-install-express.md) nie zaspokaja potrzeb związanych z wdrożeniem lub topologią.
@@ -336,7 +336,7 @@ Serwer PingFederate musi być skonfigurowany jako serwer federacyjny dla każdej
 
 Aby rozwiązać problemy z walidacją, skontaktuj się z administratorem serwera PingFederate.  Poniżej przedstawiono przykład serwera PingFederate, który nie ma prawidłowej relacji zaufania na platformie Azure:
 
-![Relacja zaufania](./media/how-to-connect-install-custom/ping5.png)
+![Zaufanie](./media/how-to-connect-install-custom/ping5.png)
 
 
 
@@ -382,9 +382,9 @@ Po kliknięciu przycisku Weryfikuj program Azure AD Connect sprawdza ustawienia 
 
 * Rozpoznawanie federacyjnej nazwy FQDN: program Azure AD Connect sprawdza, czy federacyjna nazwa FQDN może zostać rozpoznana przez serwer DNS w celu zapewnienia łączności.
 
-![Complete](./media/how-to-connect-install-custom/completed.png)
+![Pełne](./media/how-to-connect-install-custom/completed.png)
 
-![Weryfikuj](./media/how-to-connect-install-custom/adfs7.png)
+![Sprawdź](./media/how-to-connect-install-custom/adfs7.png)
 
 Aby sprawdzić poprawność uwierzytelniania na całej trasie, należy ręcznie wykonać przynajmniej jeden z następujących testów:
 

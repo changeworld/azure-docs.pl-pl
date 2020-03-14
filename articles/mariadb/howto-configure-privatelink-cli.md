@@ -1,19 +1,19 @@
 ---
-title: Prywatny link do Azure Database for MariaDB (wersja zapoznawcza) Metoda instalacji interfejsu wiersza polecenia
+title: Link prywatny — interfejs wiersza polecenia platformy Azure — Azure Database for MariaDB
 description: Dowiedz się, jak skonfigurować link prywatny dla Azure Database for MariaDB z interfejsu wiersza polecenia platformy Azure
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: b2d9fb9d4dc8268c0be45f8a6f24759a7be58427
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: c28c5494c1cff2c198a94ea6b92003ae74ee2c8e
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561803"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371804"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-mariadb-preview-using-cli"></a>Tworzenie prywatnego linku do Azure Database for MariaDB (wersja zapoznawcza) i zarządzanie nim za pomocą interfejsu wiersza polecenia
+# <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-cli"></a>Tworzenie prywatnego linku do Azure Database for MariaDB przy użyciu interfejsu wiersza polecenia i zarządzanie nim
 
 Prywatny punkt końcowy to podstawowy blok konstrukcyjny dla prywatnego linku na platformie Azure. Umożliwia ona korzystanie z zasobów platformy Azure, takich jak Virtual Machines (VM), w celu komunikacji z prywatnymi zasobami łączy prywatnych. W tym artykule dowiesz się, jak za pomocą interfejsu wiersza polecenia platformy Azure utworzyć maszynę wirtualną w usłudze Azure Virtual Network i na serwerze Azure Database for MariaDB za pomocą prywatnego punktu końcowego platformy Azure.
 

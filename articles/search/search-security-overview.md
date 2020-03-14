@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 44d5edd7b5808b6c212a832dd95de7a9cb4b7c08
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396307"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282837"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Bezpieczeństwo i prywatność danych na platformie Azure Wyszukiwanie poznawcze
 

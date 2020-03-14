@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 393563427e936e07315cd44b78cb793d4292b352
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374403"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79243928"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Szablony produktów w usłudze Azure API Management
 
@@ -208,7 +208,7 @@ Usługa Azure API Management umożliwia dostosowanie zawartości stron portalu d
 |--------------|----------|-----------------|  
 |Product (Produkt)|[Iloczyn](api-management-template-data-model-reference.md#Product)|Określony produkt.|  
 |IsDeveloperSubscribed|wartość logiczna|Czy bieżący użytkownik subskrybuje ten produkt.|  
-|SubscriptionState|numer|Stan subskrypcji. Możliwe stany to:<br /><br /> -   `0 - suspended` — subskrypcja została zablokowana i subskrybent nie może wywołać żadnych interfejsów API produktu.<br />-   `1 - active` — subskrypcja jest aktywna.<br />-   `2 - expired` — subskrypcja osiągnęła swoją datę wygaśnięcia i została zdezaktywowana.<br />-   `3 - submitted` — żądanie subskrypcji zostało wykonane przez dewelopera, ale jeszcze nie zostało zatwierdzone lub odrzucone.<br />-   `4 - rejected` — administrator odrzucił żądanie subskrypcji.<br />-   `5 - cancelled` — subskrypcja została anulowana przez dewelopera lub administratora.|  
+|SubscriptionState|liczba|Stan subskrypcji. Możliwe stany to:<br /><br /> -   `0 - suspended` — subskrypcja została zablokowana i subskrybent nie może wywołać żadnych interfejsów API produktu.<br />-   `1 - active` — subskrypcja jest aktywna.<br />-   `2 - expired` — subskrypcja osiągnęła swoją datę wygaśnięcia i została zdezaktywowana.<br />-   `3 - submitted` — żądanie subskrypcji zostało wykonane przez dewelopera, ale jeszcze nie zostało zatwierdzone lub odrzucone.<br />-   `4 - rejected` — administrator odrzucił żądanie subskrypcji.<br />-   `5 - cancelled` — subskrypcja została anulowana przez dewelopera lub administratora.|  
 |Limity|tablica|Ta właściwość jest przestarzała i nie powinna być używana.|  
 |DelegatedSubscriptionEnabled|wartość logiczna|Czy [delegowanie](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/) jest włączone dla tej subskrypcji.|  
 |DelegatedSubscriptionUrl|ciąg|Jeśli Delegowanie jest włączone, delegowany adres URL subskrypcji.|  

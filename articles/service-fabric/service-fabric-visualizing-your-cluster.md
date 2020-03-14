@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: mikhegn
 ms.openlocfilehash: 80e3d990b6e8026c57ffff0048d0447a95529564
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78364971"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258189"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Wizualizowanie klastra przy użyciu narzędzia Service Fabric Explorer
 
@@ -20,7 +20,7 @@ Service Fabric Explorer (SFX) to narzędzie Open Source służące do sprawdzani
 
 Użyj następujących linków, aby pobrać Service Fabric Explorer jako aplikację klasyczną:
 
-- System Windows
+- Windows
   - https://aka.ms/sfx-windows
 
 - Linux

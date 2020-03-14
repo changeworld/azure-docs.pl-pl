@@ -12,11 +12,11 @@ ms.date: 03/29/2018
 ms.author: rosh
 ROBOTS: NOINDEX
 ms.openlocfilehash: f92c0faaaa3aa0cd2af16a031f3bed4c6b41fc22
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393948"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220788"
 ---
 # <a name="project-url-preview-v7-reference"></a>Odwołanie wersji 7 do podglądu adresu URL projektu
 
@@ -74,10 +74,10 @@ Poniżej znajdują się nagłówki, których może dotyczyć żądanie i odpowie
 ## <a name="query-parameters"></a>Parametry zapytania
 Żądanie może zawierać następujące parametry zapytania. Sprawdź wymaganą kolumnę dla wymaganych parametrów. Należy zakodować parametry zapytania w adresie URL. Zapytanie musi być bezwzględnym adresem URL ze schematem http lub https; nie obsługujemy względnych adresów URL ani innych schematów, takich jak ftp://
 
-|Name (Nazwa)|Wartość|Typ|Wymagany|
+|Name (Nazwa)|Wartość|Typ|Wymagane|
 |----------|-----------|----------|--------------|
-|<a name="mkt" />mkt|Rynek, z którego pochodzą wyniki. <br /><br />Aby uzyskać listę możliwych wartości rynkowych, zobacz Kody rynku.<br /><br /> **Uwaga:** Interfejs API wersji zapoznawczej dla adresu URL obsługuje obecnie tylko stany USA i języki angielskie.<br /><br />|Ciąg|Yes|
-|<a name="query" />q|Adres URL do podglądu|Ciąg|Yes|
+|<a name="mkt" />mkt|Rynek, z którego pochodzą wyniki. <br /><br />Aby uzyskać listę możliwych wartości rynkowych, zobacz Kody rynku.<br /><br /> **Uwaga:** Interfejs API wersji zapoznawczej dla adresu URL obsługuje obecnie tylko stany USA i języki angielskie.<br /><br />|Ciąg|Tak|
+|<a name="query" />q|Adres URL do podglądu|Ciąg|Tak|
 |<a name="responseformat" />responseFormat|Typ nośnika, który ma być używany na potrzeby odpowiedzi. Poniżej przedstawiono możliwe wartości bez uwzględniania wielkości liter.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Wartość domyślna to JSON. Aby uzyskać informacje na temat obiektów JSON zawartych w odpowiedzi, zobacz temat [obiekty odpowiedzi](#response-objects).<br /><br />Jeśli określisz JsonLd, treść odpowiedzi zawiera obiekty JSON-LD, które zawierają wyniki wyszukiwania. Aby uzyskać informacje na temat JSON-LD, zobacz [JSON-LD](https://json-ld.org/).|Ciąg|Nie|
 |<a name="safesearch"/>safeSearch|Niedozwolona zawartość dla dorosłych lub zawartość pirackia jest blokowana z kodem błędu 400 i flaga *isFamilyFriendly* nie jest zwracana. <p>W przypadku legalnej zawartości dla dorosłych poniżej przedstawiono zachowanie. Kod stanu zwraca 200, a flaga *isFamilyFriendly* jest ustawiona na false.<ul><li>Bezpieczne wyszukiwanie = Strict: tytuł, opis, adres URL i obraz nie zostaną zwrócone.</li><li>Bezpieczne wyszukiwanie = umiarkowany; Pobierz tytuł, adres URL i opis, ale nie obraz opisowy.</li><li>Bezpieczne wyszukiwanie = wyłączone; Pobierz wszystkie obiekty/elementy odpowiedzi — tytuł, adres URL, opis i obraz.</li></ul> |Ciąg|Nie jest wymagane. </br> Wartość domyślna to bezpieczne wyszukiwanie = Strict.|
 
@@ -113,7 +113,7 @@ Definiuje informacje o stronie sieci Web w wersji zapoznawczej.
 
 |Name (Nazwa)|Wartość|Typ|
 |----------|-----------|----------|
-|name|Tytuł strony, niekoniecznie tytuł HTML|Ciąg|
+|{1&gt;nazwa&lt;1}|Tytuł strony, niekoniecznie tytuł HTML|Ciąg|
 |url|Adres URL, który był w rzeczywistości przeszukiwany (żądanie mogło być wykonane przekierowania)|Ciąg|
 |description|Krótki opis strony i zawartości|Ciąg|
 |isFamilyFriendly|Najdokładniejsze dla elementów w indeksie sieci Web; Pobieranie w czasie rzeczywistym umożliwia wykrycie wyłącznie na podstawie adresu URL, a nie zawartości strony|wartość logiczna|
@@ -122,7 +122,7 @@ Definiuje informacje o stronie sieci Web w wersji zapoznawczej.
 ### <a name="identifiable"></a>Identyfikowan
 |Name (Nazwa)|Wartość|Typ|
 |-------------|-----------------|----------|
-|id|Identyfikator zasobu|Ciąg|
+|{1&gt;identyfikator&lt;1}|Identyfikator zasobu|Ciąg|
 
 ## <a name="error-codes"></a>Kody błędów
 

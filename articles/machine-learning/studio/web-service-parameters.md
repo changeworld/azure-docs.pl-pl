@@ -12,15 +12,18 @@ ms.subservice: studio
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/12/2017
-ms.openlocfilehash: 984d2e02ff75df459275fd10e313a4950c8d79c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d6ddd9603f22bd3820d18be020b9c620cf06aa42
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432177"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204413"
 ---
 # <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>Użyj Azure Machine Learning Studio (klasyczne) parametrów usługi sieci Web
-Usługi sieci web Azure Machine Learning jest tworzony przez opublikowanie eksperyment, który zawiera moduły z konfigurowalne parametry. W niektórych przypadkach można zmienić zachowanie modułu, gdy jest uruchomiona usługa sieci web. *Parametry usługi w sieci Web* pozwalają wykonać to zadanie. 
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
+Usługi sieci web Azure Machine Learning jest tworzony przez opublikowanie eksperyment, który zawiera moduły z konfigurowalne parametry. W niektórych przypadkach można zmienić zachowanie modułu, gdy jest uruchomiona usługa sieci web. *Parametry usługi sieci Web* umożliwiają wykonanie tego zadania. 
 
 Typowym przykładem jest skonfigurowanie modułu [Importuj dane][reader] , aby użytkownik opublikowanej usługi sieci Web mógł określić inne źródło danych podczas uzyskiwania dostępu do usługi sieci Web. Lub skonfiguruj moduł [eksportu danych][writer] , aby można było określić inną lokalizację docelową. Niektóre inne przykłady obejmują zmianę liczby bitów dla modułu [wyznaczania wartości skrótu funkcji][feature-hashing] lub liczby pożądanych funkcji modułu [wyboru funkcji opartych na filtrach][filter-based-feature-selection] . 
 
@@ -38,7 +41,7 @@ Możesz zdecydować, czy można podać wartości domyślnej parametru usługi si
 Dokumentacja interfejsu API usługi sieci web zawiera informacje o użytkownika usługi sieci web o tym, jak programowo określić parametr usługi sieci Web podczas uzyskiwania dostępu do usługi sieci web.
 
 > [!NOTE]
-> Dokumentacja interfejsu API dla klasycznej usługi sieci Web jest dostępna za pomocą linku **Strona pomocy interfejsu API** na **pulpicie nawigacyjnym** usługi sieci Web w Machine Learning Studio (klasyczny). Dokumentacja interfejsu API dla nowej usługi sieci web jest oferowana w ramach [usług sieci Web Azure Machine Learning](https://services.azureml.net/Quickstart) portalu na **zużywania** i **interfejsu API struktury Swagger** stron sieci Web Usługa.
+> Dokumentacja interfejsu API dla klasycznej usługi sieci Web jest dostępna za pomocą linku **Strona pomocy interfejsu API** na **pulpicie nawigacyjnym** usługi sieci Web w Machine Learning Studio (klasyczny). Dokumentacja interfejsu API dla nowej usługi sieci Web jest dostępna za pomocą portalu [usług sieci web Azure Machine Learning](https://services.azureml.net/Quickstart) na stronach **użycia** i **interfejsu API struktury Swagger** dla usługi sieci Web.
 > 
 > 
 
@@ -48,33 +51,33 @@ Załóżmy na przykład, że mamy eksperyment z modułem [danych eksportu][write
 1. W Machine Learning Studio (klasyczny) kliknij moduł [Eksportuj dane][writer] , aby go wybrać. Jego właściwości są wyświetlane w okienku właściwości po prawej stronie obszaru roboczego eksperymentu.
 2. Określanie typu magazynu:
    
-   * W obszarze **Określ docelową lokalizację danych**, wybierz pozycję "Azure Blob Storage".
-   * W obszarze **Określ typ uwierzytelniania**, wybierz pozycję "Konto".
+   * W obszarze **określ miejsce docelowe danych**wybierz pozycję "Azure Blob Storage".
+   * W obszarze **Określ typ uwierzytelniania**wybierz pozycję "konto".
    * Wprowadź informacje o koncie dla usługi Azure blob storage. 
 
-3. Kliknij ikonę, aby po prawej stronie **ścieżki do obiektu blob zaczynający się od parametru kontenera**. Wygląda ono następująco:
+3. Kliknij ikonę z prawej strony **ścieżki do obiektu BLOB rozpoczynającego się od parametru kontenera**. Wygląda ono następująco:
    
    ![Ikona parametr usługi sieci Web](./media/web-service-parameters/icon.png)
    
    Wybierz pozycję "Ustaw jako parametr usługi sieci web".
    
-   Wpis zostanie dodany w obszarze **parametry usługi sieci Web** w dolnej części okienka właściwości o nazwie "Ścieżka do obiektu blob zaczynający się od kontenera". Jest to parametr usługi sieci Web, który jest teraz skojarzony z tym parametrem modułu [eksportowania danych][writer] .
-4. Zmień nazwę parametru usługi sieci Web, kliknij nazwę, wpisz "Ścieżka obiektu Blob" i naciśnij klawisz **Enter** klucza. 
-5. Podaj wartość domyślną dla parametru usługi sieci Web, kliknij ikonę z prawej strony nazwy, wybierz pozycję "Dostarczaj wartości domyślnej", wprowadź wartość (na przykład "container1/output1.csv") i naciśnij klawisz **Enter** klucza.
+   Wpis jest dodawany w obszarze **Parametry usługi sieci Web** u dołu okienka właściwości o nazwie "ścieżka do obiektu BLOB rozpoczynającego się od kontenera". Jest to parametr usługi sieci Web, który jest teraz skojarzony z tym parametrem modułu [eksportowania danych][writer] .
+4. Aby zmienić nazwę parametru usługi sieci Web, kliknij nazwę, wprowadź "Ścieżka obiektu BLOB" i naciśnij klawisz **Enter** . 
+5. Aby podać wartość domyślną dla parametru usługi sieci Web, kliknij ikonę z prawej strony nazwy, wybierz opcję "Podaj wartość domyślną", wprowadź wartość (na przykład "container1/output1. csv") i naciśnij klawisz **Enter** .
    
    ![Parametr usługi sieci Web](./media/web-service-parameters/parameter.png)
 6. Kliknij pozycję **Run** (Uruchom). 
-7. Kliknij przycisk **wdrażanie usługi sieci Web** i wybierz **wdrażanie usługi sieci Web [klasyczny]** lub **wdrażanie usługi sieci Web [New]** wdrażanie usługi sieci web.
+7. Kliknij pozycję **Wdróż usługę sieci Web** i wybierz pozycję **Wdróż usługę sieci Web [klasyczny]** lub **Wdróż usługę sieci Web [New]** , aby wdrożyć usługę sieci Web.
 
 > [!NOTE] 
-> Aby wdrożyć nową usługę sieci web musi masz wystarczające uprawnienia w ramach subskrypcji, do której możesz wdrażanie usługi sieci web. Aby uzyskać więcej informacji, zobacz [Zarządzanie usługą sieci Web przy użyciu portalu usług sieci Web Azure Machine Learning](manage-new-webservice.md). 
+> Aby wdrożyć nową usługę sieci web musi masz wystarczające uprawnienia w ramach subskrypcji, do której możesz wdrażanie usługi sieci web. Aby uzyskać więcej informacji, zobacz [Zarządzanie usługą sieci Web przy użyciu portalu usług sieci web Azure Machine Learning](manage-new-webservice.md). 
 
 Użytkownik usługi sieci Web może teraz określić nowe miejsce docelowe dla modułu [eksportu danych][writer] podczas uzyskiwania dostępu do usługi sieci Web.
 
 ## <a name="more-information"></a>Więcej informacji
-Aby uzyskać bardziej szczegółowym przykładem, zobacz [parametry usługi sieci Web](https://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) wpis [blogu dotyczącym uczenia maszynowego](https://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx).
+Aby zapoznać się z bardziej szczegółowym przykładem, zobacz wpis [Parameters usługi sieci Web](https://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) w [blogu Machine Learning](https://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx).
 
-Aby uzyskać więcej informacji na temat uzyskiwania dostępu do usługi sieci web Machine Learning, zobacz [jak korzystanie z usługi Azure Machine Learning w sieci Web](consume-web-services.md).
+Aby uzyskać więcej informacji na temat uzyskiwania dostępu do usługi sieci Web Machine Learning, zobacz [jak korzystać z usługi sieci web Azure Machine Learning](consume-web-services.md).
 
 <!-- Module References -->
 [feature-hashing]: https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/

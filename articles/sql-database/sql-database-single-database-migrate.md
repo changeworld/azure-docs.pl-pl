@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: 6812393b01172cda5d2fa4dcbe9de2bf4264a99f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 9cec91ccc80b9072b1a3da756f26f47eb88b951c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359874"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268615"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>SQL Server migrację bazy danych do Azure SQL Database
 
@@ -62,7 +62,7 @@ Poniższa lista zawiera zalecenia pozwalające uzyskać najlepszą wydajność p
 
 ### <a name="optimize-performance-after-the-migration-completes"></a>Optymalizacja wydajności po zakończeniu migracji
 
-[Zaktualizuj statystyki](https://msdn.microsoft.com/library/ms187348.aspx) poprzez pełne skanowanie po zakończeniu migracji.
+[Zaktualizuj statystyki](https://docs.microsoft.com/sql/t-sql/statements/update-statistics-transact-sql) poprzez pełne skanowanie po zakończeniu migracji.
 
 ## <a name="method-2-use-transactional-replication"></a>Metoda 2. Użycie replikacji transakcyjnej
 
@@ -89,7 +89,7 @@ Przy replikacji transakcyjnej wszystkie zmiany wprowadzane do danych lub schemat
 2. Tworzenie publikacji
    - [Przy użyciu programu SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/ms151160.aspx#Anchor_1)
    - [Przy użyciu języka Transact-SQL](https://msdn.microsoft.com/library/ms151160.aspx#Anchor_2)
-3. Tworzenie subskrypcji
+3. Utwórz subskrypcję
    - [Przy użyciu programu SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/ms152566.aspx#Anchor_0)
    - [Przy użyciu języka Transact-SQL](https://msdn.microsoft.com/library/ms152566.aspx#Anchor_1)
 

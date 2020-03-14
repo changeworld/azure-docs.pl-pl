@@ -5,11 +5,11 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.openlocfilehash: dda62e3041d04d5becc9179fff1c56d0c587ba1e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355611"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276870"
 ---
 # <a name="monitor-azure-functions"></a>Monitorowanie usługi Azure Functions
 
@@ -612,7 +612,7 @@ Istnieją dwa sposoby wyświetlania strumienia plików dziennika generowanych pr
 
 Strumienie dzienników można wyświetlać zarówno w portalu, jak i w większości lokalnych środowisk programistycznych. 
 
-### <a name="portal"></a>Portal
+### <a name="portal"></a>wielodostępowy
 
 Oba typy strumieni dzienników można wyświetlić w portalu.
 
@@ -672,7 +672,7 @@ Aby wyłączyć wbudowane rejestrowanie, Usuń ustawienie aplikacji `AzureWebJob
 
 ## <a name="next-steps"></a>Następne kroki
 
-Więcej informacji zawierają następujące zasoby:
+Więcej informacji można znaleźć w następujących zasobach:
 
 * [Application Insights](/azure/application-insights/)
 * [Rejestrowanie ASP.NET Core](/aspnet/core/fundamentals/logging/)

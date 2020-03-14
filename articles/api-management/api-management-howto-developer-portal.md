@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 311ce34a4b5cfbb9a54a285094dac34c7dd5a225
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: b6b11242831e68787fe225d4d0b66638f1388de6
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79126533"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297989"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Portal deweloperów API Management platformy Azure — omówienie
 
@@ -156,6 +156,12 @@ Konsola interaktywna wykonuje żądanie interfejsu API po stronie klienta z prze
     </expose-headers>
 </cors>
 ```
+
+Zastosuj mechanizm CORS w zakresie globalnym, aby upewnić się, że jest on włączony dla wszystkich interfejsów API.
+
+1. Przejdź do **wszystkich interfejsów API** w sekcji **interfejsy API** usługi API Management w Azure Portal.
+2. Kliknij ikonę **</>** w sekcji **Przetwarzanie przychodzące** .
+3. Wstaw zasady w **<inbound>** sekcji pliku XML. Upewnij się, że wartość **<origin>** pasuje do domeny portalu deweloperów.
 
 > [!NOTE]
 > 

@@ -13,11 +13,11 @@ ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.openlocfilehash: 89bafeb077fc83f4f3165d591006831bf8287875
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190487"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263025"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Przepływy uwierzytelniania i scenariusze aplikacji
 
@@ -200,7 +200,7 @@ Scenariusze, które obejmują pobieranie tokenów, również są mapowane na prz
 
 <table>
  <thead>
-  <tr><th>Scenariusz</th> <th>Szczegółowy opis scenariusza</th> <th>Przepływ OAuth 2,0 i przyznawanie</th> <th>Grupy odbiorców</th></tr>
+  <tr><th>Scenariusz</th> <th>Szczegółowy opis scenariusza</th> <th>Przepływ OAuth 2,0 i przyznawanie</th> <th>Odbiorcy</th></tr>
  </thead>
  <tbody>
   <tr>
@@ -299,7 +299,7 @@ Możesz również użyć różnych języków do kompilowania aplikacji.
 
 W kolumnie Windows w poniższej tabeli, za każdym razem, gdy jest wymieniony program .NET Core, możliwe jest również .NET Framework. Ten ostatni zostanie pominięty, aby uniknąć bałaganu w tabeli.
 
-|Scenariusz  | System Windows | Linux | Mac | iOS | Android
+|Scenariusz  | Windows | Linux | Mac | iOS | Android
 |--|--|--|--|--|--|--|
 | [Aplikacje z jedną stroną](scenario-spa-overview.md) <br/>[![aplikacji jednostronicowej](media/scenarios/spa-app.svg)](scenario-spa-overview.md) | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png) MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js
 | [Aplikacja sieci Web, która loguje użytkowników](scenario-web-app-sign-user-overview.md) <br/>[![aplikacji sieci Web, która loguje się do użytkowników](media/scenarios/scenario-webapp-signs-in-users.svg)](scenario-web-app-sign-user-overview.md) | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core

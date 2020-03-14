@@ -8,11 +8,11 @@ ms.date: 11/14/2019
 ms.topic: conceptual
 ms.author: raynew
 ms.openlocfilehash: 11f593bae6b3aab8355a8f39b56639cad8133b51
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362837"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257448"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Typowe pytania dotyczące replikacji z programu VMware do platformy Azure
 
@@ -50,7 +50,7 @@ Można replikować dowolne aplikacje lub obciążenia działające na maszynie w
 
 Tak, klienci programu Microsoft Software Assurance mogą korzystać z usługi [korzyść użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-benefit/) , aby zaoszczędzić na kosztach licencjonowania dla maszyn z systemem Windows Server migrowanych do platformy Azure lub do odzyskiwania po awarii przy użyciu platformy Azure.
 
-## <a name="security"></a>Bezpieczeństwo
+## <a name="security"></a>Zabezpieczenia
 
 ### <a name="what-access-to-vmware-servers-does-site-recovery-need"></a>Jakiego dostępu do serwerów VMware Site Recovery potrzebować?
 

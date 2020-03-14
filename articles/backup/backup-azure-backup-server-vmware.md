@@ -4,11 +4,11 @@ description: W tym artykule dowiesz się, jak używać Azure Backup Server do tw
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.openlocfilehash: df85cba42118a2e814a4a1c8338f3927e4d75f36
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392042"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273477"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Tworzenie kopii zapasowych maszyn wirtualnych VMware przy użyciu Azure Backup Server
 
@@ -113,7 +113,7 @@ Azure Backup Server musi mieć konto użytkownika z uprawnieniami dostępu do ho
 1. Zaloguj się do vCenter Server (lub hosta ESXi, jeśli nie używasz vCenter Server).
 2. W panelu **Nawigator** kliknij pozycję **Administracja**.
 
-    ![Administracja](./media/backup-azure-backup-server-vmware/vmware-navigator-panel.png)
+    ![{1&gt;Administracja&lt;1}](./media/backup-azure-backup-server-vmware/vmware-navigator-panel.png)
 
 3. W obszarze **administracja** > **role**kliknij ikonę Dodaj rolę (symbol +).
 

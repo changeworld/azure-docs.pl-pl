@@ -11,12 +11,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 16855bb218ba3ae4d221cb1329410c7848aab2c5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: ebb512fee0186bed3cc7f49f0525dac43e57da3a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382386"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256187"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Nowa usługa DBA w chmurze — zarządzanie bazami danych z jednym i pulą w puli w Azure SQL Database
 
@@ -67,7 +67,7 @@ Nie można tworzyć kopii zapasowych w usłudze Azure SQL DB, ponieważ nie jest
 |Warstwa usług|Okres przechowywania w dniach|
 |---|:---:|
 |Podstawowa|7|
-|Standard|35|
+|Standardowy|35|
 |Premium|35|
 |||
 
@@ -91,7 +91,7 @@ Aby dowiedzieć się więcej na temat odzyskiwania po awarii, zobacz: [usługa A
 
 SQL Database bardzo poważnie zapewnia bezpieczeństwo i ochronę prywatności. Zabezpieczenia w ramach SQL Database są dostępne na poziomie bazy danych i na poziomie platformy i są najlepiej zrozumiałe w przypadku kategoryzowania do kilku warstw. Dla każdej warstwy można kontrolować i zapewniać optymalne zabezpieczenia aplikacji. Są to następujące warstwy:
 
-- Uwierzytelnianie & tożsamości ([uwierzytelnianie systemu Windows/SQL i Azure Active Directory [AAD]](sql-database-control-access.md)).
+- Uwierzytelnianie & tożsamości ([uwierzytelnianie SQL i Azure Active Directory [AAD]](sql-database-manage-logins.md)).
 - Monitorowanie aktywności ([Inspekcja](sql-database-auditing.md) i [wykrywanie zagrożeń](sql-database-threat-detection.md)).
 - Ochrona rzeczywistych danych ([transparent Data Encryption [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) i [Always Encrypted [AE]](/sql/relational-databases/security/encryption/always-encrypted-database-engine)).
 - Kontrolowanie dostępu do danych poufnych i uprzywilejowanych ([zabezpieczenia na poziomie wiersza](/sql/relational-databases/security/row-level-security) i [Dynamiczne maskowanie danych](/sql/relational-databases/security/dynamic-data-masking)).
@@ -100,10 +100,10 @@ SQL Database bardzo poważnie zapewnia bezpieczeństwo i ochronę prywatności. 
 
 ### <a name="what-user-authentication-methods-are-offered-in-sql-database"></a>Jakie metody uwierzytelniania użytkowników są oferowane w SQL Database
 
-Istnieją [dwie metody uwierzytelniania](sql-database-control-access.md#authentication) oferowane w SQL Database:
+Istnieją dwie metody uwierzytelniania oferowane w SQL Database:
 
 - [Uwierzytelnianie Azure Active Directory](sql-database-aad-authentication.md)
-- Uwierzytelnianie SQL
+- [Uwierzytelnianie SQL](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
 Tradycyjne uwierzytelnianie systemu Windows nie jest obsługiwane. Azure Active Directory (AD) to scentralizowana usługa zarządzania tożsamościami i dostępem. Dzięki temu możesz bardzo łatwo zapewnić dostęp logowania jednokrotnego do wszystkich pracowników w organizacji. Oznacza to, że poświadczenia są współużytkowane przez wszystkie usługi platformy Azure w celu łatwiejszego uwierzytelniania. Obsługa usługi [MFA (uwierzytelnianie wieloskładnikowe)](sql-database-ssms-mfa-authentication.md) w usłudze AAD jest obsługiwana za pomocą [kilku kliknięć](../active-directory/hybrid/how-to-connect-install-express.md) , a usługi AAD można zintegrować z systemem Windows Server Active Directory. Uwierzytelnianie SQL działa tak samo jak w przeszłości. Podaj nazwę użytkownika/hasło, a następnie możesz uwierzytelnić użytkowników w dowolnej bazie danych na danym serwerze SQL Database. Umożliwia to również SQL Database i SQL Data Warehouse do oferowania usługi uwierzytelniania wieloskładnikowego i kont użytkowników Gości w domenie usługi Azure AD. Jeśli masz już Active Directory lokalnie, możesz sfederować katalog z Azure Active Directory, aby zwiększyć katalog na platformie Azure.
 
@@ -226,7 +226,7 @@ W przypadku usługi Express Route można także naliczać na maksymalnie 2 – l
 
 ### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>Jest SQL Database zgodne z wymaganiami prawnymi i w jaki sposób pomaga w zakresie zgodności z moją organizacją
 
-SQL Database jest zgodny z zakresem zgodności z przepisami. Aby wyświetlić najnowsze zestawy zgodności, które zostały spełnione przez SQL Database, odwiedź [Centrum zaufania firmy Microsoft](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) i przejdź do szczegółów dotyczących zgodności ważnych dla organizacji, aby sprawdzić, czy SQL Database jest uwzględniona w ramach zgodnych usług platformy Azure. Należy pamiętać, że chociaż SQL Database mogą być certyfikowane jako zgodne usługi, pomoc w zakresie zgodności usługi w organizacji, ale nie gwarantuje jej automatycznie.
+SQL Database jest zgodny z zakresem regulacji compliancies. Aby wyświetlić najnowszy zestaw compliancies, które zostały spełnione przez SQL Database, odwiedź [Centrum zaufania firmy Microsoft](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) i przejdź do sekcji compliancies, które są ważne dla Twojej organizacji, aby sprawdzić, czy SQL Database jest uwzględniona w ramach zgodnych usług platformy Azure. Należy pamiętać, że chociaż SQL Database mogą być certyfikowane jako zgodne usługi, pomoc w zakresie zgodności usługi w organizacji, ale nie gwarantuje jej automatycznie.
 
 ## <a name="intelligent-database-monitoring-and-maintenance-after-migration"></a>Inteligentne monitorowanie i konserwacja bazy danych po migracji
 

@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
 ms.openlocfilehash: 47db03460ad3c5194a5445f0b25cb8e742e60c21
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75373234"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279613"
 ---
 # <a name="virtual-network-tap"></a>Virtual Network TAP
 
@@ -64,7 +64,7 @@ Przed utworzeniem sieci wirtualnej należy otrzymać wiadomość potwierdzając�
 
 Konta używane do zastosowania konfiguracji TAP w interfejsach sieciowych muszą być przypisane do roli [współautor sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) lub [roli niestandardowej](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , do której przypisano wymagane akcje z poniższej tabeli:
 
-| Działanie | Nazwa |
+| Akcja | Name (Nazwa) |
 |---|---|
 | Microsoft.Network/virtualNetworkTaps/* | Wymagane do utworzenia, zaktualizowania, odczytania i usunięcia sieci wirtualnej naciśnij zasób |
 | Microsoft.Network/networkInterfaces/read | Wymagane do odczytania zasobu interfejsu sieciowego, na którym zostanie skonfigurowany wybór |

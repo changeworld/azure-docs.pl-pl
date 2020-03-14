@@ -8,12 +8,12 @@ ms.service: dns
 ms.date: 4/3/2019
 ms.author: rohink
 ms.topic: conceptual
-ms.openlocfilehash: 9475870185e4aee1b6f2ffbe175435cd4f6d8bed
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: a5c2fdde564eba2d95e7f14f4d47e4d381739d5d
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76936972"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365172"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Importowanie i eksportowanie pliku strefy DNS przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -173,7 +173,7 @@ Tak jak w przypadku importowania strefy najpierw musisz się zalogować, wybrać
 
 Aby wyeksportować istniejącą strefę Azure DNS do **contoso.com** **w grupie zasobów** zasób do pliku **contoso. com. txt** (w bieżącym folderze), uruchom polecenie `azure network dns zone export`. To polecenie wywołuje usługę Azure DNS do wyliczania zestawów rekordów w strefie i eksportuje wyniki do pliku strefy zgodnej z POWIĄZANIEm.
 
-```
+```azurecli
 az network dns zone export -g myresourcegroup -n contoso.com -f contoso.com.txt
 ```
 

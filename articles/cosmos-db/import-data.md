@@ -7,20 +7,20 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: dech
 ms.openlocfilehash: 1d25a2c9a3fda48c2f7de01563e01dd0c7de7762
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721144"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238692"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Samouczek: Migrowanie danych do Azure Cosmos DB za pomocą narzędzia do migracji danych
 
-Ten samouczek zawiera instrukcje dotyczące korzystania z narzędzia do migracji danych Azure Cosmos DB, które umożliwia importowanie danych z różnych źródeł do kontenerów i tabel usługi Azure Cosmos. Dane można importować z plików JSON, plików CSV, kodu SQL, bazy danych MongoDB, usługi Azure Table Storage, bazy danych Amazon DynamoDB, a nawet z kolekcji interfejsu API SQL usługi Azure Cosmos DB. Aby używać tych danych z usługą Azure Cosmos DB, należy przeprowadzić ich migrację do kolekcji i tabel. Narzędzie do migracji danych może być również używane podczas migracji z kolekcji z pojedynczą partycją do kolekcji z wieloma partycjami na potrzeby interfejsu SQL API.
+W tym samouczku znajdują się instrukcje dotyczące używania narzędzia do migracji danych usługi Azure Cosmos DB, które umożliwia importowanie danych z różnych źródeł do kontenerów i tabel usługi Azure Cosmos. Dane można importować z plików JSON, plików CSV, kodu SQL, bazy danych MongoDB, usługi Azure Table Storage, bazy danych Amazon DynamoDB, a nawet z kolekcji interfejsu API SQL usługi Azure Cosmos DB. Aby używać tych danych z usługą Azure Cosmos DB, należy przeprowadzić ich migrację do kolekcji i tabel. Narzędzie do migracji danych może być również używane podczas migracji z kolekcji z pojedynczą partycją do kolekcji z wieloma partycjami na potrzeby interfejsu SQL API.
 
 Który interfejs API będzie używany w usłudze Azure Cosmos DB?
 
 * **[Interfejs SQL API](documentdb-introduction.md)** — dane można importować za pomocą dowolnej opcji źródła w narzędziu do migracji danych.
-* **[Interfejs Table API](table-introduction.md)**  — dane można importować za pomocą narzędzia do migracji danych lub narzędzia AzCopy. Aby uzyskać więcej informacji, zobacz [Import data for use with the Azure Cosmos DB Table API (Importowanie danych do użycia z interfejsem Table API usługi Azure Cosmos DB)](table-import.md).
+* **[Interfejs Table API](table-introduction.md)** — dane można importować za pomocą narzędzia do migracji danych lub narzędzia AzCopy. Aby uzyskać więcej informacji, zobacz [Import data for use with the Azure Cosmos DB Table API (Importowanie danych do użycia z interfejsem Table API usługi Azure Cosmos DB)](table-import.md).
 * **[Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB](mongodb-introduction.md)** — narzędzie do migracji danych aktualnie nie obsługuje interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB ani jako źródła, ani jako celu. Jeśli chcesz przeprowadzić migrację danych do kolekcji usługi Azure Cosmos DB lub z tych kolekcji, zapoznaj się z instrukcjami podanymi w temacie [How to migrate MongoDB data a Cosmos database with Azure Cosmos DB's API for MongoDB (Jak migrować dane bazy danych MongoDB do bazy danych Cosmos za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB)](mongodb-migrate.md). Narzędzia do migracji danych można również używać do eksportowania danych z bazy danych MongoDB do kolekcji interfejsu SQL API usługi Azure Cosmos DB do użycia z interfejsem SQL API.
 * **[Interfejs API języka Gremlin](graph-introduction.md)** — obecnie narzędzie do migracji danych nie jest obsługiwane na potrzeby importu kont interfejsu API języka Gremlin.
 
@@ -35,9 +35,9 @@ Ten samouczek obejmuje następujące zadania:
 
 Przed wykonaniem instrukcji zawartych w tym artykule upewnij się, że zostały wykonane następujące kroki:
 
-* **Zainstalowanie** programu [Microsoft .NET Framework 4.51](https://www.microsoft.com/download/developer-tools.aspx) lub nowszego.
+* **Zainstaluj** program [Microsoft .NET Framework](https://www.microsoft.com/download/developer-tools.aspx) w wersji 4,51 lub nowszej.
 
-* **Zwiększenie przepływności:** czas trwania migracji danych zależy od przepływności skonfigurowanej dla pojedynczej kolekcji lub dla zestawu kolekcji. Pamiętaj o zwiększeniu przepływności w przypadku większych migracji danych. Po ukończeniu migracji zmniejsz przepływność, aby ograniczyć koszty. Aby uzyskać więcej informacji na temat zwiększania przepływności w witrynie Azure Portal, zobacz [poziomy wydajności](performance-levels.md) i [warstwy cenowe](https://azure.microsoft.com/pricing/details/cosmos-db/) w usłudze Azure Cosmos DB.
+* **Zwiększenie przepływności**: czas trwania migracji danych zależy od przepływności skonfigurowanej dla pojedynczej kolekcji lub dla zestawu kolekcji. Pamiętaj o zwiększeniu przepływności w przypadku większych migracji danych. Po ukończeniu migracji zmniejsz przepływność, aby ograniczyć koszty. Aby uzyskać więcej informacji na temat zwiększania przepływności w witrynie Azure Portal, zobacz [poziomy wydajności](performance-levels.md) i [warstwy cenowe](https://azure.microsoft.com/pricing/details/cosmos-db/) w usłudze Azure Cosmos DB.
 
 * **Utworzenie zasobów usługi Azure Cosmos DB:** przed rozpoczęciem migracji danych utwórz wstępnie wszystkie kolekcje w witrynie Azure Portal. Aby przeprowadzić migrację do konta Azure Cosmos DB, które ma przepływność na poziomie bazy danych, należy podać klucz partycji podczas tworzenia kontenerów usługi Azure Cosmos.
 
@@ -208,7 +208,7 @@ Podobnie jak w przypadku źródła kodu SQL, właściwość separatora zagnieżd
 
 Zwróć uwagę na aliasy, takie jak DomainInfo.Domain_Name i RedirectInfo.Redirecting. Określając separator zagnieżdżania „.”, narzędzie importowania utworzy dokumenty podrzędne DomainInfo i RedirectInfo podczas importu. Oto przykład dokumentu wynikowego w usłudze Azure Cosmos DB:
 
-*{"DomainInfo": {"nazwa_domeny": "ACUS.GOV", "Domain_Name_Address": "https:\//www.ACUS.GOV"}, "Federalny Urząd": "Konferencja administracyjna Stany Zjednoczone", "RedirectInfo": {"Redirecting": "0", "Redirect_Destination": ""}, "ID": "9cc565c5-EBCD-1c03-ebd3-cc3e2ecd814d"}*
+*{"DomainInfo": {"Domain_Name": "ACUS.GOV", "Domain_Name_Address": "https:\//www.ACUS.GOV"}, "Federalny Urząd": "Konferencja administracyjna Stany Zjednoczone", "RedirectInfo": {"Redirecting": "0", "Redirect_Destination": ""}, "ID": "9cc565c5-EBCD-1c03-ebd3-cc3e2ecd814d"}*
 
 Narzędzie importowania próbuje wywnioskować informacje dotyczące typu dla wartości bez cudzysłowów w plikach CSV (wartości w cudzysłowie są zawsze traktowane jak ciągi).  Typy są identyfikowane w następującej kolejności: liczba, data/godzina, wartość logiczna.  
 

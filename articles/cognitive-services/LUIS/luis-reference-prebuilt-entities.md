@@ -12,11 +12,11 @@ ms.topic: reference
 ms.date: 10/03/2019
 ms.author: diberry
 ms.openlocfilehash: a49452653f8ac4bcc62758d801a235be0929d314
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396779"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219721"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>Jednostki na kulturę w modelu LUIS
 
@@ -32,7 +32,7 @@ Language Understanding (LUIS) oferuje wstępnie utworzonych jednostek. W przypad
 |Włoski|[IT](#italian-entity-support)||
 |Japoński|[ja-JP](#japanese-entity-support)||
 |Koreański|[Ko — KR](#korean-entity-support)||
-|Portugalski|[pt-BR (Brazylia)](#portuguese-brazil-entity-support)||
+|portugalski|[pt-BR (Brazylia)](#portuguese-brazil-entity-support)||
 |Hiszpański|[ES-es (Hiszpania)](#spanish-spain-entity-support), [es-MX (Meksyk)](#spanish-mexico-entity-support)||
 |Turecki|[Turecki](#turkish-entity-support)|Brak wstępnie skompilowanych jednostek obsługiwanych w języku tureckim|
 

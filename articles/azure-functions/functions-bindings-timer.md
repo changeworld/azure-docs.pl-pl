@@ -8,11 +8,11 @@ ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
 ms.openlocfilehash: f4fdf25fa1403b8429e7ad7e7fc644d0355b1324
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373691"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79277156"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Wyzwalacz czasomierza dla Azure Functions 
 
@@ -304,7 +304,7 @@ Lub Utwórz ustawienia aplikacji dla aplikacji funkcji o nazwie `WEBSITE_TIME_ZO
 
 W przypadku korzystania z `WEBSITE_TIME_ZONE`czas jest dostosowywany do zmian czasu w określonej strefie czasowej, na przykład czasu letniego. 
 
-## <a name="timespan"></a>TimeSpan
+## <a name="timespan"></a>przedział_czasu
 
  `TimeSpan` może być używana tylko dla aplikacji funkcji uruchamianej w planie App Service.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb7fed7cf5f38f9f7677126aff92492ccacd6e12
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 676a1dd2435d17db2151bdf21f1989e7f182701b
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75707948"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136487"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>Rozwiązywanie problemów z urządzeniami za pomocą polecenia dsregcmd
 
@@ -28,10 +28,10 @@ Ta sekcja zawiera listę parametrów stanu przyłączania urządzenia. W poniżs
 
 | AzureAdJoined | EnterpriseJoined | DomainJoined | Stan urządzenia |
 | ---   | ---   | ---   | ---   |
-| TAK | NO | NO | Przyłączone do usługi Azure AD |
-| NO | NO | TAK | Przyłączone do domeny |
-| TAK | NO | TAK | Dołączono do hybrydowej usługi AD |
-| NO | TAK | TAK | Lokalne DRS dołączone |
+| OPCJĘ | NO | NO | Przyłączone do usługi Azure AD |
+| NO | NO | OPCJĘ | Przyłączone do domeny |
+| OPCJĘ | NO | OPCJĘ | Dołączono do hybrydowej usługi AD |
+| NO | OPCJĘ | OPCJĘ | Lokalne DRS dołączone |
 
 > [!NOTE]
 > W sekcji "stan użytkownika" jest wyświetlany stan Workplace Join (zarejestrowane w usłudze Azure AD)
@@ -211,8 +211,16 @@ Ta sekcja wykonuje różne testy ułatwiające zdiagnozowanie błędów sprzęż
 - **Test konfiguracji usługi AD:** -test odczytuje i weryfikuje, czy obiekt SCP jest prawidłowo skonfigurowany w lokalnym lesie usługi AD. Błędy w tym teście prawdopodobnie spowodują błędy sprzężenia w fazie odnajdywania z kodem błędu 0x801c001d.
 - **Test odnajdywania DRS:** -test pobiera punkty końcowe DRS z punktu końcowego metadanych odnajdywania i wykonuje żądanie obszaru użytkownika. Błędy w tym teście prawdopodobnie spowodują błędy sprzężenia w fazie odnajdywania.
 - **Test łączności DRS:** -test wykonuje Basic test łączności do punktu końcowego DRS.
-- **Test pozyskiwania tokenu:** -test próbuje uzyskać token uwierzytelniania usługi Azure AD, Jeśli dzierżawca użytkownika jest federacyjny. Błędy w tym teście prawdopodobnie spowodują błędy sprzężenia w fazie uwierzytelniania. Jeśli uwierzytelnianie nie powiedzie się, zostanie podjęta próba połączenia z powrotem jako rezerwa, chyba że alternatywa zostanie jawnie wyłączona przy użyciu klucza rejestru.
-- **Powrót do synchronizacji-Join:** -ustawiony na wartość "Enabled", jeśli klucz rejestru, aby zapobiec dołączeniu powrotu do synchronizacji z niepowodzeńmi uwierzytelniania, nie jest obecny. Ta opcja jest dostępna w systemie Windows 10 1803 i nowszych.
+- **Test pozyskiwania tokenu:** -test próbuje uzyskać token uwierzytelniania usługi Azure AD, Jeśli dzierżawca użytkownika jest federacyjny. Błędy w tym teście prawdopodobnie spowodują błędy sprzężenia w fazie uwierzytelniania. Jeśli uwierzytelnianie nie powiedzie się, zostanie podjęta próba połączenia z funkcją powrotu, chyba że rezerwowa zostanie jawnie wyłączona przy użyciu poniższych ustawień klucza rejestru.
+```
+    Keyname: Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ
+    Value: FallbackToSyncJoin
+    Type:  REG_DWORD
+    Value: 0x0 -> Disabled
+    Value: 0x1 -> Enabled
+    Default (No Key): Enabled
+ ```
+- **Powrót do synchronizacji-Join:** -ustaw wartość "Enabled" (włączone), Jeśli powyższy klucz rejestru, aby zapobiec dołączeniu powrotu do synchronizacji z błędami uwierzytelniania, nie jest obecny. Ta opcja jest dostępna w systemie Windows 10 1803 i nowszych.
 - **Poprzednia rejestracja:** godzina poprzednia próba dołączenia. Rejestrowane są tylko nieudane próby dołączenia.
 - **Faza błędu:** -etap dołączania, w którym został przerwany. Możliwe wartości to wstępne sprawdzanie, odnajdowanie, uwierzytelnianie, połączenie.
 - **Kod błędu klienta:** -zwrócony kod błędu klienta (HRESULT).

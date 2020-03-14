@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
 ms.openlocfilehash: 70fff041cd693a19269b11398947fb0c8ce56bb1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78385027"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79267107"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Tworzenie maszyny wirtualnej z systemem Linux na podstawie dysku niestandardowego przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -118,7 +118,7 @@ az disk create \
     --source $snapshotId
 ```
 
-## <a name="create-the-vm"></a>Tworzenie maszyny wirtualnej
+## <a name="create-the-vm"></a>Utwórz maszynę wirtualną
 
 Utwórz maszynę wirtualną za pomocą [AZ VM Create](/cli/azure/vm#az-vm-create) i attach (--Attach-OS-Disk) dysku zarządzanego jako dysk systemu operacyjnego. Poniższy przykład tworzy maszynę wirtualną o nazwie *myNewVM* przy użyciu dysku zarządzanego utworzonego na podstawie przekazanego wirtualnego dysku twardego:
 

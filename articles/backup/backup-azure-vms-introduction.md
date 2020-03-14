@@ -3,16 +3,22 @@ title: Informacje o kopii zapasowej maszyny wirtualnej platformy Azure
 description: W tym artykule dowiesz się, jak usługa Azure Backup wykonuje kopie zapasowe maszyn wirtualnych platformy Azure oraz jak postępować zgodnie z najlepszymi rozwiązaniami.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 8ffbf0d0164cbf6f085518d57566b0befde6e124
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 67ff06e882ec61dff58922606469ac27a8bbf7fd
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363818"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297361"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Omówienie kopii zapasowej maszyny wirtualnej platformy Azure
 
 W tym artykule opisano, jak [usługa Azure Backup](backup-introduction-to-azure-backup.md) wykonuje kopie zapasowe maszyn wirtualnych platformy Azure.
+
+Azure Backup zapewnia niezależne i izolowane kopie zapasowe do ochrony przed niezamierzonym zniszczeniem danych na maszynach wirtualnych. Kopie zapasowe są przechowywane w magazynie Recovery Services przy użyciu wbudowanego zarządzania punktami odzyskiwania. Konfiguracja i skalowanie są proste, kopie zapasowe są optymalizowane i można je łatwo przywrócić w razie potrzeby.
+
+W ramach procesu tworzenia kopii zapasowej [jest wykonywana migawka](#snapshot-creation), a dane są przesyłane do magazynu Recovery Services bez wpływu na obciążenia produkcyjne. Migawka zawiera różne poziomy spójności, zgodnie z opisem w [tym miejscu](#snapshot-consistency).
+
+Azure Backup również oferuje wyspecjalizowane oferty dla obciążeń bazy danych, takich jak [SQL Server](backup-azure-sql-database.md) i [SAP HANA](sap-hana-db-about.md) , które są oparte na obciążeniu, oferują 15-minutowy cel punktu odzyskiwania, a także umożliwia wykonywanie kopii zapasowych i przywracanie poszczególnych baz danych.
 
 ## <a name="backup-process"></a>Proces tworzenia kopii zapasowej
 
@@ -66,7 +72,7 @@ Azure Backup wykonuje migawki zgodnie z harmonogramem tworzenia kopii zapasowych
   - Jeśli skrypty wstępne i po wykonaniu zostały wykonane pomyślnie, Azure Backup oznacza punkt odzyskiwania jako spójny dla aplikacji. Jeśli jednak używasz skryptów niestandardowych, jesteś w końcu odpowiedzialny za spójność aplikacji.
   - [Dowiedz się więcej](backup-azure-linux-app-consistent.md) o konfigurowaniu skryptów.
 
-### <a name="snapshot-consistency"></a>Spójność migawek
+## <a name="snapshot-consistency"></a>Spójność migawek
 
 W poniższej tabeli objaśniono różne typy spójności migawek:
 

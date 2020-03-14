@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 8175563d8c1c2ec59b4195b2ede06f6e1dbf8556
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823555"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256265"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>Skalowanie baz danych za pomocą Menedżera mapy fragmentu
 
@@ -54,11 +54,11 @@ Skalowanie elastyczne obsługuje następujące typy jako klucze fragmentowania:
 | .NET | Java |
 | --- | --- |
 | liczba całkowita |liczba całkowita |
-| Długo |Długo |
+| long |long |
 | guid |uuid |
-| Byte []  |Byte [] |
+| byte[]  |byte[] |
 | datetime | sygnatura czasowa |
-| czasu | trwania|
+| TimeSpan | duration|
 | DateTimeOffset |offsetdatetime |
 
 ### <a name="list-and-range-shard-maps"></a>Mapowanie list i zakresów fragmentu
@@ -85,10 +85,10 @@ Na przykład **[0, 100)** zawiera wszystkie liczby całkowite większe niż lub 
 
 | Klucz | Lokalizacja fragmentu |
 | --- | --- |
-| [1, 50) |Database_A |
-| [50 100) |Database_B |
-| [100 200) |Database_C |
-| [400 600) |Database_C |
+| [1,50) |Database_A |
+| [50,100) |Database_B |
+| [100,200) |Database_C |
+| [400,600) |Database_C |
 | Przyciski ... |Przyciski ... |
 
 Każda z pokazanych tabel jest przykładem koncepcyjnym obiektu **ShardMap** . Każdy wiersz to uproszczony przykład poszczególnych **PointMapping** (dla mapy list fragmentu) lub **RangeMapping** (dla obiektu Range fragmentu map).
@@ -103,7 +103,7 @@ W bibliotece klienta Menedżer mapy fragmentu jest zbiorem map fragmentu. Dane z
 
 ## <a name="constructing-a-shardmapmanager"></a>Konstruowanie elementu ShardMapManager
 
-Obiekt **ShardMapManager** jest konstruowany przy użyciu wzorca fabryki ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory), [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory)). Metoda **ShardMapManagerFactory. GetSqlShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager), [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)) przyjmuje poświadczenia (w tym nazwę serwera i nazwę bazy danych, w której znajduje się ciąg **ConnectionString** ) i zwraca wystąpienie **elementu ShardMapManager**.  
+Obiekt **ShardMapManager** jest konstruowany przy użyciu wzorca fabryki ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory), [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory)). Metoda **ShardMapManagerFactory. GetSqlShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager), [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)) przyjmuje poświadczenia (w tym nazwę serwera i nazwę bazy danych, w której znajduje się ciąg **ConnectionString** ), a następnie zwraca wystąpienie elementu **ShardMapManager**.  
 
 **Uwaga:** Wystąpienie **ShardMapManager** powinno być tworzone tylko raz dla każdej domeny aplikacji, w ramach kodu inicjującego aplikacji. Tworzenie dodatkowych wystąpień ShardMapManager w tej samej domenie aplikacji powoduje zwiększenie wykorzystania pamięci i procesora CPU aplikacji. **ShardMapManager** może zawierać dowolną liczbę map fragmentu. Chociaż pojedyncze mapowanie fragmentu może być wystarczające dla wielu aplikacji, istnieją przypadki, w których różne zestawy baz danych są używane dla różnych schematów lub unikatowych celów; w tych przypadkach można preferować wiele map fragmentu.
 
@@ -157,7 +157,7 @@ W przypadku wersji .NET można użyć programu PowerShell do utworzenia nowego m
 
 ## <a name="get-a-rangeshardmap-or-listshardmap"></a>Pobierz RangeShardMap lub ListShardMap
 
-Po utworzeniu Menedżera mapy fragmentu można uzyskać RangeShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) lub ListShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1)) za pomocą TryGetRangeShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetrangeshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap)), TryGetListShardMap ([Java](https://docs.microsoft.com/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetlistshardmap), [. NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap)) lub metoda GetShardMap ([Java](https://docs.microsoft.com/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap)).
+Po utworzeniu Menedżera mapy fragmentu można uzyskać RangeShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) lub ListShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1)) za pomocą TryGetRangeShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetrangeshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap)), TryGetListShardMap ([Java](https://docs.microsoft.com/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetlistshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap)) lub metody GetShardMap ([Java](https://docs.microsoft.com/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getshardmap) [, .NET).](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap)
 
 ```Java
 // Creates a new Range Shard Map with the specified name, or gets the Range Shard Map if it already exists.
@@ -239,7 +239,7 @@ Te metody współdziałają ze sobą jako bloki konstrukcyjne dostępne do modyf
 * Aby dodać lub usunąć fragmentów: Użyj **CreateShard** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard)) i **DeleteShard** ([Java](https://docs.microsoft.com/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.deleteshard), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.deleteshard)) klasy shardmap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap)).
   
     Serwer i baza danych reprezentujące docelowy fragmentu muszą już istnieć, aby można było wykonać te operacje. Te metody nie mają żadnego wpływu na same bazy danych, tylko w metadanych na mapie fragmentu.
-* Aby utworzyć lub usunąć punkty lub zakresy, które są mapowane na fragmentów: Użyj **CreateRangeMapping** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping), [.NET](https://docs.microsoft.com/previous-versions/azure/dn841993(v=azure.100))), **DeleteMapping** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.deletemapping), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) klasy RangeShardMapping ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)). i **CreatePointMapping** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap.createpointmapping), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1)) klasy ListShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1)).
+* Aby utworzyć lub usunąć punkty lub zakresy, które są mapowane na fragmentów: Użyj **CreateRangeMapping** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping), [.NET](https://docs.microsoft.com/previous-versions/azure/dn841993(v=azure.100))), **DeleteMapping** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.deletemapping), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) klasy RangeShardMapping ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) i **CreatePointMapping** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap.createpointmapping), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1)) klasy ListShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap) [, .NET).](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1)
   
     Wiele różnych punktów lub zakresów można zamapować na tę samą fragmentu. Te metody mają wpływ tylko na metadane — nie wpływają na żadne dane, które mogą już znajdować się w fragmentów. Jeśli konieczne jest usunięcie danych z bazy danych w celu zapewnienia spójności z operacjami funkcji **DeleteMapping** , należy wykonać te operacje oddzielnie, ale w połączeniu z tymi metodami.  
 * Aby podzielić istniejące zakresy na dwa lub scalić sąsiadujące zakresy w jeden: Użyj **SplitMapping** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.splitmapping), [.NET](https://msdn.microsoft.com/library/azure/dn824205.aspx)) i **MergeMappings** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.mergemappings), [.NET](https://msdn.microsoft.com/library/azure/dn824201.aspx)).  

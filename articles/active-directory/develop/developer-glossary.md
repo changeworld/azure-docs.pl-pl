@@ -13,11 +13,11 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
 ms.openlocfilehash: ce98d2db86c87ac6aa8fa4872bc076714467d32f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697544"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263051"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Słownik oprogramowania Microsoft Identity platform dla deweloperów
 
@@ -73,7 +73,7 @@ Czynność udzielenia uprawnienia uwierzytelnionego podmiotu zabezpieczeń. Istn
 
 Krótko mówiąc "token" dostarczony do [aplikacji klienckiej](#client-application) przez [punkt końcowy autoryzacji](#authorization-endpoint)w ramach przepływu "kod autoryzacji", jeden z czterech OAuth2 [autoryzacji](#authorization-grant). Kod jest zwracany do aplikacji klienckiej w odpowiedzi na uwierzytelnianie [właściciela zasobu](#resource-owner), wskazując właścicielowi zasobu delegowane autoryzację w celu uzyskania dostępu do żądanych zasobów. W ramach przepływu kod jest później zrealizowany dla [tokenu dostępu](#access-token).
 
-## <a name="authorization-endpoint"></a>punkt końcowy autoryzacji
+## <a name="authorization-endpoint"></a>Punkt końcowy autoryzacji
 
 Jeden z punktów końcowych wdrożonych przez [serwer autoryzacji](#authorization-server)używany do współdziałania z [właścicielem zasobu](#resource-owner) , aby zapewnić [udzielenie autoryzacji](#authorization-grant) w ramach przepływu OAuth2a autoryzacji. W zależności od użytego przepływu przydzielenia uprawnień rzeczywisty przydzielony udział może się różnić, łącznie z [kodem autoryzacji](#authorization-code) lub [tokenem zabezpieczeń](#security-token).
 
@@ -176,7 +176,7 @@ Po zarejestrowaniu/zaktualizowaniu aplikacji w [Azure Portal][AZURE-portal]Porta
 
 Aby uzyskać więcej informacji, zobacz [obiekty główne aplikacji i usługi][AAD-App-SP-Objects].
 
-## <a name="sign-in"></a>sign-in
+## <a name="sign-in"></a>Logowanie
 
 Proces [aplikacji klienckiej](#client-application) inicjującej uwierzytelnianie użytkowników końcowych i przechwytujący stan związany z uzyskaniem [tokenu zabezpieczającego](#security-token) i określanie zakresu sesji aplikacji do tego stanu. Stan może zawierać artefakty, takie jak informacje o profilu użytkownika i informacje pochodzące z oświadczeń tokenów.
 
@@ -196,7 +196,7 @@ Wystąpienie katalogu usługi Azure AD nazywa się dzierżawą usługi Azure AD.
 
 Dzierżawy usługi Azure AD są tworzone/kojarzone z subskrypcjami platformy Azure i pakietu Office 365 podczas tworzenia konta, zapewniając Zarządzanie dostępem i tożsamościami funkcje subskrypcji. Administratorzy subskrypcji platformy Azure mogą również tworzyć dodatkowe dzierżawy usługi Azure AD za pośrednictwem Azure Portal. Zobacz, [jak uzyskać dzierżawę Azure Active Directory][AAD-How-To-Tenant] , aby uzyskać szczegółowe informacje na temat różnych sposobów uzyskiwania dostępu do dzierżawy. Zobacz, [jak subskrypcje platformy Azure są skojarzone z Azure Active Directory][AAD-How-Subscriptions-Assoc] , aby uzyskać szczegółowe informacje na temat relacji między subskrypcjami a dzierżawą usługi Azure AD.
 
-## <a name="token-endpoint"></a>punkt końcowy tokenu
+## <a name="token-endpoint"></a>Punkt końcowy tokenu
 
 Jeden z punktów końcowych wdrożonych przez [serwer autoryzacji](#authorization-server) do obsługi OAuth2 [autoryzacji](#authorization-grant). W zależności od grantu można go użyć w celu uzyskania [tokenu dostępu](#access-token) (i powiązanego tokenu "Refresh") z [klientem](#client-application)lub [tokenem ID](#id-token) , gdy jest używany z protokołem [Connect OpenID Connect][OpenIDConnect] .
 

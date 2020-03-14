@@ -1,15 +1,15 @@
 ---
 title: Omówienie usługi Azure łańcucha bloków
 description: Omówienie usługi Azure łańcucha bloków Service
-ms.date: 11/21/2019
+ms.date: 03/12/2020
 ms.topic: overview
-ms.reviewer: janders
-ms.openlocfilehash: 55e1be191b21c7c66b013f70d83fe6c046488e05
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.reviewer: ravastra
+ms.openlocfilehash: b9f5deb501fb93327fa5d5cfcfd5bb583ed6135e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75387381"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79205068"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Co to jest usługa Azure Blockchain Service?
 
@@ -29,7 +29,7 @@ Wdrażanie usługi Azure łańcucha bloków jest realizowane za pośrednictwem A
 
 ### <a name="performance-and-service-tiers"></a>Warstwy wydajności i usługi
 
-Usługa Azure łańcucha bloków Service oferuje dwie warstwy usług: *podstawowa* i *standardowa*. Każda warstwa oferuje różne wydajności i możliwości, które umożliwiają obsługę lekkich obciążeń programistycznych i testowych do wysoce skalowalnych wdrożeń łańcucha bloków produkcyjnych. Obie warstwy obejmują co najmniej jeden węzeł transakcji i jeden węzeł modułu sprawdzania poprawności (podstawowy) lub dwa węzły modułu sprawdzania poprawności (standard).
+Usługa Azure łańcucha bloków Service oferuje dwie warstwy usług: *podstawowa* i *standardowa*. Każda warstwa oferuje różne wydajności i możliwości, które umożliwiają obsługę lekkich obciążeń programistycznych i testowych do wysoce skalowalnych wdrożeń łańcucha bloków produkcyjnych. Skorzystaj z warstwy *podstawowa* na potrzeby tworzenia, testowania i sprawdzania poprawności koncepcji. Użyj warstwy *standardowa* dla wdrożeń klasy produkcyjnej. Obie warstwy obejmują co najmniej jeden węzeł transakcji i jeden węzeł modułu sprawdzania poprawności (podstawowy) lub dwa węzły modułu sprawdzania poprawności (standard). 
 
 ![Warstwy cenowe](./media/overview/pricing-tiers.png)
 
@@ -71,7 +71,7 @@ W przypadku usługi Azure łańcucha bloków News odwiedź [blog usługi Azure �
 
 Aby przekazać opinie o produkcie lub zażądać nowych funkcji, Opublikuj głos na pomysł za pośrednictwem [forum opinii platformy Azure dla usługi łańcucha bloków](https://aka.ms/blockchainuservoice).
 
-### <a name="community-support"></a>Pomoc techniczna społeczności
+### <a name="community-support"></a>Pomoc techniczna w społeczności
 
 Współpracuj z inżynierami firmy Microsoft i ekspertów społeczności Azure łańcucha bloków.
 

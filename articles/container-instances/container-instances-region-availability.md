@@ -5,11 +5,11 @@ ms.topic: article
 ms.date: 02/19/2020
 ms.author: danlep
 ms.openlocfilehash: f429a165fe26cc9fc7aa973231f5a77163feef4a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365027"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247139"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Dostępność zasobów dla Azure Container Instances w regionach świadczenia usługi Azure
 
@@ -31,9 +31,9 @@ Następujące regiony i maksymalne zasoby są dostępne dla grup kontenerów z s
 | Brazylia Południowa, Kanada środkowa, Indie Środkowe, środkowe stany USA, Azja Wschodnia, Wschodnie stany USA, Wschodnie stany USA 2, Europa Północna, Południowo-środkowe stany USA, Azja Południowo-Wschodnia, Indie Południowe, Kanada, Południowe Zjednoczone Królestwo, Europa Zachodnia, zachodnie stany USA, zachodnie stany USA 2 | Linux | 4 | 16 | 50 |
 | Australia Wschodnia, Japonia Wschodnia | Linux | 2 | 8 | 50 |
 | Północno-środkowe stany USA | Linux | 2 | 3,5 | 50 |
-| Brazylia Południowa, Japonia Wschodnia, Europa Zachodnia | System Windows | 4 | 16 | 20 |
-| Wschodnie stany USA, zachodnie stany USA | System Windows | 4 | 14 | 20 |
-| Australia Wschodnia, Kanada środkowa, Indie Środkowe, środkowe stany USA, Azja Wschodnia, Wschodnie stany USA 2, Północno-środkowe stany USA, Europa Północna, Południowo-środkowe stany USA, Azja Południowo-Wschodnia, Indie Południowe, Kanada, Południowe Zjednoczone Królestwo, zachodnie stany USA 2 | System Windows | 2 | 3,5 | 20 |
+| Brazylia Południowa, Japonia Wschodnia, Europa Zachodnia | Windows | 4 | 16 | 20 |
+| Wschodnie stany USA, zachodnie stany USA | Windows | 4 | 14 | 20 |
+| Australia Wschodnia, Kanada środkowa, Indie Środkowe, środkowe stany USA, Azja Wschodnia, Wschodnie stany USA 2, Północno-środkowe stany USA, Europa Północna, Południowo-środkowe stany USA, Azja Południowo-Wschodnia, Indie Południowe, Kanada, Południowe Zjednoczone Królestwo, zachodnie stany USA 2 | Windows | 2 | 3,5 | 20 |
 
 ## <a name="availability---windows-server-2019-ltsc-1809-deployments-preview"></a>Dostępność — wdrożenia systemu Windows Server 2019 LTSC, 1809 (wersja zapoznawcza)
 
@@ -41,8 +41,8 @@ Następujące regiony i maksymalne zasoby są dostępne dla grup kontenerów z k
 
 | Regiony | System operacyjny | CPU (maksymalnie) | Maksymalna ilość pamięci (GB) | Magazyn (GB) |
 | -------- | -- | :---: | :-----------: | :---: |
-| Australia Wschodnia, Brazylia Południowa, Kanada środkowa, Indie Środkowe, środkowe stany USA, Azja Wschodnia, Wschodnie stany USA, Japonia Wschodnia, Północna środkowe stany USA, Europa Północna, Południowo-środkowe stany USA, Azja Południowo-Wschodnia, Indie Południowe, Południowe Zjednoczone Królestwo, Europa Zachodnia | System Windows | 4 | 16 | 20 |
-| Wschodnie stany USA 2, zachodnie stany USA 2 | System Windows | 2 | 3,5 | 20 |
+| Australia Wschodnia, Brazylia Południowa, Kanada środkowa, Indie Środkowe, środkowe stany USA, Azja Wschodnia, Wschodnie stany USA, Japonia Wschodnia, Północna środkowe stany USA, Europa Północna, Południowo-środkowe stany USA, Azja Południowo-Wschodnia, Indie Południowe, Południowe Zjednoczone Królestwo, Europa Zachodnia | Windows | 4 | 16 | 20 |
+| Wschodnie stany USA 2, zachodnie stany USA 2 | Windows | 2 | 3,5 | 20 |
 
 
 ## <a name="availability---virtual-network-deployment"></a>Dostępność — wdrażanie sieci wirtualnej

@@ -5,11 +5,11 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: raynew
 ms.openlocfilehash: d278f96acf8d8efc57a9ae7fb57f9a758339162a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362840"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258111"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Macierz obsługi odzyskiwania po awarii maszyny wirtualnej platformy Azure między regionami platformy Azure
 
@@ -77,7 +77,7 @@ Zapory usługi Azure Storage dla sieci wirtualnych  | Obsługiwane | Jeśli uży
 
 Site Recovery obsługuje replikację maszyn wirtualnych platformy Azure z systemami operacyjnymi wymienionymi w tej sekcji.
 
-### <a name="windows"></a>System Windows
+### <a name="windows"></a>Windows
 
 
 **System operacyjny** | **Szczegóły**

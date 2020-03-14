@@ -3,12 +3,12 @@ title: Rozwiązywanie problemów z kopiami zapasowymi SQL Server Database
 description: Informacje dotyczące rozwiązywania problemów dotyczących tworzenia kopii zapasowych SQL Server baz danych działających na maszynach wirtualnych platformy Azure z Azure Backup.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 69cae196e7fad70d75fb12709e5bf0d618bbc81c
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 7ebe76fde344b1dabca9a3aee2d0cc9e1edb8df4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77602323"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247828"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Rozwiązywanie problemów z kopiami zapasowymi SQL Server Database przy użyciu Azure Backup
 
@@ -21,6 +21,7 @@ Aby uzyskać więcej informacji na temat procesu i ograniczeń tworzenia kopii z
 Aby skonfigurować ochronę bazy danych SQL Server na maszynie wirtualnej, należy zainstalować rozszerzenie **AzureBackupWindowsWorkload** na tej maszynie wirtualnej. Jeśli zostanie wyświetlony błąd **UserErrorSQLNoSysadminMembership**, oznacza to, że wystąpienie SQL Server nie ma wymaganych uprawnień do tworzenia kopii zapasowych. Aby naprawić ten błąd, wykonaj kroki opisane w sekcji [Ustawianie uprawnień maszyny wirtualnej](backup-azure-sql-database.md#set-vm-permissions).
 
 ## <a name="troubleshoot-discover-and-configure-issues"></a>Rozwiązywanie problemów z odnajdywaniem i konfigurowaniem
+
 Po utworzeniu i skonfigurowaniu magazynu Recovery Services odnajdywania baz danych i konfigurowania kopii zapasowej jest procesem dwuetapowym.<br>
 
 ![Server](./media/backup-azure-sql-database/sql.png)
@@ -35,9 +36,25 @@ Podczas konfigurowania kopii zapasowej, jeśli maszyna wirtualna SQL i jej wyst�
 
 - Jeśli magazyn, w którym maszyna wirtualna SQL jest zarejestrowana w tym samym magazynie używanym do ochrony baz danych, wykonaj kroki [konfigurowania kopii zapasowej](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#configure-backup) .
 
-Jeśli maszyna wirtualna SQL musi być zarejestrowana w nowym magazynie, należy wyrejestrować ją ze starego magazynu.  Wyrejestrowanie maszyny wirtualnej SQL z magazynu wymaga, aby wszystkie chronione źródła danych zostały zatrzymane, a następnie można usunąć kopię zapasową danych. Usuwanie kopii zapasowej danych jest operacją niszczącą.  Po przejrzeniu i wykonaniu wszystkich środków zaradczych, aby wyrejestrować maszynę wirtualną SQL, Zarejestruj tę samą maszynę wirtualną w nowym magazynie i spróbuj ponownie wykonać operację tworzenia kopii zapasowej.
+Jeśli maszyna wirtualna SQL musi być zarejestrowana w nowym magazynie, należy wyrejestrować ją ze starego magazynu.  Wyrejestrowanie maszyny wirtualnej SQL z magazynu wymaga, aby wszystkie chronione źródła danych zostały zatrzymane, a następnie można usunąć dane kopii zapasowej. Usuwanie kopii zapasowej danych jest operacją niszczącą.  Po przejrzeniu i wykonaniu wszystkich środków zaradczych, aby wyrejestrować maszynę wirtualną SQL, Zarejestruj tę samą maszynę wirtualną w nowym magazynie i spróbuj ponownie wykonać operację tworzenia kopii zapasowej.
 
+## <a name="troubleshoot-backup-and-recovery-issues"></a>Rozwiązywanie problemów z tworzeniem kopii zapasowej i odzyskiwaniem  
 
+Czasami przypadkowe błędy mogą wystąpić podczas operacji wykonywania kopii zapasowej i przywracania albo operacje te mogą zostać zablokowane. Może to być spowodowane programami antywirusowymi na maszynie wirtualnej. Najlepszym rozwiązaniem jest zasugerowanie następujących kroków:
+
+1. Wyklucz następujące foldery ze skanowania oprogramowania antywirusowego:
+
+    `C:\Program Files\Azure Workload Backup` `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.WorkloadBackup.Edp.AzureBackupWindowsWorkload`
+
+    Zastąp `C:\` literą *dysku.*
+
+1. Wyklucz następujące trzy procesy działające w ramach maszyny wirtualnej ze skanowania oprogramowania antywirusowego:
+
+    - IaasWLPluginSvc. exe
+    - IaasWorkloadCoordinaorService. exe
+    - TriggerExtensionJob. exe
+
+1. SQL zawiera również pewne wskazówki dotyczące pracy z programami antywirusowymi. Zobacz [ten artykuł](https://support.microsoft.com/help/309422/choosing-antivirus-software-for-computers-that-run-sql-server) , aby uzyskać szczegółowe informacje.
 
 ## <a name="error-messages"></a>Komunikaty o błędach
 
@@ -149,7 +166,6 @@ Operacja została zablokowana, ponieważ magazyn osiągnął limit maksymalny dl
 | Komunikat o błędzie | Możliwe przyczyny | Zalecane działanie |
 |---|---|---|
 Maszyna wirtualna nie może nawiązać kontaktu z usługą Azure Backup ze względu na problemy z łącznością z Internetem. | Maszyna wirtualna musi mieć łączność wychodzącą z usługą Azure Backup, Azure Storage lub Azure Active Directory Services.| — Jeśli używasz sieciowej grupy zabezpieczeń, aby ograniczyć łączność, należy użyć znacznika usługi AzureBackup w celu zezwalania na dostęp wychodzący do Azure Backup usługi Azure Backup Service, Azure Storage lub Azure Active Directory Services. Wykonaj następujące [kroki](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#allow-access-using-nsg-tags) , aby udzielić dostępu.<br>-Upewnij się, że usługa DNS rozwiązuje punkty końcowe platformy Azure.<br>-Sprawdź, czy maszyna wirtualna znajduje się za modułem równoważenia obciążenia blokującym dostęp do Internetu. Przypisując publiczny adres IP do maszyn wirtualnych, odnajdywanie będzie działało.<br>-Sprawdź, czy nie istnieje Zapora/program antywirusowy/serwer proxy, który blokuje wywołania powyższych trzech usług docelowych.
-
 
 ## <a name="re-registration-failures"></a>Błędy ponownej rejestracji
 

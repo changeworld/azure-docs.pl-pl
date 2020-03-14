@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 11/14/2019
+ms.date: 3/13/2020
 ms.author: swmachan
-ms.openlocfilehash: 172bf452cc5197db95e0e1e55c7c687971194899
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 4180dc6127fb2d31465400b1b25fb7e2d68f4754
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123036"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369169"
 ---
 # <a name="translator-text-api-v30"></a>Interfejs API tłumaczenia tekstu w usłudze Translator v 3.0
 
@@ -48,7 +48,7 @@ Aby wymusić obsługę żądania przez określoną lokalizację geograficzną pl
 |Azure|Europa|  api-eur.cognitive.microsofttranslator.com|
 |Azure|Azja i Pacyfik|    api-apc.cognitive.microsofttranslator.com|
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Uwierzytelnianie
 
 Zasubskrybuj usługę interfejs API tłumaczenia tekstu w usłudze Translator lub [Cognitive Services wiele usług](https://azure.microsoft.com/pricing/details/cognitive-services/) w usłudze Azure Cognitive Services i Użyj klucza subskrypcji (dostępnego w Azure Portal) do uwierzytelniania. 
 
@@ -58,17 +58,74 @@ Istnieją trzy nagłówki, za pomocą których można uwierzytelniać swoją sub
 |:----|:----|
 |OCP-Apim-Subscription-Key|*Jeśli przekazujesz klucz tajny, Użyj usługi z subskrypcją Cognitive Services*.<br/>Wartość jest kluczem tajnym platformy Azure dla Twojej subskrypcji do interfejs API tłumaczenia tekstu w usłudze Translator.|
 |Autoryzacja|*Użyj usługi z subskrypcją Cognitive Services, jeśli przekazujesz token uwierzytelniania.*<br/>Wartość jest tokenem okaziciela: `Bearer <token>`.|
-|Ocp-Apim-Subscription-Region|*Użyj usługi with Cognitive Services subskrypcję usługi, jeśli przekazujesz klucz tajny usługi wiele usług.*<br/>Wartość jest regionem subskrypcji wielousługowej. Ta wartość jest opcjonalna, gdy nie jest używana subskrypcja Wielousługowa.|
+|Ocp-Apim-Subscription-Region|*Używany z Cognitive Servicesm zasobów usługi Service i translatora regionalnego.*<br/>Wartość to region zasobu usługi wielousługowej lub translatora regionalnego. Ta wartość jest opcjonalna w przypadku korzystania z zasobu usługi tłumaczenia globalnego.|
 
-###  <a name="secret-key"></a>Klucz tajny
+###  <a name="secret-key"></a>Tajny klucz
 Pierwsza opcja polega na uwierzytelnianiu przy użyciu nagłówka `Ocp-Apim-Subscription-Key`. Dodaj nagłówek `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` do żądania.
 
-### <a name="authorization-token"></a>Token autoryzacji
+#### <a name="authenticating-with-a-global-resource"></a>Uwierzytelnianie za pomocą zasobu globalnego
+
+W przypadku korzystania z [zasobu usługi tłumaczenia globalnego](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)należy dołączyć jeden nagłówek, aby wywołać interfejs API usługi Translator.
+
+|Nagłówki|Opis|
+|:-----|:----|
+|OCP-Apim-Subscription-Key| Wartość jest kluczem tajnym platformy Azure dla Twojej subskrypcji do interfejs API tłumaczenia tekstu w usłudze Translator.|
+
+Oto przykładowe żądanie wywołania interfejsu API usługi Translator przy użyciu zasobu usługi tłumaczenia globalnego
+
+```curl
+// Pass secret key using headers
+curl -X POST "https://api.cognitive.microsoft.com/translate?api-version=3.0&to=es" \
+     -H "Ocp-Apim-Subscription-Key:<your-key>" \
+     -H "Content-Type: application/json" \
+     -d "[{'Text':'Hello, what is your name?'}]"
+```
+
+#### <a name="authenticating-with-a-regional-resource"></a>Uwierzytelnianie za pomocą zasobu regionalnego
+
+W przypadku korzystania z [zasobu translatora regionalnego](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation).
+Istnieją 2 nagłówki, które należy wywołać interfejs API usługi Translator.
+
+|Nagłówki|Opis|
+|:-----|:----|
+|OCP-Apim-Subscription-Key| Wartość jest kluczem tajnym platformy Azure dla Twojej subskrypcji do interfejs API tłumaczenia tekstu w usłudze Translator.|
+|Ocp-Apim-Subscription-Region| Wartość to region zasobu translatora. |
+
+Oto przykładowe żądanie wywołania interfejsu API usługi Translator przy użyciu zasobu translatora regionalnego
+
+```curl
+// Pass secret key and region using headers
+curl -X POST "https://api.cognitive.microsoft.com/translate?api-version=3.0&to=es" \
+     -H "Ocp-Apim-Subscription-Key:<your-key>" \
+     -H "Ocp-Apim-Subscription-Region:<your-region>" \
+     -H "Content-Type: application/json" \
+     -d "[{'Text':'Hello, what is your name?'}]"
+```
+
+#### <a name="authenticating-with-a-multi-service-resource"></a>Uwierzytelnianie za pomocą zasobu wielousługowego
+
+W przypadku korzystania z zasobu usługi poznawczej. Dzięki temu można używać jednego klucza tajnego do uwierzytelniania żądań dla wielu usług. 
+
+W przypadku korzystania z wielousługowego klucza tajnego należy dołączyć dwa nagłówki uwierzytelniania do żądania. Istnieją 2 nagłówki, które należy wywołać interfejs API usługi Translator.
+
+|Nagłówki|Opis|
+|:-----|:----|
+|OCP-Apim-Subscription-Key| Wartość jest kluczem tajnym platformy Azure dla zasobu wielousługowego.|
+|Ocp-Apim-Subscription-Region| Wartość to region zasobu wieloskładnikowego. |
+
+Region jest wymagany w przypadku subskrypcji wielousługowego interfejsu API tekstu. Wybrany region jest jedynym regionem, którego można użyć do tłumaczenia tekstu przy użyciu klucza subskrypcji wielousługowej i musi być tym samym regionem wybranym podczas rejestrowania się w ramach subskrypcji wielousługowej za pośrednictwem Azure Portal.
+
+Dostępne są `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centralus`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `francecentral`, `japaneast`, `japanwest`, `koreacentral`, `northcentralus`, `northeurope`, `southcentralus`, `southeastasia`, `uksouth`, `westcentralus`, `westeurope`, `westus`, `westus2`i `southafricanorth`.
+
+Jeśli przekażesz klucz tajny w ciągu zapytania za pomocą parametru `Subscription-Key`, należy określić region z parametrem zapytania `Subscription-Region`.
+
+### <a name="authenticating-with-an-access-token"></a>Uwierzytelnianie przy użyciu tokenu dostępu
 Alternatywnie możesz wymienić klucz tajny dla tokenu dostępu. Token ten jest dołączany do każdego żądania jako nagłówek `Authorization`. Aby uzyskać Token autoryzacji, należy wysłać żądanie `POST` do następującego adresu URL:
 
-| Środowisko     | Adres URL usługi uwierzytelniania                                |
+| Typ zasobu     | Adres URL usługi uwierzytelniania                                |
 |-----------------|-----------------------------------------------------------|
-| Azure           | `https://api.cognitive.microsoft.com/sts/v1.0/issueToken` |
+| Globalny          | `https://api.cognitive.microsoft.com/sts/v1.0/issueToken` |
+| Regionalne lub wielousługowe | `https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken` |
 
 Oto przykładowe żądania uzyskania tokenu danego klucza tajnego:
 
@@ -88,22 +145,29 @@ Authorization: Bearer <Base64-access_token>
 
 Token uwierzytelniania jest ważny przez 10 minut. Token powinien być ponownie używany podczas wykonywania wielu wywołań interfejsów API usługi Translator. Jeśli jednak program wysyła żądania do interfejsu API usługi Translator w dłuższym okresie, program musi zażądać nowego tokenu dostępu w regularnych odstępach czasu (na przykład co 8 minut).
 
-### <a name="multi-service-subscription"></a>Subskrypcja Wielousługowa
+## <a name="virtual-network-support"></a>Obsługa Virtual Network
 
-Ostatnia opcja uwierzytelniania polega na użyciu wielousługowej subskrypcji usługi poznawczej. Dzięki temu można używać jednego klucza tajnego do uwierzytelniania żądań dla wielu usług. 
+Usługa Translator jest teraz dostępna z możliwościami Virtual Network w ograniczonych regionach (`WestUS2`, `EastUS`, `SouthCentralUS`, `WestUS`, `Central US EUAP`, `global`). Aby włączyć Virtual Network, zobacz [Konfigurowanie platformy Azure Cognitive Services sieci wirtualnych](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal). 
 
-W przypadku korzystania z wielousługowego klucza tajnego należy dołączyć dwa nagłówki uwierzytelniania do żądania. Pierwszy przekazuje klucz tajny, drugi określa region skojarzony z subskrypcją. 
-* `Ocp-Apim-Subscription-Key`
-* `Ocp-Apim-Subscription-Region`
+Po włączeniu tej funkcji musisz użyć niestandardowego punktu końcowego, aby wywołać interfejs API usługi Translator. Nie można użyć globalnego punktu końcowego usługi Translator ("api.cognitive.microsofttranslator.com") i nie można uwierzytelnić się przy użyciu tokenu dostępu.
 
-Region jest wymagany w przypadku subskrypcji wielousługowego interfejsu API tekstu. Wybrany region jest jedynym regionem, którego można użyć do tłumaczenia tekstu przy użyciu klucza subskrypcji wielousługowej i musi być tym samym regionem wybranym podczas rejestrowania się w ramach subskrypcji wielousługowej za pośrednictwem Azure Portal.
+Niestandardowy punkt końcowy można znaleźć po utworzeniu [zasobu usługi Translator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation).
 
-Dostępne są `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centralus`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `francecentral`, `japaneast`, `japanwest`, `koreacentral`, `northcentralus`, `northeurope`, `southcentralus`, `southeastasia`, `uksouth`, `westcentralus`, `westeurope`, `westus`, `westus2`i `southafricanorth`.
+|Nagłówki|Opis|
+|:-----|:----|
+|OCP-Apim-Subscription-Key| Wartość jest kluczem tajnym platformy Azure dla Twojej subskrypcji do interfejs API tłumaczenia tekstu w usłudze Translator.|
+|Ocp-Apim-Subscription-Region| Wartość to region zasobu translatora. Ta wartość jest opcjonalna, jeśli zasób jest `global`|
 
-Jeśli przekażesz klucz tajny w ciągu zapytania za pomocą parametru `Subscription-Key`, należy określić region z parametrem zapytania `Subscription-Region`.
+Oto przykładowe żądanie wywołania interfejsu API usługi Translator przy użyciu niestandardowego punktu końcowego
 
-Jeśli używasz tokenu okaziciela, musisz uzyskać token z punktu końcowego regionu: `https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken`.
-
+```curl
+// Pass secret key and region using headers
+curl -X POST "https://<your-custom-domain>.cognitiveservices.azure.com/translator/text/v3.0/translate?api-version=3.0&to=es" \
+     -H "Ocp-Apim-Subscription-Key:<your-key>" \
+     -H "Ocp-Apim-Subscription-Region:<your-region>" \
+     -H "Content-Type: application/json" \
+     -d "[{'Text':'Hello, what is your name?'}]"
+```
 
 ## <a name="errors"></a>Błędy
 

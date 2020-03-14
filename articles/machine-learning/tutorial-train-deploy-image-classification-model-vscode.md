@@ -10,11 +10,11 @@ author: luisquintanilla
 ms.author: luquinta
 ms.date: 02/24/2020
 ms.openlocfilehash: ba9cd2e7dc0248aa351cb7bc4519689763f1adda
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77602553"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239882"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension"></a>Uczenie i wdrażanie modelu TensorFlow klasyfikacji obrazów przy użyciu rozszerzenia Visual Studio Code Azure Machine Learning
 
@@ -202,7 +202,7 @@ Aby uruchomić eksperyment Azure Machine Learning:
 
 Gdy model jest gotowy do szkolenia, etykieta stanu obok węzła uruchamiania aktualizuje do "ukończone".
 
-## <a name="register-the-model"></a>Zarejestruj model
+## <a name="register-the-model"></a>Rejestrowanie modelu
 
 Teraz, gdy masz już szkolony model, możesz zarejestrować go w obszarze roboczym. 
 

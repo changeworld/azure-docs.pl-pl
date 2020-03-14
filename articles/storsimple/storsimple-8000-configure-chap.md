@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: efc116c278bfe72419800603a3b365f461fe0a28
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78366792"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79267965"
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>Konfigurowanie protokołu CHAP dla urządzenia StorSimple
 
@@ -141,7 +141,7 @@ W przypadku uwierzytelniania dwukierunkowego obiekt docelowy uwierzytelnia inicj
 
 Aby uzyskać więcej informacji na temat konfigurowania protokołu CHAP na serwerze hosta z systemem Windows, przejdź do [dodatkowych zagadnień](#additional-considerations).
 
-## <a name="additional-considerations"></a>Dodatkowe zagadnienia
+## <a name="additional-considerations"></a>Dodatkowe kwestie do uwzględnienia
 
 Funkcja **szybkie łączenie** nie obsługuje połączeń z włączonym protokołem CHAP. Po włączeniu protokołu CHAP upewnij się, że używasz przycisku **Połącz** dostępnego na karcie **obiekty docelowe** , aby nawiązać połączenie z obiektem docelowym.
 

@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: diberry
 ms.openlocfilehash: b151043babd6c67a17f704bb671a415fcc3ba7b2
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280914"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220997"
 ---
 # <a name="machine-learned-features"></a>Funkcje uczenia maszynowego 
 
@@ -26,7 +26,7 @@ W [portalu Luis w wersji zapoznawczej](https://preview.luis.ai)funkcje są _desk
 
 ## <a name="features-_descriptors_-in-language-understanding"></a>Funkcje (_deskryptory_) w Language Understanding
 
-Funkcje, znane także jako deskryptory, opisują wskazówki ułatwiające Language Understanding identyfikowanie przykładu wyrażenia długości. Funkcje obejmują: 
+Funkcje, znane także jako deskryptory, opisują wskazówki ułatwiające Language Understanding identyfikowanie przykładu wyrażenia długości. Funkcje programu: 
 
 * Lista fraz jako funkcja dla intencji lub jednostek
 * Jednostki jako funkcje dla intencji lub jednostek
