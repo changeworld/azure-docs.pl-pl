@@ -1,14 +1,14 @@
 ---
 title: Dołączanie klienta do zarządzania zasobami delegowanymi na platformie Azure
 description: Dowiedz się, jak dołączyć klienta do zarządzania zasobami delegowanymi przez platformę Azure, umożliwiając dostęp do zasobów i zarządzanie nimi za pomocą własnej dzierżawy.
-ms.date: 01/20/2020
+ms.date: 01/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 33cf880098e174c2c230a3d78e125ad8df7d894a
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 7cf0ff1d64603215a9607f5a25ebc4077f9fa9da
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649793"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270682"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Dołączanie klienta do zarządzania zasobami delegowanymi na platformie Azure
 
@@ -22,9 +22,6 @@ Aby śledzić wpływ na zaangażowanie klientów i odbierać rozpoznawanie, skoj
 > Po zakupieniu oferty usług zarządzanych (publicznej lub prywatnej) opublikowanej w portalu Azure Marketplace można również dołączyć klientów. Aby uzyskać więcej informacji, zobacz temat [Publikowanie usług zarządzanych w witrynie Azure Marketplace](publish-managed-services-offers.md). Możesz również użyć procesu dołączania opisanego tutaj wraz z ofertą opublikowaną w witrynie Azure Marketplace.
 
 Proces dołączania wymaga wykonania akcji z poziomu dzierżawy dostawcy usług i dzierżawy klienta. Wszystkie te kroki opisano w tym artykule.
-
-> [!IMPORTANT]
-> Obecnie nie można dołączyć subskrypcji (lub grupy zasobów w ramach subskrypcji) do zarządzania zasobami delegowanymi przez platformę Azure, jeśli subskrypcja używa Azure Databricks. Podobnie, jeśli subskrypcja została zarejestrowana w celu dołączenia do dostawcy zasobów **Microsoft. ManagedServices** , nie będzie można w tej chwili utworzyć obszaru roboczego dla tej subskrypcji.
 
 ## <a name="gather-tenant-and-subscription-details"></a>Zbierz szczegóły dzierżawy i subskrypcji
 
@@ -41,7 +38,7 @@ Jeśli nie masz już tych wartości identyfikatorów, możesz je pobrać w jeden
 
 ### <a name="azure-portal"></a>Portalu Azure
 
-Identyfikator dzierżawy może być widoczny przez umieszczenie kursora nad nazwą konta w prawym górnym rogu Azure Portal lub przez wybranie pozycji **Przełącz katalog**. Aby wybrać i skopiować identyfikator dzierżawy, wyszukaj frazę "Azure Active Directory" w portalu, a następnie wybierz pozycję **Właściwości** i skopiuj wartość podaną w polu **Identyfikator katalogu** . Aby znaleźć identyfikator subskrypcji w dzierżawie klienta, wyszukaj frazę "subskrypcje", a następnie wybierz odpowiedni identyfikator subskrypcji.
+Identyfikator dzierżawy może być widoczny przez umieszczenie kursora nad nazwą konta w prawym górnym rogu Azure Portal lub przez wybranie pozycji **Przełącz katalog**. Aby wybrać i skopiować identyfikator dzierżawy, wyszukaj frazę "Azure Active Directory" w portalu, a następnie wybierz pozycję **Właściwości** i skopiuj wartość podaną w polu **Identyfikator katalogu** . Aby znaleźć identyfikator subskrypcji w dzierżawie klienta, wyszukaj frazę „Subskrypcje”, a następnie wybierz odpowiedni identyfikator subskrypcji.
 
 ### <a name="powershell"></a>Program PowerShell
 
@@ -98,7 +95,7 @@ Aby zdefiniować autoryzacje, musisz znać wartości identyfikatora dla każdego
 az ad group list --query "[?displayName == '<yourGroupName>'].objectId" --output tsv
 
 # To retrieve the objectId for an Azure AD user
-az ad user show --upn-or-object-id "<yourUPN>" –-query "objectId" --output tsv
+az ad user show --id "<yourUPN>" --query "objectId" --output tsv
 
 # To retrieve the objectId for an SPN
 az ad sp list --query "[?displayName == '<spDisplayName>'].objectId" --output tsv
@@ -111,7 +108,7 @@ az role definition list --name "<roleName>" | grep name
 
 ## <a name="create-an-azure-resource-manager-template"></a>Tworzenie szablonu usługi Azure Resource Manager
 
-Aby dołączyć klienta, musisz utworzyć szablon [Azure Resource Manager](../../azure-resource-manager/index.yml) dla oferty z następującymi informacjami. Wartości **mspOfferName** i **mspOfferDescription** będą widoczne dla klienta podczas wyświetlania szczegółów oferty na [stronie dostawcy usług](view-manage-service-providers.md) Azure Portal.
+Aby dołączyć klienta, należy utworzyć szablon usługi [Azure Resource Manager](../../azure-resource-manager/index.yml) dla oferty, zawierający następujące informacje. Wartości **mspOfferName** i **mspOfferDescription** będą widoczne dla klienta podczas wyświetlania szczegółów oferty na [stronie dostawcy usług](view-manage-service-providers.md) Azure Portal.
 
 |Pole  |Definicja  |
 |---------|---------|

@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: alkohli
 ms.openlocfilehash: f4ee3a5bd754335ab1c7f124671e9c37307a6a28
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384668"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265404"
 ---
 # <a name="azure-data-box-edgeazure-data-box-gateway-general-availability-release-notes"></a>Informacje o wersji ogólnych dostępności Azure Data Box Edge/Azure Data Box Gateway
 
@@ -44,7 +44,7 @@ Poniższa tabela zawiera podsumowanie znanych problemów dotyczących Data Box G
 | --- | --- | --- | --- |
 | **1.** |Typy plików | Następujące typy plików nie są obsługiwane: pliki znaków, pliki blokowe, gniazda, potoki, linki symboliczne.  |Skopiowanie tych plików spowoduje utworzenie plików o zerowej długości dla udziału NFS. Te pliki pozostają w stanie błędu i są również raportowane w *pliku Error. XML*. <br> Symboliczne linki do katalogów powodują, że nigdy nie są oznaczone jako offline. W związku z tym może nie być widoczne szare przekroczenie katalogów wskazujących, że katalogi są w trybie offline, a cała skojarzona zawartość została całkowicie przekazana na platformę Azure. |
 | **2.** |Usunięcie | Z powodu błędu w tej wersji, jeśli udział NFS zostanie usunięty, udział nie może zostać usunięty. Stan udziału *zostanie wyświetlony.*  |Dzieje się tak tylko wtedy, gdy udział korzysta z nieobsługiwanej nazwy pliku. |
-| **3.** |Kopiowanie | Kopiowanie danych kończy się niepowodzeniem z powodu błędu: Żądana operacja nie może zostać zakończona ze względu na ograniczenie systemu plików.  |Alternatywny strumień danych (ADS) skojarzony z rozmiarem pliku większym niż 128 KB nie jest obsługiwany.   |
+| **3.** |Copy | Kopiowanie danych kończy się niepowodzeniem z powodu błędu: Żądana operacja nie może zostać zakończona ze względu na ograniczenie systemu plików.  |Alternatywny strumień danych (ADS) skojarzony z rozmiarem pliku większym niż 128 KB nie jest obsługiwany.   |
 
 
 ## <a name="next-steps"></a>Następne kroki

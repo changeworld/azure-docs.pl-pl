@@ -12,11 +12,11 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 12/04/2018
 ms.openlocfilehash: fc328c34c1543a75fdc885087d44b28e24c0850a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818242"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268680"
 ---
 # <a name="business-critical-tier---azure-sql-database"></a>Warstwa Krytyczne dla działania firmy — Azure SQL Database
 
@@ -34,13 +34,13 @@ Platforma Azure uaktualnia i aktualizuje podstawowy system operacyjny, sterownik
 
 Dostępność Premium jest włączona w warstwach usług premium i Krytyczne dla działania firmy Azure SQL Database i jest przeznaczona do intensywnych obciążeń, które nie mogą tolerować wpływu na wydajność wynikające z trwających operacji konserwacyjnych.
 
-W modelu Premium usługa Azure SQL Database integruje obliczenia i magazyn w jednym węźle. Wysoka dostępność w tym modelu architektury jest osiągana przez replikację operacji obliczeniowych (SQL Server procesie aparatu bazy danych) i magazynu (lokalnie dołączony dysk SSD) wdrożonego w czterech węzłach klastra przy użyciu technologii podobnej do SQL Server [zawsze włączone grupy dostępności ](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server).
+W modelu Premium usługa Azure SQL Database integruje obliczenia i magazyn w jednym węźle. Wysoka dostępność w tym modelu architektury jest osiągana przez replikację operacji obliczeniowych (SQL Server procesie aparatu bazy danych) i magazynu (lokalnie dołączony dysk SSD) wdrożonego w czterech węzłach klastra przy użyciu technologii podobnej do SQL Server [zawsze włączone grupy dostępności](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server).
 
 ![Klaster węzłów aparatu bazy danych](media/sql-database-managed-instance/business-critical-service-tier.png)
 
 Zarówno proces aparatu bazy danych SQL, jak i bazowe pliki MDF/ldf są umieszczane w tym samym węźle, w którym lokalnie dołączony magazyn SSD zapewnia małe opóźnienia w obciążeniu. Wysoka dostępność jest implementowana przy użyciu technologii podobnego do SQL Server [zawsze włączonymi grupami dostępności](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server). Każda baza danych jest klastrem węzłów bazy danych z jedną podstawową bazą danych, która jest dostępna do obciążania klienta, oraz trzech procesów pomocniczych zawierających kopie danych. Węzeł podstawowy ciągle wypychanie zmian do węzłów pomocniczych w celu upewnienia się, że dane są dostępne w replikach pomocniczych, jeśli węzeł podstawowy ulegnie awarii z dowolnego powodu. Tryb failover jest obsługiwany przez aparat bazy danych SQL Server — jedna replika pomocnicza jest węzłem podstawowym, a Nowa replika pomocnicza jest tworzona w celu zapewnienia wystarczającej liczby węzłów w klastrze. Obciążenie jest automatycznie przekierowywane do nowego węzła podstawowego.
 
-Ponadto klaster Krytyczne dla działania firmy ma wbudowaną funkcję [odczytu](sql-database-read-scale-out.md) w poziomie, która zapewnia bezpłatny, wbudowany węzeł tylko do odczytu, który może służyć do uruchamiania zapytań tylko do odczytu (na przykład raportów), które nie powinny wpływać na wydajność podstawowego roboczych.
+Ponadto klaster Krytyczne dla działania firmy ma wbudowaną funkcję [odczytu](sql-database-read-scale-out.md) w poziomie, która zapewnia bezpłatny, wbudowany węzeł tylko do odczytu, który może służyć do uruchamiania zapytań tylko do odczytu (na przykład raportów), które nie powinny wpływać na wydajność podstawowego obciążenia.
 
 ## <a name="when-to-choose-this-service-tier"></a>Kiedy należy wybrać tę warstwę usług?
 
@@ -53,7 +53,7 @@ Najważniejsze przyczyny wyboru Krytyczne dla działania firmy warstwy usług za
 -   Długotrwałe transakcje, które modyfikują dane. Transakcje, które są otwierane przez dłuższy czas, uniemożliwiają Obcinanie pliku dziennika, co może spowodować zwiększenie rozmiaru dziennika i liczby [wirtualnych plików dziennika (VLF)](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide#physical_arch). Duża liczba VLF może spowolnić odzyskiwanie bazy danych po przejściu do trybu failover.
 -   Obciążenie przy użyciu zapytań i raportów analitycznych, które można przekierować do bezpłatnej repliki tylko do odczytu.
 - Wyższa odporność i szybsze odzyskiwanie po awarii. W przypadku awarii systemu baza danych w wystąpieniu podstawowym zostanie wyłączona, a jedna z replik pomocniczych stanie się natychmiast nową podstawową bazą danych do odczytu i zapisu, która jest gotowa do przetwarzania zapytań. Aparat bazy danych nie musi analizować i ponawiać transakcji z pliku dziennika i ładować wszystkich danych w buforze pamięci.
-- Zaawansowana ochrona przed uszkodzeniem danych — warstwa Krytyczne dla działania firmy korzysta z replik bazy danych w tle w celu zapewnienia ciągłości działania, a więc usługa korzysta z automatycznej naprawy strony, która jest tą samą technologią, jak w przypadku bazy danych SQL Server Database. [dublowanie i grupy dostępności](https://docs.microsoft.com/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring). W przypadku, gdy replika nie może odczytać strony z powodu problemu z integralnością danych, Nowa kopia strony zostanie pobrana z innej repliki, zastępując nieczytelną stronę bez utraty danych lub przestoju klienta. Ta funkcja ma zastosowanie w warstwie Ogólnego przeznaczenia, jeśli baza danych ma replikę geograficzną.
+- Zaawansowana ochrona przed uszkodzeniem danych — warstwa Krytyczne dla działania firmy korzysta z replik bazy danych w tle w celu zapewnienia ciągłości działania, a więc usługa korzysta z automatycznej naprawy strony, która jest tą samą technologią, która jest używana do SQL Server [dublowania baz danych i grup dostępności](https://docs.microsoft.com/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring). W przypadku, gdy replika nie może odczytać strony z powodu problemu z integralnością danych, Nowa kopia strony zostanie pobrana z innej repliki, zastępując nieczytelną stronę bez utraty danych lub przestoju klienta. Ta funkcja ma zastosowanie w warstwie Ogólnego przeznaczenia, jeśli baza danych ma replikę geograficzną.
 - Wyższa dostępność — warstwa Krytyczne dla działania firmy w ramach konfiguracji z obsługą wiele-AZ — zapewnia dostępność na 99,995% w porównaniu do 99,99% warstwy Ogólnego przeznaczenia.
 - Szybka replikacja geograficzna — warstwa Krytyczne dla działania firmy skonfigurowana z replikacją geograficzną ma gwarantowany cel punktu odzyskiwania (RPO) wynoszący 5 sekund i cel czasu odzyskiwania (RTO) wynoszący 30 sekund przez 100% czasu wdrożenia.
 

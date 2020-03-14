@@ -18,11 +18,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5440c54b01f62b3ad61b355f4c622a31910a65c1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376331"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261335"
 ---
 # <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect Sync: Uruchamianie Kreatora instalacji po raz drugi
 Przy pierwszym uruchomieniu Kreatora instalacji Azure AD Connect przeprowadzi Cię przez proces konfigurowania instalacji. Po ponownym uruchomieniu Kreatora instalacji oferuje opcje konserwacji.

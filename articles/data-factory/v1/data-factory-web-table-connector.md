@@ -13,11 +13,11 @@ ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d2ea038c7d7212529185d77a6ba9e64deacb1c9e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927934"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265716"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Przenoszenie danych ze źródła tabeli sieci Web przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -55,7 +55,7 @@ Aby użyć tego łącznika tabeli sieci Web, należy skonfigurować samoobsługo
 Można utworzyć potok za pomocą działania kopiowania, które przenosi dane z lokalnego magazynu danych Cassandra przy użyciu różnych narzędzi/interfejsów API. 
 
 - Najprostszym sposobem utworzenia potoku jest użycie **Kreatora kopiowania**. Zobacz [Samouczek: Tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) na potrzeby szybkiego instruktażu dotyczącego tworzenia potoku przy użyciu Kreatora kopiowania danych. 
-- Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania. 
+- Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Aby uzyskać instrukcje krok po kroku dotyczące tworzenia potoku za pomocą działania kopiowania, zobacz [Samouczek dotyczący działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
 
 Niezależnie od tego, czy używasz narzędzi, czy interfejsów API, wykonaj następujące kroki, aby utworzyć potok służący do przenoszenia danych ze źródłowego magazynu danych do magazynu danych ujścia:
 
@@ -70,11 +70,11 @@ Poniższe sekcje zawierają szczegółowe informacje na temat właściwości JSO
 ## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 Poniższa tabela zawiera opis elementów JSON specyficznych dla połączonej usługi sieci Web.
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 | --- | --- | --- |
-| type |Właściwość Type musi mieć wartość: **Web** |Tak |
-| Url |Adres URL źródła sieci Web |Tak |
-| authenticationType |Anonimowe. |Tak |
+| type |Właściwość Type musi mieć wartość: **Web** |Yes |
+| Url |Adres URL źródła sieci Web |Yes |
+| authenticationType |Anonimowe. |Yes |
 
 ### <a name="using-anonymous-authentication"></a>Korzystanie z uwierzytelniania anonimowego
 
@@ -98,11 +98,11 @@ Aby uzyskać pełną listę sekcji & właściwości dostępne do definiowania ze
 
 Sekcja **typeProperties** jest inna dla każdego typu zestawu danych i zawiera informacje dotyczące lokalizacji danych w magazynie danych. Sekcja typeProperties zestawu danych typu **webtable** ma następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type |Typ zestawu danych. musi być ustawiona na **Webtable** |Tak |
-| Ścieżka |Względny adres URL do zasobu, który zawiera tabelę. |Nie. Jeśli ścieżka nie zostanie określona, zostanie użyta tylko adres URL określony w definicji połączonej usługi. |
-| index |Indeks tabeli w zasobie. Zobacz sekcję [pobieranie indeksu tabeli w sekcji strony HTML,](#get-index-of-a-table-in-an-html-page) aby poznać procedurę pobierania indeksu tabeli na stronie HTML. |Tak |
+| type |Typ zestawu danych. musi być ustawiona na **Webtable** |Yes |
+| ścieżka |Względny adres URL do zasobu, który zawiera tabelę. |Nie. Jeśli ścieżka nie zostanie określona, zostanie użyta tylko adres URL określony w definicji połączonej usługi. |
+| index |Indeks tabeli w zasobie. Zobacz sekcję [pobieranie indeksu tabeli w sekcji strony HTML,](#get-index-of-a-table-in-an-html-page) aby poznać procedurę pobierania indeksu tabeli na stronie HTML. |Yes |
 
 **Przykład:**
 
@@ -298,7 +298,7 @@ Zobacz właściwości typu websource dla listy właściwości obsługiwanych prz
    ![Okno dialogowe dostęp do zawartości sieci Web](./media/data-factory-web-table-connector/AccessWebContentDialog.png)
 5. Kliknij element **tabeli** w widoku drzewa, aby wyświetlić zawartość z tabeli, a następnie kliknij przycisk **Edytuj** u dołu.  
 
-   ![Okno dialogowe Nawigator](./media/data-factory-web-table-connector/Navigator-DialogBox.png)
+   ![Okno dialogowe nawigatora](./media/data-factory-web-table-connector/Navigator-DialogBox.png)
 6. W oknie **Edytor zapytań** kliknij przycisk **Edytor zaawansowany** na pasku narzędzi.
 
     ![Przycisk Edytor zaawansowany](./media/data-factory-web-table-connector/QueryEditor-AdvancedEditorButton.png)

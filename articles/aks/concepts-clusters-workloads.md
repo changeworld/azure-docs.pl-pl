@@ -5,11 +5,11 @@ services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: bcf56aa89a42d65fdb7bf03696faad13c64cbc8a
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596236"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259645"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Podstawowe pojęcia Kubernetes dla usługi Azure Kubernetes Service (AKS)
 
@@ -242,7 +242,7 @@ Aby uzyskać więcej informacji, zobacz [Kubernetes DaemonSets][kubernetes-daemo
 > [!NOTE]
 > W przypadku używania [dodatku węzłów wirtualnych](virtual-nodes-cli.md#enable-virtual-nodes-addon)DaemonSets nie utworzy zasobnika w węźle wirtualnym.
 
-## <a name="namespaces"></a>{1&gt;Przestrzenie nazw&lt;1}
+## <a name="namespaces"></a>Przestrzenie nazw
 
 Zasoby Kubernetes, takie jak grupy miar i wdrożenia, są logicznie pogrupowane w *przestrzeni nazw*. Dzięki tym grupom można logicznie podzielić klaster AKS i ograniczyć dostęp do tworzenia, wyświetlania i zarządzania zasobami. Można na przykład utworzyć przestrzenie nazw w celu oddzielenia grup firmy. Użytkownicy mogą korzystać tylko z zasobami w ramach przypisanych przestrzeni nazw.
 

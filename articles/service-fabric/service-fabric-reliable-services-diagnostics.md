@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 8/24/2018
 ms.author: dekapur
 ms.openlocfilehash: 37162287e130b05dc41453c579b3a628ac878fca
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388421"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282265"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>Funkcja diagnostyki dla stanowych usług Reliable Services
 Service Fabric stanowa platformy Azure Reliable Services Klasa StatefulServiceBase emituje zdarzenia [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) , które mogą być używane do debugowania usługi, zapewnia wgląd w sposób działania środowiska uruchomieniowego i pomaga w rozwiązywaniu problemów.

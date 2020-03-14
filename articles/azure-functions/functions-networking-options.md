@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: f06c50c35e25f2f64948c5f18672e00382d4ef42
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: d8c3357325eadefec7bb97faba5d600e9c6793a9
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78892751"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276714"
 ---
 # <a name="azure-functions-networking-options"></a>Opcje sieci Azure Functions
 
@@ -54,6 +54,8 @@ Dostęp do lokacji prywatnej dotyczy udostępniania aplikacji tylko z sieci pryw
     * Aby uzyskać więcej informacji, zobacz [punkty końcowe usługi sieci wirtualnej](../virtual-network/virtual-network-service-endpoints-overview.md).
     * Należy pamiętać, że dzięki punktom końcowym usługi funkcja nadal ma pełny dostęp wychodzący do Internetu, nawet z skonfigurowaną integracją sieci wirtualnej.
 * Dostęp do lokacji prywatnej jest również dostępny w ramach App Service Environment, który jest skonfigurowany przy użyciu wewnętrznego modułu równoważenia obciążenia (ILB). Aby uzyskać więcej informacji, zobacz [Tworzenie i używanie wewnętrznego modułu równoważenia obciążenia z App Service Environment](../app-service/environment/create-ilb-ase.md).
+
+Aby dowiedzieć się, jak skonfigurować dostęp do lokacji prywatnej, zobacz [ustanawianie Azure Functions dostępu do lokacji prywatnej](functions-create-private-site-access.md).
 
 ## <a name="virtual-network-integration"></a>Integracja sieci wirtualnej
 

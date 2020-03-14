@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 04/26/2019
-ms.openlocfilehash: 940baf219f1b3994585472f0eed9d171ba319d4e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/10/2020
+ms.openlocfilehash: 92d6dccec3ce6483072a81c8739b65e81ce2c7fe
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359910"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268576"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Skalowanie zasobów pojedynczej bazy danych w Azure SQL Database
 
@@ -63,7 +63,7 @@ Szacowane opóźnienie zmiany warstwy usług lub ponowne skalowanie wielkości o
 
 Operacja zmiany warstwy usług lub ponownego skalowania obliczeń może zostać anulowana.
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Portalu Azure
 
 W bloku przegląd bazy danych przejdź do **powiadomień** i kliknij kafelek informujący o trwającej operacji:
 
@@ -73,7 +73,7 @@ Następnie kliknij przycisk z etykietą **Anuluj tę operację**.
 
 ![Anuluj trwającą operację](media/sql-database-single-database-scale/cancel-ongoing-operation.png)
 
-#### <a name="powershell"></a>PowerShell
+#### <a name="powershell"></a>Program PowerShell
 
 W wierszu polecenia programu PowerShell Ustaw `$resourceGroupName`, `$serverName`i `$databaseName`, a następnie uruchom następujące polecenie:
 
@@ -106,10 +106,11 @@ Opłaty są naliczane za każdą godzinę, gdy baza danych istnieje przy użyciu
 
 ### <a name="vcore-based-purchasing-model"></a>Model zakupów oparty na rdzeniach wirtualnych
 
-- Obsługa magazynu może należeć do maksymalnego limitu rozmiaru przy użyciu przyrostów 1 GB. Minimalny konfigurowalny magazyn danych to 5 GB
-- Obsługę magazynu dla pojedynczej bazy danych można obsługiwać przez zwiększenie lub zmniejszenie jego maksymalnego rozmiaru przy użyciu [Azure Portal](https://portal.azure.com), [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [PowerShell](/powershell/module/az.sql/set-azsqldatabase), interfejsu [wiersza polecenia platformy Azure](/cli/azure/sql/db#az-sql-db-update)lub [API REST](https://docs.microsoft.com/rest/api/sql/databases/update).
-- SQL Database automatycznie przydziela 30% dodatkowego magazynu dla plików dziennika i 32 GB na rdzeń wirtualny dla bazy danych TempDB, ale nie może przekroczyć 384GB. Baza danych TempDB znajduje się na dołączonym dysku SSD we wszystkich warstwach usługi.
-- Cena magazynu dla pojedynczej bazy danych to suma ilości magazynu danych i magazynu dzienników pomnożona przez cenę jednostkową magazynu warstwy usług. Koszt bazy danych TempDB jest uwzględniany w cenie rdzeń wirtualny. Aby uzyskać szczegółowe informacje na temat ceny dodatkowego magazynu, zobacz [Cennik usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/).
+- Magazyn może być inicjowany do limitu maksymalnego rozmiaru magazynu danych przy użyciu przyrostów 1 GB. Minimalny konfigurowalny magazyn danych to 1 GB. Zobacz strony dokumentacji limitu zasobów dla [pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md) i [pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md) dla limitów maksymalny rozmiar magazynu danych w każdym celu usługi.
+- Przechowywanie danych dla pojedynczej bazy danych może być obsługiwane przez zwiększenie lub zmniejszenie maksymalnego rozmiaru przy użyciu [Azure Portal](https://portal.azure.com), [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [PowerShell](/powershell/module/az.sql/set-azsqldatabase), interfejsu [wiersza polecenia platformy Azure](/cli/azure/sql/db#az-sql-db-update)lub [API REST](https://docs.microsoft.com/rest/api/sql/databases/update). Jeśli wartość maksymalnego rozmiaru jest określona w bajtach, musi być wielokrotnością 1 GB (1073741824 bajtów).
+- Ilość danych, które mogą być przechowywane w plikach danych bazy danych, jest ograniczona przez skonfigurowany maksymalny rozmiar magazynu danych. Oprócz tego magazynu SQL Database automatycznie przydziela więcej niż 30% więcej miejsca do użycia w dzienniku transakcji.
+- SQL Database automatycznie przydziela 32 GB na rdzeń wirtualny dla bazy danych `tempdb`. `tempdb` znajduje się w lokalnym magazynie dysków SSD we wszystkich warstwach usługi.
+- Cena magazynu dla pojedynczej bazy danych lub puli elastycznej to suma ilości magazynu danych i magazynu dzienników transakcji pomnożona przez cenę jednostkową magazynu dla warstwy usług. Koszt `tempdb` jest uwzględniany w cenie. Aby uzyskać szczegółowe informacje na temat ceny magazynu, zobacz [Cennik usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
 > W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [Zarządzanie obszarem plików w Azure SQL Database](sql-database-file-space-management.md).

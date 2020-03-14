@@ -10,11 +10,11 @@ ms.date: 06/18/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
 ms.openlocfilehash: 067d818b7d23fc0b83cb1d4255bfbb8659149412
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204762"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240730"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Co to jest usługa Azure Data Box Disk?
 
@@ -84,19 +84,19 @@ Aby uzyskać więcej informacji, przejdź do tematu [Zabezpieczenia i ochrona da
 | Interfejs danych                                          | USB   |
 | Bezpieczeństwo                                                | Wstępne szyfrowanie za pomocą funkcji BitLocker i zabezpieczone aktualizacje <br> Dyski chronione za pomocą klucza dostępu <br> Dane są zaszyfrowane przez cały czas  |
 | Szybkość transferu danych                                      | Do 430 MB/s w zależności od rozmiaru pliku      |
-|Zarządzanie                                               | Azure Portal |
+|Zarządzanie                                               | Portalu Azure |
 
 
 ## <a name="region-availability"></a>Dostępność w danym regionie
 
-Aby uzyskać informacje na temat dostępności regionu, przejdź do [Azure dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Dysku Data Box można wdrożyć w taki sposób, w chmurze Azure Government. Aby uzyskać więcej informacji, zobacz [co to jest platforma Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
+Aby uzyskać informacje na temat dostępności regionów, przejdź do pozycji [produkty platformy Azure dostępne według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Data Box Disk można również wdrożyć w chmurze Azure Government. Aby uzyskać więcej informacji, zobacz [co to jest Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
 
 
-## <a name="pricing"></a>Cennik
+## <a name="pricing"></a>Ceny
 
 Aby uzyskać informacje o cenach, przejdź do [strony cennika](https://azure.microsoft.com/pricing/details/databox/disk/).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Zapoznaj się z [wymaganiami rozwiązania Data Box Disk](data-box-disk-system-requirements.md).
 - Zapoznaj się z [limitami usługi Data Box Disk](data-box-disk-limits.md).

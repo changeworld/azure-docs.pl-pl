@@ -6,12 +6,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: f871dfa5bd3c1feb6a89fcff3fb9d95442e72986
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: b782477fd29b34eda70813fc2aff29157f02acb3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78368271"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79275947"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Zarządzanie użyciem i kosztami Application Insights
 
@@ -28,9 +28,9 @@ Cennik [usługi Azure Application Insights][start] to model z **płatnością zg
 
 [Wieloetapowe testy sieci Web](../../azure-monitor/app/availability-multistep.md) wiążą się z dodatkowymi opłatami. Wieloetapowe testy sieci Web to testy sieci Web, które wykonują sekwencję akcji. Nie ma oddzielnej opłaty za *testy ping* dla pojedynczej strony. Dane telemetryczne z testów ping i testów wieloetapowych są rozliczone tak samo jak inne dane telemetryczne z aplikacji.
 
-## <a name="estimating-the-costs-to-manage-your-application"></a>Szacowanie kosztów zarządzania aplikacją 
+## <a name="estimating-the-costs-to-manage-your-application"></a>Szacowanie kosztów zarządzania aplikacją
 
-Jeśli jeszcze nie korzystasz z Application Insights, możesz użyć [kalkulatora cen Azure monitor](https://azure.microsoft.com/pricing/calculator/?service=monitor) , aby oszacować koszt używania Application Insights. Zacznij od wprowadzenia "Azure Monitor" w polu wyszukiwania i kliknięcia kafelka Azure Monitor wyników. Przewiń w dół stronę do Azure Monitor i wybierz pozycję Application Insights z listy rozwijanej Typ.  W tym miejscu możesz wprowadzić liczbę GB danych, które mają być zbierane miesięcznie, a więc pytanie, ile danych będzie Application Insights zbierać monitorowanie aplikacji. 
+Jeśli jeszcze nie korzystasz z Application Insights, możesz użyć [kalkulatora cen Azure monitor](https://azure.microsoft.com/pricing/calculator/?service=monitor) , aby oszacować koszt używania Application Insights. Zacznij od wprowadzenia "Azure Monitor" w polu wyszukiwania i kliknięcia kafelka Azure Monitor wyników. Przewiń w dół stronę do Azure Monitor i wybierz pozycję Application Insights z listy rozwijanej Typ.  W tym miejscu możesz wprowadzić liczbę GB danych, które mają być zbierane miesięcznie, a więc pytanie, ile danych będzie Application Insights zbierać monitorowanie aplikacji.
 
 Istnieją dwa podejścia do rozwiązania tego zagadnienia: użycie domyślnego monitorowania i próbkowania adaptacyjnego, które jest dostępne w zestawie SDK ASP.NET, lub oszacowanie potencjalnego pozyskiwania danych na podstawie tego, co inni klienci będą mogli zobaczyć.
 
@@ -42,25 +42,25 @@ W przypadku zestawów SDK, które nie obsługują próbkowania adaptacyjnego, mo
 
 ### <a name="learn-from-what-similar-customers-collect"></a>Dowiedz się, co zbiera podobne odbiorcy
 
-Na stronie Kalkulator cen usługi Azure Monitoring dla Application Insights w przypadku włączenia funkcji "oszacowanie ilości danych opartych na działaniu aplikacji" można podać dane wejściowe aplikacji (żądania miesięcznie i wyświetlenia stron miesięcznie). Zbieraj dane telemetryczne po stronie klienta, a następnie Kalkulator wskaże medianę i 90% ilość danych zbieranych przez podobne aplikacje. Te aplikacje obejmują zakres konfiguracji Application Insights (np. niektóre z [próbkami](../../azure-monitor/app/sampling.md)domyślnymi, niektóre nie mają próbek itp.), dlatego nadal masz kontrolę, aby zmniejszyć ilość danych, które są znacznie mniejsze niż poziom średni przy użyciu próbkowania. Jest to jednak punkt początkowy, który umożliwia zapoznanie się z innymi, podobnym klientom. 
+Na stronie Kalkulator cen usługi Azure Monitoring dla Application Insights w przypadku włączenia funkcji "oszacowanie ilości danych opartych na działaniu aplikacji" można podać dane wejściowe aplikacji (żądania miesięcznie i wyświetlenia stron miesięcznie). Zbieraj dane telemetryczne po stronie klienta, a następnie Kalkulator wskaże medianę i 90% ilość danych zbieranych przez podobne aplikacje. Te aplikacje obejmują zakres konfiguracji Application Insights (np. niektóre z [próbkami](../../azure-monitor/app/sampling.md)domyślnymi, niektóre nie mają próbek itp.), dlatego nadal masz kontrolę, aby zmniejszyć ilość danych, które są znacznie mniejsze niż poziom średni przy użyciu próbkowania. Jest to jednak punkt początkowy, który umożliwia zapoznanie się z innymi, podobnym klientom.
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>Zapoznaj się z użyciem i szacunkowymi kosztami
 
-Application Insights ułatwia zrozumienie, jakie koszty są prawdopodobnie oparte na najnowszych wzorcach użycia. Aby rozpocząć, w Azure Portal, dla zasobu Application Insights, przejdź do strony **użycie i szacowane koszty** : 
+Application Insights ułatwia zrozumienie, jakie koszty są prawdopodobnie oparte na najnowszych wzorcach użycia. Aby rozpocząć, w Azure Portal, dla zasobu Application Insights, przejdź do strony **użycie i szacowane koszty** :
 
 ![Wybierz Cennik](./media/pricing/pricing-001.png)
 
 A. Przejrzyj ilość danych w danym miesiącu. Obejmuje to wszystkie dane, które zostały odebrane i zachowane (po każdym [próbkowaniu](../../azure-monitor/app/sampling.md)) z serwera i aplikacji klienckich oraz z testów dostępności.  
 B. Dla [wieloetapowych testów sieci Web](../../azure-monitor/app/availability-multistep.md)dokonywana jest oddzielna opłata. (Nie obejmuje to prostych testów dostępności, które są uwzględnione w opłacie ilości danych).  
 C. Wyświetlanie trendów ilości danych w ostatnim miesiącu.  
-D. Włącz [próbkowanie](../../azure-monitor/app/sampling.md)pozyskiwania danych.   
+D. Włącz [próbkowanie](../../azure-monitor/app/sampling.md)pozyskiwania danych.
 E. Ustaw dzienny limit ilości danych.  
 
 (Należy pamiętać, że wszystkie ceny wyświetlane na zrzutach ekranu w tym artykule są tylko na przykład. W przypadku bieżących cen w walucie i regionie zobacz [cennik Application Insights][pricing].)
 
-Aby dokładniej zbadać użycie Application Insights, Otwórz stronę **metryki** , Dodaj metrykę o nazwie "punkt danych", a następnie wybierz opcję *Zastosuj dzielenie* , aby podzielić dane przez "typ elementu telemetrii". 
+Aby dokładniej zbadać użycie Application Insights, Otwórz stronę **metryki** , Dodaj metrykę o nazwie "punkt danych", a następnie wybierz opcję *Zastosuj dzielenie* , aby podzielić dane przez "typ elementu telemetrii".
 
-Opłaty za Application Insights są dodawane do rachunku na korzystanie z platformy Azure. Szczegóły rachunku na korzystanie z platformy Azure można znaleźć w sekcji **rozliczenia** w Azure Portal lub w [portalu rozliczeń na platformie Azure](https://account.windowsazure.com/Subscriptions). 
+Opłaty za Application Insights są dodawane do rachunku na korzystanie z platformy Azure. Szczegóły rachunku na korzystanie z platformy Azure można znaleźć w sekcji **rozliczenia** w Azure Portal lub w [portalu rozliczeń na platformie Azure](https://account.windowsazure.com/Subscriptions).
 
 ![W menu po lewej stronie wybierz pozycję rozliczenia](./media/pricing/02-billing.png)
 
@@ -73,12 +73,16 @@ Aby dowiedzieć się więcej na temat woluminów danych, wybierz **metryki** dla
 
 ### <a name="queries-to-understand-data-volume-details"></a>Zapytania, aby zrozumieć szczegóły ilości danych
 
+Istnieją dwa podejścia do badania woluminów danych dla Application Insights. Pierwsze używa zagregowanych informacji w tabeli `systemEvents`, a druga używa właściwości `_BilledSize`, która jest dostępna dla każdego pozyskanego zdarzenia.
+
+#### <a name="using-aggregated-data-volume-information"></a>Korzystanie z zagregowanych informacji o woluminie danych
+
 Na przykład można użyć tabeli `systemEvents`, aby zobaczyć ilość danych pozyskaną w ciągu ostatnich 24 godzin przy użyciu zapytania:
 
 ```kusto
-systemEvents 
+systemEvents
 | where timestamp >= ago(24h)
-| where type == "Billing" 
+| where type == "Billing"
 | extend BillingTelemetryType = tostring(dimensions["BillingTelemetryType"])
 | extend BillingTelemetrySizeInBytes = todouble(measurements["BillingTelemetrySize"])
 | summarize sum(BillingTelemetrySizeInBytes)
@@ -87,9 +91,9 @@ systemEvents
 Lub aby wyświetlić wykres ilości danych (w bajtach) według typu danych z ostatnich 30 dni, można użyć:
 
 ```kusto
-systemEvents 
+systemEvents
 | where timestamp >= startofday(ago(30d))
-| where type == "Billing" 
+| where type == "Billing"
 | extend BillingTelemetryType = tostring(dimensions["BillingTelemetryType"])
 | extend BillingTelemetrySizeInBytes = todouble(measurements["BillingTelemetrySize"])
 | summarize sum(BillingTelemetrySizeInBytes) by BillingTelemetryType, bin(timestamp, 1d) | render barchart  
@@ -97,35 +101,38 @@ systemEvents
 
 Zwróć uwagę, że to zapytanie może być używane w [alercie dziennika platformy Azure](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log) w celu skonfigurowania alertów dotyczących woluminów danych.  
 
-Aby dowiedzieć się więcej o zmianach danych telemetrycznych, sprawdźmy liczbę zdarzeń według typu przy użyciu zapytania:
+Aby dowiedzieć się więcej o zmianach danych telemetrycznych, można pobrać liczbę zdarzeń według typu przy użyciu zapytania:
 
 ```kusto
-systemEvents 
+systemEvents
 | where timestamp >= startofday(ago(30d))
-| where type == "Billing" 
+| where type == "Billing"
 | extend BillingTelemetryType = tostring(dimensions["BillingTelemetryType"])
-| summarize count() by BillingTelemetryType, bin(timestamp, 1d) | render barchart  
-```
-
-Jeśli podobne zmiany są widoczne w licznikach, które są widoczne w woluminie w bajtach, można skupić się na typach danych zdarzeń, które pokazują zwiększoną liczbę.  Na przykład jeśli zaobserwowano, że liczba niezwiększonych zależności, jest to zapytanie, aby zrozumieć, które operacje są odpowiedzialne za zwiększenie:
-
-```kusto
-dependencies 
-| where timestamp >= startofday(ago(30d))
-| summarize count() by operation_Name, bin(timestamp, 1d)  
+| summarize count() by BillingTelemetryType, bin(timestamp, 1d)
 | render barchart  
 ```
 
+#### <a name="using-data-size-per-event-information"></a>Używanie rozmiaru danych na informacje o zdarzeniu
 
-## <a name="viewing-application-insights-usage-on-your-azure-bill"></a>Wyświetlanie Application Insights użycia na rachunku na platformie Azure 
+Aby dowiedzieć się więcej na temat źródła woluminów danych, można użyć właściwości `_BilledSize`, która jest obecna w każdym pozyskanym zdarzeniu.
+
+Na przykład aby zobaczyć, które operacje generują najwięcej ilości danych w ciągu ostatnich 30 dni, możemy zsumować `_BilledSize` dla wszystkich zdarzeń zależności:
+
+```kusto
+dependencies
+| where timestamp >= startofday(ago(30d))
+| summarize sum(_BilledSize) by operation_Name
+| render barchart  
+```
+
+## <a name="viewing-application-insights-usage-on-your-azure-bill"></a>Wyświetlanie Application Insights użycia na rachunku na platformie Azure
 
 Platforma Azure oferuje bardzo przydatne funkcje w [Azure Cost Management i centrum rozliczeń](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json) . Na przykład funkcja "analiza kosztów" umożliwia wyświetlanie wydatków dotyczących zasobów platformy Azure. Dodawanie filtru według typu zasobu (do Microsoft. Insights/Components for Application Insights) umożliwi śledzenie wydatków.
 
 Więcej informacji o użyciu można uzyskać, [pobierając użycie z Azure Portal](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal).
-W pobranym arkuszu kalkulacyjnym można zobaczyć użycie na zasób platformy Azure dziennie. W tym arkuszu kalkulacyjnym programu Excel można sprawdzić użycie zasobów Application Insights przez pierwsze filtrowanie w kolumnie "kategoria licznika", aby pokazać "Application Insights" i "Log Analytics", a następnie dodać filtr w kolumnie "identyfikator wystąpienia", która jest "zawiera Microsoft. Insights/Components".  Większość Application Insights użycie jest raportowane na miernikach z kategorią licznika Log Analytics, ponieważ istnieje pojedyncze zaplecze dzienników dla wszystkich składników Azure Monitor.  Tylko zasoby Application Insights ze starszych warstw cenowych i wieloetapowych testów sieci Web są zgłaszane z kategorią miernika Application Insights.  Użycie jest wyświetlane w kolumnie "zużyta ilość", a jednostka dla każdego wpisu jest pokazywana w kolumnie "jednostka miary".  Dostępne są więcej szczegółów, które ułatwiają [zrozumienie Microsoft Azure rachunku](https://docs.microsoft.com/azure/billing/billing-understand-your-bill). 
+W pobranym arkuszu kalkulacyjnym można zobaczyć użycie na zasób platformy Azure dziennie. W tym arkuszu kalkulacyjnym programu Excel można sprawdzić użycie zasobów Application Insights przez pierwsze filtrowanie w kolumnie "kategoria licznika", aby pokazać "Application Insights" i "Log Analytics", a następnie dodać filtr w kolumnie "identyfikator wystąpienia", która jest "zawiera Microsoft. Insights/Components".  Większość Application Insights użycie jest raportowane na miernikach z kategorią licznika Log Analytics, ponieważ istnieje pojedyncze zaplecze dzienników dla wszystkich składników Azure Monitor.  Tylko zasoby Application Insights ze starszych warstw cenowych i wieloetapowych testów sieci Web są zgłaszane z kategorią miernika Application Insights.  Użycie jest wyświetlane w kolumnie "zużyta ilość", a jednostka dla każdego wpisu jest pokazywana w kolumnie "jednostka miary".  Dostępne są więcej szczegółów, które ułatwiają [zrozumienie Microsoft Azure rachunku](https://docs.microsoft.com/azure/billing/billing-understand-your-bill).
 
-
-## <a name="managing-your-data-volume"></a>Zarządzanie ilością danych 
+## <a name="managing-your-data-volume"></a>Zarządzanie ilością danych
 
 Ilość wysyłanych danych może być zarządzana przy użyciu następujących technik:
 
@@ -139,7 +146,7 @@ Ilość wysyłanych danych może być zarządzana przy użyciu następujących t
  
 * **Dzienny limit**: podczas tworzenia zasobu Application Insights w Azure Portal dzienny limit jest ustawiany na 100 GB/dzień. Podczas tworzenia zasobu Application Insights w programie Visual Studio wartość domyślna to małe (tylko 32,3 MB/dzień). Domyślna wartość limitu dziennego jest ustawiana na ułatwienia testowania. Przed wdrożeniem aplikacji w środowisku produkcyjnym należy zamierzać, że użytkownik będzie zgłaszał dzienny limit. 
 
-    Maksymalny limit wynosi 1 000 GB/dzień, chyba że zostanie zażądana wyższa wartość maksymalna dla aplikacji o dużym ruchu. 
+    Maksymalny limit wynosi 1 000 GB/dzień, chyba że zostanie zażądana wyższa wartość maksymalna dla aplikacji o dużym ruchu.
     
     Ostrzegawcze wiadomości e-mail dotyczące dziennego limitu są wysyłane do konta, które są członkami tych ról dla Application Insights zasobu: "serviceadmin", "AccountAdmin", "Administrator", "Owner".
 
@@ -157,7 +164,7 @@ Zamiast używać dziennego limitu ilości, użyj [próbkowania](../../azure-moni
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>Zidentyfikować jakie dzienny limit danych, aby zdefiniować
 
-Przejrzyj Application Insights użycie i szacowane koszty, aby zrozumieć trend pozyskiwania danych i co to jest dzienny limit ilości do zdefiniowania. Należy rozważyć ostrożnie, ponieważ nie będzie można monitorować swoje zasoby, po osiągnięciu limitu. 
+Przejrzyj Application Insights użycie i szacowane koszty, aby zrozumieć trend pozyskiwania danych i co to jest dzienny limit ilości do zdefiniowania. Należy wziąć pod uwagę opiekę, ponieważ nie będzie można monitorować zasobów po osiągnięciu limitu.
 
 ### <a name="set-the-daily-cap"></a>Ustaw limit dzienny
 
@@ -165,7 +172,15 @@ Aby zmienić dzienny limit, w sekcji **Konfigurowanie** zasobu Application Insig
 
 ![Dostosuj dzienny limit ilości danych telemetrycznych](./media/pricing/pricing-003.png)
 
-Aby [zmienić dzienny limit za pośrednictwem Azure Resource Manager](../../azure-monitor/app/powershell.md), właściwość do zmiany jest `dailyQuota`.  Za pomocą Azure Resource Manager można również ustawić `dailyQuotaResetTime` i `warningThreshold`dziennego limitu. 
+Aby [zmienić dzienny limit za pośrednictwem Azure Resource Manager](../../azure-monitor/app/powershell.md), właściwość do zmiany jest `dailyQuota`.  Za pomocą Azure Resource Manager można również ustawić `dailyQuotaResetTime` i `warningThreshold`dziennego limitu.
+
+### <a name="create-alerts-for-the-daily-cap"></a>Tworzenie alertów dla dziennego limitu
+
+Application Insights dzienny powoduje utworzenie zdarzenia w usłudze Azure Activity KOG, gdy pozyskiwane woluminy danych trafią na poziom ostrzeżeń lub dziennie.  Alert można [utworzyć na podstawie tych zdarzeń dziennika aktywności](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log#create-with-the-azure-portal). Nazwy sygnałów dla tych zdarzeń to:
+
+* Osiągnięto próg ostrzeżenia dziennego limitu Application Insights składnika
+
+* Osiągnięto dzienny limit Application Insights składnika
 
 ## <a name="sampling"></a>Próbkowanie
 [Próbkowanie](../../azure-monitor/app/sampling.md) to metoda zmniejszania szybkości, z jaką dane telemetryczne są wysyłane do aplikacji, przy zachowaniu możliwości wyszukiwania pokrewnych zdarzeń podczas wyszukiwania diagnostycznego. Należy również zachować poprawne liczby zdarzeń.
@@ -191,21 +206,21 @@ Aby wykryć rzeczywistą częstotliwość próbkowania bez względu na to, gdzie
     | summarize 100/avg(itemCount) by bin(timestamp, 1h)
     | render areachart
 
-W każdym zachowanym rekordzie `itemCount` wskazuje liczbę oryginalnych rekordów, które reprezentuje. Jest równa 1 + liczba poprzednich odrzuconych rekordów. 
+W każdym zachowanym rekordzie `itemCount` wskazuje liczbę oryginalnych rekordów, które reprezentuje. Jest równa 1 + liczba poprzednich odrzuconych rekordów.
 
 ## <a name="change-the-data-retention-period"></a>Zmienić okres przechowywania danych
 
-Domyślne przechowywanie dla zasobów Application Insights to 90 dni. Dla każdego zasobu Application Insights można wybrać różne okresy przechowywania. Pełny zestaw dostępnych okresów przechowywania to 30, 60, 90, 120, 180, 270, 365, 550 lub 730. 
+Domyślne przechowywanie dla zasobów Application Insights to 90 dni. Dla każdego zasobu Application Insights można wybrać różne okresy przechowywania. Pełny zestaw dostępnych okresów przechowywania to 30, 60, 90, 120, 180, 270, 365, 550 lub 730.
 
 Aby zmienić przechowywanie, z zasobu Application Insights przejdź na stronę **użycie i szacowane koszty** i wybierz opcję **przechowywania danych** :
 
 ![Dostosuj dzienny limit ilości danych telemetrycznych](./media/pricing/pricing-005.png)
 
-Przechowywanie można także [ustawić programowo przy użyciu programu PowerShell](powershell.md#set-the-data-retention) przy użyciu parametru `retentionInDays`. Ponadto w przypadku ustawienia przechowywania danych na 30 dni można wyzwolić natychmiastowe przeczyszczanie starszych danych przy użyciu parametru `immediatePurgeDataOn30Days`, co może być przydatne w scenariuszach związanych ze zgodnością. Ta funkcja przeczyszczania jest dostępna tylko za pośrednictwem Azure Resource Manager i powinna być używana z najwyższą starannością. Dzienny czas resetowania ilości danych można skonfigurować przy użyciu Azure Resource Manager, aby ustawić parametr `dailyQuotaResetTime`. 
+Przechowywanie można także [ustawić programowo przy użyciu programu PowerShell](powershell.md#set-the-data-retention) przy użyciu parametru `retentionInDays`. Ponadto w przypadku ustawienia przechowywania danych na 30 dni można wyzwolić natychmiastowe przeczyszczanie starszych danych przy użyciu parametru `immediatePurgeDataOn30Days`, co może być przydatne w scenariuszach związanych ze zgodnością. Ta funkcja przeczyszczania jest dostępna tylko za pośrednictwem Azure Resource Manager i powinna być używana z najwyższą starannością. Dzienny czas resetowania ilości danych można skonfigurować przy użyciu Azure Resource Manager, aby ustawić parametr `dailyQuotaResetTime`.
 
 ## <a name="data-transfer-charges-using-application-insights"></a>Opłaty za transfer danych przy użyciu Application Insights
 
-Wysyłanie danych do Application Insights może spowodować naliczenie opłat za przepustowość danych. Zgodnie z opisem na [stronie cennika przepustowości platformy Azure](https://azure.microsoft.com/pricing/details/bandwidth/)transfer danych między usługami platformy Azure znajdującymi się w dwóch regionach jest naliczany jako wychodzący transfer danych. Transfer danych przychodzących jest bezpłatny. Ta opłata jest jednak bardzo mała (kilka%) w porównaniu z kosztami Application Insights pozyskiwania danych dziennika. W związku z tym, kontrolując koszty Log Analytics muszą skupić się na pozyskiwanym woluminie danych i mamy wskazówki ułatwiające zrozumienie tego w [tym miejscu](https://docs.microsoft.com/azure/azure-monitor/app/pricing#managing-your-data-volume).   
+Wysyłanie danych do Application Insights może spowodować naliczenie opłat za przepustowość danych. Zgodnie z opisem na [stronie cennika przepustowości platformy Azure](https://azure.microsoft.com/pricing/details/bandwidth/)transfer danych między usługami platformy Azure znajdującymi się w dwóch regionach jest naliczany jako wychodzący transfer danych. Transfer danych przychodzących jest bezpłatny. Ta opłata jest jednak bardzo mała (kilka%) w porównaniu z kosztami Application Insights pozyskiwania danych dziennika. W związku z tym, kontrolując koszty Log Analytics muszą skupić się na pozyskiwanym woluminie danych i mamy wskazówki ułatwiające zrozumienie tego w [tym miejscu](https://docs.microsoft.com/azure/azure-monitor/app/pricing#managing-your-data-volume).
 
 ## <a name="limits-summary"></a>Podsumowanie limitów
 
@@ -217,12 +232,12 @@ Aby wyłączyć dzienne wiadomości e-mail z limitem ilości, w sekcji **Konfigu
 
 ## <a name="legacy-enterprise-per-node-pricing-tier"></a>Warstwa cenowa starszej wersji przedsiębiorstwa (na węzeł)
 
-W przypadku wczesnych użytkowników platformy Azure Application Insights nadal istnieją dwie warstwy cenowe: Basic i Enterprise. Podstawowa warstwa cenowa jest taka sama jak opisana powyżej i jest warstwą domyślną. Obejmuje ona wszystkie funkcje warstwy korporacyjnej bez dodatkowych kosztów. Podstawowa warstwa jest rozliczana głównie na ilość danych, które zostały pozyskane. 
+W przypadku wczesnych użytkowników platformy Azure Application Insights nadal istnieją dwie warstwy cenowe: Basic i Enterprise. Podstawowa warstwa cenowa jest taka sama jak opisana powyżej i jest warstwą domyślną. Obejmuje ona wszystkie funkcje warstwy korporacyjnej bez dodatkowych kosztów. Podstawowa warstwa jest rozliczana głównie na ilość danych, które zostały pozyskane.
 
 > [!NOTE]
 > Te starsze warstwy cenowe zostały zmienione. Warstwa cenowa przedsiębiorstwa jest teraz wywoływana **dla każdego węzła** , a podstawowa warstwa cenowa jest teraz wywoływana **na GB**. Te nowe nazwy są używane poniżej i w Azure Portal.  
 
-Warstwa na węzeł (dawniej Enterprise) ma opłatą za węzeł, a każdy węzeł otrzymuje dzienny limit danych. W warstwie cenowej na węzeł opłaty są naliczane za dane pozyskane powyżej uwzględnionego przydziału. Jeśli używasz pakietu Operations Management Suite, wybierz warstwę na węzeł. 
+Warstwa na węzeł (dawniej Enterprise) ma opłatą za węzeł, a każdy węzeł otrzymuje dzienny limit danych. W warstwie cenowej na węzeł opłaty są naliczane za dane pozyskane powyżej uwzględnionego przydziału. Jeśli używasz pakietu Operations Management Suite, wybierz warstwę na węzeł.
 
 W przypadku bieżących cen w walucie i regionie zapoznaj się z tematem [Application Insights cenniku](https://azure.microsoft.com/pricing/details/application-insights/).
 
@@ -231,7 +246,7 @@ W przypadku bieżących cen w walucie i regionie zapoznaj się z tematem [Applic
 
 ### <a name="per-node-tier-and-operations-management-suite-subscription-entitlements"></a>Uprawnienia do subskrypcji dla warstwy węzła i pakietu Operations Management Suite
 
-Klienci, którzy kupują Pakiet Operations Management Suite E1 i E2, mogą uzyskać Application Insights na węzeł jako dodatkowy składnik bez dodatkowych kosztów zgodnie z [dotychczas ogłoszonymi](https://blogs.technet.microsoft.com/msoms/2017/05/19/azure-application-insights-enterprise-as-part-of-operations-management-suite-subscription/). Każda jednostka pakietu Operations Management Suite E1 i E2 obejmuje uprawnienie do jednego węzła Application Insights na warstwę węzła. Każdy węzeł Application Insights obejmuje nawet 200 MB danych pobieranych dziennie (oddzielenie od Log Analytics pozyskiwania danych), z 90m przechowywaniem danych bez dodatkowych kosztów. Warstwa została opisana bardziej szczegółowo w dalszej części artykułu. 
+Klienci, którzy kupują Pakiet Operations Management Suite E1 i E2, mogą uzyskać Application Insights na węzeł jako dodatkowy składnik bez dodatkowych kosztów zgodnie z [dotychczas ogłoszonymi](https://blogs.technet.microsoft.com/msoms/2017/05/19/azure-application-insights-enterprise-as-part-of-operations-management-suite-subscription/). Każda jednostka pakietu Operations Management Suite E1 i E2 obejmuje uprawnienie do jednego węzła Application Insights na warstwę węzła. Każdy węzeł Application Insights obejmuje nawet 200 MB danych pobieranych dziennie (oddzielenie od Log Analytics pozyskiwania danych), z 90m przechowywaniem danych bez dodatkowych kosztów. Warstwa została opisana bardziej szczegółowo w dalszej części artykułu.
 
 Ponieważ ta warstwa ma zastosowanie tylko do klientów z subskrypcją pakietu Operations Management Suite, klienci, którzy nie mają subskrypcji pakietu Operations Management Suite, nie widzą opcji wyboru tej warstwy.
 
@@ -249,7 +264,7 @@ Ponieważ ta warstwa ma zastosowanie tylko do klientów z subskrypcją pakietu O
 * Przydział ilości danych 200 MB dziennie jest podawany dla każdego wykrytego węzła (z dokładnością co godzinę). Nieużywane alokacje danych nie są przenoszone z jednego dnia do następnego.
   * W przypadku wybrania warstwy cenowej na węzeł Każda subskrypcja pobiera dzienny limit danych na podstawie liczby węzłów, które wysyłają dane telemetryczne do Application Insights zasobów w ramach tej subskrypcji. Dlatego jeśli masz pięć węzłów, które wysyłają dane codziennie, będziesz mieć przynależność do puli o pojemności 1 GB do wszystkich zasobów Application Insights w tej subskrypcji. Nie ma znaczenia, czy niektóre węzły wysyłają więcej danych niż inne węzły, ponieważ zawarte dane są współużytkowane przez wszystkie węzły. Jeśli w danym dniu Application Insights zasoby otrzymają więcej danych niż jest uwzględniona w dziennej alokacji danych dla tej subskrypcji, zostaną naliczone opłaty za użycie nadwyżkowe za GB danych. 
   * Dzienny limit danych jest obliczany jako liczba godzin w ciągu dnia (przy użyciu czasu UTC), przez który każdy węzeł wysyła dane telemetryczne podzielone przez 24 pomnożone przez 200 MB. Tak więc, jeśli masz cztery węzły, które wysyłają dane telemetryczne przez 15 godzin w ciągu dnia, to w przypadku tego dnia uwzględniane są (( &#215; 4 15)/24 &#215; ) 200 MB = 500 MB. W cenie 2,30 USD za GB za nadwyżkę danych opłata wynosi 1,15 USD, jeśli węzły wysyłają 1 GB danych dziennie.
-  * Dzienna dieta dla warstwy węzła nie jest współdzielona z aplikacjami, dla których wybrano warstwę za GB. Nieużywany dodatek nie jest przenoszony od bieżącego dnia. 
+  * Dzienna dieta dla warstwy węzła nie jest współdzielona z aplikacjami, dla których wybrano warstwę za GB. Nieużywany dodatek nie jest przenoszony od bieżącego dnia.
 
 ### <a name="examples-of-how-to-determine-distinct-node-count"></a>Przykłady sposobu określania odrębnej liczby węzłów
 
@@ -257,20 +272,19 @@ Ponieważ ta warstwa ma zastosowanie tylko do klientów z subskrypcją pakietu O
 |:---------------------------------------|:----------------:|
 | 1 aplikacja używająca 3 wystąpień Azure App Service i 1 serwera wirtualnego | 4 |
 | 3 aplikacje działające na 2 maszynach wirtualnych; zasoby Application Insights dla tych aplikacji znajdują się w tej samej subskrypcji i w warstwie na węzeł | 2 | 
-| 4 aplikacje, których zasoby usługi Application Insights znajdują się w tej samej subskrypcji; Każda aplikacja uruchamia 2 wystąpienia w godzinach od 16 godzin szczytu i 4 wystąpienia w ciągu 8 godzin szczytu | 13.33 | 
+| 4 aplikacje, których zasoby usługi Application Insights znajdują się w tej samej subskrypcji; Każda aplikacja uruchamia 2 wystąpienia w godzinach od 16 godzin szczytu i 4 wystąpienia w ciągu 8 godzin szczytu | 13.33 |
 | Usługi w chmurze z 1 rolą proces roboczy i 1 rolą sieci Web, każdy uruchomiony 2 wystąpienia | 4 | 
 | Klaster programu Azure Service Fabric w systemie 5 z systemem 50 mikrousług; Każda mikrousługa z uruchomioną 3 wystąpieniami | 5|
 
 * Precyzyjne zliczanie węzłów zależy od tego, który Application Insights używany przez aplikację. 
-  * W zestawie SDK w wersji 2,2 i nowszych zarówno [zestaw Application Insights Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) i [zestaw SDK sieci Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) są raportowane przez każdego hosta aplikacji jako węzeł. Przykłady to nazwa komputera dla serwerów fizycznych i hostów maszyn wirtualnych lub nazwa wystąpienia usług Cloud Services.  Jedyny wyjątek to aplikacja, która korzysta tylko z [platformy .NET Core](https://dotnet.github.io/) i zestawu SDK Application Insights Core. W takim przypadku tylko jeden węzeł jest raportowany dla wszystkich hostów, ponieważ nazwa hosta jest niedostępna. 
-  * W przypadku wcześniejszych wersji zestawu SDK zestaw SDK [sieci Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) działa jak nowsze wersje zestawu SDK, ale [podstawowy zestaw SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) raportuje tylko jeden węzeł, niezależnie od liczby hostów aplikacji. 
-  * Jeśli aplikacja używa zestawu SDK do ustawiania **roleInstance** na wartość niestandardową, domyślnie ta sama wartość jest używana do określenia liczby węzłów. 
-  * W przypadku korzystania z nowej wersji zestawu SDK z aplikacją uruchomioną z poziomu komputerów klienckich lub urządzeń przenośnych liczba węzłów może zwracać liczbę, która jest duża (z powodu dużej liczby komputerów klienckich lub urządzeń przenośnych). 
+  * W zestawie SDK w wersji 2,2 i nowszych zarówno [zestaw Application Insights Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) i [zestaw SDK sieci Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) są raportowane przez każdego hosta aplikacji jako węzeł. Przykłady to nazwa komputera dla serwerów fizycznych i hostów maszyn wirtualnych lub nazwa wystąpienia usług Cloud Services.  Jedyny wyjątek to aplikacja, która korzysta tylko z [platformy .NET Core](https://dotnet.github.io/) i zestawu SDK Application Insights Core. W takim przypadku tylko jeden węzeł jest raportowany dla wszystkich hostów, ponieważ nazwa hosta jest niedostępna.
+  * W przypadku wcześniejszych wersji zestawu SDK zestaw SDK [sieci Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) działa jak nowsze wersje zestawu SDK, ale [podstawowy zestaw SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) raportuje tylko jeden węzeł, niezależnie od liczby hostów aplikacji.
+  * Jeśli aplikacja używa zestawu SDK do ustawiania **roleInstance** na wartość niestandardową, domyślnie ta sama wartość jest używana do określenia liczby węzłów.
+  * W przypadku korzystania z nowej wersji zestawu SDK z aplikacją uruchomioną z poziomu komputerów klienckich lub urządzeń przenośnych liczba węzłów może zwracać liczbę, która jest duża (z powodu dużej liczby komputerów klienckich lub urządzeń przenośnych).
 
 ## <a name="automation"></a>Automatyzacja
 
 Można napisać skrypt do ustawienia warstwy cenowej za pomocą usługi Azure Resource Management. [Dowiedz się, jak to zrobić](powershell.md#price).
-
 
 ## <a name="next-steps"></a>Następne kroki
 

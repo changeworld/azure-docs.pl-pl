@@ -4,11 +4,11 @@ description: Opisuje funkcje, które mają być używane w szablonie Azure Resou
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.openlocfilehash: f8d19179461693331a6091ec7a3562f536b959e4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356357"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274205"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Funkcje ciągów dla Azure Resource Manager szablonów
 

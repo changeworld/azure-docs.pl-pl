@@ -12,12 +12,12 @@ ms.date: 03/03/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: d605bc50d40cd1e221dc2cf3a247662a1e166fec
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: a12715ba9aac77461d4968bd9b8f3de30af243c4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377396"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262752"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory manifest aplikacji
 
@@ -39,47 +39,209 @@ Aby skonfigurować manifest aplikacji:
 
 ## <a name="manifest-reference"></a>Odwołanie do manifestu
 
-> [!NOTE]
-> Jeśli nie widzisz kolumny **przykładowej wartości** po **opisie**, zmaksymalizuj okno przeglądarki i przewiń/przesuń do momentu wyświetlenia kolumny **przykładowej wartości** .
 
-| Klucz, typ wartości | Opis  | Przykładowa wartość |
-|---------|---------|---------|
-| `accessTokenAcceptedVersion`, null — wartość Int32 | Określa wersję tokenu dostępu oczekiwaną przez zasób. Ten parametr zmienia wersję i format JWT generowanej niezależnie od punktu końcowego lub klienta użytego do żądania tokenu dostępu.<br/><br/>Używany punkt końcowy, wersja 1.0 lub 2.0, jest wybierany przez klienta i ma wpływ tylko na wersję id_tokens. Zasoby muszą jawnie skonfigurować `accesstokenAcceptedVersion`, aby wskazać obsługiwany format tokenu dostępu.<br/><br/>Możliwe wartości `accesstokenAcceptedVersion` to 1, 2 lub null. Jeśli wartość jest równa null, ten parametr ma wartość domyślną 1, która odnosi się do punktu końcowego v 1.0. <br/><br/>Jeśli `signInAudience` jest `AzureADandPersonalMicrosoftAccount`, wartość musi być `2`  | `2` |
-| `addIns`, kolekcja | Definiuje niestandardowe zachowanie używane przez usługę do wywoływania aplikacji w określonych kontekstach. Na przykład aplikacje, które mogą renderować strumienie plików, mogą ustawiać właściwość addIns dla swojej funkcji "FileHandler". Ten parametr umożliwia usługom, takim jak pakiet Office 365, wywoływanie aplikacji w kontekście dokumentu, nad którym pracuje użytkownik. | <code>{<br>&nbsp;&nbsp;&nbsp;"id":"968A844F-7A47-430C-9163-07AE7C31D407"<br>&nbsp;&nbsp;&nbsp;"type": "FileHandler",<br>&nbsp;&nbsp;&nbsp;"properties": [<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"key": "version", "value": "2" }<br>&nbsp;&nbsp;&nbsp;]<br>}</code>|
-| `allowPublicClient`, wartość logiczna | Określa typ aplikacji rezerwowej. Usługa Azure AD domyślnie wnioskuje typ aplikacji z replyUrlsWithType. Istnieją pewne scenariusze, w których usługa Azure AD nie może określić typu aplikacji klienta. Na przykład, taki scenariusz to [ROPC](https://tools.ietf.org/html/rfc6749#section-4.3) , gdzie żądanie HTTP odbywa się bez przekierowania adresu URL. W takich przypadkach usługa Azure AD interpretuje typ aplikacji na podstawie wartości tej właściwości. Jeśli ta wartość jest równa true, typ aplikacji rezerwowej jest ustawiany jako klient publiczny, taki jak zainstalowana aplikacja uruchomiona na urządzeniu przenośnym. Wartość domyślna to false, co oznacza, że rezerwowy typ aplikacji to poufny klient, taki jak aplikacja sieci Web. | `false` |
-| `availableToOtherTenants`, wartość logiczna | ma wartość true, jeśli aplikacja jest udostępniana innym dzierżawcom; w przeciwnym razie false. <br><br> _Uwaga: Ta wartość jest dostępna tylko w środowisku **rejestracje aplikacji (starsza wersja)** . Zastąpione przez `signInAudience` w środowisku [rejestracje aplikacjiym](https://go.microsoft.com/fwlink/?linkid=2083908) ._ | |
-| `appId`, ciąg | Określa unikatowy identyfikator aplikacji przypisanej do aplikacji przez usługę Azure AD. | `"601790de-b632-4f57-9523-ee7cb6ceba95"` |
-| `appRoles`, kolekcja | Określa kolekcję ról, które może deklarować aplikacja. Role te można przypisać do użytkowników, grup lub podmiotów usługi. Aby uzyskać więcej przykładów i informacji, zobacz [Dodawanie ról aplikacji w aplikacji i odbieranie ich w tokenie](howto-add-app-roles-in-azure-ad-apps.md) | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;"allowedMemberTypes": [<br>&emsp;&nbsp;&nbsp;&nbsp;"User"<br>&nbsp;&nbsp;&nbsp;],<br>&nbsp;&nbsp;&nbsp;"description":"Read-only access to device information",<br>&nbsp;&nbsp;&nbsp;"displayName":"Read Only",<br>&nbsp;&nbsp;&nbsp;"id":guid,<br>&nbsp;&nbsp;&nbsp;"isEnabled":true,<br>&nbsp;&nbsp;&nbsp;"value":"ReadOnly"<br>&nbsp;&nbsp;}<br>]</code>  |
-| `displayName`, ciąg | Nazwa wyświetlana aplikacji. <br><br> _Uwaga: Ta wartość jest dostępna tylko w środowisku **rejestracje aplikacji (starsza wersja)** . Zastąpione przez `name` w środowisku [rejestracje aplikacjiym](https://go.microsoft.com/fwlink/?linkid=2083908) ._ | `"MyRegisteredApp"` |
-| `errorUrl`, ciąg | Nieobsługiwane. | |
-| `groupMembershipClaims`, ciąg | Służy do konfigurowania `groups`go żądania wystawionego w tokenie dostępu użytkownika lub OAuth 2,0, którego oczekuje aplikacja. Aby ustawić ten atrybut, należy użyć jednej z następujących prawidłowych wartości ciągu:<br/><br/>- `"None"`<br/>- `"SecurityGroup"` (dla grup zabezpieczeń i ról usługi Azure AD)<br/>- `"All"` (spowoduje to wyświetlenie wszystkich grup zabezpieczeń, grup dystrybucyjnych i ról katalogu usługi Azure AD, do których należy użytkownik zalogowany). | `"SecurityGroup"` |
-| `homepage`, ciąg | Adres URL strony głównej aplikacji. <br><br> _Uwaga: Ta wartość jest dostępna tylko w środowisku **rejestracje aplikacji (starsza wersja)** . Zastąpione przez `signInUrl` w środowisku [rejestracje aplikacjiym](https://go.microsoft.com/fwlink/?linkid=2083908) ._ | `"https://MyRegisteredApp"` |
-| `objectId`, ciąg | Unikatowy identyfikator aplikacji w katalogu. <br><br> _Uwaga: Ta wartość jest dostępna tylko w środowisku **rejestracje aplikacji (starsza wersja)** . Zastąpione przez `id` w środowisku [rejestracje aplikacjiym](https://go.microsoft.com/fwlink/?linkid=2083908) ._ | `"f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd"` |
-| `optionalClaims`, ciąg | Opcjonalne oświadczenia zwracane w tokenie przez usługę tokenu zabezpieczającego dla tej konkretnej aplikacji.<br>W tej chwili aplikacje obsługujące zarówno konta osobiste, jak i usługi Azure AD (zarejestrowane za pomocą portalu rejestracji aplikacji) nie mogą używać oświadczeń opcjonalnych. Jednak aplikacje zarejestrowane dla tylko usługi Azure AD przy użyciu punktu końcowego v 2.0 mogą uzyskać opcjonalne oświadczenia, które zażądały w manifeście. Aby uzyskać więcej informacji, zobacz [opcjonalne oświadczenia](active-directory-optional-claims.md). | `null` |
-| `id`, ciąg | Unikatowy identyfikator aplikacji w katalogu. Ten identyfikator nie jest identyfikatorem używanym do identyfikowania aplikacji w żadnej transakcji protokołu. Służy do odwoływania się do obiektu w zapytaniach w katalogu. | `"f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd"` |
-| `identifierUris`, tablica ciągów | Zdefiniowane przez użytkownika identyfikatory URI, które w unikatowy sposób identyfikują aplikację sieci Web w ramach dzierżawy usługi Azure AD lub w ramach zweryfikowanej domeny niestandardowej, jeśli aplikacja ma wiele dzierżawców. | <code>[<br>&nbsp;&nbsp;"https://MyRegisteredApp"<br>]</code> |
-| `informationalUrls`, ciąg | Określa linki do warunków użytkowania i zasad zachowania poufności informacji aplikacji. Warunki użytkowania usługi i zasady zachowania poufności informacji są udostępniane użytkownikom za pomocą funkcji wyrażania zgody użytkownika. Aby uzyskać więcej informacji, zobacz [jak: Dodawanie warunków użytkowania i zasad zachowania poufności informacji dla zarejestrowanych aplikacji usługi Azure AD](howto-add-terms-of-service-privacy-statement.md). | <code>{<br>&nbsp;&nbsp;&nbsp;"marketing":"https://MyRegisteredApp/marketing",<br>&nbsp;&nbsp;&nbsp;"privacy":"https://MyRegisteredApp/privacystatement",<br>&nbsp;&nbsp;&nbsp;"support":"https://MyRegisteredApp/support",<br>&nbsp;&nbsp;&nbsp;"termsOfService":"https://MyRegisteredApp/termsofservice"<br>}</code> |
-| `keyCredentials`, kolekcja | Zawiera odwołania do poświadczeń przypisanych do aplikacji, wspólnych haseł opartych na ciągach oraz certyfikatów X. 509. ). | <code>[<br>&nbsp;{<br>&nbsp;&These credentials are used when requesting access tokens (when the app is acting as a client rather that as resourcenbsp;&nbsp;"customKeyIdentifier":null,<br>&nbsp;&nbsp;&nbsp;"endDate":"2018-09-13T00:00:00Z",<br>&nbsp;&nbsp;&nbsp;"keyId":"\<guid>",<br>&nbsp;&nbsp;&nbsp;"startDate":"2017-09-12T00:00:00Z",<br>&nbsp;&nbsp;&nbsp;"type":"AsymmetricX509Cert",<br>&nbsp;&nbsp;&nbsp;"usage":"Verify",<br>&nbsp;&nbsp;&nbsp;"value":null<br>&nbsp;&nbsp;}<br>]</code> |
-| `knownClientApplications`, tablica ciągów | Używane do grupowania wyrazów, jeśli masz rozwiązanie, które zawiera dwie części: aplikację kliencką i niestandardową aplikację interfejsu API sieci Web. Jeśli wprowadzisz identyfikator appID aplikacji klienckiej do tej wartości, użytkownik będzie musiał tylko raz wyrazić zgodę na aplikację kliencką. Usługa Azure AD będzie wiedzieć, że wyrażanie zgody na klienta oznacza niejawne przesłanie do internetowego interfejsu API. Automatycznie udostępnia jednostki usługi zarówno dla klienta, jak i interfejsu API sieci Web. Zarówno klient, jak i aplikacja internetowego interfejsu API muszą być zarejestrowani w tej samej dzierżawie. | `["f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd"]` |
-| `logoUrl`, ciąg | Wartość tylko do odczytu wskazująca adres URL usługi CDN na logo, które zostało przekazane w portalu. | `"https://MyRegisteredAppLogo"` |
-| `logoutUrl`, ciąg | Adres URL do wylogowania z aplikacji. | `"https://MyRegisteredAppLogout"` |
-| `name`, ciąg | Nazwa wyświetlana aplikacji. | `"MyRegisteredApp"` |
-| `oauth2AllowImplicitFlow`, wartość logiczna | Określa, czy ta aplikacja sieci Web może żądać niejawnych tokenów dostępu protokołu OAuth 2.0. Wartością domyślną jest false. Ta flaga jest używana w przypadku aplikacji opartych na przeglądarce, takich jak aplikacje jednostronicowe języka JavaScript. Aby dowiedzieć się więcej, wprowadź `OAuth 2.0 implicit grant flow` w spisie treści i zapoznaj się z tematami dotyczącymi niejawnego przepływu. | `false` |
-| `oauth2AllowIdTokenImplicitFlow`, wartość logiczna | Określa, czy ta aplikacja sieci Web może żądać niejawnych tokenów identyfikatora przepływu OAuth 2.0. Wartością domyślną jest false. Ta flaga jest używana w przypadku aplikacji opartych na przeglądarce, takich jak aplikacje jednostronicowe języka JavaScript. | `false` |
-| `oauth2Permissions`, kolekcja | Określa kolekcję zakresów uprawnień OAuth 2,0, które aplikacja Web API (zasób) uwidacznia dla aplikacji klienckich. Te zakresy uprawnień mogą być przyznawane aplikacjom klienckim podczas wyrażania zgody. | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;"adminConsentDescription":"Allow the app to access resources on behalf of the signed-in user.",<br>&nbsp;&nbsp;&nbsp;"adminConsentDisplayName":"Access resource1",<br>&nbsp;&nbsp;&nbsp;"id":"\<guid>",<br>&nbsp;&nbsp;&nbsp;"isEnabled":true,<br>&nbsp;&nbsp;&nbsp;"type":"User",<br>&nbsp;&nbsp;&nbsp;"userConsentDescription":"Allow the app to access resource1 on your behalf.",<br>&nbsp;&nbsp;&nbsp;"userConsentDisplayName":"Access resources",<br>&nbsp;&nbsp;&nbsp;"value":"user_impersonation"<br>&nbsp;&nbsp;}<br>] </code>|
-| `oauth2RequiredPostResponse`, wartość logiczna | Określa, czy w ramach żądania tokenu OAuth 2,0 usługa Azure AD będzie zezwalać na żądania POST, w przeciwieństwie do żądań GET. Wartość domyślna to false, co oznacza, że dozwolone są tylko żądania GET. | `false` |
-| `parentalControlSettings`, ciąg | `countriesBlockedForMinors` określa kraje, w których aplikacja jest blokowana dla małoletnich.<br>`legalAgeGroupRule` Określa regułę grupy wiekowej wieku, która ma zastosowanie do użytkowników aplikacji. Można ustawić na `Allow`, `RequireConsentForPrivacyServices`, `RequireConsentForMinors`, `RequireConsentForKids`lub `BlockMinors`.  | <code>{<br>&nbsp;&nbsp;&nbsp;"countriesBlockedForMinors":[],<br>&nbsp;&nbsp;&nbsp;"legalAgeGroupRule":"Allow"<br>} </code> |
-| `passwordCredentials`, kolekcja | Zobacz opis właściwości `keyCredentials`. | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;"customKeyIdentifier":null,<br>&nbsp;&nbsp;&nbsp;"endDate":"2018-10-19T17:59:59.6521653Z",<br>&nbsp;&nbsp;&nbsp;"keyId":"\<guid>",<br>&nbsp;&nbsp;&nbsp;"startDate":"2016-10-19T17:59:59.6521653Z",<br>&nbsp;&nbsp;&nbsp;"value":null<br>&nbsp;&nbsp;&nbsp;}<br>] </code> |
-| `preAuthorizedApplications`, kolekcja | Wyświetla listę aplikacji i żądanych uprawnień dla niejawnej zgody. Wymaga, aby administrator wyraził zgodę na aplikację. preAuthorizedApplications nie wymaga, aby użytkownik wyrażał zgodę na żądane uprawnienia. Uprawnienia wymienione w preAuthorizedApplications nie wymagają zgody użytkownika. Jednak wszelkie dodatkowe żądane uprawnienia, które nie są wymienione w preAuthorizedApplications, wymagają zgody użytkownika. | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;"appId": "abcdefg2-000a-1111-a0e5-812ed8dd72e8",<br>&nbsp;&nbsp;&nbsp;&nbsp;"permissionIds": [<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"8748f7db-21fe-4c83-8ab5-53033933c8f1"<br>&nbsp;&nbsp;&nbsp;&nbsp;]<br>&nbsp;&nbsp;}<br>]</code> |
-| `publicClient`, wartość logiczna | Określa, czy ta aplikacja jest klientem publicznym (na przykład zainstalowaną aplikacją uruchomioną na urządzeniu przenośnym). <br><br> _Uwaga: Ta właściwość jest dostępna tylko w środowisku **rejestracje aplikacji (starsza wersja)** . Zastąpione przez `allowPublicClient` w środowisku [rejestracje aplikacjiym](https://go.microsoft.com/fwlink/?linkid=2083908) ._ | |
-| `publisherDomain`, ciąg | Zweryfikowana domena wydawcy dla aplikacji. Tylko do odczytu. | https://www.contoso.com |
-| `replyUrls`, tablica ciągów | Ta właściwość wielowartościowa zawiera listę zarejestrowanych wartości redirect_uri, które usługa Azure AD będzie akceptować jako miejsca docelowe podczas zwracania tokenów. <br><br> _Uwaga: Ta właściwość jest dostępna tylko w środowisku **rejestracje aplikacji (starsza wersja)** . Zastąpione przez `replyUrlsWithType` w środowisku [rejestracje aplikacjiym](https://go.microsoft.com/fwlink/?linkid=2083908) ._ | |
-| `replyUrlsWithType`, kolekcja | Ta właściwość wielowartościowa zawiera listę zarejestrowanych wartości redirect_uri, które usługa Azure AD będzie akceptować jako miejsca docelowe podczas zwracania tokenów. Każda wartość identyfikatora URI powinna zawierać skojarzoną wartość typu aplikacji. Obsługiwane wartości typu: <ul><li>`Web`</li><li>`InstalledClient`</li></ul><br> Dowiedz się więcej o [ograniczeniach replyUrl i ograniczeniach](https://docs.microsoft.com/azure/active-directory/develop/reply-url). | <code>"replyUrlsWithType":&nbsp;[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"url":&nbsp;"https://localhost:4400/services/office365/redirectTarget.html",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"type":&nbsp;"InstalledClient"&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;}<br>]</code> |
-| `requiredResourceAccess`, kolekcja | Dzięki dynamicznej zgody `requiredResourceAccess` stacje, które są używane do wyrażania zgody administratora, oraz sposobu wyrażania zgody użytkownika na użytkowników, którzy korzystają ze statycznej zgody. Jednak ten parametr nie ma wpływu na środowisko zgody użytkownika na potrzeby ogólnego przypadku.<br>`resourceAppId` jest unikatowym identyfikatorem zasobu, do którego aplikacja wymaga dostępu. Ta wartość powinna być taka sama jak identyfikator appId zadeklarowany w docelowej aplikacji zasobów.<br>`resourceAccess` jest tablicą zawierającą zakresy uprawnień OAuth 2.0 i role aplikacji wymagane przez aplikację od określonego zasobu. Zawiera `id` i `type` wartości określonych zasobów. | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;"resourceAppId":"00000002-0000-0000-c000-000000000000",<br>&nbsp;&nbsp;&nbsp;&nbsp;"resourceAccess":[<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id":"311a71cc-e848-46a1-bdf8-97ff7156d8e6",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"type":"Scope"<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;]<br>&nbsp;&nbsp;}<br>] </code> |
-| `samlMetadataUrl`, ciąg | Adres URL metadanych SAML dla aplikacji. | `https://MyRegisteredAppSAMLMetadata` |
-| `signInUrl`, ciąg | Określa adres URL strony głównej aplikacji. | `https://MyRegisteredApp` |
-| `signInAudience`, ciąg | Określa, jakie konta Microsoft są obsługiwane przez bieżącą aplikację. Obsługiwane są następujące wartości:<ul><li>**AzureADMyOrg** — użytkownicy z kontem służbowym firmy Microsoft w dzierżawie usługi Azure AD w organizacji (na przykład z jedną dzierżawą)</li><li>**AzureADMultipleOrgs** — użytkownicy z kontem służbowym firmy Microsoft w dzierżawie usługi Azure AD w organizacji (na przykład z wieloma dzierżawcami)</li> <li>**AzureADandPersonalMicrosoftAccount** — użytkownicy z konto Microsoft osobistym lub kontem służbowym w ramach dzierżawy usługi Azure AD w organizacji</li></ul> | `AzureADandPersonalMicrosoftAccount` |
-| `tags`, tablica ciągów | Niestandardowe ciągi, których można użyć do kategoryzowania i identyfikowania aplikacji. | <code>[<br>&nbsp;&nbsp;"ProductionApp"<br>]</code> |
+### <a name="key-value-type-accesstokenacceptedversion-nullable-int32"></a>Klucz, typ wartości: `accessTokenAcceptedVersion`, wartość null Int32 
+Określa wersję tokenu dostępu oczekiwaną przez zasób. Ten parametr zmienia wersję i format JWT generowanej niezależnie od punktu końcowego lub klienta użytego do żądania tokenu dostępu.
+
+Używany punkt końcowy, wersja 1.0 lub 2.0, jest wybierany przez klienta i ma wpływ tylko na wersję id_tokens. Zasoby muszą jawnie skonfigurować `accesstokenAcceptedVersion`, aby wskazać obsługiwany format tokenu dostępu.
+
+Możliwe wartości `accesstokenAcceptedVersion` to 1, 2 lub null. Jeśli wartość jest równa null, ten parametr ma wartość domyślną 1, która odnosi się do punktu końcowego v 1.0. 
+
+Jeśli `signInAudience` jest `AzureADandPersonalMicrosoftAccount`, wartość musi być `2`  
+
+Przykładowa wartość: `2` 
+
+### <a name="key-value-type-addins-collection"></a>Klucz, typ wartości: `addIns`, kolekcja 
+Definiuje niestandardowe zachowanie używane przez usługę do wywoływania aplikacji w określonych kontekstach. Na przykład aplikacje, które mogą renderować strumienie plików, mogą ustawiać właściwość addIns dla swojej funkcji "FileHandler". Ten parametr umożliwia usługom, takim jak pakiet Office 365, wywoływanie aplikacji w kontekście dokumentu, nad którym pracuje użytkownik. 
+
+Przykładowa wartość: 
+<code>{<br>&nbsp;&nbsp;&nbsp;"id":"968A844F-7A47-430C-9163-07AE7C31D407"<br>&nbsp;&nbsp;&nbsp;"type": "FileHandler",<br>&nbsp;&nbsp;&nbsp;"properties": [<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"key": "version", "value": "2" }<br>&nbsp;&nbsp;&nbsp;]<br>}</code>
+
+### <a name="key-value-type-allowpublicclient-boolean"></a>Klucz, typ wartości: `allowPublicClient`, wartość logiczna 
+Określa typ aplikacji rezerwowej. Usługa Azure AD domyślnie wnioskuje typ aplikacji z replyUrlsWithType. Istnieją pewne scenariusze, w których usługa Azure AD nie może określić typu aplikacji klienta. Na przykład, taki scenariusz to [ROPC](https://tools.ietf.org/html/rfc6749#section-4.3) , gdzie żądanie HTTP odbywa się bez przekierowania adresu URL. W takich przypadkach usługa Azure AD interpretuje typ aplikacji na podstawie wartości tej właściwości. Jeśli ta wartość jest równa true, typ aplikacji rezerwowej jest ustawiany jako klient publiczny, taki jak zainstalowana aplikacja uruchomiona na urządzeniu przenośnym. Wartość domyślna to false, co oznacza, że rezerwowy typ aplikacji to poufny klient, taki jak aplikacja sieci Web. 
+
+Przykładowa wartość: `false` 
+
+### <a name="key-value-type-availabletoothertenants-boolean"></a>Klucz, typ wartości: `availableToOtherTenants`, wartość logiczna 
+ma wartość true, jeśli aplikacja jest udostępniana innym dzierżawcom; w przeciwnym razie false. <br><br> Uwaga: Ta wartość jest dostępna tylko w środowisku **rejestracje aplikacji (starsza wersja)** . Zastąpione przez `signInAudience` w środowisku [rejestracje aplikacjiym](https://go.microsoft.com/fwlink/?linkid=2083908) . 
+
+### <a name="key-value-type-appid-string"></a>Klucz, typ wartości: `appId`, ciąg 
+Określa unikatowy identyfikator aplikacji przypisanej do aplikacji przez usługę Azure AD. 
+
+Przykładowa wartość: `"601790de-b632-4f57-9523-ee7cb6ceba95"` 
+
+### <a name="key-value-type-approles-collection"></a>Klucz, typ wartości: `appRoles`, kolekcja 
+Określa kolekcję ról, które może deklarować aplikacja. Role te można przypisać do użytkowników, grup lub podmiotów usługi. Aby uzyskać więcej przykładów i informacji, zobacz [Dodawanie ról aplikacji w aplikacji i odbieranie ich w tokenie](howto-add-app-roles-in-azure-ad-apps.md) 
+
+Przykładowa wartość: 
+<code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;"allowedMemberTypes": [<br>&emsp;&nbsp;&nbsp;&nbsp;"User"<br>&nbsp;&nbsp;&nbsp;],<br>&nbsp;&nbsp;&nbsp;"description":"Read-only access to device information",<br>&nbsp;&nbsp;&nbsp;"displayName":"Read Only",<br>&nbsp;&nbsp;&nbsp;"id":guid,<br>&nbsp;&nbsp;&nbsp;"isEnabled":true,<br>&nbsp;&nbsp;&nbsp;"value":"ReadOnly"<br>&nbsp;&nbsp;}<br>]</code>  
+
+### <a name="key-value-type-displayname-string"></a>Klucz, typ wartości: `displayName`, ciąg 
+Nazwa wyświetlana aplikacji. <br><br> Uwaga: Ta wartość jest dostępna tylko w środowisku **rejestracje aplikacji (starsza wersja)** . Zastąpione przez `name` w środowisku [rejestracje aplikacjiym](https://go.microsoft.com/fwlink/?linkid=2083908) . 
+
+Przykładowa wartość: `"MyRegisteredApp"` 
+
+### <a name="key-value-type-errorurl-string"></a>Klucz, typ wartości: `errorUrl`, ciąg 
+Nieobsługiwane. 
+
+### <a name="key-value-type-groupmembershipclaims-string"></a>Klucz, typ wartości: `groupMembershipClaims`, ciąg 
+Służy do konfigurowania `groups`go żądania wystawionego w tokenie dostępu użytkownika lub OAuth 2,0, którego oczekuje aplikacja. Aby ustawić ten atrybut, należy użyć jednej z następujących prawidłowych wartości ciągu:
+- `"None"`
+- `"SecurityGroup"` (dla grup zabezpieczeń i ról usługi Azure AD)
+- `"All"` (spowoduje to wyświetlenie wszystkich grup zabezpieczeń, grup dystrybucyjnych i ról katalogu usługi Azure AD, do których należy użytkownik zalogowany). 
+
+Przykładowa wartość: `"SecurityGroup"` 
+
+### <a name="key-value-type-homepage-string"></a>Klucz, typ wartości: `homepage`, ciąg 
+Adres URL strony głównej aplikacji. <br><br> Uwaga: Ta wartość jest dostępna tylko w środowisku **rejestracje aplikacji (starsza wersja)** . Zastąpione przez `signInUrl` w środowisku [rejestracje aplikacjiym](https://go.microsoft.com/fwlink/?linkid=2083908) . 
+
+Przykładowa wartość: `"https://MyRegisteredApp"` 
+
+### <a name="key-value-type-objectid-string"></a>Klucz, typ wartości: `objectId`, ciąg 
+Unikatowy identyfikator aplikacji w katalogu. <br><br> Ta wartość jest dostępna tylko w środowisku **rejestracje aplikacji (starsza wersja)** . Zastąpione przez `id` w środowisku [rejestracje aplikacjiym](https://go.microsoft.com/fwlink/?linkid=2083908) . 
+
+Przykładowa wartość: `"f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd"` 
+
+### <a name="key-value-type-optionalclaims-string"></a>Klucz, typ wartości: `optionalClaims`, ciąg 
+Opcjonalne oświadczenia zwracane w tokenie przez usługę tokenu zabezpieczającego dla tej konkretnej aplikacji.<br>W tej chwili aplikacje obsługujące zarówno konta osobiste, jak i usługi Azure AD (zarejestrowane za pomocą portalu rejestracji aplikacji) nie mogą używać oświadczeń opcjonalnych. Jednak aplikacje zarejestrowane dla tylko usługi Azure AD przy użyciu punktu końcowego v 2.0 mogą uzyskać opcjonalne oświadczenia, które zażądały w manifeście. Aby uzyskać więcej informacji, zobacz [opcjonalne oświadczenia](active-directory-optional-claims.md). 
+
+Przykładowa wartość:  
+`null` 
+
+### <a name="key-value-type-id-string"></a>Klucz, typ wartości: `id`, ciąg 
+Unikatowy identyfikator aplikacji w katalogu. Ten identyfikator nie jest identyfikatorem używanym do identyfikowania aplikacji w żadnej transakcji protokołu. Służy do odwoływania się do obiektu w zapytaniach w katalogu. 
+
+Przykładowa wartość: `"f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd"` 
+
+### <a name="key-value-type-identifieruris-string-array"></a>Klucz, typ wartości: `identifierUris`, tablica ciągów 
+Zdefiniowane przez użytkownika identyfikatory URI, które w unikatowy sposób identyfikują aplikację sieci Web w ramach dzierżawy usługi Azure AD lub w ramach zweryfikowanej domeny niestandardowej, jeśli aplikacja ma wiele dzierżawców. 
+
+Przykładowa wartość: 
+<code>[<br>&nbsp;&nbsp;"https://MyRegisteredApp"<br>]</code> 
+
+### <a name="key-value-type-informationalurls-string"></a>Klucz, typ wartości: `informationalUrls`, ciąg 
+Określa linki do warunków użytkowania i zasad zachowania poufności informacji aplikacji. Warunki użytkowania usługi i zasady zachowania poufności informacji są udostępniane użytkownikom za pomocą funkcji wyrażania zgody użytkownika. Aby uzyskać więcej informacji, zobacz [jak: Dodawanie warunków użytkowania i zasad zachowania poufności informacji dla zarejestrowanych aplikacji usługi Azure AD](howto-add-terms-of-service-privacy-statement.md). 
+
+Przykładowa wartość: 
+<code>{<br>&nbsp;&nbsp;&nbsp;"marketing":"https://MyRegisteredApp/marketing",<br>&nbsp;&nbsp;&nbsp;"privacy":"https://MyRegisteredApp/privacystatement",<br>&nbsp;&nbsp;&nbsp;"support":"https://MyRegisteredApp/support",<br>&nbsp;&nbsp;&nbsp;"termsOfService":"https://MyRegisteredApp/termsofservice"<br>}</code> 
+
+### <a name="key-value-type-keycredentials-collection"></a>Klucz, typ wartości: `keyCredentials`, kolekcja 
+Zawiera odwołania do poświadczeń przypisanych do aplikacji, wspólnych haseł opartych na ciągach oraz certyfikatów X. 509. ). 
+
+Przykładowa wartość: 
+<code>[<br>&nbsp;{<br>&nbsp;&These credentials are used when requesting access tokens (when the app is acting as a client rather that as resourcenbsp;&nbsp;"customKeyIdentifier":null,<br>&nbsp;&nbsp;&nbsp;"endDate":"2018-09-13T00:00:00Z",<br>&nbsp;&nbsp;&nbsp;"keyId":"\<guid>",<br>&nbsp;&nbsp;&nbsp;"startDate":"2017-09-12T00:00:00Z",<br>&nbsp;&nbsp;&nbsp;"type":"AsymmetricX509Cert",<br>&nbsp;&nbsp;&nbsp;"usage":"Verify",<br>&nbsp;&nbsp;&nbsp;"value":null<br>&nbsp;&nbsp;}<br>]</code> 
+
+### <a name="key-value-type-knownclientapplications-string-array"></a>Klucz, typ wartości: `knownClientApplications`, tablica ciągów 
+Używane do grupowania wyrazów, jeśli masz rozwiązanie, które zawiera dwie części: aplikację kliencką i niestandardową aplikację interfejsu API sieci Web. Jeśli wprowadzisz identyfikator appID aplikacji klienckiej do tej wartości, użytkownik będzie musiał tylko raz wyrazić zgodę na aplikację kliencką. Usługa Azure AD będzie wiedzieć, że wyrażanie zgody na klienta oznacza niejawne przesłanie do internetowego interfejsu API. Automatycznie udostępnia jednostki usługi zarówno dla klienta, jak i interfejsu API sieci Web. Zarówno klient, jak i aplikacja internetowego interfejsu API muszą być zarejestrowani w tej samej dzierżawie. 
+
+Przykładowa wartość: `["f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd"]` 
+
+### <a name="key-value-type-logourl-string"></a>Klucz, typ wartości: `logoUrl`, ciąg 
+Wartość tylko do odczytu wskazująca adres URL usługi CDN na logo, które zostało przekazane w portalu. 
+
+Przykładowa wartość: `"https://MyRegisteredAppLogo"` 
+
+### <a name="key-value-type-logouturl-string"></a>Klucz, typ wartości: `logoutUrl`, ciąg 
+Adres URL do wylogowania z aplikacji. 
+
+Przykładowa wartość:  
+`"https://MyRegisteredAppLogout"` 
+
+### <a name="key-value-type-name-string"></a>Klucz, typ wartości: `name`, ciąg 
+Nazwa wyświetlana aplikacji. 
+
+Przykładowa wartość: `"MyRegisteredApp"` 
+
+### <a name="key-value-type-oauth2allowimplicitflow-boolean"></a>Klucz, typ wartości: `oauth2AllowImplicitFlow`, wartość logiczna 
+Określa, czy ta aplikacja sieci Web może żądać niejawnych tokenów dostępu protokołu OAuth 2.0. Wartością domyślną jest false. Ta flaga jest używana w przypadku aplikacji opartych na przeglądarce, takich jak aplikacje jednostronicowe języka JavaScript. Aby dowiedzieć się więcej, wprowadź `OAuth 2.0 implicit grant flow` w spisie treści i zapoznaj się z tematami dotyczącymi niejawnego przepływu. 
+
+Przykładowa wartość: `false` 
+
+### <a name="key-value-type-oauth2allowidtokenimplicitflow-boolean"></a>Klucz, typ wartości: `oauth2AllowIdTokenImplicitFlow`, wartość logiczna 
+Określa, czy ta aplikacja sieci Web może żądać niejawnych tokenów identyfikatora przepływu OAuth 2.0. Wartością domyślną jest false. Ta flaga jest używana w przypadku aplikacji opartych na przeglądarce, takich jak aplikacje jednostronicowe języka JavaScript. 
+
+Przykładowa wartość: `false` 
+
+### <a name="key-value-type-oauth2permissions-collection"></a>Klucz, typ wartości: `oauth2Permissions`, kolekcja 
+Określa kolekcję zakresów uprawnień OAuth 2,0, które aplikacja Web API (zasób) uwidacznia dla aplikacji klienckich. Te zakresy uprawnień mogą być przyznawane aplikacjom klienckim podczas wyrażania zgody. 
+
+Przykładowa wartość: 
+<code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;"adminConsentDescription":"Allow the app to access resources on behalf of the signed-in user.",<br>&nbsp;&nbsp;&nbsp;"adminConsentDisplayName":"Access resource1",<br>&nbsp;&nbsp;&nbsp;"id":"\<guid>",<br>&nbsp;&nbsp;&nbsp;"isEnabled":true,<br>&nbsp;&nbsp;&nbsp;"type":"User",<br>&nbsp;&nbsp;&nbsp;"userConsentDescription":"Allow the app to access resource1 on your behalf.",<br>&nbsp;&nbsp;&nbsp;"userConsentDisplayName":"Access resources",<br>&nbsp;&nbsp;&nbsp;"value":"user_impersonation"<br>&nbsp;&nbsp;}<br>] </code>
+
+### <a name="key-value-type-oauth2requiredpostresponse-boolean"></a>Klucz, typ wartości: `oauth2RequiredPostResponse`, wartość logiczna 
+Określa, czy w ramach żądania tokenu OAuth 2,0 usługa Azure AD będzie zezwalać na żądania POST, w przeciwieństwie do żądań GET. Wartość domyślna to false, co oznacza, że dozwolone są tylko żądania GET. 
+
+Przykładowa wartość: `false` 
+
+### <a name="key-value-type-parentalcontrolsettings-string"></a>Klucz, typ wartości: `parentalControlSettings`, ciąg 
+
+`countriesBlockedForMinors` określa kraje, w których aplikacja jest blokowana dla małoletnich.<br>`legalAgeGroupRule` Określa regułę grupy wiekowej wieku, która ma zastosowanie do użytkowników aplikacji. Można ustawić na `Allow`, `RequireConsentForPrivacyServices`, `RequireConsentForMinors`, `RequireConsentForKids`lub `BlockMinors`.  
+
+Przykładowa wartość: 
+<code>{<br>&nbsp;&nbsp;&nbsp;"countriesBlockedForMinors":[],<br>&nbsp;&nbsp;&nbsp;"legalAgeGroupRule":"Allow"<br>} </code> 
+
+### <a name="key-value-type-passwordcredentials-collection"></a>Klucz, typ wartości: `passwordCredentials`, kolekcja 
+Zobacz opis właściwości `keyCredentials`. 
+
+Przykładowa wartość: 
+<code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;"customKeyIdentifier":null,<br>&nbsp;&nbsp;&nbsp;"endDate":"2018-10-19T17:59:59.6521653Z",<br>&nbsp;&nbsp;&nbsp;"keyId":"\<guid>",<br>&nbsp;&nbsp;&nbsp;"startDate":"2016-10-19T17:59:59.6521653Z",<br>&nbsp;&nbsp;&nbsp;"value":null<br>&nbsp;&nbsp;&nbsp;}<br>] </code> 
+
+### <a name="key-value-type-preauthorizedapplications-collection"></a>Klucz, typ wartości: `preAuthorizedApplications`, kolekcja 
+Wyświetla listę aplikacji i żądanych uprawnień dla niejawnej zgody. Wymaga, aby administrator wyraził zgodę na aplikację. preAuthorizedApplications nie wymaga, aby użytkownik wyrażał zgodę na żądane uprawnienia. Uprawnienia wymienione w preAuthorizedApplications nie wymagają zgody użytkownika. Jednak wszelkie dodatkowe żądane uprawnienia, które nie są wymienione w preAuthorizedApplications, wymagają zgody użytkownika. 
+
+Przykładowa wartość: 
+<code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;"appId": "abcdefg2-000a-1111-a0e5-812ed8dd72e8",<br>&nbsp;&nbsp;&nbsp;&nbsp;"permissionIds": [<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"8748f7db-21fe-4c83-8ab5-53033933c8f1"<br>&nbsp;&nbsp;&nbsp;&nbsp;]<br>&nbsp;&nbsp;}<br>]</code> 
+
+### <a name="key-value-type-publicclient-boolean"></a>Klucz, typ wartości: `publicClient`, wartość logiczna 
+Określa, czy ta aplikacja jest klientem publicznym (na przykład zainstalowaną aplikacją uruchomioną na urządzeniu przenośnym). 
+
+Ta właściwość jest dostępna tylko w środowisku **rejestracje aplikacji (starsza wersja)** . Zastąpione przez `allowPublicClient` w środowisku [rejestracje aplikacjiym](https://go.microsoft.com/fwlink/?linkid=2083908) . 
+
+### <a name="key-value-type-publisherdomain-string"></a>Klucz, typ wartości: `publisherDomain`, ciąg 
+Zweryfikowana domena wydawcy dla aplikacji. Tylko do odczytu. 
+
+Przykładowa wartość: `https://www.contoso.com`
+
+### <a name="key-value-type-replyurls-string-array"></a>Klucz, typ wartości: `replyUrls`, tablica ciągów 
+Ta właściwość wielowartościowa zawiera listę zarejestrowanych wartości redirect_uri, które usługa Azure AD będzie akceptować jako miejsca docelowe podczas zwracania tokenów. <br><br> Ta właściwość jest dostępna tylko w środowisku **rejestracje aplikacji (starsza wersja)** . Zastąpione przez `replyUrlsWithType` w środowisku [rejestracje aplikacjiym](https://go.microsoft.com/fwlink/?linkid=2083908) . 
+
+### <a name="key-value-type-replyurlswithtype-collection"></a>Klucz, typ wartości: `replyUrlsWithType`, kolekcja 
+Ta właściwość wielowartościowa zawiera listę zarejestrowanych wartości redirect_uri, które usługa Azure AD będzie akceptować jako miejsca docelowe podczas zwracania tokenów. Każda wartość identyfikatora URI powinna zawierać skojarzoną wartość typu aplikacji. Obsługiwane wartości typu: <ul><li>`Web`</li><li>`InstalledClient`</li></ul><br> Dowiedz się więcej o [ograniczeniach replyUrl i ograniczeniach](https://docs.microsoft.com/azure/active-directory/develop/reply-url). 
+
+Przykładowa wartość: 
+<code>"replyUrlsWithType":&nbsp;[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"url":&nbsp;"https://localhost:4400/services/office365/redirectTarget.html",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"type":&nbsp;"InstalledClient"&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;}<br>]</code> 
+
+### <a name="key-value-type-requiredresourceaccess-collection"></a>Klucz, typ wartości: `requiredResourceAccess`, kolekcja 
+Dzięki dynamicznej zgody `requiredResourceAccess` stacje, które są używane do wyrażania zgody administratora, oraz sposobu wyrażania zgody użytkownika na użytkowników, którzy korzystają ze statycznej zgody. Jednak ten parametr nie ma wpływu na środowisko zgody użytkownika na potrzeby ogólnego przypadku.<br>`resourceAppId` jest unikatowym identyfikatorem zasobu, do którego aplikacja wymaga dostępu. Ta wartość powinna być taka sama jak identyfikator appId zadeklarowany w docelowej aplikacji zasobów.<br>`resourceAccess` jest tablicą zawierającą zakresy uprawnień OAuth 2.0 i role aplikacji wymagane przez aplikację od określonego zasobu. Zawiera `id` i `type` wartości określonych zasobów. 
+
+Przykładowa wartość: 
+<code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;"resourceAppId":"00000002-0000-0000-c000-000000000000",<br>&nbsp;&nbsp;&nbsp;&nbsp;"resourceAccess":[<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id":"311a71cc-e848-46a1-bdf8-97ff7156d8e6",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"type":"Scope"<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;]<br>&nbsp;&nbsp;}<br>] </code> 
+
+### <a name="key-value-type-samlmetadataurl-string"></a>Klucz, typ wartości: `samlMetadataUrl`, ciąg 
+Adres URL metadanych SAML dla aplikacji. 
+
+Przykładowa wartość: `https://MyRegisteredAppSAMLMetadata` 
+
+### <a name="key-value-type-signinurl-string"></a>Klucz, typ wartości: `signInUrl`, ciąg 
+
+Określa adres URL strony głównej aplikacji. 
+
+Przykładowa wartość: `https://MyRegisteredApp` 
+
+### <a name="key-value-type-signinaudience-string"></a>Klucz, typ wartości: `signInAudience`, ciąg 
+Określa, jakie konta Microsoft są obsługiwane przez bieżącą aplikację. Obsługiwane są następujące wartości:
+- **AzureADMyOrg** — użytkownicy z kontem służbowym firmy Microsoft w dzierżawie usługi Azure AD w organizacji (na przykład z jedną dzierżawą)
+- **AzureADMultipleOrgs** — użytkownicy z kontem służbowym firmy Microsoft w dzierżawie usługi Azure AD w organizacji (na przykład z wieloma dzierżawcami)
+- **AzureADandPersonalMicrosoftAccount** — użytkownicy z konto Microsoft osobistym lub kontem służbowym w ramach dzierżawy usługi Azure AD w organizacji 
+
+Przykładowa wartość:  
+`AzureADandPersonalMicrosoftAccount` 
+
+### <a name="key-value-type-tags-string-array"></a>Klucz, typ wartości: `tags`, tablica ciągów 
+Niestandardowe ciągi, których można użyć do kategoryzowania i identyfikowania aplikacji. 
+
+Przykładowa wartość: 
+<code>[<br>&nbsp;&nbsp;"ProductionApp"<br>]</code>
 
 ## <a name="common-issues"></a>Typowe problemy
 

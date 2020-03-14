@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
 ms.openlocfilehash: 1bb8300f1e54cf03563704cf00549ce9e09a3916
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613792"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260165"
 ---
 # <a name="azure-data-box-disk-limits"></a>Limity Azure Data Box Disk
 
@@ -72,9 +72,9 @@ Poniżej przedstawiono rozmiary obiektów platformy Azure, które mogą być zap
 
 | Typ obiektu platformy Azure | Limit domyślny                                             |
 |-------------------|-----------------------------------------------------------|
-| Blokowy obiekt blob        | ~ 4,75 TiB                                                 |
+| Blokowy obiekt BLOB        | ~ 4,75 TiB                                                 |
 | Obiekt BLOB strony         | 8 TiB <br> (Każdy plik przekazany w formacie stronicowego obiektu BLOB musi być wyrównany do 512 bajtów, w przeciwnym razie przekazywanie nie powiedzie się. <br> Pliki VHD i VHDX są wyrównane do 512 bajtów. |
-|Usługa Pliki systemu Azure        | 1 TiB <br> Maksymalnie z rozmiar udziału to 5 TiB     |
+|Azure Files        | 1 TiB <br> Maksymalnie z rozmiar udziału to 5 TiB     |
 | Dyski zarządzane     |4 TiB <br> Aby uzyskać więcej informacji na temat rozmiaru i limitów, zobacz: <li>[Elementy docelowe skalowalności dla dysków zarządzanych](../virtual-machines/windows/disk-scalability-targets.md#managed-virtual-machine-disks)</li>|
 
 

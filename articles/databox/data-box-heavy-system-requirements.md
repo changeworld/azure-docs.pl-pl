@@ -1,6 +1,6 @@
 ---
-title: Wymagania dotyczące systemu Microsoft Azure dane pole mocno | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o oprogramowaniu i wymagania sieciowe związane z duże pole danych platformy Azure
+title: Microsoft Azure Data Box Heavy wymagania systemowe | Microsoft Docs
+description: Dowiedz się więcej o wymaganiach dotyczących oprogramowania i sieci dla Azure Data Box Heavy
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,34 +9,34 @@ ms.topic: article
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 6097dba9193fce4c8158137b488080107881994a
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839777"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260074"
 ---
-# <a name="azure-data-box-heavy-system-requirements"></a>Wymagania systemu duże pole danych platformy Azure
+# <a name="azure-data-box-heavy-system-requirements"></a>Wymagania systemowe Azure Data Box Heavy
 
-W tym artykule opisano wymagania systemowe dla Twojego urządzenia Azure Data Box duże i klientów, połączono z urządzeniem. Zaleca się, że starannie Przejrzyj informacje przed wdrożeniem usługi duże pole danych i następnie wrócić do niego zgodnie z potrzebami podczas wdrażania i kolejna operacja.
+W tym artykule opisano ważne wymagania systemowe dotyczące urządzenia Azure Data Box Heavy oraz klientów nawiązujących połączenie z urządzeniem. Zalecamy dokładne zapoznanie się z informacjami przed wdrożeniem Data Box Heavy, a następnie odwoływanie się do niego w razie potrzeby podczas wdrażania i kolejnej operacji.
 
-Wymagania systemowe, obejmują:
+Wymagania systemowe obejmują:
 
-* **Wymagania dotyczące oprogramowania dla hostów, na nawiązywanie połączeń z dużymi pole danych** — w tym artykule opisano obsługiwanych platform, przeglądarki dla lokalnego Interfejsu w przeglądarce, klientów protokołu SMB i wszelkie dodatkowe wymagania dla hostów, które można połączyć do urządzenia Data Box.
-* **Wymagania dotyczące sieci dla duże pole danych** — informacje na temat wymagania sieciowe, aby umożliwić optymalne działanie duże pole danych urządzenia.
+* **Wymagania dotyczące oprogramowania dla hostów łączących się z Data Box Heavy** — opisuje obsługiwane platformy, przeglądarki dla lokalnego interfejsu użytkownika sieci Web, klientów protokołu SMB i dodatkowe wymagania dotyczące hostów, które mogą łączyć się z urządzenie Data Box.
+* **Wymagania sieciowe dotyczące Data Box Heavy** — zawiera informacje o wymaganiach sieciowych dla optymalnej operacji urządzenia Data Box Heavy.
 
 ## <a name="software-requirements"></a>Wymagania dotyczące oprogramowania
 
-Wymagania dotyczące oprogramowania zawierają informacje o obsługiwane systemy operacyjne, przeglądarki obsługiwane przez lokalnego Interfejsu w przeglądarce i klienci SMB.
+Wymagania dotyczące oprogramowania obejmują informacje w obsługiwanych systemach operacyjnych, obsługiwane przeglądarki dla lokalnego interfejsu użytkownika sieci Web i klientów SMB.
 
 ### <a name="supported-operating-systems-for-clients"></a>Obsługiwane systemy operacyjne dla klientów
 
 [!INCLUDE [data-box-supported-os-clients](../../includes/data-box-supported-os-clients.md)]
 
-### <a name="supported-file-systems-for-linux-clients"></a>Systemy plików obsługiwane przez klientów systemu Linux
+### <a name="supported-file-systems-for-linux-clients"></a>Obsługiwane systemy plików dla klientów z systemem Linux
 
 [!INCLUDE [data-box-supported-file-systems-clients](../../includes/data-box-supported-file-systems-clients.md)]
 
-### <a name="supported-storage-accounts"></a>Konta magazynu obsługiwane
+### <a name="supported-storage-accounts"></a>Obsługiwane konta magazynu
 
 [!INCLUDE [data-box-supported-storage-accounts](../../includes/data-box-supported-storage-accounts.md)]
 
@@ -50,14 +50,14 @@ Wymagania dotyczące oprogramowania zawierają informacje o obsługiwane systemy
 
 ## <a name="networking-requirements"></a>Wymagania dotyczące sieci
 
-Twoje centrum danych musi mieć dostęp do szybkiej sieci. Najszybszy szybkości kopiowania dwa połączenia 40 GbE możesz wykorzystać równolegle (jednym w każdym węźle). Jeśli nie masz dostępnych 40 GbE, zaleca się, że masz co najmniej dwa połączenia 10 GbE (po jednej na węzeł).
+Twoje centrum danych musi mieć dostęp do szybkiej sieci. W przypadku najszybszych szybkości kopiowania połączenia 2 40-GbE mogą być wykorzystywane równolegle (jeden na węzeł). Jeśli nie masz dostępnych 40 GbE, zalecamy korzystanie z co najmniej 2 10-GbE połączeń (jeden na węzeł).
 
 ### <a name="port-requirements"></a>Wymagania dotyczące portów
 
-Poniższa tabela zawiera listę portów, które muszą być otwarte w zaporze, aby umożliwić ruch SMB lub NFS. W tej tabeli *w* lub *dla ruchu przychodzącego* odnosi się do kierunku z które dostępu przychodzących żądań klienta do Twojego urządzenia. *Limit* lub *wychodzącego* Określa kierunek, w którym duże pole danych urządzenie wysyła zewnętrznie, dane poza wdrożenia: na przykład, ruch wychodzący do Internetu.
+Poniższa tabela zawiera listę portów, które należy otworzyć w zaporze, aby zezwalać na ruch SMB lub NFS. W tej tabeli *w programie lub w* *ruchu przychodzącym* odwołuje się do kierunku, w którym klient przychodzący żąda dostępu do urządzenia. *Out* lub *wychodzący* odnosi się do kierunku, w którym urządzenie Data Box Heavy wysyła dane zewnętrznie, poza wdrożeniem: na przykład wychodzące do Internetu.
 
 [!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Wdrażanie usługi Azure Data Box](data-box-deploy-ordered.md)
+* [Wdrażanie Azure Data Box](data-box-deploy-ordered.md)

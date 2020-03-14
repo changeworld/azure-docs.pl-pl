@@ -4,11 +4,11 @@ description: Ten przewodnik przeprowadzi Cię przez korygowanie zasobów, które
 ms.date: 02/26/2020
 ms.topic: how-to
 ms.openlocfilehash: 5cf26f5235fbc35cdc9bfc8527967c3cc5ca91b8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383546"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264533"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Korygowanie niezgodnych zasobów przy użyciu usługi Azure Policy
 

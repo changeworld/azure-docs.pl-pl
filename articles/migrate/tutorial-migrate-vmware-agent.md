@@ -2,14 +2,14 @@
 title: Migrowanie maszyn wirtualnych VMware przy użyciu migracji Azure Migrate serwera opartego na agentach
 description: Dowiedz się, jak uruchomić migrację maszyn wirtualnych VMware z użyciem agentów przy użyciu Azure Migrate.
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 03/09/2020
 ms.custom: MVC
-ms.openlocfilehash: 49b576770d67ae9d2b98a8a0004f4219ecf0fae4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 64873c5185660c58cd4d07d60df3d086364d6288
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388982"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238440"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>Migrowanie maszyn wirtualnych VMware na platformę Azure (oparte na agentach)
 
@@ -156,7 +156,7 @@ Usługę Mobility należy zainstalować na każdej maszynie, która ma być repl
 
 - Urządzenie replikacji Azure Migrate może przeprowadzić instalację wypychaną tej usługi po włączeniu replikacji dla maszyny lub można ją zainstalować ręcznie lub za pomocą narzędzi instalacyjnych.
 - W tym samouczku zamierzamy zainstalować usługę Mobility przy użyciu instalacji typu push.
-- W przypadku instalacji wypychanej należy przygotować konto, za pomocą którego Migracja serwera Azure Migrate może być używana do uzyskiwania dostępu do maszyny wirtualnej.
+- W przypadku instalacji wypychanej należy przygotować konto, za pomocą którego Migracja serwera Azure Migrate może być używana do uzyskiwania dostępu do maszyny wirtualnej. To konto jest używane tylko w przypadku instalacji wypychanej, jeśli usługa mobilności nie zostanie zainstalowana ręcznie.
 
 Przygotuj konto w następujący sposób:
 
@@ -409,7 +409,10 @@ Po zweryfikowaniu, że migracja testowa działa zgodnie z oczekiwaniami, można 
 
 ## <a name="complete-the-migration"></a>Kończenie migracji
 
-1. Po zakończeniu migracji kliknij prawym przyciskiem myszy maszynę wirtualną > **Zatrzymaj migrację**. Spowoduje to zatrzymanie replikacji maszyny lokalnej i oczyszczenie informacji o stanie replikacji dla maszyny wirtualnej.
+1. Po zakończeniu migracji kliknij prawym przyciskiem myszy maszynę wirtualną > **Zatrzymaj migrację**. Spowoduje to wykonanie następujących czynności:
+    - Wyłącza replikację maszyny lokalnej.
+    - Usuwa maszynę z liczby **serwerów replikowania** w Azure Migrate: Migracja serwera.
+    - Czyści informacje o stanie replikacji maszyny wirtualnej.
 2. Zainstaluj agenta maszyny wirtualnej platformy Azure dla [systemu Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) lub [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) na zmigrowanych maszynach.
 3. Po zakończeniu migracji wykonaj wszystkie potrzebne czynności konfiguracyjne, takie jak aktualizacja parametrów połączenia bazy danych i serwera sieci Web.
 4. Wykonaj dla zmigrowanej aplikacji uruchomionej na platformie Azure testy końcowe aplikacji i akceptacji migracji.

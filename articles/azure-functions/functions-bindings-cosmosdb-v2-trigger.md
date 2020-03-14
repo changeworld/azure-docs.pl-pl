@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
-ms.openlocfilehash: c006aa8c46864b78ae46aa9c351605cca1d1e425
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: de8ad39ef731af3dc272d700eeee346acda64b53
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388595"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79277572"
 ---
 # <a name="azure-cosmos-db-trigger-for-azure-functions-2x"></a>Wyzwalacz Azure Cosmos DB dla Azure Functions 2. x
 
@@ -236,7 +236,8 @@ W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane
 |**leaseRenewInterval**| **LeaseRenewInterval**| (Opcjonalnie) Po ustawieniu definiuje, w milisekundach, interwał odnawiania dla wszystkich dzierżaw dla partycji aktualnie trzymana przez wystąpienie. Wartość domyślna to 17000 (17 w sekundach).
 |**checkpointFrequency**| **CheckpointFrequency**| (Opcjonalnie) Po ustawieniu definiuje, w milisekundach, interwał między punktami kontrolnymi dzierżawy. Wartość domyślna to zawsze po każdym wywołaniu funkcji.
 |**maxItemsPerInvocation**| **MaxItemsPerInvocation**| Obowiązkowe Po ustawieniu ta właściwość ustawia maksymalną liczbę elementów odebranych na wywołanie funkcji. Jeśli operacje w monitorowanej kolekcji są wykonywane za pomocą procedur składowanych, [zakres transakcji](../cosmos-db/stored-procedures-triggers-udfs.md#transactions) jest zachowywany podczas odczytywania elementów ze źródła zmian. W związku z tym liczba odebranych elementów może być wyższa niż określona wartość, dzięki czemu elementy zmienione przez tę samą transakcję są zwracane jako część jednej niepodzielnej partii.
-|**startFromBeginning**| **StartFromBeginning**| Obowiązkowe Ta opcja informuje wyzwalacz, aby odczytał zmiany od początku historii zmian kolekcji zamiast od bieżącego czasu. Odczyt od początku działa tylko podczas pierwszego uruchomienia wyzwalacza, jak w kolejnych uruchomieniach, punkty kontrolne są już przechowywane. Ustawienie tej opcji na `true`, gdy istnieją już utworzone dzierżawy, nie mają żadnego efektu.
+|**startFromBeginning**| **StartFromBeginning**| Obowiązkowe Ta opcja informuje wyzwalacz, aby odczytał zmiany od początku historii zmian kolekcji zamiast od bieżącego czasu. Odczyt od początku działa tylko podczas pierwszego uruchomienia wyzwalacza, jak w kolejnych uruchomieniach, punkty kontrolne są już przechowywane. Ustawienie tej opcji na `true`, gdy istnieją już utworzone dzierżawy, nie mają żadnego efektu. |
+|**preferredLocations**| **PreferredLocations**| Obowiązkowe Definiuje preferowane lokalizacje (regiony) dla kont bazy danych replikowanych geograficznie w usłudze Azure Cosmos DB. Wartości powinny być rozdzielane przecinkami. Na przykład "Wschodnie stany USA, Południowo-środkowe stany USA, Europa Północna". |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

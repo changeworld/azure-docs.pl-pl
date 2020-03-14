@@ -13,11 +13,11 @@ ms.date: 02/02/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: cefa0c15dd50f95780034dcb63f888a2e1c6b65e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387444"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281251"
 ---
 # <a name="move-data-from-sybase-using-azure-data-factory"></a>Przenoszenie danych z programu Sybase przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -63,23 +63,23 @@ Poniższe sekcje zawierają szczegółowe informacje na temat właściwości JSO
 ## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 Poniższa tabela zawiera opis elementów JSON specyficznych dla połączonej usługi Sybase.
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 | --- | --- | --- |
-| typ |Właściwość Type musi mieć wartość: **OnPremisesSybase** |Tak |
-| zarządzania |Nazwa serwera programu Sybase. |Tak |
-| baza danych |Nazwa bazy danych programu Sybase. |Tak |
+| type |Właściwość Type musi mieć wartość: **OnPremisesSybase** |Yes |
+| serwer |Nazwa serwera programu Sybase. |Yes |
+| database |Nazwa bazy danych programu Sybase. |Yes |
 | schemat |Nazwa schematu w bazie danych programu. |Nie |
-| authenticationType |Typ uwierzytelniania używany do nawiązywania połączenia z bazą danych programu Sybase. Możliwe wartości to: Anonymous, Basic i Windows. |Tak |
+| authenticationType |Typ uwierzytelniania używany do nawiązywania połączenia z bazą danych programu Sybase. Możliwe wartości to: Anonymous, Basic i Windows. |Yes |
 | nazwa użytkownika |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowego lub systemu Windows. |Nie |
 | hasło |Określ hasło dla konta użytkownika określonego dla nazwy użytkownika. |Nie |
-| gatewayName |Nazwa bramy, która ma być używana przez usługę Data Factory do łączenia się z lokalną bazą danych programu Sybase. |Tak |
+| gatewayName |Nazwa bramy, która ma być używana przez usługę Data Factory do łączenia się z lokalną bazą danych programu Sybase. |Yes |
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 Aby uzyskać pełną listę sekcji & właściwości dostępne do definiowania zestawów danych, zobacz artykuł [Tworzenie zestawów danych](data-factory-create-datasets.md) . Sekcje, takie jak struktura, dostępność i zasady JSON zestawu danych są podobne dla wszystkich typów zestawu danych (Azure SQL, Azure Blob, Azure Table itp.).
 
 Sekcja typeProperties jest inna dla każdego typu zestawu danych i zawiera informacje dotyczące lokalizacji danych w magazynie danych. Sekcja **typeProperties** dla zestawu danych typu **relacyjnego** (który zawiera zestaw danych Sybase) ma następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 | --- | --- | --- |
 | tableName |Nazwa tabeli w wystąpieniu bazy danych programu Sybase, do której odwołuje się połączona usługa. |Nie (Jeśli **kwerenda** **RelationalSource** jest określona) |
 
@@ -90,9 +90,9 @@ Natomiast właściwości dostępne w sekcji typeProperties działania różnią 
 
 Gdy źródłem jest typ **RelationalSource** (w tym Sybase), w sekcji **typeProperties** dostępne są następujące właściwości:
 
-| Właściwość | Opis | Dozwolone wartości | Wymagane |
+| Właściwość | Opis | Dozwolone wartości | Wymagany |
 | --- | --- | --- | --- |
-| zapytanie |Użyj zapytania niestandardowego do odczytywania danych. |Ciąg zapytania SQL. Na przykład: select * from MyTable. |Nie (Jeśli określono element **TableName** **zestawu danych** ) |
+| query |Użyj zapytania niestandardowego do odczytywania danych. |Ciąg zapytania SQL. Na przykład: select * from MyTable. |Nie (Jeśli określono element **TableName** **zestawu danych** ) |
 
 
 ## <a name="json-example-copy-data-from-sybase-to-azure-blob"></a>Przykład JSON: kopiowanie danych z programu Sybase do obiektu blob platformy Azure

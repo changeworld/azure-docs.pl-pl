@@ -8,14 +8,14 @@ manager: timlt
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 01/16/2020
+ms.date: 03/12/2020
 ms.author: aschhab
-ms.openlocfilehash: 683a28ca3cdabd5a7ffbf6e9ffdc3ed0c58d3247
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: b864f433c67d47b4b92a1d4b98693ebd42806dd3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78370483"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259463"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Najlepsze rozwiązania dotyczące ulepszeń wydajności przy użyciu Service Bus obsługi komunikatów
 
@@ -31,50 +31,147 @@ Service Bus umożliwia klientom wysyłanie i odbieranie komunikatów za pośredn
 
 1. Advanced Message Queuing Protocol (AMQP)
 2. Service Bus Messaging Protocol (SBMP)
-3. HTTP
+3. Protokół HTTP (Hypertext Transfer Protocol)
 
-AMQP i SBMP są bardziej wydajne, ponieważ utrzymują połączenie z Service Bus, dopóki nie istnieje fabryka komunikatów. Implementuje również przetwarzanie wsadowe i pobieranie z wyprzedzeniem. O ile nie zostało to wyraźnie określone, cała zawartość tego artykułu zakłada użycie AMQP lub SBMP.
+AMQP jest najbardziej wydajny, ponieważ utrzymuje połączenie z Service Bus. Implementuje również przetwarzanie wsadowe i pobieranie z wyprzedzeniem. O ile nie zostało to wyraźnie określone, cała zawartość tego artykułu zakłada użycie AMQP lub SBMP.
+
+> [!IMPORTANT]
+> SBMP jest dostępna tylko dla .NET Framework. AMQP jest wartością domyślną dla .NET Standard.
+
+## <a name="choosing-the-appropriate-service-bus-net-sdk"></a>Wybieranie odpowiedniego zestawu SDK platformy .NET Service Bus
+
+Istnieją dwa obsługiwane Azure Service Bus zestawy SDK platformy .NET. Ich interfejsy API są bardzo podobne i mogą być trudne do wyboru. Zapoznaj się z poniższą tabelą, aby ułatwić podjęcie decyzji. Sugerujemy zestaw SDK Microsoft. Azure. ServiceBus, ponieważ jest bardziej nowoczesny, wydajny i jest zgodny z różnymi platformami. Ponadto obsługuje AMQP przez WebSockets i jest częścią kolekcji zestawu SDK platformy Azure dla projektów typu open source.
+
+| Pakiet NuGet | Podstawowe przestrzenie nazw | Minimalna liczba platform | Protokoły |
+|---------------|----------------------|---------------------|-------------|
+| <a href="https://www.nuget.org/packages/Microsoft.Azure.ServiceBus" target="_blank">Microsoft. Azure. ServiceBus<span class="docon docon-navigate-external x-hidden-focus"></span></a> | `Microsoft.Azure.ServiceBus`<br>`Microsoft.Azure.ServiceBus.Management` | .NET Core 2.0<br>.NET Framework 4.6.1<br>Mono 5,4<br>Xamarin.iOS 10.14<br>Xamarin.Mac 3.8<br>Xamarin. Android 8,0<br>Platforma uniwersalna systemu Windows 10.0.16299 | AMQP<br>HTTP |
+| <a href="https://www.nuget.org/packages/WindowsAzure.ServiceBus" target="_blank">WindowsAzure. ServiceBus<span class="docon docon-navigate-external x-hidden-focus"></span></a> | `Microsoft.ServiceBus`<br>`Microsoft.ServiceBus.Messaging` | .NET Framework 4.6.1 | AMQP<br>SBMP<br>HTTP |
+
+Aby uzyskać więcej informacji o minimalnej obsłudze platformy .NET Standard, zobacz [Obsługa implementacji platformy .NET](https://docs.microsoft.com/dotnet/standard/net-standard#net-implementation-support).
 
 ## <a name="reusing-factories-and-clients"></a>Używanie fabryk i klientów
 
-Service Bus obiektów klienta, takich jak [QueueClient][QueueClient] lub [MessageSender][MessageSender], są tworzone za pomocą obiektu [MessagingFactory][MessagingFactory] , co zapewnia także wewnętrzne zarządzanie połączeniami. Zaleca się, aby nie zamykać fabryk komunikatów lub kolejek, tematów i subskrypcji klienta po wysłaniu wiadomości, a następnie tworzyć je ponownie po wysłaniu kolejnej wiadomości. Zamknięcie fabryki komunikatów powoduje usunięcie połączenia z usługą Service Bus i nawiązanie nowego połączenia podczas odtwarzania fabryki. Nawiązywanie połączenia jest kosztowną operacją, którą można uniknąć przez ponowne użycie tych samych obiektów Factory i Client dla wielu operacji. Można bezpiecznie używać tych obiektów klienta do równoczesnych operacji asynchronicznych i z wielu wątków. 
+# <a name="microsoftazureservicebus-sdk"></a>[Zestaw SDK Microsoft. Azure. ServiceBus](#tab/net-standard-sdk)
+
+Service Bus obiektów klienta, takich jak implementacje [`IQueueClient`][QueueClient] lub [`IMessageSender`][MessageSender], powinny być zarejestrowane na potrzeby iniekcji zależności jako elementy singleton (lub są tworzone raz i udostępnione). Zaleca się, aby nie zamykać fabryk komunikatów lub kolejek, tematów i subskrypcji klienta po wysłaniu wiadomości, a następnie tworzyć je ponownie po wysłaniu kolejnej wiadomości. Zamknięcie fabryki komunikatów powoduje usunięcie połączenia z usługą Service Bus i nawiązanie nowego połączenia podczas odtwarzania fabryki. Nawiązywanie połączenia jest kosztowną operacją, którą można uniknąć przez ponowne użycie tych samych obiektów Factory i Client dla wielu operacji. Można bezpiecznie używać tych obiektów klienta do równoczesnych operacji asynchronicznych i z wielu wątków.
+
+# <a name="windowsazureservicebus-sdk"></a>[WindowsAzure. ServiceBus SDK](#tab/net-framework-sdk)
+
+Service Bus obiektów klienta, takich jak `QueueClient` lub `MessageSender`, są tworzone za pomocą obiektu [MessagingFactory][MessagingFactory] , co zapewnia także wewnętrzne zarządzanie połączeniami. Zaleca się, aby nie zamykać fabryk komunikatów lub kolejek, tematów i subskrypcji klienta po wysłaniu wiadomości, a następnie tworzyć je ponownie po wysłaniu kolejnej wiadomości. Zamknięcie fabryki komunikatów powoduje usunięcie połączenia z usługą Service Bus i nawiązanie nowego połączenia podczas odtwarzania fabryki. Nawiązywanie połączenia jest kosztowną operacją, którą można uniknąć przez ponowne użycie tych samych obiektów Factory i Client dla wielu operacji. Można bezpiecznie używać tych obiektów klienta do równoczesnych operacji asynchronicznych i z wielu wątków.
+
+---
 
 ## <a name="concurrent-operations"></a>Operacje współbieżne
 
-Wykonywanie operacji (wysyłanie, odbieranie, usuwanie itp.) zajmuje trochę czasu. Teraz obejmuje przetwarzanie operacji w usłudze Service Bus, poza tym zwiększa opóźnienia żądania i odpowiedzi. Aby zwiększyć liczbę operacji na czas, jednocześnie muszą wykonać operacje. 
+Wykonywanie operacji (wysyłanie, odbieranie, usuwanie itp.) zajmuje trochę czasu. Ta godzina obejmuje przetwarzanie operacji przez usługę Service Bus, a także opóźnienia żądania i odpowiedzi. Aby zwiększyć liczbę operacji na czas, jednocześnie muszą wykonać operacje.
 
 Klient planuje współbieżne operacje przez wykonywanie operacji asynchronicznych. Następne żądanie zostało uruchomione przed ukończeniem poprzedniego żądania. Poniższy fragment kodu jest przykładem asynchronicznej operacji wysyłania:
-  
- ```csharp
-  Message m1 = new BrokeredMessage(body);
-  Message m2 = new BrokeredMessage(body);
-  
-  Task send1 = queueClient.SendAsync(m1).ContinueWith((t) => 
-    {
-      Console.WriteLine("Sent message #1");
-    });
-  Task send2 = queueClient.SendAsync(m2).ContinueWith((t) => 
-    {
-      Console.WriteLine("Sent message #2");
-    });
-  Task.WaitAll(send1, send2);
-  Console.WriteLine("All messages sent");
-  ```
-  
-  Poniższy kod jest przykładem asynchronicznej operacji odbierania. Zobacz pełny program [tutaj](https://github.com/Azure/azure-service-bus/blob/master/samples/DotNet/Microsoft.Azure.ServiceBus/SendersReceiversWithQueues):
-  
-  ```csharp
-  var receiver = new MessageReceiver(connectionString, queueName, ReceiveMode.PeekLock);
-  var doneReceiving = new TaskCompletionSource<bool>();
 
-  receiver.RegisterMessageHandler(...);
-  ```
+# <a name="microsoftazureservicebus-sdk"></a>[Zestaw SDK Microsoft. Azure. ServiceBus](#tab/net-standard-sdk)
+
+```csharp
+var messageOne = new Message(body);
+var messageTwo = new Message(body);
+
+var sendFirstMessageTask =
+    queueClient.SendAsync(messageOne).ContinueWith(_ =>
+    {
+        Console.WriteLine("Sent message #1");
+    });
+var sendSecondMessageTask =
+    queueClient.SendAsync(messageTwo).ContinueWith(_ =>
+    {
+        Console.WriteLine("Sent message #2");
+    });
+
+await Task.WhenAll(sendFirstMessageTask, sendSecondMessageTask);
+Console.WriteLine("All messages sent");
+```
+
+# <a name="windowsazureservicebus-sdk"></a>[WindowsAzure. ServiceBus SDK](#tab/net-framework-sdk)
+
+```csharp
+var messageOne = new BrokeredMessage(body);
+var messageTwo = new BrokeredMessage(body);
+
+var sendFirstMessageTask =
+    queueClient.SendAsync(messageOne).ContinueWith(_ =>
+    {
+        Console.WriteLine("Sent message #1");
+    });
+var sendSecondMessageTask =
+    queueClient.SendAsync(messageTwo).ContinueWith(_ =>
+    {
+        Console.WriteLine("Sent message #2");
+    });
+
+await Task.WhenAll(sendFirstMessageTask, sendSecondMessageTask);
+Console.WriteLine("All messages sent");
+```
+
+---
+
+Poniższy kod jest przykładem asynchronicznej operacji odbierania.
+
+# <a name="microsoftazureservicebus-sdk"></a>[Zestaw SDK Microsoft. Azure. ServiceBus](#tab/net-standard-sdk)
+
+Zobacz repozytorium GitHub, aby zapoznać się z pełnymi <a href="https://github.com/Azure/azure-service-bus/blob/master/samples/DotNet/Microsoft.Azure.ServiceBus/SendersReceiversWithQueues" target="_blank">przykładami <span class="docon docon-navigate-external x-hidden-focus"> </span>kodu źródłowego </a>:
+
+```csharp
+var receiver = new MessageReceiver(connectionString, queueName, ReceiveMode.PeekLock);
+
+static Task LogErrorAsync(Exception exception)
+{
+    Console.WriteLine(exception);
+    return Task.CompletedTask;
+};
+
+receiver.RegisterMessageHandler(
+    async (message, cancellationToken) =>
+    {
+        Console.WriteLine("Handle message");
+        await receiver.CompleteAsync(message.SystemProperties.LockToken);
+    },
+    new MessageHandlerOptions(e => LogErrorAsync(e.Exception))
+    {
+        AutoComplete = false,
+        MaxConcurrentCalls = 1
+    });
+```
+
+Obiekt `MessageReceiver` jest skonkretyzowany przy użyciu parametrów połączenia, nazwy kolejki i trybu odbioru wglądu w Podgląd. Następnie wystąpienie `receiver` jest używane do rejestrowania programu obsługi komunikatów.
+
+# <a name="windowsazureservicebus-sdk"></a>[WindowsAzure. ServiceBus SDK](#tab/net-framework-sdk)
+
+Zobacz repozytorium GitHub, aby zapoznać się z pełnymi <a href="https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/SendersReceiversWithQueues" target="_blank">przykładami <span class="docon docon-navigate-external x-hidden-focus"> </span>kodu źródłowego </a>:
+
+```csharp
+var factory = MessagingFactory.CreateFromConnectionString(connectionString);
+var receiver = await factory.CreateMessageReceiverAsync(queueName, ReceiveMode.PeekLock);
+
+// Register the handler to receive messages asynchronously
+receiver.OnMessageAsync(
+    async message =>
+    {
+        Console.WriteLine("Handle message");
+        await message.CompleteAsync();
+    },
+    new OnMessageOptions
+    {
+        AutoComplete = false,
+        MaxConcurrentCalls = 1
+    });
+```
+
+`MessagingFactory` tworzy obiekt `factory` z parametrów połączenia. W wystąpieniu `factory` występuje `MessageReceiver` wystąpienia. Następnie wystąpienie `receiver` jest używane do rejestrowania obsługi w wiadomości.
+
+---
 
 ## <a name="receive-mode"></a>Tryb odbioru
 
-Podczas tworzenia kolejki lub klienta subskrypcji można określić tryb odbioru: *Zablokuj* lub *Odbierz i Usuń*. Domyślny tryb odbioru to [PeekLock][PeekLock]. Gdy działa w tym trybie, klient wysyła żądanie odebrania komunikatu z Service Bus. Po odebraniu wiadomości klient wysyła żądanie, aby zakończyć ten komunikat.
+Podczas tworzenia kolejki lub klienta subskrypcji można określić tryb odbioru: *Zablokuj* lub *Odbierz i Usuń*. Domyślny tryb odbioru to `PeekLock`. Podczas działania w trybie domyślnym klient wysyła żądanie odebrania komunikatu z Service Bus. Po odebraniu wiadomości klient wysyła żądanie, aby zakończyć ten komunikat.
 
-Podczas ustawiania trybu odbioru na [ReceiveAndDelete][ReceiveAndDelete], oba kroki są łączone w pojedynczym żądaniu. Te kroki umożliwiają zmniejszenie ogólnej liczby operacji i zwiększenie ogólnej przepływności komunikatów. Ten zysk wydajności jest narażony na ryzyko utraty komunikatów.
+Podczas ustawiania trybu odbioru na `ReceiveAndDelete`, oba kroki są łączone w pojedynczym żądaniu. Te kroki umożliwiają zmniejszenie ogólnej liczby operacji i zwiększenie ogólnej przepływności komunikatów. Ten zysk wydajności jest narażony na ryzyko utraty komunikatów.
 
 Service Bus nie obsługuje transakcji dla operacji odbierania i usuwania. Ponadto semantyka blokady wglądu jest wymagana dla wszystkich scenariuszy, w których klient chce odroczyć lub [martwić](service-bus-dead-letter-queues.md) wiadomość.
 
@@ -82,54 +179,96 @@ Service Bus nie obsługuje transakcji dla operacji odbierania i usuwania. Ponadt
 
 Tworzenie wsadowe po stronie klienta umożliwia klientowi kolejki lub tematu opóźnienie wysyłania komunikatu przez określony czas. Jeśli klient wysyła dodatkowe komunikaty w tym okresie, przesyła komunikaty w jednej partii. Przetwarzanie wsadowe po stronie klienta powoduje także, że klient kolejki lub subskrypcji **wykonuje** wsadowe wiele żądań w ramach pojedynczego żądania. Przetwarzanie wsadowe jest dostępne tylko w przypadku asynchronicznych operacji **wysyłania** i **kończenia** . Operacje synchroniczne są natychmiast wysyłane do usługi Service Bus. Przetwarzanie wsadowe nie odbywa się w przypadku operacji wglądu lub odbierania, ani nie występuje przetwarzanie wsadowe na wielu klientach.
 
+# <a name="microsoftazureservicebus-sdk"></a>[Zestaw SDK Microsoft. Azure. ServiceBus](#tab/net-standard-sdk)
+
+Funkcja wsadowa dla zestawu SDK .NET Standard nie uwidacznia jeszcze właściwości do manipulowania.
+
+# <a name="windowsazureservicebus-sdk"></a>[WindowsAzure. ServiceBus SDK](#tab/net-framework-sdk)
+
 Domyślnie klient używa interwału partii 20 ms. Możesz zmienić interwał partii, ustawiając właściwość [BatchFlushInterval][BatchFlushInterval] przed utworzeniem fabryki komunikatów. To ustawienie ma wpływ na wszystkich klientów utworzonych przez tę fabrykę.
 
 Aby wyłączyć tworzenie partii, ustaw właściwość [BatchFlushInterval][BatchFlushInterval] na **TimeSpan. zero**. Na przykład:
 
 ```csharp
-MessagingFactorySettings mfs = new MessagingFactorySettings();
-mfs.TokenProvider = tokenProvider;
-mfs.NetMessagingTransportSettings.BatchFlushInterval = TimeSpan.FromSeconds(0.05);
-MessagingFactory messagingFactory = MessagingFactory.Create(namespaceUri, mfs);
+var settings = new MessagingFactorySettings
+{
+    NetMessagingTransportSettings =
+    {
+        BatchFlushInterval = TimeSpan.Zero
+    }
+};
+var factory = MessagingFactory.Create(namespaceUri, settings);
 ```
 
 Przetwarzanie wsadowe nie ma wpływu na liczbę operacji do rozliczania komunikatów i jest dostępne tylko dla protokołu klienta Service Bus przy użyciu biblioteki [Microsoft. ServiceBus. Messaging](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) . Protokół HTTP nie obsługuje przetwarzania wsadowego.
 
 > [!NOTE]
-> Ustawienie BatchFlushInterval gwarantuje, że przetwarzanie wsadowe jest niejawne w perspektywie aplikacji. oznacza to, że aplikacja wykonuje wywołania SendAsync () i CompleteAsync () i nie tworzy określonych wywołań wsadowych.
+> Ustawienie `BatchFlushInterval` gwarantuje, że przetwarzanie wsadowe jest niejawne w perspektywie aplikacji. tj.; aplikacja wykonuje `SendAsync` i `CompleteAsync` wywołań i nie tworzy określonych wywołań wsadowych.
 >
-> Jawne wykonywanie wsadowe po stronie klienta można zaimplementować przy użyciu poniższego wywołania metody- 
+> Jawne wykonywanie wsadowe po stronie klienta można zaimplementować przy użyciu poniższego wywołania metody:
 > ```csharp
-> Task SendBatchAsync (IEnumerable<BrokeredMessage> messages);
+> Task SendBatchAsync(IEnumerable<BrokeredMessage> messages);
 > ```
 > Łączny rozmiar komunikatów musi być mniejszy niż maksymalny rozmiar obsługiwany przez warstwę cenową.
 
+---
+
 ## <a name="batching-store-access"></a>Dostęp do magazynu wsadowego
 
-Aby zwiększyć przepływność kolejki, tematu lub subskrypcji, Service Bus przetworzyć wiele komunikatów podczas zapisywania ich w magazynie wewnętrznym. Jeśli ta funkcja jest włączona dla kolejki lub tematu, zapisywanie wiadomości w sklepie zostanie przeparte. Jeśli ta funkcja jest włączona dla kolejki lub subskrypcji, usunięcie komunikatów ze sklepu spowoduje przetworzenie ich wsadowych. Jeśli dla jednostki jest włączony dostęp do magazynu w trybie wsadowym, Service Bus opóźni operacji zapisu w sklepie dotyczącej tej jednostki o maksymalnie 20 ms. 
+Aby zwiększyć przepływność kolejki, tematu lub subskrypcji, Service Bus przetworzyć wiele komunikatów podczas zapisywania ich w magazynie wewnętrznym. Jeśli ta funkcja jest włączona dla kolejki lub tematu, zapisywanie wiadomości w sklepie zostanie przeparte. Jeśli ta funkcja jest włączona dla kolejki lub subskrypcji, usunięcie komunikatów ze sklepu spowoduje przetworzenie ich wsadowych. Jeśli dla jednostki jest włączony dostęp do magazynu w trybie wsadowym, Service Bus opóźni operacji zapisu w sklepie dotyczącej tej jednostki o maksymalnie 20 ms.
 
 > [!NOTE]
-> Nie ma ryzyka utraty komunikatów z przetwarzaniem wsadowym, nawet jeśli wystąpi błąd Service Bus na końcu interwału wsadowego 20ms. 
+> Nie ma ryzyka utraty komunikatów z przetwarzaniem wsadowym, nawet jeśli wystąpi błąd Service Bus na końcu interwału wsadowego 20ms.
 
 Dodatkowe operacje magazynu występujące w tym interwale są dodawane do zadania wsadowego. Dostęp do magazynu wsadowego ma wpływ tylko na operacje **wysyłania** i **kończenia** . nie ma to żadnego oddziaływania na operacje odbierania. Dostęp do magazynu wsadowego jest właściwością obiektu. Przetwarzanie wsadowe odbywa się we wszystkich jednostkach, które umożliwiają dostęp do magazynu wsadowego.
 
-Podczas tworzenia nowej kolejki, tematu lub subskrypcji dostęp do magazynu wsadowego jest domyślnie włączony. Aby wyłączyć dostęp do magazynu wsadowego, przed utworzeniem jednostki ustaw właściwość [EnableBatchedOperations][EnableBatchedOperations] na **wartość false** . Na przykład:
+Podczas tworzenia nowej kolejki, tematu lub subskrypcji dostęp do magazynu wsadowego jest domyślnie włączony.
+
+# <a name="microsoftazureservicebus-sdk"></a>[Zestaw SDK Microsoft. Azure. ServiceBus](#tab/net-standard-sdk)
+
+Aby wyłączyć dostęp do magazynu wsadowego, konieczne będzie wystąpienie `ManagementClient`. Utwórz kolejkę na podstawie opisu kolejki, która ustawia właściwość `EnableBatchedOperations` na `false`.
 
 ```csharp
-QueueDescription qd = new QueueDescription();
-qd.EnableBatchedOperations = false;
-Queue q = namespaceManager.CreateQueue(qd);
+var queueDescription = new QueueDescription(path)
+{
+    EnableBatchedOperations = false
+};
+var queue = await managementClient.CreateQueueAsync(queueDescription);
 ```
+
+Aby uzyskać więcej informacji, zobacz następujące tematy:
+* <a href="https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.management.queuedescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.Azure.ServiceBus.Management.QueueDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
+* <a href="https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.management.subscriptiondescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.Azure.ServiceBus.Management.SubscriptionDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
+* <a href="https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.management.topicdescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.Azure.ServiceBus.Management.TopicDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
+
+# <a name="windowsazureservicebus-sdk"></a>[WindowsAzure. ServiceBus SDK](#tab/net-framework-sdk)
+
+Aby wyłączyć dostęp do magazynu wsadowego, konieczne będzie wystąpienie `NamespaceManager`. Utwórz kolejkę na podstawie opisu kolejki, która ustawia właściwość `EnableBatchedOperations` na `false`.
+
+```csharp
+var queueDescription = new QueueDescription(path)
+{
+    EnableBatchedOperations = false
+};
+var queue = namespaceManager.CreateQueue(queueDescription);
+```
+
+Aby uzyskać więcej informacji, zobacz następujące tematy:
+* <a href="https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.queuedescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.ServiceBus.Messaging.QueueDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
+* <a href="https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.ServiceBus.Messaging.SubscriptionDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
+* <a href="https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.topicdescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.ServiceBus.Messaging.TopicDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
+
+---
 
 Dostęp do magazynu wsadowego nie ma wpływu na liczbę operacji związanych z obsługą komunikatów i jest właściwością kolejki, tematu lub subskrypcji. Jest on niezależny od trybu odbioru i protokołu, który jest używany między klientem a usługą Service Bus.
 
 ## <a name="prefetching"></a>Wyprzedzeniem
 
-Wstępne [pobieranie](service-bus-prefetch.md) umożliwia klientowi kolejki lub subskrypcji ładowanie dodatkowych komunikatów z usługi podczas wykonywania operacji odbierania. Klient przechowuje te komunikaty w lokalnej pamięci podręcznej. Rozmiar pamięci podręcznej jest określany przez właściwości [QueueClient. PrefetchCount][QueueClient.PrefetchCount] lub [SubscriptionClient. PrefetchCount][SubscriptionClient.PrefetchCount] . Każdy klient, który umożliwia prepobieranie, utrzymuje własną pamięć podręczną. Pamięć podręczna nie jest udostępniana przez klientów. Jeśli klient inicjuje operację odbierania, a jej pamięć podręczna jest pusta, usługa przesyła partię komunikatów. Rozmiar wsadu jest równy rozmiarowi pamięci podręcznej lub 256 KB, w zależności od tego, który jest mniejszy. Jeśli klient inicjuje operację odbierania, a pamięć podręczna zawiera komunikat, komunikat jest pobierany z pamięci podręcznej.
+Wstępne [pobieranie](service-bus-prefetch.md) umożliwia klientowi kolejki lub subskrypcji ładowanie dodatkowych komunikatów z usługi podczas wykonywania operacji odbierania. Klient przechowuje te komunikaty w lokalnej pamięci podręcznej. Rozmiar pamięci podręcznej jest określany przez właściwości `QueueClient.PrefetchCount` lub `SubscriptionClient.PrefetchCount`. Każdy klient, który umożliwia prepobieranie, utrzymuje własną pamięć podręczną. Pamięć podręczna nie jest udostępniana przez klientów. Jeśli klient inicjuje operację odbierania, a jej pamięć podręczna jest pusta, usługa przesyła partię komunikatów. Rozmiar wsadu jest równy rozmiarowi pamięci podręcznej lub 256 KB, w zależności od tego, który jest mniejszy. Jeśli klient inicjuje operację odbierania, a pamięć podręczna zawiera komunikat, komunikat jest pobierany z pamięci podręcznej.
 
 Gdy wiadomość jest pobierana, usługa blokuje pobierany komunikat. Po zablokowaniu nie można odebrać pobranego komunikatu przez innego odbiorcę. Jeśli odbiorca nie może zakończyć komunikatu przed wygaśnięciem blokady, komunikat zostanie udostępniony innym odbiornikom. Prebrana kopia komunikatu pozostaje w pamięci podręcznej. Odbiorca zużywający wygasłą kopię w pamięci podręcznej otrzyma wyjątek podczas próby wykonania tego komunikatu. Domyślnie Blokada wiadomości wygasa po 60 sekundach. Ta wartość może zostać przedłużona do 5 minut. Aby zapobiec zużyciu wygasłych komunikatów, rozmiar pamięci podręcznej powinien zawsze być mniejszy niż liczba komunikatów, które mogą być używane przez klienta w ramach interwału czasu blokady.
 
-W przypadku korzystania z domyślnego czasu blokady 60 sekund, dobrą wartością dla [PrefetchCount][SubscriptionClient.PrefetchCount] jest 20 razy większa szybkość przetwarzania wszystkich odbiorników fabryki. Na przykład fabryka tworzy trzy odbiorniki, a każdy odbiornik może przetwarzać maksymalnie 10 komunikatów na sekundę. Liczba pobieranych odczytów nie powinna przekraczać 20 X 3 X 10 = 600. Domyślnie [PrefetchCount][QueueClient.PrefetchCount] jest ustawiona na 0, co oznacza, że żadne dodatkowe komunikaty nie są pobierane z usługi.
+W przypadku korzystania z domyślnego limitu czasu blokady 60 sekund, dobrą wartością dla `PrefetchCount` jest 20 razy większa szybkość przetwarzania wszystkich odbiorników fabryki. Na przykład fabryka tworzy trzy odbiorniki, a każdy odbiornik może przetwarzać maksymalnie 10 komunikatów na sekundę. Liczba pobieranych odczytów nie powinna przekraczać 20 X 3 X 10 = 600. Domyślnie `PrefetchCount` jest ustawiona na 0, co oznacza, że żadne dodatkowe komunikaty nie są pobierane z usługi.
 
 Pobieranie z wyprzedzeniem komunikatów zwiększa ogólną przepływność kolejki lub subskrypcji, ponieważ zmniejsza ogólną liczbę operacji komunikatów lub rundy. Pobieranie pierwszego komunikatu może jednak trwać dłużej (ze względu na zwiększony rozmiar wiadomości). Otrzymywanie niepobranych komunikatów będzie szybsze, ponieważ te komunikaty zostały już pobrane przez klienta.
 
@@ -137,15 +276,34 @@ Właściwość Time-to-Live (TTL) komunikatu jest sprawdzana przez serwer w mome
 
 Pobieranie z wyprzedzeniem nie ma wpływu na liczbę operacji wysyłania komunikatów i jest dostępne tylko dla protokołu klienta Service Bus. Protokół HTTP nie obsługuje pobierania z wyprzedzeniem. Pobieranie z wyprzedzeniem jest dostępne zarówno dla operacji synchronicznych, jak i asynchronicznych.
 
+# <a name="microsoftazureservicebus-sdk"></a>[Zestaw SDK Microsoft. Azure. ServiceBus](#tab/net-standard-sdk)
+
+Aby uzyskać więcej informacji, zobacz następujące `PrefetchCount` właściwości:
+
+* <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount?view=azure-dotnet" target="_blank">`Microsoft.Azure.ServiceBus.QueueClient.PrefetchCount` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
+* <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.servicebus.subscriptionclient.prefetchcount?view=azure-dotnet" target="_blank">`Microsoft.Azure.ServiceBus.SubscriptionClient.PrefetchCount` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
+
+# <a name="windowsazureservicebus-sdk"></a>[WindowsAzure. ServiceBus SDK](#tab/net-framework-sdk)
+
+Aby uzyskać więcej informacji, zobacz następujące `PrefetchCount` właściwości:
+
+* <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicebus.messaging.queueclient.prefetchcount?view=azure-dotnet" target="_blank">`Microsoft.ServiceBus.Messaging.QueueClient.PrefetchCount` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
+* <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicebus.messaging.subscriptionclient.prefetchcount?view=azure-dotnet" target="_blank">`Microsoft.ServiceBus.Messaging.SubscriptionClient.PrefetchCount` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
+
+---
+
 ## <a name="prefetching-and-receivebatch"></a>Pobieranie i ReceiveBatch
 
-Chociaż koncepcje pobierania wielu wiadomości razem mają podobną semantykę do przetwarzania komunikatów w partii (ReceiveBatch), istnieją pewne drobne różnice, które należy wziąć pod uwagę, gdy są one używane razem.
+> [!NOTE]
+> Ta sekcja dotyczy tylko zestawu SDK WindowsAzure. ServiceBus, ponieważ zestaw SDK Microsoft. Azure. ServiceBus nie ujawnia funkcji usługi Batch.
 
-Pobieranie z wyprzedzeniem jest konfiguracją (lub trybem) na kliencie (QueueClient i SubscriptionClient), a ReceiveBatch to operacja (z semantyką odpowiedzi na żądanie).
+Chociaż koncepcje pobierania wielu wiadomości razem mają podobną semantykę do przetwarzania komunikatów w partii (`ReceiveBatch`), istnieją pewne drobne różnice, które należy wziąć pod uwagę, jeśli są one używane razem.
+
+Pobieranie z wyprzedzeniem jest konfiguracją (lub trybem) na kliencie (`QueueClient` i `SubscriptionClient`), a `ReceiveBatch` jest operacją (która ma semantykę odpowiedzi na żądanie).
 
 Korzystając z tych funkcji, należy wziąć pod uwagę następujące przypadki:
 
-* Pobieranie z wyprzedzeniem powinno być większe lub równe liczbie komunikatów, które mają być odbierane z ReceiveBatch.
+* Pobieranie z wyprzedzeniem powinno być większe lub równe liczbie komunikatów, które mają być odbierane z `ReceiveBatch`.
 * Pobieranie z wyprzedzeniem może trwać do n/3 razy więcej komunikatów przetworzonych na sekundę, gdzie n to domyślny czas blokady.
 
 Istnieją pewne wyzwania z podejściem zachłanne (tj. utrzymywanie liczby pobierania z wyprzedzeniem), ponieważ oznacza to, że komunikat jest zablokowany dla określonego odbiorcy. Zaleca się wypróbowanie wartości pobieranych z wyprzedzeniem między progami wymienionymi powyżej i empirycznie zidentyfikować, co pasuje.
@@ -156,9 +314,12 @@ Jeśli oczekiwane obciążenie nie może być obsługiwane przez pojedynczą kol
 
 ## <a name="development-and-testing-features"></a>Funkcje deweloperskie i testowe
 
-Service Bus ma jedną funkcję, która została użyta do celów deweloperskich, która **nigdy nie powinna być używana w konfiguracjach produkcyjnych**: [TopicDescription.EnableFilteringMessagesBeforePublishing][].
+> [!NOTE]
+> Ta sekcja dotyczy tylko zestawu SDK WindowsAzure. ServiceBus, ponieważ zestaw SDK Microsoft. Azure. ServiceBus nie uwidacznia tej funkcji.
 
-Po dodaniu nowych reguł lub filtrów do tematu można użyć [TopicDescription.EnableFilteringMessagesBeforePublishing][] , aby sprawdzić, czy nowe wyrażenie filtru działa zgodnie z oczekiwaniami.
+Service Bus ma jedną funkcję, która została użyta do celów deweloperskich, która **nigdy nie powinna być używana w konfiguracjach produkcyjnych**: [`TopicDescription.EnableFilteringMessagesBeforePublishing`][TopicDescription.EnableFiltering].
+
+Po dodaniu nowych reguł lub filtrów do tematu można użyć [`TopicDescription.EnableFilteringMessagesBeforePublishing`][TopicDescription.EnableFiltering] , aby sprawdzić, czy nowe wyrażenie filtru działa zgodnie z oczekiwaniami.
 
 ## <a name="scenarios"></a>Scenariusze
 
@@ -243,16 +404,16 @@ Aby zmaksymalizować przepływność, spróbuj wykonać następujące czynności
 * Pozostaw włączony dostęp do magazynu wsadowego. Ten dostęp zwiększa ogólną szybkość, z jaką komunikaty mogą być zapisywane w temacie.
 * Ustaw liczbę pobierania z wyprzedzeniem na 20 razy określoną częstotliwość odbierania w sekundach. Ta liczba zmniejsza liczbę Service Bus transmisjach protokołu klienta.
 
+<!-- .NET Standard SDK, Microsoft.Azure.ServiceBus -->
 [QueueClient]: /dotnet/api/microsoft.azure.servicebus.queueclient
 [MessageSender]: /dotnet/api/microsoft.azure.servicebus.core.messagesender
+
+<!-- .NET Framework SDK, Microsoft.Azure.ServiceBus -->
 [MessagingFactory]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory
-[PeekLock]: /dotnet/api/microsoft.azure.servicebus.receivemode
-[ReceiveAndDelete]: /dotnet/api/microsoft.azure.servicebus.receivemode
 [BatchFlushInterval]: /dotnet/api/microsoft.servicebus.messaging.messagesender.batchflushinterval
-[EnableBatchedOperations]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.enablebatchedoperations
-[QueueClient.PrefetchCount]: /dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount
-[SubscriptionClient.PrefetchCount]: /dotnet/api/microsoft.azure.servicebus.subscriptionclient.prefetchcount
 [ForcePersistence]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage.forcepersistence
 [EnablePartitioning]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning
+[TopicDescription.EnableFiltering]: /dotnet/api/microsoft.servicebus.messaging.topicdescription.enablefilteringmessagesbeforepublishing
+
+<!-- Local links -->
 [Partitioned messaging entities]: service-bus-partitioning.md
-[TopicDescription.EnableFilteringMessagesBeforePublishing]: /dotnet/api/microsoft.servicebus.messaging.topicdescription.enablefilteringmessagesbeforepublishing

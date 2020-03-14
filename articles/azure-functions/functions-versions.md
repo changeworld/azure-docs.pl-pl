@@ -4,11 +4,11 @@ description: Azure Functions obsługuje wiele wersji środowiska uruchomienioweg
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.openlocfilehash: 21a7b25087efd5d4adf2154c935636c263df9afd
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356026"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276558"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Przegląd wersji środowiska uruchomieniowego Azure Functions
 
@@ -202,7 +202,7 @@ W poniższej tabeli przedstawiono powiązania obsługiwane w poszczególnych wer
 
 ## <a name="next-steps"></a>Następne kroki
 
-Więcej informacji można znaleźć w następujących zasobach:
+Więcej informacji zawierają następujące zasoby:
 
 * [Kodowanie i testowanie usługi Azure Functions lokalnie](functions-run-local.md)
 * [Jak docelowa Azure Functions wersje środowiska uruchomieniowego](set-runtime-version.md)

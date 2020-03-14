@@ -17,11 +17,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e1f3755d61b5fa082665cfdb9aa91d1e31e2d4e4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376389"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266483"
 ---
 # <a name="azure-active-directory-risk-detections"></a>Azure Active Directory wykrywania ryzyka
 
@@ -108,19 +108,19 @@ W poniższej tabeli wymieniono czas, jaki jest potrzebny dla typu wykrywania do 
 | Typ wykrywania | Raportowanie opóźnienia |
 | --- | --- |
 | W czasie rzeczywistym | od 5 do 10 minut |
-| W trybie offline | od 2 do 4 godzin |
+| Taśma | od 2 do 4 godzin |
 
 
 W przypadku typów wykrywania ryzyka Azure Active Directory wykrywane są typy wykrywania:
 
 | Typ wykrywania ryzyka | Typ wykrywania |
 | :-- | --- | 
-| [Użytkownicy z ujawnionymi poświadczeniami](#leaked-credentials) | W trybie offline |
+| [Użytkownicy z ujawnionymi poświadczeniami](#leaked-credentials) | Taśma |
 | [Logowania z anonimowych adresów IP](#sign-ins-from-anonymous-ip-addresses) | W czasie rzeczywistym |
-| [Niemożliwa podróż do nietypowych lokalizacji](#impossible-travel-to-atypical-locations) | W trybie offline |
+| [Niemożliwa podróż do nietypowych lokalizacji](#impossible-travel-to-atypical-locations) | Taśma |
 | [Logowania z nieznanych lokalizacji](#sign-in-from-unfamiliar-locations) | W czasie rzeczywistym |
-| [Logowania z zainfekowanych urządzeń](#sign-ins-from-infected-devices) | W trybie offline |
-| [Logowania z adresów IP z podejrzaną aktywnością](#sign-ins-from-ip-addresses-with-suspicious-activity) | W trybie offline|
+| [Logowania z zainfekowanych urządzeń](#sign-ins-from-infected-devices) | Taśma |
+| [Logowania z adresów IP z podejrzaną aktywnością](#sign-ins-from-ip-addresses-with-suspicious-activity) | Taśma|
 
 
 ## <a name="risk-level"></a>Poziom ryzyka

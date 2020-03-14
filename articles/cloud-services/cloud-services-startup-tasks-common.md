@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: 4fe1ee3ccf2849943959889838ba0f22fb64bb9a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378946"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273061"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Typowe zadania uruchamiania usługi w chmurze
 W tym artykule przedstawiono kilka przykładów typowych zadań uruchamiania, które można wykonać w usłudze w chmurze. Zadania uruchamiania umożliwiają wykonywanie operacji przed rozpoczęciem roli. Operacje, które można wykonać, obejmują zainstalowanie składnika, zarejestrowanie składników modelu COM, ustawienie kluczy rejestru lub uruchomienie długotrwałego procesu. 

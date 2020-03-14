@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 06/07/2017
 ms.author: motanv
 ms.openlocfilehash: 4bdb00eec38addc0c9f88eba8b73185ec5721277
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394450"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282044"
 ---
 # <a name="testability-actions"></a>Akcje dotyczące testowania
 W celu zasymulowania niezawodnej infrastruktury usługa Azure Service Fabric zapewnia deweloperom sposoby symulowania różnych rzeczywistych awarii i przejść do stanu. Są one dostępne jako akcje testowania. Akcje są interfejsami API niskiego poziomu, które powodują konkretną iniekcję błędów, zmianę stanu lub weryfikację. Łącząc te akcje, można napisać kompleksowe scenariusze testów dla usług.

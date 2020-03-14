@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: cbrooks
-ms.openlocfilehash: 5d5e8250a75cc26d4b9843875f71325e163ef23b
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: c327629f0c5e88520a8bb0b9c4ff68e6edc00c35
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943555"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137343"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>Szybki Start: korzystanie z usługi Azure Storage SDK v11 for .NET do zarządzania kolejką
 
@@ -262,7 +262,7 @@ Zobacz dodatkowe zasoby używane podczas tworzenia aplikacji .NET przy użyciu k
 
 ### <a name="binaries-and-source-code"></a>Pliki binarne i kod źródłowy
 
-- Pobierz pakiety NuGet dla najnowszej wersji [biblioteki klienta usługi Azure Storage dla platformy .NET](/dotnet/api/overview/azure/storage/client)
+- Pobierz pakiety NuGet dla najnowszej wersji [biblioteki klienta usługi Azure Storage dla platformy .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet)
     - [Wspólna](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
     - [Kolejki](https://www.nuget.org/packages/Azure.Storage.Queues/)
 - Wyświetl [kod źródłowy biblioteki klienta .NET](https://github.com/Azure/azure-storage-net) w usłudze GitHub.

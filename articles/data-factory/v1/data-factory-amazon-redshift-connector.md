@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: c2e2394bbcee5294bfb752a0af2969457ffff0ee
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894208"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260529"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Przenoszenie danych z usługi Amazon RedShift przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -59,14 +59,14 @@ W poniższych sekcjach opisano właściwości JSON, które są używane do defin
 
 Poniższa tabela zawiera opisy elementów JSON, które są specyficzne dla połączonej usługi Amazon RedShift.
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 | --- | --- | --- |
-| **type** |Ta właściwość musi być ustawiona na **AmazonRedshift**. |Tak |
-| **server** |Adres IP lub nazwa hosta serwera Amazon RedShift. |Tak |
+| **type** |Ta właściwość musi być ustawiona na **AmazonRedshift**. |Yes |
+| **Server** |Adres IP lub nazwa hosta serwera Amazon RedShift. |Yes |
 | **przewożąc** |Numer portu TCP używanego przez serwer Amazon RedShift do nasłuchiwania połączeń klientów. |Nie (domyślnie 5439) |
-| **database** |Nazwa bazy danych Amazon RedShift. |Tak |
-| **Nazwa użytkownika** |Nazwa użytkownika, który ma dostęp do bazy danych. |Tak |
-| **Hasło** |Hasło konta użytkownika. |Tak |
+| **database** |Nazwa bazy danych Amazon RedShift. |Yes |
+| **uż** |Nazwa użytkownika, który ma dostęp do bazy danych. |Yes |
+| **hasło** |Hasło konta użytkownika. |Yes |
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
@@ -74,7 +74,7 @@ Aby zapoznać się z listą sekcji i właściwości, które są dostępne do def
 
 Sekcja **typeProperties** jest inna dla każdego typu zestawu danych i zawiera informacje dotyczące lokalizacji danych w sklepie. Sekcja **typeProperties** dla zestawu danych typu **relacyjnego**, który zawiera zestaw danych Amazon RedShift, ma następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 | --- | --- | --- |
 | **tableName** |Nazwa tabeli w bazie danych Amazon RedShift, do której odwołuje się połączona usługa. |Nie (Jeśli określono Właściwość **zapytania** działania Copy typu **RelationalSource** ) |
 
@@ -84,18 +84,18 @@ Aby zapoznać się z listą sekcji i właściwości, które są dostępne do def
 
 W przypadku działania kopiowania, gdy źródło jest typu **AmazonRedshiftSource**, w sekcji **typeProperties** są dostępne następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 | --- | --- | --- |
-| **query** | Użyj zapytania niestandardowego, aby odczytać dane. |Nie (Jeśli określono Właściwość **TableName** zestawu danych) |
+| **dotyczących** | Użyj zapytania niestandardowego, aby odczytać dane. |Nie (Jeśli określono Właściwość **TableName** zestawu danych) |
 | **redshiftUnloadSettings** | Zawiera grupę właściwości przy użyciu polecenia RedShift **Unload** . | Nie |
 | **s3LinkedServiceName** | Firma Amazon S3, która będzie używana jako magazyn tymczasowy. Połączona usługa jest określona przy użyciu nazwy Azure Data Factory typu **typu awsaccesskey**. | Wymagane w przypadku użycia właściwości **redshiftUnloadSettings** |
-| **bucketName** | Wskazuje zasobnik usługi Amazon S3, który ma być używany do przechowywania danych tymczasowych. Jeśli ta właściwość nie jest określona, działanie Copy automatycznie generuje zasobnik. | Wymagane w przypadku użycia właściwości **redshiftUnloadSettings** |
+| **zasobnikname** | Wskazuje zasobnik usługi Amazon S3, który ma być używany do przechowywania danych tymczasowych. Jeśli ta właściwość nie jest określona, działanie Copy automatycznie generuje zasobnik. | Wymagane w przypadku użycia właściwości **redshiftUnloadSettings** |
 
 Alternatywnie można użyć typu **RelationalSource** , który obejmuje Amazon RedShift, z następującą właściwością w sekcji **typeProperties** . Uwaga Ten typ źródła nie obsługuje polecenia RedShift **Unload** .
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 | --- | --- | --- |
-| **query** |Użyj zapytania niestandardowego, aby odczytać dane. | Nie (Jeśli określono Właściwość **TableName** zestawu danych) |
+| **dotyczących** |Użyj zapytania niestandardowego, aby odczytać dane. | Nie (Jeśli określono Właściwość **TableName** zestawu danych) |
 
 ## <a name="use-unload-to-copy-data-from-amazon-redshift"></a>Korzystanie z usługi UNLOAD do kopiowania danych z usługi Amazon RedShift
 
@@ -332,14 +332,14 @@ Następujące mapowania są używane, gdy działanie kopiowania konwertuje dane 
 | SMALLINT |Int16 |
 | INTEGER |Int32 |
 | BIGINT |Int64 |
-| DECIMAL |Decimal |
-| REAL |Pojedyncze |
-| DOUBLE PRECISION |Double |
+| DECIMAL |Dziesiętna |
+| REAL |Single |
+| DOUBLE PRECISION |Podwójne |
 | BOOLEAN |Ciąg |
 | DELIKATN |Ciąg |
 | VARCHAR |Ciąg |
-| DATE |Data i godzina |
-| TIMESTAMP |Data i godzina |
+| DATE |DateTime |
+| TIMESTAMP |DateTime |
 | TEXT |Ciąg |
 
 ## <a name="map-source-to-sink-columns"></a>Mapowanie źródła do kolumn ujścia

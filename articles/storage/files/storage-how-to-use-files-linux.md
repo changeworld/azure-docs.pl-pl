@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0ef9609cded29c94260d027212abbf0c62f8653c
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b2469a2b5819b3011f919a2b483933bb030eed70
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772112"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268199"
 ---
 # <a name="use-azure-files-with-linux"></a>Używanie usługi Azure Files z systemem Linux
 [Azure Files](storage-files-introduction.md) to łatwy w użyciu system plików w chmurze firmy Microsoft. Udziały plików platformy Azure można instalować w dystrybucjach systemu Linux przy użyciu [klienta jądra SMB](https://wiki.samba.org/index.php/LinuxCIFS). W tym artykule przedstawiono dwa sposoby instalowania udziału plików platformy Azure: na żądanie przy użyciu polecenia `mount` i rozruchu przez utworzenie wpisu w `/etc/fstab`.
@@ -26,7 +26,7 @@ Zalecanym sposobem instalowania udziału plików platformy Azure w systemie Linu
 | CentOS | 7+ |  7.5+ |
 | Debian | 8+ | 10+ |
 | openSUSE | 13.2 + | 42.3 + |
-| SUSE Linux Enterprise Server | 12+ | 12 SP3+ |
+| SUSE Linux Enterprise Server | 12 + | 12 SP3+ |
 
 Jeśli używasz dystrybucji systemu Linux, która nie jest wymieniona w powyższej tabeli, możesz sprawdzić, czy w systemie Linux jest obsługiwana obsługa protokołu SMB 3,0 z szyfrowaniem. Protokół SMB 3,0 z szyfrowaniem został dodany do jądra systemu Linux w wersji 4,11. `uname` polecenie zwróci wersję jądra systemu Linux w użyciu:
 
@@ -202,18 +202,18 @@ Począwszy od jądra systemu Linux 4,18, moduł jądra protokołu SMB o nazwie `
 | Dystrybucja | Może wyłączyć protokół SMB 1 |
 |--------------|-------------------|
 | Ubuntu 14.04-16.04 | Nie |
-| Ubuntu 18.04 | Tak |
-| Ubuntu 19.04 + | Tak |
+| Ubuntu 18.04 | Yes |
+| Ubuntu 19.04 + | Yes |
 | Debian 8-9 | Nie |
-| Debian 10 + | Tak |
-| Fedora 29 + | Tak |
+| Debian 10 + | Yes |
+| Fedora 29 + | Yes |
 | CentOS 7 | Nie | 
-| CentOS 8 + | Tak |
+| CentOS 8 + | Yes |
 | Red Hat Enterprise Linux 6. x-7. x | Nie |
-| Red Hat Enterprise Linux 8 + | Tak |
+| Red Hat Enterprise Linux 8 + | Yes |
 | openSUSE przestępnie 15,0 | Nie |
-| openSUSE przestępny 15.1 + | Tak |
-| openSUSE Tumbleweed | Tak |
+| openSUSE przestępny 15.1 + | Yes |
+| openSUSE Tumbleweed | Yes |
 | SUSE Linux Enterprise 11. x-12. x | Nie |
 | SUSE Linux Enterprise 15 | Nie |
 | SUSE Linux Enterprise 15,1 | Nie |
@@ -276,7 +276,7 @@ cat /sys/module/cifs/parameters/disable_legacy_dialects
 ## <a name="feedback"></a>Opinia
 Użytkownicy systemu Linux chcemy poznać Twoją opinię!
 
-Azure Files dla grupy użytkowników systemu Linux zawiera forum umożliwiające udostępnianie opinii podczas oceny i przyjmowanie magazynu plików w systemie Linux. Aby dołączać do grupy użytkowników, należy wysłać pocztą e-mail [Azure Files użytkowników systemu Linux](mailto:azurefileslinuxusers@microsoft.com) .
+Azure Files dla grupy użytkowników systemu Linux zawiera forum umożliwiające udostępnianie opinii podczas oceny i przyjmowanie magazynu plików w systemie Linux. Aby dołączać do grupy użytkowników, należy wysłać pocztą e-mail [Azure Files użytkowników systemu Linux](mailto:azurefiles@microsoft.com) .
 
 ## <a name="next-steps"></a>Następne kroki
 Poniższe linki umożliwiają uzyskanie dodatkowych informacji na temat usługi Azure Files:

@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 06/25/2019
 ms.author: alkohli
 ms.openlocfilehash: f49396331a31f7ca9eaf453dc8bf6880da2e0da8
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613860"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265482"
 ---
 # <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>Zarządzanie urządzeniem Azure Data Box Edge za pomocą programu Windows PowerShell
 
@@ -62,7 +62,7 @@ Aby uzyskać więcej informacji na temat certyfikatów, przejdź do pozycji [Azu
  
 [!INCLUDE [View device information](../../includes/data-box-edge-gateway-view-device-info.md)]
 
-## <a name="reset-your-device"></a>Resetowanie urządzenia
+## <a name="reset-your-device"></a>Zresetuj urządzenie
 
 [!INCLUDE [Reset your device](../../includes/data-box-edge-gateway-deactivate-device.md)]
 

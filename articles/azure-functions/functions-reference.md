@@ -5,11 +5,11 @@ ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
 ms.openlocfilehash: 7dd7ef3c4833fb9ffa3781f06faba4f40cd40cfb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356827"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276623"
 ---
 # <a name="azure-functions-developers-guide"></a>Przewodnik dla deweloperów Azure Functions
 W Azure Functions określone funkcje udostępniają kilka podstawowych pojęć i składników technicznych, niezależnie od używanego języka lub powiązania. Przed przejściem do szczegółów szczegółowych informacji dotyczących danego języka lub powiązania należy zapoznać się z tym omówieniem, który ma zastosowanie do wszystkich z nich.
@@ -96,7 +96,7 @@ Masz problemy z błędami pochodzącymi z powiązań? Zapoznaj się z dokumentac
 [!INCLUDE [Reporting Issues](../../includes/functions-reporting-issues.md)]
 
 ## <a name="next-steps"></a>Następne kroki
-Więcej informacji można znaleźć w następujących zasobach:
+Więcej informacji zawierają następujące zasoby:
 
 * [Azure Functions wyzwalacze i powiązania](functions-triggers-bindings.md)
 * [Kodowanie i testowanie usługi Azure Functions lokalnie](./functions-develop-local.md)

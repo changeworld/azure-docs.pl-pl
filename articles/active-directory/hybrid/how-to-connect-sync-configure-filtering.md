@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 983699dfbfe3e8fa332da4810d1514a11029077f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376233"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261101"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Synchronizacja programu Azure AD Connect: konfigurowanie filtrowania
 Korzystając z funkcji filtrowania, można kontrolować, które obiekty są wyświetlane w Azure Active Directory (Azure AD) z katalogu lokalnego. Konfiguracja domyślna pobiera wszystkie obiekty we wszystkich domenach w skonfigurowanych lasach. Ogólnie rzecz biorąc jest to zalecana konfiguracja. Użytkownicy korzystający z obciążeń pakietu Office 365, takich jak Exchange Online i Skype dla firm, korzystają z kompletnej globalnej listy adresów, aby mogli wysyłać wiadomości e-mail i wywoływać wszystkich użytkowników. W przypadku konfiguracji domyślnej mogą one korzystać z tego samego środowiska z lokalną implementacją programu Exchange lub Lync.

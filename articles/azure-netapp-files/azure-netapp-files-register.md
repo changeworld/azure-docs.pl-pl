@@ -1,6 +1,6 @@
 ---
 title: Rejestrowanie się w usłudze Azure NetApp Files | Microsoft Docs
-description: Opisuje sposób zarejestrować, aby używać usługi Azure Files NetApp.
+description: Opisuje, jak zarejestrować się w celu korzystania z Azure NetApp Files.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,33 +15,33 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: b-juche
 ms.openlocfilehash: 6f5d84dea2e835fd12a062b628181354295ed9f6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66299212"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274062"
 ---
 # <a name="register-for-azure-netapp-files"></a>Rejestrowanie w usłudze Azure NetApp Files
 
 > [!IMPORTANT] 
-> Przed zarejestrowaniem dostawcy zasobów usługi Azure Files NetApp, musi mieć otrzymasz wiadomość e-mail od zespołu usługi Azure Files NetApp potwierdzenie, że musisz mieć przyznany dostęp do usługi. 
+> Przed zarejestrowaniem dostawcy zasobów Azure NetApp Files należy otrzymać wiadomość e-mail od zespołu Azure NetApp Files potwierdzenie, że udzielono dostępu do usługi. 
 
-Ten artykuł zawiera informacje o sposobie rejestrowania dla usługi Azure Files NetApp, tak aby mogli rozpocząć korzystanie z usługi.
+W tym artykule dowiesz się, jak zarejestrować się w celu Azure NetApp Files, aby rozpocząć korzystanie z usługi.
 
-## <a name="waitlist"></a>Wniosek o liście oczekujących do uzyskiwania dostępu do usługi
+## <a name="waitlist"></a>Prześlij żądanie waitlist w celu uzyskania dostępu do usługi
 
-1. Wniosek o liście oczekujących do uzyskiwania dostępu do usługi Azure NetApp Files za pośrednictwem [stronę przesyłania na liście oczekujących plików NetApp Azure](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u). 
+1. Prześlij żądanie waitlist, aby uzyskać dostęp do usługi Azure NetApp Files za pomocą [strony przesyłania Azure NetApp Files waitlist](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u). 
 
-    Rejestracja na liście oczekujących nie gwarantuje usługi bezpośredniego dostępu. 
+    Rejestracja waitlist nie gwarantuje natychmiastowego dostępu do usługi. 
 
-2. Poczekaj wiadomość e-mail z potwierdzeniem oficjalne, od zespołu usługi Azure Files NetApp, przed kontynuowaniem pracy z innymi zadaniami. 
+2. Przed kontynuowaniem innych zadań poczekaj na oficjalną wiadomość e-mail z potwierdzeniem z zespołu Azure NetApp Files. 
 
-## <a name="resource-provider"></a>Zarejestruj dostawcę zasobów NetApp
+## <a name="resource-provider"></a>Rejestrowanie dostawcy zasobów NetApp
 
 Aby korzystać z usługi, należy zarejestrować dostawcę zasobów platformy Azure dla usługi Azure NetApp Files.
 
 > [!NOTE] 
-> Będzie można pomyślnie zarejestrować dostawcę zasobów NetApp, nawet jeśli nie zostanie im przyznany dostęp do usługi. Jednak bez autoryzacji dostępu do witryny Azure portal ani żądania interfejsu API, aby utworzyć konto NetApp lub innego zasobu usługi Azure Files NetApp zostanie odrzucone z powodu następującego błędu:  
+> Można pomyślnie zarejestrować dostawcę zasobów NetApp nawet bez udzielania dostępu do usługi. Jednak bez dostępu autoryzacja dowolna Azure Portal lub żądanie interfejsu API do utworzenia konta usługi NetApp lub dowolnego innego zasobu Azure NetApp Files zostanie odrzucone z powodu następującego błędu:  
 >
 > `{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"NotFound","message":"{\r\n \"error\": {\r\n \"code\": \"InvalidResourceType\",\r\n \"message\": \"The resource type could not be found in the namespace 'Microsoft.NetApp' for api version '2017-08-15'.\"\r\n }\r\n}"}]}`
 
@@ -65,7 +65,7 @@ Aby korzystać z usługi, należy zarejestrować dostawcę zasobów platformy Az
        
    `<SubID>` to identyfikator Twojej subskrypcji.
 
-    Jeśli nie widać nazwy funkcji `Microsoft.NetApp/ANFGA`, nie masz dostępu do usługi. Zatrzymaj, w tym kroku. Postępuj zgodnie z instrukcjami wyświetlanymi w [wniosek o liście oczekujących do uzyskiwania dostępu do usługi](#waitlist) Aby zażądać dostępu usługi przed kontynuowaniem. 
+    Jeśli nie widzisz nazwy funkcji `Microsoft.NetApp/ANFGA`, nie masz dostępu do usługi. Zatrzymaj w tym kroku. Aby uzyskać dostęp do usługi przed kontynuowaniem, postępuj zgodnie z instrukcjami w temacie [Prześlij żądanie waitlist](#waitlist) . 
 
 4. W konsoli usługi Azure Cloud Shell wprowadź następujące polecenie, aby zarejestrować dostawcę zasobów platformy Azure: 
     
@@ -94,6 +94,6 @@ Aby korzystać z usługi, należy zarejestrować dostawcę zasobów platformy Az
       ![Zarejestrowany dostawca Microsoft.NetApp](../media/azure-netapp-files/azure-netapp-files-registered-resource-providers.png)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Tworzenie konta usługi NetApp](azure-netapp-files-create-netapp-account.md)

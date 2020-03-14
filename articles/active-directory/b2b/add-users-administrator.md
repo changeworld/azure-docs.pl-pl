@@ -12,11 +12,11 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cf2ca3bde0cfee97adee8bb875df1522e95b1f53
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374930"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263506"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Dodawanie Azure Active Directory użytkowników współpracy B2B w Azure Portal
 

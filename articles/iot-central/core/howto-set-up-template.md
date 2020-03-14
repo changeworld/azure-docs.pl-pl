@@ -9,11 +9,11 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: 2313c347e3836b6fa9d6055f99c258624e44c51f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386222"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239504"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Definiowanie nowego typu urządzenia IoT w aplikacji IoT Central platformy Azure
 
@@ -66,7 +66,7 @@ Aby utworzyć szablon urządzenia w IoT Central:
 1. Przejdź do strony **Szablony urządzeń** w aplikacji IoT Central.
 1. Wybierz pozycję **+ nowy** > **niestandardowe**.
 1. Wprowadź nazwę szablonu, na przykład **czujnik środowiska**.
-1. Naciśnij klawisz **ENTER**. IoT Central tworzy pusty szablon urządzenia.
+1. Naciśnij klawisz **Enter**. IoT Central tworzy pusty szablon urządzenia.
 
 ## <a name="manage-a-device-template"></a>Zarządzanie szablonem urządzenia
 
@@ -138,7 +138,7 @@ W poniższej tabeli przedstawiono ustawienia konfiguracji dla funkcji właściwo
 | ----- | ----------- |
 | Nazwa wyświetlana | Nazwa wyświetlana wartości właściwości używanej na pulpitach nawigacyjnych i formularzach. |
 | Name (Nazwa) | Nazwa właściwości. IoT Central generuje wartość dla tego pola z nazwy wyświetlanej, ale w razie potrzeby można wybrać własną wartość. |
-| Typ możliwości | Wartość. |
+| Typ możliwości | wartość. |
 | Typ semantyczny | Typ semantyczny właściwości, taki jak temperatura, stan lub zdarzenie. Wybór typu semantycznego określa, które z poniższych pól są dostępne. |
 | Schemat | Typ danych właściwości, taki jak Double, String lub Vector. Dostępne opcje są określane przez typ semantyczny. Schemat nie jest dostępny dla typów semantyki zdarzenia i stanu. |
 | Zapisywalny | Jeśli właściwość nie jest zapisywalna, urządzenie może raportować wartości właściwości do IoT Central. Jeśli właściwość jest zapisywalna, urządzenie może raportować wartości właściwości do IoT Central i IoT Central może wysyłać do urządzenia aktualizacje właściwości.

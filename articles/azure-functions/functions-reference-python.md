@@ -3,12 +3,12 @@ title: Dokumentacja dla deweloperów języka Python dla Azure Functions
 description: Informacje na temat tworzenia funkcji w języku Python
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: 6c625c050652ffac568ac45b06af7a853c75c8c2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 30f40db33b6aa8b40202c023f301265565257180
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356886"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276688"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Przewodnik dewelopera w języku Python Azure Functions
 
@@ -394,7 +394,18 @@ W przypadku programowania lokalnego ustawienia aplikacji są [przechowywane w pl
 
 ## <a name="python-version"></a>Wersja języka Python 
 
-Obecnie Azure Functions obsługuje zarówno Język Python 3.6. x, jak i 3.7. x (oficjalne dystrybucje CPython). W przypadku uruchamiania lokalnego środowisko uruchomieniowe korzysta z dostępnej wersji języka Python. Aby zażądać określonej wersji języka Python podczas tworzenia aplikacji funkcji na platformie Azure, użyj opcji `--runtime-version` polecenia [`az functionapp create`](/cli/azure/functionapp#az-functionapp-create) . Zmiana wersji jest dozwolona tylko w przypadku tworzenia aplikacja funkcji.  
+Azure Functions obsługuje następujące wersje języka Python:
+
+| Wersja funkcji | Wersje<sup>*</sup> Python |
+| ----- | ----- |
+| wersji | 3.8<br/>3.7<br/>3.6 |
+| 2.x | 3.7<br/>3.6 |
+
+<sup>*</sup> Oficjalne dystrybucje CPython
+
+Aby zażądać określonej wersji języka Python podczas tworzenia aplikacji funkcji na platformie Azure, użyj opcji `--runtime-version` polecenia [`az functionapp create`](/cli/azure/functionapp#az-functionapp-create) . Wersja środowiska uruchomieniowego funkcji jest ustawiana za pomocą opcji `--functions-version`. Wersja języka Python jest ustawiana podczas tworzenia aplikacji funkcji i nie można jej zmienić.  
+
+W przypadku uruchamiania lokalnego środowisko uruchomieniowe korzysta z dostępnej wersji języka Python. 
 
 ## <a name="package-management"></a>Zarządzanie pakietami
 

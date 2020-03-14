@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: 1d9f148351e4ce12d6f6bcd699cdd74e94ba09ef
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: dd7f6d0760f2b848435e7c77657e261517d29dd8
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356930"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276909"
 ---
 # <a name="azure-functions-premium-plan"></a>Plan Azure Functions Premium
 
@@ -27,7 +27,7 @@ az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> 
 --location <REGION> --sku EP1
 ```
 
-W tym przykładzie Zastąp `<RESOURCE_GROUP>` w grupie zasobów i `<PLAN_NAME>` nazwą planu, który jest unikatowy w grupie zasobów. Określ [obsługiwaną `<REGION>`](#regions). Aby utworzyć plan Premium, który obsługuje system Linux, należy uwzględnić opcję `--is-linux`.
+W tym przykładzie Zastąp `<RESOURCE_GROUP>` w grupie zasobów i `<PLAN_NAME>` nazwą planu, który jest unikatowy w grupie zasobów. Określ [obsługiwaną `<REGION>`](https://azure.microsoft.com/global-infrastructure/services/?products=functions). Aby utworzyć plan Premium, który obsługuje system Linux, należy uwzględnić opcję `--is-linux`.
 
 Po utworzeniu planu możesz użyć [AZ functionapp Create](/cli/azure/functionapp#az-functionapp-create) , aby utworzyć aplikację funkcji. W portalu zarówno plan, jak i aplikacja są tworzone w tym samym czasie. Aby zapoznać się z przykładem kompletnego skryptu interfejsu wiersza polecenia platformy Azure, zobacz [Tworzenie aplikacji funkcji w planie Premium](scripts/functions-cli-create-premium-plan.md).
 
@@ -99,44 +99,42 @@ Uruchamianie na komputerze z większą ilością pamięci nie zawsze oznacza, ż
 
 Na przykład aplikacja funkcji JavaScript jest ograniczona przez domyślny limit pamięci w programie Node. js. Aby zwiększyć ten limit pamięci ustalonej, należy dodać ustawienie aplikacji `languageWorkers:node:arguments` z wartością `--max-old-space-size=<max memory in MB>`.
 
-## <a name="regions"></a>Regiony
+## <a name="region-max-scale-out"></a>Maksymalny rozmiar regionu w poziomie
 
-Poniżej znajdują się obecnie obsługiwane regiony dla każdego systemu operacyjnego.
+Poniżej znajdują się obecnie obsługiwane maksymalne wartości skalowania w poziomie dla pojedynczego planu w każdym regionie i konfiguracji systemu operacyjnego. Aby zażądać zwiększenia, należy otworzyć bilet pomocy technicznej.
+
+Zapoznaj się z pełną regionalną dostępnością funkcji tutaj: [Azure.com](https://azure.microsoft.com/global-infrastructure/services/?products=functions)
 
 |Region| System Windows | Linux |
 |--| -- | -- |
-|Australia Środkowa| ✔<sup>1</sup> | |
-|Australia Środkowa 2| ✔<sup>1</sup> | |
-|Australia Wschodnia| ✔ | ✔<sup>1</sup> |
-|Australia Południowo-Wschodnia | ✔ | ✔<sup>1</sup> |
-|Brazylia Południowa| ✔<sup>2</sup> | ✔<sup>1</sup> |
-|Kanada Środkowa| ✔ | ✔<sup>1</sup> |
-|Środkowe stany USA| ✔ | ✔<sup>1</sup> |
-|Azja Wschodnia| ✔ | ✔<sup>1</sup> |
-|Wschodnie stany USA | ✔ | ✔<sup>1</sup> |
-|Wschodnie stany USA 2| ✔ | ✔<sup>1</sup> |
-|Francja Środkowa| ✔ | ✔<sup>1</sup> |
-|Niemcy Środkowo-Zachodnie| ✔ | |
-|Japonia Wschodnia| ✔ | ✔<sup>1</sup> |
-|Japonia Zachodnia| ✔ | ✔<sup>1</sup> |
-|Korea Środkowa| ✔ | ✔<sup>1</sup> |
-|Północno-środkowe stany USA| ✔ | ✔<sup>1</sup> |
-|Europa Północna| ✔ | ✔<sup>1</sup> |
-|Norwegia Wschodnia| ✔<sup>1</sup> | ✔<sup>1</sup> |
-|Południowo-środkowe stany USA| ✔ | ✔<sup>1</sup> |
-|Indie Południowe | ✔ | |
-|Azja Południowo-Wschodnia| ✔ | ✔<sup>1</sup> |
-|Południowe Zjednoczone Królestwo| ✔ | ✔<sup>1</sup> |
-|Zachodnie Zjednoczone Królestwo| ✔ | ✔<sup>1</sup> |
-|Europa Zachodnia| ✔ | ✔<sup>1</sup> |
-|Indie Zachodnie| ✔ | ✔<sup>1</sup> |
-|Zachodnio-środkowe stany USA| ✔<sup>1</sup> | ✔<sup>1</sup> |
-|Zachodnie stany USA| ✔ | ✔<sup>1</sup> |
-|Zachodnie stany USA 2| ✔ | ✔<sup>1</sup> |
-
-<sup>1</sup> Maksymalna skalowanie w poziomie jest ograniczone do 20 wystąpień.  
-<sup>2</sup> Maksymalna wartość skalowania w poziomie ograniczona do 60 wystąpień.
-
+|Australia Środkowa| 20 | Niedostępne |
+|Australia Środkowa 2| 20 | Niedostępne |
+|Australia Wschodnia| 100 | 20 |
+|Australia Południowo-Wschodnia | 100 | 20 |
+|Brazylia Południowa| 60 | 20 |
+|Kanada Środkowa| 100 | 20 |
+|Środkowe stany USA| 100 | 20 |
+|Azja Wschodnia| 100 | 20 |
+|Wschodnie stany USA | 100 | 20 |
+|Wschodnie stany USA 2| 100 | 20 |
+|Francja Środkowa| 100 | 20 |
+|Niemcy Środkowo-Zachodnie| 100 | Niedostępne |
+|Japonia Wschodnia| 100 | 20 |
+|Japonia Zachodnia| 100 | 20 |
+|Korea Środkowa| 100 | 20 |
+|Północno-środkowe stany USA| 100 | 20 |
+|Europa Północna| 100 | 20 |
+|Norwegia Wschodnia| 20 | 20 |
+|Południowo-środkowe stany USA| 100 | 20 |
+|Indie Południowe | 100 | Niedostępne |
+|Azja Południowo-Wschodnia| 100 | 20 |
+|Południowe Zjednoczone Królestwo| 100 | 20 |
+|Zachodnie Zjednoczone Królestwo| 100 | 20 |
+|Europa Zachodnia| 100 | 20 |
+|Indie Zachodnie| 100 | 20 |
+|Zachodnio-środkowe stany USA| 20 | 20 |
+|Zachodnie stany USA| 100 | 20 |
+|Zachodnie stany USA 2| 100 | 20 |
 
 ## <a name="next-steps"></a>Następne kroki
 

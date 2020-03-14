@@ -8,21 +8,15 @@ ms.topic: overview
 ms.date: 02/27/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 710c5a780841135344d92e93a02f97963b36b09e
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 8d226b67c0b438ac726fc3abf6452db68fb10dce
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921394"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79140709"
 ---
 # <a name="what-is-azure-private-link"></a>Co to jest łącze prywatne platformy Azure? 
-Link prywatny platformy Azure umożliwia dostęp do usług Azure PaaS Services, takich jak:
- 
- - **Azure Storage**
- - **Azure Cosmos DB**
- - **Azure SQL Database**
-
-Link prywatny umożliwia dostęp do hostowanych usług klienta i partnera za pośrednictwem [prywatnego punktu końcowego](private-endpoint-overview.md) w sieci wirtualnej.
+Link prywatny platformy Azure umożliwia dostęp do usług Azure PaaS Services (na przykład Azure Storage i SQL Database) oraz hostowanych usług partnerów/partnerskich platformy Azure w ramach [prywatnego punktu końcowego](private-endpoint-overview.md) w sieci wirtualnej.
 
 Ruch między siecią wirtualną a usługą porusza się w sieci szkieletowej firmy Microsoft. Ujawnienie usługi do publicznej sieci Internet nie jest już konieczne. Możesz utworzyć własną [prywatną usługę linku](private-link-service-overview.md) w sieci wirtualnej i dostarczyć jej klientom. Konfiguracja i użycie przy użyciu prywatnego linku platformy Azure jest spójne w ramach usług Azure PaaS, należących do klienta i współużytkowanych partnerów.
 

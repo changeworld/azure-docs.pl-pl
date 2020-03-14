@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/03/2020
+ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3af62a75228959478a80c2628307fff2b47c3c4a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 3abf38a4b1ea798c39150454ac33f73ea588b782
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78187495"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264377"
 ---
 # <a name="localization-string-ids"></a>Identyfikatory ciągów lokalizacji
 
@@ -215,6 +215,23 @@ Poniżej przedstawiono identyfikatory [kontrolki wyświetlania weryfikacji](disp
 |verification_control_but_send_code |Wyślij kod |
 |verification_control_but_send_new_code |Wyślij nowy kod |
 |verification_control_but_verify_code |Weryfikuj kod |
+|verification_control_code_sent| Kod weryfikacyjny został wysłany. Skopiuj ją do poniższego pola wejściowego. |
+
+### <a name="example"></a>Przykład
+
+```XML
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_but_change_claims">Change</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_fail_send_code">Failed to send the code, please try again later.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_fail_verify_code">Failed to verify the code, please try again later.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_but_send_code">Send Code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_but_send_new_code">Send New Code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_but_verify_code">Verify Code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_code_sent">Verification code has been sent. Please copy it to the input box below.</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
 
 ## <a name="one-time-password-error-messages"></a>Komunikaty o błędach z hasłem jednorazowym
 Poniżej przedstawiono identyfikatory komunikatów o błędach [profilu technicznego hasła](one-time-password-technical-profile.md)
@@ -226,6 +243,18 @@ Poniżej przedstawiono identyfikatory komunikatów o błędach [profilu technicz
 |UserMessageIfSessionConflict |Konflikt sesji weryfikacji hasła jednorazowego |
 |UserMessageIfInvalidCode |Hasło jednorazowe podane do weryfikacji jest nieprawidłowe |
 
+### <a name="example"></a>Przykład
+
+```XML
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceed the maximum time allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceed the number of retries allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidCode">You have entered the wrong code.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
 
 
 

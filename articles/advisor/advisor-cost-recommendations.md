@@ -3,12 +3,12 @@ title: Zmniejsz koszty usługi przy użyciu Azure Advisor
 description: Użyj Azure Advisor, aby zoptymalizować koszty wdrożeń platformy Azure.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: afa5a4068d2ec5f4730d261801760fe68d7a330e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0237feab59551ecab87d78b0d4d66b9fc7b47e90
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443123"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259697"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Zmniejsz koszty usługi przy użyciu Azure Advisor
 
@@ -47,9 +47,12 @@ Azure Advisor wykryje Azure Data Factory potoki, które wielokrotnie kończą si
 ## <a name="use-standard-snapshots-for-managed-disks"></a>Użyj standardowych migawek dla Managed Disks
 Aby obniżyć koszt o 60%, zalecamy przechowywanie migawek w usłudze Standard Storage niezależnie od typu magazynu na dysku nadrzędnym. Ta opcja jest opcją domyślną dla migawek Managed Disks. Azure Advisor zidentyfikuje migawki, które są przechowywane Premium Storage i zaleca Migrowanie migawki z magazynu w warstwie Premium do warstwy Standardowa. [Dowiedz się więcej o cenach dysku zarządzanego](https://aka.ms/aa_manageddisksnapshot_learnmore)
 
+## <a name="utilize-lifecycle-management"></a>Korzystanie z zarządzania cyklem życia
+Azure Advisor będzie używać analizy dotyczącej liczby obiektów usługi Azure Blob Storage, łącznego rozmiaru i transakcji w celu wykrycia, czy co najmniej jedno konto magazynu najlepiej nadaje się do włączenia zarządzania cyklem życia do danych warstwy. Spowoduje to wyświetlenie monitu o utworzenie reguł zarządzania cyklem życia w celu automatycznego przechowania danych w celu zoptymalizowania lub archiwizacji, aby zoptymalizować koszty magazynowania podczas zachowywania danych w usłudze Azure Blob Storage w celu zapewnienia zgodności aplikacji.
+
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Jak uzyskać dostęp do zaleceń dotyczących kosztów w Azure Advisor
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 
 1. Wyszukaj i wybierz opcję [**Advisor**](https://aka.ms/azureadvisordashboard) z dowolnej strony.
 
@@ -59,7 +62,7 @@ Aby obniżyć koszt o 60%, zalecamy przechowywanie migawek w usłudze Standard S
 
 Aby dowiedzieć się więcej na temat zaleceń klasyfikatora, zobacz:
 * [Wprowadzenie do usługi Advisor](advisor-overview.md)
-* [Wprowadzenie](advisor-get-started.md)
+* [Rozpoczęcie pracy](advisor-get-started.md)
 * [Zalecenia dotyczące wydajności usługi Advisor](advisor-performance-recommendations.md)
 * [Zalecenia dotyczące wysokiej dostępności usługi Advisor](advisor-high-availability-recommendations.md)
 * [Zalecenia dotyczące zabezpieczeń usługi Advisor](advisor-security-recommendations.md)

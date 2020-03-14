@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: harahma
 ms.openlocfilehash: 69c7edb08693937aad5a658e0b22b00cd2a81647
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391413"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282395"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Model hostingu Service Fabric platformy Azure
 Ten artykuł zawiera omówienie modeli hostingu aplikacji udostępnianych przez usługę Azure Service Fabric i opisuje różnice między **procesem udostępnionym** i modelami **procesów wyłącznych** . Opisano w nim, jak wdrożona aplikacja szuka węzła Service Fabric i relacji między replikami (lub wystąpieniami) usługi i procesem hosta usługi.

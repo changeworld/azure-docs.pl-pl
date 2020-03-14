@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: ff2267c2d03076d3abc44d0bd1dddc64577cc7f1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386012"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283864"
 ---
 # <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Przewodnik odwołujący się do schematu definicji przepływu pracy w Azure Logic Apps
 
@@ -35,9 +35,9 @@ Poniżej przedstawiono strukturę wysokiego poziomu dla definicji przepływu pra
 }
 ```
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 |-----------|----------|-------------|
-| `definition` | Tak | Element początkowy definicji przepływu pracy |
+| `definition` | Yes | Element początkowy definicji przepływu pracy |
 | `$schema` | Tylko wtedy, gdy zewnętrznie odwołuje się do definicji przepływu pracy | Lokalizacja pliku schematu JSON opisującego wersję języka definicji przepływu pracy, którą można znaleźć tutaj: <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json`</p> |
 | `actions` | Nie | Definicje jednej lub więcej akcji do wykonania w czasie wykonywania przepływu pracy. Aby uzyskać więcej informacji, zobacz [wyzwalacze i akcje](#triggers-actions). <p><p>Maksymalna liczba akcji: 250 |
 | `contentVersion` | Nie | Numer wersji dla definicji przepływu pracy, który domyślnie jest "1.0.0.0". Aby ułatwić identyfikację i potwierdzenie prawidłowej definicji podczas wdrażania przepływu pracy, określ wartość, która ma zostać użyta. |
@@ -74,11 +74,11 @@ Oto ogólna struktura definicji parametru:
 },
 ```
 
-| Atrybut | Wymagane | Typ | Opis |
+| Atrybut | Wymagany | Typ | Opis |
 |-----------|----------|------|-------------|
-| *Nazwa parametru* <> | Tak | Ciąg | Nazwa parametru, który ma zostać zdefiniowany |
-| <*Typ parametru*> | Tak | int, float, String, bool, Array, Object, SecureString, secureobject <p><p>**Uwaga**: dla wszystkich haseł, kluczy i wpisów tajnych użyj typów `securestring` lub `secureobject`, ponieważ operacja `GET` nie zwraca tych typów. Aby uzyskać więcej informacji na temat zabezpieczania parametrów, zapoznaj się z [zaleceniami dotyczącymi zabezpieczeń i parametrami wejściowymi](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters). | Typ parametru |
-| <*domyślny parametr-wartość*> | Tak | Taki sam jak `type` | Wartość domyślna parametru, która ma być używana, jeśli żadna wartość nie zostanie określona podczas tworzenia wystąpienia przepływu pracy. Atrybut `defaultValue` jest wymagany, aby projektant aplikacji logiki mógł poprawnie pokazać parametr, ale można określić wartość pustą. |
+| *Nazwa parametru* <> | Yes | Ciąg | Nazwa parametru, który ma zostać zdefiniowany |
+| <*Typ parametru*> | Yes | int, float, String, bool, Array, Object, SecureString, secureobject <p><p>**Uwaga**: dla wszystkich haseł, kluczy i wpisów tajnych użyj typów `securestring` lub `secureobject`, ponieważ operacja `GET` nie zwraca tych typów. Aby uzyskać więcej informacji na temat zabezpieczania parametrów, zapoznaj się z [zaleceniami dotyczącymi zabezpieczeń i parametrami wejściowymi](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters). | Typ parametru |
+| <*domyślny parametr-wartość*> | Yes | Taki sam jak `type` | Wartość domyślna parametru, która ma być używana, jeśli żadna wartość nie zostanie określona podczas tworzenia wystąpienia przepływu pracy. Atrybut `defaultValue` jest wymagany, aby projektant aplikacji logiki mógł poprawnie pokazać parametr, ale można określić wartość pustą. |
 | <*tablicę z wartościami dozwolonymi parametrami*> | Nie | Tablica | Tablica z wartościami, które parametr może zaakceptować |
 | <*parametru-description*> | Nie | JSON — Obiekt | Wszystkie inne szczegóły parametrów, takie jak opis parametru |
 ||||
@@ -112,13 +112,13 @@ W atrybucie `staticResults`, zdefiniuj `outputs` makiety akcji i `status`, że a
 }
 ```
 
-| Atrybut | Wymagane | Typ | Opis |
+| Atrybut | Wymagany | Typ | Opis |
 |-----------|----------|------|-------------|
-| <*nazwy static-Result-definition*> | Tak | Ciąg | Nazwa statycznej definicji wyniku, którą definicja akcji może odwoływać się za pomocą obiektu `runtimeConfiguration.staticResult`. Aby uzyskać więcej informacji, zobacz [Ustawienia konfiguracji środowiska uruchomieniowego](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>Możesz użyć dowolnej unikatowej nazwy. Domyślnie ta unikatowa nazwa jest dołączana do liczby, która jest zwiększana w miarę potrzeb. |
-| <*dane wyjściowe — atrybuty i wartości zwracane*> | Tak | Różnie | Wymagania dotyczące tych atrybutów różnią się w zależności od różnych warunków. Na przykład gdy `status` jest `Succeeded`, atrybut `outputs` zawiera atrybuty i wartości zwracane jako dane wyjściowe makiety przez akcję. Jeśli `status` jest `Failed`, atrybut `outputs` zawiera atrybut `errors`, który jest tablicą zawierającą co najmniej jeden błąd `message` obiektów, które zawierają informacje o błędzie. |
+| <*nazwy static-Result-definition*> | Yes | Ciąg | Nazwa statycznej definicji wyniku, którą definicja akcji może odwoływać się za pomocą obiektu `runtimeConfiguration.staticResult`. Aby uzyskać więcej informacji, zobacz [Ustawienia konfiguracji środowiska uruchomieniowego](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>Możesz użyć dowolnej unikatowej nazwy. Domyślnie ta unikatowa nazwa jest dołączana do liczby, która jest zwiększana w miarę potrzeb. |
+| <*dane wyjściowe — atrybuty i wartości zwracane*> | Yes | Różna | Wymagania dotyczące tych atrybutów różnią się w zależności od różnych warunków. Na przykład gdy `status` jest `Succeeded`, atrybut `outputs` zawiera atrybuty i wartości zwracane jako dane wyjściowe makiety przez akcję. Jeśli `status` jest `Failed`, atrybut `outputs` zawiera atrybut `errors`, który jest tablicą zawierającą co najmniej jeden błąd `message` obiektów, które zawierają informacje o błędzie. |
 | <*wartości nagłówka*> | Nie | JSON | Wszystkie wartości nagłówka zwrócone przez akcję |
-| <*Stan — zwrócony kod*> | Tak | Ciąg | Kod stanu zwracany przez akcję |
-| *akcja <— stan*> | Tak | Ciąg | Stan akcji, na przykład `Succeeded` lub `Failed` |
+| <*Stan — zwrócony kod*> | Yes | Ciąg | Kod stanu zwracany przez akcję |
+| *akcja <— stan*> | Yes | Ciąg | Stan akcji, na przykład `Succeeded` lub `Failed` |
 |||||
 
 Na przykład w tej definicji akcji HTTP `runtimeConfiguration.staticResult.name` atrybut odwołuje się `HTTP0` wewnątrz atrybutu `staticResults`, gdzie są zdefiniowane dane wyjściowe makiety dla akcji. Atrybut `runtimeConfiguration.staticResult.staticResultOptions` określa, że ustawienie wyniku statycznego jest `Enabled` w akcji HTTP.
@@ -168,7 +168,7 @@ Akcja HTTP zwraca dane wyjściowe w definicji `HTTP0` wewnątrz `staticResults`.
 
 <a name="expressions"></a>
 
-## <a name="expressions"></a>{1&gt;Wyrażenia&lt;1}
+## <a name="expressions"></a>Wyrażenia
 
 Za pomocą formatu JSON można mieć wartości literałów, które istnieją w czasie projektowania, na przykład:
 
@@ -257,7 +257,7 @@ Gdy wszystko będzie gotowe, zostanie wyświetlone wyrażenie dla odpowiedniej w
 
 <a name="outputs"></a>
 
-## <a name="outputs"></a>Wyjścia
+## <a name="outputs"></a>Dane wyjściowe
 
 W sekcji `outputs` Zdefiniuj dane, które mogą być zwracane przez przepływ pracy po zakończeniu działania. Na przykład w celu śledzenia określonego stanu lub wartości z każdego przebiegu, należy określić, że dane wyjściowe przepływu pracy będą zwracane z tych danych.
 
@@ -275,11 +275,11 @@ Oto ogólna struktura definicji danych wyjściowych:
 }
 ```
 
-| Atrybut | Wymagane | Typ | Opis |
+| Atrybut | Wymagany | Typ | Opis |
 |-----------|----------|------|-------------|
-| *Nazwa klucza* <> | Tak | Ciąg | Nazwa klucza dla wyjściowej wartości zwracanej |
-| <> *typu klucza* | Tak | int, float, string, securestring, bool, array, obiekt JSON | Typ wyjściowej wartości zwracanej |
-| <*klucz-wartość*> | Tak | Analogicznie jak*klucz typu* <> | Zwracana wartość wyjściowa |
+| *Nazwa klucza* <> | Yes | Ciąg | Nazwa klucza dla wyjściowej wartości zwracanej |
+| <> *typu klucza* | Yes | int, float, string, securestring, bool, array, obiekt JSON | Typ wyjściowej wartości zwracanej |
+| <*klucz-wartość*> | Yes | Analogicznie jak*klucz typu* <> | Zwracana wartość wyjściowa |
 |||||
 
 Aby uzyskać dane wyjściowe z przebiegu przepływu pracy, przejrzyj historię uruchamiania aplikacji logiki oraz szczegóły w Azure Portal lub Użyj [interfejsu API REST przepływu pracy](https://docs.microsoft.com/rest/api/logic/workflows). Możesz również przekazać dane wyjściowe do systemów zewnętrznych, na przykład Power BI, aby można było tworzyć pulpity nawigacyjne.

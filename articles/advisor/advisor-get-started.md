@@ -4,11 +4,11 @@ description: Rozpocznij pracę z Azure Advisor.
 ms.topic: article
 ms.date: 02/01/2019
 ms.openlocfilehash: 8c2699030b1a6d428ddc2a4db40a66003824cf10
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443135"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259632"
 ---
 # <a name="get-started-with-azure-advisor"></a>Wprowadzenie do usługi Azure Advisor
 
@@ -19,7 +19,7 @@ Dowiedz się, jak uzyskać dostęp do usługi Advisor za pomocą Azure Portal, u
 
 ## <a name="get-recommendations"></a>Pobierz zalecenia
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 
 1. W lewym okienku kliknij pozycję **Advisor**.  Jeśli usługa Advisor nie jest widoczna w okienku po lewej stronie, kliknij pozycję **wszystkie usługi**.  W okienku menu usługi w obszarze **monitorowanie i zarządzanie**kliknij pozycję **Advisor**. Zostanie wyświetlony pulpit nawigacyjny usługi Advisor.
 

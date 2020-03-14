@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 19544d9ea9a86b6c0ad98debc7361f4579cbc998
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 5acd1a417222b4810393e8fe912b5243caaeb4cd
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78247017"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79139644"
 ---
 # <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>Tworzenie aplikacji z wieloma kontenerami (w wersji zapoznawczej) przy użyciu konfiguracji narzędzia Docker Compose
 
@@ -96,6 +96,9 @@ Po utworzeniu planu usługi App Service interfejs wiersza polecenia platformy Az
 ```
 
 ## <a name="create-a-docker-compose-app"></a>Tworzenie aplikacji narzędzia Docker Compose
+
+> [!NOTE]
+> W tej chwili Docker Compose na platformie Azure App Services obecnie obowiązuje limit 4 000 znaków.
 
 W terminalu usługi Cloud Shell utwórz wielokontenerową [aplikację internetową](app-service-linux-intro.md) w ramach planu usługi App Service `myAppServicePlan`, używając polecenia [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create). Nie zapomnij zastąpić _\<app_name >_ z unikatową nazwą aplikacji (prawidłowe znaki to `a-z`, `0-9`i `-`).
 

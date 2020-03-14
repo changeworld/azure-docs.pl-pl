@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
 ms.openlocfilehash: f2b454e812db1eea686f82e92841163f1129b6c8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384905"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79267627"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>Rozwiązywanie problemów z wdrażaniem urządzeń StorSimple
 ## <a name="overview"></a>Omówienie
@@ -69,7 +69,7 @@ W poniższej tabeli wymieniono typowe błędy, które mogą wystąpić podczas:
 * Zarejestruj urządzenie.
 
 ## <a name="errors-during-the-required-network-settings"></a>Błędy w wymaganych ustawieniach sieci
-| Nie. | Komunikat o błędzie | Możliwe przyczyny | Zalecane działanie |
+| Nie. | Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
 | --- | --- | --- | --- |
 | 1 |Invoke-HcsSetupWizard: to polecenie można uruchomić tylko na aktywnym kontrolerze. |Konfiguracja została wykonana na kontrolerze pasywnym. |Uruchom to polecenie z poziomu aktywnego kontrolera. Aby uzyskać więcej informacji, zobacz [Identyfikowanie aktywnego kontrolera na urządzeniu](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device). |
 | 2 |Invoke-HcsSetupWizard: urządzenie nie jest gotowe. |Występują problemy z łącznością sieciową na danych 0. |Sprawdź łączność sieci fizycznej z danymi 0. |
@@ -80,7 +80,7 @@ W poniższej tabeli wymieniono typowe błędy, które mogą wystąpić podczas:
 | 7 |Invoke-HcsSetupWizard: nie ma więcej punktów końcowych dostępnych w programie mapowania punktów końcowych. (Wyjątek od HRESULT: 0x800706D9) |Funkcjonalność klastra nie działa. |[Skontaktuj się z pomocą techniczną firmy Microsoft](storsimple-8000-contact-microsoft-support.md), aby uzyskać informacje o kolejnych krokach. |
 
 ## <a name="errors-during-the-optional-web-proxy-settings"></a>Błędy podczas opcjonalnych ustawień serwera proxy sieci Web
-| Nie. | Komunikat o błędzie | Możliwe przyczyny | Zalecane działanie |
+| Nie. | Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
 | --- | --- | --- | --- |
 | 1 |Invoke-HcsSetupWizard: nieprawidłowy parametr (wyjątek z HRESULT: 0x80070057) |Jeden z parametrów podanych dla ustawień serwera proxy jest nieprawidłowy. |Identyfikator URI nie ma poprawnego formatu. Użyj następującego formatu: http:// *\<adres IP lub nazwa FQDN serwera proxy sieci web >* : *\<numer portu TCP >* |
 | 2 |Invoke-HcsSetupWizard: serwer RPC niedostępny (wyjątek z HRESULT: 0x800706ba) |Główna przyczyna jest jedną z następujących czynności:<ol><li>Klaster nie działa.</li><li>Kontroler pasywny nie może komunikować się z aktywnym kontrolerem, a polecenie jest uruchamiane z kontrolera pasywnego.</li></ol> |W zależności od przyczyny głównej:<ol><li>[Skontaktuj się z pomoc techniczna firmy Microsoft](storsimple-8000-contact-microsoft-support.md) , aby upewnić się, że klaster działa.</li><li>Uruchom polecenie z poziomu aktywnego kontrolera. Jeśli chcesz uruchomić polecenie z kontrolera pasywnego, musisz się upewnić, że kontroler pasywny może komunikować się z aktywnym kontrolerem. Jeśli ta łączność zostanie przerwana, należy [skontaktować się z pomoc techniczna firmy Microsoft](storsimple-8000-contact-microsoft-support.md) .</li></ol> |
@@ -103,7 +103,7 @@ Aby uzyskać więcej informacji na temat hasła administratora urządzenia, prze
 
 Podczas konfigurowania administratora urządzenia i StorSimple Snapshot Manager hasła może wystąpić co najmniej jeden z następujących błędów.
 
-| Nie. | Komunikat o błędzie | Zalecane działanie |
+| Nie. | Komunikat o błędzie | Zalecana akcja |
 | --- | --- | --- |
 | 1 |Hasło przekracza maksymalną długość. |Hasło administratora urządzenia musi mieć długość od 8 do 15 znaków. |
 | 2 |Hasło nie spełnia wymagań dotyczących długości. |Hasło administratora urządzenia musi mieć długość od 8 do 15 znaków.|
@@ -126,7 +126,7 @@ Możesz zresetować hasło w Azure Portal za pośrednictwem usługi StorSimple M
 ## <a name="errors-during-device-registration"></a>Błędy podczas rejestracji urządzenia
 Aby zarejestrować urządzenie, należy użyć usługi StorSimple Menedżer urządzeń działającej w programie Microsoft Azure. Wystąpił co najmniej jeden z następujących problemów podczas rejestracji urządzenia.
 
-| Nie. | Komunikat o błędzie | Możliwe przyczyny | Zalecane działanie |
+| Nie. | Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
 | --- | --- | --- | --- |
 | 1 |Błąd 350027: nie można zarejestrować urządzenia w Menedżer urządzeń StorSimple. | |Poczekaj kilka minut, a następnie spróbuj ponownie wykonać operację. Jeśli problem będzie się powtarzać, [skontaktuj się z firmą pomoc techniczna firmy Microsoft](storsimple-8000-contact-microsoft-support.md). |
 | 2 |Błąd 350013: Wystąpił błąd podczas rejestrowania urządzenia. Może to być spowodowane niepoprawnym kluczem rejestracji usługi. | |Zarejestruj urządzenie ponownie przy użyciu poprawnego klucza rejestracji usługi. Aby uzyskać więcej informacji, zobacz [Pobieranie klucza rejestracji usługi.](storsimple-8000-manage-service.md#get-the-service-registration-key) |

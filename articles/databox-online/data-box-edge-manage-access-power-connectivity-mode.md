@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 06/24/2019
 ms.author: alkohli
 ms.openlocfilehash: 7ce4b9dda853e63e427757317abc2f7c878ba3a4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384697"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260269"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-edge"></a>Zarządzanie dostępem, możliwością i trybem łączności dla Azure Data Box Edge
 
@@ -48,12 +48,12 @@ Resetowanie przepływu pracy nie wymaga od użytkownika odwoływania starego has
 
 1. W Azure Portal przejdź do **omówienia > Resetowanie hasła administratora**.
 
-    ![Zresetuj hasło](media/data-box-edge-manage-access-power-connectivity-mode/reset-password-1.png)
+    ![Resetowanie hasła](media/data-box-edge-manage-access-power-connectivity-mode/reset-password-1.png)
 
 
 2. Wprowadź nowe hasło, a następnie potwierdź je. Podane hasło musi zawierać od 8 do 16 znaków. Hasło musi zawierać 3 z następujących znaków: wielkie litery, małe litery, cyfry i znaki specjalne. Wybierz pozycję **Zresetuj**.
 
-    ![Zresetuj hasło](media/data-box-edge-manage-access-power-connectivity-mode/reset-password-2.png)
+    ![Resetowanie hasła](media/data-box-edge-manage-access-power-connectivity-mode/reset-password-2.png)
 
 ## <a name="manage-resource-access"></a>Zarządzanie dostępem do zasobów
 

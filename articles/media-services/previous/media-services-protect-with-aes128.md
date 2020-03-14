@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 01153317b49e4543f10faa517bce7bcc01ce22d4
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895833"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269733"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Korzystanie z szyfrowania dynamicznego AES-128 i usługi dostarczania kluczy
 > [!div class="op_single_selector"]
@@ -67,7 +67,7 @@ Kompletny [przykład platformy .NET](media-services-protect-with-aes128.md#examp
 
 Poniższa ilustracja pokazuje opisany wcześniej przepływ pracy. Jest tu używany token do uwierzytelniania.
 
-![Ochrona z zastosowaniem standardu AES-128](./media/media-services-content-protection-overview/media-services-content-protection-with-aes.png)
+![Ochrona za pomocą algorytmu AES-128](./media/media-services-content-protection-overview/media-services-content-protection-with-aes.png)
 
 Pozostała część tego artykułu zawiera wyjaśnienia, przykłady kodu i linki do tematów, w których pokazano, jak wykonać zadania opisane wcześniej.
 
@@ -260,5 +260,5 @@ Upewnij się, że zaktualizowano zmienne, tak aby wskazywały foldery, w któryc
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Prześlij opinię
+## <a name="provide-feedback"></a>Przekaż opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

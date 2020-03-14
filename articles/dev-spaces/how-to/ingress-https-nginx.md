@@ -6,11 +6,11 @@ ms.topic: conceptual
 description: Dowiedz się, jak skonfigurować Azure Dev Spaces, aby użyć niestandardowego kontrolera NGINXal i skonfigurować protokół HTTPS za pomocą tego kontrolera
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s
 ms.openlocfilehash: 2debe6daf409200059f28aef52202223193e8f0c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389661"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265339"
 ---
 # <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>Korzystanie z niestandardowego kontrolera NGINX Ingres i Konfigurowanie protokołu HTTPS
 

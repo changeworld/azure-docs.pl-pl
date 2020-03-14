@@ -6,11 +6,11 @@ ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: f60f248ec3fbbe5adfb61bf361546d1d5e238f54
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387074"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238545"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>Samouczek: tworzenie szablonów usługi Azure Resource Manager z zasobami zależnymi
 

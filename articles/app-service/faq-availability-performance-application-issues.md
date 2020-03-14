@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: c12e14b8b842e3ccf9f2bf9e0ab783d8852ee69b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 433f5885c7f057226e78c4ae57e03d7619004d21
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357778"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259866"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Często zadawane pytania dotyczące wydajności aplikacji dla Web Apps na platformie Azure
 
@@ -92,8 +92,9 @@ Informacje o przydziałach i limitach można znaleźć w temacie [App Service li
 Domyślnie aplikacje sieci Web są zwalniane, jeśli są bezczynne przez określony czas. W ten sposób system może zaoszczędzić zasoby. Minusem polega na tym, że odpowiedź na pierwsze żądanie po wyładowaniu aplikacji sieci Web jest większa, co pozwala aplikacji sieci Web ładować i uruchamiać odpowiedzi. W planach usług w warstwach Podstawowa i Standardowa można włączyć ustawienie **zawsze włączone** , aby zachować zawsze załadowane aplikacje. Eliminuje to dłuższe czasy ładowania, gdy aplikacja jest bezczynna. Aby zmienić ustawienie **zawsze włączone** :
 
 1. W Azure Portal przejdź do aplikacji sieci Web.
-2. Wybierz pozycję **Ustawienia aplikacji**.
-3. Dla opcji **zawsze włączone**wybierz pozycję **włączone**.
+2. Wybierz **konfigurację**
+3. Wybierz pozycję **Ustawienia ogólne**.
+4. Dla opcji **zawsze włączone**wybierz pozycję **włączone**.
 
 ## <a name="how-do-i-turn-on-failed-request-tracing"></a>Jak mogę włączyć śledzenia nieudanych żądań?
 

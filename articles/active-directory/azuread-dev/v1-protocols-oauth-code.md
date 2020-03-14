@@ -17,11 +17,11 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: bc303dc62892f8fac67bb6869e72db0e40f19779
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377829"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263545"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Autoryzowanie dostępu do aplikacji internetowych usługi Azure Active Directory przy użyciu przepływu udzielania kodu OAuth 2.0
 
@@ -90,7 +90,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | state |Rekomendowane |Wartość zawarta w żądaniu, która jest również zwracana w odpowiedzi tokenu. Losowo wygenerowana unikatowa wartość jest zwykle używana w celu [zapobiegania atakom na fałszerstwo żądań między witrynami](https://tools.ietf.org/html/rfc6749#section-10.12). Ten stan jest również używany do kodowania informacji o stanie użytkownika w aplikacji przed wystąpieniem żądania uwierzytelnienia, takiego jak strona lub widok. |
 | resource | Rekomendowane |Identyfikator URI aplikacji docelowego internetowego interfejsu API (zabezpieczony zasób). Aby znaleźć identyfikator URI aplikacji, w witrynie Azure Portal kliknij pozycję **Azure Active Directory**, kliknij pozycję **rejestracje aplikacji**, Otwórz stronę **Ustawienia** aplikacji, a następnie kliknij przycisk **Właściwości**. Może to być również zasób zewnętrzny, taki jak `https://graph.microsoft.com`. Jest to wymagane w jednym z żądań autoryzacji lub tokenu. Aby zapewnić mniejszą liczbę wierszy uwierzytelniania, umieść ją w żądaniu autoryzacji, aby upewnić się, że od użytkownika otrzymano zgodę. |
 | scope | **Ignoruj** | W przypadku aplikacji usługi Azure AD w wersji 1 zakresy muszą być konfigurowane statycznie w witrynie Azure Portal w obszarze **Ustawienia**aplikacji, **wymagane uprawnienia**. |
-| pytać |obowiązkowe |Wskaż typ interakcji z użytkownikiem, która jest wymagana.<p> Prawidłowe wartości to: <p> *Logowanie*: użytkownik powinien mieć monit o ponowne uwierzytelnienie. <p> *select_account*: użytkownik jest monitowany o wybranie konta, przerwanie logowania jednokrotnego. Użytkownik może wybrać istniejące zalogowane konto, wprowadzić poświadczenia dla konta zapamiętanego lub użyć innego konta. <p> *zgoda*: przyznano zgodę użytkownika, ale należy ją zaktualizować. Użytkownik powinien zostać poproszony o zgodę. <p> *admin_consent*: Administrator powinien otrzymywać monit o zgodę w imieniu wszystkich użytkowników w organizacji. |
+| pytać |obowiązkowe |Wskaż typ interakcji z użytkownikiem, która jest wymagana.<p> Prawidłowe wartości: <p> *Logowanie*: użytkownik powinien mieć monit o ponowne uwierzytelnienie. <p> *select_account*: użytkownik jest monitowany o wybranie konta, przerwanie logowania jednokrotnego. Użytkownik może wybrać istniejące zalogowane konto, wprowadzić poświadczenia dla konta zapamiętanego lub użyć innego konta. <p> *zgoda*: przyznano zgodę użytkownika, ale należy ją zaktualizować. Użytkownik powinien zostać poproszony o zgodę. <p> *admin_consent*: Administrator powinien otrzymywać monit o zgodę w imieniu wszystkich użytkowników w organizacji. |
 | login_hint |obowiązkowe |Może służyć do wstępnego wypełniania pola Nazwa użytkownika/adres e-mail strony logowania dla użytkownika, jeśli znana jest jego nazwa użytkownika przed czasem. Często aplikacje używają tego parametru podczas ponownego uwierzytelniania, ponieważ już wyodrębnili nazwę użytkownika z poprzedniego logowania przy użyciu `preferred_username`. |
 | domain_hint |obowiązkowe |Zawiera wskazówkę dotyczącą dzierżawy lub domeny, której użytkownik powinien używać do logowania. Wartość domain_hint jest zarejestrowaną domeną dla dzierżawcy. Jeśli dzierżawca jest federacyjny do katalogu lokalnego, w usłudze AAD przekierowania do określonego serwera federacyjnego dzierżawcy. |
 | code_challenge_method | Rekomendowane    | Metoda używana do kodowania `code_verifier` dla parametru `code_challenge`. Może to być jeden z `plain` lub `S256`. W przypadku wykluczenia `code_challenge` przyjmuje się, że jest to zwykły tekst, jeśli `code_challenge` jest uwzględniony. Usługa Azure AAD v 1.0 obsługuje zarówno `plain`, jak i `S256`. Aby uzyskać więcej informacji, zobacz [dokument RFC PKCE](https://tools.ietf.org/html/rfc7636). |

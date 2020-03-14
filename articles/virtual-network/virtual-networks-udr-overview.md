@@ -17,11 +17,11 @@ ms.date: 10/26/2017
 ms.author: malop
 ms.reviewer: kumud
 ms.openlocfilehash: 8b95bb45436f45dc0e62fb12d6ab1b24c37372e1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356469"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280068"
 ---
 # <a name="virtual-network-traffic-routing"></a>Routing ruchu w sieci wirtualnej
 
@@ -60,8 +60,8 @@ Platforma Azure dodaje dodatkowe domyślne trasy systemowe dla różnych funkcji
 
 |Element źródłowy                 |Prefiksy adresów                       |Typ następnego skoku|Podsieć w sieci wirtualnej, której trasa jest dodawana|
 |-----                  |----                                   |---------                    |--------|
-|Domyślne                |Unikatowy dla sieci wirtualnej, na przykład: 10.1.0.0/16|Komunikacja równorzędna sieci wirtualnych                 |Wszystkie|
-|Brama sieci wirtualnej|Prefiksy anonsowane lokalnie za pośrednictwem protokołu BGP lub skonfigurowane w bramie sieci lokalnej     |Brama sieci wirtualnej      |Wszystkie|
+|Domyślne                |Unikatowy dla sieci wirtualnej, na przykład: 10.1.0.0/16|Komunikacja równorzędna sieci wirtualnych                 |Wszyscy|
+|Brama sieci wirtualnej|Prefiksy anonsowane lokalnie za pośrednictwem protokołu BGP lub skonfigurowane w bramie sieci lokalnej     |Brama sieci wirtualnej      |Wszyscy|
 |Domyślne                |Wiele                               |VirtualNetworkServiceEndpoint|Tylko podsieć, dla której jest włączony punkt końcowy usługi.|
 
 * **Komunikacja równorzędna sieci wirtualnej (VNet)** : podczas tworzenia komunikacji równorzędnej sieci wirtualnej między dwiema sieciami wirtualnymi dodawana jest trasa dla każdego zakresu adresów w obrębie przestrzeni adresowej w każdej sieci wirtualnej, dla której jest tworzona komunikacja równorzędna. Dowiedz się więcej o [komunikacji równorzędnej sieci wirtualnej](virtual-network-peering-overview.md).<br>
@@ -200,7 +200,7 @@ W celu zilustrowania koncepcji podanych w tym artykule w kolejnych sekcjach opis
 
 Na poniższej ilustracji przedstawiono implementację za pośrednictwem modelu wdrażania przy użyciu usługi Azure Resource Manager, która spełnia poprzednie wymagania:
 
-![Diagram sieciowy](./media/virtual-networks-udr-overview/routing-example.png)
+![Diagram sieci](./media/virtual-networks-udr-overview/routing-example.png)
 
 Strzałki oznaczają przepływu ruchu. 
 

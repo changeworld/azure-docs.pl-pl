@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: f1be146a5173c86a8b19bca5c7b3b8c72d72b9c5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 093f4b11d10396199e9fac1e22fd82197f3a5e79
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362429"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268186"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Często zadawane pytania dotyczące Azure Files
 [Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem standardowego [protokołu bloku komunikatów serwera (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Udziały plików platformy Azure można instalować jednocześnie w chmurze lub lokalnych wdrożeniach systemów Windows, Linux i macOS. Możesz również buforować udziały plików platformy Azure na maszynach z systemem Windows Server, używając Azure File Sync, aby szybko uzyskać dostęp do miejsca, w którym są używane dane.
@@ -81,6 +81,9 @@ W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące 
   **naprawdę chcę zobaczyć konkretną funkcję dodaną do Azure Files. Czy można je dodać?**  
     Zespół Azure Files ma na celu wysłuchanie wszelkich opinii na temat naszej usługi. Zagłosuj na żądania funkcji w witrynie [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files)! Czekamy na poszukiwanie wielu nowych funkcji.
 
+  **Czy Azure Files obsługuje blokowanie plików?**  
+    Tak, Azure Files w pełni obsługuje blokowanie plików w stylu SMB/Windows, [Zobacz szczegóły](https://docs.microsoft.com/rest/api/storageservices/managing-file-locks). 
+    
 ## <a name="azure-file-sync"></a>Azure File Sync
 
 * <a id="afs-region-availability"></a>
@@ -211,6 +214,11 @@ istnieją **interfejsy API REST obsługujące pobieranie/Ustawianie/kopiowanie k
 
     Tak, możesz włączyć usługę Azure AD DS lub uwierzytelnianie usługi AD w udziale plików zarządzanym przez usługę Azure File Sync. Zmiany w katalogu/plikach list ACL systemu plików NTFS na lokalnych serwerach plików będą należeć do Azure Files i na odwrót.
 
+* <a id="ad-aad-smb-files"></a>
+**Jak sprawdzić, czy włączono uwierzytelnianie AD na moim koncie magazynu i informacje o domenie usługi AD?**
+
+    Możesz zapoznać się z instrukcjami podanymi w [tym miejscu](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#enable-ad-authentication-for-your-account) , aby sprawdzić, czy Azure Files na koncie magazynu jest włączone uwierzytelnianie usługi AD i pobrać informacje o domenie usługi AD.
+    
 * <a id="encryption-at-rest"></a>
 **Jak upewnić się, że mój udział plików platformy Azure jest szyfrowany w spoczynku?**  
 
