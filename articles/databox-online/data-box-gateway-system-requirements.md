@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 05/08/2019
 ms.author: alkohli
 ms.openlocfilehash: e8932097bcdef782b1a551d386c2872e02d8abfd
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384630"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260191"
 ---
 # <a name="azure-data-box-gateway-system-requirements"></a>Wymagania systemowe Azure Data Box Gateway
 
@@ -32,7 +32,7 @@ Podstawowy system hosta dla Data Box Gateway jest w stanie przeznaczyć następu
 | Specyfikacje                                          | Opis              |
 |---------------------------------------------------------|--------------------------|
 | Procesory wirtualne (rdzenie)   | Minimum 4 |
-| Memory (Pamięć)  | Minimum 8 GB|
+| Pamięć  | Minimum 8 GB|
 | Dostępność|Jeden węzeł|
 | Dyski| Dysk systemu operacyjnego: 250 GB <br> Dysk danych: minimum 2 TB, alokowany elastycznie, wymagane dyski SSD|
 | Interfejsy sieciowe|Co najmniej 1 wirtualny interfejs sieciowy|

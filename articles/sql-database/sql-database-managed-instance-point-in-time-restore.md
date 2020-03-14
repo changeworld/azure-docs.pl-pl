@@ -12,11 +12,11 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
 ms.openlocfilehash: 27f465e6864d0ff639e825c8a816d86648bd8853
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197525"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268810"
 ---
 # <a name="restore-a-sql-database-in-a-managed-instance-to-a-previous-point-in-time"></a>Przywracanie bazy danych SQL w wystąpieniu zarządzanym do wcześniejszego punktu w czasie
 
@@ -44,9 +44,9 @@ W poniższej tabeli przedstawiono scenariusze przywracania do punktu w czasie dl
 
 |           |Przywróć istniejącą bazę danych do tego samego wystąpienia zarządzanego| Przywracanie istniejącej bazy danych do innego wystąpienia zarządzanego|Przywracanie usuniętej bazy danych do tego samego wystąpienia zarządzanego|Przywracanie usuniętej bazy danych do innego wystąpienia zarządzanego|
 |:----------|:----------|:----------|:----------|:----------|
-|**Azure Portal**| Yes|Nie |Yes|Nie|
-|**Interfejs wiersza polecenia platformy Azure**|Yes |Yes |Nie|Nie|
-|**PowerShell**| Yes|Yes |Yes|Yes|
+|**Azure Portal**| Tak|Nie |Tak|Nie|
+|**Interfejs wiersza polecenia platformy Azure**|Tak |Tak |Nie|Nie|
+|**PowerShell**| Tak|Tak |Tak|Tak|
 
 ## <a name="restore-an-existing-database"></a>Przywracanie istniejącej bazy danych
 
@@ -134,7 +134,7 @@ Szczegółowe wyjaśnienie dostępnych parametrów można znaleźć w [dokumenta
 
 Przywracanie usuniętej bazy danych można wykonać przy użyciu programu PowerShell lub Azure Portal. Aby przywrócić usuniętą bazę danych do tego samego wystąpienia, użyj Azure Portal lub programu PowerShell. Aby przywrócić usuniętą bazę danych do innego wystąpienia, użyj programu PowerShell. 
 
-### <a name="portal"></a>Portal 
+### <a name="portal"></a>wielodostępowy 
 
 
 Aby odzyskać zarządzaną bazę danych przy użyciu Azure Portal, Otwórz stronę Omówienie wystąpienia zarządzanego i wybierz pozycję **usunięte bazy danych**. Wybierz usuniętą bazę danych, którą chcesz przywrócić, a następnie wpisz nazwę nowej bazy danych, która zostanie utworzona z przywróconymi danymi z kopii zapasowej.

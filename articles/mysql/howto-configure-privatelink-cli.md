@@ -1,19 +1,19 @@
 ---
-title: Prywatny link do Azure Database for MySQL (wersja zapoznawcza) Metoda instalacji interfejsu wiersza polecenia
+title: Link prywatny — interfejs wiersza polecenia platformy Azure — Azure Database for MySQL
 description: Dowiedz się, jak skonfigurować link prywatny dla Azure Database for MySQL z interfejsu wiersza polecenia platformy Azure
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 7d9a401bfbf1f0c63995c8f7773abb6e8e874e7e
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: f83f52f1c1800803c5e1d47f1931f7b13b2c11de
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561701"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368013"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-mysql-preview-using-cli"></a>Tworzenie prywatnego linku do Azure Database for MySQL (wersja zapoznawcza) i zarządzanie nim za pomocą interfejsu wiersza polecenia
+# <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-cli"></a>Tworzenie prywatnego linku do Azure Database for MySQL przy użyciu interfejsu wiersza polecenia i zarządzanie nim
 
 Prywatny punkt końcowy to podstawowy blok konstrukcyjny dla prywatnego linku na platformie Azure. Umożliwia ona korzystanie z zasobów platformy Azure, takich jak Virtual Machines (VM), w celu komunikacji z prywatnymi zasobami łączy prywatnych. W tym artykule dowiesz się, jak za pomocą interfejsu wiersza polecenia platformy Azure utworzyć maszynę wirtualną w usłudze Azure Virtual Network i na serwerze Azure Database for MySQL za pomocą prywatnego punktu końcowego platformy Azure.
 

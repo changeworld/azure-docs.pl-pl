@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 2983be507fdc40d033623afa37c72eb2507d99ca
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 3694a1d04ec25f44cfcf9395bdd148e2fd3c0d9f
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357603"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371561"
 ---
 # <a name="storage-account-overview"></a>Omówienie kont magazynu
 
@@ -108,7 +108,7 @@ Dostępne są następujące warstwy dostępu:
 
 - Warstwa dostępu **gorąca** . Ta warstwa jest zoptymalizowana pod kątem częstego dostępu do obiektów na koncie magazynu. Uzyskiwanie dostępu do danych w warstwie gorąca jest najbardziej opłacalne, natomiast koszty magazynu są wyższe. Nowe konta magazynu są domyślnie tworzone w warstwie gorąca.
 - Warstwa dostępu **chłodna** . Ta warstwa jest zoptymalizowana pod kątem przechowywania dużych ilości danych, które są rzadko używane i są przechowywane przez co najmniej 30 dni. Przechowywanie danych w warstwie chłodna jest tańsze, ale dostęp do tych danych może być droższy niż dostęp do danych w warstwie gorąca.
-- Warstwa **archiwum** . Ta warstwa jest dostępna tylko dla pojedynczych blokowych obiektów blob i Dołącz obiekty blob. Warstwa archiwum jest zoptymalizowana pod kątem danych, które mogą tolerować kilka godzin opóźnienia pobierania i które pozostaną w warstwie archiwum przez co najmniej 180 dni. Warstwa archiwum jest najtańszą opcją do przechowywania danych. Jednak dostęp do tych danych jest droższy niż dostęp do danych w warstwach gorąca lub chłodna.
+- Warstwa **archiwum** . Ta warstwa jest dostępna tylko dla pojedynczych blokowych obiektów BLOB. Warstwa archiwum jest zoptymalizowana pod kątem danych, które mogą tolerować kilka godzin opóźnienia pobierania i które pozostaną w warstwie archiwum przez co najmniej 180 dni. Warstwa archiwum jest najtańszą opcją do przechowywania danych. Jednak dostęp do tych danych jest droższy niż dostęp do danych w warstwach gorąca lub chłodna.
 
 W przypadku zmiany wzorca użycia danych można w dowolnym momencie przełączyć się między tymi warstwami dostępu. Aby uzyskać więcej informacji o warstwach dostępu, zobacz [Azure Blob Storage: warstwy dostępu gorąca, chłodna i archiwalna](../blobs/storage-blob-storage-tiers.md).
 

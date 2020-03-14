@@ -3,12 +3,12 @@ title: Samouczek — testowanie modułów Terraform na platformie Azure za pomoc
 description: Dowiedz się, jak używać struktury Terratest do testowania modułów programu Terraform.
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 41f7f9c00f626cf622ea781f01da6db1f46cd805
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 687a793af2b9b75efe463b042d121c32f18974d6
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158966"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370801"
 ---
 # <a name="tutorial-test-terraform-modules-in-azure-using-terratest"></a>Samouczek: testowanie modułów Terraform na platformie Azure za pomocą Terratest
 
@@ -248,14 +248,17 @@ func TestUT_StorageAccountName(t *testing.T) {
 
 Aby uruchomić testy jednostkowe, wykonaj następujące kroki w wierszu polecenia:
 
+```azurecli
+az login    # Required when no service principal environment variables are present
+```
+
 ```shell
-$ cd [Your GoPath]/src/staticwebpage
-GoPath/src/staticwebpage$ dep init    # Run only once for this folder
-GoPath/src/staticwebpage$ dep ensure  # Required to run if you imported new packages in test cases
-GoPath/src/staticwebpage$ cd test
-GoPath/src/staticwebpage/test$ go fmt
-GoPath/src/staticwebpage/test$ az login    # Required when no service principal environment variables are present
-GoPath/src/staticwebpage/test$ go test -run TestUT_StorageAccountName
+cd [Your GoPath]/src/staticwebpage
+dep init    # Run only once for this folder
+dep ensure  # Required to run if you imported new packages in test cases
+cd test
+go fmt
+go test -run TestUT_StorageAccountName
 ```
 
 Wynik testu w języku Go jest zwykle zwracany w ciągu około minuty.
@@ -369,21 +372,24 @@ func TestIT_HelloWorldExample(t *testing.T) {
 
 Aby uruchomić testy integracji, wykonaj następujące kroki w wierszu polecenia:
 
+```azurecli
+az login    # Required when no service principal environment variables are present
+```
+
 ```shell
-$ cd [Your GoPath]/src/staticwebpage
-GoPath/src/staticwebpage$ dep init    # Run only once for this folder
-GoPath/src/staticwebpage$ dep ensure  # Required to run if you imported new packages in test cases
-GoPath/src/staticwebpage$ cd test
-GoPath/src/staticwebpage/test$ go fmt
-GoPath/src/staticwebpage/test$ az login    # Required when no service principal environment variables are present
-GoPath/src/staticwebpage/test$ go test -run TestIT_HelloWorldExample
+cd [Your GoPath]/src/staticwebpage
+dep init    # Run only once for this folder
+dep ensure  # Required to run if you imported new packages in test cases
+cd test
+go fmt
+go test -run TestIT_HelloWorldExample
 ```
 
 Wynik testu w języku Go jest zwykle zwracany w ciągu około dwóch minut. Możesz także uruchomić oba testy jednostkowe oraz testy integracji, uruchamiając następujące polecenia:
 
 ```shell
-GoPath/src/staticwebpage/test$ go fmt
-GoPath/src/staticwebpage/test$ go test
+go fmt
+go test
 ```
 
 Testy integracji trwają znacznie dłużej niż testy jednostkowe (dwie minuty dla jednego przypadku testowego integracji w porównaniu z jedną minutą dla pięciu przypadków testowych testów jednostkowych). Jednak do Ciebie należy decyzja, czy użyć testów jednostkowych, czy testów integracji w danym scenariuszu. Zwykle preferowane jest stosowanie testów jednostkowych dla skomplikowanej logiki przez użycie funkcji HCL programu Terraform. Testy integracji są zwykle stosowane w przypadku kompleksowej perspektywy użytkownika.
@@ -496,13 +502,16 @@ func Clean() error {
 
 Możesz użyć następujących poleceń, aby uruchomić pełny zestaw testów. Kod jest podobny do kroków uruchamiania używanych w poprzedniej sekcji. 
 
+```azurecli
+az login    # Required when no service principal environment variables are present
+```
+
 ```shell
-$ cd [Your GoPath]/src/staticwebpage
-GoPath/src/staticwebpage$ dep init    # Run only once for this folder
-GoPath/src/staticwebpage$ dep ensure  # Required to run if you imported new packages in magefile or test cases
-GoPath/src/staticwebpage$ go fmt      # Only required when you change the magefile
-GoPath/src/staticwebpage$ az login    # Required when no service principal environment variables are present
-GoPath/src/staticwebpage$ mage
+cd [Your GoPath]/src/staticwebpage
+dep init    # Run only once for this folder
+dep ensure  # Required to run if you imported new packages in magefile or test cases
+go fmt      # Only required when you change the magefile
+mage
 ```
 
 Ostatnią pozycję wiersza polecenia możesz zastąpić dodatkowymi krokami narzędzia mage. Na przykład możesz użyć polecenia `mage unit` lub `mage clean`. Dobrym pomysłem jest osadzenie poleceń `dep` i polecenia `az login` w pliku magefile. Nie przedstawiono tu odpowiedniego kodu. 

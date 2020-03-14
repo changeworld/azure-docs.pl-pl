@@ -3,12 +3,12 @@ title: Obsługiwane wersje klastra w usłudze Azure Service Fabric
 description: Dowiedz się więcej o wersjach klastra w usłudze Azure Service Fabric, łącznie z linkiem do najnowszych wydań z blogu zespołu Service Fabric.
 ms.topic: troubleshooting
 ms.date: 03/02/2020
-ms.openlocfilehash: ea2dcc3da2f59aa00b12aedd181dc27df00e9d58
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 76a8137bbe42d8f693ac807f640a78fc4ec87c2e
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252723"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370427"
 ---
 # <a name="supported-service-fabric-versions"></a>Obsługiwane Service Fabric wersje
 
@@ -37,7 +37,7 @@ W poniższej tabeli wymieniono wersje Service Fabric i ich daty końcowe pomocy 
 | 6.3.* | 6.1.480.* |Mniejsze niż lub równe wersji 3,2 |31 marca 2019  |
 | 6.4.* | 6.2.301.* |Mniejsze niż lub równe wersji 3,3 |15 września 2019 |
 | 6.5.* | 6.4.617.* |Mniejsze niż lub równe wersji 3,4 |1 maja 2020 |
-| 7,0. * | 6.4.664. # |Mniejsze niż lub równe wersji 4,0 |Bieżąca wersja, dlatego bez daty zakończenia |
+| 7,0. * | 7.0.466.* |Mniejsze niż lub równe wersji 4,0 |Bieżąca wersja, dlatego bez daty zakończenia |
 ## <a name="supported-operating-systems"></a>Obsługiwane systemy operacyjne
 
 W poniższej tabeli wymieniono systemy operacyjne obsługiwane przez obsługiwane wersje Service Fabric.

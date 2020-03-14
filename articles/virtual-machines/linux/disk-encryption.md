@@ -2,17 +2,17 @@
 title: Szyfrowanie po stronie serwera Managed Disks platformy Azure — interfejs wiersza polecenia platformy Azure
 description: Usługa Azure Storage chroni dane, szyfrując je w stanie spoczynku przed utrwalaniem ich w klastrach magazynu. Możesz polegać na kluczach zarządzanych przez firmę Microsoft w celu szyfrowania dysków zarządzanych. Możesz też użyć kluczy zarządzanych przez klienta do zarządzania szyfrowaniem przy użyciu własnych kluczy.
 author: roygara
-ms.date: 01/13/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 495bdcfb619ff17a4a4b074fa673c5d2fb185730
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: f50115732940eab14db30842be85b47cb4a552e1
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970524"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299521"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Szyfrowanie po stronie serwera dla usługi Azure Managed disks
 
@@ -30,11 +30,15 @@ W poniższych sekcjach opisano każdą z opcji zarządzania kluczami w bardziej 
 
 ## <a name="platform-managed-keys"></a>Klucze zarządzane przez platformę
 
-Domyślnie dyski zarządzane korzystają z kluczy szyfrowania zarządzanych przez platformę. Od 10 czerwca 2017 wszystkie nowe dyski zarządzane, migawki, obrazy i nowe dane zapisywane na istniejących dyskach zarządzanych są automatycznie szyfrowane przy użyciu kluczy zarządzanych przez platformę. 
+Domyślnie dyski zarządzane korzystają z kluczy szyfrowania zarządzanych przez platformę. Od 10 czerwca 2017 wszystkie nowe dyski zarządzane, migawki, obrazy i nowe dane zapisywane na istniejących dyskach zarządzanych są automatycznie szyfrowane przy użyciu kluczy zarządzanych przez platformę.
 
 ## <a name="customer-managed-keys"></a>Klucze zarządzane przez klienta
 
 Możesz zarządzać szyfrowaniem na poziomie każdego dysku zarządzanego przy użyciu własnych kluczy. Szyfrowanie po stronie serwera dla dysków zarządzanych z kluczami zarządzanymi przez klienta oferuje zintegrowane środowisko pracy z Azure Key Vault. Możesz zaimportować [klucze RSA](../../key-vault/key-vault-hsm-protected-keys.md) do Key Vault lub wygenerować nowe klucze rsa w Azure Key Vault. Usługa Azure Managed disks obsługuje szyfrowanie i odszyfrowywanie w pełni przejrzysty sposób przy użyciu funkcji [szyfrowania kopert](../../storage/common/storage-client-side-encryption.md#encryption-and-decryption-via-the-envelope-technique). Szyfruje ona dane przy użyciu klucza szyfrowania danych opartego na protokole [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256, który jest z kolei chroniony przy użyciu kluczy. Musisz udzielić dostępu do dysków zarządzanych w Key Vault, aby użyć kluczy do szyfrowania i odszyfrowywania danych. Pozwala to na pełną kontrolę nad danymi i kluczami. Możesz w dowolnym momencie wyłączyć klucze lub odwołać dostęp do dysków zarządzanych. Możesz również przeprowadzić inspekcję użycia klucza szyfrowania przy użyciu monitorowania Azure Key Vault, aby upewnić się, że tylko zarządzane dyski lub inne zaufane usługi platformy Azure uzyskują dostęp do kluczy.
+
+W przypadku wersji Premium dysków SSD, standard dysków SSD i Standard HDD: po wyłączeniu lub usunięciu klucza wszystkie maszyny wirtualne z dyskami korzystającymi z tego klucza zostaną automatycznie zamknięte. Następnie maszyny wirtualne nie będą używane, chyba że klucz zostanie włączony ponownie lub przypiszesz nowy klucz.
+
+W przypadku usługi Ultra disks po wyłączeniu lub usunięciu klucza wszystkie maszyny wirtualne z użyciem klucza nie będą automatycznie zamykane. Po przydzieleniu i ponownym uruchomieniu maszyn wirtualnych dyski przestaną być używane przy użyciu klucza, a następnie maszyny wirtualne nie zostaną przywrócone do trybu online. Aby przywrócić maszyny wirtualne do trybu online, należy przypisać nowy klucz lub włączyć istniejący klucz.
 
 Na poniższym diagramie pokazano, w jaki sposób dyski zarządzane używają Azure Active Directory i Azure Key Vault do wykonywania żądań przy użyciu klucza zarządzanego przez klienta:
 
@@ -56,15 +60,14 @@ Aby odwołać dostęp do kluczy zarządzanych przez klienta, zobacz [Azure Key V
 
 ### <a name="supported-regions"></a>Obsługiwane regiony
 
-Obecnie obsługiwane są tylko następujące regiony:
+[!INCLUDE [virtual-machines-disks-encryption-regions](../../../includes/virtual-machines-disks-encryption-regions.md)]
 
-- Dostępna jako oferta w wersji załącznej w regionach Wschodnie stany USA, zachodnie stany USA 2 i Południowo-środkowe stany USA.
-- Dostępna jako publiczna wersja zapoznawcza w regionach zachodnie stany USA, Wschodnie stany USA 2, Kanada Środkowa i Europa Północna.
-
-### <a name="restrictions"></a>Ograniczenia
+### <a name="restrictions"></a>{1&gt;Ograniczenia&lt;1}
 
 Na razie klucze zarządzane przez klienta mają następujące ograniczenia:
 
+- Jeśli ta funkcja jest włączona dla danego dysku, nie można jej wyłączyć.
+    Jeśli zachodzi potrzeba obejścia tego problemu, należy [skopiować wszystkie dane](disks-upload-vhd-to-managed-disk-cli.md#copy-a-managed-disk) na całkowicie inny dysk zarządzany, który nie korzysta z kluczy zarządzanych przez klienta.
 - Obsługiwane są tylko [klucze RSA "Soft" i "Hard](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types) " o rozmiarze 2080, a nie inne klucze ani rozmiary.
 - Dyski utworzone na podstawie obrazów niestandardowych zaszyfrowanych przy użyciu szyfrowania po stronie serwera i kluczy zarządzanych przez klienta muszą być szyfrowane przy użyciu tych samych kluczy zarządzanych przez klienta i muszą znajdować się w tej samej subskrypcji.
 - Migawki utworzone na podstawie dysków zaszyfrowanych przy użyciu szyfrowania po stronie serwera i kluczy zarządzanych przez klienta muszą być szyfrowane przy użyciu tych samych kluczy zarządzanych przez klienta.
@@ -99,28 +102,28 @@ Na razie klucze zarządzane przez klienta mają następujące ograniczenia:
     az keyvault key create --vault-name $keyVaultName -n $keyName --protection software
     ```
 
-1.  Utwórz wystąpienie elementu DiskEncryptionSet. 
+1.    Utwórz wystąpienie elementu DiskEncryptionSet. 
     
-    ```azurecli
-    keyVaultId=$(az keyvault show --name $keyVaultName --query [id] -o tsv)
+        ```azurecli
+        keyVaultId=$(az keyvault show --name $keyVaultName --query [id] -o tsv)
+    
+        keyVaultKeyUrl=$(az keyvault key show --vault-name $keyVaultName --name $keyName --query [key.kid] -o tsv)
+    
+        az disk-encryption-set create -n $diskEncryptionSetName -l $location -g $rgName --source-vault $keyVaultId --key-url $keyVaultKeyUrl
+        ```
 
-    keyVaultKeyUrl=$(az keyvault key show --vault-name $keyVaultName --name $keyName --query [key.kid] -o tsv)
+1.    Przyznaj zasobowi DiskEncryptionSet dostęp do magazynu kluczy. 
 
-    az disk-encryption-set create -n $diskEncryptionSetName -l $location -g $rgName --source-vault $keyVaultId --key-url $keyVaultKeyUrl
-    ```
+        > [!NOTE]
+        > Utworzenie tożsamości DiskEncryptionSet w Azure Active Directory przez platformę Azure może potrwać kilka minut. Jeśli zostanie wyświetlony błąd "nie można odnaleźć Active Directory obiektu" podczas uruchamiania poniższego polecenia, poczekaj kilka minut i spróbuj ponownie.
 
-1.  Przyznaj zasobowi DiskEncryptionSet dostęp do magazynu kluczy. 
-
-    > [!NOTE]
-    > Utworzenie tożsamości DiskEncryptionSet w Azure Active Directory przez platformę Azure może potrwać kilka minut. Jeśli zostanie wyświetlony błąd "nie można odnaleźć Active Directory obiektu" podczas uruchamiania poniższego polecenia, poczekaj kilka minut i spróbuj ponownie.
-
-    ```azurecli
-    desIdentity=$(az disk-encryption-set show -n $diskEncryptionSetName -g $rgName --query [identity.principalId] -o tsv)
-
-    az keyvault set-policy -n $keyVaultName -g $rgName --object-id $desIdentity --key-permissions wrapkey unwrapkey get
-
-    az role assignment create --assignee $desIdentity --role Reader --scope $keyVaultId
-    ```
+        ```azurecli
+        desIdentity=$(az disk-encryption-set show -n $diskEncryptionSetName -g $rgName --query [identity.principalId] -o tsv)
+    
+        az keyvault set-policy -n $keyVaultName -g $rgName --object-id $desIdentity --key-permissions wrapkey unwrapkey get
+    
+        az role assignment create --assignee $desIdentity --role Reader --scope $keyVaultId
+        ```
 
 #### <a name="create-a-vm-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>Tworzenie maszyny wirtualnej przy użyciu obrazu z portalu Marketplace, szyfrowanie dysków systemu operacyjnego i danych za pomocą kluczy zarządzanych przez klienta
 

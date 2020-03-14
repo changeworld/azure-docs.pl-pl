@@ -9,14 +9,16 @@ ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
 ms.custom: mvc
-ms.openlocfilehash: a3c696a5bfa9286e664f69bd379bac408b7459d6
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 91386eaf7753f2aefada2d1423a11b366c3ee924
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863244"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370903"
 ---
-# <a name="overview-of-azure-digital-twins"></a>Omówienie usługi Azure Digital Twins
+# <a name="overview-of-azure-digital-twins-preview"></a>Omówienie usługi Azure Digital bliźniaczych reprezentacji Preview
+
+[!INCLUDE [digital-twins-preview-limit-alert](../../includes/digital-twins-preview-limit-alert.md)]
 
 Azure Digital bliźniaczych reprezentacji w wersji zapoznawczej to usługa Azure IoT, która tworzy kompleksowe modele środowiska fizycznego. Umożliwia ona tworzenie grafów analizy przestrzennej do modelowania relacji i interakcji między osobami, obszarami i urządzeniami.
 
@@ -51,7 +53,7 @@ Wyobraź sobie inteligentną aplikację narzędziową, która obejmuje kilka mie
 
 ### <a name="digital-twin-object-models"></a>Cyfrowe modele obiektów bliźniaczych
 
-[Cyfrowe modele obiektów bliźniaczych](./concepts-objectmodel-spatialgraph.md#digital-twins-object-models) to wstępnie zdefiniowane protokoły urządzeń i schematy danych. Są one dostosowane do wymagań specyficznych dla danego obszaru, które przyspieszają i upraszczają tworzenie rozwiązań.
+[Cyfrowe modele obiektów bliźniaczych](./concepts-objectmodel-spatialgraph.md#digital-twins-object-models) to wstępnie zdefiniowane protokoły urządzeń i schematy danych. Dopasowują one potrzebę specyficzną dla domeny rozwiązania, aby przyspieszyć i uprościć programowanie.
 
 Na przykład aplikacja pokojowa może korzystać ze wstępnie zdefiniowanych typów miejsca, takich jak kampus, budynek, piętro i pokój.
 

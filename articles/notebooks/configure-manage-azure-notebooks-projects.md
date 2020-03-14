@@ -4,11 +4,11 @@ description: Dowiedz się, jak zarządzać metadanymi projektu, plikami projektu
 ms.topic: how-to
 ms.date: 02/28/2020
 ms.openlocfilehash: 1674effda2cb9bda45f49c91ca618225b0a75f0c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360643"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280601"
 ---
 # <a name="a-idmanage-and-configure-projects--manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" /> zarządzanie projektami i konfigurowanie ich w programie Azure Notebooks Preview
 
@@ -81,7 +81,7 @@ Każdy element na liście plik projektu zawiera poleceń w menu kontekstowym kli
 | Wersja zapoznawcza | p | Otwiera podgląd pliku; w formacie HTML w przypadku notesów korzystania z wersji zapoznawczej jest tylko do odczytu renderowania notesu. Aby uzyskać więcej informacji, zobacz sekcję [wersja zapoznawcza](#preview) . |
 | Edytuj plik | Czy mogę | Zostanie otwarty plik do edycji. |
 | Pobieranie | {1&gt;d&lt;1} | Pobieranie pliku zip, który zawiera plik lub zawartość folderu. |
-| Zmiana nazwy | a | Wyświetla monit o nową nazwę dla pliku lub folderu. |
+| Zmień nazwę | a | Wyświetla monit o nową nazwę dla pliku lub folderu. |
 | Usuń | x | Monituje o potwierdzenie, a następnie trwale usuwa plik z projektu. Usunięcie nie może być cofnięte. |
 | Move | ś | Przenosi plik do innego folderu, w tym samym projekcie. |
 

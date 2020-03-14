@@ -10,32 +10,32 @@ metadata:
   layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 02/11/2020
+  ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: ead45759891d4b2a41a380c88cf32f4e504b6e2c
-  ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+  ms.openlocfilehash: ff12c357ba273c6965b11db4eabc1890925439be
+  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
   ms.translationtype: MT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 02/28/2020
-  ms.locfileid: "77920879"
+  ms.lasthandoff: 03/14/2020
+  ms.locfileid: "79366704"
 landingContent:
-- title: Rozpoczynanie pracy
+- title: Hosting — informacje
   linkLists:
   - linkListType: concept
     links:
-    - text: Kontenery usługi mowy
+    - text: Instalowanie i uruchamianie kontenerów mowy
       url: speech-container-howto.md
-    - text: Kontenery usługi mowy z Kubernetes
+    - text: Kontenery mowy z Kubernetes i Helm
       url: speech-container-howto-on-premises.md
-    - text: Kontenery usługi mowy na Azure Container Instances
+    - text: Kontenery mowy w usłudze Azure Container Instances
       url: deploy-speech-on-container-instances.md
-- title: Przewodniki krok po kroku
+- title: Utwórz i skonfiguruj
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Tworzenie zasobu usługi Azure Speech
       url: get-started.md#new-resource
-    - text: Konfigurowanie kontenerów
+    - text: Konfigurowanie kontenerów mowy
       url: speech-container-configuration.md
 - title: Dokumentacja
   linkLists:

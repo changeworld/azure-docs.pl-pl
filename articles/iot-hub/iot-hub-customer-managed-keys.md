@@ -8,18 +8,18 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.author: asrastog
-ms.openlocfilehash: 1bb55d593878026bb3e57014a317b4fc0158d734
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: 609f68c79159c4ce17468fc1df13c0c9eae7f211
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75913136"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370580"
 ---
 # <a name="encryption-of-data-at-rest-with-customer-managed-keys-for-iot-hub"></a>Szyfrowanie danych przechowywanych przy użyciu kluczy zarządzanych przez klienta dla IoT Hub
 
 IoT Hub obsługuje szyfrowanie danych przechowywanych przy użyciu kluczy zarządzanych przez klienta (CMK), znanych również jako funkcje zapewniania własnego klucza (BYOK), pomoc techniczna dla IoT Hub platformy Azure. Usługa Azure IoT Hub zapewnia szyfrowanie danych magazynowanych i przesyłanych. Domyślnie program IoT Hub szyfruje dane przy użyciu kluczy zarządzanych przez firmę Microsoft. Dzięki obsłudze CMK klienci mają teraz możliwość szyfrowania danych przechowywanych przy użyciu klucza szyfrowania klucza zarządzanego przez klientów przy użyciu [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
 
-Ta funkcja wymaga utworzenia nowej IoT Hub (warstwa podstawowa lub standardowa) w jednym z następujących regionów: Wschodnie stany USA, zachodnie stany USA 2 lub Południowo-środkowe stany USA. Aby wypróbować tę możliwość, skontaktuj się z nami za pomocą [pomocy technicznej firmy Microsoft](https://azure.microsoft.com/support/create-ticket/). Skontaktuj się z pomocą techniczną firmy Microsoft, aby udostępnić nazwę firmy i Identyfikator subskrypcji.
+Ta funkcja wymaga utworzenia nowej IoT Hub (warstwa podstawowa lub standardowa) w jednym z następujących regionów: Wschodnie stany USA, zachodnie stany USA 2, Południowo-środkowe stany USA lub US Gov. Aby wypróbować tę możliwość, skontaktuj się z nami za pomocą [pomocy technicznej firmy Microsoft](https://azure.microsoft.com/support/create-ticket/). Skontaktuj się z pomocą techniczną firmy Microsoft, aby udostępnić nazwę firmy i Identyfikator subskrypcji.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: d2d353e6ccd7dad7be302a5f40c65012f32deba7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c82432a3d76a84eba1ad921d936b2f3ba064e2ae
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227122"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136837"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Tworzenie pierwszej funkcji przy użyciu języka Java i przezaćmienie 
 
@@ -42,9 +42,9 @@ Zdecydowanie zaleca się także zainstalowanie [Azure Functions Core Tools w wer
 1. Wybierz pozycję **Dodaj Archetype** i Dodaj wpisy dla [funkcji Azure-Functions-Archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype).
     - Identyfikator grupy Archetype: com. Microsoft. Azure
     - Identyfikator artefaktu Archetype: Azure-Functions-Archetype
-    - Wersja: Użyj najnowszej wersji **1,22** z [centralnego repozytorium](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
+    - Wersja: sprawdzenie i użycie najnowszej wersji z [repozytorium centralnego](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
     ![zaćmienie Maven Utwórz](media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
-1. Kliknij przycisk **OK** , a następnie kliknij przycisk **dalej**.  Należy pamiętać, aby wypełnić wartości dla wszystkich pól, w tym `resourceGroup`, `appName`i `appRegion` (Użyj innego argumentu inna niż **Fabrikam-Function-20170920120101928**) i ostatecznie **Zakończ**.
+1. Kliknij przycisk **OK**, a następnie przycisk **Dalej**.  Należy pamiętać, aby wypełnić wartości dla wszystkich pól, w tym `resourceGroup`, `appName`i `appRegion` (Użyj innego argumentu inna niż **Fabrikam-Function-20170920120101928**) i ostatecznie **Zakończ**.
     ![zaćmienie](media/functions-create-first-java-eclipse/functions-create-eclipse2.png) Maven create2  
 
 Narzędzie Maven tworzy pliki projektu w nowym folderze o nazwie wartości _artifactId_. Wygenerowany kod w projekcie jest prostą funkcją [wyzwalaną przez protokół http](/azure/azure-functions/functions-bindings-http-webhook) , która umożliwia echo treści wyzwalanego żądania HTTP.

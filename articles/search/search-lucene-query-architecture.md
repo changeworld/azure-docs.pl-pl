@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: d46d0309b3d2ffb638016e88ba022e49009eedf2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379759"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282941"
 ---
 # <a name="how-full-text-search-works-in-azure-cognitive-search"></a>Jak działa wyszukiwanie pełnotekstowe na platformie Azure Wyszukiwanie poznawcze
 
@@ -272,24 +272,24 @@ W przypadku pola **Description** indeks jest następujący:
 | sekwencje | 1
 | przygotować | 3
 | comfortable | 3
-| odległość | 1
+| distance | 1
 | Wyspa | 2
 | kauaʻi | 2
 | znajduje | 2
 | szerokości | 2
 | utworzeniu | 1, 2, 3
 | z | 2
-| włączone |2
+| na |2
 | quiet | 4
 | natrysk  | 1, 3
 | secluded | 4
 | zejście | 2
 | spacious | 1
 | względem zasobu | 1, 2
-| na | 1
+| do | 1
 | widok | 1, 2, 3
 | wykorzystaniem | 1
-| with | 3
+| elementem | 3
 
 
 **Pasujące terminy zapytania względem indeksowanych terminów**

@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 01/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 17505084095eb8fbe46c20c7aa226131e128b286
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 36b15b41279edc60d337a7ba70abe2ca64d4bc7f
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127413"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371600"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Tworzenie dzierżawy i puli hosta
 
@@ -145,7 +145,7 @@ Przykład nieprzetworzonego błędu:
 
 Aby rozwiązać ten problem, wykonaj następujące czynności:
 
-1. Otwórz witrynę Azure Portal i przejdź do bloku **sieci wirtualne** .
+1. Otwórz witrynę Azure Portal i przejdź do karty **sieci wirtualne** .
 2. Znajdź sieć wirtualną, a następnie wybierz pozycję **serwery DNS**.
 3. Menu serwery DNS powinno pojawić się po prawej stronie ekranu. W tym menu wybierz pozycję **niestandardowy**.
 4. Upewnij się, że serwery DNS wymienione w obszarze niestandardowe są zgodne z kontrolerem domeny lub Active Directory domeny. Jeśli nie widzisz serwera DNS, możesz go dodać, wprowadzając jego wartość w polu **Dodaj serwer DNS** .

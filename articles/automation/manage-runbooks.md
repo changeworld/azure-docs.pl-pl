@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: ec53c4b2f80fb095f58bee9c15ac5daafb8d59ef
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: ad8c05b3347ed4741d574a5e6bcc1d928db08411
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79278378"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366840"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Zarządzanie elementami Runbook w Azure Automation
 
@@ -33,7 +33,7 @@ Nowy element Runbook można utworzyć w Azure Automation przy użyciu jednego z 
 
 ### <a name="create-a-runbook-with-powershell"></a>Tworzenie elementu Runbook za pomocą programu PowerShell
 
-Do utworzenia pustego [elementu Runbook przepływu pracy programu PowerShell](automation-runbook-types.md#powershell-workflow-runbooks)można użyć polecenia cmdlet [New-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationrunbook?view=azps-3.5.0) . Użyj parametru *typu* , aby określić jeden z typów elementów Runbook zdefiniowanych dla **New-AzAutomationRunbook**.
+Do utworzenia pustego [elementu Runbook przepływu pracy programu PowerShell](automation-runbook-types.md#powershell-workflow-runbooks)można użyć polecenia cmdlet [New-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationrunbook?view=azps-3.5.0) . Użyj parametru `Type`, aby określić jeden z typów elementów Runbook zdefiniowanych dla `New-AzAutomationRunbook`.
 
 Poniższy przykład przedstawia sposób tworzenia nowego pustego elementu Runbook.
 
@@ -75,7 +75,7 @@ Aby zaimportować plik skryptu do Azure Automation, można użyć poniższej pro
 
 ### <a name="import-a-runbook-from-a-script-file-with-windows-powershell"></a>Importowanie elementu runbook z pliku skryptu za pomocą programu Windows PowerShell
 
-Użyj polecenia cmdlet [Import-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/import-azautomationrunbook?view=azps-3.5.0) , aby zaimportować plik skryptu jako szkic elementu Runbook przepływu pracy programu PowerShell. Jeśli element Runbook już istnieje, importowanie nie powiedzie się, o ile nie zostanie użyty parametr *Force* z poleceniem cmdlet.
+Użyj polecenia cmdlet [Import-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/import-azautomationrunbook?view=azps-3.5.0) , aby zaimportować plik skryptu jako szkic elementu Runbook przepływu pracy programu PowerShell. Jeśli element Runbook już istnieje, importowanie nie powiedzie się, o ile nie zostanie użyty parametr `Force` z poleceniem cmdlet.
 
 Poniższy przykład pokazuje, jak zaimportować plik skryptu do elementu Runbook.
 
@@ -92,7 +92,7 @@ Import-AzAutomationRunbook -Name $runbookName -Path $scriptPath `
 
 ## <a name="test-a-runbook"></a>Testowanie elementu Runbook
 
-Podczas testowania elementu Runbook jest wykonywana [wersja robocza](#publish-a-runbook) i wszystkie wykonywane działania. Nie utworzono historii zadań, ale strumienie [wyjściowe](automation-runbook-output-and-messages.md#output-stream) i [ostrzegawcze i błędów](automation-runbook-output-and-messages.md#message-streams) są wyświetlane w okienku danych wyjściowych testu. Komunikaty do [pełnego strumienia](automation-runbook-output-and-messages.md#message-streams) są wyświetlane w okienku danych wyjściowych tylko wtedy, gdy zmienna *VerbosePreference* ] (Automatyzacja-Runbook-Output-and-messages. MD # Preferences) jest ustawiona na **Kontynuuj**.
+Podczas testowania elementu Runbook jest wykonywana [wersja robocza](#publish-a-runbook) i wszystkie wykonywane działania. Nie utworzono historii zadań, ale strumienie [wyjściowe](automation-runbook-output-and-messages.md#output-stream) i [ostrzegawcze i błędów](automation-runbook-output-and-messages.md#message-streams) są wyświetlane w okienku danych wyjściowych testu. Komunikaty do [pełnego strumienia](automation-runbook-output-and-messages.md#message-streams) są wyświetlane w okienku danych wyjściowych tylko wtedy, gdy zmienna `VerbosePreference`] (Automatyzacja-Runbook-Output-and-messages. MD # Preferences) jest ustawiona na Kontynuuj.
 
 Mimo że wersja robocza jest uruchamiana, element Runbook nadal wykonuje się normalnie i wykonuje wszelkie akcje dotyczące zasobów w środowisku. Z tego powodu należy przetestować elementy Runbook wyłącznie dla zasobów nieprodukcyjnych.
 

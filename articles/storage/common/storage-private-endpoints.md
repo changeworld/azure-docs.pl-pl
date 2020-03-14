@@ -1,32 +1,35 @@
 ---
-title: Używanie prywatnych punktów końcowych w usłudze Azure Storage | Microsoft Docs
+title: Używanie prywatnych punktów końcowych
+titleSuffix: Azure Storage
 description: Przegląd prywatnych punktów końcowych w celu bezpiecznego dostępu do kont magazynu z sieci wirtualnych.
 services: storage
 author: santoshc
 ms.service: storage
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 44d8a9e71b0415dc5dc7f5d31441bdc1e2aeb372
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: c51f2db698f30368c9d4090d3d571fa0c131178a
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252643"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299060"
 ---
-# <a name="using-private-endpoints-for-azure-storage-preview"></a>Używanie prywatnych punktów końcowych usługi Azure Storage (wersja zapoznawcza)
+# <a name="use-private-endpoints-for-azure-storage"></a>Używanie prywatnych punktów końcowych usługi Azure Storage
 
 Możesz użyć [prywatnych punktów końcowych](../../private-link/private-endpoint-overview.md) dla kont usługi Azure Storage, aby umożliwić klientom w sieci wirtualnej (VNET) bezpieczne uzyskiwanie dostępu do danych za pośrednictwem [prywatnego linku](../../private-link/private-link-overview.md). Prywatny punkt końcowy używa adresu IP z przestrzeni adresowej sieci wirtualnej dla usługi konta magazynu. Ruch sieciowy między klientami w sieci wirtualnej a kontem magazynu przechodzącym przez sieć wirtualną i prywatnym łączem w usłudze Microsoft szkielet Network, eliminując ekspozycję z publicznego Internetu.
 
 Używanie prywatnych punktów końcowych dla konta magazynu pozwala:
+
 - Zabezpiecz swoje konto magazynu, konfigurując zaporę magazynu do blokowania wszystkich połączeń w publicznym punkcie końcowym usługi Storage.
 - Zwiększ bezpieczeństwo sieci wirtualnej (VNet), umożliwiając zablokowanie eksfiltracji danych w wirtualnej.
 - Bezpiecznie łącz się z kontami magazynu z sieci lokalnych, które łączą się z siecią wirtualną przy użyciu [sieci VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md) lub [Usługa expressroutes](../../expressroute/expressroute-locations.md) z prywatną komunikację równorzędną.
 
 ## <a name="conceptual-overview"></a>Omówienie pojęć
-![Omówienie prywatnych punktów końcowych usługi Azure Storage](media/storage-private-endpoints/storage-private-endpoints-overview.jpg)
+
+![Przegląd prywatnych punktów końcowych usługi Azure Storage](media/storage-private-endpoints/storage-private-endpoints-overview.jpg)
 
 Prywatny punkt końcowy jest specjalnym interfejsem sieciowym dla usługi platformy Azure w [Virtual Network](../../virtual-network/virtual-networks-overview.md) (VNET). Utworzenie prywatnego punktu końcowego dla konta magazynu zapewnia bezpieczną łączność między klientami w sieci wirtualnej i magazynem. Do prywatnego punktu końcowego jest przypisany adres IP z zakresu adresów IP sieci wirtualnej. Połączenie między prywatnym punktem końcowym a usługą magazynu używa bezpiecznego linku prywatnego.
 
@@ -43,7 +46,7 @@ Właściciele kont magazynu mogą zarządzać żądaniami zgody i prywatnymi pun
 
 Możesz zabezpieczyć konto magazynu tak, aby akceptowało tylko połączenia z sieci wirtualnej, [konfigurując zaporę magazynu](storage-network-security.md#change-the-default-network-access-rule) tak, aby domyślnie nie zezwala na dostęp za pośrednictwem jego publicznego punktu końcowego. Nie musisz mieć reguły zapory, aby zezwalać na ruch z sieci wirtualnej, która ma prywatny punkt końcowy, ponieważ Zapora magazynu kontroluje dostęp tylko za pośrednictwem publicznego punktu końcowego. Prywatne punkty końcowe zamiast tego polegają na przepływie zgody na przyznanie podsieci dostępu do usługi magazynu.
 
-### <a name="private-endpoints-for-storage-service"></a>Prywatne punkty końcowe usługi Storage
+### <a name="private-endpoints-for-azure-storage"></a>Prywatne punkty końcowe usługi Azure Storage
 
 Podczas tworzenia prywatnego punktu końcowego należy określić konto magazynu i usługę magazynu, z którą nawiąże połączenie. Potrzebujesz osobnego prywatnego punktu końcowego dla każdej usługi magazynu na koncie magazynu, do której należy uzyskać dostęp, czyli [obiektów BLOB](../blobs/storage-blobs-overview.md), [Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md), [plików](../files/storage-files-introduction.md), [kolejek](../queues/storage-queues-introduction.md), [tabel](../tables/table-storage-overview.md)lub [statycznych witryn sieci Web](../blobs/storage-blob-static-website.md).
 
@@ -51,8 +54,6 @@ Podczas tworzenia prywatnego punktu końcowego należy określić konto magazynu
 > Utwórz oddzielny prywatny punkt końcowy dla dodatkowego wystąpienia usługi Storage, aby uzyskać lepszą wydajność odczytu na kontach RA-GRS.
 
 Aby uzyskać dostęp do odczytu do regionu pomocniczego z kontem magazynu skonfigurowanym dla magazynu geograficznie nadmiarowego, należy oddzielić prywatne punkty końcowe zarówno dla głównych, jak i dodatkowych wystąpień usługi. Nie musisz tworzyć prywatnego punktu końcowego dla wystąpienia dodatkowego do **pracy w trybie failover**. Prywatny punkt końcowy będzie automatycznie łączyć się z nowym wystąpieniem podstawowym po przejściu w tryb failover. Aby uzyskać więcej informacji na temat opcji nadmiarowości magazynu, zobacz [nadmiarowość usługi Azure Storage](storage-redundancy.md).
-
-#### <a name="resources"></a>Zasoby
 
 Aby uzyskać bardziej szczegółowe informacje na temat tworzenia prywatnego punktu końcowego dla konta magazynu, zapoznaj się z następującymi artykułami:
 
@@ -111,8 +112,6 @@ Zalecane nazwy stref DNS dla prywatnych punktów końcowych usług magazynu to:
 | Table service          | `privatelink.table.core.windows.net` |
 | Statyczne witryny sieci Web        | `privatelink.web.core.windows.net`   |
 
-#### <a name="resources"></a>Zasoby
-
 Aby uzyskać więcej informacji na temat konfigurowania własnego serwera DNS do obsługi prywatnych punktów końcowych, zapoznaj się z następującymi artykułami:
 
 - [Rozpoznawanie nazw dla zasobów w sieciach wirtualnych platformy Azure](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
@@ -124,16 +123,23 @@ Aby uzyskać szczegółowe informacje o cenach, zobacz [Cennik usługi Azure Pri
 
 ## <a name="known-issues"></a>Znane problemy
 
+Należy wziąć pod uwagę następujące znane problemy dotyczące prywatnych punktów końcowych usługi Azure Storage.
+
 ### <a name="copy-blob-support"></a>Kopiuj obsługę obiektów BLOB
 
-W trakcie okresu zapoznawczego nie obsługujemy [kopiowania poleceń obiektów BLOB](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) dla kont magazynu, do których można uzyskać dostęp za pomocą prywatnych punktów końcowych, jeśli konto magazynu źródłowego jest chronione przez zaporę.
+Jeśli konto magazynu jest chronione przez zaporę, a konto jest dostępne za pomocą prywatnych punktów końcowych, to konto nie może stanowić źródła operacji [kopiowania obiektu BLOB](/rest/api/storageservices/copy-blob) .
 
 ### <a name="storage-access-constraints-for-clients-in-vnets-with-private-endpoints"></a>Ograniczenia dostępu do magazynu dla klientów w sieci wirtualnych z prywatnymi punktami końcowymi
 
-Klienci w programie sieci wirtualnych z istniejącymi prywatnymi punktami końcowymi ograniczeniami podczas uzyskiwania dostępu do innych kont magazynu, które mają prywatne punkty końcowe. Na przykład załóżmy, że sieć wirtualna N1 ma prywatny punkt końcowy dla konta magazynu a1 dla, powiedz, usługa BLOB Service. Jeśli konto magazynu a2 ma prywatny punkt końcowy w sieci wirtualnej N2 dla usługi BLOB, wówczas klienci w sieci wirtualnej N1 muszą również uzyskać dostęp do usługi BLOB Service dla konta a2 przy użyciu prywatnego punktu końcowego. Jeśli konto magazynu a2 nie ma żadnych prywatnych punktów końcowych dla usługi BLOB, klienci w sieci wirtualnej N1 mogą uzyskać dostęp do swojej usługi BLOB bez prywatnego punktu końcowego.
+Klienci w programie sieci wirtualnych z istniejącymi prywatnymi punktami końcowymi ograniczeniami podczas uzyskiwania dostępu do innych kont magazynu, które mają prywatne punkty końcowe. Na przykład załóżmy, że sieć wirtualna N1 ma prywatny punkt końcowy dla konta magazynu a1 dla magazynu obiektów BLOB. Jeśli konto magazynu a2 ma prywatny punkt końcowy w sieci wirtualnej N2 dla usługi BLOB Storage, klienci w sieci wirtualnej N1 muszą również uzyskać dostęp do usługi BLOB Storage na koncie a2 przy użyciu prywatnego punktu końcowego. Jeśli konto magazynu a2 nie ma żadnych prywatnych punktów końcowych usługi BLOB Storage, klienci w sieci wirtualnej N1 mogą uzyskać dostęp do magazynu obiektów BLOB na tym koncie bez prywatnego punktu końcowego.
 
 To ograniczenie jest wynikiem zmian wprowadzonych w systemie DNS, gdy konto a2 tworzy prywatny punkt końcowy.
 
 ### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>Reguły sieciowej grupy zabezpieczeń dla podsieci z prywatnymi punktami końcowymi
 
 Obecnie nie można skonfigurować zasad [sieciowych grup zabezpieczeń](../../virtual-network/security-overview.md) (sieciowej grupy zabezpieczeń) i tras zdefiniowanych przez użytkownika dla prywatnych punktów końcowych. Reguły sieciowej grupy zabezpieczeń stosowane do podsieci obsługującej prywatny punkt końcowy są stosowane do prywatnego punktu końcowego. Ograniczone obejście tego problemu polega na implementacji reguł dostępu dla prywatnych punktów końcowych w podsieciach źródłowych, chociaż takie podejście może wymagać wyższego obciążenia zarządzania.
+
+## <a name="next-steps"></a>Następne kroki
+
+- [Konfigurowanie zapór i sieci wirtualnych usługi Azure Storage](storage-network-security.md)
+- [Zalecenia dotyczące zabezpieczeń usługi BLOB Storage](../blobs/security-recommendations.md)

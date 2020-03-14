@@ -7,16 +7,22 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: c5040721705b90a981f1f8a45a3a2eb70eefde05
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: c609f2a3843481442e97061739a806de60a680b5
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772149"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367571"
 ---
 # <a name="iot-hub-ip-addresses"></a>IoT Hub adresy IP
 
-Prefiksy adresów IP IoT Hub publicznych punktów końcowych są publikowane okresowo w [tagu usługi](../virtual-network/service-tags-overview.md)AzureIoTHub. Te prefiksy adresów IP mogą być używane do kontrolowania łączności między IoT Hub i urządzeniami i zasobami sieciowymi w celu zaimplementowania różnych celów izolacji sieci:
+Prefiksy adresów IP IoT Hub publicznych punktów końcowych są publikowane okresowo w _AzureIoTHub_ [tagu usługi](../virtual-network/service-tags-overview.md)AzureIoTHub.
+
+> [!NOTE]
+> W przypadku urządzeń wdrożonych wewnątrz sieci lokalnych platforma Azure IoT Hub obsługuje integrację łączności sieci wirtualnej z prywatnymi punktami końcowymi. Aby uzyskać więcej informacji, zobacz [IoT Hub obsługi sieci wirtualnej](./virtual-network-support.md#ingress-connectivity-to-iot-hub-using-private-endpoints) .
+
+
+Te prefiksy adresów IP mogą być używane do kontrolowania łączności między IoT Hub i urządzeniami i zasobami sieciowymi w celu zaimplementowania różnych celów izolacji sieci:
 
 | Cel | Odpowiednie scenariusze | Podejście |
 |------|-----------|----------|
@@ -26,7 +32,7 @@ Prefiksy adresów IP IoT Hub publicznych punktów końcowych są publikowane okr
 
 
 
-## <a name="best-practices"></a>Najlepsze rozwiązania
+## <a name="best-practices"></a>Najlepsze praktyki
 
 * W przypadku dodawania reguł ZEZWALAnia w konfiguracji zapory urządzeń najlepiej jest podać określone [porty używane przez odpowiednie protokoły](./iot-hub-devguide-protocols.md#port-numbers).
 

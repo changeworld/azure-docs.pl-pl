@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: de99e9b1e4adceaf08beaf8ad3b5ea114b31a586
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380940"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270786"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs — często zadawane pytania
 Uzyskaj odpowiedzi na niektóre często zadawane pytania dotyczące Azure DevTest Labs.
@@ -76,7 +76,7 @@ Poniżej przedstawiono scenariusze, do których nasi klienci używają DevTest L
 ### <a name="how-am-i-billed-for-devtest-labs"></a>Jak naliczane są opłaty za DevTest Labs?
 DevTest Labs to bezpłatna usługa. Tworzenie laboratoriów oraz Konfigurowanie zasad, szablonów i artefaktów w usłudze DevTest Labs jest bezpłatne. Płacisz tylko za zasoby platformy Azure używane w laboratoriach, takie jak maszyny wirtualne, konta magazynu i sieci wirtualne. Aby uzyskać więcej informacji na temat kosztów zasobów laboratorium, zobacz [Azure DevTest Labs Cennik](https://azure.microsoft.com/pricing/details/devtest-lab/).
 
-## <a name="security"></a>Bezpieczeństwo
+## <a name="security"></a>Zabezpieczenia
 
 ### <a name="what-are-the-different-security-levels-in-devtest-labs"></a>Jakie są różne poziomy zabezpieczeń w DevTest Labs?
 Dostęp zabezpieczeń jest określany przez Access Control oparte na rolach (RBAC). Aby dowiedzieć się, jak działa program Access, można poznać różnice między uprawnieniami, rolą i zakresem zdefiniowanym przez RBAC.

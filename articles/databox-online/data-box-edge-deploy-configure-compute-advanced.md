@@ -10,11 +10,11 @@ ms.date: 05/20/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Data Box Edge for advanced deployment flow so I can use it to transform the data before sending it to Azure.
 ms.openlocfilehash: b446a3ebf92f6240d3bc02a148fbb8296efec926
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384738"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239042"
 ---
 # <a name="tutorial-transform-data-with-azure-data-box-edge-for-advanced-deployment-flow"></a>Samouczek: Przekształcanie danych za pomocą Azure Data Box Edge dla zaawansowanego przepływu wdrażania
 
@@ -65,7 +65,7 @@ Aby skonfigurować obliczenia na Data Box Edge, utworzysz zasób IoT Hub.
    
     |Pole  |Wartość  |
     |---------|---------|
-    |Usługa IoT Hub     | Wybierz pozycję **Nowy** lub **istniejący**. <br> Domyślnie warstwa standardowa (S1) jest używana do tworzenia zasobu IoT. Aby użyć zasobu IoT warstwy Bezpłatna, utwórz go, a następnie wybierz istniejący zasób. <br> W każdym przypadku zasób IoT Hub używa tej samej subskrypcji i grupy zasobów, która jest używana przez zasób Data Box Edge.     |
+    |Centrum IoT     | Wybierz pozycję **Nowy** lub **istniejący**. <br> Domyślnie warstwa standardowa (S1) jest używana do tworzenia zasobu IoT. Aby użyć zasobu IoT warstwy Bezpłatna, utwórz go, a następnie wybierz istniejący zasób. <br> W każdym przypadku zasób IoT Hub używa tej samej subskrypcji i grupy zasobów, która jest używana przez zasób Data Box Edge.     |
     |Name (Nazwa)     |Wprowadź nazwę dla zasobu IoT Hub.         |
 
     ![Wprowadzenie do obliczeń](./media/data-box-edge-deploy-configure-compute-advanced/configure-compute-3.png)

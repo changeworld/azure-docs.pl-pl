@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6c99cb15ef6874ef0efecb15eb99443904491209
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 420775fee36df900ce95718e58fee145de3a9f53
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79278456"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366993"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Wdrażanie hybrydowego procesu roboczego elementu Runbook systemu Windows
 
@@ -71,14 +71,14 @@ Pobierz skrypt **New-OnPremiseHybridWorker. ps1** z [Galeria programu PowerShell
 
 | Parametr | Stan | Opis |
 | --------- | ------ | ----------- |
-| *AAResourceGroupName* | Obowiązkowy | Nazwa grupy zasobów skojarzonej z kontem usługi Automation. |
-| *AutomationAccountName* | Obowiązkowy | Nazwa konta usługi Automation.
-| *Poświadczeń* | Optional (Opcjonalność) | Poświadczenia, które mają być używane podczas logowania w środowisku platformy Azure. |
-| *HybridGroupName* | Obowiązkowy | Nazwa grupy hybrydowych procesów roboczych elementu Runbook, która została określona jako element docelowy dla elementów Runbook, które obsługują ten scenariusz. |
-| *OMSResourceGroupName* | Optional (Opcjonalność) | Nazwa grupy zasobów dla obszaru roboczego Log Analytics. Jeśli ta grupa zasobów nie jest określona, zostanie użyta wartość *AAResourceGroupName* . |
-| *Identyfikator* | Obowiązkowy | Identyfikator subskrypcji platformy Azure skojarzonej z kontem usługi Automation. |
-| *TenantID* | Optional (Opcjonalność) | Identyfikator organizacji dzierżawy skojarzonej z kontem usługi Automation. |
-| *WorkspaceName* | Optional (Opcjonalność) | Nazwa obszaru roboczego Log Analytics. Jeśli nie masz obszaru roboczego Log Analytics, skrypt tworzy i konfiguruje go. |
+| `AAResourceGroupName` | Obowiązkowy | Nazwa grupy zasobów skojarzonej z kontem usługi Automation. |
+| `AutomationAccountName` | Obowiązkowy | Nazwa konta usługi Automation.
+| `Credential` | Optional (Opcjonalność) | Poświadczenia, które mają być używane podczas logowania w środowisku platformy Azure. |
+| `HybridGroupName` | Obowiązkowy | Nazwa grupy hybrydowych procesów roboczych elementu Runbook, która została określona jako element docelowy dla elementów Runbook, które obsługują ten scenariusz. |
+| `OMSResourceGroupName` | Optional (Opcjonalność) | Nazwa grupy zasobów dla obszaru roboczego Log Analytics. Jeśli ta grupa zasobów nie jest określona, zostanie użyta wartość `AAResourceGroupName`. |
+| `SubscriptionID` | Obowiązkowy | Identyfikator subskrypcji platformy Azure skojarzonej z kontem usługi Automation. |
+| `TenantID` | Optional (Opcjonalność) | Identyfikator organizacji dzierżawy skojarzonej z kontem usługi Automation. |
+| `WorkspaceName` | Optional (Opcjonalność) | Nazwa obszaru roboczego Log Analytics. Jeśli nie masz obszaru roboczego Log Analytics, skrypt tworzy i konfiguruje go. |
 
 > [!NOTE]
 > Podczas włączania rozwiązań Azure Automation obsługuje tylko niektóre regiony do łączenia obszaru roboczego Log Analytics i konta usługi Automation. Aby uzyskać listę obsługiwanych par mapowania, zobacz [Mapowanie regionów dla konta usługi Automation i obszaru roboczego log Analytics](how-to/region-mappings.md).
@@ -89,7 +89,7 @@ Otwórz program **Windows PowerShell** na ekranie **startowym** w trybie adminis
 
 ### <a name="step-3---run-the-powershell-script"></a>Krok 3 — Uruchamianie skryptu programu PowerShell
 
-W powłoce wiersza polecenia programu PowerShell przejdź do folderu zawierającego pobrany skrypt. Zmień wartości parametrów *AutomationAccountName*, *AAResourceGroupName*, *OMSResourceGroupName*, *HybridGroupName*, *subskrypcji*i *WorkspaceName*. Następnie uruchom skrypt.
+W powłoce wiersza polecenia programu PowerShell przejdź do folderu zawierającego pobrany skrypt. Zmień wartości parametrów `AutomationAccountName`, `AAResourceGroupName`, `OMSResourceGroupName`, `HybridGroupName`, `SubscriptionID`i `WorkspaceName`. Następnie uruchom skrypt.
 
 Po uruchomieniu skryptu zostanie wyświetlony monit o uwierzytelnienie przy użyciu platformy Azure. Musisz zalogować się przy użyciu konta, które jest członkiem roli Administratorzy subskrypcji i współadministratorem subskrypcji.
 
@@ -149,7 +149,7 @@ Aby ukończyć instalację i konfigurację agenta, wykonaj następujące czynno�
 
 ### <a name="step-4---install-the-runbook-environment-and-connect-to-azure-automation"></a>Krok 4. Instalowanie środowiska Runbook i nawiązywanie połączenia z usługą Azure Automation
 
-W przypadku skonfigurowania agenta w celu raportowania do obszaru roboczego Log Analytics rozwiązanie Automation wypchnij moduł **HybridRegistration** PowerShell, który zawiera polecenie cmdlet **Add-HybridRunbookWorker** . To polecenie cmdlet służy do instalowania środowiska Runbook na komputerze i rejestrowania go w Azure Automation.
+W przypadku skonfigurowania agenta w celu raportowania do obszaru roboczego Log Analytics rozwiązanie Automation wypchnięcie `HybridRegistration` module programu PowerShell, który zawiera `Add-HybridRunbookWorker` polecenie cmdlet. To polecenie cmdlet służy do instalowania środowiska Runbook na komputerze i rejestrowania go w Azure Automation.
 
 Otwórz sesję programu PowerShell w trybie administratora i uruchom następujące polecenia, aby zaimportować moduł.
 
@@ -158,7 +158,7 @@ cd "C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\<version>\
 Import-Module .\HybridRegistration.psd1
 ```
 
-Teraz uruchom polecenie cmdlet **Add-HybridRunbookWorker** przy użyciu następującej składni.
+Teraz uruchom `Add-HybridRunbookWorker` polecenie cmdlet, używając następującej składni.
 
 ```powershell-interactive
 Add-HybridRunbookWorker –GroupName <String> -EndPoint <Url> -Token <String>
@@ -168,18 +168,18 @@ Informacje wymagane dla tego polecenia cmdlet można uzyskać ze strony Zarządz
 
 ![Strona zarządzania kluczami](media/automation-hybrid-runbook-worker/elements-panel-keys.png)
 
-* Dla parametru *GroupName* Użyj nazwy grupy hybrydowych procesów roboczych elementu Runbook. Jeśli ta grupa już istnieje na koncie usługi Automation, do niej zostanie dodany bieżący komputer. Jeśli ta grupa nie istnieje, jest dodawana.
-* Dla parametru *Endpoint* Użyj wpisu **adresu URL** na stronie Zarządzanie kluczami.
-* Dla parametru *token* Użyj **podstawowego wpisu klucza dostępu** na stronie Zarządzanie kluczami.
-* W razie potrzeby ustaw parametr *verbose* , aby otrzymać szczegółowe informacje o instalacji.
+* Dla parametru `GroupName` Użyj nazwy grupy hybrydowych procesów roboczych elementu Runbook. Jeśli ta grupa już istnieje na koncie usługi Automation, do niej zostanie dodany bieżący komputer. Jeśli ta grupa nie istnieje, jest dodawana.
+* Dla parametru `EndPoint` Użyj wpisu **adresu URL** na stronie Zarządzanie kluczami.
+* Dla parametru `Token` należy użyć wpisu **podstawowego klucza dostępu** na stronie Zarządzanie kluczami.
+* W razie potrzeby ustaw parametr `Verbose`, aby otrzymywać szczegółowe informacje o instalacji.
 
 ### <a name="step-5----install-powershell-modules"></a>Krok 5. Instalowanie modułów programu PowerShell
 
 Elementy Runbook mogą korzystać z dowolnych działań i poleceń cmdlet zdefiniowanych w modułach zainstalowanych w środowisku Azure Automation. Ponieważ te moduły nie są automatycznie wdrażane na komputerach lokalnych, należy je zainstalować ręcznie. Wyjątek jest modułem platformy Azure. Ten moduł jest instalowany domyślnie i zapewnia dostęp do poleceń cmdlet dla wszystkich usług i działań platformy Azure dla Azure Automation.
 
-Ponieważ głównym celem funkcji hybrydowego procesu roboczego elementu Runbook jest zarządzanie zasobami lokalnymi, najprawdopodobniej trzeba zainstalować moduły obsługujące te zasoby, w szczególności moduł **PowerShellGet** . Aby uzyskać informacje na temat instalowania modułów programu Windows PowerShell, zobacz [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/developer/windows-powershell).
+Ponieważ głównym celem funkcji hybrydowego procesu roboczego elementu Runbook jest zarządzanie zasobami lokalnymi, najprawdopodobniej trzeba zainstalować moduły obsługujące te zasoby, w szczególności moduł `PowerShellGet`. Aby uzyskać informacje na temat instalowania modułów programu Windows PowerShell, zobacz [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/developer/windows-powershell).
 
-Zainstalowane moduły muszą znajdować się w lokalizacji, do której odwołuje się zmienna środowiskowa *PSModulePath* , dzięki czemu hybrydowy proces roboczy może je automatycznie zaimportować. Aby uzyskać więcej informacji, zobacz [Install modules in PSModulePath](https://docs.microsoft.com/powershell/scripting/developer/module/installing-a-powershell-module?view=powershell-7).
+Zainstalowane moduły muszą znajdować się w lokalizacji, do której odwołuje się zmienna środowiskowa `PSModulePath`, dzięki czemu hybrydowy proces roboczy może je automatycznie zaimportować. Aby uzyskać więcej informacji, zobacz [Install modules in PSModulePath](https://docs.microsoft.com/powershell/scripting/developer/module/installing-a-powershell-module?view=powershell-7).
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,5 +1,5 @@
 ---
-title: Informacje o zestawie SDK urządzeń mowy — Speech Service
+title: Zestaw SDK urządzeń mowy — usługa mowy
 titleSuffix: Azure Cognitive Services
 description: Wprowadzenie do zestawu Speech Devices SDK. Usługa mowy współpracuje z wieloma urządzeniami i źródłami audio. Zestawu Speech Devices SDK jest biblioteką wstępnie dostosowane, który jest powiązany z systemom, mikrofon tablicy development Kit.
 services: cognitive-services
@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 03/11/2020
 ms.author: erhopf
-ms.openlocfilehash: 40179c7d421a26fd9a77b435668f75ec6fde8ab1
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.openlocfilehash: add0d27ae6a612fed0320b5329d19236b7bbbd01
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79136977"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370648"
 ---
-# <a name="about-the-speech-devices-sdk"></a>Informacje o zestawie Speech Devices SDK
+# <a name="what-is-the-speech-devices-sdk"></a>Co to jest zestaw SDK urządzeń mowy?
 
-[Usługa mowy](overview.md) współpracuje z wieloma urządzeniami i źródłami audio. Teraz możesz korzystać z aplikacji mowy na wyższy poziom dzięki dopasowane sprzętu i oprogramowania. Zestawu Speech Devices SDK jest biblioteką pretuned, który jest powiązany z systemom, mikrofon tablicy development Kit.
+[Usługa mowy](overview.md) współpracuje z wieloma urządzeniami i źródłami audio. Teraz możesz korzystać z aplikacji mowy na wyższy poziom dzięki dopasowane sprzętu i oprogramowania. Zestawu Speech Devices SDK jest biblioteką wstępnie dostosowane, który jest powiązany z systemom, mikrofon tablicy development Kit.
 
 Zestawu Speech Devices SDK może ułatwić:
 

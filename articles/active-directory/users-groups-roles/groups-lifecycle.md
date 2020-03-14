@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/03/2020
+ms.date: 03/13/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83133fed401dac51a8dd6a653ccfd86117e956ed
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 147a131eb79c74dc38c4217d167c7d65ee8a9274
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046460"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366176"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Konfigurowanie zasad wygasania dla grup pakietu Office 365
 
@@ -42,7 +42,7 @@ Aby uzyskać informacje na temat pobierania i instalowania poleceń cmdlet progr
 
 ## <a name="activity-based-automatic-renewal"></a>Automatyczne odnawianie oparte na działaniach
 
-W przypadku usługi Azure AD Intelligence grupy są teraz automatycznie odnawiane na podstawie tego, czy były ostatnio używane. Ta funkcja eliminuje konieczność wykonywania ręcznej akcji przez właścicieli grup, ponieważ jest ona oparta na aktywności użytkownika w grupach w ramach usług Office 365, takich jak Outlook, SharePoint, Teams lub Yammer. Na przykład, jeśli właściciel lub członek grupy wykonuje coś takiego jak przekazywanie dokumentu w programie SharePoint, odwiedź kanał zespołów lub Wyślij wiadomość e-mail do grupy w programie Outlook, Grupa zostanie automatycznie odnowiona, a właściciel nie otrzyma żadnych powiadomień o odnowieniu.
+W przypadku usługi Azure AD Intelligence grupy są teraz automatycznie odnawiane na podstawie tego, czy były ostatnio używane. Ta funkcja eliminuje konieczność wykonywania ręcznej akcji przez właścicieli grup, ponieważ jest ona oparta na aktywności użytkownika w grupach w ramach usług Office 365, takich jak Outlook, SharePoint lub zespoły. Na przykład, jeśli właściciel lub członek grupy wykonuje coś takiego jak przekazywanie dokumentu w programie SharePoint, odwiedź kanał zespołów lub Wyślij wiadomość e-mail do grupy w programie Outlook, Grupa zostanie automatycznie odnowiona, a właściciel nie otrzyma żadnych powiadomień o odnowieniu.
 
 ### <a name="activities-that-automatically-renew-group-expiration"></a>Działania, które automatycznie odnawiają wygaśnięcie grupy
 

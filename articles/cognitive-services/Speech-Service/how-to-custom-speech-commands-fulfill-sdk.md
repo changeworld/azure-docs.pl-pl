@@ -1,23 +1,23 @@
 ---
-title: Jak zrealizować niestandardowe polecenia na kliencie przy użyciu zestawu Speech SDK
+title: Jak zrealizować polecenia z klienta przy użyciu zestawu Speech SDK
 titleSuffix: Azure Cognitive Services
-description: W tym artykule wyjaśniono, jak obsługiwać niestandardowe działania poleceń na kliencie przy użyciu zestawu Speech SDK.
+description: W tym artykule wyjaśniono, jak obsługiwać działania poleceń niestandardowych na kliencie przy użyciu zestawu Speech SDK.
 services: cognitive-services
 author: don-d-kim
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 03/12/2020
 ms.author: donkim
-ms.openlocfilehash: b55bb1c8379cf0a80a95aa0ba1a29297154d5831
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: e109955774722da7f55defe1417de35ff202cce8
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156509"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367753"
 ---
-# <a name="how-to-fulfill-commands-on-the-client-with-the-speech-sdk-preview"></a>Instrukcje: spełnienie poleceń na kliencie przy użyciu zestawu mowy SDK (wersja zapoznawcza)
+# <a name="fulfill-commands-from-a-client-with-the-speech-sdk-preview"></a>Realizacja poleceń z klienta przy użyciu zestawu Speech SDK (wersja zapoznawcza)
 
 Aby wykonać zadania za pomocą aplikacji poleceń niestandardowych, można wysłać niestandardowe ładunki do podłączonego urządzenia klienckiego.
 
@@ -28,7 +28,7 @@ W tym artykule przedstawiono następujące:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+- [Program Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 - Klucz subskrypcji platformy Azure dla usługi mowy
   - [Pobierz bezpłatnie](get-started.md) lub utwórz je na [Azure Portal](https://portal.azure.com)
 - Wcześniej utworzona aplikacja poleceń niestandardowych
@@ -131,7 +131,7 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
 };
 ```
 
-## <a name="try-it-out"></a>Wypróbuj
+## <a name="try-it-out"></a>Testowanie
 
 1. Uruchamianie aplikacji
 1. Wybierz pozycję Włącz mikrofon

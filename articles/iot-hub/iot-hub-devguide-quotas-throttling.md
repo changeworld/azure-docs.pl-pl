@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 64f285ea27bde4565d051a84a65c5b4d7b8e9e8c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 71a5737434e78bc39bccdfeb950e0dbc32ed0052
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906984"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79284696"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Przydziały IoT Hub i ograniczanie przepustowości
 
@@ -44,7 +44,7 @@ W poniższej tabeli przedstawiono wymuszone ograniczenia. Wartości odnoszą si�
 | Wysłane z chmury do urządzenia<sup>1</sup> | 1,67 operacji wysyłania/s/jednostkę (100 komunikatów/min/jednostka) | 1,67 operacji wysyłania/s/jednostkę (100 operacji wysyłania/min/jednostka) | 83,33 operacji wysyłania/s/jednostkę (5 000 operacji wysyłania/min/jednostka) |
 | Odebrane z chmury do urządzenia<sup>1</sup> <br/> (tylko w przypadku, gdy urządzenie używa protokołu HTTPS)| 16,67 operacji odbioru/s/jednostkę (1 000 operacji odbioru/min/jednostka) | 16,67 operacji odbioru/s/jednostkę (1 000 operacji odbioru/min/jednostka) | 833,33 operacji odbioru/s/jednostkę (50 000 operacji odbioru/min/jednostka) |
 | Przekazywanie plików | 1,67 liczba inicjacji przekazywania plików na sekundę/jednostkę (100/min/jednostka) | 1,67 liczba inicjacji przekazywania plików na sekundę/jednostkę (100/min/jednostka) | 83,33 liczba inicjacji przekazywania plików na sekundę/jednostkę (5000/min/jednostka) |
-| Metody bezpośrednie<sup>1</sup> | 160KB/sec/unit<sup>2</sup> | 480KB/sec/unit<sup>2</sup> | 24MB/sec/unit<sup>2</sup> | 
+| Metody bezpośrednie<sup>1</sup> | 160KB/s/jednostka<sup>2</sup> | 480KB/s/jednostka<sup>2</sup> | 24MB/s/jednostka<sup>2</sup> | 
 | Zapytania | 20/min/jednostkę | 20/min/jednostkę | 1000/min/jednostkę |
 | Sznury (urządzenia i moduły) — odczyt<sup>1</sup> | 100/s | Wyższa z 100/s lub 10/s/jednostkę | 500/sek/jednostkę |
 | Aktualizacje bliźniaczye (urządzenie i moduł)<sup>1</sup> | 50/s | Ponad 50/s lub 5/s/jednostkę | 250/sek/jednostkę |
@@ -105,7 +105,7 @@ IoT Hub wymusza inne limity operacyjne:
 | Obsługa komunikatów z chmury do urządzeń<sup>1</sup> | Maksymalny rozmiar komunikatu 64 KB. Maksymalna liczba oczekujących komunikatów do dostarczenia to 50 na urządzenie. |
 | Metoda bezpośrednia<sup>1</sup> | Maksymalny rozmiar ładunku metody bezpośredniej to 128 KB. |
 | Automatyczne konfiguracje urządzeń i modułów<sup>1</sup> | 100 konfiguracje na płatne centra SKU. 20 konfiguracji na bezpłatne centrum SKU. |
-| IoT Edge wdrożeń automatycznych<sup>1</sup> | 20 modułów na wdrożenie. 100 wdrożenia (w tym wdrożenia warstwowe) na płatne centra SKU. 10 wdrożeń na bezpłatne centrum SKU. |
+| IoT Edge wdrożeń automatycznych<sup>1</sup> | 50 modułów na wdrożenie. 100 wdrożenia (w tym wdrożenia warstwowe) na płatne centra SKU. 10 wdrożeń na bezpłatne centrum SKU. |
 | Bliźniaczych reprezentacji<sup>1</sup> | Maksymalny rozmiar żądanych właściwości i raportowane sekcje są 32 KB każdego z nich. Maksymalny rozmiar sekcji tagów to 8 KB. |
 | Zasady dostępu współużytkowanego | Maksymalna liczba zasad dostępu współdzielonego wynosi 16 |
 

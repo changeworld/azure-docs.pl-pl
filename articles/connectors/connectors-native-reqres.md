@@ -1,20 +1,20 @@
 ---
-title: Odbieranie wywołań HTTPS i odpowiadanie na nie
-description: Obsługa żądań HTTPS i zdarzeń w czasie rzeczywistym przy użyciu Azure Logic Apps
+title: Odbieraj wywołania i odpowiadaj na nie przy użyciu protokołu HTTPS
+description: Obsługa przychodzących żądań HTTPS z usług zewnętrznych przy użyciu Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewers: klam, logicappspm
 ms.topic: conceptual
-ms.date: 01/14/2020
+ms.date: 03/12/2020
 tags: connectors
-ms.openlocfilehash: 0949e50c5a4993dfbcc83b41ef01d2cea82350a8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: d65b81f18d4dcb0ee97a21a7edec885e308bd8d4
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386521"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297303"
 ---
-# <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>Odbieraj przychodzące wywołania HTTPS i odpowiadaj na nie przy użyciu Azure Logic Apps
+# <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Odbieranie przychodzących żądań HTTPS i odpowiadanie na nie w Azure Logic Apps
 
 Za pomocą [Azure Logic Apps](../logic-apps/logic-apps-overview.md) i wbudowanego wyzwalacza żądań lub akcji odpowiedzi można tworzyć automatyczne zadania i przepływy pracy, które odbierają i reagują na przychodzące żądania HTTPS. Na przykład możesz mieć aplikację logiki:
 
@@ -202,6 +202,19 @@ Poniżej znajduje się więcej informacji na temat danych wyjściowych wyzwalacz
 Możesz użyć akcji odpowiedzi, aby odpowiedzieć na ładunek (dane) do przychodzącego żądania HTTPS, ale tylko w aplikacji logiki, która jest wyzwalana przez żądanie HTTPS. Akcję odpowiedzi można dodać w dowolnym momencie w przepływie pracy. Aby uzyskać więcej informacji na temat podstawowej definicji JSON dla tego wyzwalacza, zobacz [Typ akcji odpowiedź](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action).
 
 Aplikacja logiki utrzymuje otwarte żądanie przychodzące tylko przez jedną minutę. Przy założeniu, że przepływ pracy aplikacji logiki zawiera akcję odpowiedzi, jeśli aplikacja logiki nie zwróci odpowiedzi po upływie tego czasu, aplikacja logiki zwróci `504 GATEWAY TIMEOUT` do obiektu wywołującego. W przeciwnym razie, jeśli aplikacja logiki nie zawiera akcji odpowiedzi, aplikacja logiki natychmiast zwróci odpowiedź `202 ACCEPTED` do obiektu wywołującego.
+
+> [!IMPORTANT]
+> Jeśli akcja odpowiedzi zawiera te nagłówki, Logic Apps usuwa te nagłówki z wygenerowanego komunikatu odpowiedzi bez wyświetlania ostrzeżenia lub błędu:
+>
+> * `Allow`
+> * `Content-*` z następującymi wyjątkami: `Content-Disposition`, `Content-Encoding`i `Content-Type`
+> * `Cookie`
+> * `Expires`
+> * `Last-Modified`
+> * `Set-Cookie`
+> * `Transfer-Encoding`
+>
+> Mimo że Logic Apps nie zatrzyma zapisywania aplikacji logiki, które mają akcję odpowiedzi z tymi nagłówkami, Logic Apps ignoruje te nagłówki.
 
 1. W Projektancie aplikacji logiki w kroku, w którym chcesz dodać akcję odpowiedzi, wybierz pozycję **nowy krok**.
 

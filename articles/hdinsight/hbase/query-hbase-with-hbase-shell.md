@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Kwerenda Apache HBase w usłudze Azure HDInsight — powłoka HBase'
+title: 'Szybki Start: Kwerenda Apache HBase w usłudze Azure HDInsight — powłoka HBase'
 description: W tym przewodniku szybki start dowiesz się, jak używać powłoki Apache HBase do uruchamiania zapytań Apache HBase.
 keywords: HDInsight, Hadoop, HBase
 author: hrasheed-msft
@@ -9,14 +9,14 @@ ms.custom: hdinsightactive
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 033227f085cd23c5fa26313cb4a2816070676560
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 572262cbece26171f9a67bf073906fa2dfd4d8e1
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076427"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371073"
 ---
-# <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-hbase-shell"></a>Szybki start: Zapytanie dotyczące platformy Apache HBase w usłudze Azure HDInsight przy użyciu powłoki HBase
+# <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-hbase-shell"></a>Szybki Start: Kwerenda Apache HBase w usłudze Azure HDInsight przy użyciu powłoki HBase
 
 W tym przewodniku szybki start dowiesz się, jak za pomocą powłoki Apache HBase utworzyć tabelę HBase, wstawić dane, a następnie zbadać tabelę.
 
@@ -24,7 +24,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Klaster Apache HBase. Zobacz [Tworzenie klastra](../hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster) , aby utworzyć klaster usługi HDInsight.  Upewnij się, że wybrano typ klastra **HBase** .
+* Klaster Apache HBase. Zobacz [Tworzenie klastra](../hadoop/apache-hadoop-linux-tutorial-get-started.md) , aby utworzyć klaster usługi HDInsight.  Upewnij się, że wybrano typ klastra **HBase** .
 
 * Klient SSH. Aby uzyskać więcej informacji, zobacz [Łączenie się z usługą HDInsight (Apache Hadoop) przy użyciu protokołu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -40,7 +40,7 @@ W HBase (implementacja BigTable w [chmurze](https://cloud.google.com/bigtable/))
 
 Za pomocą protokołu SSH można łączyć się z klastrami HBase, a następnie używać powłoki Apache HBase do tworzenia tabel HBase, wstawiania danych i wykonywania zapytań dotyczących danych.
 
-1. Użyj `ssh` polecenia, aby nawiązać połączenie z klastrem HBase. Edytuj poniższe polecenie, zastępując `CLUSTERNAME` je nazwą klastra, a następnie wprowadź polecenie:
+1. Użyj `ssh` polecenia, aby nawiązać połączenie z klastrem HBase. Edytuj poniższe polecenie, zastępując `CLUSTERNAME` nazwą klastra, a następnie wprowadź polecenie:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -52,19 +52,19 @@ Za pomocą protokołu SSH można łączyć się z klastrami HBase, a następnie 
     hbase shell
     ```
 
-3. Użyj `create` polecenia, aby utworzyć tabelę HBase z rodziną dwóch kolumn. Wprowadź następujące polecenie:
+3. Użyj `create` polecenie, aby utworzyć tabelę HBase z rodziną dwóch kolumn. Wprowadź następujące polecenie:
 
     ```hbase
     create 'Contacts', 'Personal', 'Office'
     ```
 
-4. Użyj `list` polecenia, aby wyświetlić listę wszystkich tabel w HBase. Wprowadź następujące polecenie:
+4. Użyj polecenia `list`, aby wyświetlić listę wszystkich tabel w HBase. Wprowadź następujące polecenie:
 
     ```hbase
     list
     ```
 
-5. Użyj `put` polecenia, aby wstawić wartości w określonej kolumnie w określonym wierszu w określonej tabeli. Wprowadź następujące polecenie:
+5. Użyj `put` polecenie, aby wstawić wartości z określonej kolumny w określonym wierszu w określonej tabeli. Wprowadź następujące polecenie:
 
     ```hbase
     put 'Contacts', '1000', 'Personal:Name', 'John Dole'
@@ -73,13 +73,13 @@ Za pomocą protokołu SSH można łączyć się z klastrami HBase, a następnie 
     put 'Contacts', '1000', 'Office:Address', '1111 San Gabriel Dr.'
     ```
 
-6. Użyj `scan` polecenia, aby przeskanować `Contacts` i zwrócić dane tabeli. Wprowadź następujące polecenie:
+6. Użyj `scan` polecenia, aby przeskanować i zwrócić `Contacts` dane tabeli. Wprowadź następujące polecenie:
 
     ```hbase
     scan 'Contacts'
     ```
 
-7. Użyj `get` polecenia, aby pobrać zawartość wiersza. Wprowadź następujące polecenie:
+7. Użyj `get` polecenie, aby pobrać zawartość wiersza. Wprowadź następujące polecenie:
 
     ```hbase
     get 'Contacts', '1000'
@@ -87,25 +87,25 @@ Za pomocą protokołu SSH można łączyć się z klastrami HBase, a następnie 
 
     Wyniki są wyświetlane podobnie jak przy użyciu `scan` polecenia, ponieważ istnieje tylko jeden wiersz.
 
-8. Użyj `delete` polecenia, aby usunąć wartość komórki z tabeli. Wprowadź następujące polecenie:
+8. Użyj `delete` polecenie, aby usunąć wartość komórki z tabeli. Wprowadź następujące polecenie:
 
     ```hbase
     delete 'Contacts', '1000', 'Office:Address'
     ```
 
-9. Użyj `disable` polecenia, aby wyłączyć tabelę. Wprowadź następujące polecenie:
+9. Użyj `disable` polecenie, aby wyłączyć tabelę. Wprowadź następujące polecenie:
 
     ```hbase
     disable 'Contacts'
     ```
 
-10. Użyj `drop` polecenia, aby usunąć tabelę z HBase. Wprowadź następujące polecenie:
+10. Użyj polecenia `drop`, aby usunąć tabelę z HBase. Wprowadź następujące polecenie:
 
     ```hbase
     drop 'Contacts'
     ```
 
-11. Użyj `exit` polecenia, aby zatrzymać powłokę interaktywną HBase. Wprowadź następujące polecenie:
+11. Użyj `exit` polecenie, aby zatrzymać powłokę interaktywną HBase. Wprowadź następujące polecenie:
 
     ```hbase
     exit

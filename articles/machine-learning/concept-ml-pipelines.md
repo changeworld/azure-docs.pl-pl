@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/06/2019
-ms.openlocfilehash: fd10a3e62bcbe438eb17edfc71a5285ad071e29a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 3f1d0e13d9b76c7ef06edb953b59ebfa73c302de
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79270318"
+ms.locfileid: "79296850"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Co to są Azure Machine Learning potoki?
 
@@ -204,6 +204,12 @@ Najważniejsze zalety używania potoków dla przepływów pracy usługi Machine 
 |**Śledzenie i przechowywanie wersji**|Zamiast ręcznego śledzenia danych i ścieżek wyników podczas iteracji Użyj zestawu SDK potoków, aby jawnie nazwać i w wersji źródła danych, dane wejściowe i wyjściowe. Możesz również zarządzać skryptami i danymi osobno w celu zwiększenia produktywności.|
 | **Modułowość** | Rozdzielenie obszarów problemów i izolacja zmian pozwala na szybsze rozwijanie się oprogramowania o wyższej jakości. | 
 |**Społeczności**|Potoki umożliwiają analitykom danych współpracę we wszystkich obszarach procesu projektowania uczenia maszynowego, jednocześnie umożliwiając jednocześnie pracę nad krokami potoku.|
+
+### <a name="choosing-the-proper-pipelinestep-subclass"></a>Wybieranie odpowiedniej podklasy PipelineStep
+
+`PythonScriptStep` jest najbardziej elastyczną podklasą `PipelineStep`abstrakcyjnych. Inne podklasy, takie jak `EstimatorStep` podklasy i `DataTransferStep` mogą wykonywać określone zadania z mniejszym kodem. Na przykład, `EstimatorStep` może być tworzony przez po prostu przekazanie nazwy dla kroku, `Estimator`i elementu docelowego obliczeń. Można też przesłonić dane wejściowe i wyjściowe, parametry potoku i argumenty. Aby uzyskać więcej informacji, zobacz [uczenie modeli za pomocą Azure Machine Learning przy użyciu szacowania](how-to-train-ml-models.md). 
+
+`DataTransferStep` ułatwia przenoszenie danych między źródłami danych i ujściami. Kod, aby to zrobić ręcznie, jest prosty, ale powtarzany. Zamiast tego można po prostu utworzyć `DataTransferStep` z nazwą, odwołaniami do źródła danych i ujścia danych oraz elementem docelowym obliczeń. Potoku [Azure Machine Learning notesu z DataTransferStep](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-data-transfer.ipynb) pokazuje tę elastyczność.
 
 ## <a name="modules"></a>Moduły
 

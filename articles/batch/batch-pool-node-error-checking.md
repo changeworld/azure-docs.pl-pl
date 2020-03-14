@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 88382a5b6e0364145d8504b5e25ef1a9bfd0111a
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 95f7d4d03fbac6ec7c27630f1210ef999ddc776c
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484132"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369271"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Sprawdź, czy występują błędy puli i węzłów
 
@@ -137,8 +137,21 @@ Rozmiar dysku tymczasowego zależy od rozmiaru maszyny wirtualnej. Należy wzią
 
 W przypadku plików pisanych przez każde zadanie można określić czas przechowywania dla każdego zadania, które określa, jak długo pliki zadań są przechowywane przed automatycznym wyczyszczeniem. Czas przechowywania można zmniejszyć, aby zmniejszyć wymagania dotyczące magazynu.
 
-Jeśli ilość miejsca na dysku jest wypełniona, obecnie węzeł przestanie uruchamiać zadania. W przyszłości zostanie zgłoszony [błąd węzła](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) .
+Jeśli na dysku tymczasowym wyczerpie się wolne miejsce (lub jest bardzo blisko wolnego miejsca), węzeł przejdzie w stan [niezdatny do użytku](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate) i wystąpi błąd węzła (Użyj linku już tam), co oznacza, że dysk jest pełny.
 
+### <a name="what-to-do-when-a-disk-is-full"></a>Co zrobić, gdy dysk jest pełny
+
+Określ, dlaczego dysk jest pełny: Jeśli nie masz pewności co do tego, co zajmuje miejsce w węźle, zaleca się zdalne z węzłem i zbadaj ręcznie miejsce, gdzie został usunięty. Można również użyć [interfejsu API plików list usługi Batch](https://docs.microsoft.com/rest/api/batchservice/file/listfromcomputenode) do sprawdzenia plików w folderach zarządzanych wsadowo (na przykład w danych wyjściowych zadania). Należy zauważyć, że ten interfejs API wyświetla listę tylko plików w katalogach zarządzanych przez partię i jeśli zadania utworzone w innym miejscu nie będą widoczne.
+
+Upewnij się, że wszystkie dane, które są potrzebne, zostały pobrane z węzła lub przekazane do magazynu trwałego. Wszystkie środki zaradcze związane z dyskiem — pełny problem polega na usunięciu danych w celu zwolnienia miejsca.
+
+### <a name="recovering-the-node"></a>Odzyskiwanie węzła
+
+1. Jeśli pula jest pulą [C. loudServiceConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) , możesz ją odtworzyć przy użyciu [interfejsu API ponownego obrazu usługi Batch](https://docs.microsoft.com/rest/api/batchservice/computenode/reimage). Spowoduje to wyczyszczenie całego dysku. Ponowne tworzenie obrazu nie jest obecnie obsługiwane w przypadku pul [VirtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) .
+
+2. Jeśli pula jest [VirtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration), można usunąć węzeł z puli za pomocą [interfejsu API usuwania węzłów](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes). Następnie można ponownie zwiększyć pulę, aby zastąpić zły węzeł nowym.
+
+3.  Usuń stare zakończone zadania lub stare wykonane zadania, których dane zadania są nadal w węzłach. Aby uzyskać wskazówkę na temat tego, jakie dane zadań/zadań są w węzłach, można wyszukać w [kolekcji RecentTasks](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskinformation) w węźle lub w [plikach w węźle](https://docs.microsoft.com//rest/api/batchservice/file/listfromcomputenode). Usunięcie zadania spowoduje usunięcie wszystkich zadań z zadania, a usunięcie zadań w ramach zadania spowoduje wyzwolenie danych w katalogach zadań w węźle, który ma zostać usunięty, w ten sposób Zwolnij miejsce. Po zwolnieniu wystarczającej ilości miejsca, uruchom ponownie węzeł i nie powinna zostać przeniesiona z stanu "bez użycia" do "bezczynne".
 
 ## <a name="next-steps"></a>Następne kroki
 

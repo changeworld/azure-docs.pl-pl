@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 02/18/2020
+ms.date: 03/13/2020
 ms.author: victorh
-ms.openlocfilehash: 0ba2ce30cee3ff7e3a9f71b4f1b0928fa84e775d
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 149782f627d586e927c828506a7d4f1b5437b987
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443157"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366278"
 ---
 # <a name="what-is-azure-firewall-manager-preview"></a>Co to jest wersja zapoznawcza usługi Azure firewall Manager?
 
@@ -80,13 +80,14 @@ Wersja zapoznawcza Menedżera zapory platformy Azure obejmuje następujące znan
 
 |Problem  |Opis  |Środki zaradcze  |
 |---------|---------|---------|
-|Ograniczenia filtrowania innych firm|Filtrowanie ruchu V2I z dostawcami innych firm nie jest obsługiwane przez usługę Azure firewall B2V i V2V.|Obecnie trwa badanie.|
-|Dzielenie ruchu nie jest obecnie obsługiwane|Dzielenie pakietów Office 365 i Public PaaS nie jest obecnie obsługiwane. W związku z tym wybranie dostawcy innej firmy dla usługi V2I lub B2I spowoduje również wysłanie wszystkich usług Azure Public PaaS i Office 365 przez usługę partnera.|Obecnie badanie podziału ruchu w centrum.
-|Jeden bezpieczny koncentrator wirtualny na region|Nie można mieć więcej niż jednego zabezpieczonego koncentratora wirtualnego na region|Utwórz wiele wirtualnych sieci WAN w regionie.|
-|Zasady podstawowe muszą znajdować się w tym samym regionie co zasady lokalne|Utwórz wszystkie zasady lokalne w tym samym regionie co zasady podstawowe. Można nadal stosować zasady, które zostały utworzone w jednym regionie w zabezpieczonym centrum z innego regionu.|Obecnie trwa badanie.|
-|Komunikacja między centrami nie działa z bezpiecznym koncentratorem wirtualnym|Zabezpieczona wirtualna koncentrator do bezpiecznej komunikacji z koncentratorem wirtualnym nie jest jeszcze obsługiwana.|Obecnie trwa badanie.|
+|Ograniczenia filtrowania innych firm.|Filtrowanie ruchu V2I z dostawcami innych firm nie jest obsługiwane przez usługę Azure firewall B2V i V2V.|Badanie|
+|Dzielenie ruchu nie jest obecnie obsługiwane.|Dzielenie pakietów Office 365 i Public PaaS nie jest obecnie obsługiwane. W związku z tym wybranie dostawcy innej firmy dla usługi V2I lub B2I spowoduje również wysłanie wszystkich usług Azure Public PaaS i Office 365 przez usługę partnera.|Badanie podziału ruchu w centrum.
+|Jeden bezpieczny koncentrator wirtualny na region.|Na region nie można mieć więcej niż jednego zabezpieczonego koncentratora wirtualnego.|Utwórz wiele wirtualnych sieci WAN w regionie.|
+|Zasady podstawowe muszą znajdować się w tym samym regionie co zasady lokalne.|Utwórz wszystkie zasady lokalne w tym samym regionie co zasady podstawowe. Można nadal stosować zasady, które zostały utworzone w jednym regionie w zabezpieczonym centrum z innego regionu.|Badanie|
+|Komunikacja między centrami nie działa z bezpiecznym koncentratorem wirtualnym|Zabezpieczona wirtualna koncentrator do bezpiecznej komunikacji z koncentratorem wirtualnym nie jest jeszcze obsługiwana.|Badanie|
 |Wszystkie zabezpieczone centra wirtualne współużytkujące tę samą wirtualną sieć WAN muszą znajdować się w tej samej grupie zasobów.|To zachowanie jest wyrównane z koncentratorami wirtualnych sieci WAN już dziś.|Utwórz wiele wirtualnych sieci WAN, aby umożliwić tworzenie zabezpieczonych koncentratorów wirtualnych w różnych grupach zasobów.|
-|Grupy adresów IP nie są obsługiwane w zasadach zapory|Grupy IP znajdują się w publicznej wersji zapoznawczej i obecnie są obsługiwane tylko przy użyciu tradycyjnych reguł zapory|Trwa naprawianie
+|Grupy adresów IP nie są obsługiwane w zasadach zapory.|Grupy adresów IP znajdują się w publicznej wersji zapoznawczej i są obecnie obsługiwane tylko w przypadku tradycyjnych reguł zapory.|Trwa rozwiązywanie.
+|Subskrypcje dostawcy rozwiązań w chmurze (CSP) nie są obsługiwane.|Obecnie [subskrypcje CSP](https://azure.microsoft.com/offers/ms-azr-0145p/) nie są obsługiwane.|Badanie
 
 ## <a name="next-steps"></a>Następne kroki
 

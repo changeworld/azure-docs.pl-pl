@@ -3,17 +3,17 @@ title: Przekazywanie wirtualnego dysku twardego do platformy Azure przy użyciu 
 description: Dowiedz się, jak przekazać dysk VHD do dysku zarządzanego platformy Azure i skopiować dysk zarządzany między regionami przy użyciu Azure PowerShell za pośrednictwem bezpośredniego przekazywania.
 author: roygara
 ms.author: rogarana
-ms.date: 05/06/2019
+ms.date: 03/13/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 8a7e5243428eb88a2757b675c7d66dbfb3c66a30
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 883fea1e25ded26c35e96d11edd8f417e96db30e
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459984"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369560"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-powershell"></a>Przekazywanie wirtualnego dysku twardego do platformy Azure przy użyciu Azure PowerShell
 
@@ -27,7 +27,7 @@ Obecnie bezpośrednie przekazywanie jest obsługiwane dla standardowego dysku tw
 
 - Pobierz najnowszą [wersję programu AzCopy v10](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy).
 - [Zainstaluj moduł Azure PowerShell](/powershell/azure/install-Az-ps).
-- Jeśli zamierzasz przekazać dysk VHD ze swojego miejsca lokalnego: dysku VHD [przygotowanego dla platformy Azure](prepare-for-upload-vhd-image.md), który jest przechowywany lokalnie.
+- Jeśli zamierzasz przekazać dysk VHD ze swojego miejsca lokalnego: dysk VHD o stałym rozmiarze [przygotowany dla platformy Azure](prepare-for-upload-vhd-image.md), przechowywany lokalnie.
 - Lub dysk zarządzany na platformie Azure, jeśli zamierzasz wykonać akcję kopiowania.
 
 ## <a name="create-an-empty-managed-disk"></a>Utwórz pusty dysk zarządzany
@@ -76,8 +76,6 @@ To przekazywanie ma taką samą przepływność jak odpowiednik [standardowego d
 ```
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" $diskSas.AccessSAS --blob-type PageBlob
 ```
-
-Jeśli sygnatura dostępu współdzielonego wygaśnie podczas przekazywania i nie wywołałeś jeszcze `revoke-access`, możesz uzyskać nowe sygnatury dostępu współdzielonego, aby kontynuować przekazywanie za pomocą `grant-access`ponownie.
 
 Po zakończeniu przekazywania i nie musisz już pisać więcej danych na dysku, odwołaj sygnaturę dostępu współdzielonego. Odwoływanie sygnatury dostępu współdzielonego spowoduje zmianę stanu dysku zarządzanego i umożliwi dołączenie dysku do maszyny wirtualnej.
 

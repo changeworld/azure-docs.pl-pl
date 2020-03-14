@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6a70e52771828de6cc9fad7998097d70c28a64fd
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 9f9f7f709d31967e892900ccb25657a5963c0379
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79238818"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370223"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Samouczek: Tworzenie dzierżawy w programie Virtual Desktop systemu Windows
 
@@ -82,7 +82,7 @@ Aby przypisać rolę aplikacji TenantCreator:
 3. Wybierz pozycję **Użytkownicy i grupy**. Może się okazać, że administrator, który udzielił zgody na dostęp do aplikacji, znajduje się już na liście z domyślną przypisaną rolą **dostępu** . Nie jest to wystarczające, aby utworzyć dzierżawę pulpitu wirtualnego systemu Windows. Wykonaj poniższe instrukcje, aby dodać rolę **TenantCreator** do użytkownika.
    
    ![Zrzut ekranu użytkowników i grup przypisanych do zarządzania aplikacją Enterprise "pulpit wirtualny systemu Windows". Zrzut ekranu zawiera tylko jedno przypisanie, które jest przeznaczone dla "dostępu domyślnego".](media/tenant-default-access.png)
-4. Wybierz pozycję **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w bloku **Dodaj przypisanie** .
+4. Wybierz pozycję **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** na karcie **Dodaj przypisanie** .
 5. Wyszukaj konto użytkownika, które będzie tworzyć dzierżawcę pulpitów wirtualnych systemu Windows. Dla uproszczenia może to być konto administratora globalnego.
    - Jeśli używasz dostawcy tożsamości firmy Microsoft, takiego jak contosoadmin@live.com lub contosoadmin@outlook.com, możesz nie być w stanie zalogować się do pulpitu wirtualnego systemu Windows. Zalecamy używanie konta specyficznego dla domeny, takiego jak admin@contoso.com lub admin@contoso.onmicrosoft.com.
 

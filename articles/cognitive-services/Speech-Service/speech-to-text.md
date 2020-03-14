@@ -3,19 +3,19 @@ title: Zamiana mowy na tekst — usługa mowy
 titleSuffix: Azure Cognitive Services
 description: Funkcja zamiany mowy na tekst włącza transkrypcję strumieni audio w czasie rzeczywistym do tekstu. Twoje aplikacje, narzędzia lub urządzenia mogą wykorzystywać, wyświetlać i podejmować działania dotyczące tego tekstu. Ta usługa współpracuje bezproblemowo z funkcją zamiany tekstu na mowę (synteza mowy) i funkcją tłumaczenia mowy.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/11/2019
-ms.author: erhopf
-ms.openlocfilehash: 8518f92a4f4df1686d4b338783a93d969e04d219
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/12/2020
+ms.author: dapine
+ms.openlocfilehash: c5befcade944ff481b5f55e3a4afe11672dad117
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388298"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371260"
 ---
 # <a name="what-is-speech-to-text"></a>Co to jest zamiana mowy na tekst?
 
@@ -24,9 +24,8 @@ Zamiana mowy na tekst z usługi mowy, znanej również jako rozpoznawanie mowy, 
 Usługa zamiany mowy na tekst domyślnie używa modelu języka uniwersalnego. Ten model został przeszkolony przy użyciu danych firmy Microsoft i jest wdrażany w chmurze. Jest optymalny dla scenariuszy konwersacji i dyktowania. Przy użyciu zamiany mowy na tekst w celu rozpoznawania i transkrypcji w unikatowym środowisku można tworzyć i uczenie niestandardowych modeli akustycznych, językowych i wymowy. Dostosowanie jest pomocne w odniesieniu do hałasu otoczenia lub słownictwa specyficznego dla branży.
 
 > [!NOTE]
-> Rozpoznawanie mowy Bing został zlikwidowany 15 października 2019. Jeśli Twoje aplikacje, narzędzia lub produkty używają rozpoznawanie mowy Bing interfejsów API lub Custom Speech, zostały utworzone przewodniki ułatwiające Migrowanie do usługi mowy.
+> Rozpoznawanie mowy Bing został zlikwidowany 15 października 2019. Jeśli Twoje aplikacje, narzędzia lub produkty używają interfejsów API rozpoznawanie mowy Bing, zostały utworzone przewodniki ułatwiające Migrowanie do usługi mowy.
 > - [Migrowanie z rozpoznawanie mowy Bing do usługi mowy](how-to-migrate-from-bing-speech.md)
-> - [Migrowanie z Custom Speech do usługi mowy](how-to-migrate-from-custom-speech-service.md)
 
 ## <a name="get-started-with-speech-to-text"></a>Wprowadzenie do zamiany mowy na tekst
 

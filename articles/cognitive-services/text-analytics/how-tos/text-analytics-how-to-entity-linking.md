@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 0622aca5579c64c6d840761abb151665af559eea
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 243086ddaae47eba20eea6877fe6d7f8f9889290
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79117488"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79203495"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak używać rozpoznawania jednostek nazwanych w analiza tekstu
 
@@ -100,7 +100,7 @@ NER
 | DateTime      | TimeRange     | "18:00 do 7pm"     |
 | DateTime      | Czas trwania      | "1 minuta i 45 s"   |
 | DateTime      | Set           | "każdy wtorek"     |
-| Adres URL           | Nie dotyczy\*         | "https:\//www.bing.com"    |
+| {1&gt;URL&lt;1}           | Nie dotyczy\*         | "https:\//www.bing.com"    |
 | Email         | Nie dotyczy\*         | „support@contoso.com” |
 | Numer telefonu USA  | Nie dotyczy\*         | (Tylko numery telefonów US) "(312) 555-0176" |
 | Adres IP    | Nie dotyczy\*         | "10.0.0.100" |
@@ -182,14 +182,13 @@ Interfejs API analizy tekstu jest bezstanowy. Na Twoim koncie nie są przechowyw
 
 Wszystkie żądania POST zwracają sformatowaną w formacie JSON odpowiedź z identyfikatorami i wykrytymi właściwościami jednostki.
 
-Dane wyjściowe są zwracane natychmiast. Wyniki można przesłać strumieniowo do aplikacji, która akceptuje kod JSON, lub zapisać do pliku w systemie lokalnym, a następnie zaimportować do aplikacji, która umożliwia sortowanie i wyszukiwanie danych oraz manipulowanie nimi.
-
+Dane wyjściowe są zwracane natychmiast. Wyniki można przesłać strumieniowo do aplikacji, która akceptuje kod JSON, lub zapisać do pliku w systemie lokalnym, a następnie zaimportować do aplikacji, która umożliwia sortowanie i wyszukiwanie danych oraz manipulowanie nimi. Ze względu na obsługę wielojęzycznych i emoji, odpowiedź może zawierać przesunięcia tekstu. Aby uzyskać więcej informacji [, zobacz Jak przetwarzać przesunięcia tekstu](../concepts/text-offsets.md) .
 
 #### <a name="version-30-preview"></a>[Wersja 3,0-Preview)](#tab/version-3)
 
 ### <a name="example-v3-responses"></a>Przykładowe odpowiedzi v3
 
-Wersja 3 zapewnia oddzielne punkty końcowe dla NER i konsolidacji jednostek. Odpowiedzi dla obu operacji są poniżej.
+Wersja 3 zapewnia oddzielne punkty końcowe dla NER i konsolidacji jednostek. Odpowiedzi dla obu operacji są poniżej. 
 
 #### <a name="example-ner-response"></a>Przykładowa odpowiedź NER
 

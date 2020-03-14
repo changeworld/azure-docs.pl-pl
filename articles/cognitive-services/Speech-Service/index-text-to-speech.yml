@@ -10,16 +10,16 @@ metadata:
   layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 02/11/2020
+  ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: 9070577c07cb826d10b911689f456d64709450b7
-  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+  ms.openlocfilehash: 82499c16b6ad8cd8c1adfe27eeb7a0c842e37d1e
+  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
   ms.translationtype: MT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 03/09/2020
-  ms.locfileid: "78943378"
+  ms.lasthandoff: 03/14/2020
+  ms.locfileid: "79370410"
 landingContent:
-- title: Rozpoczynanie pracy
+- title: Informacje o zamiany tekstu na mowę
   linkLists:
   - linkListType: overview
     links:
@@ -33,7 +33,7 @@ landingContent:
       url: quickstarts/text-to-speech-audio-file.md
     - text: Syntetyzowanie mowy przy użyciu długich plików dźwiękowych
       url: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
-- title: Przewodniki krok po kroku
+- title: Programowanie za pomocą zamiany tekstu na mowę
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -41,43 +41,27 @@ landingContent:
       url: speech-synthesis-markup.md
     - text: Ulepszanie syntezy za pomocą głosu niestandardowego
       url: how-to-custom-voice.md
-    - text: Syntetyzowanie mowy przy użyciu interfejsu API długich form audio
-      url: long-audio-api.md
     - text: Pobieranie listy głosów za pomocą technologii REST (Python)
       url: quickstart-python-get-text-to-speech-voices.md
     - text: Konwertowanie tekstu na mowę za pomocą technologii REST (Python)
       url: quickstart-python-text-to-speech.md
-    - text: Poprawa syntezy przy użyciu tworzenia zawartości audio
-      url: how-to-audio-content-creation.md
   - linkListType: concept
     links:
     - text: Wprowadzenie do usługi Custom Voice
       url: how-to-custom-voice.md
-    - text: Przygotowywanie niestandardowych danych głosowych
-      url: how-to-custom-voice-prepare-data.md
     - text: Tworzenie i używanie modeli usługi Custom Voice
       url: how-to-custom-voice-create-voice.md
-    - text: Nagrywanie próbek głosu
-      url: record-custom-voice-samples.md
     - text: Kontrola głosu niestandardowego
       url: concepts-gating-overview.md
-    - text: Wdrażanie technologii syntetycznej
-      url: concepts-guidelines-responsible-deployment-synthetic.md
-    - text: Wytyczne dotyczące projektowania ujawniania
-      url: concepts-disclosure-guidelines.md
-    - text: Wzorce projektowania ujawniania
-      url: concepts-disclosure-patterns.md
 - title: Dokumentacja
   linkLists:
   - linkListType: reference
     links:
-    - text: Obsługa języków
-      url: language-support.md#text-to-speech
-    - text: Ceny
-      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
+    - text: Standardowa pomoc techniczna dotycząca głosu
+      url: language-support.md#standard-voices
+    - text: Obsługa głosu neuronowych
+      url: language-support.md#neural-voices
     - text: SSML zestawy fonetyczne
       url: speech-ssml-phonetic-sets.md
-    - text: Kodeks postępowania
-      url: https://aka.ms/custom-neural-code-of-conduct
-    - text: Ujawnianie dotyczące aktorów głosowych
-      url: https://aka.ms/disclosure-voice-talent
+    - text: Cennik zamiany tekstu na mowę
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services

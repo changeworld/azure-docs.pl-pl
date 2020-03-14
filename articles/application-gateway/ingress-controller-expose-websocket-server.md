@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 01fde82e69917f59f6519524c4c8828feb84a4f9
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 1f068c9d98a827afd16da01bdc40cbb6ca5dc465
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795965"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297836"
 ---
 # <a name="expose-a-websocket-server-to-application-gateway"></a>Uwidacznianie serwera WebSocket Application Gateway
 
-Zgodnie z opisem w dokumentacji Application Gateway v2 — [zapewnia natywną obsługę protokołów WebSocket i http/2](https://docs.microsoft.com/azure/application-gateway/overview#websocket-and-http2-traffic). Należy pamiętać, że dla obu Application Gateway i Kubernetesal — nie istnieje konfigurowalne ustawienie użytkownika umożliwiające wybiórcze Włączanie lub wyłączanie obsługi protokołu WebSocket.
+Zgodnie z opisem w dokumentacji Application Gateway v2 — [zapewnia natywną obsługę protokołów WebSocket i http/2](features.md#websocket-and-http2-traffic). Należy pamiętać, że dla obu Application Gateway i Kubernetesal — nie istnieje konfigurowalne ustawienie użytkownika umożliwiające wybiórcze Włączanie lub wyłączanie obsługi protokołu WebSocket.
 
 W poniższym rozmieszczeniu Kubernetes YAML przedstawiono konfigurację minimalną używaną do wdrożenia serwera WebSocket, która jest taka sama jak wdrażanie zwykłego serwera sieci Web:
 ```yaml
@@ -75,7 +75,7 @@ spec:
               servicePort: 80
 ```
 
-Uwzględniając, że wszystkie wymagania wstępne są spełnione i masz Application Gateway kontrolowane przez ruch przychodzący Kubernetes w AKS, wdrożenie powyżej spowoduje, że serwer WebSockets zostanie uwidoczniony na porcie 80 publicznego adresu IP Application Gateway i `ws.contoso.com` domeny.
+Uwzględniając, że wszystkie wymagania wstępne są spełnione i masz Application Gateway kontrolowane przez ruch przychodzący Kubernetes w AKS, wdrożenie powyżej spowoduje, że serwer WebSockets zostanie uwidoczniony na porcie 80 publicznego adresu IP Application Gateway i domeny `ws.contoso.com`.
 
 Następujące polecenie zwinięcie spowoduje przetestowanie wdrożenia serwera WebSocket:
 ```sh

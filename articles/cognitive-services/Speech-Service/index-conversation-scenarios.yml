@@ -10,46 +10,50 @@ metadata:
   layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 02/11/2020
+  ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: d6ea318c2745f7d80a49e5fcb1b47381a9f276f7
-  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.openlocfilehash: 0df2992564dcf90f6b927b5a917993caec18af45
+  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
   ms.translationtype: MT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 02/22/2020
-  ms.locfileid: "77562956"
+  ms.lasthandoff: 03/14/2020
+  ms.locfileid: "79365790"
 landingContent:
-- title: Transkrypcja konwersacji
+- title: Informacje o transkrypcji konwersacji
   linkLists:
   - linkListType: overview
     links:
-    - text: Transkrypcja konwersacji — informacje
+    - text: Co to jest transkrypcja konwersacji?
       url: conversation-transcription.md
   - linkListType: how-to-guide
     links:
-    - text: Transkrypcja rozmowy w czasie rzeczywistym
+    - text: Obsługa scenariuszy biura obsługi
+      url: call-center-transcription.md
+    - text: Transkrypcja konwersacji w czasie rzeczywistym
       url: how-to-use-conversation-transcription.md
     - text: Asynchroniczna transkrypcja konwersacji
       url: how-to-async-conversation-transcription.md
-    - text: Obsługa scenariuszy centrum połączeń
-      url: call-center-transcription.md
-- title: Konwersacja między wieloma urządzeniami
+  - linkListType: reference
+    links:
+    - text: Obsługa języka transkrypcji konwersacji
+      url: conversation-transcription.md#language-support
+- title: Konwersacja z obsługą kilku urządzeń — informacje
   linkLists:
   - linkListType: overview
     links:
-    - text: Konwersacja z obsługą kilku urządzeń — informacje
+    - text: Co to jest konwersacja między wieloma urządzeniami?
       url: multi-device-conversation.md
   - linkListType: quickstart
     links:
     - text: Rozpoczynanie konwersacji i dołączanie do niej
       url: quickstarts/multi-device-conversation.md
+  - linkListType: reference
+    links:
+    - text: Obsługa języka konwersacji w wielu urządzeniach
+      url: multi-device-conversation.md#language-support
 - title: Dokumentacja
   linkLists:
   - linkListType: reference
     links:
-    - text: Obsługa języka transkrypcji konwersacji
-      url: conversation-transcription.md#language-support
-    - text: Obsługa języka konwersacji w wielu urządzeniach
-      url: multi-device-conversation.md#language-support
-    - text: Ceny
+    - text: Cennik transkrypcji mowy
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/

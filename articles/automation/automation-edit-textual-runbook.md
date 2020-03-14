@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c00ab8a5e0d307d89ae483db55bdb0b1258ae6a4
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 72aefb8de57e27718b14dba6a6d82deb8b63466f
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246402"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367282"
 ---
 # <a name="editing-textual-runbooks-in-azure-automation"></a>Edytowanie tekstowych elementów Runbook w Azure Automation
 
@@ -59,7 +59,7 @@ Aby otworzyć element Runbook do edycji w edytorze tekstu, należy wykonać czyn
 
 ### <a name="insert-an-asset-into-a-runbook"></a>Wstawianie elementu zawartości do elementu Runbook
 
-1. Na kanwie edytora tekstu Umieść kursor w miejscu, w którym chcesz umieścić kod dla podrzędnego elementu Runbook.
+1. W kontrolce kanwy edytora tekstu Umieść kursor w miejscu, w którym chcesz umieścić kod dla podrzędnego elementu Runbook.
 2. Rozwiń węzeł **zasobów** w kontrolce Biblioteka.
 3. Rozwiń węzeł żądanego typu elementu zawartości.
 4. Kliknij prawym przyciskiem myszy nazwę zasobu, aby wstawić, a następnie wybierz pozycję **Dodaj do kanwy**. W przypadku [zasobów zmiennych](automation-variables.md), wybierz opcję **"Pobierz zmienną" do kanwy** lub **Dodaj "Ustaw zmienną" do kanwy**, w zależności od tego, czy chcesz uzyskać lub ustawić zmienną.
@@ -67,7 +67,7 @@ Aby otworzyć element Runbook do edycji w edytorze tekstu, należy wykonać czyn
 
 ## <a name="editing-an-azure-automation-runbook-using-windows-powershell"></a>Edytowanie elementu Runbook Azure Automation przy użyciu programu Windows PowerShell
 
-Aby edytować element Runbook za pomocą programu Windows PowerShell, Użyj wybranego edytora i Zapisz element Runbook w pliku ". ps1". Aby pobrać zawartość elementu Runbook, można użyć polecenia cmdlet [Export-AzAutomationRunbook](/powershell/module/Az.Automation/Export-AzAutomationRunbook) . Możesz użyć polecenia cmdlet [Import-AzAutomationRunbook](/powershell/module/Az.Automation/import-azautomationrunbook) , aby zamienić istniejący element Runbook o zmienionej wersji.
+Aby edytować element Runbook za pomocą programu Windows PowerShell, Użyj wybranego edytora i Zapisz element Runbook w pliku **. ps1** . Aby pobrać zawartość elementu Runbook, można użyć polecenia cmdlet [Export-AzAutomationRunbook](/powershell/module/Az.Automation/Export-AzAutomationRunbook) . Możesz użyć polecenia cmdlet [Import-AzAutomationRunbook](/powershell/module/Az.Automation/import-azautomationrunbook) , aby zamienić istniejący element Runbook o zmienionej wersji.
 
 ### <a name="retrieve-the-contents-of-a-runbook-using-windows-powershell"></a>Pobieranie zawartości elementu Runbook za pomocą programu Windows PowerShell
 

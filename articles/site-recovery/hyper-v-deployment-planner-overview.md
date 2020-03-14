@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 7/29/2019
+ms.date: 3/13/2020
 ms.author: mayg
-ms.openlocfilehash: 72b1311227f5c9f9efc35b2940d3c843a21dc261
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 07c1f7f258dbea7bcf7a6e7ea51fdcfdfaa006aa
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954011"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368727"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Informacje o Planista wdrażania usługi Azure Site Recovery odzyskiwania po awarii funkcji Hyper-V na platformie Azure
 
@@ -72,7 +72,7 @@ Narzędzie udostępnia następujące szczegóły:
 
 | | **Z programu VMware do platformy Azure** |**Z funkcji Hyper-V do platformy Azure**|**Z platformy Azure do platformy Azure**|**Z funkcji Hyper-V do lokacji dodatkowej**|**Z oprogramowania VMware do lokacji dodatkowej**
 --|--|--|--|--|--
-Obsługiwane scenariusze |Tak|Tak|Nie|Tak*|Nie
+Obsługiwane scenariusze |Yes|Yes|Nie|Tak*|Nie
 Obsługiwana wersja | vCenter 6,7, 6,5, 6,0 lub 5,5| Windows Server 2016, Windows Server 2012 R2 | Nie dotyczy |Windows Server 2016, Windows Server 2012 R2|Nie dotyczy
 Obsługiwana konfiguracja|vCenter, ESXi| Klaster funkcji Hyper-V, host funkcji Hyper-V|Nie dotyczy|Klaster funkcji Hyper-V, host funkcji Hyper-V|Nie dotyczy|
 Liczba serwerów, które mogą być profilowane, na uruchomione wystąpienie planisty wdrażania usługi Azure Site Recovery |Jeden (w tym samym czasie można profilować maszyny wirtualne należące do jednego serwera vCenter lub jednego serwera ESXi)|Wiele (w tym samym czasie można profilować maszyny wirtualne należące do wielu hostów lub klastrów hostów)| Nie dotyczy |Wiele (w tym samym czasie można profilować maszyny wirtualne należące do wielu hostów lub klastrów hostów)| Nie dotyczy
@@ -84,7 +84,7 @@ W przypadku funkcji Hyper-V narzędzie obejmuje trzy główne etapy: pobieranie 
 
 | Wymaganie dotyczące serwera | Opis |
 |---|---|
-|Pobieranie listy maszyn wirtualnych, profilowanie i pomiar przepływności |<ul><li>System operacyjny: Microsoft Windows Server 2016 lub Microsoft Windows Server 2012 R2 </li><li>Konfiguracja maszyny: 8 wirtualnych procesorów CPU, 16 GB pamięci RAM, dysk twardy o rozmiarze 300 GB</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Pakiet Microsoft Visual C++ Redistributable dla programu Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Dostęp do platformy Azure przez Internet z tego serwera</li><li>Konto magazynu Azure</li><li>Dostęp administratora na serwerze</li><li>Minimalnie 100 GB wolnego miejsca na dysku (przy założeniu 1000 maszyn wirtualnych z średnio trzema dyskami na każdej z nich i profilowanych przez 30 dni)</li><li>Maszynę wirtualną, na której jest uruchomione narzędzie planisty wdrażania Azure Site Recovery, należy dodać do listy TrustedHosts wszystkich serwerów funkcji Hyper-V.</li><li>Wszystkie serwery funkcji Hyper-V, które mają być profilowane, muszą zostać dodane do listy TrustedHosts maszyny wirtualnej klienta, z której jest uruchamiane narzędzie. [Dowiedz się więcej na temat dodawania serwerów do listy TrustedHosts](#steps-to-add-servers-into-trustedhosts-list). </li><li> Narzędzie należy uruchomić z uprawnieniami administratora z poziomu programu PowerShell lub konsoli wiersza polecenia na kliencie</ul></ul>|
+|Pobieranie listy maszyn wirtualnych, profilowanie i pomiar przepływności |<ul><li>System operacyjny: Microsoft Windows Server 2016 lub Microsoft Windows Server 2012 R2 </li><li>Konfiguracja maszyny: 8 wirtualnych procesorów CPU, 16 GB pamięci RAM, dysk twardy o rozmiarze 300 GB</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Pakiet Microsoft Visual C++ Redistributable dla programu Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Dostęp przez Internet do platformy Azure (*. blob.core.windows.net) z tego serwera, port 443<br>[To jest opcjonalne. Możesz wybrać opcję udostępnienia przepustowości podczas ręcznego generowania raportu.]</li><li>Konto magazynu Azure</li><li>Dostęp administratora na serwerze</li><li>Minimalnie 100 GB wolnego miejsca na dysku (przy założeniu 1000 maszyn wirtualnych z średnio trzema dyskami na każdej z nich i profilowanych przez 30 dni)</li><li>Maszynę wirtualną, na której jest uruchomione narzędzie planisty wdrażania Azure Site Recovery, należy dodać do listy TrustedHosts wszystkich serwerów funkcji Hyper-V.</li><li>Wszystkie serwery funkcji Hyper-V, które mają być profilowane, muszą zostać dodane do listy TrustedHosts maszyny wirtualnej klienta, z której jest uruchamiane narzędzie. [Dowiedz się więcej na temat dodawania serwerów do listy TrustedHosts](#steps-to-add-servers-into-trustedhosts-list). </li><li> Narzędzie należy uruchomić z uprawnieniami administratora z poziomu programu PowerShell lub konsoli wiersza polecenia na kliencie</ul></ul>|
 | Generowanie raportu | Dowolny komputer z systemem Windows lub Windows Server i programem Microsoft Excel 2013 lub nowszym |
 | Uprawnienia użytkowników | Konto administratora umożliwiające dostęp do klastra lub hosta funkcji Hyper-V podczas operacji pobierania listy maszyn wirtualnych i profilowania.<br>Wszystkie hosty, dla których należy przeprowadzić profilowanie, muszą mieć konto administratora domeny z takimi samymi poświadczeniami, tj. nazwą użytkownika i hasłem
  |

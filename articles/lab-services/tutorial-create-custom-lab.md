@@ -15,11 +15,11 @@ ms.custom: mvc
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: 44539c6779afaece6d955a907819ef82d8cd7d5a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380963"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239910"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>Samouczek: konfigurowanie laboratorium przy użyciu usługi Azure DevTest Labs
 W tym samouczku utworzysz laboratorium za pomocą witryny Azure Portal. Administrator laboratorium konfiguruje laboratorium w organizacji, tworzy maszyny wirtualne w laboratorium i konfiguruje zasady. Użytkownicy laboratorium (na przykład deweloper i testerzy) przejmują maszyny wirtualne w laboratorium, nawiązują połączenie z nimi i korzystają z nich. 
@@ -60,7 +60,7 @@ Następujące kroki ilustrują tworzenie laboratorium w usłudze Azure DevTest L
 
 1. Na stronie **Laboratorium DevTest Lab** wybierz pozycję **+ Dodaj** na pasku narzędzi. 
 
-    ![Przycisk dodawania](./media/tutorial-create-custom-lab/add-vm-to-lab-button.png)
+    ![Przycisk Dodaj](./media/tutorial-create-custom-lab/add-vm-to-lab-button.png)
 1. Na stronie **Wybieranie bazy** wyszukaj słowo kluczowe (na przykład: Windows, Ubuntu) i wybierz jeden z obrazów podstawowych z listy. 
 1. Na stronie **Maszyna wirtualna** wykonaj następujące czynności: 
     1. W polu **Nazwa maszyny wirtualnej** wprowadź nazwę maszyny wirtualnej. 

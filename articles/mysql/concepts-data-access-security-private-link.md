@@ -1,19 +1,19 @@
 ---
-title: Prywatny link do Azure Database for MySQL (wersja zapoznawcza)
+title: Prywatny link — Azure Database for MySQL
 description: Dowiedz się, jak działa łącze prywatne dla Azure Database for MySQL.
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/09/2020
-ms.openlocfilehash: d9738a1dca39e1b43f690bd65ff05d20b6a94fa1
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 03/10/2020
+ms.openlocfilehash: c2cc4986542404281424286882c046dec39f5daf
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75897509"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371294"
 ---
-# <a name="private-link-for-azure-database-for-mysql-preview"></a>Prywatny link do Azure Database for MySQL (wersja zapoznawcza)
+# <a name="private-link-for-azure-database-for-mysql"></a>Prywatny link do Azure Database for MySQL
 
 Link prywatny umożliwia nawiązanie połączenia z różnymi usługami PaaS na platformie Azure za pośrednictwem prywatnego punktu końcowego. Link prywatny platformy Azure zasadniczo zapewnia usługi platformy Azure w ramach prywatnego Virtual Network (VNet). Dostęp do zasobów PaaS można uzyskać przy użyciu prywatnego adresu IP, podobnie jak w przypadku każdego innego zasobu w sieci wirtualnej.
 
@@ -57,10 +57,7 @@ Prywatne punkty końcowe są wymagane do włączenia prywatnego linku. Można to
 * [Interfejs wiersza polecenia](https://docs.microsoft.com/azure/mysql/howto-configure-privatelink-cli)
 
 ### <a name="approval-process"></a>Proces zatwierdzania
-Po utworzeniu przez administratora sieci prywatnego punktu końcowego (PE) administrator MySQL może zarządzać połączeniem prywatnego punktu końcowego (PEC) do Azure Database for MySQL.
-
-> [!NOTE]
-> Obecnie Azure Database for MySQL obsługuje tylko autozatwierdzanie dla prywatnego punktu końcowego.
+Po utworzeniu przez administratora sieci prywatnego punktu końcowego (PE) administrator MySQL może zarządzać połączeniem prywatnego punktu końcowego (PEC) do Azure Database for MySQL. Takie Rozdzielenie obowiązków między administratorem sieci a usługą DBA jest pomocne w zarządzaniu Azure Database for MySQL łącznością. 
 
 * Przejdź do zasobu serwera Azure Database for MySQL w Azure Portal. 
     * Wybierz połączenia prywatnego punktu końcowego w lewym okienku
@@ -109,6 +106,19 @@ W przypadku korzystania z prywatnego linku w połączeniu z regułami zapory są
 * W przypadku skonfigurowania ruchu publicznego lub punktu końcowego usługi i utworzenia prywatnych punktów końcowych różne typy ruchu przychodzącego są autoryzowane przez odpowiedni typ reguły zapory.
 
 * Jeśli nie skonfigurowano żadnego ruchu publicznego lub punktu końcowego usługi i utworzysz prywatne punkty końcowe, Azure Database for MySQL będzie dostępny tylko za pomocą prywatnych punktów końcowych. Jeśli nie skonfigurujesz ruchu publicznego lub punktu końcowego usługi, po odrzuceniu lub usunięciu wszystkich zatwierdzonych prywatnych punktów końcowych żaden ruch nie będzie w stanie uzyskać dostępu do Azure Database for MySQL.
+
+## <a name="deny-public-access-for-azure-database-for-mysql"></a>Odmów dostępu publicznego dla Azure Database for MySQL
+
+Jeśli chcesz używać tylko prywatnych punktów końcowych do uzyskiwania dostępu do swoich Azure Database for MySQL, możesz wyłączyć ustawienie wszystkie publiczne punkty końcowe (tj. [reguły zapory](concepts-firewall-rules.md) i [punkty końcowe usługi sieci wirtualnej](concepts-data-access-and-security-vnet.md)), ustawiając opcję **Odmów dostępu** do poczty publicznej na serwerze bazy danych. 
+
+Jeśli to ustawienie ma wartość *tak*, do Azure Database for MySQL mogą być używane tylko połączenia za pośrednictwem prywatnych punktów końcowych. Jeśli to ustawienie ma wartość *nie*, klienci mogą łączyć się z Azure Database for MySQL na podstawie ustawień zapory lub punktu końcowego usługi sieci wirtualnej. Ponadto po ustawieniu wartości dostępu do sieci prywatnej nie można dodawać i/lub aktualizować istniejących reguł punktu końcowego zapory i usługi sieci wirtualnej.
+
+> [!Note]
+> Ta funkcja jest dostępna we wszystkich regionach świadczenia usługi Azure, w których Azure Database for PostgreSQL — jeden serwer obsługuje warstwy cenowe Ogólnego przeznaczenia i zoptymalizowane pod kątem pamięci.
+>
+> To ustawienie nie ma żadnego wpływu na konfiguracje protokołów SSL i TLS dla Azure Database for MySQL.
+
+Aby dowiedzieć się, jak ustawić opcję **Odmów dostępu do sieci publicznej** dla Azure Database for MySQL z Azure Portal, zobacz [jak skonfigurować odmowę dostępu do sieci publicznej](howto-deny-public-network-access.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,19 +1,19 @@
 ---
-title: Prywatny link do Azure Database for MariaDB (wersja zapoznawcza) — Metoda konfiguracji portalu
+title: Prywatny link — Azure Portal — Azure Database for MariaDB
 description: Informacje o konfigurowaniu prywatnego linku do Azure Database for MariaDB z Azure Portal
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: a9b3ae1ed28fc22d91760a4af3832a604a419a30
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 3f421cad64caf91b898bb1ec13dc909b93b7f72d
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561735"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370342"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-mariadb-preview-using-portal"></a>Tworzenie prywatnego linku do Azure Database for MariaDB (wersja zapoznawcza) i zarządzanie nim przy użyciu portalu
+# <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-portal"></a>Tworzenie prywatnego linku do Azure Database for MariaDB przy użyciu portalu i zarządzanie nim
 
 Prywatny punkt końcowy to podstawowy blok konstrukcyjny dla prywatnego linku na platformie Azure. Umożliwia ona korzystanie z zasobów platformy Azure, takich jak Virtual Machines (VM), w celu komunikacji z prywatnymi zasobami łączy prywatnych.  W tym artykule dowiesz się, jak za pomocą Azure Portal utworzyć maszynę wirtualną w usłudze Azure Virtual Network i serwerze Azure Database for MariaDB przy użyciu prywatnego punktu końcowego platformy Azure.
 
@@ -126,12 +126,12 @@ W tej sekcji utworzysz serwer Azure Database for MariaDB na platformie Azure.
 
 W tej sekcji utworzysz prywatny punkt końcowy do serwera MariaDB. 
 
-1. W lewym górnym rogu ekranu w Azure Portal wybierz pozycję **Utwórz zasób** > **Networking** > **prywatnym centrum linków (wersja zapoznawcza)** .
+1. W lewym górnym rogu ekranu w Azure Portal wybierz pozycję **Utwórz zasób** > **Networking** > **łącze prywatne**.
 2. W **centrum linków prywatnych — Omówienie**opcji **tworzenia połączenia prywatnego z usługą**wybierz pozycję **Rozpocznij**.
 
     ![Omówienie linku prywatnego](media/concepts-data-access-and-security-private-link/privatelink-overview.png)
 
-1. W obszarze **Tworzenie prywatnego punktu końcowego (wersja zapoznawcza) — podstawy**wprowadź lub wybierz następujące informacje:
+1. W obszarze **Tworzenie prywatnego punktu końcowego — podstawy**wprowadź lub wybierz następujące informacje:
 
     | Ustawienie | Wartość |
     | ------- | ----- |
@@ -154,7 +154,7 @@ W tej sekcji utworzysz prywatny punkt końcowy do serwera MariaDB.
     |Docelowy zasób podrzędny |Wybierz *mariadbServer*|
     |||
 7. Wybierz pozycję **Dalej: Konfiguracja**.
-8. W obszarze **Tworzenie prywatnego punktu końcowego (wersja zapoznawcza) — Konfiguracja**wprowadź lub wybierz następujące informacje:
+8. W obszarze **Tworzenie prywatnego punktu końcowego — konfiguracja**wprowadź lub wybierz następujące informacje:
 
     | Ustawienie | Wartość |
     | ------- | ----- |

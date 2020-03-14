@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 5a45b9e3ba59a91f580ce0f2dc180adf5d20c87d
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 4a27165d929cc9bc5f18e372f7f108887e466e43
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754060"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299366"
 ---
 # <a name="azure-sql-database-instance-pools-preview-how-to-guide"></a>Pule wystąpień Azure SQL Database (wersja zapoznawcza) — Przewodnik
 
@@ -26,7 +26,7 @@ Ten artykuł zawiera szczegółowe informacje na temat tworzenia [pul wystąpie�
 
 W poniższej tabeli przedstawiono dostępne operacje związane z pulami wystąpień i ich dostępność w Azure Portal i programie PowerShell.
 
-|Polecenie|Portal Azure|PowerShell|
+|Polecenie|Portalu Azure|Program PowerShell|
 |:---|:---|:---|
 |Tworzenie puli wystąpień|Nie|Tak|
 |Aktualizuj pulę wystąpień (ograniczoną liczbę właściwości)|Nie |Tak |
@@ -50,7 +50,7 @@ Dostępne [polecenia programu PowerShell](https://docs.microsoft.com/powershell/
 |[Get-AzSqlInstancePoolUsage](/powershell/module/az.sql/get-azsqlinstancepoolusage/) | Zwraca informacje o użyciu puli wystąpień usługi Azure SQL. |
 
 
-Aby użyć programu PowerShell, [Zainstaluj najnowszą wersję programu PowerShell Core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell#powershell-core)i postępuj zgodnie z instrukcjami, aby [zainstalować moduł Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Aby użyć programu PowerShell, [Zainstaluj najnowszą wersję programu PowerShell Core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell#powershell)i postępuj zgodnie z instrukcjami, aby [zainstalować moduł Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
 W przypadku operacji związanych z wystąpieniami zarówno wewnątrz pul, jak i pojedynczymi wystąpieniami Użyj standardowych [poleceń wystąpienia zarządzanego](sql-database-managed-instance-create-manage.md#powershell-create-and-manage-managed-instances), ale właściwość *Nazwa puli wystąpień* musi być wypełniona, gdy używane są te polecenia dla wystąpienia w puli.
 

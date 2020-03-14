@@ -8,12 +8,12 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: e8266e5750a14542e7f115e021daa40b2b0bf8f6
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 245bcac81189ac8aa63f81fbe4ed30655a457bc8
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79130100"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371882"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Migrowanie Azure Data Lake Storage z Gen1 do Gen2
 
@@ -132,7 +132,8 @@ Jest to najprostszy wzorzec.
 
 4. Likwidowanie Gen1.
 
-![Wzorzec podnoszenia i przesunięcia](./media/data-lake-storage-migrate-gen1-to-gen2/lift-and-shift.png)
+> [!div class="mx-imgBorder"]
+> ![](./media/data-lake-storage-migrate-gen1-to-gen2/lift-and-shift.png) wzorca podnoszenia i przesunięcia
 
 #### <a name="considerations-for-using-the-lift-and-shift-pattern"></a>Zagadnienia dotyczące używania wzorca dźwigu i przesunięcia
 
@@ -152,7 +153,8 @@ Jest to najprostszy wzorzec.
 
 4. Likwidowanie Gen1.
 
-![Wzorzec kopiowania przyrostowego](./media/data-lake-storage-migrate-gen1-to-gen2/incremental-copy.png)
+> [!div class="mx-imgBorder"]
+> ![wzorzec kopiowania przyrostowego](./media/data-lake-storage-migrate-gen1-to-gen2/incremental-copy.png)
 
 #### <a name="considerations-for-using-the-incremental-copy-pattern"></a>Zagadnienia dotyczące używania wzorca kopiowania przyrostowego:
 
@@ -172,7 +174,8 @@ Jest to najprostszy wzorzec.
 
 4. Zatrzymaj wszystkie zapisy w Gen1, a następnie likwidowanie Gen1.
 
-![Podwójny wzorzec potoku](./media/data-lake-storage-migrate-gen1-to-gen2/dual-pipeline.png)
+> [!div class="mx-imgBorder"]
+> wzorzec ![podwójnego potoku](./media/data-lake-storage-migrate-gen1-to-gen2/dual-pipeline.png)
 
 #### <a name="considerations-for-using-the-dual-pipeline-pattern"></a>Zagadnienia dotyczące korzystania z podwójnego wzorca potoku:
 
@@ -190,7 +193,8 @@ Jest to najprostszy wzorzec.
 
 4. Likwidowanie Gen1.
 
-![Wzorzec dwukierunkowy](./media/data-lake-storage-migrate-gen1-to-gen2/bidirectional-sync.png)
+> [!div class="mx-imgBorder"]
+> ![wzorzec dwukierunkowy](./media/data-lake-storage-migrate-gen1-to-gen2/bidirectional-sync.png)
 
 #### <a name="considerations-for-using-the-bi-directional-sync-pattern"></a>Zagadnienia dotyczące korzystania ze wzorca synchronizacji dwukierunkowej:
 

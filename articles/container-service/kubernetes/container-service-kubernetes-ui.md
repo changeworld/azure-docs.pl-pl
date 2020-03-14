@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/21/2017
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 6ce78ca19458b497980cf2cfc374f787d3a5d9f5
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 01abcc961d1c2ad9d3e2cf35f82e62929bc2fb89
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276981"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371141"
 ---
 # <a name="deprecated-using-the-kubernetes-web-ui-with-azure-container-service"></a>PRZESTARZAŁE Używanie interfejsu użytkownika sieci Web Kubernetes z Azure Container Service
 
@@ -29,8 +29,8 @@ Przyjęto również założenie, że masz zainstalowane narzędzia interfejsu wi
 
 Możesz sprawdzić, czy masz narzędzie `az` zainstalowane, uruchamiając:
 
-```console
-$ az --version
+```azurecli
+az --version
 ```
 
 Jeśli nie masz zainstalowanego narzędzia `az`, w [tym miejscu](https://github.com/azure/azure-cli#installation)znajdują się instrukcje.
@@ -38,22 +38,22 @@ Jeśli nie masz zainstalowanego narzędzia `az`, w [tym miejscu](https://github.
 Możesz sprawdzić, czy masz narzędzie `kubectl` zainstalowane, uruchamiając:
 
 ```console
-$ kubectl version
+kubectl version
 ```
 
 Jeśli nie masz zainstalowanego `kubectl`, możesz uruchomić następujące polecenie:
 
-```console
-$ az acs kubernetes install-cli
+```azurecli
+az acs kubernetes install-cli
 ```
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 ### <a name="connect-to-the-web-ui"></a>Nawiązywanie połączenia z interfejsem użytkownika sieci Web
 Interfejs użytkownika sieci Web Kubernetes można uruchomić, uruchamiając następujące elementy:
 
-```console
-$ az acs kubernetes browse -g [Resource Group] -n [Container service instance name]
+```azurecli
+az acs kubernetes browse -g [Resource Group] -n [Container service instance name]
 ```
 
 Powinno to spowodować otwarcie przeglądarki sieci Web skonfigurowanej do komunikacji z bezpiecznym serwerem proxy łączącym komputer lokalny z interfejsem użytkownika sieci Web Kubernetes.
@@ -77,7 +77,7 @@ Powinno to spowodować otwarcie przeglądarki sieci Web skonfigurowanej do komun
 
 4. Kliknij przycisk **Wdróż** , aby wdrożyć te kontenery i usługi.
 
-    ![Kubernetes Deploy](./media/container-service-kubernetes-ui/deploy.png)
+    ![Wdrożenie na platformie Kubernetes](./media/container-service-kubernetes-ui/deploy.png)
 
 ### <a name="view-your-containers"></a>Wyświetlanie kontenerów
 Po kliknięciu przycisku **Wdróż**w interfejsie użytkownika zostanie wyświetlony widok usługi podczas wdrażania:
@@ -107,7 +107,7 @@ Oprócz uruchamiania kontenerów, interfejs użytkownika Kubernetes utworzył ze
 
 W okienku nawigacji po lewej stronie kliknij pozycję **usługi** , aby wyświetlić wszystkie usługi (tylko jeden).
 
-![Usługi Kubernetes Services](./media/container-service-kubernetes-ui/service-deployed.png)
+![Usługi Kubernetes](./media/container-service-kubernetes-ui/service-deployed.png)
 
 W tym widoku powinien zostać wyświetlony zewnętrzny punkt końcowy (adres IP), który został przydzielony do usługi.
 Po kliknięciu tego adresu IP powinien zostać wyświetlony kontener Nginx uruchomiony za modułem równoważenia obciążenia.

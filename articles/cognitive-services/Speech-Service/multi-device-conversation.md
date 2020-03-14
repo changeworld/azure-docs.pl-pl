@@ -1,5 +1,5 @@
 ---
-title: Informacje o komunikacji z obsługą kilku urządzeń (wersja zapoznawcza) — usługa mowy
+title: Konwersacja na wiele urządzeń (wersja zapoznawcza) — usługa mowy
 titleSuffix: Azure Cognitive Services
 description: ''
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 03/11/2020
 ms.author: dapine
-ms.openlocfilehash: d94b3392d6bd5ab539d49c8a4cfdd568fbbb1cd0
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: b3802e66b0ba5a68c898e69ec64b01edce1541c1
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560817"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371362"
 ---
-# <a name="about-multi-device-conversation-preview"></a>Informacje o konwersacji z obsługą kilku urządzeń (wersja zapoznawcza)
+# <a name="what-is-multi-device-conversation-preview"></a>Co to jest konwersacja na wiele urządzeń (wersja zapoznawcza)?
 
 **Konwersacja z wieloma urządzeniami** ułatwia tworzenie konwersacji mowy lub tekstu między wieloma klientami i koordynowanie komunikatów wysyłanych między nimi.
 
@@ -75,8 +75,8 @@ Każdy klient może wysyłać dźwięk lub wiadomości błyskawiczne. Usługa u�
 **Konwersacja** to sesja, którą jeden użytkownik uruchamia dla innych uczestniczących użytkowników do przyłączenia. Wszyscy klienci nawiązują połączenie z konwersacją przy użyciu 5-literowego **kodu konwersacji**.
 
 Każda konwersacja tworzy metadane, które obejmują:
--   Sygnatury czasowe po rozpoczęciu i zakończeniu konwersacji
--   Lista wszystkich uczestników konwersacji, w tym każdego pseudonimu wybranego użytkownika i języka podstawowego dla mowy lub wprowadzania tekstu.
+-    Sygnatury czasowe po rozpoczęciu i zakończeniu konwersacji
+-    Lista wszystkich uczestników konwersacji, w tym każdego pseudonimu wybranego użytkownika i języka podstawowego dla mowy lub wprowadzania tekstu.
 
 
 Istnieją dwa typy użytkowników w konwersacji: **host** i **uczestnik**.

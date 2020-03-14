@@ -1,22 +1,22 @@
 ---
-title: 'Samouczek: Tworzenie zasad WAF dla zewnętrznych drzwi platformy Azure Azure Portal'
-description: W tym samouczku dowiesz się, jak utworzyć zasady zapory aplikacji sieci Web (WAF) przy użyciu Azure Portal.
+title: 'Samouczek: Tworzenie zasad zapory aplikacji sieci Web (WAF) dla zewnętrznych drzwi platformy Azure Azure Portal'
+description: W tym samouczku dowiesz się, jak utworzyć zasady WAF przy użyciu Azure Portal.
 author: vhorne
 ms.service: web-application-firewall
 services: web-application-firewall
 ms.topic: tutorial
-ms.date: 09/07/2019
+ms.date: 03/10/2020
 ms.author: victorh
-ms.openlocfilehash: 991111e01713afe48355aac44a151b98fa828c5f
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 2e4987273d0ecdc258a3134b89ffc3406e25e97c
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186722"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137581"
 ---
 # <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>Samouczek: Tworzenie zasad zapory aplikacji sieci Web na platformie Azure front-drzwi przy użyciu Azure Portal
 
-W tym samouczku pokazano, jak utworzyć podstawowe zasady zapory aplikacji sieci Web (WAF) platformy Azure i zastosować je do hosta frontonu na platformie Azure.
+W tym samouczku pokazano, jak utworzyć podstawową zasadę zapory aplikacji sieci Web (WAF) platformy Azure i zastosować zasady do hosta frontonu na platformie Azure.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -27,17 +27,18 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Utwórz profil z drzwiami wstępnymi, wykonując instrukcje opisane w [przewodniku szybki start: Tworzenie profilu front-drzwi](../../frontdoor/quickstart-create-front-door.md). 
+Utwórz profil z drzwiami wstępnymi, wykonując instrukcje opisane w [przewodniku szybki start: Tworzenie profilu front-drzwi](../../frontdoor/quickstart-create-front-door.md).
 
 ## <a name="create-a-web-application-firewall-policy"></a>Tworzenie zasad zapory aplikacji sieci Web
 
-Najpierw Utwórz podstawowe zasady WAF z zarządzanym domyślnym zestawem reguł (DRS) przy użyciu portalu. 
+Najpierw Utwórz podstawowe zasady WAF z zarządzanym domyślnym zestawem reguł (DRS) przy użyciu portalu.
 
-1. W lewym górnym rogu ekranu wybierz pozycję **Utwórz zasób**> wyszukaj **WAF**> wybierz opcję **Zapora aplikacji sieci Web (wersja zapoznawcza)** > wybierz pozycję **Utwórz**.
+1. W lewym górnym rogu ekranu wybierz pozycję **Utwórz zasób**> wyszukaj **WAF**> wybierz pozycję * * Zapora aplikacji sieci Web * * > wybierz pozycję **Utwórz**.
 2. Na karcie **podstawy** na stronie **Tworzenie zasad WAF** wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Przegląd + Utwórz**:
 
     | Ustawienie                 | Wartość                                              |
     | ---                     | ---                                                |
+    | Zasady dla            |Wybierz pozycję globalne WAF (tylne drzwi).|
     | Subskrypcja            |Wybierz nazwę subskrypcji z drzwiami przednimi.|
     | Grupa zasobów          |Wybierz nazwę grupy zasobów drzwi.|
     | Nazwa zasad             |Wprowadź unikatową nazwę zasad WAF.|

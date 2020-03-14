@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 207a3a6c59012154d547bbd224782b90e1046c6a
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 17ecc80fee3b024c334b8d36533663f1f3cebe4d
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597970"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136909"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Rozwiązywanie problemów z Azure Files w systemie Windows
 
@@ -43,6 +43,14 @@ Jeśli reguły sieci wirtualnej i zapory są skonfigurowane na koncie magazynu, 
 ### <a name="solution-for-cause-2"></a>Rozwiązanie dla przyczyny 2
 
 Sprawdź, czy reguły sieci wirtualnej i zapory są skonfigurowane poprawnie na koncie magazynu. W celu przetestowania, czy reguły sieci wirtualnej lub zapory są przyczyną problemu, tymczasowo zmień ustawienie na koncie magazynu, aby **zezwolić na dostęp ze wszystkich sieci**. Aby dowiedzieć się więcej, zobacz [Konfigurowanie zapór i sieci wirtualnych usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+
+### <a name="cause-3-share-level-permissions-are-incorrect-when-using-identity-based-authentication"></a>Przyczyna 3: uprawnienia na poziomie udziału są nieprawidłowe w przypadku korzystania z uwierzytelniania opartego na tożsamościach
+
+Jeśli użytkownicy uzyskują dostęp do udziału plików platformy Azure przy użyciu uwierzytelniania Active Directory (AD) lub Azure Active Directory Domain Services (Azure AD DS), dostęp do udziału plików zakończy się niepowodzeniem z powodu błędu "odmowa dostępu", jeśli uprawnienia na poziomie udziału są nieprawidłowe. 
+
+### <a name="solution-for-cause-3"></a>Rozwiązanie dla przyczyny 3
+
+Aby zaktualizować uprawnienia na poziomie udziału, zobacz [przypisywanie uprawnień dostępu do tożsamości](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable#assign-access-permissions-to-an-identity).
 
 <a id="error53-67-87"></a>
 ## <a name="error-53-error-67-or-error-87-when-you-mount-or-unmount-an-azure-file-share"></a>Błąd 53, błąd 67 lub błąd 87 podczas instalowania lub odinstalowywania udziału plików platformy Azure

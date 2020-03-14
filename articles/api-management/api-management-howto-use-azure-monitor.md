@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: b06301ab424a29d8f0e31e8f4dee26265327896b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359664"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238370"
 ---
 # <a name="monitor-published-apis"></a>Monitorowanie opublikowanych interfejsów API
 
@@ -28,7 +28,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 > [!div class="checklist"]
 > * Wyświetlanie dzienników aktywności
-> * Wyświetlanie dzienników diagnostycznych
+> * Wyświetlanie dzienników diagnostyki
 > * Wyświetlanie metryk interfejsu API 
 > * Konfigurowanie reguły alertu, gdy interfejs API odbiera nieautoryzowane wywołania
 
@@ -189,11 +189,11 @@ Usługa API Management udostępnia obecnie dzienniki diagnostyczne (przetwarzane
 | durationMs | liczba całkowita | Liczba milisekund od momentu odebrania żądania przez bramę do momentu, gdy odpowiedź na chwilę zostanie wysłana w całości. Obejmuje to clienTime, cacheTime i backendTime. |
 | callerIpAddress | ciąg | Adres IP bezpośredniego modułu wywołującego bramy (może być pośrednik) |
 | correlationId | ciąg | Unikatowy identyfikator żądania HTTP przypisany przez usługę API Management |
-| location | ciąg | Nazwa regionu platformy Azure, w którym znajdowała się brama przetwarzająca żądanie |
+| lokalizacja | ciąg | Nazwa regionu platformy Azure, w którym znajdowała się brama przetwarzająca żądanie |
 | httpStatusCodeCategory | ciąg | Kategoria kodu stanu odpowiedzi HTTP: Powodzenie (301 lub mniej albo 304 lub 307), Bez autoryzacji (401, 403, 429), Błąd (400, od 500 do 600), Inne |
 | resourceId | ciąg | Identyfikator API Management Resource/SUBSCRIPTIONS/\<subskrypcji >/RESOURCEGROUPS/\<Grupa zasobów >/PROVIDERS/MICROSOFT. Nazwa APIMANAGEMENT/SERVICE/\<> |
-| properties | obiekt | Właściwości bieżącego żądania |
-| method | ciąg | Metoda HTTP żądania przychodzącego |
+| właściwości | obiekt | Właściwości bieżącego żądania |
+| metoda | ciąg | Metoda HTTP żądania przychodzącego |
 | url | ciąg | Adres URL żądania przychodzącego |
 | clientProtocol | ciąg | Wersja protokołu HTTP żądania przychodzącego |
 | responseCode | liczba całkowita | Kod stanu odpowiedzi HTTP wysłanej do klienta |
@@ -216,9 +216,9 @@ Usługa API Management udostępnia obecnie dzienniki diagnostyczne (przetwarzane
 | LastError | obiekt | Ostatni błąd przetwarzania żądania | 
 | elapsed | liczba całkowita | Liczba milisekund upływających od momentu odebrania żądania przez bramę i momentu wystąpienia błędu | 
 | source | ciąg | Nazwa wewnętrznej procedury obsługi przetwarzania lub zasad, które spowodowały błąd | 
-| scope | ciąg | Zakres dokumentu zasad zawierający zasady, które spowodowały błąd | 
+| zakres | ciąg | Zakres dokumentu zasad zawierający zasady, które spowodowały błąd | 
 | section | ciąg | Sekcja dokumentu zasad zawierająca zasady, które spowodowały błąd | 
-| reason | ciąg | Przyczyna błędu | 
+| Przyczyna | ciąg | Przyczyna błędu | 
 | message | ciąg | Komunikat o błędzie | 
 
 ## <a name="next-steps"></a>Następne kroki
@@ -227,7 +227,7 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 
 > [!div class="checklist"]
 > * Wyświetlanie dzienników aktywności
-> * Wyświetlanie dzienników diagnostycznych
+> * Wyświetlanie dzienników diagnostyki
 > * Wyświetlanie metryk interfejsu API
 > * Konfigurowanie reguły alertu, gdy interfejs API odbiera nieautoryzowane wywołania
 

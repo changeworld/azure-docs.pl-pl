@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 03/04/2020
-ms.openlocfilehash: ed3667ada834437e81ffdcb9161c2a726fe6a6dc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.date: 03/12/2020
+ms.openlocfilehash: 3a857c145959c1bcde169e95369ef0bea327dfaf
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79238664"
+ms.locfileid: "79296986"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Samouczek: przewidywanie ceny za samochód przy użyciu projektanta (wersja zapoznawcza)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -168,6 +168,12 @@ Zestaw danych nadal ma brakujące wartości po usunięciu kolumny **znormalizowa
 
 1. Wybierz **czysty moduł danych** .
 
+1. W okienku Szczegóły modułu z prawej strony kanwy wybierz pozycję **Edytuj kolumnę**.
+
+1. W wyświetlonym oknie **kolumny do oczyszczenia** rozwiń menu rozwijane obok pozycji **Dołącz**. Zaznacz, **wszystkie kolumny**
+
+1. Wybierz pozycję **Zapisz**.
+
 1. W okienku Szczegóły modułu z prawej strony kanwy wybierz pozycję **Usuń cały wiersz** w obszarze **Tryb czyszczenia**.
 
 1. W okienku Szczegóły modułu z prawej strony kanwy wybierz pole **komentarz** i wprowadź *Usuń brakujące wiersze wartości*. 
@@ -213,9 +219,11 @@ Nauczenie modelu przez nadanie mu zestawu danych, który zawiera cenę. Algorytm
 
 1. Wybierz **regresję** > **regresji liniowej**i przeciągnij ją na kanwę potoku.
 
-1. Znajdź i przeciągnij moduł **uczenie modelu** na kanwę potoku. 
-
 1. Połącz dane wyjściowe modułu **regresji liniowej** z lewym wejściem modułu **uczenie modelu** .
+
+1. W palecie modułów rozwiń sekcję **szkolenia modułów**i przeciągnij moduł **uczenie modelu** na kanwę.
+
+1. Wybierz moduł **uczenie modelu** i przeciągnij go na kanwę potoku.
 
 1. Połącz Wyjście danych szkoleniowych (lewy port) modułu **Split Data (podział danych** ) z prawym wejściem modułu **uczenie modelu** .
     
@@ -224,8 +232,6 @@ Nauczenie modelu przez nadanie mu zestawu danych, który zawiera cenę. Algorytm
 
     ![Zrzut ekranu przedstawiający poprawną konfigurację modułu uczenie modelu. Moduł regresja liniowa łączy się z lewym portem modułu uczenia modelowego, a moduł Split Data łączy się z odpowiednim portem modelu uczenia](./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png)
 
-1. W palecie modułów rozwiń sekcję **szkolenia modułów**i przeciągnij moduł **uczenie modelu** na kanwę.
-
 1. Wybierz moduł **uczenie modelu** .
 
 1. W okienku Szczegóły modułu z prawej strony kanwy wybierz pozycję Edytuj selektor **kolumny** .
@@ -233,6 +239,9 @@ Nauczenie modelu przez nadanie mu zestawu danych, który zawiera cenę. Algorytm
 1. W oknie dialogowym **etykieta kolumny** rozwiń menu rozwijane i wybierz pozycję **nazwy kolumn**. 
 
 1. W polu tekstowym wpisz Price ( *Cena* ), aby określić wartość, którą model ma przewidzieć.
+
+    >[!IMPORTANT]
+    > Upewnij się, że nazwa kolumny została dokładnie wprowadzona. Nie używaj wielkiej litery **.** 
 
     Potok powinien wyglądać następująco:
 
@@ -260,7 +269,7 @@ Użyj modułu **oceny modelu** , aby oszacować, jak dobrze Model przedstawia te
 
 ## <a name="run-the-pipeline"></a>Uruchamianie potoku
 
-Teraz, gdy potok jest skonfigurowany, możesz przesłać uruchomienie potoku w celu uczenia modelu uczenia maszynowego. Podczas kompilowania potoków w projektancie można przesłać w dowolnym momencie przebieg potoku. Możesz to zrobić, aby sprawdzić swoją pracę w trakcie pracy i zweryfikować funkcje potoku zgodnie z oczekiwaniami.
+Teraz, gdy potok jest skonfigurowany, możesz przesłać uruchomienie potoku w celu uczenia modelu uczenia maszynowego. Podczas kompilowania potoków w projektancie można przesłać w dowolnym momencie przebieg potoku. Możesz to zrobić, aby sprawdzić swoją pracę w trakcie pracy, aby sprawdzić, czy potok działa zgodnie z oczekiwaniami.
 
 1. W górnej części kanwy wybierz pozycję **Prześlij**.
 

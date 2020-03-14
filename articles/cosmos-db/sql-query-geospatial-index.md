@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.openlocfilehash: 2cf682a404154b9c1bb94680b3adb673892c1c72
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: eb0a2b2778b3217e185b9883def6eaa54674cc5b
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566376"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137907"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>Indeksowanie danych geoprzestrzennych przy użyciu Azure Cosmos DB
 
@@ -25,6 +25,44 @@ W przypadku określenia zasad indeksowania, które zawierają indeks przestrzenn
 > Azure Cosmos DB obsługuje indeksowanie punktów, LineStrings, wielokątów i wielowielokątnych
 >
 >
+
+## <a name="modifying-geospatial-data-type"></a>Modyfikowanie typu danych geoprzestrzennych
+
+W kontenerze `geospatialConfig` określa, jak będą indeksowane dane geograficzne. Należy określić jedną `geospatialConfig` na kontener: Geografia lub geometria. Jeśli nie zostanie określony, `geospatialConfig` będzie domyślnie typem danych Geografia. Po zmodyfikowaniu `geospatialConfig`wszystkie istniejące dane geograficzne w kontenerze zostaną ponownie indeksowane.
+
+> [!NOTE]
+> Azure Cosmos DB obecnie obsługuje modyfikacje geospatialConfig w zestawie SDK platformy .NET tylko w wersji 3,6 i nowszych.
+>
+
+Oto przykład modyfikacji typu danych geoprzestrzennych do `geometry` przez ustawienie właściwości `geospatialConfig` i dodanie elementu **boundingBox**:
+
+```csharp
+    //Retrieve the container's details
+    ContainerResponse containerResponse = await client.GetContainer("db", "spatial").ReadContainerAsync();
+    //Set GeospatialConfig to Geometry
+    GeospatialConfig geospatialConfig = new GeospatialConfig(GeospatialType.Geometry);
+    containerResponse.Resource.GeospatialConfig = geospatialConfig;
+    // Add a spatial index including the required boundingBox
+    SpatialPath spatialPath = new SpatialPath
+            {  
+                Path = "/locations/*",
+                BoundingBox = new BoundingBoxProperties(){
+                    Xmin = 0,
+                    Ymin = 0,
+                    Xmax = 10,
+                    Ymax = 10
+                }
+            };
+    spatialPath.SpatialTypes.Add(SpatialType.Point);
+    spatialPath.SpatialTypes.Add(SpatialType.LineString);
+    spatialPath.SpatialTypes.Add(SpatialType.Polygon);
+    spatialPath.SpatialTypes.Add(SpatialType.MultiPolygon);
+
+    containerResponse.Resource.IndexingPolicy.SpatialIndexes.Add(spatialPath);
+
+    // Update container with changes
+    await client.GetContainer("db", "spatial").ReplaceContainerAsync(containerResponse.Resource);
+```
 
 ## <a name="geography-data-indexing-examples"></a>Przykłady indeksowania danych geograficznych
 
@@ -58,11 +96,64 @@ Poniższy fragment kodu JSON przedstawia zasady indeksowania z włączonym indek
 
 > [!NOTE]
 > Jeśli lokalizacja GeoJSON wartości w obrębie dokumentu jest źle sformułowany lub nieprawidłowy, następnie go będzie nie indeksowanie zapytań przestrzennych. Można sprawdzić poprawność wartości lokalizacji przy użyciu ST_ISVALID i ST_ISVALIDDETAILED.
->
->
->
 
 [Zasady indeksowania](how-to-manage-indexing-policy.md) można także modyfikować za pomocą interfejsu wiersza polecenia platformy Azure, programu PowerShell lub dowolnego zestawu SDK.
+
+## <a name="geometry-data-indexing-examples"></a>Przykłady indeksowania danych geometrycznych
+
+W przypadku typu danych **geometria** , podobnego do typu danych Geografia, należy określić odpowiednie ścieżki i typy do indeksowania. Ponadto należy również określić `boundingBox` w ramach zasad indeksowania, aby wskazać żądany obszar do indeksowania dla tej konkretnej ścieżki. Każda ścieżka geoprzestrzenna wymaga własnego`boundingBox`.
+
+Pole ograniczenia składa się z następujących właściwości:
+
+- **xmin**: minimalna indeksowana Współrzędna x
+- **ymin**: minimalna indeksowana Współrzędna y
+- **XMAX**: Maksymalna indeksowana Współrzędna x
+- **ymax**: Maksymalna indeksowana Współrzędna y
+
+Pole ograniczenia jest wymagane, ponieważ dane geometryczne zajmuje płaszczyznę, która może być nieskończona. Indeksy przestrzenne, jednak wymagają skończonego miejsca. Dla typu danych **Geografia** Ziemia jest granicą i nie trzeba ustawiać pola ograniczenia.
+
+Należy utworzyć pole ograniczenia, które zawiera wszystkie (lub najwięcej) danych. Tylko operacje obliczane na obiektach, które znajdują się w całości wewnątrz pola ograniczenia, będą mogły korzystać z indeksu przestrzennego. Pole ograniczenia nie powinno być znacznie większe niż to konieczne, ponieważ może to negatywnie wpłynąć na wydajność zapytań.
+
+Oto przykładowe zasady indeksowania, które indeksuje dane **geometrii** z **geospatialConfig** ustawionym na `geometry`:
+
+```json
+ {
+    "indexingMode": "consistent",
+    "automatic": true,
+    "includedPaths": [
+        {
+            "path": "/*"
+        }
+    ],
+    "excludedPaths": [
+        {
+            "path": "/\"_etag\"/?"
+        }
+    ],
+    "spatialIndexes": [
+        {
+            "path": "/locations/*",
+            "types": [
+                "Point",
+                "LineString",
+                "Polygon",
+                "MultiPolygon"
+            ],
+            "boundingBox": {
+                "xmin": -10,
+                "ymin": -20,
+                "xmax": 10,
+                "ymax": 20
+            }
+        }
+    ]
+}
+```
+
+Powyższe zasady indeksowania mają **boundingBox** (-10, 10) dla współrzędnych x i (-20, 20) dla współrzędnych y. Kontener z powyższymi zasadami indeksowania będzie indeksować wszystkie punkty, wielokąty, wielowielokątne i LineStrings, które znajdują się w całości w tym regionie.
+
+> [!NOTE]
+> Jeśli spróbujesz dodać zasadę indeksowania z **boundingBox** do kontenera z typem danych `geography`, zakończy się niepowodzeniem. Należy zmodyfikować **geospatialConfig** kontenera, aby był `geometry` przed dodaniem **boundingBox**. Można dodać dane i zmodyfikować pozostałe zasady indeksowania (takie jak ścieżki i typy) przed lub po wybraniu typu danych geoprzestrzennych dla kontenera.
 
 ## <a name="next-steps"></a>Następne kroki
 

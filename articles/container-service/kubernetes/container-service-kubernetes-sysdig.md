@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 3cb9c628993201553b8da1d1bd37b4705e0f23dc
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 68136d5b9ec16c822cb62e4fee85b8ace9b1899a
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271654"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371103"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-kubernetes-cluster-using-sysdig"></a>PRZESTARZAŁE Monitorowanie klastra Azure Container Service Kubernetes przy użyciu narzędzia Sysdig
 
@@ -25,8 +25,8 @@ Przyjęto również założenie, że masz zainstalowane narzędzia interfejsu wi
 
 Możesz sprawdzić, czy masz narzędzie `az` zainstalowane, uruchamiając:
 
-```console
-$ az --version
+```azurecli
+az --version
 ```
 
 Jeśli nie masz zainstalowanego narzędzia `az`, w [tym miejscu](https://github.com/azure/azure-cli#installation)znajdują się instrukcje.
@@ -34,13 +34,13 @@ Jeśli nie masz zainstalowanego narzędzia `az`, w [tym miejscu](https://github.
 Możesz sprawdzić, czy masz narzędzie `kubectl` zainstalowane, uruchamiając:
 
 ```console
-$ kubectl version
+kubectl version
 ```
 
 Jeśli nie masz zainstalowanego `kubectl`, możesz uruchomić następujące polecenie:
 
-```console
-$ az acs kubernetes install-cli
+```azurecli
+az acs kubernetes install-cli
 ```
 
 ## <a name="sysdig"></a>Sysdig
@@ -61,13 +61,13 @@ Aby zainstalować narzędzia Sysdig elementu daemonset, należy najpierw pobrać
 W systemie Linux i OS X można uruchomić:
 
 ```console
-$ curl -O https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-daemonset.yaml
+curl -O https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-daemonset.yaml
 ```
 
 W programie PowerShell:
 
-```console
-$ Invoke-WebRequest -Uri https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-daemonset.yaml | Select-Object -ExpandProperty Content > sysdig-daemonset.yaml
+```powershell
+Invoke-WebRequest -Uri https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-daemonset.yaml | Select-Object -ExpandProperty Content > sysdig-daemonset.yaml
 ```
 
 Następnie Edytuj ten plik, aby wstawić swój klucz dostępu uzyskany na podstawie konta usługi narzędzia Sysdig.
@@ -75,7 +75,7 @@ Następnie Edytuj ten plik, aby wstawić swój klucz dostępu uzyskany na podsta
 Na koniec Utwórz elementu daemonset:
 
 ```console
-$ kubectl create -f sysdig-daemonset.yaml
+kubectl create -f sysdig-daemonset.yaml
 ```
 
 ## <a name="view-your-monitoring"></a>Wyświetlanie monitorowania

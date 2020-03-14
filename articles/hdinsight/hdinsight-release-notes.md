@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 01/29/2020
-ms.openlocfilehash: 091ca4d632d89405d85c66e264aff9867979fcd4
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 03/13/2020
+ms.openlocfilehash: b83828c3c78913598c103730e11222969fe1fddb
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905236"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370172"
 ---
 # <a name="release-notes"></a>Informacje o wersji
 
@@ -65,38 +65,3 @@ Usługa HDInsight kontynuuje zwiększanie niezawodności i wydajności klastrów
 
 ## <a name="component-version-change"></a>Zmiana wersji składnika
 Brak zmian wersji składnika dla tej wersji. Bieżące wersje składników usługi HDInsight 4,0 AD HDInsight 3,6 można znaleźć tutaj.
-
-## <a name="known-issues"></a>Znane problemy
-
-Od 29 stycznia 2020 istnieje aktywny problem, w którym podczas próby użycia notesu Jupyter może wystąpić błąd. Wykonaj poniższe kroki, aby rozwiązać ten problem. Możesz również odwołać się do tego [wpisu w witrynie MSDN](https://social.msdn.microsoft.com/Forums/en-us/8c763fb4-79a9-496f-a75c-44a125e934ac/hdinshight-create-not-create-jupyter-notebook?forum=hdinsight) lub tego [wpisu StackOverflow](https://stackoverflow.com/questions/59687614/azure-hdinsight-jupyter-notebook-not-working/59831103) , aby uzyskać aktualne informacje lub zadać dodatkowe pytania. Ta strona zostanie zaktualizowana, gdy problem zostanie rozwiązany.
-
-**Błędy**
-
-* ValueError: nie można skonwertować notesu do wersji v5, ponieważ ta wersja nie istnieje
-* Błąd podczas ładowania notesu wystąpił nieznany błąd podczas ładowania tego notesu. Ta wersja może ładować formaty notesu w wersji 4 lub starszej
-
-**Przyczyna** 
-
-Plik _version. PR w klastrze został zaktualizowany do 5. x. x zamiast 4.4. x. # # lub Ambari należy ponownie uruchomić.
-
-**Rozwiązanie**
-
-W przypadku utworzenia nowego notesu Jupyter i otrzymania jednego z wymienionych powyżej błędów wykonaj następujące kroki, aby rozwiązać ten problem.
-
-1. Otwórz Ambari w przeglądarce internetowej, przechodząc do `https://CLUSTERNAME.azurehdinsight.net`, gdzie CLUSTERname jest nazwą klastra.
-1. W Ambari, w menu po lewej stronie kliknij pozycję **Jupyter**, następnie w obszarze **Akcje usługi**kliknij pozycję **Zatrzymaj**.
-1. Protokół SSH do klastra węzła głównego, gdzie działa usługa Jupyter.
-1. Otwórz następujący plik/usr/bin/Anaconda/lib/python2.7/site-packages/nbformat/_version. PR w trybie sudo.
-1. Sprawdź wartość version_info.
-1. Jeśli wartość version_info jest ustawiona na: 
-
-    version_info = (5, 0, 3)
-
-    Następnie zmodyfikuj wpis, aby: 
-    
-    version_info = (4, 4, 0)
-
-    I Zapisz plik. 
-
-    Jeśli version_info jest już ustawiona na (4, 4, 0), przejdź do następnego kroku, ponieważ tylko Ambari należy uruchomić ponownie, nie są wymagane żadne dodatkowe zmiany.
-1. Wróć do Ambari i w obszarze **Akcje usługi**kliknij pozycję **Uruchom ponownie wszystkie**.

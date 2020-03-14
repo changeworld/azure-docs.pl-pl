@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 06/25/2019
 ms.openlocfilehash: 897eff62fcbab5996b6b9493bd825ae412aa4c3e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355640"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249596"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Zakres i zakres czasu zapytania dziennika w Azure Monitor Log Analytics
 Po uruchomieniu [zapytania dziennika](log-query-overview.md) w [log Analytics w Azure Portal](get-started-portal.md), zestaw danych ocenianych przez zapytanie zależy od zakresu i wybranego zakresu czasu. W tym artykule opisano zakres i zakres czasu oraz sposób, w jaki można ustawić każdą z nich w zależności od wymagań. Opisano w nim również zachowanie różnych typów zakresów.
@@ -62,7 +62,7 @@ Jeśli zakres obejmuje obszary robocze w 20 lub więcej regionach, uruchomienie 
 ![Zapytanie nie powiodło się](media/scope/query-failed.png)
 
 
-## <a name="time-range"></a>Przedział czasu
+## <a name="time-range"></a>Zakres czasu
 Zakres czasu określa zestaw rekordów, które są oceniane dla zapytania w oparciu o czas utworzenia rekordu. Jest to zdefiniowane przez standardową właściwość dla każdego rekordu w obszarze roboczym lub aplikacji, zgodnie z opisem w poniższej tabeli.
 
 | Lokalizacja | Właściwość |

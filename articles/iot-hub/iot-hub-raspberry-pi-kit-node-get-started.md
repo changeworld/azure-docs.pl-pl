@@ -2,20 +2,20 @@
 title: Łączenie Raspberry Pi z platformą Azure IoT Hub w chmurze (Node. js)
 description: Dowiedz się, jak skonfigurować i połączyć Raspberry Pi z platformą IoT Hub Azure w celu wysyłania danych do platformy Azure w chmurze w tym samouczku.
 author: wesmc7777
-manager: philmea
+manager: eliotgra
 keywords: usługa Azure IoT Raspberry Pi, Raspberry Pi IoT Hub, Raspberry Pi wysyła dane do chmury, Raspberry Pi do chmury
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 03/13/2020
 ms.author: wesmc
-ms.openlocfilehash: 5780477be71988653e89379ae17e9009337bbc0f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c32ae73f065aa5cd1d0dabec421d354684fbb3c
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457100"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371509"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Łączenie Raspberry Pi z platformą Azure IoT Hub (Node. js)
 
@@ -78,7 +78,7 @@ Następujące elementy są opcjonalne:
 > [!NOTE]
 > Jeśli nie masz elementów opcjonalnych, możesz użyć symulowanych danych czujników.
 
-## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT
+## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -104,7 +104,7 @@ Przygotuj kartę microSD na potrzeby instalacji obrazu raspbian.
 
    b. Uruchom wytrawioner i wybierz obraz raspbian wyodrębniony w kroku 1.
 
-   d. Wybierz dysk karty microSD. Program wytrawiony mógł już wybrać prawidłowy dysk.
+   c. Wybierz dysk karty microSD. Program wytrawiony mógł już wybrać prawidłowy dysk.
 
    d. Kliknij przycisk Flash, aby zainstalować raspbian na karcie microSD.
 
@@ -202,13 +202,13 @@ Włącz opcję pi przy użyciu kabla micro USB i zasilacza. Podłącz PI do siec
 3. Sklonuj przykładową aplikację.
 
    ```bash
-   git clone https://github.com/Azure-Samples/iot-hub-node-raspberrypi-client-app
+   git clone https://github.com/Azure-Samples/azure-iot-samples-node.git
    ```
 
 4. Zainstaluj wszystkie pakiety dla przykładu. Instalacja obejmuje zestaw SDK urządzeń Azure IoT, bibliotekę czujników BME280 oraz bibliotekę pi.
 
    ```bash
-   cd iot-hub-node-raspberrypi-client-app
+   cd azure-iot-samples-node/iot-hub/Tutorials/RaspberryPiApp
    npm install
    ```
 
@@ -244,9 +244,9 @@ Uruchom przykładową aplikację, uruchamiając następujące polecenie:
    > [!NOTE]
    > Upewnij się, że kopiujesz, wklejając parametry połączenia urządzenia do pojedynczego cudzysłowu.
 
-Powinny zostać wyświetlone następujące dane wyjściowe pokazujące dane czujnika i komunikaty, które są wysyłane do Twojego centrum IoT.
+Powinny pojawić się następujące dane wyjściowe pokazujące dane czujnika i komunikaty wysyłane do centrum IoT Hub.
 
-![Dane wyjściowe — dane czujnika wysyłane z urządzenia Raspberry Pi do centrum IoT](./media/iot-hub-raspberry-pi-kit-node-get-started/8-run-output.png)
+![Dane z czujnika danych wyjściowych wysyłane z Raspberry Pi do centrum IoT Hub](./media/iot-hub-raspberry-pi-kit-node-get-started/8-run-output.png)
 
 ## <a name="read-the-messages-received-by-your-hub"></a>Odczytywanie komunikatów odebranych przez centrum
 

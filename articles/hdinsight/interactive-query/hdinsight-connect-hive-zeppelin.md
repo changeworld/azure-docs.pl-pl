@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: hdinsightactive
 ms.date: 12/03/2019
-ms.openlocfilehash: 915aca0e95fce05f74477b526de047c829c7f512
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 49b576fd511d17616880e5d981fd3f649de797df
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74890403"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367928"
 ---
 # <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>Szybki Start: wykonywanie zapytań Apache Hive w usłudze Azure HDInsight przy użyciu platformy Apache Zeppelin
 
@@ -23,7 +23,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-HDInsight An interaktywny klaster zapytań. Zobacz [Tworzenie klastra](../hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster) , aby utworzyć klaster usługi HDInsight.  Upewnij się, że wybrano typ klastra **zapytań interaktywnych** .
+HDInsight An interaktywny klaster zapytań. Zobacz [Tworzenie klastra](../hadoop/apache-hadoop-linux-tutorial-get-started.md) , aby utworzyć klaster usługi HDInsight.  Upewnij się, że wybrano typ klastra **zapytań interaktywnych** .
 
 ## <a name="create-an-apache-zeppelin-note"></a>Tworzenie notatki Apache Zeppelin
 
@@ -70,7 +70,7 @@ HDInsight An interaktywny klaster zapytań. Zobacz [Tworzenie klastra](../hadoop
 
     Wyniki zapytania są porównywane z tradycyjną gałęzią.
 
-### <a name="additional-examples"></a>Więcej przykładów
+### <a name="additional-examples"></a>Dodatkowe przykłady
 
 1. Utwórz tabelę. Wykonaj Poniższy kod w notesie Zeppelin:
 

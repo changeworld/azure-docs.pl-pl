@@ -15,20 +15,19 @@ ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f4084532ac370880df69d825927240c297dd371
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: e812e1b03637a3ecd7a45f02664c4e3547f1aef1
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79129910"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138981"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>Samouczek Azure Active Directory: integracja z logowaniem jednokrotnym (SSO) w usłudze GitHub
 
 W tym samouczku dowiesz się, jak zintegrować usługę GitHub z usługą Azure Active Directory (Azure AD). Po zintegrowaniu usługi GitHub z usługą Azure AD można:
 
-* Kontrolka w usłudze Azure AD, która ma dostęp do serwisu GitHub.
-* Zezwól użytkownikom na automatyczne logowanie do usługi GitHub przy użyciu swoich kont w usłudze Azure AD.
-* Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
+* Kontrola w usłudze Azure AD, która ma dostęp do organizacji w chmurze w witrynie GitHub.
+* Zarządzanie dostępem do organizacji w chmurze w witrynie GitHub w jednej centralnej lokalizacji — Azure Portal.
 
 Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
@@ -45,7 +44,7 @@ W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azu
 
 * Aplikacja GitHub obsługuje logowanie jednokrotne inicjowane przez **dostawcę usługi (SP)**
 
-* Aplikacja GitHub obsługuje [**zautomatyzowaną** aprowizację użytkowników](github-provisioning-tutorial.md)
+* GitHub obsługuje [ **Automatyczne** Inicjowanie obsługi użytkowników (zaproszenia do organizacji)](github-provisioning-tutorial.md)
 * Po skonfigurowaniu usługi GitHub można wymusić kontrolę sesji, która chroni eksfiltracji i niefiltrowanie danych poufnych organizacji w czasie rzeczywistym. Kontrolka sesji rozszerzy od dostępu warunkowego. [Dowiedz się, jak wymuszać kontrolę sesji za pomocą Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-github-from-the-gallery"></a>Dodawanie aplikacji GitHub z galerii
@@ -187,7 +186,7 @@ Celem tej sekcji jest utworzenie użytkownika o nazwie Britta Simon w aplikacji 
 
 2. Kliknij kartę **People** (Osoby).
 
-    ![Osób](./media/github-tutorial/tutorial_github_config_github_08.png "People")
+    ![Osób](./media/github-tutorial/tutorial_github_config_github_08.png "Osoby")
 
 3. Kliknij przycisk **Invite member** (Zaproś członka).
 

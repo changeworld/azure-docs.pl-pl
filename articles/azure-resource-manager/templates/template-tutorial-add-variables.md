@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 881d91d5b8ca06a9591b8752af0a73da7f00b0c1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 7b0ed16f95281fc793b2d350f3ed45386e52d407
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765509"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370667"
 ---
 # <a name="tutorial-add-variables-to-your-resource-manager-template"></a>Samouczek: Dodawanie zmiennych do szablonu Menedżer zasobów
 
@@ -56,7 +56,7 @@ Wdróżmy szablon. Wdrażanie tego szablonu jest łatwiejsze niż w przypadku po
 
 Jeśli grupa zasobów nie została utworzona, zobacz [Tworzenie grupy zasobów](template-tutorial-create-first-template.md#create-resource-group). W przykładzie założono, że ustawiono zmienną **TemplateFile** na ścieżkę do pliku szablonu, jak pokazano w [pierwszym samouczku](template-tutorial-create-first-template.md#deploy-template).
 
-# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -67,10 +67,10 @@ New-AzResourceGroupDeployment `
   -storageSKU Standard_LRS
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
+# <a name="azure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addnamevariable \
   --resource-group myResourceGroup \
   --template-file $templateFile \
@@ -83,7 +83,7 @@ az group deployment create \
 
 Można zweryfikować wdrożenie, przeeksplorowanie grupy zasobów z Azure Portal.
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. Z menu po lewej stronie wybierz pozycję **grupy zasobów**.
 1. Wybierz grupę zasobów, do której została wdrożona.
 1. Zobaczysz, że zasób konta magazynu został wdrożony. Nazwa konta magazynu jest **przechowywana** wraz z ciągiem znaków losowych.

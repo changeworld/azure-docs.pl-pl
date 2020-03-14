@@ -12,18 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/06/2019
+ms.date: 03/13/2020
 ms.author: mimart
 ms.reviewer: paulgarn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eafd209073b36265d24dbad4a66b3870d8f593db
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 0082d841faf22745e609d38444f4a97553b3c867
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73148641"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365870"
 ---
-# <a name="how-to-configure-azure-ad-saml-token-encryption-preview"></a>Instrukcje: Konfigurowanie szyfrowania tokenów SAML usługi Azure AD (wersja zapoznawcza)
+# <a name="how-to-configure-azure-ad-saml-token-encryption"></a>Instrukcje: Konfigurowanie szyfrowania tokenów SAML usługi Azure AD
 
 > [!NOTE]
 > Szyfrowanie tokenu jest funkcją usługi Azure Active Directory (Azure AD) Premium. Aby dowiedzieć się więcej o wersjach, funkcjach i cenach usługi Azure AD, zobacz [Cennik usługi Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
@@ -71,7 +71,7 @@ Możesz dodać publiczny certyfikat do konfiguracji aplikacji w ramach Azure Por
 
     ![Zaimportuj plik. cer zawierający certyfikat X. 509](./media/howto-saml-token-encryption/import-certificate-small.png)
 
-1. Po zaimportowaniu certyfikatu, a klucz prywatny jest skonfigurowany do użycia na stronie aplikacji, Aktywuj szyfrowanie, wybierając przycisk **...** obok stanu odcisku palca, a następnie wybierz opcję **Aktywuj szyfrowanie tokenu** z opcji w menu rozwijane.
+1. Po zaimportowaniu certyfikatu, a klucz prywatny jest skonfigurowany do użycia na stronie aplikacji, Aktywuj szyfrowanie, wybierając przycisk **...** obok stanu odcisku palca, a następnie wybierz pozycję **Aktywuj szyfrowanie tokenu** z opcji w menu rozwijanym.
 
 1. Wybierz pozycję **tak** , aby potwierdzić aktywację certyfikatu szyfrowania tokenu.
 
@@ -123,26 +123,21 @@ Podczas konfigurowania poświadczeń klucza przy użyciu programu Graph, PowerSh
 
 ### <a name="to-configure-token-encryption-using-powershell"></a>Aby skonfigurować szyfrowanie tokenu przy użyciu programu PowerShell
 
-Ta funkcja będzie dostępna wkrótce. 
+1. Użyj najnowszego modułu programu PowerShell usługi Azure AD, aby nawiązać połączenie z dzierżawcą.
 
-<!--
-1. Use the latest Azure AD PowerShell module to connect to your tenant.
-
-1. Set the token encryption settings using the **[Set-AzureApplication](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** command.
+1. Ustaw ustawienia szyfrowania tokenu za pomocą polecenia **[Set-AzureApplication](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** .
 
     ```
     Set-AzureADApplication -ObjectId <ApplicationObjectId> -KeyCredentials "<KeyCredentialsObject>"  -TokenEncryptionKeyId <keyID>
     ```
 
-1. Read the token encryption settings using the following commands.
+1. Przeczytaj ustawienia szyfrowania tokenu przy użyciu następujących poleceń.
 
     ```powershell
     $app=Get-AzureADApplication -ObjectId <ApplicationObjectId>
     $app.KeyCredentials
     $app.TokenEncryptionKeyId
     ```
-
--->
 
 ### <a name="to-configure-token-encryption-using-the-application-manifest"></a>Aby skonfigurować szyfrowanie tokenu przy użyciu manifestu aplikacji
 

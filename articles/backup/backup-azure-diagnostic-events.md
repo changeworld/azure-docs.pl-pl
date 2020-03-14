@@ -3,12 +3,12 @@ title: Korzystanie z ustawień diagnostycznych dla magazynów Recovery Services
 description: Artykuł opisujący sposób używania starych i nowych zdarzeń diagnostycznych dla Azure Backup
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 7abf8873aafeb996476d818376057bfd8732d906
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: e3919d120e5f741af6cd30dd27e5a1dfa2b06cf2
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583949"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136943"
 ---
 # <a name="using-diagnostics-settings-for-recovery-services-vaults"></a>Używanie ustawień diagnostyki dla magazynów usługi Recovery Services
 
@@ -56,7 +56,9 @@ Po przeniesieniu danych do obszaru roboczego LA, dedykowane tabele dla każdego 
 
 Tradycyjnie wszystkie dane diagnostyczne powiązane z kopią zapasową magazynu zostały zawarte w pojedynczym zdarzeniu o nazwie "AzureBackupReport". Sześć zdarzeń opisanych powyżej to, w zasadzie, dekompozycja wszystkich danych zawartych w AzureBackupReport. 
 
-Obecnie nadal obsługujemy zdarzenia AzureBackupReport w celu zapewnienia zgodności z poprzednimi wersjami, w przypadkach, gdy użytkownicy mają istniejące niestandardowe zapytania dotyczące tego zdarzenia, na przykład niestandardowe alerty dziennika, niestandardowe wizualizacje itp. Zalecamy jednak wybranie nowych zdarzeń dla wszystkich nowych ustawień diagnostycznych w magazynie, ponieważ sprawia to, że dane są znacznie łatwiejsze w pracy z kwerendami dziennika, co zapewnia lepszą możliwość odnajdywania schematów i ich struktury, co zwiększa wydajność w ramach obu pozyskań czasy oczekiwania i zapytania. Obsługa używania Diagnostyka Azure trybu zostanie ostatecznie przeprowadzona, a w związku z tym wybranie nowych zdarzeń może pomóc w uniknięciu złożonych migracji w późniejszym terminie.
+Obecnie nadal obsługujemy zdarzenia AzureBackupReport w celu zapewnienia zgodności z poprzednimi wersjami, w przypadkach, gdy użytkownicy mają istniejące niestandardowe zapytania dotyczące tego zdarzenia, na przykład niestandardowe alerty dziennika, niestandardowe wizualizacje itp. **Zaleca się jednak przechodzenie do nowych zdarzeń tak szybko, jak to możliwe**, ponieważ sprawia, że dane znacznie ułatwiają pracę z zapytaniami dziennika, co zapewnia lepszą możliwość odnajdywania schematów i ich struktury, co zwiększa wydajność w przypadku opóźnień i czasów wykonywania zapytań. **Obsługa używania Diagnostyka Azure trybu zostanie ostatecznie przeprowadzona, a w związku z tym wybranie nowych zdarzeń może pomóc w uniknięciu złożonych migracji w późniejszym terminie**.
+
+Użyj wbudowanych zasad Azure Backup, aby dodać nowe ustawienie diagnostyki z 6 nowymi zdarzeniami dla wszystkich magazynów w określonym zakresie: [Skonfiguruj ustawienia diagnostyki magazynu w odpowiedniej skali](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)
 
 Można utworzyć oddzielne ustawienia diagnostyki dla AzureBackupReport i sześciu nowych zdarzeń, dopóki nie przeprowadzono migracji wszystkich zapytań niestandardowych do korzystania z danych z nowych tabel. Na poniższym obrazie przedstawiono przykład magazynu mającego dwa ustawienia diagnostyczne. Pierwsze ustawienie o nazwie **Setting1** wysyła dane zdarzenia AzureBackupReport do obszaru roboczego La w trybie AzureDiagnostics. Drugie ustawienie o nazwie **Setting2** wysyła dane z sześciu nowych zdarzeń Azure Backup do obszaru roboczego La w trybie specyficznym dla zasobu.
 

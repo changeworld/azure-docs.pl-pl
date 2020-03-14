@@ -8,24 +8,27 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
-ms.openlocfilehash: d217025a847c33ceff49feac22023f80fde2b109
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 2a0394e6e7c17e0a4954bbdddb1d5b2811959746
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79218414"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371583"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>Zbiorczo Importuj i Eksportuj IoT Hub tożsamości urządzeń
 
 Każde Centrum IoT Hub ma rejestr tożsamości, którego można użyć do tworzenia zasobów dla urządzeń w usłudze. Rejestr tożsamości pozwala również kontrolować dostęp do punktów końcowych dostępnych dla urządzenia. W tym artykule opisano sposób importowania i eksportowania tożsamości urządzeń zbiorczo do i z rejestru tożsamości. Aby wyświetlić próbkę roboczą C# w programie i dowiedzieć się, jak można użyć tej funkcji podczas klonowania koncentratora do innego regionu, zobacz [jak sklonować IoT Hub](iot-hub-how-to-clone.md).
 
-[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
+> [!NOTE]
+> IoT Hub ostatnio dodaliśmy obsługę sieci wirtualnej w ograniczonej liczbie regionów. Ta funkcja zabezpiecza operacje importu i eksportu i eliminuje konieczność przekazywania kluczy na potrzeby uwierzytelniania.  Początkowo obsługa sieci wirtualnej jest dostępna tylko w następujących regionach: *WestUS2*, *Wschodnie*i *SouthCentralUS*. Aby dowiedzieć się więcej na temat obsługi sieci wirtualnych i wywołań interfejsu API w celu ich wdrożenia, zobacz [IoT Hub obsługa sieci wirtualnych](virtual-network-support.md).
 
 Operacje importowania i eksportowania odbywają się w kontekście *zadań* , które umożliwiają wykonywanie operacji usług zbiorczych w usłudze IoT Hub.
 
 Klasa **registrymanager** zawiera metody **ExportDevicesAsync** i **ImportDevicesAsync** , które korzystają z platformy **zadań** . Te metody umożliwiają eksportowanie, importowanie i synchronizację całości rejestru tożsamości Centrum IoT Hub.
 
 W tym temacie omówiono użycie klasy **registrymanager** i systemu **zadań** do wykonywania importu zbiorczego i eksportu urządzeń do i z rejestru tożsamości Centrum IoT Hub. Możesz również użyć IoT Hub Device Provisioning Service platformy Azure, aby włączyć funkcję bezobsługowego udostępniania w czasie just-in-Time do jednego lub kilku centrów IoT, bez konieczności interwencji człowieka. Aby dowiedzieć się więcej, zobacz [dokumentację usługi aprowizacji](/azure/iot-dps).
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 ## <a name="what-are-jobs"></a>Co to są zadania?
 
@@ -83,6 +86,10 @@ while(true)
   await Task.Delay(TimeSpan.FromSeconds(5));
 }
 ```
+
+> [!NOTE]
+> Jeśli Twoje konto magazynu ma konfiguracje zapory, które ograniczają łączność IoT Hub, rozważ użycie [wyjątku Microsoft Trusted First](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) (dostępnego w wybranych regionach dla centrów IoT z tożsamością usługi zarządzanej).
+
 
 ## <a name="device-importexport-job-limits"></a>Limity zadań importowania/eksportowania urządzeń
 

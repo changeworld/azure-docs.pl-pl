@@ -1,17 +1,17 @@
 ---
-title: Uwierzytelnianie Active Directory-Azure Database for MySQL — pojedynczy serwer
-description: Informacje na temat pojęć związanych z Azure Active Directory uwierzytelniania za pomocą jednego serwera Azure Database for MySQL
+title: Uwierzytelnianie Active Directory — Azure Database for MySQL
+description: Informacje na temat pojęć związanych z Azure Active Directory uwierzytelniania przy użyciu Azure Database for MySQL
 author: lfittl-msft
 ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: eb26bc09ce273280b55a023c563427b5b323ace9
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 960536c3f80aa7870d6f2056d8e95cd1a4338dfe
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76706104"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299026"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Używanie Azure Active Directory do uwierzytelniania za pomocą programu MySQL
 
@@ -47,7 +47,7 @@ Aby skonfigurować uwierzytelnianie Azure Active Directory i korzystać z niego,
 
 Poniższy diagram wysokiego poziomu zawiera podsumowanie sposobu działania uwierzytelniania przy użyciu uwierzytelniania usługi Azure AD z Azure Database for MySQL. Strzałki oznaczają ścieżki komunikacji.
 
-![przepływ uwierzytelniania][1]
+![Przepływ uwierzytelniania][1]
 
 ## <a name="administrator-structure"></a>Struktura administratora
 
@@ -77,7 +77,7 @@ Po uzyskaniu uwierzytelnienia względem Active Directory można pobrać token. T
 > [!NOTE]
 > Aby uzyskać więcej informacji na temat nawiązywania połączenia z tokenem Active Directory, zobacz [Konfigurowanie i logowanie za pomocą usługi Azure AD dla Azure Database for MySQL](howto-configure-sign-in-azure-ad-authentication.md).
 
-## <a name="additional-considerations"></a>Dodatkowe zagadnienia
+## <a name="additional-considerations"></a>Dodatkowe kwestie do uwzględnienia
 
 - W dowolnej chwili można skonfigurować tylko jednego administratora usługi Azure AD dla serwera Azure Database for MySQL.
 - Tylko administrator usługi Azure AD dla programu MySQL może początkowo połączyć się z Azure Database for MySQL przy użyciu konta Azure Active Directory. Administrator Active Directory może skonfigurować kolejnych użytkowników bazy danych usługi Azure AD.
@@ -90,7 +90,7 @@ Po uzyskaniu uwierzytelnienia względem Active Directory można pobrać token. T
 ## <a name="next-steps"></a>Następne kroki
 
 - Aby dowiedzieć się, jak utworzyć i wypełnić usługę Azure AD, a następnie skonfigurować usługę Azure AD za pomocą Azure Database for MySQL, zobacz [Konfigurowanie i logowanie za pomocą usługi Azure AD dla Azure Database for MySQL](howto-configure-sign-in-azure-ad-authentication.md).
-- Aby zapoznać się z omówieniem logowania i użytkownikami bazy danych dla Azure Database for MySQL, zobacz temat [Tworzenie użytkowników w Azure Database for MySQL — pojedynczy serwer](howto-create-users.md).
+- Aby zapoznać się z omówieniem logowania i użytkownikami bazy danych dla Azure Database for MySQL, zobacz temat [Tworzenie użytkowników w Azure Database for MySQL](howto-create-users.md).
 
 <!--Image references-->
 

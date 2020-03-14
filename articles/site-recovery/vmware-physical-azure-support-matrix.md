@@ -3,14 +3,14 @@ title: Macierz obsługi dla oprogramowania VMware/fizycznego odzyskiwania po awa
 description: Podsumowuje obsługę odzyskiwania po awarii maszyn wirtualnych programu VMware i serwera fizycznego na platformie Azure przy użyciu Azure Site Recovery.
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 1/21/2020
+ms.date: 2/24/2020
 ms.author: raynew
-ms.openlocfilehash: b7ace4f470a4e054be5d7f5945fc3e9c4f7d0810
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 05e60c5b008746bbfd72dbe7a2e14b18aa563671
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79257045"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371396"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Macierz obsługi odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformie Azure
 
@@ -135,7 +135,7 @@ SUSE Linux Enterprise Server 15 i 15 SP1 | 9,32 | Obsługiwane są wszystkie [j�
 
 **Składnik** | **Obsługiwane**
 --- | ---
-Systemy plików | ext3, EXT4, XFS
+Systemy plików | ext3, EXT4, XFS, BTRFS (warunki odpowiednie dla tej tabeli)
 Menedżer woluminów | -LVM jest obsługiwana.<br/> -/Boot on LVM jest obsługiwany z [pakietu zbiorczego aktualizacji 31](https://support.microsoft.com/help/4478871/) (wersja 9,20 usługi mobilności) lub nowszej. Nie jest to obsługiwane we wcześniejszych wersjach usługi mobilności.<br/> — Wiele dysków systemu operacyjnego nie jest obsługiwanych.
 Parawirtualne urządzeń magazynujących | Urządzenia eksportowane przez sterowniki parawirtualne nie są obsługiwane.
 Wiele kolejek blokowych urządzeń we/wy | Nieobsługiwane.

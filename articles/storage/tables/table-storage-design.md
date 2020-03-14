@@ -5,15 +5,15 @@ services: storage
 author: SnehaGunda
 ms.service: storage
 ms.topic: article
-ms.date: 04/23/2018
+ms.date: 03/09/2020
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 95272956da4567ec21e1c4603b88472e45373a39
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 8df639eea757c374554fa19e57c43cef79308e98
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387084"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255147"
 ---
 # <a name="design-scalable-and-performant-tables"></a>Projektowanie skalowalnych i wydajnych tabel
 
@@ -140,19 +140,8 @@ W usłudze Table service transakcji grup jednostek (EGTs) są tylko wbudowanego 
 EGTs również wprowadza potencjalne rozwiązanie do szacowania w projekcie. Oznacza to, że użycie większej liczby partycji zwiększa skalowalność aplikacji, ponieważ platforma Azure ma więcej możliwości w przypadku żądań równoważenia obciążenia między węzłami. Jednak użycie większej liczby partycji może ograniczyć możliwość wykonywania przez aplikacje niepodzielnych transakcji i zapewnienia silnej spójności danych. Ponadto istnieją konkretne cele skalowalności na poziomie partycji, która może ograniczyć przepływność transakcji, które można oczekiwać dla jednego węzła. Aby uzyskać więcej informacji na temat celów skalowalności dla kont magazynu w warstwie Standardowa, zobacz [elementy docelowe skalowalności dla kont magazynu w warstwie Standardowa](../common/scalability-targets-standard-account.md). Aby uzyskać więcej informacji dotyczących skalowalności Table service, zobacz [cele skalowalności i wydajności dla usługi Table Storage](scalability-targets.md).
 
 ## <a name="capacity-considerations"></a>Zagadnienia dotyczące wydajności
-W poniższej tabeli opisano niektóre kluczowe wartości, które należy wziąć pod uwagę podczas projektowania rozwiązania Table service:  
 
-| Całkowita pojemność konta usługi Azure storage | 500 TB |
-| --- | --- |
-| Liczba tabel na koncie usługi Azure storage |Ograniczone tylko przez pojemność konta magazynu |
-| Liczba partycji w tabeli |Ograniczone tylko przez pojemność konta magazynu |
-| Liczba jednostek w partycji |Ograniczone tylko przez pojemność konta magazynu |
-| Rozmiar pojedynczą jednostkę |Do 1 MB i maksymalnie 255 właściwości (łącznie z **PartitionKey**, **RowKey**i **sygnaturą czasową**) |
-| Rozmiar **PartitionKey** |Ciąg do 1 KB rozmiaru |
-| Rozmiar **RowKey** |Ciąg do 1 KB rozmiaru |
-| Rozmiar transakcji grup jednostek |Transakcja może zawierać co najwyżej 100 jednostek i ładunek musi być mniejszy niż 4 MB. EGT można aktualizować tylko jednostki jeden raz. |
-
-Aby uzyskać więcej informacji, zobacz [Understanding the Table Service Data Model (Omówienie modelu danych usługi Table Service)](https://msdn.microsoft.com/library/azure/dd179338.aspx).  
+[!INCLUDE [storage-table-scale-targets](../../../includes/storage-tables-scale-targets.md)]
 
 ## <a name="cost-considerations"></a>Kwestie związane z kosztami
 Magazyn tabel jest stosunkowo niedrogi, ale należy uwzględnić oszacowania kosztów zarówno w przypadku użycia pojemności, jak i liczby transakcji w ramach oceny dowolnego Table service rozwiązania. Jednak w wielu scenariuszach przechowywanie nieznormalizowanych lub zduplikowanych danych w celu poprawy wydajności lub skalowalności rozwiązania jest prawidłowym podejściem. Aby uzyskać więcej informacji o cenach, zobacz [Cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/).  

@@ -8,12 +8,12 @@ keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, 
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 5deebf7a51917a2b199ad525ab087fd5b0268c18
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: d3eaa3869c79852d1e598cae76e1dac81c08cdc2
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245034"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137975"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>Szybki Start: debugowanie i iteracja na Kubernetes: Visual Studio & .NET Core — Azure Dev Spaces
 
@@ -94,7 +94,9 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:62266
 Completed warmup for project 'webfrontend' in 125 seconds.
 ```
 
-W powyższym przykładzie publiczny adres URL jest http://default.webfrontend.1234567890abcdef1234.eus.azds.io/. Przejdź do publicznego adresu URL usługi i skontaktuj się z usługą uruchomioną w obszarze dev.
+W powyższym przykładzie publiczny adres URL jest http://default.webfrontend.1234567890abcdef1234.eus.azds.io/. 
+
+Wybierz pozycję **Debuguj** , a następnie **Rozpocznij debugowanie**. Po kilku sekundach zostanie uruchomiona usługa, a program Visual Studio otworzy przeglądarkę z publicznym adresem URL usługi. Jeśli przeglądarka nie jest automatycznie otwierana, przejdź do publicznego adresu URL usługi w przeglądarce i skontaktuj się z usługą uruchomioną w obszarze dev.
 
 Ten proces mógł wyłączyć publiczny dostęp do usługi. Aby włączyć dostęp publiczny, można zaktualizować wartość transferu danych przychodzących [w *wartości. YAML*][ingress-update].
 
@@ -106,7 +108,7 @@ Jeśli program Visual Studio jest nadal połączony z obszarem deweloperskim, kl
 ViewData["Message"] = "Your application description page in Azure.";
 ```
 
-Zapisz zmiany i uruchom usługę przy użyciu **Azure dev Spaces** z listy rozwijanej ustawienia uruchamiania. Otwórz publiczny adres URL usługi w przeglądarce i kliknij pozycję *informacje*. Zwróć uwagę, że zostanie wyświetlony zaktualizowany komunikat.
+Zapisz zmiany i wybierz pozycję **Debuguj** , a następnie **Rozpocznij debugowanie**. Po kilku sekundach zostanie uruchomiona usługa, a program Visual Studio otworzy przeglądarkę z publicznym adresem URL usługi. Jeśli przeglądarka nie jest automatycznie otwierana, przejdź do publicznego adresu URL usługi w przeglądarce i kliknij pozycję *informacje*. Zwróć uwagę, że zostanie wyświetlony zaktualizowany komunikat.
 
 Zamiast ponownie kompilować i wdrażać nowy obraz kontenera przy każdej modyfikacji kodu, Azure Dev Spaces przyrostowo kompiluje kod w istniejącym kontenerze, aby zapewnić szybszą pętlę edycji/debugowania.
 

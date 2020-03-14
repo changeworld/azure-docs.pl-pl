@@ -1,6 +1,6 @@
 ---
 title: Zostań partnerem kodera lokalnego — Azure Media Services
-description: Zostań partnerem kodera lokalnego z Azure Media Services.
+description: W tym artykule omówiono sposób weryfikowania lokalnych koderów strumieniowych na żywo.
 services: media-services
 author: johndeu
 manager: johndeu
@@ -8,18 +8,20 @@ ms.author: johndeu
 ms.date: 03/02/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 6b00e430f960195e1badd2a73f9291997b94c833
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: f98d9942f8c30f06b0144503b056c1e8a393ae52
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252976"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298635"
 ---
-# <a name="become-an-on-premises-encoder-partner"></a>Zostań Lokalnym partnerem kodera
+# <a name="how-to-verify-your-on-premises-live-streaming-encoder"></a>Weryfikowanie lokalnego kodera przesyłania strumieniowego na żywo
 
 Jako Azure Media Services lokalnego partnera kodera Media Services promować produkt, zalecając koder do klientów korporacyjnych. Aby móc pełnić rolę lokalnego partnera kodera, należy sprawdzić zgodność kodera lokalnego z Media Services. Aby to zrobić, wykonaj następujące weryfikacje.
 
-### <a name="pass-through-live-event-verification"></a>Weryfikacja zdarzenia przekazującego na żywo
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="pass-through-live-event-verification"></a>Weryfikacja zdarzenia przekazującego na żywo
 
 1. Na koncie Media Services upewnij się, że **punkt końcowy przesyłania strumieniowego** jest uruchomiony. 
 2. Utwórz i uruchom wydarzenie **Pass-through** Live. <br/> Aby uzyskać więcej informacji, zobacz [Live Event states and billing](live-event-states-billing.md) (Stany i rozliczenia dotyczące wydarzenia na żywo).
@@ -38,7 +40,7 @@ Jako Azure Media Services lokalnego partnera kodera Media Services promować pro
 15. Zresetuj stan zdarzenia na żywo po utworzeniu każdego przykładu.
 16. Powtórz kroki od 5 do 15 dla wszystkich konfiguracji obsługiwanych przez koder (z niemniemi, napisami lub innymi szybkościami kodowania, a także bez nich).
 
-### <a name="live-encoding-live-event-verification"></a>Weryfikacja zdarzeń na żywo w kodowaniu na żywo
+## <a name="live-encoding-live-event-verification"></a>Weryfikacja zdarzeń na żywo w kodowaniu na żywo
 
 1. Na koncie Media Services upewnij się, że **punkt końcowy przesyłania strumieniowego** jest uruchomiony. 
 2. Utwórz i uruchom wydarzenie Live **Encoding** na żywo. <br/> Aby uzyskać więcej informacji, zobacz [Live Event states and billing](live-event-states-billing.md) (Stany i rozliczenia dotyczące wydarzenia na żywo).
@@ -57,17 +59,17 @@ Jako Azure Media Services lokalnego partnera kodera Media Services promować pro
 15. Zresetuj stan zdarzenia na żywo po utworzeniu każdego przykładu.
 16. Powtórz kroki od 5 do 15 dla wszystkich konfiguracji obsługiwanych przez koder (z niemniemi, napisami lub innymi szybkościami kodowania, a także bez nich).
 
-### <a name="longevity-verification"></a>Weryfikacja eksploatacji
+## <a name="longevity-verification"></a>Weryfikacja eksploatacji
 
 Wykonaj te same czynności co w przypadku [weryfikacji zdarzenia](#pass-through-live-event-verification) dotyczącego przekazywania na żywo z wyjątkiem kroku 11. <br/>Zamiast 10 minut Uruchom koder na żywo przez jeden tydzień lub dłużej. Użyj odtwarzacza, takiego jak [Azure Media Player](https://aka.ms/azuremediaplayer) , aby obserwować przesyłanie strumieniowe na żywo od czasu do czasu (lub zarchiwizowanego zasobu), aby upewnić się, że odtwarzanie nie ma widocznych błędów.
 
-### <a name="email-your-recorded-settings"></a>Wyślij zapisane ustawienia pocztą e-mail
+## <a name="email-your-recorded-settings"></a>Wyślij zapisane ustawienia pocztą e-mail
 
 Na koniec Wyślij zapisane ustawienia i parametry Archiwum na żywo, aby Azure Media Services w amshelp@microsoft.com jako powiadomienie, że wszystkie testy samoweryfikacji zostały zakończone pomyślnie. Podaj również informacje kontaktowe dla każdej z nich. Możesz skontaktować się z zespołem Azure Media Services, podając wszelkie pytania dotyczące tego procesu.
 
 ## <a name="see-also"></a>Zobacz też
 
-[Zalecane lokalne kodery na żywo](recommended-on-premises-live-encoders.md)
+[Przetestowane kodery lokalne](recommended-on-premises-live-encoders.md)
 
 ## <a name="next-steps"></a>Następne kroki
 

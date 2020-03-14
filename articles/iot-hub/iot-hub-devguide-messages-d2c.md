@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: ff50d972ad9590fb70dbcf67e21f8b5dc8c32fad
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: d10744f2536cdf89115cdccd0bea6f1e5155774c
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748056"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370461"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Używanie routingu komunikatów IoT Hub do wysyłania komunikatów z urządzenia do chmury do różnych punktów końcowych
 
@@ -45,7 +45,7 @@ Możesz użyć standardowej [integracji i zestawów sdk Event Hubs,](iot-hub-dev
 
 Istnieją dwa usługi magazynu IoT Hub mogą kierować wiadomości do kont [usługi Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) i [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) (ADLS Gen2). Konta Azure Data Lake Storage to [hierarchiczne](../storage/blobs/data-lake-storage-namespace.md)konta magazynu z obsługą nazw oparte na usłudze BLOB Storage. Oba te elementy używają obiektów BLOB dla ich magazynu.
 
-IoT Hub obsługuje zapisywanie danych w usłudze Azure Storage w formacie [Apache Avro](https://avro.apache.org/) oraz w formacie JSON. Wartość domyślna to AVRO. Format kodowania można ustawić tylko w przypadku skonfigurowania punktu końcowego magazynu obiektów BLOB. Nie można edytować formatu dla istniejącego punktu końcowego. W przypadku korzystania z kodowania JSON należy ustawić wartość ContentType na **Application/JSON** i ContentEncoding na **UTF-8** we [właściwościach systemu](iot-hub-devguide-routing-query-syntax.md#system-properties)komunikatów. W obu tych wartościach jest rozróżniana wielkość liter. Jeśli kodowanie zawartości nie jest ustawione, IoT Hub będzie zapisywać komunikaty w standardowym formacie 64. Można wybrać format kodowania za pomocą IoT Hub tworzenia lub aktualizacji interfejsu API REST, w tym [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), Azure Portal, [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)lub programu [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0). Na poniższym diagramie przedstawiono sposób wybierania formatu kodowania w Azure Portal.
+IoT Hub obsługuje zapisywanie danych w usłudze Azure Storage w formacie [Apache Avro](https://avro.apache.org/) oraz w formacie JSON. Wartość domyślna to AVRO. Format kodowania można ustawić tylko w przypadku skonfigurowania punktu końcowego magazynu obiektów BLOB. Nie można edytować formatu dla istniejącego punktu końcowego. W przypadku korzystania z kodowania JSON należy ustawić wartość ContentType na **Application/JSON** i ContentEncoding na **UTF-8** we [właściwościach systemu](iot-hub-devguide-routing-query-syntax.md#system-properties)komunikatów. W obu tych wartościach jest rozróżniana wielkość liter. Jeśli kodowanie zawartości nie jest ustawione, IoT Hub będzie zapisywać komunikaty w standardowym formacie 64. Można wybrać format kodowania za pomocą IoT Hub tworzenia lub aktualizacji interfejsu API REST, w tym [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), Azure Portal, [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)lub [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0). Na poniższym diagramie przedstawiono sposób wybierania formatu kodowania w Azure Portal.
 
 ![Kodowanie punktu końcowego magazynu obiektów BLOB](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 
@@ -75,6 +75,9 @@ public void ListBlobsInContainer(string containerName, string iothub)
 }
 ```
 
+> [!NOTE]
+> Jeśli Twoje konto magazynu ma konfiguracje zapory, które ograniczają łączność IoT Hub, rozważ użycie [wyjątku Microsoft Trusted First](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) (dostępnego w wybranych regionach dla centrów IoT z tożsamością usługi zarządzanej).
+
 Aby utworzyć konto magazynu zgodne z usługą Azure Data Lake Gen2, Utwórz nowe konto magazynu w wersji 2 i wybierz pozycję *włączone* w polu *hierarchiczna przestrzeń nazw* na karcie **Zaawansowane** , jak pokazano na poniższej ilustracji:
 
 ![Wybierz pozycję Azure Data Lake Gen2 Storage](./media/iot-hub-devguide-messages-d2c/selectadls2storage.png)
@@ -84,9 +87,17 @@ Aby utworzyć konto magazynu zgodne z usługą Azure Data Lake Gen2, Utwórz now
 
 Kolejki Service Bus i tematy używane jako punkty końcowe IoT Hub nie mogą mieć włączonej **sesji** lub **wykrywania duplikatów** . Jeśli jedna z tych opcji jest włączona, punkt końcowy jest wyświetlany jako **nieosiągalny** w Azure Portal.
 
-### <a name="event-hubs"></a>Usługa Event Hubs
+> [!NOTE]
+> Jeśli zasób usługi Service Bus zawiera konfiguracje zapory, które ograniczają łączność IoT Hub, należy rozważyć użycie [wyjątku Microsoft zaufanej pierwszej strony](./virtual-network-support.md#egress-connectivity-to-service-bus-endpoints-for-routing) (dostępne w wybranych regionach dla centrów IoT z tożsamością usługi zarządzanej).
+
+
+### <a name="event-hubs"></a>Event Hubs
 
 Oprócz wbudowanego punktu końcowego zgodnego z Event Hubs można również kierować dane do niestandardowych punktów końcowych typu Event Hubs. 
+
+> [!NOTE]
+> Jeśli zasób centrum zdarzeń zawiera konfiguracje zapory, które ograniczają łączność IoT Hub, należy rozważyć użycie [wyjątku zaufania pierwszej osoby firmy Microsoft](./virtual-network-support.md#egress-connectivity-to-event-hubs-endpoints-for-routing) (dostępne w wybranych regionach dla centrów IoT z tożsamością usługi zarządzanej).
+
 
 ## <a name="reading-data-that-has-been-routed"></a>Odczytywanie danych, które zostały rozesłane
 
@@ -104,6 +115,7 @@ Skorzystaj z poniższych samouczków, aby dowiedzieć się, jak odczytać komuni
 
 * Przeczytaj w [tematach Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions)
 
+
 ## <a name="fallback-route"></a>Trasa rezerwowa
 
 Trasa rezerwowa wysyła wszystkie komunikaty, które nie spełniają warunków zapytania na żadnej z istniejących tras do wbudowanych Event Hubs (**komunikaty/zdarzenia**), które są zgodne z [Event Hubs](/azure/event-hubs/). Jeśli jest włączona funkcja routingu wiadomości, można włączyć funkcję trasy rezerwowej. Po utworzeniu trasy dane przestają przepływać do wbudowanego punktu końcowego, chyba że trasa zostanie utworzona do tego punktu końcowego. Jeśli nie ma tras do wbudowanego punktu końcowego, a trasa rezerwowa jest włączona, tylko komunikaty, które nie pasują do żadnych warunków zapytania dotyczące tras, będą wysyłane do wbudowanego punktu końcowego. Ponadto jeśli wszystkie istniejące trasy zostaną usunięte, należy włączyć trasy rezerwowe, aby odbierać wszystkie dane w wbudowanym punkcie końcowym.
@@ -112,7 +124,7 @@ Można włączyć/wyłączyć trasę alternatywną w bloku routing wiadomości A
 
 ## <a name="non-telemetry-events"></a>Zdarzenia inne niż telemetrii
 
-Oprócz danych telemetrycznych urządzenia Routing komunikatów umożliwia również wysyłanie zdarzeń zmiany sznurka urządzenia, zdarzeń cyklu życia urządzenia i cyfrowych dróg zmiany (w publicznej wersji zapoznawczej). Na przykład jeśli zostanie utworzona trasa ze źródłem danych ustawionym na **zdarzenia zmiany sznurka urządzenia**, IoT Hub wysyła komunikaty do punktu końcowego, który zawiera zmiany w bliźniaczych urządzeniach. Podobnie w przypadku utworzenia trasy ze źródłem danych ustawionym na **zdarzenia cyklu życia urządzenia**IoT Hub wysyła komunikat informujący o tym, czy urządzenie zostało usunięte lub utworzone. Na koniec w ramach [publicznej wersji zapoznawczej IoT Plug and Play](../iot-pnp/overview-iot-plug-and-play.md)deweloper może utworzyć trasy ze źródłem danych ustawionym na **cyfrowe sznurki zmiany** i IoT Hub wysyłać komunikaty za każdym razem, gdy [Właściwość](../iot-pnp/iot-plug-and-play-glossary.md) dwuosiowa jest ustawiona lub zmieniana, [dwuosiowa cyfra ](../iot-pnp/iot-plug-and-play-glossary.md)jest zastępowana lub gdy występuje zdarzenie zmiany w odniesieniu do podstawowego sznurka urządzenia.
+Oprócz danych telemetrycznych urządzenia Routing komunikatów umożliwia również wysyłanie zdarzeń zmiany sznurka urządzenia, zdarzeń cyklu życia urządzenia i cyfrowych dróg zmiany (w publicznej wersji zapoznawczej). Na przykład jeśli zostanie utworzona trasa ze źródłem danych ustawionym na **zdarzenia zmiany sznurka urządzenia**, IoT Hub wysyła komunikaty do punktu końcowego, który zawiera zmiany w bliźniaczych urządzeniach. Podobnie w przypadku utworzenia trasy ze źródłem danych ustawionym na **zdarzenia cyklu życia urządzenia**IoT Hub wysyła komunikat informujący o tym, czy urządzenie zostało usunięte lub utworzone. Na koniec w ramach [publicznej wersji zapoznawczej usługi IoT Plug and Play](../iot-pnp/overview-iot-plug-and-play.md)deweloper może utworzyć trasy ze źródłem danych ustawionym na **cyfrowe sznurki zmiany** i IoT Hub wysyłające komunikaty za każdym razem, gdy [Właściwość](../iot-pnp/iot-plug-and-play-glossary.md) pojedynczej dwuosiowej [jest ustawiona](../iot-pnp/iot-plug-and-play-glossary.md) lub zmieniana.
 
 [IoT Hub integruje się również z Azure Event Grid](iot-hub-event-grid.md) , aby publikować zdarzenia urządzeń w celu obsługi integracji w czasie rzeczywistym i automatyzacji przepływów pracy na podstawie tych zdarzeń. Zobacz podstawowe [różnice między routingiem komunikatów i Event Grid](iot-hub-event-grid-routing-comparison.md) , aby dowiedzieć się, co najlepiej sprawdza się w przypadku danego scenariusza.
 

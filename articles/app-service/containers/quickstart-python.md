@@ -6,12 +6,12 @@ ms.date: 10/22/2019
 ms.custom: cli-validate
 experimental: true
 experiment_id: 01a9132f-eaab-4c
-ms.openlocfilehash: 567e87b43c3fc3d7d2fb0c894ced53c89a133978
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 607cc0e5cd8236badfc1e5e591efda20d4fb669b
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524067"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368268"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Szybki Start: Tworzenie aplikacji w języku Python w Azure App Service w systemie Linux
 
@@ -90,7 +90,7 @@ Interfejs wiersza polecenia platformy Azure udostępnia wiele wygodnych poleceń
 
 Aby uruchomić polecenia platformy Azure w interfejsie wiersza polecenia platformy Azure, musisz najpierw zalogować się przy użyciu polecenia `az login`. To polecenie umożliwia otwarcie przeglądarki w celu zebrania poświadczeń.
 
-```terminal
+```azurecli
 az login
 ```
 
@@ -101,7 +101,7 @@ az login
 W folderze *Python-docs-Hello-World* , który zawiera przykładowy kod, uruchom następujące polecenie `az webapp up`. Zastąp `<app-name>` globalnie unikatową nazwą aplikacji (*prawidłowe znaki to `a-z`, `0-9`i `-`* ). Zastąp również `<location-name>` z regionem świadczenia usługi Azure, takim jak **środkowe**, **eastasia**, **westeurope**, **koreasouth**, **brazilsouth**, **centralindia**i tak dalej. (Możesz pobrać listę dozwolonych regionów dla Twojego konta platformy Azure, uruchamiając polecenie [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) ).
 
 
-```terminal
+```azurecli
 az webapp up --sku F1 -n <app-name> -l <location-name>
 ```
 
@@ -157,7 +157,7 @@ Zapisz zmiany i zamknij edytor.
 
 Ponownie Wdróż aplikację przy użyciu następującego polecenia `az webapp up`, używając tego samego polecenia, które zostało użyte do wdrożenia aplikacji po raz pierwszy, zastępując `<app-name>` i `<location-name>` z tymi samymi nazwami, które były używane wcześniej. 
 
-```terminal
+```azurecli
 az webapp up --sku F1 -n <app-name> -l <location-name>
 ```
 
@@ -174,13 +174,13 @@ Można uzyskać dostęp do dzienników konsoli wygenerowanych z wewnątrz aplika
 
 Najpierw Włącz rejestrowanie kontenerów, uruchamiając następujące polecenie w terminalu, zastępując `<app-name>` nazwą aplikacji i `<resource-group-name>` nazwą grupy zasobów pokazaną w danych wyjściowych użytego polecenia `az webapp up` (na przykład "appsvc_rg_Linux_centralus"):
 
-```terminal
+```azurecli
 az webapp log config --name <app-name> --resource-group <resource-group-name> --docker-container-logging filesystem
 ```
 
 Po włączeniu rejestrowania kontenera Uruchom następujące polecenie, aby wyświetlić strumień dziennika:
 
-```terminal
+```azurecli
 az webapp log tail --name <app-name> --resource-group <resource-group-name>
 ```
 
@@ -217,7 +217,7 @@ W poprzednich krokach utworzono zasoby platformy Azure w grupie zasobów. Grupa 
 
 Jeśli nie chcesz potrzebować tych zasobów w przyszłości, Usuń grupę zasobów, uruchamiając następujące polecenie, zastępując `<resource-group-name>` w grupie zasobów pokazanej w danych wyjściowych polecenia `az webapp up`, na przykład "appsvc_rg_Linux_centralus". Wykonanie polecenia może potrwać minutę.
 
-```terminal
+```azurecli
 az group delete -n <resource-group-name>
 ```
 

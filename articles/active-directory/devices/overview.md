@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 594f0ed55b5ce5c31e87fd2011f3bc1522a12380
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378287"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240800"
 ---
 # <a name="what-is-a-device-identity"></a>Co to jest tożsamość urządzenia?
 
@@ -76,7 +76,7 @@ Urządzenia, które są przyłączone do usługi Azure AD lub korzystają z hybr
    - Hasło
    - Windows Hello dla firm
 
-## <a name="provisioning"></a>Inicjowanie obsługi
+## <a name="provisioning"></a>Aprowizacja
 
 Uzyskiwanie urządzeń w usłudze Azure AD może odbywać się w sposób samoobsługowy lub kontrolowany proces aprowizacji przez administratorów.
 

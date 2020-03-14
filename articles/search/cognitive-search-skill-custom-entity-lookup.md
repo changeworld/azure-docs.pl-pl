@@ -8,14 +8,14 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: d5e2813c71e9d6941eea7d11fb6565fb84fd0789
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 8674438032ebd925296c95e9ffa0a2a0b95322f1
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651342"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369781"
 ---
-#    <a name="custom-entity-lookup-cognitive-skill-preview"></a>Umiejętność wyszukiwania jednostek niestandardowych (wersja zapoznawcza)
+#     <a name="custom-entity-lookup-cognitive-skill-preview"></a>Umiejętność wyszukiwania jednostek niestandardowych (wersja zapoznawcza)
 
 > [!IMPORTANT] 
 > Ta umiejętność jest obecnie dostępna w publicznej wersji zapoznawczej. Funkcje wersji zapoznawczej są dostępne bez umowy dotyczącej poziomu usług i nie są zalecane w przypadku obciążeń produkcyjnych. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Obecnie nie ma obsługi portalu lub zestawu SDK platformy .NET.
@@ -38,9 +38,9 @@ W parametrach jest rozróżniana wielkość liter.
 
 | Nazwa parametru     | Opis |
 |--------------------|-------------|
-| entitiesDefinitionUri | Ścieżka do pliku JSON lub CSV zawierającego cały tekst docelowy do dopasowania. Ta definicja jednostki jest odczytywana na początku przebiegu indeksatora; wszystkie aktualizacje tego pliku nie zostaną zrealizowane do momentu kolejnego uruchomienia. Ta konfiguracja musi być dostępna za pośrednictwem protokołu HTTPS. Zobacz Format [definicji jednostki niestandardowej](#custom-entity-definition-format) "poniżej dla oczekiwanego schematu CSV lub JSON.|
+| entitiesDefinitionUri    | Ścieżka do pliku JSON lub CSV zawierającego cały tekst docelowy do dopasowania. Ta definicja jednostki jest odczytywana na początku przebiegu indeksatora; wszystkie aktualizacje tego pliku nie zostaną zrealizowane do momentu kolejnego uruchomienia. Ta konfiguracja musi być dostępna za pośrednictwem protokołu HTTPS. Zobacz Format [definicji jednostki niestandardowej](#custom-entity-definition-format) "poniżej dla oczekiwanego schematu CSV lub JSON.|
 |inlineEntitiesDefinition | Definicje jednostek śródwierszowego elementu JSON. Ten parametr zastępuje parametr entitiesDefinitionUri, jeśli jest obecny. Nie więcej niż 10 KB konfiguracji może być dostarczonych wewnętrznie. Poniżej przedstawiono [definicję jednostki niestandardowej](#custom-entity-definition-format) dla oczekiwanego schematu JSON. |
-|defaultLanguageCode |  Obowiązkowe Kod języka tekstu wejściowego służącego do tokenize i odróżnić tekstu wejściowego. Obsługiwane są następujące języki: `da, de, en, es, fi, fr, it, ko, pt`. Wartość domyślna to angielski (`en`). Jeśli przekażesz format languagecode-CountryCode, zostanie użyta tylko część languagecode formatu.  |
+|defaultLanguageCode |    Obowiązkowe Kod języka tekstu wejściowego służącego do tokenize i odróżnić tekstu wejściowego. Obsługiwane są następujące języki: `da, de, en, es, fi, fr, it, ko, pt`. Wartość domyślna to angielski (`en`). Jeśli przekażesz format languagecode-CountryCode, zostanie użyta tylko część languagecode formatu.  |
 
 
 ## <a name="skill-inputs"></a>Dane wejściowe kwalifikacji
@@ -48,13 +48,13 @@ W parametrach jest rozróżniana wielkość liter.
 | Nazwa wejściowa      | Opis                   |
 |---------------|-------------------------------|
 | tekst          | Tekst do analizy.          |
-| languageCode  | Opcjonalny. Wartość domyślna to `"en"`.  |
+| languageCode    | Opcjonalny. Wartość domyślna to `"en"`.  |
 
 
 ## <a name="skill-outputs"></a>Wyniki umiejętności
 
 
-| Nazwa wyjściowa     | Opis                   |
+| Nazwa wyjściowa      | Opis                   |
 |---------------|-------------------------------|
 | jednostki | Tablica obiektów, która zawiera informacje o znalezionych dopasowaniach i powiązanych metadanych. Każda identyfikowana jednostka może zawierać następujące pola:  <ul> <li> *Nazwa*: zidentyfikowana jednostka najwyższego poziomu. Jednostka reprezentuje formę "znormalizowana". </li> <li> *Identyfikator*: unikatowy identyfikator jednostki zdefiniowanej przez użytkownika w "niestandardowym formacie definicji jednostki".</li> <li> *Opis*: Opis jednostki zdefiniowany przez użytkownika w "niestandardowym formacie definicji jednostki". </li> <li> *Typ:* Typ jednostki zdefiniowany przez użytkownika w "niestandardowym formacie definicji jednostki".</li> <li> *Podtyp:* Podtyp jednostki zdefiniowany przez użytkownika w "niestandardowym formacie definicji jednostki".</li>  <li> *dopasowuje*: Kolekcja opisująca wszystkie dopasowania dla tej jednostki na źródłowym tekście. Każde dopasowanie będzie miało następujące elementy członkowskie: </li> <ul> <li> *tekst*: pierwotny tekst jest zgodny z dokumentem źródłowym. </li> <li> *przesunięcie*: lokalizacja, w której znaleziono dopasowanie w tekście. </li> <li> *Długość*: długość dopasowanego tekstu. </li> <li> *matchDistance*: liczba znaków, które różnią się od nazwy lub aliasu oryginalnej jednostki.  </li> </ul> </ul>
   |
@@ -168,7 +168,7 @@ Poniższe tabele zawierają więcej szczegółów na temat różnych parametrów
 W niektórych przypadkach może być wygodniejsze udostępnienie listy jednostek niestandardowych do dopasowania bezpośrednio do definicji umiejętności. W takim przypadku można użyć podobnego formatu JSON do opisanego powyżej, ale jest on zawarty w definicji umiejętności.
 W tekście można zdefiniować tylko konfiguracje o rozmiarze mniejszym niż 10 KB (rozmiar serializowany). 
 
-##  <a name="sample-definition"></a>Definicja Przykładowa
+##    <a name="sample-definition"></a>Definicja Przykładowa
 
 Poniżej przedstawiono przykładową definicję umiejętności korzystającą z formatu śródwierszowego:
 
@@ -231,7 +231,7 @@ Alternatywnie, jeśli zdecydujesz się dostarczyć wskaźnik do pliku definicji 
 
 ```
 
-##  <a name="sample-input"></a>Przykładowe dane wejściowe
+##    <a name="sample-input"></a>Przykładowe dane wejściowe
 
 ```json
 {
@@ -248,7 +248,7 @@ Alternatywnie, jeśli zdecydujesz się dostarczyć wskaźnik do pliku definicji 
 }
 ```
 
-##  <a name="sample-output"></a>Przykładowe dane wyjściowe
+##    <a name="sample-output"></a>Przykładowe dane wyjściowe
 
 ```json
   { 
@@ -295,6 +295,12 @@ Alternatywnie, jeśli zdecydujesz się dostarczyć wskaźnik do pliku definicji 
     ] 
   } 
 ```
+
+## <a name="errors-and-warnings"></a>Błędy i ostrzeżenia
+
+### <a name="warning-reached-maximum-capacity-for-matches-skipping-all-further-duplicate-matches"></a>Ostrzeżenie: osiągnięto maksymalną pojemność dla dopasowań, pomija wszystkie dalsze zduplikowane dopasowania.
+
+To ostrzeżenie będzie emitowane, jeśli liczba wykrytych dopasowań jest większa niż maksymalna dozwolona wartość. W takim przypadku będziemy przestać uwzględniać zduplikowane dopasowania. Jeśli nie możesz tego zrobić, Utwórz [bilet pomocy technicznej](https://ms.portal.azure.com/#create/Microsoft.Support) , aby mogliśmy pomóc Ci w poszczególnym przypadku użycia.
 
 ## <a name="see-also"></a>Zobacz też
 

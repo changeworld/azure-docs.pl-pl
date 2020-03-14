@@ -9,11 +9,11 @@ ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/26/2019
 ms.openlocfilehash: 083ed0001adb5524c124295eb3bc31f4afad99cf
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78899271"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270331"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Tworzenie kont integracji dla integracji z przedsiębiorstwem B2B i zarządzanie nimi w Azure Logic Apps
 
@@ -55,13 +55,13 @@ W przypadku tego zadania można użyć Azure Portal, wykonując kroki opisane w 
 
    ![Podaj szczegóły konta integracji](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-details.png)
 
-   | Właściwość | Wymagany | Wartość | Opis |
+   | Właściwość | Wymagane | Wartość | Opis |
    |----------|----------|-------|-------------|
-   | **Nazwa** | Yes | <*integrację — nazwa konta*> | Nazwa konta integracji, która może zawierać tylko litery, cyfry, łączniki (`-`), podkreślenia (`_`), nawiasy (`(`, `)`) i kropki (`.`). W tym przykładzie zastosowano "Fabrikam-Integration". |
-   | **Subskrypcja** | Yes | <*Azure-subscription-name*> | Nazwa subskrypcji platformy Azure |
-   | **Grupa zasobów** | Yes | <*Azure-Resource-Group-name*> | Nazwa [grupy zasobów platformy Azure](../azure-resource-manager/management/overview.md) , która ma być używana do organizowania powiązanych zasobów. W tym przykładzie Utwórz nową grupę zasobów o nazwie "FabrikamIntegration-RG". |
-   | **Warstwa cenowa** | Yes | <> *poziomu cen* | Warstwa cenowa konta integracji, którą można później zmienić. Na potrzeby tego przykładu wybierz pozycję **Free**. Aby uzyskać więcej informacji zobacz następujące tematy: <p>[model cen Logic Apps](../logic-apps/logic-apps-pricing.md#integration-accounts) -  <p>- [Logic Apps limitów i konfiguracji](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>[cennik Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/) -  |
-   | **Lokalizacja** | Yes | <> *platformy Azure* | Region, w którym przechowywane są metadane konta integracji. Wybierz tę samą lokalizację, w której znajduje się aplikacja logiki, lub Utwórz Aplikacje logiki w tej samej lokalizacji co konto integracji. Na potrzeby tego przykładu Użyj "zachodnie stany USA". <p>**Uwaga**: Aby utworzyć konto integracji w [środowisku usługi integracji (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), wybierz tę ISE jako lokalizację. Aby uzyskać więcej informacji, zobacz [Tworzenie kont integracji w ISE](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment). |
+   | **Nazwa** | Tak | <*integrację — nazwa konta*> | Nazwa konta integracji, która może zawierać tylko litery, cyfry, łączniki (`-`), podkreślenia (`_`), nawiasy (`(`, `)`) i kropki (`.`). W tym przykładzie zastosowano "Fabrikam-Integration". |
+   | **Subskrypcja** | Tak | <*Azure-subscription-name*> | Nazwa subskrypcji platformy Azure |
+   | **Grupa zasobów** | Tak | <*Azure-Resource-Group-name*> | Nazwa [grupy zasobów platformy Azure](../azure-resource-manager/management/overview.md) , która ma być używana do organizowania powiązanych zasobów. W tym przykładzie Utwórz nową grupę zasobów o nazwie "FabrikamIntegration-RG". |
+   | **Warstwa cenowa** | Tak | <> *poziomu cen* | Warstwa cenowa konta integracji, którą można później zmienić. Na potrzeby tego przykładu wybierz pozycję **Free**. Aby uzyskać więcej informacji zobacz następujące tematy: <p>[model cen Logic Apps](../logic-apps/logic-apps-pricing.md#integration-accounts) -  <p>- [Logic Apps limitów i konfiguracji](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>[cennik Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/) -  |
+   | **Lokalizacja** | Tak | <> *platformy Azure* | Region, w którym przechowywane są metadane konta integracji. Wybierz tę samą lokalizację, w której znajduje się aplikacja logiki, lub Utwórz Aplikacje logiki w tej samej lokalizacji co konto integracji. Na potrzeby tego przykładu Użyj "zachodnie stany USA". <p>**Uwaga**: Aby utworzyć konto integracji w [środowisku usługi integracji (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), wybierz tę ISE jako lokalizację. Aby uzyskać więcej informacji, zobacz [Tworzenie kont integracji w ISE](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment). |
    | **Log Analytics** | Nie | Wyłączone, włączone | Pozostaw ustawienie **off** dla tego przykładu. |
    |||||
 

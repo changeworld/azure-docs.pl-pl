@@ -1,5 +1,6 @@
 ---
 title: Co to jest Azure Virtual Network translator adresów sieciowych?
+titlesuffix: Azure Virtual Network
 description: Omówienie funkcji Virtual Network translatora adresów sieciowych, zasobów, architektury i implementacji. Dowiedz się, jak działa usługa NAT Virtual Network i jak używać zasobów bramy translatora adresów sieciowych w chmurze.
 services: virtual-network
 documentationcenter: na
@@ -13,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2020
 ms.author: allensu
-ms.openlocfilehash: 205826a6ad952383582f5a8086cbd8b85dbc3794
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: d8ecabab596612b443f1eb0a50fd550fdc474c43
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359253"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370818"
 ---
-# <a name="what-is-virtual-network-nat-public-preview"></a>Co to jest Virtual Network translator adresów sieciowych (publiczna wersja zapoznawcza)?
+# <a name="what-is-virtual-network-nat"></a>Co to jest Virtual Network translator adresów sieciowych?
 
 Virtual Network NAT (translator adresów sieciowych) upraszcza połączenia z Internetem tylko w ruchu wychodzącym dla sieci wirtualnych. W przypadku skonfigurowania w podsieci wszystkie połączenia wychodzące korzystają z określonych statycznych publicznych adresów IP.  Łączność wychodząca jest możliwa bez usługi równoważenia obciążenia lub publicznych adresów IP podłączonych bezpośrednio do maszyn wirtualnych. Translator adresów sieciowych jest w pełni zarządzany i wysoce odporny.
 
@@ -36,10 +37,6 @@ Virtual Network NAT (translator adresów sieciowych) upraszcza połączenia z In
 
 
 *Rysunek: Virtual Network translator adresów sieciowych*
-
-
->[!NOTE] 
->Virtual Network translator adresów sieciowych jest w tej chwili dostępny jako publiczna wersja zapoznawcza. Jest ono obecnie dostępne tylko w ograniczonym zestawie [regionów](#region-availability). Ta wersja zapoznawcza jest świadczona bez umowy dotyczącej poziomu usług i nie jest zalecana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
 
 ## <a name="static-ip-addresses-for-outbound-only"></a>Statyczne adresy IP tylko dla ruchu wychodzącego
 
@@ -125,48 +122,6 @@ Można monitorować operacje NAT za pomocą wielowymiarowych metryk uwidoczniony
 
 Przy ogólnej dostępności ścieżka danych NAT jest dostępna co najmniej 99,9%.
 
-## <a name = "region-availability"></a>Dostępność regionów
-
-Translator adresów sieciowych jest obecnie dostępny w następujących regionach:
-
-- Europa Zachodnia
-- Japonia Wschodnia
-- Wschodnie stany USA 2
-- Zachodnie stany USA
-- Zachodnie stany USA 2
-- Zachodnio-środkowe stany USA
-
-## <a name = "enable-preview"></a>Udział w publicznej wersji zapoznawczej
-
-Subskrypcje muszą być zarejestrowane, aby zezwolić na uczestnictwo w publicznej wersji zapoznawczej.  Uczestnictwo wymaga dwuetapowego procesu i instrukcje są podane poniżej dla interfejsu wiersza polecenia platformy Azure i Azure PowerShell.  Aktywacja może potrwać kilka minut.
-
-### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
-
-1. Zarejestruj subskrypcję publicznej wersji zapoznawczej
-
-    ```azurecli-interactive
-      az feature register --namespace Microsoft.Network --name AllowNatGateway
-    ```
-
-2. Aktywuj rejestrację
-
-    ```azurecli-interactive
-      az provider register --namespace Microsoft.Network
-    ```
-
-### <a name="azure-powershell"></a>Azure PowerShell
-
-1. Zarejestruj subskrypcję publicznej wersji zapoznawczej
-
-    ```azurepowershell-interactive
-      Register-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowNatGateway
-    ```
-
-2. Aktywuj rejestrację
-
-    ```azurepowershell-interactive
-      Register-AzResourceProvider -ProviderNamespace Microsoft.Network
-    ```
 
 ## <a name="pricing"></a>Ceny
 
@@ -180,7 +135,9 @@ Brama translatora adresów sieciowych jest rozliczana przy użyciu dwóch oddzie
 Godziny zasobów dla czasu trwania, w którym znajduje się zasób bramy translatora adresów sieciowych.
 Przetworzone dane kont dla całego ruchu przetworzonego przez zasób bramy translatora adresów sieciowych.
 
-W publicznej wersji zapoznawczej Cennik ma rabat w wysokości 50%.
+## <a name="availability"></a>Dostępność
+
+Virtual Network translator adresów sieciowych i zasób bramy NAT są dostępne we wszystkich [regionach](https://azure.microsoft.com/global-infrastructure/regions/)chmury publicznej platformy Azure.
 
 ## <a name="support"></a>Pomoc techniczna
 
@@ -188,11 +145,12 @@ Translator adresów sieciowych jest obsługiwany za pomocą zwykłych kanałów 
 
 ## <a name="feedback"></a>Opinia
 
-Chcemy wiedzieć, jak możemy ulepszyć usługę. Udostępnij nam swoją [opinię na temat publicznej wersji zapoznawczej](https://aka.ms/natfeedback) .  Możesz zaproponować i zagłosować, co będziemy kompilować dalej w usłudze [UserVoice dla translatora adresów sieciowych](https://aka.ms/natuservoice).
+Chcemy wiedzieć, jak możemy ulepszyć usługę. Zaproponuj i zagłosuj na to, co będziemy kompilować dalej w usłudze [UserVoice dla translatora adresów sieciowych](https://aka.ms/natuservoice).
+
 
 ## <a name="limitations"></a>Ograniczenia
 
-* Translator adresów sieciowych jest zgodny z publicznym adresem IP jednostki SKU, publicznym prefiksem adresu IP i zasobami modułu równoważenia obciążenia.   Zasoby podstawowe (na przykład podstawowa usługa równoważenia obciążenia) i wszelkie produkty pochodzące z nich nie są zgodne z translatorem adresów sieciowych.  Zasoby podstawowe muszą być umieszczone w podsieci, która nie jest skonfigurowana przy użyciu translatora adresów sieciowych.
+* Translator adresów sieciowych jest zgodny z publicznym adresem IP jednostki SKU, publicznym prefiksem adresu IP i zasobami modułu równoważenia obciążenia. Zasoby podstawowe, takie jak podstawowa usługa równoważenia obciążenia, i wszelkie produkty pochodzące z nich nie są zgodne z translatorem adresów sieciowych.  Zasoby podstawowe muszą być umieszczone w podsieci, która nie jest skonfigurowana przy użyciu translatora adresów sieciowych.
 * Rodzina adresów IPv4 jest obsługiwana.  Translator adresów sieciowych nie współdziała z rodziną adresów IPv6.  Nie można wdrożyć translatora adresów sieciowych w podsieci z prefiksem IPv6.
 * Rejestrowanie przepływu sieciowej grupy zabezpieczeń nie jest obsługiwane w przypadku korzystania z translatora adresów sieciowych.
 * Translator adresów sieciowych nie może obejmować wielu sieci wirtualnych.
@@ -201,4 +159,4 @@ Chcemy wiedzieć, jak możemy ulepszyć usługę. Udostępnij nam swoją [opini�
 
 * Dowiedz się więcej o [zasobach bramy translatora adresów sieciowych](./nat-gateway-resource.md).
 * [Powiedz nam, co należy utworzyć obok Virtual Network translatora adresów sieciowych w usłudze UserVoice](https://aka.ms/natuservoice).
-* [Prześlij opinię na temat publicznej wersji zapoznawczej](https://aka.ms/natfeedback).
+

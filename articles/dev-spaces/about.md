@@ -7,11 +7,11 @@ description: Dowiedz się, jak Azure Dev Spaces zapewnia szybkie, iteracyjne śr
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, polecenia kubectl, k8s
 manager: gwallace
 ms.openlocfilehash: 586b19070ec36517add21f7aac86ddf15121be2d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393618"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240702"
 ---
 # <a name="introduction-to-azure-dev-spaces"></a>Wprowadzenie do Azure Dev Spaces
 

@@ -4,14 +4,14 @@ description: Dowiedz się, jak używać Azure Portal lub interfejsu wiersza pole
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 02/16/2020
+ms.date: 03/13/2020
 ms.subservice: alerts
-ms.openlocfilehash: 5452f67a9da9a71a72c9387bc3e62d6735929984
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: cefccd08ea66638f08f00e280fe2704444a7f916
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79249011"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369390"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Twórz i wyświetlaj alerty metryk i zarządzaj nimi za pomocą Azure Monitor
 
@@ -136,7 +136,7 @@ Poprzednie sekcje opisują sposób tworzenia i wyświetlania reguł alertów dot
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Tworzenie alertów metryk przy użyciu szablonów Azure Resource Manager](../../azure-monitor/platform/alerts-enable-template.md).
+- [Tworzenie alertów metryk przy użyciu szablonów Azure Resource Manager](../../azure-monitor/platform/alerts-metric-create-templates.md).
 - [Informacje o działaniu alertów dotyczących metryk](alerts-metric-overview.md).
 - [Informacje o tym, jak działają Alerty metryczne z warunkiem progów dynamicznych](alerts-dynamic-thresholds.md).
 - [Informacje o schemacie elementu webhook dla alertów dotyczących metryk](../../azure-monitor/platform/alerts-metric-near-real-time.md#payload-schema)

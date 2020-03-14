@@ -4,11 +4,11 @@ description: Jak interpretować wykresy w Eksploratorze metryk oraz jak dostosow
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.openlocfilehash: f85a8fe79e7f4f820d7c0e5b942730305e892095
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78368269"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79275895"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>Eksplorowanie metryk w Application Insights
 Metryki w [Application Insights][start] są mierzonymi wartościami i liczbami zdarzeń wysyłanych w ramach telemetrii z aplikacji. Pomagają wykrywać problemy z wydajnością i obserwować trendy w sposobie używania aplikacji. Istnieje szeroki zakres metryk standardowych i można również utworzyć własne, niestandardowe metryki i zdarzenia.
@@ -24,7 +24,7 @@ Oto przykładowy zestaw wykresów:
 
 Wykresy metryk znajdziesz wszędzie w portalu Application Insights. W większości przypadków można je dostosować i dodać więcej wykresów do bloku. W bloku przegląd kliknij pozycję przez, aby wyświetlić bardziej szczegółowe wykresy (które mają tytuły takie jak "serwery"), lub kliknij przycisk **Eksplorator metryk** , aby otworzyć nowy blok, w którym można utworzyć wykresy niestandardowe.
 
-## <a name="time-range"></a>Przedział czasu
+## <a name="time-range"></a>Zakres czasu
 Można zmienić zakres czasu obejmujący wykresy lub siatki w dowolnym bloku.
 
 ![Otwórz blok przegląd aplikacji w Azure Portal](./media/metrics-explorer/03-range.png)
@@ -189,7 +189,7 @@ Na wykresie metryki możesz kliknąć ikonę analiza, aby przejść bezpośredni
 * W przypadku grupowania wykresu według właściwości, która nie jest zdefiniowana w metryce, na wykresie nie będzie niczego. Spróbuj wyczyścić polecenie "Grupuj według" lub wybierz inną właściwość grupowania.
 * Dane wydajności (procesor CPU, szybkość operacji we/wy itd.) są dostępne dla usług sieci Web Java, aplikacji klasycznych systemu Windows, [aplikacji sieci Web i usług IIS, jeśli jest instalowany Monitor stanu](../../azure-monitor/app/monitor-performance-live-website-now.md)i [usługa Azure Cloud Services](../../azure-monitor/app/app-insights-overview.md). Nie jest ona dostępna dla usługi Azure Websites.
 
-## <a name="video"></a>Połączenia wideo
+## <a name="video"></a>Wideo
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 

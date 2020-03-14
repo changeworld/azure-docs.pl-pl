@@ -4,11 +4,11 @@ description: Wstaw kilka wierszy kodu z urządzenia lub aplikacji klasycznej, st
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.openlocfilehash: 74736966013581296483d1444f4ab2b8a35bbd98
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77666500"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276363"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API dla niestandardowych zdarzeń i metryk
 
@@ -18,7 +18,7 @@ Wstaw kilka wierszy kodu w aplikacji, aby dowiedzieć się, co użytkownicy robi
 
 Podstawowy interfejs API jest jednolity na wszystkich platformach, z wyjątkiem kilku odmian, takich jak `GetMetric`(tylko platforma .NET).
 
-| Metoda | Używana do |
+| Metoda | Służy do |
 | --- | --- |
 | [`TrackPageView`](#page-views) |Strony, ekrany, bloki lub formularze. |
 | [`TrackEvent`](#trackevent) |Akcje użytkownika i inne zdarzenia. Służy do śledzenia zachowania użytkownika lub do monitorowania wydajności. |

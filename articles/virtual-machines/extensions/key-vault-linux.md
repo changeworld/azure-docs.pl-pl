@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 8fa8ca50a8d8cae7543c6aacb84fa57bc2f9c3a4
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: a4fb3ad2ce6225528910bbda9d98a38001242710
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78945218"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298992"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Key Vault rozszerzenie maszyny wirtualnej dla systemu Linux
 
@@ -27,6 +27,10 @@ Rozszerzenie maszyny wirtualnej Key Vault obsługuje te dystrybucje systemu Linu
 - Ubuntu-1804
 - Debian-9
 - SUSE-15 
+
+### <a name="supported-certificate-content-types"></a>Obsługiwane typy zawartości certyfikatów
+
+- #12 PKCS
 
 ## <a name="extension-schema"></a>Schemat rozszerzenia
 
@@ -71,13 +75,13 @@ Poniższy kod JSON przedstawia schemat rozszerzenia maszyny wirtualnej Key Vault
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | publisher | Microsoft.Azure.KeyVault | ciąg |
-| type | KeyVaultForLinux | ciąg |
+| typ | KeyVaultForLinux | ciąg |
 | typeHandlerVersion | 1.0 | int |
 | pollingIntervalInS | 3600 | ciąg |
 | certificateStoreName | MY | ciąg |
-| linkOnRenewal | false | wartość logiczna |
+| linkOnRenewal | {1&gt;false&lt;1} | wartość logiczna |
 | certificateStoreLocation  | LocalMachine | ciąg |
-| requiredInitialSync | true | wartość logiczna |
+| requiredInitialSync | {1&gt;true&lt;1} | wartość logiczna |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | Tablica ciągów
 
 

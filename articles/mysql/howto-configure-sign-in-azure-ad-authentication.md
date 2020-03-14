@@ -1,17 +1,17 @@
 ---
-title: Użyj Azure Active Directory-Azure Database for MySQL-pojedynczego serwera
-description: Informacje o sposobie konfigurowania Azure Active Directory (Azure AD) na potrzeby uwierzytelniania przy użyciu jednego serwera Azure Database for MySQL
+title: Użyj Azure Active Directory-Azure Database for MySQL
+description: Dowiedz się więcej na temat konfigurowania Azure Active Directory (Azure AD) do uwierzytelniania za pomocą Azure Database for MySQL
 author: lfittl-msft
 ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: bb3a8c94b377fb9c9150945ec4cf5980e006dd34
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 0403edadd491609c2c88d5b5ac6980d97163f8d6
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110614"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299009"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Używanie Azure Active Directory do uwierzytelniania za pomocą programu MySQL
 
@@ -46,7 +46,7 @@ Po skonfigurowaniu administratora możesz teraz zalogować się:
 
 Poniższy diagram wysokiego poziomu podsumowuje przepływ pracy przy użyciu uwierzytelniania usługi Azure AD z Azure Database for MySQL:
 
-![przepływ uwierzytelniania][1]
+![Przepływ uwierzytelniania][1]
 
 Zaprojektowano integrację usługi Azure AD w celu współpracy z typowymi narzędziami MySQL, takimi jak interfejs wiersza polecenia MySQL, które nie są oparte na usłudze Azure AD i obsługują Określanie nazwy użytkownika i hasła podczas łączenia się z bazą danych MySQL. Token usługi Azure AD jest przekazywany jako hasło, jak pokazano na powyższym rysunku.
 
@@ -205,7 +205,7 @@ Większość sterowników jest obsługiwanych, jednak Pamiętaj, aby użyć usta
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Zapoznaj się z ogólnymi koncepcjami [uwierzytelniania Azure Active Directory za pomocą jednego serwera Azure Database for MySQL](concepts-azure-ad-authentication.md)
+* Zapoznaj się z ogólnymi pojęciami dotyczącymi [uwierzytelniania Azure Active Directory przy użyciu Azure Database for MySQL](concepts-azure-ad-authentication.md)
 
 <!--Image references-->
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5527b96ddf6ccebb60ca8130e48f6aae87a3f715
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 42362a170f493afd51a5d4ee139620ad25b54e79
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246545"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367367"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Podrzędne elementy Runbook w Azure Automation
 
@@ -35,13 +35,13 @@ Które typy elementów Runbook mogą być wzajemnie wywoływane?
 
 * [Element Runbook programu PowerShell](automation-runbook-types.md#powershell-runbooks) i [graficzny element Runbook](automation-runbook-types.md#graphical-runbooks) mogą wywoływać siebie nawzajem, ponieważ obie są oparte na programie PowerShell.
 * [Element Runbook przepływu pracy programu PowerShell](automation-runbook-types.md#powershell-workflow-runbooks) i graficzny element Runbook przepływu pracy programu PowerShell mogą wywołać siebie nawzajem, ponieważ oba są oparte na przepływach pracy programu PowerShell.
-* Typy programu PowerShell i typy przepływów pracy programu PowerShell nie mogą wywoływać siebie nawzajem i muszą używać polecenia **Start-AzAutomationRunbook**.
+* Typy programu PowerShell i typy przepływów pracy programu PowerShell nie mogą wywoływać siebie nawzajem i muszą używać `Start-AzAutomationRunbook`.
 
 Kiedy publikuje się zamówienie?
 
 Kolejność publikowania elementów Runbook dotyczy tylko przepływu pracy programu PowerShell i graficznych elementów Runbook przepływu pracy programu PowerShell.
 
-Gdy element Runbook wywoła graficzny lub podrzędny element Runbook przepływu pracy programu PowerShell przy użyciu wykonywania wbudowanego, używa nazwy elementu Runbook. Nazwa musi zaczynać się od **.\\** , aby określić, że skrypt znajduje się w katalogu lokalnym.
+Gdy element Runbook wywoła graficzny lub podrzędny element Runbook przepływu pracy programu PowerShell przy użyciu wykonywania wbudowanego, używa nazwy elementu Runbook. Nazwa musi zaczynać się od `.\\`, aby określić, że skrypt znajduje się w katalogu lokalnym.
 
 ### <a name="example"></a>Przykład
 
@@ -62,15 +62,15 @@ $output = .\PS-ChildRunbook.ps1 –VM $vm –RepeatCount 2 –Restart $true
 ## <a name="starting-a-child-runbook-using-a-cmdlet"></a>Uruchamianie podrzędnego elementu Runbook za pomocą polecenia cmdlet
 
 > [!IMPORTANT]
-> Jeśli element Runbook wywołuje podrzędny element Runbook za pomocą polecenia cmdlet **Start-AzAutomationRunbook** z parametrem *wait* , a podrzędny element Runbook generuje wynik obiektu, może wystąpić błąd. Aby obejść ten błąd, zobacz [podrzędne elementy Runbook z danymi wyjściowymi obiektów](troubleshoot/runbooks.md#child-runbook-object) , aby dowiedzieć się, jak wdrożyć logikę w celu sondowania wyników przy użyciu polecenia cmdlet [Get-AzAutomationJobOutputRecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) .
+> Jeśli element Runbook wywoła podrzędny element Runbook za pomocą polecenia cmdlet `Start-AzAutomationRunbook` z parametrem `Wait` i podrzędny element Runbook generuje wynik obiektu, może wystąpić błąd. Aby obejść ten błąd, zobacz [podrzędne elementy Runbook z danymi wyjściowymi obiektów](troubleshoot/runbooks.md#child-runbook-object) , aby dowiedzieć się, jak wdrożyć logikę w celu sondowania wyników przy użyciu polecenia cmdlet [Get-AzAutomationJobOutputRecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) .
 
-Aby uruchomić element Runbook w programie [Windows PowerShell](start-runbooks.md#start-a-runbook-with-powershell), można użyć polecenia **Start-AzAutomationRunbook** . Istnieją dwa tryby użycia tego polecenia cmdlet. W jednym trybie polecenie cmdlet zwraca identyfikator zadania, gdy zadanie jest tworzone dla podrzędnego elementu Runbook. W innym trybie, który skrypt włącza, określając parametr *wait* , polecenie cmdlet czeka do momentu zakończenia zadania podrzędnego i zwraca dane wyjściowe z podrzędnego elementu Runbook.
+Za pomocą `Start-AzAutomationRunbook` można uruchomić element Runbook, zgodnie z opisem w artykule [Aby uruchomić element Runbook za pomocą programu Windows PowerShell](start-runbooks.md#start-a-runbook-with-powershell). Istnieją dwa tryby użycia tego polecenia cmdlet. W jednym trybie polecenie cmdlet zwraca identyfikator zadania, gdy zadanie jest tworzone dla podrzędnego elementu Runbook. W innym trybie, który skrypt włącza, określając parametr *wait* , polecenie cmdlet czeka do momentu zakończenia zadania podrzędnego i zwraca dane wyjściowe z podrzędnego elementu Runbook.
 
 Zadanie z podrzędnego elementu Runbook uruchomionego za pomocą polecenia cmdlet jest uruchamiane niezależnie od zadania nadrzędnego elementu Runbook. To zachowanie skutkuje większymi zadaniami niż Uruchamianie elementu Runbook w tekście i sprawia, że zadania są trudniejsze do śledzenia. Element nadrzędny może uruchomić więcej niż jeden podrzędny element Runbook, asynchronicznie bez oczekiwania na ukończenie każdego z nich. W przypadku tego wykonywania równoległego wywoływanie podrzędnych elementów Runbook, nadrzędny element Runbook musi używać [słowa kluczowego Parallel](automation-powershell-workflow.md#parallel-processing).
 
-Podrzędne dane wyjściowe elementu Runbook nie są w sposób wiarygodny zwracane do nadrzędnego elementu Runbook z powodu chronometrażu. Ponadto zmienne, takie jak *$VerbosePreference*, *$WarningPreference*i inne, mogą nie być propagowane do podrzędnych elementów Runbook. Aby uniknąć tych problemów, można uruchomić podrzędne elementy Runbook jako oddzielne zadania automatyzacji za pomocą polecenia **Start-AzAutomationRunbook** z parametrem *wait* . Ta technika blokuje nadrzędny element Runbook do momentu ukończenia podrzędnego elementu Runbook.
+Podrzędne dane wyjściowe elementu Runbook nie są w sposób wiarygodny zwracane do nadrzędnego elementu Runbook z powodu chronometrażu. Ponadto zmienne, takie jak `$VerbosePreference`, `$WarningPreference`i inne, mogą nie być propagowane do podrzędnych elementów Runbook. Aby uniknąć tych problemów, można uruchomić podrzędne elementy Runbook jako oddzielne zadania automatyzacji przy użyciu `Start-AzAutomationRunbook` z parametrem `Wait`. Ta technika blokuje nadrzędny element Runbook do momentu ukończenia podrzędnego elementu Runbook.
 
-Jeśli nie chcesz, aby nadrzędny element Runbook był blokowany podczas oczekiwania, możesz uruchomić podrzędny element Runbook za pomocą polecenia **Start-AzAutomationRunbook** bez parametru *oczekiwania* . W takim przypadku element Runbook musi używać [Get-AzAutomationJob](/powershell/module/az.automation/get-azautomationjob) , aby oczekiwać na ukończenie zadania. Do pobrania wyników należy również użyć [Get-AzAutomationJobOutput](/powershell/module/az.automation/get-azautomationjoboutput) i [Get-AzAutomationJobOutputRecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) .
+Jeśli nie chcesz, aby nadrzędny element Runbook był blokowany podczas oczekiwania, możesz uruchomić podrzędny element Runbook przy użyciu `Start-AzAutomationRunbook` bez parametru `Wait`. W takim przypadku element Runbook musi używać [Get-AzAutomationJob](/powershell/module/az.automation/get-azautomationjob) , aby oczekiwać na ukończenie zadania. Do pobrania wyników należy również użyć [Get-AzAutomationJobOutput](/powershell/module/az.automation/get-azautomationjoboutput) i [Get-AzAutomationJobOutputRecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) .
 
 Parametry podrzędnego elementu Runbook uruchomionego za pomocą polecenia cmdlet są podane jako tablica skrótów, zgodnie z opisem w [parametrach elementu Runbook](start-runbooks.md#runbook-parameters). Można używać tylko prostych typów danych. Jeśli element runbook ma parametr o złożonym typie danych, następnie go musi być wywoływany śródwierszowo.
 
@@ -80,7 +80,7 @@ Jeśli zadania w ramach tego samego konta usługi Automation działają z więce
 
 ### <a name="example"></a>Przykład
 
-Poniższy przykład uruchamia podrzędny element Runbook z parametrami, a następnie czeka na jego ukończenie przy użyciu polecenia cmdlet **Start-AzAutomationRunbook** z parametrem *wait* . Po zakończeniu przykład zbiera dane wyjściowe poleceń cmdlet z podrzędnego elementu Runbook. Aby użyć **Start-AzAutomationRunbook**, skrypt musi być uwierzytelniany w ramach subskrypcji platformy Azure.
+Poniższy przykład uruchamia podrzędny element Runbook z parametrami, a następnie czeka na jego ukończenie przy użyciu polecenia cmdlet `Start-AzAutomationRunbook` z parametrem `Wait`. Po zakończeniu przykład zbiera dane wyjściowe poleceń cmdlet z podrzędnego elementu Runbook. Aby użyć `Start-AzAutomationRunbook`, skrypt musi być uwierzytelniany w ramach subskrypcji platformy Azure.
 
 ```azurepowershell-interactive
 # Ensure that the runbook does not inherit an AzContext

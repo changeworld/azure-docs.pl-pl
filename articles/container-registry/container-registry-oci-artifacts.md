@@ -4,14 +4,14 @@ description: Wypychanie i ściąganie artefaktów Open Container Initiative (OCI
 author: SteveLasker
 manager: gwallace
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 03/11/2020
 ms.author: stevelas
-ms.openlocfilehash: cb58a7ed51ae15d33ffdbb616c9b32ef03bcbfb7
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 2c6b66b635a2513ccc19e0352414d18d8389fef1
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456261"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371056"
 ---
 # <a name="push-and-pull-an-oci-artifact-using-an-azure-container-registry"></a>Wypychanie i ściąganie artefaktu OCI przy użyciu usługi Azure Container Registry
 
@@ -66,10 +66,20 @@ echo "Here is an artifact!" > artifact.txt
 
 Użyj polecenia `oras push`, aby wypchnąć ten plik tekstowy do rejestru. Poniższy przykład wypychanie przykładowego pliku tekstowego do repozytorium `samples/artifact`. Rejestr jest identyfikowany za pomocą w pełni kwalifikowanej nazwy rejestru *myregistry.azurecr.IO* (wszystkie małe litery). Artefakt jest otagowany `1.0`. Artefakt ma niezdefiniowany typ, domyślnie identyfikowany przez ciąg *typu nośnika* po nazwie pliku `artifact.txt`. Zobacz [artefakty OCI](https://github.com/opencontainers/artifacts) dla dodatkowych typów. 
 
+**Linux**
+
 ```bash
 oras push myregistry.azurecr.io/samples/artifact:1.0 \
     --manifest-config /dev/null:application/vnd.unknown.config.v1+json \
     ./artifact.txt:application/vnd.unknown.layer.v1+txt
+```
+
+**Windows**
+
+```cmd
+.\oras.exe push myregistry.azurecr.io/samples/artifact:1.0 ^
+    --manifest-config NUL:application/vnd.unknown.config.v1+json ^
+    .\artifact.txt:application/vnd.unknown.layer.v1+txt
 ```
 
 Dane wyjściowe dla pomyślnego wypychania są podobne do następujących:

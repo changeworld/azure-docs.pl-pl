@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/27/2018
 ms.topic: conceptual
-ms.openlocfilehash: b9808ddc3b61b0055642c5a0f2a82b0dc7553b33
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: e0c48137f5eecc96b6e7b1cbce5f0c683b2a976a
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384857"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367316"
 ---
 # <a name="my-first-powershell-runbook"></a>Mój pierwszy element Runbook programu PowerShell
 
@@ -39,15 +39,18 @@ Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
 Elementy Runbook programu PowerShell mają taki sam cykl życia, możliwości i zarządzanie jak elementy Runbook przepływu pracy programu PowerShell. Istnieją jednak pewne różnice i ograniczenia.
 
-* Elementy Runbook programu PowerShell działają szybko w porównaniu z elementami Runbook przepływu pracy programu PowerShell, ponieważ nie korzystają z kroku kompilacji.
-* Skoroszyty programu PowerShell nie obsługują punktów kontrolnych, które są używane w elementach Runbook przepływu pracy programu PowerShell. Przy użyciu punktów kontrolnych elementy Runbook przepływu pracy programu PowerShell mogą wznowić działanie z dowolnego punktu. Element Runbook programu PowerShell może tylko wznowić operację od początku.
-* Elementy Runbook programu PowerShell umożliwiają wykonywanie poleceń tylko szeregowo. Elementy Runbook przepływu pracy programu PowerShell obsługują zarówno wykonywanie sekwencyjne, jak i równoległe.
-* W przypadku elementu Runbook programu PowerShell wszystko w skrypcie działa w jednym obszarze działania. W elemencie Runbook przepływu pracy programu PowerShell działanie, polecenie lub blok skryptu może mieć własny obszar działania. 
-* Elementy Runbook programu PowerShell mają pewne [różnice syntaktyczne](https://technet.microsoft.com/magazine/dn151046.aspx) w elementach Runbook przepływu pracy programu PowerShell.
+| Charakterystyka  | Elementy Runbook programu PowerShell | Elementy Runbook przepływu pracy programu PowerShell |
+| ------ | ----- | ----- |
+| Szybkość | Uruchamiaj szybko, ponieważ nie korzystają z kroku kompilacji. | Uruchamiaj wolniej. |
+| Punkty kontrolne | Nie obsługują punktów kontrolnych. Element Runbook programu PowerShell może wznowić operację tylko od początku. | Użyj punktów kontrolnych, które umożliwiają skoroszytowi wznowienie operacji z dowolnego punktu. |
+| Wykonywanie polecenia | Obsługa tylko wykonywania szeregowego. | Obsługa wykonywania zarówno sekwencyjnych, jak i równoległych.|
+| Obszarze działania | Pojedynczy obszar działania uruchamia wszystko w skrypcie. | Do działania, polecenia lub bloku skryptu można użyć oddzielnego obszaru. |
+
+Oprócz tych różnic elementy Runbook programu PowerShell mają pewne [różnice syntaktyczne](https://technet.microsoft.com/magazine/dn151046.aspx) w elementach Runbook przepływu pracy programu PowerShell.
 
 ## <a name="step-1---create-runbook"></a>Krok 1. Tworzenie elementu runbook
 
-Na początek utworzysz prosty element runbook służący do wyświetlania tekstu **Witaj, świecie**.
+Zacznij od utworzenia prostego elementu Runbook, który wyświetla tekst `Hello World`.
 
 1. W witrynie Azure Portal otwórz konto usługi Automation.
 2. Wybierz pozycję **elementy Runbook** w obszarze **Automatyzacja procesów** , aby otworzyć listę elementów Runbook.
@@ -74,9 +77,9 @@ Przed opublikowaniem elementu Runbook w celu udostępnienia go w środowisku pro
 2. Kliknij opcję **Uruchom**, aby rozpocząć test. Powinna to być jedyna włączona opcja.
 3. Należy pamiętać, że [zadanie elementu Runbook](automation-runbook-execution.md) jest tworzone i jego stan jest wyświetlany w okienku.
 
-   Zadanie jest uruchamiane jako **kolejkowane**, wskazując, że zadanie oczekuje na dostępność procesu roboczego elementu Runbook w chmurze. Stan zmieni się na **rozpoczęty** , gdy proces roboczy pozyskuje zadanie. Na koniec stan zostanie **uruchomiony** , gdy element Runbook faktycznie zacznie działać.
+   Zadanie jest uruchamiane jako `Queued`, co oznacza, że zadanie oczekuje na dostępność procesu roboczego elementu Runbook w chmurze. Stan zmieni się na `Starting`, gdy proces roboczy pozyskuje zadanie. Na koniec stan zmieni się `Running`, gdy element Runbook faktycznie zacznie działać.
 
-4. Po zakończeniu zadania elementu Runbook w okienku test zostaną wyświetlone dane wyjściowe. W tym przypadku zostanie wyświetlony tekst **Witaj, świecie**.
+4. Po zakończeniu zadania elementu Runbook w okienku test zostaną wyświetlone dane wyjściowe. W tym przypadku zobaczysz `Hello World`.
 
    ![Dane wyjściowe w okienku testowania](media/automation-first-runbook-textual-powershell/automation-testpane-output.png)
 
@@ -96,12 +99,12 @@ Utworzony element Runbook jest nadal w trybie wersji roboczej. Aby można było 
 
    ![Podsumowanie zadania](media/automation-first-runbook-textual-powershell/job-pane-status-blade-jobsummary.png)
 
-1. Po **zakończeniu**wyświetlania stanu elementu Runbook kliknij pozycję **dane wyjściowe** , aby otworzyć stronę dane wyjściowe, na której można zobaczyć **Hello World** wyświetlone.
+1. Gdy stan elementu Runbook zostanie wyświetlony `Completed`, kliknij pozycję **dane wyjściowe** , aby otworzyć stronę dane wyjściowe, na której można zobaczyć `Hello World` wyświetlane.
 
    ![Dane wyjściowe zadania](media/automation-first-runbook-textual-powershell/job-pane-status-blade-outputtile.png)
 
 1. Zamknij stronę wyjściową.
-1. Kliknij pozycję **Wszystkie dzienniki**, aby otworzyć okienko strumieni dla zadania elementu Runbook. W strumieniu danych wyjściowych powinien być widoczny tylko **Hello World** .
+1. Kliknij pozycję **Wszystkie dzienniki**, aby otworzyć okienko strumieni dla zadania elementu Runbook. W strumieniu danych wyjściowych powinien być widoczny tylko `Hello World`.
 
     Należy pamiętać, że w okienku strumienie mogą być wyświetlane inne strumienie zadania elementu Runbook, takie jak pełne strumienie i błędy, jeśli element Runbook zapisze w nich.
 
@@ -118,10 +121,10 @@ Utworzony element Runbook jest nadal w trybie wersji roboczej. Aby można było 
 
 Element runbook został przetestowany i opublikowany, ale jak do tej pory nie wykonuje on żadnych użytecznych czynności. Powinien zarządzać zasobami platformy Azure. W tym celu element Runbook musi mieć możliwość uwierzytelniania przy użyciu konta Uruchom jako, które zostało utworzone automatycznie podczas tworzenia konta usługi Automation.
 
-Jak pokazano w poniższym przykładzie, połączenie Uruchom jako jest nawiązywane przy użyciu polecenia cmdlet [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) . Jeśli zarządzasz zasobami w wielu subskrypcjach, musisz użyć parametru *AzContext* wraz z poleceniem [Get-AzContext](https://docs.microsoft.com/powershell/module/Az.Accounts/Get-AzContext?view=azps-3.5.0).
+Jak pokazano w poniższym przykładzie, połączenie Uruchom jako jest nawiązywane przy użyciu polecenia cmdlet [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) . Jeśli zarządzasz zasobami w wielu subskrypcjach, musisz użyć `AzContext` parametru z poleceniem [Get-AzContext](https://docs.microsoft.com/powershell/module/Az.Accounts/Get-AzContext?view=azps-3.5.0).
 
 > [!NOTE]
-> W przypadku elementów Runbook programu PowerShell polecenia **Add-AzAccount** i **Add-AzureRMAccount** są aliasami dla polecenia **Connect-AzAccount**. Możesz użyć tych poleceń cmdlet lub [zaktualizować moduły](automation-update-azure-modules.md) na koncie usługi Automation do najnowszych wersji. Może być konieczne zaktualizowanie modułów, nawet jeśli utworzono nowe konto usługi Automation.
+> Dla elementów Runbook programu PowerShell `Add-AzAccount` i `Add-AzureRMAccount` są aliasami dla `Connect-AzAccount`. Możesz użyć tych poleceń cmdlet lub [zaktualizować moduły](automation-update-azure-modules.md) na koncie usługi Automation do najnowszych wersji. Może być konieczne zaktualizowanie modułów, nawet jeśli utworzono nowe konto usługi Automation.
 
    ```powershell
    # Ensures you do not inherit an AzContext in your runbook
@@ -149,7 +152,7 @@ Jak pokazano w poniższym przykładzie, połączenie Uruchom jako jest nawiązyw
    Get-AzVM -ResourceGroupName myResourceGroup -AzContext $AzureContext
    ```
 1. Otwórz Edytor tekstów, klikając pozycję **Edytuj** na stronie **MyFirstRunbook-PowerShell** .
-1. Nie musisz już mieć wiersza **Write-Output** . Po prostu przejdź dalej i usuń go.
+1. Wiersz `Write-Output` nie jest już potrzebny. Po prostu przejdź dalej i usuń go.
 1. Wpisz lub skopiuj i wklej poniższy kod, który obsługuje uwierzytelnianie przy użyciu konta Uruchom jako usługi Automation.
 
    ```powershell
@@ -181,7 +184,7 @@ Jak pokazano w poniższym przykładzie, połączenie Uruchom jako jest nawiązyw
 
 Teraz, gdy element Runbook jest uwierzytelniany w ramach subskrypcji platformy Azure, możesz zarządzać zasobami. Dodajmy polecenie, aby uruchomić maszynę wirtualną. Możesz wybrać dowolną maszynę wirtualną w ramach subskrypcji platformy Azure i po prostu umieszczaj tę nazwę w elemencie Runbook.
 
-1. Do skryptu elementu Runbook Dodaj polecenie cmdlet [Start-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) , aby uruchomić maszynę wirtualną. Jak pokazano poniżej, polecenie cmdlet uruchamia maszynę wirtualną o nazwie **VMName** i z grupą zasobów o nazwie **ResourceGroupName**.
+1. Do skryptu elementu Runbook Dodaj polecenie cmdlet [Start-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) , aby uruchomić maszynę wirtualną. Jak pokazano poniżej, polecenie cmdlet uruchamia maszynę wirtualną o nazwie `VMName` i z grupą zasobów o nazwie `ResourceGroupName`.
 
    ```powershell
    # Ensures you do not inherit an AzContext in your runbook
@@ -211,7 +214,7 @@ Teraz, gdy element Runbook jest uwierzytelniany w ramach subskrypcji platformy A
 
 Element Runbook aktualnie uruchamia maszynę wirtualną, która stałe w elemencie Runbook. Element Runbook będzie bardziej użyteczny, jeśli zostanie określona maszyna wirtualna, gdy element Runbook zostanie uruchomiony. Dodajmy do elementu Runbook parametry wejściowe w celu zapewnienia tej funkcjonalności.
 
-1. W edytorze tekstu zmodyfikuj polecenie cmdlet **Start-AzVM** , aby użyć zmiennych dla parametrów *VMName* i *ResourceGroupName*. 
+1. W edytorze tekstu zmodyfikuj `Start-AzVM` polecenie cmdlet, aby użyć zmiennych dla parametrów `VMName` i `ResourceGroupName`. 
 
    ```powershell
    Param(

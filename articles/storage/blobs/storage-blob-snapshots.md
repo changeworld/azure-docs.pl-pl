@@ -8,18 +8,20 @@ ms.topic: article
 ms.date: 09/06/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: fb2da8acb0aa4d105f23ab5d1ad42f08a6ae722c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 17cd57fbcf9b1c14fb275a070bdefdd1282c4d6e
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595250"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370529"
 ---
 # <a name="create-and-manage-a-blob-snapshot-in-net"></a>Tworzenie migawki obiektu BLOB w programie .NET i zarządzanie nią
 
-Migawka to wersja obiektu BLOB tylko do odczytu, która jest wykonywana w danym momencie. Migawki są przydatne do tworzenia kopii zapasowych obiektów BLOB. W tym artykule przedstawiono sposób tworzenia migawek obiektów blob i zarządzania nimi przy użyciu [biblioteki klienta usługi Azure Storage dla platformy .NET](/dotnet/api/overview/azure/storage/client).
+Migawka to wersja obiektu BLOB tylko do odczytu, która jest wykonywana w danym momencie. Migawki są przydatne do tworzenia kopii zapasowych obiektów BLOB. W tym artykule przedstawiono sposób tworzenia migawek obiektów blob i zarządzania nimi przy użyciu [biblioteki klienta usługi Azure Storage dla platformy .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet).
 
 ## <a name="about-blob-snapshots"></a>Informacje o migawek obiektów BLOB
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 Migawka obiektu BLOB jest taka sama jak jego podstawowy obiekt BLOB, z tą różnicą, że identyfikator URI obiektu BLOB ma dołączoną wartość **DateTime** do identyfikatora URI obiektu BLOB, aby wskazać godzinę utworzenia migawki. Na przykład jeśli identyfikator URI strony obiektu BLOB jest `http://storagesample.core.blob.windows.net/mydrives/myvhd`, identyfikator URI migawki jest podobny do `http://storagesample.core.blob.windows.net/mydrives/myvhd?snapshot=2011-03-09T01:42:34.9360000Z`.
 

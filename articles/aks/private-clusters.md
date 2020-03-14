@@ -4,100 +4,23 @@ description: Dowiedz się, jak utworzyć prywatny klaster usługi Azure Kubernet
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.openlocfilehash: 0a05bd15fff97d4f0020f6ce82ee90a2fe995edf
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: b8b4f8062d9f60648e22ab4eb0be78eb47159834
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944196"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79205170"
 ---
-# <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Tworzenie prywatnego klastra usługi Azure Kubernetes Service (wersja zapoznawcza)
+# <a name="create-a-private-azure-kubernetes-service-cluster"></a>Tworzenie prywatnego klastra usługi Azure Kubernetes Service
 
 W klastrze prywatnym płaszczyzna kontroli lub serwer interfejsu API ma wewnętrzne adresy IP, które są zdefiniowane w [alokacji RFC1918-Address dla prywatnych Internetu](https://tools.ietf.org/html/rfc1918) dokumentów. Za pomocą klastra prywatnego można zapewnić, że ruch sieciowy między serwerem interfejsu API i pulami węzłów pozostanie tylko w sieci prywatnej.
 
 Płaszczyzna kontroli lub serwer interfejsu API znajduje się w subskrypcji platformy Azure zarządzanej przez usługę Azure Kubernetes Service (AKS). Klaster klienta lub Pula węzłów znajduje się w subskrypcji klienta. Serwer i Pula węzłów mogą komunikować się ze sobą za pomocą [usługi Azure Private link][private-link-service] w sieci wirtualnej serwera interfejsu API i prywatnego punktu końcowego, który jest udostępniany w podsieci klastra AKS klienta.
 
-> [!IMPORTANT]
-> Funkcje w wersji zapoznawczej AKS są samoobsługowe i są oferowane na zasadzie zgody. Wersje zapoznawcze są udostępniane *w postaci* , w jakiej są *dostępne* i są wyłączone z umowy dotyczącej poziomu usług (SLA) i ograniczonej rękojmi. Wersje zapoznawcze AKS są częściowo objęte wsparciem klienta w oparciu o *najlepszą* pracę. W związku z tym funkcje te nie są przeznaczone do użytku produkcyjnego. Aby uzyskać więcej informacji, zobacz następujące artykuły pomocy technicznej:
->
-> * [Zasady pomocy technicznej AKS](support-policies.md)
-> * [Pomoc techniczna platformy Azure — często zadawane pytania](faq.md)
-
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Interfejs wiersza polecenia platformy Azure w wersji 2.0.77 lub nowszej oraz interfejs wiersza polecenia platformy Azure w wersji zapoznawczej 0.4.18
+* Interfejs wiersza polecenia platformy Azure w wersji 2.2.0 lub nowszej
 
-## <a name="currently-supported-regions"></a>Aktualnie obsługiwane regiony
-
-* Australia Wschodnia
-* Australia Południowo-Wschodnia
-* Brazylia Południowa
-* Kanada Środkowa
-* Kanada Wschodnia
-* Cenral nam
-* Azja Wschodnia
-* Wschodnie stany USA
-* Wschodnie stany USA 2
-* Wschodnie stany USA 2 — EUAP
-* Francja Środkowa
-* Niemcy Północne
-* Japonia Wschodnia
-* Japonia Zachodnia
-* Korea Środkowa
-* Korea Południowa
-* Północno-środkowe stany USA
-* Europa Północna
-* Europa Północna
-* Południowo-środkowe stany USA
-* Południowe Zjednoczone Królestwo
-* Europa Zachodnia
-* Zachodnie stany USA
-* Zachodnie stany USA 2
-* Wschodnie stany USA 2
-
-## <a name="currently-supported-availability-zones"></a>Aktualnie obsługiwane Strefy dostępności
-
-* Środkowe stany USA
-* Wschodnie stany USA
-* Wschodnie stany USA 2
-* Francja Środkowa
-* Japonia Wschodnia
-* Europa Północna
-* Azja Południowo-Wschodnia
-* Południowe Zjednoczone Królestwo
-* Europa Zachodnia
-* Zachodnie stany USA 2
-
-## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>Zainstaluj najnowsze rozszerzenie AKS w wersji zapoznawczej interfejsu wiersza polecenia platformy Azure
-
-Aby można było korzystać z klastrów prywatnych, wymagany jest interfejs wiersza polecenia platformy Azure AKS w wersji zapoznawczej 0.4.18 lub nowszej. Zainstaluj rozszerzenie AKS interfejsu wiersza polecenia platformy Azure w wersji zapoznawczej za pomocą poleceń [AZ Extension Add][az-extension-add] , a następnie sprawdź, czy są dostępne aktualizacje przy użyciu następującego polecenia [AZ Extension Update][az-extension-update] :
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
-> [!CAUTION]
-> Po zarejestrowaniu funkcji w ramach subskrypcji nie można obecnie wyrejestrować tej funkcji. Po włączeniu niektórych funkcji w wersji zapoznawczej można użyć ustawień domyślnych dla wszystkich klastrów AKS utworzonych w ramach subskrypcji. Nie włączaj funkcji w wersji zapoznawczej w ramach subskrypcji produkcyjnych. Korzystaj z oddzielnej subskrypcji, aby testować funkcje w wersji zapoznawczej i zbierać opinie.
-
-```azurecli-interactive
-az feature register --name AKSPrivateLinkPreview --namespace Microsoft.ContainerService
-```
-
-Wyświetlanie stanu rejestracji może potrwać kilka *minut.* Stan można sprawdzić za pomocą następującego polecenia [AZ Feature list][az-feature-list] :
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSPrivateLinkPreview')].{Name:name,State:properties.state}"
-```
-
-Po zarejestrowaniu stanu Odśwież rejestrację dostawcy zasobów *Microsoft. ContainerService* za pomocą następującego polecenia [AZ Provider Register][az-provider-register] :
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-az provider register --namespace Microsoft.Network
-```
 ## <a name="create-a-private-aks-cluster"></a>Tworzenie prywatnego klastra AKS
 
 ### <a name="create-a-resource-group"></a>Utwórz grupę zasobów
@@ -159,6 +82,7 @@ Jak wspomniano, Komunikacja równorzędna sieci wirtualnej jest jednym ze sposob
 9. Przejdź do sieci wirtualnej, w której znajduje się maszyna wirtualna, wybierz pozycję **Komunikacja równorzędna**, wybierz sieć wirtualną AKS, a następnie utwórz komunikację równorzędną. Jeśli zakresy adresów w sieci wirtualnej AKS i konflikty sieci wirtualnej maszyn wirtualnych są niepowodzeniem, Komunikacja równorzędna nie powiedzie się. Aby uzyskać więcej informacji, zobacz [wirtualne sieci równorzędne][virtual-network-peering].
 
 ## <a name="dependencies"></a>Zależności  
+
 * Usługa link prywatny jest obsługiwana tylko w przypadku standardowej Azure Load Balancer. Podstawowa Azure Load Balancer nie jest obsługiwana.  
 * Aby użyć niestandardowego serwera DNS, wdróż serwer usługi AD przy użyciu systemu DNS do przesyłania dalej do tego 168.63.129.16 IP
 
@@ -173,7 +97,6 @@ Jak wspomniano, Komunikacja równorzędna sieci wirtualnej jest jednym ze sposob
 * Brak obsługi konwertowania istniejących klastrów AKS do klastrów prywatnych
 * Usunięcie lub zmodyfikowanie prywatnego punktu końcowego w podsieci klienta spowoduje, że klaster przestanie działać. 
 * Azure Monitor kontenerów danych na żywo nie są obecnie obsługiwane.
-* *Korzystanie z własnego systemu DNS* nie jest obecnie obsługiwane.
 
 
 <!-- LINKS - internal -->

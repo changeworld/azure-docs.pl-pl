@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 1857c1154af5e3de72803f297e8a3151b0dd7aeb
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: d7d2bcf487c37fbb523b648d5aa4c572add5dfa9
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78330978"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297088"
 ---
 # <a name="streaming-ingestion-preview"></a>Pozyskiwanie strumieniowe (wersja zapoznawcza)
 
@@ -72,7 +72,7 @@ Istnieją dwa obsługiwane typy pozyskiwania strumieniowego:
 
 ## <a name="limitations"></a>Ograniczenia
 
-* Pozyskiwanie strumieniowe nie obsługuje [kursorów bazy danych](/azure/kusto/management/databasecursor) ani [mapowania danych](/azure/kusto/management/mappings). Obsługiwane jest tylko [wstępnie utworzone](/azure/kusto/management/tables#create-ingestion-mapping) mapowanie danych. 
+* Pozyskiwanie strumieniowe nie obsługuje [kursorów bazy danych](/azure/kusto/management/databasecursor) ani [mapowania danych](/azure/kusto/management/mappings). Obsługiwane jest tylko [wstępnie utworzone](/azure/kusto/management/create-ingestion-mapping-command) mapowanie danych. 
 * Skalowanie wydajności i pojemności pozyskiwania strumieniowego przy użyciu zwiększonych rozmiarów maszyn wirtualnych i klastrów. Współbieżne pozyskiwania są ograniczone do sześciu pozyskań na rdzeń. Na przykład dla 16 podstawowych jednostek SKU, takich jak D14 i L16, Maksymalne obsługiwane obciążenie to 96 współbieżności. W przypadku dwóch podstawowych jednostek SKU, takich jak D11, Maksymalne obsługiwane obciążenie to 12 współbieżnych operacji pozyskiwania.
 * Limit rozmiaru danych na żądanie pozyskiwania wynosi 4 MB.
 * Aktualizacje schematu, takie jak tworzenie i modyfikowanie tabel i mapowania pozyskiwania, mogą potrwać do 5 minut w przypadku usługi pozyskiwania strumieniowego.

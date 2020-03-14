@@ -6,11 +6,11 @@ ms.author: dekapur
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.openlocfilehash: a674047722d4deca02d8f4d38a0826e479065037
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391909"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259203"
 ---
 # <a name="set-up-your-windows-development-environment-to-build-service-fabric-mesh-apps"></a>Konfigurowanie środowiska deweloperskiego w systemie Windows w celu tworzenia aplikacji usługi Service Fabric Mesh
 
@@ -31,7 +31,7 @@ Poniższe instrukcje pomogą Ci w założeniu, że wszystko jest zainstalowane w
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="visual-studio"></a>Visual Studio
+## <a name="visual-studio"></a>{1&gt;Visual Studio&lt;1}
 
 Do wdrożenia aplikacji Service Fabric siatki jest wymagany program Visual Studio 2017 lub nowszy. [Zainstaluj wersję 15.6.0][download-visual-studio] lub nowszą i Włącz następujące obciążenia:
 

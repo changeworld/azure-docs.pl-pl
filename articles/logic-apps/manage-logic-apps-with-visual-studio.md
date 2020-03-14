@@ -8,11 +8,11 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 10/29/2019
 ms.openlocfilehash: 6319d2d72df69cc9633bd2b2ff8e777c2a48966a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386596"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270253"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Zarządzanie aplikacjami logiki za pomocą programu Visual Studio
 
@@ -200,7 +200,7 @@ Jeśli edytujesz aplikację logiki w Azure Portal i chcesz zachować te zmiany, 
 
 * W programie Visual Studio na pasku narzędzi projektanta aplikacji logiki wybierz pozycję **Odśwież**.
 
-  —lub—
+  lub
 
 * W programie Visual Studio Cloud Explorer otwórz menu skrótów aplikacji logiki i wybierz polecenie **Odśwież**.
 

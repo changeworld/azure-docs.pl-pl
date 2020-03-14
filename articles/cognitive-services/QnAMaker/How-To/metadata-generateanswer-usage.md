@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: diberry
-ms.openlocfilehash: e84a6c93ad8757b302670af202f9d4b407f3ef57
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 6a8cbabfd4e47c50d2c2e6f4a23c50a931e645a0
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945314"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220645"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Uzyskaj odpowiedź przy użyciu interfejsu API GenerateAnswer i metadanych
 
@@ -64,7 +64,7 @@ Wywołanie GenerateAnswer z żądaniem HTTP POST. Przykładowy kod, który pokaz
 Żądanie POST używa:
 
 * Wymagane [Parametry identyfikatora URI](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#uri-parameters)
-* Wymagana [Właściwość nagłówka](https://docs.microsoft.com/azure/cognitive-services/qnamaker/quickstarts/get-answer-from-knowledge-base-nodejs#add-a-post-request-to-send-question-and-get-an-answer), `Authorization`, dla zabezpieczeń
+* Wymagana właściwość nagłówka, `Authorization`, dla zabezpieczeń
 * Wymagane [właściwości treści](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto).
 
 Adres URL GenerateAnswer ma następujący format:
@@ -245,7 +245,7 @@ Możesz przeszukiwać opublikowaną KB przy użyciu `isTest=false`lub w teście 
 
 ## <a name="common-http-errors"></a>Typowe błędy HTTP
 
-|Code|Wyjaśnienie|
+|Kod|Wyjaśnienie|
 |:--|--|
 |2xx|Powodzenie|
 |400|Parametry żądania są nieprawidłowe, co oznacza, że wymagane parametry są brakujące, źle sformułowane lub zbyt duży|

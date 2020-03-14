@@ -1,7 +1,7 @@
 ---
 title: Importowanie/Eksportowanie danych w usługach sieci Web
 titleSuffix: ML Studio (classic) - Azure
-description: Dowiedz się, jak wysyłać i odbierać dane z usługi sieci Web za pomocą modułów Importuj dane i Eksportuj dane.
+description: Dowiedz się, jak korzystać z modułów danych importowanie i eksportowanie danych do wysyłania i odbierania danych z usługi sieci web.
 services: machine-learning
 author: xiaoharper
 ms.custom: seodec18
@@ -12,37 +12,39 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 0ae545fd3ecafda74b90a6a4694dd6f506fb44b1
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 144a3bc0d9e0499a238e4033d37d5e4d3fa61e05
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838816"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204066"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>Wdrażanie usług sieci Web Azure Machine Learning Studio (klasycznych), które używają modułów importowania danych i eksportu danych
 
-Podczas tworzenia eksperymentu predykcyjnego zazwyczaj dodawane są dane wejściowe i wyjściowe usługi sieci Web. Podczas wdrażania eksperymentu klienci mogą wysyłać i odbierać dane z usługi sieci Web za pośrednictwem danych wejściowych i wyjściowych. W przypadku niektórych aplikacji dane użytkownika mogą być dostępne ze strumieniowego źródła danych lub już znajdują się w zewnętrznym źródle danych, takim jak Azure Blob Storage. W takich przypadkach nie potrzebują danych odczytu i zapisu przy użyciu wejściowych i wyjściowych usług sieci Web. Mogą zamiast tego używać usługi wykonywania wsadowego (BES) do odczytywania danych ze źródła danych przy użyciu modułu Importuj dane i zapisywania wyników oceniania w innej lokalizacji danych przy użyciu modułu eksport danych.
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Moduły import danych i eksportowanie danych umożliwiają odczytywanie i zapisywanie w różnych lokalizacjach danych, takich jak adres URL sieci Web za pośrednictwem protokołu HTTP, zapytanie programu Hive, baza danych SQL Azure, Azure Table Storage, Azure Blob Storage, dostarczanie strumieniowe danych lub lokalna baza danych SQL.
+Podczas tworzenia eksperyment predykcyjny zazwyczaj dodajesz usługi sieci web w danych wejściowych i wyjściowych. Podczas wdrażania doświadczenia użytkowników umożliwia wysyłanie oraz odbieranie danych z usługi sieci web za pośrednictwem dane wejściowe i wyjściowe. W niektórych aplikacjach dane klienta mogą być dostępne ze strumieniowego źródła danych lub już znajdują się w zewnętrznym źródle danych takich jak usługi Azure Blob storage. W takiej sytuacji nie ma potrzeby odczytywanie i zapisywanie danych przy użyciu usługi sieci web w danych wejściowych i wyjściowych. Mogą, zamiast tego odczytywanie danych ze źródła danych za pomocą modułu importu danych przy użyciu usługi Batch Execution Service (BES) i zapisać wyniki oceny lokalizacji różnych danych, przy użyciu modułu Eksport danych.
 
-W tym temacie użyto przykładu "Przykładowe 5: pociąg, test, szacuje się, że klasyfikacja binarna: zestaw danych dla dorosłych" i przyjęto założenie, że zestaw danych został już załadowany do tabeli Azure SQL o nazwie censusdata.
+Importowanie danych i moduły danych eksportu, może odczytywać i zapisywać różne dane podane przez lokalizacje, takie jak adres URL sieci Web za pośrednictwem protokołu HTTP, zapytanie Hive, bazy danych Azure SQL, Azure Table storage, usługi Azure Blob storage, strumieniowego źródła danych lub bazą danych SQL database w środowisku lokalnym.
 
-## <a name="create-the-training-experiment"></a>Tworzenie eksperymentu szkoleniowego
-Po otwarciu "Przykładowe 5: uczenie, test, Oblicz dla klasyfikacji binarnej — zestaw danych dla dorosłych" używa przykładowego zestawu danych statystycznych zysków dla dorosłych spisu treści. A eksperyment na kanwie będzie wyglądać podobnie do poniższej ilustracji:
+W tym temacie używany "przykład 5: oceń szkolenia i testowania dla klasyfikacji binarnej: treści dla dorosłych zestawu danych" przykładowy i zakłada się, zestaw danych został już załadowany do tabeli Azure SQL o nazwie censusdata.
 
-![Początkowa konfiguracja eksperymentu.](./media/web-services-that-use-import-export-modules/initial-look-of-experiment.png)
+## <a name="create-the-training-experiment"></a>Tworzenie eksperymentu szkolenia
+Po otwarciu "przykład 5: oceń szkolenia i testowania dla klasyfikacji binarnej: treści dla dorosłych zestawu danych" przykład używa przykładowego zestawu danych treści dla dorosłych klasyfikacji binarnej dochodu spisu. I doświadczenia w obszarze roboczym będzie wyglądać podobnie do poniższej ilustracji:
 
-Aby odczytać dane z tabeli Azure SQL:
+![Wstępna konfiguracja eksperymentu.](./media/web-services-that-use-import-export-modules/initial-look-of-experiment.png)
 
-1. Usuń moduł DataSet.
-2. W polu wyszukiwania składniki wpisz import.
+Do odczytywania danych z tabeli Azure SQL:
+
+1. Usuń moduł zestawu danych.
+2. W polu wyszukiwania składniki typu importu.
 3. Z listy wyników Dodaj moduł *Importuj dane* do kanwy eksperymentu.
 4. Połącz dane wyjściowe modułu *Importuj dane* dane wejściowe modułu *czyste brakujące dane* .
 5. W okienku właściwości wybierz pozycję **Azure SQL Database** na liście rozwijanej **Źródło danych** .
 6. W polach **Nazwa serwera bazy danych**, **Nazwa bazy danych**, **Nazwa użytkownika**i **hasło** wprowadź odpowiednie informacje dotyczące bazy danych.
-7. W polu kwerenda bazy danych wprowadź następujące zapytanie.
+7. W polu zapytania bazy danych wprowadź następujące zapytanie.
 
-     Wybierz pozycję [wiek],
+     Wybierz pozycję [Wiek]
 
         [workclass],
         [fnlwgt],
@@ -58,26 +60,26 @@ Aby odczytać dane z tabeli Azure SQL:
         [hours-per-week],
         [native-country],
         [income]
-     z dbo. censusdata;
+     z dbo.censusdata;
 8. W dolnej części kanwy eksperymentu kliknij pozycję **Uruchom**.
 
-## <a name="create-the-predictive-experiment"></a>Utwórz eksperyment predykcyjny
-Następnie należy skonfigurować eksperyment predykcyjny, z którego wdrażana jest usługa sieci Web.
+## <a name="create-the-predictive-experiment"></a>Utworzyć eksperyment predykcyjny
+Następnie należy skonfigurować eksperyment predykcyjny, z której można wdrożyć usługi sieci web.
 
 1. W dolnej części kanwy eksperymentu kliknij pozycję **Skonfiguruj usługę sieci Web** i wybierz opcję **predykcyjna usługa sieci Web [zalecane]** .
 2. Usuń moduły *danych wejściowych* i *usług* internetowych usługi sieci Web z eksperymentu predykcyjnego.
-3. W polu wyszukiwania składniki wpisz Export.
+3. W polu wyszukiwania składniki typu eksportu.
 4. Z listy wyników Dodaj moduł *eksportu danych* do kanwy eksperymentu.
 5. Połącz dane wyjściowe modułu *wynik model* dane wejściowe modułu *eksport danych* .
 6. W okienku właściwości wybierz pozycję **Azure SQL Database** na liście rozwijanej miejsce docelowe danych.
 7. W polu **Nazwa serwera bazy danych**, **Nazwa bazy danych**, **nazwa konta użytkownika serwera**i **hasło konta użytkownika serwera** wprowadź odpowiednie informacje dotyczące bazy danych.
 8. Na **liście rozdzielanych przecinkami kolumn, które mają być zapisane** pole wpisz etykiety z wynikami.
-9. W **polu Nazwa tabeli danych**wpisz dbo. ScoredLabels. Jeśli tabela nie istnieje, jest tworzona, gdy eksperyment jest uruchamiany lub usługa sieci Web jest wywoływana.
+9. W **polu Nazwa tabeli danych**wpisz dbo. ScoredLabels. Jeśli tabela nie istnieje, jest tworzony, po uruchomieniu eksperymentu lub nosi nazwę usługi sieci web.
 10. Na **liście rozdzielanej przecinkami pól kolumny DataTable** wpisz ScoredLabels.
 
-Podczas pisania aplikacji, która wywołuje końcową usługę sieci Web, może być konieczne określenie innej kwerendy wejściowej lub tabeli docelowej w czasie wykonywania. Aby skonfigurować te dane wejściowe i wyjściowe, użyj funkcji parametrów usługi sieci Web, aby ustawić właściwość *Źródło danych* modułu *Import* danych i Właściwość docelowa eksport danych trybu *dane* .  Aby uzyskać więcej informacji na temat parametrów usługi sieci Web, zobacz [wpis Azure Machine Learning Studio usługi sieci Web](https://blogs.technet.microsoft.com/machinelearning/2014/11/25/azureml-web-service-parameters/) w blogu Cortana Intelligence i Machine Learning.
+Podczas pisania aplikacji, która wywołuje usługę sieci web końcowy, można określić inne zapytanie wejściowe lub docelowej tabeli w czasie wykonywania. Aby skonfigurować te dane wejściowe i wyjściowe, użyj funkcji parametrów usługi sieci Web, aby ustawić właściwość *Źródło danych* modułu *Import* danych i Właściwość docelowa eksport danych trybu *dane* .  Aby uzyskać więcej informacji na temat parametrów usługi sieci Web, zobacz [wpis Azure Machine Learning Studio usługi sieci Web](https://blogs.technet.microsoft.com/machinelearning/2014/11/25/azureml-web-service-parameters/) w blogu Cortana Intelligence i Machine Learning.
 
-Aby skonfigurować parametry usługi sieci Web dla kwerendy importu i tabeli docelowej:
+Aby skonfigurować parametry usługi sieci Web dla zapytań import i tabela docelowa:
 
 1. W okienku właściwości modułu *Importuj dane* kliknij ikonę w prawym górnym rogu pola **kwerendy bazy danych** i wybierz pozycję **Ustaw jako parametr usługi sieci Web**.
 2. W okienku właściwości modułu *eksport danych* kliknij ikonę w prawym górnym rogu pola **Nazwa tabeli danych** i wybierz pozycję **Ustaw jako parametr usługi sieci Web**.
@@ -88,23 +90,23 @@ Gdy wszystko będzie gotowe, eksperyment powinien wyglądać podobnie do poniżs
 
 ![Końcowy wygląd eksperymentu.](./media/web-services-that-use-import-export-modules/experiment-with-import-data-added.png)
 
-Teraz można wdrożyć eksperyment jako usługę sieci Web.
+Teraz można wdrożyć eksperymentu jako usługę sieci web.
 
 ## <a name="deploy-the-web-service"></a>Wdrażanie usługi sieci Web
-Można je wdrożyć w klasycznej lub nowej usłudze sieci Web.
+Można wdrożyć do klasycznego lub nowej usługi sieci web.
 
-### <a name="deploy-a-classic-web-service"></a>Wdrażanie klasycznej usługi sieci Web
-Aby wdrożyć jako klasyczną usługę sieci Web i utworzyć aplikację w celu jej użycia:
+### <a name="deploy-a-classic-web-service"></a>Wdrażanie usługi sieci Web
+Aby wdrożyć jako klasycznej usługi sieci Web i tworzenie aplikacji z jego:
 
-1. W dolnej części kanwy eksperymentu kliknij pozycję Uruchom.
+1. W dolnej części obszaru roboczego eksperymentu kliknij przycisk Uruchom.
 2. Po zakończeniu przebiegu kliknij pozycję **Wdróż usługę sieci Web** i wybierz pozycję **Wdróż usługę sieci Web [klasyczny]** .
-3. Na pulpicie nawigacyjnym usługi sieci Web Znajdź klucz interfejsu API. Skopiuj i Zapisz go do późniejszego użycia.
+3. Zlokalizuj swój klucz interfejsu API na pulpicie nawigacyjnym usługi sieci web. Skopiuj i zapisz go do późniejszego użycia.
 4. W **domyślnej tabeli punktów końcowych** kliknij link **wykonywania wsadowego** , aby otworzyć stronę pomocy interfejsu API.
 5. W programie Visual Studio Utwórz aplikację C# konsolową: **New** > **Project** > **Visual C#**  > **Windows Classic Desktop** > **aplikacji konsolowej (.NET Framework)** .
 6. Na stronie Pomoc interfejsu API Znajdź **przykładową sekcję kod** w dolnej części strony.
-7. Skopiuj i wklej C# przykładowy kod do pliku program.cs, a następnie usuń wszystkie odwołania do magazynu obiektów BLOB.
+7. Skopiuj i Wklej C# przykładowego kodu do pliku Program.cs i usunąć wszystkie odwołania do usługi blob storage.
 8. Zaktualizuj wartość zmiennej *apiKey* z kluczem interfejsu API zapisanym wcześniej.
-9. Znajdź deklarację żądania i zaktualizuj wartości parametrów usługi sieci Web, które są przesyłane do modułów *Importuj dane* i *Eksportuj dane* . W takim przypadku należy użyć oryginalnego zapytania, ale zdefiniować nową nazwę tabeli.
+9. Znajdź deklarację żądania i zaktualizuj wartości parametrów usługi sieci Web, które są przesyłane do modułów *Importuj dane* i *Eksportuj dane* . W tym przypadku użyj oryginalne zapytanie, ale zdefiniowanie nowej nazwy tabeli.
 
         var request = new BatchExecutionRequest()
         {
@@ -115,14 +117,14 @@ Aby wdrożyć jako klasyczną usługę sieci Web i utworzyć aplikację w celu j
         };
 10. Uruchom aplikację.
 
-Po zakończeniu przebiegu zostanie dodana nowa tabela zawierająca wyniki oceniania.
+Po zakończeniu przebiegu zostanie dodana nowa tabela, z bazą danych zawierającą wyniki oceny.
 
-### <a name="deploy-a-new-web-service"></a>Wdróż nową usługę sieci Web
+### <a name="deploy-a-new-web-service"></a>Wdrażanie nowej usługi sieci Web
 
 > [!NOTE]
-> Aby wdrożyć nową usługę sieci Web, musisz mieć wystarczające uprawnienia w subskrypcji, w której wdrażana jest usługa sieci Web. Aby uzyskać więcej informacji, zobacz [Zarządzanie usługą sieci Web przy użyciu portalu usług sieci web Azure Machine Learning](manage-new-webservice.md).
+> Aby wdrożyć nową usługę sieci web musi masz wystarczające uprawnienia w ramach subskrypcji, do której możesz wdrażanie usługi sieci web. Aby uzyskać więcej informacji, zobacz [Zarządzanie usługą sieci Web przy użyciu portalu usług sieci web Azure Machine Learning](manage-new-webservice.md).
 
-Aby wdrożyć program jako nową usługę sieci Web i utworzyć aplikację do użycia:
+Aby wdrożyć jako nową usługę sieci Web i tworzenie aplikacji z jego:
 
 1. W dolnej części kanwy eksperymentu kliknij pozycję **Uruchom**.
 2. Po zakończeniu przebiegu kliknij pozycję **Wdróż usługę sieci Web** i wybierz pozycję **Wdróż usługę sieci Web [New]** .
@@ -130,9 +132,9 @@ Aby wdrożyć program jako nową usługę sieci Web i utworzyć aplikację do u�
 4. Na stronie **Szybki Start** **kliknij pozycję**Użyj.
 5. W sekcji **przykładowy kod** kliknij pozycję **Batch**.
 6. W programie Visual Studio Utwórz aplikację C# konsolową: **New** > **Project** > **Visual C#**  > **Windows Classic Desktop** > **aplikacji konsolowej (.NET Framework)** .
-7. Skopiuj i wklej C# przykładowy kod do pliku program.cs.
+7. Skopiuj i Wklej C# przykładowego kodu do pliku Program.cs.
 8. Zaktualizuj wartość zmiennej *apiKey* przy użyciu **klucza podstawowego** znajdującego się w sekcji **podstawowe informacje o zużyciu** .
-9. Znajdź deklarację *scoreRequest* i zaktualizuj wartości parametrów usługi sieci Web, które są przesyłane do modułów *Importuj dane* i *Eksportuj dane* . W takim przypadku należy użyć oryginalnego zapytania, ale zdefiniować nową nazwę tabeli.
+9. Znajdź deklarację *scoreRequest* i zaktualizuj wartości parametrów usługi sieci Web, które są przesyłane do modułów *Importuj dane* i *Eksportuj dane* . W tym przypadku użyj oryginalne zapytanie, ale zdefiniowanie nowej nazwy tabeli.
 
         var scoreRequest = new
         {

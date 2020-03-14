@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: eef67ca8111983adb4d9994894ba215240daee6f
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: b0eed8fe9d548ee54698d187e192960bb3b44e44
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78253728"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368812"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integracja kontroli źródła w usłudze Automatyzacja Azure
 
@@ -33,7 +33,7 @@ Azure Automation obsługuje trzy typy kontroli źródła:
 
 * Repozytorium kontroli źródła (GitHub lub Azure Repos)
 * [Konto Uruchom jako](manage-runas-account.md)
-* [Najnowsze moduły platformy Azure](automation-update-azure-modules.md) na koncie usługi Automation, w tym moduł **AZ. Accounts** (AZ module równoważ of AzureRM. profile)
+* [Najnowsze moduły platformy Azure](automation-update-azure-modules.md) na koncie usługi Automation, łącznie z modułem `Az.Accounts` (AZ module równoważ of `AzureRM.Profile`)
 
 > [!NOTE]
 > Zadania synchronizacji kontroli źródła są uruchamiane na koncie usługi Automation użytkownika i są rozliczane według tej samej stawki co inne zadania automatyzacji.
@@ -54,15 +54,15 @@ Użyj tej procedury, aby skonfigurować kontrolę źródła przy użyciu Azure P
 
 3. Zostanie otwarte okno przeglądarki z prośbą o zalogowanie się. Postępuj zgodnie z monitami, aby zakończyć uwierzytelnianie.
 
-4. Na stronie **Podsumowanie kontroli źródła** Użyj pól, aby wypełnić właściwości kontroli źródła zdefiniowane poniżej. Po zakończeniu kliknij przycisk **Zapisz** . 
+4. Na stronie Podsumowanie kontroli źródła Użyj pól, aby wypełnić właściwości kontroli źródła zdefiniowane poniżej. Po zakończeniu kliknij przycisk **Zapisz** . 
 
     |Właściwość  |Opis  |
     |---------|---------|
     |Nazwa kontroli źródła     | Przyjazna nazwa dla kontroli źródła. Ta nazwa może zawierać tylko litery i cyfry.        |
-    |Typ kontroli źródła     | Typ mechanizmu kontroli źródła. Dostępne opcje:</br> GitHub</br>Azure Repos (Git)</br> Azure Repos (TFVC)        |
+    |Typ kontroli źródła     | Typ mechanizmu kontroli źródła. Dostępne opcje:</br> * GitHub</br>* Azure Repos (Git)</br> * Azure Repos (TFVC)        |
     |Repozytorium     | Nazwa repozytorium lub projektu. Pobierane są pierwsze repozytoria 200. Aby wyszukać repozytorium, wpisz nazwę w polu, a następnie kliknij pozycję **Wyszukaj w witrynie GitHub**.|
     |Gałęzi     | Gałąź, z której mają zostać pobrane pliki źródłowe. Funkcja określania wartości docelowej gałęzi jest niedostępna dla typu kontroli źródła TFVC.          |
-    |Ścieżka folderu     | Folder zawierający elementy Runbook do zsynchronizowania, na przykład/runbooks. Synchronizowane są tylko elementy Runbook w określonym folderze. Rekursja nie jest obsługiwana.        |
+    |Ścieżka folderu     | Folder zawierający elementy Runbook do zsynchronizowania, na przykład **/Runbooks**. Synchronizowane są tylko elementy Runbook w określonym folderze. Rekursja nie jest obsługiwana.        |
     |Synchronizacja autosynchronizacji<sup>1</sup>     | Ustawienie służące do włączania lub wyłączania automatycznej synchronizacji po dokonaniu zatwierdzenia w repozytorium kontroli źródła.        |
     |Publikowanie elementu Runbook     | Ustawienie włączone w przypadku, gdy elementy Runbook są automatycznie publikowane po synchronizacji z kontroli źródła i wyłączone w inny sposób.           |
     |Opis     | Tekst określający dodatkowe szczegóły dotyczące kontroli źródła.        |
@@ -72,7 +72,7 @@ Użyj tej procedury, aby skonfigurować kontrolę źródła przy użyciu Azure P
    ![Podsumowanie kontroli źródła](./media/source-control-integration/source-control-summary.png)
 
 > [!NOTE]
-> Twoje dane logowania dla repozytorium kontroli źródła mogą się różnić od nazwy logowania dla Azure Portal. Upewnij się, że logujesz się przy użyciu odpowiedniego konta dla swojego repozytorium kontroli źródła podczas konfigurowania kontroli źródła. W razie wątpliwości Otwórz nową kartę w przeglądarce, Wyloguj się z visualstudio.com lub github.com i spróbuj ponownie nawiązać połączenie z kontrolą źródła.
+> Identyfikator logowania dla repozytorium kontroli źródła może być inny niż identyfikator logowania dla Azure Portal. Upewnij się, że logujesz się przy użyciu odpowiedniego konta dla swojego repozytorium kontroli źródła podczas konfigurowania kontroli źródła. W razie wątpliwości Otwórz nową kartę w przeglądarce, Wyloguj się z **VisualStudio.com** lub **GitHub.com**i spróbuj ponownie nawiązać połączenie z kontrolą źródła.
 
 ### <a name="configure-source-control----powershell"></a>Konfigurowanie kontroli źródła — PowerShell
 
@@ -109,13 +109,13 @@ W poniższej tabeli zdefiniowano wymagania dotyczące minimalnych wartości, kt�
 
 |Zakres  |Opis  |
 |---------|---------|
-|**repozytorium**     |         |
-|repozytorium: stan     | Stan zatwierdzenia dostępu         |
-|repo_deployment      | Stan wdrożenia dostępu         |
-|public_repo     | Dostęp do publicznych repozytoriów         |
-|**Administrator: repo_hook**     |         |
-|write:repo_hook     | Zapisz punkty zaczepienia repozytorium         |
-|read:repo_hook|Odczytaj punkty zaczepienia repozytorium|
+|**`repo`**     |         |
+|`repo:status`     | Stan zatwierdzenia dostępu         |
+|`repo_deployment`      | Stan wdrożenia dostępu         |
+|`public_repo`     | Dostęp do publicznych repozytoriów         |
+|**`admin:repo_hook`**     |         |
+|`write:repo_hook`     | Zapisz punkty zaczepienia repozytorium         |
+|`read:repo_hook`|Odczytaj punkty zaczepienia repozytorium|
 
 ##### <a name="minimum-pat-permissions-for-azure-repos"></a>Minimalne uprawnienia dla Azure Repos
 
@@ -134,9 +134,9 @@ Poniższa lista zawiera definicje minimalnych uprawnień, które są wymagane do
 
 ## <a name="synchronizing"></a>Synchronizowanie
 
-Wykonaj poniższe czynności, aby przeprowadzić synchronizację z kontrolą źródła. 
+Wykonaj następujące kroki, aby przeprowadzić synchronizację z kontrolą źródła. 
 
-1. Wybierz źródło z tabeli na stronie **kontroli źródła** . 
+1. Wybierz źródło z tabeli na stronie kontroli źródła. 
 
 2. Kliknij przycisk **Rozpocznij synchronizację** , aby rozpocząć proces synchronizacji. 
 
@@ -178,7 +178,7 @@ Wykonaj poniższe czynności, aby przeprowadzić synchronizację z kontrolą źr
 
     ```
 
-6. Dodatkowe rejestrowanie jest dostępne po wybraniu opcji **wszystkie dzienniki** na stronie **Podsumowanie zadania synchronizacji kontroli źródła** . Te dodatkowe wpisy dziennika mogą pomóc w rozwiązywaniu problemów, które mogą wystąpić podczas korzystania z kontroli źródła.
+6. Dodatkowe rejestrowanie jest dostępne po wybraniu opcji **wszystkie dzienniki** na stronie Podsumowanie zadania synchronizacji kontroli źródła. Te dodatkowe wpisy dziennika mogą pomóc w rozwiązywaniu problemów, które mogą wystąpić podczas korzystania z kontroli źródła.
 
 ## <a name="disconnecting-source-control"></a>Odłączanie kontroli źródła
 
@@ -188,11 +188,11 @@ Aby rozłączyć się z repozytorium kontroli źródła:
 
 2. Wybierz mechanizm kontroli źródła do usunięcia. 
 
-3. Na stronie **Podsumowanie kontroli źródła** kliknij pozycję **Usuń**.
+3. Na stronie Podsumowanie kontroli źródła kliknij pozycję **Usuń**.
 
 ## <a name="handling-encoding-issues"></a>Obsługa problemów z kodowaniem
 
-Jeśli wiele osób edytuje elementy Runbook w repozytorium kontroli źródła przy użyciu różnych edytorów, mogą wystąpić problemy z kodowaniem. Aby dowiedzieć się więcej o tej sytuacji, zobacz [typowe przyczyny problemów z kodowaniem](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues)
+Jeśli wiele osób edytuje elementy Runbook w repozytorium kontroli źródła przy użyciu różnych edytorów, mogą wystąpić problemy z kodowaniem. Aby dowiedzieć się więcej o tej sytuacji, zobacz [typowe przyczyny problemów z kodowaniem](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues).
 
 ## <a name="updating-the-pat"></a>Aktualizowanie przebiegu
 

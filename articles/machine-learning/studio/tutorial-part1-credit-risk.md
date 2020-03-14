@@ -10,14 +10,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 07621bd2d0593ea3896aba0deb65e0b856e5987b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6fd8573c78d80c950bdeb41ec01e2835def3979a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432240"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204260"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>Samouczek 1: przewidywanie ryzyka kredytowego — Azure Machine Learning Studio (klasyczny)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -129,7 +131,7 @@ Gdy dane zostaną przekonwertowane do formatu CSV, należy przekazać je do Mach
 
 8. Jako typ danych wybierz opcję **Generic CSV File With no header (.nh.csv)** (Ogólny plik CSV bez nagłówka).
 
-9. Jeśli chcesz, dodaj opis.
+9. Dodaj opis, jeśli chcesz.
 
 10. Kliknij znacznik wyboru **OK**.  
 

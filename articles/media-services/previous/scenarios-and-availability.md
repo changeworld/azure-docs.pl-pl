@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 7b5569738721038beadc78d94c81393803b6d36a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78366914"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250987"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scenariusze i dostępność funkcji usługi Media Services w centrach danych
 
@@ -37,7 +37,7 @@ W tym temacie przedstawiono typowe scenariusze dostarczania zawartości [na żyw
 
 Do rozpoczęcia korzystania z usługi Azure Media Services potrzebne są:
 
-* Konto platformy Azure. Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz temat [Bezpłatna wersja próbna systemu Azure](https://azure.microsoft.com).
+* Konto platformy Azure. Jeśli nie masz konta, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz temat [Bezpłatna wersja próbna systemu Azure](https://azure.microsoft.com).
 * Konto usługi Azure Media Services. Aby uzyskać więcej informacji, zobacz temat [Tworzenie konta](media-services-portal-create-account.md).
 * Punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać zawartość, musi mieć stan **Uruchomiony**.
 
@@ -111,7 +111,7 @@ Aby uzyskać informacje na temat dostępności w centrach danych, zobacz sekcję
 3. Wyświetl podgląd transmisji strumieniowej na żywo.
 4. Dostarczaj zawartość za pośrednictwem wspólnych protokołów przesyłania strumieniowego (np. MPEG DASH, Smooth, HLS) bezpośrednio do klientów lub do usługi Content Delivery Network (CDN) w celu dalszej dystrybucji
 
-    — lub —
+    lub
 
     zarejestruj i przechowaj pozyskaną zawartość do celów przesyłania strumieniowego w późniejszym czasie (wideo na żądanie).
 
@@ -179,8 +179,8 @@ Klienci usługi Media Services mogą wybrać **Standardowy** punkt końcowy prze
 
 |Name (Nazwa)|Stan|Centra danych
 |---|---|---|
-|Standard|Ogólna dostępność|Wszyscy|
-|Premium|Ogólna dostępność|Wszyscy|
+|Standardowy|Ogólna dostępność|Wszystkie|
+|Premium|Ogólna dostępność|Wszystkie|
 
 ### <a name="live-encoding"></a>Kodowanie na żywo
 
@@ -196,7 +196,7 @@ Usługa AMS oferuje dwa kodery na żądanie: **Media Encoder Standard** i **Medi
 
 |Nazwa procesora multimediów|Stan|Centra danych
 |---|---|---|
-|Usługa Media Encoder Standard|Ogólna dostępność|Wszyscy|
+|Usługa Media Encoder Standard|Ogólna dostępność|Wszystkie|
 |Przepływ pracy usługi Media Encoder w warstwie Premium|Ogólna dostępność|Wszystkie z wyjątkiem Chin|
 
 ### <a name="analytics-media-processors"></a>Procesory multimediów usługi analizy
@@ -210,12 +210,12 @@ Analiza multimediów to kolekcja składników mowy i obrazu, które ułatwiają 
 
 |Nazwa procesora multimediów|Stan|Centra danych
 |---|---|---|
-|Azure Media Face Detector|Wersja zapoznawcza|Wszyscy|
-|Azure Media Indexer|Ogólna dostępność|Wszyscy|
-|Azure Media Motion Detector|Wersja zapoznawcza|Wszyscy|
-|Azure Media OCR|Wersja zapoznawcza|Wszyscy|
-|Azure Media Redactor|Ogólna dostępność|Wszyscy|
-|Azure Media Video Thumbnails|Wersja zapoznawcza|Wszyscy|
+|Azure Media Face Detector|Wersja zapoznawcza|Wszystkie|
+|Azure Media Indexer|Ogólna dostępność|Wszystkie|
+|Azure Media Motion Detector|Wersja zapoznawcza|Wszystkie|
+|Azure Media OCR|Wersja zapoznawcza|Wszystkie|
+|Azure Media Redactor|Ogólna dostępność|Wszystkie|
+|Azure Media Video Thumbnails|Wersja zapoznawcza|Wszystkie|
 
 ### <a name="protection"></a>Ochrona
 
@@ -225,10 +225,10 @@ Usługi Microsoft Azure Media Services umożliwiają zabezpieczenie multimediów
 
 |Szyfrowanie|Stan|Centra danych|
 |---|---|---| 
-|Storage|Ogólna dostępność|Wszyscy|
-|Klucze AES-128|Ogólna dostępność|Wszyscy|
-|FairPlay|Ogólna dostępność|Wszyscy|
-|PlayReady|Ogólna dostępność|Wszyscy|
+|Storage|Ogólna dostępność|Wszystkie|
+|Klucze AES-128|Ogólna dostępność|Wszystkie|
+|FairPlay|Ogólna dostępność|Wszystkie|
+|PlayReady|Ogólna dostępność|Wszystkie|
 |Widevine|Ogólna dostępność|Wszystkie regiony z wyjątkiem Niemiec, Rządu Federalnego i Chin.
 
 ### <a name="reserved-units-rus"></a>Jednostki zarezerwowane (RU)
@@ -251,7 +251,7 @@ Aby uzyskać więcej informacji, zobacz sekcję opisującą [skalowanie](#scalin
 
 |Nazwa typu jednostki zarezerwowanej|Stan|Centra danych
 |---|---|---|
-|S1|Ogólna dostępność|Wszyscy|
+|S1|Ogólna dostępność|Wszystkie|
 |S2|Ogólna dostępność|Wszystkie regiony z wyjątkiem Brazylii Południowej i Indii Zachodnich|
 |S3|Ogólna dostępność|Wszystkie regiony z wyjątkiem Indii Zachodnich|
 

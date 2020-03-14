@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6a12d92c0cfb9d86ebf4c335c351944997f79b4e
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 4e3f4f1c829436415880e66f0cf0170107732bda
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773145"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368846"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>Samouczek: używanie plików parametrów do wdrożenia szablonu Menedżer zasobów
 
@@ -54,7 +54,7 @@ Jako ostatni test szablonu Utwórzmy dwie nowe grupy zasobów. Jeden dla środow
 
 Po pierwsze wdrożenie zostanie wdrożone w środowisku deweloperskim.
 
-# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $templateFile = "{provide-the-path-to-the-template-file}"
@@ -69,14 +69,14 @@ New-AzResourceGroupDeployment `
   -TemplateParameterFile $parameterFile
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
+# <a name="azure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
 ```azurecli
 templateFile="{provide-the-path-to-the-template-file}"
 az group create \
   --name myResourceGroupDev \
   --location "East US"
-az group deployment create \
+az deployment group create \
   --name devenvironment \
   --resource-group myResourceGroupDev \
   --template-file $templateFile \
@@ -87,7 +87,7 @@ az group deployment create \
 
 Teraz wdrażamy je w środowisku produkcyjnym.
 
-# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $parameterFile="{path-to-azuredeploy.parameters.prod.json}"
@@ -101,13 +101,13 @@ New-AzResourceGroupDeployment `
   -TemplateParameterFile $parameterFile
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
+# <a name="azure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
 ```azurecli
 az group create \
   --name myResourceGroupProd \
   --location "West US"
-az group deployment create \
+az deployment group create \
   --name prodenvironment \
   --resource-group myResourceGroupProd \
   --template-file $templateFile \
@@ -120,7 +120,7 @@ az group deployment create \
 
 Możesz zweryfikować wdrożenie, przeeksplorowanie grup zasobów z Azure Portal.
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. Z menu po lewej stronie wybierz pozycję **grupy zasobów**.
 1. Zobaczysz dwie nowe grupy zasobów wdrożone w tym samouczku.
 1. Wybierz pozycję Grupa zasobów i Wyświetl wdrożone zasoby. Zwróć uwagę, że są one zgodne z wartościami określonymi w pliku parametrów dla danego środowiska.
@@ -134,7 +134,7 @@ Możesz zweryfikować wdrożenie, przeeksplorowanie grup zasobów z Azure Portal
 
 ## <a name="next-steps"></a>Następne kroki
 
-Gratulacje, wprowadzenie do wdrożenia szablonów na platformie Azure. Daj nam znać, jeśli masz jakieś komentarze i sugestie w sekcji Opinie. Dziękujemy!
+Gratulacje, wprowadzenie do wdrożenia szablonów na platformie Azure. Daj nam znać, jeśli masz jakieś komentarze i sugestie w sekcji Opinie. Dziękujemy.
 
 Możesz teraz przejść do bardziej zaawansowanych koncepcji dotyczących szablonów. Następny samouczek zawiera więcej szczegółów dotyczących korzystania z dokumentacji szablonów referencyjnych, aby ułatwić Definiowanie zasobów do wdrożenia.
 

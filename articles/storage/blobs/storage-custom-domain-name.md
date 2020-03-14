@@ -9,16 +9,18 @@ ms.date: 01/23/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 892f8bb24da00f1bd5827725f40fdc4359be0937
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9d05677ec47851557594ef47499da653accad141
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906546"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370478"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>Mapowanie domeny niestandardowej na punkt końcowy usługi Azure Blob Storage
 
 Domenę niestandardową można zamapować na punkt końcowy usługi BLOB Service lub [statyczny punkt końcowy witryny sieci Web](storage-blob-static-website.md) . 
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE] 
 > To mapowanie działa tylko dla poddomen (na przykład: `www.contoso.com`). Jeśli chcesz, aby punkt końcowy sieci Web był dostępny w domenie głównej (na przykład: `contoso.com`), musisz użyć Azure CDN. Aby uzyskać wskazówki, zobacz sekcję [Mapowanie domeny niestandardowej z włączonym protokołem HTTPS](#enable-https) w tym artykule. Ponieważ przechodzenie do tej sekcji tego artykułu, aby włączyć domenę główną domeny niestandardowej, krok w tej sekcji do włączenia protokołu HTTPS jest opcjonalny. 
@@ -229,9 +231,9 @@ Na przykład aby uzyskać dostęp do formularza sieci Web w kontenerze *WebForms
 
 ### <a name="remove-a-custom-domain-mapping"></a>Usuń niestandardowe mapowanie domeny
 
-Aby usunąć niestandardowe mapowanie domeny, należy wyrejestrować domenę niestandardową. Użyj jednej z poniższych procedur.
+Aby usunąć niestandardowe mapowanie domeny, należy wyrejestrować domenę niestandardową. Należy użyć jednej z poniższych procedur.
 
-#### <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Aby usunąć ustawienie domeny niestandardowej, wykonaj następujące czynności:
 
@@ -246,7 +248,7 @@ Aby usunąć ustawienie domeny niestandardowej, wykonaj następujące czynności
 
 Po pomyślnym usunięciu domeny niestandardowej zobaczysz powiadomienie portalu, że konto magazynu zostało pomyślnie zaktualizowane
 
-#### <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
+#### <a name="azure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
 Aby usunąć niestandardową rejestrację domeny, użyj polecenia [AZ Storage account Update](https://docs.microsoft.com/cli/azure/storage/account) CLI polecenie, a następnie określ pusty ciąg (`""`) dla wartości argumentu `--custom-domain`.
 
@@ -268,7 +270,7 @@ Aby usunąć niestandardową rejestrację domeny, użyj polecenia [AZ Storage ac
       --custom-domain ""
   ```
 
-#### <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+#### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

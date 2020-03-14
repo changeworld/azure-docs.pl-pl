@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/03/2018
-ms.openlocfilehash: 15c661a1ef917dcf73b5a86cd450c94a35b08c88
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e0870ac9dc818ca07e149421b486136c76dd61a4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822494"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79208817"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>Rozwiązywanie różnic w języku Transact-SQL podczas migracji do SQL Database
 
@@ -36,9 +36,9 @@ Aby zapoznać się z listą funkcji obsługiwanych i nieobsługiwanych przez SQL
 
 Są dostępne podstawowe instrukcje języka DDL (Data Definition Language), ale niektóre instrukcje języka DDL mają rozszerzenia związane z rozmieszczeniem dysku i nieobsługiwanymi funkcjami.
 
-- Instrukcje CREATE i ALTER DATABASE zawierają ponad trzy opcje. Instrukcje obejmują umieszczanie plików, FILESTREAM i opcje brokera usług, które mają zastosowanie tylko do SQL Server. Może to nie mieć znaczenia w przypadku tworzenia baz danych przed migracją, ale Jeśli migrujesz kod T-SQL, który tworzy bazy danych, należy porównać [Tworzenie bazy danych (Azure SQL Database)](https://msdn.microsoft.com/library/dn268335.aspx) z składnią SQL Server w programie [create Database (SQL Server Transact-SQL) ](https://msdn.microsoft.com/library/ms176061.aspx)aby upewnić się, że wszystkie opcje, które są używane, są obsługiwane. Opcja Utwórz bazę danych dla Azure SQL Database ma także cele usługi i elastyczne skalowanie, które mają zastosowanie tylko do SQL Database.
+- Instrukcje CREATE i ALTER DATABASE zawierają ponad trzy opcje. Instrukcje obejmują umieszczanie plików, FILESTREAM i opcje brokera usług, które mają zastosowanie tylko do SQL Server. Może to nie mieć znaczenia w przypadku tworzenia baz danych przed migracją, ale w przypadku migrowania kodu T-SQL, który tworzy bazy danych, należy porównać opcję [Utwórz bazę danych (Azure SQL Database)](https://msdn.microsoft.com/library/dn268335.aspx) z składnią SQL Server w programie [create Database (SQL Server Transact-SQL)](https://msdn.microsoft.com/library/ms176061.aspx) , aby upewnić się, że wszystkie używane opcje są obsługiwane. Opcja Utwórz bazę danych dla Azure SQL Database ma także cele usługi i elastyczne skalowanie, które mają zastosowanie tylko do SQL Database.
 - Instrukcje CREATE i ALTER TABLE zawierają opcje obiektu FileTable, których nie można używać na SQL Database, ponieważ nie jest obsługiwany element FILESTREAM.
-- Instrukcje CREATE i ALTER login są obsługiwane, ale SQL Database nie oferuje wszystkich opcji. Aby zapewnić lepszą przenośność bazy danych, SQL Database zachęca do korzystania z użytkowników zawartej bazy danych zamiast nazw logowania, gdy tylko jest to możliwe. Aby uzyskać więcej informacji, zobacz [Tworzenie/zmiana nazwy logowania](https://msdn.microsoft.com/library/ms189828.aspx) oraz [kontrolowanie i udzielanie dostępu do bazy danych](sql-database-manage-logins.md).
+- Instrukcje CREATE i ALTER login są obsługiwane, ale SQL Database nie oferuje wszystkich opcji. Aby zapewnić lepszą przenośność bazy danych, SQL Database zachęca do korzystania z użytkowników zawartej bazy danych zamiast nazw logowania, gdy tylko jest to możliwe. Aby uzyskać więcej informacji, zobacz [Tworzenie/Zmienianie nazwy logowania](https://docs.microsoft.com/sql/t-sql/statements/alter-login-transact-sql) i [Zarządzanie logowaniami i użytkownikami](sql-database-manage-logins.md).
 
 ## <a name="transact-sql-syntax-not-supported-in-azure-sql-database"></a>Składnia języka Transact-SQL nie jest obsługiwana w Azure SQL Database
 

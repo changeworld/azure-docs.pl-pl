@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 85403442119f73b363fee98a9c225b9c0ec18119
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: e67a8f6b9cc175932b09e6f576148656dd9da9ba
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026863"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298822"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Połącz z usługą Azure IoT Central
 
@@ -193,6 +193,9 @@ Gdy rzeczywiste urządzenie nawiązuje połączenie z aplikacją IoT Central, st
     - Zestaw urządzeń jest dodawany przy użyciu opcji **Importuj** na stronie **urządzenia** bez określania szablonu urządzenia
     - Urządzenia, które nie zostały zarejestrowane ręcznie na stronie **urządzeń** połączone z prawidłowymi poświadczeniami, ale bez określania identyfikatora szablonu podczas rejestracji.  
 Operator może skojarzyć urządzenie z szablonem ze strony **urządzenia** za pomocą przycisku **Migrowanie** .
+
+## <a name="best-practices"></a>Najlepsze praktyki 
+1.  W przypadku używania usługi DPS do łączenia urządzeń z IoT Central upewnij się, że parametry połączenia urządzenia (IoT Hub) nie są utrwalane lub buforowane. Aby ponownie nawiązać połączenie z urządzeniami, przejdź przez regularne przepływu rejestracji urządzeń usługi DPS w celu uzyskania prawidłowych parametrów połączenia urządzenia. Jeśli parametry połączenia są buforowane, oprogramowanie urządzenia jest uruchamiane w celu ryzyka posiadania starych parametrów połączenia w scenariuszach, w których IoT Central zaktualizował bazowe IoT Hub platformy Azure. 
 
 ## <a name="sdk-support"></a>Obsługa zestawu SDK
 

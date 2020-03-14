@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/25/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b29dbd7a034123b17b34b1c0fd4c8649e30810bd
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 7cd989d944a35af8b1fd932643826e1aedd03962
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128171"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370206"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Tworzenie kontenera profilu FSLogix dla puli hostów przy użyciu Azure NetApp Files
 
@@ -73,7 +73,7 @@ Aby rozpocząć, musisz skonfigurować konto Azure NetApp Files.
 7. Wybierz **Azure NetApp Files** w wynikach wyszukiwania, a następnie wybierz pozycję **Utwórz**.
 
 8. Wybierz przycisk **Add** (Dodaj).
-9. Gdy zostanie otwarty blok **nowe konto NetApp** , wprowadź następujące wartości:
+9. Gdy zostanie otwarta karta **nowe konto NetApp** , wprowadź następujące wartości:
 
     - W obszarze **Nazwa**wprowadź nazwę konta usługi NetApp.
     - W obszarze **subskrypcja**wybierz subskrypcję dla konta magazynu skonfigurowanego w kroku 4 z menu rozwijanego.
@@ -92,7 +92,7 @@ Następnie utwórz nową pulę pojemności:
 1. Przejdź do menu Azure NetApp Files i wybierz nowe konto.
 2. W menu Konto wybierz pozycję **Pule pojemności** w obszarze usługa magazynu.
 3. Wybierz pozycję **Dodaj pulę**.
-4. Gdy zostanie otwarty blok **Nowa pula pojemności** , wprowadź następujące wartości:
+4. Gdy zostanie otwarta karta **Nowa pula pojemności** , wprowadź następujące wartości:
 
     - W polu **Nazwa**wprowadź nazwę nowej puli pojemności.
     - W obszarze **poziom usług**wybierz żądaną wartość z menu rozwijanego. Zalecamy korzystanie z wersji **Premium** dla większości środowisk.
@@ -127,7 +127,7 @@ Następnie musisz utworzyć nowy wolumin.
 
 1. Wybierz pozycję **woluminy**, a następnie wybierz pozycję **Dodaj wolumin**.
 
-2. Po otwarciu bloku **Utwórz wolumin** wprowadź następujące wartości:
+2. Po otwarciu karty **Utwórz wolumin** wprowadź następujące wartości:
 
     - W polu **Nazwa woluminu**wprowadź nazwę nowego woluminu.
     - W obszarze **Pula pojemności**wybierz właśnie utworzoną pulę pojemności z menu rozwijanego.

@@ -9,14 +9,17 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: d18fdee85bd0fbabe68fe9890c4a2dc74366041d
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: cd239106bfd3ac785cffbf1365f298da565179ec
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096685"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366091"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Ustawienia łączności z usługą Azure SQL
+> [!NOTE]
+> Funkcje są dostępne tylko w **zachodnich stanach USA 2, USA, Południowo-środkowe** stany USA z innymi regionami wkrótce
+
 > [!NOTE]
 > Ten artykuł ma zastosowanie do programu Azure SQL Server oraz do baz danych SQL Database i SQL Data Warehouse utworzonych na serwerze SQL platformy Azure. Dla uproszczenia usługi SQL Database i SQL Data Warehouse są łącznie nazywane usługą SQL Database.
 

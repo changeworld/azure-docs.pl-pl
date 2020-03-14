@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 8c8978a0114caf57d01f7add0bd9357c5d0775dc
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: c3c1bf511f3313e7408d6ce90b73de60bd1309f7
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75609948"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366749"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>Monitorowanie wydajności za pomocą dzienników Azure Monitor
 
@@ -33,17 +33,17 @@ Najlepszym sposobem dodawania agenta Log Analytics do klastra jest za pośrednic
 
 3. Kliknij pozycję **serwery z systemem Windows** , jeśli tworzysz klaster systemu Windows i serwery z systemem **Linux** w przypadku tworzenia klastra z systemem Linux. Na tej stronie zostaną wyświetlone `workspace ID` i `workspace key` (wymienione jako klucz podstawowy w portalu). W następnym kroku będą potrzebne oba elementy.
 
-4. Uruchom polecenie, aby zainstalować agenta Log Analytics w klastrze przy użyciu interfejsu API `vmss extension set` w Cloud Shell:
+4. Uruchom polecenie, aby zainstalować agenta Log Analytics w klastrze przy użyciu interfejsu API `vmss extension set`:
 
     W przypadku klastra systemu Windows:
 
-    ```sh
+    ```azurecli
     az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType> --settings "{'workspaceId':'<Log AnalyticsworkspaceId>'}" --protected-settings "{'workspaceKey':'<Log AnalyticsworkspaceKey>'}"
     ```
 
     W przypadku klastra z systemem Linux:
 
-    ```sh
+    ```azurecli
     az vmss extension set --name OmsAgentForLinux --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType> --settings "{'workspaceId':'<Log AnalyticsworkspaceId>'}" --protected-settings "{'workspaceKey':'<Log AnalyticsworkspaceKey>'}"
     ```
 
@@ -53,7 +53,7 @@ Najlepszym sposobem dodawania agenta Log Analytics do klastra jest za pośrednic
 
 5. To potrwa mniej niż 15 minut, aby pomyślnie dodać agenta do węzłów. Można sprawdzić, czy agenci zostali dodani za pomocą interfejsu API `az vmss extension list`:
 
-    ```sh
+    ```azurecli
     az vmss extension list --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType>
     ```
 

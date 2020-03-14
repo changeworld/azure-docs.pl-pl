@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 179a6181efdc6c31d50d3b5b3f708fd9149dadd3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 5192816ca7be47ecb5e602e46dff16951f7475ee
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384716"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370274"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-edge"></a>Samouczek: przygotowanie do wdrożenia Azure Data Box Edge  
 
@@ -25,6 +25,7 @@ Do ukończenia procesu instalacji i konfiguracji niezbędne są uprawnienia admi
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
+>
 > * Tworzenie nowego zasobu
 > * Uzyskiwanie klucza aktywacji
 
@@ -52,14 +53,14 @@ Poniżej opisano wymagania wstępne dotyczące konfiguracji zasobu usługi Data 
 
 Przed rozpoczęciem upewnij się, że:
 
-- Twoja subskrypcja platformy Microsoft Azure obsługuje zasób usługi Data Box Edge. Subskrypcje z płatność zgodnie z rzeczywistym użyciem nie są obsługiwane.
-- Masz uprawnienia właściciela lub współautora na poziomie grupy zasobów dla zasobów Data Box Edge/Data Box Gateway, IoT Hub i magazynu platformy Azure.
+* Subskrypcja Microsoft Azure jest włączona dla zasobu Azure Stack Edge. Upewnij się, że użyto obsługiwanej subskrypcji, takiej jak [Microsoft Umowa Enterprise (EA)](https://azure.microsoft.com/overview/sales-number/), [dostawca rozwiązań w chmurze (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp)lub [dostęp sponsorowany Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0036p/).
+* Masz uprawnienia właściciela lub współautora na poziomie grupy zasobów dla zasobów Data Box Edge/Data Box Gateway, IoT Hub i magazynu platformy Azure.
 
-    - Aby utworzyć dowolny zasób Data Box Edge/Data Box Gateway, należy mieć uprawnienia jako współautor (lub wyższy) w zakresie na poziomie grupy zasobów. Należy również upewnić się, że dostawca `Microsoft.DataBoxEdge` jest zarejestrowany. Aby uzyskać informacje na temat rejestrowania, przejdź do pozycji [zarejestruj dostawcę zasobów](data-box-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
-    - Aby utworzyć dowolny zasób IoT Hub, upewnij się, że jest zarejestrowany dostawca Microsoft. Devices. Aby uzyskać informacje na temat rejestrowania, przejdź do pozycji [zarejestruj dostawcę zasobów](data-box-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
-    - Aby utworzyć zasób konta magazynu, należy ponownie uzyskać wartość współautor lub wyższy dostęp do zakresu na poziomie grupy zasobów. Usługa Azure Storage jest domyślnie zarejestrowanym dostawcą zasobów.
-- Masz uprawnienia administratora lub użytkownika do Azure Active Directory interfejs API programu Graph. Aby uzyskać więcej informacji, zobacz [Azure Active Directory interfejs API programu Graph](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
-- Masz konto magazynu platformy Microsoft Azure z poświadczeniami dostępu.
+  * Aby utworzyć dowolny zasób Data Box Edge/Data Box Gateway, należy mieć uprawnienia jako współautor (lub wyższy) w zakresie na poziomie grupy zasobów. Należy również upewnić się, że dostawca `Microsoft.DataBoxEdge` jest zarejestrowany. Aby uzyskać informacje na temat rejestrowania, przejdź do pozycji [zarejestruj dostawcę zasobów](data-box-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
+  * Aby utworzyć dowolny zasób IoT Hub, upewnij się, że jest zarejestrowany dostawca Microsoft. Devices. Aby uzyskać informacje na temat rejestrowania, przejdź do pozycji [zarejestruj dostawcę zasobów](data-box-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
+  * Aby utworzyć zasób konta magazynu, należy ponownie uzyskać wartość współautor lub wyższy dostęp do zakresu na poziomie grupy zasobów. Usługa Azure Storage jest domyślnie zarejestrowanym dostawcą zasobów.
+* Masz uprawnienia administratora lub użytkownika do Azure Active Directory interfejs API programu Graph. Aby uzyskać więcej informacji, zobacz [Azure Active Directory interfejs API programu Graph](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
+* Masz konto magazynu platformy Microsoft Azure z poświadczeniami dostępu.
 
 ### <a name="for-the-data-box-edge-device"></a>Urządzenie Data Box Edge
 

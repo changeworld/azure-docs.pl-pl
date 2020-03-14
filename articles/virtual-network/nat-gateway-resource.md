@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/04/2020
+ms.date: 03/12/2020
 ms.author: allensu
-ms.openlocfilehash: d78828b2e439668dbc0cd8567560a709256dad5f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 3cc459b7f4b81b14f57bbb702f0b0d988654189f
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79217006"
+ms.locfileid: "79298658"
 ---
-# <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>Projektowanie sieci wirtualnych z użyciem zasobów bramy translatora adresów sieciowych (publiczna wersja zapoznawcza)
+# <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Projektowanie sieci wirtualnych z użyciem zasobów bramy translatora adresów sieciowych
 
 Zasoby bramy translatora adresów sieciowych są częścią [Virtual Network NAT](nat-overview.md) i zapewniają wychodzącą łączność z Internetem dla jednej lub kilku podsieci sieci wirtualnej. Podsieć stanów sieci wirtualnej, która będzie używana przez bramę translatora adresów sieciowych. Translator adresów sieciowych udostępnia translację adresów sieci (Resources) dla podsieci.  Zasoby bramy translatora adresów sieciowych określają, które statyczne adresy IP będą używane przez maszyny wirtualne podczas tworzenia przepływów wychodzących. Statyczne adresy IP pochodzą z zasobów publicznych adresów IP, zasobów prefiksu publicznego adresu IP lub obu. Zasób bramy NAT może korzystać z maksymalnie 16 statycznych adresów IP z obu.
 
@@ -50,7 +50,7 @@ Trasy zdefiniowane przez użytkownika nie są wymagane.
 
 Zasób został zaprojektowany tak, aby można było go zobaczyć w następującym Azure Resource Manager przykładzie w formacie przypominającym szablon.  Ten format podobny do szablonu jest przedstawiony tutaj, aby zilustrować koncepcje i strukturę.  Zmodyfikuj przykład swoich potrzeb.  Ten dokument nie jest przeznaczony dla samouczka.
 
-Na poniższym diagramie przedstawiono zapisywalne odwołania między różnymi zasobami Azure Resource Manager.  Strzałka wskazuje kierunek odniesienia pochodzący z lokalizacji, w której jest zapisywalny. Przegląd 
+Na poniższym diagramie przedstawiono zapisywalne odwołania między różnymi zasobami Azure Resource Manager.  Strzałka wskazuje kierunek odniesienia pochodzący z lokalizacji, w której jest zapisywalny. Recenzja 
 
 <p align="center">
   <img src="media/nat-overview/flow-map.svg" width="256" title="Model obiektów Virtual Network NAT">
@@ -336,7 +336,7 @@ Port dla tego elementu jest dostępny do ponownego użycia w tym samym docelowym
 - Translator adresów sieciowych nie może obejmować wielu sieci wirtualnych.
 
 
-## <a name="feedback"></a>Opinia
+## <a name="feedback"></a>Opinie
 
 Chcemy wiedzieć, jak możemy ulepszyć usługę. Zaproponuj i zagłosuj na to, co będziemy kompilować dalej w usłudze [UserVoice dla translatora adresów sieciowych](https://aka.ms/natuservoice).
 
@@ -353,6 +353,7 @@ Chcemy wiedzieć, jak możemy ulepszyć usługę. Zaproponuj i zagłosuj na to, 
   - [Interfejs wiersza polecenia platformy Azure](./quickstart-create-nat-gateway-cli.md)
   - [PowerShell](./quickstart-create-nat-gateway-powershell.md)
   - [Portal](./quickstart-create-nat-gateway-portal.md)
+  - [Szablon](./quickstart-create-nat-gateway-template.md)
 * Informacje o interfejsie API zasobów bramy translatora adresów sieciowych
   - [Interfejs API REST](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
   - [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest)

@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: diberry
 ms.openlocfilehash: 6ee156efb5512c92d86ba05513b6a2b91df4eae8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393821"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79221030"
 ---
 # <a name="entities-and-their-purpose-in-luis"></a>Jednostki i ich cele w LUIS
 
@@ -58,7 +58,7 @@ Weź pod uwagę następujące 4 wyrażenia długości:
 
 |Wypowiedź|Przewidywany intencji|Wyodrębnione jednostki|Wyjaśnienie|
 |--|--|--|--|
-|Pomoc|pomoc|-|Brak elementów do wyodrębnienia.|
+|Pomoc|Pomoc|-|Brak elementów do wyodrębnienia.|
 |Wyślij coś|sendSomething|-|Brak elementów do wyodrębnienia. Model nie został przeszkolony do wyodrębnienia `something` w tym kontekście i nie ma żadnego odbiorcy.|
 |Wyślij Roberta|sendSomething|`Bob`, `present`|Model został przeszkolony z wbudowaną jednostką nazwisko [osoby](luis-reference-prebuilt-person.md) , która wyodrębni nazwę `Bob`. Jednostka poznania maszynowego została użyta w celu wyodrębnienia `present`.|
 |Wyślij Roberta do pudełka czekolady|sendSomething|`Bob`, `box of chocolates`|Dwie ważne fragmenty danych, `Bob` i `box of chocolates`, zostały wyodrębnione według jednostek.|

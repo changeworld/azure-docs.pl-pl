@@ -4,16 +4,16 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 53c9dea83fc6d413d7e82194696ffedabcc8cf7b
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 14a6703b3e256d33ab3b18e1821587cc3eb293db
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71830142"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79381967"
 ---
 Ważne jest, aby zachować bezpieczeństwo maszyny wirtualnej dla aplikacji, które są uruchamiane. Zabezpieczanie maszyn wirtualnych może obejmować jedną lub więcej usług i funkcji platformy Azure, które obejmują bezpieczny dostęp do maszyn wirtualnych i bezpieczny magazyn danych. Ten artykuł zawiera informacje, które umożliwiają bezpieczne zachowanie maszyny wirtualnej i aplikacji.
 
-## <a name="antimalware"></a>Oprogramowanie chroniące przed złośliwym kodem
+## <a name="antimalware"></a>Ochrona przed złośliwym kodem
 
 Nowoczesne zagrożenie w środowiskach chmury jest dynamiczne, zwiększając nacisk na konserwację efektywnej ochrony w celu spełnienia wymagań dotyczących zgodności i zabezpieczeń. [Oprogramowanie chroniące przed złośliwym oprogramowaniem firmy Microsoft dla systemu Azure](../articles/security/fundamentals/antimalware.md) to bezpłatna funkcja ochrony w czasie rzeczywistym, która pomaga identyfikować i usuwać wirusy, programy szpiegujące oraz inne złośliwe oprogramowanie. Alerty można skonfigurować w taki sposób, aby powiadamiać użytkownika o próbie instalacji lub uruchomienia na maszynie wirtualnej znanego złośliwego lub niechcianego oprogramowania. Nie jest obsługiwana na maszynach wirtualnych z systemem Linux lub Windows Server 2008.
 
@@ -24,6 +24,20 @@ Nowoczesne zagrożenie w środowiskach chmury jest dynamiczne, zwiększając nac
 Dostęp w czasie just in Time do Security Center można zastosować w ramach wdrożenia maszyny wirtualnej w celu zablokowania ruchu przychodzącego na maszynach wirtualnych platformy Azure, co pozwala ograniczyć narażenie na ataki, zapewniając łatwy dostęp do łączenia się z maszynami wirtualnymi w razie potrzeby. Gdy jest włączona funkcja just in Time i użytkownik zażąda dostępu do maszyny wirtualnej, Security Center sprawdza, jakie uprawnienia użytkownik ma dla maszyny wirtualnej. Jeśli mają odpowiednie uprawnienia, żądanie zostanie zatwierdzone, a Security Center automatycznie skonfiguruje sieciowe grupy zabezpieczeń (sieciowych grup zabezpieczeń), aby zezwalały na ruch przychodzący do wybranych portów przez ograniczony czas. Po upływie tego czasu program Security Center Przywraca poprzedni stan sieciowych grup zabezpieczeń. 
 
 ## <a name="encryption"></a>Szyfrowanie
+
+Dla dysków zarządzanych są oferowane dwie metody szyfrowania. Szyfrowanie na poziomie systemu operacyjnego, który jest Azure Disk Encryption i szyfrowanie na poziomie platformy, który jest szyfrowanie po stronie serwera.
+
+### <a name="server-side-encryption"></a>Szyfrowanie po stronie serwera
+
+Usługa Azure Managed disks automatycznie szyfruje dane domyślnie, gdy są utrwalane w chmurze. Szyfrowanie po stronie serwera chroni dane i pomaga sprostać zobowiązaniom dotyczącym bezpieczeństwa i zgodności w organizacji. Dane w usłudze Azure Managed disks są szyfrowane w sposób niewidoczny dla użytkownika przy użyciu 256-bitowego [szyfrowania AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), jednego z najsilniejszych szyfrów blokowych i jest zgodny ze standardem FIPS 140-2.
+
+Szyfrowanie nie ma wpływu na wydajność dysków zarządzanych. Nie ma dodatkowych opłat za szyfrowanie.
+
+Możesz polegać na kluczach zarządzanych przez platformę do szyfrowania dysku zarządzanego lub można zarządzać szyfrowaniem przy użyciu własnych kluczy. Jeśli zdecydujesz się na zarządzanie szyfrowaniem przy użyciu własnych kluczy, możesz określić *klucz zarządzany przez klienta* , który będzie używany do szyfrowania i odszyfrowywania wszystkich danych na dyskach zarządzanych. 
+
+Aby dowiedzieć się więcej o szyfrowaniu po stronie serwera, zapoznaj się z artykułami dla [systemu Windows](../articles/virtual-machines/windows/disk-encryption.md) lub [Linux](../articles/virtual-machines/linux/disk-encryption.md).
+
+### <a name="azure-disk-encryption"></a>Usługa Azure Disk Encryption
 
 W przypadku ulepszonych zabezpieczeń i zgodności [maszyn](../articles/virtual-machines/linux/disk-encryption-overview.md) wirtualnych z [systemem Windows](../articles/virtual-machines/windows/encrypt-disks.md) można zaszyfrować dyski wirtualne na platformie Azure. Dyski wirtualne na maszynach wirtualnych z systemem Windows są szyfrowane przy użyciu funkcji BitLocker. Dyski wirtualne na maszynach wirtualnych z systemem Linux są szyfrowane przy użyciu DM-Crypt. 
 

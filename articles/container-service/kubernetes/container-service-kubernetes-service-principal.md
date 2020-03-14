@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 3126339a1eb8ff9c0ef34a330333635d3d0f6433
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 40d4dc898efe6b719ec5e1f1ec0471a9677d3c95
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274370"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371124"
 ---
 # <a name="deprecated-set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>(PRZESTARZAŁE) Konfigurowanie jednostki usługi Azure AD dla klastra Kubernetes w usłudze Container Service
 
@@ -59,7 +59,7 @@ az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/<subscrip
 
 Dane wyjściowe są zbliżone do następujących (pokazane tutaj zostały zredagowane):
 
-![Tworzenie nazwy głównej usługi](./media/container-service-kubernetes-service-principal/service-principal-creds.png)
+![Tworzenie jednostki usługi](./media/container-service-kubernetes-service-principal/service-principal-creds.png)
 
 Wyróżniono **identyfikator klienta** (`appId`) i **klucz tajny klienta** (`password`), używane jako parametry nazwy głównej usługi przy wdrażaniu klastra.
 
@@ -103,7 +103,7 @@ Tak jak w przypadku innych opcji tworzenia klastra Kubernetes, parametry istniej
 
 Następujące polecenie tworzy klaster Kubernetes i generuje zarówno klucze SSH, jak i poświadczenia nazwy głównej usługi:
 
-```console
+```azurecli
 az acs create -n myClusterName -d myDNSPrefix -g myResourceGroup --generate-ssh-keys --orchestrator-type kubernetes
 ```
 

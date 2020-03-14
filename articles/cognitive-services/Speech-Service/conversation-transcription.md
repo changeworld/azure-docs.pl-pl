@@ -1,5 +1,5 @@
 ---
-title: Transkrypcja konwersacji — informacje (wersja zapoznawcza) — usługa mowy
+title: Transkrypcja konwersacji (wersja zapoznawcza) — usługa mowy
 titleSuffix: Azure Cognitive Services
 description: Transkrypcja konwersacji to rozwiązanie typu "Zamiana mowy na tekst", które łączy rozpoznawanie mowy, identyfikację osoby mówiącej i wyrażenie zdania z każdym głośnikem (znanym także jako diarization), aby zapewnić w czasie rzeczywistym i/lub asynchroniczne transkrypcję każdej konwersacji.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 03/11/2020
 ms.author: dapine
-ms.openlocfilehash: 8e36a5c4d9ce2bc38565d6c9c256ed2cc7efe357
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 8fc52428795b0dc8123d501dac9605c473f61456
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561072"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367826"
 ---
-# <a name="about-conversation-transcription-preview"></a>Transkrypcja konwersacji — informacje (wersja zapoznawcza)
+# <a name="what-is-conversation-transcription-preview"></a>Co to jest transkrypcja konwersacji (wersja zapoznawcza)?
 
 Transkrypcja konwersacji to rozwiązanie typu ["Zamiana mowy na tekst](speech-to-text.md) ", które łączy rozpoznawanie mowy, identyfikację osoby mówiącej i wyrażenie zdania z każdym głośnikem (znanym także jako _diarization_), aby zapewnić w czasie rzeczywistym i/lub asynchroniczne transkrypcję każdej konwersacji. Transkrypcja konwersacji odróżnia głośniki w konwersacji, aby określić, którzy z nich korzystają i kiedy ułatwiają deweloperom Dodawanie mowy do tekstu do aplikacji, które wykonują wiele diarizationów.
 

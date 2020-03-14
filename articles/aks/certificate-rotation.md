@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: zarhoads
-ms.openlocfilehash: 9ae8f5072573dcc91dd3e8bdcd08968790f6444d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: f299b13baf5811b92bdc2e40b027868617d7574c
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79205211"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368523"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Obróć certyfikaty w usłudze Azure Kubernetes Service (AKS)
 
@@ -52,13 +52,13 @@ AKS generuje i używa następujących certyfikatów, urzędów certyfikacji i ko
 
 Użyj [AZ AKS Get-Credentials][az-aks-get-credentials] , aby zalogować się do klastra AKS. To polecenie pobiera również i konfiguruje `kubectl` certyfikat klienta na komputerze lokalnym.
 
-```console
+```azurecli
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 ```
 
 Użyj `az aks rotate-certs`, aby obrócić wszystkie certyfikaty, urzędy certyfikacji i sygnaturę dostępu współdzielonego w klastrze.
 
-```console
+```azurecli
 az aks rotate-certs -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 ```
 
@@ -74,7 +74,7 @@ Unable to connect to the server: x509: certificate signed by unknown authority (
 
 Zaktualizuj certyfikat używany przez `kubectl`, uruchamiając `az aks get-credentials`.
 
-```console
+```azurecli
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME --overwrite-existing
 ```
 

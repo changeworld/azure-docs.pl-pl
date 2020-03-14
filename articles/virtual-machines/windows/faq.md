@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 64aeaf412bc8af242a9d3184a3c1f0fa0ee4809e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: e3d2673ba52ba0cca36e2a999558313b64716ade
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79243330"
+ms.locfileid: "79299618"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Często zadawane pytania dotyczące Windows Virtual Machines
 W tym artykule opisano niektóre często zadawane pytania dotyczące maszyn wirtualnych z systemem Windows utworzonych na platformie Azure przy użyciu modelu wdrażania Menedżer zasobów. Aby uzyskać informacje na temat wersji systemu Linux tego tematu, zobacz [często zadawane pytania dotyczące Linux Virtual Machines](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -41,7 +41,7 @@ Nawiąż połączenie zdalne przy użyciu Podłączanie pulpitu zdalnego (RDP) d
 
 Jeśli masz problemy z Pulpit zdalny, zobacz [Rozwiązywanie problemów pulpit zdalny połączeń z maszyną wirtualną platformy Azure](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)z systemem Windows. 
 
-Jeśli znasz funkcję Hyper-V, możesz poszukać narzędzia podobnego do VMConnect. Platforma Azure nie oferuje podobnego narzędzia, ponieważ dostęp do konsoli maszyny wirtualnej nie jest obsługiwany.
+Użytkownicy znający funkcję Hyper-V mogą szukać narzędzia podobnego do VMConnect. Platforma Azure nie oferuje podobnego narzędzia, ponieważ dostęp z konsoli do maszyny wirtualnej nie jest obsługiwany.
 
 ## <a name="can-i-use-the-temporary-disk-the-d-drive-by-default-to-store-data"></a>Czy można używać dysku tymczasowego (domyślnie dysku D:) do przechowywania danych?
 Nie używaj dysku tymczasowego do przechowywania danych. Jest to tylko magazyn tymczasowy, więc ryzyko utraty danych, których nie można odzyskać. Utrata danych może wystąpić, gdy maszyna wirtualna zostanie przeniesiona do innego hosta. Zmiana rozmiaru maszyny wirtualnej, aktualizowanie hosta lub awaria sprzętu na hoście to kilka przyczyn, które mogą spowodować przeniesienie maszyny wirtualnej.
@@ -75,7 +75,7 @@ Tak. Aby szybko utworzyć maszynę wirtualną z systemem Linux do wypróbowania,
 Tak. teraz jest to możliwe. Najpierw należy zatrzymać cofniętą alokację maszyny wirtualnej. Następnie można dodać lub usunąć kartę sieciową (chyba że jest to ostatnia karta sieciowa na maszynie wirtualnej). 
 
 ## <a name="are-there-any-computer-name-requirements"></a>Czy istnieją jakieś wymagania dotyczące nazw komputerów?
-Tak. Nazwa komputera może zawierać maksymalnie 15 znaków. Zobacz [reguły nazewnictwa i ograniczenia,](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#sample-naming-convention) Aby uzyskać więcej informacji na temat nazywania zasobów.
+Tak. Nazwa komputera może zawierać maksymalnie 15 znaków. Zobacz [reguły nazewnictwa i ograniczenia,](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) Aby uzyskać więcej informacji na temat nazywania zasobów.
 
 ## <a name="are-there-any-resource-group-name-requirements"></a>Czy istnieją jakieś wymagania dotyczące nazw grup zasobów?
 Tak. Nazwa grupy zasobów może zawierać maksymalnie 90 znaków. Aby uzyskać więcej informacji na temat grup zasobów [, zobacz Reguły nazewnictwa i ograniczenia](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#resource-naming) .

@@ -4,12 +4,12 @@ description: W tym artykule dowiesz się, jak rozwiązywać problemy z tworzenie
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: c087814d74032bfc39310690cb31e258fdb1e41e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 15e4b4c8850798fd2386cd2874b6ab58a18d5406
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79247932"
+ms.locfileid: "79297394"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Rozwiązywanie problemów dotyczących błędów kopii zapasowych w usłudze Azure Virtual Machines
 
@@ -24,7 +24,7 @@ W tej sekcji omówiono niepowodzenie operacji tworzenia kopii zapasowej maszyny 
 * Upewnij się, że Agent maszyny wirtualnej (Agent) jest [najnowszą wersją](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent).
 * Upewnij się, że wersja systemu operacyjnego Windows lub Linux jest obsługiwana, zapoznaj się z [matrycą obsługi kopii zapasowych IaaS maszyny wirtualnej](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas).
 * Sprawdź, czy inna usługa kopii zapasowej nie jest uruchomiona.
-  * Aby upewnić się, że nie występują żadne problemy z rozszerzeniami migawek, [Odinstaluj rozszerzenia w celu wymuszenia ponownego załadowania](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-backup-extension-fails-to-update-or-load)
+  * Aby upewnić się, że nie występują żadne problemy z rozszerzeniami migawek, [Odinstaluj rozszerzenia w celu wymuszenia ponownego załadowania](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout)
 * Sprawdź, czy maszyna wirtualna ma łączność z Internetem.
   * Upewnij się, że inna usługa kopii zapasowej nie jest uruchomiona.
 * W `Services.msc`upewnij się, że usługa **agenta gościa systemu Windows Azure** jest **uruchomiona**. Jeśli brakuje usługi **agenta gościa platformy Microsoft Azure** , zainstaluj ją z [kopii zapasowych maszyn wirtualnych platformy Azure w magazynie Recovery Services](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent).
@@ -191,7 +191,7 @@ Dzięki temu migawki będą wykonywane za pośrednictwem hosta, a nie konta goś
 | **Kod błędu**: ExtensionSnapshotFailedNoSecureNetwork <br/> **Komunikat o błędzie**: operacja migawki nie powiodła się z powodu błędu tworzenia bezpiecznego kanału komunikacji sieciowej. | <ol><li> Otwórz Edytor rejestru, uruchamiając **regedit. exe** w trybie podniesionych uprawnień. <li> Zidentyfikuj wszystkie wersje .NET Framework znajdujących się w systemie. Znajdują się one w hierarchii klucza rejestru **HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft**. <li> Dla każdej .NET Framework znajdującej się w kluczu rejestru Dodaj następujący klucz: <br> **Schusestrongcrypto we "= DWORD: 00000001**. </ol>|
 | **Kod błędu**: ExtensionVCRedistInstallationFailure <br/> **Komunikat o błędzie**: operacja migawki nie powiodła się z powodu błędu C++ instalacji pakietu redystrybucyjnego Visual Studio 2012. | Przejdź do C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion i zainstaluj vcredist2013_x64.<br/>Upewnij się, że wartość klucza rejestru, która umożliwia instalację usługi, jest ustawiona na poprawną wartość. Oznacza to, że należy ustawić wartość **początkową** w **HKEY_LOCAL_MACHINE \system\currentcontrolset\services\msiserver** na **3** , a nie **4**. <br><br>Jeśli nadal występują problemy z instalacją, uruchom ponownie usługę instalacji, uruchamiając polecenie **msiexec/unregister** , a następnie pozycję **msiexec/Register** z wiersza polecenia z podwyższonym poziomem uprawnień.  |
 | **Kod błędu**: UserErrorRequestDisallowedByPolicy <BR> **Komunikat o błędzie**: na maszynie wirtualnej skonfigurowano nieprawidłowe zasady, które uniemożliwiają wykonanie operacji migawki. | Jeśli masz Azure Policy, które [regulują Tagi w środowisku](https://docs.microsoft.com/azure/governance/policy/tutorials/govern-tags), Rozważ zmianę zasad z [skutku odmowy](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deny) na [skutek modyfikacji](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify)lub Utwórz grupę zasobów ręcznie zgodnie ze [schematem nazewnictwa wymaganym przez Azure Backup](https://docs.microsoft.com/azure/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines).
-## <a name="jobs"></a>Stanowiska
+## <a name="jobs"></a>Zadania
 
 | Szczegóły błędu | Obejście |
 | --- | --- |

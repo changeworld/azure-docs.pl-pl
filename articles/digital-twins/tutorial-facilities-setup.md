@@ -9,14 +9,16 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 01/10/2020
-ms.openlocfilehash: 16e4a7e2f06d2630c970f8daa4428e7a184a79df
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 878b64fe6dd491adbb61c4c74cf4a5fc039858cd
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163045"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371413"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Samouczek: wdrażanie usługi Azure Digital bliźniaczych reprezentacji Preview i Konfigurowanie wykresu przestrzennego
+
+[!INCLUDE [digital-twins-preview-limit-alert](../../includes/digital-twins-preview-limit-alert.md)]
 
 Możesz użyć usługi Azure Digital bliźniaczych reprezentacji w wersji zapoznawczej, aby połączyć osoby, miejsca i urządzenia w spójny system przestrzenny. W tej serii samouczków przedstawiono sposób wykrywania zajętości pomieszczeń z optymalnymi warunkami temperatury i jakości powietrza za pomocą usługi Azure Digital Twins. 
 
@@ -38,7 +40,7 @@ W tym samouczkach są używane i modyfikowane te same przykłady co w [przewodni
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Subskrypcja platformy Azure. Jeśli nie masz konta platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Subskrypcja platformy Azure. Jeśli nie masz konta platformy Azure, Utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 - Zestaw SDK dla platformy .NET Core. Przykładowe aplikacje usługi Azure Digital Twins używane w tych samouczkach są napisane w języku C#. Zainstaluj [zestaw SDK .NET Core w wersji 2.1.403 lub nowszej](https://www.microsoft.com/net/download) na maszynie deweloperskiej w celu skompilowania i uruchomienia przykładu. Sprawdź, czy na Twojej maszynie jest zainstalowana właściwa wersja, uruchamiając polecenie `dotnet --version` w oknie poleceń.
 
@@ -147,7 +149,7 @@ Plik **provisionSample.yaml** zawiera następujące węzły:
 
 - **spaces**: w modelu obiektów usługi Digital Twins węzeł `spaces` reprezentuje lokalizacje fizyczne. Każde miejsce ma typ (`Type`) &mdash; na przykład Region, Venue (Miejsce) lub Customer (Klient) &mdash; oraz przyjazną nazwę (`Name`). Miejsca mogą należeć do innych miejsc tworzących strukturę hierarchiczną. Plik provisionSample.yaml zawiera wykres przestrzenny wymyślonego budynku. Zwróć uwagę na logiczne zagnieżdżanie miejsc typu `Floor` w węźle `Venue`, typu `Area` na piętrze i węzłów `Room` w obszarze. 
 
-- **devices**: miejsca mogą zawierać urządzenia (`devices`) będące jednostkami fizycznymi lub wirtualnymi, które zarządzają pewną liczbą czujników. Na przykład urządzeniem może być telefon użytkownika, zasobnik czujników urządzenia Raspberry Pi lub brama. W wymyślonym budynku z Twojego przykładu zwróć uwagę na sposób umieszczenia urządzenia **Raspberry Pi 3 A1** w pomieszczeniu **Focus Room**. Każdy węzeł urządzenia jest identyfikowany przez unikatowy identyfikator `hardwareId` trwale zakodowany w przykładzie. Aby skonfigurować ten przykład na potrzeby rzeczywistego środowiska produkcyjnego, zamień te wartości na wartości z Twojej konfiguracji.  
+- **devices**: miejsca mogą zawierać urządzenia (`devices`) będące jednostkami fizycznymi lub wirtualnymi, które zarządzają pewną liczbą czujników. Na przykład urządzenie może być telefonem użytkownika, Raspberry z czujnikiem pi lub bramą. W wymyślonym budynku z Twojego przykładu zwróć uwagę na sposób umieszczenia urządzenia **Raspberry Pi 3 A1** w pomieszczeniu **Focus Room**. Każdy węzeł urządzenia jest identyfikowany przez unikatowy identyfikator `hardwareId` trwale zakodowany w przykładzie. Aby skonfigurować ten przykład na potrzeby rzeczywistego środowiska produkcyjnego, zamień te wartości na wartości z Twojej konfiguracji.  
 
 - **sensors**: urządzenie może zawierać wiele czujników (`sensors`). Umożliwiają one wykrywanie i rejestrowanie zmian fizycznych, takich jak temperatura, ruch i poziom naładowania baterii. Każdy węzeł czujnika jest unikatowo identyfikowany za pomocą identyfikatora `hardwareId` trwale zapisanego w tym miejscu. Na potrzeby rzeczywistej aplikacji zamień te identyfikatory, używając unikatowych identyfikatorów czujników z Twojej konfiguracji. Plik provisionSample.yaml ma dwa czujniki umożliwiające rejestrowanie ruchu (*Motion*) i dwutlenku węgla (*CarbonDioxide*). Dodaj kolejny czujnik, aby rejestrować temperaturę (*Temperature*), dodając poniższe wiersze pod wierszami dotyczącymi czujnika CarbonDioxide. Są one dostępne w provisionSample. YAML jako wiersze z komentarzem. Możesz przenieść je poza komentarze, usuwając znak `#` na początku wiersza. 
 

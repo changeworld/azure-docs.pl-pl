@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 1ae3caa2d1f90bbbae1070d95d676eb206a361a0
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 0988c8154c63bb408493edf3243078e625c80d53
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647345"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371226"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Konfigurowanie sieci wirtualnych Cognitive Services platformy Azure
 
@@ -27,7 +27,7 @@ Aplikacja, która uzyskuje dostęp do zasobu Cognitive Services, gdy reguły sie
 > * Żądanie powinno pochodzić z usługi działającej w ramach platformy Azure Virtual Network (VNet) na liście dozwolonych podsieci docelowego konta Cognitive Services. Punkt końcowy w żądaniach pochodzących z sieci wirtualnej musi być ustawiony jako [niestandardową poddomeną](cognitive-services-custom-subdomains.md) konta Cognitive Services.
 > * Lub żądanie powinno pochodzić z listy dozwolonych adresów IP.
 >
-> Zablokowane żądania obejmują te z innych usług platformy Azure, z Azure Portal z usług rejestrowania i metryk i tak dalej.
+> Żądania, które są blokowane obejmują z innymi usługami platformy Azure w witrynie Azure portal, rejestrowania i metryk usług i tak dalej.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -35,11 +35,11 @@ Aplikacja, która uzyskuje dostęp do zasobu Cognitive Services, gdy reguły sie
 
 Aby zabezpieczyć zasób Cognitive Services, należy najpierw skonfigurować regułę, aby odmówić dostępu do ruchu ze wszystkich sieci (łącznie z ruchem internetowym). Następnie należy skonfigurować reguły zezwalające na dostęp do ruchu pochodzącego z określonych sieci wirtualnych. Ta konfiguracja umożliwia tworzenie bezpiecznej granicy sieci dla aplikacji. Możesz również skonfigurować reguły, aby udzielić dostępu do ruchu z wybranych zakresów publicznych adresów IP w Internecie, włączając połączenia z określonych klientów internetowych lub lokalnych.
 
-Reguły sieciowe są wymuszane dla wszystkich protokołów sieciowych na platformie Azure Cognitive Services, w tym REST i WebSocket. Aby uzyskać dostęp do danych przy użyciu narzędzi, takich jak konsole testów platformy Azure, należy skonfigurować jawne reguły sieciowe. Reguły sieci można stosować do istniejących zasobów Cognitive Services lub podczas tworzenia nowych zasobów Cognitive Services. Po zastosowaniu reguł sieci są one wymuszane dla wszystkich żądań.
+Reguły sieciowe są wymuszane dla wszystkich protokołów sieciowych na platformie Azure Cognitive Services, w tym REST i WebSocket. Aby uzyskać dostęp do danych przy użyciu narzędzi, takich jak konsole testów platformy Azure, należy skonfigurować jawne reguły sieciowe. Reguły sieci można stosować do istniejących zasobów Cognitive Services lub podczas tworzenia nowych zasobów Cognitive Services. Po reguły sieci są stosowane, są one wymuszane dla wszystkich żądań.
 
 ## <a name="supported-regions-and-service-offerings"></a>Obsługiwane regiony i oferty usług
 
-Obsługa sieci wirtualnych dla Cognitive Services jest ograniczona do regionu *— euap*, *Europa Zachodnia*i *zachodnie stany USA 2* . Ponadto nie wszystkie oferty usługi poznawczej obsługują sieci wirtualne. Poniższe oferty usługi poznawczej umożliwiają korzystanie z sieci wirtualnych. Jeśli oferta usługi nie jest wymieniona w tym miejscu, nie obsługuje sieci wirtualnych.
+Obsługa sieci wirtualnych dla Cognitive Services wymienionych poniżej jest ograniczona do *centralnych stanów USA*, *Południowo-środkowe*stany USA, *wschodniej USA*, *zachodnie*stany USA 2, *Europa Północna*, *Północna Republika Południowej Afryki*, *Europa zachodnia*, *Indie Środkowe*, *Australia Wschodnia*, *zachodnie stany USA*i *US gov Wirginiae* regiony platformy Azure. Jeśli oferta usługi nie jest wymieniona w tym miejscu, nie obsługuje sieci wirtualnych.
 
 > [!div class="checklist"]
 > * [Wykrywacz anomalii](./anomaly-detector/index.yml)
@@ -51,19 +51,40 @@ Obsługa sieci wirtualnych dla Cognitive Services jest ograniczona do regionu *�
 > * [LUIS](./luis/index.yml)
 > * [Personalizacja](./personalizer/index.yml)
 > * [Analiza tekstu](./text-analytics/index.yml)
+> * [QnA Maker](./qnamaker/index.yml)
 
-## <a name="change-the-default-network-access-rule"></a>Zmiana domyślnej reguły dostępu do sieci
+Obsługa sieci wirtualnych dla Cognitive Services wymienionych poniżej jest ograniczona do regionu *środkowe stany USA*, *Południowo-środkowe*stany USA, *Wschodnie stany*US USA, *zachodnie stany USA 2*, *globalne*i *US gov Wirginia* regiony platformy Azure.
+> [!div class="checklist"]
+> * [Tłumaczenie tekstu w usłudze Translator](./translator/index.yml)
 
-Domyślnie zasoby Cognitive Services akceptują połączenia od klientów w dowolnej sieci. Aby ograniczyć dostęp do wybranych sieci, musisz najpierw zmienić akcję domyślną.
+## <a name="service-tags"></a>Tagi usług
+Oprócz obsługi punktów końcowych usługi sieci wirtualnej dla powyższych usług Cognitive Services obsługuje także tag usługi dla konfiguracji reguł sieci wychodzącej. Poniższe usługi są zawarte w tagu usługi CognitiveServicesManagement.
+> [!div class="checklist"]
+> * [Wykrywacz anomalii](./anomaly-detector/index.yml)
+> * [Przetwarzanie obrazów](./computer-vision/index.yml)
+> * [Content Moderator](./content-moderator/index.yml)
+> * [Custom Vision](./custom-vision-service/index.yml)
+> * [Stoi](./face/index.yml)
+> * [Aparat rozpoznawania formularzy](./form-recognizer/index.yml)
+> * [LUIS](./luis/index.yml)
+> * [Personalizacja](./personalizer/index.yml)
+> * [Analiza tekstu](./text-analytics/index.yml)
+> * [QnA Maker](./qnamaker/index.yml)
+> * [Tłumaczenie tekstu w usłudze Translator](./translator/index.yml)
+> * [Speech Service](./speech-service/index.yml)
+
+## <a name="change-the-default-network-access-rule"></a>Zmień domyślną regułę dostępu do sieci
+
+Domyślnie zasoby Cognitive Services akceptują połączenia od klientów w dowolnej sieci. Aby ograniczyć dostęp do wybranych sieci, należy najpierw zmienić domyślnej akcji.
 
 > [!WARNING]
-> Wprowadzanie zmian w regułach sieci może mieć wpływ na możliwość łączenia się aplikacji z platformą Azure Cognitive Services. Ustawienie domyślnej reguły sieci na **Odmów** uniemożliwia dostęp do danych, chyba że stosowane są również określone reguły **sieciowe zezwalające na dostęp.** Przed zmianą reguły domyślnej na Odmów dostępu upewnij się, że masz dostęp do dowolnych dozwolonych sieci przy użyciu reguł sieci. Jeśli zezwolisz na wyświetlanie listy adresów IP dla sieci lokalnej, pamiętaj, aby dodać wszystkie możliwe wychodzące publiczne adresy IP z sieci lokalnej.
+> Wprowadzanie zmian w regułach sieci może mieć wpływ na możliwość łączenia się aplikacji z platformą Azure Cognitive Services. Ustawienie domyślnej reguły sieci na **Odmów** uniemożliwia dostęp do danych, chyba że stosowane są również określone reguły **sieciowe zezwalające na dostęp.** Pamiętaj udzielić dostępu do żadnych dozwolonych sieci przy użyciu reguł sieci, zanim będzie można zmienić domyślną regułę, aby odmówić dostępu. Jeśli zezwolisz na wyświetlanie listy adresów IP dla sieci lokalnej, pamiętaj, aby dodać wszystkie możliwe wychodzące publiczne adresy IP z sieci lokalnej.
 
-### <a name="managing-default-network-access-rules"></a>Zarządzanie domyślnymi regułami dostępu do sieci
+### <a name="managing-default-network-access-rules"></a>Reguły dostępu do sieci w usłudze zarządzania domyślne
 
 Można zarządzać domyślnymi regułami dostępu do sieci dla zasobów Cognitive Services za pomocą Azure Portal, programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
 
-# <a name="azure-portaltabportal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 1. Przejdź do zasobu Cognitive Services, który chcesz zabezpieczyć.
 
@@ -78,7 +99,7 @@ Można zarządzać domyślnymi regułami dostępu do sieci dla zasobów Cognitiv
 
 1. Wybierz pozycję **Zapisz** , aby zastosować zmiany.
 
-# <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 1. Zainstaluj [Azure PowerShell](/powershell/azure/install-az-ps) i [Zaloguj się](/powershell/azure/authenticate-azureps)lub wybierz opcję **Wypróbuj**.
 
@@ -92,7 +113,7 @@ Można zarządzać domyślnymi regułami dostępu do sieci dla zasobów Cognitiv
     (Get-AzCognitiveServicesAccountNetworkRuleSet @parameters).DefaultAction
     ```
 
-1. Ustaw regułę domyślną, aby domyślnie odrzucać dostęp do sieci.
+1. Ustaw domyślną regułę w celu blokowania dostępu do sieci domyślnie.
 
     ```azurepowershell-interactive
     $parameters = @{
@@ -103,7 +124,7 @@ Można zarządzać domyślnymi regułami dostępu do sieci dla zasobów Cognitiv
     Update-AzCognitiveServicesAccountNetworkRuleSet @parameters
     ```
 
-1. Ustaw domyślną regułę zezwalającą na dostęp do sieci.
+1. Ustaw domyślną regułę, aby zezwolić na dostęp do sieci domyślnie.
 
     ```azurepowershell-interactive
     $parameters = @{
@@ -114,7 +135,7 @@ Można zarządzać domyślnymi regułami dostępu do sieci dla zasobów Cognitiv
     Update-AzCognitiveServicesAccountNetworkRuleSet @parameters
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
+# <a name="azure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
 1. Zainstaluj [interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) i [Zaloguj się](/cli/azure/authenticate-azure-cli)lub wybierz opcję **Wypróbuj**.
 
@@ -126,7 +147,7 @@ Można zarządzać domyślnymi regułami dostępu do sieci dla zasobów Cognitiv
         --query networkRuleSet.defaultAction
     ```
 
-1. Ustaw regułę domyślną, aby domyślnie odrzucać dostęp do sieci.
+1. Ustaw domyślną regułę w celu blokowania dostępu do sieci domyślnie.
 
     ```azurecli-interactive
     az cognitiveservices account update \
@@ -134,7 +155,7 @@ Można zarządzać domyślnymi regułami dostępu do sieci dla zasobów Cognitiv
         --default-action Deny
     ```
 
-1. Ustaw domyślną regułę zezwalającą na dostęp do sieci.
+1. Ustaw domyślną regułę, aby zezwolić na dostęp do sieci domyślnie.
 
     ```azurecli-interactive
     az cognitiveservices account update \
@@ -165,7 +186,7 @@ Zasób Cognitive Services i sieci wirtualne z udzielonym dostępem mogą znajdow
 
 Można zarządzać regułami sieci wirtualnej dla zasobów Cognitive Services za pomocą Azure Portal, programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
 
-# <a name="azure-portaltabportal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 1. Przejdź do zasobu Cognitive Services, który chcesz zabezpieczyć.
 
@@ -200,11 +221,11 @@ Można zarządzać regułami sieci wirtualnej dla zasobów Cognitive Services za
 
 1. Wybierz pozycję **Zapisz** , aby zastosować zmiany.
 
-# <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 1. Zainstaluj [Azure PowerShell](/powershell/azure/install-az-ps) i [Zaloguj się](/powershell/azure/authenticate-azureps)lub wybierz opcję **Wypróbuj**.
 
-1. Wyświetl listę reguł sieci wirtualnej.
+1. Lista reguł sieci wirtualnej.
 
     ```azurepowershell-interactive
     $parameters = @{
@@ -223,7 +244,7 @@ Można zarządzać regułami sieci wirtualnej dla zasobów Cognitive Services za
         -ServiceEndpoint "Microsoft.CognitiveServices" | Set-AzVirtualNetwork
     ```
 
-1. Dodaj regułę sieciową dla sieci wirtualnej i podsieci.
+1. Dodaj regułę sieciowej dla sieci wirtualnej i podsieci.
 
     ```azurepowershell-interactive
     $subParameters = @{
@@ -243,7 +264,7 @@ Można zarządzać regułami sieci wirtualnej dla zasobów Cognitive Services za
     > [!TIP]
     > Aby dodać regułę sieciową dla podsieci w sieci wirtualnej należącej do innej dzierżawy usługi Azure AD, należy użyć w pełni kwalifikowanego parametru **VirtualNetworkResourceId** w postaci "/subscriptions/Subscription-ID/resourceGroups/resourceGroup-Name/Providers/Microsoft.Network/virtualNetworks/vNet-Name/Subnets/subnet-name".
 
-1. Usuń regułę sieci dla sieci wirtualnej i podsieci.
+1. Usuń regułę sieciowej dla sieci wirtualnej i podsieci.
 
     ```azurepowershell-interactive
     $subParameters = @{
@@ -260,11 +281,11 @@ Można zarządzać regułami sieci wirtualnej dla zasobów Cognitive Services za
     Remove-AzCognitiveServicesAccountNetworkRule @parameters
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
+# <a name="azure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
 1. Zainstaluj [interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) i [Zaloguj się](/cli/azure/authenticate-azure-cli)lub wybierz opcję **Wypróbuj**.
 
-1. Wyświetl listę reguł sieci wirtualnej.
+1. Lista reguł sieci wirtualnej.
 
     ```azurecli-interactive
     az cognitiveservices account network-rule list \
@@ -279,7 +300,7 @@ Można zarządzać regułami sieci wirtualnej dla zasobów Cognitive Services za
     --vnet-name "myvnet" --service-endpoints "Microsoft.CognitiveServices"
     ```
 
-1. Dodaj regułę sieciową dla sieci wirtualnej i podsieci.
+1. Dodaj regułę sieciowej dla sieci wirtualnej i podsieci.
 
     ```azurecli-interactive
     $subnetid=(az network vnet subnet show \
@@ -297,7 +318,7 @@ Można zarządzać regułami sieci wirtualnej dla zasobów Cognitive Services za
     > 
     > Możesz użyć parametru **subskrypcji** , aby pobrać identyfikator podsieci dla sieci wirtualnej należącej do innej dzierżawy usługi Azure AD.
 
-1. Usuń regułę sieci dla sieci wirtualnej i podsieci.
+1. Usuń regułę sieciowej dla sieci wirtualnej i podsieci.
 
     ```azurecli-interactive
     $subnetid=(az network vnet subnet show \
@@ -321,18 +342,18 @@ Można skonfigurować zasoby Cognitive Services, aby zezwolić na dostęp z okre
 Podaj dozwolone zakresy adresów internetowych przy użyciu [notacji CIDR](https://tools.ietf.org/html/rfc4632) w formularzu `16.17.18.0/24` lub jako pojedyncze adresy IP, takie jak `16.17.18.19`.
 
    > [!Tip]
-   > Małe zakresy adresów przy użyciu prefiksów "/31" lub "/32" nie są obsługiwane. Te zakresy należy skonfigurować przy użyciu poszczególnych reguł adresów IP.
+   > Zakresy adresów małe, za pomocą "/ 31" lub "/ 32" prefiks rozmiary nie są obsługiwane. Tych zakresów powinny być skonfigurowane przy użyciu reguły dotyczące poszczególnych adresów IP.
 
 Reguły sieci IP są dozwolone tylko dla **publicznych** adresów IP. Zakresy adresów IP zarezerwowane dla sieci prywatnych (zgodnie z definicją w [dokumencie RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) nie są dozwolone w regułach adresów IP. Sieci prywatne obejmują adresy, które zaczynają się od `10.*`, `172.16.*` - `172.31.*`i `192.168.*`.
 
    > [!NOTE]
    > Reguły sieci IP nie mają wpływu na żądania pochodzące z tego samego regionu świadczenia usługi Azure co zasób Cognitive Services. Użyj [reguł sieci wirtualnej](#grant-access-from-a-virtual-network) , aby zezwolić na żądania tego samego regionu.
 
-W tej chwili są obsługiwane tylko adresy IPV4. Każdy zasób Cognitive Services obsługuje do 100 reguł sieci adresów IP, które mogą być połączone z [regułami sieci wirtualnej](#grant-access-from-a-virtual-network).
+W tej chwili obsługiwane są tylko adresy IPV4. Każdy zasób Cognitive Services obsługuje do 100 reguł sieci adresów IP, które mogą być połączone z [regułami sieci wirtualnej](#grant-access-from-a-virtual-network).
 
-### <a name="configuring-access-from-on-premises-networks"></a>Konfigurowanie dostępu z sieci lokalnych
+### <a name="configuring-access-from-on-premises-networks"></a>Konfigurowanie dostępu do sieci lokalnej
 
-Aby udzielić dostępu z sieci lokalnych do zasobu Cognitive Services przy użyciu reguły sieci adresu IP, należy zidentyfikować adresy IP, które są używane przez sieć. Skontaktuj się z administratorem sieci, aby uzyskać pomoc.
+Aby udzielić dostępu z sieci lokalnych do zasobu Cognitive Services przy użyciu reguły sieci adresu IP, należy zidentyfikować adresy IP, które są używane przez sieć. Aby uzyskać pomoc, skontaktuj się z administratorem sieci.
 
 Jeśli używasz [ExpressRoute](../expressroute/expressroute-introduction.md) lokalnie do publicznej komunikacji równorzędnej lub komunikacji równorzędnej firmy Microsoft, musisz zidentyfikować adresy IP translatora adresów sieciowych. W przypadku publicznej komunikacji równorzędnej każdy obwód usługi ExpressRoute domyślnie używa dwóch adresów IP translatora adresów sieciowych. Każda z nich jest stosowana do ruchu usługi platformy Azure, gdy ruch przechodzi do Microsoft Azure sieci szkieletowej. W przypadku komunikacji równorzędnej firmy Microsoft używane adresy IP translatora adresów sieciowych są dostarczane przez klienta lub przez dostawcę usług. Aby umożliwić dostęp do zasobów usługi, musisz zezwolić na te publiczne adresy IP w ustawieniu zapory adresu IP zasobu. Aby znaleźć adresy IP obwodów usługi ExpressRoute publicznej komunikacji równorzędnej, [otwórz bilet pomocy technicznej przy użyciu usługi ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) w witrynie Azure Portal. Dowiedz się więcej o [translatorze adresów sieciowych publicznej komunikacji równorzędnej i komunikacji równorzędnej firmy Microsoft dla usługi ExpressRoute.](../expressroute/expressroute-nat.md#nat-requirements-for-azure-public-peering)
 
@@ -340,7 +361,7 @@ Jeśli używasz [ExpressRoute](../expressroute/expressroute-introduction.md) lok
 
 Można zarządzać regułami sieci IP dla zasobów Cognitive Services za pomocą Azure Portal, programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
 
-# <a name="azure-portaltabportal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 1. Przejdź do zasobu Cognitive Services, który chcesz zabezpieczyć.
 
@@ -348,7 +369,7 @@ Można zarządzać regułami sieci IP dla zasobów Cognitive Services za pomocą
 
 1. Sprawdź, czy wybrano opcję zezwalania na dostęp z **wybranych sieci**.
 
-1. Aby udzielić dostępu do zakresu internetowego adresu IP, wprowadź adres IP lub zakres adresów (w [formacie CIDR](https://tools.ietf.org/html/rfc4632)) w obszarze > zapory **zakres adresów**. Akceptowane są tylko prawidłowe publiczne adresy IP (niezarezerwowane).
+1. Aby udzielić dostępu do zakresu internetowego adresu IP, wprowadź adres IP lub zakres adresów (w [formacie CIDR](https://tools.ietf.org/html/rfc4632)) w obszarze **Firewall** > zapory **zakres adresów**. Akceptowane są tylko prawidłowe publiczne adresy IP (niezarezerwowane).
 
    ![Dodaj zakres adresów IP](media/vnet/virtual-network-add-ip-range.png)
 
@@ -358,11 +379,11 @@ Można zarządzać regułami sieci IP dla zasobów Cognitive Services za pomocą
 
 1. Wybierz pozycję **Zapisz** , aby zastosować zmiany.
 
-# <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 1. Zainstaluj [Azure PowerShell](/powershell/azure/install-az-ps) i [Zaloguj się](/powershell/azure/authenticate-azureps)lub wybierz opcję **Wypróbuj**.
 
-1. Wyświetl listę reguł sieci adresów IP.
+1. Lista reguł sieci IP.
 
     ```azurepowershell-interactive
     $parameters = @{
@@ -372,7 +393,7 @@ Można zarządzać regułami sieci IP dla zasobów Cognitive Services za pomocą
     (Get-AzCognitiveServicesAccountNetworkRuleSet @parameters).IPRules
     ```
 
-1. Dodawanie reguły sieci dla indywidualnego adresu IP.
+1. Dodaj regułę sieciowej dla indywidualnego adresu IP.
 
     ```azurepowershell-interactive
     $parameters = @{
@@ -383,7 +404,7 @@ Można zarządzać regułami sieci IP dla zasobów Cognitive Services za pomocą
     Add-AzCognitiveServicesAccountNetworkRule @parameters
     ```
 
-1. Dodaj regułę sieciową dla zakresu adresów IP.
+1. Dodaj regułę sieciowej dla zakresu adresów IP.
 
     ```azurepowershell-interactive
     $parameters = @{
@@ -394,7 +415,7 @@ Można zarządzać regułami sieci IP dla zasobów Cognitive Services za pomocą
     Add-AzCognitiveServicesAccountNetworkRule @parameters
     ```
 
-1. Usuń regułę sieciową dla indywidualnego adresu IP.
+1. Usuń regułę sieci dla indywidualnego adresu IP.
 
     ```azurepowershell-interactive
     $parameters = @{
@@ -405,7 +426,7 @@ Można zarządzać regułami sieci IP dla zasobów Cognitive Services za pomocą
     Remove-AzCognitiveServicesAccountNetworkRule @parameters
     ```
 
-1. Usuń regułę sieciową dla zakresu adresów IP.
+1. Usuń regułę sieci dla zakresu adresów IP.
 
     ```azurepowershell-interactive
     $parameters = @{
@@ -416,18 +437,18 @@ Można zarządzać regułami sieci IP dla zasobów Cognitive Services za pomocą
     Remove-AzCognitiveServicesAccountNetworkRule @parameters
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
+# <a name="azure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
 1. Zainstaluj [interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) i [Zaloguj się](/cli/azure/authenticate-azure-cli)lub wybierz opcję **Wypróbuj**.
 
-1. Wyświetl listę reguł sieci adresów IP.
+1. Lista reguł sieci IP.
 
     ```azurecli-interactive
     az cognitiveservices account network-rule list \
         -g "myresourcegroup" -n "myaccount" --query ipRules
     ```
 
-1. Dodawanie reguły sieci dla indywidualnego adresu IP.
+1. Dodaj regułę sieciowej dla indywidualnego adresu IP.
 
     ```azurecli-interactive
     az cognitiveservices account network-rule add \
@@ -435,7 +456,7 @@ Można zarządzać regułami sieci IP dla zasobów Cognitive Services za pomocą
         --ip-address "16.17.18.19"
     ```
 
-1. Dodaj regułę sieciową dla zakresu adresów IP.
+1. Dodaj regułę sieciowej dla zakresu adresów IP.
 
     ```azurecli-interactive
     az cognitiveservices account network-rule add \
@@ -443,7 +464,7 @@ Można zarządzać regułami sieci IP dla zasobów Cognitive Services za pomocą
         --ip-address "16.17.18.0/24"
     ```
 
-1. Usuń regułę sieciową dla indywidualnego adresu IP.
+1. Usuń regułę sieci dla indywidualnego adresu IP.
 
     ```azurecli-interactive
     az cognitiveservices account network-rule remove \
@@ -451,7 +472,7 @@ Można zarządzać regułami sieci IP dla zasobów Cognitive Services za pomocą
         --ip-address "16.17.18.19"
     ```
 
-1. Usuń regułę sieciową dla zakresu adresów IP.
+1. Usuń regułę sieci dla zakresu adresów IP.
 
     ```azurecli-interactive
     az cognitiveservices account network-rule remove \

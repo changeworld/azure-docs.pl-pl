@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: a711303b95eb4acb9c226ce052466bf65d15a038
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: c9fc60549d895129af56f289c6247dcb377b973b
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612777"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298677"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Samouczek: Konfigurowanie bezpiecznego protokołu LDAP dla domeny zarządzanej Azure Active Directory Domain Services
 
@@ -68,7 +68,7 @@ Certyfikat, którego żądanie lub utworzenie, musi spełniać poniższe wymagan
 * **Użycie klucza** — certyfikat musi być skonfigurowany pod kątem *podpisów cyfrowych* i *szyfrowania kluczy*.
 * **Cel certyfikatu** — certyfikat musi być prawidłowy na potrzeby uwierzytelniania serwera SSL.
 
-W tym samouczku utworzymy certyfikat z podpisem własnym dla bezpiecznego protokołu LDAP przy użyciu polecenia cmdlet [New-SelfSignedCertificate][New-SelfSignedCertificate] . Otwórz okno programu PowerShell jako **administrator** i uruchom następujące polecenia. Zastąp zmienną *$dnsname* nazwą DNS używaną przez własną domenę zarządzaną, taką jak *aaddscontoso.com*:
+Dostępnych jest kilka narzędzi do tworzenia certyfikatów z podpisem własnym, takich jak OpenSSL, narzędzie, MakeCert, [New-SelfSignedCertificate][New-SelfSignedCertificate] cmdlet itp. W tym samouczku utworzymy certyfikat z podpisem własnym dla bezpiecznego protokołu LDAP przy użyciu polecenia cmdlet [New-SelfSignedCertificate][New-SelfSignedCertificate] . Otwórz okno programu PowerShell jako **administrator** i uruchom następujące polecenia. Zastąp zmienną *$dnsname* nazwą DNS używaną przez własną domenę zarządzaną, taką jak *aaddscontoso.com*:
 
 ```powershell
 # Define your own DNS name used by your Azure AD DS managed domain
@@ -142,7 +142,7 @@ Aby można było używać certyfikatu cyfrowego utworzonego w poprzednim kroku z
 1. Ponieważ ten certyfikat jest używany do odszyfrowywania danych, należy dokładnie kontrolować dostęp. Hasło może służyć do ochrony korzystania z certyfikatu. Bez poprawnego hasła nie można zastosować certyfikatu do usługi.
 
     Na stronie **zabezpieczenia** wybierz opcję **hasła** , aby chronić *.* Plik certyfikatu PFX. Wprowadź i Potwierdź hasło, a następnie wybierz pozycję **dalej**. To hasło jest używane w następnej sekcji w celu włączenia bezpiecznego protokołu LDAP dla domeny zarządzanej AD DS platformy Azure.
-1. Na stronie **Eksport pliku** Określ nazwę pliku i lokalizację, w której chcesz wyeksportować certyfikat, taki jak *C:\Users\accountname\azure-AD-DS.pfx*.
+1. Na stronie **Eksport pliku** Określ nazwę pliku i lokalizację, w której chcesz wyeksportować certyfikat, taki jak *C:\Users\accountname\azure-AD-DS.pfx*. Zanotuj hasło i lokalizację *. Plik PFX* , ponieważ te informacje będą wymagane w następnych krokach.
 1. Na stronie Przegląd wybierz pozycję **Zakończ** , aby wyeksportować certyfikat do programu *.* Plik certyfikatu PFX. W przypadku pomyślnego wyeksportowania certyfikatu zostanie wyświetlone okno dialogowe potwierdzenia.
 1. Pozostaw otwarty program MMC do użycia w poniższej sekcji.
 

@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c204029557a73dc3f02015afb92c0fdbf0d4d50e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377108"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261296"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>Następne kroki i sposób zarządzania Azure AD Connect
 Korzystając z procedur operacyjnych w tym artykule, można dostosować program Azure Active Directory (Azure AD) Connect, aby spełniał potrzeby i wymagania organizacji.  
@@ -56,12 +56,12 @@ Użyj Azure Portal, aby sprawdzić stan synchronizacji.
 Jeśli konieczne jest uruchomienie zadania synchronizacji, można to zrobić, wykonując następujące czynności:
 
 1. Kliknij dwukrotnie skrót Azure AD Connect pulpicie, aby uruchomić kreatora.
-2. Kliknij pozycję **Konfiguruj**.
+2. Kliknij przycisk **Konfiguruj**.
 3. Na ekranie zadania wybierz **Opcje Dostosuj synchronizację** i kliknij przycisk **dalej** .
 4. Wprowadzanie poświadczeń usługi Azure AD
 5. Kliknij przycisk **Dalej**. Kliknij przycisk **Dalej**.  Kliknij przycisk **Dalej**.
 5.  Na ekranie **gotowy do konfiguracji** upewnij się, że jest zaznaczone pole wyboru **Rozpocznij proces synchronizacji po zakończeniu konfiguracji** .
-6.  Kliknij pozycję **Konfiguruj**.
+6.  Kliknij przycisk **Konfiguruj**.
 
 Aby uzyskać więcej informacji na temat harmonogramu synchronizacji Azure AD Connect, zobacz [Azure AD Connect Scheduler](how-to-connect-sync-feature-scheduler.md).
 

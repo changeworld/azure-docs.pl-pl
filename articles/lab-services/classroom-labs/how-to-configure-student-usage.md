@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 9fda1295bcdcd44b8a92c101c2aa445197ce6d4a
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: daa302e9be026157b464a12998f3faa52526aba6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539241"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270942"
 ---
 # <a name="add-and-manage-lab-users"></a>Dodawanie użytkowników laboratorium i zarządzanie nimi
 W tym artykule opisano sposób dodawania użytkowników do laboratorium, uzyskiwania ich zarejestrowanych w laboratorium, kontrolowania liczby godzin, w których mogą korzystać z maszyny wirtualnej, i nie tylko. 
@@ -144,7 +144,7 @@ Aby to zrobić, wykonaj następujące kroki:
 ## <a name="student-accounts"></a>Konta uczniów
 Aby dodać uczniów do laboratorium zajęć, użyj swoich kont e-mail. Mogą być używane następujące typy kont e-mail:
 
-- Konto e-mail ucznia, które jest dostarczane przez Azure Active Directory Office 365 (AAD). 
+- Konto e-mail ucznia, które jest udostępniane przez Azure Active Directory pakietu 365 Office w firmie University. 
 - Konto e-mail firmy Microsoft, takie jak `@outlook.com`, `@hotmail.com`, `@msn.com`lub `@live.com`.
 - Konto e-mail inne niż firmy Microsoft, na przykład udostępniane przez firmę Yahoo lub Google. Jednak te typy kont muszą być połączone z konto Microsoft.
 - Konto usługi GitHub. To konto musi być połączone z konto Microsoft.
@@ -173,6 +173,14 @@ Na stronie **Opcje logowania** wybierz pozycję **Zaloguj się za pomocą usług
 ![Zaloguj się przy użyciu linku GitHub](../media/how-to-configure-student-usage/signin-github.png)
 
 Na koniec są wyświetlane monity o utworzenie konto Microsoft połączonego z kontem usługi GitHub. Odbywa się to automatycznie po wybraniu przez studenta **przycisku Dalej**.  Student jest następnie natychmiast zalogowany i połączony z laboratorium zajęć.
+
+## <a name="export-list-of-users-to-a-csv-file"></a>Eksportowanie listy użytkowników do pliku CSV
+
+1. Przejdź do karty **Użytkownicy** .
+2. Wybierz pozycję **...** (wielokropek) na pasku narzędzi, a następnie wybierz pozycję **Eksportuj plik CSV**. 
+
+    ![Eksportuj listę użytkowników](../media/how-to-export-users-virtual-machines-csv/users-export-csv.png)
+
 
 ## <a name="next-steps"></a>Następne kroki
 Zobacz następujące artykuły:

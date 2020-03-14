@@ -9,14 +9,14 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 03/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: c7fd70ca32054b3b25e717c8c7169cf2d30ef9be
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 209ed755a7ef83b67170ef75911f93cdda742caa
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355317"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368200"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Skonfiguruj cele obliczeń i używaj ich do szkolenia modelu 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -154,15 +154,30 @@ W tym scenariuszu Użyj usługi Azure Data Science Virtual Machine (DSVM) jako m
 
 1. **Dołącz**: Aby dołączyć istniejącą maszynę wirtualną jako obiekt docelowy obliczeń, należy podać w pełni kwalifikowaną nazwę domeny (FQDN), nazwę użytkownika i hasło dla maszyny wirtualnej. W przykładzie Zastąp \<FQDN > z publiczną nazwą FQDN maszyny wirtualnej lub publicznym adresem IP. Zastąp \<username > i \<Password > nazwą użytkownika SSH i hasłem dla maszyny wirtualnej.
 
+    > [!IMPORTANT]
+    > Poniższe regiony platformy Azure nie obsługują dołączania maszyny wirtualnej przy użyciu publicznego adresu IP maszyny wirtualnej. Zamiast tego należy użyć identyfikatora Azure Resource Manager maszyny wirtualnej z parametrem `resource_id`:
+    >
+    > * Wschodnie stany USA
+    > * Zachodnie stany USA 2
+    > * Południowo-środkowe stany USA
+    >
+    > Identyfikator zasobu maszyny wirtualnej można utworzyć przy użyciu identyfikatora subskrypcji, nazwy grupy zasobów i nazwy maszyny wirtualnej przy użyciu następującego formatu ciągu: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`.
+
+
    ```python
    from azureml.core.compute import RemoteCompute, ComputeTarget
 
    # Create the compute config 
    compute_target_name = "attach-dsvm"
-   attach_config = RemoteCompute.attach_configuration(address = "<fqdn>",
+   attach_config = RemoteCompute.attach_configuration(address='<fqdn>',
                                                     ssh_port=22,
                                                     username='<username>',
                                                     password="<password>")
+   # If in US East, US West 2, or US South Central, use the following instead:
+   # attach_config = RemoteCompute.attach_configuration(resource_id='<resource_id>',
+   #                                                 ssh_port=22,
+   #                                                 username='<username>',
+   #                                                 password="<password>")
 
    # If you authenticate with SSH keys instead, use this code:
    #                                                  ssh_port=22,
@@ -198,6 +213,15 @@ Usługa Azure HDInsight to popularna platforma do analizy danych Big Data. Platf
 
 1. **Dołącz**: Aby dołączyć klaster usługi HDInsight jako obiekt docelowy obliczeń, należy podać nazwę hosta, nazwa użytkownika i hasło dla klastra usługi HDInsight. W poniższym przykładzie użyto zestawu SDK, aby dołączyć klaster z obszarem roboczym. W przykładzie Zastąp \<ClusterName > nazwą klastra. Zastąp \<username > i \<Password > nazwą użytkownika SSH i hasłem dla klastra.
 
+    > [!IMPORTANT]
+    > Poniższe regiony platformy Azure nie obsługują dołączania klastra usługi HDInsight przy użyciu publicznego adresu IP klastra. Zamiast tego należy użyć identyfikatora Azure Resource Manager klastra z parametrem `resource_id`:
+    >
+    > * Wschodnie stany USA
+    > * Zachodnie stany USA 2
+    > * Południowo-środkowe stany USA
+    >
+    > Identyfikator zasobu klastra można utworzyć przy użyciu identyfikatora subskrypcji, nazwy grupy zasobów i nazwy klastra przy użyciu następującego formatu ciągu: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`.
+
    ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute
    from azureml.exceptions import ComputeTargetException
@@ -208,6 +232,11 @@ Usługa Azure HDInsight to popularna platforma do analizy danych Big Data. Platf
                                                           ssh_port=22, 
                                                           username='<ssh-username>', 
                                                           password='<ssh-pwd>')
+    # If you are in US East, US West 2, or US South Central, use the following instead:
+    # attach_config = HDInsightCompute.attach_configuration(resource_id='<resource_id>',
+    #                                                      ssh_port=22, 
+    #                                                      username='<ssh-username>', 
+    #                                                      password='<ssh-pwd>')
     hdi_compute = ComputeTarget.attach(workspace=ws, 
                                        name='myhdi', 
                                        attach_configuration=attach_config)
@@ -234,9 +263,9 @@ Azure Batch służy do wydajnego uruchamiania aplikacji równoległych i o wysok
 
 Aby dołączyć Azure Batch jako obiekt docelowy obliczeń, należy użyć zestawu SDK Azure Machine Learning i podać następujące informacje:
 
--   **Azure Batch nazwa obliczenia**: przyjazna nazwa do użycia dla obliczeń w obszarze roboczym
--   **Nazwa konta Azure Batch**: nazwa konta Azure Batch
--   **Grupa zasobów**: Grupa zasobów, która zawiera konto Azure Batch.
+-    **Azure Batch nazwa obliczenia**: przyjazna nazwa do użycia dla obliczeń w obszarze roboczym
+-    **Nazwa konta Azure Batch**: nazwa konta Azure Batch
+-    **Grupa zasobów**: Grupa zasobów, która zawiera konto Azure Batch.
 
 Poniższy kod ilustruje sposób dołączania Azure Batch jako obiekt docelowy obliczeń:
 

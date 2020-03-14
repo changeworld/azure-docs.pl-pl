@@ -1,21 +1,21 @@
 ---
-title: Prywatny link do Azure Database for MariaDB (wersja zapoznawcza)
+title: Prywatny link — Azure Database for MariaDB
 description: Dowiedz się, jak działa łącze prywatne dla Azure Database for MariaDB.
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 01/09/2020
-ms.openlocfilehash: 92d7522c8382ded182c5f482df3f3d917b4b3a14
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 03/10/2020
+ms.openlocfilehash: b05a202537492fe54a76cf40a3b15987e099a7e3
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982381"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367724"
 ---
-# <a name="private-link-for-azure-database-for-mariadb-preview"></a>Prywatny link do Azure Database for MariaDB (wersja zapoznawcza)
+# <a name="private-link-for-azure-database-for-mariadb"></a>Prywatny link do Azure Database for MariaDB
 
-Link prywatny umożliwia nawiązanie połączenia z różnymi usługami PaaS na platformie Azure za pośrednictwem prywatnego punktu końcowego. Link prywatny platformy Azure zasadniczo zapewnia usługi platformy Azure w ramach prywatnego Virtual Network (VNet). Dostęp do zasobów PaaS można uzyskać przy użyciu prywatnego adresu IP, podobnie jak w przypadku każdego innego zasobu w sieci wirtualnej.
+Link prywatny umożliwia tworzenie prywatnych punktów końcowych dla Azure Database for MariaDB, co umożliwia korzystanie z usług platformy Azure w ramach prywatnego Virtual Network (VNet). Prywatny punkt końcowy uwidacznia prywatny adres IP, którego można użyć do nawiązania połączenia z serwerem bazy danych Azure Database for MariaDB tak samo jak w przypadku każdego innego zasobu w sieci wirtualnej.
 
 Aby uzyskać listę PaaS usług, które obsługują funkcję linku prywatnego, zapoznaj się z [dokumentacją](https://docs.microsoft.com/azure/private-link/index)linku prywatnego. Prywatny punkt końcowy to prywatny adres IP w obrębie określonej sieci [wirtualnej](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) i podsieci.
 
@@ -58,10 +58,7 @@ Prywatne punkty końcowe są wymagane do włączenia prywatnego linku. Można to
 
 ### <a name="approval-process"></a>Proces zatwierdzania
 
-Po utworzeniu przez administratora sieci prywatnego punktu końcowego (PE) administrator może zarządzać połączeniem prywatnego punktu końcowego (PEC) do Azure Database for MariaDB.
-
-> [!NOTE]
-> Obecnie Azure Database for MariaDB obsługuje tylko autozatwierdzanie dla prywatnego punktu końcowego.
+Po utworzeniu przez administratora sieci prywatnego punktu końcowego (PE) administrator może zarządzać połączeniem prywatnego punktu końcowego (PEC) do Azure Database for MariaDB. Takie Rozdzielenie obowiązków między administratorem sieci a usługą DBA jest pomocne w zarządzaniu Azure Database for MariaDB łącznością. 
 
 * Przejdź do zasobu serwera Azure Database for MariaDB w Azure Portal. 
     * Wybierz połączenia prywatnego punktu końcowego w lewym okienku
@@ -110,6 +107,19 @@ W przypadku korzystania z prywatnego linku w połączeniu z regułami zapory są
 * W przypadku skonfigurowania ruchu publicznego lub punktu końcowego usługi i utworzenia prywatnych punktów końcowych różne typy ruchu przychodzącego są autoryzowane przez odpowiedni typ reguły zapory.
 
 * Jeśli nie skonfigurowano żadnego ruchu publicznego lub punktu końcowego usługi i utworzysz prywatne punkty końcowe, Azure Database for MariaDB będzie dostępny tylko za pomocą prywatnych punktów końcowych. Jeśli nie skonfigurujesz ruchu publicznego lub punktu końcowego usługi, po odrzuceniu lub usunięciu wszystkich zatwierdzonych prywatnych punktów końcowych żaden ruch nie będzie w stanie uzyskać dostępu do Azure Database for MariaDB.
+
+## <a name="deny-public-access-for-azure-database-for-mariadb"></a>Odmów dostępu publicznego dla Azure Database for MariaDB
+
+Jeśli chcesz całkowicie używać prywatnych punktów końcowych do uzyskiwania dostępu do swoich Azure Database for MariaDB, możesz wyłączyć ustawienie wszystkie publiczne punkty końcowe ([reguły zapory](concepts-firewall-rules.md) i [punkty końcowe usługi sieci wirtualnej](concepts-data-access-security-vnet.md)), ustawiając opcję **Odmów dostępu** do poczty publicznej na serwerze bazy danych. 
+
+Jeśli to ustawienie ma wartość *tak*, do Azure Database for MariaDB mogą być używane tylko połączenia za pośrednictwem prywatnych punktów końcowych. Jeśli to ustawienie ma wartość *nie*, klienci mogą łączyć się z Azure Database for MariaDB na podstawie ustawień zapory lub punktu końcowego usługi sieci wirtualnej. Ponadto po ustawieniu wartości dostępu do sieci prywatnej nie można dodawać i/lub aktualizować istniejących reguł punktu końcowego zapory i usługi sieci wirtualnej.
+
+> [!Note]
+> Ta funkcja jest dostępna we wszystkich regionach świadczenia usługi Azure, w których Azure Database for PostgreSQL — jeden serwer obsługuje warstwy cenowe Ogólnego przeznaczenia i zoptymalizowane pod kątem pamięci.
+>
+> To ustawienie nie ma żadnego wpływu na konfiguracje protokołów SSL i TLS dla Azure Database for MariaDB.
+
+Aby dowiedzieć się, jak ustawić opcję **Odmów dostępu do sieci publicznej** dla Azure Database for MariaDB z Azure Portal, zobacz [jak skonfigurować odmowę dostępu do sieci publicznej](howto-deny-public-network-access.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

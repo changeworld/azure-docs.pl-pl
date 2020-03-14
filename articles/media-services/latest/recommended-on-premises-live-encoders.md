@@ -9,14 +9,14 @@ ms.author: johndeu
 ms.date: 02/10/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 60f9209129c75e329b283045d19b4b5140b40ec2
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 3b7a75ac1c0876d562dc49e9253fe734475a551a
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268195"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298958"
 ---
-# <a name="recommended-on-premises-live-streaming-encoders"></a>Zalecane lokalne kodery przesyłania strumieniowego na żywo
+# <a name="tested-on-premises-live-streaming-encoders"></a>Testowanie lokalnych koderów strumieniowych na żywo
 
 W Azure Media Services wydarzenie na [żywo](https://docs.microsoft.com/rest/api/media/liveevents) (kanał) reprezentuje potok do przetwarzania zawartości przesyłania strumieniowego na żywo. Zdarzenie na żywo odbiera strumienie wejściowe na żywo na jeden z dwóch sposobów.
 
@@ -24,10 +24,12 @@ W Azure Media Services wydarzenie na [żywo](https://docs.microsoft.com/rest/api
 
     Jeśli używasz strumieni o różnej szybkości transmisji bitów dla zdarzenia przekazywania na żywo, rozmiar grupę GOP wideo i fragmenty wideo na różnych szybkościach transmisji bitów muszą być zsynchronizowane, aby uniknąć nieoczekiwanych zachowań po stronie odtwarzania.
 
-  > [!NOTE]
+  > [!TIP]
   > Użycie metody przekazującej to najbardziej ekonomiczny sposób na przesyłanie strumieniowe na żywo.
  
 * Lokalny koder na żywo wysyła strumień o pojedynczej szybkości transmisji bitów do zdarzenia na żywo, które umożliwia wykonywanie kodowania na żywo za pomocą Media Services w jednym z następujących formatów: RTMP lub Smooth Streaming (fragmentacja MP4). Zdarzenie na żywo następnie wykonuje kodowanie na żywo przychodzącego strumienia o pojedynczej szybkości transmisji bitów do strumienia wideo o wysokiej szybkości transmisji bitów (adaptacyjnej).
+
+W tym artykule omówiono testowanie lokalnych koderów strumieniowych na żywo. Aby uzyskać instrukcje dotyczące weryfikowania lokalnego kodera na żywo, zobacz [Weryfikowanie lokalnego kodera](become-on-premises-encoder-partner.md)
 
 Aby uzyskać szczegółowe informacje na temat kodowania na żywo z Media Services, zobacz [przesyłanie strumieniowe na żywo z Media Services v3](live-streaming-overview.md).
 
@@ -99,8 +101,8 @@ Aby odtworzyć zawartość, musi być obecny strumień audio i wideo. Odtwarzani
 
 ## <a name="see-also"></a>Zobacz też
 
-[Zostań Lokalnym partnerem kodera](become-on-premises-encoder-partner.md)
+[Przesyłanie strumieniowe na żywo z Media Services v3](live-streaming-overview.md)
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Przesyłanie strumieniowe na żywo z Media Services v3](live-streaming-overview.md)
+[Jak zweryfikować koder](become-on-premises-encoder-partner.md)

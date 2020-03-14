@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 03/12/2020
 ms.author: aahi
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: 5a0856bb2fc73b7095b0b2552efe0ccc91ae3f59
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 1f5658c6fa52caa67de1f60c50048014dd77af13
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79241724"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371333"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>Szybki Start: korzystanie z biblioteki klienta analiza tekstu
 
@@ -44,7 +44,6 @@ Użyj biblioteki klienta analiza tekstu do wykonania:
 
 > [!IMPORTANT]
 > * Ten przewodnik Szybki Start dotyczy tylko wersji `3.0-preview` biblioteki klienckiej analiza tekstu, która obejmuje publiczną wersję zapoznawczą dla ulepszonego [Analiza tonacji](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) i [nazwanego rozpoznawania jednostek (ner)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features).
->    * Pamiętaj, aby postępować zgodnie z instrukcjami dotyczącymi używanej wersji.
 > * Kod w tym artykule używa metod synchronicznych i niezabezpieczonych magazynów poświadczeń z przyczyn uproszczenia. W przypadku scenariuszy produkcyjnych zaleca się użycie wsadowych metod asynchronicznych w celu zapewnienia wydajności i skalowalności. Zapoznaj się z dokumentacją referencyjną poniżej.
 
 [!INCLUDE [Java quickstart](../includes/quickstarts/java-sdk.md)]

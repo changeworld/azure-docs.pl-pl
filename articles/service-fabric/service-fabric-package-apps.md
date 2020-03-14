@@ -4,11 +4,11 @@ description: Dowiedz się więcej o pakowaniu aplikacji Service Fabric platformy
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: 7c99eec28ac06ecf666d6dda1015f889841a5dbf
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361277"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258345"
 ---
 # <a name="package-an-application"></a>Tworzenie pakietu aplikacji
 
@@ -52,7 +52,7 @@ Aby uzyskać więcej informacji na temat konfigurowania **SetupEntryPoint**, zob
 
 <a id="Package-App"></a>
 
-## <a name="configure"></a>Konfigurowanie
+## <a name="configure"></a>Konfiguracja
 
 ### <a name="build-a-package-by-using-visual-studio"></a>Tworzenie pakietu przy użyciu programu Visual Studio
 

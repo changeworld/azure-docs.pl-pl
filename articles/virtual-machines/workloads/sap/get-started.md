@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/10/2020
+ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: be403815838233350929c7d4ca0eed979d7dfa8c
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 27fdf966f99ac2cba394515cb654ed74178d6673
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79080329"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137649"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Korzystanie z platformy Azure do hostowania i uruchamiania scenariuszy obciążeń SAP
 
@@ -43,7 +43,7 @@ Jeśli masz określone pytania, przejdźmy do określonych dokumentów lub przep
 - Scenariusze wdrażania SAP są obsługiwane przez maszyny wirtualne platformy Azure i duże wystąpienia HANA. Informacje o obsługiwanych scenariuszach można znaleźć w dokumentach:
     - [Scenariusze obsługi obciążeń SAP w maszynach wirtualnych platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-planning-supported-configurations)
     - [Obsługiwane scenariusze dla dużego wystąpienia HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario)
-- Jakie usługi platformy Azure, typy maszyn wirtualnych platformy Azure i usługa Azure Storage są dostępne w różnych regionach świadczenia usługi Azure, sprawdź dostępne dla lokacji [produkty według regionów](https://azure.microsoft.com/global-infrastructure/services/) 
+- Jakie usługi platformy Azure, typy maszyn wirtualnych platformy Azure i usługi Azure Storage są dostępne w różnych regionach świadczenia usługi Azure, sprawdź dostępne dla lokacji [produkty według regionów](https://azure.microsoft.com/global-infrastructure/services/) 
 
  
 ## <a name="sap-hana-on-azure-large-instances"></a>Oprogramowanie SAP HANA na platformie Azure (duże wystąpienia)
@@ -110,6 +110,8 @@ Aby uzyskać informacje na temat integracji usług platformy Azure z składnikam
 
 
 ## <a name="change-log"></a>Dziennik zmiany
+- 03/11/2020: zmiana [obciążenia SAP w scenariuszach obsługiwanych przez maszynę wirtualną platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-planning-supported-configurations) w celu wyjaśnienia wielu baz danych na obsługę wystąpień w systemie DBMS
+- 03/11/2020: zmiana na [platformie Azure Virtual Machines planowanie i wdrażanie w przypadku](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) maszyn wirtualnych o generacji 1 i 2. generacji
 - 03/10/2020: Zmień [konfigurację magazynu maszyn wirtualnych platformy Azure na SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) , aby wyjaśnić rzeczywiste istniejące limity PRZEPŁYWności ANF
 - 03/09/2020: Zmień [wysoką dostępność dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy Azure na SUSE Linux Enterprise Server dla aplikacji SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse), [wysokiej dostępności dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy azure na platformie SUSE Linux Enterprise Server z Azure NETAPP Files dla aplikacji SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files), wysokiej dostępności dla [systemu plików NFS SUSE Linux Enterprise Server na](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)maszynach wirtualnych platformy azure na [platformie Microsoft Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)na [SUSE Linux Enterprise Server z Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm), [Wysoka dostępność SAP HANA na maszynach wirtualnych platformy Azure na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability) i [wysokiej dostępności dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy Azure w systemie RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid) , aby zaktualizować zasoby klastra przy użyciu agenta zasobów Azure-lb 
 - 03/05/2020: zmiany struktury i zmiany zawartości dla regionów świadczenia usługi Azure i usługi Azure Virtual Machines na [platformie azure Virtual Machines planowanie i wdrażanie oprogramowania SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)

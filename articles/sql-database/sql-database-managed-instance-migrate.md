@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: 802dfa7e3b2d0b9deac957662ac1e7604d085fd9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6bae9e871be2a5d56d057d2a077de53329b8c3ec
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828074"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79208944"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>SQL Server migracji wystąpień do Azure SQL Database wystąpienia zarządzanego
 
@@ -72,14 +72,14 @@ Niektóre parametry, które należy zmierzyć w wystąpieniu SQL Server, to:
 - Monitoruj obciążenia i wydajność zapytań lub wystąpienie SQL Server, badając dynamiczne widoki zarządzania lub magazyn zapytań w przypadku migrowania z wersji SQL Server 2016 lub nowszego. Zidentyfikuj średni czas trwania i użycie procesora przez najważniejsze zapytania w obciążeniu, aby porównać je z kwerendami uruchomionymi w wystąpieniu zarządzanym.
 
 > [!Note]
-> Jeśli zauważysz dowolny problem związany z obciążeniem, SQL Server taki jak duże użycie procesora CPU, stałe wykorzystanie pamięci, baza danych tempdb lub problemy parametrization, należy spróbować rozwiązać je na źródłowym wystąpieniu SQL Server, zanim przeniesiesz linię bazową i migrację. Migracja informacji o znanych problemach do nowych migh systemu powoduje nieoczekiwane wyniki i unieważnienie wszystkich porównania wydajności.
+> Jeśli zauważysz dowolny problem związany z obciążeniem, SQL Server taki jak duże użycie procesora CPU, stałe wykorzystanie pamięci, baza danych tempdb lub problemy parametryzacja, należy spróbować rozwiązać je na źródłowym wystąpieniu SQL Server, zanim przeniesiesz linię bazową i migrację. Migracja informacji o znanych problemach do nowych migh systemu powoduje nieoczekiwane wyniki i unieważnienie wszystkich porównania wydajności.
 
 W wyniku tego działania należy mieć udokumentowane średnie i szczytowe wartości użycia procesora CPU, pamięci i operacji we/wy w systemie źródłowym, a także średni i maksymalny czas trwania i użycie procesora CPU oraz najważniejsze zapytania w obciążeniu. Tych wartości należy używać później do porównywania wydajności obciążeń z wystąpieniem zarządzanym z wydajnością bazową obciążenia na SQL Server źródłowym.
 
 ## <a name="deploy-to-an-optimally-sized-managed-instance"></a>Wdróż w optymalnie rozmieszczonym wystąpieniu zarządzanym
 
 Wystąpienie zarządzane jest dostosowane do obciążeń lokalnych, które planują przejście do chmury. Wprowadzono [Nowy model zakupu](sql-database-service-tiers-vcore.md) , który zapewnia większą elastyczność w wyborze odpowiedniego poziomu zasobów dla obciążeń. W lokalnym świecie prawdopodobnie masz do rozbudowy te obciążenia przy użyciu rdzeni fizycznych i przepustowości we/wy. Model zakupu wystąpienia zarządzanego jest oparty na rdzeniach wirtualnych lub "rdzeni wirtualnych" z dodatkowym magazynem i funkcją we/wy. Model rdzeń wirtualny to prostszy sposób, aby zrozumieć wymagania dotyczące obliczeń w chmurze, a także to, co jest używane lokalnie. Ten nowy model umożliwia prawidłowe dopasowanie środowiska docelowego do chmury. Niektóre ogólne wskazówki, które mogą pomóc w wyborze odpowiedniej warstwy usług i charakterystyce, zostały opisane tutaj:
-- Na podstawie użycia procesora CPU można zainicjować obsługę wystąpienia zarządzanego, które jest zgodne z liczbą rdzeni, które są używane w SQL Server, biorąc pod uwagę, że konieczne może być skalowanie charakterystyki procesora w celu dopasowania ich do [charakterystyki maszyny wirtualnej, w której jest zainstalowane wystąpienie zarządzane ](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics).
+- W oparciu o użycie procesora bazowego można zainicjować obsługę wystąpienia zarządzanego, które jest zgodne z liczbą rdzeni, które są używane w SQL Server, biorąc pod uwagę, że konieczne może być skalowanie charakterystyki procesora w celu dopasowania ich do [charakterystyki maszyny wirtualnej, w której jest zainstalowane wystąpienie zarządzane](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics).
 - Na podstawie użycia pamięci bazowej wybierz [warstwę usług, która ma zgodną pamięć](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics). Ilości pamięci nie można wybrać bezpośrednio, dlatego należy wybrać wystąpienie zarządzane z ilością rdzeni wirtualnych, która ma pasującą pamięć (na przykład 5,1 GB/rdzeń wirtualny w 5 rdzeń). 
 - W oparciu o opóźnienie wejścia/wyjścia punktu odniesienia dla podsystemu plików wybierz między Ogólnego przeznaczenia (opóźnienie większe niż 5 ms) i Krytyczne dla działania firmy warstwami usług (opóźnienie mniejsze niż 3 ms).
 - W oparciu o przepływność linii bazowej wstępnie przydzielić rozmiar danych lub plików dziennika, aby uzyskać oczekiwaną wydajność operacji we/wy.
@@ -113,13 +113,13 @@ Wystąpienie zarządzane obsługuje następujące opcje migracji bazy danych (ob
 
 [Azure Database Migration Service (DMS)](../dms/dms-overview.md) to w pełni zarządzana usługa, która umożliwia bezproblemowe Migrowanie z wielu źródeł baz danych do platform danych platformy Azure z minimalnym czasem przestoju. Ta usługa usprawnia zadania wymagane do przeniesienia istniejących stron trzecich i SQL Server baz danych na platformę Azure. Opcje wdrażania w publicznej wersji zapoznawczej obejmują bazy danych Azure SQL Database i SQL Server baz danych na maszynie wirtualnej platformy Azure. DMS jest zalecaną metodą migracji obciążeń przedsiębiorstwa.
 
-Jeśli używasz SQL Server Integration Services (SSIS) na SQL Server lokalnym, DMS nie obsługuje jeszcze migracji wykazu usług SSIS (SSISDB), który przechowuje pakiety SSIS, ale możesz udostępnić Azure-SSIS Integration Runtime (IR) w Azure Data Factory (ADF), który będzie Utwórz nowy SSISDB w wystąpieniu zarządzanym, a następnie możesz ponownie wdrożyć pakiety, a następnie zapoznaj się z tematem [tworzenie Azure-SSIS IR w usłudze ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
+W przypadku korzystania z SQL Server Integration Services (SSIS) na SQL Server lokalnie usługa DMS nie obsługuje jeszcze migracji wykazu usług SSIS (SSISDB), który przechowuje pakiety SSIS, ale można udostępnić Azure-SSIS Integration Runtime (IR) w Azure Data Factory (ADF), który utworzy nowy SSISDB w wystąpieniu zarządzanym, a następnie można ponownie wdrożyć pakiety, w temacie [create Azure-SSIS IR in ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
 
 Aby dowiedzieć się więcej na temat tego scenariusza i kroków konfiguracji dla usługi DMS, zobacz [Migrowanie lokalnej bazy danych do wystąpienia zarządzanego przy użyciu usługi DMS](../dms/tutorial-sql-server-to-managed-instance.md).  
 
 ### <a name="native-restore-from-url"></a>Natywne przywracanie z adresu URL
 
-Przywracanie natywnych kopii zapasowych (plików. bak) pobranych z SQL Server lokalnych lub [program SQL Server w usłudze Virtual Machines](https://azure.microsoft.com/services/virtual-machines/sql-server/), dostępnych w [usłudze Azure Storage](https://azure.microsoft.com/services/storage/), jest jedną z najważniejszych funkcji wdrożenia wystąpienia zarządzanego, która umożliwia szybkie i łatwe przejście w tryb offline migracja bazy danych.
+Przywracanie natywnych kopii zapasowych (plików. bak) pobranych z SQL Server lokalnych lub [program SQL Server w usłudze Virtual Machines](https://azure.microsoft.com/services/virtual-machines/sql-server/), dostępnych w [usłudze Azure Storage](https://azure.microsoft.com/services/storage/), jest jednym z najważniejszych funkcji wdrożenia wystąpienia zarządzanego, które umożliwiają szybką i łatwą migrację bazy danych w trybie offline.
 
 Poniższy diagram przedstawia ogólny przegląd procesu:
 

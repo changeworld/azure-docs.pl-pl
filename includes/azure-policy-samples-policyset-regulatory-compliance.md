@@ -2,14 +2,14 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/05/2020
+ms.date: 03/12/2020
 ms.author: dacoulte
-ms.openlocfilehash: f11fdf61bd9382cdf7956426871ce562e2a88038
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: a229d3d3ba89b4bafd4b0b45a143e29d3d5f7ede
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78668847"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79382242"
 ---
 |Name (Nazwa) |Opis |Zasady |Wersja |
 |---|---|---|---|
@@ -23,7 +23,7 @@ ms.locfileid: "78668847"
 |[\[Podgląd\]: Inspekcja SWIFT dostawcy usług kryptograficznych — CSCF V2020 Controls i wdrażanie określonych rozszerzeń maszyn wirtualnych do obsługi wymagań inspekcji](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/SWIFTv2020_audit.json) |Ta inicjatywa obejmuje zasady wdrażania dla inspekcji i rozszerzenia maszyny wirtualnej, które obejmują podzbiór kontrolek SWIFT dostawcy CSP — CSCF V2020. Dodatkowe zasady zostaną dodane w przyszłych wydaniach. Aby uzyskać więcej informacji, odwiedź stronę https://aka.ms/SWIFT-blueprint. |71 |1.0.0 — wersja zapoznawcza |
 |[\[Podgląd\]: Przeprowadź inspekcję OFICJALNych i BRYTYJSKIch kontrolek NHS oraz Wdróż określone rozszerzenia maszyn wirtualnych do obsługi wymagań inspekcji](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/ukofficial_audit.json) |Ta inicjatywa obejmuje zasady, które obejmują podzbiór NHS URZĘDOWych i brytyjskich w Wielkiej Brytanii. Dodatkowe zasady zostaną dodane w przyszłych wydaniach. Aby uzyskać więcej informacji, odwiedź stronę https://aka.ms/ukofficial-blueprint i https://aka.ms/uknhs-blueprint |66 |2.0.0 — wersja zapoznawcza |
 |[Inspekcja zaleceń usługi Azure Security test i wdrażanie określonych rozszerzeń obsługi maszyn wirtualnych](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_audit.json) |Ta inicjatywa obejmuje zasady wdrażania inspekcji i rozszerzenia maszyny wirtualnej, które dotyczą podzestawu zaleceń dotyczących usługi Azure Security test. Dodatkowe zasady zostaną dodane w przyszłych wydaniach. Aby uzyskać więcej informacji, odwiedź stronę https://aka.ms/azsecbm. |148 |2.0.0 — wersja zapoznawcza |
+|[Przeprowadź inspekcję poziomu 4 kontroli poziomów wpływu i Wdróż określone rozszerzenia maszyn wirtualnych do obsługi wymagań inspekcji](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/DOD_IL4_audit.json) |Ta inicjatywa obejmuje zasady wdrażania dla inspekcji i rozszerzenia maszyny wirtualnej, które są przeznaczone dla podzbioru formantów Level 4 poziomu wpływu. Dodatkowe zasady zostaną dodane w przyszłych wydaniach. Aby uzyskać więcej informacji, odwiedź stronę https://aka.ms/DoDIL4-blueprint. |108 |3.0.0 — wersja zapoznawcza |
 |[Inspekcja FedRAMP o wysokiej kontroli i wdrażanie określonych rozszerzeń maszyn wirtualnych do obsługi wymagań inspekcji](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_H_audit.json) |Ta inicjatywa obejmuje zasady wdrażania dla inspekcji i rozszerzenia maszyny wirtualnej, które dotyczą podzbioru kontrolek FedRAMP H. Dodatkowe zasady zostaną dodane w przyszłych wydaniach. Aby uzyskać więcej informacji, odwiedź stronę https://aka.ms/fedramph-blueprint. |80 |2.0.0 — wersja zapoznawcza |
 |[Inspekcja kontrolek HITRUST/HIPAA i wdrażanie określonych rozszerzeń maszyn wirtualnych do obsługi wymagań inspekcji](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/HIPAA_HITRUST_audit.json) |Ta inicjatywa obejmuje zasady, które dotyczą podzbioru formantów HITRUST/HIPAA. Dodatkowe zasady zostaną dodane w przyszłych wydaniach. https://aka.ms/hipaa-blueprint |57 |1.0.0 |
 |[Inspekcja powiązań obrazu ruchu (MPAA) kontroli i wdrażania określonych rozszerzeń maszyn wirtualnych do obsługi wymagań inspekcji](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/Media_audit.json) |Ta inicjatywa obejmuje zasady, które dotyczą podzbioru kontroli bezpieczeństwa i MPAA (Motion Picture Association). Dodatkowe zasady zostaną dodane w przyszłych wydaniach. Aby uzyskać więcej informacji, odwiedź stronę https://aka.ms/mpaa-blueprint |45 |1.0.0 — wersja zapoznawcza |
-|[DoD Impact Level 4](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/DOD_IL4_audit.json) |Przypisuje zasady w celu rozdzielenia określonych kontrolek poziomu wpływu na 4 (IL4). Dowiedz się więcej — https://aka.ms/DoDIL4-blueprint. |80 |2.0.0 — wersja zapoznawcza |

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 3cb500d2f00d6657420d7f294a7318b339e1f81e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 02d04076ccc41d243a493838667f5e8cc6bfa5ac
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271069"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371158"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-log-analytics"></a>PRZESTARZAŁE Monitorowanie klastra Azure Container Service przy użyciu Log Analytics
 
@@ -28,8 +28,8 @@ Przyjęto również założenie, że masz zainstalowaną `az` interfejs wiersza 
 
 Możesz sprawdzić, czy masz narzędzie `az` zainstalowane, uruchamiając:
 
-```console
-$ az --version
+```azurecli
+az --version
 ```
 
 Jeśli nie masz zainstalowanego narzędzia `az`, w [tym miejscu](https://github.com/azure/azure-cli#installation)znajdują się instrukcje.
@@ -38,21 +38,24 @@ Alternatywnie możesz użyć [Azure Cloud Shell](https://docs.microsoft.com/azur
 Możesz sprawdzić, czy masz narzędzie `kubectl` zainstalowane, uruchamiając:
 
 ```console
-$ kubectl version
+kubectl version
 ```
 
 Jeśli nie masz zainstalowanego `kubectl`, możesz uruchomić następujące polecenie:
-```console
-$ az acs kubernetes install-cli
+
+```azurecli
+az acs kubernetes install-cli
 ```
 
 Aby przetestować, jeśli masz klucze Kubernetes zainstalowane w narzędziu polecenia kubectl, możesz uruchomić:
+
 ```console
-$ kubectl get nodes
+kubectl get nodes
 ```
 
 Jeśli powyższe polecenie wykroczy błędy, musisz zainstalować klucze klastra Kubernetes w narzędziu polecenia kubectl. Można to zrobić za pomocą następującego polecenia:
-```console
+
+```azurecli
 RESOURCE_GROUP=my-resource-group
 CLUSTER_NAME=my-acs-name
 az acs kubernetes get-credentials --resource-group=$RESOURCE_GROUP --name=$CLUSTER_NAME
@@ -83,7 +86,7 @@ Oto [plik elementu DAEMONSET YAML](https://github.com/Microsoft/OMS-docker/tree/
 Po dodaniu identyfikatora i klucza obszaru roboczego do konfiguracji elementu daemonset można zainstalować agenta Log Analytics w klastrze za pomocą narzędzia wiersza polecenia `kubectl`:
 
 ```console
-$ kubectl create -f oms-daemonset.yaml
+kubectl create -f oms-daemonset.yaml
 ```
 
 ### <a name="installing-the-log-analytics-agent-using-a-kubernetes-secret"></a>Instalowanie agenta Log Analytics przy użyciu klucza tajnego Kubernetes
@@ -94,16 +97,24 @@ Aby chronić identyfikator obszaru roboczego Log Analytics i klucz, możesz uży
   - Szablon tajny - template.yaml wpisu tajnego
     - Elementu daemonset YAML File-omsagent-ds-Secret. YAML
 - Uruchom skrypt. Skrypt będzie pytał o identyfikator obszaru roboczego Log Analytics i klucz podstawowy. Wstaw, a skrypt utworzy plik tajny YAML, aby można było go uruchomić.
-  ```
-  #> sudo bash ./secret-gen.sh
+
+  ```console
+  sudo bash ./secret-gen.sh
   ```
 
-  - Utwórz wpisy tajne pod, wykonując następujące czynności: ```kubectl create -f omsagentsecret.yaml```
+  - Utwórz pod wpisami tajnymi, uruchamiając następujące:
+
+     ```console
+     kubectl create -f omsagentsecret.yaml
+     ```
 
   - Aby sprawdzić, uruchom następujące polecenie:
 
+  ```console
+  kubectl get secrets
   ```
-  root@ubuntu16-13db:~# kubectl get secrets
+
+  ```output
   NAME                  TYPE                                  DATA      AGE
   default-token-gvl91   kubernetes.io/service-account-token   3         50d
   omsagent-secret       Opaque                                2         1d
@@ -121,7 +132,11 @@ Aby chronić identyfikator obszaru roboczego Log Analytics i klucz, możesz uży
   KEY:    88 bytes
   ```
 
-  - Utwórz swoje omsagent demona zestawu, uruchamiając ```kubectl create -f omsagent-ds-secrets.yaml```
+  - Utwórz zestaw demonów omsagent, uruchamiając następujące elementy:
+  
+  ```console
+  kubectl create -f omsagent-ds-secrets.yaml
+  ```
 
 ### <a name="conclusion"></a>Podsumowanie
 Gotowe. Po kilku minutach powinno być możliwe wyświetlenie danych przepływających do pulpitu nawigacyjnego Log Analytics.

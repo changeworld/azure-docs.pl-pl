@@ -4,12 +4,12 @@ description: Użyj Azure Functions, aby zaplanować zadanie, które łączy się
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: 3dafe275dcd5eb172e744f1d163b33ebb0bac7cc
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 2e3f53943d45e90b8aff8e386ce8d0e28670673f
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972238"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366817"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Użyj Azure Functions, aby nawiązać połączenie z Azure SQL Database
 
@@ -29,7 +29,7 @@ Jeśli jest to pierwsze środowisko pracy z C# funkcjami, należy przeczytać [i
 
 Należy uzyskać parametry połączenia dla bazy danych utworzonej po zakończeniu [tworzenia bazy danych Azure SQL Database w Azure Portal](../sql-database/sql-database-get-started-portal.md).
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Azure portal](https://portal.azure.com/).
 
 1. Wybierz pozycję **bazy danych SQL** w menu po lewej stronie, a następnie wybierz bazę danych ze strony bazy **danych SQL** .
 
@@ -43,7 +43,7 @@ Aplikacja funkcji obsługuje wykonywanie funkcji na platformie Azure. Najlepszym
 
 Aplikacja musi być wcześniej opublikowana na platformie Azure. Jeśli jeszcze tego nie zrobiono, [Opublikuj swoją aplikację funkcji na platformie Azure](functions-develop-vs.md#publish-to-azure).
 
-1. W Eksplorator rozwiązań kliknij prawym przyciskiem myszy projekt aplikacji funkcji i wybierz polecenie **publikuj** > **Zarządzaj ustawieniami aplikacji..** . Wybierz pozycję **Dodaj ustawienie**, w polu **Nazwa ustawienia nowej aplikacji**wpisz `sqldb_connection`, a następnie wybierz **przycisk OK**.
+1. W Eksplorator rozwiązań kliknij prawym przyciskiem myszy projekt aplikacji funkcji i wybierz polecenie **publikuj** > **Edytuj ustawienia Azure App Service**. Wybierz pozycję **Dodaj ustawienie**, w polu **Nazwa ustawienia nowej aplikacji**wpisz `sqldb_connection`, a następnie wybierz **przycisk OK**.
 
     ![Ustawienia aplikacji dla aplikacji funkcji.](./media/functions-scenario-database-table-cleanup/functions-app-service-add-setting.png)
 

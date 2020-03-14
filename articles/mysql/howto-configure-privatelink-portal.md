@@ -1,19 +1,19 @@
 ---
-title: Prywatny link do Azure Database for MySQL (wersja zapoznawcza) — Metoda konfiguracji portalu
+title: Prywatny link — Azure Portal — Azure Database for MySQL
 description: Informacje o konfigurowaniu prywatnego linku do Azure Database for MySQL z Azure Portal
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 193227ff98accb31c15e388c810aea7460a2cb5d
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 4a4824a9f8340b12bca7e18562d723eb24e58b71
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561667"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371923"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-mysql-preview-using-portal"></a>Tworzenie prywatnego linku do Azure Database for MySQL (wersja zapoznawcza) i zarządzanie nim przy użyciu portalu
+# <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>Tworzenie prywatnego linku do Azure Database for MySQL przy użyciu portalu i zarządzanie nim
 
 Prywatny punkt końcowy to podstawowy blok konstrukcyjny dla prywatnego linku na platformie Azure. Umożliwia ona korzystanie z zasobów platformy Azure, takich jak Virtual Machines (VM), w celu komunikacji z prywatnymi zasobami łączy prywatnych. W tym artykule dowiesz się, jak za pomocą Azure Portal utworzyć maszynę wirtualną w usłudze Azure Virtual Network i serwerze Azure Database for MySQL przy użyciu prywatnego punktu końcowego platformy Azure.
 
@@ -126,13 +126,13 @@ W tej sekcji utworzysz serwer Azure Database for MySQL na platformie Azure.
 
 W tej sekcji utworzysz serwer MySQL i dodasz do niego prywatny punkt końcowy. 
 
-1. W lewym górnym rogu ekranu w Azure Portal wybierz pozycję **Utwórz zasób** > **Networking** > **prywatnym centrum linków (wersja zapoznawcza)** .
+1. W lewym górnym rogu ekranu w Azure Portal wybierz pozycję **Utwórz zasób** > **Networking** > **łącze prywatne**.
 
 2. W **centrum linków prywatnych — Omówienie**opcji **tworzenia połączenia prywatnego z usługą**wybierz pozycję **Rozpocznij**.
 
     ![Omówienie linku prywatnego](media/concepts-data-access-and-security-private-link/privatelink-overview.png)
 
-1. W obszarze **Tworzenie prywatnego punktu końcowego (wersja zapoznawcza) — podstawy**wprowadź lub wybierz następujące informacje:
+1. W obszarze **Tworzenie prywatnego punktu końcowego — podstawy**wprowadź lub wybierz następujące informacje:
 
     | Ustawienie | Wartość |
     | ------- | ----- |
@@ -156,7 +156,7 @@ W tej sekcji utworzysz serwer MySQL i dodasz do niego prywatny punkt końcowy.
     |Docelowy zasób podrzędny |Wybierz polecenie Usuń *SqlServer*|
     |||
 7. Wybierz pozycję **Dalej: Konfiguracja**.
-8. W obszarze **Tworzenie prywatnego punktu końcowego (wersja zapoznawcza) — Konfiguracja**wprowadź lub wybierz następujące informacje:
+8. W obszarze **Tworzenie prywatnego punktu końcowego — konfiguracja**wprowadź lub wybierz następujące informacje:
 
     | Ustawienie | Wartość |
     | ------- | ----- |

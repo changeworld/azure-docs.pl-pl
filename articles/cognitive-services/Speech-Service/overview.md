@@ -8,26 +8,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
-ms.date: 02/10/2020
+ms.date: 03/12/2020
 ms.author: dapine
-ms.openlocfilehash: 7ddfae430e6aa4ec9549e40c937e5edcfd927f6d
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: a9dbd0d7a3b8dde45e317b624303082465f93bc9
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77119921"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369492"
 ---
 # <a name="what-is-the-speech-service"></a>Czym jest usługa rozpoznawania mowy?
 
 Usługa mowy to zjednoczenie zamiany mowy na tekst, tekstu na mowę i tłumaczenia mowy na jedną subskrypcję platformy Azure. Można łatwo włączyć mowę dla aplikacji, narzędzi i urządzeń za pomocą [zestawu Speech SDK](speech-sdk-reference.md), [zestawu Speech Devices SDK](https://aka.ms/sdsdk-quickstart)lub [interfejsów API REST](rest-apis.md).
 
 > [!IMPORTANT]
-> Usługa mowy zastąpiła interfejs API rozpoznawania mowy Bing, tłumaczenie mowy w usłudze Translator i Custom Speech. Aby uzyskać instrukcje dotyczące migracji _, zobacz przewodniki dotyczące > migracji_ .
+> Usługa mowy została zastąpiona interfejs API rozpoznawania mowy Bing i tłumaczenie mowy w usłudze Translator. Aby uzyskać instrukcje dotyczące migracji _, zobacz przewodniki dotyczące > migracji_ .
 
 Te funkcje składają się na usługę Speech. Skorzystaj z łączy w tej tabeli, aby dowiedzieć się więcej na temat typowych przypadków użycia dla każdej funkcji lub przejrzeć odwołanie do interfejsu API.
 
 | Usługa | Cecha | Opis | SDK | REST |
-| ------- | ------- | ----------- | --- | ---- |
+|---------|---------|-------------|-----|------|
 | [Zamiana mowy na tekst](speech-to-text.md) | Zamiana mowy na tekst | Funkcja zamiany mowy na tekst przekształca strumienie audio do tekstu w czasie rzeczywistym, które mogą być używane przez aplikacje, narzędzia lub urządzenia. Używaj zamiany mowy na tekst za pomocą [Language Understanding (Luis)](https://docs.microsoft.com/azure/cognitive-services/luis/) , aby uzyskać intencje użytkownika z uzyskanego mowy i korzystać z poleceń głosowych. | [Tak](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Tak](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [Transkrypcja partii](batch-transcription.md) | Transkrypcja partii umożliwia asynchroniczne transkrypcja mowy na tekst w dużych ilościach danych. Jest to usługa oparta na protokole REST, która używa tego samego punktu końcowego jako dostosowania i zarządzania modelami. | Nie | [Tak](https://westus.cris.ai/swagger/ui/index) |
 | | [Konwersacja z obsługą kilku urządzeń](multi-device-conversation.md) | Łączenie wielu urządzeń lub klientów w konwersacji w celu wysyłania komunikatów na mowę lub tekstowych przy użyciu łatwej obsługi transkrypcji i tłumaczenia| Yes | Nie |
@@ -43,7 +43,7 @@ Te funkcje składają się na usługę Speech. Skorzystaj z łączy w tej tabeli
 Oferujemy Przewodniki Szybki Start w najpopularniejszych językach programowania, z których każdy jest przeznaczony do uruchamiania kodu w mniej niż 10 minut. Ta tabela zawiera najpopularniejsze Przewodniki Szybki Start dla każdej funkcji. Użyj nawigacji po lewej stronie, aby poznać dodatkowe języki i platformy.
 
 | Zamiana mowy na tekst (SDK) | Zamiana tekstu na mowę (SDK) | Tłumaczenie (SDK) |
-| -------------------- | -------------------- | ----------------- |
+|----------------------|----------------------|-------------------|
 | [Rozpoznawanie mowy z pliku dźwiękowego](quickstarts/speech-to-text-from-file.md) | [Wytłumacz mowę na plik audio](quickstarts/text-to-speech-audio-file.md) | [Tłumaczenie zamiany mowy na tekst](quickstarts/translate-speech-to-text.md) |
 | [Rozpoznawanie mowy przy użyciu mikrofonu](quickstarts/speech-to-text-from-microphone.md) | [Funkcja syntezy mowy z prelegentem](quickstarts/text-to-speech.md) | [Tłumaczenie mowy na wiele języków docelowych](quickstarts/translate-speech-to-text-multiple-languages.md) |
 | [Rozpoznawanie mowy przechowywanej w usłudze BLOB Storage](quickstarts/from-blob.md) | [Synteza asynchroniczna dla długich postaci audio](quickstarts/text-to-speech/async-synthesis-long-form-audio.md) | [Tłumaczenie zamiany mowy na mowę](quickstarts/translate-speech-to-speech.md) |

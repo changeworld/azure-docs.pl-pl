@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: sanpil
 author: sanpil
 ms.date: 11/11/2019
-ms.openlocfilehash: 474a184b24ca3318a33adb89b25640939a814474
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: a677aaa891e21f4c9eeda02eebcb94e9d79a55ad
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771636"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368829"
 ---
 # <a name="define-machine-learning-pipelines-in-yaml"></a>Definiowanie potoków uczenia maszynowego w YAML
 
@@ -25,14 +25,14 @@ W poniższej tabeli przedstawiono, co jest i nie jest obecnie obsługiwane podcz
 
 | Typ kroku | Obsługiwane? |
 | ----- | :-----: |
-| PythonScriptStep | Tak |
-| AdlaStep | Tak |
-| AzureBatchStep | Tak |
-| DatabricksStep | Tak |
-| DataTransferStep | Tak |
+| PythonScriptStep | Yes |
+| AdlaStep | Yes |
+| AzureBatchStep | Yes |
+| DatabricksStep | Yes |
+| DataTransferStep | Yes |
 | AutoMLStep | Nie |
 | HyperDriveStep | Nie |
-| ModuleStep | Nie |
+| ModuleStep | Yes |
 | MPIStep | Nie |
 | EstimatorStep | Nie |
 
@@ -76,7 +76,7 @@ pipeline:
             default: 4
 ```
 
-## <a name="data-reference"></a>Odwołanie do danych
+## <a name="data-reference"></a>Opis danych
 
 W sekcji `data_references` są używane następujące klucze, które odnoszą się do [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py):
 
@@ -378,7 +378,7 @@ Podczas definiowania harmonogramu dla potoku może to być magazyn danych — wy
 | `polling_interval` | Czas trwania sondowania dla zmodyfikowanych/dodanych obiektów BLOB w minutach. Wartość domyślna: 5 minut. Obsługiwane tylko w przypadku harmonogramów magazynu danych. |
 | `data_path_parameter_name` | Nazwa parametru potoku ścieżki danych do ustawienia ze zmienioną ścieżką obiektu BLOB. Obsługiwane tylko w przypadku harmonogramów magazynu danych. |
 | `continue_on_step_failure` | Czy kontynuować wykonywanie innych kroków w przesłanych PipelineRun w przypadku niepowodzenia kroku. Jeśli ta opcja jest określona, zastąpi ustawienie `continue_on_step_failure` potoku.
-| `path_on_datastore` | Element opcjonalny. Ścieżka do magazynu danych do monitorowania dla zmodyfikowanych/dodanych obiektów BLOB. Ścieżka znajduje się w kontenerze dla magazynu danych, więc rzeczywista ścieżka monitorów harmonogramu to Container/`path_on_datastore`. Jeśli nie, kontener magazynu danych jest monitorowany. Dodatki/modyfikacje wprowadzone w podfolderze `path_on_datastore` nie są monitorowane. Obsługiwane tylko w przypadku harmonogramów magazynu danych. |
+| `path_on_datastore` | Opcjonalny. Ścieżka do magazynu danych do monitorowania dla zmodyfikowanych/dodanych obiektów BLOB. Ścieżka znajduje się w kontenerze dla magazynu danych, więc rzeczywista ścieżka monitorów harmonogramu to Container/`path_on_datastore`. Jeśli nie, kontener magazynu danych jest monitorowany. Dodatki/modyfikacje wprowadzone w podfolderze `path_on_datastore` nie są monitorowane. Obsługiwane tylko w przypadku harmonogramów magazynu danych. |
 
 Poniższy przykład zawiera definicję harmonogramu wyzwalanego przez magazyn danych:
 

@@ -12,14 +12,14 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: 90fa3b06e2696e9b45c333c75c8a8e117d5c0c96
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: e918f7ee64d4bc49d5da80bf9a3e7595555296dc
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77563117"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79203699"
 ---
-# <a name="scaling-streaming-with-cdn"></a>Skalowanie przesyłania strumieniowego przy użyciu usługi CDN
+# <a name="scaling-streaming-with-cdn"></a>Skalowanie przesyłania strumieniowego przy użyciu sieci CDN
 
 Usługa Azure Content Delivery Network (CDN) oferuje deweloperom globalne rozwiązanie umożliwiające szybkie dostarczanie użytkownikom zawartości wymagającej wysokiej przepustowości przez zapisywanie zawartości w pamięci podręcznej w węzłach fizycznych strategicznie rozmieszczonych na całym świecie.  
 
@@ -147,4 +147,5 @@ Zapoznaj się z artykułem [community Azure Media Services](media-services-commu
 
 ## <a name="next-steps"></a>Następne kroki
 
-W przykładzie [w tym repozytorium](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) przedstawiono sposób uruchamiania domyślnego punktu końcowego przesyłania strumieniowego przy użyciu platformy .NET.
+* Pamiętaj, aby zapoznaj dokument [punktu końcowego przesyłania strumieniowego](streaming-endpoint-concept.md) .
+* W przykładzie [w tym repozytorium](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) przedstawiono sposób uruchamiania domyślnego punktu końcowego przesyłania strumieniowego przy użyciu platformy .NET.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 6d4d8ac1eb001f03e7615eeabdaca6967223f40b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 3ded20f37a394e6adf726ad40c01aa36d41e4e8d
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79245228"
+ms.locfileid: "79299349"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Najlepsze rozwiązania dotyczące platformy Azure dotyczące zabezpieczeń sieci
 W tym artykule omówiono zbiór najlepszych rozwiązań dotyczących platformy Azure w celu zwiększenia bezpieczeństwa sieci. Te najlepsze rozwiązania wynikają z naszych rozwiązań związanych z obsługą sieci platformy Azure i klientami.
@@ -122,7 +122,7 @@ Chociaż jest to podstawowy projekt sieci obwodowej, istnieje wiele różnych pr
 
 Na podstawie wymienionej wcześniej koncepcji zaufania należy rozważyć użycie sieci obwodowej do wszystkich wdrożeń o wysokim poziomie zabezpieczeń, aby zwiększyć poziom bezpieczeństwa sieci i kontroli dostępu do zasobów platformy Azure. Możesz użyć platformy Azure lub rozwiązania innej firmy, aby zapewnić dodatkową warstwę zabezpieczeń między zasobami i Internetem:
 
-- Natywne formanty platformy Azure. Zapora [platformy Azure](/azure/firewall/overview) i [Zapora aplikacji sieci web w programie Application Gateway](/azure/application-gateway/overview#web-application-firewall) oferują podstawowe zabezpieczenia za pomocą w pełni bezstanowej zapory jako usługi, wbudowanej wysokiej dostępności, nieograniczonej skalowalności chmury, filtrowania nazw FQDN, obsługi zestawów reguł OWASP Core oraz prostej instalacji i konfiguracji.
+- Natywne formanty platformy Azure. Zapora [platformy Azure](/azure/firewall/overview) i [Zapora aplikacji sieci web w programie Application Gateway](../../application-gateway/features.md#web-application-firewall) oferują podstawowe zabezpieczenia za pomocą w pełni bezstanowej zapory jako usługi, wbudowanej wysokiej dostępności, nieograniczonej skalowalności chmury, filtrowania nazw FQDN, obsługi zestawów reguł OWASP Core oraz prostej instalacji i konfiguracji.
 - Oferty innych firm. Wyszukaj w [witrynie Azure Marketplace usługę](https://azuremarketplace.microsoft.com/) Zapora nowej generacji (zapory następnej generacji) i inne oferty innych firm, które zapewniają znane narzędzia zabezpieczające oraz znacznie ulepszone poziomy zabezpieczeń sieci. Konfiguracja może być bardziej złożona, ale oferta innej firmy może umożliwić korzystanie z istniejących możliwości i umiejętności.
 
 ## <a name="avoid-exposure-to-the-internet-with-dedicated-wan-links"></a>Unikaj ekspozycji z Internetem za pomocą dedykowanych łączy sieci WAN

@@ -3,16 +3,23 @@ title: Tworzenie kopii zapasowych baz danych programu SQL Server na platformie A
 description: W tym artykule opisano sposób tworzenia kopii zapasowych SQL Server na platformie Azure. W artykule objaśniono również proces odzyskiwania programu SQL Server.
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: 39f2348a95be95a03dada45d48952dce99ec4ec7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 7305a75852deac466028e6278fca76626d8c1820
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79273243"
+ms.locfileid: "79297496"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informacje o kopii zapasowej programu SQL Server na maszynach wirtualnych platformy Azure
 
-Bazy danych programu SQL Server to krytyczne obciążenia, które wymagają niskiego celu punktu odzyskiwania (RPO) i długoterminowego przechowywania. Można utworzyć kopię zapasową SQL Server baz danych uruchomionych na maszynach wirtualnych platformy Azure przy użyciu [Azure Backup](backup-overview.md).
+[Azure Backup](backup-overview.md) oferuje oparty na strumieniu wyspecjalizowane rozwiązanie do tworzenia kopii zapasowych SQL Server uruchomionych na maszynach wirtualnych platformy Azure. To rozwiązanie jest dostosowane do Azure Backup korzyści z tworzenia kopii zapasowych bez infrastruktury, długoterminowego przechowywania i centralnego zarządzania. Ponadto zapewnia następujące korzyści dotyczące SQL Server:
+
+1. Kopie zapasowe oparte na obciążeniu obsługujące wszystkie typy kopii zapasowych — pełne, różnicowe i dzienników
+2. 15-minimalny cel punktu odzyskiwania z częstymi kopiami zapasowymi dzienników
+3. Odzyskiwanie do punktu w czasie do drugiego
+4. Kopia zapasowa i przywracanie na poziomie poszczególnych baz danych
+
+Aby wyświetlić scenariusze tworzenia kopii zapasowych i przywracania, które obsługuje dzisiaj, zapoznaj się z [matrycą pomocy technicznej](backup-azure-sql-database.md#scenario-support).
 
 ## <a name="backup-process"></a>Proces tworzenia kopii zapasowej
 
@@ -78,37 +85,37 @@ W zależności od preferencji tworzenia kopii zapasowych i typów kopii zapasowy
 
 **Typ kopii zapasowej** | **Node**
     --- | ---
-    szczegółowe | Podstawowy
-    Różnicy | Podstawowy
-    Log |  Podstawowy
-    Tylko kopiowanie pełne |  Podstawowy
+    szczegółowe | Podstawowa
+    Różnicy | Podstawowa
+    Log |  Podstawowa
+    Tylko kopiowanie pełne |  Podstawowa
 
 * **Preferencja kopii zapasowej: tylko pomocnicza**
 
 **Typ kopii zapasowej** | **Node**
 --- | ---
-szczegółowe | Podstawowy
-Różnicy | Podstawowy
-Log |  Pomocniczy
-Tylko kopiowanie pełne |  Pomocniczy
+szczegółowe | Podstawowa
+Różnicy | Podstawowa
+Log |  Dodatkowa
+Tylko kopiowanie pełne |  Dodatkowa
 
 * **Preferencja kopii zapasowej: pomocnicza**
 
 **Typ kopii zapasowej** | **Node**
 --- | ---
-szczegółowe | Podstawowy
-Różnicy | Podstawowy
-Log |  Pomocniczy
-Tylko kopiowanie pełne |  Pomocniczy
+szczegółowe | Podstawowa
+Różnicy | Podstawowa
+Log |  Dodatkowa
+Tylko kopiowanie pełne |  Dodatkowa
 
 * **Brak preferencji dotyczących kopii zapasowych**
 
 **Typ kopii zapasowej** | **Node**
 --- | ---
-szczegółowe | Podstawowy
-Różnicy | Podstawowy
-Log |  Pomocniczy
-Tylko kopiowanie pełne |  Pomocniczy
+szczegółowe | Podstawowa
+Różnicy | Podstawowa
+Log |  Dodatkowa
+Tylko kopiowanie pełne |  Dodatkowa
 
 ## <a name="set-vm-permissions"></a>Ustawianie uprawnień maszyny wirtualnej
 

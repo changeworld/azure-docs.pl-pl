@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: ea63b0784c0f8680e544179dfcd927f59336b3ec
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: adcd4d9e81eecad9540a4ef1be5e675f940ffb8d
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467136"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367996"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-hdinsight"></a>Wizualizowanie interakcyjnych zapytań Apache Hive danych za pomocą usługi Microsoft Power BI przy użyciu zapytania bezpośredniego w usłudze HDInsight
 
@@ -26,7 +26,7 @@ Można użyć [sterownika Apache Hive ODBC](../hadoop/apache-hadoop-connect-hive
 ## <a name="prerequisites"></a>Wymagania wstępne
 Przed przejściem do tego artykułu należy dysponować następującymi elementami:
 
-* **Klaster usługi HDInsight**. Klaster może być klastrem usługi HDInsight z Apache Hive lub nowo wydaną interaktywny klaster zapytań. Aby utworzyć klastry, zobacz [Tworzenie klastra](../hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
+* **Klaster usługi HDInsight**. Klaster może być klastrem usługi HDInsight z Apache Hive lub nowo wydaną interaktywny klaster zapytań. Aby utworzyć klastry, zobacz [Tworzenie klastra](../hadoop/apache-hadoop-linux-tutorial-get-started.md).
 * **[Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/)** . Kopię można pobrać z [Centrum pobierania Microsoft](https://www.microsoft.com/download/details.aspx?id=45331).
 
 ## <a name="load-data-from-hdinsight"></a>Ładowanie danych z usługi HDInsight
@@ -50,7 +50,7 @@ Tabela programu Hive `hivesampletable` zawiera wszystkie klastry usługi HDInsig
     |Właściwość | Wartość |
     |---|---|
     |Serwer |Wprowadź nazwę klastra, na przykład *myiqcluster.azurehdinsight.NET*.|
-    |Database (Baza danych) |Wprowadź **wartość domyślną** dla tego artykułu.|
+    |Baza danych |Wprowadź **wartość domyślną** dla tego artykułu.|
     |Tryb łączności danych |Wybierz opcję **DirectQuery** dla tego artykułu.|
 
     ![Zapytanie interaktywne usługi HDInsight Power BI połączenia DirectQuery](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-connect.png)

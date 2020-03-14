@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: 849d1187d6b854d48ad75ab1e55f600407420346
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: c71643adf3b34954ea5ce020351559abbfc60fab
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79251260"
+ms.locfileid: "79298941"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Punkty końcowe przesyłania strumieniowego (Źródło) w Azure Media Services
 
@@ -59,16 +59,16 @@ Aby uzyskać informacje o umowie SLA, zobacz [Cennik i Umowa SLA](https://azure.
 
 ## <a name="comparing-streaming-types"></a>Porównywanie typów przesyłania strumieniowego
 
-Cecha|Standard|Premium
+Cecha|Standardowy|Premium
 ---|---|---
 Przepływność |Do 600 MB/s i może zapewnić znacznie wyższą skuteczną przepływność w przypadku użycia sieci CDN.|200 MB/s na jednostkę przesyłania strumieniowego (SU). W przypadku korzystania z sieci CDN można zapewnić znacznie wyższą skuteczną przepływność.
 CDN|Azure CDN, Sieć CDN innej firmy lub brak sieci CDN.|Azure CDN, Sieć CDN innej firmy lub brak sieci CDN.
 Opłaty są naliczane proporcjonalnie| Dzienna|Dzienna
-Szyfrowanie dynamiczne|Yes|Yes
-Dynamiczne tworzenie pakietów|Yes|Yes
-Skalowanie|Automatycznie Skaluj do dostosowanej przepływności.|Dodatkowe usługi SUs
-Filtrowanie/G20 IP/Host niestandardowy <sup>1</sup>|Yes|Yes
-Pobieranie progresywne|Yes|Yes
+Szyfrowanie dynamiczne|Tak|Tak
+Dynamiczne tworzenie pakietów|Tak|Tak
+Skala|Automatycznie Skaluj do dostosowanej przepływności.|Dodatkowe usługi SUs
+Filtrowanie/G20 IP/Host niestandardowy <sup>1</sup>|Tak|Tak
+Pobieranie progresywne|Tak|Tak
 Zalecane użycie |Zalecane w przypadku większości scenariuszy przesyłania strumieniowego.|Profesjonalne użycie.
 
 <sup>1</sup> używany bezpośrednio w punkcie końcowym przesyłania strumieniowego, gdy sieć CDN nie jest włączona w punkcie końcowym.<br/>
@@ -163,4 +163,4 @@ Zapoznaj się z artykułem [community Azure Media Services](media-services-commu
 
 ## <a name="next-steps"></a>Następne kroki
 
-W przykładzie [w tym repozytorium](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) przedstawiono sposób uruchamiania domyślnego punktu końcowego przesyłania strumieniowego przy użyciu platformy .NET.
+[Zarządzanie punktami końcowymi przesyłania strumieniowego](manage-streaming-endpoints-howto.md)

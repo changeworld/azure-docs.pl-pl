@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 1/23/2020
+ms.date: 3/13/2020
 ms.author: sutalasi
-ms.openlocfilehash: aeab1960b065538635fdd63c43d779287f8cd9ee
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 5dcae83714ee3693288abf54afe8df7bb55dd578
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79258163"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371447"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Informacje o sieci w usłudze odzyskiwania po awarii maszyny wirtualnej platformy Azure
 
@@ -52,6 +52,8 @@ Jeśli używasz serwera proxy zapory opartego na adresie URL w celu kontrolowani
 login.microsoftonline.com | Wymagany do autoryzacji i uwierzytelniania do adresów URL usługi Site Recovery.
 *.hypervrecoverymanager.windowsazure.com | Wymagane, aby komunikacja z usługą Site Recovery mogła się odbywać z poziomu maszyny wirtualnej.
 *.servicebus.windows.net | Wymagane, aby dane dotyczące monitorowania i diagnostyki Site Recovery mogły być zapisywane z poziomu maszyny wirtualnej.
+*.vault.azure.net | Zezwala na dostęp do włączania replikacji dla maszyn wirtualnych z obsługą ADE za pośrednictwem portalu
+*. automation.ext.azure.com | Umożliwia włączenie autouaktualnienia agenta mobilności dla zreplikowanego elementu za pośrednictwem portalu
 
 ## <a name="outbound-connectivity-for-ip-address-ranges"></a>Połączenia ruchu wychodzącego dla zakresów adresów IP
 
@@ -63,6 +65,8 @@ Jeśli używasz sieciowej grupy zabezpieczeń do kontrolowania łączności wych
 - Utwórz opartą na [usłudze Azure Active Directory regułę sieciowej grupy zabezpieczeń (AAD)](../virtual-network/security-overview.md#service-tags) , aby umożliwić dostęp do wszystkich adresów IP odpowiadających usłudze AAD
 - Utwórz regułę sieciowej grupy zabezpieczeń opartą na tagu usługi EventsHub dla regionu docelowego, umożliwiając dostęp do monitorowania Site Recovery.
 - Utwórz regułę sieciowej grupy zabezpieczeń opartą na znacznikach usługi AzureSiteRecovery, aby umożliwić dostęp do usługi Site Recovery w dowolnym regionie.
+- Utwórz regułę sieciowej grupy zabezpieczeń opartą na tagu usługi AzureKeyVault. Jest to wymagane tylko w przypadku włączania replikacji maszyn wirtualnych z obsługą ADE za pośrednictwem portalu.
+- Utwórz regułę sieciowej grupy zabezpieczeń opartą na znacznikach usługi GuestAndHybridManagement. Jest to wymagane tylko do włączenia autouaktualnienia agenta mobilności dla zreplikowanego elementu za pośrednictwem portalu.
 - Zalecamy utworzenie wymaganych reguł sieciowej grupy zabezpieczeń na testowym sieciowej grupy zabezpieczeń i sprawdzenie, czy nie ma żadnych problemów przed utworzeniem reguł na sieciowej grupy zabezpieczeń produkcyjnej.
 
 ## <a name="example-nsg-configuration"></a>Przykładowa konfiguracja sieciowej grupy zabezpieczeń

@@ -10,66 +10,54 @@ metadata:
   layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 02/11/2020
+  ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: 50027fde619d4e69fdbb181544d23dba4a9cf144
-  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+  ms.openlocfilehash: 369213485934236a05ecb3fcb458bdd28fd76136
+  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
   ms.translationtype: MT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 03/09/2020
-  ms.locfileid: "78943329"
+  ms.lasthandoff: 03/14/2020
+  ms.locfileid: "79365563"
 landingContent:
-- title: Rozpoczynanie pracy
+- title: Asystenci głosu — informacje
   linkLists:
   - linkListType: overview
     links:
-    - text: Rozwiązania asystenta głosowego
+    - text: Co to jest asystent głosowy?
       url: voice-assistants.md
-    - text: Informacje o poleceniach niestandardowych
+    - text: Co to jest aplikacja poleceń niestandardowych?
       url: custom-commands.md
-    - text: Informacje o bezpośredniej mowie wiersza
+    - text: Co to jest mowa Direct Line?
       url: direct-line-speech.md
   - linkListType: reference
     links:
-    - text: Ceny
-      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
     - text: Często zadawane pytania dotyczące asystentów głosowych
       url: faq-voice-assistants.md
-- title: Custom — słowo kluczowe
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Custom — słowo kluczowe
-      url: speech-devices-sdk-create-kws.md
-  - linkListType: reference
-    links:
-    - text: Niestandardowe wskazówki dotyczące nazewnictwa słów kluczowych
-      url: speech-devices-sdk-kws-guidelines.md
-- title: Polecenia niestandardowe
+    - text: Cennik asystentów głosowych
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
+- title: Tworzenie za pomocą poleceń niestandardowych
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Tworzenie polecenia niestandardowego (wersja zapoznawcza)
+    - text: Tworzenie aplikacji poleceń niestandardowych
       url: quickstart-custom-speech-commands-create-new.md
-    - text: Tworzenie polecenia niestandardowego z parametrami (wersja zapoznawcza)
+    - text: Utwórz polecenie niestandardowe z parametrami
       url: quickstart-custom-speech-commands-create-parameters.md
-    - text: Używanie poleceń niestandardowych z głosem niestandardowym (wersja zapoznawcza)
+    - text: Używanie poleceń niestandardowych z niestandardowym głosem
       url: quickstart-custom-speech-commands-select-custom-voice.md
-    - text: Używanie poleceń niestandardowych z zestawem SDK usługi Mowa (wersja zapoznawcza)
+    - text: Używanie poleceń niestandardowych z zestawem SDK mowy
       url: quickstart-custom-speech-commands-speech-sdk.md
   - linkListType: how-to-guide
     links:
-    - text: Polecenia niestandardowe z zestawem SDK mowy
+    - text: Realizacja poleceń z klienta
       url: how-to-custom-speech-commands-fulfill-sdk.md
-    - text: Wykonywanie poleceń niestandardowych przy użyciu zestawu SDK usługi Mowa
-      url: how-to-custom-speech-commands-fulfill-sdk.md
-    - text: Dodawanie weryfikacji parametrów do poleceń niestandardowych
+    - text: Dodawanie walidacji parametru
       url: how-to-custom-speech-commands-validations.md
-    - text: Dodawanie potwierdzenia do polecenia niestandardowego
+    - text: Dodaj potwierdzenie
       url: how-to-custom-speech-commands-confirmations.md
-    - text: Dodawanie korekty jednoetapowej do polecenia niestandardowego
+    - text: Dodawanie korekty jednoetapowej
       url: how-to-custom-speech-commands-one-step-correction.md
-- title: Mowa Direct Line
+- title: Programowanie przy użyciu bezpośredniej linii mowy
   linkLists:
   - linkListType: quickstart
     links:
@@ -83,3 +71,13 @@ landingContent:
     links:
     - text: Dodawanie obsługi głosu do bota przy użyciu zestawu SDK usługi Mowa
       url: tutorial-voice-enable-your-bot-speech-sdk.md
+- title: Programowanie za pomocą słowa kluczowego Custom
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Tworzenie niestandardowego słowa kluczowego
+      url: speech-devices-sdk-create-kws.md
+  - linkListType: reference
+    links:
+    - text: Niestandardowe wskazówki dotyczące nazewnictwa słów kluczowych
+      url: speech-devices-sdk-kws-guidelines.md

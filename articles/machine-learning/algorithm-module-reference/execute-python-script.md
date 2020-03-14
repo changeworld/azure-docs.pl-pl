@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/10/2020
-ms.openlocfilehash: 52eb3bdb463389d075421661610b5ee94d14d77d
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.openlocfilehash: 3370c7ebb8e0253543e6b9cb6ce7614811fb5bd0
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79037087"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79140794"
 ---
 # <a name="execute-python-script-module"></a>Wykonaj moduł skryptu języka Python
 
@@ -114,7 +114,10 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 }
 ```
 
-Po pomyślnym przesłaniu potoku można wyświetlić podgląd obrazu w prawym panelu modułu ![przekazanego obrazu](media/module/upload-image-in-python-script.png)
+Po pomyślnym przesłaniu potoku można wyświetlić podgląd obrazu w prawym panelu modułu
+
+[!div class="mx-imgBorder"]
+![przekazane —](media/module/upload-image-in-python-script.png) obrazu
 
 ## <a name="how-to-configure-execute-python-script"></a>Jak skonfigurować skrypt wykonywania skryptu języka Python
 
@@ -132,7 +135,7 @@ Moduł **wykonywania skryptu języka Python** zawiera przykładowy kod w języku
 
     ![Wykonaj mapę wejściową języka Python](media/module/python-module.png)
 
-4. Aby uwzględnić nowe pakiety lub kod w języku Python, Dodaj plik spakowane zawierający te zasoby niestandardowe w **pakiecie skryptu**. Dane wejściowe do **pakietu skryptu** muszą być plikiem skompresowanym przekazanym do obszaru roboczego jako zestaw danych typu plików. 
+4. Aby uwzględnić nowe pakiety lub kod w języku Python, Dodaj plik spakowane zawierający te zasoby niestandardowe w **pakiecie skryptu**. Dane wejściowe do **pakietu skryptu** muszą być plikiem skompresowanym przekazanym do obszaru roboczego jako zestaw danych typu plików. Można przekazać zestaw danych na stronie zasobów **zestawy** danych, a następnie przeciągnąć i upuścić moduł DataSet z listy **moje zbiory** w lewym drzewie modułów na stronie Tworzenie projektanta. 
 
     Podczas wykonywania potoku można użyć dowolnego pliku zawartego w przekazanym skompresowanym archiwum. Jeśli archiwum zawiera strukturę katalogów, struktura jest zachowywana, ale należy dołączać katalog o nazwie **src** do ścieżki.
 

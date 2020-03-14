@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: fac9cba28f90f3642de660ed7d070b165c06bb2e
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 0df2c0501dfba6311d1178703e0907090706859a
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303260"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79296782"
 ---
 # <a name="container-security-in-security-center"></a>Zabezpieczenia kontenera w Security Center
 
@@ -67,7 +67,7 @@ Aby uzyskać szczegółowe informacje dotyczące odpowiednich Security Center za
 
 Security Center zapewnia wykrywanie zagrożeń w czasie rzeczywistym w środowiskach kontenerów i generuje alerty dla podejrzanych działań. Te informacje pozwalają na szybkie rozwiązywanie problemów dotyczących zabezpieczeń i poprawę bezpieczeństwa kontenerów.
 
-Wykrywamy zagrożenia na poziomie klastra hosta i AKS. Aby uzyskać szczegółowe informacje, zobacz [wykrywanie zagrożeń dla kontenerów platformy Azure](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-).
+Wykrywamy zagrożenia na poziomie klastra hosta i AKS. Aby uzyskać szczegółowe informacje, zobacz [wykrywanie zagrożeń dla kontenerów platformy Azure](threat-protection.md#azure-containers).
 
 
 ## <a name="container-security-faq"></a>Zabezpieczenia kontenerów — często zadawane pytania

@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/02/2019
 ms.openlocfilehash: fd363f7b685db5e309827a0c5e635264e676b388
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357190"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281758"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Kopiowanie danych z tabeli SAP przy użyciu Azure Data Factory
 
@@ -72,25 +72,25 @@ Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które
 
 Następujące właściwości są obsługiwane dla SAP BW połączonej usługi:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| `type` | Właściwość `type` musi mieć wartość `SapTable`. | Yes |
+| `type` | Właściwość `type` musi mieć wartość `SapTable`. | Tak |
 | `server` | Nazwa serwera, na którym znajduje się wystąpienie SAP.<br/>Służy do nawiązywania połączenia z serwerem aplikacji SAP. | Nie |
 | `systemNumber` | Numer systemu SAP systemu.<br/>Służy do nawiązywania połączenia z serwerem aplikacji SAP.<br/>Dozwolona wartość: dwucyfrowa liczba dziesiętna reprezentowana jako ciąg. | Nie |
 | `messageServer` | Nazwa hosta serwera komunikatów SAP.<br/>Służy do nawiązywania połączenia z serwerem komunikatów SAP. | Nie |
 | `messageServerService` | Nazwa usługi lub numer portu serwera komunikatów.<br/>Służy do nawiązywania połączenia z serwerem komunikatów SAP. | Nie |
 | `systemId` | Identyfikator systemu SAP, w którym znajduje się tabela.<br/>Służy do nawiązywania połączenia z serwerem komunikatów SAP. | Nie |
 | `logonGroup` | Grupa logowania dla systemu SAP.<br/>Służy do nawiązywania połączenia z serwerem komunikatów SAP. | Nie |
-| `clientId` | Identyfikator klienta w systemie SAP.<br/>Dozwolona wartość: 3-cyfrowa liczba dziesiętna reprezentowana jako ciąg. | Yes |
+| `clientId` | Identyfikator klienta w systemie SAP.<br/>Dozwolona wartość: 3-cyfrowa liczba dziesiętna reprezentowana jako ciąg. | Tak |
 | `language` | Język, którego używa System SAP.<br/>Wartość domyślna to `EN`.| Nie |
-| `userName` | Nazwa użytkownika, który ma dostęp do serwera SAP. | Yes |
-| `password` | Hasło użytkownika. Oznacz to pole typem `SecureString`, aby bezpiecznie przechowywać je w Data Factory, lub [odwoływać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| `userName` | Nazwa użytkownika, który ma dostęp do serwera SAP. | Tak |
+| `password` | Hasło użytkownika. Oznacz to pole typem `SecureString`, aby bezpiecznie przechowywać je w Data Factory, lub [odwoływać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
 | `sncMode` | Wskaźnik aktywacji SNC w celu uzyskania dostępu do serwera SAP, na którym znajduje się tabela.<br/>Użyj, jeśli chcesz używać SNC do nawiązywania połączenia z serwerem SAP.<br/>Dozwolone wartości to `0` (wyłączone, domyślne) lub `1` (włączone). | Nie |
 | `sncMyName` | Nazwa SNC inicjatora do uzyskania dostępu do serwera SAP, na którym znajduje się tabela.<br/>Ma zastosowanie, gdy `sncMode` jest włączona. | Nie |
 | `sncPartnerName` | Nazwa SNC partnera komunikacyjnego, aby uzyskać dostęp do serwera SAP, na którym znajduje się tabela.<br/>Ma zastosowanie, gdy `sncMode` jest włączona. | Nie |
 | `sncLibraryPath` | Biblioteka produktu zabezpieczeń zewnętrznych w celu uzyskania dostępu do serwera SAP, na którym znajduje się tabela.<br/>Ma zastosowanie, gdy `sncMode` jest włączona. | Nie |
 | `sncQop` | Poziom jakości ochrony SNC, który ma zostać zastosowany.<br/>Ma zastosowanie, gdy `sncMode` jest włączona. <br/>Dozwolone wartości to `1` (uwierzytelnianie), `2` (integralność), `3` (prywatność), `8` (wartość domyślna), `9` (maksimum). | Nie |
-| `connectVia` | [Środowisko Integration Runtime](concepts-integration-runtime.md) służy do nawiązywania połączenia z magazynem danych. Wymagane jest samodzielne środowisko Integration Runtime, jak wspomniano wcześniej w [wymaganiach wstępnych](#prerequisites). |Yes |
+| `connectVia` | [Środowisko Integration Runtime](concepts-integration-runtime.md) służy do nawiązywania połączenia z magazynem danych. Wymagane jest samodzielne środowisko Integration Runtime, jak wspomniano wcześniej w [wymaganiach wstępnych](#prerequisites). |Tak |
 
 **Przykład 1: łączenie z serwerem aplikacji SAP**
 
@@ -180,10 +180,10 @@ Aby zapoznać się z pełną listą sekcji i właściwości do definiowania zest
 
 Aby można było skopiować dane z i do SAP BW połączonej z usługą Open Hub, obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| `type` | Właściwość `type` musi mieć wartość `SapTableResource`. | Yes |
-| `tableName` | Nazwa tabeli SAP, z której mają zostać skopiowane dane. | Yes |
+| `type` | Właściwość `type` musi mieć wartość `SapTableResource`. | Tak |
+| `tableName` | Nazwa tabeli SAP, z której mają zostać skopiowane dane. | Tak |
 
 ### <a name="example"></a>Przykład
 
@@ -212,9 +212,9 @@ Aby zapoznać się z pełną listą sekcji i właściwości definiowania działa
 
 Aby skopiować dane z tabeli SAP, obsługiwane są następujące właściwości:
 
-| Właściwość                         | Opis                                                  | Wymagany |
+| Właściwość                         | Opis                                                  | Wymagane |
 | :------------------------------- | :----------------------------------------------------------- | :------- |
-| `type`                             | Właściwość `type` musi mieć wartość `SapTableSource`.         | Yes      |
+| `type`                             | Właściwość `type` musi mieć wartość `SapTableSource`.         | Tak      |
 | `rowCount`                         | Liczba wierszy do pobrania.                              | Nie       |
 | `rfcTableFields`                   | Pola (kolumny) do skopiowania z tabeli SAP. Na przykład `column0, column1`. | Nie       |
 | `rfcTableOptions`                  | Opcje filtrowania wierszy w tabeli SAP. Na przykład `COLUMN0 EQ 'SOMEVALUE'`. Zobacz również tabelę operatorów zapytań SAP w dalszej części tego artykułu. | Nie       |

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/02/2020
-ms.openlocfilehash: 5bc36c0a52515e1801886a0c3959e29c14da3fe5
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: d9b64785dbd82842479eb3f313b8394f9f25b40b
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78267794"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370002"
 ---
 # <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>Wizualizowanie danych Apache Hive za pomocą programu Microsoft Power BI przy użyciu interfejsu ODBC w usłudze Azure HDInsight
 
@@ -32,7 +32,7 @@ Informacje dotyczą również nowego typu klastra [interakcyjnych zapytań](../i
 
 Przed przejściem do tego artykułu należy dysponować następującymi elementami:
 
-* Klaster usługi HDInsight. Klaster może być klastrem usługi HDInsight z użyciem programu Hive lub nowo wydaną interaktywny klaster zapytań. Aby utworzyć klastry, zobacz [Tworzenie klastra](apache-hadoop-linux-tutorial-get-started.md#create-cluster).
+* Klaster usługi HDInsight. Klaster może być klastrem usługi HDInsight z użyciem programu Hive lub nowo wydaną interaktywny klaster zapytań. Aby utworzyć klastry, zobacz [Tworzenie klastra](apache-hadoop-linux-tutorial-get-started.md).
 
 * [Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/). Kopię można pobrać z [Centrum pobierania Microsoft](https://www.microsoft.com/download/details.aspx?id=45331).
 

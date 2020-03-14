@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: 2e7c1eedf02c8a7783ee90f403dbd77ec2ee53ea
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365880"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79267666"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>Oprogramowanie StorSimple 8000 Series, wysoka dostępność i wymagania dotyczące sieci
 
@@ -63,13 +63,13 @@ Poniższe wymagania dotyczące oprogramowania dotyczą opcjonalnych składników
 
 Urządzenie StorSimple jest urządzeniem zablokowanym. Należy jednak otworzyć porty w zaporze, aby umożliwić obsługę ruchu iSCSI, chmury i zarządzania. Poniższa tabela zawiera listę portów, które należy otworzyć w zaporze. W tej tabeli *w* lub *przychodzący* odnosi się do kierunku, w którym przychodzące żądania klienta uzyskują dostęp do urządzenia. *Out* lub *wychodzący* odnosi się do kierunku, w którym Urządzenie StorSimple wysyła dane zewnętrznie, poza wdrożeniem: na przykład, ruch wychodzący do Internetu.
 
-| Numer portu<sup>1, 2</sup> | Do lub do zewnątrz | Zakres portów | Wymagany | Uwagi |
+| Numer portu<sup>1, 2</sup> | Do lub do zewnątrz | Zakres portów | Wymagane | Uwagi |
 | --- | --- | --- | --- | --- |
 | TCP 80 (HTTP)<sup>3</sup> |Określoną |WAN |Nie |<ul><li>Port wychodzący jest używany na potrzeby dostępu do Internetu w celu pobierania aktualizacji.</li><li>Wychodzący serwer proxy sieci Web jest konfigurowany przez użytkownika.</li><li>Aby zezwolić na aktualizacje systemu, ten port musi być również otwarty dla stałych adresów IP kontrolera.</li></ul> |
-| TCP 443 (HTTPS)<sup>3</sup> |Określoną |WAN |Yes |<ul><li>Port wychodzący służy do uzyskiwania dostępu do danych w chmurze.</li><li>Wychodzący serwer proxy sieci Web jest konfigurowany przez użytkownika.</li><li>Aby zezwolić na aktualizacje systemu, ten port musi być również otwarty dla stałych adresów IP kontrolera.</li><li>Ten port jest również używany na kontrolerach do wyrzucania elementów bezużytecznych.</li></ul> |
+| TCP 443 (HTTPS)<sup>3</sup> |Określoną |WAN |Tak |<ul><li>Port wychodzący służy do uzyskiwania dostępu do danych w chmurze.</li><li>Wychodzący serwer proxy sieci Web jest konfigurowany przez użytkownika.</li><li>Aby zezwolić na aktualizacje systemu, ten port musi być również otwarty dla stałych adresów IP kontrolera.</li><li>Ten port jest również używany na kontrolerach do wyrzucania elementów bezużytecznych.</li></ul> |
 | UDP 53 (DNS) |Określoną |WAN |W niektórych przypadkach: Zobacz uwagi. |Ten port jest wymagany tylko wtedy, gdy jest używany internetowy serwer DNS. |
 | UDP 123 (NTP) |Określoną |WAN |W niektórych przypadkach: Zobacz uwagi. |Ten port jest wymagany tylko wtedy, gdy jest używany internetowy serwer NTP. |
-| TCP 9354 |Określoną |WAN |Yes |Port wychodzący jest używany przez urządzenie StorSimple do komunikowania się z usługą StorSimple Menedżer urządzeń. |
+| TCP 9354 |Określoną |WAN |Tak |Port wychodzący jest używany przez urządzenie StorSimple do komunikowania się z usługą StorSimple Menedżer urządzeń. |
 | 3260 (iSCSI) |W |Sieć LAN |Nie |Ten port służy do uzyskiwania dostępu do danych za pośrednictwem protokołu iSCSI. |
 | 5985 |W |Sieć LAN |Nie |Port wejściowy jest używany przez StorSimple Snapshot Manager do komunikowania się z urządzeniem StorSimple.<br>Ten port jest również używany podczas zdalnego łączenia się z program Windows PowerShell dla usługi StorSimple za pośrednictwem protokołu HTTP. |
 | 5986 |W |Sieć LAN |Nie |Ten port jest używany podczas zdalnego łączenia się z program Windows PowerShell dla usługi StorSimple za pośrednictwem protokołu HTTPS. |

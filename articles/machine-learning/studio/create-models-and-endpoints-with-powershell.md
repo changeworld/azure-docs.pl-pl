@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 9d94b6627348d08c76fa040255ba0856a2ffa945
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 4f8bb1f20dcc3a7900e3347616018a6e156962d0
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168814"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218187"
 ---
 # <a name="use-powershell-to-create-studio-classic-models-and-web-service-endpoints-from-one-experiment"></a>Tworzenie modeli Studio (klasycznych) i punktów końcowych usługi sieci Web przy użyciu programu PowerShell w ramach jednego eksperymentu
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Poniżej przedstawiono typowe nauczanym problemem maszyny: Aby utworzyć wiele modeli, które mają tego samego przepływu pracy szkolenia i używają tego samego algorytmu. Jednak aby użytkownicy posiadali zestawów danych szkoleniowych różnych jako dane wejściowe. W tym artykule pokazano, jak to zrobić na dużą skalę w Azure Machine Learning Studio (klasyczny) przy użyciu tylko jednego eksperymentu.
 

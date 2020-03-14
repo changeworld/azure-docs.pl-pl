@@ -7,11 +7,11 @@ ms.topic: tutorial
 ms.date: 03/04/2020
 ms.custom: mvc
 ms.openlocfilehash: 347f2fbc0f12aa775c42dbb14a4625dc509a20ed
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372922"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239658"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Zarządzanie aktualizacjami i poprawkami dla maszyn wirtualnych platformy Azure
 
@@ -50,7 +50,7 @@ Kliknij w dowolnym miejscu w obszarze aktualizacji, aby otworzyć okienko **prze
 
 ![Wyświetlanie stanu aktualizacji](./media/automation-tutorial-update-management/logsearch.png)
 
-## <a name="configure-alerts"></a>Konfigurowanie alertów
+## <a name="configure-alerts"></a>Konfigurowanie alarmów
 
 W tym kroku dowiesz się, jak skonfigurować alert powiadamiający o stanie wdrożenia aktualizacji.
 
@@ -119,7 +119,7 @@ W obszarze **Nowe wdrożenie aktualizacji** podaj następujące informacje:
 
    |System operacyjny  |Typ  |
    |---------|---------|
-   |System Windows     | Aktualizacje krytyczne</br>Aktualizacje zabezpieczeń</br>Pakiety zbiorcze aktualizacji</br>Pakiety funkcji</br>Dodatki Service Pack</br>Aktualizacje definicji</br>Narzędzia</br>Aktualizacje        |
+   |Windows     | Aktualizacje krytyczne</br>Aktualizacje zabezpieczeń</br>Pakiety zbiorcze aktualizacji</br>Pakiety funkcji</br>Dodatki Service Pack</br>Aktualizacje definicji</br>Narzędzia</br>Aktualizacje        |
    |Linux     | Aktualizacje krytyczne i zabezpieczeń</br>Inne aktualizacje       |
 
    Opis typów klasyfikacji znajduje się w [klasyfikacjach aktualizacji](automation-view-update-assessments.md#update-classifications).

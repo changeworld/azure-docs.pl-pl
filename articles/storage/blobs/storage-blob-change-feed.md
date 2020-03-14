@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: b26e54c7130469eee87a9237f4847f46cb3b7698
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: ea0b173f12a1c80f276af3ce3f6222efaad07972
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75691041"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370631"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>Obsługa kanału informacyjnego zmiany w usłudze Azure Blob Storage (wersja zapoznawcza)
 
 Celem źródła zmian jest dostarczenie dzienników transakcji wszystkich zmian, które występują w obiektach Blob i metadanych obiektów BLOB na koncie magazynu. Kanał informacyjny zmiany zawiera **uporządkowany**, **gwarantowany**, **trwały**, **niezmienny** **Dziennik tych** zmian. Aplikacje klienckie mogą odczytywać te dzienniki w dowolnym momencie, w ramach przesyłania strumieniowego lub w trybie wsadowym. Kanał informacyjny zmiany umożliwia tworzenie wydajnych i skalowalnych rozwiązań, które przetwarzają zdarzenia zmiany występujące na koncie Blob Storage przy niskich kosztach.
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 Źródło zmian jest przechowywane jako [obiekty blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) w specjalnym kontenerze na koncie magazynu przy użyciu standardowego kosztu [cennika obiektów BLOB](https://azure.microsoft.com/pricing/details/storage/blobs/) . Możesz kontrolować okres przechowywania tych plików zgodnie z wymaganiami (zobacz [warunki](#conditions) bieżącej wersji). Zdarzenia zmiany są dołączane do źródła zmian jako rekordy w specyfikacji formatu [Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html) : kompaktowy, szybki i binarny format, który zapewnia rozbudowane struktury danych z wbudowanym schematem. Ten format jest powszechnie używany w ekosystemie usługi Hadoop, usługi Stream Analytics i Azure Data Factory.
 
@@ -55,7 +57,7 @@ Poniżej przedstawiono kilka kwestii, które należy wziąć pod uwagę po włą
 > [!IMPORTANT]
 > Kanał informacyjny zmiany jest w publicznej wersji zapoznawczej i jest dostępny w regionach **westcentralus** i **westus2** . Zobacz sekcję [warunki](#conditions) w tym artykule. Aby zarejestrować się w wersji zapoznawczej, zobacz sekcję [Rejestrowanie subskrypcji](#register) w tym artykule. Musisz zarejestrować swoją subskrypcję, aby można było włączyć funkcję źródła zmian na kontach magazynu.
 
-### <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Włącz źródło zmian na koncie magazynu przy użyciu Azure Portal:
 
@@ -69,7 +71,7 @@ Włącz źródło zmian na koncie magazynu przy użyciu Azure Portal:
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-configuration.png)
 
-### <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Włącz źródło zmian przy użyciu programu PowerShell:
 
@@ -87,7 +89,7 @@ Włącz źródło zmian przy użyciu programu PowerShell:
    Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.8.1-preview –AllowPrerelease –AllowClobber –Force
    ```
 
-4. Zaloguj się do subskrypcji platformy Azure za pomocą `Connect-AzAccount` polecenia i postępuj zgodnie z wyświetlanymi na ekranie instrukcjami do uwierzytelniania.
+4. Zaloguj się do subskrypcji platformy Azure za pomocą polecenia `Connect-AzAccount` i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie, aby przeprowadzić uwierzytelnianie.
 
    ```powershell
    Connect-AzAccount
@@ -99,7 +101,7 @@ Włącz źródło zmian przy użyciu programu PowerShell:
    Update-AzStorageBlobServiceProperty -EnableChangeFeed $true
    ```
 
-### <a name="templatetabtemplate"></a>[Szablon](#tab/template)
+### <a name="template"></a>[Szablon](#tab/template)
 Użyj szablonu Azure Resource Manager, aby włączyć Źródło zmian na istniejącym koncie magazynu za pośrednictwem Azure Portal:
 
 1. W Azure Portal wybierz pozycję **Utwórz zasób**.

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: 6342e6a75c8397712e028874b4d727bf3d6f5ff4
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 98326d23f5aca1264bc47168cc25b427c3db331d
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087111"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79135959"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Bezpieczne zarządzanie środowiskiem Python w usłudze Azure HDInsight za pomocą akcji skryptu
 
@@ -24,7 +24,7 @@ Usługa HDInsight ma dwie wbudowane instalacje języka Python w klastrze Spark, 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Zobacz [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+* Subskrypcja platformy Azure. Zobacz artykuł [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
 * Klaster Apache Spark w usłudze HDInsight. Aby uzyskać instrukcje, zobacz [Tworzenie klastra platformy Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
@@ -52,8 +52,8 @@ Klaster usługi HDInsight Spark jest tworzony z instalacją Anaconda. W klastrze
 | |Python 2,7|Python 3,5|
 |----|----|----|
 |Ścieżka|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|platforma Spark|Domyślnie ustawiona na 2,7|Nie dotyczy|
-|Livy|Domyślnie ustawiona na 2,7|Nie dotyczy|
+|platforma Spark|Domyślnie ustawiona na 2,7|N/D|
+|Livy|Domyślnie ustawiona na 2,7|N/D|
 |Jupyter|Jądro PySpark|Jądro PySpark3|
 
 ## <a name="safely-install-external-python-packages"></a>Bezpieczne Instalowanie zewnętrznych pakietów języka Python
@@ -74,12 +74,38 @@ Klaster usługi HDInsight zależy od wbudowanego środowiska języka Python, zar
 
     Aby uzyskać pełną listę dostępnych pakietów, można wyszukać w [indeksie pakietu](https://pypi.python.org/pypi) . Możesz również uzyskać listę dostępnych pakietów z innych źródeł. Można na przykład zainstalować pakiety udostępniane za poorednictwem [Conda-fałszerstwa](https://conda-forge.org/feedstocks/).
 
-    -   `seaborn` to nazwa pakietu, który chcesz zainstalować.
-    -   `-n py35new` określić nazwę środowiska wirtualnego, która właśnie zostanie utworzona. Należy koniecznie zmienić nazwę odpowiadającą tworzeniu środowiska wirtualnego.
+    Użyj poniższego polecenia, aby zainstalować bibliotekę z najnowszą wersją:
+    
+    - Użyj kanału Conda:
 
-    ```bash
-    sudo /usr/bin/anaconda/bin/conda install seaborn -n py35new --yes
-    ```
+        -   `seaborn` to nazwa pakietu, który chcesz zainstalować.
+        -   `-n py35new` określić nazwę środowiska wirtualnego, która właśnie zostanie utworzona. Należy koniecznie zmienić nazwę odpowiadającą tworzeniu środowiska wirtualnego.
+
+        ```bash
+        sudo /usr/bin/anaconda/bin/conda install seaborn -n py35new --yes
+        ```
+
+    - Można też użyć repozytorium PyPi i odpowiednio zmienić `seaborn` i `py35new`:
+        ```bash
+        sudo /usr/bin/anaconda/env/py35new/bin/pip install seaborn
+        ```        
+
+    Użyj poniższego polecenia, aby zainstalować bibliotekę z określoną wersją:
+
+    - Użyj kanału Conda:
+
+        -   `numpy=1.16.1` to nazwa pakietu i wersja, którą chcesz zainstalować.
+        -   `-n py35new` określić nazwę środowiska wirtualnego, która właśnie zostanie utworzona. Należy koniecznie zmienić nazwę odpowiadającą tworzeniu środowiska wirtualnego.
+
+        ```bash
+        sudo /usr/bin/anaconda/bin/conda install numpy=1.16.1 -n py35new --yes
+        ```
+
+    - Można też użyć repozytorium PyPi i odpowiednio zmienić `numpy==1.16.1` i `py35new`:
+
+        ```bash
+        sudo /usr/bin/anaconda/env/py35new/bin/pip install numpy==1.16.1
+        ```
 
     Jeśli nie znasz nazwy środowiska wirtualnego, możesz używać protokołu SSH do węzła głównego klastra i uruchamiać `/usr/bin/anaconda/bin/conda info -e`, aby wyświetlić wszystkie środowiska wirtualne.
 

@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0680309b13bf4499f0d153f44e575c1762b54d79
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 95d54a0661f0a0cebdbfc225074be0ce0d83a5cc
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773172"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368897"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Samouczek: korzystanie z wyeksportowanego szablonu z Azure Portal
 
@@ -32,11 +32,11 @@ Ten szablon działa dobrze w przypadku wdrażania kont magazynu, ale możesz chc
 
 ## <a name="create-app-service-plan"></a>Tworzenie planu usługi App Service
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. Wybierz pozycję **Utwórz zasób**.
 1. W obszarze **Wyszukaj w portalu Marketplace**wprowadź **App Service plan**, a następnie wybierz pozycję **App Service plan**.  Nie wybieraj **planu App Service (klasyczny)**
 1. Wybierz pozycję **Utwórz**.
-1. Wejść
+1. Wprowadź:
 
     - **Subskrypcja**: wybierz subskrypcję platformy Azure.
     - **Grupa zasobów**: wybierz pozycję **Utwórz nową** , a następnie określ nazwę. Podaj inną nazwę grupy zasobów niż ta, która była używana w tej serii samouczków.
@@ -84,7 +84,7 @@ Użyj interfejsu wiersza polecenia platformy Azure lub Azure PowerShell, aby wdr
 
 Jeśli grupa zasobów nie została utworzona, zobacz [Tworzenie grupy zasobów](template-tutorial-create-first-template.md#create-resource-group). W przykładzie założono, że ustawiono zmienną **TemplateFile** na ścieżkę do pliku szablonu, jak pokazano w [pierwszym samouczku](template-tutorial-create-first-template.md#deploy-template).
 
-# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -95,10 +95,10 @@ New-AzResourceGroupDeployment `
   -storageSKU Standard_LRS
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
+# <a name="azure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addappserviceplan \
   --resource-group myResourceGroup \
   --template-file $templateFile \
@@ -111,7 +111,7 @@ az group deployment create \
 
 Można zweryfikować wdrożenie, przeeksplorowanie grupy zasobów z Azure Portal.
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. Z menu po lewej stronie wybierz pozycję **grupy zasobów**.
 1. Wybierz grupę zasobów, do której została wdrożona.
 1. Grupa zasobów zawiera konto magazynu i plan App Service.

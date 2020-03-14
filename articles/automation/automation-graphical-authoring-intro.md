@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: a50dbe4d1e100032282891ccd15a94330f7fead4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: c1af4b0dac4b50e01b62b02f606be9fdd89d2ad1
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79278885"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367333"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Tworzenie graficzne w Azure Automation
 
@@ -21,7 +21,7 @@ Tworzenie graficzne pozwala tworzyć elementy Runbook dla Azure Automation bez z
 
 ## <a name="graphical-runbooks"></a>Graficzne elementy Runbook
 
-Wszystkie elementy Runbook w Azure Automation są przepływami pracy programu Windows PowerShell. Graficzne elementy Runbook i graficzne elementy Runbook przepływu pracy programu PowerShell generują kod programu PowerShell uruchamiany przez pracowników automatyzacji, ale nie można go wyświetlać ani modyfikować. Graficzny element Runbook można przekonwertować na graficzny element Runbook przepływu pracy programu PowerShell i na odwrót. Nie można jednak skonwertować tych elementów Runbook do tekstowego elementu Runbook. Ponadto edytor graficzny automatyzacji nie może zaimportować tekstowego elementu Runbook.
+Wszystkie elementy Runbook w Azure Automation są przepływami pracy programu Windows PowerShell. Graficzne elementy Runbook i graficzne elementy Runbook przepływu pracy programu PowerShell generują kod programu PowerShell uruchamiany przez pracowników automatyzacji, ale nie można go wyświetlać ani modyfikować. Możesz skonwertować graficzny element Runbook na graficzny element Runbook przepływu pracy programu PowerShell i na odwrót. Nie można jednak skonwertować tych elementów Runbook do tekstowego elementu Runbook. Ponadto edytor graficzny automatyzacji nie może zaimportować tekstowego elementu Runbook.
 
 ## <a name="overview-of-graphical-editor"></a>Przegląd edytora graficznego
 
@@ -72,7 +72,7 @@ W poniższym przykładzie polecenie cmdlet [Get-AzVM](https://docs.microsoft.com
 
 #### <a name="parameter-values"></a>Wartości parametrów
 
-Po określeniu wartości parametru, należy wybrać źródło danych w celu określenia sposobu określania wartości. Źródła danych, które są dostępne dla określonego parametru, zależą od prawidłowych wartości dla tego parametru. Na przykład **wartość null** nie jest dostępna dla parametru, który nie zezwala na wartości null.
+Po określeniu wartości parametru, należy wybrać źródło danych w celu określenia sposobu określania wartości. Źródła danych, które są dostępne dla określonego parametru, zależą od prawidłowych wartości dla tego parametru. Na przykład wartość null nie jest dostępna dla parametru, który nie zezwala na wartości null.
 
 | Źródło danych | Opis |
 |:--- |:--- |
@@ -88,7 +88,7 @@ Po określeniu wartości parametru, należy wybrać źródło danych w celu okre
 
 #### <a name="optional-additional-parameters"></a>Opcjonalne dodatkowe parametry
 
-Wszystkie polecenia cmdlet mają opcję dostarczania dodatkowych parametrów. Są to typowe parametry programu PowerShell lub inne parametry niestandardowe. Edytor graficzny przedstawia pole tekstowe, w którym można podać parametry za pomocą składni programu PowerShell. Na przykład, aby użyć *pełnego* parametru wspólnego, należy określić `-Verbose:$True`.
+Wszystkie polecenia cmdlet mają opcję dostarczania dodatkowych parametrów. Są to typowe parametry programu PowerShell lub inne parametry niestandardowe. Edytor graficzny przedstawia pole tekstowe, w którym można podać parametry za pomocą składni programu PowerShell. Na przykład, aby użyć typowego parametru `Verbose`, należy określić `-Verbose:$True`.
 
 ### <a name="retry-activity"></a>Działanie ponawiania
 
@@ -102,14 +102,14 @@ Warunek ponawiania jest wyrażeniem programu PowerShell, które jest oceniane po
 
 ![Opóźnienie ponowienia działania](media/automation-graphical-authoring-intro/retry-condition.png)
 
-Warunek ponawiania może używać zmiennej o nazwie *RetryData* , która zapewnia dostęp do informacji o ponownych próbach działania. Ta zmienna ma właściwości w poniższej tabeli:
+Warunek ponawiania może używać zmiennej o nazwie `RetryData`, która zapewnia dostęp do informacji o ponownych próbach działania. Ta zmienna ma właściwości w poniższej tabeli:
 
 | Właściwość | Opis |
 |:--- |:--- |
-| NumberOfAttempts |Liczba uruchomień działania. |
-| Dane wyjściowe |Dane wyjściowe z ostatniego uruchomienia działania. |
-| TotalDuration |Upłynęło czasu, gdy działanie zostało uruchomione po raz pierwszy. |
-| StartedAt |Czas (w formacie UTC), gdy działanie zostało po raz pierwszy uruchomione. |
+| `NumberOfAttempts` |Liczba uruchomień działania. |
+| `Output` |Dane wyjściowe z ostatniego uruchomienia działania. |
+| `TotalDuration` |Upłynęło czasu, gdy działanie zostało uruchomione po raz pierwszy. |
+| `StartedAt` |Czas (w formacie UTC), gdy działanie zostało po raz pierwszy uruchomione. |
 
 Poniżej przedstawiono przykłady warunków ponowienia działania.
 
@@ -136,7 +136,7 @@ Po skonfigurowaniu warunku ponawiania dla działania działanie obejmuje dwie po
 
 Kontrolka skryptu przepływu pracy to specjalne działanie, które akceptuje skrypt środowiska PowerShell lub przepływu pracy programu PowerShell, w zależności od typu graficznego elementu Runbook, który jest tworzony. Ta kontrolka udostępnia funkcje, które mogą nie być dostępne w inny sposób. Nie może akceptować parametrów, ale może używać zmiennych dla danych wyjściowych działań i parametrów wejściowych elementu Runbook. Wszystkie dane wyjściowe działania są dodawane do magistrali danych. Wyjątek jest wyprowadzany bez łącza wychodzącego, w tym przypadku dane wyjściowe są dodawane do danych wyjściowych elementu Runbook.
 
-Na przykład poniższy kod wykonuje obliczenia dat przy użyciu zmiennej wejściowej elementu Runbook o nazwie *NumberOfDays*. Następnie wysyła ona obliczoną wartość DateTime jako dane wyjściowe, która będzie używana przez kolejne działania w elemencie Runbook.
+Na przykład poniższy kod wykonuje obliczenia dat przy użyciu zmiennej wejściowej elementu Runbook o nazwie `NumberOfDays`. Następnie wysyła ona obliczoną wartość DateTime jako dane wyjściowe, która będzie używana przez kolejne działania w elemencie Runbook.
 
 ```powershell-interactive
 $DateTimeNow = (Get-Date).ToUniversalTime()
@@ -167,9 +167,9 @@ Graficzny element Runbook rozpoczyna się od wszystkich działań, które nie ma
 
 ### <a name="link-conditions"></a>Warunki łączenia
 
-Gdy określisz warunek dla linku, działanie docelowe jest uruchamiane tylko wtedy, gdy warunek zostanie spełniony. Zwykle do pobrania danych wyjściowych z działania źródłowego jest używana zmienna *ActivityOutput* .
+Gdy określisz warunek dla linku, działanie docelowe jest uruchamiane tylko wtedy, gdy warunek zostanie spełniony. Zwykle używasz zmiennej `ActivityOutput` w warunku, aby pobrać dane wyjściowe z działania źródłowego.
 
-Dla łącza potoku należy określić warunek dla pojedynczego obiektu. Element Runbook oblicza warunek dla każdego obiektu wyjściowego przez działanie źródłowe. Następnie uruchamia działanie docelowe dla każdego obiektu, który spełnia warunek. Na przykład za pomocą działania Source polecenia **Get-AzVM**można użyć następującej składni dla linku potoku warunkowego, aby pobrać tylko maszyny wirtualne w grupie zasobów o nazwie grupa1.
+Dla łącza potoku należy określić warunek dla pojedynczego obiektu. Element Runbook oblicza warunek dla każdego obiektu wyjściowego przez działanie źródłowe. Następnie uruchamia działanie docelowe dla każdego obiektu, który spełnia warunek. Na przykład w przypadku działania źródłowego `Get-AzVM`można użyć następującej składni dla linku potoku warunkowego, aby pobrać tylko maszyny wirtualne w grupie zasobów o nazwie grupa1.
 
 ```powershell-interactive
 $ActivityOutput['Get Azure VMs'].Name -match "Group1"
@@ -181,7 +181,7 @@ Na przykład wykonaj następujące czynności w naszym elemencie Runbook **start
 
 ![Link warunkowy z sekwencjami](media/automation-graphical-authoring-intro/runbook-conditional-links-sequence.png)
 
-Element Runbook używa trzech różnych linków sekwencji, które weryfikują wartości parametrów wejściowych *VMName* i *ResourceGroupName* , aby określić odpowiednią akcję do wykonania. Możliwe akcje to uruchamianie pojedynczej maszyny wirtualnej, uruchamianie wszystkich maszyn wirtualnych w grupie zasobów lub uruchamianie wszystkich maszyn wirtualnych w ramach subskrypcji. W przypadku linku sekwencji między **nawiązaniem połączenia z platformą Azure** i **uzyskaniem pojedynczej maszyny wirtualnej**jest to logika warunku:
+Element Runbook używa trzech różnych linków sekwencji, które weryfikują wartości parametrów wejściowych `VMName` i `ResourceGroupName`, aby określić odpowiednią akcję do wykonania. Możliwe akcje to uruchamianie pojedynczej maszyny wirtualnej, uruchamianie wszystkich maszyn wirtualnych w grupie zasobów lub uruchamianie wszystkich maszyn wirtualnych w ramach subskrypcji. W przypadku linku sekwencji między `Connect to Azure` i `Get single VM`jest to logika warunku:
 
 ```powershell-interactive
 <#
@@ -196,11 +196,11 @@ Both VMName and ResourceGroupName runbook input parameters have values
 
 Korzystając z linku warunkowego, dane dostępne z działania źródłowego do innych działań w tej gałęzi są filtrowane według warunku. Jeśli działanie jest źródłem dla wielu linków, dane dostępne dla działań w poszczególnych gałęziach są zależne od warunku linku łączącego się z tą gałęzią.
 
-Na przykład działanie **Start-AzVM** w elemencie Runbook poniżej uruchamia wszystkie maszyny wirtualne. Ma dwie linki warunkowe. Pierwsze łącze warunkowe używa wyrażenia `$ActivityOutput['Start-AzVM'].IsSuccessStatusCode -eq $true` do filtrowania, czy działanie **Start-AzVM** zostało pomyślnie zakończone. Drugie łącze warunkowe używa wyrażenia `$ActivityOutput['Start-AzVM'].IsSuccessStatusCode -ne $true` do filtrowania, jeśli działanie **Start-AzVm** nie może uruchomić maszyny wirtualnej.
+Na przykład działanie `Start-AzVM` w elemencie Runbook poniżej uruchamia wszystkie maszyny wirtualne. Ma dwie linki warunkowe. Pierwsze łącze warunkowe używa wyrażenia `$ActivityOutput['Start-AzVM'].IsSuccessStatusCode -eq $true` do filtrowania, czy działanie `Start-AzVM` zostało pomyślnie zakończone. Drugie łącze warunkowe używa wyrażenia `$ActivityOutput['Start-AzVM'].IsSuccessStatusCode -ne $true` do filtrowania, jeśli działanie `Start-AzVm` nie może uruchomić maszyny wirtualnej.
 
 ![Przykład łącza warunkowego](media/automation-graphical-authoring-intro/runbook-conditional-links.png)
 
-Każde działanie, które następuje po pierwszym łączu i używa danych wyjściowych działania z polecenia **Get-AzureVM** , pobiera tylko maszyny wirtualne, które zostały uruchomione w momencie uruchomienia polecenia **Get-AzureVM** . Każde działanie, które następuje po drugim linku, pobiera tylko maszyny wirtualne, które zostały zatrzymane w momencie uruchomienia **Get-AzureVM** . Każda aktywność po trzecim łączu pobiera wszystkie maszyny wirtualne niezależnie od ich stanu uruchomienia.
+Każde działanie, które następuje po pierwszym łączu i używa danych wyjściowych działania z `Get-AzureVM` pobiera tylko maszyny wirtualne, które zostały uruchomione w chwili uruchomienia `Get-AzureVM`. Każde działanie, które następuje po drugim linku, pobiera tylko maszyny wirtualne, które zostały zatrzymane w chwili uruchomienia `Get-AzureVM`. Każda aktywność po trzecim łączu pobiera wszystkie maszyny wirtualne niezależnie od ich stanu uruchomienia.
 
 ### <a name="junctions"></a>Połączenia
 
@@ -232,7 +232,7 @@ Pierwszy mechanizm używa źródła danych wyjściowych działania do wypełnien
 
 ![dane wyjściowe działania](media/automation-graphical-authoring-intro/activity-output-datasource-revised20165.png)
 
-Drugi mechanizm dostępu do danych pobiera dane wyjściowe działania w źródle danych wyrażenia programu PowerShell lub działanie skryptu przepływu pracy za pomocą zmiennej *ActivityOutput* , używając składni pokazanej poniżej. Jeśli dane wyjściowe są obiektem, element Runbook może określić jedną właściwość.
+Drugi mechanizm dostępu do danych pobiera dane wyjściowe działania w źródle danych wyrażenia programu PowerShell lub działanie skryptu przepływu pracy z zmienną `ActivityOutput` przy użyciu składni pokazanej poniżej. Jeśli dane wyjściowe są obiektem, element Runbook może określić jedną właściwość.
 
 ```powershell-interactive
 $ActivityOutput['Activity Label']
@@ -245,7 +245,7 @@ $ActivityOutput['Activity Label'].PropertyName
 
 ![Punkt kontrolny](media/automation-graphical-authoring-intro/set-checkpoint.png)
 
-Punkty kontrolne są włączone tylko w graficznych elementach Runbook przepływu pracy programu PowerShell i nie są dostępne w graficznych elementach Runbook. Jeśli element Runbook używa poleceń cmdlet platformy Azure, powinien postępować zgodnie z każdym działaniem z punktem kontrolnym za pomocą działania **Connect-AzAccount** . Operacja Connect jest używana na wypadek wstrzymania elementu Runbook i musi zostać ponownie uruchomiona z tego punktu kontrolnego w innym procesie roboczym.
+Punkty kontrolne są włączone tylko w graficznych elementach Runbook przepływu pracy programu PowerShell i nie są dostępne w graficznych elementach Runbook. Jeśli element Runbook używa poleceń cmdlet platformy Azure, powinien postępować zgodnie z działaniami kontrolnymi z `Connect-AzAccount` działaniem. Operacja Connect jest używana na wypadek wstrzymania elementu Runbook i musi zostać ponownie uruchomiona z tego punktu kontrolnego w innym procesie roboczym.
 
 ## <a name="runbook-input-and-output"></a>Dane wejściowe i wyjściowe elementu Runbook
 
@@ -255,7 +255,7 @@ Element Runbook wymaga wprowadzenia danych przez użytkownika, który uruchamia 
 
 Element Runbook akceptuje dane wejściowe przez zdefiniowanie co najmniej jednego parametru wejściowego. Użytkownik dostarcza wartości tych parametrów za każdym razem, gdy element Runbook zostanie uruchomiony. Gdy użytkownik uruchamia element Runbook przy użyciu Azure Portal, użytkownik jest monitowany o podanie wartości dla każdego parametru wejściowego obsługiwanego przez element Runbook.
 
-Podczas tworzenia elementu Runbook możesz uzyskać dostęp do jego parametrów wejściowych, klikając przycisk **dane wejściowe i wyjściowe** na pasku narzędzi elementu Runbook. Spowoduje to otwarcie kontrolki dane wejściowe i wyjściowe, w której można edytować istniejący parametr wejściowy lub utworzyć nowy, klikając przycisk **Dodaj dane wejściowe**.
+Podczas tworzenia elementu Runbook możesz uzyskać dostęp do jego parametrów wejściowych, klikając pozycję **dane wejściowe i wyjściowe** na pasku narzędzi elementu Runbook. Spowoduje to otwarcie kontrolki dane wejściowe i wyjściowe, w której można edytować istniejący parametr wejściowy lub utworzyć nowy, klikając przycisk **Dodaj dane wejściowe**.
 
 ![Dodaj dane wejściowe](media/automation-graphical-authoring-intro/runbook-edit-add-input.png)
 
@@ -266,8 +266,8 @@ Każdy parametr wejściowy jest definiowany przez właściwości w poniższej ta
 | Name (Nazwa) | Wymagany. Nazwa parametru. Nazwa musi być unikatowa w elemencie Runbook. Musi rozpoczynać się od litery i może zawierać tylko litery, cyfry i znaki podkreślenia. Nazwa nie może zawierać spacji. |
 | Opis |Opcjonalny. Opis celu dla parametru wejściowego. |
 | Typ | Opcjonalny. Oczekiwano typu danych dla wartości parametru. Azure Portal zapewnia odpowiednią kontrolę dla typu danych dla każdego parametru podczas monitowania o dane wejściowe. Obsługiwane typy parametrów to String, Int32, Int64, decimal, Boolean, DateTime i Object. Jeśli typ danych nie jest zaznaczony, domyślnie jest to ciąg.|
-| Obowiązkowy | Opcjonalny. Ustawienie określające, czy należy podać wartość dla parametru. Jeśli wybierzesz opcję **tak**, należy podać wartość przy uruchamianiu elementu Runbook. Jeśli wybierzesz opcję **nie**, wartość nie jest wymagana, gdy element Runbook zostanie uruchomiony i będzie można użyć wartości domyślnej. Nie można uruchomić elementu Runbook, jeśli nie podasz wartości dla każdego obowiązkowego parametru, który nie ma zdefiniowanej wartości domyślnej. |
-| Wartość domyślna | Opcjonalny. Wartość użyta dla parametru, jeśli nie jest ona przenoszona podczas uruchamiania elementu Runbook. Aby ustawić wartość domyślną, wybierz opcję **niestandardowy**. Wybierz opcję **Brak** , jeśli nie chcesz podawać żadnej wartości domyślnej. |
+| Obowiązkowy | Opcjonalny. Ustawienie określające, czy należy podać wartość dla parametru. W przypadku wybrania `yes`należy podać wartość, gdy element Runbook zostanie uruchomiony. W przypadku wybrania `no`wartość nie jest wymagana, gdy element Runbook zostanie uruchomiony i będzie można użyć wartości domyślnej. Nie można uruchomić elementu Runbook, jeśli nie podasz wartości dla każdego obowiązkowego parametru, który nie ma zdefiniowanej wartości domyślnej. |
+| Wartość domyślna | Opcjonalny. Wartość użyta dla parametru, jeśli nie jest ona przenoszona podczas uruchamiania elementu Runbook. Aby ustawić wartość domyślną, wybierz `Custom`. Wybierz `None`, jeśli nie chcesz podawać żadnej wartości domyślnej. |
 
 ### <a name="runbook-output"></a>Wynik uruchomienia elementu Runbook
 
@@ -304,7 +304,7 @@ else { "Weekday" }
 
 ### <a name="activity-output"></a>dane wyjściowe działania
 
-Aby użyć danych wyjściowych z poprzedniego działania w elemencie Runbook, użyj zmiennej *ActivityOutput* z poniższą składnią.
+Aby użyć danych wyjściowych z poprzedniego działania w elemencie Runbook, użyj zmiennej `ActivityOutput` z następującą składnią.
 
 ```powershell-interactive
 $ActivityOutput['Activity Label'].PropertyName
@@ -332,7 +332,7 @@ Element Runbook może używać danych wyjściowych działania w bardziej złożo
 
 [Operatory porównania](https://technet.microsoft.com/library/hh847759.aspx) służą do porównywania wartości lub określania, czy wartość jest zgodna z określonym wzorcem. Porównanie zwraca wartość true lub false.
 
-Na przykład, poniższy warunek określa, czy maszyna wirtualna z działania o nazwie **Get-AzureVM** jest aktualnie zatrzymana.
+Na przykład, poniższy warunek określa, czy maszyna wirtualna z działania o nazwie `Get-AzureVM` jest obecnie zatrzymana.
 
 ```powershell-interactive
 $ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped"
@@ -344,7 +344,7 @@ Poniższy warunek określa, czy ta sama maszyna wirtualna ma stan inny niż zatr
 $ActivityOutput["Get-AzureVM"].PowerState –ne "Stopped"
 ```
 
-W elemencie Runbook można sprzęgać wiele warunków przy użyciu [operatora logicznego](https://technet.microsoft.com/library/hh847789.aspx), takiego jak **-i** lub **-lub**. Na przykład poniższe warunki sprawdzają, czy maszyna wirtualna w poprzednim przykładzie jest w stanie **zatrzymania** lub **zatrzymywania**.
+W elemencie Runbook można sprzęgać wiele warunków przy użyciu [operatora logicznego](https://technet.microsoft.com/library/hh847789.aspx), takiego jak `-and` lub `-or`. Na przykład poniższe warunki sprawdzają, czy maszyna wirtualna w poprzednim przykładzie jest w stanie zatrzymania lub zatrzymywania.
 
 ```powershell-interactive
 ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped") -or ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopping")
@@ -369,7 +369,7 @@ $h = @{'q'=$query; 'lr'='lang_ja';  'count'=$Count}
 $h
 ```
 
-Poniższy przykład używa danych wyjściowych działania o nazwie **Pobierz połączenie Twitter** , aby wypełnić tablicę skrótów.
+Poniższy przykład używa danych wyjściowych z działania o nazwie `Get Twitter Connection`, aby wypełnić tablicę skrótów.
 
 ```powershell-interactive
 @{'ApiKey'=$ActivityOutput['Get Twitter Connection'].ConsumerAPIKey;
@@ -380,30 +380,30 @@ Poniższy przykład używa danych wyjściowych działania o nazwie **Pobierz po�
 
 ## <a name="authenticating-to-azure-resources"></a>Uwierzytelnianie w zasobach platformy Azure
 
-Elementy Runbook w Azure Automation zarządzające zasobami platformy Azure wymagają uwierzytelniania na platformie Azure. [Konto Uruchom jako](automation-create-runas-account.md), nazywane również jednostką usługi, jest domyślnym mechanizmem używanym przez element Runbook automatyzacji do uzyskiwania dostępu do Azure Resource Manager zasobów w ramach subskrypcji. Tę funkcję można dodać do graficznego elementu Runbook, dodając zasób połączenia **AzureRunAsConnection** , który używa polecenia cmdlet [Get-AutomationConnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) programu PowerShell do kanwy. Możesz również dodać polecenie cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) . Ten scenariusz przedstawiono w poniższym przykładzie.
+Elementy Runbook w Azure Automation zarządzające zasobami platformy Azure wymagają uwierzytelniania na platformie Azure. [Konto Uruchom jako](automation-create-runas-account.md), nazywane również jednostką usługi, jest domyślnym mechanizmem używanym przez element Runbook automatyzacji do uzyskiwania dostępu do Azure Resource Manager zasobów w ramach subskrypcji. Tę funkcję można dodać do graficznego elementu Runbook, dodając zasób `AzureRunAsConnection` Connection, który używa polecenia cmdlet [Get-AutomationConnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) programu PowerShell na kanwie. Możesz również dodać polecenie cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) . Ten scenariusz przedstawiono w poniższym przykładzie.
 
 ![Uruchom jako działania uwierzytelniania](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)
 
-**Działanie Get as Connection**lub **Get-AutomationConnection**jest skonfigurowane za pomocą źródła danych o stałej wartości o nazwie **AzureRunAsConnection**.
+Działanie `Get Run As Connection` lub `Get-AutomationConnection`są skonfigurowane za pomocą źródła danych o stałej wartości o nazwie `AzureRunAsConnection`.
 
 ![Konfiguracja połączenia Uruchom jako](media/automation-graphical-authoring-intro/authenticate-runas-parameterset.png)
 
-Następne działanie **Connect-AzAccount**dodaje uwierzytelnione konto Uruchom jako do użycia w elemencie Runbook.
+Następne działanie `Connect-AzAccount`powoduje dodanie uwierzytelnionego konta Uruchom jako do użycia w elemencie Runbook.
 
 ![Zestaw parametrów Connect-AzAccount](media/automation-graphical-authoring-intro/authenticate-conn-to-azure-parameter-set.png)
 
 >[!NOTE]
->W przypadku elementów Runbook programu PowerShell polecenia **Add-AzAccount** i **Add-AzureRMAccount** są aliasami dla polecenia **Connect-AzAccount**. Należy zauważyć, że te aliasy nie są dostępne dla graficznych elementów Runbook. Graficzny element Runbook może korzystać tylko **z programu Connect-AzAccount** .
+>Dla elementów Runbook programu PowerShell `Add-AzAccount` i `Add-AzureRMAccount` są aliasami dla `Connect-AzAccount`. Należy zauważyć, że te aliasy nie są dostępne dla graficznych elementów Runbook. Graficzny element Runbook może używać tylko `Connect-AzAccount` samego siebie.
 
-Dla pól parametrów, identyfikator **aplikacji**, **CERTIFICATETHUMBPRINT**i **TENANTID**Określ nazwę właściwości dla ścieżki pola, ponieważ działanie wyprowadza obiekt z wieloma właściwościami. W przeciwnym razie, gdy element Runbook zostanie wykonany, kończy się niepowodzeniem podczas próby uwierzytelnienia. Jest to wymaganie co najmniej minimalne uwierzytelnianie elementu Runbook za pomocą konta Uruchom jako.
+Dla **pól parametrów**, **CERTIFICATETHUMBPRINT**i **TENANTID**, określ nazwę właściwości dla ścieżki pola, ponieważ działanie wyprowadza obiekt z wieloma właściwościami. W przeciwnym razie, gdy element Runbook zostanie wykonany, kończy się niepowodzeniem podczas próby uwierzytelnienia. Jest to wymaganie co najmniej minimalne uwierzytelnianie elementu Runbook za pomocą konta Uruchom jako.
 
-Niektórzy subskrybenci tworzą konto usługi Automation przy użyciu [konta użytkownika usługi Azure AD](automation-create-aduser-account.md) do zarządzania klasycznym wdrożeniem platformy Azure lub zasobami Azure Resource Manager. Aby zachować zgodność z poprzednimi wersjami dla tych subskrybentów, mechanizm uwierzytelniania do użycia w elemencie Runbook to polecenie cmdlet **Add-AzureAccount** z [zasobem poświadczenia](automation-credentials.md). Element zawartości reprezentuje Active Directory użytkownika z dostępem do konta platformy Azure.
+Niektórzy subskrybenci tworzą konto usługi Automation przy użyciu [konta użytkownika usługi Azure AD](automation-create-aduser-account.md) do zarządzania klasycznym wdrożeniem platformy Azure lub zasobami Azure Resource Manager. Aby zachować zgodność z poprzednimi wersjami dla tych subskrybentów, mechanizm uwierzytelniania do użycia w elemencie Runbook to `Add-AzureAccount` polecenie cmdlet z [zasobem poświadczenia](automation-credentials.md). Element zawartości reprezentuje Active Directory użytkownika z dostępem do konta platformy Azure.
 
-Tę funkcję można włączyć dla graficznego elementu Runbook, dodając zasób poświadczenia do kanwy, a następnie działanie **Add-AzureAccount** , które używa zasobu Credential dla jego danych wejściowych. Zobacz poniższy przykład.
+Tę funkcję można włączyć dla graficznego elementu Runbook poprzez dodanie zasobu poświadczeń do kanwy, a następnie działania `Add-AzureAccount`, które korzysta z zasobu poświadczenia dla danych wejściowych. Zobacz poniższy przykład.
 
 ![Działania uwierzytelniania](media/automation-graphical-authoring-intro/authentication-activities.png)
 
-Element Runbook musi być uwierzytelniany na początku i po każdym punkcie kontrolnym. W tym celu należy użyć działania **Add-AzureAccount** po wykonaniu dowolnego działania **Checkpoint-Workflow** . Nie trzeba używać dodatkowego działania związanego z poświadczeniem.
+Element Runbook musi być uwierzytelniany na początku i po każdym punkcie kontrolnym. W tym celu należy użyć działania `Add-AzureAccount` po dowolnych działaniach `Checkpoint-Workflow`. Nie trzeba używać dodatkowego działania związanego z poświadczeniem.
 
 ![dane wyjściowe działania](media/automation-graphical-authoring-intro/authentication-activity-output.png)
 

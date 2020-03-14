@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.openlocfilehash: 0cdff3ac6eb2faed0c0b6b8796fdb3b6b0411018
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356455"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79277364"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Wyzwalacz usługi Azure Blob Storage dla Azure Functions
 
@@ -270,7 +270,7 @@ Atrybut `@BlobTrigger` służy do zapewniania dostępu do obiektu BLOB, który w
 
 ---
 
-## <a name="configuration"></a>Konfigurowanie
+## <a name="configuration"></a>Konfiguracja
 
 W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `BlobTrigger` atrybutu.
 
@@ -284,7 +284,7 @@ W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="usage"></a>Użycie
+## <a name="usage"></a>Sposób użycia
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -401,7 +401,7 @@ W przypadku niepowodzenia wszystkich 5 prób Azure Functions dodaje komunikat do
 
 * FunctionId (w formacie *&lt;> Nazwa aplikacji funkcji*. Obowiązki. *nazwa funkcji&lt;>* )
 * Blobtype ("BlockBlob" lub "PageBlob")
-* ContainerName
+* NazwaKontenera
 * BlobName
 * ETag (identyfikator wersji obiektu BLOB, na przykład: "0x8D1DC6E70A277EF")
 

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: b817b3cfe47ed08cae9e7e0b1c2c24363f2ccfed
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391016"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271527"
 ---
 # <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>Jak korzystać z narzędzi dostępnych w zestawach SDK, aby uprościć programowanie do obsługi administracyjnej
 IoT Hub Device Provisioning Service upraszcza proces aprowizacji bez dotknięcia, samoobsługowego [udostępniania](concepts-auto-provisioning.md) just in Time w bezpieczny i skalowalny sposób.  Zaświadczanie zabezpieczeń w postaci certyfikatu X. 509 lub moduł TPM (TPM) jest wymagane.  Firma Microsoft współpracuje również z [innymi partnerami sprzętu zabezpieczeń](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) w celu poprawy zaufania wdrożenia IoT. Zrozumienie wymagania dotyczącego zabezpieczeń sprzętu może być dla deweloperów bardzo trudne. Dostępne są zestawy SDK usługi Azure IoT Provisioning, dzięki którym deweloperzy mogą korzystać z wygodnej warstwy do pisania klientów, którzy komunikują się z usługą aprowizacji. Zestawy SDK udostępniają również przykłady dla typowych scenariuszy, a także zestaw narzędzi do uproszczenia zaświadczania o zabezpieczeniach w trakcie opracowywania.

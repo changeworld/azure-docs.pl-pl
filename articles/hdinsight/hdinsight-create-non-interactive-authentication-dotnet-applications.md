@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
-ms.openlocfilehash: 1fbb4ef2341148de4026f47fc06a54bbfa60fff6
-ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
+ms.openlocfilehash: 5e6a0586bc750f8972586920c15dbb297295aa20
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2019
-ms.locfileid: "75500130"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371277"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Tworzenie aplikacji usługi HDInsight platformy .NET z uwierzytelnianiem nieinterakcyjnym
 
@@ -27,7 +27,7 @@ W aplikacji nieinteraktywnej platformy .NET potrzebne są:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-HDInsight An klaster. Zobacz [samouczek wprowadzający](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
+HDInsight An klaster. Zobacz [samouczek wprowadzający](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
 ## <a name="assign-a-role-to-the-azure-ad-application"></a>Przypisywanie roli do aplikacji usługi Azure AD
 
@@ -35,7 +35,7 @@ Przypisywanie [roli](../role-based-access-control/built-in-roles.md)do aplikacji
 
 **Aby dodać rolę właściciela do aplikacji usługi Azure AD**
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. Przejdź do grupy zasobów, w której znajduje się klaster usługi HDInsight w dalszej części tego artykułu. Jeśli masz dużą liczbę grup zasobów, możesz użyć filtru, aby znaleźć żądany obiekt.
 1. W menu Grupa zasobów wybierz pozycję **Kontrola dostępu (IAM)** .
 1. Wybierz kartę **przypisania ról** , aby wyświetlić bieżące przypisania ról.

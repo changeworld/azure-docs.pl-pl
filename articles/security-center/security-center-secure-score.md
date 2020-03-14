@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 01/15/2019
 ms.author: memildin
 ms.openlocfilehash: 15a94a9724fac29d36f6bb88ee4810b3bc7ca607
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394625"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245254"
 ---
 # <a name="improve-your-secure-score-in-azure-security-center"></a>Popraw swój Bezpieczny wynik w Azure Security Center
 

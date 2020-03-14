@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 5831f83d8cd38cc07c64fdc398405c3a70935485
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 85bae9bfc10460b51935c6eb1e14e3a3dd816a8c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169085"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217792"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio-classic"></a>Migrowanie analizy z programu Excel do Azure Machine Learning Studio (wersja klasyczna)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 > *Kate Baroni* i *Ben łodzi* są architektami rozwiązań przedsiębiorstwa w centrum danych firmy Microsoft w dziedzinie doskonałości. W tym artykule opisano sposób migrowania istniejącego pakietu analiz regresji do rozwiązania opartego na chmurze przy użyciu Azure Machine Learning Studio (klasycznego).
 
@@ -54,8 +56,8 @@ W pierwszej kolejności model programu Excel jest jasno przeszukiwany model Stud
 |  | Excel | Studio (klasyczna) |
 | --- |:---:|:---:|
 | Wydajność | | |
-| <ul style="list-style-type: none;"><li>Dostosowany kwadrat R</li></ul> |0.96 |Nie dotyczy |
-| <ul style="list-style-type: none;"><li>Współczynnik <br />Określon</li></ul> |Nie dotyczy |0.78<br />(niska dokładność) |
+| <ul style="list-style-type: none;"><li>Dostosowany kwadrat R</li></ul> |0.96 |N/D |
+| <ul style="list-style-type: none;"><li>Współczynnik <br />Określon</li></ul> |N/D |0.78<br />(niska dokładność) |
 | Średni błąd bezwzględny |$9,5 m |$19.4 m |
 | Średni błąd bezwzględny (%) |6.03% |12.2% |
 
@@ -73,13 +75,13 @@ Po zastosowaniu zaleceń osiągniemy tę samą wydajność bazową w programie S
 | --- |:---:|:---:|:---:|
 | Wartość oznaczona etykietą |Wartości rzeczywiste (liczbowe) |Ten |Ten |
 | Learner |Program Excel — analiza danych > — > regresji |Regresja liniowa. |Regresja liniowa |
-| Opcje dowiedzenia |Nie dotyczy |Wartości domyślne |zwykłe najmniejsze kwadraty<br />L2 = 0,005 |
+| Opcje dowiedzenia |N/D |Wartości domyślne |zwykłe najmniejsze kwadraty<br />L2 = 0,005 |
 | Zestaw danych |26 wierszy, 3 funkcje, 1 etykieta. Wszystkie wartości numeryczne. |Ten |Ten |
 | Podział: szkolenie |Program Excel przeszkolony na pierwszych 18 wierszach, przetestowanych w ciągu ostatnich 8 wierszy. |Ten |Ten |
 | Podziel: test |Formuła regresji programu Excel zastosowana do ostatnich 8 wierszy |Ten |Ten |
 | **Wydajność** | | | |
-| Dostosowany kwadrat R |0.96 |Nie dotyczy | |
-| Współczynnik wyznaczania |Nie dotyczy |0.78 |0.952049 |
+| Dostosowany kwadrat R |0.96 |N/D | |
+| Współczynnik wyznaczania |N/D |0.78 |0.952049 |
 | Średni błąd bezwzględny |$9,5 m |$19.4 m |$9,5 m |
 | Średni błąd bezwzględny (%) |<span style="background-color: 00FF00;">6,03%</span> |12.2% |<span style="background-color: 00FF00;">6,03%</span> |
 
@@ -115,7 +117,7 @@ Następnie planujemy dołączenie dodatkowych algorytmów, takich jak [bayesowsk
 
 Jeśli chcesz eksperymentować z regresją, dobry zestaw danych do wypróbowania jest przykładowym zestawem danych regresji wydajności energii, który ma wiele atrybutów liczbowych. Zestaw danych jest dostarczany jako część przykładowych zestawów danych w programie Studio (klasyczny). Możesz użyć różnych modułów szkoleniowych, aby przewidzieć obciążenie ogrzewania lub obciążenie chłodzenia. Wykres poniżej to porównanie wydajności różnej regresji w odniesieniu do zestawu danych efektywności energetycznej przewidywalnego dla zmiennej docelowej obciążenie chłodzenia: 
 
-| Modelowanie | Średni błąd bezwzględny | Średni błąd oznaczający pierwiastek | Względny błąd bezwzględny | Względny kwadratowy błąd | Współczynnik wyznaczania |
+| Model | Średni błąd bezwzględny | Średni błąd oznaczający pierwiastek | Względny błąd bezwzględny | Względny kwadratowy błąd | Współczynnik wyznaczania |
 | --- | --- | --- | --- | --- | --- |
 | Drzewo podwyższanych decyzji |0.930113 |1.4239 |0.106647 |0.021662 |0.978338 |
 | Regresja liniowa (z gradientem) |2.035693 |2.98006 |0.233414 |0.094881 |0.905119 |

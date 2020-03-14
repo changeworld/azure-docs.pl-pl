@@ -1,7 +1,7 @@
 ---
 title: 'Tworzenie modelu języka Python: odwołanie do modułu'
 titleSuffix: Azure Machine Learning
-description: Dowiedz się, w jaki sposób używać modelu modelu języka Python w Azure Machine Learning, aby utworzyć niestandardowy moduł modelowania lub przetwarzania danych.
+description: Dowiedz się, jak używać modułu tworzenia modelu języka Python w Azure Machine Learning, aby utworzyć niestandardowy moduł modelowania lub przetwarzania danych.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,111 +9,113 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: 26bcd855dbe2ea85df9fb6aca74f8b52e8ce8e46
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 929938bba9c9512ecfd663a540cf4a7ebbf68e2b
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268923"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371821"
 ---
-# <a name="create-python-model"></a>Tworzenie modelu języka Python
+# <a name="create-python-model-module"></a>Utwórz moduł modelu języka Python
 
 W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
-Dowiedz się, jak za pomocą modułu **tworzenia modelu języka Python** utworzyć niepociąg model ze skryptu języka Python. Model można utworzyć na podstawie dowolnych informacji, które są zawarte w pakiecie Python w środowisku programu Azure Machine Learning Designer. 
+Dowiedz się, jak za pomocą modułu tworzenia modelu języka Python utworzyć niepociąg model ze skryptu języka Python. Model można oprzeć na dowolnym zasobie, który znajduje się w pakiecie języka Python w środowisku projektanta Azure Machine Learning. 
 
-Po utworzeniu modelu można użyć [modelu uczenia](train-model.md) do uczenia modelu w zestawie danych, podobnie jak w przypadku innych dowolnych informacji w Azure Machine Learning. Przeszkolony model można przesłać do [modelu oceny](score-model.md) , aby użyć modelu do prognozowania. Można następnie zapisać przeszkolony model, a przepływ pracy oceniania może być opublikowany jako usługa sieci Web.
+Po utworzeniu modelu można użyć [modelu uczenia](train-model.md) do uczenia modelu w zestawie danych, podobnie jak w przypadku innych dowolnych informacji w Azure Machine Learning. Przeszkolony model można przesłać do [modelu oceny](score-model.md) , aby dokonać prognoz. Następnie można zapisać szkolony model i opublikować przepływ pracy oceniania jako usługę sieci Web.
 
 > [!WARNING]
-> Obecnie nie można przekazać wyników oceny modelu języka Python do [oceny modelu](evaluate-model.md). Jeśli chcesz oszacować model, możesz napisać niestandardowy skrypt w języku Python i uruchomić go przy użyciu modułu [uruchamiania skryptu języka Python](execute-python-script.md) .  
+> Obecnie nie jest możliwe przekazanie wynikowych wyników modelu języka Python do [oceny modelu](evaluate-model.md). Jeśli trzeba oszacować model, można napisać niestandardowy skrypt języka Python i uruchomić go przy użyciu modułu [uruchamiania skryptu języka Python](execute-python-script.md) .  
 
 
-## <a name="how-to-configure-create-python-model"></a>Jak skonfigurować model tworzenia modelu języka Python
+## <a name="configure-the-module"></a>Konfigurowanie modułu
 
-Korzystanie z tego modułu wymaga pośredniej lub specjalistycznej wiedzy o języku Python. Moduł obsługuje korzystanie z dowolnych informacji, które znajdują się w pakietach języka Python zainstalowanych już w Azure Machine Learning. Zobacz wstępnie zainstalowaną listę pakietów języka Python w [skrypcie wykonywania skryptu języka Python](execute-python-script.md).
+Korzystanie z tego modułu wymaga pośredniej lub specjalistycznej wiedzy o języku Python. Moduł obsługuje korzystanie z dowolnych informacji, które znajdują się w pakietach języka Python zainstalowanych już w Azure Machine Learning. Zapoznaj się z wstępnie zainstalowaną listą pakietów języka Python w artykule [wykonywanie skryptu języka Python](execute-python-script.md).
   
 
-W tym artykule przedstawiono sposób korzystania z **modelu języka Python** z prostym potokiem. Poniżej znajduje się wykres potoku.
+W tym artykule pokazano, jak używać metody **Create Python model** z prostym potokiem. Oto diagram potoku:
 
-![create-python-model](./media/module/create-python-model.png)
+![Diagram tworzenia modelu języka Python](./media/module/create-python-model.png)
 
-1.  Kliknij pozycję **Utwórz model języka Python**, Edytuj skrypt, aby zaimplementować proces modelowania lub zarządzania danymi. Model można utworzyć na podstawie dowolnych informacji, które są zawarte w pakiecie języka Python w środowisku Azure Machine Learning.
+1. Wybierz pozycję **Utwórz model Python**i Edytuj skrypt, aby zaimplementować proces modelowania lub zarządzania danymi. Model można utworzyć na podstawie dowolnych informacji, które znajdują się w pakiecie Python w środowisku Azure Machine Learning.
 
+   Następujący przykładowy kod klasyfikatora algorytm Bayesa Bayesa używa popularnego pakietu *skryptu sklearn* :
 
-    Poniżej znajduje się przykładowy kod dwóch klas klasyfikatora algorytm Bayesa Bayesa przy użyciu popularnego pakietu *skryptu sklearn* .
+   ```Python
 
-```Python
-
-# The script MUST define a class named AzureMLModel.
-# This class MUST at least define the following three methods:
-    # __init__: in which self.model must be assigned,
-    # train: which trains self.model, the two input arguments must be pandas DataFrame,
-    # predict: which generates prediction result, the input argument and the prediction result MUST be pandas DataFrame.
-# The signatures (method names and argument names) of all these methods MUST be exactly the same as the following example.
-
-
-import pandas as pd
-from sklearn.naive_bayes import GaussianNB
+   # The script MUST define a class named AzureMLModel.
+   # This class MUST at least define the following three methods:
+       # __init__: in which self.model must be assigned,
+       # train: which trains self.model, the two input arguments must be pandas DataFrame,
+       # predict: which generates prediction result, the input argument and the prediction result MUST be pandas DataFrame.
+   # The signatures (method names and argument names) of all these methods MUST be exactly the same as the following example.
 
 
-class AzureMLModel:
-    def __init__(self):
-        self.model = GaussianNB()
-        self.feature_column_names = list()
-
-    def train(self, df_train, df_label):
-        self.feature_column_names = df_train.columns.tolist()
-        self.model.fit(df_train, df_label)
-
-    def predict(self, df):
-        return pd.DataFrame(
-            {'Scored Labels': self.model.predict(df[self.feature_column_names]), 
-             'probabilities': self.model.predict_proba(df[self.feature_column_names])[:, 1]}
-        )
+   import pandas as pd
+   from sklearn.naive_bayes import GaussianNB
 
 
-```
+   class AzureMLModel:
+       def __init__(self):
+           self.model = GaussianNB()
+           self.feature_column_names = list()
+
+       def train(self, df_train, df_label):
+           self.feature_column_names = df_train.columns.tolist()
+           self.model.fit(df_train, df_label)
+
+       def predict(self, df):
+           return pd.DataFrame(
+               {'Scored Labels': self.model.predict(df[self.feature_column_names]), 
+                'probabilities': self.model.predict_proba(df[self.feature_column_names])[:, 1]}
+           )
 
 
-2. Połącz właśnie utworzony moduł **tworzenia modelu języka Python** z **modelem uczenia** i **modelem oceny**
+   ```
 
-3. Jeśli musisz ocenić model, Dodaj [skrypt środowiska Python](execute-python-script.md) i Edytuj skrypt języka Python w celu zaimplementowania oceny.
+1. Połącz moduł **Create Python model** , który właśnie został utworzony, aby **szkolić model** i **model oceny**.
 
-Poniżej znajduje się przykładowy kod ewaluacyjny.
+1. Jeśli musisz oszacować model, Dodaj moduł [skryptu języka Python](execute-python-script.md) i Edytuj skrypt języka Python.
 
-```Python
+   Następujący skrypt to przykładowy kod oceny:
+
+   ```Python
 
 
-# The script MUST contain a function named azureml_main
-# which is the entry point for this module.
+   # The script MUST contain a function named azureml_main
+   # which is the entry point for this module.
 
-# imports up here can be used to 
-import pandas as pd
+   # imports up here can be used to 
+   import pandas as pd
 
-# The entry point function can contain up to two input arguments:
-#   Param<dataframe1>: a pandas.DataFrame
-#   Param<dataframe2>: a pandas.DataFrame
-def azureml_main(dataframe1 = None, dataframe2 = None):
+   # The entry point function can contain up to two input arguments:
+   #   Param<dataframe1>: a pandas.DataFrame
+   #   Param<dataframe2>: a pandas.DataFrame
+   def azureml_main(dataframe1 = None, dataframe2 = None):
     
-    from sklearn.metrics import accuracy_score, precision_score, recall_score, roc_auc_score, roc_curve
-    import pandas as pd
-    import numpy as np
+       from sklearn.metrics import accuracy_score, precision_score, recall_score, roc_auc_score, roc_curve
+       import pandas as pd
+       import numpy as np
     
-    scores = dataframe1.ix[:, ("income", "Scored Labels", "probabilities")]
-    ytrue = np.array([0 if val == '<=50K' else 1 for val in scores["income"]])
-    ypred = np.array([0 if val == '<=50K' else 1 for val in scores["Scored Labels"]])    
-    probabilities = scores["probabilities"]
+       scores = dataframe1.ix[:, ("income", "Scored Labels", "probabilities")]
+       ytrue = np.array([0 if val == '<=50K' else 1 for val in scores["income"]])
+       ypred = np.array([0 if val == '<=50K' else 1 for val in scores["Scored Labels"]])    
+       probabilities = scores["probabilities"]
     
-    accuracy, precision, recall, auc = \
-    accuracy_score(ytrue, ypred),\
-    precision_score(ytrue, ypred),\
-    recall_score(ytrue, ypred),\
-    roc_auc_score(ytrue, probabilities)
+       accuracy, precision, recall, auc = \
+       accuracy_score(ytrue, ypred),\
+       precision_score(ytrue, ypred),\
+       recall_score(ytrue, ypred),\
+       roc_auc_score(ytrue, probabilities)
     
-    metrics = pd.DataFrame();
-    metrics["Metric"] = ["Accuracy", "Precision", "Recall", "AUC"];
-    metrics["Value"] = [accuracy, precision, recall, auc]
+       metrics = pd.DataFrame();
+       metrics["Metric"] = ["Accuracy", "Precision", "Recall", "AUC"];
+       metrics["Value"] = [accuracy, precision, recall, auc]
     
-    return metrics,
+       return metrics,
 
-```
+   ```
+
+## <a name="next-steps"></a>Następne kroki
+
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 

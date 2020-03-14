@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: bb6ad1f131d1299ce1e076fee70e6640e3bdf20a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: ef82d748b67db736bc2294089cd92edd2adde4a7
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373563"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297956"
 ---
 # <a name="application-gateway-configuration-overview"></a>Przegląd konfiguracji Application Gateway
 
@@ -127,7 +127,7 @@ Wybierz pozycję HTTP lub HTTPS:
 
 - W przypadku wybrania protokołu HTTP ruch między klientem i bramą aplikacji jest niezaszyfrowany.
 
-- Wybierz opcję HTTPS, jeśli chcesz, aby [SSL](https://docs.microsoft.com/azure/application-gateway/overview#secure-sockets-layer-ssltls-termination) lub [kompleksowe szyfrowanie SSL](https://docs.microsoft.com/azure/application-gateway/ssl-overview). Ruch między klientem i bramą aplikacji jest szyfrowany. Połączenie SSL kończy się na bramie aplikacji. Aby kompleksowe szyfrowanie SSL było wymagane, należy wybrać opcję HTTPS i skonfigurować ustawienia **protokołu HTTP zaplecza** . Gwarantuje to, że ruch jest ponownie szyfrowany podczas podróży z bramy aplikacji do zaplecza.
+- Wybierz opcję HTTPS, jeśli chcesz, aby [SSL](features.md#secure-sockets-layer-ssltls-termination) lub [kompleksowe szyfrowanie SSL](https://docs.microsoft.com/azure/application-gateway/ssl-overview). Ruch między klientem i bramą aplikacji jest szyfrowany. Połączenie SSL kończy się na bramie aplikacji. Aby kompleksowe szyfrowanie SSL było wymagane, należy wybrać opcję HTTPS i skonfigurować ustawienia **protokołu HTTP zaplecza** . Gwarantuje to, że ruch jest ponownie szyfrowany podczas podróży z bramy aplikacji do zaplecza.
 
 Aby skonfigurować zakończenie SSL i kompleksowe szyfrowanie SSL, należy dodać certyfikat do odbiornika, aby umożliwić bramie aplikacji uzyskanie klucza symetrycznego. Jest to podyktowane specyfikacją protokołu SSL. Klucz symetryczny służy do szyfrowania i odszyfrowywania ruchu wysyłanego do bramy. Certyfikat bramy musi być w formacie wymiany informacji osobistych (PFX). Ten format umożliwia wyeksportowanie klucza prywatnego, który jest wykorzystywany przez bramę do szyfrowania i odszyfrowywania ruchu.
 
@@ -153,7 +153,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 Obsługa protokołu WebSocket jest domyślnie włączona. Nie istnieje ustawienie konfigurowalne przez użytkownika, które można włączyć lub wyłączyć. Można używać obiektów WebSockets z odbiornikami HTTP i HTTPS.
 
-### <a name="custom-error-pages"></a>Niestandardowe strony błędów
+### <a name="custom-error-pages"></a>Strony błędów niestandardowych
 
 Błąd niestandardowy można zdefiniować na poziomie globalnym lub na poziomie odbiornika. Jednak tworzenie niestandardowych stron błędów niestandardowych na poziomie globalnym na podstawie Azure Portal nie jest obecnie obsługiwane. Można skonfigurować niestandardową stronę błędów dla błędu zapory aplikacji sieci Web 403 lub strony obsługi 502 na poziomie odbiornika. Należy również określić publicznie dostępny adres URL obiektu BLOB dla danego kodu stanu błędu. Aby uzyskać więcej informacji, zobacz [Create Application Gateway custom error pages (Tworzenie niestandardowych stron błędów w usłudze Application Gateway)](https://docs.microsoft.com/azure/application-gateway/custom-error).
 
@@ -340,7 +340,7 @@ Na przykład jeśli *www.contoso.com* jest określony w ustawieniu **Nazwa hosta
 
 ## <a name="back-end-pool"></a>Pula zaplecza
 
-Pulę zaplecza można wskazać na cztery typy elementów członkowskich zaplecza: konkretną maszynę wirtualną, zestaw skalowania maszyn wirtualnych, adres IP/nazwa FQDN lub Usługa aplikacji. Każda pula zaplecza może wskazywać na wiele elementów członkowskich tego samego typu. Wskazanie składowych różnych typów w tej samej puli zaplecza nie jest obsługiwane.
+Pulę zaplecza można wskazać na cztery typy elementów członkowskich zaplecza: konkretną maszynę wirtualną, zestaw skalowania maszyn wirtualnych, adres IP/nazwa FQDN lub Usługa aplikacji. 
 
 Po utworzeniu puli zaplecza należy ją skojarzyć z co najmniej jedną regułą routingu żądania. Należy również skonfigurować sondy kondycji dla każdej puli zaplecza na bramie aplikacji. Gdy spełniony jest warunek reguły routingu żądania, Brama aplikacji przekazuje ruch do serwerów w dobrej kondycji (zgodnie z sondami kondycji) w odpowiedniej puli zaplecza.
 
