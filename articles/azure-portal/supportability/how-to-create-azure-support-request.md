@@ -9,18 +9,18 @@ ms.service: azure-supportability
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: kfollis
-ms.openlocfilehash: 6218a1089352ce9ee3e2d1d10f3282e64eae8c51
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 28a29bbb94f63657a69e873bb8f969e96ee92c76
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547663"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248491"
 ---
-# <a name="how-to-create-an-azure-support-request"></a>Jak utworzyć żądanie obsługi na platformie Azure
+# <a name="how-to-create-an-azure-support-request"></a>Jak utworzyć żądanie pomocy technicznej dla platformy Azure
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
-Klienci platformy Azure mogą tworzyć żądania pomocy technicznej i zarządzać nimi w [Azure Portal](https://portal.azure.com).
+System Azure umożliwia tworzenie i zarządzanie żądaniami pomocy technicznej, nazywanymi również biletami pomocy technicznej. Można tworzyć i zarządzać żądaniami w [Azure Portal](https://portal.azure.com), które zostały omówione w tym artykule. Żądania można także tworzyć programowo i zarządzać nimi za pomocą [interfejsu API REST biletów pomocy technicznej platformy Azure](/rest/api/support).
 
 > [!NOTE]
 > Adres URL Azure Portal jest specyficzny dla chmury platformy Azure, w której wdrożono organizację.
@@ -43,15 +43,15 @@ Możesz uzyskać **Pomoc techniczną i wsparcie** w Azure Portal. Jest ona dost�
 
 ### <a name="role-based-access-control"></a>Kontrola dostępu oparta na rolach
 
-Aby utworzyć żądanie pomocy technicznej, musisz być administratorem lub być przypisana do roli [współautor żądania pomocy technicznej](../../role-based-access-control/built-in-roles.md#support-request-contributor) .
+Aby utworzyć żądanie pomocy technicznej, musisz być administratorem lub być przypisana do roli [współautor żądania pomocy technicznej](../../role-based-access-control/built-in-roles.md#support-request-contributor) na poziomie subskrypcji.
 
 ### <a name="go-to-help--support-from-the-global-header"></a>Przejdź do pomocy i obsługi technicznej z nagłówka globalnego
 
 Aby uruchomić żądanie pomocy technicznej z dowolnego miejsca w Azure Portal:
 
-1. Wybierz ikonę **?** w nagłówku globalnym. Następnie wybierz pozycję **Pomoc i obsługa techniczna**.
+1. Wybierz pozycję **?** w nagłówku globalnym. Następnie wybierz pozycję **Pomoc i obsługa techniczna**.
 
-   ![Pomoc i obsługa techniczna](./media/how-to-create-azure-support-request/helpandsupportnewlower.png)
+   ![Pomoc i wsparcie techniczne](./media/how-to-create-azure-support-request/helpandsupportnewlower.png)
 
 2. Wybierz pozycję **Nowe żądanie obsługi**. Postępuj zgodnie z monitami, aby przekazać nam informacje o problemie. Zasugerujemy niektóre możliwe rozwiązania, zebranie szczegółowych informacji o problemie i przesłanie i śledzenie żądania pomocy technicznej.
 
@@ -98,7 +98,7 @@ Po uzyskaniu wszystkich informacji o problemie wybierz sposób uzyskania pomocy 
 
 Następnie wypełnij sekcję **informacje kontaktowe** , aby dowiedzieć się, jak skontaktować się z Tobą.
 
-### <a name="review--create"></a>Przeglądanie i tworzenie
+### <a name="review--create"></a>Przegląd + tworzenie
 
 Wykonaj wszystkie wymagane informacje na każdej karcie, a następnie wybierz pozycję **Przegląd + Utwórz**. Sprawdź szczegóły, które zostaną wysłane do pomocy technicznej. Wróć do dowolnej karty, aby wprowadzić zmianę w razie potrzeby. Gdy zostanie spełnione żądanie pomocy technicznej, wybierz pozycję **Utwórz**.
 

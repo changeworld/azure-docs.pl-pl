@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
 ms.openlocfilehash: c6e74e7992326d2a4b8fe24510742422b005c2e2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359062"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280315"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolacja w chmurze publicznej platformy Azure
 System Azure umożliwia uruchamianie aplikacji i maszyn wirtualnych w ramach udostępnionej infrastruktury fizycznej. Jedną z ekonomicznych motywacji do uruchamiania aplikacji w środowisku chmury jest możliwość dystrybucji kosztów zasobów udostępnionych między wieloma klientami. Ta metoda korzystania z wielu dzierżawców zwiększa wydajność dzięki możliwości multipleksowania zasobów między różnymi klientami przy niskich kosztach. Niestety, wprowadza również ryzyko związane z udostępnianiem serwerów fizycznych i innych zasobów infrastruktury w celu uruchamiania poufnych aplikacji i maszyn wirtualnych, które mogą należeć do dowolnego lub potencjalnie złośliwego użytkownika.

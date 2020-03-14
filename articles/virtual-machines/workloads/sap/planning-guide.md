@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/05/2020
+ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7349c22a2478020c9ac79655ad1e7c23c4cf5034
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 6fef1829e008b58f50546e9e6e7ad2ccee037224
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78893019"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245267"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Planowanie i wdrażanie Virtual Machines platformy Azure dla oprogramowania SAP NetWeaver
 
@@ -495,9 +495,17 @@ Aby uzyskać więcej informacji na temat cennika, zapoznaj się z artykułem [Vi
 
 Ponadto platforma Azure oferuje koncepcje dedykowanego hosta. Dedykowane koncepcje hosta dają większą kontrolę nad cyklami poprawek wykonywanymi przez platformę Azure. Można czasowo zastosować poprawki zgodnie z własnymi harmonogramami. Oferta jest przeznaczona dla klientów korzystających z obciążeń, które mogą nie być zgodne z normalnym cyklem obciążeń. Aby zapoznać się z pojęciami dedykowanych ofert hosta platformy Azure, zapoznaj się z artykułem [dedykowanym hosta platformy Azure](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts). Ta oferta jest obsługiwana w przypadku obciążeń SAP i jest używana przez kilku klientów SAP, którzy chcą mieć większą kontrolę nad stosowaniem poprawek infrastruktury i planów samoobsługowych firmy Microsoft. Aby uzyskać więcej informacji na temat sposobu, w jaki firma Microsoft utrzymuje i aktualizuje infrastrukturę platformy Azure, która obsługuje maszyny wirtualne, zapoznaj się z artykułem [konserwacja maszyn wirtualnych na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates).
 
+#### <a name="generation-1-and-generation-2-virtual-machines"></a>Maszyny wirtualne generacji 1 i 2
+Funkcja hypervisor firmy Microsoft może obsługiwać dwa różne generacji maszyn wirtualnych. Te formaty nazywają **generację 1** i **2. generacji**. **Generacja 2** została wprowadzona w roku 2012 przy użyciu funkcji hypervisor systemu Windows Server 2012. Platforma Azure rozpoczęła korzystanie z maszyn wirtualnych generacji 1. Podczas wdrażania usługi Azure Virtual Machines domyślnie nadal jest używany format generacji 1. W tym czasie można również wdrożyć formaty maszyn wirtualnych generacji 2. W artykule [Obsługa maszyn wirtualnych 2. generacji na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) zawiera listę rodzin maszyn wirtualnych platformy Azure, które można WDROŻYĆ jako maszynę wirtualną generacji 2. W tym artykule wymieniono także bardzo ważne różnice funkcjonalne maszyn wirtualnych generacji 2, które mogą być uruchamiane w chmurze prywatnej funkcji Hyper-V i na platformie Azure. W tym artykule opisano również różnice funkcjonalne między maszynami wirtualnymi generacji 1 i maszyną wirtualną 2. generacji, jak te działające na platformie Azure. 
+
+> [!NOTE]
+> Istnieją funkcjonalne różnice między maszynami wirtualnymi generacji 1 i 2. generacji działającymi na platformie Azure. Zapoznaj się z artykułem [Obsługa maszyn wirtualnych 2. generacji na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) , aby wyświetlić listę tych różnic.  
+ 
+Przeniesienie istniejącej maszyny wirtualnej z jednej generacji do drugiej generacji nie jest możliwe. Aby zmienić generację maszyny wirtualnej, należy wdrożyć nową MASZYNę wirtualną generacji i ponownie zainstalować oprogramowanie, które jest uruchomione na maszynie wirtualnej w ramach generacji. Ma to wpływ tylko na podstawowy obraz wirtualnego dysku twardego maszyny wirtualnej i nie ma wpływu na dyski danych ani dołączone udziały NFS lub SMB. Dyski danych, system plików NFS lub udziały SMB, które pierwotnie zostały przypisane do programu, na przykład na maszynie wirtualnej generacji 1
+
+W tej chwili ten problem wystąpi, szczególnie w przypadku maszyn wirtualnych z serii M i maszyn wirtualnych z serii Mv2. Ze względu na ograniczenia w formacie maszyny wirtualnej generacji 1 duże maszyny wirtualne rodziny Mv2 nie mogły być oferowane w formacie generacji 1, ale muszą być oferowane wyłącznie w generacji 2. Z drugiej strony rodzina maszyn wirtualnych serii M nie jest jeszcze włączona do wdrożenia w generacji 2. W związku z tym zmiana rozmiarów między maszynami wirtualnymi serii M i Mv2 wymaga ponownej instalacji oprogramowania na maszynie wirtualnej docelowej dla innej rodziny maszyn wirtualnych. Firma Microsoft pracuje nad wdrożeniem maszyn wirtualnych serii M na potrzeby wdrożeń 2. generacji. Wdrażaj maszyny wirtualne z serii M jako maszyny wirtualne 2. generacji w przyszłości, aby umożliwić mniejszą zmianę rozmiarów między seriami M i maszynami wirtualnymi serii Mv2. W obu kierunkach zmiany rozmiaru z serii M na większe maszyny wirtualne z serii Mv2 lub skalowanie w dół z większych maszyn wirtualnych z serii Mv2 do mniejszych maszyn wirtualnych serii M. Dokumentacja będzie aktualizowana, gdy tylko maszyny wirtualne z serii M mogą zostać wdrożone jako maszyny wirtualne generacji 2.    
 
  
-
 
 ### <a name="a72afa26-4bf4-4a25-8cf7-855d6032157f"></a>Magazyn: Microsoft Azure Storage i dyski z danymi
 Microsoft Azure Virtual Machines używać różnych typów magazynów. Podczas implementowania oprogramowania SAP w usługach Azure Virtual Machines ważne jest zrozumienie różnic między tymi dwoma głównymi typami magazynu:

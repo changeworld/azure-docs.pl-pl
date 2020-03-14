@@ -8,11 +8,11 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 91401031945d0ec3ac22fc8cbcea8ba73580ee50
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77442007"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251728"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-python-library"></a>pozyskiwanie danych przy użyciu biblioteki języka Python w usłudze Azure Data Explorer
 

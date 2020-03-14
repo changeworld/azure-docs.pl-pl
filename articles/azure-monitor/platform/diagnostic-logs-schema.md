@@ -5,11 +5,11 @@ ms.subservice: logs
 ms.topic: reference
 ms.date: 10/22/2019
 ms.openlocfilehash: de102c5dc4104aafc44b87b14aeea0b30cb7c083
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359623"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248816"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Obsługiwane usługi, schematy i kategorie dla dzienników zasobów platformy Azure
 
@@ -125,7 +125,7 @@ Niektóre kategorie mogą być obsługiwane tylko dla określonych typów zasob�
 |Microsoft. datacegły/obszary robocze|dBfs|System plików usługi Databricks|
 |Microsoft. datacegły/obszary robocze|oparty|Klastry datacegły|
 |Microsoft. datacegły/obszary robocze|accounts|Konta datakostek|
-|Microsoft. datacegły/obszary robocze|Zadania|Zadania datakostki|
+|Microsoft. datacegły/obszary robocze|zadania|Zadania datakostki|
 |Microsoft. datacegły/obszary robocze|notesu|Notes usługi Databricks|
 |Microsoft. datacegły/obszary robocze|SSH|Połączenia SSH|
 |Microsoft. datacegły/obszary robocze|obszar roboczy|Obszar roboczy datakosteks|

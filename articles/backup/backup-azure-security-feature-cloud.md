@@ -3,12 +3,12 @@ title: Funkcje zabezpieczeń pomagające w ochronie obciążeń w chmurze
 description: Dowiedz się, jak używać funkcji zabezpieczeń w programie Azure Backup, aby tworzyć kopie zapasowe bardziej bezpieczne.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 3435b9455af3362cdce2dceb20e183a8b05a15dd
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: f89d9ab3ef373ecd9a7d15ef4ec9b2109750f8de
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395579"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248075"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Funkcje zabezpieczeń pomagające w ochronie obciążeń w chmurze korzystających z Azure Backup
 
@@ -178,24 +178,23 @@ Wykonaj następujące kroki:
 1. Postępuj zgodnie z instrukcjami, aby [wyłączyć usuwanie nietrwałe](#disabling-soft-delete).
 2. W Azure Portal przejdź do swojego magazynu, przejdź do **pozycji elementy kopii zapasowej**, a następnie wybierz nietrwałą maszynę wirtualną.
 
-![Wybierz nietrwałe usunięte maszyny wirtualne](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
+   ![Wybierz nietrwałe usunięte maszyny wirtualne](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
 3. Wybierz opcję **Cofnij usunięcie**.
 
-![Wybierz pozycję Cofnij usunięcie](./media/backup-azure-security-feature-cloud/choose-undelete.png)
-
+   ![Wybierz pozycję Cofnij usunięcie](./media/backup-azure-security-feature-cloud/choose-undelete.png)
 
 4. Zostanie wyświetlone okno. Wybierz pozycję **Cofnij usunięcie**.
 
-![Wybierz pozycję Cofnij usunięcie](./media/backup-azure-security-feature-cloud/undelete-vm.png)
+   ![Wybierz pozycję Cofnij usunięcie](./media/backup-azure-security-feature-cloud/undelete-vm.png)
 
 5. Wybierz pozycję **Usuń dane kopii zapasowej** , aby trwale usunąć dane kopii zapasowej.
 
-![Wybierz pozycję Usuń dane kopii zapasowej](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
+   ![Wybierz pozycję Usuń dane kopii zapasowej](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
 
 6. Wpisz nazwę elementu kopii zapasowej, aby potwierdzić, że chcesz usunąć punkty odzyskiwania.
 
-![Wpisz nazwę elementu kopii zapasowej](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
+   ![Wpisz nazwę elementu kopii zapasowej](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
 
 7. Aby usunąć dane kopii zapasowej dla elementu, wybierz pozycję **Usuń**. Komunikat z powiadomieniem informuje o tym, że dane kopii zapasowej zostały usunięte.
 
@@ -268,6 +267,10 @@ Azure Backup umożliwia tworzenie kopii zapasowych Virtual Machines platformy Az
 ### <a name="backup-of-encrypted-vms"></a>Tworzenie kopii zapasowych zaszyfrowanych maszyn wirtualnych
 
 Można tworzyć kopie zapasowe i przywracać maszyny wirtualne systemu Windows lub Linux z szyfrowanymi dyskami przy użyciu usługi Azure Backup. Aby uzyskać instrukcje, zobacz [wykonywanie kopii zapasowej i Przywracanie zaszyfrowanych maszyn wirtualnych przy użyciu Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption).
+
+## <a name="private-endpoints"></a>Prywatne punkty końcowe
+
+[!INCLUDE [Private Endpoints](../../includes/backup-private-endpoints.md)]
 
 ## <a name="other-security-features"></a>Inne funkcje zabezpieczeń
 

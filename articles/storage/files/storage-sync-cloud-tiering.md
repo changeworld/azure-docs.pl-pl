@@ -8,11 +8,11 @@ ms.date: 09/21/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: fea9cebc5199fc7c1fc5c081aa45f08044c21e44
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362388"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268095"
 ---
 # <a name="cloud-tiering-overview"></a>Omówienie obsługi warstw w chmurze
 Obsługa warstw w chmurze jest opcjonalną funkcją Azure File Sync, w której często używane pliki są buforowane lokalnie na serwerze, podczas gdy wszystkie inne pliki są warstwami do Azure Files na podstawie ustawień zasad. Gdy plik jest warstwowy, filtr systemu plików Azure File Sync (StorageSync. sys) zastępuje plik lokalnie za pomocą wskaźnika lub punktu ponownej analizy. Punkt ponownej analizy reprezentuje adres URL pliku w Azure Files. Plik warstwowy ma zarówno atrybut "offline", jak i atrybut FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS ustawiony w systemie plików NTFS, aby aplikacje innych firm mogły bezpiecznie identyfikować pliki warstwowe.

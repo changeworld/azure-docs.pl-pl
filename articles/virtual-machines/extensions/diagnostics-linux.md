@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
 ms.openlocfilehash: d9375d09219d2655bd9947c0953557f4a1bf8f3c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381175"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250636"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Monitorowanie metryk i dzienników przy użyciu rozszerzenia diagnostycznego systemu Linux
 
@@ -195,8 +195,8 @@ W tej opcjonalnej sekcji zdefiniowano dodatkowe miejsca docelowe, do których ro
 
 Element | Wartość
 ------- | -----
-{1&gt;nazwa&lt;1} | Ciąg używany do odwoływania się do tego ujścia w innym miejscu konfiguracji rozszerzenia.
-typ | Typ zdefiniowanego ujścia. Określa pozostałe wartości (jeśli istnieją) w wystąpieniach tego typu.
+name | Ciąg używany do odwoływania się do tego ujścia w innym miejscu konfiguracji rozszerzenia.
+type | Typ zdefiniowanego ujścia. Określa pozostałe wartości (jeśli istnieją) w wystąpieniach tego typu.
 
 Wersja 3,0 rozszerzenia diagnostycznego systemu Linux obsługuje dwa typy ujścia: EventHub i JsonBlob.
 
@@ -338,13 +338,13 @@ Ta opcjonalna sekcja steruje kolekcją metryk. Próbki pierwotne są agregowane 
 Element | Wartość
 ------- | -----
 sink — Obiekty | obowiązkowe Rozdzielana przecinkami lista nazw zlewów, do których LAD wysyła zagregowane wyniki metryk. Wszystkie zagregowane metryki są publikowane w każdym z wymienionych zbiorników. Zobacz [sinksConfig](#sinksconfig). Przykład: `"EHsink1, myjsonsink"`.
-typ | Identyfikuje rzeczywistego dostawcę metryki.
+type | Identyfikuje rzeczywistego dostawcę metryki.
 Klasa | Wraz z "licznik" identyfikuje konkretną metrykę w przestrzeni nazw dostawcy.
-licznik | Wraz z "klasą" identyfikuje konkretną metrykę w przestrzeni nazw dostawcy.
+counter | Wraz z "klasą" identyfikuje konkretną metrykę w przestrzeni nazw dostawcy.
 counterSpecifier | Identyfikuje konkretną metrykę w przestrzeni nazw metryk platformy Azure.
 condition | obowiązkowe Wybiera określone wystąpienie obiektu, do którego jest stosowana Metryka, lub wybiera agregację we wszystkich wystąpieniach tego obiektu. Aby uzyskać więcej informacji, zobacz definicje metryk `builtin`.
 sampleRate | JEST 8601 interwał, który ustawia szybkość, z jaką zbierane są nieprzetworzone próbki dla tej metryki. Jeśli nie zostanie ustawiona, interwał kolekcji jest ustawiany przez wartość [sampleRateInSeconds](#ladcfg). Najkrótsza obsługiwana częstotliwość próbkowania wynosi 15 sekund (PT15S).
-jednostka | Powinien być jednym z następujących ciągów: "Count", "bajtów", "sek", "PERCENT", "CountPerSecond", "BytesPerSecond", "milisekundy". Definiuje jednostkę dla metryki. Odbiorcy zebranych danych oczekują wartości zebranych danych w celu dopasowania do tej jednostki. LAD ignoruje to pole.
+unit | Powinien być jednym z następujących ciągów: "Count", "bajtów", "sek", "PERCENT", "CountPerSecond", "BytesPerSecond", "milisekundy". Definiuje jednostkę dla metryki. Odbiorcy zebranych danych oczekują wartości zebranych danych w celu dopasowania do tej jednostki. LAD ignoruje to pole.
 displayName | Etykieta (w języku określonym przez skojarzone ustawienie regionalne), która ma zostać dołączona do tych danych w usłudze Azure Metrics. LAD ignoruje to pole.
 
 CounterSpecifier jest dowolnym identyfikatorem. Odbiorcy metryk, takie jak Azure Portal wykresy i funkcja alertów, używają counterSpecifier jako klucza, który identyfikuje metrykę lub wystąpienie metryki. W przypadku metryk `builtin` zalecamy użycie wartości counterSpecifier zaczynających się od `/builtin/`. W przypadku zbierania określonego wystąpienia metryki Zalecamy dołączenie identyfikatora wystąpienia do wartości counterSpecifier. Oto niektóre przykłady:
@@ -413,7 +413,7 @@ Ta opcjonalna sekcja kontroluje wykonywanie dowolnych zapytań [OMI](https://git
 Element | Wartość
 ------- | -----
 przestrzeń nazw | obowiązkowe Przestrzeń nazw OMI, w której należy wykonać zapytanie. Jeśli nie zostanie określony, wartością domyślną jest "root/SCX" wdrożoną przez [dostawców międzyplatformowych programu System Center](https://github.com/Microsoft/SCXcore).
-zapytanie | Zapytanie OMI, które ma zostać wykonane.
+query | Zapytanie OMI, które ma zostać wykonane.
 tabela | obowiązkowe Tabela usługi Azure Storage na wyznaczynym koncie magazynu (zobacz [Ustawienia chronione](#protected-settings)).
 frequency | obowiązkowe Liczba sekund między wykonaniem zapytania. Wartość domyślna to 300 (5 minut); wartość minimalna to 15 sekund.
 sink — Obiekty | obowiązkowe Rozdzielana przecinkami lista nazw dodatkowych obiektów ujścia, do których należy opublikować nieprzetworzone przykładowe wyniki metryki. Żadne agregacje tych nieprzetworzonych próbek nie są obliczane przez rozszerzenie ani za pomocą metryk platformy Azure.
@@ -447,7 +447,7 @@ Należy określić "Table" lub "ujścia" albo oba te elementy.
 Dostawca metryk wbudowanej jest źródłem metryk najbardziej interesujących dla szerokiego zbioru użytkowników. Te metryki należą do pięciu szerokich klas:
 
 * Procesor
-* Pamięć
+* Memory (Pamięć)
 * Network
 * System plików
 * Dysk
@@ -456,7 +456,7 @@ Dostawca metryk wbudowanej jest źródłem metryk najbardziej interesujących dl
 
 Klasa procesora metryk zawiera informacje o użyciu procesora w maszynie wirtualnej. Podczas agregowania wartości procentowych wynik jest średni dla wszystkich procesorów CPU. W przypadku maszyny wirtualnej z dwoma vCPUmi, jeśli jedna vCPU była 100% zajęta, a druga była 100% bezczynności, zgłoszone PercentIdleTime byłyby 50. Jeśli każda vCPU była zajęta w tym samym okresie przez 50%, raportowany wynik będzie również 50. W przypadku maszyny wirtualnej z czterema vCPU, gdy jeden vCPU 100% zajęty i pozostałe bezczynne, zgłoszone PercentIdleTime byłyby 75.
 
-licznik | Znaczenie
+counter | Znaczenie
 ------- | -------
 PercentIdleTime | Procent czasu w oknie agregacji, że procesor wykonał pętlę bezczynności jądra
 PercentProcessorTime | Procent czasu wykonującego wątek niebędący bezczynny
@@ -474,7 +474,7 @@ Aby uzyskać pojedynczą metrykę agregowaną we wszystkich procesorach, ustaw `
 
 Klasa Memory metryk zawiera informacje o wykorzystaniu pamięci, stronicowaniu i zamianie.
 
-licznik | Znaczenie
+counter | Znaczenie
 ------- | -------
 AvailableMemory | Dostępna pamięć fizyczna w MiB
 PercentAvailableMemory | Dostępna pamięć fizyczna jako procent całkowitej ilości pamięci
@@ -494,7 +494,7 @@ Ta klasa metryk ma tylko jedno wystąpienie. Atrybut "Condition" nie ma użytecz
 
 Klasa sieci metryk zawiera informacje o aktywności sieciowej w poszczególnych interfejsach sieciowych od rozruchu. LAD nie ujawnia metryk przepustowości, które można pobrać z metryk hosta.
 
-licznik | Znaczenie
+counter | Znaczenie
 ------- | -------
 BytesTransmitted | Całkowita liczba bajtów wysłanych od rozruchu
 BytesReceived | Całkowita liczba bajtów odebranych od rozruchu
@@ -511,7 +511,7 @@ TotalCollisions | Liczba kolizji zgłoszonych przez porty sieciowe od rozruchu
 
 Klasa systemu plików metryk zawiera informacje o użyciu systemu plików. Wartości bezwzględne i procentowe są raportowane w miarę ich wyświetlania dla zwykłego użytkownika (nie katalogu głównego).
 
-licznik | Znaczenie
+counter | Znaczenie
 ------- | -------
 FreeSpace | Ilość dostępnego miejsca na dysku w bajtach
 UsedSpace | Zajęte miejsce na dysku w bajtach
@@ -534,7 +534,7 @@ Zagregowane wartości we wszystkich systemach plików można uzyskać przez usta
 
 Klasa dysku metryk zawiera informacje o użyciu urządzenia dyskowego. Te statystyki dotyczą całego dysku. Jeśli na urządzeniu istnieje wiele systemów plików, liczniki dla tego urządzenia są efektywnie agregowane we wszystkich z nich.
 
-licznik | Znaczenie
+counter | Znaczenie
 ------- | -------
 ReadsPerSecond | Operacje odczytu na sekundę
 WritesPerSecond | Operacje zapisu na sekundę

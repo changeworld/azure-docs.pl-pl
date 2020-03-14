@@ -14,11 +14,11 @@ ms.reviewer: vanto
 ms.date: 02/06/2020
 tags: azure-synapse
 ms.openlocfilehash: e9a4aa5b54cf7ed48daf1899bb5801c609dfbf32
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358389"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255875"
 ---
 # <a name="using-multi-factor-aad-authentication-with-azure-sql-database-and-azure-synapse-analytics-ssms-support-for-mfa"></a>Korzystanie z uwierzytelniania wieloskładnikowego w usłudze AAD przy użyciu Azure SQL Database i usługi Azure Synapse Analytics (Obsługa programu SSMS)
 Azure SQL Database i usługi Azure Synapse obsługują połączenia z SQL Server Management Studio (SSMS) przy użyciu *uwierzytelniania uniwersalnego Active Directory*. W tym artykule omówiono różnice między różnymi opcjami uwierzytelniania, a także ograniczenia związane z uwierzytelnianiem uniwersalnym. 

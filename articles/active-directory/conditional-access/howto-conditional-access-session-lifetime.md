@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6e9c0c88064c00c97de7dc58a500910e81c04eef
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78671870"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263285"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurowanie zarządzania sesjami uwierzytelniania przy użyciu dostępu warunkowego
 
@@ -55,13 +55,13 @@ Ustawienie częstotliwości logowania działa z aplikacjami, które mają wdroż
 
 W przypadku przyłączenia do usługi Azure AD hybrydowej usługi Azure AD lub zarejestrowanych urządzeń usługi Azure AD, gdy użytkownik odblokowuje urządzenie lub loguje się interaktywnie, to zdarzenie będzie również spełniało zasady częstotliwości logowania. W następującej 2 Przykładowa częstotliwość logowania użytkownika jest ustawiona na 1 godzinę:
 
-Przykład 1.
+Przykład 1:
 
 - W dniu 00:00 użytkownik loguje się do urządzenia dołączonego do usługi Azure AD systemu Windows 10 i zaczyna pracę nad dokumentem przechowywanym w usłudze SharePoint Online.
 - Użytkownik kontynuuje pracę nad tym samym dokumentem na swoim urządzeniu przez godzinę.
 - W dniu 01:00 użytkownik jest monitowany o ponowne zalogowanie się na podstawie wymagań dotyczących częstotliwości logowania w zasadach dostępu warunkowego skonfigurowanych przez administratora.
 
-Przykład 2.
+Przykład 2:
 
 - W dniu 00:00 użytkownik loguje się do urządzenia dołączonego do usługi Azure AD systemu Windows 10 i zaczyna pracę nad dokumentem przechowywanym w usłudze SharePoint Online.
 - O godzinie 00:30 użytkownik otrzymuje i zablokuje zablokowanie urządzenia.

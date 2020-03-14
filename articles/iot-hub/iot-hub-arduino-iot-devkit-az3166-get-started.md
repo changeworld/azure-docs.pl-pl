@@ -9,11 +9,11 @@ ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
 ms.openlocfilehash: 139d1a470c67d5dab310c4fa2a9171f433df2061
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391331"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271293"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>Łączenie usługi IoT DevKit AZ3166 z platformą Azure IoT Hub
 

@@ -6,11 +6,11 @@ ms.subservice: process-automation
 ms.date: 01/16/2020
 ms.topic: conceptual
 ms.openlocfilehash: 043350db2c5372fc81fbb2b68155a4ac75457208
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373443"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278404"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Uruchamianie Azure Automation elementu Runbook za pomocą elementu webhook
 
@@ -33,7 +33,7 @@ W poniższej tabeli opisano właściwości, które należy skonfigurować dla el
 | Name (Nazwa) |Nazwa elementu webhook. Możesz podać dowolną nazwę, ponieważ nie jest ona udostępniana Klientowi. Jest on używany tylko do identyfikowania elementu Runbook w Azure Automation. Najlepszym rozwiązaniem jest nadanie elementu webhook nazwy powiązanej z klientem, który go używa. |
 | Adres URL |Adres URL elementu webhook. Jest to unikatowy adres wywoływany przez klienta z WPISem HTTP w celu uruchomienia elementu Runbook połączonego z elementem webhook. Jest on generowany automatycznie podczas tworzenia elementu webhook. Nie można określić niestandardowego adresu URL. <br> <br> Adres URL zawiera token zabezpieczający, który umożliwia systemowi innej firmy wywoływanie elementu Runbook bez żadnego dodatkowego uwierzytelniania. Z tego powodu należy traktować adres URL, na przykład hasło. Ze względów bezpieczeństwa można wyświetlić tylko adres URL w Azure Portal podczas tworzenia elementu webhook. Zanotuj adres URL w bezpiecznej lokalizacji do użytku w przyszłości. |
 | Data wygaśnięcia | Data wygaśnięcia elementu webhook, po upływie którego nie można już jej używać. Datę wygaśnięcia można zmodyfikować po utworzeniu elementu webhook, o ile element webhook nie wygasł. |
-| Włączono | Ustawienie wskazujące, czy element webhook jest domyślnie włączony podczas jego tworzenia. Ustawienie tej właściwości na wyłączone spowoduje, że żaden klient nie będzie mógł używać elementu webhook. Tę właściwość można ustawić podczas tworzenia elementu webhook lub dowolnego innego czasu po jego utworzeniu. |
+| Enabled (Włączony) | Ustawienie wskazujące, czy element webhook jest domyślnie włączony podczas jego tworzenia. Ustawienie tej właściwości na wyłączone spowoduje, że żaden klient nie będzie mógł używać elementu webhook. Tę właściwość można ustawić podczas tworzenia elementu webhook lub dowolnego innego czasu po jego utworzeniu. |
 
 ## <a name="parameters-used-when-the-webhook-starts-a-runbook"></a>Parametry używane, gdy element webhook uruchamia element Runbook
 

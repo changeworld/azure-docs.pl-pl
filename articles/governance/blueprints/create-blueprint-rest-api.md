@@ -4,11 +4,11 @@ description: W tym przewodniku szybki start używasz planów platformy Azure do 
 ms.date: 02/26/2020
 ms.topic: quickstart
 ms.openlocfilehash: 3e7e7c67822eec939c7d7752f8771d3b486abc3c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356777"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79241542"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Szybki Start: Definiowanie i przypisywanie Azure Blueprint przy użyciu interfejsu API REST
 

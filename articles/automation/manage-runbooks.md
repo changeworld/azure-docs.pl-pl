@@ -6,11 +6,11 @@ ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
 ms.openlocfilehash: ec53c4b2f80fb095f58bee9c15ac5daafb8d59ef
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372495"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278378"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Zarządzanie elementami Runbook w Azure Automation
 

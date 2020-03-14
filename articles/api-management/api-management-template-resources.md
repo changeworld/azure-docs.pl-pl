@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: c3b6123c63bf530463379a175745ef86baf2c5a3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374379"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249505"
 ---
 # <a name="azure-api-management-template-resources"></a>Zasoby szablonów API Management platformy Azure
 Usługa Azure API Management udostępnia następujące typy zasobów do użycia w szablonach portalu dla deweloperów.  
@@ -115,7 +115,7 @@ Obsługiwane są następujące opcje lokalizacji:
   
 |Name (Nazwa)|Tekst|  
 |----------|----------|  
-|PageTitleApis|interfejsy API|  
+|PageTitleApis|Interfejsy API|  
   
 ###  <a name="AppDetailsStrings"></a>AppDetailsStrings  
   
@@ -135,10 +135,10 @@ Obsługiwane są następujące opcje lokalizacji:
 |WebDevelopersAppNotSubmitted|Nieprzesłane|  
 |WebDevelopersAppTableCategoryHeader|Kategoria|  
 |WebDevelopersAppTableNameHeader|Name (Nazwa)|  
-|WebDevelopersAppTableStateHeader|State|  
+|WebDevelopersAppTableStateHeader|Stan|  
 |WebDevelopersEditLink|Edytuj|  
 |WebDevelopersRegisterAppLink|Zarejestruj aplikację|  
-|WebDevelopersRemoveLink|Usuń|  
+|WebDevelopersRemoveLink|Remove|  
 |WebDevelopersSubmitLink|Submit|  
 |WebDevelopersYourApplicationsHeader|Twoje aplikacje|  
   
@@ -156,7 +156,7 @@ Obsługiwane są następujące opcje lokalizacji:
 |GeneralExceptionMessage|Coś nie jest prawidłowe. Może to być błąd tymczasowy lub usterka. Spróbuj ponownie.|  
 |GeneralJsonExceptionMessage|Coś nie jest prawidłowe. Może to być błąd tymczasowy lub usterka. Załaduj ponownie stronę i spróbuj ponownie.|  
 |ConfirmationMessageUnsavedChanges|Istnieją niezapisane zmiany. Czy na pewno chcesz anulować i odrzucić zmiany?|  
-|AzureActiveDirectory|Usługa Azure Active Directory|  
+|AzureActiveDirectory|Azure Active Directory|  
 |HttpLargeRequestMessage|Treść żądania HTTP jest za duża.|  
   
 ###  <a name="CommonStrings"></a>CommonStrings  
@@ -164,7 +164,7 @@ Obsługiwane są następujące opcje lokalizacji:
 |Name (Nazwa)|Tekst|  
 |----------|----------|  
 |ButtonLabelCancel|Cancel|  
-|ButtonLabelSave|Zapisanie|  
+|ButtonLabelSave|Zapisz|  
 |GeneralExceptionMessage|Coś nie jest prawidłowe. Może to być błąd tymczasowy lub usterka. Spróbuj ponownie.|  
 |NoItemsToDisplay|Brak elementów do wyświetlenia.|  
 |PagerButtonLabelFirst|Pierwszego|  
@@ -181,7 +181,7 @@ Obsługiwane są następujące opcje lokalizacji:
 |PagerLabelPageSize|Rozmiar strony|  
 |CurtainLabelLoading|Ładowanie...|  
 |TablePlaceholderNothingToDisplay|Brak danych dla wybranego okresu i zakresu|  
-|ButtonLabelClose|Zamknięcie|  
+|ButtonLabelClose|Zamykanie|  
   
 ###  <a name="Documentation"></a>Łączoną  
   
@@ -301,7 +301,7 @@ Obsługiwane są następujące opcje lokalizacji:
 |OAuth2UserName_ResourceOwnerPasswordCredentialsGrant_TokenRequest|Wymagane. Nazwa użytkownika właściciela zasobu.|  
 |OAuth2UnsupportedTokenType|Typ tokenu "{0}" nie jest obsługiwany.|  
 |OAuth2InvalidState|Nieprawidłowa odpowiedź z serwera autoryzacji|  
-|OAuth2GrantType_AuthorizationCode|Kod autoryzacji|  
+|OAuth2GrantType_AuthorizationCode|kod autoryzacji|  
 |OAuth2GrantType_Implicit|Niejawne|  
 |OAuth2GrantType_ClientCredentials|Poświadczenia klienta|  
 |OAuth2GrantType_ResourceOwnerPassword|Hasło właściciela zasobu|  
@@ -326,7 +326,7 @@ Obsługiwane są następujące opcje lokalizacji:
 |SectionHeadingRequestParameters|Parametry żądania|  
 |SectionHeadingRequestUrl|Adres URL żądania|  
 |SectionHeadingResponse|Odpowiedź|  
-|SectionHeadingRequestHeaders|Nagłówki żądań|  
+|SectionHeadingRequestHeaders|Nagłówki żądania|  
 |FormLabelSubtextOptional|obowiązkowe|  
 |SectionHeadingCodeSamples|Przykłady kodu|  
 |TextblockOpenidConnectHeaderDescription|OpenID Connect < i\>{0}</i\>. Obsługiwane typy dotacji: < i\>{1}</i\>.|  
@@ -488,7 +488,7 @@ Obsługiwane są następujące opcje lokalizacji:
 |WebAuthenticationGooglePlusNotEnabled|Uwierzytelnianie nie powiodło się. Jeśli aplikacja została autoryzowana, skontaktuj się z administratorem, aby upewnić się, że uwierzytelnianie Google zostało prawidłowo skonfigurowane.|  
 |ValidationErrorAllowedTenantIsRequired|Dozwolona dzierżawa jest wymagana|  
 |ValidationErrorTenantIsNotValid|Dzierżawa Azure Active Directory "{0}" jest nieprawidłowa.|  
-|WebAuthenticationActiveDirectoryTitle|Usługa Azure Active Directory|  
+|WebAuthenticationActiveDirectoryTitle|Azure Active Directory|  
 |WebAuthenticationLoginUsingYourProvider|Zaloguj się przy użyciu konta usługi {0}|  
 |WebAuthenticationUserLimitNotice|Ta usługa osiągnęła maksymalną liczbę dozwolonych użytkowników. `<a href="mailto:{0}"\>contact the administrator</a\>` uaktualnić swoją usługę i ponownie Włącz rejestrację użytkownika.|  
 |WebAuthenticationUserLimitNoticeHeader|Rejestracja użytkownika została wyłączona|  
@@ -544,7 +544,7 @@ Obsługiwane są następujące opcje lokalizacji:
 |WebDevelopersSubscriptionRequested|Żądane na {0}|  
 |WebDevelopersSubscriptionRequestedState|Żądany|  
 |WebDevelopersSubscriptionTableNameHeader|Name (Nazwa)|  
-|WebDevelopersSubscriptionTableStateHeader|State|  
+|WebDevelopersSubscriptionTableStateHeader|Stan|  
 |WebDevelopersUsageStatisticsLink|Raporty analityczne|  
 |WebDevelopersYourSubscriptions|Twoje subskrypcje|  
 |SubscriptionPropertyLabelRequestedDate|Zażądano|  
@@ -584,7 +584,7 @@ Obsługiwane są następujące opcje lokalizacji:
 |TextboxLabelOrganizationName|Nazwa organizacji|  
 |SubscriptionStateActive|Aktywne|  
 |SubscriptionStateCancelled|Anulowane|  
-|SubscriptionStateExpired|Wygaśnięcie|  
+|SubscriptionStateExpired|Wygasłe|  
 |SubscriptionStateRejected|Odrzucono|  
 |SubscriptionStateRequested|Żądany|  
 |SubscriptionStateSuspended|Suspended|  

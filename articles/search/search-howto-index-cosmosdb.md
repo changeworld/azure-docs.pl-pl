@@ -10,11 +10,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/02/2020
 ms.openlocfilehash: d1723b6c5d56554fbff576f6a07e37455845bda4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391245"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283006"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Jak indeksować Cosmos DB danych przy użyciu indeksatora na platformie Azure Wyszukiwanie poznawcze 
 
@@ -261,7 +261,7 @@ Upewnij się, że schemat indeksu docelowego jest zgodny ze schematem źródłow
 | Tablice typów pierwotnych, na przykład ["a", "b", "c"] |Collection(Edm.String) |
 | Ciągi, które wyglądają jak daty |Edm.DateTimeOffset, Edm.String |
 | Obiekty GEOJSON, na przykład {"Type": "Point", "współrzędne": [Long, lat]} |Edm.GeographyPoint |
-| Inne obiekty JSON |N/D |
+| Inne obiekty JSON |Nie dotyczy |
 
 ### <a name="4---configure-and-run-the-indexer"></a>4 — Konfigurowanie i uruchamianie indeksatora
 

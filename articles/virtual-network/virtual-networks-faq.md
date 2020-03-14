@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
 ms.openlocfilehash: e45d5393833973889b28a95ec86b89593a091f99
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121804"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244812"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network często zadawane pytania
 
@@ -309,7 +309,7 @@ Tak. Tego samego zasobu sieci wirtualnej można użyć do agregowania dublowaneg
 
 Wybór sieci wirtualnej jest w wersji zapoznawczej. W trakcie okresu zapoznawczego nie ma umowy dotyczącej poziomu usług. Tej możliwości nie należy używać w przypadku obciążeń produkcyjnych. Gdy interfejs sieciowy maszyny wirtualnej jest włączony z konfiguracją TAP, te same zasoby na hoście platformy Azure przydzieleni do maszyny wirtualnej w celu wysłania ruchu produkcyjnego są używane do wykonywania funkcji dublowania i wysyłania dublowanych pakietów. Wybierz prawidłowy rozmiar maszyny wirtualnej z systemem [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub [Windows](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , aby upewnić się, że dla maszyny wirtualnej są dostępne wystarczające zasoby, które będą wysyłać ruch produkcyjny i wolumin dublowany.
 
-### <a name="is-accelerated-networking-for-linuxcreate-vm-accelerated-networking-climd-or-windowscreate-vm-accelerated-networking-powershellmd-supported-with-virtual-network-tap"></a>Czy jest to przyspieszone sieci dla systemu [Linux](create-vm-accelerated-networking-cli.md) lub [Windows](create-vm-accelerated-networking-powershell.md) obsługiwane z naciskiem sieci wirtualnej?
+### <a name="is-accelerated-networking-for-linux-or-windows-supported-with-virtual-network-tap"></a>Czy jest to przyspieszone sieci dla systemu [Linux](create-vm-accelerated-networking-cli.md) lub [Windows](create-vm-accelerated-networking-powershell.md) obsługiwane z naciskiem sieci wirtualnej?
 
 Można dodać konfigurację TAP w interfejsie sieciowym podłączonym do maszyny wirtualnej, która jest włączona za pomocą przyspieszonej sieci. Jednak wydajność i opóźnienie na maszynie wirtualnej mają wpływ na dodanie konfiguracji TAP, ponieważ nie jest to obecnie obsługiwane przez przyspieszone sieci platformy Azure.
 

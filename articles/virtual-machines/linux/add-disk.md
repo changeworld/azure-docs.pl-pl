@@ -9,11 +9,11 @@ ms.date: 06/13/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: a80a1fe21ba0b40aebf9e426e3d49f499c2d2a21
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78968136"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250415"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Dodawanie dysku do maszyny wirtualnej z systemem Linux
 W tym artykule opisano sposób dołączania dysku trwałego do maszyny wirtualnej, dzięki czemu można zachować dane, nawet jeśli maszyna wirtualna jest ponownie inicjowana z powodu konserwacji lub zmiany rozmiarów.

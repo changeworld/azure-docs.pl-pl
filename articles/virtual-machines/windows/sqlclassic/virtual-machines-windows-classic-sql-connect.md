@@ -17,11 +17,11 @@ ms.reviewer: jroth
 experimental: true
 experimental_id: d51f3cc6-753b-4e
 ms.openlocfilehash: 4627d9c4fa5c87e8e80ab80892062dabd77e9229
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389058"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249713"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>Nawiązywanie połączenia z maszyną wirtualną SQL Server na platformie Azure (wdrożenie klasyczne)
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "78389058"
 > 
 > 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 W tym temacie opisano sposób nawiązywania połączenia z wystąpieniem SQL Server uruchomionym na maszynie wirtualnej platformy Azure. Obejmuje ona niektóre [Ogólne scenariusze łączności](#connection-scenarios) , a następnie zawiera [szczegółowe instrukcje dotyczące konfigurowania łączności SQL Server na maszynie wirtualnej platformy Azure](#steps-for-configuring-sql-server-connectivity-in-an-azure-vm).
 
 > [!IMPORTANT] 

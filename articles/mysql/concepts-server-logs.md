@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.openlocfilehash: 9a3a58cab2d9673a4660967e3a11d7f88900e718
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359604"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269434"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>Wolne dzienniki zapytań w Azure Database for MySQL
 W Azure Database for MySQL dziennik wolnych zapytań jest dostępny dla użytkowników. Dostęp do dziennika transakcji nie jest obsługiwany. Dziennik wolnych zapytań może służyć do identyfikowania wąskich gardeł wydajności w celu rozwiązywania problemów.

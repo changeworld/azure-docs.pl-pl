@@ -10,12 +10,12 @@ ms.date: 01/02/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f592872e67ff8559060706ddb3b1e45839b6acaf
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 5f091341bee65d17b42e289bab1192142d095637
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665466"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136129"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>Skonfiguruj klucze zarządzane przez klienta za pomocą Azure Key Vault przy użyciu Azure Portal
 
@@ -23,7 +23,7 @@ ms.locfileid: "75665466"
 
 W tym artykule przedstawiono sposób konfigurowania Azure Key Vault za pomocą kluczy zarządzanych przez klienta przy użyciu [Azure Portal](https://portal.azure.com/). Aby dowiedzieć się, jak utworzyć magazyn kluczy przy użyciu Azure Portal, zobacz [Szybki Start: Ustawianie i pobieranie klucza tajnego z Azure Key Vault przy użyciu Azure Portal](../../key-vault/quick-create-portal.md).
 
-## <a name="configure-azure-key-vault"></a>Konfigurowanie usługi Azure Key Vault
+## <a name="configure-azure-key-vault"></a>Konfigurowanie Azure Key Vault
 
 Przy użyciu kluczy zarządzanych przez klienta z szyfrowaniem usługi Azure Storage wymagane są dwie właściwości w magazynie kluczy, **usuwanie nietrwałe** i **nie przeczyszczanie**. Te właściwości nie są domyślnie włączone, ale można je włączyć przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure dla nowego lub istniejącego magazynu kluczy.
 
@@ -94,7 +94,7 @@ Aby zmienić klucz używany do szyfrowania usługi Azure Storage, wykonaj nastę
 
 ## <a name="disable-customer-managed-keys"></a>Wyłącz klucze zarządzane przez klienta
 
-Po wyłączeniu kluczy zarządzanych przez klienta konto magazynu zostanie następnie zaszyfrowane przy użyciu kluczy zarządzanych przez firmę Microsoft. Aby wyłączyć klucze zarządzane przez klienta, wykonaj następujące kroki:
+Po wyłączeniu kluczy zarządzanych przez klienta konto magazynu będzie ponownie szyfrowane przy użyciu kluczy zarządzanych przez firmę Microsoft. Aby wyłączyć klucze zarządzane przez klienta, wykonaj następujące kroki:
 
 1. Przejdź do konta magazynu i Wyświetl ustawienia **szyfrowania** .
 1. Usuń zaznaczenie pola wyboru obok ustawienia **Użyj własnego klucza** .

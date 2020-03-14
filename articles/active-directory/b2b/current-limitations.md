@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b45277c89193c51f70836bcef8a21636fc9c7973
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: ffee01488ecf658ce02a20a41252aca19288667c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77196137"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263363"
 ---
 # <a name="limitations-of-azure-ad-b2b-collaboration"></a>Ograniczenia dotyczące współpracy B2B usługi Azure AD
 Azure Active Directory (Azure AD) Współpraca B2B jest obecnie objęta ograniczeniami opisanymi w tym artykule.
@@ -32,6 +32,21 @@ Usługa Azure AD B2B podlega limitom katalogów usługi Azure AD. Aby uzyskać s
 
 ## <a name="national-clouds"></a>Chmury narodowe
 [Chmury krajowe](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud) to fizyczne izolowane wystąpienia platformy Azure. Współpraca B2B nie jest obsługiwana w granicach chmury krajowej. Na przykład jeśli dzierżawa platformy Azure znajduje się w publicznej, globalnej chmurze, nie można zaprosić użytkownika, którego konto znajduje się w chmurze krajowej. Aby współpracować z użytkownikiem, poproś o podanie innego adresu e-mail lub Utwórz konto użytkownika w Twoim katalogu.
+
+## <a name="azure-us-government-clouds"></a>Chmury dla instytucji rządowych USA platformy Azure
+W chmurze platformy Azure dla instytucji rządowych USA współpraca B2B jest obecnie obsługiwana tylko między dzierżawcami, które są zarówno w chmurze platformy Azure USA, jak i obsługują współpracę B2B. Jeśli użytkownik zaprasza użytkownika w dzierżawie, który nie jest częścią chmury dla instytucji rządowych usługi Azure USA lub nie obsługuje jeszcze współpracy B2B, zaproszenie zakończy się niepowodzeniem lub użytkownik nie będzie mógł zrealizować zaproszenia. Aby uzyskać szczegółowe informacje o innych ograniczeniach, zobacz [Azure Active Directory — wersja Premium odmian P1 i P2](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2).
+
+### <a name="how-can-i-tell-if-b2b-collaboration-is-available-in-my-azure-us-government-tenant"></a>Jak mogę sprawdzić, czy w mojej dzierżawie platformy Azure USA jest dostępna współpraca B2B?
+Aby dowiedzieć się, czy dzierżawca w chmurze platformy Azure USA obsługuje współpracę B2B, wykonaj następujące czynności:
+
+1. W przeglądarce przejdź do następującego adresu URL, zastępując nazwę dzierżawcy *&lt;dzierżawca&gt;* :
+
+   `https://login.microsoftonline.com/<tenantname>/v2.0/.well-known/openid-configuration`
+
+2. Znajdź `"tenant_region_scope"` w odpowiedzi JSON:
+
+   - Jeśli zostanie wyświetlona `"tenant_region_scope":"USGOV”`, B2B jest obsługiwany.
+   - Jeśli `"tenant_region_scope":"USG"` pojawia się, B2B nie jest obsługiwana.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -5,11 +5,11 @@ ms.date: 11/20/2019
 ms.topic: article
 ms.reviewer: janders
 ms.openlocfilehash: 4a9a4f660dd171e65b600ec4cd66714ca476b091
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395247"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79252261"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Konfigurowanie węzłów transakcji usługi Azure łańcucha bloków Service
 
@@ -71,7 +71,7 @@ Aby udzielić kontroli dostępu usługi Azure AD do punktu końcowego:
     |---------|-------------|
     | Rola | Wybierz **właściciela**, **współautora**lub **czytelnika**.
     | Przypisywanie dostępu do | Wybierz pozycję **użytkownik, Grupa lub nazwa główna usługi Azure AD**.
-    | Wybierz | Wyszukaj użytkownika, grupę lub jednostkę usługi, którą chcesz dodać.
+    | Wybierz pozycję | Wyszukaj użytkownika, grupę lub jednostkę usługi, którą chcesz dodać.
 
 1. Wybierz pozycję **Zapisz** , aby dodać przypisanie roli.
 

@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 46c5e1ed0a1d0db100c3415c40f59d46f62b21f9
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388384"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258943"
 ---
 # <a name="azure-service-fabric-cli"></a>Interfejs wiersza polecenia usługi Azure Service Fabric
 
@@ -53,7 +53,7 @@ Aby uzyskać więcej informacji o wersjach interfejsu wiersza polecenia usługi 
 
 Dostępnych jest szereg sposobów instalowania narzędzia pip i środowiska Python na używanej platformie. Poniżej przedstawiono kroki konfiguracji narzędzia pip i środowiska Python 3 w najważniejszych systemach operacyjnych.
 
-### <a name="windows"></a>Windows
+### <a name="windows"></a>System Windows
 
 W przypadku systemów Windows 10, Windows Server 2016 i Windows Server 2012 R2 należy postępować zgodnie z oficjalnymi instrukcjami standardowej instalacji. Instalator środowiska Python domyślnie instaluje też narzędzie pip.
 

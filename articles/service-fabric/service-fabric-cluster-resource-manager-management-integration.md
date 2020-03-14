@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 50751c7d23797a597dc5e2d209c1e3eecf6f7a40
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386270"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258748"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Integracja z usługą Resource Manager za pomocą Service Fabric zarządzania klastrami
 Menedżer zasobów klastra Service Fabric nie ma na dysku uaktualnień w Service Fabric, ale jest to konieczne. Pierwszy sposób, w jaki klaster Menedżer zasobów pomaga zarządzać, to śledzenie żądanego stanu klastra i usług w nim. Klaster Menedżer zasobów wysyła raporty kondycji, gdy nie można umieścić klastra w żądanej konfiguracji. Na przykład jeśli nie ma wystarczającej pojemności, klaster Menedżer zasobów wysyła ostrzeżenia dotyczące kondycji i błędy wskazujące problem. Inna część integracji polega na tym, jak działają uaktualnienia. Klaster Menedżer zasobów nieco zmienia zachowanie podczas uaktualnień.  

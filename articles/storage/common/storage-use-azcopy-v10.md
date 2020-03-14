@@ -8,13 +8,13 @@ ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
 ms.openlocfilehash: c4e2681121a15e0b84a11c7cf35119c3f1b69f11
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443719"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268212"
 ---
-# <a name="get-started-with-azcopy"></a>Wprowadzenie do narzędzia AzCopy
+# <a name="get-started-with-azcopy"></a>Wprowadzenie do AzCopy
 
 AzCopy to narzędzie wiersza polecenia, które służy do kopiowania obiektów blob lub plików do lub z konta magazynu. Ten artykuł pomaga pobrać AzCopy, nawiązać połączenie z kontem magazynu, a następnie przenieść pliki.
 
@@ -63,11 +63,11 @@ Poświadczenia autoryzacji można podawać przy użyciu Azure Active Directory (
 
 Użyj tej tabeli jako przewodnika:
 
-| Typ usługi Storage | Obecnie obsługiwana metoda autoryzacji |
+| Typ magazynu | Obecnie obsługiwana metoda autoryzacji |
 |--|--|
 |**Blob Storage** | Usługa Azure AD & SAS |
 |**BLOB Storage (hierarchiczna przestrzeń nazw)** | Usługa Azure AD & SAS |
-|**File Storage** | Tylko SAS |
+|**Magazyn plików** | Tylko SAS |
 
 ### <a name="option-1-use-azure-active-directory"></a>Opcja 1: Użyj Azure Active Directory
 
@@ -247,7 +247,7 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 Aby dowiedzieć się więcej o tokenach SAS i sposobach ich uzyskania, zobacz [Używanie sygnatur dostępu współdzielonego (SAS)](https://docs.microsoft.com/azure/storage/common/storage-sas-overview).
 
-## <a name="transfer-files"></a>Transfer plików
+## <a name="transfer-files"></a>Pliki transferu
 
 Po uwierzytelnieniu tożsamości lub uzyskaniu tokenu SAS można rozpocząć transfer plików.
 

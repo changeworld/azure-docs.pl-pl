@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: 9f2b106df531dfdf26c2c83b765e3f7270a63df5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 845c53ec970777901ae8d1c0abf5032ac705d3e3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361735"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264923"
 ---
 # <a name="expressroute-faq"></a>Usługa ExpressRoute — często zadawane pytania
 
@@ -50,7 +50,15 @@ Tak. Obwód usługi ExpressRoute, po skonfigurowaniu pozwala jednocześnie dost�
 
 ### <a name="how-are-vnets-advertised-on-expressroute-private-peering"></a>Jak sieci wirtualnych są anonsowane w prywatnej komunikacji równorzędnej ExpressRoute?
 
-Brama ExpressRoute będzie ogłaszać *przestrzeń adresową* sieci wirtualnej platformy Azure, nie można dołączyć/wykluczyć na poziomie podsieci. Jest to zawsze anonsowana przestrzeń adresowa sieci wirtualnej. Ponadto jeśli używana jest Komunikacja równorzędna sieci wirtualnych, a w równorzędnej sieci wirtualnej jest włączona funkcja "Użyj bramy zdalnej", przestrzeń adresowa równorzędnej sieci wirtualnej również będzie anonsowana.
+Brama ExpressRoute będzie ogłaszać *przestrzenie adresowe* sieci wirtualnej platformy Azure, nie można uwzględnić/wykluczyć na poziomie podsieci. Jest to zawsze anonsowana przestrzeń adresowa sieci wirtualnej. Ponadto jeśli używana jest Komunikacja równorzędna sieci wirtualnych, a w równorzędnej sieci wirtualnej jest włączona funkcja "Użyj bramy zdalnej", przestrzeń adresowa równorzędnej sieci wirtualnej również będzie anonsowana.
+
+### <a name="how-many-prefixes-can-be-advertised-from-a-vnet-to-on-premises-on-expressroute-private-peering"></a>Ile prefiksów może być anonsowanych z sieci wirtualnej do lokalnej komunikacji równorzędnej ExpressRoute?
+
+Istnieje maksymalnie 200 prefiksów anonsowanych w pojedynczym połączeniu ExpressRoute lub za pośrednictwem komunikacji równorzędnej sieci wirtualnej przy użyciu funkcji tranzytu bramy. Na przykład jeśli w jednej sieci wirtualnej podłączonej do obwodu usługi ExpressRoute znajdują się przestrzenie adresowe 199, wszystkie 199 te prefiksy będą anonsowane w środowisku lokalnym. Alternatywnie, jeśli masz włączoną sieć wirtualną zezwalającą na tranzyt bramy z 1 przestrzenią adresową i 150 szprych sieci wirtualnych z włączoną opcją "Zezwalaj na bramę zdalną", Sieć wirtualna wdrożona z bramą będzie ogłaszać prefiksy 151 w środowisku lokalnym.
+
+### <a name="what-happens-if-i-exceed-the-prefix-limit-on-an-expressroute-connection"></a>Co się stanie w przypadku przekroczenia limitu prefiksu dla połączenia ExpressRoute?
+
+Połączenie między obwodem usługi ExpressRoute a bramą (i sieci wirtualnych komunikacji równorzędnej przy użyciu tranzytu bramy, jeśli ma zastosowanie) spowoduje przejście do trybu. Zostanie on ponownie ustanowiony, gdy limit prefiksu nie zostanie przekroczony.  
 
 ### <a name="can-i-filter-routes-coming-from-my-on-premises-network"></a>Czy można filtrować trasy pochodzące z sieci lokalnej?
 

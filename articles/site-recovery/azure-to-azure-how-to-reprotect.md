@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 818c053c22cfa47cac0f4f6a19349cf239d3cdec
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396862"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258124"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Ponowne włączanie ochrony maszyn wirtualnych platformy Azure zakończonych niepowodzeniem w regionie podstawowym
 

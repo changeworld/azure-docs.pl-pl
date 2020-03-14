@@ -4,12 +4,12 @@ description: W tym artykule dowiesz się, jak utworzyć magazyny Recovery Servic
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: eb7dcb4038260b1edac57a2163a1c0eae29ee452
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 5eac302668c2f322390b38475860c77f1cd40d72
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363796"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247958"
 ---
 # <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu Usług odzyskiwania
 
@@ -88,7 +88,15 @@ W przypadku tego procesu istnieją wpływ na ceny, w jakim znajduje się na pozi
 >Przed rozpoczęciem:
 >
 >- Zapoznaj się z [matrycą pomocy technicznej](backup-support-matrix.md#cross-region-restore) , aby zapoznać się z listą obsługiwanych typów i regionów zarządzanych.
->- Funkcja przywracania między regionami (CRR) jest obecnie dostępna tylko w następujących regionach: zachodnio-środkowe stany USA, zachodnie stany USA 2, Australia Wschodnia i Australia Południowo-Wschodnia. 
+>- Funkcja przywracania między regionami (CRR) jest obecnie dostępna tylko w następujących regionach: 
+>    - Zachodnio-środkowe stany USA
+>    - Zachodnie stany USA 2
+>    - Australia Wschodnia
+>    - Australia Południowo-Wschodnia
+>    - Japonia Wschodnia
+>    - Japonia Zachodnia
+>    - Azja Południowo-Wschodnia
+>    - Południowe Zjednoczone Królestwo
 >- CRR to funkcja wyboru poziomu magazynu dla dowolnego magazynu GRS (domyślnie wyłączona).
 >- Użyj następującego polecenia, aby dołączyć subskrypcję dla tej funkcji:<br>
 >  `Register-AzProviderFeature -FeatureName CrossRegionRestore -ProviderNamespace Microsoft.RecoveryServices`

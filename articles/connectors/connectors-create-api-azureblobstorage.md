@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 02/21/2020
 tags: connectors
 ms.openlocfilehash: eb943bfe36be10d1e95d569a5c1bf48563e909c1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358896"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247360"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Tworzenie obiektów blob i zarządzanie nimi w usłudze Azure Blob Storage przy użyciu Azure Logic Apps
 
@@ -121,10 +121,10 @@ W tym przykładzie pobierana jest tylko zawartość obiektu BLOB. Aby wyświetli
 
 1. Po wyświetleniu monitu o utworzenie połączenia podaj następujące informacje:
 
-   | Właściwość | Wymagane | Wartość | Opis |
+   | Właściwość | Wymagany | Wartość | Opis |
    |----------|----------|-------|-------------|
-   | **Nazwa połączenia** | Tak | <*nazwę połączenia*> | Nazwa do utworzenia dla połączenia |
-   | **Konto magazynu** | Tak | <*konto magazynu*> | Wybierz konto magazynu z listy. |
+   | **Nazwa połączenia** | Yes | <*nazwę połączenia*> | Nazwa do utworzenia dla połączenia |
+   | **Konto magazynu** | Yes | <*konto magazynu*> | Wybierz konto magazynu z listy. |
    ||||
 
    Na przykład:

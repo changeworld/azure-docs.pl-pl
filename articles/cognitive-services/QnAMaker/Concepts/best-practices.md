@@ -4,11 +4,11 @@ description: Używania tych najlepszych rozwiązań, aby usprawnić bazy wiedzy 
 ms.topic: conceptual
 ms.date: 02/15/2020
 ms.openlocfilehash: fb935aeed7b492a3a0c213d6d7166bd5d80144c1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389350"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220777"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Najlepsze rozwiązania wiedzy usługi QnA Maker
 
@@ -102,7 +102,7 @@ Domyślnie QnA Maker przeszukuje pytania i odpowiedzi. Jeśli chcesz przeszukiwa
 ### <a name="add-alternate-questions"></a>Dodaj alternatywne pytania
 [Alternatywne pytania](../How-To/edit-knowledge-base.md) zwiększają prawdopodobieństwo dopasowania do zapytania użytkownika. Alternatywne pytania są przydatne, gdy istnieje wiele sposobów, w którym może zostać wyświetlony monit tego samego zapytania. Może to obejmować zmiany zdania struktury i style programu word.
 
-|Oryginalne zapytanie|Alternatywnych zapytań|Zmiana|
+|Oryginalne zapytanie|Alternatywnych zapytań|Change|
 |--|--|--|
 |Jest parkowania dostępne?|Czy masz park samochodu?|Struktura zdania|
  |Witaj|Yo<br>Hej tam!|Styl programu Word lub żargonu|

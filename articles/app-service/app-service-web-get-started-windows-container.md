@@ -5,11 +5,11 @@ ms.topic: quickstart
 ms.date: 08/30/2019
 ms.custom: seodec18
 ms.openlocfilehash: 7901498772b8e746fb2c87a5237f06ab279e3b64
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374016"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79241472"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>Uruchamianie niestandardowego kontenera systemu Windows na platformie Azure (wersja zapoznawcza)
 

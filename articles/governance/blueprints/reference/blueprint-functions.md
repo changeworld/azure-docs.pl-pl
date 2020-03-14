@@ -4,11 +4,11 @@ description: Zawiera opis funkcji dostępnych do użycia z artefaktami strategii
 ms.date: 12/09/2019
 ms.topic: reference
 ms.openlocfilehash: 0aab2fe0511ccc11842d0e132a83d6e3f7fac27f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386254"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280679"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Funkcje do użycia z planami platformy Azure
 
@@ -34,9 +34,9 @@ Zwraca obiekt właściwości wypełniony przez dane wyjściowe artefaktów planu
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| artefaktname |Tak |ciąg |Nazwa artefaktu planu. |
+| artefaktname |Yes |ciąg |Nazwa artefaktu planu. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -123,9 +123,9 @@ Przykłady pobierania danych z przykładu _myTemplateArtifact_ są następujące
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| string1 |Tak |ciąg |Pierwsza wartość dla łączenia. |
+| string1 |Yes |ciąg |Pierwsza wartość dla łączenia. |
 | dodatkowe argumenty |Nie |ciąg |Dodatkowe wartości w kolejności sekwencyjnej dla łączenia |
 
 ### <a name="return-value"></a>Wartość zwracana
@@ -140,7 +140,7 @@ Funkcja Azure Blueprint różni się od funkcji szablonu Azure Resource Manager,
 
 `concat(parameters('organizationName'), '-vm')`
 
-## <a name="parameters"></a>parametry
+## <a name="parameters"></a>parameters
 
 `parameters(parameterName)`
 
@@ -148,9 +148,9 @@ Zwraca wartość parametru planu. Określona nazwa parametru musi być zdefiniow
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| parameterName |Tak |ciąg |Nazwa parametru do zwrócenia. |
+| parameterName |Yes |ciąg |Nazwa parametru do zwrócenia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -269,9 +269,9 @@ Zwraca obiekt, który reprezentuje określony artefakt grupy zasobów. W przeciw
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| Symbol zastępczy |Tak |ciąg |Nazwa symbolu zastępczego artefaktu grupy zasobów do zwrócenia. |
+| Symbol zastępczy |Yes |ciąg |Nazwa symbolu zastępczego artefaktu grupy zasobów do zwrócenia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 

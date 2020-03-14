@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: cherylmc
 ms.openlocfilehash: 375d2f9d3b455c0495c69f2b23d62b1ab6522710
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382387"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280887"
 ---
 # <a name="expressroute-connectivity-models"></a>Modele połączeń usługi ExpressRoute
 Połączenie między siecią lokalną i chmurą firmy Microsoft można utworzyć na trzy sposoby: [kolokacja CloudExchange](#CloudExchange), [połączenie Ethernet typu punkt-punkt](#Ethernet) i [łączność typu dowolna-dowolna (IPVPN)](#IPVPN). Dostawcy połączenia oferują po jednym modelu łączności lub większą ich liczbę. Można współpracować z dostawcą połączenia w celu wybrania najlepszego dla siebie modelu.

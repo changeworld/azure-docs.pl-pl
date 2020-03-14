@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: ff608cac9786ebc0d3908ce4d88fb501e621be6c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374388"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244019"
 ---
 # <a name="azure-api-management-page-controls"></a>Kontrolki strony API Management platformy Azure
 Usługa Azure API Management udostępnia następujące kontrolki do użycia w szablonach portalu dla deweloperów.  

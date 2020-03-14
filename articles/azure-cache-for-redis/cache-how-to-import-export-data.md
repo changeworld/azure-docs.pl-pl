@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
 ms.openlocfilehash: 29ad5ca6c9058b88a539c7a3bb8ace4d9a65083a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372052"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278092"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Importowanie i eksportowanie danych w pamięci podręcznej platformy Azure dla Redis
 Import/Export to pamięć podręczna platformy Azure do Redis operacji zarządzania danymi, która umożliwia importowanie danych do usługi Azure cache dla Redis lub eksportowanie danych z pamięci podręcznej platformy Azure dla Redis przez zaimportowanie i eksportowanie pamięci podręcznej platformy Azure dla migawki bazy danych Redis Database (RDB) z pamięci podręcznej Premium do obiektu BLOB na koncie usługi Azure Storage.

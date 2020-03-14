@@ -12,11 +12,11 @@ ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 01/25/2019
 ms.openlocfilehash: f718bc17b987926f4324635f096d5983acdb63fc
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359851"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256473"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>Replikacja do SQL Database jednej i puli baz danych
 

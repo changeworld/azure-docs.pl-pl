@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.openlocfilehash: c56c31bb6f56efb10808ce25b6b232089391e831
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358763"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270526"
 ---
 # <a name="data-operation-code-samples-for-azure-logic-apps"></a>Przykłady kodu operacji danych dla Azure Logic Apps
 
@@ -322,7 +322,7 @@ Aby wypróbować [przykładową akcję **Przeanalizuj dane JSON** ](../logic-app
 
 <a name="select-action-example"></a>
 
-## <a name="select"></a>Wybierz
+## <a name="select"></a>Wybierz pozycję
 
 Aby wypróbować [przykład działania **SELECT** ](../logic-apps/logic-apps-perform-data-operations.md#select-action), poniżej przedstawiono definicje akcji, których można użyć:
 

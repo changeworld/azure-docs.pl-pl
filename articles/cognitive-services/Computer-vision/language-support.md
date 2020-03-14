@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.openlocfilehash: a834c68119340d796f87971912a07fc0524a6d21
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365480"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220139"
 ---
 # <a name="language-support-for-computer-vision"></a>Obsługa języka dla przetwarzanie obrazów
 
@@ -46,7 +46,7 @@ OCR automatycznie wykrywa język materiału wejściowego, dlatego nie trzeba okr
 |Koreański | `ko` |✔ |
 |Norweski | `nb` |✔ |
 |Polski | `pl` |✔ |
-|portugalski | `pt` |✔ |
+|Portugalski | `pt` |✔ |
 |rumuński | `ro` |✔ |
 |Rosyjski | `ru` |✔ |
 |Serbski (Cyrylica) | `sr-Cyrl` |✔ |
@@ -65,7 +65,7 @@ Niektóre akcje interfejsu API [analizy obrazu](https://westus.dev.cognitive.mic
 |Chiński | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Polski | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|
 |Japoński | `ja`   | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
-|portugalski | `pt` | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
+|Portugalski | `pt` | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Hiszpański | `es`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 
 ## <a name="next-steps"></a>Następne kroki

@@ -10,11 +10,11 @@ ms.date: 02/07/2020
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: c2d1e8b4975be0657983192df00cc434da00a6f7
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78397200"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255407"
 ---
 # <a name="create-an-azure-storage-account"></a>Tworzenie konta usługi Azure Storage
 
@@ -97,7 +97,7 @@ az login
 
 # <a name="template"></a>[Szablon](#tab/template)
 
-Brak
+Nie dotyczy
 
 ---
 

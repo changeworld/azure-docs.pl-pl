@@ -8,11 +8,11 @@ ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: dcf6160c3650975431bf50fcf5bcba67f833a717
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381229"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268043"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Ustawienia serwera proxy i zapory usługi Azure File Sync
 Azure File Sync nawiązuje połączenie z serwerami lokalnymi w celu Azure Files, włączając synchronizację z obsługą wielolokacją i funkcjami obsługi warstw w chmurze. W związku z tym serwer lokalny musi być połączony z Internetem. Administrator IT musi zdecydować najlepszą ścieżkę serwera, aby uzyskać dostęp do usług Azure Cloud Services.
@@ -89,7 +89,7 @@ Jak wspomniano w poprzedniej sekcji, port 443 musi być otwarty dla ruchu wychod
 
 W poniższej tabeli opisano wymagane domeny do komunikacji:
 
-| NDES | Punkt końcowy chmury publicznej | Azure Government punkt końcowy | Sposób użycia |
+| Usługa | Punkt końcowy chmury publicznej | Azure Government punkt końcowy | Sposób użycia |
 |---------|----------------|---------------|------------------------------|
 | **Azure Resource Manager** | https://management.azure.com | https://management.usgovcloudapi.net | Każde wywołanie użytkownika (na przykład program PowerShell) przechodzi do/za pomocą tego adresu URL, łącznie z początkowym wywołaniem rejestracji serwera. |
 | **Azure Active Directory** | https://login.windows.net<br>https://login.microsoftonline.com | https://login.microsoftonline.us | Wywołania Azure Resource Manager muszą być wykonywane przez uwierzytelnionego użytkownika. Aby pomyślnie, ten adres URL jest używany do uwierzytelniania użytkowników. |
@@ -105,33 +105,33 @@ Jeśli &ast;. one.microsoft.com jest zbyt szeroki, można ograniczyć komunikacj
 
 Ze względu na ciągłość działania i odzyskiwanie po awarii (BCDR), możesz określić udziały plików platformy Azure na koncie magazynu globalnie nadmiarowy (GRS). W takim przypadku udziały plików platformy Azure zostaną przełączone w tryb failover do sparowanego regionu w przypadku długotrwałej awarii regionalnej. Azure File Sync używa tych samych regionalnych par jako magazynu. W przypadku korzystania z kont magazynu GRS należy włączyć dodatkowe adresy URL, aby umożliwić serwerowi komunikowanie się z sparowanym regionem Azure File Sync. Poniższa tabela wywołuje ten "sparowany region". Ponadto istnieje adres URL profilu Menedżera ruchu, który musi zostać włączony. Dzięki temu ruch sieciowy może być bezproblemowo kierowany do sparowanego regionu w przypadku przełączenia w tryb failover i nosi nazwę "adres URL odnajdywania" w poniższej tabeli.
 
-| Chmura  | Region | Podstawowy adres URL punktu końcowego | Region sparowany | Adres URL odnajdywania |
+| Chmurowa  | Region | Podstawowy adres URL punktu końcowego | Region sparowany | Adres URL odnajdywania |
 |--------|--------|----------------------|---------------|---------------|
-| Publiczne |Australia Wschodnia | https:\//kailani-aue.one.microsoft.com | Australia Południowo-Wschodnia | https:\//tm-kailani-aue.one.microsoft.com |
-| Publiczne |Australia Południowo-Wschodnia | https:\//kailani-aus.one.microsoft.com | Australia Wschodnia | https:\//tm-kailani-aus.one.microsoft.com |
-| Publiczne | Brazylia Południowa | https:\//brazilsouth01.afs.azure.net | Południowo-środkowe stany USA | https:\//tm-brazilsouth01.afs.azure.net |
-| Publiczne | Kanada Środkowa | https:\//kailani-cac.one.microsoft.com | Kanada Wschodnia | https:\//tm-kailani-cac.one.microsoft.com |
-| Publiczne | Kanada Wschodnia | https:\//kailani-cae.one.microsoft.com | Kanada Środkowa | https:\//tm-kailani.cae.one.microsoft.com |
-| Publiczne | Indie Środkowe | https:\//kailani-cin.one.microsoft.com | Indie Południowe | https:\//tm-kailani-cin.one.microsoft.com |
-| Publiczne | Środkowe stany USA | https:\//kailani-cus.one.microsoft.com | Wschodnie stany USA 2 | https:\//tm-kailani-cus.one.microsoft.com |
-| Publiczne | Azja Wschodnia | https:\//kailani11.one.microsoft.com | Azja Południowo-Wschodnia | https:\//tm-kailani11.one.microsoft.com |
-| Publiczne | Wschodnie stany USA | https:\//kailani1.one.microsoft.com | Zachodnie stany USA | https:\//tm-kailani1.one.microsoft.com |
-| Publiczne | Wschodnie stany USA 2 | https:\//kailani-ess.one.microsoft.com | Środkowe stany USA | https:\//tm-kailani-ess.one.microsoft.com |
-| Publiczne | Japonia Wschodnia | https:\//japaneast01.afs.azure.net | Japonia Zachodnia | https:\//tm-japaneast01.afs.azure.net |
-| Publiczne | Japonia Zachodnia | https:\//japanwest01.afs.azure.net | Japonia Wschodnia | https:\//tm-japanwest01.afs.azure.net |
-| Publiczne | Korea Środkowa | https:\//koreacentral01.afs.azure.net/ | Korea Południowa | https:\//tm-koreacentral01.afs.azure.net/ |
-| Publiczne | Korea Południowa | https:\//koreasouth01.afs.azure.net/ | Korea Środkowa | https:\//tm-koreasouth01.afs.azure.net/ |
-| Publiczne | Północno-środkowe stany USA | https:\//northcentralus01.afs.azure.net | Południowo-środkowe stany USA | https:\//tm-northcentralus01.afs.azure.net |
-| Publiczne | Europa Północna | https:\//kailani7.one.microsoft.com | Europa Zachodnia | https:\//tm-kailani7.one.microsoft.com |
-| Publiczne | Południowo-środkowe stany USA | https:\//southcentralus01.afs.azure.net | Północno-środkowe stany USA | https:\//tm-southcentralus01.afs.azure.net |
-| Publiczne | Indie Południowe | https:\//kailani-sin.one.microsoft.com | Indie Środkowe | https:\//tm-kailani-sin.one.microsoft.com |
-| Publiczne | Azja Południowo-Wschodnia | https:\//kailani10.one.microsoft.com | Azja Wschodnia | https:\//tm-kailani10.one.microsoft.com |
-| Publiczne | Południowe Zjednoczone Królestwo | https:\//kailani-uks.one.microsoft.com | Zachodnie Zjednoczone Królestwo | https:\//tm-kailani-uks.one.microsoft.com |
-| Publiczne | Zachodnie Zjednoczone Królestwo | https:\//kailani-ukw.one.microsoft.com | Południowe Zjednoczone Królestwo | https:\//tm-kailani-ukw.one.microsoft.com |
-| Publiczne | Zachodnio-środkowe stany USA | https:\//westcentralus01.afs.azure.net | Zachodnie stany USA 2 | https:\//tm-westcentralus01.afs.azure.net |
-| Publiczne | Europa Zachodnia | https:\//kailani6.one.microsoft.com | Europa Północna | https:\//tm-kailani6.one.microsoft.com |
-| Publiczne | Zachodnie stany USA | https:\//kailani.one.microsoft.com | Wschodnie stany USA | https:\//tm-kailani.one.microsoft.com |
-| Publiczne | Zachodnie stany USA 2 | https:\//westus201.afs.azure.net | Zachodnio-środkowe stany USA | https:\//tm-westus201.afs.azure.net |
+| Public |Australia Wschodnia | https:\//kailani-aue.one.microsoft.com | Australia Południowo-Wschodnia | https:\//tm-kailani-aue.one.microsoft.com |
+| Public |Australia Południowo-Wschodnia | https:\//kailani-aus.one.microsoft.com | Australia Wschodnia | https:\//tm-kailani-aus.one.microsoft.com |
+| Public | Brazylia Południowa | https:\//brazilsouth01.afs.azure.net | Południowo-środkowe stany USA | https:\//tm-brazilsouth01.afs.azure.net |
+| Public | Kanada Środkowa | https:\//kailani-cac.one.microsoft.com | Kanada Wschodnia | https:\//tm-kailani-cac.one.microsoft.com |
+| Public | Kanada Wschodnia | https:\//kailani-cae.one.microsoft.com | Kanada Środkowa | https:\//tm-kailani.cae.one.microsoft.com |
+| Public | Indie Środkowe | https:\//kailani-cin.one.microsoft.com | Indie Południowe | https:\//tm-kailani-cin.one.microsoft.com |
+| Public | Środkowe stany USA | https:\//kailani-cus.one.microsoft.com | Wschodnie stany USA 2 | https:\//tm-kailani-cus.one.microsoft.com |
+| Public | Azja Wschodnia | https:\//kailani11.one.microsoft.com | Azja Południowo-Wschodnia | https:\//tm-kailani11.one.microsoft.com |
+| Public | Wschodnie stany USA | https:\//kailani1.one.microsoft.com | Zachodnie stany USA | https:\//tm-kailani1.one.microsoft.com |
+| Public | Wschodnie stany USA 2 | https:\//kailani-ess.one.microsoft.com | Środkowe stany USA | https:\//tm-kailani-ess.one.microsoft.com |
+| Public | Japonia Wschodnia | https:\//japaneast01.afs.azure.net | Japonia Zachodnia | https:\//tm-japaneast01.afs.azure.net |
+| Public | Japonia Zachodnia | https:\//japanwest01.afs.azure.net | Japonia Wschodnia | https:\//tm-japanwest01.afs.azure.net |
+| Public | Korea Środkowa | https:\//koreacentral01.afs.azure.net/ | Korea Południowa | https:\//tm-koreacentral01.afs.azure.net/ |
+| Public | Korea Południowa | https:\//koreasouth01.afs.azure.net/ | Korea Środkowa | https:\//tm-koreasouth01.afs.azure.net/ |
+| Public | Północno-środkowe stany USA | https:\//northcentralus01.afs.azure.net | Południowo-środkowe stany USA | https:\//tm-northcentralus01.afs.azure.net |
+| Public | Europa Północna | https:\//kailani7.one.microsoft.com | Europa Zachodnia | https:\//tm-kailani7.one.microsoft.com |
+| Public | Południowo-środkowe stany USA | https:\//southcentralus01.afs.azure.net | Północno-środkowe stany USA | https:\//tm-southcentralus01.afs.azure.net |
+| Public | Indie Południowe | https:\//kailani-sin.one.microsoft.com | Indie Środkowe | https:\//tm-kailani-sin.one.microsoft.com |
+| Public | Azja Południowo-Wschodnia | https:\//kailani10.one.microsoft.com | Azja Wschodnia | https:\//tm-kailani10.one.microsoft.com |
+| Public | Południowe Zjednoczone Królestwo | https:\//kailani-uks.one.microsoft.com | Zachodnie Zjednoczone Królestwo | https:\//tm-kailani-uks.one.microsoft.com |
+| Public | Zachodnie Zjednoczone Królestwo | https:\//kailani-ukw.one.microsoft.com | Południowe Zjednoczone Królestwo | https:\//tm-kailani-ukw.one.microsoft.com |
+| Public | Zachodnio-środkowe stany USA | https:\//westcentralus01.afs.azure.net | Zachodnie stany USA 2 | https:\//tm-westcentralus01.afs.azure.net |
+| Public | Europa Zachodnia | https:\//kailani6.one.microsoft.com | Europa Północna | https:\//tm-kailani6.one.microsoft.com |
+| Public | Zachodnie stany USA | https:\//kailani.one.microsoft.com | Wschodnie stany USA | https:\//tm-kailani.one.microsoft.com |
+| Public | Zachodnie stany USA 2 | https:\//westus201.afs.azure.net | Zachodnio-środkowe stany USA | https:\//tm-westus201.afs.azure.net |
 | Instytucje rządowe | US Gov Arizona | https:\//usgovarizona01.afs.azure.us | US Gov Teksas | https:\//tm-usgovarizona01.afs.azure.us |
 | Instytucje rządowe | US Gov Teksas | https:\//usgovtexas01.afs.azure.us | US Gov Arizona | https:\//tm-usgovtexas01.afs.azure.us |
 

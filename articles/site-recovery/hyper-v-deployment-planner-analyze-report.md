@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 10/21/2019
 ms.author: mayg
 ms.openlocfilehash: 0d39f763d3cdc90f89e0bcd17d0facc67551ffc0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78385136"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257903"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Analizowanie raportu Planista wdrażania usługi Azure Site Recovery
 W tym artykule omówiono arkusze zawarte w raporcie programu Excel wygenerowanym przez Planistę wdrażania usługi Azure Site Recovery w przypadku scenariusza dotyczącego funkcji Hyper-V na platformie Azure.

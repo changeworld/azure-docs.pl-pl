@@ -10,11 +10,11 @@ author: likebupt
 ms.author: keli19
 ms.date: 12/12/2019
 ms.openlocfilehash: c81d4db5798c15327e06471f1cb0da4841bd61b2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396246"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283448"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Debugowanie i rozwiązywanie problemów z potokami uczenia maszynowego
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

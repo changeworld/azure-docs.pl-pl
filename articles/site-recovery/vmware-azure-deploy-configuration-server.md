@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
 ms.openlocfilehash: 5209dab5e0934cc98bb1334a1565cc13998a7d2e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75376294"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257383"
 ---
 # <a name="deploy-a-configuration-server"></a>Wdrażanie serwera konfiguracji
 
@@ -44,7 +44,7 @@ Użytkownik musi mieć jeden z następujących uprawnień ustawionych w Azure Ac
 2. Jeśli nie można przypisać roli dewelopera aplikacji, upewnij się, że flaga **Użytkownicy mogą rejestrować aplikacje** **, tak aby** użytkownik mógł utworzyć tożsamość. Aby włączyć te uprawnienia:
     - Zaloguj się do Portalu Azure.
     - Przejdź do pozycji **Azure Active Directory** > **Ustawienia użytkownika**.
-    - Wobszarze rejestracje aplikacji **Użytkownicy mogą rejestrować aplikacje**, a następnie wybrać opcję **tak**.
+    - W **App registrations**obszarze rejestracje aplikacji **Użytkownicy mogą rejestrować aplikacje**, a następnie wybrać opcję **tak**.
 
       ![AD_application_permission platformy Azure](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
 

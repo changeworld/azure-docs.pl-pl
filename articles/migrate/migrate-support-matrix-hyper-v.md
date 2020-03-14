@@ -4,17 +4,17 @@ description: Dowiedz się więcej o obsłudze oceny funkcji Hyper-V za pomocą A
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.openlocfilehash: 9c1228992d71e56b9118e88967478e619c14959a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76834471"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245813"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Macierz obsługi dla oceny funkcji Hyper-V
 
 W tym artykule opisano ustawienia i ograniczenia dotyczące oceny maszyn wirtualnych funkcji Hyper-V za pomocą [Azure Migrate: Ocena serwera](migrate-services-overview.md#azure-migrate-server-assessment-tool) . Jeśli szukasz informacji na temat migrowania maszyn wirtualnych funkcji Hyper-V do platformy Azure, zapoznaj się z [matrycą obsługi migracji](migrate-support-matrix-hyper-v-migration.md).
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Aby ocenić maszyny lokalne na potrzeby migracji na platformę Azure z tego artykułu, należy dodać Azure Migrate: Narzędzie do oceny serwera do projektu Azure Migrate. Należy wdrożyć [urządzenie Azure Migrate](migrate-appliance.md). Urządzenie stale odnajduje maszyny lokalne i wysyła dane dotyczące konfiguracji i wydajności na platformę Azure. Po odnajdywaniu maszyn można zebrać odnalezione maszyny do grup i uruchomić ocenę dla grupy.
 
@@ -25,7 +25,7 @@ Aby ocenić maszyny lokalne na potrzeby migracji na platformę Azure z tego arty
 --- | ---
 **Limity oceny**| Odkrywaj i oceniaj do 35 000 maszyn wirtualnych funkcji Hyper-V w jednym [projekcie](migrate-support-matrix.md#azure-migrate-projects).
 **Limity projektu** | Możesz utworzyć wiele projektów w ramach subskrypcji platformy Azure. Projekt może obejmować maszyny wirtualne VMware, maszyny wirtualne funkcji Hyper-V i serwery fizyczne oraz limity oceny.
-**Discovery** (Odnajdywanie) | Urządzenie Azure Migrate może odnajdywać maksymalnie 5000 maszyn wirtualnych funkcji Hyper-V.<br/><br/> Urządzenie może połączyć się z maksymalnie 300 hostami funkcji Hyper-V.
+**Odnajdowa** | Urządzenie Azure Migrate może odnajdywać maksymalnie 5000 maszyn wirtualnych funkcji Hyper-V.<br/><br/> Urządzenie może połączyć się z maksymalnie 300 hostami funkcji Hyper-V.
 **Ocena** | Można dodać do 35 000 maszyn w jednej grupie.<br/><br/> W ramach jednej oceny można ocenić do 35 000 maszyn wirtualnych.
 
 [Dowiedz się więcej](concepts-assessment-calculation.md) na temat ocen.
@@ -62,7 +62,7 @@ Azure Migrate używa [urządzenia Azure Migrate](migrate-appliance.md) do odnajd
 
 Poniższa tabela zawiera podsumowanie wymagań dotyczących portów dla oceny.
 
-**urządzenia** | **Połączenie**
+**Pliku** | **Połączenie**
 --- | ---
 **Wprowadzony** | Połączenia przychodzące na porcie TCP 3389, aby zezwolić na połączenia pulpitu zdalnego z urządzeniem.<br/> Połączenia przychodzące na porcie 44368 do zdalnego dostępu do aplikacji do zarządzania urządzeniami przy użyciu adresu URL: ``` https://<appliance-ip-or-name>:44368 ```<br/> Połączenia wychodzące na portach 443 (HTTPS), 5671 i 5672 (AMQP) do wysyłania metadanych odnajdywania i wydajności do Azure Migrate.
 **Host/klaster funkcji Hyper-V** | Połączenia przychodzące na portach usługi WinRM 5985 (HTTP) i 5986 (HTTPS) do ściągania metadanych konfiguracji i wydajności maszyn wirtualnych funkcji Hyper-V przy użyciu sesji model wspólnych informacji (CIM).

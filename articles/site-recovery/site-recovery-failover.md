@@ -5,11 +5,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/10/2019
 ms.openlocfilehash: 514f1d6631a70301589943ddb7920ca3c9c46062
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363017"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257695"
 ---
 # <a name="run-a-failover-from-on-premises-to-azure"></a>Uruchamianie trybu failover w środowisku lokalnym na platformie Azure
 

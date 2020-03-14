@@ -4,14 +4,14 @@ description: Dowiedz się, jak włączyć uwierzytelnianie oparte na tożsamośc
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 03/11/2020
 ms.author: rogarana
-ms.openlocfilehash: 1f904435622c8128810bb0e381308c8a308dd360
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: d9d2e06cc3beae8a7bb8ea1b4eee15fb1641ddd4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128575"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255225"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>Włącz uwierzytelnianie Active Directory za pośrednictwem protokołu SMB dla udziałów plików platformy Azure
 
@@ -129,7 +129,8 @@ Connect-AzAccount
 #Select the target subscription for the current session
 Select-AzSubscription -SubscriptionId "<your-subscription-id-here>"
 
-#Register the target storage account with your active directory environment under the target OU
+#Register the target storage account with your active directory environment under the target OU (for example: "OU=ComputersOU,DC=prod,DC=corp,DC=contoso,DC=com")
+#You can choose to create the identity that represents the storage account as either a Service Logon Account or Computer Account, depends on the AD permission you have and preference. 
 join-AzStorageAccountForAuth -ResourceGroupName "<resource-group-name-here>" -Name "<storage-account-name-here>" -DomainAccountType "<ServiceLogonAccount|ComputerAccount>" -OrganizationalUnitName "<ou-name-here>"
 ```
 
@@ -150,7 +151,7 @@ Po utworzeniu tego klucza Utwórz konto usługi lub komputera w jednostce organi
 
 Jeśli jednostka organizacyjna wymusza wygaśnięcie hasła, należy zaktualizować hasło przed maksymalnym okresem ważności hasła, aby zapobiec błędom uwierzytelniania podczas uzyskiwania dostępu do udziałów plików platformy Azure. Aby uzyskać szczegółowe informacje, zobacz temat [Aktualizowanie hasła konta usługi AD](#update-ad-account-password) .
 
-Zachowaj identyfikator SID nowo utworzonego konta, który będzie potrzebny do następnego kroku.
+Zachowaj identyfikator SID nowo utworzonego konta, który będzie potrzebny do następnego kroku. Utworzona tożsamość usługi AD, która reprezentuje konto magazynu, nie musi być synchronizowana z usługą Azure AD.
 
 ##### <a name="c-enable-the-feature-on-your-storage-account"></a>c. Włącz funkcję na koncie magazynu
 

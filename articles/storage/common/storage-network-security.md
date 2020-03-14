@@ -9,12 +9,12 @@ ms.date: 01/21/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 7d3b580a939d207bbcc410e13555cdaa28067f87
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
-ms.translationtype: MT
+ms.openlocfilehash: 03f383bd6e44a55388e0bef6a38c4a1880d6f044
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250979"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268264"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurowanie zapór usługi Azure Storage i sieci wirtualnych
 
@@ -393,7 +393,7 @@ Ustawienie **Zezwalaj na zaufane usługi firmy Microsoft...** umożliwia równie
 | Azure Data Factory             | Microsoft.DataFactory/factories        | Zezwala na dostęp do kont magazynu za pomocą środowiska uruchomieniowego ADF. |
 | Azure Data Share               | Microsoft. dataudział/konta           | Zezwala na dostęp do kont magazynu za poorednictwem udziału danych. |
 | Azure Logic Apps               | Microsoft.Logic/workflows              | Umożliwia aplikacjom logiki dostęp do kont magazynu. [Dowiedz się więcej](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity.md). |
-| Usługa Azure Machine Learning | Microsoft.MachineLearningServices      | Autoryzowane Azure Machine Learning obszary robocze zapisują dane wyjściowe eksperymentu, modele i dzienniki w usłudze BLOB Storage. [Dowiedz się więcej](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace). | 
+| Usługa Azure Machine Learning | Microsoft.MachineLearningServices      | Autoryzowane Azure Machine Learning obszary robocze zapisują dane wyjściowe eksperymentu, modele i dzienniki w usłudze BLOB Storage i odczytywane danych. [Dowiedz się więcej](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace). | 
 | Azure SQL Data Warehouse       | Microsoft.Sql                          | Umożliwia importowanie i eksportowanie danych z określonych wystąpień SQL Database przy użyciu bazy. [Dowiedz się więcej](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview). |
 | Usługa Azure Stream Analytics         | Microsoft.StreamAnalytics             | Umożliwia zapisanie danych z zadania przesyłania strumieniowego w usłudze BLOB Storage. Ta funkcja jest obecnie dostępna w wersji zapoznawczej. [Dowiedz się więcej](/azure/stream-analytics/blob-output-managed-identity). |
 | Azure Synapse Analytics        | Microsoft. Synapse/obszary robocze          | Umożliwia dostęp do danych w usłudze Azure Storage z Synapse Analytics. |

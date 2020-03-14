@@ -12,11 +12,11 @@ ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 3/11/2020
 ms.openlocfilehash: 5c36dbfbe63314ef97edfa3dfbaae34667db002d
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79129005"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268706"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database bezserwerowe
 
@@ -68,7 +68,7 @@ W poniższej tabeli zestawiono różnice między warstwą obliczeniową bezserwe
 |**Wzorzec użycia bazy danych**| Sporadyczne, nieprzewidywalne użycie z niższym średnim wykorzystaniem obliczeń w czasie. |  Bardziej regularne wzorce użycia z wyższym średnim wykorzystaniem obliczeń w czasie lub wielu bazach danych korzystających z pul elastycznych.|
 | **Nakład pracy zarządzania wydajnością** |Dołu|Większych|
 |**Skalowanie obliczeniowe**|Automatyczny|Ręcznie|
-|**Czas odpowiedzi obliczeń**|Poniżej nieaktywnych okresów|Natychmiastowe|
+|**Czas odpowiedzi obliczeń**|Poniżej nieaktywnych okresów|Pośredni|
 |**Stopień szczegółowości rozliczeń**|Na sekundę|Za godzinę|
 
 ## <a name="purchasing-model-and-service-tier"></a>Model zakupów i warstwa usług

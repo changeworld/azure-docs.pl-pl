@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/12/2019
-ms.openlocfilehash: f009b438cb0dc227289d65604d89c11fd382b675
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.date: 03/12/2020
+ms.openlocfilehash: dce1697ccb40c67f8628c220799018a673be8e09
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356286"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246307"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopiowanie i Przekształcanie danych w usłudze Azure Synapse Analytics (dawniej Azure SQL Data Warehouse) za pomocą Azure Data Factory 
 
@@ -222,8 +222,8 @@ Następujące właściwości są obsługiwane dla zestawu danych usługi Azure S
 | Właściwość  | Opis                                                  | Wymagany                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | Właściwość **Type** zestawu danych musi być ustawiona na wartość **AzureSqlDWTable**. | Yes                         |
-| schema | Nazwa schematu. |Brak źródła tak dla ujścia  |
-| table | Nazwa tabeli/widoku. |Brak źródła tak dla ujścia  |
+| schemat | Nazwa schematu. |Brak źródła tak dla ujścia  |
+| tabela | Nazwa tabeli/widoku. |Brak źródła tak dla ujścia  |
 | tableName | Nazwa tabeli/widoku ze schematem. Ta właściwość jest obsługiwana w celu zapewnienia zgodności z poprzednimi wersjami. W przypadku nowych obciążeń Użyj `schema` i `table`. | Brak źródła tak dla ujścia |
 
 #### <a name="dataset-properties-example"></a>Przykład właściwości zestawu danych
@@ -261,6 +261,7 @@ Aby skopiować dane z usługi Azure Synapse Analytics, ustaw właściwość **Ty
 | sqlReaderQuery               | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Przykład: `select * from MyTable`. | Nie       |
 | sqlReaderStoredProcedureName | Nazwa procedury składowanej, która odczytuje dane z tabeli źródłowej. Ostatnią instrukcję SQL musi być instrukcja SELECT w procedurze składowanej. | Nie       |
 | storedProcedureParameters    | Parametry procedury składowanej.<br/>Dozwolone wartości to pary nazw ani wartości. Nazwy i wielkość liter w wyrazie parametry muszą być zgodne, nazwy i wielkość liter w wyrazie parametrów procedury składowanej. | Nie       |
+| isolationLevel | Określa zachowanie blokowania transakcji dla źródła SQL. Dozwolone wartości to: **READCOMMITTED** (wartość domyślna), **READUNCOMMITTED**, **REPEATABLEREAD**, **Serializable**, **migawka**. Aby uzyskać więcej informacji, zapoznaj się z [tym dokumentem](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel) . | Nie |
 
 **Przykład: użycie zapytania SQL**
 
@@ -765,7 +766,7 @@ W przypadku kopiowania danych z programu lub do usługi Azure Synapse Analytics 
 | smalldatetime                         | DateTime                       |
 | smallint                              | Int16                          |
 | smallmoney                            | Dziesiętna                        |
-| time                                  | TimeSpan                       |
+| time                                  | przedział_czasu                       |
 | tinyint                               | Bajtów                           |
 | uniqueidentifier                      | Guid                           |
 | varbinary                             | Byte[]                         |

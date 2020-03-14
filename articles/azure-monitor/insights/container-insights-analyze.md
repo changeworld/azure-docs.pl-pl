@@ -4,11 +4,11 @@ description: W tym artykule opisano sposób wyświetlania i analizowania wydajno
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: f57f8982b2aa045156e6f48316610137260d6597
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78385560"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79275479"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Monitorowanie wydajności klastra Kubernetes za pomocą Azure Monitor dla kontenerów
 
@@ -75,7 +75,7 @@ W poniższej tabeli przedstawiono podział obliczeń kontrolujących Stany kondy
 | |Nieznane |Jeśli nie zostały zgłoszone w ciągu ostatnich 30 minut |  
 |**System pod**| | |  
 | |W dobrej kondycji |100% |
-| |Ostrzeżenie |N/D |
+| |Ostrzeżenie |Nie dotyczy |
 | |Krytyczny |< 100% |
 | |Nieznane |Jeśli nie zostały zgłoszone w ciągu ostatnich 30 minut |
 |**Node** | | |

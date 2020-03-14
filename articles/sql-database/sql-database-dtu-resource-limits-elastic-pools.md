@@ -12,11 +12,11 @@ ms.author: sachinp
 ms.reviewer: carlrab
 ms.date: 03/14/2019
 ms.openlocfilehash: 3f6bbef8f274c5efb99d5b98961450aa7b001527
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359935"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256343"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>Limity zasobów dla pul elastycznych przy użyciu modelu zakupu jednostek DTU
 

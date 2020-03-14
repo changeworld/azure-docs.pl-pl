@@ -9,14 +9,14 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova, danil
-ms.date: 02/10/2020
+ms.date: 03/11/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: d3e631fae4899fffafad9bd140abaae4fb170624
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 8c995a40e621f7155ad0741004d10b1146523489
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360013"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256057"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Różnice w języku T-SQL wystąpienia zarządzanego, ograniczenia i znane problemy
 
@@ -65,7 +65,6 @@ Ograniczenia:
 
 - Z wystąpieniem zarządzanym można utworzyć kopię zapasową bazy danych wystąpienia w usłudze z maksymalnie 32 pasków, co wystarcza dla baz danych o pojemności do 4 TB w przypadku użycia kompresji kopii zapasowej.
 - Nie można wykonać `BACKUP DATABASE ... WITH COPY_ONLY` w bazie danych, która jest zaszyfrowana za pomocą Transparent Data Encryption zarządzanej przez usługę (TDE). TDE zarządzane przez usługę wymusza szyfrowanie kopii zapasowych przy użyciu wewnętrznego klucza TDE. Nie można wyeksportować klucza, dlatego nie można przywrócić kopii zapasowej. Użyj funkcji automatycznego tworzenia kopii zapasowych oraz przywracania do punktu w czasie lub zamiast tego użyj [zarządzanego przez klienta (BYOK) TDE](transparent-data-encryption-azure-sql.md#customer-managed-transparent-data-encryption---bring-your-own-key) . Można również wyłączyć szyfrowanie bazy danych.
-- Ręczne tworzenie kopii zapasowych w usłudze Azure Blob Storage jest obsługiwane tylko w przypadku [kont BlockBlobStorage](/azure/storage/common/storage-account-overview#types-of-storage-accounts).
 - Maksymalny rozmiar paska tworzenia kopii zapasowej przy użyciu polecenia `BACKUP` w wystąpieniu zarządzanym wynosi 195 GB, czyli maksymalny rozmiar obiektu BLOB. Zwiększ liczbę pasków w poleceniu kopii zapasowej, aby zmniejszyć rozmiar poszczególnych pasków i pozostać w tym limicie.
 
     > [!TIP]
@@ -140,8 +139,8 @@ Wystąpienie zarządzane nie może uzyskać dostępu do plików, więc nie możn
     Wystąpienie zarządzane obsługuje główne bazy danych usługi Azure AD przy użyciu składni `CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER`. Ta funkcja jest również znana jako użytkownicy zawartej bazy danych usługi Azure AD.
 
 - Nazwy logowania systemu Windows utworzone za pomocą składni `CREATE LOGIN ... FROM WINDOWS` nie są obsługiwane. Użyj Azure Active Directory logowania i użytkowników.
-- Użytkownik usługi Azure AD, który utworzył wystąpienie, ma [nieograniczone uprawnienia administratora](sql-database-manage-logins.md#unrestricted-administrative-accounts).
-- Użytkownicy niebędący administratorami na poziomie bazy danych usługi Azure AD mogą być tworzone przy użyciu składni `CREATE USER ... FROM EXTERNAL PROVIDER`. Zobacz [Tworzenie użytkownika... OD dostawcy zewnętrznego](sql-database-manage-logins.md#non-administrator-users).
+- Użytkownik usługi Azure AD, który utworzył wystąpienie, ma [nieograniczone uprawnienia administratora](sql-database-manage-logins.md).
+- Użytkownicy niebędący administratorami na poziomie bazy danych usługi Azure AD mogą być tworzone przy użyciu składni `CREATE USER ... FROM EXTERNAL PROVIDER`. Zobacz [Tworzenie użytkownika... OD dostawcy zewnętrznego](sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities).
 - Nazwy główne serwera usługi Azure AD obsługują funkcje SQL tylko w ramach jednego wystąpienia zarządzanego. Funkcje, które wymagają interakcji między wystąpieniami, niezależnie od tego, czy znajdują się w tej samej dzierżawie usługi Azure AD, czy w różnych dzierżawach, nie są obsługiwane dla użytkowników usługi Azure AD. Przykłady takich funkcji to:
 
   - Replikacja transakcyjna bazy danych SQL.
@@ -470,6 +469,7 @@ Broker usług dla wielu wystąpień nie jest obsługiwany:
   - `allow polybase export`
   - `allow updates`
   - `filestream_access_level`
+  - `remote access`
   - `remote data archive`
   - `remote proc trans`
 - `sp_execute_external_scripts` nie jest obsługiwana. Zobacz [sp_execute_external_scripts](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples).

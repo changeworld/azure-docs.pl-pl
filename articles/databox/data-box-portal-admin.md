@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 08/07/2019
 ms.author: alkohli
 ms.openlocfilehash: 581f95bd813445d2cc9bd83d91917ea83f0bf04f
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987466"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259996"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Użyj Azure Portal, aby administrować Azure Data Box i Azure Data Box Heavy
 
@@ -65,9 +65,9 @@ Można usuwać tylko zamówienia, które zostały zakończone lub anulowane. Aby
 
     ![Usuwanie zamówienia usługi Data Box 1](media/data-box-portal-admin/delete-order1.png)
 
-3. Gdy pojawi się monit o potwierdzenie usunięcia zamówienia, podaj nazwę zamówienia. Kliknij przycisk **Usuń**.
+3. Gdy pojawi się monit o potwierdzenie usunięcia zamówienia, podaj nazwę zamówienia. Kliknij pozycję **Usuń**.
 
-## <a name="download-shipping-label"></a>Pobierz etykietę wysyłkową
+## <a name="download-shipping-label"></a>Pobieranie etykiety wysyłkowej
 
 Jeśli wyświetlacz E-ink urządzenia Data Box nie działa i nie wyświetla zwrotnej etykiety wysyłkowej, może być konieczne pobranie etykiety wysyłkowej. Na Data Box Heavy nie ma wyświetlania pisma odręcznego, dlatego ten przepływ pracy nie ma zastosowania do Data Box Heavy.
 
@@ -75,9 +75,9 @@ Aby pobrać etykietę wysyłkową, wykonaj następujące czynności.
 
 1.  Przejdź do pozycji **Przegląd > Pobierz etykietę wysyłkową**. Ta opcja jest dostępna tylko po wysłaniu urządzenia. 
 
-    ![Pobierz etykietę wysyłkową](media/data-box-portal-admin/download-shipping-label.png)
+    ![Pobieranie etykiety wysyłkowej](media/data-box-portal-admin/download-shipping-label.png)
 
-2.  To spowoduje pobranie następującej zwrotnej etykiety wysyłkowej. Zapisz i wydrukuj etykietę. Złóż etykietę i włóż ją do przezroczystej koszulki na urządzeniu. Upewnij się, że etykieta jest widoczna. Usuń wszystkie znajdujące się na urządzeniu nalepki z poprzedniej wysyłki.
+2.  To spowoduje pobranie następującej zwrotnej etykiety wysyłkowej. Zapisz etykietę i wydrukuj ją. Złóż i Wstaw etykietę do jasnej rękawa na urządzeniu. Upewnij się, że etykieta jest widoczna. Usuń wszystkie znajdujące się na urządzeniu nalepki z poprzedniej wysyłki.
 
     ![Przykładowa etykieta wysyłkowa](media/data-box-portal-admin/example-shipping-label.png)
 
@@ -110,7 +110,7 @@ Aby edytować szczegóły powiadomień, wykonaj następujące czynności.
     ![Edytowanie szczegółów powiadomienia — 2](media/data-box-portal-admin/edit-notification-details2.png)
 
 
-## <a name="download-order-history"></a>Pobierz historię zamówień
+## <a name="download-order-history"></a>Pobieranie historii zamówienia
 
 Po zakończeniu zamówienia dotyczącego urządzenia Data Box dane na dyskach urządzenia są wymazywane. Po zakończeniu czyszczenia urządzenia możesz pobrać historię zamówienia w witrynie Azure Portal.
 
@@ -204,11 +204,11 @@ Po zmianie stanu urządzenia w portalu otrzymasz powiadomienie pocztą e-mail.
 |Wysłane     | Zamówienie zostało wysłane. Skorzystaj z identyfikatora śledzenia wyświetlanego w zamówienia w portalu, aby śledzić wysyłkę.        |
 |Dostarczono     | Wysyłka została dostarczona na adres wskazany w zamówieniu.        |
 |Pobrane     |Twoja wysyłka zwrotna została pobrana i zeskanowana przez operatora.         |
-|Odebrane     | Twoje urządzenie zostało odebrane i zeskanowane w centrum danych platformy Azure. <br> Po sprawdzeniu wysyłki rozpocznie się przekazywanie urządzenia.      |
+|Odebrano     | Twoje urządzenie zostało odebrane i zeskanowane w centrum danych platformy Azure. <br> Po sprawdzeniu wysyłki rozpocznie się przekazywanie urządzenia.      |
 |Kopiowanie danych     | Kopiowanie danych jest w toku. Śledź postęp kopiowania w ramach Twojego zamówienia w witrynie Azure Portal. <br> Poczekaj na zakończenie kopiowania danych. |
 |Zakończone       |Zamówienie zostało pomyślnie zrealizowane.<br> Przed usunięciem danych lokalnych z serwerów upewnij się, że Twoje dane znajdują się na platformie Azure.         |
 |Zakończone z błędami| Kopiowanie danych zostało ukończone, ale podczas kopiowania wystąpiły błędy. <br> Przejrzyj dzienniki kopiowania, używając ścieżki wskazanej w witrynie Azure Portal. Zobacz [przykłady kopiowania dzienników, gdy przekazywanie zostało zakończone z błędami](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors).   |
-|Zakończone z ostrzeżeniami| Kopiowanie danych zostało ukończone, ale dane zostały zmodyfikowane. Dane mają Niekrytyczne błędy obiektów blob lub nazw plików, które zostały naprawione przez zmianę nazw plików lub obiektów BLOB. <br> Przejrzyj dzienniki kopiowania, używając ścieżki wskazanej w witrynie Azure Portal. Zanotuj modyfikacje danych. Zobacz [przykłady kopiowania dzienników po zakończeniu przekazywania z ostrzeżeniami](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings).   |
+|Ukończono z ostrzeżeniami| Kopiowanie danych zostało ukończone, ale dane zostały zmodyfikowane. Dane mają Niekrytyczne błędy obiektów blob lub nazw plików, które zostały naprawione przez zmianę nazw plików lub obiektów BLOB. <br> Przejrzyj dzienniki kopiowania, używając ścieżki wskazanej w witrynie Azure Portal. Zanotuj modyfikacje danych. Zobacz [przykłady kopiowania dzienników po zakończeniu przekazywania z ostrzeżeniami](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings).   |
 |Anulowane            |Twoje zamówienie zostało anulowane. <br> Zamówienie mogło zostać anulowane przez Ciebie lub, w przypadku wystąpienia błędu, przez usługę. Jeśli zamówienia nie można zrealizować w ciągu 90 dni, także zostanie ono anulowane, a Ty otrzymasz powiadomienie.     |
 |Czyszczenie | Dane na dyskach urządzenia zostaną usunięte. Czyszczenie urządzenia uważa się za ukończone, gdy historia zamówienia jest dostępna do pobrania w witrynie Azure Portal.|
 

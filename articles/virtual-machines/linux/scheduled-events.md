@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: 37932a3669dc1ed7f8f3f103db93ee6757a06aad
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: dbea68f5699f26b866d2e22c960c0359bcb3479b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390432"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79267198"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Scheduled Events dla maszyn wirtualnych z systemem Linux
 
@@ -46,7 +46,7 @@ Dzięki Scheduled Events aplikacja może wykryć, kiedy nastąpi konserwacja, i 
 Scheduled Events udostępnia zdarzenia w następujących przypadkach użycia:
 
 - [Konserwacja inicjowana przez platformę](https://docs.microsoft.com/azure/virtual-machines/linux/maintenance-and-updates) (na przykład ponowne uruchomienie maszyny wirtualnej, migracja na żywo lub zachowywanie pamięci na potrzeby hosta)
-- Sprzęt o obniżonej wydajności
+- Maszyna wirtualna jest uruchomiona na [obniżyć wydajności sprzętu hosta](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events) , który przewiduje niepowodzenie wkrótce
 - Konserwacja inicjowana przez użytkownika (na przykład użytkownik uruchamia ponownie lub wdraża maszynę wirtualną)
 - Wykluczanie wystąpień [maszyn wirtualnych](spot-vms.md) i [zestawów skalowania](../../virtual-machine-scale-sets/use-spot.md) .
 
@@ -146,6 +146,9 @@ Każde zdarzenie ma zaplanowaną minimalną ilość czasu w przyszłości w opar
 | Ponowne wdrożenie | 10 minut |
 | Stępują | 30 sekund |
 | Kończyć | [Użytkownik konfigurowalny](../../virtual-machine-scale-sets/virtual-machine-scale-sets-terminate-notification.md#enable-terminate-notifications): od 5 do 15 minut |
+
+> [!NOTE] 
+> W niektórych przypadkach platforma Azure może przewidzieć awarię hosta z powodu nieprawidłowego sprzętu i podejmuje próbę ograniczenia zakłócenia usługi przez zaplanowanie migracji. Na maszynach wirtualnych, których to dotyczy, zostanie odebrane zaplanowane zdarzenie z `NotBefore`, które zazwyczaj trwa kilka dni w przyszłości. Rzeczywisty czas zależy od przewidywanej oceny ryzyka niepowodzeń. Platforma Azure podejmuje próbę wydawania z wyprzedzeniem 7 dni, ale rzeczywisty czas jest różny i może być mniejszy, jeśli przewidywane jest, że nastąpi bezpośrednie awaria sprzętu. Aby zminimalizować ryzyko dla usługi na wypadek awarii sprzętu przed migracją zainicjowaną przez system, zalecamy, aby szybko wdrożyć maszynę wirtualną jak najszybciej.
 
 ### <a name="start-an-event"></a>Rozpocznij zdarzenie 
 

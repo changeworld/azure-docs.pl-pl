@@ -9,11 +9,11 @@ ms.date: 04/24/2019
 ms.author: cherylmc
 ms.custom: seodec18
 ms.openlocfilehash: dbda73e022ebaad283641ce2f54a5962aeb4cb60
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361704"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264767"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-cli"></a>Utworzyć i zmodyfikować komunikację równorzędną dla obwodu usługi ExpressRoute za pomocą interfejsu wiersza polecenia
 

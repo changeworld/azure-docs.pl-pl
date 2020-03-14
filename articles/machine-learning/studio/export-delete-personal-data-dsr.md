@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: 5228e42a778714f0d656bc993007692bd32d84fb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: c380d10d0c68794ec3810cea25341d68bb41400d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388468"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251689"
 ---
 # <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio-classic"></a>Eksportuj i usuwaj dane użytkownika w ramach produktu z Azure Machine Learning Studio (klasyczne)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Można usuwać lub eksportować dane w produkcie przechowywane przez Azure Machine Learning Studio (klasyczne) przy użyciu Azure Portal, programu Studio (klasycznego) interfejsu, programu PowerShell i uwierzytelnionych interfejsów API REST. W tym artykule wyjaśniono sposób. 
 

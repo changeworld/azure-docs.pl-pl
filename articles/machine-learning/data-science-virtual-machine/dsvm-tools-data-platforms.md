@@ -11,11 +11,11 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: bfae8147c348c76fa0e406fec283144ebc26e86b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390701"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270110"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Obsługiwane na maszynie wirtualnej do nauki o danych platformy danych
 

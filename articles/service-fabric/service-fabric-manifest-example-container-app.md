@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: pepogors
 ms.openlocfilehash: 5efdbd17db20e69ace33b379ddbb99b2c4a20e69
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382793"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258397"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>Przykłady manifestu wielokontenerowej aplikacji i usługi
 Poniżej przedstawiono przykłady manifestów aplikacji i usług dla wielokontenerowej aplikacji Service Fabric. Te przykłady przedstawiają, jakie ustawienia są dostępne i jak z nich korzystać. Te manifesty aplikacji i usług są oparte na [przykładowych manifestach kontenera systemu Windows Server 2016](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows) .

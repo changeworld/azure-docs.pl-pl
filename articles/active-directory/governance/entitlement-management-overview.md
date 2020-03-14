@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1d1faf501aff8960a4b1961b34164be07b1d685d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376699"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261764"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Co to jest zarządzanie upoważnieniami w usłudze Azure AD?
 
@@ -119,7 +119,7 @@ Aby lepiej zrozumieć Zarządzanie uprawnieniami i jej dokumentację, można odw
 | pakiet dostępu | Zbiór zasobów wymaganych przez zespół lub projekt i podlega zasadom. Pakiet dostępu jest zawsze zawarty w wykazie. Należy utworzyć nowy pakiet dostępu dla scenariusza, w którym użytkownicy muszą zażądać dostępu.  |
 | żądanie dostępu | Żądanie dostępu do zasobów w pakiecie dostępu. Żądanie jest zwykle wykonywane przez przepływ pracy zatwierdzania.  W przypadku zatwierdzenia użytkownik żądający otrzymuje przypisanie do pakietu. |
 | przypisanie | Przypisanie pakietu dostępu do użytkownika gwarantuje, że użytkownik ma wszystkie role zasobów tego pakietu.  Przypisania pakietów dostępu zwykle mają limit czasu, zanim wygasną. |
-| catalog | Kontener powiązanych zasobów i pakietów dostępu.  Wykazy są używane do delegowania, aby uniemożliwić administratorom tworzenie własnych pakietów dostępu. Właściciele wykazu mogą dodawać zasoby należące do wykazu. |
+| katalog | Kontener powiązanych zasobów i pakietów dostępu.  Wykazy są używane do delegowania, aby uniemożliwić administratorom tworzenie własnych pakietów dostępu. Właściciele wykazu mogą dodawać zasoby należące do wykazu. |
 | Twórca katalogu | Kolekcja użytkowników, którzy mają uprawnienia do tworzenia nowych wykazów.  Gdy użytkownik niebędący administratorem, który jest autoryzowany jako twórca katalogu tworzy nowy wykaz, automatycznie staje się właścicielem tego katalogu. |
 | połączona organizacja | Zewnętrzny katalog lub domena usługi Azure AD, z którą istnieje relacja. Użytkownicy z połączonej organizacji mogą być określeni w zasadach jako mogą żądać dostępu. |
 | policy | Zestaw reguł definiujących cykl życia dostępu, na przykład informacje o tym, jak użytkownicy uzyskują dostęp, kto może zatwierdzić i jak długo użytkownicy mają dostęp przez przypisanie. Zasady są połączone z pakietem dostępu. Na przykład pakiet dostępu może mieć dwie zasady — jeden dla pracowników do żądania dostępu, a drugi do żądania dostępu przez użytkowników zewnętrznych. |
