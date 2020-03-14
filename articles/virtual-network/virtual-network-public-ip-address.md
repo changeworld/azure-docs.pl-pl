@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: kumud
 ms.openlocfilehash: 38ff40b537730418fe9f0f8295884dae98a2fe0d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357693"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244916"
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>Tworzenie, zmienianie i usuwanie publicznego adresu IP
 

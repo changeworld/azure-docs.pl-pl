@@ -9,11 +9,11 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 3d5f3ade3ef3b79ddb3996b5bf2d609b11aff8a5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356760"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255966"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorowanie, diagnozowanie i rozwiązywanie problemów z usługą Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -739,7 +739,7 @@ Poniższa procedura przedstawia sposób przechwytywania szczegółowych informac
 4. Dodaj filtr do pola tekstowego **Filtr przechwytywania** . Na przykład **host contosoemaildist.Table.Core.Windows.NET** skonfiguruje program Wireshark do przechwytywania tylko pakietów wysyłanych do lub z punktu końcowego usługi Table Service na koncie magazynu **contosoemaildist** . Zapoznaj się z [pełną listą filtrów przechwytywania](https://wiki.wireshark.org/CaptureFilters).
 
    ![][6]
-5. Kliknij przycisk **Start**. Program Wireshark przechwytuje teraz wszystkie pakiety wysyłane do lub z punktu końcowego usługi Table Service podczas korzystania z aplikacji klienckiej na komputerze lokalnym.
+5. Kliknij przycisk **Uruchom**. Program Wireshark przechwytuje teraz wszystkie pakiety wysyłane do lub z punktu końcowego usługi Table Service podczas korzystania z aplikacji klienckiej na komputerze lokalnym.
 6. Po zakończeniu w menu głównym kliknij polecenie **Przechwytuj** , a następnie **Zatrzymaj**.
 7. Aby zapisać przechwycone dane w pliku przechwytywania programu Wireshark, w menu głównym kliknij **plik** , a następnie **Zapisz**.
 

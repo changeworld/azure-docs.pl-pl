@@ -10,11 +10,11 @@ keywords: Azure Automation, DSC, PowerShell, Konfiguracja żądanego stanu, zarz
 ms.date: 02/24/2020
 ms.topic: overview
 ms.openlocfilehash: 57b44db9c1bb9a607ad8478b7208df40441020c2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372249"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79241374"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Co to jest usługa Azure ARC dla serwerów (wersja zapoznawcza)
 

@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: b6a60536bae6fbedf01eda7aa340e90ced58e004
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387636"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281602"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Kopiowanie danych do i z Data Lake Storage Gen1 przy użyciu Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -69,10 +69,10 @@ Poniższe sekcje zawierają szczegółowe informacje na temat właściwości JSO
 ## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 Połączona usługa łączy magazyn danych z fabryką danych. Utworzysz połączoną usługę typu **AzureDataLakeStore** , aby połączyć dane Data Lake Store z fabryką danych. W poniższej tabeli opisano elementy JSON charakterystyczne dla Data Lake Store połączonych usług. Można wybrać między jednostką usługi a uwierzytelnianiem poświadczeń użytkownika.
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| **type** | Właściwość Type musi być ustawiona na wartość **AzureDataLakeStore**. | Tak |
-| **dataLakeStoreUri** | Informacje o koncie usługi Azure Data Lake Store. Te informacje mają jeden z następujących formatów: `https://[accountname].azuredatalakestore.net/webhdfs/v1` lub `adl://[accountname].azuredatalakestore.net/`. | Tak |
+| **type** | Właściwość Type musi być ustawiona na wartość **AzureDataLakeStore**. | Yes |
+| **dataLakeStoreUri** | Informacje o koncie usługi Azure Data Lake Store. Te informacje mają jeden z następujących formatów: `https://[accountname].azuredatalakestore.net/webhdfs/v1` lub `adl://[accountname].azuredatalakestore.net/`. | Yes |
 | **Identyfikator** | Identyfikator subskrypcji platformy Azure, do której należy konto Data Lake Store. | Wymagane dla ujścia |
 | **resourceGroupName** | Nazwa grupy zasobów platformy Azure, do której należy konto Data Lake Store. | Wymagane dla ujścia |
 
@@ -90,11 +90,11 @@ Aby użyć uwierzytelniania nazwy głównej usługi, zarejestruj jednostkę apli
 
 Użyj uwierzytelniania nazwy głównej usługi, określając następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| **servicePrincipalId** | Określ identyfikator klienta aplikacji. | Tak |
-| **servicePrincipalKey** | Określ klucz aplikacji. | Tak |
-| **dzierżaw** | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Można je pobrać, ustawiając kursor myszy w prawym górnym rogu witryny Azure portal. | Tak |
+| **servicePrincipalId** | Określ identyfikator klienta aplikacji. | Yes |
+| **servicePrincipalKey** | Określ klucz aplikacji. | Yes |
+| **dzierżaw** | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Można je pobrać, ustawiając kursor myszy w prawym górnym rogu witryny Azure portal. | Yes |
 
 **Przykład: Uwierzytelnianie jednostki usługi**
 ```json
@@ -117,10 +117,10 @@ Użyj uwierzytelniania nazwy głównej usługi, określając następujące wła�
 ### <a name="user-credential-authentication"></a>Uwierzytelnianie poświadczeń użytkownika
 Alternatywnie można użyć uwierzytelniania poświadczeń użytkownika do kopiowania z lub do Data Lake Store, określając następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| **zgody** | Kliknij przycisk **Autoryzuj** w edytorze Data Factory i wprowadź poświadczenia, które przypisuje automatycznie wygenerowany adres URL autoryzacji do tej właściwości. | Tak |
-| **sessionId** | Identyfikator sesji OAuth z sesji autoryzacji OAuth. Każdy identyfikator sesji jest unikatowy i może być używany tylko raz. To ustawienie jest generowane automatycznie, gdy jest używany Edytor Data Factory. | Tak |
+| **zgody** | Kliknij przycisk **Autoryzuj** w edytorze Data Factory i wprowadź poświadczenia, które przypisuje automatycznie wygenerowany adres URL autoryzacji do tej właściwości. | Yes |
+| **sessionId** | Identyfikator sesji OAuth z sesji autoryzacji OAuth. Każdy identyfikator sesji jest unikatowy i może być używany tylko raz. To ustawienie jest generowane automatycznie, gdy jest używany Edytor Data Factory. | Yes |
 
 > [!IMPORTANT]
 > Upewnij się, że przyznano użytkownikowi odpowiednie uprawnienia w Azure Data Lake Store:
@@ -236,9 +236,9 @@ Aby określić zestaw danych do reprezentowania danych wejściowych w Data Lake 
 
 Sekcja **typeProperties** zestawu danych typu **AzureDataLakeStore** zawiera następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| **folderPath** |Ścieżka do kontenera i folderu w Data Lake Store. |Tak |
+| **folderPath** |Ścieżka do kontenera i folderu w Data Lake Store. |Yes |
 | **Nazwa pliku** |Nazwa pliku w Azure Data Lake Store. Właściwość **filename** jest opcjonalna i uwzględnia wielkość liter. <br/><br/>W przypadku określenia **nazwy pliku**działanie (łącznie z kopią) działa w określonym pliku.<br/><br/>Jeśli **Nazwa pliku** nie jest określona, Copy zawiera wszystkie pliki w **folderPath** w wejściowym zestawie danych.<br/><br/>Gdy nie określono **nazwy pliku** dla wyjściowego zestawu danych, a **preserveHierarchy** nie jest określona w ujścia aktywności, nazwa wygenerowanego pliku ma format `Data._Guid_.txt`. Na przykład: Data. 0a405f8a-93ff-4c6f-B3BE-f69616f1df7a. txt. |Nie |
 | **partitionedBy** |Właściwość **partitionedBy** jest opcjonalna. Można jej użyć do określenia ścieżki dynamicznej i nazwy pliku dla danych szeregów czasowych. Na przykład **folderPath** może być sparametryzowany dla każdej godziny danych. Aby uzyskać szczegółowe informacje i przykłady, zobacz Właściwość partitionedBy. |Nie |
 | **Formatowanie** | Obsługiwane są następujące typy formatów: **TextFormat**, **formatu jsonformat**, **AvroFormat**, **OrcFormat**i **ParquetFormat**. Ustaw właściwość **Type** w polu **Format** na jedną z tych wartości. Aby uzyskać więcej informacji, zobacz sekcję [Format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [Format JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Format Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [Format Orc](data-factory-supported-file-and-compression-formats.md#orc-format)i [Parquet format](data-factory-supported-file-and-compression-formats.md#parquet-format) w [plikach i formatach kompresji obsługiwanych przez Azure Data Factory](data-factory-supported-file-and-compression-formats.md) artykuł. <br><br> Jeśli chcesz skopiować pliki "w taki sam sposób, jak w przypadku magazynów opartych na plikach (kopia binarna), Pomiń sekcję `format` w definicjach zestawu danych wejściowych i wyjściowych. |Nie |
@@ -280,13 +280,13 @@ Właściwości dostępne w sekcji **typeProperties** działania różnią się w
 
 **AzureDataLakeStoreSource** obsługuje następującą właściwość w sekcji **typeProperties** :
 
-| Właściwość | Opis | Dozwolone wartości | Wymagane |
+| Właściwość | Opis | Dozwolone wartości | Wymagany |
 | --- | --- | --- | --- |
 | **rozpoznawania** |Wskazuje, czy dane są odczytywane cyklicznie z podfolderów lub tylko z określonego folderu. |True (wartość domyślna), FAŁSZ |Nie |
 
 **AzureDataLakeStoreSink** obsługuje następujące właściwości w sekcji **typeProperties** :
 
-| Właściwość | Opis | Dozwolone wartości | Wymagane |
+| Właściwość | Opis | Dozwolone wartości | Wymagany |
 | --- | --- | --- | --- |
 | **copyBehavior** |Określa zachowanie kopiowania. |<b>PreserveHierarchy</b>: zachowuje hierarchię plików w folderze docelowym. Ścieżka względna pliku źródłowego do folderu źródłowego jest taka sama jak ścieżka względna docelowego pliku do folderu docelowego.<br/><br/><b>FlattenHierarchy</b>: wszystkie pliki z folderu źródłowego są tworzone na pierwszym poziomie folderu docelowego. Pliki docelowe są tworzone przy użyciu automatycznie generowanych nazw.<br/><br/><b>MergeFiles</b>: Scala wszystkie pliki z folderu źródłowego do jednego pliku. Jeśli nazwa pliku lub obiektu blob jest określony, nazwa pliku scalonego jest określonej nazwy. W przeciwnym razie nazwa pliku jest generowana automatycznie. |Nie |
 
@@ -295,12 +295,12 @@ W tej sekcji opisano wynikowe zachowania operacji kopiowania różne kombinacje 
 
 | cyklicznie | copyBehavior | Zachowanie rezultatowe |
 | --- | --- | --- |
-| {1&gt;true&lt;1} |preserveHierarchy |Dla folderu źródłowego Folder1 z następującą strukturą: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>folder docelowy Folder1 jest tworzony z tą samą strukturą co Źródło<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. |
-| {1&gt;true&lt;1} |flattenHierarchy |Dla folderu źródłowego Folder1 z następującą strukturą: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>docelowy Folder1 jest tworzony z następującą strukturą: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatycznie wygenerowana nazwa dla plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatycznie wygenerowana nazwa dla plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatycznie wygenerowana nazwa dla file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatycznie wygenerowana nazwa dla File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatycznie wygenerowana nazwa dla File5 |
-| {1&gt;true&lt;1} |mergeFiles |Dla folderu źródłowego Folder1 z następującą strukturą: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>docelowy Folder1 jest tworzony z następującą strukturą: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1 + plik2 + file3 + File4 + plik 5 są scalane w jeden plik z automatycznie wygenerowaną nazwą pliku |
-| {1&gt;false&lt;1} |preserveHierarchy |Dla folderu źródłowego Folder1 z następującą strukturą: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>folder docelowy Folder1 jest tworzony z następującą strukturą<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/><br/><br/>Subfolder1 File3, File4 i File5 nie są pobierane. |
-| {1&gt;false&lt;1} |flattenHierarchy |Dla folderu źródłowego Folder1 z następującą strukturą:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>folder docelowy Folder1 jest tworzony z następującą strukturą<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatycznie wygenerowana nazwa dla plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatycznie wygenerowana nazwa dla plik2<br/><br/><br/>Subfolder1 File3, File4 i File5 nie są pobierane. |
-| {1&gt;false&lt;1} |mergeFiles |Dla folderu źródłowego Folder1 z następującą strukturą:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>folder docelowy Folder1 jest tworzony z następującą strukturą<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1 + plik2 zawartości są scalane w jeden plik z automatycznie wygenerowaną nazwą pliku. Wygenerowany automatycznie nazwę File1<br/><br/>Subfolder1 File3, File4 i File5 nie są pobierane. |
+| true |preserveHierarchy |Dla folderu źródłowego Folder1 z następującą strukturą: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>folder docelowy Folder1 jest tworzony z tą samą strukturą co Źródło<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. |
+| true |flattenHierarchy |Dla folderu źródłowego Folder1 z następującą strukturą: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>docelowy Folder1 jest tworzony z następującą strukturą: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatycznie wygenerowana nazwa dla plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatycznie wygenerowana nazwa dla plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatycznie wygenerowana nazwa dla file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatycznie wygenerowana nazwa dla File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatycznie wygenerowana nazwa dla File5 |
+| true |mergeFiles |Dla folderu źródłowego Folder1 z następującą strukturą: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>docelowy Folder1 jest tworzony z następującą strukturą: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1 + plik2 + file3 + File4 + plik 5 są scalane w jeden plik z automatycznie wygenerowaną nazwą pliku |
+| false |preserveHierarchy |Dla folderu źródłowego Folder1 z następującą strukturą: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>folder docelowy Folder1 jest tworzony z następującą strukturą<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/><br/><br/>Subfolder1 File3, File4 i File5 nie są pobierane. |
+| false |flattenHierarchy |Dla folderu źródłowego Folder1 z następującą strukturą:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>folder docelowy Folder1 jest tworzony z następującą strukturą<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatycznie wygenerowana nazwa dla plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatycznie wygenerowana nazwa dla plik2<br/><br/><br/>Subfolder1 File3, File4 i File5 nie są pobierane. |
+| false |mergeFiles |Dla folderu źródłowego Folder1 z następującą strukturą:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>folder docelowy Folder1 jest tworzony z następującą strukturą<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1 + plik2 zawartości są scalane w jeden plik z automatycznie wygenerowaną nazwą pliku. Wygenerowany automatycznie nazwę File1<br/><br/>Subfolder1 File3, File4 i File5 nie są pobierane. |
 
 ## <a name="supported-file-and-compression-formats"></a>Obsługiwane formaty plików i kompresji
 Aby uzyskać szczegółowe informacje, zobacz [formaty plików i kompresji w artykule Azure Data Factory](data-factory-supported-file-and-compression-formats.md) .

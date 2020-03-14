@@ -4,11 +4,11 @@ description: Zawiera podsumowanie nowych funkcji i najnowszych aktualizacji usł
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.openlocfilehash: abb1592bcacf025e9a052d7a9222f6fb3d2b72d6
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78267486"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257435"
 ---
 # <a name="whats-new-in-site-recovery"></a>Co nowego w usłudze Site Recovery
 

@@ -4,11 +4,11 @@ description: Wynik nagrody wskazuje, jak dobrze wybrana została opcja personali
 ms.date: 02/20/2020
 ms.topic: conceptual
 ms.openlocfilehash: 734e4d0fdcec25884f8535ec61ccd10569fa8890
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78397111"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219369"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>Wyniki nagrody wskazują na pomyślne personalizację
 

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
 ms.openlocfilehash: 2d685683bdc359b31a5a6c550c19e8c0d858f12a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379055"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220128"
 ---
 # <a name="configure-the-review-tool"></a>Konfigurowanie narzędzia do przeglądu
 
@@ -64,7 +64,7 @@ Jeśli jesteś członkiem więcej niż jednego podzespołu, możesz przełącza�
 
 ![Przełączanie między podzespołów](images/3-review-image-subteam-2.png)
 
-## <a name="tags"></a>Tabliczk
+## <a name="tags"></a>Tagi
 
 Karta **Tagi** pozwala definiować niestandardowe znaczniki moderowania oprócz dwóch domyślnych tagów moderowania&mdash;**isdorosły** (**a**) i **isracy** (**r**). Gdy tworzysz tag niestandardowy, będzie on dostępny w przeglądach obok znaczników domyślnych. Możesz zmienić, które Tagi będą widoczne w przeglądach, przełączając ich ustawienia widoczności.
 
@@ -86,7 +86,7 @@ Kliknij przycisk **Dodaj** , aby dodać tag, a następnie kliknij przycisk **Zap
 
 Tagi niestandardowe można usunąć, wybierając ikonę kosza obok pozycji na liście Tagi, ale nie można usunąć tagów domyślnych.
 
-## <a name="connectors"></a>Wtyczki
+## <a name="connectors"></a>Łączniki
 
 Karta **Łączniki** umożliwia zarządzanie łącznikami, które są wtyczkami specyficznymi dla usług, które mogą przetwarzać zawartość na różne sposoby w ramach [przepływów pracy](../review-api.md#workflows)zawartości.
 
@@ -94,10 +94,10 @@ Domyślnym łącznikiem podczas tworzenia przepływu pracy jest łącznik Conten
 
 [Narzędzie do przeglądu](./human-in-the-loop.md) obejmuje następujące łączniki:
 
-- Rozpoznawania emocji
-- Stoi
+- Rozpoznawanie emocji
+- Rozpoznawanie twarzy
 - Usługa w chmurze PhotoDNA
-- analiza tekstu
+- Analiza tekstu
 
 ### <a name="add-a-connector"></a>Dodawanie łącznika
 
@@ -105,13 +105,13 @@ Aby dodać łącznik (i udostępnić go do użycia w [przepływach pracy](../rev
 
 ![Ustawienia Content Moderator łączników](images/settings-4-connectors.png)
 
-## <a name="workflows"></a>Przebieg
+## <a name="workflows"></a>Przepływy
 
 Karta **przepływy pracy** umożliwia zarządzanie [przepływami pracy](../review-api.md#workflows). Przepływy pracy są filtrami opartymi na chmurze dla zawartości i pracują z łącznikami, aby sortować zawartość na różne sposoby i podejmować odpowiednie działania. Tutaj możesz definiować, edytować i testować przepływy pracy. Zobacz [Definiowanie i używanie przepływów pracy,](Workflows.md) Aby uzyskać wskazówki dotyczące sposobu wykonania tej czynności.
 
 ![Content Moderator ustawienia przepływu pracy](images/settings-5-workflows.png)
 
-## <a name="credentials"></a>uwierzytelniające
+## <a name="credentials"></a>Poświadczenia
 
 Karta **poświadczenia** zapewnia szybki dostęp do klucza subskrypcji Content moderator, do którego należy uzyskać dostęp do dowolnych usług moderowania z wywołania REST lub zestawu SDK klienta.
 

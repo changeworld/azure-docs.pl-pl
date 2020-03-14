@@ -8,11 +8,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.openlocfilehash: d1afb6037b5fc290de93faba405982ebd1fb68ea
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78364574"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254341"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Wykorzystywanie przetwarzania równoległego zapytań w usłudze Azure Stream Analytics
 W tym artykule pokazano, jak korzystać z zalet przetwarzania równoległego w usłudze Azure Stream Analytics. Dowiesz się, jak skalować zadania usługi Stream Analytics, konfigurując partycji danych wejściowych, a następnie dostosowując definicję zapytania usługi analytics.
@@ -77,7 +77,7 @@ W poniższych sekcjach omówiono niektóre przykładowe scenariusze, które są 
 * Dane wejściowe: Centrum zdarzeń z 8 partycji
 * Dane wyjściowe: centrum zdarzeń z 8 partycjami (kolumna klucza partycji musi mieć ustawioną wartość "PartitionId")
 
-Zapytanie:
+Kwerenda:
 
 ```SQL
     SELECT TollBoothId
@@ -92,7 +92,7 @@ To zapytanie jest proste filtru. W związku z tym nie musimy martwić się o par
 * Dane wejściowe: Centrum zdarzeń z 8 partycji
 * Dane wyjściowe: Blob storage
 
-Zapytanie:
+Kwerenda:
 
 ```SQL
     SELECT COUNT(*) AS Count, TollBoothId
@@ -122,7 +122,7 @@ Dane wyjściowe Power BI nie obsługują obecnie partycjonowania. W związku z t
 * Dane wejściowe: Centrum zdarzeń z 8 partycji
 * Dane wyjściowe: Centrum zdarzeń z 8 partycji
 
-Zapytanie:
+Kwerenda:
 
 ```SQL
     WITH Step1 AS (
@@ -144,7 +144,7 @@ Niektórych zadań usługi Stream Analytics, które są zgodne z (lub nie) zaska
 * Dane wejściowe: Centrum zdarzeń z 8 partycji
 * Dane wyjściowe: centrum zdarzeń z 8 partycjami (kolumna klucza partycji musi mieć ustawioną wartość "TollBoothId")
 
-Zapytanie:
+Kwerenda:
 
 ```SQL
     WITH Step1 AS (
@@ -166,7 +166,7 @@ Całkowita liczba jednostek przesyłania strumieniowego, które mogą być używ
 ### <a name="steps-in-a-query"></a>Kroki zapytania
 Zapytanie może mieć jeden lub kilka kroków. Każdy krok jest podzapytaniem zdefiniowanym przez słowo kluczowe **with** . Zapytanie, które znajduje się poza słowem kluczowym **with** (tylko jedno zapytanie), jest również zliczane jako krok, taki jak instrukcja **SELECT** w następującej kwerendzie:
 
-Zapytanie:
+Kwerenda:
 
 ```SQL
     WITH Step1 AS (

@@ -4,11 +4,11 @@ description: Dowiedz się więcej o usuwaniu i wdrażaniu aplikacji na platformi
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.openlocfilehash: e3fdd194f2949f1246e991968e02b3278f33f7db
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379990"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282512"
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>Wdrażanie i usuwanie aplikacji przy użyciu programu PowerShell
 

@@ -8,11 +8,11 @@ ms.date: 02/02/2017
 ms.author: rclaus
 ms.subservice: disks
 ms.openlocfilehash: 122abda51b907491b322908c3c2c689bc1723e87
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78968181"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250259"
 ---
 # <a name="configure-software-raid-on-linux"></a>Konfigurowanie RAID oprogramowania w systemie Linux
 Typowym scenariuszem jest używanie oprogramowania RAID na maszynach wirtualnych z systemem Linux na platformie Azure, aby przedstawić wiele dołączonych dysków danych jako pojedyncze urządzenie RAID. Zwykle może to służyć do zwiększenia wydajności i zapewnienia lepszej przepływności w porównaniu z użyciem jednego dysku.

@@ -4,11 +4,11 @@ description: W tym samouczku użyjesz zasad, aby wymusić standardy, kontrolowa�
 ms.date: 12/20/2019
 ms.topic: tutorial
 ms.openlocfilehash: a4e4190e5ff6a87098c349cde99572df2dba4331
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384526"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238951"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Samouczek: Tworzenie zasad i zarządzanie nimi w celu wymuszenia zgodności
 
@@ -505,7 +505,7 @@ Jeśli wykonujesz pracę z zasobami z tego samouczka, wykonaj następujące krok
 
 1. Kliknij prawym przyciskiem myszy wiersz albo wybierz wielokropek na końcu definicji lub przypisania, a następnie wybierz pozycję **Usuń definicję** (lub **Usuń przypisanie**).
 
-## <a name="review"></a>Recenzja
+## <a name="review"></a>Przegląd
 
 W tym samouczku pomyślnie wykonano następujące czynności:
 

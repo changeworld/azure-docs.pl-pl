@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/25/2019
 ms.openlocfilehash: 878ad98b118fa02a6659584ac60e3343a948cd20
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381757"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246268"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Zestawy danych w Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -71,7 +71,7 @@ Właściwość | Opis | Wymagany |
 -------- | ----------- | -------- |
 name | Nazwa zestawu danych. Zobacz [reguły nazewnictwa Azure Data Factory](naming-rules.md). |  Yes |
 type | Typ zestawu danych. Określ jeden z typów obsługiwanych przez Data Factory (na przykład: AzureBlob, wartość azuresqltable). <br/><br/>Aby uzyskać szczegółowe informacje, zobacz [typy zestawów danych](#dataset-type). | Yes |
-structure | Schemat zestawu danych. Aby uzyskać szczegółowe informacje, zobacz [schemat zestawu danych](#dataset-structure-or-schema). | Nie |
+struktura | Schemat zestawu danych. Aby uzyskać szczegółowe informacje, zobacz [schemat zestawu danych](#dataset-structure-or-schema). | Nie |
 typeProperties | Właściwości typu są różne dla każdego typu (na przykład: Azure Blob, Azure SQL Table). Aby uzyskać szczegółowe informacje na temat obsługiwanych typów i ich właściwości, zobacz [Typ zestawu danych](#dataset-type). | Yes |
 
 ### <a name="data-flow-compatible-dataset"></a>Zestaw danych zgodny z przepływem danych
@@ -116,7 +116,7 @@ Właściwość | Opis | Wymagany |
 -------- | ----------- | -------- |
 name | Nazwa zestawu danych. Zobacz [reguły nazewnictwa Azure Data Factory](naming-rules.md). |  Yes |
 type | Typ zestawu danych. Określ jeden z typów obsługiwanych przez Data Factory (na przykład: AzureBlob, wartość azuresqltable). <br/><br/>Aby uzyskać szczegółowe informacje, zobacz [typy zestawów danych](#dataset-type). | Yes |
-schema | Schemat zestawu danych. Aby uzyskać szczegółowe informacje, zobacz [zestawy danych zgodne ze strumieniem](#dataset-type). | Nie |
+schemat | Schemat zestawu danych. Aby uzyskać szczegółowe informacje, zobacz [zestawy danych zgodne ze strumieniem](#dataset-type). | Nie |
 typeProperties | Właściwości typu są różne dla każdego typu (na przykład: Azure Blob, Azure SQL Table). Aby uzyskać szczegółowe informacje na temat obsługiwanych typów i ich właściwości, zobacz [Typ zestawu danych](#dataset-type). | Yes |
 
 

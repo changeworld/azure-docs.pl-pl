@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 28d37ba6796799ea27bbd5338247a504ea82388f
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: ff1b37c3053ffa91dcb432cd97a7dd6fd71dad1c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970495"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250428"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption dla maszyn wirtualnych z systemem Linux 
 
@@ -81,7 +81,7 @@ Dystrybucje serwera z systemem Linux, które nie są zatwierdzone przez platform
 > [!NOTE]
 > Nowa implementacja Azure Disk Encryption jest obsługiwana w przypadku systemu operacyjnego RHEL i dysku danych dla obrazów z opcją płatność zgodnie z rzeczywistym użyciem.  
 >
-> ADE jest również obsługiwane w przypadku RHELowych obrazów z subskrypcją, ale dopiero **po** zarejestrowaniu subskrypcji. Aby uzyskać więcej informacji, zobacz [Red Hat Enterprise Linux przenoszenie własnych subskrypcji Gold na platformie Azure](../workloads/redhat/byos.md##encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images)
+> ADE jest również obsługiwane w przypadku RHELowych obrazów z subskrypcją, ale dopiero **po** zarejestrowaniu subskrypcji. Aby uzyskać więcej informacji, zobacz [Red Hat Enterprise Linux przenoszenie własnych subskrypcji Gold na platformie Azure](../workloads/redhat/byos.md#encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images)
 
 ## <a name="additional-vm-requirements"></a>Dodatkowe wymagania dotyczące maszyn wirtualnych
 

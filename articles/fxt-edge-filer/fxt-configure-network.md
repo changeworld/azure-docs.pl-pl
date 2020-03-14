@@ -7,11 +7,11 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.openlocfilehash: a40ff50dcb0934cbf1ea5222675bd75948ac1d03
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78397036"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239798"
 ---
 # <a name="tutorial-configure-the-clusters-network-settings"></a>Samouczek: Konfigurowanie ustawień sieciowych klastra
 

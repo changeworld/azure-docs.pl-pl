@@ -7,11 +7,11 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.openlocfilehash: 2636e9a225002148e4cd79bb2176e0883aed623a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359578"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280497"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Dzienniki w Azure Database for PostgreSQL — pojedynczy serwer
 Azure Database for PostgreSQL umożliwia konfigurowanie i dostęp do standardowych dzienników Postgres. Dzienniki mogą służyć do identyfikowania, rozwiązywania problemów i naprawiania błędów konfiguracji oraz nieoptymalnej wydajności. Rejestrowane informacje można skonfigurować i uzyskać do nich dostęp, w tym błędy, informacje o zapytaniach, rekordy autopróżniowe, połączenia i punkty kontrolne. (Dostęp do dzienników transakcji nie jest dostępny).

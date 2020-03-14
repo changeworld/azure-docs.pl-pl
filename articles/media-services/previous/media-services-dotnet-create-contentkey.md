@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: aebd6dee9314d6e5641988767c024790b6b721f4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395873"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251156"
 ---
 # <a name="create-contentkeys-with-net"></a>Tworzenie ContentKeys przy użyciu platformy .NET 
 > [!div class="op_single_selector"]

@@ -5,11 +5,11 @@ ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
 ms.openlocfilehash: cf48090b2c32f0c3a1c8170873cb8d6a771fe21f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78397057"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240296"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Co to jest usługa Azure Backup?
 

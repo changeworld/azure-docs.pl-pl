@@ -7,11 +7,11 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.openlocfilehash: c6cad29b6cc392746a2e56323302521302835b2f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394946"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274556"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Połącz narzędzia ITSM produkty/usługi z łącznik zarządzania usługami IT
 Ten artykuł zawiera informacje dotyczące sposobu konfigurowania połączenia między produktem narzędzia ITSM/usługą a łącznik zarządzania usługami IT (ITSMC) w Log Analytics, aby centralnie zarządzać elementami roboczymi. Aby uzyskać więcej informacji na temat ITSMC, zobacz [Omówienie](../../azure-monitor/platform/itsmc-overview.md).

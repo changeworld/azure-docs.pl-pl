@@ -4,11 +4,11 @@ description: Dowiedz się, jak skonfigurować bezpieczny klaster Service Fabric 
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.openlocfilehash: 0f384da75f09390e9b0988722b974e7e16d13e63
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363385"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258800"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Tworzenie klastra Service Fabric na platformie Azure przy użyciu Azure Portal
 > [!div class="op_single_selector"]

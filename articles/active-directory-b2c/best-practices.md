@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: 6c737af85e2a7205dca6a56174dfda565da1410d
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: a76852a6e3cc5ffcdfcac62ce29fe47c97af3df1
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78304396"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136163"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Zalecenia i najlepsze rozwiązania dotyczące Azure Active Directory B2C
 
@@ -51,7 +51,7 @@ W fazie wdrażania należy wziąć pod uwagę następujące zalecenia.
 
 |  |  |
 |--|--|
-| Edytuj zasady niestandardowe z rozszerzeniem Azure AD B2C dla Visual Studio Code | Pobierz Visual Studio Code i to [rozszerzenie utworzone przez społeczność z witryny Visual Studio Code Marketplace]((https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c)). Chociaż nie jest to oficjalny produkt firmy Microsoft, rozszerzenie Azure AD B2C dla Visual Studio Code zawiera kilka funkcji, które ułatwiają pracę z zasadami niestandardowymi. |
+| Edytuj zasady niestandardowe z rozszerzeniem Azure AD B2C dla Visual Studio Code | Pobierz Visual Studio Code i to [rozszerzenie utworzone przez społeczność z witryny Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c). Chociaż nie jest to oficjalny produkt firmy Microsoft, rozszerzenie Azure AD B2C dla Visual Studio Code zawiera kilka funkcji, które ułatwiają pracę z zasadami niestandardowymi. |
 | Dowiedz się, jak rozwiązywać problemy Azure AD B2C | Dowiedz się, jak [rozwiązywać problemy z zasadami niestandardowymi](https://docs.microsoft.com/azure/active-directory-b2c/troubleshoot-custom-policies?tabs=applications) podczas projektowania. Dowiedz się, jak wygląda normalny przepływ uwierzytelniania i korzystaj z narzędzi do wykrywania anomalii i błędów. Na przykład użyj [Application Insights](troubleshoot-with-application-insights.md) , aby przejrzeć dzienniki wyjściowe podróży użytkownika. |
 | Skorzystaj z naszej biblioteki sprawdzonych wzorców zasad niestandardowych | Znajdź [przykłady](https://github.com/azure-ad-b2c/samples) kilku ulepszonych Azure AD B2C użytkowników zarządzania tożsamościami i dostępem klientów (CIAM). |
 

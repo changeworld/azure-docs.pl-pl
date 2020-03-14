@@ -18,11 +18,11 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 88b61b29b1386f461620ad602a88d2d1253aa905
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375625"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262349"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Uprawnienia i zgoda w punkcie końcowym platformy tożsamości firmy Microsoft
 
@@ -201,11 +201,11 @@ Gdy wszystko będzie gotowe do zażądania uprawnień od administratora organiza
 
 | Parametr     | Warunek     | Opis                                                                               |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
-| `tenant` | Wymagane | Dzierżawa katalogu, z której chcesz zażądać uprawnień. Można podać w formacie identyfikatora GUID lub przyjaznej nazwy lub ogólnie przywoływane z organizacjami, jak pokazano w przykładzie. Nie używaj elementu "Common", ponieważ konta osobiste nie mogą zapewnić zgody administratora, z wyjątkiem sytuacji, w której znajduje się dzierżawa. Aby zapewnić najlepszą zgodność z kontami osobistymi, które zarządzają dzierżawcami, użyj identyfikatora dzierżawy, o ile jest to możliwe. |
-| `client_id` | Wymagane | **Identyfikator aplikacji (klienta)** , który [Azure Portal — rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) środowisko przypisane do aplikacji. |
-| `redirect_uri` | Wymagane |Identyfikator URI przekierowania, w którym odpowiedź ma być wysyłana przez aplikację do obsługi. Musi dokładnie pasować do jednego z identyfikatorów URI przekierowania zarejestrowanych w portalu rejestracji aplikacji. |
+| `tenant` | Wymagany | Dzierżawa katalogu, z której chcesz zażądać uprawnień. Można podać w formacie identyfikatora GUID lub przyjaznej nazwy lub ogólnie przywoływane z organizacjami, jak pokazano w przykładzie. Nie używaj elementu "Common", ponieważ konta osobiste nie mogą zapewnić zgody administratora, z wyjątkiem sytuacji, w której znajduje się dzierżawa. Aby zapewnić najlepszą zgodność z kontami osobistymi, które zarządzają dzierżawcami, użyj identyfikatora dzierżawy, o ile jest to możliwe. |
+| `client_id` | Wymagany | **Identyfikator aplikacji (klienta)** , który [Azure Portal — rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) środowisko przypisane do aplikacji. |
+| `redirect_uri` | Wymagany |Identyfikator URI przekierowania, w którym odpowiedź ma być wysyłana przez aplikację do obsługi. Musi dokładnie pasować do jednego z identyfikatorów URI przekierowania zarejestrowanych w portalu rejestracji aplikacji. |
 | `state` | Zalecane | Wartość uwzględniona w żądaniu, która również zostanie zwrócona w odpowiedzi tokenu. Może to być ciąg dowolnej zawartości. Użyj stanu, aby kodować informacje o stanie użytkownika w aplikacji przed wystąpieniem żądania uwierzytelniania, takie jak strona lub widok. |
-|`scope`        | Wymagane      | Definiuje zestaw uprawnień wymaganych przez aplikację. Może to być statyczne (przy użyciu [`/.default`](#the-default-scope)) lub zakresy dynamiczne.  Może to obejmować zakresy OIDC (`openid`, `profile`, `email`). Jeśli potrzebujesz uprawnień aplikacji, musisz użyć `/.default`, aby zażądać statycznie skonfigurowanej listy uprawnień.  | 
+|`scope`        | Wymagany      | Definiuje zestaw uprawnień wymaganych przez aplikację. Może to być statyczne (przy użyciu [`/.default`](#the-default-scope)) lub zakresy dynamiczne.  Może to obejmować zakresy OIDC (`openid`, `profile`, `email`). Jeśli potrzebujesz uprawnień aplikacji, musisz użyć `/.default`, aby zażądać statycznie skonfigurowanej listy uprawnień.  | 
 
 
 W tym momencie usługa Azure AD wymaga od administratora dzierżawy zalogowania się w celu ukończenia żądania. Administrator jest proszony o zatwierdzenie wszystkich uprawnień żądanych w parametrze `scope`.  Jeśli użyto wartości statycznej (`/.default`), będzie ona działać podobnie jak punkt końcowy zgody administratora w wersji 1.0 i poprosić o zgodę na wszystkie zakresy, które znajdują się w wymaganych uprawnieniach do aplikacji.

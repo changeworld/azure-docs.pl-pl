@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: aahi
-ms.openlocfilehash: 3e5fd2315a5d352ed5abee9253b5c84eea3b73a9
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 72b00d78d19ed0e963b4dad01b82033c659e1efd
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462279"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219611"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Tworzenie zasobu Cognitive Services przy użyciu interfejsu wiersza polecenia platformy Azure (CLI)
 
@@ -34,7 +34,7 @@ W tym przewodniku szybki start dowiesz się, jak zarejestrować się w usłudze 
 
 Zainstaluj [interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Aby zalogować się do lokalnej instalacji interfejsu wiersza polecenia, uruchom polecenie [AZ login](https://docs.microsoft.com/cli/azure/reference-index#az-login) :
 
-```console
+```azurecli-interactive
 az login
 ```
 
@@ -156,7 +156,7 @@ az cognitiveservices account create \
 
 Aby zalogować się do lokalnej instalacji interfejsu wiersza polecenia (CLI), użyj polecenia [AZ login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) .
 
-```console
+```azurecli-interactive
 az login
 ```
 

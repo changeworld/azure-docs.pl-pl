@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50c283122fe707e922275b6c1a6c576009964855
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: b0faaf0394bddc2e443afc194bbd0ecef72625f9
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74273352"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240926"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>Szybki start: Dodawanie użytkownika-gościa przy użyciu programu PowerShell
 
@@ -30,7 +30,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ### <a name="install-the-latest-azureadpreview-module"></a>Zainstalowanie najnowszego modułu AzureADPreview
 Upewnij się, że masz zainstalowaną najnowszą wersję modułu Azure AD PowerShell dla programu Graph (AzureADPreview). 
 
-Najpierw sprawdź, które moduły zostały zainstalowane. Otwórz program PowerShell jako użytkownik z podwyższonym poziomem uprawnień (Uruchom jako administrator) i uruchom następujące polecenie:
+Najpierw sprawdź, które moduły zostały zainstalowane. Otwórz program Windows PowerShell jako użytkownik z podwyższonym poziomem uprawnień (Uruchom jako administrator) i uruchom następujące polecenie:
  
 ```powershell  
 Get-Module -ListAvailable AzureAD*
@@ -62,7 +62,7 @@ Może zostać wyświetlony monit z informacją, że instalujesz moduł z niezauf
 
 Potrzebujesz testowego konta e-mail, na które będzie można wysłać zaproszenie. Konto musi być z spoza Twojej organizacji. Możesz użyć dowolnego typu konta, w tym konta społecznościowego z adresem w domenie gmail.com lub outlook.com.
 
-## <a name="sign-in-to-your-tenant"></a>Logowanie się do dzierżawy
+## <a name="sign-in-to-your-tenant"></a>Logowanie do dzierżawy
 
 Uruchom następujące polecenie, aby połączyć się z domeną dzierżawy:
 
@@ -73,16 +73,16 @@ Na przykład `Connect-AzureAD -TenantDomain "contoso.onmicrosoft.com"`.
 
 Po wyświetleniu monitu wprowadź poświadczenia.
 
-## <a name="send-an-invitation"></a>Wyślij zaproszenie
+## <a name="send-an-invitation"></a>Wysyłanie zaproszenia
 
 1. Aby wysłać zaproszenie do konta testowego e-mail, uruchom następujące polecenie programu PowerShell (Zastąp ciągi **"Sanda"** i **Sanda\@fabrikam.com** nazwą konta testowego i adresem e-mail): 
 
    ```powershell
-   New-AzureADMSInvitation -InvitedUserDisplayName "Sanda" -InvitedUserEmailAddress sanda@fabrikam.com -InviteRedirectURL https://myapps.azure.com -SendInvitationMessage $true
+   New-AzureADMSInvitation -InvitedUserDisplayName "Sanda" -InvitedUserEmailAddress sanda@fabrikam.com -InviteRedirectURL https://myapps.microsoft.com -SendInvitationMessage $true
    ```
 2. Polecenie spowoduje wysłanie zaproszenia na określony adres e-mail. Sprawdź rezultat, który powinien wyglądać mniej więcej tak:
 
-   ![Rezultat w programie PowerShell przedstawiający oczekiwanie na zaakceptowanie przez użytkownika](media/quickstart-invite-powershell/powershell-azureadmsinvitation-result.png)
+   ![Dane wyjściowe w programie PowerShell przedstawiające oczekiwanie na zaakceptowanie przez użytkownika](media/quickstart-invite-powershell/powershell-azureadmsinvitation-result.png)
 
 ## <a name="verify-the-user-exists-in-the-directory"></a>Sprawdzanie, czy użytkownik istnieje w katalogu
 

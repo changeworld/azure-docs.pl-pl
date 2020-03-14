@@ -3,12 +3,12 @@ title: Szczegóły struktury definicji zasad
 description: Opisuje, w jaki sposób definicje zasad są używane do ustanawiania Konwencji dla zasobów platformy Azure w organizacji.
 ms.date: 02/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1100248b43dbdf668dc1164651f3d9f941f3f016
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 95625894d0eb603ae9a37c96c91d01f3720346b1
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360239"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280731"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -578,16 +578,16 @@ Wszystkie [funkcje szablonu Menedżer zasobów](../../../azure-resource-manager/
 - resourceId()
 - zmienne ()
 
-Następujące funkcje są dostępne do użycia w regule zasad, ale różnią się od użycia w szablonie Azure Resource Manager:
+Następująca funkcja jest dostępna do użycia w regule zasad, ale różni się od użycia w szablonie Azure Resource Manager:
 
-- `addDays(dateTime, numberOfDaysToAdd)`
-  - **DateTime**: [Required] ciąg ciągu w formacie daty/godziny uniwersalnego ISO 8601 "RRRR-MM-DDTgg: mm: SS. fffffffZ"
-  - **numberOfDaysToAdd**: [Required] liczba dni do dodania
 - `utcNow()`, w przeciwieństwie do szablonu Menedżer zasobów, można go użyć poza elementem DefaultValue.
   - Zwraca ciąg, który jest ustawiony na bieżącą datę i godzinę w formacie uniwersalnego ISO 8601 DateTime-MM-DDTgg: mm: SS. fffffffZ
 
 Następujące funkcje są dostępne tylko w regułach zasad:
 
+- `addDays(dateTime, numberOfDaysToAdd)`
+  - **DateTime**: [Required] ciąg ciągu w formacie daty/godziny uniwersalnego ISO 8601 "RRRR-MM-DDTgg: mm: SS. fffffffZ"
+  - **numberOfDaysToAdd**: [Required] liczba dni do dodania
 - `field(fieldName)`
   - **FieldName**: [Required] — nazwa [pola](#fields) do pobrania
   - Zwraca wartość tego pola z zasobu, który jest obliczany przez warunek if

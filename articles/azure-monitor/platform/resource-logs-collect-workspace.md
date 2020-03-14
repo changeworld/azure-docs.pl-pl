@@ -8,11 +8,11 @@ ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: 36bd464624118b7671a3879bcc1d34114bba9ce3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391042"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248595"
 ---
 # <a name="collect-azure-platform-logs-in-log-analytics-workspace-in-azure-monitor"></a>Zbierz dzienniki platformy Azure w obszarze roboczym Log Analytics w Azure Monitor
 [Dzienniki platformy](platform-logs-overview.md) na platformie Azure, w tym dziennik aktywności platformy Azure i dzienniki zasobów, zapewniają szczegółowe informacje diagnostyczne i inspekcji dla zasobów platformy Azure oraz platformy platformy Azure, od których zależą. W tym artykule opisano zbieranie dzienników zasobów w Log Analytics obszarze roboczym, które umożliwiają analizowanie go przy użyciu innych danych monitorowania zebranych w dziennikach Azure Monitor przy użyciu zaawansowanych zapytań dzienników, a także do korzystania z innych funkcji Azure Monitor, takich jak alerty i wizualizacje. 

@@ -1,14 +1,14 @@
 ---
 title: 'Szybki Start: Tworzenie, uczenie i publikowanie bazy wiedzy — QnA Maker'
 description: Na podstawie własnej zawartości, takiej jak często zadawane pytania lub podręczniki produktów, możesz utworzyć bazę wiedzy usługi QnA Maker. Ten artykuł zawiera przykład tworzenia bazy wiedzy QnA Makerej na podstawie prostej strony internetowej często zadawanych pytań i odpowiedzi na nie QnA Maker.
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 02/08/2020
-ms.openlocfilehash: a4c4d9b2e8f4b816510fb35a75b3c9b8b2afa5e2
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: b1f80006e2dc72b5b623f4c29c093c734dc1efea
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77108732"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220579"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Szybki Start: Tworzenie, uczenie i publikowanie bazy wiedzy QnA Maker
 
@@ -154,6 +154,5 @@ Więcej informacji:
 
 * [Format promocji w odpowiedziach](../reference-markdown-format.md)
 * QnA Maker [źródła danych](../concepts/knowledge-base.md).
-* [Ustawienia konfiguracji zasobów bot](../tutorials/create-qna-bot.md).
 
 
