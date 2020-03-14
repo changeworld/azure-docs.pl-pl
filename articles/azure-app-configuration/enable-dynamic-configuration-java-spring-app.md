@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 3/5/2020
 ms.author: lcozzens
-ms.openlocfilehash: 6445b9707273d273c562b7d643da34f5ba26e1fc
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 37c832e3b6d1430da0b45558c9632f0486a7233b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78967502"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79216757"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-java-spring-app"></a>Samouczek: używanie konfiguracji dynamicznej w aplikacji ze sprężyną Java
 
@@ -53,4 +53,7 @@ Zapisz plik, a następnie Skompiluj i uruchom aplikację w zwykły sposób.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku włączono aplikację rozruchu sprężynowego do dynamicznego odświeżania ustawień konfiguracji z poziomu konfiguracji aplikacji. Aby uzyskać więcej informacji, zobacz [Sprężyna na platformie Azure](https://docs.microsoft.com/java/azure/spring-framework/).
+W tym samouczku włączono aplikację rozruchu sprężynowego do dynamicznego odświeżania ustawień konfiguracji z poziomu konfiguracji aplikacji. Aby dowiedzieć się, jak za pomocą tożsamości zarządzanej platformy Azure usprawnić dostęp do konfiguracji aplikacji, przejdź do następnego samouczka.
+
+> [!div class="nextstepaction"]
+> [Integracja tożsamości zarządzanej](./howto-integrate-azure-managed-service-identity.md)

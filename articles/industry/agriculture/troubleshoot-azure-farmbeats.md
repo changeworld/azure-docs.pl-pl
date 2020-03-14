@@ -5,18 +5,18 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: fb4b06eca0d6df6848e2e215d8890569701f7596
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 20d07be99aa2f9881218f8d581ac8d429a1fe4d0
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705619"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298805"
 ---
 # <a name="troubleshoot"></a>Rozwiązywanie problemów
 
 Ten artykuł zawiera rozwiązania typowych problemów z usługą Azure FarmBeats.
 
-Aby uzyskać dodatkową pomoc, skontaktuj się z nami na farmbeatssupport@microsoft.com. Pamiętaj o dołączeniu pliku **Deployer. log** do wiadomości e-mail.
+Aby uzyskać dodatkową pomoc, skontaktuj się z nami na farmbeatssupport@microsoft.com. Upewnij się, że plik **Deployer. log** został uwzględniony w wiadomości e-mail.
 
 Aby pobrać plik **Deployer. log** , wykonaj następujące czynności:
 
@@ -65,11 +65,11 @@ Aby zrozumieć sposób pobierania dzienników, przejdź do sekcji ["zbieranie dz
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         }
       ]
     }
@@ -119,7 +119,7 @@ Podczas usuwania urządzenia może wystąpić jeden z następujących typowych s
 2. Usuń określone urządzenie.  
 
     > [!NOTE]
-    > Nie można usunąć urządzenia, jeśli są z nim skojarzone czujniki. Więcej informacji o sposobach usuwania skojarzonych czujników znajduje się w sekcji "Usuwanie czujnika" w temacie [pobieranie danych z czujników z partnerów czujników](get-sensor-data-from-sensor-partner.md).
+    > Nie można usunąć urządzenia, jeśli są z nim skojarzone czujniki. Więcej informacji o sposobach usuwania skojarzonych czujników znajduje się w sekcji **usuwanie czujnika** w temacie [pobieranie danych czujników z partnerów czujników](get-sensor-data-from-sensor-partner.md).
 
 
 ## <a name="issues-with-jobs"></a>Problemy związane z zadaniami
@@ -163,6 +163,7 @@ Jeśli błąd będzie się powtarzać, Dodaj komunikat o błędzie w ogłoszeniu
 **Problem**: akcelerator FarmBeats nie pokazuje najnowszej wersji, nawet po uaktualnieniu FarmBeatsDeployment.
 
 **Działanie naprawcze**: ten błąd występuje z powodu trwałości procesu roboczego usługi w przeglądarce. Wykonaj następujące czynności:
+
 1. Zamknij wszystkie karty przeglądarki z otwartym akceleratorem, a następnie zamknij okno przeglądarki.
 2. Uruchom nowe wystąpienie przeglądarki i ponownie załaduj akcelerator URI. Ta akcja spowoduje załadowanie nowej wersji akceleratora.
 
@@ -175,6 +176,7 @@ Jeśli błąd będzie się powtarzać, Dodaj komunikat o błędzie w ogłoszeniu
 **Działanie naprawcze**:
 
 Wykonaj jedną z następujących czynności:
+
 - Uruchom ponownie Instalatora, aby uaktualnić Datahub przy użyciu prawidłowej nazwy użytkownika i hasła.
 - Uruchom ponownie zadanie zakończone niepowodzeniem lub Uruchom zadanie indeksów satelitarnych dla zakresu dat od 5 do 7 dni, a następnie sprawdź, czy zadanie zakończyło się pomyślnie.
 
@@ -198,6 +200,7 @@ Ten problem może wystąpić, jeśli na serwerze wskaźnikowym są wykonywane ja
 1. Jeśli jakieś zadanie lub potok nie powiedzie się, ponieważ trwa wykonywanie konserwacji, prześlij ponownie zadanie po pewnym czasie. 
 
    Aby uzyskać informacje o wszelkich planowanych lub nieplanowanych działaniach związanych z konserwacją wskaźnikiem, przejdź do witryny [Copernicus Open Access Hub](https://scihub.copernicus.eu/news/) .  
+
 2. Uruchom ponownie zadanie zakończone niepowodzeniem lub Uruchom zadanie indeksów satelitarnych dla zakresu dat od 5 do 7 dni, a następnie sprawdź, czy zadanie zakończyło się pomyślnie.
 
 ### <a name="sentinel-maximum-number-of-connections-reached"></a>Wskaźnik kontrolny: osiągnięto maksymalną liczbę połączeń
@@ -207,6 +210,7 @@ Ten problem może wystąpić, jeśli na serwerze wskaźnikowym są wykonywane ja
 **Znaczenie**: Jeśli zadanie nie powiedzie się, ponieważ osiągnięto maksymalną liczbę połączeń, to samo konto wskaźnikowe jest używane w innym wdrożeniu oprogramowania.
 
 **Działanie naprawcze**: Spróbuj wykonać jedną z następujących czynności:
+
 * Utwórz nowe konto wskaźnikiem, a następnie ponownie uruchom Instalatora, aby uaktualnić program Datahub przy użyciu nowej nazwy użytkownika i hasła.  
 * Uruchom ponownie zadanie zakończone niepowodzeniem lub Uruchom zadanie indeksów satelitarnych dla zakresu dat od 5 do 7 dni, a następnie sprawdź, czy zadanie zakończyło się pomyślnie.
 
@@ -218,6 +222,7 @@ Ten problem może wystąpić, jeśli na serwerze wskaźnikowym są wykonywane ja
 1. Jeśli jakieś zadanie lub potok nie powiedzie się, ponieważ trwa wykonywanie konserwacji, prześlij ponownie zadanie po pewnym czasie. 
 
    Aby uzyskać informacje o wszelkich planowanych lub nieplanowanych działaniach związanych z konserwacją wskaźnikiem, przejdź do witryny [Copernicus Open Access Hub](https://scihub.copernicus.eu/news/) .  
+
 2. Uruchom ponownie zadanie zakończone niepowodzeniem lub Uruchom zadanie indeksów satelitarnych dla zakresu dat od 5 do 7 dni, a następnie sprawdź, czy zadanie zakończyło się pomyślnie.
 
 ## <a name="collect-logs-manually"></a>Zbierz dzienniki ręcznie
@@ -225,7 +230,8 @@ Ten problem może wystąpić, jeśli na serwerze wskaźnikowym są wykonywane ja
 [Zainstaluj i wdróż Eksplorator usługi Azure Storage]( https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows).
 
 ### <a name="collect-azure-data-factory-job-logs-in-datahub"></a>Zbieranie dzienników zadań Azure Data Factory w Datahub
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 2. W polu **wyszukiwania** Wyszukaj grupę zasobów FarmBeats Datahub.
 
     > [!NOTE]
@@ -243,7 +249,7 @@ Ten problem może wystąpić, jeśli na serwerze wskaźnikowym są wykonywane ja
 
 ### <a name="collect-azure-data-factory-job-logs-in-accelerator"></a>Zbieranie dzienników zadań Azure Data Factory w akceleratorze
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 2. W polu **wyszukiwania** Wyszukaj grupę zasobów akceleratora FarmBeats.
 
     > [!NOTE]
@@ -260,7 +266,7 @@ Ten problem może wystąpić, jeśli na serwerze wskaźnikowym są wykonywane ja
 
 ### <a name="collect-datahub-app-service-logs"></a>Zbieranie dzienników usługi App Service Datahub
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 2. W polu **wyszukiwania** Wyszukaj grupę zasobów FarmBeats Datahub.
 
     > [!NOTE]
@@ -276,7 +282,7 @@ Ten problem może wystąpić, jeśli na serwerze wskaźnikowym są wykonywane ja
 
 ### <a name="collect-accelerator-app-service-logs"></a>Zbieranie dzienników usługi App Service Accelerator
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 2. W polu **wyszukiwania** Wyszukaj grupę zasobów akceleratora FarmBeats.
 
     > [!NOTE]

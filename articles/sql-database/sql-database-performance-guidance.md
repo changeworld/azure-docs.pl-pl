@@ -1,24 +1,24 @@
 ---
-title: Wskazówki dotyczące dostosowywania wydajności
-description: Dowiedz się więcej o korzystaniu z zaleceń w celu ręcznego dostrajania wydajności zapytań Azure SQL Database.
+title: Wskazówki dotyczące dostrajania wydajności dla aplikacji i baz danych
+description: Dowiedz się więcej na temat dostrajania aplikacji baz danych i baz danych pod kątem wydajności w Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: juliemsft
-ms.author: jrasnick
-ms.reviewer: carlrab
-ms.date: 01/25/2019
-ms.openlocfilehash: 0dc3a121b30f33d533b1079d9c81501130487017
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+author: CarlRabeler
+ms.author: carlrab
+ms.reviewer: carlrab; jrasnick
+ms.date: 03/10/2020
+ms.openlocfilehash: 4f30ebe39d86db7076baa8c29b2a5cf060b07bf5
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382321"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255953"
 ---
-# <a name="manual-tune-query-performance-in-azure-sql-database"></a>Ręczne dostrajanie wydajności zapytań w Azure SQL Database
+# <a name="tune-applications-and-databases-for-performance-in-azure-sql-database"></a>Dostrajanie aplikacji i baz danych pod kątem wydajności w Azure SQL Database
 
 Po zidentyfikowaniu problemu z wydajnością, do którego nastąpi SQL Database, ten artykuł ma na celu ułatwienie:
 
@@ -232,6 +232,10 @@ Możesz sprawdzić, czy **sys. resource_stats** , aby określić, czy zasób dla
 
 Jeśli obciążenie zawiera zestaw powtarzających się zapytań, często warto przechwycić i sprawdzić Optymalność opcji planu, ponieważ obejmuje ona minimalną jednostkę rozmiaru zasobu wymaganą do hostowania bazy danych programu. Po sprawdzeniu poprawności należy ponownie sprawdzić plany, aby upewnić się, że nie zostały one obniżone. Więcej informacji na temat [wskazówek dotyczących zapytań (Transact-SQL)](https://msdn.microsoft.com/library/ms181714.aspx).
 
+### <a name="very-large-database-architectures"></a>Bardzo duże architektury baz danych
+
+Przed udostępnieniem warstwy [usługi w](sql-database-service-tier-hyperscale.md) warstwie górnej dla pojedynczych baz danych w Azure SQL Database klienci korzystający z limitów pojemności dla poszczególnych baz danych. Te limity pojemności nadal istnieją dla baz danych w puli elastycznej i bazy danych wystąpień w wystąpieniach zarządzanych. W poniższych dwóch sekcjach omówiono dwie opcje rozwiązywania problemów z bardzo dużymi bazami danych w programie Azure SQL Database, gdy nie można użyć warstwy usługi.
+
 ### <a name="cross-database-sharding"></a>Fragmentowania między bazami danych
 
 Ponieważ Azure SQL Database działa na sprzęcie z asortymentem, limity pojemności dla pojedynczej bazy danych są mniejsze niż w przypadku tradycyjnej instalacji SQL Server lokalnej. Niektórzy klienci używają technik fragmentowania, aby rozłożyć operacje bazy danych na wiele baz danych, gdy operacje nie mieszczą się w granicach pojedynczej bazy danych w Azure SQL Database. Większość klientów, którzy używają technik fragmentowania w Azure SQL Database dzielą swoje dane w jednym wymiarze w wielu bazach danych. Dla tego podejścia należy zrozumieć, że aplikacje OLTP często wykonują transakcje, które są stosowane tylko do jednego wiersza lub do niewielkiej grupy wierszy w schemacie.
@@ -243,7 +247,7 @@ Na przykład, jeśli baza danych ma nazwę klienta, zamówienie i szczegóły za
 
 Mimo że usługa Database fragmentowania nie zmniejsza zagregowanej pojemności zasobów dla rozwiązania, jest wysoce wydajna, aby obsługiwać bardzo duże rozwiązania, które są rozłożone na wiele baz danych. Każda baza danych może działać z innym rozmiarem obliczeniowym w celu obsługi bardzo dużych, "efektywnych" baz danych o wysokich wymaganiach dotyczących zasobów.
 
-### <a name="functional-partitioning"></a>Partycjonowanie funkcjonalne
+#### <a name="functional-partitioning"></a>Partycjonowanie funkcjonalne
 
 SQL Server Użytkownicy często łączą wiele funkcji w pojedynczej bazie danych. Na przykład jeśli aplikacja ma logikę do zarządzania zapasami dla magazynu, ta baza danych może być skojarzona z spisem, śledzeniem zamówień zakupu, procedurami składowanymi oraz widokami indeksowanymi lub z materiałami, które zarządzają raportami końcowymi. Ta technika ułatwia administrowanie bazą danych dla operacji, takich jak tworzenie kopii zapasowej, ale wymaga również zmiany rozmiaru sprzętu w celu obsługi szczytowego obciążenia we wszystkich funkcjach aplikacji.
 

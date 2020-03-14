@@ -4,12 +4,12 @@ description: Dowiedz się więcej na temat szyfrowania w usłudze Azure Containe
 ms.topic: article
 ms.date: 03/10/2020
 ms.custom: ''
-ms.openlocfilehash: 8bce77c776fe088e5c317f02cd2757738a287069
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: 7bfc4e9a73280ab330efbeeba51a5dcb0a80da10
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096526"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365345"
 ---
 # <a name="encryption-using-customer-managed-keys"></a>Szyfrowanie przy użyciu kluczy zarządzanych przez klienta
 
@@ -27,6 +27,7 @@ Ta funkcja jest dostępna w warstwie usługi kontenera **Premium** . Aby uzyska�
 
 * Tę funkcję można obecnie włączyć tylko podczas tworzenia rejestru.
 * Po włączeniu klucza zarządzanego przez klienta w rejestrze nie można go wyłączyć.
+* [Zaufanie zawartości](container-registry-content-trust.md) nie jest obecnie obsługiwane w rejestrze zaszyfrowanym przy użyciu klucza zarządzanego przez klienta.
 * W rejestrze zaszyfrowanym kluczem zarządzanym przez klienta uruchamianie dzienników dla [zadań ACR](container-registry-tasks-overview.md) jest obecnie zachowywane przez zaledwie 24 godziny. Jeśli zachodzi potrzeba przechowywania dzienników przez dłuższy czas, zobacz Wskazówki dotyczące [eksportowania i przechowywania dzienników uruchamiania zadań](container-registry-tasks-logs.md#alternative-log-storage).
 
 ## <a name="prerequisites"></a>Wymagania wstępne

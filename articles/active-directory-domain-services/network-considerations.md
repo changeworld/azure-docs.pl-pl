@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
 ms.openlocfilehash: e00ec8448739ac30950877a2ae196aa78cde750c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376950"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264195"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Zagadnienia dotyczące projektowania sieci wirtualnej i opcje konfiguracji Azure AD Domain Services
 
@@ -105,11 +105,11 @@ W przypadku domeny zarządzanej AD DS platformy Azure tworzone są pewne zasoby 
 
 Następujące reguły sieciowej grupy zabezpieczeń są wymagane dla usługi Azure AD DS, aby zapewnić uwierzytelnianie i usługi zarządzania. Nie Edytuj ani nie usuwaj tych reguł sieciowej grupy zabezpieczeń dla podsieci sieci wirtualnej, w której wdrożono domenę zarządzaną platformy Azure AD DS.
 
-| Numer portu | Protokół | Element źródłowy                             | Element docelowy | Akcja | Wymagany | Przeznaczenie |
+| Numer portu | Protokół | Element źródłowy                             | Element docelowy | Akcja | Wymagane | Przeznaczenie |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
-| 443         | TCP      | AzureActiveDirectoryDomainServices | Dowolne         | Zezwalaj  | Yes      | Synchronizacja z dzierżawą usługi Azure AD. |
-| 3389        | TCP      | CorpNetSaw                         | Dowolne         | Zezwalaj  | Yes      | Zarządzanie domeną. |
-| 5986        | TCP      | AzureActiveDirectoryDomainServices | Dowolne         | Zezwalaj  | Yes      | Zarządzanie domeną. |
+| 443         | TCP      | AzureActiveDirectoryDomainServices | Dowolne         | Zezwalaj  | Tak      | Synchronizacja z dzierżawą usługi Azure AD. |
+| 3389        | TCP      | CorpNetSaw                         | Dowolne         | Zezwalaj  | Tak      | Zarządzanie domeną. |
+| 5986        | TCP      | AzureActiveDirectoryDomainServices | Dowolne         | Zezwalaj  | Tak      | Zarządzanie domeną. |
 | 636         | TCP      | Dowolne                                | Dowolne         | Zezwalaj  | Nie       | Włączone tylko w przypadku konfigurowania bezpiecznego protokołu LDAP (LDAPs). |
 
 > [!WARNING]

@@ -4,11 +4,11 @@ description: Definicje Azure Policy mają różne skutki, które określają spo
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.openlocfilehash: 502c8a87c4e915ebd1fd764915daa9c89a307097
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357411"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281186"
 ---
 # <a name="understand-azure-policy-effects"></a>Omówienie usługi Azure Policy efekty
 
@@ -39,7 +39,7 @@ Gdy dostawca zasobów zwróci kod sukcesu, **AuditIfNotExists** i **DeployIfNotE
 
 Obecnie nie ma żadnych kolejności oceny dla efektów **EnforceOPAConstraint** lub **EnforceRegoPolicy** .
 
-## <a name="disabled"></a>Disabled (Wyłączony)
+## <a name="disabled"></a>Wyłączono
 
 Efekt jest przydatna do testowania sytuacji lub gdy definicja zasad ma sparametryzowane efekt. Ta elastyczność sprawia, że można wyłączyć jednego przypisania zamiast wyłączać wszystkie przypisania tej zasady.
 
@@ -161,8 +161,8 @@ Właściwość **Operation** ma następujące opcje:
 |Operacja |Opis |
 |-|-|
 |addOrReplace |Dodaje zdefiniowany tag i wartość do zasobu, nawet jeśli tag już istnieje z inną wartością. |
-|Add |Dodaje zdefiniowany tag i wartość do zasobu. |
-|Remove |Usuwa zdefiniowany tag z zasobu. |
+|Dodaj |Dodaje zdefiniowany tag i wartość do zasobu. |
+|Usuwanie |Usuwa zdefiniowany tag z zasobu. |
 
 ### <a name="modify-examples"></a>Modyfikuj przykłady
 
@@ -210,7 +210,7 @@ Przykład 2: Usuń tag `env` i Dodaj tag `environment` lub Zastąp istniejące T
 }
 ```
 
-## <a name="deny"></a>Zablokuj
+## <a name="deny"></a>Odmów
 
 Odmów używany w celu zapobiegania żądania zasobów nie jest zgodna standardów zdefiniowanych za pośrednictwem definicji zasad, która kończy się niepowodzeniem żądania.
 

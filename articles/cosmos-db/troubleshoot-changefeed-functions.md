@@ -3,16 +3,16 @@ title: Rozwiązywanie problemów występujących podczas korzystania z wyzwalacz
 description: Typowe problemy, obejścia i kroki diagnostyczne podczas korzystania z wyzwalacza Azure Functions dla Cosmos DB
 author: ealsur
 ms.service: cosmos-db
-ms.date: 07/17/2019
+ms.date: 03/13/2020
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: f382406d164aa7378631753c2cfc85bc69003a4f
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 7bf7d418e3f2680b32f61e42cffc76c921068508
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605077"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365512"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Diagnozowanie i rozwiązywanie problemów podczas korzystania z wyzwalacza Azure Functions dla Cosmos DB
 
@@ -41,7 +41,7 @@ Ponadto, jeśli ręcznie tworzysz własne wystąpienie [klienta Azure Cosmos DB 
 
 Funkcja platformy Azure kończy się niepowodzeniem z komunikatem o błędzie "Nazwa kolekcji źródłowej" (w bazie danych "database name") lub kolekcja dzierżaw "Collection2-Name" (w bazie danych "Database2-Name") nie istnieje. Obie kolekcje muszą istnieć przed rozpoczęciem odbiorniku. Aby automatycznie utworzyć kolekcję dzierżawy, ustaw dla opcji "CreateLeaseCollectionIfNotExists" wartość "true".
 
-Oznacza to, że jeden lub oba kontenery usługi Azure Cosmos wymagane do działania wyzwalacza nie istnieją lub nie są dostępne dla funkcji platformy Azure. Sam błąd informuje o tym, **które usługi Azure Cosmos Database i kontenerów są wywoływane** na podstawie konfiguracji.
+Oznacza to, że jeden lub oba kontenery usługi Azure Cosmos wymagane do działania wyzwalacza nie istnieją lub nie są dostępne dla funkcji platformy Azure. Sam błąd informuje o tym, **które usługi Azure Cosmos Database i kontenera są wywoływane** na podstawie konfiguracji.
 
 1. Sprawdź `ConnectionStringSetting` atrybutu i **odwołuje się do ustawienia, które istnieje w aplikacja funkcji platformy Azure**. Wartość w tym atrybucie nie powinna być ciągiem połączenia, ale nazwą ustawienia konfiguracji.
 2. Sprawdź, czy `databaseName` i `collectionName` istnieją na koncie usługi Azure Cosmos. Jeśli używasz automatycznego zastąpienia wartości (przy użyciu wzorców `%settingName%`), upewnij się, że nazwa ustawienia istnieje w usłudze Azure aplikacja funkcji.
@@ -51,6 +51,10 @@ Oznacza to, że jeden lub oba kontenery usługi Azure Cosmos wymagane do działa
 ### <a name="azure-function-fails-to-start-with-shared-throughput-collection-should-have-a-partition-key"></a>Nie można uruchomić funkcji platformy Azure z opcją "udostępniona kolekcja przepływności powinna mieć klucz partycji"
 
 Poprzednie wersje rozszerzenia Azure Cosmos DB nie obsługiwały kontenera dzierżaw, który został utworzony w ramach [udostępnionej bazy danych przepływności](./set-throughput.md#set-throughput-on-a-database). Aby rozwiązać ten problem, zaktualizuj rozszerzenie [Microsoft. Azure. WebJobs. Extensions. CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB) , aby uzyskać najnowszą wersję.
+
+### <a name="azure-function-fails-to-start-with-partitionkey-must-be-supplied-for-this-operation"></a>Nie można uruchomić funkcji platformy Azure z użyciem elementu "PartitionKey" dla tej operacji ".
+
+Ten błąd oznacza, że obecnie korzystasz z partycjonowanej kolekcji dzierżawy ze starą [zależnością rozszerzenia](#dependencies). Uaktualnij do najnowszej dostępnej wersji. Jeśli obecnie korzystasz z programu Azure Functions V1, musisz uaktualnić program do wersji Azure Functions v2.
 
 ### <a name="azure-function-fails-to-start-with-the-lease-collection-if-partitioned-must-have-partition-key-equal-to-id"></a>Nie można uruchomić funkcji platformy Azure z "kolekcją dzierżawy, jeśli partycjonowany, musi mieć klucz partycji równy identyfikatorowi".
 
@@ -70,6 +74,13 @@ Jeśli w ten drugi sposób, może wystąpić pewne opóźnienie między zapisywa
 3. Kontener usługi Azure Cosmos może być [oceniany proporcjonalnie](./request-units.md).
 4. W wyzwalaczu można użyć atrybutu `PreferredLocations`, aby określić rozdzieloną przecinkami listę regionów świadczenia usługi Azure, aby zdefiniować niestandardową kolejność połączeń.
 
+### <a name="some-changes-are-repeated-in-my-trigger"></a>Niektóre zmiany są powtórzone w moim wyzwalaczu
+
+Koncepcja "zmiana" jest operacją w dokumencie. Najczęstsze scenariusze, w których są otrzymywane zdarzenia dla tego samego dokumentu, są następujące:
+* Konto korzysta ze spójności ostatecznej. Podczas konsumowania źródła zmian na poziomie spójności ostatecznej może istnieć zduplikowane zdarzenie między kolejnymi operacjami odczytu kanału informacyjnego zmian (ostatnie zdarzenie jednej operacji odczytu pojawia się jako pierwsza z następnych).
+* Dokument jest aktualizowany. Kanał informacyjny zmiany może zawierać wiele operacji dla tych samych dokumentów, jeśli ten dokument otrzymuje aktualizacje, może pobrać wiele zdarzeń (po jednym dla każdej aktualizacji). Jednym z łatwych sposobów rozróżnienia między różnymi operacjami tego samego dokumentu jest śledzenie [właściwości `_lsn` dla każdej zmiany](change-feed.md#change-feed-and-_etag-_lsn-or-_ts). Jeśli nie są zgodne, są to różne zmiany w tym samym dokumencie.
+* W przypadku identyfikowania dokumentów tylko przez `id`należy pamiętać, że unikatowy identyfikator dla dokumentu to `id` i jego klucz partycji (Istnieją dwa dokumenty z tą samą `id` ale innym kluczem partycji).
+
 ### <a name="some-changes-are-missing-in-my-trigger"></a>W moim wyzwalaczu brakuje niektórych zmian
 
 Jeśli okaże się, że niektóre zmiany, które wystąpiły w kontenerze usługi Azure Cosmos, nie są wybierane przez funkcję systemu Azure, istnieje etap wstępnego badania, który musi zostać przeprowadzona.
@@ -83,26 +94,26 @@ W tym scenariuszu najlepszym sposobem działania jest dodanie bloków `try/catch
 > [!NOTE]
 > Wyzwalacz Azure Functions dla Cosmos DB domyślnie nie będzie próbować partii zmian, jeśli wystąpił nieobsługiwany wyjątek podczas wykonywania kodu. Oznacza to, że powodem, że zmiany nie dotarły do lokalizacji docelowej, jest to, że nie można ich przetworzyć.
 
-Jeśli okaże się, że niektóre zmiany nie zostały odebrane w ogóle przez wyzwalacz, najbardziej typowym scenariuszem jest **uruchomienie innej funkcji platformy Azure**. Może to być inna funkcja platformy Azure wdrożona na platformie Azure lub funkcja platformy Azure działająca lokalnie na komputerze dewelopera, który ma **dokładnie taką samą konfigurację** (te same kontenery monitorowane i dzierżawy), a ta funkcja platformy Azure służy do kradzieży podzbioru zmian, które mają być przetwarzane przez funkcję platformy Azure.
+Jeśli okaże się, że niektóre zmiany nie zostały odebrane przez wyzwalacz, najbardziej typowym scenariuszem jest **uruchomienie innej funkcji platformy Azure**. Może to być inna funkcja platformy Azure wdrożona na platformie Azure lub funkcja platformy Azure działająca lokalnie na komputerze dewelopera, który ma **dokładnie taką samą konfigurację** (te same kontenery monitorowane i dzierżawy), a ta funkcja platformy Azure służy do kradzieży podzbioru zmian, które mają być przetwarzane przez funkcję platformy Azure.
 
-Ponadto można sprawdzić poprawność scenariusza, Jeśli wiesz, ile wystąpień aplikacja funkcji platformy Azure jest uruchomionych. W przypadku inspekcji kontenera dzierżaw i policzania liczby elementów dzierżawy w ramach, różne wartości właściwości `Owner` muszą być równe liczbie wystąpień aplikacja funkcji. Jeśli jest więcej właścicieli niż znanych wystąpień aplikacji funkcji platformy Azure, oznacza to, że ci dodatkowi właściciele „kradną” zmiany.
+Ponadto można sprawdzić poprawność scenariusza, Jeśli wiesz, ile wystąpień aplikacja funkcji platformy Azure jest uruchomionych. W przypadku inspekcji kontenera dzierżaw i policzania liczby elementów dzierżawy w ramach, różne wartości właściwości `Owner` muszą być równe liczbie wystąpień aplikacja funkcji. Jeśli istnieje więcej właścicieli niż znane wystąpienia usługi Azure aplikacja funkcji, oznacza to, że Ci dodatkowi właściciele są "kradzieżą" zmian.
 
-Aby obejść ten problem, należy zastosować `LeaseCollectionPrefix/leaseCollectionPrefix` do funkcji z nową/inną wartością lub alternatywnie testować przy użyciu nowego kontenera dzierżaw.
+Jednym z prostych sposobów obejścia tej sytuacji jest zastosowanie `LeaseCollectionPrefix/leaseCollectionPrefix` do funkcji z nową/inną wartością lub, Alternatywnie, przetestowanie z nowym kontenerem dzierżawy.
 
-### <a name="need-to-restart-and-re-process-all-the-items-in-my-container-from-the-beginning"></a>Należy ponownie uruchomić i ponownie przetworzyć wszystkie elementy w moim kontenerze od początku 
+### <a name="need-to-restart-and-reprocess-all-the-items-in-my-container-from-the-beginning"></a>Musisz ponownie uruchomić i przetworzyć wszystkie elementy w moim kontenerze od początku 
 Aby ponownie przetworzyć wszystkie elementy w kontenerze od początku:
 1. Zatrzymaj funkcję platformy Azure, jeśli jest aktualnie uruchomiona. 
 1. Usuń dokumenty z kolekcji dzierżaw (lub Usuń i ponownie Utwórz kolekcję dzierżawy, aby była pusta)
 1. Ustaw atrybut [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) CosmosDBTrigger w funkcji na wartość true. 
 1. Uruchom ponownie funkcję platformy Azure. Teraz odczytywane i przetwarzane są wszystkie zmiany od początku. 
 
-Ustawienie [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) na wartość true spowoduje, że funkcja platformy Azure rozpocznie odczytywanie zmian od początku historii kolekcji zamiast bieżącego czasu. Działa to tylko wtedy, gdy nie zostały już utworzone dzierżawy (tj. dokumenty w kolekcji dzierżawy). Ustawienie tej właściwości na wartość true, jeśli już utworzono dzierżawy nie ma żadnego wpływu; w tym scenariuszu, gdy funkcja zostanie zatrzymana i uruchomiona ponownie, rozpocznie odczytywanie z ostatniego punktu kontrolnego zgodnie z definicją w kolekcji dzierżawy. Aby ponownie przetworzyć dane od początku, wykonaj powyższe kroki 1-4.  
+Ustawienie [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) na wartość true spowoduje, że funkcja platformy Azure rozpocznie odczytywanie zmian od początku historii kolekcji zamiast bieżącego czasu. Działa to tylko wtedy, gdy nie zostały już utworzone dzierżawy (czyli dokumenty w kolekcji dzierżawy). Ustawienie tej właściwości na wartość true, jeśli już utworzono dzierżawy nie ma żadnego wpływu; w tym scenariuszu, gdy funkcja zostanie zatrzymana i uruchomiona ponownie, rozpocznie odczytywanie z ostatniego punktu kontrolnego zgodnie z definicją w kolekcji dzierżawy. Aby przetworzyć od początku, wykonaj powyższe kroki 1-4.  
 
 ### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>Powiązanie można wykonać tylko przy użyciu\<IReadOnlyList dokumentu > lub JArray
 
 Ten błąd występuje, jeśli projekt Azure Functions (lub dowolny projekt, do którego istnieje odwołanie) zawiera ręczne odwołanie NuGet do zestawu Azure Cosmos DB SDK z inną wersją niż podana przez [rozszerzenie Azure Functions Cosmos DB](./troubleshoot-changefeed-functions.md#dependencies).
 
-Aby obejść tę sytuację, Usuń ręczne odwołanie do narzędzia NuGet, które zostało dodane i pozwól, aby Azure Cosmos DB odwołanie do zestawu SDK przez pakiet rozszerzenia Cosmos DB Azure Functions.
+Aby obejść tę sytuację, Usuń ręczne odwołanie do narzędzia NuGet, które zostało dodane i pozwól na rozwiązywanie problemów z zestawem SDK Azure Cosmos DB za pomocą pakietu rozszerzenia Cosmos DB Azure Functions.
 
 ### <a name="changing-azure-functions-polling-interval-for-the-detecting-changes"></a>Zmienianie interwału sondowania funkcji platformy Azure na potrzeby wykrywania zmian
 

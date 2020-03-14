@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: rohink
-ms.openlocfilehash: bc318aff0dad7d7fdff16df549c013927ef0e799
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: acdac6e3eafc5251ebd31a34bcb9a4db34f0ebbe
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386918"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254367"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager często zadawane pytania
 
@@ -43,7 +43,7 @@ Zgodnie z opisem w temacie [jak działa Traffic Manager](../traffic-manager/traf
 
 W związku z tym należy skoncentrować się na aplikacji.
 
-Nagłówek hosta HTTP wysłany z przeglądarki klienta to najbardziej typowe Źródło problemów. Upewnij się, że aplikacja jest skonfigurowana do akceptowania poprawnego nagłówka hosta dla używanej nazwy domeny. Dla punktów końcowych używających Azure App Service, zobacz [Konfigurowanie niestandardowej nazwy domeny dla aplikacji sieci Web w Azure App Service przy użyciu Traffic Manager](../app-service/web-sites-traffic-manager-custom-domain-name.md).
+Nagłówek hosta HTTP wysłany z przeglądarki klienta to najbardziej typowe Źródło problemów. Upewnij się, że aplikacja jest skonfigurowana do akceptowania poprawnego nagłówka hosta dla używanej nazwy domeny. Dla punktów końcowych używających Azure App Service, zobacz [Konfigurowanie niestandardowej nazwy domeny dla aplikacji sieci Web w Azure App Service przy użyciu Traffic Manager](../app-service/configure-domain-traffic-manager.md).
 
 ### <a name="what-is-the-performance-impact-of-using-traffic-manager"></a>Jaki jest wpływ na wydajność korzystania z Traffic Manager?
 
@@ -145,9 +145,9 @@ Urządzenia użytkowników końcowych zazwyczaj używają programu rozpoznawania
 
 Adresy IP do skojarzenia z punktem końcowym można określić na dwa sposoby. Aby określić zakres (na przykład 1.2.3.4-5.6.7.8 lub 3.4.5.6-3.4.5.6), w pierwszej kolejności można użyć notacji z kropkami dziesiętnymi w formacie czterech kropek z adresami początkowymi i końcowymi. Następnie można użyć notacji CIDR, aby określić zakres (na przykład 1.2.3.0/24). Można określić wiele zakresów i można użyć obu typów notacji w zestawie zakresów. Obowiązuje kilka ograniczeń.
 
--   Nie można nakładać się na zakresy adresów, ponieważ każdy adres IP musi być zamapowany na tylko jeden punkt końcowy
--   Adres początkowy nie może być większy niż adres końcowy
--   W przypadku notacji CIDR adres IP przed "/" powinien być adresem początkowym tego zakresu (na przykład 1.2.3.0/24 jest prawidłowy, ale 1.2.3.4.4/24 jest nieprawidłowy)
+-    Nie można nakładać się na zakresy adresów, ponieważ każdy adres IP musi być zamapowany na tylko jeden punkt końcowy
+-    Adres początkowy nie może być większy niż adres końcowy
+-    W przypadku notacji CIDR adres IP przed "/" powinien być adresem początkowym tego zakresu (na przykład 1.2.3.0/24 jest prawidłowy, ale 1.2.3.4.4/24 jest nieprawidłowy)
 
 ### <a name="how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing"></a>Jak określić rezerwowy punkt końcowy w przypadku używania routingu podsieci?
 
@@ -382,25 +382,25 @@ Po odebraniu zapytania dotyczącego profilu Traffic Manager najpierw znaleźć p
 
 W przypadku profilów z dowolną metodą routingu inną niż wielowartościowy:
 
-|Przychodzące żądanie zapytania|    Typ punktu końcowego|  Podano odpowiedź|
+|Przychodzące żądanie zapytania|     Typ punktu końcowego|     Podano odpowiedź|
 |--|--|--|
-|ILE |  A/AAAA/CNAME |  Docelowy punkt końcowy| 
-|A |    A/CNAME | Docelowy punkt końcowy|
-|A |    AAAA |  NoData |
-|AAAA | AAAA/CNAME |  Docelowy punkt końcowy|
-|AAAA | A | NoData |
-|CNAME |    CNAME | Docelowy punkt końcowy|
-|CNAME  |A / AAAA | NoData |
+|ILE |    A/AAAA/CNAME |    Docelowy punkt końcowy| 
+|A |    A/CNAME |    Docelowy punkt końcowy|
+|A |    AAAA |    NoData |
+|AAAA |    AAAA/CNAME |    Docelowy punkt końcowy|
+|AAAA |    A |    NoData |
+|CNAME |    CNAME |    Docelowy punkt końcowy|
+|CNAME     |A / AAAA |    NoData |
 |
 
 W przypadku profilów z metodą routingu ustawioną na wartość z wieloma wartościami:
 
-|Przychodzące żądanie zapytania|    Typ punktu końcowego | Podano odpowiedź|
+|Przychodzące żądanie zapytania|     Typ punktu końcowego |    Podano odpowiedź|
 |--|--|--|
-|ILE |  Mieszanie a i AAAA | Docelowe punkty końcowe|
-|A |    Mieszanie a i AAAA | Tylko docelowe punkty końcowe typu A|
-|AAAA   |Mieszanie a i AAAA|     Tylko docelowe punkty końcowe typu AAAA|
-|CNAME |    Mieszanie a i AAAA | NoData |
+|ILE |    Mieszanie a i AAAA |    Docelowe punkty końcowe|
+|A |    Mieszanie a i AAAA |    Tylko docelowe punkty końcowe typu A|
+|AAAA    |Mieszanie a i AAAA|     Tylko docelowe punkty końcowe typu AAAA|
+|CNAME |    Mieszanie a i AAAA |    NoData |
 
 ### <a name="can-i-use-a-profile-with-ipv4--ipv6-addressed-endpoints-in-a-nested-profile"></a>Czy mogę użyć profilu z adresami końcowymi IPv4/IPv6 w profilu zagnieżdżonym?
 

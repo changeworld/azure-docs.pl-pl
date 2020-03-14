@@ -1,22 +1,14 @@
 ---
 title: 'Samouczek: list Entity-LUIS'
-titleSuffix: Azure Cognitive Services
 description: Pobieraj dane, które są zgodne ze wstępnie zdefiniowaną listą elementów. Każdy element na liście może mieć synonimy, które są również dokładnie zgodne
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: 056c64657f42d56879928f518598206d45493f60
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/12/2020
+ms.openlocfilehash: 1cfeccbd54e8ef8ec315d53fc7a766760c92a0d1
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447784"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297411"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance-with-list-entity"></a>Samouczek: uzyskiwanie dokładnych danych dopasowanych do tekstu z wypowiedź za pomocą jednostki listy
 
@@ -42,7 +34,7 @@ Jednostka listy jest dobrym rozwiązaniem w przypadku tego typu danych, jeśli:
 
 * Wartości danych należą do znanego zestawu.
 * Zestaw nie przekracza maksymalnych [granic](luis-boundaries.md) usługi LUIS dla tego typu jednostki.
-* Tekst w wypowiedzi to dokładne dopasowanie synonimu lub nazwy kanonicznej. Usługa LUIS nie korzysta z listy poza dokładnymi dopasowaniami tekstu. Analiza słowotwórcza, liczba mnoga i inne wariacje nie są rozpoznawane przy użyciu tylko jednostki listy. Aby zarządzać wariacjami, rozważ użycie [wzorca](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) z opcjonalną składnią tekstu.
+* Tekst w wypowiedź jest dopasowaniem bez uwzględniania wielkości liter z synonimem lub nazwą kanoniczną. LUIS nie używa listy poza dopasowaniem. Analiza słowotwórcza, liczba mnoga i inne wariacje nie są rozpoznawane przy użyciu tylko jednostki listy. Aby zarządzać wariacjami, rozważ użycie [wzorca](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) z opcjonalną składnią tekstu.
 
 > [!CAUTION]
 > Jeśli nie masz pewności, czy chcesz, aby jednostka listy lub obiekt, który został wystawiony przez maszynę z listą fraz jako deskryptora, najlepszym i najbardziej elastycznym rozwiązaniem jest użycie jednostki obsługiwanej przez maszynę z listą fraz jako deskryptora. Ta metoda umożliwia LUISom naukę i zwiększanie wartości danych do wyodrębnienia.
@@ -72,7 +64,7 @@ Przykłady podstawowej nazwy i synonimów to:
 |Nazwa kanoniczna|Synonimy|
 |--|--|
 |Głębokie nadania|niskim<br>głęboki Crust naczyń<br>cieńsz<br>Gruby Crust|
-|Przesuwanie|regularne<br>Oryginał<br>typow<br>Regularna Crust<br>oryginalny Crust<br>normalne Crust|
+|Ogólnoeuropejskich|regularne<br>Oryginał<br>typow<br>Regularna Crust<br>oryginalny Crust<br>normalne Crust|
 |Maskotka|Crusty|
 |Elastyczne|crust cienki<br>skinny<br>skinny crust|
 
@@ -80,7 +72,7 @@ Przykłady podstawowej nazwy i synonimów to:
 
 1. Wybierz pozycję **+ Utwórz**.
 
-1. W oknie podręcznym jednostki wprowadź ciąg `CrustList` jako nazwę jednostki i wartość **List** (Lista) jako typ jednostki. Wybierz opcję **Dalej**.
+1. W oknie podręcznym jednostki wprowadź `CrustList` jako nazwę jednostki i **Lista** (Lista) jako typ jednostki. Wybierz opcję **Dalej**.
 
     > [!div class="mx-imgBorder"]
     > Zrzut ekranu przedstawiający ![tworzenia nowego okna podręcznego nowej jednostki](media/luis-quickstart-intent-and-list-entity/create-pizza-crust-list-entity.png)

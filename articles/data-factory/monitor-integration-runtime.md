@@ -11,11 +11,11 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: 2399849b87e44c5cb70d2db987ae18d8d2d9c552
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355717"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261140"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Monitorowanie środowiska Integration Runtime w Azure Data Factory  
 **Integration Runtime** to infrastruktura obliczeniowa używana przez Azure Data Factory, która zapewnia różne możliwości integracji danych w różnych środowiskach sieciowych. Istnieją trzy typy środowisk Integration Runtime oferowanych przez Data Factory:
@@ -55,7 +55,7 @@ W poniższej tabeli przedstawiono możliwe stany środowiska Azure Integration R
 | Stan | Komentarze/scenariusze | 
 | ------ | ------------------ |
 | Sieci | Środowisko Azure Integration Runtime jest w trybie online i gotowe do użycia. | 
-| W trybie offline | Środowisko Azure Integration Runtime jest w trybie offline z powodu błędu wewnętrznego. |
+| Taśma | Środowisko Azure Integration Runtime jest w trybie offline z powodu błędu wewnętrznego. |
 
 ## <a name="self-hosted-integration-runtime"></a>Infrastruktura Integration Runtime (Self-hosted)
 Ta sekcja zawiera opisy właściwości zwracanych przez polecenie cmdlet Get-AzDataFactoryV2IntegrationRuntime. 
@@ -94,7 +94,7 @@ W poniższej tabeli przedstawiono możliwe stany własnego węzła Integration R
 | Stan | Opis |
 | ------ | ------------------ | 
 | Sieci | Węzeł jest połączony z usługą Data Factory. |
-| W trybie offline | Węzeł jest w trybie offline. |
+| Taśma | Węzeł jest w trybie offline. |
 | Uaktualnianie | Węzeł jest aktualizowany w sposób autouzupełniania. |
 | Separator | Z powodu problemu z łącznością. Może to być spowodowane problemem z portem HTTP 8050, problemem z łącznością usługi Service Bus lub problemem z synchronizacją poświadczeń. |
 | Nieaktywne | Węzeł jest w konfiguracji innej niż Konfiguracja innych węzłów większości. |
@@ -108,7 +108,7 @@ W poniższej tabeli przedstawiono możliwe stany środowiska Integration Runtime
 | ------ | ----------- | 
 | Potrzebna rejestracja | Nie zarejestrowano jeszcze żadnego węzła w tym środowisku Integration Runtime. |
 | Sieci | Wszystkie węzły są w trybie online. |
-| W trybie offline | Żaden węzeł nie jest w trybie online. |
+| Taśma | Żaden węzeł nie jest w trybie online. |
 | Separator | Nie wszystkie węzły w tym samym środowisku Integration Runtime są w dobrej kondycji. Ten stan jest ostrzeżeniem, że niektóre węzły mogą nie działać. Ten stan może być spowodowany problemem z synchronizacją poświadczeń w węźle dyspozytora/proces roboczy. |
 
 Użyj polecenia cmdlet **Get-AzDataFactoryV2IntegrationRuntimeMetric** , aby pobrać ładunek JSON zawierający szczegółowe właściwości samodzielnego środowiska Integration Runtime oraz ich wartości migawek w czasie wykonywania polecenia cmdlet.

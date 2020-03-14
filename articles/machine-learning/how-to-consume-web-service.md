@@ -12,11 +12,11 @@ ms.reviewer: larryfr
 ms.date: 01/07/2020
 ms.custom: seodec18
 ms.openlocfilehash: 4c3e60e9c296dc8e3a1e31a52a262d8462237407
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355297"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283695"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Korzystanie z modelu usługi Azure Machine Learning, wdrożyć jako usługę sieci web
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -89,7 +89,7 @@ Azure Machine Learning zapewnia dwa sposoby kontroli dostępu do usług sieci We
 |Metoda uwierzytelniania|ACI|AKS|
 |---|---|---|
 |Klucz|Domyślnie wyłączone| Domyślnie włączona|
-|Token| Niedostępne| Domyślnie wyłączone |
+|Token| Niedostępny| Domyślnie wyłączone |
 
 Podczas wysyłania żądania do usługi, która jest zabezpieczona za pomocą klucza lub tokenu, użyj nagłówka __autoryzacji__ w celu przekazania klucza lub tokenu. Klucz lub token musi być sformatowany jako `Bearer <key-or-token>`, gdzie `<key-or-token>` jest wartością klucza lub tokenu.
 

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: cherylmc
 ms.openlocfilehash: 9f5c5cc3a943ad4a8882a91ffdcee89c2ad39743
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355770"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79272970"
 ---
 # <a name="expressroute-nat-requirements"></a>Wymagania dotyczące translatora adresów sieciowych w usłudze ExpressRoute
 Aby połączyć się z usługami w chmurze firmy Microsoft przy użyciu usługi ExpressRoute, należy skonfigurować translatory adresów sieciowych oraz zarządzać nimi. Niektórzy dostawcy połączenia oferują konfigurowanie translatora adresów sieciowych oraz zarządzanie nim jako usługę zarządzaną. Skontaktuj się z dostawcą połączenia, aby sprawdzić, czy taka usługa jest oferowana. Jeśli nie, musisz spełnić wymagania opisane poniżej. 

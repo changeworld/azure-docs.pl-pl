@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: cabd3f7693c6b6b86bf0324bdafdfe1377d1ece8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362953"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256798"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Macierz obsługi odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych do lokacji dodatkowej
 
@@ -68,15 +68,15 @@ Można replikować tylko maszyny z systemem Linux z następującym magazynem:
 
 **Konfiguracja** | **Obsługiwane**  
 --- | --- 
-Hostowanie — Tworzenie zespołu kart interfejsu sieciowego | Yes 
-Host-sieć VLAN | Yes 
-Host-IPv4 | Yes 
+Hostowanie — Tworzenie zespołu kart interfejsu sieciowego | Tak 
+Host-sieć VLAN | Tak 
+Host-IPv4 | Tak 
 Host-IPv6 | Nie 
 Maszyna wirtualna gościa — Tworzenie zespołu kart interfejsu sieciowego | Nie
-Maszyna wirtualna gościa — IPv4 | Yes
+Maszyna wirtualna gościa — IPv4 | Tak
 Maszyna wirtualna gościa — IPv6 | Nie
-Maszyna wirtualna gościa — system Windows/Linux — statyczny adres IP | Yes
-Maszyna wirtualna gościa — wiele kart sieciowych | Yes
+Maszyna wirtualna gościa — system Windows/Linux — statyczny adres IP | Tak
+Maszyna wirtualna gościa — wiele kart sieciowych | Tak
 
 
 ## <a name="storage"></a>Storage
@@ -85,30 +85,30 @@ Maszyna wirtualna gościa — wiele kart sieciowych | Yes
 
 **Magazyn (Host)** | **Obsługiwane** 
 --- | --- 
-NFS | Yes 
-SMB 3.0 | Nie dotyczy 
-SAN (ISCSI) | Yes 
-Wiele ścieżek (MPIO) | Yes 
+NFS | Tak 
+SMB 3.0 | N/D 
+SAN (ISCSI) | Tak 
+Wiele ścieżek (MPIO) | Tak 
 
 ### <a name="guest-or-physical-server-storage"></a>Magazyn Gości lub serwer fizyczny
 
 **Konfiguracja** | **Obsługiwane** 
 --- | --- 
-VMDK | Yes 
-VHD/VHDX | Nie dotyczy 
-Maszyna wirtualna generacji 2 | Nie dotyczy 
-Udostępniony dysk klastra | Yes 
+VMDK | Tak 
+VHD/VHDX | N/D 
+Maszyna wirtualna generacji 2 | N/D 
+Udostępniony dysk klastra | Tak 
 Zaszyfrowany dysk | Nie 
-UEFI| Yes 
+UEFI| Tak 
 NFS | Nie 
 SMB 3.0 | Nie 
-RDM | Yes 
-Dysk > 1 TB | Yes 
-Wolumin z dyskiem rozłożonym > 1 TB<br/><br/> LVM | Yes 
+RDM | Tak 
+Dysk > 1 TB | Tak 
+Wolumin z dyskiem rozłożonym > 1 TB<br/><br/> LVM | Tak 
 Miejsca do magazynowania | Nie 
-Gorące Dodawanie/usuwanie dysku | Yes 
-Wykluczanie dysku | Yes 
-Wiele ścieżek (MPIO) | Nie dotyczy 
+Gorące Dodawanie/usuwanie dysku | Tak 
+Wykluczanie dysku | Tak 
+Wiele ścieżek (MPIO) | N/D 
 
 ## <a name="vaults"></a>Magazyny
 

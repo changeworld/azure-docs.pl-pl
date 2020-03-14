@@ -4,11 +4,11 @@ description: W tym artykule omówiono obsługiwane scenariusze i ograniczenia do
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.openlocfilehash: 8496dc4996cac68535bfe9be30e4b5f72e2d5721
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382461"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79252443"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Macierz obsługi dla kopii zapasowych baz danych platformy SAP HANA na maszynach wirtualnych platformy Azure
 

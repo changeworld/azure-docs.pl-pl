@@ -15,11 +15,11 @@ ms.date: 11/18/2019
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: fee3dc764d2052185160a4ba6b3d70854c54eeac
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388336"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79252274"
 ---
 > [!NOTE] 
 > Konta użytkowników omówione w tym artykule różnią się od kont użytkowników używanych dla Remote Desktop Protocol (RDP) lub Secure Shell (SSH) ze względów bezpieczeństwa. 

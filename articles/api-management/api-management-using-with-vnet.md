@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/09/2020
 ms.author: apimpm
-ms.openlocfilehash: 62e8c174cd10a003657093b805291e003a9ede1b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 0ff7eff2465f187c25c58b429db752decc38ffc4
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79244058"
+ms.locfileid: "79298040"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak używać usługi Azure API Management z sieciami wirtualnymi
 Sieci wirtualne platformy Azure umożliwiają umieszczanie dowolnych zasobów platformy Azure w sieci nieobsługującej routingu internetowego, do której kontrolujesz dostęp. Te sieci mogą następnie być połączone z sieciami lokalnymi przy użyciu różnych technologii sieci VPN. Aby dowiedzieć się więcej na temat sieci wirtualnych platformy Azure, Zacznij od informacji tutaj: [Omówienie usługi azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -180,6 +180,8 @@ Platforma Azure rezerwuje niektóre adresy IP w poszczególnych podsieciach i ni
 Oprócz adresów IP używanych przez infrastrukturę sieci wirtualnej platformy Azure, każde wystąpienie usługi API Management w podsieci używa dwóch adresów IP na jednostkę SKU Premium lub jeden adres IP dla jednostki SKU dewelopera. Każde wystąpienie rezerwuje dodatkowy adres IP dla zewnętrznego modułu równoważenia obciążenia. Podczas wdrażania w wewnętrznej sieci wirtualnej wymaga dodatkowego adresu IP dla wewnętrznego modułu równoważenia obciążenia.
 
 W przypadku obliczenia przekraczającego minimalny rozmiar podsieci, w której można wdrożyć API Management to/29, które udostępniają trzy użyteczne adresy IP.
+
+Każda dodatkowa jednostka skalowania API Management wymaga dwóch dodatkowych adresów IP.
 
 ## <a name="routing"></a> Routing
 + Publiczny adres IP ze zrównoważonym obciążeniem (VIP) zostanie zarezerwowany w celu zapewnienia dostępu do wszystkich punktów końcowych usługi.

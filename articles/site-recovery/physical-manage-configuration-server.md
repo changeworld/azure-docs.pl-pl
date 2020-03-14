@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
 ms.openlocfilehash: f443f0362ecad8448895322686a7175b2813141e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78367107"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257786"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Zarządzanie serwerem konfiguracji na potrzeby odzyskiwania po awarii serwera fizycznego
 
@@ -110,19 +110,19 @@ Uruchom plik instalacyjny w następujący sposób:
 
 |Nazwa parametru| Typ | Opis| Wartości|
 |-|-|-|-|
-| /ServerMode|Wymagany|Określa, czy mają zostać zainstalowane oba serwery, konfiguracji i przetwarzania, czy tylko serwer przetwarzania|CS<br>PS|
-|/InstallLocation|Wymagany|Folder, w którym są instalowane składniki| Dowolny folder na komputerze|
-|/MySQLCredsFilePath|Wymagany|Ścieżka pliku, w której są przechowywane poświadczenia serwera MySQL|Plik powinien mieć format określony poniżej|
-|/VaultCredsFilePath|Wymagany|Ścieżka pliku poświadczeń magazynu|Prawidłowa ścieżka pliku|
-|/EnvType|Wymagany|Typ środowiska, który ma być chroniony |VMware<br>NonVMware|
-|/PSIP|Wymagany|Adres IP karty sieciowej do użytku podczas przesyłania danych replikacji| Dowolny prawidłowy adres IP|
-|/CSIP|Wymagany|Adres IP karty sieciowej, na której nasłuchuje serwer konfiguracji| Dowolny prawidłowy adres IP|
-|/PassphraseFilePath|Wymagany|Pełna ścieżka do lokalizacji pliku hasła|Prawidłowa ścieżka pliku|
+| /ServerMode|Wymagane|Określa, czy mają zostać zainstalowane oba serwery, konfiguracji i przetwarzania, czy tylko serwer przetwarzania|CS<br>PS|
+|/InstallLocation|Wymagane|Folder, w którym są instalowane składniki| Dowolny folder na komputerze|
+|/MySQLCredsFilePath|Wymagane|Ścieżka pliku, w której są przechowywane poświadczenia serwera MySQL|Plik powinien mieć format określony poniżej|
+|/VaultCredsFilePath|Wymagane|Ścieżka pliku poświadczeń magazynu|Prawidłowa ścieżka pliku|
+|/EnvType|Wymagane|Typ środowiska, który ma być chroniony |VMware<br>NonVMware|
+|/PSIP|Wymagane|Adres IP karty sieciowej do użytku podczas przesyłania danych replikacji| Dowolny prawidłowy adres IP|
+|/CSIP|Wymagane|Adres IP karty sieciowej, na której nasłuchuje serwer konfiguracji| Dowolny prawidłowy adres IP|
+|/PassphraseFilePath|Wymagane|Pełna ścieżka do lokalizacji pliku hasła|Prawidłowa ścieżka pliku|
 |/BypassProxy|Optional (Opcjonalność)|Określa, że serwer konfiguracji łączy się z platformą Azure bez serwera proxy|Należy uzyskać tę wartość z Venu|
 |/ProxySettingsFilePath|Optional (Opcjonalność)|Ustawienia serwera proxy (domyślny serwer proxy wymaga uwierzytelniania lub niestandardowy serwer proxy)|Plik powinien mieć format określony poniżej|
 |DataTransferSecurePort|Optional (Opcjonalność)|Numer portu dla protokołu PSIP do użytku z danymi replikacji| Prawidłowy numer portu (wartość domyślna to 9433)|
 |/SkipSpaceCheck|Optional (Opcjonalność)|Pomiń sprawdzanie miejsca dla dysku pamięci podręcznej| |
-|/AcceptThirdpartyEULA|Wymagany|Flaga implikuje akceptację umowy licencyjnej innego producenta| |
+|/AcceptThirdpartyEULA|Wymagane|Flaga implikuje akceptację umowy licencyjnej innego producenta| |
 |/ShowThirdpartyEULA|Optional (Opcjonalność)|Wyświetla umowę licencyjną innej firmy. Jeśli zostanie podany w danych wejściowych, wszystkie inne parametry są ignorowane| |
 
 

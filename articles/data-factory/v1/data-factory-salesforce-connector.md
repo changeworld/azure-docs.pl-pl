@@ -13,11 +13,11 @@ ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 8b94f6388d77cca2ef74c802aec7648091172775
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387495"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281134"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Przenoszenie danych z usługi Salesforce przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -66,20 +66,20 @@ Poniższe sekcje zawierają szczegółowe informacje na temat właściwości JSO
 ## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 Poniższa tabela zawiera opisy elementów JSON, które są specyficzne dla połączonej usługi Salesforce.
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| type |Właściwość Type musi być ustawiona na wartość: **Salesforce**. |Yes |
+| typ |Właściwość Type musi być ustawiona na wartość: **Salesforce**. |Tak |
 | environmentUrl | Określ adres URL wystąpienia usługi Salesforce. <br><br> -Wartość domyślna to "https:\//login.salesforce.com". <br> -Aby skopiować dane z piaskownicy, określ "https://test.salesforce.com". <br> -Aby skopiować dane z domeny niestandardowej, określ, na przykład "https://[domena]. my. Salesforce. com". |Nie |
-| nazwa użytkownika |Określ nazwę użytkownika dla konta użytkownika. |Yes |
-| hasło |Określ hasło dla konta użytkownika. |Yes |
-| securityToken |Określ token zabezpieczający dla konta użytkownika. Zobacz [pobieranie tokenu zabezpieczającego](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) , aby uzyskać instrukcje dotyczące resetowania/pobierania tokenu zabezpieczającego. Aby uzyskać ogólne informacje na temat tokenów zabezpieczających, zobacz [zabezpieczenia i interfejs API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). |Yes |
+| nazwa użytkownika |Określ nazwę użytkownika dla konta użytkownika. |Tak |
+| hasło |Określ hasło dla konta użytkownika. |Tak |
+| securityToken |Określ token zabezpieczający dla konta użytkownika. Zobacz [pobieranie tokenu zabezpieczającego](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) , aby uzyskać instrukcje dotyczące resetowania/pobierania tokenu zabezpieczającego. Aby uzyskać ogólne informacje na temat tokenów zabezpieczających, zobacz [zabezpieczenia i interfejs API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). |Tak |
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 Aby zapoznać się z pełną listą sekcji i właściwości, które są dostępne do definiowania zestawów danych, zobacz artykuł [Tworzenie zestawów danych](data-factory-create-datasets.md) . Sekcje, takie jak struktura, dostępność i zasady JSON zestawu danych, są podobne do wszystkich typów zestawu danych (Azure SQL, Azure Blob, Azure Table itd.).
 
 Sekcja **typeProperties** jest inna dla każdego typu zestawu danych i zawiera informacje dotyczące lokalizacji danych w magazynie danych. Sekcja typeProperties zestawu danych typu **relacyjnego** ma następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | tableName |Nazwa tabeli w usłudze Salesforce. |Nie (Jeśli określono **zapytanie** o **RelationalSource** ) |
 
@@ -95,9 +95,9 @@ Właściwości, które są dostępne w sekcji typeProperties działania, z drugi
 
 W działaniu kopiowania, gdy źródłem jest typ **RelationalSource** (w tym Salesforce), w sekcji typeProperties dostępne są następujące właściwości:
 
-| Właściwość | Opis | Dozwolone wartości | Wymagany |
+| Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| query |Użyj zapytania niestandardowego do odczytywania danych. |Zapytanie dotyczące języka SQL-92 lub zapytania o [obiekt SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) . Na przykład: `select * from MyTable__c`. |Nie (Jeśli określono wartość **TableName** **zestawu danych** ) |
+| zapytanie |Użyj zapytania niestandardowego do odczytywania danych. |Zapytanie dotyczące języka SQL-92 lub zapytania o [obiekt SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) . Na przykład: `select * from MyTable__c`. |Nie (Jeśli określono wartość **TableName** **zestawu danych** ) |
 
 > [!IMPORTANT]
 > Część "__c" nazwy interfejsu API jest wymagana dla dowolnego obiektu niestandardowego.
@@ -303,7 +303,7 @@ Zobacz [właściwości typu RelationalSource](#copy-activity-properties) , aby u
 | Text Area (Long) |Ciąg |
 | Text Area (Rich) |Ciąg |
 | Text (Encrypted) |Ciąg |
-| Adres URL |Ciąg |
+| {1&gt;URL&lt;1} |Ciąg |
 
 > [!NOTE]
 > Aby zmapować kolumny ze źródłowego zestawu danych do kolumn z obiektu ujścia danych, zobacz [Mapowanie kolumn zestawu danych w Azure Data Factory](data-factory-map-columns.md).

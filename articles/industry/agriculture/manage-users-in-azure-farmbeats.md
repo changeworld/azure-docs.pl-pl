@@ -5,14 +5,14 @@ author: uhabiba04
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: v-umha
-ms.openlocfilehash: 208a302a0702a5c4de4d194c9e72f562aaf758c4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 47da8146d3984982a9024b3bd084a1ab384c944f
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79271696"
+ms.locfileid: "79298788"
 ---
-# <a name="manage-users"></a>Zarządzanie użytkownikami
+# <a name="manage-users"></a>Zarządzaj użytkownikami
 
 Usługa Azure FarmBeats obejmuje zarządzanie użytkownikami dla osób, które są częścią wystąpienia usługi Azure Active Directory (Azure AD). Możesz dodać użytkowników do wystąpienia usługi Azure FarmBeats, aby uzyskać dostęp do interfejsów API, wyświetlić wygenerowane mapy oraz dane telemetryczne czujnika dostępu z farmy.
 
@@ -26,6 +26,8 @@ Usługa Azure FarmBeats obejmuje zarządzanie użytkownikami dla osób, które s
 Usługa Azure FarmBeats używa usługi Azure AD do uwierzytelniania, kontroli dostępu i ról. Użytkowników w dzierżawie usługi Azure AD możesz dodać jako użytkowników w usłudze Azure FarmBeats.
 
 > [!NOTE]
+> Jeśli użytkownik nie jest użytkownikiem dzierżawy usługi Azure AD, postępuj zgodnie z instrukcjami w sekcji **Dodawanie użytkowników usługi Azure AD** , aby zakończyć instalację.
+
 > Jeśli użytkownik, który próbujesz dodać jako użytkownika platformy Azure FarmBeats, nie znajduje się w dzierżawie usługi Azure AD, wykonaj czynności opisane w sekcji "Dodawanie użytkowników usługi Azure AD".
 
 Usługa Azure FarmBeats obsługuje dwa typy ról użytkownika:
@@ -63,7 +65,7 @@ Aby usunąć użytkowników z systemu Azure FarmBeats:
 ## <a name="add-azure-ad-users"></a>Dodawanie użytkowników usługi Azure AD
 
 > [!NOTE]
-> Aby można było przypisywać aplikacje i role, użytkownicy usługi Azure FarmBeats muszą znajdować się w dzierżawie usługi Azure AD. Jeśli użytkownik, który ma zostać dodany do usługi Azure FarmBeats, nie istnieje już w dzierżawie usługi Azure AD, postępuj zgodnie z instrukcjami w tej sekcji. Jeśli użytkownik istnieje w dzierżawie usługi Azure AD, możesz pominąć te instrukcje.
+> Użytkownicy usługi Azure FarmBeats muszą znajdować się w dzierżawie usługi Azure AD przed przypisaniem ich do aplikacji i ról. Jeśli użytkownik nie istnieje w dzierżawie usługi Azure AD, postępuj zgodnie z instrukcjami w tej sekcji. Pomiń instrukcje, jeśli użytkownik już istnieje w dzierżawie usługi Azure AD.
 
 Aby dodać użytkowników do usługi Azure AD, wykonaj następujące czynności:
 

@@ -4,11 +4,11 @@ description: Dokumentacja ustawień aplikacji usługi Azure Functions lub zmienn
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.openlocfilehash: 3853ccbfd492bfaf4a82d62e6d31ab938285ee2e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357578"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79277832"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Dokumentacja ustawień aplikacji dla usługi Azure Functions
 
@@ -47,7 +47,7 @@ Opcjonalne parametry połączenia konta magazynu służące do przechowywania dz
 
 |Klucz|Wartość przykładowa|
 |---|------------|
-|AzureWebJobsDisableHomepage|true|
+|AzureWebJobsDisableHomepage|{1&gt;true&lt;1}|
 
 Gdy to ustawienie aplikacji zostanie pominięte lub ustawione na `false`, w odpowiedzi na adres URL `<functionappname>.azurewebsites.net`zostanie wyświetlona strona podobna do poniższego przykładu.
 
@@ -59,7 +59,7 @@ Gdy to ustawienie aplikacji zostanie pominięte lub ustawione na `false`, w odpo
 
 |Klucz|Wartość przykładowa|
 |---|------------|
-|AzureWebJobsDotNetReleaseCompilation|true|
+|AzureWebJobsDotNetReleaseCompilation|{1&gt;true&lt;1}|
 
 ## <a name="azurewebjobsfeatureflags"></a>AzureWebJobsFeatureFlags
 
@@ -120,7 +120,7 @@ Wymaga, aby [funkcje\_EXTENSION\_wersja](functions-app-settings.md#functions_ext
 
 |Klucz|Wartość przykładowa|
 |---|------------|
-|FUNKCJE\_w wersji 2\_\_tryb zgodności|true|
+|FUNKCJE\_w wersji 2\_\_tryb zgodności|{1&gt;true&lt;1}|
 
 ## <a name="functions_worker_process_count"></a>FUNKCJE\_proces\_procesu roboczego\_liczba
 
@@ -191,8 +191,8 @@ Domyślnie skrót do wysyłania wywołania interfejsu API z serwerów proxy bezp
 
 |Klucz|Wartość|Opis|
 |-|-|-|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|Wywołania z adresem URL zaplecza wskazujące funkcję w lokalnym aplikacja funkcji nie będą już wysyłane bezpośrednio do funkcji i będą kierowane z powrotem do frontonu HTTP dla aplikacja funkcji|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|Jest to wartość domyślna. Wywołania z adresem URL zaplecza wskazujące funkcję w lokalnym aplikacja funkcji będą przekazywane bezpośrednio do tej funkcji|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|{1&gt;true&lt;1}|Wywołania z adresem URL zaplecza wskazujące funkcję w lokalnym aplikacja funkcji nie będą już wysyłane bezpośrednio do funkcji i będą kierowane z powrotem do frontonu HTTP dla aplikacja funkcji|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|{1&gt;false&lt;1}|Jest to wartość domyślna. Wywołania z adresem URL zaplecza wskazujące funkcję w lokalnym aplikacja funkcji będą przekazywane bezpośrednio do tej funkcji|
 
 
 ## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
@@ -201,8 +201,8 @@ To ustawienie określa, czy % 2F jest zdekodowany jako ukośnikami w parametrów
 
 |Klucz|Wartość|Opis|
 |-|-|-|
-|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|Parametry trasy z ukośnikami zakodowany będzie je zdekodowane. `example.com/api%2ftest` stanie się `example.com/api/test`|
-|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|To zachowanie domyślne. Wszystkie trasy, który zostanie przekazany parametry bez zmian|
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|{1&gt;true&lt;1}|Parametry trasy z ukośnikami zakodowany będzie je zdekodowane. `example.com/api%2ftest` stanie się `example.com/api/test`|
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|{1&gt;false&lt;1}|To zachowanie domyślne. Wszystkie trasy, który zostanie przekazany parametry bez zmian|
 
 ### <a name="example"></a>Przykład
 
@@ -223,8 +223,8 @@ Oto przykładowy plik proxies.json w aplikacji funkcji w myfunction.com adresu U
 ```
 |Dekodowanie adresu URL|Dane wejściowe|Dane wyjściowe|
 |-|-|-|
-|true|MyFunction.com/test%2fapi|example.com/test/API
-|false|MyFunction.com/test%2fapi|example.com/test%2fapi|
+|{1&gt;true&lt;1}|MyFunction.com/test%2fapi|example.com/test/API
+|{1&gt;false&lt;1}|MyFunction.com/test%2fapi|example.com/test%2fapi|
 
 
 ## <a name="next-steps"></a>Następne kroki

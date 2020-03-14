@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: ec84d3804c24766c6344e9909ba10089e186599c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 7bb386d39f53331e77bee4d863c431c2e3655f5c
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623455"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298839"
 ---
 # <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Definiowanie nowego typu urządzenia bramy IoT w aplikacji IoT Central platformy Azure
 
@@ -203,6 +203,9 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 * Zdefiniuj wizualizację dla danych telemetrycznych urządzenia.
 * Dodaj relacje.
 * Opublikuj szablon urządzenia.
+
+> [!NOTE]
+> Generowanie kodu na podstawie VS Code nie jest obecnie obsługiwane w przypadku urządzeń bramy modelowanych w IoT Central.
 
 Następnie możesz:
 

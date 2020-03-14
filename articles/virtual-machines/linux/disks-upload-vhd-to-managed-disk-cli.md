@@ -4,16 +4,16 @@ description: Dowiedz się, jak przekazać dysk VHD do dysku zarządzanego platfo
 services: virtual-machines,storage
 author: roygara
 ms.author: rogarana
-ms.date: 09/20/2019
+ms.date: 03/13/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 2a5bfec08546d6cf00b1e04017b3879db8f016ee
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: f2eb0f59d460fbf8d6595db658bb3f5f9c4a6ad0
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970342"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365853"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-cli"></a>Przekazywanie wirtualnego dysku twardego do platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -28,7 +28,7 @@ Obecnie bezpośrednie przekazywanie jest obsługiwane dla standardowego dysku tw
 - Pobierz najnowszą [wersję programu AzCopy v10](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy).
 - [Zainstaluj interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 - Plik VHD zapisany lokalnie
-- Jeśli zamierzasz przekazać dysk VHD ze swojego miejsca lokalnego: dysku VHD [przygotowanego dla platformy Azure](../windows/prepare-for-upload-vhd-image.md), który jest przechowywany lokalnie.
+- Jeśli zamierzasz przekazać dysk VHD ze swojego miejsca lokalnego: dysk VHD o stałym rozmiarze [przygotowany dla platformy Azure](../windows/prepare-for-upload-vhd-image.md), przechowywany lokalnie.
 - Lub dysk zarządzany na platformie Azure, jeśli zamierzasz wykonać akcję kopiowania.
 
 ## <a name="create-an-empty-managed-disk"></a>Utwórz pusty dysk zarządzany
@@ -79,8 +79,6 @@ To przekazywanie ma taką samą przepływność jak odpowiednik [standardowego d
 ```bash
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" "sas-URI" --blob-type PageBlob
 ```
-
-Jeśli Twoje sygnatury dostępu współdzielonego wygasną podczas przekazywania i nie wywołałeś jeszcze `revoke-access`, możesz uzyskać nowe sygnatury dostępu współdzielonego, aby kontynuować przekazywanie za pomocą `grant-access`ponownie.
 
 Po zakończeniu przekazywania i nie musisz już pisać więcej danych na dysku, odwołaj sygnaturę dostępu współdzielonego. Odwoływanie sygnatury dostępu współdzielonego spowoduje zmianę stanu dysku zarządzanego i umożliwi dołączenie dysku do maszyny wirtualnej.
 

@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 02/07/2019
-ms.openlocfilehash: 7356f627c8a85cb89f3900e1af84d5e0a7d4be17
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: 9af7b471210ca3cc69428e68aef4aafaee159344
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096209"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299077"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Konfigurowanie replikacji w Azure SQL Database bazie danych wystąpienia zarządzanego
 
@@ -42,7 +42,6 @@ Replikacja transakcyjna jest w publicznej wersji zapoznawczej na [Azure SQL Data
 
 Skonfigurowanie wystąpienia zarządzanego do działania w ramach wydawcy i/lub dystrybutora wymaga:
 
-- Że wystąpienie zarządzane nie uczestniczy obecnie w relacji replikacji geograficznej.
 - Że wystąpienie zarządzane wydawcy znajduje się w tej samej sieci wirtualnej co dystrybutora i subskrybenta, lub ustanowiono [komunikację równorzędną](../virtual-network/tutorial-connect-virtual-networks-powershell.md) sieci wirtualnych w ramach wszystkich trzech jednostek. 
 - Połączenie korzysta z uwierzytelniania SQL między uczestnikami replikacji.
 - Udział konta usługi Azure Storage dla katalogu roboczego replikacji.

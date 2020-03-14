@@ -8,11 +8,11 @@ ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
 ms.openlocfilehash: d2dfaab3d01ea29b0f9ecba1e9d748415bed2edc
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391765"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257201"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Konfigurowanie odzyskiwania po awarii maszyn wirtualnych VMware na platformie Azure przy użyciu programu PowerShell
 
@@ -353,9 +353,9 @@ Teraz Replikuj następujące maszyny wirtualne przy użyciu ustawień określony
 
 |Maszyna wirtualna  |Serwer przetwarzania        |Konto magazynu              |Konto magazynu dzienników  |Zasady           |Konto do instalacji usługi mobilności|Docelowa Grupa zasobów  | Docelowa sieć wirtualna  |Podsieć docelowa  |
 |-----------------|----------------------|-----------------------------|---------------------|-----------------|-----------------------------------------|-----------------------|-------------------------|---------------|
-|CentOSVM1       |ConfigurationServer   |Nie dotyczy| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |
+|CentOSVM1       |ConfigurationServer   |N/D| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |
 |Win2K12VM1       |ScaleOut-ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   
-|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| Nie dotyczy                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   
+|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| N/D                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   
 
 
 ```azurepowershell

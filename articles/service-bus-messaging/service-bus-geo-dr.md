@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 24d6658733ea38c15f0673d10db3c0ff5ef51c23
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357750"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259580"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus geograficznie — odzyskiwanie po awarii
 
@@ -105,7 +105,7 @@ Można zautomatyzować trybu failover z systemów monitorowania lub za pomocą n
 
 ![2][]
 
-## <a name="management"></a>Zarządzanie
+## <a name="management"></a>Serwer
 
 Jeśli w przypadku popełnienia; na przykład sparowane regiony problem podczas początkowej konfiguracji, może przerwać parowanie dwie przestrzeni nazw w dowolnym momencie. Jeśli chcesz użyć sparowane przestrzenie nazw jako regularne przestrzenie nazw, Usuń ten alias.
 

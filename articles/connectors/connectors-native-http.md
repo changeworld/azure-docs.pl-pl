@@ -1,30 +1,47 @@
 ---
-title: Wywoływanie punktów końcowych HTTP i HTTPS
-description: Wysyłaj żądania wychodzące do punktów końcowych HTTP i HTTPS za pomocą Azure Logic Apps
+title: Wywoływanie punktów końcowych usługi przy użyciu protokołu HTTP lub HTTPS
+description: Wysyłaj żądania wychodzące HTTP lub HTTPS do punktów końcowych usługi z Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 03/12/2020
 tags: connectors
-ms.openlocfilehash: 9c1b2af8d06c9466ed6c82308de941b43510238a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 8aefe851708c0b8d8780d03e4364e034e783bf4a
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77117960"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297212"
 ---
-# <a name="send-outgoing-calls-to-http-or-https-endpoints-by-using-azure-logic-apps"></a>Wysyłaj wywołania wychodzące do punktów końcowych HTTP lub HTTPS za pomocą Azure Logic Apps
+# <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Wywoływanie punktów końcowych usługi za pośrednictwem protokołu HTTP lub HTTPS z Azure Logic Apps
 
-Za pomocą [Azure Logic Apps](../logic-apps/logic-apps-overview.md) i wbudowanego wyzwalacza http lub akcji można tworzyć automatyczne zadania i przepływy pracy, które regularnie wysyłają żądania do dowolnego punktu końcowego http lub https. Aby w zamian odbierać przychodzące wywołania HTTP lub HTTPS i odpowiadać na nie, użyj wbudowanego [wyzwalacza lub akcji odpowiedzi](../connectors/connectors-native-reqres.md).
+Za pomocą [Azure Logic Apps](../logic-apps/logic-apps-overview.md) i wbudowanego wyzwalacza http lub akcji można tworzyć automatyczne zadania i przepływy pracy, które wysyłają żądania do punktów końcowych usługi za pośrednictwem protokołu HTTP lub https. Na przykład można monitorować punkt końcowy usługi dla witryny sieci Web, sprawdzając ten punkt końcowy zgodnie z określonym harmonogramem. Po wystąpieniu określonego zdarzenia w tym punkcie końcowym, takim jak witryna sieci Web, zdarzenie wyzwala przepływ pracy aplikacji logiki i uruchamia akcje w tym przepływie pracy. Jeśli zamiast tego chcesz otrzymywać przychodzące wywołania HTTPS i odpowiadać na nie, użyj wbudowanego [wyzwalacza żądań lub akcji odpowiedzi](../connectors/connectors-native-reqres.md).
 
-Na przykład można monitorować punkt końcowy usługi dla witryny sieci Web, sprawdzając ten punkt końcowy zgodnie z określonym harmonogramem. Gdy w tym punkcie końcowym wystąpi określone zdarzenie, takie jak witryna sieci Web, zdarzenie wyzwala przepływ pracy aplikacji logiki i uruchamia określone akcje.
+> [!NOTE]
+> Na podstawie możliwości docelowego punktu końcowego łącznik protokołu HTTP obsługuje Transport Layer Security (TLS) w wersjach 1,0, 1,1 i 1,2. Logic Apps negocjuje z punktem końcowym przy użyciu najwyższej obsługiwanej wersji. Jeśli na przykład punkt końcowy obsługuje 1,2, łącznik najpierw używa 1,2. W przeciwnym razie łącznik używa następnej najwyższej obsługiwanej wersji.
 
-Aby sprawdzić lub *sondować* punkt końcowy zgodnie z regularnym harmonogramem, można użyć wyzwalacza http jako pierwszego kroku w przepływie pracy. Dla każdego sprawdzenia wyzwalacz wysyła wywołanie lub *żądanie* do punktu końcowego. Odpowiedź punktu końcowego określa, czy przepływ pracy aplikacji logiki zostanie uruchomiony. Wyzwalacz przekazuje zawartość z odpowiedzi na akcje w aplikacji logiki.
+Aby sprawdzić lub *sondować* punkt końcowy zgodnie z cyklicznym harmonogramem, [Dodaj wyzwalacz http](#http-trigger) jako pierwszy krok w przepływie pracy. Za każdym razem, gdy wyzwalacz sprawdza punkt końcowy, wyzwalacz wywołuje lub wysyła *żądanie* do punktu końcowego. Odpowiedź punktu końcowego określa, czy przepływ pracy aplikacji logiki zostanie uruchomiony. Wyzwalacz przekazuje zawartość z odpowiedzi punktu końcowego do akcji w aplikacji logiki.
 
-Możesz użyć akcji HTTP jako dowolnego innego kroku w przepływie pracy, aby wywołać punkt końcowy w razie potrzeby. Odpowiedź punktu końcowego określa, jak działają pozostałe akcje przepływu pracy.
+Aby wywołać punkt końcowy z dowolnego miejsca w przepływie pracy, [Dodaj akcję http](#http-action). Odpowiedź punktu końcowego określa, jak działają pozostałe akcje przepływu pracy.
 
-Na podstawie możliwości docelowego punktu końcowego łącznik protokołu HTTP obsługuje Transport Layer Security (TLS) w wersjach 1,0, 1,1 i 1,2. Logic Apps negocjuje z punktem końcowym przy użyciu najwyższej obsługiwanej wersji. Jeśli na przykład punkt końcowy obsługuje 1,2, łącznik najpierw używa 1,2. W przeciwnym razie łącznik używa następnej najwyższej obsługiwanej wersji.
+> [!IMPORTANT]
+> Jeśli wyzwalacz lub akcja HTTP zawiera te nagłówki, Logic Apps usuwa te nagłówki z wygenerowanego komunikatu żądania bez wyświetlania ostrzeżenia lub błędu:
+>
+> * `Accept-*`
+> * `Allow`
+> * `Content-*` z następującymi wyjątkami: `Content-Disposition`, `Content-Encoding`i `Content-Type`
+> * `Cookie`
+> * `Expires`
+> * `Host`
+> * `Last-Modified`
+> * `Origin`
+> * `Set-Cookie`
+> * `Transfer-Encoding`
+>
+> Mimo że Logic Apps nie zatrzyma zapisywania aplikacji logiki, które używają wyzwalacza HTTP lub akcji z tymi nagłówkami, Logic Apps ignoruje te nagłówki.
+
+W tym artykule opisano sposób dodawania wyzwalacza HTTP lub akcji do przepływu pracy aplikacji logiki.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -36,13 +53,15 @@ Na podstawie możliwości docelowego punktu końcowego łącznik protokołu HTTP
 
 * Aplikacja logiki, z której ma zostać wywołany docelowy punkt końcowy. Aby rozpocząć pracę z wyzwalaczem HTTP, [Utwórz pustą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Aby użyć akcji HTTP, uruchom aplikację logiki z dowolnym wyzwalaczem, który chcesz. Ten przykład używa wyzwalacza HTTP jako pierwszego kroku.
 
+<a name="http-trigger"></a>
+
 ## <a name="add-an-http-trigger"></a>Dodawanie wyzwalacza HTTP
 
 Ten wbudowany wyzwalacz wykonuje wywołanie HTTP do określonego adresu URL dla punktu końcowego i zwraca odpowiedź.
 
 1. Zaloguj się do [Azure portal](https://portal.azure.com). Otwórz pustą aplikację logiki w Projektancie aplikacji logiki.
 
-1. W obszarze **Wybierz akcję**w polu wyszukiwania wprowadź ciąg "http" jako filtr. Z listy **wyzwalacze** Wybierz wyzwalacz **http** .
+1. W polu wyszukiwania projektanta wybierz pozycję **wbudowane**. W polu wyszukiwania wprowadź `http` jako filtr. Z listy **wyzwalacze** Wybierz wyzwalacz **http** .
 
    ![Wybieranie wyzwalacza HTTP](./media/connectors-native-http/select-http-trigger.png)
 
@@ -63,6 +82,8 @@ Ten wbudowany wyzwalacz wykonuje wywołanie HTTP do określonego adresu URL dla 
 
 1. Gdy skończysz, pamiętaj, aby zapisać aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
 
+<a name="http-action"></a>
+
 ## <a name="add-an-http-action"></a>Dodaj akcję HTTP
 
 Ta wbudowana akcja powoduje wywołanie HTTP do określonego adresu URL dla punktu końcowego i zwraca odpowiedź.
@@ -75,7 +96,7 @@ Ta wbudowana akcja powoduje wywołanie HTTP do określonego adresu URL dla punkt
 
    Aby dodać akcję między krokami, przesuń wskaźnik myszy nad strzałkę między krokami. Wybierz wyświetlony znak plus ( **+** ), a następnie wybierz pozycję **Dodaj akcję**.
 
-1. W obszarze **Wybierz akcję**w polu wyszukiwania wprowadź ciąg "http" jako filtr. Z listy **Akcje** wybierz akcję **http** .
+1. W obszarze **Wybierz akcję**wybierz pozycję **wbudowane**. W polu wyszukiwania wprowadź `http` jako filtr. Z listy **Akcje** wybierz akcję **http** .
 
    ![Wybieranie akcji HTTP](./media/connectors-native-http/select-http-action.png)
 
@@ -163,7 +184,7 @@ Poniżej znajduje się więcej informacji na temat danych wyjściowych wyzwalacz
 | 200 | OK |
 | 202 | Accepted |
 | 400 | Nieprawidłowe żądanie |
-| 401 | Brak autoryzacji |
+| 401 | Nieupoważniony |
 | 403 | Forbidden |
 | 404 | Nie znaleziono |
 | 500 | Wewnętrzny błąd serwera. Wystąpił nieznany błąd. |

@@ -4,11 +4,11 @@ description: Umożliwia przenoszenie zasobów do nowej grupy zasobów lub subskr
 ms.topic: conceptual
 ms.date: 03/02/2020
 ms.openlocfilehash: 40432c55a7f7e289d2e5cbc8afe94847074e4ca8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357716"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248855"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 

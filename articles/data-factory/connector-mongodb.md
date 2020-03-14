@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
 ms.openlocfilehash: a7bb74c09b45429a160a3ec481c23073575cfe3c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394220"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251715"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Kopiowanie danych z MongoDB za pomocą Azure Data Factory
 
@@ -46,11 +46,11 @@ Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które
 
 Dla połączonej usługi MongoDB są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type |Właściwość Type musi mieć wartość: **MongoDbV2** |Yes |
-| connectionString |Określ parametry połączenia MongoDB, np. `mongodb://[username:password@]host[:port][/[database][?options]]`. Więcej informacji można znaleźć w [podręczniku MongoDB w parametrach połączenia](https://docs.mongodb.com/manual/reference/connection-string/) . <br/><br /> Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć konfigurację   `password`z parametrów połączenia. Aby uzyskać więcej informacji, zobacz temat [poświadczenia sklepu w Azure Key Vault](store-credentials-in-key-vault.md) . |Yes |
-| database | Nazwa bazy danych, do której chcesz uzyskać dostęp. | Yes |
+| typ |Właściwość Type musi mieć wartość: **MongoDbV2** |Tak |
+| connectionString |Określ parametry połączenia MongoDB, np. `mongodb://[username:password@]host[:port][/[database][?options]]`. Więcej informacji można znaleźć w [podręczniku MongoDB w parametrach połączenia](https://docs.mongodb.com/manual/reference/connection-string/) . <br/><br /> Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć konfigurację   `password`z parametrów połączenia. Aby uzyskać więcej informacji, zobacz temat [poświadczenia sklepu w Azure Key Vault](store-credentials-in-key-vault.md) . |Tak |
+| baza danych | Nazwa bazy danych, do której chcesz uzyskać dostęp. | Tak |
 | connectVia | [Integration Runtime](concepts-integration-runtime.md) używany do nawiązywania połączenia z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
 
 **Przykład:**
@@ -76,10 +76,10 @@ Dla połączonej usługi MongoDB są obsługiwane następujące właściwości:
 
 Aby zapoznać się z pełną listą sekcji i właściwości, które są dostępne do definiowania zestawów danych, zobacz [zestawy danych i połączone usługi](concepts-datasets-linked-services.md). Dla zestawu danych MongoDB są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **MongoDbV2Collection** | Yes |
-| collectionName |Nazwa kolekcji w bazie danych MongoDB. |Yes |
+| typ | Właściwość Type zestawu danych musi być ustawiona na wartość: **MongoDbV2Collection** | Tak |
+| collectionName |Nazwa kolekcji w bazie danych MongoDB. |Tak |
 
 **Przykład:**
 
@@ -108,10 +108,10 @@ Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania 
 
 W sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type źródła działania Copy musi być ustawiona na wartość: **MongoDbV2Source** | Yes |
-| filter | Określa filtr wyboru przy użyciu operatorów zapytań. Aby zwrócić wszystkie dokumenty w kolekcji, Pomiń ten parametr lub Przekaż pusty dokument ({}). | Nie |
+| typ | Właściwość Type źródła działania Copy musi być ustawiona na wartość: **MongoDbV2Source** | Tak |
+| Filtr | Określa filtr wyboru przy użyciu operatorów zapytań. Aby zwrócić wszystkie dokumenty w kolekcji, Pomiń ten parametr lub Przekaż pusty dokument ({}). | Nie |
 | cursorMethods. Project | Określa pola do zwrócenia w dokumentach dla projekcji. Aby zwrócić wszystkie pola w pasujących dokumentach, Pomiń ten parametr. | Nie |
 | cursorMethods. Sort | Określa kolejność, w której zapytanie zwraca pasujące dokumenty. Zapoznaj się z [kursorem. Sort ()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort). | Nie |
 | cursorMethods.limit | Określa maksymalną liczbę dokumentów zwracanych przez serwer. Zapoznaj się z [kursorem. limit ()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit).  | Nie |

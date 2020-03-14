@@ -2,23 +2,17 @@
 title: Wdrażanie zasobów w ramach subskrypcji
 description: Opisuje sposób tworzenia grupy zasobów w szablonie Azure Resource Manager. Przedstawiono w nim również sposób wdrażania zasobów w zakresie subskrypcji platformy Azure.
 ms.topic: conceptual
-ms.date: 03/06/2020
-ms.openlocfilehash: 1ec761a8136d631c60a7a2021f5462dbf3d7f790
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.date: 03/09/2020
+ms.openlocfilehash: 1a76e41b4b2264bc535752e8f765b3303080abbd
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78925310"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248413"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Tworzenie grup zasobów i zasobów na poziomie subskrypcji
 
-Zazwyczaj zasoby platformy Azure są wdrażane w grupie zasobów w ramach subskrypcji platformy Azure. Można jednak również utworzyć zasoby w:
-
-* poziom subskrypcji (objęty w tym artykule)
-* [poziom grupy zarządzania](deploy-to-management-group.md)
-* [poziom dzierżawy](deploy-to-tenant.md)
-
-Wdrożenia na poziomie subskrypcji służą do podejmowania działań, które mają sens na tym poziomie, takich jak tworzenie grup zasobów lub przypisywanie [kontroli dostępu opartej na rolach](../../role-based-access-control/overview.md).
+Aby uprościć zarządzanie zasobami w ramach subskrypcji platformy Azure, możesz definiować i przypisywać [zasady](../../governance/policy/overview.md) lub [mechanizmy kontroli dostępu oparte na rolach](../../role-based-access-control/overview.md) w ramach subskrypcji. Szablony na poziomie subskrypcji umożliwiają deklaratywne stosowanie zasad i przypisywanie ról w ramach subskrypcji. Można także tworzyć grupy zasobów i wdrażać zasoby.
 
 Aby wdrażać szablony na poziomie subskrypcji, użyj interfejsu wiersza polecenia platformy Azure, programu PowerShell lub API REST. Azure Portal nie obsługuje wdrażania na poziomie subskrypcji.
 
@@ -46,10 +40,10 @@ W przypadku szablonów Użyj:
 https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#
 ```
 
-W przypadku plików parametrów należy użyć:
+Schemat pliku parametrów jest taki sam dla wszystkich zakresów wdrożenia. W przypadku plików parametrów należy użyć:
 
 ```json
-https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentParameters.json#
+https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
 ```
 
 ## <a name="deployment-commands"></a>Polecenia wdrażania
@@ -387,5 +381,4 @@ New-AzSubscriptionDeployment `
 * Aby dowiedzieć się więcej na temat przypisywania ról, zobacz [Zarządzanie dostępem do zasobów platformy Azure przy użyciu usług RBAC i Azure Resource Manager templates](../../role-based-access-control/role-assignments-template.md).
 * Przykład wdrażania ustawień obszaru roboczego dla Azure Security Center można znaleźć w pliku [deployASCwithWorkspaceSettings. JSON](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json).
 * Przykładowe szablony można znaleźć w witrynie [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments).
-* Aby dowiedzieć się więcej na temat tworzenia szablonów Azure Resource Manager, zobacz Tworzenie [szablonów](template-syntax.md).
-* Aby uzyskać listę dostępnych funkcji w szablonie, zobacz [funkcje szablonu](template-functions.md).
+* Szablony można także wdrażać na poziomie [grupy zarządzania](deploy-to-management-group.md) i na [poziomie dzierżawy](deploy-to-tenant.md).

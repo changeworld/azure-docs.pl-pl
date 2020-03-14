@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: 67846293257661a4f7a907d76402d2e98c339225
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 17bff459a0399d39c6bfdd772ad16d0b5b2f6771
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361243"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258488"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric Visual Studio Code
 
@@ -48,7 +48,7 @@ Do programowania w języku Java należy zainstalować następujące wymagania ws
 W przypadku programu .NET Core/C# Development należy zainstalować następujące wymagania wstępne:
 
 * [.NET Core](https://www.microsoft.com/net/learn/get-started) (wersja 2.0.0 lub nowsza)
-* [dla Visual Studio Code (obsługiwane przez OmniSharp) vs Code rozszerzenie C# ](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) Wymagany do debugowania C# usług. Możesz zainstalować program, klikając ikonę rozszerzenia na **pasku działania** w vs Code i wyszukując rozszerzenie lub z poziomu witryny vs Code Marketplace.
+* [dla Visual Studio Code (obsługiwane przez OmniSharp) vs Code rozszerzenie C# ](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) Wymagany do debugowania C# usług. Możesz zainstalować program, klikając ikonę rozszerzenia na **pasku działania** w vs Code i wyszukując rozszerzenie lub z poziomu witryny vs Code Marketplace.
 
 ## <a name="setup"></a>Konfigurowanie
 

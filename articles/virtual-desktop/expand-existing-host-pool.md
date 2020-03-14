@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 37c3e57fd96a0161564b23ce18d01573d0dd73f9
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: aee5195fe86fed3e631908a38d3bdb7d5e4883b8
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127899"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365223"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Rozwiń istniejącą pulę hostów przy użyciu nowych hostów sesji
 
@@ -71,7 +71,7 @@ Oto jak ponownie wdrożyć szablon Azure Resource Manager, aby rozszerzyć pulę
 
 ## <a name="run-the-azure-marketplace-offering"></a>Uruchamianie oferty portalu Azure Marketplace
 
-Postępuj zgodnie z instrukcjami w temacie [Tworzenie puli hostów za pomocą witryny Azure Marketplace](./create-host-pools-azure-marketplace.md) do momentu osiągnięcia [oferty usługi Azure Marketplace w celu aprowizacji nowej puli hostów](./create-host-pools-azure-marketplace.md#run-the-azure-marketplace-offering-to-provision-a-new-host-pool). Po uzyskaniu tego punktu należy wprowadzić następujące informacje dla każdego bloku:
+Postępuj zgodnie z instrukcjami w temacie [Tworzenie puli hostów za pomocą witryny Azure Marketplace](./create-host-pools-azure-marketplace.md) do momentu osiągnięcia [oferty usługi Azure Marketplace w celu aprowizacji nowej puli hostów](./create-host-pools-azure-marketplace.md#run-the-azure-marketplace-offering-to-provision-a-new-host-pool). Po uzyskaniu tego punktu należy wprowadzić następujące informacje dla każdej karty:
 
 ### <a name="basics"></a>Podstawy
 

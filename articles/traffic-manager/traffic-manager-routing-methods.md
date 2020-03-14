@@ -11,11 +11,11 @@ ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: rohink
 ms.openlocfilehash: 4a035506943eeffa2c3fc4fec27c47da4136683b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78371948"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250909"
 ---
 # <a name="traffic-manager-routing-methods"></a>Metody routingu w usłudze Traffic Manager
 

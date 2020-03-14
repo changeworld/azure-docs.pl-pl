@@ -8,20 +8,20 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: b36e4688ebd6e929a56869a6bb191d98b2f1f432
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954003"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239840"
 ---
-# <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Przygotowywanie lokalnych serwerów funkcji Hyper-V na potrzeby odzyskiwania po awarii na platformie Azure
+# <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Przygotowywanie lokalnych serwerów funkcji Hyper-V do odzyskiwania po awarii do platformy Azure
 
 W tym artykule opisano sposób przygotowania lokalnej infrastruktury funkcji Hyper-V w celu skonfigurowania odzyskiwania po awarii maszyn wirtualnych na platformie Azure przy użyciu [Azure Site Recovery](site-recovery-overview.md).
 
 
 Jest to drugi samouczek z serii, który pokazuje, jak skonfigurować odzyskiwanie po awarii na platformie Azure dla lokalnych maszyn wirtualnych funkcji Hyper-V. W pierwszym samouczku [skonfigurujemy składniki platformy Azure, które](tutorial-prepare-azure.md) są związane z odzyskiwaniem po awarii funkcji Hyper-V.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Zapoznaj się z wymaganiami funkcji Hyper-V i wymaganiami programu VMM, Jeśli hosty funkcji Hyper-V są zarządzane przez program System Center VMM.

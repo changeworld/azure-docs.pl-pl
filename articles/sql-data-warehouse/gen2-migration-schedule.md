@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 01/21/2020
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 00180c1791e765240f3f8feac188b9250162408e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380797"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256707"
 ---
 # <a name="upgrade-your-sql-pool-to-gen2"></a>Uaktualnij pulę SQL do Gen2
 
@@ -106,7 +106,7 @@ Aby uzyskać więcej informacji, zobacz [uaktualnianie do Gen2](upgrade-to-lates
 - Odp.: Jeśli używasz wartości DW600 lub DW1200 na Gen1, zaleca się użycie odpowiednio DW500c lub DW1000c, ponieważ Gen2 oferuje więcej pamięci, zasobów i wyższą wydajność niż Gen1.
 
 **P: Czy można wyłączyć geograficzną kopię zapasową?**
-- Odpowiedź: nie. Geograficzna kopia zapasowa to funkcja korporacyjna, która zachowuje dostępność puli SQL w przypadku, gdy region staną się niedostępne. Otwórz [żądanie pomocy technicznej](sql-data-warehouse-get-started-create-support-ticket.md) , jeśli chcesz uzyskać więcej problemów.
+- Odp.: Nie. Geograficzna kopia zapasowa to funkcja korporacyjna, która zachowuje dostępność puli SQL w przypadku, gdy region staną się niedostępne. Otwórz [żądanie pomocy technicznej](sql-data-warehouse-get-started-create-support-ticket.md) , jeśli chcesz uzyskać więcej problemów.
 
 **P: czy istnieje różnica w składni T-SQL między Gen1 i Gen2?**
 
@@ -118,7 +118,7 @@ Aby uzyskać więcej informacji, zobacz [uaktualnianie do Gen2](upgrade-to-lates
 
 **P: czy będzie można utworzyć nowe wystąpienie Gen1 po uaktualnieniu mojego regionu?**
 
-- Odpowiedź: nie. Po uaktualnieniu regionu tworzenie nowych wystąpień Gen1 zostanie wyłączone.
+- Odp.: Nie. Po uaktualnieniu regionu tworzenie nowych wystąpień Gen1 zostanie wyłączone.
 
 ## <a name="next-steps"></a>Następne kroki
 

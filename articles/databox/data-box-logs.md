@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: alkohli
 ms.openlocfilehash: 72e1d3b0ad72b1e68b88eb0550cbe839ade9d929
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535176"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260022"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Śledzenie i rejestrowanie zdarzeń dla Azure Data Box i Azure Data Box Heavy
 
@@ -24,10 +24,10 @@ W poniższej tabeli przedstawiono podsumowanie kroków zlecenia urządzenie Data
 | urządzenie Data Box etap kolejności       | Narzędzie do śledzenia i inspekcji                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
 | Utwórz zamówienie               | [Konfigurowanie kontroli dostępu w kolejności za pośrednictwem RBAC](#set-up-access-control-on-the-order)                                                    |
-| Przetworzone zamówienie            | [Śledź kolejność](#track-the-order) <ul><li> Azure Portal </li><li> Witryna sieci Web firmy kurierskiej </li><li>Powiadomienia e-mail</ul> |
+| Przetworzone zamówienie            | [Śledź kolejność](#track-the-order) <ul><li> Portalu Azure </li><li> Witryna sieci Web firmy kurierskiej </li><li>Powiadomienia e-mail</ul> |
 | Konfigurowanie urządzenia              | Poświadczenia urządzenia dostęp do zalogowanych [dzienników aktywności](#query-activity-logs-during-setup)                                              |
 | Kopiowanie danych na urządzenie        | [Wyświetl pliki *Error. XML* ](#view-error-log-during-data-copy) do kopiowania danych                                                             |
-| Przygotowywanie do wysłania            | [Inspekcja plików BOM](#inspect-bom-during-prepare-to-ship) lub plików manifestu na urządzeniu                                      |
+| Przygotowanie do wysłania            | [Inspekcja plików BOM](#inspect-bom-during-prepare-to-ship) lub plików manifestu na urządzeniu                                      |
 | Przekazywanie danych na platformę Azure       | [Przeglądanie dzienników kopiowania](#review-copy-log-during-upload-to-azure) pod kątem błędów podczas przekazywania danych w centrum dane platformy Azure                         |
 | Dane wymazywane z urządzenia   | [Wyświetlanie łańcucha dzienników opieki](#get-chain-of-custody-logs-after-data-erasure) , w tym dzienników inspekcji i historii kolejności                |
 
@@ -64,11 +64,11 @@ Zamówienie można śledzić za pomocą Azure Portal oraz za pomocą witryny sie
 
 - Twoje urządzenie Data Box docierają do Twoich miejsc w stanie zablokowanym. Możesz użyć poświadczeń urządzenia dostępnych w Azure Portal zamówienia.  
 
-    Po skonfigurowaniu urządzenie Data Box może być konieczna informacja o tym, kto ma dostęp do poświadczeń urządzenia. Aby ustalić, kto uzyskał dostęp do bloku **poświadczenia urządzenia** , można wykonać zapytanie dotyczące dzienników aktywności.  Wszystkie akcje dotyczące uzyskiwania dostępu do **szczegółów urządzenia > bloku poświadczenia** są rejestrowane w dziennikach aktywności `ListCredentials` jako akcja.
+    Po skonfigurowaniu urządzenie Data Box może być konieczna informacja o tym, kto ma dostęp do poświadczeń urządzenia. Aby ustalić, kto uzyskał dostęp do bloku **poświadczenia urządzenia** , można wykonać zapytanie dotyczące dzienników aktywności.  Wszystkie akcje dotyczące uzyskiwania dostępu do **szczegółów urządzenia > bloku poświadczenia** są rejestrowane w dziennikach aktywności jako akcja `ListCredentials`.
 
     ![Wykonywanie zapytań dotyczących dzienników aktywności](media/data-box-logs/query-activity-log-1.png)
 
-- Każdy Zaloguj się do urządzenie Data Box jest rejestrowany w czasie rzeczywistym. Jednak te informacje są dostępne tylko w dziennikach [inspekcji](#audit-logs) po pomyślnym zakończeniu kolejności.
+- Każdy Zaloguj się do urządzenie Data Box jest rejestrowany w czasie rzeczywistym. Jednak te informacje są dostępne tylko w [dziennikach inspekcji](#audit-logs) po pomyślnym zakończeniu kolejności.
 
 ## <a name="view-error-log-during-data-copy"></a>Wyświetl dziennik błędów podczas kopiowania danych
 
@@ -157,7 +157,7 @@ Podczas przygotowywania do wysłania należy utworzyć listę plików znanych ja
 - Użyj tego pliku, aby zweryfikować rzeczywiste rozmiary plików.
 - Sprawdź, czy *crc64* odpowiada ciągowi o wartości innej niż zero. <!--A null value for crc64 indicates that there was a reparse point error)-->
 
-Aby uzyskać więcej informacji na temat błędów otrzymywanych podczas przygotowywania do wysłania, przejdź do rozwiązywania problemów [urządzenie Data Box i Data Box Heavy](data-box-troubleshoot.md).
+Aby uzyskać więcej informacji na temat błędów otrzymywanych podczas przygotowywania do wysłania, przejdź do [rozwiązywania problemów urządzenie Data Box i Data Box Heavy](data-box-troubleshoot.md).
 
 ### <a name="bom-or-manifest-file"></a>BOM lub plik manifestu
 
@@ -257,7 +257,7 @@ Przekazanie na platformę Azure kończy się z ostrzeżeniami, jeśli dane mają
 
 Oto przykład dziennika kopiowania, w którym nazwy kontenerów, które nie są zgodne z konwencjami nazewnictwa platformy Azure, zostały zmienione podczas przekazywania danych na platformę Azure.
 
-Nowe unikatowe nazwy kontenerów są w formacie `DataBox-GUID` , a dane dla kontenera są umieszczane w nowym kontenerze. W dzienniku kopiowania określono starą i nową nazwę kontenera dla kontenera.
+Nowe unikatowe nazwy kontenerów są w formacie `DataBox-GUID` a dane dla kontenera są umieszczane w nowym kontenerze. W dzienniku kopiowania określono starą i nową nazwę kontenera dla kontenera.
 
 ```xml
 <ErroredEntity Path="New Folder">
@@ -270,7 +270,7 @@ Nowe unikatowe nazwy kontenerów są w formacie `DataBox-GUID` , a dane dla kont
 
 Poniżej znajduje się przykład dziennika kopiowania, w którym zmieniono nazwy obiektów blob lub plików, które nie są zgodne z konwencjami nazewnictwa platformy Azure, podczas przekazywania danych na platformę Azure. Nowe obiekty blob lub nazwy plików są konwertowane na SHA256 Digest ścieżki względnej do kontenera i są przekazywane do ścieżki na podstawie typu docelowego. Miejscem docelowym może być blokowe obiekty blob, stronicowe obiekty blob lub Azure Files.
 
-`copylog` Określa stary i nowy obiekt BLOB lub nazwę pliku oraz ścieżkę na platformie Azure.
+`copylog` określa stary i nowy obiekt BLOB lub nazwę pliku oraz ścieżkę na platformie Azure.
 
 ```xml
 <ErroredEntity Path="TesDir028b4ba9-2426-4e50-9ed1-8e89bf30d285\Ã">
@@ -297,7 +297,7 @@ Po wymazaniu danych z urządzenie Data Box dysków zgodnie z wytycznymi dla prog
 
 ### <a name="audit-logs"></a>Dzienniki inspekcji
 
-Dzienniki inspekcji zawierają informacje dotyczące włączania i uzyskiwania dostępu do udziałów na urządzenie Data Box lub Data Box Heavy, gdy nie znajduje się on poza centrum danych platformy Azure. Te dzienniki znajdują się w:`storage-account/azuredatabox-chainofcustodylogs`
+Dzienniki inspekcji zawierają informacje dotyczące włączania i uzyskiwania dostępu do udziałów na urządzenie Data Box lub Data Box Heavy, gdy nie znajduje się on poza centrum danych platformy Azure. Te dzienniki znajdują się w lokalizacji: `storage-account/azuredatabox-chainofcustodylogs`
 
 Oto przykład dziennika inspekcji z urządzenie Data Box:
 
@@ -352,7 +352,7 @@ The authentication information fields provide detailed information about this sp
 ```
 
 
-## <a name="download-order-history"></a>Pobierz historię zamówień
+## <a name="download-order-history"></a>Pobieranie historii zamówienia
 
 Historia zamówień jest dostępna w Azure Portal. Jeśli zamówienie zostało zakończone, a oczyszczanie urządzenia (dane wymazywane z dysków) zostało zakończone, przejdź do kolejności urządzenia i przejdź do **szczegółów zamówienia**. Opcja **Pobieranie historii zamówienia** jest dostępna. Aby uzyskać więcej informacji, zobacz [Pobieranie historii kolejności](data-box-portal-admin.md#download-order-history).
 

@@ -4,11 +4,11 @@ description: Zawiera opis sposobu uwierzytelniania dostępu klienta do klastra S
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.openlocfilehash: a1f4abbabe428a09492efefca4a8da9801b9f68d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361260"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258579"
 ---
 # <a name="connect-to-a-secure-cluster"></a>Nawiązywanie połączenia z zabezpieczonym klastrem
 

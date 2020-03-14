@@ -4,11 +4,11 @@ description: Omówienie Azure Resource Health
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.openlocfilehash: f22b41e66f15dd12d973c5744870969fae795bc1
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78925187"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258202"
 ---
 # <a name="resource-health-overview"></a>Przegląd Resource Health
  
@@ -60,7 +60,7 @@ W przypadku wystąpienia problemów z zasobem *nieznany* stan kondycji może ozn
 
 ![Stan * nieznane * dla maszyny wirtualnej](./media/resource-health-overview/Unknown.png)
 
-### <a name="degraded"></a>Obniżona wydajność
+### <a name="degraded"></a>Zdegradowany
 
 *Zdegradowane* oznacza, że zasób wykrył utratę wydajności, chociaż nadal jest dostępny do użycia.
 

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
 ms.openlocfilehash: 9be758c286e072b0fbefc5f8b20b7accc4e6741b
-ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78939302"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256967"
 ---
 # <a name="manage-the-mobility-agent"></a>Zarządzanie agentem mobilności 
 

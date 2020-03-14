@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
 ms.openlocfilehash: b72abf4e208c57987375a105865046f194460058
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79126550"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265989"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies (Zasady usługi API Management obejmujące różne domeny)
 Ten temat zawiera informacje dotyczące następujących zasad API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasady w API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -53,9 +53,9 @@ Użyj zasad `cross-domain`, aby uzyskać dostęp do interfejsu API z poziomu kli
 
 ### <a name="elements"></a>Elementy
 
-|Name (Nazwa)|Opis|Wymagany|
+|Name (Nazwa)|Opis|Wymagane|
 |----------|-----------------|--------------|
-|między domenami|Element główny. Elementy podrzędne muszą być zgodne ze [specyfikacją pliku zasad między domenami Adobe](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html).|Yes|
+|między domenami|Element główny. Elementy podrzędne muszą być zgodne ze [specyfikacją pliku zasad między domenami Adobe](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html).|Tak|
 
 ### <a name="usage"></a>Sposób użycia
 Tych zasad można używać w następujących [sekcjach](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresach](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zasad.
@@ -122,22 +122,22 @@ W tym przykładzie pokazano, jak obsługiwać żądania przed inspekcją, takie 
 
 ### <a name="elements"></a>Elementy
 
-|Name (Nazwa)|Opis|Wymagany|Domyślne|
+|Name (Nazwa)|Opis|Wymagane|Domyślne|
 |----------|-----------------|--------------|-------------|
-|specyfikacji|Element główny.|Yes|Nie dotyczy|
-|dozwolone źródła|Zawiera elementy `origin`, które opisują dozwolone źródła dla żądań międzydomenowych. `allowed-origins` może zawierać pojedynczy `origin` element, który określa `*`, aby zezwolić na dowolne źródło, lub jeden lub więcej elementów `origin`, które zawierają identyfikator URI.|Yes|Nie dotyczy|
-|źródło|Wartość może być `*`, aby zezwolić na wszystkie źródła, lub identyfikator URI, który określa pojedyncze źródło. Identyfikator URI musi zawierać schemat, hosta i port.|Yes|Jeśli port zostanie pominięty w identyfikatorze URI, port 80 jest używany dla protokołu HTTP, a port 443 jest używany w przypadku protokołu HTTPS.|
+|specyfikacji|Element główny.|Tak|N/D|
+|dozwolone źródła|Zawiera elementy `origin`, które opisują dozwolone źródła dla żądań międzydomenowych. `allowed-origins` może zawierać pojedynczy `origin` element, który określa `*`, aby zezwolić na dowolne źródło, lub jeden lub więcej elementów `origin`, które zawierają identyfikator URI.|Tak|N/D|
+|źródło|Wartość może być `*`, aby zezwolić na wszystkie źródła, lub identyfikator URI, który określa pojedyncze źródło. Identyfikator URI musi zawierać schemat, hosta i port.|Tak|Jeśli port zostanie pominięty w identyfikatorze URI, port 80 jest używany dla protokołu HTTP, a port 443 jest używany w przypadku protokołu HTTPS.|
 |dozwolone — metody|Ten element jest wymagany, jeśli dozwolone są metody inne niż GET lub POST. Zawiera elementy `method`, które określają obsługiwane zlecenia HTTP. Wartość `*` wskazuje wszystkie metody.|Nie|Jeśli ta sekcja nie jest obecna, obsługiwane są pozycje GET i POST.|
-|method|Określa czasownik HTTP.|Jeśli istnieje sekcja `allowed-methods`, wymagany jest co najmniej jeden element `method`.|Nie dotyczy|
-|dozwolone — nagłówki|Ten element zawiera `header` elementy określające nazwy nagłówków, które mogą zostać uwzględnione w żądaniu.|Nie|Nie dotyczy|
-|Uwidacznianie — nagłówki|Ten element zawiera `header` elementy określające nazwy nagłówków, które będą dostępne dla klienta.|Nie|Nie dotyczy|
-|nagłówek|Określa nazwę nagłówka.|W `allowed-headers` lub `expose-headers`, jeśli znajduje się sekcja, wymagany jest co najmniej jeden element `header`.|Nie dotyczy|
+|metoda|Określa czasownik HTTP.|Jeśli istnieje sekcja `allowed-methods`, wymagany jest co najmniej jeden element `method`.|N/D|
+|dozwolone — nagłówki|Ten element zawiera `header` elementy określające nazwy nagłówków, które mogą zostać uwzględnione w żądaniu.|Nie|N/D|
+|Uwidacznianie — nagłówki|Ten element zawiera `header` elementy określające nazwy nagłówków, które będą dostępne dla klienta.|Nie|N/D|
+|nagłówek|Określa nazwę nagłówka.|W `allowed-headers` lub `expose-headers`, jeśli znajduje się sekcja, wymagany jest co najmniej jeden element `header`.|N/D|
 
 ### <a name="attributes"></a>Atrybuty
 
-|Name (Nazwa)|Opis|Wymagany|Domyślne|
+|Name (Nazwa)|Opis|Wymagane|Domyślne|
 |----------|-----------------|--------------|-------------|
-|Zezwalaj — poświadczenia|W nagłówku `Access-Control-Allow-Credentials` w odpowiedzi na inspekcję wstępną zostanie ustawiona wartość tego atrybutu i będzie ona mieć wpływ na zdolność klienta do przesyłania poświadczeń w żądaniach międzydomenowych.|Nie|false|
+|Zezwalaj — poświadczenia|W nagłówku `Access-Control-Allow-Credentials` w odpowiedzi na inspekcję wstępną zostanie ustawiona wartość tego atrybutu i będzie ona mieć wpływ na zdolność klienta do przesyłania poświadczeń w żądaniach międzydomenowych.|Nie|{1&gt;false&lt;1}|
 |preflight-result-max-age|W nagłówku `Access-Control-Max-Age` w odpowiedzi na inspekcję wstępną zostanie ustawiona wartość tego atrybutu i będzie to miało wpływ na zdolność agenta użytkownika do buforowania odpowiedzi przed lotem.|Nie|0|
 
 ### <a name="usage"></a>Sposób użycia
@@ -167,15 +167,15 @@ Jeśli dodasz parametr wywołania zwrotnego, `?cb=XXX` zwróci wynik JSONP, Zawi
 
 ### <a name="elements"></a>Elementy
 
-|Name (Nazwa)|Opis|Wymagany|
+|Name (Nazwa)|Opis|Wymagane|
 |----------|-----------------|--------------|
-|JSONP|Element główny.|Yes|
+|JSONP|Element główny.|Tak|
 
 ### <a name="attributes"></a>Atrybuty
 
-|Name (Nazwa)|Opis|Wymagany|Domyślne|
+|Name (Nazwa)|Opis|Wymagane|Domyślne|
 |----------|-----------------|--------------|-------------|
-|callback-parameter-name|Międzydomenowe wywołanie funkcji JavaScript poprzedzone prefiksem w pełni kwalifikowanej nazwy domeny, w której znajduje się funkcja.|Yes|Nie dotyczy|
+|callback-parameter-name|Międzydomenowe wywołanie funkcji JavaScript poprzedzone prefiksem w pełni kwalifikowanej nazwy domeny, w której znajduje się funkcja.|Tak|N/D|
 
 ### <a name="usage"></a>Sposób użycia
 Tych zasad można używać w następujących [sekcjach](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresach](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zasad.
