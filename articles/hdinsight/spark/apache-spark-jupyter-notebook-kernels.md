@@ -10,11 +10,11 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/27/2019
 ms.openlocfilehash: 44089ea4b997e06cb7654fc6665a1a9a59ae2658
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389705"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79272086"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Jądra notesu Jupyter w klastrze Apache Spark w usłudze Azure HDInsight
 
@@ -71,7 +71,7 @@ Oto kilka korzyści wynikających z używania nowych jądra z notesem Jupyter w 
 
    | Magic | Przykład | Opis |
    | --- | --- | --- |
-   | pomoc |`%%help` |Generuje tabelę zawierającą wszystkie dostępne magicy z przykładem i opisem |
+   | Pomoc |`%%help` |Generuje tabelę zawierającą wszystkie dostępne magicy z przykładem i opisem |
    | info |`%%info` |Wyprowadza informacje o sesji dla bieżącego punktu końcowego usługi Livy |
    | Konfiguracja |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Konfiguruje parametry tworzenia sesji. Flaga Force (-f) jest wymagana, jeśli sesja została już utworzona, co gwarantuje, że sesja zostanie porzucona i utworzona ponownie. Aby uzyskać listę prawidłowych parametrów, spójrz na [treść żądania post/Sessions usługi Livy](https://github.com/cloudera/livy#request-body) . Parametry muszą być przesyłane jako ciąg JSON i muszą znajdować się w następnym wierszu po Magic, jak pokazano w przykładowej kolumnie. |
    | Server |`%%sql -o <variable name>`<br> `SHOW TABLES` |Wykonuje zapytanie programu Hive względem sqlContext. Jeśli parametr `-o` jest przenoszona, wynik zapytania jest utrwalany w lokalnym kontekście języka Python%% jako [Pandas](https://pandas.pydata.org/) Dataframe. |

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d024382f816e98fb5cb83331dd417f0c41362bc4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: b7c26a40d5c5feebe122db911b88dc5a0caa9042
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356916"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254211"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Uprawnienia roli administratora w Azure Active Directory
 
@@ -409,7 +409,7 @@ Windows Defender ATP i EDR | Wyświetlanie i badanie alertów. Po włączeniu ko
 Użytkownicy z tą rolą mogą otwierać żądania pomocy technicznej w ramach usług firmy Microsoft dla platformy Azure i pakietu Office 365 i przegląda pulpit nawigacyjny usługi i centrum wiadomości w [Azure Portal](https://portal.azure.com) i [Microsoft 365 centrum administracyjnego](https://admin.microsoft.com). Więcej informacji na [temat ról administratorów](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
 > [!NOTE]
-> W interfejsie API Microsoft Graph i programie Azure AD PowerShell ta rola jest identyfikowana jako "Administrator pomocy technicznej usługi". Jest to "administrator usługi" w [Azure Portal](https://portal.azure.com), [centrum administracyjnym Microsoft 365](https://admin.microsoft.com)i portalu usługi Intune.
+> Wcześniej ta rola była nazywana "administratorem usługi" w [Azure Portal](https://portal.azure.com) i [Microsoft 365 centrum administracyjnego](https://admin.microsoft.com). Nazwa została zmieniona na "Administrator pomocy technicznej usługi", aby wyrównać nazwę istniejącego w interfejsie API Microsoft Graph, usłudze Azure AD interfejs API programu Graph i programie Azure AD PowerShell.
 
 ### <a name="sharepoint-administrator"></a>[Administrator programu SharePoint](#sharepoint-service-administrator-permissions)
 
@@ -990,18 +990,19 @@ Może zarządzać wszystkimi aspektami produktu Exchange.
 
 | **Akcje** | **Opis** |
 | --- | --- |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
 | Microsoft. Directory/Groups/Unified/appRoleAssignments/Update | Aktualizacja właściwości groups. Unified w Azure Active Directory. |
 | Microsoft. Directory/Groups/Unified/Basic/Update | Aktualizuj podstawowe właściwości grup pakietu Office 365. |
 | Microsoft. Directory/Groups/Unified/Create | Utwórz grupy pakietu Office 365. |
 | Microsoft. Directory/Groups/Unified/Delete | Usuń grupy pakietu Office 365. |
 | Microsoft. Directory/Groups/Unified/Members/Update | Aktualizowanie członkostwa w grupach pakietu Office 365. |
 | Microsoft. Directory/Groups/Unified/Owners/Update | Aktualizowanie własności grup pakietu Office 365. |
-| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
-| microsoft.azure.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
-| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
 | microsoft.office365.exchange/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Exchange Online. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
+| microsoft.office365.usageReports/allEntities/read | Przeczytaj raporty dotyczące użycia pakietu Office 365. |
+| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
 
 ### <a name="external-identity-provider-administrator-permissions"></a>Uprawnienia administratora zewnętrznego dostawcy tożsamości
 
@@ -1101,7 +1102,6 @@ Może zarządzać wszystkimi aspektami grup i ustawień grup, takimi jak zasady 
 | microsoft.office365.messageCenter/messages/read | Odczytuj wiadomości w Microsoft. 365. messageCenter. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
-| microsoft.office365.usageReports/allEntities/read | Przeczytaj raporty dotyczące użycia pakietu Office 365. |
 
 ### <a name="guest-inviter-permissions"></a>Uprawnienia osoby zapraszające gościa
 Może zapraszać użytkowników-Gości niezależnie od ustawienia "członkowie mogą zapraszać Gości".
@@ -1212,10 +1212,12 @@ Może zarządzać wszystkimi aspektami produktu Skype dla firm.
 | --- | --- |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
 | microsoft.azure.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
-| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
 | microsoft.office365.skypeForBusiness/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Skype dla firm Online. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
+| microsoft.office365.usageReports/allEntities/read | Przeczytaj raporty dotyczące użycia pakietu Office 365. |
+| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
+
 
 ### <a name="message-center-privacy-reader-permissions"></a>Uprawnienia czytelnika do ochrony prywatności centrum wiadomości
 
@@ -1260,7 +1262,6 @@ Usługa umożliwia zarządzanie aplikacjami pakietu Office w chmurze, w tym zarz
 | microsoft.office365.messageCenter/messages/read | Odczytuj wiadomości w Microsoft. 365. messageCenter. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
-| microsoft.office365.usageReports/allEntities/read | Przeczytaj raporty dotyczące użycia pakietu Office 365. |
 | Microsoft. Office 365. userCommunication/allEntities/allTasks | Odczytuj i Aktualizuj informacje o nowościach. |
 | microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
 
@@ -1442,7 +1443,6 @@ Może tworzyć wszystkie aspekty ustawień wyszukiwania firmy Microsoft i zarzą
 | microsoft.office365.search/allEntities/allProperties/allTasks | Tworzenie i usuwanie wszystkich zasobów oraz odczytywanie i aktualizowanie wszystkich właściwości w Microsoft. Office 365. Search. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
-| microsoft.office365.usageReports/allEntities/read | Przeczytaj raporty dotyczące użycia pakietu Office 365. |
 | microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
 
 ### <a name="search-editor-permissions"></a>Uprawnienia edytora wyszukiwania
@@ -1458,7 +1458,6 @@ Może tworzyć i zarządzać zawartością redakcyjną, taką jak zakładki, Q i
 | --- | --- |
 | microsoft.office365.messageCenter/messages/read | Odczytuj wiadomości w Microsoft. 365. messageCenter. |
 | microsoft.office365.search/content/allProperties/allTasks | Tworzenie i usuwanie zawartości oraz odczytywanie i aktualizowanie wszystkich właściwości w Microsoft. Office 365. Search. |
-| microsoft.office365.usageReports/allEntities/read | Przeczytaj raporty dotyczące użycia pakietu Office 365. |
 
 ### <a name="security-administrator-permissions"></a>Uprawnienia administratora zabezpieczeń
 
@@ -1507,7 +1506,6 @@ Tworzy i zarządza zdarzeniami zabezpieczeń.
 | microsoft.azure.advancedThreatProtection/allEntities/read | Przeczytaj i skonfiguruj zaawansowaną ochronę przed zagrożeniami w usłudze Azure AD. |
 | microsoft.intune/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Intune. |
 | microsoft.office365.securityComplianceCenter/allEntities/allTasks | Odczytaj i skonfiguruj Centrum zabezpieczeń i zgodności. |
-| microsoft.office365.usageReports/allEntities/read | Przeczytaj raporty dotyczące użycia pakietu Office 365. |
 | microsoft.windows.defenderAdvancedThreatProtection/allEntities/read | Odczytywanie i Konfigurowanie zaawansowanej ochrony przed zagrożeniami w usłudze Windows Defender. |
 
 ### <a name="security-reader-permissions"></a>Uprawnienia czytelnika zabezpieczeń
@@ -1560,18 +1558,19 @@ Może zarządzać wszystkimi aspektami usługi programu SharePoint.
 
 | **Akcje** | **Opis** |
 | --- | --- |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
 | Microsoft. Directory/Groups/Unified/appRoleAssignments/Update | Aktualizacja właściwości groups. Unified w Azure Active Directory. |
 | Microsoft. Directory/Groups/Unified/Basic/Update | Aktualizuj podstawowe właściwości grup pakietu Office 365. |
 | Microsoft. Directory/Groups/Unified/Create | Utwórz grupy pakietu Office 365. |
 | Microsoft. Directory/Groups/Unified/Delete | Usuń grupy pakietu Office 365. |
 | Microsoft. Directory/Groups/Unified/Members/Update | Aktualizowanie członkostwa w grupach pakietu Office 365. |
 | Microsoft. Directory/Groups/Unified/Owners/Update | Aktualizowanie własności grup pakietu Office 365. |
-| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
-| microsoft.azure.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
-| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
 | microsoft.office365.sharepoint/allEntities/allTasks | Tworzenie i usuwanie wszystkich zasobów oraz odczytywanie i aktualizowanie standardowych właściwości w Microsoft. Office 365. SharePoint. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
+| microsoft.office365.usageReports/allEntities/read | Przeczytaj raporty dotyczące użycia pakietu Office 365. |
+| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
 
 ### <a name="teams-communications-administrator-permissions"></a>Zespoły — uprawnienia administratora
 
@@ -1741,7 +1740,7 @@ Edytor wyszukiwania | Edytor wyszukiwania | 8835291a-918c-4fd7-a9ce-faa49f0cf7d9
 Administrator zabezpieczeń | Administrator zabezpieczeń | 194ae4cb-b126-40b2-bd5b-6091b380977d
 Operator zabezpieczeń | Operator zabezpieczeń | 5f2222b1-57c3-48ba-8ad5-d4759f1fde6f
 Czytelnik zabezpieczeń | Czytelnik zabezpieczeń | 5d6b6bb7-de71-4623-b4af-96380a352509
-Administrator pomocy technicznej usługi | Administrator usługi | f023fd81-a637-4b56-95fd-791ac0226033
+Administrator pomocy technicznej usługi | Administrator pomocy technicznej usługi | f023fd81-a637-4b56-95fd-791ac0226033
 Administrator usługi SharePoint | Administrator programu SharePoint | f28a1f50-f6e7-4571-818b-6a12f2af6b6c
 Administratorzy zespołu ds. komunikacji | Administratorzy zespołu ds. komunikacji | baf37b3a-610e-45da-9e62-d9d1e5e8914b
 Inżynierowie pomocy technicznej dla zespołów | Inżynierowie pomocy technicznej dla zespołów | f70938a0-fc10-4177-9e90-2178f8765737

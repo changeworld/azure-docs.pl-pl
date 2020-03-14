@@ -8,13 +8,13 @@ ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: b1b866f3be789c59eea38c5c22b5557d557440be
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687345"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79243850"
 ---
-# <a name="network-architecture-overview-of-app-service-environments"></a>Omówienie architektury sieciowej środowisk usługi App Service
+# <a name="network-architecture-overview-of-app-service-environments"></a>Omówienie architektury sieci App Service środowisk
 Środowiska App Service są zawsze tworzone w ramach podsieci [sieci wirtualnej][virtualnetwork] — aplikacje działające w App Service Environment mogą komunikować się z prywatnymi punktami końcowymi znajdującymi się w tej samej topologii sieci wirtualnej.  Ponieważ klienci mogą blokować części swojej infrastruktury sieci wirtualnej, ważne jest zrozumienie typów przepływów komunikacji sieciowej występujących w App Service Environment.
 
 ## <a name="general-network-flow"></a>Ogólny przepływ sieci
@@ -29,7 +29,7 @@ Na poniższym diagramie przedstawiono omówienie różnych przepływów sieci pr
 App Service Environment może komunikować się z różnymi prywatnymi punktami końcowymi klientów.  Na przykład aplikacje działające w App Service Environment mogą łączyć się z serwerami baz danych uruchomionymi na maszynach wirtualnych IaaS w tej samej topologii sieci wirtualnej.
 
 > [!IMPORTANT]
-> Podczas przeglądania diagramu sieci "inne zasoby obliczeniowe" są wdrażane w innej podsieci niż App Service Environment. Wdrożenie zasobów w tej samej podsieci przy użyciu środowiska ASE spowoduje zablokowanie łączności z platformą ASE z tymi zasobami (z wyjątkiem określonego routingu w środowisku ASE). W zamian Wdróż w inną podsieć (w tej samej sieci wirtualnej). Następnie App Service Environment będzie mógł nawiązać połączenie. Żadna dodatkowa konfiguracja nie jest wymagana.
+> Podczas przeglądania diagramu sieci "inne zasoby obliczeniowe" są wdrażane w innej podsieci niż App Service Environment. Wdrożenie zasobów w tej samej podsieci przy użyciu środowiska ASE spowoduje zablokowanie łączności z platformą ASE z tymi zasobami (z wyjątkiem określonego routingu w środowisku ASE). W zamian Wdróż w inną podsieć (w tej samej sieci wirtualnej). Następnie App Service Environment będzie mógł nawiązać połączenie. Dodatkowa konfiguracja nie jest wymagana.
 > 
 > 
 

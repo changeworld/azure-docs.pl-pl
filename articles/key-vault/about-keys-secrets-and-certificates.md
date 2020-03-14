@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9bbbcc38116c5681e3b5c867690c296f60507ad1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: dd8be482009e067bf9016cc8e351fc42a2db39c7
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356138"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271735"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Klucze, wpisy tajne i certyfikaty — informacje
 
@@ -120,6 +120,7 @@ Moduły kryptograficzne, które Key Vault używają, czy moduł HSM lub oprogram
 -   **ES384** -ECDSA dla skrótów SHA-384 i kluczy utworzonych przy użyciu krzywej P-384. Ten algorytm został opisany w [RFC7518](https://tools.ietf.org/html/rfc7518).
 -   **ES512** -ECDSA dla skrótów SHA-512 i kluczy utworzonych przy użyciu krzywej P-521. Ten algorytm został opisany w [RFC7518](https://tools.ietf.org/html/rfc7518).
 
+
 ###  <a name="rsa-algorithms"></a>Algorytmy RSA  
  W Key Vault są obsługiwane następujące identyfikatory algorytmów RSA i RSA-HSM.  
 
@@ -130,6 +131,9 @@ Moduły kryptograficzne, które Key Vault używają, czy moduł HSM lub oprogram
 
 #### <a name="signverify"></a>PODPISZ/WERYFIKUJ
 
+-   **PS256** -RSASSA-PSS przy użyciu algorytmu sha-256 i MGF1 z algorytmem sha-256, zgodnie z opisem w [RFC7518](https://tools.ietf.org/html/rfc7518).
+-   **PS384** -RSASSA-PSS przy użyciu algorytmu sha-384 i MGF1 z algorytmem sha-384, zgodnie z opisem w [RFC7518](https://tools.ietf.org/html/rfc7518).
+-   **PS512** -RSASSA-PSS przy użyciu algorytmu sha-512 i MGF1 z algorytmem sha-512, zgodnie z opisem w [RFC7518](https://tools.ietf.org/html/rfc7518).
 -   **RS256** -RSASSA-PKCS-v1_5 przy użyciu algorytmu SHA-256. Wartość skrótu podana w aplikacji musi być obliczona przy użyciu algorytmu SHA-256 i musi mieć długość 32 bajtów.  
 -   **RS384** -RSASSA-PKCS-v1_5 przy użyciu algorytmu SHA-384. Wartość skrótu podana w aplikacji musi być obliczona przy użyciu algorytmu SHA-384 i musi mieć długość 48 bajtów.  
 -   **RS512** -RSASSA-PKCS-v1_5 przy użyciu algorytmu SHA-512. Wartość skrótu podana w aplikacji musi być obliczona przy użyciu algorytmu SHA-512 i musi mieć długość 64 bajtów.  

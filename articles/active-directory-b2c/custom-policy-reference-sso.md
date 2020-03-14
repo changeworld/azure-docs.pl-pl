@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/02/2020
+ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bdea51c6cb53222f31a07906785a94073a0293a1
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 80cf0d101a29de7fca9d4dd36e188a500d35e290
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226800"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246034"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Zarządzanie sesjami logowania jednokrotnego w usłudze Azure Active Directory B2C
 
@@ -138,7 +138,7 @@ Ten dostawca służy do zarządzania Azure AD B2C sesji SAML między aplikacją 
 
 W przypadku korzystania z dostawcy do przechowywania sesji B2C SAML, `RegisterServiceProviders` musi mieć ustawioną `true`. Wylogowanie sesji SAML wymaga wykonania `SessionIndex` i `NameID`.
 
-Następujący `SM-Saml-idp` profil techniczny jest używany przez [profil techniczny wystawcy SAML](connect-with-saml-service-providers.md)
+Następujący `SM-Saml-idp` profil techniczny jest używany przez [profil techniczny wystawcy SAML](saml-issuer-technical-profile.md)
 
 ```XML
 <TechnicalProfile Id="SM-Saml-sp">

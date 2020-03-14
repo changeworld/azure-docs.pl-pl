@@ -10,29 +10,29 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: tagore
-ms.openlocfilehash: c950fbedde19e3b7708d3640487d413fcac7787f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c830dc0ee38ad808579a62274e3db87d0696e099
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75360994"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214725"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>Zainstaluj platformę .NET na rolach usługi Azure Cloud Services
 W tym artykule opisano sposób instalowania wersji .NET Framework, które nie są dostępne w systemie operacyjnym gościa platformy Azure. Możesz użyć platformy .NET w systemie operacyjnym gościa, aby skonfigurować role sieci Web i proces roboczy usługi w chmurze.
 
-Na przykład można zainstalować platformę .NET 4.6.2 w rodzinie systemu operacyjnego gościa 4, która nie jest dostępna w żadnej wersji programu .NET 4,6. (Rodzina systemów operacyjnych gościa 5 jest dostarczana z platformą .NET 4,6). Aby uzyskać najnowsze informacje na temat wydań systemu operacyjnego gościa platformy Azure, zobacz informacje o [wersji systemu operacyjnego gościa platformy Azure](cloud-services-guestos-update-matrix.md). 
+Na przykład można zainstalować .NET Framework 4.6.2 w rodzinie systemu operacyjnego gościa 4, która nie jest dostępna w żadnej wersji .NET Framework 4,6. (Rodzina systemów operacyjnych gościa 5 zawiera .NET Framework 4,6). Aby uzyskać najnowsze informacje na temat wydań systemu operacyjnego gościa platformy Azure, zobacz informacje o [wersji systemu operacyjnego gościa platformy Azure](cloud-services-guestos-update-matrix.md). 
 
 >[!IMPORTANT]
->Zestaw Azure SDK 2,9 zawiera ograniczenie wdrożenia programu .NET 4,6 w rodzinie systemów operacyjnych gościa 4 lub starszej. Poprawka jest dostępna w witrynie [Microsoft docs](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9) .
+>Zestaw Azure SDK 2,9 zawiera ograniczenie dotyczące wdrażania .NET Framework 4,6 w rodzinie systemów operacyjnych Gości 4 lub starszej. Poprawka jest dostępna w witrynie [Microsoft docs](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9) .
 
 Aby zainstalować platformę .NET w rolach sieci Web i procesu roboczego, Dołącz Instalatora sieci Web .NET w ramach projektu usługi w chmurze. Uruchom Instalatora w ramach zadań uruchamiania roli. 
 
 ## <a name="add-the-net-installer-to-your-project"></a>Dodawanie Instalatora platformy .NET do projektu
 Aby pobrać Instalatora sieci Web dla .NET Framework, wybierz wersję, którą chcesz zainstalować:
 
-* [Instalator sieci Web programu .NET 4,8](https://dotnet.microsoft.com/download/thank-you/net48)
-* [Instalator sieci Web platformy .NET 4.7.2](https://go.microsoft.com/fwlink/?LinkId=863262)
-* [Instalator sieci Web platformy .NET 4.6.2](https://www.microsoft.com/download/details.aspx?id=53345)
+* [Instalator sieci Web .NET Framework 4,8](https://dotnet.microsoft.com/download/thank-you/net48)
+* [.NET Framework Instalator sieci Web 4.7.2](https://go.microsoft.com/fwlink/?LinkId=863262)
+* [.NET Framework Instalator sieci Web 4.6.2](https://www.microsoft.com/download/details.aspx?id=53345)
 
 Aby dodać Instalatora dla roli *sieci Web* :
   1. W **Eksplorator rozwiązań**, w obszarze **role** w projekcie usługi w chmurze, kliknij prawym przyciskiem myszy rolę *sieci Web* , a następnie wybierz pozycję **Dodaj** > **Nowy folder**. Utwórz folder o nazwie **bin**.
@@ -44,7 +44,7 @@ Aby dodać Instalatora dla roli *proces roboczy* :
 Gdy pliki są dodawane w ten sposób do folderu zawartości roli, są one automatycznie dodawane do pakietu usługi w chmurze. Pliki są następnie wdrażane do spójnej lokalizacji na maszynie wirtualnej. Powtórz ten proces dla każdej roli sieci Web i procesu roboczego w usłudze w chmurze, aby wszystkie role miały kopię Instalatora.
 
 > [!NOTE]
-> Należy zainstalować platformę .NET 4.6.2 w roli usługi w chmurze, nawet jeśli aplikacja jest przeznaczona dla platformy .NET 4,6. System operacyjny gościa zawiera aktualizację bazy wiedzy [3098779](https://support.microsoft.com/kb/3098779) i [aktualizację 3097997](https://support.microsoft.com/kb/3097997). Problemy mogą wystąpić podczas uruchamiania aplikacji .NET, jeśli program .NET 4,6 jest zainstalowany na podstawie aktualizacji bazy wiedzy. Aby uniknąć tych problemów, należy zainstalować platformę .NET 4.6.2 zamiast wersji 4,6. Aby uzyskać więcej informacji, zobacz [artykuł w bazie wiedzy 3118750](https://support.microsoft.com/kb/3118750) i [4340191](https://support.microsoft.com/kb/4340191).
+> Należy zainstalować .NET Framework 4.6.2 w roli usługi w chmurze, nawet jeśli aplikacja jest przeznaczona dla .NET Framework 4,6. System operacyjny gościa zawiera aktualizację bazy wiedzy [3098779](https://support.microsoft.com/kb/3098779) i [aktualizację 3097997](https://support.microsoft.com/kb/3097997). Problemy mogą wystąpić podczas uruchamiania aplikacji .NET, jeśli .NET Framework 4,6 jest zainstalowany na podstawie aktualizacji bazy wiedzy. Aby uniknąć tych problemów, Zainstaluj .NET Framework 4.6.2, a nie wersję 4,6. Aby uzyskać więcej informacji, zobacz [artykuł w bazie wiedzy 3118750](https://support.microsoft.com/kb/3118750) i [4340191](https://support.microsoft.com/kb/4340191).
 > 
 > 
 
@@ -82,7 +82,7 @@ Zadania uruchamiania umożliwiają wykonywanie operacji przed rozpoczęciem roli
 
 2. Utwórz plik o nazwie **install. cmd** i Dodaj do pliku następujący skrypt instalacyjny.
 
-   Skrypt sprawdza, czy określona wersja .NET Framework jest już zainstalowana na maszynie przez przeszukiwanie rejestru. Jeśli wersja platformy .NET nie jest zainstalowana, zostanie otwarty Instalator sieci Web platformy .NET. Aby pomóc w rozwiązywaniu wszelkich problemów, skrypt rejestruje wszystkie działania w pliku startuptasklog — (bieżąca data i godzina). txt, który jest przechowywany w magazynie lokalnym **InstallLogs** .
+   Skrypt sprawdza, czy określona wersja .NET Framework jest już zainstalowana na maszynie przez przeszukiwanie rejestru. Jeśli .NET Framework wersja nie jest zainstalowana, zostanie otwarty Instalator .NET Framework sieci Web. Aby pomóc w rozwiązywaniu wszelkich problemów, skrypt rejestruje wszystkie działania w pliku startuptasklog — (bieżąca data i godzina). txt, który jest przechowywany w magazynie lokalnym **InstallLogs** .
    
    > [!IMPORTANT]
    > Użyj podstawowego edytora tekstu, takiego jak Notatnik systemu Windows, aby utworzyć plik Install. cmd. Jeśli używasz programu Visual Studio do utworzenia pliku tekstowego i zmienisz rozszerzenie na cmd, plik może nadal zawierać znacznik kolejności bajtów UTF-8. Ten znacznik może spowodować błąd podczas uruchamiania pierwszego wiersza skryptu. Aby uniknąć tego błędu, Utwórz pierwszy wiersz skryptu instrukcja REM, która może zostać pominięta przez przetwarzanie kolejności bajtów. 
@@ -222,7 +222,7 @@ Ten plik XML konfiguruje diagnostykę do transferu plików w katalogu dziennika 
 ## <a name="deploy-your-cloud-service"></a>Wdrażanie usługi w chmurze
 Podczas wdrażania usługi w chmurze zadania uruchamiania instalują .NET Framework, jeśli nie zostały jeszcze zainstalowane. Twoje role usługi w chmurze są w stanie *zajętym* podczas instalowania platformy. Jeśli instalacja struktury wymaga ponownego uruchomienia, role usługi mogą być również ponownie uruchomione. 
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 * [Instalowanie .NET Framework][Installing the .NET Framework]
 * [Ustal, które wersje .NET Framework są zainstalowane][How to: Determine Which .NET Framework Versions Are Installed]
 * [Rozwiązywanie problemów z instalacjami .NET Framework][Troubleshooting .NET Framework Installations]

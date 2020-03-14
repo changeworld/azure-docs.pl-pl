@@ -4,11 +4,11 @@ description: Przygotowanie do powrotu po awarii maszyn wirtualnych VMware po prz
 ms.topic: conceptual
 ms.date: 12/24/2019
 ms.openlocfilehash: 5a330f8cba31640d0116ca3d5ccab352ce5b3509
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362851"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257188"
 ---
 # <a name="prepare-for-reprotection-and-failback-of-vmware-vms"></a>Przygotowanie do ochrony i powrotu po awarii maszyn wirtualnych VMware
 

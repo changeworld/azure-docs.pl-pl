@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/17/2020
 ms.openlocfilehash: fa165c21622110bb18476efdebf3264a11e26ad7
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79125994"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265885"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Kopiowanie danych z SAP HANA przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -148,8 +148,8 @@ Aby skopiować dane z SAP HANA, obsługiwane są następujące właściwości:
 | Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
 | type | Właściwość Type zestawu danych musi być ustawiona na wartość: **SapHanaTable** | Yes |
-| schema | Nazwa schematu w bazie danych SAP HANA. | Nie (Jeśli określono parametr "query" w źródle działania) |
-| table | Nazwa tabeli w bazie danych SAP HANA. | Nie (Jeśli określono parametr "query" w źródle działania) |
+| schemat | Nazwa schematu w bazie danych SAP HANA. | Nie (Jeśli określono parametr "query" w źródle działania) |
+| tabela | Nazwa tabeli w bazie danych SAP HANA. | Nie (Jeśli określono parametr "query" w źródle działania) |
 
 **Przykład:**
 
@@ -292,7 +292,7 @@ Podczas kopiowania danych z SAP HANA następujące mapowania są używane z SAP 
 | STGEOMETRYTYPE     | Byte[]                         |
 | STPOINTTYPE        | Byte[]                         |
 | TEXT               | Ciąg                         |
-| CZAS               | TimeSpan                       |
+| CZAS               | przedział_czasu                       |
 | TINYINT            | Bajtów                           |
 | VARCHAR            | Ciąg                         |
 | TIMESTAMP          | DateTime                       |

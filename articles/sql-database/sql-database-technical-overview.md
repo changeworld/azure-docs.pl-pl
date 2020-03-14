@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: 3932c22ff003a343e4c32aee117a7ddea922fbdb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: fd9e41418eac670bd1cb52be40dbd25c17af6fac
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360084"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255693"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Co to jest usługa Azure SQL Database?
 
@@ -68,7 +68,7 @@ SQL Database oferuje następujące modele zakupów:
 Azure SQL Database oferuje trzy warstwy usług zaprojektowane dla różnych typów aplikacji:
 - [Ogólnego przeznaczenia/standardowa](sql-database-service-tier-general-purpose.md) warstwa usług zaprojektowana pod kątem typowych obciążeń. Oferuje zorientowane na budżety Opcje obliczeniowe i magazynowe.
 - Warstwa usługi [krytyczne dla działania firmy/Premium](sql-database-service-tier-business-critical.md) zaprojektowana dla aplikacji OLTP z wysoką szybkością transakcji i operacjami we/wy o najniższym opóźnieniu. Zapewnia największą odporność na błędy przy użyciu kilku izolowanych replik.
-- Warstwa usługi do [skalowania](sql-database-service-tier-hyperscale.md) dla bardzo dużych baz danych OLTP oraz możliwość automatycznego skalowania magazynu i skalowania w poziomie płynnie. 
+- Warstwa usługi do [skalowania](sql-database-service-tier-hyperscale.md) dla bardzo dużych baz danych OLTP oraz możliwość automatycznego skalowania magazynu i skalowania w poziomie płynnie.    
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Pule elastyczne umożliwiające zmaksymalizowanie wykorzystania zasobów
 
@@ -76,7 +76,7 @@ W przypadku wielu firm i aplikacji możliwość tworzenia pojedynczych baz danyc
 
    ![Ilustracja przedstawiająca pule elastyczne w wersjach Basic, standard i Premium](./media/sql-database-what-is-a-dtu/sqldb_elastic_pools.png)
 
-Pule elastyczne nie wymagają koncentrowania się na skalowaniu wydajności bazy danych w górę i w dół w miarę zmian zapotrzebowania na zasoby. Bazy danych w puli używają zasobów wydajności puli elastycznej w miarę potrzeb. Bazy danych w puli zużywają zasoby, ale nie przekraczają limitów puli, więc koszt pozostaje przewidywalny nawet wtedy, gdy nie można przewidzieć użycia poszczególnych baz danych.
+W przypadku pul elastycznych nie trzeba skupić się na wybieraniu wydajności bazy danych w górę i w dół jako zapotrzebowanie na zmiany zasobów. Bazy danych w puli używają zasobów wydajności puli elastycznej w miarę potrzeb. Bazy danych w puli zużywają, ale nie przekraczają limitów puli, więc koszt pozostaje przewidywalny nawet wtedy, gdy użycie poszczególnych baz danych nie jest.
 
 Możesz [dodawać i usuwać bazy danych do puli](sql-database-elastic-pool-manage-portal.md), skalować aplikację z kilku baz danych do tysięcy, a wszystko to w ramach budżetu, który kontrolujesz. Można również kontrolować minimalną i maksymalną liczbę zasobów dostępnych dla baz danych w puli, aby upewnić się, że żadna baza danych w puli nie używa wszystkich zasobów puli, a każda baza danych w puli ma gwarantowaną minimalną ilość zasobów. Aby dowiedzieć się więcej o wzorcach projektowych dla aplikacji SaaS (Software as a Service) korzystających z pul elastycznych, zobacz [wzorce projektowe dla wielodostępnych aplikacji SaaS z SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md).
 
@@ -95,7 +95,7 @@ Azure SQL Database zapewnia zaawansowane funkcje monitorowania i rozwiązywania 
  - Wbudowane funkcje monitorowania dostępne w najnowszej wersji aparatu bazy danych SQL Server Database. Umożliwiają one znalezienie szczegółowych informacji o wydajności w czasie rzeczywistym. 
  - PaaS funkcje monitorowania zapewniane przez platformę Azure, które umożliwiają monitorowanie i rozwiązywanie problemów z dużą liczbą wystąpień bazy danych.
 
-[Magazyn zapytań](sql-database-operate-query-store.md), wbudowana funkcja monitorowania SQL Server, rejestruje wydajność zapytań w czasie rzeczywistym i pozwala identyfikować potencjalne problemy z wydajnością oraz najważniejszych użytkowników zasobów. Dostrajanie automatyczne i zalecenia zawierają porady dotyczące zapytań dotyczących wydajności uległa pogorszeniu oraz brakujących lub zduplikowanych indeksów. Dostrajanie automatyczne w SQL Database umożliwia ręczne zastosowanie skryptów, które mogą rozwiązać problemy, lub pozwól SQL Database zastosować poprawkę. SQL Database może również testować i sprawdzać, czy poprawka zapewnia pewne korzyści, i zachowuje lub przywraca zmianę w zależności od wyniku. Oprócz funkcji magazynu zapytań i dostrajania automatycznego, można użyć standardowych [widoków DMV i systemu XEvent](sql-database-monitoring-with-dmvs.md) do monitorowania wydajności obciążeń.
+[Magazyn zapytań](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store), wbudowana funkcja monitorowania SQL Server, rejestruje wydajność zapytań w czasie rzeczywistym i pozwala identyfikować potencjalne problemy z wydajnością oraz najważniejszych użytkowników zasobów. Dostrajanie automatyczne i zalecenia zawierają porady dotyczące zapytań dotyczących wydajności uległa pogorszeniu oraz brakujących lub zduplikowanych indeksów. Dostrajanie automatyczne w SQL Database umożliwia ręczne zastosowanie skryptów, które mogą rozwiązać problemy, lub pozwól SQL Database zastosować poprawkę. SQL Database może również testować i sprawdzać, czy poprawka zapewnia pewne korzyści, i zachowuje lub przywraca zmianę w zależności od wyniku. Oprócz funkcji magazynu zapytań i dostrajania automatycznego, można użyć standardowych [widoków DMV i systemu XEvent](sql-database-monitoring-with-dmvs.md) do monitorowania wydajności obciążeń.
 
 Platforma Azure udostępnia wbudowane narzędzia do monitorowania i [generowania alertów](sql-database-insights-alerts-portal.md) [wydajności](sql-database-performance.md) połączone z ocenami wydajności, które umożliwiają monitorowanie stanu tysięcy baz danych. Za pomocą tych narzędzi możesz szybko ocenić wpływ skalowania w górę lub w dół na podstawie bieżących lub przewidywanych wymagań dotyczących wydajności. Ponadto usługa SQL Database może [tworzyć metryki i dzienniki diagnostyczne](sql-database-metrics-diag-logging.md), które ułatwiają monitorowanie. Usługę SQL Database można skonfigurować do przechowywania danych dotyczących użycia zasobów, pracowników i sesji oraz połączeń z jednym z następujących zasobów platformy Azure:
 
@@ -157,7 +157,7 @@ Wielu naszych partnerów, którzy uruchamiają [aplikacje SaaS z wieloma dzierż
 
 ### <a name="adaptive-query-processing"></a>Adaptacyjne przetwarzanie zapytań
 
-Można użyć [adaptacyjnego przetwarzania zapytań](/sql/relational-databases/performance/intelligent-query-processing), w tym z przeplotem w przypadku funkcji z wartościami przechowywanymi w tabeli obejmujących wiele instrukcji, opinii na temat przydziału pamięci w trybie wsadowym i adaptacyjnych sprzężeń w trybie wsadowym. Każda z tych adaptacyjnych funkcji przetwarzania zapytań stosuje podobne techniki „poznaj i dostosuj” ułatwiające dalsze rozwiązywanie problemów dotyczących wydajności związanych z historycznie trudnymi do rozwiązania problemami z optymalizacją zapytań.
+Można użyć [adaptacyjnego przetwarzania zapytań](/sql/relational-databases/performance/intelligent-query-processing), w tym z przeplotem w przypadku funkcji z wartościami przechowywanymi w tabeli obejmujących wiele instrukcji, opinii na temat przydziału pamięci w trybie wsadowym i adaptacyjnych sprzężeń w trybie wsadowym. Każda z tych funkcji adaptacyjnego przetwarzania zapytań stosuje podobną technikę "uczenia się i adaptacji", ułatwiając dalsze Rozwiązywanie problemów z wydajnością związanych z niezależnie związanymi z nimi optymalizacją zapytań.
 
 ## <a name="advanced-security-and-compliance"></a>Zaawansowane zabezpieczenia i zgodność
 

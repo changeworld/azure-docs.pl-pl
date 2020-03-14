@@ -8,11 +8,11 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 0c32d438ac8551f061343edb747e9fc035b498e2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379847"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246411"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>Tworzenie klastra Eksplorator danych i bazy danych platformy Azure przy użyciu programuC#
 
@@ -72,7 +72,7 @@ Aby uruchomić przykłady z tego artykułu, potrzebujemy aplikacji usługi Azure
    | clusterName | *mykustocluster* | Wybrana nazwa klastra.|
    | skuName | *Standard_D13_v2* | Jednostka SKU, która będzie używana na potrzeby klastra. |
    | tier | *Standard* | Warstwa SKU. |
-   | wydajność | *Liczba* | Liczba wystąpień klastra. |
+   | capacity | *Liczba* | Liczba wystąpień klastra. |
    | resourceGroupName | *testrg* | Nazwa grupy zasobów, w której zostanie utworzony klaster. |
 
     > [!NOTE]

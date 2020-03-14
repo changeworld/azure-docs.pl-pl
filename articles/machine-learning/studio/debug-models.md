@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/14/2017
-ms.openlocfilehash: 6c672e57c0c1c0b62b79afbacec3f842770e3d61
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 910e788830ec55b610a9234a8c8ac75dda1ea189
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169248"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218101"
 ---
 # <a name="debug-your-model-in-azure-machine-learning-studio-classic"></a>Debuguj model w Azure Machine Learning Studio (klasyczny)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Podczas uruchamiania modelu mogą wystąpić następujące błędy:
 

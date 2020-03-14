@@ -4,17 +4,17 @@ description: Usługa Azure Storage chroni dane, automatycznie szyfrując je prze
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 02/05/2020
+ms.date: 03/09/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 86d6a63601036abdde4ee7ae73114566d749feca
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
-ms.translationtype: HT
+ms.openlocfilehash: d28a342359114e05545f15624a86a17f7d0d3365
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79130039"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268368"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Szyfrowanie usługi Azure Storage dla danych magazynowanych
 
@@ -65,7 +65,7 @@ Domyślnie konto magazynu używa zarządzanych przez firmę Microsoft kluczy szy
 
 ## <a name="customer-managed-keys-with-azure-key-vault"></a>Klucze zarządzane przez klienta z Azure Key Vault
 
-Możesz zarządzać szyfrowaniem usługi Azure Storage na poziomie konta magazynu przy użyciu własnych kluczy. W przypadku określenia klucza zarządzanego przez klienta na poziomie konta magazynu ten klucz jest używany do ochrony i kontroli dostępu do głównego klucza szyfrowania dla konta magazynu, które z kolei służy do szyfrowania i odszyfrowywania wszystkich danych obiektów blob i plików. Klucze zarządzane przez klienta zapewniają większą elastyczność tworzenia, obracania, wyłączania i odwoływania kontroli dostępu. Możesz również przeprowadzać inspekcję kluczy szyfrowania używanych do ochrony danych.
+Możesz zarządzać szyfrowaniem usługi Azure Storage na poziomie konta magazynu przy użyciu własnych kluczy. W przypadku określenia klucza zarządzanego przez klienta na poziomie konta magazynu ten klucz jest używany do ochrony i kontrolowania dostępu do głównego klucza szyfrowania dla konta magazynu, które z kolei służy do szyfrowania i odszyfrowywania wszystkich danych obiektów blob i plików. Klucze zarządzane przez klienta zapewniają większą elastyczność zarządzania kontrolami dostępu. Możesz również przeprowadzać inspekcję kluczy szyfrowania używanych do ochrony danych.
 
 Aby przechowywać klucze zarządzane przez klienta, należy użyć Azure Key Vault. Możesz utworzyć własne klucze i zapisać je w magazynie kluczy lub użyć Azure Key Vault interfejsów API do wygenerowania kluczy. Konto magazynu i Magazyn kluczy muszą znajdować się w tym samym regionie i w tej samej dzierżawie usługi Azure Active Directory (Azure AD), ale mogą znajdować się w różnych subskrypcjach. Aby uzyskać więcej informacji na temat Azure Key Vault, zobacz [co to jest Azure Key Vault?](../../key-vault/key-vault-overview.md).
 
@@ -102,7 +102,7 @@ Aby dowiedzieć się, jak używać kluczy zarządzanych przez klienta z Azure Ke
 
 Aby włączyć klucze zarządzane przez klienta na koncie magazynu, należy użyć Azure Key Vault do przechowywania kluczy. Należy włączyć zarówno właściwości **nietrwałego usuwania** , jak i **nie przeczyszczania** w magazynie kluczy.
 
-Tylko klucze RSA o rozmiarze 2048 są obsługiwane przez szyfrowanie usługi Azure Storage. Aby uzyskać więcej informacji na temat kluczy, zobacz **Key Vault klucze** w temacie [informacje Azure Key Vault klucze, wpisy tajne i certyfikaty](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys).
+Tylko klucze RSA są obsługiwane przez szyfrowanie usługi Azure Storage. Aby uzyskać więcej informacji na temat kluczy, zobacz **Key Vault klucze** w temacie [informacje Azure Key Vault klucze, wpisy tajne i certyfikaty](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys).
 
 ### <a name="rotate-customer-managed-keys"></a>Obróć klucze zarządzane przez klienta
 
@@ -112,7 +112,31 @@ Obracanie klucza nie wyzwala ponownego szyfrowania danych na koncie magazynu. Od
 
 ### <a name="revoke-access-to-customer-managed-keys"></a>Odwołaj dostęp do kluczy zarządzanych przez klienta
 
-Aby odwołać dostęp do kluczy zarządzanych przez klienta, należy użyć programu PowerShell lub interfejsu wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zobacz [Azure Key Vault PowerShell](/powershell/module/az.keyvault//) lub [interfejs wiersza polecenia Azure Key Vault](/cli/azure/keyvault). Odwoływanie dostępu skutecznie blokuje dostęp do wszystkich danych na koncie magazynu, ponieważ klucz szyfrowania jest niedostępny przez usługę Azure Storage.
+W dowolnym momencie można odwołać dostęp do konta magazynu do klucza zarządzanego przez klienta. Po odwołaniu dostępu do kluczy zarządzanych przez klienta lub po wyłączeniu lub usunięciu klucza klienci nie mogą wywoływać operacji, które odczytują lub zapisują do obiektu BLOB lub jego metadanych. Próby wywołania dowolnej z następujących operacji zakończą się niepowodzeniem z kodem błędu 403 (dostęp zabroniony) dla wszystkich użytkowników:
+
+- [Wyświetl listę obiektów BLOB](/rest/api/storageservices/list-blobs), gdy zostanie wywołana z parametrem `include=metadata` na identyfikatorze URI żądania
+- [Pobierz obiekt BLOB](/rest/api/storageservices/get-blob)
+- [Pobierz właściwości obiektu BLOB](/rest/api/storageservices/get-blob-properties)
+- [Pobierz metadane obiektu BLOB](/rest/api/storageservices/get-blob-metadata)
+- [Ustawianie metadanych obiektu BLOB](/rest/api/storageservices/set-blob-metadata)
+- [Obiekt BLOB Snapshot](/rest/api/storageservices/snapshot-blob), gdy jest wywoływany z nagłówkiem żądania `x-ms-meta-name`
+- [Kopiuj obiekt BLOB](/rest/api/storageservices/copy-blob)
+- [Kopiuj obiekt BLOB z adresu URL](/rest/api/storageservices/copy-blob-from-url)
+- [Ustawianie warstwy obiektu BLOB](/rest/api/storageservices/set-blob-tier)
+- [Umieść blok](/rest/api/storageservices/put-block)
+- [Umieść blok z adresu URL](/rest/api/storageservices/put-block-from-url)
+- [Dołącz blok](/rest/api/storageservices/append-block)
+- [Dołącz blok z adresu URL](/rest/api/storageservices/append-block-from-url)
+- [Umieść obiekt BLOB](/rest/api/storageservices/put-blob)
+- [Umieść stronę](/rest/api/storageservices/put-page)
+- [Umieść stronę na podstawie adresu URL](/rest/api/storageservices/put-page-from-url)
+- [Obiekt BLOB kopiowania przyrostowego](/rest/api/storageservices/incremental-copy-blob)
+
+Aby ponownie wywołać te operacje, Przywróć dostęp do klucza zarządzanego przez klienta.
+
+Wszystkie operacje na danych, które nie są wymienione w tej sekcji, mogą zostać przeprowadzone po odwołaniu kluczy zarządzanych przez klienta lub wyłączeniu lub usunięciu klucza.
+
+Aby odwołać dostęp do kluczy zarządzanych przez klienta, należy użyć [programu PowerShell](storage-encryption-keys-powershell.md#revoke-customer-managed-keys) lub [interfejsu wiersza polecenia platformy Azure](storage-encryption-keys-cli.md#revoke-customer-managed-keys).
 
 ### <a name="customer-managed-keys-for-azure-managed-disks-preview"></a>Klucze zarządzane przez klienta dla usługi Azure Managed disks (wersja zapoznawcza)
 
@@ -122,11 +146,11 @@ Klucze zarządzane przez klienta są również dostępne do zarządzania szyfrow
 
 Klienci, którzy wysyłają żądania do usługi Azure Blob Storage, mają możliwość zapewnienia klucza szyfrowania dla pojedynczego żądania. Dołączenie klucza szyfrowania żądania zapewnia szczegółową kontrolę nad ustawieniami szyfrowania operacji usługi BLOB Storage. Klucze dostarczone przez klienta (wersja zapoznawcza) mogą być przechowywane w Azure Key Vault lub w innym magazynie kluczy.
 
-Przykład pokazujący, jak określić klucz dostarczony przez klienta w żądaniu do magazynu obiektów blob, zobacz temat [Określanie klucza dostarczonego przez klienta w żądaniu usługi BLOB Storage za pomocą platformy .NET](../blobs/storage-blob-customer-provided-key.md). 
+Przykład pokazujący, jak określić klucz dostarczony przez klienta w żądaniu do magazynu obiektów blob, zobacz temat [Określanie klucza dostarczonego przez klienta w żądaniu usługi BLOB Storage za pomocą platformy .NET](../blobs/storage-blob-customer-provided-key.md).
 
 ### <a name="encrypting-read-and-write-operations"></a>Szyfrowanie operacji odczytu i zapisu
 
-Gdy aplikacja kliencka udostępnia klucz szyfrowania w żądaniu, usługa Azure Storage wykonuje szyfrowanie i odszyfrowywanie w niewidoczny sposób podczas odczytywania i zapisywania danych obiektów BLOB. Usługa Azure Storage zapisuje skrót SHA-256 klucza szyfrowania obok zawartości obiektu BLOB. Skrót jest używany do sprawdzania, czy wszystkie kolejne operacje dotyczące obiektu BLOB używają tego samego klucza szyfrowania. 
+Gdy aplikacja kliencka udostępnia klucz szyfrowania w żądaniu, usługa Azure Storage wykonuje szyfrowanie i odszyfrowywanie w niewidoczny sposób podczas odczytywania i zapisywania danych obiektów BLOB. Usługa Azure Storage zapisuje skrót SHA-256 klucza szyfrowania obok zawartości obiektu BLOB. Skrót jest używany do sprawdzania, czy wszystkie kolejne operacje dotyczące obiektu BLOB używają tego samego klucza szyfrowania.
 
 Usługa Azure Storage nie przechowuje klucza szyfrowania, który jest wysyłany przez klienta wraz z żądaniem, ani nie zarządza nim. Klucz jest bezpiecznie odrzucony zaraz po zakończeniu procesu szyfrowania lub odszyfrowywania.
 

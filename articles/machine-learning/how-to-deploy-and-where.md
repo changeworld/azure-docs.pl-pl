@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 02/27/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 025ea1e23b3587d333ecfcda27f80fcedad66ed5
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: 4bb13080d2539610eb7cbf3a3e29ce3090c49f55
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096187"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283643"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Wdrażanie modeli przy użyciu Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -182,6 +182,8 @@ Aby wdrożyć model jako usługę, potrzebne są następujące składniki:
     >   Alternatywą, która może obsłużyć twój scenariusz, jest [Prognoza wsadowa](how-to-use-parallel-run-step.md), która zapewnia dostęp do magazynów danych podczas oceniania.
 
 * **Konfiguracja wnioskowania**. Konfiguracja wnioskowania określa konfigurację środowiska, skrypt wpisu i inne składniki, które są konieczne do uruchomienia modelu jako usługi.
+
+Po zainstalowaniu niezbędnych składników można profilować usługę, która zostanie utworzona w wyniku wdrożenia modelu, aby zrozumieć jego wymagania dotyczące procesora i pamięci.
 
 ### <a id="script"></a>1. Zdefiniuj skrypt i zależności wpisu
 
@@ -520,6 +522,82 @@ W tym przykładzie konfiguracja określa następujące ustawienia:
 
 Aby uzyskać informacje na temat używania niestandardowego obrazu platformy Docker z konfiguracją wnioskowania, zobacz [jak wdrożyć model przy użyciu niestandardowego obrazu platformy Docker](how-to-deploy-custom-docker-image.md).
 
+### <a id="profilemodel"></a>3. Profilowanie modelu w celu określenia wykorzystania zasobów
+
+Po zarejestrowaniu modelu i przygotowaniu innych składników niezbędnych do wdrożenia można określić procesor i pamięć, która będzie potrzebna przez wdrożoną usługę. Profilowanie testuje usługę, która uruchamia model i zwraca informacje takie jak użycie procesora CPU, użycie pamięci i opóźnienie odpowiedzi. Zawiera również zalecenia dotyczące procesora CPU i pamięci na podstawie użycia zasobów.
+
+Aby profilować model, wymagany jest:
+* Zarejestrowany model.
+* Konfiguracja wnioskowania na podstawie skryptu wejścia i definicji środowiska wnioskowania.
+* Pojedynczy kolumnowy tabelaryczny zestaw danych, gdzie każdy wiersz zawiera ciąg reprezentujący przykładowe dane żądania.
+
+> [!IMPORTANT]
+> W tym momencie obsługujemy tylko profilowanie usług, które oczekują, aby dane żądania były ciągiem, na przykład: szeregowany ciąg JSON, tekst, serializowany ciąg znaków itd. Zawartość każdego wiersza zestawu danych (String) zostanie umieszczona w treści żądania HTTP i wysłana do usługi hermetyzowania modelu na potrzeby oceniania.
+
+Poniżej znajduje się przykład sposobu konstruowania wejściowego zestawu danych w celu profilowania usługi, która oczekuje, że jej przychodzące dane żądania zawierają Zserializowany kod JSON. W takim przypadku utworzyliśmy zestaw danych oparty na 100 wystąpieniach tej samej zawartości danych żądania. W realnie świecie zalecamy korzystanie z większych zestawów danych zawierających różne dane wejściowe, zwłaszcza jeśli użycie/zachowanie zasobów modelu jest zależne od danych wejściowych.
+
+```python
+import json
+from azureml.core import Datastore
+from azureml.core.dataset import Dataset
+from azureml.data import dataset_type_definitions
+
+input_json = {'data': [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                       [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]]}
+# create a string that can be utf-8 encoded and
+# put in the body of the request
+serialized_input_json = json.dumps(input_json)
+dataset_content = []
+for i in range(100):
+    dataset_content.append(serialized_input_json)
+dataset_content = '\n'.join(dataset_content)
+file_name = 'sample_request_data.txt'
+f = open(file_name, 'w')
+f.write(dataset_content)
+f.close()
+
+# upload the txt file created above to the Datastore and create a dataset from it
+data_store = Datastore.get_default(ws)
+data_store.upload_files(['./' + file_name], target_path='sample_request_data')
+datastore_path = [(data_store, 'sample_request_data' +'/' + file_name)]
+sample_request_data = Dataset.Tabular.from_delimited_files(
+    datastore_path, separator='\n',
+    infer_column_types=True,
+    header=dataset_type_definitions.PromoteHeadersBehavior.NO_HEADERS)
+sample_request_data = sample_request_data.register(workspace=ws,
+                                                   name='sample_request_data',
+                                                   create_new_version=True)
+```
+
+Gdy zestaw danych zawierający przykładowe dane żądania są gotowe, Utwórz konfigurację wnioskowania. Konfiguracja wnioskowania jest oparta na score.py i definicji środowiska. W poniższym przykładzie pokazano, jak utworzyć konfigurację wnioskowania i uruchomić profilowanie:
+
+```python
+from azureml.core.model import InferenceConfig, Model
+from azureml.core.dataset import Dataset
+
+
+model = Model(ws, id=model_id)
+inference_config = InferenceConfig(entry_script='path-to-score.py',
+                                   environment=myenv)
+input_dataset = Dataset.get_by_name(workspace=ws, name='sample_request_data')
+profile = Model.profile(ws,
+            'unique_name',
+            [model],
+            inference_config,
+            input_dataset=input_dataset)
+
+profile.wait_for_completion(True)
+
+# see the result
+details = profile.get_details()
+```
+
+Następujące polecenie pokazuje, jak profilować model przy użyciu interfejsu wiersza polecenia:
+
+```azurecli-interactive
+az ml model profile -g <resource-group-name> -w <workspace-name> --inference-config-file <path-to-inf-config.json> -m <model-id> --idi <input-dataset-id> -n <unique-name>
+```
+
 ## <a name="deploy-to-target"></a>Wdróż do celu
 
 Wdrożenie używa konfiguracji wdrożenia konfiguracji wnioskowania do wdrożenia modeli. Proces wdrażania jest podobny niezależnie od elementu docelowego obliczeń. Wdrażanie do AKS jest nieco inne, ponieważ należy podać odwołanie do klastra AKS.
@@ -592,7 +670,7 @@ W poniższej tabeli opisano różne stany usług:
 | Stan usługi WebService | Opis | Końcowy stan?
 | ----- | ----- | ----- |
 | Przechodzenie | Usługa jest w trakcie wdrażania. | Nie |
-| W złej kondycji | Usługa została wdrożona, ale jest obecnie nieosiągalna.  | Nie |
+| Nieprawidłowy | Usługa została wdrożona, ale jest obecnie nieosiągalna.  | Nie |
 | Unschedulable | Nie można teraz wdrożyć usługi z powodu braku zasobów. | Nie |
 | Niepowodzenie | Wdrożenie usługi nie powiodło się z powodu błędu lub awarii. | Yes |
 | W dobrej kondycji | Usługa jest w dobrej kondycji, a punkt końcowy jest dostępny. | Yes |
@@ -1077,4 +1155,5 @@ Aby uzyskać więcej informacji, zobacz dokumentację dotyczącą usługi [WebSe
 * [Korzystanie z modelu usługi Azure Machine Learning wdrożonego jako usługa internetowa](how-to-consume-web-service.md)
 * [Monitoruj modele Azure Machine Learning przy użyciu Application Insights](how-to-enable-app-insights.md)
 * [Zbieranie danych dla modeli w środowisku produkcyjnym](how-to-enable-data-collection.md)
+* [Tworzenie alertów zdarzeń i wyzwalaczy na potrzeby wdrożeń modeli](how-to-use-event-grid.md)
 

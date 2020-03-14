@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie zasobami i powiązanymi jednostkami za pomocą usługi Media Services .NET SDK
-description: Dowiedz się, jak zarządzać zasobami i powiązanymi jednostkami za pomocą zestawu Media Services SDK dla platformy .NET.
+title: Zarządzanie zasobami i powiązanymi jednostkami przy użyciu zestawu SDK platformy Media Services .NET
+description: Dowiedz się, jak zarządzać zasobami i powiązanymi jednostkami przy użyciu zestawu Media Services SDK dla platformy .NET.
 author: juliako
 manager: femila
 editor: ''
@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: a686465b0006c2e9aac6e06cb4ab12d30921e8c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61235429"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251143"
 ---
-# <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>Zarządzanie zasobami i powiązanymi jednostkami za pomocą usługi Media Services .NET SDK
+# <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>Zarządzanie zasobami i powiązanymi jednostkami przy użyciu zestawu SDK platformy Media Services .NET
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-manage-entities.md)
 > * [REST](media-services-rest-manage-entities.md)
@@ -29,18 +29,18 @@ ms.locfileid: "61235429"
 > 
 
 > [!NOTE]
-> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md)
+> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówki dotyczące migracji od wersji 2 do V3](../latest/migrate-from-v2-to-v3.md)
 
-W tym temacie pokazano, jak zarządzać jednostkami usługi Azure Media Services przy użyciu platformy .NET.
+W tym temacie pokazano, jak zarządzać jednostkami Azure Media Services przy użyciu platformy .NET.
 
-Począwszy od 1 kwietnia 2017 roku, wszystkie rekordy zadań na Twoim koncie, które są starsze niż 90 dni, będą automatycznie usuwane wraz ze skojarzonymi rekordami zadań podrzędnych nawet wtedy, gdy całkowita liczba rekordów jest mniejsza niż maksymalny limit przydziału. Na przykład 1 kwietnia 2017 r. wszystkie rekordy zadań na Twoim koncie, które są starsze niż 31 grudnia 2016 r. zostaną automatycznie usunięte. Jeśli chcesz zarchiwizować informacje zadania lub zadania podrzędnego, można użyć kodu opisanego w tym temacie.
+Począwszy od 1 kwietnia 2017 roku, wszystkie rekordy zadań na Twoim koncie, które są starsze niż 90 dni, będą automatycznie usuwane wraz ze skojarzonymi rekordami zadań podrzędnych nawet wtedy, gdy całkowita liczba rekordów jest mniejsza niż maksymalny limit przydziału. Na przykład 1 kwietnia 2017 każdy rekord zadania na koncie starszym niż 31 grudnia 2016 zostanie automatycznie usunięty. Jeśli zachodzi potrzeba archiwizowania informacji o zadaniu/zadaniu, można użyć kodu opisanego w tym temacie.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Skonfiguruj środowisko projektowe i wypełnij plik app.config przy użyciu informacji dotyczących połączenia, zgodnie z opisem w sekcji [Projektowanie usługi Media Services na platformie .NET](media-services-dotnet-how-to-use.md). 
 
 ## <a name="get-an-asset-reference"></a>Pobierz odwołanie do zasobu
-Często zadanie jest aby odwołać się do istniejącego zasobu w usłudze Media Services. Poniższy przykład kodu pokazuje, jak można uzyskać odwołanie do zasobu z kolekcji zasobów na serwerze obiektu kontekstu, w oparciu o identyfikator zasobu Poniższy przykład kodu używa zapytania Linq można pobrać odwołania do istniejącego obiektu IAsset.
+Często zadaniem jest uzyskanie odwołania do istniejącego elementu zawartości w Media Services. Poniższy przykład kodu pokazuje, jak uzyskać odwołanie do zasobu z kolekcji Assets obiektu kontekstu serwera na podstawie identyfikatora zasobu. Poniższy przykład kodu używa zapytania LINQ, aby uzyskać odwołanie do istniejącego obiektu IAsset.
 
 ```csharp
     static IAsset GetAsset(string assetId)
@@ -57,8 +57,8 @@ Często zadanie jest aby odwołać się do istniejącego zasobu w usłudze Media
     }
 ```
 
-## <a name="list-all-assets"></a>Lista wszystkich zasobów
-Wraz z rozwojem liczby zasobów, które masz w magazynie jest przydatne wyświetlić listę zasobów. W poniższym przykładzie kodu pokazano, jak do iterowania po kolekcji zasobów na obiekt kontekstu serwera. Z każdego zasobu w przykładzie kodu zapisuje także niektóre wartości właściwości do konsoli. Na przykład każdy element zawartości może zawierać wiele plików multimedialnych. Przykład kodu zapisuje się wszystkie pliki skojarzone z każdym elementem zawartości.
+## <a name="list-all-assets"></a>Wyświetl listę wszystkich zasobów
+Wraz ze wzrostem liczby elementów zawartości w magazynie warto wyświetlić listę zasobów. Poniższy przykład kodu pokazuje, jak wykonać iterację kolekcji elementów zawartości w obiekcie kontekstu serwera. W przypadku każdego elementu zawartości przykład kodu zapisuje także niektóre jego wartości właściwości w konsoli. Na przykład każdy element zawartości może zawierać wiele plików multimedialnych. Przykład kodu zapisuje wszystkie pliki skojarzone z poszczególnymi zasobami.
 
 ```csharp
     static void ListAssets()
@@ -100,9 +100,9 @@ Wraz z rozwojem liczby zasobów, które masz w magazynie jest przydatne wyświet
 
 ## <a name="get-a-job-reference"></a>Pobierz odwołanie do zadania
 
-Podczas pracy z przetwarzaniem zadań w kod usługi Media Services, często musisz odwołać się do istniejącego zadania na podstawie identyfikatora. W poniższym przykładzie kodu pokazano, jak można pobrać odwołania do obiektu IJob z kolekcji zadań.
+Podczas pracy z zadaniami przetwarzania w Media Services kodzie często trzeba uzyskać odwołanie do istniejącego zadania na podstawie identyfikatora. Poniższy przykład kodu pokazuje, jak uzyskać odwołanie do obiektu IJob z kolekcji jobs.
 
-Może być konieczne odwołać zadania podczas uruchamiania zadania kodowania długotrwałych i trzeba sprawdzić stan zadania w wątku. W takich sytuacjach w przypadku zwrotu metody z wątku, należy pobrać odświeżony odwołanie do zadania.
+Może być konieczne uzyskanie odwołania do zadania podczas uruchamiania długotrwałego zadania kodowania i konieczność sprawdzenia stanu zadania w wątku. W takich przypadkach, gdy metoda zwraca z wątku, należy pobrać odświeżone odwołanie do zadania.
 
 ```csharp
     static IJob GetJob(string jobId)
@@ -120,10 +120,10 @@ Może być konieczne odwołać zadania podczas uruchamiania zadania kodowania d�
     }
 ```
 
-## <a name="list-jobs-and-assets"></a>Lista zadań i zasobów
-Jest ważnym zadaniem powiązanych do listy zasobów za pomocą ich skojarzone zadania w usłudze Media Services. Poniższy przykład kodu pokazuje sposób wyświetlenia listy każdy obiekt IJob i następnie dla każdego zadania, wyświetla właściwości o zadaniu, wszystkie powiązane zadania, wszystkie dane wejściowe, zasoby i wszystkie zasoby danych wyjściowych. Kod w tym przykładzie może być przydatne w przypadku wielu innych zadań. Na przykład jeśli chcesz wyświetlić listę zasobów danych wyjściowych z co najmniej jedno zadanie kodowania, które były uruchomione poprzednio, ten kod przedstawia sposób uzyskiwać dostęp do zasobów danych wyjściowych. W przypadku odwołania do elementu zawartości wyjściowej, możesz następnie dostarczanie zawartości do innych użytkowników lub aplikacji ją pobrać lub udostępniając adresów URL. 
+## <a name="list-jobs-and-assets"></a>Wyświetlanie listy zadań i zasobów
+Ważne powiązane zadanie to lista zasobów ze skojarzonymi z nimi zadaniami w Media Services. Poniższy przykład kodu pokazuje, jak wyświetlić listę każdego obiektu IJob, a następnie dla każdego zadania wyświetlić właściwości dotyczące zadania, wszystkie powiązane zadania, wszystkie zasoby wejściowe i wszystkie zasoby wyjściowe. Kod w tym przykładzie może być przydatny w przypadku wielu innych zadań. Jeśli na przykład chcesz wyświetlić listę zasobów wyjściowych z jednego lub więcej uruchomionych wcześniej zadań kodowania, ten kod pokazuje, jak uzyskać dostęp do zasobów wyjściowych. Jeśli masz odwołanie do wyjściowego elementu zawartości, możesz dostarczyć zawartość do innych użytkowników lub aplikacji, pobierając je lub dostarczając adresy URL. 
 
-Aby uzyskać więcej informacji na temat opcji dostarczania zasobów, zobacz [dostarczania zasobów za pomocą usługi Media Services SDK dla platformy .NET](media-services-deliver-streaming-content.md).
+Aby uzyskać więcej informacji na temat opcji dostarczania zasobów, zobacz [dostarczanie zasobów przy użyciu zestawu Media Services SDK dla platformy .NET](media-services-deliver-streaming-content.md).
 
 ```csharp
     // List all jobs on the server, and for each job, also list 
@@ -202,10 +202,10 @@ Aby uzyskać więcej informacji na temat opcji dostarczania zasobów, zobacz [do
     }
 ```
 
-## <a name="list-all-access-policies"></a>Lista wszystkich zasad dostępu
-W usłudze Media Services można zdefiniować zasadę dostępu dla zasobu lub jego pliki. Zasady dostępu definiuje uprawnienia dla pliku lub zasobu (jakiego rodzaju dostępu i czas trwania). W kodzie usługi Media Services zwykle zdefiniować zasadę dostępu, tworząc obiekt IAccessPolicy i kojarzenie go z istniejącego zasobu. Następnie możesz utworzyć obiekt ILocator, który umożliwia dostarczanie bezpośredni dostęp do zasobów w usłudze Media Services. Dołączona ta seria artykułów dokumentacji projektu programu Visual Studio zawiera kilka przykładów kodu, które pokazują, jak utworzyć i przypisać zasady dostępu i lokalizatorów zasobów.
+## <a name="list-all-access-policies"></a>Wyświetl wszystkie zasady dostępu
+W Media Services można zdefiniować zasady dostępu dla zasobu lub jego plików. Zasady dostępu definiują uprawnienia do pliku lub zasobu (typ dostępu i czas trwania). W kodzie Media Services zwykle definiuje się zasady dostępu, tworząc obiekt IAccessPolicy, a następnie kojarząc go z istniejącym elementem zawartości. Następnie utworzysz obiekt ILocator, który umożliwia uzyskanie bezpośredniego dostępu do zasobów w Media Services. Projekt programu Visual Studio, który jest dołączony do tej serii dokumentacji, zawiera kilka przykładów kodu, które pokazują, jak tworzyć i przypisywać zasady dostępu oraz lokalizatory do zasobów.
 
-Poniższy przykład kodu ilustruje sposób wyświetlenia listy wszystkich zasad dostępu na serwerze i zawiera typ skojarzone z każdą uprawnienia. Jest innym wygodny sposób, aby wyświetlić zasady dostępu, aby wyświetlić listę wszystkich obiektów ILocator na serwerze, a następnie dla każdego lokalizatora, możesz wyświetlić listę swoich zasad dostępu skojarzonych za pomocą jego właściwości AccessPolicy.
+Poniższy przykład kodu pokazuje, jak wyświetlić listę wszystkich zasad dostępu na serwerze oraz typ uprawnień skojarzonych z każdym z nich. Innym przydatnym sposobem wyświetlania zasad dostępu jest wyświetlenie listy wszystkich obiektów ILocator na serwerze, a następnie dla każdego lokalizatora można wyświetlić listę skojarzonych zasad dostępu przy użyciu właściwości AccessPolicy.
 
 ```csharp
     static void ListAllPolicies()
@@ -222,12 +222,12 @@ Poniższy przykład kodu ilustruje sposób wyświetlenia listy wszystkich zasad 
     }
 ```
     
-## <a name="limit-access-policies"></a>Limit zasad dostępu 
+## <a name="limit-access-policies"></a>Ograniczanie zasad dostępu 
 
 >[!NOTE]
 > Limit różnych zasad usługi AMS wynosi 1 000 000 (na przykład zasad lokalizatorów lub ContentKeyAuthorizationPolicy). Należy używać tego samego identyfikatora zasad, jeśli zawsze są używane uprawnienia dotyczące tych samych dni lub tego samego dostępu, na przykład dla lokalizatorów przeznaczonych do długotrwałego stosowania (nieprzekazywanych zasad). 
 
-Na przykład można utworzyć zestaw ogólnych zasad następującym kodem, który można uruchomić tylko jeden raz w aplikacji. Identyfikatory Zaloguj się do pliku dziennika w celu późniejszego użycia:
+Na przykład można utworzyć ogólny zestaw zasad o następującym kodzie, który będzie wykonywany tylko raz w aplikacji. Identyfikatory można rejestrować w pliku dziennika w celu późniejszego użycia:
 
 ```csharp
     double year = 365.25;
@@ -241,7 +241,7 @@ Na przykład można utworzyć zestaw ogólnych zasad następującym kodem, któr
     Console.WriteLine("One week policy ID is: " + policyWeek.Id);
 ```
 
-Następnie można użyć identyfikatorów istniejących w kodzie następująco:
+Następnie można użyć istniejących identyfikatorów w kodzie w następujący sposób:
 
 ```csharp
     const string policy1YearId = "nb:pid:UUID:2a4f0104-51a9-4078-ae26-c730f88d35cf";
@@ -265,12 +265,12 @@ Następnie można użyć identyfikatorów istniejących w kodzie następująco:
     Console.WriteLine("The locator base path is " + originLocator.BaseUri.ToString());
 ```
 
-## <a name="list-all-locators"></a>Lista wszystkie Lokalizatory
-Lokalizator jest adres URL, który zapewnia bezpośrednią ścieżkę do dostępu do zasobów oraz uprawnień do elementu zawartości zgodnie z definicją zasad dostępu skojarzone lokalizatora. Każdy zasób może mieć kolekcji ILocator obiektów skojarzonych z nim na jego właściwość lokalizatorów. Kontekstu serwera ma również kolekcji lokalizatorów, która zawiera wszystkie lokalizatory.
+## <a name="list-all-locators"></a>Wyświetl listę wszystkich lokalizatorów
+Lokalizator to adres URL, który zapewnia bezpośrednią ścieżkę dostępu do elementu zawartości, wraz z uprawnieniami do elementu zawartości, zgodnie z definicją stowarzyszonych zasad dostępu lokalizatora. Każdy element zawartości może mieć kolekcję obiektów ILocator skojarzonych z nią we właściwości Locators. Kontekst serwera ma również kolekcję lokalizatorów, która zawiera wszystkie lokalizatory.
 
-Poniższy przykład kodu wyświetla wszystkie lokalizatory na serwerze. Dla każdego lokalizatora pokazuje identyfikator powiązane zasoby i dostęp do zasad. Wyświetla również typ uprawnień, datę wygaśnięcia i pełną ścieżkę do elementu zawartości.
+Poniższy przykład kodu wyświetla listę wszystkich lokalizatorów na serwerze. Dla każdego lokalizatora Wyświetla identyfikator powiązanych zasobów i zasad dostępu. Wyświetla również typ uprawnień, datę wygaśnięcia i pełną ścieżkę do elementu zawartości.
 
-Należy pamiętać, że ścieżka lokalizatora do elementu zawartości tylko podstawowy adres URL do elementu zawartości. Aby utworzyć bezpośrednią ścieżkę do poszczególnych plików, które użytkownik lub aplikacja może przejść do, kod należy dodać ścieżki konkretnego pliku do ścieżki lokalizatora. Aby uzyskać więcej informacji na temat jak to zrobić, zobacz temat [dostarczania zasobów za pomocą usługi Media Services SDK dla platformy .NET](media-services-deliver-streaming-content.md).
+Należy pamiętać, że ścieżka lokalizatora do elementu zawartości jest tylko podstawowym adresem URL dla elementu zawartości. Aby utworzyć bezpośrednie ścieżki do poszczególnych plików, do których użytkownik lub aplikacja może przeszukać, kod musi dodać ścieżkę pliku do ścieżki lokalizatora. Aby uzyskać więcej informacji o tym, jak to zrobić, zobacz temat [dostarczanie zasobów przy użyciu zestawu Media Services SDK dla platformy .NET](media-services-deliver-streaming-content.md).
 
 ```csharp
     static void ListAllLocators()
@@ -292,10 +292,10 @@ Należy pamiętać, że ścieżka lokalizatora do elementu zawartości tylko pod
     }
 ```
 
-## <a name="enumerating-through-large-collections-of-entities"></a>Wyliczanie dużych kolekcjach jednostek
-Podczas wykonywania zapytań dotyczących jednostek, istnieje limit 1000 jednostek zwrócona w tym samym czasie, ponieważ publiczny v2 REST ogranicza wyniki zapytania do 1000 wyników. Należy użyć Skip i Take podczas wyliczania za pośrednictwem dużych kolekcjach jednostek. 
+## <a name="enumerating-through-large-collections-of-entities"></a>Wyliczanie przez duże kolekcje jednostek
+Podczas wykonywania zapytania o jednostki istnieje limit 1000 jednostek, które są zwracane w tym samym czasie, ponieważ Public REST v2 ogranicza wyniki zapytania do 1000 wyników. Należy użyć Skip i Take podczas wyliczania w dużych kolekcjach jednostek. 
 
-Używając następującej funkcji w pętli wszystkich zadań w podanego konta usługi Media Services. Usługa Media Services zwraca 1000 zadań w kolekcji zadań. Funkcja korzysta z Skip i Take, aby upewnić się, że wszystkie zadania są wyliczane (w przypadku, gdy masz więcej niż 1000 zadań na Twoim koncie).
+Poniższa funkcja pętle przez wszystkie zadania z podanego konta Media Services. Media Services Zwraca 1000 zadań w kolekcji zadań. Funkcja korzysta z funkcji Skip i podejmuje się, aby upewnić się, że wszystkie zadania są wyliczane (na wypadek, gdyby w Twoim koncie było więcej niż 1000 zadań).
 
 ```csharp
     static void ProcessJobs()
@@ -335,7 +335,7 @@ Używając następującej funkcji w pętli wszystkich zadań w podanego konta us
     }
 ```
 
-## <a name="delete-an-asset"></a>Usuń zasób
+## <a name="delete-an-asset"></a>Usuwanie elementu zawartości
 Poniższy przykład usuwa element zawartości.
 
 ```csharp
@@ -351,10 +351,10 @@ Poniższy przykład usuwa element zawartości.
     }
 ```
 
-## <a name="delete-a-job"></a>Usuń zadanie
-Aby usunąć zadanie, możesz sprawdzić stan zadania, zgodnie z instrukcjami w właściwości stanu. Można usunąć zadania, które zostały zakończone lub anulowane, podczas zadania, które znajdują się w niektórych innych państw, takie jak umieszczonych w kolejce, zaplanowane lub przetwarzania, należy najpierw anulować, a następnie można je usunąć.
+## <a name="delete-a-job"></a>Usuwanie zadania
+Aby usunąć zadanie, należy sprawdzić stan zadania określony we właściwości stan. Zadania, które zostały zakończone lub anulowane, mogą zostać usunięte, a zadania, które znajdują się w niektórych innych Stanach, takich jak kolejkowane, zaplanowane lub przetwarzane, muszą zostać anulowane jako pierwsze, a następnie można je usunąć.
 
-Poniższy przykład kodu przedstawia metodę usuwania zadania, zaznaczając stany zadań, a następnie usuwając, gdy stan to zostało zakończone lub anulowane. Ten kod zależy od poprzedniej sekcji, w tym temacie w celu uzyskania odwołanie do zadania: Pobierz odwołanie do zadania.
+Poniższy przykład kodu przedstawia metodę usuwania zadania, sprawdzając Stany zadań, a następnie usuwając po zakończeniu lub anulowaniu stanu. Ten kod zależy od poprzedniej sekcji w tym temacie w celu uzyskania odwołania do zadania: Uzyskaj odwołanie do zadania.
 
 ```csharp
     static void DeleteJob(string jobId)
@@ -404,8 +404,8 @@ Poniższy przykład kodu przedstawia metodę usuwania zadania, zaznaczając stan
 ```
 
 
-## <a name="delete-an-access-policy"></a>Usuń zasady dostępu
-Poniższy przykład kodu pokazuje, jak odwołać się do zasad dostępu na podstawie zasad Id, a następnie usunąć zasady.
+## <a name="delete-an-access-policy"></a>Usuwanie zasad dostępu
+Poniższy przykład kodu pokazuje, jak uzyskać odwołanie do zasad dostępu w oparciu o identyfikator zasad, a następnie usunąć zasady.
 
 ```csharp
     static void DeleteAccessPolicy(string existingPolicyId)
@@ -427,6 +427,6 @@ Poniższy przykład kodu pokazuje, jak odwołać się do zasad dostępu na podst
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Przekaż opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

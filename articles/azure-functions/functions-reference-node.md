@@ -4,12 +4,12 @@ description: Dowiedz się, jak opracowywać funkcje przy użyciu języka JavaScr
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
 ms.date: 12/17/2019
-ms.openlocfilehash: b0cd9541deac106525cfe80244d1867f513825f0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 345df8e1ea88caa6f8dbe941245c1f989c3e81c6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357952"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276831"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Przewodnik dla deweloperów Azure Functions JavaScript
 
@@ -363,6 +363,7 @@ Obiekt `context.res` (odpowiedź) ma następujące właściwości:
 | _nagłówka_ | Obiekt, który zawiera nagłówki odpowiedzi.             |
 | _isRaw_   | Wskazuje, że formatowanie dla odpowiedzi jest pomijane.    |
 | _Stany_  | Kod stanu HTTP odpowiedzi.                     |
+| _cookie_ | Tablica obiektów cookie HTTP, które są ustawiane w odpowiedzi. Obiekt cookie HTTP ma `name`, `value`i inne właściwości plików cookie, takie jak `maxAge` lub `sameSite`. |
 
 ### <a name="accessing-the-request-and-response"></a>Uzyskiwanie dostępu do żądania i odpowiedzi 
 

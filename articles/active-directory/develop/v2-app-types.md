@@ -17,12 +17,12 @@ ms.date: 04/06/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 650e5fb5d0b2c5522a70944991e9e49037c3b4fa
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 94cddf097f2a9e51f061909f6bdd3dcd82f18bfe
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226941"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262531"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Typy aplikacji dla platformy tożsamości firmy Microsoft
 
@@ -43,7 +43,7 @@ Aby uzyskać szczegółowe informacje, Dowiedz się, jak [zarejestrować aplikac
 
 Po zarejestrowaniu aplikacji aplikacja komunikuje się z platformą tożsamości firmy Microsoft przez wysyłanie żądań do punktu końcowego. Udostępniamy struktury i biblioteki typu open source, które obsługują szczegóły tych żądań. Istnieje również możliwość zaimplementowania logiki uwierzytelniania samodzielnie przez tworzenie żądań do tych punktów końcowych:
 
-```
+```HTTP
 https://login.microsoftonline.com/common/oauth2/v2.0/authorize
 https://login.microsoftonline.com/common/oauth2/v2.0/token
 ```
@@ -62,7 +62,7 @@ Aby zapoznać się z tym scenariuszem, wypróbuj jeden z przykładów kodu aplik
 
 W przypadku aplikacji sieci Web (.NET, PHP, Java, Ruby, Python, Node), do których użytkownik uzyskuje dostęp za pomocą przeglądarki, można użyć programu [OpenID Connect Connect](active-directory-v2-protocols.md) do logowania użytkownika. W programie OpenID Connect Connect aplikacja sieci Web otrzymuje token ID. Token identyfikatora to token zabezpieczający, który weryfikuje tożsamość użytkownika i zawiera informacje o użytkowniku w formie oświadczeń:
 
-```
+```JSON
 // Partial raw ID token
 eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 
@@ -91,7 +91,7 @@ Oprócz prostej logowania aplikacja serwera sieci Web może potrzebować dostęp
 
 Możesz użyć punktu końcowego platformy tożsamości firmy Microsoft do zabezpieczenia usług sieci Web, takich jak internetowy interfejs API aplikacji RESTful. Interfejsy API sieci Web można zaimplementować na wielu platformach i w różnych językach. Można je również zaimplementować przy użyciu wyzwalaczy HTTP w Azure Functions. Zamiast tokenów identyfikatorów i plików cookie sesji, internetowy interfejs API używa tokenu dostępu OAuth 2,0 do zabezpieczania danych i uwierzytelniania żądań przychodzących. Obiekt wywołujący interfejs API sieci Web dołącza token dostępu w nagłówku autoryzacji żądania HTTP, tak jak to:
 
-```
+```HTTP
 GET /api/items HTTP/1.1
 Host: www.mywebapi.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6...
@@ -121,7 +121,7 @@ W tym przepływie aplikacja otrzymuje kod autoryzacji z punktu końcowego platfo
 
 ## <a name="daemons-and-server-side-apps"></a>Demony i aplikacje po stronie serwera
 
-Aplikacje, które mają długotrwałe procesy lub działają bez interakcji z użytkownikiem, muszą również mieć dostęp do zabezpieczonych zasobów, takich jak interfejsy API sieci Web. Te aplikacje mogą uwierzytelniać i uzyskiwać tokeny przy użyciu tożsamości aplikacji, a nie delegowanej tożsamości użytkownika, za pomocą przepływu poświadczeń klienta OAuth 2,0. Tożsamość aplikacji można udowodnić przy użyciu klucza tajnego klienta lub certyfikatu. Aby uzyskać więcej informacji, zobacz [uwierzytelnianie na platformie tożsamości firmy Microsoft w aplikacjach demonów z certyfikatami](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/).
+Aplikacje, które mają długotrwałe procesy lub działają bez interakcji z użytkownikiem, muszą również mieć dostęp do zabezpieczonych zasobów, takich jak interfejsy API sieci Web. Te aplikacje mogą uwierzytelniać i uzyskiwać tokeny przy użyciu tożsamości aplikacji, a nie delegowanej tożsamości użytkownika, za pomocą przepływu poświadczeń klienta OAuth 2,0. Tożsamość aplikacji można udowodnić przy użyciu klucza tajnego klienta lub certyfikatu. Aby uzyskać więcej informacji, zobacz [aplikacje konsolowe demona .NET Core przy użyciu platformy tożsamości firmy Microsoft](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2).
 
 W tym przepływie aplikacja współdziała bezpośrednio z punktem końcowym `/token`, aby uzyskać dostęp:
 

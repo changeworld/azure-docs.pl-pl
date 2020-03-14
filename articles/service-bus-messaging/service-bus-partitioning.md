@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 02/06/2020
 ms.author: aschhab
 ms.openlocfilehash: 671368993acb43c0d55eca73119effa934e3cff8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392375"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260945"
 ---
 # <a name="partitioned-queues-and-topics"></a>Partycjonowane kolejki i tematy
 
@@ -37,7 +37,7 @@ Nie ma dodatkowych kosztów podczas wysyłania komunikatu do lub otrzymywania ko
 
 Aby używać podzielonych kolejek i tematów w Azure Service Bus, użyj zestawu Azure SDK w wersji 2,2 lub nowszej albo Określ `api-version=2013-10` lub nowsze w żądaniach HTTP.
 
-### <a name="standard"></a>Standardowa (Standard)
+### <a name="standard"></a>Standard
 
 W warstwie Standardowa obsługa komunikatów można tworzyć Service Bus kolejki i tematy w rozmiarze 1, 2, 3, 4 lub 5 GB (wartość domyślna to 1 GB). Po włączeniu partycjonowania Service Bus tworzy 16 kopii (16 partycji) jednostki, każdy z określonych rozmiarów. W związku z tym, jeśli utworzysz kolejkę o rozmiarze 5 GB, a w przypadku 16 partycji zostanie osiągnięty maksymalny rozmiar kolejki (5 \* 16) = 80 GB. Możesz zobaczyć maksymalny rozmiar kolejki lub tematu partycjonowanego, przeglądając jego wpis na [Azure Portal][Azure portal], w bloku **Przegląd** dla tej jednostki.
 

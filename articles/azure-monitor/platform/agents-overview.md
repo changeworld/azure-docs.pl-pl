@@ -8,11 +8,11 @@ author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
 ms.openlocfilehash: a7e6a3a299df8112fe4fbcf457516894c1766b8c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362174"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249089"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Omówienie agentów Azure Monitor
 
@@ -43,7 +43,7 @@ W poniższych tabelach przedstawiono krótkie porównanie Azure Monitor agentów
 |:---|:---|:---|:---|:---|
 | Obsługiwane środowiska | Azure | Azure<br>Inna chmura<br>Lokalnie | Azure<br>Inna chmura<br>Lokalnie | Azure<br>Inna chmura<br>Lokalnie |
 | Wymagania dotyczące agenta  | None | None | None | Wymaga agenta Log Analytics |
-| Zebrane dane | Syslog<br>Wydajność | Wydajność | Syslog<br>Wydajność| Szczegóły procesu i zależności<br>Metryki połączenia sieciowego |
+| Zebrane dane | Dziennik systemu<br>Wydajność | Wydajność | Dziennik systemu<br>Wydajność| Szczegóły procesu i zależności<br>Metryki połączenia sieciowego |
 | Dane wysyłane do | Azure Storage<br>Centrum zdarzeń | Metryki Azure Monitor | Dzienniki usługi Azure Monitor | Dzienniki usługi Azure Monitor |
 
 ## <a name="log-analytics-agent"></a>Agent usługi Log Analytics

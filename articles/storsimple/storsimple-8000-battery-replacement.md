@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: f21bbf4777aa74e84ffb8c1af903f90608d5551f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365877"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255017"
 ---
 # <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>Zastąp moduł baterii kopii zapasowej na urządzeniu StorSimple
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Podstawowy i moduł chłodzenia obudowy (PCM) na urządzeniu Microsoft Azure StorSimple ma dodatkowy pakiet baterii. Ten pakiet zapewnia moc, dzięki czemu urządzenie StorSimple może zapisywać dane w przypadku utraty zasilania podstawowego obudowy. Ten pakiet baterii jest określany jako *moduł baterii tworzenia kopii zapasowych*. Moduł baterii tworzenia kopii zapasowej istnieje tylko dla obudowy podstawowej na urządzeniu StorSimple (obudowa EBOD nie zawiera modułu baterii tworzenia kopii zapasowej).
 
 W tym samouczku wyjaśniono:
@@ -39,7 +39,7 @@ Moduł baterii kopii zapasowej dla urządzenia StorSimple jest jednostką, któr
    
     **Rysunek 1** Tył urządzenia podstawowego, w którym są wyświetlane moduły PCM i modułów kontrolera
    
-   | Etykieta | Opis |
+   | Label | Opis |
    |:--- |:--- |
    | 1 |PCM 0 |
    | 2 |PCM 1 |
@@ -52,7 +52,7 @@ Moduł baterii kopii zapasowej dla urządzenia StorSimple jest jednostką, któr
    
     **Rysunek 2** Z tyłu PCM pokazująca diody LED wskaźnika monitorowania
    
-   | Etykieta | Opis |
+   | Label | Opis |
    |:--- |:--- |
    | 1 |Awaria zasilania AC |
    | 2 |Awaria wentylatora |

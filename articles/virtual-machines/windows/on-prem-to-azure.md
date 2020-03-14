@@ -16,11 +16,11 @@ ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: dbce2969ccb508c2bf3ee33730d0b112caa45c9e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388648"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79243161"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Migrowanie z Amazon Web Services (AWS) i innych platform do Managed Disks na platformie Azure
 
@@ -54,7 +54,7 @@ Ta sekcja ułatwia podejmowanie najlepszej decyzji na temat maszyn wirtualnych i
 
 Jeśli planujesz migrację z dysków niezarządzanych do usługi Managed disks, należy pamiętać, że użytkownicy z rolą [współautor maszyny wirtualnej](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) nie będą mogli zmienić rozmiaru maszyny wirtualnej (ponieważ mogą one zostać przebudowane). Wynika to z faktu, że maszyny wirtualne z dyskami zarządzanymi wymagają, aby użytkownik miał uprawnienie Microsoft. COMPUTE/disks/Write na dyskach systemu operacyjnego.
 
-### <a name="location"></a>Location
+### <a name="location"></a>Lokalizacja
 
 Wybierz lokalizację, w której usługa Azure Managed Disks jest dostępna. W przypadku migrowania do Managed Disks Premium należy również upewnić się, że Usługa Premium Storage jest dostępna w regionie, w którym planujesz przeprowadzić migrację. Zobacz [usługi platformy Azure według regionów,](https://azure.microsoft.com/regions/#services) Aby uzyskać aktualne informacje dotyczące dostępnych lokalizacji.
 
@@ -91,7 +91,7 @@ Istnieje siedem typów dysków zarządzanych w warstwie Standardowa, które mog�
 
 Domyślnie zasady buforowania dysku są tylko do *odczytu* dla wszystkich dysków danych w warstwie Premium oraz do *odczytu i zapisu* dla dysku systemu operacyjnego Premium dołączonego do maszyny wirtualnej. To ustawienie konfiguracji jest zalecane, aby osiągnąć optymalną wydajność aplikacji dla systemu IOs. W przypadku dysków z danymi zapisu lub zapisu (takich jak SQL Server plików dziennika) należy wyłączyć buforowanie dysków, aby zapewnić lepszą wydajność aplikacji.
 
-### <a name="pricing"></a>Cennik
+### <a name="pricing"></a>Ceny
 
 Zapoznaj się z [cennikiem Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/). Cennik Managed Disks w warstwie Premium jest taki sam jak w przypadku dysków niezarządzanych w warstwie Premium. Jednak Cennik Managed Disks standardowego różni się od standardowych dysków niezarządzanych.
 

@@ -6,11 +6,11 @@ ms.topic: conceptual
 description: Dowiedz się, jak uaktualnić Azure Dev Spaces narzędzia wiersza polecenia, rozszerzenia Visual Studio Code i rozszerzenia programu Visual Studio
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, containers
 ms.openlocfilehash: 748ed4699591a21a5a09da924e093011b0813b46
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375286"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265235"
 ---
 # <a name="how-to-upgrade-azure-dev-spaces-tools"></a>Jak uaktualnić narzędzia Azure Dev Spaces
 

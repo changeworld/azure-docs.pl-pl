@@ -3,12 +3,12 @@ title: Przywracanie SQL Server baz danych na maszynie wirtualnej platformy Azure
 description: W tym artykule opisano sposób przywracania SQL Server baz danych, które są uruchomione na maszynie wirtualnej platformy Azure i których kopia zapasowa została utworzona przy użyciu Azure Backup.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 58525069af28be250c3536db076a38fb350bc1da
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 642476c98ca223da01bda5c6eb79ee9b53732468
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75390765"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79252456"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Przywracanie SQL Server baz danych na maszynach wirtualnych platformy Azure
 
@@ -112,24 +112,25 @@ Aby przywrócić dane kopii zapasowej jako pliki. bak zamiast bazy danych, wybie
 2. Wybierz nazwę SQL Server, do której chcesz przywrócić pliki kopii zapasowej.
 3. W **ścieżce docelowej na serwerze** wprowadź ścieżkę folderu na serwerze wybranym w kroku 2. Jest to lokalizacja, w której usługa będzie zrzucać wszystkie niezbędne pliki kopii zapasowej. Zwykle ścieżka udziału sieciowego lub ścieżka zainstalowanego udziału plików platformy Azure, gdy zostanie określona jako ścieżka docelowa, zapewnia łatwiejszy dostęp do tych plików przez inne maszyny w tej samej sieci lub z tym samym udziałem plików platformy Azure.<BR>
 
->Aby przywrócić pliki kopii zapasowej bazy danych w udziale plików platformy Azure zainstalowanym na docelowej zarejestrowanych maszynach wirtualnych, upewnij się, że usługa NT NT\SYSTEM ma dostęp do udziału plików. Aby udzielić uprawnień do odczytu/zapisu dla procesu AFS zainstalowanego na maszynie wirtualnej, można wykonać kroki podane poniżej:
->- Uruchom `PsExec -s cmd`, aby wejść do powłoki NT NT\SYSTEM
->   - Wykonaj polecenie `cmdkey /add:<storageacct>.file.core.windows.net /user:AZURE\<storageacct> /pass:<storagekey>`
->   - Weryfikowanie dostępu przy użyciu `dir \\<storageacct>.file.core.windows.net\<filesharename>`
->- Rozpocznij przywracanie plików z magazynu kopii zapasowych w celu `\\<storageacct>.file.core.windows.net\<filesharename>` jako ścieżki<BR>
-Możesz pobrać PsExec przez <https://docs.microsoft.com/sysinternals/downloads/psexec>
+    >Aby przywrócić pliki kopii zapasowej bazy danych w udziale plików platformy Azure zainstalowanym na docelowej zarejestrowanych maszynach wirtualnych, upewnij się, że usługa NT NT\SYSTEM ma dostęp do udziału plików. Aby udzielić uprawnień do odczytu/zapisu dla procesu AFS zainstalowanego na maszynie wirtualnej, można wykonać kroki podane poniżej:
+    >
+    >- Uruchom `PsExec -s cmd`, aby wejść do powłoki NT NT\SYSTEM
+    >   - Wykonaj polecenie `cmdkey /add:<storageacct>.file.core.windows.net /user:AZURE\<storageacct> /pass:<storagekey>`
+    >   - Weryfikowanie dostępu przy użyciu `dir \\<storageacct>.file.core.windows.net\<filesharename>`
+    >- Rozpocznij przywracanie plików z magazynu kopii zapasowych w celu `\\<storageacct>.file.core.windows.net\<filesharename>` jako ścieżki<BR>
+    Możesz pobrać PsExec przez <https://docs.microsoft.com/sysinternals/downloads/psexec>
 
 4. Kliknij przycisk **OK**.
 
-![Wybierz pozycję Przywróć jako pliki](./media/backup-azure-sql-database/restore-as-files.png)
+    ![Wybierz pozycję Przywróć jako pliki](./media/backup-azure-sql-database/restore-as-files.png)
 
 5. Wybierz **punkt przywracania** , za pomocą którego zostaną przywrócone wszystkie dostępne pliki. bak.
 
-![Wybierz punkt przywracania](./media/backup-azure-sql-database/restore-point.png)
+    ![Wybierz punkt przywracania](./media/backup-azure-sql-database/restore-point.png)
 
 6. Wszystkie pliki kopii zapasowej skojarzone z wybranym punktem odzyskiwania są zrzucane do ścieżki docelowej. Pliki można przywrócić jako bazę danych na dowolnym komputerze, na którym znajdują się one przy użyciu SQL Server Management Studio.
 
-![Przywrócono pliki kopii zapasowej w ścieżce docelowej](./media/backup-azure-sql-database/sql-backup-files.png)
+    ![Przywrócono pliki kopii zapasowej w ścieżce docelowej](./media/backup-azure-sql-database/sql-backup-files.png)
 
 ### <a name="restore-to-a-specific-point-in-time"></a>Przywracanie do określonego punktu w czasie
 
@@ -163,6 +164,9 @@ Jeśli wybrano opcję **pełny & różnicowa** jako typ przywracania, wykonaj na
 1. Wybierz punkt odzyskiwania z listy, a następnie wybierz pozycję **OK**, aby ukończyć procedurę punktu przywracania.
 
     ![Wybieranie punktu odzyskiwania pełnego](./media/backup-azure-sql-database/choose-fd-recovery-point.png)
+
+    >[!NOTE]
+    > Domyślnie wyświetlane są punkty odzyskiwania z ostatnich 30 dni. Punkty odzyskiwania można wyświetlić w starszej wersji niż 30 dni, klikając przycisk **Filtruj** i wybierając zakres niestandardowy.
 
 1. Jeśli po przywróceniu ma pozostać niedziałający baza danych w menu **Konfiguracja zaawansowana** , Włącz opcję **Przywróć z opcją NORECOVERY**.
 1. Jeśli chcesz zmienić lokalizację przywracania na serwerze docelowym, wprowadź nową ścieżkę docelową.

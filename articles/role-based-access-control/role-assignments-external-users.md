@@ -17,11 +17,11 @@ ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
 ms.openlocfilehash: 1c440b85f792ac5bb1336f4d20f930aafc38ad7d
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77138374"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245644"
 ---
 # <a name="add-or-remove-role-assignments-for-external-guest-users-using-azure-rbac-and-the-azure-portal"></a>Dodawanie lub usuwanie przypisań ról dla zewnętrznych użytkowników-Gości korzystających z usług Azure RBAC i Azure Portal
 
@@ -165,7 +165,7 @@ Przed usunięciem użytkownika-gościa z katalogu należy najpierw usunąć wszy
 
 1. Kliknij użytkownika-gościa, który chcesz usunąć.
 
-1. Kliknij polecenie **Usuń**.
+1. Kliknij pozycję **Usuń**.
 
    ![Usuń użytkownika-gościa](./media/role-assignments-external-users/delete-guest-user.png)
 

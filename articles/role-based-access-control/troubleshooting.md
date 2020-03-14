@@ -16,11 +16,11 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
 ms.openlocfilehash: 67d624bb81105b8219030c57460b6d7bf7458671
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980985"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245527"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Rozwiązywanie problemów z funkcją RBAC dla zasobów platformy Azure
 
@@ -56,7 +56,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące kontroli 
 
 ## <a name="role-assignments-with-unknown-security-principal"></a>Przypisania ról z nieznanym podmiotem zabezpieczeń
 
-Jeśli przypiszesz rolę do podmiotu zabezpieczeń (użytkownik, Grupa, nazwa główna usługi lub tożsamość zarządzana), a następnie usuniesz ten podmiot zabezpieczeń bez usuwania przypisania roli, typ podmiotu zabezpieczeń dla przypisania roli będzie wyświetlany jako **nieznany**. Poniższy zrzut ekranu przedstawia przykład w witrynie Azure Portal. Nazwa podmiotu zabezpieczeń jest wyświetlana jako **tożsamość usunięta** i **tożsamość już nie istnieje**. 
+Jeśli przypiszesz rolę do podmiotu zabezpieczeń (użytkownik, Grupa, nazwa główna usługi lub tożsamość zarządzana), a następnie usuniesz ten podmiot zabezpieczeń bez usuwania przypisania roli, typ podmiotu zabezpieczeń dla przypisania roli będzie wyświetlany jako **nieznany**. Poniższy zrzut ekranu przedstawia przykład w Azure Portal. Nazwa podmiotu zabezpieczeń jest wyświetlana jako **tożsamość usunięta** i **tożsamość już nie istnieje**. 
 
 ![Grupa zasobów aplikacji sieci Web](./media/troubleshooting/unknown-security-principal.png)
 
@@ -149,7 +149,7 @@ Elementy te wymagają dostępu do **zapisu** do **planu App Service** , który o
 Te elementy wymagają dostępu do **zapisu** w całej **grupie zasobów** zawierającej witrynę sieci Web:  
 
 * Certyfikaty i powiązania SSL (certyfikaty SSL mogą być współużytkowane między lokacjami w tej samej grupie zasobów i lokalizacji geograficznej)  
-* Reguły alertów  
+* Zasady alertów  
 * ustawienia skalowania automatycznego  
 * Składniki usługi Application Insights  
 * Testy sieci Web  
@@ -171,7 +171,7 @@ Wymagają one dostępu do **zapisu** zarówno dla **maszyny wirtualnej**, jak i 
 
 * Zestaw dostępności  
 * Zestaw o zrównoważonym obciążeniu  
-* Reguły alertów  
+* Zasady alertów  
 
 Jeśli nie możesz uzyskać dostępu do żadnego z tych kafelków, poprosimy administratora o dostęp współautora do grupy zasobów.
 

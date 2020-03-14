@@ -15,11 +15,11 @@ ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: deb337d989a3658e909cefa7a9ab028e37792562
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389042"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79243174"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Nawiązywanie połączenia z maszyną wirtualną SQL Server na platformie Azure
 

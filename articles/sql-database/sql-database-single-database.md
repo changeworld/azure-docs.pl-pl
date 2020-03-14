@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/08/2019
-ms.openlocfilehash: 7b084954cb53d19739a0f633661e0c76fa82dd13
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7bca36bdb41c5800a8718f76d48afcfde6f9333e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820938"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79208834"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Co to jest pojedyncza baza danych w Azure SQL Database
 
@@ -27,7 +27,7 @@ Opcja wdrożenia pojedynczej bazy danych tworzy bazę danych w Azure SQL Databas
 > [!NOTE]
 > Słownik terminów w Azure SQL Database można znaleźć w artykule [SQL Database słownik terminów](sql-database-glossary-terms.md)
 
-## <a name="dynamic-scalability"></a>Dynamiczna skalowalność
+## <a name="dynamic-scalability"></a>Skalowalność dynamiczna
 
 Możesz utworzyć swoją pierwszą aplikację w małej, pojedynczej bazie danych przy niskich kosztach w warstwie obliczeniowej bez serwera lub w niewielkim rozmiarze obliczeniowym w warstwie obliczeniowej zainicjowanej. W dowolnym momencie możesz ręcznie lub programowo zmienić [warstwę obliczeniową lub usługę](sql-database-single-database-scale.md) , aby zaspokoić potrzeby rozwiązania. Wydajność można dostosować bez przestoju aplikacji i przerwy w świadczeniu usługi klientom. Dynamiczna skalowalność umożliwia bazie danych przezroczyste odpowiadanie na gwałtownie zmieniające się wymagania dotyczące zasobów oraz płacenie tylko za potrzebne zasoby i tylko gdy są używane.
 
@@ -37,7 +37,7 @@ Pojedynczą bazę danych można przenieść do [puli elastycznej](sql-database-e
 
 ## <a name="monitoring-and-alerting"></a>Monitorowanie i zgłaszanie alertów
 
-Korzystasz z wbudowanych narzędzi do [monitorowania wydajności](sql-database-performance.md) i [alertów](sql-database-insights-alerts-portal.md)w połączeniu z ocenami wydajności. Za pomocą tych narzędzi możesz szybko ocenić wpływ skalowania w górę lub w dół na podstawie bieżących lub przewidywanych wymagań dotyczących wydajności. Ponadto usługa SQL Database może [tworzyć metryki i dzienniki diagnostyczne](sql-database-metrics-diag-logging.md), które ułatwiają monitorowanie.
+Korzystasz z wbudowanych narzędzi do [monitorowania wydajności](sql-database-performance.md) i [alertów](sql-database-insights-alerts-portal.md)w połączeniu z ocenami wydajności. Za pomocą tych narzędzi możesz szybko ocenić wpływ skalowania w górę lub w dół na podstawie bieżących lub przewidywanych wymagań dotyczących wydajności. Ponadto SQL Database mogą [emitować metryki i dzienniki zasobów](sql-database-metrics-diag-logging.md) w celu łatwiejszego monitorowania.
 
 ## <a name="availability-capabilities"></a>Możliwości dostępności
 

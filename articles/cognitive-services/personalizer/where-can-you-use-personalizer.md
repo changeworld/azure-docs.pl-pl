@@ -4,11 +4,11 @@ description: Personalizacja może być stosowana w każdej sytuacji, w której a
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: 63e66315898242beb5da59927e8d506e6f2cff78
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374873"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219325"
 ---
 # <a name="where-and-how-to-use-personalizer"></a>Gdzie i jak używać personalizacji
 

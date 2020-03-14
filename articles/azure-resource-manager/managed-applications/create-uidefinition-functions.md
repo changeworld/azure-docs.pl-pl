@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 10/12/2017
 ms.author: tomfitz
 ms.openlocfilehash: 6e56c5e528a17d42a75da54158f00857a917645c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380859"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248452"
 ---
 # <a name="createuidefinition-functions"></a>Funkcje CreateUiDefinition
 Ta sekcja zawiera sygnatury dla wszystkich obsługiwanych funkcji CreateUiDefinition.
@@ -156,7 +156,7 @@ Poniższy przykład zwraca `true`:
 "[contains(steps('foo').element1, 'key1')]"
 ```
 
-### <a name="length"></a>length
+### <a name="length"></a>{1&gt;length&lt;1}
 Zwraca liczbę znaków w ciągu, liczbę wartości w tablicy lub liczbę kluczy w obiekcie.
 
 #### <a name="example-1-string"></a>Przykład 1: ciąg
@@ -261,7 +261,7 @@ Poniższy przykład zwraca `{"key1": "foobar"}`:
 "[first(steps('foo').element1)]"
 ```
 
-### <a name="last"></a>last
+### <a name="last"></a>ostatni
 Zwraca ostatni znak określonego ciągu, ostatnią wartość określonej tablicy lub ostatni klucz i wartość określonego obiektu.
 
 #### <a name="example-1-string"></a>Przykład 1: ciąg

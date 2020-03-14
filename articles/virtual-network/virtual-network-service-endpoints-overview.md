@@ -14,11 +14,11 @@ ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
 ms.openlocfilehash: 72c2c90f7a71bd9bf251adb492168fa5d2baa60a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380137"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244786"
 ---
 # <a name="virtual-network-service-endpoints"></a>Punkty końcowe usługi dla sieci wirtualnej
 
@@ -119,7 +119,7 @@ Po skonfigurowaniu punktów końcowych usługi do określonej usługi Sprawdź, 
 >[!NOTE]
 > Trasy punktu końcowego usługi zastępują trasy BGP lub UDR dla dopasowania prefiksu adresu usługi platformy Azure. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z obowiązującymi trasami](diagnose-network-routing-problem.md).
 
-## <a name="provisioning"></a>Aprowizacja
+## <a name="provisioning"></a>Inicjowanie obsługi
 
 Punkty końcowe usługi można konfigurować w sieciach wirtualnych niezależnie od użytkownika z dostępem do zapisu w sieci wirtualnej. Aby zabezpieczyć zasoby usługi platformy Azure w sieci wirtualnej, użytkownik musi mieć uprawnienia do *witryny Microsoft. Network/virtualNetworks/Subnets/joinViaServiceEndpoint/Action* dla dodanych podsieci. Wbudowane role administratora usługi domyślnie obejmują to uprawnienie. Uprawnienia można modyfikować, tworząc role niestandardowe.
 

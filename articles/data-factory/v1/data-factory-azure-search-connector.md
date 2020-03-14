@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 5b1170f721cf8521cfe1762df0cc616c938ddf28
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387514"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281563"
 ---
 # <a name="push-data-to-an-azure-cognitive-search-index-by-using-azure-data-factory"></a>Wypychanie danych do indeksu Wyszukiwanie poznawcze platformy Azure przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -55,20 +55,20 @@ Poniższe sekcje zawierają szczegółowe informacje na temat właściwości JSO
 
 Poniższa tabela zawiera opisy elementów JSON, które są specyficzne dla połączonej usługi Wyszukiwanie poznawcze platformy Azure.
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 | -------- | ----------- | -------- |
-| typ | Właściwość Type musi mieć wartość: **AzureSearch**. | Tak |
-| url | Adres URL usługi wyszukiwania. | Tak |
-| key | Klucz administratora dla usługi wyszukiwania. | Tak |
+| type | Właściwość Type musi mieć wartość: **AzureSearch**. | Yes |
+| url | Adres URL usługi wyszukiwania. | Yes |
+| key | Klucz administratora dla usługi wyszukiwania. | Yes |
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
 Aby zapoznać się z pełną listą sekcji i właściwości, które są dostępne do definiowania zestawów danych, zobacz artykuł [Tworzenie zestawów danych](data-factory-create-datasets.md) . Sekcje, takie jak struktura, dostępność i zasady JSON zestawu danych, są podobne dla wszystkich typów zestawów danych. Sekcja **typeProperties** jest inna dla każdego typu zestawu danych. Sekcja typeProperties zestawu danych typu **AzureSearchIndex** ma następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 | -------- | ----------- | -------- |
-| typ | Właściwość Type musi być ustawiona na wartość **AzureSearchIndex**.| Tak |
-| indexName | Nazwa indeksu wyszukiwania. Data Factory nie tworzy indeksu. Indeks musi istnieć na platformie Azure Wyszukiwanie poznawcze. | Tak |
+| type | Właściwość Type musi być ustawiona na wartość **AzureSearchIndex**.| Yes |
+| indexName | Nazwa indeksu wyszukiwania. Data Factory nie tworzy indeksu. Indeks musi istnieć na platformie Azure Wyszukiwanie poznawcze. | Yes |
 
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
@@ -76,9 +76,9 @@ Aby zapoznać się z pełną listą sekcji i właściwości, które są dostępn
 
 W przypadku działania kopiowania, gdy ujścia ma typ **AzureSearchIndexSink**, w sekcji typeProperties są dostępne następujące właściwości:
 
-| Właściwość | Opis | Dozwolone wartości | Wymagane |
+| Właściwość | Opis | Dozwolone wartości | Wymagany |
 | -------- | ----------- | -------------- | -------- |
-| WriteBehavior | Określa, czy należy scalić lub zamienić, gdy dokument już istnieje w indeksie. Zobacz [Właściwość WriteBehavior](#writebehavior-property).| Scal (domyślnie)<br/>Przekaż| Nie |
+| WriteBehavior | Określa, czy należy scalić lub zamienić, gdy dokument już istnieje w indeksie. Zobacz [Właściwość WriteBehavior](#writebehavior-property).| Scal (domyślnie)<br/>Upload| Nie |
 | WriteBatchSize | Przekazuje dane do indeksu wyszukiwania, gdy rozmiar buforu osiągnie writeBatchSize. Aby uzyskać szczegółowe informacje, zobacz [Właściwość WriteBatchSize](#writebatchsize-property) . | od 1 do 1 000. Wartość domyślna to 1000. | Nie |
 
 ### <a name="writebehavior-property"></a>Właściwość WriteBehavior
@@ -105,8 +105,8 @@ W poniższej tabeli określono, czy typ danych Wyszukiwanie poznawcze platformy 
 | Podwójne | Tak |
 | Wartość logiczna | Tak |
 | DataTimeOffset | Tak |
-| String Array | N |
-| GeographyPoint względem | N |
+| String Array | Nie |
+| GeographyPoint względem | Nie |
 
 ## <a name="json-example-copy-data-from-on-premises-sql-server-to-azure-cognitive-search-index"></a>Przykład JSON: kopiowanie danych z SQL Server lokalnych do usługi Azure Wyszukiwanie poznawcze index
 
