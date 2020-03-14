@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4008779f0ec16bcaf6b995cf7f33d15a8f1e5665
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 5f4435ca213584fff84f3ddad9bda6f7e06628a1
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390351"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283162"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Jak wdrożyć nawigację aspektową na platformie Azure Wyszukiwanie poznawcze
 
@@ -34,7 +34,7 @@ Podczas tworzenia aplikacji pisanie kodu, który tworzy zapytania, stanowi zbior
 ## <a name="sample-code-and-demo"></a>Przykładowy kod i Demonstracja
 W tym artykule jest na przykład wykorzystywany Portal wyszukiwania zadań. Przykład jest zaimplementowany jako aplikacja ASP.NET MVC.
 
-- Zobacz i przetestuj pokaz roboczy online w [portalu zadań Wyszukiwanie poznawcze platformy Azure](http://azjobsdemo.azurewebsites.net/).
+- Zobacz i przetestuj pokaz roboczy online w [portalu zadań Wyszukiwanie poznawcze platformy Azure](https://aka.ms/azjobsdemo).
 
 - Pobierz kod z [repozytorium Azure-Samples w witrynie GitHub](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 
@@ -78,7 +78,7 @@ Złożone wyrażenia wyszukiwania powodują zmniejszenie wydajności zapytania. 
 Aby lepiej zrozumieć, jak filtr zwiększa precyzję, porównaj złożone wyrażenie wyszukiwania z jednym, które zawiera wyrażenie filtru:
 
 -   `GET /indexes/hotel/docs?search=lodging budget +Seattle –motel +parking`
--   `GET /indexes/hotel/docs?search=lodging&$filter=City eq ‘Seattle’ and Parking and Type ne ‘motel’`
+-   `GET /indexes/hotel/docs?search=lodging&$filter=City eq 'Seattle' and Parking and Type ne 'motel'`
 
 Oba zapytania są prawidłowe, ale druga jest najwyższa, jeśli szukasz Motels z parkami w Seattle.
 -   Pierwsze zapytanie opiera się na tych konkretnych słowach, które są wymienione lub nie są wymienione w polach ciągów, takich jak nazwa, opis i inne pole zawierające dane, które można przeszukiwać.
@@ -232,7 +232,7 @@ SearchParameters sp = new SearchParameters()
 
 Parametr zapytania aspektu jest ustawiany na pole i w zależności od typu danych, może być dodatkowo sparametryzowane przez listę rozdzielaną przecinkami, która zawiera `count:<integer>`, `sort:<>`, `interval:<integer>`i `values:<list>`. Lista wartości jest obsługiwana w przypadku danych liczbowych podczas konfigurowania zakresów. Szczegóły dotyczące użycia można znaleźć w temacie [Wyszukiwanie dokumentów (Azure wyszukiwanie POZNAWCZE API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) .
 
-Wraz z aspektami, żądanie formułowane przez aplikację powinno również kompilować filtry, aby zawęzić zestaw dokumentów kandydujących na podstawie wyboru wartości aspektu. W przypadku sklepu z rowerem funkcja Nawigacja aspektowa zawiera pytania, na przykład *Informacje o kolorach, producentach i typach rowerów, które są dostępne?* . Filtrowanie odpowiedzi na pytania, na przykład *te, które dokładne rowery to Red, Mountain Bikes, w tym zakresie cenowym?* . Po kliknięciu przycisku "czerwony", aby wskazać, że powinny być wyświetlane tylko czerwone produkty, następne zapytanie wysyłane przez aplikację zawiera `$filter=Color eq ‘Red’`.
+Wraz z aspektami, żądanie formułowane przez aplikację powinno również kompilować filtry, aby zawęzić zestaw dokumentów kandydujących na podstawie wyboru wartości aspektu. W przypadku sklepu z rowerem funkcja Nawigacja aspektowa zawiera pytania, na przykład *Informacje o kolorach, producentach i typach rowerów, które są dostępne?* . Filtrowanie odpowiedzi na pytania, na przykład *te, które dokładne rowery to Red, Mountain Bikes, w tym zakresie cenowym?* . Po kliknięciu przycisku "czerwony", aby wskazać, że powinny być wyświetlane tylko czerwone produkty, następne zapytanie wysyłane przez aplikację zawiera `$filter=Color eq 'Red'`.
 
 Poniższy fragment kodu ze strony `JobsSearch.cs` dodaje wybrany tytuł biznesowy do filtru w przypadku wybrania wartości z zestawu reguł tytułu biznesowego.
 
@@ -371,7 +371,7 @@ Przykłady filtrów można znaleźć w [składni wyrażenia OData (Azure wyszuki
 ## <a name="try-the-demo"></a>Wypróbuj wersję demonstracyjną
 Demonstracja portalu zadań Wyszukiwanie poznawcze platformy Azure zawiera przykłady, do których odwołuje się ten artykuł.
 
--   Zobacz i przetestuj pokaz roboczy online w [portalu zadań Wyszukiwanie poznawcze platformy Azure](https://azjobsdemo.azurewebsites.net/).
+-   Zobacz i przetestuj pokaz roboczy online w [portalu zadań Wyszukiwanie poznawcze platformy Azure](https://aka.ms/azjobsdemo).
 
 -   Pobierz kod z [repozytorium Azure-Samples w witrynie GitHub](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 

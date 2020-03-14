@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: akjosh
 ms.openlocfilehash: 5914947bd994ee405f253e34c3dd919dd6561898
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073638"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253795"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>Rozwiązania Stackify retrace rozszerzenie agenta systemu Linux
 
@@ -196,6 +196,6 @@ az vm extension set --publisher 'Stackify.LinuxAgent.Extension' --version 1.0 --
 | 90 | Włącz błąd | Uruchamianie usługi nie powiodło się |
 | 100 | Wyłącz błąd | Zatrzymanie usługi nie powiodło się |
 | 110 | Wyłącz błąd | Usuwanie usługi nie powiodło się |
-| 120 | Błąd dezinstalacji | Zatrzymanie usługi nie powiodło się |
+| 120 | Błąd odinstalowania | Zatrzymanie usługi nie powiodło się |
 
 Jeśli potrzebujesz więcej pomocy, możesz skontaktować się z pomocą techniczną rozwiązania Stackify w https://support.stackify.com.

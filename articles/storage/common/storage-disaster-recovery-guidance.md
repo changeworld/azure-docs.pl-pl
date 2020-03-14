@@ -10,18 +10,20 @@ ms.date: 01/23/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 8442d3f7ed3e73dc5d7358a9bc1d3ee31d7668cd
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: f7a8f6d0d3ab3b456c41128da9b689f6b7eda0f7
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78894525"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365371"
 ---
 # <a name="disaster-recovery-and-account-failover-preview"></a>Odzyskiwanie po awarii i tryb failover konta (wersja zapoznawcza)
 
 Firma Microsoft dąży do zapewnienia, że usługi platformy Azure są zawsze dostępne. Może jednak wystąpić nieplanowana awaria usługi. Jeśli aplikacja wymaga odporności, firma Microsoft zaleca korzystanie z magazynu geograficznie nadmiarowego, dzięki czemu dane są kopiowane do drugiego regionu. Ponadto klienci powinni mieć plan odzyskiwania po awarii na potrzeby obsługi regionalnej awarii usługi. Ważna część planu odzyskiwania po awarii jest przygotowywana do przełączenia w tryb failover do pomocniczego punktu końcowego w przypadku, gdy podstawowy punkt końcowy stał się niedostępny.
 
 Usługa Azure Storage obsługuje tryb failover (wersja zapoznawcza) konta magazynu geograficznie nadmiarowego. Korzystając z trybu failover konta, można zainicjować proces trybu failover dla konta magazynu, jeśli podstawowy punkt końcowy stanie się niedostępny. Tryb failover aktualizuje pomocniczy punkt końcowy, aby stał się podstawowym punktem końcowym dla konta magazynu. Po zakończeniu pracy w trybie failover klienci mogą rozpocząć zapisywanie do nowego podstawowego punktu końcowego.
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 W tym artykule opisano koncepcje i procesy związane z trybem failover konta oraz omówiono sposób przygotowania konta magazynu do odzyskania przy minimalnym wpływie na klienta. Aby dowiedzieć się, jak zainicjować tryb failover konta w Azure Portal lub PowerShell, zobacz [inicjowanie trybu failover konta (wersja zapoznawcza)](storage-initiate-account-failover.md).
 
@@ -124,7 +126,7 @@ Zapoznaj się z dodatkowymi zagadnieniami opisanymi w tej sekcji, aby zrozumieć
 
 #### <a name="storage-account-containing-archived-blobs"></a>Konto magazynu zawierające zarchiwizowane obiekty blob
 
-Konta magazynu zawierające zarchiwizowane obiekty blob obsługują tryb failover konta. Po zakończeniu pracy w trybie failover w celu przekonwertowania konta z powrotem do GRS lub RA-GRS wszystkie obiekty blob archieved muszą zostać najpierw przekształcone w warstwę online.
+Konta magazynu zawierające zarchiwizowane obiekty blob obsługują tryb failover konta. Po zakończeniu pracy w trybie failover w celu przekonwertowania konta z powrotem do GRS lub RA-GRS wszystkie zarchiwizowane obiekty blob muszą zostać najpierw przekształcone w warstwę online.
 
 #### <a name="storage-resource-provider"></a>Dostawca zasobów magazynu
 

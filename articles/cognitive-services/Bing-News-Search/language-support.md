@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
 ms.openlocfilehash: d15058126f43fff328acfc563ffd081164a69a90
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78385084"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220194"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>Obsługa języka i regionu dla interfejs API wyszukiwania wiadomości Bing
 
@@ -47,7 +47,7 @@ Aby uzyskać listę kodów krajów/regionów, które można określić w `cc` pa
 |Nowa Zelandia|Polski|EN NZ|
 |Republika Filipin|Polski|EN-PH|
 |Singapur|Polski|EN-SG|
-|Stany Zjednoczone|Polski|pl-PL|
+|Stany Zjednoczone|Polski|pl-pl|
 |Polski|Główny|pl-WW|
 |Polski|Główny|pl-XA|
 |Republika Południowej Afryki|Polski|pl-za|
@@ -70,7 +70,7 @@ Aby uzyskać listę kodów krajów/regionów, które można określić w `cc` pa
 |Korea|Koreański|ko-KR|  
 |Holandia|holenderski|NL-NL|  
 |Chińska Republika Ludowa|Chiński|zh-CN|  
-|Brazylia|Portugalski|pt-BR|
+|Brazylia|portugalski|pt-BR|
 |Rosja|Rosyjski|ru-RU|  
 |Szwecja|Szwedzki|sv-SE|  
 |Turcja|Turecki|tr-TR|  
@@ -86,7 +86,7 @@ Aby uzyskać listę kodów krajów/regionów, które można określić w `cc` pa
 |Niemcy|Niemiecki|de-DE.|
 |Australia|Polski|EN-AU|
 |Wielka Brytania|Polski|en-GB|
-|Stany Zjednoczone|Polski|pl-PL|
+|Stany Zjednoczone|Polski|pl-pl|
 |Polski|Główny|pl-WW|
 |Chile|Hiszpański|ES — CL|
 |Meksyk|Hiszpański|es-MX|
@@ -95,7 +95,7 @@ Aby uzyskać listę kodów krajów/regionów, które można określić w `cc` pa
 |Kanada|Francuski|fr-CA|
 |Francja|Francuski|fr-FR|  
 |Włochy|Włoski|IT-IT|
-|Brazylia|Portugalski|pt-BR|
+|Brazylia|portugalski|pt-BR|
 |Chińska Republika Ludowa|Chiński|zh-CN|
 
 ## <a name="supported-markets-for-news-trending-endpoint"></a>Obsługiwane rynki dla punktu końcowego trendów Aktualności
@@ -108,12 +108,12 @@ Aby uzyskać listę kodów krajów/regionów, które można określić w `cc` pa
 |Niemcy|Niemiecki|de-DE.|
 |Australia|Polski|EN-AU|
 |Wielka Brytania|Polski|en-GB|
-|Stany Zjednoczone|Polski|pl-PL|
+|Stany Zjednoczone|Polski|pl-pl|
 |Kanada|Polski|EN-CA|
 |Indie|Polski|EN-IN|
 |Francja|Francuski|fr-FR|
 |Kanada|Francuski|fr-CA|
-|Brazylia|Portugalski|pt-BR|
+|Brazylia|portugalski|pt-BR|
 |Chińska Republika Ludowa|Chiński|zh-CN|
 
 
@@ -159,7 +159,7 @@ Poniżej znajdują się kody kraju/regionu, które można określić w parametrz
 |Tajwan|TW|  
 |Turcja|TR|  
 |Wielka Brytania|GB|  
-|Stany Zjednoczone|USA|
+|Stany Zjednoczone|US|
 
 ## <a name="next-steps"></a>Następne kroki
 Aby uzyskać więcej informacji o wyszukiwanie wiadomości Bing punktach końcowych, zobacz [Wyszukiwanie wiadomości API wersji 7 Reference](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference).

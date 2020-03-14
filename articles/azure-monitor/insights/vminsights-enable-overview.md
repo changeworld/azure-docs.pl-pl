@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/14/2019
 ms.openlocfilehash: 44422f66f6fc995dcaf96947ea05b183c7131ea3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362177"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249206"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Włączanie Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) — Omówienie
 
@@ -167,15 +167,15 @@ W poniższej tabeli opisano połączone źródła obsługiwanych przez funkcję 
 
 | Połączone źródło | Obsługiwane | Opis |
 |:--|:--|:--|
-| Agenci dla systemu Windows | Yes | Wraz z [agentem log Analytics dla systemu Windows](../../azure-monitor/platform/log-analytics-agent.md)agenci systemu Windows potrzebują agenta zależności. Aby uzyskać więcej informacji, zobacz [obsługiwane systemy operacyjne](#supported-operating-systems). |
-| Agenci dla systemu Linux | Yes | Wraz z [agentem log Analytics dla systemu Linux](../../azure-monitor/platform/log-analytics-agent.md)agenci systemu Linux potrzebują agenta zależności. Aby uzyskać więcej informacji, zobacz [obsługiwane systemy operacyjne](#supported-operating-systems). |
+| Agenci dla systemu Windows | Tak | Wraz z [agentem log Analytics dla systemu Windows](../../azure-monitor/platform/log-analytics-agent.md)agenci systemu Windows potrzebują agenta zależności. Aby uzyskać więcej informacji, zobacz [obsługiwane systemy operacyjne](#supported-operating-systems). |
+| Agenci dla systemu Linux | Tak | Wraz z [agentem log Analytics dla systemu Linux](../../azure-monitor/platform/log-analytics-agent.md)agenci systemu Linux potrzebują agenta zależności. Aby uzyskać więcej informacji, zobacz [obsługiwane systemy operacyjne](#supported-operating-systems). |
 | Grupa zarządzania programu System Center Operations Manager | Nie | |
 
 Agenta zależności można pobrać z następujących lokalizacji:
 
 | Plik | System operacyjny | Wersja | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | System Windows | 9.9.2 | 6DFF19B9690E42CA190E3B69137C77904B657FA02895033EAA4C3A6A41DA5C6A |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.9.2 | 6DFF19B9690E42CA190E3B69137C77904B657FA02895033EAA4C3A6A41DA5C6A |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.9.1 | 1CB447EF30FC042FE7499A686638F3F9B4F449692FB9D80096820F8024BE4D7C |
 
 ## <a name="role-based-access-control"></a>Kontrola dostępu oparta na rolach
@@ -202,22 +202,22 @@ Azure Monitor dla maszyn wirtualnych konfiguruje Log Analytics obszaru roboczego
 >[!NOTE]
 >Poniższa lista liczników wydajności włączonych przez Azure Monitor dla maszyn wirtualnych nie ogranicza możliwości włączania dodatkowych liczników potrzebnych do zbierania danych z maszyn wirtualnych, które są raportowane do obszaru roboczego. Ponadto, Jeśli wyłączysz te liczniki, uniemożliwi to zestaw wykresów wydajności dołączonych do funkcji wydajności, które pokazują wykorzystanie zasobów z maszyn wirtualnych.
 
-### <a name="windows-performance-counters"></a>Liczniki wydajności systemu Windows
+### <a name="windows-performance-counters"></a>liczniki wydajności systemu Windows
 
 |Nazwa obiektu |Nazwa licznika |
 |------------|-------------|
-|Dysk logiczny |% Wolnego miejsca |
+|Dysk logiczny |Wartość procentowa wolnego miejsca |
 |Dysk logiczny |Średni czas dysku w s/odczyt |
 |Dysk logiczny |Średni czas dysku w s/transfer |
 |Dysk logiczny |Średni czas dysku w s/zapis |
 |Dysk logiczny |Bajty dysku/s |
-|Dysk logiczny |Bajty odczytu z dysku/s |
+|Dysk logiczny |Bajty odczytu dysku/s |
 |Dysk logiczny |Odczyty dysku/s |
 |Dysk logiczny |Transfery dyskowe/s |
-|Dysk logiczny |Bajty zapisu na dysku/s |
+|Dysk logiczny |Bajty zapisu dysku/s |
 |Dysk logiczny |Zapisy dysku/s |
 |Dysk logiczny |Wolne megabajty |
-|Memory (Pamięć) |Dostępna pamięć (MB) |
+|Pamięć |Dostępna pamięć (MB) |
 |Karta sieciowa |Bajty odebrane/s |
 |Karta sieciowa |Bajty wysłane/s |
 |Procesor |Czas procesora (%) |
@@ -227,14 +227,14 @@ Azure Monitor dla maszyn wirtualnych konfiguruje Log Analytics obszaru roboczego
 |Nazwa obiektu |Nazwa licznika |
 |------------|-------------|
 |Dysk logiczny |Procent wykorzystania miejsca |
-|Dysk logiczny |Bajty odczytu z dysku/s |
+|Dysk logiczny |Bajty odczytu dysku/s |
 |Dysk logiczny |Odczyty dysku/s |
 |Dysk logiczny |Transfery dyskowe/s |
-|Dysk logiczny |Bajty zapisu na dysku/s |
+|Dysk logiczny |Bajty zapisu dysku/s |
 |Dysk logiczny |Zapisy dysku/s |
 |Dysk logiczny |Wolne megabajty |
 |Dysk logiczny |Bajty dysku logicznego/s |
-|Memory (Pamięć) |Dostępna pamięć (MB) |
+|Pamięć |Dostępna pamięć (MB) |
 |Network |Całkowita liczba odebranych bajtów |
 |Network |Całkowita liczba przesłanych bajtów |
 |Procesor |Czas procesora (%) |

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5bdc51f47a170922d4fc33e8538695af29e5159c
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 61b5017609d99f2f0074c67d3838cf351ea38bea
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128114"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365427"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Samouczek: tworzenie jednostek usługi i przypisań ról przy użyciu programu PowerShell
 
@@ -113,4 +113,4 @@ Po zalogowaniu się upewnij się, że wszystko działa, testując kilka poleceń
 Po utworzeniu jednostki usługi i przypisaniu jej do roli w dzierżawie pulpitu wirtualnego systemu Windows możesz użyć jej do utworzenia puli hostów. Aby dowiedzieć się więcej na temat pul hostów, przejdź do samouczka dotyczącego tworzenia puli hostów w programie Virtual Desktop systemu Windows.
 
  > [!div class="nextstepaction"]
- > [Samouczek puli hostów usług pulpitu wirtualnego systemu Windows](./create-host-pools-azure-marketplace.md)
+ > [Tworzenie puli hostów za pomocą witryny Azure Marketplace](./create-host-pools-azure-marketplace.md)

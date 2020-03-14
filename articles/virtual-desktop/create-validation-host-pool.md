@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 03/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 58a7689263f9bc761eb0b904a9376c1ca0112c13
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: f2b51213dfc6d7e55f76e78b92d12111f84736be
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128109"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365393"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Samouczek: Tworzenie puli hostów w celu sprawdzenia poprawności aktualizacji usługi
 
@@ -76,7 +76,7 @@ Aktualizacje usługi są wykonywane co miesiąc. W przypadku wystąpienia poważ
 
 ## <a name="next-steps"></a>Następne kroki
 
-Po utworzeniu puli hostów weryfikacji można dowiedzieć się, jak wdrożyć narzędzie do zarządzania i połączyć się z nim w celu zarządzania zasobami klasycznymi firmy Microsoft.
+Teraz, po utworzeniu puli hostów weryfikacji, można dowiedzieć się, jak używać Azure Service Health do monitorowania wdrożenia pulpitu wirtualnego systemu Windows. 
 
 > [!div class="nextstepaction"]
-> [Samouczek wdrażania narzędzia do zarządzania](./manage-resources-using-ui.md)
+> [Konfigurowanie alertów usługi](./set-up-service-alerts.md)

@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 03/10/2020
 ms.author: victorh
 ms.openlocfilehash: d3f8e52b4582c9467ae3ec61ee984771b801fe4f
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082645"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264780"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Logika przetwarzania reguł usługi Azure Firewall
 Reguły translatora adresów sieciowych, reguły sieci i aplikacje można skonfigurować w zaporze platformy Azure. Reguły są przetwarzane zgodnie z typem reguły. 
@@ -47,7 +47,7 @@ Połączenie z usługą google.com jest dozwolone z powodu zgodnej reguły sieci
 - Akcja: Zezwalaj
 
 
-|name  |Protokół  |Typ źródła  |Element źródłowy  |Typ docelowy  |Adres docelowy  |Porty docelowe|
+|{1&gt;nazwa&lt;1}  |Protokół  |Typ źródła  |Element źródłowy  |Typ docelowy  |Adres docelowy  |Porty docelowe|
 |---------|---------|---------|---------|----------|----------|--------|
 |Zezwalaj — sieć Web     |TCP|Adres IP|*|Adres IP|*|80,443
 
@@ -55,7 +55,7 @@ Połączenie z usługą google.com jest dozwolone z powodu zgodnej reguły sieci
 
 - Akcja: Odmów
 
-|name  |Typ źródła  |Element źródłowy  |Protokół: Port|Docelowe nazwy FQDN|
+|{1&gt;nazwa&lt;1}  |Typ źródła  |Element źródłowy  |Protokół: Port|Docelowe nazwy FQDN|
 |---------|---------|---------|---------|----------|----------|
 |Odmów — Google     |Adres IP|*|http: 80, https: 443|google.com
 
@@ -73,7 +73,7 @@ Odmowa ruchu SSH, ponieważ wyższy priorytet *odmówi* kolekcji reguł sieci.
 - Priorytet: 200
 - Akcja: Zezwalaj
 
-|name  |Protokół  |Typ źródła  |Element źródłowy  |Typ docelowy  |Adres docelowy  |Porty docelowe|
+|{1&gt;nazwa&lt;1}  |Protokół  |Typ źródła  |Element źródłowy  |Typ docelowy  |Adres docelowy  |Porty docelowe|
 |---------|---------|---------|---------|----------|----------|--------|
 |Zezwalaj — SSH     |TCP|Adres IP|*|Adres IP|*|22
 
@@ -83,7 +83,7 @@ Odmowa ruchu SSH, ponieważ wyższy priorytet *odmówi* kolekcji reguł sieci.
 - Priorytet: 100
 - Akcja: Odmów
 
-|name  |Protokół  |Typ źródła  |Element źródłowy  |Typ docelowy  |Adres docelowy  |Porty docelowe|
+|{1&gt;nazwa&lt;1}  |Protokół  |Typ źródła  |Element źródłowy  |Typ docelowy  |Adres docelowy  |Porty docelowe|
 |---------|---------|---------|---------|----------|----------|--------|
 |Odmów — SSH     |TCP|Adres IP|*|Adres IP|*|22
 

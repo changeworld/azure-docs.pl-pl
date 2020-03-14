@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.openlocfilehash: 15a2c75a7619a815655be0fd9fd3044d86acd057
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386929"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79272567"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Optymalizowanie konfiguracji klastra usługi HDInsight przy użyciu oprogramowania Apache Ambari
 
@@ -178,9 +178,9 @@ Dostępne typy kompresji to:
 | Format | Narzędzie | Algorytm | Rozszerzenie pliku | Podzielne? |
 | -- | -- | -- | -- | -- |
 | Gzip | Gzip | WKLĘŚNIĘCIE | .gz | Nie |
-| Bzip2 | Bzip2 | Bzip2 |.bz2 | Yes |
+| Bzip2 | Bzip2 | Bzip2 |.bz2 | Tak |
 | LZO | Lzop | LZO | .lzo | Tak, jeśli indeksowane |
-| Snappy | Nie dotyczy | Snappy | Snappy | Nie |
+| Snappy | N/D | Snappy | Snappy | Nie |
 
 Ogólną zasadą jest, że posiadanie podziału metody kompresji jest ważne, w przeciwnym razie zostanie utworzone mapowanie. Jeśli dane wejściowe są tekstowe, `bzip2` jest najlepszą opcją. W przypadku formatu ORC przyciąganie jest najszybszą opcją kompresji.
 
@@ -278,7 +278,7 @@ Dodatkowe zalecenia dotyczące optymalizacji aparatu wykonywania programu Hive:
 
 | Ustawienie | Zalecane | Domyślna Usługa HDInsight |
 | -- | -- | -- |
-| `hive.mapjoin.hybridgrace.hashtable` | Prawda = bezpieczniejsze, wolniejsze; FAŁSZ = szybsze | false |
+| `hive.mapjoin.hybridgrace.hashtable` | Prawda = bezpieczniejsze, wolniejsze; FAŁSZ = szybsze | {1&gt;false&lt;1} |
 | `tez.am.resource.memory.mb` | Górna granica 4 GB dla większości | Dostrajanie autodostrajania |
 | `tez.session.am.dag.submit.timeout.secs` | 300+ | 300 |
 | `tez.am.container.idle.release-timeout-min.millis` | 20000+ | 10 000 |
@@ -319,7 +319,7 @@ Podobnie jak w przypadku programu Hive, tryb lokalny służy do przyspieszenia z
 
 Świnie kopiuje pliki JAR wymagane przez UDF do rozproszonej pamięci podręcznej w celu udostępnienia ich dla węzłów zadań. Te Jars nie zmieniają się często. Jeśli ta opcja jest włączona, ustawienie `pig.user.cache.enabled` umożliwia umieszczenie Jars w pamięci podręcznej w celu ponownego użycia dla zadań uruchomionych przez tego samego użytkownika. Powoduje to niewielki wzrost wydajności zadania.
 
-1. Aby włączyć, ustaw dla `pig.user.cache.enabled` wartość true. Wartością domyślną jest false.
+1. Aby włączyć, ustaw dla `pig.user.cache.enabled` wartość true. Wartość domyślna to false.
 
 1. Aby ustawić ścieżkę bazową w pamięci podręcznej Jars, ustaw `pig.user.cache.location` na ścieżkę bazową. Wartość domyślna to `/tmp`.
 

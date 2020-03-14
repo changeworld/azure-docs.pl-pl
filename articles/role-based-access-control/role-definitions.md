@@ -16,11 +16,11 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
 ms.openlocfilehash: 3ff4b2cb6a59a35dc6da4748a7c7fbb4758a4fcf
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981001"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283227"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Opis definicji ról dla zasobów platformy Azure
 
@@ -28,7 +28,7 @@ Jeśli próbujesz zrozumieć, jak działa rola, lub jeśli tworzysz własną [ro
 
 ## <a name="role-definition-structure"></a>Struktura definicji roli
 
-*Definicja roli* to zbiór uprawnień. Czasami jest nazywana po prostu *rolą*. Definicja roli określa dozwolone operacje, na przykład odczyt, zapis, czy usuwanie. Może ona również zawierać listę operacji, których nie można wykonywać, lub operacji związanych z danymi źródłowymi. Definicja roli ma następującą strukturę:
+*Definicja roli* to zbiór uprawnień. Czasami jest nazywana po prostu *rolą*. Definicja roli określa dozwolone operacje, na przykład odczyt, zapis, czy usuwanie. Może również zawierać listę operacji, które nie mogą być wykonywane lub operacje związane z danymi źródłowymi. Definicja roli ma następującą strukturę:
 
 ```
 Name
@@ -56,7 +56,7 @@ Część `{action}` ciągu operacji określa typ operacji, które można wykona�
 | `action` | Włącza niestandardowe operacje, takie jak ponowne uruchamianie maszyn wirtualnych (POST). |
 | `delete` | Włącza operacje usuwania (usuwania). |
 
-Oto definicja roli [współautor](built-in-roles.md#contributor) w formacie JSON. Symbol wieloznaczny (`*`) w obszarze `Actions` oznacza, że podmiot zabezpieczeń przypisany do tej roli może wykonywać wszystkie akcje, czyli może zarządzać wszystkim. Dotyczy to również akcji, które zostaną zdefiniowane, gdy do platformy Azure zostaną dodane nowe typy zasobów. Operacje w obszarze `NotActions` są odejmowane od zestawu operacji w obszarze `Actions`. W przypadku roli [Współautor](built-in-roles.md#contributor) zawartość właściwości `NotActions` uniemożliwia tej roli zarządzanie dostępem do zasobów oraz przypisywanie dostępu do zasobów.
+Oto definicja roli [współautor](built-in-roles.md#contributor) w formacie JSON. Symbol wieloznaczny (`*`) w obszarze `Actions` wskazuje, że podmiot zabezpieczeń przypisany do tej roli może wykonywać wszystkie akcje, lub innymi słowy, może zarządzać wszystko. Obejmuje to akcje zdefiniowane w przyszłości, ponieważ platforma Azure dodaje nowe typy zasobów. Operacje w obszarze `NotActions` są odejmowane od `Actions`. W przypadku roli [współautor](built-in-roles.md#contributor) `NotActions` usuwa możliwość zarządzania dostępem do zasobów, a także przypisywania dostępu do zasobów.
 
 ```json
 {
@@ -92,11 +92,11 @@ Dostęp do zarządzania nie jest dziedziczony do danych, pod warunkiem, że meto
 
 Wcześniej kontrola dostępu oparta na rolach nie była używana do wykonywania operacji na danych. Autoryzacja dla operacji na danych, które są różne dla różnych dostawców zasobów. Ten sam model autoryzacji kontroli dostępu oparty na rolach używany na potrzeby operacji zarządzania został rozszerzony do operacji na danych.
 
-Aby obsługiwać operacje na danych, nowe właściwości danych zostały dodane do struktury definicji roli. Operacje na danych są definiowane za pomocą właściwości `DataActions` i `NotDataActions`. Po dodaniu tych właściwości danych jest zachowywane rozdzielenie między zarządzaniem i danymi. Zapobiega to nieoczekiwanemu uzyskiwaniu dostępu do danych za pośrednictwem bieżących przypisań ról z symbolami wieloznacznymi (`*`). Poniżej przedstawiono niektóre operacje na danych, określane za pomocą właściwości `DataActions` i `NotDataActions`:
+Aby obsługiwać operacje na danych, nowe właściwości danych zostały dodane do struktury definicji roli. Operacje na danych są określone we właściwościach `DataActions` i `NotDataActions`. Po dodaniu tych właściwości danych jest zachowywane rozdzielenie między zarządzaniem i danymi. Zapobiega to nieoczekiwanemu dostępowi do danych w bieżących przypisaniach ról z symbolami wieloznacznymi (`*`). Poniżej przedstawiono niektóre operacje na danych, które można określić w `DataActions` i `NotDataActions`:
 
-- Odczyt listy obiektów blob w kontenerze
-- Zapis obiektu blob magazynu w kontenerze
-- Usuwanie komunikatu z kolejki
+- Odczytaj listę obiektów BLOB w kontenerze
+- Zapisywanie obiektu blob magazynu w kontenerze
+- Usuwanie komunikatu w kolejce
 
 Oto definicja roli [czytnika danych obiektów blob magazynu](built-in-roles.md#storage-blob-data-reader) , która obejmuje operacje we właściwościach `Actions` i `DataActions`. Ta rola umożliwia odczytywanie kontenera obiektów blob, a także bazowe dane obiektów BLOB.
 
@@ -120,7 +120,7 @@ Oto definicja roli [czytnika danych obiektów blob magazynu](built-in-roles.md#s
 }
 ```
 
-Do właściwości `DataActions` i `NotDataActions` można dodawać tylko operacje na danych. Dostawcy zasobów identyfikują, które operacje są operacjami danych, ustawiając właściwość `isDataAction` na `true`. Aby wyświetlić listę operacji, w których `isDataAction` jest `true`, zobacz [operacje dostawcy zasobów](resource-provider-operations.md). Role, które nie mają operacji na danych, nie muszą mieć właściwości `DataActions` i `NotDataActions` w ramach definicji roli.
+Tylko operacje na danych można dodawać do właściwości `DataActions` i `NotDataActions`. Dostawcy zasobów identyfikują, które operacje są operacjami danych, ustawiając właściwość `isDataAction` na `true`. Aby wyświetlić listę operacji, w których `isDataAction` jest `true`, zobacz [operacje dostawcy zasobów](resource-provider-operations.md). Role, które nie mają operacji na danych, nie muszą mieć właściwości `DataActions` i `NotDataActions` w ramach definicji roli.
 
 Autoryzacja wszystkich wywołań interfejsu API operacji zarządzania jest obsługiwana przez Azure Resource Manager. Autoryzacja wywołań interfejsu API operacji danych jest obsługiwana przez dostawcę zasobów lub Azure Resource Manager.
 
@@ -184,7 +184,7 @@ Uprawnienie `Actions` określa operacje zarządzania, które mogą być wykonywa
 | `Microsoft.Compute/virtualMachines/*` | Przyznaje dostęp do wszystkich operacji maszyn wirtualnych i jego podrzędnych typów zasobów.|
 | `microsoft.web/sites/restart/Action` | Przyznaje dostęp do ponownego uruchomienia aplikacji sieci Web.|
 
-## <a name="notactions"></a>NotActions
+## <a name="notactions"></a>Nonaruszone
 
 Uprawnienie `NotActions` określa operacje zarządzania, które są wykluczone z dozwolonej `Actions`. Użyj uprawnienia `NotActions`, jeśli zestaw operacji, do których chcesz zezwolić, jest łatwiej definiowany przez wykluczenie operacji ograniczonej. Dostęp udzielony przez rolę (czynne uprawnienia) jest obliczany przez odjęcie operacji `NotActions` z operacji `Actions`.
 
