@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9970894436107ab51c2ad2d31aa1e14a3e6b5778
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 0a54d7490fb306bfbc8e1b111e7b7d64c09d2292
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355916"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276610"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions skalowanie i hosting
 
@@ -39,7 +39,7 @@ Poniższa tabela przedstawia bieżący poziom wsparcia dla trzech planów hostin
 
 | | Plan Zużycie | Plan Premium | Plan dedykowany |
 |-|:----------------:|:------------:|:----------------:|
-| Windows | Ogólna dostępność | Ogólna dostępność | Ogólna dostępność |
+| System Windows | Ogólna dostępność | Ogólna dostępność | Ogólna dostępność |
 | Linux | Ogólna dostępność | Ogólna dostępność | Ogólna dostępność |
 
 ## <a name="consumption-plan"></a>Plan Zużycie
@@ -153,12 +153,10 @@ Jednostką skalowania Azure Functions jest aplikacja funkcji. Gdy aplikacja funk
 Skalowanie może się różnić w zależności od liczby czynników i skalować w różny sposób w zależności od wybranego wyzwalacza i języka. Istnieje kilka złożonego zachowań do skalowania:
 
 * Pojedyncza aplikacja funkcji jest skalowana tylko do maksymalnie 200 wystąpień. Pojedyncze wystąpienie może przetwarzać więcej niż jeden komunikat lub żądanie w tym samym czasie, więc nie ma ustawionego limitu liczby współbieżnych wykonań.
-* W przypadku wyzwalaczy HTTP nowe wystąpienia będą przyliczane tylko co 1 sekundę.
-* W przypadku wyzwalaczy innych niż HTTP nowe wystąpienia będą przyliczane tylko co 30 sekund.
-
-Różne wyzwalacze mogą również mieć różne limity skalowania, a także opisane poniżej:
-
-* [Centrum zdarzeń](functions-bindings-event-hubs-trigger.md#scaling)
+* W przypadku wyzwalaczy HTTP nowe wystąpienia są przydzielono maksymalnie raz na sekundę.
+* W przypadku wyzwalaczy nie korzystających z protokołu HTTP nowe wystąpienia są przydzielono co najwyżej, co 30 sekund. Skalowanie jest szybsze, gdy działa w [planie Premium](#premium-plan).
+* W przypadku wyzwalaczy Service Bus Użyj _zarządzania_ prawami do zasobów, aby uzyskać najbardziej wydajne skalowanie. W przypadku praw _nasłuchu_ skalowanie nie jest tak dokładne, ponieważ długość kolejki nie może być używana do informowania o decyzjach o skalowaniu. Aby dowiedzieć się więcej o ustawianiu uprawnień Service Bus zasad dostępu, zobacz [zasady autoryzacji dostępu współdzielonego](../service-bus-messaging/service-bus-sas.md#shared-access-authorization-policies).
+* Aby uzyskać informacje na temat wyzwalaczy centrum zdarzeń, zobacz [wskazówki dotyczące skalowania](functions-bindings-event-hubs-trigger.md#scaling) w artykule referencyjnym. 
 
 ### <a name="best-practices-and-patterns-for-scalable-apps"></a>Najlepsze rozwiązania i wzorce dotyczące skalowalnych aplikacji
 

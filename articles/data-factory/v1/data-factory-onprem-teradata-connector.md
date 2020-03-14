@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: ecde5784e759ef5259b8c67ed574cef6cae98f30
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387630"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281199"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Przenoszenie danych z programu Teradata przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -300,20 +300,20 @@ Podczas przesuwania danych do programu Teradata następujące mapowania są uży
 | Liczba |Podwójne |
 | SmallInt |Int16 |
 | Date |DateTime |
-| Time |TimeSpan |
+| Time |przedział_czasu |
 | Time With Time Zone |Ciąg |
 | Znacznik czasu |DateTime |
 | Timestamp With Time Zone |DateTimeOffset |
-| Interval Day |TimeSpan |
-| Interval Day To Hour |TimeSpan |
-| Interval Day To Minute |TimeSpan |
-| Interval Day To Second |TimeSpan |
-| Interval Hour |TimeSpan |
-| Interval Hour To Minute |TimeSpan |
-| Interval Hour To Second |TimeSpan |
-| Interval Minute |TimeSpan |
-| Interval Minute To Second |TimeSpan |
-| Interval Second |TimeSpan |
+| Interval Day |przedział_czasu |
+| Interval Day To Hour |przedział_czasu |
+| Interval Day To Minute |przedział_czasu |
+| Interval Day To Second |przedział_czasu |
+| Interval Hour |przedział_czasu |
+| Interval Hour To Minute |przedział_czasu |
+| Interval Hour To Second |przedział_czasu |
+| Interval Minute |przedział_czasu |
+| Interval Minute To Second |przedział_czasu |
+| Interval Second |przedział_czasu |
 | Interval Year |Ciąg |
 | Interval Year To Month |Ciąg |
 | Interval Month |Ciąg |

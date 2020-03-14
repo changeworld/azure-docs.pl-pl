@@ -5,11 +5,11 @@ ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.date: 12/18/2019
 ms.topic: overview
 ms.openlocfilehash: 319f48d4d0f8ce8501fecb74282760340b597188
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186984"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240940"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Organizowanie zasobów przy użyciu grup zarządzania platformy Azure
 
@@ -87,7 +87,7 @@ Na przykład można przypisać do grupy zarządzania rolę RBAC Współautor mas
 
 Na poniższym wykresie przedstawiono listę ról i obsługiwane akcje na grupach zarządzania.
 
-| Nazwa roli RBAC             | Tworzenie | Zmiana nazwy | Przenoszenie** | Usuwanie | Przypisywanie dostępu | Przypisywanie zasad | Odczytywanie  |
+| Nazwa roli RBAC             | Tworzenie | Zmiana nazwy | Przenoszenie** | Usuń | Przypisywanie dostępu | Przypisywanie zasad | Odczytywanie  |
 |:-------------------------- |:------:|:------:|:------:|:------:|:-------------:| :------------:|:-----:|
 |Właściciel                       | X      | X      | X      | X      | X             | X             | X     |
 |Współautor                 | X      | X      | X      | X      |               |               | X     |

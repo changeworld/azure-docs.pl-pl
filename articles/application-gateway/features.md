@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: victorh
 ms.openlocfilehash: 550d9f4f5396b2165260e39cd28222b083dd6756
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373617"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279990"
 ---
 # <a name="azure-application-gateway-features"></a>Funkcje Application Gateway platformy Azure
 
@@ -125,7 +125,7 @@ Opróżnianie połączeń umożliwia bezproblemowe usunięcie członków puli za
 
 Aby uzyskać więcej informacji, zobacz [Omówienie konfiguracji Application Gateway](configuration-overview.md#connection-draining).
 
-## <a name="custom-error-pages"></a>Strony błędów niestandardowych
+## <a name="custom-error-pages"></a>Niestandardowe strony błędów
 
 Usługa Application Gateway umożliwia tworzenie niestandardowych stron błędów wyświetlanych zamiast domyślnych strony błędów. W przypadku niestandardowych stron błędów możesz użyć własnych oznakowań i układu.
 
@@ -153,7 +153,7 @@ Pełna lista limitów usługi Application Gateway znajduje się na stronie [ogra
 
 W poniższej tabeli przedstawiono średnią przepływność wydajności dla każdego wystąpienia usługi Application Gateway V1 z włączonym odciążeniem SSL:
 
-| Średni rozmiar odpowiedzi strony zaplecza | Small | Średnia | Large |
+| Średni rozmiar odpowiedzi strony zaplecza | Small | Medium | Large |
 | --- | --- | --- | --- |
 | 6 KB |7,5 Mb/s |13 Mb/s |50 Mb/s |
 | 100 KB |35 Mb/s |100 Mb/s |200 Mb/s |

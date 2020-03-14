@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 01/30/2020
-ms.openlocfilehash: 972f0aa1f6d05c3cc65c62c0991fad87ab4676c4
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
-ms.translationtype: MT
+ms.date: 03/04/2020
+ms.openlocfilehash: ed3667ada834437e81ffdcb9161c2a726fe6a6dc
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623629"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238664"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Samouczek: przewidywanie ceny za samochód przy użyciu projektanta (wersja zapoznawcza)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -262,16 +262,16 @@ Użyj modułu **oceny modelu** , aby oszacować, jak dobrze Model przedstawia te
 
 Teraz, gdy potok jest skonfigurowany, możesz przesłać uruchomienie potoku w celu uczenia modelu uczenia maszynowego. Podczas kompilowania potoków w projektancie można przesłać w dowolnym momencie przebieg potoku. Możesz to zrobić, aby sprawdzić swoją pracę w trakcie pracy i zweryfikować funkcje potoku zgodnie z oczekiwaniami.
 
-1. W górnej części kanwy wybierz pozycję **Uruchom**.
+1. W górnej części kanwy wybierz pozycję **Prześlij**.
 
-1. W oknie dialogowym **Konfigurowanie uruchomienia potoku** wybierz pozycję **+ nowy eksperyment** do **eksperymentu**.
+1. W oknie dialogowym **Konfigurowanie uruchomienia potoku** wybierz pozycję **Utwórz nowy**.
 
     > [!NOTE]
     > Grupy eksperymentów działają podobnie. W przypadku uruchomienia potoku wiele razy można wybrać ten sam eksperyment dla kolejnych uruchomień.
 
-    1. Wprowadź opisową nazwę **eksperymentu**.
+    1. Wprowadź opisową nazwę dla **nowej nazwy eksperymentu**.
 
-    1. Wybierz pozycję **Uruchom**.
+    1. Wybierz pozycję **Prześlij**.
     
     Możesz wyświetlić stan przebiegu i szczegóły w prawym górnym rogu kanwy.
 

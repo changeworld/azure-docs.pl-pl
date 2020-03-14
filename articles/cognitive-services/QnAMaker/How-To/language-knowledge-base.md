@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: diberry
 ms.openlocfilehash: 38701e8bbef1c5d78eca2242105e81fe7261c0f6
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389409"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220634"
 ---
 # <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>Obsługa języka zawartości bazy wiedzy dla QnA Maker
 
@@ -46,7 +46,7 @@ Gdy możliwości platformy Azure Wyszukiwanie poznawcze są dostępne dla obsłu
 |--|
 |Chiński|
 |Czeski|
-|Holenderski|
+|holenderski|
 |Polski|
 |Francuski|
 |Niemiecki|

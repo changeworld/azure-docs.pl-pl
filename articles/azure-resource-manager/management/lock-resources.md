@@ -4,11 +4,11 @@ description: Zablokuj użytkownikom możliwość aktualizowania lub usuwania kry
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: 70fb189adb634b7ac24afe7cc8b94738117da5ef
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384548"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274010"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Zablokuj zasoby, aby zapobiec nieoczekiwanym zmianom
 
@@ -61,7 +61,7 @@ Aby usunąć wszystkie elementy usługi, w tym zablokowaną grupę zasobów infr
 
 Jeśli zablokujesz grupę zasobów utworzoną przez usługę Azure Backup, kopie zapasowe będą kończyć się niepowodzeniem. Usługa obsługuje maksymalnie 18 punktów przywracania. W przypadku blokady **CanNotDelete** usługa Backup nie może oczyścić punktów przywracania. Aby uzyskać więcej informacji, zobacz [często zadawane pytania — tworzenie kopii zapasowych maszyn wirtualnych platformy Azure](../../backup/backup-azure-vm-backup-faq.md).
 
-## <a name="portal"></a>wielodostępowy
+## <a name="portal"></a>Portal
 
 [!INCLUDE [resource-manager-lock-resources](../../../includes/resource-manager-lock-resources.md)]
 

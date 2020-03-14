@@ -9,11 +9,11 @@ ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: e300bc0f29808215673407d21b65fe329e50ad45
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372332"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278339"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Zarządzanie modułami w Azure Automation
 
@@ -26,7 +26,7 @@ Istnieje wiele sposobów importowania modułu do konta usługi Automation. W pon
 > [!NOTE]
 > Maksymalna ścieżka pliku w module, który ma być używany w Azure Automation to 140 znaków. Dowolna ścieżka o 140 znaków nie będzie mogła zostać zaimportowana do sesji programu PowerShell przy użyciu `Import-Module`.
 
-### <a name="powershell"></a>PowerShell
+### <a name="powershell"></a>Program PowerShell
 
 Aby zaimportować moduł do konta usługi Automation, można użyć [nowego AzureRmAutomationModule](/powershell/module/azurerm.automation/new-azurermautomationmodule) . Polecenie cmdlet pobiera adres URL do pakietu zip modułu.
 
@@ -42,7 +42,7 @@ $moduleVersion = <ModuleVersion>
 New-AzAutomationModule -AutomationAccountName <AutomationAccountName> -ResourceGroupName <ResourceGroupName> -Name $moduleName -ContentLinkUri "https://www.powershellgallery.com/api/v2/package/$moduleName/$moduleVersion"
 ```
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Portalu Azure
 
 W Azure Portal przejdź do konta usługi Automation i wybierz pozycję **moduły** w obszarze **zasoby udostępnione**. Kliknij pozycję **+ Dodaj moduł**. Wybierz plik **zip** , który zawiera moduł, a następnie kliknij przycisk **OK** , aby rozpocząć importowanie procesu.
 
@@ -62,11 +62,11 @@ Możesz również zaimportować moduły z Galeria programu PowerShell bezpośred
 
 Jeśli masz problemy z modułem lub musisz przywrócić poprzednią wersję modułu, możesz usunąć go z konta usługi Automation. Nie można usunąć oryginalnej wersji [domyślnych modułów](#default-modules) , które są importowane podczas tworzenia konta usługi Automation. Jeśli moduł, który chcesz usunąć, jest nowszą wersją jednego z zainstalowanych [modułów domyślnych](#default-modules) , zostanie przywrócony do wersji, która została zainstalowana z kontem usługi Automation. W przeciwnym razie wszystkie moduły usunięte z konta usługi Automation zostaną usunięte.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Portalu Azure
 
 W Azure Portal przejdź do konta usługi Automation i wybierz pozycję **moduły** w obszarze **zasoby udostępnione**. Wybierz moduł, który chcesz usunąć. Na stronie **moduł** wybierz pozycję **Usuń**. Jeśli ten moduł jest jednym z [domyślnych modułów](#default-modules), zostanie przywrócony do wersji, która była obecna podczas tworzenia konta usługi Automation.
 
-### <a name="powershell"></a>PowerShell
+### <a name="powershell"></a>Program PowerShell
 
 Aby usunąć moduł za pomocą programu PowerShell, uruchom następujące polecenie:
 

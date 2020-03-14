@@ -4,11 +4,11 @@ description: Pokazuje reguły i ograniczenia dotyczące nazewnictwa zasobów pla
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.openlocfilehash: 7b6a9e16ba28a2a0e5e4e181dc5650d2110eab88
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391181"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273919"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Reguły i ograniczenia nazewnictwa zasobów platformy Azure
 
@@ -140,7 +140,7 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > [!div class="mx-tableFixed"]
 > | Jednostka | Zakres | Długość | Prawidłowe znaki |
 > | --- | --- | --- | --- |
-> | profiles | grupa zasobów | 1-260 | Alfanumeryczne i łączniki.<br><br>Zacznij i kończyć znakiem alfanumerycznym. |
+> | profile | grupa zasobów | 1-260 | Alfanumeryczne i łączniki.<br><br>Zacznij i kończyć znakiem alfanumerycznym. |
 > | Profile/punkty końcowe | global | 1-50 | Alfanumeryczne i łączniki.<br><br>Zacznij i kończyć znakiem alfanumerycznym. |
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
@@ -239,7 +239,7 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > [!div class="mx-tableFixed"]
 > | Jednostka | Zakres | Długość | Prawidłowe znaki |
 > | --- | --- | --- | --- |
-> | Zadania | grupa zasobów | 3-24 | Alfanumeryczne, łączniki, podkreślenia i kropki. |
+> | zadania | grupa zasobów | 3-24 | Alfanumeryczne, łączniki, podkreślenia i kropki. |
 
 ## <a name="microsoftdatabricks"></a>Microsoft.Databricks
 
@@ -383,7 +383,7 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > [!div class="mx-tableFixed"]
 > | Jednostka | Zakres | Długość | Prawidłowe znaki |
 > | --- | --- | --- | --- |
-> | Zadania | grupa zasobów | 2-64 | Alfanumeryczne i łączniki.<br><br>Zacznij od litery. |
+> | zadania | grupa zasobów | 2-64 | Alfanumeryczne i łączniki.<br><br>Zacznij od litery. |
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 
@@ -635,7 +635,7 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > | storageAccounts/managementPolicies | konto magazynu |  | Musi być `default`. |
 > | blob | kontener | 1-1024 | Wszystkie znaki adresu URL, z uwzględnieniem wielkości liter |
 > | kolejka | konto magazynu | 3-63 | Małe litery, cyfry i łączniki.<br><br>Nie można rozpocząć ani zakończyć z łącznikiem. Nie można używać kolejnych łączników. |
-> | table | konto magazynu | 3-63 | Znaki alfanumeryczne.<br><br>Zacznij od litery. |
+> | tabela | konto magazynu | 3-63 | Znaki alfanumeryczne.<br><br>Zacznij od litery. |
 
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
 

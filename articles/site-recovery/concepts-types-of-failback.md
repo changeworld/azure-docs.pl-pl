@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: raynew
 ms.openlocfilehash: c0eaf28f9aeb4050fd35a6036a53e3e91d00f3eb
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847482"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281836"
 ---
-# <a name="failback-of-vmware-vms-after-disaster-recovery-to-azure"></a>Powrót po awarii maszyn wirtualnych VMware po odzyskiwaniu po awarii na platformie Azure
+# <a name="failback-of-vmware-vms-after-disaster-recovery-to-azure"></a>Powrót po awarii maszyn wirtualnych VMware po odzyskiwaniu po awarii na platformę Azure
 
 Po przejściu w tryb failover na platformę Azure w ramach procesu odzyskiwania po awarii można wrócić do lokacji lokalnej. Istnieją dwa różne typy powrotu po awarii, które są możliwe z Azure Site Recovery: 
 
 - Powrót po awarii do oryginalnej lokalizacji 
 - Powrót po awarii do lokalizacji alternatywnej
 
-Jeśli maszyna wirtualna VMware została przełączona w tryb failover, możesz wrócić do tej samej źródłowej maszyny wirtualnej, jeśli jeszcze nie istnieje. W tym scenariuszu tylko te zmiany są replikowane z powrotem. Ten scenariusz jest znany jako **odzyskiwanie do lokalizacji oryginalnej**. Jeśli lokalna maszyna wirtualna nie istnieje, scenariusz jest odzyskiwaniem do **lokalizacji alternatywnej**.
+Jeśli maszyna wirtualna VMware została przełączona w tryb failover, możesz wrócić do tej samej źródłowej maszyny wirtualnej, jeśli jeszcze nie istnieje. W tym scenariuszu tylko te zmiany są replikowane z powrotem. Ten scenariusz jest znany jako **odzyskiwanie do lokalizacji oryginalnej**. Jeśli lokalna maszyna wirtualna nie istnieje, scenariusz jest **odzyskiwaniem do lokalizacji alternatywnej**.
 
 > [!NOTE]
 > Powrót po awarii do oryginalnego serwera vCenter i konfiguracji może zakończyć się niepowodzeniem. Nie można wdrożyć nowego serwera konfiguracji i ponownie go używać. Ponadto nie można dodać nowego programu vCenter do istniejącego serwera konfiguracji i powrotu po awarii do nowego programu vCenter.
@@ -48,7 +48,7 @@ Jeśli lokalna maszyna wirtualna nie istnieje przed ponowną ochroną maszyny wi
 > [!NOTE]
 > Maszyna fizyczna, po przełączeniu w tryb failover na platformę Azure, może się nie powiódł tylko jako maszyna wirtualna VMware. Ten sam przepływ pracy jest zgodny z odzyskiwaniem lokalizacji alternatywnej. Upewnij się, że wykryjesz co najmniej jeden główny serwer docelowy i wymagane hosty ESX/ESXi, do których należy powrócić po awarii.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Postępuj zgodnie z instrukcjami, aby wykonać [operację powrotu po awarii](vmware-azure-failback.md).
 

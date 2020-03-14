@@ -10,11 +10,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.openlocfilehash: edddd100bddab1d642a8169353298a2d20620274
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387642"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281342"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Przenoszenie danych z MongoDB za pomocą Azure Data Factory
 
@@ -61,17 +61,17 @@ Poniższe sekcje zawierają szczegółowe informacje na temat właściwości JSO
 ## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 Poniższa tabela zawiera opis elementów JSON specyficznych dla **OnPremisesMongoDB** połączonej usługi.
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 | --- | --- | --- |
-| typ |Właściwość Type musi mieć wartość: **OnPremisesMongoDb** |Tak |
-| zarządzania |Adres IP lub nazwa hosta serwera MongoDB. |Tak |
-| Port |Port TCP, którego serwer MongoDB używa do nasłuchiwania połączeń klientów. |Opcjonalna, wartość domyślna: 27017 |
-| authenticationType |Podstawowa lub anonimowa. |Tak |
+| type |Właściwość Type musi mieć wartość: **OnPremisesMongoDb** |Yes |
+| serwer |Adres IP lub nazwa hosta serwera MongoDB. |Yes |
+| port |Port TCP, którego serwer MongoDB używa do nasłuchiwania połączeń klientów. |Opcjonalna, wartość domyślna: 27017 |
+| authenticationType |Podstawowa lub anonimowa. |Yes |
 | nazwa użytkownika |Konto użytkownika do uzyskiwania dostępu do MongoDB. |Tak (jeśli jest używane uwierzytelnianie podstawowe). |
 | hasło |Hasło użytkownika. |Tak (jeśli jest używane uwierzytelnianie podstawowe). |
 | authSource |Nazwa bazy danych MongoDB, która ma zostać użyta do sprawdzenia poświadczeń w celu uwierzytelnienia. |Opcjonalne (jeśli jest używane uwierzytelnianie podstawowe). Domyślnie: używa konta administratora i bazy danych określonej przy użyciu właściwości databaseName. |
-| databaseName |Nazwa bazy danych MongoDB, do której chcesz uzyskać dostęp. |Tak |
-| gatewayName |Nazwa bramy, która uzyskuje dostęp do magazynu danych. |Tak |
+| databaseName |Nazwa bazy danych MongoDB, do której chcesz uzyskać dostęp. |Yes |
+| gatewayName |Nazwa bramy, która uzyskuje dostęp do magazynu danych. |Yes |
 | encryptedCredential |Poświadczenie zaszyfrowane przez bramę. |Optional (Opcjonalność) |
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
@@ -79,9 +79,9 @@ Aby uzyskać pełną listę sekcji & właściwości dostępne do definiowania ze
 
 Sekcja **typeProperties** jest inna dla każdego typu zestawu danych i zawiera informacje dotyczące lokalizacji danych w magazynie danych. Sekcja typeProperties zestawu danych typu **MongoDbCollection** ma następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 | --- | --- | --- |
-| collectionName |Nazwa kolekcji w bazie danych MongoDB. |Tak |
+| collectionName |Nazwa kolekcji w bazie danych MongoDB. |Yes |
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 Aby uzyskać pełną listę sekcji & właściwości dostępne do definiowania działań, zobacz artykuł [Tworzenie potoków](data-factory-create-pipelines.md) . Właściwości, takie jak nazwa, opis, tabele wejściowe i wyjściowe, oraz zasady są dostępne dla wszystkich typów działań.
@@ -90,9 +90,9 @@ Właściwości dostępne w sekcji **typeProperties** działania z drugiej strony
 
 Gdy źródło jest typu **MongoDbSource** , w sekcji typeProperties są dostępne następujące właściwości:
 
-| Właściwość | Opis | Dozwolone wartości | Wymagane |
+| Właściwość | Opis | Dozwolone wartości | Wymagany |
 | --- | --- | --- | --- |
-| zapytanie |Użyj zapytania niestandardowego do odczytywania danych. |Ciąg zapytania SQL-92. Na przykład: select * from MyTable. |Nie (Jeśli określono **CollectionName** **zestawu danych** ) |
+| query |Użyj zapytania niestandardowego do odczytywania danych. |Ciąg zapytania SQL-92. Na przykład: select * from MyTable. |Nie (Jeśli określono **CollectionName** **zestawu danych** ) |
 
 
 
