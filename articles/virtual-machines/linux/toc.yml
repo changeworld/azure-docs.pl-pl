@@ -648,8 +648,10 @@
           href: snapshot-copy-managed-disk.md
         - name: Rezerwowanie usługi Disk Storage
           href: disks-reserved-capacity.md
-        - name: Tworzenie migawki przyrostowej
+        - name: Tworzenie migawki przyrostowej — interfejs wiersza polecenia
           href: disks-incremental-snapshots.md
+        - name: Tworzenie migawki przyrostowej — portal
+          href: disks-incremental-snapshots-portal.md
         - name: Tworzenie kopii zapasowych dysków niezarządzanych
           href: incremental-snapshots.md
         - name: Migracja i konwersja

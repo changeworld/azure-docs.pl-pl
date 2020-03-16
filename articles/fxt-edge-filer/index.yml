@@ -1,42 +1,60 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentacja urządzenia Azure FXT Edge Filer
+summary: Hybrydowa pamięć podręczna magazynu urządzenia Azure FXT Edge Filer to sprzętowy i programowy system hybrydowy, który przyspiesza dostęp do danych opartych na plikach przepływów pracy obliczeń o wysokiej wydajności (HPC) wymagających pod względem odczytu.
 metadata:
   title: Dokumentacja urządzenia Azure FXT Edge Filer
-  description: Używanie urządzenia Azure FXT Edge Filer jako warstwy buforowania dla zadań obliczeń o wysokiej wydajności (HPC) wymagających pod względem odczytu
-  author: ekpgh
+  description: Używanie urządzenia Azure FXT Edge Filer jako warstwy buforowania dla zadań obliczeń o wysokiej wydajności (HPC) wymagających pod względem odczytu.
   ms.service: fxt-edge-filer
   ms.topic: landing-page
-  ms.date: 07/10/2019
+  author: ronhogue
   ms.author: rohogue
-abstract:
-  description: 'Hybrydowa pamięć podręczna magazynu urządzenia Azure FXT Edge Filer to sprzętowy i programowy system hybrydowy, który przyspiesza dostęp do danych opartych na plikach przepływów pracy obliczeń o wysokiej wydajności (HPC) wymagających pod względem odczytu. Klaster obejmujący co najmniej trzy urządzenia Azure FXT Edge Filer może zwiększyć wydajność magazynu lokalnych systemów NAS (NetApp lub Dell EMC Isilon), magazynu w chmurze lub kombinacji rozwiązań.'
-sections:
-  - title: Samouczki krok po kroku
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="fxt-install">Instalowanie urządzenia Azure FXT Edge Filer</a>
-          - html: <a href="fxt-network-power">Tworzenie połączeń sieciowych urządzenia Azure FXT Edge Filer</a>
-          - html: <a href="fxt-node-password">Ustawianie haseł głównych w węzłach sprzętu</a>
-          - html: <a href="fxt-cluster-create">Tworzenie hybrydowego klastra pamięci podręcznej magazynu</a>
-          - html: <a href="fxt-add-nodes">Dodawanie węzłów klastra</a>
-          - html: <a href="fxt-add-storage">Dodawanie magazynu zaplecza i konfigurowanie wirtualnej przestrzeni nazw</a>
-          - html: <a href="fxt-configure-network">Konfigurowanie ustawień sieci klastrów</a>
-  - title: Przewodniki z instrukcjami
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="fxt-mount-clients">Łączenie klientów z klastrem urządzenia Azure FXT Edge Filer</a>
-          - html: <a href="fxt-monitor">Monitorowanie urządzenia Azure FXT Edge Filer</a>
-          - html: <a href="fxt-power-off">Bezpieczne wyłączanie zasilania węzła sprzętu</a>
-  - title: Zasoby
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="fxt-specs">Specyfikacje sprzętowe</a>
-          - html: <a href="fxt-additional-doc">Dodatkowa dokumentacja</a>
-          - html: <a href="fxt-support-ticket">Otwieranie biletu pomocy technicznej</a>
+  ms.date: 03/11/2020
+  ms.openlocfilehash: bf1ab34e0ac7477133933886bb07d16f4574c788
+  ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 03/13/2020
+  ms.locfileid: "79298856"
+landingContent:
+- title: Informacje o urządzeniu Azure FXT Edge Filer
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest urządzenie Azure FXT Edge Filer?
+      url: fxt-overview.md
+- title: Rozpoczęcie pracy
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 1 — instalowanie sprzętu
+      url: fxt-install.md
+    - text: 2 — podłączanie przewodów
+      url: fxt-network-power.md
+    - text: 3 — ustawianie haseł sprzętu
+      url: fxt-node-password.md
+    - text: 4 — tworzenie klastra
+      url: fxt-cluster-create.md
+    - text: 5 — dodawanie węzłów klastra
+      url: fxt-add-nodes.md
+    - text: 6 — dodawanie magazynu zaplecza i konfigurowanie wirtualnej przestrzeni nazw
+      url: fxt-add-storage.md
+    - text: 7 — konfigurowanie ustawień sieci klastrów
+      url: fxt-configure-network.md
+- title: Zarządzanie
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Instalowanie klientów w klastrze
+      url: fxt-mount-clients.md
+    - text: Monitorowanie stanu sprzętu
+      url: fxt-monitor.md
+    - text: Bezpieczne wyłączanie zasilania sprzętu
+      url: fxt-power-off.md
+- title: Zasoby
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Specyfikacje sprzętowe
+      url: fxt-specs.md
+    - text: Dodatkowa dokumentacja
+      url: fxt-additional-doc.md

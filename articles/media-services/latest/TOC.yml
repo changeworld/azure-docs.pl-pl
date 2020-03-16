@@ -8,12 +8,12 @@
       displayName: release notes
       href: release-notes.md
 - name: Przewodniki Szybki start
+  expanded: true
   items:
     - name: Wydarzenie na żywo za pośrednictwem portalu i programu Wirecast
       displayName: 'live, event, portal, wirecast'
       href: live-events-wirecast-quickstart.md
 - name: Samouczki
-  expanded: true
   items:
     - name: Kodowanie pliku zdalnego i strumieniowe przesyłanie wideo
       items:
@@ -42,7 +42,7 @@
       href: protect-with-drm.md
 - name: Samples
   items:
-    - name: Przykłady usług Media Services
+    - name: Przykłady usługi Media Services w wersji 3
       displayName: '.NET, Java'
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-media-services'
     - name: Przykłady interfejsu REST usług Media Services v3
@@ -71,8 +71,6 @@
         - name: Przekształcenia i zadania
           href: transforms-jobs-concept.md
           displayName: 'preset, schema'
-        - name: Kody błędów
-          href: job-error-codes.md
     - name: Kodowanie zawartości
       items:
         - name: Omówienie
@@ -92,8 +90,6 @@
           displayName: 'analyzing, presets, jobs'
         - name: Przekształcenia i zadania
           href: transforms-jobs-concept.md
-        - name: Kody błędów zadań
-          href: job-error-codes.md
     - name: Transmisja strumieniowa na żywo
       items:
         - name: Omówienie
@@ -101,7 +97,7 @@
         - name: Wydarzenia i dane wyjściowe na żywo
           href: live-events-outputs-concept.md
           displayName: 'vanity, ingest'
-        - name: Zalecane kodery na żywo
+        - name: Przetestowane lokalne kodery na żywo
           href: recommended-on-premises-live-encoders.md
         - name: Przesuwanie czasu i rejestracja transmisji na żywo do odtwarzania na żądanie
           displayName: 'archive, dvr'
@@ -114,10 +110,6 @@
           href: live-event-states-billing.md
         - name: Opóźnienie
           href: live-event-latency.md
-        - name: Jak zostać partnerem ds. kodera lokalnego
-          href: become-on-premises-encoder-partner.md
-        - name: Kody błędów zdarzeń na żywo
-          href: live-event-error-codes.md
     - name: Tworzenie pakietów i dostarczanie
       items:
         - name: Dynamiczne tworzenie pakietów
@@ -138,8 +130,6 @@
           href: streaming-locators-concept.md
         - name: Zasady przesyłania strumieniowego
           href: streaming-policy-concept.md
-        - name: Kody błędów punktu końcowego przesyłania strumieniowego
-          href: streaming-endpoint-error-codes.md
     - name: Ochrona zawartości
       items:
         - name: Szyfrowanie dynamiczne i dostarczanie kluczy
@@ -211,20 +201,24 @@
   items:
     - name: Rozpoczęcie pracy
       items:
-        - name: Tworzenie konta — portal
-          href: create-account-portal.md
-        - name: Tworzenie konta — interfejs wiersza polecenia
-          href: create-account-cli-how-to.md
-          displayName: storage
-        - name: Resetowanie poświadczeń konta — interfejs wiersza polecenia
+        - name: Tworzenie konta
+          items:
+            - name: Przy użyciu portalu
+              href: create-account-portal.md
+            - name: Przy użyciu interfejsu wiersza polecenia
+              href: create-account-cli-how-to.md
+              displayName: storage
+        - name: Resetowanie poświadczeń konta
           href: cli-reset-account-credentials.md
-        - name: Dostęp do interfejsów API — portal
-          href: access-api-portal.md
-        - name: Dostęp do interfejsów API — interfejs wiersza polecenia
-          href: access-api-cli-how-to.md
-        - name: Skalowanie jednostek zarezerwowanych multimediów — interfejs wiersza polecenia
+        - name: Dostęp do interfejsów API
+          items:
+            - name: Przy użyciu portalu
+              href: access-api-portal.md
+            - name: Przy użyciu interfejsu wiersza polecenia
+              href: access-api-cli-how-to.md
+        - name: Skalowanie jednostek zarezerwowanych multimediów
           href: media-reserved-units-cli-how-to.md
-        - name: Tworzenie zasobu — interfejs wiersza polecenia
+        - name: Tworzenie zasobu
           href: cli-create-asset.md
     - name: Przewodniki deweloperów
       items:
@@ -244,31 +238,33 @@
               href: configure-connect-python-howto.md
     - name: Przekazywanie zawartości
       items:
-        - name: Z adresu HTTPS — .NET
+        - name: Z adresu HTTPS
           displayName: upload
           href: job-input-from-http-how-to.md
-        - name: Z pliku lokalnego — .NET
-          displayName: upload
-          href: job-input-from-local-file-how-to.md
-        - name: Z pliku lokalnego — REST
-          displayName: upload
-          href: upload-files-rest-how-to.md
-        - name: Z pliku lokalnego — interfejs wiersza polecenia
-          href: cli-upload-file-asset.md
+        - name: Z pliku lokalnego
+          items:
+            - name: Przy użyciu platformy .NET
+              displayName: upload
+              href: job-input-from-local-file-how-to.md
+            - name: Przy użyciu architektury REST
+              displayName: upload
+              href: upload-files-rest-how-to.md
+            - name: Przy użyciu interfejsu wiersza polecenia
+              href: cli-upload-file-asset.md
     - name: Tworzenie przekształceń i zadań
       items:
-        - name: Tworzenie przekształceń — interfejs wiersza polecenia
+        - name: Tworzenie przekształceń
           href: cli-create-transform.md
-        - name: Tworzenie zadań — interfejs wiersza polecenia
+        - name: Tworzenie zadań
           href: cli-create-jobs.md
         - name: Zadania z wieloma danymi wyjściowymi przekształceń
           href: job-multiple-transform-outputs.md
     - name: Kodowanie zawartości
       items:
-        - name: Adres HTTPS jako dane wejściowe zadania — .NET
+        - name: Adres HTTPS jako dane wejściowe zadania
           displayName: 'encode, encoding'
           href: job-input-from-http-how-to.md
-        - name: Plik lokalny jako dane wejściowe zadania — .NET
+        - name: Plik lokalny jako dane wejściowe zadania
           displayName: 'encode, encoding'
           href: job-input-from-local-file-how-to.md
         - name: Kodowanie za pomocą transformacji niestandardowej
@@ -290,6 +286,16 @@
             - name: Przy użyciu architektury REST
               href: subclip-video-rest-howto.md
               displayName: 'subclipping, clip, edit, trim, clipping'
+        - name: Kody błędów zadań
+          href: job-error-codes.md
+    - name: Przesyłanie strumieniowe na żywo
+      items:
+        - name: Wydarzenie na żywo za pośrednictwem portalu i programu Wirecast
+          href: live-events-wirecast-quickstart.md
+        - name: Weryfikowanie kodera lokalnego
+          href: become-on-premises-encoder-partner.md
+        - name: Kody błędów zdarzeń na żywo
+          href: live-event-error-codes.md
     - name: Używanie usługi Event Grid
       items:
         - name: Monitorowanie zdarzeń — portal
@@ -304,7 +310,7 @@
           href: media-services-diagnostic-logs-howto.md
     - name: Ochrona zawartości
       items:
-        - name: Pobieranie zasad dotyczących klucza zawartości — .NET
+        - name: Pobieranie zasad dotyczących klucza zawartości
           href: get-content-key-policy-dotnet-howto.md
         - name: Technologia FairPlay w trybie offline dla systemu iOS
           href: offline-fairplay-for-ios.md
@@ -325,7 +331,9 @@
           displayName: filters
     - name: Dostarczanie zawartości
       items:
-        - name: Publikowanie zasobu — interfejs wiersza polecenia
+        - name: Zarządzanie punktami końcowymi przesyłania strumieniowego
+          href: manage-streaming-endpoints-howto.md
+        - name: Publikowanie elementu zawartości
           href: cli-publish-asset.md
         - name: Tworzenie lokalizatora przesyłania strumieniowego i adresów URL kompilacji
           href: create-streaming-locator-build-url.md

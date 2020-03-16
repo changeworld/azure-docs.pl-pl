@@ -8,6 +8,8 @@
       href: overview.md
     - name: Porównanie usług obsługi wiadomości
       href: compare-messaging-services.md
+    - name: Warstwy Premium a Podstawowa
+      href: premium-basic-tiers.md
 - name: Przewodniki Szybki start
   expanded: true
   items:
@@ -102,6 +104,8 @@
           href: security-authentication.md
         - name: Autoryzacja
           href: security-authorization.md
+        - name: Bezpieczeństwo sieci
+          href: network-security.md
     - name: Dostarczanie i ponawianie prób
       href: delivery-and-retry.md
     - name: Filtrowanie zdarzeń
@@ -118,6 +122,12 @@
       href: geo-disaster-recovery.md
 - name: Przewodniki z instrukcjami
   items:
+    - name: Konfigurowanie prywatnych punktów końcowych (wersja zapoznawcza)
+      href: configure-private-endpoints.md
+    - name: Konfigurowanie zapory IP (wersja zapoznawcza)
+      href: configure-firewall.md
+    - name: Aktualizowanie warstwy cenowej
+      href: update-tier.md
     - name: Publikowanie w temacie niestandardowym
       href: post-to-custom-topic.md
     - name: Odbieranie zdarzeń w punkcie końcowym HTTP
