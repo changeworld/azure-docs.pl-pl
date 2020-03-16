@@ -16,11 +16,11 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: c2d93099f0f76f173cc7e77ab7f24f27d1560835
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365639"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79267523"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>Wdróż wirtualną macierz StorSimple — Skonfiguruj jako serwer plików za pośrednictwem Azure Portal
 ![](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
@@ -45,7 +45,7 @@ Wykonaj następujące instrukcje krok po kroku, aby skonfigurować i skonfigurow
 
 ## <a name="step-1-complete-the-local-web-ui-setup-and-register-your-device"></a>Krok 1. ukończenie instalacji lokalnego interfejsu użytkownika sieci Web i zarejestrowanie urządzenia
 #### <a name="to-complete-the-setup-and-register-the-device"></a>Aby ukończyć instalację i zarejestrować urządzenie
-1. Otwórz okno przeglądarki i Połącz się z lokalnym interfejsem użytkownika sieci Web. Typ:
+1. Otwórz okno przeglądarki i Połącz się z lokalnym interfejsem użytkownika sieci Web. Wpisz:
    
    `https://<ip-address of network interface>`
    
@@ -155,7 +155,7 @@ Wykonaj następujące kroki w [Azure Portal](https://portal.azure.com/) , aby za
    
         ![Konfigurowanie serwera plików](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs8m.png)
 
-5. Po pomyślnym utworzeniu poświadczenia konta magazynu zostanie zaktualizowany blok **Konfigurowanie** , aby wyświetlić określone poświadczenia konta magazynu. Kliknij przycisk **Konfiguruj**.
+5. Po pomyślnym utworzeniu poświadczenia konta magazynu zostanie zaktualizowany blok **Konfigurowanie** , aby wyświetlić określone poświadczenia konta magazynu. Kliknij pozycję **Konfiguruj**.
    
    ![Konfigurowanie serwera plików](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs11m.png)
    
