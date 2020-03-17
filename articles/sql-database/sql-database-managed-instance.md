@@ -12,11 +12,11 @@ ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 01/21/2020
 ms.openlocfilehash: b9fdd1b25e53e1cdc8aa76564304a61adaa8d804
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201598"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268784"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Co to jest Azure SQL Database wystąpienie zarządzane?
 
@@ -150,7 +150,7 @@ W poniższej tabeli zestawiono operacje i typowe ogólne czasy trwania:
 |Wdrożenie |Pierwsze wystąpienie innej generacji sprzętu w niepustej podsieci (na przykład pierwsze wystąpienie generacji 5 w podsieci z wystąpieniami generacji 4)|Tworzenie klastra wirtualnego *|90% operacji zakończonych w ciągu 4 godzin|
 |Wdrożenie |Pierwsze utworzenie wystąpienia 4 rdzeni wirtualnych w pustej lub niepustej podsieci|Tworzenie klastra wirtualnego * *|90% operacji zakończonych w ciągu 4 godzin|
 |Wdrożenie |Kolejne Tworzenie wystąpienia w niepustej podsieci (drugi, trzeci itp. wystąpienie)|Zmienianie rozmiarów klastra wirtualnego|90% operacji zakończonych w ciągu 2,5 godzin|
-|**Aktualizowanie** |Zmiana właściwości wystąpienia (hasło administratora, logowanie w usłudze AAD, flaga Korzyść użycia hybrydowego platformy Azure)|Nie dotyczy|Do 1 minuty|
+|**Aktualizacja** |Zmiana właściwości wystąpienia (hasło administratora, logowanie w usłudze AAD, flaga Korzyść użycia hybrydowego platformy Azure)|Nie dotyczy|Do 1 minuty|
 |Aktualizacja |Skalowanie magazynu wystąpień w górę/w dół (Ogólnego przeznaczenia warstwy usług)|Dołączanie plików bazy danych|90% operacji zakończonych w ciągu 5 minut|
 |Aktualizacja |Skalowanie magazynu wystąpień w górę/w dół (Krytyczne dla działania firmy warstwy usług)|— Zmienianie rozmiarów klastra wirtualnego<br>-Zawsze włączone Określanie rozrzutu grupy dostępności|90% operacji zakończonych w ciągu 2,5 godzin + Time do wypełniania wszystkich baz danych (220 GB/godz.)|
 |Aktualizacja |Skalowanie wystąpienia obliczeniowego (rdzeni wirtualnych) w górę i w dół (Ogólnego przeznaczenia)|— Zmienianie rozmiarów klastra wirtualnego<br>— Dołączanie plików bazy danych|90% operacji zakończonych w ciągu 2,5 godzin|
@@ -193,8 +193,8 @@ Kategoria  |Operacja  |Można anulować  |Szacowany czas trwania anulowania  |
 |Aktualizacja |Skalowanie wystąpienia obliczeniowego (rdzeni wirtualnych) w górę i w dół (Ogólnego przeznaczenia) |Yes |90% operacji zakończonych w ciągu 5 minut |
 |Aktualizacja |Skalowanie wystąpienia obliczeniowego (rdzeni wirtualnych) w górę i w dół (Krytyczne dla działania firmy) |Yes |90% operacji zakończonych w ciągu 5 minut |
 |Aktualizacja |Zmiana warstwy usługi wystąpienia (Ogólnego przeznaczenia do Krytyczne dla działania firmy i na odwrót) |Yes |90% operacji zakończonych w ciągu 5 minut |
-|Usuwanie |Usunięcie wystąpienia |Nie |  |
-|Usuwanie |Usuwanie klastra wirtualnego (jako operacja zainicjowana przez użytkownika) |Nie |  |
+|Usuń |Usunięcie wystąpienia |Nie |  |
+|Usuń |Usuwanie klastra wirtualnego (jako operacja zainicjowana przez użytkownika) |Nie |  |
 
 Aby anulować operację zarządzania, przejdź do bloku przegląd i kliknij pole powiadomień o trwającej operacji. Po prawej stronie pojawi się ekran z trwającą operacją i zostanie wyświetlony przycisk anulowania operacji. Po pierwszym kliknięciu zostanie wyświetlony monit o ponowne kliknięcie i potwierdzenie, że chcesz anulować operację.
 
