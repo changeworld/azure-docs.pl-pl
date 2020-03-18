@@ -5,41 +5,43 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 11/05/2019
+ms.date: 03/11/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 6707e844948ac76d4cec29faf69d80b3c9cb3c0f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.openlocfilehash: 0090f02382e024e5539383328b55d58798002d63
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75392438"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117142"
 ---
-| Zasób | Basic | Standardowa | Premium |
+| Zasób | Podstawowa | Standardowa (Standard) | Premium |
 |---|---|---|---|
 | Magazyn<sup>1</sup> | 10 GiB | 100 GiB| 500 GiB |
 | Maksymalny rozmiar warstwy obrazu | 200 GiB | 200 GiB | 200 GiB |
-| ReadOps na minutę<sup>2, 3</sup> | 1000 | 3,000 | 10 000 |
-| WriteOps na minutę<sup>2, 4</sup> | 100 | 500 | 2000 |
-| Pobierz przepustowość<sup>2</sup> MB/s | 30 | 60 | 100 |
-| Przepustowość przekazywania<sup>2</sup> MB/s | 10 | 20 | 50 |
+| Operacje odczytu na minutę<sup>2, 3</sup> | 1000 | 3000 | 10 000 |
+| Operacje zapisu na minutę<sup>2, 4</sup> | 100 | 500 | 2 000 |
+| Przepustowość pobierania w MB/s<sup>2</sup> | 30 | 60 | 100 |
+| Przepustowość przekazywania w MB/s<sup>2</sup> | 10 | 20 | 50 |
 | Elementy webhook | 2 | 10 | 500 |
-| Replikacja geograficzna | ND | ND | [Obsługiwane][geo-replication] |
-| Zaufanie do zawartości | ND | ND | [Obsługiwane][content-trust] |
-| Dostęp do sieci wirtualnej | ND | ND | [Wersja zapoznawcza][vnet] |
-| Uprawnienia w zakresie repozytorium | ND | ND | [Wersja zapoznawcza][token]|
-| Tokeny &bull; | ND | ND | 20,000 |
-| mapy zakresu &bull; | ND | ND | 20,000 |
-| &bull; repozytoria na mapę zakresu | ND | ND | 500 |
+| Replikacja geograficzna | Nie dotyczy | Nie dotyczy | [Obsługiwane][geo-replication] |
+| Zaufanie do zawartości | Nie dotyczy | Nie dotyczy | [Obsługiwane][content-trust] |
+| Dostęp do sieci wirtualnej | Nie dotyczy | Nie dotyczy | [Wersja zapoznawcza][vnet] |
+| Integracja z łączem prywatnym | Nie dotyczy | Nie dotyczy | [Wersja zapoznawcza][plink] |
+| Klucze zarządzane przez klienta | Nie dotyczy | Nie dotyczy | [Wersja zapoznawcza][cmk] |
+| Uprawnienia w zakresie repozytorium | Nie dotyczy | Nie dotyczy | [Wersja zapoznawcza][token]|
+| &bull; Tokeny | Nie dotyczy | Nie dotyczy | 20 000 |
+| &bull; Mapowania zakresu | Nie dotyczy | Nie dotyczy | 20 000 |
+| &bull; Repozytoria na mapowanie zakresu | Nie dotyczy | Nie dotyczy | 500 |
 
 
-<sup>1</sup> Określone limity magazynu to ilość *dołączonego* magazynu dla każdej warstwy. Opłata jest naliczana za dodatkową dzienną stawkę za GiB dla magazynu obrazów powyżej tych limitów. Aby uzyskać informacje o stawkach, zobacz [Cennik usługi Azure Container Registry][pricing].
+<sup>1</sup> Określone limity magazynu to ilość *uwzględnionego* magazynu dla każdej warstwy. Naliczana jest dodatkowa dzienna stawka za GiB magazynu obrazów powyżej tych limitów. Aby uzyskać informacje o stawkach, zobacz [cennik usługi Azure Container Registry][pricing].
 
-<sup>2</sup>*ReadOps*, *WriteOps*i *przepustowość* są minimalnymi oszacowaniami. Azure Container Registry dąży do poprawy wydajności, ponieważ wymaga użycia.
+<sup>2</sup>*Operacje odczytu*, *operacje zapisu* i *przepustowość* są minimalnymi szacunkami. Usługa Azure Container Registry dąży do poprawy wydajności zgodnie z wymaganiami użycia.
 
-<sup>3</sup> [Docker pull](https://docs.docker.com/registry/spec/api/#pulling-an-image) Wykonuje translację na wiele operacji odczytu na podstawie liczby warstw w obrazie oraz pobierania manifestu.
+<sup>3</sup>Polecenie [docker pull](https://docs.docker.com/registry/spec/api/#pulling-an-image) przekłada się na wiele operacji odczytu na podstawie liczby warstw obrazu i pobranie manifestu.
 
-<sup>4</sup> [Wypychanie Docker](https://docs.docker.com/registry/spec/api/#pushing-an-image) jest tłumaczone na wiele operacji zapisu na podstawie liczby warstw, które muszą zostać wypchnięte. `docker push` zawiera *ReadOps* do pobrania manifestu dla istniejącego obrazu.
+<sup>4</sup>Polecenie [docker push](https://docs.docker.com/registry/spec/api/#pushing-an-image) przekłada się na wiele operacji zapisu na podstawie liczby warstw, które muszą zostać wypchnięte. Polecenie `docker push` obejmuje *operacje odczytu* do pobrania manifestu dla istniejącego obrazu.
 
 <!-- LINKS - External -->
 [pricing]: https://azure.microsoft.com/pricing/details/container-registry/
@@ -48,4 +50,6 @@ ms.locfileid: "75392438"
 [geo-replication]: ../articles/container-registry/container-registry-geo-replication.md
 [content-trust]: ../articles/container-registry/container-registry-content-trust.md
 [vnet]: ../articles/container-registry/container-registry-vnet.md
+[plink]: ../articles/container-registry/container-registry-private-link.md
+[cmk]: ../articles/container-registry/container-registry-customer-managed-keys.md
 [token]: ../articles/container-registry/container-registry-repository-scoped-permissions.md

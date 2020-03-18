@@ -1,52 +1,53 @@
 ---
-title: 'Szybki Start: analiza tekstu wersja kliencka klienta dla języka Java | Microsoft Docs'
-description: Rozpocznij pracę z biblioteką kliencką programu v3 analiza tekstu dla środowiska Java.
+title: 'Szybki start: Biblioteka klienta analizy tekstu w wersji 3 dla języka Java | Microsoft Docs'
+description: Rozpocznij pracę z biblioteką klienta analizy tekstu w wersji 3 dla języka Java.
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 02/26/2020
+ms.date: 03/12/2020
 ms.author: aahi
-ms.reviewer: tasharm, assafi
-ms.openlocfilehash: 79b4063d6b65d6861dd7864c4225e91f4ea5bc6d
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
-ms.translationtype: MT
+ms.reviewer: tasharm, assafi, sumeh
+ms.openlocfilehash: 11092b74c0256d298dece0f909d8d7dd241e7b13
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155416"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371335"
 ---
 <a name="HOLTop"></a>
 
-[Dokumentacja referencyjna](https://aka.ms/azsdk-java-textanalytics-ref-docs) |  | pakietu [kodu źródłowego biblioteki](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/textanalytics/azure-ai-textanalytics) [(Maven)](https://oss.sonatype.org/#nexus-search;quick~com.azure) [ | ](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
+[Dokumentacja referencyjna](https://aka.ms/azsdk-java-textanalytics-ref-docs) | [Kod źródłowy biblioteki](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/textanalytics/azure-ai-textanalytics) | [Pakiet](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/1.0.0-beta.3) | [Przykłady](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/)
-* [Zestaw Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html) (JDK) z wersją 8 lub nowszą
-* Gdy masz subskrypcję platformy Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="utworzyć zasób analiza tekstu"  target="_blank">utworzyć analiza tekstu</a> zasobów <span class="docon docon-navigate-external x-hidden-focus"></span> w Azure Portal, aby uzyskać klucz i punkt końcowy. 
-    * Będziesz potrzebować klucza i punktu końcowego z zasobu, który tworzysz, aby połączyć aplikację z interfejs API analizy tekstu. Tę czynność należy wykonać w dalszej części przewodnika Szybki Start.
-    * Możesz użyć warstwy cenowej bezpłatna, aby wypróbować usługę i uaktualnić ją później do warstwy płatnej dla środowiska produkcyjnego.
+* Subskrypcja platformy Azure — [utwórz bezpłatnie](https://azure.microsoft.com/free/)
+* Zestaw [Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html) (JDK) w wersji 8 lub nowszej
+* Gdy już będziesz mieć subskrypcję platformy Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Tworzenie zasobu analizy tekstu"  target="_blank">utwórz zasób analizy tekstu <span class="docon docon-navigate-external x-hidden-focus"></span></a> w witrynie Azure Portal, aby uzyskać klucz i punkt końcowy. 
+    * Klucz i punkt końcowy z utworzonego zasobu będą potrzebne do połączenia aplikacji z interfejsem API analizy tekstu. Tę czynność wykonasz w dalszej części przewodnika Szybki start.
+    * W celu wypróbowania usługi możesz użyć warstwy cenowej Bezpłatna, a później zaktualizować ją do płatnej warstwy na potrzeby środowiska produkcyjnego.
 
 ## <a name="setting-up"></a>Konfigurowanie
 
-### <a name="create-a-new-maven-project"></a>Tworzenie nowego projektu Maven
+### <a name="add-the-client-library"></a>Dodawanie biblioteki klienta
 
-Dodaj następującą zależność analizy tekstu do projektu. Ta wersja zależności używa `3.0-preview` wersji interfejs API analizy tekstu. 
+Utwórz projekt Maven w preferowanym środowisku IDE lub w środowisku deweloperskim. Następnie dodaj następującą zależność do pliku  *pom.xml* projektu. Składnię implementacji [dla innych narzędzi kompilacji](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/1.0.0-beta.3) można znaleźć w Internecie.
 
 ```xml
 <dependencies>
-    <dependency>
+     <dependency>
         <groupId>com.azure</groupId>
         <artifactId>azure-ai-textanalytics</artifactId>
-        <version>1.0.0-beta.2</version>
+        <version>1.0.0-beta.3</version>
     </dependency>
 </dependencies>
 ```
 
-Utwórz nowy plik Java w następującym katalogu: `\src\main\java`.
+> [!TIP]
+> Czy chcesz wyświetlić cały plik z kodem przewodnika Szybki start od razu? Można go znaleźć [w witrynie GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/TextAnalytics/TextAnalyticsSamples.java), która zawiera przykłady kodu z tego przewodnika Szybki start. 
 
-Otwórz plik Java i Dodaj następujące instrukcje `import`:
+Utwórz plik Java o nazwie `TextAnalyticsSamples.java`. Otwórz ten plik i dodaj następujące instrukcje `import`:
 
 ```java
 import com.azure.ai.textanalytics.models.*;
@@ -54,7 +55,7 @@ import com.azure.ai.textanalytics.TextAnalyticsClientBuilder;
 import com.azure.ai.textanalytics.TextAnalyticsClient;
 ```
 
-W pliku Java Dodaj nową klasę i Dodaj klucz i punkt końcowy zasobu platformy Azure, jak pokazano poniżej.
+W pliku Java dodaj nową klasę oraz klucz i punkt końcowy zasobu platformy Azure, jak pokazano poniżej.
 
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
@@ -65,11 +66,11 @@ public class TextAnalyticsSamples {
 }
 ```
 
-Dodaj następującą metodę główną do klasy. Metody wywoływane tutaj zostaną zdefiniowane później.
+Do klasy dodaj następującą metodę main. Metody wywoływane w tym miejscu zdefiniujesz później.
 
 ```java
 public static void main(String[] args) {
-
+    //You will create these methods later in the quickstart.
     TextAnalyticsClient client = authenticateClient(KEY, ENDPOINT);
 
     sentimentAnalysisExample(client);
@@ -83,12 +84,12 @@ public static void main(String[] args) {
 
 ## <a name="object-model"></a>Model obiektów
 
-Klient analiza tekstu jest obiektem `TextAnalyticsClient`, który jest uwierzytelniany na platformie Azure przy użyciu klucza, i udostępnia funkcje, aby akceptować tekst jako pojedyncze ciągi lub jako partię. Możesz wysyłać tekst do interfejsu API synchronicznie lub asynchronicznie. Obiekt Response będzie zawierać informacje o analizie dla każdego wysyłanego dokumentu. 
+Klient analizy tekstu jest obiektem `TextAnalyticsClient`, który jest uwierzytelniany na platformie Azure przy użyciu klucza, i udostępnia funkcje umożliwiające akceptowanie tekstu jako pojedynczych ciągów lub jako partii. Tekst może być wysyłany do interfejsu API synchronicznie lub asynchronicznie. Obiekt odpowiedzi będzie zawierać informacje o analizie dla każdego wysyłanego dokumentu. 
 
 ## <a name="code-examples"></a>Przykłady kodu
 
 * [Uwierzytelnianie klienta](#authenticate-the-client)
-* [analiza tonacji](#sentiment-analysis) 
+* [Analiza tonacji](#sentiment-analysis) 
 * [Wykrywanie języka](#language-detection)
 * [Rozpoznawanie jednostek nazwanych](#named-entity-recognition-ner) 
 * [Łączenie jednostek](#entity-linking)
@@ -96,7 +97,7 @@ Klient analiza tekstu jest obiektem `TextAnalyticsClient`, który jest uwierzyte
 
 ## <a name="authenticate-the-client"></a>Uwierzytelnianie klienta
 
-Utwórz metodę tworzenia wystąpienia obiektu `TextAnalyticsClient` przy użyciu `KEY` i `ENDPOINT` utworzonego powyżej.
+Utwórz metodę umożliwiającą utworzenie wystąpienia obiektu `TextAnalyticsClient` przy użyciu klucza i punktu końcowego zasobu analizy tekstu.
 
 ```java
 static TextAnalyticsClient authenticateClient(String key, String endpoint) {
@@ -107,11 +108,11 @@ static TextAnalyticsClient authenticateClient(String key, String endpoint) {
 }
 ```
 
-W metodzie `main()` programu Wywołaj metodę uwierzytelniania w celu utworzenia wystąpienia klienta.
+W metodzie `main()` programu wywołaj metodę uwierzytelniania w celu utworzenia wystąpienia klienta.
 
 ## <a name="sentiment-analysis"></a>Analiza tonacji
 
-Utwórz nową funkcję o nazwie `sentimentAnalysisExample()`, która przybierze wcześniej utworzony klient i wywołaj funkcję `analyzeSentiment()`. Zwrócony obiekt `AnalyzeSentimentResult` będzie zawierał `documentSentiment` i `sentenceSentiments` Jeśli to się powiedzie, lub `errorMessage`, jeśli nie. 
+Utwórz nową funkcję o nazwie `sentimentAnalysisExample()`, która wywołuje funkcję `analyzeSentiment()` klienta utworzonego wcześniej. Zwrócony obiekt `AnalyzeSentimentResult` będzie zawierał obiekty `documentSentiment` i `sentenceSentiments`, jeśli wywołanie się powiedzie, lub obiekt `errorMessage`, jeśli wywołanie się nie powiedzie. 
 
 ```java
 static void sentimentAnalysisExample(TextAnalyticsClient client)
@@ -120,37 +121,38 @@ static void sentimentAnalysisExample(TextAnalyticsClient client)
     String text = "I had the best day of my life. I wish you were there with me.";
 
     DocumentSentiment documentSentiment = client.analyzeSentiment(text);
-        System.out.printf(
-            "Recognized document sentiment: %s, positive score: %.2f, neutral score: %.2f, negative score: %.2f.%n",
-            documentSentiment.getSentiment(),
-            documentSentiment.getSentimentScores().getPositive(),
-            documentSentiment.getSentimentScores().getNeutral(),
-            documentSentiment.getSentimentScores().getNegative());
+    System.out.printf(
+        "Recognized document sentiment: %s, positive score: %s, neutral score: %s, negative score: %s.%n",
+        documentSentiment.getSentiment(),
+        documentSentiment.getConfidenceScores().getPositive(),
+        documentSentiment.getConfidenceScores().getNeutral(),
+        documentSentiment.getConfidenceScores().getNegative());
 
-        for (SentenceSentiment sentenceSentiment : documentSentiment.getSentences()) {
-            System.out.printf(
-                "Recognized sentence sentiment: %s, positive score: %.2f, neutral score: %.2f, negative score: %.2f.%n",
-                sentenceSentiment.getSentiment(),
-                sentenceSentiment.getSentimentScores().getPositive(),
-                sentenceSentiment.getSentimentScores().getNeutral(),
-                sentenceSentiment.getSentimentScores().getNegative());
-        }
+    for (SentenceSentiment sentenceSentiment : documentSentiment.getSentences()) {
+        System.out.printf(
+            "Recognized sentence sentiment: %s, positive score: %s, neutral score: %s, negative score: %s.%n",
+            sentenceSentiment.getSentiment(),
+            sentenceSentiment.getConfidenceScores().getPositive(),
+            sentenceSentiment.getConfidenceScores().getNeutral(),
+            sentenceSentiment.getConfidenceScores().getNegative());
+    }
 }
 ```
 
 ### <a name="output"></a>Dane wyjściowe
 
 ```console
-Recognized document sentiment: positive, Positive Score: 1.00, Neutral Score: 0.00, Negative Score: 0.00.
-Recognized sentence sentiment: positive, positive score: 1.00, neutral score: 0.00, negative score: 0.00.
+Recognized document sentiment: positive, positive score: 1.0, neutral score: 0.0, negative score: 0.0.
+Recognized sentence sentiment: positive, positive score: 1.0, neutral score: 0.0, negative score: 0.0.
 Recognized sentence sentiment: neutral, positive score: 0.21, neutral score: 0.77, negative score: 0.02.
 ```
+
 ## <a name="language-detection"></a>Wykrywanie języka
 
-Utwórz nową funkcję o nazwie `detectLanguageExample()`, która przybierze wcześniej utworzony klient i wywołaj funkcję `detectLanguage()`. Zwrócony obiekt `DetectLanguageResult` będzie zawierał wykryty język podstawowy, listę innych języków wykrytych w przypadku powodzenia lub `errorMessage`, jeśli nie.
+Utwórz nową funkcję o nazwie `detectLanguageExample()`, która wywołuje funkcję `detectLanguage()` klienta utworzonego wcześniej. W przypadku powodzenia zwrócony obiekt `DetectLanguageResult` będzie zawierał wykryty język podstawowy i listę innych wykrytych języków. W przeciwnym razie będzie zawierać obiekt `errorMessage`.
 
 > [!Tip]
-> W niektórych przypadkach może być trudno odróżnić Języki w oparciu o dane wejściowe. Można użyć parametru `countryHint`, aby określić 2-literowy kod kraju. Domyślnie interfejs API używa "US" jako domyślnego countryHint, aby usunąć to zachowanie, można zresetować ten parametr, ustawiając tę wartość na pusty ciąg `countryHint = ""`. Aby ustawić inną wartość domyślną, należy ustawić właściwość `TextAnalyticsClientOptions.DefaultCountryHint` i przekazać ją podczas inicjowania klienta.
+> W niektórych przypadkach może być trudno odróżnić języki w oparciu o dane wejściowe. Za pomocą parametru `countryHint` możesz podać 2-literowy kod kraju. Domyślnie interfejs API używa wartości „US” jako domyślnego ustawienia countryHint. Aby usunąć to zachowanie, możesz zresetować ten parametr, ustawiając wartość na pusty ciąg `countryHint = ""`. Aby ustawić inną wartość domyślną, ustaw właściwość `TextAnalyticsClientOptions.DefaultCountryHint` i przekaż ją podczas inicjowania klienta.
 
 ```java
 static void detectLanguageExample(TextAnalyticsClient client)
@@ -171,14 +173,14 @@ static void detectLanguageExample(TextAnalyticsClient client)
 ```console
 Detected primary language: French, ISO 6391 name: fr, score: 1.00.
 ```
-## <a name="named-entity-recognition-ner"></a>Rozpoznawanie jednostek nazwanych (NER)
+## <a name="named-entity-recognition-ner"></a>Rozpoznawanie jednostek nazwanych
 
 > [!NOTE]
 > W wersji `3.0-preview`:
-> * NER obejmuje oddzielne metody wykrywania informacji osobistych. 
-> * Łączenie jednostek to oddzielne żądanie niż NER.
+> * Rozpoznawanie jednostek nazwanych obejmuje oddzielne metody wykrywania danych osobowych. 
+> * Łączenie jednostek to żądanie inne niż rozpoznawanie jednostek nazwanych.
 
-Utwórz nową funkcję o nazwie `recognizeEntitiesExample()`, która przybierze wcześniej utworzony klient i wywołaj funkcję `recognizeEntities()`. Zwrócony obiekt `RecognizeEntitiesResult` będzie zawierać listę `NamedEntity`, jeśli się powiedzie, lub `errorMessage` Jeśli nie.
+Utwórz nową funkcję o nazwie `recognizeEntitiesExample()`, która wywołuje funkcję `recognizeEntities()` klienta utworzonego wcześniej. W przypadku powodzenia zwrócony obiekt `RecognizeEntitiesResult` będzie zawierał listę obiektów `NamedEntity`. W przeciwnym razie będzie zawierać obiekt `errorMessage`.
 
 ```java
 static void recognizeEntitiesExample(TextAnalyticsClient client)
@@ -188,13 +190,11 @@ static void recognizeEntitiesExample(TextAnalyticsClient client)
 
     for (CategorizedEntity entity : client.recognizeEntities(text)) {
         System.out.printf(
-            "Recognized entity: %s, entity category: %s, entity sub-category: %s, offset: %s, length: %s, score: %.2f.%n",
+            "Recognized entity: %s, entity category: %s, entity sub-category: %s, score: %s.%n",
             entity.getText(),
             entity.getCategory(),
-            entity.getSubCategory() == null || entity.getSubCategory().isEmpty() ? "N/A" : entity.getSubCategory(),
-            entity.getOffset(),
-            entity.getLength(),
-            entity.getScore());
+            entity.getSubCategory(),
+            entity.getConfidenceScore());
     }
 }
 ```
@@ -202,13 +202,13 @@ static void recognizeEntitiesExample(TextAnalyticsClient client)
 ### <a name="output"></a>Dane wyjściowe
 
 ```console
-Recognized entity: Seattle, entity category: Location, entity sub-category: GPE, offset: 26, length: 7, score: 0.92.
-Recognized entity: last week, entity category: DateTime, entity sub-category: DateRange, offset: 34, length: 9, score: 0.80.
+Recognized entity: Seattle, entity category: Location, entity sub-category: GPE, score: 0.92.
+Recognized entity: last week, entity category: DateTime, entity sub-category: DateRange, score: 0.8.
 ```
 
-## <a name="using-ner-to-recognize-personal-information"></a>Rozpoznawanie informacji osobistych za pomocą NER
+## <a name="using-ner-to-recognize-personal-information"></a>Wykrywanie danych osobowych za pomocą rozpoznawania jednostek nazwanych
 
-Utwórz nową funkcję o nazwie `recognizePIIEntitiesExample()`, która przybierze wcześniej utworzony klient i wywołaj funkcję `recognizePiiEntities()`. Zwrócony obiekt `RecognizePiiEntitiesResult` będzie zawierać listę `NamedEntity`, jeśli się powiedzie, lub `errorMessage` Jeśli nie. 
+Utwórz nową funkcję o nazwie `recognizePIIEntitiesExample()`, która wywołuje funkcję `recognizePiiEntities()` klienta utworzonego wcześniej. W przypadku powodzenia zwrócony obiekt `RecognizePiiEntitiesResult` będzie zawierał listę obiektów `NamedEntity`. W przeciwnym razie będzie zawierać obiekt `errorMessage`. 
 
 ```java
 static void recognizePIIEntitiesExample(TextAnalyticsClient client)
@@ -218,13 +218,11 @@ static void recognizePIIEntitiesExample(TextAnalyticsClient client)
 
     for (PiiEntity entity : client.recognizePiiEntities(text)) {
         System.out.printf(
-            "Recognized personal identifiable information entity: %s, entity category: %s, entity sub-category: %s, offset: %s, length: %s, score: %.2f.%n",
+            "Recognized personal identifiable information entity: %s, entity category: %s, %nentity sub-category: %s, score: %s.%n",
             entity.getText(),
             entity.getCategory(),
-            entity.getSubCategory() == null || entity.getSubCategory().isEmpty() ? "N/A" : entity.getSubCategory(),
-            entity.getOffset(),
-            entity.getLength(),
-            entity.getScore());
+            entity.getSubCategory(),
+            entity.getConfidenceScore());
     }
 }
 ```
@@ -232,12 +230,13 @@ static void recognizePIIEntitiesExample(TextAnalyticsClient client)
 ### <a name="output"></a>Dane wyjściowe
 
 ```console
-Recognized personal identifiable information entity: 123-12-1234, entity category: U.S. Social Security Number (SSN), entity sub-category: N/A, offset: 33, length: 11, score: 0.85.
+Recognized personal identifiable information entity: 123-12-1234, entity category: U.S. Social Security Number (SSN), 
+entity sub-category: null, score: 0.85.
 ```
 
 ## <a name="entity-linking"></a>Łączenie jednostek
 
-Utwórz nową funkcję o nazwie `recognizeLinkedEntitiesExample()`, która przybierze wcześniej utworzony klient i wywołaj funkcję `recognizeLinkedEntities()`. Zwrócony obiekt `RecognizeLinkedEntitiesResult` będzie zawierać listę `LinkedEntity`, jeśli się powiedzie, lub `errorMessage` Jeśli nie. Ponieważ połączone jednostki są jednoznacznie identyfikowane, wystąpienia tej samej jednostki są pogrupowane pod obiektem `LinkedEntity` jako lista obiektów `LinkedEntityMatch`.
+Utwórz nową funkcję o nazwie `recognizeLinkedEntitiesExample()`, która wywołuje funkcję `recognizeLinkedEntities()` klienta utworzonego wcześniej. W przypadku powodzenia zwrócony obiekt `RecognizeLinkedEntitiesResult` będzie zawierał listę obiektów `LinkedEntity`. W przeciwnym razie będzie zawierać obiekt `errorMessage`. Ponieważ połączone jednostki są jednoznacznie identyfikowane, wystąpienia tej samej jednostki są grupowane w ramach obiektu `LinkedEntity` jako lista obiektów `LinkedEntityMatch`.
 
 ```java
 static void recognizeLinkedEntitiesExample(TextAnalyticsClient client)
@@ -253,16 +252,14 @@ static void recognizeLinkedEntitiesExample(TextAnalyticsClient client)
     for (LinkedEntity linkedEntity : client.recognizeLinkedEntities(text)) {
         System.out.printf("Name: %s, ID: %s, URL: %s, Data Source: %s.%n",
                 linkedEntity.getName(),
-                linkedEntity.getId(),
+                linkedEntity.getDataSourceEntityId(),
                 linkedEntity.getUrl(),
                 linkedEntity.getDataSource());
         System.out.printf("Matches:%n");
         for (LinkedEntityMatch linkedEntityMatch : linkedEntity.getLinkedEntityMatches()) {
-            System.out.printf("Text: %s, Offset: %s, Length: %s, Score: %.2f.%n",
+            System.out.printf("Text: %s, Score: %.2f%n",
                     linkedEntityMatch.getText(),
-                    linkedEntityMatch.getOffset(),
-                    linkedEntityMatch.getLength(),
-                    linkedEntityMatch.getScore());
+                    linkedEntityMatch.getConfidenceScore());
         }
     }
 }
@@ -274,28 +271,28 @@ static void recognizeLinkedEntitiesExample(TextAnalyticsClient client)
 Linked Entities:
 Name: Altair 8800, ID: Altair 8800, URL: https://en.wikipedia.org/wiki/Altair_8800, Data Source: Wikipedia.
 Matches:
-Text: Altair 8800, Offset: 11, Length: 116, Score: 0.78.
+Text: Altair 8800, Score: 0.78
 Name: Bill Gates, ID: Bill Gates, URL: https://en.wikipedia.org/wiki/Bill_Gates, Data Source: Wikipedia.
 Matches:
-Text: Bill Gates, Offset: 10, Length: 25, Score: 0.55.
-Text: Gates, Offset: 5, Length: 161, Score: 0.55.
+Text: Bill Gates, Score: 0.55
+Text: Gates, Score: 0.55
 Name: Paul Allen, ID: Paul Allen, URL: https://en.wikipedia.org/wiki/Paul_Allen, Data Source: Wikipedia.
 Matches:
-Text: Paul Allen, Offset: 10, Length: 40, Score: 0.53.
+Text: Paul Allen, Score: 0.53
 Name: Microsoft, ID: Microsoft, URL: https://en.wikipedia.org/wiki/Microsoft, Data Source: Wikipedia.
 Matches:
-Text: Microsoft, Offset: 9, Length: 0, Score: 0.47.
-Text: Microsoft, Offset: 9, Length: 150, Score: 0.47.
+Text: Microsoft, Score: 0.47
+Text: Microsoft, Score: 0.47
 Name: April 4, ID: April 4, URL: https://en.wikipedia.org/wiki/April_4, Data Source: Wikipedia.
 Matches:
-Text: April 4, Offset: 7, Length: 54, Score: 0.25.
+Text: April 4, Score: 0.25
 Name: BASIC, ID: BASIC, URL: https://en.wikipedia.org/wiki/BASIC, Data Source: Wikipedia.
 Matches:
-Text: BASIC, Offset: 5, Length: 89, Score: 0.28.
+Text: BASIC, Score: 0.28
 ```
 ## <a name="key-phrase-extraction"></a>Wyodrębnianie kluczowych fraz
 
-Utwórz nową funkcję o nazwie `extractKeyPhrasesExample()`, która przybierze wcześniej utworzony klient i wywołaj funkcję `extractKeyPhrases()`. Zwrócony obiekt `ExtractKeyPhraseResult` będzie zawierać listę kluczowych fraz w przypadku powodzenia lub `errorMessage`, jeśli nie.
+Utwórz nową funkcję o nazwie `extractKeyPhrasesExample()`, która wywołuje funkcję `extractKeyPhrases()` klienta utworzonego wcześniej. W przypadku powodzenia zwrócony obiekt `ExtractKeyPhraseResult` będzie zawierał listę fraz kluczowych. W przeciwnym razie będzie zawierać obiekt `errorMessage`.
 
 ```java
 static void extractKeyPhrasesExample(TextAnalyticsClient client)

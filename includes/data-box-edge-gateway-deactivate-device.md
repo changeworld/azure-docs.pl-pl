@@ -4,28 +4,31 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: alkohli
-ms.openlocfilehash: aebb82690a7a49aba071ed64349d37d516208cca
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
-ms.translationtype: MT
+ms.openlocfilehash: 21c19027d21a87e199d74644cfc5c8f3cd52ba4c
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183692"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129377"
 ---
-Aby zresetować urządzenie, musisz bezpiecznie czyszczenia wszystkich danych na dysku danych, a dysk rozruchowy urządzenia. 
+Aby zresetować urządzenie, należy bezpiecznie wyczyścić wszystkie dane na dysku danych i dysku rozruchowym urządzenia. 
 
-Użyj `Reset-HcsAppliance` polecenia cmdlet, aby wymazać z dysków z danymi i dysk rozruchowy lub po prostu dysków z danymi. `ClearData` i `BootDisk` przełączników pozwalają odpowiednio wyczyścić dysk rozruchowy i dysków z danymi.
+Użyj polecenia cmdlet `Reset-HcsAppliance`, aby wyczyścić zarówno dyski danych, jak i dysk rozruchowy albo tylko dyski danych. Przełączniki `ClearData` i `BootDisk` umożliwiają odpowiednio wyczyszczenie dysków danych i dysku rozruchowego.
 
-Jeśli używasz urządzenia resetowania w lokalnym internetowym interfejsie użytkownika, tylko dyski danych są bezpiecznie wyczyszczone, ale dysk rozruchowy pozostaje bez zmian. Dysk rozruchowy zawiera konfigurację urządzenia.
+Przełącznik `BootDisk` czyści dysk rozruchowy i uniemożliwia korzystanie z urządzenia. Należy go używać tylko wtedy, gdy urządzenie ma zostać zwrócone firmie Microsoft. Aby uzyskać więcej informacji, zobacz [Zwracanie urządzenia firmie Microsoft](https://docs.microsoft.com/azure/databox-online/data-box-edge-return-device).
 
-1. [Nawiązać połączenie z interfejsu programu PowerShell](#connect-to-the-powershell-interface).
+Jeśli użyjesz funkcji resetowania urządzenia w lokalnym internetowym interfejsie użytkownika, tylko dyski danych zostaną bezpiecznie wyczyszczone, a dysk rozruchowy pozostanie nienaruszony. Dysk rozruchowy zawiera konfigurację urządzenia.
+
+1. [Nawiązywanie połączenia z interfejsem programu PowerShell](#connect-to-the-powershell-interface).
 2. W wierszu polecenia wpisz polecenie:
 
     `Reset-HcsAppliance -ClearData -BootDisk`
 
-    Poniższy przykład przedstawia sposób użycia tego polecenia cmdlet:
-    ```
+    W poniższym przykładzie pokazano, jak użyć tego polecenia cmdlet:
+
+    ```powershell
     [10.128.24.33]: PS>Reset-HcsAppliance -ClearData -BootDisk
-    
+
     Confirm
     Are you sure you want to perform this action?
     Performing the operation "Reset-HcsAppliance" on target "ShouldProcess appliance".
