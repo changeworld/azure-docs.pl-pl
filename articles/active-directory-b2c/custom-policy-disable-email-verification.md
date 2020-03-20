@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8ec60f694000985f51db25db621e5814df62cdb3
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 13a5fa6a030d876d92651ca587e37fdc6a3ec600
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79126814"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136146"
 ---
 # <a name="disable-email-verification-during-customer-sign-up-using-a-custom-policy-in-azure-active-directory-b2c"></a>Wyłącz weryfikację poczty e-mail podczas rejestracji klienta przy użyciu zasad niestandardowych w programie Azure Active Directory B2C
 
@@ -28,8 +28,11 @@ Wykonaj kroki opisane w temacie Wprowadzenie [do zasad niestandardowych](custom-
 
 ## <a name="add-the-metadata-to-the-self-asserted-technical-profile"></a>Dodawanie metadanych do profilu technicznego z własnym potwierdzeniem
 
-Profil techniczny **LocalAccountSignUpWithLogonEmail** jest [automatycznie potwierdzony](self-asserted-technical-profile.md), który jest wywoływany podczas przepływu rejestracji. Aby wyłączyć weryfikację adresu e-mail, ustaw dla metadanych `EnforceEmailVerification` wartość false. Zastąp profile techniczne LocalAccountSignUpWithLogonEmail w pliku rozszerzenia. Znajdź element `ClaimsProviders`. Dodaj następującego dostawcę oświadczeń do elementu `ClaimsProviders`:
+Profil techniczny **LocalAccountSignUpWithLogonEmail** jest [automatycznie potwierdzony](self-asserted-technical-profile.md), który jest wywoływany podczas przepływu rejestracji. Aby wyłączyć weryfikację adresu e-mail, ustaw dla metadanych `EnforceEmailVerification` wartość false. Zastąp profile techniczne LocalAccountSignUpWithLogonEmail w pliku rozszerzenia. 
 
+1. Otwórz plik rozszerzeń zasad. Na przykład <em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em>.
+1. Znajdź element `ClaimsProviders`. Jeśli element nie istnieje, Dodaj go.
+1. Dodaj następującego dostawcę oświadczeń do elementu `ClaimsProviders`:
 
 ```XML
 <ClaimsProvider>
@@ -46,7 +49,7 @@ Profil techniczny **LocalAccountSignUpWithLogonEmail** jest [automatycznie potwi
 
 ## <a name="test-the-custom-policy"></a>Testowanie zasad niestandardowych
 
-1. Zaloguj się do [Azure portal](https://portal.azure.com).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
 2. Upewnij się, że używasz katalogu, który zawiera dzierżawę usługi Azure AD, wybierając filtr **katalog + subskrypcja** w górnym menu i wybierając katalog zawierający dzierżawę usługi Azure AD.
 3. Wybierz pozycję **wszystkie usługi** w lewym górnym rogu Azure Portal, a następnie wyszukaj i wybierz pozycję **rejestracje aplikacji**.
 4. Wybierz pozycję **platforma obsługi tożsamości**.
