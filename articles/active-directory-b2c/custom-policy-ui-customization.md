@@ -12,11 +12,11 @@ ms.date: 02/13/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 8e07d3e1815c1b47b9d37c08e8fac5359b71fe7c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374855"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245995"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Dostosuj interfejs użytkownika aplikacji przy użyciu zasad niestandardowych w Azure Active Directory B2C
 
@@ -30,11 +30,11 @@ Wykonaj kroki opisane w temacie Wprowadzenie [do zasad niestandardowych](custom-
 
 [!INCLUDE [active-directory-b2c-html-how-to](../../includes/active-directory-b2c-html-how-to.md)]
 
-## <a name="4-modify-the-extensions-file"></a>4. Zmodyfikuj plik rozszerzeń.
+## <a name="4-modify-the-extensions-file"></a>4. Modyfikuj plik rozszerzeń
 
 Aby skonfigurować dostosowanie interfejsu użytkownika, skopiuj **ContentDefinition** i jego elementy podrzędne z pliku podstawowego do pliku rozszerzeń.
 
-1. Otwórz podstawowy plik zasad. Na przykład <em>`SocialAndLocalAccounts/` **`TrustFrameworkBase.xml`** </em> . Ten plik podstawowy jest jednym z plików zasad zawartych w pakiecie startowym zasad niestandardowych, który powinien zostać uzyskany w wymaganiu wstępnym, [Rozpocznij od zasad niestandardowych](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom).
+1. Otwórz podstawowy plik zasad. Na przykład <em>`SocialAndLocalAccounts/` **`TrustFrameworkBase.xml`** </em>. Ten plik podstawowy jest jednym z plików zasad zawartych w pakiecie startowym zasad niestandardowych, który powinien zostać uzyskany w wymaganiu wstępnym, [Rozpocznij od zasad niestandardowych](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom).
 1. Wyszukaj i Skopiuj całą zawartość elementu **ContentDefinitions** .
 1. Otwórz plik rozszerzenia. Na przykład *TrustFrameworkExtensions. XML*. Wyszukaj element **BuildingBlocks** . Jeśli element nie istnieje, Dodaj go.
 1. Wklej całą zawartość elementu **ContentDefinitions** , który został skopiowany jako element podrzędny elementu **BuildingBlocks** .
@@ -60,7 +60,7 @@ Aby skonfigurować dostosowanie interfejsu użytkownika, skopiuj **ContentDefini
 
 1. Zapisz plik rozszerzeń.
 
-## <a name="5-upload-and-test-your-updated-custom-policy"></a>5. przekazanie i przetestowanie zaktualizowanych zasad niestandardowych
+## <a name="5-upload-and-test-your-updated-custom-policy"></a>5. Przekazywanie i testowanie zaktualizowanych zasad niestandardowych
 
 ### <a name="51-upload-the-custom-policy"></a>5,1 przekazywanie zasad niestandardowych
 
