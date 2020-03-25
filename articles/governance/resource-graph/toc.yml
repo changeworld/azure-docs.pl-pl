@@ -22,7 +22,7 @@
     - name: Tworzenie i udostępnianie zapytania w witrynie Azure Portal
       displayName: 'query, portal'
       href: ./tutorials/create-share-query.md
-- name: Samples
+- name: Przykłady
   items:
     - name: Zapytania dla początkujących
       displayName: 'query language, data explorer, count, list, show'

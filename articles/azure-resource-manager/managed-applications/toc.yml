@@ -19,7 +19,7 @@
       href: publish-marketplace-app.md
     - name: Tworzenie aplikacji zarządzanych za pomocą dostawcy niestandardowego
       href: tutorial-create-managed-app-with-custom-provider.md
-- name: Samples
+- name: Przykłady
   items:
     - name: Interfejs wiersza polecenia platformy Azure
       href: cli-samples.md
@@ -73,7 +73,7 @@
           href: reference-view-definition-artifact.md
     - name: Interfejs wiersza polecenia platformy Azure
       href: /cli/azure/managedapp
-    - name: PowerShell
+    - name: Program PowerShell
       href: /powershell/module/az.resources
     - name: REST
       href: /rest/api/resources/
@@ -102,7 +102,7 @@
               href: microsoft-common-textblock.md
             - name: TextBox
               href: microsoft-common-textbox.md
-        - name: Wystąpienia obliczeniowe
+        - name: Compute
           items:
             - name: CredentialsCombo
               href: microsoft-compute-credentialscombo.md
@@ -120,7 +120,7 @@
               href: microsoft-network-publicipaddresscombo.md
             - name: VirtualNetworkCombo
               href: microsoft-network-virtualnetworkcombo.md
-        - name: Magazyn
+        - name: Storage
           items:
             - name: MultiStorageAccountCombo
               href: microsoft-storage-multistorageaccountcombo.md
@@ -130,7 +130,7 @@
   items:
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: Cennik
+    - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/managed-applications/'
     - name: Kalkulator cen
       href: 'https://azure.microsoft.com/pricing/calculator/'

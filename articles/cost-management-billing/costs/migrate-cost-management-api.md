@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.openlocfilehash: 397e0a21b1ba11b3bdd74c2030ff358c1ce159d8
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77201037"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migrowanie z umowy Enterprise Agreement do interfejsów API umowy klienta firmy Microsoft
@@ -175,26 +175,26 @@ Nazwa właściwości zawierającej tablicę rekordów użycia została zmieniona
 | ChargesBilledSeparately | isAzureCreditEligible | Należy pamiętać, że te właściwości są przeciwstawne. Jeśli isAzureCreditEnabled ma wartość true, ChargesBilledSeparately ma wartość false. |
 | ConsumedQuantity | quantity | &nbsp; |
 | ConsumedService | consumedService | Dokładne wartości ciągów mogą się różnić. |
-| ConsumedServiceId | Brak | &nbsp; |
+| ConsumedServiceId | None | &nbsp; |
 | CostCenter | costCenter | &nbsp; |
 | Date i usageStartDate | date | &nbsp;  |
-| Day | Brak | Analizuje informacje o dniu na podstawie daty. |
+| Day | None | Analizuje informacje o dniu na podstawie daty. |
 | DepartmentId | invoiceSectionId | Dokładne wartości są różne. |
 | DepartmentName | invoiceSectionName | Dokładne wartości ciągów mogą się różnić. W razie potrzeby należy dopasować sekcje faktury do działów. |
 | ExtendedCost i Cost | costInBillingCurrency | &nbsp;  |
 | InstanceId | resourceId | &nbsp;  |
-| Is Recurring Charge | Brak | &nbsp;  |
+| Is Recurring Charge | None | &nbsp;  |
 | Lokalizacja | location | &nbsp;  |
 | MeterCategory | meterCategory | Dokładne wartości ciągów mogą się różnić. |
 | Identyfikator miernika | meterId | Dokładne wartości ciągów są różne. |
 | MeterName | meterName | Dokładne wartości ciągów mogą się różnić. |
 | MeterRegion | meterRegion | Dokładne wartości ciągów mogą się różnić. |
 | MeterSubCategory | meterSubCategory | Dokładne wartości ciągów mogą się różnić. |
-| Month | Brak | Analizuje informacje o miesiącu na podstawie daty. |
-| Offer Name | Brak | Należy użyć właściwości publisherName i productOrderName. |
-| OfferID | Brak | &nbsp;  |
-| Order Number | Brak | &nbsp;  |
-| PartNumber | Brak | Należy użyć właściwości meterId i productOrderName do unikatowego identyfikowania cen. |
+| Month | None | Analizuje informacje o miesiącu na podstawie daty. |
+| Offer Name | None | Należy użyć właściwości publisherName i productOrderName. |
+| OfferID | None | &nbsp;  |
+| Order Number | None | &nbsp;  |
+| PartNumber | None | Należy użyć właściwości meterId i productOrderName do unikatowego identyfikowania cen. |
 | Plan Name | productOrderName | &nbsp;  |
 | Product (Produkt) | Product (Produkt) |   |
 | ProductId | productId | Dokładne wartości ciągów są różne. |
@@ -202,7 +202,7 @@ Nazwa właściwości zawierającej tablicę rekordów użycia została zmieniona
 | ResourceGroup | resourceGroupName | &nbsp;  |
 | ResourceGuid | meterId | Dokładne wartości ciągów są różne. |
 | ResourceLocation | resourceLocation | &nbsp;  |
-| ResourceLocationId | Brak | &nbsp;  |
+| ResourceLocationId | None | &nbsp;  |
 | ResourceRate | effectivePrice | &nbsp;  |
 | ServiceAdministratorId | Nie dotyczy | &nbsp;  |
 | ServiceInfo1 | serviceInfo1 | &nbsp;  |
@@ -216,7 +216,7 @@ Nazwa właściwości zawierającej tablicę rekordów użycia została zmieniona
 | Tagi | tags | Właściwość tags ma zastosowanie do obiektu głównego, a nie do zagnieżdżonej właściwości properties. |
 | UnitOfMeasure | unitOfMeasure | Dokładne wartości ciągów są różne. |
 | usageEndDate | date | &nbsp;  |
-| Year | Brak | Analizuje informacje o roku na podstawie daty. |
+| Year | None | Analizuje informacje o roku na podstawie daty. |
 | (nowa) | billingCurrency | Waluta używana do naliczania opłat. |
 | (nowa) | billingProfileId | Unikatowy identyfikator profilu rozliczeniowego (taki sam jak rejestracja). |
 | (nowa) | billingProfileName | Nazwa profilu rozliczeniowego (taka sama jak rejestracja). |

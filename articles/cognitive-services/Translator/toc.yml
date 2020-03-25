@@ -46,12 +46,6 @@
           href: prevent-translation.md
         - name: Korzystanie z funkcji słownika dynamicznego
           href: dynamic-dictionary.md
-        - name: Korzystanie z kontenerów
-          items:
-            - name: Instalowanie i uruchamianie kontenerów
-              href: how-to-install-containers.md
-            - name: Konfigurowanie kontenerów
-              href: translator-text-container-config.md
         - name: Tłumaczenie za zaporami
           href: firewalls.md
     - name: Przykłady
@@ -106,7 +100,7 @@
           href: 'https://www.microsoft.com/translator/faq.aspx'
         - name: Obsługa języków i regionów
           href: language-support.md
-        - name: Cennik
+        - name: Ceny
           href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
         - name: Dostępność regionalna
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
@@ -174,9 +168,11 @@
           href: custom-translator/glossary.md
         - name: Często zadawane pytania
           href: custom-translator/faq.md
-        - name: Cennik
+        - name: Ceny
           href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
         - name: Zgodność
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+        - name: Szyfrowanie
+          href: translator-encryption-of-data-at-rest.md
         - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'

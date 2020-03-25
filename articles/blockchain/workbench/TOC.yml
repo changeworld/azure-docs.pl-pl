@@ -45,7 +45,7 @@
           href: data-sql-management-studio.md
 - name: Dokumentacja
   items:
-    - name: Konfigurowanie
+    - name: Konfiguracja
       href: configuration.md
     - name: Widoki bazy danych
       href: database-views.md

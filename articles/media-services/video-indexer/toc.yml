@@ -7,7 +7,7 @@
 - name: Przewodniki Szybki start
   expanded: true
   items:
-    - name: Rozpoczęcie pracy
+    - name: Wprowadzenie
       href: video-indexer-get-started.md
     - name: Zapraszanie użytkowników
       href: invite-users.md
@@ -15,7 +15,7 @@
   items:
     - name: Korzystanie z interfejsu API usługi Video Indexer
       href: video-indexer-use-apis.md
-- name: Samples
+- name: Przykłady
   items:
     - name: Przykłady usługi Video Indexer
       href: 'https://github.com/Azure-Samples/media-services-video-indexer'
@@ -97,7 +97,7 @@
   items:
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/?category=web-mobile'
-    - name: Cennik
+    - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/media-services/'
     - name: Dostępność regionalna
       href: 'https://azure.microsoft.com/regions/services/'

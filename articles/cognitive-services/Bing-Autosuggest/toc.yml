@@ -63,7 +63,7 @@
       maintainContext: true
 - name: Zasoby
   items:
-    - name: Cennik
+    - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/autosuggest-api/'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/598198-bing-autosuggest'

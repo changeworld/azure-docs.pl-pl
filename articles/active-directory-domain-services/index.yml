@@ -14,10 +14,10 @@ metadata:
   manager: daveba
   ms.date: 08/01/2019
   ms.openlocfilehash: f5fa27e19da6bb64b7e214ec32cbfbf0a417118e
-  ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 08/23/2019
+  ms.lasthandoff: 03/25/2020
   ms.locfileid: "70010560"
 landingContent:
 - title: Informacje o usłudze Azure AD Domain Services
@@ -34,7 +34,7 @@ landingContent:
       url: synchronization.md
     - text: Często zadawane pytania
       url: faqs.md
-- title: Rozpoczęcie pracy
+- title: Wprowadzenie
   linkLists:
   - linkListType: deploy
     links:
@@ -80,7 +80,7 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Windows Server
+    - text: Oprogramowanie Windows Server
       url: join-windows-vm.md
   - linkListType: how-to-guide
     links:

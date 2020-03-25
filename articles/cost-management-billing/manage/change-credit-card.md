@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.openlocfilehash: 0cf0911193cd379da60edb3064d3c6f195cf0190
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199861"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>Dodawanie, aktualizowanie lub usuwanie karty kredytowej dla platformy Azure
@@ -122,7 +122,7 @@ Jeśli chcesz zmienić domyślną formę płatności profilu rozliczeniowego na 
 
 Aby zmienić kartę kredytową, wykonaj następujące kroki:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 1. W menu po lewej stronie kliknij pozycję **Profile rozliczeniowe**.
 1. Wybierz profil rozliczeniowy.
@@ -142,7 +142,7 @@ Możesz edytować szczegóły kart kredytowych (na przykład zaktualizować dat�
 
 Aby edytować lub usunąć kartę kredytową, wykonaj następujące kroki:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 1. W menu po lewej stronie kliknij pozycję **Profile rozliczeniowe**.
 1. Wybierz profil rozliczeniowy.

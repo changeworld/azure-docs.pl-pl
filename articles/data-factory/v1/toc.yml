@@ -33,7 +33,7 @@
     - name: Tworzenie potoku w celu przekształcania danych
       href: data-factory-build-your-first-pipeline.md
       items:
-        - name: Portal Azure
+        - name: Portalu Azure
           href: data-factory-build-your-first-pipeline-using-editor.md
         - name: Visual Studio
           href: data-factory-build-your-first-pipeline-using-vs.md
@@ -92,7 +92,7 @@
               href: data-factory-onprem-file-system-connector.md
             - name: FTP
               href: data-factory-ftp-connector.md
-            - name: SYSTEM PLIKÓW HDFS
+            - name: HDFS
               href: data-factory-hdfs-connector.md
             - name: HTTP
               href: data-factory-http-connector.md
@@ -203,7 +203,7 @@
       href: 'https://azure.microsoft.com/documentation/learning-paths/data-factory'
     - name: Forum MSDN
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureDataFactory'
-    - name: Cennik
+    - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/data-factory/'
     - name: Kalkulator cen
       href: 'https://azure.microsoft.com/pricing/calculator/'

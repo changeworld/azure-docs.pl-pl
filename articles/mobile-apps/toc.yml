@@ -8,7 +8,7 @@
       href: front-end-development-platform.md
     - name: Planowanie i projektowanie aplikacji mobilnej z usługami zaplecza
       items:
-        - name: Authentication
+        - name: Uwierzytelnianie
           href: authentication.md
         - name: Magazyn danych
           href: data-storage.md

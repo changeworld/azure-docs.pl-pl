@@ -99,7 +99,7 @@
           href: 'https://github.com/Microsoft/Cognitive-Face-iOS'
 - name: Zasoby
   items:
-    - name: Samples
+    - name: Przykłady
       items:
         - name: Przykłady twarzy
           href: 'https://docs.microsoft.com/samples/browse/?products=azure&term=face'
@@ -115,5 +115,7 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Zgodność
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Szyfrowanie
+      href: face-encryption-of-data-at-rest.md
     - name: Informacje o wersji
       href: ReleaseNotes.md

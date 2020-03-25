@@ -12,10 +12,10 @@ metadata:
   manager: rkarlin
   ms.date: 09/19/2019
   ms.openlocfilehash: cbd1ca9ead64bfda8401876ec54487f767363d3c
-  ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 09/26/2019
+  ms.lasthandoff: 03/24/2020
   ms.locfileid: "71299786"
 landingContent:
 - title: Informacje o usłudze Azure Key Vault
@@ -32,7 +32,7 @@ landingContent:
       url: key-vault-ovw-soft-delete.md
     - text: Ograniczanie przepływności
       url: key-vault-ovw-throttling.md
-- title: Rozpoczęcie pracy
+- title: Wprowadzenie
   linkLists:
   - linkListType: quickstart
     links:

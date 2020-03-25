@@ -1,20 +1,19 @@
 ---
-title: Rejestracja w usłudze Office 365 przy użyciu konta platformy Azure | Microsoft Docs
+title: Rejestracja w usłudze Office 365 przy użyciu konta platformy Azure
 description: Dowiedz się, jak utworzyć subskrypcję usługi Office 365 przy użyciu konta platformy Azure
 author: JiangChen79
 ms.reviewer: adwise
 tags: billing,top-support-issue
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: banders
-ms.openlocfilehash: b38800a990056d7de0b6978573ddc19c80503a1d
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 736009a88f309e0a38402222668a9609f844552f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199929"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79204821"
 ---
 # <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>Rejestracja przy użyciu konta platformy Azure w celu uzyskania subskrypcji usługi Office 365
 Jeśli jesteś subskrybentem platformy Azure, możesz użyć swojego konta platformy Azure do zarejestrowania subskrypcji usługi Office 365. Jeśli reprezentujesz organizację, która ma subskrypcję platformy Azure, możesz utworzyć subskrypcje usługi Office 365 dla użytkowników w istniejącej usłudze Azure Active Directory (Azure AD). Zarejestruj się w usłudze Office 365 przy użyciu konta z uprawnieniami administratora globalnego lub administratora rozliczeń w dzierżawie usługi Azure Active Directory. Aby uzyskać więcej informacji, zobacz [Sprawdzanie uprawnień konta w usłudze Azure AD](#RoleInAzureAD) i [Przypisywanie ról administratorów w usłudze Azure Active Directory](../../active-directory/users-groups-roles/directory-assign-admin-roles.md).
@@ -47,8 +46,8 @@ Jeśli utworzono subskrypcję usługi Office 365 dla organizacji, wykonaj nastę
 
 Po zarejestrowaniu subskrypcja usługi Office 365 jest dodawana do tego samego wystąpienia usługi Azure Active Directory, do którego należy subskrypcja platformy Azure. Aby uzyskać więcej informacji, zobacz [Więcej informacji o subskrypcjach platformy Azure i usługi Office 365](office-365-account-for-azure-subscription.md#more-about-subs) i [Jak subskrypcje platformy Azure są kojarzone z usługą Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
-## <a id="RoleInAzureAD"></a>Sprawdzanie uprawnień konta w usłudze Azure AD
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+## <a name="check-my-account-permissions-in-azure-ad"></a><a id="RoleInAzureAD"></a>Sprawdzanie uprawnień konta w usłudze Azure AD
+1. Zaloguj się do [Azure portal](https://portal.azure.com/).
 2. Kliknij pozycję **Wszystkie usługi**, a następnie wyszukaj usługę **Active Directory**.
 
     ![Zrzut ekranu przedstawiający usługę Active Directory w witrynie Azure Portal](./media/azure-account-for-office-365-subscription/billing-more-services-active-directory.png)

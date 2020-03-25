@@ -1,18 +1,18 @@
 ---
 title: Tworzenie aplikacji mobilnych za pomocą usługi Visual Studio App Center i usług platformy Azure
 description: Dowiedz się, jak za pomocą usług takich jak Visual Studio App Center i innych usług platformy Azure tworzyć rzeczywiste aplikacje mobilne.
-author: elamalani
+author: codemillmatt
 ms.assetid: 98899889-9b3c-4faf-8588-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: 6e60aa223b3c4f362ed13411c54212e9d1fa2c87
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: 19d317ca564f925562994a5f90cd3892d0ee1d08
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454419"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80240846"
 ---
 # <a name="mobile-application-development-in-microsoft"></a>Tworzenie aplikacji mobilnych w firmie Microsoft
 Decydenci, zespoły deweloperów i działy IT muszą opracować solidną strategię tworzenia aplikacji mobilnych, która uwzględnia:

@@ -62,7 +62,7 @@
               href: data-box-cable-options.md
             - name: Kontakt z pomocą techniczną
               href: data-box-disk-contact-microsoft-support.md
-            - name: Migrate (Migracja)
+            - name: Migracja
               items:
                 - name: Do usługi SharePoint Online
                   href: 'https://docs.microsoft.com/sharepointmigration/how-to-migrate-file-share-content-to-spo-using-azuredatabox?context=/azure/databox/context/context'
@@ -177,7 +177,7 @@
               href: data-box-how-to-set-data-tier.md
             - name: Kontakt z pomocą techniczną
               href: data-box-disk-contact-microsoft-support.md
-            - name: Migrate (Migracja)
+            - name: Migracja
               items:
                 - name: Do usługi SharePoint Online
                   href: data-box-heavy-migrate-spo.md

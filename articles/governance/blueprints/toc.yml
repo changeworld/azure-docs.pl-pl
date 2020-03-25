@@ -25,7 +25,7 @@
     - name: Ochrona nowych zasobów za pomocą blokad zasobów strategii
       displayName: 'read only, do not delete, lock assignment'
       href: ./tutorials/protect-new-resources.md
-- name: Samples
+- name: Przykłady
   items:
     - name: Indeks
       displayName: 'list, examples'

@@ -100,7 +100,7 @@
           displayName: 'descriptor, phrase list'
     - name: Współczynnik przewidywania
       href: luis-concept-prediction-score.md
-    - name: Najlepsze rozwiązania
+    - name: Najlepsze praktyki
       href: luis-concept-best-practices.md
       displayName: 'phrase list, pattern, intent, utterance, version, do, don''t, example utterances, iteration, cycle, correct, right'
     - name: Zwiększanie wydajności aplikacji
@@ -113,7 +113,7 @@
           href: luis-concept-test.md
         - name: Testowanie wsadowe
           href: luis-concept-batch-test.md
-    - name: Tworzenie i klucze środowiska uruchomieniowego
+    - name: Tworzenia i klucze środowiska uruchomieniowego
       displayName: 'shared, transfer, ownership, author, access, import'
       href: luis-concept-keys.md
     - name: Zarządzanie danymi
@@ -193,7 +193,7 @@
       href: luis-how-to-publish-app.md
     - name: Zarządzanie aplikacją
       items:
-        - name: Tworzenie i klucze środowiska uruchomieniowego
+        - name: Tworzenia i klucze środowiska uruchomieniowego
           displayName: 'azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription, authoring, endpoint, prediction'
           href: luis-how-to-azure-subscription.md
         - name: Migrowanie do klucza tworzenia
@@ -334,7 +334,7 @@
               href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/'
             - name: Dokumentacja
               href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet'
-            - name: Samples
+            - name: Przykłady
               href: 'https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/LUIS'
         - name: Przejdź
           items:
@@ -352,7 +352,7 @@
               href: 'https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime'
             - name: Dokumentacja
               href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-java-stable'
-            - name: Samples
+            - name: Przykłady
               href: 'https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Language/LanguageUnderstanding'
         - name: Node.js
           items:
@@ -360,7 +360,7 @@
               href: 'https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring'
             - name: Narzędzie NPM — środowisko uruchomieniowe
               href: 'https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime'
-            - name: Samples
+            - name: Przykłady
               href: 'https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/tree/master/Samples/luis'
         - name: Python
           items:
@@ -368,7 +368,7 @@
               href: 'https://pypi.org/project/azure-cognitiveservices-language-luis/'
             - name: Dokumentacja
               href: 'https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python'
-            - name: Samples
+            - name: Przykłady
               href: 'https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/language/luis'
 - name: Powiązane
   items:
@@ -408,6 +408,8 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/'
     - name: Zgodność
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Szyfrowanie
+      href: luis-encryption-of-data-at-rest.md
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/LUIS'
     - name: UserVoice

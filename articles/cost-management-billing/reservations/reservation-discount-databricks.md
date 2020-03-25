@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.openlocfilehash: 69f83fc1d390fcbea77468045b89ee6024e7fe9a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200320"
 ---
 # <a name="how-azure-databricks-pre-purchase-discount-is-applied"></a>W jaki sposób jest stosowany rabat za wcześniejszy zakup usługi Azure Databricks
@@ -48,9 +48,9 @@ Jeśli masz pytania lub potrzebujesz pomocy, [utwórz wniosek o pomoc techniczn�
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby dowiedzieć się, jak zarządzać wystąpieniem zarezerwowanym, zobacz [Zarządzanie rejestracjami platformy Azure](manage-reserved-vm-instance.md).
+- Aby dowiedzieć się, jak zarządzać wystąpieniem zarezerwowanym, zobacz temat [Manage Azure Reservations](manage-reserved-vm-instance.md) (Zarządzanie wystąpieniami zarezerwowanymi na platformie Azure).
 - Aby dowiedzieć się więcej na temat oszczędności związanych z wcześniejszym zakupem usługi Azure Databricks, zobacz [Optymalizowanie kosztów usługi Azure Databricks dzięki wcześniejszemu zakupowi](prepay-databricks-reserved-capacity.md).
-- Aby dowiedzieć się więcej na temat rezerwacji platformy Azure, zobacz następujące artykuły:
+- Aby dowiedzieć się więcej na temat rezerwacji na platformie Azure, zobacz następujące artykuły:
   - [Co to są rezerwacje platformy Azure?](save-compute-costs-reservations.md)
   - [Zarządzanie rejestracjami platformy Azure](manage-reserved-vm-instance.md)
   - [Informacje na temat użycia wystąpień zarezerwowanych w przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem](understand-reserved-instance-usage.md)

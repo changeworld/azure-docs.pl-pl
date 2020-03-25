@@ -2,7 +2,7 @@
   href: index.yml
 - name: Omówienie
   href: v1-overview.md
-- name: Samples
+- name: Przykłady
   href: sample-v1-code.md
 - name: Pojęcia
   items:
@@ -22,7 +22,7 @@
           href: native-app.md
         - name: Aplikacja demona lub serwera
           href: service-to-service.md
-    - name: Authentication
+    - name: Uwierzytelnianie
       items:
         - name: Podstawowe informacje o uwierzytelnianiu
           href: v1-authentication-scenarios.md
@@ -83,7 +83,7 @@
       href: ../develop/authentication-national-cloud.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
 - name: Przewodniki z instrukcjami
   items:
-    - name: Authentication
+    - name: Uwierzytelnianie
       items:
         - name: Konfigurowanie logowania jednokrotnego
           displayName: SSO
@@ -112,7 +112,7 @@
       items:
         - name: Konwertowanie aplikacji z jedną dzierżawą na aplikację z wieloma dzierżawami
           href: ../develop/howto-convert-app-to-be-multi-tenant.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
-        - name: Tworzenie nazwy głównej usługi
+        - name: Tworzenie jednostki usługi
           items:
             - name: Korzystanie z programu Azure PowerShell
               href: ../develop/howto-authenticate-service-principal-powershell.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json

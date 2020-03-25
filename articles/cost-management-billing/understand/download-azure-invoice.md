@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 691d27acebf238e84265870e8c01976bfc2412b2
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200269"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Wyświetlanie i pobieranie faktury platformy Microsoft Azure
@@ -33,7 +33,7 @@ Jeśli masz umowę partnerską firmy Microsoft, musisz być administratorem glob
 
 <!-- For more information about billing roles for Microsoft Customer Agreements, see [Billing profile roles and tasks](../manage/understand-mca-roles.md#billing-profile-roles-and-tasks). -->
 
-## <a name="noinvoice"></a> Dlaczego nie możesz wyświetlić faktury
+## <a name="why-you-might-not-get-an-invoice"></a><a name="noinvoice"></a> Dlaczego nie możesz wyświetlić faktury
 
 Może istnieć kilka przyczyn, dla których faktura nie jest widoczna:
 

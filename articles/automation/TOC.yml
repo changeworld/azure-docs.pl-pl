@@ -177,7 +177,7 @@
           displayName: troubleshoot
         - name: Rozwiązywanie problemów z agentem aktualizacji
           items:
-            - name: Windows
+            - name: System Windows
               href: troubleshoot/update-agent-issues.md
               displayName: 'update agent, issue, hybrid runbook worker, hybrid worker, troubleshoot, windows'
             - name: Linux
@@ -245,7 +245,7 @@
           href: /powershell/scripting/dsc/overview/overview
     - name: Przewodniki Szybki start
       items:
-        - name: Getting Started
+        - name: Wprowadzenie
           href: automation-dsc-getting-started.md
           displayName: DSC
         - name: Zarządzanie konfiguracją maszyny
@@ -305,11 +305,11 @@
 - name: Zarządzanie zasobami udostępnionymi
   items:
     - name: Certyfikaty
-      href: automation-certificates.md
+      href: shared-resources/certificates.md
     - name: Połączenia
       href: automation-connections.md
     - name: Poświadczenia
-      href: automation-credentials.md
+      href: shared-resources/credentials.md
     - name: Moduły programu PowerShell
       items:
         - name: Moduły
@@ -319,9 +319,9 @@
         - name: Aktualizowanie modułów programu Azure PowerShell
           href: automation-update-azure-modules.md
     - name: Harmonogramy
-      href: automation-schedules.md
+      href: shared-resources/schedules.md
     - name: Zmienne
-      href: automation-variables.md
+      href: shared-resources/variables.md
     - name: Zarządzanie pakietami języka Python 2
       href: python-packages.md
     - name: Rozwiązywanie problemów z zasobami udostępnionymi
@@ -351,7 +351,7 @@
       href: automation-manage-send-joblogs-log-analytics.md
     - name: Obsługiwane regiony dla mapowań obszaru roboczego usługi Log Analytics
       href: how-to/region-mappings.md
-- name: Migrate (Migracja)
+- name: Migracja
   items:
     - name: Migracja z programu Orchestrator
       href: automation-orchestrator-migration.md
@@ -372,7 +372,7 @@
       href: 'https://azure.microsoft.com/roadmap/?category=management-tools&query=automation'
     - name: Forum MSDN
       href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation'
-    - name: Cennik
+    - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/automation/'
     - name: Kalkulator cen
       href: 'https://azure.microsoft.com/pricing/calculator/'

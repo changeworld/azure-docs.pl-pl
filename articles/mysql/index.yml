@@ -9,10 +9,10 @@ metadata:
   ms.service: mysql
   ms.topic: landing-page
   ms.openlocfilehash: 6ccf544b524ad1ccd45b0aa814610902d54c0fd9
-  ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 09/04/2019
+  ms.lasthandoff: 03/24/2020
   ms.locfileid: "70309290"
 landingContent:
 - title: Informacje o usłudze Azure Database for MySQL
@@ -99,21 +99,21 @@ landingContent:
     links:
     - text: Łączenie przy użyciu programu MySQL Workbench
       url: connect-workbench.md
-    - text: Łączenie przy użyciu języka PHP
+    - text: Nawiązywanie połączenia przy użyciu języka PHP
       url: connect-php.md
-    - text: Łączenie przy użyciu języka Java
+    - text: Nawiązywanie połączenia przy użyciu języka Java
       url: connect-java.md
-    - text: Łączenie przy użyciu platformy .NET
+    - text: Nawiązywanie połączenia przy użyciu platformy .NET
       url: connect-csharp.md
-    - text: Łączenie przy użyciu języka Python
+    - text: Nawiązywanie połączenia przy użyciu języka Python
       url: connect-python.md
     - text: Łączenie przy użyciu środowiska Node.js
       url: connect-nodejs.md
-    - text: Łączenie przy użyciu języka Ruby
+    - text: Nawiązywanie połączenia przy użyciu języka Ruby
       url: connect-ruby.md
     - text: Łączenie przy użyciu języka C++
       url: connect-cpp.md
-    - text: Łączenie przy użyciu języka Go
+    - text: Nawiązywanie połączenia przy użyciu języka Go
       url: connect-go.md
 - title: Replikowanie danych
   linkLists:

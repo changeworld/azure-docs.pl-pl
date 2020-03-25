@@ -28,7 +28,7 @@
       href: tutorial-load-balancer-standard-public-zonal-portal.md
     - name: Konfigurowanie przekierowywania portów w usłudze Load Balancer
       href: tutorial-load-balancer-port-forwarding-portal.md
-- name: Samples
+- name: Przykłady
   items:
     - name: Interfejs wiersza polecenia platformy Azure
       href: cli-samples.md
@@ -74,7 +74,7 @@
           href: upgrade-InternalBasic-To-PublicStandard.md
     - name: Konfigurowanie reguł dla ruchu wychodzącego
       items:
-        - name: Azure Portal
+        - name: Portalu Azure
           href: configure-load-balancer-outbound-portal.md
         - name: Interfejs wiersza polecenia platformy Azure
           href: configure-load-balancer-outbound-cli.md
@@ -150,13 +150,13 @@
       displayName: ARM
 - name: Zasoby
   items:
-    - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
+    - name: Rozwijanie umiejętności dzięki Microsoft Learn
       href: /learn/browse/?products=azure-load-balancer
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: Opinie dotyczące usługi Azure Load Balancer
       href: 'https://feedback.azure.com/forums/217313-networking/category/77467-load-balancing'
-    - name: Cennik
+    - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/load-balancer/'
     - name: Kalkulator cen
       href: 'https://azure.microsoft.com/pricing/calculator/'

@@ -14,7 +14,7 @@
       href: quickstart-sql-vm-create-powershell.md
 - name: Pojęcia
   items:
-    - name: Najlepsze rozwiązania
+    - name: Najlepsze praktyki
       items:
         - name: Najlepsze rozwiązania w zakresie wydajności
           href: virtual-machines-windows-sql-performance.md
@@ -79,7 +79,7 @@
           href: virtual-machines-windows-sql-change-edition.md
         - name: Usługa Azure Storage na potrzeby tworzenia kopii zapasowych i przywracania
           href: virtual-machines-windows-use-storage-sql-server-backup-restore.md
-    - name: Migrate (Migracja)
+    - name: Migracja
       items:
         - name: Migracja bazy danych programu SQL Server do maszyny wirtualnej
           href: virtual-machines-windows-migrate-sql.md
@@ -131,7 +131,7 @@
   items:
     - name: Często zadawane pytania
       href: virtual-machines-windows-sql-server-iaas-faq.md
-    - name: Cennik
+    - name: Ceny
       href: virtual-machines-windows-sql-server-pricing-guidance.md
     - name: SQL Server Data Tools (SSDT)
       href: 'https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt'

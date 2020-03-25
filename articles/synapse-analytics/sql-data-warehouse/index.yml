@@ -1,0 +1,99 @@
+### YamlMime:Landing
+title: Azure Synapse Analytics (dawniej Azure SQL Data Warehouse)
+summary: Azure Synapse to nieograniczona usługa analizy, która łączy magazynowanie danych przedsiębiorstwa z analizą danych big data. Zapewnia swobodę wykonywania zapytań dotyczących danych na Twoich warunkach, korzystając z bezserwerowych zasobów na żądanie lub aprowizowanych zasobów — w dużej skali.
+metadata:
+  title: Azure Synapse Analytics
+  description: Azure Synapse to nieograniczona usługa analizy, która łączy magazynowanie danych przedsiębiorstwa z analizą danych big data. Zapewnia swobodę wykonywania zapytań dotyczących danych na Twoich warunkach, korzystając z bezserwerowych zasobów na żądanie lub aprowizowanych zasobów — w dużej skali.
+  services: sql-data-warehouse
+  ms.service: sql-data-warehouse
+  ms.subservice: design
+  ms.topic: landing-page
+  ms.collection: collection
+  author: julieMSFT
+  ms.author: jrasnick
+  ms.date: 10/03/2019
+  ms.openlocfilehash: 36943d330d0bd97fe6139f5cfa19da571fc70835
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "80135678"
+landingContent:
+- title: Informacje o usłudze Azure Synapse Analytics
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest usługa Azure Synapse?
+      url: sql-data-warehouse-overview-what-is.md
+  - linkListType: architecture
+    links:
+    - text: Architektura usługi Azure Synapse
+      url: massively-parallel-processing-mpp-architecture.md
+    - text: Wskazówki i najlepsze rozwiązania
+      url: cheat-sheet.md
+    - text: Architektura referencyjna
+      url: https://docs.microsoft.com/azure/architecture/reference-architectures/data/enterprise-bi-synapse
+- title: Wprowadzenie
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Tworzenie puli SQL (magazyn danych)
+      url: create-data-warehouse-portal.md
+- title: Ładowanie danych
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Projektowanie strategii ładowania danych
+      url: design-elt-data-loading.md
+    - text: Najlepsze praktyki
+      url: guidance-for-loading-data.md
+  - linkListType: how-to-guide
+    links:
+    - text: Ładowanie danych z usługi Azure Data Lake Storage
+      url: sql-data-warehouse-load-from-azure-data-lake-store.md
+  - linkListType: tutorial
+    links:
+    - text: Ładowanie danych usługi Azure Blob Storage
+      url: load-data-from-azure-blob-storage-using-polybase.md
+- title: Dostosowywanie wydajności
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Najlepsze praktyki
+      url: sql-data-warehouse-best-practices.md
+    - text: Dostosowywanie uporządkowanego klastrowanego indeksu magazynu kolumn
+      url: performance-tuning-ordered-cci.md
+    - text: Używanie zmaterializowanego widoku na potrzeby dostosowywania obciążenia
+      url: performance-tuning-materialized-views.md
+  - linkListType: how-to-guide
+    links:
+    - text: Analizowanie obciążenia
+      url: analyze-your-workload.md
+- title: Zarządzanie i monitorowanie
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Dowiedz się, jak monitorować magazyn danych i zarządzać nim
+      url: sql-data-warehouse-overview-manageability-monitoring.md
+  - linkListType: how-to-guide
+    links:
+    - text: Monitor your workload using DMVs
+      url: sql-data-warehouse-manage-monitor.md
+    - text: Monitorowanie znaczenia obciążenia i zarządzanie nim
+      url: sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md
+- title: Zabezpieczanie magazynu danych
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Podstawowe informacje na temat zabezpieczania magazynu danych
+      url: sql-data-warehouse-overview-manage-security.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurowanie uwierzytelniania usługi Azure Active Directory
+      url: /azure/sql-database/sql-database-aad-authentication-configure?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+- title: Zasoby
+  linkLists:
+  - linkListType: video
+    links:
+    - text: Oglądanie najnowszych wideo dotyczących magazynu danych
+      url: sql-data-warehouse-videos.md

@@ -2,7 +2,7 @@
   items:
     - name: Informacje o portalu Cloud Partner
       href: ./cloud-partner-portal-what-is-the-cloud-partner-portal.md
-- name: Rozpoczęcie pracy
+- name: Wprowadzenie
   items:
     - name: Wprowadzenie do portalu Cloud Partner
       href: ./cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md
@@ -26,7 +26,7 @@
             - name: Formularz jednostek SKU
               href: './cloud-partner-portal-publish-virtual-machine.md#how-to-create-skus'
               items:
-                - name: Cennik
+                - name: Ceny
                   href: './cloud-partner-portal-publish-virtual-machine.md#pricing'
                 - name: Obrazy maszyn wirtualnych
                   href: 'cloud-partner-portal-publish-virtual-machine.md#vm-images'

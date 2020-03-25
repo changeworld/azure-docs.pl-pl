@@ -138,7 +138,7 @@
       items:
         - name: Integracja danych przy użyciu fabryki danych i udziału danych
           href: lab-data-flow-data-share.md
-- name: Samples
+- name: Przykłady
   items:
     - name: Przykłady kodu
       href: 'https://azure.microsoft.com/resources/samples/?service=data-factory'
@@ -280,7 +280,7 @@
           href: connector-greenplum.md
         - name: HBase
           href: connector-hbase.md
-        - name: SYSTEM PLIKÓW HDFS
+        - name: HDFS
           href: connector-hdfs.md
         - name: Hive
           href: connector-hive.md
@@ -372,7 +372,7 @@
           href: connector-shopify.md
         - name: platforma Spark
           href: connector-spark.md
-        - name: SQL Server
+        - name: Oprogramowanie SQL Server
           href: connector-sql-server.md
         - name: Square
           href: connector-square.md
@@ -537,7 +537,7 @@
           href: control-flow-system-variables.md
         - name: Parametryzacja przepływów mapowania danych
           href: parameters-data-flow.md
-    - name: Zabezpieczenia
+    - name: Bezpieczeństwo
       items:
         - name: Zagadnienia związane z zabezpieczeniami podczas przenoszenia danych
           href: data-movement-security-considerations.md
@@ -681,7 +681,7 @@
       href: data-flow-script.md
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.datafactory
-    - name: PowerShell
+    - name: Program PowerShell
       href: /powershell/module/az.datafactory/
     - name: Interfejs API REST
       href: /rest/api/datafactory
@@ -705,7 +705,7 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-data-factory'
     - name: Prośba o funkcję
       href: 'https://feedback.azure.com/forums/270578-azure-data-factory'
-    - name: Cennik
+    - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/data-factory/'
     - name: Dostępność według regionów
       href: 'https://azure.microsoft.com/global-infrastructure/services/'

@@ -72,13 +72,13 @@
           href: how-tos/set-up-coarse-reloc-cpp-ndk.md
         - name: W języku C++/WinRT
           href: how-tos/set-up-coarse-reloc-cpp-winrt.md
-- name: Samples
+- name: Przykłady
   items:
     - name: Przykłady dla usługi Azure Spatial Anchors (GitHub)
       href: 'https://github.com/Azure/azure-spatial-anchors-samples'
 - name: Pojęcia
   items:
-    - name: Authentication
+    - name: Uwierzytelnianie
       href: concepts/authentication.md
     - name: Relacje kotwic
       href: concepts/anchor-relationships-way-finding.md

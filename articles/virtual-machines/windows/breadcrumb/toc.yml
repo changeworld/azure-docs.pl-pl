@@ -6,7 +6,7 @@
       tocHref: /azure/active-directory/managed-identities-azure-resources/
       topicHref: /azure/virtual-machines/index
       items:
-        - name: Windows
+        - name: System Windows
           tocHref: /azure/active-directory/managed-identities-azure-resources/
           topicHref: /azure/virtual-machines/windows/index
     - name: Maszyny wirtualne

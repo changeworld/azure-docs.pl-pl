@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 8ebda9716df2e9e45050760ee8d0434c12838370
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199130"
 ---
 # <a name="tutorial-review-your-individual-azure-bill"></a>Samouczek: Przeglądanie indywidualnego rachunku za korzystanie z platformy Azure
@@ -120,7 +120,7 @@ Koszty pokazane w analizie kosztów powinny dokładnie odpowiadać kosztom *opł
 
 ![Fakturowanie opłat za użycie](./media/review-individual-bill/invoice-usage-charges.png)
 
-## <a name="external"></a>Usługi zewnętrzne rozliczane oddzielnie
+## <a name="external-services-billed-separately"></a><a name="external"></a>Usługi zewnętrzne rozliczane oddzielnie
 
 Opłaty za usługi zewnętrzne lub korzystanie z portalu Marketplace dotyczą zasobów utworzonych przez dostawców oprogramowania innych firm. Te zasoby są dostępne do użycia w portalu Azure Marketplace. Na przykład zapora Barracuda to zasób portalu Azure Marketplace oferowany przez inną firmę. Wszystkie opłaty za zaporę i odpowiadające jej mierniki są wyświetlane jako opłaty za usługi zewnętrzne.
 
@@ -149,7 +149,7 @@ Po utworzeniu maszyny wirtualnej każdy miernik rozpoczyna emitowanie rekordów 
 
 Liczniki, które zostały użyte do obliczenia rachunku, są pokazywane w pliku CSV użycia.
 
-## <a name="payment"></a>Płatność za rachunek
+## <a name="pay-your-bill"></a><a name="payment"></a>Płatność za rachunek
 
 W przypadku skonfigurowania karty kredytowej jako formy płatności opłata zostanie naliczona automatycznie w ciągu 10 dni od zakończenia okresu rozliczeniowego. Na wyciągu z karty kredytowej będzie to uwzględnione jako **MSFT Azure**.
 

@@ -11,10 +11,10 @@ metadata:
   ms.author: labrenne
   ms.date: 09/23/2019
   ms.openlocfilehash: d44ef419ec93e890ac1f8696d3ee45aadd3cd26f
-  ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 02/05/2020
+  ms.lasthandoff: 03/25/2020
   ms.locfileid: "77026068"
 landingContent:
 - title: Informacje o usłudze Azure Batch
@@ -27,13 +27,13 @@ landingContent:
     links:
     - text: Bezpłatne szkolenie wideo firmy PluralSight
       url: https://app.pluralsight.com/library/courses/microsoft-azure-batch-getting-started/table-of-contents
-- title: Rozpoczęcie pracy
+- title: Wprowadzenie
   linkLists:
   - linkListType: quickstart
     links:
     - text: Interfejs wiersza polecenia platformy Azure
       url: quick-create-cli.md
-    - text: Azure Portal
+    - text: Portal Azure
       url: quick-create-portal.md
     - text: Interfejs API .NET
       url: quick-run-dotnet.md
@@ -77,7 +77,7 @@ landingContent:
       url: batch-pool-vm-sizes.md
     - text: Limity przydziału i ograniczenia
       url: batch-quota-limit.md
-    - text: Najlepsze rozwiązania
+    - text: Najlepsze praktyki
       url: best-practices.md
 - title: Dokumentacja interfejsu API
   linkLists:

@@ -74,7 +74,7 @@
   items:
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/updates/'
-    - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
+    - name: Rozwijanie umiejętności dzięki Microsoft Learn
       href: /learn/browse/?products=azure-portal
     - name: Kalkulator cen
       href: 'https://azure.microsoft.com/pricing/calculator/'
