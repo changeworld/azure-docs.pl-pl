@@ -35,7 +35,7 @@ Zasięgu globalnym usługi ExpressRoute jest obecnie obsługiwane w następując
 * Kanada
 * Francja
 * Niemcy
-* Hongkong
+* SRA Hongkong
 * Irlandia
 * Japonia
 * Korea

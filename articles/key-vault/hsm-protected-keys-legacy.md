@@ -211,7 +211,7 @@ KeyVault-BYOK-Tools-France. zip
 5C9D1F3E4125B0C09E9F60897C9AE3A8B4CB0E7D13A14F3EDBD280128F8FE7DF
 
 ---
-**Wielka Brytania:**
+**Zjednoczone Królestwo:**
 
 KeyVault-BYOK-Tools-UnitedKingdom. zip
 

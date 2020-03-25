@@ -10,7 +10,7 @@ services: azure-maps
 manager: ''
 ms.openlocfilehash: 7821b0b76fb9be1b62aaf334b3c07aaff1d0021a
 ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/14/2020
 ms.locfileid: "77209549"
@@ -166,7 +166,7 @@ Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystk
 | Chiny                     |   | Ø |
 | Wyspy Kokosowe (Keelinga)   |   | Ø |
 | Koreańska Republika Ludowo-Demokratyczna |   | Ø |
-| Hongkong             | ✓ | ✓ |
+| SRA Hongkong             | ✓ | ✓ |
 | Indie                     | Ø | ✓ | 
 | Indonezja                 | ✓ | ✓ |
 | Iran                      |   | Ø |

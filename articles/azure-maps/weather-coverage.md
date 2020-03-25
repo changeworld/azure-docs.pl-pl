@@ -192,7 +192,7 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Polinezja Francuska                  | ✓ |   |  ✓| 
 | Guam                              | ✓ |   |  ✓| 
 | Wyspy Heard i McDonald | ✓ |   |  ✓| 
-| Hongkong                     | ✓ |   |  ✓| 
+| SRA Hongkong                     | ✓ |   |  ✓| 
 | Indie                             | ✓ |   |  ✓| 
 | Indonezja                         | ✓ |   |  ✓| 
 | Japonia                             | ✓ | ✓ |  ✓| 

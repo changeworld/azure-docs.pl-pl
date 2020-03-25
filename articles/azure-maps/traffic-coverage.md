@@ -43,7 +43,7 @@ Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystk
 |---------|:---------:|:---------:|
 |Australia     |✓         |✓        |
 |Brunei   |✓         |✓        |
-|Hongkong     |✓         |✓         |
+|SRA Hongkong     |✓         |✓         |
 |Indie   |✓         |✓         |
 |Indonezja     |✓         |✓         |
 |Kazachstan    |✓         |✓         |

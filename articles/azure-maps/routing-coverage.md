@@ -10,7 +10,7 @@ services: azure-maps
 manager: ''
 ms.openlocfilehash: b8b3dbf515aa3bcc9075a748b9d717cfa36b6ab0
 ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/27/2020
 ms.locfileid: "77648925"
@@ -135,7 +135,7 @@ Poniższa tabela zawiera informacje o pokryciu dotyczące Azure Maps routingu.
 | Kambodża                       |        ✓       |                      |             |
 | Fidżi                           |        ✓       |                      |             |
 | Guam                           |        ✓       |                      |             |
-| Hongkong                  |        ✓       |         ✓            |             |
+| SRA Hongkong                  |        ✓       |         ✓            |             |
 | Indie                          |        ✓       |         ✓            |             |
 | Indonezja                      |        ✓       |         ✓            |             |
 | Kazachstan                |        ✓       |                     |             |
@@ -190,7 +190,7 @@ Poniższa tabela zawiera informacje o pokryciu dotyczące Azure Maps routingu.
 | Liechtenstein                  |        ✓       |         ✓            |             |
 | Litwa                      |        ✓       |         ✓            |     ✓      | 
 | Luksemburg                     |        ✓       |         ✓            |     ✓      | 
-| Północna Macedonia                |        ✓       |                      |             |
+| Macedonia Północna                |        ✓       |                      |             |
 | Malta                          |        ✓       |         ✓            |             |
 | Mołdawia                        |        ✓       |                      |             |
 | Monaco                         |        ✓       |         ✓            |             |

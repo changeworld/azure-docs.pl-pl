@@ -105,7 +105,7 @@ Możliwość geokodowania w kraju/regionie jest zależna od pokrycia danych drog
 | Fidżi                                                |                  |                |              |      ✓     |          ✓        |
 | Polinezja Francuska                                    |                 |                |              |      ✓     |          ✓         |
 | Wyspy Heard i McDonald                   |                 |                |              |      ✓     |          ✓         |
-| Hongkong                                       |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| SRA Hongkong                                       |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Indonezja                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Indie                                               |        ✓        |        ✓       |       ✓      |      ✓     |                   |
 | Japonia                                               |                 |                |              |      ✓     |          ✓         |
@@ -186,7 +186,7 @@ Możliwość geokodowania w kraju/regionie jest zależna od pokrycia danych drog
 | Liechtenstein                                       |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Litwa                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Luksemburg                                          |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Północna Macedonia                                     |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Macedonia Północna                                     |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | M alta                                               |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Mołdawia                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Monaco                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |

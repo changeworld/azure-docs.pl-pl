@@ -64,7 +64,7 @@ Aby uzyskać listę kodów krajów/regionów, które można określić w `cc` pa
 |Szwajcaria|Francuski|FR-CH|
 |Francja|Francuski|fr-FR|  
 |Włochy|Włoski|IT-IT|
-|Hongkong|Chiński tradycyjny|zh-HK|  
+|SRA Hongkong|Chiński tradycyjny|zh-HK|  
 |Tajwan|Chiński tradycyjny|zh-TW|
 |Japonia|Japoński|ja-JP|  
 |Korea|Koreański|ko-KR|  
@@ -135,7 +135,7 @@ Poniżej znajdują się kody kraju/regionu, które można określić w parametrz
 |Finlandia|FI|  
 |Francja|PW|  
 |Niemcy|DE|  
-|Hongkong|HK|  
+|SRA Hongkong|HK|  
 |Indie|IN|  
 |Indonezja|ID|  
 |Włochy|IT|  

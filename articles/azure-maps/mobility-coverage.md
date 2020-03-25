@@ -56,7 +56,7 @@ Poniższa tabela zawiera informacje o zapotrzebowaniu dotyczące usługi mobilno
 |--------|---------|
 | Australia      | <p>Adelajda, Alicja sprężyny, Bowen, Brisbane, Bundaberg QLD, granie, Cairns, Canberra, Darwin, Gladstone, Hobart, Innisfail, Launceston, Mackay, Wyspa magnetyczna, Maryborough-Hervey Bay, Melbourne, Nowa Południowa Walia, Perth, RockHampton, Południowo-Wschodnia Queensland, Sydney, Toowoomba, Townsville, stan Wiktoria, Warwick, Yeppoon</p> |
 | Chiny | <p> Changchun, Changsha, Chengdu, Czungking, Dalian, Datong, Dongguan, Hangzhou, Jiangyin, Jinan, Nanjing, Nantong, Ningbo, Pingdingshan, Qingdao, Shenyang, Suzhou, Tangshan, Tianjin, Weifang, Wuhan, Wuxi, Yantai, Yixing, Zhuhai, Szanghaj Guangzhou, Shenzhen, Zhengzhou</P>| 
-| Hongkong | Hongkong SAR *|
+| SRA Hongkong | Hongkong SAR *|
 | SRA Makau | Makau SAR *|
 | Indie | Ahmedabad, Bengaluru, Delhi, Mumbaj, Mysuru, Pune|
 | Indonezja | Bandung, Banyuwangi, Batam, Denpasar, Dżakarta, Kediri, Malang, Palembang, Semarang, Surabaya, Surakarta, Yogyakarta |
