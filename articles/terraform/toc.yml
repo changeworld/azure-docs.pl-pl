@@ -59,7 +59,7 @@
               href: terraform-hub-spoke-spoke-network.md
             - name: 6. Weryfikowanie łączności dla topologii sieci
               href: terraform-hub-spoke-validation.md
-    - name: narzędzia
+    - name: Narzędzia
       items:
         - name: Instalowanie rozszerzenia Terraform dla programu Visual Studio Code
           href: terraform-vscode-extension.md
@@ -67,7 +67,7 @@
           href: terraform-vscode-module-generator.md
         - name: Testowanie modułów Terraform za pomocą platformy Terratest
           href: terratest-in-terraform-modules.md
-- name: Samples
+- name: Przykłady
   items:
     - name: Szablony konfiguracji
       href: 'https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples'

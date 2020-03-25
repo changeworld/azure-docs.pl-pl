@@ -87,13 +87,13 @@
           href: service-fabric-tutorial-standalone-install-an-application.md
         - name: 4 — Czyszczenie klastra i usuwanie infrastruktury
           href: service-fabric-tutorial-standalone-clean-up.md
-- name: Najlepsze rozwiązania
+- name: Najlepsze praktyki
   items:
     - name: Omówienie najlepszych rozwiązań usługi Service Fabric
       href: service-fabric-best-practices-overview.md
-    - name: Zabezpieczenia
+    - name: Bezpieczeństwo
       href: service-fabric-best-practices-security.md
-    - name: Networking
+    - name: Sieć
       href: service-fabric-best-practices-networking.md
     - name: Planowanie i skalowanie obliczeń
       href: service-fabric-best-practices-capacity-scaling.md
@@ -105,7 +105,7 @@
       href: service-fabric-best-practices-applications.md
     - name: Lista kontrolna gotowości do produkcji
       href: service-fabric-production-readiness-checklist.md
-- name: Samples
+- name: Przykłady
   items:
     - name: Przykłady kodu
       href: 'https://docs.microsoft.com/samples/browse/'
@@ -123,7 +123,7 @@
       href: service-fabric-application-scenarios.md
     - name: Architektura
       href: service-fabric-architecture.md
-    - name: Zabezpieczenia
+    - name: Bezpieczeństwo
       items:
         - name: Zabezpieczenia usługi Service Fabric
           href: service-fabric-best-practices-security.md
@@ -236,7 +236,7 @@
               items:
                 - name: Omówienie uaktualnienia aplikacji
                   href: service-fabric-application-upgrade.md
-                - name: Konfigurowanie
+                - name: Konfiguracja
                   href: service-fabric-visualstudio-configure-upgrade.md
                 - name: Parametry uaktualniania aplikacji
                   href: service-fabric-application-upgrade-parameters.md
@@ -316,8 +316,6 @@
               href: service-fabric-cluster-resource-manager-defragmentation-metrics.md
             - name: Równoważenie klastra
               href: service-fabric-cluster-resource-manager-balancing.md
-            - name: Tworzenie klastrów podrzędnych
-              href: service-fabric-cluster-resource-manager-subclustering.md
             - name: Ograniczanie przepływności
               href: service-fabric-cluster-resource-manager-advanced-throttling.md
             - name: Przenoszenie usług
@@ -364,7 +362,7 @@
   items:
     - name: Konfigurowanie środowiska projektowego
       items:
-        - name: Windows
+        - name: System Windows
           href: service-fabric-get-started.md
         - name: Linux
           href: service-fabric-get-started-linux.md
@@ -625,7 +623,7 @@
       items:
         - name: Klastry na platformie Azure
           items:
-            - name: Utwórz
+            - name: Tworzenie
               items:
                 - name: Planowanie wdrożenia klastra
                   href: service-fabric-cluster-azure-deployment-preparation.md
@@ -681,7 +679,7 @@
                   href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
         - name: Klastry autonomiczne
           items:
-            - name: Utwórz
+            - name: Tworzenie
               items:
                 - name: Tworzenie lokalnie
                   href: service-fabric-cluster-creation-for-windows-server.md
@@ -779,7 +777,7 @@
   items:
     - name: Azure PowerShell
       href: /powershell/module/az.servicefabric/
-    - name: PowerShell
+    - name: Program PowerShell
       href: /powershell/module/servicefabric/?view=azureservicefabricps
     - name: Interfejs wiersza polecenia platformy Azure (az sf)
       href: /cli/azure/sf
@@ -882,7 +880,7 @@
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureServiceFabric'
     - name: Zabezpieczenia dotyczące wdrażania usługi Azure Resource Manager
       href: service-fabric-azure-resource-manager-guardrails.md
-    - name: Cennik
+    - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/service-fabric/'
     - name: Kalkulator cen
       href: 'https://azure.microsoft.com/pricing/calculator/'

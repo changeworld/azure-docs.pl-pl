@@ -6,7 +6,7 @@
       tocHref: /azure/virtual-machines/
       topicHref: /azure/virtual-machines/
       items:
-        - name: Windows
+        - name: System Windows
           tocHref: /azure/virtual-machines/windows/
           topicHref: /azure/virtual-machines/windows/
           items:

@@ -14,7 +14,7 @@
       href: tutorial-create-custom-lab.md
     - name: 2. Dostęp do laboratorium
       href: tutorial-use-custom-lab.md
-- name: Samples
+- name: Przykłady
   items:
     - name: Szablony usługi Resource Manager
       href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates'
@@ -247,7 +247,7 @@
   items:
     - name: Interfejs wiersza polecenia
       href: /cli/azure/lab
-    - name: PowerShell
+    - name: Program PowerShell
       href: /powershell/module/az.devtestlabs
     - name: PowerShell — przykładowy moduł Az.DevTestLabs2
       href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library'
@@ -259,7 +259,7 @@
   items:
     - name: Aktualizacje platformy Azure
       href: 'https://azure.microsoft.com/updates/?product=devtest-lab'
-    - name: Cennik
+    - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/devtest-lab/'
     - name: Forum MSDN
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDevTestLabs'

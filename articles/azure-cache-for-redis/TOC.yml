@@ -23,7 +23,7 @@
   items:
     - name: Używanie buforowania z rankingami
       href: cache-web-app-cache-aside-leaderboard.md
-- name: Samples
+- name: Przykłady
   items:
     - name: Przykłady usługi Azure Cache for Redis
       href: cache-redis-samples.md
@@ -33,9 +33,13 @@
       href: cli-samples.md
 - name: Pojęcia
   items:
+    - name: Bezpieczeństwo
+      items:
+        - name: Punkt odniesienia zabezpieczeń
+          href: security-baseline.md
     - name: Tryb failover i stosowanie poprawek
       href: cache-failover.md
-    - name: Najlepsze rozwiązania
+    - name: Najlepsze praktyki
       href: cache-best-practices.md
     - name: Najlepsze rozwiązania architektury dotyczące buforowania
       href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
@@ -44,7 +48,7 @@
     - name: Planowanie
       items:
         - name: Wybieranie warstwy pamięci podręcznej
-          href: 'cache-faq.md#what-redis-cache-offering-and-size-should-i-use'
+          href: 'cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use'
         - name: Rozproszenie pamięci podręcznej przez zastosowanie klastrowania
           href: cache-how-to-premium-clustering.md
         - name: Trwałość pamięci podręcznej dzięki funkcji trwałości danych Redis
@@ -137,11 +141,11 @@
       href: /azure/templates/microsoft.cache/allversions
 - name: Zasoby
   items:
-    - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
+    - name: Rozwijanie umiejętności dzięki Microsoft Learn
       href: /learn/browse/?products=azure-redis-cache
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/?category=databases'
-    - name: Cennik
+    - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/cache/'
     - name: Azure Cache for Redis — często zadawane pytania
       href: cache-faq.md

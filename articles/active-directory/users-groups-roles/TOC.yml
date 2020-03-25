@@ -142,7 +142,7 @@
           href: licensing-ps-examples.md
         - name: Identyfikatory planów usług na potrzeby licencjonowania
           href: licensing-service-plan-reference.md
-    - name: Role administratora usługi Azure AD
+    - name: i role administratora usługi Azure AD
       items:
         - name: Role i uprawnienia
           href: directory-assign-admin-roles.md

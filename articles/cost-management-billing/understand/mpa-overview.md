@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 45dbf43966b71d7db7ada8be7704f6b3b37aab25
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199181"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>Wprowadzenie do konta rozliczeniowego w ramach Umowy partnerskiej firmy Microsoft
 
-Konto rozliczeniowe jest tworzone podczas rejestrowania się w celu korzystania z platformy Azure. Konta rozliczeniowego można używać do zarządzania fakturami i płatnościami oraz do śledzenia kosztów. Możesz mieć dostęp do wielu kont rozliczeniowych. Możesz na przykład zarejestrować się na platformie Azure, aby móc pracować nad projektami osobistymi. Dostęp do platformy Azure można również uzyskiwać w ramach zawartej przez organizację umowy Enterprise Agreement, Umowy klienta firmy Microsoft lub Umowy partnerskiej firmy Microsoft. W każdym z tych scenariuszy używane jest oddzielne konto rozliczeniowe.
+Konto rozliczeniowe jest tworzone podczas rejestrowania się w celu korzystania z platformy Azure. Konta rozliczeniowego można używać do zarządzania fakturami i płatnościami oraz do śledzenia kosztów. Możesz mieć dostęp do wielu kont rozliczeniowych. Możesz na przykład utworzyć konto platformy Azure w celu pracy z projektami osobistymi. Dostęp do platformy Azure można również uzyskiwać w ramach zawartej przez organizację umowy Enterprise Agreement, Umowy klienta firmy Microsoft lub Umowy partnerskiej firmy Microsoft. W każdym z tych scenariuszy używane jest oddzielne konto rozliczeniowe.
 
 Ten artykuł dotyczy kont rozliczeniowych dla umów partnerskich firmy Microsoft Te konta są tworzone dla dostawców rozwiązań w chmurze w celu zarządzania rozliczeniami dla klientów w nowym środowisku handlowym. To nowe środowisko jest dostępne tylko dla partnerów mających co najmniej jednego klienta, który zaakceptował umowę klienta firmy Microsoft i ma plan platformy Azure. [Sprawdź, czy masz dostęp do umowy partnerskiej firmy Microsoft](#check-access-to-a-microsoft-partner-agreement). [Plan platformy Azure](https://azure.microsoft.com/pricing/purchase-options/microsoft-customer-agreement/) zapewnia klientom dostęp do usług platformy Azure według stawek płatności zgodnie z rzeczywistym użyciem w ramach umowy klienta firmy Microsoft.
 
@@ -50,7 +50,7 @@ Zastosuj zasady, aby kontrolować, czy użytkownicy w organizacji klienta mogą 
 
 Aby włączyć zasady:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 
 1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 

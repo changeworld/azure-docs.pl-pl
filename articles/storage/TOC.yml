@@ -19,7 +19,7 @@
   href: ./tables/index.yml?toc=%2fazure%2fstorage%2ftables%2ftoc.json
 - name: Dyski
   items:
-    - name: Windows
+    - name: System Windows
       href: ../virtual-machines/windows/managed-disks-overview.md
     - name: Linux
       href: ../virtual-machines/linux/managed-disks-overview.md

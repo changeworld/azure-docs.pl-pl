@@ -113,15 +113,15 @@
           href: durable-functions-diagnostics.md
         - name: Monitorowanie
           href: ../functions-monitoring.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
-        - name: Cennik
+        - name: Ceny
           href: durable-functions-billing.md
 - name: Zasoby
   items:
-    - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
+    - name: Rozwijanie umiejętności dzięki Microsoft Learn
       href: /learn/browse/?products=azure-functions
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
-    - name: Cennik
+    - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/functions/'
     - name: Kalkulator cen
       href: 'https://azure.microsoft.com/pricing/calculator/'

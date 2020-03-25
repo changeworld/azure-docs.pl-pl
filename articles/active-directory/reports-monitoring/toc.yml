@@ -48,7 +48,7 @@
 - name: Przewodniki z instrukcjami
   expanded: true
   items:
-    - name: Raporty
+    - name: Reports
       items:
         - name: Znajdowanie raportów aktywności
           href: howto-find-activity-reports.md

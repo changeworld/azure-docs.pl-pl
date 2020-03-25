@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 12ad1f09c988171b0d6212d79ca61d93acf92d80
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199606"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Płatność za subskrypcje platformy Azure przy użyciu faktury
@@ -110,7 +110,7 @@ Postępuj zgodnie z poniższymi instrukcjami, aby przełączyć profil rozliczen
 
     ![Baner do przełączania na opcję płatności czekiem lub przelewem, Formy płatności, witryna Microsoft Azure Portal](./media/pay-by-invoice/customer-led-switch-to-invoice.png)
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>Sprawdzanie dostępu do umowy klienta firmy Microsoft
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>Sprawdzanie dostępu do Umowy klienta firmy Microsoft
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.

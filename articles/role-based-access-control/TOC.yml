@@ -44,7 +44,7 @@
       items:
         - name: Portal
           href: role-assignments-list-portal.md
-        - name: PowerShell
+        - name: Program PowerShell
           href: role-assignments-list-powershell.md
         - name: Interfejs wiersza polecenia
           href: role-assignments-list-cli.md
@@ -56,7 +56,7 @@
           href: role-assignments-portal.md
         - name: Portal — użytkownicy-goście
           href: role-assignments-external-users.md
-        - name: PowerShell
+        - name: Program PowerShell
           href: role-assignments-powershell.md
         - name: Interfejs wiersza polecenia platformy Azure
           href: role-assignments-cli.md
@@ -70,7 +70,7 @@
           href: deny-assignments.md
         - name: Portal
           href: deny-assignments-portal.md
-        - name: PowerShell
+        - name: Program PowerShell
           href: deny-assignments-powershell.md
         - name: Interfejs API REST
           href: deny-assignments-rest.md
@@ -80,7 +80,7 @@
           href: custom-roles.md
         - name: Portal
           href: custom-roles-portal.md
-        - name: PowerShell
+        - name: Program PowerShell
           href: custom-roles-powershell.md
         - name: Interfejs wiersza polecenia platformy Azure
           href: custom-roles-cli.md
@@ -117,5 +117,5 @@
           href: /azure/templates/microsoft.authorization/roledefinitions
 - name: Zasoby
   items:
-    - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
+    - name: Rozwijanie umiejętności dzięki Microsoft Learn
       href: /learn/browse/?products=azure-active-directory

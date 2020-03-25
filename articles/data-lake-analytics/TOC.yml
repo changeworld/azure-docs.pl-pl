@@ -4,9 +4,9 @@
   items:
     - name: Co to jest usługa Data Lake Analytics?
       href: data-lake-analytics-overview.md
-- name: Rozpoczęcie pracy
+- name: Wprowadzenie
   items:
-    - name: Portal Azure
+    - name: Portalu Azure
       href: data-lake-analytics-get-started-portal.md
     - name: Visual Studio
       href: data-lake-analytics-data-lake-tools-get-started.md
@@ -20,7 +20,7 @@
   items:
     - name: Zarządzanie usługą Data Lake Analytics
       items:
-        - name: Portal Azure
+        - name: Portalu Azure
           href: data-lake-analytics-manage-use-portal.md
         - name: Wiersz polecenia
           items:
@@ -158,7 +158,7 @@
       href: 'https://feedback.azure.com/forums/327234-data-lake'
     - name: Forum MSDN
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake'
-    - name: Cennik
+    - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/data-lake-analytics/'
     - name: Kalkulator cen
       href: 'https://azure.microsoft.com/pricing/calculator/'

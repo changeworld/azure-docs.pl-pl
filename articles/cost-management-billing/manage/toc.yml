@@ -83,11 +83,9 @@
       items:
         - name: Rozpoczynanie pracy w portalu umowy Enterprise Agreement platformy Azure
           href: ea-portal-get-started.md
-        - name: Opis zawartości rachunku EA
-          href: ../understand/review-enterprise-agreement-bill.md
         - name: Role umowy EA na platformie Azure
           href: understand-ea-roles.md
-        - name: Administracja przy użyciu witryny Azure EA Portal
+        - name: Administracja przy użyciu portalu umowy Enterprise Agreement
           href: ea-portal-administration.md
         - name: Zadania umowy EA w umowie klienta firmy Microsoft
           href: mca-enterprise-operations.md
@@ -99,7 +97,7 @@
           href: ea-portal-rest-apis.md
         - name: Wystąpienia zarezerwowane maszyn wirtualnych z umowami EA platformy Azure
           href: ea-portal-vm-reservations.md
-        - name: Rozwiązywanie problemów z dostępem do portalu Umowy Enterprise platformy Azure
+        - name: Rozwiązywanie problemów z dostępem do portalu umowy Enterprise Agreement platformy Azure
           href: ea-portal-troubleshoot.md
 - name: Rozwiązywanie problemów
   items:
@@ -117,7 +115,7 @@
       href: enterprise-mgmt-grp-troubleshoot-cost-view.md
     - name: Kontakt z pomocą techniczną
       href: ../../azure-portal/supportability/how-to-create-azure-support-request.md
-- name: Samples
+- name: Przykłady
   items:
     - name: Interfejs API REST
       items:

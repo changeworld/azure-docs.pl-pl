@@ -36,7 +36,7 @@
   items:
     - name: Dokumentacja interfejsu API REST
       href: 'https://go.microsoft.com/fwlink/?linkid=2089907'
-    - name: PowerShell
+    - name: Program PowerShell
       href: 'https://aka.ms/azure-powershell-cognitiveservices'
     - name: Interfejs wiersza polecenia platformy Azure
       href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'

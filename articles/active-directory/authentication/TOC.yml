@@ -140,7 +140,7 @@
           href: howto-authentication-passwordless-phone.md
         - name: Windows Hello dla firm
           href: 'https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification'
-    - name: Uwierzytelnianie oparte na certyfikacie
+    - name: Uwierzytelnianie oparte na certyfikatach
       items:
         - name: Wprowadzenie do uwierzytelniania certyfikatów
           href: active-directory-certificate-based-authentication-get-started.md
@@ -225,7 +225,7 @@
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
     - name: Forum MSDN
       href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
-    - name: Cennik
+    - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: Aktualizacje usług
       href: ../fundamentals/whats-new.md

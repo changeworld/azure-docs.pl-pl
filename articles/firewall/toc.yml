@@ -15,7 +15,7 @@
       href: tutorial-firewall-dnat.md
     - name: Monitorowanie dzienników diagnostycznych
       href: tutorial-diagnostics.md
-- name: Samples
+- name: Przykłady
   items:
     - name: Azure PowerShell
       href: sample-powershell.md
@@ -23,7 +23,7 @@
       href: log-analytics-samples.md
 - name: Pojęcia
   items:
-    - name: Tagi w pełni kwalifikowanych nazw domen
+    - name: Tagi FQDN
       href: fqdn-tags.md
     - name: Infrastrukturalne nazwy FQDN
       href: infrastructure-fqdns.md
@@ -93,7 +93,7 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Szablony społeczności
       href: 'https://azure.microsoft.com/documentation/templates'
-    - name: Cennik
+    - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/azure-firewall/'
     - name: Dostępność regionalna
       href: 'https://azure.microsoft.com/regions/services/'

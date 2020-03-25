@@ -1,5 +1,5 @@
 ---
-title: Azure — limit wydatków | Microsoft Docs
+title: Azure — limit wydatków
 description: W tym artykule pokazano, jak działa limit wydatków platformy Azure oraz jak go usunąć.
 author: bandersmsft
 ms.reviewer: judupont
@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: ef1ed399f2ed3401612543b3dcaf94dfbafb6715
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 6feac116c92f8dac7bd1dde2084f9b25f5e559f8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361022"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238061"
 ---
 # <a name="azure-spending-limit"></a>Azure — limit wydatków
 
@@ -67,7 +67,7 @@ Jeśli masz bezpłatne konto platformy Azure, zapoznaj się z artykułem [Podwy�
 
 1. Kliknij pozycję **Wybierz formę płatności**, aby wybrać formę płatności dla subskrypcji. Stanie się ona aktywną formą płatności dla danej subskrypcji.
 
-1. Kliknij przycisk **Zakończ**.
+1. Kliknij przycisk **Finish** (Zakończ).
 
 
 ## <a name="why-you-might-want-to-remove-the-spending-limit"></a>Dlaczego warto usunąć limit wydatków

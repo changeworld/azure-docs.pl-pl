@@ -1,20 +1,20 @@
 ---
-title: Dodawanie metryk rozszerzonych dla maszyn wirtualnych platformy Azure | Microsoft Docs
+title: Dodawanie metryk rozszerzonych dla maszyn wirtualnych platformy Azure
 description: Ten artykuł omawia włączanie i konfigurowanie metryk rozszerzonych diagnostyki dla maszyn wirtualnych platformy Azure.
-keywords: ''
 author: bandersmsft
 ms.reviewer: vitavor
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.custom: seodec18
-ms.openlocfilehash: 84a9d6aa6203b8a518b0e33bed0ec2707c4389a1
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ROBOTS: NOINDEX
+ms.openlocfilehash: b4c646f3d42edc39f457cd735f16409f4ef05d2c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082918"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79481623"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Dodawanie metryk rozszerzonych dla maszyn wirtualnych platformy Azure
 
@@ -30,7 +30,9 @@ Włączenie zbierania metryk umożliwia:
 Na przykład można monitorować procent użycia procesora i pamięci dla maszyn wirtualnych platformy Azure. Metryki maszyny wirtualnej platformy Azure odpowiadają wartościom _Procent użycia procesora CPU_ i _\Pamięć\% Zadeklarowane bajty w użyciu_.
 
 > [!NOTE]
-> Zbieranie danych metryk rozszerzonych jest obsługiwane tylko w przypadku monitorowania na poziomie gościa platformy Azure. Usługa Cloudyn nie jest zgodna z [agentem usługi Log Analytics](../../azure-monitor/platform/agents-overview.md). 
+> Zbieranie danych metryk rozszerzonych jest obsługiwane tylko w przypadku monitorowania na poziomie gościa platformy Azure. Usługa Cloudyn nie jest zgodna z [agentem usługi Log Analytics](../../azure-monitor/platform/agents-overview.md).
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="determine-whether-extended-metrics-are-enabled"></a>Określanie, czy metryki rozszerzone są włączone
 

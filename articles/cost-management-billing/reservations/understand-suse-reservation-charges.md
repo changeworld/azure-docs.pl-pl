@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 9979ced6d5bd71dd1a42d19c222111a76ed18428
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200235"
 ---
 # <a name="azure-software-plan-discount"></a>Rabat za plan oprogramowania na platformie Azure
@@ -22,7 +22,7 @@ Po zamknięciu maszyny wirtualnej rabat zostanie automatycznie zastosowany do in
 
 Aby kupić właściwy plan, musisz wiedzieć, jakich maszyn wirtualnych używasz i ile procesorów wirtualnych mają te maszyny wirtualne. Informacje w poniższych sekcjach pomogą Ci określić, jaki plan należy kupić, na podstawie danych o użyciu.
 
-## <a name="how-reservation-discount-is-applied"></a>Jak jest naliczany rabat za rezerwację
+## <a name="how-reservation-discount-is-applied"></a>Jak jest stosowany rabat na rezerwacje
 
 Rabat na rezerwację jest dostępny na zasadzie „*wykorzystaj lub strać*”. Zatem jeśli w ciągu jakiejś godziny nie będziesz mieć pasujących zasobów, utracisz ilość rezerwacji dla tej godziny. Niewykorzystanych godzin zarezerwowanych nie można przenieść na później.
 

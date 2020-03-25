@@ -40,7 +40,7 @@
       items:
         - name: Blog firmy Chef Software
           href: 'https://blog.chef.io/'
-- name: narzędzia
+- name: Narzędzia
   items:
     - name: Rozszerzenie Chef dla usługi Azure DevOps Services
       href: 'https://marketplace.visualstudio.com/items?itemName=chef-software.vsts-chef-tasks'

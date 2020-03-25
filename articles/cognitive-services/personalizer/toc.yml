@@ -71,7 +71,7 @@
       href: how-to-offline-evaluation.md
 - name: Dokumentacja
   items:
-    - name: Samples
+    - name: Przykłady
       href: 'https://go.microsoft.com/fwlink/?linkid=2092083'
     - name: Dokumentacja interfejsu API REST
       href: 'https://go.microsoft.com/fwlink/?linkid=2092082'
@@ -107,9 +107,11 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Zgodność
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Szyfrowanie
+      href: personalizer-encryption-of-data-at-rest.md
     - name: Harmonogram działania dla platformy Azure
       href: 'https://go.microsoft.com/fwlink/?linkid=2092153'
-    - name: Cennik
+    - name: Ceny
       href: 'https://go.microsoft.com/fwlink/?linkid=2092154'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/personalizer'

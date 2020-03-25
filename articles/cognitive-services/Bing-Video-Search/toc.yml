@@ -86,7 +86,7 @@
       maintainContext: true
 - name: Zasoby
   items:
-    - name: Cennik
+    - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/search-api/video/'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/911452-bing-video-search-api'

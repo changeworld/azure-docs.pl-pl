@@ -2,7 +2,7 @@
   items:
     - name: Monitorowanie agentów
       href: ../monitoring/index.md
-- name: Rozpoczęcie pracy
+- name: Wprowadzenie
   items:
     - name: Dzienniki usługi Azure Monitor
       href: ../log-analytics/log-analytics-get-started.md

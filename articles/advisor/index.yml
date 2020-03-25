@@ -9,10 +9,10 @@ metadata:
   ms.author: robb
   ms.date: 10/16/2019
   ms.openlocfilehash: e7cf35654bec7302423a62e66a39651ad1745651
-  ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 01/09/2020
+  ms.lasthandoff: 03/24/2020
   ms.locfileid: "75768660"
 landingContent:
 - title: Informacje o usłudze Azure Advisor
@@ -25,7 +25,7 @@ landingContent:
     links:
     - text: Wideo dotyczące usługi Azure Advisor
       url: https://azure.microsoft.com/resources/videos/index/?services=advisor
-- title: Rozpoczęcie pracy
+- title: Wprowadzenie
   linkLists:
   - linkListType: get-started
     links:
@@ -37,7 +37,7 @@ landingContent:
     links:
     - text: Wspólny interfejs języka (CLI)
       url: /cli/azure/advisor?view=azure-cli-latest
-    - text: PowerShell
+    - text: Program PowerShell
       url: /powershell/module/az.advisor/?view=azps-1.2.0
     - text: Interfejs API REST
       url: /rest/api/advisor/

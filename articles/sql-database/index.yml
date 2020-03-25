@@ -14,10 +14,10 @@ metadata:
   ms.author: sstein
   ms.date: 10/30/2019
   ms.openlocfilehash: c327873d3b122a60239cabc4534e2feec31b9091
-  ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 11/08/2019
+  ms.lasthandoff: 03/25/2020
   ms.locfileid: "73820589"
 landingContent:
 - title: Informacje o usłudze SQL Database
@@ -52,7 +52,7 @@ landingContent:
       url: sql-database-managed-instance-index.yml
     - text: Pule wystąpień
       url: sql-database-instance-pools.md
-- title: Rozpoczęcie pracy
+- title: Wprowadzenie
   linkLists:
   - linkListType: quickstart
     links:
@@ -84,7 +84,7 @@ landingContent:
     links:
     - text: Interfejs wiersza polecenia platformy Azure
       url: https://docs.microsoft.com/cli/azure/sql
-    - text: PowerShell
+    - text: Program PowerShell
       url: https://docs.microsoft.com/powershell/module/az.sql
     - text: Interfejs API REST
       url: https://docs.microsoft.com/rest/api/sql/
@@ -134,7 +134,7 @@ landingContent:
     links:
     - text: Interfejs wiersza polecenia platformy Azure
       url: https://docs.microsoft.com/cli/azure/sql
-    - text: PowerShell
+    - text: Program PowerShell
       url: https://docs.microsoft.com/powershell/module/az.sql
     - text: Interfejs API REST
       url: https://docs.microsoft.com/rest/api/sql/

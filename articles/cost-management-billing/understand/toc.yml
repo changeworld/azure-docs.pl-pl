@@ -9,6 +9,8 @@
           href: review-customer-agreement-bill.md
         - name: Przeglądanie rachunku dla umowy Microsoft Partner Agreement
           href: review-partner-agreement-bill.md
+        - name: Przeglądanie rachunku umowy Enterprise Agreement
+          href: review-enterprise-agreement-bill.md
     - name: Pojęcia
       items:
         - name: Terminy dotyczące użycia pojedynczych subskrypcji

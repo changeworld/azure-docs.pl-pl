@@ -52,7 +52,7 @@ sections:
           - title: Migracja bez przestojów
             href: /azure/dms/tutorial-sql-server-to-managed-instance
             html: <p>Migracja floty baz danych przy minimalnym przestoju przy użyciu usługi Database Migration Service.</p>
-          - title: Cennik
+          - title: Ceny
             href: 'https://azure.microsoft.com/pricing/hybrid-benefit/'
             html: <p>Zaoszczędź do 40% dzięki korzyści użycia hybrydowego platformy Azure (AHB) za pomocą istniejących licencji lokalnych.</p>
           - title: Możliwości usługi PaaS
@@ -76,7 +76,7 @@ sections:
             title: Interfejs wiersza polecenia platformy Azure
           - image:
               src: media/index/logo_powershell.svg
-            title: PowerShell
+            title: Program PowerShell
           - image:
               src: media/index/logo_arm.svg
             title: Szablon usługi Azure Resource Manager

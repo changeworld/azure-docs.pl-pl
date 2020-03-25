@@ -65,7 +65,7 @@
   items:
     - name: Interfejs wiersza polecenia platformy Azure
       href: /cli/azure/acs
-    - name: PowerShell
+    - name: Program PowerShell
       href: /powershell/module/az.compute
     - name: REST
       href: /rest/api/container-service
@@ -77,7 +77,7 @@
       href: container-service-faq.md
     - name: Szablony — aparat ACS
       href: 'https://github.com/Azure/acs-engine'
-    - name: Cennik
+    - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/container-service/'
     - name: Dostępność w danym regionie
       href: 'https://azure.microsoft.com/regions/services/'

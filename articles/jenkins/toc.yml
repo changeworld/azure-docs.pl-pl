@@ -61,7 +61,7 @@
   items:
     - name: Korzystanie z wtyczki usługi Azure App Service
       href: deploy-jenkins-app-service-plugin.md
-- name: Samples
+- name: Przykłady
   items:
     - name: Przykładowe zadania i skrypty
       href: 'https://github.com/azure/jenkins'

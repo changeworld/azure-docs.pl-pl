@@ -59,7 +59,7 @@
           href: ./ansible-service-bus-queue-configure.md
         - name: Konfigurowanie tematów
           href: ./ansible-service-bus-topic-configure.md
-    - name: baza danych
+    - name: Baza danych
       items:
         - name: Konfigurowanie usługi Azure Database for MySQL
           href: ./ansible-create-configure-mysql.md
@@ -93,7 +93,7 @@
           href: ./ansible-vnet-peering-configure.md
         - name: Konfigurowanie tabel tras
           href: ./ansible-create-configure-route-table.md
-- name: Samples
+- name: Przykłady
   items:
     - name: Laboratoria Ansible dla platformy Azure
       href: 'https://github.com/microsoft/ansiblelabs'
@@ -111,7 +111,7 @@
       href: ./ansible-matrix.md
     - name: Wszystkie moduły dla platformy Azure
       href: 'https://docs.ansible.com/ansible/latest/modules/list_of_cloud_modules#azure'
-- name: narzędzia
+- name: Zasoby
   items:
     - name: Rozszerzenie programu Visual Studio Code dla rozwiązania Ansible
       href: 'https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible'

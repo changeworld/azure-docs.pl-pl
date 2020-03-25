@@ -14,7 +14,7 @@
       href: app-service-mobile-cordova-get-started.md
     - name: iOS
       href: app-service-mobile-ios-get-started.md
-    - name: Windows
+    - name: System Windows
       href: app-service-mobile-windows-store-dotnet-get-started.md
     - name: Xamarin.Android
       href: app-service-mobile-xamarin-android-get-started.md
@@ -22,7 +22,7 @@
       href: app-service-mobile-xamarin-forms-get-started.md
     - name: Xamarin.iOS
       href: app-service-mobile-xamarin-ios-get-started.md
-- name: Instrukcje
+- name: Przewodniki z instrukcjami
   items:
     - name: Planowanie i projektowanie
       items:
@@ -74,7 +74,7 @@
               href: app-service-mobile-ios-get-started-push.md
             - name: Praca z zestawem SDK klienta
               href: app-service-mobile-ios-how-to-use-client-library.md
-        - name: Windows
+        - name: System Windows
           items:
             - name: Włączanie synchronizacji offline
               href: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
@@ -172,7 +172,7 @@
         - name: Azure Virtual Network
           href: ../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
         - name: Grupy zasobów
-          href: '../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json#app-service-limitations'
+          href: ../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
           items:
             - name: Uruchamianie zadań w tle za pomocą zadań WebJob
               href: ../app-service/webjobs-create.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
@@ -261,19 +261,17 @@
       href: 'https://azure.github.io/azure-mobile-apps-js-client/'
     - name: Zestaw SDK klienta oprogramowania Windows/Xamarin
       href: 'https://msdn.microsoft.com/library/azure/mt419521.aspx'
-- name: Powiązane
+- name: Zasoby
   items:
     - name: Repozytoria usługi GitHub
       href: 'https://github.com/Azure/azure-mobile-apps'
-- name: Zasoby
-  items:
     - name: Najlepsze praktyki związane z usługą App Service
       href: ../app-service/app-service-best-practices.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Forum MSDN
       href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=azuremobile'
-    - name: Cennik
+    - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/app-service/'
     - name: Kalkulator cen
       href: 'https://azure.microsoft.com/pricing/calculator/'
@@ -283,7 +281,7 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-mobile-services'
     - name: Filmy wideo
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=mobile-services'
-    - name: Samples
+    - name: Przykłady
       items:
         - name: Field Engineer
           href: 'https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-fieldengineer/'
@@ -295,7 +293,7 @@
               href: 'https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-backend-quickstart/'
             - name: Zaplecze środowiska Node.js
               href: 'https://azure.microsoft.com/resources/samples/app-service-mobile-nodejs-backend-quickstart/'
-            - name: Windows
+            - name: System Windows
               href: 'https://azure.microsoft.com/resources/samples/app-service-mobile-windows-quickstart/'
             - name: Xamarin.Android
               href: 'https://azure.microsoft.com/resources/samples/app-service-mobile-xamarin-android-quickstart/'

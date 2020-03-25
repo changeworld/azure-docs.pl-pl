@@ -79,7 +79,7 @@
           href: dns-alias-appservice.md
         - name: Zarządzanie strefami DNS
           items:
-            - name: Azure Portal
+            - name: Portalu Azure
               href: dns-operations-dnszones-portal.md
             - name: Azure PowerShell
               href: dns-operations-dnszones.md
@@ -87,7 +87,7 @@
               href: dns-operations-dnszones-cli.md
         - name: Zarządzanie rekordami DNS
           items:
-            - name: Azure Portal
+            - name: Portalu Azure
               href: dns-operations-recordsets-portal.md
             - name: Azure PowerShell
               href: dns-operations-recordsets.md
@@ -157,22 +157,6 @@
           href: /dotnet/api/overview/azure/privatedns/management
         - name: REST
           href: /rest/api/dns/privatedns/privatezones
-- name: Powiązane
-  items:
-    - name: Link prywatny
-      href: ../private-link/private-link-overview.md
-    - name: Application Gateway
-      href: /azure/application-gateway/
-    - name: Virtual Network
-      href: /azure/virtual-network/
-    - name: Maszyna wirtualna
-      href: /azure/virtual-machines/
-    - name: Moduł równoważenia obciążenia
-      href: /azure/load-balancer/
-    - name: Traffic Manager
-      href: /azure/traffic-manager/
-    - name: Aplikacje internetowe
-      href: /azure/app-service/
 - name: Zasoby
   items:
     - name: Harmonogram działania dla platformy Azure
@@ -183,7 +167,7 @@
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork'
     - name: Blog na temat sieci
       href: 'https://azure.microsoft.com/blog/topics/networking'
-    - name: Cennik
+    - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/dns/'
     - name: Kalkulator cen
       href: 'https://azure.microsoft.com/pricing/calculator/'

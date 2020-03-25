@@ -35,7 +35,7 @@
       href: api-management-get-started-publish-versions.md
     - name: 9 — Dostosowywanie portalu deweloperów
       href: api-management-howto-developer-portal-customize.md
-- name: Samples
+- name: Przykłady
   items:
     - name: Zasady
       href: policy-samples.md
@@ -51,7 +51,7 @@
           href: api-management-howto-policies.md
         - name: Informacje ogólne o zasadach — indeks
           href: api-management-policies.md
-    - name: Zabezpieczenia
+    - name: Bezpieczeństwo
       items:
         - name: Wbudowane mechanizmy zabezpieczeń
           href: api-management-security-controls.md
@@ -249,7 +249,7 @@
   items:
     - name: Często zadawane pytania
       href: api-management-faq.md
-    - name: Cennik
+    - name: Ceny
       href: 'https://aka.ms/apimpricing'
     - name: Dostępność regionalna
       href: 'https://azure.microsoft.com/regions/services/'

@@ -79,7 +79,7 @@
       href: /azure/templates/microsoft.netapp/allversions
 - name: Zasoby
   items:
-    - name: Cennik
+    - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/netapp/'
     - name: Dostępność regionalna
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=netapp'

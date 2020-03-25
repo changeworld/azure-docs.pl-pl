@@ -16,7 +16,7 @@
   items:
     - name: Interfejs wiersza polecenia platformy Azure
       href: /cli/azure/
-    - name: PowerShell
+    - name: Program PowerShell
       href: /powershell/azure/overview
     - name: T-SQL
       href: 'https://msdn.microsoft.com/library/azure/bb510741.aspx'
@@ -30,7 +30,7 @@
       href: sql-server-linux-faq.md
     - name: Dokumentacja programu SQL Server w systemie Linux
       href: 'https://docs.microsoft.com/sql/linux/sql-server-linux-overview'
-    - name: Cennik
+    - name: Ceny
       href: ../../windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2fsql%2ftoc.json
     - name: PaaS czy IaaS?
       href: ../../../sql-database/sql-database-paas-vs-sql-server-iaas.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsql%2ftoc.json

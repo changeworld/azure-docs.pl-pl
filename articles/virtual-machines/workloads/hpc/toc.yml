@@ -4,7 +4,7 @@
       items:
         - name: HPC dla maszyn wirtualnych z serii H
           href: overview.md
-    - name: Konfigurowanie
+    - name: Konfiguracja
       items:
         - name: Optymalizacja na potrzeby systemu Linux
           href: configure.md

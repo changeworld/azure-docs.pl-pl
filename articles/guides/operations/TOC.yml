@@ -14,7 +14,7 @@
           items:
             - name: Tworzenie sieci wirtualnej przy użyciu witryny Azure Portal
               href: ../../virtual-network/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
-        - name: Zabezpieczenia
+        - name: Bezpieczeństwo
           items:
             - name: Zarządzanie zasobami za pomocą przypisań ról
               href: ../../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json

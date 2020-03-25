@@ -10,10 +10,10 @@ ms.date: 02/24/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7955e9bc75b2a27ac42d381df1e686ec8a0ed04b
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77587815"
 ---
 # <a name="understand-your-azure-external-services-charges"></a>Informacje o opłatach za usługi zewnętrzne na platformie Azure
@@ -59,7 +59,7 @@ Opłaty za zakupy w witrynie Azure Marketplace są pokazywane w lokalnej walucie
 
 Możesz wyświetlać i pobierać faktury za usługi z platformy Azure Marketplace w witrynie Azure Portal, wykonując następujące czynności:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 1. W menu po lewej stronie wybierz pozycję **Faktury**.
 1. Za listy rozwijanej subskrypcji wybierz subskrypcję skojarzoną z usługami witryny Marketplace.
@@ -104,7 +104,7 @@ Jeśli nie masz umowy klienta firmy Microsoft ani umowy MPA, możesz opłacić s
 
 Podczas zakupu usługi zewnętrznej należy wybrać subskrypcję platformy Azure, w której zostaną utworzone jej zasoby. Metoda płatności skojarzona z wybraną subskrypcją platformy Azure zostanie użyta do płatności za usługę zewnętrzną. Aby zmienić metodę płatności za usługę zewnętrzną, należy [zmienić metodę płatności za subskrypcję platformy Azure ](../manage/change-credit-card.md) powiązaną z tą usługą zewnętrzną. Aby określić, z którą subskrypcją jest powiązane zamówienie usługi zewnętrznej, wykonaj następujące czynności:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. Kliknij pozycję **Wszystkie zasoby** w menu nawigacji po lewej stronie.
      ![Zrzut ekranu przedstawiający element menu Wszystkie zasoby](./media/understand-azure-marketplace-charges/all-resources.png)
 1. Wyszukaj usługę zewnętrzną.
@@ -116,7 +116,7 @@ Podczas zakupu usługi zewnętrznej należy wybrać subskrypcję platformy Azure
 
 Jeśli chcesz anulować zamówienie usługi zewnętrznej, usuń odpowiedni zasób w witrynie [Azure Portal](https://portal.azure.com).
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. Kliknij pozycję **Wszystkie zasoby** w menu nawigacji po lewej stronie.
     ![Zrzut ekranu przedstawiający element menu Wszystkie zasoby](./media/understand-azure-marketplace-charges/all-resources.png)
 1. Wyszukaj usługę zewnętrzną.

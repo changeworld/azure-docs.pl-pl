@@ -13,10 +13,10 @@ metadata:
   ms.author: normesta
   ms.date: 08/20/2019
   ms.openlocfilehash: f937c88b70e60b7613cc08ba9d3f91748e3f0bd2
-  ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 01/15/2020
+  ms.lasthandoff: 03/25/2020
   ms.locfileid: "75981857"
 landingContent:
 - title: Informacje o usłudze Blob Storage
@@ -25,7 +25,7 @@ landingContent:
     links:
     - text: Co to jest Azure Blob Storage?
       url: storage-blobs-overview.md
-- title: Rozpoczęcie pracy
+- title: Wprowadzenie
   linkLists:
   - linkListType: quickstart
     links:
@@ -71,7 +71,7 @@ landingContent:
       url: data-lake-storage-data-scenarios.md
     - text: Dostęp za pomocą wielu protokołów
       url: data-lake-storage-multi-protocol-access.md
-    - text: Najlepsze rozwiązania
+    - text: Najlepsze praktyki
       url: data-lake-storage-best-practices.md
   - linkListType: tutorial
     links:

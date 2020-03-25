@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 1003e26fa670a804328d5e34def7c9d78eced9c0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78344162"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238044"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Omówienie ról administracyjnych dla umowy klienta firmy Microsoft na platformie Azure
 
 Aby zarządzać kontem rozliczeniowym dla umowy klienta firmy Microsoft, użyj ról opisanych w poniższych sekcjach. Te role są dodatkiem do wbudowanych ról platformy Azure, które umożliwiają kontrolowanie dostępu do zasobów. Aby uzyskać więcej informacji, zobacz temat [Wbudowane role dla zasobów platformy Azure](../../role-based-access-control/built-in-roles.md).
 
-Ten artykuł dotyczy konta rozliczeniowego związanego z umową klienta firmy Microsoft. Sprawdź, czy masz dostęp do umowy klienta firmy Microsoft.
+Ten artykuł dotyczy konta rozliczeniowego w ramach Umowy klienta firmy Microsoft. Sprawdź, czy masz dostęp do umowy klienta firmy Microsoft.
 
 ## <a name="billing-role-definitions"></a>Definicje ról rozliczeniowych
 
@@ -34,7 +34,7 @@ W poniższej tabeli opisano role rozliczeniowe używane do zarządzania kontem r
 |Menedżer faktur|Wyświetla i reguluje faktury dla profilu rozliczeniowego|
 |Właściciel sekcji faktury|Zarządza wszystkimi elementami w sekcji faktury|
 |Współautor sekcji faktury|Zarządza wszystkimi elementami z wyjątkiem uprawnień w sekcji faktury|
-|Czytelnik sekcji faktury|Ma widok tylko do odczytu wszystkich elementów w sekcji faktury|
+|Czytelnik sekcji faktury|Widok tylko do odczytu wszystkich elementów w sekcji faktur|
 |Twórca subskrypcji platformy Azure|Tworzy subskrypcje platformy Azure|
 
 ## <a name="billing-account-roles-and-tasks"></a>Role i zadania konta rozliczeniowego
@@ -176,7 +176,7 @@ W poniższej tabeli przedstawiono, jaką należy mieć rolę, aby móc wykonywa�
 
 ## <a name="manage-billing-roles-in-the-azure-portal"></a>Zarządzanie rolami rozliczeniowymi w witrynie Azure Portal
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 
 2. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 
@@ -196,7 +196,7 @@ W poniższej tabeli przedstawiono, jaką należy mieć rolę, aby móc wykonywa�
 
    ![Zrzut ekranu przedstawiający usuwanie administratora konta rozliczeniowego](./media/understand-mca-roles/billing-remove-admin.png)
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>Sprawdzanie dostępu do umowy klienta firmy Microsoft
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>Sprawdzanie dostępu do Umowy klienta firmy Microsoft
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Kontakt z pomocą techniczną

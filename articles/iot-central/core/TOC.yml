@@ -127,8 +127,10 @@
               href: howto-manage-preferences.md
             - name: Przełączanie czatu na żywo
               href: howto-show-hide-chat.md
-- name: Powiązane
+- name: Zasoby
   items:
+    - name: Opcje wsparcia technicznego i pomocy
+      href: /azure/iot-fundamentals/iot-support-help
     - name: Szablony aplikacji branżowych
       items:
         - name: Sprzedaż detaliczna
@@ -139,30 +141,30 @@
           href: ../government/overview-iot-central-government.md
         - name: Opieka zdrowotna
           href: ../healthcare/overview-iot-central-healthcare.md
-    - name: Usługi platformy
+    - name: Usługi Azure IoT
       items:
         - name: Usługa IoT Hub
           href: /azure/iot-hub
-        - name: IoT Plug and Play
-          href: /azure/iot-pnp
         - name: Usługa IoT Hub Device Provisioning
           href: /azure/iot-dps
-        - name: Zestawy SDK usługi IoT
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: Maps
+        - name: IoT Central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: Akceleratory rozwiązań IoT
+          href: /azure/iot-accelerators
+        - name: IoT Plug and Play
+          href: /azure/iot-pnp
+        - name: Azure Maps
           href: /azure/azure-maps
         - name: Time Series Insights
           href: /azure/time-series-insights
-    - name: Rozwiązania brzegowe
+    - name: Zestawy SDK usługi Azure IoT
       items:
-        - name: Azure IoT Edge
-          href: /azure/iot-edge
+        - name: Zestawy SDK usługi IoT
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: Zestawy SDK urządzeń IoT
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
-- name: Zasoby
-  items:
-    - name: Opcje wsparcia technicznego i pomocy
-      href: /azure/iot-fundamentals/iot-support-help
     - name: Dokumentacja interfejsu API usługi IoT Central
       href: 'https://docs.microsoft.com/rest/api/iotcentral/'
     - name: Żądania danych klienta

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 5c9d9074e4b8d0d9e36417daee4d58c1d9b28b64
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199249"
 ---
 # <a name="view-azure-reservations-in-the-azure-portal"></a>Wyświetlanie rezerwacji platformy Azure w witrynie Azure Portal
@@ -26,7 +26,7 @@ Aby uzyskać więcej informacji, zobacz [Dodawanie lub zmienianie użytkowników
 
 Aby wyświetlić rezerwację jako właściciel lub czytelnik:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 2. Wyszukaj **Rezerwacje**.
     ![Zrzut ekranu przedstawiający wyszukiwanie w witrynie Azure Portal](./media/view-reservations/portal-reservation-search.png)  
 3. Lista zawiera wszystkie rezerwacje, w których masz rolę właściciela lub czytelnika. Dla każdej rezerwacji pokazany jest ostatni znany procent użycia.  
@@ -43,7 +43,7 @@ Jeśli chcesz zmienić zakres rezerwacji, podzielić rezerwację lub zmienić os
 
 Aby wyświetlić transakcje rezerwacji w witrynie Azure Portal:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 
     ![Zrzut ekranu przedstawiający wyszukiwanie w witrynie Azure Portal](./media/view-reservations/portal-cm-billing-search.png)

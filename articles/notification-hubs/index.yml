@@ -48,7 +48,7 @@ sections:
           - html: '<a href="https://github.com/Azure/azure-notificationhubs-ios">Zestaw SDK systemu iOS</a>'
           - html: '<a href="https://github.com/Azure/azure-notificationhubs-dotnet">Zestaw SDK platformy .NET</a>'
           - html: '<a href="https://github.com/Azure/azure-notificationhubs-samples">Repozytorium przykładów (inne platformy)</a>'
-          - html: <a href="/azure/notification-hubs/samples-powershell">Program PowerShell</a>
+          - html: <a href="/azure/notification-hubs/samples-powershell">PowerShell</a>
   - title: Dokumentacja
     items:
       - type: list

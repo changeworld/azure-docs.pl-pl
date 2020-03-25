@@ -33,7 +33,7 @@
       href: concepts-events-routing.md
     - name: Limity usługi w publicznej wersji zapoznawczej
       href: concepts-service-limits.md
-    - name: Zabezpieczenia
+    - name: Bezpieczeństwo
       items:
         - name: Najlepsze rozwiązania dotyczące zabezpieczeń
           href: security-best-practices.md
@@ -74,7 +74,7 @@
 - name: Zasoby
   expanded: true
   items:
-    - name: Zasoby dla deweloperów
+    - name: Zasoby deweloperów
       items:
         - name: Azure Digital Twins Graph Viewer
           href: 'https://github.com/Azure/azure-digital-twins-graph-viewer'
@@ -84,7 +84,7 @@
           href: 'https://docs.westcentralus.azuresmartspaces.net/management/swagger'
     - name: Cennik i dostępność
       items:
-        - name: Cennik
+        - name: Ceny
           href: 'https://azure.microsoft.com/pricing/details/digital-twins/'
         - name: Kalkulator cen
           href: 'https://azure.microsoft.com/pricing/calculator/'

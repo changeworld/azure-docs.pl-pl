@@ -40,7 +40,7 @@
     - name: Dynamiczne szyfrowanie przy użyciu usługi DRM
       displayName: 'PlayReady, Widevine, FairPlay'
       href: protect-with-drm.md
-- name: Samples
+- name: Przykłady
   items:
     - name: Przykłady usługi Media Services w wersji 3
       displayName: '.NET, Java'
@@ -75,7 +75,7 @@
       items:
         - name: Omówienie
           href: encoding-concept.md
-          displayName: 'encoding, presets, jobs, adaptive, bitrate, billing'
+          displayName: 'encode, encoding, presets, jobs, adaptive, bitrate, billing'
         - name: Formaty kodera w warstwie Standardowa
           displayName: 'containers, codecs'
           href: media-encoder-standard-formats.md
@@ -87,7 +87,7 @@
       items:
         - name: Omówienie
           href: analyzing-video-audio-files-concept.md
-          displayName: 'analyzing, presets, jobs'
+          displayName: 'analyze, analyzing, presets, jobs'
         - name: Przekształcenia i zadania
           href: transforms-jobs-concept.md
     - name: Transmisja strumieniowa na żywo
@@ -113,7 +113,7 @@
     - name: Tworzenie pakietów i dostarczanie
       items:
         - name: Dynamiczne tworzenie pakietów
-          displayName: 'origin, packager, HLS, DASH, CMAF, Smooth, manifest, deliver, format, URL, streaming'
+          displayName: 'origin, packager, HLS, DASH, CMAF, Smooth, manifest, deliver, format, URL, streaming, audio, video'
           href: dynamic-packaging-overview.md
         - name: Manifesty dynamiczne
           href: filters-dynamic-manifest-overview.md
@@ -199,23 +199,16 @@
           displayName: naming
 - name: Przewodniki z instrukcjami
   items:
-    - name: Rozpoczęcie pracy
+    - name: Wprowadzenie
       items:
         - name: Tworzenie konta
-          items:
-            - name: Przy użyciu portalu
-              href: create-account-portal.md
-            - name: Przy użyciu interfejsu wiersza polecenia
-              href: create-account-cli-how-to.md
-              displayName: storage
+          href: create-account-howto.md
+          displayName: 'portal, cli, storage'
         - name: Resetowanie poświadczeń konta
           href: cli-reset-account-credentials.md
-        - name: Dostęp do interfejsów API
-          items:
-            - name: Przy użyciu portalu
-              href: access-api-portal.md
-            - name: Przy użyciu interfejsu wiersza polecenia
-              href: access-api-cli-how-to.md
+        - name: Interfejs API dostępu
+          displayName: 'portal, cli'
+          href: access-api-howto.md
         - name: Skalowanie jednostek zarezerwowanych multimediów
           href: media-reserved-units-cli-how-to.md
         - name: Tworzenie zasobu
@@ -344,6 +337,7 @@
     - name: Rozwiązywanie problemów
       items:
         - name: Często zadawane pytania
+          displayName: faqs
           href: frequently-asked-questions.md
         - name: Kody błędów
           items:
@@ -359,7 +353,7 @@
       href: 'https://aka.ms/ams-v3-rest-sdk'
       displayName: schema
     - name: REST
-      href: 'https://aka.ms/ams-v3-rest-ref'
+      href: 'https://docs.microsoft.com/rest/api/media/'
     - name: Interfejs wiersza polecenia platformy Azure
       href: 'https://aka.ms/ams-v3-cli-ref'
     - name: Zestawy SDK
@@ -383,7 +377,7 @@
       href: media-services-community.md
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/?category=web-mobile'
-    - name: Cennik
+    - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/media-services/'
     - name: Filmy wideo
       href: 'https://azure.microsoft.com/resources/videos/index/?services=media-services'

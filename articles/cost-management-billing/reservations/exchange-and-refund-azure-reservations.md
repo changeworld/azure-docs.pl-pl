@@ -7,13 +7,13 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.openlocfilehash: 393db5d2e14e047ade04e0b688582e272c6ca44f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200439"
 ---
-# <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Samoobsługowe wymiany i zwroty kosztów dotyczące rezerwacji na platformie Azure
+# <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Samoobsługowe wymiany i zwroty kosztów rezerwacji platformy Azure
 
 Rezerwacje platformy Azure zapewniają elastyczność, dzięki której można łatwiej sprostać Twoim zmieniającym się potrzebom. Rezerwację można wymienić na inną rezerwację tego samego typu. Jeśli rezerwacja nie jest już potrzebna, można uzyskać zwrot jej kosztów, maksymalnie 50 000 USD rocznie. Maksymalny limit zwrotu dotyczy wszystkich rezerwacji w zakresie umowy z firmą Microsoft.
 
@@ -84,9 +84,9 @@ Jeśli masz pytania lub potrzebujesz pomocy, [utwórz wniosek o pomoc techniczn�
 ## <a name="next-steps"></a>Następne kroki
 
 - Aby dowiedzieć się, jak zarządzać wystąpieniem zarezerwowanym, zobacz temat [Manage Azure Reservations](manage-reserved-vm-instance.md) (Zarządzanie wystąpieniami zarezerwowanymi na platformie Azure).
-- Aby dowiedzieć się więcej na temat rezerwacji platformy Azure, zobacz następujące artykuły:
+- Aby dowiedzieć się więcej na temat rezerwacji na platformie Azure, zobacz następujące artykuły:
     - [Co to są rezerwacje platformy Azure?](save-compute-costs-reservations.md)
-    - [Zarządzanie rezerwacjami na platformie Azure](manage-reserved-vm-instance.md)
+    - [Zarządzanie rejestracjami platformy Azure](manage-reserved-vm-instance.md)
     - [Jak jest stosowany rabat na rezerwacje](../manage/understand-vm-reservation-charges.md)
     - [Understand reservation usage for your Pay-As-You-Go subscription (Informacje na temat użycia wystąpień zarezerwowanych w przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem)](understand-reserved-instance-usage.md)
     - [Understand reservation usage for your Enterprise enrollment (Informacje na temat użycia wystąpień zarezerwowanych w przypadku rejestracji Enterprise)](understand-reserved-instance-usage-ea.md)

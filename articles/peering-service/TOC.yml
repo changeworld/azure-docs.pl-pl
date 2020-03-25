@@ -14,11 +14,11 @@
       href: connection-telemetry.md
     - name: Dołączanie modelu
       href: onboarding-model.md
-- name: Podręczniki z instrukcjami
+- name: Przewodniki z instrukcjami
   items:
     - name: Rejestrowanie usługi Peering Service
       items:
-        - name: Portal Azure
+        - name: Portalu Azure
           href: azure-portal.md
         - name: Azure PowerShell
           href: powershell.md
@@ -42,7 +42,7 @@
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork'
     - name: Opinie dotyczące sieci
       href: 'https://feedback.azure.com/forums/217313-networking?category_id=77469'
-    - name: Cennik
+    - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/azure-peering/'
     - name: Kalkulator cen
       href: 'https://azure.microsoft.com/pricing/calculator/?service=azure-peering'

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: banders
 ms.openlocfilehash: e65637f20d14b93c212b1af2f20695ff5dfeb350
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199691"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Śledzenie salda środków na korzystanie z platformy Azure dla umowy klienta firmy Microsoft
@@ -21,13 +21,13 @@ Saldo środków na korzystanie z platformy Azure dla Twojego konta rozliczeniowe
 
 Na koncie rozliczeniowym dla umowy klienta firmy Microsoft środki są przypisywane do profilu rozliczeniowego. Każdy profil rozliczeniowy ma własne środki, które są automatycznie stosowane do opłat na jego fakturze. Aby wyświetlić saldo środków na korzystanie z platformy Azure dla profilu rozliczeniowego, musisz mieć rolę właściciela, współautora, czytelnika lub menedżera faktur dla profilu rozliczeniowego albo właściciela, współautora lub czytelnika dla konta rozliczeniowego. Aby dowiedzieć się więcej na temat ról, zobacz [Omówienie ról administracyjnych dla umowy klienta firmy Microsoft na platformie Azure](understand-mca-roles.md).
 
-Ten artykuł dotyczy konta rozliczeniowego związanego z umową klienta firmy Microsoft. [Sprawdź, czy masz dostęp do umowy klienta firmy Microsoft](#check-access-to-a-microsoft-customer-agreement).
+Ten artykuł dotyczy konta rozliczeniowego w ramach Umowy klienta firmy Microsoft. [Sprawdź, czy masz dostęp do Umowy klienta firmy Microsoft](#check-access-to-a-microsoft-customer-agreement).
 
 ## <a name="check-your-credit-balance"></a>Sprawdzanie salda środków
 
 ### <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 
 2. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 
@@ -384,7 +384,7 @@ Nabyte środki przypisujesz do profilu rozliczeniowego. Podczas generowania fakt
 - Produkty z witryny Azure Marketplace
 - Plany pomocy technicznej platformy Azure
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>Sprawdzanie dostępu do umowy klienta firmy Microsoft
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>Sprawdzanie dostępu do Umowy klienta firmy Microsoft
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną.

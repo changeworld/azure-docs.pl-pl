@@ -62,7 +62,7 @@ sections:
           - html: <a href="/azure/container-registry/container-registry-tutorial-quick-task">Kompilowanie i wdrażanie obrazów kontenerów przy użyciu zadań usługi Azure Container Registry</a>
           - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">Kompilowanie i wdrażanie kontenera w usłudze Azure Container Instances</a>
           - html: <a href="/azure/openshift/tutorial-create-cluster">Tworzenie klastra usługi Azure Red Hat OpenShift</a>
-  - title: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
+  - title: Rozwijanie umiejętności dzięki Microsoft Learn
     items:
       - type: list
         style: cards
@@ -73,7 +73,7 @@ sections:
             image:
               src: /learn/achievements/run-docker-with-azure-container-instances.svg
               href: /learn/modules/run-docker-with-azure-container-instances/
-          - title: Tworzenie i przechowywanie obrazów kontenerów za pomocą usługi Azure Container Registry
+          - title: Kompilowanie i przechowywanie obrazów kontenerów za pomocą usługi Azure Container Registry
             href: /learn/modules/build-and-store-container-images/
             image:
               src: /learn/achievements/build-and-store-container-images.svg
