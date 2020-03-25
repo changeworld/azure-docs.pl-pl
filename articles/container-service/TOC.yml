@@ -4,7 +4,7 @@
   href: dcos-swarm/container-service-dcos-quickstart.md
 - name: Zasoby
   items:
-    - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
+    - name: Rozwijanie umiejętności dzięki Microsoft Learn
       href: /learn/browse/?products=azure-container-instances&azure-container-registry
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/?category=containers'

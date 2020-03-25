@@ -1,20 +1,18 @@
 ---
 title: Konfigurowanie integracji platformy AWS z usługą Azure Cost Management
 description: W tym artykule przedstawiono sposób ustawiania i konfigurowania integracji raportów o kosztach i użyciu platformy AWS z usługą Azure Cost Management.
-keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: matrive
-ms.custom: ''
-ms.openlocfilehash: 90d75383c1bd7c67b3feeb77fe2284d7b4e0cdf9
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c0f6f18abf7c05cf5ae6dcaa31a57974ecfca806
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199997"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79203087"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Ustawianie i konfigurowanie integracji raportów o kosztach i użyciu platformy AWS
 
@@ -39,11 +37,11 @@ Aby utworzyć raport o kosztach i użyciu, przejdź do strony **Cost & Usage Rep
 9. W oknie dialogowym Configure S3 Bucket (Konfigurowanie zasobnika S3) wykonaj jedną z następujących czynności:
     1. Wybierz istniejący zasobnik z listy rozwijanej i wybierz pozycję **Next** (Dalej).
     2. Wprowadź nazwę zasobnika i region, w którym chcesz utworzyć nowy zasobnik, a następnie wybierz pozycję **Next** (Dalej).
-10. Zaznacz pozycję **I have confirmed that this policy is correct** (Potwierdzam, że te zasady są poprawne), a następnie kliknij pozycję **Save** (Zapisz).
-11. (Opcjonalnie) W polu Report path prefix (Prefiks ścieżki raportu) wprowadź prefiks ścieżki raportu, który ma poprzedzać nazwę raportu.
+10.    Zaznacz pozycję **I have confirmed that this policy is correct** (Potwierdzam, że te zasady są poprawne), a następnie kliknij pozycję **Save** (Zapisz).
+11.    (Opcjonalnie) W polu Report path prefix (Prefiks ścieżki raportu) wprowadź prefiks ścieżki raportu, który ma poprzedzać nazwę raportu.
 Jeśli nie określisz prefiksu, domyślnym prefiksem jest nazwa określona dla raportu. Zakres dat ma format `/report-name/date-range/`.
 12. W obszarze **Time unit** (Jednostka czasu) wybierz opcję **Hourly** (Co godzinę).
-13. W przypadku pozycji **Report versioning** (Wersja raportu) wybierz, czy każda wersja raportu ma zastępować poprzednią wersję czy mają się pojawiać dodatkowe nowe raporty.
+13.    W przypadku pozycji **Report versioning** (Wersja raportu) wybierz, czy każda wersja raportu ma zastępować poprzednią wersję czy mają się pojawiać dodatkowe nowe raporty.
 14. W obszarze **Enable data integration for** (Włącz integrację danych dla) nie trzeba nic zaznaczać.
 15. W obszarze **Compression** (Kompresja) wybierz pozycję **GZIP**.
 16. Wybierz opcję **Dalej**.
@@ -124,8 +122,8 @@ Kod JSON zasad powinien przypominać poniższy przykład. Zastąp element _bucke
             "Effect": "Allow",
             "Action": [
 "organizations:ListAccounts",
-            "ce:*",
-            "cur:DescribeReportDefinitions"
+             "ce:*",
+             "cur:DescribeReportDefinitions"
             ],
             "Resource": "*"
         },

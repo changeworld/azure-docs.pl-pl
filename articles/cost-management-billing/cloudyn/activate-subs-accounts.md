@@ -1,26 +1,28 @@
 ---
-title: Aktywowanie subskrypcji i kont platformy Azure | Microsoft Docs
+title: Aktywowanie subskrypcji i kont platformy Azure
 description: Umożliwianie dostępu za pomocą interfejsów API usługi Azure Resource Manager dla nowych i istniejących kont oraz rozwiązywanie typowych problemów dotyczących kont.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: 2467ee65b3f7090e5854bdd7848abab667ccfe55
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ROBOTS: NOINDEX
+ms.openlocfilehash: 62138163b3c3f94d60c55cf93d84db5dff446823
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78301373"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474666"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>Aktywowanie subskrypcji i kont platformy Azure za pomocą platformy Cloudyn
 
 Dodawanie lub uaktualnianie poświadczeń usługi Azure Resource Manager umożliwia platformie Cloudyn odnajdowanie wszystkich kont i subskrypcji w ramach dzierżawy platformy Azure. Jeśli na swoich maszynach wirtualnych masz również włączone rozszerzenie Diagnostyka Azure, platforma Cloudyn może zbierać metryki rozszerzone, takie jak procesor i pamięć. W tym artykule opisano sposób włączania dostępu przy użyciu interfejsów API usługi Azure Resource Manager dla nowych i istniejących kont. Zawiera on również opis rozwiązywania typowych problemów dotyczących kont.
 
 Platforma Cloudyn nie może uzyskiwać dostępu do większości danych subskrypcji platformy Azure, gdy subskrypcja jest _nieaktywowana_. Aby platforma Cloudyn mogła uzyskiwać dostęp do kont _nieaktywowanych_, należy je edytować.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="required-azure-permissions"></a>Wymagane uprawnienia platformy Azure
 

@@ -3,7 +3,7 @@
   href: index.yml
 - name: Rozwiązywanie problemów z wdrożeniem
   items:
-    - name: Windows
+    - name: System Windows
       href: troubleshoot-deploy-vm-windows.md
     - name: Linux
       href: troubleshoot-deploy-vm-linux.md
@@ -15,17 +15,17 @@
       items:
         - name: Linux
           href: troubleshoot-deployment-new-vm-linux.md
-        - name: Windows
+        - name: System Windows
           href: troubleshoot-deployment-new-vm-windows.md
     - name: Ponowne wdrażanie maszyny wirtualnej
       items:
         - name: Linux
           href: redeploy-to-new-node-linux.md
-        - name: Windows
+        - name: System Windows
           href: redeploy-to-new-node-windows.md
     - name: Resetowanie karty sieciowej
       href: reset-network-interface.md
-- name: Rozwiązywanie problemów z błędami alokacji
+- name: "Rozwiązywanie problemów z\_błędami alokacji"
   items:
     - name: Błędy alokacji
       href: allocation-failure.md
@@ -62,7 +62,7 @@
       items:
         - name: Ratunkowy tryb GRUB
           href: troubleshoot-vm-boot-error.md
-    - name: Windows
+    - name: System Windows
       href: boot-error-troubleshoot.md
       items:
         - name: Diagnostyka rozruchu
@@ -146,23 +146,23 @@
       href: troubleshoot-app-connection.md
 - name: Pomoc dotycząca resetowania hasła maszyny wirtualnej
   items:
-    - name: Windows
+    - name: System Windows
       href: reset-local-password-without-agent.md
     - name: Linux
       href: reset-password.md
     - name: Dostęp do odzyskiwania maszyny wirtualnej
       items:
-        - name: Windows
+        - name: System Windows
           items:
-            - name: PowerShell
+            - name: Program PowerShell
               href: troubleshoot-recovery-disks-windows.md
-            - name: Azure Portal
+            - name: Portalu Azure
               href: troubleshoot-recovery-disks-portal-windows.md
         - name: Linux
           items:
             - name: Interfejs wiersza polecenia
               href: troubleshoot-recovery-disks-linux.md
-            - name: Azure Portal
+            - name: Portalu Azure
               href: troubleshoot-recovery-disks-portal-linux.md
         - name: Nazwy urządzeń ulegają zmianie
           href: troubleshoot-device-names-problems.md
@@ -188,7 +188,7 @@
           href: performance-diagnostics.md
     - name: PerfInsights
       items:
-        - name: Windows
+        - name: System Windows
           items:
             - name: Korzystanie z narzędzia PerfInsights
               href: how-to-use-perfinsights.md
@@ -212,7 +212,7 @@
       href: ../../backup/backup-azure-vms-troubleshoot.md
 - name: Naprawianie maszyny wirtualnej przy użyciu poleceń
   items:
-    - name: Windows
+    - name: System Windows
       href: repair-windows-vm-using-azure-virtual-machine-repair-commands.md
     - name: Linux
       href: repair-linux-vm-using-azure-virtual-machine-repair-commands.md
@@ -251,7 +251,7 @@
           href: serial-console-errors.md
 - name: Problemy z usługą Azure Disk Encryption
   items:
-    - name: Windows
+    - name: System Windows
       items:
         - name: Omówienie
           href: ../windows/disk-encryption-overview.md

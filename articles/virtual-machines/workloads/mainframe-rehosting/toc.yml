@@ -2,19 +2,19 @@
   items:
     - name: Omówienie
       items:
-        - name: Rozpoczęcie pracy
+        - name: Wprowadzenie
           href: overview.md
         - name: Obciążenia
           href: partner-workloads.md
     - name: Pojęcia
       items:
-        - name: Wystąpienia obliczeniowe
+        - name: Compute
           href: concepts/mainframe-compute-azure.md
-        - name: Magazyn
+        - name: Storage
           href: concepts/mainframe-storage-azure.md
     - name: Micro Focus
       items:
-        - name: Rozpoczęcie pracy
+        - name: Wprowadzenie
           href: microfocus/get-started.md
         - name: Instalowanie serwera Enterprise Server
           href: microfocus/set-up-micro-focus-azure.md
@@ -24,13 +24,13 @@
           href: microfocus/run-enterprise-server-container.md
     - name: TmaxSoft OpenFrame
       items:
-        - name: Rozpoczęcie pracy
+        - name: Wprowadzenie
           href: tmaxsoft/get-started.md
         - name: Instalowanie oprogramowania OpenFrame
           href: tmaxsoft/install-openframe-azure.md
     - name: IBM
       items:
-        - name: Rozpoczęcie pracy
+        - name: Wprowadzenie
           href: ibm/get-started.md
         - name: Instalowanie środowiska IBM zD&T
           href: ibm/install-ibm-z-environment.md

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 5e1117bdefc4916fedc5c316632641d77c2f09d3
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: bbed4209d26fe32f95b93b2c7411e1ab74f03ede
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78206031"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80131356"
 ---
 # <a name="understand-and-work-with-scopes"></a>Opis zakresów i praca z nimi
 
@@ -65,7 +65,7 @@ Cost Management — współautor jest zalecaną rolą o najniższych uprawnienia
 
 - **Działanie w przypadku przekroczenia budżetów** — użytkownicy mający rolę Cost Management — współautor potrzebują również dostępu do tworzenia grup akcji i/lub zarządzania nimi w celu automatycznego reagowania na nadwyżki. Rozważ przyznanie roli [Współautor monitorowania](../../role-based-access-control/built-in-roles.md#monitoring-contributor) do grupy zasobów zawierającej grupę akcji, która ma być używana w przypadku przekroczenia progów budżetu. Automatyzacja określonych akcji wymaga dodatkowych ról dla określonych usług, które są używane, takich jak Automation i Azure Functions.
 - **Planowanie eksportu danych dotyczących kosztów** — użytkownicy mający rolę Cost Management — współautor potrzebują także dostępu do zarządzania kontami magazynu, aby zaplanować eksport w celu skopiowania danych na konto magazynu. Rozważ przyznanie roli [Współautor konta magazynu](../../role-based-access-control/built-in-roles.md#storage-account-contributor) do grupy zasobów zawierającej konto magazynu, do którego są eksportowane dane dotyczące kosztów.
-- **Wyświetlanie rekomendacji dotyczących obniżenia kosztów** — użytkownicy mający rolę Cost Management — czytelnik i Cost Management — współautor domyślnie mają dostęp do *wyświetlania* rekomendacji dotyczących kosztów. Jednak dostęp do działania zgodnie z rekomendacjami dotyczącymi kosztów wymaga dostępu do poszczególnych zasobów. Jeśli chcesz skorzystać z rekomendacji dotyczącej kosztów, rozważ przyznanie [roli specyficznej dla usługi](../../role-based-access-control/built-in-roles.md#descriptions-and-ids).
+- **Wyświetlanie rekomendacji dotyczących obniżenia kosztów** — użytkownicy mający rolę Cost Management — czytelnik i Cost Management — współautor domyślnie mają dostęp do *wyświetlania* rekomendacji dotyczących kosztów. Jednak dostęp do działania zgodnie z rekomendacjami dotyczącymi kosztów wymaga dostępu do poszczególnych zasobów. Jeśli chcesz skorzystać z rekomendacji dotyczącej kosztów, rozważ przyznanie [roli specyficznej dla usługi](../../role-based-access-control/built-in-roles.md#all).
 
 ## <a name="enterprise-agreement-scopes"></a>Zakresy umowy Enterprise Agreement
 

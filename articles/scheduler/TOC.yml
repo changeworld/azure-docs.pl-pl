@@ -4,7 +4,7 @@
   items:
     - name: Co to jest usługa Azure Scheduler?
       href: scheduler-intro.md
-- name: Rozpoczęcie pracy
+- name: Wprowadzenie
   items:
     - name: Tworzenie harmonogramów i zarządzanie nimi — Azure PowerShell
       href: scheduler-powershell-reference.md
@@ -52,7 +52,7 @@
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=azurescheduler'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-scheduler'
-    - name: Cennik
+    - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/scheduler/'
     - name: Kalkulator cen
       href: 'https://azure.microsoft.com/pricing/calculator/'

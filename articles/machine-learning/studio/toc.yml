@@ -143,8 +143,6 @@
           href: consuming-from-excel.md
         - name: Korzystanie z dodatku programu Excel
           href: excel-add-in-for-web-services.md
-        - name: Korzystanie z puli usługi Batch
-          href: dedicated-capacity-for-bes-jobs.md
     - name: Przypadki zastosowań
       items:
         - name: Odpływ klientów

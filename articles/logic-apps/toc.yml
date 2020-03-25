@@ -21,7 +21,7 @@
       href: tutorial-process-mailing-list-subscriptions-workflow.md
     - name: Tworzenie przepływu pracy usług Azure Storage i Azure Functions
       href: tutorial-process-email-attachments-workflow.md
-- name: Samples
+- name: Przykłady
   items:
     - name: Przykłady kodu platformy Azure
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-logic-apps'
@@ -277,7 +277,7 @@
           href: ../connectors/connectors-create-api-sftp.md
         - name: SFTP — SSH
           href: ../connectors/connectors-sftp-ssh.md
-        - name: SharePoint
+        - name: Sharepoint
           href: ../connectors/connectors-create-api-sharepoint.md
         - name: Slack
           href: ../connectors/connectors-create-api-slack.md
@@ -285,7 +285,7 @@
           href: ../connectors/connectors-native-sliding-window.md
         - name: SMTP
           href: ../connectors/connectors-create-api-smtp.md
-        - name: SQL Server
+        - name: Oprogramowanie SQL Server
           href: ../connectors/connectors-create-api-sqlazure.md
         - name: Przekształcanie kodu XML
           href: logic-apps-enterprise-integration-transform.md
@@ -389,13 +389,13 @@
           href: logic-apps-track-integration-account-custom-tracking-schema.md
 - name: Zasoby
   items:
-    - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
+    - name: Rozwijanie umiejętności dzięki Microsoft Learn
       href: 'https://docs.microsoft.com/learn/browse/?products=azure-logic-apps'
     - name: Harmonogram działania dla usługi Azure Logic Apps
       href: 'https://aka.ms/logicappsroadmap/'
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: Cennik
+    - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/logic-apps/'
     - name: Kalkulator cen
       href: 'https://azure.microsoft.com/pricing/calculator/'

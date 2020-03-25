@@ -90,7 +90,7 @@ sections:
           - html: 'Java &#58; <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=blob&sort=0&platform=java">Obiekty blob</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=file&sort=0&platform=java">Pliki</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=queue&sort=0&platform=java">Kolejki</a>'
           - html: <a href="/azure/storage/blobs/storage-samples-blobs-powershell">Azure PowerShell</a>
           - html: <a href="/azure/storage/blobs/storage-samples-blobs-cli">Interfejs wiersza polecenia platformy Azure</a>
-  - title: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
+  - title: Rozwijanie umiejętności dzięki Microsoft Learn
     items:
       - type: list
         style: cards
@@ -112,7 +112,7 @@ sections:
               src: /learn/achievements/create-azure-storage-account.svg
               href: /learn/modules/create-azure-storage-account/
       - type: paragraph
-        text: <a href="/learn/browse/?products=azure-storage">Więcej interakcyjnych zasobów szkoleniowych...</a>
+        text: <a href="/learn/browse/?products=azure-storage">Więcej interaktywnych zasobów szkoleniowych...</a>
   - title: Bezpłatne szkolenie wideo firmy PluralSight
     items:
       - type: list
@@ -136,6 +136,6 @@ sections:
         className: cardsD
         items:
           - title: Wiersz polecenia
-            html: <p><a href="/powershell/storage">Program PowerShell</a></p><p><a href="/cli/azure/storage">Interfejs wiersza polecenia platformy Azure</a></p>
+            html: <p><a href="/powershell/storage">PowerShell</a></p><p><a href="/cli/azure/storage">Interfejs wiersza polecenia platformy Azure</a></p>
           - title: REST
             html: '<p><a href="/rest/api/storageservices">Interfejs API obiektów blob, kolejek, tabel i plików</a></p><p><a href="/rest/api/storagerp">Interfejs API dostawcy zasobów magazynu</a></p><p><a href="/rest/api/storageimportexport">Interfejs API usługi Import/Export</a></p>'

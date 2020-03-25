@@ -11,11 +11,11 @@ ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 84b36c1357bedfc120cec72af84fdd79f52a2f57
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245386"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238163"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Przeniesienie własności rozliczeń subskrypcji platformy Azure na inne konto
 
@@ -124,7 +124,7 @@ Przenoszenie subskrypcji w witrynie Azure Portal jest dostępne dla typów subsk
 
 Te pytania dotyczą użytkowników przenoszących własność rozliczeń subskrypcji platformy Azure na inne konto.
 
-### <a name="whoisaa"></a> Kto jest administratorem rozliczeń konta?
+### <a name="who-is-a-billing-administrator-of-an-account"></a><a name="whoisaa"></a> Kto jest administratorem rozliczeń konta?
 
 Administrator rozliczeń to osoba, która ma uprawnienia do zarządzania rozliczeniami konta. Administratorzy mogą uzyskiwać dostęp do rozliczeń w witrynie [Azure Portal](https://portal.azure.com) i wykonywać różne zadania rozliczeniowe, takie jak tworzenie subskrypcji, wyświetlanie i płacenie faktur lub aktualizowanie form płatności.
 
@@ -206,15 +206,15 @@ Administrator przedsiębiorstwa może zaktualizować własność dowolnego konta
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-### <a id="no-button"></a> Czemu nie widzę przycisku „Przenieś subskrypcję”?
+### <a name="why-dont-i-see-the-transfer-subscription-button"></a><a id="no-button"></a> Czemu nie widzę przycisku „Przenieś subskrypcję”?
 
 Samoobsługowe przeniesienie subskrypcji nie jest dostępne w przypadku Twojego konta rozliczeniowego. Obecnie nie obsługujemy przenoszenia własności rozliczeń subskrypcji na kontach Umowy Enterprise (EA) w witrynie Portalu Azure. Również konta Umowy klienta firmy Microsoft utworzone podczas pracy z przedstawicielem Microsoft nie obsługują przenoszenia własności rozliczeń.
 
-### <a id="no-button"></a> Dlaczego mój typ subskrypcji nie obsługuje przenoszenia?
+### <a name="why-doesnt-my-subscription-type-support-transfer"></a><a id="no-button"></a> Dlaczego mój typ subskrypcji nie obsługuje przenoszenia?
 
 Nie wszystkie typy subskrypcji obsługują przenoszenie własności rozliczeń. Aby zobaczyć listę typów subskrypcji obsługujących przenoszenie, zobacz [Obsługiwane typy subskrypcji](#supported-subscription-types).
 
-### <a id="no-button"></a> Dlaczego podczas próby przeniesienia własności rozliczeń subskrypcji widzę komunikat o błędzie odmowy dostępu?
+### <a name="why-am-i-receiving-an-access-denied-error-when-i-try-to-transfer-billing-ownership-of-a-subscription"></a><a id="no-button"></a> Dlaczego podczas próby przeniesienia własności rozliczeń subskrypcji widzę komunikat o błędzie odmowy dostępu?
 
 Ten komunikat jest wyświetlany, jeśli użytkownik próbuje przenieść subskrypcję planu platformy Microsoft Azure bez wymaganych uprawnień. Aby przenieść subskrypcję planu platformy Microsoft Azure, musisz być właścicielem lub współautorem w sekcji faktury dotyczącej subskrypcji. Więcej informacji — zobacz [Sekcja Zarządzanie subskrypcjami dla celów rozliczeniowych](understand-mca-roles.md#manage-subscriptions-for-invoice-section).
 
