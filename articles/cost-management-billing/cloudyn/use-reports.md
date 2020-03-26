@@ -1,26 +1,28 @@
 ---
-title: Korzystanie z raportów usługi Cloudyn na platformie Azure | Microsoft Docs
+title: Korzystanie z raportów platformy Cloudyn na platformie Azure
 description: W tym artykule opisano przeznaczenie raportów usługi Cloudyn, które są dostępne w portalu usługi Cloudyn, aby ułatwić ich efektywne wykorzystanie.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: b3563e08963b0b32542dcbece2529c350981f557
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ROBOTS: NOINDEX
+ms.openlocfilehash: 633bf8126c1745cfd8db117966975bbf4ea2c9c8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200014"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79463547"
 ---
 # <a name="reports-available-in-the-cloudyn-portal"></a>Raporty dostępne w portalu usługi Cloudyn
 
 W tym artykule opisano przeznaczenie raportów usługi Cloudyn, które są dostępne w portalu usługi Cloudyn. Przedstawiono także, jak efektywnie korzystać z raportów. Większość raportów jest intuicyjna i ma jednolity wygląd i działanie. Większość akcji, które można wykonać w ramach danego raportu, można także wykonać w innych raportach. Aby zapoznać się z omówieniem korzystania z raportów usługi Cloudyn, w tym dostosowywaniem, zapisywaniem lub planowaniem raportów, zobacz [Omówienie raportów dotyczących kosztów](understanding-cost-reports.md).
 
 Usługa Azure Cost Management oferuje podobne funkcje jak rozwiązanie Cloudyn. Usługa Azure Cost Management to natywne rozwiązanie do zarządzania kosztami na platformie Azure. Ułatwia ona analizowanie kosztów, tworzenie budżetów i zarządzanie nimi, eksportowanie danych, a także zapoznawanie się z rekomendacjami dotyczącymi optymalizacji i ich wdrażanie w celu zaoszczędzenia pieniędzy. Aby uzyskać więcej informacji, zobacz [Azure Cost Management](../cost-management-billing-overview.md).
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="report-types"></a>Typy raportów
 

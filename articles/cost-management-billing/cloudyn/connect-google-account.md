@@ -1,25 +1,26 @@
 ---
-title: Łączenie konta Google Cloud Platform z usługą Cloudyn na platformie Azure | Microsoft Docs
+title: Łączenie konta Google Cloud Platform z usługą Cloudyn na platformie Azure
 description: Połącz konto Google Cloud Platform, aby wyświetlać dane dotyczące kosztów i użycia w raportach usługi Cloudyn.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 09989337b2e78277c6182630ce0f1cdf57a0e0c1
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4e10d39f744b40e7eb9058841eed9ff0f0e55d44
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76770202"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474649"
 ---
 # <a name="connect-a-google-cloud-platform-account"></a>Nawiązywanie połączenia z kontem Google Cloud Platform
 
 Istniejące konto Google Cloud Platform można połączyć z usługą Cloudyn. Po połączeniu konta z usługą Cloudyn dane dotyczące kosztów i użycia będą dostępne w raportach usługi Cloudyn. Ten artykuł pomaga w konfigurowaniu i łączeniu konta Google z usługą Cloudyn.
 
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="collect-project-information"></a>Zbieranie informacji o projekcie
 

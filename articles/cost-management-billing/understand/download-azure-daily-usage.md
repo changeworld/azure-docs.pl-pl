@@ -7,13 +7,13 @@ ms.author: banders
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: 156f47e7a5571d37d836e68c7817352626fbd734
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 03/19/2020
+ms.openlocfilehash: 3a7e1e8670911d361b3c59aacc0973eac035fb70
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200252"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80065720"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Wyświetlanie i pobieranie danych na temat użycia i opłat na platformie Azure
 
@@ -21,30 +21,31 @@ Dzienny podział użycia platformy Azure i opłaty możesz pobrać w witrynie Az
 
 Jeśli masz umowę klienta firmy Microsoft, musisz być właścicielem, współautorem, czytelnikiem lub menedżerem faktur dla profilu rozliczeniowego, aby móc wyświetlić informacje dotyczące użycia i opłat platformy Azure.  Jeśli masz umowę partnerską firmy Microsoft, tylko administrator globalny lub agent administracyjny w organizacji partnerskiej firmy Microsoft może wyświetlać i pobierać użycie oraz opłaty platformy Azure. [Sprawdź typ konta rozliczeniowego w witrynie Azure Portal](#check-your-billing-account-type).
 
+W zależności od używanego typu subskrypcji opcje pobierania danych użycia i opłat są różne. 
+
 ## <a name="download-usage-from-the-azure-portal-csv"></a>Pobieranie użycia z witryny Azure Portal (csv)
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Wyszukaj pozycję *Zarządzanie kosztami i rozliczenia*.
-
+1. Wyszukaj pozycję *Zarządzanie kosztami i rozliczenia*.  
     ![Zrzut ekranu przedstawiający wyszukiwanie w witrynie Azure Portal](./media/download-azure-daily-usage/portal-cm-billing-search.png)
-
 1. W zależności od praw dostępu może być konieczne wybranie konta rozliczeniowego lub profilu rozliczeniowego.
 1. W menu po lewej stronie wybierz pozycję **Faktury** w obszarze **Rozliczenia**.
 1. W siatce faktur znajdź wiersz okresu rozliczeniowego odpowiadający danym użycia, które chcesz pobrać.
-1. Wybierz **ikonę pobierania** lub symbol wielokropka (`...`) po prawej stronie.
-1. Po prawej stronie zostanie otwarte okienko pobierania. Wybierz pozycję **Pobierz** z sekcji **Szczegóły użycia**.
+1. Wybierz **ikonę pobierania** lub symbol wielokropka (`...`) po prawej stronie.  
+  ![Zrzut ekranu przedstawiający lokalizację pobierania danych użycia i opłat](./media/download-azure-daily-usage/download-usage-others.png)  
+1. Po prawej stronie zostanie otwarte okienko pobierania. Wybierz pozycję **Pobierz** z sekcji **Szczegóły użycia**.  
+
 
 ## <a name="download-usage-for-ea-customers"></a>Pobieranie zestawienia użycia dla klientów z umową EA
 
 Aby przeglądać dane użycia jako klient z umową EA i pobierać je, musisz być administratorem przedsiębiorstwa, właścicielem konta lub administratorem działu z włączonymi zasadami wyświetlania opłat.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Wyszukaj pozycję *Zarządzanie kosztami i rozliczenia*.
-
+1. Wyszukaj pozycję *Zarządzanie kosztami i rozliczenia*.  
     ![Zrzut ekranu przedstawiający wyszukiwanie w witrynie Azure Portal](./media/download-azure-daily-usage/portal-cm-billing-search.png)
-
 1. Wybierz pozycję **Użycie i opłaty**.
-1. Wybierz pozycję **Pobierz** dla miesiąca, dla którego chcesz pobrać dane.
+1. Wybierz pozycję **Pobierz** dla miesiąca, dla którego chcesz pobrać dane.  
+    ![Zrzut ekranu przedstawiający lokalizację pobierania danych użycia i opłat](./media/download-azure-daily-usage/download-usage-ea.png)
 
 ## <a name="download-usage-for-pending-charges"></a>Pobieranie danych użycia dla oczekujących opłat
 

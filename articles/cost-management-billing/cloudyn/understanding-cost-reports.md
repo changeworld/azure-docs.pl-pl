@@ -1,24 +1,26 @@
 ---
-title: Interpretacja raportów dotyczących zarządzania kosztami usługi Cloudyn na platformie Azure | Microsoft Docs
+title: Interpretacja raportów dotyczących zarządzania kosztami w usłudze Cloudyn na platformie Azure
 description: Ten artykuł ułatwia zapoznanie się z podstawowymi strukturami i funkcjami raportów dotyczących zarządzania kosztami w usłudze Cloudyn.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 89bcbf75396a1eda9de4a715739adb3a3696e137
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5d4f8e26aef5fbfb20c1721d1851a4940863121b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76773982"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474547"
 ---
 # <a name="understanding-cloudyn-cost-management-reports"></a>Interpretacja raportów dotyczących zarządzania kosztami w usłudze Cloudyn
 
 Ten artykuł ułatwia zapoznanie się z podstawowymi strukturami i funkcjami raportów dotyczących zarządzania kosztami w usłudze Cloudyn. Większość raportów usługi Cloudyn jest intuicyjna i ma jednolity wygląd i sposób działania. Zapoznanie się z tym artykułem pozwoli Ci używać wszystkich raportów dotyczących zarządzania kosztami. Wiele standardowych funkcji jest dostępnych w różnych raportach, co pozwoli Ci na łatwe nawigowanie po raportach. Możesz dostosowywać raporty i wybierać z kilku opcji obliczania i wyświetlania wyników.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="report-fields-and-options"></a>Pola i opcje raportu
 

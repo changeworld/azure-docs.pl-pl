@@ -3,21 +3,25 @@ title: Samouczek — obniżanie kosztów platformy Azure dzięki zaleceniom
 description: Ten samouczek ułatwia obniżenie kosztów platformy Azure przez wdrożenie zaleceń dotyczących optymalizacji.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/02/2020
+ms.date: 03/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 6f84b3fb75a3774dc14fd1ea045ab9cf1eeb5451
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: de558ddad37e1621c633d26fff51d1506c237577
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245409"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80155923"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Samouczek: Optymalizowanie kosztów na podstawie zaleceń
 
 Usługa Azure Cost Management współdziała z usługą Azure Advisor podczas ustalania zaleceń dotyczących optymalizacji kosztów. Narzędzie Azure Advisor pomaga przeprowadzić optymalizację i zwiększyć wydajność, identyfikując zasoby w stanie bezczynności i niedostatecznie używane. Ten samouczek przeprowadzi Cię przez przykład, w ramach którego zidentyfikujesz nie w pełni wykorzystywane zasoby platformy Azure, a następnie podejmiesz działania w celu obniżenia kosztów.
+
+Obejrzyj klip wideo [Optymalizacja inwestycji w chmurę w usłudze Azure Cost Management](https://www.youtube.com/watch?v=cSNPoAb-TNc), aby dowiedzieć się więcej o optymalizacji kosztów za pomocą usługi Advisor.
+
+>[!VIDEO https://www.youtube.com/embed/cSNPoAb-TNc]
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 

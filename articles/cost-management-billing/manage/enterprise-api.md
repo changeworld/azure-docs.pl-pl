@@ -1,5 +1,5 @@
 ---
-title: Interfejsy API do obsługi rozliczeń przedsiębiorstw na platformie Azure | Microsoft Docs
+title: Interfejsy API rozliczeń platformy Azure dla przedsiębiorstw
 description: Dowiedz się więcej na temat interfejsów API raportowania, które umożliwiają klientom korporacyjnym programowe ściąganie danych użycia z platformy Azure.
 author: mumami
 tags: billing
@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: banders
-ms.openlocfilehash: 9f9552c134fa7653e4100cae3c731e4c670d44e3
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 10275bac8cd9363939f9b6f298c49d7ef08ab7bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560545"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79202917"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Przegląd interfejsów API raportowania dla klientów korporacyjnych
 Interfejsy API raportowania umożliwiają klientom korporacyjnym platformy Azure programowe ściąganie danych użycia i rozliczeń do preferowanych narzędzi do analizy danych. Klienci korporacyjni podpisali umowę [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) na platformie Azure, na podstawie której mają wynegocjowane zobowiązania pieniężne i dostęp do niestandardowych cen zasobów platformy Azure.

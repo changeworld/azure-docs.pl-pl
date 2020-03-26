@@ -10,15 +10,15 @@ ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: cfb9f54f5ba219a4db87144ab1e7ebff2b72b69e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380235"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214194"
 ---
 ::: zone target = "docs"
 
-# <a name="tutorial-return-azure-data-box-heavy-and-verify-data-upload-to-azure"></a>Samouczek: zwracanie Azure Data Box Heavy i weryfikowanie przekazywania danych na platformę Azure
+# <a name="tutorial-return-azure-data-box-heavy-and-verify-data-upload-to-azure"></a>Samouczek: Wysyłka zwrotna urządzenia Azure Data Box Heavy i weryfikowanie przekazania danych na platformę Azure
 
 ::: zone-end
 
@@ -45,7 +45,7 @@ Ten samouczek zawiera informacje na następujące tematy:
 
 Przed rozpoczęciem upewnij się, że spełniono następujące warunki:
 
-- Samouczek został ukończony [: Skopiuj dane do Azure Data Box i sprawdź](data-box-heavy-deploy-copy-data.md).
+- Ukończono [Samouczek: kopiowanie danych na urządzenie Azure Data Box i ich weryfikacja](data-box-heavy-deploy-copy-data.md).
 - Zadania kopiowania zostały wykonane. Przygotowanie do wysłania nie będzie działać, jeśli zadania kopiowania są w toku.
 
 

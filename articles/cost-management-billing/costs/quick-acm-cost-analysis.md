@@ -1,19 +1,19 @@
 ---
-title: Szybki start — eksplorowanie kosztów platformy Azure za pomocą analizy kosztów | Microsoft Docs
+title: Szybki start — eksplorowanie kosztów platformy Azure za pomocą analizy kosztów
 description: Ten przewodnik Szybki start ułatwia eksplorowanie i analizowanie kosztów organizacyjnych platformy Azure za pomocą funkcji analizy kosztów.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/02/2020
+ms.date: 03/24/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 002caa15b7054ab806018a733b32a1b2555e1aea
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 53e1ef2f5e4faecd3ab2dee1350f3e9087df8e9d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384186"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80155957"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Szybki start: Eksplorowanie i analizowanie kosztów za pomocą analizy kosztów
 
@@ -26,7 +26,6 @@ W tym przewodniku Szybki start zawarto informacje na temat wykonywania następuj
 - Przeglądanie kosztów w obrębie analizy kosztów
 - Dostosowywanie widoków kosztów
 - Pobieranie danych analizy kosztów
-
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -45,6 +44,10 @@ Jeśli masz nową subskrypcję, nie możesz od razu korzystać z funkcji usługi
 Aby sprawdzić swoje koszty w analizie kosztów, otwórz zakres w witrynie Azure Portal, a następnie wybierz pozycję **Analiza kosztów** w menu. Na przykład przejdź do obszaru **Subskrypcje**, wybierz subskrypcję z listy, a następnie wybierz pozycję **Analiza kosztów** w menu. Użyj kapsułki **Zakres**, aby przełączyć na inny zakres w analizie kosztów. Aby uzyskać więcej informacji na temat zakresów, zobacz [Omówienie zakresów i praca z nimi](understand-work-scopes.md).
 
 Wybrany zakres będzie używany w całej usłudze Cost Management w celu zapewnienia konsolidacji danych i kontrolowania dostępu do informacji o kosztach. Gdy używasz zakresów, nie wybierasz równocześnie wielu z nich. W zamian wybierasz większy zakres obejmujący inne zakresy, a następnie filtrujesz zawartość do zagnieżdżonych zakresów, których potrzebujesz. Zrozumienie tej metody jest istotne, ponieważ niektóre osoby mogą nie mieć dostępu do pojedynczego zakresu nadrzędnego, który obejmuje wiele zakresów zagnieżdżonych.
+
+Obejrzyj klip wideo [Jak używać usługi Cost Management w witrynie Azure Portal](https://www.youtube.com/watch?v=mfxysF-kTFA), aby dowiedzieć się więcej o sposobach korzystania z analizy kosztów.
+
+>[!VIDEO https://www.youtube.com/embed/mfxysF-kTFA]
 
 Początkowy widok analizy kosztów zawiera poniższe obszary.
 
@@ -67,7 +70,6 @@ Początkowy widok analizy kosztów zawiera poniższe obszary.
 Prognoza kosztów pokazuje szacowane koszty w wybranym okresie. Model jest oparty na modelu regresji szeregów czasowych. Do dokładnego przewidywania kosztów wymagane są dane dotyczące kosztów i użycia z co najmniej 10 ostatnich dni. W przypadku danego okresu model prognozy wymaga takiej samej ilości danych treningowych jak dla prognozowanego okresu. Na przykład prognoza na trzy miesiące wymaga danych użycia i kosztów z co najmniej trzech ostatnich miesięcy.
 
 Model używa maksymalnie sześciu miesięcy danych treningowych w celu prognozowania kosztów na rok. Zmiana prognozy wymaga danych treningowych z co najmniej siedmiu dni. Prognoza jest oparta na znaczących zmianach, takich jak istotny wzrost lub spadek, we wzorcach kosztów i użycia. Prognoza nie generuje oddzielnych przewidywań dla każdego elementu we właściwościach **Grupuj według**. Zapewnia jedynie prognozę dla łącznych, skumulowanych kosztów. W przypadku korzystania z wielu walut model udostępnia prognozę kosztów tylko w USD.
-
 
 ## <a name="customize-cost-views"></a>Dostosowywanie widoków kosztów
 
@@ -176,11 +178,17 @@ Aby uzyskać więcej informacji na temat terminów, zobacz [Omówienie terminów
 
 Dostosowane widoki można zapisywać i udostępniać innym osobom, przypinając analizę kosztów do pulpitu nawigacyjnego witryny Azure Portal lub kopiując link do analizy kosztów.
 
+Obejrzyj klip wideo [Udostępnianie i zapisywanie widoków w usłudze Azure Cost Management](https://www.youtube.com/watch?v=kQkXXj-SmvQ), aby dowiedzieć się więcej o tym, jak udostępniać za pomocą portalu informacji o kosztach w organizacji.
+
+>[!VIDEO https://www.youtube.com/embed/kQkXXj-SmvQ]
+
 Aby przypiąć analizę kosztów, wybierz ikonę pinezki w prawym górnym rogu. Przypięcie analizy kosztów spowoduje zapisanie tylko głównego wykresu lub widoku tabeli. Udostępnij pulpit nawigacyjny, aby umożliwić innym użytkownikom dostęp do kafelka. Pamiętaj, że spowoduje to tylko udostępnienie konfiguracji pulpitu nawigacyjnego i nie udzieli innym użytkownikom dostępu do danych źródłowych. Jeśli nie masz dostępu do kosztów, ale masz dostęp do udostępnionego pulpitu nawigacyjnego, zobaczysz komunikat „odmowa dostępu”.
 
 Aby udostępnić link do analizy kosztów, wybierz pozycję **Udostępnij** w górnej części bloku. Zostanie wyświetlony niestandardowy adres URL, który otwiera ten konkretny widok dla określonego zakresu. Jeśli nie masz dostępu do kosztów i uzyskasz ten adres URL, zobaczysz komunikat „odmowa dostępu”.
 
 Aby dowiedzieć się więcej o udzielaniu dostępu do kosztów dla każdego obsługiwanego zakresu, przejrzyj artykuł [Omówienie zakresów i praca z nimi](understand-work-scopes.md).
+
+
 
 ## <a name="automation-and-offline-analysis"></a>Automatyzacja i analiza w trybie offline
 

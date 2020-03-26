@@ -1,20 +1,20 @@
 ---
-title: Samouczek — przypisywanie dostępu przy użyciu rozwiązania Cloudyn na platformie Azure | Microsoft Docs
+title: Samouczek — przypisywanie dostępu przy użyciu rozwiązania Cloudyn na platformie Azure
 description: Ten samouczek zawiera informacje na temat przypisywania dostępu do danych rozwiązania Cloudyn przy użyciu kont użytkowników w celu zdefiniowania poziomów dostępu do jednostek.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
 ms.reviewer: benshy
-ms.openlocfilehash: b93dfd7699ab2f1e2851b4d1f7e6d4c721186a2e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: e8fff8b75ff419cffc7f496f921dcba734109e5a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76774004"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79463615"
 ---
 # <a name="tutorial-assign-access-to-cloudyn-data"></a>Samouczek: Przypisywanie dostępu do danych rozwiązania Cloudyn
 
@@ -33,6 +33,8 @@ Zarejestrowanie konta lub umowy dotyczącej platformy Azure spowodowało utworze
 
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -68,9 +70,9 @@ Nie możesz usunąć siebie jako użytkownika.
 > [!WARNING]
 > Po usunięciu użytkownika nie można go przywrócić.
 
-1.  W portalu Cloudyn kliknij symbol koła zębatego w prawym górnym rogu i wybierz pozycję **Zarządzanie użytkownikami**.
-2.  Na liście użytkowników wybierz użytkownika, którego chcesz usunąć, a następnie kliknij pozycję **Usuń użytkownika** (symbol kosza).
-3.  W oknie Usuń użytkownika kliknij przycisk **Tak**, a następnie kliknij przycisk **OK**.
+1.    W portalu Cloudyn kliknij symbol koła zębatego w prawym górnym rogu i wybierz pozycję **Zarządzanie użytkownikami**.
+2.    Na liście użytkowników wybierz użytkownika, którego chcesz usunąć, a następnie kliknij pozycję **Usuń użytkownika** (symbol kosza).
+3.    W oknie Usuń użytkownika kliknij przycisk **Tak**, a następnie kliknij przycisk **OK**.
 
 
 ## <a name="delete-or-export-personal-data"></a>Usuwanie lub eksportowanie danych osobowych

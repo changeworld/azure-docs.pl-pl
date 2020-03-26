@@ -1,61 +1,34 @@
 ---
-title: Omówienie rozwiązania Cloudyn na platformie Azure | Microsoft Docs
+title: Omówienie rozwiązania Cloudyn na platformie Azure
 description: Cloudyn to rozwiązanie do zarządzania kosztami wielu chmur, które ułatwia korzystanie z platformy Azure i innych zasobów w chmurze.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: overview
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: bfd00613a3949b29e2defcb6f97398a39091d0e6
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9e1acee631316ec961af364769daa1f2a3001e72
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76774051"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80065879"
 ---
 # <a name="what-is-the-cloudyn-service"></a>Co to jest rozwiązanie Cloudyn?
 
 Rozwiązanie Cloudyn (będące własnością podmiotu zależnego od firmy Microsoft) umożliwia śledzenie użycia chmury i wydatków na zasoby platformy Azure i innych dostawców rozwiązań w chmurze, w tym AWS i Google. Łatwe do zrozumienia raporty pulpitu nawigacyjnego ułatwiają alokację kosztów oraz obsługę przewidywanych kosztów i obciążeń zwrotnych. Rozwiązanie Cloudyn ułatwia optymalizację wydatków związanych z chmurą przez identyfikowanie niedostatecznie używanych zasobów, którymi można później zarządzać oraz je dostosowywać.
 
-Aby obejrzeć klip wideo z wprowadzeniem, zobacz [Introduction to Azure Cloudyn](https://azure.microsoft.com/resources/videos/azure-cost-management-overview-and-demo) (Wprowadzenie do rozwiązania Azure Cloudyn).
-
+Aby obejrzeć klip wideo z wprowadzeniem, zobacz [Introduction to Azure Cloudyn](https://azure.microsoft.com/resources/videos/azure-cost-management-overview-and-demo/) (Wprowadzenie do rozwiązania Azure Cloudyn).
+ 
 Usługa Azure Cost Management oferuje podobne funkcje jak rozwiązanie Cloudyn. Usługa Azure Cost Management to natywne rozwiązanie do zarządzania kosztami na platformie Azure. Ułatwia ona analizowanie kosztów, tworzenie budżetów i zarządzanie nimi, eksportowanie danych, a także zapoznawanie się z rekomendacjami dotyczącymi optymalizacji i ich wdrażanie w celu zaoszczędzenia pieniędzy. Aby uzyskać więcej informacji, zobacz [Azure Cost Management](../cost-management-billing-overview.md).
+ 
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
-Obejrzyj [wideo z porównaniem usług Azure Cost Management i Cloudyn](https://www.youtube.com/watch?v=PmwFWwSluh8), aby zobaczyć zalecenia dotyczące przypadków, w których należy skorzystać z usługi Azure Cost Management lub Cloudyn w zależności od potrzeb firmy.
-
->[!VIDEO https://www.youtube.com/embed/PmwFWwSluh8]
-
-## <a name="cloudyn-features-moving-to-azure-cost-management"></a>Funkcje rozwiązania Cloudyn są przenoszone do usługi Azure Cost Management
-
-Firma Microsoft nabyła rozwiązanie Cloudyn i migruje jego funkcje zarządzania kosztami z portalu Cloudyn do platformy Azure, aby działały w sposób natywny. Aby móc skorzystać z nowych funkcji, zaloguj się do witryny Azure Portal i przejdź do pozycji [Zarządzanie kosztami i rozliczenia](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) na liście usług platformy Azure. W porównaniu z rozwiązaniem Cloudyn natywne środowisko zapewnia lepszą wydajność i mniejsze opóźnienie danych wynoszące około ośmiu godzin.
-
-Migracja najważniejszych funkcji do usługi Azure Cost Management dla umów Enterprise Agreement, płatności zgodnie z rzeczywistym użyciem i kategorii ofert MSDN została ukończona. Subskrypcje CSP są aktualnie migrowane do usługi Azure Cost Management.
-
-W przypadku korzystania z kategorii ofert, która nie została jeszcze zmigrowana, należy nadal używać portalu Cloudyn. Wszystkie inne osoby mogą korzystać z usługi Azure Cost Management.
-
-| Oferty i funkcje platformy Microsoft Azure | Zalecana usługa zarządzania kosztami |
-| --- | --- |
-| Umowa Enterprise Agreement platformy Azure | [Azure Cost Management](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
-| Azure Web Direct (płatność zgodnie z rzeczywistym użyciem/MSDN) | [Azure Cost Management](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
-| Azure Government | [Azure Cost Management](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
-| Azure CSP | [Cloudyn](https://azure.cloudyn.com) |
-| Obsługa analizy kosztów w różnych chmurach dla usługi AWS (w wersji zapoznawczej) | [Azure Cost Management](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
-| Zalecenia dotyczące usługi AWS | [Cloudyn](https://azure.cloudyn.com) |
-
-Niektóre z następujących funkcji są dostępne w rozwiązaniu Cloudyn, ale wszystkie są teraz dostępne w usłudze Azure Cost Management.
-
-- Interfejsy API
-- Zalecenia dotyczące usług obliczeniowych na platformie Azure
-- Rekomendacje dotyczące rezerwacji na platformie Azure
-- Budżety
-- Analiza kosztów
-- Eksportowanie danych na konto usługi Azure Storage
-- Mniejsze opóźnienia
-- Pakiet zawartości i łącznik usługi Power BI
-- Obsługa tagów zasobów
+Obejrzyj [wideo z porównaniem usług Azure Cost Management i Cloudyn](https://www.youtube.com/watch?v=15DzKPMBRxM), aby zobaczyć zalecenia dotyczące przypadków, w których należy skorzystać z usługi Azure Cost Management lub Cloudyn w zależności od potrzeb firmy.
+ 
+>[!VIDEO https://www.youtube.com/embed/15DzKPMBRxM]
 
 ## <a name="monitor-usage-and-spending"></a>Monitorowanie użycia i wydatków
 
@@ -84,4 +57,4 @@ Jeśli zaaprowizowano wystąpienia zarezerwowane usługi AWS, możesz zwiększy�
 
 Kolejnym krokiem po zapoznaniu się z rozwiązaniem Cloudyn jest zarejestrowanie środowiska chmury i rozpoczęcie eksplorowania danych.
 
-- [Rejestrowanie indywidualnej subskrypcji platformy Azure](quick-register-azure-sub.md)
+- [Rejestrowanie w programie partnerskim programu CSP i wyświetlanie danych kosztów](quick-register-csp.md)

@@ -1,24 +1,26 @@
 ---
-title: Wideo szkoleniowe dotyczące rozwiązania Cloudyn na platformie Azure | Microsoft Docs
+title: Wideo szkoleniowe dotyczące rozwiązania Cloudyn na platformie Azure
 description: Wideo szkoleniowe dotyczące rozwiązania Cloudyn przeprowadzą Cię przez rozpoczynanie pracy i korzystanie z jego funkcji.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/13/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 3344dfb1518eeb495b019138c72d566ce4064017
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9acad813914614fd2cdaad4fd348e9e19225c67e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201105"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79463768"
 ---
 # <a name="cloudyn-walk-through-training-videos"></a>Wideo szkoleniowe z przewodnikiem dotyczące rozwiązania Cloudyn
 
 Poniższe klipy wideo zawierają pokazy przeprowadzające przez rozpoczynanie pracy z rozwiązaniem Cloudyn i korzystanie z jego funkcji. Rozwiązanie Cloudyn obsługuje optymalizowanie i śledzenie kosztów w wielu chmurach, w tym w usługach Microsoft Azure, Amazon Web Services i Google Cloud Platform.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="overview-video"></a>Klip wideo z omówieniem
 

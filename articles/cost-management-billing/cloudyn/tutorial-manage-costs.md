@@ -1,20 +1,20 @@
 ---
-title: Samouczek — zarządzanie kosztami przy użyciu rozwiązania Cloudyn na platformie Azure | Microsoft Docs
+title: Samouczek — zarządzanie kosztami przy użyciu rozwiązania Cloudyn na platformie Azure
 description: Ten samouczek przedstawia zarządzanie kosztami metodą przydzielania kosztów oraz przy użyciu raportów przewidywanych kosztów i obciążeń zwrotnych.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
 ms.reviewer: benshy
-ms.openlocfilehash: c628a30e5a49e6bf9c0938ca8cccc0f349777668
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: a492f611ed5a785ae148894baf3f24c2df773df2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769908"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474581"
 ---
 # <a name="tutorial-manage-costs-by-using-cloudyn"></a>Samouczek: Zarządzanie kosztami przy użyciu rozwiązania Cloudyn
 
@@ -31,6 +31,8 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Tworzenie raportów przewidywanych kosztów i obciążeń zwrotnych.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

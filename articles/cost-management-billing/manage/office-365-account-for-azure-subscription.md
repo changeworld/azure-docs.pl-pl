@@ -1,5 +1,5 @@
 ---
-title: Rejestracja na platformie Azure przy użyciu konta usługi Office 365 | Microsoft Docs
+title: Rejestracja na platformie Azure przy użyciu konta usługi Office 365
 description: Dowiedz się, jak utworzyć subskrypcję platformy Azure przy użyciu konta usługi Office 365
 author: JiangChen79
 ms.reviewer: adwise
@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 265d9bcafa7caf9af0f8c4c7f33de044fa02349c
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: b42a5b83f5442755614a3cb2ae81cffda09b4b3b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199589"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238112"
 ---
 # <a name="sign-up-for-an-azure-subscription-with-your-office-365-account"></a>Rejestracja przy użyciu konta usługi Office 365 w celu uzyskania subskrypcji platformy Azure
 Jeśli masz subskrypcję usługi Office 365, możesz utworzyć subskrypcję platformy Azure za pomocą swojego konta usługi Office 365. Zaloguj się do witryny [Azure Portal](https://portal.azure.com/) przy użyciu nazwy użytkownika i hasła do konta usługi Office 365. Jeśli chcesz skonfigurować maszyny wirtualne lub użyć innych usług platformy Azure, musisz zarejestrować się w celu uzyskania subskrypcji platformy Azure. Subskrypcję platformy Azure można udostępniać innym osobom i [korzystać z kontroli dostępu opartej na rolach w celu zarządzania dostępem do subskrypcji i zasobów platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
@@ -35,7 +35,7 @@ Oszczędzaj czas i unikaj tworzenia nadmiernej liczby kont, rejestrując się na
 
 - Jeśli musisz dodać inne osoby z organizacji do subskrypcji platformy Azure, zobacz [Wprowadzenie do zarządzania dostępem w witrynie Azure Portal](../../role-based-access-control/overview.md).
 
-## <a id="more-about-subs">Więcej informacji o subskrypcjach platformy Azure i usługi Office 365</a>
+## <a name=""></a><a id="more-about-subs">Więcej informacji o subskrypcjach platformy Azure i usługi Office 365</a>
 Zarządzanie użytkownikami oraz subskrypcjami usługi Office 365 i platformy Azure odbywa się za pomocą usługi Azure AD. Katalog platformy Azure jest podobny do kontenera, w którym można grupować użytkowników i subskrypcje. Aby korzystać z tych samych kont użytkowników w przypadku subskrypcji platformy Azure i usługi Office 365, należy się upewnić, że subskrypcje platformy Azure są tworzone w tym samym katalogu co subskrypcje usługi Office 365. Należy pamiętać o następujących kwestiach:
 
 * Subskrypcja jest tworzona w katalogu

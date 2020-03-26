@@ -1,5 +1,5 @@
 ---
-title: Łączenie konta platformy Azure z identyfikatorem partnera | Microsoft Docs
+title: Łączenie konta platformy Azure z identyfikatorem partnera
 description: Śledź kontakty z klientami platformy Azure, łącząc identyfikator partnera z kontem użytkownika, którego używasz do zarządzania zasobami klienta.
 author: dhirajgandhi
 ms.reviewer: dhgandhi
@@ -7,18 +7,18 @@ ms.author: banders
 ms.date: 02/13/2020
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.openlocfilehash: 761f4345c591864b8158d7216d737ac287692252
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: c3f5dd4d1b67f5b1079a56d5c3428d286fd9d77f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651393"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79204804"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Łączenie identyfikatora partnera z kontami platformy Azure
 
-Partnerzy firmy Microsoft oferują usługi, które pomagają klientom osiągać cele biznesowe i ogólne przy użyciu produktów firmy Microsoft. Podejmując działania w imieniu klienta podczas konfigurowania i obsługiwania usług platformy Azure oraz zarządzania nimi, użytkownicy partnera będą musieli uzyskać dostęp do środowiska klienta. Korzystając z łącza administratora partnera, partnerzy mogą powiązać identyfikator sieci partnera z poświadczeniami używanymi do dostarczania usług.
+Partnerzy firmy Microsoft oferują usługi, które pomagają klientom osiągać cele biznesowe i ogólne przy użyciu produktów firmy Microsoft. Podejmując działania w imieniu klienta podczas konfigurowania i obsługiwania usług platformy Azure oraz zarządzania nimi, użytkownicy partnera będą musieli uzyskać dostęp do środowiska klienta. Korzystając z linku administratora partnera, partnerzy mogą powiązać identyfikator sieci partnera z poświadczeniami używanymi do dostarczania usług.
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+Link administratora partnera pozwala firmie Microsoft identyfikować i rozpoznawać partnerów, którzy prowadzą do sukcesu klientów platformy Azure. Firma Microsoft może przypisywać wpływ i przychody użyte przez platformę Azure w organizacji na podstawie uprawnień konta (rola RBAC) i zakresu (subskrypcja, grupa zasobów, zasób).
 
 ## <a name="get-access-from-your-customer"></a>Uzyskanie dostępu od klienta
 

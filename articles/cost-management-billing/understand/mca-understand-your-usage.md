@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 03/20/2020
 ms.author: banders
-ms.openlocfilehash: ef6ef96bf248c449b318cebaba9c53f63e448855
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c6883dfd0f4c3bc11afdd68ead8c8c84729b1880
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199164"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80065687"
 ---
 # <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Terminy w pliku użycia i opłat platformy Azure dla umowy klienta firmy Microsoft
 
@@ -88,6 +88,8 @@ meterCategory | Nazwa kategorii klasyfikacji dla miernika. Na przykład *Usługi
 meterSubCategory | Nazwa kategorii klasyfikacji podrzędnej miernika
 meterRegion | Nazwa regionu, w którym jest dostępny miernik usługi. Określa lokalizację centrum danych pewnych usług, które są wyceniane na podstawie lokalizacji centrum danych.
 offer | Nazwa zakupionej oferty
+PayGPrice | Cena detaliczna zasobu.
+PricingModel | Identyfikator wskazujący, jak jest naliczana opłata za licznik (wartości: Na żądanie, Rezerwacja, Spot)
 productId | Unikatowy identyfikator produktu, za który naliczane są opłaty
 product | Nazwa produktu, za który naliczane są opłaty
 subscription ID | Unikatowy identyfikator subskrypcji, za którą naliczane są opłaty

@@ -1,5 +1,5 @@
 ---
-title: Ponowne uaktywnienie wyłączonej subskrypcji platformy Azure for Students | Microsoft Docs
+title: Ponowne uaktywnienie wyłączonej subskrypcji platformy Azure for Students
 description: Wyjaśniono tu, dlaczego subskrypcja platformy Azure for Students jest wyłączona i jak ją ponownie uaktywnić.
 author: amberbhargava
 tags: billing
@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 66e87b36644f5ed018603c14b311c31d851a1785
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: fb091efd9888930f7e834d840d3cab047949dbf1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200935"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79203002"
 ---
 # <a name="why-is-my-azure-for-students-subscription-disabled-and-how-do-i-reactivate-it"></a>Dlaczego moja subskrypcja platformy Azure for Students została wyłączona i jak można ją ponownie uaktywnić?
 

@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 3/11/2020
 ms.author: banders
-ms.openlocfilehash: e22663cf8cabd5d2abf487c96f2d69aeaaa90ab7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 0e0003b3adfdb6ebba49bd8d014fc0ba287ca3aa
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199708"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238146"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Zapobieganie nieoczekiwanym opłatom w rozliczeniach platformy Azure i zarządzanie kosztami
 
@@ -25,6 +25,8 @@ Kiedy rejestrujesz się na platformie Azure, możesz zrobić kilka rzeczy, aby l
 - Integruj dane dotyczące rozliczeń i kosztów z własnym systemem raportowania przy użyciu interfejsów API [rozliczeń](https://docs.microsoft.com/rest/api/billing/) i [użycia](https://docs.microsoft.com/rest/api/consumption/).
 - Korzystaj z dodatkowych zasobów i narzędzi dla klientów z umową Enterprise (EA), należących do programu Cloud Solution Provider (CSP) i korzystających z Dostępu sponsorowanego Azure.
 - [Przez 12 miesięcy korzystaj bezpłatnie z niektórych najpopularniejszych usług platformy Azure](create-free-services.md) dostępnych na [bezpłatnym koncie platformy Azure](https://azure.microsoft.com/free/). Oprócz zaleceń wymienionych poniżej, zobacz [Unikanie naliczania opłat za bezpłatne konto](avoid-charges-free-account.md).
+
+Jeśli musisz anulować subskrypcję platformy Azure, zobacz [Anulowanie subskrypcji platformy Azure](cancel-azure-subscription.md).
 
 ## <a name="get-estimated-costs-before-adding-azure-services"></a>Uzyskiwanie szacowanych kosztów przed dodaniem usług platformy Azure
 
@@ -67,7 +69,7 @@ Koszty można monitorować przy użyciu następujących narzędzi:
 
 W celu zarządzania kosztami można utworzyć [budżety](../costs/tutorial-acm-create-budgets.md) oraz [alerty](../costs/cost-mgt-alerts-monitor-usage-spending.md), które automatycznie powiadamiają Ciebie oraz Twoich interesariuszy o anomaliach w wydatkach i nadmiernych wydatkach.
 
-### <a name="costs"></a> Poznawanie i analizowanie kosztów za pomocą analizy kosztów
+### <a name="explore-and-analyze-costs-with-cost-analysis"></a><a name="costs"></a> Poznawanie i analizowanie kosztów za pomocą analizy kosztów
 
 Po uruchomieniu usług platformy Azure regularnie sprawdzaj koszty, aby śledzić wydatki na platformę Azure. Analizy kosztów możesz używać, aby zrozumieć, skąd biorą się koszty związane z użyciem platformy Azure.
 
@@ -120,7 +122,7 @@ Jeśli korzystasz z platformy Azure za pośrednictwem umowy klienta firmy Micros
 
 Aby programowo uzyskać dane dotyczące rozliczeń i kosztów, użyj interfejsów API [rozliczeń](https://docs.microsoft.com/rest/api/billing/) i [użycia](https://docs.microsoft.com/rest/api/consumption/) na platformie Azure. Aby pobrać rozliczane użycie, użyj interfejsu API usługi RateCard wraz z interfejsem API użycia. Aby uzyskać więcej informacji, zobacz [Uzyskiwanie szczegółowych informacji o użyciu zasobów platformy Microsoft Azure](usage-rate-card-overview.md).
 
-## <a name="other-offers"></a> Dodatkowe zasoby i przypadki specjalne
+## <a name="additional-resources-and-special-cases"></a><a name="other-offers"></a> Dodatkowe zasoby i przypadki specjalne
 
 ### <a name="ea-csp-and-sponsorship-customers"></a>Klienci z umową Enterprise Agreement, umową od dostawcy CSP i dostępem sponsorowanym
 Skontaktuj się ze swoim menedżerem konta lub partnerem platformy Azure, aby rozpocząć.
@@ -133,7 +135,7 @@ Skontaktuj się ze swoim menedżerem konta lub partnerem platformy Azure, aby ro
 
 Jeśli zarządzasz działem IT w dużej organizacji, zalecamy przeczytanie dokumentu [Szkielet platformy Azure dla przedsiębiorstw](/azure/architecture/cloud-adoption-guide/subscription-governance) i [oficjalnego dokumentu dla działu IT przedsiębiorstw](https://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf) (plik PDF do pobrania, tylko w języku angielskim).
 
-### <a name="EA"></a> Widoki kosztów dla umowy Enterprise Agreement w witrynie Azure Portal
+### <a name="enterprise-agreement-cost-views-in-the-azure-portal"></a><a name="EA"></a> Widoki kosztów dla umowy Enterprise Agreement w witrynie Azure Portal
 
 Widoki kosztów dla przedsiębiorstw są obecnie w publicznej wersji zapoznawczej. Uwagi:
 

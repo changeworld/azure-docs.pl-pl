@@ -10,11 +10,11 @@ ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: 93a7181a3b720a3b313bb75855b2564c4cd33bc1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380496"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214330"
 ---
 ::: zone target="docs"
 
@@ -43,7 +43,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Przed rozpoczęciem upewnij się, że:
-- Ukończono samouczek [Instalowanie i konfigurowanie urządzenia Azure Data Box Disk](data-box-disk-deploy-set-up.md).
+- Ukończono [Samouczek: instalowanie i konfigurowanie urządzenia Azure Data Box Disk](data-box-disk-deploy-set-up.md).
 - Twoje dyski są odblokowane i podłączone do komputera klienckiego.
 - Na komputerze klienckim używanym do kopiowania danych na dyski musi być uruchomiony [obsługiwany system operacyjny](data-box-disk-system-requirements.md#supported-operating-systems-for-clients).
 - Upewnij się, że typ magazynu wybrany na potrzeby danych jest jednym z [obsługiwanych typów magazynu](data-box-disk-system-requirements.md#supported-storage-types-for-upload).
@@ -106,8 +106,8 @@ Aby podłączyć urządzenia Data Box Disk do komputera i skopiować na nie dane
     |Element docelowy       | Określa ścieżkę do katalogu docelowego.        |
     |/E                  | Kopiuje podkatalogi, włącznie z pustymi katalogami. |
     |/MT[:N]             | Tworzy kopie wielowątkowe zawierające N wątków, gdzie N to liczba całkowita od 1 do 128. <br>Domyślna wartość N to 8.        |
-    |/R: \<N >             | Określa liczbę ponownych prób w przypadku niepowodzenia kopiowania. Domyślna wartość N to 1 000 000 (milion ponownych prób).        |
-    |/W: \<N >             | Określa czas oczekiwania pomiędzy ponownymi próbami w sekundach. Domyślna wartość N to 30 (30 sekund oczekiwania).        |
+    |/R: \<N>             | Określa liczbę ponownych prób w przypadku niepowodzenia kopiowania. Domyślna wartość N to 1 000 000 (milion ponownych prób).        |
+    |/W: \<N>             | Określa czas oczekiwania pomiędzy ponownymi próbami w sekundach. Domyślna wartość N to 30 (30 sekund oczekiwania).        |
     |/NFL                | Określa, że nazwy plików nie mają być rejestrowane w dzienniku.        |
     |/NDL                | Określa, że nazwy katalogów nie mają być rejestrowane w dzienniku.        |
     |/FFT                | Zakłada czas plików w formacie FAT (dokładność do dwóch sekund).        |

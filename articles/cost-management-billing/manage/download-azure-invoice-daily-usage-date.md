@@ -1,5 +1,5 @@
 ---
-title: Pobieranie faktury rozliczeniowej i danych dziennego użycia platformy Azure | Microsoft Docs
+title: Pobieranie faktury rozliczeniowej i danych dziennego użycia platformy Azure
 description: Opis dotyczący pobierania lub wyświetlania faktury rozliczeniowej i danych dziennego użycia.
 keywords: faktura rozliczeniowa, pobieranie faktury, faktura platformy azure, dane użycia platformy azure
 author: genlin
@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: af2184d7faa2ace8ed1043eaf2aaec0d525bc937
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 629ab8a0f2af789501e6365c94f4ce7f3fd3649c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79125636"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237687"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Pobieranie lub wyświetlanie faktury rozliczeniowej i danych dziennego użycia platformy Azure
 
@@ -62,7 +62,7 @@ Faktury są generowane dla każdego [profilu rozliczeniowego](../understand/mca-
 6. W menu kontekstowym pobierania wybierz pozycję **Faktura**.
 
 Jeśli nie widzisz faktury dla ostatniego okresu rozliczeniowego, zobacz **Dodatkowe informacje**. <!-- Fix this -->
-### <a name="noinvoice"></a>Dlaczego nie widzę faktury za ostatni okres rozliczeniowy?
+### <a name="why-dont-i-see-an-invoice-for-the-last-billing-period"></a><a name="noinvoice"></a>Dlaczego nie widzę faktury za ostatni okres rozliczeniowy?
 
 Może istnieć kilka przyczyn, dla których faktura nie jest widoczna:
 

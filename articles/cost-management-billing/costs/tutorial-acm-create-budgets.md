@@ -1,20 +1,19 @@
 ---
-title: Samouczek — tworzenie budżetów platformy Azure i zarządzanie nimi | Microsoft Docs
+title: Samouczek — tworzenie budżetów platformy Azure i zarządzanie nimi
 description: Ten samouczek ułatwia planowanie i uwzględnianie kosztów używanych usług platformy Azure.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/11/2020
+ms.date: 03/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: b81236fd63d9289f797056cf7aaceb7d826511af
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: f7c1ac65026fd366be1003842ff70a78b9082339
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128356"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80155940"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Samouczek: Tworzenie budżetów platformy Azure i zarządzanie nimi
 
@@ -28,6 +27,7 @@ Przykłady zawarte w tym samouczku przedstawiają procesy tworzenia i edytowania
 
 Obejrzyj film [Stosowanie budżetów do subskrypcji w witrynie Azure Portal](https://www.youtube.com/watch?v=UrkHiUx19Po), aby dowiedzieć się, jak tworzyć budżety na platformie Azure w celu monitorowania wydatków.
 
+>[!VIDEO https://www.youtube.com/embed/UrkHiUx19Po]
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 

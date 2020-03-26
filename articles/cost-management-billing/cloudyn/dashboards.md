@@ -1,24 +1,26 @@
 ---
-title: Wyświetlanie najważniejszych metryk przy użyciu pulpitów nawigacyjnych platformy Cloudyn na platformie Azure | Microsoft Docs
+title: Wyświetlanie najważniejszych metryk przy użyciu pulpitów nawigacyjnych platformy Cloudyn na platformie Azure
 description: W tym artykule opisano, jak można przeglądać kluczowe metryki za pomocą pulpitów nawigacyjnych platformy Cloudyn.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: vitavor
 ms.custom: seodec18
-ms.openlocfilehash: 78af8f2541eb0b28d75be89612d158c889261adc
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: 892df9a6e0eb4d791f818eed0a78c96a829e25a0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76770129"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79464227"
 ---
 # <a name="view-key-cost-metrics-with-dashboards"></a>Wyświetlanie najważniejszych metryk kosztów za pomocą pulpitów nawigacyjnych
 
 Pulpity nawigacyjne platformy Cloudyn zapewniają ogólny widok raportów. Pulpity nawigacyjne umożliwiają wyświetlanie najważniejszych metryk kosztów w jednym widoku. Dostarczają one również informacje o najważniejszych trendach biznesowych, ułatwiając podejmowanie ważnych decyzji.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 Pulpity nawigacyjne są również używane do tworzenia widoków dla osób mających różne obowiązki w organizacji, co może obejmować następujące funkcje:
 

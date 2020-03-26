@@ -10,11 +10,11 @@ ms.date: 09/20/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: d116ba81b0c8940687663c17a4ed403e86dd6c22
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187551"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214398"
 ---
 ::: zone target="docs"
 
@@ -77,7 +77,7 @@ Upewnij się, że kopiowanie danych na urządzenie zostało ukończone, a **przy
 
 ::: zone-end
 
-## <a name="in-us-canada-europetabin-us-canada-europe"></a>[W Stanach Zjednoczonych, Kanadzie i Europie](#tab/in-us-canada-europe)
+## <a name="in-us-canada-europe"></a>[W Stanach Zjednoczonych, Kanadzie i Europie](#tab/in-us-canada-europe)
 
 W przypadku zwrotu urządzenia w Stanach Zjednoczonych, Kanadzie lub Europie wykonaj następujące czynności.
 
@@ -114,7 +114,7 @@ Po zakończeniu przekazywania danych na platformę Azure dane z dysków urządze
 ::: zone-end
 
 
-## <a name="in-australiatabin-australia"></a>[W Australii](#tab/in-australia)
+## <a name="in-australia"></a>[W Australii](#tab/in-australia)
 
 W przypadku centrów danych w Australii obowiązuje dodatkowe zabezpieczenie. Zabezpieczenie to polega na powiadamianiu z wyprzedzeniem o wszystkich przesyłkach przychodzących. Wykonaj poniższe kroki w przypadku wysyłki w Australii.
 
@@ -143,7 +143,7 @@ Po zakończeniu przekazywania danych na platformę Azure dane z dysków urządze
 
 ::: zone-end
 
-## <a name="in-japantabin-japan"></a>[W Japonii](#tab/in-japan) 
+## <a name="in-japan"></a>[W Japonii](#tab/in-japan) 
 
 1. Zachowaj oryginalne pudełko użyte do wysłania urządzenia na potrzeby wysyłki zwrotnej.
 2. Wyłącz urządzenie i odłącz kable.
@@ -191,7 +191,7 @@ Po zakończeniu przekazywania danych na platformę Azure dane z dysków urządze
 
 ::: zone-end
 
-## <a name="in-singaporetabin-singapore"></a>[W Singapurze](#tab/in-singapore) 
+## <a name="in-singapore"></a>[W Singapurze](#tab/in-singapore) 
 
 1. Zachowaj oryginalne pudełko użyte do wysłania urządzenia na potrzeby wysyłki zwrotnej.
 2. Zanotuj numer śledzenia (widoczny jako numer referencyjny na stronie przygotowywania do wysyłki w lokalnym internetowym interfejsie użytkownika urządzenia Data Box). Ta wartość jest dostępna po pomyślnym ukończeniu kroku przygotowywania do wysyłki. Pobierz etykietę wysyłkową z tej strony i naklej ją na opakowaniu. 
@@ -273,7 +273,7 @@ Once the upload to Azure is complete, the Data Box erases the data on its disks 
 ::: zone-end
 -->
 
-## <a name="self-managedtabin-selfmanaged"></a>[Samodzielne zarządzanie](#tab/in-selfmanaged) 
+## <a name="self-managed"></a>[Samodzielne zarządzanie](#tab/in-selfmanaged) 
 
 Jeśli korzystasz z urządzenia Data Box w Japonii, Singapurze, Korei lub Europie Zachodniej oraz masz wybraną opcję samodzielnego zarządzania wysyłką, postępuj zgodnie z następującymi opcjami podczas tworzenia zamówienia. 
 

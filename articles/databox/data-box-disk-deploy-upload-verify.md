@@ -10,17 +10,17 @@ ms.localizationpriority: high
 ms.date: 09/04/2019
 ms.author: alkohli
 ms.openlocfilehash: 3f89d713003f1f4265a7ab7c467454af750fab48
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380547"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214296"
 ---
 ::: zone target="docs"
 
-# <a name="tutorial-verify-data-upload-from-azure-data-box-disk"></a>Samouczek: weryfikowanie przekazywania danych z Azure Data Box Disk
+# <a name="tutorial-verify-data-upload-from-azure-data-box-disk"></a>Samouczek: Weryfikowanie przekazania danych z urządzenia Azure Data Box Disk
 
-Jest to ostatni samouczek z serii dotyczącej wdrażania usługi Azure Data Box Disk. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Jest to ostatni samouczek z serii: Wdrażanie urządzenia Azure Data Box Disk. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Weryfikowanie przekazania danych na platformę Azure
@@ -28,7 +28,7 @@ Jest to ostatni samouczek z serii dotyczącej wdrażania usługi Azure Data Box 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem upewnij się, że ukończono [Samouczek: zwróć Azure Data Box Disk](data-box-disk-deploy-picked-up.md).
+Przed rozpoczęciem upewnij się, że zostały wykonane kroki opisane w artykule [Samouczek: Zwracanie urządzenia Azure Data Box Disk](data-box-disk-deploy-picked-up.md).
 
 
 ## <a name="verify-data-upload-to-azure"></a>Weryfikowanie przekazania danych na platformę Azure

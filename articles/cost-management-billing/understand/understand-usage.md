@@ -6,14 +6,14 @@ ms.reviewer: micflan
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/20/2020
 ms.author: banders
-ms.openlocfilehash: e45ef26f3d0a4b968b601e70658c5f3680492682
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 3b4a5601f18a07ba1ecd6fdd93628d671a0acad2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199028"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80065640"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Interpretacja terminów w pliku Użycie i opłaty platformy Azure
 
@@ -74,10 +74,12 @@ MeterName | Wszyscy | Nazwa miernika.
 MeterRegion | Wszyscy | Nazwa lokalizacji centrum danych dla usług, które są wyceniane na podstawie lokalizacji. Zobacz Location.
 MeterSubCategory | Wszyscy | Nazwa kategorii klasyfikacji podrzędnej miernika.
 OfferId<sup>1</sup> | Wszyscy | Nazwa zakupionej oferty.
+PayGPrice | Wszyscy | Cena detaliczna zasobu.
 PartNumber<sup>1</sup> | EA, płatność zgodnie z rzeczywistym użyciem | Identyfikator używany do uzyskiwania określonych cen taryfowych.
 PlanName | EA, płatność zgodnie z rzeczywistym użyciem | Nazwa planu witryny Marketplace.
 PreviousInvoiceId | Umowa klienta firmy Microsoft | Odwołanie do oryginalnej faktury, jeśli ten element wiersza to zwrot.
 PricingCurrency | Umowa klienta firmy Microsoft | Waluta używana w przypadku klasyfikacji na podstawie cen negocjowanych.
+PricingModel | Wszyscy | Identyfikator wskazujący, w jaki sposób są naliczane opłaty za licznik. (Wartości: Na żądanie, Rezerwacja, Spot)
 Product (Produkt) | Wszyscy | Nazwa produktu.
 ProductId<sup>1</sup> | Umowa klienta firmy Microsoft | Unikatowy identyfikator produktu.
 ProductOrderId | Wszyscy | Unikatowy identyfikator zamówienia produktu.

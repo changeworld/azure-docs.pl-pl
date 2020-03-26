@@ -1,20 +1,19 @@
 ---
-title: Optymalizowanie inwestycji w chmurę za pomocą usługi Azure Cost Management | Microsoft Docs
+title: Optymalizowanie inwestycji w chmurę za pomocą usługi Azure Cost Management
 description: Ten artykuł pomaga zmaksymalizować korzyści z inwestycji w chmurę, ograniczyć koszty i ocenić, na co wydawane są pieniądze.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 03/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 6d13bf4b2a3abd3a1552ac656a6a15fed8c7cb60
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.openlocfilehash: 4941c1be8fd20dfa88e3ac36bfa30af77a2b1be1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383534"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80157215"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Jak zoptymalizować inwestycję w chmurę za pomocą usługi Azure Cost Management
 
@@ -116,7 +115,7 @@ Aby uzyskać więcej informacji, zobacz [Kalkulator cen platformy Azure](https:/
 
 Azure Migrate to usługa, która ocenia bieżące obciążenia organizacji w lokalnych centrach danych. Zapewnia ona szczegółowe informacje o tym, czego możesz potrzebować od zastępczego rozwiązania platformy Azure. Na początek usługa Migrate przeprowadza analizę lokalnych maszyn w celu sprawdzenia, czy migracja jest możliwa. Następnie proponuje rozmiary maszyn wirtualnych na platformie Azure zapewniające zmaksymalizowanie wydajności. Wreszcie przygotowuje również oszacowanie kosztów rozwiązania opartego na platformie Azure.
 
-Aby uzyskać więcej informacji, zobacz [Azure Migrate](../../site-recovery/migrate-overview.md).
+Aby uzyskać więcej informacji, zobacz [Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-services-overview).
 
 ## <a name="analyze-and-manage-your-costs"></a>Analizowanie kosztów i zarządzanie nimi
 
@@ -125,6 +124,11 @@ Aby uzyskać więcej informacji, zobacz [Azure Migrate](../../site-recovery/migr
 ### <a name="organize-and-tag-your-resources"></a>Organizowanie i tagowanie zasobów
 
 Organizuj zasoby z uwzględnieniem kosztów. Podczas tworzenia subskrypcji i grup zasobów weź pod uwagę zespoły odpowiedzialne za powiązane koszty. Upewnij się, że w raportowaniu uwzględniana jest Twoja organizacja. Subskrypcje i grupy zasobów stanowią dobre zasobniki do organizowania wydatków i przyporządkowywania ich w całej organizacji. Tagi stanowią dobrą metodę przyporządkowywania kosztów. Możesz używać tagów jako filtrów. Dodatkowo możesz używać ich jako kryterium grupowania podczas analizowania danych i badania kosztów. Klienci z umową Enterprise Agreement mogą również tworzyć działy i umieszczać w nich subskrypcje. Organizacja oparta na kosztach na platformie Azure pomaga zapewnić odpowiedzialność właściwych osób w organizacji za zmniejszanie wydatków ich zespołów.
+
+Obejrzyj klip wideo [Jak przeglądać zasady tagów za pomocą usługi Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw), aby poznać narzędzia dostępne do wymuszania skalowalnego tagowania zasobów w organizacji.
+
+>[!VIDEO https://www.youtube.com/embed/nHQYcYGKuyw]
+
 
 ### <a name="use-cost-analysis"></a>Używanie analizy kosztów
 

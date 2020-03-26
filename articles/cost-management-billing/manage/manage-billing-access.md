@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie dostępem do rozliczeń platformy Azure | Microsoft Docs
+title: Zarządzanie dostępem do rozliczeń platformy Azure
 description: Dowiedz się, jak zapewnić członkom zespołu dostęp do informacji rozliczeniowych platformy Azure.
 author: vikramdesai01
 ms.reviewer: amberb
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 5a4d725d88ee38bb68ea3da4f3e2a6a9bfc7e201
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: e7a6f105c6c8292e8e95b388d60dd95c3548dbb5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78344559"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237670"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Zarządzanie dostępem do informacji rozliczeniowych dla platformy Azure
 
@@ -44,7 +44,7 @@ Aby przypisać role, zobacz [Zarządzanie dostępem przy użyciu kontroli dostę
 ** Jeśli jesteś klientem z umową EA, właściciel konta może przypisać powyższą rolę innym użytkownikom w zespole. Jednak aby użytkownicy mogli wyświetlać informacje dotyczące rozliczeń, administrator przedsiębiorstwa musi włączyć wyświetlanie opłat przez właściciela konta w witrynie Enterprise Portal.
 
 
-### <a name="opt-in"></a> Zezwalanie użytkownikom na pobieranie faktur
+### <a name="allow-users-to-download-invoices"></a><a name="opt-in"></a> Zezwalanie użytkownikom na pobieranie faktur
 
 Po przypisaniu przez administratora konta odpowiednich ról innym użytkownikom muszą oni włączyć dostęp do pobierania faktur w witrynie Azure Portal. Faktury z datą starszą niż grudzień 2016 r. są dostępne tylko dla administratora konta.
 

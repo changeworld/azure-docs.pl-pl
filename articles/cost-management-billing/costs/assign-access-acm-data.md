@@ -1,24 +1,23 @@
 ---
 title: Przypisywanie dostępu do danych usługi Azure Cost Management
 description: W tym artykule omówiono przypisywanie uprawnień do danych usługi Azure Cost Management dla różnych zakresów dostępu.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/11/2020
+ms.date: 03/19/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: secdec18
-ms.openlocfilehash: 84637f74408724fec300a2a5cb49cd9f460ed395
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 56090798defd9209c3587aa701c88db6958d1b97
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201088"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80065838"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Przypisywanie dostępu do danych usługi Cost Management
 
-W przypadku użytkowników platformy Azure korzystających z umów Enterprise Agreement połączenie uprawnień udzielonych w witrynie Azure Portal i portalu Enterprise (EA) definiuje poziom dostępu użytkownika do danych usługi Azure Cost Management. W przypadku użytkowników z innymi typami kont platformy Azure definiowanie poziomu dostępu użytkownika do danych usługi Cost Management jest prostsze przy użyciu kontroli dostępu na podstawie ról na platformie Azure. W tym artykule przedstawiono sposób przypisywania dostępu do danych usługi Cost Management. Po przypisaniu kombinacji uprawnień użytkownik wyświetla dane w usłudze Cost Management na podstawie zakresu, do którego ma dostęp, oraz w zakresie wybranym przez niego w witrynie Azure Portal.
+W przypadku użytkowników platformy Azure korzystających z umów Enterprise Agreement połączenie uprawnień udzielonych w witrynie Azure Portal i portalu Enterprise (EA) definiuje poziom dostępu użytkownika do danych usługi Azure Cost Management. W przypadku użytkowników z innymi typami kont platformy Azure definiowanie poziomu dostępu użytkownika do danych usługi Cost Management jest prostsze przy użyciu kontroli dostępu na podstawie ról na platformie Azure. W tym artykule przedstawiono sposób przypisywania dostępu do danych usługi Cost Management. Po przypisaniu kombinacji uprawnień użytkownik wyświetla dane w usłudze Cost Management na podstawie jego zakresu dostępu oraz w zakresie wybranym przez niego w witrynie Azure Portal.
 
 Wybrany przez użytkownika zakres będzie stosowany w całej usłudze Cost Management w celu zapewnienia konsolidacji danych i kontrolowania dostępu do informacji o kosztach. W przypadku korzystania z zakresów użytkownicy nie dokonują ich wielokrotnego wyboru. Zamiast tego wybierają większy zakres, na który są rzutowane zakresy podrzędne, a następnie filtrują go w dół do elementów, które chcą wyświetlić. Konsolidacja danych jest ważna, ponieważ niektóre osoby nie powinny mieć dostępu do zakresu nadrzędnego, który obejmuje zakresy podrzędne.
 
@@ -58,11 +57,26 @@ Aby wyświetlać dane dotyczące kosztów dla innych subskrypcji platformy Azure
 
 Po dołączeniu klientów do umowy klienta firmy Microsoft przez partnerów dostępne są różne zakresy. Klienci programu CSP będą mogli wtedy korzystać z funkcji usługi Cost Management, jeśli zostały one włączone przez ich partnera CSP. Aby uzyskać więcej informacji, zobacz [Wprowadzenie do usługi Azure Cost Management dla partnerów](get-started-partners.md).
 
+## <a name="enable-access-to-costs-in-the-azure-portal"></a>Zapewnianie dostępu do kosztów w witrynie Azure Portal
+
+Zakres działu wymaga, aby opcja **administratorzy działu mogli wyświetlać opłaty** (Administrator działu — wyświetlanie opłat) miała ustawioną wartość **Włączone**. Skonfiguruj opcję w witrynie Azure Portal lub w portalu EA. Wszystkie inne zakresy wymagają, aby opcja **właściciele konta mogli wyświetlać opłaty** (Właściciel konta — wyświetlanie opłat) miała ustawioną wartość **Włączone**.
+
+Aby włączyć opcję w witrynie Azure Portal:
+
+1. Zaloguj się do portalu EA na stronie https://portal.azure.com przy użyciu konta administratora przedsiębiorstwa.
+1. Wybierz element menu **Zarządzanie kosztami i rozliczenia**.
+1. Wybierz pozycję **Zakresy rozliczeniowe**, aby wyświetlić listę dostępnych zakresów i kont rozliczeniowych.
+1. Wybierz **konto rozliczeniowe** z listy dostępnych kont rozliczeniowych.
+1. W obszarze **Ustawienia** wybierz element menu **Zasady**, a następnie skonfiguruj ustawienie.  
+    ![Zasady zakresu rozliczeniowego z opcjami wyświetlania opłat](./media/assign-access-acm-data/azure-portal-policies-view-charges.png)
+
+Po włączeniu opcji wyświetlania opłat większość zakresów wymaga również konfiguracji uprawnień kontroli dostępu na podstawie ról (RBAC) w witrynie Azure Portal.
+
 ## <a name="enable-access-to-costs-in-the-ea-portal"></a>Zapewnianie dostępu do kosztów w portalu EA
 
-Zakres działu wymaga, aby opcja **Wyświetlanie opłat dla administratora działu** miała stan **Włączone** w portalu EA. Wszystkie inne działy wymagają, aby opcja **Wyświetlanie opłat dla właściciela konta** miała stan **Włączone** w portalu EA.
+Zakres działu wymaga, aby opcja **Wyświetlanie opłat dla administratora działu** miała stan **Włączone** w portalu EA. Skonfiguruj opcję w witrynie Azure Portal lub w portalu EA. Wszystkie inne działy wymagają, aby opcja **Wyświetlanie opłat dla właściciela konta** miała stan **Włączone** w portalu EA.
 
-Aby włączyć opcję:
+Aby włączyć opcję w portalu EA:
 
 1. Zaloguj się do portalu EA na stronie [https://ea.azure.com](https://ea.azure.com) przy użyciu konta administratora przedsiębiorstwa.
 2. W lewym okienku wybierz pozycję **Zarządzaj**.
@@ -83,10 +97,10 @@ Dostęp do zakresu konta rozliczeniowego wymaga uprawnień administratora przeds
 2. W lewym okienku wybierz pozycję **Zarządzaj**.
 3. Na karcie **Rejestrowanie** wybierz rejestrację, którą chcesz zarządzać.  
     ![Wybierz swoją rejestrację w portalu EA](./media/assign-access-acm-data/ea-portal.png)
-4. Kliknij pozycję **+ Dodaj administratora**.
+4. Wybierz pozycję **+ Dodaj administratora**.
 5. W oknie Dodawanie administratora wybierz typ uwierzytelniania, a następnie wpisz adres e-mail użytkownika.
 6. Jeśli użytkownik powinien mieć dostęp tylko do odczytu do danych o kosztach i użyciu, w obszarze **Tylko do odczytu** wybierz opcję **Tak**.  W przeciwnym razie wybierz opcję **Nie**.
-7. Kliknij pozycję **Dodaj**, aby utworzyć konto.  
+7. Wybierz pozycję **Dodaj**, aby utworzyć konto.  
     ![Przykładowe informacje wyświetlane w oknie Dodawanie administratora](./media/assign-access-acm-data/add-admin.png)
 
 Może upłynąć do 30 minut, zanim nowy użytkownik będzie mógł uzyskać dostęp do danych w usłudze Cost Management.
@@ -98,11 +112,11 @@ Dostęp do zakresu działu wymaga dostępu administratora działu (Wyświetlanie
 1. Zaloguj się do portalu EA na stronie [https://ea.azure.com](https://ea.azure.com) przy użyciu konta administratora przedsiębiorstwa.
 2. W lewym okienku wybierz pozycję **Zarządzaj**.
 3. Na karcie **Rejestrowanie** wybierz rejestrację, którą chcesz zarządzać.
-4. Kliknij kartę **Dział**, a następnie kliknij pozycję **Dodaj administratora**.
+4. Wybierz kartę **Dział**, a następnie pozycję **Dodaj administratora**.
 5. W oknie Dodawanie administratora działu wybierz typ uwierzytelniania, a następnie wpisz adres e-mail użytkownika.
 6. Jeśli użytkownik powinien mieć dostęp tylko do odczytu do danych o kosztach i użyciu, w obszarze **Tylko do odczytu** wybierz opcję **Tak**.  W przeciwnym razie wybierz opcję **Nie**.
 7. Wybierz działy, do których chcesz udzielić uprawnień administracyjnych działu.
-8. Kliknij pozycję **Dodaj**, aby utworzyć konto.  
+8. Wybierz pozycję **Dodaj**, aby utworzyć konto.  
     ![Wprowadź wymagane informacje w oknie Dodawanie administratora działu](./media/assign-access-acm-data/add-depart-admin.png)
 
 ## <a name="assign-enrollment-account-scope-access"></a>Przypisywanie dostępu do zakresu konta rejestracji
@@ -112,11 +126,11 @@ Dostęp do zakresu konta rejestracji wymaga dostępu właściciela konta (Wyświ
 1. Zaloguj się do portalu EA na stronie [https://ea.azure.com](https://ea.azure.com) przy użyciu konta administratora przedsiębiorstwa.
 2. W lewym okienku wybierz pozycję **Zarządzaj**.
 3. Na karcie **Rejestrowanie** wybierz rejestrację, którą chcesz zarządzać.
-4. Kliknij kartę **Konto**, a następnie kliknij pozycję **Dodaj konto**.
+4. Wybierz kartę **Konto**, a następnie pozycję **Dodaj konto**.
 5. W oknie Dodawanie konta wybierz **Dział**, z którym chcesz skojarzyć konto, lub pozostaw je nieprzypisane.
 6. Wybierz typ uwierzytelniania i wpisz nazwę konta.
 7. Wpisz adres e-mail użytkownika, a następnie opcjonalnie wpisz centrum kosztu.
-8. Kliknij przycisk **Dodaj**, aby utworzyć konto.  
+8. Wybierz pozycję **Dodaj**, aby utworzyć konto.  
     ![Wprowadź wymagane informacje w oknie Dodawanie konta dla konta rejestracji](./media/assign-access-acm-data/add-account.png)
 
 Po wykonaniu powyższych czynności konto użytkownika stanie się kontem rejestracji w witrynie Enterprise Portal i będzie mogło tworzyć subskrypcje. Użytkownik może uzyskiwać dostęp do danych o kosztach i użyciu dla utworzonych przez siebie subskrypcji.
@@ -128,13 +142,13 @@ Dostęp do wyświetlania zakresu grupy zarządzania wymaga co najmniej uprawnien
 1. Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 2. Na pasku bocznym wybierz pozycję **Wszystkie usługi**, wyszukaj _grupy zarządzania_, a następnie wybierz pozycję **Grupy zarządzania**.
 3. Wybierz grupę zarządzania w hierarchii.
-4. Obok nazwy swojej grupy zarządzania kliknij pozycję **Szczegóły**.
+4. Obok nazwy swojej grupy zarządzania wybierz pozycję **Szczegóły**.
 5. W lewym okienku wybierz pozycję **Kontrola dostępu (IAM)** .
-6. Kliknij pozycję **Add** (Dodaj).
+6. Wybierz pozycję **Dodaj**.
 7. W obszarze **Rola** wybierz pozycję **Cost Management — czytelnik**.
 8. W obszarze **Przypisz dostęp do** wybierz pozycję **Użytkownik usługi Azure AD, grupa lub aplikacja**.
 9. Aby przypisać dostęp, wyszukaj, a następnie wybierz użytkownika.
-10. Kliknij pozycję **Zapisz**.  
+10. Wybierz pozycję **Zapisz**.  
     ![Przykładowe informacje w oknie Dodawanie uprawnień dla grupy zarządzania](./media/assign-access-acm-data/add-permissions.png)
 
 ## <a name="assign-subscription-scope-access"></a>Przypisywanie dostępu do zakresu subskrypcji
@@ -145,11 +159,11 @@ Dostęp do subskrypcji wymaga co najmniej uprawnienia Cost Management — czytel
 2. Na pasku bocznym wybierz pozycję **Wszystkie usługi**, wyszukaj _subskrypcje_, a następnie wybierz pozycję **Subskrypcje**.
 3. Wybierz subskrypcję.
 4. W lewym okienku wybierz pozycję **Kontrola dostępu (IAM)** .
-5. Kliknij pozycję **Add** (Dodaj).
+5. Wybierz pozycję **Dodaj**.
 6. W obszarze **Rola** wybierz pozycję **Cost Management — czytelnik**.
 7. W obszarze **Przypisz dostęp do** wybierz pozycję **Użytkownik usługi Azure AD, grupa lub aplikacja**.
 8. Aby przypisać dostęp, wyszukaj, a następnie wybierz użytkownika.
-9. Kliknij pozycję **Zapisz**.
+9. Wybierz pozycję **Zapisz**.
 
 ## <a name="assign-resource-group-scope-access"></a>Przypisywanie dostępu do zakresu grupy zasobów
 
@@ -159,11 +173,11 @@ Dostęp do grupy zasobów wymaga co najmniej uprawnienia Cost Management — czy
 2. Na pasku bocznym wybierz pozycję **Wszystkie usługi**, wyszukaj _grupy zasobów_, a następnie wybierz pozycję **Grupy zasobów**.
 3. Wybierz swoją grupę zasobów.
 4. W lewym okienku wybierz pozycję **Kontrola dostępu (IAM)** .
-5. Kliknij pozycję **Add** (Dodaj).
+5. Wybierz pozycję **Dodaj**.
 6. W obszarze **Rola** wybierz pozycję **Cost Management — czytelnik**.
 7. W obszarze **Przypisz dostęp do** wybierz pozycję **Użytkownik usługi Azure AD, grupa lub aplikacja**.
 8. Aby przypisać dostęp, wyszukaj, a następnie wybierz użytkownika.
-9. Kliknij pozycję **Zapisz**.
+9. Wybierz pozycję **Zapisz**.
 
 ## <a name="cross-tenant-authentication-issues"></a>Problemy z uwierzytelnianiem w wielu dzierżawach
 

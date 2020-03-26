@@ -1,26 +1,28 @@
 ---
-title: Konfigurowanie kont magazynu dla platformy Cloudyn na platformie Azure | Microsoft Docs
+title: Konfigurowanie kont magazynu dla platformy Cloudyn na platformie Azure
 description: W tym artykule opisano sposób konfigurowania kont magazynu platformy Azure i zasobników magazynu platformy AWS dla platformy Cloudyn.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: secdec18
-ms.openlocfilehash: ec6c68d209f867ab3547e855f3cf754bc27d53c5
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ROBOTS: NOINDEX
+ms.openlocfilehash: c741f303958630415d54cabc62c04430f0b8b89d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77117629"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474598"
 ---
 # <a name="configure-storage-accounts-for-cloudyn"></a>Konfigurowanie kont magazynu dla platformy Cloudyn
 
 <!--- intent: As a Cloudyn user, I want to configure Cloudyn to use my cloud service provider storage account to store my reports. -->
 
 Raporty Cloudyn można zapisywać w portalu Cloudyn, magazynie platformy Azure lub zasobnikach magazynu platformy AWS. Zapisywanie raportów w portalu Cloudyn jest bezpłatne. Natomiast zapisywanie raportów w magazynie dostawcy usług w chmurze jest opcjonalne i wiąże się z dodatkowymi kosztami. Ten artykuł pomaga w konfigurowaniu kont magazynu platformy Azure oraz zasobników magazynu platformy Amazon Web Services (AWS) w celu przechowywania raportów.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

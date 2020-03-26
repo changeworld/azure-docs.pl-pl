@@ -5,36 +5,24 @@ author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/24/2020
+ms.date: 03/24/2020
 ms.author: banders
-ms.openlocfilehash: 77d663fa01e24acf63acd68d0b8d7cf4cc741055
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: ede60adc13dadc38e18ee5ade468e01b16523f4f
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587094"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80235747"
 ---
 # <a name="purchase-reservations-with-monthly-payments"></a>Kupowanie rezerwacji platformy Azure przy użyciu płatności miesięcznych
 
-Do tej pory rezerwacje platformy Azure wymagały przedpłat. Teraz można płacić za rezerwacje przy użyciu płatności miesięcznych. W przeciwieństwie do zakupu z góry, gdy płacisz pełną kwotę, opcja płatności miesięcznych umożliwia równe podzielenie łącznego kosztu rezerwacji między wszystkie miesiące w danym okresie. Łączny koszt rezerwacji w przypadku płatności z góry i miesięcznych rat jest taki sam, a wybór płatności miesięcznych nie pociąga za sobą dodatkowych opłat.
+Możesz płacić za rezerwacje przy użyciu płatności miesięcznych. W przeciwieństwie do zakupu z góry, gdy płacisz pełną kwotę, opcja płatności miesięcznych umożliwia równe podzielenie łącznego kosztu rezerwacji między wszystkie miesiące w danym okresie. Łączny koszt rezerwacji w przypadku płatności z góry i miesięcznych rat jest taki sam, a wybór płatności miesięcznych nie pociąga za sobą dodatkowych opłat.
 
-Miesięczna kwota płatności może różnić się w zależności od obowiązującego w danym miesiącu rynkowego kursu wymiany waluty lokalnej.
+Jeśli rezerwacja została zakupiona w ramach umowy klienta firmy Microsoft, miesięczna kwota płatności może różnić się w zależności od obowiązującego w danym miesiącu rynkowego kursu wymiany waluty lokalnej.
 
-Miesięczne płatności są dostępne w przypadku następujących rozwiązań:
+Miesięczne płatności nie są dostępne w przypadku następujących rozwiązań: Databricks, rezerwacje systemu SUSE Linux, plany oprogramowania Red Hat i Azure Red Hat OpenShift Compute.
 
-- Maszyny wirtualne
-- Azure Storage
-- Bazy danych SQL
-- SQL Data Warehouse
-- Cosmos DB
-- App Service — podatek od czynności cywilnoprawnych
-- Dysk zarządzany
-- Azure Data Explorer
-- Azure Database for MariaDB, MySQL i PostgreSQL
-- Azure VMware Solution by CloudSimple
-
-
-Rezerwacje można kupować w witrynie [Azure Portal](https://portal.azure.com/?Microsoft_Azure_Reservations_EnableMultiCart=true&amp;paymentPlan=true#blade/Microsoft_Azure_Reservations/CreateBlade).
+Rezerwacje można kupować w witrynie [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Docs).
 
 ![Przykład przedstawiający zakup rezerwacji](./media/monthly-payments-reservations/purchase-reservation.png)
 
@@ -58,11 +46,11 @@ Podczas odnawiania rezerwacji można zmienić częstotliwość rozliczeń na mie
 
 ## <a name="exchange-and-refunds"></a>Wymiana i zwroty
 
-Podobnie jak w przypadku innych rezerwacji, można uzyskiwać zwroty rezerwacji zakupionych w ramach rozliczeń miesięcznych lub wymieniać te rezerwacje. Obecnie możesz przesłać wniosek o pomoc techniczną, aby rozpocząć wymianę lub zwrot dla rezerwacji zakupionej w ramach rozliczeń miesięcznych.
+Podobnie jak w przypadku innych rezerwacji, można uzyskiwać zwroty rezerwacji zakupionych w ramach rozliczeń miesięcznych lub wymieniać te rezerwacje. 
 
 Podczas wymiany rezerwacji opłacanej miesięcznie łączny koszt okresu istnienia nowego zakupu powinien być większy niż pozostałe płatności, które są anulowane dla zwróconej rezerwacji. Nie istnieją inne limity ani opłaty dotyczące wymian. Możesz wymienić rezerwację płatną z góry, aby kupić nową rezerwację, która jest rozliczana miesięcznie. Jednak wartość okresu istnienia nowej rezerwacji powinna być większa niż proporcjonalna wartość zwracanej rezerwacji.
 
-Jeśli anulujesz rezerwację opłacaną miesięcznie, firma Microsoft może zastosować opłatę za anulowanie w wysokości 12% do anulowanych zatwierdzonych płatności. Jednak firma Microsoft obecnie nie nalicza tej kary. Anulowane płatności w ramach zobowiązania są wliczane do limitu zwrotu wynoszącego 50 000 USD. W przypadku naliczania kary za anulowanie nie ma ona wpływu na limit zwrotu.
+Jeśli anulujesz rezerwację opłacaną miesięcznie, anulowane przyszłe płatności są wliczane do limitu zwrotu wynoszącego 50 000 USD.
 
 Aby uzyskać więcej informacji o wymianach i zwrotach, zobacz temat [Self-service exchanges and refunds for Azure Reservations](exchange-and-refund-azure-reservations.md) (Samoobsługowe wymiany i zwroty kosztów dla rezerwacji platformy Azure).
 
