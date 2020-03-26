@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
 ms.openlocfilehash: ff439083ca9c648ceec95b89b041bb5b60785c91
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77603006"
 ---
 # <a name="linux-virtual-machines-documentation"></a>Dokumentacja dotycząca maszyn wirtualnych z systemem Linux
@@ -48,7 +48,7 @@ Dowiedz się, jak wdrażać i skalować maszyny wirtualne z systemem Linux na pl
 
 - [Administrator platformy Azure](https://go.microsoft.com/fwlink/?linkid=2012827)
 
-## <a name="samples"></a>Samples 
+## <a name="samples"></a>Przykłady 
 
 Wdrażanie pierwszej aplikacji na platformie Azure.
 
