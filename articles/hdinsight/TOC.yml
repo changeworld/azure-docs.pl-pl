@@ -19,6 +19,8 @@
           href: ./hdinsight-administer-use-powershell.md
         - name: Tworzenie klastrów przy użyciu elementów Runbook
           href: ./manage-clusters-runbooks.md
+        - name: Powiadomienia e-mail w usłudze Apache Ambari
+          href: ./apache-ambari-email.md
         - name: Tworzenie potoku ETL
           href: ./hdinsight-sales-insights-etl.md
     - name: Samples
@@ -272,7 +274,8 @@
           href: ./spark/apache-spark-jupyter-spark-sql-use-powershell.md
         - name: Tworzenie klastra platformy Apache Spark — interfejs wiersza polecenia platformy Azure
           href: ./spark/apache-spark-create-cluster-cli.md
-        - name: Tworzenie klastra platformy Apache Spark — szablon
+        - name: Tworzenie klastra platformy Apache Spark — szablon usługi ARM
+          displayName: Resource Manager
           href: ./spark/apache-spark-jupyter-spark-sql.md
     - name: Samouczki
       items:
@@ -416,8 +419,8 @@
       items:
         - name: Tworzenie klastra Apache Hadoop — portal
           href: ./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md
-        - name: Tworzenie klastra Apache Hadoop — szablon
-          displayName: 'resource manager template, arm template, resource manager group'
+        - name: Tworzenie klastra Apache Hadoop — szablon usługi ARM
+          displayName: Resource Manager
           href: ./hadoop/apache-hadoop-linux-tutorial-get-started.md
     - name: Samouczki
       items:
@@ -435,8 +438,54 @@
               href: use-pig.md
         - name: Programowanie
           items:
-            - name: Używanie pustych węzłów brzegowych
-              href: ./hdinsight-apps-use-edge-node.md
+            - name: Korzystanie z technologii MapReduce z usługą Apache Hadoop
+              items:
+                - name: MapReduce — omówienie
+                  href: ./hadoop/hdinsight-use-mapreduce.md
+                - name: Korzystanie z protokołu SSH
+                  href: ./hadoop/apache-hadoop-use-mapreduce-ssh.md
+                - name: Korzystanie z programu cURL
+                  href: ./hadoop/apache-hadoop-use-mapreduce-curl.md
+                - name: Korzystanie z programu Azure PowerShell
+                  href: ./hadoop/apache-hadoop-use-mapreduce-powershell.md
+                - name: "Korzystanie z\_zestawu SDK środowiska .NET"
+                  href: ./hadoop/apache-hadoop-use-mapreduce-dotnet-sdk.md
+                - name: Uruchamianie przykładów technologii MapReduce
+                  href: ./hadoop/apache-hadoop-run-samples-linux.md
+                - name: Uruchamianie niestandardowych programów MapReduce na platformie Apache Hadoop
+                  href: ./hadoop/apache-hadoop-run-custom-programs.md
+                - name: 'Tworzenie programów MapReduce przesyłania strumieniowego w języku C#'
+                  href: ./hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md
+                - name: Opracowywanie programów MapReduce w języku Java
+                  href: ./hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
+            - name: 'Używanie programu Apache Hive jako narzędzia do wyodrębniania, przekształcania i ładowania (ETL)'
+              href: ./hadoop/apache-hadoop-using-apache-hive-as-an-etl-tool.md
+            - name: 'Wyodrębnianie, przekształcanie i ładowanie na dużą skalę'
+              href: ./hadoop/apache-hadoop-etl-at-scale.md
+            - name: Tworzenie aplikacji usługi HDInsight platformy .NET z uwierzytelnianiem nieinterakcyjnym
+              href: ./hdinsight-create-non-interactive-authentication-dotnet-applications.md
+            - name: Analizowanie danych big data
+              items:
+                - name: Analizowanie przy użyciu dodatku Power Query
+                  href: ./hadoop/apache-hadoop-connect-excel-power-query.md
+                - name: Łączenie usługi Power BI z zapytaniem interaktywnym
+                  href: ./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md
+                - name: Łączenie usługi Power BI z usługą Apache Hadoop
+                  href: ./hadoop/apache-hadoop-connect-hive-power-bi.md
+                - name: Łączenie programu Excel z usługą Apache Hadoop
+                  href: ./hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md
+                - name: Nawiązywanie połączenia przy użyciu sterownika JDBC technologii Apache Hive
+                  href: ./hadoop/apache-hadoop-connect-hive-jdbc-driver.md
+                - name: Analizowanie przechowywanych tweetów
+                  href: ./hdinsight-analyze-twitter-data-linux.md
+                - name: Generowanie rekomendacji za pomocą biblioteki Apache Mahout
+                  href: ./hadoop/apache-hadoop-mahout-linux-mac.md
+                - name: Zaawansowana analiza dla usługi HDInsight
+                  href: ./hadoop/apache-hadoop-deep-dive-advanced-analytics.md
+            - name: Zarządzanie
+              items:
+                - name: Używanie pustych węzłów brzegowych
+                  href: ./hdinsight-apps-use-edge-node.md
         - name: Rozwiązywanie problemów
           items:
             - name: Typowe problemy
@@ -499,8 +548,8 @@
           href: ./kafka/apache-kafka-get-started.md
         - name: Tworzenie klastra platformy Apache Kafka — PowerShell
           href: ./kafka/apache-kafka-quickstart-powershell.md
-        - name: Tworzenie klastra platformy Apache Kafka — szablon
-          displayName: 'resource manager template, arm template, resource manager group'
+        - name: Tworzenie klastra platformy Apache Kafka — szablon usługi ARM
+          displayName: Resource Manager
           href: ./kafka/apache-kafka-quickstart-resource-manager-template.md
     - name: Samouczki
       items:
@@ -564,6 +613,9 @@
           href: ./hbase/apache-hbase-overview.md
     - name: Przewodniki Szybki start
       items:
+        - name: Tworzenie klastra oprogramowania Apache HBase — szablon usługi ARM
+          displayName: Resource Manager
+          href: ./hbase/quickstart-resource-manager-template.md
         - name: Wykonywanie zapytań w bazie danych Apache HBase — Apache Phoenix
           href: ./hbase/apache-hbase-query-with-phoenix.md
         - name: Wykonywanie zapytań w bazie danych Apache HBase — powłoka bazy danych HBase
@@ -636,6 +688,9 @@
           href: ./interactive-query/apache-interactive-query-get-started.md
     - name: Przewodniki Szybki start
       items:
+        - name: Tworzenie klastra Interactive Query — szablon usługi ARM
+          displayName: Resource Manager
+          href: ./interactive-query/quickstart-resource-manager-template.md
         - name: Wykonywanie zapytań usługi Apache Hive — Apache Zeppelin
           href: ./interactive-query/hdinsight-connect-hive-zeppelin.md
     - name: Samouczki
@@ -718,6 +773,9 @@
           href: ./r-server/r-server-overview.md
     - name: Przewodniki Szybki start
       items:
+        - name: Tworzenie klastra usług ML — szablon usługi ARM
+          displayName: Resource Manager
+          href: ./r-server/quickstart-resource-manager-template.md
         - name: Przykładowe zadanie — RStudio Server
           href: ./r-server/machine-learning-services-quickstart-job-rstudio.md
         - name: Przykładowe zadanie — konsola języka R
@@ -800,8 +858,6 @@
           href: ./domain-joined/hdinsight-security-overview.md
     - name: Samouczki
       items:
-        - name: Ograniczanie ruchu wychodzącego za pomocą zapory
-          href: ./hdinsight-restrict-outbound-traffic.md
         - name: Kontrola dostępu na podstawie ról platformy Apache HBase z użyciem usługi Apache Ranger
           href: ./domain-joined/apache-domain-joined-run-hbase.md
         - name: Kontrola dostępu na podstawie ról platformy Apache Hive z użyciem usługi Apache Ranger
@@ -850,6 +906,8 @@
           href: ./domain-joined/ssh-domain-accounts.md
         - name: Zabezpieczanie danych
           href: ./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
+        - name: Ograniczanie ruchu wychodzącego za pomocą zapory
+          href: ./hdinsight-restrict-outbound-traffic.md
         - name: Rozwiązywanie problemów
           items:
             - name: Problemy z uwierzytelnianiem standardu ESP

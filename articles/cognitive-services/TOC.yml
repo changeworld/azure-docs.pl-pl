@@ -7,12 +7,28 @@
       href: Welcome.md
     - name: Usługi Cognitive Services i uczenie maszynowe
       href: cognitive-services-and-machine-learning.md
-    - name: Sieci wirtualne dla usługi Cognitive Services
-      href: cognitive-services-virtual-networks.md
     - name: Niestandardowe poddomeny usług Cognitive Services
       href: cognitive-services-custom-subdomains.md
     - name: Obsługa języków
       href: language-support.md
+- name: Przewodniki Szybki start
+  items:
+    - name: Tworzenie nowego zasobu przy użyciu witryny Azure Portal
+      href: cognitive-services-apis-create-account.md
+    - name: Tworzenie nowego zasobu przy użyciu interfejsu wiersza polecenia platformy Azure
+      href: cognitive-services-apis-create-account-cli.md
+    - name: Rejestrowanie diagnostyczne
+      href: diagnostic-logging.md
+- name: Zabezpieczenia
+  items:
+    - name: Zabezpieczenia usług Cognitive Services
+      href: cognitive-services-security.md
+    - name: Sieci wirtualne dla usługi Cognitive Services
+      href: cognitive-services-virtual-networks.md
+    - name: Konfigurowanie kluczy zarządzanych przez klienta
+      href: ./encryption/cognitive-services-encryption-keys-portal.md
+    - name: Uwierzytelnianie żądań w usługach Cognitive Services
+      href: authentication.md
 - name: Obsługa kontenerów
   items:
     - name: Obsługa kontenerów
@@ -39,16 +55,6 @@
           href: ../container-registry/container-registry-get-started-azure-cli.md
         - name: Azure Kubernetes Service (AKS)
           href: ../aks/tutorial-kubernetes-prepare-app.md
-- name: Przewodniki Szybki start
-  items:
-    - name: Tworzenie nowego zasobu przy użyciu witryny Azure Portal
-      href: cognitive-services-apis-create-account.md
-    - name: Tworzenie nowego zasobu przy użyciu interfejsu wiersza polecenia platformy Azure
-      href: cognitive-services-apis-create-account-cli.md
-    - name: Authentication
-      href: authentication.md
-    - name: Rejestrowanie diagnostyczne
-      href: diagnostic-logging.md
 - name: Zasoby
   items:
     - name: Harmonogram działania dla platformy Azure
@@ -69,7 +75,7 @@
       href: 'https://azure.microsoft.com/blog/topics/cognitive-services/'
     - name: Aktualizacje usług
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
-    - name: Przekazywanie opinii o produkcie
+    - name: Przekazywanie opinii dotyczących produktów
       href: 'https://cognitive.uservoice.com/'
     - name: Kodeks postępowania
       href: 'https://go.microsoft.com/fwlink/?LinkId=698895'

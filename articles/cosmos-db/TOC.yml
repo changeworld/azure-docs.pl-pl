@@ -549,8 +549,8 @@
           href: role-based-access-control.md
         - href: cosmos-db-advanced-threat-protection.md
           name: Zaawansowana ochrona przed zagrożeniami
-        - name: Wbudowane mechanizmy zabezpieczeń
-          href: cosmos-db-security-controls.md
+        - name: Punkt odniesienia zabezpieczeń
+          href: security-baseline.md
     - name: Gotowość przedsiębiorstwa
       items:
         - name: Tworzenie kopii zapasowych w trybie online i ich przywracanie na żądanie
@@ -600,8 +600,8 @@
             - name: Źródło zmian
               href: cassandra-change-feed.md
             - name: Magazynowanie danych rozwiązania Spring Data i zarządzanie nimi
-              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
-            - name: Cassandra i Spark
+              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?context=/azure/cosmos-db/context/context'
+            - name: Oprogramowanie Cassandra i Spark
               items:
                 - name: Wprowadzenie
                   href: cassandra-spark-generic.md
@@ -709,7 +709,7 @@
             - name: Zarządzanie indeksowaniem danych
               href: mongodb-indexing.md
             - name: Magazynowanie danych rozwiązania Spring Data i zarządzanie nimi
-              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
+              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: Polecenia rozszerzenia bazy danych MongoDB
               href: mongodb-custom-commands.md
               displayName: custom commands
@@ -776,7 +776,7 @@
             - name: Wizualizowanie danych grafu
               href: graph-visualization.md
             - name: Magazynowanie danych rozwiązania Spring Data i zarządzanie nimi
-              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
+              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: Zarządzanie przy użyciu szablonów usługi Resource Manager
               href: manage-gremlin-with-resource-manager.md
               displayName: ARM
@@ -989,11 +989,11 @@
           href: use-notebook-features-and-commands.md
     - name: Programowanie po stronie serwera
       items:
-        - name: 'Zapisywanie procedur składowanych, wyzwalaczy i funkcji definiowanych przez użytkownika (UDF)'
+        - name: 'Pisanie procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika'
           href: how-to-write-stored-procedures-triggers-udfs.md
-        - name: Zapisywanie procedur składowanych i wyzwalaczy za pomocą interfejsu API zapytań JavaScript
+        - name: Pisanie procedur składowanych i wyzwalaczy za pomocą interfejsu API zapytań języka JavaScript
           href: how-to-write-javascript-query-api.md
-        - name: 'Używanie procedur składowanych, wyzwalaczy i funkcji definiowanych przez użytkownika (UDF)'
+        - name: 'Używanie procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika'
           href: how-to-use-stored-procedures-triggers-udfs.md
     - name: Zabezpieczenia
       items:
@@ -1073,9 +1073,9 @@
         - name: Usługi Azure Event Hubs i Azure Storage
           href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
         - name: Używanie programu Spring Boot Starter
-          href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
+          href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?context=/azure/cosmos-db/context/context'
         - name: Przewodnik dla deweloperów danych Spring
-          href: 'https://docs.microsoft.com/azure/java/spring-framework/how-to-guides-spring-data-cosmosdb?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
+          href: 'https://docs.microsoft.com/azure/java/spring-framework/how-to-guides-spring-data-cosmosdb?context=/azure/cosmos-db/context/context'
         - name: Sterownik ODBC
           href: odbc-driver.md
     - name: Migracja danych do usługi Cosmos DB

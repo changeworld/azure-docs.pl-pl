@@ -68,7 +68,7 @@
               href: manage-certificates-for-federated-single-sign-on.md
             - name: Ograniczenia dzierżawy
               href: tenant-restrictions.md
-            - name: Konfigurowanie szyfrowania tokenu języka SAML (wersja zapoznawcza)
+            - name: Konfigurowanie szyfrowania tokenu SAML
               href: howto-saml-token-encryption.md
             - name: Portale użytkowników końcowych
               href: end-user-experiences.md
@@ -139,9 +139,7 @@
               href: grant-admin-consent.md
             - name: Konfigurowanie przepływu pracy zgody administratora (wersja zapoznawcza)
               href: configure-admin-consent-workflow.md
-            - name: Metody przypisywania użytkowników i grup do aplikacji
-              href: methods-for-assigning-users-and-groups.md
-            - name: Przypisywanie użytkownika do aplikacji
+            - name: Przypisywanie użytkownika lub grupy do aplikacji
               href: assign-user-or-group-access-portal.md
             - name: Tworzenie kolekcji w Moich aplikacjach
               href: access-panel-collections.md

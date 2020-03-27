@@ -23,23 +23,10 @@
       href: tutorial-restrict-network-access-to-resources.md
     - name: Łączenie sieci wirtualnych
       href: tutorial-connect-virtual-networks-portal.md
-    - name: NAT
-      items:
-        - name: Tworzenie bramy translatora adresów sieciowych — portal
-          href: quickstart-create-nat-gateway-portal.md
-        - name: Tworzenie bramy translatora adresów sieciowych — PowerShell
-          href: quickstart-create-nat-gateway-powershell.md
-        - name: Tworzenie bramy translatora adresów sieciowych — interfejs wiersza polecenia
-          href: quickstart-create-nat-gateway-cli.md
-        - name: Tworzenie bramy translatora adresów sieciowych — szablon usługi Resource Manager
-          displayname: Resource Manager
-          href: quickstart-create-nat-gateway-template.md
-        - name: Tworzenie i weryfikowanie bramy translatora adresów sieciowych — portal
-          href: tutorial-create-validate-nat-gateway-portal.md
-        - name: Tworzenie i weryfikowanie bramy translatora adresów sieciowych — PowerShell
-          href: tutorial-create-validate-nat-gateway-powershell.md
-        - name: Tworzenie i weryfikowanie bramy translatora adresów sieciowych — interfejs wiersza polecenia
-          href: tutorial-create-validate-nat-gateway-cli.md
+    - name: Tworzenie bramy translatora adresów sieciowych
+      href: quickstart-create-nat-gateway-portal.md
+    - name: Tworzenie i weryfikowanie bramy translatora adresów sieciowych
+      href: tutorial-create-validate-nat-gateway-portal.md
 - name: Samples
   items:
     - name: Interfejs wiersza polecenia platformy Azure
@@ -359,6 +346,19 @@
           href: move-across-regions-publicip-portal.md
         - name: Publiczne adresy IP — program PowerShell
           href: move-across-regions-publicip-powershell.md
+    - name: NAT
+      items:
+        - name: Tworzenie bramy translatora adresów sieciowych — PowerShell
+          href: quickstart-create-nat-gateway-powershell.md
+        - name: Tworzenie bramy translatora adresów sieciowych — interfejs wiersza polecenia
+          href: quickstart-create-nat-gateway-cli.md
+        - name: Tworzenie bramy translatora adresów sieciowych — szablon usługi Resource Manager
+          displayname: Resource Manager
+          href: quickstart-create-nat-gateway-template.md
+        - name: Tworzenie i weryfikowanie bramy translatora adresów sieciowych — PowerShell
+          href: tutorial-create-validate-nat-gateway-powershell.md
+        - name: Tworzenie i weryfikowanie bramy translatora adresów sieciowych — interfejs wiersza polecenia
+          href: tutorial-create-validate-nat-gateway-cli.md
     - name: Rozwiązywanie problemów
       items:
         - name: Rozwiązywanie problemów dotyczących komunikacji równorzędnej sieci wirtualnych

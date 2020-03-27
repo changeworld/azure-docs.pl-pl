@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Dokumentacja usługi Azure Machine Learning
-summary: Usługa Azure Machine Learning oferuje interfejsy internetowe i zestawy SDK, dzięki czemu możesz szybko trenować i wdrażać modele i potoki uczenia maszynowego na dużą skalę. Korzystaj z tych możliwości za pośrednictwem platform typu open source języka Python, takich jak PyTorch, TensorFlow i scikit-learn.
+summary: Dowiedz się, jak używać usługi Azure Machine Learning do trenowania i wdrażania modeli i potoków uczenia maszynowego oraz zarządzania nimi na dużą skalę. Samouczki, przykłady kodu, dokumentacje interfejsów API i inne materiały przedstawiają, jak to zrobić.
 metadata:
   title: Dokumentacja usługi Azure Machine Learning
-  description: Usługa Azure Machine Learning oferuje interfejsy internetowe i zestawy SDK, aby umożliwić szybkie trenowanie i wdrażanie modeli i potoków uczenia maszynowego na dużą skalę. Korzystaj z tych możliwości za pośrednictwem platform typu open source języka Python, takich jak PyTorch, TensorFlow i scikit-learn.
+  description: Dowiedz się, jak używać usługi Azure Machine Learning do trenowania i wdrażania modeli i potoków uczenia maszynowego oraz zarządzania nimi na dużą skalę. Samouczki, przykłady kodu, dokumentacje interfejsów API i inne materiały przedstawiają, jak to zrobić.
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: core
@@ -11,39 +11,33 @@ metadata:
   ms.collection: collection
   author: j-martens
   ms.author: jmartens
-  ms.date: 03/05/2020
-  ms.openlocfilehash: 5165456617193f4701b1bc635c103d0719c8f403
-  ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+  ms.date: 03/18/2020
+  ms.openlocfilehash: 5855d523bf32798166ab32b6ff336cae95e81ca1
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 03/05/2020
-  ms.locfileid: "78328561"
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "80063953"
 landingContent:
-- title: Rozpoczynanie pracy z usługą Azure ML
+- title: Wprowadzenie do uczenia maszynowego
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Eksperymentowanie w notesach języka Python
+    - text: Notesy języka Python
       url: tutorial-1st-experiment-sdk-setup.md
-    - text: Eksperymentowanie w aplikacji RStudio
-      url: tutorial-1st-r-experiment.md
-    - text: Eksperymentowanie przy użyciu projektanta umożliwiającego przeciąganie i upuszczanie
+    - text: Projektant (przeciąganie i upuszczanie)
       url: tutorial-designer-automobile-price-train-score.md
-    - text: Eksperymentowanie ze zautomatyzowanym uczeniem maszynowym
+    - text: RStudio
+      url: tutorial-1st-r-experiment.md
+    - text: Automatyczne uczenie maszynowe
       url: tutorial-first-experiment-automated-ml.md
   - linkListType: overview
     links:
-    - text: Co to jest usługa Azure ML?
+    - text: Co to jest usługa Azure Machine Learning?
       url: overview-what-is-azure-ml.md
     - text: Architektura i pojęcia
       url: concept-azure-machine-learning-architecture.md
-  - linkListType: how-to-guide
-    links:
-    - text: Konfigurowanie środowiska
-      url: how-to-configure-environment.md
-    - text: Konfigurowanie celów obliczeniowych trenowania
-      url: how-to-set-up-training-targets.md
-- title: 'Eksperyment: Zestaw SDK dla języka Python'
+- title: Używanie zestawu Python SDK
   linkLists:
   - linkListType: tutorial
     links:
@@ -51,10 +45,12 @@ landingContent:
       url: tutorial-1st-experiment-sdk-setup.md
     - text: Klasyfikowanie obrazów
       url: tutorial-train-models-with-aml.md
-    - text: Przewidywanie opłat za taksówkę przy użyciu zautomatyzowanego uczenia maszynowego
+    - text: Przewidywanie opłat za taksówkę za pomocą usługi Auto ML
       url: tutorial-auto-train-models.md
   - linkListType: how-to-guide
     links:
+    - text: Konfigurowanie środowiska
+      url: how-to-configure-environment.md
     - text: Trenowanie za pomocą programu Scikit-learn
       url: how-to-train-scikit-learn.md
     - text: Trenowanie za pomocą programu TensorFlow
@@ -63,28 +59,20 @@ landingContent:
       url: how-to-train-pytorch.md
     - text: Trenowanie za pomocą programu Keras
       url: how-to-train-keras.md
-- title: Używanie potoków uczenia maszynowego
+- title: Tworzenie potoków uczenia maszynowego
   linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Tworzenie potoków uczenia maszynowego (Python)
+      url: tutorial-pipeline-batch-scoring-classification.md
+    - text: Regresja liniowa do przewidywania cen (projektant)
+      url: tutorial-designer-automobile-price-train-score.md
   - linkListType: overview
     links:
     - text: Co to są potoki uczenia maszynowego?
       url: concept-ml-pipelines.md
-    - text: Projektant obsługujący metodę „przeciągnij i upuść”
+    - text: Co to jest projektant?
       url: concept-designer.md
-  - linkListType: tutorial
-    links:
-    - text: Regresja liniowa do przewidywania cen (projektant)
-      url: tutorial-designer-automobile-price-train-score.md
-    - text: Tworzenie potoków uczenia maszynowego (zestaw SDK języka Python)
-      url: tutorial-pipeline-batch-scoring-classification.md
-  - linkListType: how-to-guide
-    links:
-    - text: Planowanie potoków (zestaw SDK języka Python)
-      url: how-to-schedule-pipelines.md
-    - text: Przewidywanie opóźnień (projektant)
-      url: how-to-designer-sample-classification-flight-delay.md
-    - text: Przewidywanie zmian (projektant)
-      url: how-to-designer-sample-classification-churn.md
 - title: Wdrażanie modeli i zarządzanie nimi
   linkLists:
   - linkListType: how-to-guide
@@ -93,14 +81,14 @@ landingContent:
       url: concept-model-management-and-deployment.md
     - text: Jak i gdzie wdrażać
       url: how-to-deploy-and-where.md
-    - text: Authentication
-      url: how-to-setup-authentication.md
+    - text: Przykłady oprogramowania MLOps
+      url: https://github.com/microsoft/MLOps
     - text: Przewidywanie w czasie rzeczywistym
       url: how-to-consume-web-service.md
     - text: Przewidywanie wsadowe
       url: how-to-use-parallel-run-step.md
-    - text: Kompleksowe przykłady (GitHub)
-      url: https://github.com/microsoft/MLOps
+    - text: Authentication
+      url: how-to-setup-authentication.md
 - title: Przejdź do dokumentacji
   linkLists:
   - linkListType: reference
@@ -109,11 +97,11 @@ landingContent:
       url: https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py
     - text: Zestaw SDK dla języka R
       url: https://azure.github.io/azureml-sdk-for-r/reference/index.html
+    - text: Interfejs API REST
+      url: https://docs.microsoft.com/rest/api/azureml/
     - text: Interfejs wiersza polecenia uczenia maszynowego
       url: https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest
     - text: Moduły i algorytmy projektanta
       url: algorithm-module-reference/module-reference.md
-    - text: Interfejs API REST
-      url: https://docs.microsoft.com/rest/api/azureml/
     - text: Architektury referencyjne sztucznej inteligencji (GitHub)
       url: https://github.com/Microsoft/AI

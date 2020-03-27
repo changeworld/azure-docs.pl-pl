@@ -84,7 +84,7 @@
           href: hana-large-instance-virtual-machine-migration.md
 - name: Oprogramowanie SAP HANA na maszynach wirtualnych platformy Azure
   items:
-    - name: Instalacja SAP HANA z jednym wystąpieniem
+    - name: Instalacja oprogramowania SAP HANA na maszynach wirtualnych platformy Azure
       href: hana-get-started.md
     - name: Rozwiązanie S/4 HANA lub BW/4 HANA SAP CAL — podręcznik wdrażania
       href: cal-s4h.md

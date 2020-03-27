@@ -86,6 +86,8 @@
       href: publish-apps.md
     - name: Konfigurowanie dołączania aplikacji MSIX
       href: app-attach.md
+    - name: Używanie usługi Microsoft Teams
+      href: teams-on-wvd.md
 - name: Pojęcia
   items:
     - name: Środowisko usługi Windows Virtual Desktop

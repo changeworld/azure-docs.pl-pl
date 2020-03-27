@@ -1,0 +1,65 @@
+### YamlMime:Landing
+title: Dokumentacja usługi StorSimple
+summary: Dowiedz się, jak używać usługi Azure StorSimple, zintegrowanego rozwiązania, które pozwala zarządzać zadaniami dotyczącymi przesyłania danych między urządzeniami lokalnymi i magazynem w chmurze Azure.
+metadata:
+  title: Dokumentacja usługi StorSimple
+  description: Dowiedz się, jak używać usługi Azure StorSimple, zintegrowanego rozwiązania, które pozwala zarządzać zadaniami dotyczącymi przesyłania danych między urządzeniami lokalnymi i magazynem w chmurze Azure.
+  ms.service: storsimple
+  services: storsimple
+  ms.topic: landing-page
+  author: twooley
+  ms.author: twooley
+  ms.date: 03/11/2020
+  ms.openlocfilehash: 7744e0fecadbdbcc7af82645b58bb86a9e0bbe18
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "79540310"
+landingContent:
+- title: Informacje o usłudze StorSimple
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Porównaj usługę StorSimple z usługami Azure File Sync i Data Box Edge
+      url: storsimple-8000-choose-storage-solution.md
+- title: Macierz wirtualna usługi StorSimple
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest macierz wirtualna usługi StorSimple?
+      url: storsimple-ova-overview.md
+  - linkListType: get-started
+    links:
+    - text: Sprawdzanie wymagań
+      url: storsimple-ova-system-requirements.md
+- title: StorSimple 8000 Series
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to są urządzenia serii StorSimple 8000?
+      url: storsimple-overview.md
+  - linkListType: get-started
+    links:
+    - text: Sprawdzanie wymagań
+      url: storsimple-8000-system-requirements.md
+- title: StorSimple Data Manager
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest usługa StorSimple Data Manager?
+      url: storsimple-data-manager-overview.md
+  - linkListType: get-started
+    links:
+    - text: Zarządzanie w witrynie Azure Portal
+      url: storsimple-data-manager-ui.md
+- title: Program StorSimple dla dostawców rozwiązań w chmurze
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest program StorSimple dla dostawców rozwiązań w chmurze?
+      url: storsimple-partner-csp-overview.md
+  - linkListType: get-started
+    links:
+    - text: Wdrażanie
+      url: storsimple-partner-csp-deploy.md

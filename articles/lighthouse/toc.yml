@@ -44,9 +44,14 @@
     - name: Wyświetlanie klientów i zarządzanie nimi
       displayName: my customers
       href: ./how-to/view-manage-customers.md
-    - name: Używanie dzienników usługi Azure Monitor na dużą skalę
-      displayName: 'log, analytics, analyze, activity'
-      href: ./how-to/monitor-at-scale.md
+    - name: Integracja z usługą Azure Monitor
+      items:
+        - name: Używanie dzienników usługi Azure Monitor na dużą skalę
+          displayName: 'log, analytics, analyze, activity'
+          href: ./how-to/monitor-at-scale.md
+        - name: Monitorowanie zmian delegacji
+          displayName: activity log
+          href: ./how-to/monitor-delegation-changes.md
     - name: Integracja z usługą Azure Policy
       items:
         - name: Wdrażanie zasad w dużej skali

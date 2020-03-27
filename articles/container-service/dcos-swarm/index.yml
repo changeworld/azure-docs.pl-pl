@@ -4,6 +4,7 @@ title: Dokumentacja usługi Azure Container Service z systemem DC/OS i narzędzi
 metadata:
   title: Dokumentacja usługi Azure Container Service z systemem DC/OS i narzędziem Swarm — samouczki i dokumentacja interfejsu API | Microsoft Docs
   meta.description: 'Azure Container Service allows you to quickly deploy a production ready DC/OS or Docker Swarm cluster. Learn how to use Azure Container Service with these quickstarts, tutorials, and samples.'
+  description: 'Usługa Azure Container Service pozwala na szybkie wdrożenie gotowego do użycia w warunkach produkcyjnych klastra DC/OS lub Docker Swarm. Dowiedz się, jak to zrobić, za pomocą przewodników Szybki start, samouczków i przykładów.'
   services: container-service
   author: georgewallace
   manager: gwallace

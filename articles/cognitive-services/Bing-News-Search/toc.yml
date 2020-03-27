@@ -28,14 +28,8 @@
           href: go.md
     - name: SDK
       items:
-        - name: 'Przy użyciu języka C#'
-          href: news-search-sdk-quickstart.md
-        - name: Używanie środowiska Node.js
-          href: news-search-sdk-node-quickstart.md
-        - name: Korzystanie z języka Python
-          href: news-sdk-python-quickstart.md
-        - name: Korzystanie z języka Java
-          href: news-sdk-java-quickstart.md
+        - name: Biblioteki klienckie wyszukiwania wiadomości Bing
+          href: ./quickstarts/client-libraries.md
 - name: Samouczki
   items:
     - name: Tworzenie jednostronicowej aplikacji internetowej

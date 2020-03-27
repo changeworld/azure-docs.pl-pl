@@ -26,6 +26,10 @@
       href: permissions.md
     - name: Konfigurowanie alertów dla rekomendacji
       href: advisor-alerts.md
+    - name: Korygowanie zbiorcze dla zaleceń
+      href: advisor-quick-fix.md
+    - name: Dane usługi Advisor w usłudze Azure Resource Graph
+      href: advisor-azure-resource-graph.md
 - name: Dokumentacja
   items:
     - name: Security Center

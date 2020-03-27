@@ -1,5 +1,5 @@
 - name: Dokumentacja usługi Azure Data Lake Storage Gen1
-  href: index.md
+  href: index.yml
 - name: Dokumentacja dotycząca przełączania na usługę Data Lake Storage Gen2
   href: 'https://docs.microsoft.com/azure/storage/data-lake-storage/introduction'
 - name: Omówienie
@@ -12,7 +12,7 @@
       href: data-lake-store-data-scenarios.md
     - name: Praca z aplikacjami open source
       href: data-lake-store-compatible-oss-other-applications.md
-    - name: Najlepsze praktyki
+    - name: Najlepsze rozwiązania
       href: data-lake-store-best-practices.md
 - name: Rozpoczęcie pracy
   items:

@@ -16,6 +16,8 @@
       href: how-to-routefilter-portal.md
 - name: Pojęcia
   items:
+    - name: Praca zdalna
+      href: work-remotely-support.md
     - name: Modele łączności
       href: expressroute-connectivity-models.md
     - name: Obwody i komunikacja równorzędna

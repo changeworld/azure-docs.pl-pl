@@ -37,9 +37,7 @@
       href: security-center-compliance-dashboard.md
 - name: Pojęcia
   items:
-    - name: Wskaźnik bezpieczeństwa w usłudze Security Center
-      href: security-center-secure-score.md
-    - name: Ulepszony wskaźnik bezpieczeństwa
+    - name: Wskaźnik bezpieczeństwa
       href: secure-score-security-controls.md
     - name: Uprawnienia
       href: security-center-permissions.md
@@ -59,16 +57,18 @@
           href: azure-kubernetes-service-integration.md
     - name: Ochrona przed zagrożeniami i alerty zabezpieczeń
       items:
+        - name: Ochrona przed zagrożeniami w usłudze Azure Security Center
+          href: threat-protection.md
         - name: Omówienie alertów zabezpieczeń
           href: security-center-alerts-overview.md
         - name: Referencyjna lista alertów
           href: alerts-reference.md
+        - name: Schematy alertów
+          href: alerts-schemas.md
         - name: Zarządzanie alertami zabezpieczeń
           href: security-center-managing-and-responding-alerts.md
         - name: Zarządzanie zdarzeniami zabezpieczeń
           href: security-center-incident.md
-        - name: Ochrona przed zagrożeniami w usłudze Azure Security Center
-          href: threat-protection.md
         - name: Korelacja alertów inteligentnych w chmurze (zdarzenia)
           href: security-center-alerts-cloud-smart.md
         - name: Mapa alertów zabezpieczeń i analiza zagrożeń
@@ -201,6 +201,8 @@
       href: security-center-features-retirement-july2019.md
     - name: Rekomendacje i ocena ochrony punktu końcowego
       href: security-center-endpoint-protection.md
+    - name: Wskaźnik bezpieczeństwa (starszy)
+      href: security-center-secure-score.md
 - name: Zasoby
   items:
     - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn

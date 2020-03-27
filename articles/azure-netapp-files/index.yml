@@ -1,35 +1,70 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentacja usługi Azure NetApp Files
+summary: Dowiedz się, jak usługa Azure NetApp Files umożliwia tworzenie kont usługi NetApp, pul pojemność i woluminów oraz zarządzanie nimi, konfigurowanie zasad eksportu, instalowanie woluminu dla maszyny wirtualnej i zarządzanie migawkami.
 metadata:
   title: Dokumentacja usługi Azure NetApp Files
-  description: 'Dowiedz się, jak skonfigurować woluminy, uzyskać do nich dostęp i zarządzać nimi za pomocą usługi Azure NetApp Files.'
-  author: b-juche
-  ms.author: b-juche
+  description: Dowiedz się, jak skonfigurować woluminy, uzyskać do nich dostęp i zarządzać nimi za pomocą usługi Azure NetApp Files.
   ms.service: azure-netapp-files
   ms.topic: landing-page
-  ms.date: 04/10/2019
-abstract:
-  description: 'Dowiedz się, jak usługa Azure NetApp Files umożliwia tworzenie kont usługi NetApp, pul pojemność i woluminów oraz zarządzanie nimi, konfigurowanie zasad eksportu, instalowanie woluminu dla maszyny wirtualnej i zarządzanie migawkami. <p>Aby móc korzystać z usługi Azure NetApp Files, musisz mieć do niej dostęp. Aby zażądać dostępu, zobacz <a href="azure-netapp-files-register#waitlist">Przesyłanie wniosku dodania do listy oczekujących</a>.</p>'
-sections:
-  - title: 5-minutowe przewodniki Szybki start
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak skonfigurować usługę Azure NetApp Files i utworzyć wolumin za pomocą następujących metod:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/azure-netapp-files/media/index/get-started.svg'
-            text: Azure Portal
-            href: /azure/azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes
-  - title: Dokumentacja
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/netapp/">Interfejs API REST</a></p>'
-          - title: Azure Resource Manager
-            html: '<p><a href="https://docs.microsoft.com/azure/templates/microsoft.netapp/allversions">Szablony usługi Resource Manager</a></p>'
+  author: b-juche
+  ms.author: b-juche
+  ms.date: 03/11/2020
+  ms.openlocfilehash: bcca681fcae02df3e3521b48f710acd36127c882
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "79369056"
+landingContent:
+- title: Informacje o usłudze Azure NetApp Files
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest usługa Azure NetApp Files?
+      url: azure-netapp-files-introduction.md
+    - text: Opis hierarchii magazynu
+      url: azure-netapp-files-understand-storage-hierarchy.md
+  - linkListType: concept
+    links:
+    - text: Poziomy usług
+      url: azure-netapp-files-service-levels.md
+    - text: Zagadnienia dotyczące wydajności
+      url: azure-netapp-files-performance-considerations.md
+    - text: Wskazówki dotyczące planowania sieci
+      url: azure-netapp-files-network-topologies.md
+  - linkListType: video
+    links:
+    - text: Wideo dla usługi Azure NetApp Files
+      url: azure-netapp-files-videos.md
+- title: Rozpoczęcie pracy
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Prześlij żądanie listy oczekujących
+      url: azure-netapp-files-register.md#waitlist
+  - linkListType: quickstart
+    links:
+    - text: Konfigurowanie usługi Azure NetApp Files i tworzenie woluminu NFS
+      url: azure-netapp-files-quickstart-set-up-account-create-volumes.md
+- title: Utwórz
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Tworzenie konta usługi NetApp
+      url: azure-netapp-files-create-netapp-account.md
+    - text: Konfigurowanie puli pojemności
+      url: azure-netapp-files-set-up-capacity-pool.md
+    - text: Delegowanie podsieci do usługi Azure NetApp Files
+      url: azure-netapp-files-delegate-subnet.md
+    - text: Tworzenie woluminu SMB dla usługi Azure NetApp Files
+      url: azure-netapp-files-create-volumes-smb.md
+    - text: Tworzenie woluminu NFS dla usługi Azure NetApp Files
+      url: azure-netapp-files-create-volumes.md
+- title: Programowanie
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Interfejs API REST
+      url: azure-netapp-files-develop-with-rest-api.md
+    - text: Narzędzia interfejsu wiersza polecenia i zestawy SDK usługi Azure NetApp Files
+      url: azure-netapp-files-sdk-cli.md

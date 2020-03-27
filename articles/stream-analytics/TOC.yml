@@ -23,13 +23,11 @@
       href: stream-analytics-manage-job.md
     - name: 2 — Uruchamianie funkcji usługi Azure Functions
       href: stream-analytics-with-azure-functions.md
-    - name: 3 — Uruchamianie funkcji zdefiniowanej przez użytkownika w języku JavaScript
-      href: stream-analytics-javascript-user-defined-functions.md
-    - name: 4 — Wdrażanie za pomocą ciągłej integracji/ciągłego wdrażania w usłudze Azure Pipelines
+    - name: 3 — Wdrażanie za pomocą ciągłej integracji/ciągłego wdrażania w usłudze Azure Pipelines
       href: stream-analytics-tools-visual-studio-cicd-vsts.md
-    - name: '5 — Uruchamianie funkcji zdefiniowanej przez użytkownika w języku C#'
+    - name: '4 — Uruchamianie funkcji zdefiniowanej przez użytkownika w języku C#'
       href: stream-analytics-edge-csharp-udf.md
-    - name: 6 — Tworzenie niestandardowego deserializatora platformy .NET
+    - name: 5 — Tworzenie niestandardowego deserializatora platformy .NET
       href: custom-deserializer.md
 - name: Samples
   items:
@@ -61,6 +59,14 @@
           href: stream-analytics-sql-output-perf.md
         - name: Wzorce niestandardowych ścieżek obiektów blob
           href: stream-analytics-custom-path-patterns-blob-storage-output.md
+    - name: Funkcje zdefiniowane przez użytkownika
+      items:
+        - name: Funkcja zdefiniowana przez użytkownika dla uczenia maszynowego
+          href: machine-learning-udf.md
+        - name: 'Funkcja zdefiniowana przez użytkownika w języku C#'
+          href: stream-analytics-edge-csharp-udf-methods.md
+        - name: Funkcja zdefiniowana przez użytkownika w języku JavaScript
+          href: stream-analytics-javascript-user-defined-functions.md
     - name: Optymalizowanie zadania usługi Stream Analytics
       items:
         - name: Opis i dostosowywanie jednostek przesyłania strumieniowego
@@ -187,8 +193,6 @@
           href: stream-analytics-tools-for-visual-studio-edge-jobs.md
         - name: Konfigurowanie potoku ciągłej integracji/ciągłego dostarczania
           href: stream-analytics-tools-for-visual-studio-cicd.md
-        - name: Pisanie funkcji zdefiniowanej przez użytkownika dla platformy .NET
-          href: stream-analytics-edge-csharp-udf-methods.md
     - name: Visual Studio Code
       items:
         - name: Testowanie lokalne przy użyciu danych przykładowych

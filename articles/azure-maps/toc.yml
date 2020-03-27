@@ -89,8 +89,10 @@
       items:
         - name: Wyszukiwanie adresu
           href: how-to-search-for-address.md
-        - name: Najlepsze rozwiązania dotyczące wyszukiwania
+        - name: Najlepsze rozwiązania dla usługi Search Service
           href: how-to-use-best-practices-for-search.md
+        - name: Najlepsze rozwiązania dla usługi Route Service
+          href: how-to-use-best-practices-for-routing.md
         - name: Renderowanie danych niestandardowych na mapie statycznej
           href: how-to-render-custom-data.md
         - name: Żądanie tras transportu publicznego
@@ -101,7 +103,7 @@
       items:
         - name: Kontrolka mapy
           items:
-            - name: Wprowadzenie do kontrolek mapy internetowej
+            - name: Jak używać kontrolki mapy usługi Azure Maps
               href: how-to-use-map-control.md
             - name: Tworzenie mapy
               href: map-create.md
@@ -247,12 +249,38 @@
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/'
         - name: Moduł usługi
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-rest/'
+        - name: Moduł operacji we/wy danych przestrzennych
+          href: 'https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/'
     - name: Szablon usługi Resource Manager
       href: /azure/templates/microsoft.maps/accounts
 - name: Zasoby
   items:
     - name: Opcje wsparcia technicznego i pomocy
       href: /azure/iot-fundamentals/iot-support-help
+    - name: Usługi Azure IoT
+      items:
+        - name: Usługa IoT Hub
+          href: /azure/iot-hub
+        - name: Usługa IoT Hub Device Provisioning
+          href: /azure/iot-dps
+        - name: IoT Central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: Akceleratory rozwiązań IoT
+          href: /azure/iot-accelerators
+        - name: IoT Plug and Play
+          href: /azure/iot-pnp
+        - name: Azure Maps
+          href: /azure/azure-maps
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Zestawy SDK usługi Azure IoT
+      items:
+        - name: Zestawy SDK usługi IoT
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Zestawy SDK urządzeń IoT
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
     - name: Warunki użytkowania usługi Azure Maps
       href: 'https://azure.microsoft.com/support/legal/'
     - name: Ceny usługi Azure Maps
@@ -281,31 +309,3 @@
       href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
     - name: Usługa Azure Maps w witrynie IoT School
       href: 'https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo'
-- name: Powiązane
-  items:
-    - name: Rozwiązania
-      items:
-        - name: Akceleratory rozwiązań IoT
-          href: /azure/iot-suite
-        - name: IoT Central
-          href: /azure/iot-central/iot-support-help
-    - name: Usługi platformy
-      items:
-        - name: Usługa IoT Hub
-          href: /azure/iot-hub
-        - name: IoT Plug and Play
-          href: /azure/iot-pnp
-        - name: Usługa IoT Hub Device Provisioning
-          href: /azure/iot-dps
-        - name: Maps
-          href: /azure/azure-maps
-        - name: Zestawy SDK usług
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: Time Series Insights
-          href: /azure/time-series-insights
-    - name: Rozwiązania brzegowe
-      items:
-        - name: IoT Edge
-          href: /azure/iot-edge
-        - name: Zestawy SDK urządzeń IoT
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'

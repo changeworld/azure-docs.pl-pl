@@ -91,6 +91,8 @@
           href: password-policy.md
         - name: Włączanie zdarzeń inspekcji zabezpieczeń
           href: security-audit-events.md
+        - name: Analizowanie zdarzeń inspekcji przy użyciu skoroszytów usługi Azure Monitor
+          href: use-azure-monitor-workbooks.md
     - name: Dołączanie maszyn wirtualnych do domeny
       items:
         - name: Maszyna wirtualna z systemem Windows Server na podstawie szablonu

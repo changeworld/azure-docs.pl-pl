@@ -58,7 +58,21 @@
     - name: Pojęcia
       items:
         - name: Jak działa usługa Dev Spaces
-          href: how-dev-spaces-works.md
+          items:
+            - name: Omówienie
+              href: how-dev-spaces-works.md
+            - name: Konfigurowanie klastra
+              href: how-dev-spaces-works-cluster-setup.md
+            - name: Przygotowywanie projektu
+              href: how-dev-spaces-works-prep.md
+            - name: Uruchamianie kodu
+              href: how-dev-spaces-works-up.md
+            - name: Routing między usługami Dev Spaces
+              href: how-dev-spaces-works-routing.md
+            - name: Debugowanie zdalne
+              href: how-dev-spaces-works-remote-debugging.md
+            - name: Łączenie komputera programistycznego z usługą AKS
+              href: how-dev-spaces-works-connect.md
         - name: Jak program VS Code współdziała z usługą Dev Spaces
           href: how-vs-code-works-with-dev-spaces.md
         - name: Konfiguracja sieci w różnych topologiach sieci
@@ -95,7 +109,7 @@
           href: how-to/ingress-https-traefik.md
         - name: Używanie serwera NGINX na potrzeby niestandardowego ruchu przychodzącego i ruchu HTTPS
           href: how-to/ingress-https-nginx.md
-        - name: Łączenie komputera deweloperskiego z klastrem AKS (wersja zapoznawcza)
+        - name: Łączenie komputera programistycznego z klastrem AKS (wersja zapoznawcza)
           href: how-to/connect.md
         - name: Konfigurowanie klastra usługi Azure Dev Spaces do korzystania z rozwiązania Helm 3 (wersja zapoznawcza)
           href: how-to/helm-3.md

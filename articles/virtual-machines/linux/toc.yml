@@ -315,6 +315,10 @@
               href: disk-encryption-sample-scripts.md
             - name: Szyfrowanie dysków w sieci izolowanej
               href: disk-encryption-isolated-network.md
+            - name: Jak zweryfikować stan szyfrowania
+              href: how-to-verify-encryption-status.md
+            - name: Jak skonfigurować menedżera LVM mechanizmu RAID przy szyfrowaniu
+              href: how-to-configure-lvm-raid-on-crypt.md
             - name: Rozwiązywanie problemów z szyfrowaniem dysków
               href: disk-encryption-troubleshooting.md
             - name: Często zadawane pytania o szyfrowanie dysków
@@ -498,8 +502,6 @@
           href: capture-image.md
         - name: Tworzenie obrazu za pomocą usługi Packer
           href: build-image-with-packer.md
-        - name: Obrazy systemu RHEL na platformie Azure
-          href: rhel-images.md
         - name: Pobieranie istniejącego dysku
           href: download-vhd.md
     - name: Dostępność i skala
@@ -520,6 +522,8 @@
           href: create-cli-availability-zone.md
     - name: Korzystanie z narzędzi automatyzacji
       items:
+        - name: Dane niestandardowe
+          href: ../custom-data.md
         - name: Ansible
           items:
             - name: Instalowanie i konfigurowanie

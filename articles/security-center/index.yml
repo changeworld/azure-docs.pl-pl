@@ -11,12 +11,12 @@ metadata:
   author: memildin
   ms.author: memildin
   ms.date: 11/04/2019
-  ms.openlocfilehash: 2896bee8f5a07a7432ca3fa2ca49caa529fdeb1e
-  ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+  ms.openlocfilehash: a1d764ce1ce332290c1bd68c5beb5f2731ae5e41
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 02/25/2020
-  ms.locfileid: "77604783"
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "80159306"
 landingContent:
 - title: Informacje o usłudze Security Center
   linkLists:
@@ -32,15 +32,15 @@ landingContent:
     links:
     - text: Chronienie kontenerów
       url: container-security.md
-    - text: Dodawanie dynamicznych pakietów zgodności
-      url: update-regulatory-compliance-packages.md
-    - text: Integracja z rozwiązaniem Windows Admin Center
-      url: windows-admin-center-integration.md
+    - text: Zintegrowana ocena luk w zabezpieczeniach dla maszyn wirtualnych
+      url: built-in-vulnerability-assessment.md
+    - text: Przegląd schematów alertów zabezpieczeń
+      url: alerts-schemas.md
     - text: Automatyzowanie odpowiedzi na alerty i zalecenia
       url: workflow-automation.md
     - text: Eksportowanie alertów zabezpieczeń i zaleceń
       url: continuous-export.md
-    - text: Konfigurowanie zaawansowanej ochrony przed zagrożeniami dla usługi Azure Key Vault
+    - text: Konfigurowanie ochrony przed zagrożeniami dla usługi Azure Key Vault
       url: advanced-threat-protection-key-vault.md
 - title: Rozpoczęcie pracy
   linkLists:
@@ -56,8 +56,8 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Co to jest wskaźnik bezpieczeństwa?
-      url: security-center-secure-score.md
+    - text: Opis wskaźnika bezpieczeństwa
+      url: secure-score-security-controls.md
     - text: Implementowanie rekomendacji dotyczących zabezpieczeń
       url: security-center-remediate-recommendations.md
     - text: Dostosowywanie rekomendacji dotyczących zabezpieczeń

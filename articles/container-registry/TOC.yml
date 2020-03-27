@@ -35,6 +35,10 @@
     - name: Pojęcia
       expanded: false
       items:
+        - name: Zabezpieczenia
+          items:
+            - name: Punkt odniesienia zabezpieczeń
+              href: security-baseline.md
         - name: Jednostki SKU i limity usługi Container Registry
           href: container-registry-skus.md
         - name: 'Rejestry, repozytoria i obrazy'
@@ -120,7 +124,7 @@
         - name: Monitorowanie
           expanded: false
           items:
-            - name: Dzienniki diagnostyczne i inspekcji (wersja zapoznawcza)
+            - name: Dzienniki diagnostyczne i inspekcji
               href: container-registry-diagnostics-audit-logs.md
             - name: Inspekcja zgodności przy użyciu usługi Azure Policy (wersja zapoznawcza)
               href: container-registry-azure-policy.md

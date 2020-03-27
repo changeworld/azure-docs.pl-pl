@@ -145,6 +145,8 @@
       href: functions-networking-options.md
     - name: Adresy IP
       href: ip-addresses.md
+    - name: Niestandardowe programy obsługi
+      href: functions-custom-handlers.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Programowanie
@@ -288,6 +290,8 @@
           href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: Odwoływanie się do wpisów tajnych z usługi Key Vault
           href: ../app-service/app-service-key-vault-references.md?toc=%2fazure%2fazure-functions%2ftoc.json
+        - name: Szyfrowanie danych lokacji
+          href: configure-encrypt-at-rest-using-cmk.md
     - name: Integracja
       items:
         - name: Dodawanie powiązań

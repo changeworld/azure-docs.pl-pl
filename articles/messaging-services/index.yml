@@ -1,0 +1,171 @@
+### YamlMime:Hub
+title: Dokumentacja usług obsługi komunikatów na platformie Azure
+summary: Dowiedz się, jak używać usług Azure Event Grid, Azure Event Hubs, Azure Service Bus i Azure Relay do przesyłania komunikatów o zdarzeniach.
+brand: azure
+metadata:
+  title: Dokumentacja usług obsługi komunikatów na platformie Azure
+  description: Dowiedz się, jak używać usług Azure Event Grid, Azure Event Hubs, Azure Service Bus i Azure Relay do przesyłania komunikatów o zdarzeniach.
+  services: multiple
+  ms.service: multiple
+  ms.topic: hub-page
+  author: spelluru
+  ms.author: spelluru
+  ms.date: 03/15/2020
+  ms.openlocfilehash: 65a4312d01d6f3652ebc37ee0276c912178d4ccd
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "79472258"
+highlightedContent:
+  items:
+  - title: Wybieranie usługi obsługi komunikatów na platformie Azure
+    itemType: overview
+    url: ../event-grid/compare-messaging-services.md
+  - title: Co to jest Event Grid?
+    itemType: overview
+    url: ../event-grid/overview.md
+  - title: Co to jest usługa Event Hubs?
+    itemType: overview
+    url: ../event-hubs/event-hubs-about.md
+  - title: Co to jest usługa Service Bus?
+    itemType: overview
+    url: ../service-bus-messaging/service-bus-messaging-overview.md
+  - title: Co to jest usługa Relay?
+    itemType: overview
+    url: ../service-bus-relay/relay-what-is-it.md
+conceptualContent:
+  items:
+  - title: Kierowanie zdarzeń
+    links:
+    - url: ../event-grid/blob-event-quickstart-portal.md
+      itemType: quickstart
+      text: kierowanie zdarzeń magazynu obiektów blob do internetowego punktu końcowego za pomocą witryny Azure Portal
+    - url: ../event-grid/custom-event-to-function.md
+      itemType: quickstart
+      text: Kierowanie zdarzeń niestandardowych do usługi Azure Functions za pomocą usługi Event Grid
+    - url: ../event-grid/custom-event-quickstart-portal.md
+      itemType: quickstart
+      text: Kierowanie zdarzeń niestandardowych do internetowego punktu końcowego za pomocą witryny Azure Portal i usługi Event Grid
+    footerLink:
+      url: ../event-grid/index.yml
+      text: Zobacz więcej
+  - title: Tworzenie centrum zdarzeń
+    links:
+    - url: ../event-hubs/event-hubs-create.md
+      itemType: quickstart
+      text: tworzenie centrum zdarzeń za pomocą witryny Azure Portal
+    - url: ../event-hubs/event-hubs-quickstart-cli.md
+      itemType: quickstart
+      text: Tworzenie centrum zdarzeń za pomocą interfejsu Azure CLI
+    footerLink:
+      url: ../event-hubs/index.yml
+      text: Zobacz więcej
+  - title: Integracja z platformą Apache Kafka
+    links:
+    - url: ../event-hubs/event-hubs-for-kafka-ecosystem-overview.md
+      itemType: overview
+      text: Co to jest usługa Event Hubs dla platformy Apache Kafka
+    - url: ../event-hubs/event-hubs-quickstart-kafka-enabled-event-hubs.md
+      itemType: quickstart
+      text: Przesyłanie strumieniowe do usługi Event Hubs dla platformy Apache Kafka
+    footerLink:
+      url: ../event-hubs/index.yml
+      text: Zobacz więcej
+  - title: Wysyłanie i odbieranie zdarzeń
+    links:
+    - url: ../event-hubs/get-started-dotnet-standard-send-v2.md
+      itemType: quickstart
+      text: Wysyłanie i odbieranie zdarzeń z usługi Azure Event Hubs za pomocą platformy .NET Core
+    - url: ../event-hubs/event-hubs-java-get-started-send.md
+      itemType: quickstart
+      text: Używanie języka Java do wysyłania zdarzeń do usługi Azure Event Hubs lub odbierania z niej zdarzeń
+    - url: ../event-hubs/get-started-python-send-v2.md
+      itemType: quickstart
+      text: Wysyłanie zdarzeń do centrów zdarzeń lub odbieranie z nich zdarzeń za pomocą języka Python
+    footerLink:
+      url: ../event-hubs/index.yml
+      text: Zobacz więcej
+  - title: Przechwytywanie zdarzeń
+    links:
+    - url: ../event-hubs/event-hubs-dedicated-overview.md
+      itemType: overview
+      text: Przechwytywanie zdarzeń w usłudze Azure Blob Storage lub Azure Data Lake Storage
+    - url: ../event-hubs/event-hubs-capture-enable-through-portal.md
+      itemType: quickstart
+      text: Włączanie przechwytywania zdarzeń przesyłanych strumieniowo za pomocą usługi Azure Event Hubs
+    footerLink:
+      url: ../event-hubs/index.yml
+      text: Zobacz więcej
+  - title: Przetwarzanie zdarzeń
+    links:
+    - url: ../event-hubs/event-hubs-tutorial-visualize-anomalies.md
+      itemType: tutorial
+      text: Wizualizowanie anomalii dotyczących danych w zdarzeniach w czasie rzeczywistym wysyłanych do usługi Azure Event Hubs
+    - url: ../event-hubs/event-hubs-kafka-stream-analytics.md
+      itemType: tutorial
+      text: Przetwarzanie zdarzeń platformy Apache Kafka dla usługi Event Hubs za pomocą usługi Stream Analytics
+    footerLink:
+      url: ../event-hubs/index.yml
+      text: Zobacz więcej
+  - title: Tworzenie kolejki
+    links:
+    - url: ../service-bus-messaging/service-bus-quickstart-portal.md
+      itemType: quickstart
+      text: używanie witryny Azure Portal do tworzenia kolejki usługi Service Bus
+    - url: ../service-bus-messaging/service-bus-quickstart-cli.md
+      itemType: quickstart
+      text: używanie interfejsu wiersza polecenia do tworzenia kolejki usługi Service Bus
+    footerLink:
+      url: ../service-bus-messaging/index.yml
+      text: Zobacz więcej
+  - title: Tworzenie tematów i subskrypcji
+    links:
+    - url: ../service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal.md
+      itemType: quickstart
+      text: Używanie witryny Azure Portal do tworzenia tematu usługi Service Bus i subskrybowania tematu
+    - url: ../service-bus-messaging/service-bus-resource-manager-namespace-topic.md
+      itemType: quickstart
+      text: Tworzenie przestrzeni nazw usługi Service Bus z tematem i subskrypcją przy użyciu szablonu
+    footerLink:
+      url: ../service-bus-messaging/index.yml
+      text: Zobacz więcej
+  - title: Wysyłanie i odbieranie komunikatów — kolejki
+    links:
+    - url: ../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md
+      itemType: concept
+      text: Porównanie kolejek usług Azure Storage i Service Bus
+    - url: ../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md
+      itemType: quickstart
+      text: Wprowadzenie do kolejek usługi Service Bus
+    - url: ../service-bus-messaging/service-bus-java-how-to-use-queues.md
+      itemType: quickstart
+      text: Używanie kolejek usługi Azure Service Bus za pomocą języka Java na potrzeby wysyłania i odbierania komunikatów
+    footerLink:
+      url: ../service-bus-messaging/index.yml
+      text: Zobacz więcej
+  - title: Publikowanie i subskrybowanie komunikatów
+    links:
+    - url: ../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md
+      itemType: quickstart
+      text: Wprowadzenie do tematów usługi Service Bus
+    - url: ../service-bus-messaging/service-bus-java-how-to-use-topics-subscriptions.md
+      itemType: quickstart
+      text: Używanie tematów i subskrypcji usługi Service Bus za pomocą języka Java
+    - url: ../service-bus-messaging/service-bus-python-how-to-use-topics-subscriptions.md
+      itemType: quickstart
+      text: Używanie tematów i subskrypcji usługi Service Bus za pomocą języka Python
+    footerLink:
+      url: ../service-bus-messaging/index.yml
+      text: Zobacz więcej
+  - title: Połączenia hybrydowe
+    links:
+    - url: ../service-bus-relay/relay-hybrid-connections-dotnet-get-started.md
+      itemType: tutorial
+      text: Wprowadzenie do obiektów WebSocket połączeń hybrydowych usługi Relay na platformie .NET
+    - url: ../service-bus-relay/relay-hybrid-connections-http-requests-dotnet-get-started.md
+      itemType: tutorial
+      text: Wprowadzenie do żądań HTTP połączeń hybrydowych usługi Relay na platformie .NET
+    footerLink:
+      url: ../service-bus-relay/index.yml
+      text: Zobacz więcej

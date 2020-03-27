@@ -20,10 +20,10 @@
       href: fxt-add-storage.md
     - name: 7 — konfigurowanie ustawień sieci klastrów
       href: fxt-configure-network.md
+    - name: 8 — instalowanie klientów
+      href: fxt-mount-clients.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Instalowanie klientów
-      href: fxt-mount-clients.md
     - name: Monitorowanie sprzętu Azure FXT Edge Filer
       href: fxt-monitor.md
     - name: Bezpieczne wyłączanie zasilania węzła sprzętu

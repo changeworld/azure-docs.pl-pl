@@ -3,19 +3,19 @@ title: Dokumentacja usługi Azure Red Hat OpenShift
 summary: Usługa Azure Red Hat OpenShift udostępnia na platformie Azure klastry Kubernetes z jedną dzierżawą i o wysokiej dostępności, które są obsługiwane przez firmy Red Hat i Microsoft.
 metadata:
   title: Dokumentacja usługi Azure Red Hat OpenShift
-  description: Usługa Microsoft Azure Red Hat OpenShift umożliwia szybkie wdrożenie gotowego do użycia w środowisku produkcyjnym klastra Red Hat OpenShift na platformie Azure. Dowiedz się, jak używać usługi Azure Red Hat OpenShift, korzystając z tych samouczków i przewodników.
+  description: Usługa Microsoft Azure Red Hat OpenShift umożliwia wdrożenie gotowego do użycia w środowisku produkcyjnym klastra Red Hat OpenShift na platformie Azure. Dowiedz się jak za pomocą tych samouczków i przewodników z instrukcjami.
   ms.service: container-service
   services: container-service
   ms.topic: landing-page
   author: jimzim
   ms.author: jzim
   ms.date: 03/06/2020
-  ms.openlocfilehash: ec40ff9af0b2c09db32e40536009cd0db684f030
-  ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+  ms.openlocfilehash: f35419d63375ae8fca5f9458505b96b6ddfd3890
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 03/10/2020
-  ms.locfileid: "79037041"
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "80062289"
 landingContent:
 - title: Informacje o usłudze Azure Red Hat OpenShift
   linkLists:

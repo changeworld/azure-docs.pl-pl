@@ -19,7 +19,7 @@
               href: service-bus-quickstart-powershell.md
             - name: Interfejs wiersza polecenia platformy Azure
               href: service-bus-quickstart-cli.md
-            - name: Szablon usługi Azure Resource Manager
+            - name: Szablon ARM
               href: service-bus-resource-manager-namespace-queue.md
         - name: Wysyłanie i odbieranie komunikatów
           items:
@@ -41,7 +41,7 @@
           items:
             - name: Azure Portal
               href: service-bus-quickstart-topics-subscriptions-portal.md
-            - name: Szablon usługi Azure Resource Manager
+            - name: Szablon ARM
               href: service-bus-resource-manager-namespace-topic.md
         - name: Publikowanie i subskrybowanie komunikatów
           items:
@@ -65,6 +65,8 @@
       href: service-bus-tutorial-topics-subscriptions-portal.md
     - name: Aktualizowanie spisu — interfejs wiersza polecenia
       href: service-bus-tutorial-topics-subscriptions-cli.md
+    - name: Reagowanie na zdarzenia za pomocą usługi Event Grid
+      href: service-bus-to-event-grid-integration-example.md
 - name: Samples
   items:
     - name: Przykłady usługi Service Bus
@@ -104,6 +106,8 @@
                   href: authenticate-application.md
         - name: Wbudowane mechanizmy zabezpieczeń
           href: service-bus-messaging-security-controls.md
+        - name: Bezpieczeństwo sieci
+          href: network-security.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Migrowanie z interfejsów API usługi Azure Service Manager (klasycznej) do interfejsów API usługi Resource Manager
@@ -126,8 +130,6 @@
               href: message-expiration.md
             - name: Obsługa komunikatów przy użyciu usługi Azure Event Grid
               href: service-bus-to-event-grid-integration-concept.md
-            - name: Przykłady usługi Azure Event Grid
-              href: service-bus-to-event-grid-integration-example.md
         - name: Filtry tematów i akcje
           href: topic-filters.md
         - name: Migrowanie z przestrzeni nazw w warstwie Standardowa do przestrzeni nazw w warstwie Premium
@@ -152,10 +154,6 @@
               href: service-bus-amqp-troubleshoot.md
         - name: Funkcje zaawansowane
           items:
-            - name: Używanie zapór
-              href: service-bus-ip-filtering.md
-            - name: Punkty końcowe usługi dla sieci wirtualnej
-              href: service-bus-service-endpoints.md
             - name: Kolejki utraconych wiadomości
               href: service-bus-dead-letter-queues.md
             - name: Komunikaty pobrane z wyprzedzeniem
@@ -192,7 +190,7 @@
           href: service-bus-diagnostic-logs.md
         - name: Wstrzymywanie i ponowne aktywowanie jednostek obsługi komunikatów
           href: entity-suspend.md
-        - name: Korzystanie z szablonów usługi Azure Resource Manager
+        - name: Korzystanie z szablonów usługi ARM
           href: service-bus-resource-manager-overview.md
           items:
             - name: Tworzenie przestrzeni nazw
@@ -203,7 +201,13 @@
               href: service-bus-resource-manager-namespace-topic-with-rule.md
     - name: Bezpieczeństwo
       items:
-        - name: Konfigurowanie zarządzanych przez klienta kluczy na potrzeby szyfrowania danych magazynowanych
+        - name: Konfigurowanie zapór
+          href: service-bus-ip-filtering.md
+        - name: Konfigurowanie punktów końcowych usługi dla sieci wirtualnej
+          href: service-bus-service-endpoints.md
+        - name: Konfigurowanie prywatnych punktów końcowych (wersja zapoznawcza)
+          href: private-link-service.md
+        - name: Konfigurowanie kluczy zarządzanych przez klienta
           href: configure-customer-managed-key.md
     - name: Rozwiązywanie problemów
       items:

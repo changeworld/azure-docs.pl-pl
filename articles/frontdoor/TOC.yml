@@ -1,8 +1,8 @@
-- name: Dokumentacja usługi Front Door Service
+- name: Dokumentacja usługi Front Door
   href: index.yml
 - name: Omówienie
   items:
-    - name: Co to jest usługa Azure Front Door Service?
+    - name: Co to jest usługa Azure Front Door?
       href: front-door-overview.md
 - name: Przewodniki Szybki start
   expanded: true
@@ -27,6 +27,8 @@
       href: front-door-backend-pool.md
     - name: Buforowanie przy użyciu usługi Front Door
       href: front-door-caching.md
+    - name: Często zadawane pytania na temat usługi Front Door
+      href: front-door-faq.md
     - name: Filtrowanie geograficzne
       href: front-door-geo-filtering.md
     - name: Sondy kondycji
@@ -49,6 +51,8 @@
       href: front-door-url-rewrite.md
     - name: Przekierowywanie adresów URL
       href: front-door-url-redirect.md
+    - name: Domena z symbolami wieloznacznymi
+      href: front-door-wildcard-domain.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Przekierowywanie ruchu
@@ -65,10 +69,6 @@
           href: front-door-troubleshoot-routing.md
         - name: Dozwolone urzędy certyfikacji
           href: front-door-troubleshoot-allowed-ca.md
-- name: Często zadawane pytania
-  items:
-    - name: Często zadawane pytania na temat usługi Front Door
-      href: front-door-faq.md
 - name: Dokumentacja
   items:
     - name: Interfejs wiersza polecenia platformy Azure

@@ -263,6 +263,8 @@
           href: search-pagination-page-layout.md
         - name: Dostrajanie trafności (profile oceniania)
           href: index-add-scoring-profiles.md
+        - name: Dostrajanie istotności (algorytm podobieństwa)
+          href: index-ranking-similarity.md
     - name: Planowanie
       items:
         - name: Wybieranie warstwy

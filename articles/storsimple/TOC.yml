@@ -1,5 +1,5 @@
 - name: Dokumentacja usługi StorSimple
-  href: index.md
+  href: index.yml
 - name: Macierz wirtualna usługi StorSimple
   items:
     - name: Omówienie
@@ -129,7 +129,7 @@
               href: storsimple-8000-technical-specifications-and-compliance.md
             - name: Poznawanie ograniczeń
               href: storsimple-8000-limits.md
-            - name: Najlepsze praktyki
+            - name: Najlepsze rozwiązania
               href: 'https://gallery.technet.microsoft.com/Azure-StorSimple-8000-72b01b68'
         - name: Instalowanie
           items:

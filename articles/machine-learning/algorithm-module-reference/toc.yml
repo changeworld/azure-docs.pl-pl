@@ -136,6 +136,8 @@
       href: feature-hashing.md
     - name: Wstępne przetwarzanie tekstu
       href: preprocess-text.md
+    - name: Alokacja ukrytej zmiennej Dirichleta
+      href: latent-dirichlet-allocation.md
 - name: Zalecenie
   items:
     - name: Ocena modułu poleceń
@@ -144,5 +146,11 @@
       href: score-svd-recommender.md
     - name: Trenowanie modułu poleceń SVD
       href: train-svd-recommender.md
+- name: Wykrywanie anomalii
+  items:
+    - name: Wykrywanie anomalii oparte na analizie głównych składowych
+      href: pca-based-anomaly-detection.md
+    - name: Trenowanie modelu wykrywania anomalii
+      href: train-anomaly-detection-model.md
 - name: Błędy modułów i rozwiązywanie problemów
   href: designer-error-codes.md

@@ -16,6 +16,12 @@
       href: powershell-samples.md
 - name: Pojęcia
   items:
+    - name: Obsługa pracy zdalnej
+      items:
+        - name: Praca zdalna
+          href: work-remotely-support.md
+        - name: Konfiguracje wniosku NVA i pracy zdalnej
+          href: nva-work-remotely-support.md
     - name: Informacje na temat ustawień usługi VPN Gateway
       href: vpn-gateway-about-vpn-gateway-settings.md
     - name: Urządzeniach sieci VPN — informacje
@@ -150,6 +156,8 @@
               href: vpn-gateway-howto-openvpn.md
             - name: Konfigurowanie klientów OpenVPN
               href: vpn-gateway-howto-openvpn-clients.md
+        - name: Przechodzenie na protokół OpenVPN lub IKEv2 z SSTP
+          href: ikev2-openvpn-from-sstp.md
         - name: Przejście do certyfikatu bramy publicznego urzędu certyfikacji dla połączenia punkt-lokacja
           href: vpn-gateway-point-to-site-gateway-public-ca.md
         - name: Konfigurowanie tunelu zawsze włączonego urządzenia sieci VPN
@@ -217,7 +225,7 @@
           items:
             - name: Problemy z połączeniem punkt-lokacja
               href: vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md
-            - name: Problemy z połączeniem punkt-lokacja — klient sieci VPN w systemie Mac OS X
+            - name: Problemy z połączeniem punkt-lokacja — klient sieci VPN w systemie macOS X
               href: vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md
             - name: Punkt-lokacja — uwierzytelnianie za pomocą usługi Azure AD
               href: troubleshoot-ad-vpn-client.md
