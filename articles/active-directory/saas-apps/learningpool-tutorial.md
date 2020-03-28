@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: integracja Azure Active Directory z aktem działania programu Learningpool | Microsoft Docs'
+title: 'Samouczek: Integracja usługi Azure Active Directory z programem Learningpool Act | Dokumenty firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Learningpool Act.
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5bc0b395fcc874190b67bd99262c3a1c9294c0ac
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74229275"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-learningpool-act"></a>Samouczek: integracja Azure Active Directory z aktem Learningpool Act
+# <a name="tutorial-azure-active-directory-integration-with-learningpool-act"></a>Samouczek: Integracja usługi Azure Active Directory z programem Learningpool Act
 
 Z tego samouczka dowiesz się, jak zintegrować aplikację Learningpool Act z usługą Azure Active Directory (Azure AD).
 Zintegrowanie aplikacji Learningpool Act z usługą Azure AD zapewnia następujące korzyści:
@@ -33,7 +33,7 @@ Zintegrowanie aplikacji Learningpool Act z usługą Azure AD zapewnia następuj�
 * Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -70,7 +70,7 @@ Aby skonfigurować integrację aplikacji Learningpool Act z usługą Azure AD, m
 
      ![Aplikacja Learningpool Act na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją Learningpool Act, korzystając z danych użytkownika testowego o nazwie **Britta Simon**.
 Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji Learningpool Act.
@@ -92,7 +92,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Learningpo
 
 1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Learningpool Act** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -108,7 +108,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Learningpo
 
     a. W polu tekstowym **Adres URL logowania** wpisz następujący adres URL: `https://parliament.preview.Learningpool.com/auth/shibboleth/index.php`
 
-    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, korzystając z następującego wzorca:
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: 
     
     | |
     |--|
@@ -117,7 +117,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Learningpo
     | | |
 
     > [!NOTE]
-    > Wartość identyfikatora nie jest prawdziwe. Zaktualizuj tę wartość za pomocą rzeczywistego identyfikatora. Skontaktuj się z [zespołem pomocy technicznej klienta aplikacji Learningpool Act](https://www.learningpool.com/support), aby uzyskać tę wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Wartość identyfikatora nie jest prawdziwa. Zaktualizuj tę wartość za pomocą rzeczywistego identyfikatora. Skontaktuj się z [zespołem pomocy technicznej klienta aplikacji Learningpool Act](https://www.learningpool.com/support), aby uzyskać tę wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 5. Aplikacja Learningpool Act oczekuje asercji SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych do konfiguracji atrybutów tokenu języka SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe Atrybuty użytkownika.
 
@@ -141,7 +141,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Learningpo
 
     b. W polu tekstowym **Nazwa** wpisz nazwę atrybutu pokazaną dla tego wiersza.
 
-    c. Pozostaw pole **Przestrzeń nazw** puste.
+    d. Pozostaw pole **Przestrzeń nazw** puste.
 
     d. Dla opcji Źródło wybierz wartość **Atrybut**.
 
@@ -149,11 +149,11 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Learningpo
 
     f. Kliknij przycisk **OK**.
 
-    g. Kliknij pozycję **Zapisz**.
+    g. Kliknij przycisk **Zapisz**.
 
-7. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
+7. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/metadataxml.png)
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
 8. W sekcji **Konfigurowanie platformy Learningpool Act** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
@@ -163,7 +163,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Learningpo
 
     b. Identyfikator usługi Azure AD
 
-    c. Adres URL wylogowywania
+    d. Adres URL wylogowywania
 
 ### <a name="configure-learningpool-act-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w aplikacji Learningpool Act
 
@@ -175,24 +175,24 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-    !["Użytkownicy i grupy" i "All users" linki](common/users.png)
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+2. Wybierz **pozycję Nowy użytkownik** u góry ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
-3. We właściwościach użytkownika wykonaj następujące czynności.
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-    ![Okno dialogowe użytkownika](common/user-properties.png)
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon\@yourcompanydomain. Extension**  
+    b. W polu **Nazwa użytkownika** wpisz **\@brittasimon yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
-    c. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Kliknij pozycję **Utwórz**.
+    d. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -216,7 +216,7 @@ W tej sekcji włączysz możliwość logowania jednokrotnego na platformie Azure
 
 5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+6. Jeśli oczekujesz dowolnej wartości roli w asercji SAML, a następnie w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
@@ -228,19 +228,19 @@ Nie istnieje element akcji na potrzeby konfigurowania aprowizacji użytkowników
 [Zespół pomocy technicznej aplikacji Learningpool Act](https://www.Learningpool.com/support) musi utworzyć użytkowników.
 
 > [!NOTE]
-> Możesz użyć innych narzędzi do tworzenia kont użytkowników Learningpool i interfejsów API dostarczonych przez Learningpool, aby zainicjować obsługę kont użytkowników usługi Azure AD.
+> Można użyć innych narzędzi do tworzenia konta użytkownika Learningpool Act lub interfejsów API dostarczonych przez Learningpool Act do aprowizowania kont użytkowników usługi Azure AD.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Learningpool Act w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Learningpool Act, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka Learningpool Act w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Learningpool Act, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat Panelu dostępu, zobacz [Wprowadzenie do Panelu dostępu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

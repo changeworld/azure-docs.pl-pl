@@ -1,6 +1,6 @@
 ---
 title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — przekazywanie pliku do kontenera | Microsoft Docs
-description: W tym artykule pokazano, jak za pomocą skryptu interfejsu wiersza polecenia platformy Azure przekazać plik lokalny do kontenera magazynu.
+description: W tym artykule pokazano, jak używać skryptu interfejsu wiersza polecenia platformy Azure do przekazywania pliku lokalnego do kontenera magazynu.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: d6720200da341ee466339edde6dded02dd4fddc6
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: d0a28bafef887bf0c40aa88eba1873f82cf36fd7
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970112"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80346076"
 ---
 # <a name="cli-example-upload-a-local-file-to-a-container"></a>Przykład interfejsu wiersza polecenia: przekazywanie pliku lokalnego do kontenera 
 
@@ -27,7 +27,8 @@ Skrypt interfejsu wiersza polecenia platformy Azure w tym artykule pokazuje, jak
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 
-[Utwórz konto usługi Media Services](create-account-cli-how-to.md).
+* [Utwórz konto usługi Media Services](create-account-cli-how-to.md).
+* Przegląd [zarządzania zasobami](manage-asset-concept.md).
 
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 
@@ -62,4 +63,4 @@ read continue
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Przegląd Media Services](media-services-overview.md)
+[Omówienie usługi Media Services](media-services-overview.md)

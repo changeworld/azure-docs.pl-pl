@@ -1,54 +1,54 @@
 ---
-title: Samouczek — Dodawanie funkcji szablonu
-description: Dodaj funkcje szablonu do szablonu Azure Resource Manager, aby skonstruować wartości.
+title: Samouczek - dodawanie funkcji szablonu
+description: Dodaj funkcje szablonu do szablonu usługi Azure Resource Manager, aby utworzyć wartości.
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7e4282802c287becf9ccb036ba0063d3c48bc332
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 6bb95d5a8022c6ac94dd8b7c777c65ff5e20617a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79370767"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80369914"
 ---
-# <a name="tutorial-add-template-functions-to-your-resource-manager-template"></a>Samouczek: Dodawanie funkcji szablonu do szablonu Menedżer zasobów
+# <a name="tutorial-add-template-functions-to-your-arm-template"></a>Samouczek: Dodawanie funkcji szablonu do szablonu ARM
 
-W tym samouczku dowiesz się, jak dodać [funkcje szablonu](template-functions.md) do szablonu. Funkcje służą do dynamicznego konstruowania wartości. Oprócz tych funkcji szablonu udostępnianych przez system można także tworzyć [funkcje zdefiniowane przez użytkownika](./template-user-defined-functions.md). Ukończenie tego samouczka trwa **7 minut** .
+W tym samouczku dowiesz się, jak dodać [funkcje szablonu](template-functions.md) do szablonu usługi Azure Resource Manager (ARM). Funkcje są używane do dynamicznego konstruowania wartości. Oprócz tych funkcji szablonów dostarczanych przez system można również tworzyć [funkcje zdefiniowane przez użytkownika](./template-user-defined-functions.md). Ten samouczek trwa **7 minut.**
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Zalecamy ukończenie [samouczka dotyczącego parametrów](template-tutorial-add-parameters.md), ale nie jest to wymagane.
+Zalecamy ukończenie [samouczka na temat parametrów,](template-tutorial-add-parameters.md)ale nie jest to wymagane.
 
-Musisz mieć Visual Studio Code z rozszerzeniem narzędzi Menedżer zasobów i Azure PowerShell lub interfejsu wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zobacz [Narzędzia szablonu](template-tutorial-create-first-template.md#get-tools).
+Musisz mieć program Visual Studio Code z rozszerzeniem Narzędzia Menedżera zasobów i azure powershell lub interfejsu wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zobacz [narzędzia szablonów](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-template"></a>Przejrzyj szablon
+## <a name="review-template"></a>Szablon recenzji
 
-Na końcu poprzedniego samouczka szablon zawierał następujący kod JSON:
+Na końcu poprzedniego samouczka szablon miał następujący JSON:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json":::
 
-Lokalizacja konta magazynu jest trwale kodowana dla **regionu Wschodnie stany USA**. Jednak może być konieczne wdrożenie konta magazynu w innych regionach. Nastąpi ponowne wystawienie problemu związanego z brakiem możliwości elastyczności szablonu. Można dodać parametr do lokalizacji, ale byłoby to doskonałe, jeśli jego wartość domyślna była większa niż tylko zakodowana wartość.
+Lokalizacja konta magazynu jest zakodowany na **wschodniej części STANÓW Zjednoczonych**. Jednak może być konieczne wdrożenie konta magazynu w innych regionach. Ponownie naprzestajesz przed problemem szablonu, który nie ma elastyczności. Można dodać parametr dla lokalizacji, ale byłoby świetnie, jeśli jego wartość domyślna ma większy sens niż tylko wartość zakodowane na czas.
 
-## <a name="use-function"></a>Use — funkcja
+## <a name="use-function"></a>Użyj funkcji
 
-Po ukończeniu poprzedniego samouczka w tej serii funkcja została już użyta. Po dodaniu **"[Parameters (" storagename ")]"** użyto funkcji [Parameters](template-functions-deployment.md#parameters) . Nawiasy wskazują, że składnia wewnątrz nawiasów jest [wyrażeniem szablonu](template-expressions.md). Menedżer zasobów rozpoznaje składnię zamiast traktować ją jako wartość literału.
+Jeśli ukończono poprzedni samouczek z tej serii, już użyto funkcji. Po dodaniu **"[parameters('storageName')]"** użyto funkcji [parametrów.](template-functions-deployment.md#parameters) Nawiasy wskazują, że składnia wewnątrz nawiasów jest [wyrażeniem szablonu](template-expressions.md). Menedżer zasobów rozpoznaje składnię, a nie traktuje ją jako wartość literału.
 
-Funkcje zwiększają elastyczność szablonu przez dynamiczne pobieranie wartości podczas wdrażania. W tym samouczku użyjesz funkcji, aby pobrać lokalizację grupy zasobów używanej do wdrożenia.
+Funkcje zwiększają elastyczność szablonu, dynamicznie uzyskując wartości podczas wdrażania. W tym samouczku można użyć funkcji, aby uzyskać lokalizację grupy zasobów, których używasz do wdrożenia.
 
-Poniższy przykład wyróżnia zmiany w celu dodania parametru o nazwie **Location**.  Wartość domyślna parametru wywołuje funkcję [ResourceManager](template-functions-resource.md#resourcegroup) . Ta funkcja zwraca obiekt z informacjami o grupie zasobów używanej do wdrożenia. Jedną z właściwości obiektu jest właściwość Location. W przypadku użycia wartości domyślnej Lokalizacja konta magazynu ma tę samą lokalizację co grupa zasobów. Zasoby w grupie zasobów nie muszą udostępniać tej samej lokalizacji. W razie konieczności można także podać inną lokalizację.
+W poniższym przykładzie wyróżniono zmiany w celu dodania parametru o nazwie **location**.  Wartość domyślna parametru wywołuje funkcję [resourceGroup.](template-functions-resource.md#resourcegroup) Ta funkcja zwraca obiekt z informacjami o grupie zasobów używanej do wdrożenia. Jedną z właściwości obiektu jest właściwość lokalizacji. W przypadku użycia wartości domyślnej lokalizacja konta magazynu ma taką samą lokalizację jak grupa zasobów. Zasoby wewnątrz grupy zasobów nie muszą współużytkować tej samej lokalizacji. W razie potrzeby można również podać inną lokalizację.
 
-Skopiuj cały plik i Zastąp jego zawartość.
+Skopiuj cały plik i zastąp szablon jego zawartością.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json" range="1-44" highlight="24-27,34":::
 
 ## <a name="deploy-template"></a>Wdrażanie szablonu
 
-W poprzednich samouczkach utworzono konto magazynu w regionie Wschodnie stany USA, ale Grupa zasobów została utworzona w środkowych stanach USA. W tym samouczku konto magazynu zostanie utworzone w tym samym regionie, w którym znajduje się grupa zasobów. Użyj wartości domyślnej dla lokalizacji, więc nie musisz podawać tej wartości parametru. Musisz podać nową nazwę konta magazynu, ponieważ tworzysz konto magazynu w innej lokalizacji. Na przykład użyj **Store2** jako prefiksu zamiast **store1**.
+W poprzednich samouczkach utworzono konto magazynu we wschodnich stanach USA, ale grupa zasobów została utworzona w centralnych stanach USA. W tym samouczku konto magazynu jest tworzone w tym samym regionie co grupa zasobów. Użyj wartości domyślnej dla lokalizacji, więc nie trzeba podawać tej wartości parametru. Musisz podać nową nazwę dla konta magazynu, ponieważ tworzysz konto magazynu w innej lokalizacji. Na przykład użyj **store2** jako prefiksu zamiast **store1**.
 
-Jeśli grupa zasobów nie została utworzona, zobacz [Tworzenie grupy zasobów](template-tutorial-create-first-template.md#create-resource-group). W przykładzie założono, że ustawiono zmienną **TemplateFile** na ścieżkę do pliku szablonu, jak pokazano w [pierwszym samouczku](template-tutorial-create-first-template.md#deploy-template).
+Jeśli grupa zasobów nie została utworzona, zobacz [Tworzenie grupy zasobów](template-tutorial-create-first-template.md#create-resource-group). W przykładzie przyjęto założenie, że ustawiono **zmienną templateFile** na ścieżkę do pliku szablonu, jak pokazano w [pierwszym samouczku](template-tutorial-create-first-template.md#deploy-template).
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -59,6 +59,8 @@ New-AzResourceGroupDeployment `
 ```
 
 # <a name="azure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
+
+Aby uruchomić to polecenie wdrażania, musisz mieć [najnowszą wersję](/cli/azure/install-azure-cli) interfejsu wiersza polecenia platformy Azure.
 
 ```azurecli
 az deployment group create \
@@ -72,27 +74,27 @@ az deployment group create \
 
 ## <a name="verify-deployment"></a>Weryfikowanie wdrożenia
 
-Można zweryfikować wdrożenie, przeeksplorowanie grupy zasobów z Azure Portal.
+Wdrożenie można zweryfikować, eksplorując grupę zasobów z witryny Azure portal.
 
-1. Zaloguj się do [Azure portal](https://portal.azure.com).
-1. Z menu po lewej stronie wybierz pozycję **grupy zasobów**.
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. W menu po lewej stronie wybierz pozycję **Grupy zasobów**.
 1. Wybierz grupę zasobów, do której została wdrożona.
-1. Zobaczysz, że zasób konta magazynu został wdrożony i ma tę samą lokalizację co grupa zasobów.
+1. Widać, że zasób konta magazynu został wdrożony i ma taką samą lokalizację jak grupa zasobów.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli przeniesiesz się do następnego samouczka, nie musisz usuwać grupy zasobów.
+Jeśli przechodzisz do następnego samouczka, nie musisz usuwać grupy zasobów.
 
-Jeśli zatrzymasz się teraz, możesz chcieć wyczyścić wdrożone zasoby, usuwając grupę zasobów.
+Jeśli zatrzymujesz się teraz, możesz wyczyścić zasoby wdrożone przez usunięcie grupy zasobów.
 
-1. W witrynie Azure Portal wybierz pozycję **Grupa zasobów** z menu po lewej stronie.
+1. W witrynie Azure portal wybierz **grupę zasobów** z lewego menu.
 2. Wprowadź nazwę grupy zasobów w polu **Filtruj według nazwy**.
 3. Wybierz nazwę grupy zasobów.
-4. Wybierz pozycję **Usuń grupę zasobów** z górnego menu.
+4. Wybierz **pozycję Usuń grupę zasobów** z górnego menu.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku użyto funkcji podczas definiowania wartości domyślnej dla parametru. W tej serii samouczków będziesz używać funkcji. Na końcu serii dodasz funkcje do każdej sekcji szablonu.
+W tym samouczku użyto funkcji podczas definiowania wartości domyślnej dla parametru. W tej serii samouczków będziesz nadal korzystać z funkcji. Pod koniec serii dodasz funkcje do każdej sekcji szablonu.
 
 > [!div class="nextstepaction"]
-> [Dodaj zmienne](template-tutorial-add-variables.md)
+> [Dodawanie zmiennych](template-tutorial-add-variables.md)

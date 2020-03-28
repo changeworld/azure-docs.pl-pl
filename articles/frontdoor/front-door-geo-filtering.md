@@ -1,6 +1,6 @@
 ---
-title: Filtrowanie geograficzne domeny w usłudze Azure Front Door Service | Microsoft Docs
-description: W tym artykule poznasz zasady filtrowania geograficznego usługi Azure Front Door Service
+title: Filtrowanie geograficzne w domenie dla drzwi y frontowej platformy Azure | Dokumenty firmy Microsoft
+description: W tym artykule dowiesz się więcej o zasadach filtrowania geograficznego dla drzwi frontowych platformy Azure
 services: frontdoor
 documentationcenter: ''
 author: KumudD
@@ -13,20 +13,20 @@ ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: 7ad2d181b6343644205c58ab1d5fe83dc25542d4
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 80641ca27949435f65222ecab17cc3079e2a6359
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846424"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79471612"
 ---
-# <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Co to jest filtrowania geograficznego w domenie usługi Azure drzwiami frontowymi?
+# <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Co to jest filtrowanie geograficzne domeny w usłudze Azure Front Door?
 
-Domyślnie usługa Azure Front Door Service odpowiada na żądania użytkowników niezależnie od lokalizacji użytkownika wysyłającego żądanie. Jednak w niektórych przypadkach można ograniczyć dostęp do aplikacji sieci web według kraju/regionu. Usługa umożliwiającymi zainstalowanie zapory aplikacji sieci Web na wejściu umożliwia zdefiniowanie zasad przy użyciu reguły niestandardowej dostępu do określonej ścieżki w punkcie końcowym usługi do zezwalania lub blokowania dostępu z określonym krajów/regionów. 
+Domyślnie usługi Azure Front Door odpowiada na żądania użytkowników, niezależnie od lokalizacji użytkownika, który złożył żądanie. Jednak w niektórych przypadkach można ograniczyć dostęp do aplikacji sieci web według kraju/regionu. Usługa zapory aplikacji sieci Web (WAF) w drzwiach frontowych umożliwia definiowanie zasad przy użyciu reguł dostępu niestandardowego dla określonej ścieżki w punkcie końcowym, aby zezwolić lub zablokować dostęp z określonych krajów/regionów. 
 
-Zasady zapory aplikacji sieci Web zwykle zawiera zestaw reguł niestandardowych. Reguła składa się z warunków dopasowań, akcji i priorytetu. W warunku dopasowania należy zdefiniować zmienną dopasowania, operator i wartość dopasowania.  W przypadku reguły filtrowania geograficznego zmienna dopasowania to REMOTE_ADDR, operator to GeoMatch, a wartość to dwuliterowy kod kraju. Możesz połączyć warunek GeoMatch i warunek dopasowania ciągu REQUEST_URI, aby utworzyć regułę filtrowania geograficznego opartą na ścieżkach.
+Zasady WAF zwykle zawiera zestaw reguł niestandardowych. Reguła składa się z warunków dopasowań, akcji i priorytetu. W warunku dopasowania należy zdefiniować zmienną dopasowania, operator i wartość dopasowania.  W przypadku reguły filtrowania geograficznego zmienna dopasowania to REMOTE_ADDR, operator to GeoMatch, a wartość to dwuliterowy kod kraju. Możesz połączyć warunek GeoMatch i warunek dopasowania ciągu REQUEST_URI, aby utworzyć regułę filtrowania geograficznego opartą na ścieżkach.
 
-Można skonfigurować zasady filtrowania geograficznego dla Twojego drzwiami frontowymi za pomocą [programu Azure PowerShell](front-door-tutorial-geo-filtering.md) lub za pomocą naszych [szablon szybkiego startu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering).
+Zasady filtrowania geograficznego dla drzwi frontowych można skonfigurować za pomocą [programu Azure PowerShell](front-door-tutorial-geo-filtering.md) lub korzystając z naszego [szablonu szybkiego startu.](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering)
 
 ## <a name="country-code-reference"></a>Odwołanie do kodu kraju
 
@@ -53,7 +53,7 @@ Można skonfigurować zasady filtrowania geograficznego dla Twojego drzwiami fro
 | BH | Bahrajn|
 | BI | Burundi|
 | BJ | Benin|
-| BL | Saint Barthelemy|
+| BL | Św Barthélemy|
 | BN | Brunei Darussalam|
 | BO | Boliwia|
 | BR | Brazylia|
@@ -73,12 +73,12 @@ Można skonfigurować zasady filtrowania geograficznego dla Twojego drzwiami fro
 | CO | Kolumbia|
 | CR | Kostaryka|
 | CU | Kuba|
-| CV | Wyspy Zielonego Przylądka|
+| CV | Cabo Verde|
 | CY | Cypr|
 | CZ | Czechy|
 | DE | Niemcy|
 | DK | Dania|
-| DO | Republika Dominikańska|
+| DO | Dominikana|
 | DZ | Algieria|
 | EC | Ekwador|
 | EE | Estonia|
@@ -133,7 +133,7 @@ Można skonfigurować zasady filtrowania geograficznego dla Twojego drzwiami fro
 | LT | Litwa|
 | LU | Luksemburg|
 | LV | Łotwa|
-| LY | Libya |
+| LY | Libia |
 | MA | Maroko|
 | MD | Republika Mołdawii|
 | MG | Madagaskar|

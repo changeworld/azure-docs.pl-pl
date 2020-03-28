@@ -13,20 +13,20 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 8bbe32a202af3b8684c16cc2e56d5a111511bef5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75438913"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>Samouczek: tworzenie potoku za pomocą działania kopiowania przy użyciu Kreatora kopiowania usługi Fabryka danych
 > [!div class="op_single_selector"]
 > * [Przegląd i wymagania wstępne](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Kreator kopiowania](data-factory-copy-data-wizard-tutorial.md)
-> * [Program Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
-> * [Program PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
+> * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
+> * [Powershell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Szablon usługi Azure Resource Manager](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
-> * [Interfejs API REST](data-factory-copy-activity-tutorial-using-rest-api.md)
+> * [INTERFEJS API ODPOCZYNKU](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [Interfejs API .NET](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
 > [!NOTE]
@@ -45,10 +45,10 @@ Przed wykonaniem instrukcji z tego samouczka wykonaj działania dotyczące wymag
 ## <a name="create-data-factory"></a>Tworzenie fabryki danych
 W tym kroku opisano tworzenie fabryki danych Azure o nazwie **ADFTutorialDataFactory** przy użyciu witryny Azure Portal.
 
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 2. Kliknij polecenie **Utwórz zasób** w lewym górnym rogu, kliknij pozycję **Dane + analiza**, a następnie **Fabryka danych**. 
    
-   ![Nowy-> Fabryka danych](./media/data-factory-copy-data-wizard-tutorial/new-data-factory-menu.png)
+   ![Nowy->Fabryka danych](./media/data-factory-copy-data-wizard-tutorial/new-data-factory-menu.png)
 2. W bloku **Nowa fabryka danych**:
    
    1. Wprowadź wartość **ADFTutorialDataFactory** dla opcji **Nazwa**.
@@ -67,7 +67,7 @@ W tym kroku opisano tworzenie fabryki danych Azure o nazwie **ADFTutorialDataFac
    6. Kliknij przycisk **Utwórz**.
       
        ![Blok Nowa fabryka danych](media/data-factory-copy-data-wizard-tutorial/new-data-factory-blade.png)            
-3. Po zakończeniu tworzenia zostanie wyświetlony blok **Fabryka danych**, jak pokazano na poniższej ilustracji:
+3. Po zakończeniu tworzenia zostanie wyświetlony **data factory** bloku, jak pokazano na poniższej ilustracji:
    
    ![Strona główna fabryki danych](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-home-page.png)
 
@@ -81,7 +81,7 @@ W tym kroku opisano tworzenie fabryki danych Azure o nazwie **ADFTutorialDataFac
    1. Wprowadź wartość **CopyFromBlobToAzureSql** w polu **Nazwa zadania**
    2. Wprowadź **opis** (opcjonalnie).
    3. Zmień ustawienia **Data/godzina rozpoczęcia** i **Data/godzina zakończenia** tak, aby data zakończenia przypadała w bieżącym dniu, a data rozpoczęcia pięć dni wcześniej.  
-   4. Kliknij przycisk **Dalej**.  
+   4. Kliknij przycisk **alej**.  
       
       ![Narzędzie kopiowania — strona Właściwości](./media/data-factory-copy-data-wizard-tutorial/copy-tool-properties-page.png) 
 3. Na stronie **Magazyn danych źródłowych** kliknij kafelek **Azure Blob Storage**. Ta strona służy do określania magazynu danych źródłowych do zadania kopiowania. 
@@ -117,7 +117,7 @@ W tym kroku opisano tworzenie fabryki danych Azure o nazwie **ADFTutorialDataFac
    3. Wybierz swoją **subskrypcję** platformy Azure.  
    4. Wybierz opcje **Nazwa serwera** i **Baza danych**.
    5. Wypełnij pola **Nazwa użytkownika** i **Hasło**.
-   6. Kliknij przycisk **Dalej**.  
+   6. Kliknij przycisk **alej**.  
       
       ![Narzędzie kopiowania — określanie bazy danych Azure SQL Database](./media/data-factory-copy-data-wizard-tutorial/specify-azure-sql-database.png)
 10. Na stronie **Mapowanie tabeli** wybierz pozycję **emp** z listy rozwijanej w polu **Miejsce docelowe**, kliknij **strzałkę w dół** (opcjonalnie), aby wyświetlić schemat i podgląd danych.

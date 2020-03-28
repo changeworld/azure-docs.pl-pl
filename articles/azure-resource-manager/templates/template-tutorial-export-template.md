@@ -1,53 +1,53 @@
 ---
-title: Samouczek — Eksportowanie szablonu z Azure Portal
-description: Dowiedz się, jak za pomocą wyeksportowanego szablonu ukończyć tworzenie szablonu.
+title: Samouczek — eksportowanie szablonu z witryny Azure portal
+description: Dowiedz się, jak użyć wyeksportowanego szablonu do ukończenia tworzenia szablonów.
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 95d54a0661f0a0cebdbfc225074be0ce0d83a5cc
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 5a0d373fdf75f19c8fc1082593c15c14770f79c3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79368897"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80369897"
 ---
-# <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Samouczek: korzystanie z wyeksportowanego szablonu z Azure Portal
+# <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Samouczek: Używanie wyeksportowanego szablonu z witryny Azure portal
 
-W tej serii samouczków utworzono szablon służący do wdrażania konta usługi Azure Storage. W następnych dwóch samouczkach dodasz *plan App Service* i *witrynę sieci Web*. Zamiast tworzyć szablony od podstaw, dowiesz się, jak eksportować szablony z Azure Portal oraz jak używać przykładowych szablonów z [szablonów szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/). Te szablony można dostosować do własnych potrzeb. Ten samouczek koncentruje się na eksportowaniu szablonów i dostosowywaniu wyników dla szablonu. Ukończenie może potrwać około **14 minut** .
+W tej serii samouczków utworzono szablon do wdrożenia konta magazynu platformy Azure. W następnych dwóch samouczkach dodajesz *plan usługi app service* i *witrynę sieci Web*. Zamiast tworzyć szablony od podstaw, dowiesz się, jak eksportować szablony z witryny Azure portal i jak używać przykładowych szablonów z [szablonów szybki start platformy Azure](https://azure.microsoft.com/resources/templates/). Dostosuj te szablony do użytku. Ten samouczek koncentruje się na eksportowaniu szablonów i dostosowywaniu wyniku dla szablonu. Trwa około **14 minut.**
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Zalecamy ukończenie [samouczka dotyczącego danych wyjściowych](template-tutorial-add-outputs.md), ale nie jest to wymagane.
+Zaleca się ukończenie [samouczka na temat wyjść,](template-tutorial-add-outputs.md)ale nie jest to wymagane.
 
-Musisz mieć Visual Studio Code z rozszerzeniem narzędzi Menedżer zasobów i Azure PowerShell lub interfejsu wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zobacz [Narzędzia szablonu](template-tutorial-create-first-template.md#get-tools).
+Musisz mieć program Visual Studio Code z rozszerzeniem Narzędzia Menedżera zasobów i azure powershell lub interfejsu wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zobacz [narzędzia szablonów](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-template"></a>Przejrzyj szablon
+## <a name="review-template"></a>Szablon recenzji
 
-Na końcu poprzedniego samouczka szablon zawierał następujący kod JSON:
+Na końcu poprzedniego samouczka szablon miał następujący JSON:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json":::
 
-Ten szablon działa dobrze w przypadku wdrażania kont magazynu, ale możesz chcieć dodać do niego więcej zasobów. Możesz wyeksportować szablon z istniejącego zasobu, aby szybko uzyskać kod JSON dla tego zasobu.
+Ten szablon działa dobrze do wdrażania kont magazynu, ale można dodać więcej zasobów do niego. Można wyeksportować szablon z istniejącego zasobu, aby szybko uzyskać JSON dla tego zasobu.
 
 ## <a name="create-app-service-plan"></a>Tworzenie planu usługi App Service
 
-1. Zaloguj się do [Azure portal](https://portal.azure.com).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
 1. Wybierz pozycję **Utwórz zasób**.
-1. W obszarze **Wyszukaj w portalu Marketplace**wprowadź **App Service plan**, a następnie wybierz pozycję **App Service plan**.  Nie wybieraj **planu App Service (klasyczny)**
-1. Wybierz pozycję **Utwórz**.
+1. W **obszarze Wyszukaj w portalu Marketplace**wprowadź plan usługi app **service,** a następnie wybierz pozycję **Plan usługi aplikacji**.  Nie wybieraj **planu usługi aplikacji (klasyczny)**
+1. Wybierz **pozycję Utwórz**.
 1. Wprowadź:
 
-    - **Subskrypcja**: wybierz subskrypcję platformy Azure.
-    - **Grupa zasobów**: wybierz pozycję **Utwórz nową** , a następnie określ nazwę. Podaj inną nazwę grupy zasobów niż ta, która była używana w tej serii samouczków.
-    - **Nazwa**: Wprowadź nazwę planu usługi App Service.
-    - **System operacyjny**: wybierz pozycję **Linux**.
-    - **Region**: Wybierz lokalizację platformy Azure. Na przykład **Środkowe stany USA**.
-    - **Warstwa cenowa**: aby zaoszczędzić koszty, Zmień jednostkę SKU na **podstawową B1** (w obszarze Tworzenie/testowanie).
+    - **Subskrypcja:** wybierz subskrypcję platformy Azure.
+    - **Grupa zasobów**: Wybierz pozycję **Utwórz nowy,** a następnie określ nazwę. Podaj inną nazwę grupy zasobów niż ta, której używasz w tej serii samouczków.
+    - **Nazwa**: wprowadź nazwę planu usługi aplikacji.
+    - **System operacyjny**: wybierz **Linux**.
+    - **Region**: wybierz lokalizację platformy Azure. Na przykład **Środkowe stany USA**.
+    - **Warstwa cenowa:** aby zaoszczędzić koszty, zmień jednostkę SKU na **Podstawową B1** (w obszarze Dev/Test).
 
-    ![Portal szablonu Menedżer zasobów szablonu eksportu](./media/template-tutorial-export-template/resource-manager-template-export.png)
-1. Wybierz pozycję **Przejrzyj i Utwórz**.
-1. Wybierz pozycję **Utwórz**. Utworzenie zasobu trwa kilka chwil.
+    ![Portal szablonu eksportu szablonu Menedżera zasobów](./media/template-tutorial-export-template/resource-manager-template-export.png)
+1. Wybierz **pozycję Przejrzyj i utwórz**.
+1. Wybierz **pozycję Utwórz**. Utworzenie zasobu zajmuje kilka chwil.
 
 ## <a name="export-template"></a>Eksportowanie szablonu
 
@@ -55,36 +55,36 @@ Ten szablon działa dobrze w przypadku wdrażania kont magazynu, ale możesz chc
 
     ![Przechodzenie do zasobu](./media/template-tutorial-export-template/resource-manager-template-export-go-to-resource.png)
 
-1. Wybierz pozycję **Eksportuj szablon**.
+1. Wybierz **pozycję Eksportuj szablon**.
 
-    ![Szablon eksportu Menedżer zasobów szablonu](./media/template-tutorial-export-template/resource-manager-template-export-template.png)
+    ![Szablon eksportu szablonu Menedżera zasobów](./media/template-tutorial-export-template/resource-manager-template-export-template.png)
 
-   Funkcja eksportowania szablonu Pobiera bieżący stan zasobu i generuje szablon w celu jego wdrożenia. Eksportowanie szablonu może być przydatnym sposobem na szybkie pobranie kodu JSON potrzebnego do wdrożenia zasobu.
+   Funkcja szablonu eksportu przyjmuje bieżący stan zasobu i generuje szablon, aby go wdrożyć. Eksportowanie szablonu może być pomocnym sposobem szybkiego uzyskania JSON potrzebne do wdrożenia zasobu.
 
-1. Skopiuj definicję **Microsoft. Web/dopuszczalna** i definicję parametru do szablonu.
+1. Skopiuj do szablonu definicję **farmy microsoft.Web/serverfarms** i definicję parametru.
 
-    ![Szablon wyeksportowanego szablonu Menedżer zasobów szablonu eksportu](./media/template-tutorial-export-template/resource-manager-template-exported-template.png)
+    ![Szablon eksportu szablonu Menedżera zasobów wyeksportowany szablon](./media/template-tutorial-export-template/resource-manager-template-exported-template.png)
 
 > [!IMPORTANT]
-> Zwykle wyeksportowany szablon jest bardziej szczegółowy niż podczas tworzenia szablonu. Na przykład obiekt SKU w wyeksportowanym szablonie ma pięć właściwości. Ten szablon działa, ale można tylko użyć właściwości **Nazwa** . Możesz rozpocząć od wyeksportowanego szablonu, a następnie zmodyfikować go w taki sposób, aby odpowiadał Twoim wymaganiom.
+> Zazwyczaj eksportowany szablon jest bardziej szczegółowy niż podczas tworzenia szablonu. Na przykład obiekt SKU w eksportowanym szablonie ma pięć właściwości. Ten szablon działa, ale można po prostu użyć właściwości **name.** Możesz zacząć od wyeksportowanego szablonu, a następnie zmodyfikować go tak, jak chcesz, aby dopasować go do swoich wymagań.
 
-## <a name="revise-existing-template"></a>Popraw istniejący szablon
+## <a name="revise-existing-template"></a>Poprawianie istniejącego szablonu
 
-Wyeksportowany szablon zapewnia większość potrzebnych danych JSON, ale należy go dostosować do szablonu. Należy zwrócić szczególną uwagę na różnice między parametrami i zmiennymi między szablonem i wyeksportowanym szablonem. Oczywiście proces eksportowania nie wie o parametry i zmienne, które zostały już zdefiniowane w szablonie.
+Wyeksportowany szablon zapewnia większość potrzebnych JSON, ale należy dostosować go do szablonu. Należy zwrócić szczególną uwagę na różnice w parametrach i zmiennych między szablonem a eksportowanym szablonem. Oczywiście proces eksportowania nie zna parametrów i zmiennych, które zostały już zdefiniowane w szablonie.
 
-Poniższy przykład wyróżnia Dodatki do szablonu. Zawiera eksportowany kod i pewne zmiany. Najpierw zmienia nazwę parametru zgodnie z konwencją nazewnictwa. Następnie używa parametru Location dla lokalizacji planu usługi App Service. Trzeci, usuwa **nazwę** wewnątrz obiektu **Właściwości** , ponieważ ta wartość jest nadmiarowa z właściwością **Nazwa** na poziomie zasobu.
+W poniższym przykładzie wyróżniono dodatki do szablonu. Zawiera eksportowany kod oraz pewne zmiany. Najpierw zmienia nazwę parametru, aby dopasować konwencję nazewnictwa. Po drugie używa parametru lokalizacji dla lokalizacji planu usługi aplikacji. Po trzecie, usuwa **nazwę** wewnątrz obiektu **właściwości,** ponieważ ta wartość jest nadmiarowa z **właściwością name** na poziomie zasobu.
 
-Skopiuj cały plik i Zastąp jego zawartość.
+Skopiuj cały plik i zastąp szablon jego zawartością.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/export-template/azuredeploy.json" range="1-77" highlight="28-31,50-69":::
 
 ## <a name="deploy-template"></a>Wdrażanie szablonu
 
-Użyj interfejsu wiersza polecenia platformy Azure lub Azure PowerShell, aby wdrożyć szablon.
+Użyj interfejsu wiersza polecenia platformy Azure lub programu Azure PowerShell, aby wdrożyć szablon.
 
-Jeśli grupa zasobów nie została utworzona, zobacz [Tworzenie grupy zasobów](template-tutorial-create-first-template.md#create-resource-group). W przykładzie założono, że ustawiono zmienną **TemplateFile** na ścieżkę do pliku szablonu, jak pokazano w [pierwszym samouczku](template-tutorial-create-first-template.md#deploy-template).
+Jeśli grupa zasobów nie została utworzona, zobacz [Tworzenie grupy zasobów](template-tutorial-create-first-template.md#create-resource-group). W przykładzie przyjęto założenie, że ustawiono **zmienną templateFile** na ścieżkę do pliku szablonu, jak pokazano w [pierwszym samouczku](template-tutorial-create-first-template.md#deploy-template).
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -96,6 +96,8 @@ New-AzResourceGroupDeployment `
 ```
 
 # <a name="azure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
+
+Aby uruchomić to polecenie wdrażania, musisz mieć [najnowszą wersję](/cli/azure/install-azure-cli) interfejsu wiersza polecenia platformy Azure.
 
 ```azurecli
 az deployment group create \
@@ -109,27 +111,27 @@ az deployment group create \
 
 ## <a name="verify-deployment"></a>Weryfikowanie wdrożenia
 
-Można zweryfikować wdrożenie, przeeksplorowanie grupy zasobów z Azure Portal.
+Wdrożenie można zweryfikować, eksplorując grupę zasobów z witryny Azure portal.
 
-1. Zaloguj się do [Azure portal](https://portal.azure.com).
-1. Z menu po lewej stronie wybierz pozycję **grupy zasobów**.
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. W menu po lewej stronie wybierz pozycję **Grupy zasobów**.
 1. Wybierz grupę zasobów, do której została wdrożona.
-1. Grupa zasobów zawiera konto magazynu i plan App Service.
+1. Grupa zasobów zawiera konto magazynu i plan usługi app service.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli przeniesiesz się do następnego samouczka, nie musisz usuwać grupy zasobów.
+Jeśli przechodzisz do następnego samouczka, nie musisz usuwać grupy zasobów.
 
-Jeśli zatrzymasz się teraz, możesz chcieć wyczyścić wdrożone zasoby, usuwając grupę zasobów.
+Jeśli zatrzymujesz się teraz, możesz wyczyścić zasoby wdrożone przez usunięcie grupy zasobów.
 
-1. W witrynie Azure Portal wybierz pozycję **Grupa zasobów** z menu po lewej stronie.
+1. W witrynie Azure portal wybierz **grupę zasobów** z lewego menu.
 2. Wprowadź nazwę grupy zasobów w polu **Filtruj według nazwy**.
 3. Wybierz nazwę grupy zasobów.
-4. Wybierz pozycję **Usuń grupę zasobów** z górnego menu.
+4. Wybierz **pozycję Usuń grupę zasobów** z górnego menu.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Wiesz już, jak wyeksportować szablon z Azure Portal i jak używać wyeksportowanego szablonu do tworzenia szablonu. Możesz również użyć szablonów szybkiego startu platformy Azure, aby uprościć tworzenie szablonów.
+Dowiesz się, jak wyeksportować szablon z witryny Azure portal i jak używać eksportowanego szablonu dla tworzenia szablonów. Można również użyć szablonów szybki start platformy Azure, aby uprościć tworzenie szablonów.
 
 > [!div class="nextstepaction"]
-> [Korzystanie z szablonów szybkiego startu platformy Azure](template-tutorial-quickstart-template.md)
+> [Korzystanie z szablonów szybki start platformy Azure](template-tutorial-quickstart-template.md)

@@ -1,69 +1,69 @@
 ---
-title: Samouczek — korzystanie z szablonów szybkiego startu
-description: Dowiedz się, jak korzystać z szablonów szybkiego startu platformy Azure, aby ukończyć tworzenie szablonu.
+title: Samouczek - Korzystanie z szablonów szybkiego startu
+description: Dowiedz się, jak korzystać z szablonów szybki start platformy Azure w celu ukończenia tworzenia szablonów.
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 1e110bb4711490f53da7628f608f150a2bc3186c
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 8747a4614cb8106ce80c6caef0aae36111d2c384
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79368880"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80369849"
 ---
-# <a name="tutorial-use-azure-quickstart-templates"></a>Samouczek: korzystanie z szablonów szybkiego startu platformy Azure
+# <a name="tutorial-use-azure-quickstart-templates"></a>Samouczek: Korzystanie z szablonów szybki startu platformy Azure
 
-[Szablony szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/) to repozytorium szablonów utworzonych przez społeczność. Możesz użyć przykładowych szablonów w opracowywaniu szablonu. W tym samouczku znajdziesz definicję zasobu witryny sieci Web i dodasz ją do własnego szablonu. Ukończenie może potrwać około **12 minut** .
+[Szablony szybki start platformy Azure](https://azure.microsoft.com/resources/templates/) to repozytorium szablonów współtworzonych przez społeczność. Przykładowych szablonów można użyć w rozwoju szablonu. W tym samouczku znajdziesz definicję zasobów witryny sieci Web i dodasz ją do własnego szablonu. Trwa około **12 minut.**
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Zalecamy ukończenie [samouczka dotyczącego wyeksportowanych szablonów](template-tutorial-export-template.md), ale nie jest to wymagane.
+Zalecamy ukończenie [samouczka na temat eksportowanych szablonów,](template-tutorial-export-template.md)ale nie jest to wymagane.
 
-Musisz mieć Visual Studio Code z rozszerzeniem narzędzi Menedżer zasobów i Azure PowerShell lub interfejsu wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zobacz [Narzędzia szablonu](template-tutorial-create-first-template.md#get-tools).
+Musisz mieć program Visual Studio Code z rozszerzeniem Narzędzia Menedżera zasobów i azure powershell lub interfejsu wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zobacz [narzędzia szablonów](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-template"></a>Przejrzyj szablon
+## <a name="review-template"></a>Szablon recenzji
 
-Na końcu poprzedniego samouczka szablon zawierał następujący kod JSON:
+Na końcu poprzedniego samouczka szablon miał następujący JSON:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/export-template/azuredeploy.json":::
 
-Ten szablon działa w przypadku wdrażania kont magazynu i planów usługi App Service, ale może być konieczne dodanie do niej witryny sieci Web. Możesz użyć wstępnie skompilowanych szablonów, aby szybko wykryć kod JSON wymagany do wdrożenia zasobu.
+Ten szablon działa do wdrażania kont magazynu i planów usługi aplikacji, ale można dodać do niego witrynę sieci Web. Można użyć wstępnie utworzonych szablonów, aby szybko odkryć JSON wymagane do wdrażania zasobu.
 
 ## <a name="find-template"></a>Znajdź szablon
 
-1. Otwórz [Szablony szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/)
-1. W obszarze **wyszukiwania**wprowadź polecenie **Wdróż aplikację sieci Web systemu Linux**.
-1. Wybierz ten element z tytułem **Wdróż podstawową aplikację sieci Web**w systemie Linux. Jeśli masz problemy z znalezieniem go, Oto [link bezpośredni](https://azure.microsoft.com/resources/templates/101-webapp-basic-linux/).
-1. Wybierz pozycję **Przeglądaj w witrynie GitHub**.
-1. Wybierz **azuredeploy. JSON**.
-1. Zapoznaj się z szablonem. W szczególności poszukaj zasobów `Microsoft.Web/sites`.
+1. Otwieranie [szablonów szybki start platformy Azure](https://azure.microsoft.com/resources/templates/)
+1. W **wyszukiwarce**wprowadź **wdrożyć aplikację internetową linux**.
+1. Wybierz ten o tytule **Wdrażanie podstawowej aplikacji internetowej Linux**. Jeśli masz problemy ze znalezieniem go, oto [bezpośredni link](https://azure.microsoft.com/resources/templates/101-webapp-basic-linux/).
+1. Wybierz **pozycję Przeglądaj w usłudze GitHub**.
+1. Wybierz **azuredeploy.json**.
+1. Przejrzyj szablon. W szczególności poszukaj zasobu. `Microsoft.Web/sites`
 
-    ![Witryna sieci Web szybkiego startu szablonu Menedżer zasobów](./media/template-tutorial-quickstart-template/resource-manager-template-quickstart-template-web-site.png)
+    ![Witryna szybkiego startu szablonu Menedżera zasobów](./media/template-tutorial-quickstart-template/resource-manager-template-quickstart-template-web-site.png)
 
-## <a name="revise-existing-template"></a>Popraw istniejący szablon
+## <a name="revise-existing-template"></a>Poprawianie istniejącego szablonu
 
 Scal szablon szybkiego startu z istniejącym szablonem:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json" range="1-108" highlight="32-45,49,85-100":::
 
-Nazwa aplikacji sieci Web musi być unikatowa na platformie Azure. Aby zapobiec duplikowaniu nazw, zmienna **webAppPortalName** została zaktualizowana z **"webAppPortalName": "[concat (Parameters (" webAppName "),"-webapp ")]"** do **"webAppPortalName": "[concat (Parameters (" webAppName "), uniqueString (ResourceName (). ID)]"** .
+Nazwa aplikacji sieci web musi być unikatowa na platformie Azure. Aby zapobiec posiadaniu zduplikowanych nazw, **zmienna webAppPortalName** została zaktualizowana z **"webAppPortalName": "[concat(parameters('webAppName'), '-webapp')]"** do **"webAppPortalName": "[concat(parameters('webAppName'), uniqueString(resourceGroup().id))]]"**.
 
-Dodaj przecinek na końcu definicji `Microsoft.Web/serverfarms`, aby oddzielić definicję zasobu od definicji `Microsoft.Web/sites`.
+Dodaj przecinek na końcu `Microsoft.Web/serverfarms` definicji, aby oddzielić `Microsoft.Web/sites` definicję zasobu od definicji.
 
-Istnieje kilka ważnych funkcji, które należy wziąć pod uwagę w tym nowym zasobie.
+Istnieje kilka ważnych funkcji, które należy zwrócić uwagę w tym nowym zasobie.
 
-Zobaczysz, że ma on element o nazwie **dependsOn** , który jest ustawiony na plan usługi App Service. To ustawienie jest wymagane, ponieważ musi istnieć plan usługi App Service przed utworzeniem aplikacji sieci Web. Element **dependsOn** informuje o tym, Menedżer zasobów sposób porządkowania zasobów do wdrożenia.
+Zauważysz, że ma element o nazwie **dependsOn,** który jest ustawiony na plan usługi aplikacji. To ustawienie jest wymagane, ponieważ plan usługi aplikacji musi istnieć przed utworzeniem aplikacji sieci web. Element **dependsOn** informuje Menedżera zasobów, jak zamówić zasoby do wdrożenia.
 
-Właściwość **serverFarmId** używa funkcji [ResourceID](template-functions-resource.md#resourceid) . Ta funkcja pobiera unikatowy identyfikator zasobu. W takim przypadku pobiera unikatowy identyfikator planu usługi App Service. Aplikacja sieci Web jest skojarzona z jednym określonym planem usługi App Service.
+Właściwość **serverFarmId** używa funkcji [resourceId.](template-functions-resource.md#resourceid) Ta funkcja pobiera unikatowy identyfikator zasobu. W takim przypadku pobiera unikatowy identyfikator planu usługi aplikacji. Aplikacja internetowa jest skojarzona z jednym określonym planem usługi aplikacji.
 
 ## <a name="deploy-template"></a>Wdrażanie szablonu
 
-Użyj interfejsu wiersza polecenia platformy Azure lub Azure PowerShell, aby wdrożyć szablon.
+Użyj interfejsu wiersza polecenia platformy Azure lub programu Azure PowerShell, aby wdrożyć szablon.
 
-Jeśli grupa zasobów nie została utworzona, zobacz [Tworzenie grupy zasobów](template-tutorial-create-first-template.md#create-resource-group). W przykładzie założono, że ustawiono zmienną **TemplateFile** na ścieżkę do pliku szablonu, jak pokazano w [pierwszym samouczku](template-tutorial-create-first-template.md#deploy-template).
+Jeśli grupa zasobów nie została utworzona, zobacz [Tworzenie grupy zasobów](template-tutorial-create-first-template.md#create-resource-group). W przykładzie przyjęto założenie, że ustawiono **zmienną templateFile** na ścieżkę do pliku szablonu, jak pokazano w [pierwszym samouczku](template-tutorial-create-first-template.md#deploy-template).
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -77,6 +77,8 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
+Aby uruchomić to polecenie wdrażania, musisz mieć [najnowszą wersję](/cli/azure/install-azure-cli) interfejsu wiersza polecenia platformy Azure.
+
 ```azurecli
 az deployment group create \
   --name addwebapp \
@@ -89,18 +91,18 @@ az deployment group create \
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli przeniesiesz się do następnego samouczka, nie musisz usuwać grupy zasobów.
+Jeśli przechodzisz do następnego samouczka, nie musisz usuwać grupy zasobów.
 
-Jeśli zatrzymasz się teraz, możesz chcieć wyczyścić wdrożone zasoby, usuwając grupę zasobów.
+Jeśli zatrzymujesz się teraz, możesz wyczyścić zasoby wdrożone przez usunięcie grupy zasobów.
 
-1. W witrynie Azure Portal wybierz pozycję **Grupa zasobów** z menu po lewej stronie.
+1. W witrynie Azure portal wybierz **grupę zasobów** z lewego menu.
 2. Wprowadź nazwę grupy zasobów w polu **Filtruj według nazwy**.
 3. Wybierz nazwę grupy zasobów.
-4. Wybierz pozycję **Usuń grupę zasobów** z górnego menu.
+4. Wybierz **pozycję Usuń grupę zasobów** z górnego menu.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Wiesz już, jak używać szablonu szybkiego startu do tworzenia szablonu. W następnym samouczku dodasz Tagi do zasobów.
+Dowiedziasz się, jak używać szablonu szybkiego startu dla tworzenia szablonów. W następnym samouczku dodajesz tagi do zasobów.
 
 > [!div class="nextstepaction"]
-> [Dodaj Tagi](template-tutorial-add-tags.md)
+> [Dodawanie tagów](template-tutorial-add-tags.md)

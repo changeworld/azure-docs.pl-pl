@@ -1,20 +1,20 @@
 ---
-title: Skrypt programu PowerShell służący do tworzenia bazy danych i kolekcji w interfejsie API Azure Cosmos DB dla MongoDB
-description: Skrypt Azure PowerShell — Azure Cosmos DB tworzenia bazy danych i kolekcji interfejsu API MongoDB
+title: Skrypt programu PowerShell do tworzenia bazy danych i kolekcji w interfejsie API usługi Azure Cosmos DB dla usługi MongoDB
+description: Skrypt programu Azure PowerShell — usługa Azure Cosmos DB tworzy bazę danych i kolekcję interfejsu API mongodb
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: sample
-ms.date: 05/18/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 347bd6d4d9788516d51d22f43ea60a223e91c49f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 59e30de7a0f069cfc69db715115f776034e94909
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444989"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365872"
 ---
-# <a name="create-a-database-and-collection-for-azure-cosmos-db---mongodb-api"></a>Tworzenie bazy danych i kolekcji dla interfejsu API Azure Cosmos DB MongoDB
+# <a name="create-a-database-and-collection-for-azure-cosmos-db---mongodb-api"></a>Tworzenie bazy danych i kolekcji dla usługi Azure Cosmos DB — interfejs API mongodb
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,8 +38,11 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 
 | Polecenie | Uwagi |
 |---|---|
-|**Zasoby platformy Azure**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Tworzy zasób. |
+|**Azure Cosmos DB**| |
+| [Nowe konto AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | Tworzy nowe konto usługi Cosmos DB. |
+| [Set-AzCosmosDBMongoDBBaba danych](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbmongodbdatabase) | Tworzy nową lub aktualizuje istniejącą bazę danych interfejsu API usługi Cosmos DB MongoDB. |
+| [Nowy-AzCosmosDBMongoDBIndex](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbmongodbindex) | Tworzy nowy indeks interfejsu API mongodb. |
+| [Zestaw-AzCosmosDBMongoDBKollection](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbmongodbcollection) | Tworzy nową lub aktualizuje istniejącą kolekcję SQL usługi Cosmos DB. |
 |**Grupy zasobów platformy Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 |||

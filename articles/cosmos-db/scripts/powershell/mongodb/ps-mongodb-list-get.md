@@ -1,20 +1,20 @@
 ---
-title: Skrypt programu PowerShell do wyświetlania i pobierania operacji w interfejsie API Azure Cosmos DB dla MongoDB
-description: Azure PowerShell listę Azure Cosmos DB skryptu i Pobierz operacje dla interfejsu API MongoDB
+title: Skrypt programu PowerShell do listy i uzyskania operacji w interfejsie API usługi Azure Cosmos DB dla usługi MongoDB
+description: Skrypt programu Azure PowerShell — lista usługi Azure Cosmos DB i operacje dla interfejsu API usługi MongoDB
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: sample
-ms.date: 05/18/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 4b5934e82c14f50ef1884a6c5618f4f98d663e1f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 686b140915e90adefa15084c2e8317404b91ed09
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441432"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365897"
 ---
-# <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---mongodb-api"></a>Wyświetl i Pobierz bazy danych i wykresy dla interfejsu API Azure Cosmos DB MongoDB
+# <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---mongodb-api"></a>Lista i pobierz bazy danych i wykresy dla usługi Azure Cosmos DB — interfejs API MongoDB
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,8 +38,10 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 
 | Polecenie | Uwagi |
 |---|---|
-|**Zasoby platformy Azure**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Tworzy zasób. |
+|**Azure Cosmos DB**| |
+| [Konto Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Wyświetla listę kont usługi Cosmos DB lub pobiera określone konto usługi Cosmos DB. |
+| [Get-AzCosmosDBMongoDBBaba danych](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbdatabase) | Wyświetla listę baz danych interfejsu API mongodb usługi Cosmos DB w koncie lub pobiera określoną bazę danych interfejsu API mogodb usługi Cosmos DB na koncie. |
+| [Get-AzCosmosDBMongoDBKollection](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbcollection) | Wyświetla listę kolekcji interfejsu API usługi Cosmos DB MongoDB lub pobiera określoną kolekcję interfejsu API usługi Cosmos DB MongoDB w bazie danych |
 |**Grupy zasobów platformy Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 |||

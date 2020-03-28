@@ -1,20 +1,20 @@
 ---
 title: Lista wbudowanych definicji zasad
-description: Utwórz listę wbudowanych definicji zasad dla Azure Policy. Kategorie obejmują Tagi, zgodność z przepisami, Key Vault, Kubernetes, konfigurację gościa i inne.
+description: Wyświetl listę wbudowanych definicji zasad dla zasad platformy Azure. Kategorie obejmują tagi, zgodność z przepisami, przechowalnia kluczy, kubernety, konfigurację gościa i inne.
 ms.date: 02/15/2020
 ms.topic: sample
 ms.openlocfilehash: 06c913bdccd8b35970a195f6ee658ce7b1d97a7b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79239742"
 ---
-# <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy wbudowane definicje zasad
+# <a name="azure-policy-built-in-policy-definitions"></a>Wbudowane definicje zasad usługi Azure Policy
 
-Ta strona jest indeksem Azure Policy wbudowanych definicji zasad.
+Ta strona jest indeksem wbudowanych definicji zasad usługi Azure Policy.
 
-Nazwa każdego wbudowanego łącza do definicji zasad w Azure Portal. Użyj linku w kolumnie **Źródło** , aby wyświetlić źródło w [Azure Policy repozytorium GitHub](https://github.com/Azure/azure-policy). Wbudowane elementy są pogrupowane według właściwości **Category** w **metadanych**. Aby przejść do określonej **kategorii**, użyj menu po prawej stronie. W przeciwnym razie użyj <kbd>kombinacji klawiszy Ctrl</kbd>-<kbd>F</kbd> , aby użyć funkcji wyszukiwania przeglądarki.
+Nazwa każdego wbudowanego łącza do definicji zasad w witrynie Azure portal. Użyj łącza w kolumnie **Źródło,** aby wyświetlić źródło w [repozytorium Usługi Azure Policy GitHub](https://github.com/Azure/azure-policy). Wbudowane są pogrupowane według właściwości **kategorii** w **metadanych**. Aby przejść do określonej **kategorii,** użyj menu po prawej stronie strony. W przeciwnym razie użyj <kbd>klawisza Ctrl</kbd>-<kbd>F,</kbd> aby korzystać z funkcji wyszukiwania przeglądarki.
 
 [!INCLUDE [azure-policy-samples-policies-index](../../../../includes/azure-policy-samples-policies-index.md)]
 

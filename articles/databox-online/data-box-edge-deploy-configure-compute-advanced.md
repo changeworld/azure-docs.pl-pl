@@ -1,6 +1,6 @@
 ---
-title: Samouczek umożliwiający filtrowanie, analizowanie danych na potrzeby zaawansowanego wdrażania przy użyciu obliczeń na Azure Data Box Edge | Microsoft Docs
-description: Dowiedz się, jak skonfigurować rolę obliczeniową na Data Box Edge i używać jej do przekształcania danych dla zaawansowanego przepływu wdrażania przed wysłaniem do platformy Azure.
+title: Samouczek do filtrowania, analizowania danych w celu zaawansowanego wdrożenia za pomocą obliczeń na platformie Azure Data Box Edge | Dokumenty firmy Microsoft
+description: Dowiedz się, jak skonfigurować rolę obliczeniową w usłudze Data Box Edge i wykorzystać ją do przekształcenia danych dla przepływu zaawansowanego wdrażania przed wysłaniem na platformę Azure.
 services: databox
 author: alkohli
 ms.service: databox
@@ -10,32 +10,32 @@ ms.date: 05/20/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Data Box Edge for advanced deployment flow so I can use it to transform the data before sending it to Azure.
 ms.openlocfilehash: b446a3ebf92f6240d3bc02a148fbb8296efec926
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79239042"
 ---
-# <a name="tutorial-transform-data-with-azure-data-box-edge-for-advanced-deployment-flow"></a>Samouczek: Przekształcanie danych za pomocą Azure Data Box Edge dla zaawansowanego przepływu wdrażania
+# <a name="tutorial-transform-data-with-azure-data-box-edge-for-advanced-deployment-flow"></a>Samouczek: Przekształcanie danych za pomocą usługi Azure Data Box Edge w celu uzyskania zaawansowanego przepływu wdrażania
 
-W tym samouczku opisano, jak skonfigurować rolę obliczeniową dla zaawansowanego przepływu wdrażania na urządzeniu Azure Data Box Edge. Po skonfigurowaniu roli obliczeniowej urządzenie Data Box Edge może przekształcać dane przed wysłaniem ich na platformę Azure.
+W tym samouczku opisano sposób konfigurowania roli obliczeniowej dla zaawansowanego przepływu wdrażania na urządzeniu usługi Azure Data Box Edge. Po skonfigurowaniu roli obliczeniowej urządzenie Data Box Edge może przekształcać dane przed wysłaniem ich na platformę Azure.
 
-Obliczenia można skonfigurować dla prostego lub zaawansowanego przepływu wdrażania na urządzeniu.
+Obliczenia można skonfigurować pod kątem prostego lub zaawansowanego przepływu wdrażania na urządzeniu.
 
-|                  | Proste wdrożenie                                | Wdrożenie zaawansowane                   |
+|                  | Proste wdrażanie                                | Zaawansowane wdrażanie                   |
 |------------------|--------------------------------------------------|---------------------------------------|
-| Przeznaczone dla     | Administratorzy IT                                | Deweloperzy                            |
-| Typ             | Wdrażanie modułów przy użyciu usługi Data Box Edge      | Wdrażanie modułów przy użyciu usługi IoT Hub |
-| Wdrożone moduły | Single                                           | Łańcucha lub wiele modułów           |
+| Przeznaczone do     | Administratorzy IT                                | Deweloperzy                            |
+| Typ             | Wdrażanie modułów za pomocą usługi Data Box Edge      | Wdrażanie modułów za pomocą usługi IoT Hub |
+| Wdrożone moduły | Single                                           | Przykuty lub wiele modułów           |
 
 
-Wykonanie tej procedury może potrwać od 20 do 30 minut.
+Ta procedura może potrwać około 20 do 30 minut.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Konfigurowanie obliczeń
-> * Dodaj udziały
+> * Dodawanie udziałów
 > * Dodawanie wyzwalacza
 > * Dodawanie modułu obliczeniowego
 > * Weryfikowanie przekształcania danych i transferu
@@ -50,27 +50,27 @@ Przed skonfigurowaniem roli obliczeniowej na urządzeniu Data Box Edge upewnij s
 
 ## <a name="configure-compute"></a>Konfigurowanie obliczeń
 
-Aby skonfigurować obliczenia na Data Box Edge, utworzysz zasób IoT Hub.
+Aby skonfigurować obliczenia na krawędzi pola danych, utworzysz zasób Usługi IoT Hub.
 
-1. W Azure Portal zasobu Data Box Edge przejdź do **omówienia**. W okienku po prawej stronie na kafelku **Oblicz** wybierz pozycję **Rozpocznij**.
+1. W witrynie Azure portal zasobu usługi Data Box Edge przejdź do **przeglądu**. W prawym okienku na kafelku **Obliczanie** wybierz pozycję **Wprowadzenie**.
 
     ![Wprowadzenie do obliczeń](./media/data-box-edge-deploy-configure-compute-advanced/configure-compute-1.png)
 
-2. Na kafelku **Konfigurowanie obliczeń krawędzi** wybierz pozycję **Konfiguruj obliczenia**.
+2. Na kafelku **Konfiguruj obliczenia krawędzi** wybierz pozycję **Konfiguruj obliczenia**.
 
     ![Wprowadzenie do obliczeń](./media/data-box-edge-deploy-configure-compute-advanced/configure-compute-2.png)
 
-3. W bloku **Konfigurowanie obliczeń krawędzi** wprowadź następujące dane:
+3. W bloku **obliczeń Konfiguruj krawędź** wprowadź następujące dane:
 
    
     |Pole  |Wartość  |
     |---------|---------|
-    |Centrum IoT     | Wybierz pozycję **Nowy** lub **istniejący**. <br> Domyślnie warstwa standardowa (S1) jest używana do tworzenia zasobu IoT. Aby użyć zasobu IoT warstwy Bezpłatna, utwórz go, a następnie wybierz istniejący zasób. <br> W każdym przypadku zasób IoT Hub używa tej samej subskrypcji i grupy zasobów, która jest używana przez zasób Data Box Edge.     |
-    |Name (Nazwa)     |Wprowadź nazwę dla zasobu IoT Hub.         |
+    |Usługa IoT Hub     | Wybierz z **nowego** lub **istniejącego**. <br> Domyślnie warstwa standardowa (S1) jest używana do tworzenia zasobu IoT. Aby użyć zasobu IoT warstwy bezpłatnej, utwórz jeden, a następnie wybierz istniejący zasób. <br> W każdym przypadku zasób Usługi IoT Hub używa tej samej subskrypcji i grupy zasobów, która jest używana przez zasób Data Box Edge.     |
+    |Nazwa     |Wprowadź nazwę zasobu usługi IoT Hub.         |
 
     ![Wprowadzenie do obliczeń](./media/data-box-edge-deploy-configure-compute-advanced/configure-compute-3.png)
 
-4. Wybierz pozycję **Utwórz**. Tworzenie zasobów IoT Hub trwa kilka minut. Po utworzeniu zasobu IoT Hub, konfiguracja kafelka **obliczenia krawędzi** zostanie zaktualizowana tak, aby pokazywać konfigurację obliczeniową. Aby upewnić się, że skonfigurowano rolę obliczeniową brzegową, wybierz pozycję **Wyświetl konfigurację** na kafelku **Konfiguruj obliczenia** .
+4. Wybierz **pozycję Utwórz**. Tworzenie zasobów usługi IoT Hub trwa kilka minut. Po utworzeniu zasobu Usługi IoT Hub aktualizacje kafelka **obliczeń konfiguruj krawędź,** aby wyświetlić konfigurację obliczeniową. Aby potwierdzić, że rola obliczeniowa krawędzi została skonfigurowana, wybierz **opcję Wyświetl konfigurację** na kafelku **Konfiguruj obliczenia.**
     
     ![Wprowadzenie do obliczeń](./media/data-box-edge-deploy-configure-compute-advanced/configure-compute-4.png)
 
@@ -79,19 +79,19 @@ Aby skonfigurować obliczenia na Data Box Edge, utworzysz zasób IoT Hub.
     W chwili obecnej dla urządzenia IoT Edge jest dostępna tylko platforma Linux.
 
 
-## <a name="add-shares"></a>Dodaj udziały
+## <a name="add-shares"></a>Dodawanie udziałów
 
-W przypadku wdrożenia zaawansowanego w tym samouczku potrzebne są dwa udziały: jeden udział graniczny i inny udział lokalny Edge.
+W przypadku zaawansowanego wdrożenia w tym samouczku potrzebne będą dwa udziały: jeden udział edge i inny udział lokalny usługi Edge.
 
-1. Dodaj udział graniczny na urządzeniu, wykonując następujące czynności:
+1. Dodaj udział edge'a na urządzeniu, wykonując następujące czynności:
 
-    1. W zasobie Data Box Edge przejdź do pozycji **Oblicz compute > Rozpocznij**.
-    2. Na kafelku **Dodaj udziały** wybierz pozycję **Dodaj**.
-    3. W bloku **Dodaj udział** Podaj nazwę udziału i wybierz typ udziału.
-    4. Aby zainstalować udział brzegowy, zaznacz pole wyboru **Użyj opcji Udostępnij przy użyciu obliczeń brzegowych**.
-    5. Wybierz **konto magazynu**, **usługę magazynu**, istniejącego użytkownika, a następnie wybierz pozycję **Utwórz**.
+    1. W zasobie Data Box Edge przejdź do aplikacji **Edge compute > Wprowadzenie**.
+    2. Na kafelku **Dodawanie udziałów** wybierz pozycję **Dodaj**.
+    3. Na **Dodaj udział** bloku bloku, podaj nazwę udziału i wybierz typ udziału.
+    4. Aby zainstalować udział krawędzi, zaznacz pole wyboru **Użyj udziału z obliczeń krawędzi**.
+    5. Wybierz **konto Magazyn,** **Usługę magazynowania**, istniejącego użytkownika, a następnie wybierz pozycję **Utwórz**.
 
-        ![Dodawanie udziału brzegowego](./media/data-box-edge-deploy-configure-compute-advanced/add-edge-share-1.png)
+        ![Dodawanie udziału edge'a](./media/data-box-edge-deploy-configure-compute-advanced/add-edge-share-1.png)
 
     <!--If you created a local NFS share, use the following remote sync (rsync) command option to copy files onto the share:
 
@@ -99,13 +99,13 @@ W przypadku wdrożenia zaawansowanego w tym samouczku potrzebne są dwa udziały
 
     For more information about the rsync command, go to [Rsync documentation](https://www.computerhope.com/unix/rsync.htm).-->
 
-    Po utworzeniu udziału brzegowego otrzymasz powiadomienie o pomyślnym utworzeniu. Lista udziałów jest aktualizowana w celu odzwierciedlenia nowego udziału.
+    Po utworzeniu udziału Edge otrzymasz powiadomienie o pomyślnym utworzeniu. Lista akcji zostanie zaktualizowana w celu odzwierciedlenia nowego udziału.
 
-2. Dodaj udział lokalny z krawędzią na urządzeniu brzegowym, powtarzając wszystkie kroki w poprzednim kroku i zaznaczając pole wyboru **Konfiguruj jako krawędź lokalna udziału**. Dane w udziale lokalnym pozostają na urządzeniu.
+2. Dodaj udział lokalny edge na urządzeniu Edge, powtarzając wszystkie kroki w poprzednim kroku i zaznaczając pole wyboru **Konfiguruj jako udział lokalny edge**. Dane w udziale lokalnym pozostają na urządzeniu.
 
-    ![Dodawanie udziału lokalnego krawędzi](./media/data-box-edge-deploy-configure-compute-advanced/add-edge-share-2.png)
+    ![Dodawanie udziału lokalnego brzegowego](./media/data-box-edge-deploy-configure-compute-advanced/add-edge-share-2.png)
 
-3. W bloku **udziały** zobaczysz zaktualizowaną listę udziałów.
+3. Na **akcji** bloku bloku, zobaczysz zaktualizowaną listę udziałów.
 
     ![Zaktualizowana lista udziałów](./media/data-box-edge-deploy-configure-compute-advanced/add-edge-share-3.png)
 
@@ -115,7 +115,7 @@ W przypadku wdrożenia zaawansowanego w tym samouczku potrzebne są dwa udziały
 
     ![Pole „Lokalny punkt instalacji dla modułów funkcji obliczeniowej Edge”](./media/data-box-edge-deploy-configure-compute-advanced/add-edge-share-4.png)
  
-5. Aby wyświetlić właściwości utworzonego udziału brzegowego, wybierz udział z listy. W polu **Lokalny punkt instalacji dla modułów funkcji obliczeniowej Edge** skopiuj wartość odpowiadającą temu udziałowi.
+5. Aby wyświetlić właściwości utworzonego udziału Edge, wybierz udział z listy. W polu **Lokalny punkt instalacji dla modułów funkcji obliczeniowej Edge** skopiuj wartość odpowiadającą temu udziałowi.
 
     Użyjesz tego lokalnego punktu instalacji podczas wdrażania modułu.
 
@@ -124,39 +124,39 @@ W przypadku wdrożenia zaawansowanego w tym samouczku potrzebne są dwa udziały
 
 ## <a name="add-a-trigger"></a>Dodawanie wyzwalacza
 
-1. Przejdź do pozycji **Oblicz compute > Triggers**. Wybierz pozycję **+ Dodaj wyzwalacz**.
+1. Przejdź do **urządzenia Edge compute > Wyzwalacze**. Wybierz **+ Dodaj wyzwalacz**.
 
-    ![Dodaj wyzwalacz](./media/data-box-edge-deploy-configure-compute-advanced/add-trigger-1.png)
+    ![Dodawanie wyzwalacza](./media/data-box-edge-deploy-configure-compute-advanced/add-trigger-1.png)
 
-2. W bloku **Dodawanie wyzwalacza** wprowadź następujące wartości.
+2. W **bloku Dodaj wyzwalacz** wprowadź następujące wartości.
 
     |Pole  |Wartość  |
     |---------|---------|
     |Nazwa wyzwalacza     | Unikatowa nazwa wyzwalacza.         |
-    |Typ wyzwalacza     | Wybierz pozycję wyzwalacz **pliku** . Wyzwalacz pliku jest uruchamiany za każdym razem, gdy wystąpi zdarzenie pliku, takie jak plik jest zapisywana w udziale wejściowym. Zaplanowany wyzwalacz z drugiej strony jest uruchamiany zgodnie z harmonogramem zdefiniowanym przez użytkownika. W tym przykładzie potrzebny jest wyzwalacz pliku.    |
-    |Udział wejściowy     | Wybierz udział wejściowy. Udział lokalny krawędzi jest w tym przypadku udziałem wejściowym. Używany tutaj moduł przenosi pliki z udziału lokalnego Edge do udziału granicznego, w którym są przekazywane do chmury.        |
+    |Typ wyzwalacza     | Wybierz **wyzwalacz pliku.** Wyzwalacz pliku jest uruchamiany za każdym razem, gdy wystąpi zdarzenie pliku, takie jak plik jest zapisywany w udziale wejściowym. Z drugiej strony zaplanowany wyzwalacz uruchamia się na podstawie harmonogramu zdefiniowanego przez Ciebie. W tym przykładzie potrzebujemy wyzwalacza pliku.    |
+    |Udział wejściowy     | Wybierz udział wejściowy. Udział lokalny krawędzi jest udział wejściowy w tym przypadku. Moduł używany w tym miejscu przenosi pliki z udziału lokalnego krawędzi do udziału edge, gdzie są one przekazywane do chmury.        |
 
-    ![Dodaj wyzwalacz](./media/data-box-edge-deploy-configure-compute-advanced/add-trigger-2.png)
+    ![Dodawanie wyzwalacza](./media/data-box-edge-deploy-configure-compute-advanced/add-trigger-2.png)
 
-3. Po utworzeniu wyzwalacza otrzymasz powiadomienie. Lista wyzwalaczy została zaktualizowana w celu wyświetlenia nowo utworzonego wyzwalacza. Wybierz wyzwalacz, który został właśnie utworzony.
+3. Użytkownik zostanie powiadomiony po utworzeniu wyzwalacza. Lista wyzwalaczy zostanie zaktualizowana w celu wyświetlenia nowo utworzonego wyzwalacza. Wybierz właśnie utworzony wyzwalacz.
 
-    ![Dodaj wyzwalacz](./media/data-box-edge-deploy-configure-compute-advanced/add-trigger-3.png)
+    ![Dodawanie wyzwalacza](./media/data-box-edge-deploy-configure-compute-advanced/add-trigger-3.png)
 
-4. Skopiuj i Zapisz przykładową trasę. Ta Przykładowa trasa zostanie zmodyfikowana i będzie używana później w IoT Hub.
+4. Skopiuj i zapisz przykładową trasę. Zmodyfikujesz tę przykładową trasę i użyjesz jej później w centrum IoT Hub.
 
     `"sampleroute": "FROM /* WHERE topic = 'mydbesmbedgelocalshare1' INTO BrokeredEndpoint(\"/modules/modulename/inputs/input1\")"`
 
-    ![Dodaj wyzwalacz](./media/data-box-edge-deploy-configure-compute-advanced/add-trigger-4.png)
+    ![Dodawanie wyzwalacza](./media/data-box-edge-deploy-configure-compute-advanced/add-trigger-4.png)
 
 ## <a name="add-a-module"></a>Dodawanie modułu
 
-Na tym urządzeniu brzegowym nie ma modułów niestandardowych. Możliwe jest dodanie niestandardowego lub wstępnie skompilowanego modułu. Aby dowiedzieć się, jak utworzyć moduł niestandardowy, przejdź do artykułu [Tworzenie modułu C# dla urządzenia Data Box Edge](data-box-edge-create-iot-edge-module.md).
+Na tym urządzeniu Edge nie ma żadnych modułów niestandardowych. Można dodać niestandardowy lub wstępnie utworzony moduł. Aby dowiedzieć się, jak utworzyć moduł niestandardowy, przejdź do artykułu [Tworzenie modułu C# dla urządzenia Data Box Edge](data-box-edge-create-iot-edge-module.md).
 
-W tej sekcji dodasz do urządzenia usługi IoT Edge moduł niestandardowy utworzony w temacie [Tworzenie modułu C# dla urządzenia Data Box Edge](data-box-edge-create-iot-edge-module.md). Ten moduł niestandardowy pobiera pliki z udziału lokalnego z krawędzi na urządzeniu brzegowym i przenosi je do udziału brzegowego (chmurowego) na urządzeniu. Następnie udział chmurowy wypycha pliki na konto magazynu platformy Azure skojarzone z tym udziałem chmurowym.
+W tej sekcji dodasz do urządzenia usługi IoT Edge moduł niestandardowy utworzony w temacie [Tworzenie modułu C# dla urządzenia Data Box Edge](data-box-edge-create-iot-edge-module.md). Ten moduł niestandardowy pobiera pliki z udziału lokalnego usługi Edge na urządzeniu Edge i przenosi je do udziału edge (chmury) na urządzeniu. Następnie udział chmurowy wypycha pliki na konto magazynu platformy Azure skojarzone z tym udziałem chmurowym.
 
-1. Przejdź do pozycji **obliczenia graniczne > Wprowadzenie**. Na kafelku **Dodawanie modułów** wybierz typ scenariusza jako **Zaawansowany**. Wybierz pozycję **Przejdź do IoT Hub**.
+1. Przejdź do **urządzenia Edge > Wprowadzenie .** Na kafelku **Dodaj moduły** wybierz typ scenariusza jako **zaawansowany**. Wybierz **pozycję Przejdź do Centrum IoT**.
 
-    ![Wybieranie wdrożenia zaawansowanego](./media/data-box-edge-deploy-configure-compute-advanced/add-module-1.png)
+    ![Wybieranie zaawansowanego wdrożenia](./media/data-box-edge-deploy-configure-compute-advanced/add-module-1.png)
 
 <!--2. In the **Configure and add module** blade, input the following values:  
 
@@ -164,11 +164,11 @@ W tej sekcji dodasz do urządzenia usługi IoT Edge moduł niestandardowy utworz
     |Output share     | Select an output share. The Edge share is the output share in this case.        |
 -->
 
-2. W zasobie IoT Hub przejdź do pozycji **IoT Edge Device** , a następnie wybierz urządzenie IoT Edge.
+2. W zasobie Usługi IoT Hub przejdź do **urządzenia Usługi IoT Edge,** a następnie wybierz urządzenie Usługi IoT Edge.
 
-    ![Przejdź do urządzenia IoT Edge w IoT Hub](./media/data-box-edge-deploy-configure-compute-advanced/add-module-2.png)
+    ![Przejdź do urządzenia Usługi IoT Edge w Uiszczajniku IoT Hub](./media/data-box-edge-deploy-configure-compute-advanced/add-module-2.png)
 
-3. W obszarze **szczegóły urządzenia**wybierz pozycję **Ustaw moduły**.
+3. W **obszarze Szczegóły urządzenia**wybierz pozycję Ustaw **moduły**.
 
     ![Link Ustawianie modułów](./media/data-box-edge-deploy-configure-compute-advanced/add-module-3.png)
 
@@ -183,14 +183,14 @@ W tej sekcji dodasz do urządzenia usługi IoT Edge moduł niestandardowy utworz
      
         |Pole  |Wartość  |
         |---------|---------|
-        |Name (Nazwa)     | Unikatowa nazwa modułu. Ten moduł jest kontenerem platformy Docker, który można wdrożyć na urządzeniu IoT Edge skojarzonym z Data Box Edge.        |
-        |Identyfikator URI obrazu     | Identyfikator URI obrazu dla odpowiedniego obrazu kontenera modułu.        |
-        |Wymagane są poświadczenia     | Jeśli ta opcja jest zaznaczona, nazwa użytkownika i hasło są używane do pobierania modułów z pasującym adresem URL.        |
+        |Nazwa     | Unikatowa nazwa modułu. Ten moduł jest kontenerem platformy docker, który można wdrożyć na urządzeniu usługi IoT Edge skojarzonym z krawędzią pola danych.        |
+        |Identyfikator URI obrazu     | Identyfikator URI obrazu dla odpowiedniego obrazu kontenera dla modułu.        |
+        |Wymagane poświadczenia     | Jeśli ta jest zaznaczona, nazwa użytkownika i hasło są używane do pobierania modułów z pasującym adresem URL.        |
     
-        W polu **Opcje tworzenia kontenera** wprowadź lokalne punkty instalacji dla modułów brzegowych, które zostały skopiowane w powyższych krokach dla udziału brzegowego i udziału lokalnego Edge.
+        W polu **Opcje tworzenia kontenera** wprowadź lokalne punkty instalacji dla modułów krawędzi skopiowanych w poprzednich krokach udziału lokalnego edge i edge.
 
         > [!IMPORTANT]
-        > Używane tu ścieżki są instalowane w kontenerze, dlatego muszą być zgodne z oczekiwaniami funkcji w kontenerze. Jeśli korzystasz z [tworzenia modułu niestandardowego](data-box-edge-create-iot-edge-module.md#update-the-module-with-custom-code), kod określony w tym module oczekuje na skopiowane ścieżki. Nie należy modyfikować tych ścieżek.
+        > Ścieżki używane w tym miejscu są montowane w kontenerze, więc muszą odpowiadać oczekiwanej funkcjonalności w kontenerze. Jeśli obserwujesz [Tworzenie modułu niestandardowego,](data-box-edge-create-iot-edge-module.md#update-the-module-with-custom-code)kod określony w tym module oczekuje skopiowanych ścieżek. Nie należy modyfikować tych ścieżek.
     
         W polu **Opcje tworzenia kontenera** możesz wkleić poniższy przykład:
     
@@ -207,7 +207,7 @@ W tej sekcji dodasz do urządzenia usługi IoT Edge moduł niestandardowy utworz
         }
         ```
 
-        Podaj wszelkie zmienne środowiskowe używane dla modułu. Zmienne środowiskowe zawierają opcjonalne informacje ułatwiające Definiowanie środowiska, w którym działa moduł.
+        Podaj wszelkie zmienne środowiskowe używane dla twojego modułu. Zmienne środowiskowe zawierają opcjonalne informacje, które pomagają zdefiniować środowisko, w którym działa moduł.
 
         ![Pole Opcje tworzenia kontenera](./media/data-box-edge-deploy-configure-compute-advanced/add-module-5.png) 
  
@@ -215,11 +215,11 @@ W tej sekcji dodasz do urządzenia usługi IoT Edge moduł niestandardowy utworz
 
         ![Dodawanie modułu niestandardowego](./media/data-box-edge-deploy-configure-compute-advanced/add-module-6.png)
  
-5.  W obszarze **Określanie tras** ustaw trasy między modułami.  
+5.  W obszarze **Określanie tras**ustaw trasy między modułami.  
     
-    ![Określanie tras](./media/data-box-edge-deploy-configure-compute-advanced/add-module-7.png)
+    ![Określ trasy](./media/data-box-edge-deploy-configure-compute-advanced/add-module-7.png)
 
-    Możesz zamienić *trasę* na następujący wcześniej skopiowany ciąg trasy. W tym przykładzie podaj nazwę udziału lokalnego, który wypchnie dane do udziału chmurowego. Zastąp `modulename` nazwą modułu. Wybierz opcję **Dalej**.
+    *Trasę* można zastąpić następującym ciągiem trasy skopiowanym wcześniej. W tym przykładzie podaj nazwę udziału lokalnego, który wypchnie dane do udziału chmurowego. Wymień `modulename` nazwę modułu. Wybierz **pozycję Dalej**.
         
     ```
     "route": "FROM /* WHERE topic = 'mydbesmbedgelocalshare1' INTO BrokeredEndpoint(\"/modules/filemove/inputs/input1\")"
@@ -231,17 +231,17 @@ W tej sekcji dodasz do urządzenia usługi IoT Edge moduł niestandardowy utworz
 
     ![Strona Ustawianie modułów](./media/data-box-edge-deploy-configure-compute-advanced/add-module-9.png)
  
-    Ta akcja uruchamia wdrożenie modułu. Po zakończeniu wdrażania **stan środowiska uruchomieniowego** modułu jest **uruchomiony**.
+    Ta akcja rozpoczyna wdrażanie modułu. Po zakończeniu wdrażania jest **uruchomiony** **stan środowiska wykonawczego** modułu .
 
     ![Dodawanie modułu niestandardowego](./media/data-box-edge-deploy-configure-compute-advanced/add-module-10.png)
 
-## <a name="verify-data-transform-transfer"></a>Weryfikowanie transformacji danych, transfer
+## <a name="verify-data-transform-transfer"></a>Weryfikowanie przekształcania danych, przesyłanie danych
 
 Ostatnim krokiem jest upewnienie się, że moduł jest połączony i działa zgodnie z oczekiwaniami. Stan środowiska uruchomieniowego modułu powinien pokazywać uruchomienie dla urządzenia usługi IoT Edge w zasobie usługi IoT Hub.
 
-Wykonaj następujące kroki, aby zweryfikować transformację i transfer danych na platformę Azure.
+Aby zweryfikować przekształcanie i przenoszenie danych na platformę Azure, należy wykonać następujące kroki.
  
-1.  W Eksploratorze plików Połącz się z utworzonymi wcześniej udziałami lokalnymi i krawędziami krawędzi.
+1.  W Eksploratorze plików połącz się zarówno z wcześniej utworzonymi udziałami lokalnymi krawędzi, jak i z udziałami Edge.
 
     ![Weryfikowanie przekształcania danych](./media/data-box-edge-deploy-configure-compute-advanced/verify-data-2.png)
  
@@ -253,7 +253,7 @@ Wykonaj następujące kroki, aby zweryfikować transformację i transfer danych 
 
     ![Weryfikowanie przekształcania danych](./media/data-box-edge-deploy-configure-compute-advanced/verify-data-4.png)  
 
-    Następnie dane zostaną wypchnięte z udziału chmurowego na konto magazynu. Aby wyświetlić dane, przejdź do swojego konta magazynu, a następnie wybierz pozycję **Eksplorator usługi Storage**. Przekazane dane można wyświetlić na koncie magazynu.
+    Następnie dane zostaną wypchnięte z udziału chmurowego na konto magazynu. Aby wyświetlić dane, przejdź do konta magazynu, a następnie wybierz **pozycję Eksplorator magazynu**. Przesłane dane można wyświetlić na koncie magazynu.
 
     ![Weryfikowanie przekształcania danych](./media/data-box-edge-deploy-configure-compute-advanced/verify-data-5.png)
  
@@ -265,7 +265,7 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 
 > [!div class="checklist"]
 > * Konfigurowanie obliczeń
-> * Dodaj udziały
+> * Dodawanie udziałów
 > * Dodawanie wyzwalacza
 > * Dodawanie modułu obliczeniowego
 > * Weryfikowanie przekształcania danych i transferu

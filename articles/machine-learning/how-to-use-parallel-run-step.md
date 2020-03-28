@@ -1,7 +1,7 @@
 ---
-title: Uruchamianie prognoz wsadowych dotyczących danych Big Data
+title: Uruchamianie prognoz partii na dużych zbiorach danych
 titleSuffix: Azure Machine Learning
-description: Dowiedz się, jak uzyskać informacje o liczbie asynchronicznie dla dużych ilości danych przy użyciu ParallelRunStep w Azure Machine Learning. Program ParallelRunStep udostępnia funkcje przetwarzania równoległego z usługi Box i optymalizuje w celu zapewnienia wysokiej przepływności, odporności i zapamiętania w przypadku dużych ilości danych.
+description: Dowiedz się, jak uzyskać wnioski asynchronicznie na duże ilości danych przy użyciu ParallelRunStep w usłudze Azure Machine Learning. ParallelRunStep zapewnia możliwości przetwarzania równoległego po wyjęciu z pudełka i optymalizuje dla wysokiej przepływności, wnioskowania fire-and-forget dla przypadków użycia dużych zbiorów danych.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,48 +11,48 @@ ms.author: vaidyas
 author: vaidya-s
 ms.date: 01/15/2020
 ms.custom: Ignite2019
-ms.openlocfilehash: 313ba2c02fd65a967ab1969b6f99893de9a3bdb4
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.openlocfilehash: 3d283d1094336b928869aa281b4a640d7a62dd94
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79037346"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79477191"
 ---
-# <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Uruchamiaj wnioskowanie wsadowe dla dużych ilości danych za pomocą Azure Machine Learning
+# <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Uruchamianie wnioskowania wsadowego na dużych ilościach danych przy użyciu usługi Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Dowiedz się, jak przetwarzać duże ilości danych asynchronicznie i równolegle przy użyciu Azure Machine Learning. Opisana tutaj funkcja ParallelRunStep jest dostępna w publicznej wersji zapoznawczej. Jest to wysoka wydajność i Wysoka przepływność na potrzeby generowania wnioskowania i przetwarzania danych. Zapewnia asynchroniczne funkcje z pola.
+Dowiedz się, jak przetwarzać duże ilości danych asynchronicznie i równolegle przy użyciu usługi Azure Machine Learning. Funkcja ParallelRunStep opisana w tym miejscu jest w publicznej wersji zapoznawczej. Jest to sposób wysokiej wydajności i wysokiej przepływności do generowania wniosków i przetwarzania danych. Zapewnia możliwości asynchroniczne po wyjęciu z pudełka.
 
-Dzięki ParallelRunStep jest to proste skalowanie w trybie offline do dużych klastrów maszyn na terabajtach danych produkcyjnych, co poprawia produktywność i zoptymalizowany koszt.
+Dzięki ParallelRunStep można łatwo skalować wnioski w trybie offline do dużych klastrów maszyn na terabajtach danych produkcyjnych, co przekłada się na większą produktywność i zoptymalizowane koszty.
 
-Ten artykuł zawiera informacje o następujących zadaniach:
+W tym artykule dowiesz się o następujących zadaniach:
 
-> * Utwórz zdalny zasób obliczeniowy.
+> * Tworzenie zdalnego zasobu obliczeniowego.
 > * Napisz niestandardowy skrypt wnioskowania.
-> * Utwórz [potok uczenia maszynowego](concept-ml-pipelines.md) , aby zarejestrować wstępnie szkolony model klasyfikacji obrazów oparty na zestawie danych [mnist ręcznie](https://publicdataset.azurewebsites.net/dataDetail/mnist/) . 
-> * Użyj modelu, aby uruchomić wnioskowanie wsadowe na przykładowych obrazach dostępnych na koncie usługi Azure Blob Storage. 
+> * Utwórz [potok uczenia maszynowego,](concept-ml-pipelines.md) aby zarejestrować wstępnie przeszkolony model klasyfikacji obrazów na podstawie zestawu danych [MNIST.](https://publicdataset.azurewebsites.net/dataDetail/mnist/) 
+> * Użyj modelu do uruchamiania wnioskowania wsadowego na przykładowych obrazów dostępnych na koncie magazynu obiektów Blob platformy Azure. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree).
+* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree).
 
-* Aby zapoznać się z przewodnikiem Szybki Start, Wypełnij [samouczek Instalatora](tutorial-1st-experiment-sdk-setup.md) , jeśli nie masz jeszcze obszaru roboczego Azure Machine Learning lub maszyny wirtualnej notesu. 
+* Aby uzyskać przewodnik szybki start, wykonaj [samouczek konfiguracji,](tutorial-1st-experiment-sdk-setup.md) jeśli nie masz jeszcze obszaru roboczego usługi Azure Machine Learning lub maszyny wirtualnej notesu. 
 
-* Aby zarządzać własnym środowiskiem i zależnościami, zobacz [Przewodnik](how-to-configure-environment.md) po konfigurowaniu własnego środowiska. Uruchom `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-contrib-pipeline-steps` w swoim środowisku, aby pobrać wymagane zależności.
+* Aby zarządzać własnym środowiskiem i zależnościami, zobacz [przewodnik infiguracyjnie](how-to-configure-environment.md) własnego środowiska. Uruchom `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-contrib-pipeline-steps` w środowisku, aby pobrać niezbędne zależności.
 
-## <a name="set-up-machine-learning-resources"></a>Konfigurowanie zasobów w machine learning
+## <a name="set-up-machine-learning-resources"></a>Konfigurowanie zasobów uczenia maszynowego
 
-Poniższe akcje umożliwiają skonfigurowanie zasobów potrzebnych do uruchomienia potoku wnioskowania partii:
+Następujące akcje skonfigurować zasoby, które są potrzebne do uruchomienia potoku wnioskowania partii:
 
-- Utwórz magazyn danych, który wskazuje na kontener obiektów blob, który zawiera obrazy do wnioskowania.
-- Skonfiguruj odwołania do danych jako dane wejściowe i wyjściowe dla kroku potoku wnioskowania o partie partii.
-- Skonfiguruj klaster obliczeniowy do uruchamiania kroku wnioskowania o partie.
+- Utwórz magazyn danych, który wskazuje na kontener obiektu blob, który ma obrazy do wnioskowania.
+- Skonfiguruj odwołania do danych jako dane wejściowe i wyjściowe dla kroku potoku wnioskowania partii.
+- Skonfiguruj klaster obliczeniowy, aby uruchomić krok wnioskowania partii.
 
 ### <a name="create-a-datastore-with-sample-images"></a>Tworzenie magazynu danych z przykładowymi obrazami
 
-Pobierz zestaw oceny MNIST ręcznie z publicznego kontenera obiektów BLOB `sampledata` na koncie o nazwie `pipelinedata`. Utwórz magazyn danych o nazwie `mnist_datastore`, który wskazuje na ten kontener. W poniższym wywołaniu `register_azure_blob_container`ustawienie flagi `overwrite` na `True` zastępuje wszystkie magazyny danych, które zostały utworzone wcześniej przy użyciu tej nazwy. 
+Pobierz zestaw oceny MNIST z publicznego `sampledata` kontenera `pipelinedata`obiektów blob na koncie o nazwie . Utwórz magazyn danych `mnist_datastore`o nazwie , który wskazuje ten kontener. W poniższym `register_azure_blob_container`wywołaniu `overwrite` , `True` ustawienie flagi zastąpić każdy magazyn danych, który został utworzony wcześniej o tej nazwie. 
 
-Możesz zmienić ten krok, aby wskazywał kontener obiektów blob, dostarczając własne wartości `datastore_name`, `container_name`i `account_name`.
+Ten krok można zmienić, aby wskazać kontener obiektów `datastore_name`blob, podając własne wartości dla , `container_name`i `account_name`.
 
 ```python
 from azureml.core import Datastore
@@ -68,33 +68,33 @@ mnist_blob = Datastore.register_azure_blob_container(ws,
                       overwrite=True)
 ```
 
-Następnie określ domyślny magazyn danych obszaru roboczego jako dane wyjściowe. Zostanie ona użyta do wnioskowania danych wyjściowych.
+Następnie należy określić domyślny magazyn danych obszaru roboczego jako wyjściowy magazyn danych. Użyjesz go do wnioskowania danych wyjściowych.
 
-Podczas tworzenia obszaru roboczego [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) i [magazyn obiektów BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) są domyślnie dołączone do obszaru roboczego. Azure Files jest domyślnym magazynem danych dla obszaru roboczego, ale można również użyć magazynu obiektów BLOB jako magazynu danych. Aby uzyskać więcej informacji, zobacz [Opcje usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks).
+Podczas tworzenia obszaru roboczego [usługi Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) i [magazyn](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) obiektów blob są domyślnie dołączone do obszaru roboczego. Usługa Azure Files jest domyślnym magazynem danych dla obszaru roboczego, ale można również użyć magazynu obiektów Blob jako magazynu danych. Aby uzyskać więcej informacji, zobacz [Opcje magazynu platformy Azure](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks).
 
 ```python
 def_data_store = ws.get_default_datastore()
 ```
 
-### <a name="configure-data-inputs-and-outputs"></a>Konfiguruj dane wejściowe i wyjściowe
+### <a name="configure-data-inputs-and-outputs"></a>Konfigurowanie danych wejściowych i wyjściowych
 
 Teraz musisz skonfigurować dane wejściowe i wyjściowe, w tym:
 
 - Katalog zawierający obrazy wejściowe.
-- Katalog, w którym jest przechowywany wstępnie szkolony model.
-- Katalog, który zawiera etykiety.
-- Katalog dla danych wyjściowych.
+- Katalog, w którym jest przechowywany wstępnie przeszkolony model.
+- Katalog zawierający etykiety.
+- Katalog danych wyjściowych.
 
-[`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) to Klasa do eksplorowania, przekształcania i zarządzania danymi w Azure Machine Learning. Ta klasa ma dwa typy: [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) i [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py). W tym przykładzie użyjesz `FileDataset` jako danych wejściowych kroku potoku wnioskowania o partie. 
+[`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py)to klasa do eksplorowania, przekształcania i zarządzania danymi w usłudze Azure Machine Learning. Ta klasa ma [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) dwa [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py)typy: i . W tym przykładzie użyjesz `FileDataset` jako dane wejściowe do kroku potoku wnioskowania partii. 
 
 > [!NOTE] 
-> Obsługa `FileDataset` w wnioskach wsadowych jest obecnie ograniczona do usługi Azure Blob Storage. 
+> `FileDataset`obsługa w przypadku wnioskowania wsadowego jest na razie ograniczona do magazynu obiektów Blob platformy Azure. 
 
-Możesz również odwoływać się do innych zestawów danych w skrypcie wnioskowania niestandardowego. Na przykład można użyć go do uzyskania dostępu do etykiet w skrypcie w celu etykietowania obrazów przy użyciu `Dataset.register` i `Dataset.get_by_name`.
+Można również odwoływać się do innych zestawów danych w niestandardowych skrypt wnioskowania. Można go na przykład użyć do uzyskania dostępu do etykiet `Dataset.register` `Dataset.get_by_name`w skrypcie do etykietowania obrazów za pomocą i .
 
-Aby uzyskać więcej informacji na temat Azure Machine Learning zestawów danych, zobacz [Tworzenie zestawów danych i uzyskiwanie do nich dostępu (wersja zapoznawcza)](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets).
+Aby uzyskać więcej informacji na temat zestawów danych usługi Azure Machine Learning, zobacz [Tworzenie i uzyskiwanie dostępu do zestawów danych (wersja zapoznawcza)](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets).
 
-obiekty [`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) są używane do przesyłania danych pośrednich między etapami potoku. W tym przykładzie używa się go do wyprowadzania danych.
+[`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)obiekty są używane do przesyłania danych pośrednich między etapami potoku. W tym przykładzie można go użyć do wnioskowania wyjść.
 
 ```python
 from azureml.core.dataset import Dataset
@@ -111,9 +111,9 @@ output_dir = PipelineData(name="inferences",
                           output_path_on_compute="mnist/results")
 ```
 
-### <a name="set-up-a-compute-target"></a>Konfigurowanie celu obliczeń
+### <a name="set-up-a-compute-target"></a>Konfigurowanie obiektu docelowego obliczeń
 
-W Azure Machine Learning, *obliczenia* (lub *element docelowy obliczeń*) odnoszą się do maszyn lub klastrów wykonujących kroki obliczeniowe w potoku uczenia maszynowego. Uruchom następujący kod, aby utworzyć obiekt docelowy [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) opartego na procesorach.
+W usłudze Azure Machine Learning *obliczanie* (lub *obiekt docelowy obliczeń)* odnosi się do maszyn lub klastrów, które wykonują kroki obliczeniowe w potoku uczenia maszynowego. Uruchom następujący kod, aby utworzyć obiekt docelowy [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) oparty na procesorze.
 
 ```python
 from azureml.core.compute import AmlCompute, ComputeTarget
@@ -151,7 +151,7 @@ else:
 
 ## <a name="prepare-the-model"></a>Przygotowanie modelu
 
-[Pobierz model klasyfikacji wstępnie nauczonego obrazu](https://pipelinedata.blob.core.windows.net/mnist-model/mnist-tf.tar.gz), a następnie wyodrębnij go do katalogu `models`.
+[Pobierz wstępnie przeszkolony model klasyfikacji obrazów,](https://pipelinedata.blob.core.windows.net/mnist-model/mnist-tf.tar.gz)a `models` następnie wyodrębnij go do katalogu.
 
 ```python
 import os
@@ -168,7 +168,7 @@ tar = tarfile.open("model.tar.gz", "r:gz")
 tar.extractall(model_dir)
 ```
 
-Następnie zarejestruj model w obszarze roboczym, aby był dostępny dla zdalnego zasobu obliczeń.
+Następnie zarejestruj model w obszarze roboczym, aby był dostępny dla zdalnego zasobu obliczeniowego.
 
 ```python
 from azureml.core.model import Model
@@ -184,13 +184,13 @@ model = Model.register(model_path="models/",
 ## <a name="write-your-inference-script"></a>Napisz skrypt wnioskowania
 
 >[!Warning]
->Poniższy kod jest tylko przykładem, który używa [przykładowego notesu](https://aka.ms/batch-inference-notebooks) . Musisz utworzyć własny skrypt dla danego scenariusza.
+>Poniższy kod jest tylko przykładem używanym przez [przykładowy notes.](https://aka.ms/batch-inference-notebooks) Musisz utworzyć własny skrypt dla scenariusza.
 
 Skrypt *musi zawierać* dwie funkcje:
-- `init()`: Użyj tej funkcji do dowolnego kosztu lub wspólnego przygotowania do późniejszego wnioskowania. Na przykład użyj go do załadowania modelu do obiektu globalnego. Ta funkcja zostanie wywołana tylko raz na początku procesu.
--  `run(mini_batch)`: funkcja będzie uruchamiana dla każdego wystąpienia `mini_batch`.
-    -  `mini_batch`: krok Run Parallel wywoła metodę Run i przekaże element list lub Pandas Dataframe jako argument do metody. Każdy wpis w min_batch będzie ścieżką pliku, jeśli dane wejściowe to FileDataset, Pandas Dataframe, jeśli dane wejściowe to TabularDataset.
-    -  `response`: Metoda Run () powinna zwracać element Pandas Dataframe lub tablicę. W przypadku append_row output_action te zwrócone elementy są dołączane do wspólnego pliku wyjściowego. W przypadku summary_only zawartość elementów jest ignorowana. Dla wszystkich akcji wyjściowych każdy zwrócony element wyjściowy wskazuje jeden udany przebieg elementu wejściowego w danych wejściowych. Należy upewnić się, że w wyniku uruchomienia są zawarte wystarczające dane, aby zamapować dane wejściowe w wyniku uruchomienia. Dane wyjściowe uruchamiania będą zapisywane w pliku wyjściowym i nie będą gwarantowane w kolejności, dlatego należy użyć pewnego klucza w danych wyjściowych, aby zamapować go na dane wejściowe.
+- `init()`: Użyj tej funkcji do wszelkich kosztownych lub wspólnych preparatów do późniejszego wnioskowania. Na przykład użyj go, aby załadować model do obiektu globalnego. Ta funkcja zostanie wywołana tylko raz na początku procesu.
+-  `run(mini_batch)`: Funkcja będzie działać `mini_batch` dla każdego wystąpienia.
+    -  `mini_batch`: Krok uruchamiania równoległego wywoła metodę uruchamiania i przekaże listę lub Pandas DataFrame jako argument do metody. Każdy wpis w min_batch będzie - ścieżka pliku, jeśli dane wejściowe jest FileDataset, Pandas DataFrame jeśli dane wejściowe jest TabularDataset.
+    -  `response`: run() metoda powinna zwrócić Pandas DataFrame lub tablicy. W przypadku append_row output_action te zwrócone elementy są dołączane do wspólnego pliku wyjściowego. W przypadku summary_only zawartość elementów jest ignorowana. Dla wszystkich akcji wyjściowych każdy zwrócony element wyjściowy wskazuje jedno pomyślne uruchomienie elementu wejściowego w wejściowej mini-partii. Należy upewnić się, że wystarczająca ilość danych jest uwzględniona w wyniku uruchomienia do mapowania danych wejściowych, aby uruchomić wynik. Uruchom dane wyjściowe zostaną zapisane w pliku wyjściowym i nie gwarantuje się w porządku, należy użyć pewnego klucza w danych wyjściowych, aby zamapować go na dane wejściowe.
 
 ```python
 # Snippets from a sample script.
@@ -239,20 +239,20 @@ def run(mini_batch):
 
 ### <a name="how-to-access-other-files-in-source-directory-in-entry_script"></a>Jak uzyskać dostęp do innych plików w katalogu źródłowym w entry_script
 
-Jeśli masz inny plik lub folder w tym samym katalogu co skrypt wejściowy, możesz odwoływać się do niego, wyszukując bieżący katalog roboczy.
+Jeśli w tym samym katalogu znajduje się inny plik lub folder co skrypt wejścia, możesz odwołać się do niego, znajdując bieżący katalog roboczy.
 
 ```python
 script_dir = os.path.realpath(os.path.join(__file__, '..',))
 file_path = os.path.join(script_dir, "<file_name>")
 ```
 
-## <a name="build-and-run-the-pipeline-containing-parallelrunstep"></a>Kompiluj i uruchamiaj potok zawierający ParallelRunStep
+## <a name="build-and-run-the-pipeline-containing-parallelrunstep"></a>Tworzenie i uruchamianie potoku zawierającego ParallelRunStep
 
-Teraz masz wszystko, co jest potrzebne do skompilowania potoku.
+Teraz masz wszystko, czego potrzebujesz do zbudowania potoku.
 
-### <a name="prepare-the-run-environment"></a>Przygotuj środowisko uruchomieniowe
+### <a name="prepare-the-run-environment"></a>Przygotowanie środowiska uruchamiania
 
-Najpierw określ zależności dla skryptu. Ten obiekt jest używany później podczas tworzenia kroku potoku.
+Najpierw określ zależności dla skryptu. Tego obiektu należy użyć później podczas tworzenia kroku potoku.
 
 ```python
 from azureml.core.environment import Environment
@@ -268,24 +268,24 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 batch_env.spark.precache_packages = False
 ```
 
-### <a name="specify-the-parameters-for-your-batch-inference-pipeline-step"></a>Określ parametry dla etapu potoku wnioskowania dotyczącego partii
+### <a name="specify-the-parameters-for-your-batch-inference-pipeline-step"></a>Określ parametry kroku potoku wnioskowania partii
 
-`ParallelRunConfig` to główna konfiguracja nowo wprowadzonego wystąpienia wnioskowania partii `ParallelRunStep` w ramach potoku Azure Machine Learning. Służy do zawijania skryptu i konfigurowania niezbędnych parametrów, w tym wszystkich następujących parametrów:
-- `entry_script`: skrypt użytkownika jako ścieżka do pliku lokalnego, która będzie uruchamiana równolegle na wielu węzłach. Jeśli `source_directory` jest obecny, użyj ścieżki względnej. W przeciwnym razie użyj dowolnej ścieżki dostępnej na komputerze.
-- `mini_batch_size`: rozmiar mini-Batch przeszedł do pojedynczego wywołania `run()`. (opcjonalnie: wartość domyślna to `10` plików dla FileDataset i `1MB` dla TabularDataset).
-    - W przypadku `FileDataset`jest to liczba plików o minimalnej wartości `1`. Można połączyć wiele plików w jedną minimalną partię.
-    - W przypadku `TabularDataset`jest to rozmiar danych. Przykładowe wartości to `1024`, `1024KB`, `10MB`i `1GB`. Zalecana wartość to `1MB`. Minimalna partia z `TabularDataset` nigdy nie będzie przekraczać granic plików. Jeśli na przykład pliki CSV mają różne rozmiary, najmniejszy plik to 100 KB, a największy to 10 MB. Jeśli ustawisz `mini_batch_size = 1MB`, pliki o rozmiarze mniejszym niż 1 MB będą traktowane jako jedna mini-Batch. Pliki o rozmiarze większym niż 1 MB zostaną podzielone na wiele kart Mini-Part.
-- `error_threshold`: liczba niepowodzeń rekordów dla `TabularDataset` i błędów plików dla `FileDataset`, które powinny zostać zignorowane podczas przetwarzania. Jeśli liczba błędów dla całego danych wejściowych spadnie powyżej tej wartości, zadanie zostanie przerwane. Próg błędu dotyczy całego danych wejściowych, a nie dla pojedynczych partii, które są wysyłane do metody `run()`. Zakres jest `[-1, int.max]`. Część `-1` wskazuje, że wszystkie błędy zostaną zignorowane podczas przetwarzania.
-- `output_action`: jedna z następujących wartości wskazuje, w jaki sposób dane wyjściowe będą zorganizowane:
-    - `summary_only`: skrypt użytkownika będzie przechowywał dane wyjściowe. `ParallelRunStep` będzie używać danych wyjściowych tylko dla obliczeń progu błędu.
-    - `append_row`: dla wszystkich plików wejściowych w folderze wyjściowym zostanie utworzony tylko jeden plik, aby dołączyć wszystkie dane wyjściowe rozdzielone wierszami. Nazwa pliku zostanie `parallel_run_step.txt`.
-- `source_directory`: ścieżki do folderów zawierających wszystkie pliki do wykonania na obiekcie docelowym obliczeń (opcjonalnie).
-- `compute_target`: obsługiwane są tylko `AmlCompute`.
-- `node_count`: liczba węzłów obliczeniowych, które mają być używane do uruchamiania skryptu użytkownika.
-- `process_count_per_node`: liczba procesów na węzeł.
-- `environment`: definicja środowiska języka Python. Można skonfigurować go do korzystania z istniejącego środowiska języka Python lub do skonfigurowania tymczasowego środowiska dla eksperymentu. Definicja jest również odpowiedzialna za ustawianie wymaganych zależności aplikacji (opcjonalnie).
-- `logging_level`: poziom szczegółowości dziennika. Wartości zwiększające poziom szczegółowości to: `WARNING`, `INFO`i `DEBUG`. (opcjonalnie wartość domyślna to `INFO`)
-- `run_invocation_timeout`: limit czasu wywołania metody `run()` (w sekundach). (opcjonalnie wartość domyślna to `60`)
+`ParallelRunConfig`jest główną konfiguracją dla nowo `ParallelRunStep` wprowadzonego wystąpienia wnioskowania wsadowego w potoku usługi Azure Machine Learning. Służy do zawijania skryptu i konfigurowania niezbędnych parametrów, w tym wszystkich następujących parametrów:
+- `entry_script`: Skrypt użytkownika jako lokalna ścieżka pliku, która będzie uruchamiana równolegle w wielu węzłach. Jeśli `source_directory` jest obecny, należy użyć ścieżki względnej. W przeciwnym razie użyj dowolnej ścieżki, która jest dostępna na komputerze.
+- `mini_batch_size`: Rozmiar mini-partii przeszedł do `run()` pojedynczego wywołania. (opcjonalnie; wartością `10` domyślną są pliki `1MB` dla zestawu danych file i tabulardataset).
+    - Dla `FileDataset`, jest to liczba plików o `1`minimalnej wartości . Można połączyć wiele plików w jedną mini-partię.
+    - Dla `TabularDataset`, jest to rozmiar danych. Przykładowe `1024`wartości `1024KB` `10MB`to `1GB`, , i . Zalecaną wartością jest `1MB`. Mini-partia z `TabularDataset` nigdy nie przekroczy granic pliku. Na przykład jeśli masz pliki csv o różnych rozmiarach, najmniejszy plik to 100 KB, a największy to 10 MB. Jeśli ustawisz `mini_batch_size = 1MB`, pliki o rozmiarze mniejszym niż 1 MB będą traktowane jako jedna miniparty. Pliki o rozmiarze większym niż 1 MB zostaną podzielone na wiele mini-partii.
+- `error_threshold`: Liczba błędów rekordów `TabularDataset` i błędów plików dla `FileDataset` tego powinny być ignorowane podczas przetwarzania. Jeśli liczba błędów dla całego danych wejściowych przekroczy tę wartość, zadanie zostanie przerwane. Próg błędu jest dla całego wejścia, a nie dla `run()` poszczególnych mini-partii wysyłanych do metody. Zakres jest `[-1, int.max]`. Część `-1` wskazuje ignorowanie wszystkich błędów podczas przetwarzania.
+- `output_action`: Jedna z następujących wartości wskazuje sposób organizacji danych wyjściowych:
+    - `summary_only`: Skrypt użytkownika będzie przechowywać dane wyjściowe. `ParallelRunStep`będzie używać danych wyjściowych tylko do obliczania progu błędu.
+    - `append_row`: Dla wszystkich plików wejściowych w folderze wyjściowym zostanie utworzony tylko jeden plik, aby dołączyć wszystkie wyjścia oddzielone wierszem. Nazwa pliku będzie `parallel_run_step.txt`.
+- `source_directory`: Ścieżki do folderów, które zawierają wszystkie pliki do wykonania na obiekt obliczeniowy (opcjonalnie).
+- `compute_target`: `AmlCompute` Obsługiwane jest tylko.
+- `node_count`: Liczba węzłów obliczeniowych, które mają być używane do uruchamiania skryptu użytkownika.
+- `process_count_per_node`: Liczba procesów na węzeł.
+- `environment`: Definicja środowiska Pythona. Można go skonfigurować tak, aby używał istniejącego środowiska języka Python lub skonfigurował tymczasowe środowisko dla eksperymentu. Definicja jest również odpowiedzialny za ustawienie wymaganych zależności aplikacji (opcjonalnie).
+- `logging_level`: Szczegółowość dziennika. Wartości w zwiększaniu szczegółowości `WARNING` `INFO`to: `DEBUG`, , i . (opcjonalnie; wartością `INFO`domyślną jest )
+- `run_invocation_timeout`: `run()` Limit czasu wywołania metody w sekundach. (opcjonalnie; domyślna wartość to `60`)
 
 ```python
 from azureml.contrib.pipeline.steps import ParallelRunConfig
@@ -301,16 +301,16 @@ parallel_run_config = ParallelRunConfig(
     node_count=4)
 ```
 
-### <a name="create-the-pipeline-step"></a>Tworzenie etap potoku
+### <a name="create-the-pipeline-step"></a>Tworzenie kroku potoku
 
-Utwórz krok potoku przy użyciu skryptu, konfiguracji środowiska i parametrów. Określ miejsce docelowe obliczeń, które zostało już dołączone do obszaru roboczego jako element docelowy wykonywania skryptu. Użyj `ParallelRunStep`, aby utworzyć etap potoku wnioskowania partii, który przyjmuje wszystkie następujące parametry:
-- `name`: Nazwa kroku z następującymi ograniczeniami nazewnictwa: Unique, 3-32 znaków i wyrażenie regularne ^\[a-z\]([-a-Z0-9] * [a-Z0-9])? $.
-- `models`: co najmniej zero nazw modeli jest już zarejestrowanych w rejestrze modelu Azure Machine Learning.
-- `parallel_run_config`: obiekt `ParallelRunConfig`, zgodnie z definicją wcześniejszą.
-- `inputs`: co najmniej jeden zestaw danych Azure Machine Learning z jednym typem.
-- `output`: obiekt `PipelineData`, który odpowiada katalogowi wyjściowemu.
-- `arguments`: Lista argumentów przenoszona do skryptu użytkownika (opcjonalnie).
-- `allow_reuse`: czy krok ma ponownie używać poprzednich wyników w przypadku uruchamiania z tymi samymi ustawieniami/danymi wejściowymi. Jeśli ten parametr jest `False`, nowy przebieg będzie zawsze generowany dla tego kroku podczas wykonywania potoku. (opcjonalnie wartość domyślna to `True`).
+Utwórz krok potoku przy użyciu skryptu, konfiguracji środowiska i parametrów. Określ cel obliczeniowy, który został już dołączony do obszaru roboczego jako cel wykonania dla skryptu. Służy `ParallelRunStep` do tworzenia kroku potoku wnioskowania partii, który przyjmuje wszystkie następujące parametry:
+- `name`: Nazwa kroku, z następującymi ograniczeniami nazewnictwa: unikatowy, 3-32 znaki i regex ^\[a-z\]([-a-z0-9]*[a-z0-9])?$.
+- `models`: Zero lub więcej nazw modeli już zarejestrowanych w rejestrze modelu usługi Azure Machine Learning.
+- `parallel_run_config`: `ParallelRunConfig` Obiekt, zgodnie z definicją wcześniej.
+- `inputs`: Co najmniej jeden pojedynczy typicznego zestawu danych usługi Azure Machine Learning.
+- `output`: `PipelineData` Obiekt odpowiadający katalogowi wyjściowemu.
+- `arguments`: Lista argumentów przekazanych do skryptu użytkownika (opcjonalnie).
+- `allow_reuse`: Czy krok powinien ponownie używać poprzednich wyników podczas uruchamiania z tymi samymi ustawieniami/wejściami. Jeśli ten `False`parametr jest, nowy przebieg zawsze będą generowane dla tego kroku podczas wykonywania potoku. (opcjonalnie; wartość `True`domyślna to .)
 
 ```python
 from azureml.contrib.pipeline.steps import ParallelRunStep
@@ -327,13 +327,13 @@ parallelrun_step = ParallelRunStep(
 ```
 
 >[!Note]
-> Powyższy krok zależy od `azureml-contrib-pipeline-steps`, zgodnie z opisem w sekcji [wymagania wstępne](#prerequisites). 
+> Powyższy krok `azureml-contrib-pipeline-steps`zależy od , jak opisano w [Wymagania wstępne](#prerequisites). 
 
-### <a name="run-the-pipeline"></a>Uruchamianie potoku
+### <a name="submit-the-pipeline"></a>Prześlij potok
 
-Teraz uruchom potok. Najpierw Utwórz obiekt [`Pipeline`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) przy użyciu odwołania do obszaru roboczego i utworzonego etapu potoku. Parametr `steps` jest tablicą kroków. W takim przypadku istnieje tylko jeden krok oceniania partii. Aby utworzyć potoki, które mają wiele kroków, należy umieścić kroki w kolejności w tej tablicy.
+Teraz uruchom rurociąg. Najpierw utwórz [`Pipeline`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) obiekt przy użyciu odwołania do obszaru roboczego i kroku potoku, który został utworzony. Parametr `steps` jest tablicą kroków. W takim przypadku istnieje tylko jeden krok do oceniania partii. Aby utworzyć potoki, które mają wiele kroków, należy umieścić kroki w kolejności w tej tablicy.
 
-Następnie użyj funkcji `Experiment.submit()`, aby przesłać potok do wykonania.
+Następnie użyj `Experiment.submit()` funkcji, aby przesłać potok do wykonania.
 
 ```python
 from azureml.pipeline.core import Pipeline
@@ -343,12 +343,12 @@ pipeline = Pipeline(workspace=ws, steps=[parallelrun_step])
 pipeline_run = Experiment(ws, 'digit_identification').submit(pipeline)
 ```
 
-## <a name="monitor-the-parallel-run-job"></a>Monitorowanie zadania przebiegu równoległego
+## <a name="monitor-the-parallel-run-job"></a>Monitorowanie zadania uruchamiania równoległego
 
-Ukończenie zadania wnioskowania partii może zająć dużo czasu. Ten przykład monitoruje postęp przy użyciu widżetu Jupyter. Postęp zadania można także zarządzać przy użyciu:
+Zadanie wnioskowania partii może zająć dużo czasu, aby zakończyć. W tym przykładzie monitoruje postęp przy użyciu widżetu Jupyter. Postęp zadania można również zarządzać za pomocą:
 
-* Azure Machine Learning Studio. 
-* Dane wyjściowe konsoli z obiektu [`PipelineRun`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.run.pipelinerun?view=azure-ml-py) .
+* Studio usługi Azure Machine Learning. 
+* Wyjście konsoli [`PipelineRun`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.run.pipelinerun?view=azure-ml-py) z obiektu.
 
 ```python
 from azureml.widgets import RunDetails
@@ -359,11 +359,11 @@ pipeline_run.wait_for_completion(show_output=True)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby zobaczyć, jak to działa, wypróbuj w [notesie wnioskowania o przetwarzanie wsadowe](https://aka.ms/batch-inference-notebooks). 
+Aby zobaczyć ten proces pracy od końca do końca, spróbuj [notesu wnioskowania partii](https://aka.ms/batch-inference-notebooks). 
 
-Wskazówki dotyczące debugowania i rozwiązywania problemów z programem ParallelRunStep można znaleźć w [przewodniku krok po kroku](how-to-debug-parallel-run-step.md).
+Aby uzyskać wskazówki dotyczące debugowania i rozwiązywania problemów dla ParallelRunStep, zobacz [przewodnik jak to zrobić](how-to-debug-parallel-run-step.md).
 
-Wskazówki dotyczące debugowania i rozwiązywania problemów z potokami znajdują się w [przewodniku krok po kroku](how-to-debug-pipelines.md).
+Aby uzyskać wskazówki dotyczące debugowania i rozwiązywania problemów z rurociągami, zobacz [przewodnik instrukcje](how-to-debug-pipelines.md).
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 

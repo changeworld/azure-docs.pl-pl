@@ -1,5 +1,5 @@
 ---
-title: Przykład programu PowerShell — monitorowanie i skalowanie w puli elastycznej — Azure SQL Database
+title: Przykładowa baza danych SQL programu PowerShell example-monitor-scale-elastic-Azure
 description: Przykładowy skrypt programu Azure PowerShell umożliwiający monitorowanie i skalowanie elastycznej puli w usłudze Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 6ab361b67741f2b96f593d04dafbabe355fc9121
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73691624"
 ---
 # <a name="use-powershell-to-monitor-and-scale-an-elastic-pool-in-azure-sql-database"></a>Monitorowanie i skalowanie elastycznej puli w usłudze Azure SQL Database za pomocą programu PowerShell
@@ -26,7 +26,7 @@ Ten przykładowy skrypt programu PowerShell monitoruje metryki wydajności elast
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Jeśli zdecydujesz się zainstalować program PowerShell i używać go lokalnie, ten samouczek wymaga AZ PowerShell 1.4.0 lub nowszego. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure.
+Jeśli zdecydujesz się zainstalować i używać programu PowerShell lokalnie, ten samouczek wymaga programu AZ PowerShell 1.4.0 lub nowszego. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure.
 
 ## <a name="sample-script"></a>Przykładowy skrypt
 
@@ -34,7 +34,7 @@ Jeśli zdecydujesz się zainstalować program PowerShell i używać go lokalnie,
 
 ## <a name="clean-up-deployment"></a>Czyszczenie wdrożenia
 
-Użyj poniższego polecenia, aby usunąć grupę zasobów i wszystkie skojarzone z nią zasoby.
+Użyj następującego polecenia, aby usunąć grupę zasobów i wszystkie skojarzone z nią zasoby.
 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
@@ -47,13 +47,13 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | Polecenie | Uwagi |
 |---|---|
  [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
-| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Tworzy serwer usługi SQL Database, który hostuje pojedynczą bazę danych lub elastyczną pulę. |
-| [New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool) | Tworzy elastyczną pulę. |
-| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Tworzy pojedynczą bazę danych lub bazę danych w elastycznej puli. |
-| [Get-AzMetric](/powershell/module/az.monitor/get-azmetric) | Pokazuje informacje o użyciu rozmiaru dla bazy danych.|
-| [Add-AzMetricAlertRule](/powershell/module/az.monitor/add-azmetricalertrule) | Dodaje lub aktualizuje regułę alertu opartą na metryce. |
+| [Nowy serwer AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Tworzy serwer usługi SQL Database, który hostuje pojedynczą bazę danych lub elastyczną pulę. |
+| [Nowy-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool) | Tworzy elastyczną pulę. |
+| [Nowa baza danych AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Tworzy pojedynczą bazę danych lub bazę danych w elastycznej puli. |
+| [Get-AzMetric (Get-AzMetric)](/powershell/module/az.monitor/get-azmetric) | Pokazuje informacje o użyciu rozmiaru dla bazy danych.|
+| [Reguła add-AzMetricAlert](/powershell/module/az.monitor/add-azmetricalertrule) | Dodaje lub aktualizuje regułę alertu opartą na metryce. |
 | [Set-AzSqlElasticPool](/powershell/module/az.sql/set-azsqlelasticpool) | Aktualizuje właściwości elastycznej puli |
-| [Add-AzMetricAlertRule](/powershell/module/az.monitor/add-azmetricalertrule) | Ustawia regułę alertu, aby automatycznie monitorować jednostki DTU w przyszłości. |
+| [Reguła add-AzMetricAlert](/powershell/module/az.monitor/add-azmetricalertrule) | Ustawia regułę alertu, aby automatycznie monitorować jednostki DTU w przyszłości. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 |||
 

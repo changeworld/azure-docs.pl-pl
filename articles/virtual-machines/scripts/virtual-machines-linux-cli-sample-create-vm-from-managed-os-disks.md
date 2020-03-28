@@ -1,5 +1,5 @@
 ---
-title: Tworzenie maszyny wirtualnej przez dołączenie dysku zarządzanego jako dysku systemu operacyjnego — przykład interfejsu wiersza polecenia
+title: Tworzenie maszyny wirtualnej przez dołączanie dysku zarządzanego jako dysku systemu operacyjnego — przykładowy wiersza polecenia
 description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie maszyny wirtualnej przez dołączenie dysku zarządzanego jako dysk systemu operacyjnego
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -17,10 +17,10 @@ ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
 ms.openlocfilehash: 1616466619c7c7627106c09de703d02a7c40d248
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75458405"
 ---
 # <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-cli"></a>Tworzenie maszyny wirtualnej przy użyciu istniejącego zarządzanego dysku systemu operacyjnego za pomocą interfejsu wiersza polecenia

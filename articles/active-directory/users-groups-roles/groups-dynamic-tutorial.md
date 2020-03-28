@@ -1,5 +1,5 @@
 ---
-title: Dodawanie użytkowników do grupy dynamicznej — samouczek — Azure AD | Microsoft Docs
+title: Dodawanie użytkowników do grupy dynamicznej — samouczek — Azure AD | Dokumenty firmy Microsoft
 description: W tym samouczku użyjesz grup z regułami członkostwa użytkownika, aby automatycznie dodawać lub usuwać użytkowników
 services: active-directory
 documentationcenter: ''
@@ -15,27 +15,27 @@ ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 382f3b59142aee7ddfbec4aceb153a174874ac1a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74027104"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>Samouczek: automatyczne dodawanie lub usuwanie członków grupy
 
 W usłudze Azure Active Directory (Azure AD) możesz automatycznie dodawać użytkowników do grup zabezpieczeń lub grup usługi Office 365 oraz ich usuwać, dzięki czemu nie musisz zawsze robić tego ręcznie. Po zmianie dowolnych właściwości użytkownika lub urządzenia usługa Azure AD ocenia wszystkie reguły dynamicznego członkostwa w grupach w Twojej dzierżawie, aby sprawdzić, czy zmiana powinna spowodować dodanie lub usunięcie użytkowników.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
-> * Utwórz automatycznie wypełnioną grupę użytkowników-Gości z firmy partnerskiej
+> * Tworzenie automatycznie wypełnionej grupy użytkowników-gości z firmy partnerskiej
 > * Przypisywanie licencji do grupy w celu umożliwienia użytkownikom-gościom uzyskanie dostępu do funkcji specyficznych dla partnera
 > * Dodatek: zabezpieczanie grupy **Wszyscy użytkownicy** przez usunięcie użytkowników-gości, aby na przykład umożliwić członkom organizacji dostęp do witryn przeznaczonych wyłącznie dla użytkowników wewnętrznych
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Ta funkcja wymaga jednej licencji Azure AD — wersja Premium jako Administrator globalny dzierżawy. Jeśli jej nie masz, w usłudze Azure AD wybierz opcję **Licencje** > **Produkty** > **Wypróbuj/kup**.
+Ta funkcja wymaga jednej licencji usługi Azure AD Premium jako administratora globalnego dzierżawy. Jeśli go nie masz, w usłudze Azure AD**Products** > wybierz pozycję **Produkty licencjonowania** > **Wypróbuj/Kup**.
 
 Nie musisz przypisywać licencji użytkownikom, aby mogli być członkami grup dynamicznych. W dzierżawie potrzebna jest tylko taka minimalna liczba dostępnych licencji usługi Azure AD — wersja Premium P1, aby objęci byli nimi wszyscy tacy użytkownicy. 
 
@@ -43,29 +43,29 @@ Nie musisz przypisywać licencji użytkownikom, aby mogli być członkami grup d
 
 Najpierw należy utworzyć grupę dla użytkowników-gości z jednej firmy partnerskiej. Potrzebują oni specjalnej licencji, a więc często najlepszym rozwiązaniem jest utworzenie grupy do tego celu.
 
-1. Zaloguj się do Azure Portal (https://portal.azure.com) przy użyciu konta, które jest administratorem globalnym dla dzierżawy.
-2. Wybierz pozycję **Azure Active Directory** > **Grupy** > **Nowa grupa**.
+1. Zaloguj się do witryny Azure portal (https://portal.azure.com) przy za pomocą konta, które jest administratorem globalnym dla dzierżawy.
+2. Wybierz **grupę usługi Azure Active Directory** > **Groups** > **Nowa grupa**.
    ![wybierz polecenie, aby rozpocząć nową grupę](./media/groups-dynamic-tutorial/new-group.png)
 3. W bloku **Grupa**:
   
-   * Wybierz pozycję **zabezpieczenia** jako typ grupy.
+   * Wybierz **pozycję Zabezpieczenia** jako typ grupy.
    * Wprowadź `Guest users Contoso` jako nazwę i opis grupy.
-   * Zmień **Typ członkostwa** na **użytkownika dynamicznego**.
+   * Zmień **typ członkostwa** na Dynamiczny **użytkownik**.
    
-4. Wybierz pozycję **właściciele** i w bloku **Dodawanie właścicieli** Wyszukaj wszystkich żądanych właścicieli. Kliknij wybranych właścicieli, aby dodać je do zaznaczenia.
-5. Kliknij przycisk **Wybierz** , aby zamknąć blok **Dodawanie właścicieli** .  
-6. W polu **dynamiczne elementy członkowskie użytkownika** wybierz opcję **Edytuj zapytanie dynamiczne** .
-7. W bloku **reguły członkostwa dynamicznego** :
+4. Wybierz **pozycję Właściciele** i w bloku Dodaj **właścicieli** wyszukaj żądanych właścicieli. Kliknij na żądanych właścicieli, aby dodać do wyboru.
+5. Kliknij **przycisk Wybierz,** aby zamknąć blok **Dodaj właścicieli.**  
+6. Wybierz **pozycję Edytuj kwerendę dynamiczną** w polu **Dynamiczne elementy członkowskie użytkownika.**
+7. W bloku **Reguły członkostwa dynamicznego**:
 
-   * W polu **Właściwość** Kliknij istniejącą wartość, a następnie wybierz pozycję **UserType**. 
-   * Upewnij się, że pole **operator** ma **wartość** zaznaczone.  
-   * Wybierz pole **wartość** i wprowadź **gościa**. 
-   * Kliknij hiperlink **Dodaj wyrażenie** , aby dodać kolejny wiersz.
-   * W polu **i/lub** wybierz pozycję **i**.
-   * W polu **Właściwość** wybierz pozycję **NazwaFirmy**.
-   * Upewnij się, że pole **operator** ma **wartość** zaznaczone.
-   * W polu **wartość** wpisz **contoso**.
-   * Kliknij przycisk **Zapisz** , aby zamknąć blok **reguły członkostwa dynamicznego** .
+   * W polu **Właściwość** kliknij istniejącą wartość i wybierz **userType**. 
+   * Sprawdź, czy pole **Operator** ma **zaznaczone pole Równe.**  
+   * Wybierz pole **Wartość** i wprowadź **gość**. 
+   * Kliknij **hiperłącze Dodaj wyrażenie,** aby dodać kolejny wiersz.
+   * W polu **I/Lub** wybierz pozycję **I**.
+   * W polu **Właściwość** wybierz pozycję **CompanyName**.
+   * Sprawdź, czy pole **Operator** ma **zaznaczone pole Równe.**
+   * W polu **Wartość** wprowadź plik **Contoso**.
+   * Kliknij **przycisk Zapisz,** aby zamknąć blok **Dynamiczne reguły członkostwa.**
    
 8. W bloku **Grupy** wybierz polecenie **Utwórz**, aby utworzyć grupę.
 
@@ -89,10 +89,10 @@ Możliwe, że Twoim ostatecznym celem jako administratora jest przypisanie wszys
 **Aby usunąć grupę użytkowników-gości**
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com) przy użyciu konta administratora globalnego dzierżawy.
-2. Wybierz pozycję **Azure Active Directory** > **Grupy**. Wybierz grupę **Guest users Contoso**, wybierz symbol wielokropka (...), a następnie wybierz polecenie **Usuń**. Podczas usuwania grupy zostaną usunięte wszystkie przypisane licencje.
+2. Wybierz **pozycję Grupy usługi Azure Active Directory** > **Groups**. Wybierz grupę **Guest users Contoso**, wybierz symbol wielokropka (...), a następnie wybierz polecenie **Usuń**. Podczas usuwania grupy zostaną usunięte wszystkie przypisane licencje.
 
 **Aby przywrócić grupę Wszyscy użytkownicy**
-1. Wybierz pozycję **Azure Active Directory** > **Grupy**. Wybierz nazwę grupy **Wszyscy użytkownicy**, aby otworzyć grupę.
+1. Wybierz **pozycję Grupy usługi Azure Active Directory** > **Groups**. Wybierz nazwę grupy **Wszyscy użytkownicy**, aby otworzyć grupę.
 1. Wybierz pozycję **Reguły członkostwa dynamicznego**, wyczyść tekst w regule, a następnie wybierz polecenie **Zapisz**.
 
 ## <a name="next-steps"></a>Następne kroki

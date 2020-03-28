@@ -1,5 +1,5 @@
 ---
-title: Samouczek — Tworzenie zestawu skalowania maszyn wirtualnych platformy Azure i zarządzanie nim
+title: Samouczek — tworzenie zestawu skalowania maszyny wirtualnej platformy Azure i zarządzanie nim
 description: Dowiedz się, jak za pomocą interfejsu wiersza polecenia platformy Azure utworzyć zestaw skalowania maszyn wirtualnych oraz wykonywać niektóre typowe zadania zarządzania, takie jak uruchamianie i zatrzymywanie wystąpienia lub zmienianie pojemności zestawu skalowania.
 author: cynthn
 tags: azure-resource-manager
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c2bddb4ef1401dd45b5aa9418f6e1890df0879ae
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 27f216a3cc101d4241fb8d30d27999a0397356dc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277215"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80062804"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Samouczek: tworzenie zestawu skalowania maszyn wirtualnych i zarządzanie nim przy użyciu interfejsu wiersza polecenia platformy Azure
 Zestaw skalowania maszyn wirtualnych umożliwia wdrożenie zestawu identycznych, automatycznie skalowanych maszyn wirtualnych, oraz zarządzanie nimi. W całym cyklu życia zestawu skalowania maszyn wirtualnych konieczne może być uruchomienie jednego lub większej liczby zadań zarządzania. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
@@ -25,7 +25,7 @@ Zestaw skalowania maszyn wirtualnych umożliwia wdrożenie zestawu identycznych,
 > * Ręczne skalowanie zestawu skalowania
 > * Wykonywanie typowych zadań zarządzania zestawem skalowania
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -43,7 +43,7 @@ Nazwa grupy zasobów jest podawana podczas tworzenia lub modyfikowania zestawu s
 
 
 ## <a name="create-a-scale-set"></a>Tworzenie zestawu skalowania
-Utwórz zestaw skalowania maszyn wirtualnych przy użyciu polecenia [az vmss create](/cli/azure/vmss). W poniższym przykładzie pokazano tworzenie zestawu skalowania o nazwie *myScaleSet* i generowanie kluczy SSH, jeśli nie istnieją:
+Utwórz zestaw skalowania maszyn wirtualnych przy użyciu polecenia [az vmss create](/cli/azure/vmss). Poniższy przykład tworzy zestaw skalowania o nazwie *myScaleSet*i generuje klucze SSH, jeśli nie istnieją:
 
 ```azurecli-interactive
 az vmss create \
@@ -69,7 +69,7 @@ az vmss list-instances \
 
 Następujące przykładowe dane wyjściowe zawierają dwa wystąpienia maszyn wirtualnych w zestawie skalowania:
 
-```bash
+```output
   InstanceId  LatestModelApplied    Location    Name          ProvisioningState    ResourceGroup    VmId
 ------------  --------------------  ----------  ------------  -------------------  ---------------  ------------------------------------
            1  True                  eastus      myScaleSet_1  Succeeded            MYRESOURCEGROUP  c059be0c-37a2-497a-b111-41272641533c
@@ -100,7 +100,7 @@ az vmss list-instance-connection-info \
 
 Następujące przykładowe dane wyjściowe zawierają nazwę wystąpienia, publiczny adres IP modułu równoważenia obciążenia oraz numer portu, do którego reguły NAT kierują ruch:
 
-```bash
+```output
 {
   "instance 1": "13.92.224.66:50001",
   "instance 3": "13.92.224.66:50003"
@@ -109,13 +109,13 @@ Następujące przykładowe dane wyjściowe zawierają nazwę wystąpienia, publi
 
 Połącz się przez protokół SSH z pierwszym wystąpieniem maszyny wirtualnej. Podaj własny publiczny adres IP i numer portu za pomocą parametru `-p`, jak pokazano w poprzednim poleceniu:
 
-```azurecli-interactive
+```console
 ssh azureuser@13.92.224.66 -p 50001
 ```
 
 Po zalogowaniu do wystąpienia maszyny wirtualnej możesz ręcznie wprowadzić zmiany w konfiguracji zgodnie z potrzebami. Na razie zamknij sesję SSH w zwykły sposób:
 
-```bash
+```console
 exit
 ```
 
@@ -129,7 +129,7 @@ az vm image list --output table
 
 Następujące przykładowe dane wyjściowe zawierają najbardziej typowe obrazy maszyn wirtualnych na platformie Azure. Podczas tworzenia zestawu skalowania można wskazać obraz za pomocą wartości *UrnAlias*.
 
-```bash
+```output
 Offer          Publisher               Sku                 Urn                                                             UrnAlias             Version
 -------------  ----------------------  ------------------  --------------------------------------------------------------  -------------------  ---------
 CentOS         OpenLogic               7.3                 OpenLogic:CentOS:7.3:latest                                     CentOS               latest
@@ -153,7 +153,7 @@ az vm image list --offer CentOS --all --output table
 
 Następujące skrócone dane wyjściowe zawierają niektóre dostępne obrazy z systemem CentOS 7.3:
 
-```azurecli-interactive 
+```output
 Offer    Publisher   Sku   Urn                                 Version
 -------  ----------  ----  ----------------------------------  -------------
 CentOS   OpenLogic   7.3   OpenLogic:CentOS:7.3:7.3.20161221   7.3.20161221
@@ -189,7 +189,7 @@ W poniższej tabeli przedstawiono typowe kategorie rozmiarów maszyn wirtualnych
 | [Zastosowania ogólne](../virtual-machines/linux/sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Zrównoważona moc procesora CPU w stosunku do pamięci. Opcja idealna w przypadku tworzenia i testowania, małych i średnich aplikacji oraz rozwiązań dotyczących danych.  |
 | [Optymalizacja pod kątem obliczeń](../virtual-machines/linux/sizes-compute.md)   | Fs, F             | Duża moc procesora CPU w stosunku do pamięci. Opcja dobra w przypadku aplikacji o średnim ruchu, urządzeń sieciowych i procesów wsadowych.        |
 | [Optymalizacja pod kątem pamięci](../virtual-machines/linux/sizes-memory.md)    | Esv3, Ev3, M, GS, G, DSv2, DS, Dv2, D   | Duża ilość pamięci na rdzeń. Opcja bardzo dobra w przypadku relacyjnych baz danych, średnich i dużych pamięci podręcznych oraz analizowania w pamięci.                 |
-| [Optymalizacja pod kątem magazynu](../virtual-machines/linux/sizes-storage.md)      | Ls                | Wysoka przepływność dysku i operacje we/wy. Idealne rozwiązanie w przypadku danych big data oraz baz danych SQL i NoSQL.                                                         |
+| [Optymalizacja pod kątem magazynu](../virtual-machines/linux/sizes-storage.md)      | Ls                | Wysoka przepływność dysku i duża liczba operacji we/wy. Opcja idealna w przypadku danych big data oraz baz danych SQL i NoSQL.                                                         |
 | [Procesor GPU](../virtual-machines/linux/sizes-gpu.md)          | NV, NC            | Maszyny wirtualne wyspecjalizowane pod kątem intensywnego renderowania grafiki i edytowania materiałów wideo.       |
 | [Wysoka wydajność](../virtual-machines/linux/sizes-hpc.md) | H, A8-11          | Maszyny wirtualne z najbardziej wydajnymi procesorami CPU oraz, opcjonalnie, interfejsami sieciowymi zapewniającymi wysoką przepływność (RDMA). 
 
@@ -202,7 +202,7 @@ az vm list-sizes --location eastus --output table
 
 Rezultat jest podobny do poniższego, skróconego przykładu, który pokazuje zasoby przypisane do każdego rozmiaru maszyny wirtualnej:
 
-```azurecli-interactive
+```output
   MaxDataDiskCount    MemoryInMb  Name                      NumberOfCores    OsDiskSizeInMb    ResourceDiskSizeInMb
 ------------------  ------------  ----------------------  ---------------  ----------------  ----------------------
                  4          3584  Standard_DS1_v2                       1           1047552                    7168

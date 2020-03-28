@@ -9,10 +9,10 @@ ms.date: 07/20/2018
 ms.author: normesta
 ms.reviewer: fryu
 ms.openlocfilehash: 3a2381302a378e7b2635b84c32a87e844e4605a7
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68844884"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>Monitorowanie i rozwiązywanie problemów aplikacji magazynu w chmurze
@@ -33,7 +33,7 @@ Rejestrowanie i metryki dotyczące konta magazynu można włączyć na karcie **
 
 ## <a name="log-in-to-the-azure-portal"></a>Logowanie do witryny Azure Portal
 
-Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
+Zaloguj się do [portalu Azure](https://portal.azure.com)
 
 ## <a name="turn-on-logging-and-metrics"></a>Włączanie rejestrowania i metryk
 
@@ -41,7 +41,7 @@ W menu po lewej stronie wybierz kolejno pozycje **Grupy zasobów** i **myResourc
 
 W obszarze **Ustawienia diagnostyki (klasyczne)** zmień ustawienie **Stan** na **Włączone**. Upewnij się, że wszystkie opcje w obszarze **Właściwości obiektu blob** są włączone.
 
-Po zakończeniu kliknij przycisk **Zapisz**.
+Po zakończeniu kliknij przycisk **Zapisz**
 
 ![Okienko diagnostyki](media/storage-monitor-troubleshoot-storage-application/enable-diagnostics.png)
 
@@ -51,7 +51,7 @@ Alerty umożliwiają wysłanie wiadomości e-mail do administratora lub wyzwolen
 
 ### <a name="navigate-to-the-storage-account-in-the-azure-portal"></a>Przechodzenie do konta magazynu w witrynie Azure Portal
 
-W sekcji **Monitorowanie** wybierz pozycję **Alerty (klasyczne)** .
+W sekcji **Monitorowanie** wybierz pozycję **Alerty (klasyczne)**.
 
 Wybierz polecenie **Dodaj alert dotyczący metryki (klasyczne)** i ukończ formularz **Dodawanie reguły**, podając wymagane informacje. Z listy rozwijanej **Metryki** wybierz pozycję `SASClientOtherError`. Aby umożliwić wyzwolenie alertu po pierwszym błędzie, z listy rozwijanej **Warunek** wybierz pozycję **Większe niż lub równe**.
 
@@ -89,7 +89,7 @@ W tym scenariuszu należy użyć narzędzia [Microsoft Message Analyzer](https:/
 
 Pobierz narzędzie [Microsoft Message Analyzer](https://www.microsoft.com/download/details.aspx?id=44226) i zainstaluj aplikację.
 
-Uruchom aplikację i wybierz kolejno pozycje **File** (Plik)  >  **Open**  (Otwórz)  >  **From Other File Sources** (Z innych źródeł plików).
+Uruchom aplikację i wybierz opcję**Otwórz** >  **plik** > **z innych źródeł plików**.
 
 W oknie dialogowym **File Selector** (Selektor plików) wybierz opcję **+ Add Azure Connection** (+ Dodaj połączenie Azure). Uzupełnij pola **Storage account name** (Nazwa konta magazynu) i **Account key** (Klucz konta), a następnie kliknij przycisk **OK**.
 
@@ -117,7 +117,7 @@ W czwartej i ostatniej części serii przedstawiono sposób monitorowania konta 
 > * Uruchamianie testowego ruchu z nieprawidłowymi tokenami SAS
 > * Pobieranie i analizowanie dzienników
 
-Kliknij ten link, aby wyświetlić wstępnie skompilowane przykładowe skrypty dla usługi Storage.
+Kliknij ten link, aby wyświetlić wstępnie skompilowane przykłady magazynu.
 
 > [!div class="nextstepaction"]
 > [Azure storage script samples (Przykładowe skrypty dla usługi Azure Storage)](storage-samples-blobs-cli.md)

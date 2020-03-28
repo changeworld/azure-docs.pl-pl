@@ -1,20 +1,20 @@
 ---
-title: Skrypt programu PowerShell do aktualizowania RU/s dla Azure Cosmos DB interfejs API tabel
-description: Dowiedz się, jak za pomocą skryptu programu PowerShell zaktualizować przepływność dla bazy danych lub kontenera na koncie Azure Cosmos DB interfejs API tabel
+title: Skrypt programu PowerShell do aktualizacji programu RU/s dla interfejsu API tabeli usługi Azure Cosmos DB
+description: Dowiedz się, jak zaktualizować przepływność bazy danych lub kontenera na koncie interfejsu API tabeli usługi Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
-ms.date: 12/02/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 37e7ab82a42b8bcd633e0c083e1a3f51505a95cd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 101e9e5591198b84bb9bba886249b0784cc6b43e
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444903"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365939"
 ---
-# <a name="update-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Aktualizowanie RU/s tabeli dla Azure Cosmos DB-interfejs API tabel
+# <a name="update-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Aktualizowanie usług RU/s dla tabeli dla usługi Azure Cosmos DB — interfejs API tabeli
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,8 +38,8 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 
 | Polecenie | Uwagi |
 |---|---|
-|**Zasoby platformy Azure**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Tworzy zasób. |
+|**Azure Cosmos DB**| |
+| [Tabela Set-AzCosmosDBTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbtable) | Tworzy lub aktualizuje tabelę interfejsu API tabeli usługi Cosmos DB. |
 |**Grupy zasobów platformy Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 |||

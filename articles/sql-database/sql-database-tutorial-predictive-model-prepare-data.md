@@ -1,7 +1,7 @@
 ---
-title: 'Samouczek: Przygotowywanie danych do uczenia modelu predykcyjnego w języku R'
+title: 'Samouczek: Przygotowanie danych do szkolenia modelu predykcyjnego w R'
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: W pierwszej części tej serii samouczków można przygotować dane z usługi Azure SQL Database w celu uczenia modelu predykcyjnego w języku R z Azure SQL Database Machine Learning Services (wersja zapoznawcza).
+description: W pierwszej części tej trzyczęściowej serii samouczków przygotujesz dane z bazy danych SQL platformy Azure, aby wyszkolić model predykcyjny w języku R za pomocą usług Azure SQL Database Machine Learning Services (wersja zapoznawcza).
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -13,65 +13,67 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
-ms.openlocfilehash: c1271d5b63fa796fe44b7a40c364953464a87539
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 505f58f13a7186948a228fefe872d74fb98eba33
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596668"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80345771"
 ---
-# <a name="tutorial-prepare-data-to-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Samouczek: Przygotowywanie danych do uczenia modelu predykcyjnego w języku R z Azure SQL Database Machine Learning Services (wersja zapoznawcza)
+# <a name="tutorial-prepare-data-to-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Samouczek: Przygotowanie danych do uczenia modelu predykcyjnego w języku R za pomocą usług Azure SQL Database Machine Learning Services (wersja zapoznawcza)
 
-W pierwszej części tej serii samouczków z trzema częściami zaimportujesz i przygotujesz dane z bazy danych Azure SQL Database przy użyciu języka R. W dalszej części tej serii będziesz używać tych danych do uczenia i wdrożenia modelu uczenia maszynowego w języku R z Azure SQL Database Machine Learning Services (wersja zapoznawcza).
+W pierwszej części tej trzyczęściowej serii samouczków zaimportujesz i przygotujesz dane z bazy danych SQL platformy Azure przy użyciu języka R. W dalszej części tej serii użyjesz tych danych do uczenia i wdrażania modelu uczenia maszynowego predykcyjnego w języku R za pomocą usług Azure SQL Database Machine Learning Services (wersja zapoznawcza).
 
-W tej serii samouczków Wyobraź sobie, że masz swoją firmę do wypożyczalni i chcesz przewidzieć liczbę czynszów, które będziesz mieć w przyszłości. Te informacje pomogą Ci zapewnić, że Twoje zasoby, personel i udogodnienia są gotowe.
+[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-W części jednej i dwóch tej serii utworzysz skrypty języka R w programie RStudio, aby przygotować dane i szkolić model uczenia maszynowego. Następnie w części trzeciej można uruchamiać te skrypty języka R w bazie danych SQL przy użyciu procedur składowanych.
+W tej serii samouczków wyobraź sobie, że posiadasz wypożyczalnię sprzętu narciarskiego i chcesz przewidzieć liczbę wypożyczeń, które będziesz mieć w przyszłości. Te informacje pomogą Ci przygotować zapasy, personel i obiekty.
+
+W części pierwszej i drugiej tej serii opracujesz niektóre skrypty języka R w witrynie RStudio, aby przygotować dane i wyszkolić model uczenia maszynowego. Następnie w części trzeciej uruchomisz te skrypty języka R w bazie danych SQL przy użyciu procedur przechowywanych.
 
 W tym artykule dowiesz się, jak:
 
 > [!div class="checklist"]
-> * Importowanie przykładowej bazy danych do bazy danych Azure SQL Database przy użyciu języka R
-> * Ładowanie danych z bazy danych Azure SQL Database do ramki danych języka R
-> * Przygotuj dane w języku R, identyfikując niektóre kolumny jako kategorii
+> * Importowanie przykładowej bazy danych do bazy danych SQL platformy Azure przy użyciu języka R
+> * Ładowanie danych z bazy danych SQL platformy Azure do ramki danych języka R
+> * Przygotuj dane w R, identyfikując niektóre kolumny jako kategoryczne
 
-W [drugiej części](sql-database-tutorial-predictive-model-build-compare.md)znajdziesz informacje na temat tworzenia i uczenia wielu modeli uczenia maszynowego w języku R, a następnie wybrania najwyższej dokładności jednego.
+W [części drugiej](sql-database-tutorial-predictive-model-build-compare.md)dowiesz się, jak tworzyć i szkolić wiele modeli uczenia maszynowego w językach R, a następnie wybrać najdokładniejszy.
 
-W [trzeciej części](sql-database-tutorial-predictive-model-deploy.md)dowiesz się, jak przechowywać model w bazie danych, a następnie tworzyć procedury składowane na podstawie skryptów języka R, które zostały opracowane w częściach jeden i dwa. Procedury składowane zostaną uruchomione w bazie danych SQL w celu przeprowadzenia prognoz na podstawie nowych danych.
+W [części trzeciej](sql-database-tutorial-predictive-model-deploy.md)dowiesz się, jak przechowywać model w bazie danych, a następnie utworzyć procedury przechowywane ze skryptów języka R opracowanych w częściach 1 i 2. Procedury przechowywane będą uruchamiane w bazie danych SQL, aby prognozowania na podstawie nowych danych.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure — Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [Utwórz konto](https://azure.microsoft.com/free/) .
+* Subskrypcja platformy Azure — jeśli nie masz subskrypcji platformy Azure, [utwórz konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
-* Azure SQL Database serwerze z włączonym Machine Learning Services — w trakcie publicznej wersji zapoznawczej firma Microsoft będzie dołączać użytkownika i włączyć Uczenie maszynowe dla istniejących lub nowych baz danych. Postępuj zgodnie z instrukcjami w części [Tworzenie konta na potrzeby korzystania z wersji zapoznawczej](sql-database-machine-learning-services-overview.md#signup).
+* Usługa Azure SQL Database Server z włączoną usługą uczenia maszynowego — podczas publicznej wersji zapoznawczej firma Microsoft włączy korzystanie z uczenia maszynowego dla istniejących lub nowych baz danych. Postępuj zgodnie z instrukcjami w części [Tworzenie konta na potrzeby korzystania z wersji zapoznawczej](sql-database-machine-learning-services-overview.md#signup).
 
-* Pakiet kolekcję funkcji revoscaler-zobacz [kolekcję funkcji revoscaler](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler?view=sql-server-2017#versions-and-platforms) dla opcji, aby zainstalować ten pakiet lokalnie.
+* RevoScaleR pakiet — zobacz [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler?view=sql-server-2017#versions-and-platforms) dla opcji, aby zainstalować ten pakiet lokalnie.
 
-* Środowisko IDE języka R — w tym samouczku jest stosowany [pulpit RStudio](https://www.rstudio.com/products/rstudio/download/).
+* R IDE - Ten poradnik używa [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/).
 
-* Narzędzie zapytania SQL — w tym samouczku przyjęto założenie, że używasz [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) lub [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS).
+* Narzędzie do zapytań SQL — w tym samouczku przyjęto założenie, że używasz [usługi Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) lub programu SQL Server Management [Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 
 ## <a name="import-the-sample-database"></a>Importowanie przykładowej bazy danych
 
-Przykładowy zestaw danych używany w tym samouczku został zapisany w pliku kopii zapasowej bazy danych **. BACPAC** do pobrania i użycia.
+Przykładowy zestaw danych użyty w tym samouczku został zapisany w pliku kopii zapasowej bazy danych **.bacpac,** aby można było go pobrać i używać.
 
-1. Pobierz plik [TutorialDB. BACPAC](https://sqlchoice.blob.core.windows.net/sqlchoice/static/TutorialDB.bacpac).
+1. Pobierz plik [TutorialDB.bacpac](https://sqlchoice.blob.core.windows.net/sqlchoice/static/TutorialDB.bacpac).
 
-1. Postępuj zgodnie z instrukcjami w temacie [Importowanie pliku BACPAC, aby utworzyć bazę danych Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-import)przy użyciu następujących szczegółów:
+1. Postępuj zgodnie ze wskazówkami w [polu Importuj plik BACPAC, aby utworzyć bazę danych SQL platformy Azure,](https://docs.microsoft.com/azure/sql-database/sql-database-import)korzystając z następujących szczegółów:
 
-   * Importuj z pobranego pliku **TutorialDB. BACPAC**
-   * W publicznej wersji zapoznawczej wybierz konfigurację **5 rdzeń/rdzeń wirtualny** dla nowej bazy danych.
-   * Nazwa nowej bazy danych "TutorialDB"
+   * Importowanie z pobranego pliku **TutorialDB.bacpac**
+   * Podczas publicznej wersji zapoznawczej wybierz konfigurację **Gen5/vCore** dla nowej bazy danych
+   * Nazwij nową bazę danych "TutorialDB"
 
-## <a name="load-the-data-into-a-data-frame"></a>Załaduj dane do ramki danych
+## <a name="load-the-data-into-a-data-frame"></a>Ładowanie danych do ramki danych
 
-Aby użyć danych w języku R, załadujesz dane z bazy danych Azure SQL Database do ramki danych (`rentaldata`).
+Aby użyć danych w języku R, należy załadować dane z bazy`rentaldata`danych SQL platformy Azure do ramki danych ( ).
 
 Utwórz nowy plik RScript w RStudio i uruchom następujący skrypt. Zastąp **serwer**, **UID**i **PWD** własnymi informacjami o połączeniu.
 
@@ -117,8 +119,8 @@ $ Snow       : num  0 0 0 0 0 0 0 0 0 0 ...
 
 ## <a name="prepare-the-data"></a>Przygotowywanie danych
 
-W tej przykładowej bazie danych większość przygotowań została już wykonana, ale w tym miejscu wykonasz jeszcze jedno przygotowanie.
-Użyj poniższego skryptu języka R, aby zidentyfikować trzy kolumny jako *Kategorie* , zmieniając typy danych na *Factor*.
+W tej przykładowej bazie danych większość preparatu została już wykonana, ale w tym miejscu wykonasz jeszcze jedno przygotowanie.
+Poniższy skrypt języka R służy do identyfikowania trzech kolumn jako *kategorii,* zmieniając typy danych na *współczynnik*.
 
 ```r
 #Changing the three factor columns to factor types
@@ -143,28 +145,28 @@ $ Holiday    : Factor w/ 2 levels "0","1": 2 1 1 1 1 1 1 1 1 1 ...
 $ Snow       : Factor w/ 2 levels "0","1": 1 1 1 1 1 1 1 1 1 1 ...
 ```
 
-Dane są teraz przygotowywane do uczenia się.
+Dane są teraz przygotowane do szkolenia.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli nie chcesz kontynuować pracy z tym samouczkiem, Usuń bazę danych TutorialDB z serwera Azure SQL Database.
+Jeśli nie zamierzasz kontynuować tego samouczka, usuń bazę danych SamouczkDB z serwera usługi Azure SQL Database.
 
-W Azure Portal wykonaj następujące kroki:
+W witrynie Azure portal wykonaj następujące kroki:
 
-1. Z menu po lewej stronie w Azure Portal wybierz pozycję **wszystkie zasoby** lub **bazy danych SQL**.
-1. W polu **Filtruj według nazwy...** wpisz **TutorialDB**i wybierz swoją subskrypcję.
-1. Wybierz bazę danych TutorialDB.
+1. Z menu po lewej stronie w witrynie Azure portal wybierz **pozycję Wszystkie zasoby** lub bazy danych **SQL**.
+1. W polu **Filtruj według nazwy...** wprowadź **opcję TutorialDB**i wybierz subskrypcję.
+1. Wybierz bazę danych SamouczkDB.
 1. Na stronie **Przegląd** wybierz pozycję **Usuń**.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W pierwszej części tej serii samouczków zostały wykonane następujące czynności:
+W pierwszej części tej serii samouczków wykonana została ta instrukcja:
 
-* Importowanie przykładowej bazy danych do bazy danych Azure SQL Database przy użyciu języka R
-* Ładowanie danych z bazy danych Azure SQL Database do ramki danych języka R
-* Przygotuj dane w języku R, identyfikując niektóre kolumny jako kategorii
+* Importowanie przykładowej bazy danych do bazy danych SQL platformy Azure przy użyciu języka R
+* Ładowanie danych z bazy danych SQL platformy Azure do ramki danych języka R
+* Przygotuj dane w R, identyfikując niektóre kolumny jako kategoryczne
 
-Aby utworzyć model uczenia maszynowego, który używa danych z bazy danych TutorialDB, wykonaj dwie części tej serii samouczków:
+Aby utworzyć model uczenia maszynowego, który używa danych z bazy danych SamouczkDB, wykonaj część druga tej serii samouczków:
 
 > [!div class="nextstepaction"]
-> [Samouczek: Tworzenie modelu predykcyjnego w języku R z Azure SQL Database Machine Learning Services (wersja zapoznawcza)](sql-database-tutorial-predictive-model-build-compare.md)
+> [Samouczek: Tworzenie modelu predykcyjnego w języku R za pomocą usług azure sql database machine learning services (wersja zapoznawcza)](sql-database-tutorial-predictive-model-build-compare.md)

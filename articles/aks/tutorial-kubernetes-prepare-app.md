@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.custom: mvc
 ms.openlocfilehash: feab8495536b3306fd96793323d51644570b401b
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77593164"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>Samouczek: przygotowywanie aplikacji na potrzeby usługi Azure Kubernetes Service (AKS)
@@ -31,7 +31,7 @@ W dodatkowych samouczkach obraz kontenera zostanie przekazany do usługi Azure C
 
 Ten samouczek zakłada, że masz podstawową wiedzę na temat najważniejszych pojęć dotyczących platformy Docker, takich jak kontenery, obrazy kontenerów i polecenia `docker`. Aby uzyskać podstawowe informacje na temat kontenerów, zapoznaj się z tematem [Get started with Docker (Rozpoczynanie pracy z platformą Docker)][docker-get-started].
 
-Do ukończenia tego samouczka konieczne będzie lokalne środowisko programistyczne platformy Docker z działającymi kontenerami systemu Linux. Platforma Docker zawiera pakiety, które konfigurują platformę Docker w systemie [Mac][docker-for-mac], [Windows][docker-for-windows]lub [Linux][docker-for-linux] .
+Do ukończenia tego samouczka konieczne będzie lokalne środowisko programistyczne platformy Docker z działającymi kontenerami systemu Linux. Środowisko Docker zawiera pakiety, które umożliwiają konfigurowanie platformy Docker w systemie [Mac][docker-for-mac], [Windows][docker-for-windows] lub [Linux][docker-for-linux].
 
 Usługa Azure Cloud Shell nie zawiera składników platformy Docker wymaganych do ukończenia każdego kroku w tych samouczkach. Dlatego zalecamy używanie pełnego środowiska programistycznego usługi Docker.
 
@@ -55,7 +55,7 @@ W tym katalogu znajduje się kod źródłowy aplikacji, wstępnie utworzony plik
 
 ## <a name="create-container-images"></a>Tworzenie obrazów kontenerów
 
-[Docker Compose][docker-compose] może służyć do automatyzowania tworzenia obrazów kontenerów i wdrażania aplikacji wielokontenerowych.
+Narzędzie [Docker Compose][docker-compose] umożliwia automatyzowanie tworzenia obrazów kontenerów i wdrażanie aplikacji z wieloma kontenerami.
 
 Użyj przykładowego pliku `docker-compose.yaml`, aby utworzyć obraz kontenera, pobrać obraz usługi Redis i uruchomić aplikację:
 
@@ -74,7 +74,7 @@ redis                        latest     a1b99da73d05        7 days ago          
 tiangolo/uwsgi-nginx-flask   flask      788ca94b2313        9 months ago        694MB
 ```
 
-Uruchom polecenie [Docker PS][docker-ps] , aby wyświetlić uruchomione kontenery:
+Uruchom polecenie [docker ps][docker-ps], aby wyświetlić uruchomione kontenery:
 
 ```
 $ docker ps
@@ -94,13 +94,13 @@ Aby wyświetlić działającą aplikację, wprowadź adres `http://localhost:808
 
 Teraz, po zweryfikowaniu funkcjonalności aplikacji, uruchomione kontenery można zatrzymać i usunąć. Nie należy usuwać obrazów kontenerów — w następnym samouczku obraz *azure-vote-front* zostanie przekazany do wystąpienia usługi Azure Container Registry.
 
-Zatrzymaj i usuń wystąpienia kontenera oraz zasoby przy użyciu polecenia [Docker-Zredaguj w dół][docker-compose-down] :
+Zatrzymaj i usuń wystąpienia kontenerów i zasoby za pomocą polecenia [docker-compose down][docker-compose-down]:
 
 ```console
 docker-compose down
 ```
 
-Po usunięciu aplikacji lokalnej masz obraz *platformy*Docker zawierający aplikację do głosowania platformy Azure, na której będzie można korzystać w następnym samouczku.
+Po usunięciu aplikacji lokalnej, masz obraz platformy Docker, który zawiera aplikację Azure Vote, *azure-vote-front*, do użycia z następnym samouczkiem.
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -125,7 +125,7 @@ Przejdź do kolejnego samouczka, aby dowiedzieć się, jak przechowywać obrazy 
 [docker-images]: https://docs.docker.com/engine/reference/commandline/images/
 [docker-ps]: https://docs.docker.com/engine/reference/commandline/ps/
 [docker-compose-down]: https://docs.docker.com/compose/reference/down
-[git]: https://git-scm.com/downloads
+[Git]: https://git-scm.com/downloads
 
 <!-- LINKS - internal -->
 [aks-tutorial-prepare-acr]: ./tutorial-kubernetes-prepare-acr.md

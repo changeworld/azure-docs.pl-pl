@@ -9,13 +9,13 @@ ms.date: 05/21/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: 069baf627c0230b6a4727c375494352ab3e6a803
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67183165"
 ---
-Aby dodać dwa tagi do grupy zasobów, użyj [AzResourceGroup zestaw](/powershell/module/az.resources/set-azresourcegroup) polecenia:
+Aby dodać dwa znaczniki do grupy zasobów, użyj polecenia [Set-AzResourceGroup:](/powershell/module/az.resources/set-azresourcegroup)
 
 ```azurepowershell-interactive
 Set-AzResourceGroup -Name myResourceGroup -Tag @{ Dept="IT"; Environment="Test" }
@@ -86,7 +86,7 @@ Aby połączyć kilka wartości w jednym tagu, użyj ciągu JSON.
 Set-AzResourceGroup -Name myResourceGroup -Tag @{ CostCenter="{`"Dept`":`"IT`",`"Environment`":`"Test`"}" }
 ```
 
-Aby dodać nowy tag z kilku wartości bez utraty istniejących tagów, musisz Pobierz istniejące tagi, użyj ciągu JSON dla nowego tagu i zastosuj je ponownie kolekcję tagów:
+Aby dodać nowy tag z kilkoma wartościami bez utraty istniejących tagów, należy pobrać istniejące znaczniki, użyć ciągu JSON dla nowego tagu i ponownie zastosować kolekcję tagów:
 
 ```azurepowershell-interactive
 # Get existing tags and add a new tag
