@@ -11,109 +11,109 @@ ms.topic: include
 ms.custom: include file
 ms.author: diberry
 ms.openlocfilehash: 05e668ff5b0ec19c5e380cf6bfee4b6e46900b2f
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77372328"
 ---
-Użyj biblioteki klienta środowiska uruchomieniowego Language Understanding (LUIS) dla języka Node. js, aby:
+Użyj biblioteki klienta środowiska wykonawczego language understanding (LUIS) dla node.js, aby:
 
-* Prognozowanie według miejsca
-* Prognozowanie według wersji
+* Przewidywanie według szczeliny
+* Przewidywanie według wersji
 
-[Dokumentacja referencyjna](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest) | [przykłady](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/luis_prediction.js) | [kodu źródłowego](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-runtime) | [pakietu środowiska uruchomieniowego (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)
+[Przykłady](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest) | [kodu źródłowego biblioteki](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-runtime) | [Runtime Package (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime) | dokumentacji[referencyjnej](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/luis_prediction.js)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Zasób środowiska uruchomieniowego Language Understanding: [Utwórz go w Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
+* Zasób środowiska wykonawczego opisu języka: [utwórz go w witrynie Azure portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
 * [Node.js](https://nodejs.org)
 
 ## <a name="setting-up"></a>Konfigurowanie
 
-### <a name="get-your-language-understanding-luis-runtime-key"></a>Pobierz klucz środowiska uruchomieniowego Language Understanding (LUIS)
+### <a name="get-your-language-understanding-luis-runtime-key"></a>Pobierz klucz środowiska uruchomieniowego language understanding (LUIS)
 
-Pobierz swój [klucz środowiska uruchomieniowego](../luis-how-to-azure-subscription.md) , tworząc zasób środowiska uruchomieniowego Luis. Zachowaj klucz i punkt końcowy klucza dla kolejnego kroku.
+Pobierz [klucz środowiska wykonawczego,](../luis-how-to-azure-subscription.md) tworząc zasób środowiska uruchomieniowego usługi LUIS. Zachowaj klucz i punkt końcowy klucza dla następnego kroku.
 
 [!INCLUDE [Set up environment variables for prediction quickstart](sdk-prediction-environment-variables.md)]
 
-### <a name="create-a-new-javascript-nodejs-file"></a>Utwórz nowy plik JavaScript (Node. js)
+### <a name="create-a-new-javascript-nodejs-file"></a>Tworzenie nowego pliku javascript (Node.js)
 
-Utwórz nowy plik JavaScript w preferowanym edytorze lub środowisku IDE o nazwie `luis_prediction.js`.
+Utwórz nowy plik javascript w preferowanym `luis_prediction.js`edytorze lub IDE o nazwie .
 
-### <a name="install-the-npm-library-for-the-luis-runtime"></a>Zainstaluj bibliotekę NPM dla środowiska uruchomieniowego LUIS
+### <a name="install-the-npm-library-for-the-luis-runtime"></a>Instalowanie biblioteki NPM dla środowiska wykonawczego usługi LUIS
 
-W katalogu aplikacji Zainstaluj zależności przy użyciu następującego polecenia:
+W katalogu aplikacji zainstaluj zależności za pomocą następującego polecenia:
 
 ```console
 npm install @azure/cognitiveservices-luis-runtime @azure/ms-rest-js
 ```
 
-## <a name="object-model"></a>Model obiektów
+## <a name="object-model"></a>Model obiektu
 
-Klient tworzenia Language Understanding (LUIS) to obiekt [LUISAuthoringClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/luisruntimeclient?view=azure-node-latest) , który jest uwierzytelniany na platformie Azure, który zawiera klucz tworzenia.
+Klient tworzenia języka (LUIS) jest obiektem [LUISAuthoringClient,](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/luisruntimeclient?view=azure-node-latest) który uwierzytelnia się na platformie Azure, który zawiera klucz autora.
 
-Po utworzeniu klienta Użyj tego klienta, aby uzyskać dostęp do funkcji, w tym:
+Po utworzeniu klienta użyj tego klienta, aby uzyskać dostęp do funkcji, w tym:
 
-* [Prognozowanie](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/predictionoperations?view=azure-node-latest#getslotprediction-string--string--predictionrequest--models-predictiongetslotpredictionoptionalparams-) według `staging` lub gniazda `production`
-* [Prognozowanie według wersji](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/predictionoperations?view=azure-node-latest#getversionprediction-string--string--predictionrequest--models-predictiongetversionpredictionoptionalparams-)
+* [Przewidywanie](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/predictionoperations?view=azure-node-latest#getslotprediction-string--string--predictionrequest--models-predictiongetslotpredictionoptionalparams-) `staging` `production` przez lub szczeliny
+* [Przewidywanie według wersji](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/predictionoperations?view=azure-node-latest#getversionprediction-string--string--predictionrequest--models-predictiongetversionpredictionoptionalparams-)
 
 ## <a name="code-examples"></a>Przykłady kodu
 
-W tych fragmentach kodu przedstawiono sposób wykonywania następujących czynności Language Understanding w ramach biblioteki klienta LUIS:
+Te fragmenty kodu pokazują, jak wykonać następujące czynności za pomocą biblioteki klienta przewidywania języka (LUIS):
 
-* [Prognozowanie według miejsca](#get-prediction-from-runtime)
+* [Przewidywanie według szczeliny](#get-prediction-from-runtime)
 
 ## <a name="add-the-dependencies"></a>Dodawanie zależności
 
-W katalogu projektu Otwórz plik `luis_prediction.js` w preferowanym edytorze lub w środowisku IDE. Dodaj następujące zależności:
+W katalogu projektu otwórz `luis_prediction.js` plik w preferowanym edytorze lub IDE. Dodaj następujące zależności:
 
 [!code-javascript [Dependencies](~/cognitive-services-quickstart-code/javascript/LUIS/luis_prediction.js?name=Dependencies)]
 
-## <a name="authenticate-the-client"></a>Uwierzytelnianie klienta
+## <a name="authenticate-the-client"></a>Uwierzytelnij klienta
 
-1. Utwórz zmienne dla własnych wymaganych informacji LUIS:
+1. Tworzenie zmiennych dla własnych wymaganych informacji usługi LUIS:
 
-    Dodaj zmienne, aby zarządzać kluczem predykcyjnym ściąganym ze zmiennej środowiskowej o nazwie `LUIS_RUNTIME_KEY`. Jeśli zmienna środowiskowa została utworzona po uruchomieniu aplikacji, należy zamknąć i ponownie załadować Edytor, środowisko IDE lub powłokę, aby uzyskać dostęp do zmiennej. Metody zostaną utworzone później.
+    Dodaj zmienne, aby zarządzać kluczem przewidywania `LUIS_RUNTIME_KEY`pobranym ze zmiennej środowiskowej o nazwie . Jeśli utworzono zmienną środowiskową po uruchomieniu aplikacji, edytor, IDE lub powłoki uruchomionej będzie musiał zostać zamknięty i ponownie załadowany, aby uzyskać dostęp do zmiennej. Metody zostaną utworzone później.
 
-    Utwórz zmienną do przechowywania nazwy zasobu `LUIS_RUNTIME_ENDPOINT`.
+    Utwórz zmienną do `LUIS_RUNTIME_ENDPOINT`przechowywania nazwy zasobu .
 
     [!code-javascript [Azure resource variables](~/cognitive-services-quickstart-code/javascript/LUIS/luis_prediction.js?name=Variables)]
 
-1. Utwórz zmienną dla identyfikatora aplikacji jako zmienną środowiskową o nazwie `LUIS_APP_ID`. Ustaw zmienną środowiskową na publiczną aplikację IoT, **`df67dcdb-c37d-46af-88e1-8b97951ca1c2`** . Utwórz zmienną, aby ustawić `production` opublikowane gniazdo.
+1. Utwórz zmienną dla identyfikatora aplikacji `LUIS_APP_ID`jako zmienną środowiskową o nazwie . Ustaw zmienną środowiskową na publiczną **`df67dcdb-c37d-46af-88e1-8b97951ca1c2`** aplikację IoT, . Utwórz zmienną, `production` aby ustawić opublikowane gniazdo.
 
     [!code-javascript [LUIS app variables](~/cognitive-services-quickstart-code/javascript/LUIS/luis_prediction.js?name=OtherVariables)]
 
 
-1. Utwórz obiekt msRest. ApiKeyCredentials z kluczem i użyj go w punkcie końcowym, aby utworzyć [Luis. Obiekt LUISRuntimeClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/luisruntimeclient?view=azure-node-latest) .
+1. Utwórz obiekt msRest.ApiKeyCredentials za pomocą klucza i użyj go z punktem końcowym do utworzenia [usługi LUIS. Obiekt LUISRuntimeClient.](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/luisruntimeclient?view=azure-node-latest)
 
     [!code-javascript [LUIS Runtime client is required to access predictions for LUIS apps](~/cognitive-services-quickstart-code/javascript/LUIS/luis_prediction.js?name=AuthoringCreateClient)]
 
-## <a name="get-prediction-from-runtime"></a>Pobierz prognozowanie z środowiska uruchomieniowego
+## <a name="get-prediction-from-runtime"></a>Pobierz przewidywanie ze środowiska wykonawczego
 
-Dodaj następującą metodę, aby utworzyć żądanie do środowiska uruchomieniowego przewidywania.
+Dodaj następującą metodę, aby utworzyć żądanie do środowiska uruchomieniowego przewidywanie.
 
-Wypowiedź użytkownika jest częścią obiektu [predictionRequest](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/predictionrequest?view=azure-node-latest) .
+Wypowiedź użytkownika jest częścią [predictionRequest](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/predictionrequest?view=azure-node-latest) obiektu.
 
-Metoda **[luisRuntimeClient. przewidywania. getSlotPrediction](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/predictionoperations?view=azure-node-latest#getslotprediction-string--string--predictionrequest--models-predictiongetslotpredictionoptionalparams-)** wymaga kilku parametrów, takich jak identyfikator aplikacji, nazwa gniazda i obiekt żądania prognozowania w celu spełnienia żądania. Inne opcje, takie jak verbose, pokazują wszystkie intencje i dzienniki są opcjonalne.
+**[LuisRuntimeClient.prediction.getSlotPrediction](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/predictionoperations?view=azure-node-latest#getslotprediction-string--string--predictionrequest--models-predictiongetslotpredictionoptionalparams-)** metoda wymaga kilku parametrów, takich jak identyfikator aplikacji, nazwa gniazda i obiekt żądania przewidywania do spełnienia żądania. Inne opcje, takie jak pełne, pokaż wszystkie intencje i dziennik są opcjonalne.
 
 [!code-javascript [LUIS prediction request and response in Node.js NPM SDK](~/cognitive-services-quickstart-code/javascript/LUIS/luis_prediction.js?name=predict)]
 
-## <a name="main-code-for-the-prediction"></a>Kod główny do prognozowania
+## <a name="main-code-for-the-prediction"></a>Główny kod do przewidywania
 
-Użyj następującej metody Main, aby powiązać zmienne i metody w celu uzyskania prognozowania.
+Użyj następującej metody głównej, aby powiązać zmienne i metody razem, aby uzyskać przewidywanie.
 
 [!code-javascript [Main method and main call](~/cognitive-services-quickstart-code/javascript/LUIS/luis_prediction.js?name=Main)]
 
 ## <a name="run-the-application"></a>Uruchamianie aplikacji
 
-Uruchom aplikację za pomocą polecenia `node luis_prediction.js` z katalogu aplikacji.
+Uruchom aplikację za `node luis_prediction.js` pomocą polecenia z katalogu aplikacji.
 
 ```console
 node luis_prediction.js
 ```
 
-Wynik przewidywania zwraca obiekt JSON:
+Wynik prognozowania zwraca obiekt JSON:
 
 ```console
 {
@@ -159,4 +159,4 @@ Wynik przewidywania zwraca obiekt JSON:
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Po wykonaniu prognoz Wyczyść prace z tego przewodnika Szybki Start, usuwając plik i jego podkatalogi.
+Po zakończeniu z prognoz, oczyścić pracę z tego przewodnika Szybki start, usuwając plik i jego podkatalogów.

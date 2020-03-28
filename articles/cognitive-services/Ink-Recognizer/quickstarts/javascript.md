@@ -1,7 +1,7 @@
 ---
-title: 'Szybki Start: Rozpoznawanie cyfrowego atramentu za pomocą interfejsu API REST aparatu rozpoznawania farb i środowiska Node. js'
+title: 'Szybki start: rozpoznawanie atramentu cyfrowego za pomocą interfejsu API REST aparatu pisma odczłowego i pliku Node.js'
 titleSuffix: Azure Cognitive Services
-description: Użyj interfejsu API rozpoznawania pisma odręcznego, aby rozpocząć rozpoznawanie cyfrowych pociągnięć atramentu w tym przewodniku Szybki Start.
+description: Użyj interfejsu API aparatu rozpoznawania pisma odręcznego, aby rozpocząć rozpoznawanie cyfrowych pociągnięć odręcznych w tym przewodniku Szybki start.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,36 +11,36 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
 ms.openlocfilehash: a37f2b7044fcba04ca18093aa73563961e9e35de
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75448145"
 ---
-# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>Szybki Start: Rozpoznawanie cyfrowego atramentu za pomocą interfejsu API REST aparatu rozpoznawania farb i języka JavaScript
+# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>Szybki start: rozpoznawanie atramentu cyfrowego za pomocą interfejsu API REST aparatu odurzającego i języka JavaScript
 
-Skorzystaj z tego przewodnika Szybki Start, aby rozpocząć korzystanie z interfejsu API rozpoznawania atramentu na potrzeby pociągnięć atramentów cyfrowych Ta aplikacja JavaScript wysyła żądanie interfejsu API zawierające dane pociągnięcia odręcznego w formacie JSON i wyświetla odpowiedź.
+Ten przewodnik Szybki start umożliwia rozpoczęcie korzystania z interfejsu API aparatu rozpoznawania pisma odręcznego na cyfrowych pociągnięciach odręcznych. Ta aplikacja JavaScript wysyła żądanie interfejsu API zawierającego dane obrysu atramentu w formacie JSON i wyświetla odpowiedź.
 
-Gdy aplikacja jest zapisywana w języku JavaScript i jest uruchamiana w przeglądarce sieci Web, interfejs API jest usługą sieci Web RESTful zgodną z większością języków programowania.
+Podczas gdy ta aplikacja jest napisana w javascript i działa w przeglądarce internetowej, API jest restful usługi internetowej zgodne z większością języków programowania.
 
-Zazwyczaj można wywołać interfejs API z aplikacji cyfrowego odręcznego. Ten przewodnik Szybki Start wysyła dane pociągnięć odręcznych dla poniższego przykładu napisanego ręcznie z pliku JSON.
+Zazwyczaj można wywołać interfejs API z aplikacji pisma odustniającego cyfrowego. Ten przewodnik Szybki start wysyła dane obrysu odręcznego dla następującego przykładu odręcznego z pliku JSON.
 
 ![obraz tekstu odręcznego](../media/handwriting-sample.jpg)
 
-Kod źródłowy dla tego przewodnika Szybki Start można znaleźć w witrynie [GitHub](https://go.microsoft.com/fwlink/?linkid=2089905).
+Kod źródłowy tego przewodnika Szybki start można znaleźć na [GitHub](https://go.microsoft.com/fwlink/?linkid=2089905).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Przeglądarka sieci Web
-- Przykładowe dane pociągnięcia farbą dla tego przewodnika Szybki Start można znaleźć w witrynie [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-ink-strokes.json).
+- Przeglądarka internetowa
+- Przykładowe dane obrysu pisma odręcznego dla tego przewodnika Szybki start można znaleźć w [usłudze GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-ink-strokes.json).
 
-### <a name="create-an-ink-recognizer-resource"></a>Tworzenie zasobu aparatu rozpoznawania atramentu
+### <a name="create-an-ink-recognizer-resource"></a>Tworzenie zasobu aparatu rozpoznawania pisma odurzacza
 
 [!INCLUDE [creating an ink recognizer resource](../includes/setup-instructions.md)]
 
 ## <a name="create-a-new-application"></a>Tworzenie nowej aplikacji
 
-1. W ulubionym środowisku IDE lub edytorze Utwórz nowy plik `.html`. Następnie Dodaj do niego podstawowy kod HTML, który zostanie dodany później.
+1. W ulubionym IDE lub edytorze `.html` utwórz nowy plik. Następnie dodaj do niego podstawowy kod HTML dla kodu, który dodamy później.
     
     ```html
     <!DOCTYPE html>
@@ -57,9 +57,9 @@ Kod źródłowy dla tego przewodnika Szybki Start można znaleźć w witrynie [G
     </html>
     ```
 
-2. W tagu `<body>` Dodaj następujący kod HTML:
-    1. Dwa obszary tekstu do wyświetlania żądania i odpowiedzi JSON.
-    2. Przycisk służący do wywoływania funkcji `recognizeInk()`, która zostanie utworzona później.
+2. W `<body>` tagu dodaj następujący html:
+    1. Dwa obszary tekstowe do wyświetlania żądania JSON i odpowiedzi.
+    2. Przycisk do wywoływania `recognizeInk()` funkcji, która zostanie utworzona później.
     
     ```HTML
     <!-- <body>-->
@@ -75,11 +75,11 @@ Kod źródłowy dla tego przewodnika Szybki Start można znaleźć w witrynie [G
 
 ## <a name="load-the-example-json-data"></a>Ładowanie przykładowych danych JSON
 
-1. W tagu `<script>` Utwórz zmienną dla sampleJson. Następnie Utwórz funkcję języka JavaScript o nazwie `openFile()`, która otwiera Eksploratora plików, aby można było wybrać plik JSON. Po kliknięciu przycisku `Recognize ink` wywoła tę funkcję i rozpocznie odczytywanie pliku.
-2. Użyj funkcji `onload()` obiektu `FileReader`, aby przetwarzać plik asynchronicznie. 
-    1. Zastąp wszystkie `\n` lub `\r` znaków w pliku ciągiem pustym. 
-    2. Użyj `JSON.parse()`, aby przekonwertować tekst na prawidłowy kod JSON
-    3. Zaktualizuj pole tekstowe `request` w aplikacji. Użyj `JSON.stringify()`, aby sformatować ciąg JSON. 
+1. W `<script>` obrębie tagu utwórz zmienną dla przykładuSon. Następnie utwórz funkcję `openFile()` JavaScript o nazwie, która otwiera eksploratora plików, aby można było wybrać plik JSON. Po `Recognize ink` kliknięciu przycisku wywoła tę funkcję i rozpocznie czytanie pliku.
+2. Funkcja `FileReader` obiektu `onload()` służy do asynchronicznie przetwarzania pliku. 
+    1. Zastąp dowolny `\n` lub `\r` dowolny znak w pliku pustym ciągiem. 
+    2. Służy `JSON.parse()` do konwertowania tekstu na prawidłowy JSON
+    3. Zaktualizuj `request` pole tekstowe w aplikacji. Służy `JSON.stringify()` do formatowania ciągu JSON. 
     
     ```javascript
     var sampleJson = "";
@@ -96,9 +96,9 @@ Kod źródłowy dla tego przewodnika Szybki Start można znaleźć w witrynie [G
     };
     ```
 
-## <a name="send-a-request-to-the-ink-recognizer-api"></a>Wyślij żądanie do interfejsu API rozpoznawania pisma odręcznego
+## <a name="send-a-request-to-the-ink-recognizer-api"></a>Wysyłanie żądania do interfejsu API aparatu rozpoznawania pisma odurzacza
 
-1. W tagu `<script>` Utwórz funkcję o nazwie `recognizeInk()`. Ta funkcja spowoduje późniejsze wywołanie interfejsu API i zaktualizowanie strony z odpowiedzią. Dodaj kod z następujących kroków w tej funkcji. 
+1. W `<script>` obrębie znacznika utwórz funkcję o nazwie `recognizeInk()`. Ta funkcja spowoduje późniejsze wywołanie interfejsu API i zaktualizowanie strony za pomocą odpowiedzi. Dodaj kod z następujących kroków w ramach tej funkcji. 
         
     ```javascript
     function recognizeInk() {
@@ -106,7 +106,7 @@ Kod źródłowy dla tego przewodnika Szybki Start można znaleźć w witrynie [G
     }
     ```
 
-    1. Utwórz zmienne dla adresu URL punktu końcowego, klucza subskrypcji i przykładowego pliku JSON. Następnie Utwórz obiekt `XMLHttpRequest`, aby wysłać żądanie interfejsu API. 
+    1. Tworzenie zmiennych dla adresu URL punktu końcowego, klucza subskrypcji i przykładowego JSON. Następnie utwórz obiekt `XMLHttpRequest` do wysłania żądania interfejsu API. 
         
         ```javascript
         // Replace the below URL with the correct one for your subscription. 
@@ -116,7 +116,7 @@ Kod źródłowy dla tego przewodnika Szybki Start można znaleźć w witrynie [G
         var SUBSCRIPTION_KEY = process.env["INK_RECOGNITION_SUBSCRIPTION_KEY"];
         var xhttp = new XMLHttpRequest();
         ```
-    2. Utwórz funkcję Return dla obiektu `XMLHttpRequest`. Ta funkcja przeanalizuje odpowiedź interfejsu API z pomyślnego żądania i wyświetli ją w aplikacji. 
+    2. Utwórz funkcję zwracania `XMLHttpRequest` obiektu. Ta funkcja będzie analizować odpowiedź interfejsu API z pomyślnego żądania i wyświetlić go w aplikacji. 
             
         ```javascript
         function returnFunction(xhttp) {
@@ -125,7 +125,7 @@ Kod źródłowy dla tego przewodnika Szybki Start można znaleźć w witrynie [G
             document.getElementById('response').innerHTML = JSON.stringify(response, null, 2);
         }
         ```
-    3. Utwórz funkcję Error dla obiektu request. Ta funkcja rejestruje błąd w konsoli programu. 
+    3. Utwórz funkcję błędu dla obiektu żądania. Ta funkcja rejestruje błąd w konsoli. 
             
         ```javascript
         function errorFunction() {
@@ -133,7 +133,7 @@ Kod źródłowy dla tego przewodnika Szybki Start można znaleźć w witrynie [G
         }
         ```
 
-    4. Utwórz funkcję dla właściwości `onreadystatechange` obiektu żądania. Gdy stan gotowości obiektu żądania ulegnie zmianie, zostaną zastosowane powyższe funkcje Return i Error.
+    4. Utwórz funkcję właściwości obiektu `onreadystatechange` żądania. Po zmianie stanu gotowości obiektu żądania zostaną zastosowane powyższe funkcje zwracania i błędu.
             
         ```javascript
         xhttp.onreadystatechange = function () {
@@ -147,7 +147,7 @@ Kod źródłowy dla tego przewodnika Szybki Start można znaleźć w witrynie [G
         };
         ```
     
-    5. Wyślij żądanie interfejsu API. Dodaj klucz subskrypcji do nagłówka `Ocp-Apim-Subscription-Key` i ustaw `content-type` na `application/json`
+    5. Wyślij żądanie interfejsu API. Dodaj klucz subskrypcji `Ocp-Apim-Subscription-Key` do nagłówka `content-type` i ustaw`application/json`
     
         ```javascript
         xhttp.open("PUT", ENDPOINT_URL, true);
@@ -157,16 +157,16 @@ Kod źródłowy dla tego przewodnika Szybki Start można znaleźć w witrynie [G
         };
         ```
 
-## <a name="run-the-application-and-view-the-response"></a>Uruchom aplikację i Wyświetl odpowiedź
+## <a name="run-the-application-and-view-the-response"></a>Uruchamianie aplikacji i wyświetlanie odpowiedzi
 
-Ta aplikacja może być uruchamiana w przeglądarce internetowej. Pomyślna odpowiedź jest zwracana w formacie JSON. Odpowiedź na kod JSON można również znaleźć w witrynie [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-response.json):
+Ta aplikacja może być uruchamiana w przeglądarce internetowej. Pomyślna odpowiedź jest zwracana w formacie JSON. Odpowiedź JSON można również znaleźć na [GitHub:](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-response.json)
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dokumentacja interfejsu API REST](https://go.microsoft.com/fwlink/?linkid=2089907)
+> [Odwołanie do interfejsu API REST](https://go.microsoft.com/fwlink/?linkid=2089907)
 
-Aby zobaczyć, jak działa interfejs API rozpoznawania pisma odręcznego w aplikacji do cyfrowego odkróla, zapoznaj się z następującymi przykładowymi aplikacjami w witrynie GitHub:
+Aby zobaczyć, jak działa interfejs API rozpoznawania pisma odurzającego w aplikacji do cyfrowego pisma odurzającego, zapoznaj się z następującymi przykładowymi aplikacjami w usłudze GitHub:
 * [C# i platforma uniwersalna systemu Windows (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
 * [C# i Windows Presentation Foundation (WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
 * [Aplikacja języka JavaScript dla przeglądarki internetowej](https://go.microsoft.com/fwlink/?linkid=2089908)       

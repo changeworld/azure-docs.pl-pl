@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: Tworzenie projektu wykrywania obiektów przy użyciu zestawu SDK dla języka go Custom Vision'
+title: 'Szybki start: tworzenie projektu wykrywania obiektów za pomocą sdk dla go - Custom Vision'
 titleSuffix: Azure Cognitive Services
 description: Utwórz projekt, dodaj tagi, przekaż obrazy, wytrenuj projekt i wykrywaj obiekty przy użyciu zestawu Go SDK.
 services: cognitive-services
@@ -11,15 +11,15 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.openlocfilehash: c6303b494c7ea3a15a38cd5fb8bf6a77b0320363
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76170134"
 ---
-# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-go-sdk"></a>Szybki Start: Tworzenie projektu wykrywania obiektów przy użyciu zestawu Custom Vision go SDK
+# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-go-sdk"></a>Szybki start: tworzenie projektu wykrywania obiektów za pomocą niestandardowego sdk Vision Go
 
-Ten artykuł zawiera informacje i przykładowy kod, dzięki którym można łatwiej rozpocząć tworzenie modeli wykrywania obiektów za pomocą zestawu Custom Vision SDK i języka Go. Po jego utworzeniu można dodać otagowane regiony, przekazać obrazy, przeszkolić projekt, uzyskać opublikowany adres URL punktu końcowego przewidywania projektu i użyć punktu końcowego do programistycznego testowania obrazu. Użyj tego przykładu jako szablonu do utworzenia własnej aplikacji w języku Go.
+Ten artykuł zawiera informacje i przykładowy kod, dzięki którym można łatwiej rozpocząć tworzenie modeli wykrywania obiektów za pomocą zestawu Custom Vision SDK i języka Go. Po jego utworzeniu można dodać oznakowane regiony, przekazać obrazy, wyszkolić projekt, uzyskać opublikowany adres URL punktu końcowego przewidywania projektu i użyć punktu końcowego do programowego testowania obrazu. Użyj tego przykładu jako szablonu do utworzenia własnej aplikacji w języku Go.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -34,7 +34,7 @@ Aby zainstalować zestaw Custom Vision Service SDK dla języka Go, uruchom nast�
 go get -u github.com/Azure/azure-sdk-for-go/...
 ```
 
-lub jeśli używasz `dep`, w repozytorium zostanie uruchomione:
+lub jeśli `dep`używasz , w ramach uruchomienia repozytorium:
 ```shell
 dep ensure -add github.com/Azure/azure-sdk-for-go
 ```
@@ -51,7 +51,7 @@ Utwórz nowy plik o nazwie *sample.go* w preferowanym katalogu projektu.
 
 Dodaj następujący kod do skryptu, aby utworzyć nowy projekt Custom Vision Service. Wstaw klucze subskrypcji w odpowiednich definicjach. Ponadto Pobierz adres URL punktu końcowego ze strony Ustawienia w witrynie sieci Web Custom Vision.
 
-Aby określić inne opcje podczas tworzenia projektu (wyjaśnione w przewodniku tworzenia portalu sieci Web dla [czujnika](get-started-build-detector.md) ), zobacz metodę " [setproject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) ".
+Zobacz [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) metody, aby określić inne opcje podczas tworzenia projektu (wyjaśnione w [Kompilacji detektora](get-started-build-detector.md) portalu sieci web przewodnik).
 
 ```go
 import(
@@ -107,14 +107,14 @@ forkTag, _ := trainer.CreateTag(ctx, *project.ID, "fork", "A fork", string(train
 scissorsTag, _ := trainer.CreateTag(ctx, *project.ID, "scissors", "Pair of scissors", string(training.Regular))
 ```
 
-### <a name="upload-and-tag-images"></a>Przekazywanie i tagowanie obrazów
+### <a name="upload-and-tag-images"></a>Przekazywanie i Tagi obrazów
 
-Oznaczając tagami obrazy w projektach wykrywania obiektów, należy określić region każdego otagowanego obiektu za pomocą znormalizowanych współrzędnych.
+Po oznaczeniu obrazów w projektach wykrywania obiektów należy określić region każdego z otagowanych obiektów przy użyciu znormalizowanych współrzędnych.
 
 > [!NOTE]
-> Jeśli nie masz narzędzia do klikania i przeciągania, aby oznaczyć współrzędne regionów, możesz użyć internetowego interfejsu użytkownika w [Customvision.AI](https://www.customvision.ai/). W tym przykładzie współrzędne zostały już podane.
+> Jeśli nie masz narzędzia "kliknij i przeciągnij", aby oznaczyć współrzędne regionów, możesz użyć internetowego interfejsu użytkownika w [Customvision.ai](https://www.customvision.ai/). W tym przykładzie współrzędne są już dostarczone.
 
-Aby dodać obrazy, tagi i regiony do projektu, wstaw następujący kod po utworzeniu tagów. Należy pamiętać, że w tym samouczku regiony są zakodowane wewnętrznie. Regiony określają pole ograniczenia w znormalizowanych współrzędnych, które podaje się w kolejności: lewa krawędź, górna krawędź, szerokość, wysokość.
+Aby dodać obrazy, tagi i regiony do projektu, wstaw następujący kod po utworzeniu tagów. Należy zauważyć, że w tym samouczku regiony są zakodowane wbudowane. Regiony określają pole ograniczenia w znormalizowanych współrzędnych, które podaje się w kolejności: lewa krawędź, górna krawędź, szerokość, wysokość.
 
 ```Go
 forkImageRegions := map[string][4]float64{
@@ -163,7 +163,7 @@ scissorsImageRegions := map[string][4]float64{
     "scissors_20.jpg": [4]float64{ 0.158088237, 0.04047389, 0.6691176, 0.843137264 },
 }
 ```
-Następnie użyj tej mapy skojarzeń, aby przekazać każdy przykładowy obraz ze współrzędnymi region (możesz przekazać do 64 obrazów w jednej partii). Dodaj następujący kod.
+Następnie użyj tej mapy skojarzeń, aby przekazać każdy przykładowy obraz ze współrzędnymi regionu (można przekazać maksymalnie 64 obrazy w jednej partii). Dodaj następujący kod.
 
 > [!NOTE]
 > Należy zmienić ścieżkę do obrazów, zależnie od tego, gdzie został wcześniej pobrany projekt z przykładami dotyczącymi zestawu SDK dla języka Go dla usług Cognitive Services.
@@ -226,9 +226,9 @@ if (!*scissor_batch.IsBatchSuccessful) {
 }     
 ```
 
-### <a name="train-the-project-and-publish"></a>Uczenie projektu i publikowanie
+### <a name="train-the-project-and-publish"></a>Trenuj projekt i publikuj
 
-Ten kod tworzy pierwszą iterację modelu predykcyjnego, a następnie publikuje tę iterację w punkcie końcowym przewidywania. Nazwa nadana do publikowanej iteracji może służyć do wysyłania żądań przewidywania. Iteracja nie jest dostępna w punkcie końcowym przewidywania do momentu opublikowania.
+Ten kod tworzy pierwszą iterację modelu przewidywania, a następnie publikuje tę iterację do punktu końcowego przewidywania. Nazwa nadana do publikowanej iteracji może służyć do wysyłania żądań przewidywania. Iteracja nie jest dostępna w punkcie końcowym przewidywania do momentu opublikowania.
 
 ```go
 iteration, _ := trainer.TrainProject(ctx, *project.ID)
@@ -245,7 +245,7 @@ for {
 trainer.PublishIteration(ctx, *project.ID, *iteration.ID, iteration_publish_name, prediction_resource_id))
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Pobieranie i używanie opublikowanej iteracji w punkcie końcowym przewidywania
+### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Pobierz i użyj opublikowanej iteracji w punkcie końcowym przewidywania
 
 Aby wysłać obraz do punktu końcowego przewidywania i uzyskać przewidywanie, dodaj na końcu pliku następujący kod:
 

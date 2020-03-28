@@ -1,7 +1,7 @@
 ---
-title: 'Szybki Start: synteza mowy C# , usługa mowy'
+title: 'Szybki start: synteza mowy, C# - usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: do ustalenia
+description: TBD
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
 ms.openlocfilehash: 2a828cecba5432a7fa67252697827f34f0803a40
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75469331"
 ---
-Jeśli wolisz przejść bezpośrednio do programu, Wyświetl lub Pobierz wszystkie <a href="https://aka.ms/speech/github-csharp">przykłady zestawu C# Speech SDK</a> w witrynie GitHub. W przeciwnym razie Zacznijmy.
+Jeśli wolisz przejść w prawo, wyświetl lub pobierz wszystkie <a href="https://aka.ms/speech/github-csharp">próbki języka C# speech SDK</a> w usłudze GitHub. W przeciwnym razie zacznijmy.

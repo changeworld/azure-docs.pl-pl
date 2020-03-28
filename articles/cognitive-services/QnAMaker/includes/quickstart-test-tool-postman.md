@@ -11,10 +11,10 @@ ms.custom: include file
 ms.date: 02/08/2020
 ms.author: diberry
 ms.openlocfilehash: 46947579ea72e2199af116442472eec330b38009
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77112279"
 ---
 W tym samouczku Szybki start opisano sposób uzyskiwania odpowiedzi z bazy wiedzy przy użyciu narzędzia Postman.
@@ -23,35 +23,35 @@ W tym samouczku Szybki start opisano sposób uzyskiwania odpowiedzi z bazy wiedz
 
 * Najnowsza wersja narzędzia [**Postman**](https://www.getpostman.com/).
 * Musisz mieć
-    * [Usługa QNA Maker](../How-To/set-up-qnamaker-service-azure.md)
-    * Przeszkolone i opublikowane [bazy wiedzy z pytaniami i odpowiedziami](../Quickstarts/add-question-metadata-portal.md) utworzonymi na podstawie przewodnika Szybki Start są skonfigurowane za pomocą metadanych i Chit Chat.
+    * [Usługa QnA Maker](../How-To/set-up-qnamaker-service-azure.md)
+    * Wyszkolona i opublikowana [baza wiedzy z pytaniami i odpowiedziami utworzonymi](../Quickstarts/add-question-metadata-portal.md) z przewodnika Szybki start jest skonfigurowana z metadanymi i czatem Chit.
 
 > [!NOTE]
-> Gdy wszystko jest gotowe do wygenerowania odpowiedzi na pytanie z bazy wiedzy, należy przeprowadzić [uczenie](../Quickstarts/create-publish-knowledge-base.md#save-and-train) i [opublikować](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) bazę wiedzy. Po opublikowaniu bazy wiedzy na stronie **Publikowanie** zostaną wyświetlone ustawienia żądania HTTP do generowania odpowiedzi. Karta **Poster** zawiera ustawienia wymagane do wygenerowania odpowiedzi.
+> Gdy jesteś gotowy do wygenerowania odpowiedzi na pytanie z bazy wiedzy, musisz [wyszkolić](../Quickstarts/create-publish-knowledge-base.md#save-and-train) i [opublikować](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) swoją bazę wiedzy. Po opublikowaniu bazy wiedzy na stronie **Publikowanie** zostaną wyświetlone ustawienia żądania HTTP do generowania odpowiedzi. Karta **Listonosz** pokazuje ustawienia wymagane do wygenerowania odpowiedzi.
 
-## <a name="set-up-postman-for-requests"></a>Skonfiguruj ogłaszanie dla żądań
+## <a name="set-up-postman-for-requests"></a>Konfigurowanie listonosza dla żądań
 
-Ten przewodnik Szybki Start używa tych samych ustawień **dla żądania post programu Poster** , a następnie zostanie SKONFIGUROWANY do ogłaszania w formacie JSON treści wysyłanej do usługi na podstawie tego, co próbujesz wykonać zapytanie.
+Ten przewodnik Szybki start używa tych samych ustawień dla żądania **POSTMAN POST,** a następnie konfiguruje się na żądanie JSON, które wysyła do usługi na podstawie tego, czego próbujesz zbadać.
 
-Użyj tej procedury, aby skonfigurować program, a następnie zapoznaj się z każdą kolejną sekcją, aby skonfigurować plik JSON wpisu.
+Ta procedura służy do konfigurowania listonosza, a następnie do odczytywania każdej kolejnej sekcji w celu skonfigurowania JSON obiektu POST.
 
-1. Na stronie **Ustawienia** bazy wiedzy wybierz kartę **Ogłoś** , aby wyświetlić konfigurację używaną do generowania odpowiedzi z bazy wiedzy. Skopiuj poniższe informacje do użycia w programie Poster.
+1. Na stronie **Ustawienia** bazy wiedzy wybierz kartę **Listonosz,** aby wyświetlić konfigurację używaną do generowania odpowiedzi z bazy wiedzy. Skopiuj następujące informacje do użycia w postmanie.
 
-    |Name (Nazwa)|Ustawienie|Cel i wartość|
+    |Nazwa|Ustawienie|Cel i wartość|
     |--|--|--|
-    |`POST`| `/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer`|Jest to metoda HTTP i trasy dla adresu URL.|
-    |`Host`|`https://diberry-qna-s0-s.azurewebsites.net/qnamaker`|Jest to host adresu URL. Połącz hosta i Opublikuj wartości, aby uzyskać pełny adres URL generateAnswer.|
-    |`Authorization`|`EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`|Wartość nagłówka na potrzeby autoryzacji żądania na platformie Azure. |
+    |`POST`| `/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer`|Jest to metoda HTTP i trasa dla adresu URL.|
+    |`Host`|`https://diberry-qna-s0-s.azurewebsites.net/qnamaker`|Jest to host adresu URL. Połącz wartości hosta i postu, aby uzyskać pełny adres URL generowaniaAnswer.|
+    |`Authorization`|`EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`|Wartość nagłówka do autoryzowania żądania na platformie Azure. |
     |`Content-type`|`application/json`|Wartość nagłówka zawartości.|
-    ||`{"question":"<Your question>"}`|Treść żądania POST jako obiekt JSON. Ta wartość zostanie zmieniona w każdej z poniższych sekcji w zależności od tego, co ma być wykonywane przez zapytanie.|
+    ||`{"question":"<Your question>"}`|Treść żądania POST jako obiektu JSON. Ta wartość zmieni się w każdej poniższej sekcji w zależności od tego, co ma zrobić kwerenda.|
 
-1. Otwórz program Poster i Utwórz nowe podstawowe żądanie **post** z opublikowanymi ustawieniami bazy wiedzy. W poniższych sekcjach Zmień kod JSON wpisu w celu zmiany zapytania na bazę wiedzy.
+1. Otwórz listonosz i utwórz nowe podstawowe żądanie **POST** z opublikowanymi ustawieniami bazy wiedzy. W poniższych sekcjach zmień JSON treści POST, aby zmienić kwerendę na bazę wiedzy.
 
-## <a name="use-metadata-to-filter-answer"></a>Filtrowanie odpowiedzi przy użyciu metadanych
+## <a name="use-metadata-to-filter-answer"></a>Filtrowanie odpowiedzi za pomocą metadanych
 
-W poprzednim przewodniku szybki start metadane zostały dodane do dwóch zestawów QnA, aby rozróżnić dwa różne pytania. Dodaj metadane do zapytania, aby ograniczyć filtr do tylko odpowiedniego zestawu QnA.
+W poprzednim przewodniku Szybki start metadane zostały dodane do dwóch zestawów QnA w celu rozróżnienia między dwoma różnymi pytaniami. Dodaj metadane do kwerendy, aby ograniczyć filtr tylko do odpowiedniego zestawu QnA.
 
-1. W programie Poster Zmień tylko plik JSON zapytania, dodając Właściwość `strictFilters` z parą nazwa/wartość `service:qna_maker`. Treść JSON powinna być:
+1. W polu Postman zmień tylko kwerendę `strictFilters` JSON, dodając właściwość z parą nazwa/wartość `service:qna_maker`pliku . Ciało JSON powinno być:
 
     ```json
     {
@@ -64,7 +64,7 @@ W poprzednim przewodniku szybki start metadane zostały dodane do dwóch zestaw�
     }
     ```
 
-    Pytanie jest tylko pojedynczym słowem `size`, które może zwrócić jeden z dwóch zestawów pytań i odpowiedzi. Tablica `strictFilters` informuje odpowiedź, aby zmniejszyć do zaledwie `qna_maker` odpowiedzi.
+    Pytanie jest tylko jednym `size`słowem, które może zwrócić jeden z dwóch pytań i odpowiedzi. Tablica `strictFilters` informuje odpowiedzi, aby `qna_maker` zmniejszyć tylko odpowiedzi.
 
 1. Odpowiedź zawiera tylko odpowiedź, która spełnia kryteria filtru.
 
@@ -103,13 +103,13 @@ W poprzednim przewodniku szybki start metadane zostały dodane do dwóch zestaw�
     }
     ```
 
-    Jeśli istnieje pytanie i odpowiedź, które nie spełniły wyszukiwanego terminu, ale spełniały filtr, nie zostanie on zwrócony. Zamiast tego zostanie zwrócona ogólna `No good match found in KB.` odpowiedzi.
+    Jeśli istnieje zestaw pytań i odpowiedzi, który nie spełnia wyszukiwanego hasła, ale spełnia filtr, nie zostanie zwrócony. Zamiast tego zwracana `No good match found in KB.` jest ogólna odpowiedź.
 
-## <a name="use-debug-query-property"></a>Użyj właściwości zapytania debugowania
+## <a name="use-debug-query-property"></a>Użyj właściwości kwerendy debugowania
 
-Informacje debugowania pomagają zrozumieć, w jaki sposób została określona zwrócona odpowiedź. Chociaż jest to przydatne, nie jest to konieczne. Aby wygenerować odpowiedź z informacjami o debugowaniu, Dodaj właściwość `debug`:
+Informacje debugowania pomaga zrozumieć, jak zwrócona odpowiedź została określona. Chociaż jest to pomocne, nie jest to konieczne. Aby wygenerować odpowiedź z `debug` informacjami debugowania, dodaj właściwość:
 
-1. W programie Poster Zmień tylko treść pliku JSON, dodając Właściwość `debug`. KOD JSON powinien:
+1. W postman, zmień tylko obiekt JSON przez dodanie `debug` właściwości. JSON powinien być:
 
     ```json
     {
@@ -121,7 +121,7 @@ Informacje debugowania pomagają zrozumieć, w jaki sposób została określona 
     }
     ```
 
-1. Odpowiedź zawiera odpowiednie informacje dotyczące odpowiedzi. W poniższych danych wyjściowych JSON niektóre szczegóły debugowania zostały zastąpione wielokropkiem.
+1. Odpowiedź zawiera istotne informacje na temat odpowiedzi. W następujących danych wyjściowych JSON niektóre szczegóły debugowania zostały zastąpione wielokropkiem.
 
     ```console
     {
@@ -213,9 +213,9 @@ Informacje debugowania pomagają zrozumieć, w jaki sposób została określona 
 
 ## <a name="use-test-knowledge-base"></a>Korzystanie z bazy wiedzy testowej
 
-Jeśli chcesz uzyskać odpowiedź z bazy wiedzy testowej, użyj właściwości `isTest` Body.
+Jeśli chcesz uzyskać odpowiedź z bazy wiedzy testowej, użyj właściwości `isTest` body.
 
-W programie Poster Zmień tylko treść pliku JSON, dodając Właściwość `isTest`. KOD JSON powinien:
+W postman, zmień tylko obiekt JSON przez dodanie `isTest` właściwości. JSON powinien być:
 
 ```json
 {
@@ -224,14 +224,14 @@ W programie Poster Zmień tylko treść pliku JSON, dodając Właściwość `isT
 }
 ```
 
-Odpowiedź JSON używa tego samego schematu co opublikowana kwerenda bazy wiedzy.
+Odpowiedź JSON używa tego samego schematu, co opublikowane zapytanie bazy wiedzy.
 
 > [!NOTE]
-> Jeśli testy i opublikowane bazy wiedzy są dokładnie takie same, nadal może być niewielka odmiana, ponieważ indeks testu jest współużytkowany przez wszystkie bazy wiedzy w zasobie.
+> Jeśli test i opublikowane bazy wiedzy są dokładnie takie same, nadal mogą występować pewne niewielkie różnice, ponieważ indeks testu jest współużytkowany przez wszystkie bazy wiedzy w zasobie.
 
-## <a name="query-for-a-chit-chat-answer"></a>Zapytanie o odpowiedź Chit-Chat
+## <a name="query-for-a-chit-chat-answer"></a>Zapytanie o odpowiedź chit-chat
 
-1. W programie Poster należy zmienić tylko treść JSON elementu na instrukcję kończącą konwersację od użytkownika. KOD JSON powinien:
+1. W postman, zmienić tylko obiekt JSON do instrukcji zakończenia konwersacji od użytkownika. JSON powinien być:
 
     ```json
     {
@@ -321,13 +321,13 @@ Odpowiedź JSON używa tego samego schematu co opublikowana kwerenda bazy wiedzy
     }
     ```
 
-    Ponieważ pytanie `Thank you` było dokładnie zgodne z pytaniem w konwersacji, usługa QnA Maker jest całkowicie pewna odpowiedzi (ocena 100%). QnA Maker zwrócić także wszystkie powiązane pytania, a także Właściwość metadanych zawierająca informacje znacznika metadanych Chit-Chat.
+    Ponieważ pytanie `Thank you` było dokładnie zgodne z pytaniem w konwersacji, usługa QnA Maker jest całkowicie pewna odpowiedzi (ocena 100%). Program QnA Maker zwrócił również wszystkie powiązane pytania, a także właściwość metadanych zawierającą informacje o tagu metadanych chit-chat.
 
-## <a name="use-threshold-and-default-answer"></a>Użyj wartości progowej i domyślnej odpowiedzi
+## <a name="use-threshold-and-default-answer"></a>Użyj progu i odpowiedzi domyślnej
 
-Możesz poprosić o minimalny próg odpowiedzi. Jeśli próg nie jest spełniony, zostanie zwrócona odpowiedź domyślna.
+Możesz poprosić o minimalny próg odpowiedzi. Jeśli próg nie zostanie osiągnięty, zwracana jest odpowiedź domyślna.
 
-1. W programie Poster należy zmienić tylko treść JSON elementu na instrukcję kończącą konwersację od użytkownika. KOD JSON powinien:
+1. W postman, zmienić tylko obiekt JSON do instrukcji zakończenia konwersacji od użytkownika. JSON powinien być:
 
     ```json
     {
@@ -336,7 +336,7 @@ Możesz poprosić o minimalny próg odpowiedzi. Jeśli próg nie jest spełniony
     }
     ```
 
-    Baza wiedzy nie powinna znaleźć odpowiedzi, ponieważ Ocena pytania wynosi 71%, a zamiast tego zwraca domyślną odpowiedź podaną podczas tworzenia bazy wiedzy.
+    Baza wiedzy nie powinna znaleźć tej odpowiedzi, ponieważ wynik pytania wynosi 71%, a zamiast tego zwraca domyślną odpowiedź podana podczas tworzenia bazy wiedzy.
 
     Zwrócona odpowiedź JSON, w tym wynik i odpowiedź to:
 
@@ -357,9 +357,9 @@ Możesz poprosić o minimalny próg odpowiedzi. Jeśli próg nie jest spełniony
     }
     ```
 
-    QnA Maker zwróciła wynik `0`, co oznacza brak pewności. Zwraca również odpowiedź domyślną.
+    QnA Maker zwrócił `0`wynik , co oznacza brak zaufania. Zwrócono również odpowiedź domyślną.
 
-1. Zmień wartość progową na 60% i ponownie Zażądaj zapytania:
+1. Zmień wartość progową na 60% i ponownie zażądaj kwerendy:
 
     ```json
     {
@@ -368,7 +368,7 @@ Możesz poprosić o minimalny próg odpowiedzi. Jeśli próg nie jest spełniony
     }
     ```
 
-    Zwrócony kod JSON znalazł odpowiedź.
+    Zwrócony JSON znalazł odpowiedź.
 
     ```json
     {

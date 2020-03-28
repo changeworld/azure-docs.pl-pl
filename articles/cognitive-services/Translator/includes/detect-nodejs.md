@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: c180a5d751b44346760706b1bd3d1e8acb70099d
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71837517"
 ---
 [!INCLUDE [Prerequisites](prerequisites-nodejs.md)]
@@ -17,7 +17,7 @@ ms.locfileid: "71837517"
 
 ## <a name="create-a-project-and-import-required-modules"></a>Tworzenie projektu i importowanie wymaganych modułów
 
-Utwórz nowy projekt przy użyciu ulubionego środowiska IDE lub edytora. Następnie skopiuj ten fragment kodu do projektu w pliku o nazwie `detect.js`.
+Utwórz nowy projekt przy użyciu ulubionego środowiska IDE lub edytora. Następnie skopiuj ten fragment kodu do swojego projektu do pliku o nazwie `detect.js`.
 
 ```javascript
 const request = require('request');
@@ -25,13 +25,13 @@ const uuidv4 = require('uuid/v4');
 ```
 
 > [!NOTE]
-> Jeśli te moduły nie były używane, należy je zainstalować przed uruchomieniem programu. Aby zainstalować te pakiety, uruchom polecenie: `npm install request uuidv4`.
+> Jeśli nie korzystano z tych modułów, konieczne będzie ich zainstalowanie przed uruchomieniem programu. Aby zainstalować te pakiety, uruchom polecenie `npm install request uuidv4`.
 
-Te moduły są wymagane do skonstruowania żądania HTTP i utworzenia unikatowego identyfikatora dla nagłówka `'X-ClientTraceId'`.
+Te moduły są wymagane do utworzenia żądania HTTP i unikatowego identyfikatora dla nagłówka `'X-ClientTraceId'`.
 
 ## <a name="set-the-subscription-key-and-endpoint"></a>Ustawianie klucza subskrypcji i punktu końcowego
 
-Ten przykład spróbuje odczytać klucz subskrypcji tłumaczenie tekstu w usłudze Translator i punkt końcowy z tych zmiennych środowiskowych: `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` i `TRANSLATOR_TEXT_ENDPOINT`. Jeśli nie znasz zmiennych środowiskowych, możesz ustawić `subscriptionKey` i `endpoint` jako ciągi i dodać komentarz do instrukcji warunkowych.
+W tym przykładzie spróbuje odczytać klucz subskrypcji i `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` punkt `TRANSLATOR_TEXT_ENDPOINT`końcowy usługi Translator Text z następujących zmiennych środowiskowych: i . Jeśli nie znasz zmiennych środowiskowych, można `subscriptionKey` ustawić `endpoint` i jako ciągi i komentować instrukcje warunkowe.
 
 Skopiuj ten kod do projektu:
 
@@ -48,9 +48,9 @@ if (!process.env[endpoint_var]) {
 var endpoint = process.env[endpoint_var];
 ```
 
-## <a name="configure-the-request"></a>Skonfiguruj żądanie
+## <a name="configure-the-request"></a>Konfigurowanie żądania
 
-Metoda `request()`, dostępna za pośrednictwem modułu żądania, pozwala nam przekazać metodę HTTP, adres URL, parametry żądania, nagłówki i treść JSON jako obiekt `options`. W tym fragmencie kodu skonfigurujemy żądanie:
+Metoda `request()`, udostępniona przez moduł żądania, umożliwia nam przekazanie metody HTTP, parametrów żądania adresu URL, nagłówków i treści w formacie JSON w postaci obiektu `options`. W poniższym fragmencie kodu skonfigurujemy żądanie:
 
 ```javascript
 let options = {
@@ -71,15 +71,15 @@ let options = {
     json: true,
 };
 ```
-Najprostszym sposobem na uwierzytelnienie żądania jest przekazanie klucza subskrypcji jako nagłówka `Ocp-Apim-Subscription-Key`, który jest używany w tym przykładzie. Alternatywnie możesz wymienić klucz subskrypcji dla tokenu dostępu i przekazać token dostępu razem jako nagłówek `Authorization`, aby sprawdzić poprawność żądania.
+Najprostszym sposobem uwierzytelniania żądania jest przekazanie klucza subskrypcji jako nagłówka `Ocp-Apim-Subscription-Key`. Ta metoda jest używana w tym przykładzie. Alternatywnie można wymienić klucz subskrypcji na token dostępu i przekazać go dalej jako nagłówek `Authorization` w celu zweryfikowania żądania.
 
-Jeśli używasz subskrypcji usługi Cognitive Services, musisz także uwzględnić w nagłówkach żądań `Ocp-Apim-Subscription-Region`.
+Jeśli korzystasz z subskrypcji wielu usług usług Cognitive Services, należy również uwzględnić `Ocp-Apim-Subscription-Region` w nagłówkach żądań.
 
-Aby uzyskać więcej informacji, zobacz [uwierzytelnianie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Aby uzyskać więcej informacji, zobacz [Authentication](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication) (Uwierzytelnianie).
 
-## <a name="make-the-request-and-print-the-response"></a>Utwórz żądanie i wydrukuj odpowiedź
+## <a name="make-the-request-and-print-the-response"></a>Wysyłanie żądania i wyświetlanie odpowiedzi
 
-Następnie utworzymy żądanie przy użyciu metody `request()`. Przyjmuje obiekt `options` utworzony w poprzedniej sekcji jako pierwszy argument, a następnie drukuje odpowiedź prettified JSON.
+Następnie utworzymy żądanie przy użyciu metody `request()`. Pobiera ona obiekt `options` utworzony w poprzedniej sekcji jako pierwszy argument, a następnie wyświetla ulepszoną odpowiedź w formacie JSON.
 
 ```javascript
 request(options, function(err, res, body){
@@ -88,11 +88,11 @@ request(options, function(err, res, body){
 ```
 
 >[!NOTE]
-> W tym przykładzie definiujemy żądanie HTTP w obiekcie `options`. Jednak moduł żądania obsługuje również wygodne metody, takie jak `.post` i `.get`. Aby uzyskać więcej informacji, zobacz [wygodne metody](https://github.com/request/request#convenience-methods).
+> W tym przykładzie definiujemy żądanie HTTP w obiekcie `options`. Jednak moduł żądania obsługuje również metody ułatwiające, takie jak `.post` i `.get`. Aby uzyskać więcej informacji, zobacz [Convenience methods](https://github.com/request/request#convenience-methods) (Metody ułatwiające).
 
-## <a name="put-it-all-together"></a>Umieść wszystko razem
+## <a name="put-it-all-together"></a>Zebranie wszystkich elementów
 
-Jest to również prosty program, który wywoła interfejs API tłumaczenia tekstu w usłudze Translator i zwróci odpowiedź JSON. Teraz czas na uruchomienie programu:
+To wszystko. Utworzono prosty program, który będzie wywoływał interfejs API tłumaczenia tekstu w usłudze Translator i zwracał odpowiedź w formacie JSON. Teraz nadszedł czas, aby uruchomić program:
 
 ```console
 node detect.js
@@ -100,10 +100,10 @@ node detect.js
 
 ## <a name="sample-response"></a>Przykładowa odpowiedź
 
-Po uruchomieniu przykładu na terminalu powinny zostać wyświetlone następujące elementy:
+Po uruchomieniu próbki powinny zostać wyświetlone następujące wydruki do terminala:
 
 > [!NOTE]
-> Znajdź skrót kraju/regionu na [liście języków](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+> Znajdź skrót kraju/regionu na tej [liście języków](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
 
 ```json
 [
@@ -130,13 +130,13 @@ Po uruchomieniu przykładu na terminalu powinny zostać wyświetlone następują
 ]
 ```
 
-## <a name="clean-up-resources"></a>Czyszczenie zasobów
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli stałe klucz subskrypcji do programu, pamiętaj o usunięciu klucza subskrypcji po zakończeniu pracy z tym przewodnikiem Szybki Start.
+Jeśli klucz subskrypcji umieszczono na stałe w kodzie programu, pamiętaj, aby usunąć ten klucz subskrypcji po zakończeniu pracy z przewodnikiem Szybki start.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z dokumentacją interfejsu API, aby zrozumieć wszystko, co można zrobić za pomocą interfejs API tłumaczenia tekstu w usłudze Translator.
+Zapoznaj się z odwołaniem do interfejsu API, aby zrozumieć wszystko, co można zrobić z interfejsem API tekstu translatora.
 
 > [!div class="nextstepaction"]
-> [Dokumentacja interfejsu API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+> [Odwołanie API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

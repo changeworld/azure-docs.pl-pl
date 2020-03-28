@@ -1,5 +1,5 @@
 ---
-title: Wyszukiwanie w sieci Web Bing C# przewodniku szybki start dotyczącej biblioteki klienta
+title: Szybki start biblioteki klienta usługi Bing Search C#
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,15 +9,15 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: 32a31892317cadb37f16e48df80bef7d6d8a99ef
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925614"
 ---
-Biblioteka klienta wyszukiwanie w sieci Web Bing ułatwia integrację wyszukiwanie w sieci Web Bing z C# aplikacją. Z tego przewodnika Szybki start dowiesz się, jak utworzyć wystąpienie klienta, wysłać żądanie i wyświetlić odpowiedź.
+Biblioteka klienta wyszukiwania sieci Web Bing ułatwia integrację wyszukiwania bing w sieci Web z aplikacją języka C#. Z tego przewodnika Szybki start dowiesz się, jak utworzyć wystąpienie klienta, wysłać żądanie i wyświetlić odpowiedź.
 
-Chcesz zobaczyć kod teraz? Przykłady dla [bibliotek klienckich wyszukiwanie Bing dla platformy .NET](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7) są dostępne w witrynie GitHub.
+Chcesz zobaczyć kod teraz? Przykłady [bibliotek klienckich wyszukiwania Bing dla platformy .NET](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7) są dostępne w usłudze GitHub.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Oto kilka rzeczy, które są potrzebne przed rozpoczęciem tego przewodnika Szybki start:
@@ -33,9 +33,9 @@ Oto kilka rzeczy, które są potrzebne przed rozpoczęciem tego przewodnika Szyb
 ## <a name="create-a-project-and-install-dependencies"></a>Tworzenie projektu i instalowanie zależności
 
 > [!TIP]
-> Pobierz najnowszy kod jako rozwiązanie programu Visual Studio z witryny [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/).
+> Pobierz najnowszy kod jako rozwiązanie programu Visual Studio z [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/).
 
-Pierwszym krokiem jest utworzenie nowego projektu konsoli. Jeśli potrzebujesz pomocy przy konfigurowaniu projektu konsoli, zobacz [Hello World — pierwszy program (C# Przewodnik programowania)](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program). Aby korzystać z zestawu SDK wyszukiwania w Internecie Bing w aplikacji, musisz zainstalować element `Microsoft.Azure.CognitiveServices.Search.WebSearch` przy użyciu Menedżera pakietów NuGet.
+Pierwszym krokiem jest utworzenie nowego projektu konsoli. Jeśli potrzebujesz pomocy przy konfigurowaniu projektu konsoli, zobacz [Hello World - Twój pierwszy program (Przewodnik programowania C#).](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program) Aby korzystać z zestawu SDK wyszukiwania w Internecie Bing w aplikacji, musisz zainstalować element `Microsoft.Azure.CognitiveServices.Search.WebSearch` przy użyciu Menedżera pakietów NuGet.
 
 [Pakiet zestawu SDK wyszukiwania w Internecie](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0) instaluje także następujące elementy:
 
@@ -57,7 +57,7 @@ using System.Linq;
 
 ## <a name="create-project-scaffolding"></a>Tworzenie szkieletu projektu
 
-Podczas tworzenia nowego projektu konsoli powinna zostać utworzona przestrzeń nazw i klasa dla aplikacji. Program powinien wyglądać podobnie do tego przykładu:
+Podczas tworzenia nowego projektu konsoli powinna zostać utworzona przestrzeń nazw i klasa dla aplikacji. Program powinien wyglądać następująco:
 
 ```csharp
 namespace WebSearchSDK
@@ -421,5 +421,5 @@ Pamiętaj, aby po zakończeniu pracy z tym projektem usunąć klucz subskrypcji 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Przykłady zastosowania zestawu SDK i usług Cognitive Services dla platformy Node.js](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)
+> [Przykłady zastosowania zestawu SDK dla platformy Node.js usług Cognitive Services](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)
                                     

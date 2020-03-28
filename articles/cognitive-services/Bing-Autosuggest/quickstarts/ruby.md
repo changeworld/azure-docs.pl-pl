@@ -1,36 +1,36 @@
 ---
-title: 'Szybki Start: Sugeruj zapytania wyszukiwania za pomocą interfejsu API REST automatyczne sugerowanie Bing i języka Ruby'
+title: 'Szybki start: zasugeruj zapytania wyszukiwania za pomocą interfejsu API REST autosuggest Bing i ruby'
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak szybko rozpocząć sugerowanie wyszukiwanych terminów w czasie rzeczywistym za pomocą interfejs API automatycznego sugerowania Bing.
+description: Dowiedz się, jak szybko rozpocząć sugerowanie wyszukiwanych haseł w czasie rzeczywistym za pomocą interfejsu API autosugerowania Bing.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: ef5180aae04f71f3bbe6fbcd7d3df393b107be35
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: eac1f53d35f8175da814dba6172edc12f9e1a063
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448794"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80238943"
 ---
-# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-ruby"></a>Szybki Start: Sugeruj zapytania wyszukiwania za pomocą interfejsu API REST automatyczne sugerowanie Bing i języka Ruby
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-ruby"></a>Szybki start: zasugeruj zapytania wyszukiwania za pomocą interfejsu API REST autosuggest Bing i ruby
 
-Skorzystaj z tego przewodnika Szybki Start, aby rozpocząć wykonywanie wywołań do interfejs API automatycznego sugerowania Bing i uzyskać odpowiedź JSON. Ta prosta aplikacja Ruby wysyła zapytanie wyszukiwania częściowego do interfejsu API i zwraca sugestie dotyczące wyszukiwania. Chociaż ta aplikacja jest napisana w języku Ruby, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
+Użyj tego przewodnika Szybki start, aby rozpocząć nawiązywanie połączeń z interfejsem API autosuggest usługi Bing i uzyskiwanie odpowiedzi JSON. Ta prosta aplikacja Ruby wysyła częściowe zapytanie wyszukiwania do interfejsu API i zwraca sugestie dotyczące wyszukiwania. Chociaż ta aplikacja jest napisana w języku Ruby, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Ruby 2.4](https://www.ruby-lang.org/en/downloads/) lub nowsza wersja.
+* [Ruby 2.4](https://www.ruby-lang.org/en/downloads/) lub nowsze.
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
 
 ## <a name="create-a-new-application"></a>Tworzenie nowej aplikacji
 
-1. Utwórz nowy plik Ruby w ulubionym środowisku IDE lub edytorze. Dodaj następujące wymagania:
+1. Utwórz nowy plik Ruby w swoim ulubionym IDE lub edytorze. Dodaj następujące wymagania:
 
     ```ruby
     require 'net/https'
@@ -38,7 +38,7 @@ Skorzystaj z tego przewodnika Szybki Start, aby rozpocząć wykonywanie wywoła�
     require 'json'
     ```
 
-2. Utwórz zmienne dla hosta interfejsu API i ścieżki, [kod rynkowy](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes), częściowe zapytanie wyszukiwania. Możesz użyć poniższego globalnego punktu końcowego lub niestandardowego punktu końcowego [poddomeny](../../../cognitive-services/cognitive-services-custom-subdomains.md) , który jest wyświetlany w Azure Portal dla zasobu.
+2. Tworzenie zmiennych dla hosta interfejsu API i ścieżki, [kodu rynku,](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)częściowego zapytania wyszukiwania. Można użyć globalnego punktu końcowego poniżej lub niestandardowego punktu końcowego [poddomeny](../../../cognitive-services/cognitive-services-custom-subdomains.md) wyświetlanego w witrynie Azure portal dla zasobu.
 
     ```ruby
     subscriptionKey = 'enter your key here'
@@ -48,7 +48,7 @@ Skorzystaj z tego przewodnika Szybki Start, aby rozpocząć wykonywanie wywoła�
     query = 'sail'
     ```
 
-3. Utwórz ciąg parametrów, dołączając kod rynkowy do parametru `?mkt=` i dołączając zapytanie do parametru `&q=`. Następnie zakonstruowanie identyfikatora URI żądania przez połączenie hosta interfejsu API, ścieżki i ciągu parametrów.
+3. Utwórz ciąg parametrów, dołączając kod `?mkt=` rynkowy do parametru i `&q=` dołączając zapytanie do parametru. Następnie skonstruuj identyfikator URI żądania, łącząc hosta interfejsu API, ścieżkę i ciąg parametrów.
 
     ```ruby
     params = '?mkt=' + mkt + '&q=' + query
@@ -57,14 +57,14 @@ Skorzystaj z tego przewodnika Szybki Start, aby rozpocząć wykonywanie wywoła�
 
 ## <a name="create-and-send-an-api-request"></a>Tworzenie i wysyłanie żądania interfejsu API
 
-1. Utwórz żądanie z identyfikatorem URI i Dodaj swój klucz subskrypcji do nagłówka `Ocp-Apim-Subscription-Key`.
+1. Utwórz żądanie za pomocą identyfikatora URI `Ocp-Apim-Subscription-Key` i dodaj klucz subskrypcji do nagłówka.
     
     ```ruby
     request = Net::HTTP::Get.new(uri)
     request['Ocp-Apim-Subscription-Key'] = subscriptionKey
     ```
 
-2. Wyślij żądanie i Zapisz odpowiedź.
+2. Wyślij żądanie i zapisz odpowiedź.
     
     ```ruby
     response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -72,7 +72,7 @@ Skorzystaj z tego przewodnika Szybki Start, aby rozpocząć wykonywanie wywoła�
     end
     ```
 
-3. Wydrukuj odpowiedź JSON.
+3. Drukowanie odpowiedzi JSON.
     
     ```ruby
     puts JSON::pretty_generate (JSON (response.body))
@@ -149,9 +149,9 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Tworzenie jednostronicowej aplikacji internetowej](../tutorials/autosuggest.md)
+> [Tworzenie jednostronicowej aplikacji sieci Web](../tutorials/autosuggest.md)
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 - [Czym jest funkcja automatycznego sugerowania Bing?](../get-suggested-search-terms.md)
 - [Bing Autosuggest API v7 reference (Dokumentacja dotycząca automatycznego sugerowania Bing w wersji 7)](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

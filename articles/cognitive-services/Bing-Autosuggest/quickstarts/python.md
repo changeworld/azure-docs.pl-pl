@@ -1,25 +1,25 @@
 ---
-title: 'Szybki Start: Sugeruj zapytania wyszukiwania za pomocą interfejsu API REST automatyczne sugerowanie Bing i języka Python'
+title: 'Szybki start: sugerowanie zapytań wyszukiwania za pomocą interfejsu API REST autosugerowania Bing i języka Python'
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak szybko rozpocząć sugerowanie wyszukiwanych terminów w czasie rzeczywistym za pomocą interfejs API automatycznego sugerowania Bing.
+description: Dowiedz się, jak szybko rozpocząć sugerowanie wyszukiwanych haseł w czasie rzeczywistym za pomocą interfejsu API autosugerowania Bing.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: db69763edeefdcd46f455082e7d878c1340a9f76
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 582e298bb291a66a6ec6b7300dffaa0fc18af4e0
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75385748"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80238918"
 ---
-# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-python"></a>Szybki Start: Sugeruj zapytania wyszukiwania za pomocą interfejsu API REST automatyczne sugerowanie Bing i języka Python
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-python"></a>Szybki start: sugerowanie zapytań wyszukiwania za pomocą interfejsu API REST autosugerowania Bing i języka Python
 
-Skorzystaj z tego przewodnika Szybki Start, aby rozpocząć wykonywanie wywołań do interfejs API automatycznego sugerowania Bing i uzyskać odpowiedź JSON. Ta prosta aplikacja języka Python wysyła zapytanie wyszukiwania częściowego do interfejsu API i zwraca sugestie dotyczące wyszukiwania. Chociaż ta aplikacja jest napisana w języku Python, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania. Kod źródłowy dla tego przykładu jest dostępny w witrynie [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingAutosuggestv7.py)
+Użyj tego przewodnika Szybki start, aby rozpocząć nawiązywanie połączeń z interfejsem API autosuggest usługi Bing i uzyskiwanie odpowiedzi JSON. Ta prosta aplikacja języka Python wysyła częściowe zapytanie wyszukiwania do interfejsu API i zwraca sugestie dotyczące wyszukiwania. Chociaż ta aplikacja jest napisana w języku Python, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania. Kod źródłowy dla tego przykładu jest dostępny w [usłudze GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingAutosuggestv7.py)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -29,13 +29,13 @@ Skorzystaj z tego przewodnika Szybki Start, aby rozpocząć wykonywanie wywoła�
 
 ## <a name="create-a-new-application"></a>Tworzenie nowej aplikacji
 
-1. Utwórz nowy plik w języku Python w ulubionym środowisku IDE lub edytorze. Dodaj następujące Importy:
+1. Utwórz nowy plik Języka Python w ulubionym JĘZYKU LUB edytorze. Dodaj następujące importy:
 
     ```python
     import http.client, urllib.parse, json
     ```
 
-2. Utwórz zmienne dla hosta i ścieżki interfejsu API, [kod rynku](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)i częściowe zapytanie wyszukiwania. Możesz użyć poniższego globalnego punktu końcowego lub niestandardowego punktu końcowego [poddomeny](../../../cognitive-services/cognitive-services-custom-subdomains.md) , który jest wyświetlany w Azure Portal dla zasobu.
+2. Utwórz zmienne dla hosta interfejsu API i ścieżki, [kodu rynku](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)i częściowego zapytania wyszukiwania. Można użyć globalnego punktu końcowego poniżej lub niestandardowego punktu końcowego [poddomeny](../../../cognitive-services/cognitive-services-custom-subdomains.md) wyświetlanego w witrynie Azure portal dla zasobu.
 
     ```python
     subscriptionKey = 'enter key here'
@@ -45,7 +45,7 @@ Skorzystaj z tego przewodnika Szybki Start, aby rozpocząć wykonywanie wywoła�
     query = 'sail'
     ```
 
-3. Utwórz ciąg parametrów, dołączając kod rynkowy do parametru `?mkt=` i dołączając zapytanie do parametru `&q=`.
+3. Utwórz ciąg parametrów, dołączając kod `?mkt=` rynkowy do parametru i `&q=` dołączając zapytanie do parametru.
 
     ```python
     params = '?mkt=' + mkt + '&q=' + query
@@ -53,13 +53,13 @@ Skorzystaj z tego przewodnika Szybki Start, aby rozpocząć wykonywanie wywoła�
 
 ## <a name="create-and-send-an-api-request"></a>Tworzenie i wysyłanie żądania interfejsu API
 
-1. Dodaj swój klucz subskrypcji do nagłówka `Ocp-Apim-Subscription-Key`.
+1. Dodaj klucz subskrypcji `Ocp-Apim-Subscription-Key` do nagłówka.
     
     ```python
     headers = {'Ocp-Apim-Subscription-Key': subscriptionKey}
     ```
 
-2. Połącz się z interfejsem API przy użyciu `HTTPSConnection()`i Wyślij żądanie `GET` zawierające parametry żądania.
+2. Połącz się `HTTPSConnection()`z interfejsem `GET` API za pomocą programu i wyślij żądanie zawierające parametry żądania.
     
     ```python
     conn = http.client.HTTPSConnection(host)
@@ -146,9 +146,9 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Tworzenie jednostronicowej aplikacji internetowej](../tutorials/autosuggest.md)
+> [Tworzenie jednostronicowej aplikacji sieci Web](../tutorials/autosuggest.md)
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 - [Czym jest funkcja automatycznego sugerowania Bing?](../get-suggested-search-terms.md)
 - [Bing Autosuggest API v7 reference (Dokumentacja dotycząca automatycznego sugerowania Bing w wersji 7)](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

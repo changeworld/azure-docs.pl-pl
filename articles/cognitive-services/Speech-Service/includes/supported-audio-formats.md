@@ -2,19 +2,19 @@
 author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/10/2020
+ms.date: 03/16/2020
 ms.author: dapine
-ms.openlocfilehash: fe895bc3c3a46c7b6ed9ccd34e3b1201152e4f5d
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.openlocfilehash: 69856734e3b15886df1a3b2e876bffddbd042b83
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79037275"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80374041"
 ---
-Domyślny format przesyłania strumieniowego audio to WAV (16 KHz, 16-bitowy i mono PCM). Poza WAV/PCM obsługiwane są również następujące skompresowane formaty danych wejściowych kodera-dekoder:
+Domyślnym formatem przesyłania strumieniowego dźwięku jest WAV (16 kHz lub 8kHz, 16-bitowe i mono PCM). Poza WAV / PCM obsługiwane są również skompresowane formaty wejściowe wymienione poniżej. [Dodatkowa konfiguracja](../how-to-use-codec-compressed-audio-input-streams.md) jest potrzebna, aby włączyć formaty wymienione poniżej.
 
-- MP3
+- Mp3
 - OPUS/OGG
 - FLAC
-- ALAW w kontenerze WAV
-- MULAW w kontenerze WAV
+- ALAW w kontenerze wav
+- MULAW w kontenerze wav

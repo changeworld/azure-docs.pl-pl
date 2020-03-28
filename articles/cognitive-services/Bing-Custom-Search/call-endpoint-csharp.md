@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: wywoływanie punktu końcowego C# wyszukiwanie niestandardowe Bing przy użyciu usługi | Microsoft Docs'
+title: 'Szybki start: wywoływanie punktu końcowego wyszukiwania niestandardowego Bing w języku C# | Dokumenty firmy Microsoft'
 titleSuffix: Azure Cognitive Services
 description: Użyj tego przewodnika Szybki start, aby rozpocząć żądanie wyników z wystąpienia wyszukiwania niestandardowego Bing w języku C#.
 services: cognitive-services
@@ -8,27 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 12/09/2019
-ms.author: maheshb
-ms.openlocfilehash: 88a8cc0dbedeb9398637ab9a02323e9b2a6b8627
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 03/24/2020
+ms.author: aahi
+ms.openlocfilehash: 7ea8b272871e681bd9caacf8cf1a84eb91d8849d
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975265"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80238903"
 ---
-# <a name="quickstart-call-your-bing-custom-search-endpoint-using-c"></a>Szybki Start: wywoływanie punktu końcowego wyszukiwanie niestandardowe Bing przy użyciuC# 
+# <a name="quickstart-call-your-bing-custom-search-endpoint-using-c"></a>Szybki start: wywoływanie niestandardowego punktu końcowego wyszukiwania Bing przy użyciu języka C # 
 
-Użyj tego przewodnika Szybki start, aby rozpocząć żądanie wyników wyszukiwania z wystąpienia wyszukiwania niestandardowego Bing. Chociaż ta aplikacja jest napisana w języku C#, interfejs API wyszukiwania niestandardowego Bing jest usługą internetową RESTful zgodną z większością języków programowania. Kod źródłowy tego przykładu można znaleźć w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingCustomSearchv7.cs).
+Użyj tego przewodnika Szybki start, aby rozpocząć żądanie wyników z wystąpienia wyszukiwania niestandardowego Bing. Chociaż ta aplikacja jest napisana w języku C#, interfejs API wyszukiwania niestandardowego Bing jest usługą internetową RESTful zgodną z większością języków programowania. Kod źródłowy tego przykładu można znaleźć w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingCustomSearchv7.cs).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Wystąpienie wyszukiwania niestandardowego Bing. Aby uzyskać więcej informacji, zobacz [Szybki Start: Tworzenie pierwszego wystąpienia wyszukiwanie niestandardowe Bing](quick-start.md) .
-- Microsoft [.NET Core](https://www.microsoft.com/net/download/core)
-- Dowolna wersja programu [Visual Studio 2019 lub nowszego](https://www.visualstudio.com/downloads/)
+- Wystąpienie wyszukiwania niestandardowego Bing. Zobacz [Szybki start: tworzenie pierwszego wystąpienia wyszukiwania niestandardowego Bing, aby](quick-start.md) uzyskać więcej informacji.
+- [Microsoft .NET Core](https://www.microsoft.com/net/download/core)
+- Dowolna wersja [programu Visual Studio 2019 lub nowsza](https://www.visualstudio.com/downloads/)
 - Jeśli używasz systemu Linux/MacOS, możesz uruchomić tę aplikację przy użyciu środowiska [Mono](https://www.mono-project.com/).
-- Pakiet NuGet [wyszukiwanie niestandardowe Bing](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) . 
-    - W **Eksplorator rozwiązań** w programie Visual Studio kliknij prawym przyciskiem myszy projekt i wybierz polecenie **Zarządzaj pakietami NuGet** z menu. Zainstaluj pakiet `Microsoft.Azure.CognitiveServices.Search.CustomSearch`. Zainstalowanie pakietu NuGet Custom Search powoduje również zainstalowanie następujących zestawów:
+- Pakiet NuGet [wyszukiwania niestandardowego Bing.](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) 
+    - W **Eksploratorze rozwiązań** w programie Visual Studio kliknij prawym przyciskiem myszy projekt i wybierz polecenie **Zarządzaj pakietami NuGet** z menu. Zainstaluj pakiet `Microsoft.Azure.CognitiveServices.Search.CustomSearch`. Zainstalowanie pakietu NuGet Custom Search powoduje również zainstalowanie następujących zestawów:
         - Microsoft.Rest.ClientRuntime
         - Microsoft.Rest.ClientRuntime.Azure
         - Newtonsoft.Json
@@ -78,7 +78,7 @@ Użyj tego przewodnika Szybki start, aby rozpocząć żądanie wyników wyszukiw
     var searchTerm = args.Length > 0 ? args[0]:"microsoft";
     ```
 
-4. Skonstruuj adres URL żądania, dodając termin wyszukiwania do parametru zapytania `q=` oraz identyfikator konfiguracji niestandardowej wystąpienia wyszukiwania do parametru `customconfig=`. Oddziel parametry za pomocą znaku `&`. `url` może być globalnym punktem końcowym lub [niestandardowym](../../cognitive-services/cognitive-services-custom-subdomains.md) punktem końcowym domeny wyświetlanym w Azure Portal dla zasobu.
+4. Skonstruuj adres URL żądania, dodając termin wyszukiwania do parametru zapytania `q=` oraz identyfikator konfiguracji niestandardowej wystąpienia wyszukiwania do parametru `customconfig=`. Oddziel parametry za pomocą znaku `&`. `url`może to być globalny punkt końcowy poniżej lub niestandardowy punkt końcowy [poddomeny](../../cognitive-services/cognitive-services-custom-subdomains.md) wyświetlany w witrynie Azure portal dla zasobu.
 
     ```csharp
     var url = "https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?" +

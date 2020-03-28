@@ -1,5 +1,5 @@
 ---
-title: Wyszukiwanie obrazów Bing C# przewodniku szybki start dotyczącej biblioteki klienta
+title: Szybki start biblioteki klienta wyszukiwania obrazów Bing w języku C#
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,21 +9,21 @@ ms.topic: include
 ms.date: 03/04/2020
 ms.author: aahi
 ms.openlocfilehash: 9e74742858c5de2abf56b80ea4e4f275bc2c9b23
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78899573"
 ---
-Ten przewodnik Szybki Start umożliwia przeszukiwanie pierwszego obrazu przy użyciu biblioteki klienta wyszukiwanie obrazów Bing, która jest otoką dla interfejsu API i zawiera te same funkcje. Ta prosta aplikacja w języku C# wysyła zapytanie dotyczące wyszukania obrazu, analizuje odpowiedź w formacie JSON i wyświetla adres URL pierwszego zwróconego obrazu.
+Ten szybki start umożliwia pierwsze wyszukiwanie obrazów przy użyciu biblioteki klienta wyszukiwania obrazów Bing, która jest otoką interfejsu API i zawiera te same funkcje. Ta prosta aplikacja w języku C# wysyła zapytanie dotyczące wyszukania obrazu, analizuje odpowiedź w formacie JSON i wyświetla adres URL pierwszego zwróconego obrazu.
 
-Kod źródłowy dla tego przykładu jest dostępny w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingImageSearch) wraz z dodatkową obsługą błędów i adnotacjami.
+Kod źródłowy dla tego przykładu jest dostępny [w usłudze GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingImageSearch) z dodatkową obsługą błędów i adnotacjami.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* Dowolna wersja programu [Visual Studio 2017 lub nowszego](https://visualstudio.microsoft.com/vs/whatsnew/).
+* Dowolna wersja [programu Visual Studio 2017 lub nowszej](https://visualstudio.microsoft.com/vs/whatsnew/).
 * [Pakiet NuGet wyszukiwania obrazów w usłudze Cognitive Search](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.ImageSearch/).
 
-Aby zainstalować bibliotekę kliencką wyszukiwanie obrazów Bing w programie Visual Studio, użyj opcji **Zarządzaj pakietami NuGet** z **Eksplorator rozwiązań**.
+Aby zainstalować bibliotekę klienta wyszukiwania obrazów Bing w programie Visual Studio, użyj opcji **Zarządzaj pakietami NuGet** z **Eksploratora rozwiązań**.
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](~/includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
@@ -59,7 +59,7 @@ var client = new ImageSearchClient(new ApiKeyServiceClientCredentials(subscripti
 
 ## <a name="send-a-search-query-using-the-client"></a>Wysyłanie zapytania wyszukiwania przy użyciu klienta
 
-Użyj klienta, aby wyszukać za pomocą tekstu zapytania:
+Użyj klienta, aby przeprowadzić wyszukiwanie, używając następującego tekstu zapytania:
 
 ```csharp
 // make the search request to the Bing Image API, and get the results"
@@ -69,7 +69,7 @@ imageResults = client.Images.SearchAsync(query: searchTerm).Result; //search que
 ## <a name="parse-and-view-the-first-image-result"></a>Analizowanie i wyświetlanie wyniku pierwszego obrazu
 
 Analizuj wyniki obrazów zwróconych w odpowiedzi.
-Jeśli odpowiedź zawiera wyniki wyszukiwania, zapisz pierwszy wynik i wydrukuj jego szczegóły, takie jak adres URL miniatury i oryginalny adres URL, wraz z całkowitą liczbą zwróconych obrazów.  
+Jeśli odpowiedź zawiera wyniki wyszukiwania, zapisz pierwszy wynik i wyświetl jego szczegóły, takie jak adres URL miniatury i oryginalny adres URL, wraz z całkowitą liczbą zwróconych obrazów.  
 
 ```csharp
 if (imageResults != null)

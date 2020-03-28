@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: c4d136eaf0f6c4ac64093f417f144e422e2da52f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74977917"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>Szybki start: wykrywanie twarzy na obrazie przy użyciu interfejsu API REST rozpoznawania twarzy i języka Python
@@ -23,7 +23,7 @@ W tym przewodniku Szybki start użyjesz interfejsu API REST rozpoznawania twarzy
 
 ![Mężczyzna i kobieta, każde z prostokątem narysowanym wokół twarzy oraz informacjami o wieku i płci wyświetlonymi na obrazie](../images/labelled-faces-python.png)
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem. 
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -34,16 +34,16 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Ten przewodnik Szybki start można uruchomić jako notes Jupyter w programie [MyBinder](https://mybinder.org). Aby uruchomić usługę Binder, wybierz poniższy przycisk. Następnie postępuj zgodnie z instrukcjami w notesie.
 
-[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=FaceAPI.ipynb)
+[![Spinacza](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=FaceAPI.ipynb)
 
-## <a name="create-and-run-the-sample"></a>Tworzenie i uruchamianie przykładowego kodu
+## <a name="create-and-run-the-sample"></a>Tworzenie i uruchamianie próbki
 
-Można też uruchomić ten przewodnik Szybki Start z poziomu wiersza polecenia, wykonując następujące czynności:
+Alternatywnie można uruchomić ten szybki start z wiersza polecenia, wykonując następujące czynności:
 
 1. Skopiuj następujący kod do edytora tekstów.
-1. W razie potrzeby wprowadź następujące zmiany w kodzie:
+1. W razie potrzeby wprowadź w kodzie następujące zmiany:
     1. Zastąp wartość `subscription_key` kluczem subskrypcji.
-    1. Edytuj wartość `face_api_url`, aby uwzględnić adres URL punktu końcowego dla zasobu interfejs API rozpoznawania twarzy.
+    1. Edytuj wartość, `face_api_url` aby uwzględnić adres URL punktu końcowego zasobu interfejsu API twarzy.
     1. Opcjonalnie zastąp wartość `image_url` adresem URL innego obrazu, który chcesz analizować.
 1. Zapisz kod jako plik z rozszerzeniem `.py`. Na przykład `detect-face.py`.
 1. Otwórz okno wiersza polecenia.

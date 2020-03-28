@@ -1,7 +1,7 @@
 ---
-title: 'Szybki Start: Konfiguracja C++ platformy Speech SDK (Linux) — usługa mowy'
+title: 'Szybki start: konfiguracja platformy SDK C++ (Linux) — usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: Skorzystaj z tego przewodnika, aby skonfigurować platformę dla C++ systemu Linux za pomocą zestawu Speech Service SDK.
+description: Ten przewodnik służy do konfigurowania platformy dla języka C++ w systemie Linux za pomocą zestawu SDK usługi mowy.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -11,27 +11,27 @@ ms.topic: include
 ms.date: 10/14/2019
 ms.author: erhopf
 ms.openlocfilehash: 4f211e4b90dcc8bffa2fbba6fa4783caf846f50c
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78383950"
 ---
-W tym przewodniku przedstawiono sposób instalowania [zestawu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) dla systemu Linux
+W tym przewodniku pokazano, jak zainstalować [pakiet SDK mowy](~/articles/cognitive-services/speech-service/speech-sdk.md) dla systemu Linux
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
 ## <a name="system-requirements"></a>Wymagania systemowe
 
-Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8)
+Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9, RHEL 8, CentOS 8)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć ten przewodnik Szybki Start, musisz wykonać następujące czynności:
+Aby ukończyć ten szybki start, musisz:
 
-* [Program Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 
-* Obsługiwane platformy Linux wymagają zainstalowanych niektórych bibliotek (`libssl` do obsługi protokołu Secure Sockets Layer i `libasound2` do obsługi dźwięku). Zapoznaj się z dystrybucją poniżej, aby zapoznać się z poleceniami wymaganymi do zainstalowania odpowiednich wersji tych bibliotek.
+* Obsługiwane platformy Linux będą wymagały`libssl` zainstalowania niektórych bibliotek `libasound2` (do obsługi warstwy bezpiecznych gniazd i do obsługi dźwięku). Zapoznaj się z poniższą dystrybucją, aby uzyskać polecenia potrzebne do zainstalowania poprawnych wersji tych bibliotek.
 
    * W systemie Ubuntu:
 
@@ -40,14 +40,14 @@ Aby ukończyć ten przewodnik Szybki Start, musisz wykonać następujące czynno
      sudo apt-get install build-essential libssl1.0.0 libasound2 wget
      ```
 
-   * W programie Debian 9:
+   * Na Debianie 9:
 
      ```sh
      sudo apt-get update
      sudo apt-get install build-essential libssl1.0.2 libasound2 wget
      ```
 
-   * W systemie RHEL/CentOS 8:
+   * Na RHEL/CentOS 8:
 
      ```sh
      sudo yum update
@@ -56,7 +56,7 @@ Aby ukończyć ten przewodnik Szybki Start, musisz wykonać następujące czynno
      ```
 
 > [!NOTE]
-> W systemie RHEL/CentOS 8 postępuj zgodnie z instrukcjami dotyczącymi [sposobu konfigurowania OpenSSL dla systemu Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
+> Na RHEL/CentOS 8 postępuj zgodnie z instrukcjami [dotyczącymi konfigurowania OpenSSL dla systemu Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
 
 ## <a name="install-speech-sdk"></a>Instalowanie zestawu Speech SDK
 
@@ -93,7 +93,7 @@ Pobierz i zainstaluj zestaw SDK w następujący sposób:
 
    [!INCLUDE [Linux Binary Archive Content](~/includes/cognitive-services-speech-service-linuxbinary-content.md)]
 
-Teraz możesz przejść do [kolejnych kroków](#next-steps) poniżej.
+Teraz możesz przejść do [następnych kroków](#next-steps) poniżej.
 
 ## <a name="next-steps"></a>Następne kroki
 

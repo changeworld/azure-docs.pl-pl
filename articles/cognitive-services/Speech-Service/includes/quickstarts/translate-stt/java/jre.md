@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: tłumaczenie zamiany mowy na tekst, Java (Windows, Linux) — usługa mowy'
+title: 'Szybki start: Tłumaczenie mowy na tekst, Java (Windows, Linux) - Usługa mowy'
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -11,23 +11,23 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
 ms.openlocfilehash: b181c810d15695f72e73ef8a3359396686e77a1b
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78924933"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem upewnij się, że:
+Zanim zaczniesz, upewnij się, że:
 
 > [!div class="checklist"]
-> * [Tworzenie zasobu usługi Azure Speech](../../../../get-started.md)
-> * [Skonfiguruj środowisko deweloperskie i Utwórz pusty projekt](../../../../quickstarts/setup-platform.md?tabs=jre)
+> * [Tworzenie zasobu mowy platformy Azure](../../../../get-started.md)
+> * [Konfigurowanie środowiska programistycznego i tworzenie pustego projektu](../../../../quickstarts/setup-platform.md?tabs=jre)
 
 ## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
 
-1. Aby dodać nową pustą klasę do projektu języka Java, wybierz kolejno pozycje **Plik** > **Nowy** > **Klasa**.
+1. Aby dodać nową pustą klasę do projektu Java, wybierz **pozycję Plik** > **nowej** > **klasy**.
 
 1. W oknie **Nowa klasa Java** wprowadź ciąg **speechsdk.quickstart** w polu **Pakiet** i **Main** w polu **Nazwa**.
 
@@ -124,13 +124,13 @@ Przed rozpoczęciem upewnij się, że:
 
 1. Zastąp ciąg `YourServiceRegion`[regionem](~/articles/cognitive-services/Speech-Service/regions.md) skojarzonym z subskrypcją (na przykład `westus` w przypadku subskrypcji bezpłatnej wersji próbnej).
 
-1. Zapisz zmiany w projekcie.
+1. Zapisz zmiany projektu.
 
 ## <a name="build-and-run-the-app"></a>Kompilowanie i uruchamianie aplikacji
 
-Naciśnij klawisz F11 lub wybierz kolejno pozycje **Uruchom** > **Debugowanie**.
+Naciśnij klawisz F11 lub wybierz pozycję **Uruchom** > **debugowanie**.
 
-1. Wymów frazę lub zdanie w języku angielskim. Aplikacja przesyła mowę do usługi mowy, która tłumaczy i przekształca na tekst (w tym przypadku do języka niemieckiego). Usługa mowy wysyła następnie tekst z powrotem do aplikacji do wyświetlenia.
+1. Wypowiedz zwrot lub zdanie w języku angielskim. Aplikacja przesyła mowę do usługi mowy, która tłumaczy i transkrybuje tekst (w tym przypadku do języka niemieckiego). Usługa mowy następnie wysyła tekst z powrotem do aplikacji do wyświetlenia.
 
 ````
 Say something...

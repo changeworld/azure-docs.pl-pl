@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 5a362d2610e6feb85de730c086070636f3afa2b9
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69906675"
 ---
 [!INCLUDE [Prerequisites](prerequisites-java.md)]
@@ -87,7 +87,7 @@ public class Translate {
 }
 ```
 
-Dodaj następujące wiersze do klasy `Translate`. Najpierw klucz subskrypcji i punkt końcowy są odczytywane ze zmiennych środowiskowych. Następnie należy zauważyć, że wraz z `api-version`, dwa dodatkowe parametry zostały dołączane `url`do. Te parametry są używane do ustawiania danych wyjściowych tłumaczenia. W tym przykładzie ustawiamy je na język niemiecki (`de`) i włoski (`it`). 
+Dodaj następujące wiersze do klasy `Translate`. Po pierwsze klucz subskrypcji i punkt końcowy są odczytywane ze zmiennych środowiskowych. Następnie zauważysz, że wraz `api-version`z , dwa dodatkowe parametry `url`zostały dołączone do . Te parametry są używane do ustawiania danych wyjściowych tłumaczenia. W tym przykładzie ustawiamy je na język niemiecki (`de`) i włoski (`it`). 
 
 ```java
 private static String subscriptionKey = System.getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY");
@@ -95,7 +95,7 @@ private static String endpoint = System.getenv("TRANSLATOR_TEXT_ENDPOINT");
 String url = endpoint + "/translate?api-version=3.0&to=de,it";
 ```
 
-Jeśli używasz subskrypcji usługi Cognitive Services, musisz także uwzględnić `Ocp-Apim-Subscription-Region` w parametrach żądania. [Dowiedz się więcej o uwierzytelnianiu w ramach subskrypcji wielu usług](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Jeśli korzystasz z subskrypcji wielu usług usług Cognitive Services, należy również uwzględnić `Ocp-Apim-Subscription-Region` parametry żądania. [Dowiedz się więcej o uwierzytelnieniu za pomocą subskrypcji wielu usług](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="create-a-client-and-build-a-request"></a>Tworzenie klienta i budowanie żądania
 
@@ -192,7 +192,7 @@ gradle run
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z dokumentacją interfejsu API, aby zrozumieć wszystko, co można zrobić za pomocą interfejs API tłumaczenia tekstu w usłudze Translator.
+Zapoznaj się z odwołaniem do interfejsu API, aby zrozumieć wszystko, co można zrobić z interfejsem API tekstu translatora.
 
 > [!div class="nextstepaction"]
-> [Dokumentacja interfejsu API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+> [Odwołanie API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

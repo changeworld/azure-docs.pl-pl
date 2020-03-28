@@ -1,21 +1,21 @@
 ---
 title: 'Szybki start: tworzenie pierwszego wystąpienia usługi wyszukiwania niestandardowego Bing'
 titleSuffix: Azure Cognitive Services
-description: Skorzystaj z tego przewodnika Szybki Start, aby utworzyć niestandardowe wystąpienie usługi Bing, które umożliwia wyszukiwanie zdefiniowanych domen i stron sieci Web.
+description: Ten szybki start służy do tworzenia niestandardowego wystąpienia usługi Bing, które może wyszukiwać zdefiniowane domeny i strony sieci Web.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 45478c8e4f5003ff41eb8b486d67caa452739cd4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b8287250df4e278d4904e31121ed7d2df208e1c9
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75384750"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80238856"
 ---
 # <a name="quickstart-create-your-first-bing-custom-search-instance"></a>Szybki start: tworzenie pierwszego wystąpienia usługi wyszukiwania niestandardowego Bing
 
@@ -46,10 +46,10 @@ Aby utworzyć wystąpienie wyszukiwania niestandardowego Bing:
 
 5. Kliknij pozycję **Publikuj**, aby opublikować zmiany w środowisku produkcyjnym i zaktualizować punkty końcowe wystąpienia.
 
-6.  Kliknij kartę **produkcja** w obszarze **punkty końcowe**i skopiuj **Identyfikator konfiguracji niestandardowej**. Ten identyfikator jest potrzebny do wywołania interfejsu API wyszukiwania niestandardowego. Dodaje się go do parametru zapytania `customconfig=` w wywołaniach.
+6.  Kliknij kartę **Produkcja** w obszarze **Punkty końcowe**i skopiuj identyfikator konfiguracji **niestandardowej**. Ten identyfikator jest potrzebny do wywołania interfejsu API wyszukiwania niestandardowego. Dodaje się go do parametru zapytania `customconfig=` w wywołaniach.
 
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Szybki Start: wywoływanie punktu końcowego wyszukiwanie niestandardowe Bing](./call-endpoint-csharp.md)
+> [Szybki start: wywoływanie punktu końcowego wyszukiwania niestandardowego Bing](./call-endpoint-csharp.md)

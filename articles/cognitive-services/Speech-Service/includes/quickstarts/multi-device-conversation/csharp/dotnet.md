@@ -8,23 +8,23 @@ ms.topic: include
 ms.date: 01/15/2020
 ms.author: ralphe
 ms.openlocfilehash: c6291a714083df8954d5162ad38d31b2e3caee76
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925788"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem upewnij się, że:
+Zanim zaczniesz, upewnij się, że:
 
 > [!div class="checklist"]
-> * [Tworzenie zasobu usługi Azure Speech](../../../../get-started.md)
-> * [Skonfiguruj środowisko deweloperskie i Utwórz pusty projekt](../../../../quickstarts/setup-platform.md?tabs=dotnet)
+> * [Tworzenie zasobu mowy platformy Azure](../../../../get-started.md)
+> * [Konfigurowanie środowiska programistycznego i tworzenie pustego projektu](../../../../quickstarts/setup-platform.md?tabs=dotnet)
 
 ## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
 
-1. Otwórz **program.cs**i Zastąp cały kod następującym kodem:
+1. Otwórz **Program.cs**i zastąp cały w nim kod następującym kodem:
 
     ```csharp
     using Microsoft.CognitiveServices.Speech;
@@ -199,26 +199,26 @@ Przed rozpoczęciem upewnij się, że:
     }
     ```
 
-1. W tym samym pliku Zastąp ciąg `YourSubscriptionKey`m kluczem subskrypcji mowy poznawczej.
+1. W tym samym pliku `YourSubscriptionKey` zastąp ciąg kluczem subskrypcji mowy cognitive.
 
 1. Zastąp ciąg `YourServiceRegion`[regionem](~/articles/cognitive-services/Speech-Service/regions.md) skojarzonym z subskrypcją (na przykład `westus` w przypadku subskrypcji bezpłatnej wersji próbnej).
 
-1. Na pasku menu wybierz kolejno opcje **plik** > **Zapisz wszystko**.
+1. Na pasku menu wybierz pozycję Zapisz**wszystkie** **pliki** > .
 
-## <a name="build-and-run-the-application-to-create-a-new-conversation"></a>Kompiluj i uruchom aplikację, aby utworzyć nową konwersację
+## <a name="build-and-run-the-application-to-create-a-new-conversation"></a>Tworzenie i uruchamianie aplikacji w celu utworzenia nowej konwersacji
 
-1. Na pasku menu wybierz kolejno opcje **kompiluj** > **Kompiluj rozwiązanie** , aby skompilować aplikację. Kod powinien teraz zostać skompilowany bez błędów.
+1. Na pasku menu **wybierz** > build**build solution,** aby utworzyć aplikację. Kod powinien teraz zostać skompilowany bez błędów.
 
-1. Wybierz **debuguj** > **Rozpocznij debugowanie** (lub naciśnij klawisz **F5**), aby uruchomić aplikację **HelloWorld** .
+1. Wybierz **debugowanie** > **rozpocznij debugowanie** (lub naciśnij klawisz **F5),** aby uruchomić aplikację **helloworld.**
 
-1. Po wyświetleniu komunikatu `Started transcribing` można zacząć mówić. W trakcie mówienia będą widoczne transkrypcje.
-    - Jeśli kod konwersacji jest współużytkowany z innymi osobami, które dołączają do konwersacji, zobaczysz również ich transkrypcję.
+1. Gdy pojawi `Started transcribing` się komunikat, możesz zacząć mówić. Zobaczysz transkrypcje pojawiają się podczas mówienia.
+    - Jeśli udostępnisz kod konwersacji innym osobom i dołączą do konwersacji, zobaczysz również ich transkrypcje.
 
-1. Gdy skończysz mówić, naciśnij <kbd>klawisze CTRL + C</kbd> , aby zatrzymać przechwytywanie audio i zakończyć konwersację.
+1. Po zakończeniu mówienia naciśnij <kbd>klawisze Ctrl+C,</kbd> aby zatrzymać przechwytywanie dźwięku, i zakończ konwersację.
 
-## <a name="build-and-run-the-application-to-join-an-existing-conversation"></a>Kompiluj i uruchamiaj aplikację w celu dołączenia do istniejącej konwersacji
+## <a name="build-and-run-the-application-to-join-an-existing-conversation"></a>Tworzenie i uruchamianie aplikacji w celu dołączenia do istniejącej konwersacji
 
-1. Skopiuj i wklej następującą funkcję do **program.cs**:
+1. Skopiuj i wklej następującą funkcję do **Program.cs:**
 
     ```csharp
     static async Task JoinConversationAsync(string conversationId)
@@ -294,7 +294,7 @@ Przed rozpoczęciem upewnij się, że:
     }
     ```
 
-2. Zastąp `CreateConversationAsync();` w funkcji `public static async Task Main(string[] args)` z:
+2. Zastąp `CreateConversationAsync();` w funkcji `public static async Task Main(string[] args)` na:
 
     ```csharp
     // Set this to the conversation you want to join
@@ -303,18 +303,18 @@ Przed rozpoczęciem upewnij się, że:
 
 [!INCLUDE [create-from-web](../create-from-web.md)]
 
-4. Wróć do programu Visual Studio i Zastąp ciąg `YourConversationId` IDENTYFIKATORem konwersacji utworzonym w poprzednim kroku.
+4. Wróć do programu Visual Studio `YourConversationId` i zastąp ciąg identyfikatorem konwersacji utworzonym w poprzednim kroku.
 
-5. Na pasku menu wybierz kolejno opcje **kompiluj** > **Kompiluj rozwiązanie** , aby skompilować aplikację. Kod powinien teraz zostać skompilowany bez błędów.
+5. Na pasku menu **wybierz** > build**build solution,** aby utworzyć aplikację. Kod powinien teraz zostać skompilowany bez błędów.
 
-6. Wybierz **debuguj** > **Rozpocznij debugowanie** (lub naciśnij klawisz **F5**), aby uruchomić aplikację **HelloWorld** .
+6. Wybierz **debugowanie** > **rozpocznij debugowanie** (lub naciśnij klawisz **F5),** aby uruchomić aplikację **helloworld.**
 
-7. Po wyświetleniu komunikatu `Started transcribing` można zacząć mówić. W trakcie mówienia będą widoczne transkrypcje.
-    - Jeśli wrócisz do przeglądarki, Twoje transkrypcje będą widoczne tam, gdzie mówisz.
+7. Gdy pojawi `Started transcribing` się komunikat, możesz zacząć mówić. Zobaczysz transkrypcje pojawiają się podczas mówienia.
+    - Jeśli wrócisz do przeglądarki, powinieneś zobaczyć, jak pojawiają się tam twoje transkrypcje, gdy mówisz.
 
-8. Gdy skończysz mówić, naciśnij <kbd>klawisze CTRL + C</kbd> , aby zatrzymać przechwytywanie audio i zakończyć konwersację.
+8. Po zakończeniu mówienia naciśnij <kbd>klawisze Ctrl+C,</kbd> aby zatrzymać przechwytywanie dźwięku, i zakończ konwersację.
 
-9. Wróć do przeglądarki i wyjdź z konwersacji przy użyciu przycisku Zakończ w prawym górnym rogu.
+9. Wróć do przeglądarki i zakończ rozmowę za pomocą przycisku wyjścia w prawym górnym rogu.
 
 ## <a name="next-steps"></a>Następne kroki
 

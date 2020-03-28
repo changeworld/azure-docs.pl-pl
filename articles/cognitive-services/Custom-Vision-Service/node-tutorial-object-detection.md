@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: Tworzenie projektu wykrywania obiektów przy użyciu zestawu SDK Custom Vision dla środowiska Node. js'
+title: 'Szybki start: tworzenie projektu wykrywania obiektów za pomocą niestandardowego sdk vision dla pliku Node.js'
 titleSuffix: Azure Cognitive Services
 description: Utwórz projekt, dodaj tagi, przekaż obrazy, wyszkol projekt i wykrywaj obiekty przy użyciu zestawu SDK dla platformy Node.js.
 services: cognitive-services
@@ -11,15 +11,15 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: areddish
 ms.openlocfilehash: 94013b735f70358d0c49512e6d90cd1d03e78d5f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76705721"
 ---
-# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>Szybki Start: Tworzenie projektu wykrywania obiektów przy użyciu zestawu SDK Custom Vision Node. js
+# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>Szybki start: tworzenie projektu wykrywania obiektów za pomocą niestandardowego modułu SDK węzła wizji.js
 
-W tym artykule pokazano, jak rozpocząć pracę z zestawem SDK Custom Vision przy użyciu środowiska Node. js w celu utworzenia modelu wykrywania obiektów. Po jego utworzeniu można dodać otagowane regiony, przekazać obrazy, przeszkolić projekt, uzyskać opublikowany adres URL punktu końcowego przewidywania projektu i użyć punktu końcowego do programistycznego testowania obrazu. Użyj tego przykładu jako szablonu do utworzenia własnej aplikacji Node.js.
+W tym artykule pokazano, jak rozpocząć korzystanie z niestandardowego sdk wizji z Node.js do tworzenia modelu wykrywania obiektów. Po jego utworzeniu można dodać oznakowane regiony, przekazać obrazy, wyszkolić projekt, uzyskać opublikowany adres URL punktu końcowego przewidywania projektu i użyć punktu końcowego do programowego testowania obrazu. Użyj tego przykładu jako szablonu do utworzenia własnej aplikacji Node.js.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -34,7 +34,7 @@ W tym artykule pokazano, jak rozpocząć pracę z zestawem SDK Custom Vision prz
 
 ## <a name="install-the-custom-vision-sdk"></a>Instalowanie zestawu Custom Vision SDK
 
-Aby zainstalować zestawy SDK usługi Custom Vision dla środowiska Node. js w projekcie, uruchom następujące polecenia:
+Aby zainstalować w projekcie pakiet SDK usługi Custom Vision dla pliku Node.js, uruchom następujące polecenia:
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training
@@ -47,7 +47,7 @@ Utwórz nowy plik o nazwie *sample.js* w preferowanym katalogu projektu.
 
 ### <a name="create-the-custom-vision-service-project"></a>Tworzenie projektu Custom Vision Service
 
-Dodaj następujący kod do skryptu, aby utworzyć nowy projekt Custom Vision Service. Wstaw klucze subskrypcji do odpowiednich definicji i ustaw wartość ścieżki sampleDataRoot na ścieżkę folderu obrazu. Upewnij się, że wartość punktu końcowego jest zgodna z punktami końcowymi szkoleń i prognoz utworzonych w witrynie [Customvision.AI](https://www.customvision.ai/). Należy zauważyć, że różnica między tworzeniem wykrywania obiektów a projektem klasyfikacji obrazu jest domeną określoną **w wywołaniu elementu** .
+Dodaj następujący kod do skryptu, aby utworzyć nowy projekt Custom Vision Service. Wstaw klucze subskrypcji w odpowiednich definicjach i ustaw wartość ścieżki sampleDataRoot do ścieżki folderu obrazu. Upewnij się, że wartość punktu końcowego jest zgodna z punktami końcowymi szkolenia i przewidywania utworzonymi w [Customvision.ai](https://www.customvision.ai/). Należy zauważyć, że różnica między tworzeniem projektu wykrywania obiektów i klasyfikacji obrazu jest domeną określoną w wywołaniu **createProject.**
 
 ```javascript
 const fs = require('fs');
@@ -93,14 +93,14 @@ Aby utworzyć tagi klasyfikacji dla projektu, dodaj następujący kod na końcu 
     const scissorsTag = await trainer.createTag(sampleProject.id, "Scissors");
 ```
 
-### <a name="upload-and-tag-images"></a>Przekazywanie i tagowanie obrazów
+### <a name="upload-and-tag-images"></a>Przekazywanie i Tagi obrazów
 
-Oznaczając tagami obrazy w projektach wykrywania obiektów, należy określić region każdego otagowanego obiektu za pomocą znormalizowanych współrzędnych. 
+Po oznaczeniu obrazów w projektach wykrywania obiektów należy określić region każdego z otagowanych obiektów przy użyciu znormalizowanych współrzędnych. 
 
 > [!NOTE]
-> Jeśli nie masz narzędzia do klikania i przeciągania, aby oznaczyć współrzędne regionów, możesz użyć internetowego interfejsu użytkownika w [Customvision.AI](https://www.customvision.ai/). W tym przykładzie współrzędne zostały już podane.
+> Jeśli nie masz narzędzia "kliknij i przeciągnij", aby oznaczyć współrzędne regionów, możesz użyć internetowego interfejsu użytkownika w [Customvision.ai](https://www.customvision.ai/). W tym przykładzie współrzędne są już dostarczone.
 
-Aby dodać obrazy, tagi i regiony do projektu, wstaw następujący kod po utworzeniu tagów. Uwaga: w tym samouczku regiony są zapisane przy użyciu stałych w kodzie. Regiony określają pole ograniczenia w znormalizowanych współrzędnych, które podaje się w kolejności: lewa krawędź, górna krawędź, szerokość, wysokość. Można przekazać do 64 obrazów w pojedynczej partii.
+Aby dodać obrazy, tagi i regiony do projektu, wstaw następujący kod po utworzeniu tagów. Uwaga: w tym samouczku regiony są zapisane przy użyciu stałych w kodzie. Regiony określają pole ograniczenia w znormalizowanych współrzędnych, które podaje się w kolejności: lewa krawędź, górna krawędź, szerokość, wysokość. W jednej partii można przesłać maksymalnie 64 obrazy.
 
 ```javascript
 const forkImageRegions = {
@@ -179,9 +179,9 @@ await asyncForEach(scissorsFiles, async (file) => {
 await Promise.all(fileUploadPromises);
 ```
 
-### <a name="train-the-project-and-publish"></a>Uczenie projektu i publikowanie
+### <a name="train-the-project-and-publish"></a>Trenuj projekt i publikuj
 
-Ten kod tworzy pierwszą iterację modelu predykcyjnego, a następnie publikuje tę iterację w punkcie końcowym przewidywania. Nazwa nadana do publikowanej iteracji może służyć do wysyłania żądań przewidywania. Iteracja nie jest dostępna w punkcie końcowym przewidywania do momentu opublikowania.
+Ten kod tworzy pierwszą iterację modelu przewidywania, a następnie publikuje tę iterację do punktu końcowego przewidywania. Nazwa nadana do publikowanej iteracji może służyć do wysyłania żądań przewidywania. Iteracja nie jest dostępna w punkcie końcowym przewidywania, dopóki nie zostanie opublikowana.
 
 ```javascript
 console.log("Training...");
@@ -201,7 +201,7 @@ console.log("Training status: " + trainingIteration.status);
 await trainer.publishIteration(sampleProject.id, trainingIteration.id, publishIterationName, predictionResourceId);
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Pobieranie i używanie opublikowanej iteracji w punkcie końcowym przewidywania
+### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Pobierz i użyj opublikowanej iteracji w punkcie końcowym przewidywania
 
 Aby wysłać obraz do punktu końcowego przewidywania i uzyskać przewidywanie, dodaj na końcu pliku następujący kod:
 

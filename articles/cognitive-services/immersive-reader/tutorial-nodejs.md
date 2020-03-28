@@ -1,7 +1,7 @@
 ---
-title: 'Samouczek: uruchamianie czytnika immersyjny przy użyciu środowiska Node. js'
+title: 'Samouczek: Uruchom program Immersive Reader za pomocą pliku Node.js'
 titleSuffix: Azure Cognitive Services
-description: W tym samouczku utworzysz aplikację Node. js, która uruchamia czytnik immersyjny.
+description: W tym samouczku utworzysz aplikację Node.js, która uruchamia czytnik Immersive.
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -11,35 +11,35 @@ ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: metan
 ms.openlocfilehash: 139dd2ebdabbc91a6de3b0a1eb921b110d47c3f3
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76842031"
 ---
-# <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Samouczek: uruchamianie czytnika immersyjny (Node. js)
+# <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Samouczek: Uruchom immersyjny czytnik (node.js)
 
-W [przeglądzie](./overview.md)zawarto informacje na temat tego, co to jest czytnik immersyjny i w jaki sposób implementuje sprawdzone techniki w celu zwiększenia czytelności dla osób uczące się, nowych czytelników i studentów z różnicami w nauce. W tym samouczku opisano sposób tworzenia aplikacji sieci Web w języku Node. js, która uruchamia czytnik immersyjny. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+W [przeglądzie](./overview.md)dowiedziałeś się o tym, czym jest Immersive Reader i jak wdraża sprawdzone techniki poprawy rozumienia czytania dla osób uczących się języków, nowych czytelników i uczniów z różnicami w uczeniu się. W tym samouczku opisano sposób tworzenia aplikacji sieci web Node.js, która uruchamia program Immersive Reader. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Tworzenie aplikacji sieci Web w języku Node. js za pomocą języka Express
+> * Tworzenie aplikacji sieci Web Node.js za pomocą aplikacji Express
 > * Uzyskiwanie tokenu dostępu
-> * Uruchom czytnik immersyjny z przykładową zawartością
-> * Określ język zawartości
-> * Określ język interfejsu czytnika immersyjny
-> * Uruchamianie czytnika immersyjny z zawartością matematyczną
+> * Uruchom czytnik Immersive Reader z przykładową zawartością
+> * Określanie języka zawartości
+> * Określanie języka interfejsu czytnika Immersive Reader
+> * Uruchom czytnik Immersive Reader z zawartością matematyczną
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Zasób czytnika immersyjny skonfigurowany do Azure Active Directory uwierzytelniania. Postępuj zgodnie z [tymi instrukcjami](./how-to-create-immersive-reader.md) , aby rozpocząć konfigurację. Podczas konfigurowania właściwości środowiska będą potrzebne pewne wartości. Zapisz dane wyjściowe sesji w pliku tekstowym do użycia w przyszłości.
-* [Node. js](https://nodejs.org/) i [przędza](https://yarnpkg.com)
-* IDE, takie jak [Visual Studio Code](https://code.visualstudio.com/)
+* Zasób programu Immersive Reader skonfigurowany do uwierzytelniania usługi Azure Active Directory. Postępuj zgodnie [z tymi instrukcjami,](./how-to-create-immersive-reader.md) aby skonfigurować. Podczas konfigurowania właściwości środowiska potrzebne będą niektóre wartości utworzone w tym miejscu. Zapisz dane wyjściowe sesji w pliku tekstowym do wykorzystania w przyszłości.
+* [Node.js](https://nodejs.org/) i [Przędza](https://yarnpkg.com)
+* Ide, takie jak [Visual Studio Code](https://code.visualstudio.com/)
 
-## <a name="create-a-nodejs-web-app-with-express"></a>Tworzenie aplikacji sieci Web w języku Node. js za pomocą języka Express
+## <a name="create-a-nodejs-web-app-with-express"></a>Tworzenie aplikacji sieci Web Node.js za pomocą aplikacji Express
 
-Utwórz aplikację sieci Web Node. js za pomocą narzędzia `express-generator`.
+Utwórz aplikację internetową Node.js za `express-generator` pomocą narzędzia.
 
 ```bash
 npm install express-generator -g
@@ -47,7 +47,7 @@ express --view=pug myapp
 cd myapp
 ```
 
-Zainstaluj zależności przędzy i Dodaj zależności `request` i `dotenv`, które będą używane w dalszej części tego samouczka.
+Zainstaluj zależności przędzy i dodać `request` zależności `dotenv`i , które będą używane w dalszej części samouczka.
 
 ```bash
 yarn
@@ -57,9 +57,9 @@ yarn add dotenv
 
 ## <a name="acquire-an-azure-ad-authentication-token"></a>Uzyskiwanie tokenu uwierzytelniania usługi Azure AD
 
-Następnie napisz interfejs API zaplecza, aby pobrać token uwierzytelniania usługi Azure AD.
+Następnie napisz interfejs API wewnętrznej bazy danych, aby pobrać token uwierzytelniania usługi Azure AD.
 
-Wymagane są pewne wartości z kroku wymagań wstępnych konfiguracji uwierzytelniania usługi Azure AD powyżej dla tej części. Odwołaj się do pliku tekstowego zapisanego w tej sesji.
+Potrzebujesz kilka wartości z kroku wstępnego konfiguracyjnej eru usługi Azure AD dla tej części. Odsyłanie z powrotem do pliku tekstowego zapisanego w tej sesji.
 
 ````text
 TenantId     => Azure subscription TenantId
@@ -68,7 +68,7 @@ ClientSecret => Azure AD Application Service Principal password
 Subdomain    => Immersive Reader resource subdomain (resource 'Name' if the resource was created in the Azure portal, or 'CustomSubDomain' option if the resource was created with Azure CLI Powershell. Check the Azure portal for the subdomain on the Endpoint in the resource Overview page, for example, 'https://[SUBDOMAIN].cognitiveservices.azure.com/')
 ````
 
-Po uzyskaniu tych wartości Utwórz nowy plik o nazwie _ENV_i wklej do niego następujący kod, dostarczając wartości właściwości niestandardowych z powyższych. Nie należy zawierać cudzysłowów ani znaków "{" i "}".
+Po uzyskaniu tych wartości utwórz nowy plik o nazwie _.env_i wklej do niego następujący kod, podając wartości właściwości niestandardowych z góry. Nie należy dołączać cudzysłowów ani znaków "{" i "}".
 
 ```text
 TENANT_ID={YOUR_TENANT_ID}
@@ -77,17 +77,17 @@ CLIENT_SECRET={YOUR_CLIENT_SECRET}
 SUBDOMAIN={YOUR_SUBDOMAIN}
 ```
 
-Nie należy zatwierdzić tego pliku w kontroli źródła, ponieważ zawiera on klucze tajne, które nie powinny być publiczne.
+Pamiętaj, aby nie zatwierdzać tego pliku do kontroli źródła, ponieważ zawiera on wpisy tajne, które nie powinny być upublicznione.
 
-Następnie otwórz plik _App. js_ i Dodaj następujący na początku pliku. Spowoduje to załadowanie właściwości zdefiniowanych w pliku ENV jako zmiennych środowiskowych do węzła.
+Następnie otwórz _plik app.js_ i dodaj następujące elementy w górnej części pliku. Spowoduje to załadowanie właściwości zdefiniowanych w pliku env jako zmiennych środowiskowych do nodea.
 
 ```javascript
 require('dotenv').config();
 ```
 
-Otwórz plik _routes\index.js_ i Zastąp jego zawartość następującym kodem.
+Otwórz plik _routes\index.js_ i zastąp jego zawartość następującym kodem.
 
-Ten kod tworzy punkt końcowy interfejsu API, który uzyskuje token uwierzytelniania usługi Azure AD przy użyciu hasła nazwy głównej usługi. Pobiera również poddomenę. Następnie zwraca obiekt zawierający token i poddomenę.
+Ten kod tworzy punkt końcowy interfejsu API, który uzyskuje token uwierzytelniania usługi Azure AD przy użyciu hasła jednostkowego usługi. Pobiera również poddomenę. Następnie zwraca obiekt zawierający token i poddomenę.
 
 ```javascript
 var request = require('request');
@@ -128,18 +128,18 @@ module.exports = router;
 
 ```
 
-Punkt końcowy interfejsu API **getimmersivereaderlaunchparams** powinien być zabezpieczony za pomocą uwierzytelniania (na przykład [OAuth](https://oauth.net/2/)), aby uniemożliwić nieautoryzowanym użytkownikom uzyskanie tokenów, które mają być używane z usługą czytnika danych immersyjny i rozliczeniami. Ta praca wykracza poza zakres tego samouczka.
+Punkt końcowy interfejsu API **getimmersivereaderlaunchparams** powinien być zabezpieczony za jakąś formą uwierzytelniania (na przykład [OAuth),](https://oauth.net/2/)aby uniemożliwić nieautoryzowanym użytkownikom uzyskanie tokenów do użycia w usłudze Immersive Reader i rozliczeniach; że praca wykracza poza zakres tego samouczka.
 
-## <a name="launch-the-immersive-reader-with-sample-content"></a>Uruchom czytnik immersyjny z przykładową zawartością
+## <a name="launch-the-immersive-reader-with-sample-content"></a>Uruchom czytnik Immersive Reader z przykładową zawartością
 
-1. Otwórz _views\layout.Pug_i Dodaj następujący kod pod tagiem `head`, przed tagiem `body`. Te `script` Tagi ładują [zestaw SDK programu immersyjny](https://github.com/microsoft/immersive-reader-sdk) i jQuery.
+1. Otwórz _views\layout.mops_i dodaj następujący `head` kod pod `body` tagiem przed tagiem. Tagi te `script` załadować [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) i jQuery.
 
     ```pug
     script(src='https://contentstorage.onenote.office.net/onenoteltir/immersivereadersdk/immersive-reader-sdk.0.0.2.js')
     script(src='https://code.jquery.com/jquery-3.3.1.min.js')
     ```
 
-2. Otwórz _views\index.Pug_i Zastąp jego zawartość następującym kodem. Ten kod wypełnia stronę z niepewną przykładową zawartością i dodaje przycisk, który uruchamia czytnik immersyjny.
+2. Otwórz _views\index.mops_i zastąp jego zawartość następującym kodem. Ten kod wypełnia stronę próbną zawartością i dodaje przycisk uruchamiający czytnik Immersive Reader.
 
     ```pug
     extends layout
@@ -183,25 +183,25 @@ Punkt końcowy interfejsu API **getimmersivereaderlaunchparams** powinien być z
             }
     ```
 
-3. Nasza aplikacja sieci Web jest teraz gotowa. Uruchom aplikację, uruchamiając:
+3. Nasza aplikacja internetowa jest już gotowa. Uruchom aplikację, uruchamiając:
 
     ```bash
     npm start
     ```
 
-4. Otwórz przeglądarkę i przejdź do _http://localhost:3000_ . Na stronie powinna zostać wyświetlona powyższa zawartość. Kliknij przycisk **czytnika immersyjny** , aby uruchomić czytnik immersyjny z zawartością.
+4. Otwórz przeglądarkę i _http://localhost:3000_przejdź do pliku . Powyższe treści powinny być widoczne na stronie. Kliknij przycisk **Czytnik wciągający,** aby uruchomić czytnik Immersive Reader ze swoją zawartością.
 
-## <a name="specify-the-language-of-your-content"></a>Określ język zawartości
+## <a name="specify-the-language-of-your-content"></a>Określanie języka zawartości
 
-Czytnik immersyjny obsługuje wiele różnych języków. Język zawartości można określić, wykonując poniższe kroki.
+Czytnik Immersive Reader obsługuje wiele różnych języków. Możesz określić język zawartości, wykonując poniższe czynności.
 
-1. Otwórz _views\index.Pug_ i Dodaj następujący kod poniżej tagu `p(id=content)`, który został dodany w poprzednim kroku. Ten kod dodaje zawartość Hiszpańska zawartości do strony.
+1. Otwórz _views\index.mops_ i dodaj poniższy kod poniżej tagu `p(id=content)` dodanego w poprzednim kroku. Ten kod dodaje niektóre treści hiszpańskiej zawartości do strony.
 
     ```pug
     p(id='content-spanish') El estudio de las formas terrestres de la Tierra se llama geografía física. Los accidentes geográficos pueden ser montañas y valles. También pueden ser glaciares, lagos o ríos.
     ```
 
-2. W kodzie JavaScript Dodaj następujące polecenie powyżej wywołania do `ImmersiveReader.launchAsync`. Ten kod przekazuje zawartość Hiszpańska do czytnika immersyjny.
+2. W kodzie JavaScript dodaj powyższe `ImmersiveReader.launchAsync`połączenie do . Ten kod przekazuje zawartość hiszpańską do czytnika Immersive Reader.
 
     ```pug
     content.chunks.push({
@@ -210,13 +210,13 @@ Czytnik immersyjny obsługuje wiele różnych języków. Język zawartości moż
     });
     ```
 
-3. Przejdź do _http://localhost:3000_ ponownie. Na stronie powinien zostać wyświetlony tekst hiszpański, a po kliknięciu **czytnika immersyjny**zostanie on wyświetlony również w czytniku immersyjny.
+3. Przejdź _http://localhost:3000_ do ponownie. Powinieneś zobaczyć hiszpański tekst na stronie, a po kliknięciu na **Immersive Reader**, pojawi się również w Immersive Reader.
 
-## <a name="specify-the-language-of-the-immersive-reader-interface"></a>Określ język interfejsu czytnika immersyjny
+## <a name="specify-the-language-of-the-immersive-reader-interface"></a>Określanie języka interfejsu czytnika Immersive Reader
 
-Domyślnie język interfejsu czytnika immersyjny jest zgodny z ustawieniami języka przeglądarki. Można również określić język interfejsu czytnika immersyjny z poniższym kodem.
+Domyślnie język interfejsu czytnika Immersive Reader jest zgodny z ustawieniami języka przeglądarki. Można również określić język interfejsu Immersive Reader z następującym kodem.
 
-1. W _views\index.Pug_Zastąp wywołanie `ImmersiveReader.launchAsync(token, subdomain, content)` poniższym kodem.
+1. W _views\index.mops_, zastąp wywołanie poniższym `ImmersiveReader.launchAsync(token, subdomain, content)` kodem.
 
     ```javascript
     const options = {
@@ -225,13 +225,13 @@ Domyślnie język interfejsu czytnika immersyjny jest zgodny z ustawieniami jęz
     ImmersiveReader.launchAsync(token, subdomain, content, options);
     ```
 
-2. Przejdź do strony _http://localhost:3000_ . Po uruchomieniu czytnika immersyjny interfejs zostanie wyświetlony w języku francuskim.
+2. Przejdź _http://localhost:3000_do pliku . Po uruchomieniu czytnika Immersive Reader interfejs będzie wyświetlany w języku francuskim.
 
-## <a name="launch-the-immersive-reader-with-math-content"></a>Uruchamianie czytnika immersyjny z zawartością matematyczną
+## <a name="launch-the-immersive-reader-with-math-content"></a>Uruchom czytnik Immersive Reader z zawartością matematyczną
 
-Możesz dołączyć zawartość matematyczną w czytniku immersyjny przy użyciu [MathML](https://developer.mozilla.org/en-US/docs/Web/MathML).
+Zawartość matematyczną można dołączyć do programu Immersive Reader za pomocą [pliku MathML](https://developer.mozilla.org/en-US/docs/Web/MathML).
 
-1. Zmodyfikuj _views\index.Pug_ w celu uwzględnienia poniższego kodu powyżej wywołania do `ImmersiveReader.launchAsync`:
+1. Zmodyfikuj _views\index.mops,_ aby `ImmersiveReader.launchAsync`uwzględnić następujący kod powyżej wywołania:
 
     ```javascript
     const mathML = '<math xmlns="https://www.w3.org/1998/Math/MathML" display="block"> \
@@ -256,9 +256,9 @@ Możesz dołączyć zawartość matematyczną w czytniku immersyjny przy użyciu
     });
     ```
 
-2. Przejdź do strony _http://localhost:3000_ . Gdy uruchamiasz czytnik immersyjny i przewijasz do dołu, zobaczysz formułę matematyczną.
+2. Przejdź _http://localhost:3000_do pliku . Po uruchomieniu czytnika Immersive Reader i przewinięciu do dołu zobaczysz formułę matematyczną.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Poznaj [zestaw SDK czytnika immersyjny](https://github.com/microsoft/immersive-reader-sdk) i [Kompendium zestawu SDK czytnika immersyjny](./reference.md)
-* Wyświetl przykłady kodu w witrynie [GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/advanced-csharp)
+* Poznaj [immersyjny moduł SDK czytnika](https://github.com/microsoft/immersive-reader-sdk) i [immersyjny moduł SDK czytnika](./reference.md)
+* Wyświetlanie przykładów kodu w [usłudze GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/advanced-csharp)

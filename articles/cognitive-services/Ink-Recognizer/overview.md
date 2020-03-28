@@ -1,7 +1,7 @@
 ---
-title: Co to jest aparat rozpoznawania atramentu? -Interfejs API rozpoznawania atramentu
+title: Co to jest aparat rozpoznawania atramentu? - Interfejs API aparatu rozpoznawania atramentu
 titleSuffix: Azure Cognitive Services
-description: Zintegruj aparat rozpoznawania farb z aplikacjami, witrynami sieci Web, narzędziami i innymi rozwiązaniami, aby umożliwić identyfikowanie i używanie danych pociągnięć odręcznych jako danych wejściowych.
+description: Zintegruj aparat rozpoznawania pisma odręcznego z aplikacjami, witrynami internetowymi, narzędziami i innymi rozwiązaniami, aby umożliwić identyfikację i użycie danych obrysu atramentowego jako danych wejściowych.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,50 +11,50 @@ ms.topic: overview
 ms.date: 12/17/2019
 ms.author: aahi
 ms.openlocfilehash: 2d00a489af35f5960aaeb1dda7add5337d48d57d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75448151"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>Co to jest interfejs API rozpoznawania pisma odręcznego?
 
 
-Usługa poznawczego rozpoznawania pisma odręcznego zapewnia oparty na chmurze interfejs API REST umożliwiający analizowanie i rozpoznawanie zawartości cyfrowego atramentu. W przeciwieństwie do usług korzystających z optycznego rozpoznawania znaków (OCR), interfejs API wymaga cyfrowego pociągnięć atramentu jako danych wejściowych. Cyfrowe pociągnięcia atramentu to uporządkowane w czasie zestawy punktów 2D (współrzędne X, Y), które reprezentują ruch narzędzi wejściowych, takich jak pióra cyfrowe lub palca. Następnie rozpoznaje kształty i zawartość odręcznie z danych wejściowych i zwraca odpowiedź JSON zawierającą wszystkie rozpoznane jednostki.
+Usługa Cognitive Service aparat rozpoznawania pisma odurzacza zapewnia oparty na chmurze interfejs API REST do analizowania i rozpoznawania zawartości atramentu cyfrowego. W przeciwieństwie do usług, które używają optycznego rozpoznawania znaków (OCR), interfejs API wymaga danych cyfrowego obrysu atramentu jako danych wejściowych. Cyfrowe pociągnięcia atramentu to uporządkowane w czasie zestawy punktów 2D (współrzędne X,Y), które reprezentują ruch narzędzi wejściowych, takich jak pióra cyfrowe lub palce. Następnie rozpoznaje kształty i zawartość odręczną z danych wejściowych i zwraca odpowiedź JSON zawierającą wszystkie rozpoznane jednostki.
 
-![Schemat blokowy opisujący wysyłanie danych wejściowych pociągnięć odręcznych do interfejsu API](media/ink-recognizer-pen-graph.svg)
+![Schemat blokowy opisujący wysyłanie danych wejściowych obrysu odręcznego do interfejsu API](media/ink-recognizer-pen-graph.svg)
 
 ## <a name="features"></a>Funkcje
 
-Za pomocą interfejsu API rozpoznawania pisma odręcznego można łatwo rozpoznać zawartość odręczną w aplikacjach. 
+Za pomocą interfejsu API aparatu rozpoznawania pisma odręcznego można łatwo rozpoznawać zawartość odręczną w aplikacjach. 
 
 |Funkcja  |Opis  |
 |---------|---------|
-| Rozpoznawanie pisma odręcznego | Rozpoznawanie zawartości napisanej ręcznie w [językach 63 i lokalnych](language-support.md). | 
-| Rozpoznawanie układu | Uzyskaj informacje strukturalne na temat zawartości cyfrowego atramentu. Podziel zawartość na pisanie regionów, akapitów, linii, wyrazów, list punktowanych. Aplikacje mogą następnie używać informacji o układzie do tworzenia dodatkowych funkcji, takich jak automatyczne formatowanie listy i wyrównania kształtu. |
-| Rozpoznawanie kształtów | Rozpoznawaj najczęściej używane [kształty geometryczne](concepts/send-ink-data.md#shapes-recognized-by-the-ink-recognizer-api) podczas sporządzania notatek. |
-| Połączone kształty i rozpoznawanie tekstu | Rozpoznawaj, które pociągnięcia odręczne należą do kształtów lub zawartości napisanej ręcznie, i oddzielnie klasyfikowanie.|
+| Rozpoznawanie pisma ręcznego | Rozpoznawanie odręcznej zawartości w 63 podstawowych [językach i ustawieniach regionalnych](language-support.md). | 
+| Rozpoznawanie układu | Uzyskaj informacje strukturalne o zawartości atramentu cyfrowego. Podziel zawartość na pisanie regionów, akapitów, wierszy, słów, list punktowanych. Aplikacje mogą następnie używać informacji o układzie do tworzenia dodatkowych funkcji, takich jak automatyczne formatowanie listy i wyrównanie kształtów. |
+| Rozpoznawanie kształtów | Rozpoznaj najczęściej używane [kształty geometryczne](concepts/send-ink-data.md#shapes-recognized-by-the-ink-recognizer-api) podczas robienia notatek. |
+| Połączone kształty i rozpoznawanie tekstu | Rozpoznaj, które obrysy odręczne należą do kształtów lub zawartości odręcznej, i oddzielnie klasyfikuj je.|
 
 ## <a name="workflow"></a>Przepływ pracy
 
-Interfejs API rozpoznawania atramentu to usługa sieci Web RESTful, ułatwiająca wywoływanie z dowolnego języka programowania, który może wykonywać żądania HTTP i analizować dane JSON.
+Interfejs API rozpoznawania pisma odurzacza jest usługą sieci web RESTful, dzięki czemu można łatwo dzwonić z dowolnego języka programowania, który może tworzyć żądania HTTP i analizować JSON.
 
 [!INCLUDE [cognitive-services-ink-recognizer-signup-requirements](../../../includes/cognitive-services-ink-recognizer-signup-requirements.md)]
 
-Po zarejestrowaniu:
+Po zarejestrowaniu się:
 
-1. Wypełnij dane pociągnięcia odręcznego i [sformatuj je](concepts/send-ink-data.md#sending-ink-data) w prawidłowym formacie JSON.
-1. Wyślij żądanie do interfejsu API rozpoznawania pisma odręcznego z danymi.
+1. Zabierz dane obrysu odręcznego i [sformatować go](concepts/send-ink-data.md#sending-ink-data) w prawidłowy JSON.
+1. Wyślij żądanie do interfejsu API aparatu rozpoznawania pisma odurzacza z danymi.
 1. Przetwórz odpowiedź interfejsu API, analizując zwrócony komunikat JSON.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Wypróbuj szybki start w następujących językach, aby rozpocząć wywoływanie interfejsu API rozpoznawania pisma odręcznego.
-* [C#](quickstarts/csharp.md)
+Wypróbuj przewodnik Szybki start w następujących językach, aby rozpocząć nawiązywać połączenia z interfejsem API aparatu rozpoznawania pisma odurzającego.
+* [C #](quickstarts/csharp.md)
 * [Java](quickstarts/java.md)
-* [JavaScript](quickstarts/javascript.md)
+* [Javascript](quickstarts/javascript.md)
 
-Aby zobaczyć, jak działa interfejs API rozpoznawania pisma odręcznego w aplikacji do cyfrowego odkróla, zapoznaj się z następującymi przykładowymi aplikacjami w witrynie GitHub:
+Aby zobaczyć, jak działa interfejs API rozpoznawania pisma odurzającego w aplikacji do cyfrowego pisma odurzającego, zapoznaj się z następującymi przykładowymi aplikacjami w usłudze GitHub:
 * [C# i platforma uniwersalna systemu Windows (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
 * [C# i Windows Presentation Foundation (WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
 * [Aplikacja języka JavaScript dla przeglądarki internetowej](https://go.microsoft.com/fwlink/?linkid=2089908)       

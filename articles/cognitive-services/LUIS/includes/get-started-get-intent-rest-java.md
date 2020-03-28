@@ -1,5 +1,5 @@
 ---
-title: Pobierz zamierzenia z wywołaniem REST w języku Java
+title: Uzyskaj intencję z połączeniem REST w języku Java
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -9,44 +9,44 @@ ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
 ms.openlocfilehash: 1bd7a2bb6d3393aca397686a2817f1dcd5f89a38
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76987798"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * [JDK SE](https://aka.ms/azure-jdks) (Java Development Kit, Standard Edition)
-* [Visual Studio Code](https://code.visualstudio.com/) lub ULUBIONEGO środowiska IDE
-* Identyfikator aplikacji publicznej: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
+* [Visual Studio Code](https://code.visualstudio.com/) lub twój ulubiony IDE
+* Identyfikator aplikacji publicznej:`df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
-## <a name="create-luis-runtime-key-for-predictions"></a>Utwórz klucz środowiska uruchomieniowego LUIS dla prognoz
+## <a name="create-luis-runtime-key-for-predictions"></a>Tworzenie klucza środowiska uruchomieniowego usługi LUIS dla prognoz
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com)
-1. Kliknij przycisk [utwórz **Language Understanding** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
-1. Wprowadź wszystkie wymagane ustawienia dla klucza **czasu wykonywania** :
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com)
+1. Kliknij [pozycję Utwórz **opis języka** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
+1. Wprowadź wszystkie wymagane ustawienia dla **klucza środowiska wykonawczego:**
 
     |Ustawienie|Wartość|
     |--|--|
-    |Nazwa|Wymagana nazwa (2-64 znaków)|
+    |Nazwa|Żądana nazwa (2-64 znaki)|
     |Subskrypcja|Wybierz odpowiednią subskrypcję|
-    |Lokalizacja|Wybierz dowolną lokalizację w pobliżu i dostępną|
-    |Warstwa cenowa|`F0` — minimalna warstwa cenowa|
-    |Grupa zasobów|Wybierz dostępną grupę zasobów|
+    |Lokalizacja|Wybierz dowolną lokalizację w pobliżu i do dyspozycji|
+    |Warstwa cenowa|`F0`- minimalny poziom cenowy|
+    |Grupa zasobów|Wybieranie dostępnej grupy zasobów|
 
-1. Kliknij przycisk **Utwórz** i poczekaj na utworzenie zasobu. Po jego utworzeniu przejdź do strony zasobów.
-1. Zbierz skonfigurowane `endpoint` i `key`.
+1. Kliknij **przycisk Utwórz** i poczekaj na utworzenie zasobu. Po jego utworzeniu przejdź do strony zasobu.
+1. Zbieraj `endpoint` skonfigurowane `key`i .
 
 ## <a name="get-intent-programmatically"></a>Pobieranie intencji w sposób programistyczny
 
-Użyj języka Java, aby wykonać zapytanie dotyczące [punktu końcowego przewidywania](https://aka.ms/luis-apim-v3-prediction) i uzyskać wynik przewidywania.
+Użyj języka Java, aby zbadać [punkt końcowy prognozowania](https://aka.ms/luis-apim-v3-prediction) i uzyskać wynik przewidywania.
 
-1. Utwórz podkatalog o nazwie `lib` i skopiuj go do następującego libs języka Java:
+1. Zrób podkatalog `lib` o nazwie i skopiuj w następujących libs java:
 
-    * [Commons-Logging-1.2. jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/commons-logging-1.2.jar)
-    * [HttpClient-4.5.3. jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpclient-4.5.3.jar)
-    * [httpcore-4.4.6. jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpcore-4.4.6.jar)
+    * [commons-logging-1.2.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/commons-logging-1.2.jar)
+    * [httpclient-4.5.3.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpclient-4.5.3.jar)
+    * [httpcore-4.4.6.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpcore-4.4.6.jar)
 
 1. Skopiuj następujący kod, aby utworzyć klasę w pliku o nazwie `Predict.java`:
 
@@ -117,27 +117,27 @@ Użyj języka Java, aby wykonać zapytanie dotyczące [punktu końcowego przewid
     }
     ```
 
-1. Zastąp wartości `YOUR-KEY` i `YOUR-ENDPOINT` **własnym kluczem i** punktem końcowym przewidywania.
+1. Zastąp `YOUR-KEY` i `YOUR-ENDPOINT` wartości z własnym kluczem środowiska **wykonawczego** przewidywania i punktu końcowego.
 
     |Informacje|Przeznaczenie|
     |--|--|
-    |`YOUR-KEY`|Klucz **środowiska uruchomieniowego** przewidywania znaków 32.|
+    |`YOUR-KEY`|Twój klucz **32-znakowy przewidywanie środowiska uruchomieniowego.**|
     |`YOUR-ENDPOINT`| Punkt końcowy adresu URL przewidywania. Na przykład `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
 
 
-1. Kompiluj program Java z wiersza polecenia:
+1. Skompiluj program java z wiersza polecenia:
 
     ```console
     javac -cp ":lib/*" Predict.java
     ```
 
-1. Uruchom program Java z wiersza polecenia:
+1. Uruchom program java z wiersza polecenia:
 
     ```console
     java -cp ":lib/*" Predict
     ```
 
-1. Przejrzyj odpowiedź przewidywania zwracaną jako kod JSON:
+1. Przejrzyj odpowiedź przewidywania, która jest zwracana jako JSON:
 
     ```console
     {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}
@@ -188,9 +188,9 @@ Użyj języka Java, aby wykonać zapytanie dotyczące [punktu końcowego przewid
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Po zakończeniu pracy z tym przewodnikiem Szybki Start Usuń plik z systemu plików.
+Po zakończeniu tego przewodnika Szybki start usuń plik z systemu plików.
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dodawanie wyrażenia długości i uczenie się za pomocą języka Java](../get-started-get-model-rest-apis.md)
+> [Dodawanie wypowiedzi i trenowanie za pomocą języka Java](../get-started-get-model-rest-apis.md)

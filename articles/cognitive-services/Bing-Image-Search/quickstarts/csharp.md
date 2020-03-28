@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: Wyszukiwanie obrazów — wyszukiwanie obrazów Bing interfejsu API REST iC#'
+title: 'Szybki start: wyszukiwanie obrazów — interfejs API REST wyszukiwania obrazów Bing i C #'
 titleSuffix: Azure Cognitive Services
 description: Skorzystaj z tego przewodnika Szybki Start, aby wysyłać żądania wyszukiwania obrazów do interfejsu API wyszukiwania obrazów Bing przy użyciu języka C# i otrzymywać odpowiedzi w formacie JSON.
 services: cognitive-services
@@ -11,20 +11,20 @@ ms.topic: quickstart
 ms.date: 12/06/2019
 ms.author: aahi
 ms.openlocfilehash: e52101b873e03cd6fcd847e9aa2a2d801f8f583d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74918863"
 ---
-# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-c"></a>Szybki Start: Wyszukiwanie obrazów przy użyciu interfejsu API REST wyszukiwanie obrazów Bing iC#
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-c"></a>Szybki start: wyszukiwanie obrazów za pomocą interfejsu API REST wyszukiwania obrazów Bing i języka C #
 
 Użyj tego przewodnika Szybki start, aby rozpocząć wysyłanie żądań wyszukiwania do interfejsu API wyszukiwania obrazów Bing. Ta aplikacja języka C# wysyła zapytanie dotyczące wyszukiwania do interfejsu API i wyświetla adres URL pierwszego obrazu w wynikach. Chociaż ta aplikacja jest napisana w języku C#, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
 
-Kod źródłowy dla tego przykładu jest dostępny [w usłudze GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingImageSearchv7Quickstart.cs) wraz z dodatkową obsługą błędów i adnotacjami.
+Kod źródłowy dla tego przykładu jest dostępny [w usłudze GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingImageSearchv7Quickstart.cs) z dodatkową obsługą błędów i adnotacjami.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* Dowolna wersja programu [Visual Studio 2017 lub nowszego](https://www.visualstudio.com/downloads/).
+* Dowolna wersja [programu Visual Studio 2017 lub nowszej](https://www.visualstudio.com/downloads/).
 * Struktura [Json.NET](https://www.newtonsoft.com/json) dostępna jako pakiet NuGet.
 * Jeśli używasz systemu Linux/MacOS, możesz uruchomić tę aplikację przy użyciu środowiska [Mono](https://www.mono-project.com/).
 
@@ -42,7 +42,7 @@ Kod źródłowy dla tego przykładu jest dostępny [w usłudze GitHub](https://g
     using Newtonsoft.Json.Linq;
     ```
 
-2. Utwórz zmienne dla punktu końcowego interfejsu API, klucza subskrypcji i wyszukiwanego terminu. `uriBase` może być globalnym punktem końcowym lub [niestandardowym](../../../cognitive-services/cognitive-services-custom-subdomains.md) punktem końcowym domeny wyświetlanym w Azure Portal dla zasobu.
+2. Utwórz zmienne dla punktu końcowego interfejsu API, klucza subskrypcji i wyszukiwanego terminu. `uriBase`może to być globalny punkt końcowy poniżej lub niestandardowy punkt końcowy [poddomeny](../../../cognitive-services/cognitive-services-custom-subdomains.md) wyświetlany w witrynie Azure portal dla zasobu.
 
     ```csharp
     //...
@@ -206,7 +206,7 @@ Odpowiedzi z interfejsu API wyszukiwania obrazów Bing są zwracane w formacie J
 > [!div class="nextstepaction"]
 > [Samouczek dotyczący jednostronicowej aplikacji wyszukiwania obrazów Bing](../tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 * [Czym jest funkcja wyszukiwania obrazów Bing?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
 * [Wypróbuj interaktywny pokaz online](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 

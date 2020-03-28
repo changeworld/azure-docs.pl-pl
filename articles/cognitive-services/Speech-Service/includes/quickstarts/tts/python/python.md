@@ -1,7 +1,7 @@
 ---
-title: 'Szybki Start: synteza mowy, środowisko Python-Speech'
+title: 'Szybki start: Syntetyzowanie mowy, Python - Usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak przeprowadzić funkcję syntezy mowy w języku Python przy użyciu zestawu Speech SDK
+description: Dowiedz się, jak syntetyzować mowę w języku Python przy użyciu sdk mowy
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: include
 ms.date: 19/14/2020
 ms.author: dapine
 ms.openlocfilehash: 58f2b3693b924197dda1e396ae71192776ca276e
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925090"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem upewnij się, że:
+Zanim zaczniesz, upewnij się, że:
 
 > [!div class="checklist"]
-> * [Tworzenie zasobu usługi Azure Speech](../../../../get-started.md)
-> * [Skonfiguruj środowisko deweloperskie i Utwórz pusty projekt](../../../../quickstarts/setup-platform.md)
+> * [Tworzenie zasobu mowy platformy Azure](../../../../get-started.md)
+> * [Konfigurowanie środowiska programistycznego i tworzenie pustego projektu](../../../../quickstarts/setup-platform.md)
 
 ## <a name="support-and-updates"></a>Pomoc techniczna i aktualizacje
 
@@ -51,9 +51,9 @@ Ewentualnie możesz pobrać ten samouczek Szybki start jako notes programu [Jupy
 
 ### <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>Instalowanie i używanie zestawu SDK usługi Mowa za pomocą programu Visual Studio Code
 
-1. Pobierz i zainstaluj 64-bitową wersję języka [Python](https://www.python.org/downloads/), 3,5 do 3,8 na komputerze.
+1. Pobierz i zainstaluj 64-bitową wersję [Pythona](https://www.python.org/downloads/), 3.5 do 3.8, na swoim komputerze.
 1. Pobierz i zainstaluj program [Visual Studio Code](https://code.visualstudio.com/Download).
-1. Otwórz program Visual Studio Code i zainstaluj rozszerzenie języka Python. Wybierz z menu pozycję **Plik** > **Preferencje** > **Rozszerzenia**. Wyszukaj pozycję **Python**.
+1. Otwórz program Visual Studio Code i zainstaluj rozszerzenie języka Python. Z menu **wybierz polecenie** > **Rozszerzenia** **preferencji** > plików. Wyszukaj pozycję **Python**.
 
    ![Instalowanie rozszerzenia języka Python](~/articles/cognitive-services/Speech-Service/media/sdk/qs-python-vscode-python-extension.png)
 
@@ -69,12 +69,12 @@ Ewentualnie możesz pobrać ten samouczek Szybki start jako notes programu [Jupy
 1. Skopiuj, wklej i zapisz [kod języka Python](#sample-code) w nowo utworzonym pliku.
 1. Wstaw informacje dotyczące subskrypcji usługi rozpoznawania mowy.
 1. Jeśli został wybrany interpreter języka Python, zostanie wyświetlony po lewej stronie paska stanu u dołu okna.
-   W przeciwnym razie możesz wyświetlić listę dostępnych interpreterów języka Python. Otwórz paletę poleceń (Ctrl + Shift + P) i wprowadź **Python: SELECT interpreter**. Wybierz odpowiedni.
+   W przeciwnym razie możesz wyświetlić listę dostępnych interpreterów języka Python. Otwórz paletę poleceń (Ctrl+Shift+P) i wprowadź **python: Select Interpreter**. Wybierz odpowiedni.
 1. Możesz zainstalować pakiet języka Python zestawu Speech SDK z poziomu programu Visual Studio Code. Zrób to, jeśli nie został on jeszcze zainstalowany dla wybranego interpretera języka Python.
-   Aby zainstalować pakiet zestawu Speech SDK, otwórz terminal. Ponownie wywołaj paletę poleceń (Ctrl + Shift + P) i wprowadź **Terminal: Utwórz nowy, zintegrowany terminal**.
+   Aby zainstalować pakiet zestawu Speech SDK, otwórz terminal. Ponownie wprowadź paletę poleceń (Ctrl+Shift+P) i wprowadź **terminal: Utwórz nowy zintegrowany terminal**.
    W wyświetlonym terminalu wprowadź polecenie `python -m pip install azure-cognitiveservices-speech` lub polecenie odpowiednie dla swojego systemu.
 1. Aby uruchomić przykładowy kod, kliknij prawym przyciskiem myszy w dowolnym miejscu w edytorze. Wybierz pozycję **Uruchom plik języka Python w terminalu**.
-   Po wyświetleniu monitu wpisz tekst. Dźwięk z syntezy jest odtwarzany wkrótce.
+   Wpisz tekst, gdy zostanie wyświetlony monit. Syntetyzowane audio jest odtwarzany wkrótce potem.
 
    ![Uruchamianie przykładu](~/articles/cognitive-services/Speech-Service/media/sdk/qs-python-vscode-python-run-tts.png)
 
@@ -87,4 +87,4 @@ Jeśli masz problemy z wykonaniem tych instrukcji, zapoznaj się z obszerniejszy
 ## <a name="see-also"></a>Zobacz też
 
 - [Tworzenie niestandardowego głosu](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
-- [Rejestruj niestandardowe przykłady głosu](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)
+- [Nagrywanie niestandardowych próbek głosu](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

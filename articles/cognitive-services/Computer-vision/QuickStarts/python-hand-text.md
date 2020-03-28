@@ -1,7 +1,7 @@
 ---
-title: 'Szybki Start: przetwarzanie obrazów 2,0 i 2,1 — wyodrębnianie wydrukowanych i odręcznych tekstu — REST, Python'
+title: 'Szybki start: Wizja komputerowa 2.0 i 2.1 - Wyodrębnij tekst drukowany i odręczny - REST, Python'
 titleSuffix: Azure Cognitive Services
-description: W tym przewodniku szybki start wyodrębnisz drukowany i odręczny tekst z obrazu przy użyciu interfejs API przetwarzania obrazów w języku Python.
+description: W tym przewodniku Szybki start można wyodrębnić drukowany i odręczny tekst z obrazu przy użyciu interfejsu API przetwarzania obrazów z pythonem.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,60 +11,62 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 2f0b8cac2cc26b2fab7255a7e7587985a5425485
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: fafc5234da3e6dfecdae2c8b2e2ba80cbed20b5c
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566203"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80244805"
 ---
-# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-20-and-21-rest-api-and-python"></a>Szybki Start: Wyodrębnianie wydrukowanych i odręcznych tekstu przy użyciu przetwarzanie obrazów 2,0 i 2,1 interfejsu API REST i języka Python
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-20-and-21-rest-api-and-python"></a>Szybki start: wyodrębnianie drukowanego i odręcznego tekstu za pomocą interfejsu API Computer Vision 2.0 i 2.1 REST i Pythona
 
-W tym przewodniku Szybki Start zostanie wyodrębniony drukowany i/lub odręczny tekst z obrazu przy użyciu interfejsu API REST przetwarzanie obrazów. Przy użyciu metod operacji odczytu i [odczytu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) [partii](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) możesz wykryć tekst w obrazie i wyodrębnić rozpoznane znaki do strumienia znaków, który można odczytać. Interfejs API określi model rozpoznawania, który ma być używany dla każdego wiersza tekstu, aby obsługiwał obrazy zarówno w postaci tekstu, jak i w postaci odręcznej.
+W tym przewodniku Szybki start można wyodrębnić wydrukowany i/lub odręczny tekst z obrazu za pomocą interfejsu API REST wizji komputerowej. Dzięki metodom Wynik operacji odczytu i [odczytu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) [wsadowego](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) można wykryć tekst na obrazie i wyodrębnić rozpoznane znaki do strumienia znaków czytelnego maszynowo. Interfejs API określi, który model rozpoznawania ma być używany dla każdego wiersza tekstu, dzięki czemu obsługuje obrazy z tekstem drukowanym i odręcznym.
 
-W porównaniu do przetwarzanie obrazów 2,0 i 2,1, przetwarzanie obrazów 3,0 publiczna wersja zapoznawcza zawiera następujące informacje:
+W porównaniu z programem Computer Vision 2.0 i 2.1, funkcja Publicznego Podglądu 3.0 zapewnia:
 
-* jeszcze lepsza dokładność
-* zmieniony format danych wyjściowych
-* wynik zaufania dla wyrazów
-* Obsługa języków hiszpańskich i angielskich przy użyciu dodatkowego parametru języka
+* jeszcze większa dokładność
+* zmieniony format wyjściowy
+* ocena zaufania dla słów
+* obsługa zarówno języka hiszpańskiego, jak i angielskiego z dodatkowym parametrem językowym
 
 #### <a name="version-2"></a>[Wersja 2](#tab/version-2)
 
 > [!IMPORTANT]
-> Metoda [odczytywania wsadowego](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) jest uruchamiana asynchronicznie. Ta metoda nie zwraca żadnych informacji w treści pomyślnej odpowiedzi. Zamiast tego metoda odczytywania wsadowego zwraca identyfikator URI w wartości pola nagłówka odpowiedzi `Operation-Location`. Następnie można wywołać ten identyfikator URI, który reprezentuje interfejs API [wyniku operacji odczytu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) , aby sprawdzić stan i zwrócić wyniki wywołania metody odczytu wsadowego.
+> Metoda [odczytu partii](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) działa asynchronicznie. Ta metoda nie zwraca żadnych informacji w treści pomyślnej odpowiedzi. Zamiast tego metoda odczytu wsadowego zwraca identyfikator `Operation-Location` URI w wartości pola nagłówka odpowiedzi. Następnie można wywołać ten identyfikator URI, który reprezentuje interfejs API [wynik operacji odczytu,](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) aby sprawdzić stan i zwrócić wyniki wywołania metody odczytu wsadowego.
 
-#### <a name="version-3-public-preview"></a>[3 (publiczna wersja zapoznawcza)](#tab/version-3)
+#### <a name="version-3-public-preview"></a>[Wersja 3 (publiczna wersja zapoznawcza)](#tab/version-3)
 
 > [!IMPORTANT]
-> Metoda [odczytywania wsadowego](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d986960601faab4bf452005) jest uruchamiana asynchronicznie. Ta metoda nie zwraca żadnych informacji w treści pomyślnej odpowiedzi. Zamiast tego metoda odczytywania wsadowego zwraca identyfikator URI w wartości pola nagłówka odpowiedzi `Operation-Location`. Następnie można wywołać ten identyfikator URI, który reprezentuje interfejs API [wyniku operacji odczytu](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d9869604be85dee480c8750) , aby sprawdzić stan i zwrócić wyniki wywołania metody odczytu wsadowego.
+> Metoda [odczytu partii](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d986960601faab4bf452005) działa asynchronicznie. Ta metoda nie zwraca żadnych informacji w treści pomyślnej odpowiedzi. Zamiast tego metoda odczytu wsadowego zwraca identyfikator `Operation-Location` URI w wartości pola nagłówka odpowiedzi. Następnie można wywołać ten identyfikator URI, który reprezentuje interfejs API [wynik operacji odczytu,](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d9869604be85dee480c8750) aby sprawdzić stan i zwrócić wyniki wywołania metody odczytu wsadowego.
 
 ---
 
 Możesz pracować z tym przewodnikiem Szybki start krok po kroku, korzystając z aplikacji Jupyter Notebook w usłudze [MyBinder](https://mybinder.org). Aby uruchomić usługę Binder, wybierz poniższy przycisk:
 
-[![przycisku uruchamiania spinacza](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
+[![Przycisk Binder uruchamiania](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) przed rozpoczęciem.
 
-- Jeśli chcesz uruchomić próbkę lokalnie, musisz mieć zainstalowany język [Python](https://www.python.org/downloads/).
-- Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Możesz uzyskać bezpłatny klucz wersji próbnej z usługi [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Lub postępuj zgodnie z instrukcjami w temacie [Tworzenie konta Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , aby subskrybować przetwarzanie obrazów i uzyskać klucz. Następnie [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla ciągu punktu końcowego klucza i usługi, odpowiednio nazwane `COMPUTER_VISION_SUBSCRIPTION_KEY` i `COMPUTER_VISION_ENDPOINT`.
+- Jeśli chcesz uruchomić przykładowy kod lokalnie, musisz mieć zainstalowany język [Python](https://www.python.org/downloads/).
+- Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Możesz uzyskać bezpłatny klucz próbny z [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Możesz też postępować zgodnie z instrukcjami w aplikacji [Utwórz konto usług Cognitive Services,](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) aby zasubskrybować usługę Computer Vision i uzyskać klucz. Następnie [należy utworzyć zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla ciągu `COMPUTER_VISION_SUBSCRIPTION_KEY` punktu `COMPUTER_VISION_ENDPOINT`końcowego klucza i usługi, odpowiednio o nazwie i ,.
 
-## <a name="create-and-run-the-sample"></a>Tworzenie i uruchamianie przykładowego kodu
+## <a name="create-and-run-the-sample"></a>Tworzenie i uruchamianie próbki
 
 #### <a name="version-2"></a>[Wersja 2](#tab/version-2)
 
 Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
 
 1. Skopiuj następujący kod do edytora tekstów.
-1. Opcjonalnie należy zamienić wartość `image_url` na adres URL innego obrazu, z którego ma zostać wyodrębniony tekst.
+1. Opcjonalnie zastąp `image_url` wartość z adresem URL innego obrazu, z którego chcesz wyodrębnić tekst.
 1. Zapisz kod jako plik z rozszerzeniem `.py`. Na przykład `get-text.py`.
 1. Otwórz okno wiersza polecenia.
-1. W tym oknie użyj polecenia `python`, aby uruchomić przykładowy kod. Na przykład `python get-text.py`.
+1. W wierszu polecenia użyj polecenia `python`, aby uruchomić próbkę. Na przykład `python get-text.py`.
 
 ```python
+import os
+import sys
 import requests
 import time
 # If you are using a Jupyter notebook, uncomment the following line.
@@ -134,15 +136,15 @@ for polygon in polygons:
     plt.text(vertices[0][0], vertices[0][1], text, fontsize=20, va="top")
 ```
 
-#### <a name="version-3-public-preview"></a>[3 (publiczna wersja zapoznawcza)](#tab/version-3)
+#### <a name="version-3-public-preview"></a>[Wersja 3 (publiczna wersja zapoznawcza)](#tab/version-3)
 
 Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
 
 1. Skopiuj następujący kod do edytora tekstów.
-1. Opcjonalnie należy zamienić wartość `image_url` na adres URL innego obrazu, z którego ma zostać wyodrębniony tekst.
+1. Opcjonalnie zastąp `image_url` wartość z adresem URL innego obrazu, z którego chcesz wyodrębnić tekst.
 1. Zapisz kod jako plik z rozszerzeniem `.py`. Na przykład `get-text.py`.
 1. Otwórz okno wiersza polecenia.
-1. W tym oknie użyj polecenia `python`, aby uruchomić przykładowy kod. Na przykład `python get-text.py`.
+1. W wierszu polecenia użyj polecenia `python`, aby uruchomić próbkę. Na przykład `python get-text.py`.
 
 ```python
 import json
@@ -236,7 +238,7 @@ plt.show()
 
 ## <a name="examine-the-response"></a>Sprawdzanie odpowiedzi
 
-Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON. Przykładowa strona internetowa analizuje i wyświetla pomyślną odpowiedź w oknie wiersza polecenia, podobnie jak w poniższym przykładzie:
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON. Przykładowa strona sieci Web analizuje i wyświetla pomyślną odpowiedź w oknie wiersza polecenia, podobnie jak w poniższym przykładzie:
 
 #### <a name="version-2"></a>[Wersja 2](#tab/version-2)
 
@@ -516,7 +518,7 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 }
 ```
 
-#### <a name="version-3-public-preview"></a>[3 (publiczna wersja zapoznawcza)](#tab/version-3)
+#### <a name="version-3-public-preview"></a>[Wersja 3 (publiczna wersja zapoznawcza)](#tab/version-3)
 
 ```json
 {

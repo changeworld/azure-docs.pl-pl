@@ -1,7 +1,7 @@
 ---
-title: 'Szybki Start: uczenie modelu i wyodrębnianie danych formularza przy użyciu narzędzia do rozpoznawania formularzy'
+title: 'Szybki start: szkolenie modelu i wyodrębnianie danych formularza przy użyciu cURL — aparatu rozpoznawania formularzy'
 titleSuffix: Azure Cognitive Services
-description: W tym przewodniku szybki start użyjesz interfejsu API REST aparatu rozpoznawania formularzy z zwinięciem do uczenia modelu i wyodrębnienia danych z formularzy.
+description: W tym przewodniku Szybki start użyjesz interfejsu API REST rozpoznawania formularzy z cURL do szkolenia modelu i wyodrębniania danych z formularzy.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -10,62 +10,62 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
 ms.openlocfilehash: 32756187852de0834afc1dc034d3f7419f0c8087
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77118388"
 ---
-# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Szybki Start: uczenie modelu aparatu rozpoznawania formularzy i wyodrębnianie danych formularza przy użyciu interfejsu API REST z zwinięciem
+# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Szybki start: szkolenie modelu rozpoznawania formularzy i wyodrębnianie danych formularza przy użyciu interfejsu API REST z cURL
 
-W tym przewodniku szybki start użyjesz interfejsu API REST usługi Azure Forms rozpoznającego z zwinięciem, aby przeszkolić i wypróbować formularze w celu wyodrębnienia par klucz-wartość i tabel.
+W tym przewodniku Szybki start użyjesz interfejsu API REST aparatu rozpoznawania formularzy platformy Azure z cURL do szkolenia i oceniania formularzy w celu wyodrębnienia par i tabel wartości klucza.
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć ten przewodnik Szybki Start, musisz dysponować:
-- zainstalowano [zwinięcie](https://curl.haxx.se/windows/) .
-- Zestaw składający się z co najmniej sześciu formularzy tego samego typu. Będziesz używać pięciu z nich do uczenia modelu, a następnie przetestowania go przy użyciu szóstej formy. Formularze mogą mieć różne typy plików, ale muszą być tego samego typu dokumentu. Możesz użyć [przykładowego zestawu danych](https://go.microsoft.com/fwlink/?linkid=2090451) dla tego przewodnika Szybki Start. Przekaż pliki szkoleniowe do katalogu głównego kontenera magazynu obiektów BLOB na koncie usługi Azure Storage. Pliki testowe można umieścić w osobnym folderze.
+Aby ukończyć ten szybki start, musisz mieć:
+- [cURL.](https://curl.haxx.se/windows/)
+- Zestaw co najmniej sześciu form tego samego typu. Użyjesz pięciu z nich, aby wyszkolić model, a następnie przetestujesz go z szóstą formą. Formularze mogą mieć różne typy plików, ale muszą być tego samego typu dokumentu. Do tego szybkiego startu można użyć [przykładowego zestawu danych.](https://go.microsoft.com/fwlink/?linkid=2090451) Przekaż pliki szkoleniowe do katalogu głównego kontenera magazynu obiektów blob na koncie usługi Azure Storage. Można umieścić pliki testowe w osobnym folderze.
 
-## <a name="create-a-form-recognizer-resource"></a>Tworzenie zasobu aparatu rozpoznawania formularza
+## <a name="create-a-form-recognizer-resource"></a>Tworzenie zasobu aparatu rozpoznawania formularzy
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
-## <a name="train-a-form-recognizer-model"></a>Uczenie modelu aparatu rozpoznawania formularzy
+## <a name="train-a-form-recognizer-model"></a>Trenuj model aparatu rozpoznawania formularzy
 
-Najpierw będziesz potrzebować zestawu danych szkoleniowych w obiekcie blob usługi Azure Storage. Należy mieć co najmniej pięć wypełnionych formularzy (dokumentów PDF i/lub obrazów) tego samego typu i struktury co główne dane wejściowe. Lub można użyć pojedynczego pustego formularza z dwoma wypełnionymi formularzami. Nazwa pliku pustego formularza musi zawierać słowo "Empty". Zapoznaj się z tematem [Tworzenie zestawu danych szkoleniowych dla modelu niestandardowego](../build-training-data-set.md) w celu uzyskania wskazówek i opcji tworzenia danych szkoleniowych.
+Najpierw musisz zestaw danych szkoleniowych w obiekcie blob usługi Azure Storage. Powinieneś mieć co najmniej pięć wypełnionych formularzy (dokumentów PDF i/lub obrazów) tego samego typu/struktury co główne dane wejściowe. Można też użyć pojedynczego pustego formularza z dwoma wypełnionymi formularzami. Nazwa pliku pustego formularza musi zawierać słowo "pusty". Zobacz [Tworzenie zestawu danych szkoleniowych dla modelu niestandardowego,](../build-training-data-set.md) aby uzyskać porady i opcje dotyczące tworzenia danych szkoleniowych.
 
 > [!NOTE]
-> Możesz użyć funkcji etykiety danych, aby ręcznie oznaczyć niektóre lub wszystkie dane szkoleniowe wcześniej. Jest to bardziej skomplikowany proces, ale wynikiem jest lepszy przeszkolony model. Aby dowiedzieć się więcej na temat tej funkcji, zobacz sekcję [uczenie z etykietami](../overview.md#train-with-labels) .
+> Za pomocą funkcji danych oznaczonych etykietą można ręcznie oznaczyć niektóre lub wszystkie dane szkoleniowe wcześniej. Jest to bardziej złożony proces, ale wyniki w lepiej wyszkolony model. Zobacz [Train with labels](../overview.md#train-with-labels) sekcji przeglądu, aby dowiedzieć się więcej o tej funkcji.
 
-Aby przeprowadzić uczenie modelu aparatu rozpoznawania formularzy przy użyciu dokumentów w kontenerze obiektów blob platformy Azure, Wywołaj interfejs API **[niestandardowego modelu uczenia](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** , uruchamiając następujące polecenie. Przed uruchomieniem polecenia wprowadź następujące zmiany:
+Aby wyszkolić model rozpoznawania formularzy z dokumentami w kontenerze obiektów blob platformy Azure, należy wywołać interfejs API **[modelu niestandardowego pociągu,](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** uruchamiając następujące polecenie cURL. Przed uruchomieniem polecenia należy wprowadzić następujące zmiany:
 
-1. Zamień `<Endpoint>` na punkt końcowy uzyskany w ramach subskrypcji aparatu rozpoznawania formularza.
-1. Zastąp `<subscription key>` kluczem subskrypcji skopiowanym w poprzednim kroku.
-1. Zamień `<SAS URL>` na adres URL sygnatury dostępu współdzielonego (SAS) kontenera magazynu obiektów blob platformy Azure. Aby pobrać adres URL SAS, Otwórz Eksplorator usługi Microsoft Azure Storage, kliknij prawym przyciskiem myszy kontener i wybierz polecenie **Pobierz sygnaturę dostępu współdzielonego**. Upewnij się, że uprawnienia do **odczytu** i **listy** są zaznaczone, a następnie kliknij przycisk **Utwórz**. Następnie skopiuj wartość z sekcji **URL** . Powinna mieć postać: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+1. Zamień `<Endpoint>` punkt końcowy, który został uzyskany za pomocą subskrypcji aparatu rozpoznawania formularzy.
+1. Zamień `<subscription key>` klucz subskrypcji skopiowany z poprzedniego kroku.
+1. Zamień `<SAS URL>` adres URL sygnatury dostępu współdzielonego (SAS) kontenera magazynu obiektów Blob platformy Azure. Aby pobrać adres URL sygnatury dostępu Współdzielonego, otwórz Eksploratora magazynu Platformy Microsoft Azure, kliknij prawym przyciskiem myszy kontener i wybierz pozycję **Pobierz podpis dostępu współdzielonego**. Upewnij się, że uprawnienia **Do odczytu** i **listy** są zaznaczone, a następnie kliknij przycisk **Utwórz**. Następnie skopiuj wartość w sekcji **ADRES URL.** Powinien mieć formularz: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 
 ```bash
 curl -i -X POST "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \""<SAS URL>"\"}"
 ```
 
-Otrzymasz odpowiedź `201 (Success)`ową z nagłówkiem **lokalizacji** . Wartość tego nagłówka jest IDENTYFIKATORem nowego, nauczonego modelu. 
+Otrzymasz odpowiedź `201 (Success)` z nagłówkiem **Lokalizacja.** Wartość tego nagłówka jest identyfikator nowego modelu jest szkolony. 
 
-## <a name="get-training-results"></a>Pobierz wyniki szkoleń
+## <a name="get-training-results"></a>Uzyskaj wyniki treningów
 
-Po rozpoczęciu operacji pouczenia należy użyć nowej operacji, **[pobrać model niestandardowy](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetCustomModel)** w celu sprawdzenia stanu szkolenia. Przekaż Identyfikator modelu do tego wywołania interfejsu API, aby sprawdzić stan szkolenia:
+Po rozpoczęciu operacji pociągu, należy użyć nowej operacji, **[Pobierz model niestandardowy,](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetCustomModel)** aby sprawdzić stan szkolenia. Przekaż identyfikator modelu do tego wywołania interfejsu API, aby sprawdzić stan szkolenia:
 
-1. Zamień `<Endpoint>` na punkt końcowy uzyskany przy użyciu klucza subskrypcji aparatu rozpoznawania formularza.
-1. Zastąp `<subscription key>` kluczem subskrypcji
-1. Zastąp `<model ID>` IDENTYFIKATORem modelu otrzymanego w poprzednim kroku
+1. Zamień `<Endpoint>` punkt końcowy uzyskany za pomocą klucza subskrypcji aparatu rozpoznawania formularzy.
+1. Zamień `<subscription key>` na klucz subskrypcji
+1. Zamień `<model ID>` identyfikator modelu otrzymany w poprzednim kroku
 
 ```bash
 curl -X GET "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model ID>" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>"
 ```
 
-Otrzymasz odpowiedź `200 (Success)`ową z treścią JSON w następującym formacie. Zwróć uwagę na pole `"status"`. Ta wartość będzie miała `"ready"` po zakończeniu szkolenia. Jeśli model nie zakończył szkolenia, należy ponownie wykonać zapytanie dotyczące usługi przez ponowne uruchomienie polecenia. Zalecamy przedziału co najmniej jednej sekundy między wywołaniami.
+Otrzymasz odpowiedź `200 (Success)` z treścią JSON w następującym formacie. Zwróć `"status"` uwagę na to pole. Będzie to miało `"ready"` wartość po zakończeniu szkolenia. Jeśli model nie jest zakończony szkolenia, należy ponownie zbadać usługi przez ponowne uruchomienie polecenia. Zaleca się interwał jednej sekundy lub więcej między wywołaniami.
 
-Pole `"modelId"` zawiera identyfikator modelu, który jest szkoleniowy. Będzie to potrzebne do następnego kroku.
+To `"modelId"` pole zawiera identyfikator modelu, którego trenujesz. Będzie to potrzebne do następnego kroku.
 
 ```json
 { 
@@ -133,36 +133,36 @@ Pole `"modelId"` zawiera identyfikator modelu, który jest szkoleniowy. Będzie 
 }
 ```
 
-## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>Analizowanie formularzy par klucz-wartość i tabel
+## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>Analizowanie formularzy dla par klucza i wartości i tabel
 
-Następnie będziesz używać nowo przeszkolonego modelu do analizowania dokumentu i wyodrębniania par klucz-wartość i tabel z tej usługi. Wywołaj interfejs API **[analizowania formularzy](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)** , uruchamiając następujące polecenie. Przed uruchomieniem polecenia wprowadź następujące zmiany:
+Następnie użyjesz nowo przeszkolonego modelu do analizowania dokumentu i wyodrębniania z niego par klucza wartości i tabel. Wywołanie interfejsu API **[formularza analizy,](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)** uruchamiając następujące polecenie cURL. Przed uruchomieniem polecenia należy wprowadzić następujące zmiany:
 
-1. Zamień `<Endpoint>` na punkt końcowy uzyskany z klucza subskrypcji aparatu rozpoznawania formularza. Można go znaleźć na karcie **Przegląd** zasobów aparatu rozpoznawania formularza.
-1. Zastąp `<model ID>` IDENTYFIKATORem modelu otrzymanym w poprzedniej sekcji.
-1. Zamień `<SAS URL>` na adres URL sygnatury dostępu współdzielonego z plikiem w usłudze Azure Storage. Postępuj zgodnie z instrukcjami w sekcji szkolenia, ale zamiast uzyskać adres URL sygnatury dostępu współdzielonego dla całego kontenera obiektów blob, uzyskaj jeden dla określonego pliku, który chcesz analizować.
+1. Zamień `<Endpoint>` punkt końcowy uzyskany z klucza subskrypcji aparatu rozpoznawania formularzy. Można go znaleźć na karcie **Omówienie** zasobu aparatu rozpoznawania formularzy.
+1. Zamień `<model ID>` identyfikator modelu otrzymany w poprzedniej sekcji.
+1. Zamień `<SAS URL>` na adres URL sygnatury dostępu Współdzielonego do pliku w magazynie platformy Azure. Wykonaj kroki opisane w sekcji Szkolenia, ale zamiast otrzymywać adres URL sygnatury dostępu Współdzielonego dla całego kontenera obiektów blob, pobierz go dla określonego pliku, który chcesz przeanalizować.
 1. Zastąp element `<subscription key>` kluczem subskrypcji.
 
 ```bash
 curl -v "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model ID>/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" -d "{ \"source\": \""<SAS URL>"\" } "
 ```
 
-Otrzymasz odpowiedź `202 (Success)`ową z nagłówkiem **lokalizacji operacji** . Wartość tego nagłówka zawiera identyfikator wyników używany do śledzenia wyników operacji analizy. Zapisz ten identyfikator wyników dla następnego kroku.
+Otrzymasz odpowiedź `202 (Success)` z nagłówkiem **Lokalizacja operacji.** Wartość tego nagłówka zawiera identyfikator wyników używany do śledzenia wyników operacji Analizowanie. Zapisz ten identyfikator wyników w następnym kroku.
 
-## <a name="get-the-analyze-results"></a>Pobierz wyniki analizy
+## <a name="get-the-analyze-results"></a>Uzyskaj wyniki analizy
 
-Użyj poniższego interfejsu API, aby zbadać wyniki operacji analizy.
+Użyj następującego interfejsu API, aby zbadać wyniki operacji Analizowanie.
 
-1. Zamień `<Endpoint>` na punkt końcowy uzyskany z klucza subskrypcji aparatu rozpoznawania formularza. Można go znaleźć na karcie **Przegląd** zasobów aparatu rozpoznawania formularza.
-1. Zastąp `<result ID>` IDENTYFIKATORem otrzymanym w poprzedniej sekcji.
+1. Zamień `<Endpoint>` punkt końcowy uzyskany z klucza subskrypcji aparatu rozpoznawania formularzy. Można go znaleźć na karcie **Omówienie** zasobu aparatu rozpoznawania formularzy.
+1. Zamień `<result ID>` identyfikator otrzymany w poprzedniej sekcji.
 1. Zastąp element `<subscription key>` kluczem subskrypcji.
 
 ```bash
 curl -X GET "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model ID>/analyzeResults/<result ID>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
 ```
 
-Otrzymasz odpowiedź `200 (Success)`ową z treścią JSON w następującym formacie. Wynik został skrócony do uproszczenia. Zwróć uwagę na pole `"status"` u dołu. Ta wartość będzie `"succeeded"`, gdy operacja analizy zostanie zakończona. Jeśli operacja analizy nie została ukończona, należy ponownie wykonać zapytanie dotyczące usługi przez ponowne uruchomienie polecenia. Zalecamy przedziału co najmniej jednej sekundy między wywołaniami.
+Otrzymasz odpowiedź `200 (Success)` z treścią JSON w następującym formacie. Dane wyjściowe zostały skrócone dla uproszczenia. Zwróć `"status"` uwagę na pole w pobliżu dołu. Będzie to miało `"succeeded"` wartość po zakończeniu operacji analizy. Jeśli operacja Analizowanie nie została ukończona, należy ponownie zbadać usługę, ponownie korzystając z polecenia. Zaleca się interwał jednej sekundy lub więcej między wywołaniami.
 
-Główne skojarzenia pary klucz/wartość i tabele znajdują się w węźle `"pageResults"`. Jeśli określono również opcję wyodrębniania zwykłego tekstu za pomocą parametru adresu URL *includeTextDetails* , wówczas węzeł `"readResults"` będzie wyświetlał zawartość i pozycje całego tekstu w dokumencie.
+Główne skojarzenia i tabele pary kluczy/wartości znajdują się w węźle. `"pageResults"` Jeśli określono również wyodrębnianie zwykłego tekstu za pomocą parametru `"readResults"` url *includeTextDetails,* węzeł wyświetli zawartość i pozycje całego tekstu w dokumencie.
 
 ```json
 {
@@ -413,13 +413,13 @@ Główne skojarzenia pary klucz/wartość i tabele znajdują się w węźle `"pa
 }
 ```
 
-## <a name="improve-results"></a>Popraw wyniki
+## <a name="improve-results"></a>Poprawa wyników
 
 [!INCLUDE [improve results](../includes/improve-results-unlabeled.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku szybki start użyto interfejsu API REST aparatu rozpoznawania formularzy z zwinięciem do uczenia modelu i uruchomienia go w przykładowym scenariuszu. Następnie zapoznaj się z dokumentacją referencyjną w celu eksplorowania interfejsu API rozpoznawania formularzy.
+W tym przewodniku Szybki start użyto interfejsu API REST rozpoznawania formularzy z cURL do wytrenowania modelu i uruchamiania go w przykładowym scenariuszu. Następnie zapoznaj się z dokumentacją odwołania, aby zbadać interfejs API rozpoznawania formularzy bardziej szczegółowo.
 
 > [!div class="nextstepaction"]
-> [Dokumentacja interfejsu API REST](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)
+> [Dokumentacja referencyjna interfejsu API REST](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)

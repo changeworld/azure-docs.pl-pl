@@ -1,7 +1,7 @@
 ---
-title: 'Szybki Start: Tłumaczenie mowy na mowę — usługa mowy'
+title: 'Szybki start: tłumaczenie mowy na mowę — usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: W tym przewodniku szybki start użyjesz zestawu Speech SDK, aby interaktywnie przetłumaczyć mowę z jednego języka na tekst w innym języku.
+description: W tym przewodniku Szybki start użyjesz SDK mowy do interaktywnego tłumaczenia mowy z jednego języka na tekst w innym języku.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -12,13 +12,13 @@ ms.date: 02/10/2020
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: 8babb8b096f815bfd8d9da4c3e8040e650952544
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77119287"
 ---
-# <a name="quickstart-translate-speech-to-speech"></a>Szybki Start: tłumaczenie zamiany mowy na mowę
+# <a name="quickstart-translate-speech-to-speech"></a>Szybki start: tłumaczenie mowy na mowę
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Header](../includes/quickstarts/translate-sts/header.md)]

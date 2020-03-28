@@ -1,7 +1,7 @@
 ---
 title: 'Szybki start: wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka Go'
 titleSuffix: Azure Cognitive Services
-description: W tym przewodniku szybki start wykryjesz twarze z obrazu za pomocą usługi twarzy.
+description: W tym przewodniku Szybki start można wykryć twarze z obrazu za pomocą usługi Twarz z go.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: 246b9c81e3cb726236143b9749486ba362128756
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76165841"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-go"></a>Szybki start: wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka Go
@@ -23,7 +23,7 @@ W tym przewodniku Szybki start użyjesz interfejsu API REST rozpoznawania twarzy
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Klucz subskrypcji programu Marketo. Klucz subskrypcji bezpłatnej wersji próbnej możesz uzyskać na stronie [Wypróbuj usługi Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Lub postępuj zgodnie z instrukcjami w temacie [Tworzenie konta Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , aby subskrybować usługę i uzyskać klucz.
+- Klucz subskrypcji Face. Klucz subskrypcji bezpłatnej wersji próbnej możesz uzyskać na stronie [Wypróbuj usługi Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Możesz też postępować zgodnie z instrukcjami w aplikacji [Utwórz konto usług Cognitive Services,](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) aby zasubskrybować usługę Face i uzyskać klucz.
 - Edytor kodu, taki jak program [Visual Studio Code](https://code.visualstudio.com/download)
 
 ## <a name="write-the-script"></a>Pisanie skryptu
@@ -108,11 +108,11 @@ func main() {
 }
 ```
 
-Musisz zaktualizować wartość `subscriptionKey` przy użyciu klucza subskrypcji i zmienić ciąg `uriBase` tak, aby zawierał prawidłowy ciąg punktu końcowego.
+Należy zaktualizować wartość za `subscriptionKey` pomocą klucza subskrypcji i `uriBase` zmienić ciąg tak, aby zawierał prawidłowy ciąg punktu końcowego.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-Możesz również zmienić pole `imageUrl`, aby wskazywało na Twój obraz wejściowy. Możesz również zmienić pole `returnFaceAttributes`, które określa atrybuty kroju do pobrania.
+Możesz również zmienić pole `imageUrl`, aby wskazywało na Twój obraz wejściowy. Można również zmienić `returnFaceAttributes` pole określające, które atrybuty twarzy mają zostać pobrane.
 
 ## <a name="run-the-script"></a>Uruchamianie skryptu
 
@@ -311,7 +311,7 @@ W konsoli powinien zostać wyświetlony ciąg JSON danych wykrytej twarzy. Nast�
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku szybki start została zapisana Aplikacja konsolowa języka go, która wywołuje usługę Azure twarzy, aby wykrywać twarze w obrazie i zwracać ich atrybuty. Następnie zapoznaj się z dokumentacją referencyjną interfejsu API rozpoznawania twarzy, aby dowiedzieć się więcej.
+W tym przewodniku Szybki start została natwo z napisem aplikacja konsoli Go, która wywołuje usługę Azure Face w celu wykrycia twarzy w obrazie i zwrócenia ich atrybutów. Następnie zapoznaj się z dokumentacją referencyjną interfejsu API rozpoznawania twarzy, aby dowiedzieć się więcej.
 
 > [!div class="nextstepaction"]
 > [Interfejs API rozpoznawania twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

@@ -2,23 +2,23 @@
 author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/10/2020
+ms.date: 03/20/2020
 ms.author: dapine
-ms.openlocfilehash: b3d7ea44acac99cc8077993f679bdcea2e5018fa
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.openlocfilehash: e01e6f0e38abe9bdd3afa83306b90725daf287ce
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082453"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80116957"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem upewnij się, że:
+Zanim zaczniesz, upewnij się, że:
 
 > [!div class="checklist"]
-> * [Tworzenie zasobu usługi Azure Speech](../../../../get-started.md)
-> * [Tworzenie aplikacji LUIS i pobieranie klucza punktu końcowego](../../../../quickstarts/create-luis.md)
-> * [Skonfiguruj środowisko deweloperskie i Utwórz pusty projekt](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
+> * [Tworzenie zasobu mowy platformy Azure](../../../../get-started.md)
+> * [Tworzenie aplikacji usługi LUIS i uzyskanie klucza końcowego](../../../../quickstarts/create-luis.md)
+> * [Konfigurowanie środowiska programistycznego i tworzenie pustego projektu](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
@@ -36,7 +36,7 @@ W przypadku problemu lub braku funkcji zobacz [opcje pomocy i obsługi techniczn
 
 Możesz skopiować [kod przykładowy](#sample-code) z tego przewodnika Szybki start do pliku źródłowego `quickstart.py` i uruchomić go w środowisku IDE lub w konsoli:
 
-```sh
+```Bash
 python quickstart.py
 ```
 
@@ -45,7 +45,7 @@ Ewentualnie możesz pobrać ten samouczek Szybki start jako notes programu [Jupy
 ### <a name="sample-code"></a>Przykładowy kod
 
 > [!NOTE]
-> Zestaw Speech SDK będzie domyślnie rozpoznawał użycie języka en-us w celu uzyskania informacji na temat wybierania [języka źródłowego.](../../../../how-to-specify-source-language.md)
+> SDK mowy domyślnie rozpoznaje przy użyciu en-us dla języka, zobacz [Określanie języka źródłowego mowy do tekstu, aby](../../../../how-to-specify-source-language.md) uzyskać informacje na temat wybierania języka źródłowego.
 
 ```python
 import azure.cognitiveservices.speech as speechsdk
@@ -58,7 +58,7 @@ speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_r
 # Creates an audio configuration that points to an audio file.
 # Replace with your own audio filename.
 audio_filename = "whatstheweatherlike.wav"
-audio_input = speechsdk.AudioConfig(filename=audio_filename)
+audio_input = speechsdk.audio.AudioConfig(filename=audio_filename)
 
 # Creates a recognizer with the given settings
 speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_input)
@@ -87,9 +87,9 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 
 ### <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>Instalowanie i używanie zestawu SDK usługi Mowa za pomocą programu Visual Studio Code
 
-1. Pobierz i zainstaluj 64-bitową wersję języka [Python](https://www.python.org/downloads/), 3,5 do 3,8 na komputerze.
+1. Pobierz i zainstaluj 64-bitową wersję [Pythona](https://www.python.org/downloads/), 3.5 do 3.8, na swoim komputerze.
 1. Pobierz i zainstaluj program [Visual Studio Code](https://code.visualstudio.com/Download).
-1. Otwórz program Visual Studio Code i zainstaluj rozszerzenie języka Python. Wybierz z menu pozycję **Plik** > **Preferencje** > **Rozszerzenia**. Wyszukaj pozycję **Python**.
+1. Otwórz program Visual Studio Code i zainstaluj rozszerzenie języka Python. Z menu **wybierz polecenie** > **Rozszerzenia** **preferencji** > plików. Wyszukaj pozycję **Python**.
 
    ![Instalowanie rozszerzenia języka Python](~/articles/cognitive-services/Speech-Service/media/sdk/qs-python-vscode-python-extension.png)
 
@@ -105,12 +105,12 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 1. Skopiuj, wklej i zapisz [kod języka Python](#sample-code) w nowo utworzonym pliku.
 1. Wstaw informacje dotyczące subskrypcji usługi rozpoznawania mowy.
 1. Jeśli został wybrany interpreter języka Python, zostanie wyświetlony po lewej stronie paska stanu u dołu okna.
-   W przeciwnym razie możesz wyświetlić listę dostępnych interpreterów języka Python. Otwórz paletę poleceń <kbd>Ctrl + Shift + P</kbd> i wprowadź **Python: SELECT interpreter**. Wybierz odpowiedni.
+   W przeciwnym razie możesz wyświetlić listę dostępnych interpreterów języka Python. Otwórz paletę poleceń <kbd>Ctrl+Shift+P</kbd> i wprowadź **python: Wybierz interpreter**. Wybierz odpowiedni.
 1. Możesz zainstalować pakiet języka Python zestawu Speech SDK z poziomu programu Visual Studio Code. Zrób to, jeśli nie został on jeszcze zainstalowany dla wybranego interpretera języka Python.
-   Aby zainstalować pakiet zestawu Speech SDK, otwórz terminal. Ponownie wywołaj paletę poleceń <kbd>Ctrl + Shift + P</kbd> i wprowadź **Terminal: Utwórz nowy zintegrowany terminal**.
+   Aby zainstalować pakiet zestawu Speech SDK, otwórz terminal. Ponownie pojawi się paleta poleceń <kbd>Ctrl+Shift+P</kbd> i wprowadź **terminal: Utwórz nowy zintegrowany terminal**.
    W wyświetlonym terminalu wprowadź polecenie `python -m pip install azure-cognitiveservices-speech` lub polecenie odpowiednie dla swojego systemu.
 1. Aby uruchomić przykładowy kod, kliknij prawym przyciskiem myszy w dowolnym miejscu w edytorze. Wybierz pozycję **Uruchom plik języka Python w terminalu**.
-   Pierwsze 15 sekund wprowadzania mowy z pliku dźwiękowego zostanie rozpoznane i zarejestrowane w oknie konsoli.
+   Pierwsze 15 sekund wejścia mowy z pliku audio zostanie rozpoznane i zarejestrowane w oknie konsoli.
 
    ```console
    Recognizing first result...

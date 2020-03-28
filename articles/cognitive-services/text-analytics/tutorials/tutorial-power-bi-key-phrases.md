@@ -1,7 +1,7 @@
 ---
 title: 'Samouczek: Integracja usługi Power BI z usługą Cognitive Service analizy tekstu'
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak używać interfejs API analizy tekstu, aby wyodrębnić kluczowe frazy z tekstu przechowywanego w Power BI.
+description: Dowiedz się, jak wyodrębnić kluczowe frazy z tekstu przechowywanego w usłudze Power BI za pomocą interfejsu API analizy tekstu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 12/19/2019
 ms.author: aahi
 ms.openlocfilehash: 2398bfa2ce828e716831cc7ce438bd1c241ca5f8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75378538"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Samouczek: Integracja usługi Power BI z usługą Cognitive Service analizy tekstu
@@ -114,7 +114,7 @@ Na liście Zapytania zostanie wyświetlone nowe zapytanie, początkowo noszące 
 Teraz na wstążce **Narzędzia główne** w grupie **Zapytanie** kliknij pozycję **Edytor zaawansowany**, aby otworzyć okno Edytora zaawansowanego. Usuń kod, który znajduje się już w tym oknie, a następnie wklej poniższy kod. 
 
 > [!NOTE]
-> Zastąp przykładowy punkt końcowy poniżej (zawierający `<your-custom-subdomain>`) za pomocą punktu końcowego wygenerowanego dla zasobu analiza tekstu. Ten punkt końcowy można znaleźć, logując się do [Azure Portal](https://azure.microsoft.com/features/azure-portal/), wybierając subskrypcję analiza tekstu i wybierając `Quick start`.
+> Zastąp przykładowy punkt `<your-custom-subdomain>`końcowy poniżej (zawierający) punktem końcowym wygenerowanym dla zasobu analizy tekstu. Ten punkt końcowy można znaleźć, logując się do [portalu Azure,](https://azure.microsoft.com/features/azure-portal/)wybierając `Quick start`subskrypcję analizy tekstu i wybierając opcję .
 
 
 ```fsharp
@@ -145,7 +145,7 @@ W oknie Edytora zapytań aplikacji Power BI Desktop przejdź z powrotem do zapyt
 
 Zostanie wyświetlone okno dialogowe Wywołaj funkcję niestandardową. W polu **Nazwa nowej kolumny** wprowadź `keyphrases`. W polu **Zapytanie funkcji** wybierz utworzoną funkcję niestandardową `KeyPhrases`.
 
-W oknie dialogowym zostanie wyświetlone nowe pole **tekst (opcjonalnie)** . To pole jest pytaniem, której kolumny chcemy użyć, aby dostarczyć wartości dla parametru `text` interfejsu API fraz kluczowych. (Należy pamiętać, że zostały już zakodowane wartości `language` i `id` parametrów). Wybierz `Merged` (kolumnę utworzoną [wcześniej](#PreparingData) przez scalenie pól temat i wiadomość) z menu rozwijanego.
+W oknie dialogowym zostanie wyświetlone nowe pole **tekst (opcjonalnie)**. To pole jest pytaniem, której kolumny chcemy użyć, aby dostarczyć wartości dla parametru `text` interfejsu API fraz kluczowych. (Należy pamiętać, że już zakodowane `language` `id` wartości dla i parametrów.) Zaznacz `Merged` (kolumnę [utworzoną wcześniej](#PreparingData) przez scalanie pól tematu i wiadomości) z menu rozwijanego.
 
 ![[Wywoływanie funkcji niestandardowej]](../media/tutorials/power-bi/invoke-custom-function.png)
 
@@ -166,15 +166,15 @@ Kliknij pozycję **Edytuj poświadczenia**, upewnij się, że w oknie dialogowym
 > Opcja `Anonymous` została wybrana, ponieważ usługa analizy tekstu uwierzytelnia Cię przy użyciu Twojego klucza dostępu, dzięki czemu usługa Power BI nie musi podawać poświadczeń dla samego żądania HTTP.
 
 > [!div class="mx-imgBorder"]
-> ![[Ustawianie uwierzytelniania anonimowego]](../media/tutorials/power-bi/access-web-content.png)
+> ![[ustawianie uwierzytelniania anonimowego]](../media/tutorials/power-bi/access-web-content.png)
 
-Jeśli zobaczysz transparent dotyczący edytowania poświadczeń nawet po wybraniu dostępu anonimowego, być może zapomniano wkleić klucz dostępu analiza tekstu do kodu w `KeyPhrases` [funkcji niestandardowej](#CreateCustomFunction).
+Jeśli nawet po wybraniu dostępu anonimowego jest wyświetlany transparent Edytuj poświadczenia, być może do kodu w  [funkcji niestandardowej](#CreateCustomFunction)`KeyPhrases` nie został wklejony klucz dostępu usługi analizy tekstu.
 
 Następnie może zostać wyświetlony transparent z prośbą o podanie informacji na temat ochrony prywatności źródeł danych. 
 
 ![[transparent ochrony prywatności]](../media/tutorials/power-bi/privacy-banner.png)
 
-Kliknij przycisk **Kontynuuj** i dla każdego źródła danych w oknie dialogowym wybierz pozycję `Public`. Następnie kliknij przycisk **Zapisz**.
+Kliknij przycisk **Kontynuuj** i dla każdego źródła danych w oknie dialogowym wybierz pozycję `Public`. Następnie kliknij pozycję **Zapisz.**
 
 ![[ustawianie prywatności źródła danych]](../media/tutorials/power-bi/privacy-dialog.png)
 
@@ -190,7 +190,7 @@ Teraz za pomocą tej kolumny wygenerujesz chmurę słów. Aby rozpocząć, klikn
 > [!NOTE]
 > Dlaczego lepiej wygenerować chmurę słów przy użyciu wyodrębnionych fraz kluczowych, a nie pełnego tekstu poszczególnych komentarzy? Frazy kluczowe dostarczają nam *ważnych* słów z komentarzy naszych klientów, a nie po prostu *najpopularniejszych* słów. Ponadto liczba słów w chmurze wynikowej nie jest zniekształcona przez częste użycie słowa w stosunkowo małej liczbie komentarzy.
 
-Jeśli nie masz jeszcze zainstalowanej wizualizacji niestandardowej Word Cloud, zainstaluj ją. W panelu Wizualizacje po prawej stronie obszaru roboczego kliknij przycisk z wielokropkiem ( **...** ) i wybierz pozycję **Zaimportuj ze sklepu**. Następnie wyszukaj słowo „cloud” i kliknij przycisk **Dodaj** obok wizualizacji Word Cloud. Usługa Power BI zainstaluje wizualizację Word Cloud i poinformuje Cię o jej pomyślnym zainstalowaniu.
+Jeśli nie masz jeszcze zainstalowanej wizualizacji niestandardowej Word Cloud, zainstaluj ją. W panelu Wizualizacje po prawej stronie obszaru roboczego kliknij przycisk z wielokropkiem (**...**) i wybierz pozycję **Zaimportuj ze sklepu**. Następnie wyszukaj słowo „cloud” i kliknij przycisk **Dodaj** obok wizualizacji Word Cloud. Usługa Power BI zainstaluje wizualizację Word Cloud i poinformuje Cię o jej pomyślnym zainstalowaniu.
 
 ![[dodawanie wizualizacji niestandardowej]](../media/tutorials/power-bi/add-custom-visuals.png)<br><br>
 
@@ -217,7 +217,7 @@ Kliknij narzędzie trybu koncentracji uwagi w raporcie, aby uzyskać lepszy wido
 
 Usługa analizy tekstu, jedna z usług Cognitive Services oferowanych na platformie Microsoft Azure, umożliwia również analizę opinii i wykrywanie języka. Wykrywanie języka jest szczególnie przydatne, gdy opinia klienta nie jest w języku angielskim.
 
-Oba te interfejsy API są podobne do interfejsu API fraz kluczowych. Oznacza to, że możesz zintegrować je z aplikacją Power BI Desktop, używając funkcji niestandardowych, które są prawie identyczne z utworzonymi w ramach tego samouczka. Wystarczy jak poprzednio utworzyć puste zapytanie i wkleić do Edytora zaawansowanego odpowiedni kod podany poniżej. (Nie zapomnij klucza dostępu!) Następnie należy użyć funkcji, aby dodać nową kolumnę do tabeli.
+Oba te interfejsy API są podobne do interfejsu API fraz kluczowych. Oznacza to, że możesz zintegrować je z aplikacją Power BI Desktop, używając funkcji niestandardowych, które są prawie identyczne z utworzonymi w ramach tego samouczka. Wystarczy jak poprzednio utworzyć puste zapytanie i wkleić do Edytora zaawansowanego odpowiedni kod podany poniżej. (Nie zapomnij o kluczu dostępu!) Następnie, tak jak poprzednio, użyj funkcji, aby dodać nową kolumnę do tabeli.
 
 Poniższa funkcja analizy opinii zwraca wynik informujący o tym, na ile pozytywna jest opinia wyrażona w tekście.
 
@@ -296,7 +296,7 @@ Dowiedz się więcej na temat usługi analizy tekstu, języka formuł Power Quer
 > [Dokumentacja interfejsu API analizy tekstu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6)
 
 > [!div class="nextstepaction"]
-> [Dokumentacja języka Power Query M](https://docs.microsoft.com/powerquery-m/power-query-m-reference)
+> [Odwołanie do dodatku Power Query M](https://docs.microsoft.com/powerquery-m/power-query-m-reference)
 
 > [!div class="nextstepaction"]
 > [Dokumentacja usługi Power BI](https://powerbi.microsoft.com/documentation/powerbi-landing-page/)

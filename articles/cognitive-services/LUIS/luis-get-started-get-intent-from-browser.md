@@ -1,7 +1,7 @@
 ---
-title: 'Szybki Start: pobieranie zamierzeń przy użyciu przeglądarki LUIS'
+title: 'Szybki start: Uzyskaj intencję z przeglądarką — USŁUGA LUIS'
 titleSuffix: Azure Cognitive Services
-description: W tym przewodniku szybki start Użyj dostępnej publicznej aplikacji LUIS, aby określić zamiar użytkownika w przeglądarce.
+description: W tym przewodniku Szybki start użyj dostępnej publicznej aplikacji usługi LUIS, aby określić intencję użytkownika na podstawie tekstu konwersacji w przeglądarce.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,40 +12,40 @@ ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: diberry
 ms.openlocfilehash: e06bb4c09b3ebab25c0c0ef8ac5c51f6842f34cd
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76987958"
 ---
-# <a name="quickstart-get-intent-with-a-browser"></a>Szybki Start: pobieranie zamierzeń za pomocą przeglądarki
+# <a name="quickstart-get-intent-with-a-browser"></a>Szybki start: uzyskaj intencję w przeglądarce
 
 Aby zrozumieć, co zwraca punkt końcowy przewidywania usługi LUIS, wyświetl wynik przewidywania w przeglądarce internetowej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby można było wykonywać zapytania dotyczące aplikacji publicznej, potrzebne są:
+Aby wykonać zapytanie do aplikacji publicznej, potrzebujesz:
 
-* Własny Language Understanding (LUIS) do tworzenia i prognozowania, który można uzyskać z [portalu Luis (wersja zapoznawcza)](https://preview.luis.ai/). Jeśli nie masz jeszcze subskrypcji, aby utworzyć klucz, możesz zarejestrować się w celu uzyskania [bezpłatnego konta](https://azure.microsoft.com/free/).
+* Twój własny klucz tworzenia lub przewidywania (Language Understanding) (LUIS), który można uzyskać z [portalu LUIS (Wersja zapoznawcza)](https://preview.luis.ai/). Jeśli nie masz jeszcze subskrypcji na utworzenie klucza, możesz zarejestrować się na [bezpłatne konto](https://azure.microsoft.com/free/).
 * Identyfikator aplikacji publicznej: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`.
 
-## <a name="use-the-browser-to-see-predictions"></a>Używanie przeglądarki do wyświetlania prognoz
+## <a name="use-the-browser-to-see-predictions"></a>Użyj przeglądarki, aby zobaczyć prognozy
 
 1. Otwórz przeglądarkę internetową.
-1. Użyj pełnych adresów URL poniżej, zastępując `YOUR-KEY` własnymi procesami tworzenia lub przewidywania. Żądania ODBIERAją żądania i obejmują autoryzację, za pomocą LUIS tworzenia lub klucza przewidywania, jako parametru ciągu zapytania.
+1. Użyj pełnych adresów `YOUR-KEY` URL poniżej, zastępując własnym kluczem tworzenia lub przewidywania usługi LUIS. Żądania są żądania GET i obejmują autoryzację, z kluczem authoring lub prediction usługi LUIS jako parametr ciągu zapytania.
 
-    #### <a name="v3-prediction-requesttabv3-1-1"></a>[Żądanie prognozowania v3](#tab/V3-1-1)
+    #### <a name="v3-prediction-request"></a>[Żądanie przewidywania wersji 3](#tab/V3-1-1)
 
 
-    Format adresu URL v3 dla żądania **Get** Endpoint (według gniazd) to:
+    Format adresu URL V3 dla żądania punktu końcowego **GET** (przez szczeliny) jest:
 
     `
     https://westus.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?query=turn on all lights&subscription-key=YOUR-KEY
     `
 
-    #### <a name="v2-prediction-requesttabv2-1-2"></a>[Żądanie przewidywania w wersji 2](#tab/V2-1-2)
+    #### <a name="v2-prediction-request"></a>[Żądanie przewidywania wersji 2](#tab/V2-1-2)
 
-    Format adresu URL w wersji 2 dla żądania **Get** Endpoint:
+    Format adresu URL V2 dla żądania punktu końcowego **GET** jest:
 
     `
     https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?subscription-key=YOUR-KEY&q=turn on all lights
@@ -53,7 +53,7 @@ Aby można było wykonywać zapytania dotyczące aplikacji publicznej, potrzebne
 
 1. Wklej adres URL w oknie przeglądarki, a następnie naciśnij klawisz Enter. W przeglądarce zostanie wyświetlony wynik w formacie JSON, który wskazuje, że usługa LUIS wykryła intencję `HomeAutomation.TurnOn` jako główną intencję oraz jednostkę `HomeAutomation.Operation` o wartości `on`.
 
-    #### <a name="v3-prediction-responsetabv3-2-1"></a>[Odpowiedź przewidywania v3](#tab/V3-2-1)
+    #### <a name="v3-prediction-response"></a>[Odpowiedź przewidywania V3](#tab/V3-2-1)
 
     ```JSON
     {
@@ -74,7 +74,7 @@ Aby można było wykonywać zapytania dotyczące aplikacji publicznej, potrzebne
     }
     ```
 
-    #### <a name="v2-prediction-responsetabv2-2-2"></a>[Odpowiedź przewidywania w wersji 2](#tab/V2-2-2)
+    #### <a name="v2-prediction-response"></a>[Odpowiedź przewidywania V2](#tab/V2-2-2)
 
     ```json
     {
@@ -97,11 +97,11 @@ Aby można było wykonywać zapytania dotyczące aplikacji publicznej, potrzebne
 
     * * *
 
-1. Aby wyświetlić wszystkie intencje, Dodaj odpowiedni parametr ciągu zapytania.
+1. Aby wyświetlić wszystkie intencje, dodaj odpowiedni parametr ciągu kwerendy.
 
-    #### <a name="v3-prediction-endpointtabv3-3-1"></a>[Punkt końcowy przewidywania v3](#tab/V3-3-1)
+    #### <a name="v3-prediction-endpoint"></a>[Punkt końcowy przewidywania V3](#tab/V3-3-1)
 
-    Dodaj `show-all-intents=true` na końcu ciągu QueryString, aby **pokazać wszystkie intencje**:
+    Dodaj `show-all-intents=true` na końcu ciąg zapytania, aby **wyświetlić wszystkie intencje:**
 
     `
     https://westus.api.cognitive.microsoft.com/luis/predict/v3.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?query=turn on all lights&subscription-key=YOUR-KEY&show-all-intents=true
@@ -132,9 +132,9 @@ Aby można było wykonywać zapytania dotyczące aplikacji publicznej, potrzebne
     }
     ```
 
-    #### <a name="v2-prediction-endpointtabv2"></a>[Punkt końcowy przewidywania wersji 2](#tab/V2)
+    #### <a name="v2-prediction-endpoint"></a>[Punkt końcowy przewidywania wersji V2](#tab/V2)
 
-    Dodaj `verbose=true` na końcu ciągu QueryString, aby **pokazać wszystkie intencje**:
+    Dodaj `verbose=true` na końcu ciąg zapytania, aby **wyświetlić wszystkie intencje:**
 
     `
     https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?q=turn on all lights&subscription-key={your-key}&verbose=true
@@ -178,7 +178,7 @@ Aby można było wykonywać zapytania dotyczące aplikacji publicznej, potrzebne
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o [punkcie końcowym przewidywania v3](luis-migration-api-v3.md).
+Dowiedz się więcej o [punkcie końcowym przewidywania V3](luis-migration-api-v3.md).
 
 > [!div class="nextstepaction"]
-> [Tworzenie aplikacji w portalu LUIS](get-started-portal-build-app.md)
+> [Tworzenie aplikacji w portalu usługi LUIS](get-started-portal-build-app.md)

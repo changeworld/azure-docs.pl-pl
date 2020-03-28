@@ -1,7 +1,7 @@
 ---
-title: 'Szybki Start: synteza mowy w plikach audio — usługa mowy'
+title: 'Szybki start: syntetyzowanie mowy w pliku audio - usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: W tym przewodniku szybki start użyjesz zestawu Speech SDK do przekonwertowania tekstu na polecenie "Speech" w pliku audio.
+description: W tym przewodniku Szybki start użyjesz SDK mowy do konwersji tekstu na syntetyzowaną mowę w pliku audio.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -12,13 +12,13 @@ ms.date: 02/10/2020
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: d5df28728c2e911537d67b9276157dc94b080e23
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77119433"
 ---
-# <a name="quickstart-synthesize-speech-into-an-audio-file"></a>Szybki Start: synteza mowy w pliku audio
+# <a name="quickstart-synthesize-speech-into-an-audio-file"></a>Szybki start: synteza mowy w pliku audio
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Header](../includes/quickstarts/tts-audio-file/header.md)]

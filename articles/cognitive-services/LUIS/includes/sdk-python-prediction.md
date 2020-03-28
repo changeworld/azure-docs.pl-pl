@@ -11,110 +11,110 @@ ms.topic: include
 ms.custom: include file
 ms.author: diberry
 ms.openlocfilehash: ff4c33aea3d3ce604f44c38e6e3856242388b0e9
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77372137"
 ---
-Użyj biblioteki klienta przewidywania Language Understanding (LUIS) dla języka Python, aby:
+Użyj biblioteki klienta przewidywania zrozumienia języka (LUIS) dla języka Python, aby:
 
-* Pobierz prognozowanie według miejsca
-* Pobierz prognozowanie według wersji
+* Uzyskaj przewidywanie według gniazda
+* Pobierz przewidywanie według wersji
 
-[Dokumentacja referencyjna](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python) | [kod źródłowy biblioteki](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-luis/azure/cognitiveservices/language/luis) | [pakietem przewidywania środowiska uruchomieniowego (PyPi)](https://pypi.org/project/azure-cognitiveservices-language-luis/) | [przykłady](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/LUIS)
+[Dokumentacja](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python) | [referencyjna Przykłady pakietu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-luis/azure/cognitiveservices/language/luis) | uruchamiania przewidywania kodu źródłowego biblioteki[ biblioteki](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/LUIS) [(PyPi)](https://pypi.org/project/azure-cognitiveservices-language-luis/)  | 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Language Understanding (LUIS) — konto portalu — [Utwórz je bezpłatnie](https://www.luis.ai)
+* Konto portalu language understanding (LUIS) — [utwórz je bezpłatnie](https://www.luis.ai)
 * [Python 3.x](https://www.python.org/)
 
 ## <a name="setting-up"></a>Konfigurowanie
 
-### <a name="get-your-language-understanding-luis-runtime-key"></a>Pobierz klucz środowiska uruchomieniowego Language Understanding (LUIS)
+### <a name="get-your-language-understanding-luis-runtime-key"></a>Pobierz klucz środowiska uruchomieniowego language understanding (LUIS)
 
-Pobierz swój [klucz środowiska uruchomieniowego](../luis-how-to-azure-subscription.md) , tworząc zasób środowiska uruchomieniowego Luis. Zachowaj klucz i punkt końcowy klucza dla kolejnego kroku.
+Pobierz [klucz środowiska wykonawczego,](../luis-how-to-azure-subscription.md) tworząc zasób środowiska uruchomieniowego usługi LUIS. Zachowaj klucz i punkt końcowy klucza dla następnego kroku.
 
 [!INCLUDE [Set up environment variables for prediction quickstart](sdk-prediction-environment-variables.md)]
 
-### <a name="create-a-new-python-file"></a>Utwórz nowy plik w języku Python
+### <a name="create-a-new-python-file"></a>Tworzenie nowego pliku języka Python
 
-Utwórz nowy plik w języku Python za pomocą preferowanego edytora lub środowiska IDE o nazwie `prediction_quickstart.py`.
+Utwórz nowy plik języka Python w `prediction_quickstart.py`preferowanym edytorze lub IDE o nazwie .
 
 ### <a name="install-the-sdk"></a>Instalacja zestawu SDK
 
-W katalogu aplikacji zainstaluj bibliotekę klienta przewidywania środowiska uruchomieniowego Language Understanding (LUIS) dla języka Python za pomocą następującego polecenia:
+W katalogu aplikacji zainstaluj bibliotekę klienta środowiska uruchomieniowego środowiska wykonawczego (Language Understanding) (LUIS) dla języka Python za pomocą następującego polecenia:
 
 ```python
 python -m pip install azure-cognitiveservices-language-luis
 ```
 
-## <a name="object-model"></a>Model obiektów
+## <a name="object-model"></a>Model obiektu
 
-Klient predykcyjny w środowisku uruchomieniowym Language Understanding (LUIS) to obiekt [LUISRuntimeClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.luisruntimeclient?view=azure-python) , który jest uwierzytelniany na platformie Azure, który zawiera klucz zasobu.
+Klient środowiska uruchomieniowego przewidywania języka (LUIS) jest obiektem [LUISRuntimeClient,](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.luisruntimeclient?view=azure-python) który uwierzytelnia się na platformie Azure, który zawiera klucz zasobu.
 
-Po utworzeniu klienta Użyj tego klienta, aby uzyskać dostęp do funkcji, w tym:
+Po utworzeniu klienta użyj tego klienta, aby uzyskać dostęp do funkcji, w tym:
 
-* Prognozowanie według [miejsca przejściowego lub produkcyjnego](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.operations.predictionoperations?view=azure-python#get-slot-prediction-app-id--slot-name--prediction-request--verbose-none--show-all-intents-none--log-none--custom-headers-none--raw-false----operation-config-)
-* Prognozowanie według [wersji](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.operations.predictionoperations?view=azure-python#get-version-prediction-app-id--version-id--prediction-request--verbose-none--show-all-intents-none--log-none--custom-headers-none--raw-false----operation-config-)
+* Przewidywanie przez [miejsce przemieszczania lub produkcji](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.operations.predictionoperations?view=azure-python#get-slot-prediction-app-id--slot-name--prediction-request--verbose-none--show-all-intents-none--log-none--custom-headers-none--raw-false----operation-config-)
+* Przewidywanie według [wersji](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.operations.predictionoperations?view=azure-python#get-version-prediction-app-id--version-id--prediction-request--verbose-none--show-all-intents-none--log-none--custom-headers-none--raw-false----operation-config-)
 
 ## <a name="code-examples"></a>Przykłady kodu
 
-Te fragmenty kodu pokazują, jak wykonać następujące czynności za pomocą biblioteki klienckiej środowiska uruchomieniowego Language Understanding (LUIS) dla języka Python:
+Te fragmenty kodu pokazują, jak wykonać następujące czynności za pomocą biblioteki klienta przewidywania języka (LUIS) dla języka Python:
 
-* [Prognozowanie według miejsca](#get-prediction-from-runtime)
+* [Przewidywanie według szczeliny](#get-prediction-from-runtime)
 
 ## <a name="add-the-dependencies"></a>Dodawanie zależności
 
-W katalogu projektu Otwórz plik `prediction_quickstart.py` w preferowanym edytorze lub w środowisku IDE. Dodaj następujące zależności:
+W katalogu projektu otwórz `prediction_quickstart.py` plik w preferowanym edytorze lub IDE. Dodaj następujące zależności:
 
 [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/prediction_quickstart.py?name=Dependencies)]
 
-## <a name="authenticate-the-client"></a>Uwierzytelnianie klienta
+## <a name="authenticate-the-client"></a>Uwierzytelnij klienta
 
-1. Utwórz zmienne dla własnych wymaganych informacji LUIS:
+1. Tworzenie zmiennych dla własnych wymaganych informacji usługi LUIS:
 
-    Dodaj zmienne, aby zarządzać kluczem predykcyjnym ściąganym ze zmiennej środowiskowej o nazwie `LUIS_RUNTIME_KEY`. Jeśli zmienna środowiskowa została utworzona po uruchomieniu aplikacji, należy zamknąć i ponownie załadować Edytor, środowisko IDE lub powłokę, aby uzyskać dostęp do zmiennej. Metody zostaną utworzone później.
+    Dodaj zmienne, aby zarządzać kluczem przewidywania `LUIS_RUNTIME_KEY`pobranym ze zmiennej środowiskowej o nazwie . Jeśli utworzono zmienną środowiskową po uruchomieniu aplikacji, edytor, IDE lub powłoki uruchomionej będzie musiał zostać zamknięty i ponownie załadowany, aby uzyskać dostęp do zmiennej. Metody zostaną utworzone później.
 
-    Utwórz zmienną do przechowywania nazwy zasobu `LUIS_RUNTIME_ENDPOINT`.
+    Utwórz zmienną do `LUIS_RUNTIME_ENDPOINT`przechowywania nazwy zasobu .
 
     [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/prediction_quickstart.py?name=AuthorizationVariables)]
 
-1. Utwórz zmienną dla identyfikatora aplikacji jako zmienną środowiskową o nazwie `LUIS_APP_ID`. Ustaw zmienną środowiskową na publiczną aplikację IoT, **`df67dcdb-c37d-46af-88e1-8b97951ca1c2`** . Utwórz zmienną, aby ustawić `production` opublikowane gniazdo.
+1. Utwórz zmienną dla identyfikatora aplikacji `LUIS_APP_ID`jako zmienną środowiskową o nazwie . Ustaw zmienną środowiskową na publiczną **`df67dcdb-c37d-46af-88e1-8b97951ca1c2`** aplikację IoT, . Utwórz zmienną, `production` aby ustawić opublikowane gniazdo.
 
     [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/prediction_quickstart.py?name=OtherVariables)]
 
 
-1. Utwórz obiekt poświadczeń przy użyciu klucza i użyj go w punkcie końcowym, aby utworzyć obiekt [LUISRuntimeClientConfiguration]https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.luisruntimeclientconfiguration?view=azure-python().
+1. Utwórz obiekt poświadczeń za pomocą klucza i użyj go z punktemhttps://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.luisruntimeclientconfiguration?view=azure-python() końcowym, aby utworzyć obiekt [LUISRuntimeClientConfiguration].
 
     [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/prediction_quickstart.py?name=Client)]
 
-## <a name="get-prediction-from-runtime"></a>Pobierz prognozowanie z środowiska uruchomieniowego
+## <a name="get-prediction-from-runtime"></a>Pobierz przewidywanie ze środowiska wykonawczego
 
-Dodaj następującą metodę, aby utworzyć żądanie do środowiska uruchomieniowego przewidywania.
+Dodaj następującą metodę, aby utworzyć żądanie do środowiska uruchomieniowego przewidywanie.
 
-Wypowiedź użytkownika jest częścią obiektu [prediction_request](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.models.predictionrequest?view=azure-python) .
+Wypowiedź użytkownika jest częścią [obiektu prediction_request.](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.models.predictionrequest?view=azure-python)
 
-Metoda **[get_slot_prediction](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.operations.predictionoperations?view=azure-python#get-slot-prediction-app-id--slot-name--prediction-request--verbose-none--show-all-intents-none--log-none--custom-headers-none--raw-false----operation-config-)** wymaga kilku parametrów, takich jak identyfikator aplikacji, nazwa gniazda i obiekt żądania prognozowania w celu spełnienia żądania. Inne opcje, takie jak verbose, pokazują wszystkie intencje i dzienniki są opcjonalne. Żądanie zwraca obiekt [PredictionResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.models.predictionresponse?view=azure-python) .
+Metoda **[get_slot_prediction](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.operations.predictionoperations?view=azure-python#get-slot-prediction-app-id--slot-name--prediction-request--verbose-none--show-all-intents-none--log-none--custom-headers-none--raw-false----operation-config-)** wymaga kilku parametrów, takich jak identyfikator aplikacji, nazwa gniazda i obiekt żądania przewidywania, aby spełnić żądanie. Inne opcje, takie jak pełne, pokaż wszystkie intencje i dziennik są opcjonalne. Żądanie zwraca [PredictionResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.models.predictionresponse?view=azure-python) obiektu.
 
 [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/prediction_quickstart.py?name=predict)]
 
-## <a name="main-code-for-the-prediction"></a>Kod główny do prognozowania
+## <a name="main-code-for-the-prediction"></a>Główny kod do przewidywania
 
-Użyj następującej metody Main, aby powiązać zmienne i metody w celu uzyskania prognozowania.
+Użyj następującej metody głównej, aby powiązać zmienne i metody razem, aby uzyskać przewidywanie.
 
 ```python
 predict(luisAppID, luisSlotName)
 ```
 ## <a name="run-the-application"></a>Uruchamianie aplikacji
 
-Uruchom aplikację za pomocą polecenia `python prediction_quickstart.py` z katalogu aplikacji.
+Uruchom aplikację za `python prediction_quickstart.py` pomocą polecenia z katalogu aplikacji.
 
 ```console
 python prediction_quickstart.py
 ```
 
-W konsoli szybkiego startu są wyświetlane dane wyjściowe:
+Konsola szybkiego startu wyświetla dane wyjściowe:
 
 ```console
 Top intent: HomeAutomation.TurnOn
@@ -126,4 +126,4 @@ Entities: {'HomeAutomation.Operation': ['on']}
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Po wykonaniu prognoz Wyczyść prace z tego przewodnika Szybki Start, usuwając plik i jego podkatalogi.
+Po zakończeniu z prognoz, oczyścić pracę z tego przewodnika Szybki start, usuwając plik i jego podkatalogów.

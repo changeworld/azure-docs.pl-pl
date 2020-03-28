@@ -6,20 +6,20 @@ ms.topic: include
 ms.date: 11/14/2019
 ms.author: pafarley
 ms.openlocfilehash: 3c6059e131eadf1144fd189c47691b2352176745
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75446444"
 ---
-## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>Analizowanie formularzy par klucz-wartość i tabel
+## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>Analizowanie formularzy dla par klucza i wartości i tabel
 
-Następnie będziesz używać nowo przeszkolonego modelu do analizowania dokumentu i wyodrębniania par klucz-wartość i tabel z tej usługi. Wywołaj interfejs API **[analizy](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)** za pomocą następującego kodu w nowym skrypcie języka Python. Przed uruchomieniem skryptu wprowadź następujące zmiany:
+Następnie użyjesz nowo przeszkolonego modelu do analizowania dokumentu i wyodrębniania z niego par klucza wartości i tabel. Wywołanie interfejsu API **[formularza analizy,](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)** uruchamiając następujący kod w nowym skrypcie języka Python. Przed uruchomieniem skryptu należy wprowadzić następujące zmiany:
 
-1. Zastąp `<file path>` ścieżką pliku formularza (na przykład C:\temp\file.PDF). Może to być również adres URL pliku zdalnego. W tym przewodniku szybki start można użyć plików w folderze **testowym** [zestawu danych przykładowych](https://go.microsoft.com/fwlink/?linkid=2090451).
-1. Zastąp `<model_id>` IDENTYFIKATORem modelu otrzymanym w poprzedniej sekcji.
-1. Zamień `<endpoint>` na punkt końcowy uzyskany przy użyciu klucza subskrypcji aparatu rozpoznawania formularza. Można go znaleźć na karcie **Przegląd** zasobów aparatu rozpoznawania formularza.
-1. Zastąp `<file type>` typem pliku. Obsługiwane typy: `application/pdf`, `image/jpeg`, `image/png``image/tiff`.
+1. Zastąp `<file path>` ścieżką pliku formularza (na przykład C:\temp\file.pdf). Może to być również adres URL pliku zdalnego. W tym przewodniku Szybki start można użyć plików w folderze **Test** [przykładowego zestawu danych](https://go.microsoft.com/fwlink/?linkid=2090451).
+1. Zamień `<model_id>` identyfikator modelu otrzymany w poprzedniej sekcji.
+1. Zamień `<endpoint>` punkt końcowy uzyskany za pomocą klucza subskrypcji aparatu rozpoznawania formularzy. Można go znaleźć na karcie **Omówienie** zasobu aparatu rozpoznawania formularzy.
+1. Zamień `<file type>` na typ pliku. Obsługiwane `application/pdf`typy: `image/jpeg` `image/png`, `image/tiff`, , .
 1. Zastąp element `<subscription key>` kluczem subskrypcji.
 
     ```python
@@ -58,15 +58,15 @@ Następnie będziesz używać nowo przeszkolonego modelu do analizowania dokumen
         quit() 
     ```
 
-1. Zapisz kod w pliku z rozszerzeniem. pr. Na przykład *form-Recognizer-analyze.py*.
+1. Zapisz kod w pliku z rozszerzeniem .py. Na przykład *form-recognizer-analyze.py*.
 1. Otwórz okno wiersza polecenia.
-1. W monicie użyj polecenia `python`, aby uruchomić próbkę. Na przykład `python form-recognizer-analyze.py`.
+1. W wierszu polecenia użyj polecenia `python`, aby uruchomić próbkę. Na przykład `python form-recognizer-analyze.py`.
 
-Po wywołaniu interfejsu API **analizowania formularzy** otrzymasz odpowiedź `201 (Success)` z nagłówkiem **lokalizacji operacji** . Wartość tego nagłówka jest IDENTYFIKATORem, który będzie używany do śledzenia wyników operacji analizy. Powyższy skrypt drukuje wartość tego nagłówka w konsoli programu.
+Po **wywołaniu interfejsu** API formularza analizy `201 (Success)` otrzymasz odpowiedź z nagłówkiem **Lokalizacja operacji.** Wartość tego nagłówka jest identyfikatorem, który będzie używany do śledzenia wyników operacji Analizowanie. Powyższy skrypt drukuje wartość tego nagłówka na konsoli.
 
-## <a name="get-the-analyze-results"></a>Pobierz wyniki analizy
+## <a name="get-the-analyze-results"></a>Uzyskaj wyniki analizy
 
-Dodaj następujący kod w dolnej części skryptu języka Python. Spowoduje to użycie wartości identyfikatora z poprzedniego wywołania w nowym wywołaniu interfejsu API w celu pobrania wyników analizy. Operacja **analizy formularza** jest asynchroniczna, dlatego ten skrypt wywołuje interfejs API w regularnych odstępach czasu, dopóki wyniki nie będą dostępne. Zalecamy interwał co najmniej jednej sekundy.
+Dodaj następujący kod na dole skryptu Pythona. Używa wartości identyfikatora z poprzedniego wywołania w nowym wywołaniu interfejsu API, aby pobrać wyniki analizy. Operacja **Analizuj formularz** jest asynchroniza, więc ten skrypt wywołuje interfejs API w regularnych odstępach czasu, dopóki wyniki nie będą dostępne. Zalecamy interwał jednej sekundy lub więcej.
 
 ```python 
 n_tries = 15

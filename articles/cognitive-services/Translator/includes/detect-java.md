@@ -5,36 +5,36 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 9ce4b25d26c0294cf7618b5851c0956af7687ee7
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71837528"
 ---
 [!INCLUDE [Prerequisites](prerequisites-java.md)]
 
 [!INCLUDE [Setup and use environment variables](setup-env-variables.md)]
 
-## <a name="initialize-a-project-with-gradle"></a>Inicjowanie projektu za pomocą Gradle
+## <a name="initialize-a-project-with-gradle"></a>Inicjowanie projektu za pomocą narzędzia Gradle
 
-Zacznijmy od utworzenia katalogu roboczego dla tego projektu. W wierszu polecenia (lub terminalu) Uruchom następujące polecenie:
+Zaczniemy od utworzenia katalogu roboczego dla tego projektu. W wierszu polecenia (lub terminalu) uruchom następujące polecenie:
 
 ```console
 mkdir detect-sample
 cd detect-sample
 ```
 
-Następnie zamierzasz zainicjować projekt Gradle. To polecenie spowoduje utworzenie podstawowych plików kompilacji dla Gradle, co jest najważniejsze, `build.gradle.kts`, który jest używany w czasie wykonywania do tworzenia i konfigurowania aplikacji. Uruchom to polecenie z katalogu roboczego:
+Następnie zainicjujesz projekt narzędzia Gradle. To polecenie spowoduje utworzenie niezbędnych plików kompilacji dla narzędzia Gradle, a w szczególności najważniejszego pliku `build.gradle.kts`, który jest używany czasie wykonywania do utworzenia i skonfigurowania aplikacji. Uruchom następujące polecenie w katalogu roboczym:
 
 ```console
 gradle init --type basic
 ```
 
-Po wyświetleniu monitu o wybranie **DSL**wybierz pozycję **Kotlin**.
+Po wyświetleniu monitu wybierz pozycję **Język DSL**, a następnie **Kotlin**.
 
-## <a name="configure-the-build-file"></a>Konfiguruj plik kompilacji
+## <a name="configure-the-build-file"></a>Konfigurowanie pliku kompilacji
 
-Znajdź `build.gradle.kts` i otwórz go przy użyciu ulubionego środowiska IDE lub edytora tekstu. Następnie skopiuj w tej konfiguracji kompilacji:
+Znajdź plik `build.gradle.kts` i otwórz go za pomocą ulubionego środowiska IDE lub edytora tekstów. Następnie skopiuj go do tej konfiguracji kompilacji:
 
 ```
 plugins {
@@ -53,21 +53,21 @@ dependencies {
 }
 ```
 
-Należy zauważyć, że ten przykład ma zależności od OkHttp dla żądań HTTP i Gson do obsługi i analizy JSON. Jeśli chcesz dowiedzieć się więcej o konfiguracjach kompilacji, zobacz [Tworzenie nowych kompilacji Gradle](https://guides.gradle.org/creating-new-gradle-builds/).
+Weź pod uwagę, że ten przykład zależy od bibliotek OkHttp (obsługa żądań HTTP) i Gson (obsługa i analizowanie kodu JSON). Jeśli chcesz dowiedzieć się więcej na temat konfiguracji kompilacji, zobacz [Creating New Gradle Builds (Tworzenie nowych kompilacji narzędzia Gradle)](https://guides.gradle.org/creating-new-gradle-builds/).
 
-## <a name="create-a-java-file"></a>Utwórz plik Java
+## <a name="create-a-java-file"></a>Tworzenie pliku języka Java
 
-Utwórzmy folder dla przykładowej aplikacji. W katalogu roboczym Uruchom polecenie:
+Utworzymy folder dla przykładowej aplikacji. W katalogu roboczym uruchom polecenie:
 
 ```console
 mkdir -p src/main/java
 ```
 
-Następnie w tym folderze Utwórz plik o nazwie `Detect.java`.
+Następnie utwórz w tym folderze plik o nazwie `Detect.java`.
 
-## <a name="import-required-libraries"></a>Importuj wymagane biblioteki
+## <a name="import-required-libraries"></a>Importowanie wymaganych bibliotek
 
-Otwórz `Detect.java` i Dodaj następujące instrukcje importu:
+Otwórz plik `Detect.java` i dodaj następujące instrukcje import:
 
 ```java
 import java.io.*;
@@ -78,7 +78,7 @@ import com.squareup.okhttp.*;
 ```
 
 
-## <a name="define-variables"></a>Definiuj zmienne
+## <a name="define-variables"></a>Definiowanie zmiennych
 
 Najpierw należy utworzyć klasę publiczną dla projektu:
 
@@ -88,7 +88,7 @@ public class Detect {
 }
 ```
 
-Dodaj te wiersze do klasy `Detect`. Zauważ, że klucz subskrypcji i punkt końcowy są odczytywane ze zmiennych środowiskowych:
+Dodaj następujące wiersze do klasy `Detect`. Można zauważyć, klucz subskrypcji i punkt końcowy są odczytywane ze zmiennych środowiskowych:
 
 ```java
 private static String subscriptionKey = System.getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY");
@@ -96,18 +96,18 @@ private static String endpoint = System.getenv("TRANSLATOR_TEXT_ENDPOINT");
 String url = endpoint + "/detect?api-version=3.0";
 ```
 
-Jeśli używasz subskrypcji usługi Cognitive Services, musisz także uwzględnić w parametrach żądania `Ocp-Apim-Subscription-Region`. [Dowiedz się więcej o uwierzytelnianiu w ramach subskrypcji wielu usług](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Jeśli korzystasz z subskrypcji wielu usług usług Cognitive Services, należy również uwzględnić `Ocp-Apim-Subscription-Region` parametry żądania. [Dowiedz się więcej o uwierzytelnieniu za pomocą subskrypcji wielu usług](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
-## <a name="create-a-client-and-build-a-request"></a>Tworzenie klienta i tworzenie żądania
+## <a name="create-a-client-and-build-a-request"></a>Tworzenie klienta i budowanie żądania
 
-Dodaj ten wiersz do klasy `Detect`, aby utworzyć wystąpienie `OkHttpClient`:
+Dodaj następujący wiersz do klasy `Detect` w celu utworzenia wystąpienia klasy `OkHttpClient`:
 
 ```java
 // Instantiates the OkHttpClient.
 OkHttpClient client = new OkHttpClient();
 ```
 
-Następnie Utwórzmy żądanie POST. Możesz zmienić tekst na potrzeby wykrywania języka.
+Następnie utworzymy żądanie POST. Możesz zmienić tekst, którego język ma zostać wykryty.
 
 ```java
 // This function performs a POST request.
@@ -124,9 +124,9 @@ public String Post() throws IOException {
 }
 ```
 
-## <a name="create-a-function-to-parse-the-response"></a>Utwórz funkcję, aby przeanalizować odpowiedź
+## <a name="create-a-function-to-parse-the-response"></a>Tworzenie funkcji analizowania odpowiedzi
 
-Ta prosta funkcja analizuje i prettifies odpowiedź JSON z usługi tłumaczenie tekstu w usłudze Translator.
+Ta prosta funkcja analizuje i formatuje odpowiedź JSON z usługi tłumaczenia tekstu w usłudze Translator.
 
 ```java
 // This function prettifies the json response.
@@ -138,9 +138,9 @@ public static String prettify(String json_text) {
 }
 ```
 
-## <a name="put-it-all-together"></a>Umieść wszystko razem
+## <a name="put-it-all-together"></a>Zebranie wszystkich elementów
 
-Ostatnim krokiem jest żądanie żądania i uzyskanie odpowiedzi. Dodaj te wiersze do projektu:
+Ostatnim krokiem jest wykonanie żądania i pobranie odpowiedzi. Dodaj następujące wiersze do projektu:
 
 ```java
 public static void main(String[] args) {
@@ -156,13 +156,13 @@ public static void main(String[] args) {
 
 ## <a name="run-the-sample-app"></a>Uruchamianie przykładowej aplikacji
 
-To wszystko, co jest gotowe do uruchomienia przykładowej aplikacji. W wierszu polecenia (lub sesji terminalu) przejdź do katalogu głównego katalogu roboczego i uruchom polecenie:
+To wszystko. Teraz możesz uruchomić przykładową aplikację. Z wiersza polecenia (lub sesji terminalu) przejdź do katalogu głównego używanego katalogu roboczego, a następnie uruchom polecenie:
 
 ```console
 gradle build
 ```
 
-Po zakończeniu kompilacji Uruchom polecenie:
+Po zakończeniu kompilacji uruchom:
 
 ```console
 gradle run
@@ -170,10 +170,10 @@ gradle run
 
 ## <a name="sample-response"></a>Przykładowa odpowiedź
 
-Po uruchomieniu przykładu na terminalu powinny zostać wyświetlone następujące elementy:
+Po uruchomieniu próbki powinny zostać wyświetlone następujące wydruki do terminala:
 
 > [!NOTE]
-> Znajdź skrót kraju/regionu na [liście języków](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+> Znajdź skrót kraju/regionu na tej [liście języków](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
 
 ```json
 [
@@ -202,7 +202,7 @@ Po uruchomieniu przykładu na terminalu powinny zostać wyświetlone następują
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z dokumentacją interfejsu API, aby zrozumieć wszystko, co można zrobić za pomocą interfejs API tłumaczenia tekstu w usłudze Translator.
+Zapoznaj się z odwołaniem do interfejsu API, aby zrozumieć wszystko, co można zrobić z interfejsem API tekstu translatora.
 
 > [!div class="nextstepaction"]
-> [Dokumentacja interfejsu API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+> [Odwołanie API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

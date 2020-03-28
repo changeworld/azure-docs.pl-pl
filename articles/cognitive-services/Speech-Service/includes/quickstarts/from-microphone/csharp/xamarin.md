@@ -1,7 +1,7 @@
 ---
-title: 'Szybki Start: Rozpoznawanie mowy z mikrofonu, C# (Xamarin) — usługa mowy'
+title: 'Szybki start: rozpoznawanie mowy z mikrofonu, C# (Xamarin) - usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: W tym artykule utworzysz międzyplatformową C# aplikację Xamarin dla platforma uniwersalna systemu Windows (platformy UWP), Android i iOS przy użyciu zestawu SDK Cognitive Services Speech. Transkrypcja mowę na tekst w czasie rzeczywistym z mikrofonu urządzenia lub symulatora. Aplikacja została skompilowana z pakietem NuGet zestawu mowy SDK i Microsoft Visual Studio 2019.
+description: W tym artykule utworzysz wieloplatformową aplikację Xamarin języka C# dla platformy uniwersalnej systemu Windows (UWP), Android i iOS przy użyciu zestawu SDK mowy usług Cognitive Services. Transkrybujesz mowę na tekst w czasie rzeczywistym z mikrofonu urządzenia lub symulatora. Aplikacja jest zbudowana z pakietem NuGet zestawu SDK mowy i programem Microsoft Visual Studio 2019.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,138 +11,138 @@ ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
 ms.openlocfilehash: 2ed41f424dfe985cc078314da5b138c7d7bcdf37
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925555"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem:
+Zanim zaczniesz:
 
 > [!div class="checklist"]
-> * [Tworzenie zasobu usługi Azure Speech](../../../../get-started.md)
-> * [Skonfiguruj środowisko deweloperskie i Utwórz pusty projekt](../../../../quickstarts/setup-platform.md?tabs=xamarin)
-> * Upewnij się, że masz dostęp do mikrofonu do przechwytywania audio
+> * [Tworzenie zasobu mowy platformy Azure](../../../../get-started.md)
+> * [Konfigurowanie środowiska programistycznego i tworzenie pustego projektu](../../../../quickstarts/setup-platform.md?tabs=xamarin)
+> * Upewnij się, że masz dostęp do mikrofonu do przechwytywania dźwięku
 
-Jeśli to już zrobione, świetnie. Kontynuujmy.
+Jeśli już to zrobiłeś, świetnie. Chodźmy dalej.
 
-## <a name="add-sample-code-for-the-common-helloworld-project"></a>Dodaj przykładowy kod dla wspólnego projektu HelloWorld
+## <a name="add-sample-code-for-the-common-helloworld-project"></a>Dodaj przykładowy kod dla wspólnego projektu helloworld
 
-Typowy projekt HelloWorld zawiera implementacje niezależne od platformy dla aplikacji dla wielu platform. Teraz Dodaj kod XAML, który definiuje interfejs użytkownika aplikacji, a następnie Dodaj C# kod związany z implementacją.
+Wspólny projekt helloworld zawiera implementacje niezależne od platformy dla aplikacji między platformami. Teraz dodaj kod XAML, który definiuje interfejs użytkownika aplikacji i dodaj kod C# za implementacją.
 
-1. W **Eksplorator rozwiązań**, w obszarze popularne projekty helloworld Otwórz `MainPage.xaml`.
+1. W **Eksploratorze rozwiązań**, `MainPage.xaml`w ramach wspólnego projektu helloworld, otwórz .
 
-1. W widoku XAML projektanta Wstaw następujący fragment kodu XAML do znacznika **Grid** między `<StackLayout>` i `</StackLayout>`:
+1. W widoku XAML projektanta wstaw następujący fragment kodu XAML do `<StackLayout>` `</StackLayout>`znacznika **Siatka** między i:
 
    [!code-xml[UI elements](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld/MainPage.xaml)]
 
-1. W **Eksplorator rozwiązań**Otwórz plik źródłowy związany z kodem `MainPage.xaml.cs`. Jest on pogrupowany pod `MainPage.xaml`.
+1. W **Eksploratorze rozwiązań**otwórz `MainPage.xaml.cs`plik źródłowy związany z kodem . Jest pogrupowany `MainPage.xaml`w obszarze .
 
-1. Zastąp cały kod w nim następującym fragmentem kodu:
+1. Zastąp cały kod w nim z następującym fragmentem kodu:
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld/MainPage.xaml.cs)]
 
-1. W programie obsługi `OnRecognitionButtonClicked` pliku źródłowego Znajdź ciąg `YourSubscriptionKey`i zastąp go kluczem subskrypcji.
+1. W programie obsługi `OnRecognitionButtonClicked` pliku źródłowego `YourSubscriptionKey`znajdź ciąg i zastąp go kluczem subskrypcji.
 
 
-1. W obsłudze `OnRecognitionButtonClicked` Znajdź ciąg `YourServiceregion`i zastąp go **identyfikatorem regionu** z [regionu](https://aka.ms/speech/sdkregion) skojarzonego z subskrypcją. (Na przykład użyj `westus` subskrypcji bezpłatnej wersji próbnej).
+1. W `OnRecognitionButtonClicked` programie obsługi znajdź `YourServiceregion`ciąg i zastąp go **identyfikatorem Region** z [regionu skojarzonego](https://aka.ms/speech/sdkregion) z subskrypcją. (Na przykład `westus` użyj bezpłatnej subskrypcji próbnej).
 
-1. Następnie należy utworzyć [usługę platformy Xamarin](https://docs.microsoft.com/xamarin/android/app-fundamentals/services/creating-a-service/), która jest używana do wykonywania zapytań dotyczących uprawnień mikrofonu z różnych projektów platformy, takich jak platformy UWP, Android i iOS. W tym celu należy dodać nowy folder o nazwie *Services* w projekcie HelloWorld i utworzyć w nim nowy C# plik źródłowy. Możesz kliknąć prawym przyciskiem myszy folder *usługi* , a następnie wybrać pozycję **Dodaj** > **nowy element** > **pliku kodu**. Zmień nazwę pliku `IMicrophoneService.cs`i umieść cały kod z następującego fragmentu kodu w tym pliku:
+1. Następnie należy utworzyć [usługę platformy Xamarin](https://docs.microsoft.com/xamarin/android/app-fundamentals/services/creating-a-service/), która jest używana do wykonywania zapytań o uprawnienia mikrofonu z różnych projektów platformy, takich jak platformy uniwersalne systemu Windows, Android i iOS. Aby to zrobić, dodaj nowy folder o nazwie *Usługi* w ramach projektu helloworld i utwórz pod nim nowy plik źródłowy języka C#. Możesz kliknąć prawym przyciskiem myszy folder *Usługi* i wybrać polecenie **Dodaj** > nowy**plik kodu****elementu** > . Zmień nazwę `IMicrophoneService.cs`pliku i umieść cały kod z następującego fragmentu kodu w tym pliku:
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld/Services/IMicrophoneService.cs)]
 
 #### <a name="android"></a>[Android](#tab/x-android)
-## <a name="add-sample-code-for-the-helloworldandroid-project"></a>Dodawanie przykładowego kodu dla projektu `helloworld.Android`
+## <a name="add-sample-code-for-the-helloworldandroid-project"></a>Dodaj przykładowy `helloworld.Android` kod projektu
 
-Teraz Dodaj C# kod definiujący część aplikacji dla systemu Android.
+Teraz dodaj kod C#, który definiuje część aplikacji specyficzne dla systemu Android.
 
-1. W **Eksplorator rozwiązań**w obszarze HelloWorld. Projekt systemu Android, Otwórz `MainActivity.cs`.
+1. W **Eksploratorze rozwiązań**, pod helloworld. Projekt Android, `MainActivity.cs`otwórz .
 
-1. Zastąp cały kod w nim następującym fragmentem kodu:
+1. Zastąp cały kod w nim z następującym fragmentem kodu:
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld.Android/MainActivity.cs)]
 
-1. Następnie Dodaj implementację specyficzną dla systemu Android dla `MicrophoneService`, tworząc nowe *usługi* folderów w obszarze HelloWorld. Projekt systemu Android. Następnie utwórz w nim nowy C# plik źródłowy. Zmień nazwę pliku `MicrophoneService.cs`. Skopiuj i wklej następujący fragment kodu do tego pliku:
+1. Następnie dodaj implementację specyficzne `MicrophoneService` dla systemu Android, tworząc nowy folder *Usługi* w ramach helloworld. Projekt Android. Następnie należy utworzyć nowy plik źródłowy języka C#. Zmień nazwę `MicrophoneService.cs`pliku . Skopiuj i wklej do tego pliku fragment kodu w brzmieniu:
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld.Android/Services/MicrophoneService.cs)]
 
-1. Następnie otwórz `AndroidManifest.xml` w folderze *Właściwości* . Dodaj następujące ustawienia dotyczące uprawnień dla mikrofonu między `<manifest>` i `</manifest>`:
+1. Następnie otwórz `AndroidManifest.xml` w folderze *Właściwości.* Dodaj następujące ustawienia uprawnień do użycia `<manifest>` `</manifest>`dla mikrofonu między i:
 
    ```xml
    <uses-permission android:name="android.permission.RECORD_AUDIO" />
    ```
    
 #### <a name="ios"></a>[iOS](#tab/ios)
-## <a name="add-sample-code-for-the-helloworldios-project"></a>Dodawanie przykładowego kodu dla projektu `helloworld.iOS`
+## <a name="add-sample-code-for-the-helloworldios-project"></a>Dodaj przykładowy `helloworld.iOS` kod projektu
 
-Teraz Dodaj C# kod definiujący część aplikacji określoną dla systemu iOS. Utwórz także konfiguracje specyficzne dla urządzenia firmy Apple w projekcie HelloWorld. iOS.
+Teraz dodaj kod C#, który definiuje część aplikacji dla systemu iOS. Utwórz również konfiguracje specyficzne dla urządzenia firmy Apple do projektu helloworld.iOS.
 
-1. W **Eksplorator rozwiązań**w projekcie HelloWorld. iOS otwórz `AppDelegate.cs`.
+1. W **Eksploratorze rozwiązań**w ramach `AppDelegate.cs`projektu helloworld.iOS otwórz .
 
-1. Zastąp cały kod w nim następującym fragmentem kodu:
+1. Zastąp cały kod w nim z następującym fragmentem kodu:
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld.iOS/AppDelegate.cs)]
 
-1. Następnie Dodaj implementację specyficzną dla systemu iOS dla `MicrophoneService`, tworząc nowe *usługi* folderów w projekcie HelloWorld.IO. Następnie utwórz w nim nowy C# plik źródłowy. Zmień nazwę pliku `MicrophoneService.cs`. Skopiuj i wklej następujący fragment kodu do tego pliku:
+1. Następnie dodaj implementację specyficzne `MicrophoneService` dla systemu iOS, tworząc nowy folder *Usługi* w ramach projektu helloworld.iO. Następnie należy utworzyć nowy plik źródłowy języka C#. Zmień nazwę `MicrophoneService.cs`pliku . Skopiuj i wklej do tego pliku fragment kodu w brzmieniu:
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld.iOS/Services/MicrophoneService.cs)]
 
-1. Otwórz `Info.plist` w projekcie HelloWorld. iOS w edytorze tekstów. Dodaj następującą parę klucz-wartość w sekcji Dict:
+1. Otwórz `Info.plist` w ramach projektu helloworld.iOS w edytorze tekstu. Dodaj następującą parę wartości klucza w sekcji dict:
 
    <key>NSMicrophoneUsageDescription</key>
    <string>Ta przykładowa aplikacja wymaga dostępu do mikrofonu</string>
 
    > [!NOTE]
-   > W przypadku kompilowania urządzenia iPhone upewnij się, że `Bundle Identifier` jest zgodny z IDENTYFIKATORem aplikacji profilu aprowizacji urządzenia. W przeciwnym razie kompilacja zakończy się niepowodzeniem. Za pomocą iPhoneSimulator można pozostawić to.
+   > Jeśli budujemy urządzenie z systemem iPhone, upewnij się, że `Bundle Identifier` pasuje do identyfikatora aplikacji profilu inicjowania obsługi administracyjnej urządzenia. W przeciwnym razie kompilacja zakończy się niepowodzeniem. Z iPhoneSimulator, można zostawić go tak, jak jest.
 
-1. Jeśli tworzysz na komputerze z systemem Windows, nawiąż połączenie z urządzeniem Mac, aby skompilować za pośrednictwem **narzędzi** > **iOS** > **para do komputerów Mac**. Aby włączyć połączenie z urządzeniem Mac, postępuj zgodnie z instrukcjami wyświetlanymi przez program Visual Studio.
+1. Jeśli korzystasz z komputera z systemem Windows, nawiązuj połączenie z urządzeniem Mac do tworzenia za pomocą narzędzi > **iOS** > **Pair to Mac**. **Tools** Postępuj zgodnie z kreatorem instrukcji dostarczonym przez program Visual Studio, aby włączyć połączenie z urządzeniem Mac.
 
-#### <a name="uwp"></a>[PLATFORMY UWP](#tab/helloworlduwp)
-## <a name="add-sample-code-for-the-helloworlduwp-project"></a>Dodawanie przykładowego kodu dla projektu `helloworld.UWP`
+#### <a name="uwp"></a>[UWP](#tab/helloworlduwp)
+## <a name="add-sample-code-for-the-helloworlduwp-project"></a>Dodaj przykładowy `helloworld.UWP` kod projektu
 
-## <a name="add-sample-code-for-the-helloworlduwp-project"></a>Dodaj przykładowy kod dla HelloWorld. Projekt platformy UWP
+## <a name="add-sample-code-for-the-helloworlduwp-project"></a>Dodaj przykładowy kod dla helloworld. Projekt platformy uniwersalnej systemu zuchwu
 
-Teraz Dodaj C# kod, który definiuje część aplikacji platformy UWP.
+Teraz dodaj kod C#, który definiuje część aplikacji specyficzną dla platformy uniwersalnej systemu wizowego.
 
-1. W **Eksplorator rozwiązań**w obszarze HelloWorld. PLATFORMY UWP projekt, Otwórz `MainPage.xaml.cs`.
+1. W **Eksploratorze rozwiązań**, pod helloworld. Projekt platformy uniwersalnej systemu otwartego, otwórz `MainPage.xaml.cs`.
 
-1. Zastąp cały kod w nim następującym fragmentem kodu:
+1. Zastąp cały kod w nim z następującym fragmentem kodu:
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld.UWP/MainPage.xaml.cs)]
 
-1. Następnie Dodaj do `MicrophoneService` implementację specyficzną dla platformy UWP, tworząc nowe *usługi* folderów w obszarze HelloWorld. Projekt platformy UWP. Następnie utwórz w nim nowy C# plik źródłowy. Zmień nazwę pliku `MicrophoneService.cs`. Skopiuj i wklej następujący fragment kodu do tego pliku:
+1. Następnie dodaj implementacji specyficznej `MicrophoneService` dla platformy uniwersalnej systemu Windows, tworząc nowy folder *Usługi* w ramach helloworld. projekt platformy uniwersalnej systemu i platformy uniwersalnej systemu. Następnie należy utworzyć nowy plik źródłowy języka C#. Zmień nazwę `MicrophoneService.cs`pliku . Skopiuj i wklej do tego pliku fragment kodu w brzmieniu:
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld.UWP/Services/MicrophoneService.cs)]
 
-1. Następnie kliknij dwukrotnie plik `Package.appxmanifest` w obszarze HelloWorld. PLATFORMY UWP projekt w programie Visual Studio. W obszarze **możliwości**upewnij się, że wybrano **mikrofon** i Zapisz plik.
+1. Następnie kliknij dwukrotnie `Package.appxmanifest` plik pod helloworld. Projekt platformy uniwersalnej systemu Wizualnego w programie Visual Studio. W obszarze **Możliwości**upewnij się, że wybrano **opcję Mikrofon,** i zapisz plik.
 
-1. Następnie dwukrotnie kliknij `Package.appxmanifest` plik w `helloworld.UWP` projekcie w programie Visual Studio i w obszarze **możliwości** > **mikrofon** jest zaznaczone i Zapisz plik.
-   > Uwaga: w przypadku wyświetlenia ostrzeżenia: plik certyfikatu nie istnieje: HelloWorld. UWP_TemporaryKey. pfx, zapoznaj [się z próbką zamiany mowy na tekst](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp) , aby uzyskać więcej informacji.
+1. Następnie kliknij `Package.appxmanifest` dwukrotnie `helloworld.UWP` plik w ramach projektu wewnątrz programu Visual Studio i w obszarze **Mikrofon możliwości** > **jest** zaznaczone i zapisać plik.
+   > Uwaga: W przypadku, gdy pojawi się ostrzeżenie: Plik certyfikatu nie istnieje: helloworld. UWP_TemporaryKey.pfx, sprawdź [mowę do](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp) tekstu próbki, aby uzyskać więcej informacji.
 
-1. Na pasku menu wybierz pozycję **plik** > **Zapisz wszystko** , aby zapisać zmiany.
+1. Na pasku menu wybierz **pozycję Zapisz** > **wszystko,** aby zapisać zmiany.
 
-## <a name="build-and-run-the-uwp-application"></a>Kompilowanie i uruchamianie aplikacji platformy UWP
+## <a name="build-and-run-the-uwp-application"></a>Tworzenie i uruchamianie aplikacji platformy uniwersalnej systemuśpiłnie
 
-1. Ustaw HelloWorld. PLATFORMY UWP jako projekt startowy. Kliknij prawym przyciskiem myszy plik HelloWorld. PLATFORMY UWP projekt i wybierz opcję **Kompiluj** , aby skompilować aplikację.
+1. Ustaw helloworld. Platformy uniwersalnej systemu Windows jako projekt startowy. Kliknij prawym przyciskiem myszy helloworld. projekt platformy uniwersalnej systemuśposiedzenia i wybierz **kompilację,** aby utworzyć aplikację.
 
-1. Wybierz pozycję **debuguj** > **Rozpocznij debugowanie** (lub wybierz **F5**), aby uruchomić aplikację. Zostanie wyświetlone okno **HelloWorld** .
+1. Wybierz **debugowanie** > **rozpocznij debugowanie** (lub wybierz **F5**), aby uruchomić aplikację. Zostanie **wyświetlene okno helloworld.**
 
-   ![Przykładowa aplikacja do C# rozpoznawania mowy platformy UWP — Szybki Start](../../../../media/sdk/qs-csharp-xamarin-helloworld-uwp-window.png)
+   ![Przykładowa aplikacja do rozpoznawania mowy platformy uniwersalnej systemu Windows w języku C# — szybki start](../../../../media/sdk/qs-csharp-xamarin-helloworld-uwp-window.png)
 
-1. Wybierz pozycję **Włącz mikrofon**. Gdy zostanie wyświetlone żądanie uprawnienia dostępu, wybierz pozycję **tak**.
+1. Wybierz **włącz mikrofon**. Po wyświetleniu żądania uprawnień dostępu wybierz pozycję **Tak**.
 
-   ![Żądanie uprawnienia dostępu do mikrofonu](../../../../media/sdk/qs-csharp-xamarin-uwp-access-prompt.png)
+   ![Żądanie uprawnień dostępu do mikrofonu](../../../../media/sdk/qs-csharp-xamarin-uwp-access-prompt.png)
 
-1. Wybierz kolejno pozycje **Uruchom rozpoznawanie mowy**i mów do mikrofonu w języku angielskim lub zdania. Mowa zostanie przesłana do usługi rozpoznawania mowy i transkrybowana na tekst, który zostanie wyświetlony w tym oknie.
+1. Wybierz **pozycję Rozpocznij rozpoznawanie mowy**i mów w języku angielskim do mikrofonu urządzenia. Mowa zostanie przesłana do usługi rozpoznawania mowy i transkrybowana na tekst, który zostanie wyświetlony w tym oknie.
 
    ![Interfejs użytkownika rozpoznawania mowy](../../../../media/sdk/qs-csharp-xamarin-uwp-ui-result.png)
 * * *
 
-## <a name="build-and-run-the-android-and-ios-applications"></a>Kompiluj i Uruchamiaj aplikacje dla systemów Android i iOS
+## <a name="build-and-run-the-android-and-ios-applications"></a>Tworzenie i uruchamianie aplikacji na Androida i iOS
 
-Kompilowanie i uruchamianie aplikacji dla systemów Android i iOS na urządzeniu lub symulatorze odbywa się w podobny sposób do platformy UWP. Upewnij się, że wszystkie zestawy SDK są poprawnie zainstalowane, zgodnie z wymaganiami w sekcji "wymagania wstępne" tego artykułu.
+Tworzenie i uruchamianie aplikacji systemu Android i iOS w urządzeniu lub symulatorze odbywa się w sposób podobny do platformy uniwersalnej systemu Windows. Upewnij się, że wszystkie pakiety SDK są poprawnie zainstalowane zgodnie z wymaganiami w sekcji "Wymagania wstępne" tego artykułu.
 
 ## <a name="next-steps"></a>Następne kroki
 

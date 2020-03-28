@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: Tłumaczenie mowy na mowę C# (.NET Core Windows) — usługa mowy'
+title: 'Szybki start: tłumaczenie mowy na mowę, C# (.NET Core Windows) — usługa mowy'
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -11,19 +11,19 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
 ms.openlocfilehash: 07ed276accfd15f7f4bfbe52bdd9bc82f8d7da8c
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925540"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem upewnij się, że:
+Zanim zaczniesz, upewnij się, że:
 
 > [!div class="checklist"]
-> * [Tworzenie zasobu usługi Azure Speech](../../../../get-started.md)
-> * [Skonfiguruj środowisko deweloperskie i Utwórz pusty projekt](../../../../quickstarts/setup-platform.md?tabs=dotnetcore)
+> * [Tworzenie zasobu mowy platformy Azure](../../../../get-started.md)
+> * [Konfigurowanie środowiska programistycznego i tworzenie pustego projektu](../../../../quickstarts/setup-platform.md?tabs=dotnetcore)
 
 ## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
 
@@ -118,15 +118,15 @@ Przed rozpoczęciem upewnij się, że:
 
 1. Zastąp ciąg `YourServiceRegion`[regionem](~/articles/cognitive-services/Speech-Service/regions.md) skojarzonym z subskrypcją (na przykład `westus` w przypadku subskrypcji bezpłatnej wersji próbnej).
 
-1. Na pasku menu wybierz kolejno opcje **plik** > **Zapisz wszystko**.
+1. Na pasku menu wybierz pozycję Zapisz**wszystkie** **pliki** > .
 
 ## <a name="build-and-run-the-application"></a>Kompilowanie i uruchamianie aplikacji
 
-1. Na pasku menu wybierz kolejno opcje **kompiluj** > **Kompiluj rozwiązanie** , aby skompilować aplikację. Kod powinien teraz zostać skompilowany bez błędów.
+1. Na pasku menu **wybierz** > build**build solution,** aby utworzyć aplikację. Kod powinien teraz zostać skompilowany bez błędów.
 
-1. Wybierz **debuguj** > **Rozpocznij debugowanie** (lub naciśnij klawisz **F5**), aby uruchomić aplikację **HelloWorld** .
+1. Wybierz **debugowanie** > **rozpocznij debugowanie** (lub naciśnij klawisz **F5),** aby uruchomić aplikację **helloworld.**
 
-1. Wymów frazę lub zdanie w języku angielskim. Aplikacja przesyła mowę do usługi mowy, która tłumaczy i przekształca na tekst (w tym przypadku do języka niemieckiego). Usługa mowy wysyła następnie dźwięk, a następnie tekst z powrotem do aplikacji do wyświetlenia.
+1. Wypowiedz zwrot lub zdanie w języku angielskim. Aplikacja przesyła mowę do usługi mowy, która tłumaczy i transkrybuje tekst (w tym przypadku do języka niemieckiego). Usługa mowy następnie wysyła syntetyzowany dźwięk i tekst z powrotem do aplikacji do wyświetlenia.
 
 ````
 Say something...

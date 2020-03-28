@@ -1,5 +1,5 @@
 ---
-title: wyszukiwanie w sieci Web Bing przewodniku szybki start dla biblioteki klienta JavaScript
+title: Szybki start biblioteki klienta JavaScript usługi wyszukiwania w sieci Web usługi Bing
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,20 +9,20 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: 0380dc8d2ff34cf9eecaad063a305491a357ca29
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925643"
 ---
-Wyszukiwanie w sieci Web Bing Biblioteka kliencka ułatwia integrację wyszukiwanie w sieci Web Bing z aplikacją Node. js. Z tego przewodnika Szybki start dowiesz się, jak utworzyć wystąpienie klienta, wysłać żądanie i wyświetlić odpowiedź.
+Biblioteka klienta wyszukiwania sieci Web Bing ułatwia integrację wyszukiwania bing w sieci Web z aplikacją Node.js. Z tego przewodnika Szybki start dowiesz się, jak utworzyć wystąpienie klienta, wysłać żądanie i wyświetlić odpowiedź.
 
-Chcesz zobaczyć kod teraz? Przykłady dla [Wyszukiwanie Bingch bibliotek klienckich dla języka JavaScript](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/tree/master/Samples) są dostępne w witrynie GitHub.
+Chcesz zobaczyć kod teraz? Przykłady [bibliotek klienta wyszukiwania Bing dla języka JavaScript](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/tree/master/Samples) są dostępne w usłudze GitHub.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Oto kilka rzeczy, które są potrzebne przed rozpoczęciem tego przewodnika Szybki start:
 
-* [Środowisko Node.js 6](https://nodejs.org/en/download/) lub nowsze
+* [Node.js 6](https://nodejs.org/en/download/) lub nowsze
 * Klucz subskrypcji  
 
 [!INCLUDE [bing-web-search-quickstart-signup](~/includes/bing-web-search-quickstart-signup.md)]
@@ -102,7 +102,7 @@ Pamiętaj, aby po zakończeniu pracy z tym projektem usunąć klucz subskrypcji 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Przykłady zastosowania zestawu SDK i usług Cognitive Services dla platformy Node.js](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+> [Przykłady zastosowania zestawu SDK dla platformy Node.js usług Cognitive Services](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
 
 ## <a name="see-also"></a>Zobacz też
 

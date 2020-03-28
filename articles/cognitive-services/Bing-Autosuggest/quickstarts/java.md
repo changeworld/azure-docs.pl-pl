@@ -1,26 +1,26 @@
 ---
-title: 'Szybki Start: Sugeruj zapytania wyszukiwania za pomocą interfejsu API REST automatyczne sugerowanie Bing i środowiska Java'
+title: 'Szybki start: sugerowanie zapytań za pomocą interfejsu API REST autosuggest Bing i javy'
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak szybko rozpocząć sugerowanie wyszukiwanych terminów w czasie rzeczywistym za pomocą interfejs API automatycznego sugerowania Bing.
+description: Dowiedz się, jak szybko rozpocząć sugerowanie wyszukiwanych haseł w czasie rzeczywistym za pomocą interfejsu API autosugerowania Bing.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 1593d4079cf7f50d5473f24ecf57351c9d7786e9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b3f279ea50e9923e63f7d6090f4dbaca939eb16c
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75384921"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80238965"
 ---
-# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-java"></a>Szybki Start: Sugeruj zapytania wyszukiwania za pomocą interfejsu API REST automatyczne sugerowanie Bing i środowiska Java
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-java"></a>Szybki start: sugerowanie zapytań za pomocą interfejsu API REST autosuggest Bing i javy
 
 
-Skorzystaj z tego przewodnika Szybki Start, aby rozpocząć wykonywanie wywołań do interfejs API automatycznego sugerowania Bing i uzyskać odpowiedź JSON. Ta prosta aplikacja Java wysyła zapytanie wyszukiwania częściowego do interfejsu API i zwraca sugestie dotyczące wyszukiwania. Chociaż ta aplikacja jest napisana w języku Java, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania. Kod źródłowy dla tego przykładu jest dostępny w witrynie [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingAutosuggestv7.java)
+Użyj tego przewodnika Szybki start, aby rozpocząć nawiązywanie połączeń z interfejsem API autosuggest usługi Bing i uzyskiwanie odpowiedzi JSON. Ta prosta aplikacja Java wysyła częściowe zapytanie wyszukiwania do interfejsu API i zwraca sugestie dotyczące wyszukiwania. Chociaż ta aplikacja jest napisana w języku Java, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania. Kod źródłowy dla tego przykładu jest dostępny w [usłudze GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingAutosuggestv7.java)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -44,7 +44,7 @@ Skorzystaj z tego przewodnika Szybki Start, aby rozpocząć wykonywanie wywoła�
     import com.google.gson.JsonParser;
     ```
 
-2. Utwórz zmienne dla klucza subskrypcji, hosta interfejsu API i ścieżki, [kodu rynku](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)oraz zapytania wyszukiwania. Możesz użyć poniższego globalnego punktu końcowego lub niestandardowego punktu końcowego [poddomeny](../../../cognitive-services/cognitive-services-custom-subdomains.md) , który jest wyświetlany w Azure Portal dla zasobu.
+2. Utwórz zmienne dla klucza subskrypcji, hosta interfejsu API i ścieżki, [kodu rynkowego](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)i zapytania wyszukiwania. Można użyć globalnego punktu końcowego poniżej lub niestandardowego punktu końcowego [poddomeny](../../../cognitive-services/cognitive-services-custom-subdomains.md) wyświetlanego w witrynie Azure portal dla zasobu.
     
     ```java
     static String subscriptionKey = "enter key here";
@@ -71,9 +71,9 @@ public static String prettify(String json_text) {
 
 ## <a name="construct-and-send-the-search-request"></a>Tworzenie i wysyłanie żądania wyszukiwania
 
-1. Utwórz nową metodę o nazwie `get_suggestions()` i wykonaj następujące czynności:
+1. Utwórz nową `get_suggestions()` metodę o nazwie i wykonaj następujące kroki:
 
-   1. Skonstruuj adres URL na potrzeby żądania, łącząc host i ścieżkę interfejsu API i kodując zapytania wyszukiwania. Przed dołączeniem zapytania należy pamiętać o adresie URL. Utwórz ciąg parametrów dla zapytania, dołączając kod rynkowy do parametru `mkt=` i zapytanie do parametru `q=`.
+   1. Skonstruuj adres URL na potrzeby żądania, łącząc host i ścieżkę interfejsu API i kodując zapytania wyszukiwania. Pamiętaj, aby zakodować kwerendę w adresie URL przed jej dołączeniem. Utwórz ciąg parametrów dla kwerendy, dołączając `mkt=` kod rynku do `q=` parametru i kwerendę do parametru.
     
       ```java
   
@@ -84,7 +84,7 @@ public static String prettify(String json_text) {
       }
       ```
     
-   2. Utwórz nowy adres URL dla żądania z hostem interfejsu API, ścieżką i utworzonymi powyżej parametrami. 
+   2. Utwórz nowy adres URL żądania za pomocą hosta interfejsu API, ścieżki i parametrów utworzonych powyżej. 
     
        ```java
        //...
@@ -92,7 +92,7 @@ public static String prettify(String json_text) {
        //...
        ```
     
-   3. Utwórz obiekt `HttpsURLConnection` i użyj `openConnection()`, aby utworzyć połączenie. Jako metodę żądania ustaw `GET` i dodaj klucz subskrypcji do nagłówka `Ocp-Apim-Subscription-Key`.
+   3. Utwórz `HttpsURLConnection` obiekt i `openConnection()` użyj do utworzenia połączenia. Jako metodę żądania ustaw `GET` i dodaj klucz subskrypcji do nagłówka `Ocp-Apim-Subscription-Key`.
 
       ```java
        //...
@@ -103,7 +103,7 @@ public static String prettify(String json_text) {
        //...
       ```
 
-   4. Przeczytaj w odpowiedzi interfejsu API do `StringBuilder`. Po przechwyceniu odpowiedzi Zamknij strumień `InputStreamReader` i zwróć odpowiedź.
+   4. Przeczytaj w odpowiedzi interfejsu `StringBuilder`API na . Po przechwyceniu odpowiedzi zamknij `InputStreamReader` strumień i zwróć odpowiedź.
 
        ```java
        //...
@@ -119,7 +119,7 @@ public static String prettify(String json_text) {
        return response.toString();
        ```
 
-2. W funkcji Main aplikacji Wywołaj `get_suggestions()`i wydrukuj odpowiedź przy użyciu `prettify()`.
+2. W głównej funkcji aplikacji zadzwoń `get_suggestions()`i wydrukuj `prettify()`odpowiedź za pomocą programu .
     
     ```java
     public static void main(String[] args) {
@@ -204,7 +204,7 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Tworzenie jednostronicowej aplikacji internetowej](../tutorials/autosuggest.md)
+> [Tworzenie jednostronicowej aplikacji sieci Web](../tutorials/autosuggest.md)
 
 - [Czym jest funkcja automatycznego sugerowania Bing?](../get-suggested-search-terms.md)
 - [Bing Autosuggest API v7 reference (Dokumentacja dotycząca automatycznego sugerowania Bing w wersji 7)](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

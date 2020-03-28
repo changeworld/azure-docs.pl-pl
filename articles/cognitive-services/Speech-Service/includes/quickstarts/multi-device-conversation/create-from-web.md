@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 01/15/2020
 ms.author: ralphe
 ms.openlocfilehash: 9ed32feaf68a7cae4d2a847aac19458fe0e61890
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76264571"
 ---
-3. Musisz utworzyć konwersację, którą możesz dołączyć:
-    1. Uruchom przeglądarkę i przejdź do: [https://translator.microsoft.com](https://translator.microsoft.com).
-    1. Kliknij pozycję "Rozpocznij KONWERSACJĘ".
+3. Musisz utworzyć konwersację, do której możesz dołączyć:
+    1. Uruchom przeglądarkę i [https://translator.microsoft.com](https://translator.microsoft.com)przejdź do: .
+    1. Kliknij na "Rozpocznij rozmowę".
     1. Zaloguj się przy użyciu dowolnej z dostępnych opcji.
     1. Wpisz nazwę (np. hosta).
     1. Wybierz język (np. angielski).
-    1. Wybierz przycisk **wprowadź** .
-    1. Zanotuj kod konwersacji w górnej części strony.
+    1. Wybierz przycisk **Enter.**
+    1. Zanotuj kod konwersacji u góry strony.
 
     > [!TIP]
-    > Jeśli używasz przycisku Kopiuj na stronie sieci Web, pamiętaj o usunięciu `translate.it/` na początku. Wymagany jest tylko 5-znakowy identyfikator konwersacji (przykład: ABCD).
+    > Jeśli używasz przycisku kopiowania na stronie internetowej, upewnij się, że usuniesz go `translate.it/` na początku. Potrzebujesz tylko 5 znaków konwersacji ID (przykład: ABCDE).

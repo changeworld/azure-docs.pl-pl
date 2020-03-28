@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: wysyłanie żądania wyszukiwania do interfejsu API REST przy użyciu języka Ruby-wyszukiwanie jednostek Bing'
+title: 'Szybki start: wysyłanie żądania wyszukiwania do interfejsu API REST przy użyciu funkcji Ruby - Bing Entity Search'
 titleSuffix: Azure Cognitive Services
 description: Skorzystaj z tego przewodnika Szybki Start, aby wysyłać żądania do interfejs API REST wyszukiwania jednostek Bing przy użyciu języka Ruby i otrzymywać odpowiedzi w formacie JSON.
 services: cognitive-services
@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 12/11/2019
 ms.author: aahi
 ms.openlocfilehash: 69e4d992e2ef89b4d3d9408d6e50591fb8166c79
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75385783"
 ---
 # <a name="quickstart-for-bing-entity-search-api-with-ruby"></a>Przewodnik Szybki start dotyczący korzystania z interfejsu API wyszukiwania jednostek Bing za pomocą języka Ruby
@@ -25,7 +25,7 @@ Chociaż ta aplikacja jest napisana w języku Ruby, interfejs API jest usługą 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Ruby 2.4](https://www.ruby-lang.org/en/downloads/) lub nowsza wersja.
+* [Ruby 2.4](https://www.ruby-lang.org/en/downloads/) lub nowsze.
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
@@ -39,7 +39,7 @@ Chociaż ta aplikacja jest napisana w języku Ruby, interfejs API jest usługą 
     require 'json'
     ```
 
-2. Utwórz zmienne dla swojego punktu końcowego interfejsu API, adresu URL wyszukiwania wiadomości, swojego klucza subskrypcji i zapytania wyszukiwania. Możesz użyć poniższego globalnego punktu końcowego lub niestandardowego punktu końcowego [poddomeny](../../../cognitive-services/cognitive-services-custom-subdomains.md) , który jest wyświetlany w Azure Portal dla zasobu.
+2. Utwórz zmienne dla swojego punktu końcowego interfejsu API, adresu URL wyszukiwania wiadomości, swojego klucza subskrypcji i zapytania wyszukiwania. Można użyć globalnego punktu końcowego poniżej lub niestandardowego punktu końcowego [poddomeny](../../../cognitive-services/cognitive-services-custom-subdomains.md) wyświetlanego w witrynie Azure portal dla zasobu.
     
     ```ruby
     host = 'https://api.cognitive.microsoft.com'
@@ -145,5 +145,5 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 > [!div class="nextstepaction"]
 > [Tworzenie jednostronicowej aplikacji internetowej](../tutorial-bing-entities-search-single-page-app.md)
 
-* [Czym jest interfejs API wyszukiwania jednostek Bing](../search-the-web.md)
+* [Co to jest interfejs API wyszukiwania jednostek Bing](../search-the-web.md)
 * [Dokumentacja interfejsu API wyszukiwania jednostek Bing](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)

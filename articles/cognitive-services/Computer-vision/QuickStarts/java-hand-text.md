@@ -1,7 +1,7 @@
 ---
-title: 'Szybki Start: przetwarzanie obrazów 2,0 i 2,1 — Wyodrębnij tekst drukowany i napisany ręcznie — REST, Java'
+title: 'Szybki start: Wizja komputerowa 2.0 i 2.1 - Wyodrębnij tekst drukowany i odręczny - REST, Java'
 titleSuffix: Azure Cognitive Services
-description: W tym przewodniku szybki start wyodrębnisz drukowany i odręczny tekst z obrazu przy użyciu interfejs API przetwarzania obrazów w języku Java.
+description: W tym przewodniku Szybki start można wyodrębnić tekst drukowany i odręczny z obrazu przy użyciu interfejsu API przetwarzania obrazów z funkcją Java.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -12,41 +12,41 @@ ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 15c84b0c4cd4311300b951c3bf86b2bd62d48bfd
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77566135"
 ---
-# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-20-and-21-rest-api-and-java"></a>Szybki Start: Wyodrębnianie wydrukowanych i odręcznych tekstu przy użyciu przetwarzanie obrazów 2,0 i 2,1 interfejsu API REST i języka Java
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-20-and-21-rest-api-and-java"></a>Szybki start: wyodrębnianie drukowanego i odręcznego tekstu za pomocą interfejsu API Computer Vision 2.0 i 2.1 REST i Java
 
-W tym przewodniku Szybki Start zostanie wyodrębniony drukowany i/lub odręczny tekst z obrazu przy użyciu interfejsu API REST przetwarzanie obrazów. Przy użyciu metod operacji odczytu i [odczytu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) [partii](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) możesz wykryć tekst w obrazie i wyodrębnić rozpoznane znaki do strumienia znaków, który można odczytać. Interfejs API określi model rozpoznawania, który ma być używany dla każdego wiersza tekstu, aby obsługiwał obrazy zarówno w postaci tekstu, jak i w postaci odręcznej.
+W tym przewodniku Szybki start można wyodrębnić wydrukowany i/lub odręczny tekst z obrazu za pomocą interfejsu API REST wizji komputerowej. Dzięki metodom Wynik operacji odczytu i [odczytu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) [wsadowego](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) można wykryć tekst na obrazie i wyodrębnić rozpoznane znaki do strumienia znaków czytelnego maszynowo. Interfejs API określi, który model rozpoznawania ma być używany dla każdego wiersza tekstu, dzięki czemu obsługuje obrazy z tekstem drukowanym i odręcznym.
 
-W porównaniu do przetwarzanie obrazów 2,0 i 2,1, przetwarzanie obrazów 3,0 publiczna wersja zapoznawcza zawiera następujące informacje:
+W porównaniu z programem Computer Vision 2.0 i 2.1, funkcja Publicznego Podglądu 3.0 zapewnia:
 
-* jeszcze lepsza dokładność
-* zmieniony format danych wyjściowych
-* wynik zaufania dla wyrazów
-* Obsługa języków hiszpańskich i angielskich przy użyciu dodatkowego parametru języka
+* jeszcze większa dokładność
+* zmieniony format wyjściowy
+* ocena zaufania dla słów
+* obsługa zarówno języka hiszpańskiego, jak i angielskiego z dodatkowym parametrem językowym
 
 #### <a name="version-2"></a>[Wersja 2](#tab/version-2)
 
 > [!IMPORTANT]
-> Metoda [odczytywania wsadowego](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) jest uruchamiana asynchronicznie. Ta metoda nie zwraca żadnych informacji w treści pomyślnej odpowiedzi. Zamiast tego metoda odczytywania wsadowego zwraca identyfikator URI w wartości pola nagłówka odpowiedzi `Operation-Location`. Następnie można wywołać ten identyfikator URI, który reprezentuje interfejs API [wyniku operacji odczytu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) , aby sprawdzić stan i zwrócić wyniki wywołania metody odczytu wsadowego.
+> Metoda [odczytu partii](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) działa asynchronicznie. Ta metoda nie zwraca żadnych informacji w treści pomyślnej odpowiedzi. Zamiast tego metoda odczytu wsadowego zwraca identyfikator `Operation-Location` URI w wartości pola nagłówka odpowiedzi. Następnie można wywołać ten identyfikator URI, który reprezentuje interfejs API [wynik operacji odczytu,](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) aby sprawdzić stan i zwrócić wyniki wywołania metody odczytu wsadowego.
 
-#### <a name="version-3-public-preview"></a>[3 (publiczna wersja zapoznawcza)](#tab/version-3)
+#### <a name="version-3-public-preview"></a>[Wersja 3 (publiczna wersja zapoznawcza)](#tab/version-3)
 
 > [!IMPORTANT]
-> Metoda [odczytywania wsadowego](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d986960601faab4bf452005) jest uruchamiana asynchronicznie. Ta metoda nie zwraca żadnych informacji w treści pomyślnej odpowiedzi. Zamiast tego metoda odczytywania wsadowego zwraca identyfikator URI w wartości pola nagłówka odpowiedzi `Operation-Location`. Następnie można wywołać ten identyfikator URI, który reprezentuje interfejs API [wyniku operacji odczytu](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d9869604be85dee480c8750) , aby sprawdzić stan i zwrócić wyniki wywołania metody odczytu wsadowego.
+> Metoda [odczytu partii](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d986960601faab4bf452005) działa asynchronicznie. Ta metoda nie zwraca żadnych informacji w treści pomyślnej odpowiedzi. Zamiast tego metoda odczytu wsadowego zwraca identyfikator `Operation-Location` URI w wartości pola nagłówka odpowiedzi. Następnie można wywołać ten identyfikator URI, który reprezentuje interfejs API [wynik operacji odczytu,](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d9869604be85dee480c8750) aby sprawdzić stan i zwrócić wyniki wywołania metody odczytu wsadowego.
 
 ---
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) przed rozpoczęciem.
 
 - Musisz mieć zainstalowaną platformę [Java&trade; i zestaw Standard Edition Development Kit 7 lub 8](https://aka.ms/azure-jdks) (JDK 7 lub 8).
-- Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Możesz uzyskać bezpłatny klucz wersji próbnej z usługi [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Lub postępuj zgodnie z instrukcjami w temacie [Tworzenie konta Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , aby subskrybować przetwarzanie obrazów i uzyskać klucz. Następnie [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla ciągu punktu końcowego klucza i usługi, odpowiednio nazwane `COMPUTER_VISION_SUBSCRIPTION_KEY` i `COMPUTER_VISION_ENDPOINT`.
+- Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Możesz uzyskać bezpłatny klucz próbny z [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Możesz też postępować zgodnie z instrukcjami w aplikacji [Utwórz konto usług Cognitive Services,](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) aby zasubskrybować usługę Computer Vision i uzyskać klucz. Następnie [należy utworzyć zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla ciągu `COMPUTER_VISION_SUBSCRIPTION_KEY` punktu `COMPUTER_VISION_ENDPOINT`końcowego klucza i usługi, odpowiednio o nazwie i ,.
 
 ## <a name="create-and-run-the-sample-application"></a>Tworzenie i uruchamianie przykładowej aplikacji
 
@@ -76,8 +76,8 @@ Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
    import org.json.JSONObject;
    ```
 
-1. Zastąp klasę publiczną `Main` poniższym kodem.
-1. Opcjonalnie należy zamienić wartość `imageToAnalyze` na adres URL innego obrazu, z którego ma zostać wyodrębniony tekst.
+1. Zastąp klasę publiczną `Main` następującym kodem.
+1. Opcjonalnie zastąp `imageToAnalyze` wartość z adresem URL innego obrazu, z którego chcesz wyodrębnić tekst.
 1. Zapisz, a następnie skompiluj projekt języka Java.
 1. Jeśli używasz środowiska IDE, uruchom klasę `Main`. W przeciwnym razie otwórz okno wiersza polecenia, a następnie użyj polecenia `java`, aby uruchomić skompilowaną klasę. Na przykład `java Main`.
 
@@ -192,7 +192,7 @@ public class Main {
 }
 ```
 
-#### <a name="version-3-public-preview"></a>[3 (publiczna wersja zapoznawcza)](#tab/version-3)
+#### <a name="version-3-public-preview"></a>[Wersja 3 (publiczna wersja zapoznawcza)](#tab/version-3)
 
 Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
 
@@ -218,9 +218,9 @@ Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
     import org.json.JSONObject;
     ```
 
-1. Zastąp klasę publiczną `Main` poniższym kodem.
-1. Opcjonalnie należy zamienić wartość `language` na język, który ma zostać rozpoznany. Akceptowane wartości to "en" dla języka angielskiego i "es" dla języka hiszpańskiego.
-1. Opcjonalnie należy zamienić wartość `imageToAnalyze` na adres URL innego obrazu, z którego ma zostać wyodrębniony tekst.
+1. Zastąp klasę publiczną `Main` następującym kodem.
+1. Opcjonalnie zastąp `language` wartość języka, który chcesz rozpoznać. Akceptowane wartości to "en" dla języka angielskiego i "es" dla języka hiszpańskiego.
+1. Opcjonalnie zastąp `imageToAnalyze` wartość z adresem URL innego obrazu, z którego chcesz wyodrębnić tekst.
 1. Zapisz, a następnie skompiluj projekt języka Java.
 1. Jeśli używasz środowiska IDE, uruchom klasę `Main`. W przeciwnym razie otwórz okno wiersza polecenia, a następnie użyj polecenia `java`, aby uruchomić skompilowaną klasę. Na przykład `java Main`.
 
@@ -456,7 +456,7 @@ Text recognition result response:
 }
 ```
 
-#### <a name="version-3-public-preview"></a>[3 (publiczna wersja zapoznawcza)](#tab/version-3)
+#### <a name="version-3-public-preview"></a>[Wersja 3 (publiczna wersja zapoznawcza)](#tab/version-3)
 
 ```json
 {

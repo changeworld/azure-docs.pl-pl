@@ -1,7 +1,7 @@
 ---
-title: 'Szybki Start: pobieranie długości zdań — interfejs API tłumaczenia tekstu w usłudze Translator'
+title: 'Szybki start: pobierz długości zdań — interfejs API tekstu tłumacza'
 titleSuffix: Azure Cognitive Services
-description: W tym przewodniku szybki start dowiesz się, jak określić długość zdania przy użyciu interfejs API tłumaczenia tekstu w usłudze Translator.
+description: W tym przewodniku Szybki start dowiesz się, jak określić długość zdania przy użyciu interfejsu API tekstu tłumacza.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -12,15 +12,15 @@ ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
 ms.openlocfilehash: b2569859a039739f2804a180be44e621421f0cd2
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77525119"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length"></a>Szybki Start: Użyj interfejs API tłumaczenia tekstu w usłudze Translator, aby określić długość zdania
+# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length"></a>Szybki start: określanie długości zdania za pomocą interfejsu API tekstu tłumacza
 
-W tym przewodniku szybki start dowiesz się, jak określić długość zdań przy użyciu interfejs API tłumaczenia tekstu w usłudze Translator.
+W tym przewodniku Szybki start dowiesz się, jak określić długość zdań za pomocą interfejsu API tekstu tłumacza.
 
 Ten przewodnik Szybki start wymaga [konta usługi Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z zasobem tłumaczenia tekstu w usłudze Translator. Jeśli nie masz konta, możesz użyć [bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/), aby uzyskać klucz subskrypcji.
 

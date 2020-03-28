@@ -1,7 +1,7 @@
 ---
-title: 'Szybki Start: Rozpoznawanie mowy przechowywanej w usłudze BLOB Storage'
+title: 'Szybki start: rozpoznawanie mowy przechowywanej w magazynie obiektów blob'
 titleSuffix: Azure Cognitive Services
-description: W tym przewodniku szybki start użyjemy interfejsu API REST transkrypcji usługi Batch do asynchronicznego rozpoznawania mowy przechowywanej w obiekcie blob SAS.
+description: W tym przewodniku Szybki start użyjesz interfejsu API REST transkrypcji partii do asynchronicznie rozpoznać mowę przechowywaną w obiekcie blob sygnatury dostępu Współdzielonego.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -12,13 +12,13 @@ ms.date: 02/10/2020
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: df06d41e72026295de4673fd272c07d510e639fd
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77119383"
 ---
-# <a name="quickstart-recognize-speech-stored-in-blob-storage"></a>Szybki Start: Rozpoznawanie mowy przechowywanej w usłudze BLOB Storage
+# <a name="quickstart-recognize-speech-stored-in-blob-storage"></a>Szybki start: rozpoznawanie mowy przechowywanej w magazynie obiektów blob
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Header](../includes/quickstarts/from-blob/header.md)]

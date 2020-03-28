@@ -1,7 +1,7 @@
 ---
-title: 'Szybki Start: uzyskiwanie Aktualności przy użyciu wyszukiwanie wiadomości Bing interfejsu API REST i języka go'
+title: 'Szybki start: otrzymuj wiadomości za pomocą interfejsu API REST wyszukiwania wiadomości Bing i go'
 titleSuffix: Azure Cognitive Services
-description: Ten przewodnik Szybki Start używa języka go do wywoływania interfejs API wyszukiwania wiadomości Bing. Wyniki obejmują nazwy i adresy URL źródeł wiadomości identyfikowanych przez ciąg zapytania.
+description: Ten przewodnik Szybki start używa języka Go do wywoływania interfejsu API wyszukiwania wiadomości Bing. Wyniki obejmują nazwy i adresy URL źródeł wiadomości identyfikowanych przez ciąg zapytania.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,27 +10,27 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: a72859e378bc1f97ebaed6a11ea3b250a33651d5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: aaeb905c9cdc1e7b74e21d3c191f6a24a94fcd7d
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448524"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80053809"
 ---
-# <a name="quickstart-get-news-results-using-the-bing-news-search-rest-api-and-go"></a>Szybki Start: uzyskiwanie Aktualności wyników przy użyciu interfejsu API REST wyszukiwanie wiadomości Bing i języka go
+# <a name="quickstart-get-news-results-using-the-bing-news-search-rest-api-and-go"></a>Szybki start: wyniki wiadomości za pomocą interfejsu API REST wyszukiwania wiadomości Bing i go
 
-Ten przewodnik Szybki Start używa języka go do wywoływania interfejs API wyszukiwania wiadomości Bing. Wyniki obejmują nazwy i adresy URL źródeł wiadomości identyfikowanych przez ciąg zapytania.
+Ten przewodnik Szybki start używa języka Go do wywoływania interfejsu API wyszukiwania wiadomości Bing. Wyniki obejmują nazwy i adresy URL źródeł wiadomości identyfikowanych przez ciąg zapytania.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* Instalowanie [plików binarnych języka go](https://golang.org/dl/)
-* Zainstaluj bibliotekę przejdź do Spew, aby wyświetlić wyniki
-    * Zainstaluj tę bibliotekę: `$ go get -u https://github.com/davecgh/go-spew`
+* Instalowanie [plików binarnych Go](https://golang.org/dl/)
+* Zainstaluj bibliotekę go-spew, aby była ładna drukarka, aby wyświetlić wyniki
+    * Zainstaluj tę bibliotekę:`$ go get -u https://github.com/davecgh/go-spew`
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
 ## <a name="create-a-project-and-import-libraries"></a>Tworzenie projektu i importowanie bibliotek
 
-Utwórz nowy projekt przejdź do środowiska IDE lub edytora. Następnie zaimportuj `net/http` dla żądań, `ioutil` odczytać odpowiedź i `encoding/json` do obsługi tekstu JSON wyników. Biblioteka go-Spew jest wymagana do analizowania kodu JSON. 
+Utwórz nowy projekt Go w idei lub edytorze. Następnie `net/http` zaimportuj dla żądań, `ioutil` aby odczytać odpowiedź i `encoding/json` obsłużyć tekst JSON wyników. Biblioteka go-spew jest potrzebna do analizy JSON. 
 
 ```go
 package main
@@ -45,9 +45,9 @@ import (
 
 ```
 
-## <a name="create-a-struct-to-format-the-news-search-results"></a>Utwórz strukturę służącą do formatowania wyników wyszukiwania wiadomości
+## <a name="create-a-struct-to-format-the-news-search-results"></a>Tworzenie struktury w celu formatowania wyników wyszukiwania wiadomości
 
-Struktura `NewsAnswer` formatuje dane zawarte w odpowiedzi. KOD JSON odpowiedzi jest wielopoziomowy i dość skomplikowany.  W poniższej implementacji przedstawiono podstawowe informacje dotyczące programu.
+Struktura `NewsAnswer` formatuje dane zawarte w odpowiedzi. Odpowiedź JSON jest wielopoziomowa i dość złożona.  Następujące wdrożenie obejmuje podstawowe elementy.
 
 ```go
 // This struct formats the answer provided by the Bing News Search API.
@@ -73,13 +73,13 @@ type NewsAnswer struct {
                 Width   int  `json: "width"`
                 Height  int   `json: "height"`
             } `json: "thumbnail"` 
+            } `json: "image"` 
             Description  string  `json: "description"`
             Provider  []struct   {
                 Type   string    `json: "_type"`
                 Name  string     `json: "name"`
             } `json: "provider"` 
             DatePublished   string   `json: "datePublished"`
-        } `json: "image"` 
     } `json: "value"` 
 }
 
@@ -87,7 +87,7 @@ type NewsAnswer struct {
 
 ## <a name="declare-the-main-function-and-define-variables"></a>Deklarowanie funkcji main i definiowanie zmiennych  
 
-Poniższy kod deklaruje główną funkcję i przypisuje wymagane zmienne. Upewnij się, że punkt końcowy jest poprawny, i zamień wartość `token` na odpowiedni klucz subskrypcji ze swojego konta platformy Azure. Możesz użyć poniższego globalnego punktu końcowego lub niestandardowego punktu końcowego [poddomeny](../../cognitive-services/cognitive-services-custom-subdomains.md) , który jest wyświetlany w Azure Portal dla zasobu.
+Poniższy kod deklaruje funkcję główną i przypisuje wymagane zmienne. Upewnij się, że punkt końcowy jest poprawny, i zamień wartość `token` na odpowiedni klucz subskrypcji ze swojego konta platformy Azure. Można użyć globalnego punktu końcowego poniżej lub niestandardowego punktu końcowego [poddomeny](../../cognitive-services/cognitive-services-custom-subdomains.md) wyświetlanego w witrynie Azure portal dla zasobu.
 
 ```go
 func main() {
@@ -106,9 +106,9 @@ func main() {
 }
 ```
 
-## <a name="query-and-header"></a>Zapytanie i nagłówek
+## <a name="query-and-header"></a>Kwerenda i nagłówek
 
-Dodawanie ciągu zapytania i nagłówka klucza dostępu
+Dodawanie ciągu zapytania i nagłówka klawisza dostępu
 
 ```go
 // Add the query to the request.  
@@ -121,9 +121,9 @@ req.Header.Add("Ocp-Apim-Subscription-Key", token)
 
 ```
 
-## <a name="get-request"></a>Pobierz żądanie
+## <a name="get-request"></a>Pobierz wniosek
 
-Utwórz klienta i Wyślij żądanie Get. 
+Utwórz klienta i wyślij żądanie Pobierz. 
 
 ```go
 // Instantiate a client.  
@@ -139,7 +139,7 @@ if err != nil {
 
 ## <a name="send-the-request"></a>Wysyłanie żądania
 
-Wyślij żądanie i przeczytaj wyniki przy użyciu `ioutil`.
+Wyślij żądanie i przeczytaj `ioutil`wyniki za pomocą .
 
 ```go
 resp, err := client.Do(req)
@@ -160,7 +160,7 @@ if err != nil {
 
 ## <a name="handle-the-response"></a>Obsługa odpowiedzi
 
-Funkcja `Unmarshall` wyodrębnia informacje z tekstu JSON zwróconego przez interfejs API wyszukiwanie wiadomości.  Następnie można wyświetlić węzły z wyników przy użyciu `go-spew` całkiem Printer.
+Funkcja `Unmarshall` wyodrębnia informacje z tekstu JSON zwróconego przez interfejs API wyszukiwania wiadomości.  Następnie można wyświetlić węzły z `go-spew` wyników za pomocą ładnej drukarki.
 
 ```go
 // Create a new answer object 

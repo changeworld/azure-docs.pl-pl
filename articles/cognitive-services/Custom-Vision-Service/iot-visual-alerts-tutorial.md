@@ -1,7 +1,7 @@
 ---
-title: 'Samouczek: przykład alertów wizualnych IoT'
+title: 'Samouczek: Przykład alertów wizualnych IoT'
 titleSuffix: Azure Cognitive Services
-description: W tym samouczku użyjesz Custom Vision z urządzeniem IoT, aby rozpoznać i zgłosić Stany wizualne z kanału informacyjnego wideo aparatu.
+description: W tym samouczku używasz funkcji Custom Vision z urządzeniem IoT do rozpoznawania i raportowania stanów wizualnych z kanału wideo kamery.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,136 +11,136 @@ ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: 9f3802ada79ee87d1a04634f7caac3b1b4286dce
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74978036"
 ---
-# <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Samouczek: używanie Custom Vision z urządzeniem IoT do zgłaszania Stanów wizualnych
+# <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Samouczek: Raportowanie stanów wizualnych za pomocą funkcji Niestandardowych wizji z urządzeniem IoT
 
-Ta przykładowa aplikacja ilustruje, jak używać Custom Vision do uczenia urządzenia za pomocą aparatu do wykrywania stanów wizualnych. Ten scenariusz wykrywania można uruchomić na urządzeniu IoT przy użyciu modelu ONNX wyeksportowanego z usługi Custom Vision.
+Ta przykładowa aplikacja ilustruje, jak używać funkcji Custom Vision do szkolenia urządzenia z kamerą w celu wykrywania stanów wizualnych. Ten scenariusz wykrywania można uruchomić na urządzeniu IoT przy użyciu modelu ONNX wyeksportowanego z usługi Custom Vision.
 
-Stan wizualny opisuje zawartość obrazu: puste pomieszczenie lub pomieszczenie z osobami, pustą i niedrogami z ciężarówką i tak dalej. Na poniższej ilustracji widać, że aplikacja zostanie wykryta, gdy banan lub Apple zostanie umieszczony przed kamerą.
+Stan wizualny opisuje zawartość obrazu: pusty pokój lub pokój z ludźmi, pusty podjazd lub podjazd z ciężarówką i tak dalej. Na poniższej ilustracji możesz zobaczyć, jak aplikacja wykrywa, kiedy banan lub jabłko jest umieszczone przed kamerą.
 
-![Animacja interfejsu użytkownika z oznaczeniem owocu przed kamerą](./media/iot-visual-alerts-tutorial/scoring.gif)
+![Animacja interfejsu użytkownika oznaczającego owoce przed kamerą](./media/iot-visual-alerts-tutorial/scoring.gif)
 
 Ten samouczek przedstawia sposób wykonania następujących czynności:
 > [!div class="checklist"]
-> * Skonfiguruj przykładową aplikację do używania własnych zasobów Custom Vision i IoT Hub.
-> * Użyj aplikacji do uczenia projektu Custom Vision.
-> * Użyj aplikacji do oceny nowych obrazów w czasie rzeczywistym i wysłania wyników do platformy Azure.
+> * Skonfiguruj przykładową aplikację do używania własnych zasobów usługi Custom Vision i Usługi IoT Hub.
+> * Użyj aplikacji, aby wyszkolić swój projekt Custom Vision.
+> * Użyj aplikacji, aby zdobyć nowe obrazy w czasie rzeczywistym i wysłać wyniki na platformę Azure.
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/). 
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * [!INCLUDE [create-resources](includes/create-resources.md)]
     > [!IMPORTANT]
-    > Ten projekt musi być projektem klasyfikacji obrazu **kompaktowego** , ponieważ będziemy eksportować model do ONNX w późniejszym czasie.
-* Należy również [utworzyć zasób IoT Hub](https://ms.portal.azure.com/#create/Microsoft.IotHub) na platformie Azure.
-* [Program Visual Studio 2015 lub nowszy](https://www.visualstudio.com/downloads/)
-* Opcjonalnie urządzenie IoT z systemem Windows 10 IoT Core w wersji 17763 lub nowszej. Możesz również uruchomić aplikację bezpośrednio z komputera.
-   * W przypadku Raspberry Pi 2 i 3 można skonfigurować system Windows 10 bezpośrednio z poziomu aplikacji pulpitu nawigacyjnego IoT. W przypadku innych urządzeń, takich jak DrangonBoard, należy ją wypróbować za pomocą [metody EMMC](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup#flashing-with-emmc-for-dragonboard-410c-other-qualcomm-devices). Jeśli potrzebujesz pomocy przy konfigurowaniu nowego urządzenia, zobacz [Konfigurowanie urządzenia](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup) w dokumentacji systemu Windows IoT.
+    > Ten projekt musi być projekt klasyfikacji obrazu **Compact,** ponieważ będziemy eksportowania modelu do ONNX później.
+* Należy również utworzyć [zasób Usługi IoT Hub](https://ms.portal.azure.com/#create/Microsoft.IotHub) na platformie Azure.
+* [Visual Studio 2015 lub nowsze](https://www.visualstudio.com/downloads/)
+* Opcjonalnie urządzenie IoT z systemem Windows 10 IoT Core w wersji 17763 lub nowszej. Aplikację można również uruchomić bezpośrednio z komputera.
+   * W przypadku Raspberry Pi 2 i 3 system Windows 10 można skonfigurować bezpośrednio z aplikacji Pulpit nawigacyjny IoT. W przypadku innych urządzeń, takich jak DrangonBoard, musisz go flashować za pomocą [metody eMMC.](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup#flashing-with-emmc-for-dragonboard-410c-other-qualcomm-devices) Jeśli potrzebujesz pomocy przy konfigurowaniu nowego urządzenia, zobacz [Konfigurowanie urządzenia](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup) w dokumentacji IoT systemu Windows.
 
-## <a name="about-the-visual-alerts-app"></a>Informacje o aplikacji alertów wizualnych
+## <a name="about-the-visual-alerts-app"></a>Informacje o aplikacji Alerty wizualne
 
-Aplikacja alertów wizualnych IoT działa w pętli ciągłej, przełączając się w cztery różne stany zgodnie z potrzebami:
+Aplikacja Alerty wizualne IoT działa w pętli ciągłej, przełączając się między czterema różnymi stanami:
 
-* **Brak modelu**: stan No-op. Aplikacja będzie w sposób ciągły w stanie uśpienia przez jedną sekundę i sprawdzić aparat.
-* **Przechwytywanie obrazów szkoleniowych**: w tym stanie aplikacja przechwytuje obraz i przekazuje go jako obraz szkoleniowy do docelowego projektu Custom Vision. Aplikacja stanie się następnie oduśpienia dla 500 MS i powtarza operację do momentu przechwycenia ustawionej docelowej liczby obrazów. Następnie wyzwala szkolenie dotyczące modelu Custom Vision.
-* **Oczekiwanie na model szkolony**: w tym stanie aplikacja wywołuje interfejs API Custom Vision co sekundę, aby sprawdzić, czy projekt docelowy zawiera przeszkolone iteracje. Gdy go znajdzie, pobiera odpowiedni model ONNX do pliku lokalnego i przełącza do stanu **oceniania** .
-* **Ocenianie**: w tym stanie aplikacja używa systemu Windows ml do oceny pojedynczej ramki z kamery względem lokalnego modelu ONNX. Klasyfikacja obrazu z wynikiem jest wyświetlana na ekranie i wysyłana jako komunikat do IoT Hub. Aplikacja zostanie przechodzenia do trybu uśpienia dla jednej sekundy przed rozpoczęciem tworzenia nowego obrazu.
+* **Brak modelu:** Stan no-op. Aplikacja będzie stale spać przez jedną sekundę i sprawdzać aparat.
+* **Przechwytywanie obrazów szkoleniowych:** W tym stanie aplikacja przechwytuje obraz i przesyła go jako obraz szkolenia do docelowego projektu niestandardowej wizji. Następnie aplikacja przeszywa przez 500 ms i powtarza operację, dopóki nie zostanie przechwycona ustawiona liczba docelowa obrazów. Następnie wyzwala szkolenie modelu niestandardowych wizji.
+* **Oczekiwanie na przeszkolony model:** W tym stanie aplikacja wywołuje interfejs API niestandardowej wizji co sekundę, aby sprawdzić, czy projekt docelowy zawiera uszkodzone iteracji. Gdy go znajdzie, pobiera odpowiedni model ONNX do pliku lokalnego i przełącza się do stanu **Oceniania.**
+* **Scoring:** W tym stanie aplikacja używa systemu Windows ML do oceny pojedynczej klatki z kamery względem lokalnego modelu ONNX. Wynikowa klasyfikacja obrazu jest wyświetlana na ekranie i wysyłana jako wiadomość do centrum IoT Hub. Aplikacja następnie przeszukuje przez jedną sekundę przed punktowaniem nowego obrazu.
 
-## <a name="understand-the-code-structure"></a>Zrozumienie struktury kodu
+## <a name="understand-the-code-structure"></a>Opis struktury kodu
 
-Poniższe pliki obsługują najważniejsze funkcje aplikacji.
+Następujące pliki obsługują główne funkcje aplikacji.
 
 | Plik | Opis |
 |-------------|-------------|
-| [MainPage. XAML](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/MainPage.xaml) | Ten plik definiuje interfejs użytkownika XAML. Obsługuje kontrolkę kamera sieci Web i zawiera etykiety używane do aktualizacji stanu.|
-| [MainPage.xaml.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/MainPage.xaml.cs) | Ten kod steruje zachowaniem interfejsu użytkownika XAML. Zawiera kod przetwarzania maszynowego stanu.|
-| [CustomVision\CustomVisionServiceWrapper.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/CustomVision/CustomVisionServiceWrapper.cs) | Ta klasa jest otoką obsługującą integrację z Custom Vision Service.|
-| [CustomVision\CustomVisionONNXModel.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/CustomVision/CustomVisionONNXModel.cs) | Ta klasa jest otoką obsługującą integrację z systemem Windows ML na potrzeby ładowania modelu ONNX i przetwarzania obrazów.|
-| [IoTHub\IotHubWrapper.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/IoTHub/IotHubWrapper.cs) | Ta klasa jest otoką, która obsługuje integrację z IoT Hub na potrzeby przekazywania wyników oceniania do platformy Azure.|
+| [Strona MainPage.xaml](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/MainPage.xaml) | Ten plik definiuje interfejs użytkownika XAML. Obsługuje sterowanie kamerą internetową i zawiera etykiety używane do aktualizacji stanu.|
+| [MainPage.xaml.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/MainPage.xaml.cs) | Ten kod kontroluje zachowanie interfejsu użytkownika XAML. Zawiera kod przetwarzania maszyny stanu.|
+| [CustomVision\CustomVisionServiceWrapper.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/CustomVision/CustomVisionServiceWrapper.cs) | Ta klasa jest otoką, która obsługuje integrację z usługą Custom Vision Service.|
+| [CustomVision\CustomVisionONNXModel.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/CustomVision/CustomVisionONNXModel.cs) | Ta klasa jest otoką, która obsługuje integrację z systemem Windows ML do ładowania modelu ONNX i oceniania obrazów przeciwko niemu.|
+| [IoTHub\IotHubWrapper.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/IoTHub/IotHubWrapper.cs) | Ta klasa jest otoką, która obsługuje integrację z Centrum IoT do przekazywania wyników oceniania na platformę Azure.|
 
-## <a name="set-up-the-visual-alerts-app"></a>Konfigurowanie aplikacji alertów wizualnych
+## <a name="set-up-the-visual-alerts-app"></a>Konfigurowanie aplikacji Alerty wizualne
 
-Wykonaj następujące kroki, aby uzyskać dostęp do aplikacji alertów wizualnych IoT działającej na komputerze lub urządzeniu IoT.
+Wykonaj następujące kroki, aby uzyskać aplikację Alerty wizualne IoT uruchomione na komputerze lub urządzeniu IoT.
 
-1. Sklonuj lub Pobierz [przykład IoTVisualAlerts](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/tree/master/IoTVisualAlerts) w witrynie GitHub.
-1. Otwórz rozwiązanie _IoTVisualAlerts. sln_ w programie Visual Studio
-1. Zintegruj projekt Custom Vision:
-    1. W skrypcie _CustomVision\CustomVisionServiceWrapper.cs_ zaktualizuj zmienną `ApiKey` przy użyciu klucza szkoleniowego.
-    1. Następnie zaktualizuj zmienną `Endpoint` przy użyciu adresu URL punktu końcowego skojarzonego z kluczem.
-    1. Zaktualizuj zmienną `targetCVSProjectGuid` przy użyciu odpowiedniego identyfikatora projektu Custom Vision, który ma być używany. 
-1. Skonfiguruj zasób IoT Hub:
-    1. W skrypcie _IoTHub\IotHubWrapper.cs_ zaktualizuj zmienną `s_connectionString` przy użyciu prawidłowych parametrów połączenia dla Twojego urządzenia. 
-    1. Na Azure Portal Załaduj wystąpienie IoT Hub, kliknij pozycję **urządzenia IoT** w obszarze **Explorer**, wybierz urządzenie docelowe (lub utwórz je w razie konieczności) i Znajdź parametry połączenia w obszarze **podstawowe parametry połączenia**. Ciąg będzie zawierać nazwę IoT Hub, identyfikator urządzenia i klucz dostępu współdzielonego. ma następujący format: `{your iot hub name}.azure-devices.net;DeviceId={your device id};SharedAccessKey={your access key}`.
+1. Klonuj lub pobierz [próbkę IoTVisualAlerts](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/tree/master/IoTVisualAlerts) na gitHub.
+1. Otwórz rozwiązanie _IoTVisualAlerts.sln_ w programie Visual Studio
+1. Zintegruj swój projekt Custom Vision:
+    1. W skrypcie _CustomVision\CustomVisionServiceWrapper.cs_ zaktualizuj zmienną `ApiKey` za pomocą klucza szkoleniowego.
+    1. Następnie zaktualizuj zmienną `Endpoint` za pomocą adresu URL punktu końcowego skojarzonego z kluczem.
+    1. Zaktualizuj zmienną `targetCVSProjectGuid` o odpowiednim identyfikatorze projektu usługi Custom Vision, którego chcesz użyć. 
+1. Konfigurowanie zasobu Usługi IoT Hub:
+    1. W skrypcie _IoTHub\IotHubWrapper.cs_ zaktualizuj zmienną `s_connectionString` za pomocą odpowiedniego ciągu połączenia dla urządzenia. 
+    1. W witrynie Azure portal załaduj wystąpienie usługi IoT Hub, kliknij **pozycję Urządzenia IoT** w obszarze **Eksploratory**, wybierz na urządzeniu docelowym (lub utwórz je w razie potrzeby) i znajdź parametry połączenia w obszarze **Ciąg połączenia podstawowego**. Ciąg będzie zawierał nazwę usługi IoT Hub, identyfikator urządzenia i udostępniony klucz dostępu; ma następujący format: `{your iot hub name}.azure-devices.net;DeviceId={your device id};SharedAccessKey={your access key}`.
 
-## <a name="run-the-app"></a>Uruchamianie aplikacji
+## <a name="run-the-app"></a>Uruchomienie aplikacji
 
-Jeśli aplikacja jest uruchamiana na komputerze, wybierz pozycję **komputer lokalny** dla urządzenia docelowego w programie Visual Studio, a następnie wybierz opcję **x64** lub **x86** dla platformy docelowej. Naciśnij klawisz F5, aby uruchomić program. Aplikacja powinna uruchomić i wyświetlić kanał informacyjny na żywo z aparatu i komunikatu o stanie.
+Jeśli korzystasz z aplikacji na komputerze, wybierz **opcję Komputer lokalny** dla urządzenia docelowego w programie Visual Studio i wybierz **x64** lub **x86** dla platformy docelowej. Następnie naciśnij klawisz F5, aby uruchomić program. Aplikacja powinna uruchomić i wyświetlić transmisję na żywo z kamery oraz komunikat o stanie.
 
-W przypadku wdrażania na urządzeniu IoT z procesorem ARM należy wybrać opcję **ARM** jako platformę docelową i **maszynę zdalną** jako urządzenie docelowe. Podaj adres IP urządzenia po wyświetleniu monitu (musi znajdować się w tej samej sieci co komputer). Adres IP z aplikacji domyślnej usługi Windows IoT można uzyskać po uruchomieniu urządzenia i nawiązaniu połączenia z siecią. Naciśnij klawisz F5, aby uruchomić program.
+Jeśli wdrażasz na urządzeniu IoT z procesorem ARM, musisz wybrać **ARM** jako platformę docelową i **komputer zdalny** jako urządzenie docelowe. Po po wyświetleniu monitu podaj adres IP urządzenia (musi on znajdować się w tej samej sieci co komputer). Adres IP można uzyskać z domyślnej aplikacji IoT systemu Windows po uruchomieniu urządzenia i podłączeniu go do sieci. Naciśnij klawisz F5, aby uruchomić program.
 
-Gdy aplikacja jest uruchamiana po raz pierwszy, nie będzie miała żadnej znajomości Stanów wizualnych. Zostanie wyświetlony komunikat o stanie informujący, że żaden model nie jest dostępny. 
+Po uruchomieniu aplikacji po raz pierwszy, nie będzie miał żadnej wiedzy o stanach wizualnych. Zostanie wyświetlony komunikat o stanie, że żaden model nie jest dostępny. 
 
 ## <a name="capture-training-images"></a>Przechwytywanie obrazów szkoleniowych
 
-Aby skonfigurować model, należy umieścić aplikację w stanie **przechwytywania obrazów szkoleniowych** . Wykonaj jedną z następujących czynności:
-* Jeśli używasz aplikacji na komputerze PC, użyj przycisku w prawym górnym rogu interfejsu użytkownika.
-* Jeśli aplikacja jest uruchamiana na urządzeniu IoT, należy wywołać metodę `EnterLearningMode` na urządzeniu za pomocą IoT Hub. Możesz wywołać go za pomocą wpisu urządzenia w menu IoT Hub na Azure Portal lub za pomocą narzędzia, takiego jak [IoT Hub Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer).
+Aby skonfigurować model, należy umieścić aplikację w stanie **Przechwytywanie obrazów szkoleniowych.** Wykonać jeden z następujących kroków:
+* Jeśli korzystasz z aplikacji na komputerze, użyj przycisku w prawym górnym rogu interfejsu użytkownika.
+* Jeśli korzystasz z aplikacji na urządzeniu IoT, `EnterLearningMode` wywołaj metodę na urządzeniu za pośrednictwem centrum IoT Hub. Można to wywołać za pomocą wpisu urządzenia w menu Centrum IoT w witrynie Azure portal lub za pomocą narzędzia, takiego jak [Eksplorator urządzeń usługi IoT Hub.](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)
  
-Gdy aplikacja przejdzie do stanu **przechwytywania obrazów szkoleniowych** , przechwytuje on dwa obrazy co sekundę do czasu osiągnięcia docelowej liczby obrazów. Domyślnie jest to 30 obrazów, ale można ustawić ten parametr, przekazując żądaną liczbę jako argument do metody IoT Hub `EnterLearningMode`. 
+Gdy aplikacja wejdzie w stan **Przechwytywanie obrazów szkoleniowych,** przechwytuje około dwóch obrazów co sekundę, dopóki nie osiągnie docelowej liczby obrazów. Domyślnie jest to 30 obrazów, ale można ustawić ten parametr, przekazując żądaną liczbę jako argument do metody `EnterLearningMode` Centrum IoT. 
 
-Gdy aplikacja przechwytuje obrazy, należy uwidocznić kamerę w typach Stanów wizualnych, które mają być wykrywane (na przykład puste pomieszczenie, pomieszczenie z osobami, pustym biurem, biurem i wózkiem zabawka itp.).
+Podczas gdy aplikacja rejestruje obrazy, musisz narazić aparat na typy stanów wizualnych, które chcesz wykryć (na przykład pusty pokój, pokój z ludźmi, puste biurko, biurko z wózkiem ścieliczy i tak dalej).
 
-## <a name="train-the-custom-vision-model"></a>Uczenie modelu Custom Vision
+## <a name="train-the-custom-vision-model"></a>Trenuj model Custom Vision
 
-Po zakończeniu przechwytywania obrazów przez aplikację zostanie ona przekazana, a następnie przejdzie do stanu **oczekiwanie na przeszkolony model** . Na tym etapie należy przejść do [portalu Custom Vision](https://www.customvision.ai/) i skompilować model na podstawie nowych obrazów szkoleniowych. Poniższe animacje przedstawiają przykład tego procesu.
+Po zakończeniu przechwytywania obrazów aplikacja przekaże je, a następnie przełączy się do stanu **Oczekiwanie na przeszkolony model.** W tym momencie należy przejść do [portalu niestandardowej wizji](https://www.customvision.ai/) i utworzyć model na podstawie nowych obrazów szkoleniowych. Poniższa animacja przedstawia przykład tego procesu.
 
-![Animacja: tagowanie wielu obrazów bananów](./media/iot-visual-alerts-tutorial/labeling.gif)
+![Animacja: oznaczanie wielu obrazów bananów](./media/iot-visual-alerts-tutorial/labeling.gif)
 
 Aby powtórzyć ten proces z własnym scenariuszem:
 
 1. Zaloguj się do [portalu Custom Vision](http://customvision.ai).
-1. Znajdź projekt docelowy, który powinien teraz zawierać wszystkie obrazy szkoleniowe przekazane przez aplikację.
-1. Dla każdego stanu wizualizacji, który ma być identyfikowany, wybierz odpowiednie obrazy i ręcznie Zastosuj tag.
-    * Na przykład jeśli chcesz rozróżnić puste pomieszczenie i pomieszczenie z innymi osobami, zalecamy tagowanie pięciu lub większej liczby obrazów osobom jako nowej klasy, **ludzi**i tagowania pięciu lub większej liczby obrazów bez osób jako znacznika **negatywnego** . Pomoże to rozróżnić model między dwoma stanami.
-    * Innym przykładem, jeśli chcesz, aby przybliżyć pełny półka, możesz użyć tagów takich jak **EmptyShelf**, **PartiallyFullShelf**i **FullShelf**.
-1. Po zakończeniu wybierz przycisk **szkolenie** .
-1. Po zakończeniu szkolenia aplikacja wykryje, że dostępna jest przeszkolony iteracja. Rozpocznie się proces eksportowania przeszkolonego modelu do ONNX i pobierania go na urządzenie.
+1. Znajdź swój projekt docelowy, który powinien mieć teraz wszystkie obrazy szkoleniowe, które aplikacja została przesłana.
+1. Dla każdego stanu wizualnego, który chcesz zidentyfikować, wybierz odpowiednie obrazy i ręcznie zastosuj znacznik.
+    * Jeśli na przykład twoim celem jest rozróżnienie między pustym pokojem a pokojem z osobami w nim, zalecamy oznaczenie co najmniej pięciu obrazów osobami jako nową klasą **, Osoby**i oznaczenie pięciu lub więcej obrazów bez osób jako **tagu Negatywne.** Pomoże to model rozróżnić między dwoma stanami.
+    * Innym przykładem jest przybliżanie, jak pełna jest półka, możesz użyć tagów, takich jak **EmptyShelf**, **PartiallyFullShelf**i **FullShelf**.
+1. Po zakończeniu wybierz przycisk **Pociąg.**
+1. Po zakończeniu szkolenia aplikacja wykryje, że dostępna jest uszkolona iteracja. Rozpocznie proces eksportowania przeszkolonego modelu do ONNX i pobierania go do urządzenia.
 
 ## <a name="use-the-trained-model"></a>Używanie wytrenowanego modelu
 
-Po pobraniu przez aplikację przeszkolonego modelu nastąpi przełączenie do stanu **oceniania** i rozpoczęcie oceniania obrazów z aparatu w pętli ciągłej.
+Gdy aplikacja pobierze przeszkolony model, przełączy się do stanu **Oceniania** i rozpocznie ocenianie obrazów z aparatu w pętli ciągłej.
 
-Dla każdego przechwytywanego obrazu aplikacja wyświetli na ekranie górny tag. Jeśli nie rozpoznaje stanu wizualnego, wyświetli **Brak dopasowań**. Aplikacja wysyła również te komunikaty do IoT Hub, a w przypadku wykrycia klasy, komunikat będzie zawierać etykietę, wynik pewności i właściwość o nazwie `detectedClassAlert`, która może być używana przez IoT Hub klientów zainteresowanych wykonywaniem szybkiego routingu komunikatów na podstawie właściwości.
+Dla każdego przechwyconego obrazu aplikacja wyświetli górny znacznik na ekranie. Jeśli nie rozpozna stanu wizualnego, wyświetli **brak dopasowania**. Aplikacja wysyła również te komunikaty do Centrum IoT, a jeśli jest wykrywana klasa, komunikat będzie zawierał `detectedClassAlert`etykietę, wynik zaufania i właściwość o nazwie , która może być używana przez klientów Usługi IoT Hub zainteresowanych szybkim routingiem wiadomości na podstawie właściwości.
 
-Ponadto przykład korzysta z [biblioteki rozpoznawania wykrywania](https://github.com/emmellsoft/RPi.SenseHat) , aby wykryć, kiedy jest uruchomiona w Raspberry Pi z jednostką Hat, tak aby można było go używać jako danych wyjściowych, ustawiając wszystkie sygnalizatory wyświetlania na czerwono, gdy wykryje klasę i puste, gdy nie wykryje niczego.
+Ponadto przykład używa [biblioteki Sense HAT](https://github.com/emmellsoft/RPi.SenseHat) do wykrywania, kiedy jest uruchomiony na Raspberry Pi z jednostką Sense HAT, dzięki czemu można go używać jako wyświetlacza wyjściowego, ustawiając wszystkie kontrolki wyświetlania na czerwony, gdy wykryje klasę i puste, gdy nic nie wykryje.
 
 ## <a name="reuse-the-app"></a>Ponowne używanie aplikacji
 
-Jeśli chcesz przywrócić pierwotny stan aplikacji, możesz to zrobić, klikając przycisk w prawym górnym rogu interfejsu użytkownika lub wywołując metodę `DeleteCurrentModel` za pomocą IoT Hub.
+Jeśli chcesz zresetować aplikację z powrotem do stanu pierwotnego, możesz to zrobić, klikając przycisk w prawym górnym rogu interfejsu `DeleteCurrentModel` użytkownika lub wywołując metodę za pośrednictwem centrum IoT Hub.
 
-W dowolnym momencie można powtórzyć krok przekazywania obrazów szkoleniowych, klikając przycisk interfejsu użytkownika prawym przyciskiem myszy lub ponownie wywołując metodę `EnterLearningMode`.
+W dowolnym momencie można powtórzyć krok przekazywania obrazów szkoleniowych, klikając przycisk interfejsu `EnterLearningMode` użytkownika w prawym górnym rogu lub wywołując metodę ponownie.
 
-Jeśli aplikacja jest uruchamiana na urządzeniu i należy ponownie pobrać adres IP (aby nawiązać połączenie zdalne za pomocą [zdalnego klienta usługi Windows IoT](https://www.microsoft.com/p/windows-iot-remote-client/9nblggh5mnxz#activetab=pivot:overviewtab)), można wywołać metodę `GetIpAddress` za pomocą IoT Hub.
+Jeśli korzystasz z aplikacji na urządzeniu i musisz ponownie pobrać adres IP (na przykład ustanowić połączenie zdalne za pośrednictwem `GetIpAddress` [klienta zdalnego IoT systemu Windows),](https://www.microsoft.com/p/windows-iot-remote-client/9nblggh5mnxz#activetab=pivot:overviewtab)możesz wywołać tę metodę za pośrednictwem centrum IoT Hub.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Usuń projekt Custom Vision, jeśli nie chcesz już go obsługiwać. W [witrynie sieci web Custom Vision](https://customvision.ai)przejdź do pozycji **projekty** i wybierz Kosz, który można obsłużyć w nowym projekcie.
+Usuń projekt wizji niestandardowej, jeśli nie chcesz go już konserwować. W [witrynie internetowej Usługi Custom Vision](https://customvision.ai)przejdź do pozycji **Projekty** i wybierz kosz w ramach nowego projektu.
 
-![Zrzut ekranu przedstawiający panel zatytułowany mój nowy projekt z ikoną kosza](./media/csharp-tutorial/delete_project.png)
+![Zrzut ekranu przedstawiający panel z ikoną kosza z ikoną kosza](./media/csharp-tutorial/delete_project.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku skonfigurowano i uruchomiono aplikację, która wykrywa informacje o stanie wizualizacji na urządzeniu IoT i wysyła wyniki do IoT Hub. Następnie przejrzyj kod źródłowy w dalszej części lub wprowadź jedną z sugerowanych modyfikacji poniżej.
+W tym samouczku skonfigurowałeś i uruchomiono aplikację, która wykrywa informacje o stanie wizualnym na urządzeniu IoT i wysyła wyniki do centrum IoT Hub. Następnie zapoznaj się z kodem źródłowym dalej lub dokonać jednej z sugerowanych modyfikacji poniżej.
 
 > [!div class="nextstepaction"]
-> [Przykład IoTVisualAlerts (GitHub)](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/tree/master/IoTVisualAlerts)
+> [Próbka IoTVisualAlerts (GitHub)](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/tree/master/IoTVisualAlerts)
 
-* Dodaj metodę IoT Hub, aby przełączyć aplikację bezpośrednio do stanu " **oczekiwanie na przeszkolone model** ". W ten sposób można nauczyć model z obrazami, które nie są przechwytywane przez samo urządzenie, a następnie wypchnąć nowy model do urządzenia przy użyciu polecenia.
-* Postępuj zgodnie z samouczkiem [Wizualizacja danych w czasie rzeczywistym](https://docs.microsoft.com/azure/iot-hub/iot-hub-live-data-visualization-in-power-bi) , aby utworzyć pulpit nawigacyjny Power BI do wizualizacji IoT Hub alertów wysyłanych przez przykład.
-* Postępuj zgodnie z samouczkiem dotyczącym [monitorowania zdalnego IoT](https://docs.microsoft.com/azure/iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps) , aby utworzyć aplikację logiki, która reaguje na IoT Hub alerty w przypadku wykrycia Stanów wizualnych.
+* Dodaj metodę Centrum IoT, aby przełączyć aplikację bezpośrednio do stanu **Oczekiwanie na przeszkolony model.** W ten sposób można trenować model z obrazami, które nie są przechwytywane przez samo urządzenie, a następnie wypchnąć nowy model do urządzenia w poleceniu.
+* Postępuj zgodnie z samouczkiem [wizualizacji danych z czujnika w czasie rzeczywistym,](https://docs.microsoft.com/azure/iot-hub/iot-hub-live-data-visualization-in-power-bi) aby utworzyć pulpit nawigacyjny usługi Power BI, aby wizualizować alerty usługi IoT Hub wysyłane przez przykład.
+* Postępuj zgodnie z [samouczka monitorowania zdalnego IoT,](https://docs.microsoft.com/azure/iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps) aby utworzyć aplikację logiki, która odpowiada na alerty Usługi IoT Hub po wykryciu stanów wizualnych.

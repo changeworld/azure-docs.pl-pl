@@ -1,7 +1,7 @@
 ---
-title: 'Szybki Start: Rozpoznawanie mowy przechowywanej w usłudze BLOB Storage, Java-Speech Service'
+title: 'Szybki start: rozpoznawanie mowy przechowywanej w magazynie obiektów blob, Java — usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: do ustalenia
+description: TBD
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
 ms.openlocfilehash: 1f4e0d4f8b8ff0292ddbd46357edac742177f6d8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75467862"
 ---
 > [!div class="nextstepaction"]

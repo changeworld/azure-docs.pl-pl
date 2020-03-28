@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: Tłumaczenie mowy na mowę, C# (platformy UWP) — usługa mowy'
+title: 'Szybki start: tłumaczenie mowy na mowę, C# (UWP) — usługa mowy'
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -11,57 +11,57 @@ ms.date: 12/09/2019
 ms.author: erhopf
 ms.topic: include
 ms.openlocfilehash: a0f62db319d54c2db71a86f621985a304dbbb4d2
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925171"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem upewnij się, że:
+Zanim zaczniesz, upewnij się, że:
 
 > [!div class="checklist"]
-> * [Tworzenie zasobu usługi Azure Speech](../../../../get-started.md)
-> * [Skonfiguruj środowisko deweloperskie i Utwórz pusty projekt](../../../../quickstarts/setup-platform.md?tabs=uwp)
+> * [Tworzenie zasobu mowy platformy Azure](../../../../get-started.md)
+> * [Konfigurowanie środowiska programistycznego i tworzenie pustego projektu](../../../../quickstarts/setup-platform.md?tabs=uwp)
 
 ## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
 
-Teraz Dodaj kod XAML, który definiuje interfejs użytkownika aplikacji, a następnie Dodaj implementację z C# kodem.
+Teraz dodaj kod XAML, który definiuje interfejs użytkownika aplikacji i dodaj implementację w języku C# bez kodu.
 
-1. W **Eksplorator rozwiązań**Otwórz `MainPage.xaml`.
+1. W **Eksploratorze rozwiązań**otwórz `MainPage.xaml`.
 
-1. W widoku XAML projektanta Wstaw następujący fragment kodu XAML do tagu **Grid** (między `<Grid>` i `</Grid>`):
+1. W widoku XAML projektanta wstaw następujący fragment kodu XAML do `<Grid>` znacznika **Siatka** (między i): `</Grid>`
 
    [!code-xml[UI elements](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/translate-speech-to-text/helloworld/MainPage.xaml#StackPanel)]
 
-1. W **Eksplorator rozwiązań**Otwórz plik źródłowy związany z kodem `MainPage.xaml.cs`. (Jest ono pogrupowane w obszarze `MainPage.xaml`).
+1. W **Eksploratorze rozwiązań**otwórz `MainPage.xaml.cs`plik źródłowy związany z kodem . (Jest zgrupowany `MainPage.xaml`w obszarze .)
 
-1. Zastąp cały kod w nim następującym fragmentem kodu:
+1. Zastąp cały kod w nim z następującym fragmentem kodu:
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/translate-speech-to-text/helloworld/MainPage.xaml.cs#code)]
 
-1. W obszarze obsługi `SpeechTranslationFromMicrophone_ButtonClicked` w tym pliku Znajdź ciąg `YourSubscriptionKey`i zastąp go kluczem subskrypcji.
+1. W `SpeechTranslationFromMicrophone_ButtonClicked` programie obsługi w tym `YourSubscriptionKey`pliku znajdź ciąg i zastąp go kluczem subskrypcji.
 
-1. W obsłudze `SpeechTranslationFromMicrophone_ButtonClicked` Znajdź ciąg `YourServiceRegion`i zastąp go [regionem](~/articles/cognitive-services/Speech-Service/regions.md) skojarzonym z subskrypcją. (Na przykład użyj `westus` subskrypcji bezpłatnej wersji próbnej).
+1. W `SpeechTranslationFromMicrophone_ButtonClicked` programie obsługi znajdź `YourServiceRegion`ciąg i zastąp go [regionem](~/articles/cognitive-services/Speech-Service/regions.md) skojarzonym z subskrypcją. (Na przykład `westus` użyj bezpłatnej subskrypcji próbnej).
 
-1. Na pasku menu wybierz kolejno opcje **plik** > **Zapisz wszystko** , aby zapisać zmiany.
+1. Na pasku menu wybierz **pozycję Zapisz** > **wszystko,** aby zapisać zmiany.
 
 ## <a name="build-and-run-the-application"></a>Kompilowanie i uruchamianie aplikacji
 
-Teraz możesz przystąpić do kompilowania i testowania aplikacji.
+Teraz możesz przystąpić do tworzenia i testowania aplikacji.
 
-1. Na pasku menu wybierz kolejno opcje **kompiluj** > **Kompiluj rozwiązanie** , aby skompilować aplikację. Kod powinien teraz zostać skompilowany bez błędów.
+1. Na pasku menu **wybierz** > build**build solution,** aby utworzyć aplikację. Kod powinien teraz zostać skompilowany bez błędów.
 
-1. Wybierz **debuguj** > **Rozpocznij debugowanie** (lub naciśnij klawisz **F5**), aby uruchomić aplikację. Zostanie wyświetlone okno **HelloWorld** .
+1. Aby uruchomić aplikację, wybierz **opcję Debugowanie** > **rozpocznij debugowanie** (lub naciśnij **klawisz F5).** Zostanie **wyświetlene okno helloworld.**
 
-   ![Przykładowa aplikacja tłumaczenia platformy UWP C# w — szybki start](~/articles/cognitive-services/Speech-Service/media/sdk/qs-translate-speech-uwp-helloworld-window.png)
+   ![Przykładowa aplikacja do tłumaczenia platformy uniwersalnej systemu w sieciowej w języku C# — szybki start](~/articles/cognitive-services/Speech-Service/media/sdk/qs-translate-speech-uwp-helloworld-window.png)
 
-1. Wybierz pozycję **Włącz mikrofon**i po włączeniu żądania uprawnienia dostępu wybierz pozycję **tak**.
+1. Wybierz **włącz mikrofon**, a gdy pojawi się żądanie uprawnień dostępu, wybierz pozycję **Tak**.
 
-   ![Żądanie uprawnienia dostępu do mikrofonu](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-10-access-prompt.png)
+   ![Żądanie uprawnień dostępu do mikrofonu](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-10-access-prompt.png)
 
-1. Wybierz pozycję **Przekształć mowę z wejściowego mikrofonu**i zacznij od angielskiej frazy lub zdanie do mikrofonu Twojego urządzenia. Aplikacja przesyła mowę do usługi mowy, która tłumaczy mowę na tekst w innym języku (w tym przypadku w języku niemieckim). Usługa mowy wysyła przetłumaczony tekst z powrotem do aplikacji, co spowoduje wyświetlenie tłumaczenia w oknie.
+1. Wybierz **opcję Przetłumacz mowę z wejścia mikrofonu**i mów w języku angielskim do mikrofonu urządzenia. Aplikacja przesyła mowę do usługi Mowy, która tłumaczy mowę na tekst w innym języku (w tym przypadku niemieckim). Usługa mowy wysyła przetłumaczony tekst z powrotem do aplikacji, która wyświetla tłumaczenie w oknie.
 
    ![Interfejs użytkownika tłumaczenia mowy](~/articles/cognitive-services/Speech-Service/media/sdk/qs-translate-csharp-uwp-ui-result.png)
 

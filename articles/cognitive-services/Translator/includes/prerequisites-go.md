@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 8eb9246ad21339d310dc60b6073a5d7227f4f98c
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69906493"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Ten przewodnik Szybki start wymaga następujących elementów:
 
-* [Go](https://golang.org/doc/install)
-* Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/)
+* [Przejdź](https://golang.org/doc/install)
+* Subskrypcja platformy Azure — [utwórz bezpłatną subskrypcję](https://azure.microsoft.com/free/)

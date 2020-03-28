@@ -11,15 +11,15 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: areddish
 ms.openlocfilehash: 68d63fbc71ea2dcd07522c6ba42808f88966cd7b
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76166623"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-python-sdk"></a>Szybki start: tworzenie projektu wykrywania obiektów przy użyciu zestawu Custom Vision SDK dla języka Python
 
-W tym artykule pokazano, jak rozpocząć pracę z zestawem SDK Custom Vision przy użyciu języka Python w celu utworzenia modelu wykrywania obiektów. Po jego utworzeniu można dodać otagowane regiony, przekazać obrazy, przeszkolić projekt, uzyskać opublikowany adres URL punktu końcowego przewidywania projektu i użyć punktu końcowego do programistycznego testowania obrazu. Użyj tego przykładu jako szablonu do utworzenia własnej aplikacji języka Python.
+W tym artykule pokazano, jak rozpocząć korzystanie z niestandardowego sdk wizji w języku Python do tworzenia modelu wykrywania obiektów. Po jego utworzeniu można dodać oznakowane regiony, przekazać obrazy, wyszkolić projekt, uzyskać opublikowany adres URL punktu końcowego przewidywania projektu i użyć punktu końcowego do programowego testowania obrazu. Użyj tego przykładu jako szablonu do utworzenia własnej aplikacji języka Python.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -49,7 +49,7 @@ Utwórz nowy plik o nazwie *sample.py* w preferowanym katalogu projektu.
 
 Dodaj następujący kod do skryptu, aby utworzyć nowy projekt Custom Vision Service. Wstaw klucze subskrypcji w odpowiednich definicjach. Ponadto Pobierz adres URL punktu końcowego ze strony Ustawienia w witrynie sieci Web Custom Vision.
 
-Zobacz metodę [create_project](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.custom_vision_training_client.customvisiontrainingclient?view=azure-python#create-project-name--description-none--domain-id-none--classification-type-none--target-export-platforms-none--custom-headers-none--raw-false----operation-config- ) , aby określić inne opcje podczas tworzenia projektu (wyjaśnione w przewodniku po portalu internetowym [tworzenia czujnika](get-started-build-detector.md) ).  
+Zobacz [create_project](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.custom_vision_training_client.customvisiontrainingclient?view=azure-python#create-project-name--description-none--domain-id-none--classification-type-none--target-export-platforms-none--custom-headers-none--raw-false----operation-config- ) metodę, aby określić inne opcje podczas tworzenia projektu (wyjaśnione w [twórz Tworzenie detektora](get-started-build-detector.md) portalu sieci web).  
 
 ```Python
 from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
@@ -76,7 +76,7 @@ project = trainer.create_project("My Detection Project", domain_id=obj_detection
 
 ### <a name="create-tags-in-the-project"></a>Tworzenie tagów w projekcie
 
-Aby utworzyć Tagi obiektów w projekcie, Dodaj następujący kod na końcu *Sample.py*:
+Aby utworzyć znaczniki obiektów w projekcie, dodaj następujący kod na końcu *sample.py:*
 
 ```Python
 # Make two tags in the new project
@@ -84,15 +84,15 @@ fork_tag = trainer.create_tag(project.id, "fork")
 scissors_tag = trainer.create_tag(project.id, "scissors")
 ```
 
-### <a name="upload-and-tag-images"></a>Przekazywanie i tagowanie obrazów
+### <a name="upload-and-tag-images"></a>Przekazywanie i Tagi obrazów
 
-Oznaczając tagami obrazy w projektach wykrywania obiektów, należy określić region każdego otagowanego obiektu za pomocą znormalizowanych współrzędnych.
+Po oznaczeniu obrazów w projektach wykrywania obiektów należy określić region każdego z otagowanych obiektów przy użyciu znormalizowanych współrzędnych.
 
 > [!NOTE]
-> Jeśli nie masz narzędzia do klikania i przeciągania, aby oznaczyć współrzędne regionów, możesz użyć internetowego interfejsu użytkownika w [Customvision.AI](https://www.customvision.ai/). W tym przykładzie współrzędne zostały już podane.
+> Jeśli nie masz narzędzia "kliknij i przeciągnij", aby oznaczyć współrzędne regionów, możesz użyć internetowego interfejsu użytkownika w [Customvision.ai](https://www.customvision.ai/). W tym przykładzie współrzędne są już dostarczone.
 
 
-Aby dodać obrazy, tagi i regiony do projektu, wstaw następujący kod po utworzeniu tagów. W tym samouczku regiony są stałe wbudowane z kodem. Regiony określają pole ograniczenia w znormalizowanych współrzędnych, które podaje się w kolejności: lewa krawędź, górna krawędź, szerokość, wysokość.
+Aby dodać obrazy, tagi i regiony do projektu, wstaw następujący kod po utworzeniu tagów. W tym samouczku regiony są zakodowane na stałe w linii z kodem. Regiony określają pole ograniczenia w znormalizowanych współrzędnych, które podaje się w kolejności: lewa krawędź, górna krawędź, szerokość, wysokość.
 
 ```Python
 fork_image_regions = {
@@ -142,10 +142,10 @@ scissors_image_regions = {
 }
 ```
 
-Następnie użyj tej mapy skojarzeń, aby przekazać każdy przykładowy obraz ze współrzędnymi region (możesz przekazać do 64 obrazów w jednej partii). Dodaj następujący kod.
+Następnie użyj tej mapy skojarzeń, aby przekazać każdy przykładowy obraz ze współrzędnymi regionu (można przekazać maksymalnie 64 obrazy w jednej partii). Dodaj następujący kod.
 
 > [!NOTE]
-> Należy zmienić ścieżkę do obrazów na podstawie lokalizacji Cognitive Services, w której pobrano wcześniej repozytorium przykładów zestawu SDK języka Python.
+> Musisz zmienić ścieżkę do obrazów na podstawie miejsca, w którym pobrano wcześniej repozytorium próbkowych zestawów SDK języka Cognitive Services Python.
 
 ```Python
 # Update this with the path to where you downloaded the images.
@@ -177,9 +177,9 @@ if not upload_result.is_batch_successful:
     exit(-1)
 ```
 
-### <a name="train-the-project-and-publish"></a>Uczenie projektu i publikowanie
+### <a name="train-the-project-and-publish"></a>Trenuj projekt i publikuj
 
-Ten kod tworzy pierwszą iterację modelu predykcyjnego, a następnie publikuje tę iterację w punkcie końcowym przewidywania. Nazwa nadana do publikowanej iteracji może służyć do wysyłania żądań przewidywania. Iteracja nie jest dostępna w punkcie końcowym przewidywania do momentu opublikowania.
+Ten kod tworzy pierwszą iterację modelu przewidywania, a następnie publikuje tę iterację do punktu końcowego przewidywania. Nazwa nadana do publikowanej iteracji może służyć do wysyłania żądań przewidywania. Iteracja nie jest dostępna w punkcie końcowym przewidywania, dopóki nie zostanie opublikowana.
 
 ```Python
 import time
@@ -196,7 +196,7 @@ trainer.publish_iteration(project.id, iteration.id, publish_iteration_name, pred
 print ("Done!")
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Pobieranie i używanie opublikowanej iteracji w punkcie końcowym przewidywania
+### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Pobierz i użyj opublikowanej iteracji w punkcie końcowym przewidywania
 
 Aby wysłać obraz do punktu końcowego przewidywania i uzyskać przewidywanie, dodaj na końcu pliku następujący kod:
 

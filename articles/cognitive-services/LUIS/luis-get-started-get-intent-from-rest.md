@@ -1,17 +1,17 @@
 ---
-title: 'Szybki Start: pobieranie zamierzeń przy użyciu interfejsów API REST — LUIS'
-description: W tym przewodniku szybki start interfejsu API REST Użyj dostępnej publicznej aplikacji LUIS, aby określić zamiar użytkownika z tekstu konwersacji.
+title: 'Szybki start: Uzyskaj intencję za pomocą interfejsów API REST — USŁUGA LUIS'
+description: W tym interfejsie Szybki start interfejsu API REST użyj dostępnej publicznej aplikacji usługi LUIS, aby określić intencję użytkownika na podstawie tekstu konwersacyjnego.
 ms.topic: quickstart
 ms.date: 02/03/2020
 zone_pivot_groups: programming-languages-set-one
 ms.openlocfilehash: 4e2c32b2eaf8cd6935e8e6b45bf79a1f3c756316
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77524669"
 ---
-# <a name="quickstart-get-intent-with-rest-apis"></a>Szybki Start: pobieranie zamierzeń przy użyciu interfejsów API REST
+# <a name="quickstart-get-intent-with-rest-apis"></a>Szybki start: uzyskaj intencję dzięki interfejsom API REST
 
 W tym przewodniku Szybki start użyjesz dostępnej publicznie aplikacji LUIS, aby określić intencję użytkownika w tekście konwersacji. Wyślesz intencję użytkownika jako tekst do punktu końcowego przewidywania HTTP aplikacji publicznej. W punkcie końcowym usługa LUIS zastosuje model aplikacji publicznej, aby przeanalizować tekst w języku naturalnym pod kątem znaczenia, określając ogólną intencję i wyodrębniając dane dotyczące domeny podmiotu aplikacji.
 

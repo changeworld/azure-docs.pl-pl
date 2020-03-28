@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: 82f2acb811bcb239f6329ab8d8b4008e13ac6490
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a22ae3b4b11a4eac7da147cf3ad896bbad435448
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446743"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80370157"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Szybki start: Tworzenie, wdrażanie i używanie niestandardowego modelu tłumaczenia
 
@@ -26,7 +26,21 @@ Ten artykuł zawiera szczegółowe instrukcje tworzenia systemu tłumaczenia za 
 
 2. Subskrypcja interfejsu API tłumaczenia tekstu w usłudze Translator — w witrynie Azure Portal. Klucz subskrypcji interfejsu API tłumaczenia tekstu w usłudze Translator musisz skojarzyć z obszarem roboczym w rozszerzeniu Custom Translator. Zobacz instrukcje dotyczące [tworzenia konta umożliwiającego korzystanie z interfejsu API tłumaczenia tekstu w usłudze Translator](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup).
 
-3. Po spełnieniu obu powyższych warunków zaloguj się w portalu [Custom Translator](https://portal.customtranslator.azure.ai). W portalu Custom Translator przejdź do strony ustawień, na której możesz skojarzyć klucz subskrypcji interfejsu API tłumaczenia tekstu w usłudze Microsoft Translator z obszarem roboczym.
+3. Jeśli masz oba powyższe, zaloguj się do portalu [usługi Translator niestandardowy,](https://portal.customtranslator.azure.ai) aby tworzyć obszary robocze, projekty, przekazywać pliki i tworzyć/wdrażać modele.
+
+## <a name="create-a-workspace"></a>Tworzenie obszaru roboczego
+
+Jeśli użytkownik jest pierwszym użytkownikiem, zostanie poproszony o wyrażenie zgody na Warunki korzystania z usługi, utworzenie obszaru roboczego i skojarzenie obszaru roboczego z subskrypcją interfejsu API tekstowego usługi Microsoft Translator.
+
+![Tworzenie obszaru](media/quickstart/terms-of-service.png)
+![roboczego](media/quickstart/create-workspace-1.png)
+![Tworzenie](media/quickstart/create-workspace-2.png)
+![obszaru roboczego Tworzenie obszaru roboczego Tworzenie](media/quickstart/create-workspace-3.png)
+![obszaru roboczego Tworzenie obszaru roboczego](media/quickstart/create-workspace-4.png)
+![Tworzenie obszaru](media/quickstart/create-workspace-5.png)
+![roboczego](media/quickstart/create-workspace-6.png)
+
+Podczas kolejnych wizyt w portalu usługi Translator niestandardowy przejdź do strony Ustawienia, na której można zarządzać obszarem roboczym, tworzyć więcej obszarów roboczych, kojarzyć klucz subskrypcji interfejsu API programu Microsoft Translator z obszarami roboczymi, dodawać współwłaścicieli i zmieniać klucza subskrypcji.
 
 ## <a name="create-a-project"></a>Tworzenie projektu
 

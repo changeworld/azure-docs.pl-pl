@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: Wyszukiwanie obrazów API REST i Python-wyszukiwanie obrazów Bing'
+title: 'Szybki start: wyszukiwanie obrazów REST API i Python - Bing Image Search'
 titleSuffix: Azure Cognitive Services
 description: Skorzystaj z tego przewodnika Szybki Start, aby wysyłać żądania wyszukiwania obrazów do interfejsu API wyszukiwania obrazów Bing przy użyciu języka Python i otrzymywać odpowiedzi w formacie JSON.
 services: cognitive-services
@@ -12,27 +12,27 @@ ms.date: 12/06/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: f3d00688feb0f9d42e80cdbb51753483e53c388d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930726"
 ---
-# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>Szybki Start: Wyszukiwanie obrazów przy użyciu interfejsu API REST wyszukiwanie obrazów Bing i języka Python
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>Szybki start: wyszukiwanie obrazów za pomocą interfejsu API REST wyszukiwania obrazów Bing i języka Python
 
 Użyj tego przewodnika Szybki start, aby rozpocząć wysyłanie żądań wyszukiwania do interfejsu API wyszukiwania obrazów Bing. Ta aplikacja języka Python wysyła zapytanie dotyczące wyszukiwania do interfejsu API i wyświetla adres URL pierwszego obrazu w wynikach. Chociaż ta aplikacja jest napisana w języku Python, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
 
 Ten przykład można uruchomić jako notes programu Jupyter w witrynie [MyBinder](https://mybinder.org). W tym celu należy kliknąć ikonę Launch Binder:
 
-[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingImageSearchAPI.ipynb)
+[![Spinacza](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingImageSearchAPI.ipynb)
 
 
-Kod źródłowy dla tego przykładu jest dostępny [w usłudze GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingImageSearchv7.py) wraz z dodatkową obsługą błędów i adnotacjami.
+Kod źródłowy dla tego przykładu jest dostępny [w usłudze GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingImageSearchv7.py) z dodatkową obsługą błędów i adnotacjami.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Środowisko Python 2.x lub 3.x](https://www.python.org/)
+* [Python 2.x lub 3.x](https://www.python.org/)
 * [Biblioteka PIL (Python Imaging Library)](https://pillow.readthedocs.io/en/stable/index.html)
 * [matplotlib](https://matplotlib.org/) 
 
@@ -40,7 +40,7 @@ Kod źródłowy dla tego przykładu jest dostępny [w usłudze GitHub](https://g
 
 ## <a name="create-and-initialize-the-application"></a>Tworzenie i inicjowanie aplikacji
 
-1. Utwórz nowy plik kodu Python w ulubionym środowisku IDE lub edytorze i zaimportuj poniższe moduły. Utwórz zmienne dla klucza subskrypcji, punktu końcowego wyszukiwania i terminu wyszukiwania. `search_url` może być globalnym punktem końcowym lub [niestandardowym](../../../cognitive-services/cognitive-services-custom-subdomains.md) punktem końcowym domeny wyświetlanym w Azure Portal dla zasobu.
+1. Utwórz nowy plik kodu Python w ulubionym środowisku IDE lub edytorze i zaimportuj poniższe moduły. Utwórz zmienne dla klucza subskrypcji, punktu końcowego wyszukiwania i terminu wyszukiwania. `search_url`może to być globalny punkt końcowy poniżej lub niestandardowy punkt końcowy [poddomeny](../../../cognitive-services/cognitive-services-custom-subdomains.md) wyświetlany w witrynie Azure portal dla zasobu.
 
     ```python
     import requests
@@ -67,7 +67,7 @@ Kod źródłowy dla tego przykładu jest dostępny [w usłudze GitHub](https://g
     params  = {"q": search_term, "license": "public", "imageType": "photo"}
     ```
 
-2. Użyj biblioteki `requests` w celu wywołania interfejsu API wyszukiwania obrazów Bing. Dodaj nagłówek i parametry do żądania, a następnie zwróć odpowiedź jako obiekt JSON. Pobierz adresy URL do kilku obrazów miniatur z pola `thumbnailUrl` odpowiedzi.
+2. Użyj biblioteki `requests` w celu wywołania interfejsu API wyszukiwania obrazów Bing. Dodaj nagłówek i parametry do żądania, a następnie zwróć odpowiedź jako obiekt JSON. Pobierz adresy URL do kilku obrazów `thumbnailUrl` miniatur z pola odpowiedzi.
 
     ```python
     response = requests.get(search_url, headers=headers, params=params)

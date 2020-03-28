@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: Przeprowadź wyszukiwanie w Internecie za pomocą języka Ruby-interfejs API wyszukiwania w sieci Web Bing'
+title: 'Szybki start: wykonywanie wyszukiwania w internecie za pomocą interfejsu API wyszukiwania w sieci E- Bing'
 titleSuffix: Azure Cognitive Services
 description: Skorzystaj z tego przewodnika Szybki Start, aby wysyłać żądania do interfejsu API wyszukiwania w sieci Web Bing przy użyciu języka Ruby i otrzymywać odpowiedzi w formacie JSON.
 services: cognitive-services
@@ -12,21 +12,21 @@ ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 5f3e05752967be8872c0e6fd9008bfae05d950fa
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76169531"
 ---
 # <a name="quickstart-use-ruby-to-call-the-bing-web-search-api"></a>Szybki start: wywoływanie interfejsu API wyszukiwania w sieci Web Bing za pomocą języka Ruby  
 
-Ten przewodnik Szybki start umożliwi Ci utworzenie Twojego pierwszego wywołania interfejsu API wyszukiwania w Internecie Bing i odebranie odpowiedzi JSON. Ta aplikacja języka Ruby wysyła żądanie wyszukiwania do interfejsu API i wyświetla odpowiedź. Chociaż ta aplikacja jest napisana w języku Ruby, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
+Ten przewodnik Szybki start umożliwi Ci utworzenie Twojego pierwszego wywołania interfejsu API wyszukiwania w Internecie Bing i odebranie odpowiedzi JSON. Ta aplikacja Ruby wysyła żądanie wyszukiwania do interfejsu API i pokazuje odpowiedź. Chociaż ta aplikacja jest napisana w języku Ruby, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Oto kilka rzeczy, które są potrzebne przed rozpoczęciem tego przewodnika Szybki start:
 
-* [Ruby 2.4 lub nowsza wersja](https://www.ruby-lang.org/en/downloads/)
+* [Język Ruby 2.4 lub nowszy](https://www.ruby-lang.org/en/downloads/)
 * Klucz subskrypcji
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
@@ -43,7 +43,7 @@ require 'json'
 
 ## <a name="define-variables"></a>Definiowanie zmiennych
 
-Zanim będzie można kontynuować, należy ustawić kilka zmiennych. `uri` może być globalnym punktem końcowym lub [niestandardowym](../../../cognitive-services/cognitive-services-custom-subdomains.md) punktem końcowym domeny wyświetlanym w Azure Portal dla zasobu. Upewnij się, że wartości `uri` oraz `path` są prawidłowe, i zamień wartość `accessKey` na odpowiedni klucz subskrypcji ze swojego konta platformy Azure. Możesz dostosować zapytanie wyszukiwania, zamieniając wartość `term`.
+Zanim będzie można kontynuować, należy ustawić kilka zmiennych. `uri`może to być globalny punkt końcowy poniżej lub niestandardowy punkt końcowy [poddomeny](../../../cognitive-services/cognitive-services-custom-subdomains.md) wyświetlany w witrynie Azure portal dla zasobu. Upewnij się, że wartości `uri` oraz `path` są prawidłowe, i zamień wartość `accessKey` na odpowiedni klucz subskrypcji ze swojego konta platformy Azure. Możesz dostosować zapytanie wyszukiwania, zamieniając wartość `term`.
 
 ```ruby
 accessKey = "YOUR_SUBSCRIPTION_KEY"

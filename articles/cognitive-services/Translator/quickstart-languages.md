@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: Pobieranie listy obsługiwanych języków — interfejs API tłumaczenia tekstu w usłudze Translator'
+title: 'Szybki start: pobierz listę obsługiwanych języków — interfejs API tekstu tłumacza'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start uzyskasz listę języków obsługiwanych na potrzeby tłumaczenia, transliteracji i wyszukiwania w słowniku przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator.
 services: cognitive-services
@@ -12,13 +12,13 @@ ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
 ms.openlocfilehash: d992fcec6071ea9883f2db61d6c54f41a9615867
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77525145"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages"></a>Szybki Start: Użyj interfejs API tłumaczenia tekstu w usłudze Translator, aby uzyskać listę obsługiwanych języków
+# <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages"></a>Szybki start: wyświetlanie listy obsługiwanych języków za pomocą interfejsu API tekstu translatora
 
 W tym przewodniku Szybki start uzyskasz listę języków obsługiwanych na potrzeby tłumaczenia, transliteracji i wyszukiwania w słowniku przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator.
 

@@ -1,88 +1,88 @@
 ---
-title: 'Samouczek: list Entity-LUIS'
+title: 'Samouczek: Jednostka listy — usługa LUIS'
 description: Pobieraj dane, które są zgodne ze wstępnie zdefiniowaną listą elementów. Każdy element na liście może mieć synonimy, które są również dokładnie zgodne
 ms.topic: tutorial
 ms.date: 03/12/2020
 ms.openlocfilehash: 1cfeccbd54e8ef8ec315d53fc7a766760c92a0d1
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79297411"
 ---
-# <a name="tutorial-get-exact-text-matched-data-from-an-utterance-with-list-entity"></a>Samouczek: uzyskiwanie dokładnych danych dopasowanych do tekstu z wypowiedź za pomocą jednostki listy
+# <a name="tutorial-get-exact-text-matched-data-from-an-utterance-with-list-entity"></a>Samouczek: Pobieranie dokładnych danych dopasowanych do tekstu z wypowiedź z jednostką listy
 
-W tym samouczku dowiesz się, jak pobierać dane, które dokładnie pasują do wstępnie zdefiniowanej listy elementów.
+W tym samouczku dowiedzieć się, jak uzyskać dane, które dokładnie pasuje do wstępnie zdefiniowanej listy elementów.
 
 **Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Importuj aplikację i Użyj istniejącego zamiaru
+> * Importowanie aplikacji i używanie istniejących intencji
 > * Dodawanie jednostki listy
-> * Uczenie, publikowanie i tworzenie zapytań o aplikacje w celu pobrania wyodrębnionych danych
+> * Szkolenie, publikowanie i wykonywanie zapytań w aplikacji w celu uzyskania wyodrębnionych danych
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="what-is-a-list-entity"></a>Co to jest jednostka listy?
 
-Jednostka listy jest dokładnym dopasowaniem tekstu do słów w wypowiedzi. Każdy element na liście może zawierać listę synonimów. Użyj jednostki listy, jeśli chcesz dokładnie dopasować.
+Jednostka listy jest dokładnym dopasowaniem tekstu do słów w wypowiedzi. Każdy element na liście może zawierać listę synonimów. Użyj encji listy, jeśli chcesz dokładnie dopasować.
 
-Dla tej zaimportowanej aplikacji Pizza Utwórz jednostkę listy dla różnych typów Pizza crust.
+W przypadku tej importowanej aplikacji do pizzy utwórz jednostkę listy dla różnych typów skorupy pizzy.
 
 Jednostka listy jest dobrym rozwiązaniem w przypadku tego typu danych, jeśli:
 
 * Wartości danych należą do znanego zestawu.
 * Zestaw nie przekracza maksymalnych [granic](luis-boundaries.md) usługi LUIS dla tego typu jednostki.
-* Tekst w wypowiedź jest dopasowaniem bez uwzględniania wielkości liter z synonimem lub nazwą kanoniczną. LUIS nie używa listy poza dopasowaniem. Analiza słowotwórcza, liczba mnoga i inne wariacje nie są rozpoznawane przy użyciu tylko jednostki listy. Aby zarządzać wariacjami, rozważ użycie [wzorca](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) z opcjonalną składnią tekstu.
+* Tekst w wypowiedź jest dopasowanie bez uwzględniania wielkości liter z synonimem lub nazwy kanonicznej. Usługa LUIS nie używa listy poza dopasowaniem. Analiza słowotwórcza, liczba mnoga i inne wariacje nie są rozpoznawane przy użyciu tylko jednostki listy. Aby zarządzać wariacjami, rozważ użycie [wzorca](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) z opcjonalną składnią tekstu.
 
 > [!CAUTION]
-> Jeśli nie masz pewności, czy chcesz, aby jednostka listy lub obiekt, który został wystawiony przez maszynę z listą fraz jako deskryptora, najlepszym i najbardziej elastycznym rozwiązaniem jest użycie jednostki obsługiwanej przez maszynę z listą fraz jako deskryptora. Ta metoda umożliwia LUISom naukę i zwiększanie wartości danych do wyodrębnienia.
+> Jeśli nie masz pewności, czy chcesz, aby encja listy lub jednostka nauczona maszynowo z listą fraz jako deskryptorem, najlepszą i najbardziej elastyczną praktyką jest użycie jednostki nauczonej maszynowo z listą fraz jako deskryptorem. Ta metoda umożliwia usługi LUIS dowiedzieć się i rozszerzyć wartości danych do wyodrębnienia.
 
-## <a name="import-example-json-and-add-utterances"></a>Importuj plik example. JSON i Dodaj wyrażenia długości
+## <a name="import-example-json-and-add-utterances"></a>Importowanie przykładów .json i dodawanie wypowiedzi
 
-1.  Pobierz i Zapisz [plik JSON aplikacji](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json).
+1.  Pobierz i zapisz [plik JSON aplikacji](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json).
 
     [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
-1. Zaimportowana aplikacja ma zamiar `OrderPizza`. Wybierz ten cel i Dodaj kilka wyrażenia długości z nowymi typami Crust:
+1. Zaimportowana aplikacja `OrderPizza` ma zamiar. Wybierz tę intencję i dodaj kilka wypowiedzi z nowymi typami skorupy:
 
-    |Nowy wyrażenia długości|
+    |Nowe wypowiedzi|
     |--|--|
-    |Zamów Crust na małą Pepperoni Pizza|
-    |3 cienkie Crust hawajski pizzami|
-    |Dostarcz 2 Crust pizzami z odciskiem chleba|
-    |jedna Gruba Crust Pizza do odbioru|
-    |jedna głęboka Pepperoni Pizza|
+    |proszę zamówić patelnię skorupę małej pizzy pepperoni|
+    |3 cienkie skorupy hawajskie pizze|
+    |dostarczyć 2 nadziewane pizze skorupy z pałeczkami chleba|
+    |jedna gruba pizza skorupowa do odbioru|
+    |jedna pizza pepperoni z głębokim daniem|
 
-## <a name="crust-list-entity"></a>Jednostka listy Crust
+## <a name="crust-list-entity"></a>Jednostka listy skorup
 
-Teraz, gdy zamiara **OrderPizza** ma przykład wyrażenia długości z typami Crust, Luis musi zrozumieć, które wyrazy reprezentują typy crust.
+Teraz, gdy **intencji OrderPizza** ma wypowiedzi przykład z typów skorupy, usługa LUIS musi zrozumieć, które słowa reprezentują typy skorupy.
 
-Przykłady podstawowej nazwy i synonimów to:
+Przykłady nazwy podstawowej i synonimów to:
 
 |Nazwa kanoniczna|Synonimy|
 |--|--|
-|Głębokie nadania|niskim<br>głęboki Crust naczyń<br>cieńsz<br>Gruby Crust|
-|Ogólnoeuropejskich|regularne<br>Oryginał<br>typow<br>Regularna Crust<br>oryginalny Crust<br>normalne Crust|
-|Maskotka|Crusty|
-|Elastyczne|crust cienki<br>skinny<br>skinny crust|
+|Głębokie naczynie|Głębokie<br>skorupa naczyń głębokich<br>Grube<br>gruba skorupa|
+|Panoramowanie|Regularne<br>Oryginał<br>Normalne<br>zwykła skorupa<br>oryginalna skorupa<br>normalna skorupa|
+|Nadziewane|nadziewane skorupy|
+|Elastyczne|cienka skorupa<br>Szczupła<br>chuda skorupa|
 
 1. Wybierz pozycję **Entities** (Jednostki) w lewym panelu.
 
-1. Wybierz pozycję **+ Utwórz**.
+1. Wybierz **+ Utwórz**.
 
-1. W oknie podręcznym jednostki wprowadź `CrustList` jako nazwę jednostki i **Lista** (Lista) jako typ jednostki. Wybierz opcję **Dalej**.
-
-    > [!div class="mx-imgBorder"]
-    > Zrzut ekranu przedstawiający ![tworzenia nowego okna podręcznego nowej jednostki](media/luis-quickstart-intent-and-list-entity/create-pizza-crust-list-entity.png)
-
-1. Na stronie **Tworzenie jednostki listy** wprowadź nazwy kanoniczne i synonimy dla każdej nazwy kanonicznej, a następnie wybierz pozycję **Utwórz**.
+1. W oknie podręcznym jednostki wprowadź ciąg `CrustList` jako nazwę jednostki i wartość **List** (Lista) jako typ jednostki. Wybierz **pozycję Dalej**.
 
     > [!div class="mx-imgBorder"]
-    > ![zrzut ekranu przedstawiający Dodawanie elementów do jednostki listy](media/luis-quickstart-intent-and-list-entity/add-pizza-crust-items-list-entity.png)
+    > ![Zrzut ekranu przedstawiający podręczne okno dialogowe tworzenia nowej jednostki](media/luis-quickstart-intent-and-list-entity/create-pizza-crust-list-entity.png)
 
-    Gdy dodajesz jednostkę listy do aplikacji LUIS, nie musisz dodawać [etykiet](label-entity-example-utterance.md) do tekstu za pomocą jednostki listy. Jest on stosowany do wszystkich wyrażenia długości we wszystkich intencjach.
+1. Na stronie **Tworzenie encji listy** wprowadź nazwy kanoniczne i synonimy dla każdej nazwy kanonicznej, a następnie wybierz pozycję **Utwórz**.
+
+    > [!div class="mx-imgBorder"]
+    > ![Zrzut ekranu przedstawiający dodawanie elementów do encji listy](media/luis-quickstart-intent-and-list-entity/add-pizza-crust-items-list-entity.png)
+
+    Po dodaniu jednostki listy do aplikacji usługi LUIS nie trzeba [oznaczać](label-entity-example-utterance.md) tekstu encją listy. Jest stosowany do wszystkich wypowiedzi we wszystkich intencji.
 
 ## <a name="train-the-app-before-testing-or-publishing"></a>Trenowanie aplikacji przed testowaniem lub publikowaniem
 
@@ -100,7 +100,7 @@ Przykłady podstawowej nazwy i synonimów to:
 
     `Deliver 2 deep dish hawaiian pizzas and a thin pepperoni`
 
-    Ostatni parametr ciągu zapytania to `query`, czyli **query** (zapytanie) wypowiedzi.
+    Ostatnim parametrem querystring jest `query` **kwerenda**wypowiedź .
 
 
     ```json
@@ -178,7 +178,7 @@ Przykłady podstawowej nazwy i synonimów to:
     }
     ```
 
-    Typy Crust zostały znalezione jako dokładne dopasowania tekstu i zwrócone w odpowiedzi JSON. Te informacje są używane przez aplikację kliencką do przetwarzania zamówienia.
+    Typy skorupy zostały znalezione jako dokładne dopasowanie tekstu i zwrócone w odpowiedzi JSON. Te informacje są używane przez aplikację kliencką do przetwarzania zamówienia.
 
 [!INCLUDE [LUIS How to clean up resources](includes/quickstart-tutorial-cleanup-resources.md)]
 
@@ -188,13 +188,13 @@ Przykłady podstawowej nazwy i synonimów to:
 * [Jak trenować](luis-how-to-train.md)
 * [Jak opublikować](luis-how-to-publish-app.md)
 * [Jak przeprowadzać testy w portalu usługi LUIS](luis-interactive-test.md)
-* [Koncepcje — jednostki](luis-concept-entity-types.md)
-* [Odwołanie JSON jednostki wyrażenia regularnego](reference-entity-regular-expression.md?tabs=V3)
-* [Jak dodać jednostki w celu wyodrębnienia danych](luis-how-to-add-entities.md)
+* [Koncepcja - jednostki](luis-concept-entity-types.md)
+* [Odwołanie JSON do encji wyrażenia regularnego](reference-entity-regular-expression.md?tabs=V3)
+* [Jak dodać jednostki do wyodrębniania danych](luis-how-to-add-entities.md)
 
 ## <a name="next-steps"></a>Następne kroki
-W tym samouczku dodano przykład wyrażenia długości, a następnie utworzono jednostkę listy, aby wyodrębnić dokładne dopasowania tekstu z wyrażenia długości. Po wyszkoleniu i opublikowaniu aplikacji zapytanie do punktu końcowego zidentyfikowało intencję i zwróciło wyodrębnione dane.
+W tym samouczku dodano wypowiedzi przykład, a następnie utworzono jednostkę listy, aby wyodrębnić dokładne dopasowania tekstu z wypowiedzi. Po wyszkoleniu i opublikowaniu aplikacji zapytanie do punktu końcowego zidentyfikowało intencję i zwróciło wyodrębnione dane.
 
 > [!div class="nextstepaction"]
-> [Dodaj wstępnie utworzoną jednostkę z rolą](tutorial-entity-roles.md)
+> [Dodawanie wstępnie utworzonej jednostki z rolą](tutorial-entity-roles.md)
 

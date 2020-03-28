@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: Rozpoznawanie mowy z mikrofonu, Java (Android)-Speech Service'
+title: 'Szybki start: rozpoznawanie mowy z mikrofonu, Java (Android) - Usługa mowy'
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak rozpoznawać mowę w języku Java w systemie Android przy użyciu zestawu Speech SDK
 services: cognitive-services
@@ -11,28 +11,28 @@ ms.topic: include
 ms.date: 11/05/2019
 ms.author: wolfma
 ms.openlocfilehash: 6348d09351cf627624340083e2c419def38dfc01
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77446151"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem:
+Zanim zaczniesz:
 
 > [!div class="checklist"]
-> * [Tworzenie zasobu usługi Azure Speech](../../../../get-started.md)
-> * [Konfigurowanie środowiska deweloperskiego](../../../../quickstarts/setup-platform.md?tabs=android)
-> * Upewnij się, że masz dostęp do mikrofonu do przechwytywania audio
+> * [Tworzenie zasobu mowy platformy Azure](../../../../get-started.md)
+> * [Konfigurowanie środowiska programistycznego](../../../../quickstarts/setup-platform.md?tabs=android)
+> * Upewnij się, że masz dostęp do mikrofonu do przechwytywania dźwięku
 
 ## <a name="create-a-user-interface"></a>Tworzenie interfejsu użytkownika
 
-Teraz utworzysz podstawowy interfejs użytkownika dla aplikacji. Edytuj układ dla głównego działania, `activity_main.xml`. Początkowo układ obejmuje pasek tytułu z nazwą aplikacji oraz TextView, który zawiera tekst "Hello world!".
+Teraz utworzymy podstawowy interfejs użytkownika dla aplikacji. Edytuj układ dla głównego działania, `activity_main.xml`. Początkowo układ zawiera pasek tytułu z nazwą aplikacji i TextView, który zawiera tekst "Hello World!".
 
-* Wybierz element TextView. Zmień atrybut ID w prawym górnym rogu na `hello`.
+* Zaznacz element TextView. Zmień atrybut ID w prawym górnym rogu na `hello`.
 
-* Z palety w lewym górnym rogu okna `activity_main.xml` przeciągnij przycisk do pustego miejsca powyżej tekstu.
+* Z palety w lewym górnym `activity_main.xml` rogu okna przeciągnij przycisk do pustego miejsca nad tekstem.
 
 * W atrybutach przycisku po prawej stronie w polu wartości atrybutu `onClick` wprowadź `onSpeechButtonClicked`. Napiszemy metodę o tej nazwie do obsługi zdarzenia przycisku. Zmień atrybut ID w prawym górnym rogu na `button`.
 
@@ -54,21 +54,21 @@ Tekst i graficzna reprezentacja interfejsu użytkownika powinny teraz wyglądać
 
    * Metoda `onCreate` zawiera kod, który żąda uprawnień do mikrofonu i Internetu oraz inicjuje powiązanie z platformą natywną. Konfigurowanie powiązań z platformą natywną jest wymagane tylko raz. Należy to zrobić na początku, podczas inicjowania aplikacji.
 
-   * Metoda `onSpeechButtonClicked` oznacza, jak wspomniano wcześniej, procedurę obsługi naciskania przycisku. Naciśnięcie przycisku powoduje wyzwolenie transkrypcji zamiany mowy na tekst.
+   * Metoda `onSpeechButtonClicked` oznacza, jak wspomniano wcześniej, procedurę obsługi naciskania przycisku. Naciśnięcie przycisku powoduje transkrypcję mowy na tekst.
 
 1. W tym samym pliku zastąp ciąg `YourSubscriptionKey` kluczem subskrypcji.
 
-1. Zastąp również ciąg `YourServiceRegion` **identyfikatorem regionu** z [regionu](https://aka.ms/speech/sdkregion) skojarzonego z subskrypcją. Na przykład użyj `westus` subskrypcji bezpłatnej wersji próbnej.
+1. Należy również `YourServiceRegion` zastąpić ciąg **identyfikatorem Region** z [regionu skojarzonego](https://aka.ms/speech/sdkregion) z subskrypcją. Na przykład `westus` użyj bezpłatnej subskrypcji próbnej.
 
 ## <a name="build-and-run-the-app"></a>Kompilowanie i uruchamianie aplikacji
 
 1. Połącz urządzenie z systemem Android do komputera projektowego. Upewnij się, że włączono [tryb programowania i debugowanie USB](https://developer.android.com/studio/debug/dev-options) na urządzeniu.
 
-1. Aby skompilować aplikację, wybierz kombinację klawiszy CTRL + F9 lub wybierz opcję **kompiluj** > **Utwórz projekt** na pasku menu.
+1. Aby utworzyć aplikację, wybierz ctrl+F9 lub wybierz z paska menu pozycję **Zbuduj** > **projekt.**
 
-1. Aby uruchomić aplikację, wybierz polecenie SHIFT + F10 lub wybierz polecenie **uruchom** > **Uruchom "App"** .
+1. Aby uruchomić aplikację, wybierz klawisze Shift+F10 lub wybierz **pozycję Uruchom** > **polecenie Uruchom "app"**.
 
-1. W wyświetlonym oknie cel wdrożenia wybierz urządzenie z systemem Android.
+1. W wyświetlonym oknie docelowym wdrożenia wybierz urządzenie z Androidem.
 
    ![Zrzut ekranu okna Deployment Target (Cel wdrożenia)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-12-deploy.png)
 

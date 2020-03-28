@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: 3b56cd12aec21cffd98a0143f5cf3f083ec55e94
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74960557"
 ---
 # <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Samouczek: używanie modelu ONNX z usługi Custom Vision z funkcją Windows ML (wersja zapoznawcza)
@@ -26,7 +26,7 @@ W tym artykule opisano sposób używania pliku ONNX wyeksportowanego z Custom Vi
 > [!div class="checklist"]
 > * Informacje o przykładowej aplikacji
 > * Pobieranie przykładowego kodu
-> * Uruchomienie przykładu
+> * Uruchamianie przykładu
 > * Używanie własnego modelu
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -45,9 +45,9 @@ Aplikacja jest aplikacją ogólną Windows UWP. Dzięki temu można wybrać z ko
 
 ## <a name="get-the-example-code"></a>Pobieranie przykładowego kodu
 
-Przykładowa aplikacja jest dostępna na stronie [https://github.com/Azure-Samples/cognitive-services-onnx-customvision-sample](https://github.com/Azure-Samples/cognitive-services-onnx-customvision-sample).
+Przykładowa aplikacja jest [https://github.com/Azure-Samples/cognitive-services-onnx-customvision-sample](https://github.com/Azure-Samples/cognitive-services-onnx-customvision-sample)dostępna pod adresem .
 
-## <a name="run-the-example"></a>Uruchomienie przykładu
+## <a name="run-the-example"></a>Uruchamianie przykładu
 
 1. Naciśnij klawisz `F5`, aby uruchomić aplikację z poziomu programu Visual Studio. Może zostać wyświetlony monit o włączenie trybu dewelopera. Więcej informacji można znaleźć w artykule [Enable your device for development](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development) (Konfigurowanie urządzenia pod kątem tworzenia aplikacji).
 
@@ -57,9 +57,9 @@ Przykładowa aplikacja jest dostępna na stronie [https://github.com/Azure-Sampl
 
 Aby używać własnego modelu, wykonaj następujące czynności:
 
-1. [Utwórz i naucz](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) klasyfikator przy użyciu usługi Custom Vision Service. Aby wyeksportować modelu, wybierz domenę __kompaktową__, taką jak **General (kompaktowa)** . Aby wyeksportować istniejący klasyfikator, przekonwertuj domenę na domenę kompaktową przez wybranie ikony koła zębatego w prawym górnym rogu. Na stronie __Ustawienia__ wybierz model kompaktowy, zapisz i naucz projekt.  
+1. [Utwórz i naucz](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) klasyfikator przy użyciu usługi Custom Vision Service. Aby wyeksportować modelu, wybierz domenę __kompaktową__, taką jak **General (kompaktowa)**. Aby wyeksportować istniejący klasyfikator, przekonwertuj domenę na domenę kompaktową przez wybranie ikony koła zębatego w prawym górnym rogu. Na stronie __Ustawienia__ wybierz model kompaktowy, zapisz i naucz projekt.  
 
-1. [Wyeksportuj model](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) , przechodząc do karty wydajność. Wybierz iterację przeszkolonej przy użyciu domeny kompaktowej. zostanie wyświetlony przycisk "Eksportuj". Wybierz opcję *Eksportuj*, *ONNX*, a następnie *Eksportuj*. Gdy plik będzie gotowy, wybierz przycisk *Pobierz*.
+1. [Eksportuj model,](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) przechodząc do karty Wydajność. Wybierz iterację uszkoloną przy za pomocą domeny kompaktowej, pojawi się przycisk "Eksportuj". Wybierz *pozycję Eksportuj*, *ONNX*, a następnie *eksportuj*. Gdy plik będzie gotowy, wybierz przycisk *Pobierz*.
 
 1. Upuść plik ONNX w folderze __Assets__ projektu. 
 
@@ -67,8 +67,8 @@ Aby używać własnego modelu, wykonaj następujące czynności:
 
 1. W Eksploratorze rozwiązań wybierz plik ONNX z folderu Assets. Zmień następujące właściwości pliku:
 
-    * __Akcja kompilacji__  ->  __Zawartość__
-    * __Kopiuj do katalogu wyjściowego__  ->  __Kopiuj, jeśli nowszy__
+    * __Tworzenie__ -> __zawartości__ akcji
+    * __Kopiuj do katalogu wyjściowego,__ -> __jeśli nowsza__
 
 1. Dla zmiennej `_onnxFileNames` ustaw nazwę pliku ONNX. Zmień też element `ClassLabel` na liczbę etykiet w modelu.
 

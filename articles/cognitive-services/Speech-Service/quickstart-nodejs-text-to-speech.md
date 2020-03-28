@@ -1,7 +1,7 @@
 ---
-title: 'Szybki Start: konwertowanie tekstu na mowę, Node. js-Speech Service'
+title: 'Szybki start: konwertowanie tekstu na mowę, Node.js - Usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: W tym przewodniku szybki start dowiesz się, jak konwertować zamianę tekstu na mowę przy użyciu środowiska Node. js i interfejsu API REST zamiany tekstu na mowę. Przykładowy tekst uwzględnione w tym przewodniku mają strukturę jako język znaczników synteza mowy (SSML). Dzięki temu możliwe jest wybranie głos i język odpowiedzi mowy.
+description: W tym przewodniku Szybki start dowiesz się, jak konwertować tekst na mowę przy użyciu pliku Node.js i interfejsu API REST między tekstem a mową. Przykładowy tekst zawarty w tym przewodniku ma strukturę języka znaczników syntezy mowy (SSML). Dzięki temu można wybrać głos i język odpowiedzi mowy.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,17 +11,17 @@ ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: erhopf
 ms.openlocfilehash: b120acd25874585a744fb774aafe15d32d7baf08
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74976506"
 ---
-# <a name="quickstart-convert-text-to-speech-using-nodejs"></a>Szybki Start: konwertowanie tekstu na mowę przy użyciu środowiska Node. js
+# <a name="quickstart-convert-text-to-speech-using-nodejs"></a>Szybki start: konwertowanie tekstu na mowę przy użyciu pliku Node.js
 
-W tym przewodniku szybki start dowiesz się, jak konwertować zamianę tekstu na mowę przy użyciu środowiska Node. js i interfejsu API REST zamiany tekstu na mowę. Ma strukturę treści żądania, w tym przewodniku [mowy syntezy Markup Language (SSML)](speech-synthesis-markup.md), co pozwala wybrać głos i język w odpowiedzi.
+W tym przewodniku Szybki start dowiesz się, jak konwertować tekst na mowę przy użyciu pliku Node.js i interfejsu API REST między tekstem a wiadomą. Treść żądania w tym przewodniku jest skonstruowana jako [język znaczników syntezy mowy (SSML),](speech-synthesis-markup.md)który pozwala wybrać głos i język odpowiedzi.
 
-Ten przewodnik Szybki Start wymaga [konta Cognitive Services platformy Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z zasobem usługi mowy. Jeśli nie masz konta, możesz użyć [bezpłatnej wersji próbnej](get-started.md), aby uzyskać klucz subskrypcji.
+Ten przewodnik Szybki start wymaga [konta usługi Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z zasobem usługi mowy. Jeśli nie masz konta, możesz użyć [bezpłatnej wersji próbnej](get-started.md), aby uzyskać klucz subskrypcji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -29,11 +29,11 @@ Ten przewodnik Szybki start wymaga następujących elementów:
 
 * Środowisko [Node w wersji 8.12.x lub nowszej](https://nodejs.org/en/)
 * Program [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download) lub ulubiony edytor tekstów
-* Klucz subskrypcji platformy Azure dla usługi Mowa. [Uzyskaj bezpłatnie!](get-started.md).
+* Klucz subskrypcji platformy Azure dla usługi Mowa. [Zdobądź jeden za darmo!](get-started.md).
 
 ## <a name="create-a-project-and-require-dependencies"></a>Tworzenie projektu i wymaganie zależności
 
-Utwórz nowy projekt node. js przy użyciu ulubionego środowiska IDE lub edytora. Następnie skopiuj ten fragment kodu do swojego projektu do pliku o nazwie `tts.js`.
+Utwórz nowy projekt Node.js przy użyciu ulubionego IDE lub edytora. Następnie skopiuj ten fragment kodu do swojego projektu do pliku o nazwie `tts.js`.
 
 ```javascript
 // Requires request and request-promise for HTTP requests
@@ -52,9 +52,9 @@ const xmlbuilder = require('xmlbuilder');
 
 ## <a name="get-an-access-token"></a>Pobranie tokenu dostępu
 
-Zamiany tekstu na mowę interfejsu API REST wymaga tokenu dostępu do uwierzytelniania. Aby uzyskać token dostępu, wymagana jest wymiana. Ta funkcja wymienia klucz subskrypcji usługi mowy dla tokenu dostępu przy użyciu punktu końcowego `issueToken`.
+Interfejs API REST między tekstem na mowę wymaga tokenu dostępu do uwierzytelniania. Aby uzyskać token dostępu, wymagana jest wymiana. Ta funkcja wymienia klucz subskrypcji usługi mowy `issueToken` dla tokenu dostępu przy użyciu punktu końcowego.
 
-W tym przykładzie przyjęto założenie, że subskrypcja usługi mowy znajduje się w regionie zachodnie stany USA. Jeśli używasz innego regionu, zaktualizuj wartość `uri`. Aby uzyskać pełną listę, zobacz [regionów](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
+W tym przykładzie przyjęto założenie, że subskrypcja usługi mowy znajduje się w regionie Zachodnie stany USA. Jeśli używasz innego regionu, zaktualizuj wartość dla `uri`. Aby uzyskać pełną listę, zobacz [Regiony](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
 
 Skopiuj ten kod do projektu:
 
@@ -73,23 +73,23 @@ function getAccessToken(subscriptionKey) {
 ```
 
 > [!NOTE]
-> Aby uzyskać więcej informacji na temat uwierzytelniania, zobacz [uwierzytelnianie przy użyciu tokenu dostępu](https://docs.microsoft.com/azure/cognitive-services/authentication#authenticate-with-an-authentication-token).
+> Aby uzyskać więcej informacji na temat uwierzytelniania, zobacz [Uwierzytelnianie przy użyciu tokenu dostępu](https://docs.microsoft.com/azure/cognitive-services/authentication#authenticate-with-an-authentication-token).
 
-W następnej sekcji utworzymy funkcję, która wywoła interfejs API zamiany tekstu na mowę i zapisze odpowiedź na mowę.
+W następnej sekcji utworzymy funkcję wywoływania interfejsu API zamiany tekstu na mowę i zapisywania syntetyzowanej odpowiedzi na mowę.
 
-## <a name="make-a-request-and-save-the-response"></a>Tworzenie żądania i zapisać odpowiedź
+## <a name="make-a-request-and-save-the-response"></a>Złożyć wniosek i zapisać odpowiedź
 
-Tutaj chcesz skompilować żądanie do interfejsu API zamiany tekstu na mowę i zapisać odpowiedź mowy. W tym przykładzie przyjęto założenie, że używasz punktu końcowego zachodnie stany USA. Jeśli zasób jest zarejestrowany w innym regionie, pamiętaj o zaktualizowaniu `uri`. Aby uzyskać więcej informacji, zobacz [regiony usługi mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
+W tym miejscu masz zamiar utworzyć żądanie do interfejsu API zamiany tekstu na mowę i zapisać odpowiedź mowy. W tym przykładzie przyjęto założenie, że używasz punktu końcowego zachodniego us. Jeśli zasób jest zarejestrowany w innym regionie, należy zaktualizować plik `uri`. Aby uzyskać więcej informacji, zobacz [Regiony usługi mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
 
-Następnie należy dodać wymagane nagłówki żądania. Upewnij się, że aktualizujesz `User-Agent` nazwą zasobu (znajdujący się w witrynie Azure portal) i ustaw `X-Microsoft-OutputFormat` do preferowanego danych wyjściowych audio. Aby uzyskać pełną listę formatów danych wyjściowych, zobacz [danych wyjściowych Audio](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
+Następnie należy dodać wymagane nagłówki dla żądania. Upewnij się, `User-Agent` że aktualizacja o nazwie zasobu (znajduje się `X-Microsoft-OutputFormat` w witrynie Azure portal) i ustawić preferowane dane wyjściowe audio. Aby uzyskać pełną listę formatów wyjściowych, zobacz [Wyjścia audio](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
 
-Następnie konstruować treści żądania, za pomocą mowy syntezy Markup Language (SSML). W tym przykładzie definiuje strukturę i używa `text` dane wejściowe została utworzona wcześniej.
+Następnie skonstruuj treść żądania przy użyciu języka znaczników syntezy mowy (SSML). Ten przykład definiuje strukturę i `text` używa danych wejściowych utworzonych wcześniej.
 
 >[!NOTE]
-> W tym przykładzie użyto `JessaRUS` czcionka głosowa. Aby uzyskać pełną listę Microsoft podany głosów/języków, zobacz [języki](language-support.md).
-> Jeśli interesuje Cię tworzenie unikatowy, rozpoznawalny głos na marki, zobacz [tworzenia czcionki głosowe niestandardowe](how-to-customize-voice-font.md).
+> W tym przykładzie użyto czcionki głosowej. `JessaRUS` Aby uzyskać pełną listę głosów/języków dostarczonych przez firmę Microsoft, zobacz [Obsługa języków](language-support.md).
+> Jeśli chcesz stworzyć unikalny, rozpoznawalny głos dla swojej marki, zobacz [Tworzenie niestandardowych czcionek głosowych.](how-to-customize-voice-font.md)
 
-Na koniec wprowadzisz żądania do usługi. Jeśli żądanie zakończy się pomyślnie i zostanie zwrócony kod stanu 200, odpowiedź mowy jest zapisywana jako `TTSOutput.wav`.
+Na koniec złożysz wniosek do usługi. Jeśli żądanie zakończy się pomyślnie i zostanie zwrócony kod stanu 200, odpowiedź na mowę jest zapisywana jako `TTSOutput.wav`.
 
 ```javascript
 // Make sure to update User-Agent with the name of your resource.
@@ -135,9 +135,9 @@ function textToSpeech(accessToken, text) {
 
 ## <a name="put-it-all-together"></a>Zebranie wszystkich elementów
 
-To już prawie koniec. Ostatnim krokiem jest utworzenie funkcji asynchronicznej. Ta funkcja odczyta swój klucz subskrypcji ze zmiennej środowiskowej, wyświetli monit o tekst, Pobierz token, poczekaj na zakończenie żądania, a następnie przekonwertuj tekst na mowę i Zapisz dźwięk jako. wav.
+To już prawie koniec. Ostatnim krokiem jest utworzenie funkcji asynchroniiowej. Ta funkcja odczytuje klucz subskrypcji ze zmiennej środowiskowej, monituje o tekst, otrzymuje token, czeka na zakończenie żądania, a następnie konwertuje tekst na mowę i zapisuje dźwięk jako .wav.
 
-Jeśli nie znasz zmiennych środowiskowych ani wolisz testować przy użyciu klucza subskrypcji stałe jako ciąg, Zastąp `process.env.SPEECH_SERVICE_KEY` kluczem subskrypcji jako ciągiem.
+Jeśli nie znasz zmiennych środowiskowych lub wolisz przetestować klucz subskrypcji zakodowany na stałe jako ciąg, zamień `process.env.SPEECH_SERVICE_KEY` klucz subskrypcji jako ciąg.
 
 ```javascript
 // Use async and await to get the token before attempting
@@ -167,13 +167,13 @@ main()
 
 ## <a name="run-the-sample-app"></a>Uruchamianie przykładowej aplikacji
 
-To wszystko, wszystko jest gotowe do uruchomienia zamiany tekstu na mowę przykładowej aplikacji. Z wiersza polecenia (lub sesji terminalowej) przejdź do katalogu projektu, a następnie uruchom:
+To wszystko, możesz uruchomić przykładową aplikację zamiany tekstu na mowę. Z wiersza polecenia (lub sesji terminalowej) przejdź do katalogu projektu, a następnie uruchom:
 
 ```console
 node tts.js
 ```
 
-Po wyświetleniu monitu wpisz dowolną chcesz przekonwertować z zamiany tekstu na mowę. Jeśli to się powiedzie, plik mowy znajduje się w folderze projektu. Odtwarzać je za pomocą odtwarzacza media ulubionych.
+Po wyświetleniu monitu wpisz wszystko, co chcesz przekonwertować z tekstu na mowę. Jeśli powiedzie się, plik mowy znajduje się w folderze projektu. Odtwórz go za pomocą ulubionego odtwarzacza multimedialnego.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -184,8 +184,8 @@ Upewnij się, że wszystkie poufne informacje, takie jak klucze subskrypcji, zos
 > [!div class="nextstepaction"]
 > [Poznaj przykłady dla platformy Node.js w serwisie GitHub](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/NodeJS)
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 * [Dokumentacja interfejsu API zamiany tekstu na mowę](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
-* [Tworzenie niestandardowych voice czcionek](how-to-customize-voice-font.md)
-* [Próbki głosu rekord do utworzenia niestandardowych voice](record-custom-voice-samples.md)
+* [Tworzenie niestandardowych czcionek głosowych](how-to-customize-voice-font.md)
+* [Nagrywanie próbek głosu w celu utworzenia niestandardowego głosu](record-custom-voice-samples.md)

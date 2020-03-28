@@ -1,5 +1,5 @@
 ---
-title: wyszukiwanie obrazów Bing przewodniku szybki start dla biblioteki klienta JavaScript
+title: Szybki start biblioteki klienta wyszukiwania obrazów Bing JavaScript
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,13 +9,13 @@ ms.topic: include
 ms.date: 03/04/2020
 ms.author: aahi
 ms.openlocfilehash: a37439d24a39a16e8bb51a09c9a33abecfa36fc0
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78899587"
 ---
-Ten przewodnik Szybki Start umożliwia przeszukiwanie pierwszego obrazu przy użyciu biblioteki klienta wyszukiwanie obrazów Bing, która jest otoką dla interfejsu API i zawiera te same funkcje. Ta prosta aplikacja JavaScript wysyła zapytanie dotyczące wyszukania obrazu, analizuje odpowiedź w formacie JSON i wyświetla adres URL pierwszego zwróconego obrazu.
+Ten szybki start umożliwia pierwsze wyszukiwanie obrazów przy użyciu biblioteki klienta wyszukiwania obrazów Bing, która jest otoką interfejsu API i zawiera te same funkcje. Ta prosta aplikacja JavaScript wysyła zapytanie dotyczące wyszukania obrazu, analizuje odpowiedź w formacie JSON i wyświetla adres URL pierwszego zwróconego obrazu.
 
 Kod źródłowy dla tego przykładu jest dostępny w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/imageSearch.js) wraz z dodatkową obsługą błędów i adnotacjami.
 
@@ -66,7 +66,7 @@ Kod źródłowy dla tego przykładu jest dostępny w usłudze [GitHub](https://g
 
 1. Wywołaj funkcję pomocnika i obsłuż jej element `promise`, aby przeanalizować wyniki obrazów zwrócone w odpowiedzi.
 
-    Jeśli odpowiedź zawiera wyniki wyszukiwania, zapisz pierwszy wynik i wydrukuj jego szczegóły, takie jak adres URL miniatury i oryginalny adres URL, wraz z całkowitą liczbą zwróconych obrazów.
+    Jeśli odpowiedź zawiera wyniki wyszukiwania, zapisz pierwszy wynik i wyświetl jego szczegóły, takie jak adres URL miniatury i oryginalny adres URL, wraz z całkowitą liczbą zwróconych obrazów.
     ```javascript
     sendQuery().then(imageResults => {
         if (imageResults == null) {

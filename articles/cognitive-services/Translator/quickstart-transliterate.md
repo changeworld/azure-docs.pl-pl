@@ -1,7 +1,7 @@
 ---
-title: 'Szybki Start: konwertowanie skryptu tekstowego — tłumaczenie tekstu w usłudze Translator'
+title: 'Szybki start: konwertowanie skryptu tekstowego — tekst tłumacza'
 titleSuffix: Azure Cognitive Services
-description: W tym przewodniku szybki start dowiesz się, jak zatransliteracjć (konwertowanie) tekstu z jednego skryptu na inny przy użyciu interfejs API tłumaczenia tekstu w usłudze Translator. W tym przykładzie tekst w języku japońskim jest transliterowany na alfabet łaciński.
+description: W tym przewodniku Szybki start dowiesz się, jak transliteratować (konwertować) tekst z jednego skryptu do drugiego przy użyciu interfejsu API tekstu translatora. W tym przykładzie tekst w języku japońskim jest transliterowany na alfabet łaciński.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -12,15 +12,15 @@ ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
 ms.openlocfilehash: 4247983fd39cd8d9acf256d313ae10aa2002585f
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77525125"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-transliterate-text"></a>Szybki Start: Użyj interfejs API tłumaczenia tekstu w usłudze Translator do zatransliteracji tekstu
+# <a name="quickstart-use-the-translator-text-api-to-transliterate-text"></a>Szybki start: transliterowanie tekstu za pomocą interfejsu API tekstu translatora
 
-W tym przewodniku szybki start dowiesz się, jak zatransliteracjć (konwertowanie) tekstu z jednego skryptu na inny przy użyciu interfejsu API REST tłumaczenie tekstu w usłudze Translator. W tym udostępnionym przykładzie tekst w języku japońskim jest transliterowany na alfabet łaciński.
+W tym przewodniku Szybki start dowiesz się, jak transliteratować (konwertować) tekst z jednego skryptu do drugiego przy użyciu interfejsu API REST tekstu tłumacza. W tym udostępnionym przykładzie tekst w języku japońskim jest transliterowany na alfabet łaciński.
 
 Ten przewodnik Szybki start wymaga [konta usługi Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z zasobem tłumaczenia tekstu w usłudze Translator. Jeśli nie masz konta, możesz użyć [bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/), aby uzyskać klucz subskrypcji.
 

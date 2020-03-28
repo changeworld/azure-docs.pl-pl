@@ -13,10 +13,10 @@ ms.date: 12/18/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 6bd8c472aa659bec31440292e20328865b1cb531
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79134531"
 ---
 # <a name="what-is-the-bing-image-search-api"></a>Co to jest interfejs API wyszukiwania obrazów Bing?
@@ -27,7 +27,7 @@ Interfejs API wyszukiwania obrazów Bing oferuje wyniki wyszukiwania tylko w pos
 
 ## <a name="bing-image-search-features"></a>Funkcje wyszukiwania obrazów Bing
 
-| Cecha                                                                                                                                                                                 | Opis                                                                                                                                                            |
+| Funkcja                                                                                                                                                                                 | Opis                                                                                                                                                            |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Sugerowanie terminów wyszukiwania w czasie rzeczywistym](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries) | Ulepsz działanie aplikacji przy użyciu [interfejsu API automatycznego sugerowania Bing](../bing-autosuggest/get-suggested-search-terms.md), aby wyświetlać sugerowane terminy wyszukiwania w miarę ich wpisywania. |
 | [Filtrowanie i ograniczanie wyników obrazu](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images)                       | Filtruj obrazy, które zwraca usługa Bing, edytując parametry zapytania.                                                                                                       |
@@ -37,10 +37,10 @@ Interfejs API wyszukiwania obrazów Bing oferuje wyniki wyszukiwania tylko w pos
 
 ## <a name="workflow"></a>Przepływ pracy
 
-Interfejs API wyszukiwania obrazów Bing jest usługą internetową RESTful, łatwą do wywołania z dowolnego języka programowania, który może wysyłać żądania HTTP i analizować format JSON. Możesz użyć tej usługi za pomocą [interfejsu API REST](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/quickstarts/csharp?) lub [zestawu SDK](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart).
+Interfejs API wyszukiwania obrazów Bing jest usługą internetową RESTful, łatwą do wywołania z dowolnego języka programowania, który może wysyłać żądania HTTP i analizować format JSON. Z usługi można korzystać przy użyciu [interfejsu API REST](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/quickstarts/csharp?)lub [SDK.](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart)
 
-1. Utwórz [konto interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z dostępem do interfejsów API wyszukiwania Bing. Jeśli nie masz subskrypcji platformy Azure, możesz bezpłatnie utworzyć [konto](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
-2. Wyślij żądanie do interfejsu API przy użyciu prawidłowego [zapytania wyszukiwania](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries).
+1. Utwórz [konto interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z dostępem do interfejsów API wyszukiwania Bing. Jeśli nie masz subskrypcji platformy Azure, możesz [utworzyć konto](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) za darmo.
+2. Wyślij żądanie do interfejsu API z prawidłowym [zapytaniem wyszukiwania](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries).
 3. Przetwórz odpowiedź interfejsu API, analizując zwrócony komunikat JSON.
 
 ## <a name="next-steps"></a>Następne kroki
@@ -48,7 +48,7 @@ Interfejs API wyszukiwania obrazów Bing jest usługą internetową RESTful, ła
 Najpierw wypróbuj [interaktywną demonstrację](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) interfejsu API wyszukiwania obrazów Bing.
 Ta demonstracja pokazuje, jak można szybko dostosować zapytanie wyszukiwania i wyszukać obrazy w Internecie.
 
-Gdy wszystko jest gotowe do wywołania interfejsu API, utwórz [konto interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account). Jeśli nie masz subskrypcji platformy Azure, możesz bezpłatnie utworzyć [konto](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
+Gdy wszystko jest gotowe do wywołania interfejsu API, utwórz [konto interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account). Jeśli nie masz subskrypcji platformy Azure, możesz [utworzyć konto](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) za darmo.
 
 Aby szybko rozpocząć pracę z pierwszym żądaniem interfejsu API, możesz nauczyć się:
 
@@ -67,4 +67,4 @@ Aby szybko rozpocząć pracę z pierwszym żądaniem interfejsu API, możesz nau
 
 * Artykuł [Wysyłanie i praca z zapytaniami wyszukiwania](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries) opisuje sposób tworzenia, dostosowywania i przestawiania zapytań wyszukiwania.
 
-* Odwiedź [stronę centrum interfejsu API wyszukiwanie Bing](../bing-web-search/search-the-web.md) , aby poznać inne dostępne interfejsy API.
+* Odwiedź [stronę centrum interfejsu API wyszukiwania Bing,](../bing-web-search/search-the-web.md) aby zapoznać się z innymi dostępnymi interfejsami API.

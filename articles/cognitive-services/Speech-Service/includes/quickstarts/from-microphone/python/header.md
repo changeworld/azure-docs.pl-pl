@@ -1,7 +1,7 @@
 ---
-title: 'Szybki Start: Rozpoznawanie mowy z mikrofonu — usługa mowy'
+title: 'Szybki start: rozpoznawanie mowy z mikrofonu — usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: do ustalenia
+description: TBD
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
 ms.openlocfilehash: 17bc5c6a76a270cac611ed2342ffe9e38d84bd7b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75468033"
 ---
-Jeśli wolisz przejść bezpośrednio do programu, Wyświetl lub Pobierz wszystkie <a href="https://aka.ms/speech/github-python">przykłady języka Python zestawu Speech SDK</a> w witrynie GitHub. W przeciwnym razie Zacznijmy.
+Jeśli wolisz przejść w prawo, zobacz lub pobierz wszystkie <a href="https://aka.ms/speech/github-python">próbki języka Python SDK mowy</a> na GitHub. W przeciwnym razie zacznijmy.

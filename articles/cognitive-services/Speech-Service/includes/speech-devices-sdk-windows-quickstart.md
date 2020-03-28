@@ -6,61 +6,61 @@ ms.topic: include
 ms.date: 02/20/2020
 ms.author: dapine
 ms.openlocfilehash: 11d2f9788f41e259058af50a728b8b82eeb10131
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78384102"
 ---
-W tym przewodniku szybki start dowiesz się, jak za pomocą zestawu SDK usługi Speech dla systemu Windows utworzyć produkt z obsługą mowy lub użyć go jako urządzenia [transkrypcji konwersacji](../conversation-transcription-service.md) . W przypadku transkrypcji konwersacji jest obsługiwana tylko [usługa Azure urządzenia Kinect DK](https://azure.microsoft.com/services/kinect-dk/) . W przypadku innych funkcji rozpoznawania mowy obsługiwane są tablice mikrofonu liniowego, które zapewniają geometrię macierzy mikrofonu.
+W tym przewodniku Szybki start dowiesz się, jak używać zestawu SDK urządzeń mowy dla systemu Windows do tworzenia produktu obsługującego mowę lub używania go jako urządzenia [do transkrypcji konwersacji.](../conversation-transcription-service.md) Transkrypcji konwersacji obsługiwany jest tylko [plik DK usługi Azure Kinect.](https://azure.microsoft.com/services/kinect-dk/) W przypadku innych zastosowań mowy obsługiwane są liniowe tablice mikrofonowe, które zapewniają geometrię tablicy mikrofonu.
 
-Aplikacja została skompilowana przy użyciu pakietu zestawu Speech SDK, a środowisko IDE środowiska Java (v4) w systemie 64-bitowym. Działa ona w 64-bitowym środowisku uruchomieniowym Java 8 języka Java (JRE).
+Aplikacja jest zbudowana z pakietu Speech SDK i Eclipse Java IDE (v4) w 64-bitowym systemie Windows. Działa ona w 64-bitowym środowisku uruchomieniowym Java 8 języka Java (JRE).
 
-Ten przewodnik wymaga konta [Cognitive Services platformy Azure](../get-started.md) z zasobem usługi mowy. Jeśli nie masz konta, możesz użyć [bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/), aby uzyskać klucz subskrypcji.
+Ten przewodnik wymaga konta [usługi Azure Cognitive Services](../get-started.md) z zasobem usługi mowy. Jeśli nie masz konta, możesz użyć [bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/), aby uzyskać klucz subskrypcji.
 
-Kod źródłowy [przykładowej aplikacji](https://aka.ms/sdsdk-download-JRE) jest dołączony do zestawu Speech Devices SDK. Jest ona również [dostępna w witrynie GitHub](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
+Kod źródłowy [dla przykładowej aplikacji](https://aka.ms/sdsdk-download-JRE) jest dołączony do zestawu SDK urządzeń mowy. Jest również [dostępny na GitHub](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Ten przewodnik Szybki start wymaga następujących elementów:
 
 * System operacyjny: 64-bitowy system Windows
-* Tablica mikrofonu, taka jak [Azure urządzenia Kinect DK](https://azure.microsoft.com/services/kinect-dk/)
+* Macierz mikrofonów, taka jak [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)
 * [Zintegrowane środowisko projektowe Eclipse Java](https://www.eclipse.org/downloads/)
-* Tylko [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) lub [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html) .
+* [Tylko Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) lub [JDK 8.](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [Pakiet Microsoft Visual C++ Redistributable](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
 * Klucz subskrypcji platformy Azure dla usługi Mowa. [Uzyskaj bezpłatnie](../get-started.md).
-* Pobierz najnowszą wersję [zestawu Speech Devices SDK](https://aka.ms/sdsdk-download-JRE) dla języka Java i wyodrębnij plik zip do katalogu roboczego.
+* Pobierz najnowszą wersję [sdk urządzeń mowy](https://aka.ms/sdsdk-download-JRE) dla języka Java i wyodrębnij plik zip do katalogu roboczego.
    > [!NOTE]
-   > W tym przewodniku szybki start przyjęto założenie, że aplikacja została wyodrębniona do C:\SDSDK\JRE-Sample-Release
+   > Ten przewodnik Szybki start zakłada, że aplikacja jest wyodrębniona do wersji C:\SDSDK\JRE-Sample-Release
 
-Transkrypcja konwersacji jest obecnie dostępna tylko dla "en-US" i "zh-CN" w regionach "środkowe" i "eastasia". Aby można było używać transkrypcji konwersacji, w jednym z tych regionów musi znajdować się klucz mowy.
+Transkrypcja konwersacji jest obecnie dostępna tylko dla "en-US" i "zh-CN", w regionach "centralus" i "eastasia". Aby użyć transkrypcji konwersacji, w jednym z tych regionów musi być używany klucz mowy.
 
-Jeśli planujesz korzystać z intencji, musisz mieć subskrypcję [usługi Language Understanding (Luis)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) . Aby dowiedzieć się więcej na temat LUIS i rozpoznawania intencji, zobacz Rozpoznawanie założeń [mowy C#przy użyciu Luis, ](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp). Dla tej aplikacji jest dostępny [przykładowy model Luis](https://aka.ms/sdsdk-luis) .
+Jeśli planujesz użyć intencji, będziesz potrzebować subskrypcji [usługi rozumienia języka (LUIS).](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) Aby dowiedzieć się więcej o usłudze LUIS i rozpoznawaniu intencji, zobacz [Rozpoznawanie intencji mowy za pomocą usługi LUIS, C#](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp). [Przykładowy model usługi LUIS](https://aka.ms/sdsdk-luis) jest dostępny dla tej aplikacji.
 
-## <a name="create-and-configure-the-project"></a>Tworzenie i Konfigurowanie projektu
+## <a name="create-and-configure-the-project"></a>Tworzenie i konfigurowanie projektu
 
 1. Uruchom środowisko Eclipse.
 
-1. W obszarze **roboczym** **zaćmienie**w środowisku IDE wprowadź nazwę nowego katalogu obszaru roboczego. Następnie wybierz pozycję **Launch** (Uruchom).
+1. W programie **Eclipse IDE Launcher**w polu **Obszar roboczy** wprowadź nazwę nowego katalogu obszaru roboczego. Następnie wybierz pozycję **Launch** (Uruchom).
 
    ![Zrzut ekranu przedstawiający program Eclipse Launcher](../media/speech-devices-sdk/eclipse-launcher.png)
 
 1. Za chwilę zostanie wyświetlone główne okno środowiska IDE programu Eclipse. Zamknij ekran powitalny, jeśli się pojawi.
 
-1. Na pasku menu zaćmienie Utwórz nowy projekt, wybierając kolejno pozycje **plik** > **Nowy** > **projekt Java**. W przypadku niedostępności wybierz **projekt** , a następnie **projekt Java**.
+1. Na pasku menu Eclipse utwórz nowy projekt, wybierając **pozycję Plik** > **nowego** > **projektu Java**. Jeśli nie jest dostępny, wybierz pozycję **Project,** a następnie **Program Java Project**.
 
-1. Zostanie uruchomiony Kreator **nowego projektu Java** . **Przeglądaj** w poszukiwaniu lokalizacji przykładowego projektu. Wybierz pozycję **Finish** (Zakończ).
+1. Zostanie uruchomiony kreator **nowego projektu Java.** **Wyszukaj** lokalizację przykładowego projektu. Wybierz **pozycję Zakończ**.
 
    ![Zrzut ekranu przedstawiający kreatora nowego projektu języka Java](../media/speech-devices-sdk/eclipse-new-java-project.png)
 
-1. W **Eksploratorze pakietów**kliknij projekt prawym przyciskiem myszy. Z menu kontekstowego wybierz kolejno pozycje **Configure** > **Convert to Maven Project** (Konfiguruj > Konwertuj na projekt Maven). Wybierz pozycję **Finish** (Zakończ).
+1. W **Eksploratorze pakietów**kliknij prawym przyciskiem myszy projekt. Z menu kontekstowego **wybierz polecenie Konfiguruj** > **konwertowanie do projektu Maven.** Wybierz **pozycję Zakończ**.
 
    ![Zrzut ekranu narzędzia Package Explorer](../media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
-1. Otwórz plik pliku pom. XML i edytuj go.
+1. Otwórz plik pom.xml i edytuj go.
 
-    Na końcu pliku przed tagiem zamykającym `</project>`Utwórz elementy `repositories` i `dependencies`, jak pokazano poniżej, i upewnij się, że `version` jest zgodna z bieżącą wersją:
+    Na końcu pliku, przed tagiem `</project>`zamknięcia `repositories` `dependencies` , tworzenie i elementy, `version` jak pokazano tutaj, i upewnij się, że pasuje do bieżącej wersji:
     ```xml
     <repositories>
          <repository>
@@ -79,15 +79,15 @@ Jeśli planujesz korzystać z intencji, musisz mieć subskrypcję [usługi Langu
     </dependencies>
    ```
 
-1. Skopiuj zawartość **systemu Windows — x64** do lokalizacji projektu Java, np. **C:\SDSDK\JRE-Sample-Release**
+1. Kopiowanie zawartości **systemu Windows x64** do lokalizacji projektu Java, **np.**
 
-1. Kopiuj `kws.table`, `participants.properties` i `Microsoft.CognitiveServices.Speech.extension.pma.dll` do folderu projektu **target\classes**
+1. `kws.table`Kopiowanie `participants.properties` `Microsoft.CognitiveServices.Speech.extension.pma.dll` i do folderu projektu **docelowego\klas**
 
-## <a name="configure-the-sample-application"></a>Konfigurowanie przykładowej aplikacji
+## <a name="configure-the-sample-application"></a>Konfigurowanie aplikacji przykładowej
 
-1. Dodaj swój klucz subskrypcji mowy do kodu źródłowego. Jeśli chcesz wypróbować funkcję rozpoznawania intencji, Dodaj również klucz subskrypcji [usługi Language Understanding](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) i identyfikator aplikacji.
+1. Dodaj klucz subskrypcji mowy do kodu źródłowego. Jeśli chcesz spróbować rozpoznawania intencji, należy również dodać klucz subskrypcji [usługi language understanding](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) i identyfikator aplikacji.
 
-   W przypadku mowy i LUIS informacje są wprowadzane do `FunctionsList.java`:
+   W przypadku mowy i usługi `FunctionsList.java`LUIS informacje są dostępne w:
 
    ```java
     // Subscription
@@ -98,54 +98,54 @@ Jeśli planujesz korzystać z intencji, musisz mieć subskrypcję [usługi Langu
     private static String LuisAppId = "<enter your LUIS AppId>";
    ```
 
-   W przypadku korzystania z transkrypcji konwersacji informacje o kluczu mowy i regionie są również potrzebne w `Cts.java`:
+   Jeśli używasz transkrypcji konwersacji, klucz mowy `Cts.java`i informacje o regionie są również potrzebne w :
 
    ```java
     private static final String CTSKey = "<Conversation Transcription Service Key>";
     private static final String CTSRegion="<Conversation Transcription Service Region>";// Region may be "centralus" or "eastasia"
    ```
 
-1. Słowo kluczowe default (słowo kluczowe) to "Computer". Możesz również wypróbować jeden z innych podanych słów kluczowych, takich jak "Machine" lub "Assistant". Pliki zasobów dla tych alternatywnych słów kluczowych znajdują się w zestawie SDK urządzeń mowy w folderze słów kluczowych. Na przykład `C:\SDSDK\JRE-Sample-Release\keyword\Computer` zawiera pliki używane dla słowa kluczowego "Computer".
+1. Domyślnym słowem kluczowym (słowo kluczowe) jest "Komputer". Możesz też wypróbować jedno z innych słów kluczowych, takich jak "Maszyna" lub "Asystent". Pliki zasobów dla tych alternatywnych słów kluczowych znajdują się w SDK urządzeń mowy w folderze słów kluczowych. Na przykład `C:\SDSDK\JRE-Sample-Release\keyword\Computer` zawiera pliki używane dla słowa kluczowego "Komputer".
 
     > [!TIP]
-    > Możesz również [utworzyć niestandardowe słowo kluczowe](../speech-devices-sdk-create-kws.md).
+    > Można również [utworzyć niestandardowe słowo kluczowe](../speech-devices-sdk-create-kws.md).
 
-    Aby użyć nowego słowa kluczowego, zaktualizuj Poniższy wiersz w `FunctionsList.java`i skopiuj słowo kluczowe do aplikacji. Na przykład, aby użyć słowa kluczowego "Machine" z pakietu słowa kluczowego `machine.zip`:
+    Aby użyć nowego słowa kluczowego, `FunctionsList.java`zaktualizuj następujący wiersz w pliku , i skopiuj je do aplikacji. Na przykład, aby użyć słowa kluczowego `machine.zip`"Machine" z pakietu słów kluczowych:
 
-   * Skopiuj plik `kws.table` z pakietu zip do folderu **docelowego/klas**projektu.
-   * Zaktualizuj `FunctionsList.java` przy użyciu nazwy słowa kluczowego:
+   * Skopiuj `kws.table` plik z pakietu zip do **obiektu docelowego/klas**folderu projektu .
+   * Zaktualizuj `FunctionsList.java` nazwę słowa kluczowego:
 
      ```java
      private static final String Keyword = "Machine";
      ```
 
-## <a name="run-the-sample-application-from-eclipse"></a>Uruchamianie przykładowej aplikacji z poziomu programu zaćmienie
+## <a name="run-the-sample-application-from-eclipse"></a>Uruchamianie przykładowej aplikacji z programu Eclipse
 
-1. Na pasku menu przezaćmienia **Uruchom** polecenie > **Uruchom jako** > **aplikację Java**. Następnie wybierz pozycję **FunctionsList** i **przycisk OK**.
+1. Na pasku menu Eclipse **uruchom** > **jako** > **aplikację Java**. Następnie wybierz **pozycję FunctionsList** i **OK**.
 
-   ![Zrzut ekranu przedstawiający wybraną aplikację Java](../media/speech-devices-sdk/eclipse-run-sample.png)
+   ![Zrzut ekranu przedstawiający pozycję Wybierz aplikację Java](../media/speech-devices-sdk/eclipse-run-sample.png)
 
-1. Przykładowa aplikacja zestawu Speech Devices SDK rozpoczyna się i wyświetla następujące opcje:
+1. Przykładowa aplikacja SDK urządzeń mowy uruchamia i wyświetla następujące opcje:
 
-   ![Opcje i przykładowa aplikacja przykład zestawu Speech Devices SDK](../media/speech-devices-sdk/java-sample-app-windows.png)
+   ![Przykładowa przykładowa aplikacja i opcje zestawów SDK urządzeń mowy](../media/speech-devices-sdk/java-sample-app-windows.png)
 
-1. Wypróbuj nową wersję demonstracyjną **transkrypcji konwersacji** . Uruchom jego przepisywania z **sesją** **startową** > . Domyślnie wszyscy są gośćmi. Jeśli jednak masz podpisy głosu uczestnika, można je umieścić w pliku `participants.properties` w **obiekcie docelowym/klasach**projektu. Aby wygenerować podpis głosowy, spójrz na [transkrypcja konwersacje (SDK)](../how-to-use-conversation-transcription-service.md).
+1. Wypróbuj nowe demo **transkrypcji konwersacji.** Rozpocznij transkrypcję za pomocą **sesji** > **Start**. Domyślnie każdy jest gościem. Jeśli jednak masz podpisy głosowe uczestnika, można `participants.properties` je umieścić w pliku w folderze projektu **docelowym/klasami**. Aby wygenerować podpis głosowy, spójrz na [Transkrypcji konwersacji (SDK)](../how-to-use-conversation-transcription-service.md).
 
-   ![Aplikacja do transkrypcji konwersacji demonstracyjnej](../media/speech-devices-sdk/cts-sample-app-windows.png)
+   ![Aplikacja do transkrypcji konwersacji demo](../media/speech-devices-sdk/cts-sample-app-windows.png)
 
 ## <a name="create-and-run-a-standalone-application"></a>Tworzenie i uruchamianie aplikacji autonomicznej
 
-1. W **Eksploratorze pakietów**kliknij projekt prawym przyciskiem myszy. Wybierz pozycję **Eksportuj**.
+1. W **Eksploratorze pakietów**kliknij prawym przyciskiem myszy projekt. Wybierz **pozycję Eksportuj**.
 
-1. Zostanie wyświetlone okno **eksport** . Rozwiń węzeł **Java** i wybierz pozycję **możliwy do uruchomienia plik JAR** , a następnie wybierz pozycję **Next (dalej**).
+1. Zostanie wyświetlone okno **Eksportuj.** Rozwiń pozycję **Java** i wybierz **plik JAR z możliwością uruchomienia,** a następnie wybierz pozycję **Dalej**.
 
-   ![Zrzut ekranu okna eksportowania](../media/speech-devices-sdk/eclipse-export-windows.png)
+   ![Zrzut ekranu przedstawiający okno Eksportuj](../media/speech-devices-sdk/eclipse-export-windows.png)
 
-1. Zostanie wyświetlone okno **Eksportuj plik możliwy do uruchomienia jar** . Wybierz **lokalizację docelową eksportu** aplikacji, a następnie wybierz pozycję **Zakończ**.
+1. Zostanie wyświetlone okno **Eksportu pliku JAR.** Wybierz **miejsce docelowe eksportu** dla aplikacji, a następnie wybierz pozycję **Zakończ**.
 
-   ![Zrzut ekranu przedstawiający Eksport pliku JAR możliwy do uruchomienia](../media/speech-devices-sdk/eclipse-export-jar-windows.png)
+   ![Zrzut ekranu przedstawiający eksport pliku JAR do uruchomienia](../media/speech-devices-sdk/eclipse-export-jar-windows.png)
 
-1. Umieść `kws.table`, `participants.properties`, `unimic_runtime.dll`, `pma.dll` i `Microsoft.CognitiveServices.Speech.extension.pma.dll` w folderze docelowym wybranym powyżej, ponieważ te pliki są wymagane przez aplikację.
+1. Proszę `kws.table`umieścić `participants.properties` `unimic_runtime.dll`, `pma.dll` `Microsoft.CognitiveServices.Speech.extension.pma.dll` , i w folderze docelowym wybranym powyżej, ponieważ pliki te są potrzebne przez aplikację.
 
 1. Aby uruchomić aplikację autonomiczną
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 6591fd6eb232bf5fb242c9e08830324f864dac2f
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71837556"
 ---
 [!INCLUDE [Prerequisites](prerequisites-python.md)]
@@ -17,7 +17,7 @@ ms.locfileid: "71837556"
 
 ## <a name="create-a-project-and-import-required-modules"></a>Tworzenie projektu i importowanie wymaganych modułów
 
-Utwórz nowy projekt w języku Python przy użyciu ulubionego środowiska IDE lub edytora. Następnie skopiuj ten fragment kodu do projektu w pliku o nazwie `detect.py`.
+Utwórz nowy projekt języka Python przy użyciu ulubionego środowiska IDE lub edytora. Następnie skopiuj ten fragment kodu do swojego projektu do pliku o nazwie `detect.py`.
 
 ```python
 # -*- coding: utf-8 -*-
@@ -25,13 +25,13 @@ import os, requests, uuid, json
 ```
 
 > [!NOTE]
-> Jeśli te moduły nie były używane, należy je zainstalować przed uruchomieniem programu. Aby zainstalować te pakiety, uruchom polecenie: `pip install requests uuid`.
+> Jeśli nie korzystano z tych modułów, konieczne będzie ich zainstalowanie przed uruchomieniem programu. Aby zainstalować te pakiety, uruchom polecenie `pip install requests uuid`.
 
-Pierwszy komentarz informuje interpreter języka Python o użyciu kodowania UTF-8. Następnie wymagane moduły są importowane w celu odczytania klucza subskrypcji ze zmiennej środowiskowej, skonstruowania żądania HTTP, utworzenia unikatowego identyfikatora i obsługi odpowiedzi JSON zwracanej przez interfejs API tłumaczenia tekstu w usłudze Translator.
+Pierwszy komentarz informuje interpreter języka Python, aby używać kodowania UTF-8. Następnie wymagane moduły są importowane w celu odczytania klucza subskrypcji ze zmiennej środowiskowej, skonstruowania żądania http, utworzenia unikatowego identyfikatora i obsłużenia odpowiedzi JSON zwracanej przez interfejs API tłumaczenia tekstu w usłudze Translator.
 
 ## <a name="set-the-subscription-key-endpoint-and-path"></a>Ustawianie klucza subskrypcji, punktu końcowego i ścieżki
 
-Ten przykład spróbuje odczytać klucz subskrypcji tłumaczenie tekstu w usłudze Translator i punkt końcowy ze zmiennych środowiskowych: `TRANSLATOR_TEXT_KEY` i `TRANSLATOR_TEXT_ENDPOINT`. Jeśli nie znasz zmiennych środowiskowych, możesz ustawić `subscription_key` i `endpoint` jako ciągi i dodać komentarz do instrukcji warunkowych.
+W tym przykładzie spróbuje odczytać klucz subskrypcji i `TRANSLATOR_TEXT_KEY` punkt `TRANSLATOR_TEXT_ENDPOINT`końcowy usługi Translator Text ze zmiennych środowiskowych: i . Jeśli nie znasz zmiennych środowiskowych, można `subscription_key` ustawić `endpoint` i jako ciągi i komentować instrukcje warunkowe.
 
 Skopiuj ten kod do projektu:
 
@@ -47,21 +47,21 @@ if not endpoint_var_name in os.environ:
 endpoint = os.environ[endpoint_var_name]
 ```
 
-Globalny punkt końcowy tłumaczenie tekstu w usłudze Translator jest ustawiony jako `endpoint`. `path` ustawia trasę `detect` i określa, że chcemy trafić w wersję 3 interfejsu API.
+Globalny punkt końcowy interfejsu API tłumaczenia tekstu w usłudze Translator został ustawiony jako `endpoint`. Element `path` ustawia trasę `detect` i określa, że chcemy korzystać z wersji 3 interfejsu API.
 
 >[!NOTE]
-> Aby uzyskać więcej informacji na temat punktów końcowych, tras i parametrów żądania, zobacz [interfejs API tłumaczenia tekstu w usłudze Translator 3,0: Detection](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect).
+> Aby uzyskać więcej informacji na temat punktów końcowych, tras i parametrów żądania, zobacz [Translator Text API 3.0: Detect](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) (Interfejs API 3.0 tłumaczenia tekstu w usłudze Translator: wykrywanie).
 
 ```python
 path = '/detect?api-version=3.0'
 constructed_url = endpoint + path
 ```
 
-## <a name="add-headers"></a>Dodaj nagłówki
+## <a name="add-headers"></a>Dodawanie nagłówków
 
-Najprostszym sposobem na uwierzytelnienie żądania jest przekazanie klucza subskrypcji jako nagłówka `Ocp-Apim-Subscription-Key`, który jest używany w tym przykładzie. Alternatywnie możesz wymienić klucz subskrypcji dla tokenu dostępu i przekazać token dostępu razem jako nagłówek `Authorization`, aby sprawdzić poprawność żądania. Aby uzyskać więcej informacji, zobacz [uwierzytelnianie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Najprostszym sposobem uwierzytelniania żądania jest przekazanie klucza subskrypcji jako nagłówka `Ocp-Apim-Subscription-Key`. Ta metoda jest używana w tym przykładzie. Alternatywnie można wymienić klucz subskrypcji na token dostępu i przekazać go dalej jako nagłówek `Authorization` w celu zweryfikowania żądania. Aby uzyskać więcej informacji, zobacz [Authentication](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication) (Uwierzytelnianie).
 
-Skopiuj ten fragment kodu do projektu:
+Skopiuj ten fragment kod do projektu:
 
 ```python
 headers = {
@@ -71,9 +71,9 @@ headers = {
 }
 ```
 
-Jeśli używasz subskrypcji usługi Cognitive Services, musisz także uwzględnić w parametrach żądania `Ocp-Apim-Subscription-Region`. [Dowiedz się więcej o uwierzytelnianiu w ramach subskrypcji wielu usług](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Jeśli korzystasz z subskrypcji wielu usług usług Cognitive Services, należy również uwzględnić `Ocp-Apim-Subscription-Region` parametry żądania. [Dowiedz się więcej o uwierzytelnieniu za pomocą subskrypcji wielu usług](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
-## <a name="create-a-request-to-detect-text-language"></a>Tworzenie żądania wykrywania języka tekstu
+## <a name="create-a-request-to-detect-text-language"></a>Tworzenie żądania w celu wykrycia języka tekstu
 
 Zdefiniuj ciąg (lub ciągi), dla którego chcesz wykryć język:
 
@@ -84,38 +84,38 @@ body = [{
 }]
 ```
 
-Następnie utworzymy żądanie POST przy użyciu modułu `requests`. Przyjmuje trzy argumenty: połączony adres URL, nagłówki żądań i treść żądania:
+Następnie utworzymy żądanie POST przy użyciu modułu `requests`. Przyjmuje on trzy argumenty: połączony adres URL, nagłówki żądania i treść żądania:
 
 ```python
 request = requests.post(constructed_url, headers=headers, json=body)
 response = request.json()
 ```
 
-## <a name="print-the-response"></a>Drukuj odpowiedź
+## <a name="print-the-response"></a>Wyświetlanie odpowiedzi
 
-Ostatnim krokiem jest drukowanie wyników. Ten fragment kodu prettifies wyniki, sortując klucze, ustawiając wcięcia i deklarując separatory elementów i kluczy.
+Ostatnim krokiem jest wyświetlenie wyników. Ten fragment kodu ulepsza wyniki, sortując klucze, ustawiając wcięcia i deklarując separatory elementów i kluczy.
 
 ```python
 print(json.dumps(response, sort_keys=True, indent=4,
                  ensure_ascii=False, separators=(',', ': ')))
 ```
 
-## <a name="put-it-all-together"></a>Umieść wszystko razem
+## <a name="put-it-all-together"></a>Zebranie wszystkich elementów
 
-Jest to również prosty program, który wywoła interfejs API tłumaczenia tekstu w usłudze Translator i zwróci odpowiedź JSON. Teraz czas na uruchomienie programu:
+To wszystko. Utworzono prosty program, który będzie wywoływał interfejs API tłumaczenia tekstu w usłudze Translator i zwracał odpowiedź w formacie JSON. Teraz nadszedł czas, aby uruchomić program:
 
 ```console
 python detect.py
 ```
 
-Jeśli chcesz porównać swój kod z naszą usługą, kompletny przykład jest dostępny w witrynie [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Python).
+Jeśli chcesz porównać swój kod z naszym, kompletny przykład jest dostępny w witrynie [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Python).
 
 ## <a name="sample-response"></a>Przykładowa odpowiedź
 
-Po uruchomieniu przykładu na terminalu powinny zostać wyświetlone następujące elementy:
+Po uruchomieniu próbki powinny zostać wyświetlone następujące wydruki do terminala:
 
 > [!NOTE]
-> Znajdź skrót kraju/regionu na [liście języków](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+> Znajdź skrót kraju/regionu na tej [liście języków](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
 
 ```json
 [
@@ -142,13 +142,13 @@ Po uruchomieniu przykładu na terminalu powinny zostać wyświetlone następują
 ]
 ```
 
-## <a name="clean-up-resources"></a>Czyszczenie zasobów
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli stałe klucz subskrypcji do programu, pamiętaj o usunięciu klucza subskrypcji po zakończeniu pracy z tym przewodnikiem Szybki Start.
+Jeśli klucz subskrypcji umieszczono na stałe w kodzie programu, pamiętaj, aby usunąć ten klucz subskrypcji po zakończeniu pracy z przewodnikiem Szybki start.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z dokumentacją interfejsu API, aby zrozumieć wszystko, co można zrobić za pomocą interfejs API tłumaczenia tekstu w usłudze Translator.
+Zapoznaj się z odwołaniem do interfejsu API, aby zrozumieć wszystko, co można zrobić z interfejsem API tekstu translatora.
 
 > [!div class="nextstepaction"]
-> [Dokumentacja interfejsu API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+> [Odwołanie API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

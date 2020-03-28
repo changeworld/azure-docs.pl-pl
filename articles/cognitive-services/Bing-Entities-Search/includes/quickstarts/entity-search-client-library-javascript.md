@@ -1,5 +1,5 @@
 ---
-title: wyszukiwanie jednostek Bing przewodniku szybki start dla biblioteki klienta JavaScript
+title: Szybki start biblioteki klienta javascript wyszukiwania jednostek Bing
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,13 +9,13 @@ ms.topic: include
 ms.date: 03/06/2020
 ms.author: aahi
 ms.openlocfilehash: ac2f83c824014e16cfbe9ab18483b914ed8b077d
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79136767"
 ---
-Skorzystaj z tego przewodnika Szybki Start, aby rozpocząć wyszukiwanie jednostek przy użyciu biblioteki klienta wyszukiwanie jednostek Bing dla języka JavaScript. Chociaż wyszukiwanie jednostek Bing ma interfejs API REST zgodny z większością języków programowania, Biblioteka klienta zapewnia łatwy sposób integracji usługi z aplikacjami. Kod źródłowy tego przykładu można znaleźć w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/entitySearch.js).
+Ten przewodnik Szybki start umożliwia rozpoczęcie wyszukiwania jednostek w bibliotece klienta wyszukiwania jednostek Bing dla języka JavaScript. Usługa Bing Entity Search ma interfejs API REST zgodny z większością języków programowania, ale biblioteka klienta zapewnia łatwy sposób integracji usługi z aplikacjami. Kod źródłowy tego przykładu można znaleźć w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/entitySearch.js).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -68,6 +68,6 @@ Aby zainstalować zestaw SDK wyszukiwania jednostek Bing:
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Tworzenie jednostronicowej aplikacji internetowej](../../tutorial-bing-entities-search-single-page-app.md)
+> [Tworzenie jednostronicowej aplikacji sieci Web](../../tutorial-bing-entities-search-single-page-app.md)
 
 * [Czym jest interfejs API wyszukiwania jednostek Bing?](../../overview.md)

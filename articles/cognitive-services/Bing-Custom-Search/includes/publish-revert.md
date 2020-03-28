@@ -1,12 +1,12 @@
 ---
 ms.openlocfilehash: 7987e8a7a9db06608f663b6ae414788ba8330f65
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67183562"
 ---
-## <a name="publish-or-revert"></a>Publikowanie lub Przywróć
-Zmiany wprowadzone do wystąpienia wyszukiwania niestandardowego **konfiguracji** kartę, aby umożliwić zweryfikowanie zmian. Po zakończeniu wprowadzania zmian i są gotowe do opublikowania, kliknij przycisk **Publikuj**. Zmiany nie są widoczne w środowisku produkcyjnym punktów końcowych do czasu opublikowania.
+## <a name="publish-or-revert"></a>Publikowanie lub przywró ustrzenie
+Zmiany wprowadzone w wystąpieniu wyszukiwania niestandardowego są wprowadzane na karcie **Konfiguracja,** dzięki czemu można sprawdzić poprawność zmian. Po zakończeniu wprowadzania zmian i gotowym do publikacji kliknij przycisk **Publikuj**. Zmiany nie są odzwierciedlane w punktach końcowych produkcji, dopóki nie zostanie opublikowana.
 
-Przed opublikowaniem, jeśli zdecydujesz, że nie chcesz zachować zmiany wprowadzone, kliknij przycisk **Przywróć**. Po przywróceniu zmian konfiguracji na żywo stanu pozostaje niezmieniony i **konfiguracji** karta zostanie przywrócona do stanu na żywo.
+Przed opublikowaniem, jeśli zdecydujesz, że nie chcesz zachować wprowadzonych zmian, kliknij przycisk **Przywróć**. Po przywróceniu zmian konfiguracja stanu na żywo pozostaje niezmieniona, a karta **Konfiguracja** zostanie przywrócona, aby dopasować ją do stanu na żywo.

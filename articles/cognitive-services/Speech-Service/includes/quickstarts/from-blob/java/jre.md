@@ -5,83 +5,83 @@ ms.topic: include
 ms.date: 01/13/2020
 ms.author: dapine
 ms.openlocfilehash: 02e0e1494a897b31cb6ef28083677fa48f854c91
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78924908"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem upewnij się, że:
+Zanim zaczniesz, upewnij się, że:
 
 > [!div class="checklist"]
-> * [Skonfiguruj środowisko deweloperskie i Utwórz pusty projekt](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programmming-language-java)
-> * [Tworzenie zasobu usługi Azure Speech](../../../../get-started.md)
+> * [Konfigurowanie środowiska programistycznego i tworzenie pustego projektu](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programmming-language-java)
+> * [Tworzenie zasobu mowy platformy Azure](../../../../get-started.md)
 > * [Przekazywanie pliku źródłowego do obiektu blob platformy Azure](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 
 
-## <a name="open-your-project-in-eclipse"></a>Otwórz projekt w programie zaćmienie
+## <a name="open-your-project-in-eclipse"></a>Otwórz swój projekt w aplikacji Eclipse
 
-Pierwszym krokiem jest upewnienie się, że projekt jest otwarty w przezaćmieniu.
+Pierwszym krokiem jest upewnienie się, że projekt jest otwarty w aplikacji Eclipse.
 
 1. Uruchamianie programu Eclipse
-2. Załaduj projekt i Otwórz `Main.java`.
+2. Załaduj `Main.java`projekt i otwórz .
 
-## <a name="add-a-reference-to-gson"></a>Dodaj odwołanie do Gson
-W tym przewodniku szybki start będziemy używać zewnętrznego serializatora JSON/deserializacji. W przypadku języka Java została wybrana [Gson](https://github.com/google/gson).
+## <a name="add-a-reference-to-gson"></a>Dodawanie odwołania do Gson
+Będziemy używać zewnętrznego serializatora JSON / deserializer w tym przewodniku Szybki start. Dla Javy wybraliśmy [Gson](https://github.com/google/gson).
 
-Otwórz plik pliku pom. XML i Dodaj następujące odwołanie.
+Otwórz plik pom.xml i dodaj następujące odwołanie.
 
 [!code-xml[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/pom.xml?range=19-25)]
 
-## <a name="start-with-some-boilerplate-code"></a>Zacznij od pewnego kodu standardowego
+## <a name="start-with-some-boilerplate-code"></a>Zacznij od kodu standardowego
 
-Dodajmy kod, który działa jako szkielet dla projektu.
+Dodajmy kod, który działa jako szkielet dla naszego projektu.
 
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=1-13,95-105,206-207)]
 
 [!INCLUDE [placeholder-replacements](../placeholder-replacement.md)]
 
-## <a name="json-wrappers"></a>Otoki JSON
+## <a name="json-wrappers"></a>Opakowania JSON
 
-Jako że żądania API REST w formacie JSON i zwracają wyniki w kodzie JSON, możemy z nich korzystać tylko przy użyciu ciągów, ale nie jest to zalecane.
-Aby ułatwić zarządzanie żądaniami i odpowiedziami, deklarujemy kilka klas do użycia na potrzeby serializowania/deserializacji kodu JSON.
+Jako rest interfejsu API przyjmować żądania w formacie JSON, a także zwraca wyniki w JSON możemy wchodzić z nimi przy użyciu tylko ciągów, ale to nie jest zalecane.
+Aby ułatwić zarządzanie żądaniami i odpowiedziami, zadeklarujemy kilka klas do użycia do serializacji / deserializacji JSON.
 
-Przed `Main`należy umieścić ich deklaracje.
+Śmiało i umieścić swoje `Main`deklaracje przed .
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=15-93)]
 
-## <a name="create-and-configure-an-http-client"></a>Tworzenie i Konfigurowanie klienta http
-Najpierw musimy być klientem http z prawidłowym podstawowym adresem URL i zestawem uwierzytelniania.
-Wstaw ten kod w `Main` [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=106-113)]
+## <a name="create-and-configure-an-http-client"></a>Tworzenie i konfigurowanie klienta http
+Pierwszą rzeczą, której potrzebujemy, jest klient http, który ma poprawny podstawowy adres URL i zestaw uwierzytelniania.
+Wstaw ten `Main` kod do[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=106-113)]
 
-## <a name="generate-a-transcription-request"></a>Generuj żądanie transkrypcji
-Następnie wygenerujemy żądanie transkrypcji. Dodaj ten kod do `Main` [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=115-116)]
+## <a name="generate-a-transcription-request"></a>Generowanie żądania transkrypcji
+Następnie wygenerujemy żądanie transkrypcji. Dodaj ten `Main` kod do[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=115-116)]
 
 ## <a name="send-the-request-and-check-its-status"></a>Wyślij żądanie i sprawdź jego stan
-Teraz wyślemy żądanie do usługi mowy i Sprawdzamy początkowy kod odpowiedzi. Ten kod odpowiedzi będzie po prostu wskazywać, czy usługa odebrała żądanie. Usługa zwróci adres URL w nagłówkach odpowiedzi, które są lokalizacją przechowywania stanu transkrypcji.
+Teraz publikujemy żądanie w usłudze mowy i sprawdzamy początkowy kod odpowiedzi. Ten kod odpowiedzi po prostu wskaże, czy usługa otrzymała żądanie. Usługa zwróci adres URL w nagłówkach odpowiedzi, która jest lokalizacją, w której będzie przechowywać stan transkrypcji.
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=118-129)]
 
 ## <a name="wait-for-the-transcription-to-complete"></a>Poczekaj na zakończenie transkrypcji
-Ponieważ usługa przetwarza proces transkrypcji asynchronicznie, musimy wykonać sondowanie pod kątem jego stanu co do tego często. Sprawdzimy co 5 sekund.
+Ponieważ usługa przetwarza transkrypcji asynchronicznie, musimy sondować jego status tak często. Sprawdzamy co 5 sekund.
 
-Stan można sprawdzić, pobierając zawartość pod adresem URL, który otrzymał po wysłaniu żądania. Po otrzymaniu zawartości, deserializacjimy ją na jedną z naszych klas pomocnika, aby ułatwić korzystanie z programu.
+Możemy sprawdzić stan, pobierając zawartość pod adresem URL, który otrzymaliśmy po opublikowaniu żądania. Kiedy przywracamy zawartość, możemy deserialize go do jednej z naszych klasy pomocnika, aby ułatwić interakcję z.
 
-Oto kod sondowania z wyświetlaniem stanu dla wszystkiego, z wyjątkiem pomyślnego zakończenia, zajmiemy się tym dalej.
+Oto kod sondowania z wyświetlaniem stanu dla wszystkiego, z wyjątkiem pomyślnego zakończenia, zrobimy to dalej.
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=131-159,192-204)]
 
 ## <a name="display-the-transcription-results"></a>Wyświetlanie wyników transkrypcji
-Gdy usługa pomyślnie ukończy transkrypcję, wyniki będą przechowywane w innym adresie URL, który można uzyskać z odpowiedzi na stan.
+Po pomyślnym zakończeniu transkrypcji usługi wyniki będą przechowywane w innym adresie URL, który możemy uzyskać z odpowiedzi na stan.
 
-Pobierzemy zawartość tego adresu URL, deserializować kod JSON i pętlę przez wyniki drukowania wyświetlanego tekstu.
+Pobierzemy zawartość tego adresu URL, zdamy wersję JSON i zapętlamy wyniki drukowania wyświetlanego tekstu w miarę przechodzenia.
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=6-160-190)]
 
 ## <a name="check-your-code"></a>Sprawdź swój kod
-W tym momencie kod powinien wyglądać następująco: (dodaliśmy Komentarze do tej wersji) [! code-Java [] (~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java]
+W tym momencie kod powinien wyglądać następująco: (Dodaliśmy kilka komentarzy do tej wersji) [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java]
 
-## <a name="build-and-run-your-app"></a>Kompilowanie i uruchamianie aplikacji
+## <a name="build-and-run-your-app"></a>Tworzenie i uruchamianie aplikacji
 
-Teraz wszystko jest gotowe do skompilowania aplikacji i przetestowania rozpoznawania mowy przy użyciu usługi mowy.
+Teraz możesz przystąpić do tworzenia aplikacji i testowania rozpoznawania mowy za pomocą usługi Mowy.
 
 ## <a name="next-steps"></a>Następne kroki
 

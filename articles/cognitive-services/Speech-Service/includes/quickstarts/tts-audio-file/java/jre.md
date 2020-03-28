@@ -5,21 +5,21 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: c8de61d88417a19680b606be5e06583c36c94fbc
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925960"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 > [!div class="checklist"]
-> * [Tworzenie zasobu usługi Azure Speech](../../../../get-started.md)
-> * [Skonfiguruj środowisko deweloperskie i Utwórz pusty projekt](../../../../quickstarts/setup-platform.md?tabs=jre)
+> * [Tworzenie zasobu mowy platformy Azure](../../../../get-started.md)
+> * [Konfigurowanie środowiska programistycznego i tworzenie pustego projektu](../../../../quickstarts/setup-platform.md?tabs=jre)
 
 ## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
 
-1. Aby dodać nową pustą klasę do projektu języka Java, wybierz kolejno pozycje **Plik** > **Nowy** > **Klasa**.
+1. Aby dodać nową pustą klasę do projektu Java, wybierz **pozycję Plik** > **nowej** > **klasy**.
 
 1. W oknie **Nowa klasa Java** wprowadź ciąg **speechsdk.quickstart** w polu **Pakiet** i **Main** w polu **Nazwa**.
 
@@ -104,16 +104,16 @@ ms.locfileid: "78925960"
 
 1. Zastąp ciąg `YourServiceRegion`[regionem](~/articles/cognitive-services/Speech-Service/regions.md) skojarzonym z subskrypcją (na przykład `westus` w przypadku subskrypcji bezpłatnej wersji próbnej).
 
-1. Zastąp ciąg `helloworld.wav` własnymi nazwami.
+1. Zastąp ciąg `helloworld.wav` własną nazwę pliku.
 
 1. Zastąp ciąg `Hello world!` własnym tekstem.
 
-1. Zapisz zmiany w projekcie.
+1. Zapisz zmiany projektu.
 
 ## <a name="build-and-run-the-app"></a>Kompilowanie i uruchamianie aplikacji
 
-Naciśnij klawisz F11 lub wybierz kolejno pozycje **Uruchom** > **Debugowanie**.
-Tekst zostanie przekonwertowany na mowę i zapisany w określonych danych audio.
+Naciśnij klawisz F11 lub wybierz pozycję **Uruchom** > **debugowanie**.
+Tekst jest konwertowany na mowę i zapisywany w określonych danych audio.
 
    ```text
    Speech synthesized to [helloworld.wav] for text [Hello world!]
@@ -126,4 +126,4 @@ Tekst zostanie przekonwertowany na mowę i zapisany w określonych danych audio.
 ## <a name="see-also"></a>Zobacz też
 
 - [Tworzenie niestandardowego głosu](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
-- [Rejestruj niestandardowe przykłady głosu](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)
+- [Nagrywanie niestandardowych próbek głosu](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

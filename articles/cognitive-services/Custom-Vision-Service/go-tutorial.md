@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: Tworzenie projektu klasyfikacji obrazów przy użyciu zestawu Custom Vision SDK dla języka go'
+title: 'Szybki start: tworzenie projektu klasyfikacji obrazów za pomocą niestandardowego sdk vision dla go'
 titleSuffix: Azure Cognitive Services
 description: Utwórz projekt, dodaj tagi, przekaż obrazy, wytrenuj projekt i wykonaj przewidywanie przy użyciu zestawu Go SDK.
 services: cognitive-services
@@ -11,15 +11,15 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: areddish
 ms.openlocfilehash: f8391818ebf13afb3b07eead55133aadde6158f0
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76170105"
 ---
-# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-go-sdk"></a>Szybki Start: Tworzenie projektu klasyfikacji obrazów przy użyciu zestawu Custom Vision go SDK
+# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-go-sdk"></a>Szybki start: tworzenie projektu klasyfikacji obrazów za pomocą niestandardowego sdk Vision Go
 
-Ten artykuł zawiera informacje i przykładowy kod, dzięki którym można łatwiej rozpocząć tworzenie modelu klasyfikacji obrazów za pomocą zestawu Custom Vision SDK i języka Go. Po jego utworzeniu można dodawać Tagi, przekazywać obrazy, uczenie projektu, uzyskać opublikowany adres punktu końcowego prognozowanego projektu i używać punktu końcowego do programistycznego testowania obrazu. Użyj tego przykładu jako szablonu do utworzenia własnej aplikacji w języku Go. Jeśli chcesz przejść przez proces tworzenia i używania modelu klasyfikacji _bez_ kodu, zobacz zamiast tego [wskazówki dotyczące przeglądarki](getting-started-build-a-classifier.md).
+Ten artykuł zawiera informacje i przykładowy kod, dzięki którym można łatwiej rozpocząć tworzenie modelu klasyfikacji obrazów za pomocą zestawu Custom Vision SDK i języka Go. Po jego utworzeniu można dodawać tagi, przekazywać obrazy, szkolić projekt, uzyskiwać opublikowany adres URL punktu końcowego przewidywania projektu i używać punktu końcowego do programowego testowania obrazu. Użyj tego przykładu jako szablonu do utworzenia własnej aplikacji w języku Go. Jeśli chcesz przejść przez proces tworzenia i używania modelu klasyfikacji _bez_ kodu, zobacz zamiast tego [wskazówki dotyczące przeglądarki](getting-started-build-a-classifier.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -34,7 +34,7 @@ Aby zainstalować zestaw Custom Vision Service SDK dla języka Go, uruchom nast�
 go get -u github.com/Azure/azure-sdk-for-go/...
 ```
 
-lub jeśli używasz `dep`, w repozytorium zostanie uruchomione:
+lub jeśli `dep`używasz , w ramach uruchomienia repozytorium:
 ```shell
 dep ensure -add github.com/Azure/azure-sdk-for-go
 ```
@@ -51,7 +51,7 @@ Utwórz nowy plik o nazwie *sample.go* w preferowanym katalogu projektu.
 
 Dodaj następujący kod do skryptu, aby utworzyć nowy projekt Custom Vision Service. Wstaw klucze subskrypcji w odpowiednich definicjach. Ponadto Pobierz adres URL punktu końcowego ze strony Ustawienia w witrynie sieci Web Custom Vision.
 
-Aby określić inne opcje podczas tworzenia projektu (wyjaśnione w przewodniku tworzenia portalu sieci Web [klasyfikatora](getting-started-build-a-classifier.md) ), zobacz metodę " [setproject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) ".
+Zobacz [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) metody, aby określić inne opcje podczas tworzenia projektu (wyjaśnione w [Kompilacja klasyfikatora](getting-started-build-a-classifier.md) portalu sieci web przewodnik).
 
 ```go
 import(
@@ -99,9 +99,9 @@ hemlockTag, _ := trainer.CreateTag(ctx, *project.ID, "Hemlock", "Hemlock tree ta
 cherryTag, _ := trainer.CreateTag(ctx, *project.ID, "Japanese Cherry", "Japanese cherry tree tag", string(training.Regular))
 ```
 
-### <a name="upload-and-tag-images"></a>Przekazywanie i tagowanie obrazów
+### <a name="upload-and-tag-images"></a>Przekazywanie i Tagi obrazów
 
-Aby dodać przykładowe obrazy do projektu, po utworzeniu tagów wstaw następujący kod. Ten kod przekazuje każdy obraz z odpowiednim tagiem. Można przekazać do 64 obrazów w pojedynczej partii.
+Aby dodać przykładowe obrazy do projektu, po utworzeniu tagów wstaw następujący kod. Ten kod przekazuje każdy obraz z odpowiednim tagiem. W jednej partii można przesłać maksymalnie 64 obrazy.
 
 > [!NOTE]
 > Należy zmienić ścieżkę do obrazów, zależnie od tego, gdzie został wcześniej pobrany projekt z przykładami dotyczącymi zestawu SDK dla języka Go dla usług Cognitive Services.
@@ -132,9 +132,9 @@ for _, file := range japaneseCherryImages {
 }
 ```
 
-### <a name="train-the-classifier-and-publish"></a>Uczenie klasyfikatora i publikowanie
+### <a name="train-the-classifier-and-publish"></a>Szkolenie klasyfikatora i publikowanie
 
-Ten kod tworzy pierwszą iterację modelu predykcyjnego, a następnie publikuje tę iterację w punkcie końcowym przewidywania. Nazwa nadana do publikowanej iteracji może służyć do wysyłania żądań przewidywania. Iteracja nie jest dostępna w punkcie końcowym przewidywania do momentu opublikowania.
+Ten kod tworzy pierwszą iterację modelu przewidywania, a następnie publikuje tę iterację do punktu końcowego przewidywania. Nazwa nadana do publikowanej iteracji może służyć do wysyłania żądań przewidywania. Iteracja nie jest dostępna w punkcie końcowym przewidywania, dopóki nie zostanie opublikowana.
 
 ```go
 fmt.Println("Training...")
@@ -152,7 +152,7 @@ fmt.Println("Training status: " + *iteration.Status)
 trainer.PublishIteration(ctx, *project.ID, *iteration.ID, iteration_publish_name, prediction_resource_id))
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Pobieranie i używanie opublikowanej iteracji w punkcie końcowym przewidywania
+### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Pobierz i użyj opublikowanej iteracji w punkcie końcowym przewidywania
 
 Aby wysłać obraz do punktu końcowego przewidywania i uzyskać przewidywanie, dodaj na końcu pliku następujący kod:
 
@@ -193,7 +193,7 @@ Done!
         Japanese Cherry: 0.01%
 ```
 
-Możesz następnie sprawdzić, czy obraz testowy (znajdujący się w folderze **<bazowy_adres_url_obrazów>/Images/Test/** ) został odpowiednio otagowany. Możesz też wrócić do [witryny internetowej Custom Vision](https://customvision.ai) i wyświetlić bieżący stan nowo utworzonego projektu.
+Możesz następnie sprawdzić, czy obraz testowy (znajdujący się w folderze **<bazowy_adres_url_obrazów>/Images/Test/**) został odpowiednio otagowany. Możesz też wrócić do [witryny internetowej Custom Vision](https://customvision.ai) i wyświetlić bieżący stan nowo utworzonego projektu.
 
 [!INCLUDE [clean-ic-project](includes/clean-ic-project.md)]
 

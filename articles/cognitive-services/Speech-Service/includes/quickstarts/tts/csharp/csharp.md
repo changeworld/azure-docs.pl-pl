@@ -1,7 +1,7 @@
 ---
-title: 'Szybki Start: synteza mowy C# , usługa mowy'
+title: 'Szybki start: synteza mowy, C# - usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: do ustalenia
+description: TBD
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,21 +11,21 @@ ms.topic: include
 ms.date: 11/19/2019
 ms.author: erhopf
 ms.openlocfilehash: 800afbca58d78da28034e0fad785688b9d4b2251
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74818225"
 ---
 **Wybierz środowisko docelowe**
 
-#### <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+#### <a name="net"></a>[.NET](#tab/dotnet)
 [!INCLUDE [dotnet](./dotnet.md)]
-#### <a name="net-coretabdotnetcore"></a>[.NET Core](#tab/dotnetcore)
+#### <a name="net-core"></a>[.NET Core](#tab/dotnetcore)
 [!INCLUDE [dotnetcore](./dotnetcore.md)]
-#### <a name="unitytabunity"></a>[Unity](#tab/unity)
+#### <a name="unity"></a>[Unity](#tab/unity)
 [!INCLUDE [unity](./unity.md)]
-#### <a name="uwptabuwp"></a>[PLATFORMY UNIWERSALNEJ SYSTEMU WINDOWS](#tab/uwp)
+#### <a name="uwp"></a>[UWP](#tab/uwp)
 [!INCLUDE [uwp](./uwp.md)]
 
 * * *

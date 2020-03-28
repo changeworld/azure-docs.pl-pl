@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: Rozpoznawanie mowy z pliku audio — usługa mowy'
+title: 'Szybki start: rozpoznawanie mowy z pliku audio — usługa mowy'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: erhopf
@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
 ms.openlocfilehash: 08a8df8382cc0e513916a802eb1b383124107393
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75927918"
 ---
-Wyświetl lub Pobierz wszystkie <a href="https://aka.ms/speech/github">przykłady zestawu Speech SDK</a> w witrynie GitHub.
+Wyświetlanie lub pobieranie wszystkich <a href="https://aka.ms/speech/github">przykładów zestawów SDK mowy</a> w usłudze GitHub.

@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: dane kontekstowe z rolami — LUIS'
+title: 'Samouczek: Dane kontekstowe z rolami — usługa LUIS'
 titleSuffix: Azure Cognitive Services
 description: Znajdź powiązane dane na podstawie kontekstu. Na przykład powiązane są lokalizacje początkowa i docelowa dla fizycznego przeniesienia z jednego budynku i biura do innego budynku i biura.
 services: cognitive-services
@@ -12,46 +12,46 @@ ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: diberry
 ms.openlocfilehash: cd646ef061a0be06a9b1a56b72a4f35d9796aa63
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75447872"
 ---
-# <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Samouczek: Wyodrębnij powiązane z kontekstem dane z wypowiedź
+# <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Samouczek: wyodrębnianie danych związanych z kontekstem z wypowiedź
 
 W tym samouczku znajdziesz powiązane elementy danych na podstawie kontekstu. Na przykład lokalizację początkową i docelową dla przeniesienia z jednego miasta do innego. Potrzebne mogą być oba elementy danych. Są one powiązane ze sobą.
 
-Roli można używać z dowolnym prekompilowanym lub niestandardowym typem jednostki i używanym w obu przykładach wyrażenia długości i wzorców.
+Rola może być używana z dowolnym wstępnie utworzonym lub niestandardowym typem jednostki i używana zarówno w przykładowych wypowiedziach, jak i wzorcach.
 
 **Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
 
 > [!div class="checklist"]
 > * Tworzenie nowej aplikacji
 > * Dodawanie intencji
-> * Pobieranie informacji o źródle i miejscu docelowym przy użyciu ról
-> * Uczenie
-> * Publikuj
-> * Pobierz intencje i role jednostek z punktu końcowego
+> * Uzyskaj informacje o źródle pochodzenia i miejscu docelowym przy użyciu ról
+> * Szkolenie
+> * Publikowanie
+> * Pobierz intencje i role encji z punktu końcowego
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="related-data"></a>Powiązane dane
 
-Ta aplikacja określa, dokąd ma zostać przeniesiony pracownik z miasta źródłowego do miasta docelowego. Używa wstępnie skompilowanej jednostki GeographyV2 do identyfikowania nazw miast i używa ról do określenia typów lokalizacji (źródła i miejsca docelowego) w wypowiedź.
+Ta aplikacja określa, dokąd ma zostać przeniesiony pracownik z miasta źródłowego do miasta docelowego. Używa geographyV2 wstępnie utworzonej jednostki do identyfikowania nazw miast i używa ról do określenia typów lokalizacji (pochodzenia i miejsca docelowego) w wypowiedź.
 
-Rola powinna być używana, gdy dane jednostkowe mają zostać wyodrębnione:
+Rola powinna być używana, gdy dane jednostki do wyodrębnienia:
 
-* Jest powiązany ze sobą w kontekście wypowiedź.
-* Używa określonego wyrazu, aby wskazać każdą rolę. Przykładowe wyrazy tego typu to: from/to (od/do), leaving/headed to (opuszczać/kierować się do), away from/toward (w kierunku od/do).
-* Obie role są często w tym samym wypowiedź, dzięki czemu LUIS się uczyć tego częstego użycia kontekstowego.
+* Jest ze sobą powiązane w kontekście wypowiedź.
+* Używa określonego wyboru wyrazu, aby wskazać każdą rolę. Przykładowe wyrazy tego typu to: from/to (od/do), leaving/headed to (opuszczać/kierować się do), away from/toward (w kierunku od/do).
+* Obie role są często w tej samej wypowiedź, dzięki czemu usługa LUIS uczyć się od tego częstego użycia kontekstowego.
 * Te informacje należy grupować i przetwarzać jako całość w aplikacji klienckiej.
 
 ## <a name="create-a-new-app"></a>Tworzenie nowej aplikacji
 
-1. Zaloguj się do portalu LUIS w wersji zapoznawczej przy użyciu adresu URL [https://preview.luis.ai](https://preview.luis.ai).
+1. Zaloguj się do portalu usługi LUIS [https://preview.luis.ai](https://preview.luis.ai)w wersji zapoznawczej przy pomocy adresu URL pliku .
 
-1. Wybierz pozycję **Utwórz nową aplikację**, wprowadź nazwę `HumanResources` i Zachowaj domyślną kulturę, w **języku angielskim**. Opis pozostaw pusty.
+1. Wybierz **pozycję Utwórz nową aplikację**, wprowadź nazwę `HumanResources` i zachowaj domyślną kulturę, **angielski**. Opis pozostaw pusty.
 
 1. Wybierz pozycję **Done** (Gotowe).
 
@@ -64,16 +64,16 @@ Rola powinna być używana, gdy dane jednostkowe mają zostać wyodrębnione:
 1. Wprowadź ciąg `MoveEmployeeToCity` w wyświetlonym oknie dialogowym, a następnie wybierz pozycję **Done** (Gotowe).
 
     > [!div class="mx-imgBorder"]
-    > ![zrzut ekranu przedstawiający okno dialogowe Tworzenie nowego celu z](./media/tutorial-entity-roles/create-new-intent-move-employee-to-city.png)
+    > ![Zrzut ekranu z wyskakującym oknem dialogowym Create new intent (Tworzenie nowej intencji)](./media/tutorial-entity-roles/create-new-intent-move-employee-to-city.png)
 
 1. Dodaj przykładowe wypowiedzi do intencji.
 
     |Przykładowe wypowiedzi|
     |--|
-    |Przenieś Jan W. Smith, pozostawiając Seattle jako Orlando|
+    |przenieść John W. Smith pozostawiając Seattle udał się do Orlando|
     |transfer Jill Jones from Seattle to Cairo (przenieś Jill Jones z Seattle do Kairu)|
     |Place John Jackson away from Tampa, coming to Atlanta (Umieść Johna Jacksona opuszczającego Tampę w Atlancie) |
-    |Przenieś Debra Doughtery do Tulsa z Chicago|
+    |przenieść Debra Doughtery do Tulsa z Chicago|
     |mv Jill Jones leaving Cairo headed to Tampa (przesuń Jill Jones z Kairu do Tampy)|
     |Shift Alice Anderson to Oakland from Redmond (Transferuj Alice Anderson do Oakland z Redmond)|
     |Carl Chamerlin from San Francisco to Redmond (Carl Chamerlin z San Francisco do Redmond)|
@@ -81,40 +81,40 @@ Rola powinna być używana, gdy dane jednostkowe mają zostać wyodrębnione:
     |lift Tanner Thompson from Kansas city and shift to Chicago (Tannera Thompsona z Kansas City przenieś do Chicago)|
 
     > [!div class="mx-imgBorder"]
-    > ![zrzut ekranu LUIS z nowymi wyrażenia długości w celu MoveEmployee](./media/tutorial-entity-roles/hr-enter-utterances.png)
+    > ![Zrzut ekranu usługi LUIS z nowymi wypowiedziami w intencji MoveEmployee](./media/tutorial-entity-roles/hr-enter-utterances.png)
 
-## <a name="add-prebuilt-entity-geographyv2"></a>Dodaj wstępnie utworzony obiekt geographyV2
+## <a name="add-prebuilt-entity-geographyv2"></a>Dodawanie wstępnie utworzonej lokalizacji geograficznej encjiV2
 
-Wstępnie utworzona jednostka, geographyV2, wyodrębnia informacje o lokalizacji, w tym nazwy miast. Ponieważ wyrażenia długości mają dwie nazwy miast, odnoszące się do siebie w kontekście, należy użyć ról do wyodrębnienia tego kontekstu.
+Wstępnie utworzony encja, geographyV2, wyodrębnia informacje o lokalizacji, w tym nazwy miast. Ponieważ wypowiedzi mają dwie nazwy miast, odnoszące się do siebie w kontekście, użyj ról, aby wyodrębnić ten kontekst.
 
-1. Wybierz **jednostki** z nawigacji po lewej stronie.
+1. Wybierz **elementy** z nawigacji po lewej stronie.
 
-1. Wybierz pozycję **Dodaj prekompilowaną jednostkę**, a następnie wybierz pozycję `geo` na pasku wyszukiwania, aby przefiltrować wstępnie skompilowane jednostki.
-
-    > [!div class="mx-imgBorder"]
-    > ![dodać wstępnie skompilowanej jednostki geographyV2 do aplikacji](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
-
-1. Zaznacz pole wyboru i wybierz pozycję **gotowe**.
-1. Na liście **jednostki** wybierz **geographyV2** , aby otworzyć nową jednostkę.
-1. Dodaj dwie role, `Origin`i `Destination`.
+1. Wybierz **pozycję Dodaj wstępnie skompilowany element**, a następnie wybierz `geo` na pasku wyszukiwania, aby filtrować wstępnie utworzone elementy.
 
     > [!div class="mx-imgBorder"]
-    > ![dodać role do wstępnie skompilowanej jednostki](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
+    > ![Dodawanie wstępnie utworzonej encji regionu GeographyV2 do aplikacji](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
 
-1. Wybierz pozycję **intencje** z nawigacji po lewej stronie, a następnie wybierz opcję **MoveEmployeeToCity** . Zwróć uwagę na to, że nazwy miast są oznaczone wstępnie utworzoną jednostką **geographyV2**.
-1. Na pasku narzędzi kontekstu wybierz **paletę Entity**.
-
-    > [!div class="mx-imgBorder"]
-    > ![Wybierz paletę jednostki z paska narzędzi zawartości](media/tutorial-entity-roles/intent-detail-context-toolbar-select-entity-palette.png)
-
-1. Wybierz wstępnie utworzoną jednostkę, **geographyV2**, a następnie wybierz **Inspektor Entity**.
-1. W **Inspektorze jednostki**wybierz jedną rolę, **miejsce docelowe**. Spowoduje to zmianę kursora myszy. Użyj kursora, aby oznaczyć tekst we wszystkich wyrażenia długości, które są lokalizacją docelową.
+1. Zaznacz to pole wyboru i wybierz pozycję **Gotowe**.
+1. Na liście **Jednostki** wybierz **geografięV2,** aby otworzyć nową encję.
+1. Dodaj dwie `Origin`role, `Destination`i .
 
     > [!div class="mx-imgBorder"]
-    > ![wybierz rolę w palecie jednostek](media/tutorial-entity-roles/entity-palette-select-entity-role.png)
+    > ![Dodawanie ról do wstępnie utworzonej encji](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
+
+1. Wybierz **opcji z** lewej strony nawigacji, a następnie wybierz **MoveEmployeeToCity** intencji. Zwróć uwagę, że nazwy miast są oznaczone wstępnie utworzonym elementem **geographyV2**.
+1. Na pasku narzędzi kontekstu wybierz **paletę Element .**
+
+    > [!div class="mx-imgBorder"]
+    > ![Wybieranie palety encji z paska narzędzi zawartości](media/tutorial-entity-roles/intent-detail-context-toolbar-select-entity-palette.png)
+
+1. Wybierz wstępnie utworzony element, **geografiaV2**, a następnie wybierz **Inspektora encji**.
+1. W **inspektorze jednostki**wybierz jedną rolę, **Miejsce docelowe**. Spowoduje to zmianę kursora myszy. Użyj kursora, aby oznaczyć tekst we wszystkich wypowiedziach, które są lokalizacją docelową.
+
+    > [!div class="mx-imgBorder"]
+    > ![Wybierz rolę w palecie jednostek](media/tutorial-entity-roles/entity-palette-select-entity-role.png)
 
 
-1. Wróć do **inspektora jednostek**, przejdź do roli do **pochodzenia**. Użyj kursora, aby oznaczyć tekst we wszystkich wyrażenia długości, które są lokalizacją pierwotną.
+1. Wróć do **inspektora podmiotu**, zmień na rolę **do pochodzenia**. Użyj kursora, aby oznaczyć tekst we wszystkich wypowiedziach, które są lokalizacją pochodzenia.
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>Dodawanie przykładowych wypowiedzi do intencji None
 
@@ -133,7 +133,7 @@ Wstępnie utworzona jednostka, geographyV2, wyodrębnia informacje o lokalizacji
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 
-1. Przejdź na koniec adresu URL na pasku adresu i wprowadź ciąg `Please move Carl Chamerlin from Tampa to Portland`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. Ten wypowiedź nie jest taki sam jak żaden z wyrażenia długości z etykietą, więc jest dobrym testem i powinien zwrócić zamiar `MoveEmployee` z wyodrębnioną jednostką.
+1. Przejdź na koniec adresu URL na pasku adresu i wprowadź ciąg `Please move Carl Chamerlin from Tampa to Portland`. Ostatnim parametrem querystring jest `q` **kwerenda**wypowiedź . Ta wypowiedź nie jest taka sama jak wszelkie wypowiedzi etykietowane, więc `MoveEmployee` jest dobrym testem i powinien zwrócić intencji z jednostki wyodrębnione.
 
     ```json
     {
@@ -171,7 +171,7 @@ Wstępnie utworzona jednostka, geographyV2, wyodrębnia informacje o lokalizacji
     }
     ```
 
-    Przewidywalna jest poprawna wartość, a tablica jednostek ma zarówno rolę źródłową, jak i docelową we właściwości odpowiednich **jednostek** .
+    Poprawny zamiar jest przewidywany, a tablica jednostek ma zarówno pochodzenie, jak i role docelowe we właściwości odpowiednich **jednostek.**
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -180,8 +180,8 @@ Wstępnie utworzona jednostka, geographyV2, wyodrębnia informacje o lokalizacji
 ## <a name="related-information"></a>Informacje pokrewne
 
 * [Pojęcia dotyczące jednostek](luis-concept-entity-types.md)
-* [Pojęcia dotyczące ról](luis-concept-roles.md)
-* [Lista wstępnie utworzonych jednostek](luis-reference-prebuilt-entities.md)
+* [Pojęcia ról](luis-concept-roles.md)
+* [Lista wstępnie utworzonych encji](luis-reference-prebuilt-entities.md)
 * [Jak trenować](luis-how-to-train.md)
 * [Jak opublikować](luis-how-to-publish-app.md)
 * [Jak przeprowadzać testy w portalu usługi LUIS](luis-interactive-test.md)

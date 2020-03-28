@@ -1,5 +1,5 @@
 ---
-title: Pobierz model z wywołaniem REST wC#
+title: 'Pobierz model z wywołaniem REST w C #'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -8,35 +8,35 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: e4f995e888d261e1a1a7cb1e63d0d222c165060f
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 96129b9141b4759fd61b539fa08354f02af3af7b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368390"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80151359"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Azure Language Understanding — tworzenie zasobu 32 klucz znaku i adres URL punktu końcowego tworzenia. Utwórz za pomocą [Azure Portal](../luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) lub [interfejsu wiersza polecenia platformy Azure](../luis-how-to-azure-subscription.md#create-resources-in-azure-cli).
-* Zaimportuj aplikację [TravelAgent](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json) z repozytorium GitHub-Services-Language-zrozumieć.
-* Identyfikator aplikacji LUIS dla zaimportowanej aplikacji TravelAgent. Identyfikator aplikacji jest wyświetlany na pulpicie nawigacyjnym aplikacji.
-* Identyfikator wersji w aplikacji, która odbiera wyrażenia długości. Domyślny identyfikator to „0.1”.
-* [.NET Core V 2.2 +](https://dotnet.microsoft.com/download)
-* [Visual Studio Code](https://code.visualstudio.com/)
+* Zrozumienie języka platformy Azure — tworzenie zasobu 32 klucz znaków i tworzenie adresu URL punktu końcowego. Utwórz za pomocą [witryny Azure portal](../luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) lub [interfejsu wiersza polecenia platformy Azure](../luis-how-to-azure-subscription.md#create-resources-in-azure-cli).
+* Zaimportuj aplikację [TravelAgent](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json) z repozytorium GitHub ze zrozumieniem funkcji cognitive-services-language.
+* Identyfikator aplikacji usługi LUIS dla zaimportowanej aplikacji TravelAgent. Identyfikator aplikacji jest wyświetlany na pulpicie nawigacyjnym aplikacji.
+* Identyfikator wersji w aplikacji, w której odbierane są wypowiedzi. Domyślny identyfikator to „0.1”.
+* [.NET Rdzeń 3.1](https://dotnet.microsoft.com/download)
+* [Kod programu Visual Studio](https://code.visualstudio.com/)
 
 ## <a name="example-utterances-json-file"></a>Plik JSON z przykładowymi wypowiedziami
 
 [!INCLUDE [Quickstart explanation of example utterance JSON file](get-started-get-model-json-example-utterances.md)]
 
-## <a name="change-model-programmatically"></a>Programowo Zmień model
+## <a name="change-model-programmatically"></a>Programowo zmienianie modelu
 
-1. Utwórz nową aplikację konsolową przeznaczoną C# dla języka z nazwą projektu i folderu `model-with-rest`.
+1. Utwórz nową aplikację konsoli kierowaną na język C#, `model-with-rest`z nazwą projektu i folderu .
 
     ```console
     dotnet new console -lang C# -n model-with-rest
     ```
 
-1. Zainstaluj wymagane zależności z następującymi poleceniami interfejsu wiersza polecenia dotnet.
+1. Zainstaluj wymagane zależności za pomocą następujących poleceń dotnet CLI.
 
     ```console
     dotnet add package System.Net.Http
@@ -164,15 +164,15 @@ ms.locfileid: "77368390"
     }
     ```
 
-1. Zastąp wartości zaczynające się od `YOUR-` własnymi wartościami.
+1. Zastąp `YOUR-` wartości zaczynające się od własnych wartości.
 
     |Informacje|Przeznaczenie|
     |--|--|
-    |`YOUR-KEY`|Klucz tworzenia znaków 32.|
-    |`YOUR-ENDPOINT`| Twój punkt końcowy adresu URL tworzenia. Na przykład `replace-with-your-resource-name.api.cognitive.microsoft.com`. Nazwa zasobu jest ustawiana podczas tworzenia zasobu.|
-    |`YOUR-APP-ID`| Identyfikator aplikacji LUIS. |
+    |`YOUR-KEY`|Twój 32-znakowy klucz do tworzenia znaków.|
+    |`YOUR-ENDPOINT`| Punkt końcowy adresu URL tworzenia. Na przykład `replace-with-your-resource-name.api.cognitive.microsoft.com`. Podczas tworzenia zasobu można ustawić nazwę zasobu.|
+    |`YOUR-APP-ID`| Identyfikator aplikacji usługi LUIS. |
 
-    Przypisane klucze i zasoby są widoczne w portalu LUIS w sekcji Zarządzanie na stronie **zasoby platformy Azure** . Identyfikator aplikacji jest dostępny w tej samej sekcji zarządzania na stronie **Ustawienia aplikacji** .
+    Przypisane klucze i zasoby są widoczne w portalu usługi LUIS w sekcji Zarządzanie na stronie **Zasoby platformy Azure.** Identyfikator aplikacji jest dostępny w tej samej sekcji Zarządzanie na stronie **Ustawienia aplikacji.**
 
 1. Skompiluj aplikację konsolową.
 
@@ -180,7 +180,7 @@ ms.locfileid: "77368390"
     dotnet build
     ```
 
-1. Uruchom aplikację konsolową. Dane wyjściowe konsoli wyświetlają ten sam kod JSON, który został wyświetlony wcześniej w oknie przeglądarki.
+1. Uruchom aplikację konsolową. Dane wyjściowe konsoli wyświetla ten sam JSON, który został wyświetlony wcześniej w oknie przeglądarki.
 
     ```console
     dotnet run
@@ -188,9 +188,9 @@ ms.locfileid: "77368390"
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Po zakończeniu pracy z tym przewodnikiem Szybki Start Usuń plik z systemu plików.
+Po zakończeniu tego przewodnika Szybki start usuń plik z systemu plików.
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Najlepsze rozwiązania dla aplikacji](../luis-concept-best-practices.md)
+> [Najważniejsze wskazówki dotyczące aplikacji](../luis-concept-best-practices.md)

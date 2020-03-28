@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: wykonywanie wyszukiwania w wiadomościach przy użyciu języka PHP i interfejsu API REST wyszukiwanie wiadomości Bing'
+title: 'Szybki start: wykonywanie wyszukiwania wiadomości za pomocą interfejsu API PHP i wyszukiwania wiadomości Bing'
 titleSuffix: Azure Cognitive Services
 description: Skorzystaj z tego przewodnika Szybki Start, aby wysyłać żądania do interfejs API REST wyszukiwania wiadomości Bing przy użyciu języka PHP i otrzymywać odpowiedzi w formacie JSON.
 services: cognitive-services
@@ -12,13 +12,13 @@ ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 79f00e4138d0fecdc7320235dd9c496033693d2b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75383097"
 ---
-# <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>Szybki Start: wykonywanie wyszukiwania w wiadomościach przy użyciu języka PHP i interfejsu API REST wyszukiwanie wiadomości Bing
+# <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>Szybki start: wyszukiwanie wiadomości za pomocą PHP i interfejsu API REST wyszukiwania wiadomości Bing
 
 Ten przewodnik Szybki start umożliwia utworzenie pierwszego wywołania do interfejsu API wyszukiwania obrazów Bing i odbieranie odpowiedzi w formacie JSON. Ta prosta aplikacja JavaScript wysyła zapytanie wyszukiwania do interfejsu API i wyświetla nieprzetworzone wyniki.
 
@@ -34,13 +34,13 @@ Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bin
 
 ## <a name="run-the-application"></a>Uruchamianie aplikacji
 
-[Interfejs API wyszukiwania wiadomości Bing](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) zwraca wyniki dotyczące wiadomości z wyszukiwarki Bing.
+[Interfejs API wyszukiwania wiadomości Bing](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) zwraca wyniki wiadomości z wyszukiwarki Bing.
 
 1. Upewnij się, że w Twoim pliku `php.ini` włączoną obsługę bezpiecznego protokołu HTTP, jak opisano w komentarzu do tego kodu.
 2. Utwórz nowy projekt PHP w ulubionym środowisku IDE lub edytorze.
 3. Dodaj kod przedstawiony poniżej.
 4. Zastąp wartość `accessKey` kluczem dostępu właściwym dla Twojej subskrypcji.
-5. Możesz użyć poniższego globalnego punktu końcowego lub niestandardowego punktu końcowego [poddomeny](../../cognitive-services/cognitive-services-custom-subdomains.md) , który jest wyświetlany w Azure Portal dla zasobu.
+5. Można użyć globalnego punktu końcowego poniżej lub niestandardowego punktu końcowego [poddomeny](../../cognitive-services/cognitive-services-custom-subdomains.md) wyświetlanego w witrynie Azure portal dla zasobu.
 5. Uruchom program.
 
 ```php
@@ -103,7 +103,7 @@ echo json_encode(json_decode($json), JSON_PRETTY_PRINT);
 ?>
 ```
 
-**Odpowiedź**
+**Odpowiedzi**
 
 Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
 
@@ -201,4 +201,4 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Tworzenie jednostronicowej aplikacji internetowej](tutorial-bing-news-search-single-page-app.md)
+> [Tworzenie jednostronicowej aplikacji sieci Web](tutorial-bing-news-search-single-page-app.md)

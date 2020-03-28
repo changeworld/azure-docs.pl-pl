@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: używanie języka Java do wywoływania interfejsu API REST wyszukiwanie obrazów Bing'
+title: 'Szybki start: używanie oprogramowania Java do wywoływania interfejsu API REST wyszukiwania obrazów Bing'
 titleSuffix: Azure Cognitive Services
 description: Skorzystaj z tego przewodnika Szybki Start, aby wysyłać żądania wyszukiwania obrazów do interfejsu API wyszukiwania obrazów Bing przy użyciu języka Java i otrzymywać odpowiedzi w formacie JSON.
 services: cognitive-services
@@ -13,21 +13,21 @@ ms.date: 12/06/2019
 ms.author: aahi
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: c1e339643613db188819e7eb8853cad8a48ea47f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74928137"
 ---
-# <a name="quickstart-search-for-images-with-the-bing-image-search-api-an-azure-cognitive-service"></a>Szybki Start: Wyszukiwanie obrazów przy użyciu interfejs API wyszukiwania obrazów Bing, usługi poznawczej platformy Azure 
+# <a name="quickstart-search-for-images-with-the-bing-image-search-api-an-azure-cognitive-service"></a>Szybki start: wyszukiwanie obrazów za pomocą interfejsu API wyszukiwania obrazów Bing, usługi kognitywnej platformy Azure 
 
-Ten przewodnik Szybki Start umożliwia wysyłanie żądań wyszukiwania do interfejs API wyszukiwania obrazów Bing na platformie Azure Cognitive Services. Ta aplikacja języka Java wysyła zapytanie dotyczące wyszukiwania do interfejsu API i wyświetla adres URL pierwszego obrazu w wynikach. Chociaż ta aplikacja jest napisana w języku Java, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
+Ten szybki start służy do wysyłania żądań wyszukiwania do interfejsu API wyszukiwania obrazów Bing w usługach Azure Cognitive Services. Ta aplikacja języka Java wysyła zapytanie dotyczące wyszukiwania do interfejsu API i wyświetla adres URL pierwszego obrazu w wynikach. Chociaż ta aplikacja jest napisana w języku Java, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
 
-Kod źródłowy dla tego przykładu jest dostępny [w usłudze GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingImageSearchv7Quickstart.java) wraz z dodatkową obsługą błędów i adnotacjami.
+Kod źródłowy dla tego przykładu jest dostępny [w usłudze GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingImageSearchv7Quickstart.java) z dodatkową obsługą błędów i adnotacjami.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Zestaw [Java Development Kit (JDK)](https://aka.ms/azure-jdks)
+* [Zestaw Java Development Kit (JDK)](https://aka.ms/azure-jdks)
 
 * [Biblioteka Gson](https://github.com/google/gson)
 
@@ -48,7 +48,7 @@ Kod źródłowy dla tego przykładu jest dostępny [w usłudze GitHub](https://g
     import com.google.gson.JsonParser;
     ```
 
-2. Utwórz zmienne dla punktu końcowego interfejsu API, klucza subskrypcji i wyszukiwanego terminu. `host` może być globalnym punktem końcowym lub [niestandardowym](../../../cognitive-services/cognitive-services-custom-subdomains.md) punktem końcowym domeny wyświetlanym w Azure Portal dla zasobu.
+2. Utwórz zmienne dla punktu końcowego interfejsu API, klucza subskrypcji i wyszukiwanego terminu. `host`może to być globalny punkt końcowy poniżej lub niestandardowy punkt końcowy [poddomeny](../../../cognitive-services/cognitive-services-custom-subdomains.md) wyświetlany w witrynie Azure portal dla zasobu.
 
     ```java
     static String subscriptionKey = "enter key here";
@@ -158,7 +158,7 @@ Odpowiedzi z interfejsu API wyszukiwania obrazów Bing są zwracane w formacie J
 > [!div class="nextstepaction"]
 > [Samouczek dotyczący jednostronicowej aplikacji wyszukiwania obrazów Bing](../tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 * [Czym jest funkcja wyszukiwania obrazów Bing?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
 * [Wypróbuj interaktywny pokaz online](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 

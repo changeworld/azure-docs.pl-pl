@@ -1,7 +1,7 @@
 ---
 title: 'Szybki start: wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka Ruby'
 titleSuffix: Azure Cognitive Services
-description: W tym przewodniku szybki start wykryjesz twarze z obrazu za pomocą interfejsu API REST twarzy przy użyciu języka Ruby.
+description: W tym przewodniku Szybki start można wykryć twarze z obrazu za pomocą interfejsu API Face REST z Ruby.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: 892e7e0fe362e25cf1ca69146bd27a77baf41f24
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76169436"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>Szybki start: wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka Ruby
@@ -23,12 +23,12 @@ W tym przewodniku Szybki start użyjesz interfejsu API REST rozpoznawania twarzy
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Klucz subskrypcji programu Marketo. Klucz subskrypcji bezpłatnej wersji próbnej możesz uzyskać na stronie [Wypróbuj usługi Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Lub postępuj zgodnie z instrukcjami w temacie [Tworzenie konta Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , aby subskrybować usługę i uzyskać klucz.
+- Klucz subskrypcji Face. Klucz subskrypcji bezpłatnej wersji próbnej możesz uzyskać na stronie [Wypróbuj usługi Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Możesz też postępować zgodnie z instrukcjami w aplikacji [Utwórz konto usług Cognitive Services,](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) aby zasubskrybować usługę Face i uzyskać klucz.
 - Edytor kodu, taki jak program [Visual Studio Code](https://code.visualstudio.com/download)
 
 ## <a name="write-the-script"></a>Pisanie skryptu
 
-Utwórz nowy plik o nazwie _faceDetection.rb_ i dodaj następujący kod. Ten kod wywołuje interfejs API rozpoznawania twarzy dla danego adresu URL obrazu.
+Utwórz nowy plik o nazwie _faceDetection.rb_ i dodaj następujący kod. Ten kod wywołuje interfejs API twarzy dla danego adresu URL obrazu.
 
 ```ruby
 require 'net/http'
@@ -60,11 +60,11 @@ end
 puts response.body
 ```
 
-Musisz zaktualizować wartość `request['Ocp-Apim-Subscription-Key']` przy użyciu klucza subskrypcji i zmienić ciąg `uri` tak, aby zawierał prawidłowy punkt końcowy.
+Należy zaktualizować wartość za `request['Ocp-Apim-Subscription-Key']` pomocą klucza subskrypcji `uri` i zmienić ciąg, tak aby zawierał poprawny punkt końcowy.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-Możesz również zmienić pole `imageUri`, aby wskazywało na Twój obraz wejściowy. Możesz również zmienić pole `returnFaceAttributes`, które określa atrybuty kroju do pobrania.
+Możesz również zmienić pole `imageUri`, aby wskazywało na Twój obraz wejściowy. Można również zmienić `returnFaceAttributes` pole, które określa, które atrybuty twarzy mają zostać pobrane.
 
 ## <a name="run-the-script"></a>Uruchamianie skryptu
 
@@ -74,7 +74,7 @@ Uruchom skrypt języka Ruby przy użyciu następującego polecenia:
 ruby faceDetection.rb
 ```
 
-W konsoli powinien zostać wyświetlony ciąg JSON danych wykrytej twarzy. Poniższy tekst stanowi przykład pomyślnej odpowiedzi JSON.
+W konsoli powinien zostać wyświetlony ciąg JSON danych wykrytej twarzy. Poniższy tekst jest przykładem pomyślnej odpowiedzi JSON.
 
 ```json
 [
@@ -257,7 +257,7 @@ W konsoli powinien zostać wyświetlony ciąg JSON danych wykrytej twarzy. Poni�
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku szybki start zapisano skrypt języka Ruby, który wywołuje usługę Azure twarzy, aby wykrywać twarze w obrazie i zwracać ich atrybuty. Następnie zapoznaj się z dokumentacją referencyjną interfejsu API rozpoznawania twarzy, aby dowiedzieć się więcej.
+W tym przewodniku Szybki start napisano skrypt Ruby, który wywołuje usługę Azure Face, aby wykryć twarze w obrazie i zwrócić ich atrybuty. Następnie zapoznaj się z dokumentacją referencyjną interfejsu API rozpoznawania twarzy, aby dowiedzieć się więcej.
 
 > [!div class="nextstepaction"]
 > [Interfejs API rozpoznawania twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

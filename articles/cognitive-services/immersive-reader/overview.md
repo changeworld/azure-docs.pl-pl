@@ -1,7 +1,7 @@
 ---
-title: Co to jest interfejs API czytnika immersyjny?
+title: Co to jest interfejs API czytnika immersive?
 titleSuffix: Azure Cognitive Services
-description: Interfejs API czytnika immersyjny to narzędzie, którego można użyć w celu podzielenia się z różnicami w nauce lub ułatwieniami nowych czytników i języków.
+description: Interfejs API programu Immersive Reader to narzędzie, którego można używać do przyjmowania osób z różnicami w uczeniu się lub pomocy nowym czytelnikom i osobom uczącym się języka.
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -10,24 +10,26 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 01/4/2020
 ms.author: metan
-ms.openlocfilehash: 5acd6e4be178c7e645eb6855a79cd0f58303ba9a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 2eab7ab62f6a7a105dab33aa889af9f2be3a3fa3
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846423"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80052383"
 ---
 # <a name="what-is-immersive-reader"></a>Co to jest czytnik immersyjny?
 
-[Czytnik immersyjny](https://www.onenote.com/learningtools) jest specjalnie zaprojektowanym narzędziem, które implementuje sprawdzone techniki w celu zwiększenia czytelności dla nowych czytelników, nauk językowych i osób, które mają różnice szkoleniowe, takie jak Dyslexia.
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
+
+[Immersive Reader](https://www.onenote.com/learningtools) to zaprojektowane z włącznie narzędzie, które wdraża sprawdzone techniki poprawy zrozumienia czytania dla nowych czytelników, osób uczących się języków i osób z różnicami w uczeniu się, takimi jak dysleksja.
 
 Czytnik immersyjny można zastosować w aplikacji internetowej, korzystając z zestawu SDK czytnika immersyjnego.
 
-## <a name="what-does-immersive-reader-do"></a>Co robi czytnik immersyjny?
+## <a name="what-does-immersive-reader-do"></a>Do czego działa Immersive Reader?
 
-Czytnik immersyjny został zaprojektowany w celu ułatwienia dostępu do odczytu dla wszystkich użytkowników.
+Czytnik Immersive Reader został zaprojektowany tak, aby czytanie było bardziej dostępne dla wszystkich.
 
-* Pokazuje zawartość w minimalnym widoku do czytania
+* Pokazuje zawartość w minimalnym widoku odczytu
 
   ![Czytnik immersyjny](./media/immersive-reader.png)
 
@@ -35,11 +37,11 @@ Czytnik immersyjny został zaprojektowany w celu ułatwienia dostępu do odczytu
 
   ![Słownik obrazów](./media/picture-dictionary.png)
 
-* Wyróżnia rzeczowniki, czasowniki, przymiotniki i parametrów
+* Najważniejsze rzeczowniki, czasowniki, przymiotniki i przysłówki
 
   ![Części mowy](./media/parts-of-speech.png)
 
-* Odczytuje zawartość na głos
+* Odczytuje twoje treści na głos
 
   ![Czytaj na głos](./media/read-aloud.png)
 
@@ -47,18 +49,18 @@ Czytnik immersyjny został zaprojektowany w celu ułatwienia dostępu do odczytu
 
   ![Tłumaczenie](./media/translation.png)
 
-* Dzieli wyrazy na sylaby
+* Dzieli słowa na sylaby
 
   ![Syllabification](./media/syllabification.png)
 
-## <a name="how-does-immersive-reader-work"></a>Jak działa czytnik immersyjny?
+## <a name="how-does-immersive-reader-work"></a>Jak działa immersive reader?
 
-Czytnik immersyjny to autonomiczna aplikacja internetowa, która po wywołaniu przy użyciu zestawu SDK języka JavaScript czytnika immersyjny jest wyświetlana na podstawie istniejącej aplikacji sieci Web za pośrednictwem `iframe`. Po wywołaniu interfejsu API w celu uruchomienia czytnika immersyjny należy określić zawartość, która ma być wyświetlana w czytniku immersyjny. Nasz zestaw SDK obsługuje tworzenie i określanie stylów `iframe` i komunikacji z usługą wewnętrznej bazy danych czytnika immersyjny, która przetwarza zawartość dla części mowy, zamiany tekstu na mowę, tłumaczenie i tak dalej.
+Immersive Reader to samodzielna aplikacja internetowa, która po wywołaniu przy użyciu modułu SDK Immersive Reader JavaScript jest wyświetlana na istniejącej aplikacji internetowej za pośrednictwem pliku `iframe`. Po wywołaniu interfejsu API, aby uruchomić immersive reader, należy określić zawartość, którą chcesz pokazać w czytniku Immersive. Nasz zestaw SDK obsługuje tworzenie i `iframe` stylizację i komunikację z usługą zaplecza Immersive Reader, która przetwarza zawartość dla części mowy, tekstu na mowę, tłumaczenia i tak dalej.
 
 ## <a name="next-steps"></a>Następne kroki
 
 Rozpoczynanie pracy z czytnikiem immersyjnym:
 
-* Przejdź do [przewodnika Szybki Start](./quickstart.md)
-* Eksplorowanie [zestawu SDK czytnika immersyjny w witrynie GitHub](https://github.com/microsoft/immersive-reader-sdk)
-* Przeczytaj [Kompendium zestawu SDK czytnika immersyjny](./reference.md)
+* Wskakuj do [szybkiego startu](./quickstart.md)
+* Poznaj [immersyjny sdk czytnika w usłudze GitHub](https://github.com/microsoft/immersive-reader-sdk)
+* Przeczytaj dokumentację [SDK programu Immersive Reader](./reference.md)

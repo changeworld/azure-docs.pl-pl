@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
 ms.openlocfilehash: 2a5fb6d72ab2259b2c11d1d71e93aa635da36946
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75446564"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-python"></a>Szybki Start: uzyskiwanie szczegółowych informacji o obrazach przy użyciu zestawu SDK wyszukiwanie wizualne Bing dla języka Python
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-python"></a>Szybki start: uchodź szczegółowe informacje o obrazach przy użyciu sdk wyszukiwania wizualnego Bing dla języka Python
 
-Użyj tego przewodnika Szybki start, aby rozpocząć uzyskiwanie szczegółowych danych obrazu w usłudze wyszukiwania wizualnego Bing przy użyciu zestawu SDK dla języka Python. Chociaż wyszukiwanie wizualne Bing ma interfejs API REST zgodny z większością języków programowania, zestaw SDK umożliwia łatwe integrowanie usługi z Twoimi aplikacjami. Kod źródłowy tego przykładu można znaleźć w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/visual_search_samples.py) 
+Użyj tego przewodnika Szybki start, aby rozpocząć uzyskiwanie szczegółowych danych obrazu w usłudze wyszukiwania wizualnego Bing przy użyciu zestawu SDK dla języka Python. Chociaż wyszukiwanie wizualne Bing ma interfejs API REST zgodny z większością języków programowania, zestaw SDK umożliwia łatwe integrowanie usługi z Twoimi aplikacjami. Kod źródłowy tego przykładu można znaleźć w [usłudze GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/visual_search_samples.py) 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Środowisko [Python](https://www.python.org/) 2.x lub 3.x
+* [Python](https://www.python.org/) 2.x lub 3.x
 * Zalecane jest użycie [środowiska wirtualnego](https://docs.python.org/3/tutorial/venv.html). Zainstaluj i zainicjuj środowisko wirtualne przy użyciu [modułu venv](https://pypi.python.org/pypi/virtualenv).
 * Zestaw SDK wyszukiwania wizualnego Bing dla języka Python. Możesz go zainstalować za pomocą następujących poleceń:
     1. `cd mytestenv`
