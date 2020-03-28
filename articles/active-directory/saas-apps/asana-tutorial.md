@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: integracja Azure Active Directory z usługą Asana | Microsoft Docs'
+title: 'Samouczek: Integracja usługi Azure Active Directory z asaną | Dokumenty firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Asana.
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5531a7c1a95e472239c639e3307623fc4ccedd37
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73157873"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-asana"></a>Samouczek: integracja Azure Active Directory z usługą Asana
+# <a name="tutorial-azure-active-directory-integration-with-asana"></a>Samouczek: Integracja usługi Azure Active Directory z asaną
 
 Z tego samouczka dowiesz się, jak zintegrować aplikację Asana z usługą Azure Active Directory (Azure AD).
 Zintegrowanie aplikacji Asana z usługą Azure AD zapewnia następujące korzyści:
@@ -33,7 +33,7 @@ Zintegrowanie aplikacji Asana z usługą Azure AD zapewnia następujące korzyś
 * Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -128,7 +128,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD przy użyciu aplikacji
 
 ### <a name="configure-asana-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w aplikacji Asana
 
-1. W innym oknie przeglądarki zaloguj się do aplikacji Asana. Aby skonfigurować logowanie jednokrotne w aplikacji Asana, uzyskaj dostęp do ustawień obszaru roboczego, klikając nazwę obszaru roboczego w prawym górnym rogu ekranu. Następnie kliknij pozycję **\<nazwa obszaru roboczego\> — ustawienia**.
+1. W innym oknie przeglądarki zaloguj się do aplikacji Asana. Aby skonfigurować logowanie jednokrotne w aplikacji Asana, uzyskaj dostęp do ustawień obszaru roboczego, klikając nazwę obszaru roboczego w prawym górnym rogu ekranu. Następnie kliknij ** \<nazwę\> obszaru roboczego Ustawienia**.
 
     ![Ustawienia logowania jednokrotnego w aplikacji Asana](./media/asana-tutorial/tutorial_asana_09.png)
 
@@ -140,7 +140,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD przy użyciu aplikacji
 
     b. Kliknij prawym przyciskiem myszy certyfikat pobrany z witryny Azure Portal, a następnie otwórz plik certyfikatu w Notatniku lub preferowanym edytorze tekstów. Skopiuj zawartość między początkowym i końcowym tytułem certyfikatu, a następnie wklej ją w polu tekstowym **Certyfikat X.509**.
 
-3. Kliknij przycisk **Save** (Zapisz). Przejdź do [części dotyczącej konfigurowania logowania jednokrotnego w przewodniku po aplikacji Asana](https://asana.com/guide/help/premium/authentication#gl-saml), jeśli potrzebujesz dalszej pomocy.
+3. Kliknij przycisk **Zapisz**. Przejdź do [części dotyczącej konfigurowania logowania jednokrotnego w przewodniku po aplikacji Asana](https://asana.com/guide/help/premium/authentication#gl-saml), jeśli potrzebujesz dalszej pomocy.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -150,7 +150,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+2. Wybierz **pozycję Nowy użytkownik** u góry ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
@@ -160,7 +160,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon\@yourcompanydomain. Extension**  
+    b. W polu **Nazwa użytkownika** wpisz **\@brittasimon yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -189,7 +189,7 @@ W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z
 
 5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+6. Jeśli oczekujesz dowolnej wartości roli w asercji SAML, a następnie w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
@@ -205,7 +205,7 @@ W tej sekcji utworzysz użytkownika o nazwie Britta Simon w aplikacji Asana.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/asana-tutorial/tutorial_asana_12.png)
 
-2. Wpisz adres e-mail użytkownika, np **. Britta. simon\@contoso.com** w polu tekstowym, a następnie wybierz pozycję **Zaproś**.
+2. Wpisz wiadomość e-mail użytkownika, taką jak **britta.simon\@contoso.com** w polu tekstowym, a następnie wybierz pozycję **Zaproś**.
 
 3. Kliknij pozycję **Send Invite** (Wyślij zaproszenie). Nowy użytkownik otrzyma wiadomość e-mail na swoim koncie poczty e-mail. Użytkownik będzie musiał utworzyć i zweryfikować konto.
 
@@ -213,14 +213,14 @@ W tej sekcji utworzysz użytkownika o nazwie Britta Simon w aplikacji Asana.
 
 W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Asana w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Asana, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka Asana w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Asana, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat Panelu dostępu, zobacz [Wprowadzenie do Panelu dostępu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Konfigurowanie aprowizacji użytkowników](asana-provisioning-tutorial.md)
+- [Konfigurowanie inicjowania obsługi administracyjnej użytkowników](asana-provisioning-tutorial.md)

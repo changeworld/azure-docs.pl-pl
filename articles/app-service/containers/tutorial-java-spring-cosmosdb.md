@@ -1,26 +1,26 @@
 ---
-title: 'Samouczek: aplikacja Java dla systemu Linux z MongoDB'
-description: Dowiedz się, jak uzyskać opartą na danych aplikację Java w systemie Linux działającą w Azure App Service, z połączeniem z usługą MongoDB działającą na platformie Azure (Cosmos DB).
+title: 'Poradnik: Aplikacja Linux Java z MongoDB'
+description: Dowiedz się, jak uzyskać aplikację Java z systemem Linux opartą na danych działającą w usłudze Azure App Service, z połączeniem z witryną MongoDB działającą na platformie Azure (Cosmos DB).
 author: rloutlaw
 ms.author: routlaw
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
-ms.custom: seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: eba5353af5b0517491da98cf22b9e7c77dc335b1
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.custom: mvc, seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: e5dcb39430158db1ee9a18524d0214335a2bbbba
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79136299"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80045375"
 ---
-# <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Samouczek: Tworzenie aplikacji sieci Web do rozruchu ze sprężyną Java za pomocą Azure App Service w systemie Linux i Azure Cosmos DB
+# <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Samouczek: Tworzenie aplikacji sieci Web Java Spring Boot za pomocą usługi Azure App Service w systemie Linux i usłudze Azure Cosmos DB
 
 Ten samouczek przeprowadzi Cię przez proces tworzenia, konfigurowania, wdrażania i skalowania aplikacji internetowych w języku Java na platformie Azure. Po zakończeniu będziesz mieć aplikację [Spring Boot](https://projects.spring.io/spring-boot/) przechowującą dane w bazie danych [Azure Cosmos DB](/azure/cosmos-db) i działającą w usłudze [Azure App Service w systemie Linux](/azure/app-service/containers).
 
-![Aplikacja ze sprężyną rozruchową przechowująca dane w Azure Cosmos DB](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
+![Aplikacja Spring Boot przechowująca dane w usłudze Azure Cosmos DB](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie bazy danych Cosmos DB
@@ -34,7 +34,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/overview) zainstalowany na własnym komputerze. 
-* [Usługa Git](https://git-scm.com/)
+* [Git](https://git-scm.com/)
 * [Java JDK](https://aka.ms/azure-jdks)
 * [Maven](https://maven.apache.org)
 
@@ -77,7 +77,7 @@ Wykonaj następujące kroki, aby utworzyć bazę danych Azure Cosmos DB w ramach
         -n <your-azure-COSMOS-DB-name-in-lower-case-letters>
     ```
 
-4. Pobierz klucz bazy danych Azure Cosmos DB, aby nawiązać połączenie z aplikacją. Zachowaj `primaryMasterKey`, `documentEndpoint` w pobliżu, gdy będziesz ich potrzebować w następnym kroku.
+4. Pobierz klucz bazy danych Azure Cosmos DB, aby nawiązać połączenie z aplikacją. Trzymaj `primaryMasterKey`, `documentEndpoint` w pobliżu, jak będziesz ich potrzebować w następnym kroku.
 
     ```bash
     az cosmosdb list-keys -g <your-azure-group-name> -n <your-azure-COSMOSDB-name>
@@ -165,15 +165,15 @@ bash-3.2$ mvn package spring-boot:run
 [INFO] TodoApplication - Started TodoApplication in 45.573 seconds (JVM running for 76.534)
 ```
 
-Dostęp do aplikacji TODO platformy Spring można uzyskać lokalnie za pomocą tego linku po uruchomieniu aplikacji: [http://localhost:8080/](http://localhost:8080/).
+Możesz uzyskać dostęp do aplikacji Spring TODO lokalnie, [http://localhost:8080/](http://localhost:8080/)korzystając z tego linku po uruchomieniu aplikacji: .
 
- ![Lokalne dostęp do aplikacji ze sprężyną](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
+ ![Dostęp do aplikacji Spring TODO lokalnie](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
-Jeśli zobaczysz wyjątki zamiast komunikatu "Started TodoApplication", sprawdź, czy skrypt `bash` w poprzednim kroku prawidłowo wyeksportował zmienne środowiskowe i że wartości są poprawne dla utworzonej Azure Cosmos DB bazy danych.
+Jeśli widzisz wyjątki zamiast komunikatu "Started TodoApplication", `bash` sprawdź, czy skrypt w poprzednim kroku poprawnie wyeksportował zmienne środowiskowe i czy wartości są poprawne dla utworzonej bazy danych usługi Azure Cosmos DB.
 
 ## <a name="configure-azure-deployment"></a>Konfigurowanie wdrożenia usługi Azure
 
-Otwórz plik `pom.xml` w katalogu `initial/spring-boot-todo` i Dodaj następującą [wtyczkę aplikacji sieci Web platformy Azure dla konfiguracji Maven](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md) .
+Otwórz `pom.xml` plik w `initial/spring-boot-todo` katalogu i dodaj następującą wtyczkę aplikacji Azure Web App dla konfiguracji [Maven.](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md)
 
 ```xml    
 <plugins> 
@@ -278,7 +278,7 @@ open https://spring-todo-app.azurewebsites.net
 
 Powinna zostać wyświetlona aplikacja działająca ze zdalnym adresem URL na pasku adresu:
 
- ![Aplikacja ze sprężyną rozruchu działająca ze zdalnym adresem URL](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-in-app-service.jpg)
+ ![Aplikacja Spring Boot działająca ze zdalnym adresem URL](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-in-app-service.jpg)
 
 ## <a name="stream-diagnostic-logs"></a>Przesyłanie strumieniowe dzienników diagnostycznych
 
@@ -307,8 +307,8 @@ az group delete --name <your-azure-group-name>
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Platforma Azure dla deweloperów języka Java](/java/azure/)
-[Spring Boot](https://spring.io/projects/spring-boot), [Spring Data for Cosmos DB](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?view=azure-java-stable), [Azure Cosmos DB](/azure/cosmos-db/sql-api-introduction) i [App Service Linux](app-service-linux-intro.md).
+[Azure for Java Developers](/java/azure/)
+[Spring Boot](https://spring.io/projects/spring-boot), Spring Data for [Cosmos DB](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?view=azure-java-stable), [Azure Cosmos DB](/azure/cosmos-db/sql-api-introduction) i [App Service Linux](app-service-linux-intro.md).
 
 Dowiedz się więcej na temat uruchamiania aplikacji w języku Java w usłudze App Service dla systemu Linux w przewodniku dla deweloperów.
 

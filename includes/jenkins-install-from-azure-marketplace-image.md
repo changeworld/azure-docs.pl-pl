@@ -10,15 +10,15 @@ ms.date: 03/12/2018
 ms.author: tarcher
 ms.custom: Jenkins
 ms.openlocfilehash: 5439de30b02b0ce05853c8112f9e29239743ef98
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67183851"
 ---
 1. W przeglądarce otwórz [obraz serwera Jenkins z witryny Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.jenkins?tab=Overview).
 
-1. Wybierz pozycję **POBIERZ TERAZ**.
+1. Wybierz **pozycję POBIERZ TERAZ**.
 
     ![Wybierz pozycję POBIERZ TERAZ, aby rozpocząć proces instalacji obrazu serwera Jenkins z witryny Marketplace.](./media/jenkins-install-from-azure-marketplace-image/jenkins-install-get-it-now.png)
 
@@ -52,7 +52,7 @@ ms.locfileid: "67183851"
    - **Subnets** (Podsieci) — Wybierz opcję **Subnets** (Podsieci), sprawdź informacje i wybierz przycisk **OK**.
    - **Public IP address** (Publiczny adres IP) — Domyślna nazwa adresu IP to nazwa serwera Jenkins określona na poprzedniej stronie z sufiksem -IP. Możesz wybrać tę opcję, aby zmienić wartość domyślną.
    - **Domain name label** (Etykieta nazwy domeny) — Określ wartość dla w pełni kwalifikowanego adresu URL maszyny wirtualnej serwera Jenkins.
-   - **Jenkins release type** (Typ wersji serwera Jenkins) — Wybierz żądany typ wersji spośród opcji: `LTS`, `Weekly build` i `Azure Verified`. Opcje `LTS` i `Weekly build` zostały objaśnione w artykule [Jenkins LTS Release Line](https://jenkins.io/download/lts/) (Linia wydań LTS serwera Jenkins). Opcja `Azure Verified` odnosi się do [wersji LTS serwera Jenkins](https://jenkins.io/download/lts/), która została zweryfikowana pod kątem działania na platformie Azure. 
+   - **Typ wydania jenkinsa** — wybierz żądany `LTS` `Weekly build`typ `Azure Verified`wersji z opcji: , , lub . Opcje `LTS` i `Weekly build` zostały objaśnione w artykule [Jenkins LTS Release Line](https://jenkins.io/download/lts/) (Linia wydań LTS serwera Jenkins). Opcja `Azure Verified` odnosi się do [wersji LTS serwera Jenkins](https://jenkins.io/download/lts/), która została zweryfikowana pod kątem działania na platformie Azure. 
    - **JDK Type** (Typ zestawu JDK) — Zestaw JDK do zainstalowania. Wartość domyślna to przetestowane przez Zulu, certyfikowane kompilacje OpenJDK.
 
      ![Na karcie Settings (Ustawienia) wprowadź ustawienia maszyny wirtualnej dla serwera Jenkins.](./media/jenkins-install-from-azure-marketplace-image/jenkins-configure-settings.png)

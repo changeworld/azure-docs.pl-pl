@@ -2,25 +2,19 @@
 title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — obliczanie rozmiaru kontenera obiektów blob | Microsoft Docs
 description: Obliczanie rozmiaru kontenera w usłudze Azure Blob Storage przez zsumowanie rozmiaru obiektów blob w tym kontenerze.
 services: storage
-documentationcenter: na
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: ''
-ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: azurecli
+ms.subservice: blobs
+ms.devlang: cli
 ms.topic: sample
 ms.date: 06/28/2017
 ms.author: tamram
-ms.openlocfilehash: 3cb1e35617a58fcde7968ab45d437d865c91f983
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 83ec8c7b3bf5ba9d23d50d8fa1bce563dc56c135
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61245075"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80067127"
 ---
 # <a name="calculate-the-size-of-a-blob-storage-container"></a>Obliczanie rozmiaru kontenera w usłudze Blob Storage
 
@@ -37,7 +31,7 @@ Ten skrypt oblicza rozmiar kontenera w usłudze Azure Blob Storage przez zsumowa
 
 [!code-azurecli[main](../../../cli_scripts/storage/calculate-container-size/calculate-container-size.sh?highlight=2-3 "Calculate container size")]
 
-## <a name="clean-up-deployment"></a>Czyszczenie wdrożenia 
+## <a name="clean-up-deployment"></a>Czyszczenie wdrożenia
 
 Uruchom następujące polecenie, aby usunąć grupę zasobów, kontener i wszystkie powiązane zasoby.
 
@@ -55,7 +49,7 @@ Ten skrypt zawiera następujące polecenia, służące do obliczenia rozmiaru ko
 | [az storage blob upload](/cli/azure/storage/account) | Przekazuje pliki lokalne do kontenera w usłudze Azure Blob Storage. |
 | [az storage blob list](/cli/azure/storage/account/keys) | Zwraca listę obiektów blob w kontenerze usługi Azure Blob Storage. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](/cli/azure).
 

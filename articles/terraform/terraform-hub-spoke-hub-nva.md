@@ -1,38 +1,38 @@
 ---
-title: Samouczek — Tworzenie urządzenia sieci wirtualnej centrum na platformie Azure przy użyciu Terraform
+title: Samouczek — tworzenie urządzenia sieci wirtualnej koncentratora na platformie Azure przy użyciu terraform
 description: Samouczek implementuje tworzenie sieci wirtualnej centrum, która działa jako wspólny punkt połączenia między wszystkimi innymi sieciami
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.openlocfilehash: 28ccb89d237cbe21dd0433da5f7fbb32883f6550
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74159249"
 ---
-# <a name="tutorial-create-a-hub-virtual-network-appliance-in-azure-using-terraform"></a>Samouczek: Tworzenie urządzenia sieci wirtualnej centrum na platformie Azure przy użyciu Terraform
+# <a name="tutorial-create-a-hub-virtual-network-appliance-in-azure-using-terraform"></a>Samouczek: Tworzenie urządzenia sieci wirtualnej koncentratora na platformie Azure przy użyciu terraform
 
-**Urządzenie sieci VPN** to urządzenie, które zapewnia łączność zewnętrzną z siecią lokalną. Urządzenie sieci VPN może być urządzeniem sprzętowym lub rozwiązaniem programowym. Przykładem rozwiązania oprogramowania jest usługa Routing i dostęp zdalny (RRAS) w systemie Windows Server 2012. Aby uzyskać więcej informacji na temat urządzeń sieci VPN, zobacz [Informacje o urządzeniach sieci VPN dla połączeń typu lokacja-lokacja VPN Gateway](/azure/vpn-gateway/vpn-gateway-about-vpn-devices).
+**Urządzenie sieci VPN** to urządzenie, które zapewnia łączność zewnętrzną z siecią lokalną. Urządzenie sieci VPN może być urządzeniem sprzętowym lub oprogramowaniem. Jednym z przykładów rozwiązania programowego jest usługa Routing i dostęp zdalny (RRAS) w systemie Windows Server 2012. Aby uzyskać więcej informacji na temat urządzeń sieci VPN, zobacz [Informacje o urządzeniach sieci VPN dla połączeń bramy sieci VPN między lokacjami](/azure/vpn-gateway/vpn-gateway-about-vpn-devices).
 
-Platforma Azure obsługuje szeroką gamę wirtualnych urządzeń sieciowych, z których można wybierać. W tym samouczku jest używany obraz Ubuntu. Aby dowiedzieć się więcej na temat szerokiej gamy rozwiązań urządzeń obsługiwanych na platformie Azure, zobacz [stronę główną urządzenia sieciowe](https://azure.microsoft.com/solutions/network-appliances/).
+Platforma Azure obsługuje szeroką gamę wirtualnych urządzeń sieciowych, z których można wybrać. W tym samouczku używany jest obraz Ubuntu. Aby dowiedzieć się więcej o szerokiej gamie rozwiązań urządzeń obsługiwanych na platformie Azure, zobacz [stronę główną urządzeń sieciowych](https://azure.microsoft.com/solutions/network-appliances/).
 
 Ten samouczek obejmuje następujące zadania:
 
 > [!div class="checklist"]
-> * Używanie HCL (HashiCorp Language) do implementowania sieci wirtualnej centrum w topologii gwiazdy
-> * Użyj Terraform, aby utworzyć maszynę wirtualną sieci centrów, która działa jako urządzenie
-> * Używanie Terraform do włączania tras przy użyciu rozszerzeń CustomScript
-> * Tworzenie tabel tras bramy Hub i szprych przy użyciu Terraform
+> * Użyj HCL (HashiCorp Language) do zaimplementowania sieci wirtualnej hub w topologii szprychy koncentratora
+> * Użyj terraform do tworzenia maszyny wirtualnej sieci hub, która działa jako urządzenie
+> * Włącz trasy przy użyciu rozszerzeń CustomScript za pomocą programu Terraform
+> * Tworzenie tabel tras bramy i szprychy za pomocą funkcji Terraform
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-1. [Tworzenie topologii sieci hybrydowej Hub i satelity z Terraform na platformie Azure](./terraform-hub-spoke-introduction.md).
-1. [Utwórz lokalną sieć wirtualną za pomocą Terraform na platformie Azure](./terraform-hub-spoke-on-prem.md).
-1. [Utwórz centralną sieć wirtualną z usługą Terraform na platformie Azure](./terraform-hub-spoke-hub-network.md).
+1. [Tworzenie koncentratora i szprychy hybrydowej topologii sieci z Terraform na platformie Azure](./terraform-hub-spoke-introduction.md).
+1. [Tworzenie lokalnej sieci wirtualnej z terraform na platformie Azure](./terraform-hub-spoke-on-prem.md).
+1. [Utwórz sieć wirtualną centrum z Terraform na platformie Azure](./terraform-hub-spoke-hub-network.md).
 
 ## <a name="create-the-directory-structure"></a>Tworzenie struktury katalogów
 
-1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
+1. Przejdź do [witryny Azure portal](https://portal.azure.com).
 
 1. Otwórz usługę [Azure Cloud Shell](/azure/cloud-shell/overview). Jeśli środowisko nie zostało wybrane wcześniej, wybierz pozycję **Bash** jako swoje środowisko.
 
@@ -50,11 +50,11 @@ Ten samouczek obejmuje następujące zadania:
     cd hub-spoke
     ```
 
-## <a name="declare-the-hub-network-appliance"></a>Zadeklaruj urządzenie sieciowe centrum
+## <a name="declare-the-hub-network-appliance"></a>Deklarowanie urządzenia sieciowego koncentratora
 
-Utwórz plik konfiguracji Terraform, który deklaruje lokalną sieć wirtualną.
+Utwórz plik konfiguracyjny Terraform, który deklaruje lokalną sieć wirtualną.
 
-1. W Cloud Shell Utwórz nowy plik o nazwie `hub-nva.tf`.
+1. W usłudze Cloud Shell `hub-nva.tf`utwórz nowy plik o nazwie .
 
     ```bash
     code hub-nva.tf
@@ -266,9 +266,9 @@ Utwórz plik konfiguracji Terraform, który deklaruje lokalną sieć wirtualną.
 
     ```
 
-1. Zapisz plik i Zamknij Edytor.
+1. Zapisz plik i zamknij edytor.
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Tworzenie sieci wirtualnych szprych z Terraform na platformie Azure](./terraform-hub-spoke-spoke-network.md)
+> [Tworzenie sieci wirtualnych z szprychami za pomocą terraformu na platformie Azure](./terraform-hub-spoke-spoke-network.md)

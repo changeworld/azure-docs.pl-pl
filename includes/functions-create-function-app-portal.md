@@ -5,63 +5,58 @@ services: functions
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 10/17/2019
+ms.date: 03/04/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 7da9f795f1865d635a26cd3acf3866dff3565716
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c590b61ee1424d32d83dc5f758682fde37492c3a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76020920"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80057123"
 ---
-1. Z menu Azure Portal wybierz pozycję **Utwórz zasób**.
+1. W menu witryny Azure Portal lub na **stronie głównej** wybierz pozycję **Utwórz zasób**.
 
-    ![Dodawanie zasobu przy użyciu menu Azure Portal](./media/functions-create-function-app-portal/create-function-app-resource.png)
+1. Na stronie **Nowy** wybierz pozycję Aplikacja funkcji **obliczeniowych** > **Function App**.
 
-1. Na stronie **Nowy** wybierz pozycję **obliczeniowe** > **aplikacja funkcji**.
-
-1. Użyj ustawień aplikacji funkcji podanych w tabeli pod obrazem.
-
-    ![Podstawy](./media/functions-create-function-app-portal/function-app-create-basics.png)
+1. Na stronie **Podstawy** użyj ustawień aplikacji funkcji określonych w poniższej tabeli.
 
     | Ustawienie      | Sugerowana wartość  | Opis |
     | ------------ | ---------------- | ----------- |
     | **Subskrypcja** | Twoja subskrypcja | Subskrypcja, w ramach której jest tworzona ta nowa aplikacja funkcji. |
     | **[Grupa zasobów](../articles/azure-resource-manager/management/overview.md)** |  *myResourceGroup* | Nazwa nowej grupy zasobów, w której ma zostać utworzona aplikacja funkcji. |
-    | **Nazwa aplikacji funkcji** | Nazwa unikatowa w skali globalnej | Nazwa identyfikująca nową aplikację funkcji. Prawidłowe znaki to `a-z` (bez uwzględniania wielkości liter), `0-9`i `-`.  |
+    | **Nazwa aplikacji funkcji** | Nazwa unikatowa w skali globalnej | Nazwa identyfikująca nową aplikację funkcji. Prawidłowe `a-z` znaki są (bez uwzględniania wielkości liter), `0-9`i `-`.  |
     |**Publikowanie**| Code | Opcja publikowania plików kodu lub kontenera Docker. |
-    | **Stos środowiska uruchomieniowego** | Preferowany język | Wybierz środowisko uruchomieniowe, które obsługuje ulubiony język programowania funkcji. Wybierz **.NET** dla funkcji w językach C# i F#. |
+    | **Stos środowiska uruchomieniowego** | Preferowany język | Wybierz środowisko uruchomieniowe, które obsługuje ulubiony język programowania funkcji. Wybierz **.NET Core** dla funkcji C# i F#. |
+    |**Wersja**| Numer wersji | Wybierz wersję zainstalowanego środowiska uruchomieniowego.  |
     |**Region**| Preferowany region | Wybierz [region](https://azure.microsoft.com/regions/) w swojej okolicy lub w pobliżu innych usług, do których Twoje funkcje uzyskują dostęp. |
 
-    Wybierz przycisk **Dalej: Hosting >** .
+    ![Podstawy](./media/functions-create-function-app-portal/function-app-create-basics.png)
 
-1. Wprowadź następujące ustawienia hostingu.
+1. **Wybierz dalej : Hosting**. Na stronie **Hosting** wprowadź następujące ustawienia.
+
+    | Ustawienie      | Sugerowana wartość  | Opis |
+    | ------------ | ---------------- | ----------- |
+    | **[Konto magazynu](../articles/storage/common/storage-account-create.md)** |  Nazwa unikatowa w skali globalnej |  Utwórz konto magazynu używane przez aplikację funkcji. Nazwy kont magazynu muszą mieć długość od 3 do 24 znaków i mogą zawierać tylko cyfry i małe litery. Można również użyć istniejącego konta, które musi spełniać [wymagania konta magazynu](../articles/azure-functions/functions-scale.md#storage-account-requirements). |
+    |**System operacyjny**| Preferowany system operacyjny | System operacyjny jest wstępnie wybrany na podstawie wyboru stosu środowiska wykonawczego, ale w razie potrzeby można zmienić to ustawienie. |
+    | **[Plan](../articles/azure-functions/functions-scale.md)** | **Zużycie (bez użycia serwera)** | Plan hostingu określający sposób przydzielania zasobów do aplikacji funkcji. W domyślnym planie **zużycia** zasoby są dodawane dynamicznie zgodnie z wymaganiami funkcji. W tym hostingu [bezserwerowym](https://azure.microsoft.com/overview/serverless-computing/) płacisz tylko za czas uruchamiania funkcji. W przypadku uruchomienia w ramach planu usługi App Service musisz zarządzać [skalowaniem aplikacji funkcji](../articles/azure-functions/functions-scale.md).  |
 
     ![Hosting](./media/functions-create-function-app-portal/function-app-create-hosting.png)
 
+1. **Wybierz dalej : Monitorowanie**. Na stronie **Monitorowanie** wprowadź następujące ustawienia.
+
     | Ustawienie      | Sugerowana wartość  | Opis |
     | ------------ | ---------------- | ----------- |
-    | **[Konto magazynu](../articles/storage/common/storage-account-create.md)** |  Nazwa unikatowa w skali globalnej |  Utwórz konto magazynu używane przez aplikację funkcji. Nazwy kont usługi Magazyn muszą mieć długość od 3 do 24 znaków i mogą zawierać tylko cyfry i małe litery. Możesz również użyć istniejącego konta, które musi spełniać [wymagania dotyczące konta magazynu](../articles/azure-functions/functions-scale.md#storage-account-requirements). |
-    |**System operacyjny**| Preferowany system operacyjny | System operacyjny jest wstępnie wybrany na podstawie wybranego stosu środowiska uruchomieniowego, ale w razie potrzeby można zmienić to ustawienie. |
-    | **[Zamierza](../articles/azure-functions/functions-scale.md)** | Plan Zużycie | Plan hostingu określający sposób przydzielania zasobów do aplikacji funkcji. W domyślnym planie (**Plan Zużycie**) zasoby są dodawane dynamicznie zgodnie z wymaganiami funkcji. W przypadku tego hostingu [bezserwerowego](https://azure.microsoft.com/overview/serverless-computing/) opłaty są naliczane tylko wtedy, gdy funkcje są uruchomione. W przypadku uruchomienia w ramach planu usługi App Service musisz zarządzać [skalowaniem aplikacji funkcji](../articles/azure-functions/functions-scale.md).  |
-
-    Wybierz przycisk **Dalej: monitorowanie >** .
-
-1. Wprowadź następujące ustawienia monitorowania.
+    | **[Wgląd w aplikacje](../articles/azure-functions/functions-monitoring.md)** | Domyślne | Tworzy zasób usługi Application Insights o tej samej *nazwie aplikacji* w najbliższym obsługiwanym regionie. Rozwijając to ustawienie, można zmienić **nazwę nowego zasobu** lub wybrać inną **lokalizację** w lokalizacji [platformy Azure,](https://azure.microsoft.com/global-infrastructure/geographies/) w której chcesz przechowywać dane. |
 
     ![Monitorowanie](./media/functions-create-function-app-portal/function-app-create-monitoring.png)
 
-    | Ustawienie      | Sugerowana wartość  | Opis |
-    | ------------ | ---------------- | ----------- |
-    | **[Application Insights](../articles/azure-functions/functions-monitoring.md)** | Domyślne | Tworzy zasób Application Insights o tej samej *nazwie aplikacji* w najbliższym obsługiwanym regionie. Rozszerzając to ustawienie, można zmienić **nazwę nowego zasobu** lub wybrać inną **lokalizację w lokalizacji** [geograficznej platformy Azure](https://azure.microsoft.com/global-infrastructure/geographies/) , w której mają być przechowywane dane. |
+1. Wybierz **pozycję Przejrzyj + utwórz,** aby przejrzeć wybrane ustawienia konfiguracji aplikacji.
 
-    Wybierz pozycję **Przegląd + Utwórz** , aby przejrzeć wybrane opcje konfiguracji aplikacji.
-
-1. Wybierz pozycję **Utwórz**, aby zaaprowizować aplikację funkcji i wdrożyć ją.
+1. Na stronie **Recenzja + tworzenie** przejrzyj ustawienia, a następnie wybierz pozycję **Utwórz,** aby aprowizować i wdrożyć aplikację funkcji.
 
 1. Wybierz ikonę Powiadomienie w prawym górnym rogu portalu i poszukaj komunikatu **Wdrażanie zakończone pomyślnie**.
 
-    ![Powiadomienie dotyczące wdrożenia](./media/functions-create-function-app-portal/function-app-create-notification2.png)
+1. Wybierz pozycję **Przejdź do zasobu**, aby wyświetlić nową aplikację funkcji. Można również wybrać **pozycję Przypnij do pulpitu nawigacyjnego**. Przypinanie ułatwia powrót do tego zasobu aplikacji funkcji z pulpitu nawigacyjnego.
 
-1. Wybierz pozycję **Przejdź do zasobu**, aby wyświetlić nową aplikację funkcji. Możesz również wybrać pozycję **Przypnij do pulpitu nawigacyjnego**. Przypinanie ułatwia powrót do tego zasobu aplikacji funkcji z pulpitu nawigacyjnego.
+    ![Powiadomienie dotyczące wdrożenia](./media/functions-create-function-app-portal/function-app-create-notification2.png)

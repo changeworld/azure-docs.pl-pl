@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 63c531cc0e600d82df74154adb212be76ba9b4de
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: c1a847a315a264591c0d003ff691d9938c2bf0f5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368544"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474428"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Samouczek: wdrażanie modułów HSM w istniejącej sieci wirtualnej przy użyciu programu PowerShell
 
@@ -217,7 +217,7 @@ Narzędzie SSH jest używane do nawiązywania połączenia z maszyną wirtualną
 `ssh adminuser@hsmlinuxvm.westus.cloudapp.azure.com`
 
 Używane hasło to hasło z pliku parametrów.
-Po zalogowaniu się do maszyny wirtualnej z systemem Linux możesz zalogować się do modułu HSM przy użyciu prywatnego adresu IP znalezionego w portalu dla prefiksu \<zasobu > hsm_vnic.
+Po zalogowaniu się do maszyny Wirtualnej systemu Linux można zalogować się do modułu \<HSM przy użyciu prywatnego adresu IP znajdującego się w portalu dla prefiksu zasobów>hsm_vnic.
 
 ```powershell
 
@@ -245,20 +245,12 @@ Do tego momentu przydzielono wszystkie zasoby na potrzeby wdrożenia o wysokiej 
 
 ## <a name="delete-or-clean-up-resources"></a>Usuwanie lub czyszczenie zasobów
 
-Jeśli zakończono pracę z urządzeniem HSM, to można je usunąć jako zasób i zwrócić do dostępnej puli. Poważnym problemem w takim przypadku są jakiekolwiek poufne dane klienta znajdujące się na urządzeniu. Najlepszym sposobem na "zeroize" jest to, że hasło administratora modułu HSM jest niewłaściwe 3 razy (Uwaga: nie jest to administrator urządzenia — jest to rzeczywisty administrator HSM). Ze względów bezpieczeństwa w celu ochrony materiału kluczowego urządzenie nie może zostać usunięte jako zasób platformy Azure, dopóki nie będzie w stanie wyzerować.
+Jeśli zakończono pracę z urządzeniem HSM, to można je usunąć jako zasób i zwrócić do dostępnej puli. Poważnym problemem w takim przypadku są jakiekolwiek poufne dane klienta znajdujące się na urządzeniu. Najlepszym sposobem na "zerowanie" urządzenia jest podanie hasła administratora HSM pomylił się 3 razy (uwaga: to nie jest administrator urządzenia, to rzeczywisty administrator HSM). Jako środek bezpieczeństwa w celu ochrony materiału klucza, urządzenie nie można usunąć jako zasób platformy Azure, dopóki nie jest w stanie zerowym.
 
 > [!NOTE]
 > Jeśli masz problemy z jakimikolwiek czynnościami konfiguracyjnymi dotyczącymi urządzeń firmy Gemalto, skontaktuj się [z pomocą techniczną firmy Gemalto](https://safenet.gemalto.com/technical-support/).
 
-Jeśli chcesz usunąć tylko zasób HSM na platformie Azure, możesz użyć następującego polecenia zastępującego zmienne "$" własnymi parametrami:
-
-```powershel
-
-Remove-AzureRmResource -Resourceid ` /subscriptions/$subId/resourceGroups/$resourceGroupName/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/$resourceName
-
-```
-
-Jeśli zakończono pracę z zasobami w tej grupie zasobów, możesz usunąć je wszystkie za pomocą następującego polecenia:
+Jeśli chcesz usunąć zasób HSM na platformie Azure, możesz użyć następującego polecenia zastępującego zmienne "$" unikatowymi parametrami:
 
 ```powershell
 
@@ -275,6 +267,6 @@ Po wykonaniu kroków w tym samouczku zasoby dedykowanego modułu HSM zostaną za
 
 * [Wysoka dostępność](high-availability.md)
 * [Zabezpieczenia fizyczne](physical-security.md)
-* [Sieć](networking.md)
-* [Monitorowanie](monitoring.md)
+* [Obsługa sieci](networking.md)
+* [Monitorowania](monitoring.md)
 * [Możliwości obsługi](supportability.md)

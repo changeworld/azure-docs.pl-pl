@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory przy użyciu logowania jednokrotnego Kantega, aby uzyskać FishEye/Crucible | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Kantega Usługa rejestracji Jednokrotnej dla FishEye/Crucible.
+title: 'Samouczek: Integracja usługi Azure Active Directory z usługą Kantega SSO dla FishEye/Crucible | Dokumenty firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a logakiem SSO firmy Kantega dla funkcji FishEye/Crucible.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,44 +17,44 @@ ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f262f94c451d5dcffd933bdebb1374b8733b9fd8
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67595169"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-fisheyecrucible"></a>Samouczek: Integracja usługi Azure Active Directory przy użyciu logowania jednokrotnego Kantega, aby uzyskać FishEye/Crucible
+# <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-fisheyecrucible"></a>Samouczek: Integracja usługi Azure Active Directory z usługą Kantega SSO dla FishEye/Crucible
 
-W tym samouczku dowiesz się, jak zintegrować Kantega Usługa rejestracji Jednokrotnej dla FishEye/Crucible za pomocą usługi Azure Active Directory (Azure AD).
-Integrowanie Kantega Usługa rejestracji Jednokrotnej dla FishEye/Crucible za pomocą usługi Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować usługę SSO kantega dla fisheye/crucible z usługą Azure Active Directory (Azure AD).
+Integracja usługi SSO kantega dla FishEye/Crucible z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do logowania jednokrotnego Kantega FishEye/Crucible.
-* Aby umożliwić użytkownikom można automatycznie zalogowany Kantega Usługa rejestracji Jednokrotnej dla FishEye/Crucible (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* W usłudze Azure AD można kontrolować, kto ma dostęp do usługi Kantega SSO dla FishEye/Crucible.
+* Można włączyć automatyczne logowanie użytkowników do logowania jednokrotnego kantega dla fisheye/crucible (logowanie jednokrotne) za pomocą ich kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD przy użyciu logowania jednokrotnego Kantega, aby uzyskać FishEye/Crucible, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z usługą Kantega SSO dla FishEye/Crucible, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/)
-* Kantega Usługa rejestracji Jednokrotnej dla FishEye/Crucible logowanie jednokrotne włączone subskrypcji
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/)
+* Kantega SSO dla subskrypcji z obsługą logowania jednokrotnego FishEye/Crucible
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Obsługuje Kantega Usługa rejestracji Jednokrotnej dla FishEye/Crucible **dodatkiem SP oraz dostawców tożsamości** jednokrotne logowanie inicjowane przez
+* Kantega SSO for FishEye/Crucible obsługuje jednostki SSO zainicjowane przez **SP i IDP**
 
-## <a name="adding-kantega-sso-for-fisheyecrucible-from-the-gallery"></a>Dodawanie Kantega Usługa rejestracji Jednokrotnej dla FishEye/Crucible za pomocą galerii
+## <a name="adding-kantega-sso-for-fisheyecrucible-from-the-gallery"></a>Dodawanie sso Kantega dla FishEye/Crucible z galerii
 
-Aby skonfigurować integrację Kantega Usługa rejestracji Jednokrotnej dla FishEye/Crucible do usługi Azure AD, należy dodać Kantega Usługa rejestracji Jednokrotnej dla FishEye/Crucible za pomocą galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację usługi SSO Kantega dla FishEye/Crucible w usłudze Azure AD, musisz dodać kod SSO kantega dla FishEye/Crucible z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać Kantega Usługa rejestracji Jednokrotnej dla FishEye/Crucible za pomocą galerii, wykonaj następujące czynności:**
+**Aby dodać funkcję SSO Kantega dla FishEye/Crucible z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -62,37 +62,37 @@ Aby skonfigurować integrację Kantega Usługa rejestracji Jednokrotnej dla Fish
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **Kantega Usługa rejestracji Jednokrotnej dla FishEye/Crucible**, wybierz opcję **Kantega Usługa rejestracji Jednokrotnej dla FishEye/Crucible** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **Kantega SSO dla FishEye/Crucible**, wybierz **Opcję SSO Kantega dla FishEye/Crucible** z panelu wyników, a następnie kliknij przycisk **Dodaj,** aby dodać aplikację.
 
-    ![Kantega Usługa rejestracji Jednokrotnej dla FishEye/Crucible na liście wyników](common/search-new-app.png)
+    ![Kantega SSO dla FishEye/Crucible na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji, konfigurowania i testowania usługi Azure AD logowania jednokrotnego przy użyciu logowania jednokrotnego Kantega FishEye/Crucible zależą od użytkownika testu o nazwie **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanych użytkownika w Kantega Usługa rejestracji Jednokrotnej dla FishEye/Crucible musi zostać ustanowione.
+W tej sekcji można skonfigurować i przetestować azure ad logowania jednokrotnego z Kantega SSO dla FishEye / Crucible na podstawie użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację łącza między użytkownikiem usługi Azure AD a powiązanym użytkownikiem w programie Anso logowania kantega dla fisheye/crucible.
 
-Aby skonfigurować i testowanie usługi Azure AD logowania jednokrotnego przy użyciu logowania jednokrotnego Kantega, aby uzyskać FishEye/Crucible, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD za pomocą logowania jednokrotnego kantega dla fisheye/crucible, należy wykonać następujące bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie Kantega jednokrotnego uzyskać FishEye/Crucible-](#configure-kantega-sso-for-fisheyecrucible-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie Kantega logowania jednokrotnego dla użytkownika testowego FishEye/Crucible](#create-kantega-sso-for-fisheyecrucible-test-user)**  — aby odpowiednikiem Britta Simon w Kantega Usługa rejestracji Jednokrotnej dla FishEye/Crucible połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Skonfiguruj logowanie jednokrotne kantega dla rejestracji jednokrotnej FishEye/Crucible](#configure-kantega-sso-for-fisheyecrucible-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Utwórz narzędzie SSO Kantega dla użytkownika testowego FishEye/Crucible](#create-kantega-sso-for-fisheyecrucible-test-user)** — aby mieć odpowiednik Britta Simon w prochu SSO Kantega dla FishEye/Crucible, który jest połączony z reprezentacją użytkownika usługi Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować usługę Azure AD logowania jednokrotnego przy użyciu logowania jednokrotnego Kantega, aby uzyskać FishEye/Crucible, wykonaj następujące czynności:
+Aby skonfigurować logowanie jednokrotne usługi Azure AD za pomocą logowania jednokrotnego Kantega dla fisheye/crucible, wykonaj następujące kroki:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **Kantega Usługa rejestracji Jednokrotnej dla FishEye/Crucible** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [portalu Azure](https://portal.azure.com/), na stronie integracji aplikacji **Kantega SSO dla aplikacji FishEye/Crucible** wybierz opcję **Logowanie jednokrotne.**
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -102,28 +102,28 @@ Aby skonfigurować usługę Azure AD logowania jednokrotnego przy użyciu logowa
 
     ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-4. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące kroki:
+4. W sekcji **Podstawowa konfiguracja SAML,** jeśli chcesz skonfigurować aplikację w trybie inicjowanym **przez IDP,** wykonaj następujące czynności:
 
-    ![Usługa rejestracji Jednokrotnej w Kantega FishEye/Crucible domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/idp-intiated.png)
+    ![Kantega SSO dla FishEye / Crucible Domain i adresów URL informacje o logowaniach jednokrotnych](common/idp-intiated.png)
 
-    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    a. W polu tekstowym **Identyfikator** wpisz adres URL przy użyciu następującego wzorca:`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
-5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
+5. Kliknij **pozycję Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowanym w sp: **SP**
 
-    ![Usługa rejestracji Jednokrotnej w Kantega FishEye/Crucible domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/metadata-upload-additional-signon.png)
+    ![Kantega SSO dla FishEye / Crucible Domain i adresów URL informacje o logowaniach jednokrotnych](common/metadata-upload-additional-signon.png)
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zastąp je rzeczywistymi wartościami identyfikatora, adresu URL odpowiedzi i adresu URL logowania. Te wartości są odbierane podczas konfigurowania wtyczki FishEye/Crucible, które zostało wyjaśnione w dalszej części tego samouczka.
+    > Te wartości nie są prawdziwe. Zastąp je rzeczywistymi wartościami identyfikatora, adresu URL odpowiedzi i adresu URL logowania. Wartości te są odbierane podczas konfiguracji wtyczki FishEye/Crucible, która została wyjaśniona w dalszej części samouczka.
 
 6. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/metadataxml.png)
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-7. Na **skonfigurować logowanie Jednokrotne Kantega, aby uzyskać FishEye/Crucible** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+7. W sekcji **SSO konfigurowania Kantega dla FishEye/Crucible** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -131,25 +131,25 @@ Aby skonfigurować usługę Azure AD logowania jednokrotnego przy użyciu logowa
 
     b. Identyfikator usługi Azure AD
 
-    c. Adres URL wylogowywania
+    d. Adres URL wylogowywania
 
-### <a name="configure-kantega-sso-for-fisheyecrucible-single-sign-on"></a>Konfigurowanie Kantega Usługa rejestracji Jednokrotnej dla typu rybie oko/Crucible logowania jednokrotnego
+### <a name="configure-kantega-sso-for-fisheyecrucible-single-sign-on"></a>Konfigurowanie logowania jednokrotnego kantega dla rejestracji pojedynczej FishEye/Crucible
 
-1. W oknie przeglądarki internetowej innej Zaloguj się do FishEye/Crucible lokalnym serwerem jako administrator.
+1. W innym oknie przeglądarki internetowej zaloguj się na lokalnym serwerze FishEye/Crucible jako administrator.
 
 1. Zatrzymaj wskaźnik myszy nad ikoną koła zębatego i kliknij pozycję **Dodatki**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforfisheyecrucible-tutorial/addon1.png)
 
-1. W sekcji Ustawienia systemu, kliknij przycisk **Znajdź nowe dodatki**. 
+1. W sekcji Ustawienia systemowe kliknij pozycję **Znajdź nowe dodatki**. 
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforfisheyecrucible-tutorial/add-on2.png)
 
-1. Wyszukiwanie **Kantega Usługa rejestracji Jednokrotnej dla Crucible** i kliknij przycisk **zainstalować** przycisk, aby zainstalować nowe wtyczki SAML.
+1. Wyszukaj **program Kantega SSO dla Tygla** i kliknij przycisk **Zainstaluj,** aby zainstalować nową wtyczkę SAML.
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforfisheyecrucible-tutorial/addon2.png)
 
-1. Rozpocznie się instalacja dodatku plug-in. 
+1. Rozpocznie się instalacja wtyczki. 
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforfisheyecrucible-tutorial/addon33.png)
 
@@ -165,63 +165,63 @@ Aby skonfigurować usługę Azure AD logowania jednokrotnego przy użyciu logowa
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforfisheyecrucible-tutorial/addon3.png)
 
-1. W **SAML** sekcji. Wybierz **usługi Azure Active Directory (Azure AD)** z **dostawcy tożsamości Dodaj** listy rozwijanej.
+1. W sekcji **SAML.** Wybierz **usługę Azure Active Directory (Azure AD)** z listy rozwijanej Dodaj **dostawcę tożsamości.**
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforfisheyecrucible-tutorial/addon4.png)
 
-1. Wybierz poziom subskrypcji jako **podstawowe**.
+1. Wybierz poziom subskrypcji jako **podstawowy**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforfisheyecrucible-tutorial/addon5.png)
 
-1. Na **właściwości aplikacji** sekcję, wykonać następujące kroki:
+1. W sekcji **Właściwości aplikacji** wykonaj następujące czynności:
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforfisheyecrucible-tutorial/addon6.png)
 
-    a. Kopiuj **identyfikator URI Identyfikatora aplikacji** wartości i używać go jako **identyfikator, adres URL odpowiedzi i adres URL logowania** na **podstawową konfigurację protokołu SAML** sekcji w witrynie Azure portal.
+    a. Skopiuj wartość **identyfikatora URI aplikacji** i użyj jej jako **identyfikatora, adresu URL odpowiedzi i adresu URL logowania w** sekcji **Podstawowa konfiguracja SAML** w witrynie Azure portal.
 
-    b. Kliknij przycisk **Dalej**.
+    b. Kliknij przycisk **alej**.
 
-1. Na **Importuj metadane** sekcję, wykonać następujące kroki:
+1. W sekcji **Importowanie metadanych** wykonaj następujące czynności:
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforfisheyecrucible-tutorial/addon7.png)
 
-    a. Wybierz **plik metadanych na moim komputerze**i przekazywania pliku metadanych, który został pobrany z witryny Azure portal.
+    a. Wybierz **plik metadanych na moim komputerze**i przekaż plik metadanych, który został pobrany z witryny Azure portal.
 
-    b. Kliknij przycisk **Dalej**.
+    b. Kliknij przycisk **alej**.
 
-1. Na **nazwę i logowania jednokrotnego lokalizację** sekcję, wykonać następujące kroki:
+1. W sekcji **Lokalizacja nazwy i syłowienia należy** wykonać następujące czynności:
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforfisheyecrucible-tutorial/addon8.png)
 
-    a. Dodaj nazwę dostawcy tożsamości w **nazwę dostawcy tożsamości** (np. usługi Azure AD) w polu tekstowym.
+    a. Dodaj nazwę dostawcy tożsamości w pola tekstowym **nazwy dostawcy tożsamości** (np. usługi Azure AD).
 
-    b. Kliknij przycisk **Dalej**.
+    b. Kliknij przycisk **alej**.
 
-1. Zweryfikuj certyfikat podpisywania, a następnie kliknij przycisk **dalej**.   
+1. Sprawdź certyfikat podpisywania i kliknij przycisk **Dalej**.   
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforfisheyecrucible-tutorial/addon9.png)
 
-1. Na **kont użytkowników typu rybie oko** sekcję, wykonać następujące kroki:
+1. W sekcji **Konta użytkowników FishEye** wykonaj następujące czynności:
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforfisheyecrucible-tutorial/addon10.png)
 
-    a. Wybierz **tworzenie użytkowników w katalogu wewnętrznego FishEye firmy, w razie potrzeby** i wprowadź nazwę odpowiedniej grupy użytkowników (może być wiele nie. grup rozdzielone przecinkami).
+    a. Wybierz **pozycję Utwórz użytkowników w katalogu wewnętrznym FishEye w razie potrzeby** i wprowadź odpowiednią nazwę grupy dla użytkowników (może to być wiele nie. grup oddzielonych przecinkiem).
 
-    b. Kliknij przycisk **Dalej**.
+    b. Kliknij przycisk **alej**.
 
 1. Kliknij przycisk **Zakończ**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforfisheyecrucible-tutorial/addon11.png)
 
-1. Na **znane domen dla usługi Azure AD** sekcję, wykonać następujące kroki:  
+1. W sekcji **Znane domeny dla usługi Azure AD** wykonaj następujące kroki:  
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforfisheyecrucible-tutorial/addon12.png)
 
-    a. Wybierz **znane domen** z lewego panelu strony.
+    a. Wybierz **pozycję Znane domeny** z lewego panelu strony.
 
-    b. Wprowadź nazwę domeny w **znane domen** pola tekstowego.
+    b. Wprowadź nazwę domeny w polach **tekstowych Znane domeny.**
 
-    c. Kliknij pozycję **Zapisz**.
+    d. Kliknij przycisk **Zapisz**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -231,7 +231,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+2. Wybierz **pozycję Nowy użytkownik** u góry ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
@@ -241,23 +241,23 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola `brittasimon@yourcompanydomain.extension`. Na przykład: BrittaSimon@contoso.com
+    b. W polu **Nazwa** `brittasimon@yourcompanydomain.extension`użytkownika wpisz . Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Kliknij pozycję **Utwórz**.
+    d. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do udzielania dostępu do Kantega Usługa rejestracji Jednokrotnej dla FishEye/Crucible za pomocą platformy Azure logowania jednokrotnego.
+W tej sekcji można włączyć Britta Simon do korzystania z azure logowania jednokrotnego, udzielając dostępu do logowania jednokrotnego Kantega dla FishEye/Crucible.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **Kantega Usługa rejestracji Jednokrotnej dla FishEye/Crucible**.
+1. W portalu Azure wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz **wszystkie aplikacje,** a następnie wybierz pozycję **Kantega SSO dla aplikacji FishEye/Crucible**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **Kantega Usługa rejestracji Jednokrotnej dla FishEye/Crucible**.
+2. Na liście aplikacji wybierz **opcję Kantega SSO dla FishEye/Crucible**.
 
-    ![Logowanie Jednokrotne Kantega FishEye/Crucible łącza na liście aplikacji](common/all-applications.png)
+    ![Link SSO Kantega dla FishEye/Crucible na liście Aplikacji](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -269,52 +269,52 @@ W tej sekcji możesz włączyć Britta Simon do udzielania dostępu do Kantega U
 
 5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+6. Jeśli oczekujesz dowolnej wartości roli w asercji SAML, a następnie w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-kantega-sso-for-fisheyecrucible-test-user"></a>Tworzenie Kantega logowania jednokrotnego dla użytkownika testowego FishEye/Crucible
+### <a name="create-kantega-sso-for-fisheyecrucible-test-user"></a>Tworzenie identyfikatora SSO Kantega dla użytkownika testowego FishEye/Crucible
 
-Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do FishEye/Crucible, musi być obsługiwana w FishEye/Crucible. W Kantega Usługa rejestracji Jednokrotnej dla FishEye/Crucible Inicjowanie obsługi administracyjnej jest zadanie ręczne.
+Aby umożliwić użytkownikom usługi Azure AD logowanie się do FishEye/Crucible, muszą one być aprowizowane w FishEye/Crucible. W Kantega SSO dla FishEye / Crucible, inicjowanie obsługi administracyjnej jest ręcznym zadaniem.
 
-**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
+**Aby aprowizować konto użytkownika, wykonaj następujące czynności:**
 
-1. Zaloguj się do serwera lokalnego Crucible jako administrator.
+1. Zaloguj się na lokalnym serwerze Tygla jako administrator.
 
-1. Umieść kursor na koła zębatego, a następnie kliknij przycisk **użytkowników**.
+1. Najedź kursorem na trybiku i kliknij **przycisk Użytkownicy**.
 
     ![Dodawanie pracownika](./media/kantegassoforfisheyecrucible-tutorial/user1.png)
 
-1. W obszarze **użytkowników** kliknij sekcję pozycję **Dodaj użytkownika**.
+1. W sekcji **Karta Użytkownicy** kliknij pozycję **Dodaj użytkownika**.
 
     ![Dodawanie pracownika](./media/kantegassoforfisheyecrucible-tutorial/user2.png)
 
-1. Na **Dodaj nowego użytkownika** okna dialogowego strony, wykonaj następujące czynności:
+1. Na stronie okna dialogowego **Dodawanie nowego użytkownika** wykonaj następujące czynności:
 
     ![Dodawanie pracownika](./media/kantegassoforfisheyecrucible-tutorial/user3.png)
 
     a. W polu tekstowym **Username** (Nazwa użytkownika) wpisz adres e-mail użytkownika, na przykład Brittasimon@contoso.com.
 
-    b. W **nazwy wyświetlanej** polu tekstowym wpisz nazwę wyświetlaną użytkownika, takich jak Britta Simon.
+    b. W polu tekstowym **Nazwa wyświetlana** wpisz nazwę wyświetlaną użytkownika, taką jak Britta Simon.
 
-    c. W polu tekstowym **Email address** (Adres e-mail) wpisz adres e-mail użytkownika, na przykład Brittasimon@contoso.com.
+    d. W polu tekstowym **Email address** (Adres e-mail) wpisz adres e-mail użytkownika, na przykład Brittasimon@contoso.com.
 
     d. W polu tekstowym **Password** (Hasło) wpisz hasło użytkownika.
 
-    e. W **Potwierdź hasło** polu tekstowym Wprowadź ponownie hasło użytkownika.
+    e. W polach tekstowych **Potwierdź hasło** ponownie wejdź ponownie pod hasło użytkownika.
 
-    f. Kliknij pozycję **Add** (Dodaj).
+    f. Kliknij przycisk **Dodaj**.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu przycisku logowania jednokrotnego Kantega FishEye/Crucible kafelka w panelu dostępu powinny być automatycznie zarejestrowaniu w usłudze logowania jednokrotnego Kantega dla FishEye/Crucible, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka SSO Kantega dla FishEye/Crucible w panelu dostępu, powinieneś zostać automatycznie zalogowany do SSO Kantega dla FishEye/Crucible, dla którego skonfigurujesz logowanie jednośmiętne. Aby uzyskać więcej informacji na temat Panelu dostępu, zobacz [Wprowadzenie do Panelu dostępu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

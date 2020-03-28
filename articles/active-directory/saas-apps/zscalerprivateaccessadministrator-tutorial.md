@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory przy użyciu rozwiązania Zscaler prywatny dostęp administratora | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i rozwiązania Zscaler prywatnej dostępu administratora.
+title: 'Samouczek: Integracja usługi Azure Active Directory z administratorem dostępu prywatnego Zscaler | Dokumenty firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a administratorem dostępu prywatnego Zscaler.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,44 +17,44 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b7f0bc04bb8e7358f5bdb2e4dfc3db198e24303f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67085640"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-administrator"></a>Samouczek: Integracja usługi Azure Active Directory Administrator dostępu prywatnego rozwiązania Zscaler
+# <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-administrator"></a>Samouczek: Integracja usługi Azure Active Directory z administratorem dostępu prywatnego Zscaler
 
-W tym samouczku dowiesz się, jak zintegrować rozwiązania Zscaler prywatny dostęp administratora z usługi Azure Active Directory (Azure AD).
-Integracja rozwiązania Zscaler prywatny dostęp administratora z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować administratora prywatnego dostępu Zscaler z usługą Azure Active Directory (Azure AD).
+Integracja administratora programu Zscaler private access z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do rozwiązania Zscaler prywatnej dostępu administratora.
-* Użytkownikom można automatycznie zalogowany do rozwiązania Zscaler prywatny dostęp administratora (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* W usłudze Azure AD można kontrolować, kto ma dostęp do administratora prywatnego dostępu Zscaler.
+* Można włączyć użytkowników, aby automatycznie zalogować się do Zscaler Private Access Administrator (Logowanie jednokrotne) z ich kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD przy użyciu rozwiązania Zscaler prywatnej dostępu administratora, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z administratorem programu Zscaler Private Access, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/)
-* Administrator dostępu prywatnego rozwiązania Zscaler logowanie jednokrotne włączone subskrypcji
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/)
+* Subskrypcja z obsługą logowania jednokrotnego administratora systemu Zscaler
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Administrator dostępu prywatnego rozwiązania Zscaler obsługuje **SP** i **tożsamości** jednokrotne logowanie inicjowane przez
+* Administrator dostępu prywatnego Zscaler **obsługuje** jednostkę SSO inicjowane przez sp i **idp**
 
-## <a name="adding-zscaler-private-access-administrator-from-the-gallery"></a>Dodawanie administratora dostępu prywatnego rozwiązania Zscaler z galerii
+## <a name="adding-zscaler-private-access-administrator-from-the-gallery"></a>Dodawanie administratora prywatnego dostępu Zscaler z galerii
 
-Aby skonfigurować integrację Administrator dostępu rozwiązania Zscaler prywatne w usłudze Azure AD, należy dodać administratora dostępu prywatnego rozwiązania Zscaler z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację administratora prywatnego dostępu Zscaler z usługą Azure AD, należy dodać administratora prywatnego dostępu Zscaler z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać administratora dostępu prywatnego rozwiązania Zscaler z galerii, wykonaj następujące czynności:**
+**Aby dodać administratora programu Zscaler Private Access z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -62,37 +62,37 @@ Aby skonfigurować integrację Administrator dostępu rozwiązania Zscaler prywa
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **Administrator dostępu prywatnego rozwiązania Zscaler**, wybierz opcję **Administrator dostępu prywatnego rozwiązania Zscaler** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikacja.
+4. W polu wyszukiwania wpisz **Zscaler Private Access Administrator**, wybierz **Zscaler Private Access Administrator** z panelu wyników, a następnie kliknij przycisk **Dodaj,** aby dodać aplikację.
 
-    ![Administrator dostępu prywatnego rozwiązania Zscaler na liście wyników](common/search-new-app.png)
+    ![Administrator prywatnego dostępu Zscaler na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji, konfigurowania i testowania usługi Azure AD logowanie jednokrotne za pomocą rozwiązania Zscaler prywatne Administrator dostępu w oparciu o nazwie użytkownika testowego **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Administrator dostępu prywatnego rozwiązania Zscaler musi zostać ustanowione.
+W tej sekcji można skonfigurować i przetestować azure ad logowania jednokrotnego z Zscaler Administrator dostępu prywatnego na podstawie użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację łącza między użytkownikiem usługi Azure AD a powiązanym użytkownikiem w Usłudze Zscaler Private Access Administrator.
 
-Aby skonfigurować i testowanie usługi Azure AD logowania jednokrotnego przy użyciu rozwiązania Zscaler prywatnej dostępu administratora, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD za pomocą administratora dostępu prywatnego Zscaler, należy wykonać następujące bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie rozwiązania Zscaler prywatny dostęp administratora logowanie jednokrotne](#configure-zscaler-private-access-administrator-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego Administrator dostępu prywatnego rozwiązania Zscaler](#create-zscaler-private-access-administrator-test-user)**  — aby odpowiednikiem Britta Simon w prywatnej rozwiązania Zscaler Administrator dostępu połączoną usługę Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Skonfiguruj logowanie jednokrotne administratora dostępu prywatnego Zscaler](#configure-zscaler-private-access-administrator-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Utwórz użytkownika testowego Administratora dostępu prywatnego Zscaler](#create-zscaler-private-access-administrator-test-user)** — aby mieć odpowiednik Britta Simon w Zscaler Private Access Administrator, który jest połączony z reprezentacją użytkownika usługi Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować usługi Azure AD logowania jednokrotnego przy użyciu rozwiązania Zscaler prywatnej dostępu administratora, wykonaj następujące czynności:
+Aby skonfigurować logowanie jednokrotne usługi Azure AD za pomocą administratora prywatnego dostępu Zscaler, wykonaj następujące czynności:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **Administrator dostępu prywatnego rozwiązania Zscaler** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [witrynie Azure portal](https://portal.azure.com/)na stronie integracji aplikacji **administratora dostępu prywatnego Zscaler** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -102,32 +102,32 @@ Aby skonfigurować usługi Azure AD logowania jednokrotnego przy użyciu rozwią
 
     ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-4. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące kroki:
+4. W sekcji **Podstawowa konfiguracja SAML,** jeśli chcesz skonfigurować aplikację w trybie inicjowanym **przez IDP,** wykonaj następujące czynności:
 
-    ![Administrator dostępu prywatnego rozwiązania Zscaler domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/idp-relay.png)
+    ![Zscaler Private Access Administrator Domain and URL Single Sign on informacje](common/idp-relay.png)
 
-    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.private.zscaler.com/auth/metadata`
+    a. W polu tekstowym **Identyfikator** wpisz adres URL przy użyciu następującego wzorca:`https://<subdomain>.private.zscaler.com/auth/metadata`
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.private.zscaler.com/auth/sso`
 
-    c. Kliknij pozycję **Ustaw dodatkowe adresy URL**.
+    d. Kliknij pozycję **Ustaw dodatkowe adresy URL**.
 
     d. W polu tekstowym **Stan przekaźnika** wpisz adres URL: `idpadminsso`
 
-5.  Jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb, wykonaj następujące kroki:
+5.  Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **sp,** wykonaj następujący krok:
 
-    ![Administrator dostępu prywatnego rozwiązania Zscaler domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/both-signonurl.png)
+    ![Zscaler Private Access Administrator Domain and URL Single Sign on informacje](common/both-signonurl.png)
 
-    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.private.zscaler.com/auth/sso`   
+    W polu **tekstowym Podpisywania adresu URL** wpisz adres URL, używając następującego wzorca:`https://<subdomain>.private.zscaler.com/auth/sso`   
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Należy je zastąpić rzeczywistymi wartościami identyfikatora, adresu URL odpowiedzi i adresu URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Administrator dostępu prywatnego rozwiązania Zscaler](https://help.zscaler.com/zpa-submit-ticket) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Należy je zastąpić rzeczywistymi wartościami identyfikatora, adresu URL odpowiedzi i adresu URL logowania. Skontaktuj się z [zespołem pomocy technicznej klienta prywatnego dostępu Zscaler,](https://help.zscaler.com/zpa-submit-ticket) aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 6. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/metadataxml.png)
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-7. Na **Ustaw się Administrator dostępu prywatnego rozwiązania Zscaler** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+7. W sekcji **Konfigurowanie administratora dostępu prywatnego Zscaler** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -135,35 +135,35 @@ Aby skonfigurować usługi Azure AD logowania jednokrotnego przy użyciu rozwią
 
     b. Identyfikator usługi Azure AD
 
-    c. Adres URL wylogowywania
+    d. Adres URL wylogowywania
 
-### <a name="configure-zscaler-private-access-administrator-single-sign-on"></a>Konfiguruj Logowanie administratora dostępu prywatnego jednego rozwiązania Zscaler
+### <a name="configure-zscaler-private-access-administrator-single-sign-on"></a>Konfigurowanie logowania jednokrotnego administratora programu Zscaler Private Access
 
-1. W oknie przeglądarki internetowej innej Zaloguj się do rozwiązania Zscaler prywatnej dostępu administratora jako Administrator.
+1. W innym oknie przeglądarki internetowej zaloguj się do administratora prywatnego dostępu Zscaler jako administrator.
 
-2. W górnej części, kliknij przycisk **administracji** i przejdź do **uwierzytelniania** kliknij sekcję **konfigurację dostawcy tożsamości**.
+2. U góry kliknij pozycję **Administracja** i przejdź do sekcji **UWIERZYTELNIANIE,** kliknij pozycję **Konfiguracja idP**.
 
-    ![Administrator dostępu prywatnego rozwiązania Zscaler administratora](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_admin.png)
+    ![Administrator prywatnego dostępu Zscaler](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_admin.png)
 
-3. W prawym górnym rogu, kliknij przycisk **Dodawanie konfiguracji dostawcy tożsamości**. 
+3. W prawym górnym rogu kliknij pozycję **Dodaj konfigurację idp**. 
 
-    ![Administrator dostępu prywatnego rozwiązania Zscaler Addidp](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_addpidp.png)
+    ![Zscaler Administrator dostępu prywatnego addidp](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_addpidp.png)
 
-4. Na **Dodawanie konfiguracji dostawcy tożsamości** strony należy wykonać następujące czynności:
+4. Na stronie **Dodaj konfigurację IdP** wykonaj następujące czynności:
  
-    ![Administrator dostępu prywatnego rozwiązania Zscaler Idpselect](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_idpselect.png)
+    ![Administrator dostępu prywatnego Zscaler idpselect](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_idpselect.png)
 
-    a. Kliknij przycisk **wybierz plik** do przekazania pobrany plik metadanych z usługi Azure AD w **przekazywania plików metadanych dostawcy tożsamości** pola.
+    a. Kliknij **pozycję Wybierz plik,** aby przekazać pobrany plik metadanych z usługi Azure AD w polu **Przekazywanie pliku metadanych IdP.**
 
-    b. Odczytuje **metadanych tożsamości** z usługi Azure AD i wypełni wszystkie informacje dotyczące pól, jak pokazano poniżej.
+    b. Odczytuje **metadane IdP** z usługi Azure AD i wypełnia wszystkie informacje o polach, jak pokazano poniżej.
 
-    ![Administrator dostępu prywatnego rozwiązania Zscaler Idpconfig](./media/zscalerprivateaccessadministrator-tutorial/idpconfig.png)
+    ![Zscaler Administrator dostępu prywatnego idpconfig](./media/zscalerprivateaccessadministrator-tutorial/idpconfig.png)
 
-    c. Wybierz **logowanie jednokrotne** jako **administratora**.
+    d. Wybierz **opcję Logowanie jednokrotne** jako **administrator**.
 
-    d. Wybierz domenę z **domen** pola.
+    d. Wybierz domenę z pola **Domeny.**
     
-    e. Kliknij pozycję **Zapisz**.
+    e. Kliknij przycisk **Zapisz**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -173,7 +173,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+2. Wybierz **pozycję Nowy użytkownik** u góry ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
@@ -183,23 +183,23 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola `brittasimon@yourcompanydomain.extension`. Na przykład: BrittaSimon@contoso.com
+    b. W polu **Nazwa** `brittasimon@yourcompanydomain.extension`użytkownika wpisz . Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Kliknij pozycję **Utwórz**.
+    d. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do rozwiązania Zscaler prywatny dostęp administratora.
+W tej sekcji można włączyć Britta Simon do korzystania z usługi Azure logowania jednokrotnego, przyznając dostęp do Zscaler administratora dostępu prywatnego.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **Administrator dostępu prywatnego rozwiązania Zscaler**.
+1. W portalu Azure wybierz pozycję **Aplikacje przedsiębiorstwa**, wybierz **pozycję Wszystkie aplikacje**, a następnie wybierz pozycję **Administratora dostępu prywatnego Zscaler**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **Administrator dostępu prywatnego rozwiązania Zscaler**.
+2. Na liście aplikacji wybierz pozycję **Administrator prywatnego dostępu Zscaler**.
 
-    ![Administrator dostępu prywatnego rozwiązania Zscaler łącze na liście aplikacji](common/all-applications.png)
+    ![Łącze Administratora dostępu prywatnego Zscaler na liście Aplikacje](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -211,61 +211,61 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
 5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+6. Jeśli oczekujesz dowolnej wartości roli w asercji SAML, a następnie w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-zscaler-private-access-administrator-test-user"></a>Tworzenie użytkownika testowego Administrator dostępu prywatnego rozwiązania Zscaler
+### <a name="create-zscaler-private-access-administrator-test-user"></a>Utwórz użytkownika testowego Administratora dostępu prywatnego zscalera
 
-Aby umożliwić użytkownikom usługi Azure AD zalogować się do rozwiązania Zscaler prywatnej dostępu administratora, są aprowizowane do rozwiązania Zscaler prywatnej dostępu administratora. W przypadku rozwiązania Zscaler prywatnej dostępu administratora, inicjowanie obsługi administracyjnej jest zadanie ręczne.
+Aby umożliwić użytkownikom usługi Azure AD zalogowanie się do administratora prywatnego dostępu Zscaler, muszą one zostać zainicjowane przez administratora dostępu prywatnego Zscaler. W przypadku administratora prywatnego dostępu Zscaler inicjowanie obsługi administracyjnej jest zadaniem ręcznym.
 
-**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
+**Aby aprowizować konto użytkownika, wykonaj następujące czynności:**
 
-1. Zaloguj się do witryny firmy rozwiązania Zscaler prywatnej dostępu administratora jako administrator.
+1. Zaloguj się do witryny firmy Zscaler Private Access Administrator jako administrator.
 
-2. W górnej części, kliknij przycisk **administracji** i przejdź do **uwierzytelniania** kliknij sekcję **konfigurację dostawcy tożsamości**.
+2. U góry kliknij pozycję **Administracja** i przejdź do sekcji **UWIERZYTELNIANIE,** kliknij pozycję **Konfiguracja idP**.
 
-    ![Administrator dostępu prywatnego rozwiązania Zscaler administratora](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_admin.png)
+    ![Administrator prywatnego dostępu Zscaler](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_admin.png)
 
-3. Kliknij przycisk **Administratorzy** z menu po lewej stronie.
+3. Kliknij **pozycję Administratorzy** z lewej strony menu.
 
-    ![Administrator Administrator dostępu prywatnego rozwiązania Zscaler](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_adminstrator.png)
+    ![Administrator prywatnego dostępu Zscaler](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_adminstrator.png)
 
-4. W prawym górnym rogu, kliknij przycisk **Dodawanie administratora**:
+4. W prawym górnym rogu kliknij pozycję **Dodaj administratora:**
 
-    ![Administrator dostępu prywatnego rozwiązania Zscaler Dodaj administratora](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_addadmin.png)
+    ![Administrator dostępu prywatnego Zscaler dodał administratora](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_addadmin.png)
 
-5. W **Dodawanie administratora** strony, wykonaj następujące czynności:
+5. Na stronie **Dodaj administratora** wykonaj następujące czynności:
 
-    ![Administrator dostępu prywatnego rozwiązania Zscaler użytkownika administratora](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_useradmin.png)
+    ![Administrator dostępu prywatnego Zscaler administratora](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_useradmin.png)
 
-    a. W **Username** polu tekstowym wprowadź adres e-mail użytkownika, takich jak BrittaSimon@contoso.com.
+    a. W polu tekstowym **Nazwa użytkownika** wprowadź BrittaSimon@contoso.comadres e-mail użytkownika, takiego jak .
 
-    b. W **hasło** pole tekstowe, wpisz hasło.
+    b. W **polach tekstowych Hasło** wpisz hasło.
 
-    c. W **Potwierdź hasło** pole tekstowe, wpisz hasło.
+    d. W polach tekstowych **Potwierdź hasło** wpisz hasło.
 
-    d. Wybierz **roli** jako **Administrator dostępu prywatnego rozwiązania Zscaler**.
+    d. Wybierz **pozycję Rola** jako administrator prywatnego dostępu **Zscaler**.
 
-    e. W **E-mail** polu tekstowym wprowadź adres e-mail użytkownika, takich jak BrittaSimon@contoso.com.
+    e. W polu tekstowym **E-mail** wprowadź adres e-mail użytkownika, na przykład BrittaSimon@contoso.com.
 
-    f. W **Phone** pole tekstowe, wpisz numer telefonu.
+    f. W polach tekstowych **Telefon** wpisz numer telefonu.
 
-    g. W **strefa czasowa** pola tekstowego, wybierz strefę czasową.
+    g. W obszarze tekstowym **Strefa czasowa** wybierz strefę czasową.
 
-    h. Kliknij pozycję **Zapisz**.
+    h. Kliknij przycisk **Zapisz**.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka rozwiązania Zscaler prywatny dostęp administratora na panelu dostępu, możesz powinna istnieć możliwość automatycznej rejestracji do rozwiązania Zscaler prywatny dostęp administratora dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka Administratora dostępu prywatnego programu Zscaler w Panelu dostępu należy zalogować się automatycznie do administratora prywatnego dostępu Zscaler, dla którego skonfigurowano logującą się jednoślik. Aby uzyskać więcej informacji na temat Panelu dostępu, zobacz [Wprowadzenie do Panelu dostępu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

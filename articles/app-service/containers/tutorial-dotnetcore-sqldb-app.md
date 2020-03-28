@@ -1,29 +1,29 @@
 ---
-title: 'Samouczek: ASP.NET Core systemu Linux z bazą danych SQL'
-description: Dowiedz się, jak uzyskać dostęp do ASP.NET Core aplikacji systemu Linux opartej na danych w Azure App Service, z połączeniem do SQL Database.
+title: 'Samouczek: Linux ASP.NET Core z BAZY DANYCH SQL'
+description: Dowiedz się, jak uzyskać aplikację Linux ASP.NET Core opartą na danych działającą w usłudze Azure App Service z połączeniem z bazą danych SQL.
 ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/06/2019
-ms.custom: seodec18
-ms.openlocfilehash: 9012f09f75c60ebd0b3743d030b83c0a3aa78648
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: 4de30b45aac9bb6b27474b1eaa0e8917760a6928
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524091"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80045616"
 ---
-# <a name="build-an-aspnet-core-and-sql-database-app-in-azure-app-service-on-linux"></a>Tworzenie aplikacji ASP.NET Core i SQL Database w Azure App Service w systemie Linux
+# <a name="build-an-aspnet-core-and-sql-database-app-in-azure-app-service-on-linux"></a>Tworzenie aplikacji core ASP.NET i bazy danych SQL w usłudze Azure App Service w systemie Linux
 
 > [!NOTE]
 > W tym artykule opisano wdrażanie aplikacji w usłudze App Service w systemie Linux. Aby wdrożyć w usłudze App Service dla systemu _Windows_, zobacz [Tworzenie aplikacji platformy .NET Core i usługi SQL Database w usłudze Azure App Service](../app-service-web-tutorial-dotnetcore-sqldb.md).
 >
 
-Usługa [App Service w systemie Linux](app-service-linux-intro.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie przy użyciu systemu operacyjnego Linux. W tym samouczku pokazano, jak utworzyć aplikację platformy .NET Core i połączyć ją z usługą SQL Database. Po zakończeniu aplikacja MVC platformy .NET Core będzie działać w usłudze App Service w systemie Linux.
+[Usługa App Service w systemie Linux](app-service-linux-intro.md) zapewnia wysoce skalowalną, samoładującą się usługę hostingową przy użyciu systemu operacyjnego Linux. W tym samouczku pokazano, jak utworzyć aplikację platformy .NET Core i połączyć ją z usługą SQL Database. Po zakończeniu aplikacja MVC platformy .NET Core będzie działać w usłudze App Service w systemie Linux.
 
 ![aplikacja działająca w usłudze App Service w systemie Linux](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie bazy danych SQL Database na platformie Azure
@@ -40,7 +40,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 W celu ukończenia tego samouczka:
 
 * [Zainstaluj oprogramowanie Git](https://git-scm.com/)
-* [Zainstaluj zestaw .NET Core SDK 2,2](https://dotnet.microsoft.com/download/dotnet-core/2.2)
+* [Instalowanie .NET Core SDK 2.2](https://dotnet.microsoft.com/download/dotnet-core/2.2)
 
 ## <a name="create-local-net-core-app"></a>Tworzenie lokalnej aplikacji .NET Core
 
@@ -83,15 +83,15 @@ W tym kroku utworzysz bazę danych SQL Database na platformie Azure. Aplikacja w
 
 W tym samouczku jako baza danych SQL jest używana baza danych [Azure SQL Database](/azure/sql-database/).
 
-### <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 [!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)]
 
 ### <a name="create-a-sql-database-logical-server"></a>Tworzenie serwera logicznego bazy danych SQL Database
 
-W usłudze Cloud Shell utwórz serwer logiczny usługi SQL Database za pomocą polecenia [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create).
+W aplikacji Cloud Shell utwórz serwer [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) logiczny bazy danych SQL za pomocą polecenia.
 
-Zastąp *ciąg\<Server-name >* symbolem zastępczym unikatową nazwą SQL Database. Ta nazwa jest używana jako część punktu końcowego bazy danych SQL Database, `<server-name>.database.windows.net`, więc nazwa musi być unikatowa na wszystkich serwerach logicznych platformy Azure. Nazwa może zawierać tylko małe litery, cyfry oraz znak łącznika (-) i musi się składać z 3–50 znaków. Ponadto Zastąp *\<DB-username >* i *\<db-Password >* przy użyciu wybranej nazwy użytkownika i hasła. 
+Zastąp * \<symbol zastępczy>nazwy serwera* unikatową nazwą bazy danych SQL. Ta nazwa jest używana jako część punktu końcowego bazy danych SQL Database, `<server-name>.database.windows.net`, więc nazwa musi być unikatowa na wszystkich serwerach logicznych platformy Azure. Nazwa może zawierać tylko małe litery, cyfry oraz znak łącznika (-) i musi się składać z 3–50 znaków. Ponadto zastąp * \<>nazwy użytkownika db* i * \<>db-password* na wybraną nazwę użytkownika i hasło. 
 
 
 ```azurecli-interactive
@@ -136,7 +136,7 @@ az sql db create --resource-group myResourceGroup --server <server-name> --name 
 
 ### <a name="create-connection-string"></a>Tworzenie parametrów połączenia
 
-Zastąp następujący ciąg *nazwą\<Server-name >* , *\<db-username >* i\<użytym wcześniej *hasłem > DB* .
+Zastąp następujący ciąg * \<>nazwa serwera *, * \<>nazwy użytkownika db *i * \<hasło db>* wcześniej używane.
 
 ```
 Server=tcp:<server-name>.database.windows.net,1433;Database=coreDB;User ID=<db-username>;Password=<db-password>;Encrypt=true;Connection Timeout=30;
@@ -160,29 +160,29 @@ W tym kroku wdrożysz aplikację .NET Core połączoną z bazą danych SQL Datab
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-dotnetcore-linux-no-h.md)] 
 
-### <a name="configure-connection-string"></a>Konfigurowanie parametrów połączenia
+### <a name="configure-connection-string"></a>Konfigurowanie ciągu połączenia
 
-Aby ustawić parametry połączenia dla aplikacji platformy Azure, użyj polecenia [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) w usłudze Cloud Shell. W poniższym poleceniu Zastąp *\<App-name >* , a także parametr *\<Connection-> String* z utworzonymi wcześniej ciągami połączenia.
+Aby ustawić parametry połączenia dla aplikacji [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) platformy Azure, użyj polecenia w aplikacji Cloud Shell. W poniższym poleceniu zastąp * \<>nazwę aplikacji, *a także parametr * \<>parametry>ciągu połączenia* ciągiem połączenia utworzonym wcześniej.
 
 ```azurecli-interactive
 az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='<connection-string>' --connection-string-type SQLServer
 ```
 
-W ASP.NET Core można użyć tego nazwanego ciągu połączenia (`MyDbConnection`) przy użyciu wzorca standardowego, takiego jak wszystkie parametry połączenia określone w pliku *appSettings. JSON*. W takim przypadku `MyDbConnection` jest również zdefiniowana w pliku *appSettings. JSON*. W przypadku uruchamiania w App Service parametry połączenia zdefiniowane w App Service mają pierwszeństwo przed parametrami połączenia zdefiniowanymi w pliku *appSettings. JSON*. Kod używa wartości *appSettings. JSON* podczas tworzenia lokalnego i ten sam kod używa wartości App Service po wdrożeniu.
+W ASP.NET Core można użyć tego nazwanego`MyDbConnection`ciągu połączenia ( ) przy użyciu standardowego wzorca, jak każdy ciąg połączenia określony w *pliku appsettings.json*. W tym `MyDbConnection` przypadku, jest również zdefiniowany w *appsettings.json*. Podczas uruchamiania w usłudze App Service parametry połączenia zdefiniowane w usłudze App Service mają pierwszeństwo przed ciągiem połączenia zdefiniowanym w pliku *appsettings.json*. Kod używa *appsettings.json* wartość podczas rozwoju lokalnego i ten sam kod używa wartości usługi app service po wdrożeniu.
 
-Aby zobaczyć, w jaki sposób w kodzie występuje odwołanie do parametrów połączenia, zobacz [łączenie z SQL Database w środowisku produkcyjnym](#connect-to-sql-database-in-production).
+Aby zobaczyć, jak ciąg połączenia odwołuje się do kodu, zobacz [Łączenie się z bazą danych SQL w produkcji](#connect-to-sql-database-in-production).
 
-### <a name="configure-environment-variable"></a>Konfiguruj zmienną środowiskową
+### <a name="configure-environment-variable"></a>Konfigurowanie zmiennej środowiskowej
 
-Następnie wybierz dla ustawienia aplikacji `ASPNETCORE_ENVIRONMENT` wartość _Produkcja_. To ustawienie pozwala sprawdzić, czy korzystasz z platformy Azure, ponieważ korzystasz z oprogramowania SQLite dla lokalnego środowiska deweloperskiego i SQL Database dla środowiska platformy Azure.
+Następnie wybierz dla ustawienia aplikacji `ASPNETCORE_ENVIRONMENT` wartość _Produkcja_. To ustawienie informuje, czy używasz platformy Azure, ponieważ używasz SQLite dla lokalnego środowiska programistycznego i bazy danych SQL dla środowiska platformy Azure.
 
-W poniższym przykładzie pokazano konfigurowanie ustawienia aplikacji `ASPNETCORE_ENVIRONMENT` w aplikacji platformy Azure. Zastąp symbol zastępczy *>\<App-Name* .
+W poniższym przykładzie pokazano konfigurowanie ustawienia aplikacji `ASPNETCORE_ENVIRONMENT` w aplikacji platformy Azure. Zastąp * \<symbol zastępczy>nazwa aplikacji.*
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings ASPNETCORE_ENVIRONMENT="Production"
 ```
 
-Aby zobaczyć, w jaki sposób zmienna środowiskowa jest przywoływana w kodzie, zobacz [Connect to SQL Database in Production](#connect-to-sql-database-in-production).
+Aby zobaczyć, jak zmienna środowiskowa odwołuje się do kodu, zobacz [Łączenie się z bazą danych SQL w środowisku produkcyjnym](#connect-to-sql-database-in-production).
 
 ### <a name="connect-to-sql-database-in-production"></a>Łączenie z bazą danych SQL Database w środowisku produkcyjnym
 
@@ -208,9 +208,9 @@ else
 services.BuildServiceProvider().GetService<MyDatabaseContext>().Database.Migrate();
 ```
 
-Jeśli ten kod wykryje, że jest uruchomiony w środowisku produkcyjnym (który wskazuje środowisko platformy Azure), następnie używa parametrów połączenia skonfigurowanych do łączenia się z SQL Database. Aby uzyskać informacje o uzyskiwaniu dostępu do ustawień aplikacji w App Service, zobacz [dostęp do zmiennych środowiskowych](configure-language-dotnetcore.md#access-environment-variables).
+Jeśli ten kod wykryje, że jest uruchomiony w środowisku produkcyjnym (co wskazuje środowisko platformy Azure), a następnie używa ciągu połączenia skonfigurowany do łączenia się z bazą danych SQL. Aby uzyskać informacje na temat sposobu uzyskiwania dostępu do ustawień aplikacji w usłudze App Service, zobacz [Dostęp do zmiennych środowiskowych](configure-language-dotnetcore.md#access-environment-variables)programu Access .
 
-Wywołanie `Database.Migrate()` pomaga podczas uruchamiania na platformie Azure, ponieważ automatycznie tworzy bazy danych, których potrzebuje aplikacja .NET Core, na podstawie konfiguracji migracji.
+Wywołanie `Database.Migrate()` pomaga, gdy jest uruchamiany na platformie Azure, ponieważ automatycznie tworzy bazy danych, które aplikacja .NET Core potrzebuje, na podstawie konfiguracji migracji.
 
 Zapisz zmiany, a następnie zatwierdź je w repozytorium Git.
 
@@ -357,7 +357,7 @@ Po ukończeniu operacji `git push` przejdź do aplikacji platformy Azure i wypr�
 
 ![Aplikacja platformy Azure po zakończeniu migracji Code First](./media/tutorial-dotnetcore-sqldb-app/this-one-is-done.png)
 
-Nadal wyświetlane są wszystkie istniejące elementy do wykonania. Po ponownym opublikowaniu aplikacji .NET Core istniejące dane w SQL Database nie zostaną utracone. Ponadto migracje Entity Framework Core zmieniają tylko schemat danych i pozostawiają istniejące dane bez zmian.
+Nadal wyświetlane są wszystkie istniejące elementy do wykonania. Po ponownym opublikowaniu aplikacji .NET Core istniejące dane w bazie danych SQL nie zostaną utracone. Ponadto migracje Entity Framework Core zmieniają tylko schemat danych i pozostawiają istniejące dane bez zmian.
 
 ## <a name="stream-diagnostic-logs"></a>Przesyłanie strumieniowe dzienników diagnostycznych
 
@@ -401,12 +401,12 @@ Które czynności umiesz wykonać:
 > * Strumieniowe przesyłanie dzienników z platformy Azure do terminala
 > * Zarządzanie aplikacją w witrynie Azure Portal
 
-Przejdź do następnego samouczka, aby dowiedzieć się, jak zmapować niestandardową nazwę DNS na aplikację.
+Przejdź do następnego samouczka, aby dowiedzieć się, jak zamapować niestandardową nazwę DNS na aplikację.
 
 > [!div class="nextstepaction"]
-> [Samouczek: mapowanie niestandardowej nazwy DNS na aplikację](../app-service-web-tutorial-custom-domain.md)
+> [Samouczek: Mapowanie niestandardowej nazwy DNS do aplikacji](../app-service-web-tutorial-custom-domain.md)
 
-Lub zapoznaj się z innymi zasobami:
+Możesz też zapoznać się z innymi zasobami:
 
 > [!div class="nextstepaction"]
 > [Konfigurowanie aplikacji ASP.NET Core](configure-language-dotnetcore.md)

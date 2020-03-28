@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/07/2018
 ms.author: alkohli
 ms.openlocfilehash: e4b366075cb16f62a0e16b5b06da6fb19ffefdb9
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67183896"
 ---
 1. Zaloguj się do urządzenia Data Box. Upewnij się, że jest odblokowane.
@@ -19,7 +19,7 @@ ms.locfileid: "67183896"
 
     ![Pulpit nawigacyjny urządzenia Data Box](media/data-box-add-device-ip/data-box-connect-via-rest-2.png)
 
-3. Przejdź do **Połącz i skopiuj** i kliknij przycisk **Rest**.
+3. Przejdź do **przycisku Połącz i skopiuj** i kliknij pozycję **Odpocznij**.
 
     ![Pulpit nawigacyjny urządzenia Data Box](media/data-box-add-device-ip/data-box-connect-via-rest-3.png)
 

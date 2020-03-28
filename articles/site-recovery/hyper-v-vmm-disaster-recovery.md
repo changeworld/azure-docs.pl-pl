@@ -1,5 +1,5 @@
 ---
-title: Skonfiguruj odzyskiwanie po awarii funkcji Hyper-V do lokacji dodatkowej za pomocą Azure Site Recovery
+title: Konfigurowanie odzyskiwania po awarii funkcji Hyper-V w lokacji dodatkowej za pomocą usługi Azure Site Recovery
 description: Dowiedz się, jak skonfigurować odzyskiwanie po awarii dla maszyn wirtualnych funkcji Hyper-V między własnymi lokalnymi lokacjami przy użyciu usługi Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
@@ -9,10 +9,10 @@ ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 8d89c7eda845f0e5ed9bc8ccc7b6b3812ba275f9
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74132994"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych funkcji Hyper-V do dodatkowej lokacji lokalnej
@@ -65,7 +65,7 @@ Przygotuj program VMM w następujący sposób:
 
 Wybierz, co chcesz replikować, i miejsce, do którego chcesz przeprowadzać replikację.
 
-1. Kliknij kolejno pozycje **Site Recovery** > **Krok 1. Przygotowanie infrastruktury** > **Cel ochrony**.
+1. Kliknij krok 1 **odzyskiwania** > **witryny: Przygotuj** > **cel ochrony**infrastruktury .
 2. Wybierz pozycję **Do lokacji odzyskiwania**, a następnie wybierz pozycję **Tak, przy użyciu funkcji Hyper-V**.
 3. Wybierz pozycję **Tak**, aby wskazać, że używasz programu VMM do zarządzania hostami funkcji Hyper-V.
 4. Wybierz pozycję **Tak**, jeśli masz pomocniczy serwer VMM. Jeśli wdrażasz replikację między chmurami na pojedynczym serwerze VMM, kliknij pozycję **Nie**. Następnie kliknij przycisk **OK**.
@@ -75,7 +75,7 @@ Wybierz, co chcesz replikować, i miejsce, do którego chcesz przeprowadzać rep
 
 Zainstaluj dostawcę usługi Azure Site Recovery na serwerach VMM oraz odnajdź i zarejestruj serwery w magazynie.
 
-1. Kliknij pozycję **Przygotowanie infrastruktury** > **Źródło**.
+1. Kliknij przycisk Przygotuj**źródło** **infrastruktury** > .
 2. W obszarze **Przygotowywanie źródła** kliknij pozycję **+ VMM**, aby dodać serwer programu VMM.
 3. W obszarze **Dodaj serwer** sprawdź, czy pozycja **Serwer System Center VMM** pojawia się jako **Typ serwera**.
 4. Pobierz plik instalacyjny dostawcy usługi Azure Site Recovery.
@@ -96,24 +96,24 @@ Zainstaluj dostawcę usługi Azure Site Recovery na serwerach VMM oraz odnajdź 
 5. Po zakończeniu instalacji kliknij przycisk **Zarejestruj**, aby zarejestrować serwer w magazynie.
 
     ![Lokalizacja instalacji](./media/hyper-v-vmm-disaster-recovery/provider-register.png)
-6. Zweryfikuj, że w polu **Nazwa magazynu** jest wpisana nazwa magazynu, w którym serwer zostanie zarejestrowany. Kliknij przycisk **Dalej**.
+6. Zweryfikuj, że w polu **Nazwa magazynu** jest wpisana nazwa magazynu, w którym serwer zostanie zarejestrowany. Kliknij przycisk **alej**.
 7. W obszarze **Połączenie serwera proxy** określ, jak dostawca uruchomiony na serwerze VMM łączy się z platformą Azure.
    - Możesz określić, czy dostawca powinien łączyć się bezpośrednio z Internetem, czy też za pośrednictwem serwera proxy. Określ ustawienia serwera proxy odpowiednio do potrzeb.
-   - W przypadku użycia serwera proxy konto Uruchom jako programu VMM (DRAProxyAccount) jest automatycznie tworzone przy użyciu określonych poświadczeń serwera proxy. Skonfiguruj serwer proxy tak, aby to konto mogło być pomyślnie uwierzytelnione. Ustawienia konta Uruchom jako można modyfikować w konsoli programu VMM > **Ustawienia** > **Zabezpieczenia** > **Konta Uruchom jako**.
+   - W przypadku użycia serwera proxy konto Uruchom jako programu VMM (DRAProxyAccount) jest automatycznie tworzone przy użyciu określonych poświadczeń serwera proxy. Skonfiguruj serwer proxy tak, aby to konto mogło być pomyślnie uwierzytelnione. Ustawienia konta RunAs można modyfikować w konsoli programu VMM > **Ustawienia są** > **Security** > **uruchamiane jako konta**.
    - Uruchom ponownie usługę programu VMM, aby zaktualizować zmiany.
 8. W oknie **Klucz rejestracji** wybierz klucz, który został pobrany i skopiowany na serwer VMM.
 9. Ustawienie szyfrowania nie ma znaczenia w przypadku tego scenariusza. 
 10. W polu **Nazwa serwera** wprowadź przyjazną nazwę identyfikującą serwer VMM w magazynie. W klastrze określ nazwę roli klastra VMM.
 11. W oknie **Synchronizacja metadanych chmury** określ, czy chcesz synchronizować metadane dla wszystkich chmur na serwerze programu VMM. To działanie ma miejsce tylko raz na każdym serwerze. Jeśli nie chcesz synchronizować wszystkich chmur, nie zaznaczaj tego ustawienia. Możesz synchronizować poszczególne chmury indywidualnie we właściwościach chmury w konsoli programu VMM.
-12. Kliknij przycisk **Dalej**, aby ukończyć proces. Po rejestracji usługa Site Recovery pobiera metadane z serwera programu VMM. Serwer jest wyświetlany w pozycji **Serwery** > **Serwery VMM** w magazynie.
-13. Po wyświetleniu serwera w magazynie w pozycji **Źródło** > **Przygotowanie źródła** wybierz serwer VMM, a następnie wybierz chmurę, w której zlokalizowany jest host funkcji Hyper-V. Następnie kliknij przycisk **OK**.
+12. Kliknij przycisk **Dalej**, aby ukończyć proces. Po rejestracji usługa Site Recovery pobiera metadane z serwera programu VMM. Serwer jest wyświetlany w **serwerach** > **VMM Serwery** w przechowalni.
+13. Po wyświetleniu serwera w przechowalni w **źródle Przygotowanie** > **źródła** wybierz serwer programu VMM i wybierz chmurę, w której znajduje się host funkcji Hyper-V. Następnie kliknij przycisk **OK**.
 
 
 ## <a name="set-up-the-target-environment"></a>Konfigurowanie środowiska docelowego
 
 Wybierz docelowy serwer VMM i chmurę:
 
-1. Kliknij pozycję **Przygotowanie infrastruktury** > **Docelowa**, a następnie wybierz docelowy serwer VMM.
+1. Kliknij przycisk **Przygotuj obiekt** > **docelowy**infrastruktury i wybierz docelowy serwer programu VMM.
 2. Zostaną wyświetlone chmury programu VMM, które są zsynchronizowane z usługą Site Recovery. Wybierz chmurę docelową.
 
    ![Środowisko docelowe](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
@@ -123,14 +123,14 @@ Wybierz docelowy serwer VMM i chmurę:
 
 Przed rozpoczęciem upewnij się, że wszystkie hosty, które korzystają z zasad, mają ten sam system operacyjny. Jeśli na hostach są uruchomione różne wersje systemu Windows Server, konieczne będzie wiele zasad replikacji.
 
-1. Aby utworzyć nowe zasady replikacji, kliknij kolejno pozycje **Przygotowanie infrastruktury** > **Ustawienia replikacji** >  **+ Utwórz i skojarz**.
-2. W obszarze **Utwórz i skojarz zasady** określ nazwę zasad. Typem źródłowym i docelowym powinien być **Hyper-V**.
+1. Aby utworzyć nową zasadę replikacji, kliknij przycisk **Przygotuj** > **ustawienia** > replikacji infrastruktury **+Utwórz i skojarzyć**.
+2. W **obszarze Tworzenie i kojarzenie zasad**określ nazwę zasad. Typem źródłowym i docelowym powinien być **Hyper-V**.
 3. W obszarze **Wersja hosta funkcji Hyper-V** wybierz system operacyjny uruchomiony na hoście.
 4. W pozycji **Typ uwierzytelniania** i **Port uwierzytelniania** określ, jak ruch jest uwierzytelniany między serwerami podstawowymi i odzyskiwania hostów funkcji Hyper-V.
     - Wybierz pozycję **Certyfikat**, chyba że masz już działające środowisko protokołu Kerberos. Usługa Azure Site Recovery automatycznie skonfiguruje certyfikaty do uwierzytelniania protokołu HTTPS. Nie musisz wykonywać żadnych czynności ręcznie.
     - Domyślnie porty 8083 i 8084 (dla certyfikatów) zostaną otwarte w zaporze systemu Windows na serwerach hostów funkcji Hyper-V.
     - Jeśli wybierzesz pozycję **Kerberos**, bilet protokołu Kerberos będzie używany do wzajemnego uwierzytelniania serwerów hosta. Protokół Kerberos jest odpowiedni tylko dla serwerów hostów funkcji Hyper-V uruchomionych w systemie Windows Server 2012 R2 lub nowszym.
-1. W obszarze **Częstotliwość kopiowania** określ, jak często mają być replikowane dane przyrostowe po replikacji początkowej (co 30 sekund, 5 lub 15 minut).
+1. W **obszarze Częstotliwość kopiowania**określ, jak często mają być replikowane dane różnicowe po replikacji początkowej (co 30 sekund, 5 lub 15 minut).
 2. W obszarze **Przechowywanie punktu odzyskiwania** określ (w godzinach), jak długie będzie okno przechowywania dla każdego punktu odzyskiwania. Zreplikowane maszyny można odzyskać do dowolnego punktu w tym oknie.
 3. W obszarze **Częstotliwość wykonywania migawek na poziomie aplikacji** określ, jak często (1–12 godzin) są tworzone punkty odzyskiwania zawierające migawki spójne na poziomie aplikacji. Funkcja Hyper-V wykorzystuje dwa typy migawek:
     - **Standardowa migawka**: jest przyrostową migawką całej maszyny wirtualnej.
@@ -146,7 +146,7 @@ Przed rozpoczęciem upewnij się, że wszystkie hosty, które korzystają z zasa
 
 ## <a name="enable-replication"></a>Włączanie replikacji
 
-1. Kliknij kolejno pozycje **Replikowanie aplikacji** > **Źródło**. 
+1. Kliknij pozycję **Replikuj** > **źródło**aplikacji . 
 2. W obszarze **Źródło** wybierz serwer VMM i chmurę, w której znajdują się hosty funkcji Hyper-V do zreplikowania. Następnie kliknij przycisk **OK**.
 3. W obszarze **Docelowy** sprawdź pomocniczy serwer programu VMM i chmurę.
 4. W obszarze **Maszyny wirtualne** wybierz z listy maszyny wirtualne, które chcesz chronić.

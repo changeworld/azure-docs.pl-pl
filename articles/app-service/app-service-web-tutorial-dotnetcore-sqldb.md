@@ -1,18 +1,18 @@
 ---
-title: 'Samouczek: ASP.NET Core z SQL Database'
+title: 'Samouczek: ASP.NET Core z bazą danych SQL'
 description: Dowiedz się, jak uruchomić aplikację .NET Core w usłudze Azure App Service z użyciem połączenia z usługą SQL Database.
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/06/2019
-ms.custom: seodec18
-ms.openlocfilehash: 3ad011529f8b4be90fc0c108a2049c30d1c69302
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: 9a3247298ed69cdefb3ce5021f0c4051052105f7
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78897312"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80297804"
 ---
-# <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>Samouczek: Tworzenie aplikacji ASP.NET Core i SQL Database w Azure App Service
+# <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>Samouczek: Tworzenie aplikacji ASP.NET Core i SQL Database w usłudze Azure App Service
 
 > [!NOTE]
 > W tym artykule opisano wdrażanie aplikacji w usłudze App Service w systemie Windows. Aby wdrożyć usługę App Service w systemie _Linux_, zobacz [Tworzenie aplikacji platformy .NET Core i usługi SQL Database w usłudze Azure App Service w systemie Linux](./containers/tutorial-dotnetcore-sqldb-app.md).
@@ -39,7 +39,7 @@ Omawiane kwestie:
 W celu ukończenia tego samouczka:
 
 * [Zainstaluj oprogramowanie Git](https://git-scm.com/)
-* [Zainstaluj zestaw .NET Core SDK](https://dotnet.microsoft.com/download)
+* [Instalowanie pakietu SDK core platformy .NET](https://dotnet.microsoft.com/download)
 
 ## <a name="create-local-net-core-app"></a>Tworzenie lokalnej aplikacji .NET Core
 
@@ -63,8 +63,8 @@ Przykładowy projekt zawiera podstawową aplikację CRUD (create-read-update-del
 Uruchom następujące polecenia, aby zainstalować wymagane pakiety, uruchom migracje baz danych i uruchom aplikację.
 
 ```bash
-dotnet restore
-dotnet ef database update
+dotnet tool install -g dotnet-ef --version 3.1.1
+dotnet-ef database update
 dotnet run
 ```
 
@@ -82,15 +82,15 @@ W tym kroku utworzysz bazę danych SQL Database na platformie Azure. Aplikacja w
 
 W tym samouczku jako baza danych SQL jest używana baza danych [Azure SQL Database](/azure/sql-database/).
 
-### <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 [!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-no-h.md)]
 
 ### <a name="create-a-sql-database-logical-server"></a>Tworzenie serwera logicznego bazy danych SQL Database
 
-W usłudze Cloud Shell utwórz serwer logiczny usługi SQL Database za pomocą polecenia [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create).
+W aplikacji Cloud Shell utwórz serwer [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) logiczny bazy danych SQL za pomocą polecenia.
 
-Zastąp symbol zastępczy *\<nazwa_serwera>* unikatową nazwą bazy danych SQL Database. Ta nazwa jest używana jako część punktu końcowego bazy danych SQL Database, `<server_name>.database.windows.net`, więc nazwa musi być unikatowa na wszystkich serwerach logicznych platformy Azure. Nazwa może zawierać tylko małe litery, cyfry oraz znak łącznika (-) i musi się składać z 3–50 znaków. Ponadto zastąp elementy *\<nazwa_bazy_danych>* i *\<hasło_bazy_danych>* wybraną nazwą użytkownika i hasłem. 
+Zastąp * \<server_name>* symbol zastępczy unikatową nazwą bazy danych SQL. Ta nazwa jest używana jako część punktu końcowego bazy danych SQL Database, `<server_name>.database.windows.net`, więc nazwa musi być unikatowa na wszystkich serwerach logicznych platformy Azure. Nazwa może zawierać tylko małe litery, cyfry oraz znak łącznika (-) i musi się składać z 3–50 znaków. Ponadto zastąp * \<db_username>* i * \<db_password>* wybraną nazwą użytkownika i hasłem. 
 
 
 ```azurecli-interactive
@@ -139,7 +139,7 @@ az sql db create --resource-group myResourceGroup --server <server_name> --name 
 
 ### <a name="create-connection-string"></a>Tworzenie parametrów połączenia
 
-Zastąp poniższe parametry użytym wcześniej ciągiem *\<nazwa_serwera>* , *\<nazwa_bazy_danych>* i *\<hasło_bazy_danych>* .
+Zastąp następujący ciąg * \<server_name>* * \<, db_username>* i * \<db_password>* wcześniej.
 
 ```
 Server=tcp:<server_name>.database.windows.net,1433;Database=coreDB;User ID=<db_username>;Password=<db_password>;Encrypt=true;Connection Timeout=30;
@@ -163,29 +163,29 @@ W tym kroku wdrożysz aplikację .NET Core połączoną z bazą danych SQL Datab
 
 [!INCLUDE [Create web app](../../includes/app-service-web-create-web-app-dotnetcore-win-no-h.md)] 
 
-### <a name="configure-connection-string"></a>Konfigurowanie parametrów połączenia
+### <a name="configure-connection-string"></a>Konfigurowanie ciągu połączenia
 
-Aby ustawić parametry połączenia dla aplikacji platformy Azure, użyj polecenia [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) w usłudze Cloud Shell. W poniższym poleceniu zastąp parametry *\<nazwa_aplikacji>* i *\<parametry_połączenia>* utworzonymi wcześniej parametrami połączenia.
+Aby ustawić parametry połączenia dla aplikacji [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) platformy Azure, użyj polecenia w aplikacji Cloud Shell. W poniższym poleceniu zastąp * \<nazwę aplikacji>*, a także parametr * \<connection_string>* z utworzonym wcześniej ciągiem połączenia.
 
 ```azurecli-interactive
 az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection="<connection_string>" --connection-string-type SQLServer
 ```
 
-W ASP.NET Core można użyć tego nazwanego ciągu połączenia (`MyDbConnection`) przy użyciu wzorca standardowego, takiego jak wszystkie parametry połączenia określone w pliku *appSettings. JSON*. W takim przypadku `MyDbConnection` jest również zdefiniowana w pliku *appSettings. JSON*. W przypadku uruchamiania w App Service parametry połączenia zdefiniowane w App Service mają pierwszeństwo przed parametrami połączenia zdefiniowanymi w pliku *appSettings. JSON*. Kod używa wartości *appSettings. JSON* podczas tworzenia lokalnego i ten sam kod używa wartości App Service po wdrożeniu.
+W ASP.NET Core można użyć tego nazwanego`MyDbConnection`ciągu połączenia ( ) przy użyciu standardowego wzorca, jak każdy ciąg połączenia określony w *pliku appsettings.json*. W tym `MyDbConnection` przypadku, jest również zdefiniowany w *appsettings.json*. Podczas uruchamiania w usłudze App Service parametry połączenia zdefiniowane w usłudze App Service mają pierwszeństwo przed ciągiem połączenia zdefiniowanym w pliku *appsettings.json*. Kod używa *appsettings.json* wartość podczas rozwoju lokalnego i ten sam kod używa wartości usługi app service po wdrożeniu.
 
-Aby zobaczyć, w jaki sposób w kodzie występuje odwołanie do parametrów połączenia, zobacz [łączenie z SQL Database w środowisku produkcyjnym](#connect-to-sql-database-in-production).
+Aby zobaczyć, jak ciąg połączenia odwołuje się do kodu, zobacz [Łączenie się z bazą danych SQL w produkcji](#connect-to-sql-database-in-production).
 
-### <a name="configure-environment-variable"></a>Konfiguruj zmienną środowiskową
+### <a name="configure-environment-variable"></a>Konfigurowanie zmiennej środowiskowej
 
-Następnie wybierz dla ustawienia aplikacji `ASPNETCORE_ENVIRONMENT` wartość _Produkcja_. To ustawienie pozwala sprawdzić, czy korzystasz z platformy Azure, ponieważ korzystasz z oprogramowania SQLite dla lokalnego środowiska deweloperskiego i SQL Database dla środowiska platformy Azure.
+Następnie wybierz dla ustawienia aplikacji `ASPNETCORE_ENVIRONMENT` wartość _Produkcja_. To ustawienie informuje, czy używasz platformy Azure, ponieważ używasz SQLite dla lokalnego środowiska programistycznego i bazy danych SQL dla środowiska platformy Azure.
 
-W poniższym przykładzie pokazano konfigurowanie ustawienia aplikacji `ASPNETCORE_ENVIRONMENT` w aplikacji platformy Azure. Zastąp symbol zastępczy *\<nazwa_aplikacji>* .
+W poniższym przykładzie pokazano konfigurowanie ustawienia aplikacji `ASPNETCORE_ENVIRONMENT` w aplikacji platformy Azure. Zastąp * \<app_name>* symbolu zastępczego.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings ASPNETCORE_ENVIRONMENT="Production"
 ```
 
-Aby zobaczyć, w jaki sposób zmienna środowiskowa jest przywoływana w kodzie, zobacz [Connect to SQL Database in Production](#connect-to-sql-database-in-production).
+Aby zobaczyć, jak zmienna środowiskowa odwołuje się do kodu, zobacz [Łączenie się z bazą danych SQL w środowisku produkcyjnym](#connect-to-sql-database-in-production).
 
 ### <a name="connect-to-sql-database-in-production"></a>Łączenie z bazą danych SQL Database w środowisku produkcyjnym
 
@@ -211,9 +211,9 @@ else
 services.BuildServiceProvider().GetService<MyDatabaseContext>().Database.Migrate();
 ```
 
-Jeśli ten kod wykryje, że jest uruchomiony w środowisku produkcyjnym (który wskazuje środowisko platformy Azure), następnie używa parametrów połączenia skonfigurowanych do łączenia się z SQL Database.
+Jeśli ten kod wykryje, że jest uruchomiony w środowisku produkcyjnym (co wskazuje środowisko platformy Azure), a następnie używa ciągu połączenia skonfigurowany do łączenia się z bazą danych SQL.
 
-Wywołanie `Database.Migrate()` pomaga podczas uruchamiania na platformie Azure, ponieważ automatycznie tworzy bazy danych, których potrzebuje aplikacja .NET Core, na podstawie konfiguracji migracji. 
+Wywołanie `Database.Migrate()` pomaga, gdy jest uruchamiany na platformie Azure, ponieważ automatycznie tworzy bazy danych, które aplikacja .NET Core potrzebuje, na podstawie konfiguracji migracji. 
 
 > [!IMPORTANT]
 > W przypadku aplikacji produkcyjnych wymagających skalowania w poziomie postępuj zgodnie z najlepszymi rozwiązaniami opisanymi w rozdziale [Stosowanie migracji w środowisku produkcyjnym](/aspnet/core/data/ef-rp/migrations#applying-migrations-in-production).
@@ -360,11 +360,11 @@ git commit -m "added done field"
 git push azure master
 ```
 
-Po zakończeniu `git push` przejdź do aplikacji App Service i ponów próbę dodania elementu do wykonania i zaznacz opcję **gotowe**.
+Po zakończeniu przejdź do aplikacji Usługi App Service i spróbuj dodać element do wykonania i zaznacz **pole wyboru Gotowe**. `git push`
 
 ![Aplikacja platformy Azure po zakończeniu migracji Code First](./media/app-service-web-tutorial-dotnetcore-sqldb/this-one-is-done.png)
 
-Nadal wyświetlane są wszystkie istniejące elementy do wykonania. Po ponownym opublikowaniu aplikacji .NET Core istniejące dane w SQL Database nie zostaną utracone. Ponadto migracje Entity Framework Core zmieniają tylko schemat danych i pozostawiają istniejące dane bez zmian.
+Nadal wyświetlane są wszystkie istniejące elementy do wykonania. Po ponownym opublikowaniu aplikacji .NET Core istniejące dane w bazie danych SQL nie zostaną utracone. Ponadto migracje Entity Framework Core zmieniają tylko schemat danych i pozostawiają istniejące dane bez zmian.
 
 ## <a name="stream-diagnostic-logs"></a>Przesyłanie strumieniowe dzienników diagnostycznych
 
@@ -373,9 +373,9 @@ Gdy aplikacja ASP.NET Core działa w usłudze Azure App Service, dzienniki konso
 Przykładowy projekt jest już zgodny ze wskazówkami dostępnymi w [opisie rejestrowania platformy ASP.NET Core na platformie Azure](https://docs.microsoft.com/aspnet/core/fundamentals/logging#azure-app-service-provider) z dwiema zmianami konfiguracji:
 
 - Zawiera odwołanie do `Microsoft.Extensions.Logging.AzureAppServices` w pliku *DotNetCoreSqlDb.csproj*.
-- Wywołuje `loggerFactory.AddAzureWebAppDiagnostics()` w *program.cs*.
+- Połączenia `loggerFactory.AddAzureWebAppDiagnostics()` w *Program.cs*.
 
-Aby zmienić domyślny [poziom rejestrowania](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-level) platformy ASP.NET Core `Information` w usłudze App Service na poziom `Error`, użyj w usłudze Cloud Shell polecenia [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config).
+Aby zmienić domyślny [poziom rejestrowania](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-level) platformy ASP.NET Core `Error` w usłudze App Service na poziom `Information`, użyj w usłudze Cloud Shell polecenia [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config).
 
 ```azurecli-interactive
 az webapp log config --name <app_name> --resource-group myResourceGroup --application-logging true --level information
@@ -385,7 +385,7 @@ az webapp log config --name <app_name> --resource-group myResourceGroup --applic
 > Poziom rejestrowania projektu jest już ustawiony na `Information` w pliku *appsettings.json*.
 > 
 
-Aby rozpocząć przesyłanie strumieniowe dzienników, użyj polecenia [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) w usłudze Cloud Shell.
+Aby rozpocząć przesyłanie [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) strumieniowe dziennika, użyj polecenia w usłudze Cloud Shell.
 
 ```azurecli-interactive
 az webapp log tail --name <app_name> --resource-group myResourceGroup
@@ -393,21 +393,21 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 
 Po rozpoczęciu przesyłania strumieniowego dzienników odśwież aplikację platformy Azure w przeglądarce, aby wywołać pewien ruch w Internecie. Teraz można zobaczyć dzienniki konsoli przesłane potokiem do terminala. Jeśli nie widzisz dzienników konsoli, sprawdź ponownie w ciągu 30 sekund.
 
-Aby zatrzymać przesyłanie strumieniowe dzienników w dowolnym momencie, wpisz `Ctrl`+`C`.
+Aby zatrzymać przesyłanie strumieniowe `Ctrl` + `C`dziennika w dowolnym momencie, wpisz .
 
 Aby uzyskać więcej informacji na temat dostosowywania dzienników platformy ASP.NET Core, zobacz [Logging in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging) (Rejestrowanie na platformie ASP.NET Core).
 
 ## <a name="manage-your-azure-app"></a>Zarządzanie aplikacją platformy Azure
 
-Aby wyświetlić utworzoną aplikację, w [Azure Portal](https://portal.azure.com)Wyszukaj i wybierz pozycję **App Services**.
+Aby wyświetlić utworzoną aplikację, w [witrynie Azure portal](https://portal.azure.com)wyszukaj i wybierz pozycję **Usługi aplikacji**.
 
-![Wybierz App Services w Azure Portal](./media/app-service-web-tutorial-dotnetcore-sqldb/app-services.png)
+![Wybieranie usług aplikacji w witrynie Azure portal](./media/app-service-web-tutorial-dotnetcore-sqldb/app-services.png)
 
-Na stronie **App Services** wybierz nazwę swojej aplikacji platformy Azure.
+Na stronie **Usługi aplikacji** wybierz nazwę aplikacji platformy Azure.
 
 ![Nawigacja w portalu do aplikacji platformy Azure](./media/app-service-web-tutorial-dotnetcore-sqldb/access-portal.png)
 
-Domyślnie portal pokazuje stronę **Przegląd** aplikacji. Ta strona udostępnia widok sposobu działania aplikacji. Tutaj możesz również wykonywać podstawowe zadania zarządzania, takie jak przeglądanie, zatrzymywanie, uruchamianie, ponowne uruchamianie i usuwanie. Po lewej stronie strony zostaną wyświetlone różne strony konfiguracji, które można otworzyć.
+Domyślnie portal pokazuje stronę **Przegląd** aplikacji. Ta strona udostępnia widok sposobu działania aplikacji. Tutaj możesz również wykonywać podstawowe zadania zarządzania, takie jak przeglądanie, zatrzymywanie, uruchamianie, ponowne uruchamianie i usuwanie. Po lewej stronie strony są wyświetlane różne strony konfiguracji, które można otworzyć.
 
 ![Strona usługi App Service w witrynie Azure Portal](./media/app-service-web-tutorial-dotnetcore-sqldb/web-app-blade.png)
 
@@ -426,7 +426,7 @@ Które czynności umiesz wykonać:
 > * Strumieniowe przesyłanie dzienników z platformy Azure do terminala
 > * Zarządzanie aplikacją w witrynie Azure Portal
 
-Przejdź do następnego samouczka, aby dowiedzieć się, jak zmapować niestandardową nazwę DNS na aplikację.
+Przejdź do następnego samouczka, aby dowiedzieć się, jak zamapować niestandardową nazwę DNS na aplikację.
 
 > [!div class="nextstepaction"]
 > [Mapowanie istniejącej niestandardowej nazwy DNS na usługę Azure App Service](app-service-web-tutorial-custom-domain.md)

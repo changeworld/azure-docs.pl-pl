@@ -1,6 +1,6 @@
 ---
-title: Przykładowy skrypt Azure PowerShell — dzienniki Azure Monitor
-description: Przykładowy skrypt Azure PowerShell — dzienniki Azure Monitor
+title: Przykładowy skrypt programu Azure PowerShell — dzienniki usługi Azure Monitor
+description: Przykładowy skrypt programu Azure PowerShell — dzienniki usługi Azure Monitor
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,13 +16,13 @@ ms.date: 03/01/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 00c5342db2f714f0397641e79d35fdf19c1b57cb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74033735"
 ---
-# <a name="create-an-azure-monitor-vm-with-powershell"></a>Tworzenie maszyny wirtualnej Azure Monitor przy użyciu programu PowerShell
+# <a name="create-an-azure-monitor-vm-with-powershell"></a>Tworzenie maszyny wirtualnej usługi Azure Monitor za pomocą programu PowerShell
 
 Ten skrypt tworzy maszynę wirtualną platformy Azure, instaluje agenta usługi Log Analytics i rejestruje system w obszarze roboczym usługi Log Analytics. Po uruchomieniu skryptu maszyna wirtualna będzie widoczna w konsoli.
 

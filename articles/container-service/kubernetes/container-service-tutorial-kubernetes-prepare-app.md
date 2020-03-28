@@ -8,16 +8,16 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: b67e3008bc2ad681e222af6b9edc4a08875732e4
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76275430"
 ---
 # <a name="deprecated-create-container-images-to-be-used-with-azure-container-service"></a>(PRZESTARZAŁE) Tworzenie obrazów kontenera do użycia z usługą Azure Container Service
 
 > [!TIP]
-> Aby uzyskać zaktualizowaną wersję tego samouczka korzystającego z usługi Azure Kubernetes, zobacz [Samouczek: przygotowywanie aplikacji dla usługi Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-prepare-app.md).
+> Zaktualizowana wersja tego samouczka korzystającego z usługi Azure Kubernetes, zobacz [Samouczek: Przygotowywanie aplikacji dla usługi Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-prepare-app.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -36,7 +36,7 @@ W kolejnych samouczkach obraz kontenera zostanie przekazany do usługi Azure Con
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Ten samouczek zakłada, że masz podstawową wiedzę na temat bazowych koncepcji usługi Docker, takich jak kontenery, obrazy kontenerów i podstawowe polecenia usługi Docker. W razie potrzeby zapoznaj się z tematem [Get starter with Docker (Rozpoczynanie pracy z platformą Docker)]( https://docs.docker.com/get-started/), aby uzyskać podstawowe informacje na temat kontenerów. 
+Ten samouczek zakłada, że masz podstawową wiedzę na temat bazowych koncepcji usługi Docker, takich jak kontenery, obrazy kontenerów i podstawowe polecenia usługi Docker. W razie potrzeby zapoznaj się z tematem [Get started with Docker (Rozpoczynanie pracy z platformą Docker)]( https://docs.docker.com/get-started/), aby uzyskać podstawowe informacje na temat kontenerów. 
 
 Do ukończenia tego samouczka konieczne będzie środowisko programowania Docker. Środowisko Docker zawiera pakiety, które umożliwiają łatwe konfigurowanie platformy Docker w systemie [Mac](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) lub [Linux](https://docs.docker.com/engine/installation/#supported-platforms).
 
@@ -62,7 +62,7 @@ W tym katalogu znajduje się kod źródłowy aplikacji, wstępnie utworzony plik
 
 ## <a name="create-container-images"></a>Tworzenie obrazów kontenerów
 
-Program [Docker Compose](https://docs.docker.com/compose/) umożliwia automatyzowanie tworzenia obrazów poza kontenerem i wdrażanie aplikacji z wieloma kontenerami.
+Program [Docker Compose](https://docs.docker.com/compose/) umożliwia automatyzowanie tworzenia obrazów poza kontenerem i wdrażanie aplikacji wielokontenerowych.
 
 Uruchom plik `docker-compose.yml`, aby utworzyć obraz kontenera, pobrać obraz usługi Redis i uruchomić aplikację.
 
@@ -85,7 +85,7 @@ redis                        latest     a1b99da73d05        7 days ago          
 tiangolo/uwsgi-nginx-flask   flask      788ca94b2313        9 months ago        694MB
 ```
 
-Uruchom polecenie [docker ps](https://docs.docker.com/engine/reference/commandline/ps/), aby wyświetlić uruchomione kontenery.
+Uruchom polecenie [docker ps,](https://docs.docker.com/engine/reference/commandline/ps/) aby wyświetlić uruchomione kontenery.
 
 ```bash
 docker ps

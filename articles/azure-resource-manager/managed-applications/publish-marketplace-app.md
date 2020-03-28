@@ -1,18 +1,18 @@
 ---
-title: Aplikacje zarządzane w portalu Marketplace
+title: Aplikacje zarządzane w marketplace
 description: W tym artykule opisano aplikacje zarządzane platformy Azure dostępne w witrynie Marketplace.
 author: tfitzmac
 ms.topic: tutorial
 ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: 73d4ccbda854d631248daef439aa3bd232d42e06
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: a42ee5d6f7f40d391acb743ef85f671f25804749
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75650261"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79473000"
 ---
-# <a name="azure-managed-applications-in-the-marketplace"></a>Aplikacje zarządzane platformy Azure w witrynie Marketplace
+# <a name="tutorial-publish-azure-managed-applications-in-the-marketplace"></a>Samouczek: Publikowanie aplikacji zarządzanych platformy Azure w portalu Marketplace
 
 Dostawcy mogą używać aplikacji zarządzanych platformy Azure w celu oferowania swoich rozwiązań wszystkim klientom witryny Azure Marketplace. Tymi dostawcami mogą być dostawcy usług zarządzanych (MSP, managed service provider), niezależni dostawcy oprogramowania (ISV, independent software vendor) oraz integratorzy systemów (SI, system integrator). Dzięki aplikacjom zarządzanym klienci mogą zmniejszyć narzut związany z konserwacją i serwisowaniem. Dostawcy sprzedają infrastrukturę i oprogramowanie za pośrednictwem witryny Marketplace. Do aplikacji zarządzanych mogą dołączyć usługi i operacyjną pomoc techniczną. Aby uzyskać więcej informacji, zobacz [Omówienie aplikacji zarządzanych](overview.md).
 
@@ -22,9 +22,9 @@ W tym artykule wyjaśniono, jak opublikować aplikację w witrynie Marketplace, 
 
 Aby wykonać czynności opisane w tym artykule, trzeba mieć przygotowany plik zip definicji aplikacji zarządzanej. Aby uzyskać więcej informacji, zobacz [Tworzenie aplikacji w katalogu usług](publish-service-catalog-app.md).
 
-Istnieje kilka wymagań wstępnych dotyczących firmy. Oto one:
+Istnieje kilka wymagań wstępnych biznesowych. Oto one:
 
-* Firma lub jej oddział musi znajdować się w kraju/regionie, w którym sprzedaż jest obsługiwana przez portal Marketplace.
+* Twoja firma lub jej spółka zależna musi znajdować się w kraju/regionie, w którym sprzedaż jest obsługiwana przez rynek.
 * Produkt musi być licencjonowany w sposób, który jest zgodny z modelami rozliczeń obsługiwanymi przez witrynę Marketplace.
 * Klienci muszą mieć dostęp do pomocy technicznej zorganizowanej w sposób rozsądny z komercyjnego punktu widzenia. Może być ona bezpłatna, płatna lub może działać na zasadzie wsparcia społeczności.
 * Oprogramowanie dostawcy i wszelkie oprogramowanie podmiotów zależnych musi być licencjonowane.
@@ -32,7 +32,7 @@ Istnieje kilka wymagań wstępnych dotyczących firmy. Oto one:
 * Należy zaakceptować warunki opisane w dokumentach Zasady udziału w witrynie Azure Marketplace oraz Umowa wydawcy.
 * Należy wyrazić zgodę na przestrzeganie Warunków użytkowania, Zasad zachowania poufności informacji firmy Microsoft i Umowy programu certyfikatu platformy Microsoft Azure.
 
-Musisz również mieć konto w portalu Marketplace. Aby utworzyć konto, zobacz [jak utworzyć komercyjne konto witryny Marketplace w centrum partnerskim](../../marketplace/partner-center-portal/create-account.md).
+Musisz mieć również konto w Marketplace. Aby utworzyć konto, zobacz [Jak utworzyć konto w portalu Marketplace w Centrum partnerskim](../../marketplace/partner-center-portal/create-account.md).
 
 ## <a name="create-a-new-azure-application-offer"></a>Tworzenie nowej oferty aplikacji platformy Azure
 
@@ -44,7 +44,7 @@ Oferta aplikacji zarządzanej odpowiada klasie produktu oferowanego przez wydawc
 
 1. Zaloguj się do [portalu Cloud Partner](https://cloudpartner.azure.com/).
 
-1. W okienku nawigacji po lewej stronie wybierz pozycję **+ Nowa oferta** > **Aplikacje platformy Azure**.
+1. W okienku nawigacji po lewej stronie wybierz **pozycję + Nowa oferta** > **usługi Azure Applications**.
 
 1. W widoku **Edytor** zobaczysz wymagane formularze. Każdy formularz został opisany w dalszej części tego artykułu.
 
@@ -70,7 +70,7 @@ Jednostka SKU to najmniejsza możliwa do kupienia jednostka oferty. Przy użyciu
 
 Jednostka SKU jest widoczna poniżej oferty nadrzędnej w witrynie Marketplace. Jest ona wyświetlana jako oddzielny, możliwy do kupienia element w witrynie Azure Portal.
 
-1. Wybierz pozycję **Jednostki SKU** > **Nowa jednostka SKU**.
+1. Wybierz **SKU** > **Nowe jednostki SKU**.
 
 1. Wprowadź wartość w polu **Identyfikator jednostki SKU**. Identyfikator jednostki SKU to unikatowy identyfikator dla danej jednostki SKU w obrębie oferty. Jest on widoczny w adresach URL produktu, szablonach usługi Resource Manager i raportach rozliczeń. Może składać się tylko z małych znaków alfanumerycznych i łączników (-). Identyfikator nie może kończyć się łącznikiem i może zawierać maksymalnie 50 znaków. Po aktywowaniu oferty to pole jest zablokowane. W obrębie oferty możesz mieć wiele jednostek SKU. Każdy obraz, który planujesz opublikować, musi mieć własną jednostkę SKU.
 
@@ -82,7 +82,7 @@ Jednostka SKU jest widoczna poniżej oferty nadrzędnej w witrynie Marketplace. 
    * **Podsumowanie**: Wprowadź krótkie podsumowanie dla tej jednostki SKU. Ten tekst jest wyświetlany pod tytułem.
    * **Opis**: Wprowadź szczegółowy opis jednostki SKU.
    * **Typ jednostki SKU**: Dozwolone wartości to *Aplikacja zarządzana* i *Szablony rozwiązań*. W tym przypadku wybierz pozycję *Aplikacja zarządzana*.
-   * **Dostępność kraju/regionu**: Wybierz kraje/regiony, w których aplikacja zarządzana jest dostępna.
+   * **Dostępność kraju/regionu:** Wybierz kraje/regiony, w których dostępna jest zarządzana aplikacja.
    * **Cennik**: Podaj cenę za zarządzanie aplikacją. Przed ustawieniem ceny wybierz dostępne kraje/regiony.
 
 1. Dodaj nowy pakiet. Wypełnij sekcję **Szczegóły pakietu** w następującym formularzu:
@@ -90,13 +90,13 @@ Jednostka SKU jest widoczna poniżej oferty nadrzędnej w witrynie Marketplace. 
    Wypełnij następujące pola:
 
    * **Wersja**: wprowadź wersję przekazywanego pakietu. Powinna ona mieć format `{number}.{number}.{number}{number}`.
-   * **Plik pakietu (zip)** : ten pakiet zawiera dwa wymagane pliki skompresowane do pakietu zip. Jeden plik to szablon usługi Resource Manager określający zasoby, które trzeba wdrożyć dla danej aplikacji zarządzanej. Drugi plik definiuje [interfejs użytkownika](create-uidefinition-overview.md) dla klientów wdrażających tę aplikację zarządzaną za pośrednictwem portalu. W interfejsie użytkownika należy określić elementy, które umożliwiają klientom podanie wartości parametrów.
-   * **Identyfikator dzierżawy**: Identyfikator dzierżawy dla konta, do którego ma zostać uzyskany dostęp.
-   * **Włącz dostęp JIT**: wybierz opcję **tak** , aby włączyć [kontrolę dostępu just in Time](request-just-in-time-access.md) dla konta. Po włączeniu tego żądania dostępu do konta użytkownika można zażądać przez określony czas. Aby wymagać, aby klienci aplikacji zarządzanej mogli udzielić stałego dostępu do konta, wybierz pozycję **nie**.
-   * **Dostosuj dozwolone akcje klienta?** : wybierz opcję **tak** , aby określić, które akcje mogą wykonywać użytkownicy w zarządzanych zasobach.
-   * **Dozwolone akcje klienta**: w przypadku wybrania opcji **tak** dla poprzedniego ustawienia można określić, które akcje są dozwolone dla odbiorców, używając [przypisań Odmów dla zasobów platformy Azure](../../role-based-access-control/deny-assignments.md).
+   * **Plik pakietu (zip)**: ten pakiet zawiera dwa wymagane pliki skompresowane do pakietu zip. Jeden plik to szablon usługi Resource Manager określający zasoby, które trzeba wdrożyć dla danej aplikacji zarządzanej. Drugi plik definiuje [interfejs użytkownika](create-uidefinition-overview.md) dla klientów wdrażających tę aplikację zarządzaną za pośrednictwem portalu. W interfejsie użytkownika należy określić elementy, które umożliwiają klientom podanie wartości parametrów.
+   * **Identyfikator dzierżawy:** identyfikator dzierżawy konta, aby uzyskać dostęp.
+   * **Włącz dostęp JIT:** Wybierz **tak,** aby włączyć [kontrolę dostępu just-in-time](request-just-in-time-access.md) dla konta. Po włączeniu żądania dostępu do konta konsumenta przez określony czas. Aby wymagać, aby konsumenci zarządzanej aplikacji udzielili stałego dostępu do konta, wybierz **opcję Nie**.
+   * **Dostosowywanie dozwolonych akcji klienta?**: Wybierz **tak,** aby określić, które akcje, które konsumenci mogą wykonywać w zarządzanych zasobach.
+   * **Dozwolone akcje klienta:** Jeśli wybierzesz **Tak** dla poprzedniego ustawienia, możesz określić, które akcje są dozwolone dla konsumentów przy użyciu [przypisań odmów dla zasobów platformy Azure](../../role-based-access-control/deny-assignments.md).
 
-     Aby uzyskać dostępne akcje, zobacz [Azure Resource Manager operacje dostawcy zasobów](../../role-based-access-control/resource-provider-operations.md). Aby na przykład umożliwić klientom ponowne uruchomienie maszyn wirtualnych, należy dodać `Microsoft.Compute/virtualMachines/restart/action` do akcji dozwolonych. Akcja `*/read` jest automatycznie dozwolona, ponieważ nie trzeba uwzględniać tego ustawienia.
+     Aby uzyskać dostępne akcje, zobacz [Operacje dostawcy zasobów usługi Azure Resource Manager](../../role-based-access-control/resource-provider-operations.md). Na przykład, aby umożliwić konsumentom ponowne `Microsoft.Compute/virtualMachines/restart/action` uruchomienie maszyn wirtualnych, dodaj do dozwolonych akcji. Akcja `*/read` jest automatycznie dozwolona, więc nie trzeba dołączać tego ustawienia.
    * **PrincipalId**: Ta właściwość jest identyfikatorem usługi Azure Active Directory (Azure AD) użytkownika, grupy użytkowników lub aplikacji, której udzielono uprawnień dostępu do zasobów w subskrypcji klienta. Uprawnienia są opisywane za pomocą definicji roli.
    * **Definicja roli**: Ta właściwość jest listą wszystkich wbudowanych kontroli dostępu na podstawie ról (RBAC, Role-Based Access Control) zapewnianych przez usługę Azure AD. Możesz wybrać rolę, która najbardziej nadaje się do zarządzania zasobami w imieniu klienta.
    * **Ustawienia zasad**: zastosuj [zasady Azure Policy](../../governance/policy/overview.md) do aplikacji zarządzanej, aby określić wymagania dotyczące zgodności dla wdrożonych rozwiązań. Z dostępnych opcji wybierz zasady do zastosowania. W polu **Parametry zasad** podaj ciąg JSON z wartościami parametrów. Definicje zasad i format wartości parametrów podano w artykule [Przykłady dla usługi Azure Policy](../../governance/policy/samples/index.md).
@@ -111,7 +111,7 @@ Formularz witryny Marketplace zawiera pola, które są widoczne w witrynach [Azu
 
 ### <a name="preview-subscription-ids"></a>Identyfikatory subskrypcji wersji zapoznawczej
 
-Wprowadź listę identyfikatorów subskrypcji platformy Azure, które mogą uzyskać dostęp do oferty po jej opublikowaniu. Przy użyciu tych dozwolonych subskrypcji można przetestować ofertę w wersji zapoznawczej zanim zostanie aktywowana. Możesz skompilować listę dozwolonych subskrypcji do 100 w portalu dla partnerów.
+Wprowadź listę identyfikatorów subskrypcji platformy Azure, które mogą uzyskać dostęp do oferty po jej opublikowaniu. Przy użyciu tych dozwolonych subskrypcji można przetestować ofertę w wersji zapoznawczej zanim zostanie aktywowana. Można skompilować listę dozwolonych maksymalnie 100 subskrypcji w portalu partnera.
 
 ### <a name="suggested-categories"></a>Sugerowane kategorie
 
@@ -166,12 +166,12 @@ Skorzystaj z poniższych wskazówek dla ikony logo Duży obraz:
 
 Formularz **Pomoc techniczna** wypełnij za pomocą kontaktów pomocy technicznej Twojej firmy. Te informacje mogą obejmować kontakt z inżynierami lub kontakt z obsługą klienta.
 
-## <a name="publish-an-offer"></a>Opublikuj ofertę
+## <a name="publish-an-offer"></a>Publikowanie oferty
 
 Po wypełnieniu wszystkich sekcji wybierz pozycję **Opublikuj**, aby rozpocząć proces udostępniania Twojej oferty klientom.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby uzyskać informacje o tym, co się stanie po kliknięciu przycisku **Publikuj**, zobacz temat [Publikowanie oferty aplikacji platformy Azure](../../marketplace/cloud-partner-portal/azure-applications/cpp-publish-offer.md)
+* Aby uzyskać informacje o tym, co się stanie po **kliknięciu przycisku Publikuj,** zobacz [Publikowanie oferty aplikacji platformy Azure](../../marketplace/cloud-partner-portal/azure-applications/cpp-publish-offer.md)
 * Zobacz artykuł [Omówienie aplikacji zarządzanych](overview.md) zawierający wprowadzenie do aplikacji zarządzanych.
 * Aby dowiedzieć się, jak opublikować aplikację zarządzaną w katalogu usług, zobacz [Tworzenie i publikowanie aplikacji zarządzanej katalogu usług](publish-service-catalog-app.md).

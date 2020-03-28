@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: integracja Azure Active Directory z zaletami z dokładnością | Microsoft Docs'
+title: 'Samouczek: Integracja usługi Azure Active Directory z fidelity NetBenefits | Dokumenty firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Fidelity NetBenefits.
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 40c1e9d493b0fb7bbf1e484799d56e91da1d0833
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73156330"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-fidelity-netbenefits"></a>Samouczek: integracja Azure Active Directory z zaletami z dokładnością
+# <a name="tutorial-azure-active-directory-integration-with-fidelity-netbenefits"></a>Samouczek: Integracja usługi Azure Active Directory z fidelity NetBenefits
 
 Z tego samouczka dowiesz się, jak zintegrować aplikację Fidelity NetBenefits z usługą Azure Active Directory (Azure AD).
 Integrowanie aplikacji Fidelity NetBenefits z usługą Azure AD zapewnia następujące korzyści:
@@ -33,7 +33,7 @@ Integrowanie aplikacji Fidelity NetBenefits z usługą Azure AD zapewnia następ
 * Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -108,7 +108,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Fidelity N
 
     ![Domena i adresy URL aplikacji Fidelity NetBenefits — informacje dotyczące logowania jednokrotnego](common/idp-intiated.png)
 
-    a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca:
+    a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: 
 
     W przypadku środowiska testowego: `urn:sp:fidelity:geninbndnbparts20:uat:xq1`
 
@@ -121,9 +121,9 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Fidelity N
     ![image](common/edit-attribute.png)
 
     >[!Note]
-    >Aplikacja Fidelity NetBenefits obsługuje federację statyczną i dynamiczną. Statyczna oznacza, że nie będzie używać aprowizacji użytkowników typu just in time opartej na SAML, natomiast dynamiczna oznacza, że obsługuje aprowizację użytkowników typu just in time. W przypadku korzystania z obsługi opartej na kompilatorze JIT klienci muszą dodać więcej oświadczeń w usłudze Azure AD, takich jak dataurodzenie użytkownika itd. Te szczegóły są udostępniane przez przydzieloną **Service Manager klienta** i muszą włączać tę dynamiczną Federację dla danego wystąpienia.
+    >Aplikacja Fidelity NetBenefits obsługuje federację statyczną i dynamiczną. Statyczna oznacza, że nie będzie używać aprowizacji użytkowników typu just in time opartej na SAML, natomiast dynamiczna oznacza, że obsługuje aprowizację użytkowników typu just in time. Do korzystania z JIT oparte inicjowania obsługi administracyjnej klienci muszą dodać kilka oświadczeń w usłudze Azure AD, takich jak data urodzenia użytkownika itp. Te szczegóły są dostarczane przez przypisanego **Menedżera obsługi klienta fidelity** i muszą włączyć tę dynamiczną federację dla twojego wystąpienia.
 
-6. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
+6. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
     ![Link do pobierania certyfikatu](common/metadataxml.png)
 
@@ -149,7 +149,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+2. Wybierz **pozycję Nowy użytkownik** u góry ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
@@ -159,7 +159,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon\@yourcompanydomain. Extension**  
+    b. W polu **Nazwa użytkownika** wpisz **\@brittasimon yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -188,7 +188,7 @@ W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z
 
 5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+6. Jeśli oczekujesz dowolnej wartości roli w asercji SAML, a następnie w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
@@ -196,19 +196,19 @@ W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z
 
 W tej sekcji utworzysz w aplikacji Fidelity NetBenefits użytkownika o nazwie Britta Simon. Jeśli tworzysz federację statyczną, skontaktuj się z przypisanym **menedżerem usługi klienta Fidelity** w celu utworzenia użytkowników na platformie Fidelity NetBenefits. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
-W przypadku federacji dynamicznej użytkownicy są tworzeni przy użyciu aprowizacji użytkowników typu Just In Time. W przypadku korzystania z obsługi opartej na kompilatorze JIT klienci muszą dodać więcej oświadczeń w usłudze Azure AD, takich jak dataurodzenie użytkownika itd. Te szczegóły są udostępniane przez przydzieloną **Service Manager klienta** i muszą włączać tę dynamiczną Federację dla danego wystąpienia.
+W przypadku federacji dynamicznej użytkownicy są tworzeni przy użyciu aprowizacji użytkowników typu Just In Time. Do korzystania z JIT oparte inicjowania obsługi administracyjnej klienci muszą dodać kilka oświadczeń w usłudze Azure AD, takich jak data urodzenia użytkownika itp. Te szczegóły są dostarczane przez przypisanego **Menedżera obsługi klienta fidelity** i muszą włączyć tę dynamiczną federację dla twojego wystąpienia.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
 W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Fidelity NetBenefits w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Fidelity NetBenefits, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka Fidelity NetBenefits w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Fidelity NetBenefits, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat Panelu dostępu, zobacz [Wprowadzenie do Panelu dostępu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

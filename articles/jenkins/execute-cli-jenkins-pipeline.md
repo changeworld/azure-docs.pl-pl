@@ -5,10 +5,10 @@ keywords: jenkins, azure, devops, usługa app service, cli
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.openlocfilehash: bd9192974f6860d08d84a9028702ce2203f562e7
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74158821"
 ---
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>Wdrażanie w usłudze Azure App Service za pomocą serwera Jenkins i interfejsu wiersza polecenia platformy Azure
@@ -27,13 +27,13 @@ Dla tego samouczka wymagany jest interfejs wiersza polecenia platformy Azure w w
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-and-configure-jenkins-instance"></a>Tworzenie i konfigurowanie wystąpienia serwera Jenkins
-Jeśli nie masz jeszcze wzorca Jenkins, Zacznij od [szablonu rozwiązania](install-jenkins-solution-template.md), który domyślnie zawiera wymaganą wtyczkę [poświadczeń platformy Azure](https://plugins.jenkins.io/azure-credentials) . 
+Jeśli nie masz jeszcze wzorca usługi Jenkins, zacznij od [szablonu rozwiązania](install-jenkins-solution-template.md), który domyślnie zawiera wymaganą wtyczkę [poświadczenia platformy Azure.](https://plugins.jenkins.io/azure-credentials) 
 
-Wtyczka poświadczeń platformy Azure umożliwia przechowywanie poświadczeń głównych usługi Microsoft Azure w Jenkins. W wersji 1.2 dodaliśmy obsługę potoku Jenkins, aby mógł on uzyskiwać poświadczenia platformy Azure. 
+Wtyczka Poświadczenia platformy Azure umożliwia przechowywanie poświadczeń głównej usługi Platformy Microsoft Azure w usłudze Jenkins. W wersji 1.2 dodaliśmy obsługę potoku Jenkins, aby mógł on uzyskiwać poświadczenia platformy Azure. 
 
 Upewnij się, że masz wersję 1.2 lub nowszą:
 * Na pulpicie nawigacyjnym serwera Jenkins kliknij pozycję **Manage Jenkins -> Plugin Manager ->** (Zarządzaj serwerem Jenkins -> Menedżer wtyczek ->) i wyszukaj ciąg **Azure Credential** (Poświadczenia platformy Azure). 
-* Zaktualizuj wtyczkę, jeśli wersja jest wcześniejsza niż 1,2.
+* Zaktualizuj wtyczkę, jeśli wersja jest wcześniejsza niż 1.2.
 
 Wzorzec serwera Jenkins wymaga również zestawu Java JDK i narzędzia Maven. Aby je zainstalować, zaloguj się do wzorca serwera Jenkins przy użyciu protokołu SSH i uruchom następujące polecenia:
 ```bash
@@ -113,7 +113,7 @@ Gdy definicja aplikacji internetowej jest gotowa, w interfejsie wiersza poleceni
 
 Ustaw konfigurację środowiska uruchomieniowego języka Java wymaganą przez aplikację przy użyciu polecenia [az appservice web config update](/cli/azure/webapp/config).
 
-Następujące polecenie konfiguruje aplikację internetową do uruchamiania razem z zestawem Java 8 JDK i środowiskiem [Apache Tomcat](https://tomcat.apache.org/) 8.0.
+Następujące polecenie konfiguruje aplikację internetową do uruchamiania razem z zestawem Java 8 JDK i serwerem [Apache Tomcat](https://tomcat.apache.org/) 8.0.
 
 ```azurecli-interactive
 az webapp config set \ 
@@ -148,7 +148,7 @@ Otwórz narzędzie Jenkins w przeglądarce internetowej i kliknij pozycję **New
 * W polu **Definition** (Definicja) wybierz wartość **Pipeline script from SCM** (Skrypt potoku z menedżera SCM).
 * W polu **SCM** wybierz wartość **Git**.
 * Wprowadź adres URL usługi GitHub dla rozwidlonego repozytorium: https:\<Twoje rozwidlone repozytorium\>.git
-* Kliknij pozycję **Zapisz**
+* Kliknij **przycisk Zapisz**
 
 ## <a name="test-your-pipeline"></a>Testowanie potoku
 * Przejdź do utworzonego potoku i kliknij przycisk **Build Now** (Kompiluj teraz).
@@ -170,7 +170,7 @@ Zobaczysz:
 ## <a name="deploy-to-azure-web-app-on-linux"></a>Wdrażanie w usłudze Azure Web App on Linux
 Teraz, gdy wiesz już, jak używać interfejsu wiersza polecenia platformy Azure w potoku Jenkins, możesz zmodyfikować skrypt, aby przeprowadzić wdrożenie w usłudze Azure Web App on Linux.
 
-Usługa Web App on Linux obsługuje inny sposób wdrażania, który wykorzystuje platformę Docker. Aby wdrożyć, należy podać plik Dockerfile, który pakuje aplikację internetową wraz ze środowiskiem uruchomieniowym usługi do obrazu platformy Docker. Wtyczka spowoduje skompilowanie obrazu, wypchnięcie go do rejestru platformy Docker i wdrożenie obrazu w aplikacji sieci Web.
+Usługa Web App on Linux obsługuje inny sposób wdrażania, który wykorzystuje platformę Docker. Aby wdrożyć, należy podać plik Dockerfile, który pakuje aplikację internetową wraz ze środowiskiem uruchomieniowym usługi do obrazu platformy Docker. Wtyczka następnie skompilować obraz, wypchnąć go do rejestru platformy Docker i wdrożyć obraz do aplikacji sieci web.
 
 * Postępuj zgodnie z instrukcjami opisanymi [tutaj](../app-service/containers/quickstart-nodejs.md), aby utworzyć aplikację internetową platformy Azure działającą w systemie Linux.
 * Zainstaluj platformę Docker na wystąpieniu serwera Jenkins, wykonując instrukcje opisane w tym [artykule](https://docs.docker.com/engine/installation/linux/ubuntu/).

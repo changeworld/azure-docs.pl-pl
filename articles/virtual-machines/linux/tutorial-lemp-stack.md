@@ -1,5 +1,5 @@
 ---
-title: Samouczek — wdrażanie LEMP na maszynie wirtualnej z systemem Linux na platformie Azure
+title: Samouczek — wdrażanie lemp na maszynie wirtualnej systemu Linux na platformie Azure
 description: Z tego samouczka dowiesz się, jak zainstalować stos LEMP na maszynie wirtualnej z systemem Linux na platformie Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: cynthn
-ms.openlocfilehash: 1de2e70ccafbbde49e764437bfe8ce94602747b6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6d603dbf2746608f499ba37b4f17b533b64bc941
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034452"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80154359"
 ---
 # <a name="tutorial-install-a-lemp-web-server-on-a-linux-virtual-machine-in-azure"></a>Samouczek: instalowanie serwera internetowego LEMP na maszynie wirtualnej z systemem Linux na platformie Azure
 
@@ -35,7 +35,7 @@ W tym artykule przedstawiono kroki wdrażania serwera internetowego NGINX oraz o
 
 Ta konfiguracja umożliwia szybkie przeprowadzenie testów lub weryfikacji koncepcji.
 
-W tym samouczku jest używany interfejs wiersza polecenia w [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), który jest stale aktualizowany do najnowszej wersji. Aby otworzyć Cloud Shell, wybierz opcję **Wypróbuj** z góry dowolnego bloku kodu.
+W tym samouczku używa interfejsu wiersza polecenia w [usłudze Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), który jest stale aktualizowany do najnowszej wersji. Aby otworzyć powłokę chmury, wybierz pozycję **Wypróbuj ją** u góry dowolnego bloku kodu.
 
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
@@ -170,10 +170,10 @@ W tym samouczku wdrożono serwer LEMP na platformie Azure. W tym samouczku omów
 > * Weryfikowanie instalacji i konfiguracji
 > * Instalowanie oprogramowania WordPress na stosie LEMP
 
-Przejdź do następnego samouczka, aby dowiedzieć się, jak zabezpieczyć serwery internetowe przy użyciu certyfikatów SSL.
+Przejdź do następnego samouczka, aby dowiedzieć się, jak zabezpieczyć serwery sieci Web certyfikatami TLS/SSL.
 
 > [!div class="nextstepaction"]
-> [Zabezpieczanie serwera internetowego przy użyciu protokołu SSL](tutorial-secure-web-server.md)
+> [Bezpieczny serwer www z TLS](tutorial-secure-web-server.md)
 
 [2]: ./media/tutorial-lemp-stack/phpsuccesspage.png
 [3]: ./media/tutorial-lemp-stack/nginx.png

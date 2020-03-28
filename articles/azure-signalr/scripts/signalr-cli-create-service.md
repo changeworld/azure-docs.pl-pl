@@ -1,6 +1,6 @@
 ---
 title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie usługi SignalR Service
-description: Zapoznaj się z przykładowym skryptem w celu utworzenia nowej usługi Azure Signal w nowej grupie zasobów o nazwie losowej.
+description: Dowiedz się, postępowo przykładowy skrypt, aby utworzyć nową usługę Azure SignalR w nowej grupie zasobów o losowej nazwie.
 author: sffamily
 ms.service: signalr
 ms.devlang: azurecli
@@ -9,10 +9,10 @@ ms.date: 11/13/2018
 ms.author: zhshang
 ms.custom: mvc
 ms.openlocfilehash: 45958f020f2e5dbdb0a50f0190aff78568865f74
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74158083"
 ---
 # <a name="create-a-signalr-service"></a>Tworzenie usługi SignalR Service 

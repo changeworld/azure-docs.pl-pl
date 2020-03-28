@@ -1,5 +1,5 @@
 ---
-title: Przykład programu PowerShell — synchronizacja między wieloma bazami danych Azure SQL
+title: Przykładowa synchronizacja programu PowerShell między wieloma bazami danych SQL platformy Azure
 description: Przykładowy skrypt programu Azure PowerShell do synchronizacji wielu baz danych Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: c6f726db36f721b6549c0eb47220e50622d8fc37
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74421667"
 ---
 # <a name="use-powershell-to-sync-between-multiple-sql-databases"></a>Użycie programu PowerShell do synchronizowania wielu baz danych SQL
@@ -26,19 +26,19 @@ Ten przykładowy skrypt programu PowerShell konfiguruje funkcję synchronizacji 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Jeśli zdecydujesz się zainstalować program PowerShell i używać go lokalnie, ten samouczek wymaga AZ PowerShell 1.4.0 lub nowszego. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure.
+Jeśli zdecydujesz się zainstalować i używać programu PowerShell lokalnie, ten samouczek wymaga programu AZ PowerShell 1.4.0 lub nowszego. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure.
 
 Omówienie usługi SQL Data Sync zawiera temat [Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync (Synchronizowanie danych między wieloma bazami danych w chmurze i lokalnie za pomocą usługi Azure SQL Data Sync)](../sql-database-sync-data.md).
 
 > [!IMPORTANT]
-> Usługa Azure SQL Data Sync nie obsługuje teraz wystąpienia zarządzanego usługi Azure SQL Database.
+> Usługa Azure SQL Data Sync nie obsługuje w tej chwili wystąpienia zarządzanego bazy danych SQL platformy Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Tworzenie bazy danych Azure SQL Database z przykładowej bazy danych AdventureWorksLT jako bazy danych centrum
-- Tworzenie bazy danych Azure SQL Database w tym samym regionie co baza danych synchronizacji
-- Utwórz lokalną bazę danych SQL Server jako bazę danych elementu członkowskiego
-- Zaktualizuj symbole zastępcze parametru przed uruchomieniem przykładu
+- Tworzenie bazy danych SQL platformy Azure z przykładowej bazy danych AdventureWorksLT jako bazy danych centrum
+- Tworzenie bazy danych SQL platformy Azure w tym samym regionie co baza danych synchronizacji
+- Tworzenie lokalnej bazy danych programu SQL Server jako bazy danych członków
+- Zaktualizuj symbole zastępcze parametrów przed uruchomieniem przykładu
 
 ## <a name="example"></a>Przykład
 
@@ -275,15 +275,15 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 
 | Polecenie | Uwagi |
 |---|---|
-| [New-AzSqlSyncAgent](/powershell/module/az.sql/New-azSqlSyncAgent) |  Tworzy nowego agenta synchronizacji. |
-| [New-AzSqlSyncAgentKey](/powershell/module/az.sql/New-azSqlSyncAgentKey) |  Generuje klucz agenta skojarzony z agentem synchronizacji. |
-| [Get-AzSqlSyncAgentLinkedDatabase](/powershell/module/az.sql/Get-azSqlSyncAgentLinkedDatabase) |  Pobiera wszystkie informacje dla agenta synchronizacji. |
-| [New-AzSqlSyncMember](/powershell/module/az.sql/New-azSqlSyncMember) |  Dodaje nowy element do grupy synchronizacji. |
-| [Update-AzSqlSyncSchema](/powershell/module/az.sql/Update-azSqlSyncSchema) |  Odświeża informacje o schemacie bazy danych. |
+| [Nowy-AzSqlSyncAgent](/powershell/module/az.sql/New-azSqlSyncAgent) |  Tworzy nowego agenta synchronizacji. |
+| [Nowy przycisk AzSqlSyncAgentKey](/powershell/module/az.sql/New-azSqlSyncAgentKey) |  Generuje klucz agenta skojarzony z agentem synchronizacji. |
+| [Baza danych Get-AzSqlSyncAgentLinkedDatabase](/powershell/module/az.sql/Get-azSqlSyncAgentLinkedDatabase) |  Pobiera wszystkie informacje dla agenta synchronizacji. |
+| [Nowy-AzSqlSyncMember](/powershell/module/az.sql/New-azSqlSyncMember) |  Dodaje nowy element do grupy synchronizacji. |
+| [Aktualizacja-AzSqlSyncSchema](/powershell/module/az.sql/Update-azSqlSyncSchema) |  Odświeża informacje o schemacie bazy danych. |
 | [Get-AzSqlSyncSchema](https://docs.microsoft.com/powershell/module/az.sql/Get-azSqlSyncSchema) |  Pobiera informacje o schemacie bazy danych. |
 | [Update-AzSqlSyncGroup](/powershell/module/az.sql/Update-azSqlSyncGroup) |  Aktualizuje grupę synchronizacji. |
-| [Start-AzSqlSyncGroupSync](/powershell/module/az.sql/Start-azSqlSyncGroupSync) | Wyzwala synchronizację. |
-| [Get-AzSqlSyncGroupLog](/powershell/module/az.sql/Get-azSqlSyncGroupLog) |  Sprawdza dziennik synchronizacji. |
+| [Uruchamianie programu AzSqlSyncGroupSync](/powershell/module/az.sql/Start-azSqlSyncGroupSync) | Wyzwala synchronizację. |
+| [Get-AzSqlSyncGruplog](/powershell/module/az.sql/Get-azSqlSyncGroupLog) |  Sprawdza dziennik synchronizacji. |
 |||
 
 ## <a name="next-steps"></a>Następne kroki
@@ -297,11 +297,11 @@ Aby uzyskać więcej informacji na temat usługi SQL Data Sync, zobacz:
 - Omówienie — [Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync](../sql-database-sync-data.md) (Synchronizowanie danych między wieloma bazami danych w chmurze i lokalnie za pomocą usługi Azure SQL Data Sync)
 - Konfigurowanie synchronizacji danych
     - W portalu — [Tutorial: Set up SQL Data Sync to sync data between Azure SQL Database and SQL Server on-premises](../sql-database-get-started-sql-data-sync.md) (Samouczek: konfigurowanie usługi SQL Data Sync w celu synchronizowania danych między usługą Azure SQL Database i lokalnym programem SQL Server)
-    - Przy użyciu programu PowerShell
+    - Z programem PowerShell
         - [Use PowerShell to sync between an Azure SQL Database and a SQL Server on-premises database (Synchronizacja bazy danych usługi Azure SQL Database i lokalnej bazy danych programu SQL Server przy użyciu programu PowerShell)](sql-database-sync-data-between-azure-onprem.md)
 - Agent synchronizacji danych — [Data Sync Agent for Azure SQL Data Sync](../sql-database-data-sync-agent.md) (Agent synchronizacji danych dla usługi Azure SQL Data Sync)
 - Najlepsze rozwiązania — [Best practices for Azure SQL Data Sync](../sql-database-best-practices-data-sync.md) (Najlepsze rozwiązania dotyczące korzystania z usługi Azure SQL Data Sync)
-- Monitor- [monitor SQL Data Sync z dziennikami Azure monitor](../sql-database-sync-monitor-oms.md)
+- Monitor — [monitorowanie synchronizacji danych SQL za pomocą dzienników usługi Azure Monitor](../sql-database-sync-monitor-oms.md)
 - Rozwiązywanie problemów — [Troubleshoot issues with Azure SQL Data Sync](../sql-database-troubleshoot-data-sync.md) (Rozwiązywanie problemów z usługą Azure SQL Data Sync)
 - Aktualizowanie schematu synchronizacji
     - Za pomocą języka Transact-SQL — [Automate the replication of schema changes in Azure SQL Data Sync](../sql-database-update-sync-schema.md) (Automatyzowanie replikacji zmian schematu w usłudze Azure SQL Data Sync)
