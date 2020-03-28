@@ -1,20 +1,20 @@
 ---
-title: Skrypt programu PowerShell umożliwiający uzyskanie przepływności (RU/s) dla Azure Cosmos DB interfejs API tabel
-description: Skrypt Azure PowerShell — Azure Cosmos DB uzyskiwania przepływności (RU/s) dla interfejs API tabel
+title: Skrypt programu PowerShell, aby uzyskać przepływność (RU/s) dla interfejsu API tabeli usługi Azure Cosmos DB
+description: Skrypt programu Azure PowerShell — przepływność usługi Azure Cosmos DB (RU/s) dla interfejsu API tabeli
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
-ms.date: 05/18/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 76645dee5927b321b0a974911ce6514d4277c6c1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0129b03e578d00689f085281d0499830e6ba37c2
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441284"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365573"
 ---
-# <a name="get-throughput-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Pobierz przepływność (RU/s) dla tabeli dla Azure Cosmos DB-interfejs API tabel
+# <a name="get-throughput-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Pobierz przepływność (RU/s) dla tabeli dla usługi Azure Cosmos DB — interfejs API tabeli
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,8 +38,8 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 
 | Polecenie | Uwagi |
 |---|---|
-|**Zasoby platformy Azure**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Tworzy zasób. |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBTableThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbtablethroughput) | Pobiera wartość przepływności określonej tabeli tabeli interfejsu API Tabela. |
 |**Grupy zasobów platformy Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 |||

@@ -1,19 +1,19 @@
 ---
-title: Skrypt programu PowerShell umożliwiający zmianę priorytetu trybu failover dla konta usługi Azure Cosmos
-description: Przykładowy skrypt Azure PowerShell — zmiana priorytetu trybu failover lub wyzwolenie trybu failover dla konta usługi Azure Cosmos
+title: Skrypt programu PowerShell do zmiany priorytetu trybu failover dla jednowładnego konta usługi Azure Cosmos
+description: Przykład skryptu programu Azure PowerShell — zmiana priorytetu trybu failover lub wyzwalania pracy awaryjnej dla konta jednowładnikowego usługi Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 09/20/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 6a742486918e5134a73256ef6c7490a823f14335
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a81938675e72d9ec3a18c920121951e38580b91e
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441507"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366120"
 ---
-# <a name="change-failover-priority-or-trigger-failover-for-an-azure-cosmos-account-using-powershell"></a>Zmiana priorytetu trybu failover lub wyzwolenie trybu failover dla konta usługi Azure Cosmos przy użyciu programu PowerShell
+# <a name="change-failover-priority-or-trigger-failover-for-an-azure-cosmos-db-single-master-account-using-powershell"></a>Zmienianie priorytetu trybu failover lub wyzwalania pracy awaryjnej dla konta jednowładnikowego usługi Azure Cosmos DB przy użyciu programu PowerShell
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -22,9 +22,9 @@ ms.locfileid: "75441507"
 ## <a name="sample-script"></a>Przykładowy skrypt
 
 > [!NOTE]
-> Każda zmiana w regionie z `failoverPriority=0` wyzwala ręczną pracę awaryjną i można ją wykonać tylko na koncie skonfigurowanym do ręcznego przełączania do trybu failover. Zmiany we wszystkich pozostałych regionach po prostu zmieniają priorytet trybu failover dla konta Cosmos.
+> Wszelkie zmiany w `failoverPriority=0` regionie z wyzwalaczy ręcznej pracy awaryjnej i można zrobić tylko na koncie skonfigurowanym do ręcznego trybu failover. Zmiany we wszystkich innych regionach po prostu zmienia priorytet pracy awaryjnej dla konta usługi Cosmos.
 > [!NOTE]
-> Ten przykład pokazuje użycie konta interfejsu API SQL (rdzeń). Aby użyć tego przykładu dla innych interfejsów API, skopiuj powiązane właściwości i Zastosuj do skryptu określonego przez interfejs API
+> W tym przykładzie pokazano przy użyciu konta interfejsu API SQL (Core). Aby użyć tego przykładu dla innych interfejsów API, skopiuj powiązane właściwości i zastosuj do skryptu specyficznego dla interfejsu API
 
 [!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-failover-priority-update.ps1 "Update failover priority for an Azure Cosmos account or trigger a manual failover")]
 
@@ -42,8 +42,9 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 
 | Polecenie | Uwagi |
 |---|---|
-|**Zasoby platformy Azure**| |
-| [Invoke-AzResourceAction](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction) | Wywołuje akcję dla zasobu. |
+|**Azure Cosmos DB**| |
+| [Konto Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Wyświetla listę kont usługi Cosmos DB lub pobiera określone konto usługi Cosmos DB. |
+| [Aktualizacja-AzCosmosDBAccountFailoverPriority](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbaccountfailoverpriority) | Zaktualizuj kolejność priorytetów trybu failover regionów konta usługi Cosmos DB. |
 |**Grupy zasobów platformy Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 |||

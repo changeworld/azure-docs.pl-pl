@@ -1,16 +1,16 @@
 ---
-title: Wdrażanie aplikacji Service Fabric w klastrze na platformie Azure
-description: Dowiedz się, jak wdrożyć istniejącą aplikację w nowo utworzonym klastrze Service Fabric platformy Azure z poziomu programu Visual Studio.
+title: Wdrażanie aplikacji sieci szkieletowej usług w klastrze na platformie Azure
+description: Dowiedz się, jak wdrożyć istniejącą aplikację w nowo utworzonym klastrze usługi Azure Service Fabric z programu Visual Studio.
 author: athinanthny
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: mikhegn
 ms.custom: mvc
 ms.openlocfilehash: 9951610732cbb1c5884a7b7e830033f427db0ab1
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75646011"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>Samouczek: wdrażanie aplikacji usługi Service Fabric w klastrze na platformie Azure
@@ -24,22 +24,22 @@ Niniejszy samouczek zawiera informacje na temat wykonywania następujących czyn
 
 Ta seria samouczków zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
-> * [Kompilowanie aplikacji platformy .NET w usłudze Service Fabric](service-fabric-tutorial-create-dotnet-app.md).
+> * [Tworzenie aplikacji sieci szkieletowej usług .NET](service-fabric-tutorial-create-dotnet-app.md).
 > * Wdrażanie aplikacji w klastrze zdalnym.
-> * [Dodawanie punktu końcowego HTTPS do usługi frontonu platformy ASP.NET Core](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md).
+> * [Dodawanie punktu końcowego HTTPS do usługi front-end ASP.NET Core](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md).
 > * [Konfigurowanie ciągłej integracji/ciągłego wdrażania za pomocą usługi Azure Pipelines](service-fabric-tutorial-deploy-app-with-cicd-vsts.md).
-> * [Konfigurowanie monitorowania i diagnostyki dla aplikacji](service-fabric-tutorial-monitoring-aspnet.md).
+> * [Skonfiguruj monitorowanie i diagnostykę aplikacji](service-fabric-tutorial-monitoring-aspnet.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Przed rozpoczęciem tego samouczka:
 
 * Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Zainstaluj program Visual Studio 2019](https://www.visualstudio.com/)i zainstaluj obciążenia **deweloperskie** oraz **ASP.NET i programowanie dla sieci Web** .
-* [Zainstaluj zestaw SDK usługi Service Fabric](service-fabric-get-started.md).
+* [Zainstaluj program Visual Studio 2019](https://www.visualstudio.com/)i zainstaluj obciążenia deweloperskie i **ASP.NET i tworzenia sieci Web** platformy **Azure.**
+* [Zainstaluj pakiet SDK sieci szkieletowej usług](service-fabric-get-started.md).
 
 > [!NOTE]
-> Bezpłatne konto może nie spełniać wymagań dotyczących tworzenia maszyny wirtualnej. Uniemożliwi to ukończenie tego samouczka. Ponadto konto niedziałające lub nieszkolne może napotkać problemy z uprawnieniami podczas tworzenia certyfikatu w magazynie kluczy skojarzonym z klastrem. W przypadku wystąpienia błędu związanego z tworzeniem certyfikatu należy utworzyć klaster przy użyciu portalu. 
+> Bezpłatne konto może nie spełniać wymagań dotyczących tworzenia maszyny wirtualnej. Uniemożliwi to ukończenie samouczka. Ponadto konto niezwiązane z pracą lub pozaszkole może napotkać problemy z uprawnieniami podczas tworzenia certyfikatu w łączu klucza skojarzonym z klastrem. Jeśli wystąpi błąd związany z tworzeniem certyfikatów, użyj portalu, aby zamiast tego utworzyć klaster. 
 
 ## <a name="download-the-voting-sample-application"></a>Pobieranie przykładowej aplikacji do głosowania
 
@@ -53,7 +53,7 @@ Otwórz aplikację w programie Visual Studio w trybie administratora i skompiluj
 
 ## <a name="create-a-cluster"></a>Tworzenie klastra
 
-Teraz, gdy aplikacja jest gotowa, utwórz klaster usługi Service Fabric, a następnie wdróż aplikację w klastrze. [Klaster usługi Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-anywhere) jest połączonym z siecią zestawem maszyn wirtualnych lub fizycznych, w którym wdraża się mikrousługi i nimi zarządza.
+Teraz, gdy aplikacja jest gotowa, utwórz klaster usługi Service Fabric, a następnie wdróż aplikację w klastrze. [Klaster sieci szkieletowej usług](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-anywhere) to połączony z siecią zestaw maszyn wirtualnych lub fizycznych, na których mikrousługi są wdrażane i zarządzane.
 
 W ramach tego samouczka utworzysz nowy klaster testowy z trzema węzłami w środowisku IDE programu Visual Studio, a następnie opublikujesz aplikację w tym klastrze. Aby uzyskać informacje dotyczące tworzenia klastra produkcyjnego zobacz [Samouczek dotyczący tworzenia klastra i zarządzania nim](service-fabric-tutorial-create-vnet-and-windows-cluster.md). Możesz również wdrożyć aplikację w istniejącym klastrze, który został utworzony wcześniej za pośrednictwem witryny [Azure Portal](https://portal.azure.com), przy użyciu skryptów programu [PowerShell](./scripts/service-fabric-powershell-create-secure-cluster-cert.md) lub [interfejsu wiersza polecenia platformy Azure](./scripts/cli-create-cluster.md) albo za pomocą [szablonu usługi Azure Resource Manager](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
 
@@ -69,18 +69,18 @@ Usługa internetowa frontonu aplikacji Voting nasłuchuje na określonym porcie 
 <Endpoint Protocol="http" Name="ServiceEndpoint" Type="Input" Port="8080" />
 ```
 
-Zanotuj punkt końcowy usługi, który będzie potrzebny w kolejnym kroku.  W przypadku wdrażania w istniejącym klastrze otwórz ten port, tworząc regułę równoważenia obciążenia i sondę w module równoważenia obciążenia platformy Azure za pomocą [skryptu programu PowerShell](./scripts/service-fabric-powershell-open-port-in-load-balancer.md) lub za pośrednictwem modułu równoważenia obciążenia dla tego klastra w [Azure Portal](https://portal.azure.com).
+Zanotuj punkt końcowy usługi, który będzie potrzebny w kolejnym kroku.  Jeśli wdrażasz w istniejącym klastrze, otwórz ten port, tworząc regułę równoważenia obciążenia i sondując w modułu równoważenia obciążenia platformy Azure przy użyciu [skryptu programu PowerShell](./scripts/service-fabric-powershell-open-port-in-load-balancer.md) lub za pośrednictwem modułu równoważenia obciążenia dla tego klastra w [witrynie Azure portal.](https://portal.azure.com)
 
 ### <a name="create-a-test-cluster-in-azure"></a>Tworzenie klastra testowego na platformie Azure
 W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy pozycję **Voting (Głosowanie)** i wybierz polecenie **Opublikuj**.
 
 W polu **Punkt końcowy połączenia** wybierz pozycję **Tworzenie nowego klastra**.  Jeśli wdrażasz w istniejącym klastrze, wybierz punkt końcowy klastra z listy.  Zostanie otwarte okno dialogowe Tworzenie klastra usługi Service Fabric.
 
-Na karcie **Klaster** wprowadź wartość w polu **Nazwa klastra** (na przykład „mytestcluster”), wybierz swoją subskrypcję, wybierz region dla klastra (na przykład Południowo-środkowe stany USA), wprowadź liczby węzłów klastra (na potrzeby klastra testowego zalecamy trzy węzły), a następnie wprowadź grupę zasobów (na przykład „mytestclustergroup”). Kliknij przycisk **Dalej**.
+Na karcie **Klaster** wprowadź wartość w polu **Nazwa klastra** (na przykład „mytestcluster”), wybierz swoją subskrypcję, wybierz region dla klastra (na przykład Południowo-środkowe stany USA), wprowadź liczby węzłów klastra (na potrzeby klastra testowego zalecamy trzy węzły), a następnie wprowadź grupę zasobów (na przykład „mytestclustergroup”). Kliknij przycisk **alej**.
 
 ![Tworzenie klastra](./media/service-fabric-tutorial-deploy-app-to-party-cluster/create-cluster.png)
 
-Na karcie **Certyfikat** wprowadź hasło i ścieżkę danych wyjściowych dla certyfikatu klastra. Certyfikat z podpisem własnym zostanie utworzony jako plik PFX i zapisany w określonej ścieżce danych wyjściowych.  Certyfikat jest używany zarówno w przypadku zabezpieczeń między węzłami, jak i zabezpieczeń między klientem i węzłem.  Nie używaj certyfikatu z podpisem własnym dla klastrów produkcyjnych.  Ten certyfikat jest używany przez program Visual Studio do uwierzytelniania w klastrze i wdrażania aplikacji. Zaznacz pozycję **Importuj certyfikat**, aby zainstalować plik PFX w folderze CurrentUser\My certificate store na Twoim komputerze.  Kliknij przycisk **Dalej**.
+Na karcie **Certyfikat** wprowadź hasło i ścieżkę danych wyjściowych dla certyfikatu klastra. Certyfikat z podpisem własnym zostanie utworzony jako plik PFX i zapisany w określonej ścieżce danych wyjściowych.  Certyfikat jest używany zarówno w przypadku zabezpieczeń między węzłami, jak i zabezpieczeń między klientem i węzłem.  Nie używaj certyfikatu z podpisem własnym dla klastrów produkcyjnych.  Ten certyfikat jest używany przez program Visual Studio do uwierzytelniania w klastrze i wdrażania aplikacji. Zaznacz pozycję **Importuj certyfikat**, aby zainstalować plik PFX w folderze CurrentUser\My certificate store na Twoim komputerze.  Kliknij przycisk **alej**.
 
 ![Tworzenie klastra](./media/service-fabric-tutorial-deploy-app-to-party-cluster/certificate.png)
 

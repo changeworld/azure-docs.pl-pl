@@ -1,19 +1,19 @@
 ---
-title: Skrypt programu PowerShell umożliwiający uzyskanie operacji na kluczowym i parametrów połączenia dla konta usługi Azure Cosmos
-description: Przykładowy skrypt Azure PowerShell — operacje na klucz konta i parametry połączenia dla konta usługi Azure Cosmos
+title: Skrypt programu PowerShell w celu uzyskania operacji klucza i ciągu połączenia dla konta usługi Azure Cosmos DB
+description: Przykład skryptu programu Azure PowerShell — operacje klucza konta i ciągu połączenia dla konta usługi Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 09/20/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 96be5f09cddf5eefec6b471d30cf87d0f687485d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f6dd9d1290ea9d18fc6a5f18196585926b2ab91a
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441533"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366102"
 ---
-# <a name="connection-string-and-account-key-operations-for-an-azure-cosmos-account-using-powershell"></a>Operacje dotyczące parametrów połączenia i klucza konta dla konta usługi Azure Cosmos przy użyciu programu PowerShell
+# <a name="connection-string-and-account-key-operations-for-an-azure-cosmos-db-account-using-powershell"></a>Operacje na ciąg połączenia i klucze konta dla konta usługi Azure Cosmos DB przy użyciu programu PowerShell
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -22,7 +22,7 @@ ms.locfileid: "75441533"
 ## <a name="sample-script"></a>Przykładowy skrypt
 
 > [!NOTE]
-> Ten przykład pokazuje użycie konta interfejsu API SQL (rdzeń). Aby użyć tego przykładu dla innych interfejsów API, skopiuj powiązane właściwości i Zastosuj do skryptu określonego przez interfejs API
+> W tym przykładzie pokazano przy użyciu konta interfejsu API SQL. Aby użyć tego przykładu dla innych interfejsów API, skopiuj powiązane właściwości i zastosuj do skryptu specyficznego dla interfejsu API
 
 [!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-keys-connection-strings.ps1 "Connection strings and account keys for Azure Cosmos account")]
 
@@ -40,8 +40,9 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 
 | Polecenie | Uwagi |
 |---|---|
-|**Zasoby platformy Azure**| |
-| [Invoke-AzResourceAction](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction) | Wywołuje akcję dla zasobu. |
+|**Azure Cosmos DB**| |
+| [Klucz Dostępu DookosmosDBKtac](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccountkey) | Pobiera ciąg połączenia lub klucz (do odczytu i zapisu lub tylko do odczytu) dla konta usługi Cosmos DB. |
+| [Nowy klucz AzCosmosDBAccountKey](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccountkey) | Ponownie wygeneruj określony klucz dla konta usługi Cosmos DB. |
 |**Grupy zasobów platformy Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 |||

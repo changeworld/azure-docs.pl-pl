@@ -5,17 +5,17 @@ keywords: jenkins, azure, devops, maszyna wirtualna, agenci
 ms.topic: tutorial
 ms.date: 07/31/2018
 ms.openlocfilehash: 2e811d628c017316a5bc50a8ddc22ee24d6f744e
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74158531"
 ---
 # <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>Skalowanie wdrożeń serwera Jenkins w celu spełnienia wymagań przy użyciu agentów maszyn wirtualnych platformy Azure
 
 W tym samouczku pokazano, jak używać [wtyczki agentów maszyn wirtualnych platformy Azure](https://plugins.jenkins.io/azure-vm-agents) narzędzia Jenkins w celu dodania pojemności na żądanie na przykładzie maszyn wirtualnych z systemem Linux działających na platformie Azure.
 
-W tym samouczku wykonasz następujące czynności:
+W tym samouczku zostaną wykonane następujące czynności:
 
 > [!div class="checklist"]
 > * Instalowanie wtyczki agentów maszyn wirtualnych platformy Azure
@@ -49,7 +49,7 @@ W tym samouczku wykonasz następujące czynności:
 1. Wybierz istniejącą jednostkę usługi z listy rozwijanej **Add** (Dodaj) w sekcji **Azure Credentials** (Poświadczenia platformy Azure). Jeśli na liście nie ma żadnej pozycji, wykonaj następujące kroki, aby [utworzyć jednostkę usługi](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager) dla konta platformy Azure i dodać ją do konfiguracji usługi Jenkins:   
 
     a. Wybierz pozycję **Add** (Dodaj) obok sekcji **Azure Credentials** (Poświadczenia platformy Azure) i wybierz pozycję **Jenkins**.   
-    b. W oknie dialogowym **Add Credentials** (Dodawanie poświadczeń) wybierz pozycję **Microsoft Azure Service Principal** (Jednostka usługi Microsoft Azure) z listy rozwijanej **Kind** (Rodzaj).   
+    b. W oknie dialogowym **Add Credentials** (Dodawanie poświadczeń) wybierz opcję **Microsoft Azure Service Principal** (Jednostka usługi Microsoft Azure) z listy rozwijanej **Kind** (Rodzaj).   
     d. Utwórz jednostkę usługi Active Directory za pomocą wiersza polecenia platformy Azure lub usługi [Cloud Shell](/azure/cloud-shell/overview).
     
     ```azurecli-interactive
@@ -65,7 +65,7 @@ W tym samouczku wykonasz następujące czynności:
         "tenant": "CCCCCCCC-CCCC-CCCC-CCCCCCCCCCC"
     }
     ```
-    d. Wprowadź poświadczenia jednostki usługi w oknie dialogowym **Add credentials** (Dodawanie poświadczeń). Jeśli nie znasz Identyfikatora subskrypcji platformy Azure, możesz go uzyskać za pomocą zapytania interfejsu wiersza polecenia:
+    d. Wprowadź poświadczenia jednostki usługi w oknie dialogowym **Add credentials** (Dodawanie poświadczeń). Jeśli nie znasz identyfikatora subskrypcji platformy Azure, możesz go uzyskać za pomocą zapytania interfejsu wiersza polecenia:
      
      ```azurecli-interactive
      az account list
@@ -138,7 +138,7 @@ Wybierz pozycję **Verify Template** (Sprawdź szablon), aby sprawdzić konfigur
 
 ## <a name="troubleshooting-the-jenkins-plugin"></a>Rozwiązywanie problemów z wtyczką narzędzia Jenkins
 
-Jeśli napotkasz jakiekolwiek usterki we wtyczkach narzędzia Jenkins, prześlij zgłoszenie za pomocą narzędzia [Jenkins JIRA](https://issues.jenkins-ci.org/) dla określonego składnika.
+Jeśli wystąpią jakiekolwiek błędy z wtyczkami jenkins, zgładź problem w [JIRA usługi Jenkins](https://issues.jenkins-ci.org/) dla określonego składnika.
 
 ## <a name="next-steps"></a>Następne kroki
 

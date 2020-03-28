@@ -1,7 +1,7 @@
 ---
-title: 'Samouczek: Tworzenie pierwszego eksperymentu z ML'
+title: 'Samouczek: Tworzenie pierwszego eksperymentu ml'
 titleSuffix: Azure Machine Learning
-description: W ramach tego samouczka nastąpi rozpoczęcie pracy z zestawem SDK środowiska Azure Machine Learning Python uruchomionym w notesach Jupyter.  W części 1 utworzysz obszar roboczy, w którym będziesz zarządzać eksperymentami i modelami ML.
+description: W tym samouczku zostanie rozpoczęte korzystanie z zestawu SDK języka Python usługi Azure Machine Learning działającego w notesach jupytera.  W części 1 tworzysz obszar roboczy, w którym będziesz zarządzać eksperymentami i modelami uczenia maszynowego.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,43 +11,43 @@ ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
 ms.openlocfilehash: a6f977c0cdca670b40ccdc01db64a493962e3dda
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79239889"
 ---
-# <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Samouczek: wprowadzenie do tworzenia pierwszego eksperymentu z użyciem zestawu SDK języka Python
+# <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Samouczek: Pierwsze rozpoczęcie tworzenia pierwszego eksperymentu uczenia maszynowego za pomocą zestawu SDK języka Python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-W tym samouczku przedstawiono kompleksowe kroki umożliwiające rozpoczęcie pracy z zestawem SDK języka Python Azure Machine Learning w notesach Jupyter. Ten samouczek jest **częścią jednej z serii samouczków z dwiema częściami**oraz obejmuje instalację i konfigurację środowiska Python oraz tworzenie obszaru roboczego do zarządzania eksperymentami i modelami uczenia maszynowego. [**Częściowo dwie**](tutorial-1st-experiment-sdk-train.md) kompilacje na ten temat umożliwiają uczenie wielu modeli uczenia maszynowego i wprowadzenie procesu zarządzania modelami przy użyciu zarówno Azure Machine Learning Studio, jak i zestawu SDK.
+W tym samouczku należy wykonać kompleksowe kroki, aby rozpocząć pracę z zestawem SDK języka Python usługi Azure Machine Learning działającym w notesach jupytera. Ten samouczek jest **częścią pierwszej serii dwuczęściowych samouczków**i obejmuje konfigurację i konfigurację środowiska języka Python, a także tworzenie obszaru roboczego do zarządzania eksperymentami i modelami uczenia maszynowego. [**Część druga**](tutorial-1st-experiment-sdk-train.md) opiera się na tym, aby wyszkolić wiele modeli uczenia maszynowego i wprowadzić proces zarządzania modelami przy użyciu zarówno usługi Azure Machine Learning studio, jak i SDK.
 
-W tym samouczku zostaną wykonane następujące czynności:
+W tym samouczku zostały wykonane następujące czynności:
 
 > [!div class="checklist"]
 > * Utwórz [obszar roboczy usługi Azure Machine Learning](concept-workspace.md) do użycia w następnym samouczku.
-> * Sklonuj Notes samouczków do folderu w obszarze roboczym.
-> * Tworzenie wystąpienia obliczeniowego opartego na chmurze z zainstalowanym i wstępnie skonfigurowanym zestawem SDK języka Python Azure Machine Learning.
+> * Sklonuj notes samouczków do folderu w obszarze roboczym.
+> * Utwórz wystąpienie obliczeniowe oparte na chmurze z zainstalowanym i wstępnie skonfigurowanym zestawem SDK języka Python usługi Azure Machine Learning.
 
 
-Jeśli nie masz subskrypcji na platformie Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
+Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
 
-## <a name="create-a-workspace"></a>Utwórz obszar roboczy
+## <a name="create-a-workspace"></a>Tworzenie obszaru roboczego
 
-Obszar roboczy Azure Machine Learning to podstawowe zasoby w chmurze, za pomocą których można eksperymentować, uczeniować i wdrażać modele uczenia maszynowego. Łączy ona Twoją subskrypcję i grupę zasobów platformy Azure z łatwym w użyciu obiektem w usłudze. 
+Obszar roboczy usługi Azure Machine Learning to podstawowy zasób w chmurze używany do eksperymentowania, uczenia i wdrażania modeli uczenia maszynowego. Wiąże subskrypcję platformy Azure i grupę zasobów z łatwo zużywanym obiektem w usłudze. 
 
-Aby zarządzać zasobami platformy Azure, można utworzyć obszar roboczy za pośrednictwem Azure Portal konsoli internetowej. 
+Tworzenie obszaru roboczego za pośrednictwem witryny Azure portal, konsoli opartej na sieci Web do zarządzania zasobami platformy Azure. 
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
 >[!IMPORTANT] 
-> Zanotuj swój **obszar roboczy** i **subskrypcję**. Będą one potrzebne do utworzenia eksperymentu w odpowiednim miejscu. 
+> Zanotuj **swój obszar roboczy** i **subskrypcję**. Będą one potrzebne, aby zapewnić utworzenie eksperymentu we właściwym miejscu. 
 
-## <a name="azure"></a>Uruchamianie notesu w obszarze roboczym
+## <a name="run-notebook-in-your-workspace"></a><a name="azure"></a>Uruchamianie notesu w obszarze roboczym
 
-W tym samouczku używany jest serwer notesu chmury w obszarze roboczym do obsługi wstępnie skonfigurowanego środowiska instalacji. Jeśli wolisz sterować środowiskiem, pakietami i zależnościami, użyj [własnego środowiska](how-to-configure-environment.md#local) .
+W tym samouczku użyto serwera notesu w chmurze w obszarze roboczym, aby uzyskać środowisko wolne od instalacji i wstępnie skonfigurowane. Użyj [własnego środowiska,](how-to-configure-environment.md#local) jeśli wolisz mieć kontrolę nad środowiskiem, pakietami i zależnościami.
 
-Postępuj zgodnie z tym filmem wideo lub użyj szczegółowych kroków poniżej, aby sklonować i uruchomić samouczek z obszaru roboczego. 
+Postępuj zgodnie z tym klipem wideo lub skorzystaj ze szczegółowych czynności poniżej, aby sklonować i uruchomić samouczek z obszaru roboczego. 
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4mTUr]
 
@@ -55,64 +55,64 @@ Postępuj zgodnie z tym filmem wideo lub użyj szczegółowych kroków poniżej,
 
 ### <a name="clone-a-notebook-folder"></a>Klonowanie folderu notesu
 
-Należy wykonać następujące czynności w celu skonfigurowania i uruchomienia kroków w programie Azure Machine Learning Studio — skonsolidowany interfejs, który obejmuje narzędzia uczenia maszynowego do wykonywania scenariuszy analizy danych dla lekarzy danych wszystkich poziomów umiejętności.
+Wykonaj następującą konfigurację eksperymentu i uruchom kroki w usłudze Azure Machine Learning studio, skonsolidowanym interfejsie, który zawiera narzędzia uczenia maszynowego do wykonywania scenariuszy do nauki o danych dla praktyków nauki o danych na wszystkich poziomach umiejętności.
 
-1. Zaloguj się do [Azure Machine Learning Studio](https://ml.azure.com/).
+1. Zaloguj się do [studia usługi Azure Machine Learning](https://ml.azure.com/).
 
-1. Wybierz swoją subskrypcję i utworzony obszar roboczy.
+1. Wybierz subskrypcję i utworzony obszar roboczy.
 
-1. Wybierz **notesy** po lewej stronie.
+1. Po lewej stronie **wybierz pozycję Notesy.**
 
-1. Otwórz folder **Samples** .
+1. Otwórz folder **Przykłady.**
 
-1. Otwórz folder **Python** .
+1. Otwórz folder **Python.**
 
-1. Otwórz w folderze numer wersji.  Ta liczba reprezentuje bieżącą wersję zestawu Python SDK.
+1. Otwórz folder z numerem wersji.  Ta liczba reprezentuje bieżącą wersję zestawu SDK języka Python.
 
-1. Wybierz pozycję **"..."** po prawej stronie folderu **samouczki** , a następnie wybierz pozycję **Klonuj**.
+1. Wybierz **"..."** po prawej stronie folderu **samouczków,** a następnie wybierz pozycję **Klonuj**.
 
-    ![Klonuj folder](./media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png)
+    ![Folder Klonowanie](./media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png)
 
-1. Zostanie wyświetlona lista folderów pokazująca każdego użytkownika, który uzyskuje dostęp do obszaru roboczego.  Wybierz folder, w którym ma zostać sklonowany folder **samouczków** .
+1. Zostanie wyświetlona lista folderów przedstawiająca każdego użytkownika, który uzyskuje dostęp do obszaru roboczego.  Wybierz folder, aby sklonować tam folder **samouczków.**
 
-### <a name="a-nameopenopen-the-cloned-notebook"></a><a name="open">otworzyć sklonowanego notesu
+### <a name="a-nameopenopen-the-cloned-notebook"></a><a name="open">Otwieranie sklonowanego notesu
 
-1. W obszarze **pliki użytkownika** Otwórz folder, a następnie otwórz folder sklonowane **samouczki** .
+1. W obszarze **Pliki użytkownika** otwórz folder, a następnie otwórz folder sklonowanych **samouczków.**
 
     ![Otwórz folder samouczków](./media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png)
 
     > [!IMPORTANT]
-    > Notesy można wyświetlać w folderze **Samples** , ale nie można w tym miejscu uruchamiać notesu.  W celu uruchomienia notesu upewnij się, że otwarto sklonowaną wersję notesu w sekcji **pliki użytkownika** .
+    > Notesy można wyświetlać w folderze **przykładów,** ale nie można uruchomić notesu.  Aby uruchomić notes, upewnij się, że sklonowana wersja notesu została otwarta w sekcji **Pliki użytkownika.**
     
-1. Wybierz **samouczek — pierwszy eksperyment z zestawem SDK — uczenie. ipynb** w folderze **samouczki/Utwórz pierwszy-ml eksperymentu** .
+1. Wybierz plik **samouczek-1st-experiment-sdk-train.ipynb** w folderze **tutorials/create-first-ml-experiment.**
 
-1. Na górnym pasku wybierz wystąpienie obliczeniowe, które ma zostać użyte do uruchomienia notesu. Te maszyny wirtualne są wstępnie skonfigurowane z [wszystko, czego potrzebujesz do uruchamiania Azure Machine Learning](concept-compute-instance.md#contents). Można wybrać maszynę wirtualną utworzoną przez dowolnego użytkownika obszaru roboczego. 
+1. Na górnym pasku wybierz wystąpienie obliczeniowe, które będzie używane do uruchamiania notesu. Te maszyny wirtualne są wstępnie skonfigurowane ze [wszystkim, czego potrzebujesz do uruchomienia usługi Azure Machine Learning.](concept-compute-instance.md#contents) Można wybrać maszynę wirtualną utworzoną przez dowolnego użytkownika obszaru roboczego. 
 
-1. Jeśli nie zostaną znalezione żadne maszyny wirtualne, wybierz pozycję **+ Dodaj** , aby utworzyć maszynę wirtualną wystąpienia obliczeniowego. 
+1. Jeśli nie znaleziono żadnych maszyn wirtualnych, wybierz **+ Dodaj,** aby utworzyć maszynę wirtualną wystąpienia obliczeniowego. 
 
-    1. Podczas tworzenia maszyny wirtualnej Podaj nazwę.  Nazwa musi składać się z od 2 do 16 znaków. Prawidłowe znaki to litery, cyfry i znaki, a także muszą być unikatowe w ramach subskrypcji platformy Azure.
+    1. Podczas tworzenia maszyny Wirtualnej podaj nazwę.  Nazwa musi zawierać od 2 do 16 znaków. Prawidłowe znaki to litery, cyfry i znak - i muszą być również unikatowe w całej subskrypcji platformy Azure.
 
     1.  Wybierz rozmiar maszyny wirtualnej z dostępnych opcji.
 
-    1. Następnie wybierz przycisk **Utwórz**. Skonfigurowanie maszyny wirtualnej może potrwać około 5 minut.
+    1. Następnie wybierz pozycję **Utwórz**. Skonfigurowanie maszyny wirtualnej może potrwać około 5 minut.
 
-1. Gdy maszyna wirtualna będzie dostępna, zostanie wyświetlona na górnym pasku narzędzi.  Można teraz uruchomić Notes przy użyciu opcji **Uruchom wszystko** na pasku narzędzi lub naciskając **klawisze SHIFT + ENTER** w komórkach kodu notesu.
+1. Gdy maszyna wirtualna jest dostępna, zostanie wyświetlona na górnym pasku narzędzi.  Notes można teraz uruchomić za pomocą funkcji **Uruchom wszystko** na pasku narzędzi lub za pomocą **klawiszy Shift+Enter** w komórkach kodu notesu.
 
-Jeśli masz niestandardowe widżety lub Preferuj przy użyciu Jupyter/JupyterLab wybierz listę rozwijaną **Jupyter** po prawej stronie, a następnie wybierz pozycję **Jupyter** lub **JupyterLab**. Zostanie otwarte nowe okno przeglądarki.
+Jeśli masz niestandardowe widżety lub wolisz używać Jupyter/JupyterLab wybierz kroplówę **Jupyter** po prawej stronie, a następnie wybierz **Jupyter** lub **JupyterLab**. Zostanie otwarte nowe okno przeglądarki.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku zostały wykonane następujące zadania:
+W tym samouczku wykonałeś następujące zadania:
 
-* Utworzono obszar roboczy Azure Machine Learning.
+* Utworzono obszar roboczy usługi Azure Machine Learning.
 * Utworzono i skonfigurowano serwer notesu w chmurze w obszarze roboczym.
 
-W **drugiej części** samouczka uruchomiono kod w `tutorial-1st-experiment-sdk-train.ipynb` do uczenia modelu uczenia maszynowego. 
+W **drugiej części** samouczka można `tutorial-1st-experiment-sdk-train.ipynb` uruchomić kod w celu uczenia modelu uczenia maszynowego. 
 
 > [!div class="nextstepaction"]
-> [Samouczek: uczenie swojego pierwszego modelu](tutorial-1st-experiment-sdk-train.md)
+> [Samouczek: Trenuj swój pierwszy model](tutorial-1st-experiment-sdk-train.md)
 
 > [!IMPORTANT]
-> Jeśli nie planujesz wykonywania następujących czynności w ramach tego samouczka lub innych samouczków, [Zatrzymaj maszynę wirtualną serwera notesu chmury](tutorial-1st-experiment-sdk-train.md#clean-up-resources) , gdy nie używasz jej do obniżenia kosztów.
+> Jeśli nie planujesz następujące część 2 tego samouczka lub innych samouczków, należy [zatrzymać maszyny Wirtualnej serwera notesu w chmurze,](tutorial-1st-experiment-sdk-train.md#clean-up-resources) gdy nie używasz go do zmniejszenia kosztów.
 
 

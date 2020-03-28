@@ -1,33 +1,33 @@
 ---
-title: Samouczek — Skalowanie automatyczne zestawów skalowania maszyn wirtualnych na platformie Azure przy użyciu rozwiązania ansible
-description: Dowiedz się, jak skalować zestawy skalowania maszyn wirtualnych przy użyciu funkcji automatycznego skalowania na platformie Azure
+title: Samouczek — skalowanie automatyczne zestawów skalowania maszyn na platformie Azure przy użyciu ansible
+description: Dowiedz się, jak używać ansible do skalowania zestawów skalowania maszyny wirtualnej za pomocą skalowania automatycznego na platformie Azure
 keywords: ansible, azure, devops, bash, playbook, scale, autoscale, virtual machine, virtual machine scale set, vmss
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: fb8d2a4bfca32be4575ca8f11018e5cab17cd9a2
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156820"
 ---
-# <a name="tutorial-autoscale-virtual-machine-scale-sets-in-azure-using-ansible"></a>Samouczek: automatyczne skalowanie zestawów skalowania maszyn wirtualnych na platformie Azure przy użyciu rozwiązania ansible
+# <a name="tutorial-autoscale-virtual-machine-scale-sets-in-azure-using-ansible"></a>Samouczek: Automatyczne skalowanie zestawów skalowania maszyn wirtualnych na platformie Azure przy użyciu ansible
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
 
 [!INCLUDE [open-source-devops-intro-vmss.md](../../includes/open-source-devops-intro-vmss.md)]
 
-Funkcja automatycznego dostosowywania liczby wystąpień maszyn wirtualnych jest nazywana [autoskalowaniem](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview). Zaletą automatycznego skalowania jest zmniejszenie kosztów związanych z zarządzaniem w celu monitorowania i optymalizowania wydajności aplikacji. Skalowanie automatyczne można skonfigurować w odpowiedzi na żądanie lub zgodnie ze zdefiniowanym harmonogramem. Za pomocą rozwiązania ansible można określić reguły automatycznego skalowania, które definiują akceptowalną wydajność dla pozytywnego doświadczenia klienta.
+Funkcja automatycznego dostosowywania liczby wystąpień maszyn wirtualnych nazywana jest [skalowaniem automatycznym](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview). Zaletą skalowania automatycznego jest to, że zmniejsza obciążenie związane z zarządzaniem do monitorowania i optymalizacji wydajności aplikacji. Skalowanie automatyczne można skonfigurować w odpowiedzi na żądanie lub zgodnie ze zdefiniowanym harmonogramem. Za pomocą Ansible można określić reguły skalowania automatycznego, które definiują dopuszczalną wydajność dla pozytywnego doświadczenia klienta.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
 > * Definiowanie profilu skalowania automatycznego
-> * Automatyczne skalowanie na podstawie harmonogramu cyklicznego
-> * Automatyczne skalowanie na podstawie wydajności aplikacji
-> * Pobierz informacje o ustawieniach automatycznego skalowania 
-> * Wyłączanie ustawienia automatycznego skalowania
+> * Skalowanie automatyczne na podstawie harmonogramu cyklicznego
+> * Skalowanie automatyczne na podstawie wydajności aplikacji
+> * Pobieranie informacji o ustawieniach skalowania automatycznego 
+> * Wyłączanie ustawienia skalowania automatycznego
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -35,13 +35,13 @@ Funkcja automatycznego dostosowywania liczby wystąpień maszyn wirtualnych jest
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)] 
 [!INCLUDE [ansible-prereqs-vm-scale-set.md](../../includes/ansible-prereqs-vm-scale-set.md)]
 
-## <a name="autoscale-based-on-a-schedule"></a>Automatyczne skalowanie na podstawie harmonogramu
+## <a name="autoscale-based-on-a-schedule"></a>Skalowanie automatyczne na podstawie harmonogramu
 
 Aby włączyć skalowanie automatyczne na zestawie skalowania, najpierw zdefiniuj profil skalowania automatycznego. Ten profil obejmuje definiowanie domyślnej, minimalnej i maksymalnej pojemności zestawu skalowania. Dzięki tym limitom możesz kontrolować koszty, ponieważ wystąpienia maszyn wirtualnych nie są tworzone w sposób ciągły, zaś akceptowalna wydajność jest zrównoważona z minimalną liczbą wystąpień, które pozostają w zdarzeniu skalowania w pionie. 
 
-Rozwiązania ansible umożliwia skalowanie zestawów skalowania w określonym dniu lub cyklicznym harmonogramie.
+Ansible umożliwia skalowanie zestawów skalowania według określonej daty lub harmonogramu cyklicznego.
 
-Kod element PlayBook w tej sekcji zwiększa liczbę wystąpień maszyn wirtualnych do trzech o 10:00 co poniedziałek.
+Kod podręcznika w tej sekcji zwiększa liczbę wystąpień maszyn wirtualnych do trzech o 10:00 w każdy poniedziałek.
 
 Zapisz następujący podręcznik jako `vmss-auto-scale.yml`:
 
@@ -77,21 +77,21 @@ Zapisz następujący podręcznik jako `vmss-auto-scale.yml`:
               - '10'
 ```
 
-Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
+Uruchom podręcznik za `ansible-playbook` pomocą polecenia:
 
 ```bash
 ansible-playbook vmss-auto-scale.yml
 ```
 
-## <a name="autoscale-based-on-performance-data"></a>Automatyczne skalowanie na podstawie danych wydajności
+## <a name="autoscale-based-on-performance-data"></a>Skalowanie automatyczne na podstawie danych dotyczących wydajności
 
-Wraz ze wzrostem zapotrzebowania aplikacji zwiększa się obciążenie wystąpień maszyn wirtualnych w zestawach skalowania. Jeśli wzrost obciążenia ma cechy stałego trendu, można skonfigurować reguły skalowania automatycznego umożliwiające zwiększenie liczby wystąpień maszyn wirtualnych w zestawie skalowania. Gdy aplikacje zostaną wdrożone, zestaw skalowania rozpoczyna kierowanie ruchu do nowo utworzonych wystąpień maszyn wirtualnych za pośrednictwem modułu równoważenia obciążenia. Rozwiązania ansible umożliwia kontrolowanie metryk, które mają być monitorowane, takich jak użycie procesora CPU, użycie dysku i czas ładowania aplikacji. Można skalować zestawy skalowania w poziomie i skalować je na podstawie progów metryk wydajności, cyklicznego harmonogramu lub w określonym dniu. 
+Wraz ze wzrostem zapotrzebowania aplikacji zwiększa się obciążenie wystąpień maszyn wirtualnych w zestawach skalowania. Jeśli wzrost obciążenia ma cechy stałego trendu, można skonfigurować reguły skalowania automatycznego umożliwiające zwiększenie liczby wystąpień maszyn wirtualnych w zestawie skalowania. Gdy aplikacje zostaną wdrożone, zestaw skalowania rozpoczyna kierowanie ruchu do nowo utworzonych wystąpień maszyn wirtualnych za pośrednictwem modułu równoważenia obciążenia. Ansible pozwala kontrolować, jakie metryki do monitorowania, takie jak użycie procesora CPU, użycie dysku i czas ładowania aplikacji. Można skalować i skalować w poziomie w zestawach skalowania na podstawie progów metryki wydajności, harmonogramu cyklicznego lub określonej daty. 
 
-Kod element PlayBook w tej sekcji sprawdza obciążenie procesora CPU przez poprzednie 10 minut o 18:00 co poniedziałek. 
+Kod podręcznika w tej sekcji sprawdza obciążenie procesora CPU dla poprzednich 10 minut o godzinie 18:00 w każdy poniedziałek. 
 
-W oparciu o metryki procentu procesora CPU element PlayBook wykonuje jedną z następujących akcji:
+Na podstawie metryk procentowych procesora CPU podręcznik wykonuje jedną z następujących czynności:
 
-- Skalowanie liczby wystąpień maszyn wirtualnych do czterech
+- Skaluje liczbę wystąpień maszyn wirtualnych do czterech
 - Skaluje liczbę wystąpień maszyn wirtualnych do jednego
 
 Zapisz następujący podręcznik jako `vmss-auto-scale-metrics.yml`:
@@ -171,15 +171,15 @@ Zapisz następujący podręcznik jako `vmss-auto-scale-metrics.yml`:
             value: '1'
 ```
 
-Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
+Uruchom podręcznik za `ansible-playbook` pomocą polecenia:
 
 ```bash
 ansible-playbook vmss-auto-scale-metrics.yml
 ```
 
-## <a name="get-autoscale-settings-information"></a>Pobierz informacje o ustawieniach automatycznego skalowania 
+## <a name="get-autoscale-settings-information"></a>Uzyskaj informacje o ustawieniach skalowania automatycznego 
 
-Kod element PlayBook w tej sekcji używa modułu `azure_rm_autoscale_facts`, aby pobrać szczegóły ustawienia skalowania automatycznego.
+Kod podręcznika w tej sekcji `azure_rm_autoscale_facts` używa modułu do pobierania szczegółów ustawienia skalowania automatycznego.
 
 Zapisz następujący podręcznik jako `vmss-auto-scale-get-settings.yml`:
 
@@ -199,17 +199,17 @@ Zapisz następujący podręcznik jako `vmss-auto-scale-get-settings.yml`:
         var: autoscale_query.autoscales[0]
 ```
 
-Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
+Uruchom podręcznik za `ansible-playbook` pomocą polecenia:
 
 ```bash
 ansible-playbook vmss-auto-scale-get-settings.yml
 ```
 
-## <a name="disable-autoscale-settings"></a>Wyłącz ustawienia skalowania automatycznego
+## <a name="disable-autoscale-settings"></a>Wyłączanie ustawień skalowania automatycznego
 
-Istnieją dwa sposoby wyłączenia ustawień skalowania automatycznego. Jednym ze sposobów jest zmiana klucza `enabled` z `true` na `false`. Drugi sposób polega na usunięciu tego ustawienia.
+Istnieją dwa sposoby wyłączania ustawień skalowania automatycznego. Jednym ze sposobów `enabled` jest `true` zmiana `false`klucza z na . Drugim sposobem jest usunięcie ustawienia.
 
-Kod element PlayBook w tej sekcji usuwa ustawienie skalowania automatycznego. 
+Kod podręcznika w tej sekcji powoduje usunięcie ustawienia skalowania automatycznego. 
 
 Zapisz następujący podręcznik jako `vmss-auto-scale-delete-setting.yml`:
 
@@ -226,7 +226,7 @@ Zapisz następujący podręcznik jako `vmss-auto-scale-delete-setting.yml`:
          state: absent
 ```
 
-Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
+Uruchom podręcznik za `ansible-playbook` pomocą polecenia:
 
 ```bash
 vmss-auto-scale-delete-setting.yml
@@ -235,4 +235,4 @@ vmss-auto-scale-delete-setting.yml
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"] 
-> [Samouczek: aktualizowanie niestandardowego obrazu zestawów skalowania maszyn wirtualnych platformy Azure za pomocą rozwiązania ansible](./ansible-vmss-update-image.md)
+> [Samouczek: Aktualizowanie niestandardowego obrazu zestawów skalowania maszyny wirtualnej platformy Azure przy użyciu ansible](./ansible-vmss-update-image.md)

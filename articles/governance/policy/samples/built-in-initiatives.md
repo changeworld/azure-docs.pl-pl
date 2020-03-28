@@ -1,20 +1,20 @@
 ---
-title: Lista wbudowanych inicjatyw zasad
-description: Utwórz listę wbudowanych inicjatyw zasad dla Azure Policy. Kategorie obejmują zgodność z przepisami, konfigurację gościa i inne.
+title: Lista wbudowanych inicjatyw politycznych
+description: Wyświetl listę wbudowanych inicjatyw zasad dla zasad platformy Azure. Kategorie obejmują zgodność z przepisami, konfigurację gościa i inne.
 ms.date: 01/31/2020
 ms.topic: sample
 ms.openlocfilehash: f98a5d611e807875390102d67efd1b0f0f262628
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79239749"
 ---
-# <a name="azure-policy-built-in-initiative-definitions"></a>Azure Policy wbudowane definicje inicjatyw
+# <a name="azure-policy-built-in-initiative-definitions"></a>Wbudowane definicje inicjatywy usługi Azure Policy
 
-Ta strona jest indeksem Azure Policy wbudowanych definicji inicjatywy.
+Ta strona jest indeksem wbudowanych definicji inicjatywy usługi Azure Policy.
 
-Nazwa każdego wbudowanego łącza do źródła definicji inicjatywy w [Azure Policy repozytorium GitHub](https://github.com/Azure/azure-policy). Wbudowane elementy są pogrupowane według właściwości **Category** w **metadanych**. Aby przejść do określonej **kategorii**, użyj menu po prawej stronie. W przeciwnym razie użyj <kbd>kombinacji klawiszy Ctrl</kbd>-<kbd>F</kbd> , aby użyć funkcji wyszukiwania przeglądarki.
+Nazwa na każdym wbudowanym łączu do źródła definicji inicjatywy w [repozytorium Usługi Azure Policy GitHub](https://github.com/Azure/azure-policy). Wbudowane są pogrupowane według właściwości **kategorii** w **metadanych**. Aby przejść do określonej **kategorii,** użyj menu po prawej stronie strony. W przeciwnym razie użyj <kbd>klawisza Ctrl</kbd>-<kbd>F,</kbd> aby korzystać z funkcji wyszukiwania przeglądarki.
 
 [!INCLUDE [azure-policy-samples-policyset-index](../../../../includes/azure-policy-samples-policyset-index.md)]
 

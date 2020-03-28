@@ -1,51 +1,51 @@
 ---
-title: Samouczek — Tworzenie maszyny wirtualnej lub zestawu skalowania maszyn wirtualnych na podstawie galerii udostępnionych obrazów systemu Azure za pomocą rozwiązania ansible
-description: Dowiedz się, jak za pomocą rozwiązania ansible utworzyć maszynę wirtualną lub zestaw skalowania maszyn wirtualnych na podstawie uogólnionego obrazu w galerii obrazów udostępnionych.
-keywords: rozwiązania ansible, Azure, DevOps, bash, element PlayBook, maszyna wirtualna, zestaw skalowania maszyn wirtualnych, Galeria obrazów udostępnionych
+title: Samouczek — tworzenie zestawu skalowania maszyny wirtualnej lub maszyny wirtualnej z galerii obrazów udostępnionych platformy Azure przy użyciu aplikacji Ansible
+description: Dowiedz się, jak używać ansible do tworzenia zestawu skalowania maszyny wirtualnej lub maszyny wirtualnej na podstawie uogólnionego obrazu w Galerii obrazów udostępnionych.
+keywords: ansible, azure, devops, bash, playbook, maszyna wirtualna, zestaw skalowania maszyny wirtualnej, galeria obrazów udostępnionych
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.openlocfilehash: f784419736854095cc1bc5da14f3867ac3f7eb12
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74155828"
 ---
-# <a name="tutorial-create-a-vm-or-virtual-machine-scale-set-from-the-azure-shared-image-gallery-using-ansible"></a>Samouczek: Tworzenie maszyny wirtualnej lub zestawu skalowania maszyn wirtualnych na podstawie galerii udostępnionych obrazów systemu Azure za pomocą rozwiązania ansible
+# <a name="tutorial-create-a-vm-or-virtual-machine-scale-set-from-the-azure-shared-image-gallery-using-ansible"></a>Samouczek: Tworzenie zestawu skalowania maszyny wirtualnej lub maszyny wirtualnej z galerii obrazów udostępnionych platformy Azure przy użyciu metody ansible
 
 [!INCLUDE [ansible-29-note.md](../../includes/ansible-29-note.md)]
 
-[Udostępniona Galeria obrazów](/azure/virtual-machines/windows/shared-image-galleries) to usługa, która umożliwia łatwe zarządzanie, udostępnianie i organizowanie niestandardowych obrazów zarządzanych. Ta funkcja jest korzystna dla scenariuszy, w których wiele obrazów jest utrzymywanych i udostępnianych. Obrazy niestandardowe mogą być współużytkowane przez subskrypcje i między Azure Active Directory dzierżawcami. Obrazy mogą być również replikowane do wielu regionów w celu szybkiego skalowania wdrożenia.
+[Shared Image Gallery](/azure/virtual-machines/windows/shared-image-galleries) to usługa, która umożliwia łatwe zarządzanie, udostępnianie i organizowanie obrazów zarządzanych na zamówienie. Ta funkcja jest korzystna dla scenariuszy, w których wiele obrazów są przechowywane i udostępniane. Obrazy niestandardowe mogą być udostępniane w ramach subskrypcji i między dzierżawami usługi Azure Active Directory. Obrazy mogą być również replikowane do wielu regionów w celu szybszego skalowania wdrażania.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
-> * Tworzenie uogólnionej maszyny wirtualnej i obrazu niestandardowego
+> * Tworzenie uogólnionej maszyny Wirtualnej i obrazu niestandardowego
 > * Tworzenie galerii obrazów udostępnionych
-> * Tworzenie udostępnionego obrazu i wersji obrazu
-> * Tworzenie maszyny wirtualnej przy użyciu uogólnionego obrazu
-> * Tworzenie zestawu skalowania maszyn wirtualnych przy użyciu uogólnionego obrazu
-> * Uzyskaj informacje na temat udostępnionej galerii obrazów, obrazu i wersji.
+> * Tworzenie udostępnionej wersji obrazu i obrazu
+> * Tworzenie maszyny wirtualnej przy użyciu obrazu uogólnionego
+> * Tworzenie zestawu skalowania maszyny wirtualnej przy użyciu obrazu uogólnionego
+> * Uzyskaj informacje o udostępnionej galerii obrazów, obrazie i wersji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="get-the-sample-playbooks"></a>Pobierz przykładową elementy PlayBook
+## <a name="get-the-sample-playbooks"></a>Pobierz przykładowe podręczniki
 
-Istnieją dwa sposoby uzyskania pełnego zestawu przykładowych elementy PlayBook:
+Istnieją dwa sposoby uzyskania pełnego zestawu przykładowych podręczników:
 
-- [Pobierz folder SIG](https://github.com/Azure-Samples/ansible-playbooks/tree/master/SIG_generalized_image) i Zapisz go na komputerze lokalnym.
-- Utwórz nowy plik dla każdej sekcji i skopiuj do niego przykładową element PlayBook.
+- [Pobierz folder SIG](https://github.com/Azure-Samples/ansible-playbooks/tree/master/SIG_generalized_image) i zapisz go na swoim lokalnym komputerze.
+- Utwórz nowy plik dla każdej sekcji i skopiuj w niej przykładowy podręcznik.
 
-Plik `vars.yml` zawiera zmienne używane przez wszystkie Przykładowe elementy PlayBook dla tego samouczka. Plik można edytować w celu zapewnienia unikatowych nazw i wartości.
+Plik `vars.yml` zawiera zmienne używane przez wszystkie przykładowe podręczniki dla tego samouczka. Można edytować plik, aby podać unikatowe nazwy i wartości.
 
-Pierwszy przykładowy element PlayBook `00-prerequisites.yml` tworzy, co jest niezbędne do ukończenia tego samouczka:
-- Grupa zasobów, która jest kontenerem logicznym, w którym są wdrażane i zarządzane zasoby platformy Azure.
-- Sieć wirtualna; podsieci publiczny adres IP i karta sieciowa dla maszyny wirtualnej.
-- Źródłowa maszyna wirtualna, która jest używana do tworzenia uogólnionego obrazu.
+Pierwszy przykładowy `00-prerequisites.yml` podręcznik tworzy to, co jest niezbędne do ukończenia tego samouczka:
+- Grupa zasobów, która jest kontenerem logicznym, w którym zasoby platformy Azure są wdrażane i zarządzane.
+- Sieć wirtualna; podsieci; publicznego adresu IP i karty interfejsu sieciowego maszyny Wirtualnej.
+- Źródło maszyny wirtualnej, który jest używany do tworzenia obrazu uogólnionego.
 
 ```yml
 - hosts: localhost
@@ -100,17 +100,17 @@ Pierwszy przykładowy element PlayBook `00-prerequisites.yml` tworzy, co jest ni
           version: latest
 ```
 
-Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
+Uruchom podręcznik za `ansible-playbook` pomocą polecenia:
 
 ```bash
 ansible-playbook 00-prerequisites.yml
 ```
 
-W [Azure Portal](https://portal.azure.com)Sprawdź grupę zasobów określoną w `vars.yml`, aby wyświetlić nową maszynę wirtualną i różne utworzone zasoby.
+W [witrynie Azure portal](https://portal.azure.com)sprawdź grupę zasobów określoną w `vars.yml` celu wyświetlenia nowej maszyny wirtualnej i różnych utworzonych zasobów.
 
-## <a name="generalize-the-vm-and-create-a-custom-image"></a>Uogólnianie maszyny wirtualnej i tworzenie obrazu niestandardowego
+## <a name="generalize-the-vm-and-create-a-custom-image"></a>Uogólnianie maszyny Wirtualnej i tworzenie obrazu niestandardowego
 
-Następna element PlayBook, `01a-create-generalized-image.yml`, uogólnił źródłową maszynę wirtualną utworzoną w poprzednim kroku, a następnie tworzy na jej podstawie niestandardowy obraz.
+Następny podręcznik , `01a-create-generalized-image.yml`uogólnia źródłową maszynę wirtualną utworzoną w poprzednim kroku, a następnie utwórz obraz niestandardowy na jej podstawie.
 
 ```yml
 - hosts: localhost
@@ -132,17 +132,17 @@ Następna element PlayBook, `01a-create-generalized-image.yml`, uogólnił źró
         source: "{{ source_vm_name }}"
 ```
 
-Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
+Uruchom podręcznik za `ansible-playbook` pomocą polecenia:
 
 ```bash
 ansible-playbook 01a-create-generalized-image.yml
 ```
 
-Sprawdź grupę zasobów i upewnij się, że `testimagea` wyświetlana.
+Sprawdź grupę zasobów `testimagea` i upewnij się, że jest wyświetlany.
 
 ## <a name="create-the-shared-image-gallery"></a>Tworzenie galerii obrazów udostępnionych
 
-Galeria obrazów jest repozytorium do udostępniania obrazów i zarządzania nimi. Przykładowy kod element PlayBook w `02-create-shared-image-gallery.yml` tworzy galerii obrazów udostępnionych w grupie zasobów.
+Galeria zdjęć jest repozytorium do udostępniania i zarządzania obrazami. Przykładowy kod podręcznika w `02-create-shared-image-gallery.yml` tworzy Galerię obrazów udostępnionych w grupie zasobów.
 
 ```yml
 - hosts: localhost
@@ -159,19 +159,19 @@ Galeria obrazów jest repozytorium do udostępniania obrazów i zarządzania nim
         description: This is the gallery description.
 ```
 
-Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
+Uruchom podręcznik za `ansible-playbook` pomocą polecenia:
 
 ```bash
 ansible-playbook 02-create-shared-image-gallery.yml
 ```
 
-Zobaczysz teraz nową galerię, `myGallery`w grupie zasobów.
+Teraz zobaczysz nową galerię w `myGallery`grupie zasobów.
 
-## <a name="create-a-shared-image-and-image-version"></a>Tworzenie udostępnionego obrazu i wersji obrazu
+## <a name="create-a-shared-image-and-image-version"></a>Tworzenie udostępnionej wersji obrazu i obrazu
 
-Następna element PlayBook `03a-create-shared-image-generalized.yml` tworzy definicję obrazu i wersję obrazu.
+Następny podręcznik, `03a-create-shared-image-generalized.yml` tworzy definicję obrazu i wersję obrazu.
 
-Definicje obrazu obejmują typ obrazu (system Windows lub Linux), informacje o wersji oraz minimalne i maksymalne wymagania dotyczące pamięci. Wersja obrazu jest wersją obrazu. Galeria, definicja obrazu i wersja obrazu ułatwiają organizowanie obrazów w grupach logicznych. 
+Definicje obrazów obejmują typ obrazu (Windows lub Linux), informacje o wersji oraz minimalne i maksymalne wymagania dotyczące pamięci. Wersja obrazu jest wersją obrazu. Galeria, definicja obrazu i wersja obrazu ułatwiają organizowanie obrazów w grupach logicznych. 
 
 ```yml
 - hosts: localhost
@@ -221,17 +221,17 @@ Definicje obrazu obejmują typ obrazu (system Windows lub Linux), informacje o w
         var: output
 ```
 
-Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
+Uruchom podręcznik za `ansible-playbook` pomocą polecenia:
 
 ```bash
 ansible-playbook 03a-create-shared-image-generalized.yml
 ```
 
-Twoja grupa zasobów ma teraz definicję obrazu i wersję obrazu dla galerii.
+Grupa zasobów ma teraz definicję obrazu i wersję obrazu dla galerii.
 
 ## <a name="create-a-vm-based-on-the-generalized-image"></a>Tworzenie maszyny wirtualnej na podstawie uogólnionego obrazu
 
-Na koniec Uruchom `04a-create-vm-using-generalized-image.yml`, aby utworzyć maszynę wirtualną na podstawie uogólnionego obrazu utworzonego w poprzednim kroku.
+Na koniec `04a-create-vm-using-generalized-image.yml` uruchom, aby utworzyć maszynę wirtualną na podstawie uogólnionego obrazu utworzonego w poprzednim kroku.
 
 ```yml
 - hosts: localhost
@@ -252,15 +252,15 @@ Na koniec Uruchom `04a-create-vm-using-generalized-image.yml`, aby utworzyć mas
         id: "/subscriptions/{{ lookup('env', 'AZURE_SUBSCRIPTION_ID') }}/resourceGroups/{{ resource_group }}/providers/Microsoft.Compute/galleries/{{ shared_gallery_name }}/images/{{ shared_image_name }}/versions/{{ shared_image_version }}"
 ```
 
-Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
+Uruchom podręcznik za `ansible-playbook` pomocą polecenia:
 
 ```bash
 ansible-playbook 04a-create-vm-using-generalized-image.yml
 ```
 
-## <a name="create-a-virtual-machine-scale-sets-based-on-the-generalized-image"></a>Tworzenie zestawów skalowania maszyn wirtualnych na podstawie uogólnionego obrazu
+## <a name="create-a-virtual-machine-scale-sets-based-on-the-generalized-image"></a>Tworzenie zestawów skalowania maszyny wirtualnej na podstawie obrazu uogólnionego
 
-Możesz również utworzyć zestaw skalowania maszyn wirtualnych na podstawie uogólnionego obrazu. Uruchom `05a-create-vmss-using-generalized-image.yml`, aby to zrobić.
+Można również utworzyć zestaw skalowania maszyny wirtualnej na podstawie obrazu uogólnionego. Uruchom, `05a-create-vmss-using-generalized-image.yml` aby to zrobić.
 
 ```yml
 - hosts: localhost
@@ -285,7 +285,7 @@ Możesz również utworzyć zestaw skalowania maszyn wirtualnych na podstawie uo
         id: "/subscriptions/{{ lookup('env', 'AZURE_SUBSCRIPTION_ID') }}/resourceGroups/{{ resource_group }}/providers/Microsoft.Compute/galleries/{{ shared_gallery_name }}/images/{{ shared_image_name }}/versions/{{ shared_image_version }}"
 ```
 
-Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
+Uruchom podręcznik za `ansible-playbook` pomocą polecenia:
 
 ```bash
 ansible-playbook 05a-create-vmss-using-generalized-image.yml
@@ -293,7 +293,7 @@ ansible-playbook 05a-create-vmss-using-generalized-image.yml
 
 ## <a name="get-information-about-the-gallery"></a>Uzyskaj informacje o galerii
 
-Możesz uzyskać informacje na temat galerii, definicji obrazu i wersji, uruchamiając `06-get-info.yml`.
+Informacje o galerii, definicji obrazu i `06-get-info.yml`wersji można uzyskać, uruchamiając program .
 
 ```yml
 - hosts: localhost
@@ -319,7 +319,7 @@ Możesz uzyskać informacje na temat galerii, definicji obrazu i wersji, urucham
       name: "{{ shared_image_version }}"
 ```
 
-Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
+Uruchom podręcznik za `ansible-playbook` pomocą polecenia:
 
 ```bash
 ansible-playbook 06-get-info.yml
@@ -327,7 +327,7 @@ ansible-playbook 06-get-info.yml
 
 ## <a name="delete-the-shared-image"></a>Usuwanie obrazu udostępnionego
 
-Aby usunąć zasoby galerii, zapoznaj się z przykładem element PlayBook `07-delete-gallery.yml`. Usuwanie zasobów w odwrotnej kolejności. Zacznij od usunięcia wersji obrazu. Po usunięciu wszystkich wersji obrazu można usunąć definicję obrazu. Po usunięciu wszystkich definicji obrazu można usunąć galerię.
+Aby usunąć zasoby galerii, zapoznaj `07-delete-gallery.yml`się z przykładowym podręcznikiem . Usuwanie zasobów w odwrotnej kolejności. Zacznij od usunięcia wersji obrazu. Po usunięciu wszystkich wersji obrazu można usunąć definicję obrazu. Po usunięciu wszystkich definicji obrazów można usunąć galerię.
 
 ```yml
 - hosts: localhost
@@ -358,7 +358,7 @@ Aby usunąć zasoby galerii, zapoznaj się z przykładem element PlayBook `07-de
       state: absent
 ```
 
-Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
+Uruchom podręcznik za `ansible-playbook` pomocą polecenia:
 
 ```bash
 ansible-playbook 07-delete-gallery.yml
@@ -366,11 +366,11 @@ ansible-playbook 07-delete-gallery.yml
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie jest już potrzebne, Usuń zasoby utworzone w tym artykule. 
+Gdy nie są już potrzebne, usuń zasoby utworzone w tym artykule. 
 
-Przykładowy kod element PlayBook w tej sekcji jest używany do:
+Przykładowy kod podręcznika w tej sekcji jest używany do:
 
-- Usuń dwie utworzone wcześniej grupy zasobów
+- Usuwanie dwóch grup zasobów utworzonych wcześniej
 
 Zapisz następujący podręcznik jako `cleanup.yml`:
 
@@ -386,12 +386,12 @@ Zapisz następujący podręcznik jako `cleanup.yml`:
         state: absent
 ```
 
-Poniżej przedstawiono niektóre kluczowe uwagi, które należy wziąć pod uwagę podczas pracy z przykładową element PlayBook:
+Oto kilka kluczowych uwag, które należy wziąć pod uwagę podczas pracy z przykładowym podręcznikiem:
 
-- Zastąp symbol zastępczy `{{ resource_group_name }}` nazwą grupy zasobów.
+- Zastąp `{{ resource_group_name }}` symbol zastępczy nazwą grupy zasobów.
 - Wszystkie zasoby w ramach dwóch określonych grup zasobów zostaną usunięte.
 
-Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
+Uruchom podręcznik za `ansible-playbook` pomocą polecenia:
 
 ```bash
 ansible-playbook cleanup.yml

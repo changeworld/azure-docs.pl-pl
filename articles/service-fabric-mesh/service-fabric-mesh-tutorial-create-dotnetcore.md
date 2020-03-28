@@ -1,5 +1,5 @@
 ---
-title: Tworzenie i wdrażanie aplikacji wielousługowej w celu Service Fabric siatki
+title: Tworzenie, wdrażanie aplikacji z wieloma usługami w sieci szkieletowej usługi
 description: W tym samouczku utworzysz wielousługową aplikację usługi Azure Service Fabric Mesh składającą się z witryny internetowej ASP.NET Core, która komunikuje się z usługą internetową zaplecza, a następnie zdebugujesz ją lokalnie i opublikujesz na platformie Azure.
 author: dkkapur
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: e3a6ee382208119e46a816790c15ae47f16be57e
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75495189"
 ---
 # <a name="tutorial-create-debug-deploy-and-upgrade-a-multi-service-service-fabric-mesh-app"></a>Samouczek: tworzenie, debugowanie, wdrażanie i aktualizowanie aplikacji usługi Service Fabric Mesh dla wielu usług
@@ -34,7 +34,7 @@ Część pierwsza serii zawiera informacje na temat wykonywania następujących 
 Ta seria samouczków zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
 > * Tworzenie aplikacji usługi Service Fabric Mesh w programie Visual Studio
-> * [Debugowanie aplikacji usługi Service Fabric Mesh w lokalnym klastrze projektowym](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
+> * [Debugowanie aplikacji usługi Service Fabric Mesh działającej w lokalnym klastrze projektowym](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
 > * [Wdrażanie aplikacji usługi Service Fabric Mesh](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
 > * [Uaktualnianie aplikacji usługi Service Fabric Mesh](service-fabric-mesh-tutorial-upgrade.md)
 > * [Czyszczenie zasobów usługi Service Fabric Mesh](service-fabric-mesh-tutorial-cleanup-resources.md)
@@ -45,13 +45,13 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 
 Przed rozpoczęciem tego samouczka:
 
-* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem możesz [utworzyć bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 * Upewnij się, że masz [skonfigurowane środowisko projektowe](service-fabric-mesh-howto-setup-developer-environment-sdk.md) z zainstalowanym środowiskiem uruchomieniowym usługi Service Fabric, zestawem SDK, platformą Docker i programem Visual Studio 2017.
 
 ## <a name="create-a-service-fabric-mesh-project-in-visual-studio"></a>Tworzenie projektu usługi Service Fabric Mesh w programie Visual Studio
 
-Otwórz program Visual Studio, a następnie wybierz pozycję **Plik** > **Nowy** > **Projekt**.
+Uruchom program Visual Studio i wybierz **pozycję Plik** > **nowego** > **projektu...**
 
 W oknie dialogowym **Nowy projekt** w polu **Wyszukaj** u góry wpisz `mesh`. Wybierz szablon **Aplikacja Service Fabric Mesh**. Jeśli go nie widzisz, upewnij się, że zainstalowano zestaw SDK usługi Mesh i narzędzia VS w wersji zapoznawczej zgodnie z opisem w temacie [Konfigurowanie środowiska projektowego](service-fabric-mesh-howto-setup-developer-environment-sdk.md).  
 
@@ -81,7 +81,7 @@ Masz już aplikację usługi Service Fabric Mesh. Kolejnym krokiem jest utworzen
 
 Dla uproszczenia elementy do wykonania są przechowywane na liście w pamięci. Utwórz bibliotekę klas do obsługi elementów do wykonania oraz listę służącą do ich przechowywania. W programie Visual Studio przy załadowanym rozwiązaniu **todolistapp** wybierz pozycję **Plik** > **Dodaj** > **Nowy projekt**.
 
-W oknie dialogowym **Dodawanie nowego projektu** w polu **Wyszukaj** u góry wpisz `C# .net core class`. Wybierz szablon **Biblioteka klas (.NET Core)** .
+W oknie dialogowym **Dodawanie nowego projektu** w polu **Wyszukaj** u góry wpisz `C# .net core class`. Wybierz szablon **Biblioteka klas (.NET Core)**.
 
 W polu **Nazwa** wpisz `Model`. Kliknij przycisk **OK**, aby utworzyć bibliotekę klas.
 
@@ -117,7 +117,7 @@ public class ToDoItem
 
 Ta klasa reprezentuje elementy do wykonania.
 
-W programie Visual Studio kliknij prawym przyciskiem myszy bibliotekę klas **Model**, a następnie wybierz polecenie **Dodaj** > **Klasa...** , aby utworzyć listę do przechowywania elementów do wykonania. Zostanie wyświetlone okno dialogowe **Dodawanie nowego elementu**. Opcję **Nazwa** ustaw na wartość `ToDoList.cs` i kliknij przycisk **Dodaj**.
+W programie Visual Studio kliknij prawym przyciskiem myszy bibliotekę klas **Model**, a następnie wybierz polecenie **Dodaj** > **Klasa...**, aby utworzyć listę do przechowywania elementów do wykonania. Zostanie wyświetlone okno dialogowe **Dodawanie nowego elementu**. Opcję **Nazwa** ustaw na wartość `ToDoList.cs` i kliknij przycisk **Dodaj**.
 
 W pliku **ToDoList.cs** do pustego elementu `class ToDoList` skopiuj następującą zawartość:
 
@@ -185,7 +185,7 @@ Pojawi się okno dialogowe **Nowa aplikacja internetowa platformy ASP.NET Core**
 
 Ponieważ usługa zaplecza nie udostępnia żadnego interfejsu użytkownika, wyłącz opcję uruchamiania przeglądarki po uruchomieniu usługi. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy pozycję **ToDoService**, a następnie wybierz polecenie **Właściwości**. W wyświetlonym oknie właściwości wybierz kartę **Debugowanie** po lewej stronie, a następnie usuń zaznaczenie pola wyboru **Uruchom przeglądarkę**. Naciśnij klawisze **Ctrl+S**, aby zapisać zmiany.
 
-Ponieważ ta usługa przechowuje informacje o elementach do wykonania, dodaj odwołanie do biblioteki klas modelu. W Eksplorator rozwiązań kliknij prawym przyciskiem myszy pozycję **ToDoService** , a następnie wybierz pozycję **Dodaj** **odwołanie > ..** .. Zostanie wyświetlone okno dialogowe **Menedżer odwołań** .
+Ponieważ ta usługa przechowuje informacje o elementach do wykonania, dodaj odwołanie do biblioteki klas modelu. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy **pozycję ToDoService,** a następnie wybierz polecenie **Dodaj** > **odwołanie...**. Zostanie **wyświetlone** okno dialogowe Menedżera odwołań.
 
 W oknie dialogowym **Menadżer odwołań** zaznacz pole wyboru obok pozycji **Model** i kliknij przycisk **OK**.
 
@@ -268,7 +268,7 @@ W tym samouczku skupiono się na komunikacji z inną usługą — operacje dodaw
 Po zaimplementowaniu usługi zaplecza należy opracować kod witryny internetowej, w której będą wyświetlane udostępnione elementy do wykonania. Projekt **WebFrontEnd** obejmuje następujące kroki.
 
 Strona internetowa służąca do wyświetlania elementów do wykonania wymaga dostępu do klasy **ToDoItem** i listy.
-W **Eksplorator rozwiązań**Dodaj odwołanie do projektu modelu przez kliknięcie prawym przyciskiem myszy elementu **webfronton** i wybranie pozycji **Dodaj** **odwołanie > ...** Zostanie wyświetlone okno dialogowe **Menedżer odwołań** .
+W **Eksploratorze rozwiązań**dodaj odwołanie do projektu Modelu, klikając prawym przyciskiem myszy **webfrontend** i wybierając **polecenie Dodaj** > **odwołanie...** Zostanie **wyświetlone** okno dialogowe Menedżera odwołań.
 
 W oknie dialogowym **Menadżer odwołań** kliknij pole wyboru obok pozycji **Model** i kliknij przycisk **OK**.
 
@@ -346,7 +346,7 @@ Adres URL składa się z nazwy usługi i portu. Wszystkie te informacje można z
 
 > [!IMPORTANT]
 > W poniższych krokach zostaną zmodyfikowane pliki YAML.
-> Do uzyskania efektu wcięcia zmiennych w pliku service.yaml należy użyć spacji, a nie znaków tabulacji. W przeciwnym razie plik nie zostanie skompilowany. Program Visual Studio może wstawiać znaki tabulacji podczas tworzenia zmiennych środowiskowych. Wszystkie znaki tabulacji należy zastąpić spacjami. Mimo że dane wyjściowe debugowania **kompilacji** będą zawierać błędy, aplikacja zostanie uruchomiona, lecz nie będzie działać poprawnie do momentu przekonwertowania tabulatorów na spacje i ponownego skompilowania. Aby upewnić się, że plik service.yaml nie zawiera znaków tabulacji, w edytorze Visual Studio można włączyć wyświetlanie białych znaków, wybierając pozycję **Edytuj**  > **Zaawansowane**  > **Wyświetl białe znaki**.
+> Do uzyskania efektu wcięcia zmiennych w pliku service.yaml należy użyć spacji, a nie znaków tabulacji. W przeciwnym razie plik nie zostanie skompilowany. Program Visual Studio może wstawiać znaki tabulacji podczas tworzenia zmiennych środowiskowych. Wszystkie znaki tabulacji należy zastąpić spacjami. Mimo że dane wyjściowe debugowania **kompilacji** będą zawierać błędy, aplikacja zostanie uruchomiona, lecz nie będzie działać poprawnie do momentu przekonwertowania tabulatorów na spacje i ponownego skompilowania. Aby upewnić się, że w pliku service.yaml nie ma kart, można uwidocznić odstępy w edytorze Programu Visual Studio za pomocą **funkcji Edytuj**  > **biały widok****zaawansowany**  > .
 > Należy pamiętać, że pliki service.yaml są przetwarzane przy użyciu ustawień regionalnych języka angielskiego. Na przykład dla separatora dziesiętnego należy zastosować kropkę, a nie przecinek.
 
 W **Eksploratorze rozwiązań** przejdź do projektu **ToDoService**, a następnie otwórz plik **Zasoby usługi** > **service.yaml**.

@@ -1,6 +1,6 @@
 ---
 title: Wykonywanie zapytań o dane za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB
-description: Dowiedz się, jak wykonywać zapytania dotyczące danych z interfejsu API Azure Cosmos DB dla MongoDB za pomocą poleceń powłoki MongoDB
+description: Dowiedz się, jak wysyłać zapytania do danych z interfejsu API usługi Azure Cosmos DB dla usługi MongoDB przy użyciu poleceń powłoki MongoDB
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 12/03/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 5b9bc78f6af833d89a3404de0295ddad78ebdf20
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74870143"
 ---
 # <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>Wykonywanie zapytań o dane przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB
@@ -58,11 +58,11 @@ Zapytania w tym artykule korzystają z następującego przykładowego dokumentu.
   "isRegistered": false
 }
 ```
-## <a id="examplequery1"></a> Przykładowe zapytanie 1 
+## <a name="example-query-1"></a><a id="examplequery1"></a> Przykładowe zapytanie 1 
 
 Bazując na powyższym przykładowym dokumencie dotyczącym rodziny, następujące zapytanie zwraca dokumenty, dla których pole id ma wartość `WakefieldFamily`.
 
-**Zapytanie**
+**Kwerendy**
     
     db.families.find({ id: "WakefieldFamily"})
 
@@ -108,11 +108,11 @@ Bazując na powyższym przykładowym dokumencie dotyczącym rodziny, następują
     "isRegistered": false
     }
 
-## <a id="examplequery2"></a> Przykładowe zapytanie 2 
+## <a name="example-query-2"></a><a id="examplequery2"></a>Przykładowe zapytanie 2 
 
 Następne zapytanie zwraca wszystkie dzieci w rodzinie. 
 
-**Zapytanie**
+**Kwerendy**
     
     db.families.find( { id: "WakefieldFamily" }, { children: true } )
 
@@ -141,20 +141,20 @@ Następne zapytanie zwraca wszystkie dzieci w rodzinie.
     }
 
 
-## <a id="examplequery3"></a> Przykładowe zapytanie 3 
+## <a name="example-query-3"></a><a id="examplequery3"></a> Przykładowe zapytanie 3 
 
 Następne zapytanie zwraca wszystkie zarejestrowane rodziny. 
 
-**Zapytanie**
+**Kwerendy**
     
     db.families.find( { "isRegistered" : true })
 **Wyniki** Nie zostanie zwrócony żaden dokument. 
 
-## <a id="examplequery4"></a> Przykładowe zapytanie 4
+## <a name="example-query-4"></a><a id="examplequery4"></a> Przykładowe zapytanie 4
 
 Następne zapytanie zwraca wszystkie niezarejestrowane rodziny. 
 
-**Zapytanie**
+**Kwerendy**
     
     db.families.find( { "isRegistered" : false })
 **Results**
@@ -194,11 +194,11 @@ Następne zapytanie zwraca wszystkie niezarejestrowane rodziny.
     "isRegistered": false
 }
 
-## <a id="examplequery5"></a> Przykładowe zapytanie 5
+## <a name="example-query-5"></a><a id="examplequery5"></a> Przykładowe zapytanie 5
 
 Następne zapytanie zwraca wszystkie rodziny, które nie zostały zarejestrowane i dla których stan to NY. 
 
-**Zapytanie**
+**Kwerendy**
     
      db.families.find( { "isRegistered" : false, "address.state" : "NY" })
 
@@ -240,11 +240,11 @@ Następne zapytanie zwraca wszystkie rodziny, które nie zostały zarejestrowane
 }
 
 
-## <a id="examplequery6"></a> Przykładowe zapytanie 6
+## <a name="example-query-6"></a><a id="examplequery6"></a> Przykładowe zapytanie 6
 
 Następne zapytanie zwraca wszystkie rodziny, w których dzieci chodzą do 8 klasy.
 
-**Zapytanie**
+**Kwerendy**
   
      db.families.find( { children : { $elemMatch: { grade : 8 }} } )
 
@@ -285,11 +285,11 @@ Następne zapytanie zwraca wszystkie rodziny, w których dzieci chodzą do 8 kla
     "isRegistered": false
 }
 
-## <a id="examplequery7"></a> Przykładowe zapytanie 7
+## <a name="example-query-7"></a><a id="examplequery7"></a> Przykładowe zapytanie 7
 
 Następne zapytanie zwraca wszystkie rodziny, w których rozmiar tablicy z dziećmi to 3.
 
-**Zapytanie**
+**Kwerendy**
   
       db.Family.find( {children: { $size:3} } )
 

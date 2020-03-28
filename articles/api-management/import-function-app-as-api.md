@@ -1,5 +1,5 @@
 ---
-title: Importowanie aplikacja funkcji platformy Azure jako interfejsu API w programie API Management
+title: Importowanie aplikacji funkcji platformy Azure jako interfejsu API w usłudze API Management
 titleSuffix: Azure API Management
 description: Ten samouczek przedstawia sposób importowania aplikacji funkcji platformy Azure do usługi Azure API Management jako interfejsu API.
 services: api-management
@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: apimpm
 ms.openlocfilehash: cec1d3e07800dd3093ca79a87cafcf5fceafbf2f
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77209192"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Importowanie aplikacji funkcji platformy Azure jako interfejsu API w usłudze Azure API Management
@@ -42,7 +42,7 @@ Poznasz następujące czynności:
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="add-new-api-from-azure-function-app"></a> Importowanie aplikacji funkcji platformy Azure jako nowego interfejsu API
+## <a name="import-an-azure-function-app-as-a-new-api"></a><a name="add-new-api-from-azure-function-app"></a> Importowanie aplikacji funkcji platformy Azure jako nowego interfejsu API
 
 Aby utworzyć nowy interfejs API z poziomu aplikacji funkcji platformy Azure, wykonaj poniższe kroki.
 
@@ -77,7 +77,7 @@ Aby utworzyć nowy interfejs API z poziomu aplikacji funkcji platformy Azure, wy
 
 8. Kliknij przycisk **Utwórz**.
 
-## <a name="append-azure-function-app-to-api"></a> Dołączanie aplikacji funkcji platformy Azure do istniejącego interfejsu API
+## <a name="append-azure-function-app-to-an-existing-api"></a><a name="append-azure-function-app-to-api"></a> Dołączanie aplikacji funkcji platformy Azure do istniejącego interfejsu API
 
 Aby dołączyć aplikację funkcji platformy Azure do istniejącego interfejsu API, wykonaj poniższe kroki.
 
@@ -107,18 +107,18 @@ Aby dołączyć aplikację funkcji platformy Azure do istniejącego interfejsu A
 
     ![Dodawanie z poziomu aplikacji funkcji](./media/import-function-app-as-api/add-05.png)
 
-8. Kliknij przycisk **Importuj**.
+8. Kliknij pozycję **Importuj**.
 
     ![Dołączanie z poziomu aplikacji funkcji](./media/import-function-app-as-api/append-04.png)
 
-## <a name="authorization"></a>Zgody
+## <a name="authorization"></a><a name="authorization"></a>Autoryzacji
 
 Zaimportowanie aplikacji funkcji platformy Azure powoduje automatyczne wygenerowanie:
 
-* Klucz hosta w aplikacja funkcji o nazwie APIM-{*Nazwa wystąpienia usługi API Management platformy Azure*},
-* Nazwana wartość w wystąpieniu API Management platformy Azure o nazwie {*Nazwa wystąpienia aplikacja funkcji platformy Azure*} — klucz, który zawiera utworzony klucz hosta.
+* Klucz hosta wewnątrz aplikacji funkcji o nazwie apim-{*nazwa wystąpienia usługi usługi Azure API Management*},
+* Nazwana wartość wewnątrz wystąpienia usługi Azure API Management o nazwie {*nazwa wystąpienia aplikacji funkcji Azure*}-key, która zawiera utworzony klucz hosta.
 
-W przypadku interfejsów API utworzonych po 4 kwietnia 2019 klucz hosta jest przesyłany w żądaniach HTTP od API Management do aplikacja funkcji w nagłówku. Starsze interfejsy API przekazują klucz hosta jako [parametr zapytania](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization). To zachowanie można zmienić za pomocą [wywołania interfejsu API REST](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend/update#backendcredentialscontract) `PATCH Backend` w jednostce *zaplecza* skojarzonej z aplikacja funkcji.
+W przypadku interfejsów API utworzonych po 4 kwietnia 2019 r. klucz hosta jest przekazywany w żądaniach HTTP z zarządzania interfejsami API do aplikacji funkcji w nagłówku. Starsze interfejsy API przekazują klucz hosta jako [parametr kwerendy](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization). To zachowanie może ulec `PATCH Backend` zmianie za pomocą [wywołania interfejsu API REST](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend/update#backendcredentialscontract) na encję *wewnętrznej bazy danych* skojarzonej z aplikacją funkcji.
 
 > [!WARNING]
 > Usunięcie lub zmiana wartości klucza hosta aplikacji funkcji platformy Azure lub nazwanej wartości usługi Azure API Management spowoduje przerwanie komunikacji między usługami. Wartości nie są synchronizowane automatycznie.
@@ -143,7 +143,7 @@ Przejdź do Twojego wystąpienia usługi Azure API Management i wybierz pozycję
 
 ![Dodawanie z poziomu aplikacji funkcji](./media/import-function-app-as-api/keys-01.png)
 
-## <a name="test-in-azure-portal"></a>Przetestuj nowy interfejs API w Azure Portal
+## <a name="test-the-new-api-in-the-azure-portal"></a><a name="test-in-azure-portal"></a>Testowanie nowego interfejsu API w witrynie Azure portal
 
 Operacje można wywoływać bezpośrednio w witrynie Azure Portal. Witryna Azure Portal to wygodny sposób wyświetlania i testowania operacji interfejsu API.  
 
@@ -153,7 +153,7 @@ Operacje można wywoływać bezpośrednio w witrynie Azure Portal. Witryna Azure
 
 3. Wybierz operację.
 
-    Na stronie zostaną wyświetlone pola parametrów zapytania i pola nagłówków. Jeden z nagłówków to **Ocp-Apim-Subscription-Key** dla klucza subskrypcji produktu, który został skojarzony z tym interfejsem API. Jeśli utworzono wystąpienie API Management, oznacza to, że już jesteś administratorem, więc klucz zostanie uzupełniony automatycznie. 
+    Na stronie zostaną wyświetlone pola parametrów zapytania i pola nagłówków. Jednym z nagłówków jest **Ocp-Apim-Subscription-Key**, dla klucza subskrypcji produktu skojarzonego z tym interfejsem API. Jeśli utworzono wystąpienie API Management, oznacza to, że już jesteś administratorem, więc klucz zostanie uzupełniony automatycznie. 
 
 4. Wybierz pozycję **Wyślij**.
 

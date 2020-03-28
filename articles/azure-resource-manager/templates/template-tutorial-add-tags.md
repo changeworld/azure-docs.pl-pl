@@ -1,50 +1,50 @@
 ---
-title: Samouczek — Dodawanie tagów do zasobów w szablonie
-description: Dodawanie tagów do zasobów wdrażanych w szablonie Azure Resource Manager. Tagi pozwalają logicznie organizować zasoby.
+title: Samouczek - dodawanie tagów do zasobów w szablonie
+description: Dodaj tagi do zasobów, które można wdrożyć w szablonie usługi Azure Resource Manager. Tagi umożliwiają logiczne organizowanie zasobów.
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: dd89d41e0980afcef30e11fac3ce5583f439662f
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 748a32d0ea8bfb0f23a99ce99d0aaf051118bc19
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79370716"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80369876"
 ---
-# <a name="tutorial-add-tags-in-your-resource-manager-template"></a>Samouczek: Dodawanie tagów do szablonu Menedżer zasobów
+# <a name="tutorial-add-tags-in-your-arm-template"></a>Samouczek: Dodawanie tagów w szablonie ARM
 
-W tym samouczku dowiesz się, jak dodać tagi do zasobów w szablonie. [Tagi](../management/tag-resources.md) ułatwiają logiczne organizowanie zasobów. Wartości tagów są wyświetlane w raportach kosztów. Ten samouczek trwa **8 minut** .
+W tym samouczku dowiesz się, jak dodawać tagi do zasobów w szablonie usługi Azure Resource Manager (ARM). [Tagi](../management/tag-resources.md) ułatwiają logiczne organizowanie zasobów. Wartości tagów są wyświetlane w raportach kosztów. Ten samouczek trwa **8 minut.**
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Zalecamy ukończenie [samouczka dotyczącego szablonów szybkiego startu](template-tutorial-quickstart-template.md), ale nie jest to wymagane.
+Zalecamy ukończenie [samouczka na temat szablonów szybkiego startu,](template-tutorial-quickstart-template.md)ale nie jest to wymagane.
 
-Musisz mieć Visual Studio Code z rozszerzeniem narzędzi Menedżer zasobów i Azure PowerShell lub interfejsu wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zobacz [Narzędzia szablonu](template-tutorial-create-first-template.md#get-tools).
+Musisz mieć program Visual Studio Code z rozszerzeniem Narzędzia Menedżera zasobów i azure powershell lub interfejsu wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zobacz [narzędzia szablonów](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-template"></a>Przejrzyj szablon
+## <a name="review-template"></a>Szablon recenzji
 
-Poprzedni szablon został wdrożony, konto magazynu, plan App Service i aplikacja internetowa.
+Poprzedni szablon wdrożył konto magazynu, plan usługi app service i aplikację sieci web.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json":::
 
-Po wdrożeniu tych zasobów może być konieczne śledzenie kosztów i znajdowanie zasobów należących do kategorii. Możesz dodać tagi, aby pomóc w rozwiązaniu tych problemów.
+Po wdrożeniu tych zasobów może być konieczne śledzenie kosztów i znajdowanie zasobów należących do kategorii. Możesz dodać tagi, aby pomóc rozwiązać te problemy.
 
 ## <a name="add-tags"></a>Dodawanie tagów
 
-Oznacz zasoby, aby dodać wartości, które ułatwiają identyfikację ich użycia. Na przykład można dodać tagi, które wyświetlają środowisko i projekt. Można dodać tagi, które identyfikują centrum kosztów lub zespół, który jest właścicielem zasobu. Dodaj wszystkie wartości, które mają sens dla organizacji.
+Oznaczasz zasoby, aby dodać wartości, które ułatwiają identyfikację ich użycia. Na przykład można dodać tagi, które wyświetlają listę środowiska i projektu. Można dodać tagi identyfikujące centrum kosztów lub zespół, który jest właścicielem zasobu. Dodaj wszystkie wartości, które mają sens dla twojej organizacji.
 
-Poniższy przykład wyróżnia zmiany w szablonie. Skopiuj cały plik i Zastąp jego zawartość.
+W poniższym przykładzie wyróżniono zmiany w szablonie. Skopiuj cały plik i zastąp szablon jego zawartością.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json" range="1-118" highlight="46-52,64,78,102":::
 
 ## <a name="deploy-template"></a>Wdrażanie szablonu
 
-Czas na wdrożenie szablonu i sprawdzenie wyników.
+Nadszedł czas, aby wdrożyć szablon i spojrzeć na wyniki.
 
-Jeśli grupa zasobów nie została utworzona, zobacz [Tworzenie grupy zasobów](template-tutorial-create-first-template.md#create-resource-group). W przykładzie założono, że ustawiono zmienną **TemplateFile** na ścieżkę do pliku szablonu, jak pokazano w [pierwszym samouczku](template-tutorial-create-first-template.md#deploy-template).
+Jeśli grupa zasobów nie została utworzona, zobacz [Tworzenie grupy zasobów](template-tutorial-create-first-template.md#create-resource-group). W przykładzie przyjęto założenie, że ustawiono **zmienną templateFile** na ścieżkę do pliku szablonu, jak pokazano w [pierwszym samouczku](template-tutorial-create-first-template.md#deploy-template).
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -58,6 +58,8 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
+Aby uruchomić to polecenie wdrażania, musisz mieć [najnowszą wersję](/cli/azure/install-azure-cli) interfejsu wiersza polecenia platformy Azure.
+
 ```azurecli
 az deployment group create \
   --name addtags \
@@ -70,29 +72,29 @@ az deployment group create \
 
 ## <a name="verify-deployment"></a>Weryfikowanie wdrożenia
 
-Można zweryfikować wdrożenie, przeeksplorowanie grupy zasobów z Azure Portal.
+Wdrożenie można zweryfikować, eksplorując grupę zasobów z witryny Azure portal.
 
-1. Zaloguj się do [Azure portal](https://portal.azure.com).
-1. Z menu po lewej stronie wybierz pozycję **grupy zasobów**.
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. W menu po lewej stronie wybierz pozycję **Grupy zasobów**.
 1. Wybierz grupę zasobów, do której została wdrożona.
-1. Wybierz jeden z zasobów, na przykład zasób konta magazynu. Zobaczysz, że ma teraz Tagi.
+1. Wybierz jeden z zasobów, takich jak zasób konta magazynu. Widać, że ma teraz tagi.
 
-   ![Pokaż Tagi](./media/template-tutorial-add-tags/show-tags.png)
+   ![Pokaż znaczniki](./media/template-tutorial-add-tags/show-tags.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli przeniesiesz się do następnego samouczka, nie musisz usuwać grupy zasobów.
+Jeśli przechodzisz do następnego samouczka, nie musisz usuwać grupy zasobów.
 
-Jeśli zatrzymasz się teraz, możesz chcieć wyczyścić wdrożone zasoby, usuwając grupę zasobów.
+Jeśli zatrzymujesz się teraz, możesz wyczyścić zasoby wdrożone przez usunięcie grupy zasobów.
 
-1. W witrynie Azure Portal wybierz pozycję **Grupa zasobów** z menu po lewej stronie.
+1. W witrynie Azure portal wybierz **grupę zasobów** z lewego menu.
 2. Wprowadź nazwę grupy zasobów w polu **Filtruj według nazwy**.
 3. Wybierz nazwę grupy zasobów.
-4. Wybierz pozycję **Usuń grupę zasobów** z górnego menu.
+4. Wybierz **pozycję Usuń grupę zasobów** z górnego menu.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku dodano znaczniki do zasobów. W następnym samouczku dowiesz się, jak używać plików parametrów, aby uprościć przekazywanie wartości do szablonu.
+W tym samouczku dodano tagi do zasobów. W następnym samouczku dowiesz się, jak używać plików parametrów, aby uprościć przekazywanie wartości do szablonu.
 
 > [!div class="nextstepaction"]
 > [Użyj pliku parametrów](template-tutorial-use-parameter-file.md)

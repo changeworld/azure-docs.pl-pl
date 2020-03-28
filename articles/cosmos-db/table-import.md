@@ -1,6 +1,6 @@
 ---
 title: Migrowanie istniejących danych do konta interfejsu API tabel w usłudze Azure Cosmos DB
-description: Dowiedz się, jak migrować lub zaimportować lokalnych lub w chmurze danych na konto interfejsu API tabeli usługi Azure w usłudze Azure Cosmos DB.
+description: Dowiedz się, jak migrować lub importować dane lokalne lub dane w chmurze do konta interfejsu API tabeli platformy Azure w usłudze Azure Cosmos DB.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -9,15 +9,15 @@ ms.date: 12/07/2017
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 5c828644cb03d83df38265719cd8afabc24cf739
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "66242570"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Migrowanie danych na konto interfejsu API tabel w usłudze Azure Cosmos DB
 
-Ten samouczek zawiera instrukcje dotyczące importowania danych do użycia z [interfejsem API tabel](table-introduction.md) usługi Azure Cosmos DB. Jeśli masz dane przechowywane w usłudze Azure Table Storage, możesz zaimportować je do interfejsu API tabel w usłudze Azure Cosmos DB za pomocą narzędzia do migracji danych lub narzędzia AzCopy. Jeśli masz dane przechowywane na koncie interfejsu API tabel usługi Azure Cosmos DB w wersji zapoznawczej, musisz użyć narzędzia do migracji danych, aby przenieść dane. 
+Ten samouczek zawiera instrukcje dotyczące importowania danych do użytku z [interfejsem API tabeli usługi](table-introduction.md)Azure Cosmos DB . Jeśli masz dane przechowywane w usłudze Azure Table Storage, możesz zaimportować je do interfejsu API tabel w usłudze Azure Cosmos DB za pomocą narzędzia do migracji danych lub narzędzia AzCopy. Jeśli masz dane przechowywane na koncie interfejsu API tabel usługi Azure Cosmos DB w wersji zapoznawczej, musisz użyć narzędzia do migracji danych, aby przenieść dane. 
 
 Ten samouczek obejmuje następujące zadania:
 
@@ -28,9 +28,9 @@ Ten samouczek obejmuje następujące zadania:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Zwiększanie przepływności:** czas trwania migracji danych zależy od przepływności skonfigurowanej dla pojedynczego kontenera lub dla zestawu kontenerów. Pamiętaj o zwiększeniu przepływności w przypadku większych migracji danych. Po ukończeniu migracji zmniejsz przepływność, aby ograniczyć koszty. Aby uzyskać więcej informacji na temat zwiększania przepływności w witrynie Azure Portal, zobacz Performance levels and pricing tiers in Azure Cosmos DB (Poziomy wydajności i warstwy cenowe w usłudze Azure Cosmos DB).
+* **Zwiększ przepustowość:** Czas trwania migracji danych zależy od ilości przepływności skonfigurowanej dla pojedynczego kontenera lub zestawu kontenerów. Pamiętaj o zwiększeniu przepływności w przypadku większych migracji danych. Po ukończeniu migracji zmniejsz przepływność, aby ograniczyć koszty. Aby uzyskać więcej informacji na temat zwiększania przepływności w witrynie Azure Portal, zobacz Performance levels and pricing tiers in Azure Cosmos DB (Poziomy wydajności i warstwy cenowe w usłudze Azure Cosmos DB).
 
-* **Tworzenie zasobów usługi Azure Cosmos DB:** przed rozpoczęciem migracji danych utwórz wstępnie wszystkie tabele z poziomu witryny Azure Portal. W przypadku migracji do konta usługi Azure Cosmos DB, która ma przepływność poziomu bazy danych, pamiętaj o podaniu klucza partycji podczas tworzenia tabel usługi Azure Cosmos DB.
+* **Utworzenie zasobów usługi Azure Cosmos DB:** przed rozpoczęciem migracji danych utwórz wstępnie wszystkie tabele z poziomu witryny Azure Portal. W przypadku migracji do konta usługi Azure Cosmos DB, która ma przepływność poziomu bazy danych, pamiętaj o podaniu klucza partycji podczas tworzenia tabel usługi Azure Cosmos DB.
 
 ## <a name="data-migration-tool"></a>Narzędzie do migracji danych
 
@@ -66,11 +66,11 @@ Podczas definiowania usługi Azure Table Storage lub interfejsu API tabel w wers
     /s.Filter: Optional. Filter string to apply
     /s.Projection: Optional. List of columns to select
 
-Aby pobrać parametry połączenia źródła podczas importu z usługi Azure Table Storage, otwórz witrynę Azure Portal i kliknij kolejno pozycje **Konta magazynu** > **Konto** > **Klucze dostępu**, a następnie skopiuj **Parametry połączenia** za pomocą przycisku Kopiuj.
+Aby pobrać źródłowy ciąg połączenia podczas importowania z usługi Azure Table Storage, otwórz witrynę Azure Portal i kliknij pozycję**Klucze dostępu do****kont** >  **magazynu,** > a następnie użyj przycisku kopiowania, aby skopiować **ciąg połączenia**.
 
 ![Zrzut ekranu przedstawiający opcje źródła dla bazy danych HBase](./media/table-import/storage-table-access-key.png)
 
-Aby pobrać parametry połączenia źródła podczas importu z konta wersji zapoznawczej interfejsu API tabel usługi Azure Cosmos DB, otwórz witrynę Azure Portal, kliknij kolejno pozycje **Azure Cosmos DB** > **Konto** > **Parametry połączenia** i skopiuj **Parametry połączenia** za pomocą przycisku Kopiuj.
+Aby pobrać źródłowy ciąg połączenia podczas importowania z konta interfejsu API (w wersji zapoznawczej) tabeli usługi Azure Cosmos DB, otwórz witrynę Azure Portal, kliknij pozycję**Ciąg połączenia** **konta usługi** >  **Azure Cosmos DB** > i użyj przycisku **kopiowania,** aby skopiować ciąg połączenia .
 
 ![Zrzut ekranu przedstawiający opcje źródła dla bazy danych HBase](./media/table-import/cosmos-connection-string.png)
 
@@ -99,7 +99,7 @@ Oto przykład wiersza polecenia przedstawiający sposób importowania danych z u
 dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Table storage account name>;AccountKey=<Account Key>;EndpointSuffix=core.windows.net /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmosdb.azure.com:443 /t.TableName:<Table name> /t.Overwrite
 ```
 <a id="table-api-preview"></a>
-### <a name="sample-command-source-is-azure-cosmos-db-table-api-preview"></a>Przykładowe polecenie: źródłem jest interfejs API tabel w usłudze Azure Cosmos DB
+### <a name="sample-command-source-is-azure-cosmos-db-table-api-preview"></a>Przykładowe polecenie: źródłem jest wersja zapoznawcza interfejsu API tabel usługi Azure Cosmos DB
 
 Oto przykład wiersza polecenia przedstawiający sposób importowania danych z wersji zapoznawczej interfejsu API tabel do wersji ogólnie dostępnej interfejsu API tabel:
 
@@ -135,9 +135,9 @@ Aby przeprowadzić migrację z wersji zapoznawczej interfejsu API tabel do wersj
 
 3. Przeprowadź migrację danych klientów z tabel w wersji zapoznawczej do wersji ogólnie dostępnej za pomocą narzędzia do migracji danych. Instrukcje dotyczące używania narzędzia do migracji danych do tego celu znajdziesz w sekcji [Narzędzie do migracji danych](#data-migration-tool). 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku zawarto informacje na temat wykonywania następujących czynności:
+W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Importowanie danych za pomocą narzędzia do migracji danych

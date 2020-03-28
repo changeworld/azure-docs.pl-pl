@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: projektowanie serwera Azure Database for PostgreSQL-pojedynczego — interfejs wiersza polecenia platformy Azure'
-description: W tym samouczku przedstawiono sposób tworzenia, konfigurowania i wykonywania zapytań dotyczących pierwszego serwera Azure Database for PostgreSQL-pojedynczego przy użyciu interfejsu wiersza polecenia platformy Azure.
+title: 'Samouczek: Projektowanie bazy danych platformy Azure dla postgreSQL — pojedynczy serwer — narzędzie interfejsu wiersza polecenia platformy Azure'
+description: W tym samouczku pokazano, jak utworzyć, skonfigurować i zbadać pierwszą usługę Azure Database dla postgreSQL — pojedynczy serwer przy użyciu interfejsu wiersza polecenia platformy Azure.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -9,19 +9,19 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 06/25/2019
 ms.openlocfilehash: c79e64fddaf404b459dd2215e4a2e9236f1bc221
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75460006"
 ---
-# <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-azure-cli"></a>Samouczek: projektowanie serwera Azure Database for PostgreSQL-pojedynczego przy użyciu interfejsu wiersza polecenia platformy Azure 
+# <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-azure-cli"></a>Samouczek: Projektowanie bazy danych platformy Azure dla postgreSQL — pojedynczy serwer przy użyciu interfejsu wiersza polecenia platformy Azure 
 W tym samouczku dowiesz się, jak wykonywać następujące czynności, używając interfejsu wiersza polecenia platformy Azure:
 > [!div class="checklist"]
 > * Tworzenie serwera usługi Azure Database for PostgreSQL
 > * Konfigurowanie zapory serwera
 > * Użycie narzędzia [**psql**](https://www.postgresql.org/docs/9.6/static/app-psql.html) do utworzenia bazy danych
-> * Ładuj dane przykładowe
+> * Ładowanie przykładowych danych
 > * Zapytania o dane
 > * Aktualizowanie danych
 > * Przywracanie danych
@@ -51,7 +51,7 @@ W poniższym przykładzie zostanie utworzony serwer o nazwie `mydemoserver` w gr
 az postgres server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 9.6
 ```
 Wartość parametru sku-name jest zgodna z konwencją {warstwa cenowa}\_{generacja obliczeniowa}\_{rdzenie wirtualne}, jak pokazano w przykładach poniżej:
-+ `--sku-name B_Gen5_2` Maps do podstawowych, generacji 5 i 2 rdzeni wirtualnych.
++ `--sku-name B_Gen5_2`map do podstawowych, gen 5 i 2 vCorów.
 + `--sku-name GP_Gen5_32` — warstwa ogólnego przeznaczenia, 5. generacja, 32 rdzenie wirtualne.
 + `--sku-name MO_Gen5_2` — warstwa zoptymalizowana pod kątem pamięci, 5. generacja, 2 rdzenie wirtualne.
 
@@ -125,14 +125,14 @@ Jeśli na Twoim komputerze klienckim jest zainstalowana baza danych PostgreSQL, 
    psql --host=<servername> --port=<port> --username=<user@servername> --dbname=<dbname>
    ```
 
-   Na przykład poniższe polecenie nawiązuje połączenie z domyślną bazą danych o nazwie **postgres** na Twoim serwerze PostgreSQL **mydemoserver.postgres.database.azure.com** za pomocą poświadczeń dostępu. Gdy zostanie wyświetlony monit o podanie hasła, wprowadź wybrane hasło `<server_admin_password>`.
+   Na przykład poniższe polecenie służy do nawiązywania połączenia z domyślną bazą danych o nazwie **postgres** na Twoim serwerze PostgreSQL **mydemoserver.postgres.database.azure.com** za pomocą poświadczeń dostępu. Gdy zostanie wyświetlony monit o podanie hasła, wprowadź wybrane hasło `<server_admin_password>`.
   
    ```
    psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver --dbname=postgres
    ```
 
    > [!TIP]
-   > Jeśli wolisz używać ścieżki URL w celu nawiązania połączenia z usługą Postgres, adres URL Koduj znak @ w nazwie użytkownika z `%40`. Na przykład parametry połączenia dla PSQL byłyby,
+   > Jeśli wolisz użyć ścieżki adresu URL do łączenia się z postgresem, koduj znak @ w nazwie użytkownika za pomocą `%40`programu . Na przykład ciąg połączenia dla psql będzie,
    > ```
    > psql postgresql://myadmin%40mydemoserver@mydemoserver.postgres.database.azure.com:5432/postgres
    > ```
@@ -142,7 +142,7 @@ Jeśli na Twoim komputerze klienckim jest zainstalowana baza danych PostgreSQL, 
    CREATE DATABASE mypgsqldb;
    ```
 
-3. W wierszu polecenia wykonaj poniższe polecenie, aby przełączyć połączenie na nowo utworzoną bazę danych **mypgsqldb**:
+3. W wierszu polecenia wykonaj następujące polecenie, aby przełączyć połączenie z nowo utworzoną bazą danych **mypgsqldb**:
    ```sql
    \c mypgsqldb
    ```
@@ -217,7 +217,7 @@ W tym samouczku omówiono sposób użycia interfejsu wiersza polecenia platformy
 > * Tworzenie serwera usługi Azure Database for PostgreSQL
 > * Konfigurowanie zapory serwera
 > * Użycie narzędzia [**psql**](https://www.postgresql.org/docs/9.6/static/app-psql.html) do utworzenia bazy danych
-> * Ładuj dane przykładowe
+> * Ładowanie przykładowych danych
 > * Zapytania o dane
 > * Aktualizowanie danych
 > * Przywracanie danych

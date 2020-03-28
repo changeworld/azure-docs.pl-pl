@@ -1,20 +1,20 @@
 ---
-title: Skrypt programu PowerShell umożliwiający uzyskanie zainicjowanej przepływności (RU/s) dla interfejsu API Azure Cosmos DB SQL (rdzeń)
-description: Skrypt Azure PowerShell — Azure Cosmos DB Uzyskaj przepływność aprowizacji (RU/s) dla interfejsu API SQL (rdzeń)
+title: Skrypt programu PowerShell, aby uzyskać przepływność (RU/s) dla bazy danych lub kontenera interfejsu SQL usługi Azure Cosmos DB 1
+description: Skrypt programu Azure PowerShell, aby uzyskać przepływność (RU/s) dla bazy danych lub kontenera interfejsu SQL usługi Azure Cosmos DB 1
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 07/03/2019
+ms.date: 03/17/2020
 ms.author: mjbrown
-ms.openlocfilehash: 9b4450e18aa2666806faf2c0baed8af2285e69dc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f471b1d41314728a6c6f0c5d2ab981891e2caa87
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441343"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365600"
 ---
-# <a name="get-the-provisioned-throughput-rus-for-a-database-or-container-for-azure-cosmos-db---sql-core-api"></a>Uzyskaj przepływność aprowizacji (RU/s) dla bazy danych lub kontenera dla interfejsu API Azure Cosmos DB-SQL (rdzeń)
+# <a name="get-throughput-rus-for-azure-cosmos-db-sql-api-database-or-container"></a>Uzyskaj przepływność (RU/s) dla bazy danych lub kontenera interfejsu API usługi Azure Cosmos DB SQL
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -22,7 +22,7 @@ ms.locfileid: "75441343"
 
 ## <a name="sample-script"></a>Przykładowy skrypt
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-ru-get.ps1 "Get throughput for a database or container for SQL (Core) API")]
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-ru-get.ps1 "Get throughput (RU/s) for Azure Cosmos DB SQL API database or container")]
 
 ## <a name="clean-up-deployment"></a>Czyszczenie wdrożenia
 
@@ -38,8 +38,9 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 
 | Polecenie | Uwagi |
 |---|---|
-|**Zasoby platformy Azure**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Tworzy zasób. |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBSqlDatabaseThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqldatabasethroughput) | Pobierz aprowizowaną przepływność w bazie danych interfejsu API SQL usługi Azure Cosmos DB. |
+| [Get-AzCosmosDBSqlContainerThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainerthroughput) | Pobierz aprowizowaną przepływność w kontenerze interfejsu API SQL usługi Azure Cosmos DB. |
 |**Grupy zasobów platformy Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 |||

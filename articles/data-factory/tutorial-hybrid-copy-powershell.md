@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie danych z SQL Server do magazynu obiektów BLOB przy użyciu programu PowerShell
+title: Kopiowanie danych z magazynu programu SQL Server do obiektów Blob przy użyciu programu PowerShell
 description: Dowiedz się, jak skopiować dane z lokalnego magazynu danych do chmury platformy Azure przy użyciu własnego środowiska Integration Runtime w usłudze Azure Data Factory.
 services: data-factory
 author: nabhishek
@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
 ms.openlocfilehash: 61ee9e46b1c1d4c1e1ec4815c7a88de921650230
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75982609"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Samouczek: kopiowanie danych z lokalnej bazy danych programu SQL Server do usługi Azure Blob Storage
@@ -41,7 +41,7 @@ Ten samouczek obejmuje wykonanie następujących kroków:
 Jeśli nie masz jeszcze subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 
 ### <a name="azure-roles"></a>Role platformy Azure
-Aby utworzyć wystąpienia usługi Data Factory, konto użytkownika używane do logowania się na platformie Azure musi mieć przypisaną rolę *współautora* lub *właściciela* albo być *administratorem* subskrypcji platformy Azure.
+Aby utworzyć wystąpienia fabryki danych, konto użytkownika używane do logowania się na platformie Azure musi mieć przypisaną rolę *współautora* lub *właściciela* lub musi być *administratorem* subskrypcji platformy Azure.
 
 W witrynie Azure Portal wybierz swoją nazwę użytkownika w prawym górnym rogu i wybierz pozycję **Uprawnienia**, aby wyświetlić uprawnienia, które masz w subskrypcji. Jeśli masz dostęp do wielu subskrypcji, wybierz odpowiednią subskrypcję. Przykładowe instrukcje dotyczące sposobu dodawania użytkownika do roli można znaleźć w artykule [Manage access using RBAC and the Azure portal](../role-based-access-control/role-assignments-portal.md) (Zarządzanie dostępem przy użyciu kontroli dostępu na podstawie ról i witryny Azure Portal).
 
@@ -92,7 +92,7 @@ W tym samouczku używasz nazwy i klucza swojego konta usługi Azure Storage. Pob
 1. Skopiuj wartości z pól **Nazwa konta magazynu** i **klucz1** i wklej je do Notatnika lub innego edytora do późniejszego użycia z tym samouczkiem.
 
 #### <a name="create-the-adftutorial-container"></a>Tworzenie kontenera adftutorial
-W tej sekcji utworzysz kontener obiektów blob o nazwie **adftutorial** w usłudze Azure Blob Storage.
+W tej sekcji utworzysz kontener obiektów blob o nazwie **adftutorial** w magazynie obiektów Blob platformy Azure.
 
 1. W oknie **Konto magazynu** przełącz się do widoku **Przegląd**, a następnie wybierz pozycję **Obiekty blob**.
 
@@ -106,7 +106,7 @@ W tej sekcji utworzysz kontener obiektów blob o nazwie **adftutorial** w usłud
 
 1. Kliknij pozycję **adftutorial** na liście kontenerów.  
 
-1. Pozostaw otwarte okno **kontenera** **adftutorial**. Będzie ona używana do weryfikacji danych wyjściowych na końcu tego samouczka. Usługa Data Factory automatycznie tworzy folder wyjściowy w tym kontenerze, więc Ty nie musisz go tworzyć.
+1. Okno **kontenera** **należy** otworzyć. Będzie ona używana do weryfikacji danych wyjściowych na końcu tego samouczka. Usługa Data Factory automatycznie tworzy folder wyjściowy w tym kontenerze, więc Ty nie musisz go tworzyć.
 
 
 ### <a name="windows-powershell"></a>Windows PowerShell
@@ -127,7 +127,7 @@ Zainstaluj najnowszą wersję programu Azure PowerShell, jeśli nie masz jej jes
     Connect-AzAccount
     ```        
 
-1. Jeśli masz wiele subskrypcji platformy Azure, uruchom poniższe polecenie, aby wybrać subskrypcję, z którą chcesz pracować. Zastąp parametr **SubscriptionId** identyfikatorem Twojej subskrypcji platformy Azure:
+1. Jeśli masz wiele subskrypcji platformy Azure, uruchom poniższe polecenie, aby wybrać subskrypcję, z którą chcesz pracować. Zamień **identyfikator subscriptionid** na identyfikator subskrypcji platformy Azure:
 
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"    
@@ -269,7 +269,7 @@ W tej sekcji utworzysz własne środowisko Integration Runtime i skojarzysz je z
 
     ![Rejestrowanie środowiska Integration Runtime](media/tutorial-hybrid-copy-powershell/register-integration-runtime.png)
 
-1. W oknie **nowy węzeł Integration Runtime (Self-Hosted)** wybierz pozycję **Zakończ**.
+1. W oknie **Węzeł Nowego środowiska wykonawczego integracji wybierz** pozycję **Zakończ**.
 
     ![Okno Nowy węzeł Integration Runtime (Self-hosted)](media/tutorial-hybrid-copy-powershell/new-integration-runtime-node-page.png)
 
@@ -285,7 +285,7 @@ W tej sekcji utworzysz własne środowisko Integration Runtime i skojarzysz je z
 
 1. Przetestuj łączność z bazą danych programu SQL Server, wykonując następujące kroki:
 
-    a. W oknie programu **Configuration Manager** przejdź na kartę **Diagnostyka**.
+    a. W oknie **Programu Menedżer konfiguracji** przełącz się na kartę **Diagnostyka.**
 
     b. W polu **Typ źródła danych** wybierz pozycję **SqlServer**.
 
@@ -300,7 +300,7 @@ W tej sekcji utworzysz własne środowisko Integration Runtime i skojarzysz je z
     g. Wprowadź hasło powiązane z tą nazwą użytkownika.
 
     h. Wybierz przycisk **Testuj**, aby upewnić się, że środowisko Integration Runtime może połączyć się z wystąpieniem programu SQL Server.  
-    ![połączenie powiodło się](media/tutorial-hybrid-copy-powershell/config-manager-diagnostics-tab.png)
+    ![Łączność powiodła się](media/tutorial-hybrid-copy-powershell/config-manager-diagnostics-tab.png)
 
     Jeśli połączenie zostanie pomyślnie nawiązane, zostanie wyświetlona ikona zielonego znacznika wyboru. W przeciwnym razie zostanie wyświetlony komunikat o błędzie skojarzony z określonym błędem. Rozwiąż wszelkie problemy i upewnij się, że środowisko Integration Runtime może połączyć się z wystąpieniem programu SQL Server.
 
@@ -411,9 +411,9 @@ W tym kroku połączysz lokalne wystąpienie programu SQL Server z fabryką dany
 
     > [!IMPORTANT]
     > - Wybierz właściwą sekcję na podstawie metody uwierzytelniania używanej do nawiązywania połączenia z wystąpieniem programu SQL Server.
-    > - Zastąp wartość **\<integration runtime name>** nazwą Twojego środowiska Integration Runtime.
-    > - Przed zapisaniem pliku zastąp wartości **\<servername>** , **\<databasename>** , **\<username>** i **\<password** wartościami odpowiednimi dla wystąpienia programu SQL Server.
-    > - Jeśli musisz użyć znaku ukośnika (\\) w nazwie konta użytkownika lub nazwie serwera, poprzedź go znakiem ucieczki (\\). Na przykład: *mydomain\\\\myuser*.
+    > - Zastąp ** \<nazwę środowiska uruchomieniowego integracji>** nazwą środowiska wykonawczego integracji.
+    > - Przed zapisaniem pliku ** \< **należy zastąp nazwę serwera>, ** \<>, ** ** \<>nazwy użytkownika **i ** \<hasło>** wartościami wystąpienia programu SQL Server.
+    > - Jeśli musisz użyć znaku ukośnika (\\) w nazwie konta użytkownika lub nazwie serwera, poprzedź go znakiem ucieczki (\\). Na przykład użyj *mydomain\\\\myuser*.
 
 1. Aby zaszyfrować dane poufne (nazwę użytkownika, hasło itp.), uruchom polecenie cmdlet `New-AzDataFactoryV2LinkedServiceEncryptedCredential`.  
     To zapewnia szyfrowanie poświadczeń za pomocą interfejsu API ochrony danych (DPAPI). Zaszyfrowane poświadczenia są przechowywane lokalnie w węźle środowiska Integration Runtime (Self-hosted) (maszyna lokalna). Ładunek danych wyjściowych może zostać przekierowany do innego pliku JSON (w tym przypadku *encryptedLinkedService.json*), który zawiera zaszyfrowane poświadczenia.
@@ -429,7 +429,7 @@ W tym kroku połączysz lokalne wystąpienie programu SQL Server z fabryką dany
    ```
 
 
-## <a name="create-datasets"></a>Utwórz zestawy danych
+## <a name="create-datasets"></a>Tworzenie zestawów danych
 W tym kroku utworzysz zestawy danych wejściowych i wyjściowych. Reprezentują one dane wejściowe i wyjściowe operacji kopiowania, która kopiuje dane z lokalnej bazy danych programu SQL Server do usługi Azure Blob Storage.
 
 ### <a name="create-a-dataset-for-the-source-sql-server-database"></a>Tworzenie zestawu danych źródłowej bazy danych programu SQL Server
@@ -726,7 +726,7 @@ Potok w tym przykładzie kopiuje dane z jednej lokalizacji do innej lokalizacji 
 > * Uruchom potok.
 > * Monitorowanie uruchomienia potoku.
 
-Lista magazynów danych obsługiwanych przez usługę Data Factory znajduje się w artykule dotyczącym [obsługiwanych magazynów danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Aby uzyskać listę magazynów danych obsługiwanych przez fabrykę danych, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
 
 Przejdź do poniższego samouczka, aby dowiedzieć się o zbiorczym kopiowaniu danych z lokalizacji źródłowej do docelowej:
 

@@ -1,24 +1,24 @@
 ---
-title: 'Samouczek: Tworzenie aplikacji lokalizatora sklepu przy użyciu Azure Maps | Mapy Microsoft Azure'
-description: W tym samouczku dowiesz się, jak utworzyć aplikację sieci Web lokalizatora magazynu za pomocą Microsoft Azure Maps Web SDK.
-author: farah-alyasari
-ms.author: v-faalya
+title: 'Samouczek: Tworzenie aplikacji lokalizatora sklepów przy użyciu usługi Azure Maps | Mapy platformy Microsoft Azure'
+description: W tym samouczku dowiesz się, jak utworzyć aplikację sieci web lokalizatora magazynu przy użyciu zestawu SDK sieci Web microsoft azure maps.
+author: philmea
+ms.author: philmea
 ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 5621ed8f9e5d7990ca7b522d6388f855db81618e
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 49b57b213a452d6c594bbc1ca537e68bd7a83864
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209566"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80333856"
 ---
-# <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Samouczek: Tworzenie lokalizatora sklepu za pomocą Azure Maps
+# <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Samouczek: Tworzenie lokalizatora sklepów przy użyciu usługi Azure Maps
 
-Ten samouczek przeprowadzi Cię przez proces tworzenia prostego lokalizatora sklepów przy użyciu usługi Azure Maps. Lokalizatory sklepów są powszechne. Wiele koncepcji używanych w tego typu aplikacjach można stosować w wielu innych typach aplikacji. Oferowanie lokalizatora sklepów jest koniecznością dla większości firm prowadzących sprzedaż detaliczną bezpośrednio dla klientów. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek przeprowadzi Cię przez proces tworzenia prostego lokalizatora sklepów przy użyciu usługi Azure Maps. Lokalizatory sklepów są powszechne. Wiele koncepcji używanych w tego typu aplikacjach można stosować w wielu innych typach aplikacji. Oferowanie lokalizatora sklepów jest koniecznością dla większości firm prowadzących sprzedaż detaliczną bezpośrednio dla klientów. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
     
 > [!div class="checklist"]
 > * Tworzenie nowej strony internetowej przy użyciu interfejsu API kontrolki mapy platformy Azure.
@@ -35,7 +35,7 @@ Przejdź dalej do [przykładu lokalizatora sklepów na żywo](https://azuremapsc
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby wykonać kroki opisane w tym samouczku, musisz najpierw utworzyć konto Azure Maps i uzyskać klucz podstawowy (klucz subskrypcji). Postępuj zgodnie z instrukcjami w temacie [Tworzenie konta](quick-demo-map-app.md#create-an-account-with-azure-maps) , aby utworzyć subskrypcję konta usługi Azure Maps z warstwą cenową S1, i wykonaj kroki opisane w sekcji [Pobieranie klucza podstawowego](quick-demo-map-app.md#get-the-primary-key-for-your-account) , aby uzyskać klucz podstawowy dla konta. Aby uzyskać więcej informacji na temat uwierzytelniania w Azure Maps, zobacz [Zarządzanie uwierzytelnianiem w programie Azure Maps](how-to-manage-authentication.md).
+Aby wykonać kroki opisane w tym samouczku, należy najpierw utworzyć konto usługi Azure Maps i uzyskać klucz podstawowy (klucz subskrypcji). Postępuj zgodnie z instrukcjami w [Tworzenie konta,](quick-demo-map-app.md#create-an-account-with-azure-maps) aby utworzyć subskrypcję konta usługi Azure Maps z warstwą cenową S1 i wykonaj kroki w [celu uzyskania klucza podstawowego,](quick-demo-map-app.md#get-the-primary-key-for-your-account) aby uzyskać klucz podstawowy dla swojego konta. Aby uzyskać więcej informacji na temat uwierzytelniania w usłudze Azure Maps, zobacz [zarządzanie uwierzytelnianiem w usłudze Azure Maps](how-to-manage-authentication.md).
 
 ## <a name="design"></a>Projekt
 
@@ -43,15 +43,15 @@ Zanim przejdziesz do kodu, dobrze jest zacząć od projektu. Lokalizator sklepó
 
 <center>
 
-![szkieletem aplikacji lokalizatora sklepu dla lokalizacji warsztatów firmy Contoso](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
+![Model szkieletowy aplikacji lokalizatora sklepów dla lokalizacji kawiarni Contoso](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
 
 Aby zmaksymalizować przydatność tego lokalizatora sklepów, dołączymy układ dynamiczny, który dostosowuje się, jeśli szerokość ekranu użytkownika jest mniejsza niż 700 pikseli. Układ dynamiczny ułatwia używanie lokalizatora sklepów na małym ekranie, na przykład na urządzeniu przenośnym. Poniżej przedstawiono szkielet układu dla małego ekranu:  
 
 <center>
 
-![szkieletem aplikacji lokalizatora magazynu kawy firmy Contoso na urządzeniu przenośnym](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
+![Model szkieletowy aplikacji lokalizatora magazynu kawy Contoso na urządzeniu przenośnym](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
 
-Powyższe szkielety pokazują dość prostą aplikację. Aplikacja zawiera pole wyszukiwania, listę magazynów w pobliżu oraz mapę, która ma pewne znaczniki, takie jak symbole. I ma okno podręczne, które wyświetla dodatkowe informacje, gdy użytkownik wybierze znacznik. Poniżej znajduje się bardziej szczegółowa lista funkcji wbudowanych w lokalizatorze sklepów w tym samouczku:
+Powyższe szkielety pokazują dość prostą aplikację. Aplikacja ma pole wyszukiwania, listę pobliskich sklepów i mapę, która ma kilka znaczników, takich jak symbole. I ma wyskakujące okno, które wyświetla dodatkowe informacje, gdy użytkownik wybierze znacznik. Poniżej znajduje się bardziej szczegółowa lista funkcji wbudowanych w lokalizatorze sklepów w tym samouczku:
 
 * Wszystkie lokalizacje z zaimportowanego pliku danych rozdzielanych tabulatorami są ładowane na mapie.
 * Użytkownik może przesuwać i powiększać mapę, wyszukiwać i wybierać przycisk GPS Moja lokalizacja.
@@ -69,11 +69,11 @@ Powyższe szkielety pokazują dość prostą aplikację. Aplikacja zawiera pole 
 
 ## <a name="create-the-store-location-dataset"></a>Tworzenie zestawu danych lokalizacji sklepów
 
-Zanim opracujemy aplikację lokalizatora sklepów, musimy utworzyć zestaw danych sklepów, które chcemy wyświetlać na mapie. W tym samouczku używamy zestawu danych dla fikcyjnej kawiarni o nazwie Contoso Coffee. Zestaw danych dla tego prostego lokalizatora sklepów jest zarządzany w skoroszycie programu Excel. Zestaw danych zawiera 10 213 lokalizacji warsztatów kawowych firmy Contoso rozmieszczonych w dziewięciu krajach/regionach: Stany Zjednoczone, Kanada, Zjednoczone Królestwo, Francja, Niemcy, Włochy, Niderlandy, dania i Hiszpania. Oto zrzut ekranu przedstawiający te dane:
+Zanim opracujemy aplikację lokalizatora sklepów, musimy utworzyć zestaw danych sklepów, które chcemy wyświetlać na mapie. W tym samouczku używamy zestawu danych dla fikcyjnej kawiarni o nazwie Contoso Coffee. Zestaw danych dla tego prostego lokalizatora sklepów jest zarządzany w skoroszycie programu Excel. Zestaw danych zawiera 10 213 lokalizacji kawiarni Contoso Coffee rozmieszczonych w dziewięciu krajach/regionach: Stanach Zjednoczonych, Kanadzie, Wielkiej Brytanii, Francji, Niemczech, Włoszech, Holandii, Danii i Hiszpanii. Oto zrzut ekranu przedstawiający te dane:
 
 <center>
 
-![zrzut ekranu przedstawiający dane lokalizatora magazynu w skoroszycie programu Excel](./media/tutorial-create-store-locator/StoreLocatorDataSpreadsheet.png)</center>
+![Zrzut ekranu przedstawiający dane lokalizatora sklepów w skoroszycie programu Excel](./media/tutorial-create-store-locator/StoreLocatorDataSpreadsheet.png)</center>
 
 Możesz [pobrać ten skoroszyt programu Excel](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). 
 
@@ -81,41 +81,41 @@ Patrząc na zrzut ekranu danych, możemy zauważyć następujące rzeczy:
     
 * Informacje o lokalizacji są przechowywane przy użyciu kolumn **AddressLine** (Adres), **City** (Miasto), **Municipality** (Gmina), **AdminDivision** (Województwo), **PostCode** (Kod pocztowy) i **Country** (Kraj).  
 * Kolumny **Latitude** (Szerokość geograficzna) i **Longitude** (Długość geograficzna) zawierają współrzędne dla każdej lokalizacji kawiarni Contoso Coffee. Jeśli nie masz informacji o współrzędnych lokalizacji, możesz je ustalić przy użyciu usług wyszukiwania w usłudze Azure Maps.
-* Niektóre dodatkowe kolumny zawierają metadane związane z kawiarniami: numer telefonu, kolumny logiczne oraz czas otwierania i zamykania w formacie 24-godzinnym. Kolumny logiczne służą do dostępności sieci Wi-Fi i niepełnosprawnych. Możesz utworzyć własne kolumny zawierające metadane, które lepiej odpowiadają Twoim danym lokalizacji.
+* Niektóre dodatkowe kolumny zawierają metadane związane z kawiarniami: numer telefonu, kolumny logiczne oraz godziny otwarcia i zamknięcia sklepu w formacie 24-godzinnym. Kolumny logiczne służą do dostępu do sieci Wi-Fi i wózków inwalidzkich. Możesz utworzyć własne kolumny zawierające metadane, które lepiej odpowiadają Twoim danym lokalizacji.
 
 > [!Note]
 > Usługa Azure Maps renderuje dane w postaci kulistego odwzorowania walcowego równokątnego „EPSG:3857”, ale odczytuje dane w układzie współrzędnych „EPSG:4325”, który korzysta z systemu odniesienia WGS84. 
 
-Istnieje wiele sposobów uwidocznienia zestawu danych dla aplikacji. Jednym z metod jest załadowanie danych do bazy danych i uwidocznienie usługi sieci Web, która wysyła zapytania do danych. Następnie możesz wysłać wyniki do przeglądarki użytkownika. Ta opcja jest idealnym rozwiązaniem w przypadku dużych lub często aktualizowanych zestawów danych. Jednak ta opcja wymaga większej liczby prac programistycznych i ma wyższy koszt. 
+Istnieje wiele sposobów uwidocznienia zestawu danych dla aplikacji. Jednym z podejść jest załadowanie danych do bazy danych i udostępnić usługę sieci web, która wysyła zapytania do danych. Następnie można wysłać wyniki do przeglądarki użytkownika. Ta opcja jest idealnym rozwiązaniem w przypadku dużych lub często aktualizowanych zestawów danych. Jednak ta opcja wymaga więcej prac rozwojowych i ma wyższe koszty. 
 
 Innym rozwiązaniem jest przekonwertowanie tego zestawu danych na prosty plik tekstowy, który przeglądarka może łatwo analizować. Plik może być hostowany razem z aplikacją. Ta opcja jest uproszczona, ale sprawdza się tylko w przypadku mniejszych zestawów danych, ponieważ użytkownik pobiera wszystkie dane. Dla tego zestawu danych używamy prostego pliku tekstowego, ponieważ rozmiar pliku jest mniejszy niż 1 MB.  
 
-Aby przekonwertować skoroszyt na prosty plik tekstowy, zapisz skoroszyt jako plik rozdzielany tabulatorami. Każda kolumna jest oddzielona znakiem tabulacji, co sprawia, że kolumny są łatwe do analizowania w naszym kodzie. Można by było użyć formatu wartości rozdzielanych przecinkami (CSV), ale ta opcja wymaga więcej logiki analizowania. Każde pole, które miałoby wokół siebie przecinek, zostałoby ujęte w cudzysłów. Aby w programie Excel wyeksportować te dane w postaci pliku rozdzielanego tabulatorami, wybierz pozycję **Zapisz jako**. Na liście rozwijanej **Zapisz jako typ** wybierz pozycję **Tekst (rozdzielany znakami tabulacji)(*.txt)** . Nadaj plikowi nazwę *ContosoCoffee.txt*. 
+Aby przekonwertować skoroszyt na prosty plik tekstowy, zapisz skoroszyt jako plik rozdzielany tabulatorami. Każda kolumna jest oddzielona znakiem tabulacji, co sprawia, że kolumny są łatwe do analizowania w naszym kodzie. Można by było użyć formatu wartości rozdzielanych przecinkami (CSV), ale ta opcja wymaga więcej logiki analizowania. Każde pole, które miałoby wokół siebie przecinek, zostałoby ujęte w cudzysłów. Aby w programie Excel wyeksportować te dane w postaci pliku rozdzielanego tabulatorami, wybierz pozycję **Zapisz jako**. Na liście rozwijanej **Zapisz jako typ** wybierz pozycję **Tekst (rozdzielany znakami tabulacji)(*.txt)**. Nadaj plikowi nazwę *ContosoCoffee.txt*. 
 
 <center>
 
-![zrzut ekranu przedstawiający okno dialogowe Zapisz jako typ](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)</center>
+![Zrzut ekranu przedstawiający okno dialogowe Zapisz jako typ](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)</center>
 
 Jeśli otworzysz plik tekstowy w Notatniku, będzie on wyglądał podobnie, jak na poniższej ilustracji:
 
 <center>
 
-![zrzut ekranu pliku Notatnika, który pokazuje rozdzielany tabulatorami zestaw danych](./media/tutorial-create-store-locator/StoreDataTabFile.png)</center>
+![Zrzut ekranu przedstawiający plik Notatnika, pokazujący zestaw danych rozdzielany tabulatorami](./media/tutorial-create-store-locator/StoreDataTabFile.png)</center>
 
 
 ## <a name="set-up-the-project"></a>Konfigurowanie projektu
 
-Aby utworzyć projekt, można użyć programu [Visual Studio](https://visualstudio.microsoft.com) lub innego wybranego edytora kodu. W folderze projektu utwórz trzy pliki: *index.html*, *index.css* i *index.js*. Te pliki definiują układ, styl i logikę aplikacji. Utwórz folder o nazwie *data* (dane) i dodaj do niego plik *ContosoCoffee.txt*. Utwórz inny folder o nazwie *images* (obrazy). W tej aplikacji używamy 10 obrazów dla ikon, przycisków i znaczników na mapie. Możesz [pobrać te obrazy](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). Folder projektu powinien teraz wyglądać podobnie jak na poniższej ilustracji:
+Aby utworzyć projekt, można użyć programu [Visual Studio](https://visualstudio.microsoft.com) lub innego wybranego edytora kodu. W folderze projektu utwórz trzy pliki: *index.html*, *index.css* i *index.js*. Te pliki definiują układ, styl i logikę aplikacji. Utwórz folder o nazwie *data* (dane) i dodaj do niego plik *ContosoCoffee.txt*. Utwórz inny folder o nazwie *images* (obrazy). Używamy 10 obrazów w tej aplikacji do ikon, przycisków i markerów na mapie. Możesz [pobrać te obrazy](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). Folder projektu powinien teraz wyglądać podobnie jak na poniższej ilustracji:
 
 <center>
 
-![zrzut ekranu przedstawiający folder projektu lokalizatora prostego magazynu](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)</center>
+![Zrzut ekranu przedstawiający folder projektu prostego lokalizatora sklepów](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)</center>
 
 ## <a name="create-the-user-interface"></a>Tworzenie interfejsu użytkownika
 
 Aby utworzyć interfejs użytkownika, dodaj kod do pliku *index.html*:
 
-1. Dodaj następujące tagi `meta` do elementu `head` pliku *index.html*. Tag `charset` definiuje zestaw znaków (UTF-8). Wartość `http-equiv` informuje Internet Explorer i Microsoft Edge o korzystaniu z najnowszych wersji przeglądarki. A ostatni tag `meta` określa okienko ekranu, które dobrze sprawdza się w przypadku odpowiadających układów.
+1. Dodaj następujące tagi `meta` do elementu `head` pliku *index.html*. Znacznik `charset` definiuje zestaw znaków (UTF-8). Wartość `http-equiv` aplikacji Internet Explorer i Microsoft Edge informuje o używaniu najnowszych wersji przeglądarki. A ostatni `meta` tag określa rzutnię, która działa dobrze w przypadku układów responsywnych.
 
     ```HTML
     <meta charset="utf-8">
@@ -375,13 +375,13 @@ Następnym krokiem jest zdefiniowanie stylów CSS. Style CSS definiują układ s
     }
    ```
 
-Uruchom aplikację teraz, zobaczysz nagłówek, pole wyszukiwania i przycisk wyszukiwania. Jednak mapa nie jest widoczna, ponieważ nie została jeszcze załadowana. Jeśli spróbujesz wykonać wyszukiwanie, nic się nie stanie. Musimy skonfigurować logikę JavaScript, która została opisana w następnej sekcji. Ta logika uzyskuje dostęp do wszystkich funkcji lokalizatora magazynu.
+Uruchom aplikację teraz, zobaczysz nagłówek, pole wyszukiwania i przycisk wyszukiwania. Ale mapa nie jest widoczna, ponieważ nie została jeszcze załadowana. Jeśli spróbujesz wykonać wyszukiwanie, nic się nie stanie. Musimy skonfigurować logikę JavaScript, która jest opisana w następnej sekcji. Ta logika uzyskuje dostęp do wszystkich funkcji lokalizatora magazynu.
 
 ## <a name="wire-the-application-with-javascript"></a>Powiązanie aplikacji za pomocą języka JavaScript
 
-Wszystko jest teraz skonfigurowane w interfejsie użytkownika. Nadal musimy dodać kod JavaScript w celu załadowania i przeanalizowania danych, a następnie renderowania danych na mapie. Aby rozpocząć, otwórz plik *index.js* i dodaj do niego kod zgodnie z opisem w poniższych krokach.
+Wszystko jest teraz skonfigurowane w interfejsie użytkownika. Nadal musimy dodać JavaScript, aby załadować i przeanalizować dane, a następnie renderować dane na mapie. Aby rozpocząć, otwórz plik *index.js* i dodaj do niego kod zgodnie z opisem w poniższych krokach.
 
-1. Dodaj opcje globalne, aby ułatwić aktualizowanie ustawień. Zdefiniuj zmienne dla mapy, okna wyskakującego, źródła danych, warstwy ikon i znacznika HTML. Ustaw znacznik HTML w taki sposób, aby wskazywał środek obszaru wyszukiwania. I zdefiniuj wystąpienie klienta usługi wyszukiwania Azure Maps.
+1. Dodaj opcje globalne, aby ułatwić aktualizowanie ustawień. Zdefiniuj zmienne mapy, wyskakujące okno, źródło danych, warstwę ikon i znacznik HTML. Ustaw znacznik HTML, aby wskazać środek obszaru wyszukiwania. I zdefiniuj wystąpienie klienta usługi wyszukiwania usługi Azure Maps.
 
     ```JavaScript
     //The maximum zoom level to cluster data point data on the map.
@@ -395,11 +395,11 @@ Wszystko jest teraz skonfigurowane w interfejsie użytkownika. Nadal musimy doda
     var map, popup, datasource, iconLayer, centerMarker, searchURL;
     ```
 
-1. Dodaj kod do pliku *index.js*. Poniższy kod inicjuje mapę. Dodaliśmy [odbiornik zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) czekający na zakończenie ładowania strony. Następnie tworzymy zdarzenia w celu monitorowania ładowania mapy, a następnie przydzielenia funkcji dla przycisku wyszukiwania i przycisku Moje lokalizacje.
+1. Dodaj kod do pliku *index.js*. Poniższy kod inicjuje mapę. Dodaliśmy [detektor zdarzeń,](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) aby poczekać, aż strona zostanie zakończona ładowanie. Następnie podłączyliśmy zdarzenia, aby monitorować ładowanie mapy i nadać funkcjonalność przyciskowi wyszukiwania i przyciskowi Moja lokalizacja.
 
-   Gdy użytkownik wybierze przycisk Wyszukaj lub wpisze lokalizację w polu wyszukiwania, a następnie naciśnie klawisz ENTER, inicjowane jest Wyszukiwanie rozmyte względem zapytania użytkownika. Aby ograniczyć wyniki wyszukiwania do tych krajów/regionów, należy przekazać tablicę wartości ISO 2 kraju do `countrySet` opcji. Ograniczenie krajów/regionów do wyszukiwania pomaga zwiększyć dokładność zwracanych wyników. 
+   Gdy użytkownik wybierze przycisk wyszukiwania lub wpisze lokalizację w polu wyszukiwania, a następnie naciśnie enter, inicjuje się wyszukiwanie rozmyte w kwerendzie użytkownika. Przekaż w tablicy wartości ISO 2 kraju do `countrySet` opcji, aby ograniczyć wyniki wyszukiwania do tych krajów/regionów. Ograniczenie krajów/regionów do wyszukiwania pomaga zwiększyć dokładność zwracanych wyników. 
   
-   Po zakończeniu wyszukiwania wykonaj pierwszy wynik i ustaw dla niego kamerę mapy. Gdy użytkownik wybierze przycisk Moja lokalizacja, pobierze lokalizację użytkownika przy użyciu interfejsu API geolokalizacji HTML5. Ten interfejs API jest wbudowany w przeglądarkę. Następnie Wyśrodkuj mapę na swojej lokalizacji.  
+   Po zakończeniu wyszukiwania zrób pierwszy wynik i ustaw kamerę mapy nad tym obszarem. Gdy użytkownik wybierze przycisk Moja lokalizacja, pobierz lokalizację użytkownika za pomocą interfejsu API geolokalizacji HTML5. Ten interfejs API jest wbudowany w przeglądarkę. Następnie wyśrodkuj mapę nad ich lokalizacją.  
 
    > [!Tip]
    > W przypadku wyskakujących okienek najlepiej utworzyć jedno wystąpienie `Popup` i używać go ponownie, aktualizując jego zawartość i położenie. Dla każdego wystąpienia `Popup` dodawanego do kodu do strony dodawanych jest wiele elementów DOM. Im więcej elementów DOM na stronie, tym więcej obiektów musi śledzić przeglądarka. W przypadku zbyt wielu elementów przeglądarka może zacząć wolno działać.
@@ -527,7 +527,7 @@ Wszystko jest teraz skonfigurowane w interfejsie użytkownika. Nadal musimy doda
     map.markers.add(centerMarker);
     ```
 
-1. W odbiorniku zdarzeń `ready` mapy dodaj źródło danych. Następnie wykonaj wywołanie, aby załadować i przeanalizować zestaw danych. Włącz klastrowanie na źródle danych. Klastrowanie na źródle danych grupuje nakładające się punkty w klastrze. Klastry są rozdzielane na poszczególne punkty, gdy użytkownik powiększa widok. Takie zachowanie zapewnia lepszy komfort pracy użytkowników i zwiększa wydajność.
+1. W odbiorniku zdarzeń `ready` mapy dodaj źródło danych. Następnie wykonaj wywołanie, aby załadować i przeanalizować zestaw danych. Włącz klastrowanie na źródle danych. Klastrowanie na źródle danych grupuje nakładające się punkty w klastrze. Klastry są rozdzielane na poszczególne punkty, gdy użytkownik powiększa widok. To zachowanie zapewnia lepsze środowisko użytkownika i zwiększa wydajność.
 
     ```JavaScript
     //Create a data source, add it to the map, and then enable clustering.
@@ -544,7 +544,7 @@ Wszystko jest teraz skonfigurowane w interfejsie użytkownika. Nadal musimy doda
 
 1. Po załadowaniu zestawu danych w odbiorniku zdarzeń `ready` mapy zdefiniuj zestaw warstw w celu renderowania danych. Warstwa bąbelkowa jest używana do renderowania punktów danych klastra. Warstwa symboli jest używana do renderowania liczby punktów w każdym klastrze powyżej warstwy bąbelkowej. Druga warstwa symboli renderuje ikonę niestandardową dla poszczególnych lokalizacji na mapie.
 
-   Dodaj zdarzenia `mouseover` i `mouseout` do warstwy bąbelkowej i warstwy ikon, aby zmieniać kursor myszy, gdy użytkownik umieści go na klastrze lub ikonie na mapie. Dodaj zdarzenie `click` do bąbelkowej warstwy klastra. To `click` powiększania zdarzeń na mapie dwa poziomy i wyśrodkuje mapę w klastrze, gdy użytkownik wybierze dowolny klaster. Dodaj zdarzenie `click` do warstwy ikon. Zdarzenie `click` wyświetla okno podręczne, które pokazuje szczegółowe informacje o kawiarni, kiedy użytkownik wybierze ikonę określonej lokalizacji. Dodaj do mapy zdarzenie, które monitoruje, kiedy mapa przestanie być przesuwana. Gdy to zdarzenie zostanie wyzwolone, zaktualizuj elementy na panelu listy.  
+   Dodaj zdarzenia `mouseover` i `mouseout` do warstwy bąbelkowej i warstwy ikon, aby zmieniać kursor myszy, gdy użytkownik umieści go na klastrze lub ikonie na mapie. Dodaj zdarzenie `click` do bąbelkowej warstwy klastra. To `click` zdarzenie powiększa mapę na dwa poziomy i centruje mapę nad klastrem, gdy użytkownik wybierze dowolny klaster. Dodaj zdarzenie `click` do warstwy ikon. Zdarzenie `click` wyświetla okno podręczne, które pokazuje szczegółowe informacje o kawiarni, kiedy użytkownik wybierze ikonę określonej lokalizacji. Dodaj do mapy zdarzenie, które monitoruje, kiedy mapa przestanie być przesuwana. Gdy to zdarzenie zostanie wyzwolone, zaktualizuj elementy na panelu listy.  
 
     ```JavaScript
     //Create a bubble layer to render clustered data points.
@@ -686,7 +686,7 @@ Wszystko jest teraz skonfigurowane w interfejsie użytkownika. Nadal musimy doda
     }
     ```
 
-1. Gdy panel listy zostanie zaktualizowany, odległość jest obliczana. Ta odległość pochodzi z centrum mapy do wszystkich funkcji punktów w bieżącym widoku mapy. Lokalizacje są następnie sortowane według odległości. Generowany jest kod HTML w celu wyświetlania każdej lokalizacji na panelu listy.
+1. Po zaktualizowaniu panelu listy obliczana jest odległość. Odległość ta znajduje się od środka mapy do wszystkich obiektów punktowych w bieżącym widoku mapy. Lokalizacje są następnie sortowane według odległości. Generowany jest kod HTML w celu wyświetlania każdej lokalizacji na panelu listy.
 
     ```JavaScript
     var listItemTemplate = '<div class="listItem" onclick="itemSelected(\'{id}\')"><div class="listItem-title">{title}</div>{city}<br />Open until {closes}<br />{distance} miles away</div>';
@@ -926,19 +926,19 @@ Kiedy użytkownik wybierze przycisk Moja lokalizacja po raz pierwszy, w przeglą
 
 <center>
 
-![zrzut ekranu żądania przeglądarki w celu uzyskania dostępu do lokalizacji użytkownika](./media/tutorial-create-store-locator/GeolocationApiWarning.png)</center>
+![Zrzut ekranu przedstawiający pytanie przeglądarki o zezwolenie na dostęp do lokalizacji użytkownika](./media/tutorial-create-store-locator/GeolocationApiWarning.png)</center>
 
-Po zastosowaniu wystarczająco dużego powiększenia obszaru zawierającego lokalizacje kawiarni klastry zostaną rozdzielone na poszczególne lokalizacje. Wybierz jedną z ikon mapy lub wybierz element w panelu bocznym, aby wyświetlić okno podręczne. W oknie podręcznym są wyświetlane informacje dotyczące wybranej lokalizacji.
+Po zastosowaniu wystarczająco dużego powiększenia obszaru zawierającego lokalizacje kawiarni klastry zostaną rozdzielone na poszczególne lokalizacje. Wybierz jedną z ikon na mapie lub wybierz element w panelu bocznym, aby wyświetlić wyskakujące okno. W wyskakującym okienku są wyświetlane informacje o wybranej lokalizacji.
 
 <center>
 
-![zrzut ekranu zakończonego lokalizatora magazynu](./media/tutorial-create-store-locator/FinishedSimpleStoreLocator.png)</center>
+![Zrzut ekranu przedstawiający ukończony lokalizator sklepów](./media/tutorial-create-store-locator/FinishedSimpleStoreLocator.png)</center>
 
 Jeśli rozmiar okna przeglądarki zostanie zmieniony tak, że jego szerokość będzie mniejsza niż 700 pikseli, lub aplikacja zostanie otworzona na urządzeniu przenośnym, układ zostanie zmieniony w celu lepszego dopasowania do małego ekranu. 
 
 <center>
 
-![zrzut ekranu przedstawiający wersję małego ekranu lokalizatora magazynu](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)</center>
+![Zrzut ekranu przedstawiający wersję lokalizatora sklepów na małe ekrany](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)</center>
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -957,7 +957,7 @@ W tym samouczku przedstawiono tworzenie podstawowego lokalizatora sklepów przy 
 > [Wyświetl pełny kod źródłowy](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)
 
 > [!div class="nextstepaction"]
-> [Wyświetl przykład na żywo](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator)
+> [Zobacz próbkę na żywo](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator)
 
 Aby dowiedzieć się więcej o zasięgu i możliwościach usługi Azure Maps, zobacz:
 
@@ -967,7 +967,7 @@ Aby dowiedzieć się więcej o zasięgu i możliwościach usługi Azure Maps, zo
 Aby uzyskać dodatkowe przykłady kodu i zapoznać się z interaktywnym środowiskiem kodowania:
 
 > [!div class="nextstepaction"]
-> [Jak używać kontrolki mapy](how-to-use-map-control.md)
+> [Jak korzystać z kontrolki mapy](how-to-use-map-control.md)
 
 > [!div class="nextstepaction"]
-> [Używanie wyrażeń stylów opartych na danych](data-driven-style-expressions-web-sdk.md)
+> [Korzystanie z wyrażeń stylu opartych na danych](data-driven-style-expressions-web-sdk.md)

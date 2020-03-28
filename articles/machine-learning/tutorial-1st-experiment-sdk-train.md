@@ -1,7 +1,7 @@
 ---
-title: 'Samouczek: uczenie pierwszego modelu usługi Azure ML w języku Python'
+title: 'Samouczek: Trenuj swój pierwszy model usługi Azure ML w języku Python'
 titleSuffix: Azure Machine Learning
-description: W ramach tego samouczka nauczysz się podstawowe wzorce projektowe w Azure Machine Learning i uczenie prostego modelu uczenia scikitego na podstawie zestawu danych cukrzycą.
+description: W tym samouczku dowiesz się o podstawowych wzorcach projektowania w usłudze Azure Machine Learning i trenujesz prosty model scikit-learn na podstawie zestawu danych cukrzycy.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,60 +11,60 @@ ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
 ms.openlocfilehash: aa90655ecb14abe38ec8fdfc6c18e7d292abbef3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79238678"
 ---
-# <a name="tutorial-train-your-first-ml-model"></a>Samouczek: uczenie swojego pierwszego modelu ML
+# <a name="tutorial-train-your-first-ml-model"></a>Samouczek: Trenuj swój pierwszy model ML
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ten samouczek jest **drugą częścią dwuczęściowej serii samouczków**. W poprzednim samouczku [utworzono obszar roboczy i wybrano środowisko programistyczne](tutorial-1st-experiment-sdk-setup.md). W ramach tego samouczka nauczysz się podstawowe wzorce projektowe w Azure Machine Learning i uczenie prostego modelu uczenia scikitego na podstawie zestawu danych cukrzycą. Po ukończeniu tego samouczka będziesz mieć praktyczną wiedzę na temat zestawu SDK w celu skalowania w górę w celu opracowywania bardziej złożonych eksperymentów i przepływów pracy.
+Ten samouczek jest **drugą częścią dwuczęściowej serii samouczków**. W poprzednim samouczku [utworzono obszar roboczy i wybrano środowisko programistyczne](tutorial-1st-experiment-sdk-setup.md). W tym samouczku dowiesz się o podstawowych wzorcach projektowania w usłudze Azure Machine Learning i trenujesz prosty model scikit-learn na podstawie zestawu danych cukrzycy. Po ukończeniu tego samouczka będziesz mieć praktyczną wiedzę na temat zestawu SDK, aby skalować się w górę, aby opracować bardziej złożone eksperymenty i przepływy pracy.
 
 W tym samouczku nauczysz się wykonywać następujące zadania:
 
 > [!div class="checklist"]
 > * Łączenie obszaru roboczego i tworzenie eksperymentu
-> * Ładowanie danych i uczenie modeli scikit — uczenie się
-> * Wyświetlanie wyników szkoleniowych w portalu
+> * Załaduj dane i trenuj modele scikit-learn
+> * Wyświetlanie wyników treningów w portalu
 > * Pobieranie najlepszego modelu
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Jedynym wymaganiem wstępnym jest uruchomienie części jednego z tego samouczka, [Ustawienia środowiska i obszaru roboczego](tutorial-1st-experiment-sdk-setup.md).
+Jedynym warunkiem jest uruchomienie części 1 tego samouczka, [środowiska instalacji i obszaru roboczego](tutorial-1st-experiment-sdk-setup.md).
 
-W tej części samouczka uruchamiasz kod w przykładowym samouczku notesu Jupyter */Create-First-ml-Experiment/tutorial-1st-Experiment-SDK-Train. ipynb* otwartym na końcu części pierwszej. Ten artykuł zawiera ten sam kod, który znajduje się w notesie.
+W tej części samouczka można uruchomić kod w przykładzie tutoriale notesu *Jupyter/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb* otwarty na końcu części pierwszej. W tym artykule o wiele więcej niż w notesie.
 
 ## <a name="open-the-notebook"></a>Otwieranie notesu
 
-1. Zaloguj się do [Azure Machine Learning Studio](https://ml.azure.com/).
+1. Zaloguj się do [studia usługi Azure Machine Learning](https://ml.azure.com/).
 
-1. Otwórz **samouczek — pierwszy eksperyment — zestaw SDK — uczenie. ipynb** w folderze, jak pokazano w [części pierwszej](tutorial-1st-experiment-sdk-setup.md#open).
+1. Otwórz **tutorial-1st-experiment-sdk-train.ipynb** w folderze, jak pokazano w [części 1](tutorial-1st-experiment-sdk-setup.md#open).
 
 
 > [!Warning]
-> **Nie** Twórz *nowego* notesu w interfejsie Jupyter. *Samouczki notesu/Create-First-ml-Experiment/tutorial-1st-Experiment-SDK-Train. ipynb* obejmują **Wszystkie kod i dane, które są zbędne** dla tego samouczka.
+> **Nie** należy tworzyć *nowego* notebooka w interfejsie Jupyter! *Samouczki notesu/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb* zawiera **cały kod i dane potrzebne** do tego samouczka.
 
-## <a name="connect-workspace-and-create-experiment"></a>Połącz obszar roboczy i Utwórz eksperyment
+## <a name="connect-workspace-and-create-experiment"></a>Łączenie obszaru roboczego i tworzenie eksperymentu
 
 > [!Important]
-> Pozostała część tego artykułu zawiera tę samą zawartość, która jest wyświetlana w notesie.  
+> Pozostała część tego artykułu zawiera tę samą zawartość, co w notesie.  
 >
-> Przełącz się do notesu Jupyter teraz, jeśli chcesz czytać wraz z uruchamianiem kodu. 
-> Aby uruchomić pojedynczą komórkę kodu w notesie, kliknij komórkę kod i naciśnij **klawisze SHIFT + ENTER**. Lub Uruchom cały Notes, wybierając pozycję **Uruchom wszystkie** z górnego paska narzędzi.
+> Przełącz się do notebooka Jupyter teraz, jeśli chcesz przeczytać wzdłuż podczas uruchamiania kodu. 
+> Aby uruchomić pojedynczą komórkę kodu w notesie, kliknij komórkę kodu i naciśnij **klawisze Shift+Enter**. Możesz też uruchomić cały notes, wybierając pozycję **Uruchom wszystko** z górnego paska narzędzi.
 
-Zaimportuj klasę `Workspace` i Załaduj informacje o subskrypcji z pliku `config.json` przy użyciu funkcji, `from_config().` to szuka domyślnie pliku JSON w bieżącym katalogu, ale można także określić parametr ścieżki, aby wskazywał plik przy użyciu `from_config(path="your/file/path")`. W przypadku serwera notesu w chmurze plik jest automatycznie w katalogu głównym.
+Zaimportuj `Workspace` klasę i załaduj informacje o subskrypcji z pliku `config.json` za pomocą funkcji `from_config().` Domyślnie wyszukuje plik JSON `from_config(path="your/file/path")`w bieżącym katalogu, ale można również określić parametr ścieżki, który ma wskazywać plik za pomocą programu . Na serwerze notesu w chmurze plik jest automatycznie w katalogu głównym.
 
-Jeśli Poniższy kod pyta o dodatkowe uwierzytelnianie, wystarczy wkleić link w przeglądarce i wprowadzić token uwierzytelniania.
+Jeśli poniższy kod prosi o dodatkowe uwierzytelnienie, po prostu wklej łącze w przeglądarce i wprowadź token uwierzytelniania.
 
 ```python
 from azureml.core import Workspace
 ws = Workspace.from_config()
 ```
 
-Teraz Utwórz eksperyment w obszarze roboczym. Eksperyment jest innym podstawnym zasobem w chmurze, który reprezentuje kolekcję prób (poszczególne modele są uruchamiane). W tym samouczku pokazano, jak utworzyć przebiegi i śledzić szkolenia modeli w programie Azure Machine Learning Studio przy użyciu eksperymentu. Parametry obejmują odwołanie do obszaru roboczego i nazwę ciągu dla eksperymentu.
+Teraz utwórz eksperyment w obszarze roboczym. Eksperyment to kolejny podstawowy zasób w chmurze, który reprezentuje zbiór prób (poszczególne przebiegi modelu). W tym samouczku służysz do tworzenia przebiegów i śledzenia szkolenia modelu w studiu usługi Azure Machine Learning. Parametry obejmują odwołanie do obszaru roboczego i nazwę ciągu eksperymentu.
 
 
 ```python
@@ -72,9 +72,9 @@ from azureml.core import Experiment
 experiment = Experiment(workspace=ws, name="diabetes-experiment")
 ```
 
-## <a name="load-data-and-prepare-for-training"></a>Ładowanie danych i przygotowanie do szkolenia
+## <a name="load-data-and-prepare-for-training"></a>Załaduj dane i przygotuj się do treningu
 
-W tym samouczku użyjesz zestawu danych cukrzycą, który korzysta z funkcji, takich jak wiek, płeć i BMI, aby przewidzieć postęp chorób cukrzycą. Załaduj dane z klasy [otwarte zestawy danych platformy Azure](https://azure.microsoft.com/services/open-datasets/) i podziel je na zestawy szkoleniowe i testowe przy użyciu `train_test_split()`. Ta funkcja dzieli dane, aby model miał niewidoczne dane, które są używane do testowania po szkoleniu.
+W tym samouczku używasz zestawu danych cukrzyca, który używa funkcji, takich jak wiek, płeć i BMI do przewidywania progresji choroby cukrzycy. Załaduj dane z klasy [Azure Open Datasets](https://azure.microsoft.com/services/open-datasets/) i `train_test_split()`podziel je na zestawy szkoleniowe i testowe przy użyciu . Ta funkcja segreguje dane, więc model ma niewidoczne dane do użycia do testowania po szkoleniu.
 
 
 ```python
@@ -89,9 +89,9 @@ X_train, X_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, r
 
 ## <a name="train-a-model"></a>Szkolenie modelu
 
-Uczenie prostego modelu uczenia się w scikit można łatwo wykonać lokalnie w przypadku szkolenia na małą skalę, ale w przypadku szkolenia wielu iteracji z dziesiątami z różnych permutacji funkcji i ustawień parametrów, można łatwo utracić śledzenie modeli, które zostały przeszkolone i jak przeszkolone. Poniższy Wzorzec projektowy pokazuje, jak korzystać z zestawu SDK, aby łatwo śledzić szkolenia w chmurze.
+Szkolenie prostego modelu scikit-learn można łatwo wykonać lokalnie do szkolenia na małą skalę, ale podczas szkolenia wielu iteracji z dziesiątkami różnych permutacji funkcji i ustawień hiperparametru, łatwo jest stracić informacje o tym, jakie modele zostały przeszkolone i jak ich wyszkolił. Poniższy wzorzec projektu pokazuje, jak wykorzystać sdk, aby łatwo śledzić szkolenia w chmurze.
 
-Utwórz skrypt, który pociąga za siebie modele pierścieniowe w pętli za pomocą różnych wartości alfanumerycznych parametru.
+Tworzenie skryptu, który trenuje modele grzbietu w pętli przez różne wartości alfa hiperparametryczne.
 
 
 ```python
@@ -122,34 +122,34 @@ for alpha in alphas:
 
 Powyższy kod wykonuje następujące czynności:
 
-1. Dla każdej wartości parametru alfa w tablicy `alphas` zostanie utworzony nowy przebieg w ramach eksperymentu. Wartość alfa jest zarejestrowana w celu rozróżnienia między każdym przebiegiem.
-1. W każdym przebiegu model pierścieniowy jest skonkretyzowany, szkolony i używany do uruchamiania prognoz. Element główny-średni-kwadratowy jest obliczany dla wartości rzeczywistych i przewidywanych, a następnie rejestrowanych w ramach uruchomienia. W tym momencie przebieg ma metadane dołączone zarówno do wartości alfa, jak i dokładności RMSE.
-1. Następnie model każdego przebiegu jest serializowany i przekazywany do przebiegu. Pozwala to na pobranie pliku modelu z przebiegu w portalu.
-1. Po zakończeniu każdej iteracji przebieg jest wykonywany przez wywołanie `run.complete()`.
+1. Dla każdej wartości hiperparametrycznej alfa w `alphas` tablicy w ramach eksperymentu tworzony jest nowy przebieg. Wartość alfa jest rejestrowana w celu rozróżnienia między każdym przebiegiem.
+1. W każdym uruchomieniu model Ridge jest tworzone, trenowane i używane do uruchamiania prognoz. Błąd typu root-mean-squared jest obliczany dla wartości rzeczywistych i przewidywanych, a następnie rejestrowany w przebiegu. W tym momencie run ma metadane dołączone zarówno dla wartości alfa i dokładności rmse.
+1. Następnie model dla każdego uruchomienia jest serializowany i przekazany do uruchomienia. Dzięki temu można pobrać plik modelu z uruchomienia w portalu.
+1. Na końcu każdej iteracji przebieg jest `run.complete()`uzupełniony przez wywołanie .
 
-Po zakończeniu szkolenia Wywołaj zmienną `experiment`, aby pobrać link do eksperymentu w portalu.
+Po zakończeniu szkolenia, wywołać zmienną, `experiment` aby pobrać łącze do eksperymentu w portalu.
 
 ```python
 experiment
 ```
 
-<table style="width:100%"><tr><th>Name (Nazwa)</th><th>Obszar roboczy</th><th>Strona raportu</th><th>Strona docs</th></tr><tr><td>cukrzycą — eksperyment</td><td>Nazwa Twojego obszaru roboczego</td><td>Łącze do Azure Portal</td><td>Link do dokumentacji</td></tr></table>
+<table style="width:100%"><tr><th>Nazwa</th><th>Workspace</th><th>Strona raportu</th><th>Strona dokumenty</th></tr><tr><td>eksperyment cukrzycy</td><td>nazwa obszaru roboczego</td><td>Łącze do witryny Azure portal</td><td>Łącze do dokumentacji</td></tr></table>
 
 ## <a name="view-training-results-in-portal"></a>Wyświetlanie wyników szkolenia w portalu
 
-Poniższe **łącze do Azure Portal** przeprowadzi Cię do strony głównej eksperymentu. W tym miejscu zobaczysz wszystkie uruchomienia indywidualne w eksperymentie. Wszystkie wartości zarejestrowane przez użytkownika (w tym przypadku`alpha_value` i `rmse`) stają się polami dla każdego przebiegu, a także staną się dostępne dla wykresów i kafelków w górnej części strony eksperymentu. Aby dodać zarejestrowanej metrykę do wykresu lub kafelka, umieść kursor nad nim, kliknij przycisk Edytuj i Znajdź metrykę zarejestrowaną niestandardowo.
+Po **łączu do witryny Azure portal** przeniesie Cię do głównej strony eksperymentu. Tutaj widzisz wszystkie poszczególne biegi w eksperymencie. Wszystkie niestandardowe wartości`alpha_value` rejestrowane `rmse`(i , w tym przypadku) stają się polami dla każdego uruchomienia, a także stają się dostępne dla wykresów i kafelków u góry strony eksperymentu. Aby dodać zarejestrowaną metrykę do wykresu lub kafelka, umieść nad nią wskaźnik myszy, kliknij przycisk edycji i znajdź metrykę zarejestrowaną na zamówienie.
 
-Gdy szkolenia modeli są przeprowadzane na dużą skalę i tysiące różnych uruchomień, ta strona ułatwia przeglądanie każdego modelu, który jest przeszkolony, a w odróżnieniu od czasu, w jaki zostały one przeszkolone, oraz sposobu zmiany unikatowych metryk w czasie.
+Podczas szkolenia modeli na dużą skalę w setkach i tysiącach oddzielnych przebiegów, ta strona ułatwia zobaczenie każdego wyszkolonego modelu, w szczególności sposobu ich przeszkolenia i zmiany unikatowych wskaźników w czasie.
 
-![Strona głównej eksperymentu w portalu](./media/tutorial-1st-experiment-sdk-train/experiment-main.png)
+![Strona eksperymentu głównego w portalu](./media/tutorial-1st-experiment-sdk-train/experiment-main.png)
 
-Kliknięcie linku numeru uruchamiania w kolumnie `RUN NUMBER` spowoduje przejście do strony dla każdego uruchomienia pojedynczego. Na **karcie domyślne znajdują** się szczegółowe informacje dotyczące poszczególnych przebiegów. Przejdź do karty dane **wyjściowe** i zobaczysz plik `.pkl` dla modelu, który został przekazany do przebiegu podczas każdej iteracji szkoleniowej. W tym miejscu możesz pobrać plik modelu, zamiast konieczności ręcznego ponownego uczenia go.
+Kliknięcie łącza numeru uruchomienia `RUN NUMBER` w kolumnie prowadzi do strony dla każdego pojedynczego uruchomienia. Domyślna karta **Szczegóły** zawiera bardziej szczegółowe informacje o każdym uruchomieniu. Przejdź do **danych wyjściowych** kartę, `.pkl` a zobaczysz plik dla modelu, który został przekazany do uruchomienia podczas każdej iteracji szkolenia. W tym miejscu można pobrać plik modelu, zamiast przeszkolić go ręcznie.
 
-![Strona szczegóły uruchamiania w portalu](./media/tutorial-1st-experiment-sdk-train/model-download.png)
+![Uruchom stronę szczegółów w portalu](./media/tutorial-1st-experiment-sdk-train/model-download.png)
 
 ## <a name="get-the-best-model"></a>Uzyskaj najlepszy model
 
-Oprócz możliwości pobierania plików modelu z eksperymentu w portalu można również pobrać je programowo. Poniższy kod wykonuje iterację w każdym przebiegu eksperymentu i uzyskuje dostęp do zarejestrowanych metryk uruchomienia i szczegółów uruchomienia (które zawierają run_id). Pozwala to na śledzenie najlepszego przebiegu, w tym przypadku przebieg z najniższym średnim elementem głównym-kwadratowym.
+Oprócz możliwości pobierania plików modelu z eksperymentu w portalu, można je również pobrać programowo. Poniższy kod iteruje za pośrednictwem każdego uruchomienia w eksperymencie i uzyskuje dostęp zarówno do metryk przebiegu rejestrowane i szczegóły uruchomienia (który zawiera run_id). To śledzi najlepsze uruchomienie, w tym przypadku uruchomić z najniższym root-mean-squared-error.
 
 ```python
 minimum_rmse_runid = None
@@ -177,7 +177,7 @@ print("Best run_id rmse: " + str(minimum_rmse))
     Best run_id: 864f5ce7-6729-405d-b457-83250da99c80
     Best run_id rmse: 57.234760283951765
 
-Użyj najlepszego identyfikatora przebiegu, aby pobrać pojedynczy przebieg przy użyciu konstruktora `Run` wraz z obiektem eksperymentu. Następnie Wywołaj `get_file_names()`, aby wyświetlić wszystkie pliki dostępne do pobrania z tego przebiegu. W takim przypadku przekazano tylko jeden plik dla każdego przebiegu podczas szkolenia.
+Użyj identyfikatora najlepszego uruchomienia, aby pobrać `Run` poszczególne uruchomienia przy użyciu konstruktora wraz z obiektem eksperymentu. Następnie `get_file_names()` wywołać, aby wyświetlić wszystkie pliki dostępne do pobrania z tego uruchomienia. W takim przypadku przesłano tylko jeden plik dla każdego uruchomienia podczas treningu.
 
 ```python
 from azureml.core import Run
@@ -187,7 +187,7 @@ print(best_run.get_file_names())
 
     ['model_alpha_0.1.pkl']
 
-Wywołaj `download()` w obiekcie Run, określając nazwę pliku modelu do pobrania. Domyślnie ta funkcja jest pobierana do bieżącego katalogu.
+Wywołanie `download()` obiektu uruchamiania, określając nazwę pliku modelu do pobrania. Domyślnie ta funkcja jest pobierana do bieżącego katalogu.
 
 ```python
 best_run.download_file(name="model_alpha_0.1.pkl")
@@ -195,9 +195,9 @@ best_run.download_file(name="model_alpha_0.1.pkl")
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Nie wykonuj tej sekcji, jeśli planujesz Uruchamianie innych samouczków Azure Machine Learning.
+Nie należy ukończyć tej sekcji, jeśli planujesz uruchomienie innych samouczków usługi Azure Machine Learning.
 
-### <a name="stop-the-compute-instance"></a>Zatrzymaj wystąpienie obliczeniowe
+### <a name="stop-the-compute-instance"></a>Zatrzymywać wystąpienie obliczeń
 
 [!INCLUDE [aml-stop-server](../../includes/aml-stop-server.md)]
 
@@ -209,12 +209,12 @@ Możesz też zachować grupę zasobów i usunąć jeden obszar roboczy. Wyświet
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku zostały wykonane następujące zadania:
+W tym samouczku wykonaliśmy następujące zadania:
 
 > [!div class="checklist"]
-> * Nawiązano połączenie z obszarem roboczym i utworzono eksperyment
-> * Ładowane dane i przeszkolone modele uczenia scikitego
-> * Oglądane wyniki szkolenia w portalu i pobrane modele
+> * Połączenie obszaru roboczego i utworzenie eksperymentu
+> * Załadowane dane i wyszkolone modele scikit-learn
+> * Wyświetlone wyniki szkolenia w portalu i pobrane modele
 
 [Wdróż model](tutorial-deploy-models-with-aml.md) za pomocą usługi Azure Machine Learning.
-Dowiedz się, jak opracowywać zautomatyzowane eksperymenty [uczenia maszynowego](tutorial-auto-train-models.md) .
+Dowiedz się, jak opracować zautomatyzowane eksperymenty [uczenia maszynowego.](tutorial-auto-train-models.md)

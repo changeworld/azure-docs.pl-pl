@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/10/2018
 ms.author: genemi
 ms.openlocfilehash: e30651cb0ed7d74082163a92acbc428c21018255
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67183309"
 ---
 ## <a name="c-program-example"></a>Przykład programu w języku C#
@@ -26,7 +26,7 @@ W kolejnych sekcjach tego artykułu zaprezentowano program w języku C#, który 
 
 Wcześniejsze instrukcje `CREATE TABLE` zawierają słowo kluczowe **REFERENCES** w celu utworzenia relacji między dwiema tabelami za pomocą *klucza obcego*. Jeśli używasz bazy danych *tempdb*, wykomentuj słowo kluczowe `--REFERENCES`, wpisując na początku dwa łączniki.
 
-Ten diagram relacji jednostek przedstawia relację między dwiema tabelami. Wartości w kolumnie *podrzędnej* **tabEmployee.DepartmentCode** są ograniczone do wartości znajdujących się w kolumnie *nadrzędnej* **tabDepartment.DepartmentCode**.
+Ten diagram relacji jednostek przedstawia relację między dwiema tabelami. Wartości w **kolumnie podrzędnej tabEmemployee.DepartmentCode** *child* są ograniczone do wartości z kolumny *nadrzędnej* **tabDepartment.DepartmentCode.**
 
 ![Diagram relacji jednostek pokazujący klucz obcy](./media/sql-database-csharp-adonet-create-query-2/erd-dept-empl-fky-2.png)
 
@@ -37,7 +37,7 @@ Ten diagram relacji jednostek przedstawia relację między dwiema tabelami. Wart
 
 Program w języku C# jest logicznie jednym plikiem cs, ale fizycznie jest podzielony na kilka bloków kodu, aby poprawić czytelność. Aby skompilować i uruchomić program, wykonaj następujące czynności:
 
-1. Utwórz projekt w języku C# w programie Visual Studio. Typ projektu powinien mieć wartość *Konsola*, którą można znaleźć w obszarze **Szablony** > **Visual C#**  > **Aplikacja klasyczna systemu Windows** > **Aplikacja konsoli (.NET Framework)** .
+1. Utwórz projekt w języku C# w programie Visual Studio. Typ projektu powinien mieć wartość *Konsola*, którą można znaleźć w obszarze **Szablony** > **Visual C#** > **Aplikacja klasyczna systemu Windows** > **Aplikacja konsoli (.NET Framework)**.
 
 1. W pliku *Program.cs* zamień startowe wiersze kodu, wykonując następujące czynności:
 

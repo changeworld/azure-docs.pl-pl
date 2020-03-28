@@ -10,10 +10,10 @@ ms.date: 03/05/2020
 ms.author: labrenne
 ms.custom: mvc
 ms.openlocfilehash: a415a74af654ef9cf56a37c1fca5ac6632ba4418
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78672977"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Samouczek: renderowanie sceny w usłudze Azure Batch 
@@ -70,7 +70,7 @@ az batch account create \
     --location eastus2
 ```
 
-Aby tworzyć pule obliczeniowe i zadania oraz zarządzać nimi, należy uwierzytelnić się w usłudze Batch. Zaloguj się do konta za pomocą polecenia [az batch account login](/cli/azure/batch/account#az-batch-account-login). Po zalogowaniu Twoje polecenia `az batch` będą wykonywane w kontekście tego konta. W poniższym przykładzie zastosowano metodę uwierzytelniania klucza wspólnego, w której używana jest nazwa konta usługi Batch wraz z kluczem. Usługa Batch obsługuje również uwierzytelnianie za pośrednictwem usługi [Azure Active Directory](batch-aad-auth.md), umożliwiające uwierzytelnianie poszczególnych użytkowników lub nienadzorowanej aplikacji.
+Aby tworzyć pule obliczeniowe i zadania oraz zarządzać nimi, należy uwierzytelnić się w usłudze Batch. Zaloguj się do konta za pomocą polecenia [az batch account login](/cli/azure/batch/account#az-batch-account-login). Po zalogowaniu Twoje polecenia `az batch` będą wykonywane w kontekście tego konta. W poniższym przykładzie zastosowano metodę uwierzytelniania klucza wspólnego, w której używana jest nazwa konta usługi Batch wraz z kluczem. Usługa Batch obsługuje również uwierzytelnianie za pośrednictwem [usługi Azure Active Directory,](batch-aad-auth.md)aby uwierzytelnić poszczególnych użytkowników lub aplikację nienadzorowane.
 
 ```azurecli-interactive 
 az batch account login \
@@ -96,7 +96,7 @@ az storage container create \
     --name scenefiles
 ```
 
-Pobierz scenę `MotionBlur-Dragon-Flying.max` z witryny [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max) do lokalnego katalogu roboczego. Na przykład:
+Pobierz scenę `MotionBlur-Dragon-Flying.max` z witryny [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max) do lokalnego katalogu roboczego. Przykład:
 
 ```azurecli-interactive
 wget -O MotionBlur-DragonFlying.max https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max
@@ -138,7 +138,7 @@ Utwórz pulę usługi Batch na potrzeby renderowania za pomocą polecenia [az ba
   "enableInterNodeCommunication": false 
 }
 ```
-Usługa Batch obsługuje węzły dedykowane oraz [węzły o niskim priorytecie](batch-low-pri-vms.md). W puli możesz użyć dowolnego z tych typów węzłów lub obu. Węzły dedykowane są zarezerwowane dla Twojej puli. Węzły o niskim priorytecie są oferowane w obniżonej cenie i korzystają z nadwyżek pojemności maszyn wirtualnych na platformie Azure. Węzły o niskim priorytecie staną się niedostępne, jeśli pojemność platformy Azure będzie niewystarczająca. 
+Usługa Batch obsługuje dedykowane węzły i węzły [o niskim priorytecie](batch-low-pri-vms.md) i można użyć jednego lub obu w pulach. Węzły dedykowane są zarezerwowane dla Twojej puli. Węzły o niskim priorytecie są oferowane w obniżonej cenie i korzystają z nadwyżek pojemności maszyn wirtualnych na platformie Azure. Węzły o niskim priorytecie staną się niedostępne, jeśli pojemność platformy Azure będzie niewystarczająca. 
 
 Skonfigurowana pula zawiera jeden węzeł o niskim priorytecie z uruchomionym obrazem systemu Windows Server i oprogramowaniem wymaganym przez usługę Batch Rendering Service. Ta pula ma licencję umożliwiającą renderowanie z użyciem programów 3ds Max i Arnold. W kolejnym kroku pula będzie skalowana w celu zwiększenia liczby węzłów.
 
@@ -168,7 +168,7 @@ az storage container create \
     --name job-myrenderjob
 ```
 
-Do zapisania plików wyjściowych w kontenerze usługa Batch wymaga tokenu sygnatury dostępu współdzielonego (SAS). Utwórz ten token za pomocą polecenia [az storage account generate-sas](/cli/azure/storage/account#az-storage-account-generate-sas). Ten przykład tworzy token do zapisu do dowolnego kontenera obiektów BLOB na koncie, a token wygasa 15 listopada 2020:
+Do zapisania plików wyjściowych w kontenerze usługa Batch wymaga tokenu sygnatury dostępu współdzielonego (SAS). Utwórz ten token za pomocą polecenia [az storage account generate-sas](/cli/azure/storage/account#az-storage-account-generate-sas). W tym przykładzie tworzy token do zapisu do dowolnego kontenera obiektów blob na koncie, a token wygasa 15 listopada 2020 r.:
 
 ```azurecli-interactive
 az storage account generate-sas \
@@ -291,7 +291,7 @@ Zmiana rozmiaru puli zajmuje kilka minut. Podczas trwania tego procesu skonfigur
 
 ## <a name="render-a-multiframe-scene"></a>Renderowanie sceny z wieloma ramkami
 
-Tak jak w przykładzie z jedną ramką użyj polecenia [az batch task create](/cli/azure/batch/task#az-batch-task-create) w celu utworzenia zadań podrzędnych renderowania w ramach zadania *myrenderjob*. Tym razem określisz ustawienia zadań podrzędnych w pliku JSON o nazwie *myrendertask_multi.json*. (Plik można pobrać z witryny [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/myrendertask_multi.json)). Każdy z sześciu zadań określa wiersz polecenia Arnold w celu renderowania jednej ramki z maksymalną sceną *MotionBlur-DragonFlying. Max*.
+Tak jak w przykładzie z jedną ramką użyj polecenia [az batch task create](/cli/azure/batch/task#az-batch-task-create) w celu utworzenia zadań podrzędnych renderowania w ramach zadania *myrenderjob*. Tym razem określisz ustawienia zadań podrzędnych w pliku JSON o nazwie *myrendertask_multi.json*. (Możesz pobrać plik z [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/myrendertask_multi.json).) Każde z sześciu zadań określa wiersz polecenia Arnolda, aby renderować jedną klatkę sceny 3ds Max *MotionBlur-DragonFlying.max*.
 
 W bieżącej powłoce utwórz plik o nazwie *myrendertask_multi.json*, a następnie skopiuj i wklej zawartość pobranego pliku. Zmodyfikuj elementy `blobSource` i `containerURL` w pliku JSON, wprowadzając w nich nazwę Twojego konta magazynu i Twój token SAS. Pamiętaj o zmianie ustawień dla każdego z sześciu zadań podrzędnych. Zapisz plik, a następnie uruchom następujące polecenie w celu dodania zadań podrzędnych do kolejki:
 
@@ -301,7 +301,7 @@ az batch task create --job-id myrenderjob --json-file myrendertask_multi.json
 
 ### <a name="view-task-output"></a>Wyświetlanie danych wyjściowych zadania podrzędnego
 
-Wykonanie zadania podrzędnego zajmuje kilka minut. Stan zadań podrzędnych możesz wyświetlić za pomocą polecenia [az batch task list](/cli/azure/batch/task#az-batch-task-list). Na przykład:
+Wykonanie zadania podrzędnego zajmuje kilka minut. Stan zadań podrzędnych możesz wyświetlić za pomocą polecenia [az batch task list](/cli/azure/batch/task#az-batch-task-list). Przykład:
 
 ```azurecli-interactive
 az batch task list \
@@ -309,7 +309,7 @@ az batch task list \
     --output table
 ```
 
-Możesz wyświetlić szczegółowe informacje o poszczególnych zadaniach podrzędnych, używając polecenia [az batch task show](/cli/azure/batch/task#az-batch-task-show). Na przykład:
+Możesz wyświetlić szczegółowe informacje o poszczególnych zadaniach podrzędnych, używając polecenia [az batch task show](/cli/azure/batch/task#az-batch-task-show). Przykład:
 
 ```azurecli-interactive
 az batch task show \
@@ -317,7 +317,7 @@ az batch task show \
     --task-id mymultitask1
 ```
  
-Zadania podrzędne generują pliki wyjściowe o nazwach *dragon0002.jpg* - *dragon0007.jpg* w węzłach obliczeniowych, a następnie przekazują je do kontenera *job-myrenderjob* na koncie magazynu. Aby wyświetlić pliki wyjściowe, pobierz te pliki do folderu na komputerze lokalnym za pomocą polecenia [az storage blob download-batch](/cli/azure/storage/blob). Na przykład:
+Zadania generują pliki wyjściowe o nazwie *dragon0002.jpg* - *dragon0007.jpg* na węzłach obliczeniowych i przesyłają je do kontenera *job-myrenderjob* na koncie magazynu. Aby wyświetlić pliki wyjściowe, pobierz te pliki do folderu na komputerze lokalnym za pomocą polecenia [az storage blob download-batch](/cli/azure/storage/blob). Przykład:
 
 ```azurecli-interactive
 az storage blob download-batch \

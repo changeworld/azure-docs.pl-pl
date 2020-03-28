@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: integracja Azure Active Directory z usługą łączenie | Microsoft Docs'
+title: 'Samouczek: Integracja usługi Azure Active Directory z urządzeniem Coupa | Dokumenty firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Coupa.
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 709f3a5b66db660ade482660cd9b3930ff0b7141
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74227644"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-coupa"></a>Samouczek: integracja Azure Active Directory z łączeniem
+# <a name="tutorial-azure-active-directory-integration-with-coupa"></a>Samouczek: Integracja usługi Azure Active Directory z urządzeniem Coupa
 
 Z tego samouczka dowiesz się, jak zintegrować aplikację Coupa z usługą Azure Active Directory (Azure AD).
 Zintegrowanie aplikacji Coupa z usługą Azure AD zapewnia następujące korzyści:
@@ -33,7 +33,7 @@ Zintegrowanie aplikacji Coupa z usługą Azure AD zapewnia następujące korzyś
 * Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -70,7 +70,7 @@ Aby skonfigurować integrację aplikacji Coupa z usługą Azure AD, musisz doda�
 
      ![Aplikacja Coupa na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją Coupa, korzystając z danych użytkownika testowego **Britta Simon**.
 Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji Coupa.
@@ -92,7 +92,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Coupa, wyk
 
 1. W [witrynie Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Coupa** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -106,12 +106,12 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Coupa, wyk
 
     ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji Coupa](common/sp-identifier-reply.png)
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<companyname>.coupahost.com`
+    a. W polu **tekstowym Podpisywania adresu URL** wpisz adres URL, używając następującego wzorca:`https://<companyname>.coupahost.com`
 
     > [!NOTE]
     > Wartość adresu URL logowania nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Aby uzyskać tę wartość, skontaktuj się z [zespołem pomocy technicznej i obsługi klienta Coupa](https://success.coupa.com/Support/Contact_Us?).
 
-    b. W polu **Identyfikator** wpisz adres URL:
+    b. W polu **Identyfikator** wpisz adres URL: 
 
     | Środowisko  | Adres URL |
     |:-------------|----|
@@ -119,7 +119,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Coupa, wyk
     | Produkcja | `sso-prd1.coupahost.com`|
     | | |
 
-    c. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL:
+    d. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL: 
 
     | Środowisko | Adres URL |
     |------------- |----|
@@ -127,9 +127,9 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Coupa, wyk
     | Produkcja | `https://sso-prd1.coupahost.com/sp/ACS.saml2`|
     | | |
 
-4. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
+4. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/metadataxml.png)
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
 6. W sekcji **Konfigurowanie aplikacji Coupa** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
@@ -139,25 +139,25 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Coupa, wyk
 
     b. Identyfikator usługi Azure AD
 
-    c. Adres URL wylogowywania
+    d. Adres URL wylogowywania
 
 ### <a name="configure-coupa-single-sign-on"></a>Konfigurowanie logowania jednokrotnego aplikacji Coupa
 
 1. Zaloguj się do witryny firmy w aplikacji Coupa jako administrator.
 
-2. Przejdź do pozycji **Setup (Konfiguracja) \> Security Control (Kontrola zabezpieczeń)** .
+2. Przejdź do pozycji **Setup (Konfiguracja) \> Security Control (Kontrola zabezpieczeń)**.
 
-    ![Kontrolki zabezpieczeń](./media/coupa-tutorial/ic791900.png "Kontrolki zabezpieczeń")
+    ![Mechanizmy zabezpieczeń](./media/coupa-tutorial/ic791900.png "Mechanizmy zabezpieczeń")
 
 3. W sekcji **Log in using Coupa credentials** (Zaloguj się przy użyciu poświadczeń Coupa) wykonaj następujące kroki:
 
-    ![Łączenie metadanych SP](./media/coupa-tutorial/ic791901.png "Łączenie metadanych SP")
+    ![Metadane Sp coupa](./media/coupa-tutorial/ic791901.png "Metadane Sp coupa")
 
     a. Wybierz pozycję **Log in using SAML** (Zaloguj się za pośrednictwem protokołu SAML).
 
     b. Kliknij przycisk **Browse** (Przeglądaj), aby przekazać metadane pobrane z witryny Azure Portal.
 
-    c. Kliknij pozycję **Zapisz**.
+    d. Kliknij przycisk **Zapisz**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -165,24 +165,24 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-    !["Użytkownicy i grupy" i "All users" linki](common/users.png)
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+2. Wybierz **pozycję Nowy użytkownik** u góry ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
-3. We właściwościach użytkownika wykonaj następujące czynności.
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-    ![Okno dialogowe użytkownika](common/user-properties.png)
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon\@yourcompanydomain. Extension**  
+    b. W polu **Nazwa użytkownika** wpisz **\@brittasimon yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
-    c. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Kliknij pozycję **Utwórz**.
+    d. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -206,7 +206,7 @@ W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z
 
 5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+6. Jeśli oczekujesz dowolnej wartości roli w asercji SAML, a następnie w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
@@ -216,7 +216,7 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Coupa
 
 * W przypadku aplikacji Coupa aprowizacja jest zadaniem ręcznym.
 
-**Aby skonfigurować aprowizację użytkowników, wykonaj następujące czynności:**
+**Aby skonfigurować aprowizację użytkowników, wykonaj następujące kroki:**
 
 1. Zaloguj się do witryny firmy w aplikacji **Coupa** jako administrator.
 
@@ -224,36 +224,36 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Coupa
 
     ![Użytkownicy](./media/coupa-tutorial/ic791908.png "Użytkownicy")
 
-3. Kliknij pozycję **Utwórz**.
+3. Kliknij przycisk **Utwórz**.
 
     ![Tworzenie użytkowników](./media/coupa-tutorial/ic791909.png "Tworzenie użytkowników")
 
 4. W sekcji **User Create** (Tworzenie użytkownika) wykonaj następujące kroki:
 
-    ![Szczegóły użytkownika](./media/coupa-tutorial/ic791910.png "Szczegóły użytkownika")
+    ![Dane użytkownika](./media/coupa-tutorial/ic791910.png "Dane użytkownika")
 
     a. W polach tekstowych **Login**, **First name** (Imię), **Last Name** (Nazwisko), **Single Sign-On ID** (Identyfikator logowania jednokrotnego) i **Email** (Adres e-mail) wpisz wartości prawidłowego konta usługi Azure Active Directory, które chcesz aprowizować.
 
-    b. Kliknij pozycję **Utwórz**.
+    b. Kliknij przycisk **Utwórz**.
 
     >[!NOTE]
     >Właściciel konta usługi Azure Active Directory otrzyma wiadomość e-mail z linkiem w celu potwierdzenia konta, zanim stanie się ono aktywne.
     >
 
 >[!NOTE]
->Do udostępniania kont użytkowników usługi Azure AD można używać innych narzędzi do tworzenia kont użytkowników i interfejsów API dostarczonych przez program.
+>Do aprowizowania kont użytkowników usługi Azure AD można użyć dowolnych innych narzędzi do tworzenia kont użytkowników coupa lub interfejsów API udostępnianych przez firmę Coupa.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Coupa w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Coupa, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka Coupa w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Coupa, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat Panelu dostępu, zobacz [Wprowadzenie do Panelu dostępu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

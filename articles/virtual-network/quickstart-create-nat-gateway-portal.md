@@ -1,7 +1,7 @@
 ---
-title: 'Szybki Start: Tworzenie bramy translatora adresów sieciowych — Azure Portal'
+title: 'Szybki start: tworzenie bramy NAT — witryna Azure portal'
 titlesuffix: Azure Virtual Network NAT
-description: W tym przewodniku szybki start pokazano, jak utworzyć bramę NAT przy użyciu Azure Portal
+description: Ten przewodnik Szybki start pokazuje, jak utworzyć bramę NAT za pomocą portalu Azure
 services: virtual-network
 documentationcenter: na
 author: asudbring
@@ -14,167 +14,169 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 6199beadc3a23b8e973ea26c2b525add98d3dcbb
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 1ff13d8ef0ca4c6cf499c3245d3ef14370283075
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79216956"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80066386"
 ---
-# <a name="quickstart-create-a-nat-gateway-using-the-azure-portal"></a>Szybki Start: Tworzenie bramy NAT przy użyciu Azure Portal
+# <a name="quickstart-create-a-nat-gateway-using-the-azure-portal"></a>Szybki start: tworzenie bramy NAT za pomocą portalu Azure
 
-Ten przewodnik Szybki Start przedstawia sposób korzystania z usługi Azure Virtual Network translator adresów sieciowych. Utworzysz bramę translatora adresów sieciowych, aby zapewnić łączność wychodzącą dla maszyny wirtualnej na platformie Azure. 
+Ten przewodnik Szybki start pokazuje, jak korzystać z usługi Azure Virtual Network NAT. Utworzysz bramę NAT, aby zapewnić łączność wychodzącą dla maszyny wirtualnej na platformie Azure. 
+
+Jeśli wolisz, możesz wykonać te kroki przy użyciu [interfejsu wiersza polecenia platformy Azure](quickstart-create-nat-gateway-cli.md), Azure [PowerShell](quickstart-create-nat-gateway-powershell.md)lub wdrożyć [szablon ARM](quickstart-create-nat-gateway-powershell.md) zamiast portalu.
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do [Azure portal](https://portal.azure.com).
+Zaloguj się do [Portalu Azure](https://portal.azure.com).
 
 ## <a name="virtual-network-and-parameters"></a>Sieć wirtualna i parametry
 
-Przed wdrożeniem maszyny wirtualnej i użyciem bramy NAT należy utworzyć grupę zasobów i sieć wirtualną.
+Przed wdrożeniem maszyny Wirtualnej i można użyć bramy NAT, musimy utworzyć grupę zasobów i sieci wirtualnej.
 
-W tej sekcji należy zamienić następujące parametry w krokach z poniższymi informacjami:
+W tej sekcji należy zastąpić następujące parametry w krokach poniższymi informacjami:
 
 | Parametr                   | Wartość                |
 |-----------------------------|----------------------|
-| **\<nazwy grupy zasobów >**  | myResourceGroupNAT |
-| **\<nazwę sieci wirtualnej >** | myVNet          |
-| **\<nazwę regionu >**          | Wschodnie stany USA 2      |
-| **\<adres IPv4 >**   | 192.168.0.0 \ 16          |
-| **\<nazwę podsieci >**          | mySubnet        |
-| **\<zakres adresów podsieci >** | 192.168.0.0 \ 24          |
+| **\<>nazwa grupy zasobów**  | myResourceGroupNAT |
+| **\<>nazwa sieci wirtualnej** | myVNet ( myVNet )          |
+| **\<nazwa regionu>**          | Wschodnie stany USA 2      |
+| **\<>przestrzeni adresowej IPv4**   | 192.168.0.0\16          |
+| **\<>nazwa podsieci**          | mySubnet        |
+| **\<>zakresu adresu podsieci** | 192.168.0.0\24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
-## <a name="create-a-vm-to-use-the-nat-gateway"></a>Tworzenie maszyny wirtualnej do korzystania z bramy translatora adresów sieciowych
+## <a name="create-a-vm-to-use-the-nat-gateway"></a>Tworzenie maszyny Wirtualnej w celu korzystania z bramy NAT
 
-Teraz utworzymy maszynę wirtualną do korzystania z usługi translatora adresów sieciowych. Ta maszyna wirtualna ma publiczny adres IP do użycia jako publiczny adres IP na poziomie wystąpienia, który umożliwia dostęp do maszyny wirtualnej. Usługa translatora adresów sieciowych obsługuje kierunek przepływu i zastępuje domyślne miejsce docelowe w podsieci. Publiczny adres IP maszyny wirtualnej nie będzie używany dla połączeń wychodzących.
+Teraz utworzymy maszynę wirtualną do korzystania z usługi NAT. Ta maszyna wirtualna ma publiczny adres IP do użycia jako publiczny adres IP na poziomie wystąpienia, aby umożliwić dostęp do maszyny Wirtualnej. Usługa NAT jest świadoma kierunku przepływu i zastąpi domyślne miejsce docelowe Internetu w podsieci. Publiczny adres IP maszyny Wirtualnej nie będzie używany dla połączeń wychodzących.
 
-1. W lewym górnym rogu portalu wybierz pozycję **Utwórz zasób** > **COMPUTE** > **Ubuntu Server 18,04 LTS**lub Wyszukaj **Ubuntu Server 18,04 LTS** w wyszukiwaniu portalu Marketplace.
+1. W lewym górnym rogu portalu wybierz pozycję **Utwórz zasób** > **Compute** > **Ubuntu Server 18.04 LTS**lub wyszukaj w wyszukiwarce Marketplace serwer **Ubuntu Server 18.04 LTS.**
 
 2. W obszarze **Tworzenie maszyny wirtualnej** wpisz lub wybierz następujące wartości na karcie **Podstawowe**:
-   - **Grupa zasobów** > **subskrypcji** : wybierz pozycję **myResourceGroupNAT**.
-   - **Szczegóły wystąpienia** > **Nazwa maszyny wirtualnej**: wpisz **myVM**.
-   - **Szczegóły wystąpienia** > **regionu** > wybierz **Wschodnie stany USA 2**.
-   - **Konto administratora** > **Typ uwierzytelniania**: wybierz opcję **hasło**.
-   - **Konto administratora** > wprowadź **nazwę użytkownika**, **hasło**i potwierdź informacje o **haśle** .
-   - **Reguły portów przychodzących** > **publicznych portów przychodzących**: wybierz opcję **Zezwalaj na wybrane porty**.
-   - **Reguły portów przychodzących** > **Wybieranie portów ruchu przychodzącego**: Wybierz **SSH (22)**
+   - **Grupa** > **zasobów**subskrypcji: Wybierz **myResourceGroupNAT**.
+   - **Szczegóły** > wystąpienia**Nazwa maszyny wirtualnej:** Wpisz **myVM**.
+   - **Region szczegółów** > **Region** wystąpienia > wybierz **pozycję Wschodnia us 2**.
+   - **Typ** > uwierzytelniania konta**administratora**: Wybierz **hasło**.
+   - **Konto administratora** > Wprowadź **nazwę użytkownika,** **hasło**i pozycję Potwierdź informacje o **haśle.**
+   - **Reguły portów** > **przychodzących Publiczne porty przychodzące**: Wybierz **opcję Zezwalaj na wybrane porty**.
+   - **Reguły portów** > **przychodzących Wybierz porty przychodzące:** Wybierz **SSH (22)**
    - Wybierz kartę **Sieć** lub wybierz pozycję **Dalej: Dyski**, a następnie pozycję **Dalej: Sieć**.
 
-3. Na karcie **Sieć** upewnij się, że wybrano następujące elementy:
+3. Na karcie **Sieć** upewnij się, że zaznaczono następujące elementy:
    - **Sieć wirtualna**: **myVnet**
-   - **Subnet**: Moja **podsieć**
-   - > **Publicznego adresu IP** wybierz pozycję **Utwórz nowy**.  W oknie **Tworzenie publicznego adresu IP** wpisz **MyPublicIPVM** w polu **Nazwa** , a następnie wybierz pozycję **standardowa** dla **jednostki SKU**.  Kliknij przycisk **OK**.
-   - **Grupa zabezpieczeń sieci karty sieciowej**: wybierz pozycję **podstawowa**.
-   - **Publiczne porty przychodzące**: wybierz opcję **Zezwalaj na wybrane porty**.
-   - **Wybierz porty wejściowe**: Upewnij się, że wybrano protokół **SSH** .
+   - **Podsieć**: **mySubnet**
+   - **Publiczne** > IP Wybierz pozycję **Utwórz nowy**.  W oknie **Tworzenie publicznego adresu IP** wpisz **myPublicIPVM** w polu **Nazwa** i wybierz pozycję **Standardowy** dla **jednostki SKU**.  Kliknij przycisk **OK**.
+   - **Grupa zabezpieczeń sieciowej karty sieciowej**: Wybierz pozycję **Podstawowa**.
+   - **Publiczne porty przychodzące**: Wybierz **opcję Zezwalaj na wybrane porty**.
+   - **Wybierz porty przychodzące**: Upewnij się, że wybrano **SSH.**
 
-4. Na karcie **Zarządzanie** w obszarze **monitorowanie**ustaw opcję **Diagnostyka rozruchu** na **wyłączona**.
+4. Na karcie **Zarządzanie** w obszarze **Monitorowanie**ustaw **diagnostykę rozruchu** na **Wyłącz**.
 
 5. Wybierz pozycję **Przegląd + utwórz**. 
 
 6. Przejrzyj ustawienia i kliknij przycisk **Utwórz**.
 
-## <a name="create-the-nat-gateway"></a>Tworzenie bramy translatora adresów sieciowych
+## <a name="create-the-nat-gateway"></a>Tworzenie bramy NAT
 
-Można użyć co najmniej jednego publicznego zasobu adresów IP, publicznych prefiksów IP lub obu tych zasobów. Dodamy zasób publicznego adresu IP, prefiks publicznego adresu IP i zasób bramy NAT.
+Można użyć co najmniej jednego zasobu publicznego adresu IP, publicznych prefiksów IP lub obu tych ekscesów. Dodamy publiczny zasób IP, publiczny prefiks IP i zasób bramy NAT.
 
-W tej sekcji szczegółowo opisano, jak utworzyć i skonfigurować następujące składniki usługi NAT przy użyciu zasobu bramy translatora adresów sieciowych:
-  - Publiczna Pula adresów IP i publiczny prefiks IP do użycia dla przepływów wychodzących przetłumaczonych przez zasób bramy translatora adresów sieciowych.
-  - Zmień limit czasu bezczynności z wartości domyślnej wynoszącej 4 minuty na 10 minut.
+W tej sekcji opisano, jak można tworzyć i konfigurować następujące składniki usługi NAT przy użyciu zasobu bramy NAT:
+  - Publiczna pula adresów IP i publiczny prefiks IP do użycia dla przepływów wychodzących przetłumaczonych przez zasób bramy NAT.
+  - Zmień limit czasu bezczynności z domyślnego 4 minut na 10 minut.
 
 ### <a name="create-a-public-ip-address"></a>Tworzenie publicznego adresu IP
 
-1. W lewym górnym rogu portalu wybierz pozycję **Utwórz zasób** > **sieci** > **publicznym adresie IP**lub Wyszukaj **publiczny adres IP** w wyszukiwaniu portalu Marketplace.
+1. W lewym górnym rogu portalu wybierz pozycję **Utwórz** > **publiczny adres IP****sieciowy** > lub wyszukaj **publiczny adres IP** w wyszukiwarce Marketplace.
 
-2. W obszarze **Utwórz publiczny adres IP**wprowadź lub wybierz następujące informacje:
+2. W **obszarze Tworzenie publicznego adresu IP**wprowadź lub wybierz te informacje:
 
     | Ustawienie | Wartość |
     | ------- | ----- |
-    | Wersja protokołu IP | Wybierz pozycję **IPv4**.
-    | SKU | Wybierz opcję **Standardowa**.
-    | Name (Nazwa) | Wprowadź **myPublicIP**. |
+    | Wersja IP | Wybierz pozycję **IPv4**.
+    | SKU | Wybierz **opcję Standardowy**.
+    | Nazwa | Wpisz **myPublicIP**. |
     | Subskrypcja | Wybierz subskrypcję.|
-    | Grupa zasobów | Wybierz pozycję **myResourceGroupNAT**. |
+    | Grupa zasobów | Wybierz **myResourceGroupNAT**. |
     | Lokalizacja | Wybierz pozycję **East US 2** (Wschodnie stany USA 2).|
 
 3. Pozostaw resztę ustawień domyślnych, a następnie wybierz pozycję **Utwórz**.
 
-### <a name="create-a-public-ip-prefix"></a>Tworzenie publicznego prefiksu adresu IP
+### <a name="create-a-public-ip-prefix"></a>Tworzenie publicznego prefiksu IP
 
-1. W lewym górnym rogu portalu wybierz pozycję **Utwórz zasób** > **sieci** > **prefiksu publicznego adresu IP**lub Wyszukaj **prefiks publicznego adresu IP** w wyszukiwaniu portalu Marketplace. 
+1. W lewym górnym rogu portalu wybierz pozycję **Utwórz** > **prefiks publiczny adres IP****sieciowej** > lub wyszukaj **prefiks publiczny adres IP** w wyszukiwarce Marketplace. 
 
-2. W obszarze **Utwórz publiczny prefiks adresu IP**wpisz lub wybierz następujące wartości z karty **podstawowe** :
-   - **Grupa zasobów** > **subskrypcji** : wybierz pozycję **myResourceGroupNAT**>
-   - **Szczegóły wystąpienia** > **Nazwa**: wpisz **myPublicIPprefix**.
-   - **Szczegóły wystąpienia** > **regionu**: Wybierz **Wschodnie stany USA 2**.
-   - **Szczegóły wystąpienia** > **rozmiar prefiksu**: Wybierz **/31 (2 adresy)**
+2. W **obszarze Tworzenie publicznego prefiksu IP**wpisz lub wybierz następujące wartości na karcie **Podstawy:**
+   - **Grupa** > **zasobów**subskrypcji: Wybierz **myResourceGroupNAT**>
+   - **Nazwa szczegółów** > **Name**wystąpienia: Wpisz **myPublicIPprefix**.
+   - **Szczegóły** > wystąpienia**Region:** Wybierz **wschodnie stany USA 2**.
+   - **Szczegóły wystąpienia** > **Rozmiar prefiksu**: Wybierz **/31 (2 adresy)**
 
-3. Pozostaw ustawienia domyślne i wybierz pozycję **Przegląd + Utwórz**.
+3. Pozostaw resztę wartości domyślnych i wybierz **pozycję Przejrzyj + utwórz**.
 
 4. Przejrzyj ustawienia, a następnie wybierz pozycję **Utwórz**.
    
 
-### <a name="create-a-nat-gateway-resource"></a>Tworzenie zasobu bramy NAT
+### <a name="create-a-nat-gateway-resource"></a>Tworzenie zasobu bramy TRANSLATORA
 
-1. W lewym górnym rogu portalu wybierz pozycję **Utwórz zasób** > **sieci** > **brama translatora adresów**sieciowych lub Wyszukaj **bramę translatora adresów sieciowych** w obszarze wyszukiwania w portalu Marketplace.
+1. W lewym górnym rogu portalu wybierz pozycję **Utwórz bramę** > **nat****sieciową** > lub wyszukaj **bramę NAT** w wyszukiwarce Marketplace.
 
-2. W obszarze **Utwórz bramę translacji adresów sieciowych (NAT)** wpisz lub wybierz następujące wartości z karty **podstawowe** :
-   - **Grupa zasobów** > **subskrypcji** : wybierz pozycję **myResourceGroupNAT**.
-   - **Szczegóły wystąpienia** > **Nazwa bramy translatora adresów sieciowych**: wpisz **myNATgateway**.
-   - **Szczegóły wystąpienia** > **regionu**: Wybierz **Wschodnie stany USA 2**.
-   - **Szczegóły wystąpienia** > **limit czasu bezczynności (w minutach)** : typ **10**.
-   - Wybierz kartę **publiczny adres IP** lub wybierz pozycję **Dalej: publiczny adres IP**.
+2. W **obszarze Tworzenie bramy translacji adresów sieciowych (NAT)** wpisz lub wybierz następujące wartości na karcie **Podstawy:**
+   - **Grupa** > **zasobów**subskrypcji: Wybierz **myResourceGroupNAT**.
+   - **Szczegóły** > wystąpienia**NAT nazwa bramy:** Wpisz **myNATgateway**.
+   - **Szczegóły** > wystąpienia**Region:** Wybierz **wschodnie stany USA 2**.
+   - **Szczegóły** > wystąpienia**Limit czasu bezczynności (minuty)**: Typ **10**.
+   - Wybierz kartę **Publiczny adres IP** lub wybierz pozycję **Dalej: Publiczny adres IP**.
 
-3. Na karcie **publiczny adres IP** wpisz lub wybierz następujące wartości:
-   - **Publiczne adresy IP**: wybierz pozycję **myPublicIP**.
-   - **Prefiksy publicznych adresów IP**: wybierz pozycję **myPublicIPprefix**.
-   - Wybierz kartę **podsieć** lub wybierz pozycję **Dalej: podsieć**.
+3. Na karcie **Publiczny adres IP** wpisz lub wybierz następujące wartości:
+   - **Publiczne adresy IP**: Wybierz **myPublicIP**.
+   - **Publiczne prefiksy IP**: Wybierz **myPublicIPprefix**.
+   - Wybierz kartę **Podsieć** lub wybierz pozycję **Dalej: Podsieć**.
 
-4. Na karcie **podsieć** wpisz lub wybierz następujące wartości:
-   - **Virtual Network**: wybierz pozycję **myResourceGroupNAT** > **myVnet**.
-   - **Nazwa podsieci**: zaznacz pole wyboru obok pozycji moja **podsieć**.
+4. Na karcie **Podsieć** wpisz lub wybierz następujące wartości:
+   - **Sieć wirtualna**: Wybierz **myResourceGroupNAT** > **myVnet**.
+   - **Nazwa podsieci**: Zaznacz pole obok **mySubnet**.
 
 5. Wybierz pozycję **Przegląd + utwórz**.
 
 6. Przejrzyj ustawienia, a następnie wybierz pozycję **Utwórz**.
 
-## <a name="discover-the-ip-address-of-the-vm"></a>Odnajdywanie adresu IP maszyny wirtualnej
+## <a name="discover-the-ip-address-of-the-vm"></a>Odnajduj adres IP maszyny Wirtualnej
 
-1. Po lewej stronie portalu wybierz pozycję **grupy zasobów**.
-2. Wybierz pozycję **myResourceGroupNAT**.
-3. Wybierz pozycję **myVM**.
-4. W obszarze **Przegląd**skopiuj wartość **publiczny adres IP** i wklej ją do programu Notepad, aby można było korzystać z niej w celu uzyskania dostępu do maszyny wirtualnej.
+1. Po lewej stronie portalu wybierz pozycję **Grupy zasobów**.
+2. Wybierz **myResourceGroupNAT**.
+3. Wybierz **myVM**.
+4. W **przeglądzie**skopiuj wartość **publicznego adresu IP** i wklej do notatnika, aby można było jej użyć do uzyskania dostępu do maszyny Wirtualnej.
 
 >[!IMPORTANT]
->Skopiuj publiczny adres IP, a następnie wklej go do Notatnika, aby można było używać go do uzyskiwania dostępu do maszyny wirtualnej.
+>Skopiuj publiczny adres IP, a następnie wklej go do notatnika, aby można było go użyć do uzyskania dostępu do maszyny Wirtualnej.
 
-## <a name="sign-in-to-vm"></a>Logowanie do maszyny wirtualnej
+## <a name="sign-in-to-vm"></a>Logowanie się do maszyny Wirtualnej
 
-Otwórz [Azure Cloud Shell](https://shell.azure.com) w przeglądarce. Użyj adresu IP pobranego w poprzednim kroku do połączenia SSH z maszyną wirtualną.
+Otwórz usługę [Azure Cloud Shell](https://shell.azure.com) w przeglądarce. Użyj adresu IP pobranego w poprzednim kroku do protokołu SSH na maszynie wirtualnej.
 
 ```azurecli-interactive
 ssh <username>@<ip-address-destination>
 ```
 
-Teraz można przystąpić do korzystania z usługi translatora adresów sieciowych.
+Teraz możesz przystąpić do korzystania z usługi NAT.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy grupa zasobów, Brama translatora adresów sieciowych i wszystkie pokrewne zasoby nie będą już potrzebne, usuń je. Wybierz grupę zasobów **myResourceGroupNAT** , która zawiera bramę translatora adresów sieciowych, a następnie wybierz pozycję **Usuń**.
+Gdy nie jest już potrzebna, usuń grupę zasobów, bramę NAT i wszystkie powiązane zasoby. Wybierz grupę zasobów **myResourceGroupNAT** zawierającą bramę NAT, a następnie wybierz pozycję **Usuń**.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku utworzono bramę translatora adresów sieciowych oraz maszynę wirtualną w celu jej użycia. 
+W tym samouczku utworzono bramę NAT i maszynę wirtualną, aby z niej korzystać. 
 
-Przejrzyj metryki w Azure Monitor, aby zobaczyć, jak działa usługa translatora adresów sieciowych. Diagnozuj problemy, takie jak wyczerpanie zasobów dostępnych portów.  Wyczerpanie zasobów portów źródeł adresów sieciowych polega na dodaniu dodatkowych zasobów publicznego adresu IP lub publicznych zasobów prefiksu adresów IP.
+Przejrzyj metryki w usłudze Azure Monitor, aby wyświetlić działanie usługi NAT. Diagnozowanie problemów, takich jak wyczerpanie zasobów dostępnych portów SNAT.  Wyczerpanie zasobów portów SNAT jest rozwiązywane przez dodanie dodatkowych zasobów publicznego adresu IP lub publicznych zasobów prefiksu IP lub obu tych zasobów.
 
 
-- Dowiedz się więcej o [usłudze Azure Virtual Network translator adresów sieciowych](./nat-overview.md)
-- Dowiedz się więcej o [zasobach bramy translatora adresów sieciowych](./nat-gateway-resource.md).
-- Przewodnik Szybki Start dotyczący wdrażania [zasobu bramy NAT przy użyciu interfejsu wiersza polecenia platformy Azure](./quickstart-create-nat-gateway-cli.md).
-- Przewodnik Szybki Start dotyczący wdrażania [zasobu bramy NAT przy użyciu Azure PowerShell](./quickstart-create-nat-gateway-powershell.md).
-- Przewodnik Szybki Start dotyczący wdrażania [zasobu bramy NAT przy użyciu Azure Portal](./quickstart-create-nat-gateway-portal.md).
+- Dowiedz się więcej o [translatoru adresów sieci wirtualnej platformy Azure](./nat-overview.md)
+- Dowiedz się więcej o [zasobie bramy NAT](./nat-gateway-resource.md).
+- Szybki start do wdrażania [zasobu bramy NAT przy użyciu interfejsu wiersza polecenia platformy Azure](./quickstart-create-nat-gateway-cli.md).
+- Szybki start do wdrażania [zasobu bramy NAT przy użyciu programu Azure PowerShell](./quickstart-create-nat-gateway-powershell.md).
+- Szybki start do wdrażania [zasobu bramy NAT przy użyciu portalu Azure](./quickstart-create-nat-gateway-portal.md).
 > [!div class="nextstepaction"]
 

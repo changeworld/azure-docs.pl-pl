@@ -1,6 +1,6 @@
 ---
-title: Samouczek — Tworzenie pakietu dostępu — Zarządzanie prawami w usłudze Azure AD
-description: Samouczek krok po kroku dotyczący sposobu tworzenia pierwszego pakietu dostępu w Azure Active Directory Zarządzanie uprawnieniami.
+title: Samouczek — tworzenie pakietu dostępu — zarządzanie uprawnieniami usługi Azure AD
+description: Samouczek krok po kroku, jak utworzyć pierwszy pakiet dostępu w zarządzaniu uprawnieniami usługi Azure Active Directory.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,17 +17,17 @@ ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cd4feeb83acc3842874e7a2e4bbd32dacabcc00d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75422654"
 ---
-# <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Samouczek: Tworzenie pierwszego pakietu dostępu w usłudze Azure AD uprawnienia do zarządzania
+# <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Samouczek: Tworzenie pierwszego pakietu dostępu w zarządzaniu uprawnieniami usługi Azure AD
 
-Zarządzanie dostępem do wszystkich zasobów wymaganych przez pracowników, takich jak grupy, aplikacje i lokacje, jest ważną funkcją dla organizacji. Aby udzielić pracownikom odpowiedniego poziomu dostępu, muszą one być produktywne i usuwać ich dostęp, gdy nie są już potrzebne.
+Zarządzanie dostępem do wszystkich zasobów potrzebnych pracownikom, takich jak grupy, aplikacje i lokacje, jest ważną funkcją dla organizacji. Chcesz przyznać pracownikom odpowiedni poziom dostępu, który musi być produktywny i usunąć ich dostęp, gdy nie jest już potrzebny.
 
-W tym samouczku będziesz używać banku Woodgrove jako administrator IT. Zażądano utworzenia pakietu zasobów dla kampanii marketingowej, którą użytkownicy wewnętrzni mogą zażądać samoobsługi. Żądania nie wymagają zatwierdzenia i dostęp użytkownika wygaśnie po upływie 30 dni. W tym samouczku zasoby kampanii marketingowej są tylko członkostwem w pojedynczej grupie, ale może to być Kolekcja grup, aplikacji lub witryn usługi SharePoint Online.
+W tym samouczku pracujesz dla Woodgrove Bank jako administrator IT. Zostałeś poproszony o utworzenie pakietu zasobów dla kampanii marketingowej, który użytkownicy wewnętrzni mogą żądać samoobsługi. Żądania nie wymagają zatwierdzenia, a dostęp użytkownika wygasa po 30 dniach. W tym samouczku zasoby kampanii marketingowej są tylko członkostwem w jednej grupie, ale mogą to być zbiory grup, aplikacji lub witryn usługi SharePoint Online.
 
 ![Omówienie scenariusza](./media/entitlement-management-access-package-first/elm-scenario-overview.png)
 
@@ -35,229 +35,229 @@ Niniejszy samouczek zawiera informacje na temat wykonywania następujących czyn
 
 > [!div class="checklist"]
 > * Tworzenie pakietu dostępu z grupą jako zasobem
-> * Zezwalaj użytkownikowi w Twoim katalogu na żądanie dostępu
-> * Pokazuje, w jaki sposób użytkownik wewnętrzny może zażądać pakietu dostępu
+> * Zezwalanie użytkownikowi w katalogu na żądanie dostępu
+> * Zademonstruj, jak użytkownik wewnętrzny może zażądać pakietu dostępu
 
-Aby zapoznać się z krok po kroku procesu wdrażania Azure Active Directory Zarządzanie prawami, w tym tworzenia pierwszego pakietu dostępu, zobacz następujące wideo:
+Aby zapoznać się krok po kroku z procesem wdrażania zarządzania uprawnieniami usługi Azure Active Directory, w tym tworzenie pierwszego pakietu dostępu, wyświetl następujący klip wideo:
 
 >[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby móc korzystać z usługi Azure AD do zarządzania prawami, musisz mieć jedną z następujących licencji:
+Aby korzystać z zarządzania uprawnieniami usługi Azure AD, musisz mieć jedną z następujących licencji:
 
 - Usługa Azure AD — warstwa Premium P2
-- Licencja na usługę Enterprise Mobility + Security (EMS) E5
+- Licencja Enterprise Mobility + Security (EMS) E5
 
-Aby uzyskać więcej informacji, zobacz [wymagania dotyczące licencji](entitlement-management-overview.md#license-requirements).
+Aby uzyskać więcej informacji, zobacz [Wymagania licencyjne](entitlement-management-overview.md#license-requirements).
 
-## <a name="step-1-set-up-users-and-group"></a>Krok 1. Konfigurowanie użytkowników i grup
+## <a name="step-1-set-up-users-and-group"></a>Krok 1: Konfigurowanie użytkowników i grupowanie
 
-Katalog zasobów zawiera co najmniej jeden zasób do udostępnienia. W tym kroku utworzysz grupę o nazwie **zasoby marketingowe** w katalogu banku Woodgrove Bank, który jest zasobem docelowym dla zarządzania uprawnieniami. Należy również skonfigurować wewnętrzny Obiekt żądający.
+Katalog zasobów ma jeden lub więcej zasobów do udostępnienia. W tym kroku utworzysz grupę o nazwie **Zasoby marketingowe** w katalogu Banku Woodgrove, która jest zasobem docelowym do zarządzania uprawnieniami. Można również skonfigurować wewnętrznego żądacza.
 
-**Rola wymagana wstępnie:** Administrator globalny lub administrator użytkowników
+**Rola wstępna:** Administrator globalny lub administrator użytkownika
 
 ![Tworzenie użytkowników i grup](./media/entitlement-management-access-package-first/elm-users-groups.png)
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com) jako Administrator globalny lub administrator użytkowników.  
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) jako administrator globalny lub administrator użytkownika.  
 
-1. W lewym okienku nawigacji kliknij pozycję **Azure Active Directory**.
+1. W lewej nawigacji kliknij pozycję **Usługa Azure Active Directory**.
 
-1. Utwórz lub skonfiguruj następujących dwóch użytkowników. Możesz użyć tych nazw lub różnych nazw. **Admin1** może być zalogowany jako użytkownik.
+1. Utwórz lub skonfiguruj następujących dwóch użytkowników. Można użyć tych nazw lub różnych nazw. **Admin1** może być użytkownikiem, który jest aktualnie zalogowany jako.
 
     | Nazwa | Rola katalogu |
     | --- | --- |
-    | **Admin1** | Administrator globalny<br/>— lub —<br/>Administrator użytkowników |
-    | **Requestor1** | Użytkownik |
+    | **Administracja1** | Administrator globalny<br/>— lub —<br/>Administrator użytkownika |
+    | **Wniosek1** | Użytkownik |
 
-1. Utwórz grupę zabezpieczeń usługi Azure AD o nazwie **zasoby marketingowe** z **przypisanym**typem członkostwa.
+1. Utwórz grupę zabezpieczeń usługi Azure AD o nazwie **Zasoby marketingowe** z typem członkostwa **Przypisany**.
 
-    Ta grupa będzie zasobem docelowym dla zarządzania uprawnieniami. Grupa powinna być pusta elementów członkowskich do uruchomienia.
+    Ta grupa będzie zasobem docelowym do zarządzania uprawnieniami. Grupa powinna być pusta z członków, aby rozpocząć.
 
-## <a name="step-2-create-an-access-package"></a>Krok 2. Tworzenie pakietu dostępu
+## <a name="step-2-create-an-access-package"></a>Krok 2: Tworzenie pakietu dostępu
 
-*Pakiet dostępu* to zbiór zasobów, których potrzebuje zespół lub projekt i podlega zasadom. Pakiety dostępu są definiowane w kontenerach o nazwie *wykazów*. W tym kroku utworzysz pakiet dostępu do **kampanii marketingowej** w wykazie **ogólnym** .
+*Pakiet dostępu* to pakiet zasobów, które zespół lub projekt potrzebuje i jest regulowany za pomocą zasad. Pakiety dostępu są definiowane w kontenerach *nazywanych katalogami*. W tym kroku utworzysz pakiet dostępu **kampanii marketingowej** w katalogu **ogólne.**
 
-**Rola wymagana wstępnie:** Administrator globalny, administrator użytkownika, właściciel katalogu lub Menedżer pakietów dostępu
+**Rola wstępna:** Administrator globalny, administrator użytkownika, właściciel katalogu lub menedżer pakietów programu Access
 
 ![Tworzenie pakietu dostępu](./media/entitlement-management-access-package-first/elm-access-package.png)
 
-1. W Azure Portal w lewym okienku nawigacji kliknij pozycję **Azure Active Directory**.
+1. W witrynie Azure portal w lewej nawigacji kliknij pozycję **Usługa Azure Active Directory**.
 
-1. W menu po lewej stronie kliknij pozycję **Zarządzanie tożsamościami** .
+1. W menu po lewej stronie kliknij pozycję **Zarządzanie tożsamościami**
 
-1. W menu po lewej stronie kliknij pozycję **pakiety dostępu**.  Jeśli zostanie wyświetlony komunikat **odmowa dostępu**, upewnij się, że w katalogu znajduje się licencja na Azure AD — wersja Premium P2.
+1. W menu po lewej stronie kliknij pozycję **Pakiety programu Access**.  Jeśli widzisz **odmowy programu Access**, upewnij się, że licencja usługi Azure AD Premium P2 jest obecny w katalogu.
 
-1. Kliknij pozycję **nowy pakiet dostępu**.
+1. Kliknij **pozycję Nowy pakiet dostępu**.
 
-    ![Zarządzanie prawami w Azure Portal](./media/entitlement-management-shared/access-packages-list.png)
+    ![Zarządzanie uprawnieniami w witrynie Azure portal](./media/entitlement-management-shared/access-packages-list.png)
 
-1. Na karcie **podstawowe** wpisz nazwę pakietu dostępu do **kampanii marketingowej** i opis **dostępu do zasobów dla kampanii**.
+1. Na karcie **Podstawy** wpisz nazwę pakiet dostępu **kampanii marketingowej** i opis **Dostęp do zasobów kampanii**.
 
-1. Pozostaw listę rozwijaną **wykazu** ustawioną na **Ogólne**.
+1. Pozostaw listę rozwijaną **Katalog** ustawioną na **Ogólne**.
 
-    ![Nowy pakiet dostępu — karta podstawowe](./media/entitlement-management-access-package-first/basics.png)
+    ![Nowy pakiet dostępu — karta Podstawy](./media/entitlement-management-access-package-first/basics.png)
 
-1. Kliknij przycisk **dalej** , aby otworzyć kartę **role zasobów** .
+1. Kliknij **przycisk Dalej,** aby otworzyć kartę **Role zasobów.**
 
-    Na tej karcie należy wybrać zasoby i rolę zasobów do uwzględnienia w pakiecie dostępu.
+    Na tej karcie należy wybrać zasoby i rolę zasobu do uwzględnienia w pakiecie dostępu.
 
-1. Kliknij pozycję **grupy i zespoły**.
+1. Kliknij pozycję **Grupy i zespoły**.
 
-1. W okienku wybierz grupy Znajdź i wybierz utworzoną wcześniej grupę **zasobów marketingowych** .
+1. W okienku Wybierz grupy znajdź i wybierz wcześniej utworzoną grupę **Zasoby marketingowe.**
 
-    Domyślnie widoczne są grupy wewnątrz i na zewnątrz wykazu **ogólnego** . Po wybraniu grupy poza katalogiem **ogólnym** zostanie ona dodana do wykazu **ogólnego** .
+    Domyślnie są widoczne grupy wewnątrz i na zewnątrz katalogu **ogólnego.** Po wybraniu grupy poza **katalogiem ogólnym** zostanie on dodany do katalogu **ogólnego.**
 
-    ![Nowy pakiet dostępu — karta role zasobów](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
+    ![Nowy pakiet dostępu — karta Role zasobów](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
 
-1. Kliknij pozycję **Wybierz** , aby dodać grupę do listy.
+1. Kliknij **przycisk Wybierz,** aby dodać grupę do listy.
 
-1. Z listy rozwijanej **rola** wybierz **element członkowski**.
+1. Z listy rozwijanej **Rola** wybierz pozycję **Członek**.
 
-    ![Nowy pakiet dostępu — karta role zasobów](./media/entitlement-management-access-package-first/resource-roles.png)
+    ![Nowy pakiet dostępu — karta Role zasobów](./media/entitlement-management-access-package-first/resource-roles.png)
 
-1. Kliknij przycisk **dalej** , aby otworzyć kartę **żądania** .
+1. Kliknij **przycisk Dalej,** aby otworzyć kartę **Żądania.**
 
-    Na tej karcie utworzysz zasady żądania. *Zasady* definiują reguły lub guardrails w celu uzyskania dostępu do pakietu dostępu. Tworzysz zasady, które umożliwiają określonemu użytkownikowi w katalogu zasobów zażądanie tego pakietu dostępu.
+    Na tej karcie należy utworzyć zasady żądania. *Zasady* definiuje reguły lub barierki dostępu do pakietu dostępu. Tworzenie zasad, które umożliwiają określonego użytkownika w katalogu zasobów, aby zażądać tego pakietu dostępu.
 
-1. W sekcji **Użytkownicy, którzy mogą żądać dostępu** , kliknij pozycję **dla użytkowników w katalogu** , a następnie kliknij pozycję **określeni użytkownicy i grupy**.
+1. W sekcji **Użytkownicy, którzy mogą żądać dostępu,** kliknij pozycję **Dla użytkowników w katalogu,** a następnie kliknij pozycję **Konkretne użytkownicy i grupy**.
 
-    ![Nowy pakiet dostępu — karta żądania](./media/entitlement-management-access-package-first/requests.png)
+    ![Nowy pakiet dostępu — karta Żądania](./media/entitlement-management-access-package-first/requests.png)
 
-1. Kliknij pozycję **Dodaj użytkowników i grupy**.
+1. Kliknij **pozycję Dodaj użytkowników i grupy**.
 
-1. W okienku wybierz użytkowników i grupy wybierz utworzonego wcześniej użytkownika **Requestor1** .
+1. W okienku Wybierz użytkowników i grupy wybierz wcześniej utworzonego użytkownika **Requestor1.**
 
-    ![Nowy pakiet dostępu — karta żądania — Wybieranie użytkowników i grup](./media/entitlement-management-access-package-first/requests-select-users-groups.png)
+    ![Nowy pakiet dostępu — karta Żądania — wybieranie użytkowników i grup](./media/entitlement-management-access-package-first/requests-select-users-groups.png)
 
-1. Kliknij pozycję **Wybierz**.
+1. Kliknij **pozycję Wybierz**.
 
-1. Przewiń w dół do sekcji **zatwierdzenie** i **Włącz żądania** .
+1. Przewiń w dół do sekcji **Zatwierdzanie** i **Włączanie żądań.**
 
-1. Pozostaw pole **Wymagaj zatwierdzenia** ustawione na wartość **nie**.
+1. Zostaw **wymagaj zatwierdzenia** ustawionego na **Nie**.
 
-1. W przypadku **żądań włączania**kliknij przycisk **tak** , aby umożliwić żądanie tego pakietu dostępu zaraz po jego utworzeniu.
+1. W przypadku **opcji Włącz żądania**kliknij przycisk **Tak,** aby włączyć żądanie tego pakietu dostępu zaraz po jego utworzeniu.
 
-    ![Nowy pakiet dostępu — żąda zatwierdzenia karty i żądań włączenia](./media/entitlement-management-access-package-first/requests-approval-enable.png)
+    ![Nowy pakiet dostępu — karta Żądania — zatwierdzanie i włączanie żądań](./media/entitlement-management-access-package-first/requests-approval-enable.png)
 
-1. Kliknij przycisk **dalej** , aby otworzyć kartę **cykl życia** .
+1. Kliknij **przycisk Dalej,** aby otworzyć kartę **Cykl życia.**
 
-1. W sekcji **wygaśnięcie** Ustaw **przypisania pakietów dostępu wygasnąć** do **liczby dni**.
+1. W sekcji **Wygasanie** ustaw **przypisania pakietów programu Access wygaśnie** na **Liczbę dni**.
 
-1. Ustawianie **przydziałów wygasa po upływie** do **30** dni.
+1. Ustaw **przydziały wygasają po** **30** dniach.
 
-    ![Nowy pakiet dostępu — karta cykl życia](./media/entitlement-management-access-package-first/lifecycle.png)
+    ![Nowy pakiet dostępu — karta Cykl życia](./media/entitlement-management-access-package-first/lifecycle.png)
 
-1. Kliknij przycisk **dalej** , aby otworzyć kartę **Recenzja + tworzenie** .
+1. Kliknij **przycisk Dalej,** aby otworzyć kartę **Recenzja + Utwórz.**
 
-    ![Nowy pakiet dostępu — karta przegląd + tworzenie](./media/entitlement-management-access-package-first/review-create.png)
+    ![Nowy pakiet dostępu — recenzja + karta Utwórz](./media/entitlement-management-access-package-first/review-create.png)
 
-    Po kilku chwilach powinien pojawić się powiadomienie, że pakiet dostępu został pomyślnie utworzony.
+    Po kilku chwilach powinno zostać wyświetlone powiadomienie, że pakiet dostępu został pomyślnie utworzony.
 
-1. W menu po lewej stronie pakietu dostęp do kampanii marketingowej kliknij pozycję **Przegląd**.
+1. W menu po lewej stronie pakietu dostępu kampanii marketingowej kliknij pozycję **Przegląd**.
 
-1. Skopiuj **link portalu My Access**.
+1. Skopiuj **łącze Mój portal programu Access**.
 
-    Ten link zostanie użyty do następnego kroku.
+    Użyjesz tego linku do następnego kroku.
 
-    ![Przegląd pakietu dostępu — mój link portalu dostępu](./media/entitlement-management-shared/my-access-portal-link.png)
+    ![Omówienie pakietu dostępu — łącze z portalem Mój dostęp](./media/entitlement-management-shared/my-access-portal-link.png)
 
-## <a name="step-3-request-access"></a>Krok 3. żądanie dostępu
+## <a name="step-3-request-access"></a>Krok 3: Żądanie dostępu
 
-W tym kroku wykonasz kroki jako **wewnętrzny Obiekt żądający** i zażądasz dostępu do pakietu dostępu. Osoby żądające przesyłają żądania przy użyciu witryny o nazwie Portal dostępu. Portal My Access umożliwia żądającym przesyłanie żądań dotyczących pakietów dostępu, zapoznaj się z pakietami dostępu, do których mają dostęp, i Wyświetl ich historię żądań.
+W tym kroku należy wykonać kroki jako **wewnętrzny żądacz** i zażądać dostępu do pakietu dostępu. Żądacze przesyłają swoje żądania za pomocą witryny o nazwie Portal Mój dostęp. Portal Mój dostęp umożliwia żądało przesyłanie żądań dla pakietów dostępu, wyświetlanie pakietów dostępu, do których mają już dostęp, i wyświetlanie historii żądań.
 
-**Rola wymagana wstępnie:** Wewnętrzny Obiekt żądający
+**Rola wstępna:** Wewnętrzny żądacz
 
-1. Wyloguj się z Azure Portal.
+1. Wyloguj się z witryny Azure portal.
 
-1. W nowym oknie przeglądarki przejdź do linku do portalu My Access, który został skopiowany w poprzednim kroku.
+1. W nowym oknie przeglądarki przejdź do łącza Mój portal programu Dostępu skopiowany w poprzednim kroku.
 
-1. Zaloguj się do portalu My Access jako **Requestor1**.
+1. Zaloguj się do portalu Mój dostęp jako **Requestor1**.
 
-    Powinien zostać wyświetlony pakiet dostępu do **kampanii marketingowej** .
+    Powinien zostać wyświetlony pakiet dostępu do **kampanii marketingowej.**
 
-1. W razie potrzeby w kolumnie **Opis** kliknij strzałkę, aby wyświetlić szczegółowe informacje o pakiecie dostępu.
+1. W razie potrzeby w kolumnie **Opis** kliknij strzałkę, aby wyświetlić szczegóły dotyczące pakietu dostępu.
 
-    ![Portal dostępu — dostęp — pakiety](./media/entitlement-management-shared/my-access-access-packages.png)
+    ![Mój portal dostępu — pakiety dostępu](./media/entitlement-management-shared/my-access-access-packages.png)
 
 1. Kliknij znacznik wyboru, aby wybrać pakiet.
 
-1. Kliknij pozycję **Zażądaj dostępu** , aby otworzyć okienko żądania dostępu.
+1. Kliknij **pozycję Poproś o dostęp,** aby otworzyć okienko Dostęp żądania.
 
-    ![Portal dostępu — dostęp do żądania](./media/entitlement-management-access-package-first/my-access-request-access-button.png)
+    ![Mój portal dostępu — przycisk Poproś o dostęp](./media/entitlement-management-access-package-first/my-access-request-access-button.png)
 
-1. W polu **uzasadnienie biznesowe** wpisz uzasadnienie, w **którym pracujemy nad nową kampanią marketingową**.
+1. W polu **Uzasadnienie biznesowe** wpisz uzasadnienie, **nad jakim pracuję nad nową kampanią marketingową**.
 
-    ![Portal dostępu — żądanie dostępu](./media/entitlement-management-shared/my-access-request-access.png)
+    ![Mój portal dostępu — prośba o dostęp](./media/entitlement-management-shared/my-access-request-access.png)
 
-1. Kliknij przycisk **Prześlij**.
+1. Kliknij **przycisk Prześlij**.
 
-1. W menu po lewej stronie kliknij pozycję **historia żądań** , aby sprawdzić, czy Twoje żądanie zostało przesłane.
+1. W menu po lewej stronie kliknij pozycję **Historia żądań,** aby sprawdzić, czy twoje żądanie zostało przesłane.
 
-## <a name="step-4-validate-that-access-has-been-assigned"></a>Krok 4. Weryfikowanie, czy dostęp został przypisany
+## <a name="step-4-validate-that-access-has-been-assigned"></a>Krok 4: Sprawdź, czy przypisano dostęp
 
-W tym kroku potwierdzisz, że **wewnętrzny Obiekt żądający** został przypisany do pakietu dostępu, a teraz jest członkiem grupy **zasobów marketingowych** .
+W tym kroku upewnij się, że **wewnętrzny żądający** został przypisany pakiet dostępu i że są one teraz członkiem grupy **zasobów marketingowych.**
 
-**Rola wymagana wstępnie:** Administrator globalny, administrator użytkownika, właściciel katalogu lub Menedżer pakietów dostępu
+**Rola wstępna:** Administrator globalny, administrator użytkownika, właściciel katalogu lub menedżer pakietów programu Access
 
-1. Wyloguj się z portalu My Access.
+1. Wyloguj się z portalu Mój dostęp.
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com) jako **admin1**.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) jako **Administrator1**.
 
-1. Kliknij **Azure Active Directory** a następnie kliknij pozycję **Zarządzanie tożsamościami**.
+1. Kliknij **pozycję Usługa Azure Active Directory,** a następnie kliknij pozycję Zarządzanie **tożsamościami**.
 
-1. W menu po lewej stronie kliknij pozycję **pakiety dostępu**.
+1. W menu po lewej stronie kliknij pozycję **Pakiety programu Access**.
 
-1. Znajdź i kliknij pakiet dostępu do **kampanii marketingowej** .
+1. Znajdź i kliknij pakiet dostępu kampanii **marketingowej.**
 
-1. W menu po lewej stronie kliknij pozycję **żądania**.
+1. W menu po lewej stronie kliknij pozycję **Żądania**.
 
-    Należy zobaczyć Requestor1 i początkową zasadę ze stanem **dostarczone**.
+    Powinieneś zobaczyć Requestor1 i zasady początkowe o stanie **Dostarczone**.
 
 1. Kliknij żądanie, aby wyświetlić szczegóły żądania.
 
-    ![Dostęp do pakietu — szczegóły żądania](./media/entitlement-management-access-package-first/request-details.png)
+    ![Pakiet dostępu — szczegóły żądania](./media/entitlement-management-access-package-first/request-details.png)
 
-1. W lewym okienku nawigacji kliknij pozycję **Azure Active Directory**.
+1. W lewej nawigacji kliknij pozycję **Usługa Azure Active Directory**.
 
-1. Kliknij pozycję **grupy** , a następnie otwórz grupę **zasobów marketingowych** .
+1. Kliknij **pozycję Grupy** i otwórz grupę Zasoby **marketingowe.**
 
 1. Kliknij pozycję **Członkowie**.
 
-    Powinna zostać wyświetlona lista **Requestor1** jako element członkowski.
+    Powinieneś zobaczyć **Requestor1** wymienione jako element członkowski.
 
-    ![Elementy członkowskie zasobów marketingowych](./media/entitlement-management-access-package-first/group-members.png)
+    ![Członkowie zasobów marketingowych](./media/entitlement-management-access-package-first/group-members.png)
 
-## <a name="step-5-clean-up-resources"></a>Krok 5. Czyszczenie zasobów
+## <a name="step-5-clean-up-resources"></a>Krok 5: Oczyszczanie zasobów
 
-W tym kroku usuniesz wprowadzone zmiany i usuniesz pakiet dostępu do **kampanii marketingowej** .
+W tym kroku usuniesz wprowadzone zmiany i usuniesz pakiet dostępu do **kampanii marketingowej.**
 
-**Rola wymagana wstępnie:**  Administrator globalny lub administrator użytkowników
+**Rola wstępna:**  Administrator globalny lub administrator użytkownika
 
-1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
+1. W witrynie Azure portal kliknij pozycję **Usługa Azure Active Directory,** a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
-1. Otwórz pakiet dostępu do **kampanii marketingowej** .
+1. Otwórz pakiet dostępu do **kampanii marketingowej.**
 
-1. Kliknij pozycję **przypisania**.
+1. Kliknij **pozycję Przydziały**.
 
-1. W przypadku **Requestor1**kliknij przycisk wielokropka ( **...** ), a następnie kliknij przycisk **Usuń dostęp**. W wyświetlonym komunikacie kliknij przycisk **tak**.
+1. W przypadku **requestora1**kliknij wielokropek (**...**), a następnie kliknij przycisk **Usuń dostęp**. W wyświetlonym komunikacie kliknij przycisk **Tak**.
 
-    Po kilku chwilach stan zmieni się z dostarczone na wygasłe.
+    Po kilku chwilach stan zmieni się z Dostarczone na Wygasłe.
 
-1. Kliknij pozycję **role zasobów**.
+1. Kliknij **pozycję Role zasobów**.
 
-1. W przypadku **zasobów marketingowych**kliknij przycisk wielokropka ( **...** ), a następnie kliknij pozycję **Usuń rolę zasobu**. W wyświetlonym komunikacie kliknij przycisk **tak**.
+1. W przypadku **zasobów marketingowych**kliknij wielokropek (**...**), a następnie kliknij pozycję Usuń **rolę zasobu**. W wyświetlonym komunikacie kliknij przycisk **Tak**.
 
 1. Otwórz listę pakietów dostępu.
 
-1. W obszarze **kampania marketingowa**kliknij przycisk wielokropka ( **...** ), a następnie kliknij przycisk **Usuń**. W wyświetlonym komunikacie kliknij przycisk **tak**.
+1. W przypadku **kampanii marketingowej**kliknij wielokropek (**...**), a następnie kliknij przycisk **Usuń**. W wyświetlonym komunikacie kliknij przycisk **Tak**.
 
-1. W Azure Active Directory Usuń wszystkich utworzonych użytkowników, takich jak **Requestor1** i **admin1**.
+1. W usłudze Azure Active Directory usuń wszystkich utworzonych użytkowników, takich jak **Requestor1** i **Admin1**.
 
-1. Usuń grupę **zasobów marketingowych** .
+1. Usuń grupę **Zasoby marketingowe.**
 
 ## <a name="next-steps"></a>Następne kroki
 
-Przejdź do następnego artykułu, aby dowiedzieć się więcej o typowych krokach związanych z scenariuszem zarządzania prawami.
+Przejdź do następnego artykułu, aby dowiedzieć się więcej o typowych krokach scenariusza w zarządzaniu uprawnieniami.
 > [!div class="nextstepaction"]
 > [Typowe scenariusze](entitlement-management-scenarios.md)

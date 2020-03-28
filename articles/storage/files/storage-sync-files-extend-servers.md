@@ -8,15 +8,15 @@ ms.date: 10/23/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: eb00234fb7522c763dbaa910bee99cf327bebaf1
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77597902"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Samouczek: rozszerzanie serwerów plików systemu Windows przy użyciu usługi Azure File Sync
 
-W tym artykule przedstawiono podstawowe kroki rozszerzania pojemności magazynu systemu Windows Server przy użyciu Azure File Sync. Chociaż samouczek zawiera system Windows Server jako maszynę wirtualną platformy Azure, zazwyczaj ten proces należy wykonać w przypadku serwerów lokalnych. Instrukcje wdrażania usługi Azure File Sync w środowisku znajdują się w artykule [Deploy Azure File Sync](storage-sync-files-deployment-guide.md) (Wdrażanie usługi Azure File Sync).
+W tym artykule przedstawiono podstawowe kroki rozszerzania pojemności magazynu serwera systemu Windows przy użyciu usługi Azure File Sync. Mimo że samouczek zawiera system Windows Server jako maszynę wirtualną platformy Azure (VM), zazwyczaj można wykonać ten proces dla serwerów lokalnych. Instrukcje wdrażania usługi Azure File Sync w środowisku znajdują się w artykule [Deploy Azure File Sync](storage-sync-files-deployment-guide.md) (Wdrażanie usługi Azure File Sync).
 
 > [!div class="checklist"]
 > * Wdrażanie usługi synchronizacji magazynu
@@ -26,11 +26,11 @@ W tym artykule przedstawiono podstawowe kroki rozszerzania pojemności magazynu 
 > * Tworzenie grupy synchronizacji i punktu końcowego w chmurze
 > * Tworzenie punktu końcowego serwera
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do [Azure portal](https://portal.azure.com).
+Zaloguj się do [Portalu Azure](https://portal.azure.com).
 
 ## <a name="prepare-your-environment"></a>Przygotowywanie środowiska
 
@@ -79,7 +79,7 @@ Na tym etapie utworzono konto magazynu i udział plików zawierający jeden plik
 
 1. Przejdź do witryny Azure Portal i rozwiń menu po lewej stronie. W lewym górnym rogu wybierz pozycję **Utwórz zasób**.
 1. W polu wyszukiwania nad listą zasobów **Azure Marketplace** wpisz nazwę **Windows Server 2016 Datacenter** i wybierz ją w wynikach. Wybierz pozycję **Utwórz**.
-1. Przejdź do karty **podstawowe informacje** . W obszarze **szczegóły projektu**wybierz grupę zasobów utworzoną dla tego samouczka.
+1. Przejdź do karty **Podstawy.** W **obszarze Szczegóły projektu**wybierz grupę zasobów utworzoną dla tego samouczka.
 
    ![Wprowadzanie podstawowych informacji o maszynie wirtualnej w bloku portalu](./media/storage-sync-files-extend-servers/vm-resource-group-and-subscription.png)
 
@@ -97,13 +97,13 @@ Na tym etapie utworzono konto magazynu i udział plików zawierający jeden plik
    1. Na karcie **Dyski** w obszarze **Opcje dysku** pozostaw wartości domyślne.
    1. W obszarze **DYSKI Z DANYMI** wybierz pozycję **Utwórz i dołącz nowy dysk**.
 
-   1. Użyj ustawień domyślnych wszędzie oprócz pola **Rozmiar (GiB)** , które możesz zmienić na wartość **1 GB** na potrzeby tego samouczka.
+   1. Użyj ustawień domyślnych wszędzie oprócz pola **Rozmiar (GiB)**, które możesz zmienić na wartość **1 GB** na potrzeby tego samouczka.
 
       ![Szczegóły dysku z danymi](./media/storage-sync-files-extend-servers/vm-create-new-disk-details.png)
 
    1. Kliknij przycisk **OK**.
 1. Wybierz pozycję **Przegląd + utwórz**.
-1. Wybierz pozycję **Utwórz**.
+1. Wybierz **pozycję Utwórz**.
 
    Możesz wybrać ikonę **Powiadomienia**, aby sprawdzić **postęp wdrażania**. Utworzenie nowej maszyny wirtualnej może zająć kilka minut.
 
@@ -119,7 +119,7 @@ Na tym etapie utworzono nową maszynę wirtualną i dołączono dysk z danymi. N
 
    ![Nawiązywanie połączenia z maszyną wirtualną na platformie Azure z portalu](./media/storage-sync-files-extend-servers/connect-vm.png)
 
-1. Na stronie **Nawiązywanie połączenia z maszyną wirtualną** pozostaw opcje domyślne, aby nawiązać połączenie za pomocą **adresu IP** na porcie 3389. Wybierz opcję **Pobierz plik RDP**.
+1. Na stronie **Nawiązywanie połączenia z maszyną wirtualną** pozostaw opcje domyślne, aby nawiązać połączenie za pomocą **adresu IP** na porcie 3389. Wybierz **pozycję Pobierz plik RDP**.
 
    ![Pobieranie pliku RDP](./media/storage-sync-files-extend-servers/download-rdp.png)
 
@@ -128,13 +128,13 @@ Na tym etapie utworzono nową maszynę wirtualną i dołączono dysk z danymi. N
 
    ![Więcej opcji](./media/storage-sync-files-extend-servers/local-host2.png)
 
-1. Podczas procesu logowania może pojawić się ostrzeżenie o certyfikacie. Wybierz pozycję **Tak** lub **Kontynuuj**, aby utworzyć połączenie.
+1. Podczas procesu logowania może pojawić się ostrzeżenie o certyfikacie. Wybierz **pozycję Tak** lub **Kontynuuj,** aby utworzyć połączenie.
 
 ### <a name="prepare-the-windows-server"></a>Przygotowywanie systemu Windows Server
 
 W przypadku systemu Windows Server 2016 Datacenter wyłącz ustawienie Konfiguracja zwiększonych zabezpieczeń programu Internet Explorer. Ten krok jest wymagany tylko w przypadku początkowej rejestracji serwera. Tę pozycję można włączyć ponownie po zarejestrowaniu serwera.
 
-Na maszynie wirtualnej z systemem Windows Server 2016 Datacenter automatycznie otwiera się Menedżer serwera.  Jeśli Menedżer serwera nie jest domyślnie otwarty, wyszukaj go w menu Start.
+Na maszynie wirtualnej z systemem Windows Server 2016 Datacenter automatycznie otwiera się Menedżer serwera.  Jeśli Menedżer serwera nie otwiera się domyślnie, wyszukaj go w menu Start.
 
 1. W **Menedżerze serwera** wybierz pozycję **Serwer lokalny**.
 
@@ -157,16 +157,16 @@ Teraz można dodać dysk z danymi do maszyny wirtualnej.
     ![Dysk z danymi](media/storage-sync-files-extend-servers/your-disk.png)
 
 1. Kliknij prawym przyciskiem myszy dysk o pojemności 1 GB o nazwie **Msft Virtual Disk** i wybierz pozycję **Nowy wolumin**.
-1. Ukończ pracę kreatora. Użyj ustawień domyślnych i zapisz przypisaną literę dysku.
-1. Wybierz pozycję **Utwórz**.
+1. Wykonaj kroki kreatora. Użyj ustawień domyślnych i zapisz przypisaną literę dysku.
+1. Wybierz **pozycję Utwórz**.
 1. Wybierz polecenie **Zamknij**.
 
    Na tym etapie przeniesiono dysk do trybu online i utworzono wolumin. Otwórz Eksploratora plików na maszynie wirtualnej z systemem Windows Server, aby potwierdzić obecność dodanego przed chwilą dysku z danymi.
 
 1. W Eksploratorze plików na maszynie wirtualnej rozwiń pozycję **Ten komputer** i otwórz nowy dysk. W tym przykładzie jest to dysk F:.
-1. Kliknij prawym przyciskiem myszy i wybierz kolejno pozycje **Nowy** > **Folder**. Nadaj folderowi nazwę _FilesToSync_.
+1. Kliknij prawym przyciskiem myszy i wybierz polecenie **Nowy** > **folder**. Nadaj folderowi nazwę _FilesToSync_.
 1. Otwórz folder **FilesToSync**.
-1. Kliknij prawym przyciskiem myszy i wybierz kolejno pozycje **Nowy** > **Dokument tekstowy**. Nadaj plikowi tekstowemu nazwę _MyTestFile_.
+1. Kliknij prawym przyciskiem myszy i wybierz polecenie **Nowy** > **dokument tekstowy**. Nadaj plikowi tekstowemu nazwę _MyTestFile_.
 
     ![Dodawanie nowego pliku tekstowego](media/storage-sync-files-extend-servers/new-file.png)
 
@@ -215,7 +215,7 @@ Aby wdrożyć usługę Azure File Sync, zacznij od umieszczenia zasobu **Usługi
 
    W otwartym okienku wprowadź następujące informacje:
 
-   | Value | Opis |
+   | Wartość | Opis |
    | ----- | ----- |
    | **Nazwa** | Unikatowa nazwa (na subskrypcję) dla usługi synchronizacji magazynu.<br><br>W tym samouczku użyj nazwy _afssyncservice02_. |
    | **Subskrypcja** | Subskrypcja platformy Azure używana na potrzeby tego samouczka. |
@@ -238,11 +238,11 @@ Agent usługi Azure File Sync to możliwy do pobrania pakiet, który umożliwia 
 
    ![Wybieranie agenta](media/storage-sync-files-extend-servers/select-agent.png)
 
-1. Wybierz kolejno pozycje **Zezwalaj raz** > **Uruchom** > **Otwórz**.
+1. Wybierz **pozycję Zezwalaj po** > **otwarciu** > **Open**.
 1. Jeśli okno programu PowerShell nie zostało jeszcze zamknięte, wykonaj tę czynność.
 1. Zaakceptuj wartości domyślne w **Kreatorze instalacji agenta synchronizacji magazynu**.
 1. Wybierz pozycję **Zainstaluj**.
-1. Wybierz pozycję **Finish** (Zakończ).
+1. Wybierz **pozycję Zakończ**.
 
 Wdrożono usługę synchronizacji z platformą Azure i zainstalowano agenta na maszynie wirtualnej z systemem Windows Server 2016 Datacenter. Teraz należy zarejestrować maszynę wirtualną w usłudze synchronizacji magazynu.
 
@@ -261,7 +261,7 @@ Interfejs użytkownika rejestracji serwera powinien zostać otwarty automatyczni
 
    | | |
    | ----- | ----- |
-   | Value | Opis |
+   | Wartość | Opis |
    | **Subskrypcja platformy Azure** | Subskrypcja, która zawiera usługę synchronizacji magazynu na potrzeby tego samouczka. |
    | **Grupa zasobów** | Grupa zasobów, która zawiera usługę synchronizacji magazynu. W tym samouczku użyj grupy zasobów _afsresgroup101918_. |
    | **Usługa synchronizacji magazynu** | Nazwa usługi synchronizacji magazynu. W tym samouczku użyj nazwy _afssyncservice02_. |
@@ -280,14 +280,14 @@ Grupa synchronizacji definiuje topologię synchronizacji dla zestawu plików. Gr
 
 1. Wprowadź następujące informacje, aby utworzyć grupę synchronizacji z punktem końcowym chmury:
 
-   | Value | Opis |
+   | Wartość | Opis |
    | ----- | ----- |
    | **Nazwa grupy synchronizacji** | Ta nazwa musi być unikatowa w obrębie usługi synchronizacji magazynu, ale może być to dowolna nazwa logiczna z Twojego punktu widzenia. W tym samouczku użyj nazwy *afssyncgroup*.|
    | **Subskrypcja** | Subskrypcja, w której wdrożono usługę synchronizacji magazynu na potrzeby tego samouczka. |
    | **Konto magazynu** | Wybierz pozycję **Wybierz konto magazynu**. W wyświetlonym okienku wybierz konto magazynu, które zawiera utworzony udział plików platformy Azure. Na potrzeby tego samouczka użyj nazwy *afsstoracct101918*. |
    | **Udział plików platformy Azure** | Nazwa utworzonego udziału plików platformy Azure. Na potrzeby tego samouczka użyj nazwy *afsfileshare*. |
 
-1. Wybierz pozycję **Utwórz**.
+1. Wybierz **pozycję Utwórz**.
 
 Jeśli wybierzesz grupę synchronizacji, zobaczysz, że masz teraz jeden **punkt końcowy w chmurze**.
 
@@ -303,13 +303,13 @@ Punkt końcowy serwera reprezentuje określoną lokalizację na zarejestrowanym 
 
    | | |
    | ----- | ----- |
-   | Value | Opis |
+   | Wartość | Opis |
    | **Zarejestrowany serwer** | Nazwa utworzonego serwera. Na potrzeby tego samouczka użyj nazwy *afsvm101918*. |
    | **Ścieżka** | Ścieżka systemu Windows Server do utworzonego dysku. Na potrzeby tego samouczka użyj nazwy *f:\filestosync*. |
    | **Obsługa warstw w chmurze** | Pozostaw tę funkcję wyłączoną na potrzeby tego samouczka. |
    | **Wolne miejsce w woluminie** | Pozostaw to pole puste na potrzeby tego samouczka. |
 
-1. Wybierz pozycję **Utwórz**.
+1. Wybierz **pozycję Utwórz**.
 
 Pliki zostały teraz zsynchronizowane między udziałem plików platformy Azure i systemem Windows Server.
 
@@ -321,7 +321,7 @@ Pliki zostały teraz zsynchronizowane między udziałem plików platformy Azure 
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono podstawowe kroki umożliwiające zwiększenie pojemności magazynu systemu Windows Server przy użyciu Azure File Sync. Dokładniejsze Omówienie wdrażania Azure File Sync można znaleźć w temacie:
+W tym samouczku poznaliście podstawowe kroki, aby rozszerzyć pojemność magazynu serwera windowsowego przy użyciu usługi Azure File Sync. Aby uzyskać dokładniejsze spojrzenie na planowanie wdrożenia usługi Azure File Sync, zobacz:
 
 > [!div class="nextstepaction"]
 > [Planowanie wdrażania usługi Azure File Sync](./storage-sync-files-planning.md)

@@ -9,23 +9,23 @@ ms.date: 06/14/2019
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: 4e699707db02de07f3d1ebb7d1fa8d0575a10aa3
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67836912"
 ---
-FTP i lokalnego narzędzia Git można wdrożyć aplikację internetową platformy Azure przy użyciu *użytkownika wdrożenia*. Po skonfigurowaniu użytkownika wdrożenia, można użyć go we wszystkich wdrożeniach platformy Azure. Nazwy wdrażania na poziomie konta użytkownika i hasła różnią się od poświadczeń subskrypcji platformy Azure. 
+Ftp i lokalny Git można wdrożyć w aplikacji sieci web platformy Azure przy użyciu *użytkownika wdrożenia.* Po skonfigurowaniu użytkownika wdrożenia, można go używać dla wszystkich wdrożeń platformy Azure. Nazwa użytkownika i hasło wdrożenia na poziomie konta różnią się od poświadczeń subskrypcji platformy Azure. 
 
-Aby skonfigurować użytkownika wdrożenia, uruchom [Ustaw użytkownika wdrożenia aplikacji sieci Web az](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) polecenia w usłudze Azure Cloud Shell. Zastąp \<username > i \<hasło > Nazwa użytkownika wdrożenia użytkownika i hasłem. 
+Aby skonfigurować użytkownika wdrażania, uruchom polecenie zestawu zestawu wdrażania aplikacji [az webapp](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) w usłudze Azure Cloud Shell. Zastąp \<> \<nazwy użytkownika i hasła> nazwą użytkownika wdrożenia i hasłem. 
 
-- Nazwa użytkownika musi być unikatowa na platformie Azure, i dla lokalnego narzędzia Git nie może zawierać wypchnięciom, ' @' symboli. 
-- Hasło musi mieć co najmniej ośmiu znaków i zawierać dwa z następujących trzech elementów: litery, cyfry i symbole. 
+- Nazwa użytkownika musi być unikatowa na platformie Azure, a dla lokalnych wypychań Git nie może zawierać symbolu "@". 
+- Hasło musi mieć co najmniej osiem znaków, z dwoma z następujących trzech elementów: literami, cyframi i symbolami. 
 
 ```azurecli-interactive
 az webapp deployment user set --user-name <username> --password <password>
 ```
 
-Dane wyjściowe JSON zawiera hasło jako `null`. Jeśli wystąpił błąd `'Conflict'. Details: 409`, zmień nazwę użytkownika. Jeśli wystąpił błąd `'Bad Request'. Details: 400`, użyj silniejszego hasła. 
+Dane wyjściowe JSON `null`pokazuje hasło jako . Jeśli wystąpił błąd `'Conflict'. Details: 409`, zmień nazwę użytkownika. Jeśli wystąpił błąd `'Bad Request'. Details: 400`, użyj silniejszego hasła. 
 
-Zapisz nazwę użytkownika i hasło służące do wdrażania aplikacji sieci web.
+Zarejestruj swoją nazwę użytkownika i hasło do wdrożenia aplikacji internetowych.

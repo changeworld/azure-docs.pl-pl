@@ -1,17 +1,17 @@
 ---
-title: Samouczek — Konfigurowanie aplikacji w Azure App Service przy użyciu rozwiązania ansible
-description: Dowiedz się, jak utworzyć aplikację w Azure App Service przy użyciu języka Java 8 i środowiska uruchomieniowego kontenera Tomcat
+title: Samouczek — konfigurowanie aplikacji w usłudze Azure App Service przy użyciu aplikacji Ansible
+description: Dowiedz się, jak utworzyć aplikację w usłudze Azure App Service w usłudze Java 8 i czasie działania kontenera Tomcat
 keywords: ansible, azure, devops, bash, element playbook, Azure App Service, aplikacja internetowa, Java
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 2891ff47b17900c4c1c8e1c21f22495b65108fd5
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156559"
 ---
-# <a name="tutorial-configure-apps-in-azure-app-service-using-ansible"></a>Samouczek: Konfigurowanie aplikacji w Azure App Service przy użyciu rozwiązania ansible
+# <a name="tutorial-configure-apps-in-azure-app-service-using-ansible"></a>Samouczek: Konfigurowanie aplikacji w usłudze Azure App Service przy użyciu aplikacji Ansible
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
 
@@ -21,21 +21,21 @@ ms.locfileid: "74156559"
 
 > [!div class="checklist"]
 >
-> * Tworzenie aplikacji w Azure App Service przy użyciu języka Java 8 i środowiska uruchomieniowego kontenera Tomcat
+> * Tworzenie aplikacji w usłudze Azure App Service w usłudze Java 8 i czasie wykonywania kontenera Tomcat
 > * Tworzenie profilu usługi Azure Traffic Manager
-> * Zdefiniuj punkt końcowy Traffic Manager przy użyciu utworzonej aplikacji
+> * Definiowanie punktu końcowego usługi Traffic Manager przy użyciu utworzonej aplikacji
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="create-a-basic-app-service"></a>Tworzenie usługi App Service w warstwie Podstawowa
+## <a name="create-a-basic-app-service"></a>Tworzenie podstawowej usługi aplikacji
 
-Kod element PlayBook w tej sekcji definiuje następujące zasoby:
+Kod podręcznika w tej sekcji definiuje następujące zasoby:
 
-* Grupa zasobów platformy Azure, w ramach której wdrożono plan App Service i aplikację
-* Usługa App Service w systemie Linux z obsługą języka Java 8 i środowiska uruchomieniowego kontenera Tomcat
+* Grupa zasobów platformy Azure, w której wdrożono plan i aplikację usługi App Service
+* Usługa aplikacji w systemie Linux z oprogramowaniem Java 8 i czasem wykonywania kontenera Tomcat
 
 Zapisz następujący podręcznik jako `firstwebapp.yml`:
 
@@ -71,13 +71,13 @@ Zapisz następujący podręcznik jako `firstwebapp.yml`:
               java_container_version: 8.5
 ```
 
-Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
+Uruchom podręcznik za `ansible-playbook` pomocą polecenia:
 
 ```bash
 ansible-playbook firstwebapp.yml
 ```
 
-Po uruchomieniu element PlayBook są wyświetlane dane wyjściowe podobne do następujących:
+Po uruchomieniu podręcznika zobaczysz dane wyjściowe podobne do następujących wyników:
 
 ```Output
 PLAY [localhost] 
@@ -99,18 +99,18 @@ localhost                  : ok=3    changed=2    unreachable=0    failed=0
 
 ## <a name="create-an-app-and-use-azure-traffic-manager"></a>Tworzenie aplikacji i korzystanie z usługi Azure Traffic Manager
 
-[Usługa Azure Traffic Manager](/azure/app-service/web-sites-traffic-manager) umożliwia kontrolowanie sposobu dystrybuowania żądań od klientów sieci Web do aplikacji w programie Azure App Service. Gdy punkty końcowe usługi App Service zostaną dodane do profilu usługi Azure Traffic Manager, usługa Traffic Manager śledzi stan aplikacji usługi App Service. Obejmuje to następujące stany: uruchomiono, zatrzymano i usunięto. Traffic Manager służy do decydowania, które punkty końcowe powinny odbierać ruch.
+[Usługa Azure Traffic Manager](/azure/app-service/web-sites-traffic-manager) umożliwia kontrolowanie sposobu dystrybucji żądań od klientów sieci web do aplikacji w usłudze Azure App Service. Gdy punkty końcowe usługi App Service zostaną dodane do profilu usługi Azure Traffic Manager, usługa Traffic Manager śledzi stan aplikacji usługi App Service. Obejmuje to następujące stany: uruchomiono, zatrzymano i usunięto. Usługa Traffic Manager służy do decydowania, które punkty końcowe powinny odbierać ruch.
 
-W usłudze App Service aplikacje są uruchamiane w ramach [planu usługi App Service](/azure/app-service/overview-hosting-plans). Plan App Service definiuje zestaw zasobów obliczeniowych dla aplikacji do uruchomienia. Planem usługi App Service i aplikacją internetową można zarządzać w różnych grupach.
+W usłudze App Service aplikacje są uruchamiane w ramach [planu usługi App Service](/azure/app-service/overview-hosting-plans). Plan usługi aplikacji definiuje zestaw zasobów obliczeniowych dla aplikacji do uruchomienia. Planem usługi App Service i aplikacją internetową można zarządzać w różnych grupach.
 
-Kod element PlayBook w tej sekcji definiuje następujące zasoby:
+Kod podręcznika w tej sekcji definiuje następujące zasoby:
 
-* Grupa zasobów platformy Azure, w ramach której wdrożono plan App Service
+* Grupa zasobów platformy Azure, w ramach której wdrożono plan usługi app service
 * Plan usługi App Service
-* Grupa zasobów platformy Azure, w ramach której wdrożono aplikację
-* Usługa App Service w systemie Linux z obsługą języka Java 8 i środowiska uruchomieniowego kontenera Tomcat
+* Grupa zasobów platformy Azure, w której aplikacja jest wdrażana
+* Usługa aplikacji w systemie Linux z oprogramowaniem Java 8 i czasem wykonywania kontenera Tomcat
 * Profil usługi Traffic Manager
-* Traffic Manager punkt końcowy przy użyciu utworzonej aplikacji
+* Punkt końcowy Usługi Traffic Manager przy użyciu utworzonej aplikacji
 
 Zapisz następujący podręcznik jako `webapp.yml`:
 
@@ -195,13 +195,13 @@ Zapisz następujący podręcznik jako `webapp.yml`:
       target_resource_id: "{{ webapp.webapps[0].id }}"
 ```
 
-Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
+Uruchom podręcznik za `ansible-playbook` pomocą polecenia:
 
 ```bash
 ansible-playbook webapp.yml
 ```
 
-Po uruchomieniu element PlayBook są wyświetlane dane wyjściowe podobne do następujących:
+Po uruchomieniu podręcznika zobaczysz dane wyjściowe podobne do następujących wyników:
 
 ```Output
 PLAY [localhost] 
@@ -244,4 +244,4 @@ localhost                  : ok=9    changed=6    unreachable=0    failed=0
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"] 
-> [Samouczek: skalowanie aplikacji w Azure App Service przy użyciu rozwiązania ansible](/azure/ansible/ansible-scale-azure-web-apps)
+> [Samouczek: skalowanie aplikacji w usłudze Azure App Service przy użyciu ansible](/azure/ansible/ansible-scale-azure-web-apps)

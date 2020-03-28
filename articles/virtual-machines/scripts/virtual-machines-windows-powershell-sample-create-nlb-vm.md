@@ -16,10 +16,10 @@ ms.date: 06/05/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: f06d88e94c795955f7c9a0f5cdfea4e06c403a05
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74038842"
 ---
 # <a name="load-balance-traffic-between-highly-available-virtual-machines"></a>Równoważenie obciążenia ruchu między wysoko dostępnymi maszynami wirtualnymi
@@ -68,9 +68,9 @@ Ten skrypt używa następujących poleceń w celu utworzenia wdrożenia. Każda 
 | [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) | Tworzy maszynę wirtualną. |
 |[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów i wszystkie zasoby w niej zawarte. |
 
-Możesz również tworzyć maszyny wirtualne przy użyciu własnego niestandardowego obrazu zarządzanego. W konfiguracji maszyny wirtualnej dla `Set-AzVMSourceImage` użyć parametrów `-Id` i `-VM` zamiast `-PublisherName`, `-Offer`, `-Skus`i `-Version`.
+Maszyny wirtualne można również tworzyć przy użyciu własnego niestandardowego obrazu zarządzanego. W konfiguracji maszyny Wirtualnej, `Set-AzVMSourceImage` do użycia `-Id` i `-VM` `-Skus`parametrów `-Version`zamiast `-PublisherName`, `-Offer`, i .
 
-Przykładowo można utworzyć konfigurację maszyny wirtualnej:
+Na przykład tworzenie konfiguracji maszyny Wirtualnej będzie:
 
 ```powershell
 $vmConfig = New-AzVMConfig -VMName 'myVM3' -VMSize Standard_DS1_v2 -AvailabilitySetId $as.Id | `
