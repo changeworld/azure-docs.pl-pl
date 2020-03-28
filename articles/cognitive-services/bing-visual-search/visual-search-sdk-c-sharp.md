@@ -1,7 +1,7 @@
 ---
-title: 'Szybki Start: uzyskiwanie szczegółowych informacji o obrazach przy C# użyciu zestawu SDK dla programu-Wyszukiwanie wizualne Bing'
+title: 'Szybki start: uzyskaj szczegółowe informacje o obrazie przy użyciu sdk dla języka C# — wyszukiwanie wizualne Bing'
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak przekazać obraz przy użyciu zestawu SDK wyszukiwanie wizualne Bing i uzyskać wgląd w informacje o nim w tym przewodniku Szybki Start.
+description: Dowiedz się, jak przekazać obraz przy użyciu sdk wyszukiwania wizualnego Bing i uzyskać szczegółowe informacje na jego temat za pomocą tego przewodnika Szybki start.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
 ms.openlocfilehash: b1f5274bcae1f6e59f6dea94beee810a4613d739
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75446608"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-c"></a>Szybki Start: uzyskiwanie szczegółowych informacji o obrazach przy użyciu zestawu SDK wyszukiwanie wizualne Bing dlaC#
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-c"></a>Szybki start: uchodź szczegółowe informacje o obrazie przy użyciu sdk wyszukiwania wizualnego Bing dla języka C #
 
 Użyj tego przewodnika Szybki start, aby rozpocząć uzyskiwanie szczegółowych danych o obrazie w usłudze wyszukiwania wizualnego Bing przy użyciu zestawu SDK dla języka C#. Chociaż wyszukiwanie wizualne Bing ma interfejs API REST zgodny z większością języków programowania, zestaw SDK umożliwia łatwe integrowanie usługi z Twoimi aplikacjami. Kod źródłowy tego przykładu można znaleźć w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVisualSearch).
 

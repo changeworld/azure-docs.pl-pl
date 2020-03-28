@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: d7126acebae02a60e5c485b74716aaa84b99f781
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69906802"
 ---
 [!INCLUDE [Prerequisites](prerequisites-nodejs.md)]
@@ -31,7 +31,7 @@ Te moduły są wymagane do utworzenia żądania HTTP i unikatowego identyfikator
 
 ## <a name="set-the-subscription-key-and-endpoint"></a>Ustawianie klucza subskrypcji i punktu końcowego
 
-Ten przykład spróbuje odczytać klucz subskrypcji tłumaczenie tekstu w usłudze translator i punkt końcowy z tych zmiennych środowiskowych: `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` i `TRANSLATOR_TEXT_ENDPOINT`. Jeśli nie znasz zmiennych środowiskowych, możesz ustawić `subscriptionKey` i `endpoint` jako ciągi i dodać komentarz do instrukcji warunkowych.
+W tym przykładzie spróbuje odczytać klucz subskrypcji i `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` punkt `TRANSLATOR_TEXT_ENDPOINT`końcowy usługi Translator Text z następujących zmiennych środowiskowych: i . Jeśli nie znasz zmiennych środowiskowych, można `subscriptionKey` ustawić `endpoint` i jako ciągi i komentować instrukcje warunkowe.
 
 Skopiuj ten kod do projektu:
 
@@ -53,7 +53,7 @@ var endpoint = process.env[endpoint_var];
 Metoda `request()`, udostępniona przez moduł żądania, umożliwia nam przekazanie metody HTTP, parametrów żądania adresu URL, nagłówków i treści w formacie JSON w postaci obiektu `options`. W poniższym fragmencie kodu skonfigurujemy żądanie:
 
 >[!NOTE]
-> Aby uzyskać więcej informacji na temat punktów końcowych, tras i parametrów żądania, zobacz [Translator Text API 3.0: Break Sentence](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence) (Interfejs API 3.0 tłumaczenia tekstu w usłudze Translator: podział zdania).
+> Aby uzyskać więcej informacji na temat punktów końcowych, tras i parametrów żądań, zobacz [Interfejs API tekstu tłumacza 3.0: Zdanie podziału](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence).
 
 ```javascript
 let options = {
@@ -77,7 +77,7 @@ let options = {
 
 Najprostszym sposobem uwierzytelniania żądania jest przekazanie klucza subskrypcji jako nagłówka `Ocp-Apim-Subscription-Key`. Ta metoda jest używana w tym przykładzie. Alternatywnie można wymienić klucz subskrypcji na token dostępu i przekazać go dalej jako nagłówek `Authorization` w celu zweryfikowania żądania.
 
-Jeśli używasz subskrypcji usługi Cognitive Services, musisz także uwzględnić `Ocp-Apim-Subscription-Region` w nagłówkach żądania.
+Jeśli korzystasz z subskrypcji wielu usług usług Cognitive Services, należy również uwzględnić `Ocp-Apim-Subscription-Region` w nagłówkach żądań.
 
 Aby uzyskać więcej informacji, zobacz [Authentication](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication) (Uwierzytelnianie).
 
@@ -124,7 +124,7 @@ Jeśli klucz subskrypcji umieszczono na stałe w kodzie programu, pamiętaj, aby
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z dokumentacją interfejsu API, aby zrozumieć wszystko, co można zrobić za pomocą interfejs API tłumaczenia tekstu w usłudze Translator.
+Zapoznaj się z odwołaniem do interfejsu API, aby zrozumieć wszystko, co można zrobić z interfejsem API tekstu translatora.
 
 > [!div class="nextstepaction"]
-> [Dokumentacja interfejsu API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+> [Odwołanie API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

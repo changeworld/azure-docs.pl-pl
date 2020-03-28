@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: uzyskiwanie szczegółowych informacji o obrazach przy użyciu C# interfejsu API REST i-Wyszukiwanie wizualne Bing'
+title: 'Szybki start: uzyskaj szczegółowe informacje o obrazie przy użyciu interfejsu API REST i języka C# — wyszukiwanie wizualne Bing'
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak przekazać obraz do interfejsu API wyszukiwania wizualnego Bing i uzyskać szczegółowe informacje na jego temat.
 services: cognitive-services
@@ -11,27 +11,27 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: scottwhi
 ms.openlocfilehash: 07ecac46ab13058d308c17c5747701ee5ed577fc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75446682"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-c"></a>Szybki Start: uzyskiwanie szczegółowych informacji o obrazach przy użyciu interfejsu API REST wyszukiwanie wizualne Bing iC#
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-c"></a>Szybki start: uchodź szczegółowe informacje o obrazie za pomocą interfejsu API REST wyszukiwania wizualnego Bing i języka C #
 
-Ten przewodnik Szybki Start przedstawia sposób przekazywania obrazu do interfejs API wyszukiwania wizualnego Bing i wyświetlania szczegółowych informacji, które zwraca.
+Ten przewodnik Szybki start pokazuje, jak przekazać obraz do interfejsu API wyszukiwania wizualnego Bing i wyświetlić szczegółowe informacje, które zwraca.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Dowolna wersja programu [Visual Studio 2019](https://www.visualstudio.com/downloads/).
-* [JSON.NET Framework](https://www.newtonsoft.com/json), dostępny jako pakiet NuGet.
-* Jeśli używasz systemu Linux/MacOS, możesz uruchomić tę aplikację przy użyciu narzędzia [mono](https://www.mono-project.com/).
+* Dowolna edycja [programu Visual Studio 2019](https://www.visualstudio.com/downloads/).
+* [Json.NET framework](https://www.newtonsoft.com/json), dostępne jako pakiet NuGet.
+* Jeśli używasz Linuksa / MacOS, możesz uruchomić tę aplikację za pomocą [Mono](https://www.mono-project.com/).
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Tworzenie i inicjowanie projektu
 
-1. W programie Visual Studio Utwórz nowe rozwiązanie konsoli o nazwie BingSearchApisQuickStart. Dodaj następujące przestrzenie nazw do głównego pliku kodu:
+1. W programie Visual Studio utwórz nowe rozwiązanie konsoli o nazwie BingSearchApisQuickStart. Dodaj następujące obszary nazw do głównego pliku kodu:
 
     ```csharp
     using System;
@@ -41,7 +41,7 @@ Ten przewodnik Szybki Start przedstawia sposób przekazywania obrazu do interfej
     using System.Collections.Generic;
     ```
 
-2. Dodaj zmienne dla klucza subskrypcji, punktu końcowego i ścieżki do obrazu, który chcesz przekazać. `uriBase` może być globalnym punktem końcowym lub [niestandardowym](../../../cognitive-services/cognitive-services-custom-subdomains.md) punktem końcowym domeny wyświetlanym w Azure Portal dla zasobu:
+2. Dodaj zmienne klucza subskrypcji, punktu końcowego i ścieżkę do obrazu, który chcesz przekazać. `uriBase`może to być globalny punkt końcowy poniżej lub niestandardowy punkt końcowy [poddomeny](../../../cognitive-services/cognitive-services-custom-subdomains.md) wyświetlany w witrynie Azure portal dla zasobu:
 
     ```csharp
         const string accessKey = "<my_subscription_key>";
@@ -49,7 +49,7 @@ Ten przewodnik Szybki Start przedstawia sposób przekazywania obrazu do interfej
         static string imagePath = @"<path_to_image>";
     ```
 
-3. Utwórz metodę o nazwie `GetImageFileName()`, aby uzyskać ścieżkę do obrazu:
+3. Utwórz metodę `GetImageFileName()` o nazwie, aby uzyskać ścieżkę dla obrazu:
     
     ```csharp
     static string GetImageFileName(string path)
@@ -58,7 +58,7 @@ Ten przewodnik Szybki Start przedstawia sposób przekazywania obrazu do interfej
             }
     ```
 
-4. Utwórz metodę, aby pobrać dane binarne obrazu:
+4. Utwórz metodę, aby uzyskać dane binarne obrazu:
 
     ```csharp
     static byte[] GetImageBinary(string path)
@@ -69,7 +69,7 @@ Ten przewodnik Szybki Start przedstawia sposób przekazywania obrazu do interfej
 
 ## <a name="build-the-form-data"></a>Tworzenie danych formularza
 
-Aby przekazać lokalny obraz, należy najpierw skompilować dane formularza w celu wysłania ich do interfejsu API. Dane formularza muszą zawierać `Content-Disposition` nagłówku, jego parametr `name` musi być ustawiony na "Image", a parametr `filename` można ustawić na dowolny ciąg. Zawartość formularza zawiera dane binarne obrazu. Maksymalny rozmiar obrazu, który można przekazać, to 1 MB.
+Aby przekazać obraz lokalny, należy najpierw utworzyć dane formularza do wysłania do interfejsu API. Dane formularza muszą `Content-Disposition` zawierać nagłówek, jego `name` parametr musi być `filename` ustawiony na "image", a parametr można ustawić na dowolny ciąg. Zawartość formularza zawiera dane binarne obrazu. Maksymalny rozmiar obrazu, który można przesłać, to 1 MB.
 
     ```
     --boundary_1234-abcd
@@ -80,7 +80,7 @@ Aby przekazać lokalny obraz, należy najpierw skompilować dane formularza w ce
     --boundary_1234-abcd--
     ```
 
-1. Dodaj ciągi graniczne, aby sformatować dane formularza POST. Ciągi graniczne określają początkową, końcową i jednowierszową literę dla danych:
+1. Dodaj ciągi granic, aby sformatować dane formularza POST. Ciągi graniczne określają znaki początkowe, końcowe i newline dla danych:
 
     ```csharp
     // Boundary strings for form data in body of POST.
@@ -97,7 +97,7 @@ Aby przekazać lokalny obraz, należy najpierw skompilować dane formularza w ce
     const string POST_BODY_DISPOSITION_HEADER = "Content-Disposition: form-data; name=\"image\"; filename=\"{0}\"" + CRLF +CRLF;
     ```
 
-3. Utwórz funkcję o nazwie `BuildFormDataStart()`, aby utworzyć początek danych formularza przy użyciu ciągów granic i ścieżki obrazu:
+3. Utwórz funkcję `BuildFormDataStart()` o nazwie, aby utworzyć początek danych formularza przy użyciu ciągów granic i ścieżki obrazu:
     
     ```csharp
         static string BuildFormDataStart(string boundary, string filename)
@@ -111,7 +111,7 @@ Aby przekazać lokalny obraz, należy najpierw skompilować dane formularza w ce
         }
     ```
 
-4. Utwórz funkcję o nazwie `BuildFormDataEnd()`, aby utworzyć koniec danych formularza przy użyciu ciągów granicznych:
+4. Utwórz funkcję `BuildFormDataEnd()` o nazwie, aby utworzyć koniec danych formularza przy użyciu ciągów granic:
     
     ```csharp
         static string BuildFormDataEnd(string boundary)
@@ -122,11 +122,11 @@ Aby przekazać lokalny obraz, należy najpierw skompilować dane formularza w ce
 
 ## <a name="call-the-bing-visual-search-api"></a>Wywoływanie interfejsu API wyszukiwania wizualnego Bing
 
-1. Utwórz funkcję wywołującą punkt końcowy wyszukiwanie wizualne Bing i zwracają odpowiedź JSON. Funkcja przyjmuje początek i koniec danych formularza, tablicę bajtową zawierającą dane obrazu i wartość `contentType`.
+1. Utwórz funkcję, aby wywołać punkt końcowy wyszukiwania wizualnego Bing i zwrócić odpowiedź JSON. Funkcja przyjmuje początek i koniec danych formularza, tablicy bajtowej zawierającej `contentType` dane obrazu i wartość.
 
 2. Użyj żądania `WebRequest` do przechowywania identyfikatora URI, wartości contentType i nagłówków.  
 
-3. Użyj `request.GetRequestStream()`, aby napisać dane formularzy i obrazów, a następnie Pobierz odpowiedź. Twoja funkcja powinna wyglądać podobnie do przedstawionej poniżej:
+3. Służy `request.GetRequestStream()` do zapisywania danych formularza i obrazu, a następnie uzyskać odpowiedź. Funkcja powinna być podobna do poniższej funkcji:
         
     ```csharp
         static string BingImageSearch(string startFormData, string endFormData, byte[] image, string contentTypeValue)
@@ -156,16 +156,16 @@ Aby przekazać lokalny obraz, należy najpierw skompilować dane formularza w ce
         }
     ```
 
-## <a name="create-the-main-method"></a>Tworzenie metody głównej
+## <a name="create-the-main-method"></a>Tworzenie metody Głównej
 
-1. W `Main` metodzie aplikacji Pobierz nazwę pliku i dane binarne obrazu:
+1. W `Main` metodzie aplikacji pobierz nazwę pliku i dane binarne obrazu:
 
     ```csharp
     var filename = GetImageFileName(imagePath);
     var imageBinary = GetImageBinary(imagePath);
     ```
 
-2. Skonfiguruj treść żądania POST przez sformatowanie dla niego ograniczenia. Następnie Wywołaj `startFormData()` i `endFormData`, aby utworzyć dane formularza:
+2. Skonfiguruj treść żądania POST przez sformatowanie dla niego ograniczenia. Następnie `startFormData()` zadzwoń `endFormData` i utwórz dane formularza:
 
     ```csharp
     // Set up POST body.
@@ -174,13 +174,13 @@ Aby przekazać lokalny obraz, należy najpierw skompilować dane formularza w ce
     var endFormData = BuildFormDataEnd(boundary);
     ```
 
-3. Utwórz wartość `ContentType` przez formatowanie `CONTENT_TYPE_HEADER_PARAMS` i granicy danych formularza:
+3. Utwórz `ContentType` wartość według `CONTENT_TYPE_HEADER_PARAMS` formatowania i granicy danych formularza:
 
     ```csharp
     var contentTypeHdrValue = string.Format(CONTENT_TYPE_HEADER_PARAMS, boundary);
     ```
 
-4. Pobierz odpowiedź interfejsu API, wywołując `BingImageSearch()` i drukując odpowiedź:
+4. Uzyskaj odpowiedź interfejsu `BingImageSearch()` API, wywołując i drukując odpowiedź:
 
     ```csharp
     var json = BingImageSearch(startFormData, endFormData, imageBinary, contentTypeHdrValue);
@@ -191,9 +191,9 @@ Aby przekazać lokalny obraz, należy najpierw skompilować dane formularza w ce
 
 ## <a name="using-httpclient"></a>Korzystanie z obiektu HttpClient
 
-Jeśli używasz `HttpClient`, możesz użyć klasy `MultipartFormDataContent` do kompilowania danych formularza. Po prostu Użyj następujących sekcji kodu, aby zastąpić odpowiednie metody w poprzednim przykładzie.
+Jeśli używasz `HttpClient`, można `MultipartFormDataContent` użyć klasy do tworzenia danych formularza. Wystarczy użyć następujących sekcji kodu, aby zastąpić odpowiednie metody w poprzednim przykładzie.
 
-Zastąp metodę `Main` tym kodem:
+Zastąp `Main` metodę tym kodem:
 
 ```csharp
         static void Main()
@@ -233,7 +233,7 @@ Zastąp metodę `Main` tym kodem:
         }
 ```
 
-Zastąp metodę `BingImageSearch` tym kodem:
+Zastąp `BingImageSearch` metodę tym kodem:
 
 ```csharp
         /// <summary>
@@ -270,4 +270,4 @@ Zastąp metodę `BingImageSearch` tym kodem:
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Tworzenie wyszukiwanie wizualne jednostronicowej aplikacji sieci Web](../tutorial-bing-visual-search-single-page-app.md)
+> [Tworzenie jednostronicowej aplikacji sieci Web wyszukiwania wizualnego](../tutorial-bing-visual-search-single-page-app.md)

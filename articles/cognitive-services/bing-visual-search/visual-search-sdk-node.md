@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: uzyskiwanie informacji o obrazach przy użyciu zestawu SDK dla środowiska Node. js-wyszukiwanie wizualne Bing'
+title: 'Szybki start: uchodź szczegółowe informacje o obrazie przy użyciu pliku SDK dla pliku Node.js — wyszukiwanie wizualne Bing'
 titleSuffix: Azure Cognitive Services
 description: Użyj tego przewodnika Szybki start, aby rozpocząć uzyskiwanie szczegółowych danych obrazu w usłudze wyszukiwania wizualnego Bing przy użyciu zestawu SDK dla platformy Node.js.
 services: cognitive-services
@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
 ms.openlocfilehash: d99aa2d2827716b2b04d059e47d9768eef8cd690
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77485101"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-nodejs"></a>Szybki Start: uzyskiwanie szczegółowych informacji o obrazach przy użyciu zestawu SDK wyszukiwanie wizualne Bing dla środowiska Node. js
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-nodejs"></a>Szybki start: uchodź szczegółowe informacje o obrazie przy użyciu sdk wyszukiwania wizualnego Bing dla pliku Node.js
 
 Użyj tego przewodnika Szybki start, aby rozpocząć uzyskiwanie szczegółowych danych obrazu w usłudze wyszukiwania wizualnego Bing przy użyciu zestawu SDK dla platformy Node.js. Chociaż wyszukiwanie wizualne Bing ma interfejs API REST zgodny z większością języków programowania, zestaw SDK umożliwia łatwe integrowanie usługi z Twoimi aplikacjami. Kod źródłowy tego przykładu można znaleźć w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/visualSearch.js). 
 

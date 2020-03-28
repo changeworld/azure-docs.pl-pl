@@ -1,7 +1,7 @@
 ---
-title: 'Samouczek: Publikowanie ustawień — LUIS'
+title: 'Samouczek: Ustawienia publikowania — usługa LUIS'
 titleSuffix: Azure Cognitive Services
-description: W tym samouczku Zmień ustawienia publikowania, aby uzyskać lepsze przewidywania.
+description: W tym samouczku zmień ustawienia publikowania, aby uzyskać lepsze prognozy.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,22 +12,22 @@ ms.topic: tutorial
 ms.date: 12/13/2019
 ms.author: diberry
 ms.openlocfilehash: 2df32c20bebf4243f383a0cccd8f037721533602
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75890390"
 ---
 # <a name="tutorial--add-sentiment-analysis-as-a-publishing-setting"></a>Samouczek: Dodawanie analizy tonacji jako ustawienia publikowania
 
-W tym samouczku zmodyfikuj ustawienia publikowania w celu wyodrębnienia analizy tonacji, a następnie Zbadaj punkt końcowy LUIS, aby zobaczyć zwrócone tonacji wypowiedź użytkownika.
+W tym samouczku zmodyfikuj ustawienia publikowania, aby wyodrębnić analizę tonacji, a następnie przesuń zapytanie do punktu końcowego usługi LUIS, aby wyświetlić zwrócony tonację wypowiedzi użytkownika.
 
 **Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
 > * Dodawanie analizy tonacji jako ustawienia publikowania
-> * Pobierz tonacji wypowiedź z opublikowanego punktu końcowego
+> * Uzyskaj opinię wypowiedź z opublikowanego punktu końcowego
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
@@ -37,16 +37,16 @@ Następujące wypowiedzi przedstawiają przykłady tonacji:
 
 |Opinia|Wynik|Wypowiedź|
 |:--|:--|:--|
-|negative|0,01 |Pizza Awful.|
-|pozytywna|0,97 |Pizza sera była wspaniałe.|
+|negative|0,01 |Nie znalazłeś(a) to pizzeria.|
+|pozytywna|0.97 |Pizza serowa była wspaniała.|
 
-Analiza tonacji to ustawienie publikowania, które ma zastosowanie do każdej wypowiedzi. Po ustawieniu aplikacja zwraca tonacji wypowiedź, bez konieczności etykietowania danych.
+Analiza tonacji to ustawienie publikowania, które ma zastosowanie do każdej wypowiedzi. Po ustawieniu aplikacja zwraca tonację wypowiedź bez konieczności etykietowania danych.
 
-Ponieważ jest to ustawienie publikowania, nie widzisz go na stronach intencji lub jednostek. Jest ono widoczne w okienku [interactive test](luis-interactive-test.md#view-sentiment-results) (Test interaktywny) lub podczas testowania pod adresem URL punktu końcowego.
+Ponieważ jest to ustawienie publikowania, nie jest widoczne na stronach intencji lub jednostek. Jest ono widoczne w okienku [interactive test](luis-interactive-test.md#view-sentiment-results) (Test interaktywny) lub podczas testowania pod adresem URL punktu końcowego.
 
-## <a name="import-example-json-to-begin-app"></a>Importuj plik example. JSON, aby rozpocząć aplikację
+## <a name="import-example-json-to-begin-app"></a>Importowanie przykładu .json, aby rozpocząć aplikację
 
-1.  Pobierz i Zapisz [plik JSON aplikacji](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json).
+1.  Pobierz i zapisz [plik JSON aplikacji](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json).
 
 [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
@@ -56,10 +56,10 @@ Ponieważ jest to ustawienie publikowania, nie widzisz go na stronach intencji l
 
 ## <a name="configure-app-to-include-sentiment-analysis"></a>Konfigurowanie aplikacji do uwzględnienia analizy tonacji
 
-1. Wybierz pozycję **Publikuj** z górnego menu. Tonacji Analysis jest ustawieniem publikowania.
+1. Z górnego menu wybierz **pozycję Publikuj.** Analiza tonacji jest ustawieniem publikowania.
 
-1. Wybierz pozycję **gniazdo produkcyjne** i wybierz pozycję **Zmień ustawienia**.
-1. Dla ustawienia analiza tonacji ustaw wartość **włączone**.
+1. Wybierz **miejsce produkcyjne,** a następnie wybierz pozycję **Zmień ustawienia**.
+1. Ustaw ustawienie Analiza tonacji na **Włączone**.
 
     ![Włączanie analizy tonacji jako ustawienia publikowania](./media/luis-quickstart-intent-and-sentiment-analysis/select-sentiment-publishing-setting.png)
 
@@ -71,7 +71,7 @@ Ponieważ jest to ustawienie publikowania, nie widzisz go na stronach intencji l
 
     `Deliver 2 of the best cheese pizzas ever!!!`
 
-    Ostatni parametr ciągu zapytania to `query`, czyli **query** (zapytanie) wypowiedzi. Ta wypowiedź jest inna niż wszystkie pozostałe oznaczone wypowiedzi, dlatego jest dobra do testowania i powinna zwrócić intencję `OrderPizza` z wyodrębnioną analizą tonacji.
+    Ostatnim parametrem querystring jest `query` **kwerenda**wypowiedź . Ta wypowiedź jest inna niż wszystkie pozostałe oznaczone wypowiedzi, dlatego jest dobra do testowania i powinna zwrócić intencję `OrderPizza` z wyodrębnioną analizą tonacji.
 
     ```json
     {
@@ -120,7 +120,7 @@ Ponieważ jest to ustawienie publikowania, nie widzisz go na stronach intencji l
     }
     ```
 
-    Analiza tonacji jest dodatnia z wynikiem 86%.
+    Analiza nastrojów jest pozytywna z wynikiem 86%.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 10/08/2018
 ms.author: diberry
 ms.openlocfilehash: 4ada2e36f067db685944c683de8cc36d3bbf8cf6
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67183533"
 ---
 W sekcji **Manage** (Zarządzanie) — menu w prawym górnym rogu — na stronie **Keys and endpoints** (Klucze i punkty końcowe) — menu po lewej stronie — wybierz adres URL **punktu końcowego** znajdujący się w dolnej części strony. Ta czynność spowoduje otwarcie nowej karty przeglądarki z adresem URL punktu końcowego na pasku adresu. 

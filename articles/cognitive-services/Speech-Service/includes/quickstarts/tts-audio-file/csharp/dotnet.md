@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: synteza mowy w pliku audio C# (.NET) — usługa mowy'
+title: 'Szybki start: synteza mowy w pliku audio, C# (.NET) - Usługa mowy'
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -11,30 +11,30 @@ ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
 ms.openlocfilehash: 4ccc68b38d98c332435e252877d258c8591aab8a
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78924968"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem upewnij się, że:
+Zanim zaczniesz, upewnij się, że:
 
 > [!div class="checklist"]
-> * [Tworzenie zasobu usługi Azure Speech](../../../../get-started.md)
-> * [Skonfiguruj środowisko deweloperskie i Utwórz pusty projekt](../../../../quickstarts/setup-platform.md?tabs=dotnet)
+> * [Tworzenie zasobu mowy platformy Azure](../../../../get-started.md)
+> * [Konfigurowanie środowiska programistycznego i tworzenie pustego projektu](../../../../quickstarts/setup-platform.md?tabs=dotnet)
 
-## <a name="open-your-project-in-visual-studio"></a>Otwórz projekt w programie Visual Studio
+## <a name="open-your-project-in-visual-studio"></a>Otwieranie projektu w programie Visual Studio
 
-Pierwszym krokiem jest upewnienie się, że projekt jest otwarty w programie Visual Studio.
+Pierwszym krokiem jest, aby upewnić się, że projekt jest otwarty w programie Visual Studio.
 
 1. Uruchom program Visual Studio 2019.
-2. Załaduj projekt i Otwórz `Program.cs`.
+2. Załaduj `Program.cs`projekt i otwórz .
 
-## <a name="start-with-some-boilerplate-code"></a>Zacznij od pewnego kodu standardowego
+## <a name="start-with-some-boilerplate-code"></a>Zacznij od kodu standardowego
 
-Dodajmy kod, który działa jako szkielet dla projektu. Należy pamiętać, że utworzono metodę asynchroniczną o nazwie `SynthesisToAudioFileAsync()`.
+Dodajmy kod, który działa jako szkielet dla naszego projektu. Należy pamiętać, że utworzono metodę `SynthesisToAudioFileAsync()`asynchronizową o nazwie .
 
 ````C#
 
@@ -61,7 +61,7 @@ namespace helloworld
 
 ## <a name="create-a-speech-configuration"></a>Tworzenie konfiguracji mowy
 
-Przed zainicjowaniem obiektu `SpeechSynthesizer` należy utworzyć konfigurację korzystającą z klucza subskrypcji i regionu subskrypcji. Wstaw ten kod w metodzie `SynthesisToAudioFileAsync()`.
+Przed zainicjowaniem `SpeechSynthesizer` obiektu należy utworzyć konfigurację, która używa klucza subskrypcji i regionu subskrypcji. Wstaw ten `SynthesisToAudioFileAsync()` kod w metodzie.
 
 ````C#
 // Replace with your own subscription key and region identifier from here: https://aka.ms/speech/sdkregion
@@ -71,7 +71,7 @@ var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRe
 
 ## <a name="create-an-audio-configuration"></a>Tworzenie konfiguracji audio
 
-Teraz musisz utworzyć obiekt ````AudioConfig````, który wskazuje na plik audio. Ten obiekt jest tworzony wewnątrz instrukcji using, aby zapewnić odpowiednią wersję niezarządzanych zasobów. Wstaw ten kod w metodzie `SynthesisToAudioFileAsync()`, bezpośrednio poniżej konfiguracji mowy.
+Teraz musisz utworzyć obiekt, ````AudioConfig```` który wskazuje plik audio. Ten obiekt jest tworzony wewnątrz using instrukcji, aby zapewnić prawidłowe uwalnianie zasobów niezarządzanych. Wstaw ten `SynthesisToAudioFileAsync()` kod w metodzie, tuż poniżej konfiguracji mowy.
 
 ````C#
 var fileName = "helloworld.wav";
@@ -80,9 +80,9 @@ using (var fileOutput = AudioConfig.FromWavFileOutput(fileName))
 }
 ````
 
-## <a name="initialize-a-speechsynthesizer"></a>Inicjowanie elementu SpeechSynthesizer
+## <a name="initialize-a-speechsynthesizer"></a>Inicjowanie programu SpeechSynthesizer
 
-Teraz Utwórzmy obiekt `SpeechSynthesizer` przy użyciu utworzonych wcześniej obiektów `SpeechConfig` i `AudioConfig`. Ten obiekt jest również tworzony wewnątrz instrukcji using, aby zapewnić odpowiednią wersję niezarządzanych zasobów. Wstaw ten kod w metodzie `SynthesisToAudioFileAsync()`, wewnątrz instrukcji using, która otacza obiekt ````AudioConfig````.
+Teraz utwórzmy obiekt `SpeechSynthesizer` przy `SpeechConfig` użyciu `AudioConfig` obiektów i obiektów utworzonych wcześniej. Ten obiekt jest również tworzony wewnątrz using instrukcji, aby zapewnić prawidłowe uwalnianie zasobów niezarządzanych. Wstaw ten `SynthesisToAudioFileAsync()` kod w metodzie, wewnątrz ````AudioConfig```` using instrukcji, która zawija obiekt.
 
 ````C#
 using (var synthesizer = new SpeechSynthesizer(config, fileOutput))
@@ -90,21 +90,21 @@ using (var synthesizer = new SpeechSynthesizer(config, fileOutput))
 }
 ````
 
-## <a name="synthesize-text-using-speaktextasync"></a>Synteza tekstu przy użyciu SpeakTextAsync
+## <a name="synthesize-text-using-speaktextasync"></a>Syntetyzowanie tekstu za pomocą SpeakTextAsync
 
-Z obiektu `SpeechSynthesizer` nastąpi wywołanie metody `SpeakTextAsync()`. Ta metoda wysyła tekst do usługi mowy, która konwertuje ją na dźwięk. `SpeechSynthesizer` będzie używać domyślnego głosu, jeśli `config.VoiceName` nie został jawnie określony.
+Z `SpeechSynthesizer` obiektu, masz zamiar wywołać `SpeakTextAsync()` metodę. Ta metoda wysyła tekst do usługi Mowy, która konwertuje go na dźwięk. Użyje `SpeechSynthesizer` domyślnego głosu, jeśli `config.VoiceName` nie jest jawnie określony.
 
-Wewnątrz instrukcji using Dodaj następujący kod:
+Wewnątrz using instrukcji, dodaj ten kod:
 ````C#
 var text = "Hello world!";
 var result = await synthesizer.SpeakTextAsync(text);
 ````
 
-## <a name="check-for-errors"></a>Sprawdź pod kątem błędów
+## <a name="check-for-errors"></a>Sprawdzanie błędów
 
-Gdy wynik syntezy jest zwracany przez usługę mowy, należy upewnić się, że tekst został pomyślnie wyszukany.
+Po zwrócony wynik syntezy przez usługę mowy, należy sprawdzić, aby upewnić się, że tekst został pomyślnie zsyntetyzowany.
 
-Wewnątrz instrukcji using poniżej `SpeakTextAsync()`Dodaj następujący kod:
+Wewnątrz using instrukcji, `SpeakTextAsync()`poniżej, dodaj ten kod:
 ````C#
 if (result.Reason == ResultReason.SynthesizingAudioCompleted)
 {
@@ -182,12 +182,12 @@ namespace helloworld
 }
 ````
 
-## <a name="build-and-run-your-app"></a>Kompilowanie i uruchamianie aplikacji
+## <a name="build-and-run-your-app"></a>Tworzenie i uruchamianie aplikacji
 
-Teraz wszystko jest gotowe do skompilowania aplikacji i przetestowania syntezy mowy przy użyciu usługi mowy.
+Teraz możesz przystąpić do tworzenia aplikacji i testowania naszej syntezy mowy za pomocą usługi Mowy.
 
-1. **Skompiluj kod** — na pasku menu programu Visual Studio wybierz polecenie **Build** > **Kompiluj rozwiązanie**.
-2. **Uruchom aplikację** — z poziomu paska menu wybierz **Debuguj** > **Rozpocznij debugowanie** lub naciśnij klawisz **F5**.
+1. **Skompiluj kod** — na pasku menu programu Visual Studio wybierz pozycję **Build** > **Build Solution**.
+2. **Uruchom aplikację** — na pasku menu wybierz pozycję **Debugowanie** > **rozpocznij debugowanie** lub naciśnij **klawisz F5**.
 3. **Rozpocznij syntezę** — tekst jest konwertowany na mowę i zapisywany w określonych danych audio.
 
    ```text
@@ -201,4 +201,4 @@ Teraz wszystko jest gotowe do skompilowania aplikacji i przetestowania syntezy m
 ## <a name="see-also"></a>Zobacz też
 
 - [Tworzenie niestandardowego głosu](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
-- [Rejestruj niestandardowe przykłady głosu](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)
+- [Nagrywanie niestandardowych próbek głosu](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

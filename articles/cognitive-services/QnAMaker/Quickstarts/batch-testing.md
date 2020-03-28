@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: testowa baza wiedzy z pytaniami wsadowymi'
+title: 'Szybki start: testowanie bazy wiedzy z pytaniami wsadowych'
 titleSuffix: Azure Cognitive Services
 description: ''
 services: cognitive-services
@@ -11,200 +11,200 @@ ms.topic: quickstart
 ms.date: 02/08/2020
 ms.author: diberry
 ms.openlocfilehash: e16166c741b99c1af5b36f2c7ccd25b01f7544ba
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77108995"
 ---
-# <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>Szybki Start: testowa baza wiedzy z pytaniami wsadowymi i oczekiwanymi odpowiedziami
+# <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>Szybki start: testowanie bazy wiedzy z pytaniami wsadowymi i oczekiwanymi odpowiedziami
 
-Użyj narzędzia do testowania wsadowego QnA Maker do testowania baz wiedzy w zasobie QnA Maker, aby uzyskać oczekiwane odpowiedzi, wyniki pewności i wyłączać wiele.
+Narzędzie do testowania wsadowego programu QnA Maker umożliwia testowanie baz wiedzy w zasobie programu QnA Maker pod kątem oczekiwanych odpowiedzi, wyników zaufania i monitów z wieloma turami.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* [Utwórz usługę QNA Maker](create-publish-knowledge-base.md) lub Użyj istniejącej usługi, która używa języka angielskiego.
-* Pobieranie [przykładowego pliku `.docx`owego](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)
-* Pobierz [Narzędzie do testowania wsadowego](https://aka.ms/qnamakerbatchtestingtool), Wyodrębnij plik wykonywalny z pliku `.zip`.
+* Subskrypcja platformy Azure — [utwórz bezpłatną subskrypcję](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Utwórz [usługę QnA Maker](create-publish-knowledge-base.md) lub użyj istniejącej usługi, która używa języka angielskiego.
+* Pobierz [przykładowy `.docx` plik z wieloma kolejkami](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)
+* Pobierz [narzędzie do testowania wsadowego](https://aka.ms/qnamakerbatchtestingtool) `.zip` , wyodrębnij plik wykonywalny z pliku.
 
 ## <a name="sign-into-qna-maker-portal"></a>Zaloguj się do portalu QnA Maker
 
-[Zaloguj](https://www.qnamaker.ai/) się do portalu QNA Maker.
+[Zaloguj się](https://www.qnamaker.ai/) do portalu QnA Maker.
 
-## <a name="create-a-new-knowledge-base-from-the-multi-turn-sampledocx-file"></a>Tworzenie nowej bazy wiedzy z poziomu przykładowego pliku DOCX z obsługą wielodostępności
+## <a name="create-a-new-knowledge-base-from-the-multi-turn-sampledocx-file"></a>Tworzenie nowej bazy wiedzy z pliku sample.docx z wieloma kolejkami
 
-1. Wybierz pozycję **Utwórz bazę wiedzy** na pasku narzędzi.
-1. Pomiń **krok 1** , ponieważ należy już mieć zasób QNA Maker, przechodząc do **kroku 2** , aby wybrać istniejące informacje o zasobie:
-    * Identyfikator Azure Active Directory
+1. Wybierz **pozycję Utwórz bazę wiedzy** na pasku narzędzi.
+1. Pomiń **krok 1,** ponieważ powinieneś już mieć zasób QnA Maker, przechodząc do **kroku 2,** aby wybrać istniejące informacje o zasobie:
+    * Identyfikator usługi Azure Active Directory
     * Nazwa subskrypcji platformy Azure
     * Nazwa usługi Azure QnA
-    * Język — język angielski
+    * Język - język angielski
 1. Wprowadź nazwę `Multi-turn batch test quickstart` jako nazwę bazy wiedzy.
 
-1. W **kroku 4**Skonfiguruj ustawienia w następującej tabeli:
+1. W **kroku 4**skonfiguruj ustawienia za pomocą poniższej tabeli:
 
     |Ustawienie|Wartość|
     |--|--|
-    |**Włącz wyodrębnianie wieloskładnikowe z adresów URL, plików PDF lub DOCX.**|Zaznaczone|
+    |**Włącz ekstrakcję wielu kolejek z plików URL, pdf lub docx.**|Zaznaczone|
     |**Domyślny tekst odpowiedzi**| `Batch test - default answer not found.`|
-    |**+ Dodaj plik**|Wybierz listę pobranych plików `.docx` w sekcji wymagania wstępne.|
-    |**Chit — rozmowa**|Wybierz **profesjonalne**|
+    |**+ Dodaj plik**|Wybierz pobraną `.docx` listę plików w wymaganiach wstępnych.|
+    |**Chit-czat**|Wybierz **profesjonalny**|
 
-1. W **kroku 5**wybierz pozycję **Utwórz swoją KB**.
+1. W **kroku 5**wybierz pozycję **Utwórz swoją bazę wiedzy .**
 
-    Po zakończeniu procesu tworzenia w portalu zostanie wyświetlona edytowalna baza wiedzy.
+    Po zakończeniu procesu tworzenia portal wyświetla edytowalną bazę wiedzy.
 
-## <a name="save-train-and-publish-knowledge-base"></a>Zapisywanie, uczenie i publikowanie bazy wiedzy
+## <a name="save-train-and-publish-knowledge-base"></a>Zapisywanie, szkolenie i publikowanie bazy wiedzy
 
-1. Wybierz pozycję **Zapisz i pouczenie** z paska narzędzi, aby zapisać bazę wiedzy.
-1. Wybierz pozycję **Publikuj** na pasku narzędzi, a następnie wybierz pozycję **Opublikuj** ponownie, aby opublikować bazę wiedzy. Opublikowanie sprawia, że baza wiedzy jest dostępna dla zapytań z publicznego punktu końcowego adresu URL. Po zakończeniu publikowania Zapisz adres URL hosta i informacje o kluczu punktu końcowego widoczne na stronie **Publikuj** .
+1. Wybierz **pozycję Zapisz i trenuj** z paska narzędzi, aby zapisać bazę wiedzy.
+1. Wybierz **pozycję Publikuj** na pasku narzędzi, a następnie wybierz pozycję **Publikuj** ponownie, aby opublikować bazę wiedzy. Publikowanie udostępnia bazę wiedzy dla zapytań z publicznego punktu końcowego adresu URL. Po zakończeniu publikowania zapisz adres URL hosta i informacje o kluczu punktu końcowego wyświetlane na stronie **Publikowanie.**
 
     |Wymagane dane| Przykład|
     |--|--|
-    |Opublikowany Host|`https://YOUR-RESOURCE-NAME.azurewebsites.net`|
-    |Klucz publikowany|`XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX` (ciąg znaków 32 wyświetlany po `Endpoint`)|
-    |Identyfikator aplikacji|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (ciąg znaków 36 wyświetlany jako część `POST`) |
+    |Opublikowany host|`https://YOUR-RESOURCE-NAME.azurewebsites.net`|
+    |Opublikowany klucz|`XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX`(32 ciąg znaków `Endpoint` pokazany po )|
+    |Identyfikator aplikacji|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`(36 znaków wyświetlanych `POST`jako część) |
 
-## <a name="create-batch-test-file-with-question-ids"></a>Utwórz plik testu wsadowego z identyfikatorami pytań
+## <a name="create-batch-test-file-with-question-ids"></a>Tworzenie pliku testu wsadowego z identyfikatorami pytań
 
-Aby użyć narzędzia Test Batch, Utwórz plik o nazwie `batch-test-data-1.tsv` przy użyciu edytora tekstu. Plik musi mieć następujące kolumny oddzielone tabulatorem.
+Aby użyć narzędzia do testowania wsadowego, utwórz plik o nazwie `batch-test-data-1.tsv` z edytorem tekstu. Plik musi mieć następujące kolumny oddzielone kartą.
 
-|Pola wejściowe plików TSV|Uwagi|Przykład|
+|Pola pliku wejściowego TSV|Uwagi|Przykład|
 |--|--|--|
-|Identyfikator bazy wiedzy|Identyfikator bazy wiedzy został znaleziony na stronie publikowanie. Przetestuj kilka baz wiedzy w jednej usłudze jednocześnie w pojedynczym pliku przy użyciu różnych identyfikatorów bazy wiedzy w pojedynczym pliku.|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (ciąg znaków 36 wyświetlany jako część `POST`) |
-|Pytanie|Tekst pytania, który użytkownik wprowadzi. maksymalnie 1 000 znaków.|`How do I sign out?`|
-|Tagi metadanych|obowiązkowe|`topic:power` używa formatu _wartości klucz: wartość_|
-|Górny parametr|obowiązkowe|`25`|
-|Oczekiwany identyfikator odpowiedzi|obowiązkowe|`13`|
+|Identyfikator bazy wiedzy|Identyfikator bazy wiedzy znajdujący się na stronie Publikowanie. Przetestuj kilka baz wiedzy w tej samej usłudze jednocześnie w jednym pliku przy użyciu różnych identyfikatorów bazy wiedzy w jednym pliku.|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`(36 znaków wyświetlanych `POST`jako część) |
+|Pytanie|Tekst pytania, który użytkownik wprowadził. 1000 znaków maks.|`How do I sign out?`|
+|Tagi metadanych|optional|`topic:power`używa formatu _klucz:wartość_|
+|Parametr górny|optional|`25`|
+|Identyfikator oczekiwanej odpowiedzi|optional|`13`|
 
-W przypadku tego bazy wiedzy Dodaj 3 wiersze tylko dwóch wymaganych kolumn do pliku. Pierwszą kolumną jest identyfikator bazy wiedzy, a druga kolumna powinna być następującą listą pytań:
+W przypadku tej bazy wiedzy dodaj do pliku 3 wiersze tylko 2 wymagane kolumny. Pierwsza kolumna to identyfikator bazy wiedzy, a druga kolumna powinna być następującą listą pytań:
 
-|Kolumna 2 — pytania|
+|Kolumna 2 - pytania|
 |--|
 |`Use Windows Hello to sign in`|
 |`Charge your Surface Pro 4`|
 |`Get to know Windows 10`|
 
-Te pytania są dokładnymi wyrazami z bazy wiedzy i powinny zwracać 100 jako wynik pewności.
+Pytania te są dokładnym sformułowaniem z bazy wiedzy i powinny zwrócić 100 jako wynik zaufania.
 
-Następnie Dodaj kilka pytań, podobnie jak te pytania, ale nie dokładnie na trzy wiersze, używając tego samego identyfikatora bazy wiedzy:
+Następnie dodaj kilka pytań, podobnych do tych pytań, ale nie dokładnie to samo w 3 kolejnych wierszach, używając tego samego identyfikatora bazy wiedzy:
 
-|Kolumna 2 — pytania|
+|Kolumna 2 - pytania|
 |--|
 |`What is Windows Hello?`|
 |`How do I charge the laptop?`|
 |`What features are in Windows 10?`|
 
 > [!CAUTION]
-> Upewnij się, że każda kolumna jest oddzielona tylko ogranicznikiem tabulacji. Spacje wiodące i końcowe są dodawane do danych kolumny i spowodują, że program zgłosi wyjątki, gdy typ lub rozmiar są nieprawidłowe.
+> Upewnij się, że każda kolumna jest oddzielona tylko ogranicznikiem kart. Spacje początkowe lub końcowe są dodawane do danych kolumny i spowoduje, że program zgłosić wyjątki, gdy typ lub rozmiar jest niepoprawna.
 
-Plik testu wsadowego, po otwarciu w programie Excel wygląda jak na poniższej ilustracji. Identyfikator bazy wiedzy został zastąpiony `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` na potrzeby zabezpieczeń. W przypadku własnych testów wsadowych upewnij się, że w kolumnie jest wyświetlany identyfikator bazy wiedzy.
+Plik testu wsadowego, po otwarciu w programie Excel, wygląda jak na poniższej ilustracji. Identyfikator bazy wiedzy został zastąpiony `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` ze względów bezpieczeństwa. W przypadku własnego testu wsadowego upewnij się, że w kolumnie jest wyświetlany identyfikator bazy wiedzy.
 
 > [!div class="mx-imgBorder"]
-> ![wprowadzanie pierwszej wersji pliku TSV z testu wsadowego](../media/batch-test/batch-test-1-input.png)
+> ![Wprowadzanie pierwszej wersji pliku tsv z testu wsadowego](../media/batch-test/batch-test-1-input.png)
 
 ## <a name="test-the-batch-file"></a>Testowanie pliku wsadowego
 
-Uruchom program testów wsadowych przy użyciu poniższego formatu interfejsu wiersza polecenia.
+Uruchom program do testowania wsadowego przy użyciu następującego formatu interfejsu wiersza polecenia w wierszu polecenia.
 
-Zastąp `YOUR-RESOURCE-NAME` i `ENDPOINT-KEY` własnymi wartościami dla nazwy usługi i klucza punktu końcowego. Te wartości są dostępne na stronie **Ustawienia** w portalu QNA Maker.
+Zastąp `YOUR-RESOURCE-NAME` i `ENDPOINT-KEY` własne wartości dla nazwy usługi i klucza punktu końcowego. Wartości te znajdują się na stronie **Ustawienia** w portalu QnA Maker.
 
 ```console
 batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.net ENDPOINT-KEY out.tsv
 ```
-Test zakończy się i wygeneruje plik `out.tsv`:
+Test kończy i generuje `out.tsv` plik:
 
 > [!div class="mx-imgBorder"]
-> ![wyprowadzanie pierwszej wersji pliku TSV z testu wsadowego](../media/batch-test/batch-test-1-output.png)
+> ![Wyjęcie pierwszej wersji pliku tsv z testu wsadowego](../media/batch-test/batch-test-1-output.png)
 
-Identyfikator bazy wiedzy został zastąpiony `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` na potrzeby zabezpieczeń. W przypadku własnego testu wsadowego w kolumnie zostanie wyświetlony Identyfikator bazy wiedzy.
+Identyfikator bazy wiedzy został zastąpiony `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` ze względów bezpieczeństwa. W przypadku własnego testu wsadowego w kolumnie zostanie wyświetlony identyfikator bazy wiedzy.
 
-Test danych wyjściowych oceny ufności, w czwartej kolumnie, pokazuje 3 pierwsze pytania, które zwróciły wynik 100 zgodnie z oczekiwaniami, ponieważ każde pytanie jest dokładnie takie samo, jak w bazie wiedzy. Ostatnie 3 pytania z nowym sformułowaniem pytania nie zwracają 100 jako wyniku pewności. Aby zwiększyć wynik zarówno dla testu, jak i użytkowników, musisz dodać bardziej alternatywne pytania do bazy wiedzy.
+Wynik testu wskaźnika zaufania w czwartej kolumnie pokazuje 3 najważniejsze pytania zwrócone wynik 100 zgodnie z oczekiwaniami, ponieważ każde pytanie jest dokładnie takie samo, jak pojawia się w bazie wiedzy. Ostatnie 3 pytania, z nowym brzmieniem pytania, nie zwracają 100 jako wynik zaufania. Aby zwiększyć wynik zarówno dla testu, jak i użytkowników, należy dodać więcej alternatywnych pytań do bazy wiedzy.
 
-## <a name="testing-with-the-optional-fields"></a>Testowanie przy użyciu pól opcjonalnych
+## <a name="testing-with-the-optional-fields"></a>Testowanie z opcjonalnymi polami
 
-Po zrozumieniu formatu i procesu można wygenerować plik testowy do uruchomienia względem bazy wiedzy ze źródła danych, na przykład z dzienników rozmowy.
+Po zrozumieniu formatu i procesu, można wygenerować plik testowy, aby uruchomić przeciwko bazie wiedzy ze źródła danych, takich jak z dzienników czatów.
 
-Ze względu na to, że źródło danych i proces są zautomatyzowane, plik testowy może być uruchamiany wiele razy z różnymi ustawieniami w celu określenia poprawnych wartości.
+Ponieważ źródło danych i proces są zautomatyzowane, plik testowy można uruchomić wiele razy z różnymi ustawieniami w celu określenia prawidłowych wartości.
 
-Na przykład jeśli masz dziennik rozmowy i chcesz określić, który tekst dziennika rozmowy ma zastosowanie do tych pól metadanych, Utwórz plik testowy i Ustaw pola metadanych dla każdego wiersza. Uruchom test, a następnie sprawdź wiersze, które pasują do metadanych. Ogólnie rzecz biorąc, dopasowania powinny być dodatnie, ale należy przejrzeć wyniki dla fałszywych wartości dodatnich. Wynik fałszywie dodatni to wiersz pasujący do metadanych, ale oparty na tekście, nie powinien być zgodny.
+Na przykład jeśli masz dziennik czatu i chcesz określić, który tekst dziennika czatu ma zastosowanie do pól metadanych, utwórz plik testowy i ustaw pola metadanych dla każdego wiersza. Uruchom test, a następnie przejrzyj wiersze, które pasują do metadanych. Ogólnie rzecz biorąc, mecze powinny być dodatnie, ale należy przejrzeć wyniki dla fałszywych alarmów. Fałszywy alarm to wiersz, który pasuje do metadanych, ale na podstawie tekstu nie powinien być zgodny.
 
-## <a name="using-optional-fields-in-the-input-batch-test-file"></a>Używanie pól opcjonalnych w wejściowym pliku testu wsadowego
+## <a name="using-optional-fields-in-the-input-batch-test-file"></a>Używanie pól opcjonalnych w pliku testu wsadowego danych wejściowych
 
-Skorzystaj z poniższej tabeli, aby zrozumieć, jak znaleźć wartości pól dla opcjonalnych danych.
+Użyj poniższego wykresu, aby dowiedzieć się, jak znaleźć wartości pól dla danych opcjonalnych.
 
-|Numer kolumny|Opcjonalna kolumna|Lokalizacja danych|
+|Numer kolumny|Kolumna opcjonalna|Lokalizacja danych|
 |--|--|--|
-|3|metadane|Eksportuj istniejącą bazę wiedzy dla istniejących _kluczy: par wartości_ .|
-|4|top|Zalecana jest domyślna wartość `25`.|
-|5|Identyfikator pytania i odpowiedzi|Wyeksportuj istniejącą bazę wiedzy dla wartości identyfikatora. Zauważ również, że identyfikatory zostały zwrócone w pliku wyjściowym.|
+|3|metadane|Eksportuj istniejącą bazę wiedzy dla istniejących _par klucza:wartości._|
+|4|top|Zalecana `25` jest wartość domyślna.|
+|5|Identyfikator zestawu pytań i odpowiedzi|Eksportuj istniejącą bazę wiedzy dla wartości identyfikatorów. Zwróć również uwagę, że identyfikatory zostały zwrócone w pliku wyjściowym.|
 
 ## <a name="add-metadata-to-the-knowledge-base"></a>Dodawanie metadanych do bazy wiedzy
 
-1. W portalu QnA na stronie **Edycja** dodaj metadane `topic:power` na następujące pytania:
+1. W portalu QnA na stronie **Edycja** dodaj `topic:power` metadane następujących pytań:
 
-    |Masz|
+    |Pytania|
     |--|
-    |Naliczanie opłat za pakiet Pro 4|
-    |Sprawdź poziom baterii|
+    |Ładowanie urządzenia Surface Pro 4|
+    |Sprawdź poziom naładowania baterii|
 
-    Dwa zestawy QnA mają ustawioną wartość metadanych.
+    Dwa zestawy QnA mają zestaw metadanych.
 
     > [!TIP]
-    > Aby wyświetlić metadane i identyfikatory QnA każdego zestawu, wyeksportuj bazę wiedzy. Wybierz stronę **Ustawienia** , a następnie wybierz pozycję **eksportuj** jako plik `.xls`. Znajdź ten pobrany plik i otwórz go w programie Excel przegląd dla metadanych i identyfikatora.
+    > Aby wyświetlić metadane i identyfikatory QnA każdego zestawu, wyeksportuj bazę wiedzy. Wybierz stronę **Ustawienia,** a następnie `.xls` wybierz pozycję **Eksportuj** jako plik. Znajdź ten pobrany plik i otwórz go za pomocą przeglądu metadanych i identyfikatorów programu Excel.
 
-1. Wybierz pozycję **Zapisz i pouczenie**, a następnie wybierz stronę **Publikowanie** , a następnie wybierz przycisk **Publikuj** . Te akcje sprawiają, że zmiany są dostępne dla testu wsadowego. Pobierz bazę wiedzy ze strony **ustawień** .
+1. Wybierz **pozycję Zapisz i trenuj**, a następnie wybierz stronę **Publikuj,** a następnie wybierz przycisk **Publikuj.** Te akcje udostępniają zmianę do testu wsadowego. Pobierz bazę wiedzy ze strony **Ustawienia.**
 
-    Pobrany plik ma prawidłowy format dla metadanych oraz prawidłowy identyfikator pytania i odpowiedzi. Użyj tych pól w następnej sekcji
+    Pobrany plik ma poprawny format metadanych i poprawny identyfikator zestawu pytań i odpowiedzi. Użyj tych pól w następnej sekcji
 
     > [!div class="mx-imgBorder"]
-    > ![wyeksportowanej bazy wiedzy z metadanymi](../media/batch-test/exported-knowledge-base-with-metadata.png)
+    > ![Eksportowana baza wiedzy z metadanymi](../media/batch-test/exported-knowledge-base-with-metadata.png)
 
-## <a name="create-a-second-batch-test"></a>Utwórz drugi test wsadowy
+## <a name="create-a-second-batch-test"></a>Tworzenie drugiego testu wsadowego
 
 Istnieją dwa główne scenariusze testowania wsadowego:
-* **Przetwarzaj pliki dziennika rozmów** — Określ największą odpowiedź dla wcześniej niewidzianych pytań — najbardziej typową sytuacją jest, aby przetworzyć plik dziennika zapytań, taki jak pytania użytkownika z rozmowy bot. Utwórz test pliku wsadowego z tylko wymaganymi kolumnami. Test zwraca największą odpowiedź dla każdego pytania. Nie oznacza to, że jest to prawidłowa odpowiedź. Po zakończeniu tego testu przejdź do testu weryfikacyjnego.
-* **Test weryfikacji** — Sprawdź poprawność oczekiwanej odpowiedzi. Ten test wymaga sprawdzenia poprawności wszystkich pytań i pasujących oczekiwanych odpowiedzi w teście wsadowym. Może to wymagać ręcznego procesu.
+* **Przetwarzaj pliki dziennika czatu** — określ najlepszą odpowiedź na wcześniej niewidoczne pytanie - najczęstszą sytuacją jest sytuacja, w której musisz przetworzyć plik dziennika zapytań, takich jak pytania użytkownika czatu bota. Utwórz test pliku wsadowego, zawierający tylko wymagane kolumny. Test zwraca najwyższą odpowiedź dla każdego pytania. To nie znaczy, że najlepszą odpowiedzią jest poprawna odpowiedź. Po zakończeniu tego testu przejdź do testu sprawdzania poprawności.
+* **Test sprawdzania poprawności** — sprawdź poprawność oczekiwanej odpowiedzi. Ten test wymaga, aby wszystkie pytania i pasujące oczekiwane odpowiedzi w teście wsadowym zostały zatwierdzone. Może to wymagać pewnego procesu ręcznego.
 
-W poniższej procedurze przyjęto założenie, że scenariusz polega na przetwarzaniu dzienników rozmowy przy użyciu
+Poniższa procedura zakłada, że scenariusz polega na przetwarzaniu dzienników czatu
 
-1. Utwórz nowy plik testu wsadowego w celu uwzględnienia opcjonalnych danych `batch-test-data-2.tsv`. Dodaj 6 wierszy z oryginalnego pliku wejściowego testu wsadowego, a następnie Dodaj metadane, Top i identyfikator zestawu QnA dla każdego wiersza.
+1. Utwórz nowy plik testu wsadowego, aby uwzględnić dane opcjonalne, `batch-test-data-2.tsv`. Dodaj 6 wierszy z oryginalnego pliku wejściowego testu wsadowego, a następnie dodaj metadane, górę i identyfikator zestawu QnA dla każdego wiersza.
 
-    Aby zasymulować zautomatyzowany proces sprawdzania nowego tekstu z dzienników rozmowy względem bazy wiedzy, ustaw dla każdej kolumny metadane o tej samej wartości: `topic:power`.
-
-    > [!div class="mx-imgBorder"]
-    > ![wejściowa druga wersja pliku TSV z testu wsadowego](../media/batch-test/batch-test-2-input.png)
-
-1. Uruchom ponownie test, zmieniając nazwy plików wejściowych i wyjściowych, aby wskazać, że jest drugim testem.
+    Aby symulować zautomatyzowany proces sprawdzania nowego tekstu z dzienników czatu w bazie wiedzy, ustaw `topic:power`metadane dla każdej kolumny na tę samą wartość: .
 
     > [!div class="mx-imgBorder"]
-    > ![wyjściowej drugiej wersji pliku TSV z testu wsadowego](../media/batch-test/batch-test-2-output.png)
+    > ![Wprowadzanie drugiej wersji pliku tsv z testu wsadowego](../media/batch-test/batch-test-2-input.png)
 
-## <a name="test-results-and-an-automated-test-system"></a>Wyniki testów i zautomatyzowany system testów
+1. Uruchom test ponownie, zmieniając nazwy plików wejściowych i wyjściowych, aby wskazać, że jest to drugi test.
 
-Ten testowy plik wyjściowy można analizować jako część zautomatyzowanego potoku testów ciągłych.
+    > [!div class="mx-imgBorder"]
+    > ![Wyjście drugiej wersji pliku tsv z testu wsadowego](../media/batch-test/batch-test-2-output.png)
 
-Te konkretne dane wyjściowe testu powinny być odczytane jako: każdy wiersz został przefiltrowany przy użyciu metadanych, a ponieważ każdy wiersz nie jest zgodny z metadanymi w bazie wiedzy, odpowiedź domyślna dla tych niezgodnych wierszy ("brak dobrego dopasowania znalezionych w KB"). W tych wierszach, które były zgodne, zostały zwrócone identyfikatory i oceny QnA.
+## <a name="test-results-and-an-automated-test-system"></a>Wyniki badań i zautomatyzowany system testowy
 
-Wszystkie wiersze zwróciły etykietę nieprawidłową, ponieważ żaden wiersz nie jest zgodny z oczekiwanym IDENTYFIKATORem odpowiedzi.
+Ten testowy plik wyjściowy może być analizowany jako część zautomatyzowanego potoku testów ciągłych.
 
-Powinny być widoczne te wyniki, aby można było wykonać dziennik rozmowy i użyć tekstu jako zapytania dla każdego wiersza. Bez znajomości danych, wyniki informują o danych, które można następnie użyć do przeniesienia:
+Ten konkretny wynik testu powinien być odczytywany jako: każdy wiersz został odfiltrowany z metadanymi, a ponieważ każdy wiersz nie odpowiadał metadanym w bazie wiedzy, domyślna odpowiedź dla tych niepasujących wierszy zwróconych ("nie znaleziono dobrego dopasowania w kb"). Z tych wierszy, które były zgodne, identyfikator QnA i wynik zostały zwrócone.
 
-* meta — dane
+Wszystkie wiersze zwróciły etykietę niepoprawną, ponieważ żaden wiersz nie odpowiadał oczekiwanemu identyfikatorowi odpowiedzi.
+
+Powinieneś być w stanie zobaczyć z tych wyników, że można wziąć dziennik czatu i użyć tekstu jako kwerendy każdego wiersza. Nie wiedząc nic o danych, wyniki mówią wiele o danych, które można następnie użyć do przodu:
+
+* meta-dane
 * Identyfikator QnA
 * wynik
 
-Czy filtrowanie za pomocą meta danych jest dobrym pomysłem dla testu? Tak i nie. System testowy powinien tworzyć pliki testowe dla każdej pary meta-danych, a także test bez par metadanych.
+Czy filtrowanie za pomocą metadanych było dobrym pomysłem na test? Tak i nie. System testowy powinien tworzyć pliki testowe dla każdej pary metadanych, a także test bez par meta-danych.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli nie chcesz kontynuować testowania bazy wiedzy, Usuń narzędzie plików wsadowych i pliki testowe.
+Jeśli nie zamierzasz kontynuować testowania bazy wiedzy, usuń narzędzie pliku wsadowego i pliki testowe.
 
-Jeśli nie chcesz nadal korzystać z tej bazy wiedzy, Usuń bazę wiedzy z następującymi krokami:
+Jeśli nie zamierzasz nadal korzystać z tej bazy wiedzy, usuń bazę wiedzy, wykonując następujące czynności:
 
-1. W portalu QnA Maker wybierz pozycję **Moje bazy wiedzy** z górnego menu.
-1. Na liście baz wiedzy wybierz ikonę **Usuń** w wierszu bazy wiedzy tego przewodnika Szybki Start.
+1. W portalu QnA Maker wybierz **pozycję Moje bazy wiedzy** z górnego menu.
+1. Na liście baz wiedzy wybierz ikonę **Usuń** w wierszu bazy wiedzy tego przewodnika Szybki start.
 
 ## <a name="next-steps"></a>Następne kroki
 

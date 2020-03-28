@@ -11,39 +11,39 @@ ms.date: 02/14/2020
 ms.topic: include
 ms.author: diberry
 ms.openlocfilehash: 155c88ec4766391f70701b17038b915c399d8b0c
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77371708"
 ---
-## <a name="sign-in-to-luis-portal"></a>Zaloguj się do portalu LUIS
+## <a name="sign-in-to-luis-portal"></a>Logowanie się do portalu usługi LUIS
 
-Nowy użytkownik do LUIS musi wykonać następującą procedurę:
+Nowy użytkownik usługi LUIS musi wykonać tę procedurę:
 
-1. Zaloguj się do [portalu Luis (wersja zapoznawcza)](https://preview.luis.ai), wybierz swój kraj i zaakceptuj warunki użytkowania. Jeśli zamiast tego zobaczysz **Moje aplikacje** , zasób Luis już istnieje i należy przejść do sekcji Tworzenie aplikacji.
+1. Zaloguj się do [portalu usługi LUIS (wersja zapoznawcza),](https://preview.luis.ai)wybierz swój kraj i zaakceptuj warunki użytkowania. Jeśli zamiast tego zostanie wyświetlony **mój plik usługi Moje aplikacje,** zasób usługi LUIS już istnieje i należy przejść do przodu, aby utworzyć aplikację.
 
-1. Wybierz pozycję **Utwórz zasób platformy Azure** , a następnie wybierz pozycję **Utwórz zasób autorstwa, aby przeprowadzić migrację aplikacji do programu.**
+1. Wybierz **pozycję Utwórz zasób platformy Azure,** a następnie wybierz pozycję **Utwórz zasób autorski, do który chcesz przeprowadzić migrację aplikacji.**
 
-    ![Wybierz typ zasobu Language Understanding tworzenia](../media/luis-how-to-azure-subscription/sign-in-create-resource.png)
+    ![Wybieranie typu zasobu tworzenia opisu języka](../media/luis-how-to-azure-subscription/sign-in-create-resource.png)
 
-1. Wprowadź szczegółowe informacje o zasobie.
+1. Wypełnij szczegóły zasobu.
 
-    ![Utwórz zasób tworzenia](../media/migrate-authoring-key/choose-authoring-resource-form.png)
+    ![Tworzenie zasobu autora](../media/migrate-authoring-key/choose-authoring-resource-form.png)
 
-    Podczas **tworzenia nowego zasobu tworzenia**należy podać następujące informacje:
+    Podczas **tworzenia nowego zasobu autora**podaj następujące informacje:
 
-    * **Nazwa zasobu** — wybrana przez Ciebie Nazwa niestandardowa, używana jako część adresu URL dla zapytań dotyczących tworzenia i przewidywania punktów końcowych.
-    * **Dzierżawca** — dzierżawa, z którą skojarzona jest subskrypcja platformy Azure.
-    * **Nazwa subskrypcji** — subskrypcja, za którą zostanie naliczona stawka dla zasobu.
-    * **Grupa zasobów** — wybrana lub utworzona nazwa niestandardowej grupy zasobów. Grupy zasobów umożliwiają grupowanie zasobów platformy Azure w celu uzyskania dostępu i zarządzania.
-    * **Lokalizacja** — wybór lokalizacji zależy od wybranej **grupy zasobów** .
-    * **Warstwa cenowa** — warstwa cenowa określa maksymalną liczbę transakcji na sekundę i miesiąc.
+    * **Nazwa zasobu** — wybrana nazwa niestandardowa, używana jako część adresu URL zapytań dotyczących tworzenia i przewidywania punktów końcowych.
+    * **Dzierżawa** — dzierżawa, z nią skojarzona jest subskrypcja platformy Azure.
+    * **Nazwa subskrypcji** — subskrypcja, która będzie naliczona za zasób.
+    * **Grupa zasobów** — niestandardowa nazwa grupy zasobów, którą wybierzesz lub utworzysz. Grupy zasobów umożliwiają grupowanie zasobów platformy Azure w celu uzyskania dostępu i zarządzania.
+    * **Lokalizacja** — wybór lokalizacji jest oparty na wyborze **grupy zasobów.**
+    * **Warstwa cenowa** — warstwa cenowa określa maksymalną transakcję na sekundę i miesiąc.
 
-1. Zostanie wyświetlone podsumowanie zasobu, który ma zostać utworzony. Wybierz opcję **Dalej**.
+1. Zostanie wyświetlone podsumowanie zasobu, który ma zostać utworzony. Wybierz **pozycję Dalej**.
 
-    ![Utwórz zasób tworzenia](../media/sign-in/sign-in-confirm-key-selection.png)
+    ![Tworzenie zasobu autora](../media/sign-in/sign-in-confirm-key-selection.png)
 
-1. Potwierdź, wybierając pozycję **Kontynuuj**.
+1. Potwierdź, wybierając przycisk **Kontynuuj**.
 
-    ![Utwórz zasób tworzenia](../media/sign-in/sign-in-confirm-continue.png)
+    ![Tworzenie zasobu autora](../media/sign-in/sign-in-confirm-continue.png)

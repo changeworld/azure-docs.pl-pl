@@ -5,19 +5,19 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: dapine
 ms.openlocfilehash: 8890cb515d39d47a5f5cfa4e4309d0191477acdd
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79082688"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem upewnij się, że:
+Zanim zaczniesz, upewnij się, że:
 
 > [!div class="checklist"]
-> * [Tworzenie zasobu usługi Azure Speech](../../../../get-started.md)
-> * [Skonfiguruj środowisko deweloperskie i Utwórz pusty projekt](../../../../quickstarts/setup-platform.md?tabs=linux)
+> * [Tworzenie zasobu mowy platformy Azure](../../../../get-started.md)
+> * [Konfigurowanie środowiska programistycznego i tworzenie pustego projektu](../../../../quickstarts/setup-platform.md?tabs=linux)
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
@@ -29,12 +29,12 @@ Przed rozpoczęciem upewnij się, że:
 
 1. W nowym pliku zastąp ciąg `YourSubscriptionKey` kluczem subskrypcji usługi rozpoznawania mowy.
 
-1. Zastąp ciąg `YourServiceRegion` **identyfikatorem regionu** z [regionu](https://aka.ms/speech/sdkregion) skojarzonego z subskrypcją (na przykład `westus` subskrypcji bezpłatnej wersji próbnej).
+1. Zastąp ciąg `YourServiceRegion` **identyfikatorem Region** z [regionu skojarzonego](https://aka.ms/speech/sdkregion) z subskrypcją (na przykład `westus` dla bezpłatnej subskrypcji próbnej).
 
-1. Zastąp ciąg `whatstheweatherlike.wav` własnymi nazwami.
+1. Zastąp ciąg `whatstheweatherlike.wav` własną nazwę pliku.
 
 > [!NOTE]
-> Zestaw Speech SDK będzie domyślnie rozpoznawał użycie języka en-us w celu uzyskania informacji na temat wybierania [języka źródłowego.](../../../../how-to-specify-source-language.md)
+> SDK mowy domyślnie rozpoznaje przy użyciu en-us dla języka, zobacz [Określanie języka źródłowego mowy do tekstu, aby](../../../../how-to-specify-source-language.md) uzyskać informacje na temat wybierania języka źródłowego.
 
 ## <a name="build-the-app"></a>Kompilacja aplikacji
 
@@ -53,13 +53,13 @@ Przed rozpoczęciem upewnij się, że:
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x86" -l:libasound.so.2
   ```
 
-* W systemie **arm64** (64-bitowym) Uruchom następujące polecenie, aby skompilować aplikację.
+* W systemie **ARM64** (64-bitowym) uruchom następujące polecenie, aby utworzyć aplikację.
 
   ```sh
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/arm64" -l:libasound.so.2
   ```
 
-## <a name="run-the-app"></a>Uruchamianie aplikacji
+## <a name="run-the-app"></a>Uruchomienie aplikacji
 
 1. Skonfiguruj ścieżkę biblioteki modułu ładującego tak, aby wskazywała bibliotekę zestawu Speech SDK.
 
@@ -75,7 +75,7 @@ Przed rozpoczęciem upewnij się, że:
      export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/x86"
      ```
 
-   * W systemie **arm64** (64-bitowym) wprowadź następujące polecenie.
+   * W systemie **ARM64** (64-bitowym) wprowadź następujące polecenie.
 
      ```sh
      export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/arm64"
@@ -87,7 +87,7 @@ Przed rozpoczęciem upewnij się, że:
    ./helloworld
    ```
 
-1. Plik audio jest przesyłany do usługi mowy, a pierwszy wypowiedź w pliku jest uzyskanego do tekstu, który pojawia się w tym samym oknie.
+1. Plik audio jest przesyłany do usługi Mowy, a pierwsza wypowiedź w pliku jest transkrybowana na tekst, który pojawia się w tym samym oknie.
 
    ```text
    Recognizing first result...
