@@ -8,10 +8,10 @@ ms.date: 11/06/2018
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: 7d121e9aeb897897322f1253c332e7a1baabdc9e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75768966"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Tworzenie funkcji integrującej się z usługą Azure Logic Apps
@@ -43,11 +43,11 @@ Jeśli jeszcze tego nie zrobiono, wykonaj teraz te kroki, aby utworzyć aplikacj
 
 Interfejsy API usług Cognitive Services są dostępne na platformie Azure jako pojedyncze zasoby. Użyj interfejsu API analizy tekstu do wykrywania tonacji monitorowanych tweetów.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 
-2. W lewym górnym rogu witryny Azure Portal kliknij przycisk **Utwórz zasób**.
+2. Kliknij **pozycję Utwórz zasób** w lewym górnym rogu witryny Azure portal.
 
-3. Kliknij kolejno pozycje **SI i uczenie maszynowe** > **Analiza tekstu**. Następnie użyj ustawień określonych w tabeli, aby utworzyć zasób.
+3. Kliknij pozycję **AI + Analiza** > tekstu uczenia**maszynowego**. Następnie użyj ustawień określonych w tabeli, aby utworzyć zasób.
 
     ![Tworzenie strony zasobu usług Cognitive](media/functions-twitter-email/01-create-text-analytics.png)
 
@@ -76,7 +76,7 @@ Usługa Functions zapewnia doskonały sposób na odciążanie przetwarzania zada
 
 ## <a name="create-an-http-triggered-function"></a>Tworzenie funkcji wyzwalanej przez protokół HTTP  
 
-1. Rozwiń aplikację funkcji i kliknij przycisk **+** obok pozycji **Funkcje**. Jeśli jest to pierwsza funkcja w aplikacji funkcji, wybierz pozycję **W portalu**.
+1. Rozwiń aplikację funkcji **+** i kliknij przycisk obok **pozycji Funkcje**. Jeśli jest to pierwsza funkcja w aplikacji funkcji, wybierz pozycję **W portalu**.
 
     ![Strona szybkiego rozpoczynania pracy z usługą Functions w witrynie Azure Portal](media/functions-twitter-email/05-function-app-create-portal.png)
 
@@ -121,7 +121,7 @@ Usługa Functions zapewnia doskonały sposób na odciążanie przetwarzania zada
     ```
     Ten kod funkcji zwraca kategorię koloru na podstawie wyniku tonacji otrzymanego w żądaniu. 
 
-4. Aby przetestować funkcję, kliknij przycisk **Testuj** po prawej stronie, aby rozwinąć kartę test. wpisz wartość `0.2` dla **treści żądania**, a następnie kliknij przycisk **Uruchom**. W treści odpowiedzi jest zwracana wartość **RED** (Czerwony). 
+4. Aby przetestować tę funkcję, kliknij przycisk **Testuj** po prawej `0.2` stronie, aby rozwinąć kartę Test. Wpisz wartość **treści Żądanie,** a następnie kliknij przycisk **Uruchom**. W treści odpowiedzi jest zwracana wartość **RED** (Czerwony). 
 
     ![Testowanie funkcji w witrynie Azure Portal](./media/functions-twitter-email/07-function-test.png)
 
@@ -129,9 +129,9 @@ Została utworzona funkcja kategoryzująca wyniki tonacji. Następnie należy ut
 
 ## <a name="create-a-logic-app"></a>Tworzenie aplikacji logiki   
 
-1. W Azure Portal kliknij przycisk **Utwórz zasób** znajdujący się w lewym górnym rogu Azure Portal.
+1. W witrynie Azure portal kliknij przycisk **Utwórz zasób** znaleziony w lewym górnym rogu witryny Azure portal.
 
-2. Kliknij kolejno pozycje **Sieć Web** > **Aplikacja logiki**.
+2. Kliknij pozycję**Aplikacja logiki** **sieci Web** > .
  
 3. Następnie wpisz wartość **Nazwa**, taką jak `TweetSentiment`, i użyj ustawień określonych w tabeli.
 
@@ -165,7 +165,7 @@ Najpierw utwórz połączenie z kontem w usłudze Twitter. Aplikacja logiki sond
     | ----------------- | ------------ | ------------- |
     | **Wyszukiwany tekst** | #Azure | Użyj hasztagu dostatecznie popularnego, aby wygenerować nowe tweety w wybranym interwale. Jeśli używasz warstwy bezpłatnej, a hasztag jest zbyt popularny, możesz szybko zużyć przydział transakcji w interfejsie API usług Cognitive Services. |
     | **Interwał** | 15 | Czas między żądaniami usługi Twitter w jednostkach częstotliwości. |
-    | **Częstotliwość** | Minuta | Jednostka częstotliwości używana do sondowania usługi Twitter.  |
+    | **Częstotliwości** | Minuta | Jednostka częstotliwości używana do sondowania usługi Twitter.  |
 
 3.  Kliknij przycisk **Zapisz** w celu połączenia się z kontem usługi Twitter. 
 
@@ -191,7 +191,7 @@ Skonfigurowano już wykrywanie tonacji, więc można dodać połączenie z funkc
 
 ## <a name="connect-sentiment-output-to-your-function"></a>Łączenie danych wyjściowych tonacji z funkcją
 
-1. W projektancie usługi Logic Apps kliknij kolejno pozycje **Nowy krok** > **Dodaj akcję**, zastosuj filtr **Azure Functions** i kliknij pozycję **Wybierz funkcję platformy Azure**.
+1. W Projektancie aplikacji logiki kliknij pozycję **Nowy krok** > **Dodaj akcję**, filtruj w **usłudze Azure Functions** i kliknij pozycję Wybierz funkcję platformy **Azure**.
 
     ![Wykrywanie tonacji](media/functions-twitter-email/14-azure-functions.png)
   
@@ -213,7 +213,7 @@ Teraz funkcja jest wyzwalana po wysłaniu wyniku tonacji z aplikacji logiki. Fun
 
 Ostatnia część przepływu pracy polega na wyzwoleniu wiadomości e-mail, gdy wynik tonacji skategoryzowano jako _RED_ (Czerwony). W tym temacie używany jest łącznik usługi Outlook.com. Wykonując podobne kroki, można użyć łącznika usługi Gmail lub programu Outlook w usłudze Office 365.   
 
-1. W Projektancie aplikacji usługi Logic Apps kliknij pozycję **Nowy krok** > **Dodaj połączenie**. 
+1. W Projektancie aplikacji logiki kliknij pozycję **Nowy krok** > **Dodaj warunek**. 
 
     ![Dodaj warunek do aplikacji logiki.](media/functions-twitter-email/18-add-condition.png)
 
@@ -238,7 +238,7 @@ Ostatnia część przepływu pracy polega na wyzwoleniu wiadomości e-mail, gdy 
 | **Temat** | Wykryto negatywną tonację tweetów  | Wiersz tematu powiadomienia w wiadomości e-mail.  |
 | **Treść** | Tekst tweetu, lokalizacja | Kliknij parametry **Tekst tweetu** i **Lokalizacja**. |
 
-1. Kliknij pozycję **Zapisz**.
+1. Kliknij przycisk **Zapisz**.
 
 Przepływ pracy jest gotowy, można więc włączyć aplikację logiki i przyjrzeć się funkcji w działaniu.
 

@@ -1,6 +1,6 @@
 ---
 title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — publikowanie elementu zawartości | Microsoft Docs
-description: W tym artykule przedstawiono sposób użycia skryptu interfejsu wiersza polecenia platformy Azure do opublikowania elementu zawartości.
+description: W tym artykule pokazano, jak używać skryptu interfejsu wiersza polecenia platformy Azure do publikowania zasobu.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/25/2019
 ms.author: juliako
 ms.openlocfilehash: 44cf234fd8419164f7dd7f8320952a5c6c0842e0
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74896116"
 ---
 # <a name="cli-example-publish-an-asset"></a>Przykład interfejsu wiersza polecenia: publikowanie elementu zawartości
@@ -37,4 +37,4 @@ Skrypt interfejsu wiersza polecenia platformy Azure w tym artykule pokazuje spos
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Przegląd Media Services](media-services-overview.md)
+[Omówienie usługi Media Services](media-services-overview.md)

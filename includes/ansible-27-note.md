@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 04/22/2019
 ms.author: tarcher
 ms.openlocfilehash: 9060aa5c540c5c8af7bdc73bd842066db65d35cb
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67183923"
 ---
 > [!Important]
-> Rozwiązanie Ansible 2.7 (lub późniejszy) jest wymagana do uruchamiania przykładowych elementów playbook w tym artykule.
+> Do uruchomienia przykładowych podręczników w tym artykule wymagane jest stosowanie przykładowych podręczników.

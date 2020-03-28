@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/20/2018
 ms.author: alkohli
 ms.openlocfilehash: cbf6d01925e1924bc5f3c7f1e99840d479fef296
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67183897"
 ---
 Konfiguracja oprogramowania partnerskiego pod kątem nawiązania połączenia z klientem. Aby można było połączyć się z oprogramowaniem partnerskim, zazwyczaj potrzebne są następujące informacje (mogą się różnić) zebrane ze strony **Połącz i skopiuj** lokalnego internetowego interfejsu użytkownika w poprzednim kroku:

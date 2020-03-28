@@ -1,16 +1,16 @@
 ---
-title: Pobierz zarządzaną grupę zasobów & zmienić rozmiaru maszyn wirtualnych — Azure PowerShell
-description: Zawiera Azure PowerShell przykładowy skrypt, który pobiera zarządzaną grupę zasobów dla aplikacji zarządzanej platformy Azure. Skrypt zmienia rozmiar maszyn wirtualnych.
+title: Uzyskaj zarządzaną grupę zasobów & zmienić rozmiar maszyn wirtualnych — Azure PowerShell
+description: Udostępnia przykładowy skrypt programu Azure PowerShell, który pobiera zarządzaną grupę zasobów dla aplikacji zarządzanej platformy Azure. Skrypt ma rozmiar maszyn wirtualnych.
 author: tfitzmac
 ms.devlang: powershell
 ms.topic: sample
 ms.date: 10/27/2017
 ms.author: tomfitz
 ms.openlocfilehash: 695023f4700370cbe5e9b345f513e38d1cf1fc0c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75650184"
 ---
 # <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-powershell"></a>Pobieranie zasobów z zarządzanej grupy zasobów i zmienianie rozmiaru maszyn wirtualnych za pomocą programu PowerShell

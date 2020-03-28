@@ -1,19 +1,19 @@
 ---
-title: Samouczek — Tworzenie klastra maszyn wirtualnych platformy Azure z usługą Terraform przy użyciu rejestru modułów
-description: W tym samouczku użyjemy modułów Terraform do utworzenia klastra maszyn wirtualnych z systemem Windows na platformie Azure
-keywords: Rejestr modułu klastra maszyny wirtualnej usługi Azure DevOps Terraform VM
+title: Samouczek — tworzenie klastra maszyn wirtualnych platformy Azure za pomocą terraform przy użyciu rejestru modułów
+description: W tym samouczku używasz modułów Terraform do utworzenia klastra maszyn wirtualnych systemu Windows na platformie Azure
+keywords: azure devops terraform vm virtual machine cluster registry registry azure devops terraform vm virtual machine cluster registry Azure devops terraform vm virtual machine cluster registry Azure devops
 ms.topic: tutorial
 ms.date: 03/09/2020
 ms.openlocfilehash: 9faeee9bb2f0fb6dc148a3868f6fc0dae3833a2a
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78945287"
 ---
-# <a name="tutorial-create-an-azure-vm-cluster-with-terraform-using-the-module-registry"></a>Samouczek: Tworzenie klastra maszyn wirtualnych platformy Azure z usługą Terraform przy użyciu rejestru modułu
+# <a name="tutorial-create-an-azure-vm-cluster-with-terraform-using-the-module-registry"></a>Samouczek: Tworzenie klastra maszyn wirtualnych platformy Azure za pomocą terraform przy użyciu rejestru modułów
 
-W tym artykule opisano proces tworzenia małego klastra maszyn wirtualnych za pomocą modułu Terraform [Azure Compute](https://registry.terraform.io/modules/Azure/compute/azurerm/1.0.2). Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności: 
+W tym artykule opisano proces tworzenia małego klastra maszyn wirtualnych za pomocą modułu Terraform [Azure Compute](https://registry.terraform.io/modules/Azure/compute/azurerm/1.0.2). Ten samouczek zawiera informacje na temat wykonywania następujących czynności: 
 
 > [!div class="checklist"]
 > * Konfigurowanie uwierzytelniania na platformie Azure
@@ -103,4 +103,4 @@ Uruchom polecenie `terraform apply`, aby aprowizować maszyny wirtualne na platf
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"] 
-> [Przeglądaj listę modułów usługi Azure Terraform](https://registry.terraform.io/modules/Azure)
+> [Przeglądanie listy modułów terraform platformy Azure](https://registry.terraform.io/modules/Azure)

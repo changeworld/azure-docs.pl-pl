@@ -7,10 +7,10 @@ ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
 ms.openlocfilehash: b6348d9fdcd4133a4fa69aac3ccf5494e904094e
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75613979"
 ---
 # <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>Samouczek: tworzenie infrastruktury usług AWS do obsługi klastra usługi Service Fabric
@@ -33,7 +33,7 @@ Do ukończenia tego samouczka jest potrzebne konto usług AWS.  Jeśli nie masz 
 
 ## <a name="create-ec2-instances"></a>Tworzenie wystąpień EC2
 
-Zaloguj się do konsoli usługi AWS > wprowadź **EC2** w polu wyszukiwania, > **EC2 serwery wirtualne w chmurze**
+Zaloguj się do konsoli AWS > Wprowadź **EC2** w polu wyszukiwania > **serwerów wirtualnych EC2 w chmurze**
 
 ![Wyszukiwanie w konsoli usług AWS][aws-console]
 
@@ -41,7 +41,7 @@ Wybierz pozycję **Uruchom wystąpienie**. Na następnym ekranie wybierz przycis
 
 ![Wybór wystąpienia EC2][aws-ec2instance]
 
-Wybierz pozycję **t2.medium**, a następnie pozycję **Dalej: skonfiguruj szczegóły wystąpienia**. Na następnym ekranie zmień liczbę wystąpień na `3` i wybierz pozycję  **Szczegóły zaawansowane**, aby rozwinąć tę sekcję.
+Wybierz pozycję **t2.medium**, a następnie pozycję **Dalej: skonfiguruj szczegóły wystąpienia**. Na następnym ekranie zmień liczbę wystąpień na `3` i wybierz pozycję ** Szczegóły zaawansowane**, aby rozwinąć tę sekcję.
 
 Aby połączyć maszyny wirtualne z usługą Service Fabric, maszyny wirtualne, które hostują infrastrukturę, muszą mieć takie same poświadczenia.  Istnieją dwa podstawowe sposoby na uzyskanie spójnych poświadczeń: dołączenie wszystkich hostów do tej samej domeny lub ustawienie takiego samego hasła administratora na każdej maszynie wirtualnej.  W tym samouczku użyto skryptu danych użytkownika w celu ustawienia dla wszystkich wystąpień EC2 takiego samego hasła.  W środowisku produkcyjnym dołączenie hostów do domeny systemu Windows jest bardziej bezpieczne.
 
@@ -89,7 +89,7 @@ Dwie ostatnie reguły dla usługi Service Fabric powodują otwarcie jej dla wszy
 
 Na koniec trzeba otworzyć port 8080, aby móc nawiązać połączenie z aplikacją po jej wdrożeniu. Wybierz przycisk **Dodaj regułę**, z listy rozwijanej wybierz pozycję **Niestandardowa reguła TCP** i jako zakres portów wprowadź wartość `8080`, a następnie wybierz z listy rozwijanej Źródło wartość Dowolne miejsce.
 
-Teraz wszystkie reguły są już wprowadzone. Wybierz pozycję **Zapisz**.
+Teraz wszystkie reguły są już wprowadzone. Wybierz **pozycję Zapisz**.
 
 ## <a name="connect-to-an-instance-and-validate-connectivity"></a>Nawiązywanie połączenia z wystąpieniem i weryfikowanie łączności
 

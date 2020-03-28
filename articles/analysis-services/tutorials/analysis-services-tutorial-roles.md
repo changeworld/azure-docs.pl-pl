@@ -1,6 +1,6 @@
 ---
-title: Samouczek — Konfigurowanie ról Azure Analysis Services | Microsoft Docs
-description: Dowiedz się, jak skonfigurować Azure Analysis Services administratorów i ról użytkowników przy użyciu Azure Portal lub SQL Server Management Studio.
+title: Samouczek — konfigurowanie ról usług Azure Analysis Services | Dokumenty firmy Microsoft
+description: Dowiedz się, jak skonfigurować role administratora i użytkowników usług Azure Analysis Services przy użyciu portalu Azure lub programu SQL Server Management Studio.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: owend
 ms.openlocfilehash: c7d53ae71ac68559877561bf9fd15fe0f341e03a
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78273682"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Samouczek: konfigurowanie ról administratora i użytkowników serwera
@@ -130,13 +130,13 @@ W tym zadaniu użyjesz polecenia [Create](https://docs.microsoft.com/analysis-se
 ## <a name="verify-your-changes"></a>Sprawdzanie zmian
 
 1. W **Eksploratorze obiektów** kliknij prawym przyciskiem myszy nazwę serwera, a następnie kliknij pozycję **Odśwież** lub naciśnij klawisz **F5**.
-2. Rozwiń pozycję **Bazy danych** > **adventureworks** > **Role**. Sprawdź, czy jest widoczne konto użytkownika wraz ze zmianami ról wprowadzonymi w poprzednich zadaniach.   
+2. Rozwiń **funkcje** > **adventureworks** > bazy danych**Role**. Sprawdź, czy jest widoczne konto użytkownika wraz ze zmianami ról wprowadzonymi w poprzednich zadaniach.   
 
     ![Sprawdzenie w Eksploratorze obiektów](./media/analysis-services-tutorial-roles/aas-connect-ssms-verify.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy konta i role użytkownika lub grupy nie są już potrzebne, można je usunąć. Aby to zrobić, użyj funkcji**Właściwości roli** > **Członkostwo**, aby usunąć konta użytkowników, lub kliknij prawym przyciskiem myszy rolę, a następnie kliknij przycisk **Usuń**.
+Gdy konta i role użytkownika lub grupy nie są już potrzebne, można je usunąć. Aby to zrobić, użyj > **funkcji Członkostwo** **właściwości roli,** aby usunąć konta użytkowników, lub kliknij prawym przyciskiem myszy rolę, a następnie kliknij polecenie **Usuń**.
 
 
 ## <a name="next-steps"></a>Następne kroki

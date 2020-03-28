@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie dysków zarządzanych do konta magazynu — przykład interfejsu wiersza polecenia
-description: Przykład interfejsu wiersza polecenia platformy Azure — Eksportuj lub skopiuj dyski zarządzane do konta magazynu.
+title: Kopiowanie dysków zarządzanych na konto magazynu — przykładowy wiersz polecenia
+description: Przykład interfejsu wiersza polecenia platformy Azure — eksportowanie lub kopiowanie dysków zarządzanych na konto magazynu.
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -17,15 +17,15 @@ ms.date: 05/09/2019
 ms.author: ramankum
 ms.custom: mvc,seodec18
 ms.openlocfilehash: 242af0c1dcec13f449cea8e37a60f00c1e87561b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75458508"
 ---
 # <a name="exportcopy-a-managed-disk-to-a-storage-account-using-the-azure-cli"></a>Eksportowanie/kopiowanie dysków zarządzanych na konto magazynu przy użyciu wiersza polecenia platformy Azure
 
-Ten skrypt umożliwia wyeksportowanie odpowiedniego wirtualnego dysku twardego dysku zarządzanego na konto magazynu w tym samym lub innym regionie. Najpierw generuje on identyfikator URI sygnatury dostępu współdzielonego dysku zarządzanego, a następnie używa go do skopiowania wirtualnego dysku twardego na konto magazynu. Ten skrypt umożliwia kopiowanie dysków zarządzanych do innego regionu w celu zwiększenia liczby regionów. Jeśli chcesz opublikować plik VHD dysku zarządzanego w portalu Azure Marketplace, możesz użyć tego skryptu, aby skopiować plik VHD do konta magazynu, a następnie wygenerować identyfikator URI sygnatury dostępu współdzielonego dla skopiowanego wirtualnego dysku twardego w celu opublikowania go w portalu Marketplace.   
+Ten skrypt umożliwia wyeksportowanie odpowiedniego wirtualnego dysku twardego dysku zarządzanego na konto magazynu w tym samym lub innym regionie. Najpierw generuje on identyfikator URI sygnatury dostępu współdzielonego dysku zarządzanego, a następnie używa go do skopiowania wirtualnego dysku twardego na konto magazynu. Ten skrypt umożliwia kopiowanie dysków zarządzanych do innego regionu w celu zwiększenia liczby regionów. Jeśli chcesz opublikować plik VHD dysku zarządzanego w portalu Azure Marketplace, możesz użyć tego skryptu do skopiowania pliku VHD na konto magazynu, a następnie wygenerować identyfikator URI sygnatury dostępu Współdzielonego skopiowanego dysku wirtualnego, aby opublikować go w portalu Marketplace.   
 
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]

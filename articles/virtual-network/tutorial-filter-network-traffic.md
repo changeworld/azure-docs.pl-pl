@@ -1,7 +1,7 @@
 ---
 title: Filtrowanie ruchu sieciowego — samouczek — Azure Portal
 titlesuffix: Azure Virtual Network
-description: W tym samouczku dowiesz się, jak filtrować ruch sieciowy w podsieci z grupą zabezpieczeń sieci przy użyciu Azure Portal.
+description: W tym samouczku dowiesz się, jak filtrować ruch sieciowy do podsieci za pomocą sieciowej grupy zabezpieczeń przy użyciu portalu Azure.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -15,13 +15,13 @@ ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: kumud
 ms.openlocfilehash: b5a136ae05b3cd410ca252b6d5a1df443aff6f7a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75350137"
 ---
-# <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Samouczek: filtrowanie ruchu sieciowego za pomocą sieciowej grupy zabezpieczeń przy użyciu Azure Portal
+# <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Samouczek: Filtrowanie ruchu sieciowego za pomocą sieciowej grupy zabezpieczeń przy użyciu witryny Azure portal
 
 Ruch sieciowy przychodzący do podsieci sieci wirtualnej i wychodzący z niej możesz filtrować za pomocą sieciowej grupy zabezpieczeń. Sieciowe grupy zabezpieczeń zawierają reguły zabezpieczeń, które filtrują ruch sieciowy według adresów IP, portów i protokołów. Reguły zabezpieczeń są stosowane do zasobów wdrożonych w podsieci. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -33,9 +33,9 @@ Ruch sieciowy przychodzący do podsieci sieci wirtualnej i wychodzący z niej mo
 
 Jeśli chcesz, możesz wykonać ten samouczek przy użyciu [interfejsu wiersza polecenia platformy Azure](tutorial-filter-network-traffic-cli.md) lub [programu PowerShell](tutorial-filter-network-traffic-powershell.md).
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
@@ -67,7 +67,7 @@ Grupa zabezpieczeń aplikacji umożliwia grupowanie serwerów o podobnych funkcj
     | ---            | ---                                                           |
     | Nazwa           | myAsgWebServers                                               |
     | Subskrypcja   | Wybierz subskrypcję.                                     |
-    | Grupa zasobów | Wybierz pozycję **Użyj istniejącej** i wybierz grupę **myResourceGroup**. |
+    | Grupa zasobów | Wybierz **pozycję Użyj istniejącego,** a następnie wybierz **myResourceGroup**. |
     | Lokalizacja       | Wschodnie stany USA                                                       |
 
 4. Ponownie wykonaj krok 3, używając następujących wartości:
@@ -76,7 +76,7 @@ Grupa zabezpieczeń aplikacji umożliwia grupowanie serwerów o podobnych funkcj
     | ---            | ---                                                           |
     | Nazwa           | myAsgMgmtServers                                              |
     | Subskrypcja   | Wybierz subskrypcję.                                     |
-    | Grupa zasobów | Wybierz pozycję **Użyj istniejącej** i wybierz grupę **myResourceGroup**. |
+    | Grupa zasobów | Wybierz **pozycję Użyj istniejącego,** a następnie wybierz **myResourceGroup**. |
     | Lokalizacja       | Wschodnie stany USA                                                       |
 
 ## <a name="create-a-network-security-group"></a>Tworzenie sieciowej grupy zabezpieczeń
@@ -111,7 +111,7 @@ Grupa zabezpieczeń aplikacji umożliwia grupowanie serwerów o podobnych funkcj
 
     | Ustawienie                 | Wartość                                                                                                           |
     | ---------               | ---------                                                                                                       |
-    | Cel             | Wybierz opcję **Grupa zabezpieczeń aplikacji**, a następnie wybierz opcję **myAsgWebServers** w pozycji **Grupa zabezpieczeń aplikacji**.  |
+    | Element docelowy             | Wybierz opcję **Grupa zabezpieczeń aplikacji**, a następnie wybierz opcję **myAsgWebServers** w pozycji **Grupa zabezpieczeń aplikacji**.  |
     | Zakresy portów docelowych | Wprowadź wartości 80,443                                                                                                    |
     | Protocol (Protokół)                | Wybierz pozycję TCP                                                                                                      |
     | Nazwa                    | Allow-Web-All                                                                                                   |
@@ -120,7 +120,7 @@ Grupa zabezpieczeń aplikacji umożliwia grupowanie serwerów o podobnych funkcj
 
     | Ustawienie                 | Wartość                                                                                                           |
     | ---------               | ---------                                                                                                       |
-    | Cel             | Wybierz opcję **Grupa zabezpieczeń aplikacji**, a następnie wybierz opcję **myAsgMgmtServers** w pozycji **Grupa zabezpieczeń aplikacji**. |
+    | Element docelowy             | Wybierz opcję **Grupa zabezpieczeń aplikacji**, a następnie wybierz opcję **myAsgMgmtServers** w pozycji **Grupa zabezpieczeń aplikacji**. |
     | Zakresy portów docelowych | Wprowadź 3389                                                                                                      |
     | Protocol (Protokół)                | Wybierz pozycję TCP                                                                                                      |
     | Priorytet                | Wprowadź wartość 110                                                                                                       |
@@ -140,7 +140,7 @@ W sieci wirtualnej utwórz dwie maszyny wirtualne.
 
 1. W menu witryny Azure Portal lub na **stronie głównej** wybierz pozycję **Utwórz zasób**. 
 2. Wybierz pozycję **Wystąpienia obliczeniowe**, a następnie wybierz pozycję **Windows Server 2016 Datacenter**.
-3. Wprowadź lub wybierz poniższe informacje, a następnie zaakceptuj wartości domyślne dla pozostałych ustawień:
+3. Wprowadź lub wybierz następujące informacje i zaakceptuj ustawienia domyślne dla pozostałych ustawień:
 
     |Ustawienie|Wartość|
     |---|---|
@@ -154,15 +154,15 @@ W sieci wirtualnej utwórz dwie maszyny wirtualne.
    
 
 4. Wybierz rozmiar maszyny wirtualnej, a następnie wybierz pozycję **Wybierz**.
-5. W obszarze **Sieć**wybierz następujące wartości i zaakceptuj pozostałe ustawienia domyślne:
+5. W obszarze **Sieć**wybierz następujące wartości i zaakceptuj pozostałe wartości domyślne:
 
     |Ustawienie|Wartość|
     |---|---|
-    |Sieć wirtualna |Wybierz pozycję **myVirtualNetwork**.|
-    |Grupa zabezpieczeń sieci karty sieciowej |Wybierz pozycję **Brak**.|
+    |Sieć wirtualna |Wybierz **myVirtualNetwork**.|
+    |Grupa zabezpieczeń sieciowej karty sieciowej |Wybierz pozycję **Brak**.|
   
 
-6. Wybierz pozycję **Recenzja + Utwórz** w lewym górnym rogu, a następnie wybierz pozycję **Utwórz** , aby rozpocząć wdrażanie maszyny wirtualnej.
+6. Wybierz **pozycję Recenzja + Utwórz** u dołu i w lewym rogu wybierz pozycję **Utwórz,** aby rozpocząć wdrażanie maszyny wirtualnej.
 
 ### <a name="create-the-second-vm"></a>Tworzenie drugiej maszyny wirtualnej
 
@@ -182,8 +182,8 @@ Podczas tworzenia maszyn wirtualnych przez portal dla każdej maszyny wirtualnej
 ## <a name="test-traffic-filters"></a>Testowanie filtrów ruchu
 
 1. Połącz się z maszyną wirtualną *myVmMgmt*. Wprowadź nazwę *myVmMgmt* w polu wyszukiwania w górnej części portalu. Gdy pozycja **myVmMgmt** pojawi się w wynikach wyszukiwania, wybierz ją. Wybierz przycisk **Połącz**.
-2. Wybierz opcję **Pobierz plik RDP**.
-3. Otwórz pobrany plik RDP i wybierz opcję **Połącz**. Wprowadź nazwę użytkownika i hasło określone podczas tworzenia maszyny wirtualnej. Może okazać się konieczne wybranie pozycji **Więcej opcji**, a następnie pozycji **Użyj innego konta**, aby określić poświadczenia wprowadzone podczas tworzenia maszyny wirtualnej.
+2. Wybierz **pozycję Pobierz plik RDP**.
+3. Otwórz pobrany plik RDP i wybierz pozycję **Połącz**. Wprowadź nazwę użytkownika i hasło określone podczas tworzenia maszyny wirtualnej. Może okazać się konieczne wybranie pozycji **Więcej opcji**, a następnie pozycji **Użyj innego konta**, aby określić poświadczenia wprowadzone podczas tworzenia maszyny wirtualnej.
 4. Kliknij przycisk **OK**.
 5. Podczas procesu logowania może pojawić się ostrzeżenie o certyfikacie. Jeśli zostanie wyświetlone ostrzeżenie, wybierz pozycję **Tak** lub **Kontynuuj**, aby nawiązać połączenie.
 
@@ -217,7 +217,7 @@ Gdy grupa zasobów i wszystkie znajdujące się w niej zasoby nie będą już po
 
 1. Wprowadź ciąg *myResourceGroup* w polu **Szukaj** w górnej części portalu. Gdy pozycja **myResourceGroup** pojawi się w wynikach wyszukiwania, wybierz ją.
 2. Wybierz pozycję **Usuń grupę zasobów**.
-3. W polu **WPISZ NAZWĘ GRUPY ZASOBÓW:** wprowadź nazwę *myResourceGroup*, a następnie wybierz pozycję **Usuń**.
+3. Wprowadź *myResourceGroup* dla **TYPU NAZWA GRUPY ZASOBÓW:** i wybierz pozycję **Usuń**.
 
 ## <a name="next-steps"></a>Następne kroki
 

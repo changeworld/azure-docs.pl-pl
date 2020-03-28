@@ -1,6 +1,6 @@
 ---
-title: Samouczek — Inicjowanie obsługi symulowanego urządzenia X. 509 na platformie Azure IoT Hub przy użyciu języka Java i grup rejestracji
-description: W tym samouczku Utwórz i zainicjuj symulowane urządzenie X. 509 za pomocą zestawu SDK urządzeń i usług Java oraz grup rejestracji dla IoT Hub Device Provisioning Service (DPS)
+title: Samouczek — udostępnianie symulowanego urządzenia X.509 do usługi Azure IoT Hub przy użyciu środowiska Java i grup rejestracji
+description: W tym samouczku utwórz i aprowizuj symulowane urządzenie X.509 przy użyciu zestawu SDK urządzenia i usługi Java oraz grupy rejestracji usługi inicjowania obsługi administracyjnej (DPS)
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -10,13 +10,13 @@ services: iot-dps
 ms.devlang: java
 ms.custom: mvc
 ms.openlocfilehash: d6cb3af134ff272d79cfc440047a3d90733ee9e8
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74976812"
 ---
-# <a name="tutorial-create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>Samouczek: Tworzenie i Inicjowanie symulowanego urządzenia X. 509 za pomocą zestawu SDK urządzeń i usług Java oraz rejestracji grup dla IoT Hub Device Provisioning Service
+# <a name="tutorial-create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>Samouczek: Tworzenie i udostępnianie symulowanego urządzenia X.509 przy użyciu zestawu SDK urządzenia i usługi Java oraz rejestracji grup dla usługi inicjowania obsługi administracyjnej usługi IoT Hub
 
 Te kroki pokazują, jak zasymulować urządzenie X.509 na maszynie deweloperskiej z systemem operacyjnym Windows OS i użyć przykładowego kodu do połączenia tego symulowanego urządzenia z usługą Device Provisioning Service i Twoim centrum IoT Hub przy użyciu grup rejestracji. 
 
@@ -45,14 +45,14 @@ Pamiętaj, aby wcześniej wykonać kroki przedstawione w części [Konfigurowani
 
         1. W obszarze **Dodawanie certyfikatu** wprowadź następujące informacje:
             - Wprowadź unikatową nazwę certyfikatu.
-            - Wybierz utworzony wcześniej plik **_RootCA.pem_** .
+            - Wybierz utworzony wcześniej plik **_RootCA.pem_**.
             - Gdy skończysz, kliknij przycisk **Zapisz**.
 
            ![Dodawanie certyfikatu](./media/tutorial-group-enrollments/add-certificate.png)
 
         1. Wybierz nowo utworzony certyfikat:
             - Kliknij pozycję **Generuj kod weryfikacyjny**. Skopiuj wygenerowany kod.
-            - Uruchom krok weryfikacji. Wprowadź _kod weryfikacyjny_ lub kliknij prawym przyciskiem myszy, aby wkleić go w uruchomionym oknie programu PowerShell.  Naciśnij klawisz **Enter**.
+            - Uruchom krok weryfikacji. Wprowadź _kod weryfikacyjny_ lub kliknij prawym przyciskiem myszy, aby wkleić go w uruchomionym oknie programu PowerShell.  Naciśnij **klawisz Enter**.
             - Wybierz nowo utworzony plik **_verifyCert4.pem_** w witrynie Azure Portal. Kliknij pozycję **Zweryfikuj**.
 
               ![Sprawdzanie poprawności certyfikatu](./media/tutorial-group-enrollments/validate-certificate.png)
@@ -72,11 +72,11 @@ Pamiętaj, aby wcześniej wykonać kroki przedstawione w części [Konfigurowani
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
     ```
 
-1. W pobranym kodzie źródłowym przejdź do folderu przykładu **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-group-sample_** . Otwórz plik **_/src/main/java/samples/com/microsoft/azure/sdk/iot/ServiceEnrollmentGroupSample.java_** w dowolnym edytorze i dodaj następujące szczegółowe informacje:
+1. W pobranym kodzie źródłowym przejdź do folderu przykładu **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-group-sample_**. Otwórz plik **_/src/main/java/samples/com/microsoft/azure/sdk/iot/ServiceEnrollmentGroupSample.java_** w dowolnym edytorze i dodaj następujące szczegółowe informacje:
 
     1. Dodaj ciąg `[Provisioning Connection String]` dla usługi aprowizacji z portalu, jako pokazano poniżej:
 
-        1. Przejdź do usługi aprowizacji w witrynie [Azure Portal](https://portal.azure.com).
+        1. Przejdź do usługi inicjowania obsługi administracyjnej w [witrynie Azure portal](https://portal.azure.com).
 
         1. Otwórz **Zasady dostępu współużytkowanego** i wybierz zasadę, która ma uprawnienie *EnrollmentWrite*.
 
@@ -84,7 +84,7 @@ Pamiętaj, aby wcześniej wykonać kroki przedstawione w części [Konfigurowani
 
             ![Pobieranie parametrów połączenia aprowizacji z portalu](./media/tutorial-group-enrollments/provisioning-string.png)  
 
-        1. W przykładowym pliku kodu **_ServiceEnrollmentGroupSample.java_** zastąp ciąg `[Provisioning Connection String]` **parametrami połączenia klucza podstawowego**.
+        1. W przykładowym pliku kodu **_ServiceEnrollmentGroupSample.java_** zastąp ciąg `[Provisioning Connection String]`**parametrami połączenia klucza podstawowego**.
 
             ```java
             private static final String PROVISIONING_CONNECTION_STRING = "[Provisioning Connection String]";
@@ -126,7 +126,7 @@ Pamiętaj, aby wcześniej wykonać kroki przedstawione w części [Konfigurowani
 
     1. Zapisz plik _ServiceEnrollmentGroupSample.java_.
 
-1. Otwórz okno polecenia i przejdź do folderu **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-group-sample_** .
+1. Otwórz okno polecenia i przejdź do folderu **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-group-sample_**.
 
 1. Skompiluj przykładowy kod za pomocą tego polecenia:
 
@@ -145,11 +145,11 @@ Pamiętaj, aby wcześniej wykonać kroki przedstawione w części [Konfigurowani
 
     ![Pomyślna rejestracja](./media/tutorial-group-enrollments/enrollment.png) 
 
-1. Przejdź do usługi aprowizacji w witrynie Azure Portal. Kliknij pozycję **Zarządzanie rejestracjami**. Zauważ, że grupa urządzeń X.509 jest wyświetlana na karcie **Grupy rejestracji** z automatycznie wygenerowaną *NAZWĄ GRUPY*.
+1. Przejdź do usługi aprowizacji w witrynie Azure Portal. Kliknij pozycję **Zarządzanie rejestracjami**. Zwróć uwagę, że grupa urządzeń X.509 pojawia się na karcie **Grupy rejestracji** z automatycznie generowaną *NAZWĄ GRUPY*.
 
 ## <a name="simulate-the-device"></a>Symulowanie urządzenia
 
-1. W bloku podsumowania usługi Device Provisioning wybierz pozycję **Przegląd** i zanotuj wartości _Identyfikator zakresu_ oraz _Globalny punkt końcowy usługi aprowizacji_.
+1. W bloku podsumowania usługi inicjowania obsługi administracyjnej urządzeń wybierz pozycję **Omówienie** i zanotuj globalny punkt końcowy _zakresu identyfikatora_ i _usługi inicjowania obsługi administracyjnej_.
 
     ![Informacje o usłudze](./media/tutorial-group-enrollments/extract-dps-endpoints.png)
 
@@ -176,7 +176,7 @@ Pamiętaj, aby wcześniej wykonać kroki przedstawione w części [Konfigurowani
 
     Jeśli certyfikaty urządzeń wygenerowano za pomocą powłoki Bash, plik ./certs/new-device.cert.pem zawiera klucz publiczny. Klucz prywatny urządzenia będzie się znajdować w pliku ./private/new-device.key.pem.
 
-    Otwórz plik klucza publicznego i zaktualizuj zmienną `leafPublicPem` tą wartością. Skopiuj tekst od ciągu _-----BEGIN PRIVATE KEY-----_ do _-----END PRIVATE KEY-----_ .
+    Otwórz plik klucza publicznego i zaktualizuj zmienną `leafPublicPem` tą wartością. Skopiuj tekst od ciągu _-----BEGIN PRIVATE KEY-----_ do _-----END PRIVATE KEY-----_.
 
     ```java
     private static final String leafPublicPem = "-----BEGIN CERTIFICATE-----\n" +
@@ -188,7 +188,7 @@ Pamiętaj, aby wcześniej wykonać kroki przedstawione w części [Konfigurowani
         "-----END CERTIFICATE-----\n";
     ```
 
-    Otwórz plik klucza prywatnego i zaktualizuj zmienną `leafPrivatePem` tą wartością. Skopiuj tekst od ciągu _-----BEGIN RSA PRIVATE KEY-----_ do _-----END RSA PRIVATE KEY-----_ .
+    Otwórz plik klucza prywatnego i zaktualizuj zmienną `leafPrivatePem` tą wartością. Skopiuj tekst od ciągu _-----BEGIN RSA PRIVATE KEY-----_ do _-----END RSA PRIVATE KEY-----_.
 
     ```java
     private static final String leafPrivateKey = "-----BEGIN RSA PRIVATE KEY-----\n" +
@@ -251,7 +251,7 @@ Pamiętaj, aby wcześniej wykonać kroki przedstawione w części [Konfigurowani
 Jeśli planujesz dalszą pracę z przykładem klienta urządzenia i eksplorowanie go, nie czyść zasobów utworzonych w ramach tego przewodnika Szybki start. Jeśli nie planujesz kontynuować pracy, wykonaj poniższe kroki, aby usunąć wszystkie zasoby utworzone w ramach tego przewodnika Szybki start.
 
 1. Zamknij okno danych wyjściowych przykładu klienta urządzenia na swojej maszynie.
-1. W witrynie Azure Portal w menu po lewej stronie kliknij pozycję **Wszystkie zasoby**, a następnie wybierz swoją usługę Device Provisioning Service. Otwórz blok **Zarządzanie rejestracjami** dla usługi, a następnie kliknij kartę **rejestracje indywidualne** . Wybierz *Identyfikator rejestracji* urządzenia zarejestrowanego w tym przewodniku Szybki Start, a następnie kliknij przycisk **Usuń** u góry. 
+1. W witrynie Azure Portal w menu po lewej stronie kliknij pozycję **Wszystkie zasoby**, a następnie wybierz swoją usługę Device Provisioning Service. Otwórz bloku **Zarządzaj rejestracjami** dla usługi, a następnie kliknij kartę **Rejestracje indywidualne.** Wybierz *identyfikator REJESTRACJI* urządzenia zarejestrowanego w tym przewodniku Szybki start, a następnie kliknij przycisk **Usuń** u góry. 
 1. W witrynie Azure Portal w menu po lewej stronie kliknij pozycję **Wszystkie zasoby**, a następnie wybierz swoje centrum IoT. Otwórz blok **Urządzenia IoT** Twojego centrum, wybierz *IDENTYFIKATOR URZĄDZENIA* zarejestrowanego w ramach tego przewodnika Szybki start, a następnie kliknij przycisk **Usuń** u góry.
 
 

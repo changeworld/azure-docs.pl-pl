@@ -1,6 +1,6 @@
 ---
-title: Samouczek — udostępnianie urządzenia przy użyciu usługi Azure IoT Hub Device Provisioning Service (.NET)
-description: W tym samouczku pokazano, jak można zainicjować obsługę administracyjną urządzenia w jednym centrum IoT przy użyciu usługi Azure IoT Hub Device Provisioning Service (DPS) przy użyciu platformy .NET.
+title: Samouczek — aprowizowanie urządzenia przy użyciu usługi inicjowania obsługi administracyjnej urządzeń usługi Azure IoT Hub (.NET)
+description: W tym samouczku pokazano, jak można aprowizować urządzenie do jednego centrum IoT przy użyciu usługi inicjowania obsługi administracyjnej usługi azure ioT hub (DPS) przy użyciu platformy .NET.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -10,15 +10,15 @@ services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
 ms.openlocfilehash: 9d5b1511ffb48f587d4ee5c5a7d2b0ee9216018f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74976778"
 ---
-# <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Samouczek: rejestrowanie urządzenia w usłudze IoT Hub przy użyciu klienta usługi Azure IoT Hub Provisioning Service (.NET)
+# <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Samouczek: Rejestrowanie urządzenia w centrum IoT przy użyciu klienta usługi inicjowania obsługi administracyjnej usługi usługi usługi Usługi usługi Azure IoT Hub (.NET)
 
-W poprzednim samouczku omówiono sposób konfigurowania urządzenia do nawiązywania połączenia z usługą Device Provisioning. W tym samouczku dowiesz się, jak używać tej usługi do aprowizacji urządzenia w jednym centrum IoT za pomocą zarówno **_rejestracji indywidualnej_** , jak i **_grup rejestracji_** . Ten samouczek przedstawia sposób wykonania następujących czynności:
+W poprzednim samouczku omówiono sposób konfigurowania urządzenia do nawiązywania połączenia z usługą Device Provisioning. W tym samouczku dowiesz się, jak używać tej usługi do aprowizacji urządzenia w jednym centrum IoT za pomocą zarówno **_rejestracji indywidualnej_**, jak i **_grup rejestracji_**. Ten samouczek przedstawia sposób wykonania następujących czynności:
 
 > [!div class="checklist"]
 > * Rejestrowanie urządzenia
@@ -59,11 +59,11 @@ Istnieją dwa sposoby rejestrowania urządzenia w usłudze Device Provisioning:
 
 1. W programie Visual Studio utwórz projekt aplikacji konsolowej Visual C# za pomocą szablonu projektu **Aplikacja konsolowa**. Nadaj projektowi nazwę **DeviceProvisioning**.
     
-1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy projekt **DeviceProvisioning**, a następnie kliknij polecenie **Zarządzaj pakietami NuGet...** .
+1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy projekt **DeviceProvisioning**, a następnie kliknij polecenie **Zarządzaj pakietami NuGet...**.
 
 1. W oknie **Menedżer pakietów NuGet** wybierz pozycję **Przeglądaj** i wyszukaj ciąg **microsoft.azure.devices.provisioning.service**. Zaznacz wpis i kliknij przycisk **Instaluj**, aby zainstalować pakiet **Microsoft.Azure.Devices.Provisioning.Service**, a następnie zaakceptuj warunki użytkowania. Ta procedura spowoduje pobranie, zainstalowanie i dodanie odwołania do pakietu NuGet [zestawu SDK usługi Azure IoT Device Provisioning](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) oraz jego zależności.
 
-1. Dodaj następujące instrukcje `using` w górnej części pliku **Program.cs**:
+1. Dodaj następujące `using` instrukcje w górnej części pliku **Program.cs:**
    
     ```csharp
     using Microsoft.Azure.Devices.Provisioning.Service;
@@ -129,7 +129,7 @@ Istnieją dwa sposoby rejestrowania urządzenia w usłudze Device Provisioning:
     Console.ReadLine();
     ```
         
-1. W Eksplorator rozwiązań programu Visual Studio kliknij rozwiązanie prawym przyciskiem myszy, a następnie kliknij pozycję **Ustaw projekty startowe..** .. Wybierz pozycję **pojedynczy projekt startowy**, a następnie wybierz projekt **DeviceProvisioning** z menu rozwijanego.  
+1. W Eksploratorze rozwiązań programu Visual Studio kliknij prawym przyciskiem myszy rozwiązanie, a następnie kliknij polecenie **Ustaw projekty startowe...**. Wybierz **pozycję Pojedynczy projekt startowy**, a następnie wybierz projekt **DeviceProvisioning** w menu rozwijanym.  
 
 1. Uruchom aplikację urządzenia platformy .NET **DeviceProvisioning**. Powinno to spowodować skonfigurowanie aprowizacji dla urządzenia: 
 
@@ -146,7 +146,7 @@ Po pomyślnym zarejestrowaniu urządzenia powinno ono być widoczne w portalu w 
 
 1. W Eksploratorze rozwiązań programu Visual Studio otwórz projekt **DeviceProvisioning** utworzony powyżej. 
 
-1. Dodaj następujące instrukcje `using` w górnej części pliku **Program.cs**:
+1. Dodaj następujące `using` instrukcje w górnej części pliku **Program.cs:**
     
     ```csharp
     using System.Security.Cryptography.X509Certificates;

@@ -1,5 +1,5 @@
 ---
-title: Wysyłanie powiadomień push do konkretnych telefonów z systemem Windows przy użyciu usługi Azure Notification Hubs | Microsoft Docs
+title: Wysyłanie powiadomień wypychanych do określonych telefonów z systemem Windows przy użyciu usługi Azure Notification Hubs | Dokumenty firmy Microsoft
 description: Korzystając z tego samouczka, dowiesz się, jak wysyłać powiadomienia push do konkretnych (nie wszystkich) urządzeń z systemem Windows Phone 8 lub Windows Phone 8.1 zarejestrowanych w zapleczu aplikacji.
 services: notification-hubs
 documentationcenter: windows
@@ -17,14 +17,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 88326b07a96dcc8ce7a72f8709a88c2662f48707
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 72ecb5bdb6bb024c5e4422548dd11888c03e4799
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213394"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80126942"
 ---
-# <a name="tutorial-push-notifications-to-specific-windows-phone-devices-by-using-azure-notification-hubs"></a>Samouczek: wysyłanie powiadomień push do konkretnych urządzeń z systemem Windows Phone przy użyciu usługi Azure Notification Hubs
+# <a name="tutorial-send-push-notifications-to-specific-windows-phones-using-azure-notification-hubs"></a>Samouczek: Wysyłanie powiadomień wypychanych do określonych telefonów z systemem Windows za pomocą usługi Azure Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
@@ -35,7 +35,7 @@ Ten scenariusz możesz włączyć, uwzględniając co najmniej jeden *tag* podcz
 > [!NOTE]
 > Zestaw SDK usługi Notification Hubs dla systemu Windows Phone nie obsługuje używania usługi WNS (Windows Push Notification Service) z aplikacjami platformy Silverlight dla systemu Windows Phone 8.1. Aby używać usługi WNS (zamiast usługi MPNS) z aplikacjami platformy Silverlight dla systemu Windows Phone 8.1, postępuj zgodnie z instrukcjami w [samouczku dotyczącym usługi Notification Hubs dla aplikacji platformy Silverlight dla systemu Windows Phone], w którym zastosowano interfejsy API REST.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Dodawanie wyboru kategorii do aplikacji mobilnej
@@ -45,7 +45,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Wykonaj kroki z artykułu [Samouczek: wysyłanie powiadomień push do aplikacji systemu Windows Phone przy użyciu usługi Azure Notification Hubs](notification-hubs-windows-mobile-push-notifications-mpns.md). W tym samouczku zaktualizujesz aplikację mobilną, aby zyskać możliwość zarejestrowania się w kategoriach ważnych wiadomości, które Cię interesują, oraz otrzymywania tylko powiadomień push dla tych kategorii.
+Zakończ [samouczek: wysyłanie powiadomień push do aplikacji systemu Windows Phone przy użyciu usługi Azure Notification Hubs](notification-hubs-windows-mobile-push-notifications-mpns.md). W tym samouczku zaktualizujesz aplikację mobilną, aby zyskać możliwość zarejestrowania się w kategoriach ważnych wiadomości, które Cię interesują, oraz otrzymywania tylko powiadomień push dla tych kategorii.
 
 ## <a name="add-category-selection-to-the-mobile-app"></a>Dodawanie wyboru kategorii do aplikacji mobilnej
 
@@ -313,7 +313,7 @@ Aplikacja jest teraz zakończona i może przechowywać w magazynie lokalnym na u
 W tym samouczku przedstawiono sposób wysyłania powiadomień push do konkretnych urządzeń, które mają tagi skojarzone z rejestracjami. Aby dowiedzieć się, jak wysyłać powiadomienia push do konkretnych użytkowników, którzy mogą używać wielu urządzeń, przejdź do następującego samouczka: 
 
 > [!div class="nextstepaction"]
->[Wysyłanie powiadomień push do konkretnych użytkowników](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md)
+>[Wypychanie powiadomień do konkretnych użytkowników](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md)
 
 <!-- Anchors. -->
 [Add category selection to the app]: #adding-categories

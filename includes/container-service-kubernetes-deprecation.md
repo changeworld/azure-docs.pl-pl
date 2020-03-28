@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 11/27/2018
 ms.author: iainfou
 ms.openlocfilehash: 858bc0814bc798cec31fb2be22608122a95c09db
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77651539"
 ---
 > [!WARNING]
->  **Azure Container Service (ACS) jest przestarzały. Do usługi ACS nie są dodawane żadne nowe funkcje ani funkcje. Wszystkie interfejsy API, środowisko portalu, polecenia i dokumentacja interfejsu CLI są oznaczone jako przestarzałe.**
+>  **Usługa kontenera azure (ACS) jest przestarzałe. Żadne nowe funkcje nie są dodawane do acs. Wszystkie interfejsy API, środowisko portalu, polecenia interfejsu wiersza polecenia i dokumentacji są oznaczone jako przestarzałe.**
 >
 > W 2017 r. wprowadziliśmy usługę Azure Kubernetes Service (AKS), aby uprościć wdrażanie i operacje platformy Kubernetes oraz zarządzanie nią. Jeśli używasz orkiestratora platformy Kubernetes, przeprowadź migrację do usługi AKS do 31 stycznia 2020 r. Aby rozpocząć pracę, zapoznaj się z artykułem dotyczącym [migracji do usługi Azure Kubernetes Service](../articles/aks/aks-migration.md).
 >

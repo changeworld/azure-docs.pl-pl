@@ -8,16 +8,16 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 2c2d50da4328ff07c3d2fda4a8721839aa3aa6e7
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78274051"
 ---
 # <a name="deprecated-run-applications-in-kubernetes"></a>(PRZESTARZAŁE) Uruchamianie aplikacji w usłudze Kubernetes
 
 > [!TIP]
-> Aby uzyskać zaktualizowaną wersję tego samouczka korzystającego z usługi Azure Kubernetes, zobacz [Samouczek: uruchamianie aplikacji w usłudze Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-deploy-application.md).
+> Zaktualizowana wersja tego samouczka korzystającego z usługi Azure Kubernetes, zobacz [Samouczek: Uruchamianie aplikacji w usłudze Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-deploy-application.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -107,14 +107,14 @@ Aby wyświetlić aplikację, przejdź do zewnętrznego adresu IP.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku aplikacja do głosowania na platformie Azure została wdrożona do klastra Kubernetes usługi Azure Container Service. Wykonasz następujące zadania:  
+W tym samouczku aplikacja do głosowania na platformie Azure została wdrożona do klastra Kubernetes usługi Azure Container Service. Wykonano następujące zadania:  
 
 > [!div class="checklist"]
 > * Pobieranie plików manifestu Kubernetes
 > * Uruchamianie aplikacji w usłudze Kubernetes
 > * Testowanie aplikacji
 
-Przejdź do następnego samouczka, aby dowiedzieć się więcej na temat skalowania aplikacji Kubernetes i powiązanej infrastruktury usługi Kubernetes. 
+Przejdź do następnego samouczka, aby dowiedzieć się więcej na temat skalowania aplikacji Kubernetes i bazowej infrastruktury usługi Kubernetes. 
 
 > [!div class="nextstepaction"]
 > [Skalowanie aplikacji i infrastruktury rozwiązania Kubernetes](./container-service-tutorial-kubernetes-scale.md)

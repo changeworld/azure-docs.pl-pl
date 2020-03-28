@@ -1,5 +1,5 @@
 ---
-title: Samouczek — używanie Azure Security Center dla maszyn wirtualnych z systemem Linux na platformie Azure
+title: Samouczek — używanie usługi Azure Security Center dla maszyn wirtualnych z systemem Linux na platformie Azure
 description: W tym samouczku przedstawiono funkcje usługi Azure Security Center ułatwiające ochronę i zabezpieczanie maszyn wirtualnych z systemem Linux na platformie Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,10 +16,10 @@ ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 5c5a8bc06c676121c20f6e1f83a26dd9343e6847
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77605524"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Samouczek: monitorowanie maszyn wirtualnych z systemem Linux za pomocą usługi Azure Security Center
@@ -50,7 +50,7 @@ Zanim będzie możliwe uzyskanie wglądu w konfiguracje zabezpieczeń maszyn wir
 
 1. Na pulpicie nawigacyjnym usługi Security Center kliknij pozycję **Zasady zabezpieczeń**, a następnie wybierz swoją subskrypcję. 
 2. W polu **Zbieranie danych** w obszarze **Automatyczna aprowizacja** wybierz pozycję **Włączone**.
-3. W polu **Domyślna konfiguracja obszaru roboczego** pozostaw wartość **Używaj obszarów roboczych utworzonych przez usługę Security Center (domyślne)** .
+3. W polu **Domyślna konfiguracja obszaru roboczego** pozostaw wartość **Używaj obszarów roboczych utworzonych przez usługę Security Center (domyślne)**.
 4. W obszarze **Zdarzenia zabezpieczeń** zachowaj domyślną opcję **Typowe**.
 4. Kliknij przycisk **Zapisz** w górnej części strony. 
 
@@ -103,7 +103,7 @@ W miarę stosowania się do zaleceń są one oznaczane jako rozwiązane.
 
 ## <a name="view-detected-threats"></a>Wyświetlanie wykrytych zagrożeń
 
-Oprócz zaleceń dotyczących konfiguracji zasobów usługa Security Center wyświetla alerty dotyczące wykrywania zagrożeń. Funkcja alertów zabezpieczeń agreguje dane zbierane z każdej maszyny wirtualnej, dzienników sieci platformy Azure i połączonych rozwiązań partnerów w celu wykrywania zagrożeń bezpieczeństwa dotyczących zasobów platformy Azure. Aby uzyskać szczegółowe informacje na temat możliwości wykrywania zagrożeń Security Center, zobacz [jak usługa Security Center wykrywać zagrożenia?](../../security-center/security-center-alerts-overview.md#detect-threats).
+Oprócz zaleceń dotyczących konfiguracji zasobów usługa Security Center wyświetla alerty dotyczące wykrywania zagrożeń. Funkcja alertów zabezpieczeń agreguje dane zbierane z każdej maszyny wirtualnej, dzienników sieci platformy Azure i połączonych rozwiązań partnerów w celu wykrywania zagrożeń bezpieczeństwa dotyczących zasobów platformy Azure. Aby uzyskać szczegółowe informacje na temat możliwości wykrywania zagrożeń w centrum zabezpieczeń, zobacz [Jak usługa Security Center wykrywa zagrożenia?](../../security-center/security-center-alerts-overview.md#detect-threats).
 
 Funkcja alertów zabezpieczeń wymaga podniesienia warstwy cenowej usługi Security Center z *Bezpłatna* do *Standardowa*. Przy przechodzeniu na tę wyższą warstwę cenową jest dostępna **bezpłatna wersja próbna**. 
 

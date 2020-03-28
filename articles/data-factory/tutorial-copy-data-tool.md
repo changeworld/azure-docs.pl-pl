@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie danych z usługi Azure Blob Storage do programu SQL przy użyciu narzędzia Kopiowanie danych
-description: Utwórz fabrykę danych platformy Azure, a następnie za pomocą narzędzia Kopiowanie danych skopiuj dane z usługi Azure Blob Storage do SQL Database.
+title: Kopiowanie danych z magazynu obiektów blob platformy Azure do języka SQL przy użyciu narzędzia Kopiuj dane
+description: Utwórz fabrykę danych platformy Azure, a następnie użyj narzędzia Kopiuj dane, aby skopiować dane z magazynu obiektów blob platformy Azure do bazy danych SQL.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,19 +13,19 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 03/03/2020
 ms.openlocfilehash: 52ed43277eef84de826d2f4fa41ba860211a1531
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78969868"
 ---
-# <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Kopiowanie danych z usługi Azure Blob Storage do SQL Database przy użyciu narzędzia Kopiowanie danych
+# <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Kopiowanie danych z magazynu obiektów Blob platformy Azure do bazy danych SQL przy użyciu narzędzia Kopiuj dane
 
-> [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
+> [!div class="op_single_selector" title1="Wybierz wersję używanej usługi Data Factory:"]
 > * [Wersja 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Bieżąca wersja](tutorial-copy-data-tool.md)
 
-W tym samouczku utworzysz fabrykę danych za pomocą witryny Azure Portal. Następnie użyj narzędzia Kopiowanie danych, aby utworzyć potok, który kopiuje dane z usługi Azure Blob Storage do SQL Database.
+W tym samouczku utworzysz fabrykę danych za pomocą witryny Azure Portal. Następnie użyj narzędzia Kopiuj dane, aby utworzyć potok, który kopiuje dane z magazynu obiektów blob platformy Azure do bazy danych SQL.
 
 > [!NOTE]
 > Jeśli jesteś nowym użytkownikiem usługi Azure Data Factory, zobacz [Wprowadzenie do usługi Azure Data Factory](introduction.md).
@@ -39,16 +39,16 @@ Ten samouczek obejmuje wykonanie następujących kroków:
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * **Subskrypcja platformy Azure**: jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
-* **Konto usługi Azure Storage**: Użyj magazynu obiektów BLOB jako _źródłowego_ magazynu danych. Jeśli nie masz konta usługi Azure Storage, zapoznaj się z instrukcjami w temacie [Tworzenie konta magazynu](../storage/common/storage-account-create.md).
-* **Azure SQL Database**: Użyj SQL Database jako magazynu danych _ujścia_ . Jeśli nie masz SQL Database, zapoznaj się z instrukcjami w artykule [tworzenie SQL Database](../sql-database/sql-database-get-started-portal.md).
+* **Konto usługi Azure Storage:** Użyj magazynu obiektów Blob jako magazynu danych _źródłowych._ Jeśli nie masz konta usługi Azure Storage, zapoznaj się z instrukcjami w obszarze [Tworzenie konta magazynu](../storage/common/storage-account-create.md).
+* **Usługa Azure SQL Database:** Użyj bazy danych SQL jako magazynu danych _ujścia._ Jeśli nie masz bazy danych SQL, zobacz instrukcje w [tworzenie bazy danych SQL](../sql-database/sql-database-get-started-portal.md).
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Tworzenie obiektu blob i tabeli SQL
 
-Wykonaj następujące kroki, aby przygotować magazyn obiektów blob i SQL Database dla tego samouczka.
+Przygotuj magazyn obiektów Blob i bazę danych SQL dla samouczka, wykonując te kroki.
 
 #### <a name="create-a-source-blob"></a>Tworzenie źródłowego obiektu Blob
 
-1. Uruchom program **Notatnik**. Skopiuj poniższy tekst i zapisz go na dysku w pliku o nazwie **inputEmp.txt**:
+1. Uruchom **Notatnik**. Skopiuj poniższy tekst i zapisz go na dysku w pliku o nazwie **inputEmp.txt**:
 
     ```
     FirstName|LastName
@@ -56,11 +56,11 @@ Wykonaj następujące kroki, aby przygotować magazyn obiektów blob i SQL Datab
     Jane|Doe
     ```
 
-1. Utwórz kontener o nazwie **adfv2tutorial** i przekaż plik inputEmp.txt do kontenera. Aby wykonać te zadania, można użyć Azure Portal lub różnych narzędzi, takich jak [Eksplorator usługi Azure Storage](https://storageexplorer.com/) .
+1. Utwórz kontener o nazwie **adfv2tutorial** i przekaż plik inputEmp.txt do kontenera. Do wykonywania tych zadań można użyć witryny Azure portal lub różnych narzędzi, takich jak [Eksplorator usługi Azure Storage.](https://storageexplorer.com/)
 
 #### <a name="create-a-sink-sql-table"></a>Tworzenie tabeli SQL ujścia
 
-1. Użyj poniższego skryptu SQL, aby utworzyć tabelę o nazwie **dbo. EMP** w SQL Database:
+1. Użyj następującego skryptu SQL, aby utworzyć tabelę o nazwie **dbo.emp** w bazie danych SQL:
 
     ```sql
     CREATE TABLE dbo.emp
@@ -74,11 +74,11 @@ Wykonaj następujące kroki, aby przygotować magazyn obiektów blob i SQL Datab
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-2. Zezwól usługom platformy Azure na dostęp do programu SQL Server. Sprawdź, czy ustawienie **Zezwalaj usługom i zasobom platformy Azure na dostęp do tego serwera** jest włączone dla serwera, na którym działa SQL Database. To ustawienie umożliwia usłudze Data Factory zapisywanie danych w danym wystąpieniu bazy danych. Aby sprawdzić i włączyć to ustawienie, przejdź do pozycji Azure SQL Server > Zabezpieczenia > zapory i sieci wirtualne > Ustaw opcję **Zezwalaj usługom i zasobom platformy Azure na dostęp do tego serwera** **w systemie**.
+2. Zezwól usługom platformy Azure na dostęp do programu SQL Server. Sprawdź, czy ustawienie **Zezwalaj na dostęp do usług i zasobów platformy Azure w celu uzyskania dostępu do tego serwera** jest włączone dla serwera z uruchomioną bazą danych SQL. To ustawienie umożliwia usłudze Data Factory zapisywanie danych w danym wystąpieniu bazy danych. Aby zweryfikować i włączyć to ustawienie, przejdź do usługi Azure SQL server > Security > Firewalle i sieci wirtualne > ustaw opcję **Zezwalaj na dostęp do tej** opcji serwera na serwerze . **ON**
 
 ## <a name="create-a-data-factory"></a>Tworzenie fabryki danych
 
-1. W menu po lewej stronie wybierz pozycję **Utwórz zasób** > **Analytics** > **Data Factory**:
+1. W menu po lewej stronie wybierz pozycję **Utwórz fabrykę** > **danych****analizy** > zasobów:
 
     ![Tworzenie nowej fabryki danych](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. Na stronie **Nowa fabryka danych** w polu **Nazwa** wprowadź wartość **ADFTutorialDataFactory**.
@@ -87,19 +87,19 @@ Wykonaj następujące kroki, aby przygotować magazyn obiektów blob i SQL Datab
 
     ![Komunikat o błędzie dotyczący nowej fabryki danych](./media/doc-common-process/name-not-available-error.png)
 
-    Jeśli zostanie wyświetlony komunikat o błędzie dotyczącym wartości nazwy, wprowadź inną nazwę dla fabryki danych. Na przykład użyj nazwy _**twojanazwa**_ **ADFTutorialDataFactory**. Artykuł [Data Factory naming rules (Zasady nazewnictwa fabryki danych)](naming-rules.md) zawiera zasady nazewnictwa artefaktów usługi Data Factory.
+    Jeśli zostanie wyświetlony komunikat o błędzie dotyczącym wartości nazwy, wprowadź inną nazwę dla fabryki danych. Na przykład użyj nazwy _**twojanazwa**_**ADFTutorialDataFactory**. Artykuł [Data Factory naming rules (Zasady nazewnictwa fabryki danych)](naming-rules.md) zawiera zasady nazewnictwa artefaktów usługi Data Factory.
 1. Wybierz **subskrypcję** platformy Azure, w której utworzysz nową fabrykę danych.
 1. W obszarze **Grupa zasobów** wykonaj jedną z następujących czynności:
 
     a. Wybierz pozycję **Użyj istniejącej**, a następnie wybierz istniejącą grupę zasobów z listy rozwijanej.
 
-    b. Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę grupy zasobów.
+    b. Wybierz **pozycję Utwórz nowy**i wprowadź nazwę grupy zasobów.
     
     Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources (Używanie grup zasobów do zarządzania zasobami platformy Azure)](../azure-resource-manager/management/overview.md).
 
 1. W obszarze **Wersja** wybierz wersję **V2**.
-1. W obszarze **lokalizacja** wybierz lokalizację fabryki danych. Na liście rozwijanej są wyświetlane tylko obsługiwane lokalizacje. Magazyny danych (np. usługi Azure Storage i SQL Database) oraz jednostki obliczeniowe (np. usługa Azure HDInsight) używane przez Twoją fabrykę danych mogą mieścić się w innych lokalizacjach i regionach.
-1. Wybierz pozycję **Utwórz**.
+1. W obszarze **Lokalizacja**wybierz lokalizację fabryki danych. Na liście rozwijanej są wyświetlane tylko obsługiwane lokalizacje. Magazyny danych (np. usługi Azure Storage i SQL Database) oraz jednostki obliczeniowe (np. usługa Azure HDInsight) używane przez Twoją fabrykę danych mogą mieścić się w innych lokalizacjach i regionach.
+1. Wybierz **pozycję Utwórz**.
 
 1. Po zakończeniu tworzenia zostanie wyświetlona strona główna usługi **Data Factory**.
 
@@ -111,16 +111,16 @@ Wykonaj następujące kroki, aby przygotować magazyn obiektów blob i SQL Datab
 1. Na stronie **Wprowadzenie** wybierz kafelek **Kopiowanie danych**, aby uruchomić narzędzie do kopiowania danych.
 
     ![Kafelek narzędzia do kopiowania danych](./media/doc-common-process/get-started-page.png)
-1. Na stronie **Właściwości** w obszarze **Nazwa zadania**, wprowadź wartość **CopyFromBlobToSqlPipeline**. Następnie wybierz przycisk **Dalej**. Interfejs użytkownika usługi Data Factory tworzy potok o określonej nazwie zadania.
+1. Na stronie **Właściwości** w obszarze **Nazwa zadania**, wprowadź wartość **CopyFromBlobToSqlPipeline**. Następnie wybierz **przycisk Dalej**. Interfejs użytkownika usługi Data Factory tworzy potok o określonej nazwie zadania.
     ![Tworzenie potoku](./media/tutorial-copy-data-tool/create-pipeline.png)
 
 1. Na stronie **Źródłowy magazyn danych** wykonaj następujące czynności:
 
     a. Kliknij pozycję **+Utwórz nowe połączenie**, aby dodać połączenie.
 
-    b. Wybierz pozycję **Azure Blob Storage** z galerii, a następnie wybierz pozycję **Kontynuuj**.
+    b. Wybierz **pozycję Usługa Azure Blob Storage** z galerii, a następnie wybierz pozycję **Kontynuuj**.
 
-    c. Na stronie **Nowa połączona usługa** wybierz subskrypcję platformy Azure, a następnie wybierz konto magazynu z listy **nazwa konta magazynu** . Test connection a następnie wybierz pozycję **Utwórz**.
+    d. Na stronie **Nowa usługa łączona** wybierz subskrypcję platformy Azure i wybierz konto magazynu z listy **Nazwa konta magazynu.** Przetestuj połączenie, a następnie wybierz pozycję **Utwórz**.
 
     d. Wybierz nowo utworzoną połączoną usługę jako źródło, a następnie kliknij pozycję **Dalej**.
 
@@ -132,24 +132,24 @@ Wykonaj następujące kroki, aby przygotować magazyn obiektów blob i SQL Datab
 
     b. Kliknij przycisk **Dalej**, aby przejść do następnego kroku.
 
-1. Na stronie **Ustawienia formatu pliku** zaznacz pole wyboru *pierwszy wiersz jako nagłówek*. Należy zauważyć, że narzędzie automatycznie wykrywa ograniczniki kolumn i wierszy. Wybierz opcję **Dalej**. Możesz także wyświetlić podgląd danych i wyświetlić schemat danych wejściowych na tej stronie.
+1. Na stronie **Ustawienia formatu pliku** włącz pole wyboru *Pierwszy wiersz jako nagłówek*. Należy zauważyć, że narzędzie automatycznie wykrywa ograniczniki kolumn i wierszy. Wybierz **pozycję Dalej**. Można również wyświetlić podgląd danych i wyświetlić schemat danych wejściowych na tej stronie.
 
     ![Ustawienia formatu pliku](./media/tutorial-copy-data-tool/file-format-settings-page.png)
 1. Na stronie **Docelowy magazyn danych** wykonaj następujące czynności:
 
     a. Kliknij pozycję **+Utwórz nowe połączenie**, aby dodać połączenie.
 
-    b. Wybierz **Azure SQL Database** z galerii, a następnie wybierz pozycję **Kontynuuj**.
+    b. Wybierz z galerii **pozycję Azure SQL Database,** a następnie wybierz pozycję **Kontynuuj**.
 
-    c. Na stronie **Nowa połączona usługa** wybierz nazwę serwera i nazwę bazy danych z listy rozwijanej, a następnie określ nazwę użytkownika i hasło, a następnie wybierz pozycję **Utwórz**.
+    d. Na stronie **Nowa usługa połączona** wybierz nazwę serwera i nazwę bazy danych z listy rozwijanej, a następnie określ nazwę użytkownika i hasło, a następnie wybierz pozycję **Utwórz**.
 
     ![Konfigurowanie bazy danych Azure SQL](./media/tutorial-copy-data-tool/config-azure-sql-db.png)
 
     d. Wybierz nowo utworzoną połączoną usługę jako ujście, a następnie kliknij pozycję **Dalej**.
 
-1. Na stronie **Mapowanie tabeli** wybierz tabelę **[dbo].[emp]** , a następnie kliknij przycisk **Dalej**.
+1. Na stronie **Mapowanie tabeli** wybierz tabelę **[dbo].[emp]**, a następnie kliknij przycisk **Dalej**.
 
-1. Na stronie **Mapowanie kolumny** Zwróć uwagę, że druga i trzecia kolumna w pliku wejściowym są mapowane na kolumny **FirstName** i **LastName** tabeli **EMP** . Dostosuj mapowanie, aby upewnić się, że nie ma błędów, a następnie wybierz przycisk **dalej**.
+1. Na stronie **mapowanie kolumn** zwróć uwagę, że druga i trzecia kolumna w pliku wejściowym są mapowane na kolumny **FirstName** i **LastName** tabeli **emp.** Dostosuj mapowanie, aby upewnić się, że nie ma błędu, a następnie wybierz przycisk **Dalej**.
 
     ![Strona mapowania kolumn](./media/tutorial-copy-data-tool/column-mapping.png)
 
@@ -159,23 +159,23 @@ Wykonaj następujące kroki, aby przygotować magazyn obiektów blob i SQL Datab
  
     ![Monitorowanie potoku](./media/tutorial-copy-data-tool/monitor-pipeline.png)
 
-1. Na stronie uruchomienia potoku wybierz pozycję **Odśwież** , aby odświeżyć listę. Kliknij link pod **nazwą potoku** , aby wyświetlić szczegóły uruchomienia działania lub ponownie uruchomić potok. 
-    ![uruchomienia potoku](./media/tutorial-copy-data-tool/pipeline-run.png)
+1. Na stronie Przebiegi potoku wybierz pozycję **Odśwież,** aby odświeżyć listę. Kliknij łącze w obszarze **NAZWA POTOKU,** aby wyświetlić szczegóły uruchomienia działania lub ponownie uruchomić potok. 
+    ![Przebieg rurociągu](./media/tutorial-copy-data-tool/pipeline-run.png)
 
-1. Na stronie uruchomienia działania wybierz link **szczegóły** (ikona okularów) w kolumnie **Nazwa działania** , aby uzyskać więcej informacji na temat operacji kopiowania. Aby wrócić do widoku uruchomień potoków, wybierz link **wszystkie uruchomienia potoków** w menu stron nadrzędnych. Aby odświeżyć widok, wybierz pozycję **Odśwież**.
+1. Na stronie Przebiegi działania wybierz **łącze Szczegóły** (ikona okularów) w kolumnie **NAZWA DZIAŁANIA,** aby uzyskać więcej informacji na temat operacji kopiowania. Aby wrócić do widoku Przebiegi potoku, wybierz łącze **WSZYSTKIE uruchomienia potoku** w menu naciągu. Aby odświeżyć widok, wybierz pozycję **Odśwież**.
 
     ![Monitorowanie uruchomień działania](./media/tutorial-copy-data-tool/activity-monitoring.png)
 
 
-1. Sprawdź, czy dane są wstawiane do tabeli **dbo. EMP** w SQL Database.
+1. Sprawdź, czy dane są wstawiane do tabeli **dbo.emp** w bazie danych SQL.
 
 
 1. Wybierz kartę **Autor** po lewej stronie, aby przełączyć się w tryb edytora. Za pomocą edytora można zaktualizować usługi połączone, zestawy danych i potoki utworzone przez narzędzie. Aby uzyskać szczegółowe informacje dotyczące edytowania tych jednostek w interfejsie użytkownika usługi Data Factory, zobacz [wersję witryny Azure Portal używaną w tym samouczku](tutorial-copy-data-portal.md).
 
-    ![Wybieranie karty autora](./media/tutorial-copy-data-tool/author-tab.png)
+    ![Karta Wybierz pozycję Autor](./media/tutorial-copy-data-tool/author-tab.png)
 
 ## <a name="next-steps"></a>Następne kroki
-Potok w tym przykładzie kopiuje dane z magazynu obiektów BLOB do SQL Database. W tym samouczku omówiono:
+Potok w tym przykładzie kopiuje dane z magazynu obiektów Blob do bazy danych SQL. W tym samouczku omówiono:
 
 > [!div class="checklist"]
 > * Tworzenie fabryki danych.

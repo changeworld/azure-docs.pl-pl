@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: kierowanie ruchu do ważonych punktów końcowych — Traffic Manager platformy Azure'
+title: Samouczek:Kierowanie ruchu do ważonych punktów końcowych — usługa Azure Traffic Manager
 description: W tym artykule zawierającym samouczek opisano sposób kierowania ruchu do punktów końcowych z wagami za pomocą usługi Traffic Manager.
 services: traffic-manager
 author: rohinkoul
@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: rohink
 ms.openlocfilehash: a4738b2e36786cd627f53af3e36bd8f1e3fbc375
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76939479"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>Samouczek: sterowanie routingiem ruchu za pomocą punktów końcowych z wagami przy użyciu usługi Traffic Manager
@@ -29,7 +29,7 @@ Niniejszy samouczek zawiera informacje na temat wykonywania następujących czyn
 > * Dodawanie punktów końcowych maszyny wirtualnej do profilu usługi Traffic Manager
 > * Sprawdź działanie usługi Traffic Manager.
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -38,7 +38,7 @@ Aby zobaczyć usługę Traffic Manager w działaniu, na potrzeby tego samouczka 
 - dwa wystąpienia podstawowych witryn internetowych działających w różnych regionach świadczenia usługi Azure — Wschodnie stany USA i Europa Zachodnia,
 - dwie testowe maszyny wirtualne do testowania usługi Traffic Manager — jedną maszynę wirtualną w regionie Wschodnie stany USA i drugą w regionie Europa Zachodnia. Testowe maszyny wirtualne są używane w celu zilustrowania sposobu kierowania ruchu użytkowników przez usługę Traffic Manager do witryny internetowej, która ma wyższą wagę przypisaną do punktu końcowego.
 
-### <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+### <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do [Portalu Azure](https://portal.azure.com).
 
@@ -51,37 +51,37 @@ W tej sekcji opisano tworzenie dwóch wystąpień witryny internetowej, które z
 
 #### <a name="create-vms-for-running-websites"></a>Tworzenie maszyn wirtualnych do uruchamiania witryn internetowych
 
-W tej sekcji utworzysz dwie maszyny wirtualne (*myIISVMEastUS* i *myIISVMWestEurope*) w regionach Wschodnie stany USA i Europa Zachodnia.
+W tej sekcji utworzysz dwie maszyny wirtualne *(myIISVMEastUS* i *myIISVMWestEurope)* w regionach platformy Azure we wschodnich stanach USA i Europie Zachodniej.
 
-1. W lewym górnym rogu Azure Portal wybierz pozycję **Utwórz zasób** > **COMPUTE** > **systemie Windows Server 2019 Datacenter**.
+1. W lewym górnym rogu witryny Azure portal wybierz pozycję **Utwórz źródło zasobów** > **Oblicza** > **centrum danych systemu Windows Server 2019**.
 2. W obszarze **Tworzenie maszyny wirtualnej** wpisz lub wybierz następujące wartości na karcie **Podstawowe**:
 
-   - **Subskrypcja** > **grupy zasobów**: wybierz pozycję **Utwórz nową** , a następnie wpisz **myResourceGroupTM1**.
-   - **Szczegóły wystąpienia** > **Nazwa maszyny wirtualnej**: wpisz *myIISVMEastUS*.
-   - **Szczegóły wystąpienia** > **regionu**: Wybierz **Wschodnie stany USA**.
-   - **Konto administratora** > **Nazwa użytkownika**: Wprowadź wybraną nazwę użytkownika.
-   - **Konto administratora** > **hasło**: Wprowadź wybrane hasło. Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).
-   - **Reguły portów przychodzących** > **publicznych portów przychodzących**: wybierz opcję **Zezwalaj na wybrane porty**.
-   - **Reguły portów ruchu przychodzącego** > **Wybieranie portów ruchu przychodzącego**: wybierz pozycję **RDP** i **http** w polu ściąganie.
+   - **Grupa** > **zasobów**subskrypcji: wybierz pozycję **Utwórz nowy,** a następnie wpisz **myResourceGroupTM1**.
+   - **Szczegóły wystąpienia** > **Nazwa maszyny wirtualnej:** Wpisz *myIISVMEastUS*.
+   - **Region szczegółów** > **Region**wystąpienia: wybierz **wschodnie stany USA**.
+   - **Nazwa** > **konta**administratora: Wprowadź wybraną nazwę użytkownika.
+   - **Hasło konta** > **administratora**: Wprowadź wybrane hasło. Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).
+   - **Reguły portów** > **przychodzących Porty przychodzące**Publiczne porty : Wybierz opcję **Zezwalaj na wybrane porty**.
+   - **Reguły portów** > **przychodzących Wybierz porty przychodzące:** Wybierz **protokół RDP** i **HTTP** w polu rozwijania.
 
-3. Wybierz kartę **Zarządzanie** lub wybierz pozycję **Dalej: dyski**, a następnie kliknij kolejno pozycje **Sieć**i **Dalej: Zarządzanie**. W obszarze **Monitorowanie** dla opcji **Diagnostyka rozruchu** ustaw wartość **Wyłączone**.
+3. Wybierz kartę **Zarządzanie** lub wybierz pozycję **Dalej: Dyski**, a następnie **dalej: Sieć**, a następnie **dalej: Zarządzanie**. W obszarze **Monitorowanie** dla opcji **Diagnostyka rozruchu** ustaw wartość **Wyłączone**.
 4. Wybierz pozycję **Przegląd + utwórz**.
 5. Przejrzyj ustawienia, a następnie kliknij przycisk **Utwórz**.  
-6. Postępuj zgodnie z instrukcjami, aby utworzyć drugą maszynę wirtualną o nazwie *myIISVMWestEurope*, z nazwą **grupy zasobów** *MyResourceGroupTM2*, **lokalizacją** *Europa Zachodnia*i wszystkimi innymi ustawieniami takimi jak *myIISVMEastUS*.
+6. Wykonaj kroki, aby utworzyć drugą maszynę wirtualną o nazwie *myIISVMWestEurope,* z nazwą **grupy zasobów** *myResourceGroupTM2*, **lokalizacją** *Europy Zachodniej*i wszystkimi innymi ustawieniami, taką samą jak *myIISVMEastUS*.
 7. Proces tworzenia maszyny wirtualnej może potrwać kilka minut. Nie kontynuuj wykonywania pozostałych kroków, dopóki obie maszyny wirtualne nie zostaną utworzone.
 
 ![Tworzenie maszyny wirtualnej](./media/tutorial-traffic-manager-improve-website-response/createVM.png)
 
 #### <a name="install-iis-and-customize-the-default-webpage"></a>Instalowanie usług IIS i dostosowywanie domyślnej strony internetowej
 
-W tej części należy zainstalować serwer IIS na dwóch maszynach wirtualnych myIISVMEastUS i myIISVMWestEurope, a następnie zaktualizować domyślną stronę sieci Web. Dostosowana strona internetowa wyświetla nazwę maszyny wirtualnej, z którą jest nawiązywane połączenie podczas odwiedzania witryny internetowej z przeglądarki internetowej.
+W tej sekcji należy zainstalować serwer usług IIS na dwóch maszynach wirtualnych myIISVMEastUS i myIISVMWestEurope, a następnie zaktualizować domyślną stronę sieci Web. Dostosowana strona internetowa wyświetla nazwę maszyny wirtualnej, z którą jest nawiązywane połączenie podczas odwiedzania witryny internetowej z przeglądarki internetowej.
 
 1. Wybierz pozycję **Wszystkie zasoby** w menu po lewej stronie. Z listy zasobów wybierz pozycję **myIISVMEastUS** w grupie zasobów **myResourceGroupTM1**.
-2. Na stronie **Przegląd** wybierz pozycję **Połącz**. W polu **Połącz z maszyną wirtualną** wybierz opcję **Pobierz plik RDP**.
-3. Otwórz pobrany plik RDP. Jeśli zostanie wyświetlony monit, wybierz pozycję **Połącz**. Wprowadź nazwę użytkownika i hasło, które zostały określone podczas tworzenia tej maszyny wirtualnej. Może być konieczne wybranie pozycji **Więcej opcji** > **Użyj innego konta**, aby określić poświadczenia wprowadzone podczas tworzenia maszyny wirtualnej.
+2. Na stronie **Przegląd** wybierz pozycję **Połącz**. W **obszarze Połącz z maszyną wirtualną**wybierz pozycję **Pobierz plik RDP**.
+3. Otwórz pobrany plik RDP. Jeśli zostanie wyświetlony monit, wybierz pozycję **Połącz**. Wprowadź nazwę użytkownika i hasło, które zostały określone podczas tworzenia tej maszyny wirtualnej. Może być konieczne **wybranie opcji Więcej opcji** > **Użyj innego konta,** aby określić poświadczenia wprowadzone podczas tworzenia maszyny Wirtualnej.
 4. Kliknij przycisk **OK**.
-5. Podczas procesu logowania może pojawić się ostrzeżenie o certyfikacie. Jeśli zostanie wyświetlone ostrzeżenie, wybierz pozycję **Tak** lub **Kontynuuj**, aby nawiązać połączenie.
-6. Na pulpicie serwera przejdź do pozycji **Narzędzia administracyjne systemu Windows** > **Menedżer serwera**.
+5. Podczas procesu logowania może pojawić się ostrzeżenie o certyfikacie. Jeśli zostanie wyświetlone ostrzeżenie, wybierz opcję **Tak** lub **Kontynuuj,** aby kontynuować połączenie.
+6. Na pulpicie serwera przejdź do Programu **Windows Administrative Tools** > **Server Manager**.
 7. Otwórz program Windows PowerShell na maszynie wirtualnej VM1. Użyj poniższych poleceń, aby zainstalować serwer usług IIS i zaktualizować domyślny plik HTM.
 
     ```powershell-interactive
@@ -98,44 +98,44 @@ W tej części należy zainstalować serwer IIS na dwóch maszynach wirtualnych 
     ![Instalowanie usług IIS i dostosowywanie strony internetowej](./media/tutorial-traffic-manager-improve-website-response/deployiis.png)
 
 8. Zamknij połączenie protokołu RDP z maszyną wirtualną **myIISVMEastUS**.
-9. Powtórz kroki 1–8. Utwórz połączenie RDP z **myIISVMWestEurope** maszyny wirtualnej w grupie zasobów **myResourceGroupTM2** , aby zainstalować usługi IIS i dostosować jej domyślną stronę sieci Web.
+9. Powtórz kroki 1–8. Utwórz połączenie RDP z maszyną wirtualną **myIISVMWestEurope** w ramach grupy zasobów **myResourceGroupTM2,** aby zainstalować usługi IIS i dostosować jego domyślną stronę sieci Web.
 
 #### <a name="configure-dns-names-for-the-vms-running-iis"></a>Konfigurowanie nazw DNS dla maszyn wirtualnych z uruchomionymi usługami IIS
 
-Usługa Traffic Manager kieruje ruch użytkowników na podstawie nazwy DNS punktów końcowych usługi. W tej sekcji skonfigurujesz nazwy DNS serwerów usług IIS myIISVMEastUS i myIISVMWestEurope.
+Usługa Traffic Manager kieruje ruch użytkowników na podstawie nazwy DNS punktów końcowych usługi. W tej sekcji można skonfigurować nazwy DNS serwerów IIS myIISVMEastUS i myIISVMWestEurope.
 
 1. Wybierz pozycję **Wszystkie zasoby** w menu po lewej stronie. Z listy zasobów wybierz pozycję **myIISVMEastUS** w grupie zasobów **myResourceGroupTM1**.
 2. Na stronie **Przegląd**, w obszarze **Nazwa DNS**, wybierz opcję **Konfiguruj**.
 3. Na stronie **Konfiguracja**, w obszarze etykieta nazwy DNS, dodaj unikatową nazwę. Następnie wybierz pozycję **Zapisz**.
-4. Powtórz kroki 1-3 dla maszyny wirtualnej o nazwie **myIISVMWestEurope** w grupie zasobów **myResourceGroupTM2** .
+4. Powtórz kroki 1-3 dla maszyny Wirtualnej o nazwie **myIISVMWestEurope** w grupie zasobów **myResourceGroupTM2.**
 
 ### <a name="create-a-test-vm"></a>Tworzenie testowej maszyny wirtualnej
 
-W tej sekcji utworzysz maszynę wirtualną (*myVMEastUS* i *myVMWestEurope*) w każdym regionie świadczenia usługi Azure (**Wschodnie stany USA** i **Europa Zachodnia**). Te maszyny wirtualne będą używane do testowania, w jaki sposób Traffic Manager kieruje ruch do punktu końcowego witryny sieci Web, który ma wyższą wartość wagi.
+W tej sekcji utworzysz maszynę wirtualną *(myVMEastUS* i *myVMWestEurope)* w każdym regionie platformy Azure **(Wschodnie stany USA** i **Europa Zachodnia).** Te maszyny wirtualne będą używane do testowania sposobu, w jaki usługa Traffic Manager kieruje ruch do punktu końcowego witryny sieci Web, który ma wyższą wartość wagi.
 
-1. W lewym górnym rogu Azure Portal wybierz pozycję **Utwórz zasób** > **COMPUTE** > **systemie Windows Server 2019 Datacenter**.
+1. W lewym górnym rogu witryny Azure portal wybierz pozycję **Utwórz źródło zasobów** > **Oblicza** > **centrum danych systemu Windows Server 2019**.
 2. W obszarze **Tworzenie maszyny wirtualnej** wpisz lub wybierz następujące wartości na karcie **Podstawowe**:
 
-   - **Grupa zasobów** > **subskrypcji** : wybierz pozycję **myResourceGroupTM1**.
-   - **Szczegóły wystąpienia** > **Nazwa maszyny wirtualnej**: wpisz *myVMEastUS*.
-   - **Szczegóły wystąpienia** > **regionu**: Wybierz **Wschodnie stany USA**.
-   - **Konto administratora** > **Nazwa użytkownika**: Wprowadź wybraną nazwę użytkownika.
-   - **Konto administratora** > **hasło**: Wprowadź wybrane hasło. Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).
-   - **Reguły portów przychodzących** > **publicznych portów przychodzących**: wybierz opcję **Zezwalaj na wybrane porty**.
-   - **Reguły portów ruchu przychodzącego** > **Wybieranie portów przychodzących**: wybierz pozycję **RDP** w polu ściągania.
+   - **Grupa** > **zasobów**subskrypcji: Wybierz **myResourceGroupTM1**.
+   - **Szczegóły** > wystąpienia**Nazwa maszyny wirtualnej:** Wpisz *myVMEastUS*.
+   - **Region szczegółów** > **Region**wystąpienia: wybierz **wschodnie stany USA**.
+   - **Nazwa** > **konta**administratora: Wprowadź wybraną nazwę użytkownika.
+   - **Hasło konta** > **administratora**: Wprowadź wybrane hasło. Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).
+   - **Reguły portów** > **przychodzących Porty przychodzące**Publiczne porty : Wybierz opcję **Zezwalaj na wybrane porty**.
+   - **Reguły portów** > **przychodzących Wybierz porty przychodzące:** Wybierz **rdp** w polu ściągania.
 
-3. Wybierz kartę **Zarządzanie** lub wybierz pozycję **Dalej: dyski**, a następnie kliknij kolejno pozycje **Sieć**i **Dalej: Zarządzanie**. W obszarze **Monitorowanie** dla opcji **Diagnostyka rozruchu** ustaw wartość **Wyłączone**.
+3. Wybierz kartę **Zarządzanie** lub wybierz pozycję **Dalej: Dyski**, a następnie **dalej: Sieć**, a następnie **dalej: Zarządzanie**. W obszarze **Monitorowanie** dla opcji **Diagnostyka rozruchu** ustaw wartość **Wyłączone**.
 4. Wybierz pozycję **Przegląd + utwórz**.
 5. Przejrzyj ustawienia, a następnie kliknij przycisk **Utwórz**.  
-6. Postępuj zgodnie z instrukcjami, aby utworzyć drugą maszynę wirtualną o nazwie *myVMWestEurope*, z nazwą **grupy zasobów** *MyResourceGroupTM2*, **lokalizacją** *Europa Zachodnia*i wszystkimi innymi ustawieniami takimi jak *myVMEastUS*.
+6. Wykonaj kroki, aby utworzyć drugą maszynę wirtualną o nazwie *myVMWestEurope,* z nazwą **grupy zasobów** *myResourceGroupTM2*, **lokalizacją** *Europy Zachodniej*i wszystkimi innymi ustawieniami, takie same jak *myVMEastUS*.
 7. Proces tworzenia maszyny wirtualnej może potrwać kilka minut. Nie kontynuuj wykonywania pozostałych kroków, dopóki obie maszyny wirtualne nie zostaną utworzone.
 
 ## <a name="create-a-traffic-manager-profile"></a>Tworzenie profilu usługi Traffic Manager
 
 Utwórz profil usługi Traffic Manager, bazując na metodzie routingu **ważonego**.
 
-1. W lewej górnej części ekranu wybierz pozycję **Utwórz zasób** > **Sieć** > **Profil usługi Traffic Manager** > **Utwórz**.
-2. W bloku **Tworzenie profilu usługi Traffic Manager** wprowadź lub wybierz poniższe informacje. Zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Utwórz**.
+1. W lewym górnym rogu ekranu wybierz pozycję **Utwórz** > **profil** > Menedżera ruchu**sieciowego** > **Utwórz**.
+2. W bloku **Tworzenie profilu usługi Traffic Manager** wprowadź lub wybierz poniższe informacje. Zaakceptuj ustawienia domyślne dla innych ustawień, a następnie wybierz pozycję **Utwórz**.
 
     | Ustawienie                 | Wartość                                              |
     | ---                     | ---                                                |
@@ -149,7 +149,7 @@ Utwórz profil usługi Traffic Manager, bazując na metodzie routingu **ważoneg
 
 ## <a name="add-traffic-manager-endpoints"></a>Dodawanie punktów końcowych usługi Traffic Manager
 
-Dodaj dwie maszyny wirtualne, na których działają serwery IIS myIISVMEastUS i myIISVMWestEurope, aby skierować do nich ruch użytkownika.
+Dodaj dwie maszyny wirtualne z uruchomionymi serwerami IIS myIISVMEastUS i myIISVMWestEurope, aby kierować do nich ruch użytkowników.
 
 1. Na pasku wyszukiwania portalu wyszukaj nazwę profilu usługi Traffic Manager, który został utworzony w poprzedniej sekcji. Wybierz profil w wyświetlanych wynikach.
 2. W bloku **Profil usługi Traffic Manager** w sekcji **Ustawienia** wybierz pozycję **Punkty końcowe** > **Dodaj**.
@@ -164,7 +164,7 @@ Dodaj dwie maszyny wirtualne, na których działają serwery IIS myIISVMEastUS i
     |  Waga      | Wprowadź wartość **100**.        |
     |        |           |
 
-4. Powtórz kroki 2 i 3, aby dodać kolejny punkt końcowy o nazwie **myWestEuropeEndpoint** dla publicznego adresu IP **myIISVMWestEurope-IP**. Ten adres jest skojarzony z maszyną wirtualną serwera IIS o nazwie myIISVMWestEurope. W ustawieniu **Waga** wprowadź **25**.
+4. Powtórz kroki 2 i 3, aby dodać kolejny punkt końcowy o nazwie **myWestEuropeEndpoint** dla publicznego adresu IP **myIISVMWestEurope-ip**. Ten adres jest skojarzony z maszyną wirtualną serwera usług IIS o nazwie myIISVMWestEurope. W ustawieniu **Waga** wprowadź **25**.
 5. Po zakończeniu dodawania obu punktów końcowych będą one wyświetlane w profilu usługi Traffic Manager, ze stanem monitorowania **Online**.
 
 ## <a name="test-the-traffic-manager-profile"></a>Testowanie profilu usługi Traffic Manager
@@ -191,15 +191,15 @@ Nazwę DNS profilu usługi Traffic Manager można określić w następujący spo
 W tej sekcji zobaczysz działanie usługi Traffic Manager.
 
 1. Wybierz pozycję **Wszystkie zasoby** w menu po lewej stronie. Z listy zasobów wybierz pozycję **myVMEastUS** w grupie zasobów **myResourceGroupTM1**.
-2. Na stronie **Przegląd** wybierz pozycję **Połącz**. W polu **Połącz z maszyną wirtualną** wybierz opcję **Pobierz plik RDP**.
-3. Otwórz pobrany plik RDP. Jeśli zostanie wyświetlony monit, wybierz pozycję **Połącz**. Wprowadź nazwę użytkownika i hasło określone podczas tworzenia maszyny wirtualnej. Może być konieczne wybranie pozycji **Więcej opcji** > **Użyj innego konta**, aby określić poświadczenia wprowadzone podczas tworzenia maszyny wirtualnej.
+2. Na stronie **Przegląd** wybierz pozycję **Połącz**. W **obszarze Połącz z maszyną wirtualną**wybierz pozycję **Pobierz plik RDP**.
+3. Otwórz pobrany plik RDP. Jeśli zostanie wyświetlony monit, wybierz pozycję **Połącz**. Wprowadź nazwę użytkownika i hasło określone podczas tworzenia maszyny wirtualnej. Może być konieczne **wybranie opcji Więcej opcji** > **Użyj innego konta,** aby określić poświadczenia wprowadzone podczas tworzenia maszyny Wirtualnej.
 4. Kliknij przycisk **OK**.
-5. Podczas procesu logowania może pojawić się ostrzeżenie o certyfikacie. Jeśli zostanie wyświetlone ostrzeżenie, wybierz pozycję **Tak** lub **Kontynuuj**, aby nawiązać połączenie.
-6. W przeglądarce internetowej na maszynie wirtualnej myVMEastUS wprowadź nazwę DNS profilu usługi Traffic Manager, aby wyświetlić witrynę internetową. Nastąpi przekierowanie do witryny internetowej hostowanej na serwerze usług IIS myIISVMEastUS, ponieważ ma on przypisaną wyższą wartość wagi (**100**). MyIISVMWestEurope serwera IIS ma przypisaną dolną wartość wagi punktu końcowego wynoszącą **25**.
+5. Podczas procesu logowania może pojawić się ostrzeżenie o certyfikacie. Jeśli zostanie wyświetlone ostrzeżenie, wybierz opcję **Tak** lub **Kontynuuj,** aby kontynuować połączenie.
+6. W przeglądarce internetowej na maszynie wirtualnej myVMEastUS wprowadź nazwę DNS profilu usługi Traffic Manager, aby wyświetlić witrynę internetową. Nastąpi przekierowanie do witryny internetowej hostowanej na serwerze usług IIS myIISVMEastUS, ponieważ ma on przypisaną wyższą wartość wagi (**100**). Serwerowi IIS myIISVMWestEurope przypisano niższą wartość wagi punktu końcowego **o 25**.
 
    ![Testowanie profilu usługi Traffic Manager](./media/tutorial-traffic-manager-improve-website-response/eastus-traffic-manager-test.png)
 
-7. Powtórz kroki 1-6 myVMWestEurope na maszynie wirtualnej, aby zobaczyć ważoną odpowiedź witryny sieci Web.
+7. Powtórz kroki 1-6 na maszynie Wirtualnej myVMWestEurope, aby zobaczyć ważoną odpowiedź witryny sieci Web.
 
 ## <a name="delete-the-traffic-manager-profile"></a>Usuwanie profilu usługi Traffic Manager
 

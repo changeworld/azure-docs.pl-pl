@@ -5,15 +5,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: sample
-origin.date: 12/26/2018
-ms.date: 03/04/2019
-author: rockboyfor
-ms.author: v-yeche
+ms.date: 12/26/2018
+author: sivethe
+ms.author: sivethe
 ms.openlocfilehash: 28ee64f70cd281a2563a855fb1fca91f229ec7bd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "61330602"
 ---
 # <a name="build-an-app-using-nodejs-and-azure-cosmos-dbs-api-for-mongodb"></a>Tworzenie aplikacji przy użyciu środowiska Node.js i interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB 
@@ -40,7 +39,7 @@ Aby użyć tego przykładu, musisz:
     var MongoClient = require('mongodb').MongoClient;
     var assert = require('assert');
     var ObjectId = require('mongodb').ObjectID;
-    var url = 'mongodb://<username>:<password>@<endpoint>.documents.azure.cn:10255/?ssl=true';
+    var url = 'mongodb://<username>:<password>@<endpoint>.documents.azure.com:10255/?ssl=true';
 
     var insertDocument = function(db, callback) {
     db.collection('families').insertOne( {
@@ -63,7 +62,7 @@ Aby użyć tego przykładu, musisz:
         callback();
     });
     };
-
+    
     var findFamilies = function(db, callback) {
     var cursor =db.collection('families').find( );
     cursor.each(function(err, doc) {
@@ -75,7 +74,7 @@ Aby użyć tego przykładu, musisz:
         }
     });
     };
-
+    
     var updateFamilies = function(db, callback) {
     db.collection('families').updateOne(
         { "lastName" : "Andersen" },
@@ -90,7 +89,7 @@ Aby użyć tego przykładu, musisz:
         callback();
     });
     };
-
+    
     var removeFamilies = function(db, callback) {
     db.collection('families').deleteMany(
         { "lastName": "Andersen" },
@@ -100,7 +99,7 @@ Aby użyć tego przykładu, musisz:
         }
     );
     };
-
+    
     MongoClient.connect(url, function(err, client) {
     assert.equal(null, err);
     var db = client.db('familiesdb');
@@ -115,7 +114,7 @@ Aby użyć tego przykładu, musisz:
     });
     });
     ```
-
+    
     **Opcjonalnie**: jeśli używasz **sterownika MongoDB Node.js 2.2**, zamień następujący fragment kodu:
 
     Oryginalny kod:
@@ -135,7 +134,7 @@ Aby użyć tego przykładu, musisz:
     });
     });
     ```
-
+    
     Należy zamienić na:
 
     ```javascript
@@ -152,7 +151,7 @@ Aby użyć tego przykładu, musisz:
     });
     });
     ```
-
+    
 2. Zmodyfikuj następujące zmienne w pliku *app.js* zgodnie z ustawieniami konta (dowiedz się, jak znaleźć [parametry połączenia](connect-mongodb-account.md)):
 
     > [!IMPORTANT]
@@ -163,17 +162,15 @@ Aby użyć tego przykładu, musisz:
     > **Sterownik MongoDB Node.js 2.2** nie wymaga kodowania znaków specjalnych w haśle usługi Cosmos DB.
     >
     >
-
+   
     ```javascript
-    var url = 'mongodb://<endpoint>:<password>@<endpoint>.documents.azure.cn:10255/?ssl=true';
+    var url = 'mongodb://<endpoint>:<password>@<endpoint>.documents.azure.com:10255/?ssl=true';
     ```
-
+     
 3. Otwórz swój ulubiony terminal, uruchom polecenie **npm install mongodb --save**, następnie uruchom aplikację za pomocą polecenia **node app.js**
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się, jak [korzystać z programu Studio 3T](mongodb-mongochef.md) za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
 - Dowiedz się, jak [korzystać z programu Robo 3T](mongodb-robomongo.md) za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
 - Eksploruj [przykłady](mongodb-samples.md) bazy danych MongoDB za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
-
-<!-- Update_Description: update meta properties, wording update -->

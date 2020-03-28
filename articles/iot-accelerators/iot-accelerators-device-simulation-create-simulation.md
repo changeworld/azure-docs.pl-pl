@@ -10,17 +10,17 @@ ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: troyhop
 ms.openlocfilehash: 09a6920e0d3a50da1bdacbf2bc7a80396c885897
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "61448560"
 ---
-# <a name="tutorial-create-and-run-an-iot-device-simulation"></a>Samouczek: Tworzenie i uruchamianie symulacji urządzenia IoT
+# <a name="tutorial-create-and-run-an-iot-device-simulation"></a>Samouczek: tworzenie i uruchamianie symulacji urządzenia usługi IoT
 
 W tym samouczku użyjesz symulacji urządzenia do utworzenia i uruchomienia nowej symulacji usługi IoT, która będzie korzystać z co najmniej jednego urządzenia symulowanego.
 
-W tym samouczku zostaną wykonane następujące czynności:
+W tym samouczku zostały wykonane następujące czynności:
 
 >[!div class="checklist"]
 > * Wyświetlanie wszystkich symulacji aktywnych i historycznych
@@ -28,7 +28,7 @@ W tym samouczku zostaną wykonane następujące czynności:
 > * Wyświetlanie metryk symulacji
 > * Zatrzymywanie symulacji
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -72,7 +72,7 @@ Aby zakończyć symulację, kliknij pozycję **Zatrzymaj symulację** na pasku a
 
 ![Zatrzymywanie symulacji](media/iot-accelerators-device-simulation-create-simulation/simulationdetails.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono sposób tworzenia, uruchamiania i zatrzymywania symulacji. Pokazano również, jak wyświetlać szczegóły symulacji. Aby dowiedzieć się więcej na temat sposobu uruchamiania symulacji, przejdź do następnego samouczka:
 

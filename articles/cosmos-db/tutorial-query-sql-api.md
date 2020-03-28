@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: jak wykonywać zapytania przy użyciu języka SQL w Azure Cosmos DB?'
-description: 'Samouczek: informacje na temat wykonywania zapytań za pomocą zapytań SQL w Azure Cosmos DB przy użyciu zapytania THW plac zabaw'
+title: 'Samouczek: Jak zapytać za pomocą języka SQL w usłudze Azure Cosmos DB?'
+description: 'Samouczek: Dowiedz się, jak wyszukiwać kwerendy SQL w usłudze Azure Cosmos DB przy użyciu programu zabaw dla dzieci z kwerendami thw'
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 7e83ed0f9e635ed24b7e6115eeaaa9057d422c69
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74870075"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Samouczek: Wykonywanie zapytań w usłudze Azure Cosmos DB przy użyciu interfejsu API SQL
@@ -71,7 +71,7 @@ W tym samouczku założono, że masz konto usługi Azure Cosmos DB i kolekcję. 
 
 Bazując na powyższym przykładowym dokumencie dotyczącym rodziny, następujące zapytanie SQL zwraca dokumenty, dla których pole id ma wartość `WakefieldFamily`. Ponieważ jest to instrukcja `SELECT *`, dane wyjściowe zapytania są kompletnym dokumentem JSON:
 
-**Zapytanie**
+**Kwerendy**
 
     SELECT * 
     FROM Families f 
@@ -112,7 +112,7 @@ Bazując na powyższym przykładowym dokumencie dotyczącym rodziny, następują
 
 Następne zapytanie zwraca imiona wszystkich dzieci w rodzinie o identyfikatorze zgodnym z `WakefieldFamily`, uporządkowane według klasy.
 
-**Zapytanie**
+**Kwerendy**
 
     SELECT c.givenName 
     FROM Families f 

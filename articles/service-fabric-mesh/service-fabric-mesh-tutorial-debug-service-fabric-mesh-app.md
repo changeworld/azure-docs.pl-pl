@@ -1,5 +1,5 @@
 ---
-title: Debuguj aplikację sieci Web usługi Azure Service Fabric siatkę działającą lokalnie
+title: Debugowanie aplikacji sieci web usługi Azure Fabric Mesh uruchomionej lokalnie
 description: W tym samouczku zdebugujemy aplikację usługi Azure Service Fabric Mesh uruchomioną w klastrze lokalnym.
 author: dkkapur
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 10/31/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: c36d45919ae8a17026fc91f8e9040f3bb11d3eb0
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75494945"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>Samouczek: debugowanie aplikacji usługi Service Fabric Mesh w lokalnym klastrze projektowym
@@ -37,7 +37,7 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 
 Przed rozpoczęciem tego samouczka:
 
-* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem możesz [utworzyć bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 * Upewnij się, że masz [skonfigurowane środowisko projektowe](service-fabric-mesh-howto-setup-developer-environment-sdk.md) z zainstalowanym środowiskiem uruchomieniowym usługi Service Fabric, zestawem SDK, platformą Docker i programem Visual Studio 2017.
 
@@ -53,7 +53,7 @@ Aplikacja znajduje się w katalogu `src\todolistapp`.
 
 ## <a name="build-and-debug-on-your-local-cluster"></a>Kompilowanie i debugowanie w klastrze lokalnym
 
-Zaraz po załadowaniu projektu obraz platformy Docker jest automatycznie kompilowany i wdrażany w klastrze lokalnym. Ten proces może chwilę potrwać. Aby monitorować postęp w okienku **Dane wyjściowe** programu Visual Studio, wybierz opcję **Service Fabric Tools** na liście rozwijanej **Pokaż dane wyjściowe z:** .
+Zaraz po załadowaniu projektu obraz platformy Docker jest automatycznie kompilowany i wdrażany w klastrze lokalnym. Ten proces może chwilę potrwać. Aby monitorować postęp w okienku **Dane wyjściowe** programu Visual Studio, wybierz opcję **Service Fabric Tools** na liście rozwijanej **Pokaż dane wyjściowe z:**.
 
 Naciśnij klawisz **F5**, aby skompilować usługę i uruchomić ją lokalnie. W przypadku lokalnego uruchamiania i debugowania projektu w programie Visual Studio są wykonywane następujące działania:
 
@@ -71,7 +71,7 @@ Znacznie przyspiesz swoje pierwsze debugowanie (F5), postępując zgodnie z inst
 
 Obecnie występuje problem, który powoduje, że nawiązanie połączenia z usługą za pomocą wywołania `using (HttpResponseMessage response = client.GetAsync("").GetAwaiter().GetResult())` kończy się niepowodzeniem. Tak może się zdarzyć w przypadku zmiany adresu IP hosta. Aby rozwiązać ten problem:
 
-1. Usuń aplikację z klastra lokalnego (w programie Visual Studio wybierz pozycję **Kompilacja** > **Wyczyść rozwiązanie**).
+1. Usuń aplikację z lokalnego klastra (w programie Visual Studio, **Tworzenie** > **czystego rozwiązania).**
 2. Z poziomu menedżera klastra lokalnego usługi Service Fabric wybierz pozycję **Zatrzymaj klaster lokalny**, a następnie **Uruchom klaster lokalny**.
 3. Ponowne wdróż aplikację (w programie Visual Studio naciśnij klawisz **F5**).
 

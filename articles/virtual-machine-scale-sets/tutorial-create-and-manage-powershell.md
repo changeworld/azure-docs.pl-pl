@@ -1,5 +1,5 @@
 ---
-title: Samouczek — Tworzenie zestawu skalowania maszyn wirtualnych platformy Azure i zarządzanie nim
+title: Samouczek — tworzenie zestawu skalowania maszyny wirtualnej platformy Azure i zarządzanie nim
 description: Dowiedz się, jak za pomocą programu Azure PowerShell utworzyć zestaw skalowania maszyn wirtualnych oraz wykonywać niektóre typowe zadania zarządzania, takie jak uruchamianie i zatrzymywanie wystąpienia lub zmienianie pojemności zestawu skalowania.
 author: cynthn
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.date: 05/18/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 14616fcc9fd63731c50c5977c88b5030f60664ff
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76271407"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Samouczek: tworzenie zestawu skalowania maszyn wirtualnych i zarządzanie nim przy użyciu programu Azure PowerShell
@@ -26,7 +26,7 @@ Zestaw skalowania maszyn wirtualnych umożliwia wdrożenie zestawu identycznych,
 > * Ręczne skalowanie zestawu skalowania
 > * Wykonywanie typowych zadań zarządzania zestawem skalowania
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
@@ -35,7 +35,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
-Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Grupę zasobów należy utworzyć przed utworzeniem zestawu skalowania maszyn wirtualnych. Utwórz grupę zasobów za pomocą polecenia [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). W tym przykładzie grupa zasobów o nazwie *myResourceGroup* zostanie utworzona w regionie *EastUS*. 
+Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Grupę zasobów należy utworzyć przed utworzeniem zestawu skalowania maszyn wirtualnych. Utwórz grupę zasobów za pomocą polecenia [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). W tym przykładzie grupa zasobów o nazwie *myResourceGroup* jest tworzony w regionie *EastUS.* 
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName "myResourceGroup" -Location "EastUS"
@@ -93,7 +93,7 @@ Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -
 ## <a name="list-connection-information"></a>Wyświetlanie informacji o połączeniu
 Do modułu równoważenia obciążenia, który kieruje ruch do poszczególnych wystąpień maszyn wirtualnych, jest przypisany publiczny adres IP. Domyślnie do modułu równoważenia obciążenia platformy Azure, który przesyła dalej ruch połączenia zdalnego na danym porcie do poszczególnych maszyn wirtualnych, są dodawane reguły translatora adresów sieciowych (NAT). Aby nawiązać połączenie z wystąpieniami maszyn wirtualnych w zestawie skalowania, musisz utworzyć połączenie zdalne z przypisanym publicznym adresem IP za pośrednictwem określonego numeru portu.
 
-Aby wyświetlić listę portów NAT umożliwiających połączenie z wystąpieniami maszyn wirtualnych w zestawie skalowania, najpierw pobierz obiekt modułu równoważenia obciążenia za pomocą polecenia [Get-AzLoadBalancer](/powershell/module/az.network/Get-AzLoadBalancer). Następnie wyświetl reguły NAT dla ruchu przychodzącego za pomocą polecenia [Get-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/Get-AzLoadBalancerInboundNatRuleConfig):
+Aby wyświetlić listę portów NAT umożliwiających połączenie z wystąpieniami maszyn wirtualnych w zestawie skalowania, najpierw pobierz obiekt modułu równoważenia obciążenia za pomocą polecenia [Get-AzLoadBalancer](/powershell/module/az.network/Get-AzLoadBalancer). Następnie wyświetl przychodzące reguły NAT za pomocą [get-AzLoadBalancerInboundNatRuleConfig:](/powershell/module/az.network/Get-AzLoadBalancerInboundNatRuleConfig)
 
 
 ```azurepowershell-interactive
@@ -115,7 +115,7 @@ myScaleSet3389.1 Tcp             50002        3389
 myScaleSet5985.1 Tcp             51002        5985
 ```
 
-Nazwa reguły w kolumnie *Name* (Nazwa) jest zgodna z nazwą wystąpienia maszyny wirtualnej wyświetloną w poprzednim poleceniu [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm). Na przykład aby nawiązać połączenie z wystąpieniem maszyny wirtualnej *0*, użyj nazwy *myScaleSet3389.0* i portu *50001*. Aby nawiązać połączenie z wystąpieniem maszyny wirtualnej *1*, użyj wartości *myScaleSet3389.1* i portu *50002*. Aby korzystać z komunikacji zdalnej programu PowerShell, musisz połączyć się z odpowiednią regułą wystąpienia maszyny wirtualnej dotyczącą portu *TCP* *5985*.
+Nazwa reguły w kolumnie *Name* (Nazwa) jest zgodna z nazwą wystąpienia maszyny wirtualnej wyświetloną w poprzednim poleceniu [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm). Na przykład aby nawiązać połączenie z wystąpieniem maszyny wirtualnej *0*, użyj nazwy *myScaleSet3389.0* i portu *50001*. Aby nawiązać połączenie z wystąpieniem maszyny wirtualnej *1*, użyj wartości *myScaleSet3389.1* i portu *50002*. Aby korzystać z komunikacji zdalnej programu PowerShell, musisz połączyć się z odpowiednią regułą wystąpienia maszyny wirtualnej dotyczącą portu *TCP**5985*.
 
 Publiczny adres IP modułu równoważenia obciążenia możesz wyświetlić za pomocą polecenia [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress):
 
@@ -132,7 +132,7 @@ IpAddress
 52.168.121.216
 ```
 
-Utwórz połączenie zdalne z pierwszym wystąpieniem maszyny wirtualnej. Podaj swój publiczny adres IP i numer portu wymaganego wystąpienia maszyny wirtualnej, jak pokazano w poprzednich poleceniach. Po wyświetleniu monitu wprowadź poświadczenia używane podczas tworzenia zestawu skalowania (domyślnie w przykładowych poleceniach, *azureuser* i *P\@ssw0rd!* ). Jeśli korzystasz z usługi Azure Cloud Shell, wykonaj ten krok przy użyciu wiersza polecenia lokalnego programu PowerShell lub klienta pulpitu zdalnego. W poniższym przykładzie nawiązano połączenie z wystąpieniem maszyny wirtualnej *1*:
+Utwórz połączenie zdalne z pierwszym wystąpieniem maszyny wirtualnej. Podaj swój publiczny adres IP i numer portu wymaganego wystąpienia maszyny wirtualnej, jak pokazano w poprzednich poleceniach. Po wyświetleniu monitu wprowadź poświadczenia używane podczas tworzenia zestawu skalowania (domyślnie w przykładowych poleceniach, *azureuser* i *\@P ssw0rd!*). Jeśli korzystasz z usługi Azure Cloud Shell, wykonaj ten krok przy użyciu wiersza polecenia lokalnego programu PowerShell lub klienta pulpitu zdalnego. W poniższym przykładzie nawiązano połączenie z wystąpieniem maszyny wirtualnej *1*:
 
 ```powershell
 mstsc /v 52.168.121.216:50001
@@ -202,7 +202,7 @@ W poniższej tabeli przedstawiono typowe kategorie rozmiarów maszyn wirtualnych
 | [Zastosowania ogólne](../virtual-machines/windows/sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Zrównoważona moc procesora CPU w stosunku do pamięci. Opcja idealna w przypadku tworzenia i testowania, małych i średnich aplikacji oraz rozwiązań dotyczących danych.  |
 | [Optymalizacja pod kątem obliczeń](../virtual-machines/windows/sizes-compute.md)   | Fs, F             | Duża moc procesora CPU w stosunku do pamięci. Opcja dobra w przypadku aplikacji o średnim ruchu, urządzeń sieciowych i procesów wsadowych.        |
 | [Optymalizacja pod kątem pamięci](../virtual-machines/windows/sizes-memory.md)    | Esv3, Ev3, M, GS, G, DSv2, DS, Dv2, D   | Duża ilość pamięci na rdzeń. Opcja bardzo dobra w przypadku relacyjnych baz danych, średnich i dużych pamięci podręcznych oraz analizowania w pamięci.                 |
-| [Optymalizacja pod kątem magazynu](../virtual-machines/windows/sizes-storage.md)      | Ls                | Wysoka przepływność dysku i operacje we/wy. Idealne rozwiązanie w przypadku danych big data oraz baz danych SQL i NoSQL.                                                         |
+| [Optymalizacja pod kątem magazynu](../virtual-machines/windows/sizes-storage.md)      | Ls                | Wysoka przepływność dysku i duża liczba operacji we/wy. Opcja idealna w przypadku danych big data oraz baz danych SQL i NoSQL.                                                         |
 | [Procesor GPU](../virtual-machines/windows/sizes-gpu.md)          | NV, NC            | Maszyny wirtualne wyspecjalizowane pod kątem intensywnego renderowania grafiki i edytowania materiałów wideo.       |
 | [Wysoka wydajność](../virtual-machines/windows/sizes-hpc.md) | H, A8-11          | Maszyny wirtualne z najbardziej wydajnymi procesorami CPU oraz, opcjonalnie, interfejsami sieciowymi zapewniającymi wysoką przepływność (RDMA). 
 

@@ -9,19 +9,19 @@ ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: e5ba08da5c58ff486bc26f2c771dfef55452629a
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/06/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75681055"
 ---
-Wróć do okna terminalu lokalnego, Dodaj element zdalny Azure do lokalnego repozytorium git. Zastąp ciąg *\<deploymentLocalGitUrl-from-create-step>* adresem URL zdalnego repozytorium Git zapisanym w sekcji [Tworzenie aplikacji internetowej](#create-a-web-app).
+W lokalnym oknie terminala dodaj zdalną platformę Azure do lokalnego repozytorium Git. Zastąp * \<deploymentLocalGitUrl-from-create-step>* adres url pilota Git [zapisanego](#create-a-web-app)w aplikacji Tworzenie aplikacji sieci Web .
 
 ```bash
 git remote add azure <deploymentLocalGitUrl-from-create-step>
 ```
 
-Wypchnij na zdalną platformę Azure w celu wdrożenia aplikacji za pomocą następującego polecenia. Gdy program git Credential Manager poprosi o podanie poświadczeń, upewnij się, że wprowadzono poświadczenia utworzone w obszarze [Konfigurowanie użytkownika wdrożenia](/azure/app-service/containers/tutorial-python-postgresql-app#configure-a-deployment-user), a nie poświadczenia, których używasz do logowania się do Azure Portal.
+Wypchnij na zdalną platformę Azure w celu wdrożenia aplikacji za pomocą następującego polecenia. Gdy Menedżer poświadczeń Git monituje o poświadczenia, upewnij się, że wprowadzono poświadczenia utworzone w [konfigurowaniu użytkownika wdrożenia,](/azure/app-service/containers/tutorial-python-postgresql-app#configure-a-deployment-user)a nie poświadczenia używane do logowania się do witryny Azure portal.
 
 ```bash
 git push azure master

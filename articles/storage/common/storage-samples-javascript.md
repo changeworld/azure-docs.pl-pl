@@ -1,6 +1,6 @@
 ---
-title: Przykłady usługi Azure Storage korzystające z języka JavaScript | Microsoft Docs
-description: Wyświetlanie, pobieranie i uruchamianie przykładowego kodu i aplikacji dla usługi Azure Storage. Odkryj przykłady wprowadzające dla obiektów blob, kolejek, tabel i plików przy użyciu bibliotek klienta magazynu JavaScript/Node. js.
+title: Przykłady usługi Azure Storage przy użyciu języka JavaScript | Dokumenty firmy Microsoft
+description: Wyświetlanie, pobieranie i uruchamianie przykładowego kodu i aplikacji dla usługi Azure Storage. Odnajdowanie przykładów wprowadzenie do obiektów blob, kolejek, tabel i plików przy użyciu bibliotek klienta magazynu JavaScript/Node.js.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 02/19/2020
@@ -8,50 +8,50 @@ ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.openlocfilehash: 1d6b4d37a3d7c4accc3e407fb6cf841600ac1c16
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77485849"
 ---
-# <a name="azure-storage-samples-using-v12-javascript-client-libraries"></a>Przykłady usługi Azure Storage korzystające z bibliotek klienckich V12 JavaScript
+# <a name="azure-storage-samples-using-v12-javascript-client-libraries"></a>Przykłady usługi Azure Storage przy użyciu bibliotek klienckich JavaScript w wersji 12
 
-Poniższe tabele zawierają omówienie naszych repozytorium przykładów oraz scenariusze omówione w poszczególnych przykładach. Kliknij linki, aby wyświetlić odpowiedni przykładowy kod w usłudze GitHub.
+Poniższe tabele zawierają przegląd naszego repozytorium przykładów i scenariuszy omówionych w każdej próbce. Kliknij łącza, aby wyświetlić odpowiedni przykładowy kod w usłudze GitHub.
 
 > [!NOTE]
-> Te przykłady używają najnowszej biblioteki V12 JavaScript usługi Azure Storage. W przypadku starszego kodu v11 zapoznaj się z tematem [wprowadzenie z usługą Azure Blob Service w węźle Node. js](https://github.com/Azure-Samples/storage-blob-node-getting-started) w repozytorium GitHub.
+> Te przykłady używają najnowszej biblioteki JavaScript języka Azure Storage w wersji 12. W przypadku starszego kodu w wersji 11 zobacz [Wprowadzenie do usługi Azure Blob w pliku Node.js](https://github.com/Azure-Samples/storage-blob-node-getting-started) w repozytorium GitHub.
 
-## <a name="blob-samples"></a>Przykłady obiektów BLOB
+## <a name="blob-samples"></a>Przykłady obiektów blob
 
 ### <a name="authentication"></a>Uwierzytelnianie
 
 :::row:::
    :::column span="":::
-      [Uwierzytelnianie przy użyciu parametrów połączenia](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/withConnString.js#L14)
+      [Uwierzytelnianie przy użyciu ciągu połączenia](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/withConnString.js#L14)
    :::column-end:::
    :::column span="":::
-      [Uwierzytelnianie przy użyciu parametrów połączenia sygnatury dostępu współdzielonego](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/withConnString.js#L14)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="":::
-      [Uwierzytelnianie przy użyciu poświadczeń klucza współużytkowanego](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/sharedKeyCred.js#L5)
-   :::column-end:::
-   :::column span="":::
-      [Uwierzytelnianie za pomocą AnonymousCredential](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/anonymousCred.js#L18)
+      [Uwierzytelnianie przy użyciu ciągu połączenia sygnatury dostępu Współdzielonego](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/withConnString.js#L14)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Uwierzytelnianie przy użyciu Azure Active Directory](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/azureAdAuth.js#L47)
+      [Uwierzytelnij się przy użyciu poświadczeń klucza udostępnionego](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/sharedKeyCred.js#L5)
    :::column-end:::
    :::column span="":::
-      [Uwierzytelnianie przy użyciu serwera proxy](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/proxyAuth.js#L28)
+      [Uwierzytelnianie przy użyciu anonymouscredential](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/anonymousCred.js#L18)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Uwierzytelnianie za pomocą usługi Azure Active Directory](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/azureAdAuth.js#L47)
+   :::column-end:::
+   :::column span="":::
+      [Uwierzytelnij się przy użyciu serwera proxy](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/proxyAuth.js#L28)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Nawiązywanie połączenia przy użyciu potoku niestandardowego](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/customPipeline.js#L26)
+      [Łączenie za pomocą niestandardowego potoku](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/customPipeline.js#L26)
    :::column-end:::
 :::row-end:::
 
@@ -59,26 +59,26 @@ Poniższe tabele zawierają omówienie naszych repozytorium przykładów oraz sc
 
 :::row:::
    :::column span="2":::
-      [Tworzenie klienta usługi BLOB Service przy użyciu adresu URL sygnatury dostępu współdzielonego](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/advanced.js#L39)
+      [Tworzenie klienta usługi obiektów blob przy użyciu adresu URL sygnatury dostępu Współdzielonego](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/advanced.js#L39)
    :::column-end:::
 :::row-end:::
 
-### <a name="container"></a>Container
+### <a name="container"></a>Kontener
 
 :::row:::
    :::column span="":::
       [Tworzenie kontenera](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/basic.js#L53)
    :::column-end:::
    :::column span="":::
-      [Tworzenie kontenera przy użyciu poświadczeń klucza współużytkowanego](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/readingSnapshot.js#L38)
+      [Tworzenie kontenera przy użyciu poświadczeń klucza udostępnionego](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/readingSnapshot.js#L38)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Lista kontenerów](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/basic.js#L48)
+      [Wyświetlanie listy kontenerów](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/basic.js#L48)
    :::column-end:::
    :::column span="":::
-      [Wyświetlanie listy kontenerów przy użyciu iteratora](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-containers.js#L28)
+      [Lista kontenerów przy użyciu iteratora](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-containers.js#L28)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -94,47 +94,47 @@ Poniższe tabele zawierają omówienie naszych repozytorium przykładów oraz sc
 
 :::row:::
    :::column span="":::
-      [Tworzenie obiektu BLOB](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/basic.js#L60)
+      [Tworzenie obiektu blob](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/basic.js#L60)
    :::column-end:::
    :::column span="":::
-      [Wyświetl listę obiektów BLOB](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/basic.js#L67)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="":::
-      [Pobieranie obiektu BLOB](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/basic.js#L73)
-   :::column-end:::
-   :::column span="":::
-      [Wyświetlanie listy obiektów BLOB przy użyciu iteratora](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-blobs.js#L41)
+      [Wyświetlanie listy obiektów blob](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/basic.js#L67)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Wyświetl listę obiektów BLOB według strony](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-blobs.js#L66)
+      [Pobieranie obiektu blob](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/basic.js#L73)
    :::column-end:::
    :::column span="":::
-      [Wyświetl listę obiektów BLOB według hierarchii](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-blobs-hierarchy.js#L70)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="":::
-      [Wyświetlanie listy obiektów Blob bez użycia oczekiwania](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-without-await.js#L42)
-   :::column-end:::
-   :::column span="":::
-      [Tworzenie migawki obiektu BLOB](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/readingSnapshot.js#L56)
+      [Lista obiektów blob przy użyciu iteratora](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-blobs.js#L41)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Pobierz migawkę obiektu BLOB](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/readingSnapshot.js#L61)
+      [Lista obiektów blob według strony](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-blobs.js#L66)
    :::column-end:::
    :::column span="":::
-      [Równoległe przekazywanie strumienia do obiektu BLOB](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/advanced.js#L74)
+      [Lista obiektów blob według hierarchii](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-blobs-hierarchy.js#L70)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Równoległy blokowy obiekt BLOB](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/advanced.js#L99)
+      [Wyświetlanie listy obiektów blob bez użycia await](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-without-await.js#L42)
+   :::column-end:::
+   :::column span="":::
+      [Tworzenie migawki obiektu blob](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/readingSnapshot.js#L56)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Pobieranie migawki obiektu blob](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/readingSnapshot.js#L61)
+   :::column-end:::
+   :::column span="":::
+      [Równoległe przekazywanie strumienia do obiektu blob](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/advanced.js#L74)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Obiekt blob bloku pobierania równoległego](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/advanced.js#L99)
    :::column-end:::
    :::column span="":::
       [Ustawianie warstwy dostępu na obiekcie blob](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/advanced.js#L118)
@@ -145,82 +145,82 @@ Poniższe tabele zawierają omówienie naszych repozytorium przykładów oraz sc
 
 :::row:::
    :::column span="2":::
-      [Wyzwól odwracalny błąd przy użyciu klienta kontenera](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/errorsAndResponses.js#L33)
+      [Wyzwalanie nieodwracalnego błędu przy użyciu klienta kontenera](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/errorsAndResponses.js#L33)
    :::column-end:::
 :::row-end:::
 
 
-## <a name="data-lake-storage-gen2-samples"></a>Przykłady Data Lake Storage Gen2
+## <a name="data-lake-storage-gen2-samples"></a>Próbki Data Lake Storage Gen2
 
 :::row:::
    :::column span="":::
-      [Tworzenie klienta usługi Data Lake](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-datalake/samples/javascript/basic.js#L36)
+      [Create a Data Lake service client](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-datalake/samples/javascript/basic.js#L36)
    :::column-end:::
    :::column span="":::
-      [Utwórz system plików](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-datalake/samples/javascript/basic.js#L47)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="":::
-      [Wyświetl listę systemów plików](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-datalake/samples/javascript/basic.js#L42)
-   :::column-end:::
-   :::column span="":::
-      [Utwórz plik](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-datalake/samples/javascript/basic.js#L54)
+      [Tworzenie systemu plików](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-datalake/samples/javascript/basic.js#L47)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Wyświetl listę ścieżek w systemie plików](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-datalake/samples/javascript/basic.js#L63)
+      [Lista systemów plików](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-datalake/samples/javascript/basic.js#L42)
    :::column-end:::
    :::column span="":::
-      [Pobierz plik](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-datalake/samples/javascript/basic.js#L69)
+      [Tworzenie pliku](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-datalake/samples/javascript/basic.js#L54)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Wyświetlanie ścieżek w systemie plików](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-datalake/samples/javascript/basic.js#L63)
+   :::column-end:::
+   :::column span="":::
+      [Pobieranie pliku](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-datalake/samples/javascript/basic.js#L69)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Usuń system plików](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-datalake/samples/javascript/basic.js#L78)
+      [Usuwanie systemu plików](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-datalake/samples/javascript/basic.js#L78)
    :::column-end:::
 :::row-end:::
 
-## <a name="azure-files-samples"></a>Przykłady Azure Files
+## <a name="azure-files-samples"></a>Przykłady usług Azure Files
 
 ### <a name="authentication"></a>Uwierzytelnianie
 
 :::row:::
    :::column span="":::
-      [Uwierzytelnianie przy użyciu parametrów połączenia](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/withConnString.js)
+      [Uwierzytelnianie przy użyciu ciągu połączenia](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/withConnString.js)
    :::column-end:::
    :::column span="":::
-      [Uwierzytelnianie przy użyciu poświadczeń klucza współużytkowanego](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/sharedKeyCred.js)
+      [Uwierzytelnij się przy użyciu poświadczeń klucza udostępnionego](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/sharedKeyCred.js)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Uwierzytelnianie za pomocą AnonymousCredential](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/anonymousCred.js)
+      [Uwierzytelnianie przy użyciu anonymouscredential](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/anonymousCred.js)
    :::column-end:::
    :::column span="":::
-      [Nawiązywanie połączenia przy użyciu potoku niestandardowego](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/customPipeline.js)
+      [Łączenie za pomocą niestandardowego potoku](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/customPipeline.js)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Nawiązywanie połączenia przy użyciu serwera proxy](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/proxyAuth.js)
+      [Łączenie się za pomocą serwera proxy](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/proxyAuth.js)
    :::column-end:::
 :::row-end:::
 
-### <a name="share"></a>Udział
+### <a name="share"></a>Udostępnij
 
 :::row:::
    :::column span="":::
       [Tworzenie udziału](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/advanced.js#L48)
    :::column-end:::
    :::column span="":::
-      [Wyświetl listę udziałów](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-shares.js#L27)
+      [Lista udziałów](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-shares.js#L27)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Wyświetl listę udziałów według strony](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-shares.js#L51)
+      [Lista udziałów według strony](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-shares.js#L51)
    :::column-end:::
    :::column span="":::
       [Usuwanie udziału](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/advanced.js#L104)
@@ -234,12 +234,12 @@ Poniższe tabele zawierają omówienie naszych repozytorium przykładów oraz sc
       [Tworzenie katalogu](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/advanced.js#L54)
    :::column-end:::
    :::column span="":::
-      [Wyświetlanie listy plików i katalogów](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-files-and-directories.js#L56)
+      [Lista plików i katalogów](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-files-and-directories.js#L56)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Wyświetlanie listy plików i katalogów według strony](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-files-and-directories.js#L90)
+      [Lista plików i katalogów według strony](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-files-and-directories.js#L90)
    :::column-end:::
 :::row-end:::
 
@@ -250,53 +250,53 @@ Poniższe tabele zawierają omówienie naszych repozytorium przykładów oraz sc
       [Równoległe przekazywanie pliku](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/advanced.js#L65)
    :::column-end:::
    :::column span="":::
-      [Równoległe przekazywanie strumienia z możliwością odczytu](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/advanced.js#L74)
+      [Równoległe przekazywanie czytelnego strumienia](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/advanced.js#L74)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Równoległe pobieranie pliku](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/advanced.js#L93)
+      [Pobieranie równoległe pliku](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/advanced.js#L93)
    :::column-end:::
    :::column span="":::
-      [Wyświetl listę dojść do plików](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-handles.js#L43)
+      [Uchwyty plików listy](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-handles.js#L43)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Wyświetl listę dojść do plików według strony](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-handles.js#L79)
+      [Lista uchwytów plików według strony](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-handles.js#L79)
    :::column-end:::
 :::row-end:::
 
-## <a name="queue-samples"></a>Przykładowe kolejki
+## <a name="queue-samples"></a>Próbki kolejek
 
 ### <a name="authentication"></a>Uwierzytelnianie
 
 :::row:::
    :::column span="":::
-      [Uwierzytelnianie przy użyciu parametrów połączenia](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/withConnString.js)
+      [Uwierzytelnianie przy użyciu ciągu połączenia](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/withConnString.js)
    :::column-end:::
    :::column span="":::
-      [Uwierzytelnianie przy użyciu poświadczeń klucza współużytkowanego](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/sharedKeyCred.js)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="":::
-      [Uwierzytelnianie za pomocą AnonymousCredential](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/anonymousCred.js)
-   :::column-end:::
-   :::column span="":::
-      [Nawiązywanie połączenia przy użyciu potoku niestandardowego](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/customPipeline.js)
+      [Uwierzytelnij się przy użyciu poświadczeń klucza udostępnionego](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/sharedKeyCred.js)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Nawiązywanie połączenia przy użyciu serwera proxy](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/proxyAuth.js)
+      [Uwierzytelnianie przy użyciu anonymouscredential](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/anonymousCred.js)
    :::column-end:::
    :::column span="":::
-      [Uwierzytelnianie przy użyciu Azure Active Directory](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/azureAdAuth.js)
+      [Łączenie za pomocą niestandardowego potoku](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/customPipeline.js)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Łączenie się za pomocą serwera proxy](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/proxyAuth.js)
+   :::column-end:::
+   :::column span="":::
+      [Uwierzytelnianie za pomocą usługi Azure Active Directory](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/azureAdAuth.js)
    :::column-end:::
 :::row-end:::
 
-### <a name="queue-service"></a>usługa kolejki
+### <a name="queue-service"></a>Usługa kolejki
 
 :::row:::
    :::column span="2":::
@@ -308,15 +308,15 @@ Poniższe tabele zawierają omówienie naszych repozytorium przykładów oraz sc
 
 :::row:::
    :::column span="":::
-      [Utwórz nową kolejkę](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L54)
+      [Tworzenie nowej kolejki](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L54)
    :::column-end:::
    :::column span="":::
-      [Wyświetl kolejki](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/iterators.js#L27)
+      [Kolejki listy](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/iterators.js#L27)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Wyświetl kolejki według strony](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/iterators.js#L51)
+      [Lista kolejek według strony](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/iterators.js#L51)
    :::column-end:::
    :::column span="":::
       [Usuwanie kolejki](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L89)
@@ -327,7 +327,7 @@ Poniższe tabele zawierają omówienie naszych repozytorium przykładów oraz sc
 
 :::row:::
    :::column span="":::
-      [Wyślij wiadomość do kolejki](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L62)
+      [Wysyłanie wiadomości do kolejki](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L62)
    :::column-end:::
    :::column span="":::
       [Wgląd w wiadomości](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L68)
@@ -335,45 +335,45 @@ Poniższe tabele zawierają omówienie naszych repozytorium przykładów oraz sc
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Odbierz komunikaty](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L76)
+      [Odbieranie komunikatów](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L76)
    :::column-end:::
    :::column span="":::
-      [Usuń komunikaty](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L80)
+      [Usuwanie wiadomości](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L80)
    :::column-end:::
 :::row-end:::
 
-## <a name="table-samples-v11"></a>Przykłady tabeli (v11)
+## <a name="table-samples-v11"></a>Przykłady tabeli (w wersji 11)
 
 :::row:::
    :::column span="":::
-      [Jednostki partii](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L87)
+      [Encje partii](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L87)
    :::column-end:::
    :::column span="":::
-      [Utwórz tabelę](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L41)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="":::
-      [Usuń jednostkę/tabelę](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L67)
-   :::column-end:::
-   :::column span="":::
-      [Wstaw/Scal/Zamień jednostkę](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L49)
+      [Tworzenie tabeli](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L41)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Lista tabel](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L63)
+      [Usuwanie encji/tabeli](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L67)
    :::column-end:::
    :::column span="":::
-      [Jednostki zapytań](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L59)
+      [Wstawianie/scalanie/zamienianie elementu](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L49)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Tabele zapytań](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L140)
+      [Listy tabel](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L63)
    :::column-end:::
    :::column span="":::
-      [Zapytanie zakresu](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L102)
+      [Encje kwerend](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L59)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Wykonywanie zapytań dotyczących tabel](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L140)
+   :::column-end:::
+   :::column span="":::
+      [Kwerenda zakres](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L102)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -381,12 +381,12 @@ Poniższe tabele zawierają omówienie naszych repozytorium przykładów oraz sc
       [Sygnatura dostępu współdzielonego](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L87)
    :::column-end:::
    :::column span="":::
-      [Lista ACL tabel](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L255)
+      [Tabela ACL](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L255)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Reguły CORS (Cross-Origin Resource Sharing) tabeli](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L149)
+      [Reguły udostępniania zasobów między źródłami (TABLE Cross-Origin)](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L149)
    :::column-end:::
    :::column span="":::
       [Właściwości tabeli](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L188)
@@ -397,34 +397,34 @@ Poniższe tabele zawierają omówienie naszych repozytorium przykładów oraz sc
       [Statystyki tabeli](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L243)
    :::column-end:::
    :::column span="":::
-      [Aktualizuj jednostkę](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L49)
+      [Aktualizuj encję](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L49)
    :::column-end:::
 :::row-end:::
 
-## <a name="azure-code-sample-libraries"></a>Biblioteki przykładów kodu platformy Azure
+## <a name="azure-code-sample-libraries"></a>Przykładowe biblioteki kodu platformy Azure
 
-Aby wyświetlić kompletne biblioteki przykładowe języka JavaScript, przejdź do:
+Aby wyświetlić kompletne przykładowe biblioteki JavaScript, przejdź do:
 
 * [Przykłady kodu obiektów blob platformy Azure](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples/javascript)
-* [Przykłady kodu Azure Data Lake](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples/javascript)
-* [Przykłady kodu Azure Files](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-share/samples/javascript)
-* [Przykłady kodu w kolejce platformy Azure](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples/javascript)
+* [Przykłady kodu usługi Azure Data Lake](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples/javascript)
+* [Przykłady kodu usługi Azure Files](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-share/samples/javascript)
+* [Przykłady kodu kolejki platformy Azure](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples/javascript)
 
 Repozytorium GitHub można przeglądać i klonować dla każdej biblioteki.
 
-## <a name="getting-started-guides"></a>Przewodniki wprowadzające
+## <a name="getting-started-guides"></a>Przewodniki wprowadzenie
 
-Zapoznaj się z następującymi przewodnikami, jeśli szukasz instrukcji dotyczących sposobu instalacji i rozpoczęcia korzystania z bibliotek klienckich usługi Azure Storage.
+Zapoznaj się z poniższymi przewodnikami, jeśli szukasz instrukcji dotyczących instalowania bibliotek klienta usługi Azure Storage i rozpoczynania ich pracy.
 
-* [Wprowadzenie z usługą Azure Blob Service w języku JavaScript](../blobs/storage-quickstart-blobs-nodejs.md)
-* [Wprowadzenie z usługą kolejki platformy Azure w języku JavaScript](../queues/storage-quickstart-queues-nodejs.md)
-* [Wprowadzenie z usługą Azure Table Service w języku JavaScript](../../cosmos-db/table-storage-how-to-use-nodejs.md)
+* [Wprowadzenie do usługi Azure Blob w języku JavaScript](../blobs/storage-quickstart-blobs-nodejs.md)
+* [Wprowadzenie do usługi kolejkowania platformy Azure w języku JavaScript](../queues/storage-quickstart-queues-nodejs.md)
+* [Wprowadzenie do usługi tabel platformy Azure w języku JavaScript](../../cosmos-db/table-storage-how-to-use-nodejs.md)
 
 ## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać informacje na temat przykładów dla innych języków:
 
-* .NET: [przykłady usługi Azure Storage korzystające z platformy .NET](storage-samples-dotnet.md)
-* Java: [przykłady usługi Azure Storage korzystające z języka Java](storage-samples-java.md)
+* .NET: [Przykłady usługi Azure Storage przy użyciu platformy .NET](storage-samples-dotnet.md)
+* Java: [przykłady usługi Azure Storage przy użyciu języka Java](storage-samples-java.md)
 * Python: [przykłady usługi Azure Storage przy użyciu języka Python](storage-samples-python.md)
 * Wszystkie inne języki: [przykłady usługi Azure Storage](storage-samples.md)

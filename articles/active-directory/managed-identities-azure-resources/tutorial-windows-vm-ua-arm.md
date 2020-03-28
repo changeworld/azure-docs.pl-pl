@@ -1,5 +1,5 @@
 ---
-title: Samouczek`:` korzystania z tożsamości zarządzanej w celu uzyskania dostępu do Azure Resource Manager-Windows-Azure AD
+title: Samouczek Uzyskiwanie`:` dostępu do usługi Azure Resource Manager — Windows — Azure AD Za pomocą tożsamości zarządzanej
 description: Samouczek przedstawiający proces użycia przypisanej przez użytkownika tożsamości zarządzanej na maszynie wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Azure Resource Manager.
 services: active-directory
 documentationcenter: ''
@@ -16,13 +16,13 @@ ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ec9956f0c5d834633646938da19f03e5467a9f6d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75977849"
 ---
-# <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Samouczek: używanie tożsamości zarządzanej przypisanej przez użytkownika na maszynie wirtualnej z systemem Windows w celu uzyskania dostępu do Azure Resource Manager
+# <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Samouczek: uzyskiwanie dostępu do Menedżera zasobów usługi Azure Resource Manager przy użyciu tożsamości zarządzanej przypisanej przez użytkownika na maszynie Maszynę Wirtualną systemu Windows
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
@@ -43,7 +43,7 @@ Omawiane kwestie:
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-- [Zalogowanie się w witrynie Azure Portal](https://portal.azure.com)
+- [Logowanie do witryny Azure Portal](https://portal.azure.com)
 
 - [Utworzenie maszyny wirtualnej z systemem Windows](/azure/virtual-machines/windows/quick-create-portal)
 
@@ -55,17 +55,17 @@ Omawiane kwestie:
 - Uruchom polecenie `Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease`, aby zainstalować wersję wstępną modułu `Az.ManagedServiceIdentity`, który umożliwia wykonanie opisanych w tym artykule operacji na tożsamości przypisanej przez użytkownika.
 
 
-## <a name="enable"></a>Włączenie
+## <a name="enable"></a>Włączanie
 
-W przypadku scenariusza opartego na tożsamości przypisanej do użytkownika należy wykonać następujące czynności:
+W przypadku scenariusza opartego na tożsamości przypisanej przez użytkownika należy wykonać następujące kroki:
 
 - Tworzenie tożsamości
  
-- Przypisz nowo utworzoną tożsamość
+- Przypisywanie nowo utworzonej tożsamości
 
-### <a name="create-identity"></a>Utwórz tożsamość
+### <a name="create-identity"></a>Tworzenie tożsamości
 
-W tej sekcji przedstawiono sposób tworzenia tożsamości przypisanej do użytkownika. Tożsamość przypisana przez użytkownika jest tworzona jako autonomiczny zasób platformy Azure. Za pomocą polecenia [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/get-azuserassignedidentity) platforma Azure tworzy tożsamość w dzierżawie usługi Azure AD, którą można przypisać do co najmniej jednego wystąpienia usługi platformy Azure.
+W tej sekcji pokazano, jak utworzyć tożsamość przypisaną przez użytkownika. Tożsamość przypisana przez użytkownika jest tworzona jako autonomiczny zasób platformy Azure. Za pomocą polecenia [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/get-azuserassignedidentity) platforma Azure tworzy tożsamość w dzierżawie usługi Azure AD, którą można przypisać do co najmniej jednego wystąpienia usługi platformy Azure.
 
 [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -91,7 +91,7 @@ Type: Microsoft.ManagedIdentity/userAssignedIdentities
 
 ### <a name="assign-identity"></a>Przypisywanie tożsamości
 
-W tej sekcji przedstawiono sposób przypisywania tożsamości przypisanej przez użytkownika do maszyny wirtualnej z systemem Windows. Tożsamość przypisana przez użytkownika może być używana przez klientów w obrębie wielu zasobów platformy Azure. Użyj poniższych poleceń, aby przypisać tożsamość przypisaną przez użytkownika do pojedynczej maszyny wirtualnej. Użyj właściwości `Id` zwróconej w poprzednim kroku dla parametru `-IdentityID`.
+W tej sekcji pokazano, jak przypisać tożsamość przypisaną przez użytkownika do maszyny Wirtualnej systemu Windows. Tożsamość przypisana przez użytkownika może być używana przez klientów w obrębie wielu zasobów platformy Azure. Użyj poniższych poleceń, aby przypisać tożsamość przypisaną przez użytkownika do pojedynczej maszyny wirtualnej. Użyj właściwości `Id` zwróconej w poprzednim kroku dla parametru `-IdentityID`.
 
 ```azurepowershell-interactive
 $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
@@ -100,7 +100,7 @@ Update-AzVM -ResourceGroupName TestRG -VM $vm -IdentityType "UserAssigned" -Iden
 
 ## <a name="grant-access"></a>Udzielanie dostępu 
 
-W tej sekcji pokazano, jak udzielić użytkownikowi dostępu do tożsamości przypisanej do grupy zasobów w Azure Resource Manager. Tożsamości zarządzane dla zasobów platformy Azure udostępniają tożsamości, których kod może używać do żądania tokenów dostępu w celu uwierzytelniania w interfejsach API zasobów obsługujących uwierzytelnianie usługi Azure AD. W tym samouczku kod będzie uzyskiwać dostęp do interfejsu API usługi Azure Resource Manager. 
+W tej sekcji pokazano, jak udzielić dostępu tożsamości przypisanego przez użytkownika do grupy zasobów w usłudze Azure Resource Manager. Tożsamości zarządzane dla zasobów platformy Azure udostępniają tożsamości, których kod może używać do żądania tokenów dostępu w celu uwierzytelniania w interfejsach API zasobów obsługujących uwierzytelnianie usługi Azure AD. W tym samouczku kod będzie uzyskiwać dostęp do interfejsu API usługi Azure Resource Manager. 
 
 Aby kod mógł uzyskać dostęp do interfejsu API, musisz udzielić dostępu tożsamości do zasobu w usłudze Azure Resource Manager. W tym przypadku jest to grupa zasobów, w której znajduje się maszyna wirtualna. Zaktualizuj wartość `<SUBSCRIPTION ID>` zgodnie z wymaganiami środowiska.
 
@@ -129,13 +129,13 @@ CanDelegate: False
 
 W pozostałej części tego samouczka będziemy pracować z poziomu wcześniej utworzonej maszyny wirtualnej.
 
-1. Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com)
+1. Zaloguj się do witryny Azure portal at[https://portal.azure.com](https://portal.azure.com)
 
 2. W portalu przejdź do pozycji **Maszyny wirtualne**, a następnie przejdź do maszyny wirtualnej z systemem Windows i w pozycji **Przegląd** kliknij przycisk **Połącz**.
 
 3. Wprowadź **nazwę użytkownika** i **hasło** użyte podczas tworzenia maszyny wirtualnej z systemem Windows.
 
-4. Teraz, po utworzeniu **połączenia pulpitu zdalnego** z maszyną wirtualną, otwórz program **PowerShell** w sesji zdalnej.
+4. Teraz, po **utworzeniu połączenia pulpitu zdalnego** z maszyną wirtualną, otwórz program **PowerShell** w sesji zdalnej.
 
 5. Używając polecenia `Invoke-WebRequest` programu PowerShell, wyślij żądanie do lokalnego punktu końcowego tożsamości zarządzanych dla zasobów platformy Azure, aby uzyskać token dostępu na potrzeby usługi Azure Resource Manager.  Wartość `client_id` jest wartością zwracaną podczas tworzenia tożsamości zarządzanej przypisanej przez użytkownika.
 
@@ -160,7 +160,7 @@ Odpowiedź zawiera informacje o określonej grupie zasobów, podobne do poniższ
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób tworzenia tożsamości przypisanej przez użytkownika i dołączenia jej do maszyny wirtualnej platformy Azure w celu uzyskania dostępu do interfejsu API Azure Resource Manager.  Aby dowiedzieć się więcej o usłudze Azure Resource Manager, zobacz:
+W tym samouczku dowiesz się, jak utworzyć tożsamość przypisaną przez użytkownika i dołączyć ją do maszyny wirtualnej platformy Azure, aby uzyskać dostęp do interfejsu API usługi Azure Resource Manager.  Aby dowiedzieć się więcej o usłudze Azure Resource Manager, zobacz:
 
 > [!div class="nextstepaction"]
 >[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)

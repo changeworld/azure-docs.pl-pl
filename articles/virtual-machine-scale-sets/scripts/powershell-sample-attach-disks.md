@@ -1,6 +1,6 @@
 ---
-title: Przykłady Azure PowerShell — dołączanie i używanie dysków danych
-description: Ten skrypt tworzy zestaw skalowania maszyn wirtualnych platformy Azure i dołącza i przygotowuje dyski danych przy użyciu programu PowerShell.
+title: Przykłady programu Azure PowerShell — dołączanie i używanie dysków z danymi
+description: Ten skrypt tworzy zestaw skalowania maszyny wirtualnej platformy Azure oraz dołącza i przygotowuje dyski danych przy użyciu programu PowerShell.
 author: cynthn
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
@@ -9,10 +9,10 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: ea18b6d2271d56d9a2287b92678ef8bfcab891a5
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76279126"
 ---
 # <a name="attach-and-use-data-disks-with-a-virtual-machine-scale-set-with-powershell"></a>Dołączanie dysków danych z zestawem skalowania maszyn wirtualnych za pomocą programu PowerShell i ich używanie

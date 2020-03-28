@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: philmea
 ms.openlocfilehash: eaca93ac8a4e8c660be9618aefb27921a4e0a2eb
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77565582"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>Samouczek: zarządzanie połączonymi urządzeniami w trybie zbiorczym
@@ -21,7 +21,7 @@ W tym samouczku użyjesz akceleratora rozwiązania do monitorowania zdalnego, ab
 
 Jako operator w firmie Contoso musisz skonfigurować grupę urządzeń przy użyciu nowej wersji oprogramowania układowego. Wolisz uniknąć konieczności aktualizowania oprogramowania układowego na każdym urządzeniu osobno. Aby zaktualizować oprogramowanie układowe w grupie urządzeń, możesz skorzystać z grup urządzeń i funkcji automatycznego zarządzania urządzeniami w akceleratorze rozwiązania do monitorowania zdalnego. Każde urządzenia dodawane do grupy urządzeń otrzyma najnowsze oprogramowanie układowe, gdy tylko będzie online.
 
-W tym samouczku zostaną wykonane następujące czynności:
+W tym samouczku zostały wykonane następujące czynności:
 
 >[!div class="checklist"]
 > * Tworzenie grupy urządzeń
@@ -31,7 +31,7 @@ W tym samouczku zostaną wykonane następujące czynności:
 > * Wdrażanie konfiguracji na urządzeniach z grupy urządzeń
 > * Monitorowanie wdrożenia
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
 <!--
 If this is going to be a tutorial - we need to split this include into two so that we can accommodate the additional prerequisites:
@@ -73,7 +73,7 @@ Aby oprogramowanie układowe było automatycznie aktualizowane w grupie urządze
 
 1. Na stronie **Urządzenia** wybierz wszystkie urządzenia **IoT DevKit**, które zostały połączone z akceleratorem rozwiązań. Następnie kliknij pozycję **Zadania**.
 
-1. W panelu **zadania** wybierz pozycję **Tagi**, Ustaw nazwę zadania na **AddDevKitTag**, a następnie Dodaj tag tekstowy o nazwie **IsDevKitDevice** z wartością **Y**. Następnie kliknij przycisk **Zastosuj**.
+1. W panelu **Zadania** wybierz **pozycję Znaczniki**, ustaw nazwę zadania na **AddDevKitTag**, a następnie dodaj znacznik tekstowy o nazwie **IsDevKitDevice** o wartości **Y**. Następnie kliknij przycisk **Zastosuj**.
 
 1. Teraz możesz użyć wartości tagów do utworzenia grupy urządzeń. Na stronie **Urządzenia** kliknij pozycję **Zarządzaj grupami urządzeń**.
 
@@ -228,7 +228,7 @@ W tej sekcji utworzysz i wykonasz wdrożenie, które zastosuje konfigurację urz
 
     |Opcja|Wartość|
     |---|---|
-    |Name (Nazwa)|Wdrażanie aktualizacji oprogramowania układowego|
+    |Nazwa|Wdrażanie aktualizacji oprogramowania układowego|
     |Typ pakietu|Konfiguracja urządzenia|
     |Typ konfiguracji|Oprogramowanie układowe|
     |Pakiet|firmware-update.json|

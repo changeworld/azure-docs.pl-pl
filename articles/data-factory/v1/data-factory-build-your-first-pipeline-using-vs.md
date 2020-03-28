@@ -13,19 +13,19 @@ ms.topic: tutorial
 ms.custom: vs-azure
 ms.date: 01/22/2018
 ms.openlocfilehash: eb9c21bf1972304da688586da9ccabe5063fa112
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75438968"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>Samouczek: Tworzenie fabryki danych za pomocą programu Visual Studio
 > [!div class="op_single_selector" title="Tools/SDKs"]
 > * [Przegląd i wymagania wstępne](data-factory-build-your-first-pipeline.md)
-> * [Program Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
-> * [Program PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
+> * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
+> * [Powershell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Szablon usługi Resource Manager](data-factory-build-your-first-pipeline-using-arm.md)
-> * [Interfejs API REST](data-factory-build-your-first-pipeline-using-rest-api.md)
+> * [INTERFEJS API ODPOCZYNKU](data-factory-build-your-first-pipeline-using-rest-api.md)
 
 
 > [!NOTE]
@@ -65,7 +65,7 @@ Poniżej przedstawiono kroki do wykonania w ramach tego przewodnika:
 3. Na komputerze muszą być zainstalowane następujące elementy:
    * Visual Studio 2013 lub Visual Studio 2015
    * Pobierz zestaw Azure SDK dla programu Visual Studio 2013 lub Visual Studio 2015. Przejdź do [strony plików do pobrania Azure](https://azure.microsoft.com/downloads/) i kliknij pozycję **VS 2013** lub **VS 2015** w sekcji **.NET**.
-   * Pobierz najnowszą wtyczkę usługi Azure Data Factory dla programu Visual Studio: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) lub [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Możesz także zaktualizować wtyczkę, wykonując następujące czynności: w menu kliknij kolejno opcje **Narzędzia** -> **Rozszerzenia i aktualizacje** -> **Online** -> **Galeria Visual Studio** -> **Narzędzia usługi Fabryka danych Microsoft Azure dla programu Visual Studio** -> **Aktualizuj**.
+   * Pobierz najnowszą wtyczkę usługi Azure Data Factory dla programu Visual Studio: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) lub [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Wtyczkę można również zaktualizować, wykonując następujące czynności: W menu kliknij polecenie Rozszerzenia **narzędzi** -> **i aktualizacje** -> **w** -> **galerii** -> online Programu Visual Studio Narzędzia**fabryczne dla programu Visual Studio.** -> **Update**
 
 Teraz utworzymy fabrykę danych Azure przy użyciu programu Visual Studio.
 
@@ -133,7 +133,7 @@ Za pomocą połączonej usługi HDInsight na żądanie klaster usługi HDInsight
     Więcej informacji na temat właściwości kodu JSON znajduje się w artykule [Compute linked services](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) (Połączone usługi na potrzeby obliczeń). 
 4. Zapisz plik **HDInsightOnDemandLinkedService1.json**.
 
-### <a name="create-datasets"></a>Utwórz zestawy danych
+### <a name="create-datasets"></a>Tworzenie zestawów danych
 W tym kroku opisano tworzenie zestawów danych do reprezentowania danych wejściowych i wyjściowych na potrzeby przetwarzania przy użyciu programu Hive. Te zestawy danych dotyczą elementu **AzureStorageLinkedService1** utworzonego wcześniej w ramach tego samouczka. Połączona usługa wskazuje konto usługi Azure Storage, a zestawy danych określają kontener, folder i nazwę pliku w magazynie, w którym przechowywane są dane wejściowe i wyjściowe.   
 
 #### <a name="create-input-dataset"></a>Tworzenie wejściowego zestawu danych
@@ -182,7 +182,7 @@ W tym kroku opisano tworzenie zestawów danych do reprezentowania danych wejści
 #### <a name="create-output-dataset"></a>Tworzenie wyjściowego zestawu danych
 Teraz utworzysz wyjściowy zestaw danych do reprezentowania danych wyjściowych przechowywanych w usłudze Azure Blob Storage.
 
-1. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy pozycję **Tabele**, wskaż polecenie **Dodaj** i kliknij pozycję **Nowy element**.
+1. W **Eksploratorze rozwiązań**kliknij prawym przyciskiem myszy **tabele**, wskaż polecenie **Dodaj**i kliknij polecenie **Nowy element**.
 2. Wybierz pozycję **Obiekt blob platformy Azure** z listy, zmień nazwę pliku na **OutputDataset.json** i kliknij przycisk **Dodaj**.
 3. Zastąp kod **JSON** w edytorze następującym kodem JSON:
     
@@ -286,7 +286,7 @@ Do tej pory utworzono połączoną usługę Azure Storage oraz wejściowy i wyj�
 
 ### <a name="add-partitionweblogshql-and-inputlog-as-a-dependency"></a>Dodawanie plików partitionweblogs.hql i input.log jako zależności
 1. Kliknij prawym przyciskiem myszy pozycję **Zależności** w oknie **Eksplorator rozwiązań**, wskaż polecenie **Dodaj** i kliknij pozycję **Istniejący element**.  
-2. Przejdź do folderu **C:\ADFGettingStarted** i wybierz pliki **partitionweblogs.hql** **input.log**, a następnie kliknij przycisk **Dodaj**. Te dwa pliki zostały utworzone w ramach wymagań wstępnych z części [Omówienie samouczka](data-factory-build-your-first-pipeline.md).
+2. Przejdź do folderu **C:\ADFGettingStarted** i wybierz pliki **partitionweblogs.hql****input.log**, a następnie kliknij przycisk **Dodaj**. Te dwa pliki zostały utworzone w ramach wymagań wstępnych z części [Omówienie samouczka](data-factory-build-your-first-pipeline.md).
 
 Podczas publikowania rozwiązania w następnym kroku plik **partitionweblogs.hql** zostanie przekazany do folderu **script** w kontenerze obiektów blob `adfgetstarted`.   
 
@@ -298,7 +298,7 @@ W tym kroku opublikujesz jednostki usługi Data Factory (połączone usługi, ze
 3. Powinno zostać wyświetlone następujące okno dialogowe:
 
    ![Okno dialogowe publikowania](./media/data-factory-build-your-first-pipeline-using-vs/publish.png)
-4. Na stronie **konfigurowania fabryki danych** wykonaj następujące czynności:
+4. Na stronie **Konfigurowanie fabryki danych** wykonaj następujące czynności:
 
     ![Publikowanie — ustawienia nowej fabryki danych](media/data-factory-build-your-first-pipeline-using-vs/publish-new-data-factory.png)
 
@@ -323,7 +323,7 @@ W tym kroku opublikujesz jednostki usługi Data Factory (połączone usługi, ze
 
 Ważne rzeczy, na które należy zwrócić uwagę:
 
-- Jeśli zostanie wyświetlony komunikat o błędzie **Subskrypcja nie jest zarejestrowana w celu używania przestrzeni nazw Microsoft.DataFactory**, wykonaj jedną z następujących czynności i spróbuj opublikować ponownie:
+- Jeśli zostanie wyświetlony błąd: **Ta subskrypcja nie jest zarejestrowana do używania obszaru nazw Microsoft.DataFactory,** wykonaj jedną z następujących czynności i spróbuj ponownie opublikować:
     - W programie Azure PowerShell uruchom następujące polecenie, aby zarejestrować dostawcę usługi Fabryka danych.
         ```powershell   
         Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
@@ -368,13 +368,13 @@ W tym kroku będziesz monitorować potok przy użyciu widoku diagramu fabryki da
 7. Kliknij przycisk **X**, aby zamknąć blok **AzureBlobInput**.
 8. Na stronie **Widok diagramu** kliknij dwukrotnie zestaw danych **AzureBlobOutput**. Zostanie wyświetlony wycinek, który jest obecnie przetwarzany.
 
-   ![Zestaw danych](./media/data-factory-build-your-first-pipeline-using-vs/dataset-blade.png)
+   ![Dataset](./media/data-factory-build-your-first-pipeline-using-vs/dataset-blade.png)
 9. Po zakończeniu przetwarzania wycinek będzie mieć stan **Gotowe**.
 
    > [!IMPORTANT]
    > Tworzenie klastra usługi HDInsight na żądanie zwykle trwa trochę czasu (około 20 minut). Dlatego należy oczekiwać, że przetworzenie wycinka przez potok zajmie **około 30 minut**.  
    
-    ![Zestaw danych](./media/data-factory-build-your-first-pipeline-using-vs/dataset-slice-ready.png)    
+    ![Dataset](./media/data-factory-build-your-first-pipeline-using-vs/dataset-slice-ready.png)    
 10. Gdy wycinek będzie w stanie **Gotowe**, sprawdź folder `partitioneddata` w kontenerze `adfgetstarted` w magazynie obiektów blob pod kątem danych wyjściowych.  
 
     ![Dane wyjściowe](./media/data-factory-build-your-first-pipeline-using-vs/three-ouptut-files.png)
@@ -548,7 +548,7 @@ Przekazywanie poufnych danych (na przykład parametrów połączeń) do repozyto
 ## <a name="summary"></a>Podsumowanie
 W tym samouczku opisano tworzenie fabryki danych Azure do przetwarzania danych przez uruchomienie skryptu programu Hive w klastrze platformy Hadoop w usłudze HDInsight. Użyto Edytora fabryki danych w witrynie Azure Portal, aby:  
 
-1. Utworzyć **fabrykę danych** Azure.
+1. Tworzenie **fabryki danych** Azure.
 2. Utworzyć dwie **połączone usługi**:
    1. Połączoną usługę **Azure Storage** w celu połączenia magazynu obiektów blob Azure, w którym przechowywane są pliki wejściowe/wyjściowe, z fabryką danych.
    2. Połączoną usługę **Azure HDInsight** na żądanie w celu połączenia klastra platformy Hadoop w usłudze HDInsight na żądanie z fabryką danych. Usługa Fabryka danych Azure tworzy klaster just in time platformy Hadoop w usłudze HDInsight, aby przetwarzać dane wejściowe i generować dane wyjściowe.
@@ -556,7 +556,7 @@ W tym samouczku opisano tworzenie fabryki danych Azure do przetwarzania danych p
 4. Utworzyć **potok** za pomocą działania **programu Hive w usłudze HDInsight**.  
 
 ## <a name="next-steps"></a>Następne kroki
-W tym artykule opisano tworzenie potoku za pomocą działania przekształcenia (działanie usługi HDInsight), które uruchamia skrypt programu Hive w klastrze usługi HDInsight na żądanie. Instrukcje dotyczące korzystania z działania kopiowania w celu kopiowania danych z magazynu obiektów blob Azure do usług SQL Azure znajdują się w artykule [Tutorial: Copy data from an Azure blob to Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) (Samouczek: kopiowanie danych z magazynu obiektów blob Azure do usług SQL Azure).
+W tym artykule opisano tworzenie potoku za pomocą działania przekształcenia (działanie usługi HDInsight), które uruchamia skrypt programu Hive w klastrze usługi HDInsight na żądanie. Aby zobaczyć, jak używać działania kopiowania do kopiowania danych z obiektu Blob platformy Azure do usługi Azure SQL, zobacz [Samouczek: Kopiowanie danych z obiektu blob platformy Azure do usługi Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 Dwa działania można połączyć w łańcuch (uruchomić jedno działanie po drugim), ustawiając wyjściowy zestaw danych jednego działania jako zestaw wejściowy drugiego. Szczegółowe informacje znajdują się w artykule [Scheduling and execution in Data Factory](data-factory-scheduling-and-execution.md) (Planowanie i wykonywanie w usłudze Data Factory). 
 

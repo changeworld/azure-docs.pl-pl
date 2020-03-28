@@ -8,22 +8,22 @@ ms.date: 09/14/2017
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: 2ea8a5428c1fabdfda4f2298c0559792537df481
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78273986"
 ---
 # <a name="deprecated-scale-kubernetes-pods-and-kubernetes-infrastructure"></a>(PRZESTARZAŁE) Skalowanie zasobników i infrastruktury rozwiązania Kubernetes
 
 > [!TIP]
-> Aby uzyskać zaktualizowaną wersję tego samouczka korzystającego z usługi Azure Kubernetes, zobacz [Samouczek: skalowanie aplikacji w usłudze Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-scale.md).
+> Aby zapoznać się ze zaktualizowaną wersją tego samouczka korzystającego z usługi Azure Kubernetes, zobacz [Samouczek: Skalowanie aplikacji w usłudze Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-scale.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Jeśli wykonujesz kolejno zadania z samouczków, masz już działający klaster Kubernetes w usłudze Azure Container Service z wdrożoną aplikacją do głosowania platformy Azure. 
 
-Ta część samouczka, piąta z siedmiu, obejmuje skalowanie w poziomie zasobników w tej aplikacji oraz skalowanie automatyczne. Dowiesz się również, jak, skalując liczbę węzłów agenta maszyny wirtualnej platformy Azure, zmieniać możliwości hostowania obciążeń w klastrze. Wykonasz następujące zadania:
+Ta część samouczka, piąta z siedmiu, obejmuje skalowanie w poziomie zasobników w tej aplikacji oraz skalowanie automatyczne. Dowiesz się również, jak, skalując liczbę węzłów agenta maszyny wirtualnej platformy Azure, zmieniać możliwości hostowania obciążeń w klastrze. Wykonano następujące zadania:
 
 > [!div class="checklist"]
 > * Ręczne skalowanie zasobników Kubernetes
@@ -42,7 +42,7 @@ Jeśli te kroki nie zostały wykonane, a chcesz skorzystać z tej części samou
 
 Poprzednio wdrożono fronton aplikacji do głosowania platformy Azure oraz wystąpienie pamięci podręcznej Redis — każdy z tych elementów został wdrożony z jedną repliką. Aby to zweryfikować, uruchom polecenie [kubectl get](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get).
 
-Przejdź do [https://shell.azure.com](https://shell.azure.com) , aby otworzyć Cloud Shell w przeglądarce.
+Przejdź [https://shell.azure.com](https://shell.azure.com) do, aby otworzyć Cloud Shell w przeglądarce.
 
 ```console
 kubectl get pods
@@ -82,7 +82,7 @@ azure-vote-front-3309479140-qphz8   1/1       Running   0          3m
 
 ## <a name="autoscale-pods"></a>Automatyczne skalowanie zasobników
 
-Rozwiązanie Kubernetes obsługuje [automatyczne skalowanie zasobników w poziomie](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/), umożliwiające dostosowywanie liczby zasobników we wdrożeniu do użycia procesora CPU lub innych wybranych metryk. 
+Rozwiązanie Kubernetes obsługuje [automatyczne skalowanie zasobników w poziomie](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/), umożliwiające dostosowywanie liczby zasobników we wdrożeniu do użycia procesora lub innych wybranych metryk. 
 
 Aby móc korzystać ze skalowania automatycznego, należy zdefiniować wymagania i limity użycia procesora CPU dla zasobników. We wdrożeniu aplikacji `azure-vote-front` kontener frontonu wymaga 0,25 CPU, a limit wynosi 0,5 CPU. Ustawienia są następujące:
 

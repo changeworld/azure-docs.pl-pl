@@ -1,17 +1,17 @@
 ---
-title: Samouczek — wdrażanie aplikacji w zestawach skalowania maszyn wirtualnych na platformie Azure przy użyciu rozwiązania ansible
-description: Dowiedz się, jak używać rozwiązania ansible do konfigurowania zestawów skalowania maszyn wirtualnych platformy Azure i wdrażania aplikacji w zestawie skalowania
+title: Samouczek — wdrażanie aplikacji do zestawów skalowania maszyny wirtualnej na platformie Azure przy użyciu ansible
+description: Dowiedz się, jak skonfigurować zestawy skalowania maszyny wirtualnej platformy Azure i wdrożyć aplikację w zestawie skalowania
 keywords: ansible, azure, devops, bash, playbook, virtual machine, virtual machine scale set, vmss
 ms.topic: tutorial
 ms.date: 01/13/2020
 ms.openlocfilehash: d638ae3f0c33734b42ef5456772fcd2bc62e35a4
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75940861"
 ---
-# <a name="tutorial-deploy-apps-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Samouczek: wdrażanie aplikacji w zestawach skalowania maszyn wirtualnych na platformie Azure przy użyciu rozwiązania ansible
+# <a name="tutorial-deploy-apps-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Samouczek: Wdrażanie aplikacji do zestawów skalowania maszyny wirtualnej na platformie Azure przy użyciu ansible
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
 
@@ -22,22 +22,22 @@ ms.locfileid: "75940861"
 > [!div class="checklist"]
 >
 > * Pobieranie informacji o hoście dla grupy maszyn wirtualnych platformy Azure
-> * Klonowanie i kompilowanie przykładowej aplikacji
-> * Instalowanie środowiska JRE (Java Runtime Environment) na zestawie skalowania
-> * Wdrażanie aplikacji Java w zestawie skalowania
+> * Klonowanie i tworzenie przykładowej aplikacji
+> * Instalowanie środowiska JRE (Java Runtime Environment) w zestawie skalowania
+> * Wdrażanie aplikacji Java do zestawu skalowania
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)] 
 [!INCLUDE [ansible-prereqs-vm-scale-set.md](../../includes/ansible-prereqs-vm-scale-set.md)]
-- **Usługa git** - [git](https://git-scm.com) jest używana do pobrania przykładu w języku Java używanego w tym samouczku.
+- **git** - [git](https://git-scm.com) służy do pobierania próbki Java używane w tym poradniku.
 - **Java SE Development Kit (JDK)** — zestaw [JDK](https://aka.ms/azure-jdks) służy do utworzenia przykładowego projektu w języku Java.
-- Platforma **Apache Maven** - [Apache Maven](https://maven.apache.org/download.cgi) jest używana do kompilowania przykładowego projektu Java.
+- **Apache Maven** - [Apache Maven](https://maven.apache.org/download.cgi) jest używany do tworzenia przykładowego projektu Java.
 
 ## <a name="get-host-information"></a>Pobieranie informacji o hoście
 
-Kod element PlayBook w tej sekcji pobiera informacje o hoście dla grupy maszyn wirtualnych. Kod pobiera publiczne adresy IP i moduł równoważenia obciążenia w ramach określonej grupy zasobów i tworzy grupę hostów o nazwie `scalesethosts` w spisie.
+Kod podręcznika w tej sekcji pobiera informacje o hoście dla grupy maszyn wirtualnych. Kod pobiera publiczne adresy IP i moduł równoważenia obciążenia `scalesethosts` w określonej grupie zasobów i tworzy grupę hostów o nazwie w magazynie.
 
 Zapisz następujący przykładowy podręcznik jako `get-hosts-tasks.yml`:
 
@@ -67,7 +67,7 @@ Zapisz następujący przykładowy podręcznik jako `get-hosts-tasks.yml`:
 
 ## <a name="prepare-an-application-for-deployment"></a>Przygotowywanie aplikacji do wdrożenia
 
-Kod element PlayBook w tej sekcji używa `git` do klonowania przykładowego projektu Java z usługi GitHub i kompilowania projektu. 
+Kod podręcznika w tej `git` sekcji używa do klonowania przykładowego projektu Java z gitHub i tworzy projekt. 
 
 Zapisz następujący podręcznik jako `app.yml`:
 
@@ -93,7 +93,7 @@ Uruchom przykładowy podręcznik rozwiązania Ansible za pomocą następującego
   ansible-playbook app.yml
   ```
 
-Po uruchomieniu element PlayBook są wyświetlane dane wyjściowe podobne do następujących:
+Po uruchomieniu podręcznika zobaczysz dane wyjściowe podobne do następujących wyników:
 
   ```Output
   PLAY [localhost] 
@@ -112,17 +112,17 @@ Po uruchomieniu element PlayBook są wyświetlane dane wyjściowe podobne do nas
 
   ```
 
-## <a name="deploy-the-application-to-a-scale-set"></a>Wdrażanie aplikacji w zestawie skalowania
+## <a name="deploy-the-application-to-a-scale-set"></a>Wdrażanie aplikacji do zestawu skalowania
 
-Kod element PlayBook w tej sekcji jest używany do:
+Kod podręcznika w tej sekcji służy do:
 
-* Zainstaluj środowisko JRE dla grupy hostów o nazwie `saclesethosts`
-* Wdróż aplikację Java w grupie hostów o nazwie `saclesethosts`
+* Instalowanie środowiska JRE w grupie hostów o nazwie`saclesethosts`
+* Wdrażanie aplikacji Java w grupie hostów o nazwie`saclesethosts`
 
-Istnieją dwa sposoby uzyskania element PlayBook przykładu:
+Przykładowy podręcznik można uzyskać na dwa sposoby:
 
-* [Pobierz element PlayBook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-setup-deploy.yml) i Zapisz go w `vmss-setup-deploy.yml`.
-* Utwórz nowy plik o nazwie `vmss-setup-deploy.yml` i skopiuj do niego następującą zawartość:
+* [Pobierz podręcznik](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-setup-deploy.yml) i zapisz `vmss-setup-deploy.yml`go w pliku .
+* Utwórz nowy `vmss-setup-deploy.yml` plik o nazwie i skopiuj do niego następującą zawartość:
 
 ```yml
 - hosts: localhost
@@ -161,24 +161,24 @@ Istnieją dwa sposoby uzyskania element PlayBook przykładu:
     poll: 0
 ```
 
-Przed uruchomieniem element PlayBook zapoznaj się z następującymi uwagami:
+Przed uruchomieniem podręcznika zapoznaj się z następującymi uwagami:
 
-* W sekcji `vars` Zastąp symbol zastępczy `{{ admin_password }}` własnym hasłem.
-* Aby użyć typu połączenia SSH z hasłami, zainstaluj program sshpass:
+* W `vars` sekcji zastąp symbol zastępczy `{{ admin_password }}` własnym hasłem.
+* Aby użyć typu połączenia ssh z hasłami, zainstaluj program sshpass:
 
-    Ubuntu:
+     Ubuntu:
 
     ```bash
     apt-get install sshpass
     ```
 
-    CentOS:
+    Centos:
 
     ```bash
     yum install sshpass
     ```
 
-* W niektórych środowiskach może zostać wyświetlony błąd dotyczący użycia hasła SSH zamiast klucza. W przypadku otrzymania tego błędu można wyłączyć sprawdzanie klucza hosta, dodając następujący wiersz do `/etc/ansible/ansible.cfg` lub `~/.ansible.cfg`:
+* W niektórych środowiskach może pojawić się błąd dotyczący używania hasła SSH zamiast klucza. Jeśli ten błąd zostanie wyświetlony, możesz wyłączyć sprawdzanie klucza `/etc/ansible/ansible.cfg` hosta, dodając następujący wiersz do lub: `~/.ansible.cfg`
 
     ```bash
     [defaults]
@@ -191,7 +191,7 @@ Uruchom podręcznik za pomocą następującego polecenia:
   ansible-playbook vmss-setup-deploy.yml
   ```
 
-Wyjście z uruchamiania polecenia rozwiązania ansible-element PlayBook wskazuje, że przykładowa aplikacja Java została zainstalowana do grupy hostów zestawu skalowania:
+Dane wyjściowe z uruchomienia polecenia ansible-playbook wskazują, że przykładowa aplikacja Java została zainstalowana w grupie hostów zestawu skalowania:
 
   ```Output
   PLAY [localhost]
@@ -230,11 +230,11 @@ Wyjście z uruchamiania polecenia rozwiązania ansible-element PlayBook wskazuje
 
 ## <a name="verify-the-results"></a>Weryfikowanie wyników
 
-Sprawdź wyniki pracy, przechodząc do adresu URL modułu równoważenia obciążenia dla zestawu skalowania:
+Sprawdź wyniki swojej pracy, przechodząc do adresu URL modułu równoważenia obciążenia dla zestawu skalowania:
 
-![Aplikacja Java działająca w zestawie skalowania na platformie Azure.](media/ansible-vmss-deploy/ansible-deploy-app-vmss.png)
+![Aplikacja Java działająca w skali ustawionej na platformie Azure.](media/ansible-vmss-deploy/ansible-deploy-app-vmss.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek: automatyczne skalowanie zestawów skalowania maszyn wirtualnych na platformie Azure przy użyciu rozwiązania ansible](./ansible-auto-scale-vmss.md)
+> [Samouczek: Automatyczne skalowanie zestawów skalowania maszyn wirtualnych na platformie Azure przy użyciu ansible](./ansible-auto-scale-vmss.md)

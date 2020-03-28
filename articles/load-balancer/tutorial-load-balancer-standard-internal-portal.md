@@ -1,7 +1,7 @@
 ---
-title: 'Samouczek: Tworzenie wewnętrznego modułu równoważenia obciążenia — Azure Portal'
+title: 'Samouczek: Tworzenie wewnętrznego modułu równoważenia obciążenia — witryna Azure portal'
 titleSuffix: Azure Load Balancer
-description: W tym samouczku przedstawiono sposób tworzenia wewnętrznego standardowego modułu równoważenia obciążenia przy użyciu Azure Portal.
+description: W tym samouczku pokazano, jak utworzyć wewnętrzny standardowy moduł równoważenia obciążenia przy użyciu witryny Azure portal.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -16,48 +16,48 @@ ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: seodec18
 ms.openlocfilehash: 918a7700df6b5be3ebca7949875127e42f8d3a91
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75780381"
 ---
-# <a name="tutorial-balance-internal-traffic-load-with-a-standard-load-balancer-in-the-azure-portal"></a>Samouczek: Równoważenie obciążenia ruchu wewnętrznego przy użyciu standardowego modułu równoważenia obciążenia w Azure Portal
+# <a name="tutorial-balance-internal-traffic-load-with-a-standard-load-balancer-in-the-azure-portal"></a>Samouczek: Równoważ obciążenie ruchu wewnętrznego za pomocą standardowego modułu równoważenia obciążenia w witrynie Azure portal
 
-Równoważenie obciążenia zapewnia większą dostępność i możliwości skalowania dzięki rozdzielaniu żądań przychodzących między maszyny wirtualne. Za pomocą Azure Portal można utworzyć standardowy moduł równoważenia obciążenia i zrównoważyć ruch wewnętrzny między maszynami wirtualnymi. W tym samouczku przedstawiono sposób tworzenia i konfigurowania wewnętrznego modułu równoważenia obciążenia, serwerów zaplecza i zasobów sieciowych w warstwie cenowej standardowa.
+Równoważenie obciążenia zapewnia większą dostępność i możliwości skalowania dzięki rozdzielaniu żądań przychodzących między maszyny wirtualne. Za pomocą witryny Azure Portal można utworzyć standardowy moduł równoważenia obciążenia i zrównoważyć ruch wewnętrzny między maszynami wirtualnymi. W tym samouczku pokazano, jak utworzyć i skonfigurować wewnętrzny moduł równoważenia obciążenia, serwery zaplecza i zasoby sieciowe w standardowej warstwie cenowej.
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem. 
 
 Jeśli wolisz, możesz wykonać te kroki przy użyciu [interfejsu wiersza polecenia platformy Azure](load-balancer-get-started-ilb-arm-cli.md) lub [programu Azure PowerShell](load-balancer-get-started-ilb-arm-ps.md), zamiast korzystać z portalu.
 
-Aby wykonać czynności przy użyciu tego samouczka, zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
+Aby wykonać kroki przy użyciu tego samouczka, [https://portal.azure.com](https://portal.azure.com)zaloguj się do witryny Azure portal w .
 
 ## <a name="create-a-vnet-back-end-servers-and-a-test-vm"></a>Tworzenie sieci wirtualnej, serwerów zaplecza i testowej maszyny wirtualnej
 
-Najpierw utwórz sieć wirtualną. W sieci wirtualnej Utwórz dwie maszyny wirtualne, które mają być używane dla puli zaplecza w ramach standardowego modułu równoważenia obciążenia, oraz trzecią maszynę wirtualną do użycia do testowania modułu równoważenia obciążenia. 
+Najpierw utwórz sieć wirtualną. W sieci wirtualnej utwórz dwie maszyny wirtualne do użycia dla puli wewnętrznej bazy danych modułu równoważenia obciążenia standard i trzeciej maszyny Wirtualnej do testowania modułu równoważenia obciążenia. 
 
 ### <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 
-1. W lewym górnym rogu portalu wybierz pozycję **Utwórz zasób** > **Sieć** > **Sieć wirtualna**.
+1. W lewym górnym rogu portalu wybierz pozycję **Utwórz zasób** > **Sieć wirtualna sieci** > **Virtual network**.
    
 1. W okienku **Tworzenie sieci wirtualnej** wpisz lub wybierz następujące wartości:
    
-   - **Nazwa**: wpisz **MyVnet**.
+   - **Nazwa**: Wpisz **MyVNet**.
    - **Grupa zasobów**: wybierz pozycję **Utwórz nową**, wprowadź nazwę **MyResourceGroupLB** i wybierz przycisk **OK**. 
-   - **Podsieć** > **Nazwa**: wpisz **MyBackendSubnet**.
+   - **Subnet** > **Nazwa podsieci**: Wpisz **MyBackendSubnet**.
    
-1. Wybierz pozycję **Utwórz**.
+1. Wybierz **pozycję Utwórz**.
 
    ![Tworzenie sieci wirtualnej](./media/tutorial-load-balancer-basic-internal-portal/2-load-balancer-virtual-network.png)
 
 ### <a name="create-virtual-machines"></a>Tworzenie maszyn wirtualnych
 
-1. W lewej górnej części portalu wybierz pozycję **Utwórz zasób** > **Compute** > **Windows Server 2016 Datacenter**. 
+1. W lewym górnym rogu portalu wybierz pozycję **Utwórz źródło zasobów** > **Obliczanie** > **centrum danych systemu Windows Server 2016**. 
    
 1. W obszarze **Tworzenie maszyny wirtualnej** wpisz lub wybierz następujące wartości na karcie **Podstawowe**:
-   - **Subskrypcja** > **Grupa zasobów**: rozwiń listę i wybierz pozycję **MyResourceGroupLB**.
-   - **Szczegóły wystąpienia** > **Nazwa maszyny wirtualnej**: wpisz **MyVM1**.
-   - **Szczegóły wystąpienia** > **regionu**: Wybierz **Wschodnie stany USA 2**.
+   - **Grupa** > **zasobów**subskrypcji: rozwijana i wybierz **myResourceGroupLB**.
+   - **Szczegóły** > wystąpienia**Nazwa maszyny wirtualnej:** wpisz **MyVM1**.
+   - **Region szczegółów** > **Region**wystąpienia: Wybierz **wschodnie stany USA 2**.
   
    
 1. Wybierz kartę **Sieć** lub wybierz pozycję **Dalej: Dyski**, a następnie pozycję **Dalej: Sieć**. 
@@ -65,12 +65,12 @@ Najpierw utwórz sieć wirtualną. W sieci wirtualnej Utwórz dwie maszyny wirtu
    Upewnij się, że zostały wybrane następujące opcje:
    - **Sieć wirtualna**: **MyVNet**
    - **Podsieć**: **MyBackendSubnet**
-   - **Grupa zabezpieczeń sieci karty sieciowej**: wybierz pozycję **podstawowa**.
-   - > **Publicznego adresu IP** wybierz pozycję **Utwórz nową** , a następnie wprowadź następujące wartości, a następnie wybierz **przycisk OK**:
+   - **Grupa zabezpieczeń sieciowej karty sieciowej**: Wybierz pozycję **Podstawowa**.
+   - **Publiczne** > IP Wybierz pozycję **Utwórz nowy** i wprowadź następujące wartości oraz wybierz **przycisk OK:**
        - **Nazwa**: **MyVM1-IP**
-       - **Jednostka SKU**: wybierz pozycję **standardowa**
-   - **Publiczne porty przychodzące**: wybierz opcję **Zezwalaj na wybrane porty**.
-   - **Wybieranie portów przychodzących**: Lista rozwijana i wybór **protokołu RDP (3389)**
+       - **Jednostka SKU**: Wybierz **standard**
+   - **Publiczne porty przychodzące**: Wybierz **opcję Zezwalaj na wybrane porty**.
+   - **Wybieranie portów przychodzących**: Rozwijane i wybierz **RDP (3389)**
 
    
    
@@ -86,9 +86,9 @@ Najpierw utwórz sieć wirtualną. W sieci wirtualnej Utwórz dwie maszyny wirtu
 
 ## <a name="create-a-standard-load-balancer"></a>Tworzenie modułu równoważenia obciążenia w warstwie Standardowa
 
-Tworzenie standardowego wewnętrznego modułu równoważenia obciążenia przy użyciu portalu. Utworzona przez Ciebie nazwa i adres IP są automatycznie konfigurowane jako fronton modułu równoważenia obciążenia.
+Utwórz standardowy wewnętrzny moduł równoważenia obciążenia za pomocą portalu. Utworzona przez Ciebie nazwa i adres IP są automatycznie konfigurowane jako fronton modułu równoważenia obciążenia.
 
-1. W lewym górnym rogu portalu wybierz pozycję **Utwórz zasób** > **Sieć** > **Moduł równoważenia obciążenia**.
+1. W lewym górnym rogu portalu wybierz pozycję Utwórz moduł > **równoważenia obciążenia****sieciowego** **zasobu** > .
    
 2. Na karcie **Podstawy** na stronie **Tworzenie modułu równoważenia obciążenia** wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Przeglądanie + tworzenie**:
 
@@ -98,16 +98,16 @@ Tworzenie standardowego wewnętrznego modułu równoważenia obciążenia przy u
     | Grupa zasobów         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupLB* w polu tekstowym.|
     | Nazwa                   | *myLoadBalancer*                                   |
     | Region         | Wybierz pozycję **East US 2** (Wschodnie stany USA 2).                                        |
-    | Typ          | Wybierz pozycję **wewnętrzne**.                                        |
-    | JSZ           | Wybierz pozycję **Standardowy**.                          |
-    | Sieć wirtualna           | Wybierz wartość *MojaSiećWirtualna*.                          |    
+    | Typ          | wybierz pozycję **Wewnętrzny**.                                        |
+    | SKU           | Wybierz **opcję Standardowy**.                          |
+    | Sieć wirtualna           | Wybierz *MyVNet*.                          |    
     | Przypisanie adresu IP              | Wybierz wartość **Statyczny**.   |
-    | Prywatny adres IP|Wpisz adres znajdujący się w przestrzeni adresowej sieci wirtualnej i podsieci, na przykład *10.3.0.7*.  |
+    | Prywatny adres IP|wpisz adres, który znajduje się w przestrzeni adresowej sieci wirtualnej i podsieci, na przykład *10.3.0.7*.  |
 
 3. Na karcie **Przeglądanie + tworzenie** kliknij pozycję **Utwórz**. 
    
 
-## <a name="create-standard-load-balancer-resources"></a>Tworzenie zasobów usługi równoważenia obciążenia w warstwie Standardowa
+## <a name="create-standard-load-balancer-resources"></a>Tworzenie standardowych zasobów modułu równoważenia obciążenia
 
 W tej sekcji skonfigurujesz ustawienia modułu równoważenia obciążenia dla puli adresów zaplecza i sondy kondycji oraz określisz reguły modułu równoważenia obciążenia.
 
@@ -123,9 +123,9 @@ Aby dystrybuować ruch do maszyn wirtualnych, moduł równoważenia obciążenia
    
 1. Na stronie **Dodawanie puli zaplecza** wpisz lub wybierz następujące wartości:
    
-   - **Nazwa**: wpisz **MyBackendPool**.
+   - **Nazwa**: Wpisz **MyBackendPool**.
    
-1. W obszarze **maszyny wirtualne**. 
+1. W **obszarze Maszyny wirtualne**. 
    1. Dodaj maszyny wirtualne **MyVM1** i **MyVM2** do puli zaplecza.
    2. Po dodaniu każdej maszyny otwórz listę rozwijaną i wybierz dla niej pozycję **Konfiguracja adresu IP sieci**. 
      
@@ -258,7 +258,7 @@ Aby usunąć moduł równoważenia obciążenia i wszystkie powiązane z nim zas
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono tworzenie standardowego wewnętrznego modułu równoważenia obciążenia. Utworzono i skonfigurowano zasoby sieciowe, serwery zaplecza, sondę kondycji i reguły dla modułu równoważenia obciążenia. Usługi IIS zostały zainstalowane na maszynach wirtualnych zaplecza i użyto testowej maszyny wirtualnej do testowania modułu równoważenia obciążenia w przeglądarce. 
+W tym samouczku utworzono standardowy wewnętrzny moduł równoważenia obciążenia. Utworzono i skonfigurowano zasoby sieciowe, serwery zaplecza, sondę kondycji i reguły dla modułu równoważenia obciążenia. Usługi IIS zostały zainstalowane na maszynach wirtualnych zaplecza i użyto testowej maszyny wirtualnej do testowania modułu równoważenia obciążenia w przeglądarce. 
 
 Następnie dowiedz się, jak równoważyć obciążenia maszyn wirtualnych w różnych strefach dostępności.
 

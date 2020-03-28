@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 Customer intent: As a developer, I want to build a Java application to query data stored in a Cassandra API account of Azure Cosmos DB so that customers can manage the key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
 ms.openlocfilehash: 69a9bc912f2cd52e52ca6403187f993413539ecd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "60899903"
 ---
 # <a name="tutorial-query-data-from-a-cassandra-api-account-in-azure-cosmos-db"></a>Samouczek: wykonywanie zapytań względem danych z poziomu konta interfejsu API Cassandra w usłudze Azure Cosmos DB
@@ -24,13 +24,13 @@ Ten samouczek obejmuje następujące zadania:
 
 > [!div class="checklist"]
 > * Wykonywanie zapytań względem danych z tabeli bazy danych Cassandra
-> * Uruchamianie aplikacji
+> * Uruchomienie aplikacji
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Ten artykuł należy do wieloczęściowego samouczka. Przed rozpoczęciem pamiętaj o ukończeniu poprzednich kroków tworzenia konta, przestrzeni kluczy i tabeli interfejsu API Cassandra oraz [ładowania przykładowych danych do tabeli](cassandra-api-load-data.md). 
+* Ten artykuł należy do wieloczęściowego samouczka. Przed rozpoczęciem upewnij się, że wykonasz poprzednie kroki, aby utworzyć konto interfejsu API Cassandra, obszar kluczy, tabelę i [załadować przykładowe dane do tabeli](cassandra-api-load-data.md). 
 
 ## <a name="query-data"></a>Zapytania o dane
 

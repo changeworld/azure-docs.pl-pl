@@ -1,6 +1,6 @@
 ---
-title: Uaktualnianie aplikacji Service Fabric w programie PowerShell
-description: Przykładowy skrypt Azure PowerShell — uaktualnianie i monitorowanie aplikacji Service Fabric platformy Azure przy użyciu programu PowerShell.
+title: Uaktualnianie aplikacji sieci szkieletowej usług w programie Powershell
+description: Przykład skryptu programu Azure PowerShell — uaktualnianie i monitorowanie aplikacji sieci szkieletowej usług Azure przy użyciu programu Powershell.
 services: service-fabric
 documentationcenter: ''
 author: athinanthny
@@ -15,15 +15,15 @@ ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: 3a4ef9fad8567eb145d51c6fef61773cc3a00b11
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75614744"
 ---
-# <a name="upgrade-a-service-fabric-application"></a>Uaktualnianie aplikacji Service Fabric
+# <a name="upgrade-a-service-fabric-application"></a>Uaktualnianie aplikacji sieci szkieletowej usług
 
-Ten przykładowy skrypt uaktualnia uruchomione wystąpienie aplikacji Service Fabric do wersji 1.3.0. Skrypt kopiuje nowy pakiet aplikacji do magazynu obrazów klastra, rejestruje typ aplikacji i usuwa zbędny pakiet aplikacji.  Skrypt uruchamia monitorowane uaktualnienie i stale sprawdza stan uaktualnienia do momentu zakończenia lub wycofania uaktualnienia. Dostosuj parametry zgodnie z potrzebami. 
+Ten przykładowy skrypt uaktualnia uruchomione wystąpienie aplikacji sieci szkieletowej usług do wersji 1.3.0. Skrypt kopiuje nowy pakiet aplikacji do magazynu obrazów klastra, rejestruje typ aplikacji i usuwa niepotrzebny pakiet aplikacji.  Skrypt uruchamia monitorowane uaktualnienie i stale sprawdza stan uaktualnienia, dopóki uaktualnienie nie zostanie zakończone lub wycofane. Dostosuj parametry zgodnie z potrzebami. 
 
 W razie potrzeby zainstaluj moduł Service Fabric programu PowerShell przy użyciu [Zestawu SDK usługi Service Fabric](../service-fabric-get-started.md). 
 
@@ -37,18 +37,18 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 
 | Polecenie | Uwagi |
 |---|---|
-| [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) | Pobiera wszystkie aplikacje w klastrze Service Fabric lub konkretnej aplikacji.  |
-| [Get-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/get-servicefabricapplicationupgrade?view=azureservicefabricps) | Pobiera stan uaktualnienia aplikacji Service Fabric. |
-| [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) | Pobiera Service Fabric typy aplikacji zarejestrowane w klastrze Service Fabric. |
-| [Unregister-ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype?view=azureservicefabricps) | Wyrejestrowuje typ aplikacji Service Fabric.  |
-| [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) | Kopiuje pakiet aplikacji Service Fabric do magazynu obrazów.  |
-| [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) | Rejestruje typ aplikacji Service Fabric. |
-| [Start-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/start-servicefabricapplicationupgrade?view=azureservicefabricps) | Uaktualnia aplikację Service Fabric do określonej wersji typu aplikacji. |
-| [Remove-ServiceFabricApplicationPackage](/powershell/module/servicefabric/remove-servicefabricapplicationpackage?view=azureservicefabricps) | Usuwa pakiet aplikacji Service Fabric z magazynu obrazów.|
+| [Wniosek o świadczenie Get-ServiceFabric](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) | Pobiera wszystkie aplikacje w klastrze sieci szkieletowej usług lub określonej aplikacji.  |
+| [Get-ServiceFabricApplicationPoustuj](/powershell/module/servicefabric/get-servicefabricapplicationupgrade?view=azureservicefabricps) | Pobiera stan uaktualnienia aplikacji sieci szkieletowej usług. |
+| [Get-ServiceFabricZastosowanieType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) | Pobiera typy aplikacji sieci szkieletowej usług zarejestrowane w klastrze sieci szkieletowej usług. |
+| [Wyrejestrowanie-ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype?view=azureservicefabricps) | Wyrejestrowaj typ aplikacji sieci szkieletowej usług.  |
+| [Kopiuj-ServiceFabricApplicationPakiet](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) | Kopiuje pakiet aplikacji sieci szkieletowej usług do magazynu obrazów.  |
+| [Zarejestruj się-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) | Rejestruje typ aplikacji sieci szkieletowej usług. |
+| [Start-ServiceFabricApplicationPoustuj](/powershell/module/servicefabric/start-servicefabricapplicationupgrade?view=azureservicefabricps) | Uaktualnia aplikację sieci szkieletowej usług do określonej wersji typu aplikacji. |
+| [Usuń-ServiceFabricApplicationPackage](/powershell/module/servicefabric/remove-servicefabricapplicationpackage?view=azureservicefabricps) | Usuwa pakiet aplikacji sieci szkieletowej usług z magazynu obrazów.|
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat Service Fabric module programu PowerShell, zobacz [dokumentację dotyczącą Azure PowerShell](/powershell/azure/service-fabric/?view=azureservicefabricps).
+Aby uzyskać więcej informacji na temat modułu powershell sieci szkieletowej usług, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/service-fabric/?view=azureservicefabricps).
 
 Więcej przykładów dla programu PowerShell dla usługi Azure Service Fabric można znaleźć w [przykładach programu Azure PowerShell](../service-fabric-powershell-samples.md).

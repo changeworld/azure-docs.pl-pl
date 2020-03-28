@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 11/27/2018
 ms.author: apimpm
 ms.openlocfilehash: 9dbcfcc832eb694a3dcdf2b67be6eeda8229aa79
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67183750"
 ---
 ## <a name="availability"></a>Dostępność
 
 > [!IMPORTANT]
-> Ta funkcja jest dostępna w warstwach **Premium**, **Standard**, **Basic** i **Developer** API Management.
+> Ta funkcja jest dostępna w warstwach **Premium,** **Standard,** **Basic** i **Developer** w usłudze API Management.

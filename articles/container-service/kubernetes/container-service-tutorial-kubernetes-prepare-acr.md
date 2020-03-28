@@ -8,16 +8,16 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 087530fd3834c4ec4620c087134bee0ed26bb6c9
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78399780"
 ---
 # <a name="deprecated-deploy-and-use-azure-container-registry"></a>(PRZESTARZAŁE) Wdrażanie usługi Azure Container Registry i korzystanie z niej
 
 > [!TIP]
-> Aby uzyskać zaktualizowaną wersję tego samouczka korzystającego z usługi Azure Kubernetes, zobacz [Samouczek: wdrażanie i używanie Azure Container Registry](../../aks/tutorial-kubernetes-prepare-acr.md).
+> Aby uzyskać zaktualizowaną wersję tego samouczka korzystającego z usługi Azure Kubernetes, zobacz [Samouczek: Wdrażanie i używanie rejestru kontenerów platformy Azure](../../aks/tutorial-kubernetes-prepare-acr.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -32,7 +32,7 @@ W kolejnych samouczkach to wystąpienie rejestru ACR zostanie zintegrowane z kla
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W [poprzednim samouczku](./container-service-tutorial-kubernetes-prepare-app.md) utworzono obraz kontenera na potrzeby prostej aplikacji do głosowania platformy Azure. Jeśli obraz aplikacji do głosowania platformy Azure nie został utworzony, wróć do artykułu [Samouczek 1 — tworzenie obrazów kontenerów](./container-service-tutorial-kubernetes-prepare-app.md).
+W [poprzednim samouczku ](./container-service-tutorial-kubernetes-prepare-app.md) utworzono obraz kontenera na potrzeby prostej aplikacji do głosowania platformy Azure. Jeśli obraz aplikacji do głosowania platformy Azure nie został utworzony, wróć do artykułu [Samouczek 1 — Tworzenie obrazów kontenerów](./container-service-tutorial-kubernetes-prepare-app.md).
 
 Ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli). 
 
@@ -46,7 +46,7 @@ Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#
 az group create --name myResourceGroup --location westeurope
 ```
 
-Utwórz rejestr usługi Azure Container za pomocą polecenia [az acr create](/cli/azure/acr#az-acr-create). Nazwa rejestru kontenera **musi być unikatowa**.
+Utwórz rejestr kontenera platformy Azure za pomocą polecenia [az acr create.](/cli/azure/acr#az-acr-create) Nazwa rejestru kontenera **musi być unikatowa**.
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
@@ -56,7 +56,7 @@ W dalszej części tego samouczka wartość `<acrname>` zostanie użyta jako sym
 
 ## <a name="container-registry-login"></a>Logowanie do rejestru Container Registry
 
-Użyj polecenia [az acr login](https://docs.microsoft.com/cli/azure/acr#az-acr-login), aby zalogować się do wystąpienia rejestru ACR. Należy podać unikatową nazwę nadaną kontenerowi podczas jego tworzenia.
+Użyj polecenia [az acr login](https://docs.microsoft.com/cli/azure/acr#az-acr-login), aby zalogować się do wystąpienia rejestru Azure Container Registry. Należy podać unikatową nazwę nadaną kontenerowi podczas jego tworzenia.
 
 ```azurecli
 az acr login --name <acrName>
