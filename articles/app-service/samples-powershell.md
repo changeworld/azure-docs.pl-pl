@@ -1,16 +1,16 @@
 ---
-title: Przykłady dla programu PowerShell
-description: Znajdź Azure PowerShell przykłady dla niektórych typowych scenariuszy App Service. Dowiedz się, jak zautomatyzować zadania związane z wdrażaniem App Service lub zarządzaniem.
+title: Przykłady programu PowerShell
+description: Znajdź przykłady programu Azure PowerShell dla niektórych typowych scenariuszy usługi App Service. Dowiedz się, jak zautomatyzować wdrażanie usługi App Service lub zadania zarządzania.
 tags: azure-service-management
 ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
 ms.topic: sample
 ms.date: 03/08/2017
 ms.custom: mvc
 ms.openlocfilehash: f32db2a4dda0ceb69644b64a5c76155b448c5a28
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74687028"
 ---
 # <a name="powershell-samples-for-azure-app-service"></a>Przykłady dla programu Azure PowerShell — Azure App Service
@@ -24,7 +24,7 @@ Poniższa tabela zawiera linki do skryptów programu PowerShell skompilowanych z
 | [Tworzenie aplikacji z ciągłym wdrażaniem z usługi GitHub](./scripts/powershell-continuous-deployment-github.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tworzy aplikację usługi App Service, która w sposób ciągły wdraża kod z usługi GitHub. |
 | [Tworzenie aplikacji i wdrażanie kodu za pomocą protokołu FTP](./scripts/powershell-deploy-ftp.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tworzy aplikację usługi App Service i przekazuje pliki z katalogu lokalnego przy użyciu protokołu FTP. |
 | [Tworzenie aplikacji i wdrażanie kodu z lokalnego repozytorium Git](./scripts/powershell-deploy-local-git.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tworzy aplikację usługi App Service i konfiguruje wypychanie kodu z lokalnego repozytorium Git. |
-| [Tworzenie aplikacji i wdrażanie kodu w środowisku przejściowym](./scripts/powershell-deploy-staging-environment.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tworzy aplikację usługi App Service z miejscem wdrożenia zmian kodu w środowisku przejściowym. |
+| [Tworzenie aplikacji i wdrażanie kodu w środowisku przejściowym](./scripts/powershell-deploy-staging-environment.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tworzy aplikację usługi App Service z miejscem wdrożenia dla przejściowych zmian kodu. |
 |**Konfigurowanie aplikacji**||
 | [Mapowanie domeny niestandardowej na aplikację](./scripts/powershell-configure-custom-domain.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tworzy aplikację usługi App Service i mapuje na nią nazwę domeny niestandardowej. |
 | [Tworzenie powiązania niestandardowego certyfikatu SSL z aplikacją](./scripts/powershell-configure-ssl-certificate.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tworzy aplikację usługi App Service, a następnie tworzy powiązanie certyfikatu SSL nazwy domeny niestandardowej z tą aplikacją. |
@@ -33,7 +33,7 @@ Poniższa tabela zawiera linki do skryptów programu PowerShell skompilowanych z
 | [Skalowanie aplikacji na całym świecie przy użyciu architektury wysokiej dostępności](./scripts/powershell-scale-high-availability.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tworzy dwie aplikacje usługi App Service w dwóch różnych regionach geograficznych i udostępnia je za pośrednictwem pojedynczego punktu końcowego przy użyciu usługi Azure Traffic Manager. |
 |**Łączenie aplikacji z zasobami**||
 | [Łączenie aplikacji z programem SQL Database](./scripts/powershell-connect-to-sql.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tworzy aplikację usługi App Service i bazę danych SQL, a następnie dodaje parametry połączenia z bazą danych do ustawień aplikacji. |
-| [Łączenie aplikacji z kontem magazynu](./scripts/powershell-connect-to-storage.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tworzy aplikację usługi App Service i konto magazynu, a następnie dodaje parametry połączenia magazynu do ustawień aplikacji. |
+| [Łączenie aplikacji z kontem magazynu](./scripts/powershell-connect-to-storage.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tworzy aplikację usługi App Service i konto magazynu, a następnie dodaje parametry połączenia z magazynem do ustawień aplikacji. |
 |**Tworzenie i przywracanie kopii zapasowej aplikacji**||
 | [Tworzenie kopii zapasowej aplikacji](./scripts/powershell-backup-onetime.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tworzy aplikację usługi App Service oraz jej jednorazową kopię zapasową. |
 | [Tworzenie zaplanowanej kopii zapasowej aplikacji](./scripts/powershell-backup-scheduled.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tworzy aplikację usługi App Service oraz jej zaplanowaną kopię zapasową. |

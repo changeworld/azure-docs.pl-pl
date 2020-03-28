@@ -1,5 +1,5 @@
 ---
-title: Samouczek zamówienie urządzenia Azure Data Box | Dokumentacja firmy Microsoft
+title: Samouczek do zamawiania skrzynki danych platformy Azure | Dokumenty firmy Microsoft
 description: Informacje o wymaganiach wstępnych dotyczących wdrażania oraz sposobie zamawiania urządzenia Azure Data Box
 services: databox
 author: alkohli
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 04/23/2019
 ms.author: alkohli
 ms.openlocfilehash: b0204673c0706403c8c5a7367be19e590d9cb134
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "65604094"
 ---
-# <a name="tutorial-order-azure-data-box"></a>Samouczek: zamawianie urządzenia Azure Data Box
+# <a name="tutorial-order-azure-data-box"></a>Samouczek: Zamawianie urządzenia Azure Data Box
 
 Azure Data Box to hybrydowe rozwiązanie, które umożliwia importowanie danych lokalnych na platformę Azure szybko, łatwo i bez problemów. Przesyłasz swoje dane na urządzenie magazynujące dostarczane przez firmę Microsoft, którego pojemność do wykorzystania to 80 TB, a następnie odsyłasz urządzenie z powrotem do firmy Microsoft. Te dane są następnie przekazywane na platformę Azure.
 
@@ -53,12 +53,12 @@ Przed rozpoczęciem upewnij się, że:
 
 Wykonaj poniższe czynności w witrynie Azure Portal, aby zamówić urządzenie.
 
-1. Użyj swoich poświadczeń platformy Microsoft Azure, aby zalogować się pod następującym adresem URL: [https://portal.azure.com](https://portal.azure.com).
+1. Użyj poświadczeń platformy Microsoft Azure, aby zalogować się pod tym adresem URL: [https://portal.azure.com](https://portal.azure.com).
 2. Kliknij pozycję **+ Utwórz zasób** i wyszukaj wartość *Azure Data Box*. Kliknij pozycję **Azure Data Box**.
     
    [![Wyszukiwanie pozycji Azure Data Box 1](media/data-box-deploy-ordered/search-azure-data-box1.png)](media/data-box-deploy-ordered/search-azure-data-box1.png#lightbox)
 
-3. Kliknij pozycję **Utwórz**.
+3. Kliknij przycisk **Utwórz**.
 
 4. Sprawdź, czy usługa Data Box jest dostępna w Twoim regionie. Wprowadź lub wybierz poniższe informacje i kliknij pozycję **Zastosuj**. 
 
@@ -66,37 +66,37 @@ Wykonaj poniższe czynności w witrynie Azure Portal, aby zamówić urządzenie.
     |---------|---------|
     |Subskrypcja     | Wybierz subskrypcję EA, CSP lub dostęp sponsorowany Azure dla usługi Data Box. <br> Subskrypcja jest połączona z kontem rozliczeniowym.       |
     |Typ transferu     | Wybierz pozycję **Importuj na platformę Azure**.        |
-    |Kraj źródłowy     |   Wybierz kraj/region, w którym dane aktualnie znajduje się.         |
+    |Kraj źródłowy     |   Wybierz kraj/region, w którym aktualnie znajdują się dane.         |
     |Docelowy region platformy Azure     |     Wybierz region platformy Azure, do którego chcesz przenieść dane.        |
 
-5. Wybierz pozycję **Data Box**. Maksymalnej pojemności do wykorzystania dla pojedynczego zamówienia to 80 TB. W przypadku większych ilości danych możesz utworzyć wiele zamówień.
+5. Wybierz **pole**wyboru Pole danych . Maksymalna pojemność użytkowa dla jednego zamówienia wynosi 80 TB. W przypadku większych ilości danych możesz utworzyć wiele zamówień.
 
-      [![Wybieranie opcji 1 urządzenia Data Box](media/data-box-deploy-ordered/select-data-box-option1.png)](media/data-box-deploy-ordered/select-data-box-option1.png#lightbox)
+      [![Wybierz opcję Pole danych 1](media/data-box-deploy-ordered/select-data-box-option1.png)](media/data-box-deploy-ordered/select-data-box-option1.png#lightbox)
 
 6. W obszarze **Zamówienie** określ **szczegóły zamówienia**. Wprowadź lub wybierz poniższe informacje, a następnie kliknij pozycję **Dalej**.
     
     |Ustawienie  |Wartość  |
     |---------|---------|
-    |Name (Nazwa)     |  Podaj przyjazną nazwę, aby śledzić zamówienie. <br> Nazwa może zawierać od 3 do 24 znaków, które mogą być literami, cyframi i łącznikami. <br> Nazwa musi zaczynać i kończyć się literą lub cyfrą.      |
+    |Nazwa     |  Podaj przyjazną nazwę, aby śledzić zamówienie. <br> Nazwa może zawierać od 3 do 24 znaków, które mogą być literami, cyframi i łącznikami. <br> Nazwa musi zaczynać i kończyć się literą lub cyfrą.      |
     |Grupa zasobów     |   Użyj istniejącej grupy lub utwórz nową. <br> Grupa zasobów to kontener logiczny zasobów, które mogą być zarządzane lub wdrażane razem.         |
     |Docelowy region platformy Azure     | Wybierz region swojego konta magazynu. <br> Aby uzyskać więcej informacji, przejdź do sekcji [Dostępność regionalna](data-box-overview.md#region-availability).        |
-    |Magazyn docelowy     | Wybierz z konta magazynu dysków zarządzanych i/lub. <br> W oparciu o wybrany region platformy Azure wybierz z listy filtrowanej istniejących kont magazynu co najmniej jedno z nich. Urządzenie Data Box można połączyć z maksymalnie 10 kontami magazynu. <br> Można również utworzyć nową **General-purpose v1**, **ogólnego przeznaczenia v2**, lub **konta magazynu obiektów Blob**. <br>Konta magazynu z sieciami wirtualnymi są obsługiwane. Aby usługa Data Box do pracy z kontami magazynu zabezpieczone, Włącz zaufanych usług w ramach ustawienia zapory sieci konta magazynu. Aby uzyskać więcej informacji, zobacz instrukcje [Dodaj urządzenia Azure Data Box jako zaufaną usługę](../storage/common/storage-network-security.md#exceptions).|
+    |Miejsce docelowe magazynu     | Wybierz konto magazynu, dyski zarządzane lub obie te opcje. <br> W oparciu o wybrany region platformy Azure wybierz z listy filtrowanej istniejących kont magazynu co najmniej jedno z nich. Urządzenie Data Box można połączyć z maksymalnie 10 kontami magazynu. <br> Można również utworzyć nowe **konto ogólnego przeznaczenia w wersji 1**, **konto ogólnego przeznaczenia w wersji 2** lub **konto usługi Blob Storage**. <br>Konta magazynu z sieciami wirtualnymi są obsługiwane. Aby umożliwić usłudze Data Box współpracę z zabezpieczonymi kontami magazynu, włącz usługi zaufane w ustawieniach zapory sieciowej dla konta magazynu. Aby uzyskać więcej informacji, zobacz jak [dodać usługę Azure Data Box jako zaufaną usługę](../storage/common/storage-network-security.md#exceptions).|
 
-    Jeśli jako miejsce docelowe przechowywania, przy użyciu konta magazynu, zostanie wyświetlony poniższy zrzut ekranu:
+    Jeśli korzystasz z konta magazynu jako miejsca docelowego magazynu, zobaczysz następujący ekran:
 
-    ![Kolejność pole danych dla konta magazynu](media/data-box-deploy-ordered/order-storage-account.png)
+    ![Kolejność przechowywania w polu danych](media/data-box-deploy-ordered/order-storage-account.png)
 
-    Jeśli tworzenie dysków zarządzanych z wirtualnych dysków twardych w środowisku lokalnym za pomocą urządzenia Data Box, należy również podać następujące informacje:
+    Jeśli do tworzenia dysków zarządzanych z lokalnych dysków VHD jest używany przy użyciu pola danych, należy również podać następujące informacje:
 
     |Ustawienie  |Wartość  |
     |---------|---------|
-    |Grupy zasobów     | Tworzenie nowych grup zasobów, jeśli zamierzasz utworzyć dysków zarządzanych z wirtualnych dysków twardych w środowisku lokalnym. Można użyć istniejącej grupy zasobów, tylko wtedy, gdy grupa zasobów została utworzona wcześniej podczas tworzenia zamówienie usługi Data Box dla dysku zarządzanego przez usługę Data Box. <br> Określ wiele grup zasobów, rozdzielając je średnikami. Obsługiwane są maksymalnie 10 grup zasobów.|
+    |Grupy zasobów     | Utwórz nowe grupy zasobów, jeśli zamierzasz tworzyć dyski zarządzane na podstawie lokalnych dysków VHD. Istniejącej grupy zasobów można używać tylko wtedy, gdy grupa zasobów została utworzona wcześniej podczas tworzenia kolejności pól danych dla dysku zarządzanego przez usługę Data Box. <br> Nazwy poszczególnych grup zasobów rozdziel średnikami. Obsługiwanych jest maksymalnie 10 grup zasobów.|
 
-    ![Kolejność pole danych dla dysku zarządzanego](media/data-box-deploy-ordered/order-managed-disks.png)
+    ![Kolejność pól danych dla dysku zarządzanego](media/data-box-deploy-ordered/order-managed-disks.png)
 
-    Konto magazynu określone dla dysków zarządzanych jest używane jako konta magazynu przejściowego. Przekazywanie usługi Data Box, pliki VHD jako obiekty BLOB konta magazynu przejściowego przed konwersją do dysków zarządzanych i przeniesienie ich do grup zasobów. Aby uzyskać więcej informacji, zobacz [danych sprawdź, czy przekazać na platformę Azure](data-box-deploy-picked-up.md#verify-data-upload-to-azure).
+    Konto magazynu określone dla dysków zarządzanych jest używane jako przejściowe konto magazynu. Usługa Data Box przekazuje wirtualne dyski twarde jako stronicowe obiekty blob do przejściowego konta magazynu przed przekonwertowaniem ich na dyski zarządzane i przeniesieniem do grup zasobów. Aby uzyskać więcej informacji, zobacz [Weryfikowanie przekazania danych na platformę Azure](data-box-deploy-picked-up.md#verify-data-upload-to-azure).
 
-7. W obszarze **Adres wysyłkowy** podaj swoje imię i nazwisko, nazwę oraz adres pocztowy firmy i prawidłowy numer telefonu. Kliknij pozycję **Zweryfikuj adres**. Usługa zweryfikuje adres wysyłkowy pod kątem dostępności usługi. Jeśli ta usługa jest dostępna dla podanego adresu wysyłkowego, otrzymasz odpowiednie powiadomienie. Kliknij przycisk **Dalej**.
+7. W obszarze **Adres wysyłkowy** podaj swoje imię i nazwisko, nazwę oraz adres pocztowy firmy i prawidłowy numer telefonu. Kliknij pozycję **Zweryfikuj adres**. Usługa zweryfikuje adres wysyłkowy pod kątem dostępności usługi. Jeśli ta usługa jest dostępna dla podanego adresu wysyłkowego, otrzymasz odpowiednie powiadomienie. Kliknij przycisk **alej**.
 
 8. W obszarze **Szczegóły powiadomienia** podaj adresy e-mail. Usługa wysyła powiadomienia e-mail dotyczące wszystkich aktualizacji stanu zamówienia na określone adresy e-mail.
 
@@ -134,7 +134,7 @@ Po złożeniu zamówienia możesz je anulować w dowolnym momencie, dopóki stan
  
 Aby usunąć anulowane zamówienie, w obszarze **Omówienie** kliknij pozycję **Usuń** na pasku poleceń.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono zagadnienia dotyczące usługi Azure Data Box, takie jak:
 

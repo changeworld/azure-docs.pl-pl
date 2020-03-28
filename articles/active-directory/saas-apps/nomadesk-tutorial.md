@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: integracja Azure Active Directory z usługą Nomadesk | Microsoft Docs'
-description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i Nomadesk.
+title: 'Samouczek: Integracja usługi Azure Active Directory z nomadesk | Dokumenty firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a usługą Nomadesk.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,44 +16,44 @@ ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
 ms.openlocfilehash: f1b00f0e9094cf92714cb2454ce04adf7a79dc54
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73160300"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-nomadesk"></a>Samouczek: integracja Azure Active Directory z usługą Nomadesk
+# <a name="tutorial-azure-active-directory-integration-with-nomadesk"></a>Samouczek: Integracja usługi Azure Active Directory z nomadesk
 
-W tym samouczku dowiesz się, jak zintegrować usługę Nomadesk z usługą Azure Active Directory (Azure AD).
-Integracja Nomadesk z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować nomadesk z usługą Azure Active Directory (Azure AD).
+Integracja nomadesk z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz kontrolować usługę Azure AD, która ma dostęp do usługi Nomadesk.
-* Możesz pozwolić użytkownikom na automatyczne logowanie do Nomadesk (Logowanie jednokrotne) przy użyciu kont usługi Azure AD.
+* W usłudze Azure AD można kontrolować, kto ma dostęp do Nomadesk.
+* Można włączyć użytkowników do automatycznego logowania się do Nomadesk (logowanie jednokrotne) za pomocą swoich kont usługi Azure AD.
 * Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z usługą Nomadesk, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z nomadesk, potrzebne są następujące elementy:
 
 * Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* Subskrypcja z włączonym logowaniem jednokrotnym w Nomadesk
+* Subskrypcja z obsługą logowania jednokrotnego w nomadesk
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Nomadesk obsługuje logowanie jednokrotne w usłudze **SP**
+* Nomadesk obsługuje sso inicjowane przez **SP**
 
-* Nomadesk obsługuje Inicjowanie obsługi użytkowników **just in Time**
+* Nomadesk obsługuje inicjowanie obsługi administracyjnej użytkowników **just in time**
 
 ## <a name="adding-nomadesk-from-the-gallery"></a>Dodawanie Nomadesk z galerii
 
-Aby skonfigurować integrację programu Nomadesk z usługą Azure AD, musisz dodać Nomadesk z galerii do listy zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację nomadesk z usługą Azure AD, należy dodać Nomadesk z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać Nomadesk z galerii, wykonaj następujące czynności:**
+**Aby dodać nomadesk z galerii, wykonaj następujące czynności:**
 
 1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
@@ -67,31 +67,31 @@ Aby skonfigurować integrację programu Nomadesk z usługą Azure AD, musisz dod
 
     ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **Nomadesk**, wybierz pozycję **Nomadesk** from panel wyników, a następnie kliknij przycisk **Dodaj** , aby dodać aplikację.
+4. W polu wyszukiwania wpisz **Nomadesk**, wybierz **pozycję Nomadesk** z panelu wyników, a następnie kliknij przycisk **Dodaj,** aby dodać aplikację.
 
      ![Nomadesk na liście wyników](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-Ta sekcja umożliwia skonfigurowanie i przetestowanie logowania jednokrotnego usługi Azure AD za pomocą Nomadesk na podstawie użytkownika testowego o nazwie **Britta Simon**.
-Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w Nomadesk.
+W tej sekcji można skonfigurować i przetestować azure ad logowania jednokrotnego z Nomadesk na podstawie użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację łącza między użytkownikiem usługi Azure AD a powiązanym użytkownikiem w nomadesk.
 
-Aby skonfigurować i przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi Nomadesk, należy wykonać następujące bloki konstrukcyjne:
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD za pomocą nomadesk, należy wykonać następujące bloki konstrukcyjne:
 
 1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
-2. **[Skonfiguruj logowanie](#configure-nomadesk-single-sign-on)** jednokrotne w usłudze Nomadesk, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+2. **[Skonfiguruj logowanie jednokrotne Nomadesk](#configure-nomadesk-single-sign-on)** — umożliwia skonfigurowanie ustawień logowania jednokrotnego po stronie aplikacji.
 3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
 4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
-5. **[Utwórz użytkownika testowego Nomadesk](#create-nomadesk-test-user)** , aby uzyskać odpowiednik Britta Simon w Nomadesk, który jest połączony z reprezentacją użytkownika w usłudze Azure AD.
+5. **[Utwórz użytkownika testowego Nomadesk](#create-nomadesk-test-user)** — aby mieć odpowiednik Britta Simon w Nomadesk, który jest połączony z reprezentacją użytkownika usługi Azure AD.
 6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować Logowanie jednokrotne usługi Azure AD za pomocą Nomadesk, wykonaj następujące czynności:
+Aby skonfigurować logowanie jednokrotne usługi Azure AD za pomocą nomadesk, wykonaj następujące kroki:
 
-1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **Nomadesk** wybierz pozycję **Logowanie jednokrotne**.
+1. W [witrynie Azure portal](https://portal.azure.com/)na stronie integracji aplikacji **Nomadesk** wybierz pozycję **Logowanie jednokrotne**.
 
     ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
@@ -105,20 +105,20 @@ Aby skonfigurować Logowanie jednokrotne usługi Azure AD za pomocą Nomadesk, w
 
 4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    ![Nomadesk domenę i adresy URL Logowanie jednokrotne](common/sp-identifier.png)
+    ![Nomadesk Domeny i adresy URL — informacje o loguchach jednokrotnych](common/sp-identifier.png)
 
     a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://mynomadesk.com/logon/saml/<TENANTID>`
 
     b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://secure.nomadesk.com/saml/<instancename>`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z [zespołem obsługi klienta Nomadesk](mailto:support@nomadesk.com) , aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z [zespołem pomocy technicznej klienta Nomadesk,](mailto:support@nomadesk.com) aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
     ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-6. W sekcji **Konfigurowanie Nomadesk** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
+6. W sekcji **Konfigurowanie nomadesk** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -128,9 +128,9 @@ Aby skonfigurować Logowanie jednokrotne usługi Azure AD za pomocą Nomadesk, w
 
     d. Adres URL wylogowywania
 
-### <a name="configure-nomadesk-single-sign-on"></a>Konfigurowanie logowania jednokrotnego Nomadesk
+### <a name="configure-nomadesk-single-sign-on"></a>Konfigurowanie logowania jednokrotnego nomadesk
 
-Aby skonfigurować Logowanie jednokrotne na stronie **Nomadesk** , musisz wysłać pobrany **certyfikat (base64)** i odpowiednie skopiowane adresy URL z Azure Portal do [zespołu pomocy technicznej Nomadesk](mailto:support@nomadesk.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+Aby skonfigurować logowanie jednokrotne po stronie **Nomadesk,** musisz wysłać pobrany **certyfikat (Base64)** i odpowiednie skopiowane adresy URL z witryny Azure portal do [zespołu pomocy technicznej Nomadesk](mailto:support@nomadesk.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -140,7 +140,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+2. Wybierz **pozycję Nowy użytkownik** u góry ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
@@ -150,7 +150,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon\@yourcompanydomain. Extension**  
+    b. W polu **Nazwa użytkownika** wpisz **\@brittasimon yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -159,15 +159,15 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji Britta Simon do korzystania z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do usługi Nomadesk.
+W tej sekcji można włączyć Britta Simon do korzystania z azure logowania jednokrotnego, udzielając dostępu do Nomadesk.
 
-1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, wybierz pozycję **wszystkie aplikacje**, a następnie wybierz pozycję **Nomadesk**.
+1. W portalu Azure wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz **pozycję Wszystkie aplikacje**, a następnie wybierz **pozycję Nomadesk**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście Aplikacje wybierz pozycję **Nomadesk**.
+2. Na liście aplikacji wybierz pozycję **Nomadesk**.
 
-    ![Link Nomadesk na liście aplikacji](common/all-applications.png)
+    ![Łącze Nomadesk na liście Aplikacje](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -179,28 +179,28 @@ W tej sekcji Britta Simon do korzystania z logowania jednokrotnego na platformie
 
 5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+6. Jeśli oczekujesz dowolnej wartości roli w asercji SAML, a następnie w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-nomadesk-test-user"></a>Utwórz użytkownika testowego Nomadesk
+### <a name="create-nomadesk-test-user"></a>Tworzenie użytkownika testowego Nomadesk
 
-W tej sekcji użytkownik o nazwie Britta Simon jest tworzony w Nomadesk. Nomadesk obsługuje Inicjowanie obsługi użytkowników just in Time, która jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik nie istnieje jeszcze w usłudze Nomadesk, zostanie utworzony nowy po uwierzytelnieniu.
+W tej sekcji użytkownik o nazwie Britta Simon jest tworzony w Nomadesk. Nomadesk obsługuje just-in-time inicjowania obsługi administracyjnej użytkowników, który jest domyślnie włączony. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w Nomadesk, nowy jest tworzony po uwierzytelnieniu.
 
 >[!NOTE]
->Jeśli musisz ręcznie utworzyć użytkownika, musisz skontaktować się z [zespołem pomocy technicznej Nomadesk](mailto:support@nomadesk.com).
+>Jeśli musisz ręcznie utworzyć użytkownika, skontaktuj się z [zespołem pomocy technicznej Nomadesk](mailto:support@nomadesk.com).
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
 W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Nomadesk w panelu dostępu należy automatycznie zalogować się do Nomadesk, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka Nomadesk w Panelu dostępu należy automatycznie zalogować się do nomadesk, dla którego skonfigurowano logującą się logującą logującą. Aby uzyskać więcej informacji na temat Panelu dostępu, zobacz [Wprowadzenie do Panelu dostępu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

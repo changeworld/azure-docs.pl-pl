@@ -1,19 +1,19 @@
 ---
-title: 'Samouczek: Projektowanie interfejsu wiersza polecenia platformy Azure Azure Database for MariaDB'
+title: 'Samouczek: Projektowanie bazy danych platformy Azure dla mariadb — narzędzie interfejsu wiersza polecenia platformy Azure'
 description: W tym samouczku wyjaśniono, jak utworzyć serwer oraz bazę danych usługi Azure Database for MariaDB i zarządzać nimi przy użyciu interfejsu wiersza polecenia platformy Azure.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 12/02/2019
+ms.date: 3/18/2020
 ms.custom: mvc
-ms.openlocfilehash: 91283b453e71e476d247e752b24e9eec0047a814
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 455d7a0c1b3826060ade1083ec6eea99e397574b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74776798"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79534851"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-using-azure-cli"></a>Samouczek: projektowanie usługi Azure Database for MariaDB za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -23,14 +23,14 @@ Usługa Azure Database for MariaDB jest usługą relacyjnej bazy danych w chmurz
 > * Tworzenie usługi Azure Database for MariaDB
 > * Konfigurowanie zapory serwera
 > * Tworzenie bazy danych za pomocą [narzędzia wiersza polecenia mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html)
-> * Ładuj dane przykładowe
+> * Ładowanie przykładowych danych
 > * Zapytania o dane
 > * Aktualizowanie danych
 > * Przywracanie danych
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
-Aby uruchamiać bloki kodu z tego samouczka, możesz użyć usługi Azure Cloud Shell w przeglądarce lub [zainstalować interfejs wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli) na swoim komputerze.
+Możesz użyć usługi Azure Cloud Shell w przeglądarce lub [zainstalować interfejs wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli) na własnym komputerze, aby uruchomić bloki kodu w tym samouczku.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
@@ -41,7 +41,7 @@ Jeśli masz wiele subskrypcji, wybierz odpowiednią subskrypcję, w której zas�
 az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
-## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 [Grupę zasobów platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) można utworzyć za pomocą polecenia [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create). Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi w formie grupy.
 
 Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie `myresourcegroup` w lokalizacji `westus`.
@@ -78,7 +78,7 @@ Poniższy przykład powoduje utworzenie reguły zapory o nazwie `AllowMyIP`, kt�
 az mariadb server firewall-rule create --resource-group myresourcegroup --server mydemoserver --name AllowMyIP --start-ip-address 192.168.0.1 --end-ip-address 192.168.0.1
 ```
 
-## <a name="get-the-connection-information"></a>Uzyskiwanie informacji o połączeniu
+## <a name="get-the-connection-information"></a>Pobieranie informacji o połączeniu
 
 Aby nawiązać połączenie z serwerem, musisz podać informacje o hoście i poświadczenia dostępu.
 ```azurecli-interactive
@@ -202,7 +202,7 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > * Tworzenie serwera usługi Azure Database for MariaDB
 > * Konfigurowanie zapory serwera
 > * Tworzenie bazy danych za pomocą [narzędzia wiersza polecenia mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html)
-> * Ładuj dane przykładowe
+> * Ładowanie przykładowych danych
 > * Zapytania o dane
 > * Aktualizowanie danych
 > * Przywracanie danych

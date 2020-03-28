@@ -1,5 +1,5 @@
 ---
-title: Rozgałęzianie w potoku Azure Data Factory
+title: Rozgałęzianie w potoku usługi Azure Data Factory
 description: W tym artykule przedstawiono sposób sterowania przepływem danych w usłudze Azure Data Factory przez rozgałęzianie działań i tworzenie łańcuchów działań.
 services: data-factory
 author: djpmsft
@@ -12,21 +12,21 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
 ms.openlocfilehash: 7ba921656d0dad059b1d15f443bcefeff03ade50
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75977382"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Rozgałęzianie działań i tworzenie łańcuchów działań w potoku usługi Data Factory
 
-W tym samouczku utworzysz potok Data Factory, który zawiera niektóre funkcje przepływu sterowania. Ten potok kopiuje z kontenera na platformie Azure Blob Storage do innego kontenera na tym samym koncie magazynu. Jeśli działanie kopiowania zakończy się powodzeniem, potok wyśle szczegóły pomyślnej operacji kopiowania w wiadomości e-mail. Te informacje mogą obejmować ilość zapisanych danych. Jeśli działanie kopiowania zakończy się niepowodzeniem, w wiadomości e-mail zostanie wysłane szczegóły błędu kopiowania, na przykład komunikat o błędzie. W samouczku pokazano, jak przekazać parametry.
+W tym samouczku utworzysz potok fabryki danych, który prezentuje niektóre funkcje przepływu sterowania. Ten potok jest kopiowany z kontenera w usłudze Azure Blob Storage do innego kontenera na tym samym koncie magazynu. Jeśli działanie kopiowania zakończy się pomyślnie, potok wysyła szczegóły pomyślnej operacji kopiowania w wiadomości e-mail. Informacje te mogą obejmować ilość zapisanych danych. Jeśli działanie kopiowania nie powiedzie się, wysyła szczegóły błędu kopiowania, takie jak komunikat o błędzie, w wiadomości e-mail. W samouczku pokazano, jak przekazać parametry.
 
-Ta ilustracja zawiera przegląd scenariusza:
+Ta grafika zawiera omówienie scenariusza:
 
-![Przegląd](media/tutorial-control-flow/overview.png)
+![Omówienie](media/tutorial-control-flow/overview.png)
 
-W tym samouczku przedstawiono sposób wykonywania następujących zadań:
+W tym samouczku pokazano, jak wykonać następujące zadania:
 
 > [!div class="checklist"]
 > * Tworzenie fabryki danych
@@ -38,47 +38,47 @@ W tym samouczku przedstawiono sposób wykonywania następujących zadań:
 > * Uruchamianie potoku
 > * Monitorowanie uruchomień działań i potoku
 
-W tym samouczku jest używany zestaw SDK platformy .NET. Można użyć innych mechanizmów do współpracy z Azure Data Factory. Aby uzyskać Data Factory przewodników Szybki Start, zobacz [5-minutowe Przewodniki Szybki Start](/azure/data-factory/quickstart-create-data-factory-portal).
+W tym samouczku jest używany zestaw SDK platformy .NET. Można użyć innych mechanizmów do interakcji z usługi Azure Data Factory. Aby zapoznać się z przewodnikami Szybki start dla fabryki danych, zobacz [5-minutowe przewodniki Szybki start](/azure/data-factory/quickstart-create-data-factory-portal).
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Konto usługi Azure Storage. Magazyn obiektów BLOB jest używany jako magazyn danych źródłowych. Jeśli nie masz konta usługi Azure Storage, zobacz [Tworzenie konta magazynu](../storage/common/storage-account-create.md).
+* konto usługi Azure Storage. Magazyn obiektów blob służy jako magazynu danych źródłowych. Jeśli nie masz konta magazynu platformy Azure, zobacz [Tworzenie konta magazynu](../storage/common/storage-account-create.md).
 * Eksplorator usługi Azure Storage. Aby zainstalować to narzędzie, zobacz [Eksplorator usługi Azure Storage](https://storageexplorer.com/).
-* usługą Azure SQL Database. Baza danych jest używana jako magazyn danych ujścia. Jeśli nie masz Azure SQL Database, zobacz [Tworzenie bazy danych Azure SQL Database](../sql-database/sql-database-get-started-portal.md).
-* Program Visual Studio. W tym artykule jest wykorzystywany program Visual Studio 2019.
-* Zestaw Azure .NET SDK. Pobierz i zainstaluj [zestaw Azure .NET SDK](https://azure.microsoft.com/downloads/).
+* usługą Azure SQL Database. Baza danych jest używana jako magazyn danych będący ujściem. Jeśli nie masz bazy danych SQL Azure, zobacz [Tworzenie bazy danych SQL platformy Azure.](../sql-database/sql-database-get-started-portal.md)
+* Program Visual Studio. W tym artykule użyto programu Visual Studio 2019.
+* Zestaw SDK platformy Azure .net. Pobierz i zainstaluj [zestaw SDK platformy Azure .NET](https://azure.microsoft.com/downloads/).
 
-Listę regionów świadczenia usługi Azure, w których Data Factory są obecnie dostępne, można znaleźć w temacie [produkty dostępne według regionów](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych i obliczenia mogą znajdować się w innych regionach. Magazyny obejmują usługę Azure Storage i Azure SQL Database. Obliczenia obejmują HDInsight, który Data Factory używany.
+Aby uzyskać listę regionów platformy Azure, w których usługa Data Factory jest obecnie dostępna, zobacz [Produkty dostępne według regionów](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych i obliczenia mogą znajdować się w innych regionach. Magazyny obejmują usługi Azure Storage i usługi Azure SQL Database. Obliczenia obejmują HDInsight, którego używa fabryka danych.
 
-Utwórz aplikację zgodnie z opisem w temacie [Tworzenie aplikacji Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Przypisz aplikację do roli **współautor** , wykonując instrukcje opisane w tym samym artykule. Potrzebujesz kilku wartości dla nowszych części tego samouczka, takich jak identyfikator **aplikacji (klienta)** i **Identyfikator katalogu (dzierżawy)** .
+Tworzenie aplikacji w sposób opisany w [obszarze Tworzenie aplikacji usługi Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Przypisz aplikację do roli **współautora,** postępując zgodnie z instrukcjami w tym samym artykule. Będziesz potrzebować kilku wartości dla późniejszych części tego samouczka, takich jak **identyfikator aplikacji (klienta)** i **identyfikator katalogu (dzierżawy).**
 
-### <a name="create-a-blob-table"></a>Tworzenie tabeli obiektów BLOB
+### <a name="create-a-blob-table"></a>Tworzenie tabeli obiektów blob
 
-1. Otwórz edytor tekstów. Skopiuj poniższy tekst i Zapisz go lokalnie jako plik *Input. txt*.
+1. Otwórz edytor tekstów. Skopiuj następujący tekst i zapisz go lokalnie jako *input.txt*.
 
    ```
    Ethel|Berg
    Tamika|Walsh
    ```
 
-1. Otwórz Eksplorator usługi Azure Storage. Rozwiń konto magazynu. Kliknij prawym przyciskiem myszy pozycję **Blob Containers** (Kontenery obiektów blob) i wybierz polecenie **Create Blob Container** (Utwórz kontener obiektów blob).
-1. Nazwij nowy kontener *adfv2branch* i wybierz pozycję **Przekaż** , aby dodać plik *Input. txt* do kontenera.
+1. Otwórz Eksploratora usługi Azure Storage. Rozwiń swoje konto magazynu. Kliknij prawym przyciskiem myszy pozycję **Kontenery obiektów blob** i wybierz polecenie **Utwórz kontener obiektów blob**.
+1. Nazwij nowy kontener *adfv2branch* i wybierz **pozycję Przekaż,** aby dodać plik *input.txt* do kontenera.
 
-## Utwórz projekt programu Visual Studio<a name="create-visual-studio-project"></a>
+## <a name="create-visual-studio-project"></a>Tworzenie projektu programu Visual Studio<a name="create-visual-studio-project"></a>
 
-Tworzenie aplikacji C# konsolowej .NET:
+Utwórz aplikację konsoli języka C#:
 
 1. Uruchom program Visual Studio i wybierz pozycję **Utwórz nowy projekt**.
-1. W obszarze **Utwórz nowy projekt**wybierz pozycję **aplikacja konsoli (.NET Framework)** C# , a następnie wybierz pozycję **dalej**.
+1. W **obszarze Tworzenie nowego projektu**wybierz pozycję Aplikacja konsoli **(.NET Framework)** dla języka C# i wybierz pozycję **Dalej**.
 1. Nazwij projekt *ADFv2BranchTutorial*.
-1. Wybierz pozycję **.NET w wersji 4.5.2** lub nowszej, a następnie wybierz pozycję **Utwórz**.
+1. Wybierz **opcję .NET w wersji 4.5.2** lub **wyższej,** a następnie wybierz pozycję Utwórz .
 
 ### <a name="install-nuget-packages"></a>Instalowanie pakietów NuGet
 
-1. Wybierz pozycję **Narzędzia** > **Menedżer pakietów NuGet** > **Konsola menedżera pakietów**.
-1. W oknie **Konsola menedżera pakietów** uruchom następujące polecenia, aby zainstalować pakiety. Aby uzyskać szczegółowe informacje, zapoznaj się z [pakietem NuGet Microsoft. Azure. Management. DataFactory](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) .
+1. Wybierz **opcję Konsola** > Menedżera**pakietów Menedżera** > **pakietów**Narzędzia NuGet .
+1. W oknie **Konsola menedżera pakietów** uruchom następujące polecenia, aby zainstalować pakiety. Szczegółowe informacje można znaleźć w [pakiecie nuget Microsoft.Azure.Management.DataFactory.](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/)
 
    ```powershell
    Install-Package Microsoft.Azure.Management.DataFactory
@@ -88,7 +88,7 @@ Tworzenie aplikacji C# konsolowej .NET:
 
 ### <a name="create-a-data-factory-client"></a>Tworzenie klienta fabryki danych
 
-1. Otwórz *program.cs* i Dodaj następujące instrukcje:
+1. Otwórz *Program.cs* i dodaj następujące instrukcje:
 
    ```csharp
    using System;
@@ -101,7 +101,7 @@ Tworzenie aplikacji C# konsolowej .NET:
    using Microsoft.IdentityModel.Clients.ActiveDirectory;
    ```
 
-1. Dodaj te zmienne statyczne do klasy `Program`. Zastąp symbole zastępcze własnymi wartościami.
+1. Dodaj te zmienne statyczne do `Program` klasy. Zastąp symbole zastępcze własnymi wartościami.
 
    ```csharp
    // Set variables
@@ -133,7 +133,7 @@ Tworzenie aplikacji C# konsolowej .NET:
    static string sendSuccessEmailActivity = "SendSuccessEmailActivity";
    ```
 
-1. Dodaj następujący kod do metody `Main`: Ten kod tworzy wystąpienie klasy `DataFactoryManagementClient`. Następnie użyjesz tego obiektu, aby utworzyć fabrykę danych, połączoną usługę, zestawy danych i potok. Można również użyć tego obiektu do monitorowania szczegółów uruchomienia potoku.
+1. Dodaj następujący kod do metody `Main`: Ten kod tworzy `DataFactoryManagementClient` wystąpienie klasy. Następnie można użyć tego obiektu do utworzenia fabryki danych, połączonej usługi, zestawów danych i potoku. Można również użyć tego obiektu do monitorowania szczegółów uruchomienia potoku.
 
    ```csharp
    // Authenticate and create a data factory management client
@@ -146,7 +146,7 @@ Tworzenie aplikacji C# konsolowej .NET:
 
 ### <a name="create-a-data-factory"></a>Tworzenie fabryki danych
 
-1. Dodaj metodę `CreateOrUpdateDataFactory` do pliku *program.cs* :
+1. Dodaj `CreateOrUpdateDataFactory` metodę do *pliku Program.cs:*
 
    ```csharp
    static Factory CreateOrUpdateDataFactory(DataFactoryManagementClient client)
@@ -171,7 +171,7 @@ Tworzenie aplikacji C# konsolowej .NET:
    }
    ```
 
-1. Dodaj następujący wiersz do metody `Main`, która tworzy fabrykę danych:
+1. Dodaj następujący wiersz `Main` do metody, która tworzy fabrykę danych:
 
    ```csharp
    Factory df = CreateOrUpdateDataFactory(client);
@@ -179,7 +179,7 @@ Tworzenie aplikacji C# konsolowej .NET:
 
 ## <a name="create-an-azure-storage-linked-service"></a>Tworzenie połączonej usługi Azure Storage
 
-1. Dodaj metodę `StorageLinkedServiceDefinition` do pliku *program.cs* :
+1. Dodaj `StorageLinkedServiceDefinition` metodę do *pliku Program.cs:*
 
    ```csharp
    static LinkedServiceResource StorageLinkedServiceDefinition(DataFactoryManagementClient client)
@@ -195,23 +195,23 @@ Tworzenie aplikacji C# konsolowej .NET:
    }
    ```
 
-1. Dodaj następujący wiersz do metody `Main`, która tworzy połączoną usługę Azure Storage:
+1. Dodaj następujący wiersz `Main` do metody, która tworzy usługę połączony usługi Azure Storage:
 
    ```csharp
    client.LinkedServices.CreateOrUpdate(resourceGroup, dataFactoryName, storageLinkedServiceName, StorageLinkedServiceDefinition(client));
    ```
 
-Aby uzyskać więcej informacji na temat obsługiwanych właściwości i szczegółów, zobacz [Właściwości połączonej usługi](connector-azure-blob-storage.md#linked-service-properties).
+Aby uzyskać więcej informacji na temat obsługiwanych właściwości i szczegółów, zobacz [Połączone właściwości usługi](connector-azure-blob-storage.md#linked-service-properties).
 
-## <a name="create-datasets"></a>Utwórz zestawy danych
+## <a name="create-datasets"></a>Tworzenie zestawów danych
 
 W tej sekcji utworzysz dwa zestawy danych, jeden dla źródła i jeden dla ujścia.
 
 ### <a name="create-a-dataset-for-a-source-azure-blob"></a>Tworzenie zestawu danych dla źródłowego obiektu blob platformy Azure
 
-Dodaj metodę, która tworzy *zestaw danych obiektów blob platformy Azure*. Aby uzyskać więcej informacji o obsługiwanych właściwościach i szczegółach, zobacz [Właściwości zestawu danych obiektów blob platformy Azure](connector-azure-blob-storage.md#dataset-properties).
+Dodaj metodę, która tworzy *zestaw danych obiektów blob platformy Azure*. Aby uzyskać więcej informacji na temat obsługiwanych właściwości i szczegółów, zobacz [właściwości zestawu danych obiektów Blob platformy Azure](connector-azure-blob-storage.md#dataset-properties).
 
-Dodaj metodę `SourceBlobDatasetDefinition` do pliku *program.cs* :
+Dodaj `SourceBlobDatasetDefinition` metodę do *pliku Program.cs:*
 
 ```csharp
 static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient client)
@@ -232,13 +232,13 @@ static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient c
 }
 ```
 
-Należy zdefiniować zestaw danych reprezentujący źródło danych w obiekcie blob platformy Azure. Ten zestaw danych obiektu BLOB odwołuje się do połączonej usługi Azure Storage obsługiwanej w poprzednim kroku. Zestaw danych obiektów BLOB opisuje lokalizację obiektu BLOB do skopiowania: *FolderPath* i *filename*.
+Należy zdefiniować zestaw danych reprezentujący źródło danych w obiekcie blob platformy Azure. Ten zestaw danych obiektu blob odwołuje się do usługi połączonej usługi Azure Storage obsługiwane w poprzednim kroku. Zestaw danych obiektów Blob opisuje lokalizację obiektu blob do skopiowania z: *FolderPath* i *FileName*.
 
-Zwróć uwagę na użycie parametrów dla *FolderPath*. `sourceBlobContainer` to nazwa parametru, a wyrażenie jest zamieniane na wartości przesłane w ramach uruchomienia potoku. Składnia umożliwiająca zdefiniowanie parametrów: `@pipeline().parameters.<parameterName>`
+Zwróć uwagę na użycie parametrów dla *FolderPath*. `sourceBlobContainer`jest nazwą parametru, a wyrażenie jest zastępowane wartościami przekazanymi w przebiegu potoku. Składnia umożliwiająca zdefiniowanie parametrów: `@pipeline().parameters.<parameterName>`
 
-### <a name="create-a-dataset-for-a-sink-azure-blob"></a>Tworzenie zestawu danych dla ujścia obiektu blob platformy Azure
+### <a name="create-a-dataset-for-a-sink-azure-blob"></a>Tworzenie zestawu danych dla ujścia obiektu Blob platformy Azure
 
-1. Dodaj metodę `SourceBlobDatasetDefinition` do pliku *program.cs* :
+1. Dodaj `SourceBlobDatasetDefinition` metodę do *pliku Program.cs:*
 
    ```csharp
    static DatasetResource SinkBlobDatasetDefinition(DataFactoryManagementClient client)
@@ -258,7 +258,7 @@ Zwróć uwagę na użycie parametrów dla *FolderPath*. `sourceBlobContainer` to
    }
    ```
 
-1. Dodaj następujący kod do metody `Main`, która tworzy zarówno zestaw danych źródła i ujścia obiektów blob platformy Azure.
+1. Dodaj następujący kod `Main` do metody, która tworzy zarówno źródło obiektów blob platformy Azure, jak i zestawy danych ujścia.
 
    ```csharp
    client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobSourceDatasetName, SourceBlobDatasetDefinition(client));
@@ -268,12 +268,12 @@ Zwróć uwagę na użycie parametrów dla *FolderPath*. `sourceBlobContainer` to
 
 ## <a name="create-a-c-class-emailrequest"></a>Tworzenie klasy języka C#: EmailRequest
 
-W C# projekcie Utwórz klasę o nazwie `EmailRequest`. Ta klasa definiuje właściwości, które potok wysyła w żądaniu treści podczas wysyłania wiadomości e-mail. W tym samouczku potok wysyła cztery właściwości z potoku do wiadomości e-mail:
+W projekcie języka C# utwórz klasę o nazwie `EmailRequest`. Ta klasa definiuje, jakie właściwości potok wysyła w żądaniu treści podczas wysyłania wiadomości e-mail. W tym samouczku potok wysyła cztery właściwości z potoku do wiadomości e-mail:
 
-* Komunikat. Treść wiadomości e-mail. W przypadku pomyślnego kopiowania ta właściwość zawiera ilość zapisanych danych. W przypadku kopii zakończonej niepowodzeniem ta właściwość zawiera szczegóły błędu.
+* Komunikat. Treść wiadomości e-mail. Dla pomyślnej kopii ta właściwość zawiera ilość danych zapisanych. W przypadku kopii nie powiodło się ta właściwość zawiera szczegóły błędu.
 * Nazwa fabryki danych. Nazwa fabryki danych.
 * Nazwa potoku. Nazwa potoku.
-* Nadajnik. Parametr, który przechodzi przez. Ta właściwość określa odbiorcę wiadomości e-mail.
+* Odbiornik. Parametr, który przechodzi. Ta właściwość określa odbiorcę wiadomości e-mail.
 
 ```csharp
     class EmailRequest
@@ -302,11 +302,11 @@ W C# projekcie Utwórz klasę o nazwie `EmailRequest`. Ta klasa definiuje właś
 
 ## <a name="create-email-workflow-endpoints"></a>Tworzenie punktów końcowych przepływu pracy poczty e-mail
 
-Aby wyzwolić wysyłanie wiadomości e-mail, zdefiniuj przepływ pracy przy użyciu usługi [Logic Apps](../logic-apps/logic-apps-overview.md). Aby uzyskać szczegółowe informacje na temat tworzenia przepływu pracy Logic Apps, zobacz [jak utworzyć aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Aby wyzwolić wysyłanie wiadomości e-mail, zdefiniuj przepływ pracy przy użyciu usługi [Logic Apps](../logic-apps/logic-apps-overview.md). Aby uzyskać szczegółowe informacje na temat tworzenia przepływu pracy aplikacji logiki, zobacz [Jak utworzyć aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ### <a name="success-email-workflow"></a>Przepływ pracy wiadomości e-mail z informacją o powodzeniu
 
-W [Azure Portal](https://portal.azure.com)Utwórz przepływ pracy Logic Apps o nazwie *CopySuccessEmail*. Zdefiniuj wyzwalacz przepływu pracy jako `When an HTTP request is received`. W wyzwalaczu żądania wypełnij pole `Request Body JSON Schema` przy użyciu następującego kodu JSON:
+W [witrynie Azure portal](https://portal.azure.com)utwórz przepływ pracy aplikacji logiki o nazwie *CopySuccessEmail*. Zdefiniuj `When an HTTP request is received`wyzwalacz przepływu pracy jako . W wyzwalaczu żądania wypełnij pole `Request Body JSON Schema` przy użyciu następującego kodu JSON:
 
 ```json
 {
@@ -328,27 +328,27 @@ W [Azure Portal](https://portal.azure.com)Utwórz przepływ pracy Logic Apps o n
 }
 ```
 
-Przepływ pracy wygląda podobnie do poniższego przykładu:
+Przepływ pracy wygląda mniej więcej w następującym przykładzie:
 
 ![Przepływ pracy wiadomości e-mail z informacją o powodzeniu](media/tutorial-control-flow/success-email-workflow-trigger.png)
 
-Zawartość JSON jest wyrównywana z klasą `EmailRequest` utworzoną w poprzedniej sekcji.
+Ta zawartość JSON jest `EmailRequest` wyrównana z klasą utworzoną w poprzedniej sekcji.
 
-Dodaj akcję `Office 365 Outlook – Send an email`. W przypadku akcji **Wyślij wiadomość e-mail** Dostosuj sposób formatowania wiadomości e-mail przy użyciu właściwości przekazaną w schemacie JSON **treści** żądania. Oto przykład:
+Dodaj akcję `Office 365 Outlook – Send an email`. Dla **akcji Wyślij wiadomość e-mail** dostosuj sposób formatowania wiadomości e-mail przy użyciu właściwości przekazanych w schemacie JSON **treści** żądania. Oto przykład:
 
-![Projektant aplikacji logiki — wysyłanie akcji poczty e-mail](media/tutorial-control-flow/customize-send-email-action.png)
+![Projektant aplikacji logiki — wysyłanie akcji e-mail](media/tutorial-control-flow/customize-send-email-action.png)
 
-Po zapisaniu przepływu pracy skopiuj i Zapisz wartość **adresu URL post protokołu HTTP** z wyzwalacza.
+Po zapisaniu przepływu pracy skopiuj i zapisz wartość **adresu URL HTTP POST** z wyzwalacza.
 
 ## <a name="fail-email-workflow"></a>Przepływ pracy wiadomości e-mail z informacją o niepowodzeniu
 
-Klonuj **CopySuccessEmail** jako inny przepływ pracy Logic Apps o nazwie *nazwie copyfailemail*. W wyzwalaczu żądania element `Request Body JSON schema` jest taki sam. Zmień format wiadomości e-mail, na przykład element `Subject`, aby przekształcić wiadomość e-mail w wiadomość z informacją o niepowodzeniu. Oto przykład:
+**Sklonuj CopySuccessEmail** jako inny przepływ pracy aplikacji logiki o nazwie *CopyFailEmail*. W wyzwalaczu żądania element `Request Body JSON schema` jest taki sam. Zmień format wiadomości e-mail, na przykład element `Subject`, aby przekształcić wiadomość e-mail w wiadomość z informacją o niepowodzeniu. Oto przykład:
 
-![Projektant aplikacji logiki — przepływ pracy poczty e-mail zakończony niepowodzeniem](media/tutorial-control-flow/fail-email-workflow.png)
+![Projektant aplikacji logiki — niepowodzenie przepływu pracy poczty e-mail](media/tutorial-control-flow/fail-email-workflow.png)
 
-Po zapisaniu przepływu pracy skopiuj i Zapisz wartość **adresu URL post protokołu HTTP** z wyzwalacza.
+Po zapisaniu przepływu pracy skopiuj i zapisz wartość **adresu URL HTTP POST** z wyzwalacza.
 
-Teraz powinny istnieć dwa adresy URL przepływów pracy, takie jak następujące przykłady:
+Teraz powinny być dwa adresy URL przepływu pracy, takie jak następujące przykłady:
 
 ```csharp
 //Success Request Url
@@ -360,16 +360,16 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
 ## <a name="create-a-pipeline"></a>Tworzenie potoku
 
-Wróć do projektu w programie Visual Studio. Teraz dodamy kod, który tworzy potok z działaniem kopiowania i właściwością `DependsOn`. W tym samouczku potok zawiera jedno działanie, działanie kopiowania, które przyjmuje zestaw danych obiektów BLOB jako źródło i inny zestaw danych obiektu BLOB jako ujścia. Jeśli działanie kopiowania zakończy się powodzeniem lub zakończy się niepowodzeniem, program wywołuje inne zadania poczty e-mail.
+Wróć do projektu w programie Visual Studio. Teraz dodamy kod, który tworzy potok z `DependsOn` działaniem kopiowania i właściwością. W tym samouczku potok zawiera jedno działanie, działanie kopiowania, które przyjmuje w zestawie danych obiektów blob jako źródło i inny zestaw danych obiektu blob jako ujście. Jeśli działanie kopiowania zakończy się powodzeniem lub niepowodzeniem, wywołuje różne zadania poczty e-mail.
 
 W tym potoku użyto następujących funkcji:
 
 * Parametry
-* Aktywność sieci Web
+* Aktywność w sieci Web
 * Zależność działania
-* Używanie danych wyjściowych z działania jako dane wejściowe do innego działania
+* Używanie danych wyjściowych z działania jako danych wejściowych do innego działania
 
-1. Dodaj tę metodę do projektu. Poniższe sekcje zawierają więcej szczegółów.
+1. Dodaj tę metodę do projektu. Poniższe sekcje zawierają bardziej szczegółowe informacje.
 
     ```csharp
     static PipelineResource PipelineDefinition(DataFactoryManagementClient client)
@@ -443,7 +443,7 @@ W tym potoku użyto następujących funkcji:
             }
     ```
 
-1. Dodaj następujący wiersz do metody `Main`, która tworzy potok:
+1. Dodaj następujący wiersz `Main` do metody, która tworzy potok:
 
    ```csharp
    client.Pipelines.CreateOrUpdate(resourceGroup, dataFactoryName, pipelineName, PipelineDefinition(client));
@@ -451,11 +451,11 @@ W tym potoku użyto następujących funkcji:
 
 ### <a name="parameters"></a>Parametry
 
-Pierwsza sekcja naszego kodu potoku definiuje parametry.
+Pierwsza sekcja naszego kodu rurociągu definiuje parametry.
 
-* `sourceBlobContainer`. Źródłowy zestaw danych obiektu BLOB wykorzystuje ten parametr w potoku.
-* `sinkBlobContainer`. Zestaw danych obiektu BLOB ujścia wykorzystuje ten parametr w potoku.
-* `receiver`. Dwa działania sieci Web w potoku, które wysyłają wiadomości e-mail o powodzeniu lub niepowodzeniu do odbiorcy używają tego parametru.
+* `sourceBlobContainer`. Źródłowy zestaw danych obiektów blob zużywa ten parametr w potoku.
+* `sinkBlobContainer`. Zestaw danych obiektu blob ujścia zużywa ten parametr w potoku.
+* `receiver`. Dwa działania sieci Web w potoku, które wysyłają wiadomości e-mail o powodzenie lub niepowodzenie do odbiornika używać tego parametru.
 
 ```csharp
 Parameters = new Dictionary<string, ParameterSpecification>
@@ -466,9 +466,9 @@ Parameters = new Dictionary<string, ParameterSpecification>
     },
 ```
 
-### <a name="web-activity"></a>Aktywność sieci Web
+### <a name="web-activity"></a>Aktywność w sieci Web
 
-Działanie sieci Web umożliwia wywołanie dowolnego punktu końcowego REST. Aby uzyskać więcej informacji na temat działania, zobacz [aktywność sieci Web w Azure Data Factory](control-flow-web-activity.md). Ten potok używa działania sieci Web do wywołania przepływu pracy Logic Apps poczty e-mail. Tworzysz dwa działania sieci Web: jeden, który wywołuje przepływ pracy `CopySuccessEmail` i jeden wywołuje `CopyFailWorkFlow`.
+Działanie sieci Web umożliwia wywołanie dowolnego punktu końcowego REST. Aby uzyskać więcej informacji na temat działania, zobacz [Aktywność sieci Web w usłudze Azure Data Factory](control-flow-web-activity.md). Ten potok używa działania sieci web do wywołania przepływu pracy poczty e-mail aplikacji logiki. Tworzysz dwa działania internetowe: jedno, `CopySuccessEmail` które wywołuje przepływ `CopyFailWorkFlow`pracy i jedno, które wywołuje plik .
 
 ```csharp
         new WebActivity
@@ -488,18 +488,18 @@ Działanie sieci Web umożliwia wywołanie dowolnego punktu końcowego REST. Aby
         }
 ```
 
-We właściwości `Url` wklej punkty końcowe **adresu URL post protokołu HTTP** z przepływów pracy Logic Apps. We właściwości `Body` Przekaż wystąpienie klasy `EmailRequest`. Żądanie wiadomości e-mail zawiera następujące właściwości:
+We `Url` właściwości wklej punkty końcowe **adresu URL HTTP POST** z przepływów pracy aplikacji logiki. We `Body` właściwości przekazać wystąpienie `EmailRequest` klasy. Żądanie wiadomości e-mail zawiera następujące właściwości:
 
-* Komunikat. Przekazuje wartość `@{activity('CopyBlobtoBlob').output.dataWritten`. Uzyskuje dostęp do właściwości poprzedniego działania kopiowania i przekazuje wartość `dataWritten`. W przypadku wiadomości dotyczącej niepowodzenia przekaż dane wyjściowe błędu zamiast elementu `@{activity('CopyBlobtoBlob').error.message`.
-* Nazwa Data Factory. Przekazuje wartość `@{pipeline().DataFactory}` ta zmienna systemowa pozwala uzyskać dostęp do odpowiedniej nazwy fabryki danych. Aby uzyskać listę zmiennych systemowych, zobacz [zmienne systemowe](control-flow-system-variables.md).
+* Komunikat. Przekazuje wartość `@{activity('CopyBlobtoBlob').output.dataWritten`. Uzyskuje dostęp do właściwości poprzedniego działania kopiowania `dataWritten`i przekazuje wartość . W przypadku wiadomości dotyczącej niepowodzenia przekaż dane wyjściowe błędu zamiast elementu `@{activity('CopyBlobtoBlob').error.message`.
+* Nazwa fabryki danych. Przekazuje wartość `@{pipeline().DataFactory}` Tej zmiennej systemowej umożliwia dostęp do odpowiedniej nazwy fabryki danych. Aby uzyskać listę zmiennych systemowych, zobacz [Zmienne systemowe](control-flow-system-variables.md).
 * Nazwa potoku. Przekazuje wartość `@{pipeline().Pipeline}`. Ta zmienna systemowa umożliwia dostęp do odpowiedniej nazwy potoku.
-* Nadajnik. Przekazuje wartość `"@pipeline().parameters.receiver"`. Uzyskuje dostęp do parametrów potoku.
+* Odbiornik. Przekazuje wartość `"@pipeline().parameters.receiver"`. Uzyskuje dostęp do parametrów potoku.
 
 Ten kod tworzy nową zależność działania, która zależy od poprzedniego działania kopiowania.
 
 ## <a name="create-a-pipeline-run"></a>Tworzenie uruchomienia potoku
 
-Dodaj następujący kod do metody `Main`, która wyzwala uruchomienie potoku.
+Dodaj następujący kod `Main` do metody, która wyzwala uruchomienie potoku.
 
 ```csharp
 // Create a pipeline run
@@ -517,7 +517,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 
 ## <a name="main-class"></a>Klasa metody Main
 
-Ostateczna Metoda `Main` powinna wyglądać następująco.
+Twoja `Main` ostateczna metoda powinna wyglądać tak.
 
 ```csharp
 // Authenticate and create a data factory management client
@@ -568,9 +568,9 @@ Skompiluj i uruchom program, aby wyzwolić uruchomienie potoku.
     }
     ```
 
-    Ten kod stale sprawdza stan uruchomienia do momentu zakończenia kopiowania danych.
+    Ten kod stale sprawdza stan uruchomienia, dopóki nie zakończy kopiowanie danych.
 
-1. Dodaj następujący kod do metody `Main`, która pobiera szczegóły uruchomienia działania kopiowania, na przykład rozmiar odczytu/zapisu danych:
+1. Dodaj następujący kod `Main` do metody, która pobiera szczegóły uruchamiania działania kopiowania, na przykład rozmiar danych odczytu/zapisu:
 
     ```csharp
     // Check the copy activity run details
@@ -595,9 +595,9 @@ Skompiluj i uruchom program, aby wyzwolić uruchomienie potoku.
 
 Skompiluj i uruchom aplikację, a następnie zweryfikuj wykonywanie potoku.
 
-Aplikacja wyświetla postęp tworzenia fabryki danych, połączonej usługi, zestawów danych, potoku i uruchomienia potoku. Następnie sprawdza stan uruchomienia potoku. Poczekaj na wyświetlenie szczegółów uruchomienia działania kopiowania z rozmiarem odczytanych/zapisanych danych. Następnie użyj narzędzi, takich jak Eksplorator usługi Azure Storage, aby sprawdzić, czy obiekt BLOB został skopiowany do *outputBlobPath* z *inputBlobPath* , jak określono w zmiennych.
+Aplikacja wyświetla postęp tworzenia fabryki danych, połączonej usługi, zestawów danych, potoku i uruchomienia potoku. Następnie sprawdza stan uruchomienia potoku. Poczekaj na wyświetlenie szczegółów uruchomienia działania kopiowania z rozmiarem odczytanych/zapisanych danych. Następnie użyj narzędzi, takich jak Eksplorator usługi Azure Storage, aby sprawdzić obiekt blob został skopiowany do *outputBlobPath* z *inputBlobPath,* jak określono w zmiennych.
 
-Dane wyjściowe powinny wyglądać podobnie do poniższego przykładu:
+Dane wyjściowe powinny przypominać następującą próbkę:
 
 ```json
 Creating data factory DFTutorialTest...
@@ -748,7 +748,7 @@ Press any key to exit...
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku zostały wykonane następujące zadania:
+W tym samouczku wykonaliśmy następujące zadania:
 
 > [!div class="checklist"]
 > * Tworzenie fabryki danych
@@ -760,6 +760,6 @@ W tym samouczku zostały wykonane następujące zadania:
 > * Uruchamianie potoku
 > * Monitorowanie uruchomień działań i potoku
 
-Teraz możesz przejść do sekcji pojęcia, aby uzyskać więcej informacji na temat Azure Data Factory.
+Teraz możesz przejść do sekcji Pojęcia, aby uzyskać więcej informacji na temat usługi Azure Data Factory.
 > [!div class="nextstepaction"]
 >[Potoki i działania](concepts-pipelines-activities.md)

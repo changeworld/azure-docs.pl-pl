@@ -1,6 +1,6 @@
 ---
 title: Przykłady szablonów usługi Azure Resource Manager — usługa Event Grid | Microsoft Docs
-description: Ten artykuł zawiera listę przykładów Azure Resource Manager szablonów dla Azure Event Grid w witrynie GitHub.
+description: Ten artykuł zawiera listę przykładów szablonów usługi Azure Resource Manager dla usługi Azure Event Grid w usłudze GitHub.
 services: event-grid
 author: spelluru
 manager: timlt
@@ -11,10 +11,10 @@ ms.tgt_pltfrm: na
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 38d8db0bcc504760595fe51b63072f63e785577a
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76720626"
 ---
 # <a name="azure-resource-manager-templates-for-event-grid"></a>Szablony usługi Azure Resource Manager dla usługi Event Grid

@@ -1,5 +1,5 @@
 ---
-title: Samouczek — Tworzenie niestandardowych obrazów maszyn wirtualnych przy użyciu Azure PowerShell
+title: Samouczek — tworzenie niestandardowych obrazów maszyn wirtualnych za pomocą programu Azure PowerShell
 description: Z tego samouczka dowiesz się, jak utworzyć niestandardowy obraz maszyny wirtualnej na platformie Azure za pomocą programu Azure PowerShell
 documentationcenter: virtual-machines
 author: cynthn
@@ -13,10 +13,10 @@ ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 7360798f2f95184145a856babf501e3080cbaaf4
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76274203"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>Samouczek: tworzenie niestandardowego obrazu maszyny wirtualnej na platformie Azure za pomocą programu Azure PowerShell
@@ -30,19 +30,19 @@ Obrazy niestandardowe są podobne do obrazów z platformy handlowej, ale tworzy 
 > * Wyświetlanie listy wszystkich obrazów w subskrypcji
 > * Usuwanie obrazu
 
-W publicznej wersji zapoznawczej mamy usługę [Azure VM Image Builder](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview) . Wystarczy opisać dostosowania w szablonie i obsłużyć kroki tworzenia obrazu w tym artykule. [Wypróbuj usługę Azure Image Builder (wersja zapoznawcza)](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder).
+W publicznej wersji zapoznawczej mamy usługę [Azure VM Image Builder.](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview) Wystarczy opisać dostosowania w szablonie, a będzie obsługiwać kroki tworzenia obrazu w tym artykule. [Wypróbuj usługę Azure Image Builder (wersja zapoznawcza)](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
 W poniższych krokach wyjaśniono szczegółowo, jak na podstawie istniejącej maszyny wirtualnej utworzyć obraz niestandardowy do ponownego użycia, za pomocą którego można utworzyć nowe wystąpienia maszyn wirtualnych.
 
-Do utworzenia przykładu przedstawionego w tym samouczku potrzebna jest istniejąca maszyna wirtualna. W razie potrzeby [ten przykładowy skrypt](../scripts/virtual-machines-windows-powershell-sample-create-vm.md) pomoże Ci go utworzyć. Podczas pracy z tym samouczkiem zamień w odpowiednich przypadkach nazwy maszyn wirtualnych i grup zasobów.
+Do utworzenia przykładu przedstawionego w tym samouczku potrzebna jest istniejąca maszyna wirtualna. W razie potrzeby ten [przykład skryptu](../scripts/virtual-machines-windows-powershell-sample-create-vm.md) można utworzyć jeden dla Ciebie. Podczas pracy z tym samouczkiem zamień w odpowiednich przypadkach nazwy maszyn wirtualnych i grup zasobów.
 
 ## <a name="launch-azure-cloud-shell"></a>Uruchamianie usługi Azure Cloud Shell
 
 Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. 
 
-Aby otworzyć usługę Cloud Shell, wybierz pozycję **Wypróbuj** w prawym górnym rogu bloku kodu. Możesz również uruchomić usługę Cloud Shell w oddzielnej karcie przeglądarki, przechodząc do strony [https://shell.azure.com/powershell](https://shell.azure.com/powershell). Wybierz przycisk **Kopiuj**, aby skopiować bloki kodu, wklej je do usługi Cloud Shell, a następnie naciśnij klawisz Enter, aby je uruchomić.
+Aby otworzyć usługę Cloud Shell, wybierz pozycję **Wypróbuj** w prawym górnym rogu bloku kodu. Możesz również uruchomić usługę Cloud Shell w [https://shell.azure.com/powershell](https://shell.azure.com/powershell)osobnej karcie przeglądarki, przechodząc do . Wybierz przycisk **Kopiuj**, aby skopiować bloki kodu, wklej je do usługi Cloud Shell, a następnie naciśnij klawisz Enter, aby je uruchomić.
 
 ## <a name="prepare-vm"></a>Przygotowywanie maszyny wirtualnej
 
@@ -63,7 +63,7 @@ Narzędzie Sysprep między innymi usuwa wszystkie informacje osobiste związane 
 
 Aby utworzyć obraz, należy cofnąć przydział maszyny wirtualnej i oznaczyć ją jako uogólnioną na platformie Azure.
 
-Cofnij przydział maszyny wirtualnej za pomocą polecenia [stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm).
+Przydziel przydziel maszynę wirtualną za pomocą [stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm).
 
 ```azurepowershell-interactive
 Stop-AzVM `
@@ -130,7 +130,7 @@ New-AzVm `
     -OpenPorts 3389
 ```
 
-Zalecamy ograniczenie liczby współbieżnych wdrożeń do 20 maszyn wirtualnych z jednego obrazu. Jeśli planujesz współbieżne wdrożenia z ponad 20 maszyn wirtualnych z tego samego obrazu niestandardowego, użyj [udostępnionej galerii obrazów](shared-image-galleries.md) z wieloma replikami obrazu. 
+Zaleca się ograniczenie liczby równoczesnych wdrożeń do 20 maszyn wirtualnych z jednego obrazu. Jeśli planujesz duże, równoczesne wdrożenia ponad 20 maszyn wirtualnych z tego samego obrazu niestandardowego, należy użyć [galerii obrazów udostępnionych](shared-image-galleries.md) z wieloma replikami obrazów. 
 
 
 ## <a name="image-management"></a>Zarządzanie obrazami 
@@ -163,7 +163,7 @@ W tym samouczku został utworzony obraz niestandardowy maszyny wirtualnej. W tym
 > * Wyświetlanie listy wszystkich obrazów w subskrypcji
 > * Usuwanie obrazu
 
-Przejdź do następnego samouczka, aby dowiedzieć się, jak utworzyć maszyny wirtualne o wysokiej dostępności.
+Przejdź do następnego samouczka, aby dowiedzieć się, jak tworzyć maszyny wirtualne o wysokiej dostępności.
 
 > [!div class="nextstepaction"]
 > [Tworzenie maszyn wirtualnych o wysokiej dostępności](tutorial-availability-sets.md)
