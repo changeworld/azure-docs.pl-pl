@@ -1,5 +1,5 @@
 ---
-title: Samouczek — Oczyszczanie zasobów siatki usługi Azure Service Fabric
+title: Samouczek — oczyszczanie zasobów siatki sieci szkieletowej usług azure
 description: Dowiedz się, jak usunąć zasoby usługi Azure Service Fabric Mesh, aby uniknąć naliczania opłat za nieużywane już zasoby.
 author: dkkapur
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: d5e33099d58c9cb4c110a78f2576d6eac83a7932
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75351871"
 ---
 # <a name="tutorial-remove-azure-resources"></a>Samouczek: usuwanie zasobów platformy Azure
@@ -24,7 +24,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 Ta seria samouczków zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
 > * [Tworzenie aplikacji usługi Service Fabric Mesh w programie Visual Studio](service-fabric-mesh-tutorial-create-dotnetcore.md)
-> * [Debugowanie aplikacji usługi Service Fabric Mesh w lokalnym klastrze projektowym](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
+> * [Debugowanie aplikacji usługi Service Fabric Mesh działającej w lokalnym klastrze projektowym](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
 > * [Wdrażanie aplikacji usługi Service Fabric Mesh](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
 > * [Uaktualnianie aplikacji usługi Service Fabric Mesh](service-fabric-mesh-tutorial-upgrade.md)
 > * Czyszczenie zasobów usługi Service Fabric Mesh

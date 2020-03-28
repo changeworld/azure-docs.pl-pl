@@ -1,81 +1,81 @@
 ---
-title: Samouczek — Tworzenie topologii sieci hybrydowej Hub i satelity na platformie Azure przy użyciu Terraform
-description: Samouczek przedstawiający sposób tworzenia całej architektury referencyjnej sieci hybrydowej na platformie Azure przy użyciu Terraform
+title: Samouczek — tworzenie koncentratora i sieci hybrydowej na platformie Azure przy użyciu terraform
+description: Samouczek ilustrujący sposób tworzenia całej architektury referencyjnej sieci hybrydowej na platformie Azure przy użyciu programu Terraform
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.openlocfilehash: 6f156dd90b83ceaf5749c8c2acebae35bcb54a92
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77472183"
 ---
-# <a name="tutorial-create-a-hub-and-spoke-hybrid-network-topology-in-azure-using-terraform"></a>Samouczek: tworzenie topologii sieci hybrydowej Hub i satelity na platformie Azure przy użyciu Terraform
+# <a name="tutorial-create-a-hub-and-spoke-hybrid-network-topology-in-azure-using-terraform"></a>Samouczek: Tworzenie koncentratora i szprychy hybrydowej topologii sieci na platformie Azure przy użyciu terraform
 
-W tej serii samouczków pokazano, jak używać Terraform do implementowania na platformie Azure [topologii sieci Hub i szprych](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke). 
+W tej serii samouczków pokazano, jak zaimplementować na platformie Azure [topologię sieci koncentratora i szprychy.](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) 
 
-Topologia gwiazdy jest sposobem izolowania obciążeń podczas udostępniania wspólnych usług. Te usługi obejmują tożsamość i zabezpieczenia. Centrum to sieć wirtualna (VNet), która działa jako centralny punkt połączenia w sieci lokalnej. Szprychy to sieci wirtualne komunikujące się równorzędnie z piastą. Usługi udostępnione są wdrażane w centrum, podczas gdy indywidualne obciążenia są wdrażane w sieciach szprych.
+Topologia koncentratora i szprychy to sposób izolowania obciążeń podczas udostępniania typowych usług. Usługi te obejmują tożsamość i bezpieczeństwo. Koncentrator jest siecią wirtualną, która działa jako centralny punkt połączenia z siecią lokalną. Szprychy to sieci wirtualne komunikujące się równorzędnie z piastą. Usługi udostępnione są wdrażane w centrum, podczas gdy poszczególne obciążenia są wdrażane wewnątrz sieci szprychowych.
 
 Ten samouczek obejmuje następujące zadania:
 
 > [!div class="checklist"]
-> * Użyj HCL (HashiCorp Language) do układania zasobów architektury referencyjnej sieci hybrydowej Hub i satelity
-> * Tworzenie zasobów urządzeń sieciowych centrów przy użyciu programu Terraform
-> * Utwórz sieć centrów na platformie Azure za pomocą Terraform, aby pełnić rolę wspólnego punktu dla wszystkich zasobów
-> * Tworzenie pojedynczych obciążeń jako szprych sieci wirtualnych na platformie Azure przy użyciu Terraform
-> * Korzystanie z usługi Terraform do nawiązywania bram i połączeń między lokalnymi i sieciami platformy Azure
-> * Korzystanie z Terraform do tworzenia wirtualnych sieci równorzędnych w sieciach szprych
+> * Użyj HCL (HashiCorp Language), aby rozłożyć zasoby architektury odniesienia sieci hybrydowej i szprychy
+> * Tworzenie zasobów urządzeń sieciowych za pomocą programu Terraform
+> * Tworzenie sieci centrum na platformie Azure za pomocą programu Terraform, aby działać jako wspólny punkt dla wszystkich zasobów
+> * Tworzenie pojedynczych obciążeń jako sieci wirtualnych szprych na platformie Azure za pomocą programu Terraform
+> * Funkcja Terraform umożliwia ustanawianie bram i połączeń między sieciami lokalnymi i sieciami platformy Azure
+> * Tworzenie komunikacji równorzędnej sieci wirtualnej w sieciach szprychowych za pomocą programu Terraform
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- **Subskrypcja platformy Azure**: Jeśli nie masz jeszcze subskrypcji platformy Azure, przed rozpoczęciem Utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) .
+- **Subskrypcja platformy Azure:** jeśli nie masz jeszcze subskrypcji platformy Azure, utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) przed rozpoczęciem.
 
-- **Zainstaluj i skonfiguruj Terraform**: Aby udostępnić maszyny wirtualne i inne infrastruktury na platformie Azure, [Zainstaluj i skonfiguruj Terraform](terraform-install-configure.md)
+- **Instalowanie i konfigurowanie programu Terraform**: Aby aprowizować maszyny wirtualne i inną infrastrukturę na platformie Azure, [zainstaluj i skonfiguruj program Terraform](terraform-install-configure.md)
 
-## <a name="hub-and-spoke-topology-architecture"></a>Architektura topologii gwiazdy i szprych
+## <a name="hub-and-spoke-topology-architecture"></a>Architektura topologii piasty i szprychy
 
-W topologii gwiazdy koncentrator jest siecią wirtualną. Sieć wirtualna działa jako centralny punkt łączności z siecią lokalną. Szprychy są sieciami wirtualnymi równorzędnymi z piastą i mogą być używane do izolowania obciążeń. Ruch przepływa między lokalnym centrum danych a piastą za pośrednictwem połączenia bramy usługi ExpressRoute lub sieci VPN. Na poniższej ilustracji przedstawiono składniki w topologii gwiazdy:
+W topologii koncentratora i szprychy koncentrator jest siecią wirtualną. Sieć wirtualna działa jako centralny punkt łączności z siecią lokalną. Szprychy są sieciami wirtualnymi równorzędnymi z piastą i mogą być używane do izolowania obciążeń. Ruch przepływa między lokalnym centrum danych a piastą za pośrednictwem połączenia bramy usługi ExpressRoute lub sieci VPN. Na poniższej ilustracji przedstawiono składniki w topologii koncentratora i szprychy:
 
-![Architektura topologii gwiazdy i szprych na platformie Azure](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-architecture.png)
+![Architektura topologii koncentratora i szprychy na platformie Azure](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-architecture.png)
 
-## <a name="benefits-of-the-hub-and-spoke-topology"></a>Zalety topologii gwiazdy
+## <a name="benefits-of-the-hub-and-spoke-topology"></a>Zalety topologii piasty i szprychy
 
-Topologia sieci gwiazdy jest sposobem izolowania obciążeń podczas udostępniania wspólnych usług. Te usługi obejmują tożsamość i zabezpieczenia. Koncentrator jest siecią wirtualną, która działa jako centralny punkt połączenia do sieci lokalnej. Szprychy to sieci wirtualne komunikujące się równorzędnie z piastą. Usługi udostępnione są wdrażane w centrum, podczas gdy indywidualne obciążenia są wdrażane w sieciach szprych. Poniżej przedstawiono niektóre zalety topologii sieci gwiazdy i gwiazdy:
+Topologia sieci koncentratora i szprychy to sposób izolowania obciążeń podczas udostępniania typowych usług. Usługi te obejmują tożsamość i bezpieczeństwo. Koncentrator jest siecią wirtualną, która działa jako centralny punkt połączenia z siecią lokalną. Szprychy to sieci wirtualne komunikujące się równorzędnie z piastą. Usługi udostępnione są wdrażane w centrum, podczas gdy poszczególne obciążenia są wdrażane wewnątrz sieci szprychowych. Oto kilka zalet topologii sieci koncentratora i szprychy:
 
-- **Oszczędność kosztów** Dzięki scentralizowaniu usług w jednej lokalizacji, która może być współużytkowana przez wiele obciążeń. Te obciążenia obejmują wirtualne urządzenia sieciowe i serwery DNS.
+- **Oszczędność kosztów** dzięki centralizacji usług w jednej lokalizacji, która może być współużytkowana przez wiele obciążeń. Obciążenia te obejmują wirtualne urządzenia sieciowe i serwery DNS.
 - **Przezwyciężenie limitów subskrypcji** dzięki wprowadzeniu komunikacji równorzędnej sieci wirtualnych z różnych subskrypcji do centrum.
 - **Separację problemów** między centralnym działem IT (SecOP, InfraOps) i obciążeniami (DevOps).
 
-## <a name="typical-uses-for-the-hub-and-spoke-architecture"></a>Typowe zastosowania architektury Hub i szprychy
+## <a name="typical-uses-for-the-hub-and-spoke-architecture"></a>Typowe zastosowania architektury piasty i szprychy
 
-Niektóre typowe zastosowania architektury gwiazdy obejmują:
+Niektóre typowe zastosowania architektury koncentratora i szprychy obejmują:
 
-- Wielu klientów ma obciążenia, które są wdrażane w różnych środowiskach. Te środowiska obejmują programowanie, testowanie i produkcję. Często te obciążenia muszą udostępniać usługi, takie jak DNS, identyfikatory, NTP lub AD DS. Te usługi udostępnione można umieścić w sieci wirtualnej centrum. W ten sposób każde środowisko zostanie wdrożone w szprychie, aby zachować izolację.
+- Wielu klientów ma obciążeń, które są wdrażane w różnych środowiskach. Środowiska te obejmują rozwój, testowanie i produkcję. Wiele razy te obciążenia muszą współużytkować usługi, takie jak DNS, IDS, NTP lub AD DS. Te usługi udostępnione można umieścić w sieci wirtualnej centrum. W ten sposób każde środowisko jest wdrażane do mówił do utrzymania izolacji.
 - Obciążenia, które nie wymagają łączności ze sobą, ale wymagają dostępu do usług udostępnionych.
-- Przedsiębiorstwa wymagające centralnej kontroli nad aspektami zabezpieczeń.
-- Przedsiębiorstwa, które wymagają rozdzielnego zarządzania dla obciążeń w każdej szprychie.
+- Przedsiębiorstwa, które wymagają centralnej kontroli nad aspektami bezpieczeństwa.
+- Przedsiębiorstwa, które wymagają oddzielnego zarządzania dla obciążeń w każdej szprychy.
 
-## <a name="preview-the-demo-components"></a>Podgląd składników demonstracyjnych
+## <a name="preview-the-demo-components"></a>Wyświetlanie podglądu składników demonstracyjnych
 
-Podczas pracy przez poszczególne samouczki w tej serii różne składniki są definiowane w odrębnych skryptach Terraform. Utworzona i wdrożona architektura demonstracyjna składa się z następujących składników:
+Podczas pracy nad każdym samouczka w tej serii, różne składniki są definiowane w różnych skryptów Terraform. Architektura demo utworzona i wdrożona składa się z następujących składników:
 
-- **Sieć lokalna**. Prywatna sieć lokalna działająca z organizacją. W przypadku architektury referencyjnej Hub i szprych Sieć wirtualna na platformie Azure jest używana do symulowania sieci lokalnej.
+- **Sieć lokalna**. Prywatna sieć lokalna działająca z organizacją. W przypadku architektury referencyjnej koncentratora i szprychy sieć wirtualna na platformie Azure jest używana do symulowania sieci lokalnej.
 
-- **Urządzenie sieci VPN**. Urządzenie sieci VPN lub usługa zapewnia łączność zewnętrzną z siecią lokalną. Urządzenie sieci VPN może być urządzeniem sprzętowym lub rozwiązaniem programowym. 
+- **Urządzenie sieci VPN**. Urządzenie lub usługa sieci VPN zapewnia łączność zewnętrzną z siecią lokalną. Urządzenie sieci VPN może być urządzeniem sprzętowym lub rozwiązaniem programowym. 
 
-- **Sieć wirtualna będąca piastą**. Centrum jest centralnym punktem łączności z siecią lokalną oraz miejscem, w którym można hostować usługi. Te usługi mogą być używane przez różne obciążenia hostowane w sieci wirtualnych szprychy.
+- **Sieć wirtualna będąca piastą**. Koncentrator jest centralnym punktem łączności z siecią lokalną i miejscem hosta usług. Te usługi mogą być używane przez różne obciążenia hostowane w sieciach wirtualnych szprychy.
 
 - **Podsieć bramy**. Bramy sieci wirtualnej są przechowywane w tej samej podsieci.
 
 - **Sieci wirtualne będące szprychami**. Szprychy mogą być używane do izolowania obciążeń w ich własnych sieciach wirtualnych zarządzanych oddzielnie od innych szprych. Każde obciążenie może zawierać wiele warstw z wieloma podsieciami połączonymi za pośrednictwem modułów równoważenia obciążenia platformy Azure. 
 
-- **Komunikacja równorzędna sieci wirtualnych**. Dwa sieci wirtualnych można połączyć przy użyciu połączenia komunikacji równorzędnej. Połączenia komunikacji równorzędnej to nieprzechodnie połączenia między sieciami wirtualnymi o niskich opóźnieniach. Po nawiązaniu połączenia równorzędnego sieci wirtualnych ruch z programu Exchange przy użyciu szkieletu platformy Azure bez konieczności używania routera. W topologii sieci piasty i szprych wirtualne sieci równorzędne są używane do łączenia koncentratora z każdą szprychą. Elementy równorzędne można sieci wirtualnych w tym samym regionie lub w różnych regionach.
+- **Komunikacja równorzędna sieci wirtualnej**. Dwie sieci wirtualne można połączyć za pomocą połączenia równorzędnego. Połączenia komunikacji równorzędnej to nieprzechodnie połączenia między sieciami wirtualnymi o niskich opóźnieniach. Po wznieszonej sieci wirtualnej wymiany ruchu przy użyciu szkieletu platformy Azure, bez konieczności routera. W topologii sieci koncentratora i szprychy komunikacja równorzędna sieci wirtualnej jest używana do łączenia koncentratora z każdą szprychą. Sieci wirtualne można równorzędne w tym samym regionie lub w różnych regionach.
 
 ## <a name="create-the-directory-structure"></a>Tworzenie struktury katalogów
 
-Utwórz katalog, który zawiera pliki konfiguracji Terraform dla demonstracji.
+Utwórz katalog zawierający pliki konfiguracyjne Terraform dla wersji demonstracyjnej.
 
-1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
+1. Przejdź do [witryny Azure portal](https://portal.azure.com).
 
 1. Otwórz usługę [Azure Cloud Shell](/azure/cloud-shell/overview). Jeśli środowisko nie zostało wybrane wcześniej, wybierz pozycję **Bash** jako swoje środowisko.
 
@@ -103,7 +103,7 @@ Utwórz katalog, który zawiera pliki konfiguracji Terraform dla demonstracji.
 
 Utwórz plik konfiguracji narzędzia Terraform zawierający deklarację dostawcy platformy Azure.
 
-1. W Cloud Shell Otwórz nowy plik o nazwie `main.tf`.
+1. W usłudze Cloud Shell `main.tf`otwórz nowy plik o nazwie .
 
     ```bash
     code main.tf
@@ -117,13 +117,13 @@ Utwórz plik konfiguracji narzędzia Terraform zawierający deklarację dostawcy
     }
     ```
 
-1. Zapisz plik i Zamknij Edytor.
+1. Zapisz plik i zamknij edytor.
 
-## <a name="create-the-variables-file"></a>Utwórz plik zmiennych
+## <a name="create-the-variables-file"></a>Tworzenie pliku zmiennych
 
-Utwórz plik konfiguracji Terraform dla wspólnych zmiennych, które są używane w różnych skryptach.
+Utwórz plik konfiguracyjny Terraform dla typowych zmiennych, które są używane w różnych skryptach.
 
-1. W Cloud Shell Otwórz nowy plik o nazwie `variables.tf`.
+1. W usłudze Cloud Shell `variables.tf`otwórz nowy plik o nazwie .
 
     ```bash
     code variables.tf
@@ -153,9 +153,9 @@ Utwórz plik konfiguracji Terraform dla wspólnych zmiennych, które są używan
     }
     ```
 
-1. Zapisz plik i Zamknij Edytor.
+1. Zapisz plik i zamknij edytor.
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"] 
-> [Tworzenie lokalnej sieci wirtualnej z usługą Terraform na platformie Azure](./terraform-hub-spoke-on-prem.md)
+> [Tworzenie lokalnej sieci wirtualnej z terraformem na platformie Azure](./terraform-hub-spoke-on-prem.md)

@@ -1,20 +1,20 @@
 ---
-title: Skrypt programu PowerShell do aktualizacji RU/s dla interfejsu API Azure Cosmos DB SQL (rdzeń)
-description: Aktualizowanie przepływności dla bazy danych lub kontenera usługi Azure Cosmos za pomocą skryptu programu PowerShell — interfejsu API SQL (rdzeń)
+title: Skrypt programu PowerShell do aktualizowania przepływności (RU/s) dla bazy danych lub kontenera interfejsu SQL usługi Azure Cosmos DB DB
+description: Skrypt programu PowerShell do aktualizowania przepływności (RU/s) dla bazy danych lub kontenera interfejsu SQL usługi Azure Cosmos DB DB
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 12/02/2019
+ms.date: 03/17/2020
 ms.author: mjbrown
-ms.openlocfilehash: 70dd5810d3549f19075b437044ce0dd332c45c49
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 950a76c2caaffe6eef578d5614e9469c5942e08c
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444952"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365976"
 ---
-# <a name="update-rus-for-a-database-or-container-for-azure-cosmos-db---sql-core-api"></a>Aktualizowanie RU/s dla bazy danych lub kontenera dla interfejsu API Azure Cosmos DB-SQL (rdzeń)
+# <a name="update-throughput-rus-for-an-azure-cosmos-db-sql-api-database-or-container"></a>Aktualizowanie przepływności (RU/s) dla bazy danych lub kontenera interfejsu API usługi Azure Cosmos DB DB
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -22,7 +22,7 @@ ms.locfileid: "75444952"
 
 ## <a name="sample-script"></a>Przykładowy skrypt
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-ru-update.ps1 "Update throughput on a database or container for SQL (Core) API")]
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-ru-update.ps1 "Update throughput (RU/s) for an Azure Cosmos DB SQL API Database or Container")]
 
 ## <a name="clean-up-deployment"></a>Czyszczenie wdrożenia
 
@@ -38,8 +38,10 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 
 | Polecenie | Uwagi |
 |---|---|
-|**Zasoby platformy Azure**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Tworzy zasób. |
+|**Azure Cosmos DB**| |
+| [Zestaw-AzCosmosDBSqlDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqldatabase) | Tworzy nową lub aktualizuje istniejącą bazę danych SQL usługi Cosmos DB. |
+| [Get-AzCosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainer) | Pobiera kontener SQL usługi Cosmos DB. |
+| [Set-AzCosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqlcontainer) | Tworzy nowy lub aktualizuje istniejący kontener SQL usługi Cosmos DB. |
 |**Grupy zasobów platformy Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 |||

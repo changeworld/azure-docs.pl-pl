@@ -1,6 +1,6 @@
 ---
-title: Przykład interfejsu wiersza polecenia platformy Azure — Tworzenie maszyny wirtualnej platformy Azure z systemem Azure Monitor
-description: Przykład interfejsu wiersza polecenia platformy Azure — Tworzenie maszyny wirtualnej platformy Azure z systemem Windows Server 2016 VM i Azure Monitor.
+title: Przykład interfejsu wiersza polecenia platformy Azure — tworzenie maszyny Wirtualnej platformy Azure z uruchomionym monitorem Azure
+description: Przykład interfejsu wiersza polecenia platformy Azure — tworzenie maszyny Wirtualnej platformy Azure z systemem Windows Server 2016 VM i Azure Monitor.
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
 author: rickstercdn
@@ -17,13 +17,13 @@ ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc,seodec18
 ms.openlocfilehash: 77c5996a11b5223778bf0efbe33250f0db9f74f3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74039908"
 ---
-# <a name="monitor-a-vm-with-azure-monitor-logs"></a>Monitorowanie maszyny wirtualnej za pomocą dzienników Azure Monitor
+# <a name="monitor-a-vm-with-azure-monitor-logs"></a>Monitorowanie maszyny wirtualnej za pomocą dzienników usługi Azure Monitor
 
 Ten skrypt tworzy maszynę wirtualną platformy Azure, instaluje agenta usługi Log Analytics i rejestruje system w obszarze roboczym usługi Log Analytics. Po uruchomieniu skryptu maszyna wirtualna będzie widoczna w obszarze monitorowania platformy Azure.
 

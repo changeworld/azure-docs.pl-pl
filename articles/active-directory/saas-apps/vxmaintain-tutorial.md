@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą vxMaintain | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i vxMaintain.
+title: 'Samouczek: Integracja usługi Azure Active Directory z vxMaintain | Dokumenty firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a usługą vxMaintain.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,44 +16,44 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 642af77d62b88d2e22748c55b901a31bbc0db9b9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67087325"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą vxMaintain
+# <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>Samouczek: Integracja usługi Azure Active Directory z programem vxMaintain
 
-W tym samouczku dowiesz się, jak zintegrować vxMaintain w usłudze Azure Active Directory (Azure AD).
-Integrowanie vxMaintain z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować vxMaintain z usługą Azure Active Directory (Azure AD).
+Integracja vxMaintain z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do vxMaintain.
-* Aby umożliwić użytkownikom można automatycznie zalogowany do vxMaintain (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* Można kontrolować w usłudze Azure AD, który ma dostęp do vxMaintain.
+* Można włączyć użytkowników, aby automatycznie zalogować się do vxMaintain (logowanie jednokrotne) z ich kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą vxMaintain, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z programem vxMaintain, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/)
-* vxMaintain logowanie jednokrotne włączone subskrypcji
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/)
+* VxMaintain subskrypcja z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* obsługuje vxMaintain **tożsamości** jednokrotne logowanie inicjowane przez
+* vxMaintain obsługuje zainicjowane **przez IDP jednostkę** SSO
 
 ## <a name="adding-vxmaintain-from-the-gallery"></a>Dodawanie vxMaintain z galerii
 
-Aby skonfigurować integrację vxMaintain w usłudze Azure AD, należy dodać vxMaintain z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację vxMaintain do usługi Azure AD, należy dodać vxMaintain z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać vxMaintain z galerii, wykonaj następujące czynności:**
+**Aby dodać vxMaintain z galerii, wykonaj następujące kroki:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -61,37 +61,37 @@ Aby skonfigurować integrację vxMaintain w usłudze Azure AD, należy dodać vx
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **vxMaintain**, wybierz opcję **vxMaintain** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **vxMaintain**, wybierz **vxMaintain** z panelu wyników, a następnie kliknij przycisk **Dodaj,** aby dodać aplikację.
 
      ![vxMaintain na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą vxMaintain w oparciu o użytkownika testu o nazwie **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w vxMaintain musi zostać ustanowione.
+W tej sekcji można skonfigurować i przetestować azure ad logowania jednokrotnego z vxMaintain na podstawie użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację łącza między użytkownikiem usługi Azure AD a powiązanym użytkownikiem w wersji vxMaintain.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą vxMaintain, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować usługę Azure AD jednokrotnego logowania za pomocą vxMaintain, należy wykonać następujące bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie vxMaintain logowania jednokrotnego](#configure-vxmaintain-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego vxMaintain](#create-vxmaintain-test-user)**  — aby mają odpowiednika w pozycji Britta simon w vxMaintain połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Skonfiguruj vxMaintain Logowanie jednokrotne](#configure-vxmaintain-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Utwórz vxMaintain użytkownika testowego](#create-vxmaintain-test-user)** — mieć odpowiednik Britta Simon w vxMaintain, który jest połączony z reprezentacji usługi Azure AD użytkownika.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować usługę Azure AD logowanie jednokrotne z vxMaintain, wykonaj następujące czynności:
+Aby skonfigurować logowanie jednokrotne usługi Azure AD za pomocą programu vxMaintain, wykonaj następujące kroki:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **vxMaintain** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [witrynie Azure portal](https://portal.azure.com/)na stronie integracji aplikacji **vxMaintain** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -103,20 +103,20 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z vxMaintain, wykonaj
 
 4. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** wykonaj następujące kroki:
 
-    ![vxMaintain domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/idp-intiated.png)
+    ![VxMaintain Domeny i adresy URL — informacje o logowanie jednokrotne](common/idp-intiated.png)
 
-    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<company name>.verisae.com`
+    a. W polu tekstowym **Identyfikator** wpisz adres URL przy użyciu następującego wzorca:`https://<company name>.verisae.com`
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<company name>.verisae.com/DataNett/action/ssoConsume/mobile?_log=true`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zastąp te wartości rzeczywistymi wartościami identyfikatora i adresu URL odpowiedzi. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta vxMaintain](https://www.hubspot.com/company/contact) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Zastąp te wartości rzeczywistymi wartościami identyfikatora i adresu URL odpowiedzi. Skontaktuj się z [zespołem pomocy technicznej klienta vxMaintain,](https://www.hubspot.com/company/contact) aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/metadataxml.png)
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-6. Na **Konfigurowanie vxMaintain** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+6. W sekcji **Konfigurowanie vxMaintain** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -124,11 +124,11 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z vxMaintain, wykonaj
 
     b. Identyfikator usługi Azure AD
 
-    c. Adres URL wylogowywania
+    d. Adres URL wylogowywania
 
-### <a name="configure-vxmaintain-single-sign-on"></a>Konfigurowanie vxMaintain logowania jednokrotnego
+### <a name="configure-vxmaintain-single-sign-on"></a>Konfigurowanie vxMaintain Logowanie jednokrotne
 
-Aby skonfigurować logowanie jednokrotne na **vxMaintain** stronie, musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowany adresy URL z portalu Azure, aby [zespołem pomocy technicznej vxMaintain](https://www.hubspot.com/company/contact). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+Aby skonfigurować logowanie jednokrotne po stronie **vxMaintain,** należy wysłać pobrany **kod XML metadanych federacji** i odpowiednie skopiowane adresy URL z witryny Azure portal do [zespołu pomocy technicznej vxMaintain](https://www.hubspot.com/company/contact). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -138,7 +138,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+2. Wybierz **pozycję Nowy użytkownik** u góry ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
@@ -148,23 +148,23 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola brittasimon@yourcompanydomain.extension. Na przykład: BrittaSimon@contoso.com
+    b. W polu **Nazwa** brittasimon@yourcompanydomain.extensionużytkownika wpisz . Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Kliknij pozycję **Utwórz**.
+    d. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do vxMaintain.
+W tej sekcji można włączyć Britta Simon do korzystania z azure logowania jednokrotnego, przyznając dostęp do vxMaintain.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **vxMaintain**.
+1. W portalu Azure wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz **pozycję Wszystkie aplikacje**, a następnie wybierz **vxMaintain**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
 2. Na liście aplikacji wybierz **vxMaintain**.
 
-    ![Link vxMaintain na liście aplikacji](common/all-applications.png)
+    ![Łącze vxMaintain na liście Aplikacje](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -176,25 +176,25 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
 5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+6. Jeśli oczekujesz dowolnej wartości roli w asercji SAML, a następnie w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
 ### <a name="create-vxmaintain-test-user"></a>Tworzenie użytkownika testowego vxMaintain
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w vxMaintain. Praca z [zespołem pomocy technicznej vxMaintain](https://www.hubspot.com/company/contact) Aby dodać użytkowników na platformie vxMaintain. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w vxMaintain. Praca z [zespołem pomocy technicznej vxMaintain,](https://www.hubspot.com/company/contact) aby dodać użytkowników na platformie vxMaintain. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka vxMaintain w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze vxMaintain, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka vxMaintain w Panelu dostępu należy automatycznie zalogować się do vxMaintain, dla którego skonfigurowano logującą się jednokrotność. Aby uzyskać więcej informacji na temat Panelu dostępu, zobacz [Wprowadzenie do Panelu dostępu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -1,5 +1,5 @@
 ---
-title: Samouczek — Tworzenie maszyn wirtualnych z systemem Linux i zarządzanie nimi za pomocą interfejsu wiersza polecenia platformy Azure
+title: Samouczek — tworzenie maszyn wirtualnych z systemem Linux i zarządzanie nimi za pomocą interfejsu wiersza polecenia platformy Azure
 description: Z tego samouczka dowiesz się, jak tworzyć maszyny wirtualne z systemem Linux i zarządzać nimi za pomocą interfejsu wiersza polecenia platformy Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b7660d2bcb6f2bb8b738ed92401937c0b988fef2
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: e5474387933404c29536759d383a4f2c85236949
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034420"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80060202"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Samouczek: tworzenie maszyn wirtualnych z systemem Linux i zarządzanie nimi za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -33,7 +33,7 @@ Maszyny wirtualne platformy Azure oferują w pełni konfigurowalne i elastyczne 
 > * Zmienianie rozmiaru maszyny wirtualnej
 > * Wyświetlanie stanu maszyny wirtualnej i jego omówienie
 
-W tym samouczku jest używany interfejs wiersza polecenia w [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), który jest stale aktualizowany do najnowszej wersji. Aby otworzyć Cloud Shell, wybierz opcję **Wypróbuj** z góry dowolnego bloku kodu.
+W tym samouczku używa interfejsu wiersza polecenia w [usłudze Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), który jest stale aktualizowany do najnowszej wersji. Aby otworzyć powłokę chmury, wybierz pozycję **Wypróbuj ją** u góry dowolnego bloku kodu.
 
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
@@ -43,7 +43,7 @@ Utwórz grupę zasobów za pomocą polecenia [az group create](https://docs.micr
 
 Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Grupę zasobów należy utworzyć przed maszyną wirtualną. W tym przykładzie grupa zasobów o nazwie *myResourceGroupVM* zostanie utworzona w regionie *eastus*. 
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroupVM --location eastus
 ```
 
@@ -53,7 +53,7 @@ Grupa zasobów jest określana podczas tworzenia lub modyfikowania maszyn wirtua
 
 Utwórz maszynę wirtualną za pomocą polecenia [az vm create](https://docs.microsoft.com/cli/azure/vm). 
 
-Podczas tworzenia maszyny wirtualnej masz dostęp do kilku opcji, takich jak obraz systemu operacyjnego, ustalanie rozmiaru dysku i poświadczenia administracyjne. W poniższym przykładzie zostanie utworzona maszyna wirtualna o nazwie *myVM*, na której działa system Ubuntu Server. Na maszynie wirtualnej zostanie utworzone konto użytkownika o nazwie *azureuser* i zostaną wygenerowane klucze SSH, jeśli nie istnieją w domyślnej lokalizacji kluczy ( *~/.ssh*):
+Podczas tworzenia maszyny wirtualnej masz dostęp do kilku opcji, takich jak obraz systemu operacyjnego, ustalanie rozmiaru dysku i poświadczenia administracyjne. W poniższym przykładzie zostanie utworzona maszyna wirtualna o nazwie *myVM*, na której działa system Ubuntu Server. Na maszynie wirtualnej zostanie utworzone konto użytkownika o nazwie *azureuser* i zostaną wygenerowane klucze SSH, jeśli nie istnieją w domyślnej lokalizacji kluczy (*~/.ssh*):
 
 ```azurecli-interactive
 az vm create \
@@ -66,7 +66,7 @@ az vm create \
 
 Tworzenie maszyny wirtualnej może potrwać kilka minut. Po utworzeniu maszyny wirtualnej interfejs wiersza polecenia platformy Azure wyświetla informacje o maszynie wirtualnej. Zanotuj adres `publicIpAddress`; przy użyciu tego adresu można uzyskać dostęp do maszyny wirtualnej. 
 
-```azurecli-interactive 
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroupVM/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -105,7 +105,7 @@ az vm image list --output table
 
 W danych wyjściowych tego polecenia wyświetlana jest lista najpopularniejszych obrazów maszyn wirtualnych na platformie Azure.
 
-```bash
+```output
 Offer          Publisher               Sku                 Urn                                                             UrnAlias             Version
 -------------  ----------------------  ------------------  --------------------------------------------------------------  -------------------  ---------
 WindowsServer  MicrosoftWindowsServer  2016-Datacenter     MicrosoftWindowsServer:WindowsServer:2016-Datacenter:latest     Win2016Datacenter    latest
@@ -129,7 +129,7 @@ az vm image list --offer CentOS --all --output table
 
 Częściowe dane wyjściowe:
 
-```azurecli-interactive 
+```output
 Offer             Publisher         Sku   Urn                                     Version
 ----------------  ----------------  ----  --------------------------------------  -----------
 CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.201501         6.5.201501
@@ -142,7 +142,7 @@ CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.20170207     
 
 W celu wdrożenia maszyny wirtualnej przy użyciu wybranego obrazu zanotuj wartość z kolumny *Urn*, która składa się z wydawcy, oferty, jednostki SKU i opcjonalnie numeru wersji, aby [zidentyfikować](cli-ps-findimage.md#terminology) obraz. Podczas określania obrazu numer wersji można zastąpić wartością „latest”, co spowoduje wybranie najnowszej wersji dystrybucji. W tym przykładzie argument `--image` służy do określenia najnowszej wersji obrazu systemu CentOS 6.5.  
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm create --resource-group myResourceGroupVM --name myVM2 --image OpenLogic:CentOS:6.5:latest --generate-ssh-keys
 ```
 
@@ -157,9 +157,9 @@ W poniższej tabeli przedstawiono kategorie rozmiarów podzielone według przypa
 | Typ                     | Typowe rozmiary           |    Opis       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Zastosowania ogólne](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Zrównoważona moc procesora CPU w stosunku do pamięci. Opcja idealna w przypadku tworzenia i testowania, małych i średnich aplikacji oraz rozwiązań dotyczących danych.  |
-| [Optymalizacja pod kątem obliczeń](sizes-compute.md)   | Fsv2          | Duża moc procesora CPU w stosunku do pamięci. Opcja dobra w przypadku aplikacji o średnim ruchu, urządzeń sieciowych i procesów wsadowych.        |
-| [Optymalizacja pod kątem pamięci](sizes-memory.md)    | Esv3, EV3, M, DSv2, Dv2  | Duża ilość pamięci na rdzeń. Opcja bardzo dobra w przypadku relacyjnych baz danych, średnich i dużych pamięci podręcznych oraz analizowania w pamięci.                 |
-| [Optymalizacja pod kątem magazynu](sizes-storage.md)      | Lsv2, LS              | Wysoka przepływność dysku i duża liczba operacji we/wy. Opcja idealna w przypadku danych big data oraz baz danych SQL i NoSQL.                                                         |
+| [Optymalizacja pod kątem obliczeń](sizes-compute.md)   | Fsv2 (właśc.          | Duża moc procesora CPU w stosunku do pamięci. Opcja dobra w przypadku aplikacji o średnim ruchu, urządzeń sieciowych i procesów wsadowych.        |
+| [Optymalizacja pod kątem pamięci](sizes-memory.md)    | Esv3, Ev3, M, DSv2, Dv2  | Duża ilość pamięci na rdzeń. Opcja bardzo dobra w przypadku relacyjnych baz danych, średnich i dużych pamięci podręcznych oraz analizowania w pamięci.                 |
+| [Optymalizacja pod kątem magazynu](sizes-storage.md)      | Lsv2, Ls              | Wysoka przepływność dysku i duża liczba operacji we/wy. Opcja idealna w przypadku danych big data oraz baz danych SQL i NoSQL.                                                         |
 | [Procesor GPU](sizes-gpu.md)          | NV, NVv2, NC, NCv2, NCv3, ND            | Maszyny wirtualne wyspecjalizowane pod kątem intensywnego renderowania grafiki i edytowania materiałów wideo.       |
 | [Wysoka wydajność](sizes-hpc.md) | H        | Maszyny wirtualne z najbardziej wydajnymi procesorami CPU oraz, opcjonalnie, interfejsami sieciowymi zapewniającymi wysoką przepływność (RDMA). |
 
@@ -174,7 +174,7 @@ az vm list-sizes --location eastus --output table
 
 Częściowe dane wyjściowe:
 
-```azurecli-interactive 
+```output
   MaxDataDiskCount    MemoryInMb  Name                      NumberOfCores    OsDiskSizeInMb    ResourceDiskSizeInMb
 ------------------  ------------  ----------------------  ---------------  ----------------  ----------------------
                  2          3584  Standard_DS1                          1           1047552                    7168
@@ -199,7 +199,7 @@ Częściowe dane wyjściowe:
 
 W poprzednim przykładzie tworzenia maszyny wirtualnej nie podano rozmiaru, co spowodowało użycie rozmiaru domyślnego. Rozmiar maszyny wirtualnej można wybrać podczas jej tworzenia, używając polecenia [az vm create](/cli/azure/vm) i argumentu `--size`. 
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm create \
     --resource-group myResourceGroupVM \
     --name myVM3 \
@@ -221,6 +221,7 @@ Przed zmianą rozmiaru maszyny wirtualnej sprawdź, czy żądany rozmiar jest do
 ```azurecli-interactive 
 az vm list-vm-resize-options --resource-group myResourceGroupVM --name myVM --query [].name
 ```
+
 Jeśli żądany rozmiar maszyny wirtualnej jest dostępny, można go zmienić dla włączonej maszyny, ale zostanie ona ponownie uruchomiona w trakcie tej operacji. Wykonaj zmianę rozmiaru za pomocą polecenia [az vm resize]( /cli/azure/vm).
 
 ```azurecli-interactive 
@@ -229,19 +230,19 @@ az vm resize --resource-group myResourceGroupVM --name myVM --size Standard_DS4_
 
 Jeśli żądany rozmiar jest niedostępny w bieżącym klastrze, przed rozpoczęciem operacji zmiany rozmiaru należy cofnąć przydział maszyny wirtualnej. Za pomocą polecenia [az vm deallocate]( /cli/azure/vm) zatrzymaj maszynę wirtualną i cofnij jej przydział. Pamiętaj, że kiedy maszyna wirtualna zostanie ponownie włączona, wszelkie dane na dysku tymczasowym mogą zostać usunięte. Publiczny adres IP również się zmieni, chyba że używany jest statyczny adres IP. 
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm deallocate --resource-group myResourceGroupVM --name myVM
 ```
 
 Po cofnięciu przydziału może zostać wykonana zmiana rozmiaru. 
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm resize --resource-group myResourceGroupVM --name myVM --size Standard_GS1
 ```
 
 Po zmienieniu rozmiaru można ponownie uruchomić maszynę wirtualną.
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm start --resource-group myResourceGroupVM --name myVM
 ```
 
@@ -265,7 +266,7 @@ Maszyna wirtualna platformy Azure może znajdować się w jednym z wielu stanów
 
 Aby pobrać stan określonej maszyny wirtualnej, użyj polecenia [az vm get-instance-view](/cli/azure/vm). Pamiętaj, aby określić prawidłową nazwę maszyny wirtualnej i grupy zasobów. 
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm get-instance-view \
     --name myVM \
     --resource-group myResourceGroupVM \
@@ -274,7 +275,7 @@ az vm get-instance-view \
 
 Dane wyjściowe:
 
-```azurecli-interactive 
+```output
 ode                DisplayStatus    Level
 ------------------  ---------------  -------
 PowerState/running  VM running       Info
@@ -288,19 +289,19 @@ W trakcie cyklu życia maszyny wirtualnej można uruchamiać zadania zarządzani
 
 To polecenie wyświetla prywatny i publiczny adres IP maszyny wirtualnej.  
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm list-ip-addresses --resource-group myResourceGroupVM --name myVM --output table
 ```
 
 ### <a name="stop-virtual-machine"></a>Zatrzymywanie maszyny wirtualnej
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm stop --resource-group myResourceGroupVM --name myVM
 ```
 
 ### <a name="start-virtual-machine"></a>Uruchamianie maszyny wirtualnej
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm start --resource-group myResourceGroupVM --name myVM
 ```
 
@@ -308,7 +309,7 @@ az vm start --resource-group myResourceGroupVM --name myVM
 
 Usunięcie grupy zasobów spowoduje również usunięcie wszystkich znajdujących się w niej zasobów, takich jak maszyna wirtualna, sieć wirtualna i dysk. Parametr `--no-wait` zwraca kontrolę do wiersza polecenia bez oczekiwania na zakończenie operacji. Parametr `--yes` potwierdza, że chcesz usunąć zasoby bez wyświetlania dodatkowego monitu.
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroupVM --no-wait --yes
 ```
 

@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Workstars | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Workstars.
+title: 'Samouczek: Integracja usługi Azure Active Directory z gwiazdami pracy | Dokumenty firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a gwiazdami roboczymi.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,44 +16,44 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: c13c6ab180a172c034d25ac84781f5d3f83ae186
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67086635"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-workstars"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Workstars
+# <a name="tutorial-azure-active-directory-integration-with-workstars"></a>Samouczek: Integracja usługi Azure Active Directory z gwiazdami pracy
 
-W tym samouczku dowiesz się, jak zintegrować Workstars w usłudze Azure Active Directory (Azure AD).
-Integrowanie Workstars z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować witryny Workstars z usługą Azure Active Directory (Azure AD).
+Integracja witryny Workstars z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do Workstars.
-* Aby umożliwić użytkownikom można automatycznie zalogowany do Workstars (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* W usłudze Azure AD można kontrolować, kto ma dostęp do witryny Workstars.
+* Można włączyć użytkowników, aby automatycznie zalogować się do Workstars (Logowanie jednokrotne) z ich kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą Workstars, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z witryną Workstars, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/).
-* Workstars pojedynczego logowania jednokrotnego włączonych subskrypcji
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
+* Subskrypcja z obsługą logowania jednokrotnego Workstars
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Obsługuje Workstars **tożsamości** jednokrotne logowanie inicjowane przez
+* Workstars obsługuje zainicjowane przez protokół SSO inicjowane przez **protokół** IDP
 
-## <a name="adding-workstars-from-the-gallery"></a>Dodawanie Workstars z galerii
+## <a name="adding-workstars-from-the-gallery"></a>Dodawanie gwiazd z galerii
 
-Aby skonfigurować integrację Workstars w usłudze Azure AD, należy dodać Workstars z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację witryny Workstars z usługą Azure AD, należy dodać gwiazdy robocze z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać Workstars z galerii, wykonaj następujące czynności:**
+**Aby dodać gwiazdy robocze z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -61,37 +61,37 @@ Aby skonfigurować integrację Workstars w usłudze Azure AD, należy dodać Wor
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **Workstars**, wybierz opcję **Workstars** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **Workstars**, wybierz **opcję Gwiazdy robocze** z panelu wyników, a następnie kliknij przycisk **Dodaj,** aby dodać aplikację.
 
-     ![Workstars na liście wyników](common/search-new-app.png)
+     ![Gwiazdy robocze na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą Workstars w oparciu o użytkownika testu o nazwie **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Workstars musi zostać ustanowione.
+W tej sekcji można skonfigurować i przetestować azure ad logowania jednokrotnego z Workstars na podstawie użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację łącza między użytkownikiem usługi Azure AD a powiązanym użytkownikiem w witrynie Workstars.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Workstars, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD za pomocą witryny Workstars, należy wykonać następujące bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie Workstars logowania jednokrotnego](#configure-workstars-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego Workstars](#create-workstars-test-user)**  — aby odpowiednikiem Britta Simon w Workstars połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Skonfiguruj logowanie jednokrotne w u klienta workstars](#configure-workstars-single-sign-on)** — umożliwia skonfigurowanie ustawień logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Utwórz użytkownika testowego Workstars](#create-workstars-test-user)** — aby mieć odpowiednik Britta Simon w witrynie Workstars, która jest połączona z reprezentacją użytkownika usługi Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować usługę Azure AD logowanie jednokrotne z Workstars, wykonaj następujące czynności:
+Aby skonfigurować logowanie jednookrotne usługi Azure AD za pomocą witryny Workstars, wykonaj następujące czynności:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **Workstars** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [witrynie Azure portal](https://portal.azure.com/)na stronie Integracja aplikacji **Workstars** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -103,20 +103,20 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Workstars, wykonaj 
 
 4. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** wykonaj następujące kroki:
 
-    ![Workstars domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/idp-intiated.png)
+    ![Informacje o domenie i adresach URL w domenie i adresach URL](common/idp-intiated.png)
 
-    a. W polu tekstowym **Identyfikator** wpisz adres URL: `https://workstars.com`
+    a. W polu tekstowym **Identyfikator** wpisz adres URL:`https://workstars.com`
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.workstars.com/saml/login_check`
 
     > [!NOTE]
-    > Ta wartość nie jest prawdziwa. Zaktualizuj ją, stosując rzeczywisty adres URL odpowiedzi. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Workstars](https://support.workstars.com/) można uzyskać wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Ta wartość nie jest prawdziwa. Zaktualizuj ją, stosując rzeczywisty adres URL odpowiedzi. Skontaktuj się z [zespołem pomocy technicznej klienta Workstars,](https://support.workstars.com/) aby uzyskać wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/certificatebase64.png)
+    ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-6. Na **Konfigurowanie Workstars** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+6. W sekcji **Konfigurowanie gwiazdy pracy** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -124,37 +124,37 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Workstars, wykonaj 
 
     b. Identyfikator usługi Azure AD
 
-    c. Adres URL wylogowywania
+    d. Adres URL wylogowywania
 
-### <a name="configure-workstars-single-sign-on"></a>Konfigurowanie Workstars logowanie jednokrotne
+### <a name="configure-workstars-single-sign-on"></a>Konfigurowanie logowania jednokrotnego gwiazdy pracy
 
-1. W innym oknie przeglądarki Zaloguj się do witryny firmy Workstars jako administrator.
+1. W innym oknie przeglądarki zaloguj się do witryny firmy Workstars jako administrator.
 
-2. Na głównym pasku narzędzi kliknij polecenie **ustawienia**.
+2. Na głównym pasku narzędzi kliknij pozycję **Ustawienia**.
 
-    ![Ustawienia Workstars](./media/workstars-tutorial/tutorial_workstars_sett.png)
+    ![Ustawienia gwiazdy pracy](./media/workstars-tutorial/tutorial_workstars_sett.png)
 
-3. Przejdź do **logowania** > **ustawienia**.
+3. Przejdź do **ustawień logowania** > **.**
 
-    ![Logować Workstars](./media/workstars-tutorial/tutorial_workstars_signon.png)
+    ![Znak gwiazd roboczych](./media/workstars-tutorial/tutorial_workstars_signon.png)
 
-    ![Ustawienia Workstars](./media/workstars-tutorial/tutorial_workstars_settings.png)
+    ![Ustawienia gwiazdy pracy](./media/workstars-tutorial/tutorial_workstars_settings.png)
 
-4. Na **pojedynczy znak na (SAML) — ustawienia** strony, wykonaj następujące czynności:
+4. Na stronie **Logowanie jednokrotne (SAML) — ustawienia** wykonaj następujące czynności:
     
-    ![Workstars saml](./media/workstars-tutorial/tutorial_workstars_saml.png)
+    ![Gwiazdy robocze saml](./media/workstars-tutorial/tutorial_workstars_saml.png)
 
-    a. W **nazwę dostawcy tożsamości** polu tekstowym wpisz **usługi Office 365**.
+    a. W **polach** tekstowych Nazwa dostawcy tożsamości wpisz **office 365**.
 
-    b. W **Identyfikatora jednostki dostawcy tożsamości** pola tekstowego, Wklej wartość **usługi Azure AD identyfikator**, który skopiowano z witryny Azure portal.
+    b. W polu tekstowym **identyfikator jednostki dostawcy tożsamości** wklej wartość **identyfikatora usługi Azure AD,** który został skopiowany z witryny Azure portal.
 
-    c. Skopiuj zawartość pliku pobranego certyfikatu w programie Notatnik, a następnie wklej go do **x509 certyfikatu** pola tekstowego. 
+    d. Skopiuj zawartość pobranego pliku certyfikatu w notatniku, a następnie wklej ją do pola tekstowego **certyfikatu x509.** 
 
     d. W polu tekstowym **SAML SSO URL** (Adres URL logowania jednokrotnego protokołu SAML) wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
     
-    e. W **zdalny adres URL wylogowania** pola tekstowego, Wklej wartość **adres URL wylogowania**, które zostały skopiowane z witryny Azure portal. 
+    e. W polu **tekstowym adres URL zdalnego wylogowania** wklej wartość **adresu URL wylogowania,** który został skopiowany z witryny Azure portal. 
 
-    f. Wybierz **identyfikator nazwy** jako **poczty E-mail (ustawienie domyślne)** .
+    f. wybierz **pozycję Nazwa ID** jako **wiadomość e-mail (domyślna)**.
 
     g. Kliknij pozycję **Potwierdź**.
 
@@ -166,7 +166,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+2. Wybierz **pozycję Nowy użytkownik** u góry ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
@@ -176,23 +176,23 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola brittasimon@yourcompanydomain.extension. Na przykład: BrittaSimon@contoso.com
+    b. W polu **Nazwa** brittasimon@yourcompanydomain.extensionużytkownika wpisz . Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Kliknij pozycję **Utwórz**.
+    d. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do Workstars.
+W tej sekcji można włączyć Britta Simon do korzystania z logowania jednokrotnego platformy Azure, przyznając dostęp do Workstars.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **Workstars**.
+1. W portalu Azure wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz **pozycję Wszystkie aplikacje,** a następnie wybierz pozycję **Gwiazdy robocze**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **Workstars**.
+2. Na liście aplikacji wybierz **pozycję Gwiazdy robocze**.
 
-    ![Link Workstars na liście aplikacji](common/all-applications.png)
+    ![Łącze Gwiazdy robocze na liście Aplikacje](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -204,25 +204,25 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
 5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+6. Jeśli oczekujesz dowolnej wartości roli w asercji SAML, a następnie w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-workstars-test-user"></a>Tworzenie użytkownika testowego Workstars
+### <a name="create-workstars-test-user"></a>Utwórz użytkownika testowego Workstars
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Workstars. Praca z [zespołu pomocy technicznej Workstars](https://support.workstars.com) Aby dodać użytkowników na platformie Workstars.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Workstars. Współpracuj z [zespołem pomocy technicznej Workstars,](https://support.workstars.com) aby dodać użytkowników na platformie Workstars.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Workstars w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze Workstars, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka Workstars w Panelu dostępu należy automatycznie zalogować się do witryny Workstars, dla której skonfigurowano logującą się logującą logującą. Aby uzyskać więcej informacji na temat Panelu dostępu, zobacz [Wprowadzenie do Panelu dostępu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

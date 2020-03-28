@@ -1,5 +1,5 @@
 ---
-title: Kodowanie zdalnego pliku i strumienia przy użyciu Azure Media Services v3
+title: Kodowanie zdalnego pliku i strumienia przy użyciu usługi Azure Media Services w wersji 3
 description: Wykonaj kroki opisane w tym samouczku, aby zakodować plik na podstawie adresu URL i przesłać strumieniowo zawartość za pośrednictwem usługi Azure Media Services, korzystając z usługi REST.
 services: media-services
 documentationcenter: ''
@@ -10,16 +10,16 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 11/05/2019
+ms.date: 03/16/2020
 ms.author: juliako
-ms.openlocfilehash: d4175f2508edab1cf54e415652e9e9cb37b879b1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 35be4ec2c4f5f8c299120c0ba7dbdcb1dd112473
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79238636"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79472037"
 ---
-# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Samouczek: kodowanie pliku zdalnego na podstawie adresu URL i strumieniowego wideo — REST
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Samouczek: Kodowanie zdalnego pliku na podstawie adresu URL i przesyłanie strumieniowe wideo - REST
 
 Usługa Azure Media Services umożliwia kodowanie plików multimedialnych do formatów, które można odtworzyć w różnych przeglądarkach i na różnych urządzeniach. Na przykład może zaistnieć potrzeba strumieniowego odtwarzania treści w formatach HLS lub MPEG DASH firmy Apple. Przed odtwarzaniem strumieniowym należy zakodować wysokiej jakości plik multimediów cyfrowych. Aby uzyskać wskazówki dotyczące kodowania, zobacz temat [Encoding concept](encoding-concept.md) (Koncepcja kodowania).
 
@@ -48,7 +48,7 @@ Ten samouczek przedstawia sposób wykonania następujących czynności:
 
 - Zainstaluj klienta REST programu [Postman](https://www.getpostman.com/), aby uruchomić interfejsy API REST przedstawione w niektórych samouczkach dotyczących AMS REST. 
 
-    W przykładzie użyto programu **Postman**, ale odpowiednie będzie każde narzędzie REST. Można również użyć: programu **Visual Studio Code** z wtyczką REST lub programu **Telerik Fiddler**. 
+    W przykładzie użyto programu **Postman**, ale odpowiednie będzie każde narzędzie REST. Inne alternatywy to: **Visual Studio Code** z wtyczką REST lub **Telerik Fiddler**. 
 
 ## <a name="download-postman-files"></a>Pobieranie plików Postman
 
@@ -58,13 +58,15 @@ Sklonuj repozytorium GitHub zawierające kolekcję programu Postman oraz pliki �
  git clone https://github.com/Azure-Samples/media-services-v3-rest-postman.git
  ```
 
-[!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
+## <a name="access-api"></a>Interfejs API dostępu
+
+Aby uzyskać szczegółowe informacje, zobacz [Uzyskiwanie poświadczeń dostępu do interfejsu API usługi Media Services](access-api-howto.md)
 
 ## <a name="configure-postman"></a>Konfigurowanie programu Postman
 
 ### <a name="configure-the-environment"></a>Konfigurowanie środowiska 
 
-1. Otwórz aplikację **Poster** .
+1. Otwórz aplikację **Listonosz.**
 2. Po prawej stronie ekranu wybierz opcję **Zarządzaj środowiskiem**.
 
     ![Zarządzanie środowiskiem](./media/develop-with-postman/postman-import-env.png)
@@ -75,7 +77,7 @@ Sklonuj repozytorium GitHub zawierające kolekcję programu Postman oraz pliki �
     > [!Note]
     > Zaktualizuj zmienne dostępu przy użyciu wartości z sekcji **Uzyskiwanie dostępu do interfejsu API usługi Media Services** powyżej.
 
-7. Kliknij dwukrotnie wybrany plik, a następnie wprowadź wartości uzyskane podczas wykonywania kroków [uzyskiwania dostępu do interfejsu API](#access-the-media-services-api).
+7. Kliknij dwukrotnie wybrany plik, a następnie wprowadź wartości uzyskane podczas wykonywania kroków [uzyskiwania dostępu do interfejsu API](#access-api).
 8. Zamknij okno dialogowe.
 9. Z listy rozwijanej wybierz środowisko **Azure Media Service v3 Environment**.
 
@@ -94,19 +96,19 @@ Sklonuj repozytorium GitHub zawierające kolekcję programu Postman oraz pliki �
 W tej sekcji opisano wysyłanie żądań istotnych dla kodowania i tworzenia adresów URL, aby można było przesyłać strumieniowo plik. W szczególności wysyłane są następujące żądania:
 
 1. Pobieranie tokenu usługi Azure AD do uwierzytelniania jednostki usługi
-1. Uruchom punkt końcowy przesyłania strumieniowego
+1. Uruchamianie punktu końcowego przesyłania strumieniowego
 2. Tworzenie zasobu wyjściowego
 3. Tworzenie przekształcenia
 4. Tworzenie zadania
 5. Tworzenie lokalizatora przesyłania strumieniowego
-6. Wyświetl listę ścieżek lokalizatora przesyłania strumieniowego
+6. Podanie listy ścieżek lokalizatora przesyłania strumieniowego
 
 > [!Note]
 >  W tym samouczku założono, że tworzysz wszystkie zasoby o unikatowych nazwach.  
 
 ### <a name="get-azure-ad-token"></a>Pobieranie tokenu usługi Azure AD 
 
-1. W lewym oknie aplikacji Poster wybierz pozycję "krok 1: pobieranie tokenu uwierzytelniania usługi AAD".
+1. W lewym oknie aplikacji Postman wybierz "Krok 1: Pobierz token AAD Auth".
 2. Następnie wybierz pozycję „Pobieranie tokenu usługi Azure AD do uwierzytelniania jednostki usługi”.
 3. Kliknij pozycję **Wyślij**.
 
@@ -121,41 +123,41 @@ W tej sekcji opisano wysyłanie żądań istotnych dla kodowania i tworzenia adr
     ![Pobieranie tokenu usługi AAD](./media/develop-with-postman/postman-get-aad-auth-token.png)
 
 
-### <a name="start-a-streaming-endpoint"></a>Uruchom punkt końcowy przesyłania strumieniowego
+### <a name="start-a-streaming-endpoint"></a>Uruchamianie punktu końcowego przesyłania strumieniowego
 
-Aby włączyć przesyłanie strumieniowe, należy najpierw uruchomić [punkt końcowy przesyłania strumieniowego](https://docs.microsoft.com/azure/media-services/latest/streaming-endpoint-concept) , z którego chcesz przesłać strumieniowo wideo.
+Aby włączyć przesyłanie strumieniowe, należy najpierw uruchomić [punkt końcowy przesyłania strumieniowego,](https://docs.microsoft.com/azure/media-services/latest/streaming-endpoint-concept) z którego chcesz przesyłać strumieniowo wideo.
 
 > [!NOTE]
-> Opłaty są naliczane tylko wtedy, gdy punkt końcowy przesyłania strumieniowego jest w stanie uruchomienia.
+> Naliczane są tylko wtedy, gdy punkt końcowy przesyłania strumieniowego jest w stanie uruchomionym.
 
-1. W lewym oknie aplikacji Poster wybierz pozycję "przesyłanie strumieniowe i" na żywo.
-2. Następnie wybierz pozycję "Start StreamingEndpoint".
+1. W lewym oknie aplikacji Postman wybierz opcję "Przesyłanie strumieniowe i transmisja na żywo".
+2. Następnie wybierz "Start StreamingEndpoint".
 3. Kliknij pozycję **Wyślij**.
 
-    * Zostanie wysłana Następująca operacja **post** :
+    * Wysyłana jest następująca operacja **POST:**
 
         ```
         https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaservices/:accountName/streamingEndpoints/:streamingEndpointName/start?api-version={{api-version}}
         ```
-    * Jeśli żądanie zakończy się pomyślnie, zostanie zwrócona `Status: 202 Accepted`.
+    * Jeśli żądanie zakończy się `Status: 202 Accepted` pomyślnie, jest zwracany.
 
-        Ten stan oznacza, że żądanie zostało zaakceptowane do przetwarzania; jednak przetwarzanie nie zostało ukończone. Można wykonać zapytanie o stan operacji na podstawie wartości w nagłówku odpowiedzi `Azure-AsyncOperation`.
+        Ten stan oznacza, że wniosek został zaakceptowany do przetworzenia; jednak przetwarzanie nie zostało zakończone. Można wykonać kwerendę dla stanu operacji `Azure-AsyncOperation` na podstawie wartości w nagłówku odpowiedzi.
 
         Na przykład następująca operacja GET zwraca stan operacji:
         
         `https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/<resourceGroupName>/providers/Microsoft.Media/mediaservices/<accountName>/streamingendpointoperations/1be71957-4edc-4f3c-a29d-5c2777136a2e?api-version=2018-07-01`
 
-        W artykule [śledzenie asynchronicznych operacji na platformie Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) wyjaśniono, jak śledzić stan asynchronicznych operacji platformy Azure za pomocą wartości zwracanych w odpowiedzi.
+        W [artykule asynchroniczne operacje platformy Azure śledzenia](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) szczegółowo wyjaśniono, jak śledzić stan asynchronicznych operacji platformy Azure za pomocą wartości zwróconych w odpowiedzi.
 
 ### <a name="create-an-output-asset"></a>Tworzenie zasobu wyjściowego
 
 [Zasób](https://docs.microsoft.com/rest/api/media/assets) wyjściowy przechowuje wynik zadania kodowania. 
 
-1. W lewym oknie aplikacji Poster wybierz pozycję "zasoby".
+1. W lewym oknie aplikacji Listonosz wybierz pozycję "Zasoby".
 2. Następnie wybierz opcję „Utwórz lub aktualizuj zasób”.
 3. Kliknij pozycję **Wyślij**.
 
-    * Zostanie wysłana następująca operacja **PUT**:
+    * Wysyłana jest następująca operacja **PUT:**
 
         ```
         https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/assets/:assetName?api-version={{api-version}}
@@ -182,7 +184,7 @@ Możesz użyć wbudowanych elementów EncoderNamedPreset lub użyć niestandardo
 > [!Note]
 > Podczas tworzenia obiektu [Transform](https://docs.microsoft.com/rest/api/media/transforms) należy najpierw sprawdzić, czy taki obiekt już istnieje, używając metody **Get**. W tym samouczku założono, że tworzysz przekształcenie o unikatowej nazwie.
 
-1. W lewym oknie aplikacji Poster wybierz pozycję "kodowanie i analiza".
+1. W lewym oknie aplikacji Postman wybierz "Kodowanie i analiza".
 2. Następnie wybierz pozycję „Utwórz przekształcenie”.
 3. Kliknij pozycję **Wyślij**.
 
@@ -217,7 +219,7 @@ Obiekt [Job](https://docs.microsoft.com/rest/api/media/jobs) to rzeczywiste żą
 
 W tym przykładzie dane wejściowe zadania są oparte na adresie URL HTTPS ("https:\//nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/").
 
-1. W lewym oknie aplikacji Poster wybierz pozycję "kodowanie i analiza".
+1. W lewym oknie aplikacji Postman wybierz "Kodowanie i analiza".
 2. Następnie wybierz opcję „Utwórz lub aktualizuj zadanie”.
 3. Kliknij pozycję **Wyślij**.
 
@@ -250,7 +252,7 @@ W tym przykładzie dane wejściowe zadania są oparte na adresie URL HTTPS ("htt
 
 Ukończenie zadania zajmuje trochę czasu, a Ty chcesz otrzymać powiadomienie o tym fakcie. Aby wyświetlić postęp zadania, zaleca się użycie usługi Event Grid. Zaprojektowano ją pod kątem wysokiej dostępności, stałego poziomu wydajności i dynamicznej skalowalności. Dzięki usłudze Event Grid Twoje aplikacje mogą nasłuchiwać zdarzeń pochodzących z praktycznie wszystkich usług platformy Azure i ze źródeł niestandardowych oraz reagować na nie. Prosta, reaktywna obsługa zdarzeń oparta na protokole HTTP pomaga w tworzeniu wydajnych rozwiązań za pośrednictwem inteligentnego filtrowania i routingu zdarzeń.  Zobacz [Kierowanie zdarzeń do niestandardowego internetowego punktu końcowego](job-state-events-cli-how-to.md).
 
-**Zadanie** zwykle przechodzi przez następujące stany: **Scheduled (Zaplanowane)** , **Queued (W kolejce)** , **Processing (Przetwarzane)** , **Finished (Zakończone)** (stan końcowy). Jeśli zadanie napotka błąd, może być w stanie **Error (Błąd)** . Jeśli zadanie jest w trakcie anulowania, może być w stanie **Canceling (Anulowanie)** , a po zakończeniu tej operacji w stanie **Canceled (Anulowane)** .
+**Zadanie** zwykle przechodzi przez następujące stany: **Scheduled (Zaplanowane)**, **Queued (W kolejce)**, **Processing (Przetwarzane)**, **Finished (Zakończone)** (stan końcowy). Jeśli zadanie napotka błąd, może być w stanie **Error (Błąd)**. Jeśli zadanie jest w trakcie anulowania, może być w stanie **Canceling (Anulowanie)**, a po zakończeniu tej operacji w stanie **Canceled (Anulowane)**.
 
 #### <a name="job-error-codes"></a>Kody błędów zadań
 
@@ -260,17 +262,17 @@ Zobacz [Kody błędów](https://docs.microsoft.com/rest/api/media/jobs/get#jober
 
 Po zakończeniu kodowania następnym krokiem jest udostępnienie wideo w **zasobie** wyjściowym klientom na potrzeby odtwarzania. Działanie to można wykonać w dwóch krokach: najpierw należy utworzyć obiekt [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators), a następnie utworzyć adresy URL przesyłania strumieniowego, których mogą używać klienci. 
 
-Proces tworzenia lokalizatora przesyłania strumieniowego jest nazywany publikowaniem. Domyślnie lokalizator przesyłania strumieniowego jest ważny natychmiast po wykonaniu wywołania interfejsu API i obowiązuje do momentu jego usunięcia, chyba że zostanie skonfigurowany opcjonalny czas rozpoczęcia i zakończenia. 
+Proces tworzenia lokalizatora przesyłania strumieniowego jest nazywany publikowaniem. Domyślnie lokalizator przesyłania strumieniowego jest prawidłowy natychmiast po wywołaniu interfejsu API i trwa do momentu jego usunięcia, chyba że skonfigurujesz opcjonalne godziny rozpoczęcia i zakończenia. 
 
-Podczas tworzenia obiektu [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) musisz określić żądany element **StreamingPolicyName**. W tym przykładzie będziesz przesyłać strumieniowo zawartość w postaci nieoczyszczonej (lub nieszyfrowanej), więc zostanie użyta wstępnie zdefiniowana zasada "Predefined_ClearStreamingOnly".
+Podczas tworzenia obiektu [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) musisz określić żądany element **StreamingPolicyName**. W tym przykładzie będzie przesyłanie strumieniowe w postaci przezroczystej (lub nieszyfrowanej) zawartości, więc używana jest wstępnie zdefiniowana, przejrzysta zasada przesyłania strumieniowego "Predefined_ClearStreamingOnly".
 
 > [!IMPORTANT]
 > W przypadku korzystania z niestandardowego elementu [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies) należy zaprojektować ograniczony zestaw takich zasad dla konta usługi Media Service i używać ich ponownie dla obiektów StreamingLocator zawsze, gdy są potrzebne takie same opcje szyfrowania i protokoły. 
 
-Konto usługi Media Service jest objęte limitem przydziału dotyczącym liczby pozycji **zasad przesyłania strumieniowego**. Nie należy tworzyć nowych **zasad przesyłania strumieniowego** dla każdego lokalizatora przesyłania strumieniowego.
+Na koncie usługi Media Service jest ono przeznaczone na określoną liczbę wpisów **zasad przesyłania strumieniowego.** Nie należy tworzyć nowe **zasady przesyłania strumieniowego** dla każdego lokalizatora przesyłania strumieniowego.
 
-1. W lewym oknie aplikacji Poster wybierz pozycję "przesyłanie strumieniowe zasad i lokalizatorów".
-2. Następnie wybierz pozycję "Utwórz lokalizator przesyłania strumieniowego (Wyczyść)".
+1. W lewym oknie aplikacji Postman wybierz opcję "Zasady przesyłania strumieniowego i lokalizatory".
+2. Następnie wybierz opcję "Utwórz lokalizator przesyłania strumieniowego (wyczyść)".
 3. Kliknij pozycję **Wyślij**.
 
     * Zostanie wysłana następująca operacja **PUT**.
@@ -297,7 +299,7 @@ Konto usługi Media Service jest objęte limitem przydziału dotyczącym liczby 
 
 Teraz, po utworzeniu obiektu [Lokalizator przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streaminglocators), możesz pobrać adresy URL przesyłania strumieniowego.
 
-1. W lewym oknie aplikacji Poster wybierz pozycję "zasady przesyłania strumieniowego".
+1. W lewym oknie aplikacji Postman wybierz opcję "Zasady przesyłania strumieniowego".
 2. Następnie wybierz opcję „Ścieżki listy”.
 3. Kliknij pozycję **Wyślij**.
 
@@ -366,11 +368,11 @@ https://amsaccount-usw22.streaming.media.azure.net/cdb80234-1d94-42a9-b056-0eefa
 
 
 > [!NOTE]
-> Upewnij się, że **punkt końcowy przesyłania strumieniowego**, z którego chcesz strumieniowo przesyłać zawartość, działa.
+> Upewnij się, że **punkt końcowy przesyłania strumieniowego,** z którego chcesz przesyłać strumieniowo jest uruchomiony.
 
 W tym artykule strumień jest testowany za pomocą odtwarzacza Azure Media Player. 
 
-1. Otwórz przeglądarkę i przejdź pod adres [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/).
+1. Otwórz przeglądarkę internetową [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)i przejdź do pliku .
 2. W polu **URL:** wklej utworzony adres URL. 
 3. Naciśnij pozycję **Aktualizuj odtwarzacz**.
 
@@ -392,9 +394,9 @@ Wykonaj następujące polecenie interfejsu wiersza polecenia:
 az group delete --name amsResourceGroup
 ```
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Zadawaj pytania, Przekaż opinię, uzyskaj aktualizacje
+## <a name="ask-questions-give-feedback-get-updates"></a>Zadawaj pytania, przekazuj opinie, otrzyj aktualizacje
 
-Zapoznaj się z artykułem [community Azure Media Services](media-services-community.md) , aby zobaczyć różne sposoby zadawania pytań, przekazać Opinie i uzyskać aktualizacje dotyczące Media Services.
+Zapoznaj się z artykułem [społeczności usługi Azure Media Services,](media-services-community.md) aby zobaczyć różne sposoby zadawania pytań, przekazywania opinii i otrzymywać aktualizacje dotyczące usługi Media Services.
 
 ## <a name="next-steps"></a>Następne kroki
 

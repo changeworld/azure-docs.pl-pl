@@ -9,13 +9,13 @@ ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: 0dd6618bdee8e6810d414d4b04b16a1e0a9c90ed
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67183707"
 ---
-Dzienniki konsoli z on wygenerowany wewnątrz kontenera możesz uzyskać dostęp. Najpierw należy włączyć rejestrowanie kontenerów przez uruchomienie następującego polecenia w usłudze Cloud Shell:
+Można uzyskać dostęp do dzienników konsoli generowanych z wewnątrz kontenera. Najpierw włącz rejestrowanie kontenerów, uruchamiając następujące polecenie w usłudze Cloud Shell:
 
 ```azurecli-interactive
 az webapp log config --name <app-name> --resource-group myResourceGroup --docker-container-logging filesystem
@@ -30,6 +30,6 @@ az webapp log tail --name <app-name> --resource-group myResourceGroup
 Jeśli nie widzisz dzienników konsoli, sprawdź ponownie w ciągu 30 sekund.
 
 > [!NOTE]
-> Można też sprawdzić pliki dziennika z przeglądarki na `https://<app-name>.scm.azurewebsites.net/api/logs/docker`.
+> Można również sprawdzić pliki dziennika z `https://<app-name>.scm.azurewebsites.net/api/logs/docker`przeglądarki w .
 
-Aby zatrzymać przesyłanie strumieniowe dzienników w dowolnym momencie, wpisz `Ctrl` + `C`.
+Aby zatrzymać przesyłanie strumieniowe `Ctrl` + `C`dziennika w dowolnym momencie, wpisz .

@@ -1,21 +1,21 @@
 ---
-title: Samouczek — Konfigurowanie pamięci podręcznych w usłudze Azure cache for Redis za pomocą rozwiązania ansible
-description: Dowiedz się, jak używać rozwiązania ansible do tworzenia, skalowania, ponownego uruchamiania i dodawania reguły zapory do usługi Azure cache dla Redis
-keywords: rozwiązania ansible, Azure, DevOps, bash, element PlayBook, cache, Redis
+title: Samouczek — konfigurowanie pamięci podręcznej w pamięci podręcznej platformy Azure dla funkcji Redis przy użyciu ansible
+description: Dowiedz się, jak używać ansible do tworzenia, skalowania, ponownego uruchamiania i dodawania reguły zapory do usługi Azure Cache for Redis
+keywords: ansible, azure, devops, bash, playbook, cache, redis
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 2ef36ee9e3601d77bfa114b903f6a75b5874b158
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156513"
 ---
-# <a name="tutorial-configure-caches-in-azure-cache-for-redis-using-ansible"></a>Samouczek: Konfigurowanie pamięci podręcznych w usłudze Azure cache for Redis za pomocą rozwiązania ansible
+# <a name="tutorial-configure-caches-in-azure-cache-for-redis-using-ansible"></a>Samouczek: Konfigurowanie pamięci podręcznej w pamięci podręcznej platformy Azure dla funkcji Redis przy użyciu ansible
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
-[Pamięć podręczna platformy Azure dla Redis](/azure/azure-cache-for-redis/) to usługa zgodna z systemem Open Source, która umożliwia tworzenie aplikacji, które są w sposób szybki dostęp do danych. 
+[Usługa Azure Cache for Redis](/azure/azure-cache-for-redis/) to usługa zgodna z open source, która umożliwia tworzenie aplikacji responsywnych, zapewniając szybki dostęp do danych. 
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
@@ -34,7 +34,7 @@ ms.locfileid: "74156513"
 
 ## <a name="create-a-cache"></a>Tworzenie pamięci podręcznej
 
-Utwórz pamięć podręczną platformy Azure dla usługi Redis w ramach nowej grupy zasobów.
+Tworzenie pamięci podręcznej platformy Azure dla redis w ramach nowej grupy zasobów.
 
 ```yml
   - name: Create resource group
@@ -51,7 +51,7 @@ Utwórz pamięć podręczną platformy Azure dla usługi Redis w ramach nowej gr
         size: C1 
 ```
 
-Inicjowanie obsługi administracyjnej pamięci podręcznej może potrwać kilka minut. Poniższy kod instruuje rozwiązania ansible, aby poczekać na zakończenie operacji:
+Może upłynąć kilka minut, aby aprowizować pamięć podręczną. Poniższy kod informuje Ansible czekać na zakończenie operacji:
 
 ```yml
   - name: Wait for Redis provisioning to complete
@@ -64,7 +64,7 @@ Inicjowanie obsługi administracyjnej pamięci podręcznej może potrwać kilka 
     delay: 60
 ```
 
-Podczas długotrwałego procesu aprowizacji zostanie wyświetlonych kilka komunikatów o błędach. Te komunikaty można bezpiecznie zignorować. Ważna wiadomość jest ostatnim komunikatem. W poniższym przykładzie istnieje wiele komunikatów o błędach do momentu końcowego komunikatu ("OK").
+Podczas długiego procesu inicjowania obsługi administracyjnej zostanie wyświetlonych kilka komunikatów o błędach. Te komunikaty można bezpiecznie zignorować. Ważną wiadomością jest ostatnia wiadomość. W poniższym przykładzie istnieje wiele komunikatów o błędach, aż do ostatecznego komunikatu ("ok").
 
 ```Output
 FAILED - RETRYING: Get facts (100 retries left).
@@ -82,9 +82,9 @@ ok: [localhost]
 
 ## <a name="scale-the-cache"></a>Skalowanie pamięci podręcznej
 
-Usługa Azure cache for Redis ma różne oferty pamięci podręcznej w zależności od potrzeb aplikacji. Te opcje pamięci podręcznej zapewniają elastyczność w wyborze rozmiaru i funkcji pamięci podręcznej. Jeśli wymagania dotyczące aplikacji zmieniają się po utworzeniu pamięci podręcznej, można skalować pamięć podręczną stosownie do potrzeb. Aby uzyskać więcej informacji na temat skalowania, zobacz [Jak skalować pamięć podręczną platformy Azure dla Redis](/azure/azure-cache-for-redis/cache-how-to-scale).
+Usługa Azure Cache for Redis ma różne oferty pamięci podręcznej w zależności od potrzeb aplikacji. Te opcje pamięci podręcznej zapewniają elastyczność w wyborze rozmiaru pamięci podręcznej i funkcji. Jeśli wymagania aplikacji zmienić po utworzeniu pamięci podręcznej, można skalować pamięci podręcznej w razie potrzeby. Aby uzyskać więcej informacji na temat skalowania, zobacz [Jak skalować pamięć podręczną platformy Azure dla redis](/azure/azure-cache-for-redis/cache-how-to-scale).
 
-Następujący przykładowy kod skaluje pamięć podręczną do warstwy **standardowa**:
+Poniższy przykładowy kod skaluje pamięć podręczną do **standardowego:**
 
 ```yml
 - name: Scale up Azure Cache for Redis
@@ -96,7 +96,7 @@ Następujący przykładowy kod skaluje pamięć podręczną do warstwy **standar
         size: C1
 ```
 
-Skalowanie pamięci podręcznej może potrwać kilka minut. Poniższy kod instruuje rozwiązania ansible, aby poczekać na zakończenie operacji:
+Skalowanie pamięci podręcznej może potrwać kilka minut. Poniższy kod informuje Ansible czekać na zakończenie operacji:
 
 ```yml
   - name: Wait for Redis scaling up to complete
@@ -109,7 +109,7 @@ Skalowanie pamięci podręcznej może potrwać kilka minut. Poniższy kod instru
     delay: 60
 ```
 
-Podobnie jak w przypadku zadania inicjowania obsługi usługi Azure cache for Redis, dane wyjściowe podobne do następującego:
+Podobnie jak zadanie do aprowizowania usługi Azure Cache dla redis, dane wyjściowe, takie jak następujący komunikat jest normalne:
 
 ```Ouput
 **FAILED - RETRYING: Get facts (100 retries left)** is normal.
@@ -117,7 +117,7 @@ Podobnie jak w przypadku zadania inicjowania obsługi usługi Azure cache for Re
 
 ## <a name="reboot-the-cache"></a>Ponowne uruchamianie pamięci podręcznej
 
-Poniższy kod wykonuje ponowny rozruch pamięci podręcznej utworzonej w poprzednich sekcjach.
+Poniższy kod ponownie uruchamia pamięć podręczną utworzoną w poprzednich sekcjach.
 
 ```yml
   - name: Reboot Azure Cache for Redis
@@ -142,7 +142,7 @@ Poniższy kod dodaje regułę zapory do pamięci podręcznej:
       end_ip_address: 168.1.1.4
 ```
 
-## <a name="delete-the-cache"></a>Usuń pamięć podręczną
+## <a name="delete-the-cache"></a>Usuwanie pamięci podręcznej
 
 Poniższy kod usuwa pamięć podręczną:
 
@@ -154,11 +154,11 @@ Poniższy kod usuwa pamięć podręczną:
       state: absent
 ```
 
-## <a name="get-the-sample-playbook"></a>Pobierz przykładową element PlayBook
+## <a name="get-the-sample-playbook"></a>Pobierz przykładowy podręcznik
 
-Istnieją dwa sposoby uzyskania kompletnej przykładowej element PlayBook:
-- [Pobierz element PlayBook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/rediscache.yml) i Zapisz go w `rediscache.yml`.
-- Utwórz nowy plik o nazwie `rediscache.yml` i skopiuj do niego następującą zawartość:
+Istnieją dwa sposoby uzyskania pełnego przykładowego podręcznika:
+- [Pobierz podręcznik](https://github.com/Azure-Samples/ansible-playbooks/blob/master/rediscache.yml) i zapisz `rediscache.yml`go w pliku .
+- Utwórz nowy `rediscache.yml` plik o nazwie i skopiuj do niego następującą zawartość:
 
 ```yml
 - name: Manage Azure Cache for Redis
@@ -234,19 +234,19 @@ Istnieją dwa sposoby uzyskania kompletnej przykładowej element PlayBook:
       state: absent
 ```
 
-## <a name="run-the-sample-playbook"></a>Uruchamianie przykładowej element PlayBook
+## <a name="run-the-sample-playbook"></a>Uruchamianie przykładowego podręcznika
 
-W tej sekcji należy uruchomić element PlayBook w celu przetestowania różnych funkcji przedstawionych w tym artykule.
+W tej sekcji uruchom podręcznik, aby przetestować różne funkcje pokazane w tym artykule.
 
-W sekcji `vars` Zamień symbol zastępczy `{{ resource_group_name }}` na nazwę grupy zasobów.
+W `vars` sekcji zastąp `{{ resource_group_name }}` symbol zastępczy nazwą grupy zasobów.
 
-Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
+Uruchom podręcznik za `ansible-playbook` pomocą polecenia:
 
 ```bash
 ansible-playbook rediscache.yml
 ```
 
-Dane wyjściowe wyglądają podobnie do następujących:
+Dane wyjściowe wyglądają podobnie do następujących wyników:
 
 ```Output
 TASK [create resource group] 
@@ -322,9 +322,9 @@ Tuesday 12 March 2019  16:44:14 +0800 (0:00:06.217)       0:23:08.626
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie jest już potrzebne, Usuń zasoby utworzone w tym artykule. 
+Gdy nie są już potrzebne, usuń zasoby utworzone w tym artykule. 
 
-Zapisz następujący kod jako `cleanup.yml`:
+Zapisz następujący kod `cleanup.yml`jako:
 
 ```yml
 - hosts: localhost
@@ -337,9 +337,9 @@ Zapisz następujący kod jako `cleanup.yml`:
         state: absent
 ```
 
-W sekcji `vars` Zamień symbol zastępczy `{{ resource_group_name }}` na nazwę grupy zasobów.
+W `vars` sekcji zastąp `{{ resource_group_name }}` symbol zastępczy nazwą grupy zasobów.
 
-Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
+Uruchom podręcznik za `ansible-playbook` pomocą polecenia:
 
 ```bash
 ansible-playbook cleanup.yml

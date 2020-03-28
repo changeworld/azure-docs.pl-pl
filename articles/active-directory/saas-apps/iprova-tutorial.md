@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: integracja usługi Azure Active Directory z aplikacją iProva | Microsoft Docs'
+title: 'Samouczek: Integracja rejestracji jednokrotnej usługi Azure Active Directory z iProva | Dokumenty firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją iProva.
 services: active-directory
 documentationCenter: na
@@ -11,81 +11,68 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/14/2019
+ms.date: 03/19/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf685919879a9ee82cbaa3863826c891422d3013
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 98458f8be162d0903f5ea0d1f7d4651d46f78e8e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67099815"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80048430"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-iprova"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją iProva
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iprova"></a>Samouczek: Integracja rejestracji jednokrotnej usługi Azure Active Directory z iProva
 
-Z tego samouczka dowiesz się, jak zintegrować aplikację iProva z usługą Azure Active Directory (Azure AD).
-Integracja aplikacji iProva z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować iProva z usługą Azure Active Directory (Azure AD). Po zintegrowaniu iProva z usługą Azure AD można:
 
-* Możesz kontrolować w usłudze Azure AD, kto ma dostęp do aplikacji iProva.
-* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do aplikacji iProva (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* Kontrola w usłudze Azure AD, który ma dostęp do iProva.
+* Włącz użytkownikom automatyczne logowanie do iProva za pomocą ich kont usługi Azure AD.
+* Zarządzaj kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z aplikacją iProva, potrzebne są następujące elementy:
+Aby rozpocząć, potrzebujesz następujących elementów:
 
-* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/)
-* Subskrypcja aplikacji iProva z obsługą logowania jednokrotnego
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto.](https://azure.microsoft.com/free/)
+* Subskrypcja z włączoną funkcją logowania jednokrotnego iProva.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
+W tym samouczku można skonfigurować i przetestować samouszeńców usługi Azure AD w środowisku testowym.
 
 * Aplikacja iProva obsługuje logowanie jednokrotne inicjowane przez **SP**
+
+* Po skonfigurowaniu iProva można wymusić kontrolę sesji, które chronią eksfiltracji i infiltracji poufnych danych organizacji w czasie rzeczywistym. Kontrola sesji rozciąga się od dostępu warunkowego. [Dowiedz się, jak wymusić kontrolę nad sesją za pomocą programu Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-iprova-from-the-gallery"></a>Dodawanie aplikacji iProva z galerii
 
 Aby skonfigurować integrację aplikacji iProva z usługą Azure AD, musisz dodać tę aplikację z galerii do swojej listy zarządzanych aplikacji SaaS.
 
-**Aby dodać aplikację iProva z galerii, wykonaj następujące kroki:**
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta służbowego lub konta firmy Microsoft.
+1. W lewym okienku nawigacji wybierz usługę **Azure Active Directory.**
+1. Przejdź do **aplikacji korporacyjnych,** a następnie wybierz pozycję **Wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
+1. W sekcji **Dodaj z galerii** wpisz **iProva** w polu wyszukiwania.
+1. Wybierz **iProva** z panelu wyników, a następnie dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-iprova"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD dla iProva
 
-    ![Przycisk Azure Active Directory](common/select-azuread.png)
+Konfigurowanie i testowanie usługi Azure AD SSO za pomocą iProva przy użyciu użytkownika testowego o nazwie **B.Simon**. Aby użytkownik łączony sytuować działał, należy ustanowić relację łącza między użytkownikiem usługi Azure AD a powiązanym użytkownikiem w iProva.
 
-2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
+Aby skonfigurować i przetestować syg jako jeden na dział usługi Azure AD za pomocą iProva, wykonaj następujące bloki konstrukcyjne:
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+1. **[Pobieranie informacji o konfiguracji z aplikacji iProva](#retrieve-configuration-information-from-iprova)** — jako przygotowanie do następnych kroków.
+1. **[Skonfiguruj samouszeńcę usługi Azure AD](#configure-azure-ad-sso)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+1. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD za pomocą usługi B.Simon.
+1. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić B.Simon używać logowania jednokrotnego usługi Azure AD.
+1. **[Utwórz użytkownika testowego iProva](#create-iprova-test-user)** — aby mieć odpowiednik B.Simon w iProva, który jest połączony z reprezentacją użytkownika usługi Azure AD.
+1. **[Skonfiguruj iProva SSO](#configure-iprova-sso)** - aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+1. **[Test SSO](#test-sso)** - aby sprawdzić, czy konfiguracja działa.
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
-
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
-
-4. W polu wyszukiwania wpisz **iProva**, wybierz pozycję **iProva** z panelu wyników i kliknij przycisk **Dodaj**, aby dodać aplikację.
-
-    ![Aplikacja iProva na liście wyników](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
-
-W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją iProva, korzystając z danych testowego użytkownika **Britta Simon**.
-Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji iProva.
-
-Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z aplikacją iProva, należy utworzyć poniższe bloki konstrukcyjne:
-
-1. **[Pobieranie informacji o konfiguracji z iProva](#retrieve-configuration-information-from-iprova)**  jako przygotowania do następnych kroków.
-2. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-3. **[Konfigurowanie logowania jednokrotnego w aplikacji iProva](#configure-iprova-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
-4. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-5. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-6. **[Tworzenie użytkownika testowego aplikacji iProva](#create-iprova-test-user)** — aby mieć w aplikacji iProva odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
-7. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
-
-### <a name="retrieve-configuration-information-from-iprova"></a>Pobieranie informacji o konfiguracji z aplikacji iProva
+## <a name="retrieve-configuration-information-from-iprova"></a>Pobieranie informacji o konfiguracji z aplikacji iProva
 
 W tej sekcji pobierzesz informacje z aplikacji iProva w celu skonfigurowania logowania jednokrotnego usługi Azure AD.
 
@@ -99,69 +86,93 @@ W tej sekcji pobierzesz informacje z aplikacji iProva w celu skonfigurowania log
 
     ![Wyświetlanie strony z informacjami o formacie SAML2 w aplikacji iProva](media/iprova-tutorial/iprova-saml2-info.png)
 
-2. Pozostaw otwartą kartę przeglądarki, gdy wykonujesz następne kroki w innej karcie przeglądarki.
+1. Pozostaw otwartą kartę przeglądarki, gdy wykonujesz następne kroki w innej karcie przeglądarki.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-azure-ad-sso"></a>Konfigurowanie rejestracji jednokrotnej w usłudze Azure AD
 
-W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
+Wykonaj następujące kroki, aby włączyć usługę Azure AD SSO w witrynie Azure portal.
 
-Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji iProva, wykonaj następujące kroki:
+1. W [witrynie Azure portal](https://portal.azure.com/)na stronie integracji aplikacji **iProva** znajdź sekcję **Zarządzaj** i wybierz **opcję logowanie jednokrotne**.
+1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą saml** kliknij ikonę edycji/pióra dla **podstawowej konfiguracji SAML,** aby edytować ustawienia.
 
-1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **iProva** wybierz pozycję **Logowanie jednokrotne**.
+   ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
+1. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
+    a. Wypełnij pole **Adres URL logowania** przy użyciu wartości wyświetlonej obok etykiety **Adres URL logowania** na stronie **informacji o formacie SAML2 aplikacji iProva**. Ta strona jest wciąż otwarta w innej karcie przeglądarki.
 
-    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
+    b. Wypełnij pole **Identyfikator** przy użyciu wartości wyświetlonej obok etykiety **EntityID** na stronie **informacji o formacie SAML2 aplikacji iProva**. Ta strona jest wciąż otwarta w innej karcie przeglądarki.
 
-3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
+    d. Wypełnij pole **Adres URL odpowiedzi** przy użyciu wartości wyświetlonej obok etykiety **Adres URL odpowiedzi** na stronie**informacji o formacie SAML2 aplikacji iProva**. Ta strona jest wciąż otwarta w innej karcie przeglądarki.
 
-    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
+1. Aplikacja iProva oczekuje potwierdzeń SAML w określonym formacie, który wymaga dodania mapowań atrybutów niestandardowych do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych.
 
-4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
+    ![image](common/default-attributes.png)
 
-    ![Informacje o logowaniu jednokrotnym — domena i adresy URL aplikacji iProva](common/sp-identifier-reply.png)
+1. Oprócz powyższej aplikacji iProva oczekuje kilka więcej atrybutów, które mają być przekazywane z powrotem w odpowiedzi SAML, które są pokazane poniżej. Te atrybuty są również wstępnie wypełnione, ale można je przejrzeć zgodnie z wymaganiami.
 
-    a. Wypełnij pole **Identyfikator** przy użyciu wartości wyświetlonej obok etykiety **EntityID** na stronie **informacji o formacie SAML2 aplikacji iProva**. Ta strona jest wciąż otwarta w innej karcie przeglądarki.
-
-    b. Wypełnij pole **Adres URL odpowiedzi** przy użyciu wartości wyświetlonej obok etykiety **Adres URL odpowiedzi** na stronie**informacji o formacie SAML2 aplikacji iProva**. Ta strona jest wciąż otwarta w innej karcie przeglądarki.
-
-    c. Wypełnij pole **Adres URL logowania** przy użyciu wartości wyświetlonej obok etykiety **Adres URL logowania** na stronie **informacji o formacie SAML2 aplikacji iProva**. Ta strona jest wciąż otwarta w innej karcie przeglądarki.
-
-5. Aplikacja iProva oczekuje asercji SAML w konkretnym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty użytkownika** na stronie integracji aplikacji. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Atrybuty użytkownika**.
-
-    ![image](common/edit-attribute.png)
-
-6. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** edytuj oświadczenia, korzystając z **ikony edycji**, lub dodaj je za pomocą opcji **Dodaj nowe oświadczenie**, aby skonfigurować atrybut tokenu języka SAML, jak pokazano na ilustracji powyżej, a następnie wykonaj następujące czynności:
-
-    | Name (Nazwa) | Atrybut źródłowy| Przestrzeń nazw  |
+    | Nazwa | Atrybut źródłowy| Przestrzeń nazw  |
     | ---------------| -------- | -----|
     | `samaccountname` | `user.onpremisessamaccountname`| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
 
-    a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą saml** w sekcji **Certyfikat podpisywania SAML** kliknij przycisk kopiuj, aby skopiować **adres URL metadanych federacji aplikacji** i zapisać go na komputerze.
 
-    ![image](common/new-save-attribute.png)
+    ![Link do pobierania certyfikatu](common/copy-metadataurl.png)
 
-    ![image](common/new-attribute-details.png)
+## <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-    b. W polu tekstowym **Nazwa** wpisz nazwę atrybutu pokazaną dla tego wiersza.
+W tej sekcji utworzysz użytkownika testowego w witrynie Azure portal o nazwie B.Simon.
 
-    c. W polu tekstowym **Przestrzeń nazw** wpisz wartość przestrzeni nazw pokazaną dla tego wiersza.
+1. Z lewego okienka w witrynie Azure portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. Wybierz **pozycję Nowy użytkownik** u góry ekranu.
+1. We właściwościach **Użytkownika** wykonaj następujące kroki:
+   1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
+   1. W polu **Nazwa użytkownika** username@companydomain.extensionwprowadź pole . Na przykład `B.Simon@contoso.com`.
+   1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
+   1. Kliknij przycisk **Utwórz**.
 
-    d. Dla opcji Źródło wybierz wartość **Atrybut**.
+## <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-    e. Na liście **Atrybut źródłowy** wpisz wartość atrybutu pokazaną dla tego wiersza.
+W tej sekcji włączysz B.Simon do korzystania z logowania jednokrotnego platformy Azure, przyznając dostęp do iProva.
 
-    f. Kliknij przycisk **OK**.
+1. W portalu Azure wybierz pozycję **Aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **Wszystkie aplikacje**.
+1. Z listy aplikacji wybierz pozycję **iProva**.
+1. Na stronie przegląd aplikacji znajdź sekcję **Zarządzaj** i wybierz pozycję **Użytkownicy i grupy**.
 
-    g. Kliknij pozycję **Zapisz**.
+   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-7. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij przycisk kopiowania, aby skopiować **adres URL metadanych federacji aplikacji** i zapisać go na komputerze.
+1. Wybierz **pozycję Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym Dodawanie **przydziału.**
 
-    ![Link pobierania certyfikatu](common/copy-metadataurl.png)
+    ![Łącze Dodaj użytkownika](common/add-assign-user.png)
 
-### <a name="configure-iprova-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w aplikacji iProva
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B.Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+1. Jeśli oczekujesz dowolnej wartości roli w asercji SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+1. W oknie dialogowym **Dodawanie przydziału** kliknij przycisk **Przypisz.**
+
+## <a name="create-iprova-test-user"></a>Tworzenie użytkownika testowego aplikacji iProva
+
+1. Zaloguj się do aplikacji iProva za pomocą konta **administratora**.
+
+2. Otwórz menu **Przejdź do**.
+
+3. Wybierz pozycję **Application management** (Zarządzanie aplikacją).
+
+4. Wybierz pozycję **Users** (Użytkownicy) na panelu **Users and user groups** (Użytkownicy i grupy użytkowników).
+
+5. Wybierz pozycję **Dodaj**.
+
+6. W polu **Nazwa użytkownika** wprowadź nazwę `B.Simon@contoso.com`użytkownika, taką jak .
+
+7. W polu **Imię i nazwisko** wprowadź pełną nazwę użytkownika, takiego jak **B.Simon**.
+
+8. Wybierz opcję **Bez hasła (użyj logowania jednokrotnego)**.
+
+9. W polu **Adres e-mail** wprowadź adres e-mail użytkownika, taki jak `B.Simon@contoso.com`.
+
+10. Przewiń w dół do końca strony, a następnie wybierz pozycję **Finish** (Zakończ).
+
+## <a name="configure-iprova-sso"></a>Konfigurowanie identyfikatora SSO iProva
 
 1. Zaloguj się do aplikacji iProva za pomocą konta **administratora**.
 
@@ -181,7 +192,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji iProva, wy
 
 8. Wybierz pozycję **Set up** (Konfiguracja).
 
-9. Wybierz opcję **Dalej**.
+9. Wybierz **pozycję Dalej**.
 
 10. Teraz w aplikacji iProva zostanie wyświetlone pytanie o to, czy pobrać dane federacji z adresu URL, czy przekazać je z pliku. Wybierz opcję **From URL** (Z adresu URL).
 
@@ -193,98 +204,32 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji iProva, wy
 
 13. Po zakończeniu pobierania zostanie wyświetlony komunikat potwierdzający **Valid Federation Data file downloaded** (Pobrano prawidłowy plik danych federacji).
 
-14. Wybierz opcję **Dalej**.
+14. Wybierz **pozycję Dalej**.
 
 15. Pomiń teraz opcję **Test login** (Testuj logowanie) i wybierz pozycję **Next** (Dalej).
 
 16. Z listy rozwijanej **Claim to use** (Oświadczenie do użycia) wybierz pozycję **windowsaccountname**.
 
-17. Wybierz pozycję **Finish** (Zakończ).
+17. Wybierz **pozycję Zakończ**.
 
 18. Teraz wróć do ekranu **Edytowanie ustawień ogólnych**. Przewiń w dół strony, a następnie wybierz przycisk **OK**, aby zapisać konfigurację.
 
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
+## <a name="test-sso"></a>Test SSO
 
-W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+Po kliknięciu kafelka iProva w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji iProva, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat Panelu dostępu, zobacz [Wprowadzenie do Panelu dostępu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+- [Lista samouczków dotyczących integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-    ![Przycisk Nowy użytkownik](common/new-user.png)
-
-3. We właściwościach użytkownika wykonaj następujące kroki.
-
-    ![Okno dialogowe Użytkownik](common/user-properties.png)
-
-    a. W polu **Nazwa** wprowadź **BrittaSimon**.
-  
-    b. W **nazwa_użytkownika** typ pola `brittasimon@yourcompanydomain.extension`. Na przykład: BrittaSimon@contoso.com
-
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
-
-    d. Kliknij pozycję **Utwórz**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
-
-W tej sekcji włączysz użytkownikowi Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do aplikacji iProva.
-
-1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz pozycję **Wszystkie aplikacje**, a następnie wybierz pozycję **iProva**.
-
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
-
-2. Z listy aplikacji wybierz pozycję **iProva**.
-
-    ![Link do aplikacji iProva na liście aplikacji](common/all-applications.png)
-
-3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
-
-    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
-
-4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
-
-    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
-
-5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
-
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
-
-7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
-
-### <a name="create-iprova-test-user"></a>Tworzenie użytkownika testowego aplikacji iProva
-
-1. Zaloguj się do aplikacji iProva za pomocą konta **administratora**.
-
-2. Otwórz menu **Przejdź do**.
-
-3. Wybierz pozycję **Application management** (Zarządzanie aplikacją).
-
-4. Wybierz pozycję **Users** (Użytkownicy) na panelu **Users and user groups** (Użytkownicy i grupy użytkowników).
-
-5. Wybierz pozycję **Dodaj**.
-
-6. W **Username** wprowadź nazwę użytkownika, użytkownika, takich jak `BrittaSimon@contoso.com`.
-
-7. W **imię i nazwisko** wprowadź pełną nazwę użytkownika, takich jak **BrittaSimon**.
-
-8. Wybierz opcję **Bez hasła (użyj logowania jednokrotnego)** .
-
-9. W **adres E-mail** wprowadź adres e-mail użytkownika, takich jak `BrittaSimon@contoso.com`.
-
-10. Przewiń w dół do końca strony, a następnie wybierz pozycję **Finish** (Zakończ).
-
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
-
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
-
-Po kliknięciu kafelka iProva w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji iProva, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
-
-## <a name="additional-resources"></a>Dodatkowe zasoby
-
-- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Wypróbuj iProva z usługą Azure AD](https://aad.portal.azure.com/)
+
+- [Co to jest kontrola sesji w usłudze Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [Jak chronić iProva dzięki zaawansowanej widoczności i sterowaniu](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

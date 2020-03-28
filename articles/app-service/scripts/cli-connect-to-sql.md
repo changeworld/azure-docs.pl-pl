@@ -1,6 +1,6 @@
 ---
-title: 'Interfejs wiersza polecenia: łączenie aplikacji z bazą danych SQL'
-description: Dowiedz się, jak zautomatyzować wdrażanie aplikacji App Service i zarządzanie nią za pomocą interfejsu wiersza polecenia platformy Azure. Ten przykład pokazuje, jak połączyć aplikację z bazą danych SQL.
+title: 'CLI: Łączenie aplikacji z bazą danych SQL'
+description: Dowiedz się, jak za pomocą interfejsu wiersza polecenia platformy Azure zautomatyzować wdrażanie aplikacji usługi App Service i zarządzanie nimi. W tym przykładzie pokazano, jak połączyć aplikację z bazą danych SQL.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 7c2efdd0-f553-4038-a77a-e953021b3f77
@@ -8,13 +8,13 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: a0634cff6060e47ea059508f5f14abcaa679b53f
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 74e5af6c295ffada0fbb8d1ded63177afadad285
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688468"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80058134"
 ---
 # <a name="connect-an-app-service-app-to-a-sql-database-using-cli"></a>Łączenie aplikacji usługi App Service z usługą SQL Database przy użyciu interfejsu wiersza polecenia
 

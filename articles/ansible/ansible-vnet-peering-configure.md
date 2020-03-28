@@ -1,30 +1,30 @@
 ---
-title: Samouczek — Konfigurowanie komunikacji równorzędnej sieci wirtualnej platformy Azure za pomocą rozwiązania ansible
-description: Dowiedz się, jak używać programu rozwiązania ansible do łączenia sieci wirtualnych za pomocą komunikacji równorzędnej sieci wirtualnych.
-keywords: rozwiązania ansible, Azure, DevOps, bash, element PlayBook, sieci, Komunikacja równorzędna
+title: Samouczek — konfigurowanie komunikacji równorzędnej sieci wirtualnej platformy Azure przy użyciu ansible
+description: Dowiedz się, jak używać ansible do łączenia sieci wirtualnych z komunikacją równorzędną sieci wirtualnej.
+keywords: ansible, azure, devops, bash, playbook, networking, peering
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 78699a005d721b46a88a26452f5db68438793d34
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74155730"
 ---
-# <a name="tutorial-configure-azure-virtual-network-peering-using-ansible"></a>Samouczek: Konfigurowanie komunikacji równorzędnej sieci wirtualnej platformy Azure za pomocą rozwiązania ansible
+# <a name="tutorial-configure-azure-virtual-network-peering-using-ansible"></a>Samouczek: Konfigurowanie komunikacji równorzędnej sieci wirtualnej platformy Azure przy użyciu ansible
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
-[Komunikacja równorzędna sieci wirtualnych (VNET)](/azure/virtual-network/virtual-network-peering-overview) umożliwia bezproblemowe łączenie dwóch sieci wirtualnych platformy Azure. Po nawiązaniu połączenia równorzędnego dwie sieci wirtualne są wyświetlane jako jedna do celów związanych z łącznością. 
+[Komunikacja równorzędna sieci wirtualnej umożliwia](/azure/virtual-network/virtual-network-peering-overview) bezproblemowe łączenie dwóch sieci wirtualnych platformy Azure. Po wzniebowtęglowane dwie sieci wirtualne są wyświetlane jako jedna do celów łączności. 
 
-Ruch jest kierowany między maszynami wirtualnymi w tej samej sieci wirtualnej za pośrednictwem prywatnych adresów IP. Podobnie ruch między maszynami wirtualnymi w równorzędnej sieci wirtualnej jest kierowany za pośrednictwem infrastruktury szkieletowej firmy Microsoft. W związku z tym maszyny wirtualne w różnych sieciach wirtualnych mogą komunikować się ze sobą.
+Ruch jest kierowany między maszynami wirtualnymi w tej samej sieci wirtualnej za pośrednictwem prywatnych adresów IP. Podobnie ruch między maszynami wirtualnymi w sieci wirtualnej równorzędnej jest kierowany za pośrednictwem infrastruktury szkieletowej firmy Microsoft. W rezultacie maszyny wirtualne w różnych sieciach wirtualnych mogą komunikować się ze sobą.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
 > * Tworzenie dwóch sieci wirtualnych
-> * Równorzędne dwie sieci wirtualne
+> * Równorzędnie dwóch sieci wirtualnych
 > * Usuwanie komunikacji równorzędnej między dwiema sieciami
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -32,13 +32,13 @@ Ruch jest kierowany między maszynami wirtualnymi w tej samej sieci wirtualnej z
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="create-two-resource-groups"></a>Utwórz dwie grupy zasobów
+## <a name="create-two-resource-groups"></a>Tworzenie dwóch grup zasobów
 
 Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi.
 
-Przykładowy kod element PlayBook w tej sekcji jest używany do:
+Przykładowy kod podręcznika w tej sekcji jest używany do:
 
-- Utwórz dwie grupy zasobów 
+- Tworzenie dwóch grup zasobów 
 
 ```yml
   - name: Create a resource group
@@ -53,7 +53,7 @@ Przykładowy kod element PlayBook w tej sekcji jest używany do:
 
 ## <a name="create-the-first-virtual-network"></a>Tworzenie pierwszej sieci wirtualnej
 
-Przykładowy kod element PlayBook w tej sekcji jest używany do:
+Przykładowy kod podręcznika w tej sekcji jest używany do:
 
 - Tworzenie sieci wirtualnej
 - Tworzenie podsieci w sieci wirtualnej
@@ -74,7 +74,7 @@ Przykładowy kod element PlayBook w tej sekcji jest używany do:
 
 ## <a name="create-the-second-virtual-network"></a>Tworzenie drugiej sieci wirtualnej
 
-Przykładowy kod element PlayBook w tej sekcji jest używany do:
+Przykładowy kod podręcznika w tej sekcji jest używany do:
 
 - Tworzenie sieci wirtualnej
 - Tworzenie podsieci w sieci wirtualnej
@@ -93,12 +93,12 @@ Przykładowy kod element PlayBook w tej sekcji jest używany do:
       virtual_network: "{{ vnet_name2 }}"
 ```
 
-## <a name="peer-the-two-virtual-networks"></a>Równorzędne dwie sieci wirtualne
+## <a name="peer-the-two-virtual-networks"></a>Równorzędnie dwóch sieci wirtualnych
 
-Przykładowy kod element PlayBook w tej sekcji jest używany do:
+Przykładowy kod podręcznika w tej sekcji jest używany do:
 
-- Inicjowanie komunikacji równorzędnej sieci wirtualnej
-- Dwie wcześniej utworzone sieci wirtualne
+- Inicjowanie komunikacji równorzędnej w sieci wirtualnej
+- Peer dwie wcześniej utworzone sieci wirtualne
 
 ```yml
   - name: Initial vnet peering
@@ -124,11 +124,11 @@ Przykładowy kod element PlayBook w tej sekcji jest używany do:
       allow_forwarded_traffic: true
 ```
 
-## <a name="delete-the-virtual-network-peering"></a>Usuń komunikację równorzędną sieci wirtualnej
+## <a name="delete-the-virtual-network-peering"></a>Usuwanie komunikacji równorzędnej sieci wirtualnej
 
-Przykładowy kod element PlayBook w tej sekcji jest używany do:
+Przykładowy kod podręcznika w tej sekcji jest używany do:
 
-- Usuń komunikację równorzędną między dwiema utworzonymi wcześniej sieciami wirtualnymi
+- Usuwanie komunikacji równorzędnej między dwiema wcześniej utworzonymi sieciami wirtualnymi
 
 ```yml
   - name: Delete vnet peering
@@ -139,12 +139,12 @@ Przykładowy kod element PlayBook w tej sekcji jest używany do:
       state: absent
 ```
 
-## <a name="get-the-sample-playbook"></a>Pobierz przykładową element PlayBook
+## <a name="get-the-sample-playbook"></a>Pobierz przykładowy podręcznik
 
-Istnieją dwa sposoby uzyskania kompletnej przykładowej element PlayBook:
+Istnieją dwa sposoby uzyskania pełnego przykładowego podręcznika:
 
-- [Pobierz element PlayBook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vnet_peering.yml) i Zapisz go w `vnet_peering.yml`.
-- Utwórz nowy plik o nazwie `vnet_peering.yml` i skopiuj do niego następującą zawartość:
+- [Pobierz podręcznik](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vnet_peering.yml) i zapisz `vnet_peering.yml`go w pliku .
+- Utwórz nowy `vnet_peering.yml` plik o nazwie i skopiuj do niego następującą zawartość:
 
 ```yml
 - hosts: localhost
@@ -225,21 +225,21 @@ Istnieją dwa sposoby uzyskania kompletnej przykładowej element PlayBook:
       state: absent
 ```
 
-## <a name="run-the-sample-playbook"></a>Uruchamianie przykładowej element PlayBook
+## <a name="run-the-sample-playbook"></a>Uruchamianie przykładowego podręcznika
 
-Przykładowy kod element PlayBook w tej sekcji jest używany do testowania różnych funkcji przedstawionych w tym samouczku.
+Przykładowy kod podręcznika w tej sekcji służy do testowania różnych funkcji pokazanych w tym samouczku.
 
-Poniżej przedstawiono niektóre kluczowe uwagi, które należy wziąć pod uwagę podczas pracy z przykładową element PlayBook:
+Oto kilka kluczowych uwag, które należy wziąć pod uwagę podczas pracy z przykładowym podręcznikiem:
 
-- W sekcji `vars` Zamień symbol zastępczy `{{ resource_group_name }}` na nazwę grupy zasobów.
+- W `vars` sekcji zastąp `{{ resource_group_name }}` symbol zastępczy nazwą grupy zasobów.
 
-Uruchom element PlayBook za pomocą polecenia rozwiązania ansible-element PlayBook:
+Uruchom podręcznik za pomocą polecenia ansible-playbook:
 
 ```bash
 ansible-playbook vnet_peering.yml
 ```
 
-Po uruchomieniu element PlayBook są wyświetlane dane wyjściowe podobne do następujących:
+Po uruchomieniu podręcznika zobaczysz dane wyjściowe podobne do następujących wyników:
 
 ```Output
 PLAY [localhost] 
@@ -288,11 +288,11 @@ localhost                  : ok=12   changed=9    unreachable=0    failed=0    s
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie jest już potrzebne, Usuń zasoby utworzone w tym artykule. 
+Gdy nie są już potrzebne, usuń zasoby utworzone w tym artykule. 
 
-Przykładowy kod element PlayBook w tej sekcji jest używany do:
+Przykładowy kod podręcznika w tej sekcji jest używany do:
 
-- Usuń dwie utworzone wcześniej grupy zasobów
+- Usuwanie dwóch grup zasobów utworzonych wcześniej
 
 Zapisz następujący podręcznik jako `cleanup.yml`:
 
@@ -315,13 +315,13 @@ Zapisz następujący podręcznik jako `cleanup.yml`:
         state: absent
 ```
 
-Poniżej przedstawiono niektóre kluczowe uwagi, które należy wziąć pod uwagę podczas pracy z przykładową element PlayBook:
+Oto kilka kluczowych uwag, które należy wziąć pod uwagę podczas pracy z przykładowym podręcznikiem:
 
-- Zastąp symbol zastępczy `{{ resource_group_name-1 }}` nazwą pierwszej utworzonej grupy zasobów.
-- Zastąp symbol zastępczy `{{ resource_group_name-2 }}` nazwą drugiej utworzonej grupy zasobów.
+- Zastąp `{{ resource_group_name-1 }}` symbol zastępczy nazwą pierwszej utworzonej grupy zasobów.
+- Zastąp `{{ resource_group_name-2 }}` symbol zastępczy nazwą drugiej utworzonej grupy zasobów.
 - Wszystkie zasoby w ramach dwóch określonych grup zasobów zostaną usunięte.
 
-Uruchom element PlayBook za pomocą polecenia rozwiązania ansible-element PlayBook:
+Uruchom podręcznik za pomocą polecenia ansible-playbook:
 
 ```bash
 ansible-playbook cleanup.yml

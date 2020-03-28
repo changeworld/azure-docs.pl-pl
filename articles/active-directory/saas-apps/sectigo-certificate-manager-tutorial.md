@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z menedżerem certyfikatów Sectigo | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Sectigo Menedżera certyfikatów.
+title: 'Samouczek: Integracja usługi Azure Active Directory z Menedżerem certyfikatów Sectigo | Dokumenty firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a Menedżerem certyfikatów Sectigo.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,124 +17,124 @@ ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0447a8dd464363ae7e076dde2520565005d7c0a5
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67588235"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sectigo-certificate-manager"></a>Samouczek: Integracja usługi Azure Active Directory z menedżerem certyfikatów Sectigo
+# <a name="tutorial-azure-active-directory-integration-with-sectigo-certificate-manager"></a>Samouczek: Integracja usługi Azure Active Directory z Menedżerem certyfikatów Sectigo
 
-W tym samouczku dowiesz się, jak zintegrować Menedżera certyfikatów Sectigo za pomocą usługi Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować Sectigo Certificate Manager z usługą Azure Active Directory (Azure AD).
 
-Integracja Menedżera certyfikatów Sectigo z usługą Azure AD zapewnia następujące korzyści:
+Integracja Programu Sectigo Certificate Manager z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz użyć usługi Azure AD w celu kontrolowania, kto ma dostęp do Menedżera certyfikatów Sectigo.
-* Użytkownicy mogą automatycznie zalogować się do Menedżera certyfikatów Sectigo przy użyciu konta usługi Azure AD (logowanie jednokrotne).
+* Za pomocą usługi Azure AD można kontrolować, kto ma dostęp do Menedżera certyfikatów Sectigo.
+* Użytkownicy mogą być automatycznie zalogowane do Sectigo Certificate Manager za pomocą swoich kont usługi Azure AD (logowanie jednokrotne).
 * Możesz zarządzać kontami z jednej centralnej lokalizacji — witryny Azure Portal.
 
-Aby uzyskać więcej informacji na temat oprogramowania jako usługi (SaaS) integracji aplikacji z usługą Azure AD, zobacz [logowanie jednokrotne do aplikacji w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Aby uzyskać więcej informacji na temat integracji aplikacji z usługą Azure AD na temat oprogramowania jako usługi, zobacz [Logowanie jednokrotne w aplikacjach usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z menedżerem certyfikatów Sectigo, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z Menedżerem certyfikatów Sectigo, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcję usługi Azure AD, Utwórz [bezpłatne konto](https://azure.microsoft.com/free/) przed przystąpieniem do wykonywania.
-* Menedżer certyfikatów Sectigo subskrypcji przy użyciu logowania jednokrotnego włączone.
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji usługi Azure AD, utwórz [bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
+* Subskrypcja Sectigo Certificate Manager z włączoną rejestracją jednokrotną.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W ramach tego samouczka konfigurowania i testowania usługi Azure AD logowanie jednokrotne w środowisku testowym, a integracja Menedżera certyfikatów Sectigo z usługą Azure AD.
+W tym samouczku konfigurujesz i testujesz logowanie jednokrotne usługi Azure AD w środowisku testowym i integrujesz Sectigo Certificate Manager z usługą Azure AD.
 
-Menedżer certyfikatów Sectigo obsługuje następujące funkcje:
+Sectigo Certificate Manager obsługuje następujące funkcje:
 
-* **Zainicjowane przez Dostawcę logowania jednokrotnego**
+* **Logowanie jednokrotne inicjowane przez sp.**
 * **Logowanie jednokrotne inicjowane przez dostawcę tożsamości**
 
-## <a name="add-sectigo-certificate-manager-in-the-azure-portal"></a>Dodaj Menedżera certyfikatów Sectigo w witrynie Azure portal
+## <a name="add-sectigo-certificate-manager-in-the-azure-portal"></a>Dodawanie Menedżera certyfikatów Sectigo w witrynie Azure portal
 
-Aby zintegrować Menedżera certyfikatów Sectigo z usługą Azure AD, należy dodać Menedżera certyfikatów Sectigo z listą zarządzanych aplikacji SaaS.
+Aby zintegrować Sectigo Certificate Manager z usługą Azure AD, należy dodać Menedżera certyfikatów Sectigo do listy zarządzanych aplikacji SaaS.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
 
-1. W menu po lewej stronie wybierz **usługi Azure Active Directory**.
+1. W menu po lewej stronie wybierz pozycję **Azure Active Directory**.
 
     ![Opcja usługi Azure Active Directory](common/select-azuread.png)
 
-1. Wybierz pozycję **Aplikacje dla przedsiębiorstw** > **Wszystkie aplikacje**.
+1. Wybierz **aplikacje** > enterprise**Wszystkie aplikacje**.
 
     ![Okienko Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-1. Aby dodać aplikację, wybierz pozycję **nową aplikację**.
+1. Aby dodać aplikację, wybierz pozycję **Nowa aplikacja**.
 
-    ![Nowa opcja aplikacji](common/add-new-app.png)
+    ![Opcja Nowa aplikacja](common/add-new-app.png)
 
-1. W polu wyszukiwania wprowadź **Menedżera certyfikatów Sectigo**. W wynikach wyszukiwania wybierz **Menedżera certyfikatów Sectigo**, a następnie wybierz pozycję **Dodaj**.
+1. W polu wyszukiwania wpisz **Sectigo Certificate Manager**. W wynikach wyszukiwania wybierz pozycję **Sectigo Certificate Manager**, a następnie select **Add**.
 
-    ![Menedżer certyfikatów Sectigo na liście wyników](common/search-new-app.png)
+    ![Sectigo Certificate Manager na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji, konfigurowania i testowania usługi Azure AD logowanie jednokrotne za pomocą Sectigo Menedżera certyfikatów na podstawie użytkownika testowego, o nazwie **Britta Simon**. Dla logowania jednokrotnego do pracy należy ustanowić w Menedżerze certyfikatów Sectigo połączone relację między użytkownikiem usługi Azure AD i powiązanych użytkowników.
+W tej sekcji można skonfigurować i przetestować azure ad logowania jednokrotnego z Sectigo Certificate Manager na podstawie użytkownika testowego o nazwie **Britta Simon**. Aby logowanie jednokrotne działało, należy ustanowić połączoną relację między użytkownikiem usługi Azure AD a powiązanym użytkownikiem w Sectigo Certificate Manager.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne z menedżerem certyfikatów Sectigo, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD za pomocą Menedżera certyfikatów Sectigo, należy wykonać następujące bloki konstrukcyjne:
 
 | Zadanie | Opis |
 | --- | --- |
-| **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)** | Umożliwia użytkownikom korzystać z tej funkcji. |
-| **[Konfigurowanie Menedżera certyfikatów Sectigo logowania jednokrotnego](#configure-sectigo-certificate-manager-single-sign-on)** | Konfiguruje pojedynczy ustawień logowania jednokrotnego w aplikacji. |
-| **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** | Testy usługi Azure AD logowanie jednokrotne dla użytkownika o nazwie Britta Simon. |
-| **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** | Umożliwia Britta Simon korzystać z usługi Azure AD logowania jednokrotnego. |
-| **[Tworzenie użytkownika testowego Sectigo Menedżer certyfikatów](#create-a-sectigo-certificate-manager-test-user)** | Tworzy odpowiednikiem Britta Simon w Sectigo Menedżera certyfikatów połączonym z usługi Azure AD reprezentacja użytkownika. |
+| **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** | Umożliwia użytkownikom korzystanie z tej funkcji. |
+| **[Konfigurowanie logowania jednokrotnego Menedżera certyfikatów Sectigo](#configure-sectigo-certificate-manager-single-sign-on)** | Konfiguruje ustawienia logowania jednokrotnego w aplikacji. |
+| **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** | Testy logowania jednokrotnego usługi Azure AD dla użytkownika o nazwie Britta Simon. |
+| **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** | Umożliwia Firmie Britta Simon używanie logowania jednokrotnego usługi Azure AD. |
+| **[Tworzenie użytkownika testowego Menedżera certyfikatów Sectigo](#create-a-sectigo-certificate-manager-test-user)** | Tworzy odpowiednik Britta Simon w Sectigo Certificate Manager, który jest połączony z reprezentacji usługi Azure AD użytkownika. |
 | **[Testowanie logowania jednokrotnego](#test-single-sign-on)** | Sprawdza, czy konfiguracja działa. |
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji skonfigurujesz usługi Azure AD logowanie jednokrotne z menedżerem certyfikatów Sectigo w witrynie Azure portal.
+W tej sekcji można skonfigurować azure ad logowania jednokrotnego za pomocą Sectigo Certificate Manager w witrynie Azure portal.
 
-1. W [witryny Azure portal](https://portal.azure.com/)w **Menedżera certyfikatów Sectigo** okienko integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [witrynie Azure portal](https://portal.azure.com/)w okienku integracji aplikacji **Programu Sectigo Certificate Manager** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Konfigurowanie opcji rejestracji jednokrotnej](common/select-sso.png)
+    ![Konfigurowanie opcji logowania jednokrotnego](common/select-sso.png)
 
-1. W **wybierz jedną metodę logowania jednokrotnego** okienku wybierz **SAML** lub **SAML/WS-Fed** trybu, aby włączyć logowanie jednokrotne.
+1. W okienku **Wybierz metodę logowania jednokrotnego** wybierz tryb **SAML** lub **SAML/WS-Fed,** aby włączyć logowanie jednokrotne.
 
     ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-1. W **Ustaw się logowania jednokrotnego przy użyciu protokołu SAML** okienku wybierz **Edytuj** (ikonę ołówka) aby otworzyć **podstawową konfigurację protokołu SAML** okienka.
+1. W okienku **Konfigurowanie logowania jednokrotnego za pomocą saml** wybierz pozycję **Edytuj** (ikona ołówka), aby otworzyć podstawowe okienko **konfiguracji SAML.**
 
     ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-1. W **podstawową konfigurację protokołu SAML** okienko, aby skonfigurować *inicjowane przez dostawcę tożsamości tryb*, wykonaj następujące czynności:
+1. W podstawowym okienku **konfiguracji SAML,** aby skonfigurować *tryb inicjowany przez IDP,* wykonaj następujące czynności:
 
-    1. W **identyfikator** wprowadź jedną z następujących adresów URL:
-       * protokół https:\//cert-manager.com/shibboleth
-       * protokół https:\//hard.cert-manager.com/shibboleth
+    1. W polu **Identyfikator** wprowadź jeden z następujących adresów URL:
+       * https:\//cert-manager.com/shibboleth
+       * https:\//hard.cert-manager.com/shibboleth
 
-    1. W **adres URL odpowiedzi** wprowadź jedną z następujących adresów URL:
+    1. W polu **Adres URL odpowiedzi** wprowadź jeden z następujących adresów URL:
         * https:\//cert-manager.com/Shibboleth.sso/SAML2/POST
         * https:\//hard.cert-manager.com/Shibboleth.sso/SAML2/POST
 
-    1. Wybierz **Ustaw dodatkowe adresy URL**.
+    1. Wybierz **pozycję Ustaw dodatkowe adresy URL**.
 
-    1. W **tan przekaźnika** wprowadź jedną z następujących adresów URL:
-       * protokół https:\//cert-manager.com/customer/SSLSupport/idp
-       * protokół https:\//hard.cert-manager.com/customer/SSLSupport/idp
+    1. W polu **Stan przekazywania** wprowadź jeden z następujących adresów URL:
+       * https:\//cert-manager.com/customer/SSLSupport/idp
+       * https:\//hard.cert-manager.com/customer/SSLSupport/idp
 
-    ![Menedżer certyfikatów Sectigo domena i adresy URL pojedynczy informacje logowania jednokrotnego](common/idp-relay.png)
+    ![Informacje o logach do logowania i adresów URL Sectigo Certificate Manager](common/idp-relay.png)
 
-1.  Aby skonfigurować aplikację w *zainicjowanego przez dostawcę usług trybu*, wykonaj następujące czynności:
+1.  Aby skonfigurować aplikację w *trybie inicjowanym przez dodatek SP,* wykonaj następujące czynności:
 
-    * W **adres URL logowania** wprowadź jedną z następujących adresów URL:
+    * W polu **Zaloguj się na adres URL** wprowadź jeden z następujących adresów URL:
       * https:\//cert-manager.com/Shibboleth.sso/Login
       * https:\//hard.cert-manager.com/Shibboleth.sso/Login
 
-      ![Menedżer certyfikatów Sectigo domena i adresy URL pojedynczy informacje logowania jednokrotnego](common/both-signonurl.png)
+      ![Informacje o logach do logowania i adresów URL Sectigo Certificate Manager](common/both-signonurl.png)
 
-1. W **Ustaw się logowanie jednokrotne z SAML** okienko w **certyfikat podpisywania SAML** zaznacz **Pobierz** obok **certyfikat (Base64)** . Wybierz opcję pobierania, w zależności od wymagań. Zapisz certyfikat na komputerze.
+1. W okienku **Konfigurowanie logowania jednokrotnego z saml** w sekcji **Certyfikat podpisywania SAML** wybierz pozycję **Pobierz** obok pozycji **Certyfikat (Base64).** Wybierz opcję pobierania na podstawie twoich wymagań. Zapisz certyfikat na komputerze.
 
-    ![Opcja pobierania certyfikat (Base64)](common/certificatebase64.png)
+    ![Opcja pobierania certyfikatu (Base64)](common/certificatebase64.png)
 
-1. W **Ustaw Menedżera certyfikatów Sectigo** sekcji, skopiuj następujące adresy URL, zgodnie z wymaganiami:
+1. W sekcji **Konfigurowanie Menedżera certyfikatów Sectigo** skopiuj następujące adresy URL na podstawie wymagań:
 
     * Adres URL logowania
     * Identyfikator usługi Azure AD
@@ -142,75 +142,75 @@ W tej sekcji skonfigurujesz usługi Azure AD logowanie jednokrotne z menedżerem
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-### <a name="configure-sectigo-certificate-manager-single-sign-on"></a>Konfigurowanie Menedżera certyfikatów Sectigo logowania jednokrotnego
+### <a name="configure-sectigo-certificate-manager-single-sign-on"></a>Konfigurowanie logowania jednokrotnego Menedżera certyfikatów Sectigo
 
-Aby skonfigurować logowanie jednokrotne stronie Sectigo Menedżera certyfikatów, wysyłanie pobrany plik certyfikatu (kodowanie Base64) i odpowiednie adresy URL, które zostały skopiowane z portalu Azure w celu [zespołem pomocy technicznej w Menedżerze certyfikatów Sectigo](https://sectigo.com/support). Menedżer certyfikatów Sectigo zespołem pomocy technicznej używa tych informacji, wysyłanych przez nich, aby upewnić się, że SAML logowania jednokrotnego połączenie jest prawidłowo po obu stronach.
+Aby skonfigurować logowanie jednokrotne po stronie Menedżera certyfikatów Sectigo, wyślij pobrany plik certyfikatu (Base64) i odpowiednie adresy URL skopiowane z portalu Azure do [zespołu pomocy technicznej Programu Sectigo Certificate Manager](https://sectigo.com/support). Zespół pomocy technicznej Menedżera certyfikatów Sectigo używa wysyłanych informacji, aby upewnić się, że połączenie jednokrotnego logowania SAML jest poprawnie ustawione po obu stronach.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
 W tej sekcji utworzysz użytkownika testowego o nazwie Britta Simon w witrynie Azure Portal.
 
-1. W witrynie Azure Portal wybierz kolejno pozycje **Azure Active Directory** > **Użytkownicy** > **Wszyscy użytkownicy**.
+1. W witrynie Azure portal wybierz pozycję**Użytkownicy** >  **usługi Azure Active Directory** > **Wszyscy użytkownicy**.
 
-    ![Użytkownicy i wszystkie opcje użytkowników](common/users.png)
+    ![Opcje Użytkownicy i Wszyscy użytkownicy](common/users.png)
 
 1. Wybierz przycisk **Nowy użytkownik**.
 
-    ![Nowa opcja użytkownika](common/new-user.png)
+    ![Opcja Nowy użytkownik](common/new-user.png)
 
 1. W okienku **Użytkownik** wykonaj następujące czynności:
 
     1. W polu **Nazwa** wpisz **BrittaSimon**.
   
-    1. W **nazwa_użytkownika** wprowadź **brittasimon\@\<Twojej domeny firmy >.\< rozszerzenie\>** . Na przykład **brittasimon\@contoso.com**.
+    1. W polu **Nazwa użytkownika** wprowadź **>\@\<brittasimon twoja firma-domena.\< rozszerzenie\>**. Na przykład **contoso.com brittasimon\@**.
 
-    1. Wybierz **hasło Show** pole wyboru. Zanotuj wartość, która jest wyświetlana w **hasło** pole.
+    1. Zaznacz pole wyboru **Pokaż hasło.** Zapisz wartość wyświetlaną w polu **Hasło.**
 
-    1. Wybierz pozycję **Utwórz**.
+    1. Wybierz **pozycję Utwórz**.
 
-    ![W okienku użytkownika](common/user-properties.png)
+    ![Okienko Użytkownik](common/user-properties.png)
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można przyznać Britta Simon dostęp do Menedżera certyfikatów Sectigo tak korzystaniem Azure logowania jednokrotnego.
+W tej sekcji możesz udzielić Firmie Britta Simon dostępu do Menedżera certyfikatów Sectigo, aby mogła używać logowania jednokrotnego platformy Azure.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje** > **Menedżera certyfikatów Sectigo**.
+1. W portalu Azure wybierz **aplikacje** > enterprise**Wszystkie aplikacje** > **Sectigo Certificate Manager**.
 
     ![Okienko Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-1. Na liście aplikacji wybierz **Menedżera certyfikatów Sectigo**.
+1. Na liście aplikacji wybierz pozycję **Sectigo Certificate Manager**.
 
-    ![Menedżer certyfikatów Sectigo na liście aplikacji](common/all-applications.png)
+    ![Sectigo Certificate Manager na liście aplikacji](common/all-applications.png)
 
 1. W menu wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Opcja użytkowników i grup](common/users-groups-blade.png)
+    ![Opcja Użytkownicy i grupy](common/users-groups-blade.png)
 
 1. Wybierz przycisk **Dodaj użytkownika**. Następnie w okienku **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy**.
 
     ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-1. W **użytkowników i grup** okienku wybierz **Britta Simon** na liście Użytkownicy. Wybierz pozycję **Wybierz**.
+1. W okienku **Użytkownicy i grupy** wybierz pozycję **Britta Simon** na liście użytkowników. Wybierz pozycję **Wybierz**.
 
-1. Jeśli są oczekiwane wartości roli dla asercji SAML w **wybierz rolę** okienku zaznacz odpowiednie rolę dla użytkownika z listy. Wybierz pozycję **Wybierz**.
+1. Jeśli oczekujesz wartości roli w asercji SAML, w okienku **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy. Wybierz pozycję **Wybierz**.
 
-1. W **Dodaj przydziału** okienku wybierz **przypisać**.
+1. W okienku **Dodawanie przydziału** wybierz pozycję **Przypisz**.
 
-### <a name="create-a-sectigo-certificate-manager-test-user"></a>Tworzenie użytkownika testowego Sectigo Menedżer certyfikatów
+### <a name="create-a-sectigo-certificate-manager-test-user"></a>Tworzenie użytkownika testowego Menedżera certyfikatów Sectigo
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Menedżerze certyfikatów Sectigo. Praca z [zespołem pomocy technicznej w Menedżerze certyfikatów Sectigo](https://sectigo.com/support) Dodaj użytkownika na platformie Sectigo Menedżera certyfikatów. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Sectigo Certificate Manager. Współpracuj z [zespołem pomocy technicznej Menedżera certyfikatów Sectigo,](https://sectigo.com/support) aby dodać użytkownika na platformie Sectigo Certificate Manager. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji możesz przetestować konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu portalu Moje aplikacje.
+W tej sekcji można przetestować konfigurację logowania jednokrotnego usługi Azure AD przy użyciu portalu Moje aplikacje.
 
-Po skonfigurowaniu rejestracji jednokrotnej, po wybraniu **Menedżera certyfikatów Sectigo** w portalu Moje aplikacje automatycznie zalogowaniu się do Menedżera certyfikatów Sectigo. Aby uzyskać więcej informacji na temat portalu Moje aplikacje, zobacz [dostępu i użycia aplikacji w portalu Moje aplikacje](../user-help/my-apps-portal-end-user-access.md).
+Po skonfigurowaniu logowania jednokrotnego po **wybraniu Menedżera certyfikatów Sectigo** w portalu Moje aplikacje automatycznie zalogujesz się do Menedżera certyfikatów Sectigo. Aby uzyskać więcej informacji o portalu Moje aplikacje, zobacz [Uzyskiwanie dostępu do aplikacji i korzystanie z nich w portalu Moje aplikacje](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej, przejrzyj następujące artykuły:
+Aby dowiedzieć się więcej, zapoznaj się z tymi artykułami:
 
-- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 - [Single sign-on to applications in Azure Active Directory (Logowanie jednokrotne do aplikacji w usłudze Azure Active Directory)](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

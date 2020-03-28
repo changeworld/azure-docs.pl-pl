@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 05/10/2018
 ms.custom: mvc
 ms.openlocfilehash: d0024b8c43e76e3dd26b4b73c4ae0e09890b3b46
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75421844"
 ---
 # <a name="onboard-update-and-change-tracking-solutions-to-azure-automation"></a>Dołączanie rozwiązań aktualizacji i śledzenia zmian w usłudze Azure Automation
@@ -33,7 +33,7 @@ Do wykonania czynności przedstawionych w tym samouczku są wymagane następują
 
 ## <a name="onboard-an-azure-vm"></a>Dołączanie maszyny wirtualnej platformy Azure
 
-Istnieje wiele sposobów na dołączenie maszyn, można dołączyć rozwiązanie [z maszyny wirtualnej](automation-onboard-solutions-from-vm.md), [przeglądać wiele maszyn](automation-onboard-solutions-from-browse.md) [z poziomu konta usługi Automation](automation-onboard-solutions-from-automation-account.md)lub przez element Runbook. W tym samouczki przedstawiono procedurę włączania rozwiązania Update Management przy użyciu elementu runbook. Aby można było dołączać maszyny wirtualne platformy Azure na dużą skalę, do istniejącej maszyny wirtualnej należy dołączyć rozwiązanie Change tracking lub Update management. W tym kroku dołączysz maszynę wirtualną z rozwiązaniami Update management i Change tracking.
+Istnieje wiele sposobów dołączania maszyn. Rozwiązanie można dołączyć [z maszyny wirtualnej](automation-onboard-solutions-from-vm.md), [z wyników przeglądania wielu maszyn](automation-onboard-solutions-from-browse.md) [z konta usługi Automation](automation-onboard-solutions-from-automation-account.md) lub przy użyciu elementu runbook. W tym samouczki przedstawiono procedurę włączania rozwiązania Update Management przy użyciu elementu runbook. Aby można było dołączać maszyny wirtualne platformy Azure na dużą skalę, do istniejącej maszyny wirtualnej należy dołączyć rozwiązanie Change tracking lub Update management. W tym kroku dołączysz maszynę wirtualną z rozwiązaniami Update management i Change tracking.
 
 ### <a name="enable-change-tracking-and-inventory"></a>Włączanie rozwiązania Change Tracking and Inventory
 
@@ -77,7 +77,7 @@ Teraz, gdy rozwiązania są włączone, można dołączyć maszynę wirtualną p
    ![Włączanie rozwiązania Update dla maszyny wirtualnej](media/automation-onboard-solutions/enable-update.png)
 
 > [!NOTE]
-> Jeśli nie poczekasz na zakończenie innych rozwiązań, podczas włączania następnego rozwiązania pojawi się komunikat z informacją: *Instalacja innego rozwiązania jest w toku na tej lub innej maszynie wirtualnej. Po zakończeniu tej instalacji przycisk Włącz jest włączony i można zażądać instalacji rozwiązania na tej maszynie wirtualnej.*
+> Jeśli nie czekasz na inne rozwiązanie, aby zakończyć, po włączeniu następnego rozwiązania pojawi się komunikat z informacją: *Instalacja innego rozwiązania jest w toku na tej lub innej maszynie wirtualnej. Po zakończeniu tej instalacji włącz przycisk Włącz i można zażądać instalacji rozwiązania na tej maszynie wirtualnej.*
 
 ## <a name="install-and-update-modules"></a>Instalowanie i aktualizowanie modułów
 
@@ -129,10 +129,10 @@ Aby można było uruchomić ten element runbook, musi być dołączone rozwiąza
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Aby usunąć maszynę wirtualną z Update Management:
+Aby usunąć maszynę wirtualną z zarządzania aktualizacjami:
 
-* W obszarze roboczym Log Analytics Usuń maszynę wirtualną z zapisanego wyszukiwania `MicrosoftDefaultScopeConfig-Updates`konfiguracji zakresu. Zapisane wyszukiwania można znaleźć **ogólnie** w obszarze roboczym.
-* Usuń [program Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) lub [agenta log Analytics dla systemu Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
+* W obszarze roboczym usługi Log Analytics usuń maszynę wirtualną z zapisanego wyszukiwania konfiguracji `MicrosoftDefaultScopeConfig-Updates`zakresu . Zapisane wyszukiwania można znaleźć w obszarze **Ogólne** w obszarze roboczym.
+* Usuń [agenta monitorowania firmy Microsoft](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) lub [agenta analizy dzienników dla systemu Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
 
 ## <a name="next-steps"></a>Następne kroki
 

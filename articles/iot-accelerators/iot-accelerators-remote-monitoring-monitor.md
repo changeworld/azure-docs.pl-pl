@@ -1,5 +1,5 @@
 ---
-title: Monitorowanie urządzeń w rozwiązaniu do zdalnego monitorowania — Azure | Microsoft Docs
+title: Monitorowanie urządzeń w rozwiązaniu do zdalnego monitorowania — Azure | Dokumenty firmy Microsoft
 description: W tym samouczku pokazano, jak monitorować urządzenia IoT przy użyciu akceleratora rozwiązania do monitorowania zdalnego.
 author: dominicbetts
 manager: timlt
@@ -10,10 +10,10 @@ ms.date: 03/08/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 400a71b11fde210b889d938041e88c5ebe73c1dc
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73890871"
 ---
 # <a name="tutorial-monitor-your-iot-devices"></a>Samouczek: monitorowanie urządzeń IoT
@@ -22,7 +22,7 @@ W tym samouczku użyjesz akceleratora rozwiązania do monitorowania zdalnego w c
 
 Ten samouczek korzysta z dwóch urządzeń symulowanych: ciężarówek. Wysyłają one dane telemetryczne obejmujące lokalizację, szybkość i temperaturę ładunku. Ciężarówki są zarządzane przez organizację Contoso i są połączone z akceleratorem rozwiązania do monitorowania zdalnego. Jako operator firmy Contoso musisz monitorować lokalizację i działanie jednej z ciężarówek (truck-02) w terenie.
 
-W tym samouczku zostaną wykonane następujące czynności:
+W tym samouczku zostały wykonane następujące czynności:
 
 >[!div class="checklist"]
 > * Filtrowanie urządzeń na pulpicie nawigacyjnym
@@ -31,7 +31,7 @@ W tym samouczku zostaną wykonane następujące czynności:
 > * Wyświetlanie alertów z urządzeń
 > * Wyświetlanie wskaźników KPI
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
@@ -39,11 +39,11 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Aby wybrać połączone urządzenia, które mają być wyświetlane na stronie **Pulpit nawigacyjny**, użyj filtrów. Aby wyświetlić tylko urządzenia typu **Truck** (Ciężarówka), wybierz wbudowany filtr **Trucks** na liście rozwijanej filtrów:
 
-[![Filtrowanie ciężarówek na pulpicie nawigacyjnym](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckfilter-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckfilter-expanded.png#lightbox)
+[![Filtr dla ciężarówek na desce rozdzielczej](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckfilter-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckfilter-expanded.png#lightbox)
 
 Po zastosowaniu filtrowania na mapie oraz w panelu telemetrii są wyświetlane tylko te urządzenia, które odpowiadają warunkom filtrowania. Widać, że do akceleratora rozwiązania są podłączone dwie ciężarówki, w tym ciężarówka truck-02:
 
-[![Tylko ciężarówki są wyświetlane na mapie](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap-expanded.png#lightbox)
+[![Na mapie wyświetlane są tylko ciężarówki](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap-expanded.png#lightbox)
 
 Aby tworzyć, edytować i usuwać filtry, kliknij pozycję **Zarządzaj grupami urządzeń**.
 
@@ -51,11 +51,11 @@ Aby tworzyć, edytować i usuwać filtry, kliknij pozycję **Zarządzaj grupami 
 
 Akcelerator rozwiązań pokazuje dane telemetryczne w czasie rzeczywistym na wykresie na stronie **Pulpit nawigacyjny**. W górnej części wykresu z danymi telemetrycznymi pokazane są dostępne typy telemetrii dla urządzeń wybranych według bieżącego filtru, w tym dla urządzenia truck-02. Domyślnie na wykresie jest wyświetlana szerokość geograficzna ciężarówek. Ciężarówka truck-02 wydaje się nie poruszać:
 
-[![Typy danych telemetrycznych dotyczących ciężarówek](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetryview-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetryview-expanded.png#lightbox)
+[![Typy telemetrii samochodów ciężarowych](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetryview-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetryview-expanded.png#lightbox)
 
 Aby wyświetlić dane telemetryczne dotyczące temperatury dla ciężarówek, kliknij pozycję **Temperature**: Widać, jak zmieniała się temperatura ciężarówki truck-02 w ciągu ostatniej godziny:
 
-[![Wykres danych telemetrycznych dotyczących temperatury ciężarówek](./media/iot-accelerators-remote-monitoring-monitor/dashboardselecttelemetry-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardselecttelemetry-expanded.png#lightbox)
+[![Wykres telemetryczny temperatury ciężarówki](./media/iot-accelerators-remote-monitoring-monitor/dashboardselecttelemetry-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardselecttelemetry-expanded.png#lightbox)
 
 ## <a name="view-the-map"></a>Wyświetlanie mapy
 
@@ -71,9 +71,9 @@ Aby wyświetlić szczegóły ciężarówki truck-02, powiększ lub pomniejsz map
 
 ## <a name="view-alerts"></a>Wyświetlanie alertów
 
-Na panelu **Alerty** wyświetlane są szczegółowe informacje dotyczące najnowszych alertów z urządzeń. Alerty z ciężarówki truck-02 wskazują na wyższą niż normalnie temperaturę ładunku:
+Panel **Alerty** wyświetla szczegółowe informacje o najnowszych alertach z twoich urządzeń. Alerty z ciężarówki truck-02 wskazują na wyższą niż normalnie temperaturę ładunku:
 
-[![Wyświetlanie alertów urządzenia na pulpicie nawigacyjnym](./media/iot-accelerators-remote-monitoring-monitor/dashboardsystemalarms-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardsystemalarms-expanded.png#lightbox)
+[![Wyświetlanie alertów o urządzeniach na pulpicie nawigacyjnym](./media/iot-accelerators-remote-monitoring-monitor/dashboardsystemalarms-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardsystemalarms-expanded.png#lightbox)
 
 Możesz użyć filtrów, aby dopasować zakres czasowy dla ostatnich alertów. Domyślne na panelu wyświetlane są alerty z ostatniej godziny.
 
@@ -81,7 +81,7 @@ Możesz użyć filtrów, aby dopasować zakres czasowy dla ostatnich alertów. D
 
 Na stronie **Pulpit nawigacyjny** wyświetlane są wskaźniki KPI systemu obliczane przez akcelerator rozwiązań na panelu **Analiza**:
 
-[![Wskaźniki KPI na pulpicie nawigacyjnym](./media/iot-accelerators-remote-monitoring-monitor/dashboardkpis-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardkpis-expanded.png#lightbox)
+[![Kluczowe wskaźniki wydajności pulpitu nawigacyjnego](./media/iot-accelerators-remote-monitoring-monitor/dashboardkpis-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardkpis-expanded.png#lightbox)
 
 Na pulpicie nawigacyjnym pokazane są trzy wskaźniki KPI dla alertów wybranych zgodnie z bieżącymi filtrami urządzeń i czasu:
 

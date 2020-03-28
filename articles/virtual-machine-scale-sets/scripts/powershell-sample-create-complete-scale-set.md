@@ -1,6 +1,6 @@
 ---
-title: Przykłady Azure PowerShell — tworzenie kompletnego zestawu skalowania maszyn wirtualnych
-description: Ten skrypt tworzy zestaw skalowania maszyn wirtualnych z systemem Windows Server 2016, w którym są skonfigurowane i tworzone poszczególne zasoby.
+title: Przykłady programu Azure PowerShell — tworzenie kompletnego zestawu skalowania maszyny wirtualnej
+description: Ten skrypt tworzy zestaw skalowania maszyny wirtualnej z systemem Windows Server 2016, w którym są konfigurowane i tworzone poszczególne zasoby.
 author: cynthn
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
@@ -9,15 +9,15 @@ ms.date: 05/29/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 522dc1e24b8d3c4abd7b24dd3e0901e02b78992d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76278702"
 ---
 # <a name="create-a-complete-virtual-machine-scale-set-with-powershell"></a>Tworzenie pełnego zestawu skalowania maszyn wirtualnych przy użyciu programu PowerShell
 
-Ten skrypt tworzy zestaw skalowania maszyn wirtualnych z systemem Windows Server 2016. Poszczególne zasoby są konfigurowane i tworzone, a nie za pomocą [wbudowanych opcji tworzenia zasobów dostępnych tutaj w artykule New-AzVmss](powershell-sample-create-simple-scale-set.md). Po uruchomieniu skryptu możesz uzyskać dostęp do wystąpień maszyn wirtualnych za pośrednictwem protokołu RDP.
+Ten skrypt tworzy zestaw skalowania maszyn wirtualnych z systemem Windows Server 2016. Poszczególne zasoby są konfigurowane i tworzone, a nie przy użyciu [wbudowanych opcji tworzenia zasobów dostępnych tutaj w New-AzVmss](powershell-sample-create-simple-scale-set.md). Po uruchomieniu skryptu możesz uzyskać dostęp do wystąpień maszyn wirtualnych za pośrednictwem protokołu RDP.
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]

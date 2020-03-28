@@ -1,6 +1,6 @@
 ---
-title: Samouczek — monitorowanie maszyn wirtualnych z systemem Linux na platformie Azure
-description: W tym samouczku dowiesz się, jak monitorować wydajność i wykryte składniki aplikacji uruchomione na maszynach wirtualnych z systemem Linux.
+title: Samouczek — monitorowanie maszyn wirtualnych systemu Linux na platformie Azure
+description: W tym samouczku dowiesz się, jak monitorować wydajność i odnalezione składniki aplikacji uruchomione na maszynach wirtualnych systemu Linux.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: mgoedtel
@@ -16,15 +16,15 @@ ms.date: 09/30/2019
 ms.author: magoedte
 ms.custom: mvc
 ms.openlocfilehash: b06342d5034b820be4e6fd49436546a5aa7b7e02
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75749781"
 ---
-# <a name="tutorial-monitor-a-linux-virtual-machine-in-azure"></a>Samouczek: monitorowanie maszyny wirtualnej z systemem Linux na platformie Azure
+# <a name="tutorial-monitor-a-linux-virtual-machine-in-azure"></a>Samouczek: Monitorowanie maszyny wirtualnej systemu Linux na platformie Azure
 
-Usługa Azure Monitoring używa agentów do zbierania danych dotyczących rozruchu i wydajności z maszyn wirtualnych platformy Azure, przechowywania tych danych w usłudze Azure Storage i udostępniania ich za pośrednictwem portalu, modułu Azure PowerShell i interfejsu wiersza polecenia platformy Azure. Zaawansowane monitorowanie jest dostarczane z Azure Monitor dla maszyn wirtualnych przez zbieranie metryk wydajności, odnajdywanie składników aplikacji zainstalowanych na maszynie wirtualnej i zawiera wykresy wydajności i mapę zależności.
+Monitorowanie platformy Azure używa agentów do zbierania danych rozruchowych i wydajności z maszyn wirtualnych platformy Azure, przechowywania tych danych w magazynie platformy Azure i udostępnienia ich za pośrednictwem portalu, modułu Azure PowerShell i interfejsu wiersza polecenia platformy Azure. Zaawansowane monitorowanie jest dostarczane z usługą Azure Monitor dla maszyn wirtualnych przez zbieranie metryk wydajności, odnajdowanie składników aplikacji zainstalowanych na maszynie wirtualnej i obejmuje wykresy wydajności i mapę zależności.
 
 Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -32,15 +32,15 @@ Niniejszy samouczek zawiera informacje na temat wykonywania następujących czyn
 > * Włączanie diagnostyki rozruchu na maszynie wirtualnej
 > * Wyświetlanie diagnostyki rozruchu
 > * Wyświetlanie metryki hosta maszyny wirtualnej
-> * Włącz Azure Monitor dla maszyn wirtualnych
-> * Wyświetl metryki wydajności maszyny wirtualnej
+> * Włączanie usługi Azure Monitor dla maszyn wirtualnych
+> * Wyświetlanie metryk wydajności maszyny Wirtualnej
 > * Tworzenie alertu
 
 ## <a name="launch-azure-cloud-shell"></a>Uruchamianie usługi Azure Cloud Shell
 
 Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. 
 
-Aby otworzyć usługę Cloud Shell, wybierz pozycję **Wypróbuj** w prawym górnym rogu bloku kodu. Możesz również uruchomić usługę Cloud Shell w oddzielnej karcie przeglądarki, przechodząc do strony [https://shell.azure.com/powershell](https://shell.azure.com/powershell). Wybierz przycisk **Kopiuj**, aby skopiować bloki kodu, wklej je do usługi Cloud Shell, a następnie naciśnij klawisz Enter, aby je uruchomić.
+Aby otworzyć usługę Cloud Shell, wybierz pozycję **Wypróbuj** w prawym górnym rogu bloku kodu. Możesz również uruchomić usługę Cloud Shell w [https://shell.azure.com/powershell](https://shell.azure.com/powershell)osobnej karcie przeglądarki, przechodząc do . Wybierz przycisk **Kopiuj**, aby skopiować bloki kodu, wklej je do usługi Cloud Shell, a następnie naciśnij klawisz Enter, aby je uruchomić.
 
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
@@ -52,7 +52,7 @@ Aby zobaczyć diagnostykę i metryki w akcji, potrzebujesz maszyny wirtualnej. N
 az group create --name myResourceGroupMonitor --location eastus
 ```
 
-Utwórz maszynę wirtualną za pomocą polecenia [az vm create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create). Następujący przykład umożliwia utworzenie maszyny wirtualnej o nazwie *myVM* i wygenerowanie kluczy SSH, jeśli jeszcze nie istnieją w folderze *~/.ssh/* :
+Utwórz maszynę wirtualną za pomocą polecenia [az vm create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create). Następujący przykład umożliwia utworzenie maszyny wirtualnej o nazwie *myVM* i wygenerowanie kluczy SSH, jeśli jeszcze nie istnieją w folderze *~/.ssh/*:
 
 ```azurecli-interactive
 az vm create \
@@ -123,40 +123,40 @@ Maszyna wirtualna z systemem Linux ma dedykowanego hosta na platformie Azure, z 
 
     ![Wyświetlanie metryki hosta](./media/tutorial-monitoring/monitor-host-metrics.png)
 
-## <a name="enable-advanced-monitoring"></a>Włącz monitorowanie zaawansowane
+## <a name="enable-advanced-monitoring"></a>Włącz zaawansowane monitorowanie
 
-Aby włączyć monitorowanie maszyny wirtualnej platformy Azure przy użyciu Azure Monitor dla maszyn wirtualnych:
+Aby włączyć monitorowanie maszyny wirtualnej platformy Azure za pomocą usługi Azure Monitor dla maszyn wirtualnych:
 
 1. W witrynie Azure Portal kliknij pozycję **Grupy zasobów**, wybierz grupę **myResourceGroupMonitor**, a następnie wybierz maszynę wirtualną **myVM** na liście zasobów.
 
-2. Na stronie maszyny Wirtualnej w **monitorowanie** zaznacz **Insights (wersja zapoznawcza)** .
+2. Na stronie Maszyny Wirtualnej w sekcji **Monitorowanie** wybierz pozycję **Insights (preview)**.
 
-3. Na **Insights (wersja zapoznawcza)** wybierz opcję **Wypróbuj teraz usługę**.
+3. Na stronie **Statystyki (wersja zapoznawcza)** wybierz pozycję **Wypróbuj teraz**.
 
-    ![Włączanie usługi Azure Monitor dla maszyn wirtualnych dla maszyny Wirtualnej](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
+    ![Włączanie usługi Azure Monitor dla maszyn wirtualnych](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
 
-4. Na **Azure Monitor Insights dołączania** strony, jeśli masz istniejące usługi Log Analytics obszaru roboczego w tej samej subskrypcji, wybierz go na liście rozwijanej.  
+4. Na stronie **Dołączania usługi Azure Monitor Insights,** jeśli masz istniejący obszar roboczy usługi Log Analytics w tej samej subskrypcji, wybierz go na liście rozwijanej.  
 
-    Na tej liście jest wybierany domyślny obszar roboczy i lokalizacja, w której wdrożono maszynę wirtualną w ramach subskrypcji. 
+    Lista wstępnieselektywa domyślnego obszaru roboczego i lokalizacji, w której maszyna wirtualna jest wdrażana w ramach subskrypcji. 
 
     >[!NOTE]
-    >Aby utworzyć nowy obszar roboczy Log Analytics do przechowywania danych monitorowania z maszyny wirtualnej, zobacz [tworzenie log Analytics obszaru roboczego](../../azure-monitor/learn/quick-create-workspace.md). Obszar roboczy Log Analytics musi należeć do jednego z [obsługiwanych regionów](../../azure-monitor/insights/vminsights-enable-overview.md#log-analytics).
+    >Aby utworzyć nowy obszar roboczy usługi Log Analytics do przechowywania danych monitorowania z maszyny Wirtualnej, zobacz [Tworzenie obszaru roboczego usługi Log Analytics](../../azure-monitor/learn/quick-create-workspace.md). Obszar roboczy usługi Log Analytics musi należeć do jednego z [obsługiwanych regionów.](../../azure-monitor/insights/vminsights-enable-overview.md#log-analytics)
 
-Po włączeniu monitorowania może być konieczne odczekanie kilku minut, zanim będzie można wyświetlić metryki wydajności dla maszyny wirtualnej.
+Po włączeniu monitorowania może być konieczne odczekanie kilku minut, zanim będzie można wyświetlić metryki wydajności maszyny Wirtualnej.
 
-![Włączanie usługi Azure Monitor monitorowania przetwarzanie wdrożenia maszyn wirtualnych](../../azure-monitor/insights/media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
+![Włącz usługę Azure Monitor dla przetwarzania wdrażania maszyn wirtualnych](../../azure-monitor/insights/media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
 
-## <a name="view-vm-performance-metrics"></a>Wyświetl metryki wydajności maszyny wirtualnej
+## <a name="view-vm-performance-metrics"></a>Wyświetlanie metryk wydajności maszyny Wirtualnej
 
-Azure Monitor dla maszyn wirtualnych obejmuje zestaw wykresów wydajności przeznaczonych dla kilku kluczowych wskaźników wydajności (KPI), aby pomóc w określeniu, jak dobrze działa maszyna wirtualna. Aby uzyskać dostęp do maszyny wirtualnej, wykonaj następujące czynności.
+Usługa Azure Monitor dla maszyn wirtualnych zawiera zestaw wykresów wydajności, które są przeznaczone dla kilku kluczowych wskaźników wydajności (KPI), aby ułatwić określenie, jak dobrze działa maszyna wirtualna. Aby uzyskać dostęp z maszyny Wirtualnej, wykonaj następujące kroki.
 
 1. W witrynie Azure Portal kliknij pozycję **Grupy zasobów**, wybierz grupę **myResourceGroupMonitor**, a następnie wybierz maszynę wirtualną **myVM** na liście zasobów.
 
-2. Na stronie maszyny Wirtualnej w **monitorowanie** zaznacz **Insights (wersja zapoznawcza)** .
+2. Na stronie Maszyny Wirtualnej w sekcji **Monitorowanie** wybierz pozycję **Insights (preview)**.
 
-3. Wybierz kartę **wydajność** .
+3. Wybierz kartę **Wydajność.**
 
-Ta strona zawiera nie tylko wykresy wykorzystania wydajności, ale również tabelę zawierającą dla każdego wykrytego dysku logicznego, jego pojemność, wykorzystanie i łączną średnią wartość na podstawie każdej miary.
+Ta strona zawiera nie tylko wykresy wykorzystania wydajności, ale także tabelę przedstawiającą dla każdego wykrytego dysku logicznego, jego pojemność, wykorzystanie i średnią całkowitą według każdej miary.
 
 ## <a name="create-alerts"></a>Tworzenie alertów
 
@@ -174,18 +174,18 @@ Poniższy przykład tworzy alert dotyczący średniego użycia procesora.
 
 5. Opcjonalnie zaznacz pole pozycji *Wyślij wiadomość e-mail do właścicieli, współautorów i czytelników*, aby wysłać powiadomienie w wiadomości e-mail. Domyślne działanie to prezentowanie powiadomienia w portalu.
 
-6. Kliknij przycisk **OK**.
+6. Kliknij przycisk **OK.**
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono Konfigurowanie i wyświetlanie wydajności maszyny wirtualnej. W tym samouczku omówiono:
+W tym samouczku skonfigurowano i wyświetlano wydajność maszyny Wirtualnej. W tym samouczku omówiono:
 
 > [!div class="checklist"]
 > * Tworzenie grupy zasobów i maszyny wirtualnej
 > * Włączanie diagnostyki rozruchu na maszynie wirtualnej
 > * Wyświetlanie diagnostyki rozruchu
 > * Wyświetlanie metryki hosta
-> * Włącz Azure Monitor dla maszyn wirtualnych
+> * Włączanie usługi Azure Monitor dla maszyn wirtualnych
 > * Wyświetlanie metryki maszyny wirtualnej
 > * Tworzenie alertu
 

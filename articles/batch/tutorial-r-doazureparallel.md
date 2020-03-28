@@ -12,10 +12,10 @@ ms.date: 01/23/2018
 ms.author: labrenne
 ms.custom: mvc
 ms.openlocfilehash: 64daede5de4f2d1bbc69c65f88fe5b5875a0a5b8
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77025847"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Samouczek: równoległe uruchamianie symulacji języka R w usłudze Azure Batch 
@@ -38,9 +38,9 @@ Z tego samouczka dowiesz się, jak wdrożyć pulę usługi Azure Batch i uruchom
 
 * Konto usługi Azure Batch i Azure Storage. Aby utworzyć te konta, skorzystaj z przewodników Szybki start dla usługi Batch i [witryny Azure Portal](quick-create-portal.md) lub [interfejsu wiersza polecenia platformy Azure](quick-create-cli.md). 
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
+Zaloguj się do witryny Azure portal w [https://portal.azure.com](https://portal.azure.com).
 
 [!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)] 
 ## <a name="install-doazureparallel"></a>Instalowanie pakietu doAzureParallel
@@ -226,7 +226,7 @@ closingPrices_p <- foreach(i = 1:100, .combine='c', .options.azure = opt) %dopar
 end_p <- Sys.time() 
 ```
 
-Symulacja rozdziela zadania podrzędne do węzłów w puli usługi Batch. Możesz zobaczyć tę aktywność na mapie cieplnej puli w witrynie Azure Portal. Przejdź do pozycji **Konta usługi Batch** > *myBatchAccount*. Kliknij pozycję **Pule** > *myPoolName*. 
+Symulacja rozdziela zadania podrzędne do węzłów w puli usługi Batch. Możesz zobaczyć tę aktywność na mapie cieplnej puli w witrynie Azure Portal. Przejdź do **konta wsadowego** > *myBatchAccount*. Kliknij **pozycję Pule** > *myPoolName*. 
 
 ![Mapa cieplna puli z uruchomionymi równoległymi zadaniami języka R](media/tutorial-r-doazureparallel/pool.png)
 

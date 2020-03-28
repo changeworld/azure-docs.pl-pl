@@ -1,7 +1,7 @@
 ---
-title: Używanie konfiguracji dynamicznej w aplikacji do rozruchu sprężynowego
+title: Używanie konfiguracji dynamicznej w aplikacji Spring Boot
 titleSuffix: Azure App Configuration
-description: Dowiedz się, jak dynamicznie aktualizować dane konfiguracji dla aplikacji do rozruchu sprężynowego
+description: Dowiedz się, jak dynamicznie aktualizować dane konfiguracyjne aplikacji Spring Boot
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
@@ -9,27 +9,27 @@ ms.topic: tutorial
 ms.date: 3/5/2020
 ms.author: lcozzens
 ms.openlocfilehash: 37c832e3b6d1430da0b45558c9632f0486a7233b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79216757"
 ---
-# <a name="tutorial-use-dynamic-configuration-in-a-java-spring-app"></a>Samouczek: używanie konfiguracji dynamicznej w aplikacji ze sprężyną Java
+# <a name="tutorial-use-dynamic-configuration-in-a-java-spring-app"></a>Samouczek: Używanie konfiguracji dynamicznej w aplikacji Java Spring
 
-Biblioteka klienta sieci komputerowej ze sprężyną konfiguracji aplikacji obsługuje aktualizowanie zestawu ustawień konfiguracji na żądanie bez powodowania ponownego uruchomienia aplikacji. Biblioteka klienta buforuje każde ustawienie, aby uniknąć zbyt wielu wywołań magazynu konfiguracji. Operacja odświeżania nie aktualizuje wartości do momentu wygaśnięcia wartości w pamięci podręcznej, nawet jeśli wartość została zmieniona w magazynie konfiguracji. Domyślny czas wygaśnięcia dla każdego żądania wynosi 30 sekund. W razie potrzeby można go zastąpić.
+Biblioteka klienta wiosennego rozruchu konfiguracji aplikacji obsługuje aktualizowanie zestawu ustawień konfiguracji na żądanie, bez konieczności ponownego uruchamiania aplikacji. Biblioteka klienta buforuje każde ustawienie, aby uniknąć zbyt wielu wywołań do magazynu konfiguracji. Operacja odświeżania nie aktualizuje wartości, dopóki wartość buforowana nie wygaśnie, nawet jeśli wartość została zmieniona w magazynie konfiguracji. Domyślny czas wygaśnięcia dla każdego żądania wynosi 30 sekund. W razie potrzeby można go zastąpić.
 
-Możesz sprawdzić dostępność zaktualizowanych ustawień na żądanie, wywołując metodę `refreshConfigurations()` `AppConfigurationRefresh`.
+Możesz sprawdzić zaktualizowane ustawienia na `AppConfigurationRefresh`żądanie, wywołując metodę 's. `refreshConfigurations()`
 
-Alternatywnie można użyć pakietu `spring-cloud-azure-appconfiguration-config-web`, który ma zależność od `spring-web` do obsługi automatycznego odświeżania.
+Alternatywnie można użyć `spring-cloud-azure-appconfiguration-config-web` pakietu, który ma zależność `spring-web` do obsługi automatycznego odświeżania.
 
-## <a name="use-automated-refresh"></a>Użyj automatycznego odświeżania
+## <a name="use-automated-refresh"></a>Korzystanie z automatycznego odświeżania
 
-Aby użyć automatycznego odświeżania, Zacznij od aplikacji z rozruchem sprężyny korzystającej z konfiguracji aplikacji, takiej jak utworzona przez Ciebie aplikacja, postępując zgodnie z [przewodnikiem Szybki Start dla konfiguracji aplikacji](quickstart-java-spring-app.md).
+Aby użyć automatycznego odświeżania, zacznij od aplikacji Spring Boot korzystającej z konfiguracji aplikacji, takiej jak aplikacja utworzona, wykonując [szybki start szybkiego rozruchu spring boot dla konfiguracji aplikacji](quickstart-java-spring-app.md).
 
-Następnie otwórz plik *pliku pom. XML* w edytorze tekstów i Dodaj `<dependency>` dla `spring-cloud-azure-appconfiguration-config-web`.
+Następnie otwórz plik *pom.xml* w edytorze tekstu `<dependency>` `spring-cloud-azure-appconfiguration-config-web`i dodaj for .
 
-**Chmura Wiosenna 1.1. x**
+**Wiosenna chmura 1.1.x**
 
 ```xml
 <dependency>
@@ -39,7 +39,7 @@ Następnie otwórz plik *pliku pom. XML* w edytorze tekstów i Dodaj `<dependenc
 </dependency>
 ```
 
-**Chmura Wiosenna 1.2. x**
+**Wiosenna chmura 1.2.x**
 
 ```xml
 <dependency>
@@ -49,11 +49,11 @@ Następnie otwórz plik *pliku pom. XML* w edytorze tekstów i Dodaj `<dependenc
 </dependency>
 ```
 
-Zapisz plik, a następnie Skompiluj i uruchom aplikację w zwykły sposób.
+Zapisz plik, a następnie skompiluj i uruchom aplikację w zwykły sposób.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku włączono aplikację rozruchu sprężynowego do dynamicznego odświeżania ustawień konfiguracji z poziomu konfiguracji aplikacji. Aby dowiedzieć się, jak za pomocą tożsamości zarządzanej platformy Azure usprawnić dostęp do konfiguracji aplikacji, przejdź do następnego samouczka.
+W tym samouczku włączono aplikację Spring Boot, aby dynamicznie odświeżać ustawienia konfiguracji z konfiguracji aplikacji. Aby dowiedzieć się, jak użyć tożsamości zarządzanej platformy Azure, aby usprawnić dostęp do konfiguracji aplikacji, przejdź do następnego samouczka.
 
 > [!div class="nextstepaction"]
 > [Integracja tożsamości zarządzanej](./howto-integrate-azure-managed-service-identity.md)

@@ -1,5 +1,5 @@
 ---
-title: Aktualizowanie nazwy użytkownika i hasła protokołu RDP w programie PowerShell
+title: Aktualizowanie nazwy użytkownika i hasła protokołu RDP w programie Powershell
 description: Przykładowy skrypt programu Azure PowerShell — aktualizowanie nazwy użytkownika i hasła protokołu RDP dla wszystkich węzłów klastra usługi Service Fabric określonego typu węzła.
 services: service-fabric
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.date: 03/19/2018
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: 0cf9f8362d3fa683084aef840cf35cd9a843608a
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75614812"
 ---
 # <a name="update-the-admin-username-and-password-of-the-vms-in-a-cluster"></a>Aktualizowanie nazwy użytkownika i hasła administratora maszyn wirtualnych w klastrze

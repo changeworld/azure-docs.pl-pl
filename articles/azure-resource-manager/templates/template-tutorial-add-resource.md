@@ -1,67 +1,67 @@
 ---
-title: Samouczek — Dodawanie zasobu do szablonu
-description: W tym artykule opisano kroki tworzenia pierwszego szablonu Azure Resource Manager. Dowiesz się więcej na temat składni pliku szablonu i sposobu wdrażania konta magazynu.
+title: Samouczek - Dodawanie zasobu do szablonu
+description: W tym artykule opisano kroki tworzenia pierwszego szablonu usługi Azure Resource Manager. Dowiesz się więcej o składni pliku szablonu i o tym, jak wdrożyć konto magazynu.
 author: mumian
-ms.date: 02/24/2020
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e533b70ba713b8c52a29cfbcc1cd8ccb99b8543f
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 79e337b411f9d115d93050ebeee346a526913d39
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79370699"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371734"
 ---
-# <a name="tutorial-add-a-resource-to-your-resource-manager-template"></a>Samouczek: Dodawanie zasobu do szablonu Menedżer zasobów
+# <a name="tutorial-add-a-resource-to-your-arm-template"></a>Samouczek: Dodawanie zasobu do szablonu ARM
 
-W [poprzednim samouczku](template-tutorial-create-first-template.md)przedstawiono sposób tworzenia pustego szablonu i wdrażania go. Teraz możesz przystąpić do wdrażania rzeczywistego zasobu. W tym samouczku dodasz konto magazynu. Ukończenie tego samouczka zajmuje około **9 minut** .
+W [poprzednim samouczku](template-tutorial-create-first-template.md)opisano, jak utworzyć pusty szablon i wdrożyć go. Teraz możesz przystąpić do wdrażania rzeczywistego zasobu. W tym samouczku należy dodać konto magazynu. Trwa około **9 minut,** aby zakończyć ten samouczek.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Zalecamy wykonanie [samouczka wprowadzającego dotyczącego szablonów](template-tutorial-create-first-template.md), ale nie jest to wymagane.
+Zalecamy ukończenie [samouczka wprowadzającego na temat szablonów,](template-tutorial-create-first-template.md)ale nie jest to wymagane.
 
-Musisz mieć Visual Studio Code z rozszerzeniem narzędzi Menedżer zasobów i Azure PowerShell lub interfejsu wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zobacz [Narzędzia szablonu](template-tutorial-create-first-template.md#get-tools).
+Musisz mieć program Visual Studio Code z rozszerzeniem Narzędzia Menedżera zasobów i azure powershell lub interfejsu wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zobacz [narzędzia szablonów](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="add-resource"></a>Dodaj zasób
+## <a name="add-resource"></a>Dodawanie zasobu
 
-Aby dodać definicję konta magazynu do istniejącego szablonu, zobacz wyróżniony kod JSON w poniższym przykładzie. Zamiast próbować skopiować sekcje szablonu, Skopiuj cały plik i Zastąp jego zawartość.
+Aby dodać definicję konta magazynu do istniejącego szablonu, spójrz na wyróżniony JSON w poniższym przykładzie. Zamiast próbować kopiować sekcje szablonu, skopiuj cały plik i zastąp szablon jego zawartością.
 
-Zastąp element **{Account-Unique-Name}** unikatową nazwą konta magazynu.
+Zastąp **{provide-unique-name}** unikatową nazwą konta magazynu.
 
 > [!IMPORTANT]
-> Nazwa konta magazynu musi być unikatowa w obrębie platformy Azure. Nazwa może zawierać tylko małe litery lub cyfry. Nie może być dłuższa niż 24 znaki. Możesz spróbować użyć wzorca nazewnictwa, takiego jak **store1** , jako prefiksu, a następnie dodać inicjały i bieżącą datę. Na przykład użyta nazwa może wyglądać jak **store1abc09092019**.
+> Nazwa konta magazynu musi być unikatowa w obrębie platformy Azure. Nazwa musi zawierać tylko małe litery lub cyfry. Nie może być dłuższy niż 24 znaki. Możesz wypróbować wzorzec nazewnictwa, taki jak używanie **store1** jako prefiksu, a następnie dodanie inicjałów i dzisiejszej daty. Na przykład używana nazwa może wyglądać jak **store1abc09092019**.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json" range="1-19" highlight="5-17":::
 
-Odgadnięcie unikatowej nazwy konta magazynu nie jest proste i nie działa dobrze w przypadku automatyzowania dużych wdrożeń. W dalszej części tej serii samouczków będziesz używać funkcji szablonów, które ułatwiają tworzenie unikatowej nazwy.
+Zgadywanie unikatowej nazwy konta magazynu nie jest łatwe i nie działa dobrze w przypadku automatyzacji dużych wdrożeń. W dalszej części tej serii samouczków użyjesz funkcji szablonu, które ułatwiają tworzenie unikatowej nazwy.
 
 ## <a name="resource-properties"></a>Właściwości zasobu
 
-Możesz się zastanawiać, jak znaleźć właściwości do użycia dla każdego typu zasobu. Możesz użyć odwołania do [szablonu Menedżer zasobów](/azure/templates/) , aby znaleźć typy zasobów, które chcesz wdrożyć.
+Możesz się zastanawiać, jak znaleźć właściwości do użycia dla każdego typu zasobu. Odwołanie do [szablonu ARM](/azure/templates/) służy do znajdowania typów zasobów, które chcesz wdrożyć.
 
-Każdy wdrażany zasób ma co najmniej następujące trzy właściwości:
+Każdy wdrożony zasób ma co najmniej następujące trzy właściwości:
 
-- **Typ**: typ zasobu. Ta wartość jest kombinacją przestrzeni nazw dostawcy zasobów i typu zasobu (np. Microsoft. Storage/storageAccounts).
-- **apiVersion**: wersja interfejsu API REST do użycia podczas tworzenia zasobu. Każdy dostawca zasobów opublikował własne wersje interfejsu API, dlatego ta wartość jest specyficzna dla tego typu.
-- **Nazwa**: nazwa zasobu.
+- **typ**: Typ zasobu. Ta wartość jest kombinacją obszaru nazw dostawcy zasobów i typu zasobu (na przykład Microsoft.Storage/storageAccounts).
+- **apiVersion**: Wersja interfejsu API REST do użycia do tworzenia zasobu. Każdy dostawca zasobów opublikował własne wersje interfejsu API, więc ta wartość jest specyficzna dla typu.
+- **nazwa**: Nazwa zasobu.
 
-Większość zasobów ma również właściwość **Location** , która ustawia region, w którym zasób jest wdrażany.
+Większość zasobów ma również właściwość **lokalizacji,** która ustawia region, w którym zasób jest wdrażany.
 
-Inne właściwości różnią się w zależności od typu zasobu i wersji interfejsu API. Ważne jest, aby zrozumieć połączenie między wersją interfejsu API i dostępnymi właściwościami, więc Przyjrzyjmy się bardziej szczegółowo.
+Inne właściwości różnią się w zależności od typu zasobu i wersji interfejsu API. Ważne jest, aby zrozumieć połączenie między wersją interfejsu API a dostępnymi właściwościami, więc przejdźmy do bardziej szczegółowych informacji.
 
-W tym samouczku dodano konto magazynu do szablonu. Możesz zobaczyć tę wersję interfejsu API w witrynie [storageAccounts 2019-04-01](/azure/templates/microsoft.storage/2019-04-01/storageaccounts). Zwróć uwagę, że wszystkie właściwości nie zostały dodane do szablonu. Wiele właściwości jest opcjonalnych. Dostawca zasobów Microsoft. Storage może wydać nową wersję interfejsu API, ale wdrażaną wersję nie trzeba zmieniać. Możesz dalej korzystać z tej wersji i wiedzieć, że wyniki wdrożenia będą spójne.
+W tym samouczku dodano konto magazynu do szablonu. Możesz zobaczyć, że wersja interfejsu API na [storageAccounts 2019-04-01](/azure/templates/microsoft.storage/2019-04-01/storageaccounts). Należy zauważyć, że nie dodano wszystkie właściwości do szablonu. Wiele właściwości są opcjonalne. Dostawca zasobów magazynu Microsoft.Storage może zwolnić nową wersję interfejsu API, ale wdrażana wersja nie musi ulec zmianie. Możesz nadal korzystać z tej wersji i wiedzieć, że wyniki wdrożenia będą spójne.
 
-Jeśli zobaczysz starszą wersję interfejsu API, taką jak [storageAccounts 2016-05-01](/azure/templates/microsoft.storage/2016-05-01/storageaccounts), zobaczysz, że jest dostępny mniejszy zestaw właściwości.
+Jeśli wyświetlisz starszą wersję interfejsu API, taką jak [storageAccounts 2016-05-01](/azure/templates/microsoft.storage/2016-05-01/storageaccounts), zobaczysz, że dostępny jest mniejszy zestaw właściwości.
 
-Jeśli zdecydujesz się zmienić wersję interfejsu API dla zasobu, upewnij się, że są oceniane właściwości tej wersji i odpowiednio Dostosuj szablon.
+Jeśli zdecydujesz się zmienić wersję interfejsu API dla zasobu, upewnij się, że oceniasz właściwości dla tej wersji i odpowiednio dostosuj szablon.
 
 ## <a name="deploy-template"></a>Wdrażanie szablonu
 
-Możesz wdrożyć szablon, aby utworzyć konto magazynu. Nadaj wdrożenieowi inną nazwę, aby można je było łatwo znaleźć w historii.
+Można wdrożyć szablon, aby utworzyć konto magazynu. Nadaj wdrożeniu inną nazwę, aby można było łatwo znaleźć ją w historii.
 
-Jeśli grupa zasobów nie została utworzona, zobacz [Tworzenie grupy zasobów](template-tutorial-create-first-template.md#create-resource-group). W przykładzie założono, że ustawiono zmienną **TemplateFile** na ścieżkę do pliku szablonu, jak pokazano w [pierwszym samouczku](template-tutorial-create-first-template.md#deploy-template).
+Jeśli grupa zasobów nie została utworzona, zobacz [Tworzenie grupy zasobów](template-tutorial-create-first-template.md#create-resource-group). W przykładzie przyjęto założenie, że ustawiono **zmienną templateFile** na ścieżkę do pliku szablonu, jak pokazano w [pierwszym samouczku](template-tutorial-create-first-template.md#deploy-template).
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -72,6 +72,8 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
+Aby uruchomić to polecenie wdrażania, musisz mieć [najnowszą wersję](/cli/azure/install-azure-cli) interfejsu wiersza polecenia platformy Azure.
+
 ```azurecli
 az deployment group create \
   --name addstorage \
@@ -81,42 +83,42 @@ az deployment group create \
 
 ---
 
-Mogą wystąpić dwa możliwe błędy wdrażania:
+Dwa możliwe błędy wdrażania, które mogą wystąpić:
 
-- Błąd: Code = AccountNameInvalid; Komunikat = {Podaj unikatową nazwę} nie jest prawidłową nazwą konta magazynu. Nazwa konta magazynu musi mieć długość od 3 do 24 znaków i może zawierać tylko cyfry i małe litery.
+- Błąd: Code=AccountNameInvalid; Message={provide-unique-name} nie jest prawidłową nazwą konta magazynu. Nazwa konta magazynu musi mieć długość od 3 do 24 znaków i używać tylko cyfr i liter.
 
-    W szablonie Zastąp element **{Account-Unique-Name}** unikatową nazwą konta magazynu.  Zobacz [Dodawanie zasobu](#add-resource).
+    W szablonie zastąp **{provide-unique-name}** unikatową nazwą konta magazynu.  Zobacz [Dodawanie zasobu](#add-resource).
 
-- Błąd: Code = StorageAccountAlreadyTaken; Komunikat = konto magazynu o nazwie store1abc09092019 jest już zajęte.
+- Błąd: Code=StorageAccountAlreadyTaken; Message=Konto magazynu o nazwie store1abc09092019 jest już zrobione.
 
     W szablonie spróbuj użyć innej nazwy konta magazynu.
 
-To wdrożenie trwa dłużej niż wdrożenie pustego szablonu, ponieważ konto magazynu zostało utworzone. Może to potrwać około minuty, ale jest zwykle szybszy.
+To wdrożenie trwa dłużej niż puste wdrożenie szablonu, ponieważ konto magazynu jest tworzony. Może to potrwać około minuty, ale zwykle jest szybsze.
 
 ## <a name="verify-deployment"></a>Weryfikowanie wdrożenia
 
-Można zweryfikować wdrożenie, przeeksplorowanie grupy zasobów z Azure Portal.
+Wdrożenie można zweryfikować, eksplorując grupę zasobów z witryny Azure portal.
 
-1. Zaloguj się do [Azure portal](https://portal.azure.com).
-1. Z menu po lewej stronie wybierz pozycję **grupy zasobów**.
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. W menu po lewej stronie wybierz pozycję **Grupy zasobów**.
 1. Wybierz grupę zasobów, do której została wdrożona.
-1. Zobaczysz, że konto magazynu zostało wdrożone.
-1. Zauważ, że etykieta wdrożenia brzmi teraz: **wdrożenia: 2**.
+1. Widać, że konto magazynu zostało wdrożone.
+1. Należy zauważyć, że etykieta wdrożenia teraz mówi: **Wdrożenia: 2 Powiodło się**.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli przeniesiesz się do następnego samouczka, nie musisz usuwać grupy zasobów.
+Jeśli przechodzisz do następnego samouczka, nie musisz usuwać grupy zasobów.
 
-Jeśli zatrzymasz się teraz, możesz chcieć wyczyścić wdrożone zasoby, usuwając grupę zasobów.
+Jeśli zatrzymujesz się teraz, możesz wyczyścić zasoby wdrożone przez usunięcie grupy zasobów.
 
-1. W witrynie Azure Portal wybierz pozycję **Grupa zasobów** z menu po lewej stronie.
+1. W witrynie Azure portal wybierz **grupę zasobów** z lewego menu.
 2. Wprowadź nazwę grupy zasobów w polu **Filtruj według nazwy**.
 3. Wybierz nazwę grupy zasobów.
-4. Wybierz pozycję **Usuń grupę zasobów** z górnego menu.
+4. Wybierz **pozycję Usuń grupę zasobów** z górnego menu.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Utworzono prosty szablon służący do wdrażania konta usługi Azure Storage.  W kolejnych samouczkach dowiesz się, jak dodawać parametry, zmienne, zasoby i dane wyjściowe do szablonu. Te funkcje są blokami konstrukcyjnymi dla znacznie bardziej złożonych szablonów.
+Utworzono prosty szablon do wdrożenia konta magazynu platformy Azure.  W późniejszych samouczkach dowiesz się, jak dodawać parametry, zmienne, zasoby i dane wyjściowe do szablonu. Te funkcje są blokami konstrukcyjnymi dla znacznie bardziej złożonych szablonów.
 
 > [!div class="nextstepaction"]
-> [Dodaj parametry](template-tutorial-add-parameters.md)
+> [Dodawanie parametrów](template-tutorial-add-parameters.md)

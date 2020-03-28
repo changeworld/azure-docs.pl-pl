@@ -1,23 +1,23 @@
 ---
-title: 'Samouczek: hostowanie interfejsu API RESTful z mechanizmem CORS'
-description: Dowiedz się, w jaki sposób usługa Azure App Service umożliwia hostowanie interfejsów API RESTful z obsługą mechanizmu CORS. App Service mogą hostować zarówno aplikacje sieci Web frontonu, jak i interfejsy API zaplecza.
+title: 'Samouczek: Host RESTful API z CORS'
+description: Dowiedz się, w jaki sposób usługa Azure App Service umożliwia hostowanie interfejsów API RESTful z obsługą mechanizmu CORS. Usługa App Service może obsługiwać zarówno aplikacje sieci web frontu, jak i interfejsy API zaplecza.
 ms.assetid: a820e400-06af-4852-8627-12b3db4a8e70
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 02/11/2020
-ms.custom: seodec18
-ms.openlocfilehash: 28848d8b676bb5f4182a887f5efdd48c6221041a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.custom: mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019, seodec18
+ms.openlocfilehash: 766b860e6c711107472645d84db50412aaba0e12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79239700"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80046765"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Samouczek: hostowanie interfejsu API RESTful z mechanizmem CORS w usłudze Azure App Service
 
-Usługa [Azure App Service](overview.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie. Usługa App Service ma dodatkowo wbudowaną obsługę mechanizmu [współużytkowania zasobów między źródłami (CORS, Cross-Origin Resource Sharing)](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing) dla interfejsów API RESTful. Ten samouczek pokazuje, w jaki sposób wdrożyć aplikację interfejsu API platformy ASP.NET Core w usłudze App Service z obsługą mechanizmu CORS. Aplikacja zostanie skonfigurowana przy użyciu narzędzi wiersza polecenia i wdrożona za pomocą narzędzia Git. 
+[Usługa Azure App Service](overview.md) zapewnia wysoce skalowalną, samoładującą się usługę hostingu. Usługa App Service ma dodatkowo wbudowaną obsługę mechanizmu [współużytkowania zasobów między źródłami (CORS, Cross-Origin Resource Sharing)](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing) dla interfejsów API RESTful. Ten samouczek pokazuje, w jaki sposób wdrożyć aplikację interfejsu API platformy ASP.NET Core w usłudze App Service z obsługą mechanizmu CORS. Aplikacja zostanie skonfigurowana przy użyciu narzędzi wiersza polecenia i wdrożona za pomocą narzędzia Git. 
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie zasobów usługi App Service przy użyciu interfejsu wiersza polecenia platformy Azure
@@ -32,8 +32,8 @@ Kroki opisane w tym samouczku można wykonać w systemie macOS, Linux i Windows.
 
 W celu ukończenia tego samouczka:
 
-* [Zainstaluj oprogramowanie Git](https://git-scm.com/).
-* [Zainstaluj platformę .NET Core](https://www.microsoft.com/net/core/).
+* [Zainstaluj Git](https://git-scm.com/).
+* [Zainstaluj program .NET Core](https://www.microsoft.com/net/core/).
 
 ## <a name="create-local-aspnet-core-app"></a>Tworzenie lokalnej aplikacji ASP.NET Core
 
@@ -81,7 +81,7 @@ W tym kroku wdrożysz aplikację .NET Core połączoną z bazą danych SQL Datab
 
 [!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user-no-h.md)]
 
-### <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 [!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-no-h.md)]
 
@@ -141,7 +141,7 @@ Następnie włącz wbudowaną obsługę mechanizmu CORS w usłudze App Service d
 
 W lokalnym repozytorium otwórz plik _wwwroot/index.html_.
 
-W wierszu 51 ustaw zmienną `apiEndpoint` na adres URL wdrożonego interfejsu API (`http://<app_name>.azurewebsites.net`). Zastąp zmienną _\<app_name>_ własną nazwą aplikacji w usłudze App Service.
+W wierszu 51 ustaw zmienną `apiEndpoint` na adres URL wdrożonego interfejsu API (`http://<app_name>.azurewebsites.net`). Zamień _ \<>appname_ na nazwę aplikacji w usłudze App Service.
 
 W lokalnym oknie terminala ponownie uruchom aplikację przykładową.
 
@@ -149,7 +149,7 @@ W lokalnym oknie terminala ponownie uruchom aplikację przykładową.
 dotnet run
 ```
 
-Przejdź do aplikacji przeglądarki pod adresem `http://localhost:5000`. Otwórz okno narzędzia deweloperskie w przeglądarce (`Ctrl`+`Shift`+`i` w programie Chrome dla systemu Windows) i sprawdź kartę **konsola** . Powinien pojawić się komunikat o błędzie, `No 'Access-Control-Allow-Origin' header is present on the requested resource`.
+Przejdź do aplikacji przeglądarki pod adresem `http://localhost:5000`. Otwórz okno narzędzi programistycznych`Ctrl` + `Shift` + `i` w przeglądarce (w Chrome dla Windows) i sprawdź kartę **Konsola.** Powinien zostać wyświetlony komunikat `No 'Access-Control-Allow-Origin' header is present on the requested resource`o błędzie , .
 
 ![Błąd mechanizmu CORS w kliencie przeglądarki](./media/app-service-web-tutorial-rest-api/azure-app-service-cors-error.png)
 
@@ -159,7 +159,7 @@ W środowisku produkcyjnym aplikacja przeglądarki miałaby publiczny adres URL 
 
 ### <a name="enable-cors"></a>Włączanie mechanizmu CORS 
 
-W usłudze Cloud Shell włącz mechanizm CORS dla adresu URL klienta przy użyciu polecenia [`az resource update`](/cli/azure/resource#az-resource-update). Zastąp symbol zastępczy _&lt;appname>_ .
+W aplikacji Cloud Shell włącz usługę CORS w [`az resource update`](/cli/azure/resource#az-resource-update) adresie URL klienta za pomocą polecenia. Zastąp _ &lt;symbol zastępczy>_ aplikacji.
 
 ```azurecli-interactive
 az resource update --name web --resource-group myResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<app_name> --set properties.cors.allowedOrigins="['http://localhost:5000']" --api-version 2015-06-01
@@ -168,7 +168,7 @@ az resource update --name web --resource-group myResourceGroup --namespace Micro
 W parametrze `properties.cors.allowedOrigins` możesz określić więcej niż jeden adres URL klienta (`"['URL1','URL2',...]"`). Możesz również włączyć adresy URL wszystkich klientów za pomocą wartości `"['*']"`.
 
 > [!NOTE]
-> Jeśli Twoja aplikacja wymaga wysyłania poświadczeń, takich jak pliki cookie lub tokeny uwierzytelniania, przeglądarka może wymagać nagłówka `ACCESS-CONTROL-ALLOW-CREDENTIALS` w odpowiedzi. Aby włączyć tę funkcję w App Service, ustaw `properties.cors.supportCredentials` na `true` w konfiguracji CORS. Nie można go włączyć, gdy `allowedOrigins` zawiera `'*'`.
+> Jeśli Twoja aplikacja wymaga wysyłania poświadczeń, takich jak pliki cookie lub tokeny uwierzytelniania, przeglądarka może wymagać nagłówka `ACCESS-CONTROL-ALLOW-CREDENTIALS` w odpowiedzi. Aby włączyć to w `properties.cors.supportCredentials` usłudze app service, należy ustawić w `true` konfiguracji CORS. Nie można tego `allowedOrigins` włączyć, gdy zawiera `'*'`.
 
 ### <a name="test-cors-again"></a>Ponowne testowanie mechanizmu CORS
 
