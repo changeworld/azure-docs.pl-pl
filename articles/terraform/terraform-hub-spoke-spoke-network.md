@@ -1,38 +1,38 @@
 ---
-title: Samouczek — Tworzenie sieci szprych na platformie Azure przy użyciu Terraform
-description: Dowiedz się, jak zaimplementować dwa szprychy sieci wirtualnych połączone z koncentratorem w topologii gwiazdy
+title: Samouczek — tworzenie sieci szprych na platformie Azure przy użyciu terraform
+description: Dowiedz się, jak zaimplementować dwie szprychowe sieci wirtualne połączone z koncentratorem w topologii szprychy
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.openlocfilehash: 2a36b8ac22fb52f6b8f1246fd254d9c3ff22fc82
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74159011"
 ---
-# <a name="tutorial-create-a-spoke-network-in-azure-using-terraform"></a>Samouczek: tworzenie sieci szprych na platformie Azure przy użyciu Terraform
+# <a name="tutorial-create-a-spoke-network-in-azure-using-terraform"></a>Samouczek: Tworzenie sieci szprych na platformie Azure przy użyciu terraform
 
-W tym samouczku zaimplementowano dwie osobne sieci szprych w celu zaprezentowania rozdzielenia obciążeń. Sieci używają wspólnych zasobów przy użyciu sieci wirtualnej centrum. Szprychy mogą być używane do izolowania obciążeń w ich własnych sieciach wirtualnych zarządzanych oddzielnie od innych szprych. Każde obciążenie może zawierać wiele warstw z wieloma podsieciami połączonymi za pośrednictwem modułów równoważenia obciążenia platformy Azure.
+W tym samouczku zaimplementowano dwie oddzielne sieci szprych, aby zademonstrować separację obciążeń. Sieci współużytkuje wspólne zasoby przy użyciu sieci wirtualnej centrum. Szprychy mogą być używane do izolowania obciążeń w ich własnych sieciach wirtualnych zarządzanych oddzielnie od innych szprych. Każde obciążenie może zawierać wiele warstw z wieloma podsieciami połączonymi za pośrednictwem modułów równoważenia obciążenia platformy Azure.
 
 Ten samouczek obejmuje następujące zadania:
 
 > [!div class="checklist"]
-> * Używanie HCL (HashiCorp Language) do implementowania szprych sieci wirtualnych w topologii gwiazdy
-> * Tworzenie maszyn wirtualnych w sieciach szprych przy użyciu programu Terraform
-> * Korzystanie z programu Terraform do nawiązywania komunikacji równorzędnej sieci wirtualnych z sieciami centralnymi
+> * Użyj HCL (HashiCorp Language) do zaimplementowania sieci wirtualnych szprychy w topologii szprychy
+> * Tworzenie maszyn wirtualnych w sieciach szprychowych za pomocą programu Terraform
+> * Tworzenie komunikacji równorzędnej sieci wirtualnej za pomocą sieci koncentratorów za pomocą terraformu
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-1. [Tworzenie topologii sieci hybrydowej Hub i satelity z Terraform na platformie Azure](./terraform-hub-spoke-introduction.md).
-1. [Utwórz lokalną sieć wirtualną za pomocą Terraform na platformie Azure](./terraform-hub-spoke-on-prem.md).
-1. [Utwórz centralną sieć wirtualną z usługą Terraform na platformie Azure](./terraform-hub-spoke-hub-network.md).
-1. [Utwórz centralne urządzenie sieci wirtualnej z usługą Terraform na platformie Azure](./terraform-hub-spoke-hub-nva.md).
+1. [Tworzenie koncentratora i szprychy hybrydowej topologii sieci z Terraform na platformie Azure](./terraform-hub-spoke-introduction.md).
+1. [Tworzenie lokalnej sieci wirtualnej z terraform na platformie Azure](./terraform-hub-spoke-on-prem.md).
+1. [Utwórz sieć wirtualną centrum z Terraform na platformie Azure](./terraform-hub-spoke-hub-network.md).
+1. [Utwórz urządzenie sieci wirtualnej centrum z Terraform na platformie Azure](./terraform-hub-spoke-hub-nva.md).
 
 ## <a name="create-the-directory-structure"></a>Tworzenie struktury katalogów
 
-W tej sekcji są tworzone dwa skrypty. Każdy skrypt definiuje sieć wirtualną szprychy oraz maszynę wirtualną dla obciążenia. Zostanie utworzona równorzędna Sieć wirtualna od Hub do szprychy.
+W tej sekcji tworzone są dwa skrypty szprych. Każdy skrypt definiuje sieć wirtualną szprychy i maszynę wirtualną dla obciążenia. Następnie tworzona jest sieć wirtualna typu peered z koncentratora do szprychy.
 
-1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
+1. Przejdź do [witryny Azure portal](https://portal.azure.com).
 
 1. Otwórz usługę [Azure Cloud Shell](/azure/cloud-shell/overview). Jeśli środowisko nie zostało wybrane wcześniej, wybierz pozycję **Bash** jako swoje środowisko.
 
@@ -50,9 +50,9 @@ W tej sekcji są tworzone dwa skrypty. Każdy skrypt definiuje sieć wirtualną 
     cd hub-spoke
     ```
 
-## <a name="declare-the-two-spoke-networks"></a>Zadeklaruj dwie sieci szprych
+## <a name="declare-the-two-spoke-networks"></a>Deklarowanie dwóch sieci szprych
 
-1. W Cloud Shell Otwórz nowy plik o nazwie `spoke1.tf`.
+1. W usłudze Cloud Shell `spoke1.tf`otwórz nowy plik o nazwie .
 
     ```bash
     code spoke1.tf
@@ -172,7 +172,7 @@ W tej sekcji są tworzone dwa skrypty. Każdy skrypt definiuje sieć wirtualną 
     }
     ```
 
-1. Zapisz plik i Zamknij Edytor.
+1. Zapisz plik i zamknij edytor.
 
 1. Utwórz nowy plik o nazwie `spoke2.tf`.
 
@@ -298,9 +298,9 @@ W tej sekcji są tworzone dwa skrypty. Każdy skrypt definiuje sieć wirtualną 
     }
     ```
      
-1. Zapisz plik i Zamknij Edytor.
+1. Zapisz plik i zamknij edytor.
   
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"] 
-> [Weryfikowanie sieci gwiazdy i satelity za pomocą Terraform na platformie Azure](./terraform-hub-spoke-validation.md)
+> [Sprawdzanie poprawności sieci koncentratora i szprychy za pomocą programu Terraform na platformie Azure](./terraform-hub-spoke-validation.md)

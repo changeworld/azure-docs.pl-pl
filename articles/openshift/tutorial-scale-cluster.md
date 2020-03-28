@@ -1,26 +1,26 @@
 ---
-title: Samouczek — skalowanie klastra usługi Azure Red Hat OpenShift
-description: Dowiedz się, jak skalować Microsoft Azure klastrze Red Hat OpenShift przy użyciu interfejsu wiersza polecenia platformy Azure
+title: Samouczek — skalowanie klastra OpenShift red hat
+description: Dowiedz się, jak skalować klaster OpenShift Red Hat platformy Microsoft Azure przy użyciu interfejsu wiersza polecenia platformy Azure
 author: jimzim
 ms.author: jzim
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 05/06/2019
-ms.openlocfilehash: bf9172f0c84834c951446520ff0bfcc3ef756c9c
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: c6334aa20b543dfbf87fedcfe45d54bbcf7a219a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278305"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79477021"
 ---
-# <a name="tutorial-scale-an-azure-red-hat-openshift-cluster"></a>Samouczek: skalowanie klastra usługi Azure Red Hat OpenShift
+# <a name="tutorial-scale-an-azure-red-hat-openshift-cluster"></a>Samouczek: Skalowanie klastra OpenShift programu Azure Red Hat
 
-Ten samouczek jest drugą częścią serii. Dowiesz się, jak utworzyć Microsoft Azure klaster Red Hat OpenShift przy użyciu interfejsu wiersza polecenia platformy Azure, skalować go, a następnie usunąć, aby wyczyścić zasoby.
+Ten samouczek jest drugą częścią serii. Dowiesz się, jak utworzyć klaster OpenShift Red Hat platformy Microsoft Azure przy użyciu interfejsu wiersza polecenia platformy Azure, skalować go, a następnie usunąć, aby oczyścić zasoby.
 
 Część druga serii zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Skalowanie klastra z systemem Red Hat OpenShift
+> * Skalowanie klastra OpenShift Red Hat
 
 Ta seria samouczków zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
@@ -32,33 +32,33 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 
 Przed rozpoczęciem tego samouczka:
 
-* Utwórz klaster, wykonując czynności opisane w samouczku [Tworzenie klastra usługi Azure Red Hat OpenShift](tutorial-create-cluster.md) .
+* Utwórz klaster, wykonując samouczek [tworzenia klastra OpenShift red hat.](tutorial-create-cluster.md)
 
-## <a name="step-1-sign-in-to-azure"></a>Krok 1. Logowanie do platformy Azure
+## <a name="step-1-sign-in-to-azure"></a>Krok 1: Zaloguj się na platformie Azure
 
-Jeśli używasz interfejsu wiersza polecenia platformy Azure lokalnie, uruchom `az login`, aby zalogować się do platformy Azure.
+Jeśli korzystasz z interfejsu wiersza polecenia `az login` platformy Azure lokalnie, uruchom, aby zalogować się na platformie Azure.
 
-```bash
+```azurecli
 az login
 ```
 
-Jeśli masz dostęp do wielu subskrypcji, uruchom `az account set -s {subscription ID}` zastępowanie `{subscription ID}` subskrypcją, której chcesz użyć.
+Jeśli masz dostęp do wielu `az account set -s {subscription ID}` subskrypcji, uruchom zastąpienie `{subscription ID}` subskrypcją, której chcesz użyć.
 
-## <a name="step-2-scale-the-cluster-with-additional-nodes"></a>Krok 2: skalowanie klastra z dodatkowymi węzłami
+## <a name="step-2-scale-the-cluster-with-additional-nodes"></a>Krok 2: Skalowanie klastra za pomocą dodatkowych węzłów
 
-W terminalu bash Ustaw zmienną CLUSTER_NAME na nazwę klastra:
+W terminalu Bash ustaw zmienną CLUSTER_NAME na nazwę klastra:
 
 ```bash
 CLUSTER_NAME=yourclustername
 ```
 
-Teraz można skalować klaster do pięciu węzłów przy użyciu interfejsu wiersza polecenia platformy Azure:
+Teraz skalujmy klaster do pięciu węzłów przy użyciu interfejsu wiersza polecenia platformy Azure:
 
-```bash
+```azurecli
 az openshift scale --resource-group $CLUSTER_NAME --name $CLUSTER_NAME --compute-count 5
 ```
 
-Po kilku minutach `az openshift scale` zakończy się pomyślnie i zwróci dokument JSON zawierający szczegóły skalowanego klastra.
+Po kilku minutach `az openshift scale` zakończy się pomyślnie i zwróci dokument JSON zawierający skalowane szczegóły klastra.
 
 ## <a name="next-steps"></a>Następne kroki
 

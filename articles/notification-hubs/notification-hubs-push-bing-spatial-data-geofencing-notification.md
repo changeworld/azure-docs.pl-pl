@@ -1,9 +1,9 @@
 ---
-title: Wysyłanie powiadomień wypychanych za pomocą usługi Azure Notification Hubs i danych przestrzennych Bing | Microsoft Docs
+title: Wysyłanie powiadomień wypychanych za pomocą usługi Azure Notification Hubs i danych przestrzennych Bing | Dokumenty firmy Microsoft
 description: Korzystając z tego samouczka, dowiesz się, jak dostarczać powiadomienia push oparte na lokalizacji przy użyciu usługi Azure Notification Hubs i danych przestrzennych usługi Bing.
 services: notification-hubs
 documentationcenter: windows
-keywords: powiadomienia wypychane, powiadomienia wypychane
+keywords: powiadomienia wypychania, powiadomienia wypychane
 author: sethmanheim
 manager: femila
 editor: jwargo
@@ -18,14 +18,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 510e2648db3076a0e3ee2535c6058f7ed212f558
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 9f8697332d34fc044c805db6c6595fdf067ed054
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387494"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80127204"
 ---
-# <a name="tutorial-send-location-based-push-notifications-with-azure-notification-hubs-and-bing-spatial-data"></a>Samouczek: wysyłanie powiadomień wypychanych opartych na lokalizacji za pomocą usługi Azure Notification Hubs i danych przestrzennych Bing
+# <a name="tutorial-send-location-based-push-notifications-with-notification-hubs-and-bing-spatial-data"></a>Samouczek: Wysyłanie powiadomień wypychanych opartych na lokalizacji za pomocą centrów powiadomień i danych przestrzennych Bing
 
 Korzystając z tego samouczka, dowiesz się, jak dostarczać powiadomienia push oparte na lokalizacji przy użyciu usługi Azure Notification Hubs i danych przestrzennych usługi Bing.
 
@@ -39,7 +39,7 @@ W tym samouczku wykonasz następujące kroki:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Subskrypcja platformy Azure**. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
+* **Subskrypcja platformy Azure**. Jeśli nie masz subskrypcji platformy Azure, [utwórz bezpłatne konto platformy Azure](https://azure.microsoft.com/free/) przed rozpoczęciem.
 * Program [Visual Studio 2015 Update 1](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx) lub nowszy ([Community Edition](https://go.microsoft.com/fwlink/?LinkId=691978&clcid=0x409)).
 * Najnowsza wersja zestawu [Azure SDK](https://azure.microsoft.com/downloads/).
 * [Konto Centrum deweloperów Map Bing](https://www.bingmapsportal.com/) (można utworzyć je bezpłatnie i skojarzyć z kontem Microsoft).
@@ -50,10 +50,10 @@ W tym samouczku wykonasz następujące kroki:
 2. Wybierz pozycję **Źródła danych** na górnym pasku nawigacyjnym, a następnie wybierz pozycję **Zarządzaj źródłami danych**.
 
     ![](./media/notification-hubs-geofence/bing-maps-manage-data.png)
-3. Jeśli nie masz źródła danych, możesz je utworzyć za pomocą widocznego linku. Wybierz pozycję **Upload data as a data source** (Przekaż dane jako źródło danych). Możesz również użyć menu **Data sources** > **Upload data** (Źródła danych > Przekaż dane).
+3. Jeśli nie masz źródła danych, możesz je utworzyć za pomocą widocznego linku. Wybierz pozycję **Upload data as a data source** (Przekaż dane jako źródło danych). Można również użyć menu > **Przekazywanie danych** **ze źródeł danych.**
 
     ![](./media/notification-hubs-geofence/bing-maps-create-data.png)
-4. Utwórz plik `NotificationHubsGeofence.pipe` na dysku twardym o następującej zawartości: w tym samouczku użyjesz przykładowego pliku z potokiem, który tworzy ramki dla obszaru San Francisco Waterfront:
+4. Utwórz `NotificationHubsGeofence.pipe` plik na dysku twardym z następującą zawartością: W tym samouczku użyj przykładowego pliku opartego na potoku, który tworzy obszar nabrzeża San Francisco:
 
     ```text
     Bing Spatial Data Services, 1.0, TestBoundaries
@@ -71,7 +71,7 @@ W tym samouczku wykonasz następujące kroki:
 
       > [!NOTE]
       > Może zostać wyświetlony monit o określenie nowego klucza dla właściwości **Klucz główny**, który różni się od właściwości **Klucz zapytania**. Po prostu utwórz nowy klucz przy użyciu pulpitu nawigacyjnego i odśwież stronę przekazywania źródła danych.
-6. Po przekazaniu pliku danych opublikuj źródło danych. Wybierz pozycję **Data sources** -> **Manage Data Sources** (Źródła danych > Zarządzaj źródłami danych) tak jak wcześniej.
+6. Po przekazaniu pliku danych opublikuj źródło danych. Wybierz **źródła danych Zarządzaj** -> **źródłami danych,** tak jak wcześniej.
 7. Wybierz źródło danych na liście, a następnie wybierz pozycję **Publish** (Publikuj) w kolumnie **Actions** (Akcje).
 
     ![](./media/notification-hubs-geofence/publish-button.png)
@@ -103,11 +103,11 @@ W tym samouczku wykonasz następujące kroki:
 
 ## <a name="set-up-the-uwp-application"></a>Konfigurowanie aplikacji platformy uniwersalnej systemu Windows
 
-1. W programie Visual Studio utwórz nowy projekt typu **Pusta aplikacja (uniwersalna aplikacja systemu Windows)** .
+1. W programie Visual Studio utwórz nowy projekt typu **Pusta aplikacja (uniwersalna aplikacja systemu Windows)**.
 
     ![](./media/notification-hubs-geofence/notification-hubs-create-blank-app.png)
 
-    Po zakończeniu tworzenia projektu uzyskasz dostęp do aplikacji. Teraz skonfigurujmy wszystko pod kątem infrastruktury wirtualnego grodzenia. Ponieważ w tym celu użyjemy usług Bing, możemy skorzystać z publicznego punktu końcowego interfejsu API REST, umożliwiającego wykonywanie zapytań dotyczących określonego zakresu lokalizacji:
+    Po zakończeniu tworzenia projektu uzyskasz dostęp do aplikacji. Teraz skonfigurujmy wszystko dla infrastruktury geo-ogrodzenia. Ponieważ w tym celu użyjemy usług Bing, możemy skorzystać z publicznego punktu końcowego interfejsu API REST, umożliwiającego wykonywanie zapytań dotyczących określonego zakresu lokalizacji:
 
     ```text
     http://spatial.virtualearth.net/REST/v1/data/
@@ -164,7 +164,7 @@ W tym samouczku wykonasz następujące kroki:
     }
     ```
 
-    Aby dowiedzieć się więcej na temat uzyskiwania lokalizacji użytkownika w aplikacjach platformy uniwersalnej systemu Windows, zobacz [Get the user's location (Uzyskiwanie lokalizacji użytkownika)](https://msdn.microsoft.com/library/windows/apps/mt219698.aspx).
+    Aby dowiedzieć się więcej o uzyskiwaniu lokalizacji użytkownika w aplikacjach platformy uniwersalnej systemu Windows, zobacz[Uzyskiwanie lokalizacji użytkownika](https://msdn.microsoft.com/library/windows/apps/mt219698.aspx).
 5. Aby sprawdzić, czy uzyskiwanie lokalizacji rzeczywiście działa, otwórz stronę kodu strony głównej (`MainPage.xaml.cs`). Utwórz nowy program obsługi zdarzeń dla zdarzenia `Loaded` w konstruktorze `MainPage`.
 
     ```csharp
@@ -196,7 +196,7 @@ W tym samouczku wykonasz następujące kroki:
 
     ![](./media/notification-hubs-geofence/notification-hubs-location-output.png)
 
-    Teraz wiesz, że pobieranie lokalizacji działa. Możesz usunąć załadowany program obsługi zdarzeń, ponieważ nie będzie już używany.
+    Teraz wiesz, że nabycie lokalizacji działa, można usunąć Loaded obsługi zdarzeń, jeśli chcesz, ponieważ nie będzie go już używać.
 8. Następnym krokiem jest przechwytywanie zmian lokalizacji. W klasie `LocationHelper` dodaj program obsługi zdarzeń dla zdarzenia `PositionChanged`:
 
     ```csharp
@@ -226,7 +226,7 @@ W tym samouczku wykonasz następujące kroki:
     Projekt jest już skonfigurowany do wysyłania powiadomień push do urządzeń docelowych, dlatego musimy wykonać tylko dwie czynności — podać odpowiednie parametry połączenia dla centrum powiadomień i dodać identyfikację granic, aby powiadomienie było wysyłane tylko wtedy, gdy użytkownik znajduje się w wirtualnym ogrodzeniu.
 
 4. Aby skonfigurować parametry połączenia, w folderze `Models` otwórz plik `Notifications.cs`. Funkcja `NotificationHubClient.CreateClientFromConnectionString` powinna zawierać informacje o centrum powiadomień uzyskane w witrynie [Azure Portal](https://portal.azure.com) (na stronie **Zasady dostępu** w obszarze **Ustawienia**). Zapisz zaktualizowany plik konfiguracji.
-5. Utwórz model dla wyniku interfejsu API Map Bing. W tym celu najłatwiej otworzyć folder `Models`, a następnie wybrać polecenie **Dodaj** > **Klasa**. Nadaj jej nazwę `GeofenceBoundary.cs`. Następnie skopiuj kod JSON z odpowiedzi interfejsu API uzyskanej w pierwszej sekcji. W programie Visual Studio wybierz pozycję **Edytuj** > **Wklej specjalnie** > **Wklej dane JSON jako klasy**.
+5. Utwórz model dla wyniku interfejsu API Map Bing. Najprostszym sposobem, aby to zrobić, jest otwarcie `Models` folderu i **wybranie** > opcji Dodaj**klasę**. Nadaj jej nazwę `GeofenceBoundary.cs`. Następnie skopiuj kod JSON z odpowiedzi interfejsu API uzyskanej w pierwszej sekcji. W programie Visual Studio użyj funkcji **Edytuj** > **wklejanie wklejanie specjalnej** > **Wytłaz JSON jako klas**.
 
     W ten sposób upewniamy się, że obiekt zostanie zdeserializowany dokładnie w zamierzony sposób. Wynikowy zestaw klas powinien wyglądać następująco:
 
@@ -348,15 +348,15 @@ W tym samouczku wykonasz następujące kroki:
     ```
 
     > [!NOTE]
-    > Ustaw zmienną `POST_URL` na wartość lokalizacji wdrożonej aplikacji internetowej. Teraz możesz uruchomić aplikację lokalnie, ale podczas wdrażania wersji publicznej musisz skorzystać z usług hostingu zewnętrznego dostawcy.
-2. Zarejestruj aplikację platformy uniwersalnej systemu Windows dla usługi powiadomień push. W programie Visual Studio wybierz pozycję **Projekt** > **Magazyn** > **Skojarz aplikację z magazynem**.
+    > Ustaw zmienną `POST_URL` na wartość lokalizacji wdrożonej aplikacji internetowej. Na razie jest ok, aby uruchomić go lokalnie, ale podczas pracy nad wdrażaniem wersji publicznej, należy hostować go z zewnętrznym dostawcą.
+2. Zarejestruj aplikację platformy uniwersalnej systemu Windows dla usługi powiadomień push. W programie Visual Studio wybierz pozycję **Project** > **Store** > **Associate app with the store**.
 
     ![](./media/notification-hubs-geofence/vs-associate-with-store.png)
 3. Po zalogowaniu się do konta dewelopera wybierz istniejącą aplikację lub utwórz nową i skojarz z nią pakiet.
-4. Przejdź do Centrum deweloperów i otwórz utworzoną aplikację. Wybierz pozycję **Usługi** > **Powiadomienia wypychane** > **Witryna usług Live**.
+4. Przejdź do Centrum deweloperów i otwórz utworzoną aplikację. Wybierz pozycję **Witryna** > **usług wypychanych powiadomień** > **na żywo**.
 
     ![](./media/notification-hubs-geofence/ms-live-services.png)
-5. W witrynie zanotuj **Klucz tajny aplikacji** i **Identyfikator SID pakietu**. Obie wartości będą potrzebne w witrynie Azure Portal. Otwórz centrum powiadomień, wybierz pozycję **Ustawienia** > **Usługi powiadomień** > **Windows (WNS)** i wprowadź informacje w wymaganych polach.
+5. W witrynie zanotuj **Klucz tajny aplikacji** i **Identyfikator SID pakietu**. Potrzebujesz zarówno w witrynie Azure portal — otwórz centrum powiadomień, wybierz **ustawienia** > **usług** > powiadomień systemu Windows **(WNS)** i wprowadź informacje w wymaganych polach.
 
     ![](./media/notification-hubs-geofence/notification-hubs-wns.png)
 6. Wybierz pozycję **Zapisz**.

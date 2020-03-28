@@ -5,19 +5,19 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: vlvinogr
 ms.openlocfilehash: 52c2768605fa50f82029511b50bfd313fe325026
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73471960"
 ---
 ## <a name="go-to-your-api-management-instance"></a>Przechodzenie do wystąpienia usługi API Management
 
-1. W Azure Portal Wyszukaj i wybierz pozycję **usługi API Management**.
+1. W witrynie Azure portal wyszukaj i wybierz **usługi zarządzania interfejsami API**.
 
-   ![Wybierz API Management usług](media/api-management-navigate-to-instance/view-apim1.png)
+   ![Wybierz usługi zarządzania interfejsami API](media/api-management-navigate-to-instance/view-apim1.png)
 
-1. Na ekranie **API Management** wybierz wystąpienie API Management.
+1. Na ekranie **Zarządzanie interfejsami API** wybierz wystąpienie zarządzania interfejsami API.
 
-   ![Wybierz wystąpienie API Management](media/api-management-navigate-to-instance/view-apim2.png)
+   ![Wybieranie wystąpienia usługi API Management](media/api-management-navigate-to-instance/view-apim2.png)
 

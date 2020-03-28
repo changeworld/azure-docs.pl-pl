@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: integracja Azure Active Directory z Cisco parasol | Microsoft Docs'
+title: 'Samouczek: Integracja usługi Azure Active Directory z usługą Cisco Umbrella | Dokumenty firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Cisco Umbrella.
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ee91ca53e32bfdc387dc20054493d02d506a75da
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73158629"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-cisco-umbrella"></a>Samouczek: integracja Azure Active Directory z Cisco parasol
+# <a name="tutorial-azure-active-directory-integration-with-cisco-umbrella"></a>Samouczek: Integracja usługi Azure Active Directory z usługą Cisco Umbrella
 
 Z tego samouczka dowiesz się, jak zintegrować aplikację Cisco Umbrella z usługą Azure Active Directory (Azure AD).
 Integracja aplikacji Cisco Umbrella z usługą Azure AD oferuje następujące korzyści:
@@ -33,7 +33,7 @@ Integracja aplikacji Cisco Umbrella z usługą Azure AD oferuje następujące ko
 * Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -110,7 +110,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją [Applicat
 
     b. Kliknij pozycję **Ustaw dodatkowe adresy URL**.
 
-    d. W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://login.umbrella.com/sso`
+    d. W polach **tekstowych Wpisz** adres URL logowania:`https://login.umbrella.com/sso`
 
 5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
@@ -146,7 +146,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją [Applicat
 
     ![Dalej](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_next.png)
 
-6. W **opcji A: przekazywanie pliku**XML, Przekaż plik **XML metadanych federacji** pobrany z Azure Portal i po przekazaniu metadanych poniższe wartości są automatycznie wypełniane, a następnie kliknij przycisk **dalej**.
+6. W **opcji A: Przekaż plik XML**prześlij plik **XML metadanych federacji** pobrany z portalu Azure, a po przesłaniu metadanych poniższe wartości automatycznie wypełniaj poniższe wartości, a następnie kliknij przycisk **DALEJ**.
 
     ![Wybieranie pliku](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_choosefile.png)
 
@@ -154,7 +154,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją [Applicat
 
     ![Test](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_test.png)
 
-8. Kliknij przycisk **SAVE** (Zapisz).
+8. Kliknij **przycisk ZAPISZ**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -164,7 +164,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+2. Wybierz **pozycję Nowy użytkownik** u góry ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
@@ -174,7 +174,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon\@yourcompanydomain. Extension**  
+    b. W polu **Nazwa użytkownika** wpisz **\@brittasimon yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -203,7 +203,7 @@ W tej sekcji włączysz możliwość logowania jednokrotnego na platformie Azure
 
 5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+6. Jeśli oczekujesz dowolnej wartości roli w asercji SAML, a następnie w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
@@ -212,7 +212,7 @@ W tej sekcji włączysz możliwość logowania jednokrotnego na platformie Azure
 Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Cisco Umbrella, trzeba ich aprowizować w aplikacji Cisco Umbrella.  
 W przypadku aplikacji Cisco Umbrella aprowizowanie to zadanie wykonywane ręczne.
 
-**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
+**Aby aprowizować konto użytkownika, wykonaj następujące czynności:**
 
 1. W innym oknie przeglądarki zaloguj się do firmowej witryny aplikacji Cisco Umbrella jako administrator.
 
@@ -230,24 +230,24 @@ W przypadku aplikacji Cisco Umbrella aprowizowanie to zadanie wykonywane ręczne
 
     d. Z listy **Wybierz rolę administratora delegowanego** wybierz swoją rolę.
   
-    d. W polu **adres e-mail** wprowadź EmailAddress użytkownika, na przykład **brittasimon\@contoso.com**.
+    d. W polu **Adres e-mail** wprowadź adres e-mail użytkownika, taki jak **\@brittasimon contoso.com**.
 
     e. W polu **Hasło** wprowadź hasło.
 
     f. W polu **Potwierdź hasło** ponownie wprowadź hasło.
 
-    g. Kliknij przycisk **UTWÓRZ**.
+    g. Kliknij **przycisk UTWÓRZ**.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Cisco Umbrella w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Cisco Umbrella, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka Cisco Umbrella w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Cisco Umbrella, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat Panelu dostępu, zobacz [Wprowadzenie do Panelu dostępu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

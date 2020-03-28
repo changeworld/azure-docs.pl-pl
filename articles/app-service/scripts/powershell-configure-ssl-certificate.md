@@ -1,24 +1,24 @@
 ---
-title: 'PowerShell: przekazywanie i powiązywanie protokołu SSL'
-description: Dowiedz się, jak używać Azure PowerShell do automatyzowania wdrażania App Service i zarządzania nimi. Ten przykład pokazuje, jak powiązać niestandardowy certyfikat SSL z aplikacją.
+title: 'PowerShell: Przekazywanie i wiązanie SSL'
+description: Dowiedz się, jak za pomocą programu Azure PowerShell zautomatyzować wdrażanie usługi App Service i zarządzanie nimi. W tym przykładzie pokazano, jak powiązać niestandardowy certyfikat SSL z aplikacją.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 23e83b74-614a-49a0-bc08-7542120eeec5
 ms.topic: sample
 ms.date: 03/20/2017
-ms.custom: seodec18
-ms.openlocfilehash: 4e5e1835927b135037d416ebaca84157c851d361
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 8422c4ef29366888a2bdd53c18462e6cfb680c78
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74685609"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80044561"
 ---
 # <a name="bind-a-custom-ssl-certificate-to-a-web-app-using-powershell"></a>Tworzenie powiązania niestandardowego certyfikatu SSL z aplikacją internetową przy użyciu programu PowerShell
 
 Ten przykładowy skrypt tworzy aplikację internetową w usłudze App Service z powiązanymi zasobami, a następnie tworzy powiązanie certyfikatu SSL nazwy domeny niestandardowej z tą aplikacją. 
 
-W razie potrzeby zainstaluj program Azure PowerShell, korzystając z instrukcji w [przewodniku programu Azure PowerShell](/powershell/azure/overview), a następnie uruchom polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure. Ponadto upewnij się, że:
+W razie potrzeby zainstaluj program Azure PowerShell przy użyciu instrukcji znalezionych `Connect-AzAccount` w [przewodniku programu Azure PowerShell](/powershell/azure/overview), a następnie uruchom w celu utworzenia połączenia z platformą Azure. Ponadto upewnij się, że:
 
 - Utworzono połączenie z platformą Azure za pomocą polecenia `az login`.
 - Masz dostęp do strony konfiguracji serwera DNS rejestratora domen.

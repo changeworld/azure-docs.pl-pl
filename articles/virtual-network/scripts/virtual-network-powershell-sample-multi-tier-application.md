@@ -1,5 +1,5 @@
 ---
-title: Tworzenie sieci wirtualnej dla aplikacji wielowarstwowych — przykład skryptu Azure PowerShell
+title: Tworzenie sieci wirtualnej dla aplikacji wielowarstwowych — przykład skryptu programu Azure PowerShell
 description: Przykładowy skrypt programu Azure PowerShell — tworzenie sieci wirtualnej dla aplikacji wielowarstwowych.
 services: virtual-network
 documentationcenter: virtual-network
@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: kumud
 ms.openlocfilehash: 32140429d96d73100c4bd5a2ae274e508a15b7a8
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74091318"
 ---
 # <a name="create-a-network-for-multi-tier-applications-script-sample"></a>Przykładowy skrypt służący do tworzenia sieci dla aplikacji wielowarstwowych
@@ -35,7 +35,7 @@ Skrypt można wykonać z poziomu usługi Azure [Cloud Shell](https://shell.azure
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 <!-- gitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/17748 -->
-Identyfikator podsieci jest przypisywany po utworzeniu sieci wirtualnej; w przypadku korzystania z polecenia cmdlet New-AzVirtualNetwork z opcją-Subnet. Jeśli skonfigurujesz podsieć przy użyciu polecenia cmdlet New-AzVirtualNetworkSubnetConfig przed wywołaniem polecenia New-AzVirtualNetwork, identyfikator podsieci nie będzie widoczny, dopóki nie zostanie wywołane polecenie New-AzVirtualNetwork.
+ Identyfikator podsieci jest przypisywany po utworzeniu sieci wirtualnej; w szczególności za pomocą polecenia cmdlet New-AzVirtualNetwork z opcją -Subnet. Jeśli skonfigurujesz podsieć przy użyciu polecenia cmdlet New-AzVirtualNetworkSubnetConfig przed wywołaniem polecenia New-AzVirtualNetwork, identyfikator podsieci nie będzie widoczny, dopóki nie zostanie wywołane polecenie New-AzVirtualNetwork.
 
 [!code-azurepowershell-interactive[main](../../../powershell_scripts/virtual-network/virtual-network-multi-tier-application/virtual-network-multi-tier-application.ps1  "Virtual network for multi-tier application")]
 

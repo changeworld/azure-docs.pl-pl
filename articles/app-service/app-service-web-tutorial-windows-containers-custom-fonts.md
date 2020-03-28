@@ -1,15 +1,15 @@
 ---
 title: 'Samouczek: Starsza aplikacja z kontenerem (wersja zapoznawcza)'
-description: Dowiedz się, jak przeprowadzić migrację niestandardowego kontenera systemu Windows do Azure App Service i wdrożyć niestandardowe oprogramowanie w kontenerze.
+description: Dowiedz się, jak przeprowadzić migrację niestandardowego kontenera systemu Windows do usługi Azure App Service i wdrożyć niestandardowe oprogramowanie w kontenerze.
 ms.topic: tutorial
 ms.date: 10/22/2019
-ms.custom: seodec18
-ms.openlocfilehash: 5fc65a4d3f9989ac462d7716b7652a1011281413
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 74cb88bc1ace87155a35163ca8f9d3d6c4242ae0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671975"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80046615"
 ---
 # <a name="migrate-an-aspnet-app-to-azure-app-service-using-a-windows-container-preview"></a>Migrowanie aplikacji ASP.NET do usługi Azure App Service za pomocą kontenera Windows (wersja zapoznawcza)
 
@@ -24,9 +24,9 @@ W celu ukończenia tego samouczka:
 - <a href="https://hub.docker.com/" target="_blank">Załóż konto usługi Docker Hub</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Zainstaluj program Docker for Windows</a>.
 - <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Przełącz platformę Docker na potrzeby uruchamiania kontenerów systemu Windows</a>.
-- <a href="https://www.visualstudio.com/downloads/" target="_blank">Zainstaluj program Visual Studio 2019</a> przy użyciu obciążeń **ASP.NET oraz tworzenia aplikacji sieci Web** i **platformy Azure** . Jeśli zainstalowano już program Visual Studio 2019:
-    - Zainstaluj najnowsze aktualizacje w programie Visual Studio, klikając pozycje **Pomoc** > **Sprawdź aktualizacje**.
-    - Dodaj pakiety robocze w programie Visual Studio, klikając pozycje **Narzędzia** > **Pobierz narzędzia i funkcje**.
+- <a href="https://www.visualstudio.com/downloads/" target="_blank">Zainstaluj program Visual Studio 2019</a> z **ASP.NET i tworzenia sieci Web** oraz obciążeń **deweloperskich platformy Azure.** Jeśli program Visual Studio 2019 został już zainstalowany:
+    - Zainstaluj najnowsze aktualizacje w programie Visual Studio, klikając **przycisk Pomoc** > **Sprawdź dostępność aktualizacji**.
+    - Dodaj obciążenia w programie Visual Studio, klikając **pozycję Narzędzia** > **Pobierz narzędzia i funkcje**.
 
 ## <a name="set-up-the-app-locally"></a>Lokalne konfigurowanie aplikacji
 
@@ -45,7 +45,7 @@ W Eksploratorze Windows przejdź do folderu _custom-font-win-container-master/Cu
 
 Ta czcionka jest dostępna publicznie w serwisie [Google Fonts](https://fonts.google.com/specimen/Fredericka+the+Great).
 
-### <a name="run-the-app"></a>Uruchamianie aplikacji
+### <a name="run-the-app"></a>Uruchomienie aplikacji
 
 Otwórz plik *custom-font-win-container/CustomFontSample.sln* w programie Visual Studio. 
 
@@ -82,7 +82,7 @@ RUN ${source:-obj/Docker/publish/InstallFont.ps1}
 W projekcie **CustomFontSample** znajduje się plik _InstallFont.ps1_. Jest to prosty skrypt, który instaluje czcionkę. Bardziej złożoną wersję tego skryptu można znaleźć w witrynie [Script Center](https://gallery.technet.microsoft.com/scriptcenter/fb742f92-e594-4d0c-8b79-27564c575133).
 
 > [!NOTE]
-> Aby przetestować kontener systemu Windows lokalnie, upewnij się, że platforma Docker została uruchomiona na komputerze lokalnym.
+> Aby przetestować kontener systemu Windows lokalnie, upewnij się, że docker jest uruchomiony na komputerze lokalnym.
 >
 
 ## <a name="publish-to-azure-container-registry"></a>Publikowanie w usłudze Azure Container Registry
@@ -97,7 +97,7 @@ W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy projekt **CustomFon
 
 ### <a name="create-registry-and-publish"></a>Tworzenie rejestru i publikowanie
 
-W kreatorze publikacji wybierz kolejno pozycje **Container Registry** > **Utwórz nowy rejestr Azure Container Registry** > **Publikuj**.
+W kreatorze publikowania wybierz pozycję **Rejestr kontenerów** > **Utwórz nowy rejestr kontenerów** > platformy Azure**Publish**.
 
 ![Okno dialogowe Nowy projekt ASP.NET](media/app-service-web-tutorial-windows-containers-custom-fonts/create-registry.png)
 
@@ -105,7 +105,7 @@ W kreatorze publikacji wybierz kolejno pozycje **Container Registry** > **Utwór
 
 W oknie dialogowym **Utwórz nowy rejestr Azure Container Registry** wybierz pozycję **Dodaj konto** i zaloguj się do swojej subskrypcji platformy Azure. Po zalogowaniu wybierz z listy rozwijanej konto zawierające odpowiednią subskrypcję.
 
-![Zaloguj się w usłudze Azure](./media/app-service-web-tutorial-windows-containers-custom-fonts/add-an-account.png)
+![Logowanie do platformy Azure](./media/app-service-web-tutorial-windows-containers-custom-fonts/add-an-account.png)
 
 ### <a name="configure-the-registry"></a>Konfigurowanie rejestru
 
@@ -115,48 +115,48 @@ Skonfiguruj nowy rejestr kontenerów, korzystając z sugerowanych wartości z po
 | ----------------- | ------------ | ----|
 |**Prefiks DNS**| Zachowaj wygenerowaną nazwę rejestru lub zmień ją na inną unikatową nazwę. |  |
 |**Grupa zasobów**| Kliknij pozycję **Nowy**, wpisz **myResourceGroup** i kliknij przycisk **OK**. |  |
-|**SKU**| Basic | [Warstwy cenowe](https://azure.microsoft.com/pricing/details/container-registry/)|
+|**Numer jednostki magazynowej**| Podstawowa (Basic) | [Warstwy cenowe](https://azure.microsoft.com/pricing/details/container-registry/)|
 |**Lokalizacja rejestru**| Europa Zachodnia | |
 
 ![Konfigurowanie rejestru kontenerów platformy Azure](./media/app-service-web-tutorial-windows-containers-custom-fonts/configure-registry.png)
 
 Zostanie otwarte okno terminalu z wyświetlonym postępem wdrażania obrazu. Zaczekaj na zakończenie wdrożenia.
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
 ## <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
 
-Z menu po lewej stronie wybierz kolejno pozycje **Utwórz zasób** > **Internet** > **Web App for Containers**.
+Z lewego menu wybierz pozycję **Utwórz zasób** > **Aplikacji Sieci Web** > **dla kontenerów**.
 
 ### <a name="configure-app-basics"></a>Konfigurowanie podstaw aplikacji
 
-Na karcie **podstawy** Skonfiguruj ustawienia zgodnie z poniższą tabelą, a następnie kliknij przycisk **Dalej: Docker**.
+Na karcie **Podstawy** skonfiguruj ustawienia zgodnie z poniższą tabelą, a następnie kliknij przycisk **Dalej: Docker**.
 
 | Ustawienie  | Sugerowana wartość | Więcej informacji |
 | ----------------- | ------------ | ----|
 |**Subskrypcja**| Upewnij się, że wybrano poprawną subskrypcję. |  |
-|**Grupa zasobów**| Wybierz pozycję **Utwórz nowy**, wpisz pozycję Moja **zasobów**i kliknij przycisk **OK**. |  |
+|**Grupa zasobów**| Wybierz **pozycję Utwórz nowy**, wpisz **myResourceGroup**i kliknij przycisk **OK**. |  |
 |**Nazwa**| Wpisz unikatową nazwę. | Adres URL aplikacji internetowej to `http://<app-name>.azurewebsites.net`, gdzie `<app-name>` to nazwa aplikacji. |
 |**Publikowanie**| Kontener platformy Docker | |
 |**System operacyjny**| Windows | |
 |**Region**| Europa Zachodnia | |
-|**Plan systemu Windows**| Wybierz pozycję **Utwórz nowy**, wpisz **myAppServicePlan**, a następnie kliknij przycisk **OK**. | |
+|**Plan systemu Windows**| Wybierz **pozycję Utwórz nowy**, wpisz **myAppServicePlan**i kliknij przycisk **OK**. | |
 
-Twoja karta **podstawy** powinna wyglądać następująco:
+Karta **Podstawy** powinna wyglądać następująco:
 
 ![](media/app-service-web-tutorial-windows-containers-custom-fonts/configure-app-basics.png)
 
 ### <a name="configure-windows-container"></a>Konfigurowanie kontenera systemu Windows
 
-Na karcie **Docker** Skonfiguruj niestandardowy kontener systemu Windows, jak pokazano w poniższej tabeli, a następnie wybierz kolejno pozycje **Recenzja + Utwórz**.
+Na karcie **Docker** skonfiguruj niestandardowy kontener systemu Windows, jak pokazano w poniższej tabeli, a następnie wybierz **pozycję Przejrzyj + utwórz**.
 
 | Ustawienie  | Sugerowana wartość |
 | ----------------- | ------------ |
 |**Źródło obrazu**| Rejestr kontenerów platformy Azure |
-|**Secret**| Wybierz [utworzony wcześniej rejestr](#publish-to-azure-container-registry). |
-|**Obraz**| customfontsample |
+|**Rejestrze**| Wybierz [rejestr utworzony wcześniej](#publish-to-azure-container-registry). |
+|**Obrazu**| customfontsample |
 |**Tag**| najnowsza |
 
 ### <a name="complete-app-creation"></a>Kończenie tworzenia aplikacji
@@ -185,7 +185,7 @@ Poczekaj kilka minut i spróbuj ponownie. Powinna zostać wyświetlona strona g�
 
 ## <a name="see-container-start-up-logs"></a>Wyświetlanie dzienników uruchamiania kontenera
 
-Może upłynąć trochę czasu, zanim kontener systemu Windows zostanie załadowany. Aby zobaczyć postęp, przejdź do poniższego adresu URL, zastępując *\<App-name >* nazwą aplikacji.
+Może upłynąć trochę czasu, zanim kontener systemu Windows zostanie załadowany. Aby zobaczyć postęp, przejdź do następującego adresu URL, zastępując * \<>nazwy aplikacji* nazwą aplikacji.
 ```
 https://<app-name>.scm.azurewebsites.net/api/logstream
 ```

@@ -1,19 +1,19 @@
 ---
-title: Samouczek — testowanie modułów Terraform na platformie Azure za pomocą Terratest
+title: Samouczek — testowanie modułów Terraform na platformie Azure przy użyciu terratestu
 description: Dowiedz się, jak używać struktury Terratest do testowania modułów programu Terraform.
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.openlocfilehash: 687a793af2b9b75efe463b042d121c32f18974d6
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79370801"
 ---
-# <a name="tutorial-test-terraform-modules-in-azure-using-terratest"></a>Samouczek: testowanie modułów Terraform na platformie Azure za pomocą Terratest
+# <a name="tutorial-test-terraform-modules-in-azure-using-terratest"></a>Samouczek: Testowanie modułów Terraform na platformie Azure przy użyciu terratestu
 
 > [!NOTE]
-> Przykładowy kod w tym artykule nie działa w wersji 0,12 (i nowszych).
+> Przykładowy kod w tym artykule nie działa z wersją 0.12 (i większą).
 
 Moduły programu Terraform umożliwiają tworzenie składników wielokrotnego użytku, które można łączyć i testować. Moduły programu Terraform uwzględniają hermetyzację, co jest przydatne podczas implementowania procesów infrastruktury jako kodu.
 
@@ -324,7 +324,7 @@ output "homepage" {
 
 Ponownie używamy funkcji testu struktury Terratest i klasycznych funkcji testu języka Go w pliku testu integracji `./test/hello_world_example_test.go`.
 
-W przeciwieństwie do testów jednostkowych, testy integracji tworzą rzeczywiste zasoby na platformie Azure. Dlatego należy uważać, aby uniknąć konfliktów nazw. (Należy zwrócić szczególną uwagę na niektóre globalnie unikatowe nazwy, takie jak nazwy kont magazynu). W związku z tym pierwszy krok logiki testowania polega na wygenerowaniu losowo `websiteName` przy użyciu funkcji `UniqueId()` dostępnej przez Terratest. Ta funkcja generuje losową nazwę zawierającą małe litery, wielkie litery lub cyfry. Element `tfOptions` powoduje, że wszystkie polecenia struktury Terraform dotyczą folderu `./examples/hello-world/`. Zapewnia też, że element `website_name` jest ustawiany na losową wartość `websiteName`.
+W przeciwieństwie do testów jednostkowych, testy integracji tworzą rzeczywiste zasoby na platformie Azure. Dlatego należy uważać, aby uniknąć konfliktów nazw. (Zwróć szczególną uwagę na niektóre unikatowe nazwy na całym świecie, takie jak nazwy kont magazynu). W związku z tym pierwszym krokiem logiki `websiteName` testowania `UniqueId()` jest wygenerowanie randomizowanych przy użyciu funkcji dostarczonej przez Terratest. Ta funkcja generuje losową nazwę zawierającą małe litery, wielkie litery lub cyfry. Element `tfOptions` powoduje, że wszystkie polecenia struktury Terraform dotyczą folderu `./examples/hello-world/`. Zapewnia też, że element `website_name` jest ustawiany na losową wartość `websiteName`.
 
 Następnie po kolei są wykonywane funkcje `terraform init`, `terraform apply` i `terraform output`. Użyjemy kolejnej funkcji pomocniczej (`HttpGetWithCustomValidation()`) udostępnianej przez strukturę Terratest. Użycie tej funkcji pomocniczej pozwala upewnić się, że kod HTML został przekazany do wyjściowego adresu URL `homepage` zwróconego przez polecenie `terraform output`. Porównamy kod stanu HTTP GET z wartością `200` i wyszukamy pewne słowa kluczowe w zawartości HTML. Na koniec wykonanie funkcji `terraform destroy` jest zapewnione dzięki wykorzystaniu instrukcji `defer` języka Go.
 
@@ -395,7 +395,7 @@ go test
 Testy integracji trwają znacznie dłużej niż testy jednostkowe (dwie minuty dla jednego przypadku testowego integracji w porównaniu z jedną minutą dla pięciu przypadków testowych testów jednostkowych). Jednak do Ciebie należy decyzja, czy użyć testów jednostkowych, czy testów integracji w danym scenariuszu. Zwykle preferowane jest stosowanie testów jednostkowych dla skomplikowanej logiki przez użycie funkcji HCL programu Terraform. Testy integracji są zwykle stosowane w przypadku kompleksowej perspektywy użytkownika.
 
 ## <a name="use-mage-to-simplify-running-terratest-cases"></a>Użycie narzędzia mage do uproszczenia uruchamiania przypadków struktury Terratest 
-Uruchamianie przypadków testowych w Azure Cloud Shell wymaga wykonywania różnych poleceń w różnych katalogach. Aby ten proces był bardziej wydajny, wprowadzamy system kompilacji w naszym projekcie. W tej sekcji użyjemy narzędzia mage systemu kompilacji języka Go, aby wykonać zadanie.
+Uruchamianie przypadków testowych w usłudze Azure Cloud Shell wymaga wykonywania różnych poleceń w różnych katalogach. Aby uczynić ten proces bardziej wydajnym, wprowadzamy system kompilacji w naszym projekcie. W tej sekcji użyjemy narzędzia mage systemu kompilacji języka Go, aby wykonać zadanie.
 
 Jedyną rzeczą wymaganą przez narzędzie mage jest umieszczenie pliku `magefile.go` (oznaczonego znakiem `(+)` w poniższym przykładzie) w katalogu głównym projektu:
 
@@ -520,9 +520,9 @@ Korzystając z narzędzia mage, można też współużytkować kroki przez użyc
 
 **Opcjonalnie: można ustawić zmienne środowiskowe jednostki usługi pod kątem uruchamiania testów akceptacyjnych**
  
-Zamiast uruchamiania polecenia `az login` przed testami, możesz przeprowadzić uwierzytelnianie platformy Azure, ustawiając zmienne środowiskowe jednostki usługi. Program Terraform publikuje [listę nazw zmiennych środowiskowych](https://www.terraform.io/docs/providers/azurerm/index.html#testing). (Wymagane są tylko pierwsze cztery z tych zmiennych środowiskowych). Terraform publikuje także szczegółowe instrukcje, które wyjaśniają, jak [uzyskać wartość tych zmiennych środowiskowych](https://www.terraform.io/docs/providers/azurerm/authenticating_via_service_principal.html).
+Zamiast uruchamiania polecenia `az login` przed testami, możesz przeprowadzić uwierzytelnianie platformy Azure, ustawiając zmienne środowiskowe jednostki usługi. Program Terraform publikuje [listę nazw zmiennych środowiskowych](https://www.terraform.io/docs/providers/azurerm/index.html#testing). (Wymagane są tylko pierwsze cztery z tych zmiennych środowiskowych). Terraform publikuje również szczegółowe instrukcje, które wyjaśniają, jak [uzyskać wartość tych zmiennych środowiskowych](https://www.terraform.io/docs/providers/azurerm/authenticating_via_service_principal.html).
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"] 
-> [Terratest stronę usługi GitHub](https://github.com/gruntwork-io/terratest).
+> [Strona Terratest GitHub](https://github.com/gruntwork-io/terratest).

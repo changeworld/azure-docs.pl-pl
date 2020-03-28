@@ -1,7 +1,7 @@
 ---
-title: Samouczek — diagnozowanie problemów z komunikacją między sieciami przy użyciu Azure Portal
+title: Samouczek — diagnozowanie problemu z komunikacją między sieciami przy użyciu portalu Azure
 titleSuffix: Azure Network Watcher
-description: W tym samouczku dowiesz się, jak zdiagnozować problem z komunikacją między siecią wirtualną platformy Azure połączoną z lokalną lub inną siecią wirtualną za pośrednictwem bramy sieci wirtualnej platformy Azure, korzystając z funkcji diagnostyki Network Watcher sieci VPN.
+description: W tym samouczku dowiesz się, jak zdiagnozować problem z komunikacją między siecią wirtualną platformy Azure połączoną z lokalną lub inną siecią wirtualną za pośrednictwem bramy sieci wirtualnej platformy Azure przy użyciu funkcji diagnostyki sieci VPN obserwatora sieci.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -15,10 +15,10 @@ ms.date: 04/27/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: 974e45b761fb45e4bc1c451fa6755e16cab49e11
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76834691"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>Samouczek: diagnozowanie problemu z komunikacją między sieciami przy użyciu witryny Azure Portal
@@ -30,7 +30,7 @@ Brama sieci wirtualnej łączy sieć wirtualną platformy Azure z lokalną lub i
 > * Diagnozowanie problemu z połączeniem bramy
 > * Rozwiązywanie problemu z bramą
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -38,12 +38,12 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby móc używać diagnostyki sieci VPN, musisz mieć istniejącą i działającą bramę sieci VPN. Jeśli nie masz istniejącej bramy sieci VPN do diagnozowania, możesz ją wdrożyć przy użyciu [skryptu programu PowerShell](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Skrypt programu PowerShell możesz uruchomić z następujących lokalizacji:
-- **Lokalna instalacja programu PowerShell**: skrypt wymaga modułu `Az` Azure PowerShell. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie programu Azure PowerShell](/powershell/azure/install-Az-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure.
+- **Lokalna instalacja programu PowerShell:** Skrypt `Az` wymaga modułu programu Azure PowerShell. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie programu Azure PowerShell](/powershell/azure/install-Az-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure.
 - **Usługa Azure Cloud Shell**: usługa [Azure Cloud Shell](https://shell.azure.com/powershell) ma zainstalowaną i skonfigurowaną najnowszą wersję programu PowerShell i powoduje zalogowanie na platformie Azure.
 
 Utworzenie bramy sieci VPN za pomocą tego skryptu trwa około godziny. W pozostałych krokach przyjęto założenie, że diagnozowana brama została wdrożona przy użyciu tego skryptu. Jeśli zamiast tego diagnozujesz własną istniejącą bramę, wyniki będą się różnić.
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do [Portalu Azure](https://portal.azure.com).
 
@@ -78,7 +78,7 @@ Jeśli masz już włączoną usługę Network Watcher w regionie Wschodnie stany
     W kolumnie **STAN ROZWIĄZYWANIA PROBLEMÓW** jest wyświetlana wartość **W złej kondycji**. Widać też **Podsumowanie** i **Szczegóły** problemu na karcie **Stan**.
 10. Po wybraniu karty **Akcja** diagnostyka sieci VPN udostępnia dodatkowe informacje. W przykładzie pokazanym na poniższej ilustracji diagnostyka sieci VPN informuje o tym, że należy sprawdzić kondycję każdego połączenia:
 
-    ![Działanie](./media/diagnose-communication-problem-between-networks/action.png)
+    ![Akcja](./media/diagnose-communication-problem-between-networks/action.png)
 
 ## <a name="diagnose-a-gateway-connection"></a>Diagnozowanie połączenia bramy
 
@@ -97,7 +97,7 @@ Brama jest połączona z innymi sieciami za pośrednictwem połączenia bramy. Z
 
     Na karcie **Stan** diagnostyka sieci VPN informuje o nieprawidłowościach, a na karcie **Akcja** są udostępniane sugestie dotyczących przyczyn problemu.
 
-    Jeśli testowana brama została wdrożona za pomocą [skryptu](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) z sekcji [Wymagania wstępne](#prerequisites), problem wyświetlany na karcie **Stan** i dwa pierwsze elementy na karcie  **Akcje** dokładnie odpowiadają występującemu problemowi. Skrypt konfiguruje zastępczy adres IP 23.99.221.164 dla lokalnego urządzenia bramy sieci VPN.
+    Jeśli testowana brama została wdrożona za pomocą [skryptu](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) z sekcji [Wymagania wstępne](#prerequisites), problem wyświetlany na karcie **Stan** i dwa pierwsze elementy na karcie ** Akcje** dokładnie odpowiadają występującemu problemowi. Skrypt konfiguruje zastępczy adres IP 23.99.221.164 dla lokalnego urządzenia bramy sieci VPN.
 
     Aby rozwiązać ten problem, należy się upewnić, że lokalna brama sieci VPN jest [poprawnie skonfigurowana](../vpn-gateway/vpn-gateway-about-vpn-devices.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json), i zmienić adres IP skonfigurowany za pomocą skryptu dla bramy sieci lokalnej na rzeczywisty publiczny adres lokalnej bramy sieci VPN.
 

@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: bdd46f06357a806a707882a623520235e3903581
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79382275"
 ---
 ## <a name="app-configuration"></a>Konfiguracja aplikacji
@@ -22,7 +22,7 @@ ms.locfileid: "79382275"
 
 [!INCLUDE [azure-policy-samples-policies-automation](azure-policy-samples-policies-automation.md)]
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Tworzenie kopii zapasowych
 
 [!INCLUDE [azure-policy-samples-policies-backup](azure-policy-samples-policies-backup.md)]
 
@@ -34,7 +34,7 @@ ms.locfileid: "79382275"
 
 [!INCLUDE [azure-policy-samples-policies-cache](azure-policy-samples-policies-cache.md)]
 
-## <a name="compute"></a>Compute
+## <a name="compute"></a>Wystąpienia obliczeniowe
 
 [!INCLUDE [azure-policy-samples-policies-compute](azure-policy-samples-policies-compute.md)]
 
@@ -98,7 +98,7 @@ ms.locfileid: "79382275"
 
 [!INCLUDE [azure-policy-samples-policies-monitoring](azure-policy-samples-policies-monitoring.md)]
 
-## <a name="network"></a>Network
+## <a name="network"></a>Network (Sieć)
 
 [!INCLUDE [azure-policy-samples-policies-network](azure-policy-samples-policies-network.md)]
 
@@ -106,7 +106,7 @@ ms.locfileid: "79382275"
 
 [!INCLUDE [azure-policy-samples-policies-search](azure-policy-samples-policies-search.md)]
 
-## <a name="security-center"></a>Centrum zabezpieczeń
+## <a name="security-center"></a>Security Center
 
 [!INCLUDE [azure-policy-samples-policies-security-center](azure-policy-samples-policies-security-center.md)]
 
@@ -122,7 +122,7 @@ ms.locfileid: "79382275"
 
 [!INCLUDE [azure-policy-samples-policies-sql](azure-policy-samples-policies-sql.md)]
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Magazyn
 
 [!INCLUDE [azure-policy-samples-policies-storage](azure-policy-samples-policies-storage.md)]
 

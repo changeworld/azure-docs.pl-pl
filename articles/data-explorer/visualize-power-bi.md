@@ -8,19 +8,19 @@ ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.openlocfilehash: ec1579792a6e247bf49946bb8609a626154fbd46
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74037358"
 ---
 # <a name="tutorial-visualize-data-from-azure-data-explorer-in-power-bi"></a>Samouczek: wizualizowanie danych z usługi Azure Data Explorer w usłudze Power BI
 
 Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Power BI to rozwiązanie do analizy biznesowej, które pozwala wizualizować dane i udostępniać wyniki w organizacji. Z tego samouczka na początku dowiesz się, jak renderować wizualizacje w usłudze Azure Data Explorer. Następnie połączysz się z usługą Azure Data Explorer za pomocą usługi Power BI, utworzysz raport na podstawie przykładowych danych i opublikujesz raport dla usługi Power BI.
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/). Jeśli nie masz konta dla usługi Power BI Pro, przed rozpoczęciem [utwórz konto bezpłatnej wersji próbnej](https://app.powerbi.com/signupredirect?pbi_source=web).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/) przed rozpoczęciem. Jeśli nie masz konta dla usługi Power BI Pro, przed rozpoczęciem [utwórz konto bezpłatnej wersji próbnej](https://app.powerbi.com/signupredirect?pbi_source=web).
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Renderowanie wizualizacji w usłudze Azure Data Explorer
@@ -43,7 +43,7 @@ Oprócz subskrypcji platformy Azure i usługi Power BI do ukończenia samouczka 
 
 Zanim przejdziemy do usługi Power BI, przyjrzyjmy się, jak w usłudze Azure Data Explorer można renderować wizualizacje. Jest to doskonałe rozwiązanie dla pewnych szybkich analiz.
 
-1. Zaloguj się do witryny [https://dataexplorer.azure.com](https://dataexplorer.azure.com).
+1. Zaloguj się [https://dataexplorer.azure.com](https://dataexplorer.azure.com)do .
 
 1. W okienku po lewej stronie wybierz testową bazę danych, która zawiera przykładowe dane StormEvents.
 
@@ -85,7 +85,7 @@ Teraz połączysz się z usługą Azure Data Explorer w programie Power BI Deskt
 
     ![Pobieranie danych](media/visualize-power-bi/get-data-more.png)
 
-1. Wyszukaj pozycję *Azure Data Explorer*, wybierz pozycję **Azure Data Explorer (beta)** , a następnie pozycję **Połącz**.
+1. Wyszukaj pozycję *Azure Data Explorer*, wybierz pozycję **Azure Data Explorer (beta)**, a następnie pozycję **Połącz**.
 
     ![Wyszukiwanie i pobieranie danych](media/visualize-power-bi/search-get-data.png)
 
@@ -219,7 +219,7 @@ Jeśli nie chcesz zachować utworzonego raportu, po prostu usuń plik *storm-eve
 
 1. W obszarze **Mój obszar roboczy** przewiń w dół do pozycji **RAPORTY** i znajdź pozycję **storm-events**.
 
-1. Wybierz przycisk wielokropka ( **. . .** ) znajdujący się obok pozycji **storm-events**, a następnie wybierz pozycję **USUŃ**.
+1. Wybierz przycisk wielokropka (**. . .**) znajdujący się obok pozycji **storm-events**, a następnie wybierz pozycję **USUŃ**.
 
     ![Usuwanie raportu](media/visualize-power-bi/remove-report.png)
 

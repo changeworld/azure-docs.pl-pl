@@ -1,138 +1,134 @@
 ---
-title: Konfigurowanie funkcji Hyper-V (z programem VMM) odzyskiwanie awaryjne przy użyciu Azure Site Recovery
-description: Dowiedz się, jak skonfigurować odzyskiwanie po awarii lokalnych maszyn wirtualnych funkcji Hyper-V w chmurach programu System Center VMM do platformy Azure przy użyciu Site Recovery.
-author: rayne-wiselman
-ms.service: site-recovery
-ms.topic: conceptual
-ms.date: 11/12/2019
-ms.author: raynew
+title: Konfigurowanie odzyskiwania po awarii funkcji Hyper-V (z programem VMM) przy użyciu usługi Azure Site Recovery
+description: Dowiedz się, jak skonfigurować odzyskiwanie po awarii lokalnych maszyn wirtualnych funkcji Hyper-V w chmurach programu Windows Programu Windows programu Windows na platformie Azure przy użyciu usługi Site Recovery.
+ms.topic: tutorial
+ms.date: 03/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 0c570702e4c3899ef2847883e6fc8649e603a787
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: a391d8eb3cf7bc43b52883cbf2e76170338c44c6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79281680"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80067573"
 ---
-# <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>Konfigurowanie odzyskiwania po awarii lokalnych maszyn wirtualnych funkcji Hyper-V w chmurach programu VMM na platformie Azure
+# <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>Konfigurowanie odzyskiwania po awarii lokalnych maszyn wirtualnych funkcji Hyper-V w chmurach VMM na platformie Azure
 
-W tym artykule opisano sposób włączania replikacji lokalnych maszyn wirtualnych funkcji Hyper-V zarządzanych przez program System Center Virtual Machine Manager (VMM) na potrzeby odzyskiwania po awarii na platformie Azure przy użyciu usługi [Azure Site Recovery](site-recovery-overview.md) . Jeśli nie korzystasz z programu VMM, [postępuj zgodnie z tym samouczkiem](hyper-v-azure-tutorial.md) .
+W tym samouczku opisano sposób włączania replikacji lokalnych maszyn wirtualnych funkcji Hyper-V zarządzanych przez menedżera maszyn wirtualnych (VMM) w centrum systemu na platformie Azure przy użyciu [usługi Azure Site Recovery.](site-recovery-overview.md) Jeśli nie używasz programu VMM, [wykonaj ten samouczek](hyper-v-azure-tutorial.md).
 
-Jest to trzeci samouczek z serii, który pokazuje, jak skonfigurować odzyskiwanie po awarii na platformie Azure dla lokalnych maszyn wirtualnych VMware. W poprzednim samouczku [przygotowano lokalne środowisko funkcji Hyper-V](hyper-v-prepare-on-premises-tutorial.md) na potrzeby odzyskiwania po awarii na platformie Azure.
-
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Wybieranie źródła i celu replikacji.
-> * Skonfiguruj środowisko replikacji źródłowej, w tym lokalne składniki Site Recovery i środowisko docelowej replikacji.
-> * Skonfiguruj mapowanie sieci na potrzeby mapowania między sieciami maszyn wirtualnych programu VMM i sieciami wirtualnymi platformy Azure.
+> * Skonfiguruj źródłowe środowisko replikacji, w tym lokalne składniki odzyskiwania lokacji i docelowe środowisko replikacji.
+> * Konfigurowanie mapowania sieci między sieciami maszyn wirtualnych programu VMM a sieciami wirtualnymi platformy Azure.
 > * Tworzenie zasad replikacji.
 > * Włączanie replikacji maszyny wirtualnej.
 
 > [!NOTE]
-> Samouczki pokazują najprostszą ścieżkę wdrożenia dla scenariusza. Jeśli to możliwe, używają opcji domyślnych i nie przedstawiają wszystkich możliwych ustawień i ścieżek. Aby uzyskać szczegółowe instrukcje, zapoznaj się z artykułami w sekcji **przewodniki** z instrukcjami w [dokumentacji Site Recovery](https://docs.microsoft.com/azure/site-recovery).
+> Samouczki pokazują najprostszą ścieżkę wdrażania dla scenariusza. Jeśli to możliwe używają opcji domyślnych i nie przedstawiają wszystkich możliwych ustawień i ścieżek. Aby uzyskać szczegółowe instrukcje, zapoznaj się z artykułami w sekcji **Instrukcje obsługi** [dokumentacji odzyskiwania witryny.](/azure/site-recovery/)
 
+## <a name="prerequisites"></a>Wymagania wstępne
 
-
-## <a name="before-you-begin"></a>Przed rozpoczęciem
-
-Jest to trzeci samouczek z tej serii. Przyjęto założenie, że zadania zostały już wykonane w poprzednich samouczkach:
+W tym samouczku założono, że ukończono już następujące samouczki:
 
 1. [Przygotowywanie platformy Azure](tutorial-prepare-azure.md)
-2. [Przygotowywanie lokalnej funkcji Hyper-V](tutorial-prepare-on-premises-hyper-v.md)
+1. [Przygotowywanie lokalnych serwerów funkcji Hyper-V](hyper-v-prepare-on-premises-tutorial.md)
 
 ## <a name="select-a-replication-goal"></a>Wybieranie celu replikacji
 
-1. W Azure Portal przejdź do obszaru **magazyny Recovery Services** i wybierz magazyn. **ContosoVMVault** magazynu został przygotowany w poprzednim samouczku.
-2. W **wprowadzenie**wybierz pozycję **Site Recovery**, a następnie wybierz pozycję **Przygotuj infrastrukturę**.
-3. W obszarze **cel ochrony** > gdzie znajdują się **maszyny?** wybierz pozycję **lokalnie**.
-4. W obszarze **gdzie chcesz replikować maszyny?** wybierz pozycję **na platformie Azure**.
-5. W obszarze **czy maszyny są zwirtualizowane?** wybierz pozycję **tak, używając funkcji Hyper-V**.
-6. Czy w programie **System Center VMM jest używany do zarządzania hostami funkcji Hyper-V?** wybierz pozycję **tak**.
-7.  Kliknij przycisk **OK**.
+1. W witrynie Azure portal przejdź do **magazynów usług odzyskiwania** i wybierz magazyn **ContosoVMVault,** który został utworzony w samouczku [Przygotowywanie platformy Azure.](tutorial-prepare-azure.md#create-a-recovery-services-vault)
+1. W **obszarze Wprowadzenie**wybierz pozycję Przygotowanie infrastruktury odzyskiwania >  **witryny**i skonfiguruj następujące ustawienia:**Prepare Infrastructure**
+    1. **Cel** > ochrony**Gdzie znajdują się twoje maszyny?**, wybierz **on-premises**.
+    1. **Gdzie chcesz replikować swoje maszyny?**, wybierz **opcję Na platformę Azure**.
+    1. **Czy twoje maszyny są zwirtualizowane?**, wybierz **tak, z hyper-V**.
+    1. **Czy do zarządzania hostami funkcji Hyper-V używasz programu System Center V?** **Yes**
+1. Kliknij przycisk **OK**.
 
-    ![Cel replikacji](./media/hyper-v-vmm-azure-tutorial/replication-goal.png)
+   ![Cel replikacji](./media/hyper-v-vmm-azure-tutorial/replication-goal.png)
 
 ## <a name="confirm-deployment-planning"></a>Potwierdzanie planowania wdrożenia
 
-1. W przypadku **planowania wdrożenia**, jeśli planujesz duże wdrożenie, Pobierz planista wdrażania dla funkcji Hyper-V z linku na stronie. [Dowiedz się więcej](hyper-v-deployment-planner-overview.md) o planowaniu wdrożenia funkcji Hyper-V.
-2. W tym samouczku nie są potrzebne Planista wdrażania. Czy w programie **wykonano Planowanie wdrożenia?** zaznacz opcję **chcę zrobić to później**, a następnie wybierz **przycisk OK**.
+1. W **przypadku planowania wdrażania,** jeśli planujesz duże wdrożenie, pobierz planista wdrażania dla funkcji Hyper-V z łącza na stronie. [Dowiedz się więcej](hyper-v-deployment-planner-overview.md) o planowaniu wdrażania funkcji Hyper-V.
+1. W tym samouczku nie potrzebujemy planisty wdrażania. W **obszarze Czy ukończono planowanie wdrażania?**, wybierz **pozycję Zrobię to później**, a następnie wybierz przycisk **OK**.
 
 ## <a name="set-up-the-source-environment"></a>Konfigurowanie środowiska źródłowego
 
-Podczas konfigurowania środowiska źródłowego należy zainstalować dostawcę Azure Site Recovery na serwerze programu VMM i zarejestrować serwer w magazynie. Należy zainstalować agenta Recovery Services platformy Azure na każdym hoście funkcji Hyper-V.
+Podczas konfigurowania środowiska źródłowego należy zainstalować dostawcę odzyskiwania witryny Azure na serwerze programu VMM i zarejestrować serwer w przechowalni. Agent usługi Azure Recovery Services jest instalowy na każdym hoście funkcji Hyper-V.
 
-1. W obszarze **Przygotowanie infrastruktury**wybierz pozycję **Źródło**.
-2. W obszarze **Przygotowywanie źródła**wybierz pozycję **+ VMM** , aby dodać serwer programu VMM. W obszarze **Dodaj serwer** sprawdź, czy pozycja **Serwer System Center VMM** pojawia się jako **Typ serwera**.
-3. Pobierz Instalatora dla dostawcy Site Recovery Microsoft Azure.
-4. Pobierz klucz rejestracji magazynu. Ten klucz będzie potrzebny podczas uruchamiania Instalatora dostawcy. Klucz jest ważny przez pięć dni po jego wygenerowaniu.
-5. Pobierz Instalatora dla agenta Microsoft Azure Recovery Services.
+1. **Przygotuj infrastrukturę**. Wybierz **źródło**.
+1. **Przygotuj źródło**. Wybierz **+ Program VMM,** aby dodać serwer programu VMM. W obszarze **Dodaj serwer** sprawdź, czy pozycja **Serwer System Center VMM** pojawia się jako **Typ serwera**.
+1. Pobierz instalator dla dostawcy odzyskiwania witryny platformy Microsoft Azure.
+1. Pobierz klucz rejestracji magazynu. Ten klucz jest potrzebny po uruchomieniu konfiguracji dostawcy. Klucz jest ważny przez pięć dni po jego wygenerowaniu.
+1. Pobierz instalator dla agenta usług odzyskiwania platformy Microsoft Azure.
 
-    ![Pobierz dostawcę, klucz rejestracji i agenta](./media/hyper-v-vmm-azure-tutorial/download-vmm.png)
+   ![Dostawca pobierania, klucz rejestracji i agent](./media/hyper-v-vmm-azure-tutorial/download-vmm.png)
 
 ### <a name="install-the-provider-on-the-vmm-server"></a>Instalowanie dostawcy na serwerze VMM
 
-1. W Kreatorze instalacji dostawcy usługi Azure Site Recovery w obszarze **Microsoft Update** wyraź zgodę na używanie usługi Microsoft Update do sprawdzania aktualizacji dostawcy.
-2. W obszarze **Instalacja**zaakceptuj domyślną lokalizację instalacji dostawcy i wybierz pozycję **Zainstaluj**.
-3. Po zakończeniu instalacji w Kreatorze Microsoft Azure rejestracji Site Recovery > **ustawienia magazynu**wybierz pozycję **Przeglądaj**, a następnie w polu **plik klucza**wybierz pobrany plik klucza magazynu.
-4. Określ subskrypcję Azure Site Recovery i nazwę magazynu (**ContosoVMVault**). Określ przyjazną nazwę serwera programu VMM, aby zidentyfikować ją w magazynie.
-5. W obszarze **Ustawienia serwera proxy** wybierz pozycję **Połącz bezpośrednio z usługą Azure Site Recovery bez serwera proxy**.
-6. Zaakceptuj domyślną lokalizację certyfikatu używanego do szyfrowania danych. Zaszyfrowane dane zostaną odszyfrowane po przełączeniu w tryb failover.
-7. W obszarze **Synchronizuj metadane chmury**wybierz pozycję **Synchronizuj metadane chmury do portalu Site Recovery**. Ta akcja musi wystąpić tylko raz na każdym serwerze. Następnie wybierz pozycję **zarejestruj**.
-8. Po zarejestrowaniu serwera w magazynie wybierz pozycję **Zakończ**.
+1. W kreatorze konfigurowania dostawcy odzyskiwania witryny platformy Azure **Microsoft Update**. Zgłoś się do korzystania z witryny Microsoft Update w celu sprawdzenia dostępności aktualizacji dostawcy.
+1. **Instalacja**. Zaakceptuj domyślną lokalizację instalacji dostawcy i wybierz pozycję **Zainstaluj**.
+1. Po instalacji w Kreatorze rejestracji odzyskiwania witryny platformy Microsoft Azure wybierz pozycję **Ustawienia przechowalni**, **Przeglądaj**i w **pliku klucza**wybierz pobrany plik klucza przechowalni.
+1. Określ subskrypcję usługi Azure Site Recovery i nazwę magazynu **(ContosoVMVault).** Określ przyjazną nazwę serwera programu VMM, aby zidentyfikować go w przechowalni.
+1. **Ustawienia serwera proxy**. Wybierz **opcję Połącz bezpośrednio z usługą Azure Site Recovery bez serwera proxy**.
+1. Zaakceptuj domyślną lokalizację certyfikatu używanego do szyfrowania danych. Zaszyfrowane dane zostaną odszyfrowane po przełączeniu awaryjnym.
+1. **Synchronizowanie metadanych w chmurze**. Wybierz **pozycję Synchronizuj metawybory w chmurze z portalem odzyskiwania witryn**. Ta akcja musi się zdarzyć tylko raz na każdym serwerze. Następnie wybierz pozycję **Zarejestruj**.
+1. Po zarejestrowaniu serwera w przechowalni wybierz opcję **Zakończ**.
 
-Po zakończeniu rejestracji metadane z serwera są pobierane przez Azure Site Recovery, a serwer programu VMM jest wyświetlany w **infrastrukturze Site Recovery**.
+Po zakończeniu rejestracji metadane z serwera są pobierane przez usługę Azure Site Recovery, a serwer programu VMM jest wyświetlany w **infrastrukturze odzyskiwania lokacji**.
 
-### <a name="install-the-recovery-services-agent-on-hyper-v-hosts"></a>Zainstaluj agenta Recovery Services na hostach funkcji Hyper-V
+### <a name="install-the-recovery-services-agent-on-hyper-v-hosts"></a>Instalowanie agenta usług odzyskiwania na hostach funkcji Hyper-V
 
 Zainstaluj agenta na każdym hoście funkcji Hyper-V zawierającym maszyny wirtualne, które chcesz replikować.
 
-1. W Kreatorze instalacji agenta Microsoft Azure Recovery Services > **Sprawdzanie wymagań wstępnych**wybierz pozycję **dalej**. Wszystkie brakujące wymagania wstępne zostaną zainstalowane automatycznie.
-2. W obszarze **ustawienia instalacji**Zaakceptuj lokalizację instalacji i lokalizację pamięci podręcznej. Dysk pamięci podręcznej musi mieć co najmniej 5 GB miejsca w magazynie. Zalecamy używanie dysku z 600 GB lub więcej wolnego miejsca. Następnie wybierz pozycję **Zainstaluj**.
-3. Po zakończeniu instalacji kliknij przycisk **Zamknij** **, aby**zakończyć pracę kreatora.
+W Kreatorze instalacji agenta usług odzyskiwania platformy Microsoft Azure skonfiguruj następujące ustawienia:
 
-    ![Zainstaluj agenta](./media/hyper-v-vmm-azure-tutorial/mars-install.png)
+1. **Wymagania wstępne Sprawdź**. Wybierz **pozycję Dalej**. Wszelkie brakujące wymagania wstępne zostaną zainstalowane automatycznie.
+1. **Ustawienia instalacji**. Zaakceptuj lokalizację instalacji i lokalizację pamięci podręcznej. Dysk pamięci podręcznej wymaga co najmniej 5 GB miejsca. Zalecamy dysk z 600 GB lub więcej wolnego miejsca. Następnie wybierz pozycję **Zainstaluj**.
+1. **Instalacja**. Po zakończeniu instalacji wybierz przycisk **Zamknij,** aby zakończyć kreatora.
+
+   ![Instalowanie agenta](./media/hyper-v-vmm-azure-tutorial/mars-install.png)
 
 ## <a name="set-up-the-target-environment"></a>Konfigurowanie środowiska docelowego
 
-1. Wybierz pozycje **Przygotowanie infrastruktury** > **Cel**.
-2. Wybierz subskrypcję i grupę zasobów (**ContosoRG**), w której zostaną utworzone maszyny wirtualne platformy Azure po przejściu do trybu failover.
-3. Wybierz model wdrażania **Menedżer zasobów** .
+1. Wybierz **pozycję Przygotuj infrastrukturę** > **docelową**.
+1. Wybierz subskrypcję i grupę zasobów **(ContosoRG),** w której maszyny wirtualne platformy Azure zostaną utworzone po przemienniu w stan failover.
+1. Wybierz model wdrażania **Menedżera zasobów.**
 
-Usługa Site Recovery sprawdza, czy masz co najmniej jedno zgodne konto magazynu Azure i co najmniej jedną sieć platformy Azure.
+Usługa Site Recovery sprawdza, czy istnieje co najmniej jedno zgodne konta i sieci magazynu platformy Azure.
 
 ## <a name="configure-network-mapping"></a>Konfiguracja mapowania sieci
 
-1. W obszarze **Site Recovery infrastruktura** > **mapowania sieci** > **mapowanie sieci**wybierz ikonę **+ mapowanie sieci** .
-2. W obszarze **Dodawanie mapowania sieci**wybierz źródłowy serwer programu VMM. Wybierz **platformę Azure** jako element docelowy.
-3. Sprawdź subskrypcję i model wdrożenia po przejściu do trybu failover.
-4. W obszarze **Sieć źródłowa**wybierz źródłową lokalną maszynę wirtualną.
-5. W obszarze **Sieć docelowa**wybierz sieć platformy Azure, w której będą znajdować się repliki maszyn wirtualnych platformy Azure po ich utworzeniu po przejściu do trybu failover. Następnie wybierz przycisk **OK**.
+1. **Mapowanie** > **sieci**infrastruktury odzyskiwania**lokacji** > . Wybierz ikonę **+Mapowanie sieci.**
+1. **Dodaj mapowanie sieci**. Wybierz serwer **programu VMM source system center.** W przypadku **opcji Docelowa**wybierz pozycję Azure.
+1. Sprawdź subskrypcję i model wdrożenia po przejściu do trybu failover.
+1. **Sieć źródłowsza**. Wybierz źródło lokalną sieć maszyn wirtualnych.
+1. **Sieć docelowa**. Wybierz sieć platformy Azure, w której będą znajdować się maszyny wirtualne platformy Azure, gdy zostaną utworzone po przełączeniu awaryjnym. Następnie wybierz przycisk **OK**.
 
-    ![Mapowanie sieci](./media/hyper-v-vmm-azure-tutorial/network-mapping-vmm.png)
+   ![Mapowanie sieci](./media/hyper-v-vmm-azure-tutorial/network-mapping-vmm.png)
 
 ## <a name="set-up-a-replication-policy"></a>Konfigurowanie zasad replikacji
 
-1. Wybierz pozycję **Przygotuj infrastrukturę** > **Ustawienia replikacji** >  **+ Utwórz i skojarz**.
-2. W obszarze **Utwórz i skojarz zasady** określ nazwę zasad. Korzystamy z usługi **ContosoReplicationPolicy**.
-3. Pozostaw ustawienia domyślne i wybierz **przycisk OK**.
-    - **Częstotliwość kopiowania** wskazuje, że po replikacji początkowej dane różnicowe będą replikowane co pięć minut.
-    - **Przechowywanie punktów odzyskiwania** wskazuje, że każdy punkt odzyskiwania będzie przechowywany przez dwie godziny.
-    - Ustawienie **Częstotliwość migawek na poziomie aplikacji** wskazuje, że punkty odzyskiwana zawierające migawki na poziomie aplikacji będą tworzone co godzinę.
-    - **Czas rozpoczęcia replikacji początkowej** wskazuje, że replikacja początkowa rozpocznie się natychmiast.
-    - **Szyfrowanie danych przechowywanych na platformie Azure** jest ustawione na wartość domyślne (**wyłączone**) i wskazuje, że dane w spoczynku na platformie Azure nie są szyfrowane.
-4. Po utworzeniu zasad wybierz **przycisk OK**. Nowo utworzone zasady są automatycznie kojarzone z chmurą programu VMM.
+1. Wybierz **pozycję Przygotuj** > **ustawienia** > replikacji infrastruktury **+Utwórz i skojarzyć**.
+1. W **obszarze Tworzenie i kojarzenie zasad**określ nazwę zasad. Używamy **ContosoReplicationPolicy**.
+1. Zaakceptuj ustawienia domyślne i wybierz **przycisk OK:**
+   - **Częstotliwość kopiowania** wskazuje, że po replikacji początkowej dane delta będą replikowane co pięć minut.
+   - **Zatrzymanie punktu odzyskiwania** wskazuje, że każdy punkt odzyskiwania zostanie zachowany przez dwie godziny.
+   - Ustawienie **Częstotliwość migawek na poziomie aplikacji** wskazuje, że punkty odzyskiwana zawierające migawki na poziomie aplikacji będą tworzone co godzinę.
+   - **Początkowa godzina rozpoczęcia replikacji** wskazuje, że replikacja początkowa rozpocznie się natychmiast.
+   - **Szyfrowanie danych przechowywanych na platformie Azure** jest ustawiona na domyślną **(Wyłącz)** i wskazuje, że dane w spoczynku na platformie Azure nie są szyfrowane.
+1. Po utworzeniu zasady wybierz przycisk **OK**. Podczas tworzenia nowej zasady jest automatycznie skojarzony z chmurą programu VMM.
 
 ## <a name="enable-replication"></a>Włączanie replikacji
 
-1. W obszarze **replikacja aplikacji**wybierz pozycję **Źródło**.
-2. W obszarze **Źródło**Wybierz chmurę programu VMM. Następnie wybierz przycisk **OK**.
-3. W obszarze **cel**Sprawdź, czy element docelowy (Azure), subskrypcję magazynu i wybierz model **Menedżer zasobów** .
-4. Wybierz konto magazynu **contosovmsacct1910171607** i Sieć **ContosoASRnet** Azure.
-5. W obszarze **maszyny wirtualne** > **Wybierz**opcję, a następnie wybierz maszynę wirtualną, którą chcesz replikować. Następnie wybierz przycisk **OK**.
+1. **Replikacja aplikacji**. Wybierz **źródło**.
+1. **Źródło**. Wybierz chmurę programu VMM. Następnie wybierz przycisk **OK**.
+1. **Cel**. Sprawdź obiekt docelowy (Azure), subskrypcję przechowalni i wybierz model **Menedżera zasobów.**
+1. Wybierz konto magazynu **contosovmsacct1910171607** i sieć Platformy Azure **ContosoASRnet.**
+1. **Maszyny wirtualne** > **Wybierz**. Wybierz maszynę wirtualną, którą chcesz replikować. Następnie wybierz przycisk **OK**.
 
-   Możesz śledzić postępy akcji **Włącz ochronę** w obszarze **Zadania** > **Zadania usługi Site Recovery**. Po zakończeniu zadania **finalizowania ochrony** Replikacja początkowa zostanie zakończona, a maszyna wirtualna jest gotowa do przejścia w tryb failover.
+   Możesz śledzić postępy akcji **Włącz ochronę** w obszarze **Zadania** > **Zadania usługi Site Recovery**. Po zakończeniu zadania **Finalize Protection** replikacja początkowa została zakończona, a maszyna wirtualna jest gotowa do pracy awaryjnej.
 
 ## <a name="next-steps"></a>Następne kroki
+
 > [!div class="nextstepaction"]
 > [Uruchamianie próbnego odzyskiwania po awarii](tutorial-dr-drill-azure.md)

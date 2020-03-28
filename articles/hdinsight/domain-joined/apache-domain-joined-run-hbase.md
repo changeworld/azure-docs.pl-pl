@@ -1,6 +1,6 @@
 ---
-title: Apache HBase & pakiet Enterprise Security — Azure HDInsight
-description: Samouczek — informacje na temat konfigurowania zasad Apache Ranger dla HBase w usłudze Azure HDInsight przy użyciu pakiet Enterprise Security.
+title: Apache HBase & pakiet zabezpieczeń dla przedsiębiorstw — Usługa Azure HDInsight
+description: Samouczek — dowiedz się, jak skonfigurować zasady Apache Ranger dla bazy danych HBase w usłudze Azure HDInsight z pakietem zabezpieczeń dla przedsiębiorstwa.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,17 +8,17 @@ ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.openlocfilehash: 89e9faeb3c67d0fd0c57adea3a3f69ec5438e3a0
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73044640"
 ---
-# <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Samouczek: Konfigurowanie zasad Apache HBase w usłudze HDInsight przy użyciu pakiet Enterprise Security
+# <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Samouczek: Konfigurowanie zasad Apache HBase w udziale usługi HDInsight za pomocą pakietu zabezpieczeń przedsiębiorstwa
 
 Dowiedz się, jak skonfigurować zasady platformy Apache Ranger na potrzeby klastrów Apache HBase pakietów Enterprise Security Package (ESP). Klastry ESP są łączone z domeną, co pozwala użytkownikom na uwierzytelnianie przy użyciu poświadczeń domeny. W tym samouczku utworzysz dwie zasady platformy Ranger, aby ograniczyć dostęp do różnych rodzin kolumn w tabeli bazy danych HBase.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie użytkowników domeny
@@ -30,7 +30,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 * Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 
-* Zaloguj się do [portalu Azure](https://portal.azure.com/).
+* Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 
 * Utwórz [klaster bazy danych HBase usługi HDInsight, używając pakietu Enterprise Security](apache-domain-joined-configure-using-azure-adds.md).
 
@@ -89,19 +89,19 @@ Protokół SSH umożliwia połączenie z klastrami HBase, a następnie korzystan
     scan 'Customers'
     ```
 
-    ![Dane wyjściowe powłoki HBase usługi HDInsight Hadoop](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
+    ![HDInsight Hadoop HBase wyjście powłoki](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
 
 ## <a name="create-ranger-policies"></a>Tworzenie zasad platformy Ranger
 
 Utwórz zasady platformy Ranger dla użytkowników **sales_user1** i **marketing_user1**.
 
-1. Otwórz **interfejs użytkownika administratora platformy Ranger**. Kliknij pozycję **\<nazwa_klastra>_hbase** w obszarze **HBase**.
+1. Otwórz **interfejs użytkownika administratora platformy Ranger**. Kliknij ** \<pozycję>_hbase ClusterName** w obszarze **HBase**.
 
-   ![Interfejs użytkownika administratora usługi HDInsight Apache Ranger](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
+   ![Interfejs administratora interfejsu HDInsight Apache Ranger](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
 
 2. Na ekranie **Lista zasad** zostaną wyświetlone wszystkie zasady platformy Ranger utworzone dla tego klastra. Lista może zawierać tylko jedne wstępnie skonfigurowane zasady. Kliknij pozycję **Dodaj nowe zasady**.
 
-    ![Lista zasad HBase Apache Ranger](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
+    ![Lista zasad Apache Ranger HBase](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
 
 3. Na ekranie **Tworzenie zasad** wprowadź następujące wartości:
 
@@ -120,7 +120,7 @@ Utwórz zasady platformy Ranger dla użytkowników **sales_user1** i **marketing
    * `*` oznacza zero lub więcej wystąpień znaków.
    * `?` oznacza pojedynczy znak.
 
-   ![Tworzenie sprzedaży przez zasady Apache Ranger](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
+   ![Zasady Apache Ranger tworzą sprzedaż](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
 
    >[!NOTE]
    >Zaczekaj kilka minut na zsynchronizowanie platformy Ranger z usługą Azure AD, jeśli użytkownik domeny nie zostanie automatycznie wypełniony dla ustawienia **Select User** (Wybierz użytkownika).
@@ -139,7 +139,7 @@ Utwórz zasady platformy Ranger dla użytkowników **sales_user1** i **marketing
    |Select User (Wybierz użytkownika)  | marketing_user1 |
    |Uprawnienia  | Odczyt |
 
-   ![Tworzenie marketingowe zasad w usłudze Apache Ranger](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
+   ![Polityka Apache Ranger tworzy marketing](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
 
 6. Kliknij pozycję **Add** (Dodaj), aby zapisać zasady.
 
@@ -161,7 +161,7 @@ Zgodnie ze skonfigurowanymi zasadami platformy Ranger użytkownik **sales_user1*
    kinit sales_user1
    ```
 
-2. Otwórz powłokę programu HBase i przeprowadź skanowanie tabeli `Customers`.
+2. Otwórz powłokę HBase i `Customers`zeskanuj tabelę .
 
    ```hbaseshell
    hbase shell
@@ -203,7 +203,7 @@ Zgodnie ze skonfigurowanymi zasadami platformy Ranger użytkownik **sales_user1*
    kinit marketing_user1
    ```
 
-1. Otwórz powłokę programu HBase i przeprowadź skanowanie tabeli `Customers`:
+1. Otwórz powłokę HBase i `Customers`zeskanuj tabelę:
 
     ```hbaseshell
     hbase shell
@@ -229,17 +229,17 @@ Zgodnie ze skonfigurowanymi zasadami platformy Ranger użytkownik **sales_user1*
 
 1. Wyświetl zdarzenia dostępu inspekcji z poziomu interfejsu użytkownika platformy Ranger.
 
-   ![Inspekcja zasad interfejsu użytkownika usługi HDInsight Ranger](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
+   ![Audyt zasad interfejsu użytkownika interfejsu użytkownika interfejsu użytkownika HDInsight](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 Jeśli nie zamierzasz nadal korzystać z tej aplikacji, usuń utworzony klaster bazy danych HBase, wykonując następujące czynności:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 2. W polu **Wyszukaj** w górnej części wpisz **HDInsight**. 
 1. Wybierz pozycję **Klastry usługi HDInsight** w obszarze **Usługi**.
 1. Na wyświetlonej liście klastrów usługi HDInsight kliknij symbol **...** obok klastra utworzonego na potrzeby tego samouczka. 
-1. Kliknij polecenie **Usuń**. Kliknij przycisk **Yes** (Tak).
+1. Kliknij **pozycję Usuń**. Kliknij **przycisk Tak**.
 
 ## <a name="next-steps"></a>Następne kroki
 

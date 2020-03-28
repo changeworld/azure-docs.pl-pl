@@ -11,10 +11,10 @@ ms.date: 11/29/2018
 ms.author: labrenne
 ms.custom: mvc
 ms.openlocfilehash: d4277e383a5cb69ef5395cb6dc477d888abd1d0d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77023093"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Samouczek: uruchamianie równoległego obciążenia w usłudze Azure Batch przy użyciu interfejsu API Python
@@ -37,13 +37,13 @@ W tym samouczku przekonwertujesz równolegle pliki multimedialne w formacie MP4 
 
 * [Środowisko Python w wersji 2.7 lub 3.3 albo nowszej](https://www.python.org/downloads/)
 
-* Menedżer pakietów [pip](https://pip.pypa.io/en/stable/installing/)
+* menedżer pakietów [pip](https://pip.pypa.io/en/stable/installing/)
 
 * Konto usługi Azure Batch i połączone konto usługi Azure Storage. Aby utworzyć te konta, skorzystaj z przewodników Szybki start dla usługi Batch i [witryny Azure Portal](quick-create-portal.md) lub [interfejsu wiersza polecenia platformy Azure](quick-create-cli.md).
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
+Zaloguj się do witryny Azure portal w [https://portal.azure.com](https://portal.azure.com).
 
 [!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)] 
 
@@ -107,13 +107,13 @@ Sample end: 11/28/2018 3:29:36 PM
 Elapsed time: 00:09:14.3418742
 ```
 
-Przejdź do konta usługi Batch w witrynie Azure Portal, aby monitorować pulę, węzły obliczeniowe, zadanie i zadania podrzędne. Na przykład aby wyświetlić mapę cieplną węzłów obliczeniowych w puli, kliknij pozycję **Pule** > *LinuxFFmpegPool*.
+Przejdź do konta usługi Batch w witrynie Azure Portal, aby monitorować pulę, węzły obliczeniowe, zadanie i zadania podrzędne. Na przykład, aby wyświetlić mapę cieplną węzłów obliczeniowych w puli, kliknij pozycję **Pule** > *LinuxFFmpegPool*.
 
 Podczas wykonywania zadań podrzędnych mapa cieplna może wyglądać następująco:
 
 ![Mapa cieplna puli](./media/tutorial-parallel-python/pool.png)
 
-Typowy czas wykonywania wynosi **mniej więcej 5 minut** w przypadku uruchomienia aplikacji w konfiguracji domyślnej. Tworzenie puli zajmuje najwięcej czasu. 
+Typowy czas wykonywania wynosi około **5 minut** po uruchomieniu aplikacji w konfiguracji domyślnej. Tworzenie puli zajmuje najwięcej czasu. 
 
 [!INCLUDE [batch-common-tutorial-download](../../includes/batch-common-tutorial-download.md)]
 
@@ -131,7 +131,7 @@ blob_client = azureblob.BlockBlobService(
     account_key=_STORAGE_ACCOUNT_KEY)
 ```
 
-Aplikacja tworzy obiekt [BatchServiceClient](/python/api/azure.batch.batchserviceclient) na potrzeby tworzenia pul, zadań i zadań podrzędnych w usłudze Batch oraz zarządzania nimi. Klient usługi Batch w przykładzie korzysta z uwierzytelniania za pomocą klucza wspólnego. Usługa Batch obsługuje również uwierzytelnianie za pośrednictwem usługi [Azure Active Directory](batch-aad-auth.md), umożliwiające uwierzytelnianie poszczególnych użytkowników lub nienadzorowanej aplikacji.
+Aplikacja tworzy obiekt [BatchServiceClient](/python/api/azure.batch.batchserviceclient) na potrzeby tworzenia pul, zadań i zadań podrzędnych w usłudze Batch oraz zarządzania nimi. Klient usługi Batch w przykładzie korzysta z uwierzytelniania za pomocą klucza wspólnego. Usługa Batch obsługuje również uwierzytelnianie za pośrednictwem [usługi Azure Active Directory,](batch-aad-auth.md)aby uwierzytelnić poszczególnych użytkowników lub aplikację nienadzorowane.
 
 ```python
 credentials = batchauth.SharedKeyCredentials(_BATCH_ACCOUNT_NAME,
@@ -144,7 +144,7 @@ batch_client = batch.BatchServiceClient(
 
 ### <a name="upload-input-files"></a>Przekazywanie plików wejściowych
 
-W aplikacji odwołanie `blob_client` jest używane do utworzenia kontenera magazynu dla plików wejściowych w formacie MP4 oraz kontenera dla danych wyjściowych zadań podrzędnych. Następnie wywoływana jest funkcja `upload_file_to_container` w celu przekazania plików MP4 z lokalnego katalogu `InputFiles` do kontenera. Pliki w magazynie są definiowane jako obiekty [ResourceFile](/python/api/azure-batch/azure.batch.models.resourcefile) usługi Batch, które następnie mogą być pobierane przez tę usługę do węzłów obliczeniowych.
+W aplikacji odwołanie `blob_client` jest używane do utworzenia kontenera magazynu dla plików wejściowych w formacie MP4 oraz kontenera dla danych wyjściowych zadań podrzędnych. Następnie wywoływana jest funkcja `upload_file_to_container` w celu przekazania plików MP4 z lokalnego katalogu `InputFiles` do kontenera. Pliki w magazynie są zdefiniowane jako obiekty [ResourceFile](/python/api/azure-batch/azure.batch.models.resourcefile) usługi Batch, które następnie mogą zostać pobrane przez tę usługę do węzłów obliczeniowych.
 
 ```python
 blob_client.create_container(input_container_name, fail_on_exist=False)

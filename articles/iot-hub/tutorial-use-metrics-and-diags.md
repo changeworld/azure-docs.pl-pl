@@ -1,6 +1,6 @@
 ---
 title: Konfigurowanie i używanie metryk i dzienników diagnostycznych w usłudze Azure IoT Hub
-description: Dowiedz się, jak skonfigurować metryki i dzienniki diagnostyczne przy użyciu usługi Azure IoT Hub i korzystać z nich. Umożliwi to analizowanie danych, które mogą być pomocne w diagnozowaniu problemów z centrum.
+description: Dowiedz się, jak skonfigurować i używać metryk i dzienników diagnostycznych za pomocą centrum Azure IoT Hub. Zapewni to dane do analizy, aby pomóc w diagnozowaniu problemów, które może mieć centrum.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: a19eb19c3a25d3856d5cf333bd64be888f65a6e2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: d287cfab7adb676d3561486ed34c1062895a4036
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79239938"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80133633"
 ---
-# <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Samouczek: Konfigurowanie metryk i dzienników diagnostycznych za pomocą Centrum IoT Hub oraz korzystanie z nich
+# <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Samouczek: Konfigurowanie i używanie metryk i dzienników diagnostycznych za pomocą centrum IoT
 
 Jeśli w Twoim środowisku produkcyjnym działa rozwiązanie IoT Hub, możesz chcieć skonfigurować kilka metryk i włączyć dzienniki diagnostyczne. W razie wystąpienia problemu możesz wówczas przyjrzeć się danym, które pomogą Ci zdiagnozować ten problem i szybciej go rozwiązać. W tym artykule zobaczysz, jak włączać dzienniki diagnostyczne i jak wyszukiwać w nich błędy. Skonfigurujesz także kilka metryk do obserwowania oraz alerty uruchamiane, gdy metryki osiągną określone granice. Na przykład możesz otrzymywać wiadomość e-mail, gdy liczba wysłanych komunikatów telemetrycznych przekroczy określoną granicę lub gdy liczba użytych komunikatów zbliży się do dziennego limitu przydziału komunikatów dozwolonego w usłudze IoT Hub. 
 
@@ -36,13 +36,13 @@ Ten samouczek obejmuje wykonanie następujących zadań:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
-- Zainstalować program [Visual Studio](https://www.visualstudio.com/). 
+- Zainstaluj [program Visual Studio](https://www.visualstudio.com/). 
 
 - Konto e-mail umożliwiające odbieranie wiadomości e-mail.
 
-- Upewnij się, że port 8883 jest otwarty w zaporze. Przykład urządzenia w tym samouczku używa protokołu MQTT, który komunikuje się przez port 8883. Ten port może być blokowany w niektórych firmowych i edukacyjnych środowiskach sieciowych. Aby uzyskać więcej informacji i sposobów obejścia tego problemu, zobacz [nawiązywanie połączenia z IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+- Upewnij się, że port 8883 jest otwarty w zaporze. Przykład urządzenia w tym samouczku używa protokołu MQTT, który komunikuje się za pomocą portu 8883. Ten port może być zablokowany w niektórych środowiskach sieci firmowych i edukacyjnych. Aby uzyskać więcej informacji i sposobów obejść ten problem, zobacz [Łączenie się z centrum IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -53,7 +53,7 @@ W tym samouczku potrzebujesz centrum IoT, konta magazynu i symulowanego urządze
 
 Poniżej przedstawiono wymagane kroki.
 
-1. Utwórz [grupę zasobów](../azure-resource-manager/management/overview.md). 
+1. Tworzenie [grupy zasobów](../azure-resource-manager/management/overview.md). 
 
 2. Utwórz centrum IoT.
 
@@ -118,12 +118,12 @@ az iot hub device-identity show --device-id $iotDeviceName \
 ```
 
 >[!NOTE]
->Podczas tworzenia tożsamości urządzenia może zostać wyświetlony następujący błąd: *nie znaleziono kluczy dla zasad iothubowner IoT Hub ContosoTestHub*. Aby naprawić ten błąd, zaktualizuj rozszerzenie IoT interfejsu wiersza polecenia platformy Azure, a następnie uruchom ponownie ostatnie dwa polecenia w skrypcie. 
+>Podczas tworzenia tożsamości urządzenia może pojawić się następujący błąd: *Nie znaleziono kluczy dla zasad iothubowner usługi IoT Hub ContosoTestHubHub*. Aby naprawić ten błąd, zaktualizuj rozszerzenie IoT interfejsu wiersza polecenia platformy Azure, a następnie uruchom ponownie ostatnie dwa polecenia w skrypcie. 
 >
 >Poniżej przedstawiono polecenie umożliwiające zaktualizowanie rozszerzenia. Uruchom je w swoim wystąpieniu usługi Cloud Shell.
 >
 >```cli
->az extension update --name azure-cli-iot-ext
+>az extension update --name azure-iot
 >```
 
 ## <a name="enable-the-diagnostic-logs"></a>Włączanie dzienników diagnostycznych 
@@ -137,7 +137,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
    ![Zrzut ekranu przedstawiający fragment bloku usługi IoT Hub dotyczący ustawień diagnostycznych.](./media/tutorial-use-metrics-and-diags/01-diagnostic-settings.png)
 
 
-3. Upewnij się, że subskrypcja i grupa zasobów są poprawne. W obszarze **Typ zasobu** usuń zaznaczenie pola wyboru **Zaznacz wszystko**, a następnie znajdź i zaznacz pozycję **IoT Hub**. (Zaznacza znacznik wyboru obok *opcji wszystkie* ponownie, ignorując go). W obszarze **zasób**wybierz nazwę centrum. Ekran powinien wyglądać jak na poniższej ilustracji: 
+3. Upewnij się, że subskrypcja i grupa zasobów są poprawne. W obszarze **Typ zasobu** usuń zaznaczenie pola wyboru **Zaznacz wszystko**, a następnie znajdź i zaznacz pozycję **IoT Hub**. (To stawia znacznik wyboru obok *Wybierz wszystko* ponownie, po prostu zignorować.) W obszarze **Zasób**wybierz nazwę koncentratora. Ekran powinien wyglądać jak na poniższej ilustracji: 
 
    ![Zrzut ekranu przedstawiający fragment bloku usługi IoT Hub dotyczący ustawień diagnostycznych.](./media/tutorial-use-metrics-and-diags/02-diagnostic-settings-start.png)
 
@@ -165,7 +165,7 @@ Teraz skonfiguruj kilka metryk, aby obserwować, kiedy komunikaty są wysyłane 
 
 1. W okienku ustawień centrum IoT kliknij opcję **Metryki** w sekcji **Monitorowanie**.
 
-2. W górnej części ekranu kliknij pozycję **Ostatnie 24 godziny (automatycznie)** . W wyświetlonym menu rozwijanym wybierz pozycję **Ostatnie 4 godziny** dla ustawienia **Zakres czasu** i ustaw **Stopień szczegółowości czasu** na **1 minuta**, czas lokalny. Kliknij pozycję **Zastosuj**, aby zapisać te ustawienia. 
+2. W górnej części ekranu kliknij pozycję **Ostatnie 24 godziny (automatycznie)**. W wyświetlonym menu rozwijanym wybierz pozycję **Ostatnie 4 godziny** dla ustawienia **Zakres czasu** i ustaw **Stopień szczegółowości czasu** na **1 minuta**, czas lokalny. Kliknij pozycję **Zastosuj**, aby zapisać te ustawienia. 
 
    ![Zrzut ekranu przedstawiający ustawienia czasu metryk.](./media/tutorial-use-metrics-and-diags/06-metrics-set-time-range.png)
 
@@ -198,25 +198,25 @@ Usługa IoT Hub nie została jeszcze zmigrowana do [metryk w usłudze Azure Moni
 
     Wypełnij następujące pola: 
 
-    **Subskrypcja**: pozostaw to pole ustawione na bieżącą subskrypcję.
+    **Subskrypcja:** pozostaw to pole ustawione na bieżącą subskrypcję.
 
-    **Źródło**: Ustaw to pole na *metryki*.
+    **Źródło**: Ustaw to pole na *Metryki*.
 
-    **Grupa zasobów**: Ustaw to pole na bieżącą grupę zasobów, *ContosoResources*. 
+    **Grupa zasobów:** Ustaw to pole na bieżącą grupę zasobów *ContosoResources*. 
 
-    **Typ zasobu**: Ustaw to pole na IoT Hub. 
+    **Typ zasobu:** Ustaw to pole na Centrum IoT Hub. 
 
-    **Zasób**: wybierz Centrum IoT Hub, *ContosoTestHub*.
+    **Zasób**: Wybierz centrum IoT, *ContosoTestHub*.
 
-3. Kliknij pozycję **Dodaj alert metryki (klasyczny)** , aby skonfigurować nowy alert.
+3. Kliknij pozycję **Dodaj alert metryki (klasyczny)**, aby skonfigurować nowy alert.
 
     Wypełnij następujące pola:
 
-    **Nazwa**: Podaj nazwę reguły alertu, na przykład *komunikaty telemetryczne*.
+    **Nazwa**: Podaj nazwę reguły alertu, takiej jak *wiadomości telemetryczne*.
 
-    **Opis**: Podaj opis alertu, na przykład alert, *gdy wysyłane są 1000 komunikaty telemetryczne*. 
+    **Opis**: Podaj opis alertu, na przykład *alert, gdy jest wysyłanych 1000 wiadomości telemetrycznych.* 
 
-    **Źródło**: Ustaw tę wartość na *metryki*.
+    **Źródło**: Ustaw to na *Metryki*.
 
     W polach **Subskrypcja**, **Grupa zasobów** i **Zasób** należy ustawić wartości wybrane na ekranie **Wyświetl alerty klasyczne**. 
 
@@ -226,11 +226,11 @@ Usługa IoT Hub nie została jeszcze zmigrowana do [metryk w usłudze Azure Moni
 
 4. Po wykresie ustaw następujące pola:
 
-   **Warunek**: wartość *większa niż*.
+   **Warunek:** Ustawiona na *większa niż*.
 
-   **Próg**: ustaw na 1000.
+   **Próg:** Ustaw wartość 1000.
 
-   **Okres**: Ustaw na wartość *w ciągu ostatnich 5 minut*.
+   **Okres:** Ustaw *na W ciągu ostatnich 5 minut*.
 
    **Adresaci wiadomości e-mail z powiadomieniem**: Umieść tutaj swój adres e-mail. 
 
@@ -240,13 +240,13 @@ Usługa IoT Hub nie została jeszcze zmigrowana do [metryk w usłudze Azure Moni
 
 5. Teraz skonfiguruj kolejny alert dla metryki *Łączna liczba użytych komunikatów*. Ta metryka jest przydatna, jeśli chcesz otrzymywać alert, gdy liczba użytych komunikatów będzie zbliżała się do limitu przydziału dla centrum IoT, aby wiedzieć, że centrum wkrótce rozpocznie odrzucanie komunikatów.
 
-   Na ekranie **Wyświetl alerty klasyczne** kliknij pozycję **Dodaj alert metryki (klasyczny)** , a następnie wypełnij poniższe pola w okienku **Dodaj regułę**.
+   Na ekranie **Wyświetl alerty klasyczne** kliknij pozycję **Dodaj alert metryki (klasyczny)**, a następnie wypełnij poniższe pola w okienku **Dodaj regułę**.
 
-   **Nazwa**: Podaj nazwę reguły alertu, na przykład *liczbę używanych komunikatów*.
+   **Nazwa**: Podaj nazwę reguły alertu, na przykład *liczbę używanych wiadomości.*
 
-   **Opis**: Podaj opis alertu, na przykład alert, *Kiedy zbliża się do limitu przydziału*.
+   **Opis**: Podaj opis alertu, na przykład *alerty zbliżające się do przydziału*.
 
-   **Źródło**: Ustaw to pole na *metryki*.
+   **Źródło**: Ustaw to pole na *Metryki*.
 
     W polach **Subskrypcja**, **Grupa zasobów** i **Zasób** należy ustawić wartości wybrane na ekranie **Wyświetl alerty klasyczne**. 
 
@@ -254,11 +254,11 @@ Usługa IoT Hub nie została jeszcze zmigrowana do [metryk w usłudze Azure Moni
 
 6. Pod wykresem wypełnij następujące pola:
 
-   **Warunek**: wartość *większa niż*.
+   **Warunek:** Ustawiona na *większa niż*.
 
-   **Próg**: ustaw na 1000.
+   **Próg:** Ustaw wartość 1000.
 
-   **Okres**: Ustaw to pole na wartość w *ciągu ostatnich 5 minut*. 
+   **Okres:** Ustaw to pole *na W ciągu ostatnich 5 minut*. 
 
    **Adresaci wiadomości e-mail z powiadomieniem**: Umieść tutaj swój adres e-mail. 
 
@@ -276,7 +276,7 @@ Usługa IoT Hub nie została jeszcze zmigrowana do [metryk w usłudze Azure Moni
 
 Wcześniej w sekcji konfigurowania skryptu skonfigurowano urządzenia do symulowania użycia urządzenia IoT. Ta sekcja zawiera instrukcje dotyczące pobierania aplikacji konsolowej .NET, która symuluje urządzenie wysyłające komunikaty z urządzenia do chmury do centrum IoT Hub.  
 
-Pobierz rozwiązanie na potrzeby [symulacji urządzenia IoT](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Ten link umożliwia pobranie repozytorium z kilkoma aplikacjami. szukane rozwiązanie dotyczy usługi IoT-Hub/samouczków/routingu/.
+Pobierz rozwiązanie na potrzeby [symulacji urządzenia IoT](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Ten link pobiera repozytorium z kilkoma aplikacjami w nim; rozwiązanie, którego szukasz, jest w iot-hub/Tutorials/Routing/.
 
 Kliknij dwukrotnie plik rozwiązania (SimulatedDevice.sln), aby otworzyć kod w programie Visual Studio, a następnie otwórz plik Program.cs. Zastąp element `{iot hub hostname}` nazwą hosta centrum IoT Hub. Format nazwy hosta centrum IoT Hub to **{nazwa-centrum-iot}.azure-devices.net**. W tym samouczku jest używana nazwa hosta centrum **ContosoTestHub.azure-devices.net**. Następnie zastąp ciąg `{device key}` kluczem urządzenia, który został wcześniej zapisany podczas konfigurowania urządzenia symulowanego. 
 

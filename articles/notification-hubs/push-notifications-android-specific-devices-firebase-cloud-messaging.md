@@ -1,6 +1,6 @@
 ---
-title: Powiadomienia wypychane do określonych urządzeń z systemem Android przy użyciu usług Azure Notification Hubs i Google Firebase Cloud Messaging | Microsoft Docs
-description: Dowiedz się, jak za pomocą usługi Notification Hubs wysyłać powiadomienia wypychane do określonych urządzeń z systemem Android przy użyciu usług Azure Notification Hubs i Google Firebase Cloud Messaging (FCM).
+title: Wysyłanie powiadomień wypychanych do określonych urządzeń przy użyciu usługi Azure Notification Hubs i Google Firebase Cloud Messaging | Dokumenty firmy Microsoft
+description: Dowiedz się, jak używać centrów powiadomień do przekazywania powiadomień do określonych urządzeń z systemem Android przy użyciu usługi Azure Notification Hubs i Google Firebase Cloud Messaging (FCM).
 services: notification-hubs
 documentationcenter: android
 author: sethmanheim
@@ -17,18 +17,18 @@ ms.date: 04/30/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/30/2019
-ms.openlocfilehash: 1d0825fcfbcf10aaebc320a5c7cbbf2dd8c13856
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: b7ee3afc2e8b9958a868c8c117262d2017c9b600
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213341"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80126878"
 ---
-# <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-firebase-cloud-messaging-fcm"></a>Samouczek: Powiadomienia wypychane do określonych urządzeń z systemem Android przy użyciu usług Azure Notification Hubs i Google Firebase Cloud Messaging (FCM)
+# <a name="tutorial-send-notifications-to-specific-devices-using-notification-hubs-and-google-firebase-cloud-messaging"></a>Samouczek: Wysyłanie powiadomień do określonych urządzeń za pomocą Centrów powiadomień i wiadomości w chmurze Google Firebase
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Korzystając z tego samouczka, dowiesz się, jak rozgłaszać powiadomienia z najważniejszymi informacjami do aplikacji systemu Android przy użyciu usługi Azure Notification Hubs. Po zakończeniu pracy z samouczkiem będziesz wiedzieć, jak rejestrować kategorie ważnych wiadomości, które Cię interesują, oraz otrzymywać tylko powiadomienia push dla tych kategorii. Ten scenariusz jest typowym wzorcem dla wielu aplikacji wymagających wysyłania powiadomień do grup użytkowników, które wcześniej zadeklarowały zainteresowanie nimi, na przykład czytników danych RSS, aplikacji dla fanów muzyki itp.
 
@@ -44,7 +44,7 @@ W tym samouczku wykonasz następujące czynności:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Ten samouczek korzysta z aplikacji utworzonej w artykule [Samouczek: Powiadomienia wypychane do urządzeń z systemem Android przy użyciu usługi Azure Notification Hubs](notification-hubs-android-push-notification-google-fcm-get-started.md)i obsługi komunikatów w chmurze Firebase. Przed rozpoczęciem tego samouczka należy wykonać czynności opisane w artykule [Samouczek: Powiadomienia wypychane do urządzeń z systemem Android przy użyciu usługi Azure Notification Hubs](notification-hubs-android-push-notification-google-fcm-get-started.md)i obsługi komunikatów w chmurze Firebase.
+Ten samouczek opiera się na aplikacji utworzonej w [samouczku: Powiadomienia wypychania do urządzeń z systemem Android przy użyciu usługi Azure Notification Hubs i Firebase Cloud Messaging](notification-hubs-android-push-notification-google-fcm-get-started.md). Przed rozpoczęciem tego samouczka wykonaj [samouczek: Powiadomienia wypychania do urządzeń z systemem Android przy użyciu usługi Azure Notification Hubs i Firebase Cloud Messaging](notification-hubs-android-push-notification-google-fcm-get-started.md).
 
 ## <a name="add-category-selection-to-the-app"></a>Dodawanie wyboru kategorii do aplikacji
 
@@ -204,12 +204,12 @@ Pierwszym krokiem jest dodanie elementów interfejsu użytkownika do istniejące
     ```
 
     Ta klasa używa magazynu lokalnego do przechowywania kategorii wiadomości, które mają być odbierane na tym urządzeniu. Zawiera również metody rejestracji w tych kategoriach.
-4. W klasie Dodaj pole dla `Notifications`: `MainActivity`
+4. W `MainActivity` klasie dodaj pole `Notifications`dla:
 
     ```java
     private Notifications notifications;
     ```
-5. Następnie zaktualizuj `onCreate` metodę, jak pokazano w poniższym kodzie. Rejestrujesz się w Notification Hubs w metodzie **subscribeToCategories** klasy **Notifications** . 
+5. Następnie zaktualizuj `onCreate` metodę, jak pokazano w poniższym kodzie. Zarejestruj się w Centrach powiadomień w **subscribeToCategories** metody **Notifications** klasy. 
 
     ```java
     @Override
@@ -275,7 +275,7 @@ Aplikacja może teraz przechowywać zestaw kategorii w magazynie lokalnym na urz
 
 Te kroki umożliwiają zarejestrowanie przy użyciu centrum powiadomień przy uruchamianiu przy użyciu kategorii przechowywanych w magazynie lokalnym.
 
-1. Upewnij się, że następujący kod znajduje się na końcu `onCreate` metody `MainActivity` w klasie:
+1. Upewnij się, że poniższy kod `onCreate` znajduje `MainActivity` się na końcu metody w klasie:
 
     ```java
     notifications.subscribeToCategories(notifications.retrieveCategories());
@@ -331,7 +331,7 @@ Aplikacja jest teraz zakończona i może przechowywać w magazynie lokalnym na u
 W tym samouczku wysłano rozgłoszone powiadomienia do określonych urządzeń z systemem Android zarejestrowanych dla kategorii. Aby dowiedzieć się, jak wysyłać powiadomienia push do konkretnych użytkowników, przejdź do następującego samouczka:
 
 > [!div class="nextstepaction"]
->[Wysyłanie powiadomień push do konkretnych użytkowników](push-notifications-android-specific-users-firebase-cloud-messaging.md)
+>[Wypychanie powiadomień do konkretnych użytkowników](push-notifications-android-specific-users-firebase-cloud-messaging.md)
 
 <!-- Images. -->
 [A1]: ./media/notification-hubs-aspnet-backend-android-breaking-news/android-breaking-news1.PNG

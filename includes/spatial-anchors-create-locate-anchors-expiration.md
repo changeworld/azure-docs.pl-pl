@@ -1,11 +1,11 @@
 ---
 ms.openlocfilehash: 1598d89d254e788ecf94f9a42b83cbe22b62204a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67182946"
 ---
-## <a name="set-expiration"></a>Ustaw czas wygaśnięcia
+## <a name="set-expiration"></a>Ustawianie wygaśnięcia
 
-Jest również możliwość skonfigurowania zakotwiczenia automatycznie wygasa w danym dniu w przyszłości. Po wygaśnięciu kontrolnych go będzie już można znajduje się lub aktualizowane. Wygaśnięcie można ustawić tylko podczas tworzenia zakotwiczenia. Aktualizowanie później wygaśnięcia nie jest możliwe. Tak można ustawić jego wygaśnięcia przed zapisaniem zmian w chmurze.
+Istnieje również możliwość skonfigurowania kotwicy, aby automatycznie wygasła w danym dniu w przyszłości. Po wygaśnięciu kotwicy nie będzie już znajdować się ani aktualizować. Wygaśnięcie można ustawić tylko podczas tworzenia zakotwiczenia. Późniejsze aktualizowanie wygaśnięcia nie jest możliwe. Tak, można ustawić jego wygaśnięcia przed zapisaniem go w chmurze.

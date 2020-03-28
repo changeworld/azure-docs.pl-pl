@@ -1,5 +1,5 @@
 ---
-title: Samouczek — Tworzenie maszyn wirtualnych z uruchomionym programem SQL Server, usługami IIS, stosem platformy .NET na platformie Azure
+title: Samouczek — tworzenie maszyn wirtualnych z uruchomionym stosem SQL, IIS, .NET na platformie Azure
 description: Z tego samouczka dowiesz się, jak zainstalować stos Azure SQL, IIS i.NET na maszynie wirtualnej z systemem Windows na platformie Azure.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 286d00ce718a34dea15a075984cc3b2a5e4cfec3
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 762d67a291ec33e13ca9e7311b0cf11da140dd6c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74064656"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80154274"
 ---
 # <a name="tutorial-install-the-sql-iis-net-stack-in-a-windows-vm-with-azure-powershell"></a>Samouczek: instalowanie stosu SQL, IIS, .NET na maszynie wirtualnej z systemem Windows przy użyciu programu Azure PowerShell
 
@@ -35,9 +35,9 @@ W tym samouczku instalujemy stos SQL, IIS, .NET przy użyciu programu Azure Powe
 
 Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. 
 
-Aby otworzyć usługę Cloud Shell, wybierz pozycję **Wypróbuj** w prawym górnym rogu bloku kodu. Możesz również uruchomić usługę Cloud Shell w oddzielnej karcie przeglądarki, przechodząc do strony [https://shell.azure.com/powershell](https://shell.azure.com/powershell). Wybierz przycisk **Kopiuj**, aby skopiować bloki kodu, wklej je do usługi Cloud Shell, a następnie naciśnij klawisz Enter, aby je uruchomić.
+Aby otworzyć usługę Cloud Shell, wybierz pozycję **Wypróbuj** w prawym górnym rogu bloku kodu. Możesz również uruchomić usługę Cloud Shell w [https://shell.azure.com/powershell](https://shell.azure.com/powershell)osobnej karcie przeglądarki, przechodząc do . Wybierz przycisk **Kopiuj**, aby skopiować bloki kodu, wklej je do usługi Cloud Shell, a następnie naciśnij klawisz Enter, aby je uruchomić.
 
-## <a name="create-an-iis-vm"></a>Tworzenie maszyny wirtualnej usług IIS 
+## <a name="create-an-iis-vm"></a>Tworzenie maszyny Wirtualnej iIS 
 
 W tym przykładzie polecenie cmdlet [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) w programie PowerShell w usłudze Cloud Shell jest używane w celu szybkiego utworzenia maszyny wirtualnej systemu Windows Server 2016, a następnie zainstalowania usług IIS i platformy .NET Framework. Maszyny wirtualne usług IIS i programu SQL współużytkują grupę zasobów i sieć wirtualną, dlatego tworzone są zmienne dla tych nazw.
 
@@ -137,8 +137,8 @@ W tym samouczku zainstalowano stos SQL&#92;IIS&#92;.NET przy użyciu programu Az
 > * Tworzenie maszyny wirtualnej z programem SQL Server
 > * Instalacja rozszerzenia programu SQL Server
 
-Przejdź do następnego samouczka, aby dowiedzieć się, jak zabezpieczyć serwer internetowy usług IIS przy użyciu certyfikatów SSL.
+Przejdź do następnego samouczka, aby dowiedzieć się, jak zabezpieczyć serwer sieci Web usług IIS certyfikatami TLS/SSL.
 
 > [!div class="nextstepaction"]
-> [Zabezpieczanie serwera internetowego usług IIS przy użyciu certyfikatów SSL](tutorial-secure-web-server.md)
+> [Bezpieczny serwer sieci Web usług IIS z certyfikatami TLS/SSL](tutorial-secure-web-server.md)
 

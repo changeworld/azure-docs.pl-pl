@@ -1,5 +1,5 @@
 ---
-title: Samouczek — wdrażanie aplikacji na platformie Azure Service Fabric siatką
+title: Samouczek — wdrażanie aplikacji w usłudze Azure Service Fabric Mesh
 description: Z tego samouczka dowiesz się, jak wdrożyć aplikację w usłudze Service Fabric Mesh przy użyciu szablonu.
 author: dkkapur
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 1ff1407400843fdb0f0ff997e2e0a3c1b7e67c7d
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75494941"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Samouczek: wdrażanie aplikacji w usłudze Service Fabric Mesh przy użyciu szablonu
@@ -38,7 +38,7 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 
 Przed rozpoczęciem tego samouczka:
 
-* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem możesz [utworzyć bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 * [Zainstaluj platformę Docker](service-fabric-mesh-howto-setup-developer-environment-sdk.md#install-docker)
 
@@ -50,7 +50,7 @@ Obrazy kontenera skojarzone z usługami w aplikacji usługi Service Fabric Mesh 
 
 Utwórz wystąpienie usługi ACR przy użyciu poniższej procedury.  Jeśli masz już skonfigurowane wystąpienia usługi ACR, możesz pominąć ten krok i przejść dalej.
 
-### <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+### <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do platformy Azure i ustaw aktywną subskrypcję.
 
@@ -130,7 +130,7 @@ docker tag seabreeze/azure-mesh-todo-webfrontend:1.0-nanoserver-1709 mycontainer
 docker tag seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709 mycontainerregistry.azurecr.io/seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709
 ```
 
-Zaloguj się do Azure Container Registry.
+Zaloguj się do rejestru kontenerów platformy Azure.
 
 ```azurecli
 az acr login -n myContainerRegistry

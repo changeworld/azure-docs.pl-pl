@@ -5,20 +5,20 @@ author: tfitzmac
 ms.topic: tutorial
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: e756617a700d258078e84a3fa11c8aceb6f4dd88
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 13c45bc6e67d9d3d06a70b7cf3326cc112cd7829
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903263"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79473017"
 ---
-# <a name="create-and-publish-a-managed-application-definition"></a>Tworzenie i publikowanie definicji aplikacji zarządzanej
+# <a name="tutorial-create-and-publish-a-managed-application-definition"></a>Samouczek: Tworzenie i publikowanie definicji aplikacji zarządzanej
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Możesz tworzyć i publikować [aplikacje zarządzane](overview.md) na platformie Azure, przeznaczone dla członków Twojej organizacji. Na przykład dział IT może publikować aplikacje zarządzane zapewniające zgodność z normami obowiązującymi w organizacji. Takie aplikacje zarządzane są dostępne w katalogu usług, a nie w witrynie Azure Marketplace.
 
-Aby opublikować zarządzaną aplikację w katalogu usług platformy Azure, musisz:
+Aby opublikować aplikację zarządzaną w wykazie usługi Azure Service Catalog, należy:
 
 * Utwórz szablon określający zasoby wdrażane wraz z aplikacją zarządzaną.
 * Zdefiniuj elementy interfejsu użytkownika portalu, stosowane podczas wdrażania aplikacji zarządzanej.
@@ -81,13 +81,13 @@ Dodaj do tego pliku następujący kod JSON. Definiuje on parametry wymagane podc
 
 Zapisz plik mainTemplate.json.
 
-## <a name="defining-your-create-experience-using-createuidefinitionjson"></a>Definiowanie środowiska tworzenia przy użyciu pliku CreateUiDefinition. JSON
+## <a name="defining-your-create-experience-using-createuidefinitionjson"></a>Definiowanie środowiska tworzenia przy użyciu pliku CreateUiDefinition.json
 
-Jako wydawca zdefiniujesz środowisko tworzenia przy użyciu pliku **createUiDefinition. JSON** , który generuje interfejs dla użytkowników tworzących aplikacje zarządzane. Definiujesz sposób, w jaki użytkownicy dostarczają dane wejściowe dla każdego parametru za pomocą [elementów kontrolki](create-uidefinition-elements.md) , takich jak listy rozwijane, pola tekstowe i hasła.
+Jako wydawca definiujesz środowisko tworzenia przy użyciu pliku **createUiDefinition.json,** który generuje interfejs dla użytkowników tworzących aplikacje zarządzane. Można zdefiniować sposób, w jaki użytkownicy dostarczają dane wejściowe dla każdego parametru przy użyciu [elementów sterujących,](create-uidefinition-elements.md) w tym rozwijanych, pól tekstowych i pól haseł.
 
-Utwórz plik o nazwie **createUiDefinition. JSON** (w tej nazwie jest rozróżniana wielkość liter)
+Tworzenie pliku o nazwie **createUiDefinition.json** (Ta nazwa jest rozróżniana wielkość liter)
 
-Dodaj następujący początkowy kod JSON do pliku i Zapisz go.
+Dodaj następujący rozrusznik JSON do pliku i zapisz go.
 
 ```json
 {
@@ -138,7 +138,7 @@ Dodaj następujący początkowy kod JSON do pliku i Zapisz go.
 }
 ```
 
-Aby dowiedzieć się więcej, zobacz Rozpoczynanie [pracy z usługą CreateUiDefinition](create-uidefinition-overview.md).
+Aby dowiedzieć się więcej, zobacz [Wprowadzenie do tworzeniadefinicji nawij.](create-uidefinition-overview.md)
 
 ## <a name="package-the-files"></a>Pakowanie plików
 
@@ -208,30 +208,30 @@ New-AzManagedApplicationDefinition `
   -PackageFileUri $blob.ICloudBlob.StorageUri.PrimaryUri.AbsoluteUri
 ```
 
-## <a name="bring-your-own-storage-for-the-managed-application-definition"></a>Przenoszenie własnego magazynu dla definicji aplikacji zarządzanej
-Możesz zdecydować się na przechowywanie definicji aplikacji zarządzanej w ramach konta magazynu dostarczonego przez Ciebie podczas tworzenia, aby zapewnić jego lokalizację i dostęp w pełni zarządzany przez użytkownika zgodnie z wymaganiami prawnymi.
+## <a name="bring-your-own-storage-for-the-managed-application-definition"></a>Przynieś własny magazyn dla definicji aplikacji zarządzanej
+Możesz zapisać definicję aplikacji zarządzanej na koncie magazynu dostarczonym przez użytkownika podczas tworzenia, aby jego lokalizacja i dostęp mogły być w pełni zarządzane przez Użytkownika zgodnie z twoimi potrzebami regulacyjnymi.
 
 > [!NOTE]
-> Korzystanie z własnego magazynu jest obsługiwane tylko przy użyciu szablonu ARM lub wdrożenia interfejsu API REST dla definicji aplikacji zarządzanej.
+> Przynieś własny magazyn jest obsługiwany tylko za pomocą wdrożeń interfejsu API ARM Template lub REST definicji aplikacji zarządzanych.
 
-### <a name="select-your-storage-account"></a>Wybierz konto magazynu
-Należy [utworzyć konto magazynu](../../storage/common/storage-account-create.md) , aby zawierało definicję aplikacji zarządzanej do użycia z katalogiem usług.
+### <a name="select-your-storage-account"></a>Wybierz swoje konto magazynu
+Należy [utworzyć konto magazynu,](../../storage/common/storage-account-create.md) aby zawierało definicję aplikacji zarządzanej do użycia z wykazem usług.
 
 Skopiuj identyfikator zasobu konta magazynu. Będzie on używany później podczas wdrażania definicji.
 
-### <a name="set-the-role-assignment-for-appliance-resource-provider-in-your-storage-account"></a>Ustaw przypisanie roli dla "dostawca zasobów urządzenia" na koncie magazynu
-Aby można było wdrożyć definicję aplikacji zarządzanej na koncie magazynu, należy nadać uprawnienia współautora roli **dostawcy zasobów urządzenia** , aby można było napisać pliki definicji do kontenera konta magazynu.
+### <a name="set-the-role-assignment-for-appliance-resource-provider-in-your-storage-account"></a>Ustawianie przypisania roli dla "Dostawcy zasobów urządzenia" na koncie magazynu
+Aby definicja aplikacji zarządzanej można wdrożyć na koncie magazynu, należy przyznać uprawnienia współautora do **dostawcy zasobów urządzenia** roli dostawcy zasobów, aby można było zapisać pliki definicji do kontenera konta magazynu.
 
-1. W witrynie [Azure Portal](https://portal.azure.com) przejdź do swojego konta magazynu.
-1. Wybierz pozycję **Kontrola dostępu (IAM)** , aby wyświetlić ustawienia kontroli dostępu dla konta magazynu. Wybierz kartę **przypisania ról** , aby wyświetlić listę przypisań ról.
-1. W oknie **Dodawanie przypisania roli** wybierz rolę **współautor** . 
-1. W polu **Przypisz dostęp do** wybierz pozycję **użytkownik, Grupa lub nazwa główna usługi Azure AD**.
-1. W obszarze **Wybierz opcję** Wyszukaj rolę **dostawcy zasobów urządzenia** i wybierz ją.
+1. W [witrynie Azure portal](https://portal.azure.com)przejdź do konta magazynu.
+1. Wybierz **formant dostępu (IAM),** aby wyświetlić ustawienia kontroli dostępu dla konta magazynu. Wybierz kartę **Przypisania ról,** aby wyświetlić listę przypisań ról.
+1. W oknie **Dodawanie przypisania roli** wybierz rolę **Współautor.** 
+1. Z pola **Przypisz dostęp do** wybierz **pozycję Użytkownik, grupa lub podmiot usługi Azure AD**.
+1. W obszarze **Wybierz** wyszukaj rolę **Dostawcy zasobów urządzenia** i wybierz ją.
 1. Zapisz przypisanie roli.
 
-### <a name="deploy-the-managed-application-definition-with-an-arm-template"></a>Wdróż definicję aplikacji zarządzanej przy użyciu szablonu ARM 
+### <a name="deploy-the-managed-application-definition-with-an-arm-template"></a>Wdrażanie definicji aplikacji zarządzanej za pomocą szablonu ARM 
 
-Użyj następującego szablonu usługi ARM, aby wdrożyć spakowaną aplikację zarządzaną jako nową definicję aplikacji zarządzanej w katalogu usług, której pliki definicji są przechowywane i utrzymywane na Twoim koncie magazynu:
+Użyj następującego szablonu ARM, aby wdrożyć spakowaną aplikację zarządzaną jako nową definicję aplikacji zarządzanej w wykazie usług, których pliki definicji są przechowywane i przechowywane na własnym koncie magazynu:
    
 ```json
     {
@@ -303,12 +303,12 @@ Użyj następującego szablonu usługi ARM, aby wdrożyć spakowaną aplikację 
 }
 ```
 
-Dodaliśmy nową właściwość o nazwie **storageAccountId** do właściwości applicationDefintion i podaj identyfikator konta magazynu, w którym ma być przechowywana definicja, jako wartość:
+Dodaliśmy nową właściwość o nazwie **storageAccountId** do właściwości aplikacjiDefincja i podać identyfikator konta magazynu, który chcesz przechowywać definicję jako jej wartość:
 
-Można sprawdzić, czy pliki definicji aplikacji są zapisywane na podanym koncie magazynu w kontenerze o nazwie **applicationdefinitions**.
+Można sprawdzić, czy pliki definicji aplikacji są zapisywane na podanym koncie magazynu w kontenerze zatytułowanym **applicationdefinitions**.
 
 > [!NOTE]
-> W celu zwiększenia bezpieczeństwa można utworzyć magazyn definicji zarządzanych aplikacji w [obiekcie blob konta usługi Azure Storage, w którym jest włączone szyfrowanie](../../storage/common/storage-service-encryption.md). Zawartość definicji jest zaszyfrowana przy użyciu opcji szyfrowania konta magazynu. Tylko użytkownicy z uprawnieniami do pliku mogą zobaczyć definicję w katalogu usług.
+> Aby zwiększyć bezpieczeństwo, można utworzyć definicję zarządzanych aplikacji przechowywać ją w [obiekcie blob konta magazynu platformy Azure, gdzie szyfrowanie jest włączone](../../storage/common/storage-service-encryption.md). Zawartość definicji jest szyfrowana za pomocą opcji szyfrowania konta magazynu. Tylko użytkownicy z uprawnieniami do pliku mogą zobaczyć definicję w wykazie usług.
 
 ### <a name="make-sure-users-can-see-your-definition"></a>Upewnij się, że użytkownicy będą mogli zobaczyć definicję
 

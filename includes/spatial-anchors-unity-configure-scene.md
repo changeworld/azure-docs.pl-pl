@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 1/2/2019
 ms.author: crtreasu
 ms.openlocfilehash: 96046e63c896817a2af78b2a11af34af24565608
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "68561441"
 ---
-Następnym krokiem jest skonfigurowanie aplikacji w taki sposób, aby korzystała z identyfikatora konta i klucza konta. Skopiowano je do edytora tekstu podczas [konfigurowania zasobów kotwic przestrzennych](#create-a-spatial-anchors-resource).
+Następnym krokiem jest skonfigurowanie aplikacji do używania identyfikatora konta i klucza konta. Skopiowano je do edytora tekstu podczas [konfigurowania zasobu Zakotwiczenia przestrzenne](#create-a-spatial-anchors-resource).
 
-W okienku **projekt** przejdź do `Assets\AzureSpatialAnchors.SDK\Resources`. Wybierz pozycję `SpatialAnchorConfig`. Następnie w okienku **Inspektor** `Account Key` wprowadź `Spatial Anchors Account Key` `Spatial Anchors Account Id`wartość dla i jako wartość parametru. `Account ID`
+W okienku **Projekt** przejdź `Assets\AzureSpatialAnchors.SDK\Resources`do pozycji . Wybierz pozycję `SpatialAnchorConfig`. Następnie w okienku **Inspektor** wprowadź `Account Key` jako wartość `Spatial Anchors Account Key` dla `Account ID` i jako `Spatial Anchors Account Id`wartość dla .

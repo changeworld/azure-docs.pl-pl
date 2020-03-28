@@ -2,25 +2,19 @@
 title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — rotowanie kluczy dostępu do konta magazynu | Microsoft Docs
 description: Tworzenie konta usługi Azure Storage oraz pobieranie i rotowanie kluczy dostępu do konta.
 services: storage
-documentationcenter: na
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: ''
-ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: azurecli
+ms.subservice: blobs
+ms.devlang: cli
 ms.topic: sample
 ms.date: 06/22/2017
 ms.author: tamram
-ms.openlocfilehash: ac58886225221677aa003833167ff58cd578255d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aa7cba00d865bb7b2c1e0fd1f0059fb35ffff690
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61228651"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80060830"
 ---
 # <a name="create-a-storage-account-and-rotate-its-account-access-keys"></a>Tworzenie konta magazynu i rotowanie kluczy dostępu do konta
 
@@ -34,7 +28,7 @@ Ten skrypt tworzy konto usługi Azure Storage, wyświetla klucze dostępu do now
 
 [!code-azurecli-interactive[main](../../../cli_scripts/storage/rotate-storage-account-keys/rotate-storage-account-keys.sh "Rotate storage account keys")]
 
-## <a name="clean-up-deployment"></a>Czyszczenie wdrożenia 
+## <a name="clean-up-deployment"></a>Czyszczenie wdrożenia
 
 Uruchom następujące polecenie, aby usunąć grupę zasobów, konto magazynu oraz wszystkie powiązane zasoby.
 
@@ -53,7 +47,7 @@ Ten skrypt zawiera następujące polecenia, służące do utworzenia konta magaz
 | [az storage account keys list](/cli/azure/storage/account/keys) | Wyświetla klucze dostępu do podanego konta magazynu. |
 | [az storage account keys renew](/cli/azure/storage/account/keys) | Ponownie generuje podstawowy lub pomocniczy klucz dostępu do konta. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](/cli/azure).
 

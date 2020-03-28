@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z oprogramowaniem Ungerboeck | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Ungerboeck oprogramowania.
+title: 'Samouczek: Integracja usługi Azure Active Directory z oprogramowaniem Ungerboeck | Dokumenty firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a oprogramowaniem Ungerboeck.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,74 +17,74 @@ ms.date: 06/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 69c7a7a8fe0ef346cb26e3b0b4f14d3dae7211b9
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67370306"
 ---
-# <a name="tutorial-integrate-ungerboeck-software-with-azure-active-directory"></a>Samouczek: Integracja oprogramowania Ungerboeck za pomocą usługi Azure Active Directory
+# <a name="tutorial-integrate-ungerboeck-software-with-azure-active-directory"></a>Samouczek: Integrowanie oprogramowania Ungerboeck z usługą Azure Active Directory
 
-W tym samouczku dowiesz się, jak zintegrować Ungerboeck oprogramowania z usługi Azure Active Directory (Azure AD). Gdy Ungerboeck oprogramowania można zintegrować z usługą Azure AD, możesz wykonywać następujące czynności:
+W tym samouczku dowiesz się, jak zintegrować oprogramowanie Ungerboeck z usługą Azure Active Directory (Azure AD). Po zintegrowaniu oprogramowania Ungerboeck z usługą Azure AD można:
 
-* Kontrolowanie w usłudze Azure AD, kto ma dostęp do oprogramowania Ungerboeck.
-* Umożliwianie użytkownikom można automatycznie zalogowany do oprogramowania Ungerboeck za pomocą kont usługi Azure AD.
-* Zarządzanie Twoimi kontami w jednej centralnej lokalizacji — witryny Azure portal.
+* Kontrola w usłudze Azure AD, który ma dostęp do oprogramowania Ungerboeck.
+* Włącz użytkownikom automatyczne logowanie do oprogramowania Ungerboeck za pomocą ich kont usługi Azure AD.
+* Zarządzaj kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby rozpocząć pracę, potrzebne są następujące elementy:
+Aby rozpocząć, potrzebujesz następujących elementów:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz pobrać miesięcznej bezpłatnej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
-* Oprogramowanie Ungerboeck logowania jednokrotnego (SSO) włączone subskrypcji.
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać miesięczny bezpłatny okres próbny [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja z włączoną funkcją logowania jednokrotnego ungerboeck Software (SSO).
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku, skonfiguruj i przetestuj logowania jednokrotnego usługi Azure AD w środowisku testowym. Oprogramowanie Ungerboeck obsługuje **SP** jednokrotne logowanie inicjowane przez.
+W tym samouczku można skonfigurować i przetestować samouszeńców usługi Azure AD w środowisku testowym. Ungerboeck Software **obsługuje** sp zainicjowane SSO.
 
 ## <a name="adding-ungerboeck-software-from-the-gallery"></a>Dodawanie oprogramowania Ungerboeck z galerii
 
-Aby skonfigurować integrację Ungerboeck oprogramowania w usłudze Azure AD, należy dodać Ungerboeck oprogramowania z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację oprogramowania Ungerboeck z usługą Azure AD, należy dodać oprogramowanie Ungerboeck z galerii do listy zarządzanych aplikacji SaaS.
 
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
-1. W okienku nawigacji po lewej stronie wybierz **usługi Azure Active Directory** usługi.
-1. Przejdź do **aplikacje dla przedsiębiorstw** , a następnie wybierz **wszystkie aplikacje**.
-1. Aby dodać nową aplikację, wybierz **nową aplikację**.
-1. W **Dodaj z galerii** sekcji, wpisz **oprogramowania Ungerboeck** w polu wyszukiwania.
-1. Wybierz **oprogramowania Ungerboeck** z wyników panelu, a następnie dodać aplikację. Odczekaj kilka sekund, podczas gdy aplikacja zostanie dodany do Twojej dzierżawy.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta służbowego lub konta firmy Microsoft.
+1. W lewym okienku nawigacji wybierz usługę **Azure Active Directory.**
+1. Przejdź do **aplikacji korporacyjnych,** a następnie wybierz pozycję **Wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
+1. W sekcji **Dodaj z galerii** wpisz **Polecenie Ungerboeck Software** w polu wyszukiwania.
+1. Wybierz **pozycję Ungerboeck Software** z panelu wyników, a następnie dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-Konfiguracja i testowanie logowania jednokrotnego usługi Azure AD przy użyciu oprogramowania Ungerboeck za pomocą użytkownika testu o nazwie **B.Simon**. Logowania jednokrotnego do pracy należy ustanowić relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w oprogramowaniu Ungerboeck.
+Konfigurowanie i testowanie usługi Azure AD SSO za pomocą oprogramowania Ungerboeck przy użyciu użytkownika testowego o nazwie **B.Simon**. Aby użytkownik łączony sytuować działał, należy ustanowić relację łącza między użytkownikiem usługi Azure AD a powiązanym użytkownikiem w oprogramowaniu Ungerboeck.
 
-Aby skonfigurować i przetestować logowania jednokrotnego usługi Azure AD przy użyciu oprogramowania Ungerboeck, wykonaj poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować usługę Azure AD SSO za pomocą oprogramowania Ungerboeck, wykonaj następujące bloki konstrukcyjne:
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-sso)**  aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie logowania jednokrotnego oprogramowania Ungerboeck](#configure-ungerboeck-software-sso)**  do konfigurowania ustawień logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  do testowania usługi Azure AD logowanie jednokrotne za pomocą B.Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  umożliwiające B.Simon do użycia usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego oprogramowania Ungerboeck](#create-ungerboeck-software-test-user)**  mieć odpowiednikiem B.Simon w oprogramowaniu Ungerboeck, połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-sso)**  Aby sprawdzić, czy konfiguracja działa.
+1. **[Skonfiguruj sytuasz usługi Azure AD,](#configure-azure-ad-sso)** aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Skonfiguruj identyfikator Y logowania do logowania do sieci Ungerboeck,](#configure-ungerboeck-software-sso)** aby skonfigurować ustawienia logowania przyłącza SSO po stronie aplikacji.
+3. **[Utwórz użytkownika testowego usługi Azure AD,](#create-an-azure-ad-test-user)** aby przetestować logowanie jednokrotne usługi Azure AD za pomocą usługi B.Simon.
+4. **[Przypisz użytkownika testowego usługi Azure AD,](#assign-the-azure-ad-test-user)** aby włączyć B.Simon do korzystania z usługi Azure AD logowania jednokrotnego.
+5. **[Utwórz ungerboeck użytkownika testowego oprogramowania,](#create-ungerboeck-software-test-user)** aby mieć odpowiednik B.Simon w Ungerboeck Software, który jest połączony z reprezentacji usługi Azure AD użytkownika.
+6. **[Przetestuj sytą próbę sycącą,](#test-sso)** aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurowanie rejestracji jednokrotnej w usłudze Azure AD
 
-Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azure AD w witrynie Azure portal.
+Wykonaj następujące kroki, aby włączyć usługę Azure AD SSO w witrynie Azure portal.
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **oprogramowania Ungerboeck** strona integracji aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **logowanie jednokrotne**.
-1. Na **wybierz jedną metodę logowania jednokrotnego** wybierz **SAML**.
-1. Na **Ustaw się logowanie jednokrotne z SAML** kliknij ikonę edycji/pióra **podstawową konfigurację protokołu SAML** edytować ustawienia.
+1. W [witrynie Azure portal](https://portal.azure.com/)na stronie Integracja aplikacji **Ungerboeck** znajdź sekcję **Zarządzaj** i wybierz pozycję **Logowanie jednokrotne**.
+1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą saml** kliknij ikonę edycji/pióra dla **podstawowej konfiguracji SAML,** aby edytować ustawienia.
 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-1. Na **podstawową konfigurację protokołu SAML** strony, wprowadź wartości dla następujących pól:
+1. Na stronie **Podstawowa konfiguracja SAML** wprowadź wartości dla następujących pól:
 
     1. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<SUBDOMAIN>.ungerboeck.com/prod`
 
-    1. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, korzystając z następującego wzorca:
+    1. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: 
     
-       **W środowisku produkcyjnym**:
+       **Dla środowiska produkcyjnego:**
 
        | |
        |-|
@@ -93,7 +93,7 @@ Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azur
        | `https://<SUBDOMAIN>.ungerboeck.io/prod` |
        | |
 
-        **Dla środowiska testowego**:
+        **Dla środowiska badawczego:**
 
        | |
        |-|
@@ -103,17 +103,17 @@ Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azur
        | |
 
    > [!NOTE]
-   > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego konta dla adresu URL i identyfikator, który zostało wyjaśnione w dalszej części w **skonfigurować Ungerboeck oprogramowania logowania jednokrotnego** części samouczka.
+   > Te wartości nie są prawdziwe. Zaktualizuj te wartości za pomocą rzeczywistego adresu URL i identyfikatora logowania logowania logowania, który został wyjaśniony w dalszej części sekcji **Konfigurowanie logowania jednokrotnego oprogramowania Ungerboeck w** samouczku.
 
 1. W sekcji **Certyfikat podpisywania SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Certyfikat podpisywania SAML**.
 
     ![Edytowanie certyfikatu podpisywania SAML](common/edit-certificate.png)
 
-1. W sekcji **Certyfikat podpisywania SAML** skopiuj wartość **Odcisk palca** i zapisz go na komputerze.
+1. W sekcji **Certyfikat podpisywania SAML** skopiuj **odcisk palca** i zapisz go na komputerze.
 
     ![Kopiowanie wartości Odcisk palca](common/copy-thumbprint.png)
 
-1. Na **Konfigurowanie oprogramowania Ungerboeck** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+1. W sekcji **Konfigurowanie oprogramowania Ungerboeck** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -121,54 +121,54 @@ Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azur
 
     b. Identyfikator usługi Azure AD
 
-    c. Adres URL wylogowywania
+    d. Adres URL wylogowywania
 
-### <a name="configure-ungerboeck-software-sso"></a>Należy skonfigurować oprogramowanie Ungerboeck logowania jednokrotnego
+### <a name="configure-ungerboeck-software-sso"></a>Konfigurowanie aplikacji SYC oprogramowania Ungerboeck
 
-Aby skonfigurować logowanie jednokrotne na **Ungerboeck oprogramowania** stronie, musisz wysłać **wartość odcisku palca** i odpowiednie skopiowany adresy URL z portalu Azure, aby [zespołem pomocy technicznej dla oprogramowania Ungerboeck](mailto:Rhonda.Jannings@ungerboeck.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+Aby skonfigurować logowanie jednokrotne po stronie **oprogramowania Ungerboeck,** należy wysłać **wartość Odcisk palca** i odpowiednie skopiowane adresy URL z witryny Azure portal do zespołu pomocy technicznej [Ungerboeck Software](mailto:Rhonda.Jannings@ungerboeck.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji utworzymy użytkownika testowego w witrynie Azure portal, o nazwie B.Simon.
+W tej sekcji utworzysz użytkownika testowego w witrynie Azure portal o nazwie B.Simon.
 
-1. W okienku po lewej stronie w witrynie Azure portal wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
-1. Wybierz **nowego użytkownika** w górnej części ekranu.
-1. W **użytkownika** właściwości, wykonaj następujące kroki:
+1. Z lewego okienka w witrynie Azure portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. Wybierz **pozycję Nowy użytkownik** u góry ekranu.
+1. We właściwościach **Użytkownika** wykonaj następujące kroki:
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
-   1. W **nazwa_użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. W polu **Nazwa użytkownika** username@companydomain.extensionwprowadź pole . Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij pozycję **Utwórz**.
+   1. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można udostępnić B.Simon do udzielania dostępu do oprogramowania Ungerboeck za pomocą platformy Azure logowania jednokrotnego.
+W tej sekcji włączysz B.Simon do korzystania z logowania jednokrotnego platformy Azure, przyznając dostęp do oprogramowania Ungerboeck.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
-1. Na liście aplikacji wybierz **oprogramowania Ungerboeck**.
-1. Na stronie Przegląd usługi aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **użytkowników i grup**.
+1. W portalu Azure wybierz pozycję **Aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **Wszystkie aplikacje**.
+1. Na liście aplikacji wybierz pozycję **Ungerboeck Software**.
+1. Na stronie przegląd aplikacji znajdź sekcję **Zarządzaj** i wybierz pozycję **Użytkownicy i grupy**.
 
-   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
+   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-1. Wybierz **Dodaj użytkownika**, a następnie wybierz **użytkowników i grup** w **Dodaj przydziału** okna dialogowego.
+1. Wybierz **pozycję Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym Dodawanie **przydziału.**
 
     ![Łącze Dodaj użytkownika](common/add-assign-user.png)
 
-1. W **użytkowników i grup** okno dialogowe, wybierz opcję **B.Simon** z listy użytkowników, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
-1. Jeśli oczekujesz wszelkie wartości roli dla asercji SAML w **wybierz rolę** okno dialogowe, wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
-1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B.Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+1. Jeśli oczekujesz dowolnej wartości roli w asercji SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+1. W oknie dialogowym **Dodawanie przydziału** kliknij przycisk **Przypisz.**
 
-### <a name="create-ungerboeck-software-test-user"></a>Tworzenie użytkownika testowego Ungerboeck oprogramowania
+### <a name="create-ungerboeck-software-test-user"></a>Utwórz użytkownika testowego oprogramowania Ungerboeck
 
-W tej sekcji utworzysz użytkownika o nazwie B.Simon Ungerboeck oprogramowania. Praca z [zespołem pomocy technicznej oprogramowania Ungerboeck](mailto:Rhonda.Jannings@ungerboeck.com) Aby dodać użytkowników na platformie Ungerboeck oprogramowania. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie B.Simon w Ungerboeck Software. Współpracuj z [zespołem pomocy technicznej Ungerboeck Software,](mailto:Rhonda.Jannings@ungerboeck.com) aby dodać użytkowników na platformie Ungerboeck Software. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
 ### <a name="test-sso"></a>Test SSO
 
-Po wybraniu kafelka Ungerboeck oprogramowania w panelu dostępu, powinny być automatycznie zarejestrowaniu w usłudze oprogramowania Ungerboeck, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po wybraniu kafelka Ungerboeck Software w Panelu dostępu należy automatycznie zalogować się do oprogramowania Ungerboeck, dla którego skonfigurowano logowanie logowane. Aby uzyskać więcej informacji na temat Panelu dostępu, zobacz [Wprowadzenie do Panelu dostępu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

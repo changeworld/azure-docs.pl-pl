@@ -1,6 +1,6 @@
 ---
-title: Samouczek odpowiedzi na zdarzenia — Azure Security Center
-description: W tym samouczku dowiesz się, jak Klasyfikacja alerty zabezpieczeń, określić przyczynę główną & zakres zdarzenia i przeszukać dane zabezpieczeń.
+title: Samouczek reagowania na incydenty — Usługa Azure Security Center
+description: W tym samouczku dowiesz się, jak klasyfikować alerty zabezpieczeń, określać główną przyczynę & zakresu zdarzenia i wyszukiwać dane zabezpieczeń.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
 ms.openlocfilehash: 49e2af8fd2d71e1e5103f5337d5c7104c2904322
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74559197"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>Samouczek: Reagowanie na zdarzenia związane z zabezpieczeniami
@@ -29,7 +29,7 @@ Usługa Security Center w sposób ciągły analizuje obciążenia chmury hybrydo
 > * Dalsze badanie w celu ustalenia głównej przyczyny i zakresu zdarzenia zabezpieczeń
 > * Wyszukiwanie danych zabezpieczeń pomocnych w badaniu
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Aby wypróbować funkcje omówione w tym samouczku, musisz korzystać ze standardowej warstwy cenowej usługi Security Center. Warstwę Standardowa usługi Security Center możesz wypróbować bezpłatnie. Aby dowiedzieć się więcej, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/security-center/). Przewodnik szybkiego startu [Dołączanie subskrypcji platformy Azure do standardowej usługi Security Center](security-center-get-started.md) przeprowadzi Cię przez procedurę uaktualniania do warstwy standardowej.
@@ -43,12 +43,12 @@ Na potrzeby tego scenariusza skoncentrujemy się na rolach następujących czło
 
 ![Cykl życia reakcji na zdarzenie](./media/tutorial-security-incident/security-center-incident-response.png)
 
-Magda zajmuje się operacjami zabezpieczeń. Ich obowiązki obejmują:
+Magda zajmuje się operacjami zabezpieczeń. Do ich obowiązków należą:
 
 * Stałe monitorowanie zagrożeń bezpieczeństwa i reagowanie na nie.
 * W razie potrzeby eskalację problemu do właściciela obciążeń chmurowych lub analityka zabezpieczeń.
 
-Sam jest analitykiem zabezpieczeń, a ich obowiązki obejmują:
+Sam jest analitykiem bezpieczeństwa, a ich obowiązki obejmują:
 
 * Badanie ataków.
 * Korygowanie działań na podstawie alertów.
@@ -78,7 +78,7 @@ Usługa Security Center zapewnia spójny widok wszystkich alertów zabezpieczeń
 
    Typy alertów mogą być różne. Aby uzyskać więcej szczegółowych informacji na temat typu alertu i możliwych czynności korygujących, przeczytaj [Informacje o alertach zabezpieczeń w usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). W przypadku alertów, które można bezpiecznie odrzucić, możesz kliknąć alert prawym przyciskiem myszy i wybrać pozycję **Odrzuć**:
 
-   ![Alert](./media/tutorial-security-incident/tutorial-security-incident-fig4.png)
+   ![Alerty](./media/tutorial-security-incident/tutorial-security-incident-fig4.png)
 
 4. Jeśli główna przyczyna i zakres złośliwych działań są nieznane, przejdź do następnego kroku, aby zbadać problem dokładniej.
 
@@ -104,14 +104,14 @@ Inne przewodniki szybkiego startu i samouczki w tej kolekcji bazują na tym prze
 2. Wybierz subskrypcję lub zasady, którym chcesz przywrócić warstwę bezpłatną. Zostanie otwarte okno **Zasady zabezpieczeń**.
 3. W obszarze **SKŁADNIKI ZASAD** wybierz pozycję **Warstwa cenowa**.
 4. Wybierz pozycję **Bezpłatna**, aby zmienić subskrypcję z warstwy standardowej na warstwę bezpłatną.
-5. Wybierz pozycję **Zapisz**.
+5. Wybierz **pozycję Zapisz**.
 
 Jeśli chcesz wyłączyć automatyczną aprowizację:
 
-1. Wróć do menu głównego usługi Security Center i wybierz pozycję **Zasady zabezpieczeń**.
+1. Wróć do menu głównego Centrum zabezpieczeń i wybierz pozycję **Zasady zabezpieczeń**.
 2. Wybierz subskrypcję, dla której chcesz wyłączyć automatyczną aprowizację.
 3. W sekcji **Zasady zabezpieczeń — zbieranie danych** wybierz pozycję **Wyłącz** w obszarze **Dołączanie**, aby wyłączyć automatyczną aprowizację.
-4. Wybierz pozycję **Zapisz**.
+4. Wybierz **pozycję Zapisz**.
 
 >[!NOTE]
 > Wyłączenie automatycznej aprowizacji nie powoduje usunięcia programu Microsoft Monitoring Agent z maszyn wirtualnych platformy Azure, na których aprowizowano agenta. Wyłączenie automatycznej aprowizacji powoduje ograniczenie monitorowania zabezpieczeń dla zasobów.

@@ -1,17 +1,17 @@
 ---
-title: Samouczek — łączenie Azure Analysis Services z Power BI Desktop | Microsoft Docs
+title: Samouczek — łączenie usług analizy platformy Azure z pulpitem usługi Power BI | Dokumenty firmy Microsoft
 author: minewiskan
-description: Dowiedz się, jak uzyskać Analysis Services nazwę serwera z Azure Portal, a następnie połączyć się z serwerem przy użyciu Power BI Desktop.
+description: Dowiedz się, jak uzyskać nazwę serwera usług Analysis Services z witryny Azure Portal, a następnie połączyć się z serwerem przy użyciu programu Power BI Desktop.
 ms.service: azure-analysis-services
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: owend
 ms.openlocfilehash: 4d8c753f06e58fd1cce1c55eca213637cb70e436
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73572319"
 ---
 # <a name="tutorial-connect-with-power-bi-desktop"></a>Samouczek: nawiązywanie połączenia za pomocą programu Power BI Desktop
@@ -43,7 +43,7 @@ Skopiuj nazwę serwera z **portalu Azure** > serwer > **Omówienie** > **Nazwa s
 
 ## <a name="connect-in-power-bi-desktop"></a>Nawiązywanie połączenie w programie Power BI Desktop
 
-1. W programie Power BI Desktop kliknij pozycję **Pobierz dane** > **Azure** > **Baza danych usług Azure Analysis Services**.
+1. W programie Power BI Desktop kliknij pozycję **Pobierz bazę** > danych usług Data**Azure** > **Analysis Services**.
 
    ![Łączenie w oknie Pobieranie danych](./media/analysis-services-tutorial-pbid/aas-pbid-connect-aasserver.png)
 
@@ -59,7 +59,7 @@ Skopiuj nazwę serwera z **portalu Azure** > serwer > **Omówienie** > **Nazwa s
 
    ![Wizualizacje](./media/analysis-services-tutorial-pbid/aas-pbid-visualizations-report.png)
 
-5. W tabeli **Pola** > **Internet Sales** wybierz miary **Internet Sales Total** i **Margin**. W tabeli **Product Category** wybierz miarę **Product Category Name**.
+5. W tabeli **Fields** > **Internet Sales** wybierz pozycję **Suma sprzedaży internetowej** i Margines **miar.** W tabeli **Product Category** wybierz miarę **Product Category Name**.
 
    ![Ukończony raport](./media/analysis-services-tutorial-pbid/aas-pbid-complete-report.png)
 
@@ -70,4 +70,4 @@ Skopiuj nazwę serwera z **portalu Azure** > serwer > **Omówienie** > **Nazwa s
 Jeśli raport nie będzie już potrzebny, nie zapisuj go lub usuń pliki, jeśli raport został już zapisany.
 
 ## <a name="next-steps"></a>Następne kroki
-W tym samouczku przedstawiono sposób użycia programu Power BI Desktop do nawiązywania połączenia z modelem danych na serwerze i tworzenia podstawowego raportu. Jeśli nie znasz sposobu tworzenia modelu danych, zapoznaj się z [samouczkiem dotyczącym modelowania danych tabelarycznych sprzedaży internetowej firmy Adventure Works](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial) w dokumentacji SQL Server Analysis Services.
+W tym samouczku przedstawiono sposób użycia programu Power BI Desktop do nawiązywania połączenia z modelem danych na serwerze i tworzenia podstawowego raportu. Jeśli nie jesteś zaznajomiony z jak utworzyć model danych, zobacz [Adventure Works sprzedaży internetowej tabelaryczne modelowanie danych samouczek](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial) w docs sql server analysis services.

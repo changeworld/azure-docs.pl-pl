@@ -1,5 +1,5 @@
 ---
-title: Tworzenie pierwszej fabryki danych (PowerShell)
+title: Zbuduj pierwszą fabrykę danych (PowerShell)
 description: W tym samouczku przedstawiono tworzenie przykładowego potoku usługi Azure Data Factory przy użyciu programu Azure PowerShell.
 services: data-factory
 documentationcenter: ''
@@ -12,19 +12,19 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.openlocfilehash: 94f11e306f866496d4ae03dad03b070d26d616e0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75438993"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>Samouczek: tworzenie pierwszej fabryki danych platformy Azure przy użyciu programu Azure PowerShell
 > [!div class="op_single_selector"]
 > * [Przegląd i wymagania wstępne](data-factory-build-your-first-pipeline.md)
-> * [Program Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
-> * [Program PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
+> * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
+> * [Powershell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Szablon usługi Resource Manager](data-factory-build-your-first-pipeline-using-arm.md)
-> * [Interfejs API REST](data-factory-build-your-first-pipeline-using-rest-api.md)
+> * [INTERFEJS API ODPOCZYNKU](data-factory-build-your-first-pipeline-using-rest-api.md)
 >
 >
 
@@ -71,7 +71,7 @@ W tym kroku opisano użycie programu Azure PowerShell do utworzenia fabryki dany
     New-AzResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
     ```
     W niektórych krokach w tym samouczku zakłada się, że używana jest grupa zasobów o nazwie ADFTutorialResourceGroup. Jeśli używasz innej grupy zasobów, podczas wykonywania instrukcji w tym samouczku trzeba będzie wstawić jej nazwę zamiast nazwy ADFTutorialResourceGroup.
-3. Uruchom polecenie cmdlet **New-AzDataFactory** , które tworzy fabrykę danych o nazwie **FirstDataFactoryPSH**.
+3. Uruchom polecenie cmdlet **New-AzDataFactory,** które tworzy fabrykę danych o nazwie **FirstDataFactoryPSH**.
 
     ```PowerShell
     New-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name FirstDataFactoryPSH –Location "West US"
@@ -119,22 +119,22 @@ W tym kroku opisano łączenie konta usługi Azure Storage z fabryką danych. Do
     ```
     Zastąp wartość **account name** nazwą konta usługi Azure Storage oraz wartość **account key** kluczem dostępu konta usługi Azure Storage. Aby dowiedzieć się, jak uzyskać klucz dostępu do magazynu, zobacz [Zarządzanie kluczami dostępu do konta magazynu](../../storage/common/storage-account-keys-manage.md).
 2. W programie PowerShell Azure przejdź do folderu ADFGetStarted.
-3. Można użyć polecenia cmdlet **New-AzDataFactoryLinkedService** , które tworzy połączoną usługę. To polecenie cmdlet i inne polecenia cmdlet usługi Data Factory używane w tym samouczku wymagają przekazania wartości dla parametrów *ResourceGroupName* i *DataFactoryName*. Alternatywnie można użyć polecenia **Get-AzDataFactory** , aby uzyskać obiekt **DataFactory** i przekazać obiekt bez wpisywania *ResourceGroupName* i *datafactoryname* przy każdym uruchomieniu poleceń cmdlet. Uruchom następujące polecenie, aby przypisać dane wyjściowe polecenia cmdlet **Get-AzDataFactory** do zmiennej **$DF** .
+3. Można użyć polecenia cmdlet **New-AzDataFactoryLinkedService,** które tworzy usługę połączone. To polecenie cmdlet i inne polecenia cmdlet usługi Data Factory używane w tym samouczku wymagają przekazywania wartości parametrów *ResourceGroupName* i *DataFactoryName.* Alternatywnie można użyć **Get-AzDataFactory,** aby uzyskać **obiekt DataFactory** i przekazać obiekt bez wpisywania *ResourceGroupName* i *DataFactoryName* przy każdym uruchomieniu polecenia cmdlet. Uruchom następujące polecenie, aby przypisać dane wyjściowe polecenia cmdlet **Get-AzDataFactory** do zmiennej **$df.**
 
     ```PowerShell
     $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name FirstDataFactoryPSH
     ```
-4. Teraz uruchom polecenie cmdlet **New-AzDataFactoryLinkedService** , które tworzy połączoną usługę **StorageLinkedService** .
+4. Teraz uruchom polecenie cmdlet **New-AzDataFactoryLinkedService,** które tworzy połączone usługi **StorageLinkedService.**
 
     ```PowerShell
     New-AzDataFactoryLinkedService $df -File .\StorageLinkedService.json
     ```
-    Jeśli nie uruchomić polecenie cmdlet **Get-AzDataFactory** i przypiszesz dane wyjściowe do zmiennej **$DF** , trzeba będzie określić wartości parametrów *ResourceGroupName* i *datafactoryname* w następujący sposób.
+    Jeśli nie uruchomisz polecenia cmdlet **Get-AzDataFactory** i przypisano dane wyjściowe do **zmiennej $df,** należy określić wartości parametrów *ResourceGroupName* i *DataFactoryName* w następujący sposób.
 
     ```PowerShell
     New-AzDataFactoryLinkedService -ResourceGroupName ADFTutorialResourceGroup -DataFactoryName FirstDataFactoryPSH -File .\StorageLinkedService.json
     ```
-    Jeśli zamkniesz Azure PowerShell w środku samouczka, musisz uruchomić polecenie cmdlet **Get-AzDataFactory** przy następnym uruchomieniu Azure PowerShell, aby ukończyć samouczek.
+    Jeśli zamkniesz program Azure PowerShell w środku samouczka, musisz uruchomić polecenie cmdlet **Get-AzDataFactory** przy następnym uruchomieniu programu Azure PowerShell, aby ukończyć samouczek.
 
 ### <a name="create-azure-hdinsight-linked-service"></a>Tworzenie połączonej usługi Azure HDInsight
 W tym kroku przedstawiono łączenie klastra usługi HDInsight na żądanie z fabryką danych. Klaster usługi HDInsight jest automatycznie tworzony w czasie wykonywania oraz usuwany po zakończeniu przetwarzania i określonym czasie bezczynności. Możesz użyć własnego klastra usługi HDInsight zamiast klastra usługi HDInsight na żądanie. Szczegółowe informacje znajdują się w artykule [Compute Linked Services](data-factory-compute-linked-services.md) (Połączone usługi obliczeniowe).
@@ -167,19 +167,19 @@ W tym kroku przedstawiono łączenie klastra usługi HDInsight na żądanie z fa
     Pamiętaj o następujących kwestiach:
 
    * Usługa Data Factory tworzy klaster usługi HDInsight **oparty na systemie Linux** za pomocą kodu JSON. Szczegółowe informacje znajdują się w artykule [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) (Połączona usługa HDInsight na żądanie).
-   * Możesz użyć **własnego klastra usługi HDInsight** zamiast klastra usługi HDInsight na żądanie. Szczegółowe informacje znajdują się w artykule [HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) (Połączona usługa HDInsight).
-   * Klaster usługi HDInsight tworzy **kontener domyślny** w magazynie obiektów blob określonym w kodzie JSON (**linkedServiceName**). Usługa HDInsight nie powoduje usunięcia tego kontenera w przypadku usunięcia klastra. To zachowanie jest celowe. W przypadku połączonej usługi HDInsight na żądanie klaster usługi HDInsight jest tworzony przy każdym przetwarzaniu wycinka — o ile w tym momencie nie istnieje aktywny klaster (**timeToLive**). Klaster jest automatycznie usuwany po zakończeniu przetwarzania.
+   * Można użyć **własnego klastra HDInsight** zamiast klastra HDInsight na żądanie. Szczegółowe informacje znajdują się w artykule [HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) (Połączona usługa HDInsight).
+   * Klaster HDInsight tworzy **domyślny kontener** w magazynie obiektów blob określonym w JSON (**linkedServiceName**). Usługa HDInsight nie powoduje usunięcia tego kontenera w przypadku usunięcia klastra. To zachowanie jest celowe. W przypadku usługi połączonej HDInsight na żądanie klaster HDInsight jest tworzony za każdym razem, gdy wycinek jest przetwarzany, chyba że istnieje istniejący klaster na żywo **(timeToLive).** Klaster jest automatycznie usuwany po zakończeniu przetwarzania.
 
-       Po przetworzeniu większej liczby wycinków w usłudze Azure Blob Storage będzie widocznych wiele kontenerów. Jeśli nie są potrzebne do rozwiązywania problemów z zadaniami, można je usunąć, aby zmniejszyć koszt przechowywania. Nazwy tych kontenerów są zgodne ze wzorcem: „adf**twojanazwafabrykidanych**-**nazwapołączonejusługi**-znacznikdatygodziny”. Aby usunąć kontenery z usługi Azure Blob Storage, użyj takich narzędzi, jak [Microsoft Storage Explorer](https://storageexplorer.com/).
+       Po przetworzeniu większej liczby wycinków w usłudze Azure Blob Storage będzie widocznych wiele kontenerów. Jeśli nie są potrzebne do rozwiązywania problemów z zadaniami, można je usunąć, aby zmniejszyć koszt przechowywania. Nazwy tych kontenerów są zgodne ze wzorcem: "adf**yourdatafactoryname**-**linkedservicename**-datetimestamp". Aby usunąć kontenery z usługi Azure Blob Storage, użyj takich narzędzi, jak [Microsoft Storage Explorer](https://storageexplorer.com/).
 
      Szczegółowe informacje znajdują się w artykule [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) (Połączona usługa HDInsight na żądanie).
-2. Uruchom polecenie cmdlet **New-AzDataFactoryLinkedService** , które tworzy połączoną usługę o nazwie HDInsightOnDemandLinkedService.
+2. Uruchom polecenie cmdlet **New-AzDataFactoryLinkedService,** które tworzy połączoną usługę o nazwie HDInsightOnDemandLinkedService.
     
     ```PowerShell
     New-AzDataFactoryLinkedService $df -File .\HDInsightOnDemandLinkedService.json
     ```
 
-## <a name="create-datasets"></a>Utwórz zestawy danych
+## <a name="create-datasets"></a>Tworzenie zestawów danych
 W tym kroku opisano tworzenie zestawów danych do reprezentowania danych wejściowych i wyjściowych na potrzeby przetwarzania przy użyciu programu Hive. Te zestawy danych dotyczą elementu **StorageLinkedService** utworzonego wcześniej w ramach tego samouczka. Połączona usługa wskazuje konto usługi Azure Storage, a zestawy danych określają kontener, folder i nazwę pliku w magazynie, w którym przechowywane są dane wejściowe i wyjściowe.
 
 ### <a name="create-input-dataset"></a>Tworzenie wejściowego zestawu danych
@@ -336,12 +336,12 @@ W tym kroku opisano tworzenie pierwszego potoku za pomocą działania **HDInsigh
 ## <a name="monitor-pipeline"></a>Monitorowanie potoku
 W tym kroku opisano użycie programu Azure PowerShell do monitorowania tego, co dzieje się w fabryce danych platformy Azure.
 
-1. Uruchom polecenia **Get-AzDataFactory** i przypisz dane wyjściowe do zmiennej **$DF** .
+1. Uruchom **Get-AzDataFactory** i przypisz dane wyjściowe do **zmiennej $df.**
 
     ```PowerShell
     $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name FirstDataFactoryPSH
     ```
-2. Uruchom polecenie **Get-AzDataFactorySlice** , aby uzyskać szczegółowe informacje na temat wszystkich wycinków **EmpSQLTable**, który jest tabelą wyjściową potoku.
+2. Uruchom **Get-AzDataFactorySlice,** aby uzyskać szczegółowe informacje o wszystkich plasterkach **tabeli EmpSQLTable**, która jest tabelą danych wyjściowych potoku.
 
     ```PowerShell
     Get-AzDataFactorySlice $df -DatasetName AzureBlobOutput -StartDateTime 2017-07-01
@@ -360,7 +360,7 @@ W tym kroku opisano użycie programu Azure PowerShell do monitorowania tego, co 
     LatencyStatus     :
     LongRetryCount    : 0
     ```
-3. Uruchom **Get-AzDataFactoryRun** , aby uzyskać szczegółowe informacje o uruchomieniach działania dla określonego wycinka.
+3. Uruchom **Get-AzDataFactoryRun,** aby uzyskać szczegółowe informacje o działaniu uruchamia dla określonego plasterka.
 
     ```PowerShell
     Get-AzDataFactoryRun $df -DatasetName AzureBlobOutput -StartDateTime 2017-07-01
@@ -401,7 +401,7 @@ W tym kroku opisano użycie programu Azure PowerShell do monitorowania tego, co 
 ## <a name="summary"></a>Podsumowanie
 W tym samouczku opisano tworzenie fabryki danych Azure do przetwarzania danych przez uruchomienie skryptu programu Hive w klastrze platformy Hadoop w usłudze HDInsight. Użyto Edytora fabryki danych w witrynie Azure Portal, aby:
 
-1. Utworzyć **fabrykę danych** Azure.
+1. Tworzenie **fabryki danych** Azure.
 2. Utworzyć dwie **połączone usługi**:
    1. Połączoną usługę **Azure Storage** w celu połączenia magazynu obiektów blob Azure, w którym przechowywane są pliki wejściowe/wyjściowe, z fabryką danych.
    2. Połączoną usługę **Azure HDInsight** na żądanie w celu połączenia klastra platformy Hadoop w usłudze HDInsight na żądanie z fabryką danych. Usługa Fabryka danych Azure tworzy klaster just in time platformy Hadoop w usłudze HDInsight, aby przetwarzać dane wejściowe i generować dane wyjściowe.

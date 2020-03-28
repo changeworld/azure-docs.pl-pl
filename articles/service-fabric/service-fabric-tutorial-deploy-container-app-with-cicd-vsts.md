@@ -1,14 +1,14 @@
 ---
-title: Wdrażanie aplikacji kontenera przy użyciu ciągłej integracji/ciągłego dostarczania
+title: Wdrażanie aplikacji kontenera przy zastosowaniu ciągłej integracji/ciągłego wdrażania
 description: W ramach tego samouczka nauczysz się konfigurować ciągłą integrację i ciągłe wdrażanie aplikacji kontenera usługi Azure Service Fabric za pomocą programu Visual Studio i usługi Azure DevOps.
 ms.topic: tutorial
 ms.date: 08/29/2018
 ms.custom: mvc
 ms.openlocfilehash: 9cf619eddd07bbe55cd7aea5f27051a7d0415c24
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75614134"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Samouczek: wdrażanie aplikacji kontenera przy użyciu ciągłej integracji/ciągłego wdrażania w klastrze usługi Service Fabric
@@ -32,7 +32,7 @@ Przed rozpoczęciem tego samouczka:
 
 ## <a name="prepare-a-publish-profile"></a>Przygotowywanie profilu publikowania
 
-Teraz po [wdrożeniu aplikacji kontenera](service-fabric-host-app-in-a-container.md) wszystko jest gotowe do skonfigurowania ciągłej integracji.  Najpierw przygotuj profil publikowania w aplikacji na potrzeby procesu wdrażania wykonywanego w ramach usługi Azure DevOps.  Profil publikowania należy skonfigurować pod kątem klastra, który został wcześniej utworzony.  Uruchom program Visual Studio i otwórz istniejący projekt aplikacji usługi Service Fabric.  W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy aplikację i wybierz polecenie **Opublikuj...** .
+Teraz po [wdrożeniu aplikacji kontenera](service-fabric-host-app-in-a-container.md) wszystko jest gotowe do skonfigurowania ciągłej integracji.  Najpierw przygotuj profil publikowania w aplikacji na potrzeby procesu wdrażania wykonywanego w ramach usługi Azure DevOps.  Profil publikowania należy skonfigurować pod kątem klastra, który został wcześniej utworzony.  Uruchom program Visual Studio i otwórz istniejący projekt aplikacji usługi Service Fabric.  W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy aplikację i wybierz polecenie **Opublikuj...**.
 
 Wybierz profil docelowy w ramach projektu aplikacji na potrzeby przepływu pracy ciągłej integracji, na przykład chmurę.  Określ punkt końcowy połączenia klastra.  Zaznacz pole wyboru **Uaktualnij aplikację**, aby uaktualnić aplikację dla każdego wdrożenia w usłudze Azure DevOps.  Kliknij hiperlink **Zapisz**, aby zapisać ustawienia w profilu publikowania, a następnie kliknij przycisk **Anuluj** w celu zamknięcia okna dialogowego.
 
@@ -42,7 +42,7 @@ Wybierz profil docelowy w ramach projektu aplikacji na potrzeby przepływu pracy
 
 Udostępnij pliki źródłowe swojej aplikacji w projekcie zespołowym usługi Azure DevOps, aby umożliwić generowanie kompilacji.
 
-Utwórz nowe lokalne repozytorium Git dla projektu, wybierając pozycję **Dodaj do kontroli źródła** -> **Git** na pasku stanu w prawym dolnym rogu programu Visual Studio.
+Utwórz nowe lokalne repozytorium Git dla swojego projektu, wybierając **dodaj do kontroli** -> źródła**Git** na pasku stanu w prawym dolnym rogu programu Visual Studio.
 
 W widoku **Wypychanie** w programie **Team Explorer** wybierz przycisk **Opublikuj repozytorium Git** w obszarze **Wypychanie do usługi Azure DevOps**.
 
@@ -71,7 +71,7 @@ Wybierz opcję **Potoki** na panelu po lewej, a następnie kliknij pozycję **No
 
 ![Nowy potok][new-pipeline]
 
-Wybierz pozycję **Azure Repos Git** jako źródło, nazwę Twojego projektu zespołowego, Twoje repozytorium projektu i domyślną gałąź **master** lub kompilacje ręczne i zaplanowane.  Następnie kliknij pozycję **Kontynuuj**.
+Wybierz pozycję **Azure Repos Git** jako źródło, nazwę Twojego projektu zespołowego, Twoje repozytorium projektu i domyślną gałąź **master** lub kompilacje ręczne i zaplanowane.  Następnie kliknij przycisk **Kontynuuj**.
 
 W obszarze **Wybieranie szablonu** wybierz szablon **Aplikacja usługi Azure Service Fabric z obsługą platformy Docker**, a następnie kliknij przycisk **Zastosuj**.
 
@@ -99,7 +99,7 @@ W oknie dialogowym **Zapisywanie potoku i kolejki kompilacji** kliknij pozycję 
 
 ![Wybieranie wyzwalaczy][save-and-queue]
 
-Kompilacje można również wyzwalać w ramach procesu wypychania lub ewidencjonowania. Aby sprawdzić postęp kompilacji, przejdź do karty **kompilacje** .  Po sprawdzeniu, czy kompilacja została wykonana pomyślnie, zdefiniuj definicję wydania, która wdraża aplikację w klastrze.
+Kompilacje można również wyzwalać w ramach procesu wypychania lub ewidencjonowania. Aby sprawdzić postęp kompilacji, przejdź do karty **Kompilacje.**  Po sprawdzeniu, czy kompilacja jest wykonywana pomyślnie, zdefiniuj definicję wydania, która wdraża aplikację w klastrze.
 
 ### <a name="create-a-release-definition"></a>Tworzenie definicji wydania
 
@@ -126,7 +126,7 @@ Kliknij przycisk **Ustawienia platformy Docker**, a następnie opcję **Konfigur
 
 ![Agent potoku wydawania][release-pipeline-agent]
 
-Następnie dodaj artefakt kompilacji do potoku, aby umożliwić definicji wydania odnalezienie danych wyjściowych kompilacji. Wybierz pozycję **Potok**, a następnie **Artefakty**-> **+ Dodaj**.  W obszarze **Źródło (definicja kompilacji)** wybierz wcześniej utworzoną definicję kompilacji.  Kliknij przycisk **Dodaj**, aby zapisać artefakt kompilacji.
+Następnie dodaj artefakt kompilacji do potoku, aby umożliwić definicji wydania odnalezienie danych wyjściowych kompilacji. Wybierz pozycję **Potok**, a następnie **Artefakty**->**+ Dodaj**.  W obszarze **Źródło (definicja kompilacji)** wybierz wcześniej utworzoną definicję kompilacji.  Kliknij przycisk **Dodaj**, aby zapisać artefakt kompilacji.
 
 ![Dodawanie artefaktu][add-artifact]
 
@@ -134,7 +134,7 @@ Włącz wyzwalacz ciągłego wdrażania, aby umożliwić automatyczne tworzenie 
 
 ![Włączanie wyzwalacza][enable-trigger]
 
-Wybierz pozycję **+ Wydanie** -> **Tworzenie wydania** -> **Utwórz**, aby ręcznie utworzyć wydanie. Postęp wydawania możesz monitorować na karcie **Wydania**.
+Wybierz **+ Zwolnij** -> **Utwórz wydanie** -> **Utwórz,** aby ręcznie utworzyć wydanie. Postęp wydawania możesz monitorować na karcie **Wydania**.
 
 Sprawdź, czy wdrożenie zakończyło się pomyślnie, a aplikacja została uruchomiona w klastrze.  Otwórz przeglądarkę internetową i przejdź pod adres `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Zwróć uwagę na wersję aplikacji. W tym przykładzie jest to „1.0.0.20170616.3”.
 

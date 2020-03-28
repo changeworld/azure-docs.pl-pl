@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 34e43789ffb29963d5013b4acc3ea710a961c838
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 9a1a0b37b0fae52677ad989d85e947e0148ac0a5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024062"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80153220"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Samouczek: uruchamianie równoległego obciążenia w usłudze Azure Batch przy użyciu interfejsu API .NET
 
@@ -37,22 +37,22 @@ W tym samouczku przekonwertujesz równolegle pliki multimedialne w formacie MP4 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Program Visual Studio 2017 lub nowszy](https://www.visualstudio.com/vs)lub [.NET Core 2,1](https://www.microsoft.com/net/download/dotnet-core/2.1) dla systemów Linux, macOS i Windows.
+* [Visual Studio 2017 lub nowsze](https://www.visualstudio.com/vs)lub [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1) dla systemów Linux, macOS lub Windows.
 
 * Konto usługi Batch i połączone konto usługi Azure Storage. Aby utworzyć te konta, skorzystaj z przewodników Szybki start dla usługi Batch i [witryny Azure Portal](quick-create-portal.md) lub [interfejsu wiersza polecenia platformy Azure](quick-create-cli.md).
 
 * [64-bitowa wersja narzędzia ffmpeg 3.4 dla systemu Windows](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip) (plik zip). Pobierz plik zip na komputer lokalny. Na potrzeby tego samouczka potrzebujesz tylko pliku zip. Nie musisz go rozpakowywać ani instalować lokalnie.
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
+Zaloguj się do witryny Azure portal w [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="add-an-application-package"></a>Dodawanie pakietu aplikacji
 
 W witrynie Azure Portal dodaj narzędzie ffmpeg jako [pakiet aplikacji](batch-application-packages.md) do konta usługi Batch. Pakiety aplikacji ułatwiają zarządzanie aplikacjami zadań i wdrażanie ich w węzłach obliczeniowych w puli. 
 
-1. W witrynie Azure Portal kliknij pozycję **Więcej usług** > **Konta usługi Batch** i kliknij nazwę konta usługi Batch.
-3. Kliknij pozycję **Aplikacje** > **Dodaj**.
+1. W witrynie Azure portal kliknij pozycję **Więcej kont** > **usługi usługi wsadowe**i kliknij nazwę konta usługi Batch.
+3. Kliknij **pozycję Dodawanie aplikacji** > **.**
 4. W polu **Identyfikator aplikacji** wprowadź nazwę *ffmpeg* i podaj *3.4* jako wersję pakietu. Zaznacz pobrany wcześniej plik zip narzędzia ffmpeg i kliknij przycisk **OK**. Pakiet aplikacji z narzędziem ffmpeg zostanie dodany do konta usługi Batch.
 
 ![Dodawanie pakietu aplikacji](./media/tutorial-parallel-dotnet/add-application.png)
@@ -97,7 +97,7 @@ const string appPackageVersion = "3.4";
 
 Skompiluj i uruchom aplikację w programie Visual Studio lub w wierszu polecenia, używając poleceń `dotnet build` i `dotnet run`. Po uruchomieniu aplikacji przejrzyj kod, aby poznać działanie poszczególnych części aplikacji. Na przykład w programie Visual Studio:
 
-* W Eksploratorze rozwiązań kliknij rozwiązanie prawym przyciskiem myszy, a następnie kliknij polecenie **Kompiluj rozwiązanie**. 
+* Kliknij prawym przyciskiem myszy rozwiązanie w Eksploratorze rozwiązań i kliknij polecenie **Build Solution**. 
 
 * Jeśli zostanie wyświetlony monit, potwierdź przywrócenie pakietów NuGet. Jeśli musisz pobrać brakujące pakiety, upewnij się, że zainstalowano [menedżera pakietów NuGet](https://docs.nuget.org/consume/installing-nuget).
 
@@ -124,7 +124,7 @@ Sample end: 11/19/2018 3:29:36 PM
 Elapsed time: 00:09:14.3418742
 ```
 
-Przejdź do konta usługi Batch w witrynie Azure Portal, aby monitorować pulę, węzły obliczeniowe, zadanie i zadania podrzędne. Na przykład aby wyświetlić mapę cieplną węzłów obliczeniowych w puli, kliknij pozycję **Pule** > *WinFFmpegPool*.
+Przejdź do konta usługi Batch w witrynie Azure Portal, aby monitorować pulę, węzły obliczeniowe, zadanie i zadania podrzędne. Na przykład, aby wyświetlić mapę cieplną węzłów obliczeniowych w puli, kliknij pozycję **Pule** > *WinFFmpegPool*.
 
 Podczas wykonywania zadań podrzędnych mapa cieplna może wyglądać następująco:
 
@@ -171,7 +171,7 @@ CreateContainerIfNotExistAsync(blobClient, inputContainerName);
 CreateContainerIfNotExistAsync(blobClient, outputContainerName);
 ```
 
-Następnie pliki są przekazywane do kontenera wejściowego z lokalnego folderu `InputFiles`. Pliki w magazynie są definiowane jako obiekty [ResourceFile](/dotnet/api/microsoft.azure.batch.resourcefile) usługi Batch, które następnie mogą być pobierane przez tę usługę do węzłów obliczeniowych. 
+Następnie pliki są przekazywane do kontenera wejściowego z lokalnego folderu `InputFiles`. Pliki w magazynie są zdefiniowane jako obiekty [ResourceFile](/dotnet/api/microsoft.azure.batch.resourcefile) usługi Batch, które następnie mogą zostać pobrane przez tę usługę do węzłów obliczeniowych. 
 
 Podczas przekazywania plików używane są dwie metody w pliku `Program.cs`:
 
@@ -198,7 +198,9 @@ Następnie w przykładzie tworzona jest pula węzłów obliczeniowych na koncie 
 
 Liczba węzłów i rozmiar maszyny wirtualnej są ustawiane przy użyciu zdefiniowanych stałych. Usługa Batch obsługuje węzły dedykowane oraz [węzły o niskim priorytecie](batch-low-pri-vms.md). W puli możesz użyć dowolnego z tych typów węzłów lub obu. Węzły dedykowane są zarezerwowane dla Twojej puli. Węzły o niskim priorytecie są oferowane w obniżonej cenie i korzystają z nadwyżek pojemności maszyn wirtualnych na platformie Azure. Węzły o niskim priorytecie staną się niedostępne, jeśli pojemność platformy Azure będzie niewystarczająca. Domyślnie przykładowa aplikacja tworzy pulę zawierającą tylko 5 węzłów o niskim priorytecie i rozmiarze *Standardowa_A1_v2*.
 
-Aplikacja ffmpeg jest wdrażana w węzłach obliczeniowych przez dodanie parametru [ApplicationPackageReference](/dotnet/api/microsoft.azure.batch.applicationpackagereference) do konfiguracji puli.
+>[Uwaga] Upewnij się, że sprawdź przydziały węzłów. Zobacz [Przydziały usługi wsadowej i limity,](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbatch%2Fbatch-quota-limit%23increase-a-quota&data=02%7C01%7CLaura.Brenner%40microsoft.com%7C9843bf742920414ca3e508d7cb83e288%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637201639605899246&sdata=uKY00XhSMjDkFIPGHYmDN4TOtL4UQhFus42ncst95pg%3D&reserved=0) aby uzyskać instrukcje dotyczące tworzenia żądania przydziału."
+
+Aplikacja ffmpeg jest wdrażana w węzłach obliczeniowych przez dodanie parametru [ApplicationPackageReference](/dotnet/api/microsoft.azure.batch.applicationpackagereference) do konfiguracji puli. Aby zapewnić [aktywację aplikacji](https://docs.microsoft.com/cli/azure/batch/application/package?view=azure-cli-latest#az-batch-application-package-activate).
 
 Metoda [CommitAsync](/dotnet/api/microsoft.azure.batch.cloudpool.commitasync) przesyła pulę do usługi Batch.
 
@@ -335,3 +337,6 @@ Aby zapoznać się z innymi przykładami planowania i przetwarzania obciążeń 
 
 > [!div class="nextstepaction"]
 > [Przykłady kodu C# dla usługi Batch](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp)
+
+
+Ustawienie zmiennej instancji LowPriorityNodeCount=0 i DedicatedNodeCount=5 rozwiązało problem i umożliwiło wykonanie zadania.

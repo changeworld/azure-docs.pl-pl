@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie danych z SQL Server do magazynu obiektów BLOB przy użyciu Azure Portal
+title: Kopiowanie danych z programu SQL Server do magazynu obiektów Blob przy użyciu witryny Azure portal
 description: Dowiedz się, jak skopiować dane z lokalnego magazynu danych do chmury przy użyciu własnego środowiska Integration Runtime w usłudze Azure Data Factory.
 services: data-factory
 ms.author: abnarain
@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 01/11/2018
-ms.openlocfilehash: 01f2644874da032b95162f3f5721ab9dbea74265
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/12/2020
+ms.openlocfilehash: c073d3e51234e0ed8e524c2ae557d4158ad9e7d7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79239070"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80065127"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Kopiowanie danych z lokalnej bazy danych programu SQL Server do usługi Azure Blob Storage
 W tym samouczku użyjesz interfejsu użytkownika usługi Azure Data Factory, aby utworzyć potok usługi Data Factory, który kopiuje dane z lokalnej bazy danych programu SQL Server do usługi Azure Blob Storage. Utworzysz własne środowisko Integration Runtime (Self-hosted), służące do przenoszenia danych między lokalnym magazynem danych i magazynem danych w chmurze.
@@ -32,7 +32,7 @@ Ten samouczek obejmuje wykonanie następujących kroków:
 > * Tworzenie połączonych zestawów programu SQL Server i usługi Azure Storage.
 > * Tworzenie zestawów danych programu SQL Server i usługi Azure Blob.
 > * Tworzenie potoku z działaniem kopiowania do przenoszenia danych.
-> * Uruchamianie potoku
+> * Uruchom potok.
 > * Monitorowanie uruchomienia potoku.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -40,12 +40,12 @@ Ten samouczek obejmuje wykonanie następujących kroków:
 Jeśli nie masz jeszcze subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 
 ### <a name="azure-roles"></a>Role platformy Azure
-Aby utworzyć wystąpienia usługi Data Factory, konto użytkownika używane do logowania się na platformie Azure musi mieć przypisaną rolę *współautora* lub *właściciela* albo być *administratorem* subskrypcji platformy Azure.
+Aby utworzyć wystąpienia fabryki danych, konto użytkownika używane do logowania się na platformie Azure musi mieć przypisaną rolę *współautora* lub *właściciela* lub musi być *administratorem* subskrypcji platformy Azure.
 
 Aby wyświetlić swoje uprawnienia do subskrypcji, przejdź do witryny Azure Portal. W prawym górnym rogu wybierz swoją nazwę użytkownika, a następnie wybierz pozycję **Uprawnienia**. Jeśli masz dostęp do wielu subskrypcji, wybierz odpowiednią subskrypcję. Przykładowe instrukcje dotyczące sposobu dodawania użytkownika do roli można znaleźć w temacie [Manage access using RBAC and the Azure portal](../role-based-access-control/role-assignments-portal.md) (Zarządzanie dostępem przy użyciu kontroli dostępu na podstawie ról i witryny Azure Portal).
 
 ### <a name="sql-server-2014-2016-and-2017"></a>Program SQL Server 2014, 2016 oraz 2017
-Podczas pracy z tym samouczkiem użyjesz lokalnej bazy danych programu SQL Server jako *źródłowego* magazynu danych. Potok usługi Data Factory tworzony w tym samouczku kopiuje dane z tej lokalnej bazy danych programu SQL Server (źródła) do usługi Blob Storage (ujścia). Następnie utworzysz tabelę o nazwie **emp** w bazie danych programu SQL Server i wstawisz kilka przykładowych wpisów do tabeli.
+Podczas pracy z tym samouczkiem użyjesz lokalnej bazy danych programu SQL Server jako *źródłowego* magazynu danych. Potok usługi Data Factory tworzony w tym samouczku kopiuje dane z tej lokalnej bazy danych programu SQL Server (źródła) do usługi Blob Storage (ujścia). Następnie należy utworzyć tabelę o nazwie **emp** w bazie danych programu SQL Server i wstawić kilka przykładowych wpisów do tabeli.
 
 1. Uruchom program SQL Server Management Studio. Jeśli program nie jest jeszcze zainstalowany na używanej maszynie, przejdź do strony [pobierania programu SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
 
@@ -78,11 +78,11 @@ W tym samouczku używasz nazwy i klucza swojego konta magazynu. Pobierz nazwę i
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu nazwy użytkownika i hasła do konta platformy Azure.
 
-1. W lewym okienku wybierz pozycję **wszystkie usługi**. Zastosuj filtrowanie według słowa kluczowego **Magazyn**, a następnie wybierz pozycję **Konta magazynu**.
+1. W lewym okienku wybierz pozycję **Wszystkie usługi**. Zastosuj filtrowanie według słowa kluczowego **Magazyn**, a następnie wybierz pozycję **Konta magazynu**.
 
     ![Wyszukiwanie kont magazynu](media/doc-common-process/search-storage-account.png)
 
-1. Na liście kont magazynu w razie potrzeby odfiltruj konto magazynu. Następnie wybierz swoje konto magazynu.
+1. W razie potrzeby na liście kont magazynu przefiltruj konto magazynu. Następnie wybierz swoje konto magazynu.
 
 1. W oknie **Konto magazynu** wybierz pozycję **Klucze dostępu**.
 
@@ -91,23 +91,23 @@ W tym samouczku używasz nazwy i klucza swojego konta magazynu. Pobierz nazwę i
 #### <a name="create-the-adftutorial-container"></a>Tworzenie kontenera adftutorial
 W tej sekcji utworzysz kontener obiektów blob o nazwie **adftutorial** w usłudze Blob Storage.
 
-1. W oknie **Konto magazynu** przejdź do widoku **Przegląd**, a następnie wybierz pozycję **Obiekty blob**.
+1. W oknie **Konto magazynu** przejdź do **strony Przegląd**, a następnie wybierz pozycję **Kontenery**.
 
     ![Wybieranie opcji Obiekty blob](media/tutorial-hybrid-copy-powershell/select-blobs.png)
 
-1. W oknie **Blob Service** wybierz pozycję **Kontener**.
+1. W oknie **Kontenery** wybierz **+ Kontener,** aby utworzyć nowy.
 
-1. W oknie **Nowy kontener** w polu **Nazwa** wprowadź wartość **adftutorial**. Następnie wybierz przycisk **OK**.
+1. W oknie **Nowy kontener** w polu **Nazwa** wprowadź wartość **adftutorial**. Następnie wybierz pozycję **Utwórz**.
 
-1. Kliknij pozycję **adftutorial** na liście kontenerów.
+1. Na liście kontenerów wybierz **adftutorial,** który właśnie utworzyłeś.
 
-1. Pozostaw otwarte okno **kontenera** **adftutorial**. Będzie ona używana do weryfikacji danych wyjściowych na końcu tego samouczka. Usługa Data Factory automatycznie tworzy folder wyjściowy w tym kontenerze, więc Ty nie musisz go tworzyć.
+1. Okno **kontenera** **należy** otworzyć. Można go użyć do sprawdzenia danych wyjściowych na końcu samouczka. Usługa Data Factory automatycznie tworzy folder wyjściowy w tym kontenerze, więc Ty nie musisz go tworzyć.
 
 ## <a name="create-a-data-factory"></a>Tworzenie fabryki danych
 W tym kroku utworzysz fabrykę danych i uruchomisz interfejs użytkownika usługi Data Factory, aby utworzyć potok w fabryce danych.
 
 1. Otwórz przeglądarkę internetową **Microsoft Edge** lub **Google Chrome**. Obecnie interfejs użytkownika usługi Data Factory jest obsługiwany tylko przez przeglądarki internetowe Microsoft Edge i Google Chrome.
-1. W menu po lewej stronie wybierz pozycję **Utwórz zasób** > **Analytics** > **Data Factory**:
+1. W menu po lewej stronie wybierz pozycję **Utwórz fabrykę** > **danych****analizy** > zasobów:
 
    ![Wybór usługi Data Factory w okienku „Nowy”](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -122,14 +122,14 @@ W tym kroku utworzysz fabrykę danych i uruchomisz interfejs użytkownika usług
 
    - Wybierz pozycję **Użyj istniejącej**, a następnie wybierz istniejącą grupę zasobów z listy rozwijanej.
 
-   - Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę grupy zasobów.
+   - Wybierz **pozycję Utwórz nowy**i wprowadź nazwę grupy zasobów.
         
      Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources (Używanie grup zasobów do zarządzania zasobami platformy Azure)](../azure-resource-manager/management/overview.md).
 1. W obszarze **Wersja** wybierz pozycję **V2**.
 1. W obszarze **Lokalizacja** wybierz lokalizację fabryki danych. Na liście rozwijanej są wyświetlane tylko obsługiwane lokalizacje. Magazyny danych (np. usługi Storage i SQL Database) oraz jednostki obliczeniowe (np. usługa Azure HDInsight) używane przez usługę Data Factory mogą mieścić się w innych regionach.
-1. Wybierz pozycję **Utwórz**.
+1. Wybierz **pozycję Utwórz**.
 
-1. Po zakończeniu tworzenia zostanie wyświetlona strona **Fabryka danych**, jak pokazano na poniższej ilustracji:
+1. Po zakończeniu tworzenia zostanie wyświetlona strona **Fabryka danych,** jak pokazano na obrazie:
 
     ![Strona główna fabryki danych](./media/doc-common-process/data-factory-home-page.png)
 1. Wybierz kafelek **Tworzenie i monitorowanie**, aby w osobnej karcie uruchomić interfejs użytkownika usługi Azure Data Factory.
@@ -141,96 +141,105 @@ W tym kroku utworzysz fabrykę danych i uruchomisz interfejs użytkownika usług
 
    ![Strona Zaczynajmy](./media/doc-common-process/get-started-page.png)
 
-1. Na karcie **Ogólne** w dolnej części okna **Właściwości** , w polu **Nazwa**wpisz **SQLServerToBlobPipeline**.
+1. Na karcie **Ogólne** u dołu okna **Właściwości** w obszarze **Nazwa**wprowadź pozycję **SQLServerToBlobPipeline**.
 
-   ![Nazwa potoku](./media/tutorial-hybrid-copy-portal/pipeline-name.png)
-
-1. W oknie Narzędzie **działania** rozwiń pozycję **Przenieś & Przekształć**. Przeciągnij i upuść działanie **Kopiowanie** na powierzchnię projektowania potoku. Ustaw nazwę działania na wartość **CopySqlServerToAzureBlobActivity**.
+1. W polu **narzędziowym Działania** rozwiń pozycję **Przenieś & przekształć**. Przeciągnij i upuść działanie **Kopiowanie** na powierzchnię projektowania potoku. Ustaw nazwę działania na wartość **CopySqlServerToAzureBlobActivity**.
 
 1. W oknie **Właściwości** przejdź do karty **Źródło** i wybierz pozycję **+ Nowy**.
 
-1. W oknie dialogowym **Nowy zestaw danych** Wyszukaj **SQL Server**. Wybierz pozycję **SQL Server**, a następnie wybierz pozycję **Kontynuuj**.
+1. W oknie dialogowym **Nowy zestaw danych** wyszukaj program SQL **Server**. Wybierz **pozycję SQL Server**, a następnie wybierz pozycję **Kontynuuj**.
+    ![Nowy zestaw danych programu SqlServer](./media/tutorial-hybrid-copy-portal/create-sqlserver-dataset.png)
 
-1. W oknie dialogowym **Ustawianie właściwości** w polu **Nazwa**wpisz **SqlServerDataset**. W obszarze **połączona usługa**wybierz pozycję **+ Nowy**. W tym kroku tworzone jest połączenie z magazynem danych źródłowych (bazą danych programu SQL Server).
+1. W oknie dialogowym **Ustawianie właściwości** w obszarze **Nazwa**wprowadź pozycję **SqlServerDataset**. W obszarze **Połączona usługa**wybierz **+ Nowy**. W tym kroku tworzone jest połączenie z magazynem danych źródłowych (bazą danych programu SQL Server).
 
-1. W oknie dialogowym **Nowa połączona usługa** Dodaj **nazwę** jako **SqlServerLinkedService**. W obszarze **Połącz za pośrednictwem środowiska Integration Runtime**wybierz pozycję **+ Nowy**.  W tej sekcji utworzysz własne środowisko Integration Runtime i skojarzysz je z maszyną lokalną za pomocą bazy danych programu SQL Server. Własne środowisko Integration Runtime jest składnikiem, który kopiuje dane z bazy danych programu SQL Server na Twojej maszynie do usługi Blob Storage.
+1. W oknie dialogowym **Nowa usługa połączona** dodaj **nazwę** jako **SqlServerLinkedService**. W obszarze **Połącz za pośrednictwem środowiska uruchomieniowego integracji**wybierz **+Nowy**.  W tej sekcji utworzysz własne środowisko Integration Runtime i skojarzysz je z maszyną lokalną za pomocą bazy danych programu SQL Server. Własne środowisko Integration Runtime jest składnikiem, który kopiuje dane z bazy danych programu SQL Server na Twojej maszynie do usługi Blob Storage.
 
-1. W oknie dialogowym **konfiguracja Integration Runtime** wybierz pozycję **samodzielny**, a następnie wybierz pozycję **dalej**.
+1. W oknie dialogowym **Ustawienia środowiska wykonawczego integracji** wybierz pozycję **Hostowany samodzielnie,** a następnie wybierz pozycję **Kontynuuj**.
 
-1. W polu Nazwa wprowadź **TutorialIntegrationRuntime**. Następnie wybierz przycisk **Dalej**.
+1. Pod nazwą wprowadź **TutorialIntegrationRuntime**. Następnie wybierz pozycję **Utwórz**.
 
-1. W obszarze Ustawienia wybierz **pozycję kliknij tutaj, aby uruchomić instalację ekspresową dla tego komputera**. Ta akcja powoduje zainstalowanie środowiska Integration Runtime na komputerze i zarejestrowanie go w Data Factory. Ewentualnie można użyć opcji instalacji ręcznej w celu pobrania pliku instalacyjnego, uruchomienia go i zarejestrowania środowiska Integration Runtime za pomocą klucza.
+1. W obszarze Ustawienia wybierz pozycję **Kliknij tutaj, aby uruchomić konfigurację ekspresową dla tego komputera**. Ta akcja instaluje na komputerze środowisko Integration Runtime i rejestruje je w usłudze Data Factory. Ewentualnie można użyć opcji instalacji ręcznej w celu pobrania pliku instalacyjnego, uruchomienia go i zarejestrowania środowiska Integration Runtime za pomocą klucza.
+    ![Instalacja środowiska Integration Runtime](./media/tutorial-hybrid-copy-portal/intergration-runtime-setup.png)
 
-1. W oknie **Instalacja ekspresowa środowiska Integration Runtime (Self-hosted)** wybierz przycisk **Zamknij**.
+1. W oknie **Ustawienia programu Integration Runtime (Self-hosted) Express (Self-hosted)** wybierz pozycję **Zamknij** po zakończeniu procesu.
 
     ![Instalacja ekspresowa środowiska Integration Runtime (Self-hosted)](./media/tutorial-hybrid-copy-portal/integration-runtime-setup-successful.png)
 
-1. W oknie dialogowym **Nowa połączona usługa** upewnij się, że wybrano pozycję **TutorialIntegrationRuntime** w obszarze **Połącz za pośrednictwem środowiska Integration Runtime**. Następnie wykonaj następujące czynności:
+1. W oknie dialogowym **Nowa usługa połączona (SQL Server)** upewnij się, że w obszarze **Połącz za pośrednictwem środowiska wykonawczego integracji**wybrano **opcję TutorialIntegrationRuntime** . Następnie należy wykonać następujące czynności:
 
     a. W polu **Nazwa** wprowadź wartość **SqlServerLinkedService**.
 
     b. W polu **Nazwa serwera** wprowadź nazwę lokalnego wystąpienia programu SQL Server.
 
-    c. W polu **Nazwa bazy danych** wprowadź nazwę bazy danych zawierającej tabelę **emp**.
+    d. W polu **Nazwa bazy danych** wprowadź nazwę bazy danych zawierającej tabelę **emp**.
 
     d. W polu **Typ uwierzytelniania** wybierz odpowiedni typ uwierzytelniania, którego usługa Data Factory powinna używać do nawiązania połączenia z bazą danych SQL Server.
 
-    e. W polach **Nazwa użytkownika** i **Hasło** wprowadź nazwę użytkownika i hasło. Jeśli musisz użyć znaku ukośnika (\\) w nazwie konta użytkownika lub nazwie serwera, poprzedź go znakiem ucieczki (\\). Na przykład: *mydomain\\\\myuser*.
+    e. W polach **Nazwa użytkownika** i **Hasło** wprowadź nazwę użytkownika i hasło. Jeśli musisz użyć znaku ukośnika (\\) w nazwie konta użytkownika lub nazwie serwera, poprzedź go znakiem ucieczki (\\). Na przykład użyj *mydomain\\\\myuser*.
 
-    f. Wybierz pozycję **Testuj połączenie**. Ten krok polega na potwierdzeniu, że Data Factory może nawiązać połączenie z bazą danych SQL Server za pomocą utworzonego przez siebie środowiska Integration Runtime.
+    f. Wybierz pozycję **Testuj połączenie**. Ten krok ma na celu potwierdzenie, że usługa Data Factory może łączyć się z bazą danych programu SQL Server przy użyciu utworzonego środowiska wykonawczego integracji hostowanego przez użytkownika.
 
-    g. Aby zapisać połączoną usługę, wybierz pozycję **Zakończ**.
+    g. Aby zapisać usługę połączony, wybierz pozycję **Utwórz**.
+ 
+    ![Nowa usługa połączona (SQL Server)](./media/tutorial-hybrid-copy-portal/new-sqlserver-linked-service.png)
 
-1. Powinien nastąpić powrót do okna z otwartym zestawem danych źródłowych. Na karcie **Połączenia** w oknie **Właściwości** wykonaj następujące kroki:
+1. Po utworzeniu połączonej usługi powrócisz do strony **Ustaw właściwości** zestawu SqlServerDataset. Wykonaj następujące kroki:
 
     a. Upewnij się, że dla ustawienia **Połączona usługa** jest wyświetlana wartość **SqlServerLinkedService**.
 
-    b. W obszarze **Tabela** wybierz pozycję **[dbo].[emp]** .
+    b. Pod **nazwą tabeli**wybierz **[dbo].[ emp]**.
+    
+    d. Kliknij przycisk **OK**.
 
 1. Przejdź do karty z elementem **SQLServerToBlobPipeline** lub wybierz pozycję **SQLServerToBlobPipeline** w widoku drzewa.
 
 1. Przejdź do karty **Ujście** u dołu okna **Właściwości**, a następnie wybierz pozycję **+ Nowy**.
 
-1. W oknie dialogowym **Nowy zestaw danych** wybierz pozycję **Azure Blob Storage**. Następnie wybierz pozycję **Kontynuuj**.
+1. W oknie dialogowym **Nowy zestaw danych** wybierz pozycję Azure **Blob Storage**. Następnie wybierz pozycję **Kontynuuj**.
 
 1. W oknie dialogowym **Wybieranie formatu** wybierz typ formatu danych. Następnie wybierz pozycję **Kontynuuj**.
 
     ![Wybór formatu danych](./media/doc-common-process/select-data-format.png)
 
-1. W oknie dialogowym **Ustawianie właściwości** wpisz **AzureBlobDataset** w polu Nazwa. Kliknij pozycję **+ Nowy** obok pola tekstowego **Połączona usługa**.
+1. W oknie dialogowym **Ustawianie właściwości** wprowadź pozycję AzureBlobDataset for Name.In the Set Properties dialog, enter **AzureBlobDataset** for Name. Kliknij pozycję **+ Nowy** obok pola tekstowego **Połączona usługa**.
 
-1. W oknie dialogowym **Nowa połączona usługa (Azure Blob Storage)** wprowadź **AzureStorageLinkedService** jako nazwę, a następnie wybierz konto magazynu z listy Nazwa **konta magazynu** . Test connection, a następnie wybierz pozycję **Zakończ** , aby wdrożyć połączoną usługę.
-1. Po utworzeniu połączonej usługi nastąpi powrót do strony **Ustawianie właściwości** . Wybierz przycisk **Kontynuuj**.
+1. W oknie dialogowym **Nowa usługa łączona (usługa Azure Blob Storage)** wprowadź jako nazwę **usługę AzureStorageLinkedService,** wybierz konto magazynu z listy Nazwa **konta magazynu.** Przetestuj połączenie, a następnie wybierz pozycję **Utwórz,** aby wdrożyć połączony serwis.
 
-1. Powinien nastąpić powrót do okna z otwartym zestawem danych ujścia. Na karcie **Połączenie** wykonaj następujące kroki:
+1. Po utworzeniu połączonej usługi powrócisz do strony **Ustaw właściwości.** Kliknij przycisk **OK**.
+
+1. Otwórz zestaw danych ujścia. Na karcie **Połączenie** wykonaj następujące kroki:
 
     a. Upewnij się, że w polu **Połączona usługa** wybrano wartość **AzureStorageLinkedService**.
 
-    b. W polu **ścieżka pliku**wprowadź **adftutorial/Fromonprem** dla części **kontenera/katalogu** . Jeśli folder wyjściowy nie istnieje w kontenerze adftutorial, usługa Data Factory automatycznie utworzy folder wyjściowy.
+    b. W **polu Ścieżka pliku**wprowadź **adftutorial/fromonprem** dla części **Kontener/Katalog.** Jeśli folder wyjściowy nie istnieje w kontenerze adftutorial, usługa Data Factory automatycznie utworzy folder wyjściowy.
 
-    c. W polu część **pliku** wybierz pozycję **Dodaj zawartość dynamiczną**.
+    d. W części **Plik** wybierz pozycję **Dodaj zawartość dynamiczną**.
     ![wyrażenie dynamiczne do rozpoznawania nazwy pliku](./media/tutorial-hybrid-copy-portal/file-name.png)
 
-    d. Dodaj `@CONCAT(pipeline().RunId, '.txt')`, a następnie wybierz pozycję **Zakończ**. Ta akcja spowoduje zmianę nazwy pliku na PipelineRunID. txt.
+    d. Dodaj `@CONCAT(pipeline().RunId, '.txt')`, a następnie wybierz pozycję **Zakończ**. Ta akcja zmieni nazwę pliku za pomocą pliku PipelineRunID.txt.
 
 1. Przejdź na kartę z otwartym potokiem lub wybierz potok w widoku drzewa. Upewnij się, że w polu **Zestaw danych będący ujściem** wybrano wartość **AzureBlobDataset**.
 
-1. Aby zweryfikować poprawność ustawień potoku, wybierz pozycję **Weryfikuj** na pasku narzędzi dla potoku. Aby zamknąć okno **Raport weryfikacji potoku**, wybierz pozycję **Zamknij**.
+1. Aby zweryfikować poprawność ustawień potoku, wybierz pozycję **Weryfikuj** na pasku narzędzi dla potoku. Aby **zamknąć dane wyjściowe sprawdzania poprawności potoku,** wybierz ikonę. **>>**
+    ![sprawdzanie poprawności potoku](./media/tutorial-hybrid-copy-portal/validate-pipeline.png)
+    
 
-1. Aby opublikować utworzone jednostki w usłudze Data Factory, wybierz pozycję **Opublikuj wszystko**.
+1. Aby opublikować jednostki utworzone w układzie danych, wybierz pozycję **Publikuj wszystkie**.
 
-1. Zaczekaj, aż zostanie wyświetlone okienko wyskakujące z komunikatem **Publikowanie powiodło się**. Aby sprawdzić stan publikowania, wybierz link **Pokaż powiadomienia** w górnej części okna. Aby zamknąć okno powiadomienia, wybierz przycisk **X**.
+1. Poczekaj, aż zostanie **wyświetlona okno podręczne Publishing zakończone.** Aby sprawdzić stan publikowania, wybierz **łącze Pokaż powiadomienia** w górnej części okna. Aby zamknąć okno powiadomienia, wybierz przycisk **X**.
 
 
 ## <a name="trigger-a-pipeline-run"></a>Wyzwalanie uruchomienia potoku
-Wybierz pozycję **Dodaj wyzwalacz** na pasku narzędzi dla potoku, a następnie wybierz pozycję **Wyzwól teraz**.
+Wybierz **pozycję Dodaj wyzwalacz** na pasku narzędzi dla potoku, a następnie wybierz pozycję **Wyzwalaj teraz**.
 
 ## <a name="monitor-the-pipeline-run"></a>Monitorowanie działania potoku
 
-1. Przejdź do karty **monitorowanie** . Zostanie wyświetlony potok, który został wyzwolony ręcznie w poprzednim kroku.
+1. Przejdź do karty **Monitor.** Zobaczysz potok, który został ręcznie wyzwolony w poprzednim kroku.
 
+1. Aby wyświetlić przebiegi aktywności skojarzone z uruchomieniem potoku, wybierz łącze **SQLServerToBlobPipeline** w obszarze *NAZWA POTOKU*. 
     ![Monitorowanie uruchomień potoku](./media/tutorial-hybrid-copy-portal/pipeline-runs.png)
-1. Aby wyświetlić uruchomienia działań skojarzone z uruchomieniem potoku, wybierz link **Wyświetl uruchomienia działań** w kolumnie **Akcje**. Zobaczysz tylko uruchomienia działania, ponieważ w potoku jest tylko jedno działanie. Aby wyświetlić szczegółowe informacje na temat operacji kopiowania, wybierz link **Szczegóły** (ikona okularów) w kolumnie **Akcje**. Aby powrócić do widoku uruchomienia potoków, wybierz pozycję **uruchomienia potoku** u góry.
+
+1. Na stronie **Przebiegi działania** wybierz łącze Szczegóły (obraz okularów), aby wyświetlić szczegółowe informacje o operacji kopiowania. Aby wrócić do widoku Przebiegi potoku, wybierz **opcję Wszystkie uruchomień potoku** u góry.
 
 ## <a name="verify-the-output"></a>Sprawdzanie danych wyjściowych
 Potok automatycznie tworzy folder wyjściowy o nazwie *fromonprem* w kontenerze obiektów blob `adftutorial`. Upewnij się, że plik *[pipeline().RunId].txt* jest widoczny w folderze wyjściowym.
@@ -245,7 +254,7 @@ Potok w tym przykładzie kopiuje dane z jednej lokalizacji do innej lokalizacji 
 > * Tworzenie połączonych usług programu SQL Server i usługi Storage.
 > * Tworzenie zestawów danych programu SQL Server i usługi Blob Storage.
 > * Tworzenie potoku z działaniem kopiowania do przenoszenia danych.
-> * Uruchamianie potoku
+> * Uruchom potok.
 > * Monitorowanie uruchomienia potoku.
 
 Lista magazynów danych obsługiwanych przez usługę Data Factory znajduje się w artykule [Obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

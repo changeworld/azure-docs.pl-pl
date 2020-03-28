@@ -1,5 +1,5 @@
 ---
-title: Korzystanie z rozwiązania do zdalnego monitorowania w celu wykrywania problemów z urządzeniami — platforma Azure | Microsoft Docs
+title: Użyj rozwiązania zdalnego monitorowania do wykrywania problemów z urządzeniami — Azure | Dokumenty firmy Microsoft
 description: W tym samouczku pokazano, w jaki sposób korzystać z reguł i akcji do automatycznego wykrywania problemów z urządzeniami dotyczących wartości progowych w rozwiązaniu do monitorowania zdalnego.
 author: dominicbetts
 manager: timlt
@@ -10,10 +10,10 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 676f1133a516174478a456a97bc467e7770fe6e7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79239518"
 ---
 # <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Samouczek: wykrywanie problemów z urządzeniami połączonymi z rozwiązaniem do monitorowania
@@ -24,7 +24,7 @@ Aby wprowadzić reguły i alerty, w tym samouczku używane jest symulowane urzą
 
 Poproszono Cię również o utworzenie alertu krytycznego dla chłodni w sytuacji, gdy w ciągu ostatnich pięciu minut średnia wilgotność wewnątrz urządzenia przekroczyła 80%, a temperatura urządzenia przekroczyła 75 stopni Fahrenheita.
 
-W tym samouczku zostaną wykonane następujące czynności:
+W tym samouczku zostały wykonane następujące czynności:
 
 >[!div class="checklist"]
 > * Wyświetlanie reguł w rozwiązaniu
@@ -33,7 +33,7 @@ W tym samouczku zostaną wykonane następujące czynności:
 > * Edytowanie istniejącej reguły
 > * Włączanie i wyłącznie reguł
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
@@ -41,7 +41,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Na stronie **Reguły** akceleratora rozwiązań wyświetlana jest lista wszystkich bieżących reguł:
 
-[![Strona Reguły](./media/iot-accelerators-remote-monitoring-automate/rulesactions_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactions_v2-expanded.png#lightbox)
+[![Strona reguł](./media/iot-accelerators-remote-monitoring-automate/rulesactions_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactions_v2-expanded.png#lightbox)
 
 Aby wyświetlić tylko te reguły, które dotyczą chłodni, zastosuj filtr. Aby wyświetlić więcej informacji na temat reguły i edytować ją, wybierz ją na liście:
 
@@ -68,7 +68,7 @@ Aby zapisać nową regułę, kliknij przycisk **Zastosuj**.
 
 Gdy reguła zostanie wyzwolona, zobaczysz to na stronie **Reguły** lub na stronie **Pulpit nawigacyjny**:
 
-[![Wyzwolenie reguły ostrzeżenia](./media/iot-accelerators-remote-monitoring-automate/warningruletriggered-inline.png)](./media/iot-accelerators-remote-monitoring-automate/warningruletriggered-expanded.png#lightbox)
+[![Wyzwolona reguła ostrzegania](./media/iot-accelerators-remote-monitoring-automate/warningruletriggered-inline.png)](./media/iot-accelerators-remote-monitoring-automate/warningruletriggered-expanded.png#lightbox)
 
 ## <a name="create-an-advanced-rule"></a>Tworzenie zaawansowanej reguły
 
@@ -86,7 +86,7 @@ Aby utworzyć regułę z wieloma warunkami, która wygeneruje alert krytyczny, g
 | Warunek 1 — wartość    | 80                                |
 | Poziom ważności  | Krytyczny                              |
 
-[![Tworzenie reguł z wieloma warunkami — część pierwsza](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_v2-expanded.png#lightbox)
+[![Tworzenie wielu reguły warunku część pierwsza](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_v2-expanded.png#lightbox)
 
 Aby dodać drugi warunek, kliknij pozycję „+ Dodaj warunek”. Użyj następujących wartości dla nowego warunku:
 
@@ -96,25 +96,25 @@ Aby dodać drugi warunek, kliknij pozycję „+ Dodaj warunek”. Użyj następu
 | Warunek 2 — operator | Większe niż                      |
 | Warunek 2 — wartość    | 75                                |
 
-[![Tworzenie reguł z wieloma warunkami — część druga](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_cond2_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_cond2_v2-expanded.png#lightbox)
+[![Tworzenie wielu reguły warunku część druga](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_cond2_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_cond2_v2-expanded.png#lightbox)
 
 Aby zapisać nową regułę, kliknij przycisk **Zastosuj**.
 
 Gdy reguła zostanie wyzwolona, zobaczysz to na stronie **Reguły** lub na stronie **Pulpit nawigacyjny**:
 
-[![Wyzwolenie reguły z wieloma warunkami](./media/iot-accelerators-remote-monitoring-automate/criticalruletriggered-inline.png)](./media/iot-accelerators-remote-monitoring-automate/criticalruletriggered-expanded.png#lightbox)
+[![Wyzwolona reguła wielu warunków](./media/iot-accelerators-remote-monitoring-automate/criticalruletriggered-inline.png)](./media/iot-accelerators-remote-monitoring-automate/criticalruletriggered-expanded.png#lightbox)
 
 ## <a name="edit-an-existing-rule"></a>Edytowanie istniejącej reguły
 
 Aby wprowadzić zmiany w istniejącej regule, wybierz ją z listy reguł, a następnie kliknij przycisk **Edytuj**:
 
-[![Edytowanie reguły](./media/iot-accelerators-remote-monitoring-automate/rulesactionsedit_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsedit_v2-expanded.png#lightbox)
+[![Edytuj regułę](./media/iot-accelerators-remote-monitoring-automate/rulesactionsedit_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsedit_v2-expanded.png#lightbox)
 
 ## <a name="disable-a-rule"></a>Wyłączanie reguły
 
 Aby tymczasowo wyłączyć regułę, możesz wyłączyć ją na liście reguł. Wybierz regułę, którą chcesz wyłączyć, a następnie wybierz polecenie **Wyłącz**. Pozycja **Stan** reguły na liście zmienia się, wskazując, że reguła jest teraz wyłączona. Możesz ponownie włączyć wcześniej wyłączoną regułę, wykonując te same czynności.
 
-[![Wyłączanie reguły](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdisable-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdisable-expanded.png#lightbox)
+[![Wyłącz regułę](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdisable-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdisable-expanded.png#lightbox)
 
 Możesz włączać i wyłączać wiele reguł jednocześnie, wybierając wiele reguł na liście.
 
@@ -122,11 +122,11 @@ Możesz włączać i wyłączać wiele reguł jednocześnie, wybierając wiele r
 
 Aby trwale usunąć regułę, możesz usunąć ją na liście reguł. Wybierz regułę, którą chcesz usunąć, a następnie wybierz polecenie **Usuń**.
 
-[![Usuwanie reguły](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-expanded.png#lightbox)
+[![Usuń regułę](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-expanded.png#lightbox)
 
 Po potwierdzeniu, że chcesz usunąć regułę, istnieje możliwość usunięcia wszelkich alertów skojarzonych z tą regułą ze strony **Konserwacja**.
 
-[![Usuwanie reguły](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdeletetidy-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdeletetidy-expanded.png#lightbox)
+[![Usuń regułę](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdeletetidy-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdeletetidy-expanded.png#lightbox)
 
 Jednocześnie można usunąć tylko jedną regułę.
 

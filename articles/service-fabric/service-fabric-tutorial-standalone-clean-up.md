@@ -1,33 +1,33 @@
 ---
-title: Oczyszczanie klastra autonomicznego
-description: W tym samouczku dowiesz się, jak oczyścić AWS lub zasoby platformy Azure w autonomicznym klastrze Service Fabric.
+title: Oczyszczanie autonomicznego klastra
+description: W tym samouczku dowiesz się, jak oczyścić zasoby usługi AWS lub platformy Azure w autonomicznym klastrze sieci szkieletowej usług.
 author: dkkapur
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
 ms.openlocfilehash: bfb23ca5f5eb9540491fbd05efdfd6997db15e6b
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75639024"
 ---
 # <a name="tutorial-clean-up-your-standalone-cluster"></a>Samouczek: czyszczenie klastra autonomicznego
 
-Klastry autonomiczne usługi Service Fabric umożliwiają wybór własnego środowiska i utworzenie klastra zgodnie z obowiązującą w usłudze Service Fabric zasadą „dowolnego systemu operacyjnego i dowolnej chmury”. W tej serii samouczków utworzysz klaster autonomiczny hostowany na AWS lub na platformie Azure i zainstaluje do niego aplikację.
+Klastry autonomiczne usługi Service Fabric umożliwiają wybór własnego środowiska i utworzenie klastra zgodnie z obowiązującą w usłudze Service Fabric zasadą „dowolnego systemu operacyjnego i dowolnej chmury”. W tej serii samouczków utworzysz autonomiczny klaster hostowany na platformie AWS lub Azure i zainstaluj w nim aplikację.
 
-Niniejszy samouczek jest czwartą częścią serii. W tej części samouczka pokazano, jak wyczyścić AWS lub zasoby platformy Azure, które zostały utworzone w celu hostowania klastra Service Fabric.
+Niniejszy samouczek jest czwartą częścią serii. W tej części samouczka pokazano, jak oczyścić zasoby usługi AWS lub platformy Azure utworzone w celu hostowania klastra sieci szkieletowej usług.
 
 Część czwarta serii zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Czyszczenie klastra usługi Service Fabric
-> * Czyszczenie zasobów AWS lub platformy Azure
+> * Oczyszczanie zasobów usługi AWS lub platformy Azure
 
 ## <a name="clean-up-service-fabric-cluster"></a>Czyszczenie klastra usługi Service Fabric
 
-1. Połącz protokół RDP z maszyną wirtualną, która została użyta do zainstalowania Service Fabric.
+1. RDP do maszyny Wirtualnej, która została zainstalowana w sieci szkieletowej usług.
 2. Otwórz program PowerShell.
 3. Zmień katalog na wyodrębniony folder z drugiej części samouczka.
 4. Uruchom następujące polecenie, aby usunąć klaster usługi Service Fabric:
@@ -36,7 +36,7 @@ Część czwarta serii zawiera informacje na temat wykonywania następujących c
   .\RemoveServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json
   ```
 
-5. Wprowadź `Y` po wyświetleniu monitu, jeśli dane wyjściowe będą wyglądały jak poniżej, z własnymi adresami IP zastępują:
+5. Wprowadź `Y` po wyświetleniu monitu, jeśli to się powiedzie, dane wyjściowe będą wyglądać następująco, z własnymi adresami IP podstawionymi w:
 
   ```powershell
   Best Practices Analyzer completed successfully.
@@ -51,17 +51,17 @@ Część czwarta serii zawiera informacje na temat wykonywania następujących c
 
 ## <a name="clean-up-aws-resources"></a>Czyszczenie zasobów usługi AWS
 
-1. Zaloguj się do konta AWS.
+1. Zaloguj się na swoje konto AWS.
 2. Przejdź do konsoli EC2.
 3. Wybierz trzy węzły utworzone w pierwszej części samouczka.
-4. Kliknij **akcję** > **stanie wystąpienia** > **przerwać**.
+4. Kliknij stan**wystąpienia** >  **akcji** > **Zakończ**.
 
-## <a name="clean-up-azure-resources"></a>Czyszczenie zasobów platformy Azure
+## <a name="clean-up-azure-resources"></a>Oczyszczanie zasobów platformy Azure
 
 1. Zaloguj się do Portalu Azure.
-2. Przejdź do sekcji **Virtual Machines** .
-3. Zaznacz pola wyboru dla trzech węzłów utworzonych w pierwszej części samouczka.
-4. Kliknij pozycję **Usuń**.
+2. Przejdź do sekcji **Maszyny wirtualne.**
+3. Zaznacz pola wyboru dla trzech węzłów utworzonych w części trzeciej samouczka.
+4. Kliknij **przycisk Usuń**.
 
 ## <a name="next-steps"></a>Następne kroki
 

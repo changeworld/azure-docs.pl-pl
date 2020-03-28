@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą oprogramowania do zarządzania zachowania OneTrust | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i OneTrust zachowania zarządzania oprogramowaniem.
+title: 'Samouczek: Integracja usługi Azure Active Directory z oprogramowaniem do zarządzania prywatnością OneTrust | Dokumenty firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a oprogramowaniem do zarządzania prywatnością OneTrust.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,46 +16,46 @@ ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
 ms.openlocfilehash: 5fbec8b6a1a21826896f8e2499b1e8b7237d0ff9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67095893"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-onetrust-privacy-management-software"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą oprogramowania do zarządzania zachowania OneTrust
+# <a name="tutorial-azure-active-directory-integration-with-onetrust-privacy-management-software"></a>Samouczek: Integracja usługi Azure Active Directory z oprogramowaniem OneTrust privacy management software
 
-W tym samouczku dowiesz się, jak zintegrować OneTrust oprogramowanie do zarządzania zachowania za pomocą usługi Azure Active Directory (Azure AD).
-Integracja oprogramowania do zarządzania zachowania OneTrust z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować oprogramowanie OneTrust Privacy Management Software z usługą Azure Active Directory (Azure AD).
+Integracja oprogramowania OneTrust do zarządzania prywatnością z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do oprogramowania do zarządzania zachowania OneTrust.
-* Użytkownikom można automatycznie zalogowany do OneTrust zachowania oprogramowania do zarządzania (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* W usłudze Azure AD można kontrolować, kto ma dostęp do oprogramowania OneTrust Privacy Management Software.
+* Można włączyć użytkowników do automatycznego logowania się do OneTrust Privacy Management Software (Logowanie jednokrotne) za pomocą swoich kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą oprogramowania do zarządzania zachowania OneTrust, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z oprogramowaniem OneTrust Privacy Management Software, potrzebne są następujące elementy:
 
 * Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* Oprogramowanie do zarządzania zachowania OneTrust logowanie jednokrotne włączone subskrypcji
+* Subskrypcja z obsługą logowania jednokrotnego OneTrust Privacy Management Software
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Oprogramowanie do zarządzania zachowania OneTrust obsługuje **SP** i **tożsamości** jednokrotne logowanie inicjowane przez
+* Oprogramowanie OneTrust Privacy Management Software obsługuje jednostkę SSO inicjowane przez **SP** i **IDP**
 
-* Oprogramowanie do zarządzania zachowania OneTrust obsługuje **Just In Time** aprowizacji użytkowników
+* Oprogramowanie OneTrust Privacy Management obsługuje **inicjowanie** obsługi administracyjnej użytkowników just in time
 
-## <a name="adding-onetrust-privacy-management-software-from-the-gallery"></a>Dodawanie oprogramowania do zarządzania zachowania OneTrust z galerii
+## <a name="adding-onetrust-privacy-management-software-from-the-gallery"></a>Dodawanie oprogramowania OneTrust Privacy Management z galerii
 
-Aby skonfigurować integrację z oprogramowania do zarządzania zachowania OneTrust w usłudze Azure AD, należy dodać oprogramowanie do zarządzania zachowania OneTrust z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację oprogramowania OneTrust Privacy Management Software z usługą Azure AD, należy dodać oprogramowanie OneTrust Privacy Management z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać oprogramowanie do zarządzania zachowania OneTrust z galerii, wykonaj następujące czynności:**
+**Aby dodać oprogramowanie OneTrust Privacy Management Software z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -63,37 +63,37 @@ Aby skonfigurować integrację z oprogramowania do zarządzania zachowania OneTr
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **oprogramowanie do zarządzania zachowania OneTrust**, wybierz opcję **oprogramowanie do zarządzania zachowania OneTrust** z panelu wynik następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikacja.
+4. W polu wyszukiwania wpisz **OneTrust Privacy Management Software**, wybierz **onetrust privacy management software** z panelu wyników, a następnie kliknij przycisk **Dodaj,** aby dodać aplikację.
 
-     ![Oprogramowanie do zarządzania zachowania OneTrust na liście wyników](common/search-new-app.png)
+     ![Oprogramowanie OneTrust Privacy Management na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą oprogramowania do zarządzania zachowania OneTrust w oparciu o nazwie użytkownika testowego **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w oprogramowaniu Management zachowania OneTrust musi zostać ustanowione.
+W tej sekcji można skonfigurować i przetestować azure ad logowania jednokrotnego za pomocą OneTrust Privacy Management Software na podstawie użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację łącza między użytkownikiem usługi Azure AD a powiązanym użytkownikiem w oprogramowaniu OneTrust Privacy Management Software.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą oprogramowania do zarządzania zachowania OneTrust, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD za pomocą oprogramowania OneTrust Privacy Management, należy wykonać następujące bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie OneTrust zachowania zarządzania oprogramowaniem logowania jednokrotnego](#configure-onetrust-privacy-management-software-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego oprogramowanie do zarządzania zachowania OneTrust](#create-onetrust-privacy-management-software-test-user)**  — aby odpowiednikiem Britta Simon w OneTrust zachowania oprogramowania do zarządzania połączonej z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Skonfiguruj oprogramowanie OneTrust Privacy Management Software Single Sign-On](#configure-onetrust-privacy-management-software-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Utwórz użytkownika testowego OneTrust Privacy Management Software](#create-onetrust-privacy-management-software-test-user)** — aby mieć odpowiednik Britta Simon w oprogramowaniu OneTrust Privacy Management Software, który jest połączony z reprezentacją użytkownika usługi Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą oprogramowania do zarządzania zachowania OneTrust, wykonaj następujące czynności:
+Aby skonfigurować logowanie jednokrotne usługi Azure AD za pomocą oprogramowania OneTrust Privacy Management Software, wykonaj następujące czynności:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **oprogramowanie do zarządzania zachowania OneTrust** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [witrynie Azure portal](https://portal.azure.com/)na stronie integracji aplikacji **OneTrust Privacy Management Software** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -103,28 +103,28 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą oprogramow
 
     ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-4. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące kroki:
+4. W sekcji **Podstawowa konfiguracja SAML,** Jeśli chcesz skonfigurować aplikację w trybie inicjowanym **przez IDP,** wykonaj następujące czynności:
 
-    ![OneTrust zachowania zarządzania oprogramowaniem domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/idp-intiated.png)
+    ![OneTrust Privacy Management Software Domain i adresy URL — informacje o loguchach jednokrotnych](common/idp-intiated.png)
 
-    a. W polu tekstowym **Identyfikator** wpisz adres URL: `https://www.onetrust.com/saml2`
+    a. W polu tekstowym **Identyfikator** wpisz adres URL:`https://www.onetrust.com/saml2`
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.onetrust.com/auth/consumerservice`
 
-5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
+5. Kliknij **pozycję Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowanym w sp: **SP**
 
-    ![OneTrust zachowania zarządzania oprogramowaniem domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/metadata-upload-additional-signon.png)
+    ![OneTrust Privacy Management Software Domain i adresy URL — informacje o loguchach jednokrotnych](common/metadata-upload-additional-signon.png)
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.onetrust.com/auth/login`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Należy je zastąpić rzeczywistymi wartościami adresu URL odpowiedzi i adresu URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej OneTrust zachowania zarządzania oprogramowanie klienckie](mailto:support@onetrust.com) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Należy je zastąpić rzeczywistymi wartościami adresu URL odpowiedzi i adresu URL logowania. Skontaktuj się z [zespołem pomocy technicznej klienta oprogramowania do zarządzania prywatnością OneTrust,](mailto:support@onetrust.com) aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 6. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/metadataxml.png)
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-7. Na **skonfigurować oprogramowanie do zarządzania zachowania OneTrust** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+7. W sekcji **Konfigurowanie oprogramowania do zarządzania prywatnością OneTrust** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -132,11 +132,11 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą oprogramow
 
     b. Identyfikator usługi Azure AD
 
-    c. Adres URL wylogowywania
+    d. Adres URL wylogowywania
 
-### <a name="configure-onetrust-privacy-management-software-single-sign-on"></a>Konfigurowanie OneTrust zachowania zarządzania oprogramowaniem logowania jednokrotnego
+### <a name="configure-onetrust-privacy-management-software-single-sign-on"></a>Konfigurowanie oprogramowania OneTrust Privacy Management Software — logowanie jednokrotne
 
-Aby skonfigurować logowanie jednokrotne na **oprogramowanie do zarządzania zachowania OneTrust** stronie, musisz wysłać pobrany **XML metadanych Federacji** i skopiować adresy URL z witryny Azure portal do [ Oprogramowanie do zarządzania zachowania OneTrust zespołem pomocy technicznej](mailto:support@onetrust.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+Aby skonfigurować logowanie jednokrotne po stronie **oprogramowania Do zarządzania prywatnością OneTrust,** należy wysłać pobrany **kod XML metadanych federacyjnego** i odpowiednie skopiowane adresy URL z witryny Azure portal do [zespołu pomocy technicznej OneTrust Privacy Management Software](mailto:support@onetrust.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -146,7 +146,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+2. Wybierz **pozycję Nowy użytkownik** u góry ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
@@ -161,19 +161,19 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Kliknij pozycję **Utwórz**.
+    d. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do oprogramowania do zarządzania zachowania OneTrust.
+W tej sekcji można włączyć Britta Simon do korzystania z usługi Azure logowania jednokrotnego, udzielając dostępu do onetrust oprogramowania do zarządzania prywatnością.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **oprogramowanie do zarządzania zachowania OneTrust**.
+1. W portalu Azure wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz **pozycję Wszystkie aplikacje,** a następnie wybierz pozycję **OneTrust Privacy Management Software**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **oprogramowanie do zarządzania zachowania OneTrust**.
+2. Na liście aplikacji wybierz pozycję **OneTrust Privacy Management Software**.
 
-    ![Oprogramowanie do zarządzania zachowania OneTrust łącze na liście aplikacji](common/all-applications.png)
+    ![Łącze OneTrust Privacy Management Software na liście Aplikacje](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -185,28 +185,28 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
 5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+6. Jeśli oczekujesz dowolnej wartości roli w asercji SAML, a następnie w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-onetrust-privacy-management-software-test-user"></a>Tworzenie użytkownika testowego OneTrust oprogramowanie do zarządzania ochrony prywatności
+### <a name="create-onetrust-privacy-management-software-test-user"></a>Utwórz użytkownika testowego oprogramowania Do zarządzania prywatnością OneTrust
 
-W tej sekcji użytkownika o nazwie Britta Simon jest tworzony w OneTrust oprogramowanie do zarządzania ochrony prywatności. Oprogramowanie do zarządzania zachowania OneTrust obsługuje Inicjowanie obsługi użytkowników just-in-time, który jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w oprogramowanie do zarządzania zachowania OneTrust, nowy katalog jest tworzony po uwierzytelnieniu.
+W tej sekcji użytkownik o nazwie Britta Simon jest tworzony w OneTrust Privacy Management Software. Oprogramowanie OneTrust Privacy Management Software obsługuje inicjowanie obsługi administracyjnej użytkowników just-in-time, które jest domyślnie włączone. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w oprogramowaniu OneTrust Privacy Management Software, nowy jest tworzony po uwierzytelnieniu.
 
 >[!Note]
->Jeśli musisz ręcznie utworzyć użytkownika, skontaktuj się z [zespołem pomocy technicznej oprogramowanie do zarządzania zachowania OneTrust](mailto:support@onetrust.com).
+>Jeśli chcesz utworzyć użytkownika ręcznie, skontaktuj się z [zespołem pomocy technicznej onetrust privacy management software](mailto:support@onetrust.com).
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka OneTrust oprogramowanie do zarządzania ochrony prywatności w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze OneTrust zachowania oprogramowanie do zarządzania dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka OneTrust Privacy Management Software w Panelu dostępu należy automatycznie zalogować się do oprogramowania OneTrust Privacy Management Software, dla którego skonfigurowano logowanie jednośmiękowe. Aby uzyskać więcej informacji na temat Panelu dostępu, zobacz [Wprowadzenie do Panelu dostępu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

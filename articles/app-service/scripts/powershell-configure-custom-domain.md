@@ -1,25 +1,25 @@
 ---
-title: 'PowerShell: przypisywanie domeny niestandardowej'
-description: Dowiedz się, jak używać Azure PowerShell do automatyzowania wdrażania App Service i zarządzania nimi. Ten przykład pokazuje, jak przypisać domenę niestandardową do aplikacji.
+title: 'Program PowerShell: przypisywanie domeny niestandardowej'
+description: Dowiedz się, jak za pomocą programu Azure PowerShell zautomatyzować wdrażanie usługi App Service i zarządzanie nimi. W tym przykładzie pokazano, jak przypisać domenę niestandardową do aplikacji.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 356f5af9-f62e-411c-8b24-deba05214103
 ms.topic: sample
 ms.date: 03/20/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: f7de667292ed89caa2895f6db3f7d8d6abf15f85
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 4629157142c17122c0aa6c74c1918c1d01d796c0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74685590"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80044738"
 ---
 # <a name="assign-a-custom-domain-to-a-web-app-using-powershell"></a>Przypisywanie domeny niestandardowej do aplikacji internetowej przy użyciu programu PowerShell
 
 Ten przykładowy skrypt służy do tworzenia aplikacji internetowej w usłudze App Service wraz z jej powiązanymi zasobami, a następnie mapowania domeny `www.<yourdomain>` na tę aplikację. 
 
-W razie potrzeby zainstaluj program Azure PowerShell, korzystając z instrukcji w [przewodniku programu Azure PowerShell](/powershell/azure/overview), a następnie uruchom polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure. Musisz też mieć dostęp do strony konfiguracji usługi DNS rejestratora domen.
+W razie potrzeby zainstaluj program Azure PowerShell przy użyciu instrukcji znalezionych `Connect-AzAccount` w [przewodniku programu Azure PowerShell](/powershell/azure/overview), a następnie uruchom w celu utworzenia połączenia z platformą Azure. Musisz też mieć dostęp do strony konfiguracji usługi DNS rejestratora domen.
 
 ## <a name="sample-script"></a>Przykładowy skrypt
 

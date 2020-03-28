@@ -1,23 +1,23 @@
 ---
-title: 'PowerShell: monitorowanie za pomocą dzienników serwera sieci Web'
-description: Dowiedz się, jak używać Azure PowerShell do automatyzowania wdrażania App Service i zarządzania nimi. Ten przykład pokazuje, jak monitorować aplikację za pomocą dzienników serwera sieci Web.
+title: 'Program PowerShell: Monitor z dziennikami serwera sieci Web'
+description: Dowiedz się, jak za pomocą programu Azure PowerShell zautomatyzować wdrażanie usługi App Service i zarządzanie nimi. W tym przykładzie pokazano, jak monitorować aplikację za pomocą dzienników serwera sieci web.
 tags: azure-service-management
 ms.assetid: 5805d7cd-9e56-4eba-bd85-75b013690ff5
 ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc
 ms.openlocfilehash: 79b5ef411abde3a4ef293516a43adaa1e669b6d9
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74684620"
 ---
 # <a name="monitor-a-web-appwith-web-server-logs"></a>Monitorowanie aplikacji internetowej za pomocą dzienników serwera internetowego
 
 W tym scenariuszu utworzysz grupę zasobów, plan usługi App Service i aplikację internetową oraz skonfigurujesz aplikację internetową tak, aby włączyć dzienniki serwera internetowego. Następnie pobierzesz pliki dzienników do przejrzenia.
 
-W razie potrzeby zainstaluj program Azure PowerShell, korzystając z instrukcji w [przewodniku programu Azure PowerShell](/powershell/azure/overview), a następnie uruchom polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure.
+W razie potrzeby zainstaluj program Azure PowerShell przy użyciu instrukcji znalezionych `Connect-AzAccount` w [przewodniku programu Azure PowerShell](/powershell/azure/overview), a następnie uruchom w celu utworzenia połączenia z platformą Azure.
 
 ## <a name="sample-script"></a>Przykładowy skrypt
 
@@ -43,7 +43,7 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Tworzy plan usługi App Service. |
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Tworzy aplikację internetową. |
 | [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | Modyfikuje konfigurację aplikacji internetowej. |
-| [Get-AzWebAppMetric](/powershell/module/az.websites/get-azwebappmetric) | Pobiera metryki aplikacji internetowej. |
+| [Get-AzWebAppMetric (metryk Aplikacji Get-AzWebAppMetric)](/powershell/module/az.websites/get-azwebappmetric) | Pobiera metryki aplikacji internetowej. |
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -18,19 +18,19 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
 ms.openlocfilehash: 4ccf62dd8a249c9ba23bbb4510164b35a58db917
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72387400"
 ---
-# <a name="tutorial-send-localized-push-notifications-to-windows-apps-using-azure-notification-hubs"></a>Samouczek: wysyłanie zlokalizowanych powiadomień wypychanych do aplikacji systemu Windows przy użyciu usługi Azure Notification Hubs
+# <a name="tutorial-send-localized-push-notifications-to-windows-apps-using-azure-notification-hubs"></a>Samouczek: Wysyłanie zlokalizowanych powiadomień wypychanych do aplikacji systemu Windows przy użyciu usługi Azure Notification Hubs
 
 > [!div class="op_single_selector"]
-> * [Sklep Windows — C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
+> * [Sklep Windows C #](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
 > * [iOS](notification-hubs-ios-xplat-localized-apns-push-notification.md)
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tym samouczku przedstawiono sposób wysyłania zlokalizowanych powiadomień push do urządzeń przenośnych zarejestrowanych w usłudze Notification Hubs. W samouczku zaktualizujesz aplikacje utworzone w [samouczku: wysyłanie powiadomień do konkretnych urządzeń (platforma uniwersalna systemu Windows)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md), aby obsługiwać następujące scenariusze:
 
@@ -39,7 +39,7 @@ W tym samouczku przedstawiono sposób wysyłania zlokalizowanych powiadomień pu
 
 Po ukończeniu samouczka aplikacja mobilna będzie umożliwiać zarejestrowanie kategorii zgodnie z preferencjami użytkownika, a także określenie języka, w którym będą odbierane powiadomienia. Aplikacja zaplecza wysyła powiadomienia, które są zlokalizowane według języka i urządzenia.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Aktualizowanie aplikacji systemu Windows o obsługę informacji o ustawieniach regionalnych
@@ -194,9 +194,9 @@ Aby dowiedzieć się więcej o szablonach, zobacz artykuł [Push Templates (Szab
 
 
 
-## <a name="run-the-uwp-application"></a>Uruchamianie aplikacji platformy UWP
+## <a name="run-the-uwp-application"></a>Uruchamianie aplikacji platformy uniwersalnej systemu i platformy uniwersalnej systemu
 
-1. Uruchom aplikację platforma uniwersalna systemu Windows. Poczekaj na wyświetlenie komunikatu **Rejestracja zakończona powodzeniem**.
+1. Uruchom aplikację Uniwersalnej platformy systemu Windows. Poczekaj na wyświetlenie komunikatu **Rejestracja zakończona powodzeniem**.
 
     ![Aplikacja mobilna i rejestracja](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/registration-successful.png)
 2. Wybierz **kategorie** i **ustawienia regionalne**, a następnie kliknij pozycję **Subscribe** (Subskrybuj). Aplikacja konwertuje wybrane kategorie na tagi i żąda nowej rejestracji urządzenia dla wybranych tagów z centrum powiadomień.
@@ -206,7 +206,7 @@ Aby dowiedzieć się więcej o szablonach, zobacz artykuł [Push Templates (Szab
 
     ![Komunikat dotyczący subskrypcji](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/subscription-message.png)
 
-## <a name="update-console-app-to-send-localized-notifications"></a>Aktualizowanie aplikacji konsolowej w celu wysyłania zlokalizowanych powiadomień
+## <a name="update-console-app-to-send-localized-notifications"></a>Aktualizowanie aplikacji konsoli w celu wysyłania zlokalizowanych powiadomień
 
 W przypadku wysyłania powiadomień szablonowych musisz podać tylko zestaw właściwości. W tym samouczku aplikacja zaplecza wysyła zestaw właściwości zawierający zlokalizowaną wersję bieżących wiadomości, na przykład:
 
@@ -259,8 +259,8 @@ private static async void SendTemplateNotificationAsync()
 
 To proste wywołanie dostarcza zlokalizowaną partię wiadomości do **wszystkich** urządzeń, niezależnie od platformy, natomiast centrum powiadomień tworzy i dostarcza prawidłowy, natywny ładunek do wszystkich urządzeń, które zasubskrybowały określony tag.
 
-## <a name="run-console-app-to-send-localized-notification"></a>Uruchom aplikację konsolową, aby wysłać zlokalizowane powiadomienie
-Uruchom **aplikację konsolową** , aby wysyłać powiadomienia dla każdej kategorii i w każdym obsługiwanym języku. Upewnij się, że otrzymujesz wyłącznie powiadomienia dla subskrybowanych kategorii oraz że wiadomość jest zgodna z wybranymi ustawieniami regionalnymi.
+## <a name="run-console-app-to-send-localized-notification"></a>Uruchamianie aplikacji konsoli w celu wysyłania zlokalizowanych powiadomień
+Uruchom **aplikację konsoli,** aby wysyłać powiadomienia dla każdej kategorii i w każdym obsługiwanym języku. Upewnij się, że otrzymujesz wyłącznie powiadomienia dla subskrybowanych kategorii oraz że wiadomość jest zgodna z wybranymi ustawieniami regionalnymi.
 
 ![Powiadomienia](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/notifications.png)
 
@@ -269,7 +269,7 @@ Uruchom **aplikację konsolową** , aby wysyłać powiadomienia dla każdej kate
 W tym samouczku przedstawiono sposób wysyłania zlokalizowanych powiadomień push do konkretnych urządzeń, które mają tagi skojarzone z rejestracjami. Aby dowiedzieć się, jak wysyłać powiadomienia push do konkretnych użytkowników, którzy mogą używać więcej niż jednego urządzenia, przejdź do następującego samouczka:
 
 > [!div class="nextstepaction"]
->[Wysyłanie powiadomień push do konkretnych użytkowników](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md)
+>[Wypychanie powiadomień do konkretnych użytkowników](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md)
 
 <!-- Anchors. -->
 [Template concepts]: #concepts

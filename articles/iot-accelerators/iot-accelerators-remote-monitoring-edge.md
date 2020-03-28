@@ -10,13 +10,13 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: a812155474b244682613b38b9b9379fa6cdcdcd8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "66117526"
 ---
-# <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>Samouczek: wykrywanie anomalii na urządzeniach brzegowych za pomocą akceleratora rozwiązania do monitorowania zdalnego
+# <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>Samouczek: Wykrywanie anomalii na urządzeniach brzegowych za pomocą akceleratora rozwiązania do monitorowania zdalnego
 
 Podczas pracy z tym samouczkiem utworzysz rozwiązanie do monitorowania zdalnego w celu reagowania na anomalie wykryte przez urządzenie usługi IoT Edge. Urządzenia usługi IoT Edge umożliwiają przetwarzanie danych telemetrycznych na urządzeniach brzegowych, co pozwala na zmniejszenie ilości danych telemetrycznych wysyłanych do rozwiązania oraz szybsze reagowanie na zdarzenia występujące na urządzeniach. Aby dowiedzieć się więcej na temat zalet przetwarzania danych na urządzeniach brzegowych, zobacz [Co to jest usługa Azure IoT Edge](../iot-edge/about-iot-edge.md).
 
@@ -28,7 +28,7 @@ Na poniższym diagramie przedstawiono najważniejsze składniki w tym scenariusz
 
 ![Omówienie](media/iot-accelerators-remote-monitoring-edge/overview.png)
 
-W tym samouczku zostaną wykonane następujące czynności:
+W tym samouczku zostały wykonane następujące czynności:
 
 >[!div class="checklist"]
 > * Dodawanie urządzenia usługi IoT Edge do rozwiązania
@@ -45,7 +45,7 @@ Na urządzeniu usługi IoT Edge:
 
 W tym samouczku jako urządzenie usługi IoT Edge jest używana maszyna wirtualna z systemem Linux. Instalujesz również moduł usługi Edge symulujący urządzenie pompy olejowej.
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
@@ -64,13 +64,13 @@ Aby dodać urządzenie usługi IoT Edge do akceleratora rozwiązania do monitoro
 
 Na panelu **Nowe urządzenie** wybierz pozycję **Urządzenie usługi IoT Edge** i wpisz **oil-pump** jako identyfikator urządzenia. Dla innych właściwości możesz pozostawić ustawienia domyślne. Następnie kliknij pozycję **Zastosuj**:
 
-[![Dodawanie urządzenia usługi IoT Edge](./media/iot-accelerators-remote-monitoring-edge/addedgedevice-inline.png)](./media/iot-accelerators-remote-monitoring-edge/addedgedevice-expanded.png#lightbox)
+[![Dodawanie urządzenia IoT Edge](./media/iot-accelerators-remote-monitoring-edge/addedgedevice-inline.png)](./media/iot-accelerators-remote-monitoring-edge/addedgedevice-expanded.png#lightbox)
 
 Zanotuj parametry połączenia urządzenia, które będą potrzebne w kolejnej sekcji tego samouczka.
 
 Urządzenie zarejestrowane w centrum IoT Hub w akceleratorze rozwiązania do monitorowania zdalnego pojawi się na liście na stronie **Device Explorer** w internetowym interfejsie użytkownika:
 
-[![Nowe urządzenie usługi IoT Edge](./media/iot-accelerators-remote-monitoring-edge/newedgedevice-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newedgedevice-expanded.png#lightbox)
+[![Nowe urządzenie IoT Edge](./media/iot-accelerators-remote-monitoring-edge/newedgedevice-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newedgedevice-expanded.png#lightbox)
 
 Aby ułatwić zarządzanie urządzeniami usługi IoT Edge w ramach rozwiązania, utwórz grupę urządzeń i dodaj do niej urządzenie usługi IoT Edge:
 
@@ -86,17 +86,17 @@ Aby ułatwić zarządzanie urządzeniami usługi IoT Edge w ramach rozwiązania,
     | Wartość   | Tak     |
     | Typ    | Tekst  |
 
-    [![Dodawanie tagu](./media/iot-accelerators-remote-monitoring-edge/addtag-inline.png)](./media/iot-accelerators-remote-monitoring-edge/addtag-expanded.png#lightbox)
+    [![Dodaj znacznik](./media/iot-accelerators-remote-monitoring-edge/addtag-inline.png)](./media/iot-accelerators-remote-monitoring-edge/addtag-expanded.png#lightbox)
 
 1. Kliknij przycisk **Zastosuj**, a następnie **Zamknij**.
 
-1. Na stronie **Device Explorer** kliknij pozycję **Zarządzaj grupami urządzeń**.
+1. Na stronie **Eksplorator urządzeń** kliknij pozycję **Zarządzaj grupami urządzeń**.
 
 1. Kliknij przycisk **Utwórz nową grupę urządzeń**. Utwórz nową grupę urządzeń z następującymi ustawieniami:
 
     | Ustawienie | Wartość |
     | ------- | ----- |
-    | Name (Nazwa)    | OilPumps |
+    | Nazwa    | OilPumps |
     | Pole   | Tags.IsOilPump |
     | Operator | = Równa się |
     | Wartość    | Tak |
@@ -104,7 +104,7 @@ Aby ułatwić zarządzanie urządzeniami usługi IoT Edge w ramach rozwiązania,
 
     [![Tworzenie grupy urządzeń](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-inline.png)](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-expanded.png#lightbox)
 
-1. Kliknij pozycję **Zapisz**.
+1. Kliknij przycisk **Zapisz**.
 
 Urządzenie usługi IoT Edge jest teraz w grupie **OilPumps**.
 
@@ -193,7 +193,7 @@ Przed spakowaniem zadania usługi Stream Analytics jako modułu usługi Edge nal
 
 Poniższy zrzut ekranu przedstawia zapisane zadanie usługi Stream Analytics:
 
-[![Zadanie usługi Stream Analytics](./media/iot-accelerators-remote-monitoring-edge/streamjob-inline.png)](./media/iot-accelerators-remote-monitoring-edge/streamjob-expanded.png#lightbox)
+[![Zadanie analizy strumienia](./media/iot-accelerators-remote-monitoring-edge/streamjob-inline.png)](./media/iot-accelerators-remote-monitoring-edge/streamjob-expanded.png#lightbox)
 
 Masz teraz zdefiniowanie zadanie usługi Stream Analytics do uruchomienia na urządzeniu brzegowym. Zadanie oblicza średnią temperaturę w 5-sekundowym przedziale. Wysyła także alert, jeśli średnia temperatura w 3-sekundowym przedziale przekroczy 400.
 
@@ -205,15 +205,15 @@ Następne należy utworzyć manifest wdrożenia usługi IoT Edge, definiujący m
 
 1. W obszarze centrum IoT Hub kliknij pozycję **IoT Edge** w sekcji **Automatyczne zarządzanie urządzeniami**. Kliknij pozycję **Dodaj wdrożenie usługi IoT Edge**.
 
-1. Na stronie **Tworzenie wdrożenia > Nazwa i etykieta** wpisz nazwę **oil-pump-device**. Kliknij przycisk **Dalej**.
+1. Na stronie **Tworzenie wdrożenia > Nazwa i etykieta** wpisz nazwę **oil-pump-device**. Kliknij przycisk **alej**.
 
 1. Na stronie **Tworzenie wdrożenia > Dodawanie modułów** kliknij pozycję **+ Dodaj**. Wybierz pozycję **Moduł usługi IoT Edge**.
 
-1. Na panelu **Moduły niestandardowe usługi IoT Edge** wpisz nazwę **temperatureSensor** oraz identyfikator URI obrazu **asaedgedockerhubtest/asa-edge-test-module:sensor-ad-linux-amd64**. Kliknij pozycję **Zapisz**.
+1. Na panelu **Moduły niestandardowe usługi IoT Edge** wpisz nazwę **temperatureSensor** oraz identyfikator URI obrazu **asaedgedockerhubtest/asa-edge-test-module:sensor-ad-linux-amd64**. Kliknij przycisk **Zapisz**.
 
 1. Na stronie **Tworzenie wdrożenia > Dodawanie modułów** kliknij pozycję **+ Dodaj**, aby dodać drugi moduł. Wybierz pozycję **Moduł usługi Azure Stream Analytics**.
 
-1. Na panelu **Wdrożenie usługi Edge** wybierz swoją subskrypcję oraz zadanie **EdgeDeviceJob** utworzone w poprzedniej sekcji. Kliknij pozycję **Zapisz**.
+1. Na panelu **Wdrożenie usługi Edge** wybierz swoją subskrypcję oraz zadanie **EdgeDeviceJob** utworzone w poprzedniej sekcji. Kliknij przycisk **Zapisz**.
 
 1. Na stronie **Tworzenie wdrożenia > Dodawanie modułów** kliknij pozycję **Dalej**.
 
@@ -231,11 +231,11 @@ Następne należy utworzyć manifest wdrożenia usługi IoT Edge, definiujący m
 
     Ten kod kieruje dane wyjściowe z modułu usługi Stream Analytics do poprawnych lokalizacji.
 
-    Kliknij przycisk **Dalej**.
+    Kliknij przycisk **alej**.
 
 1. Na stronie **Tworzenie wdrożenia > Określanie metryk** kliknij pozycję **Dalej**.
 
-1. Na stronie **Tworzenie wdrożenia > Urządzenia docelowe** wpisz 10 jako wartość priorytetu. Kliknij przycisk **Dalej**.
+1. Na stronie **Tworzenie wdrożenia > Urządzenia docelowe** wpisz 10 jako wartość priorytetu. Kliknij przycisk **alej**.
 
 1. Na stronie **Tworzenie wdrożenia > Przegląd wdrożenia** kliknij pozycję **Prześlij**:
 
@@ -245,7 +245,7 @@ Następne należy utworzyć manifest wdrożenia usługi IoT Edge, definiujący m
 
 1. Kliknij wdrożenie **oil-pump-device**, a następnie kliknij polecenie **Pobierz manifest usługi IoT Edge**. Zapisz plik jako **oil-pump-device.json** w odpowiedniej lokalizacji na komputerze lokalnym. Ten plik będzie potrzebny w kolejnej sekcji tego samouczka.
 
-Manifest usługi IoT Edge, aby zaimportować do rozwiązania do zdalnego monitorowania w pakiecie został już utworzony. Na ogół moduły usługi IoT Edge i plik manifestu są tworzone przez dewelopera.
+Teraz utworzono manifest usługi IoT Edge, aby zaimportować do rozwiązania zdalnego monitorowania jako pakiet. Na ogół moduły usługi IoT Edge i plik manifestu są tworzone przez dewelopera.
 
 ## <a name="import-a-package"></a>Importowanie pakietu
 
@@ -275,7 +275,7 @@ Teraz możesz przystąpić do wdrażania pakietu na urządzeniu.
 
     | Opcja | Wartość |
     | ------ | ----- |
-    | Name (Nazwa)   | OilPumpDevices |
+    | Nazwa   | OilPumpDevices |
     | Typ pakietu | Manifest usługi Edge |
     | Pakiet | oil-pump-device.json |
     | Grupa urządzeń | OilPumps |
@@ -287,7 +287,7 @@ Teraz możesz przystąpić do wdrażania pakietu na urządzeniu.
 
 Musisz poczekać kilka minut na wdrożenie pakietu na urządzeniu i rozpoczęcie przesyłania danych telemetrycznych z urządzenia.
 
-[![Aktywne wdrożenie](./media/iot-accelerators-remote-monitoring-edge/deploymentactive-inline.png)](./media/iot-accelerators-remote-monitoring-edge/deploymentactive-expanded.png#lightbox)
+[![Aktywne wdrażanie](./media/iot-accelerators-remote-monitoring-edge/deploymentactive-inline.png)](./media/iot-accelerators-remote-monitoring-edge/deploymentactive-expanded.png#lightbox)
 
 Na stronie **Wdrożenia** są widoczne następujące metryki:
 
@@ -323,7 +323,7 @@ Jeśli chcesz, aby operatorzy byli powiadamiani o osiągnięciu wartości progow
     | Wartość | 300 |
     | Poziom ważności | Info |
 
-    [![Tworzenie reguły](./media/iot-accelerators-remote-monitoring-edge/newrule-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newrule-expanded.png#lightbox)
+    [![Utwórz regułę](./media/iot-accelerators-remote-monitoring-edge/newrule-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newrule-expanded.png#lightbox)
 
     Kliknij przycisk **Zastosuj**.
 
@@ -334,7 +334,7 @@ Jeśli chcesz, aby operatorzy byli powiadamiani o osiągnięciu wartości progow
 W tym samouczku pokazano, w jaki sposób dodać i skonfigurować urządzenie usługi IoT Edge połączone z akceleratorem rozwiązania do monitorowania zdalnego. Aby dowiedzieć się więcej na temat pracy z pakietami usługi IoT Edge w ramach rozwiązania do monitorowania zdalnego, zobacz następujący przewodnik:
 
 > [!div class="nextstepaction"]
-> [Import an IoT Edge package into your Remote Monitoring solution accelerator (Importowanie pakietu usługi IoT Edge do akceleratora rozwiązań do zdalnego monitorowania)](iot-accelerators-remote-monitoring-import-edge-package.md)
+> [Importowanie pakietu usługi IoT Edge do akceleratora rozwiązania do monitorowania zdalnego](iot-accelerators-remote-monitoring-import-edge-package.md)
 
 Aby dowiedzieć się więcej na temat instalowania środowiska uruchomieniowego usługi IoT Edge, zobacz [Install the Azure IoT Edge runtime on Linux x64 (Instalowanie środowiska uruchomieniowego usługi Azure IoT Edge w systemie Linux w wersji x64)](../iot-edge/how-to-install-iot-edge-linux.md).
 

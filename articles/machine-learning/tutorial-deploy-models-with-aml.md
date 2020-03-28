@@ -1,7 +1,7 @@
 ---
 title: 'Samouczek klasyfikacji obrazów: Wdrażanie modeli'
 titleSuffix: Azure Machine Learning
-description: W tym samouczku pokazano, jak za pomocą Azure Machine Learning wdrożyć model klasyfikacji obrazów przy użyciu scikit — uczenie się w notesie Jupyter języka Python. Ten samouczek jest drugą częścią dwuczęściowej serii.
+description: W tym samouczku, drugim z dwuczęściowej serii, pokazano, jak za pomocą usługi Azure Machine Learning wdrożyć model klasyfikacji obrazów za pomocą scikit-learn w notesie języka Python.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,21 +10,19 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 071a8dd40d87e5df6fc5c65b789bb63b515dc60a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 81e02492f7e79b87e1513a910afe4719908adbbb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116507"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80159087"
 ---
-# <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Samouczek: Wdrażanie modelu klasyfikacji obrazów w Azure Container Instances
+# <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Samouczek: Wdrażanie modelu klasyfikacji obrazów w wystąpieniach kontenera platformy Azure
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ten samouczek jest **drugą częścią dwuczęściowej serii samouczków**. W [poprzednim samouczku](tutorial-train-models-with-aml.md) przeszkoliliśmy modele uczenia maszynowego, a następnie zarejestrowaliśmy model w Twoim obszarze roboczym w chmurze.  
+Ten samouczek jest **drugą częścią dwuczęściowej serii samouczków**. W [poprzednim samouczku](tutorial-train-models-with-aml.md) przeszkoliliśmy modele uczenia maszynowego, a następnie zarejestrowaliśmy model w Twoim obszarze roboczym w chmurze.  Teraz możesz przystąpić do wdrażania modelu jako usługi sieci web. Usługa internetowa jest obrazem, w tym przypadku obrazem platformy Docker. Hermetyzuje ona logikę oceniania i sam model. 
 
-Teraz możesz przystąpić do wdrażania modelu jako usługi internetowej w usłudze [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/). Usługa internetowa jest obrazem, w tym przypadku obrazem platformy Docker. Hermetyzuje ona logikę oceniania i sam model. 
-
-W tej części samouczka użyjesz Azure Machine Learning dla następujących zadań:
+W tej części samouczka używasz usługi Azure Machine Learning do następujących zadań:
 
 > [!div class="checklist"]
 > * Konfigurowanie środowiska testowego.
@@ -36,21 +34,21 @@ W tej części samouczka użyjesz Azure Machine Learning dla następujących zad
 Usługa Container Instances to doskonałe rozwiązanie do testowania i interpretowania przepływu pracy. W przypadku skalowalnych wdrożeń produkcyjnych rozważ skorzystanie z usługi Azure Kubernetes Service. Aby uzyskać więcej informacji, zobacz [jak i gdzie wdrażać modele](how-to-deploy-and-where.md).
 
 >[!NOTE]
-> Kod w tym artykule został przetestowany przy użyciu zestawu SDK Azure Machine Learning 1.0.41.
+> Kod w tym artykule został przetestowany przy testach azure machine learning SDK w wersji 1.0.41.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby uruchomić Notes, najpierw Ukończ szkolenia modelu w [samouczku (część 1): uczenie modelu klasyfikacji obrazów](tutorial-train-models-with-aml.md).   Następnie Otwórz Notes *IMG-klasyfikacyjn-part2-Deploy. ipynb* w folderze klony */Klasyfikacja obrazu-mnist ręcznie-Data* .
+Aby uruchomić notes, najpierw wykonaj szkolenie modelu w [samouczku (część 1): Trenuj model klasyfikacji obrazu](tutorial-train-models-with-aml.md).   Następnie otwórz notebook *img-classification-part2-deploy.ipynb* w sklonowanym *folderze samouczków/klasyfikacji obrazu-mnist-data.*
 
-Ten samouczek jest również dostępny w witrynie [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) , jeśli chcesz używać go w [środowisku lokalnym](how-to-configure-environment.md#local).  Upewnij się, że w środowisku zainstalowano `matplotlib` i `scikit-learn`. 
+Ten samouczek jest również dostępny na [GitHub,](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) jeśli chcesz go używać we własnym [środowisku lokalnym.](how-to-configure-environment.md#local)  Upewnij się, `matplotlib` że `scikit-learn` masz zainstalowany i w swoim środowisku. 
 
 > [!Important]
-> Pozostała część tego artykułu zawiera tę samą zawartość, która jest wyświetlana w notesie.  
+> Pozostała część tego artykułu zawiera tę samą zawartość, co w notesie.  
 >
-> Przełącz się do notesu Jupyter teraz, jeśli chcesz czytać wraz z uruchamianiem kodu.
-> Aby uruchomić pojedynczą komórkę kodu w notesie, kliknij komórkę kod i naciśnij **klawisze SHIFT + ENTER**. Lub Uruchom cały Notes, wybierając pozycję **Uruchom wszystkie** z górnego paska narzędzi.
+> Przełącz się do notebooka Jupyter teraz, jeśli chcesz przeczytać wzdłuż podczas uruchamiania kodu.
+> Aby uruchomić pojedynczą komórkę kodu w notesie, kliknij komórkę kodu i naciśnij **klawisze Shift+Enter**. Możesz też uruchomić cały notes, wybierając pozycję **Uruchom wszystko** z górnego paska narzędzi.
 
-## <a name="start"></a>Konfigurowanie środowiska
+## <a name="set-up-the-environment"></a><a name="start"></a>Konfigurowanie środowiska
 
 Zacznij od skonfigurowania środowiska testowego.
 
@@ -227,7 +225,7 @@ def run(raw_data):
 
 ### <a name="create-environment-file"></a>Tworzenie pliku środowiska
 
-Następnie utwórz plik środowiska o nazwie **myenv.yml**, który określa wszystkie zależności pakietu skryptu. Ten plik gwarantuje zainstalowanie tych wszystkich zależności w obrazie platformy Docker. Ten model wymaga pakietów `scikit-learn` i `azureml-sdk`. Wszystkie pliki środowiska niestandardowego muszą wyświetlać listę Azure-Defaults z wersja > = 1.0.45 jako zależność PIP. Ten pakiet zawiera funkcje, które są konieczne do hostowania modelu jako usługi sieci Web.
+Następnie utwórz plik środowiska o nazwie **myenv.yml**, który określa wszystkie zależności pakietu skryptu. Ten plik gwarantuje zainstalowanie tych wszystkich zależności w obrazie platformy Docker. Ten model wymaga pakietów `scikit-learn` i `azureml-sdk`. Wszystkie niestandardowe pliki środowiska muszą wyświetlić listę azureml-defaults z verion >= 1.0.45 jako zależności pipsa. Ten pakiet zawiera funkcje potrzebne do obsługi modelu jako usługi sieci web.
 
 ```python
 from azureml.core.conda_dependencies import CondaDependencies
@@ -268,13 +266,13 @@ Skonfiguruj i wdróż obraz. Poniższy kod wykonuje następujące kroki:
 1. Utworzenie obrazu za pomocą następujących plików:
    * plik oceniania (`score.py`),
    * plik środowiska (`myenv.yml`),
-   * Plik modelu
+   * plik modelu.
 1. Zarejestrowanie tego obrazu w obszarze roboczym. 
 1. Wysłanie obrazu do kontenera usługi Container Instances.
 1. Uruchomienie kontenera w usłudze Container Instances przy użyciu obrazu.
 1. Pobranie punktu końcowego HTTP usługi internetowej.
 
-Należy pamiętać, że jeśli tworzysz własny plik środowiska, musisz wyświetlić listę platformy Azure — wartości domyślne z wersją > = 1.0.45 jako zależność PIP. Ten pakiet zawiera funkcje, które są konieczne do hostowania modelu jako usługi sieci Web.
+Należy pamiętać, że jeśli definiujesz własny plik środowiska, należy wyświetlić listę azureml-defaults z wersją >= 1.0.45 jako zależności pipsa. Ten pakiet zawiera funkcje potrzebne do obsługi modelu jako usługi sieci web.
 
 ```python
 %%time
@@ -299,7 +297,6 @@ Pobierz punkt końcowy HTTP usługi internetowej oceniania akceptujący wywołan
 ```python
 print(service.scoring_uri)
 ```
-
 
 ## <a name="test-the-deployed-service"></a>Testowanie wdrożonego modelu
 
@@ -387,7 +384,7 @@ service.delete()
 
 ## <a name="next-steps"></a>Następne kroki
 
-+ Dowiedz się więcej o wszystkich [opcjach wdrażania dla Azure Machine Learning](how-to-deploy-and-where.md).
++ Dowiedz się więcej o wszystkich [opcjach wdrażania usługi Azure Machine Learning](how-to-deploy-and-where.md).
 + Dowiedz się, jak [tworzyć klientów na potrzeby usługi internetowej](how-to-consume-web-service.md).
 +  Asynchronicznie [twórz prognozy dotyczące dużych ilości danych](how-to-use-parallel-run-step.md).
 + Monitoruj swoje modele usługi Azure Machine Learning przy użyciu usługi [Application Insights](how-to-enable-app-insights.md).

@@ -1,5 +1,5 @@
 ---
-title: Rozgałęzianie działań i łączenie łańcuchów w potoku przy użyciu Azure Portal
+title: Rozgałęzianie i tworzenie łańcucha działań w potoku przy użyciu witryny Azure portal
 description: W tym artykule przedstawiono sposób sterowania przepływem danych w usłudze Azure Data Factory przez rozgałęzianie działań i tworzenie łańcuchów działań.
 services: data-factory
 author: djpmsft
@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
 ms.openlocfilehash: 3fe4dc76e8ece0d525f307626b1772a3239805db
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75977512"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Rozgałęzianie działań i tworzenie łańcuchów działań w potoku usługi Data Factory
@@ -40,9 +40,9 @@ W tym samouczku jest używana witryna Azure Portal. Aby uzyskać informacje o in
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Subskrypcja platformy Azure**. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
+* **Subskrypcja platformy Azure**. Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne](https://azure.microsoft.com/free/) konto przed rozpoczęciem.
 * **Konto usługi Azure Storage**. Magazyn obiektów blob jest używany jako **źródłowy** magazyn danych. Jeśli nie masz konta usługi Azure Storage, utwórz je, wykonując czynności przedstawione w artykule [Tworzenie konta magazynu](../storage/common/storage-account-create.md).
-* **Usługa Azure SQL Database**. Baza danych jest używana jako magazyn danych **ujścia**. Jeśli nie masz bazy danych Azure SQL Database, utwórz ją, wykonując czynności przedstawione w artykule [Create an Azure SQL database (Tworzenie bazy danych Azure SQL Database)](../sql-database/sql-database-get-started-portal.md).
+* **Baza danych SQL platformy Azure**. Baza danych jest używana jako magazyn danych **ujścia**. Jeśli nie masz bazy danych Azure SQL Database, utwórz ją, wykonując czynności przedstawione w artykule [Create an Azure SQL database (Tworzenie bazy danych Azure SQL Database)](../sql-database/sql-database-get-started-portal.md).
 
 ### <a name="create-blob-table"></a>Tworzenie tabeli obiektów blob
 
@@ -127,7 +127,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 ## <a name="create-a-data-factory"></a>Tworzenie fabryki danych
 
 1. Uruchom przeglądarkę internetową **Microsoft Edge** lub **Google Chrome**. Obecnie interfejs użytkownika usługi Data Factory jest obsługiwany tylko przez przeglądarki internetowe Microsoft Edge i Google Chrome.
-1. W menu po lewej stronie wybierz pozycję **Utwórz zasób** > **dane + analiza** > **Data Factory**:
+1. W menu po lewej stronie wybierz pozycję **Utwórz źródło** > **Data + Analytics** > **Data Factory**:
 
    ![Wybór usługi Data Factory w okienku „Nowy”](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -135,21 +135,21 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
      ![Strona Nowa fabryka danych](./media/tutorial-control-flow-portal/new-azure-data-factory.png)
 
-   Nazwa fabryki danych platformy Azure musi być **globalnie unikatowa**. Jeśli wystąpi poniższy błąd, zmień nazwę fabryki danych (np. twojanazwaADFTutorialDataFactory) i spróbuj utworzyć ją ponownie. Artykuł [Data Factory — Naming Rules (Usługa Data Factory — reguły nazewnictwa)](naming-rules.md) zawiera reguły nazewnictwa artefaktów usługi Data Factory.
+   Nazwa fabryki danych platformy Azure musi być **unikatowa globalnie.** Jeśli wystąpi poniższy błąd, zmień nazwę fabryki danych (np. twojanazwaADFTutorialDataFactory) i spróbuj utworzyć ją ponownie. Artykuł [Data Factory — Naming Rules (Usługa Data Factory — reguły nazewnictwa)](naming-rules.md) zawiera reguły nazewnictwa artefaktów usługi Data Factory.
 
        `Data factory name “ADFTutorialDataFactory” is not available`
 3. Wybierz **subskrypcję** Azure, w której chcesz utworzyć fabrykę danych.
 4. Dla opcji **Grupa zasobów** wykonaj jedną z następujących czynności:
 
       - Wybierz pozycję **Użyj istniejącej**, a następnie wybierz istniejącą grupę zasobów z listy rozwijanej.
-      - Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę grupy zasobów.   
+      - Wybierz **pozycję Utwórz nowy**i wprowadź nazwę grupy zasobów.   
          
         Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Używanie grup zasobów do zarządzania zasobami platformy Azure).  
 4. Wybierz opcję **V2** w obszarze **Wersja**.
 5. Na liście **lokalizacja** wybierz lokalizację fabryki danych. Na liście rozwijanej są wyświetlane tylko obsługiwane lokalizacje. Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
 6. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**.     
 7. Kliknij przycisk **Utwórz**.      
-8. Na pulpicie nawigacyjnym jest widoczny następujący kafelek ze stanem: **Wdrażanie fabryki danych**.
+8. Na pulpicie nawigacyjnym jest widoczny następujący kafelek o stanie: **Wdrażanie fabryki danych**.
 
     ![kafelek Wdrażanie fabryki danych](media/tutorial-control-flow-portal/deploying-data-factory.png)
 9. Po zakończeniu tworzenia zostanie wyświetlona strona **Fabryka danych**, jak pokazano na poniższej ilustracji.
@@ -173,7 +173,7 @@ W tym kroku jest tworzony potok z jednym działaniem kopiowania i dwoma działan
 
     - **sourceBlobContainer** — parametr w potoku używany przez zestaw danych obiektu blob źródła.
     - **sinkBlobContainer** — parametr w potoku używany przez zestaw danych obiektu blob ujścia.
-    - **receiver** — parametr w potoku używany przez dwa działania internetowe, w przypadku których do odbiorcy z podanym w tym parametrze adresem e-mail są wysyłane wiadomości e-mail o powodzeniu lub niepowodzeniu.
+    - **receiver** – ten parametr jest używany przez dwa działania sieci Web w potoku, które wysyłają wiadomości e-mail o powodzenie lub niepowodzenie do odbiorcy, którego adres e-mail jest określony przez ten parametr.
 
    ![Menu Nowy potok](./media/tutorial-control-flow-portal/pipeline-parameters.png)
 4. W przyborniku **Działania** rozwiń pozycję **Przepływ danych**, a następnie przeciągnij działanie **Kopiowanie** i upuść je na powierzchni projektanta potoku.
@@ -195,7 +195,7 @@ W tym kroku jest tworzony potok z jednym działaniem kopiowania i dwoma działan
 
     1. Wprowadź wartość **AzureStorageLinkedService** w polu **Nazwa**.
     2. Wybierz swoje konto usługi Azure Storage w polu **Nazwa konta magazynu**.
-    3. Kliknij pozycję **Zapisz**.
+    3. Kliknij przycisk **Zapisz**.
 
    ![Nowa połączona usługa Azure Storage](./media/tutorial-control-flow-portal/new-azure-storage-linked-service.png)
 12. Wprowadź wartość `@pipeline().parameters.sourceBlobContainer` jako folder oraz `emp.txt` jako nazwę pliku. Parametr potoku sourceBlobContainer umożliwia ustawienie ścieżki folderu dla zestawu danych.
@@ -272,12 +272,12 @@ W tym kroku jest tworzony potok z jednym działaniem kopiowania i dwoma działan
 23. Przeciągnij **czerwony** przycisk znajdujący się obok działania kopiowania do drugiego działania internetowego **SendFailureEmailActivity**. Działania można przenosić, tak aby potok wyglądał jak na poniższym obrazie:
 
     ![Pełny potok ze wszystkimi działaniami](./media/tutorial-control-flow-portal/full-pipeline.png)
-24. Aby zweryfikować potok, kliknij przycisk **Weryfikuj** na pasku narzędzi. Zamknij okno **Dane wyjściowe weryfikacji potoku**, klikając przycisk **>>** .
+24. Aby zweryfikować potok, kliknij przycisk **Weryfikuj** na pasku narzędzi. Zamknij okno **Dane wyjściowe weryfikacji potoku**, klikając przycisk **>>**.
 
     ![Weryfikowanie potoku](./media/tutorial-control-flow-portal/validate-pipeline.png)
 24. Aby opublikować jednostki (zestawy danych, potoki itp.) w usłudze Data Factory, kliknij przycisk **Opublikuj wszystko**. Poczekaj na wyświetlenie komunikatu **Pomyślnie opublikowano**.
 
-    ![Publikuj](./media/tutorial-control-flow-portal/publish-button.png)
+    ![Publikowanie](./media/tutorial-control-flow-portal/publish-button.png)
 
 ## <a name="trigger-a-pipeline-run-that-succeeds"></a>Wyzwalanie pomyślnego uruchomienia potoku
 1. Aby **wyzwolić** uruchomienie potoku, kliknij pozycję **Wyzwól** na pasku narzędzi, a następnie kliknij polecenie **Wyzwól teraz**.

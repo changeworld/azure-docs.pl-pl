@@ -1,6 +1,6 @@
 ---
-title: Samouczek — archiwizowanie dzienników katalogów na koncie magazynu | Microsoft Docs
-description: Dowiedz się, jak skonfigurować Diagnostyka Azure do wypychania dzienników Azure Active Directory do konta magazynu
+title: Samouczek - Archiwum dzienników katalogu do konta magazynu | Dokumenty firmy Microsoft
+description: Dowiedz się, jak skonfigurować diagnostykę platformy Azure do wypychania dzienników usługi Azure Active Directory na konto magazynu
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,13 +18,13 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fa2cac7c89a2cb1bd99675727bcd51e82c4a18ef
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74007862"
 ---
-# <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account"></a>Samouczek: archiwizowanie dzienników usługi Azure AD na koncie usługi Azure Storage
+# <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account"></a>Samouczek: Archiwizowanie dzienników usługi Azure AD na koncie magazynu platformy Azure
 
 W tym samouczku dowiesz się, jak skonfigurować ustawienia diagnostyki usługi Azure Monitor w celu kierowania dzienników usługi Azure Active Directory (Azure AD) do konta usługi Azure Storage.
 
@@ -38,9 +38,9 @@ Aby używać tej funkcji, potrzebujesz następujących elementów:
 
 ## <a name="archive-logs-to-an-azure-storage-account"></a>Archiwizowanie dzienników na koncie usługi Azure Storage
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). 
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com). 
 
-2. Wybierz kolejno pozycje **Azure Active Directory** > **Aktywność** > **Dzienniki inspekcji**. 
+2. Wybierz**dzienniki inspekcji****aktywności usługi** >  **Azure Active Directory** > . 
 
 3. Wybierz pozycję **Eksportuj ustawienia**. 
 
@@ -75,6 +75,6 @@ Aby używać tej funkcji, potrzebujesz następujących elementów:
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Interpret audit logs schema in Azure Monitor (Interpretowanie schematu dzienników inspekcji w usłudze Azure Monitor)](reference-azure-monitor-audit-log-schema.md)
+* [Interpretowanie schematu dzienników inspekcji w usłudze Azure Monitor](reference-azure-monitor-audit-log-schema.md)
 * [Interpret sign-in logs schema in Azure Monitor (Interpretowanie schematu dzienników logowania w usłudze Azure Monitor)](reference-azure-monitor-sign-ins-log-schema.md)
 * [Często zadawane pytania i znane problemy](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

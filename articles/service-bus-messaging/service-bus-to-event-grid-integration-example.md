@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: przykłady dotyczące Event Grid integracji Azure Service Bus'
-description: 'Samouczek: w tym artykule przedstawiono przykłady Service Bus obsługi komunikatów i Event Grid integracji.'
+title: 'Samouczek: przykłady integracji usługi Azure Service Bus to Event Grid'
+description: 'Samouczek: W tym artykule przedstawiono przykłady obsługi wiadomości usługi Service Bus i integracji z siatką zdarzeń.'
 services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
@@ -14,33 +14,40 @@ ms.devlang: multiple
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 3fb2f4a4969e8df94a60ac20c761f073b6a9d030
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fef325b67c38eda09a05dac9d74bd5b97df164cc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462089"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80067763"
 ---
-# <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Samouczek: reagowanie na zdarzenia Azure Service Bus odbierane za pośrednictwem Azure Event Grid przy użyciu Azure Functions i Azure Logic Apps
-W tym samouczku dowiesz się, jak odpowiedzieć na zdarzenia Azure Service Bus, które są odbierane za pośrednictwem Azure Event Grid przy użyciu Azure Functions i Azure Logic Apps. Wykonaj następujące czynności:
- 
-- Utwórz testową funkcję platformy Azure w celu debugowania i wyświetlania początkowego przepływu zdarzeń z Event Grid.
-- Utworzenie funkcji platformy Azure na potrzeby odbierania i przetwarzania komunikatów usługi Azure Service Bus na podstawie zdarzeń usługi Event Grid.
-- Tworzenie aplikacji logiki w celu reagowania na zdarzenia Event Grid
+# <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Samouczek: odpowiadanie na zdarzenia usługi Azure Service Bus odebrane za pośrednictwem usługi Azure Event Grid przy użyciu funkcji platformy Azure i aplikacji logiki azure
+W tym samouczku dowiesz się, jak reagować na zdarzenia usługi Azure Service Bus, które są odbierane za pośrednictwem usługi Azure Event Grid przy użyciu funkcji azure i usługi Azure Logic Apps. 
 
-Po utworzeniu Service Bus, Event Grid, Azure Functions i Logic Apps artefakty należy wykonać następujące czynności: 
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+> [!div class="checklist"]
+> * Tworzenie przestrzeni nazw usługi Service Bus
+> * Przygotowanie przykładowej aplikacji do wysyłania wiadomości
+> * Konfigurowanie funkcji testowej na platformie Azure
+> * Łączenie funkcji i przestrzeni nazw za pomocą usługi Event Grid
+> * Wysyłanie wiadomości do tematu Usługi Service Bus
+> * Odbieranie komunikatów przy użyciu usługi Azure Functions
+> * Odbieranie komunikatów za pomocą usługi Logic Apps
 
-1. Wysyłanie komunikatów do tematu Service Bus. 
-2. Sprawdź, czy subskrypcje w temacie otrzymały te komunikaty
-3. Sprawdź, czy funkcja lub aplikacja logiki, która subskrybuje zdarzenie, odebrała zdarzenie. 
+## <a name="prerequisites"></a>Wymagania wstępne
+
+Aby ukończyć kroki tego samouczka, upewnij się, że zainstalowano następujące elementy:
+
+- [Program Visual Studio 2017 Update 3 (wersja 15.3, 26730.01)](https://www.visualstudio.com/vs) lub nowszy.
+- [Zestaw NET Core SDK](https://www.microsoft.com/net/download/windows), wersja 2.0 lub nowsza.
 
 ## <a name="create-a-service-bus-namespace"></a>Tworzenie przestrzeni nazw usługi Service Bus
-Postępuj zgodnie z instrukcjami w tym samouczku: [Szybki Start: użyj Azure Portal, aby utworzyć temat Service Bus i subskrypcje w temacie](service-bus-quickstart-topics-subscriptions-portal.md) , aby wykonać następujące zadania:
+Postępuj zgodnie z instrukcjami w tym [samouczku: Szybki start: Użyj witryny Azure Portal, aby utworzyć temat usługi Service Bus i subskrypcje tematu, aby](service-bus-quickstart-topics-subscriptions-portal.md) wykonać następujące zadania:
 
-- Utwórz przestrzeń nazw Service Bus w **warstwie Premium** . 
-- Pobierz parametry połączenia. 
-- Utwórz temat Service Bus.
-- Utwórz dwie subskrypcje w temacie. 
+- Utwórz obszar nazw **usługi Premium** Service Bus. 
+- Pobierz ciąg połączenia. 
+- Tworzenie tematu usługi Service Bus.
+- Utwórz dwie subskrypcje tematu. 
 
 ## <a name="prepare-a-sample-application-to-send-messages"></a>Przygotowanie przykładowej aplikacji do wysyłania wiadomości
 Komunikat można wysłać do tematu usługi Service Bus za pomocą dowolnej metody. Przykładowy kod na końcu tej procedury zakłada, że używasz programu Visual Studio 2017.
@@ -48,26 +55,26 @@ Komunikat można wysłać do tematu usługi Service Bus za pomocą dowolnej meto
 1. Sklonuj [repozytorium azure-service-bus z usługi GitHub](https://github.com/Azure/azure-service-bus/).
 2. W programie Visual Studio przejdź do folderu *\samples\DotNet\Microsoft.ServiceBus.Messaging\ServiceBusEventGridIntegration* i otwórz plik *SBEventGridIntegration.sln*.
 3. Przejdź do projektu **MessageSender** i wybierz pozycję **Program.cs**.
-4. Podaj nazwę tematu Service Bus i parametry połączenia, które zostały uzyskane z poprzedniego kroku:
+4. Wypełnij nazwę tematu usługi Service Bus i parametry połączenia, które otrzymałeś z poprzedniego kroku:
 
     ```csharp
     const string ServiceBusConnectionString = "YOUR CONNECTION STRING";
     const string TopicName = "YOUR TOPIC NAME";
     ```
-5. Skompiluj i uruchom program, aby wysyłać wiadomości testowe do tematu Service Bus. 
+5. Skompiluj i uruchom program, aby wysłać wiadomości testowe do tematu usługi Service Bus. 
 
-## <a name="set-up-a-test-function-on-azure"></a>Skonfiguruj funkcję testową na platformie Azure 
-Przed rozpoczęciem pracy w całym scenariuszu należy skonfigurować co najmniej małą funkcję testową, której można użyć do debugowania i obserwować zdarzenia, które są przepływami. Postępuj zgodnie z instrukcjami w artykule [Tworzenie pierwszej funkcji w Azure Portal artykułu,](../azure-functions/functions-create-first-azure-function.md) aby wykonać następujące zadania: 
+## <a name="set-up-a-test-function-on-azure"></a>Konfigurowanie funkcji testowej na platformie Azure 
+Przed rozpoczęciem pracy nad całym scenariuszem należy skonfigurować co najmniej małą funkcję testową, której można użyć do debugowania i obserwowania zdarzeń, które są przepływające. Postępuj zgodnie z instrukcjami w [artykule Tworzenie pierwszej funkcji w witrynie Azure Portal,](../azure-functions/functions-create-first-azure-function.md) aby wykonać następujące zadania: 
 
-1. Utwórz aplikację funkcji.
-2. Utwórz funkcję wyzwalaną przez protokół HTTP. 
+1. Utwórz aplikację funkcyjną.
+2. Utwórz funkcję wyzwalaną http. 
 
 Następnie wykonaj następujące czynności: 
 
 
-# <a name="azure-functions-v2tabv2"></a>[Azure Functions V2](#tab/v2)
+# <a name="azure-functions-v2"></a>[Funkcje platformy Azure w wersji 2](#tab/v2)
 
-1. Rozwiń pozycję **funkcje** w widoku drzewa, a następnie wybierz funkcję. Zastąp kod dla funkcji następującym kodem: 
+1. Rozwiń **funkcje** w widoku drzewa i wybierz funkcję. Zastąp kod funkcji następującym kodem: 
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -117,19 +124,19 @@ Następnie wykonaj następujące czynności:
     ```
 2. Wybierz polecenie **Zapisz i uruchom**.
 
-    ![Dane wyjściowe aplikacji funkcji](./media/service-bus-to-event-grid-integration-example/function-run-output.png)
-3. Wybierz pozycję **Pobierz adres URL funkcji** i ZANOTUJ adres URL. 
+    ![Wyjście aplikacji funkcji](./media/service-bus-to-event-grid-integration-example/function-run-output.png)
+3. Wybierz **pozycję Pobierz adres URL funkcji** i zanotuj adres URL. 
 
     ![Pobierz adres URL funkcji](./media/service-bus-to-event-grid-integration-example/get-function-url.png)
 
-# <a name="azure-functions-v1tabv1"></a>[Azure Functions v1](#tab/v1)
+# <a name="azure-functions-v1"></a>[Funkcje platformy Azure w wersji 1](#tab/v1)
 
-1. Skonfiguruj funkcję do korzystania z wersji **V1** : 
-    1. Wybierz aplikację funkcji w widoku drzewa, a następnie wybierz pozycję **Ustawienia aplikacji funkcji**. 
+1. Skonfiguruj funkcję do używania wersji **V1:** 
+    1. Wybierz aplikację funkcji w widoku drzewa i wybierz pozycję **Ustawienia aplikacji Funkcji**. 
 
         ![Ustawienia aplikacji funkcji]()./media/service-bus-to-event-grid-integration-example/function-app-settings.png)
-    2. Wybierz pozycję **~ 1** dla **wersji środowiska uruchomieniowego**. 
-2. Rozwiń pozycję **funkcje** w widoku drzewa, a następnie wybierz funkcję. Zastąp kod dla funkcji następującym kodem: 
+    2. Wybierz **~1** dla **wersji runtime**. 
+2. Rozwiń **funkcje** w widoku drzewa i wybierz funkcję. Zastąp kod funkcji następującym kodem: 
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -176,141 +183,141 @@ Następnie wykonaj następujące czynności:
     ```
 4. Wybierz polecenie **Zapisz i uruchom**.
 
-    ![Dane wyjściowe aplikacji funkcji](./media/service-bus-to-event-grid-integration-example/function-run-output.png)
-4. Wybierz pozycję **Pobierz adres URL funkcji** i ZANOTUJ adres URL. 
+    ![Wyjście aplikacji funkcji](./media/service-bus-to-event-grid-integration-example/function-run-output.png)
+4. Wybierz **pozycję Pobierz adres URL funkcji** i zanotuj adres URL. 
 
     ![Pobierz adres URL funkcji](./media/service-bus-to-event-grid-integration-example/get-function-url.png)
 
 ---
 
 ## <a name="connect-the-function-and-namespace-via-event-grid"></a>Łączenie funkcji i przestrzeni nazw za pomocą usługi Event Grid
-W tej sekcji należy powiązać funkcję z przestrzenią nazw Service Bus przy użyciu Azure Portal. 
+W tej sekcji należy powiązać z funkcją i obszaru nazw usługi Service Bus przy użyciu witryny Azure portal. 
 
-Aby utworzyć subskrypcję Azure Event Grid, wykonaj następujące kroki:
+Aby utworzyć subskrypcję usługi Azure Event Grid, wykonaj następujące kroki:
 
-1. W Azure Portal przejdź do przestrzeni nazw, a następnie w okienku po lewej stronie wybierz pozycję **zdarzenia**. Zostanie otwarte okno przestrzeni nazw z dwiema subskrypcjami usługi Event Grid wyświetlonymi w okienku po prawej stronie. 
+1. W witrynie Azure portal przejdź do obszaru nazw, a następnie w lewym okienku wybierz pozycję **Zdarzenia**. Zostanie otwarte okno przestrzeni nazw z dwiema subskrypcjami usługi Event Grid wyświetlonymi w okienku po prawej stronie. 
     
-    ![Strona Service Bus — zdarzenia](./media/service-bus-to-event-grid-integration-example/service-bus-events-page.png)
-2. Wybierz pozycję **+ subskrypcja zdarzeń** na pasku narzędzi. 
+    ![Usługa Service Bus — strona z wydarzeniami](./media/service-bus-to-event-grid-integration-example/service-bus-events-page.png)
+2. Wybierz **+ subskrypcję zdarzeń** na pasku narzędzi. 
 3. Na stronie **Tworzenie subskrypcji zdarzeń** wykonaj następujące czynności:
     1. Wprowadź **nazwę** subskrypcji. 
-    2. Wybierz **element Hook sieci Web** dla **typu punktu końcowego**. 
+    2. Wybierz **pozycję Web Hook** dla typu punktu **końcowego**. 
 
-        ![Subskrypcja Event Grid Service Bus](./media/service-bus-to-event-grid-integration-example/event-grid-subscription-page.png)
-    3. **Wybierz pozycję zaznacz punkt końcowy**, wklej adres URL funkcji, a następnie wybierz pozycję **Potwierdź wybór**. 
+        ![Usługa Service Bus — subskrypcja usługi Event Grid](./media/service-bus-to-event-grid-integration-example/event-grid-subscription-page.png)
+    3. Wybierz **pozycję Wybierz punkt końcowy**, wklej adres URL funkcji, a następnie wybierz pozycję **Potwierdź zaznaczenie**. 
 
-        ![Funkcja — Wybieranie punktu końcowego](./media/service-bus-to-event-grid-integration-example/function-select-endpoint.png)
-    4. Przejdź do karty **filtry** , wprowadź nazwę **pierwszej subskrypcji** do utworzonego wcześniej tematu Service Bus a następnie wybierz przycisk **Utwórz** . 
+        ![Funkcja - wybierz punkt końcowy](./media/service-bus-to-event-grid-integration-example/function-select-endpoint.png)
+    4. Przełącz się na kartę **Filtry,** wprowadź nazwę **pierwszej subskrypcji** w temacie Usługi Service Bus utworzonej wcześniej, a następnie wybierz przycisk **Utwórz.** 
 
         ![Filtr subskrypcji zdarzeń](./media/service-bus-to-event-grid-integration-example/event-subscription-filter.png)
-4. Upewnij się, że na liście znajduje się subskrypcja zdarzeń.
+4. Upewnij się, że na liście jest widoczna subskrypcja zdarzenia.
 
     ![Subskrypcja zdarzeń na liście](./media/service-bus-to-event-grid-integration-example/event-subscription-in-list.png)
 
-## <a name="send-messages-to-the-service-bus-topic"></a>Wysyłanie komunikatów do tematu Service Bus
-1. Uruchom aplikację .NET C# , która wysyła komunikaty do tematu Service Bus. 
+## <a name="send-messages-to-the-service-bus-topic"></a>Wysyłanie wiadomości do tematu Usługi Service Bus
+1. Uruchom aplikację .NET C#, która wysyła komunikaty do tematu usługi Service Bus. 
 
     ![Dane wyjściowe aplikacji konsoli](./media/service-bus-to-event-grid-integration-example/console-app-output.png)
-1. Na stronie aplikacji funkcji platformy Azure rozwiń węzeł **funkcje**, rozwiń swoją **funkcję**i wybierz pozycję **Monitoruj**. 
+1. Na stronie aplikacji funkcji platformy Azure rozwiń węzeł **Funkcje**, rozwiń **funkcję**i wybierz **pozycję Monitoruj**. 
 
-    ![Funkcja monitorowania](./media/service-bus-to-event-grid-integration-example/function-monitor.png)
+    ![Monitor, funkcja](./media/service-bus-to-event-grid-integration-example/function-monitor.png)
 
 ## <a name="receive-messages-by-using-azure-functions"></a>Odbieranie komunikatów przy użyciu usługi Azure Functions
 W poprzedniej sekcji przeprowadzono prosty scenariusz testowania i debugowania oraz sprawdzono, czy zdarzenia przepływają. 
 
 W tej sekcji dowiesz się, jak odbierać i przetwarzać komunikaty po odebraniu zdarzenia.
 
-### <a name="publish-a-function-from-visual-studio"></a>Publikowanie funkcji z programu Visual Studio
-1. W tym samym otwartym rozwiązaniu programu Visual Studio (**SBEventGridIntegration**) wybierz pozycję **ReceiveMessagesOnEvent.cs** w projekcie **SBEventGridIntegration** . 
-2. Wprowadź parametry połączenia Service Bus w następującym kodzie:
+### <a name="publish-a-function-from-visual-studio"></a>Publikowanie funkcji w programie Visual Studio
+1. W tym samym rozwiązaniu programu Visual Studio (**SBEventGridIntegration),** które zostało otwarte, wybierz **ReceiveMessagesOnEvent.cs** w projekcie **SBEventGridIntegration.** 
+2. Wprowadź parametry połączenia usługi Service Bus w następującym kodzie:
 
     ```Csharp
     const string ServiceBusConnectionString = "YOUR CONNECTION STRING";
     ```
 3. Pobierz **profil publikowania** dla funkcji:
     1. Wybierz aplikację funkcji. 
-    2. Wybierz kartę **Przegląd** , jeśli nie została jeszcze wybrana. 
-    3. Na pasku narzędzi wybierz pozycję **Pobierz profil publikowania** . 
+    2. Wybierz kartę **Przegląd,** jeśli nie jest jeszcze zaznaczona. 
+    3. Wybierz **pozycję Pobierz profil publikowania** na pasku narzędzi. 
 
-        ![Pobierz profil publikowania dla funkcji](./media/service-bus-to-event-grid-integration-example/function-download-publish-profile.png)
+        ![Pobierz profil publikowania dla tej funkcji](./media/service-bus-to-event-grid-integration-example/function-download-publish-profile.png)
     4. Zapisz plik w folderze projektu. 
 4. W programie Visual Studio kliknij prawym przyciskiem myszy element **SBEventGridIntegration** i wybierz pozycję **Publikuj**. 
-5. Wybierz pozycję **Rozpocznij** na stronie **Publikowanie** . 
-6. Na stronie **Wybierz miejsce docelowe publikowania** wykonaj następujące czynności, a następnie wybierz pozycję **Importuj profil**. 
+5. Wybierz **pozycję Start** na stronie **Publikowania.** 
+6. Na stronie **Wybierz miejsce docelowe publikowania** wykonaj następujące czynności, wybierając pozycję **Importuj profil**. 
 
-    ![Visual Studio — przycisk importowania profilu](./media/service-bus-to-event-grid-integration-example/visual-studio-import-profile-button.png)
-7. Wybierz pobrany wcześniej **plik profilu publikacji** . 
-8. Na stronie **Publikowanie** wybierz pozycję **Publikuj** . 
+    ![Visual Studio — przycisk Importuj profil](./media/service-bus-to-event-grid-integration-example/visual-studio-import-profile-button.png)
+7. Wybierz **pobrany** wcześniej plik profilu publikowania. 
+8. Wybierz **pozycję Publikuj** na stronie **Publikowania.** 
 
     ![Visual Studio — publikowanie](./media/service-bus-to-event-grid-integration-example/select-publish.png)
-9. Potwierdź, że zobaczysz nową funkcję Azure Function **ReceiveMessagesOnEvent**. W razie konieczności Odśwież stronę. 
+9. Upewnij się, że widzisz nową funkcję Platformy Azure **ReceiveMessagesOnEvent**. W razie potrzeby odśwież stronę. 
 
     ![Upewnij się, że nowa funkcja została utworzona](./media/service-bus-to-event-grid-integration-example/function-receive-messages.png)
 10. Pobierz adres URL do nowej funkcji i zanotuj go. 
 
-### <a name="event-grid-subscription"></a>Subskrypcja Event Grid
+### <a name="event-grid-subscription"></a>Subskrypcja usługi Event Grid
 
-1. Usuń istniejącą subskrypcję Event Grid:
-    1. Na stronie **obszar nazw Service Bus** wybierz pozycję **zdarzenia** w menu po lewej stronie. 
+1. Usuń istniejącą subskrypcję usługi Event Grid:
+    1. Na stronie **Obszar nazw usługi Service Bus** wybierz pozycję **Zdarzenia** w menu po lewej stronie. 
     2. Wybierz istniejącą subskrypcję zdarzeń. 
-    3. Na stronie **subskrypcja zdarzeń** wybierz pozycję **Usuń**.
-2. Postępuj zgodnie z instrukcjami w sekcji [łączenie funkcji i przestrzeni nazw za pośrednictwem Event Grid](#connect-the-function-and-namespace-via-event-grid) , aby utworzyć subskrypcję Event Grid przy użyciu nowego adresu URL funkcji.
-3. Postępuj zgodnie z instrukcjami w sekcji [wysyłanie komunikatów do Service Bus tematu](#send-messages-to-the-service-bus-topic) , aby wysyłać komunikaty do tematu i monitorować funkcję. 
+    3. Na stronie **Subskrypcja zdarzeń** wybierz pozycję **Usuń**.
+2. Postępuj zgodnie z instrukcjami w sekcji [Połącz funkcję i obszar nazw za pośrednictwem siatki zdarzeń,](#connect-the-function-and-namespace-via-event-grid) aby utworzyć subskrypcję usługi Event Grid przy użyciu nowego adresu URL funkcji.
+3. Postępuj zgodnie z instrukcjami w [sekcji Wyślij wiadomości do tematu usługi Service Bus,](#send-messages-to-the-service-bus-topic) aby wysyłać wiadomości do tematu i monitorować tę funkcję. 
 
 ## <a name="receive-messages-by-using-logic-apps"></a>Odbieranie komunikatów za pomocą usługi Logic Apps
-Połącz aplikację logiki z Azure Service Bus i Azure Event Grid, wykonując następujące czynności:
+Połącz aplikację logiki z usługą Azure Service Bus i usługą Azure Event Grid, wykonując następujące kroki:
 
-1. Utwórz aplikację logiki w Azure Portal.
-    1. Wybierz pozycję **+ Utwórz zasób**, wybierz pozycję **integracja**, a następnie wybierz pozycję **aplikacja logiki**. 
-    2. Na stronie **aplikacja logiki — tworzenie** wprowadź **nazwę** aplikacji logiki.
+1. Tworzenie aplikacji logiki w witrynie Azure portal.
+    1. Wybierz **+ Utwórz zasób**, wybierz **pozycję Integracja**, a następnie wybierz pozycję **Aplikacja logiki**. 
+    2. Na aplikacji **logiki — tworzenie** strony wprowadź **nazwę** aplikacji logiki.
     3. Wybierz swoją **subskrypcję** platformy Azure. 
-    4. Wybierz pozycję **Użyj istniejącej** dla **grupy zasobów**, a następnie wybierz grupę zasobów, która została użyta do innych zasobów (takich jak funkcja platformy Azure, Service Bus przestrzeń nazw), która została utworzona wcześniej. 
-    5. Wybierz **lokalizację** aplikacji logiki. 
-    6. Wybierz pozycję **Utwórz** , aby utworzyć aplikację logiki. 
-2. Na stronie **projektant Logic Apps** wybierz pozycję **pusta aplikacja logiki** w obszarze **Szablony**. 
-3. W projektancie wykonaj następujące czynności:
-    1. Wyszukaj **Event Grid**. 
-    2. Wybierz **, kiedy występuje zdarzenie zasobów (wersja zapoznawcza) — Azure Event Grid**. 
+    4. Wybierz **pozycję Użyj istniejącego** dla **grupy zasobów**i wybierz grupę zasobów, która została użyta dla innych zasobów (takich jak funkcja platformy Azure, obszar nazw usługi Service Bus utworzony wcześniej. 
+    5. Wybierz **lokalizację** dla aplikacji logiki. 
+    6. Wybierz **pozycję Utwórz,** aby utworzyć aplikację logiki. 
+2. Na stronie **Projektant aplikacji logiki** wybierz pozycję **Pusta aplikacja logiki** w obszarze **Szablony**. 
+3. Na projektanta wykonaj następujące kroki:
+    1. Wyszukaj **siatkę zdarzeń**. 
+    2. Wybierz **pozycję, gdy wystąpi zdarzenie zasobu (wersja zapoznawcza) — usługa Azure Event Grid**. 
 
-        ![Projektant Logic Apps — wybierz wyzwalacz Event Grid](./media/service-bus-to-event-grid-integration-example/logic-apps-event-grid-trigger.png)
-4. Wybierz pozycję **Zaloguj**i wprowadź swoje poświadczenia platformy Azure, a następnie wybierz pozycję **Zezwalaj na dostęp**. 
-5. Na stronie **gdy wystąpi zdarzenie zasobu** wykonaj następujące czynności:
+        ![Projektant aplikacji logiki — wybieranie wyzwalacza siatki zdarzeń](./media/service-bus-to-event-grid-integration-example/logic-apps-event-grid-trigger.png)
+4. Wybierz pozycję **Zaloguj się,** wprowadź poświadczenia platformy Azure i wybierz pozycję **Zezwalaj na dostęp**. 
+5. Na stronie **Gdy wystąpi zdarzenie zasobu** wykonaj następujące czynności:
     1. Wybierz swoją subskrypcję platformy Azure. 
-    2. W obszarze **Typ zasobu**wybierz pozycję **Microsoft. ServiceBus. Namespaces**. 
-    3. W obszarze **nazwa zasobu**wybierz przestrzeń nazw Service Bus. 
-    4. Wybierz pozycję **Dodaj nowy parametr**, a następnie wybierz pozycję **Filtr sufiksów**. 
-    5. W polu **Filtr sufiksu**wprowadź nazwę drugiej subskrypcji tematu Service Bus. 
-        ![Logic Apps Designer — Konfigurowanie](./media/service-bus-to-event-grid-integration-example/logic-app-configure-event.png) zdarzeń
-6. Wybierz pozycję **+ nowy krok** w projektancie, a następnie wykonaj następujące czynności:
-    1. Wyszukaj **Service Bus**.
-    2. Na liście wybierz pozycję **Service Bus** . 
-    3. Wybierz pozycję dla opcji **Pobierz komunikaty** na liście **Akcje** . 
-    4. Wybierz pozycję **Pobierz komunikaty z subskrypcji tematu (Zablokuj)** . 
+    2. W **obszarze Typ zasobu**wybierz pozycję **Microsoft.ServiceBus.Namespaces**. 
+    3. W obszarze **Nazwa zasobu**wybierz obszar nazw usługi Service Bus. 
+    4. Wybierz **pozycję Dodaj nowy parametr**i wybierz opcję Filtr **sufiksu**. 
+    5. W przypadku **filtru sufiksów**wprowadź nazwę drugiej subskrypcji tematu usługi Service Bus. 
+        ![Logic Apps Designer — konfigurowanie zdarzenia](./media/service-bus-to-event-grid-integration-example/logic-app-configure-event.png)
+6. Wybierz **+ Nowy krok** w projektancie i wykonaj następujące kroki:
+    1. Wyszukaj **usługę Service Bus**.
+    2. Wybierz **pozycję Usługa Service Bus** na liście. 
+    3. Wybierz pozycję **Pobierz wiadomości** na liście **Akcje.** 
+    4. Wybierz **pozycję Pobierz wiadomości z subskrypcji tematu (zaglądanie do bloku)**. 
 
-        ![Logic Apps Designer — pobieranie komunikatów](./media/service-bus-to-event-grid-integration-example/service-bus-get-messages-step.png)
-    5. Wprowadź **nazwę połączenia**. Na przykład: **Pobierz komunikaty z subskrypcji tematu**i wybierz Service Bus przestrzeni nazw. 
+        ![Logic Apps Designer - pobierz akcję wiadomości](./media/service-bus-to-event-grid-integration-example/service-bus-get-messages-step.png)
+    5. Wprowadź **nazwę połączenia**. Na przykład: **Pobierz wiadomości z subskrypcji tematu**i wybierz obszar nazw usługi Service Bus. 
 
-        ![Projektant Logic Apps — wybierz Service Bus przestrzeń nazw](./media/service-bus-to-event-grid-integration-example/logic-apps-select-namespace.png) 
-    6. Wybierz **RootManageSharedAccessKey**.
+        ![Projektant aplikacji logiki — wybierz obszar nazw magistrali usług](./media/service-bus-to-event-grid-integration-example/logic-apps-select-namespace.png) 
+    6. Wybierz pozycję **RootManageSharedAccessKey**.
 
-        ![Projektant Logic Apps — wybierz klucz dostępu współdzielonego](./media/service-bus-to-event-grid-integration-example/logic-app-shared-access-key.png) 
-    7. Wybierz pozycję **Utwórz**. 
-    8. Wybierz swój temat i subskrypcję. 
+        ![Projektant aplikacji logiki — wybierz klucz dostępu udostępnionego](./media/service-bus-to-event-grid-integration-example/logic-app-shared-access-key.png) 
+    7. Wybierz **pozycję Utwórz**. 
+    8. Wybierz temat i subskrypcję. 
     
-        ![Projektant Logic Apps — wybierz Service Bus temat i subskrypcję](./media/service-bus-to-event-grid-integration-example/logic-app-select-topic-subscription.png)
-7. Wybierz pozycję **+ nowy krok**i wykonaj następujące czynności: 
+        ![Logic Apps Designer — wybierz temat i subskrypcję usługi Service Bus](./media/service-bus-to-event-grid-integration-example/logic-app-select-topic-subscription.png)
+7. Wybierz **+ Nowy krok**i wykonaj następujące czynności: 
     1. Wybierz pozycję **Service Bus**.
-    2. Wybierz pozycję **Zakończ wiadomość w subskrypcji tematu** z listy akcji. 
-    3. Wybierz **temat**Service Bus.
-    4. Wybierz drugą **subskrypcję** w temacie.
-    5. W **polu token blokady wiadomości**wybierz opcję **Zablokuj token** z **zawartości dynamicznej**. 
+    2. Wybierz **pozycję Uzupełnij wiadomość w subskrypcji tematu** z listy akcji. 
+    3. Wybierz **temat**usługi Service Bus .
+    4. Wybierz drugą **subskrypcję** tematu.
+    5. W przypadku **tokenu blokady wiadomości**wybierz pozycję **Zablokuj token** z **zawartości dynamicznej**. 
 
-        ![Projektant Logic Apps — wybierz Service Bus temat i subskrypcję](./media/service-bus-to-event-grid-integration-example/logic-app-complete-message.png)
-8. Wybierz pozycję **Zapisz** na pasku narzędzi w projektancie Logic Apps, aby zapisać aplikację logiki. 
-9. Postępuj zgodnie z instrukcjami w sekcji [wysyłanie komunikatów do Service Bus tematu,](#send-messages-to-the-service-bus-topic) aby wysyłać komunikaty do tematu. 
-10. Przejdź do strony **Przegląd** aplikacji logiki. Zostanie wyświetlona aplikacja logiki uruchamiana w **historii uruchamiania** dla wysłanych komunikatów.
+        ![Logic Apps Designer — wybierz temat i subskrypcję usługi Service Bus](./media/service-bus-to-event-grid-integration-example/logic-app-complete-message.png)
+8. Wybierz **pozycję Zapisz** na pasku narzędzi w Projektancie aplikacji logiki, aby zapisać aplikację logiki. 
+9. Postępuj zgodnie z instrukcjami w [sekcji Wysyłanie wiadomości do tematu usługi Service Bus,](#send-messages-to-the-service-bus-topic) aby wysyłać wiadomości do tematu. 
+10. Przełącz się do strony **Przegląd** aplikacji logiki. Zostanie wyświetlna aplikacja logiki działa w **historii uruchamia** dla wiadomości wysłanych.
 
-    ![Logic Apps Designer — uruchomienia aplikacji logiki](./media/service-bus-to-event-grid-integration-example/logic-app-runs.png)
+    ![Logic Apps Designer — aplikacja logiki jest uruchamiana](./media/service-bus-to-event-grid-integration-example/logic-app-runs.png)
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,25 +1,25 @@
 ---
-title: Używanie Azure Key Vault w szablonach
+title: Używanie usługi Azure Key Vault w szablonach
 description: Dowiedz się, jak używać usługi Azure Key Vault do bezpiecznego przekazywania wartości parametrów podczas wdrażania szablonu usługi Resource Manager
 author: mumian
 ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: bae67b0177823ab4558085db67423edea062fa3c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: a305914c5c870543e16c515880955693c2634044
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250071"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239175"
 ---
-# <a name="tutorial-integrate-azure-key-vault-in-your-resource-manager-template-deployment"></a>Samouczek: Integrowanie Azure Key Vault w rozmieszczeniu szablonu Menedżer zasobów
+# <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>Samouczek: Integracja usługi Azure Key Vault we wdrożeniu szablonu ARM
 
-Dowiedz się, jak pobrać wpisy tajne z magazynu kluczy platformy Azure i przekazać klucze tajne jako parametry podczas wdrażania Azure Resource Manager. Wartość parametru nigdy nie jest ujawniana, ponieważ odwołuje się tylko do identyfikatora magazynu kluczy. Aby uzyskać więcej informacji, zobacz [używanie Azure Key Vault do przekazywania zabezpieczonej wartości parametrów podczas wdrażania](./key-vault-parameter.md).
+Dowiedz się, jak pobrać wpisy tajne z magazynu kluczy platformy Azure i przekazać wpisy tajne jako parametry podczas wdrażania szablonu usługi Azure Resource Manager (ARM). Wartość parametru nigdy nie jest narażona, ponieważ odwołujesz się tylko do jego identyfikatora magazynu kluczy. Aby uzyskać więcej informacji, zobacz [Przekazywanie wartości bezpiecznego parametru podczas wdrażania za pomocą usługi Azure Key Vault.](./key-vault-parameter.md)
 
-W samouczku [Ustawianie kolejności wdrażania zasobów](./template-tutorial-create-templates-with-dependent-resources.md) utworzysz maszynę wirtualną. Musisz podać nazwę użytkownika i hasło administratora maszyny wirtualnej. Zamiast podać hasło, możesz wstępnie zapisać hasło w magazynie kluczy platformy Azure, a następnie dostosować szablon w celu pobrania hasła z magazynu kluczy podczas wdrażania.
+W samouczku [Kolejność wdrażania zasobu Ustawianie](./template-tutorial-create-templates-with-dependent-resources.md) maszyny wirtualnej (VM). Należy podać nazwę użytkownika i hasło administratora maszyny Wirtualnej. Zamiast podawania hasła, można wstępnie przechowywać hasło w magazynie kluczy platformy Azure, a następnie dostosować szablon, aby pobrać hasło z magazynu kluczy podczas wdrażania.
 
-![Diagram przedstawiający integrację szablonu Menedżer zasobów z magazynem kluczy](./media/template-tutorial-use-key-vault/resource-manager-template-key-vault-diagram.png)
+![Diagram przedstawiający integrację szablonu Menedżera zasobów z magazynem kluczy](./media/template-tutorial-use-key-vault/resource-manager-template-key-vault-diagram.png)
 
 Ten samouczek obejmuje następujące zadania:
 
@@ -31,7 +31,7 @@ Ten samouczek obejmuje następujące zadania:
 > * Weryfikowanie wdrożenia
 > * Oczyszczanie zasobów
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -39,25 +39,25 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
 
-* Visual Studio Code z rozszerzeniem Menedżer zasobów Tools. [Aby utworzyć szablony Azure Resource Manager, zobacz temat używanie Visual Studio Code](use-vs-code-to-create-template.md).
-* Aby zwiększyć bezpieczeństwo, użyj wygenerowanego hasła dla konta administratora maszyny wirtualnej. Oto przykład dla generowania hasła:
+* Program Visual Studio Code z rozszerzeniem Resource Manager Tools. Zobacz [Tworzenie szablonów ARM za pomocą programu Visual Studio](use-vs-code-to-create-template.md).
+* Aby zwiększyć bezpieczeństwo, użyj wygenerowanego hasła dla konta administratora maszyny Wirtualnej. Oto przykład do generowania hasła:
 
     ```console
     openssl rand -base64 32
     ```
-    Sprawdź, czy wygenerowane hasło spełnia wymagania dotyczące hasła maszyny wirtualnej. Każda usługa platformy Azure ma określone wymagania dotyczące hasła. Wymagania dotyczące hasła maszyny wirtualnej można znaleźć w temacie [jakie są wymagania dotyczące haseł podczas tworzenia maszyny wirtualnej?](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
+    Sprawdź, czy wygenerowane hasło spełnia wymagania dotyczące hasła maszyny Wirtualnej. Każda usługa platformy Azure ma określone wymagania dotyczące hasła. Aby zapoznać się z wymaganiami dotyczącymi haseł maszyny [Wirtualnej, zobacz Jakie są wymagania dotyczące hasła podczas tworzenia maszyny Wirtualnej?](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
 
 ## <a name="prepare-a-key-vault"></a>Przygotowanie magazynu kluczy
 
-W tej sekcji utworzysz Magazyn kluczy i dodasz do niego klucz tajny, aby można było pobrać klucz tajny podczas wdrażania szablonu. Istnieje wiele sposobów tworzenia magazynu kluczy. W tym samouczku użyjesz Azure PowerShell do wdrożenia [szablonu Menedżer zasobów](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorials-use-key-vault/CreateKeyVault.json). Ten szablon wykonuje następujące czynności:
+W tej sekcji utworzysz magazyn kluczy i dodasz do niego klucz tajny, dzięki czemu można pobrać klucz tajny podczas wdrażania szablonu. Istnieje wiele sposobów tworzenia magazynu kluczy. W tym samouczku można użyć programu Azure PowerShell do wdrożenia [szablonu ARM](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorials-use-key-vault/CreateKeyVault.json). Ten szablon wykonuje następujące czynności:
 
-* Tworzy magazyn kluczy z włączoną właściwością `enabledForTemplateDeployment`. Ta właściwość musi mieć *wartość true* , aby proces wdrażania szablonu mógł uzyskać dostęp do wpisów tajnych, które są zdefiniowane w magazynie kluczy.
-* Dodaje wpis tajny do magazynu kluczy. Wpis tajny przechowuje hasło administratora maszyny wirtualnej.
+* Tworzy magazyn kluczy `enabledForTemplateDeployment` z włączoną właściwością. Ta właściwość musi być *true* przed procesem wdrażania szablonu można uzyskać dostęp do wpisów tajnych, które są zdefiniowane w magazynie kluczy.
+* Dodaje klucz tajny do magazynu kluczy. Klucz tajny przechowuje hasło administratora maszyny Wirtualnej.
 
 > [!NOTE]
-> Jako użytkownik, który wdraża szablon maszyny wirtualnej, jeśli nie jesteś właścicielem lub współautorem magazynu kluczy, właściciel lub współautor musi udzielić dostępu do konta *Microsoft./magazynów/magazynu/wdrożenia/akcji* dla magazynu kluczy. Aby uzyskać więcej informacji, zobacz [używanie Azure Key Vault do przekazywania bezpiecznej wartości parametru podczas wdrażania](./key-vault-parameter.md).
+> Jako użytkownik wdrażający szablon maszyny wirtualnej, jeśli nie jesteś właścicielem lub współautorem magazynu kluczy, właściciel lub współautor musi udzielić ci dostępu do uprawnienia *Microsoft.KeyVault/vaults/deploy/action* dla magazynu kluczy. Aby uzyskać więcej informacji, zobacz [Korzystanie z usługi Azure Key Vault w celu przekazania bezpiecznej wartości parametru podczas wdrażania](./key-vault-parameter.md).
 
-Aby uruchomić Poniższy skrypt Azure PowerShell, wybierz opcję **Wypróbuj** , aby otworzyć Azure Cloud Shell. Aby wkleić skrypt, kliknij prawym przyciskiem myszy okienko powłoki, a następnie wybierz polecenie **Wklej**.
+Aby uruchomić następujący skrypt programu Azure PowerShell, wybierz pozycję **Spróbuj otworzyć** usługę Azure Cloud Shell. Aby wkleić skrypt, kliknij prawym przyciskiem myszy okienko powłoki, a następnie wybierz polecenie **Wklej**.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -75,17 +75,17 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 ```
 
 > [!IMPORTANT]
-> * Nazwa grupy zasobów jest nazwą projektu, ale z dołączoną do niej **RG** . Aby ułatwić [czyszczenie zasobów utworzonych w tym samouczku](#clean-up-resources), Użyj tej samej nazwy projektu i nazwy grupy zasobów podczas [wdrażania kolejnego szablonu](#deploy-the-template).
-> * Domyślną nazwą wpisu tajnego jest **vmAdminPassword**. Jest on stałe w szablonie.
-> * Aby włączyć szablon do pobrania klucza tajnego, należy włączyć zasady dostępu o nazwie "Włącz dostęp do Azure Resource Manager dla wdrożenia szablonu" dla magazynu kluczy. Te zasady są włączone w szablonie. Aby uzyskać więcej informacji na temat zasad dostępu, zobacz [wdrażanie magazynów kluczy i wpisów tajnych](./key-vault-parameter.md#deploy-key-vaults-and-secrets).
+> * Nazwa grupy zasobów jest nazwą projektu, ale z **rg** dołączone do niego. Aby ułatwić czyszczenie [zasobów utworzonych w tym samouczku,](#clean-up-resources)użyj tej samej nazwy projektu i nazwy grupy zasobów podczas [wdrażania następnego szablonu](#deploy-the-template).
+> * Domyślną nazwą klucza tajnego jest **vmAdminPassword**. Jest hardcoded w szablonie.
+> * Aby włączyć szablon do pobierania klucza tajnego, należy włączyć zasady dostępu o nazwie "Włącz dostęp do usługi Azure Resource Manager do wdrożenia szablonu" dla magazynu kluczy. Ta zasada jest włączona w szablonie. Aby uzyskać więcej informacji na temat zasad dostępu, zobacz [Wdrażanie magazynów kluczy i wpisów tajnych](./key-vault-parameter.md#deploy-key-vaults-and-secrets).
 
-Szablon ma jedną wartość wyjściową o nazwie *keyVaultId*. Zanotuj wartość identyfikatora do późniejszego użycia podczas wdrażania maszyny wirtualnej. Format identyfikatora zasobu:
+Szablon ma jedną wartość wyjściową, o nazwie *keyVaultId*. Zapisz wartość identyfikatora do późniejszego użycia podczas wdrażania maszyny wirtualnej. Format identyfikatora zasobu to:
 
 ```json
 /subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>
 ```
 
-Po skopiowaniu i wklejeniu identyfikatora można go podzielić na wiele wierszy. Scal wiersze i Przytnij dodatkowe spacje.
+Podczas kopiowania i wklejania identyfikatora może on zostać podzielony na wiele wierszy. Scalanie linii i przycinanie dodatkowych spacji.
 
 Aby sprawdzić poprawność wdrożenia, uruchom następujące polecenie programu PowerShell w tym samym okienku powłoki, aby pobrać klucz tajny w postaci zwykłego tekstu. Polecenie działa tylko w tej samej sesji powłoki, ponieważ używa zmiennej *$keyVaultName*, która jest zdefiniowana w poprzednim skrypcie programu PowerShell.
 
@@ -93,21 +93,21 @@ Aby sprawdzić poprawność wdrożenia, uruchom następujące polecenie programu
 (Get-AzKeyVaultSecret -vaultName $keyVaultName  -name "vmAdminPassword").SecretValueText
 ```
 
-Teraz przygotowano Magazyn kluczy i wpis tajny. W poniższych sekcjach pokazano, jak dostosować istniejący szablon w celu pobrania klucza tajnego podczas wdrażania.
+Teraz przygotowaliśmy skarbiec kluczy i tajemnicę. W poniższych sekcjach pokazano, jak dostosować istniejący szablon, aby pobrać klucz tajny podczas wdrażania.
 
 ## <a name="open-a-quickstart-template"></a>Otwieranie szablonu szybkiego startu
 
-Szablony szybkiego startu platformy Azure to repozytorium szablonów usługi Resource Manager. Zamiast tworzyć szablon od podstaw, możesz znaleźć szablon przykładowy i zmodyfikować go. Szablon używany w tym samouczku jest nazywany [wdrożeniem prostej maszyny wirtualnej z systemem Windows](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/).
+Szablony szybki start platformy Azure to repozytorium szablonów ARM. Zamiast tworzyć szablon od podstaw, możesz znaleźć szablon przykładowy i zmodyfikować go. Szablon, który jest używany w tym samouczku nazywa [się Wdrażanie prostej maszyny Wirtualnej systemu Windows](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/).
 
-1. W programie Visual Studio Code wybierz pozycję **Plik** > **Otwórz plik**.
+1. W programie Visual Studio Code wybierz pozycję **Plik** > **otwórz plik**.
 
-1. W polu **Nazwa pliku** wklej następujący adres URL:
+1. W polu **Nazwa pliku** wklej następujący adres URL: 
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 
-1. Wybierz pozycję **Open (Otwórz)** , aby otworzyć plik. Scenariusz jest taki sam jak ten, który jest używany w [samouczku: Tworzenie szablonów Azure Resource Manager z zasobami zależnymi](./template-tutorial-create-templates-with-dependent-resources.md).
+1. Wybierz pozycję **Open (Otwórz)**, aby otworzyć plik. Scenariusz jest taki sam jak ten, który jest używany w [samouczku: Tworzenie szablonów ARM z zasobami zależnymi](./template-tutorial-create-templates-with-dependent-resources.md).
    Szablon definiuje pięć zasobów:
 
    * `Microsoft.Storage/storageAccounts`. Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
@@ -116,11 +116,11 @@ Szablony szybkiego startu platformy Azure to repozytorium szablonów usługi Res
    * `Microsoft.Network/networkInterfaces`. Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
    * `Microsoft.Compute/virtualMachines`. Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
 
-   Warto mieć podstawowe informacje na temat szablonu przed jego dostosowaniem.
+   Warto mieć podstawową wiedzę na temat szablonu przed jego dostosowaniem.
 
-1. Wybierz pozycję **plik** > **Zapisz jako**, a następnie Zapisz kopię pliku na komputerze lokalnym przy użyciu nazwy *azuredeploy. JSON*.
+1. Wybierz **pozycję Zapisz jako plik,** > **Save As**a następnie zapisz kopię pliku na komputerze lokalnym o nazwie *azuredeploy.json*.
 
-1. Powtórz kroki 1-3, aby otworzyć następujący adres URL, a następnie Zapisz plik jako *azuredeploy. Parameters. JSON*.
+1. Powtórz kroki od 1 do 3, aby otworzyć następujący adres URL, a następnie zapisz plik jako *azuredeploy.parameters.json*.
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.parameters.json
@@ -130,8 +130,8 @@ Szablony szybkiego startu platformy Azure to repozytorium szablonów usługi Res
 
 Nie musisz wprowadzać żadnych zmian w pliku szablonu.
 
-1. W Visual Studio Code Otwórz plik *azuredeploy. Parameters. JSON* , jeśli nie jest jeszcze otwarty.
-1. Zaktualizuj parametr `adminPassword` do:
+1. W programie Visual Studio Code otwórz *azuredeploy.parameters.json,* jeśli nie jest jeszcze otwarty.
+1. Zaktualizuj `adminPassword` parametr do:
 
     ```json
     "adminPassword": {
@@ -147,20 +147,20 @@ Nie musisz wprowadzać żadnych zmian w pliku szablonu.
     > [!IMPORTANT]
     > Zastąp wartość **identyfikatora** identyfikatorem zasobu magazynu kluczy utworzonego w poprzedniej procedurze.
 
-    ![Integruj Magazyn kluczy i szablon Menedżer zasobów pliku parametrów wdrożenia maszyny wirtualnej](./media/template-tutorial-use-key-vault/resource-manager-tutorial-create-vm-parameters-file.png)
+    ![Integrowanie pliku parametrów wdrażania magazynu kluczy i szablonu usługi Resource Manager](./media/template-tutorial-use-key-vault/resource-manager-tutorial-create-vm-parameters-file.png)
 
 1. Zaktualizuj następujące wartości:
 
-    * **adminUsername**: nazwa konta administratora maszyny wirtualnej.
-    * **dnsLabelPrefix**: Nazwij wartość dnsLabelPrefix.
+    * **adminUsername**: Nazwa konta administratora maszyny wirtualnej.
+    * **dnsLabelPrefix**: Nazwa wartości dnsLabelPrefix.
 
-    Przykłady nazw znajdują się w powyższym obrazie.
+    Przykłady nazw można znaleźć na poprzednim obrazie.
 
 1. Zapisz zmiany.
 
 ## <a name="deploy-the-template"></a>Wdrożenie szablonu
 
-Postępuj zgodnie z instrukcjami podanymi w temacie [Wdrażanie szablonu](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). Przekaż zarówno *azuredeploy. JSON* , jak i *azuredeploy. Parameters. JSON* do Cloud Shell, a następnie użyj następującego skryptu programu PowerShell, aby wdrożyć szablon:
+Postępuj zgodnie z instrukcjami [w deploy the template](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). Przekaż do usługi Cloud Shell zarówno *azuredeploy.json,* jak i *azuredeploy.parameters.json,* a następnie użyj następującego skryptu programu PowerShell do wdrożenia szablonu:
 
 ```azurepowershell
 $projectName = Read-Host -Prompt "Enter the same project name that is used for creating the key vault"
@@ -177,17 +177,17 @@ Podczas wdrażania szablonu należy użyć tej samej grupy zasobów, która zost
 
 ## <a name="validate-the-deployment"></a>Weryfikowanie wdrożenia
 
-Po pomyślnym wdrożeniu maszyny wirtualnej Przetestuj poświadczenia logowania przy użyciu hasła przechowywanego w magazynie kluczy.
+Po pomyślnym wdrożeniu maszyny wirtualnej przetestuj poświadczenia logowania przy użyciu hasła przechowywanego w magazynie kluczy.
 
-1. Otwórz [portal Azure](https://portal.azure.com).
+1. Otwórz witrynę [Azure Portal](https://portal.azure.com).
 
-1. Wybierz pozycję **grupy zasobów** >  **\<*YourResourceGroupName*>**  > **simpleWinVM**.
-1. Wybierz pozycję **Połącz** w górnej części.
-1. Wybierz pozycję **Pobierz plik RDP**, a następnie postępuj zgodnie z instrukcjami, aby zalogować się do maszyny wirtualnej przy użyciu hasła przechowywanego w magazynie kluczy.
+1. Wybierz **grupy** > **\<zasobów*YourResourceGroupName*>** > **simpleWinVM**.
+1. Wybierz **opcję Połącz** u góry.
+1. Wybierz **pozycję Pobierz plik RDP**, a następnie postępuj zgodnie z instrukcjami, aby zalogować się na maszynie wirtualnej przy użyciu hasła przechowywanego w magazynie kluczy.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli zasoby platformy Azure nie są już potrzebne, wyczyść wdrożone zasoby, usuwając grupę zasobów.
+Jeśli nie potrzebujesz już zasobów platformy Azure, wyczyść zasoby, które zostały wdrożone przez usunięcie grupy zasobów.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name that is used for creating the key vault"
@@ -198,7 +198,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku pobrano wpis tajny z magazynu kluczy platformy Azure. Następnie klucz tajny jest używany we wdrożeniu szablonu. Aby dowiedzieć się, jak tworzyć połączone szablony, zobacz:
+W tym samouczku pobrano klucz tajny z magazynu kluczy platformy Azure. Następnie użyto klucza tajnego we wdrożeniu szablonu. Aby dowiedzieć się, jak tworzyć połączone szablony, zobacz:
 
 > [!div class="nextstepaction"]
 > [Create linked templates (Tworzenie połączonych szablonów)](./template-tutorial-create-linked-templates.md)

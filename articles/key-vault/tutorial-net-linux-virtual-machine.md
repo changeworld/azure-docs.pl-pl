@@ -1,6 +1,6 @@
 ---
-title: Samouczek — korzystanie z maszyny wirtualnej z systemem Linux i aplikacji konsolowej ASP.NET do przechowywania wpisów tajnych w Azure Key Vault | Microsoft Docs
-description: W tym samouczku dowiesz się, jak skonfigurować aplikację ASP.NET Core do odczytywania wpisu tajnego z magazynu kluczy platformy Azure.
+title: Samouczek — używanie maszyny wirtualnej systemu Linux i aplikacji konsoli ASP.NET do przechowywania wpisów tajnych w usłudze Azure Key Vault | Dokumenty firmy Microsoft
+description: W tym samouczku dowiesz się, jak skonfigurować aplikację ASP.NET Core do odczytu klucza tajnego z magazynu azure key.
 services: key-vault
 author: msmbaldwin
 manager: rajvijan
@@ -10,42 +10,42 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 8c5b3fcc1cb2ac481be0b435c48ce213c716edde
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 05968fdd9e2ddfd89bd9310c744d9ee699f440d2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78198171"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79472728"
 ---
-# <a name="tutorial-use-a-linux-vm-and-a-net-app-to-store-secrets-in-azure-key-vault"></a>Samouczek: korzystanie z maszyny wirtualnej z systemem Linux i aplikacji platformy .NET do przechowywania wpisów tajnych w programie Azure Key Vault
+# <a name="tutorial-use-a-linux-vm-and-a-net-app-to-store-secrets-in-azure-key-vault"></a>Samouczek: Przechowywanie wpisów tajnych w usłudze Azure Key Vault za pomocą maszyny Wirtualnej systemu Linux i aplikacji .NET
 
-Azure Key Vault pomaga chronić wpisy tajne, takie jak klucze interfejsu API i parametry połączenia bazy danych, które są potrzebne do uzyskiwania dostępu do aplikacji, usług i zasobów IT.
+Usługa Azure Key Vault pomaga chronić wpisy tajne, takie jak klucze interfejsu API i parametry połączenia bazy danych, które są potrzebne do uzyskania dostępu do aplikacji, usług i zasobów IT.
 
-W tym samouczku skonfigurujesz aplikację konsolową .NET do odczytywania informacji z Azure Key Vault przy użyciu zarządzanych tożsamości dla zasobów platformy Azure. Omawiane kwestie:
+W tym samouczku skonfigurować aplikację konsoli .NET do odczytu informacji z usługi Azure Key Vault przy użyciu zarządzanych tożsamości dla zasobów platformy Azure. Omawiane kwestie:
 
 > [!div class="checklist"]
 > * Tworzenie magazynu kluczy
-> * Przechowywanie wpisu tajnego w Key Vault
-> * Tworzenie maszyny wirtualnej platformy Azure z systemem Linux
+> * Przechowywanie klucza tajnego w magazynie kluczy
+> * Tworzenie maszyny wirtualnej systemu Azure Linux
 > * Włączanie [tożsamości zarządzanej](../active-directory/managed-identities-azure-resources/overview.md) dla maszyny wirtualnej
-> * Przyznaj uprawnienia wymagane do odczytania danych z Key Vault przez aplikację konsolową
-> * Pobierz klucz tajny z Key Vault
+> * Udzielanie wymaganych uprawnień aplikacji konsoli do odczytu danych z usługi Key Vault
+> * Pobieranie klucza tajnego z magazynu kluczy
 
-Zanim przejdziemy do dalszych informacji, przeczytaj temat [podstawowe pojęcia związane z magazynem kluczy](basic-concepts.md).
+Zanim przejdziemy dalej, przeczytaj o [podstawowych pojęciach skarbca kluczy](basic-concepts.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * [Git](https://git-scm.com/downloads).
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Interfejs wiersza polecenia platformy Azure 2,0 lub nowszej](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) lub Azure Cloud Shell.
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
+* [Narzędzie cli platformy Azure 2.0 lub nowsze](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) lub usługa Azure Cloud Shell.
 
 [!INCLUDE [Azure Cloud Shell](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="understand-managed-service-identity"></a>Zapoznanie się z tożsamością usługi zarządzanej
 
-Usługa Azure Key Vault może bezpiecznie przechowywać poświadczenia, więc nie znajdują się w Twoim kodzie, ale w celu ich pobrania należy uwierzytelnić się w usłudze Azure Key Vault. Jednak aby uwierzytelniać się w usłudze Key Vault, potrzebne są poświadczenia. Jest to klasyczny problem dotyczący uruchamiania. Dzięki platformie Azure i Azure Active Directory (Azure AD) tożsamość usługi zarządzanej (MSI) może zapewnić tożsamość ładowania początkowego, która znacznie ułatwia rozpoczęcie pracy.
+Usługa Azure Key Vault może bezpiecznie przechowywać poświadczenia, aby nie były one w kodzie, ale aby je pobrać, musisz uwierzytelnić się w usłudze Azure Key Vault. Jednak aby uwierzytelniać się w usłudze Key Vault, potrzebne są poświadczenia. Jest to klasyczny problem dotyczący uruchamiania. Dzięki platformie Azure i usłudze Azure Active Directory (Azure AD) tożsamość usługi zarządzanej (MSI) może zapewnić tożsamość boottrap, która znacznie ułatwia rozpoczęcie pracy.
 
-Po włączeniu MSI dla usługi platformy Azure, takiej jak Virtual Machines, App Service lub funkcje, platforma Azure tworzy jednostkę usługi dla wystąpienia usługi w Azure Active Directory. Wprowadza ona poświadczenia dla jednostki usługi do wystąpienia usługi.
+Po włączeniu msi dla usługi platformy Azure, takich jak maszyny wirtualne, usługa aplikacji lub funkcje, platforma Azure tworzy jednostkę usługi dla wystąpienia usługi w usłudze Azure Active Directory. Wprowadza ona poświadczenia dla jednostki usługi do wystąpienia usługi.
 
 ![Tożsamość usługi zarządzanej](media/MSI.png)
 
@@ -60,11 +60,11 @@ Aby zalogować się do platformy Azure przy użyciu interfejsu wiersza polecenia
 az login
 ```
 
-## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Utwórz grupę zasobów za pomocą polecenia `az group create`. Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi.
+Utwórz grupę zasobów `az group create` za pomocą polecenia. Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi.
 
-Utwórz grupę zasobów w lokalizacji zachodnie stany USA. Wybierz nazwę grupy zasobów i Zastąp `YourResourceGroupName` w następującym przykładzie:
+Utwórz grupę zasobów w lokalizacji zachodnie stany USA. Wybierz nazwę grupy zasobów i `YourResourceGroupName` zastąp w poniższym przykładzie:
 
 ```azurecli-interactive
 # To list locations: az account list-locations --output table
@@ -77,7 +77,7 @@ Możesz używać tej grupy zasobów w całym samouczku.
 
 Następnie utwórz magazyn kluczy w grupie zasobów. Podaj następujące informacje:
 
-* Nazwa magazynu kluczy: ciąg od 3 do 24 znaków, który może zawierać tylko cyfry, litery i łączniki (0-9, a-z, A-Z i \-).
+* Nazwa magazynu kluczy: ciąg od 3 do 24 znaków, który może zawierać tylko cyfry, litery i łączniki \- ( 0-9, a-z, A-Z i ).
 * Nazwa grupy zasobów
 * Lokalizacja: **Zachodnie stany USA**
 
@@ -85,13 +85,13 @@ Następnie utwórz magazyn kluczy w grupie zasobów. Podaj następujące informa
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"
 ```
 
-W tym momencie tylko Twoje konto platformy Azure ma autoryzację do wykonywania jakichkolwiek operacji na tym nowym magazynie.
+W tym momencie tylko twoje konto platformy Azure jest autoryzowane do wykonywania wszelkich operacji w tym nowym magazynie.
 
 ## <a name="add-a-secret-to-the-key-vault"></a>Dodawanie wpisu tajnego do magazynu kluczy
 
-Teraz można dodać wpis tajny. W rzeczywistym scenariuszu można przechowywać parametry połączenia SQL lub inne informacje, które należy zachować bezpiecznie, ale udostępnić aplikację.
+Teraz dodajesz tajemnicę. W rzeczywistym scenariuszu może być przechowywanie ciągu połączenia SQL lub inne informacje, które należy zachować bezpiecznie, ale udostępnić aplikacji.
 
-W tym samouczku wpisz następujące polecenia, aby utworzyć wpis tajny w magazynie kluczy. Wpis tajny ma nazwę **AppSecret** , a jego wartość to **hasło**.
+W tym samouczku wpisz następujące polecenia, aby utworzyć klucz tajny w magazynie kluczy. Klucz tajny jest nazywany **AppSecret** i jego wartość jest **MySecret**.
 
 ```azurecli
 az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
@@ -99,9 +99,9 @@ az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --va
 
 ## <a name="create-a-linux-virtual-machine"></a>Tworzenie maszyny wirtualnej z systemem Linux
 
-Utwórz maszynę wirtualną za pomocą polecenia `az vm create`.
+Utwórz maszynę `az vm create` wirtualną za pomocą polecenia.
 
-W poniższym przykładzie zostanie utworzona maszyna wirtualna o nazwie **myVM** i dodane konto użytkownika o nazwie **azureuser**. `--generate-ssh-keys` parametr, używany do automatycznego generowania klucza SSH i umieszczania go w lokalizacji domyślnej klucza ( **~/.SSH**). Aby zamiast niego użyć określonego zestawu kluczy, skorzystaj z opcji `--ssh-key-value`.
+W poniższym przykładzie zostanie utworzona maszyna wirtualna o nazwie **myVM** i dodane konto użytkownika o nazwie **azureuser**. Parametr `--generate-ssh-keys` używany przez nas do automatycznego generowania klucza SSH i umieszczania go w domyślnej lokalizacji klucza (**~/.ssh**). Aby zamiast niego użyć określonego zestawu kluczy, skorzystaj z opcji `--ssh-key-value`.
 
 ```azurecli-interactive
 az vm create \
@@ -112,9 +112,9 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Utworzenie maszyny wirtualnej i zasobów pomocniczych potrwa kilka minut. Następujące przykładowe dane wyjściowe pokazują, że operacja tworzenia maszyny wirtualnej zakończyła się pomyślnie.
+Utworzenie maszyny wirtualnej i zasobów pomocniczych potrwa kilka minut. Poniższe przykładowe dane wyjściowe pokazują, że operacja tworzenia maszyny Wirtualnej zakończyła się pomyślnie.
 
-```azurecli
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -127,7 +127,7 @@ Utworzenie maszyny wirtualnej i zasobów pomocniczych potrwa kilka minut. Nastę
 }
 ```
 
-Zanotuj `publicIpAddress` w danych wyjściowych z maszyny wirtualnej. Ten adres służy do uzyskiwania dostępu do maszyny wirtualnej w późniejszych krokach.
+Zanotuj `publicIpAddress` swoje dane wyjściowe z maszyny Wirtualnej. Ten adres służy do uzyskiwania dostępu do maszyny wirtualnej w późniejszych krokach.
 
 ## <a name="assign-an-identity-to-the-vm"></a>Przypisywanie tożsamości do maszyny wirtualnej
 
@@ -139,14 +139,14 @@ az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourRe
 
 Dane wyjściowe polecenia powinny wyglądać następująco:
 
-```azurecli
+```output
 {
   "systemAssignedIdentity": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "userAssignedIdentities": {}
 }
 ```
 
-Zanotuj wartość parametru `systemAssignedIdentity`. Używasz go w następnym kroku.
+Zanotuj wartość parametru `systemAssignedIdentity`. Można go użyć w następnym kroku.
 
 ## <a name="give-the-vm-identity-permission-to-key-vault"></a>Przyznawanie tożsamości maszyny wirtualnej uprawnienia do usługi Key Vault
 
@@ -158,13 +158,13 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssigned
 
 ## <a name="log-in-to-the-vm"></a>Logowanie się do maszyny wirtualnej
 
-zaloguj się do maszyny wirtualnej za pomocą terminalu.
+Zaloguj się do maszyny wirtualnej za pomocą terminalu.
 
 ```terminal
 ssh azureuser@<PublicIpAddress>
 ```
 
-## <a name="install-net-core-on-linux"></a>Instalowanie programu .NET Core w systemie Linux
+## <a name="install-net-core-on-linux"></a>Zainstaluj .NET Core na Linuksie
 
 Na maszynie wirtualnej z systemem Linux:
 
@@ -175,7 +175,7 @@ Zarejestruj klucz produktu firmy Microsoft jako zaufany, uruchamiając następuj
    sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
    ```
 
-Skonfiguruj żądaną wersję źródła danych hosta na podstawie systemu operacyjnego:
+Skonfiguruj żądaną wersję kanału informacyjnego hosta opartego na systemie operacyjnym:
 
 ```console
    # Ubuntu 17.10
@@ -195,7 +195,7 @@ Skonfiguruj żądaną wersję źródła danych hosta na podstawie systemu operac
    sudo apt-get update
 ```
 
-Zainstaluj platformę .NET i sprawdź wersję:
+Zainstaluj .NET i sprawdź wersję:
 
    ```console
    sudo apt-get install dotnet-sdk-2.1.4
@@ -204,7 +204,7 @@ Zainstaluj platformę .NET i sprawdź wersję:
 
 ## <a name="create-and-run-a-sample-net-app"></a>Tworzenie i uruchamianie przykładowej aplikacji .NET
 
-Uruchom następujące polecenia. W konsoli programu powinna zostać wyświetlona wartość "Hello world".
+Uruchom następujące polecenia. Powinieneś zobaczyć "Hello World" wydrukowane na konsoli.
 
 ```console
 dotnet new console -o helloworldapp
@@ -212,9 +212,9 @@ cd helloworldapp
 dotnet run
 ```
 
-## <a name="edit-the-console-app-to-fetch-your-secret"></a>Edytowanie aplikacji konsolowej w celu pobrania klucza tajnego
+## <a name="edit-the-console-app-to-fetch-your-secret"></a>Edytowanie aplikacji konsoli w celu pobrania klucza tajnego
 
-Otwórz plik Program.cs i Dodaj następujące pakiety:
+Otwórz plik Program.cs i dodaj te pakiety:
 
    ```csharp
    using System;
@@ -225,10 +225,10 @@ Otwórz plik Program.cs i Dodaj następujące pakiety:
    using Newtonsoft.Json.Linq;
    ```
 
-Jest to dwuetapowy proces służący do zmiany pliku klasy, aby umożliwić aplikacji dostęp do wpisu tajnego w magazynie kluczy.
+Jest to dwuetapowy proces, aby zmienić plik klasy, aby umożliwić aplikacji dostęp do klucza tajnego w magazynie kluczy.
 
-1. Pobierz token z lokalnego punktu końcowego MSI na maszynie wirtualnej, która z kolei pobiera token z Azure Active Directory.
-1. Przekaż token, aby Key Vault i pobrać wpis tajny.
+1. Pobierz token z lokalnego punktu końcowego MSI na maszynie Wirtualnej, która z kolei pobiera token z usługi Azure Active Directory.
+1. Przekaż token do magazynu kluczy i pobierz swój sekret.
 
    Edytuj plik klasy, aby zawierał następujący kod:
 
@@ -277,7 +277,7 @@ Jest to dwuetapowy proces służący do zmiany pliku klasy, aby umożliwić apli
        }
    ```
 
-Teraz wiesz już, jak wykonywać operacje przy użyciu Azure Key Vault w aplikacji .NET działającej na maszynie wirtualnej platformy Azure z systemem Linux.
+Teraz dowiesz się, jak wykonywać operacje za pomocą usługi Azure Key Vault w aplikacji platformy .NET uruchomionej na maszynie wirtualnej systemu Azure Linux.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

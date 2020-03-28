@@ -1,5 +1,5 @@
 ---
-title: Samouczek — Tworzenie średniej stosu na maszynie wirtualnej z systemem Linux na platformie Azure
+title: Samouczek — tworzenie stosu MEAN na maszynie wirtualnej systemu Linux na platformie Azure
 description: Z tego samouczka dowiesz się, jak utworzyć stos MEAN (MongoDB, Express, AngularJS i Node.js) na maszynie wirtualnej z systemem Linux na platformie Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 50ccf0d6db5a50f7dd89732bc870ced6bcf1c2d7
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 9e0ed3454f11907c5f183f08fd2ec51db3384225
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034407"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80154325"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Samouczek: tworzenie stosu MEAN (MongoDB, Express, AngularJS i Node.js) na maszynie wirtualnej z systemem Linux na platformie Azure
 
@@ -34,7 +34,7 @@ W tym samouczku pokazano, jak zaimplementować stos MEAN (MongoDB, Express, Angu
 > * Uzyskiwanie dostępu do tras przy użyciu AngularJS
 > * Uruchamianie aplikacji
 
-W tym samouczku jest używany interfejs wiersza polecenia w [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), który jest stale aktualizowany do najnowszej wersji. Aby otworzyć Cloud Shell, wybierz opcję **Wypróbuj** z góry dowolnego bloku kodu.
+W tym samouczku używa interfejsu wiersza polecenia w [usłudze Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), który jest stale aktualizowany do najnowszej wersji. Aby otworzyć powłokę chmury, wybierz pozycję **Wypróbuj ją** u góry dowolnego bloku kodu.
 
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
@@ -220,7 +220,7 @@ sudo apt-get install -y nodejs
 
 [AngularJS](https://angularjs.org) udostępnia platformę internetową do tworzenia dynamicznych widoków w aplikacjach internetowych. W tym samouczku moduł AngularJS jest używany do połączenia naszej strony internetowej z platformą Express i wykonywania akcji na bazie danych książek.
 
-1. Zmień katalog kopii zapasowej na *Books* (`cd ../..`), a następnie utwórz folder o nazwie *public* i dodaj plik o nazwie *script.js* ze zdefiniowaną konfiguracją kontrolera.
+1. Zmień katalog kopii zapasowej *Books* na`cd ../..`Książki ( ), a następnie utwórz folder o nazwie *public* i dodaj plik o nazwie *script.js* ze zdefiniowaną konfiguracją kontrolera.
 
     ```javascript
     var app = angular.module('myApp', []);
@@ -317,7 +317,7 @@ sudo apt-get install -y nodejs
 
 ##  <a name="run-the-application"></a>Uruchamianie aplikacji
 
-1. Zmień katalog kopii zapasowej na *Books* (`cd ..`) i uruchom serwer, uruchamiając następujące polecenie:
+1. Zmień katalog kopii zapasowej *Books* na`cd ..`Książki ( ) i uruchom serwer, uruchamiając to polecenie:
 
     ```bash
     nodejs server.js
@@ -327,7 +327,7 @@ sudo apt-get install -y nodejs
 
     ![Rekord książki](media/tutorial-mean/meanstack-init.png)
 
-3. Wprowadź dane w polach tekstowych i kliknij pozycję **Dodaj**. Na przykład:
+3. Wprowadź dane w polach tekstowych i kliknij pozycję **Dodaj**. Przykład:
 
     ![Dodawanie rekordu książki](media/tutorial-mean/meanstack-add.png)
 
@@ -349,7 +349,7 @@ W ramach tego samouczka utworzono aplikację internetową, która śledzi rekord
 > * Uzyskiwanie dostępu do tras przy użyciu AngularJS
 > * Uruchamianie aplikacji
 
-Przejdź do następnego samouczka, aby dowiedzieć się, jak zabezpieczyć serwery internetowe przy użyciu certyfikatów SSL.
+Przejdź do następnego samouczka, aby dowiedzieć się, jak zabezpieczyć serwery sieci web certyfikatami TLS.
 
 > [!div class="nextstepaction"]
-> [Zabezpieczanie serwera internetowego przy użyciu protokołu SSL](tutorial-secure-web-server.md)
+> [Bezpieczny serwer www z TLS](tutorial-secure-web-server.md)

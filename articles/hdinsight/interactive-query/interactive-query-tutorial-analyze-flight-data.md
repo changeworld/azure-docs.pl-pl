@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: operacje ETL przy użyciu zapytania interaktywnego — Azure HDInsight'
-description: Samouczek — informacje na temat wyodrębniania danych z nieprzetworzonego zestawu danych CSV, przekształcania ich przy użyciu interakcyjnych zapytań w usłudze HDInsight, a następnie ładowania przekształconych danych do usługi Azure SQL Database przy użyciu platformy Apache Sqoop.
+title: 'Samouczek: Operacje ETL z interacypcyjnym zapytaniem — Usługa Azure HDInsight'
+description: Samouczek — dowiedz się, jak wyodrębnić dane z nieprzetworzonego zestawu danych CSV, przekształcić je za pomocą interaktywnej kwerendy w programie HDInsight, a następnie załadować przekształcone dane do bazy danych SQL platformy Azure przy użyciu apache Sqoop.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,30 +9,30 @@ ms.date: 07/02/2019
 ms.author: hrasheed
 ms.custom: hdinsightactive,mvc
 ms.openlocfilehash: d1136c153a529f58db1de277ec84ac332b9f78ae
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73494156"
 ---
-# <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Samouczek: Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu interakcyjnych zapytań w usłudze Azure HDInsight
+# <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Samouczek: wyodrębnianie, przekształcanie i ładowanie danych przy użyciu interaktywnej kwerendy w usłudze Azure HDInsight
 
-W tym samouczku utworzysz Nieprzetworzony plik danych CSV zawierający publicznie dostępne dane dotyczące lotu, zaimportuj go do magazynu klastra usługi HDInsight, a następnie Przekształć dane przy użyciu interakcyjnego zapytania w usłudze Azure HDInsight. Przekształcone dane można załadować do bazy danych Azure SQL Database przy użyciu narzędzia [Apache Sqoop](https://sqoop.apache.org/).
+W tym samouczku należy wziąć plik danych CSV z publicznie dostępnych danych lotu, zaimportować go do magazynu klastra HDInsight, a następnie przekształcić dane przy użyciu zapytania interaktywnego w usłudze Azure HDInsight. Przekształcone dane można załadować do bazy danych Azure SQL Database przy użyciu narzędzia [Apache Sqoop](https://sqoop.apache.org/).
 
 Ten samouczek obejmuje następujące zadania:
 
 > [!div class="checklist"]
 > * Pobieranie przykładowych danych lotów
 > * Przekazywanie danych do klastra usługi HDInsight
-> * Przekształć dane przy użyciu zapytania interaktywnego
-> * Tworzenie tabeli w bazie danych SQL Azure
-> * Eksportowanie danych do usługi Azure SQL Database za pomocą Sqoop
+> * Przekształcanie danych przy użyciu zapytania interaktywnego
+> * Tworzenie tabeli w bazie danych SQL platformy Azure
+> * Eksportowanie danych do bazy danych SQL usługi Azure za pomocą funkcji Sqoop
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Interaktywny klaster zapytań w usłudze HDInsight. Zobacz [Tworzenie klastrów Apache Hadoop przy użyciu Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) i wybieranie **zapytania interaktywnego** dla **typu klastra**.
+* Interaktywny klaster zapytań w programie HDInsight. Zobacz [Tworzenie klastrów Apache Hadoop przy użyciu portalu Azure](../hdinsight-hadoop-create-linux-clusters-portal.md) i wybierz opcję **Zapytanie interaktywne** dla **typu klastra**.
 
-* Azure SQL Database. Używasz bazy danych Azure SQL Database jako docelowego magazynu danych. Jeśli nie masz bazy danych SQL, zobacz [Tworzenie bazy danych Azure SQL Database w witrynie Azure Portal](/azure/sql-database/sql-database-single-database-get-started).
+* Baza danych SQL platformy Azure. Używasz bazy danych Azure SQL Database jako docelowego magazynu danych. Jeśli nie masz bazy danych SQL, zobacz [Tworzenie bazy danych Azure SQL Database w witrynie Azure Portal](/azure/sql-database/sql-database-single-database-get-started).
 
 * Klient SSH. Aby uzyskać więcej informacji, zobacz [Łączenie się z usługą HDInsight (Apache Hadoop) przy użyciu protokołu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -40,13 +40,13 @@ Ten samouczek obejmuje następujące zadania:
 
 1. Przejdź do strony [Research and Innovative Technology Administration, Bureau of Transportation Statistics](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time).
 
-2. Na stronie Wyczyść wszystkie pola, a następnie wybierz następujące wartości:
+2. Na stronie wyczyść wszystkie pola, a następnie wybierz następujące wartości:
 
    | Nazwa | Wartość |
    | --- | --- |
    | Rok filtrowania |2019 |
-   | Filter Period (Okres filtrowania) |January (Styczeń) |
-   | Pola |Year, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, cel, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay. |
+   | Okres filtrowania |January (Styczeń) |
+   | Pola |Rok, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay. |
 
 3. Wybierz przycisk **Download** (Pobierz). Uzyskasz plik zip z wybranymi polami danych.
 
@@ -54,21 +54,21 @@ Ten samouczek obejmuje następujące zadania:
 
 Istnieje wiele sposobów przekazywania danych do magazynu skojarzonego z klastrem usługi HDInsight. W tej sekcji przekażesz dane za pomocą polecenia `scp`. Aby dowiedzieć się więcej o innych sposobach przekazywania danych, zobacz [Upload data to HDInsight (przekazywanie danych do usługi HDInsight)](../hdinsight-upload-data.md).
 
-1. Przekaż plik zip do węzła głównego klastra usługi HDInsight. Edytuj poniższe polecenie, zastępując `FILENAME` nazwą pliku zip, a `CLUSTERNAME` nazwą klastra usługi HDInsight. Następnie otwórz wiersz polecenia, Ustaw katalog roboczy na lokalizację pliku, a następnie wprowadź polecenie.
+1. Przekaż plik zip do węzła głównego klastra HDInsight. Edytuj poniższe polecenie, zastępując `FILENAME` nazwą pliku zip `CLUSTERNAME` i nazwą klastra HDInsight. Następnie otwórz wiersz polecenia, ustaw katalog roboczy na lokalizację pliku, a następnie wprowadź polecenie.
 
     ```cmd
     scp FILENAME.zip sshuser@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.zip
     ```
 
-    Jeśli zostanie wyświetlony monit o wprowadzenie opcji tak lub nie, aby przejść, wpisz tak w wierszu polecenia i naciśnij klawisz ENTER. Tekst nie jest widoczny w oknie podczas pisania.
+    Jeśli zostanie wyświetlony monit o wprowadzenie tak lub nie, aby kontynuować, wpisz tak w wierszu polecenia i naciśnij klawisz Enter. Tekst nie jest widoczny w oknie podczas pisania.
 
-2. Po zakończeniu przekazywania połącz się z klastrem przy użyciu protokołu SSH. Edytuj poniższe polecenie, zastępując `CLUSTERNAME` nazwą klastra usługi HDInsight. Wprowadź następujące polecenie:
+2. Po zakończeniu przekazywania połącz się z klastrem przy użyciu protokołu SSH. Edytuj poniższe polecenie, zastępując `CLUSTERNAME` nazwą klastra HDInsight. Wprowadź następujące polecenie:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-3. Skonfiguruj zmienną środowiskową po nawiązaniu połączenia SSH. Zastąp `FILE_NAME`, `SQL_SERVERNAME`, `SQL_DATABASE`, `SQL_USER`i `SQL_PASWORD` odpowiednimi wartościami. Następnie wprowadź polecenie:
+3. Konfigurowanie zmiennej środowiskowej po nawiązaniu połączenia SSH. `FILE_NAME`Zastąp `SQL_USER`, `SQL_PASWORD` `SQL_SERVERNAME` `SQL_DATABASE`, i odpowiednimi wartościami. Następnie wprowadź polecenie:
 
     ```bash
     export FILENAME=FILE_NAME
@@ -78,13 +78,13 @@ Istnieje wiele sposobów przekazywania danych do magazynu skojarzonego z klastre
     export SQLPASWORD='SQL_PASWORD'
     ```
 
-4. Rozpakuj plik. zip, wprowadzając poniższe polecenie:
+4. Rozpakuj plik zip, wpisując poniższe polecenie:
 
     ```bash
     unzip $FILENAME.zip
     ```
 
-5. Utwórz katalog w magazynie usługi HDInsight, a następnie skopiuj plik CSV do katalogu, wprowadzając poniższe polecenie:
+5. Utwórz katalog w magazynie HDInsight, a następnie skopiuj plik csv do katalogu, wprowadzając poniższe polecenie:
 
     ```bash
     hdfs dfs -mkdir -p /tutorials/flightdelays/data
@@ -97,7 +97,7 @@ Istnieje wiele sposobów uruchamiania zadania oprogramowania Hive w klastrze us�
 
 W ramach zadania oprogramowania Hive można zaimportować dane z pliku csv do tabeli oprogramowania Hive o nazwie **Delays**.
 
-1. Z poziomu monitu SSH, który istnieje już dla klastra usługi HDInsight, użyj następującego polecenia, aby utworzyć i edytować nowy plik o nazwie **flightdelays. HQL**:
+1. Z wiersza SSH, który masz już dla klastra HDInsight, użyj następującego polecenia, aby utworzyć i edytować nowy plik o nazwie **flightdelays.hql**:
 
     ```bash
     nano flightdelays.hql
@@ -199,7 +199,7 @@ W ramach zadania oprogramowania Hive można zaimportować dane z pliku csv do ta
 
 Istnieje wiele sposobów nawiązywania połączenia z bazą danych SQL i tworzenia tabeli. W poniższej procedurze użyto rozwiązania [FreeTDS](http://www.freetds.org/) z klastra usługi HDInsight.
 
-1. Aby zainstalować FreeTDS, użyj następującego polecenia z otwartego połączenia SSH z klastrem:
+1. Aby zainstalować usługę FreeTDS, użyj następującego polecenia z otwartego połączenia SSH z klastrem:
 
     ```bash
     sudo apt-get --assume-yes install freetds-dev freetds-bin
@@ -232,7 +232,7 @@ Istnieje wiele sposobów nawiązywania połączenia z bazą danych SQL i tworzen
     GO
     ```
 
-    Jeśli wprowadzono instrukcję `GO`, zostaną obliczone poprzednie instrukcje. Ta instrukcja tworzy tabelę o nazwie **opóźnienia**z indeksem klastrowanym.
+    Jeśli wprowadzono instrukcję `GO`, zostaną obliczone poprzednie instrukcje. Ta instrukcja tworzy tabelę o nazwie **opóźnienia**, z indeksem klastrowanym.
 
     Użyj następującego zapytania, aby sprawdzić, czy utworzono tabelę:
 
@@ -254,23 +254,23 @@ Istnieje wiele sposobów nawiązywania połączenia z bazą danych SQL i tworzen
 
 W poprzednich sekcjach skopiowano przekształcone dane w lokalizacji `/tutorials/flightdelays/output`. W tej sekcji użyjesz narzędzia Sqoop, aby wyeksportować dane z lokalizacji `/tutorials/flightdelays/output` do tabeli utworzonej w bazie danych Azure SQL Database.
 
-1. Sprawdź, czy Sqoop może zobaczyć swoją bazę danych SQL, wprowadzając następujące polecenie:
+1. Sprawdź, czy Sqoop może zobaczyć bazę danych SQL, wprowadzając poniższe polecenie:
 
     ```bash
     sqoop list-databases --connect jdbc:sqlserver://$SQLSERVERNAME.database.windows.net:1433 --username $SQLUSER --password $SQLPASWORD
     ```
 
-    To polecenie zwraca listę baz danych, w tym bazę danych, w której utworzono wcześniej tabelę `delays`.
+    To polecenie zwraca listę baz danych, w tym `delays` bazę danych, w której utworzono tabelę wcześniej.
 
-2. Wyeksportuj dane z `/tutorials/flightdelays/output` do tabeli `delays`, wprowadzając następujące polecenie:
+2. Eksportuj `/tutorials/flightdelays/output` dane `delays` z tabeli, wprowadzając poniższe polecenie:
 
     ```bash
     sqoop export --connect "jdbc:sqlserver://$SQLSERVERNAME.database.windows.net:1433;database=$DATABASE" --username $SQLUSER --password $SQLPASWORD --table 'delays' --export-dir '/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
     ```
 
-    Sqoop nawiązuje połączenie z bazą danych, która zawiera tabelę `delays` i eksportuje dane z katalogu `/tutorials/flightdelays/output` do tabeli `delays`.
+    Sqoop łączy się z bazą danych zawierającą `delays` `/tutorials/flightdelays/output` tabelę i `delays` eksportuje dane z katalogu do tabeli.
 
-3. Po zakończeniu wykonywania polecenia Sqoop Użyj narzędzia TSQL, aby nawiązać połączenie z bazą danych, wprowadzając następujące polecenie:
+3. Po zakończeniu polecenia sqoop użyj narzędzia tsql, aby połączyć się z bazą danych, wprowadzając poniższe polecenie:
 
     ```bash
     TDSVER=8.0 tsql -H $SQLSERVERNAME.database.windows.net -U $SQLUSER -p 1433 -D $DATABASE -P $SQLPASWORD
@@ -291,11 +291,11 @@ W poprzednich sekcjach skopiowano przekształcone dane w lokalizacji `/tutorials
 
 Po ukończeniu korzystania z samouczka warto usunąć klaster. Dzięki usłudze HDInsight dane są przechowywane w usłudze Azure Storage, więc można bezpiecznie usunąć klaster, gdy nie jest używany. Opłaty za klaster usługi HDInsight są naliczane nawet wtedy, gdy nie jest używany. Ponieważ opłaty za klaster są wielokrotnie większe niż opłaty za magazyn, ze względów ekonomicznych warto usuwać klastry, gdy nie są używane.
 
-Aby usunąć klaster, zobacz [usuwanie klastra usługi HDInsight przy użyciu przeglądarki, programu PowerShell lub interfejsu wiersza polecenia platformy Azure](../hdinsight-delete-cluster.md).
+Aby usunąć klaster, zobacz [Usuwanie klastra HDInsight przy użyciu przeglądarki, programu PowerShell lub interfejsu wiersza polecenia platformy Azure](../hdinsight-delete-cluster.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku trwały plik danych CSV został zaimportowany do magazynu klastra usługi HDInsight, a następnie przekształcony dane przy użyciu interakcyjnego zapytania w usłudze Azure HDInsight.  Przejdź do następnego samouczka, aby dowiedzieć się więcej o łączniku magazynu Apache Hive.
+W tym samouczku zajęłeś nieprzetworzony plik danych CSV, zaimportowano go do magazynu klastra HDInsight, a następnie przekształciłeś dane przy użyciu zapytania interaktywnego w usłudze Azure HDInsight.  Przejdź do następnego samouczka, aby dowiedzieć się więcej o łączniku magazynu hive apache.
 
 > [!div class="nextstepaction"]
->[Integrowanie Apache Spark i Apache Hive z łącznikiem magazynu Hive](./apache-hive-warehouse-connector.md)
+>[Integracja platformy Apache Spark i ula Apache z łącznikiem magazynu hive](./apache-hive-warehouse-connector.md)

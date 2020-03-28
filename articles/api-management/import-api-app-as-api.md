@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
 ms.openlocfilehash: bf4039b661ac7e0ee9630b86b9e15d1388991431
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74108489"
 ---
 # <a name="import-an-api-app-as-an-api"></a>Importowanie aplikacji interfejsu API jako interfejsu API
@@ -37,9 +37,9 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-api"> </a>Importowanie i publikowanie interfejsu API zaplecza
+## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>Importowanie i publikowanie interfejsu API zaplecza
 
-1. Wybierz **Interfejsy API** w obszarze **ZARZĄDZANIE INTERFEJSAMI API**.
+1. Wybierz pozycję **Interfejsy API** w obszarze **API MANAGEMENT**.
 2. Wybierz pozycję **Aplikacja interfejsu API** z listy **Dodaj nowy interfejs API**.
 
     ![Aplikacja interfejsu API](./media/import-api-app-as-api/api-app.png)
@@ -56,9 +56,9 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 
     * **Starter (początkowy)**
     * **Unlimited (nieograniczony)**   
-7. Wybierz pozycję **Utwórz**.
+7. Wybierz **pozycję Utwórz**.
 
-## <a name="test-the-new-api-in-the-azure-portal"></a>Przetestuj nowy interfejs API w Azure Portal
+## <a name="test-the-new-api-in-the-azure-portal"></a>Testowanie nowego interfejsu API w witrynie Azure portal
 
 Operacje mogą być wywoływane bezpośrednio z witryny Azure Portal, która zapewnia wygodny sposób wyświetlania i testowania operacji interfejsu API.  
 

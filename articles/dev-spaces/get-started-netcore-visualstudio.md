@@ -1,22 +1,22 @@
 ---
-title: 'Tworzenie Kubernetesego miejsca deweloperskiego: Visual Studio & .NET Core'
+title: 'Tworzenie obszaru dewelopera kubernetes: Visual Studio & .NET Core'
 services: azure-dev-spaces
 ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 07/09/2018
 ms.topic: tutorial
-description: W tym samouczku pokazano, jak używać Azure Dev Spaces i programu Visual Studio do debugowania i szybkiej iteracji aplikacji platformy .NET Core w usłudze Azure Kubernetes Service
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s
+description: W tym samouczku pokazano, jak używać usługi Azure Dev Spaces i visual studio do debugowania i szybkiego iteracji aplikacji .NET Core w usłudze Azure Kubernetes
+keywords: Docker, Kubernetes, Azure, AKS, Usługa Azure Kubernetes, kontenery, Helm, siatka usług, routing siatki usług, kubectl, k8s
 ms.openlocfilehash: f3be10929a9a0df23529348f2c62e35f2ebaa850
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75770717"
 ---
-# <a name="create-a-kubernetes-dev-space-visual-studio-and-net-core-with-azure-dev-spaces"></a>Utwórz przestrzeń Kubernetes dev: Visual Studio i .NET Core z Azure Dev Spaces
+# <a name="create-a-kubernetes-dev-space-visual-studio-and-net-core-with-azure-dev-spaces"></a>Tworzenie obszaru dewelopera kubernetes: Visual Studio i .NET Core za pomocą usługi Azure Dev Spaces
 
-Ten przewodnik zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy przewodnik zawiera informacje na temat wykonywania następujących czynności:
 
 - Konfigurowanie usługi Azure Dev Spaces za pomocą zarządzanego klastra Kubernetes na platformie Azure.
 - Iteracyjne tworzenie kodu w kontenerach przy użyciu programu Visual Studio.
@@ -24,7 +24,7 @@ Ten przewodnik zawiera informacje na temat wykonywania następujących czynnośc
 - Efektywne tworzenie i testowanie kodu w środowisku zespołu.
 
 > [!Note]
-> Jeśli w dowolnym momencie **masz zablokowany dostęp** do programu, zobacz sekcję [Rozwiązywanie problemów](troubleshooting.md) .
+> **Jeśli utkniesz** w dowolnym momencie, zobacz sekcję [Rozwiązywanie problemów.](troubleshooting.md)
 
 
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>Tworzenie klastra Kubernetes obsługującego usługę Azure Dev Spaces
@@ -32,9 +32,9 @@ Ten przewodnik zawiera informacje na temat wykonywania następujących czynnośc
 1. Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 1. Wybierz pozycję **Utwórz zasób** > wyszukaj pozycję **Kubernetes** > wybierz pozycję **Kubernetes Service** > **Utwórz**.
 
-   Wykonaj następujące kroki w poszczególnych nagłówkach formularza *Tworzenie klastra Kubernetes* i sprawdź, czy wybrany [region obsługuje Azure dev Spaces][supported-regions].
+   Wykonaj następujące kroki w każdym nagłówku formularza *klastra Tworzenie kubernetes* i sprawdź, czy wybrany [region obsługuje usługi Azure Dev Spaces][supported-regions].
 
-   - **Szczegóły projektu**: wybierz subskrypcję platformy Azure i nową lub istniejącą grupę zasobów platformy Azure.
+   - **SZCZEGÓŁY PROJEKTU**: wybierz subskrypcję platformy Azure i nową lub istniejącą grupę zasobów platformy Azure.
    - **SZCZEGÓŁY KLASTRA**: wprowadź nazwę, region, wersję i prefiks nazwy DNS dla klastra AKS.
    - **SKALA**: wybierz rozmiar maszyny wirtualnej dla węzłów agenta AKS i liczbę węzłów. Jeśli rozpoczynasz pracę z usługą Azure Dev Spaces, jeden węzeł jest wystarczający, aby zapoznać się z wszystkimi funkcjami. Liczbę węzłów można łatwo dostosować w dowolnym momencie po wdrożeniu klastra. Pamiętaj, że rozmiaru maszyny wirtualnej nie można zmienić po utworzeniu klastra usługi AKS. Jednak w razie potrzeby skalowania w górę po wdrożeniu klastra usługi AKS możesz łatwo utworzyć nowy klaster usługi AKS z większymi maszynami wirtualnymi i przeprowadzić ponowne wdrożenie na tym większym klastrze za pomocą usługi Dev Spaces.
 
@@ -50,15 +50,15 @@ Ten przewodnik zawiera informacje na temat wykonywania następujących czynnośc
 1. Wybierz pozycje **Przegląd + utwórz**, a następnie po zakończeniu wybierz pozycję **Utwórz**.
 
 ## <a name="get-the-visual-studio-tools"></a>Pobieranie narzędzi Visual Studio
-Zainstaluj najnowszą wersję programu [Visual Studio](https://www.visualstudio.com/vs/). Dla programu Visual Studio 2019 w systemie Windows należy zainstalować obciążenie Programowanie na platformie Azure. W przypadku programu Visual Studio 2017 w systemie Windows należy zainstalować ASP.NET i obciążenie Programowanie dla sieci Web oraz [Visual Studio Tools for Kubernetes](https://aka.ms/get-azds-visualstudio).
+Zainstaluj najnowszą wersję [programu Visual Studio](https://www.visualstudio.com/vs/). W programie Visual Studio 2019 w systemie Windows należy zainstalować obciążenie programu Azure Development. W programie Visual Studio 2017 w systemie Windows należy zainstalować ASP.NET i obciążenia tworzenia sieci Web, a także [narzędzia programu Visual Studio tools dla aplikacji Kubernetes](https://aka.ms/get-azds-visualstudio).
 
 ## <a name="create-a-web-app-running-in-a-container"></a>Tworzenie aplikacji internetowej uruchomionej w kontenerze
 
-W tej sekcji utworzysz aplikację sieci Web ASP.NET Core i zostanie ona uruchomiona w kontenerze w Kubernetes.
+W tej sekcji utworzysz ASP.NET podstawową aplikację sieci web i uruchomisz ją w kontenerze w usłudze Kubernetes.
 
-### <a name="create-an-aspnet-web-app"></a>Tworzenie aplikacji internetowej ASP.NET
+### <a name="create-an-aspnet-web-app"></a>Tworzenie aplikacji internetowej platformy ASP.NET
 
-W programie Visual Studio Utwórz nowy projekt. Obecnie projekt musi być **aplikacją internetową ASP.NET Core**. Nazwij projekt „**webfrontend**”.
+Z poziomu programu Visual Studio utwórz nowy projekt. Obecnie projekt musi być **aplikacją internetową ASP.NET Core**. Nazwij projekt '**webfrontend**'.
 
 ![](media/get-started-netcore-visualstudio/NewProjectDialog1.png)
 
@@ -123,7 +123,7 @@ Usługa Azure Dev Spaces umożliwia nie tylko uruchamianie kodu w środowisku Ku
 ### <a name="update-a-content-file"></a>Aktualizowanie pliku zawartości
 
 
-1. Znajdź plik `./Views/Home/Index.cshtml` i zmień kod HTML. Na przykład zmień [wiersz 73, który odczytuje `<h2>Application uses</h2>`](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Views/Home/Index.cshtml#L73) do elementu like: 
+1. Znajdź plik `./Views/Home/Index.cshtml` i zmień kod HTML. Na przykład zmień [wiersz 73, który brzmi `<h2>Application uses</h2>` ](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Views/Home/Index.cshtml#L73) jak: 
   
     ```html
     <h2>Hello k8s in Azure!</h2>`

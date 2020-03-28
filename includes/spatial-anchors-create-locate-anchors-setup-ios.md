@@ -1,13 +1,13 @@
 ---
 ms.openlocfilehash: 26eff7b10542843be561264c316bdcf1a63271f7
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67182932"
 ---
-## <a name="setting-up-the-library"></a>Konfigurowanie biblioteki programu
+## <a name="setting-up-the-library"></a>Konfigurowanie biblioteki
 
-Wywołaj Start() umożliwiające sesji do przetwarzania danych środowiska.
+Wywołaj start(), aby umożliwić sesji przetwarzanie danych środowiska.
 
-Aby obsługa zdarzeń wywołanych przez sesję, należy ustawić `delegate` właściwości sesji do obiektu, takie jak widok. Ten obiekt musi implementować protokołu SSCCloudSpatialAnchorSessionDelegate.
+Aby obsłużyć zdarzenia `delegate` wywoływane przez sesję, ustaw właściwość sesji na obiekt, na przykład widok. Ten obiekt musi implementować protokół SSCCloudSpatialAnchorSessionDelegate.

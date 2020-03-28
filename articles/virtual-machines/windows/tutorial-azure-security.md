@@ -1,5 +1,5 @@
 ---
-title: Samouczek — używanie Azure Security Center na potrzeby maszyn wirtualnych z systemem Windows na platformie Azure
+title: Samouczek — używanie usługi Azure Security Center dla maszyn wirtualnych z systemem Windows na platformie Azure
 description: W tym samouczku przedstawiono funkcje usługi Azure Security Center ułatwiające ochronę i zabezpieczanie maszyn wirtualnych z systemem Windows na platformie Azure.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -16,10 +16,10 @@ ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 6b763d08dc898566bfe0d7a28bf6471d4edf4c59
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74064951"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Samouczek: monitorowanie maszyn wirtualnych z systemem Windows za pomocą usługi Azure Security Center
@@ -50,7 +50,7 @@ Zanim będzie możliwe uzyskanie wglądu w konfiguracje zabezpieczeń maszyn wir
 
 1. Na pulpicie nawigacyjnym usługi Security Center kliknij pozycję **Zasady zabezpieczeń**, a następnie wybierz swoją subskrypcję. 
 2. W polu **Zbieranie danych** w obszarze **Automatyczna aprowizacja** wybierz pozycję **Włączone**.
-3. W polu **Domyślna konfiguracja obszaru roboczego** pozostaw wartość **Używaj obszarów roboczych utworzonych przez usługę Security Center (domyślne)** .
+3. W polu **Domyślna konfiguracja obszaru roboczego** pozostaw wartość **Używaj obszarów roboczych utworzonych przez usługę Security Center (domyślne)**.
 4. W obszarze **Zdarzenia zabezpieczeń** zachowaj domyślną opcję **Typowe**.
 4. Kliknij przycisk **Zapisz** w górnej części strony. 
 
@@ -104,7 +104,7 @@ W miarę stosowania się do zaleceń są one oznaczane jako rozwiązane.
 
 ## <a name="view-detected-threats"></a>Wyświetlanie wykrytych zagrożeń
 
-Oprócz zaleceń dotyczących konfiguracji zasobów usługa Security Center wyświetla alerty dotyczące wykrywania zagrożeń. Funkcja alertów zabezpieczeń agreguje dane zbierane z każdej maszyny wirtualnej, dzienników sieci platformy Azure i połączonych rozwiązań partnerów w celu wykrywania zagrożeń bezpieczeństwa dotyczących zasobów platformy Azure. Aby uzyskać szczegółowe informacje na temat możliwości wykrywania zagrożeń Security Center, zobacz [jak usługa Security Center wykrywać zagrożenia?](../../security-center/security-center-alerts-overview.md#detect-threats).
+Oprócz zaleceń dotyczących konfiguracji zasobów usługa Security Center wyświetla alerty dotyczące wykrywania zagrożeń. Funkcja alertów zabezpieczeń agreguje dane zbierane z każdej maszyny wirtualnej, dzienników sieci platformy Azure i połączonych rozwiązań partnerów w celu wykrywania zagrożeń bezpieczeństwa dotyczących zasobów platformy Azure. Aby uzyskać szczegółowe informacje na temat możliwości wykrywania zagrożeń w centrum zabezpieczeń, zobacz [Jak usługa Security Center wykrywa zagrożenia?](../../security-center/security-center-alerts-overview.md#detect-threats).
 
 Funkcja alertów zabezpieczeń wymaga podniesienia warstwy cenowej usługi Security Center z *Bezpłatna* do *Standardowa*. Przy przechodzeniu na tę wyższą warstwę cenową jest dostępna **bezpłatna wersja próbna**. 
 
@@ -135,4 +135,4 @@ W tym samouczku skonfigurowano usługę Azure Security Center, a następnie spra
 Przejdź do następnego samouczka, aby dowiedzieć się, jak zainstalować stos rozwiązania SQL&#92;IIS&#92;.NET na dwóch maszynach wirtualnych z systemem Windows.
 
 > [!div class="nextstepaction"]
-> [SQL&#92;IIS&#92;.NET stack](tutorial-iis-sql.md)
+> [Stos SQL&#92;IIS&#92;.NET](tutorial-iis-sql.md)

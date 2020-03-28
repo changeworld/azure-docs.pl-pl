@@ -1,17 +1,17 @@
 ---
-title: Samouczek — konfigurowanie zestawów skalowania maszyn wirtualnych na platformie Azure przy użyciu rozwiązania ansible
-description: Dowiedz się, jak tworzyć i konfigurować zestawy skalowania maszyn wirtualnych na platformie Azure przy użyciu programu rozwiązania ansible
+title: Samouczek — konfigurowanie zestawów skalowania maszyn wirtualnych na platformie Azure przy użyciu ansible
+description: Dowiedz się, jak używać ansible do tworzenia i konfigurowania zestawów skalowania maszyn wirtualnych na platformie Azure
 keywords: ansible, azure, devops, bash, playbook, virtual machine, virtual machine scale set, vmss
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: e1cc40459988fb9bc38e3dbbcde563cebb531e3d
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156553"
 ---
-# <a name="tutorial-configure-virtual-machine-scale-sets-in-azure-using-ansible"></a>Samouczek: konfigurowanie zestawów skalowania maszyn wirtualnych na platformie Azure przy użyciu rozwiązania ansible
+# <a name="tutorial-configure-virtual-machine-scale-sets-in-azure-using-ansible"></a>Samouczek: Konfigurowanie zestawów skalowania maszyn wirtualnych na platformie Azure przy użyciu ansible
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
 
@@ -21,9 +21,9 @@ ms.locfileid: "74156553"
 
 > [!div class="checklist"]
 >
-> * Konfigurowanie zasobów dla maszyny wirtualnej
+> * Konfigurowanie zasobów dla maszyny Wirtualnej
 > * Konfigurowanie zestawu skalowania
-> * Skalowanie zestawu skalowania przez zwiększenie jego wystąpień maszyn wirtualnych 
+> * Skaluj zestaw skalowania, zwiększając jego wystąpienia maszyn wirtualnych 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -32,20 +32,20 @@ ms.locfileid: "74156553"
 
 ## <a name="configure-a-scale-set"></a>Konfigurowanie zestawu skalowania
 
-Kod element PlayBook w tej sekcji definiuje następujące zasoby:
+Kod podręcznika w tej sekcji definiuje następujące zasoby:
 
-* **Grupa zasobów** , w której zostaną wdrożone wszystkie zasoby.
+* **Grupa zasobów,** w której zostaną wdrożone wszystkie zasoby.
 * **Sieć wirtualną** w przestrzeni adresowej 10.0.0.0/16
 * **Podsieć** w ramach sieci wirtualnej
 * **Publiczny adres IP**, który pozwala uzyskać dostęp do zasobów w Internecie
-* **Sieciowa Grupa zabezpieczeń** , która steruje przepływem ruchu sieciowego do i z zestawu skalowania
+* **Sieciowa grupa zabezpieczeń,** która steruje przepływem ruchu sieciowego do i z zestawu skalowania
 * **Moduł równoważenia obciążenia**, który dystrybuuje ruch w ramach zestawu zdefiniowanych maszyn wirtualnych przy użyciu reguł modułu równoważenia obciążenia
 * **Zestaw skalowania maszyn wirtualnych**, który używa wszystkich utworzonych zasobów
 
-Istnieją dwa sposoby uzyskania element PlayBook przykładu:
+Przykładowy podręcznik można uzyskać na dwa sposoby:
 
-* [Pobierz element PlayBook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-create.yml) i Zapisz go w `vmss-create.yml`.
-* Utwórz nowy plik o nazwie `vmss-create.yml` i skopiuj do niego następującą zawartość:
+* [Pobierz podręcznik](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-create.yml) i zapisz `vmss-create.yml`go w pliku .
+* Utwórz nowy `vmss-create.yml` plik o nazwie i skopiuj do niego następującą zawartość:
 
 ```yml
 - hosts: localhost
@@ -141,17 +141,17 @@ Istnieją dwa sposoby uzyskania element PlayBook przykładu:
             caching: ReadOnly
 ```
 
-Przed uruchomieniem element PlayBook zapoznaj się z następującymi uwagami:
+Przed uruchomieniem podręcznika zapoznaj się z następującymi uwagami:
 
-* W sekcji `vars` Zastąp symbol zastępczy `{{ admin_password }}` własnym hasłem.
+* W `vars` sekcji zastąp symbol zastępczy `{{ admin_password }}` własnym hasłem.
 
-Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
+Uruchom podręcznik za `ansible-playbook` pomocą polecenia:
 
 ```bash
 ansible-playbook vmss-create.yml
 ```
 
-Po uruchomieniu element PlayBook są wyświetlane dane wyjściowe podobne do następujących:
+Po uruchomieniu podręcznika zobaczysz dane wyjściowe podobne do następujących wyników:
 
 ```Output
 PLAY [localhost] 
@@ -187,21 +187,21 @@ localhost                  : ok=8    changed=7    unreachable=0    failed=0
 
 ## <a name="view-the-number-of-vm-instances"></a>Wyświetlanie liczby wystąpień maszyn wirtualnych
 
-[Skonfigurowany zestaw skalowania](#configure-a-scale-set) ma obecnie dwa wystąpienia. Poniższe kroki służą do potwierdzenia tej wartości:
+[Skonfigurowany zestaw skalowania](#configure-a-scale-set) ma obecnie dwa wystąpienia. Następujące kroki są używane do potwierdzenia tej wartości:
 
-1. Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Zaloguj się do [Portalu Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Przejdź do skonfigurowanego zestawu skalowania.
+1. Przejdź do skonfigurowanych zestawów skalowania.
 
-1. Zostanie wyświetlona nazwa zestawu skalowania z liczbą wystąpień w nawiasie: `Standard_DS1_v2 (2 instances)`
+1. Zobaczysz nazwę zestawu skalowania z liczbą wystąpień w nawiasie:`Standard_DS1_v2 (2 instances)`
 
-1. Możesz również sprawdzić liczbę wystąpień z [Azure Cloud Shell](https://shell.azure.com/) , uruchamiając następujące polecenie:
+1. Można również sprawdzić liczbę wystąpień za pomocą [usługi Azure Cloud Shell,](https://shell.azure.com/) uruchamiając następujące polecenie:
 
     ```azurecli-interactive
     az vmss show -n myScaleSet -g myResourceGroup --query '{"capacity":sku.capacity}' 
     ```
 
-    W wyniku uruchomienia polecenia platformy Azure CLI w Cloud Shell pokazano, że istnieją trzy wystąpienia: 
+    Wyniki uruchamiania polecenia interfejsu wiersza polecenia platformy Azure w usłudze Cloud Shell pokazują, że obecnie istnieją trzy wystąpienia: 
 
     ```bash
     {
@@ -209,14 +209,14 @@ localhost                  : ok=8    changed=7    unreachable=0    failed=0
     }
     ```
 
-## <a name="scale-out-a-scale-set"></a>Skalowanie zestawu skalowania w poziomie
+## <a name="scale-out-a-scale-set"></a>Skalowanie w poziomie zestawu skalowania
 
-Kod element PlayBook w tej sekcji pobiera informacje o zestawie skalowania i zmienia jego pojemność z dwóch do trzech.
+Kod podręcznika w tej sekcji pobiera informacje o zestawie skalowania i zmienia jego pojemność z dwóch do trzech.
 
-Istnieją dwa sposoby uzyskania element PlayBook przykładu:
+Przykładowy podręcznik można uzyskać na dwa sposoby:
 
-* [Pobierz element PlayBook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-scale-out.yml) i Zapisz go w `vmss-scale-out.yml`.
-* Utwórz nowy plik o nazwie `vmss-scale-out.yml` i skopiuj do niego następującą zawartość:
+* [Pobierz podręcznik](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-scale-out.yml) i zapisz `vmss-scale-out.yml`go w pliku .
+* Utwórz nowy `vmss-scale-out.yml` plik o nazwie i skopiuj do niego następującą zawartość:
 
 ```yml
 - hosts: localhost
@@ -243,13 +243,13 @@ Istnieją dwa sposoby uzyskania element PlayBook przykładu:
       azure_rm_virtualmachinescaleset: "{{ body }}"
 ```
 
-Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
+Uruchom podręcznik za `ansible-playbook` pomocą polecenia:
 
 ```bash
 ansible-playbook vmss-scale-out.yml
 ```
 
-Po uruchomieniu element PlayBook są wyświetlane dane wyjściowe podobne do następujących:
+Po uruchomieniu podręcznika zobaczysz dane wyjściowe podobne do następujących wyników:
 
 ```Output
 PLAY [localhost] 
@@ -287,13 +287,13 @@ localhost                  : ok=5    changed=1    unreachable=0    failed=0
 
 ## <a name="verify-the-results"></a>Weryfikowanie wyników
 
-Sprawdź wyniki pracy za pośrednictwem Azure Portal:
+Zweryfikuj wyniki swojej pracy za pośrednictwem portalu Azure:
 
-1. Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Zaloguj się do [Portalu Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Przejdź do skonfigurowanego zestawu skalowania.
+1. Przejdź do skonfigurowanych zestawów skalowania.
 
-1. Zostanie wyświetlona nazwa zestawu skalowania z liczbą wystąpień w nawiasie: `Standard_DS1_v2 (3 instances)` 
+1. Zobaczysz nazwę zestawu skalowania z liczbą wystąpień w nawiasie:`Standard_DS1_v2 (3 instances)` 
 
 1. Możesz również zweryfikować zmianę za pomocą [usługi Azure Cloud Shell](https://shell.azure.com/), uruchamiając następujące polecenie:
 
@@ -301,7 +301,7 @@ Sprawdź wyniki pracy za pośrednictwem Azure Portal:
     az vmss show -n myScaleSet -g myResourceGroup --query '{"capacity":sku.capacity}' 
     ```
 
-    W wyniku uruchomienia polecenia platformy Azure CLI w Cloud Shell pokazano, że istnieją trzy wystąpienia: 
+    Wyniki uruchamiania polecenia interfejsu wiersza polecenia platformy Azure w usłudze Cloud Shell pokazują, że obecnie istnieją trzy wystąpienia: 
 
     ```bash
     {
@@ -312,4 +312,4 @@ Sprawdź wyniki pracy za pośrednictwem Azure Portal:
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"] 
-> [Samouczek: wdrażanie aplikacji w zestawach skalowania maszyn wirtualnych na platformie Azure przy użyciu rozwiązania ansible](./ansible-deploy-app-vmss.md)
+> [Samouczek: Wdrażanie aplikacji do zestawów skalowania maszyny wirtualnej na platformie Azure przy użyciu ansible](./ansible-deploy-app-vmss.md)

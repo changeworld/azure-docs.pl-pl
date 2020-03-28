@@ -1,5 +1,5 @@
 ---
-title: Samouczek — Tworzenie kopii zapasowych maszyn wirtualnych z systemem Linux w Azure Portal
+title: Samouczek — ponowne utworzenie kopii zapasowej maszyn wirtualnych systemu Linux w witrynie Azure portal
 description: W tym samouczku dowiesz się, jak za pomocą witryny Azure Portal chronić maszyny wirtualne z systemem Linux przy użyciu usługi Azure Backup.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2a53086b959f5b93d17d307a59682a44fe1f33a8
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6c8b29052b4ca1d3ccd6f1f9b6afba5177dbd6c8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034583"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80066492"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Samouczek: tworzenie kopii zapasowych i przywracanie plików dla maszyn wirtualnych z systemem Linux na platformie Azure
 
@@ -43,7 +43,7 @@ Po ukończeniu przesyłania danych migawka jest usuwana, a utworzony zostaje pun
 ## <a name="create-a-backup"></a>Tworzenie kopii zapasowej
 Utwórz zaplanowaną, codzienną operację tworzenia kopii zapasowych w magazynie usługi Recovery Services:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 2. W menu po lewej stronie wybierz pozycję **Maszyny wirtualne**. 
 3. Z listy wybierz maszynę wirtualną do utworzenia kopii zapasowej.
 4. W bloku maszyny wirtualnej w sekcji **Ustawienia** kliknij pozycję **Kopia zapasowa**. Spowoduje to otwarcie bloku **Włącz kopię zapasową**.
@@ -51,7 +51,7 @@ Utwórz zaplanowaną, codzienną operację tworzenia kopii zapasowych w magazyni
 6. Kliknij opcję **Zasady tworzenia kopii zapasowych**. W tym przykładzie zachowaj ustawienia domyślne i kliknij przycisk **OK**.
 7. W bloku **Włącz kopię zapasową** kliknij pozycję **Włącz kopię zapasową**. Spowoduje to codzienne tworzenie kopii zapasowej na podstawie harmonogramu domyślnego.
 10. Aby utworzyć początkowy punkt odzyskiwania, w bloku **Kopia zapasowa** kliknij opcję **Utwórz kopię zapasową teraz**.
-11. W bloku **Utwórz kopię zapasową teraz** kliknij ikonę kalendarza, wybierz ostatni dzień okresu zachowywania tego punktu odzyskiwania przy użyciu kontrolki kalendarza, a następnie kliknij pozycję **Kopia zapasowa**.
+11. Na **bloku Kopia zapasowa teraz** kliknij ikonę kalendarza, użyj kontrolki kalendarza, aby wybrać ostatni dzień, w którym ten punkt odzyskiwania zostanie zachowany, a następnie kliknij pozycję **Kopia zapasowa**.
 12. W bloku **Kopia zapasowa** dla maszyny wirtualnej wyświetlana jest liczba ukończonych punktów odzyskiwania.
 
     ![Punkty odzyskiwania](./media/tutorial-backup-vms/backup-complete.png)
@@ -64,7 +64,7 @@ Jeżeli przypadkowo usuniesz plik lub wprowadzisz w nim zmiany, możesz użyć o
 
 W tym przykładzie przedstawiono sposób odzyskiwania domyślnej strony internetowej serwera nginx /var/www/html/index.nginx-debian.html. Publiczny adres IP maszyny wirtualnej w tym przykładzie to *13.69.75.209*. Możesz znaleźć adres IP maszyny wirtualnej w następujący sposób:
 
- ```bash 
+ ```azurecli
  az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
  ```
 
@@ -78,6 +78,7 @@ W tym przykładzie przedstawiono sposób odzyskiwania domyślnej strony internet
     ```bash
     ssh 13.69.75.209
     ```
+
 2. Usuń plik /var/www/html/index.nginx-debian.html.
 
     ```bash
@@ -122,7 +123,7 @@ W tym przykładzie przedstawiono sposób odzyskiwania domyślnej strony internet
     
 12. Dane wyjściowe skryptu zawierają ścieżkę punktu instalacji. Dane wyjściowe wyglądają podobnie do następujących:
 
-    ```bash
+    ```output
     Microsoft Azure VM Backup - File Recovery
     ______________________________________________
                           

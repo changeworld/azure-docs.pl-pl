@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Migrowanie danych zdarzenia do SQL Data Warehouse platformy Azure Event Hubs'
-description: 'Samouczek: w tym samouczku pokazano, jak przechwytywać dane z centrum zdarzeń w usłudze SQL Data Warehouse przy użyciu funkcji platformy Azure wyzwalanej przez usługę Event Grid.'
+title: 'Samouczek: migrowanie danych zdarzeń do magazynu danych SQL — usługi Azure Event Hubs'
+description: 'Samouczek: W tym samouczku pokazano, jak przechwytywać dane z centrum zdarzeń do magazynu danych SQL przy użyciu funkcji platformy Azure wyzwalanej przez siatkę zdarzeń.'
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: ''
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.date: 01/15/2020
 ms.topic: tutorial
 ms.service: event-hubs
-ms.openlocfilehash: 43668fe1f465a5db74e63b8b1c1ae6cb328d2092
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 28fa9dddda94845511ead7d8fb7481aff6b6b044
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77914130"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80130844"
 ---
-# <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Samouczek: Migrowanie przechwyconych danych Event Hubs do SQL Data Warehouse przy użyciu Event Grid i Azure Functions
+# <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Samouczek: migrowanie przechwyconych danych centrów zdarzeń do magazynu danych SQL przy użyciu siatki zdarzeń i funkcji platformy Azure
 
 Funkcja [Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) usługi Event Hubs to najprostszy sposób, aby automatycznie dostarczać przesyłane strumieniowo dane z usługi Event Hubs do usługi Azure Blob Storage lub Azure Data Lake Store. Następnie można przetwarzać te dane i dostarczać je do dowolnie wybranego magazynu docelowego, na przykład usługi SQL Data Warehouse lub Cosmos DB. W tym samouczku dowiesz się, w jaki sposób zapisać dane z centrum zdarzeń w magazynie danych SQL, korzystając z funkcji platformy Azure wyzwalanej przez usługę [Event Grid](https://docs.microsoft.com/azure/event-grid/overview).
 
@@ -39,12 +39,12 @@ W tym samouczku wykonasz następujące czynności:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- [Program Visual studio 2019](https://www.visualstudio.com/vs/). Podczas instalacji zainstaluj następujące pakiety robocze: programowanie aplikacji klasycznych dla platformy .NET, programowanie na platformie Azure, tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych, programowanie na platformie Node.js i programowanie w języku Python.
-- Pobierz [przykład git](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/EventHubsCaptureEventGridDemo) przykładowe rozwiązanie zawiera następujące składniki:
+- [Visual studio 2019](https://www.visualstudio.com/vs/). Podczas instalacji zainstaluj następujące pakiety robocze: programowanie aplikacji klasycznych dla platformy .NET, programowanie na platformie Azure, tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych, programowanie na platformie Node.js i programowanie w języku Python.
+- Pobierz [przykład Git](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/EventHubsCaptureEventGridDemo) Przykładowe rozwiązanie zawiera następujące składniki:
     - *WindTurbineDataGenerator* — prosty wydawca, który wysyła przykładowe dane turbiny wiatrowej do centrum zdarzeń, w którym włączono funkcję Capture.
     - *FunctionDWDumper* — funkcja platformy Azure, która odbiera powiadomienia usługi Event Grid, gdy plik Avro zostanie zapisany w obiekcie blob w usłudze Azure Storage. Odbiera ścieżkę identyfikatora URI obiektu blob, odczytuje jego zawartość i wypycha dane do usługi SQL Data Warehouse.
 
-    Ten przykład używa najnowszego pakietu Azure. Messaging. EventHubs. Stary przykład wykorzystujący pakiet Microsoft. Azure. EventHubs można znaleźć [tutaj](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo). 
+    W tym przykładzie użyto najnowszego pakietu Azure.Messaging.EventHubs. W tym miejscu można znaleźć stary przykład, który używa [pakietu](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)Microsoft.Azure.EventHubs. 
 
 ### <a name="deploy-the-infrastructure"></a>Wdrażanie infrastruktury
 Użyj programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure, aby wdrożyć infrastrukturę potrzebną w tym samouczku, korzystając z tego [szablonu usługi Azure Resource Manager](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json). Ten szablon umożliwia utworzenie następujących zasobów:
@@ -93,7 +93,7 @@ New-AzResourceGroupDeployment -ResourceGroupName rgDataMigration -TemplateUri ht
 
 
 ### <a name="create-a-table-in-sql-data-warehouse"></a>Tworzenie tabeli w usłudze SQL Data Warehouse 
-Utwórz tabelę w magazynie danych SQL, uruchamiając skrypt [CreateDataWarehouseTable.sql](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) przy użyciu programu [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md), [SQL Server Management Studio](../sql-data-warehouse/sql-data-warehouse-query-ssms.md) lub edytora zapytań w portalu. 
+Utwórz tabelę w magazynie danych SQL, uruchamiając skrypt [CreateDataWarehouseTable.sql](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) przy użyciu programu [Visual Studio](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-query-visual-studio.md), [SQL Server Management Studio](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-query-ssms.md) lub edytora zapytań w portalu. 
 
 ```sql
 CREATE TABLE [dbo].[Fact_WindTurbineMetrics] (
@@ -108,7 +108,7 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
 ## <a name="publish-code-to-the-functions-app"></a>Publikowanie kodu do aplikacji usługi Functions
 
-1. Otwórz rozwiązanie *EventHubsCaptureEventGridDemo. sln* w programie Visual Studio 2019.
+1. Otwórz rozwiązanie *EventHubsCaptureEventGridDemo.sln* w programie Visual Studio 2019.
 
 1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy pozycję *FunctionEGDWDumper* i wybierz polecenie **Opublikuj**.
 
@@ -131,7 +131,7 @@ Po opublikowaniu funkcji możesz przystąpić do subskrybowania zdarzenia Captur
 
 ## <a name="create-an-event-grid-subscription-from-the-functions-app"></a>Tworzenie subskrypcji usługi Event Grid na podstawie aplikacji usługi Functions
  
-1. Przejdź do witryny [Azure Portal](https://portal.azure.com/). Wybierz swoją grupę zasobów i aplikację funkcji.
+1. Przejdź do [witryny Azure portal](https://portal.azure.com/). Wybierz swoją grupę zasobów i aplikację funkcji.
 
    ![Wyświetlanie aplikacji funkcji](./media/store-captured-data-data-warehouse/view-function-app.png)
 
@@ -143,18 +143,18 @@ Po opublikowaniu funkcji możesz przystąpić do subskrybowania zdarzenia Captur
 
    ![Dodawanie subskrypcji](./media/store-captured-data-data-warehouse/add-event-grid-subscription.png)
 
-1. Nadaj nazwę subskrypcji siatki zdarzeń. Jako typu zdarzenia użyj wartości **Przestrzenie nazw usługi Event Hubs**. Podaj wartości, aby wybrać swoje wystąpienie przestrzeni nazw usługi Event Hubs. W polu punktu końcowego subskrybenta pozostaw podaną wartość. Wybierz pozycję **Utwórz**.
+1. Nadaj nazwę subskrypcji siatki zdarzeń. Jako typu zdarzenia użyj wartości **Przestrzenie nazw usługi Event Hubs**. Podaj wartości, aby wybrać swoje wystąpienie przestrzeni nazw usługi Event Hubs. W polu punktu końcowego subskrybenta pozostaw podaną wartość. Wybierz **pozycję Utwórz**.
 
    ![Tworzenie subskrypcji](./media/store-captured-data-data-warehouse/set-subscription-values.png)
 
 ## <a name="generate-sample-data"></a>Generowanie danych przykładowych  
 Konfiguracja centrum zdarzeń, magazynu danych SQL, aplikacji funkcji platformy Azure i subskrypcji zdarzeń została już wykonana. Możesz uruchomić plik WindTurbineDataGenerator.exe, aby wygenerować strumienie danych w centrum Event Hub po zaktualizowaniu parametrów połączenia i nazwy centrum zdarzeń w kodzie źródłowym. 
 
-1. W portalu wybierz przestrzeń nazw swojego centrum zdarzeń. Wybierz pozycję **Parametry połączenia**.
+1. W portalu wybierz przestrzeń nazw swojego centrum zdarzeń. Wybierz **pozycję Parametry połączenia**.
 
    ![Wybieranie parametrów połączenia](./media/store-captured-data-data-warehouse/event-hub-connection.png)
 
-2. Wybierz pozycję **RootManageSharedAccessKey**
+2. Wybierz **pozycję RootManageSharedAccessKey**
 
    ![Wybieranie klucza](./media/store-captured-data-data-warehouse/show-root-key.png)
 

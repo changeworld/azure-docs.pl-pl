@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek:  Integracja z pojedynczym lasem usługi AD na platformie Azure przy użyciu PTA'
+title: 'Samouczek: Integracja pojedynczego lasu usługi AD z platformą Azure przy użyciu pta'
 description: W tym samouczku pokazano, jak skonfigurować środowisko tożsamości hybrydowej przy użyciu uwierzytelniania przekazywanego.
 services: active-directory
 author: billmath
@@ -12,15 +12,15 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 96846d75111fe11b225704a248baeb006a3df3fb
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "66473009"
 ---
-# <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>Samouczek:  Integrowanie pojedynczego lasu usługi AD przy użyciu uwierzytelniania przekazywanego
+# <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>Samouczek: Integracja pojedynczego lasu usługi AD przy użyciu uwierzytelniania przekazywanego (PTA)
 
-![Przycisk Utwórz](media/tutorial-passthrough-authentication/diagram.png)
+![Utwórz](media/tutorial-passthrough-authentication/diagram.png)
 
 W tym samouczku opisano tworzenie środowiska tożsamości hybrydowej przy użyciu uwierzytelniania przekazywanego.  Następnie można użyć tego środowiska do testowania lub w celu lepszego zapoznania się z działaniem tożsamości hybrydowej.
 
@@ -85,8 +85,8 @@ Aby zakończyć tworzenie maszyny wirtualnej, należy zakończyć instalację sy
 5. Kliknij pozycję **Zainstaluj teraz**.
 6. Wprowadź klucz licencji i kliknij przycisk **Dalej**.
 7. Zaznacz opcję **Akceptuję postanowienia licencyjne, a następnie kliknij przycisk **Dalej**.
-8. Wybierz pozycję **Niestandardowa:  tylko zainstaluj system Windows (zaawansowane)**
-9. Kliknij przycisk **Dalej**
+8. Wybierz **opcję Niestandardowe: Zainstaluj tylko system Windows (zaawansowane)**
+9. Kliknij **przycisk Dalej**
 10. Po zakończeniu instalacji uruchom ponownie maszynę wirtualną, zaloguj się i uruchom aktualizacje systemu Windows, aby upewnić się, że maszyna wirtualna została zaktualizowana.  Zainstaluj najnowsze aktualizacje.
 
 ## <a name="install-active-directory-prerequisites"></a>Instalowanie wymagań wstępnych usługi Active Directory
@@ -187,9 +187,9 @@ Teraz należy utworzyć dzierżawę usługi Azure AD, aby umożliwić synchroniz
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com) i zaloguj się przy użyciu konta z subskrypcją platformy Azure.
 2. Wybierz **ikonę plusa (+)** i wyszukaj ciąg **Azure Active Directory**.
 3. W wynikach wyszukiwania wybierz pozycję **Azure Active Directory**.
-4. Wybierz pozycję **Utwórz**.</br>
+4. Wybierz **pozycję Utwórz**.</br>
 ![Tworzenie](media/tutorial-password-hash-sync/create1.png)</br>
-5. Podaj **nazwę organizacji** wraz z **początkową nazwą domeny**. Następnie wybierz przycisk **Utwórz**. Spowoduje to utworzenie katalogu.
+5. Podaj **nazwę organizacji** wraz z **początkową nazwą domeny**. Następnie wybierz pozycję **Utwórz**. Spowoduje to utworzenie katalogu.
 6. Po zakończeniu kliknij link **tutaj**, aby zarządzać katalogiem.
 
 ## <a name="create-a-global-administrator-in-azure-ad"></a>Tworzenie administratora globalnego w usłudze Azure AD
@@ -208,7 +208,7 @@ Istnieją już dzierżawa i administrator globalny. Teraz należy dodać domenę
 
 1. Ponownie w witrynie [Azure Portal](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) zamknij blok **Wszyscy użytkownicy**.
 2. Po lewej stronie wybierz pozycję **Nazwy domen niestandardowych**.
-3. Wybierz pozycję **Dodaj domenę niestandardową**.</br>
+3. Wybierz **pozycję Dodaj domenę niestandardową**.</br>
 ![Niestandardowa](media/tutorial-federation/custom1.png)</br>
 4. W obszarze **Nazwy domen niestandardowych** wprowadź w polu nazwę domeny niestandardowej, a następnie kliknij pozycję **Dodaj domenę**.
 5. Na ekranie nazwy domeny niestandardowej zostaną podane informacje o rekordzie TXT lub MX.  Te informacje należy dodać do informacji DNS rejestratora domeny w obszarze używanej domeny.  Należy więc przejść do witryny rejestratora domeny i wprowadzić informacje o rekordzie TXT lub MX w obszarze ustawień DNS dla tej domeny.  Umożliwi to platformie Azure zweryfikowanie domeny.  Oczekiwanie na zweryfikowanie domeny przez platformę Azure może potrwać do 24 godzin.  Aby uzyskać więcej informacji, zobacz dokumentację dotyczącą [dodawania domeny niestandardowej](../../active-directory/fundamentals/add-custom-domain.md).</br>
@@ -219,18 +219,18 @@ Istnieją już dzierżawa i administrator globalny. Teraz należy dodać domenę
 ## <a name="download-and-install-azure-ad-connect"></a>Pobieranie i instalowanie programu Azure AD Connect
 Nadszedł czas, aby pobrać i zainstalować program Azure AD Connect.  Po zainstalowaniu go przejdziemy przez konfigurację ekspresową.  Wykonaj następujące czynności:
 
-1. Pobierz program [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594).
+1. Pobieranie [usługi Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)
 2. Przejdź do pozycji **AzureADConnect.msi** i kliknij ją dwukrotnie.
 3. Na ekranie powitalnym zaznacz pole wyrażenia zgody na warunki licencji i kliknij pozycję **Kontynuuj**.  
 4. Na ekranie Ustawienia ekspresowe kliknij przycisk **Dostosuj**.  
-5. Zostanie wyświetlony ekran instalowania składników wymaganych. Kliknij pozycję **Zainstaluj**.  
+5. Zostanie wyświetlony ekran instalowania składników wymaganych. Kliknij **pozycję Zainstaluj**.  
 6. Na ekranie Logowanie użytkownika wybierz pozycję **Uwierzytelnianie przekazywane**, a następnie **Włącz logowanie jednokrotne** i kliknij pozycję **Dalej**.</br>
 ![Uwierzytelnianie przekazywane](media/tutorial-passthrough-authentication/pta1.png)</b>
 7. Na ekranie Łączenie z usługą Azure AD wprowadź nazwę użytkownika i hasło administratora globalnego utworzonego powyżej, a następnie kliknij przycisk **Dalej**.
 2. Na ekranie Podłączanie katalogów kliknij pozycję **Dodaj katalog**.  Następnie wybierz pozycję **Utwórz nowe konto usługi AD** i wprowadź nazwę użytkownika oraz hasło konta contoso\Administrator, a następnie kliknij przycisk **OK**.
-3. Kliknij przycisk **Dalej**.
+3. Kliknij przycisk **alej**.
 4. Na ekranie Konfiguracja logowania się w usłudze Azure AD wybierz pozycję **Kontynuuj bez dopasowania wszystkich sufiksów nazw UPN do zweryfikowanych domen** i kliknij przycisk **Dalej**.
-5. Na ekranie filtrowania domen i jednostek organizacyjnych kliknij przycisk **Dalej**.
+5. Na ekranie Filtrowanie domen i jednostek organizacyjnych kliknij przycisk **Dalej**.
 6. Na ekranie Unikatowa identyfikacja użytkowników kliknij przycisk **Dalej**.
 7. Na ekranie Filtrowanie użytkowników i urządzeń kliknij przycisk **Dalej**.
 8. Na ekranie Funkcje opcjonalne kliknij przycisk **Dalej**.
@@ -251,7 +251,7 @@ Teraz potwierdzimy, że użytkownicy znajdujący się w katalogu lokalnym zostal
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Testowanie logowania się przy użyciu jednego z kont użytkowników
 
-1. Przejdź na stronę [https://myapps.microsoft.com](https://myapps.microsoft.com)
+1. Przejdź do[https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. Zaloguj się przy użyciu konta użytkownika utworzonego w nowej dzierżawie.  Należy zalogować się przy użyciu następującego formatu: (user@domain.onmicrosoft.com). Użyj tego samego hasła, za pomocą którego użytkownik loguje się lokalnie.
    ![Weryfikacja](media/tutorial-password-hash-sync/verify1.png)
 

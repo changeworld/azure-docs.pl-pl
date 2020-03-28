@@ -1,5 +1,5 @@
 ---
-title: Zmiana identyfikatora dzierżawy magazynu kluczy po przeniesieniu subskrypcji Azure Key Vault | Microsoft Docs
+title: Zmienianie identyfikatora dzierżawy magazynu kluczy po przejściu subskrypcji — Usługa Azure Key Vault | Dokumenty firmy Microsoft
 description: Dowiedz się, jak przełączyć identyfikator dzierżawy magazynu kluczy po przeniesieniu subskrypcji do innej dzierżawy
 services: key-vault
 author: amitbapat
@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: 4531d3bdeab96cb4a753060d59d07e155f4a358e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 2b262823323e9491965bc16818220b2f80cf236a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197338"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79457308"
 ---
 # <a name="change-a-key-vault-tenant-id-after-a-subscription-move"></a>Zmiana identyfikatora dzierżawy magazynu kluczy po przeniesieniu subskrypcji
 
@@ -24,13 +24,13 @@ ms.locfileid: "78197338"
 
 Po utworzeniu nowego magazynu kluczy w subskrypcji zostaje on automatycznie powiązany z domyślnym identyfikatorem dzierżawy usługi Azure Active Directory dla tej subskrypcji. Wszystkie wpisy zasad dostępu również zostają powiązane z tym identyfikatorem dzierżawy. 
 
-Jeśli przeniesiesz subskrypcję platformy Azure z dzierżawy A do dzierżawy B, istniejące magazyny kluczy są niedostępne dla podmiotów zabezpieczeń (użytkowników i aplikacji) w dzierżawie B. Aby rozwiązać ten problem, należy:
+Jeśli przeniesiesz subskrypcję platformy Azure z dzierżawy A do dzierżawy B, istniejące magazyny kluczy będą niedostępne przez podmioty zabezpieczeń (użytkowników i aplikacje) w dzierżawie B. Aby rozwiązać ten problem, musisz:
 
-* Zmień identyfikator dzierżawy skojarzony ze wszystkimi istniejącymi magazynami kluczy w subskrypcji na dzierżawcę B.
+* Zmień identyfikator dzierżawy skojarzony ze wszystkimi istniejącymi magazynami kluczy w subskrypcji do dzierżawy B.
 * usunąć wszystkie istniejące wpisy zasad dostępu,
-* Dodaj nowe wpisy zasad dostępu skojarzone z dzierżawcą B.
+* Dodaj nowe wpisy zasad dostępu skojarzone z dzierżawą B.
 
-Jeśli na przykład masz Magazyn kluczy "Moja magazyn" w subskrypcji, która została przeniesiona z dzierżawy A do dzierżawy B, możesz użyć Azure PowerShell do zmiany identyfikatora dzierżawy i usunięcia starych zasad dostępu.
+Na przykład jeśli masz magazyn kluczy "myvault" w subskrypcji, która została przeniesiona z dzierżawy A do dzierżawy B, można użyć programu Azure PowerShell, aby zmienić identyfikator dzierżawy i usunąć stare zasady dostępu.
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionId <your-subscriptionId>                # Select your Azure Subscription
@@ -46,18 +46,18 @@ Set-AzResource -ResourceId $vaultResourceId -Properties $vault.Properties  # Mod
 Można też użyć interfejsu wiersza polecenia platformy Azure.
 
 ```azurecli
-az account set <your-subscriptionId>                                       # Select your Azure Subscription
+az account set -s <your-subscriptionId>                                    # Select your Azure Subscription
 tenantId=$(az account show --query tenantId)                               # Get your tenantId
 az keyvault update -n myvault --remove Properties.accessPolicies           # Remove the access policies
 az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Update the key vault tenantId
 ```
 
-Po skojarzeniu magazynu z prawidłowym IDENTYFIKATORem dzierżawy i usunięciu starych wpisów zasad dostępu Ustaw nowe wpisy zasad dostępu za pomocą polecenia cmdlet Azure PowerShell [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy) lub interfejsu wiersza polecenia platformy Azure [AZ datamagazyn Set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) .
+Teraz, gdy magazyn jest skojarzony z poprawnym identyfikatorem dzierżawy i stare wpisy zasad dostępu są usuwane, ustaw nowe wpisy zasad dostępu za pomocą polecenia cmdlet zasad azure PowerShell [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy) lub polecenia [azure cli az keyvault set-policy.](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy)
 
-Jeśli używasz zarządzanej tożsamości dla zasobów platformy Azure, musisz zaktualizować ją również do nowej dzierżawy usługi Azure AD. Aby uzyskać więcej informacji o tożsamościach zarządzanych, zobacz [zapewnianie uwierzytelniania Key Vault przy użyciu tożsamości zarządzanej](managed-identity.md).
+Jeśli używasz tożsamości zarządzanej dla zasobów platformy Azure, należy zaktualizować go do nowej dzierżawy usługi Azure AD, jak również. Aby uzyskać więcej informacji na temat tożsamości zarządzanych, zobacz [Zapewnianie uwierzytelniania magazynu kluczy z tożsamością zarządzaną](managed-identity.md).
 
 
-Jeśli używasz pliku MSI, musisz również zaktualizować tożsamość MSI, ponieważ stara tożsamość nie będzie już w poprawnej dzierżawie usługi AAD.
+Jeśli używasz MSI, musisz również zaktualizować tożsamość MSI, ponieważ stara tożsamość nie będzie już w odpowiedniej dzierżawie usługi AAD.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -5,17 +5,18 @@ description: Używanie tokenów SAS, szyfrowania i protokołu HTTPS w celu zabez
 services: storage
 author: tamram
 ms.service: storage
+ms.subservice: blobs
 ms.topic: tutorial
 ms.date: 03/06/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.custom: mvc
-ms.openlocfilehash: b027ed6b936761e35e835401f9ce8398fac33073
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 13a2a0bcc362a13b0c42650509d356f613527cfc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79129627"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80061327"
 ---
 # <a name="secure-access-to-application-data"></a>Bezpieczny dostęp do danych aplikacji
 
@@ -28,15 +29,15 @@ Część trzecia serii zawiera informacje na temat wykonywania następujących c
 > * Włączanie szyfrowania po stronie serwera
 > * Włączanie transportu tylko przy użyciu protokołu HTTPS
 
-Usługa [Azure Blob Storage](../common/storage-introduction.md#blob-storage) to niezawodna usługa do przechowywania plików dla aplikacji. Ten samouczek rozszerza [Poprzedni temat,][previous-tutorial] aby pokazać, jak zabezpieczyć dostęp do konta magazynu z aplikacji sieci Web. Po zakończeniu obrazy będą szyfrowane, a aplikacja internetowa będzie używać tokenów SAS w celu uzyskania dostępu do obrazów miniatury.
+Usługa [Azure Blob Storage](../common/storage-introduction.md#blob-storage) to niezawodna usługa do przechowywania plików dla aplikacji. Ten samouczek uzupełnia informacje zawarte w [poprzednim temacie][previous-tutorial] i pokazuje, jak zabezpieczyć dostęp do konta magazynu z poziomu aplikacji internetowej. Po zakończeniu obrazy będą szyfrowane, a aplikacja internetowa będzie używać tokenów SAS w celu uzyskania dostępu do obrazów miniatury.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć ten samouczek, musisz ukończyć poprzedni samouczek magazynu: [Automatyzuj zmianę rozmiarów załadowanych obrazów przy użyciu Event Grid][previous-tutorial].
+Aby ukończyć ten samouczek, konieczne jest ukończenie poprzedniego samouczka na temat usługi Storage: [Automate resizing uploaded images using Event Grid (Automatyczna zmiana rozmiaru przekazanych obrazów przy użyciu usługi Event Grid)][previous-tutorial].
 
 ## <a name="set-container-public-access"></a>Włączanie dostępu publicznego do kontenera
 
-W tej części serii samouczków do uzyskania dostępu do miniatur zostaną użyte tokeny SAS. W tym kroku ustawisz wartość *w konfiguracji publicznego dostępu do kontenera*thumbnails`off`.
+W tej części serii samouczków do uzyskania dostępu do miniatur zostaną użyte tokeny SAS. W tym kroku ustawisz wartość `off` w konfiguracji publicznego dostępu do kontenera *thumbnails*.
 
 ```azurecli-interactive 
 blobStorageAccount="<blob_storage_account>"
@@ -53,7 +54,7 @@ az storage container set-permission \
 
 ## <a name="configure-sas-tokens-for-thumbnails"></a>Konfigurowanie tokenów SAS dla miniatur
 
-W części pierwszej serii tej serii samouczków aplikacja internetowa wyświetlała obrazy z publicznego kontenera. W tej części serii są używane tokeny sygnatur dostępu współdzielonego (SAS) do pobierania obrazów miniatur. Tokeny SAS umożliwiają ograniczenie dostępu do kontenera lub obiektu blob na podstawie adresu IP, protokołu, interwałów czasowych lub przyznanych uprawnień. Aby uzyskać więcej informacji na temat SAS, zobacz [udzielanie ograniczonego dostępu do zasobów usługi Azure Storage za pomocą sygnatur dostępu współdzielonego (SAS)](../common/storage-sas-overview.md).
+W części pierwszej serii tej serii samouczków aplikacja internetowa wyświetlała obrazy z publicznego kontenera. W tej części serii można użyć tokenów sygnatur dostępu współdzielonego (SAS) do pobierania obrazów miniatur. Tokeny SAS umożliwiają ograniczenie dostępu do kontenera lub obiektu blob na podstawie adresu IP, protokołu, interwałów czasowych lub przyznanych uprawnień. Aby uzyskać więcej informacji na temat sygnatury dostępu współdzielonego, zobacz [Udzielanie ograniczonego dostępu do zasobów usługi Azure Storage przy użyciu sygnatur dostępu współdzielonego (SAS).](../common/storage-sas-overview.md)
 
 W tym przykładzie repozytorium kodu źródłowego korzysta z gałęzi `sasTokens`, która zawiera zaktualizowany kod przykładowy. Usuń istniejące wdrożenie kodu z usługi GitHub za pomocą polecenia [az webapp deployment source delete](/cli/azure/webapp/deployment/source). Następnie skonfiguruj wdrożenie aplikacji internetowej z usługi GitHub za pomocą polecenia [az webapp deployment source config](/cli/azure/webapp/deployment/source).
 
@@ -67,7 +68,7 @@ az webapp deployment source config --name <web_app> \
     --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
 ```
 
-Gałąź `sasTokens` repozytorium aktualizuje plik `StorageHelper.cs`. Zastępuje zadanie `GetThumbNailUrls` przykładowym kodem pokazanym poniżej. Zaktualizowane zadanie pobiera miniaturowe adresy URL za pomocą [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) , aby określić czas rozpoczęcia, czas wygaśnięcia i uprawnienia dla tokenu SAS. Po wdrożeniu aplikacja internetowa pobiera miniatury przy użyciu adresu URL i tokenu SAS. Zaktualizowane zadanie jest pokazane na poniższym przykładzie:
+Gałąź `sasTokens` repozytorium aktualizuje plik `StorageHelper.cs`. Zastępuje zadanie `GetThumbNailUrls` przykładowym kodem pokazanym poniżej. Zaktualizowane zadanie pobiera adresy URL miniatur przy użyciu [Usługi BlobSasBuilder,](/dotnet/api/azure.storage.sas.blobsasbuilder) aby określić godzinę rozpoczęcia, czas wygaśnięcia i uprawnienia do tokenu sygnatury dostępu Współdzielonego. Po wdrożeniu aplikacja internetowa pobiera miniatury przy użyciu adresu URL i tokenu SAS. Zaktualizowane zadanie jest pokazane na poniższym przykładzie:
 
 ```csharp
 public static async Task<List<string>> GetThumbNailUrls(AzureStorageConfig _storageConfig)
@@ -126,13 +127,13 @@ W poprzednim zadaniu użyto następujących klas, właściwości i metod:
 
 | Klasa | Właściwości | Metody |
 |-------|------------|---------|
-|[StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) |  |  |
-|[BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient) |  |[GetBlobContainerClient](/dotnet/api/azure.storage.blobs.blobserviceclient.getblobcontainerclient) |
-|[BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient) | [Adresu](/dotnet/api/azure.storage.blobs.blobcontainerclient.uri) |[Istniejący](/dotnet/api/azure.storage.blobs.blobcontainerclient.exists) <br> [Getblobs](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs) |
-|[BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) |  | [SetPermissions](/dotnet/api/azure.storage.sas.blobsasbuilder.setpermissions) <br> [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) |
-|[BlobItem](/dotnet/api/azure.storage.blobs.models.blobitem) | [Nazwa](/dotnet/api/azure.storage.blobs.models.blobitem.name) |  |
-|[UriBuilder](/dotnet/api/system.uribuilder) | [Zapytanie](/dotnet/api/system.uribuilder.query) |  |
-|[Staw](/dotnet/api/system.collections.generic.list-1) | | [Dodana](/dotnet/api/system.collections.generic.list-1.add) |
+|[StorageSharedKeyCredential (StorageSharedKeyCredential)](/dotnet/api/azure.storage.storagesharedkeycredential) |  |  |
+|[Obiekt blobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient) |  |[GetBlobContainerClient (GetBlobContainerClient)](/dotnet/api/azure.storage.blobs.blobserviceclient.getblobcontainerclient) |
+|[Obiekt blobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient) | [Identyfikator uri](/dotnet/api/azure.storage.blobs.blobcontainerclient.uri) |[Exists](/dotnet/api/azure.storage.blobs.blobcontainerclient.exists) <br> [GetBlobs ( GetBlobs )](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs) |
+|[BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) |  | [Setpermissions](/dotnet/api/azure.storage.sas.blobsasbuilder.setpermissions) <br> [ToSasQueryParametry](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) |
+|[Obiekt BlobItem](/dotnet/api/azure.storage.blobs.models.blobitem) | [Nazwa](/dotnet/api/azure.storage.blobs.models.blobitem.name) |  |
+|[Uribuilder](/dotnet/api/system.uribuilder) | [Kwerendy](/dotnet/api/system.uribuilder.query) |  |
+|[Listy](/dotnet/api/system.collections.generic.list-1) | | [Dodaj](/dotnet/api/system.collections.generic.list-1.add) |
 
 ## <a name="server-side-encryption"></a>Szyfrowanie po stronie serwera
 

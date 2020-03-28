@@ -1,21 +1,21 @@
 ---
-title: 'Samouczek: wdrażanie z usługi GitHub w Azure App Service z usługą Jenkins'
+title: 'Samouczek: Wdrażanie z usługi GitHub w usłudze Azure App Service za pomocą usługi Jenkins'
 description: Konfigurowanie narzędzia Jenkins pod kątem ciągłej integracji z usługi GitHub i ciągłego wdrażania w usłudze Azure App Service dla aplikacji internetowych w języku Java
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: 9fcf178b71ac1f07bfb58cd2502701ae5392b472
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74158407"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Samouczek: wdrażanie z usługi GitHub do usługi Azure App Service przy użyciu funkcji ciągłej integracji i ciągłego wdrażania narzędzia Jenkins
 
 W tym samouczku wdrożysz przykładową internetową aplikację Java z usługi GitHub do [usługi Azure App Service w systemie Linux](/azure/app-service/containers/app-service-linux-intro), konfigurując ciągłą integrację i ciągłe wdrażanie w narzędziu Jenkins. Po zaktualizowaniu aplikacji przez wypchnięcie zatwierdzeń do usługi GitHub narzędzie Jenkins automatycznie skompiluje i opublikuje ponownie aplikację w usłudze Azure App Service. Przykładowa aplikacja w tym samouczku została opracowana przy użyciu struktury [Spring Boot](https://projects.spring.io/spring-boot/). 
 
-![Omówienie wdrażania usługi GitHub w usłudze Azure App Service](media/tutorial-jenkins-deploy-web-app-azure-app-service/azure-continuous-integration-deployment-overview.png)
+![Omówienie wdrażania usługi GitHub do usługi Azure App Service](media/tutorial-jenkins-deploy-web-app-azure-app-service/azure-continuous-integration-deployment-overview.png)
 
 W tym samouczku wykonasz następujące zadania:
 
@@ -41,7 +41,7 @@ Do ukończenia tego samouczka są potrzebne następujące elementy:
 
   Jeśli nie masz serwera Jenkins, wykonaj teraz następujące kroki w witrynie Azure Portal: [Tworzenie serwera Jenkins na maszynie wirtualnej systemu Linux na platformie Azure](/azure/jenkins/install-jenkins-solution-template)
 
-* Konto usługi [GitHub](https://github.com) umożliwiające uzyskanie kopii roboczej (tworzenie rozwidlenia) przykładowej internetowej aplikacji Java. 
+* Konto [GitHub,](https://github.com) dzięki czemu można uzyskać kopię roboczą (rozwidłę) dla przykładowej aplikacji sieci Web Java. 
 
 * [Interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli), który można uruchomić z poziomu lokalnego wiersza polecenia lub z [usługi Azure Cloud Shell](/azure/cloud-shell/overview)
 
@@ -51,28 +51,28 @@ Do ukończenia tego samouczka są potrzebne następujące elementy:
 
    `https://<Jenkins-server-name>.<Azure-region>.cloudapp.azure.com`
 
-1. Na stronie głównej narzędzia Jenkins wybierz pozycję **Manage Jenkins** > **Manage Plugins** (Zarządzaj narzędziem Jenkins > Zarządzaj wtyczkami).
+1. Na stronie głównej usługi Jenkins wybierz pozycję **Zarządzaj** > **wtyczkami w u jenkinsie**.
 
    ![Zarządzanie wtyczkami narzędzia Jenkins](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-jenkins-plugins.png)
 
 1. Na karcie **Available** (Dostępne) wybierz następujące wtyczki:
 
-   - [Azure App Service](https://plugins.jenkins.io/azure-app-service)
+   - [Usługa aplikacji platformy Azure](https://plugins.jenkins.io/azure-app-service)
    - [GitHub Branch Source](https://plugins.jenkins.io/github-branch-source)
-   - [Wtyczka iniektora środowiska](https://plugins.jenkins.io/envinject) Jenkins
-   - [Azure Credentials](https://plugins.jenkins.io/azure-credentials)
+   - [Wtyczka wtryskiwacza środowiska](https://plugins.jenkins.io/envinject) Jenkins
+   - [Poświadczenia platformy Azure](https://plugins.jenkins.io/azure-credentials)
 
    Jeśli te wtyczki nie są wyświetlane, upewnij się, że nie są już zainstalowane, sprawdzając kartę **Installed** (Zainstalowane).
 
-1. Aby zainstalować wybrane wtyczki, wybierz pozycję **Pobierz teraz i zainstaluj po ponownym uruchomieniu**.
+1. Aby zainstalować wybrane wtyczki, wybierz **pozycję Pobierz teraz i zainstaluj po ponownym uruchomieniu**.
 
-1. Po wykonaniu tych działań wybierz w menu narzędzia Jenkins pozycję **Manage Jenkins**  (Zarządzaj narzędziem Jenkins), aby wrócić na stronę zarządzania narzędziem Jenkins w celu wykonania kolejnych kroków.
+1. Po wykonaniu tych działań wybierz w menu narzędzia Jenkins pozycję **Manage Jenkins ** (Zarządzaj narzędziem Jenkins), aby wrócić na stronę zarządzania narzędziem Jenkins w celu wykonania kolejnych kroków.
 
 ## <a name="fork-sample-github-repo"></a>Utworzenie rozwidlenia przykładowego repozytorium GitHub
 
 1. [Zaloguj się do repozytorium GitHub dla przykładowej aplikacji Spring Boot](https://github.com/spring-guides/gs-spring-boot). 
 
-1. W prawym górnym rogu w usłudze GitHub wybierz opcję **rozwidlenie**.
+1. W prawym górnym rogu w usłudze GitHub wybierz pozycję **Widelec**.
 
    ![Utworzenie rozwidlenia przykładowego repozytorium z usługi GitHub](media/tutorial-jenkins-deploy-web-app-azure-app-service/fork-github-repo.png)
 
@@ -92,21 +92,21 @@ Aby narzędzie Jenkins monitorowało usługę GitHub i odpowiadało po wypchnię
 
 1. Na stronie **Manage Jenkins** (Zarządzanie narzędziem Jenkins) wybierz pozycję **Configure System** (Konfiguruj system). 
 
-   ![Konfigurowanie systemu w Jenkins](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-jenkins-configure-system.png)
+   ![Konfigurowanie systemu w układzie Jenkins](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-jenkins-configure-system.png)
 
 1. W sekcji **GitHub** podaj szczegóły serwera GitHub. Z listy **Add GitHub Server** (Dodaj serwer GitHub) wybierz pozycję **GitHub Server** (Serwer GitHub). 
 
-   ![Dodaj serwer GitHub w Jenkins](media/tutorial-jenkins-deploy-web-app-azure-app-service/add-GitHub-server.png)
+   ![Dodawanie serwera GitHub w usłudze Jenkins](media/tutorial-jenkins-deploy-web-app-azure-app-service/add-GitHub-server.png)
 
-1. Jeśli właściwość **Manage hooks** (Zarządzaj wpięciami) nie jest wybrana, wybierz ją. Wybierz pozycję **Zaawansowane** , aby określić inne ustawienia. 
+1. Jeśli właściwość **Manage hooks** (Zarządzaj wpięciami) nie jest wybrana, wybierz ją. Wybierz **opcję Zaawansowane,** aby można było określić inne ustawienia. 
 
-   ![Określ zaawansowane ustawienia Jenkins dla serwera usługi GitHub](media/tutorial-jenkins-deploy-web-app-azure-app-service/advanced-GitHub-settings.png)
+   ![Określanie zaawansowanych ustawień usługi Jenkins dla serwera GitHub](media/tutorial-jenkins-deploy-web-app-azure-app-service/advanced-GitHub-settings.png)
 
 1. Z listy **Manage additional GitHub actions** (Zarządzaj dodatkowymi akcjami usługi GitHub) wybierz pozycję **Convert login and password to token** (Konwertuj nazwę logowania i hasło na token).
 
-   ![Konwertuj nazwę logowania i hasło na token usługi GitHub](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-additional-actions.png)
+   ![Konwertuj login i hasło na token dla GitHub](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-additional-actions.png)
 
-1. Wybierz pozycję **From login and password** (Z nazwy logowania i hasła), aby można było podać nazwę użytkownika i hasło usługi GitHub. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz poświadczenia tokenu**, co spowoduje utworzenie [osobistego tokenu dostępu usługi GitHub](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).   
+1. Wybierz pozycję **From login and password** (Z nazwy logowania i hasła), aby można było podać nazwę użytkownika i hasło usługi GitHub. Po zakończeniu wybierz pozycję **Utwórz poświadczenia tokenu,** który tworzy [token dostępu osobistego GitHub (PAT).](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/)   
 
    ![Tworzenie osobistego tokenu dostępu usługi GitHub na podstawie nazwy logowania i hasła](media/tutorial-jenkins-deploy-web-app-azure-app-service/create-github-token-credentials.png)
 
@@ -118,7 +118,7 @@ Następnie utwórz jednostkę usługi platformy Azure, której narzędzie Jenkin
 
 ## <a name="create-service-principal"></a>Tworzenie jednostki usługi
 
-W dalszej sekcji utworzysz zadanie potoku narzędzia Jenkins, które kompiluje aplikację z usługi GitHub i wdraża ją w usłudze Azure App Service. Aby narzędzie Jenkins miało dostęp do platformy Azure bez konieczności wprowadzania poświadczeń, utwórz [jednostkę usługi](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) w usłudze Azure Active Directory dla narzędzia Jenkins. Jednostka usługi to osobna tożsamość, której narzędzie Jenkins może używać na potrzeby uwierzytelniania dostępu do zasobów platformy Azure. Aby utworzyć tę jednostkę usługi, uruchom polecenie interfejsu wiersza polecenia platformy Azure [ **`az ad sp create-for-rbac`** ](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) z poziomu lokalnego wiersza polecenia lub usługi Azure Cloud Shell, na przykład: 
+W dalszej sekcji utworzysz zadanie potoku narzędzia Jenkins, które kompiluje aplikację z usługi GitHub i wdraża ją w usłudze Azure App Service. Aby narzędzie Jenkins miało dostęp do platformy Azure bez konieczności wprowadzania poświadczeń, utwórz [jednostkę usługi](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) w usłudze Azure Active Directory dla narzędzia Jenkins. Jednostka usługi to osobna tożsamość, której narzędzie Jenkins może używać na potrzeby uwierzytelniania dostępu do zasobów platformy Azure. Aby utworzyć tego podmiotu usługi, [**`az ad sp create-for-rbac`**](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)uruchom polecenie interfejsu wiersza polecenia platformy Azure , na przykład z lokalnego wiersza polecenia lub usługi Azure Cloud Shell: 
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "yourAzureServicePrincipalName" --password yourSecurePassword
@@ -126,7 +126,7 @@ az ad sp create-for-rbac --name "yourAzureServicePrincipalName" --password yourS
 
 Upewnij się, że nazwa jednostki usługi jest podana w cudzysłowie. Utwórz także silne hasło zgodne z [regułami i ograniczeniami usługi Azure Active Directory dotyczącymi haseł](/azure/active-directory/active-directory-passwords-policy). Jeśli nie podasz hasła, interfejs wiersza polecenia platformy Azure utworzy hasło. 
 
-Oto dane wyjściowe wygenerowane przez polecenie **`create-for-rbac`** : 
+Oto dane wyjściowe generowane **`create-for-rbac`** przez polecenie: 
 
 ```json
 {
@@ -146,7 +146,7 @@ Oto dane wyjściowe wygenerowane przez polecenie **`create-for-rbac`** :
 
 ## <a name="add-service-principal-to-jenkins"></a>Dodawanie jednostki usługi do narzędzia Jenkins
 
-1. Na stronie głównej narzędzia Jenkins wybierz pozycję **Credentials** > **System** (Poświadczenia > System). 
+1. Na stronie głównej usługi Jenkins wybierz pozycję**System** **poświadczeń** > . 
 
 1. Na stronie **System** w obszarze **Domain** (Domena) wybierz pozycję **Global credentials (unrestricted)** (Poświadczenia globalne — bez ograniczeń).
 
@@ -160,13 +160,13 @@ Oto dane wyjściowe wygenerowane przez polecenie **`create-for-rbac`** :
 
    | Właściwość | Wartość | Opis | 
    |----------|-------|-------------| 
-   | **Subscription ID (Identyfikator subskrypcji)** | <*yourAzureSubscription-ID (Identyfikator Twojej subskrypcji platformy Azure)* > | Wartość identyfikatora GUID dla subskrypcji platformy Azure <p>**Wskazówka**: jeśli nie znasz identyfikatora subskrypcji platformy Azure, uruchom następujące polecenie interfejsu wiersza polecenia platformy Azure z poziomu wiersza polecenia lub usługi Cloud Shell, a następnie użyj wartości identyfikatora GUID `id`: <p>`az account list` | 
-   | **Identyfikator klienta** | <*yourAzureServicePrincipal-ID (Identyfikator jednostki usługi platformy Azure)* > | Wartość identyfikatora GUID `appId` wygenerowanego wcześniej dla jednostki usługi platformy Azure | 
-   | **Client Secret (Wpis tajny klienta)** | <*yourSecurePassword (Hasło)* > | Wartość `password` lub „wpis tajny” określony dla jednostki usługi platformy Azure | 
-   | **Tenant ID (Identyfikator dzierżawy)** | <*yourAzureActiveDirectoryTenant-ID (Identyfikator dzierżawy usługi Azure Active Directory)* > | Wartość identyfikatora GUID `tenant` dla dzierżawy usługi Azure Active Directory | 
-   | **Identyfikator** | <*yourAzureServicePrincipalName (Nazwa jednostki usługi platformy Azure)* > | Wartość `displayName` jednostki usługi platformy Azure | 
+   | **Subscription ID (Identyfikator subskrypcji)** | <*twójAzureSubscription-ID*> | Wartość identyfikatora GUID dla subskrypcji platformy Azure <p>**Wskazówka**: jeśli nie znasz identyfikatora subskrypcji platformy Azure, uruchom następujące polecenie interfejsu wiersza polecenia platformy Azure z poziomu wiersza polecenia lub usługi Cloud Shell, a następnie użyj wartości identyfikatora GUID `id`: <p>`az account list` | 
+   | **Client ID (Identyfikator klienta)** | <*twójAzureServicePrincipal-ID*> | Wartość identyfikatora GUID `appId` wygenerowanego wcześniej dla jednostki usługi platformy Azure | 
+   | **Client Secret (Wpis tajny klienta)** | <*TwojeSecurePassword*> | Wartość `password` lub „wpis tajny” określony dla jednostki usługi platformy Azure | 
+   | **Tenant ID (Identyfikator dzierżawy)** | <*twójAzureActiveDirectoryTenant-ID*> | Wartość identyfikatora GUID `tenant` dla dzierżawy usługi Azure Active Directory | 
+   | **ID** | <*TwojaAzureServicePrincipalName*> | Wartość `displayName` jednostki usługi platformy Azure | 
 
-1. Aby potwierdzić, że nazwa główna usługi działa, wybierz pozycję **weryfikuj nazwę główną usługi**. Gdy skończysz, wybierz opcję **OK**.
+1. Aby potwierdzić, że podmiot usługi działa, wybierz **pozycję Weryfikuj jednostkę usługi**. Gdy skończysz, wybierz opcję **OK**.
 
 Następnie utwórz potok narzędzia Jenkins, który kompiluje i wdraża aplikację.
 
@@ -178,9 +178,9 @@ W narzędziu Jenkins utwórz zadanie potoku na potrzeby kompilowania i wdrażani
 
    ![Tworzenie potoku serwera Jenkins](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-new-item.png)
 
-1. Podaj nazwę dla zadania potoku, na przykład, „Moja internetowa aplikacja Java”, i wybierz pozycję **Pipeline** (Potok). Kliknij **przycisk OK**w dolnej części.  
+1. Podaj nazwę dla zadania potoku, na przykład, „Moja internetowa aplikacja Java”, i wybierz pozycję **Pipeline** (Potok). U dołu wybierz przycisk **OK**.  
 
-   ![Nazwij zadanie potoku Jenkins](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-pipeline.png)
+   ![Nadawanie nazwy zadaniu potoku Jenkins](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-pipeline.png)
 
 1. Skonfiguruj narzędzie Jenkins przy użyciu jednostki usługi, co umożliwi narzędziu Jenkins wdrażanie na platformie Azure bez konieczności używania poświadczeń.
 
@@ -194,7 +194,7 @@ W narzędziu Jenkins utwórz zadanie potoku na potrzeby kompilowania i wdrażani
       WEB_APP=yourWebAppName
       ```
 
-      ![Przygotuj środowisko do uruchomienia i Ustaw zmienne środowiskowe](media/tutorial-jenkins-deploy-web-app-azure-app-service/prepare-environment-for-jenkins-run.png)
+      ![Przygotowanie środowiska do uruchomienia i ustawienie zmiennych środowiskowych](media/tutorial-jenkins-deploy-web-app-azure-app-service/prepare-environment-for-jenkins-run.png)
 
 1. Po zakończeniu wybierz pozycję **Zapisz**.
 
@@ -249,7 +249,7 @@ Teraz określ skrypt kompilowania i wdrażania, którego ma używać narzędzie 
 
 1. W narzędziu Jenkins wybierz uprzednio utworzone zadanie potoku. 
 
-   ![Wybierz zadanie potoku Jenkins dla aplikacji sieci Web](media/tutorial-jenkins-deploy-web-app-azure-app-service/select-pipeline-job.png)
+   ![Wybieranie zadania potoku usługi Jenkins dla aplikacji sieci web](media/tutorial-jenkins-deploy-web-app-azure-app-service/select-pipeline-job.png)
 
 1. W menu po lewej stronie wybierz pozycję **Configure** (Konfiguruj).
 
@@ -267,7 +267,7 @@ Teraz określ skrypt kompilowania i wdrażania, którego ma używać narzędzie 
 
    Gdy wszystko będzie gotowe, definicja potoku będzie wyglądać podobnie do następującego przykładu: 
 
-   ![Wskazywanie potoku Jenkins na skrypcie](media/tutorial-jenkins-deploy-web-app-azure-app-service/set-up-jenkins-github.png)
+   ![Wskaż potok usługi Jenkins na skrypt](media/tutorial-jenkins-deploy-web-app-azure-app-service/set-up-jenkins-github.png)
 
 1. Po zakończeniu wybierz pozycję **Zapisz**.
 

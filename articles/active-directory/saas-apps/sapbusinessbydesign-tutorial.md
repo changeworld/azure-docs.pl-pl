@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z oprogramowaniem SAP Business ByDesign | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i oprogramowaniem SAP Business ByDesign.
+title: 'Samouczek: Integracja usługi Azure Active Directory z sap business bydesign | Dokumenty firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a sap business bydesign.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,44 +17,44 @@ ms.date: 04/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0b830f0760b768826b2d937b4a8b2ffbd8e9e2a2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67091676"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sap-business-bydesign"></a>Samouczek: Integracja usługi Azure Active Directory z oprogramowaniem SAP Business ByDesign
+# <a name="tutorial-azure-active-directory-integration-with-sap-business-bydesign"></a>Samouczek: integracja usługi Azure Active Directory z oprogramowaniem SAP Business ByDesign
 
-W tym samouczku dowiesz się, jak zintegrować z oprogramowaniem SAP Business ByDesign za pomocą usługi Azure Active Directory (Azure AD).
-Integracja z oprogramowaniem SAP Business ByDesign z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować SAP Business ByDesign z usługą Azure Active Directory (Azure AD).
+Integracja SAP Business ByDesign z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do oprogramowaniem SAP Business ByDesign.
-* Użytkownikom można automatycznie zalogował się oprogramowaniem SAP Business ByDesign (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* W usłudze Azure AD można kontrolować, kto ma dostęp do SAP Business ByDesign.
+* Można włączyć użytkowników do automatycznego logowania do SAP Business ByDesign (logowanie jednokrotne) z ich kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z oprogramowaniem SAP Business ByDesign, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z sap business bydesign, potrzebujesz następujących elementów:
 
-* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/)
-* SAP oprogramowaniem Business ByDesign logowanie jednokrotne włączone subskrypcji
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/)
+* Subskrypcja z obsługą logowania jednokrotnego SAP Business ByDesign
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Obsługuje z oprogramowaniem SAP Business ByDesign **SP** jednokrotne logowanie inicjowane przez
+* SAP Business ByDesign obsługuje sso inicjowane przez **sp**
 
-## <a name="adding-sap-business-bydesign-from-the-gallery"></a>Dodawanie z oprogramowaniem SAP Business ByDesign z galerii
+## <a name="adding-sap-business-bydesign-from-the-gallery"></a>Dodawanie SAP Business ByDesign z galerii
 
-Aby skonfigurować integrację z oprogramowaniem SAP Business ByDesign w usłudze Azure AD, należy dodać oprogramowaniem SAP Business ByDesign z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację SAP Business ByDesign z usługą Azure AD, należy dodać SAP Business ByDesign z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać oprogramowaniem SAP Business ByDesign z galerii, wykonaj następujące czynności:**
+**Aby dodać SAP Business ByDesign z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -62,37 +62,37 @@ Aby skonfigurować integrację z oprogramowaniem SAP Business ByDesign w usłudz
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **oprogramowaniem SAP Business ByDesign**, wybierz opcję **oprogramowaniem SAP Business ByDesign** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **SAP Business ByDesign**, wybierz **SAP Business ByDesign** z panelu wyników, a następnie kliknij przycisk **Dodaj,** aby dodać aplikację.
 
-    ![Oprogramowaniem SAP Business ByDesign na liście wyników](common/search-new-app.png)
+    ![SAP Business ByDesign na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji możesz skonfigurować i przetestować usługi Azure AD logowanie jednokrotne z oprogramowaniem SAP Business ByDesign w oparciu o nazwie użytkownika testowego **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w oprogramowaniem SAP Business ByDesign musi zostać ustanowione.
+W tej sekcji można skonfigurować i przetestować azure ad logowania jednokrotnego z SAP Business ByDesign na podstawie użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację łącza między użytkownikiem usługi Azure AD a powiązanym użytkownikiem w programie SAP Business ByDesign.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne z oprogramowaniem SAP Business ByDesign, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD za pomocą sap business bydesign, należy wykonać następujące bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie SAP Business oprogramowaniem ByDesign logowania jednokrotnego](#configure-sap-business-bydesign-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego z oprogramowaniem SAP Business ByDesign](#create-sap-business-bydesign-test-user)**  — aby odpowiednikiem Britta Simon w oprogramowaniem SAP Business ByDesign jest połączony z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Skonfiguruj logowanie jednokrotne SAP Business ByDesign](#configure-sap-business-bydesign-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Utwórz użytkownika testowego SAP Business ByDesign](#create-sap-business-bydesign-test-user)** — aby mieć odpowiednik Britta Simon w SAP Business ByDesign, który jest połączony z reprezentacją użytkownika usługi Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować usługi Azure AD logowanie jednokrotne z oprogramowaniem SAP Business ByDesign, wykonaj następujące czynności:
+Aby skonfigurować logowanie jednooznaczne usługi Azure AD za pomocą sap business bydesign, wykonaj następujące kroki:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **oprogramowaniem SAP Business ByDesign** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [witrynie Azure portal](https://portal.azure.com/)na stronie integracji aplikacji **SAP Business ByDesign** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -104,38 +104,38 @@ Aby skonfigurować usługi Azure AD logowanie jednokrotne z oprogramowaniem SAP 
 
 4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    ![SAP Business oprogramowaniem ByDesign domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/sp-identifier.png)
+    ![Sap Business ByDesign Informacje o domenie i adresach URL logowania jednokrotnego](common/sp-identifier.png)
 
     a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<servername>.sapbydesign.com`
 
     b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://<servername>.sapbydesign.com`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej SAP Business oprogramowaniem ByDesign klienta](https://www.sap.com/products/cloud-analytics.support.html) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z [zespołem pomocy technicznej sap business bydesign klienta,](https://www.sap.com/products/cloud-analytics.support.html) aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-5. Aplikacja oprogramowaniem Business ByDesign SAP oczekuje twierdzenia SAML, w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty użytkownika** na stronie integracji aplikacji. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Atrybuty użytkownika**.
+5. Sap Business ByDesign aplikacja oczekuje potwierdzeń SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty użytkownika** na stronie integracji aplikacji. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Atrybuty użytkownika**.
 
     ![image](common/edit-attribute.png)
 
-6. Kliknij pozycję **Edytuj** ikona edycji **nazwę wartości identyfikatora**.
+6. Kliknij ikonę **Edytuj,** aby **edytować wartość identyfikatora nazwa**.
 
     ![image](media/sapbusinessbydesign-tutorial/mail-prefix1.png)
 
-7. Na **Zarządzanie oświadczenia użytkownika** sekcji, wykonaj następujące kroki: ![obrazu](media/sapbusinessbydesign-tutorial/mail-prefix2.png)
+7. W sekcji **Zarządzanie roszczeniami użytkowników** wykonaj ![następujące kroki: obraz](media/sapbusinessbydesign-tutorial/mail-prefix2.png)
 
-    a. Wybierz **przekształcania** jako **źródła**.
+    a. Wybierz **opcję Transformacja** jako **źródło**.
 
-    b. W **przekształcania** listy rozwijanej wybierz **ExtractMailPrefix()** .
+    b. Z listy rozwijanej **Transformacja** wybierz pozycję **ExtractMailPrefix()**.
 
-    c. W **parametr 1** listy rozwijanej wybierz atrybut użytkownika, którego chcesz użyć dla wdrożenia. Na przykład jeśli chcesz użyć identyfikatora EmployeeID jako unikatowego identyfikatora użytkownika, a wartość atrybutu jest przechowywana w elemencie ExtensionAttribute2, wybierz pozycję user.extensionattribute2.
+    d. Na liście rozwijanej **Parametr 1** wybierz atrybut użytkownika, którego chcesz użyć do implementacji. Na przykład jeśli chcesz użyć identyfikatora EmployeeID jako unikatowego identyfikatora użytkownika, a wartość atrybutu jest przechowywana w elemencie ExtensionAttribute2, wybierz pozycję user.extensionattribute2.
 
-    d. Kliknij pozycję **Zapisz**.
+    d. Kliknij przycisk **Zapisz**.
 
 8. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/metadataxml.png)
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-9. Na **Konfigurowanie z oprogramowaniem SAP Business ByDesign** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+9. W sekcji **Konfigurowanie sap business bydesign** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -143,19 +143,19 @@ Aby skonfigurować usługi Azure AD logowanie jednokrotne z oprogramowaniem SAP 
 
     b. Identyfikator usługi Azure AD
 
-    c. Adres URL wylogowywania
+    d. Adres URL wylogowywania
 
-### <a name="configure-sap-business-bydesign-single-sign-on"></a>Konfigurowanie SAP Business oprogramowaniem ByDesign logowanie jednokrotne
+### <a name="configure-sap-business-bydesign-single-sign-on"></a>Konfigurowanie rejestracji pojedynczej SAP Business ByDesign
 
-1. Zaloguj się do portalu oprogramowaniem SAP Business ByDesign z uprawnieniami administratora.
+1. Zaloguj się do portalu SAP Business ByDesign z uprawnieniami administratora.
 
-2. Przejdź do **aplikacji i typowe zadanie zarządzania użytkownikami** i kliknij przycisk **dostawcy tożsamości** kartę.
+2. Przejdź do **wspólnego zadania zarządzania aplikacjami i użytkownikami** i kliknij kartę **Dostawca tożsamości.**
 
-3. Kliknij przycisk **nowego dostawcę tożsamości** i wybierz plik XML metadanych, który został pobrany z witryny Azure portal. Przez zaimportowanie tych metadanych system automatycznie przekaże wymagany certyfikat podpisywania i certyfikat szyfrowania.
+3. Kliknij **pozycję Nowy dostawca tożsamości** i wybierz plik XML metadanych pobrany z witryny Azure portal. Przez zaimportowanie tych metadanych system automatycznie przekaże wymagany certyfikat podpisywania i certyfikat szyfrowania.
 
     ![Konfigurowanie logowania jednokrotnego](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_54.png)
 
-4. Obejmujący **adres URL usługi konsumenta potwierdzenie** w żądaniu języka SAML wybierz **zawierają potwierdzenie konsumenta adres URL usługi**.
+4. Aby uwzględnić **adres URL usługi konsumenta oświadczeń** w żądaniu SAML, wybierz pozycję **Uwzględnij adres URL usługi konsumenta oświadczeń**.
 
 5. Kliknij przycisk **Activate Single Sign-On** (Aktywuj logowanie jednokrotne).
 
@@ -165,22 +165,22 @@ Aby skonfigurować usługi Azure AD logowanie jednokrotne z oprogramowaniem SAP 
 
     ![Konfigurowanie logowania jednokrotnego](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_52.png)
 
-8. W **adres URL logowania usługi AD Azure** pola tekstowego, Wklej **adres URL logowania** wartości, które zostały skopiowane z witryny Azure portal.
+8. W polu tekstowym **adresu URL logowania usługi AD ad** wklej wartość adresu URL **logowania,** która została skopiowana z witryny Azure portal.
 
     ![Konfigurowanie logowania jednokrotnego](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_53.png)
 
-9. Określ, czy pracownik można ręcznie wybrać między logowanie się przy użyciu Identyfikatora użytkownika i hasła lub logowania jednokrotnego, wybierając **wyboru dostawcy tożsamości ręczne**.
+9. Określ, czy pracownik może ręcznie wybrać między logowaniem za pomocą identyfikatora użytkownika i hasła lub logowania jednośląkiego, wybierając **ręczny wybór dostawcy tożsamości**.
 
-10. W **adres URL logowania jednokrotnego** sekcji, określ adres URL, które mają być używane przez pracowników, aby logować się do systemu.
-    W URL wysyłane do listy rozwijanej pracownika można wybrać jedną z następujących opcji:
+10. W sekcji **Adres URL logowania do rejestracjij przyuśmij** adres URL określ adres URL, który powinien być używany przez pracownika do logowania się do systemu.
+    Na liście rozwijanej Adres URL wysłany do pracownika możesz wybrać jedną z następujących opcji:
 
     **Non-SSO URL** (Adres URL w przypadku braku obsługi logowania jednokrotnego)
 
-    System wysyła do pracownika tylko normalny adres URL systemu. Pracownik nie może logować przy użyciu logowania jednokrotnego i musi użyć hasła lub zamiast tego certyfikatu.
+    System wysyła do pracownika tylko normalny adres URL systemu. Pracownik nie może logowanie przy użyciu logowania jednośliowego i zamiast tego należy użyć hasła lub certyfikatu.
 
     **SSO URL** (Adres URL logowania jednokrotnego)
 
-    System wysyła do pracownika tylko adres URL logowania jednokrotnego. Pracownik może się logować przy użyciu logowania jednokrotnego. Żądanie uwierzytelnienia zostanie przekierowane za pośrednictwem dostawcy tożsamości.
+    System wysyła do pracownika tylko adres URL logowania jednokrotnego. Pracownik może podpisać za pomocą logowania sytego. Żądanie uwierzytelnienia zostanie przekierowane za pośrednictwem dostawcy tożsamości.
 
     **Automatic Selection** (Wybór automatyczny)
 
@@ -196,7 +196,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+2. Wybierz **pozycję Nowy użytkownik** u góry ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
@@ -206,23 +206,23 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola `brittasimon@yourcompanydomain.extension`. Na przykład: BrittaSimon@contoso.com
+    b. W polu **Nazwa** `brittasimon@yourcompanydomain.extension`użytkownika wpisz . Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Kliknij pozycję **Utwórz**.
+    d. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon korzystać z platformy Azure logowania jednokrotnego przez udzielenie dostępu z oprogramowaniem SAP Business ByDesign.
+W tej sekcji można włączyć Britta Simon do korzystania z azure logowania jednokrotnego, udzielając dostępu do SAP Business ByDesign.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **oprogramowaniem SAP Business ByDesign**.
+1. W portalu Azure wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz **pozycję Wszystkie aplikacje,** a następnie wybierz **pozycję SAP Business ByDesign**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **oprogramowaniem SAP Business ByDesign**.
+2. Na liście aplikacji wybierz **pozycję SAP Business ByDesign**.
 
-    ![Link oprogramowaniem SAP Business ByDesign na liście aplikacji](common/all-applications.png)
+    ![Łącze SAP Business ByDesign na liście Aplikacje](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -234,27 +234,27 @@ W tej sekcji możesz włączyć Britta Simon korzystać z platformy Azure logowa
 
 5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+6. Jeśli oczekujesz dowolnej wartości roli w asercji SAML, a następnie w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-sap-business-bydesign-test-user"></a>Tworzenie użytkownika testowego z oprogramowaniem SAP Business ByDesign
+### <a name="create-sap-business-bydesign-test-user"></a>Tworzenie użytkownika testowego SAP Business ByDesign
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w oprogramowaniem SAP Business ByDesign. Skontaktuj się z [zespołem pomocy technicznej SAP Business oprogramowaniem ByDesign klienta](https://www.sap.com/products/cloud-analytics.support.html) Aby dodać użytkowników z oprogramowaniem SAP Business ByDesign platformy. 
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w SAP Business ByDesign. Aby dodać użytkowników na platformie SAP Business ByDesign, należy współpracować z [zespołem pomocy technicznej SAP Business ByDesign](https://www.sap.com/products/cloud-analytics.support.html) Client. 
 
 > [!NOTE]
-> Upewnij się, że wartość identyfikatora NameID powinny być zgodne z pola Nazwa użytkownika na platformie oprogramowaniem SAP Business ByDesign.
+> Upewnij się, że wartość NameID powinna być zgodna z polem nazwy użytkownika na platformie SAP Business ByDesign.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka oprogramowaniem SAP Business ByDesign w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze oprogramowaniem SAP Business ByDesign dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka SAP Business ByDesign w Panelu dostępu należy automatycznie zalogować się do sap business bydesign, dla którego skonfigurowano logującą się jednoślik. Aby uzyskać więcej informacji na temat Panelu dostępu, zobacz [Wprowadzenie do Panelu dostępu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
