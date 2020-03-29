@@ -1,6 +1,6 @@
 ---
-title: Monitorowanie postępu zadań przy użyciu platformy .NET
-description: Dowiedz się, jak używać kod procedury obsługi zdarzeń do śledzenia postępu zadania i wysyła aktualizacje stanu. Przykładowy kod jest zapisywany C# i używa Media Services SDK dla platformy .NET.
+title: Monitorowanie postępu zadania przy użyciu platformy .NET
+description: Dowiedz się, jak używać kodu programu obsługi zdarzeń do śledzenia postępu zadań i wysyłania aktualizacji stanu. Przykładowy kod jest napisany w języku C# i używa zestawu SDK usług multimedialnych dla platformy .NET.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,22 +15,22 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: e787617ab6e04a5ff2e7f5d4921a5bf7a4a1eb5d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64867099"
 ---
-# <a name="monitor-job-progress-using-net"></a>Monitorowanie postępu zadań przy użyciu platformy .NET 
+# <a name="monitor-job-progress-using-net"></a>Monitorowanie postępu zadania przy użyciu platformy .NET 
 
 > [!NOTE]
-> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md)
+> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Sprawdź najnowszą wersję usługi [Media Services w wersji 3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówki dotyczące migracji z wersji 2 do v3](../latest/migrate-from-v2-to-v3.md)
 
-Po uruchomieniu zadania, często wymagają sposób śledzenia postępu zadań. Postęp można sprawdzić przez definiowanie obsługi zdarzeń StateChanged (zgodnie z opisem w tym temacie), lub do monitorowania powiadomień dotyczących zadania usługi Media Services przy użyciu usługi Azure Queue storage (zgodnie z opisem w [to](media-services-dotnet-check-job-progress-with-queues.md) tematu).
+Podczas uruchamiania zadań często wymaga się sposobu śledzenia postępu zadania. Postęp można sprawdzić, definiując program obsługi zdarzeń Ze względu na stan (zgodnie z opisem w tym temacie) lub użycie magazynu kolejki platformy Azure do monitorowania powiadomień o zadaniach usługi Media Services (zgodnie z opisem w [tym](media-services-dotnet-check-job-progress-with-queues.md) temacie).
 
-## <a name="define-statechanged-event-handler-to-monitor-job-progress"></a>Definiowanie procedury obsługi zdarzeń StateChanged, aby monitorować postęp zadania
+## <a name="define-statechanged-event-handler-to-monitor-job-progress"></a>Zdefiniuj program obsługi zdarzeń określenia stanu w celu monitorowania postępu zadania
 
-Poniższy kod definiuje StateChanged obsługi zdarzeń. Ta procedura obsługi zdarzeń śledzi postęp zadania i zawiera zaktualizowany stan, w zależności od stanu. Ten kod definiuje również metodę LogJobStop. Ta metoda pomocnika rejestruje informacje o błędzie.
+Poniższy przykład kodu definiuje StateChanged obsługi zdarzeń. Ten program obsługi zdarzeń śledzi postęp zadania i zapewnia zaktualizowany stan, w zależności od stanu. Kod definiuje również LogJobStop metody. Ta metoda pomocnika rejestruje szczegóły błędu.
 
 ```csharp
     private static void StateChanged(object sender, JobStateChangedEventArgs e)

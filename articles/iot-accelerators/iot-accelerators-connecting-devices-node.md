@@ -1,6 +1,6 @@
 ---
-title: Aprowizacja urządzeń do monitorowania zdalnego w środowisku Node.js — Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak połączyć urządzenie z akceleratora rozwiązania monitorowania zdalnego, przy użyciu aplikacji napisanych w języku Node.js.
+title: Aprowizuj urządzenia do zdalnego monitorowania w pliku Node.js — Azure | Dokumenty firmy Microsoft
+description: W tym artykule opisano sposób podłączania urządzenia do akceleratora rozwiązań zdalnego monitorowania przy użyciu aplikacji napisanej w pliku Node.js.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,27 +9,27 @@ ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: dobett
 ms.openlocfilehash: fdb2bed76a8e23a6034a57b3a5f1358c26e9e990
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61450282"
 ---
-# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Podłączanie urządzenia do akceleratora rozwiązań zdalnego monitorowania (Node.js)
+# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Podłączanie urządzenia do akceleratora rozwiązań do zdalnego monitorowania (Node.js)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-Ten samouczek pokazuje, jak połączyć prawdziwe urządzenie do akceleratora rozwiązania monitorowania zdalnego. W tym samouczku użyjesz środowiska Node.js, czyli dobra opcja w środowiskach z ograniczeniami minimalny zasobów.
+W tym samouczku pokazano, jak podłączyć rzeczywiste urządzenie do akceleratora rozwiązań zdalnego monitorowania. W tym samouczku należy użyć Node.js, który jest dobrym rozwiązaniem dla środowisk z minimalnymi ograniczeniami zasobów.
 
-Jeśli wolisz symulowanie urządzenia, zobacz [tworzenie i testowanie nowych symulowanych urządzeń](iot-accelerators-remote-monitoring-create-simulated-device.md).
+Jeśli wolisz symulować urządzenie, zobacz [Tworzenie i testowanie nowego symulowanego urządzenia](iot-accelerators-remote-monitoring-create-simulated-device.md).
 
-## <a name="create-a-nodejs-solution"></a>Tworzenie rozwiązania środowiska Node.js
+## <a name="create-a-nodejs-solution"></a>Tworzenie rozwiązania Node.js
 
-Upewnij się, że [Node.js](https://nodejs.org/) wersji 4.0.0 lub nowszy jest zainstalowany na komputerze deweloperskim. Możesz uruchomić `node --version` w wierszu polecenia, aby sprawdzić wersję.
+Upewnij się, że [node.js](https://nodejs.org/) w wersji 4.0.0 lub nowszej jest zainstalowany na komputerze deweloperskim. Można uruchomić `node --version` w wierszu polecenia, aby sprawdzić wersję.
 
-1. Utwórz folder o nazwie `remotemonitoring` na komputerze deweloperskim. Przejdź do tego folderu w środowisku wiersza polecenia.
+1. Utwórz folder `remotemonitoring` wywoływany na komputerze deweloperskim. Przejdź do tego folderu w środowisku wiersza polecenia.
 
-1. Aby pobrać i zainstalować te pakiety, należy wykonać przykładową aplikację, uruchom następujące polecenia:
+1. Aby pobrać i zainstalować pakiety potrzebne do ukończenia przykładowej aplikacji, uruchom następujące polecenia:
 
     ```cmd/sh
     npm init
@@ -38,7 +38,7 @@ Upewnij się, że [Node.js](https://nodejs.org/) wersji 4.0.0 lub nowszy jest za
 
 1. W `remotemonitoring` folderze utwórz plik o nazwie **remote_monitoring.js**. Otwórz ten plik w edytorze tekstu.
 
-1. W **remote_monitoring.js** plików, Dodaj następujący kod `require` instrukcji:
+1. W pliku **remote_monitoring.js** dodaj następujące `require` instrukcje:
 
     ```javascript
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
@@ -47,13 +47,13 @@ Upewnij się, że [Node.js](https://nodejs.org/) wersji 4.0.0 lub nowszy jest za
     var async = require('async');
     ```
 
-1. Dodaj następujące deklaracje zmiennych po instrukcji `require`. Zastąp wartość symbolu zastępczego `{device connection string}` wartością zanotowaną urządzenia aprowizowanej w rozwiązaniu monitorowania zdalnego:
+1. Dodaj następujące deklaracje zmiennych po instrukcji `require`. Zastąp `{device connection string}` wartość symbolu zastępczego wartością odnotowaną dla urządzenia aprowizowanego w rozwiązaniu do zdalnego monitorowania:
 
     ```javascript
     var connectionString = '{device connection string}';
     ```
 
-1. Aby zdefiniować niektórych danych telemetrycznych podstawowej, Dodaj następujące zmienne:
+1. Aby zdefiniować niektóre podstawowe dane telemetryczne, dodaj następujące zmienne:
 
     ```javascript
     var temperature = 50;
@@ -64,7 +64,7 @@ Upewnij się, że [Node.js](https://nodejs.org/) wersji 4.0.0 lub nowszy jest za
     var pressureUnit = 'psig';
     ```
 
-1. Aby zdefiniować niektóre wartości właściwości, Dodaj następujące zmienne:
+1. Aby zdefiniować niektóre wartości właściwości, dodaj następujące zmienne:
 
     ```javascript
     var schema = "real-chiller;v1";
@@ -77,7 +77,7 @@ Upewnij się, że [Node.js](https://nodejs.org/) wersji 4.0.0 lub nowszy jest za
     var deviceOnline = true;
     ```
 
-1. Dodaj następującą zmienną do definiowania zgłaszanych właściwości do wysłania do rozwiązania. Te właściwości obejmują metadanych do wyświetlania w Interfejsie użytkownika sieci Web:
+1. Dodaj następującą zmienną, aby zdefiniować zgłoszone właściwości do wysłania do rozwiązania. Te właściwości obejmują metadane do wyświetlenia w interfejsie użytkownika sieci Web:
 
     ```javascript
     var reportedProperties = {
@@ -105,7 +105,7 @@ Upewnij się, że [Node.js](https://nodejs.org/) wersji 4.0.0 lub nowszy jest za
     }
     ```
 
-1. Dodaj następującą funkcję pomocnika na potrzeby losowe wartości telemetryczne:
+1. Dodaj następującą funkcję pomocnika, która będzie używana do losowania wartości telemetrycznych:
 
      ```javascript
      function generateRandomIncrement() {
@@ -113,7 +113,7 @@ Upewnij się, że [Node.js](https://nodejs.org/) wersji 4.0.0 lub nowszy jest za
      }
      ```
 
-1. Dodaj następującą funkcję ogólnego, aby obsłużyć wywołania metody bezpośredniej z rozwiązania. Funkcja wyświetla informacje o bezpośrednie metody, która została wywołana, ale w tym przykładzie nie powoduje modyfikacji urządzenia w dowolny sposób. Rozwiązanie używa metod bezpośrednich do działania na urządzeniach:
+1. Dodaj następującą funkcję rodzajową do obsługi wywołań metody bezpośredniej z rozwiązania. Funkcja wyświetla informacje o metodzie bezpośredniej, która została wywołana, ale w tym przykładzie nie modyfikuje urządzenia w żaden sposób. Rozwiązanie wykorzystuje bezpośrednie metody działania na urządzeniach:
 
      ```javascript
      function onDirectMethod(request, response) {
@@ -128,7 +128,7 @@ Upewnij się, że [Node.js](https://nodejs.org/) wersji 4.0.0 lub nowszy jest za
      }
      ```
 
-1. Dodaj następującą funkcję, aby obsłużyć **FirmwareUpdate** bezpośrednie wywołania metody z rozwiązania. Funkcja sprawdza parametrów przekazanych w ładunku metody bezpośredniej, a następnie asynchronicznie uruchamia symulacji aktualizacji oprogramowania układowego:
+1. Dodaj następującą funkcję do obsługi wywołań metody bezpośredniej **Metody FirmwareUpdate** z rozwiązania. Funkcja weryfikuje parametry przekazywane w ładunku metody bezpośredniej, a następnie asynchronicznie uruchamia symulację aktualizacji oprogramowania układowego:
 
      ```javascript
      function onFirmwareUpdate(request, response) {
@@ -157,7 +157,7 @@ Upewnij się, że [Node.js](https://nodejs.org/) wersji 4.0.0 lub nowszy jest za
      }
      ```
 
-1. Dodaj następującą funkcję, aby symulować przepływ aktualizacji oprogramowania układowego długotrwałych, który zgłasza postępy pracy powrót do rozwiązania:
+1. Dodaj następującą funkcję, aby symulować długotrwały przepływ aktualizacji oprogramowania układowego, który raportuje postęp z powrotem do rozwiązania:
 
      ```javascript
      // Simulated firmwareUpdate flow
@@ -235,7 +235,7 @@ Upewnij się, że [Node.js](https://nodejs.org/) wersji 4.0.0 lub nowszy jest za
      }
      ```
 
-1. Dodaj następujący kod do wysyłania danych telemetrycznych do rozwiązania. Aplikacja kliencka dodaje właściwości w oknie komunikatu identyfikowanie schematów komunikatów:
+1. Dodaj następujący kod, aby wysłać dane telemetryczne do rozwiązania. Aplikacja kliencka dodaje właściwości do wiadomości, aby zidentyfikować schemat wiadomości:
 
      ```javascript
      function sendTelemetry(data, schema) {
@@ -260,13 +260,13 @@ Upewnij się, że [Node.js](https://nodejs.org/) wersji 4.0.0 lub nowszy jest za
      var client = Client.fromConnectionString(connectionString, Protocol);
      ```
 
-1. Dodaj następujący kod, aby:
+1. Dodaj następujący kod do:
 
     * Otwórz połączenie.
-    * Skonfiguruj program obsługi żądane właściwości.
-    * Wysyłać zgłaszane właściwości.
-    * Zarejestruj procedury obsługi dla metod bezpośrednich. W przykładzie użyto oddzielny program obsługi dla metody bezpośredniej aktualizacji oprogramowania układowego.
-    * Rozpoczęcie wysyłania danych telemetrycznych.
+    * Konfigurowanie programu obsługi dla żądanych właściwości.
+    * Wyślij zgłoszone właściwości.
+    * Zarejestruj programy obsługi dla metod bezpośrednich. W przykładzie użyto oddzielnego programu obsługi dla metody bezpośredniej aktualizacji oprogramowania układowego.
+    * Rozpocznij wysyłanie danych telemetrycznych.
 
       ```javascript
       client.open(function (err) {
@@ -328,7 +328,7 @@ Upewnij się, że [Node.js](https://nodejs.org/) wersji 4.0.0 lub nowszy jest za
       });
       ```
 
-1. Czy zapisać zmiany **remote_monitoring.js** pliku.
+1. Zapisz zmiany w pliku **remote_monitoring.js.**
 
 1. Aby uruchomić przykładową aplikację, uruchom następujące polecenie w wierszu polecenia:
 

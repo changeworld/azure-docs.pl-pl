@@ -15,10 +15,10 @@ ms.date: 07/24/2018
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 30f71432ca008b87bddfb253f23ae3cef0ac390d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77020186"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Zarządzanie zasobami usługi Batch przy użyciu interfejsu wiersza polecenia platformy Azure
@@ -62,7 +62,7 @@ Aby używać interfejsu wiersza polecenia platformy Azure z usługą Batch, nale
 Istnieje kilka różnych sposobów logowania się na platformie Azure. Opisano je szczegółowo w artykule [Logowanie się za pomocą interfejsu wiersza polecenia platformy Azure](/cli/azure/authenticate-azure-cli):
 
 1. [Logowanie interakcyjne](https://docs.microsoft.com/cli/azure/authenticate-azure-cli). Zaloguj się interakcyjnie, gdy samodzielnie uruchamiasz polecenia interfejsu wiersza polecenia platformy Azure w wierszu polecenia.
-2. [Logowanie za pomocą jednostki usługi](https://docs.microsoft.com/cli/azure/authenticate-azure-cli). Zaloguj się za pomocą jednostki usługi, gdy uruchamiasz polecenia interfejsu wiersza polecenia platformy Azure za pomocą skryptu lub aplikacji.
+2. [Zaloguj się za pomocą jednostki usługi](https://docs.microsoft.com/cli/azure/authenticate-azure-cli). Zaloguj się za pomocą jednostki usługi, gdy uruchamiasz polecenia interfejsu wiersza polecenia platformy Azure za pomocą skryptu lub aplikacji.
 
 Na potrzeby tego artykułu wyjaśnimy, jak zalogować się interakcyjnie. W wierszu polecenia wpisz [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login):
 
@@ -97,7 +97,7 @@ Dostępne są dwie opcje uwierzytelnienia na koncie usługi Batch:
     az batch account login -g myresource group -n mybatchaccount
     ```
 
-- **Przy użyciu uwierzytelniania klucza wspólnego**
+- **Za pomocą uwierzytelniania klucza udostępnionego**
 
     [Uwierzytelnianie klucza wspólnego](/rest/api/batchservice/authenticate-requests-to-the-azure-batch-service#authentication-via-shared-key) polega na uwierzytelnianiu poleceń interfejsu wiersza polecenia platformy Azure dla usługi Batch za pomocą kluczy dostępu konta.
 
@@ -129,7 +129,7 @@ az batch pool create my_batch_pool.json
 
 Możesz wykonać większość operacji tworzenia zasobów usługi Batch, korzystając wyłącznie z opcji wiersza polecenia, niemniej niektóre funkcje wymagają określenia pliku w formacie JSON zawierającego szczegółowe informacje o zasobie. Przykładowo musisz użyć pliku JSON, jeśli chcesz określić pliki zasobu dla zadania rozpoczęcia.
 
-Aby wyświetlić składnię JSON wymaganą do utworzenia zasobu, zapoznaj się z dokumentacją [interfejsu API REST usługi Batch][rest_api] . Każdy temat „Dodawanie *typu zasobu*” w dokumentacji interfejsu API REST zawiera przykładowe skrypty JSON do tworzenia zasobu. Tych przykładowych skryptów JSON można używać jako szablonów dla plików JSON do użytku z interfejsem wiersza polecenia platformy Azure. Na przykład aby wyświetlić składnię JSON dla tworzenia puli, zobacz [Dodawanie puli do konta][rest_add_pool].
+Aby zapoznać się ze składnią pliku JSON wymaganego do utworzenia zasobu, skorzystaj z dokumentacji [interfejsu API REST usługi Batch][rest_api]. Każdy temat „Dodawanie *typu zasobu*” w dokumentacji interfejsu API REST zawiera przykładowe skrypty JSON do tworzenia zasobu. Tych przykładowych skryptów JSON można używać jako szablonów dla plików JSON do użytku z interfejsem wiersza polecenia platformy Azure. Aby na przykład zapoznać się ze składnią pliku JSON do tworzenia puli, zobacz [Dodawanie puli do konta][rest_add_pool].
 
 Aby uzyskać przykładowy skrypt określający plik JSON, zobacz [Uruchamianie zadań i zadań podrzędnych za pomocą usługi Batch](./scripts/batch-cli-sample-run-job.md).
 
@@ -161,7 +161,7 @@ Aby uzyskać przykładowy skrypt ilustrujący używanie klauzuli OData, zobacz [
 
 Aby uzyskać więcej informacji o wykonywaniu wydajnych zapytań listy przy użyciu klauzul OData, zobacz [Efektywne wysyłanie zapytań do usługi Azure Batch](batch-efficient-list-queries.md).
 
-## <a name="troubleshooting-tips"></a>Porady dotyczące rozwiązywania problemów
+## <a name="troubleshooting-tips"></a>Wskazówki dotyczące rozwiązywania problemów
 
 Poniższe porady mogą być pomocne w przypadku rozwiązywania problemów związanych z interfejsem wiersza polecenia platformy Azure:
 

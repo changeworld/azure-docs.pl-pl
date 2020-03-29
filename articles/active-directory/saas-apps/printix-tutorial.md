@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Printix | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Printix.
+title: 'Samouczek: Integracja usługi Azure Active Directory z printix | Dokumenty firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a printix.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,59 +16,59 @@ ms.date: 06/29/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e883833f7998c073b574c892ed5c7777e01faab4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "62111459"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-printix"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Printix
+# <a name="tutorial-azure-active-directory-integration-with-printix"></a>Samouczek: Integracja usługi Azure Active Directory z printixem
 
-W tym samouczku dowiesz się, jak zintegrować Printix w usłudze Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować Printix z usługą Azure Active Directory (Azure AD).
 
-Integrowanie Printix z usługą Azure AD zapewnia następujące korzyści:
+Integracja printix z usługą Azure AD zapewnia następujące korzyści:
 
-- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do Printix
-- Umożliwia użytkownikom automatyczne pobieranie zalogowanych do Printix (logowanie jednokrotne) przy użyciu konta usługi Azure AD
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
+- Możesz kontrolować w usłudze Azure AD, który ma dostęp do Printix
+- Możesz włączyć użytkownikom automatyczne logowanie do Printix (logowanie jednokrotne) za pomocą swoich kont usługi Azure AD
+- Możesz zarządzać kontami w jednej centralnej lokalizacji - witrynie Azure portal
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej szczegółów na temat integracji aplikacji SaaS z usługą Azure AD, zobacz, [co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą Printix, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z printix, potrzebne są następujące elementy:
 
 - Subskrypcji usługi Azure AD
-- Printix logowanie jednokrotne włączone subskrypcji
+- Subskrypcja z obsługą logowania jednokrotnego Printix
 
 > [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
+> Nie zalecamy używania środowiska produkcyjnego do testowania czynności opisanych w tym samouczku.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
 - Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+- Jeśli nie masz środowiska testowego usługi Azure AD, możesz uzyskać miesięczną wersję próbną [tutaj.](https://azure.microsoft.com/pricing/free-trial/)
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
+W tym samouczku testujesz logowanie jednokrotne usługi Azure AD w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie Printix z galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 ## <a name="adding-printix-from-the-gallery"></a>Dodawanie Printix z galerii
-Aby skonfigurować integrację Printix w usłudze Azure AD, należy dodać Printix z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację Printix z usługą Azure AD, należy dodać Printix z galerii do listy zarządzanych aplikacji SaaS.
 
 **Aby dodać Printix z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**. 
 
     ![Usługa Active Directory][1]
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacji Enterprise**. Następnie przejdź do **wszystkich aplikacji**.
 
     ![Aplikacje][2]
     
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
     ![Aplikacje][3]
 
@@ -76,166 +76,166 @@ Aby skonfigurować integrację Printix w usłudze Azure AD, należy dodać Print
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/printix-tutorial/tutorial_printix_search.png)
 
-1. W panelu wyników wybierz **Printix**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+1. W panelu wyników wybierz pozycję **Printix**, a następnie kliknij przycisk **Dodaj,** aby dodać aplikację.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/printix-tutorial/tutorial_printix_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
-W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą Printix w oparciu o użytkownika testu o nazwie "Britta Simon".
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+W tej sekcji można skonfigurować i przetestować azure ad logowania jednokrotnego z Printix na podstawie użytkownika testowego o nazwie "Britta Simon".
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w Printix do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Printix musi można ustanowić.
+Aby usługa Azure AD działała z logiem pojedynczym, musi wiedzieć, czym jest użytkownik w programie Printix dla użytkownika w usłudze Azure AD. Innymi słowy należy ustanowić relację łącza między użytkownikiem usługi Azure AD a powiązanym użytkownikiem w printix.
 
-W Printix, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
+W Printix przypisz wartość **nazwy użytkownika** w usłudze Azure AD jako wartość nazwy **użytkownika,** aby ustanowić relację łącza.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Printix, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD za pomocą funkcji Printix, należy wykonać następujące bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego Printix](#creating-a-printix-test-user)**  — aby odpowiednikiem Britta Simon w Printix połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configuring-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)** — do testowania logowania jednokrotnego usługi Azure AD za pomocą Britta Simon.
+1. **[Tworzenie użytkownika testowego Printix](#creating-a-printix-test-user)** — aby mieć odpowiednik Britta Simon w Printix, który jest połączony z reprezentacją użytkownika usługi Azure AD.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)** — aby umożliwić Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji Printix.
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure portal i konfigurujesz logowanie jednokrotne w aplikacji Printix.
 
-**Aby skonfigurować usługę Azure AD logowanie jednokrotne z Printix, wykonaj następujące czynności:**
+**Aby skonfigurować logowanie jednookrotne usługi Azure AD za pomocą funkcji Printix, wykonaj następujące czynności:**
 
-1. W witrynie Azure portal na **Printix** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie Azure portal na stronie integracji aplikacji **Printix** kliknij pozycję **Logowanie jednokrotne**.
 
     ![Konfigurowanie logowania jednokrotnego][4]
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+1. W oknie dialogowym **logowania jednokrotnego** wybierz **opcję Tryb** jako **logowanie oparte na SAML,** aby włączyć logowanie jednokrotne.
  
     ![Konfigurowanie logowania jednokrotnego](./media/printix-tutorial/tutorial_printix_samlbase.png)
 
-1. Na **Printix domena i adresy URL** sekcji, wykonaj następujące czynności:
+1. W sekcji **Domeny i adresy URL Printix** wykonaj następujące czynności:
 
     ![Konfigurowanie logowania jednokrotnego](./media/printix-tutorial/tutorial_printix_url.png)
 
-    W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<subdomain>.printix.net`
+    W polu **tekstowym Logowania adres URL** wpisz adres URL przy użyciu następującego wzorca:`https://<subdomain>.printix.net`
 
     > [!NOTE] 
-    > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Printix](mailto:support@printix.net) można uzyskać wartość. 
+    > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z [zespołem pomocy technicznej klienta Printix,](mailto:support@printix.net) aby uzyskać wartość. 
  
-1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
+1. W sekcji **Certyfikat podpisywania SAML** kliknij pozycję **Metadane XML,** a następnie zapisz plik metadanych na komputerze.
 
     ![Konfigurowanie logowania jednokrotnego](./media/printix-tutorial/tutorial_printix_certificate.png) 
 
-1. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Save** (Zapisz).
 
     ![Konfigurowanie logowania jednokrotnego](./media/printix-tutorial/tutorial_general_400.png)
 
-1. Logowanie jednokrotne do swojej dzierżawy Printix jako administrator.
+1. Zaloguj się do dzierżawy Printix jako administrator.
 
-1. W menu u góry kliknij ikonę w prawym górnym rogu i wybierz "**uwierzytelniania**".
+1. W menu u góry kliknij ikonę w prawym górnym rogu i wybierz "**Uwierzytelnianie**".
    
     ![Konfigurowanie logowania jednokrotnego](./media/printix-tutorial/tutorial_printix_06.png)
 
-1. Na **instalacji** zaznacz **uwierzytelniania Włącz Azure/Office 365**
+1. Na karcie **Ustawienia** wybierz pozycję **Włącz uwierzytelnianie platformy Azure/Usługi Office 365**
    
     ![Konfigurowanie logowania jednokrotnego](./media/printix-tutorial/tutorial_printix_07.png)
 
-1. Na **Azure** kartę, wprowadź adres URL metadanych Federacji, aby pole tekstowe z "**dokument metadanych Federacji**". 
+1. Na karcie **Azure** wprowadź adres URL metadanych federacji do pola tekstowego "**Dokument metadanych federacji**". 
 
-    Dołączanie pliku xml metadanych, który został pobrany z usługi Azure AD do [zespołem pomocy technicznej Printix](mailto:support@printix.net). Następnie przekaż plik xml i podaj adres URL metadanych federacji.
+    Dołącz plik xml metadanych pobrany z usługi Azure AD do [zespołu pomocy technicznej Printix](mailto:support@printix.net). Następnie przekazują plik xml i podają adres URL metadanych federacji.
    
     ![Konfigurowanie logowania jednokrotnego](./media/printix-tutorial/tutorial_printix_08.png)
    
-1. Kliknij przycisk "**Test**"przycisk i kliknij przycisk"**OK**" przycisk, jeśli test zakończył się pomyślnie.
+1. Kliknij przycisk **"Testuj"** i kliknij przycisk "**OK**", jeśli test się powiódł.
    
-     Usługa Azure active directory stronie będzie wyświetlana po kliknięciu przycisku **test** przycisku. "Powiodło się test" poniżej oznacza, że po wprowadzeniu poświadczeń konta testowych platformy Azure, zostanie on komunikat "Ustawienia sprawdzona". Następnie kliknij przycisk **OK** przycisku.
+     Strona usługi Azure active directory zostanie wyświetlona po kliknięciu przycisku **testu.** "Test zakończył się pomyślnie" w tym miejscu oznacza, że po wprowadzeniu poświadczeń konta testowego platformy Azure pojawi się komunikat "Ustawienia przetestowane OK". Następnie kliknij przycisk **OK.**
    
     ![Konfigurowanie logowania jednokrotnego](./media/printix-tutorial/tutorial_printix_09.png)
 
-1. Kliknij przycisk **Zapisz** znajdujący się na "**uwierzytelniania**" strony.
+1. Kliknij przycisk **Zapisz** na stronie **"Uwierzytelnianie".**
 
 
 > [!TIP]
-> Teraz możesz korzystać ze zwięzłej wersji tych instrukcji w witrynie [Azure Portal](https://portal.azure.com) podczas konfigurowania aplikacji.  Po dodaniu tej aplikacji z sekcji **Active Directory > Aplikacje dla przedsiębiorstw** wystarczy kliknąć kartę **Logowanie jednokrotne** i uzyskać dostęp do osadzonej dokumentacji za pośrednictwem sekcji  **Konfiguracja** w dolnej części strony. Dalsze informacje o funkcji dokumentacji osadzonej można znaleźć tutaj: [Osadzona dokumentacja usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teraz możesz korzystać ze zwięzłej wersji tych instrukcji w witrynie [Azure Portal](https://portal.azure.com) podczas konfigurowania aplikacji.  Po dodaniu tej aplikacji z sekcji **Active Directory > Aplikacje dla przedsiębiorstw** wystarczy kliknąć kartę **Logowanie jednokrotne** i uzyskać dostęp do osadzonej dokumentacji za pośrednictwem sekcji ** Konfiguracja** w dolnej części strony. Więcej informacji na temat osadzonej dokumentacji można znaleźć tutaj: [Dokumentacja osadzona usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-![Utwórz użytkownika usługi Azure AD][100]
+![Tworzenie użytkownika usługi Azure AD][100]
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące kroki:**
 
-1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
+1. W **witrynie Azure portal**w lewym okienku nawigacji kliknij ikonę **usługi Azure Active Directory.**
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/printix-tutorial/create_aaduser_01.png) 
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **pozycję Użytkownicy i grupy** oraz kliknij pozycję Wszyscy **użytkownicy**.
     
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/printix-tutorial/create_aaduser_02.png) 
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
+1. Aby otworzyć okno dialogowe **Użytkownik,** kliknij przycisk **Dodaj** u góry okna dialogowego.
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/printix-tutorial/create_aaduser_03.png) 
 
-1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
+1. Na stronie Okno dialogowe **Użytkownik** wykonaj następujące czynności:
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/printix-tutorial/create_aaduser_04.png) 
 
-    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
+    a. W polach tekstowych **Nazwa** wpisz **BrittaSimon**.
 
-    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
+    b. W polach tekstowych **Nazwa użytkownika** wpisz **adres e-mail** brittaSimon.
 
-    c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
+    d. Wybierz **pozycję Pokaż hasło** i zapisz wartość **hasła**.
 
-    d. Kliknij pozycję **Utwórz**.
+    d. Kliknij przycisk **Utwórz**.
  
 ### <a name="creating-a-printix-test-user"></a>Tworzenie użytkownika testowego Printix
 
-Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w Printix. Printix obsługę just-in-time, który jest domyślnie włączona.
+Celem tej sekcji jest utworzenie użytkownika o nazwie Britta Simon w Printix. Printix obsługuje just-in-time inicjowania obsługi administracyjnej, która jest domyślnie włączona.
 
-W tej sekcji nie musisz niczego robić. Nowy użytkownik jest tworzony podczas próby dostępu Printix, jeśli go jeszcze nie istnieje. 
+W tej sekcji nie musisz niczego robić. Nowy użytkownik jest tworzony podczas próby uzyskania dostępu do Printix, jeśli jeszcze nie istnieje. 
 
 > [!NOTE]
-> Jeśli potrzebujesz ręcznie utworzyć użytkownika, musisz skontaktować się z [zespołem pomocy technicznej Printix](mailto:support@printix.net).
+> Jeśli chcesz ręcznie utworzyć użytkownika, należy skontaktować się z [zespołem pomocy technicznej Printix](mailto:support@printix.net).
 > 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do Printix.
+W tej sekcji można włączyć Britta Simon do korzystania z azure logowania jednokrotnego, przyznając dostęp do Printix.
 
-![Przypisz użytkownika][200] 
+![Przypisywanie użytkownika][200] 
 
-**Aby przypisać Britta Simon Printix, wykonaj następujące czynności:**
+**Aby przypisać Britta Simon do Printix, wykonaj następujące czynności:**
 
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+1. W witrynie Azure portal otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacji przedsiębiorstwa,** a następnie kliknij pozycję **Wszystkie aplikacje**.
 
-    ![Przypisz użytkownika][201] 
+    ![Przypisywanie użytkownika][201] 
 
-1. Na liście aplikacji wybierz **Printix**.
+1. Na liście aplikacji wybierz **printix**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/printix-tutorial/tutorial_printix_app.png) 
 
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij pozycję **Użytkownicy i grupy**.
 
-    ![Przypisz użytkownika][202] 
+    ![Przypisywanie użytkownika][202] 
 
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Add** (Dodaj). Następnie wybierz **pozycję Użytkownicy i grupy** w oknie dialogowym Dodawanie **przydziału.**
 
-    ![Przypisz użytkownika][203]
+    ![Przypisywanie użytkownika][203]
 
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **Britta Simon** na liście Użytkownicy.
 
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **Wybierz** w oknie dialogowym **Użytkownicy i grupy.**
 
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Przypisz** w oknie dialogowym **Dodawanie przydziału.**
     
 ### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Printix w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji Printix.
+Po kliknięciu kafelka Printix w Panelu dostępu należy automatycznie zalogować się do aplikacji Printix.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 

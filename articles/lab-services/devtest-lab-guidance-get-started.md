@@ -1,6 +1,6 @@
 ---
-title: Popularne scenariusze dotyczące korzystania z usługi Azure DevTest Labs
-description: Ten artykuł zawiera podstawowe scenariusze przy użyciu usługi Azure DevTest Labs i dwie ścieżki głównej, aby rozpocząć korzystanie z usługi w Twojej organizacji.
+title: Popularne scenariusze korzystania z laboratoriów DevTest Azure
+description: Ten artykuł zawiera podstawowe scenariusze korzystania z usługi Azure DevTest Labs i dwie ogólne ścieżki, aby rozpocząć korzystanie z usługi w organizacji.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,76 +14,76 @@ ms.date: 04/01/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 8736ba4c24ac4c8f8d84345028d1cadfdef38697
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60773812"
 ---
-# <a name="popular-scenarios-for-using-azure-devtest-labs"></a>Popularne scenariusze dotyczące korzystania z usługi Azure DevTest Labs
-W zależności od potrzeb organizacji aby spełnić różne wymagania można skonfigurować DevTest Labs.  W tym artykule omówiono popularne scenariusze. Każdy scenariusz obejmuje korzyści wprowadzone za pomocą usługi DevTest Labs i zasobów na potrzeby implementowania tych scenariuszy.  
+# <a name="popular-scenarios-for-using-azure-devtest-labs"></a>Popularne scenariusze korzystania z laboratoriów DevTest Azure
+W zależności od potrzeb przedsiębiorstwa devtest labs można skonfigurować tak, aby spełniała różne wymagania.  W tym artykule omówiono popularne scenariusze. Każdy scenariusz obejmuje korzyści wniesione przy użyciu DevTest Labs i zasobów do zaimplementowania tych scenariuszy.  
 
-- Komputery stacjonarne dla deweloperów
+- Komputery dla deweloperów
 - Środowiska testowe
-- Sesje szkoleniowe, praktyczne laboratoria oraz hackathonów
-- Odpytywanie w trybie piaskownicy
+- Sesje szkoleniowe, praktyczne laboratoria i hackathony
+- Dochodzenia w trybie piaskownicy
 - Laboratorium na potrzeby zajęć
 
-## <a name="developer-desktops"></a>Komputery stacjonarne dla deweloperów
-Deweloperzy często mają różne wymagania dotyczące komputerach deweloperskich dla różnych projektów. Za pomocą usługi DevTest Labs deweloperzy mają dostęp do maszyn wirtualnych na żądanie, które są skonfigurowane do potrzeb ich najbardziej typowych scenariuszy. DevTest Labs zapewnia następujące korzyści:
+## <a name="developer-desktops"></a>Komputery dla deweloperów
+Deweloperzy często mają różne wymagania dotyczące maszyn deweloperskich dla różnych projektów. W laboratoriach DevTest Labs deweloperzy mogą mieć dostęp do maszyn wirtualnych na żądanie, które są skonfigurowane tak, aby odpowiadały ich najbardziej typowym scenariuszom. DevTest Labs zapewnia następujące korzyści:
 
-- Organizacje mogą przydzielać wspólnej komputerach deweloperskich, zapewnienie spójności między zespołami.
-- Deweloperzy mogą szybko inicjować obsługę swoich komputerach deweloperskich na żądanie lub [oświadczenia istniejącej wstępnie skonfigurowane maszyny](devtest-lab-add-claimable-vm.md).
-- Deweloperzy mogą aprowizować zasoby w taki sposób, Samoobsługowe bez uprawnienia na poziomie subskrypcji.
-- IT lub Administratorzy mogą [Pre-define topologią sieci](devtest-lab-configure-vnet.md) i deweloperzy mogą bezpośrednio używać go w prosty i intuicyjny sposób bez konieczności specjalnego dostępu.
-- Deweloperzy mogą łatwo [dostosować](devtest-lab-add-vm.md#add-an-existing-artifact-to-a-vm) ich rozwoju maszyn, zgodnie z potrzebami.
-- Administratorzy mogą kontrolować koszty za zapewnienie, że:
-    - Deweloperzy [nie można pobrać więcej maszyn wirtualnych](devtest-lab-set-lab-policy.md#set-virtual-machines-per-user) niż jest to wymagane do tworzenia aplikacji
-    - [Maszyny wirtualne są zamykane](devtest-lab-set-lab-policy.md#set-auto-shutdown) kiedy nieużywany
-    - Tylko [umożliwiając podzbiór rozmiarów wystąpień maszyn wirtualnych](devtest-lab-set-lab-policy.md#set-allowed-virtual-machine-sizes) do określonych laboratoriów
-    - [Zarządzanie cele kosztów i powiadomienia](devtest-lab-configure-cost-management.md) w każdym środowisku laboratoryjnym.
+- Organizacje mogą zapewnić wspólne maszyny programistyczne zapewniające spójność między zespołami.
+- Deweloperzy mogą szybko aprowizować swoje maszyny programistyczne na żądanie lub [ubiegać się o istniejącą wstępnie skonfigurowaną maszynę.](devtest-lab-add-claimable-vm.md)
+- Deweloperzy mogą aprowizować zasoby w sposób samoobsługowy bez konieczności uprawnień na poziomie subskrypcji.
+- It lub administratorzy mogą [wstępnie zdefiniować topologię sieci,](devtest-lab-configure-vnet.md) a deweloperzy mogą bezpośrednio z niej korzystać w prosty i intuicyjny sposób bez konieczności specjalnego dostępu.
+- Deweloperzy mogą łatwo [dostosować](devtest-lab-add-vm.md#add-an-existing-artifact-to-a-vm) swoje maszyny programistyczne w razie potrzeby.
+- Administratorzy mogą kontrolować koszty, zapewniając, że:
+    - Deweloperzy [nie mogą uzyskać więcej maszyn wirtualnych](devtest-lab-set-lab-policy.md#set-virtual-machines-per-user) niż potrzebują do tworzenia
+    - [Maszyny wirtualne są zamykane,](devtest-lab-set-lab-policy.md#set-auto-shutdown) gdy nie są używane
+    - [Zezwalanie tylko na podzbiór rozmiarów wystąpień maszyny Wirtualnej](devtest-lab-set-lab-policy.md#set-allowed-virtual-machine-sizes) dla określonych laboratoriów
+    - [Zarządzanie kosztami docelowymi i powiadomieniami](devtest-lab-configure-cost-management.md) dla każdego laboratorium.
 
-Aby uzyskać dalsze informacje, zobacz [użycia usługi Azure DevTest Labs dla deweloperów](devtest-lab-developer-lab.md). 
+Aby uzyskać więcej informacji, zobacz [Korzystanie z laboratoriów Azure DevTest dla deweloperów.](devtest-lab-developer-lab.md) 
 
 ## <a name="test-environments"></a>Środowiska testowe
-Tworzenie i zarządzanie nimi środowisk testowych w całym przedsiębiorstwie, może wymagać znaczących nakładów pracy. Za pomocą usługi DevTest Labs środowiska testowe mogą być łatwo utworzone, zaktualizowane lub zduplikowane. Umożliwia ona zespoły mogą uzyskać dostęp do w pełni skonfigurowane środowisko, gdy jest to konieczne. W tym scenariuszu laboratorium ma następujące zalety:
+Tworzenie środowisk testowych i zarządzanie nimi w przedsiębiorstwie może wymagać znacznego wysiłku. W laboratoriach DevTest Labs środowiska testowe można łatwo tworzyć, aktualizować lub duplikować. Umożliwia zespołom dostęp do w pełni skonfigurowanego środowiska, gdy jest to potrzebne. W tym scenariuszu DevTest Labs zapewnia następujące korzyści:
 
-- Organizacje mogą przydzielać wspólnego środowiska testowe zapewnienie spójności między zespołami.
-- Testerzy można przetestować najnowszą wersję aplikacji, szybko aprowizując środowiska Windows i Linux za pomocą szablonów wielokrotnego użytku.
-- Administratorzy mogą połączyć z laboratorium do DevOps platformy Azure, która umożliwia realizację scenariuszy DevOps
-- Właściciele laboratorium można kontrolować koszty za zapewnienie, że:
-    - [Maszyny wirtualne w środowiskach są zamykane](devtest-lab-set-lab-policy.md#set-auto-shutdown) kiedy nieużywany
-    - Tylko [umożliwiając podzbiór rozmiarów wystąpień maszyn wirtualnych dla](devtest-lab-set-lab-policy.md#set-allowed-virtual-machine-sizes) określonych labs
-    - [Zarządzanie cele kosztów i powiadomienia](devtest-lab-configure-cost-management.md) w każdym środowisku laboratoryjnym.
+- Organizacje mogą zapewnić typowe środowiska testowe zapewniające spójność między zespołami.
+- Testerzy mogą testować najnowszą wersję swojej aplikacji, szybko inicjując aprowizowanie środowisk systemu Windows i Linux przy użyciu szablonów wielokrotnego użycia.
+- Administratorzy mogą połączyć laboratorium z platformą Azure DevOps, aby włączyć scenariusze DevOps
+- Właściciele laboratoriów mogą kontrolować koszty, zapewniając, że:
+    - [Maszyny wirtualne w środowiskach są zamykane,](devtest-lab-set-lab-policy.md#set-auto-shutdown) gdy nie są używane
+    - [Zezwalanie tylko na podzbiór rozmiarów wystąpień maszyny Wirtualnej dla](devtest-lab-set-lab-policy.md#set-allowed-virtual-machine-sizes) określonych laboratoriów
+    - [Zarządzanie kosztami docelowymi i powiadomieniami](devtest-lab-configure-cost-management.md) dla każdego laboratorium.
 
-Aby uzyskać więcej informacji, zobacz [środowisk testowych użycia usługi Azure DevTest Labs dla maszyn wirtualnych i PaaS](devtest-lab-test-env.md).
+Aby uzyskać więcej informacji, zobacz [Korzystanie z laboratoriów azure devtest dla środowisk testowych maszyn wirtualnych i paaS.](devtest-lab-test-env.md)
 
-## <a name="sandboxed-investigations"></a>Odpytywanie w trybie piaskownicy
-Deweloperzy często badanie różnych technologii lub projektowania infrastruktury. Domyślnie wszystkie środowiska utworzone za pomocą usługi DevTest Labs są tworzone w swojej grupie zasobów. Użytkownik usługi DevTest Labs uzyskuje dostęp tylko do odczytu do tych zasobów. Jednak dla deweloperów, którzy muszą mieć większą kontrolę, można zaktualizować ustawienie poziomie laboratorium zapewnienie [uprawnienia współautora](https://azure.microsoft.com/updates/azure-devtest-labs-view-and-set-access-rights-to-an-environment-rg/) użytkownikowi DevTest Labs źródłowy dla każdego środowiska, które tworzą.  Za pomocą usługi DevTest Labs deweloperzy mogą być podawane uprawnienia współautora automatycznie do środowisk, które tworzą w środowisku laboratoryjnym.  Ten scenariusz umożliwia deweloperom Dodawanie i/lub zmienić zasoby platformy Azure, zgodnie z zapotrzebowaniem w ich środowiskach deweloperskich lub testowania. [Koszty według zasobu](devtest-lab-configure-cost-management.md#view-cost-by-resource) strona pozwala na śledzenie kosztów dla każdego środowiska, używane do badania właścicielom laboratorium.
+## <a name="sandboxed-investigations"></a>Dochodzenia w trybie piaskownicy
+Deweloperzy często badają różne technologie lub projektowanie infrastruktury. Domyślnie wszystkie środowiska utworzone za pomocą DevTest Labs są tworzone we własnej grupie zasobów. Użytkownik DevTest Labs pobiera tylko dostęp do odczytu do tych zasobów. Jednak dla deweloperów, którzy potrzebują większej kontroli, ustawienie w całym laboratorium można zaktualizować, aby dać [prawa współautora](https://azure.microsoft.com/updates/azure-devtest-labs-view-and-set-access-rights-to-an-environment-rg/) do źródłowego devtest labs użytkownika dla każdego środowiska, które tworzą.  W laboratoriach DevTest Labs deweloperzy mogą automatycznie przyznać uprawnienia współautora do środowisk, które tworzą w laboratorium.  W tym scenariuszu deweloperzy mogą dodawać i/lub zmieniać zasoby platformy Azure, gdy są potrzebne do tworzenia lub testowania środowisk. Strona [koszt po zasobach](devtest-lab-configure-cost-management.md#view-cost-by-resource) umożliwia właścicielom laboratoriów śledzenie kosztów każdego środowiska używanego do badania.
 
-Aby uzyskać więcej informacji, zobacz [Ustawianie praw dostępu do grupy zasobów w środowisku](https://aka.ms/dtl-sandbox).
+Aby uzyskać więcej informacji, zobacz [Ustawianie praw dostępu do grupy zasobów środowiska](https://aka.ms/dtl-sandbox).
 
-## <a name="trainings-hands-on-labs-and-hackathons"></a>Szkolenia, praktycznym laboratoriom i hackathonów 
-Laboratorium Azure DevTest Labs działa jako kontener doskonałe przejściowy działań, takich jak warsztatów, warsztaty, szkoleniach lub hackathonów.  Usługa umożliwia tworzenie laboratorium, w którym mogą udostępniać szablony niestandardowe, które każdy szkoleniowych można użyć do utworzenia identyczne i wyizolowanego środowiska do trenowania. W tym scenariuszu laboratorium ma następujące zalety:
+## <a name="trainings-hands-on-labs-and-hackathons"></a>Szkolenia, praktyczne laboratoria i hackathony 
+Laboratorium w usłudze Azure DevTest Labs działa jako doskonały kontener dla działań przejściowych, takich jak warsztaty, praktyczne laboratoria, szkolenia lub hackathons.  Usługa umożliwia utworzenie laboratorium, w którym można podać niestandardowe szablony, których każdy stażysta może używać do tworzenia identycznych i odizolowanych środowisk do szkolenia. W tym scenariuszu DevTest Labs zapewnia następujące korzyści:
 
-- [Zasady](devtest-lab-set-lab-policy.md) upewnij się, Zaleć pobierać tylko liczby zasobów, takich jak maszyny wirtualne, które są im niezbędne.
-- Wstępnie skonfigurowany i utworzony maszyny są [zgłoszone](devtest-lab-add-claimable-vm.md) za pomocą jednej akcji z szkoleniowych.
-- Labs są udostępniane przez uzyskanie dostępu do Zaleć [adres URL dla laboratorium](devtest-lab-faq.md#how-do-i-share-a-direct-link-to-my-lab).
-- [Daty wygaśnięcia](devtest-lab-add-vm.md#steps-to-add-a-vm-to-a-lab-in-azure-devtest-labs) na maszynach wirtualnych upewnij się, że maszyny zostaną usunięte po są już potrzebne.
-- Łatwo [Usuń laboratorium](devtest-lab-delete-lab-vm.md#delete-a-lab) i wszystkie [powiązane zasoby](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) po zakończeniu szkolenia.
+- [Zasady](devtest-lab-set-lab-policy.md) zapewniają, że stażyści otrzymują tylko liczbę zasobów, takich jak maszyny wirtualne, których potrzebują.
+- Wstępnie skonfigurowane i utworzone maszyny są [zgłaszane](devtest-lab-add-claimable-vm.md) z pojedynczą akcją od stażysty.
+- Laboratoria są udostępniane stażystom, uzyskując dostęp do [adresu URL laboratorium.](devtest-lab-faq.md#how-do-i-share-a-direct-link-to-my-lab)
+- [Daty wygaśnięcia](devtest-lab-add-vm.md#steps-to-add-a-vm-to-a-lab-in-azure-devtest-labs) na maszynach wirtualnych zapewniają, że maszyny są usuwane po ich nie są już potrzebne.
+- Po zakończeniu szkolenia można łatwo [usunąć laboratorium](devtest-lab-delete-lab-vm.md#delete-a-lab) i wszystkie [powiązane zasoby.](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab)
 
-Aby uzyskać więcej informacji, zobacz [użycia usługi Azure DevTest Labs do trenowania](devtest-lab-training-lab.md).  
+Aby uzyskać więcej informacji, zobacz [Korzystanie z usługi Azure DevTest Labs do szkolenia.](devtest-lab-training-lab.md)  
 
-## <a name="proof-of-concept-vs-scaled-deployment"></a>Weryfikacja koncepcji a skalowanego wdrożenia
-Po podjęciu decyzji zapoznać się z usługi DevTest Labs, istnieją dwie ścieżki ogólnego do przodu: Weryfikacja koncepcji vs wdrożenia skalowany.  
+## <a name="proof-of-concept-vs-scaled-deployment"></a>Dowód koncepcji a skalowane wdrożenie
+Gdy zdecydujesz się eksplorować DevTest Labs, istnieją dwie ogólne ścieżki do przodu: Proof of Concept vs Scaled Deployment.  
 
-A **skalowania wdrożenia** składa się z tygodni/miesięcy, przeglądanie i planowania z celem wdrażania w usłudze DevTest Labs w całym przedsiębiorstwie, który ma setki lub tysiące deweloperów.
+**Skalowane wdrożenie** składa się z tygodni/miesięcy przeglądania i planowania z zamiarem wdrożenia DevTest Labs w całym przedsiębiorstwie, które ma setki lub tysiące deweloperów.
 
-A **weryfikacji koncepcji** wdrożenia koncentruje się na najwięcej starań jeden zespół w celu ustanowienia wartość organizacji. Mogą być kuszące myśleć skalowanego wdrożenia, to podejście jest zwykle częściej niż weryfikacji koncepcji opcji nie powiedzie się. Dlatego zaleca się, możesz zacząć od małej, ucz się pierwszym zespołem, powtórz tej samej metody, przy użyciu dwóch lub trzech dodatkowych zespołów, a następnie Zaplanuj wdrożenia skalowanego oparty na wiedzy uzyskanej. Pomyślnie weryfikację koncepcji zaleca się, czy możesz wybrać jednego lub dwóch zespołów i określenie ich scenariuszy (vs Środowisko deweloperskie środowisk testowych), dokumentów ich bieżącego przypadki użycia i wdrażanie DevTest Labs.
+Wdrożenie **weryfikacji koncepcji** koncentruje się na skoncentrowanym wysiłku jednego zespołu w celu ustalenia wartości organizacyjnej. Chociaż może to być kuszące, aby myśleć o skalowane wdrożenie, podejście ma tendencję do niepowodzenia częściej niż dowód koncepcji opcji. W związku z tym zaleca się rozpoczęcie małych, uczyć się od pierwszego zespołu, powtórzyć to samo podejście z dwóch do trzech dodatkowych zespołów, a następnie zaplanować skalowanie wdrożenia na podstawie zdobytej wiedzy. Aby uzyskać pomyślny dowód koncepcji, zaleca się wybranie jednego lub dwóch zespołów i zidentyfikowanie ich scenariuszy (środowisko deweloperskie vs środowiska testowe), udokumentowanie ich bieżących przypadków użycia i wdrożenie laboratoriów DevTest.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Przeczytaj następujące artykuły:
 
 - [DevTest Labs — pojęcia](devtest-lab-concepts.md)
-- [Usługa DevTest Labs — często zadawane pytania](devtest-lab-faq.md)
+- [DevTest Labs – często zadawane pytania](devtest-lab-faq.md)
 

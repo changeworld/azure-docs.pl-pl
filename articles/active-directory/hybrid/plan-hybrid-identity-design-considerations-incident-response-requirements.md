@@ -1,6 +1,6 @@
 ---
-title: Projektowania tożsamości hybrydowej — wymagań dotyczących odpowiedzi na zdarzenia usługi Azure | Dokumentacja firmy Microsoft
-description: Określić możliwości monitorowania i raportowania dla rozwiązania tożsamości hybrydowej, które mogą zostać wykorzystane przez IT, aby podjąć działania w celu identyfikowania i Eliminuj potencjalne zagrożenia
+title: Projekt tożsamości hybrydowej — wymagania dotyczące reagowania na incydenty Platformy Azure | Dokumenty firmy Microsoft
+description: Określanie możliwości monitorowania i raportowania rozwiązania do tożsamości hybrydowej, które może być wykorzystane przez it do podejmowania działań w celu identyfikacji i łagodzenia potencjalnych zagrożeń
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,55 +18,55 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 52b5e37c29e4b3df3f171f683266b5d0a3e0c95d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67109274"
 ---
-# <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>Określanie wymagań dotyczących reagowania na zdarzenia, dla Twojego rozwiązania z tożsamością hybrydową
-Dużych i średnich organizacji najprawdopodobniej będą mieć [reagowania na zdarzenia zabezpieczeń](https://technet.microsoft.com/library/cc700825.aspx) mające na celu pomóc IT podjąć odpowiednie działania na poziomie wystąpienia zdarzenia. Systemu zarządzania tożsamościami jest ważnym elementem procesu reagowania na zdarzenia, ponieważ może służyć do pomocy w identyfikacji, kto wykonał określonej akcji w odniesieniu do obiektu docelowego. Rozwiązania z tożsamością hybrydową musi mieć możliwość zapewnienia możliwości monitorowania i raportowania, które mogą zostać wykorzystane przez IT, aby wykonać działania, aby identyfikować i minimalizować potencjalne zagrożenie. W ramach planu reagowania na zdarzenia typowe mają następujące fazy w ramach planu:
+# <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>Określanie wymagań dotyczących reagowania na zdarzenia dla rozwiązania tożsamości hybrydowej
+Duże lub średnie organizacje najprawdopodobniej będą miały reagowanie na [incydenty bezpieczeństwa,](https://technet.microsoft.com/library/cc700825.aspx) aby pomóc it w podejmowaniu działań odpowiednio do poziomu incydentu. System zarządzania tożsamościami jest ważnym składnikiem w procesie reagowania na incydenty, ponieważ może służyć do identyfikacji, kto wykonał określone działanie przeciwko obiektowi docelowemu. Rozwiązanie tożsamości hybrydowej musi być w stanie zapewnić funkcje monitorowania i raportowania, które mogą być wykorzystywane przez IT do podejmowania działań w celu identyfikacji i łagodzenia potencjalnego zagrożenia. W typowym planie reagowania na incydenty w ramach planu będą dostępne następujące fazy:
 
-1. Wstępną ocenę.
-2. Zdarzenia komunikacji.
-3. Formant uszkodzenia i zmniejszenia ryzyka.
-4. Identyfikacja, co było naruszenia i ważności.
-5. Zachowywanie dowodów.
-6. Powiadomienie do odpowiednich osób.
+1. Ocena wstępna.
+2. Komunikacja incydentów.
+3. Kontrola uszkodzeń i redukcja ryzyka.
+4. Identyfikacja tego, co było kompromisem i dotkliwością.
+5. Zachowanie dowodów.
+6. Powiadomienie odpowiednich stron.
 7. Odzyskiwanie systemu.
-8. Dokumentacja.
+8. Dokumentacji.
 9. Ocena szkód i kosztów.
-10. Proces i plan korekty.
+10. Proces i planowanie rewizji.
 
-Podczas identyfikacji czym one naruszenia i faza ważność, konieczne będzie zidentyfikowanie systemów których bezpieczeństwo mogło zostać naruszone, pliki, które były używane, aby ustalić istotność tych plików. System tożsamości hybrydowej powinno być możliwe spełnić te wymagania, aby ułatwić ustalenie użytkownika, który je wprowadził. 
+Podczas identyfikacji tego, co było kompromisem i fazy ważności, konieczne będzie zidentyfikowanie systemów, które zostały naruszone, pliki, które zostały dostępne i określić czułość tych plików. Hybrydowy system tożsamości powinien być w stanie spełnić te wymagania, aby ułatwić identyfikację użytkownika, który dokonał tych zmian. 
 
 ## <a name="monitoring-and-reporting"></a>Monitorowanie i raportowanie
-Wiele razy systemu tożsamości może również pomóc w fazie początkowej oceny głównie w przypadku, jeśli system ma wbudowane inspekcji i możliwości raportowania. Podczas początkowej oceny administrator IT musi być w stanie identyfikować podejrzane działania lub system powinien móc wywoływany go automatycznie na podstawie wstępnie skonfigurowane zadania. Wiele działań może wskazywać na atak możliwe, jednak w innych przypadkach źle skonfigurowany system może prowadzić do liczby wyników fałszywie dodatnich systemu wykrywania nieautoryzowanego dostępu. 
+Wiele razy system tożsamości może również pomóc w fazie wstępnej oceny, głównie wtedy, gdy system ma wbudowane funkcje inspekcji i raportowania. Podczas wstępnej oceny administrator IT musi być w stanie zidentyfikować podejrzaną aktywność lub system powinien być w stanie wyzwolić ją automatycznie na podstawie wstępnie skonfigurowanego zadania. Wiele działań może wskazywać na możliwy atak, jednak w innych przypadkach źle skonfigurowany system może prowadzić do wielu fałszywych alarmów w systemie wykrywania włamań. 
 
-Systemu zarządzania tożsamościami powinien pomóc administratorom IT do identyfikowania i raportowania tych podejrzanych działań. Zazwyczaj te wymagania techniczne mogą być spełnione przez wszystkie systemy monitorowania i równoważy możliwości raportowania, który można wyróżnić potencjalnych zagrożeń. Użyj pytania poniżej, aby ułatwić projektowanie swoje rozwiązania tożsamości hybrydowej, biorąc pod uwagę reagowania na zdarzenia wymagania:
+System zarządzania tożsamościami powinien pomóc administratorom IT w identyfikowaniu i zgłaszaniu tych podejrzanych działań. Zazwyczaj te wymagania techniczne mogą być spełnione przez monitorowanie wszystkich systemów i posiadające zdolność raportowania, które mogą wyróżnić potencjalne zagrożenia. Skorzystaj z poniższych pytań, aby zaprojektować rozwiązanie tożsamości hybrydowej, biorąc pod uwagę wymagania dotyczące reagowania na incydenty:
 
-* Czy Twoja firma występują reagowania na zdarzenia zabezpieczeń w miejscu?
-  * Jeśli tak, bieżącego systemu zarządzania tożsamościami służy jako część procesu?
-* Czy firma musi zidentyfikować prób logowania podejrzanych użytkowników na różnych urządzeniach?
-* Czy firma potrzebuje do wykrywania potencjalnych ze złamanymi zabezpieczeniami poświadczenia użytkownika?
-* Czy firma potrzebuje inspekcji dostępu i akcji użytkownika?
-* Czy firma musi wiedzieć, kiedy użytkownik resetuje hasła?
+* Czy Twoja firma ma reagowanie na incydenty bezpieczeństwa?
+  * Jeśli tak, czy bieżący system zarządzania tożsamościami jest używany jako część procesu?
+* Czy Twoja firma musi identyfikować podejrzane próby logowania od użytkowników na różnych urządzeniach?
+* Czy twoja firma musi wykryć potencjalne poświadczenia użytkownika, którego bezpieczeństwo zostało naruszone?
+* Czy Twoja firma musi przeprowadzić inspekcję dostępu i działań użytkownika?
+* Czy Twoja firma musi wiedzieć, kiedy użytkownik resetuje swoje hasło?
 
 ## <a name="policy-enforcement"></a>Wymuszanie zasad
-Podczas kontroli uszkodzenia i fazy zmniejszenie ryzyka ważne jest szybkie zmniejszenie rzeczywistych i potencjalnych skutków ataku. Tę akcję, która spowoduje przejście na tym etapie można zdecydować o WERSJA_POMOCNICZA i główne jeden. Dokładna będzie zależeć od Twojej organizacji i rodzaj ataku, który napotkasz. Wstępną ocenę zawarte na tym, że konto zostało naruszone, należy wymusić zasady, aby zablokować tego konta. To tylko jeden przykład, w którym będą wykorzystywane systemu zarządzania tożsamościami. Użyj pytania poniżej, aby ułatwić projektowanie rozwiązania z tożsamością hybrydową, biorąc pod uwagę sposób zostaną wymuszone zasady do reagowania na zdarzenie bieżące:
+Podczas kontroli uszkodzeń i fazy redukcji ryzyka ważne jest, aby szybko zmniejszyć rzeczywiste i potencjalne skutki ataku. To działanie, które podejmiesz w tym momencie, może zrobić różnicę między małoletnim a głównym. Dokładna odpowiedź będzie zależeć od twojej organizacji i charakteru ataku, z którą się zmierzysz. Jeśli wstępna ocena wykaże, że konto zostało przejęte, musisz wymusić zasady, aby zablokować to konto. To tylko jeden z przykładów, w którym system zarządzania tożsamościami będzie lewarował. Skorzystaj z poniższych pytań, aby zaprojektować rozwiązanie tożsamości hybrydowej, biorąc pod uwagę, w jaki sposób zasady będą egzekwowane w celu reagowania na trwający incydent:
 
-* Czy firma dysponuje zasady w miejscu aby uniemożliwić użytkownikom z dostępu do sieci w razie potrzeby?
-  * Jeśli tak, czy bieżący rozwiązanie można zintegrować z systemu zarządzania tożsamościami hybrydowego, który ma przyjąć?
-* Czy firma potrzebuje wymuszanie dostępu warunkowego dla użytkowników, którzy są w kwarantannie? 
+* Czy twoja firma ma zasady, aby uniemożliwić użytkownikom dostęp do sieci, jeśli to konieczne?
+  * Jeśli tak, czy obecne rozwiązanie integruje się z hybrydowym systemem zarządzania tożsamościami, który zamierzasz przyjąć?
+* Czy twoja firma musi wymusić dostęp warunkowy dla użytkowników poddanych kwarantannie? 
 
 > [!NOTE]
-> Pamiętaj zanotować wszystkie odpowiedzi i zrozumieć uzasadnienie. [Definiowanie strategii ochrony danych](plan-hybrid-identity-design-considerations-data-protection-strategy.md) zostanie umieszczona nad dostępne opcje oraz zalety/wady każdej opcji.  Po udzieleniu odpowiedzi na te pytania można wybrać opcję, która najlepiej pasujące do działalności potrzebuje.
+> Pamiętaj, aby zanotować wszystkie odpowiedzi i zrozumieć ich uzasadnienie. [Zdefiniuj strategię ochrony danych](plan-hybrid-identity-design-considerations-data-protection-strategy.md) będzie wykraczać poza dostępne opcje i zalety / wady każdej opcji.  Odpowiadając na te pytania, wybierzesz opcję, która najlepiej odpowiada Twoim potrzebom biznesowym.
 > 
 > 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 [Definiowanie strategii ochrony danych](plan-hybrid-identity-design-considerations-data-protection-strategy.md)
 
 ## <a name="see-also"></a>Zobacz też
-[Omówienie zagadnień dotyczących projektowania](plan-hybrid-identity-design-considerations-overview.md)
+[Omówienie zagadnień projektowych](plan-hybrid-identity-design-considerations-overview.md)
 

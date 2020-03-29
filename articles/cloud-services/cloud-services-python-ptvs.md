@@ -1,6 +1,6 @@
 ---
 title: Wprowadzenie do języka Python i usług Azure Cloud Services | Microsoft Docs
-description: Przegląd możliwości użycia narzędzi Python Tools for Visual Studio do tworzenia usług w chmurze platformy Azure, w tym ról sieci Web i procesu roboczego.
+description: Omówienie sposobu używania programu Python Tools for Visual Studio do tworzenia usług w chmurze platformy Azure, w tym ról Sieć Web i Proces roboczy.
 services: cloud-services
 documentationcenter: python
 author: tgore03
@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: b832831a2483b11a7a3c1942dd79065e8be65bf9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75360722"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Role Sieć Web i Proces roboczy języka Python z programem Python Tools for Visual Studio
@@ -21,17 +21,17 @@ ms.locfileid: "75360722"
 Ten artykuł zawiera omówienie sposobu użycia ról Sieć Web i Proces roboczy języka Python za pomocą programu [Python Tools for Visual Studio][Python Tools for Visual Studio]. Dowiedz się, jak używać programu Visual Studio do tworzenia i wdrażania podstawowej usługi w chmurze, która używa języka Python.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* [Program Visual Studio w wersji 2013, 2015 lub 2017](https://www.visualstudio.com/)
+* [Visual Studio 2013, 2015 lub 2017](https://www.visualstudio.com/)
 * [Python Tools for Visual Studio][Python Tools for Visual Studio] (PTVS)
-* [SDK Tools platformy Azure dla programu VS 2013][Azure SDK Tools for VS 2013] lub  
-[SDK Tools platformy Azure dla programu VS 2015][Azure SDK Tools for VS 2015] lub  
-[SDK Tools platformy Azure dla programu VS 2017][Azure SDK Tools for VS 2017]
+* [Azure SDK Tools for VS 2013][Azure SDK Tools for VS 2013] lub  
+[Azure SDK Tools for VS 2015][Azure SDK Tools for VS 2015] lub  
+[Azure SDK Tools for VS 2017][Azure SDK Tools for VS 2017]
 * [32-bitowe środowisko Python w wersji 2.7][Python 2.7 32-bit] lub [32-bitowe środowisko Python w wersji 3.5][Python 3.5 32-bit]
 
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 ## <a name="what-are-python-web-and-worker-roles"></a>Co to są role Sieć Web i Proces roboczy języka Python?
-Platforma Azure udostępnia trzy modele obliczeniowe na potrzeby uruchamiania aplikacji: [funkcja Web Apps w Azure App Service][execution model-web sites], [Virtual Machines platformy Azure][execution model-vms]i [Cloud Services platformy Azure][execution model-cloud services]. Wszystkie trzy modele obsługują język Python. Usługi Cloud Services, które obejmują role Sieć Web i Proces roboczy, udostępniają rozwiązanie typu *Platforma jako usługa (Platform as a Service, PaaS)* . W ramach usługi w chmurze rola internetowa zapewnia dedykowany serwer internetowy usług Internet Information Services (IIS), natomiast rola procesu roboczego może uruchamiać asynchroniczne, długotrwałe lub ciągłe zadania niezależne od działań użytkownika lub danych wejściowych.
+Platforma Azure udostępnia trzy modele obliczeniowe na potrzeby uruchamiania aplikacji: [funkcja Web Apps w usłudze Azure App Service][execution model-web sites], [Azure Virtual Machines][execution model-vms] i [Azure Cloud Services][execution model-cloud services]. Wszystkie trzy modele obsługują język Python. Usługi Cloud Services, które obejmują role Sieć Web i Proces roboczy, udostępniają rozwiązanie typu *Platforma jako usługa (Platform as a Service, PaaS)*. W ramach usługi w chmurze rola internetowa zapewnia dedykowany serwer internetowy usług Internet Information Services (IIS), natomiast rola procesu roboczego może uruchamiać asynchroniczne, długotrwałe lub ciągłe zadania niezależne od działań użytkownika lub danych wejściowych.
 
 Aby uzyskać więcej informacji, zobacz [Co to jest usługa w chmurze?]
 
@@ -323,7 +323,7 @@ W oknie danych wyjściowych jest wyświetlany postęp, a następnie zostanie wy�
 Wdrożenie potrwa kilka minut, a następnie rola internetowa i/lub procesu roboczego będą działać na platformie Azure.
 
 ### <a name="investigate-logs"></a>Sprawdzanie dzienników
-Po uruchomieniu maszyny wirtualnej usługi w chmurze i zainstalowaniu języka Python można sprawdzić dzienniki pod kątem komunikatów o błędach. Te dzienniki znajdują się w folderze **C:\Resources\Directory\\{rola}\LogFiles**. Plik **PrepPython.err.txt** zawiera co najmniej jeden błąd zwracany, gdy skrypt próbuje wykryć instalację środowiska Python, a plik **PipInstaller.err.txt** może zgłaszać błąd nieaktualnej wersji kodu pip.
+Po uruchomieniu maszyny wirtualnej usługi w chmurze i zainstalowaniu języka Python można sprawdzić dzienniki pod kątem komunikatów o błędach. Te dzienniki znajdują się w folderze **C:\Resources\Directory\\{role}\LogFiles.** Plik **PrepPython.err.txt** zawiera co najmniej jeden błąd zwracany, gdy skrypt próbuje wykryć instalację środowiska Python, a plik **PipInstaller.err.txt** może zgłaszać błąd nieaktualnej wersji kodu pip.
 
 ## <a name="next-steps"></a>Następne kroki
 Bardziej szczegółowe informacje na temat pracy z rolami Sieć Web i Proces roboczy w ramach programu Python Tools for Visual Studio zawiera dokumentacja programu PTVS:
@@ -332,7 +332,7 @@ Bardziej szczegółowe informacje na temat pracy z rolami Sieć Web i Proces rob
 
 Więcej szczegółów dotyczących korzystania z usług Azure na podstawie roli internetowej i roli procesu roboczego, na przykład używania usługi Azure Storage lub Service Bus, można znaleźć w następujących artykułach:
 
-* [Blob Service][Blob Service]
+* [Usługa obiektów blob][Blob Service]
 * [Table Service][Table Service]
 * [Queue Service][Queue Service]
 * [Kolejki usługi Service Bus][Service Bus Queues]

@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie rekordy kontroli dostępu w urządzeniu StorSimple | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak używać rekordów kontroli dostępu (rekordów Acr) do określenia hosta, którego można połączyć do woluminu na urządzeniu StorSimple.
+title: Zarządzanie rekordami kontroli dostępu w StorSimple | Dokumenty firmy Microsoft
+description: W tym artykule opisano sposób używania rekordów kontroli dostępu (ARS) do określania, które hosty mogą łączyć się z woluminem na urządzeniu StorSimple.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,119 +15,119 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: alkohli
 ms.openlocfilehash: ade7da25d2307a382c17e7a3cbb26b601c34ef78
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64693235"
 ---
-# <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>Usługa StorSimple Manager umożliwia zarządzanie rekordy kontroli dostępu
+# <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>Zarządzanie rekordami kontroli dostępu za pomocą usługi StorSimple Manager
 
 ## <a name="overview"></a>Omówienie
-Rekordy kontroli dostępu (rekordów Acr) umożliwiają określenie, która hostuje nawiązać woluminu na urządzeniu StorSimple. Rekordów Acr są ustawione na określonym woluminie i zawierają iSCSI nazwy kwalifikowanej (nazw IQN) z hostów. Gdy host próbuje nawiązać połączenie z woluminem, urządzenie sprawdza dostępność usługi ACR skojarzone z tego woluminu dla nazwy IQN, a jeśli istnieje dopasowanie, połączenie zostanie nawiązane. Kontrola dostępu rejestruje w **konfiguracji** sekcji bloku usługi Menedżer urządzeń StorSimple wyświetlić wszystkie rekordy kontroli dostępu przy użyciu odpowiednich nazw IQN hostów.
+Rekordy kontroli dostępu (ARS) umożliwiają określenie, które hosty mogą łączyć się z woluminem na urządzeniu StorSimple. ARS są ustawione na określony wolumin i zawierają nazwy kwalifikowane iSCSI (IQNs) hostów. Gdy host próbuje połączyć się z woluminem, urządzenie sprawdza program ACR skojarzony z tym woluminem dla nazwy IQN, a jeśli istnieje dopasowanie, nawiązywanie połączenia jest ustanawiane. Rekordy kontroli dostępu w sekcji **Konfiguracja** bloku usługi StorSimple Device Manager wyświetlają wszystkie rekordy kontroli dostępu z odpowiednimi nazwami IQN hostów.
 
-W tym samouczku opisano następujące typowe zadania związane z rejestru Azure container Registry:
+W tym samouczku wyjaśniono następujące typowe zadania związane z programem ACR:
 
-* Dodaj rekord kontroli dostępu
+* Dodawanie rekordu kontroli dostępu
 * Edytowanie rekordu kontroli dostępu
 * Usuwanie rekordu kontroli dostępu
 
 > [!IMPORTANT]
-> * Podczas przypisywania rejestru Azure container Registry do woluminu, powinien zachować ostrożność, że wolumin nie jest jednocześnie dostępna przez więcej niż jeden host nieklastrowany, ponieważ może to spowodować uszkodzenie woluminu.
-> * Podczas usuwania rejestru Azure container Registry z woluminu, upewnij się, że odpowiadający mu host nie uzyskuje dostęp do woluminu, ponieważ usunięcie może spowodować zakłócenia odczytu i zapisu.
+> * Podczas przypisywania usługi ACR do woluminu należy zadbać o to, aby wolumin nie był jednocześnie uzyskiwał dostęp do woluminu przez więcej niż jeden host nieklastrowany, ponieważ może to spowodować uszkodzenie woluminu.
+> * Podczas usuwania usługi ACR z woluminu upewnij się, że odpowiedni host nie uzyskuje dostępu do woluminu, ponieważ usunięcie może spowodować zakłócenie odczytu i zapisu.
 
-## <a name="get-the-iqn"></a>Pobieranie nazwy IQN
+## <a name="get-the-iqn"></a>Pobierz IQN
 
-Wykonaj poniższe kroki, aby pobieranie nazwy IQN hosta z systemem Windows z systemem Windows Server 2012.
+Wykonaj następujące czynności, aby uzyskać funkcję IQN hosta systemu Windows z systemem Windows Server 2012.
 
 [!INCLUDE [storsimple-get-iqn](../../includes/storsimple-get-iqn.md)]
 
 
-## <a name="add-an-access-control-record"></a>Dodaj rekord kontroli dostępu
-Możesz użyć **konfiguracji** sekcji w bloku usługi Menedżer urządzeń StorSimple do dodawania rekordów Acr. Zazwyczaj jeden ACR zostanie skojarzony z jednego woluminu.
+## <a name="add-an-access-control-record"></a>Dodawanie rekordu kontroli dostępu
+Użyj **konfiguracji** sekcji w StorSimple Device Manager bloku usługi, aby dodać ARS. Zazwyczaj jeden ACR jest kojarzyny z jednym woluminem.
 
-Wykonaj poniższe kroki, aby dodać rekord ACR.
+Wykonaj następujące kroki, aby dodać acr.
 
-#### <a name="to-add-an-acr"></a>Aby dodać rekord ACR
+#### <a name="to-add-an-acr"></a>Aby dodać acr
 
-1. Przejdź do usługi Menedżer urządzeń StorSimple, kliknij dwukrotnie nazwę usługi, a następnie w ramach **konfiguracji** , kliknij przycisk **rekordy kontroli dostępu**.
-2. W **rekordy kontroli dostępu** bloku kliknij **+ Dodaj ACR**.
+1. Przejdź do usługi StorSimple Device Manager, kliknij dwukrotnie nazwę usługi, a następnie w sekcji **Konfiguracja** kliknij pozycję **Rekordy kontroli dostępu**.
+2. W bloku **Rekordy kontroli dostępu** kliknij przycisk + Dodaj program **ACR**.
 
-    ![Kliknij przycisk Dodaj, rejestru Azure container Registry](./media/storsimple-8000-manage-acrs/createacr1.png)
+    ![Kliknij dodaj ACR](./media/storsimple-8000-manage-acrs/createacr1.png)
 
-3. W **Dodawanie rekordu ACR** blok, wykonaj następujące czynności:
+3. W bloku **Dodaj ACR** wykonaj następujące czynności:
 
-    1. Podaj nazwę dla rekordu ACR.
+    1. Podaj nazwę usługi ACR.
     
-    2. Podaj nazwę IQN hosta Windows Server w ramach **iSCSI Nazwa inicjatora (IQN)** .
+    2. Podaj nazwę IQN hosta systemu Windows Server w obszarze **Nazwa inicjatora iSCSI (IQN)**.
 
-    3. Kliknij przycisk **Dodaj** do tworzenia usługi ACR.
+    3. Kliknij **przycisk Dodaj,** aby utworzyć acr.
 
-        ![Kliknij przycisk Dodaj, rejestru Azure container Registry](./media/storsimple-8000-manage-acrs/createacr2.png)
+        ![Kliknij dodaj ACR](./media/storsimple-8000-manage-acrs/createacr2.png)
 
-4.  Nowo dodanego rekordu ACR zostanie wyświetlona na tabelarycznej liście rekordów Acr.
+4.  Nowo dodany ACR będzie wyświetlany na tabelarycznej liście ARS.
 
-    ![Kliknij przycisk Dodaj, rejestru Azure container Registry](./media/storsimple-8000-manage-acrs/createacr5.png)
+    ![Kliknij dodaj ACR](./media/storsimple-8000-manage-acrs/createacr5.png)
 
 
 ## <a name="edit-an-access-control-record"></a>Edytowanie rekordu kontroli dostępu
-Możesz użyć **konfiguracji** sekcji w bloku usługi Menedżer urządzeń StorSimple do edytowania rekordów Acr.
+Do edycji usług ARS należy użyć sekcji **Konfiguracja** w bloku usługi StorSimple Device Manager.
 
 > [!NOTE]
-> Zaleca się, że modyfikować tylko tych rekordów Acr, które nie są obecnie w użyciu. Aby edytować rekord ACR, skojarzone z woluminem, który jest aktualnie używany, należy najpierw wykonać wolumin w tryb offline.
+> Zaleca się modyfikowanie tylko tych ARS, które obecnie nie są używane. Aby edytować acr skojarzone z woluminem, który jest obecnie używany, należy najpierw przełącz wolumin do trybu offline.
 
-Wykonaj poniższe kroki, aby edytować rejestr ACR.
+Wykonaj następujące kroki, aby edytować acr.
 
 #### <a name="to-edit-an-access-control-record"></a>Aby edytować rekord kontroli dostępu
-1.  Przejdź do usługi Menedżer urządzeń StorSimple, kliknij dwukrotnie nazwę usługi, a następnie w ramach **konfiguracji** , kliknij przycisk **rekordy kontroli dostępu**.
+1.  Przejdź do usługi StorSimple Device Manager, kliknij dwukrotnie nazwę usługi, a następnie w sekcji **Konfiguracja** kliknij pozycję **Rekordy kontroli dostępu**.
 
     ![Przejdź do rekordów kontroli dostępu](./media/storsimple-8000-manage-acrs/createacr1.png)
 
-2. Na tabelarycznej liście rekordy kontroli dostępu, kliknij przycisk, a następnie wybierz usługi ACR, który chcesz zmodyfikować.
+2. Na tabelarycznej liście rekordów kontroli dostępu kliknij i wybierz acr, który chcesz zmodyfikować.
 
-    ![Edycja rekordów kontroli dostępu](./media/storsimple-8000-manage-acrs/editacr1.png)
+    ![Edytowanie rekordów kontroli dostępu](./media/storsimple-8000-manage-acrs/editacr1.png)
 
-3. W **rekordu kontroli dostępu edycji** bloku, podaj inną nazwę IQN, odpowiadający innego hosta.
+3. W bloku **rekordu kontroli dostępu edytowania** podaj inny identyfikator IQN odpowiadający innemu hostowi.
 
-    ![Edycja rekordów kontroli dostępu](./media/storsimple-8000-manage-acrs/editacr2.png)
+    ![Edytowanie rekordów kontroli dostępu](./media/storsimple-8000-manage-acrs/editacr2.png)
 
-4. Kliknij pozycję **Zapisz**. Po wyświetleniu monitu o potwierdzenie kliknij przycisk **Tak**. 
+4. Kliknij przycisk **Zapisz**. Po wyświetleniu monitu o potwierdzenie kliknij przycisk **Tak**. 
 
-    ![Edycja rekordów kontroli dostępu](./media/storsimple-8000-manage-acrs/editacr3.png)
+    ![Edytowanie rekordów kontroli dostępu](./media/storsimple-8000-manage-acrs/editacr3.png)
 
-5. Otrzymasz powiadomienie po zaktualizowaniu usługi ACR. Tabelarycznej listę również aktualizacji w celu odzwierciedlenia zmiany.
+5. Użytkownik zostanie powiadomiony o aktualizacji usługi ACR. Lista tabelaryczny jest również aktualizowana w celu odzwierciedlenia zmiany.
 
    
 ## <a name="delete-an-access-control-record"></a>Usuwanie rekordu kontroli dostępu
-Możesz użyć **konfiguracji** sekcji w bloku usługi Menedżer urządzeń StorSimple można usunąć rekordów Acr.
+Użyj **konfiguracji** sekcji w StorSimple Device Manager bloku usługi, aby usunąć ARs.
 
 > [!NOTE]
-> Można usunąć tylko tych rekordów Acr, które nie są obecnie w użyciu. Aby usunąć rekord ACR, skojarzone z woluminem, który jest aktualnie używany, należy najpierw wykonać wolumin w tryb offline.
+> Można usunąć tylko te ARS, które obecnie nie są używane. Aby usunąć acr skojarzone z woluminem, który jest obecnie używany, należy najpierw przełącz wolumin do trybu offline.
 
-Wykonaj poniższe kroki, aby usunąć rekord kontroli dostępu.
+Wykonaj następujące kroki, aby usunąć rekord kontroli dostępu.
 
 #### <a name="to-delete-an-access-control-record"></a>Aby usunąć rekord kontroli dostępu
-1.  Przejdź do usługi Menedżer urządzeń StorSimple, kliknij dwukrotnie nazwę usługi, a następnie w ramach **konfiguracji** , kliknij przycisk **rekordy kontroli dostępu**.
+1.  Przejdź do usługi StorSimple Device Manager, kliknij dwukrotnie nazwę usługi, a następnie w sekcji **Konfiguracja** kliknij pozycję **Rekordy kontroli dostępu**.
 
     ![Przejdź do rekordów kontroli dostępu](./media/storsimple-8000-manage-acrs/createacr1.png)
 
-2. Na tabelarycznej liście rekordy kontroli dostępu, kliknij przycisk, a następnie wybierz usługi ACR, który chcesz usunąć.
+2. Na tabelarycznej liście rekordów kontroli dostępu kliknij i wybierz acr, który chcesz usunąć.
 
     ![Przejdź do rekordów kontroli dostępu](./media/storsimple-8000-manage-acrs/deleteacr1.png)
 
-3. Kliknij prawym przyciskiem myszy, aby wywołać menu kontekstowe i wybrać **Usuń**.
+3. Kliknij prawym przyciskiem myszy, aby wywołać menu kontekstowe i wybierz polecenie **Usuń**.
 
     ![Przejdź do rekordów kontroli dostępu](./media/storsimple-8000-manage-acrs/deleteacr2.png)
 
-4. Po wyświetleniu monitu o potwierdzenie, zapoznaj się z informacjami, a następnie kliknij przycisk **Usuń**.
+4. Po wyświetleniu monitu o potwierdzenie przejrzyj informacje, a następnie kliknij przycisk **Usuń**.
 
     ![Przejdź do rekordów kontroli dostępu](./media/storsimple-8000-manage-acrs/deleteacr3.png)
 
-5. Otrzymasz powiadomienie po zakończeniu usuwania. Tabelarycznej liście jest aktualizowana w celu odzwierciedlenia usunięcia.
+5. Użytkownik zostanie powiadomiony po zakończeniu usuwania. Lista tabelaryczny zostanie zaktualizowana w celu odzwierciedlenia usunięcia.
 
     ![Przejdź do rekordów kontroli dostępu](./media/storsimple-8000-manage-acrs/deleteacr5.png)
 
-## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [Zarządzanie woluminów StorSimple](storsimple-8000-manage-volumes-u2.md).
-* Dowiedz się więcej o [do administrowania urządzeniem StorSimple przy użyciu usługi StorSimple Manager](storsimple-8000-manager-service-administration.md).
+## <a name="next-steps"></a>Następne kroki
+* Dowiedz się więcej o [zarządzaniu woluminami StorSimple](storsimple-8000-manage-volumes-u2.md).
+* Dowiedz się więcej o [administrowaniu urządzeniem StorSimple za pomocą usługi StorSimple Manager.](storsimple-8000-manager-service-administration.md)
 

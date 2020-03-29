@@ -1,5 +1,5 @@
 ---
-title: Federowanie wielu usługi Azure AD przy użyciu jednej usługi AD FS — Azure
+title: Federacja wielu usług Azure AD za pomocą pojedynczych usług AD FS — Azure
 description: Z tego dokumentu dowiesz się, jak federować wiele wystąpień usługi Azure AD przy użyciu jednego wystąpienia usługi AD FS.
 keywords: federate, ADFS, AD FS, multiple tenants, single AD FS, one ADFS, multi-tenant federation, multi-forest adfs, aad connect, federation, cross-tenant federation
 services: active-directory
@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9122e3a7af2230dc0f68e72b28891d488b01a80a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65137829"
 ---
 # <a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>Federowanie wielu wystąpień usługi Azure AD przy użyciu jednego wystąpienia usługi AD FS
@@ -54,9 +54,9 @@ Nawiąż połączenie z usługą Azure Active Directory zawierającą domenę co
  
 Wystawca w ustawieniu federacji domeny zostanie zmieniony na „http\://contoso.com/adfs/services/trust”, a dla relacji zaufania jednostki zależnej usługi Azure AD zostanie dodana reguła dotycząca oświadczeń wydawania, aby wystawić prawidłową wartość issuerId na podstawie sufiksu UPN.
  
-## <a name="step-3-federate-fabrikamcom-with-ad-fs"></a>Krok 3: Sfederuj domenę fabrikam.com z usługą AD FS
+## <a name="step-3-federate-fabrikamcom-with-ad-fs"></a>Krok 3. Sfederuj domenę fabrikam.com z usługą AD FS
  
-W sesji programu PowerShell usługi Azure AD wykonaj następujące czynności: Nawiązywanie połączenia z usługą Azure Active Directory, która zawiera domenę fabrikam.com
+W sesji programu Azure AD PowerShell wykonaj następujące czynności: nawiąż połączenie z usługą Azure Active Directory, która zawiera domenę fabrikam.com
 
     Connect-MsolService
 Konwertuj domenę zarządzaną fabrikam.com na domenę federacyjną:
@@ -65,5 +65,5 @@ Konwertuj domenę zarządzaną fabrikam.com na domenę federacyjną:
  
 Powyższa operacja spowoduje sfederowanie domeny fabrikam.com z tą samą usługą AD FS. Ustawienia domeny możesz sprawdzić za pomocą polecenia Get-MsolDomainFederationSettings dla obu domen.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 [Łączenie usługi Active Directory z usługą Azure Active Directory](whatis-hybrid-identity.md)

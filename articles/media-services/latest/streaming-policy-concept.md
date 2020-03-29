@@ -1,6 +1,6 @@
 ---
-title: Strumieniowe przesyłanie zasad w usłudze Azure Media Services | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera wyjaśnienie, co to są zasady przesyłania strumieniowego i jak są one używane przez usługi Azure Media Services.
+title: Zasady przesyłania strumieniowego w usługach Azure Media Services | Dokumenty firmy Microsoft
+description: W tym artykule wyjaśniono, jakie są zasady przesyłania strumieniowego i jak są one używane przez usługę Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,29 +12,29 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: juliako
 ms.openlocfilehash: a813c77e81e51bfe13e75ed6c8d0e24b4d0fa645
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66392924"
 ---
 # <a name="streaming-policies"></a>Zasady przesyłania strumieniowego
 
-W usłudze Azure Media Services v3 [przesyłania strumieniowego zasady](https://docs.microsoft.com/rest/api/media/streamingpolicies) umożliwiają definiowanie protokołów przesyłania strumieniowego i opcje szyfrowania dla Twojego [Lokalizatory przesyłania strumieniowego](streaming-locators-concept.md). Usługa Media Services v3 zawiera kilka wstępnie zdefiniowanych zasad przesyłania strumieniowego, aby można je bezpośrednio do wersji próbnej lub produkcji. 
+W usłudze Azure Media Services w wersji 3 [zasady przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streamingpolicies) umożliwiają definiowanie protokołów przesyłania strumieniowego i opcji szyfrowania dla [lokalizatorów przesyłania strumieniowego](streaming-locators-concept.md). Usługa Media Services w wersji 3 udostępnia niektóre wstępnie zdefiniowane zasady przesyłania strumieniowego, dzięki czemu można ich używać bezpośrednio do wersji próbnej lub produkcji. 
 
-Obecnie dostępne wstępnie zdefiniowane zasady przesyłania strumieniowego:<br/>
-* 'Predefined_DownloadOnly'
-* 'Predefined_ClearStreamingOnly'
+Aktualnie dostępne wstępnie zdefiniowane zasady przesyłania strumieniowego:<br/>
+* "Predefined_DownloadOnly"
+* "Predefined_ClearStreamingOnly"
 * "Predefined_DownloadAndClearStreaming"
-* 'Predefined_ClearKey'
-* 'Predefined_MultiDrmCencStreaming' 
+* "Predefined_ClearKey"
+* "Predefined_MultiDrmCencStreaming" 
 * "Predefined_MultiDrmStreaming"
 
-Następujące "drzewa decyzyjnego" pomaga w wyborze wstępnie zdefiniowanych zasad przesyłania strumieniowego dla danego scenariusza.
+Następujące "Drzewo decyzji" pomaga wybrać wstępnie zdefiniowane zasady przesyłania strumieniowego dla scenariusza.
 
 > [!IMPORTANT]
-> * Właściwości **przesyłania strumieniowego zasady** będące daty/godziny są zawsze w formacie UTC.
-> * Należy zaprojektować ograniczony zestaw zasad dla swojego konta usługi multimediów i ponownie ich użyć dla Twojego Lokalizatory przesyłania strumieniowego w każdym przypadku, gdy potrzebne są te same opcje. Aby uzyskać więcej informacji, zobacz [przydziały i ograniczenia](limits-quotas-constraints.md).
+> * Właściwości **zasad przesyłania strumieniowego,** które są typu Datetime są zawsze w formacie UTC.
+> * Należy zaprojektować ograniczony zestaw zasad dla konta usługi Media Service i użyć ich ponownie dla lokalizatorów przesyłania strumieniowego, gdy są potrzebne te same opcje. Aby uzyskać więcej informacji, zobacz [Przydziały i ograniczenia](limits-quotas-constraints.md).
 
 ## <a name="decision-tree"></a>Drzewo decyzyjne
 
@@ -42,13 +42,13 @@ Kliknij obraz, aby go wyświetlić w pełnym rozmiarze.
 
 <a href="./media/streaming-policy/large.png" target="_blank"><img src="./media/streaming-policy/large.png"></a> 
 
-Jeśli szyfrowanie zawartości, należy utworzyć [zasad klucza zawartości](content-key-policy-concept.md), **zasad klucza zawartości** nie jest potrzebna do zwykłego przesyłania strumieniowego lub pobierania. 
+W przypadku szyfrowania zawartości należy utworzyć [zasady dotyczące kluczy zawartości](content-key-policy-concept.md), zasady dotyczące **kluczy zawartości** nie są potrzebne do wyczyszczenie przesyłania strumieniowego lub pobierania. 
 
-Jeśli masz specjalnych wymagań (na przykład, jeśli chcesz określić różnych protokołów, należy użyć usługi dostarczania kluczy niestandardowych lub należy użyć ścieżki wyczyść audio), możesz to zrobić [tworzenie](https://docs.microsoft.com/rest/api/media/streamingpolicies/create) niestandardowe zasady przesyłania strumieniowego. 
+Jeśli masz specjalne wymagania (na przykład, jeśli chcesz określić różne protokoły, musisz użyć niestandardowej usługi dostarczania kluczy lub musisz użyć wyraźnej ścieżki dźwiękowej), możesz [utworzyć](https://docs.microsoft.com/rest/api/media/streamingpolicies/create) niestandardowe zasady przesyłania strumieniowego. 
 
-## <a name="get-a-streaming-policy-definition"></a>Pobierz definicję zasad do przesyłania strumieniowego  
+## <a name="get-a-streaming-policy-definition"></a>Uzyskaj definicję zasad przesyłania strumieniowego  
 
-Jeśli chcesz zobaczyć definicję zasad z przesyłania strumieniowego, użyj [uzyskać](https://docs.microsoft.com/rest/api/media/streamingpolicies/get) i określ nazwę zasad. Na przykład:
+Jeśli chcesz zobaczyć definicję zasad przesyłania strumieniowego, użyj [pobierz](https://docs.microsoft.com/rest/api/media/streamingpolicies/get) i określ nazwę zasad. Przykład:
 
 ### <a name="rest"></a>REST
 
@@ -79,12 +79,12 @@ Odpowiedź:
 }
 ```
 
-## <a name="filtering-ordering-paging"></a>Filtrowania, sortowania, stronicowania
+## <a name="filtering-ordering-paging"></a>Filtrowanie, zamawianie, stronicowanie
 
-Zobacz [filtrowanie, porządkowanie, stronicowanie jednostek usługi Media Services](entities-overview.md).
+Zobacz [Filtrowanie, zamawianie, stronicowanie jednostek usługi Media Services](entities-overview.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Strumieniowe przesyłanie pliku](stream-files-dotnet-quickstart.md)
-* [Dynamiczne szyfrowanie AES-128 i usługę dostarczania kluczy](protect-with-aes128.md)
-* [Użyj DRM dynamiczne szyfrowanie i licencji usługi dostarczania](protect-with-drm.md)
+* [Używanie dynamicznego szyfrowania AES-128 i usługi dostarczania kluczy](protect-with-aes128.md)
+* [Używanie usługi dostarczania licencji i szyfrowania dynamicznego w technologii DRM](protect-with-drm.md)

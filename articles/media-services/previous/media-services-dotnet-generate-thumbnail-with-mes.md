@@ -1,6 +1,6 @@
 ---
 title: Generowanie miniatur przy użyciu usługi Media Encoder Standard za pomocą platformy .NET
-description: W tym temacie pokazano, jak kodowanie elementu zawartości oraz generowanie miniatur, w tym samym czasie za pomocą usługi Media Encoder Standard za pomocą platformy .NET.
+description: W tym temacie pokazano, jak używać platformy .NET do kodowania zasobu i generowania miniatur jednocześnie przy użyciu standardu media encoder.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,25 +15,25 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 6bc29c098bcf7ef1d1a2e2532a00c95f0ec7e927
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61244233"
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Generowanie miniatur przy użyciu usługi Media Encoder Standard za pomocą platformy .NET 
 
-Umożliwia Media Encoder Standard generowanie miniatur co najmniej jeden z wejściowego pliku wideo w [JPEG](https://en.wikipedia.org/wiki/JPEG), [PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics), lub [BMP](https://en.wikipedia.org/wiki/BMP_file_format) formatów plików obrazów. Możesz przesłać zadania, które tworzą tylko obrazy lub można połączyć generowanie miniatur przy użyciu kodowania. Ten artykuł zawiera kilka przykładowych XML i JSON miniatury wstępne w przypadku takich scenariuszy. Na końcu tego artykułu jest [przykładowego kodu](#code_sample) pokazujący, jak używać zestawu SDK .NET usługi Media Services do wykonywania tego zadania kodowania.
+Za pomocą programu Media Encoder Standard można wygenerować jedną lub więcej miniatur z wejściowego wideo w formatach plików obrazów [JPEG,](https://en.wikipedia.org/wiki/JPEG) [PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics)lub [BMP.](https://en.wikipedia.org/wiki/BMP_file_format) Można przesyłać zadania, które generują tylko obrazy, lub można łączyć generowanie miniatur z kodowaniem. Ten artykuł zawiera kilka przykładowych ustawień miniatur XML i JSON dla takich scenariuszy. Na końcu artykułu znajduje się [przykładowy kod,](#code_sample) który pokazuje, jak używać mediastor .NET SDK do wykonania zadania kodowania.
 
-Aby uzyskać szczegółowe informacje na temat elementów, które są używane w przykładowych ustawieniach wstępnych, należy zapoznać się z [schemat usługi Media Encoder Standard](media-services-mes-schema.md).
+Aby uzyskać więcej informacji na temat elementów, które są używane w przykładowych ustawień predefiniowanych, należy przejrzeć [schemat Standardowy koderów multimediów](media-services-mes-schema.md).
 
-Upewnij się zapoznać się z [zagadnienia](media-services-dotnet-generate-thumbnail-with-mes.md#considerations) sekcji.
+Zapoznaj się z sekcją [Zagadnienia.](media-services-dotnet-generate-thumbnail-with-mes.md#considerations)
     
-## <a name="example-of-a-single-png-file-preset"></a>Przykładowe ustawienia wstępnego "pojedynczy plik PNG"
+## <a name="example-of-a-single-png-file-preset"></a>Przykład predefiniowanego ustawienia "pojedynczego pliku PNG"
 
-Następujące ustawienie wstępne formatami JSON i XML można wygenerować plik PNG pojedynczego wyjścia z pierwszym kilka sekund, wideo, danych wejściowych gdzie kodera zapewniają optymalny próba wyszukiwanie "interesujący" ramki. Należy pamiętać, że wymiary obrazu dane wyjściowe zostały ustawione do 100%, co oznacza, że odpowiadają one wymiary wejściowego filmu wideo. Należy zauważyć, jak ustawienie "Format" "Wyjściowe" jest konieczne dopasowanie użycie "PngLayers" w sekcji "Kodery-dekodery". 
+Następujące ustawienia predefiniowane JSON i XML mogą być używane do tworzenia pojedynczego wyjściowego pliku PNG z pierwszych kilku sekund wejściowego wideo, w którym koder podejmuje próbę znalezienia "interesującej" klatki. Należy zauważyć, że wymiary obrazu wyjściowego zostały ustawione na 100%, co oznacza, że odpowiadają one wymiarom wejściowego wideo. Należy również zauważyć, jak ustawienie "Format" w "Wyjścia" jest wymagane, aby dopasować użycie "PngLayers" w sekcji "Kodeki". 
 
-### <a name="json-preset"></a>Ustawienie wstępne JSON
+### <a name="json-preset"></a>Ustawienia wstępne JSON
 
 ```json
     {
@@ -62,7 +62,7 @@ Następujące ustawienie wstępne formatami JSON i XML można wygenerować plik 
     }
 ```
     
-### <a name="xml-preset"></a>Ustawienie wstępne XML
+### <a name="xml-preset"></a>Ustawienia predefiniowane XML
 
 ```xml
     <?xml version="1.0" encoding="utf-16"?>
@@ -85,11 +85,11 @@ Następujące ustawienie wstępne formatami JSON i XML można wygenerować plik 
     </Preset>
 ```
 
-## <a name="example-of-a-series-of-jpeg-images-preset"></a>Przykładowe ustawienia wstępnego "series obrazy JPEG"
+## <a name="example-of-a-series-of-jpeg-images-preset"></a>Przykład predefiniowanych ustawień "seria obrazów JPEG"
 
-Następujące ustawienie wstępne formatami JSON i XML może służyć do tworzenia zestaw 10 zdjęć na sygnatury czasowe 5% 15%,..., 95% danych wejściowych osi czasu, gdy rozmiar obrazu jest określony jako jeden kwartału z wejściowego pliku wideo.
+Następujące ustawienia predefiniowane JSON i XML mogą być używane do tworzenia zestawu 10 obrazów przy znacznikach czasu 5%, 15%, ..., 95% wejściowej osi czasu, gdzie rozmiar obrazu jest określony jako jedna czwarta wejściowego wideo.
 
-### <a name="json-preset"></a>Ustawienie wstępne JSON
+### <a name="json-preset"></a>Ustawienia wstępne JSON
 
 ```json
     {
@@ -121,7 +121,7 @@ Następujące ustawienie wstępne formatami JSON i XML może służyć do tworze
     }
 ```
 
-### <a name="xml-preset"></a>Ustawienie wstępne XML
+### <a name="xml-preset"></a>Ustawienia predefiniowane XML
     
 ```xml
     <?xml version="1.0" encoding="utf-16"?>
@@ -145,11 +145,11 @@ Następujące ustawienie wstępne formatami JSON i XML może służyć do tworze
     </Preset>
 ```
 
-## <a name="example-of-a-one-image-at-a-specific-timestamp-preset"></a>Przykładowe ustawienia wstępnego "jeden obraz o określonej sygnatury czasowej"
+## <a name="example-of-a-one-image-at-a-specific-timestamp-preset"></a>Przykład predefiniowanego ustawienia "jeden obraz przy określonym sygnaturze czasowej"
 
-Następujące ustawienie wstępne formatami JSON i XML może służyć do wyprodukowania jednego obrazu JPEG pozycji 30 sekund z wejściowego pliku wideo. To ustawienie wstępne oczekuje, że wejściowy plik wideo na więcej niż 30 sekund czasu trwania (inne zadanie nie powiedzie się).
+Następujące ustawienia predefiniowane JSON i XML mogą być używane do tworzenia pojedynczego obrazu JPEG na 30-sekundowym znaku wejściowego wideo. To ustawienie wstępne oczekuje, że wejściowy film wideo będzie trwać dłużej niż 30 sekund (w przeciwnym razie zadanie zakończy się niepowodzeniem).
 
-### <a name="json-preset"></a>Ustawienie wstępne JSON
+### <a name="json-preset"></a>Ustawienia wstępne JSON
 
 ```json
     {
@@ -181,7 +181,7 @@ Następujące ustawienie wstępne formatami JSON i XML może służyć do wyprod
     }
 ```
 
-### <a name="xml-preset"></a>Ustawienie wstępne XML
+### <a name="xml-preset"></a>Ustawienia predefiniowane XML
 ```xml
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="https://www.windowsazure.com/media/encoding/Preset/2014/03">
@@ -204,13 +204,13 @@ Następujące ustawienie wstępne formatami JSON i XML może służyć do wyprod
     </Preset>
 ```
 
-## <a name="example-of-a-thumbnails-at-different-resolutions-preset"></a>Przykładowe ustawienia wstępnego "miniatury w różnych rozdzielczościach"
+## <a name="example-of-a-thumbnails-at-different-resolutions-preset"></a>Przykład predefiniowanych ustawień "miniatur w różnych rozdzielczościach"
 
-Następujące ustawienie wstępne może służyć do generowania miniatur w różnych rozdzielczościach w jedno zadanie. W tym przykładzie w pozycji % 5 15%,..., 95 procent wejściowych osi czasu, kodera generuje dwa obrazy — jedną w 100% wejściowych rozdzielczości wideo, a druga w wysokości 50%.
+Następujące ustawienie predefiniowane może służyć do generowania miniatur w różnych rozdzielczościach w jednym zadaniu. W przykładzie w pozycjach 5%, 15%, ..., 95% osi czasu wejściowego koder generuje dwa obrazy – jeden na 100% wejściowej rozdzielczości wideo, a drugi na 50%.
 
-Zwróć uwagę na użycie makr {rozpoznawania} w nazwie pliku; oznacza to, do kodera, szerokość i wysokość, który określono w sekcji kodowanie ustawienie wstępne podczas generowania nazwy plików obrazów w danych wyjściowych. Pomaga to również określić łatwe rozróżnienie między różnymi obrazami
+Zanotuj użycie makra {Resolution} w polu Nazwa_pliku; oznacza, że koder użyje szerokości i wysokości określonej w sekcji Kodowanie predefiniowanych ustawień podczas generowania nazwy pliku obrazów wyjściowych. Pomaga to również łatwo rozróżniać różne obrazy
 
-### <a name="json-preset"></a>Ustawienie wstępne JSON
+### <a name="json-preset"></a>Ustawienia wstępne JSON
 
 ```json
     {
@@ -249,7 +249,7 @@ Zwróć uwagę na użycie makr {rozpoznawania} w nazwie pliku; oznacza to, do ko
     }
 ```
 
-### <a name="xml-preset"></a>Ustawienie wstępne XML
+### <a name="xml-preset"></a>Ustawienia predefiniowane XML
 ```xml
     <?xml version="1.0" encoding="utf-8"?>
     <Preset xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="https://www.windowsazure.com/media/encoding/Preset/2014/03">
@@ -277,12 +277,12 @@ Zwróć uwagę na użycie makr {rozpoznawania} w nazwie pliku; oznacza to, do ko
     </Preset>
 ```
 
-## <a name="example-of-generating-a-thumbnail-while-encoding"></a>Przykład generowania miniatur podczas kodowania
+## <a name="example-of-generating-a-thumbnail-while-encoding"></a>Przykład generowania miniatury podczas kodowania
 
-Chociaż wszystkie powyższe przykłady zostały omówione jak przesyłasz zadanie kodowania, które generuje wyłącznie obrazy, można także połączyć audio/wideo, kodowania z generowanie miniatur. Poinformuj następujące ustawienie wstępne formatami JSON i XML **Media Encoder Standard** generować miniatury podczas kodowania.
+Podczas gdy wszystkie powyższe przykłady omówiły sposób przesyłania zadania kodowania, które tylko tworzy obrazy, można również połączyć kodowanie wideo/ audio z generowaniem miniatur. Następujące ustawienia predefiniowane JSON i XML mówią **medicoder Standard,** aby wygenerował miniaturę podczas kodowania.
 
-### <a id="json"></a>Ustawienie wstępne JSON
-Aby uzyskać informacje o schemacie, zobacz [to](https://msdn.microsoft.com/library/mt269962.aspx) artykułu.
+### <a name="json-preset"></a><a id="json"></a>Ustawienia wstępne JSON
+Aby uzyskać informacje na temat schematu, zobacz [ten](https://msdn.microsoft.com/library/mt269962.aspx) artykuł.
 
 ```json
     {
@@ -346,8 +346,8 @@ Aby uzyskać informacje o schemacie, zobacz [to](https://msdn.microsoft.com/libr
     }
 ```
 
-### <a id="xml"></a>Ustawienie wstępne XML
-Aby uzyskać informacje o schemacie, zobacz [to](https://msdn.microsoft.com/library/mt269962.aspx) artykułu.
+### <a name="xml-preset"></a><a id="xml"></a>Ustawienia predefiniowane XML
+Aby uzyskać informacje na temat schematu, zobacz [ten](https://msdn.microsoft.com/library/mt269962.aspx) artykuł.
 
 ```csharp
     <?xml version="1.0" encoding="utf-16"?>
@@ -401,23 +401,23 @@ Aby uzyskać informacje o schemacie, zobacz [to](https://msdn.microsoft.com/libr
     </Preset>   
 ```
 
-## <a id="code_sample"></a>Kodowanie wideo i wygenerować miniatury przy użyciu platformy .NET
+## <a name="encode-video-and-generate-thumbnail-with-net"></a><a id="code_sample"></a>Kodowanie wideo i generowanie miniatury za pomocą platformy .NET
 
-Poniższy przykład kodu używa Media Services .NET SDK do wykonywania następujących zadań:
+Poniższy przykład kodu używa media services .NET SDK do wykonywania następujących zadań:
 
-* Utwórz zadania kodowania.
-* Pobierz odwołanie do usługi Media Encoder Standard kodera.
-* Załaduj ustawienia wstępnego [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) lub [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) zawierających kodowanie ustawienie wstępne, a także informacje potrzebne do generowania miniatur. Można go zapisać [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) lub [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) w pliku i użyj następujący kod do załadowania pliku.
+* Utwórz zadanie kodowania.
+* Uzyskaj odwołanie do kodera Media Encoder Standard.
+* Załaduj wstępnie ustawiony kod [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) lub [JSON,](media-services-dotnet-generate-thumbnail-with-mes.md#json) który zawiera ustawienia predefiniowane kodowania, a także informacje potrzebne do generowania miniatur. Można zapisać ten [kod XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) lub [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) w pliku i użyć następującego kodu, aby załadować plik.
   
         // Load the XML (or JSON) from the local file.
         string configuration = File.ReadAllText(fileName);  
-* Dodaj pojedynczego zadania kodowania do zadania. 
-* Określ wejściowego elementu do zakodowania.
-* Tworzenie zasobu danych wyjściowych, który zawiera zakodowanym elementem zawartości.
+* Dodaj do zadania pojedyncze zadanie kodowania. 
+* Określ zasób wejściowy, który ma być zakodowany.
+* Utwórz zasób wyjściowy zawierający zakodowany zasób.
 * Dodaj program obsługi zdarzeń, aby sprawdzić postęp zadania.
 * Przesyłanie zadania.
 
-Zobacz [projektowanie usługi Media Services przy użyciu platformy .NET](media-services-dotnet-how-to-use.md) artykuł, aby uzyskać wskazówki dotyczące sposobu konfigurowania środowiska deweloperskiego.
+Zobacz [programowanie usługi Media Services z .NET](media-services-dotnet-how-to-use.md) artykuł, aby uzyskać wskazówki dotyczące konfigurowania środowiska deweloperskiego.
 
 ```csharp
 using System;
@@ -546,24 +546,24 @@ namespace EncodeAndGenerateThumbnails
 ```
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
-Mają zastosowanie następujące kwestie:
+Obowiązują następujące zastrzeżenia:
 
-* Użycie jawnego sygnatury czasowe początku/krok/zakresu przyjęto założenie, że źródło danych wejściowych jest co najmniej 1 minutę.
-* Jpg/Png/BmpImage elementy mają Start kroku i zakresu z atrybutami ciągu — mogą być interpretowane jako:
+* Użycie jawnych sygnatur czasowych dla start/step/range zakłada, że źródło wejściowe ma co najmniej 1 minutę.
+* Elementy Jpg/Png/BmpImage mają atrybuty ciągu Start, Step i Range — można je interpretować w następujący sposób:
   
-  * Numer klatki, jeśli są one nieujemnymi liczbami całkowitymi, na przykład "Start": "120",
-  * Względem czasu trwania źródła, jeśli wyrażonej w postaci nieujemnej, na przykład "Start": "15%", OR
-  * Sygnatura czasowa, jeśli wyrażonej w postaci: mm: ss... Format. Na przykład "Start": "00:01:00"
+  * Numer ramki, jeśli są to nieujemne liczby całkowite, na przykład "Start": "120",
+  * W stosunku do czasu trwania źródła, jeśli jest wyrażony jako %-sufiks, na przykład "Start": "15%", OR
+  * Sygnatura czasowa wyrażona jako HH:MM:SS... Formacie. Na przykład "Start" : "00:01:00"
     
-    Możesz mieszać i dopasowywać notacji, jak należy.
+    Możesz mieszać i dopasowywki do notacji, jak chcesz.
     
-    Ponadto Start obsługuje makro specjalne: {najlepsze}, który próbuje określić pierwszej ramki "interesujący" uwagi zawartości: (Krok i zakres są ignorowane, gdy rozpoczęcia jest ustawiona na {najlepiej})
-  * Wartość domyślna: Start: {najlepsze}
-* Format danych wyjściowych musi zostać podane jawnie dla każdego format obrazu: Jpg/Png/BmpFormat. Jeśli jest obecny, MES dopasowuje JpgVideo do JpgFormat i tak dalej. OutputFormat wprowadza nowe makro określonych koder-dekoder obrazu: {Index}, który musi być obecne (jeden raz i tylko jeden raz) dla formatów danych wyjściowych obrazu.
+    Ponadto start obsługuje również specjalne makro:{Best}, które próbuje określić pierwszą "interesującą" ramkę zawartości UWAGA: (Krok i zakres są ignorowane, gdy start jest ustawiony na {Najlepszy})
+  * Ustawienia domyślne: Start:{Best}
+* Format wyjściowy musi być jawnie podany dla każdego formatu obrazu: Jpg/Png/BmpFormat. Gdy jest obecny, MES pasuje do JpgVideo do JpgFormat i tak dalej. OutputFormat wprowadza nowe makro specyficzne dla kodeka obrazu: {Index}, które musi być obecne (raz i tylko raz) dla formatów wyjściowych obrazu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Możesz sprawdzić [postęp zadania](media-services-check-job-progress.md) podczas zadania kodowania jest w stanie oczekiwania.
+Można sprawdzić [postęp zadania,](media-services-check-job-progress.md) gdy zadanie kodowania jest w toku.
 
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -572,5 +572,5 @@ Możesz sprawdzić [postęp zadania](media-services-check-job-progress.md) podcz
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Zobacz też
-[Omówienie kodowania usługi Media Services](media-services-encode-asset.md)
+[Omówienie kodowania usług multimedialnych](media-services-encode-asset.md)
 

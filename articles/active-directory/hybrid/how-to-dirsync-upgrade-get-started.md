@@ -1,5 +1,5 @@
 ---
-title: 'Program Azure AD Connect: Uaktualnianie przy użyciu narzędzia DirSync | Microsoft Docs'
+title: 'Azure AD Connect: uaktualnianie z narzędzia DirSync | Microsoft Docs'
 description: Dowiedz się, jak uaktualnić narzędzie DirSync do programu Azure AD Connect. W tym artykule opisano czynności związane z uaktualnianiem narzędzia DirSync do programu Azure AD Connect.
 services: active-directory
 documentationcenter: ''
@@ -17,25 +17,25 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2f2d9a7c8cfbfc4fb56ff8fba3c65ae9a7925830
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60348730"
 ---
-# <a name="azure-ad-connect-upgrade-from-dirsync"></a>Program Azure AD Connect: Uaktualnianie przy użyciu narzędzia DirSync
+# <a name="azure-ad-connect-upgrade-from-dirsync"></a>Azure AD Connect: uaktualnianie z narzędzia DirSync
 Program Azure AD Connect zastępuje narzędzie DirSync. W tym temacie opisano sposoby uaktualniania z narzędzia DirSync. Czynności te nie zadziałają w przypadku aktualizowania z innej wersji programu Azure AD Connect lub z narzędzia Azure AD Sync.
 
 Przed rozpoczęciem instalacji należy [pobrać program Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771) i wykonać czynności związane z wymaganiami wstępnymi opisane w temacie [Azure AD Connect: sprzęt i wymagania wstępne](how-to-connect-install-prerequisites.md). W szczególności należy zapoznać się z informacjami o następujących obszarach, ponieważ różnią się one od narzędzia DirSync:
 
-* Wymagana wersja platformy .NET i programu PowerShell. Na serwerze są wymagane nowsze wersje niż w przypadku narzędzia DirSync.
+* Wymagana wersja programów .NET i PowerShell. Na serwerze są wymagane nowsze wersje niż w przypadku narzędzia DirSync.
 * Konfiguracja serwera proxy. Jeśli używasz serwera proxy w celu uzyskiwania dostępu do Internetu, to ustawienie musi zostać skonfigurowane przed uaktualnieniem. Narzędzie DirSync zawsze używało serwera proxy skonfigurowanego dla użytkownika, który je zainstalował, ale program Azure AD Connect używa ustawień maszyny.
 * Adresy URL, które muszą być otwarte na serwerze proxy. W przypadku podstawowych scenariuszy (także tych obsługiwanych przez narzędzie DirSync) wymagania są takie same. Aby używać jednej z nowych funkcji dostępnych w programie Azure AD Connect, należy otworzyć dodatkowe adresy URL.
 
 > [!NOTE]
-> Aby po włączeniu serwera programu Azure AD Connect rozpocząć synchronizowanie zmian z usługą Azure AD, nie można powrócić do używania narzędzia DirSync lub Azure AD Sync. Obniżenie wersji programu z Azure AD Connect do starszych klientów, w tym DirSync i Azure AD Sync, nie jest obsługiwane i może prowadzić do problemów takich jak utrata danych w usłudze Azure AD.
+> Po włączeniu nowego serwera usługi Azure AD Connect, aby rozpocząć synchronizowanie zmian do usługi Azure AD, nie należy przywracać do przy użyciu programu DirSync lub usługi Azure AD Sync. Przejście z usługi Azure AD Connect do starszych klientów, w tym DirSync i Usługi Azure AD Sync, nie jest obsługiwane i może prowadzić do problemów, takich jak utrata danych w usłudze Azure AD.
 
-Jeśli nie przeprowadzasz uaktualnienia z narzędzia DirSync, zobacz powiązanej dokumentacji dla innych scenariuszy.
+Jeśli nie przeprowadzasz uaktualnienia z narzędzia DirSync, zobacz dokumentację pokrewną, aby zapoznać się z innymi scenariuszami.
 
 ## <a name="upgrade-from-dirsync"></a>Uaktualnianie przy użyciu narzędzia DirSync
 Istnieją różne opcje uaktualniania, w zależności od istniejącego wdrożenia narzędzia DirSync. Jeśli szacowany czas uaktualniania wynosi mniej niż trzy godziny, zalecane jest przeprowadzenie uaktualnienia w miejscu. Jeśli szacowany czas uaktualniania wynosi ponad trzy godziny, zalecane jest przeprowadzenie wdrożenia równoległego na innym serwerze. Szacuje się, że uaktualnienie trwa więcej niż trzy godziny, jeśli masz ponad 50 000 obiektów.
@@ -128,7 +128,7 @@ Jeśli chcesz przeprowadzić wdrożenie równoległe, wykonaj następujące krok
 
 * Kliknij przycisk **Eksportuj ustawienia**. Po zainstalowaniu programu Azure AD Connect na osobnym serwerze te ustawienia są migrowane z bieżącego narzędzia DirSync do nowej instalacji programu Azure AD Connect.
 
-Po pomyślnym wyeksportowaniu ustawień możesz zakończyć działanie kreatora instalacji programu Azure AD Connect na serwerze narzędzia DirSync. Przejdź do następnego kroku, aby zainstalować program Azure AD Connect na osobnym serwerze
+Po pomyślnym wyeksportowaniu ustawień możesz zakończyć działanie kreatora instalacji programu Azure AD Connect na serwerze narzędzia DirSync. Kontynuuj następny krok, aby zainstalować usługę Azure AD Connect na oddzielnym serwerze
 
 **Wdrożenie równoległe, gdy liczba obiektów jest mniejsza niż 50 000**
 
@@ -156,13 +156,13 @@ W przypadku instalowania programu Azure AD Connect na nowym serwerze domyślnym 
 5. Wybierz plik ustawień wyeksportowany z narzędzia DirSync.
 6. Skonfiguruj opcje zaawansowane, takie jak:
    * Niestandardowa lokalizacja instalacji programu Azure AD Connect.
-   * Istniejące wystąpienie programu SQL Server (domyślnie: program Azure AD Connect instaluje program SQL Server 2012 Express). Nie używaj tego samego wystąpienia bazy danych, którego używa serwer narzędzia DirSync.
+   * Istniejące wystąpienie programu SQL Server (domyślnie program Azure AD Connect instaluje program SQL Server 2012 Express). Nie używaj tego samego wystąpienia bazy danych, którego używa serwer narzędzia DirSync.
    * Konto usługi używane do połączenia z serwerem SQL (jeśli korzystasz ze zdalnej bazy danych programu SQL Server, musi to być konto usługi domeny).
      Na tym ekranie są dostępne następujące opcje:  
      ![Wprowadzanie poświadczeń usługi Azure AD](./media/how-to-dirsync-upgrade-get-started/advancedsettings.png)
-7. Kliknij przycisk **Dalej**.
+7. Kliknij przycisk **alej**.
 8. Na stronie **Wszystko gotowe do skonfigurowania** pozostaw zaznaczone pole wyboru **Uruchom proces synchronizacji, gdy tylko konfiguracja zostanie ukończona**. Serwer jest teraz w [trybie przejściowym](how-to-connect-sync-staging-server.md), więc zmiany nie są eksportowane do usługi Azure AD.
-9. Kliknij pozycję **Zainstaluj**.
+9. Kliknij **pozycję Zainstaluj**.
 10. Po zakończeniu instalacji wyloguj się, a następnie zaloguj się ponownie w systemie Windows przed użyciem narzędzia Synchronization Service Manager lub Synchronization Rule Editor albo wprowadzeniem jakichkolwiek innych zmian konfiguracji.
 
 > [!NOTE]
@@ -171,7 +171,7 @@ W przypadku instalowania programu Azure AD Connect na nowym serwerze domyślnym 
 ### <a name="verify-that-azure-ad-connect-is-ready-to-begin-synchronization"></a>Sprawdzanie, czy program Azure AD Connect jest gotowy do rozpoczęcia synchronizacji
 Aby sprawdzić, czy program Azure AD Connect jest gotowy do zastąpienia narzędzia DirSync, należy otworzyć aplikację **Synchronization Service Manager** znajdującą się w grupie **Azure AD Connect** w menu Start.
 
-W aplikacji przejdź na kartę **Operacje**. Na tej karcie potwierdź, że zakończono następujące operacje:
+W aplikacji przejdź do karty **Operacje.** Na tej karcie upewnij się, że następujące operacje zostały zakończone:
 
 * Importowanie w łączniku usługi AD
 * Importowanie w programie Azure AD Connector
@@ -211,10 +211,10 @@ Powinien zostać wyświetlony następujący ekran:
 
 Serwer programu Azure AD Connect jest teraz aktywnym serwerem i nie możesz przełączyć się z powrotem do istniejącego serwera narzędzia DirSync.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Po zainstalowaniu programu Azure AD Connect możesz [zweryfikować instalację i przypisać licencje](how-to-connect-post-installation.md).
 
-Dowiedz się więcej na temat nowych funkcji, które zostały włączone w ramach instalacji: [Automatyczne uaktualnianie](how-to-connect-install-automatic-upgrade.md), [Zapobieganie przypadkowemu usuwaniu](how-to-connect-sync-feature-prevent-accidental-deletes.md) i [Azure AD Connect Health](how-to-connect-health-sync.md).
+Dowiedz się więcej na temat nowych funkcji włączonych w ramach instalacji: [Automatyczne uaktualnianie](how-to-connect-install-automatic-upgrade.md), [Zapobieganie przypadkowemu usuwaniu](how-to-connect-sync-feature-prevent-accidental-deletes.md) oraz [Azure AD Connect Health](how-to-connect-health-sync.md).
 
 Dowiedz się więcej na te popularne tematy: [harmonogram i sposób włączania synchronizacji](how-to-connect-sync-feature-scheduler.md).
 

@@ -1,6 +1,6 @@
 ---
-title: Architektura odzyskiwania po awarii maszyny wirtualnej VMware w Azure Site Recovery
-description: Ten artykuł zawiera omówienie składników i architektury używanych podczas konfigurowania odzyskiwania po awarii lokalnych maszyn wirtualnych VMware na platformie Azure przy użyciu Azure Site Recovery
+title: Architektura odzyskiwania po awarii maszyn wirtualnych VMware w usłudze Azure Site Recovery
+description: Ten artykuł zawiera omówienie składników i architektury używanych podczas konfigurowania odzyskiwania po awarii lokalnych maszyn wirtualnych VMware na platformie Azure za pomocą usługi Azure Site Recovery
 author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
@@ -8,27 +8,27 @@ ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
 ms.openlocfilehash: ccf258594aa68fc9b5d0189c9ada640078e0ba6f
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76514871"
 ---
-# <a name="vmware-to-azure-disaster-recovery-architecture"></a>Architektura odzyskiwania po awarii oprogramowania VMware na platformę Azure
+# <a name="vmware-to-azure-disaster-recovery-architecture"></a>Architektura odzyskiwania po awarii vMware na platformie Azure
 
-W tym artykule opisano architekturę i procesy używane podczas wdrażania replikacji odzyskiwania po awarii, trybu failover i odzyskiwania maszyn wirtualnych VMware między lokalną lokacją programu VMware i platformą Azure przy użyciu usługi [Azure Site Recovery](site-recovery-overview.md) .
+W tym artykule opisano architekturę i procesy używane podczas wdrażania replikacji odzyskiwania po awarii, pracy awaryjnej i odzyskiwania maszyn wirtualnych VMware (VMware) między lokalną lokacją VMware a platformą Azure przy użyciu usługi [Azure Site Recovery.](site-recovery-overview.md)
 
 
 ## <a name="architectural-components"></a>Składniki architektury
 
-Poniższa tabela i grafika zawierają ogólny widok składników służących do odzyskiwania po awarii programu VMware do platformy Azure.
+Poniższa tabela i grafika zapewniają widok wysokiego poziomu składników używanych do odzyskiwania po awarii VMware na platformie Azure.
 
 **Składnik** | **Wymaganie** | **Szczegóły**
 --- | --- | ---
-**Azure** | Subskrypcja platformy Azure, konto usługi Azure Storage na potrzeby pamięci podręcznej, dysku zarządzanego i sieci platformy Azure. | Zreplikowane dane z lokalnych maszyn wirtualnych są przechowywane w usłudze Azure Storage. Maszyny wirtualne platformy Azure są tworzone przy użyciu replikowanych danych podczas pracy w trybie failover z poziomu lokalnego na platformę Azure. Maszyny wirtualne platformy Azure nawiązują połączenie z siecią wirtualną platformy Azure, gdy są tworzone.
-**Komputer serwera konfiguracji** | Pojedyncza maszyna lokalna. Firma Microsoft zaleca, aby uruchomić ją jako maszynę wirtualną VMware, którą można wdrożyć przy użyciu pobranego szablonu OVF.<br/><br/> Na maszynie działa wszystkie lokalne składniki Site Recovery, takie jak serwer konfiguracji, serwer przetwarzania oraz główny serwer docelowy. | **Serwer konfiguracji**: koordynuje komunikację między środowiskiem lokalnym i platformą Azure oraz zarządza replikacją danych.<br/><br/> **Serwer przetwarzania**: program jest instalowany domyślnie na serwerze konfiguracji. Odbiera dane replikacji; optymalizuje je przy użyciu pamięci podręcznej, kompresji i szyfrowania; i wysyła je do usługi Azure Storage. Serwer przetwarzania instaluje także usługę Azure Site Recovery Mobility Service na maszynach wirtualnych, które będą replikowane, i przeprowadza automatycznie odnajdywanie lokalnych maszyn wirtualnych. Wraz z rozwojem wdrożenia można dodać dodatkowe, oddzielne serwery przetwarzania do obsługi większych woluminów ruchu związanego z replikacją.<br/><br/> **Główny serwer docelowy**: domyślnie zainstalowany na serwerze konfiguracji. Obsługuje dane replikacji podczas powrotu po awarii z platformy Azure. W przypadku dużych wdrożeń można dodać dodatkowy, oddzielny główny serwer docelowy na potrzeby powrotu po awarii.
-**Serwery VMware** | Maszyny wirtualne VMware są hostowane na lokalnych serwerach vSphere ESXi. Zalecamy serwer vCenter do zarządzania hostami. | Podczas wdrażania Site Recovery należy dodać serwery VMware do magazynu Recovery Services.
-**Zreplikowane maszyny** | Usługa mobilności jest instalowana na wszystkich zreplikowanych maszynach wirtualnych VMware. | Zalecamy, aby zezwalać na automatyczną instalację z serwera przetwarzania. Alternatywnie możesz zainstalować usługę ręcznie lub użyć zautomatyzowanej metody wdrażania, takiej jak Configuration Manager.
+**Azure** | Subskrypcja platformy Azure, konto usługi Azure Storage dla pamięci podręcznej, dysku zarządzanego i sieci platformy Azure. | Replikowane dane z lokalnych maszyn wirtualnych są przechowywane w magazynie platformy Azure. Maszyny wirtualne platformy Azure są tworzone przy obliczu replikowanych danych po uruchomieniu pracy awaryjnej z lokalnego na platformę Azure. Maszyny wirtualne platformy Azure nawiązują połączenie z siecią wirtualną platformy Azure, gdy są tworzone.
+**Maszyna serwera konfiguracji** | Pojedyncza maszyna lokalna. Zaleca się uruchomienie go jako maszyny Wirtualnej VMware, które można wdrożyć z pobranego szablonu OVF.<br/><br/> Na komputerze są uruchamiane wszystkie lokalne składniki odzyskiwania lokacji, które obejmują serwer konfiguracji, serwer przetwarzania i główny serwer docelowy. | **Serwer konfiguracji:** Koordynuje komunikację między lokalną a platformą Azure i zarządza replikacją danych.<br/><br/> **Serwer przetwarzania:** Zainstalowany domyślnie na serwerze konfiguracji. Odbiera dane replikacji; optymalizuje go za pomocą buforowania, kompresji i szyfrowania; i wysyła go do usługi Azure Storage. Serwer przetwarzania instaluje także usługę Azure Site Recovery Mobility Service na maszynach wirtualnych, które będą replikowane, i przeprowadza automatycznie odnajdywanie lokalnych maszyn wirtualnych. W miarę rozwoju wdrożenia można dodać dodatkowe, oddzielne serwery procesów do obsługi większych woluminów ruchu replikacji.<br/><br/> **Główny serwer docelowy:** Zainstalowany domyślnie na serwerze konfiguracji. Obsługuje dane replikacji podczas powrotu po awarii z platformy Azure. W przypadku dużych wdrożeń można dodać dodatkowy, oddzielny serwer docelowy dla powrotu po awarii.
+**Serwery VMware** | Maszyny wirtualne VMware są hostowane na lokalnych serwerach vSphere ESXi. Zalecamy serwer vCenter do zarządzania hostami. | Podczas wdrażania usługi Site Recovery serwery VMware są dodawanye do magazynu usług odzyskiwania.
+**Zreplikowane maszyny** | Usługa mobilności jest zainstalowana na każdej replikowanej maszynie wirtualnej VMware. | Zaleca się zezwolenie na automatyczną instalację z serwera przetwarzania. Alternatywnie można zainstalować usługę ręcznie lub użyć metody wdrażania automatycznego, takiej jak program Menedżer konfiguracji.
 
 **Architektura VMware–Azure**
 
@@ -38,56 +38,56 @@ Poniższa tabela i grafika zawierają ogólny widok składników służących do
 
 ## <a name="replication-process"></a>Proces replikacji
 
-1. Po włączeniu replikacji dla maszyny wirtualnej rozpocznie się replikacja początkowa do usługi Azure Storage przy użyciu określonych zasad replikacji. Pamiętaj o następujących kwestiach:
-    - W przypadku maszyn wirtualnych VMware replikacja jest na poziomie bloku, blisko ciągłego, przy użyciu agenta usługi mobilności uruchomionego na maszynie wirtualnej.
-    - Zostaną zastosowane wszystkie ustawienia zasad replikacji:
-        - **Próg punktu odzyskiwania**. To ustawienie nie ma wpływu na replikację. Ułatwia to monitorowanie. Zostanie zgłoszone zdarzenie i opcjonalnie zostanie wysłana wiadomość e-mail, jeśli bieżący cel punktu odzyskiwania przekroczy określony limit progu.
-        - **Przechowywanie punktu odzyskiwania**. To ustawienie określa, jak daleko wstecz w czasie ma nastąpić przejście, gdy wystąpi zakłócenie. Maksymalne przechowywanie w magazynie w warstwie Premium wynosi 24 godziny. W przypadku magazynu w warstwie Standardowa jest 72 godzin. 
-        - **Migawki spójne z aplikacjami**. Migawkę spójną na poziomie aplikacji można wykonać co 1 do 12 godzin, w zależności od potrzeb aplikacji. Migawki to standardowe migawki obiektów blob platformy Azure. Agent mobilności działający na maszynie wirtualnej żąda migawki VSS zgodnie z tym ustawieniem i zakładki wskazujące punkt w czasie jako punkt spójny aplikacji w strumieniu replikacji.
+1. Po włączeniu replikacji dla maszyny Wirtualnej rozpoczyna się replikacja początkowa do magazynu platformy Azure przy użyciu określonych zasad replikacji. Pamiętaj o następujących kwestiach:
+    - W przypadku maszyn wirtualnych VMware replikacja jest na poziomie bloku, prawie ciągła, przy użyciu agenta usługi mobilności uruchomionego na maszynie wirtualnej.
+    - Stosowane są wszystkie ustawienia zasad replikacji:
+        - **próg RPO**. To ustawienie nie ma wpływu na replikację. Pomaga w monitorowaniu. Zdarzenie jest wywoływane i opcjonalnie wysłany e-mail, jeśli bieżący cel ochrony danych przekracza limit progu, który określisz.
+        - **Retencja punktów odzyskiwania**. To ustawienie określa, jak daleko wstecz w czasie, który ma się udać, gdy wystąpi zakłócenie. Maksymalne przechowywanie w magazynie w wersji premium wynosi 24 godziny. W przypadku standardowego przechowywania jest to 72 godziny. 
+        - **Migawki spójne z aplikacjami**. Migawka spójna z aplikacjami może trwać co 1 do 12 godzin, w zależności od potrzeb aplikacji. Migawki są standardowe migawki obiektów blob platformy Azure. Agent mobilności uruchomiony na maszynie wirtualnej żąda migawki usługi VSS zgodnie z tym ustawieniem i zakładki, że punkt w czasie jako spójny punkt aplikacji w strumieniu replikacji.
 
-2. Ruch jest replikowany do publicznych punktów końcowych usługi Azure Storage za pośrednictwem Internetu. Alternatywnie możesz użyć usługi Azure ExpressRoute z usługą [komunikacji równorzędnej firmy Microsoft](../expressroute/expressroute-circuit-peerings.md#microsoftpeering). Replikowanie ruchu za pośrednictwem wirtualnej sieci prywatnej (VPN) typu lokacja-lokacja z lokacji lokalnej do platformy Azure nie jest obsługiwane.
-3. Po zakończeniu replikacji początkowej zostanie rozpoczęta replikacja zmian różnicowych na platformie Azure. Śledzone zmiany dla maszyny są wysyłane do serwera przetwarzania.
+2. Ruch jest replikowane do publicznych punktów końcowych magazynu platformy Azure przez Internet. Alternatywnie można użyć usługi Azure ExpressRoute z [komunikacją równorzędową firmy Microsoft](../expressroute/expressroute-circuit-peerings.md#microsoftpeering). Replikowanie ruchu za pośrednictwem wirtualnej sieci prywatnej lokacji (VPN) z lokacji lokalnej na platformę Azure nie jest obsługiwane.
+3. Po zakończeniu replikacji początkowej rozpoczyna się replikacja zmian różnicowych na platformie Azure. Śledzone zmiany dla komputera są wysyłane do serwera przetwarzania.
 4. Komunikacja odbywa się w następujący sposób:
 
-    - Maszyny wirtualne komunikują się z lokalnym serwerem konfiguracji na porcie HTTPS 443 ruchu przychodzącego na potrzeby zarządzania replikacją.
-    - Serwer konfiguracji organizuje replikację za pomocą usługi Azure over port HTTPS 443.
-    - Maszyny wirtualne wysyłają dane replikacji do serwera przetwarzania (uruchomionego na komputerze serwera konfiguracji) na porcie HTTPS 9443 w ruchu przychodzącym. Ten port może być modyfikowany.
-    - Serwer przetwarzania odbiera dane replikacji, optymalizuje je i szyfruje oraz wysyła do usługi Azure Storage przez port 443 wychodzące.
-5. Dane replikacji są najpierw przechowywane na koncie magazynu pamięci podręcznej na platformie Azure. Te dzienniki są przetwarzane, a dane są przechowywane na dysku zarządzanym platformy Azure (wywoływana jako dysk inicjujący ASR). Na tym dysku są tworzone punkty odzyskiwania.
+    - Maszyny wirtualne komunikują się z lokalnym serwerem konfiguracji na porcie HTTPS 443 przychodzącym w celu zarządzania replikacją.
+    - Serwer konfiguracji organizuje replikację za pomocą platformy Azure za pośrednictwem portu HTTPS 443 wychodzącego.
+    - Maszyny wirtualne wysyłają dane replikacji do serwera przetwarzania (uruchomionego na komputerze serwera konfiguracji) na porcie HTTPS 9443 przychodzącym. Ten port można modyfikować.
+    - Serwer przetwarzania odbiera dane replikacji, optymalizuje je i szyfruje oraz wysyła do magazynu platformy Azure za pomocą portu 443 wychodzącego.
+5. Dzienniki danych replikacji najpierw lądują na koncie magazynu pamięci podręcznej na platformie Azure. Te dzienniki są przetwarzane, a dane są przechowywane w dysku zarządzanym platformy Azure (nazywanym dyskiem źródłowym asr). Punkty odzyskiwania są tworzone na tym dysku.
 
 
 
 
-**Proces replikacji z programu VMware do platformy Azure**
+**Proces replikacji VMware do platformy Azure**
 
 ![Proces replikacji](./media/vmware-azure-architecture/v2a-architecture-henry.png)
 
 ## <a name="failover-and-failback-process"></a>Proces pracy w trybie failover i podczas powrotu po awarii
 
-Po skonfigurowaniu replikacji i uruchomieniu funkcji drążenia odzyskiwania po awarii (test pracy w trybie failover), aby sprawdzić, czy wszystko działa zgodnie z oczekiwaniami, możesz uruchomić tryb failover i powrót po awarii, jak to konieczne.
+Po skonfigurowaniu replikacji i uruchomieniu ćwiczenia odzyskiwania po awarii (test pracy awaryjnej), aby sprawdzić, czy wszystko działa zgodnie z oczekiwaniami, można uruchomić pracę awaryjną i powrót po awarii, zgodnie z potrzebami.
 
-1. Uruchamianie nie powiedzie się dla jednej maszyny lub można utworzyć plany odzyskiwania w celu jednoczesnego przełączenia wielu maszyn wirtualnych w tryb failover. Zaletą planu odzyskiwania zamiast pojedynczej pracy awaryjnej komputera jest:
-    - Zależności aplikacji można modelować, dołączając wszystkie maszyny wirtualne w aplikacji w ramach jednego planu odzyskiwania.
-    - Możesz dodawać skrypty, elementy Runbook platformy Azure i wstrzymywać je w ramach akcji ręcznych.
-2. Po wyzwoleniu początkowej pracy w trybie failover należy zatwierdzić, aby rozpocząć uzyskiwanie dostępu do obciążenia z maszyny wirtualnej platformy Azure.
-3. Po ponownym udostępnieniu podstawowej lokacji lokalnej można przygotować się do powrotu po awarii. W celu powrotu po awarii należy skonfigurować infrastrukturę powrotu po awarii, w tym:
+1. Uruchom niepowodzenie dla jednego komputera lub utworzyć plany odzyskiwania w trybie fail over wielu maszyn wirtualnych w tym samym czasie. Zalety planu odzyskiwania, a nie pracy awaryjnej pojedynczej maszyny obejmują:
+    - Możesz modelować zależności aplikacji, dołączając wszystkie maszyny wirtualne w aplikacji w jednym planie odzyskiwania.
+    - Można dodawać skrypty, runbooki platformy Azure i wstrzymywać akcje ręczne.
+2. Po wyzwoleniu początkowej pracy awaryjnej, należy zatwierdzić go, aby rozpocząć dostęp do obciążenia z maszyny Wirtualnej platformy Azure.
+3. Gdy podstawowa lokacja lokalna jest ponownie dostępna, można przygotować się do powrotu po awarii. Aby przywrócić po awarii, należy skonfigurować infrastrukturę powrotu po awarii, w tym:
 
-    * **Tymczasowy serwer przetwarzania na platformie Azure**: aby powrócić po awarii z platformy Azure, należy skonfigurować maszynę wirtualną platformy Azure do działania jako serwer przetwarzania w celu obsługi replikacji z platformy Azure. Po zakończeniu powrotu po awarii można usunąć tę maszynę wirtualną.
-    * **Połączenie sieci VPN**: w celu powrotu po awarii wymagane jest połączenie sieci VPN (lub ExpressRoute) z sieci platformy Azure z lokacją lokalną.
-    * **Oddzielny główny serwer docelowy**: domyślnie główny serwer docelowy, który został zainstalowany z serwerem konfiguracji na lokalnej maszynie wirtualnej VMware obsługuje powrót po awarii. Jeśli zachodzi potrzeba odtworzenia dużych ilości ruchu, należy skonfigurować w tym celu oddzielny lokalny główny serwer docelowy.
-    * **Zasady powrotu po awarii**: aby móc przeprowadzić ponowną replikację do lokacji lokalnej, należy utworzyć zasady powrotu po awarii. Te zasady są tworzone automatycznie podczas tworzenia zasad replikacji z lokalnego na platformę Azure.
-4. Gdy składniki są stosowane, powrót po awarii odbywa się w trzech akcjach:
+    * **Tymczasowy serwer procesów na platformie Azure:** Aby odzyskać po awarii z platformy Azure, skonfigurować maszynę wirtualną platformy Azure, aby działać jako serwer procesów do obsługi replikacji z platformy Azure. Po zakończeniu powrotu po awarii można usunąć tę maszynę wirtualną.
+    * **Połączenie sieci VPN:** Aby przywrócić po awarii, potrzebujesz połączenia sieci VPN (lub usługi ExpressRoute) z sieci platformy Azure do lokacji lokalnej.
+    * **Oddzielny główny serwer docelowy:** Domyślnie główny serwer docelowy zainstalowany z serwerem konfiguracji na lokalnej maszynie wirtualnej VMware obsługuje powrót zwrotny po awarii. Jeśli konieczne jest przywrócenie dużych ilości ruchu, należy skonfigurować w tym celu oddzielny lokalny główny serwer docelowy.
+    * **Zasady powrotu po awarii**: aby móc przeprowadzić ponowną replikację do lokacji lokalnej, należy utworzyć zasady powrotu po awarii. Ta zasada jest tworzona automatycznie podczas tworzenia zasad replikacji z lokalnego na platformę Azure.
+4. Po składniki są w miejscu, powrót po awarii występuje w trzech akcjach:
 
-    - Etap 1. Ponowne włączanie ochrony maszyn wirtualnych platformy Azure w celu replikowania ich z powrotem z platformy Azure do lokalnych maszyn wirtualnych programu VMware.
-    -  Etap 2: uruchamianie trybu failover w lokacji lokalnej.
-    - Etap 3. po niepomyślnym zakończeniu obciążeń ponowne włączenie replikacji lokalnych maszyn wirtualnych jest możliwe.
+    - Etap 1: Ponowne przetwarzanie maszyn wirtualnych platformy Azure, tak aby były replikowane z platformy Azure z powrotem do lokalnych maszyn wirtualnych VMware.
+    -  Etap 2: Uruchom pracy awaryjnej do lokacji lokalnej.
+    - Etap 3: Po zakończeniu pracy obciążeń replikacja jest ponownie konfigurowana dla lokalnych maszyn wirtualnych.
     
  
-**Powrót po awarii programu VMware z platformy Azure**
+**Powrót po awarii VMware z platformy Azure**
 
 ![Powrót po awarii](./media/vmware-azure-architecture/enhanced-failback.png)
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Postępuj zgodnie z [tym samouczkiem](vmware-azure-tutorial.md) , aby włączyć replikację programu VMware do platformy Azure.
+Wykonaj [ten samouczek,](vmware-azure-tutorial.md) aby włączyć replikację VMware na platformie Azure.

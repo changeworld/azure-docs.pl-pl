@@ -1,6 +1,6 @@
 ---
-title: Zrozumienie współużytkowanych adresach IP w usłudze Azure DevTest Labs | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak korzysta z usługi Azure DevTest Labs współużytkowanych adresach IP zminimalizować publiczne adresy IP wymagane do dostępu do maszyn wirtualnych laboratorium.
+title: Poznaj udostępnione adresy IP w laboratoriach devtest platformy Azure | Dokumenty firmy Microsoft
+description: Dowiedz się, jak usługa Azure DevTest Labs używa udostępnionych adresów IP w celu zminimalizowania publicznych adresów IP wymaganych do uzyskania dostępu do maszyn wirtualnych w laboratorium.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,46 +14,46 @@ ms.topic: article
 ms.date: 05/12/2019
 ms.author: spelluru
 ms.openlocfilehash: f7c9feedddab1aea031cb3a8879e868aae04df00
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65236860"
 ---
-# <a name="understand-shared-ip-addresses-in-azure-devtest-labs"></a>Zrozumienie współużytkowanych adresach IP w usłudze Azure DevTest Labs
+# <a name="understand-shared-ip-addresses-in-azure-devtest-labs"></a>Opis udostępnionych adresów IP w laboratorium devtest azure
 
-Usługa Azure DevTest Labs umożliwia maszyn wirtualnych laboratorium udostępnianie tego samego publiczny adres IP, aby zminimalizować liczbę publicznych adresów IP, wymagane do dostępu do poszczególnych maszyn wirtualnych laboratorium.  W tym artykule opisano udostępnione pracy adresów IP i ich powiązane opcje konfiguracji.
+Usługa Azure DevTest Labs umożliwia maszynom wirtualnym laboratorium współużytkowanie tego samego publicznego adresu IP w celu zminimalizowania liczby publicznych adresów IP wymaganych do uzyskania dostępu do poszczególnych maszyn wirtualnych w laboratorium.  W tym artykule opisano, jak działają udostępnione usługi IP i powiązane z nimi opcje konfiguracji.
 
-## <a name="shared-ip-setting"></a>Udostępnione ustawienie adresu IP
+## <a name="shared-ip-setting"></a>Ustawienie udostępnionego adresu IP
 
-Po utworzeniu laboratorium, zostanie utworzony w podsieci sieci wirtualnej.  Domyślnie ta podsieć jest tworzony z **Włącz udostępnionego publicznego adresu IP** równa *tak*.  Ta konfiguracja tworzy jeden publiczny adres IP w całej podsieci.  Aby uzyskać więcej informacji na temat konfigurowania sieci wirtualnych i podsieci, zobacz [Konfigurowanie sieci wirtualnej w usłudze Azure DevTest Labs](devtest-lab-configure-vnet.md).
+Podczas tworzenia laboratorium jest on tworzony w podsieci sieci wirtualnej.  Domyślnie ta podsieć jest tworzona z **ustawieniem Włącz udostępniony publiczny adres IP** ustawiony na *Tak*.  Ta konfiguracja tworzy jeden publiczny adres IP dla całej podsieci.  Aby uzyskać więcej informacji na temat konfigurowania sieci wirtualnych i podsieci, zobacz [Konfigurowanie sieci wirtualnej w laboratoriach DevTest Azure](devtest-lab-configure-vnet.md).
 
 ![Nowa podsieć laboratorium](media/devtest-lab-shared-ip/lab-subnet.png)
 
-Istniejące labs tę opcję można włączyć, wybierając **konfiguracji i zasad > sieciami wirtualnymi**. Następnie wybierz sieć wirtualną z listy i wybierz **Włączanie UDOSTĘPNIONEGO publicznego adresu IP** dla wybranej podsieci. Można również wyłączyć tę opcję w dowolnym laboratorium, jeśli nie chcesz udostępniać publiczny adres IP w laboratorium, maszyny wirtualne.
+W przypadku istniejących laboratoriów można włączyć tę opcję, wybierając **pozycję Konfiguracja i zasady > sieci wirtualnych**. Następnie wybierz sieć wirtualną z listy i wybierz **pozycję WŁĄCZ UDOSTĘPNIONY PUBLICZNY ADRES IP** dla wybranej podsieci. Można również wyłączyć tę opcję w dowolnym laboratorium, jeśli nie chcesz udostępniać publiczny adres IP w laboratorium maszyn wirtualnych.
 
-Wszystkie maszyny wirtualne utworzone w tego ustawienia domyślnego laboratorium do korzystania z udostępnionych adresów IP.  Podczas tworzenia maszyny Wirtualnej, to ustawienie można zaobserwować w **Zaawansowane ustawienia** strony w obszarze **konfiguracji adresu IP**.
+Wszystkie maszyny wirtualne utworzone w tym laboratorium domyślnie przy użyciu udostępnionego adresu IP.  Podczas tworzenia maszyny Wirtualnej to ustawienie można zaobserwować na stronie **Ustawienia zaawansowane** w obszarze **Konfiguracja adresu IP**.
 
 ![Nowa maszyna wirtualna](media/devtest-lab-shared-ip/new-vm.png)
 
-- **Udostępnione:** Wszystkie maszyny wirtualne utworzone jako **Shared** są umieszczane w jednej grupie zasobów (RG). Pojedynczy adres IP jest przypisywany, w tym grupą zasobów i wszystkie maszyny wirtualne w RG użyje tego adresu IP.
-- **Publiczny:** Każda maszyna wirtualna, którą tworzysz ma swój własny adres IP i jest tworzona w jego własnej grupie zasobów.
-- **Prywatny:** Każda maszyna wirtualna, którą tworzysz używa prywatnego adresu IP. Do tej maszyny Wirtualnej nie można połączyć bezpośrednio z Internetu przy użyciu pulpitu zdalnego.
+- **Udostępnione:** Wszystkie maszyny wirtualne utworzone jako **udostępnione** są umieszczane w jednej grupie zasobów (RG). Jeden adres IP jest przypisany do tego RG i wszystkie maszyny wirtualne w RG użyje tego adresu IP.
+- **Publiczne:** Każda utworzona maszyna wirtualna ma swój własny adres IP i jest tworzona we własnej grupie zasobów.
+- **Prywatne:** Każda utworzona maszyna wirtualna używa prywatnego adresu IP. Nie można połączyć się z tą maszyną wirtualną bezpośrednio z Internetu za pomocą pulpitu zdalnego.
 
-Gdy maszyny Wirtualnej z udostępnionego IP włączony zostanie dodany do podsieci, DevTest Labs dodaje maszynę Wirtualną z modułem równoważenia obciążenia i automatycznie przypisuje numer portu TCP na publiczny adres IP przesyłania dalej z portem RDP na maszynie Wirtualnej.  
+Za każdym razem, gdy maszyna wirtualna z włączonym współużytkowanym ip jest dodawana do podsieci, DevTest Labs automatycznie dodaje maszynę wirtualną do modułu równoważenia obciążenia i przypisuje numer portu TCP na publiczny adres IP, przesyłając dalej do portu RDP na maszynie wirtualnej.  
 
-## <a name="using-the-shared-ip"></a>Używa udostępnionego adresu IP
+## <a name="using-the-shared-ip"></a>Korzystanie z udostępnionego adresu IP
 
-- **Użytkownicy systemu Linux:** SSH z maszyną Wirtualną przy użyciu adresu IP lub w pełni kwalifikowaną nazwę domeny, następuje dwukropek i numer portu. Na przykład na poniższej ilustracji adresu protokołu RDP do połączenia z maszyną wirtualną jest `mydevtestlab597975021002.eastus.cloudapp.azure.com:50661`.
+- **Użytkownicy Linuksa:** SSH do maszyny Wirtualnej przy użyciu adresu IP lub w pełni kwalifikowana nazwa domeny, a następnie dwukropek, a następnie port. Na przykład na poniższej ilustracji adres RDP do `mydevtestlab597975021002.eastus.cloudapp.azure.com:50661`łączenia się z maszyną wirtualną to .
 
-  ![Przykładzie dotyczącym maszyny Wirtualnej](media/devtest-lab-shared-ip/vm-info.png)
+  ![Przykład maszyny Wirtualnej](media/devtest-lab-shared-ip/vm-info.png)
 
-- **Użytkownicy Windows:** Wybierz **Connect** przycisku w witrynie Azure portal, aby pobrać wstępnie skonfigurowane pliku RDP i dostęp do maszyny Wirtualnej.
+- **Użytkownicy systemu Windows:** Wybierz przycisk **Połącz** w witrynie Azure portal, aby pobrać wstępnie skonfigurowany plik RDP i uzyskać dostęp do maszyny Wirtualnej.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Definiowanie zasad laboratorium Azure DevTest Labs](devtest-lab-set-lab-policy.md)
-* [Konfigurowanie sieci wirtualnej w usłudze Azure DevTest Labs](devtest-lab-configure-vnet.md)
+* [Definiowanie zasad laboratoryjnych w laboratoriach devtest azure](devtest-lab-set-lab-policy.md)
+* [Konfigurowanie sieci wirtualnej w laboratorium devtest platformy Azure](devtest-lab-configure-vnet.md)
 
 
 

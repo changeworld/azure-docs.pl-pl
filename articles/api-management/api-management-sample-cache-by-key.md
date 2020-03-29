@@ -1,6 +1,6 @@
 ---
 title: Buforowanie niestandardowe w usłudze Azure API Management
-description: Dowiedz się, jak buforowania elementów według klucza w usłudze Azure API Management
+description: Dowiedz się, jak buforować elementy według klucza w usłudze Azure API Management
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -15,22 +15,22 @@ ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 922ab731ccd76e6a1336d61abe4b0251e358beb7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60780825"
 ---
 # <a name="custom-caching-in-azure-api-management"></a>Buforowanie niestandardowe w usłudze Azure API Management
-Usługa API Management ma wbudowaną obsługę [buforowanie odpowiedzi HTTP](api-management-howto-cache.md) przy użyciu adresu URL zasobu jako klucza. Klucz może być modyfikowana przez nagłówki żądania przy użyciu `vary-by` właściwości. Jest to przydatne buforowanie całej odpowiedzi HTTP (zwane również reprezentacje), ale czasami przydaje się tylko w pamięci podręcznej część reprezentację. Nowy [wartość w pamięci podręcznej — wyszukiwanie](/azure/api-management/api-management-caching-policies#GetFromCacheByKey) i [wartość w przypadku magazynu pamięci podręcznej](/azure/api-management/api-management-caching-policies#StoreToCacheByKey) zasady zapewniają możliwość przechowywania i pobierania dowolnych rodzajów danych z poziomu definicji zasad. Ta możliwość również dodaje wartość do uprzednio wprowadzonych [żądań wysłania](/azure/api-management/api-management-advanced-policies#SendRequest) zasad, ponieważ teraz można buforować odpowiedzi z usług zewnętrznych.
+Usługa Azure API Management ma wbudowaną obsługę [buforowania odpowiedzi HTTP](api-management-howto-cache.md) przy użyciu adresu URL zasobu jako klucza. Klucz może być modyfikowany przez nagłówki `vary-by` żądań przy użyciu właściwości. Jest to przydatne do buforowania całych odpowiedzi HTTP (aka reprezentacje), ale czasami jest to przydatne tylko do pamięci podręcznej część reprezentacji. Nowe zasady [wartości wyszukiwania pamięci podręcznej](/azure/api-management/api-management-caching-policies#GetFromCacheByKey) i [magazynu pamięci podręcznej](/azure/api-management/api-management-caching-policies#StoreToCacheByKey) zapewniają możliwość przechowywania i pobierania dowolnych fragmentów danych z definicji zasad. Ta możliwość dodaje również wartość do wcześniej wprowadzonych zasad [wysyłania żądań,](/azure/api-management/api-management-advanced-policies#SendRequest) ponieważ można teraz buforować odpowiedzi z usług zewnętrznych.
 
 ## <a name="architecture"></a>Architektura
-Usługa API Management używa usługi danych dzierżawy udostępnionej pamięci podręcznej tak, aby jako skalowanie do wielu jednostek nadal uzyskać dostęp do tej samej buforowanych danych. Podczas pracy z wdrożenie w wielu regionach istnieją niezależnie od pamięci podręcznej w każdym z regionów. Należy traktuje pamięć podręczną do przechowywania danych, w których jest tylko źródło jakiegoś fragmentu informacji. Jeśli została, a później zdecydowała się korzystać z zalet wdrożenie w wielu regionach, klienci z użytkowników, którzy podróżują mogą stracić dostęp do pamięci podręcznej danych.
+Usługa API Management używa udostępnionej pamięci podręcznej danych dla dzierżawy, dzięki czemu podczas skalowania do wielu jednostek nadal uzyskujesz dostęp do tych samych danych w pamięci podręcznej. Jednak podczas pracy z wdrożeniem wielu regionów istnieją niezależne pamięci podręczne w każdym z regionów. Ważne jest, aby nie traktować pamięci podręcznej jako magazynu danych, gdzie jest jedynym źródłem niektórych informacji. Jeśli to zrobisz, a później zdecydujesz się skorzystać z wdrożenia w wielu regionach, klienci z użytkownikami, którzy podróżują, mogą utracić dostęp do tych buforowanych danych.
 
-## <a name="fragment-caching"></a>Buforowanie fragmentu
-Istnieją niektórych przypadki, gdzie odpowiedzi zwracanych zawierać niektórych części danych, jest kosztowna określić, która jeszcze pozostaje świeże rozsądnym czasie. Na przykład należy wziąć pod uwagę w oferująca linii lotniczej, która zawiera informacje dotyczące stanu lotu Rezerwacje lotów, itp. Jeśli użytkownik jest członkiem programu punktów linii lotniczych, będzie również musiał informacje odnoszące się do ich bieżący stan i zgromadzonych przebiegu. Te informacje dotyczące użytkowników mogą być przechowywane w innym systemie, ale może być pożądane, aby uwzględnić go w odpowiedzi zostały zwrócone informacje stanu lotu i zastrzeżenia. Można to zrobić w procesie nazywanym fragmentu pamięci podręcznej. Reprezentacja podstawowego mogą być zwracane z serwera pochodzenia przy użyciu pewnego rodzaju token, aby wskazać, gdzie ma zostać wstawiony informacji dotyczących użytkownika. 
+## <a name="fragment-caching"></a>Buforowanie fragmentów
+Istnieją pewne przypadki, w których zwracane odpowiedzi zawierają pewną część danych, które są kosztowne do ustalenia, a mimo to pozostają świeże przez rozsądny czas. Na przykład rozważmy usługę wybudowaną przez linię lotniczą, która dostarcza informacji dotyczących rezerwacji lotów, statusu lotu itp. Jeśli użytkownik jest członkiem programu punktów linii lotniczych, będzie miał również informacje dotyczące ich aktualnego statusu i skumulowanego przebiegu. Te informacje związane z użytkownikiem mogą być przechowywane w innym systemie, ale może być pożądane, aby uwzględnić je w odpowiedziach zwróconych na temat statusu lotu i rezerwacji. Można to zrobić za pomocą procesu o nazwie buforowanie fragmentów. Reprezentacja podstawowa może zostać zwrócona z serwera pochodzenia przy użyciu pewnego rodzaju tokenu, aby wskazać, gdzie mają być wstawiane informacje związane z użytkownikiem. 
 
-Należy wziąć pod uwagę następujące odpowiedź JSON z interfejsu API zaplecza.
+Należy wziąć pod uwagę następującą odpowiedź JSON z interfejsu API wewnętrznej bazy danych.
 
 ```json
 {
@@ -43,13 +43,13 @@ Należy wziąć pod uwagę następujące odpowiedź JSON z interfejsu API zaplec
 }  
 ```
 
-I dodatkowych zasobów w `/userprofile/{userid}` który wygląda podobnie,
+A drugorzędne zasoby w `/userprofile/{userid}` tym wygląda,
 
 ```json
 { "username" : "Bob Smith", "Status" : "Gold" }
 ```
 
-Aby określić odpowiednie informacje dotyczące użytkownika, obejmujący usługi API Management należy określić, kim jest użytkownik końcowy. Ten mechanizm jest zależna od implementacji. Na przykład używam `Subject` oświadczeń z `JWT` tokenu. 
+Aby określić odpowiednie informacje o użytkowniku do uwzględnienia, usługa API Management musi zidentyfikować, kto jest użytkownikiem końcowym. Mechanizm ten jest zależny od implementacji. Na przykład używam `Subject` oświadczenia tokenu. `JWT` 
 
 ```xml
 <set-variable
@@ -57,7 +57,7 @@ Aby określić odpowiednie informacje dotyczące użytkownika, obejmujący usłu
   value="@(context.Request.Headers.GetValueOrDefault("Authorization","").Split(' ')[1].AsJwt()?.Subject)" />
 ```
 
-Interfejs API zarządzania magazynami `enduserid` wartość w zmiennej kontekstowej do późniejszego użycia. Następnym krokiem jest ustalenie, jeśli poprzednie żądanie ma już pobrane informacje o użytkowniku i zapisana w pamięci podręcznej. W tym celu używa usługi API Management `cache-lookup-value` zasad.
+Usługa API `enduserid` Management przechowuje wartość w zmiennej kontekstowej do późniejszego użycia. Następnym krokiem jest ustalenie, czy poprzednie żądanie zostało już pobrane informacje o użytkowniku i przechowywane w pamięci podręcznej. W tym celu usługa `cache-lookup-value` API Management używa zasad.
 
 ```xml
 <cache-lookup-value
@@ -65,7 +65,7 @@ key="@("userprofile-" + context.Variables["enduserid"])"
 variable-name="userprofile" />
 ```
 
-Jeśli pamięć podręczna, która odnosi się do wartości klucza, a następnie nie zawiera żadnego wpisu odpowiadającego `userprofile` zmiennej kontekstowej jest tworzony. Usługa API Management sprawdza sukcesu za pomocą wyszukiwania `choose` zasad przepływu sterowania.
+Jeśli w pamięci podręcznej nie ma wpisu, który `userprofile` odpowiada wartości klucza, nie jest tworzona żadna zmienna kontekstowa. Usługa API Management sprawdza powodzenie `choose` wyszukiwania przy użyciu zasad przepływu sterowania.
 
 ```xml
 <choose>
@@ -75,7 +75,7 @@ Jeśli pamięć podręczna, która odnosi się do wartości klucza, a następnie
 </choose>
 ```
 
-Jeśli `userprofile` zmiennej kontekstowej nie istnieje, a następnie usługa API Management ma zostać żądania HTTP można je pobrać.
+Jeśli `userprofile` zmienna kontekstowa nie istnieje, usługa Zarządzanie interfejsem API będzie musiała złożyć żądanie HTTP, aby ją pobrać.
 
 ```xml
 <send-request
@@ -92,7 +92,7 @@ Jeśli `userprofile` zmiennej kontekstowej nie istnieje, a następnie usługa AP
 </send-request>
 ```
 
-API Management używa `enduserid` do utworzenia adresu URL do zasobu profilu użytkownika. Gdy usługa API Management ma odpowiedzi, pobiera tekst podstawowy poza odpowiedzi i zapisuje go do zmiennej kontekstowej.
+Usługa API Management `enduserid` używa adresu URL do zasobu profilu użytkownika. Gdy usługa API Management ma odpowiedź, pobiera tekst treści z odpowiedzi i przechowuje go z powrotem do zmiennej kontekstu.
 
 ```xml
 <set-variable
@@ -100,7 +100,7 @@ API Management używa `enduserid` do utworzenia adresu URL do zasobu profilu uż
     value="@(((IResponse)context.Variables["userprofileresponse"]).Body.As<string>())" />
 ```
 
-Aby uniknąć usługi API Management z ponownie, dzięki czemu to żądanie HTTP, gdy ten sam użytkownik wykonuje kolejne żądanie, można określić, aby przechowywać profil użytkownika w pamięci podręcznej.
+Aby uniknąć zarządzania interfejsami API z dokonywania tego żądania HTTP ponownie, gdy ten sam użytkownik sprawia, że inne żądanie, można określić do przechowywania profilu użytkownika w pamięci podręcznej.
 
 ```xml
 <cache-store-value
@@ -108,11 +108,11 @@ Aby uniknąć usługi API Management z ponownie, dzięki czemu to żądanie HTTP
     value="@((string)context.Variables["userprofile"])" duration="100000" />
 ```
 
-Usługa API Management przechowuje wartość w pamięci podręcznej przy użyciu dokładnie tego samego klucza usługi API Management pierwotnie nastąpiła próba pobrania go za pomocą. Czas trwania, który wybiera usługi API Management, do przechowywania wartości powinna być oparta na jak często zmiany informacji i sposobu odpornego na błędy użytkowników są do nieaktualnych informacji. 
+Usługa API Management przechowuje wartość w pamięci podręcznej przy użyciu dokładnie tego samego klucza, z który pierwotnie próbowano pobrać go z usługą API Management. Czas trwania, który usługa API Management zdecyduje się na przechowywanie wartości, powinien zależeć od tego, jak często informacje się zmieniają i jak tolerancyjnie użytkownicy mają nieaktualne informacje. 
 
-Należy weź pod uwagę, że pobieranie z pamięci podręcznej jest nadal spoza procesu, żądania sieci i potencjalnie można nadal dodawać dziesiątki milisekundy na żądanie. Korzyści są dostarczane podczas określania, że trwa dłużej niż z powodu konieczności bazy danych w zapytaniach ani zagregowanych informacji z wielu zapleczy, informacje o profilu użytkownika.
+Należy zdać sobie sprawę, że pobieranie z pamięci podręcznej jest nadal poza procesem, żądanie sieciowe i potencjalnie nadal można dodać dziesiątki milisekund do żądania. Korzyści pochodzą podczas określania informacji o profilu użytkownika trwa dłużej niż to ze względu na konieczność wykonywania zapytań do bazy danych lub agregacji informacji z wielu zaplecza.
 
-Ostatnim krokiem w procesie jest zaktualizowanie odpowiedzi zwrócony przy użyciu informacji o profilu użytkownika.
+Ostatnim krokiem w procesie jest zaktualizowanie zwróconej odpowiedzi z informacjami o profilu użytkownika.
 
 ```xml
 <!-- Update response body with user profile-->
@@ -121,9 +121,9 @@ Ostatnim krokiem w procesie jest zaktualizowanie odpowiedzi zwrócony przy użyc
     to="@((string)context.Variables["userprofile"])" />
 ```
 
-Można wybrać, które uwzględniać znaki cudzysłowu jako część tokenu tak, aby nawet wtedy, gdy nie występuje zamiany, odpowiedź nadal jest prawidłowym plikiem JSON.  
+Można wybrać dołączyć cudzysłowy jako część tokenu, tak aby nawet wtedy, gdy zastąpić nie występuje, odpowiedź jest nadal prawidłowe JSON.  
 
-Wszystkie te kroki są łączone ze sobą, wynik końcowy po zasadę, która wygląda podobnie do poniższego.
+Po połączeniu wszystkich tych kroków razem, wynik końcowy jest zasadą, która wygląda jak następująca.
 
 ```xml
 <policies>
@@ -177,22 +177,22 @@ Wszystkie te kroki są łączone ze sobą, wynik końcowy po zasadę, która wyg
 </policies>
 ```
 
-To podejście buforowania jest używany głównie w witrynach sieci web gdzie HTML składa się po stronie serwera, dzięki czemu mogą być renderowane jako pojedynczej strony. Również może być przydatne w interfejsach API, gdzie klienci nie może wykonać po stronie klienta HTTP w pamięci podręcznej lub jest wprowadzania tej odpowiedzialności na komputerze klienckim.
+To podejście buforowania jest używane głównie w witrynach sieci web, gdzie html składa się po stronie serwera, dzięki czemu może być renderowany jako pojedyncza strona. Może to być również przydatne w interfejsach API, w których klienci nie mogą wykonywać buforowania HTTP po stronie klienta lub pożądane jest, aby nie nakładać tej odpowiedzialności na klienta.
 
-Tego samego rodzaju fragmentu pamięci podręcznej, można również wykonać na serwerach sieci web zaplecza przy użyciu pamięci podręcznej serwer Redis, jednak przy użyciu usługi API Management do wykonywania tej pracy jest przydatne, gdy fragmenty pamięci podręcznej pochodzą z zaplecza innego niż podstawowy odpowiedzi.
+Ten sam rodzaj buforowania fragmentów można również wykonać na serwerach sieci web wewnętrznej bazy danych przy użyciu serwera buforowania Redis, jednak użycie usługi API Management do wykonania tej pracy jest przydatne, gdy buforowane fragmenty pochodzą z różnych zaplecza niż podstawowe Odpowiedzi.
 
-## <a name="transparent-versioning"></a>Przechowywanie wersji przezroczyste
-Jest to powszechną praktyką w przypadku wielu wersji inną implementację interfejsu API są obsługiwane w dowolnym momencie. Na przykład w celu zapewnienia obsługi różnych środowiskach (dev, test, produkcyjne itp.) lub obsługuje starsze wersje interfejsu API, aby zapewnić czas na interfejs API w konsumentach napisanych migrację do nowszych wersji. 
+## <a name="transparent-versioning"></a>Przezroczyste przechowywanie wersji
+Jest powszechną praktyką dla wielu różnych wersji implementacji interfejsu API, które mają być obsługiwane w dowolnym momencie. Na przykład do obsługi różnych środowisk (dev, test, produkcja, itp.) lub do obsługi starszych wersji interfejsu API, aby dać czas dla konsumentów interfejsu API do migracji do nowszych wersji. 
 
-Jedno z podejść do obsługi tego zamiast klienta deweloperom zmienianie adresów URL z `/v1/customers` do `/v2/customers` jest do przechowywania danych profilu klienta, którą wersję interfejsu API obecnie chcą używać i wywoływać URL odpowiedniej wewnętrznej bazy danych. Aby określić adres URL poprawne wewnętrznej bazy danych do wywołania dla określonego klienta, należy zbadać dane konfiguracji. Buforowanie danych konfiguracji, API Management można zminimalizować spadek wydajności działania tego wyszukiwania.
+Jednym z podejść do obsługi tego, zamiast wymagać `/v1/customers` od `/v2/customers` deweloperów klienta, aby zmienić adresy URL z do jest do przechowywania w danych profilu konsumenta, która wersja interfejsu API, które obecnie chcą używać i wywołać odpowiedni adres URL wewnętrznej bazy danych. Aby określić poprawny adres URL wewnętrznej bazy danych, aby wywołać dla określonego klienta, konieczne jest zapytanie niektórych danych konfiguracji. Buforując te dane konfiguracji, zarządzanie interfejsem API można zminimalizować karę wydajności wykonywania tego wyszukiwania.
 
-Pierwszym krokiem jest ustalenie, identyfikator używany do konfigurowania żądanej wersji. W tym przykładzie wybrano skojarzyć wersji klucza subskrypcji produktu. 
+Pierwszym krokiem jest określenie identyfikatora używanego do konfigurowania żądanej wersji. W tym przykładzie wybrałem skojarzenie wersji z kluczem subskrypcji produktu. 
 
 ```xml
 <set-variable name="clientid" value="@(context.Subscription.Key)" />
 ```
 
-Usługa API Management jest następnie przeszukiwania pamięci podręcznej, aby zobaczyć, czy już pobierane żądanej wersji.
+Zarządzanie interfejsem API następnie wykonuje wyszukiwanie w pamięci podręcznej, aby sprawdzić, czy została już pobrana żądana wersja klienta.
 
 ```xml
 <cache-lookup-value
@@ -200,14 +200,14 @@ key="@("clientversion-" + context.Variables["clientid"])"
 variable-name="clientversion" />
 ```
 
-Następnie usługa API Management sprawdza, jeśli go nie znaleziono go w pamięci podręcznej.
+Następnie usługa API Management sprawdza, czy nie znajduje się w pamięci podręcznej.
 
 ```xml
 <choose>
     <when condition="@(!context.Variables.ContainsKey("clientversion"))">
 ```
 
-Jeśli usługa API Management nie znaleźć, API Management pobiera je.
+Jeśli usługa API Management go nie znalazła, usługa API Management ją odbierze.
 
 ```xml
 <send-request
@@ -228,7 +228,7 @@ Wyodrębnij tekst treści odpowiedzi z odpowiedzi.
       value="@(((IResponse)context.Variables["clientconfiguresponse"]).Body.As<string>())" />
 ```
 
-Store go w pamięci podręcznej do użytku w przyszłości.
+Przechowuj go z powrotem w pamięci podręcznej do wykorzystania w przyszłości.
 
 ```xml
 <cache-store-value
@@ -237,14 +237,14 @@ Store go w pamięci podręcznej do użytku w przyszłości.
       duration="100000" />
 ```
 
-A na koniec zaktualizuj adres URL zaplecza do wybrania wersji usługi żądanego przez klienta.
+I na koniec zaktualizować adres URL zaplecza, aby wybrać wersję usługi żądaną przez klienta.
 
 ```xml
 <set-backend-service
       base-url="@(context.Api.ServiceUrl.ToString() + "api/" + (string)context.Variables["clientversion"] + "/")" />
 ```
 
-Pełne zasad jest następująca:
+Pełna polityka jest następująca:
 
 ```xml
 <inbound>
@@ -269,12 +269,12 @@ Pełne zasad jest następująca:
 </inbound>
 ```
 
-Włączanie interfejsu API w konsumentach napisanych przezroczyste kontrolować, która wersja wewnętrznej bazy danych jest uzyskiwany przez klientów bez konieczności aktualizacji i ponownego wdrożenia klientów to elegancki rozwiązanie, które eliminuje wiele problemów przechowywanie wersji interfejsu API.
+Umożliwienie użytkownikom interfejsu API przejrzystego kontrolowania, która wersja wewnętrznej bazy danych jest dostępna dla klientów bez konieczności aktualizowania i ponownego rozmieszczania klientów, jest eleganckim rozwiązaniem, które rozwiązuje wiele problemów związanych z przechowywaniem wersji interfejsu API.
 
-## <a name="tenant-isolation"></a>Izolacji dzierżawcy
-We wdrożeniach wielodostępnych, większy niektóre firmy utworzenie oddzielnych grup dzierżaw na różnych wdrożeń sprzętu wewnętrznej bazy danych. Pozwala to zmniejszyć liczbę klientów, którzy mają wpływ problem ze sprzętem w wewnętrznej bazie danych. Umożliwia ona także nowe wersje oprogramowania do etapowo wdrażana w etapach. W idealnym tej architektury wewnętrznej bazy danych, powinny być przezroczyste dla konsumentów interfejsu API. Można to osiągnąć w podobny sposób jak przezroczyste przechowywania wersji, ponieważ jest on oparty na tej samej techniki, manipulowania URL wewnętrznej bazy danych przy użyciu stanu konfiguracji dla klucza interfejsu API.  
+## <a name="tenant-isolation"></a>Izolacja dzierżawy
+W większych wdrożeniach z wieloma dzierżawcami niektóre firmy tworzą oddzielne grupy dzierżaw na różnych wdrożeniach sprzętu zaplecza. Minimalizuje to liczbę klientów, których dotyczy problem ze sprzętem w wewnętrznej bazy danych. Umożliwia również wdrażanie nowych wersji oprogramowania etapami. Najlepiej ta architektura wewnętrznej bazy danych powinna być przezroczysta dla konsumentów interfejsu API. Można to osiągnąć w sposób podobny do przezroczystego przechowywania wersji, ponieważ jest on oparty na tej samej technice manipulowania adresem URL wewnętrznej bazy danych przy użyciu stanu konfiguracji na klucz interfejsu API.  
 
-Zamiast zwracać preferowaną wersję interfejsu API dla każdego klucza subskrypcji, zwróci identyfikator, który odnosi się dzierżawy do niej przypisane sprzętu. Ten identyfikator może służyć do utworzenia adresu URL odpowiedniego serwera zaplecza.
+Zamiast zwracać preferowaną wersję interfejsu API dla każdego klucza subskrypcji, należy zwrócić identyfikator, który odnosi się do dzierżawy do przypisanej grupy sprzętu. Ten identyfikator może służyć do konstruowania odpowiedniego adresu URL wewnętrznej bazy danych.
 
 ## <a name="summary"></a>Podsumowanie
-Użytkownicy mogą korzystać z pamięci podręcznej management interfejsu API platformy Azure do przechowywania dowolnego typu danych umożliwia skutecznego dostępu do danych konfiguracji, które mogą mieć wpływ na sposób, w jaki przychodzące żądanie jest przetwarzane. Może on także służyć do przechowywania fragmentów danych, które można rozszerzyć odpowiedzi, zostały zwrócone z interfejsu API zaplecza.
+Swoboda używania pamięci podręcznej zarządzania interfejsem Azure do przechowywania dowolnego rodzaju danych umożliwia wydajny dostęp do danych konfiguracyjnych, które mogą mieć wpływ na sposób przetwarzania żądania przychodzącego. Może również służyć do przechowywania fragmentów danych, które mogą rozszerzać odpowiedzi, zwracane z interfejsu API wewnętrznej bazy danych.

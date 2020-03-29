@@ -1,6 +1,6 @@
 ---
-title: Blok podsumowania urządzenia StorSimple Virtual Array | Dokumentacja firmy Microsoft
-description: W tym artykule opisano blok podsumowania urządzenia dla Menedżera urządzeń StorSimple i wyjaśniono, jak korzystać z niego do monitorowania kondycji rozwiązania StorSimple Virtual Array.
+title: Blok podsumowania urządzenia StorSimple Virtual Array | Dokumenty firmy Microsoft
+description: W tym artykule opisano blok podsumowania urządzenia dla Menedżera urządzeń StorSimple i wyjaśniono, jak go używać do monitorowania kondycji tablicy wirtualnej StorSimple.
 services: storsimple
 documentationcenter: ''
 author: manuaery
@@ -15,19 +15,19 @@ ms.workload: na
 ms.date: 11/29/2016
 ms.author: manuaery
 ms.openlocfilehash: 9edc0b552f5c2f38e646bc4b44dd8df5c16b0457
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61408510"
 ---
-# <a name="use-the-device-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>Użyj bloku podsumowanie urządzenia dla Menedżera urządzeń StorSimple połączyć rozwiązania StorSimple Virtual Array
+# <a name="use-the-device-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>Użyj bloku podsumowania urządzenia dla Menedżera urządzeń StorSimple podłączonego do tablicy wirtualnej StorSimple
 
 ## <a name="overview"></a>Omówienie
 
-Blok urządzeń Menedżer urządzeń StorSimple zapewnia widok podsumowania macierzy wirtualnej StorSimple, która jest zarejestrowana przy użyciu danego Menedżera urządzeń StorSimple, wyróżnianie tych problemów z urządzeniami, które wymagają uwagi administratora systemu. W tym samouczku przedstawiono bloku podsumowanie urządzenia, opisano zawartości i funkcji, a następnie w tym artykule opisano zadania, które można wykonywać z tego bloku.
+Blok urządzenia StorSimple Device Manager zawiera widok podsumowania tablicy wirtualnej StorSimple, która jest zarejestrowana w danym Menedżerze urządzeń StorSimple, podkreślając te problemy z urządzeniem, które wymagają uwagi administratora systemu. W tym samouczku przedstawiono blok podsumowania urządzenia, wyjaśniono zawartość i funkcję oraz opisano zadania, które można wykonać z tego bloku.
 
-W bloku podsumowanie urządzeń zawiera następujące informacje:
+W bloku podsumowania urządzenia wyświetlane są następujące informacje:
 
 ![Pulpit nawigacyjny urządzenia](./media/storsimple-virtual-array-device-summary/device-blade.png)
 
@@ -35,25 +35,25 @@ W bloku podsumowanie urządzeń zawiera następujące informacje:
 
 ## <a name="management"></a>Zarządzanie
 
-W bloku urządzenia StorSimple zobaczysz opcje służące do zarządzania urządzeniem StorSimple. Polecenia zarządzania zostanie wyświetlony wzdłuż górnej części bloku i po lewej stronie. Te opcje umożliwiają dodawanie udziałów lub woluminów, zaktualizować lub macierz wirtualna w trybie Failover.
+W storsimple urządzenia bloku, zobaczysz opcje zarządzania urządzeniem StorSimple. Polecenia zarządzania są widoczne w górnej części bloku i po lewej stronie. Użyj tych opcji, aby dodać udziały lub woluminy, zaktualizować lub przejrzyć po awarii tablicy wirtualnej.
 
-W obszarze essentials przechwytuje niektóre ważne właściwości, takie jak stan, modelu, wersji oprogramowania, a także łącze do **interfejs użytkownika sieci Web** tablicy. Jeśli w sieci wewnętrznej, możesz bezpośrednio uruchomić [lokalnego Interfejsu w przeglądarce](storsimple-ova-web-ui-admin.md) do administrowania macierz wirtualna.
+Podstawowy obszar przechwytuje niektóre z ważnych właściwości, takich jak stan, model, wersja oprogramowania, a także łącze do **interfejsu użytkownika sieci Web** tablicy. Jeśli korzystasz z sieci wewnętrznej, możesz bezpośrednio uruchomić [lokalny interfejs użytkownika sieci Web](storsimple-ova-web-ui-admin.md) w celu administrowania macierzą wirtualną.
 
-![Podstawowe informacje dotyczące urządzeń](./media/storsimple-virtual-array-device-summary/device-essentials.png)
+![Podstawowe informacje o urządzeniu](./media/storsimple-virtual-array-device-summary/device-essentials.png)
 
-## <a name="storsimple-device-summary"></a>Podsumowanie urządzenia StorSimple
+## <a name="storsimple-device-summary"></a>StorSimple podsumowanie urządzenia
 
-* **Alerty** Kafelek zawiera migawkę wszystkich aktywnych alertów macierz wirtualna pogrupowane według ważności alertu. Kliknij Kafelek, aby otworzyć **alerty** bloku, a następnie kliknij alert indywidualny, aby wyświetlić dodatkowe szczegóły dotyczące tego alertu, wraz ze wszystkimi zalecane akcje. Można także wyczyścić ten alert, jeśli problem został rozwiązany.
+* **Kafelek Alerty** zawiera migawkę wszystkich aktywnych alertów dla tablicy wirtualnej, pogrupowane według ważności alertu. Kliknij kafelek, aby otworzyć blok **Alerty,** a następnie kliknij pojedynczy alert, aby wyświetlić dodatkowe szczegóły dotyczące tego alertu, w tym wszelkie zalecane akcje. Można również wyczyścić alert, jeśli problem został rozwiązany.
 
-* **Pojemności** Kafelek Wyświetla magazynu podstawowego, która jest obsługiwana i pozostałe w obrębie urządzenia wirtualnego względem całkowita ilość miejsca dostępna dla tego samego. **Zainicjowano obsługę administracyjną** odwołuje się do miejsca do magazynowania, który jest przygotowany i przydzielona do użycia, **pozostałe** odwołuje się do pozostałych pojemności, które mogą być udostępniane na tym urządzeniu. **Pozostałe warstwy** pojemność to dostępnej pojemności, które mogą być udostępniane w chmurze, w tym podczas **pozostałe lokalnego** jest pojemność na dyski dołączone do tej macierzy wirtualnej.
+* Kafelek **Capacity** wyświetla magazyn podstawowy, który jest aprowizowana i pozostają na urządzeniu wirtualnym względem całkowitej dostępnej dla tego samego miejsca. **Aprowizowana** dotyczy ilości magazynu, który jest przygotowany i przydzielony do użycia, **Pozostałe** odnosi się do pozostałej pojemności, które mogą być aprowizacji na tym urządzeniu. **Pozostała pojemność warstwowa** to dostępna pojemność, która może być aprowizowana, w tym chmura, podczas gdy **pozostała lokalizacja** to pojemność pozostała na dyskach dołączonych do tej tablicy wirtualnej.
 
-* W **użycia** wykresu, można wyświetlić podstawowym magazynem używanym przez macierz wirtualna, a także magazynu w chmurze używane w ciągu ostatnich 7 dni, domyślny okres czasu. Użyj **Edytuj** opcję w prawym górnym rogu wykresu, aby wybrać inny czas skalowania.
+* Na wykresie **Użycia** można wyświetlić magazyn podstawowy używany w macierzy wirtualnej, a także magazyn w chmurze zużywany w ciągu ostatnich 7 dni, czyli domyślny okres czasu. Użyj opcji **Edytuj** w prawym górnym rogu wykresu, aby wybrać inną skalę czasu.
 
-* **Udziałów** lub **woluminów** Kafelek zawiera podsumowanie liczby udział lub wolumin w urządzeniu, pogrupowane według stanu. Kliknij Kafelek, aby otworzyć **udziałów** lub **woluminów** listy bloku, a następnie kliknij na dany udział lub wolumin, aby wyświetlić lub zmodyfikować jego właściwości. Aby uzyskać więcej informacji, zobacz instrukcje [Zarządzanie udziałami](storsimple-virtual-array-manage-shares.md) lub [Zarządzanie woluminami](storsimple-virtual-array-manage-volumes.md).
+* Kafelek **Udziały** lub **woluminy** zawiera podsumowanie liczby udziałów lub woluminów w urządzeniu pogrupowanych według stanu. Kliknij kafelek, aby otworzyć blok listy **Udziały** lub **Objętości,** a następnie kliknij pojedynczy udział lub wolumin, aby wyświetlić lub zmodyfikować jego właściwości. Aby uzyskać więcej informacji, zobacz jak [zarządzać udziałami](storsimple-virtual-array-manage-shares.md) lub [zarządzać wolumenami](storsimple-virtual-array-manage-volumes.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Instrukcje:
-- [Zarządzanie udziałami w macierzy wirtualnej StorSimple](storsimple-virtual-array-manage-shares.md)
+- [Zarządzanie udziałami w tablicy wirtualnej StorSimple](storsimple-virtual-array-manage-shares.md)
     
-- [Zarządzanie woluminami w macierzy wirtualnej StorSimple](storsimple-virtual-array-manage-volumes.md)
+- [Zarządzanie woluminami w tablicy wirtualnej StorSimple](storsimple-virtual-array-manage-volumes.md)
 

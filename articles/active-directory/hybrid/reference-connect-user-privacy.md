@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure AD Connect i użytkownika zachowania | Dokumentacja firmy Microsoft
-description: W tym dokumencie opisano sposób uzyskiwania zgodności z rozporządzeniem RODO za pomocą usługi Azure AD Connect.
+title: Usługa Azure AD Connect i prywatność użytkowników | Dokumenty firmy Microsoft
+description: W tym dokumencie opisano sposób uzyskiwania zgodności RODO z usługą Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,44 +16,44 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6f5d3125b7b77e8ce7a943f640c44615049ab160
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60455788"
 ---
-# <a name="user-privacy-and-azure-ad-connect"></a>Prywatność użytkownika i program Azure AD Connect 
+# <a name="user-privacy-and-azure-ad-connect"></a>Prywatność użytkowników i usługa Azure AD Connect 
 
 [!INCLUDE [Privacy](../../../includes/gdpr-intro-sentence.md)]
 
 >[!NOTE] 
->W tym artykule dotyczy usługi Azure AD Connect i użytkownika ochrony prywatności.  Instrukcje dotyczące usługi Azure AD Connect Health i użytkownika ochrony prywatności, zobacz artykuł [tutaj](reference-connect-health-user-privacy.md).
+>Ten artykuł dotyczy usługi Azure AD Connect i prywatności użytkowników.  Aby uzyskać informacje na temat usługi Azure AD Connect Health i prywatności użytkowników, zobacz artykuł [tutaj](reference-connect-health-user-privacy.md).
 
-Poprawa ochrony prywatności użytkowników w przypadku instalacji usługi Azure AD Connect na dwa sposoby:
+Zwiększ prywatność użytkowników w przypadku instalacji usługi Azure AD Connect na dwa sposoby:
 
-1.  Na żądanie wyodrębnianie danych dla osoby i usunąć dane z tej osoby z instalacji
+1.  Na żądanie, wyodrębnić dane dla osoby i usunąć dane od tej osoby z instalacji
 2.  Upewnij się, że żadne dane nie są przechowywane dłużej niż 48 godzin.
 
-Zespół usługi Azure AD Connect zaleca druga opcja, ponieważ jest znacznie łatwiejsze do wdrożenia i konserwacji.
+Zespół usługi Azure AD Connect zaleca drugą opcję, ponieważ jest znacznie łatwiejsze do zaimplementowania i utrzymania.
 
-Następujące dane ochrony prywatności użytkowników są przechowywane w serwera usługi Azure AD Connect sync:
-1.  Dane o osobie w **bazy danych usługi Azure AD Connect**
-2.  Dane w **dziennika zdarzeń Windows** pliki zawierające informacje o osobie
-3.  Dane w **pliki dzienników instalacji program Azure AD Connect** zawierających temat osoby
+Serwer synchronizacji usługi Azure AD Connect przechowuje następujące dane dotyczące prywatności użytkownika:
+1.  Dane o osobie w **bazie danych usługi Azure AD Connect**
+2.  Dane w plikach **dziennika zdarzeń systemu Windows,** które mogą zawierać informacje o osobie
+3.  Dane w **plikach dziennika instalacji usługi Azure AD Connect,** które mogą zawierać informacje o osobie
 
-Klienci usługi Azure AD Connect należy używać następujących wytycznych podczas usuwania danych użytkownika:
-1.  Usuń zawartość folderu, który zawiera pliki dziennika instalacji program Azure AD Connect w regularnych odstępach czasu — co najmniej raz 48 godzin
-2.  Ten produkt może również tworzyć dzienniki zdarzeń.  Aby dowiedzieć się więcej na temat dzienników dzienniki zdarzeń, zobacz [w tej dokumentacji](https://msdn.microsoft.com/library/windows/desktop/aa385780.aspx).
+Klienci usługi Azure AD Connect powinni używać następujących wskazówek podczas usuwania danych użytkownika:
+1.  Regularnie usuwaj zawartość folderu zawierającego pliki dziennika instalacji usługi Azure AD Connect — co najmniej co 48 godzin
+2.  Ten produkt może również tworzyć dzienniki zdarzeń.  Aby dowiedzieć się więcej o dziennikach dzienników zdarzeń, zapoznaj się z [dokumentacją tutaj](https://msdn.microsoft.com/library/windows/desktop/aa385780.aspx).
 
-Po usunięciu danych przez osobę z systemu źródłowego, z którego pochodzi z danych dotyczących osoby zostanie automatycznie usunięty z bazy danych programu Azure AD Connect. Brak określonej czynności z administratorów musi być zgodny z RODO.  Jednak wymaga, że danych usługi Azure AD Connect jest zsynchronizowany z źródła danych, co dwa dni.
+Dane o osobie są automatycznie usuwane z bazy danych usługi Azure AD Connect, gdy dane tej osoby są usuwane z systemu źródłowego, z którego pochodzą. Nie jest wymagane żadne konkretne działania ze strony administratorów, aby były zgodne z RODO.  Jednak wymaga, aby dane usługi Azure AD Connect były synchronizowane ze źródłem danych co najmniej co dwa dni.
 
-## <a name="delete-the-azure-ad-connect-installation-log-file-folder-contents"></a>Usuń zawartość folderu pliku dziennika instalacji program Azure AD Connect
-Regularne sprawdzanie i usunąć zawartość **c:\programdata\aadconnect** folder — z wyjątkiem **PersistedState.Xml** pliku. Ten plik przechowuje informacje o stanie poprzedniej instalacji programu Azure Connect i jest używany, gdy przeprowadzane jest uaktualnianie instalacji. Ten plik nie zawiera żadnych danych dotyczących osoby i nie należy go usunąć.
+## <a name="delete-the-azure-ad-connect-installation-log-file-folder-contents"></a>Usuwanie zawartości folderu dziennika instalacji usługi Azure AD Connect
+Regularnie sprawdzaj i usuwaj zawartość folderu **c:\programdata\aadconnect** – z wyjątkiem pliku **PersistedState.Xml.** Ten plik zachowuje stan poprzedniej instalacji usługi Azure A Connect i jest używany podczas wykonywania instalacji uaktualnienia. Ten plik nie zawiera żadnych danych o osobie i nie powinien być usuwany.
 
 >[!IMPORTANT]
->Nie należy usuwać plików PersistedState.xml.  Ten plik nie zawiera żadnych informacji użytkownika i przechowuje informacje o stanie poprzedniej instalacji.
+>Nie należy usuwać pliku PersistedState.xml.  Ten plik nie zawiera żadnych informacji o użytkowniku i zachowuje stan poprzedniej instalacji.
 
-Możesz przejrzeć i usunąć te pliki przy użyciu Eksploratora Windows lub skryptu, podobnie do poniższego umożliwia wykonać niezbędne czynności:
+Można przejrzeć i usunąć te pliki za pomocą Eksploratora Windows lub użyć skryptu, takiego jak następujące, aby wykonać niezbędne akcje:
 
 
 ```
@@ -64,24 +64,24 @@ If ($File.ToUpper() -ne "$env:programdata\aadconnect\PERSISTEDSTATE.XML".toupper
     } 
 ```
 
-### <a name="schedule-this-script-to-run-every-48-hours"></a>Planowanie tego skryptu do uruchomienia każdego 48 godzin
-Wykonaj następujące kroki, aby zaplanować skrypt do uruchomienia każdego 48 godzin.
+### <a name="schedule-this-script-to-run-every-48-hours"></a>Zaplanuj uruchamianie tego skryptu co 48 godzin
+Poniższe kroki można zaplanować uruchamianie skryptu co 48 godzin.
 
-1.  Zapisz skrypt w pliku z rozszerzeniem  **&#46;PS1**, a następnie otwórz Panel sterowania i kliknij pozycję **systemów i zabezpieczeniami**.
+1.  Zapisz skrypt w pliku z rozszerzeniem **&#46;PS1**, a następnie otwórz Panel sterowania i kliknij **systemy i zabezpieczenia**.
     ![System](./media/reference-connect-user-privacy/gdpr2.png)
 
-2.  W pozycji Narzędzia administracyjne kliknij **harmonogram zadań**.
-    ![Zadanie](./media/reference-connect-user-privacy/gdpr3.png)
-3.  W harmonogramie zadań, kliknij prawym przyciskiem myszy **Biblioteka Harmonogramu zadań** i kliknij pozycję **utworzyć podstawowe zadania...**
-4.  Wprowadź nazwę dla nowego zadania, a następnie kliknij przycisk **dalej**.
-5.  Wybierz **codzienne** wyzwalacz zadania i kliknij pozycję **dalej**.
-6.  Wartość cyklu **2 dni** i kliknij przycisk **dalej**.
-7.  Wybierz **uruchomić program** jako akcji, a następnie kliknij pozycję **dalej**.
-8.  Typ **PowerShell** pole dla programu/skryptu i w polu etykietą **Dodaj argumenty (opcjonalne)** , wprowadź pełną ścieżkę do skryptu, który został utworzony wcześniej, a następnie kliknij przycisk **dalej**.
-9.  Następny ekran pokazuje, podsumowania zadania, które chcesz utworzyć. Sprawdź wartości, a następnie kliknij przycisk **Zakończ** do utworzenia zadania.
+2.  W nagłówku Narzędzia administracyjne kliknij pozycję **Zaplanuj zadania**.
+    ![Zadanie podrzędne](./media/reference-connect-user-privacy/gdpr3.png)
+3.  W Harmonogramie zadań kliknij prawym przyciskiem myszy **bibliotekę harmonogramu zadań** i kliknij pozycję **Utwórz zadanie podstawowe...**
+4.  Wprowadź nazwę nowego zadania i kliknij przycisk **Dalej**.
+5.  Wybierz **opcję Codziennie** dla wyzwalacza zadania i kliknij przycisk **Dalej**.
+6.  Ustaw cykl na **2 dni** i kliknij przycisk **Dalej**.
+7.  Wybierz **pozycję Uruchom program** jako akcję i kliknij przycisk **Dalej**.
+8.  Wpisz program **PowerShell** w polu programu/skryptu, a w polu **Dodaj argumenty (opcjonalnie)** wprowadź pełną ścieżkę do skryptu utworzonego wcześniej, a następnie kliknij przycisk **Dalej**.
+9.  Na następnym ekranie zostanie wyświetlenie podsumowania zadania, które zamierzasz utworzyć. Sprawdź wartości i kliknij przycisk **Zakończ,** aby utworzyć zadanie.
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
-* [Przegląd zasad Privacy firmy Microsoft w Centrum zaufania](https://www.microsoft.com/trustcenter)
-* [Azure AD Connect Health i ochrony prywatności użytkowników](reference-connect-health-user-privacy.md)
+## <a name="next-steps"></a>Następne kroki
+* [Zapoznaj się z zasadami zachowania poufności firmy Microsoft w Centrum zaufania](https://www.microsoft.com/trustcenter)
+* [Kondycja usługi Azure AD Connect i prywatność użytkowników](reference-connect-health-user-privacy.md)

@@ -1,67 +1,67 @@
 ---
-title: Tworzenie i eksplorowanie zestawów danych przy użyciu etykiet
+title: Tworzenie i eksplorowanie zestawów danych za pomocą etykiet
 titleSuffix: Azure Machine Learning
-description: Dowiedz się, jak eksportować etykiety danych z Azure Machine Learning etykietowania projektów i używać ich do zadań uczenia maszynowego.
+description: Dowiedz się, jak eksportować etykiety danych z projektów etykietowania usługi Azure Machine Learning i używać ich do zadań uczenia maszynowego.
 author: nibaccam
 ms.author: nibaccam
 ms.service: machine-learning
 ms.topic: how-to
 ms.date: 01/21/2020
 ms.openlocfilehash: 5138109de3f80d405ce95b605714b511480563f5
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76549491"
 ---
-# <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>Tworzenie i eksplorowanie zestawu danych Azure Machine Learning przy użyciu etykiet
+# <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>Tworzenie i eksplorowanie zestawu danych usługi Azure Machine Learning za pomocą etykiet
 
-W tym artykule dowiesz się, jak eksportować etykiety danych z Azure Machine Learning projektu etykietowania danych i ładować je do popularnych formatów, takich jak Pandas Dataframe na potrzeby eksploracji danych lub zestawu danych Torchvision na potrzeby transformacji obrazu. 
+W tym artykule dowiesz się, jak wyeksportować etykiety danych z projektu etykietowania danych usługi Azure Machine Learning i załadować je do popularnych formatów, takich jak pandas dataframe do eksploracji danych lub zestaw danych Torchvision do transformacji obrazu. 
 
 ## <a name="what-are-datasets-with-labels"></a>Co to są zestawy danych z etykietami 
 
-Azure Machine Learning zestawy danych z etykietami są [TabularDatasets](how-to-create-register-datasets.md#dataset-types) z właściwością etykieta, będziemy odwoływać się do nich jako zestawy danych z etykietami. Te określone typy TabularDatasets są tworzone tylko jako dane wyjściowe projektów etykietowania danych Azure Machine Learning. Utwórz projekt etykietowania danych z [tymi krokami](how-to-create-labeling-projects.md). Machine Learning obsługuje projekty etykietowania danych dla klasyfikacji obrazów, wiele etykiet lub wiele klas oraz identyfikację obiektów razem z ograniczonymi polami.
+Zestawy danych usługi Azure Machine Learning z etykietami są [zestawami kartotekowymi](how-to-create-register-datasets.md#dataset-types) z właściwością etykiety, będziemy odwoływać się do nich jako zestawy danych etykiet. Te określone typy Zestawów danych tabelaryczne są tworzone tylko jako dane wyjściowe projektów etykietowania danych usługi Azure Machine Learning. Utwórz projekt etykietowania danych za pomocą [tych kroków](how-to-create-labeling-projects.md). Uczenie maszynowe obsługuje projekty etykietowania danych do klasyfikacji obrazów, wieloznakowe lub wieloklasowe oraz identyfikację obiektów wraz z ograniczonymi polami.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://aka.ms/AMLFree).
-* [Zestaw Azure Machine Learning SDK dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)lub dostęp do programu [Azure Machine Learning Studio](https://ml.azure.com/).
-    * Instalowanie pakietu [Azure-contrib-DataSet](https://docs.microsoft.com/python/api/azureml-contrib-dataset/?view=azure-ml-py)
-* Obszar roboczy Machine Learning. Zobacz [Tworzenie obszaru roboczego Azure Machine Learning](how-to-manage-workspace.md).
-* Dostęp do projektu etykietowania danych Azure Machine Learning. Jeśli nie masz projektu etykietowania, utwórz go za pomocą [tych kroków](how-to-create-labeling-projects.md).
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://aka.ms/AMLFree) przed rozpoczęciem.
+* Zestaw [SDK usługi Azure Machine Learning dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)lub dostęp do studia usługi Azure Machine [Learning](https://ml.azure.com/).
+    * Instalowanie pakietu [zestawu danych azure-contrib](https://docs.microsoft.com/python/api/azureml-contrib-dataset/?view=azure-ml-py)
+* Obszar roboczy uczenia maszynowego. Zobacz [Tworzenie obszaru roboczego usługi Azure Machine Learning](how-to-manage-workspace.md).
+* Dostęp do projektu etykietowania danych usługi Azure Machine Learning. Jeśli nie masz projektu etykietowania, utwórz go za pomocą [tych kroków](how-to-create-labeling-projects.md).
 
-## <a name="export-data-labels"></a>Eksportuj etykiety danych 
+## <a name="export-data-labels"></a>Eksportowanie etykiet danych 
 
-Po zakończeniu projektu etykietowania danych można wyeksportować dane etykiet z projektu etykietowania. Wykonanie tej czynności umożliwia przechwycenie odwołania do danych i jego etykiet oraz wyeksportowanie ich w [formacie Coco](http://cocodataset.org/#format-data) lub jako zestaw danych Azure Machine Learning. Użyj przycisku **Eksportuj** na stronie **szczegóły projektu** w projekcie etykietowania.
+Po zakończeniu projektu etykietowania danych można wyeksportować dane etykiety z projektu etykietowania. W ten sposób można przechwycić odwołanie do danych i ich etykiet i wyeksportować je w [formacie COCO](http://cocodataset.org/#format-data) lub jako zestaw danych usługi Azure Machine Learning. Użyj przycisku **Eksportuj** na stronie **Szczegóły projektu** projektu etykietowania.
 
-### <a name="coco"></a>COCO 
+### <a name="coco"></a>Coco 
 
- Plik COCO jest tworzony w domyślnym magazynie obiektów BLOB obszaru roboczego Azure Machine Learning w folderze w obszarze *Export/Coco*. 
+ Plik COCO jest tworzony w domyślnym magazynie obiektów blob obszaru roboczego usługi Azure Machine Learning w folderze w *ramach export/coco*. 
 
-### <a name="azure-machine-learning-dataset"></a>Zestaw danych Azure Machine Learning
+### <a name="azure-machine-learning-dataset"></a>Zestaw danych usługi Azure Machine Learning
 
-Możesz uzyskać dostęp do wyeksportowanego zestawu danych Azure Machine Learning w sekcji **zestawy** danych w programie Azure Machine Learning Studio. Strona **szczegóły** zestawu danych zawiera również przykładowy kod umożliwiający uzyskanie dostępu do etykiet z poziomu języka Python.
+Można uzyskać dostęp do wyeksportowanego zestawu danych usługi Azure Machine Learning w sekcji **Zestawy danych** w studio usługi Azure Machine Learning. Strona **Szczegóły** zestawu danych zawiera również przykładowy kod dostępu do etykiet z języka Python.
 
 ![Wyeksportowany zestaw danych](./media/how-to-create-labeling-projects/exported-dataset.png)
 
-## <a name="explore-labeled-datasets"></a>Eksploruj zestawy danych z etykietami
+## <a name="explore-labeled-datasets"></a>Eksplorowanie oznaczonych zestawów danych
 
-Załaduj zestawy danych z etykietami do Pandas Dataframe lub Torchvision DataSet, aby wykorzystać popularne biblioteki typu "open source" do eksplorowania danych, jak również udostępniane biblioteki do przekształcania i uczenia obrazów.
+Załaduj oznaczone zestawy danych do zestawu danych pandas dataframe lub Torchvision, aby wykorzystać popularne biblioteki typu open source do eksploracji danych, a pyTorch udostępniał biblioteki do przekształcania i szkolenia obrazów.
 
 ### <a name="pandas-dataframe"></a>Pandas dataframe
 
-Zestawy danych z etykietami można ładować do Pandas Dataframe z metodą [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) z klasy `azureml-contrib-dataset`. Zainstaluj klasę przy użyciu następującego polecenia powłoki: 
+Można załadować oznaczone zestawy danych do pandas [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) dataframe `azureml-contrib-dataset` z metodą z klasy. Zainstaluj klasę za pomocą następującego polecenia powłoki: 
 
 ```shell
 pip install azureml-contrib-dataset
 ```
 
 >[!NOTE]
->Przestrzeń nazw Azure. contrib często zmienia się, ponieważ usprawniamy działanie usługi. W związku z tym wszystkie elementy w tej przestrzeni nazw powinny być traktowane jako wersja zapoznawcza i nie są w pełni obsługiwane przez firmę Microsoft.
+>Obszar nazw azureml.contrib zmienia się często, ponieważ pracujemy nad ulepszeniem usługi. W związku z tym wszystko w tej przestrzeni nazw należy uznać za wersję zapoznawczą i nie jest w pełni obsługiwane przez firmę Microsoft.
 
-Oferujemy następujące opcje obsługi plików strumieni plików podczas konwertowania na Pandas Dataframe.
-* Pobieranie: pobieranie plików danych do ścieżki lokalnej.
-* Instalacja: Zainstaluj pliki danych w punkcie instalacji. Instalacja działa tylko w przypadku obliczeń opartych na systemie Linux, w tym Azure Machine Learning maszyn wirtualnych i Azure Machine Learning obliczeniowych notesu.
+Oferujemy następujące opcje obsługi plików dla strumieni plików podczas konwersji na ramkę danych pandas.
+* Pobierz: pobierz pliki danych na ścieżkę lokalną.
+* Montaż: Zamontuj pliki danych w punkcie instalacji. Instalacja działa tylko dla obliczeń opartych na systemie Linux, w tym maszyny wirtualnej usługi Azure Machine Learning i przetwarzania usługi Azure Machine Learning Compute.
 
 ```Python
 import azureml.contrib.dataset
@@ -76,9 +76,9 @@ img = mpimg.imread(animal_pd.loc[0,'image_url'])
 imgplot = plt.imshow(img)
 ```
 
-### <a name="torchvision-datasets"></a>Torchvision zbiory danych
+### <a name="torchvision-datasets"></a>Zestawy danych torchvision
 
-Można załadować zestawy danych z etykietami do Torchvision DataSet z metodą [to_torchvision ()](https://docs.microsoft.com/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset?view=azure-ml-py#to-torchvision--) również z klasy `azureml-contrib-dataset`. Aby można było użyć tej metody, należy zainstalować [PyTorch](https://pytorch.org/) . 
+Zestawy danych z etykietami można załadować do zestawu danych Torchvision za `azureml-contrib-dataset` pomocą metody [to_torchvision()](https://docs.microsoft.com/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset?view=azure-ml-py#to-torchvision--) również z klasy. Aby korzystać z tej metody, musisz mieć zainstalowany [PyTorch.](https://pytorch.org/) 
 
 ```python
 from torchvision.transforms import functional as F
@@ -97,4 +97,4 @@ imgplot = plt.imshow(gray_image)
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Zapoznaj się [z zestawem danych zawierającym Notes etykiet](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/labeled-datasets/labeled-datasets.ipynb) , aby uzyskać pełny przykład szkolenia.
+* Zobacz [zestaw danych z notesem etykiet,](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/labeled-datasets/labeled-datasets.ipynb) aby uzyskać pełną próbkę szkolenia.

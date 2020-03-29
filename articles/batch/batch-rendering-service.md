@@ -1,6 +1,6 @@
 ---
-title: Renderowanie Przegląd - usługi Azure Batch
-description: Wprowadzenie do renderowania i przeglądu możliwości renderowania usługi Azure Batch przy użyciu platformy Azure
+title: Omówienie renderowania — usługa Azure Batch
+description: Wprowadzenie korzystania z platformy Azure do renderowania i omówienie możliwości renderowania usługi Azure Batch
 services: batch
 ms.service: batch
 author: mscurrell
@@ -8,98 +8,98 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: d4423b22c4c8afea5afa9c7040e081665b17ba87
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60774033"
 ---
 # <a name="rendering-using-azure"></a>Renderowanie przy użyciu platformy Azure
 
-Renderowanie to proces pobierania modele 3D i konwertowania ich na obrazów 2D. Sceny 3D, pliki są tworzone w aplikacji, takich jak Autodesk 3ds Max, programy Autodesk Maya i Blender.  Renderowanie aplikacji, takich jak Autodesk Maya, Autodesk Arnold, Chaos Group V-Ray i Blender cykle tworzenia obrazów 2D.  Czasami pojedynczego obrazy są tworzone na podstawie pliki sceny. Jednak jest wspólne dla modelu i przetworzyć wiele obrazów, a następnie łączyć je w animacji.
+Renderowanie to proces robienia modeli 3D i przekształcania ich w obrazy 2D. Pliki scen 3D są tworzyć w aplikacjach takich jak Autodesk 3ds Max, Autodesk Maya i Blender.  Aplikacje renderowania, takie jak Autodesk Maya, Autodesk Arnold, Chaos Group V-Ray i Blender Cycles, generują obrazy 2D.  Czasami pojedyncze obrazy są tworzone z plików sceny. Jednak jest to wspólne do modelowania i renderowania wielu obrazów, a następnie połączyć je w animacji.
 
-Obciążenia renderowania jest intensywnie używana do efekty specjalne (filmowych efektów specjalnych) w branży multimedia i rozrywka. Renderowanie jest również używane w wielu branżach, takich jak reklam, handlu detalicznego, ropa naftowa i gaz i produkcji.
+Obciążenie renderowania jest intensywnie używane do efektów specjalnych (VFX) w branży mediów i rozrywki. Renderowanie jest również używane w wielu innych sektorach, takich jak reklama, produkcja, handel detaliczny oraz przemysł naftowy.
 
-Proces renderowania jest wymaga dużej mocy obliczeniowej; może istnieć wiele ramek/obrazów do produkcji i każdego obrazu może zająć wiele godzin do renderowania.  Renderowanie w związku z tym jest obciążenie przetwarzania doskonałe przetwarzania wsadowego, które mogą korzystać z platformy Azure i usługi Azure Batch do równoległego uruchamiania wielu renderów.
+Proces renderowania jest intensywny obliczeniowo; może być wiele klatek / obrazów do wytworzenia, a renderowanie każdego obrazu może zająć wiele godzin.  Renderowanie jest zatem idealnym obciążeniem przetwarzania wsadowego, które może korzystać z platformy Azure i usługi Azure Batch do uruchamiania wielu renderów równolegle.
 
-## <a name="why-use-azure-for-rendering"></a>Dlaczego warto używać platformy Azure w celu renderowania?
+## <a name="why-use-azure-for-rendering"></a>Dlaczego warto używać platformy Azure do renderowania?
 
-Z wielu powodów renderowanie jest obciążenie doskonale nadaje się do platformy Azure i usługi Azure Batch:
+Z wielu powodów renderowanie jest obciążeniem idealnie nadaje się do platformy Azure i usługi Azure Batch:
 
-* Renderowania zadania może zostać podzielony na wiele elementów, które mogą być uruchamiane równolegle za pomocą wielu maszyn wirtualnych:
-  * Animacje składają się z wieloma ramkami i każdej ramki mogą być renderowane w sposób równoległy.  Więcej maszyny wirtualne dostępne dla procesu, który można tworzyć każdej klatce, tym szybciej wszystkich ramek i animacji.
-  * Niektóre programy renderowania umożliwia jednej klatki, aby być dzielone na wiele części, takie jak kafelki lub wycinki.  Każdy element może można renderowane osobno, a następnie łączone w obrazie końcowym, po zakończeniu wszystkich elementów.  Więcej maszyn wirtualnych, które są dostępne, tym szybciej ramki mogą być renderowane.
-* Renderowanie projekty mogą wymagać ogromnej skali:
-  * Poszczególnych klatek mogą być skomplikowane i wymagają wiele godzin do renderowania, nawet w przypadku sprzętu wysokiej klasy; animacje może składać się z setkami tysięcy ramek.  Ogromna ilość zasobów obliczeniowych jest wymagane do renderowania animacji wysokiej jakości w rozsądnym czasie.  W niektórych przypadkach ponad 100 000 rdzeni wtedy były używane do renderowania tysiące ramek równolegle.
-* Renderowanie projekty są oparte na projekt i wymagają różnej ilości mocy obliczeniowej:
-  * Przydzielanie pojemności obliczeniowej i magazynowej, gdy jest to wymagane, skalować ją w górę lub w dół zgodnie z obciążeniem, podczas projektu i usunąć go po zakończeniu projektu.
-  * Płać pojemności, gdy przydzielone, ale nie płać za jej, gdy istnieje bez obciążenia, takich jak między projektami.
-  * O pracownikach wzmożeniach ruchu z powodu nieoczekiwanych zmian; większe, jeśli występują nieoczekiwane opóźnienia w projekcie i te zmiany skali muszą być przetwarzane zgodnie z harmonogramem ścisłej.
-* Wybieraj spośród szerokiego sprzętu zgodnie z aplikacji, obciążeń i przedziału czasu:
-  * Brak dostępnej szeroką gamę sprzętu platformy Azure, które mogą być przydzielny i zarządzane przy użyciu usługi Batch.
-  * W zależności od projektu wymóg może być najlepsze ceny i wydajności lub najlepsze ogólną wydajność.  Wymagania dotyczące pamięci różnych mają różnych scen i/lub aplikacjami do renderowania.  Niektóre aplikacje renderowania można wykorzystać procesorach GPU znajdujących się pod kątem optymalnej wydajności lub niektórych funkcji. 
-* Maszyny wirtualne o niskim priorytecie ograniczenie kosztów:
-  * Maszyny wirtualne o niskim priorytecie są dostępne dla dużą zniżką w porównaniu ze zwykłymi maszynami wirtualnymi na żądanie i nadają się dla niektórych typów zadań.
-  * Maszyny wirtualne o niskim priorytecie mogą zostać przydzieleni przez usługi Azure Batch przy użyciu usługi Batch, co zapewnia elastyczność w sposób są one używane do zaspokojenia szeroką gamę wymagania.  Pule usługi Batch może obejmować zarówno w przypadku dedykowanego, jak i o niskim priorytecie maszyn wirtualnych z możliwości w dowolnym momencie zmienić różnych typów maszyn wirtualnych.
+* Zadania renderowania można podzielić na wiele części, które można uruchamiać równolegle przy użyciu wielu maszyn wirtualnych:
+  * Animacje składają się z wielu klatek, a każda klatka może być renderowana równolegle.  Im więcej maszyn wirtualnych jest dostępnych do przetwarzania każdej klatki, tym szybciej można uzyskać wszystkie klatki i animację.
+  * Niektóre programy renderowania umożliwiają pojedyncze klatki podzielone na wiele części, takich jak kafelki lub plasterki.  Każdy kawałek może być renderowany oddzielnie, a następnie połączony w ostateczny obraz po zakończeniu wszystkich elementów.  Im więcej maszyn wirtualnych jest dostępnych, tym szybciej można renderować ramkę.
+* Projekty renderowania mogą wymagać ogromnej skali:
+  * Poszczególne ramki mogą być złożone i wymagają wielu godzin renderowania, nawet na wysokiej klasy sprzęcie; animacje mogą składać się z setek tysięcy klatek.  Ogromna ilość obliczeń jest wymagana do renderowania wysokiej jakości animacji w rozsądnym czasie.  W niektórych przypadkach ponad 100 000 rdzeni zostało użytych do równoległego renderowania tysięcy ramek.
+* Projekty renderowania są oparte na projektach i wymagają różnych ilości obliczeń:
+  * Przydzielanie pojemności obliczeniowej i magazynu w razie potrzeby, skalowanie w górę lub w dół zgodnie z obciążeniem podczas projektu i usuwanie go po zakończeniu projektu.
+  * Płać za pojemność po przydzieleniu, ale nie płać za nią, gdy nie ma obciążenia, na przykład między projektami.
+  * Zaspokoić wybuchy z powodu nieoczekiwanych zmian; skalowanie wyższe, jeśli występują nieoczekiwane zmiany późno w projekcie i te zmiany muszą być przetwarzane zgodnie z napiętym harmonogramem.
+* Wybieraj spośród szerokiego wyboru sprzętu w zależności od aplikacji, obciążenia i przedziału czasowego:
+  * Istnieje szeroki wybór sprzętu dostępnego na platformie Azure, który można przydzielić i zarządzać za pomocą usługi Batch.
+  * W zależności od projektu, wymóg może być dla najlepszej ceny / wydajności lub najlepszej ogólnej wydajności.  Różne sceny i/lub aplikacje renderowania będą miały różne wymagania dotyczące pamięci.  Niektóre aplikacje renderowania można wykorzystać procesory GPU dla najlepszej wydajności lub niektórych funkcji. 
+* Maszyny wirtualne o niskim priorytecie obniżają koszty:
+  * Maszyny wirtualne o niskim priorytecie są dostępne dla dużej zniżki w porównaniu do zwykłych maszyn wirtualnych na żądanie i są odpowiednie dla niektórych typów zadań.
+  * Maszyny wirtualne o niskim priorytecie mogą być przydzielane przez usługę Azure Batch, a usługa Batch zapewnia elastyczność w zakresie sposobu ich wykorzystania w celu spełnienia szerokiego zestawu wymagań.  Pule wsadowe mogą składać się zarówno z dedykowanych, jak i niskiego priorytetu maszyn wirtualnych, z możliwością zmiany kombinacji typów maszyn wirtualnych w dowolnym momencie.
 
 ## <a name="options-for-rendering-on-azure"></a>Opcje renderowania na platformie Azure
 
-Brak możliwości platformy Azure, które mogą służyć do obciążenia renderowania.  Które możliwości do użycia zależy od tego, wszystkie istniejące środowiska i wymagań.
+Istnieje szereg możliwości platformy Azure, które mogą służyć do renderowania obciążeń.  Jakie możliwości użyć zależy od istniejącego środowiska i wymagań.
 
-### <a name="existing-on-premises-rendering-environment-using-a-render-management-application"></a>Istniejące lokalne środowisko renderowania przy użyciu aplikacji do zarządzania renderowania
+### <a name="existing-on-premises-rendering-environment-using-a-render-management-application"></a>Istniejące lokalne środowisko renderowania przy użyciu aplikacji do zarządzania renderowaniem
 
-Najbardziej typowe przypadek jest ma być istniejącą lokalną renderowania farmy są zarządzane przez aplikacji do zarządzania renderowania, takich jak PipelineFX Qube, Royal renderowania lub Thinkbox terminu.  Wymagane jest rozszerzenie lokalnego pojemności farmy renderowania przy użyciu maszyn wirtualnych platformy Azure.
+Najczęstszym przypadkiem jest, aby istniała lokalna farma renderowania zarządzana przez aplikację do zarządzania renderowaniem, taką jak PipelineFX Qube, Royal Render lub Thinkbox Deadline.  Wymaganiem jest rozszerzenie pojemności farmy renderowania lokalnego przy użyciu maszyn wirtualnych platformy Azure.
 
-Oprogramowanie do zarządzania renderowania ma wbudowane pomocy technicznej platformy Azure lub udostępnimy dostępnych wtyczek, które dodać pomocy technicznej platformy Azure. Aby więcej informacji na temat obsługiwanych renderować menedżerów i włączoną funkcją, zobacz artykuł [przy użyciu renderowania menedżerów](https://docs.microsoft.com/azure/batch/batch-rendering-render-managers).
+Oprogramowanie do zarządzania renderowaniem ma wbudowaną obsługę platformy Azure lub udostępniamy wtyczki, które dodają obsługę platformy Azure. Aby uzyskać więcej informacji na temat obsługiwanych menedżerów renderowania i włączonych funkcji, zobacz artykuł dotyczący [korzystania z menedżerów renderowania](https://docs.microsoft.com/azure/batch/batch-rendering-render-managers).
 
-### <a name="custom-rendering-workflow"></a>Niestandardowe renderowanie przepływu pracy
+### <a name="custom-rendering-workflow"></a>Niestandardowy przepływ pracy renderowania
 
-Wymagane jest dla maszyn wirtualnych w celu rozszerzenia istniejącej farmy renderowania.  Pule usługi Azure Batch może przydzielić dużej liczby maszyn wirtualnych, umożliwić maszynom wirtualnym o niskim priorytecie może być używany i dynamicznie automatycznie skalowanych ceny pełnej maszyn wirtualnych i zapewniają płatności dla użycie licencji na program renderowania popularnych aplikacji.
+Wymaganie jest dla maszyn wirtualnych, aby rozszerzyć istniejącą farmę renderowania.  Pule usługi Azure Batch mogą przydzielać dużą liczbę maszyn wirtualnych, zezwalać na maszyny wirtualne o niskim priorytecie i dynamicznie skalowane automatycznie za pomocą pełnoceniowych maszyn wirtualnych oraz zapewniać licencjonowanie płatnego użytku dla popularnych aplikacji renderowania.
 
-### <a name="no-existing-render-farm"></a>Nie istniejących farmą renderowania
+### <a name="no-existing-render-farm"></a>Brak istniejącej farmy renderowania
 
-Klienckich stacji roboczych może przeprowadzać renderowania, ale zwiększa się obciążenie renderowania i on zbyt długiego czasu do użycia wyłącznie pojemności stacji roboczej.  Usługa Azure Batch może służyć do zarówno przydzielić renderowania farmie obliczeniowej na żądanie oraz planowanie zadań renderowania do farmy renderowania platformy Azure.
+Klienckie stacje robocze mogą wykonywać renderowanie, ale obciążenie renderowania wzrasta i trwa zbyt długo, aby używać wyłącznie pojemności stacji roboczej.  Usługa Azure Batch może służyć zarówno do przydzielania obliczeń farmy renderowania na żądanie, jak i do planowania zadań renderowania w farmie renderowania platformy Azure.
 
-## <a name="azure-batch-rendering-capabilities"></a>Możliwości renderowania w usłudze Azure Batch
+## <a name="azure-batch-rendering-capabilities"></a>Możliwości renderowania usługi Azure Batch
 
-Usługa Azure Batch umożliwia równoległych obciążeń do uruchamiania na platformie Azure.  Umożliwia tworzenie i zarządzanie dużą liczbę maszyn wirtualnych, na których aplikacje są instalowane i uruchamiane.  Udostępnia również kompleksowe możliwości do uruchamiania wystąpień tych aplikacji, zapewniając przypisywanie zadań do maszyn wirtualnych, kolejkowanie, monitorowanie aplikacji i tak dalej do planowania zadań.
+Usługa Azure Batch umożliwia uruchamianie równoległych obciążeń na platformie Azure.  Umożliwia tworzenie i zarządzanie dużą liczbą maszyn wirtualnych, na których aplikacje są instalowane i uruchamiane.  Zapewnia również kompleksowe możliwości planowania zadań do uruchamiania wystąpień tych aplikacji, zapewniając przypisanie zadań do maszyn wirtualnych, kolejkowanie, monitorowanie aplikacji i tak dalej.
 
-Usługa Azure Batch jest używany w przypadku wielu obciążeń, ale następujące funkcje są dostępne do specjalnie umożliwiają łatwiejsze i szybsze uruchamianie obciążeń renderowania.
+Usługa Azure Batch jest używana dla wielu obciążeń, ale dostępne są następujące funkcje, aby w szczególności ułatwić i przyspieszyć uruchamianie obciążeń renderowania.
 
-* Obrazy maszyn wirtualnych ze wstępnie zainstalowanymi aplikacjami graficznymi i:
-  * Dostępne są obrazy maszyny Wirtualnej w portalu Marketplace platformy Azure zawierające popularne aplikacje graficzne i renderujące, unikając konieczności samodzielnego instalowania aplikacji lub utworzyć własne niestandardowe obrazy z zainstalowanymi aplikacjami. 
-* Płatność za użycie licencji na aplikacje renderowania:
-  * Można płacić dla aplikacji w systemie minutowym, oprócz płacić za zasoby obliczeniowe maszyn wirtualnych, co pozwala uniknąć konieczności kupowanie licencji i potencjalnie konfigurowania serwera licencji dla aplikacji.  Również płacenia za użycie oznacza, że jest możliwe w celu zaspokojenia zmiennych i nieoczekiwane obciążenia się nie stałą liczbę licencji.
-  * Użytkownik może również używać wstępnie zainstalowanymi aplikacjami z własnej licencji oraz nie licencjonowania płatność za użycie. Aby to zrobić, zazwyczaj należy zainstalować na lokalnych lub opartych na platformie Azure licencji serwera, a siecią wirtualną platformy Azure umożliwia puli renderowania nawiązać połączenie z serwerem licencji.
-* Dodatki dla projektu klienta i aplikacjach do modelowania:
-  * Dodatki plug-in zezwolić użytkownikom końcowym na korzystanie z usługi Azure Batch bezpośrednio z aplikacji klienckiej, takich jak Autodesk Maya, co pozwala na tworzenie pul, przesyłanie zadań i upewnij użytkowania więcej obliczeń przygotowanie wydajności niezbędnej do wykonania renderuje szybciej.
-* Renderowanie manager integration:
-  * Usługa Azure Batch jest zintegrowany z aplikacjami do renderowania zarządzania lub dodatki plug-in są dostępne nad umożliwieniem integracji usługi Azure Batch.
+* Obrazy maszyn wirtualnych z fabrycznie zainstalowaną grafiką i aplikacjami renderowania:
+  * Dostępne są obrazy maszyn wirtualnych usługi Azure Marketplace, które zawierają popularne grafiki i aplikacje renderowania, unikając konieczności samodzielnego instalowania aplikacji lub tworzenia własnych obrazów niestandardowych z zainstalowanymi aplikacjami. 
+* Licencjonowanie płatności za użycie dla aplikacji renderowania:
+  * Można zapłacić za aplikacje na minutę, oprócz płacenia za maszyny wirtualne obliczeniowe, co pozwala uniknąć konieczności kupowania licencji i potencjalnie konfigurowania serwera licencji dla aplikacji.  Płacenie za użytkowanie oznacza również, że możliwe jest zaspokojenie różnego i nieoczekiwanego obciążenia, ponieważ nie ma stałej liczby licencji.
+  * Możliwe jest również korzystanie z wstępnie zainstalowanych aplikacji z własnymi licencjami i nieużywanie licencji typu pay-per-use. W tym celu zazwyczaj należy zainstalować lokalny lub oparty na platformie Azure serwer licencji i użyć sieci wirtualnej platformy Azure do połączenia puli renderowania z serwerem licencji.
+* Wtyczki do projektowania i modelowania klientów:
+  * Wtyczki umożliwiają użytkownikom końcowym korzystanie z usługi Azure Batch bezpośrednio z aplikacji klienckiej, takiej jak Autodesk Maya, umożliwiając im tworzenie pul, przesyłanie zadań i korzystanie z większej pojemności obliczeniowej w celu szybszego renderowania.
+* Integracja menedżera renderowania:
+  * Usługa Azure Batch jest zintegrowana z aplikacjami do zarządzania renderowaniem lub wtyczki są dostępne w celu zapewnienia integracji usługi Azure Batch.
 
-Istnieje kilka sposobów korzystania z usługi Azure Batch, które mają zastosowanie również do usługi Azure Batch rendering.
+Istnieje kilka sposobów korzystania z usługi Azure Batch, z których wszystkie dotyczą również renderowania usługi Azure Batch.
 
-* APIs:
-  * Pisz kod, używając [REST](https://docs.microsoft.com/rest/api/batchservice), [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/batch), [Python](https://docs.microsoft.com/python/api/overview/azure/batch), [Java](https://docs.microsoft.com/java/api/overview/azure/batch), lub inne obsługiwane interfejsy API.  Deweloperzy mogą integrować możliwości usługi Azure Batch istniejącej aplikacji lub przepływu pracy, czy chmura lub oparte na środowisku lokalnym.  Na przykład [Autodesk Maya wtyczki](https://github.com/Azure/azure-batch-maya) korzysta z interfejsu API języka Python usługi Batch do wywołania usługi Batch, tworzenie i Zarządzanie pulami, przesyłanie zadań i zadań podrzędnych oraz monitorowanie stanu.
+* Interfejsy API:
+  * Napisz kod przy użyciu [REST](https://docs.microsoft.com/rest/api/batchservice), [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/batch), [Python](https://docs.microsoft.com/python/api/overview/azure/batch), [Java](https://docs.microsoft.com/java/api/overview/azure/batch)lub innych obsługiwanych interfejsów API.  Deweloperzy mogą integrować możliwości usługi Azure Batch z istniejącymi aplikacjami lub przepływem pracy, zarówno w chmurze, jak i lokalnie.  Na przykład [autodesk Maya plug-in](https://github.com/Azure/azure-batch-maya) wykorzystuje interfejs API języka Python batch do wywoływania usługi Batch, tworzenie i zarządzanie pulami, przesyłanie zadań i zadań oraz stan monitorowania.
 * Narzędzia wiersza polecenia:
-  * [Wiersza polecenia Azure](https://docs.microsoft.com/cli/azure/) lub [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) może służyć do skryptu Użyj usługi Batch.
-  * W szczególności Obsługa szablonów interfejsu wiersza polecenia usługi Batch sprawia, że znacznie łatwiej tworzyć pule oraz przesyłania zadań.
-* Interfejsów użytkownika:
-  * [Batch Explorer](https://github.com/Azure/BatchExplorer) to narzędzie klienta dla wielu platform, które umożliwia także kont usługi Batch, zarządzane i monitorowane, ale zawiera niektóre bardziej zaawansowane możliwości w porównaniu do interfejsu użytkownika witryny Azure portal.  Zestaw szablonów puli i zadania pod warunkiem, że są dostosowane do poszczególnych obsługiwanych aplikacji i może służyć do łatwego tworzenia pul i przesyłać zadania.
-  * Witryna Azure portal może służyć do monitorowania usługi Azure Batch i zarządzania nimi.
-* Klient aplikacji — dodatek firmy:
-  * Dostępne są wtyczki umożliwiające renderowania usługi Batch można używać bezpośrednio z poziomu projektu klienta i aplikacjach do modelowania. Dodatki plug-in wywołać głównie aplikacji Batch Explorer informacje kontekstowe dotyczące modelu 3D.
-  * Dostępne są następujące dodatki plug-in:
-    * [Usługa Azure Batch dla programu Maya](https://github.com/Azure/azure-batch-maya)
-    * [3DS Max](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/3ds-max)
+  * Wiersz [polecenia platformy Azure](https://docs.microsoft.com/cli/azure/) lub programu Azure [PowerShell](https://docs.microsoft.com/powershell/azure/overview) może służyć do skryptu batch używać.
+  * W szczególności obsługa szablonu interfejsu wiersza polecenia usługi Batch znacznie ułatwia tworzenie pul i przesyłanie zadań.
+* Uis:
+  * [Wykalorator partii](https://github.com/Azure/BatchExplorer) to narzędzie klienta między platformami, które umożliwia również zarządzanie kontami usługi Batch i ich monitorowanie, ale zapewnia jedne bogatsze możliwości w porównaniu z interfejsem użytkownika witryny azure portal.  Zestaw szablonów puli i zadań są dostarczane, które są dostosowane do każdej obsługiwanej aplikacji i mogą służyć do łatwego tworzenia pul i przesyłania zadań.
+  * Witryna Azure portal może służyć do zarządzania i monitorowania usługi Azure Batch.
+* Wtyczka aplikacji klienckiej:
+  * Dostępne są wtyczki, które umożliwiają renderowanie usługi Batch do użycia bezpośrednio w aplikacjach do projektowania i modelowania klienta. Wtyczki głównie wywołać aplikację Eksploratora wsadowego z informacji kontekstowych o bieżącym modelu 3D.
+  * Dostępne są następujące wtyczki:
+    * [Usługa Azure Batch dla Mayi](https://github.com/Azure/azure-batch-maya)
+    * [3ds Max](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/3ds-max)
     * [Blender](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
 
-## <a name="getting-started-with-azure-batch-rendering"></a>Wprowadzenie do usługi Azure Batch rendering
+## <a name="getting-started-with-azure-batch-rendering"></a>Wprowadzenie do renderowania usługi Azure Batch
 
-Zobacz następujące samouczki wprowadzające do wypróbowania usługi Azure Batch rendering:
+Aby wypróbować renderowanie usługi Azure Batch, zobacz następujące samouczki wprowadzające:
 
-* [Renderowanie sceny Blender za pomocą Eksploratora usługi Batch](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)
-* [Umożliwia renderowanie Autodesk sceny programu 3ds Max Batch interfejsu wiersza polecenia](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
+* [Renderowanie sceny programu Blender za pomocą Eksploratora wsadowego](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)
+* [Renderowanie sceny Programu Autodesk 3ds Max za pomocą interfejsu wiersza polecenia wsadowego](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Określić listę aplikacji renderowania i zawarte w obrazach maszyn wirtualnych platformy Azure Marketplace w wersji [w tym artykule](https://docs.microsoft.com/azure/batch/batch-rendering-applications).
+Określ listę aplikacji i wersji renderowania zawartych w obrazach maszyn wirtualnych w portalu Azure Marketplace w [tym artykule](https://docs.microsoft.com/azure/batch/batch-rendering-applications).

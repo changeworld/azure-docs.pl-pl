@@ -1,6 +1,6 @@
 ---
-title: Zmienianie trybu urządzenia StorSimple | Dokumentacja firmy Microsoft
-description: W tym artykule opisano tryby urządzenia StorSimple i wyjaśniono, jak zmienianie trybu urządzenia za pomocą programu Windows PowerShell dla usługi StorSimple.
+title: Zmień tryb urządzenia StorSimple | Dokumenty firmy Microsoft
+description: W tym artykule opisano tryby urządzenia StorSimple i wyjaśniono, jak zmienić tryb urządzenia za pomocą programu Windows PowerShell for StorSimple.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,75 +15,75 @@ ms.workload: na
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: e55964beff48df6ce24d99c01975d39b662f1612
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60576095"
 ---
 # <a name="change-the-device-mode-on-your-storsimple-device"></a>Zmienianie trybu urządzenia na urządzeniu StorSimple
 
-Ten artykuł zawiera krótkie opisy różnych trybach, w których może działać urządzenia StorSimple. Urządzenie StorSimple może działać w trzech trybów: Normalny, obsługi i odzyskiwania.
+Ten artykuł zawiera krótki opis różnych trybów, w których urządzenie StorSimple może działać. Urządzenie StorSimple może działać w trzech trybach: normalnym, konserwacji i odzyskiwania.
 
-Po przeczytaniu tego artykułu, oznacza to:
+Po przeczytaniu tego artykułu, będziesz wiedzieć:
 
-* Jakie są tryby urządzenia StorSimple są
-* Jak ustalić, który tryb urządzenia StorSimple jest w
-* Jak zmienić w normalnym trybie konserwacji i *na odwrót*
+* Czym są tryby urządzenia StorSimple
+* Jak ustalić, w którym trybie znajduje się urządzenie StorSimple
+* Jak zmienić tryb normalny na tryb konserwacji i *odwrotnie*
 
-Powyższe zadań zarządzania można wykonać tylko za pośrednictwem interfejsu programu Windows PowerShell urządzenia StorSimple.
+Powyższe zadania zarządzania można wykonywać tylko za pośrednictwem interfejsu programu Windows PowerShell urządzenia StorSimple.
 
 ## <a name="about-storsimple-device-modes"></a>Informacje o trybach urządzenia StorSimple
 
-Urządzenie StorSimple może działać w trybie normalnym, konserwacji lub odzyskiwania. Obu tych trybach krótko opisano poniżej.
+Urządzenie StorSimple może działać w trybie normalnym, konserwacyjnym lub odzyskiwania. Każdy z tych trybów jest krótko opisany poniżej.
 
 ### <a name="normal-mode"></a>Tryb normalny
 
-To jest zdefiniowany jako normalny tryb operacyjny dla urządzenia StorSimple w pełni skonfigurowany. Domyślnie urządzenia powinny być w trybie normalnym.
+Jest to zdefiniowane jako normalny tryb pracy dla w pełni skonfigurowanego urządzenia StorSimple. Domyślnie urządzenie powinno być w trybie normalnym.
 
 ### <a name="maintenance-mode"></a>Tryb konserwacji
 
-Czasami urządzenia StorSimple może być konieczne umieszczenie w trybie konserwacji. Ten tryb pozwala wykonać konserwacji na urządzeniu i zainstalować aktualizacje wymagają zatrzymania pracy, takich jak te dotyczą oprogramowania układowego dysku.
+Czasami urządzenie StorSimple może wymagać przełączenia w tryb konserwacji. Ten tryb umożliwia przeprowadzenie konserwacji na urządzeniu i zainstalowanie przełomowych aktualizacji, takich jak te związane z oprogramowaniem układowym dysku.
 
-System można umieścić w tryb konserwacji tylko przy użyciu programu Windows PowerShell dla usługi StorSimple. Wszystkie żądania We/Wy są wstrzymane w tym trybie. Usługi, takie jak trwałej pamięci (NVRAM) lub usługę klastrowania również zostaną zatrzymane. Oba kontrolery zostaną ponownie uruchomione po wprowadzeniu lub opuścić ten tryb. Po wyjściu z trybu konserwacji, wszystkich usług zostanie wznowiona i powinna być w dobrej kondycji. Może to potrwać kilka minut.
+System można przełożyć w tryb konserwacji tylko za pośrednictwem programu Windows PowerShell for StorSimple. Wszystkie żądania we/wy są wstrzymane w tym trybie. Usługi, takie jak nieulotna pamięć dostępu losowego (NVRAM) lub usługa klastrowania, również są zatrzymywane. Oba kontrolery są ponownie uruchamiane po wejściu lub wyjściu z tego trybu. Po wyjściu z trybu konserwacji wszystkie usługi zostaną wznowione i powinny być w dobrej kondycji. Może to potrwać kilka minut.
 
 > [!NOTE]
-> **Tryb konserwacji jest obsługiwana tylko na urządzeniu działa prawidłowo. Nie jest obsługiwana na urządzeniu, w którym co najmniej jeden z kontrolerów nie działają.**
+> **Tryb konserwacji jest obsługiwany tylko na prawidłowo działającym urządzeniu. Nie jest obsługiwany na urządzeniu, w którym jeden lub oba kontrolery nie działają.**
 
 
 ### <a name="recovery-mode"></a>Tryb odzyskiwania
 
-Tryb odzyskiwania można określić jako "Windows"Tryb awaryjny z obsługą sieci. Tryb odzyskiwania angażuje zespołu Microsoft Support i umożliwia ich wykonywania Diagnostyka w systemie. Podstawowym celem tryb odzyskiwania jest pobrać dzienniki systemu.
+Tryb odzyskiwania można opisać jako "Tryb awaryjny systemu Windows z obsługą sieci". Tryb odzyskiwania włącza zespół pomocy technicznej firmy Microsoft i umożliwia im wykonywanie diagnostyki w systemie. Głównym celem trybu odzyskiwania jest pobranie dzienników systemowych.
 
-Jeśli system przechodzi w tryb odzyskiwania, możesz skontaktować się Microsoft Support dalsze czynności. Aby uzyskać więcej informacji, przejdź do [skontaktuj się z pomocą techniczną firmy Microsoft](storsimple-8000-contact-microsoft-support.md).
+Jeśli system przejdzie w tryb odzyskiwania, należy skontaktować się z pomocą techniczną firmy Microsoft, aby uzyskać następujące kroki. Aby uzyskać więcej informacji, przejdź do [strony Skontaktuj się z pomocą techniczną firmy Microsoft](storsimple-8000-contact-microsoft-support.md).
 
 > [!NOTE]
-> **Nie można umieścić urządzenia w trybie odzyskiwania. Jeśli urządzenie jest w nieprawidłowym stanie, tryb odzyskiwania próbuje pobrać urządzenia do stanu, w którym personel firmy Microsoft Support było go sprawdzić.**
+> **Nie można umieścić urządzenia w trybie odzyskiwania. Jeśli urządzenie jest w złym stanie, tryb odzyskiwania próbuje uzyskać urządzenie w stanie, w którym pracownicy pomocy technicznej firmy Microsoft mogą go zbadać.**
 
 ## <a name="determine-storsimple-device-mode"></a>Określanie trybu urządzenia StorSimple
 
 #### <a name="to-determine-the-current-device-mode"></a>Aby określić bieżący tryb urządzenia
 
-1. Zaloguj się do konsoli szeregowej urządzenia, wykonując kroki opisane w [przy użyciu programu PuTTY, aby nawiązać połączenie z konsolą szeregową urządzenia](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
-2. Spójrz na komunikat transparentu w przedstawionym menu konsoli szeregowej urządzenia. Jawnie ten komunikat wskazuje, czy urządzenie jest w trybie konserwacji lub odzyskiwania. Jeśli komunikat nie zawiera żadnych konkretnych informacji o odnoszących się do trybu systemu, urządzenie jest w trybie normalnym.
+1. Zaloguj się do konsoli szeregowej urządzenia, wykonując czynności opisane w [aplikacji Użyj putty, aby połączyć się z konsolą szeregową urządzenia](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
+2. Spójrz na komunikat banera w menu konsoli szeregowej urządzenia. Ten komunikat jawnie wskazuje, czy urządzenie jest w trybie konserwacji lub odzyskiwania. Jeśli wiadomość nie zawiera żadnych konkretnych informacji dotyczących trybu systemowego, urządzenie jest w trybie normalnym.
 
 ## <a name="change-the-storsimple-device-mode"></a>Zmienianie trybu urządzenia StorSimple
 
-Do przeprowadzenia konserwacji lub zainstaluj aktualizacje trybu konserwacji, można umieścić urządzenia StorSimple w tryb konserwacji (w trybie normalnym). Wykonaj poniższe procedury, aby wprowadzić lub wyjściu z trybu konserwacji.
+Urządzenie StorSimple można umieścić w trybie konserwacji (z trybu normalnego), aby wykonać konserwację lub zainstalować aktualizacje trybu konserwacji. Wykonaj następujące procedury, aby przejść lub zakończyć tryb konserwacji.
 
 > [!IMPORTANT]
-> Przed wprowadzeniem trybu konserwacji, sprawdź, czy oba kontrolery urządzeń są w dobrej kondycji, uzyskując dostęp do **ustawienia urządzenia > kondycja sprzętu** dla urządzenia w witrynie Azure portal. Jeśli jeden lub oba kontrolery nie są w dobrej kondycji, skontaktuj się z Microsoft Support następnych kroków. Aby uzyskać więcej informacji, przejdź do [skontaktuj się z pomocą techniczną firmy Microsoft](storsimple-8000-contact-microsoft-support.md).
+> Przed wejściem w tryb konserwacji sprawdź, czy oba kontrolery urządzeń są w dobrej kondycji, uzyskując dostęp do **ustawień urządzenia > kondycję sprzętu** dla urządzenia w witrynie Azure portal. Jeśli jeden lub oba kontrolery nie są w dobrej kondycji, skontaktuj się z pomocą techniczną firmy Microsoft, aby uzyskać następujące kroki. Aby uzyskać więcej informacji, przejdź do [strony Skontaktuj się z pomocą techniczną firmy Microsoft](storsimple-8000-contact-microsoft-support.md).
  
 
 #### <a name="to-enter-maintenance-mode"></a>Aby przejść do trybu konserwacji
 
-1. Zaloguj się do konsoli szeregowej urządzenia, wykonując kroki opisane w [przy użyciu programu PuTTY, aby nawiązać połączenie z konsolą szeregową urządzenia](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
-2. W menu konsoli szeregowej wybierz opcję 1, **Zaloguj się przy użyciu pełnego dostępu**. Po wyświetleniu monitu podaj **hasło administratora urządzenia**. Domyślne hasło jest: `Password1`.
-3. W wierszu polecenia wpisz polecenie 
+1. Zaloguj się do konsoli szeregowej urządzenia, wykonując czynności opisane w [aplikacji Użyj putty, aby połączyć się z konsolą szeregową urządzenia](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
+2. W menu konsoli szeregowej wybierz opcję 1, **zaloguj się z pełnym dostępem**. Po wyświetleniu monitu podaj **hasło administratora urządzenia**. Domyślne hasło `Password1`to: .
+3. W wierszu polecenia wpisz 
    
     `Enter-HcsMaintenanceMode`
-4. Zostanie wyświetlony komunikat ostrzegawczy informujący o trybu konserwacji będzie zakłócać wszystkich żądań We/Wy i sever połączenia do witryny Azure portal i zostanie wyświetlony monit o potwierdzenie. Typ **Y** wejścia w tryb konserwacji.
-5. Powoduje ponowne uruchomienie obu kontrolerów. Po zakończeniu ponownego uruchomienia transparent konsoli szeregowej wskazuje, czy urządzenie jest w trybie konserwacji. Poniżej pokazano przykładowe dane wyjściowe.
+4. Zostanie wyświetlony komunikat ostrzegawczy informujący, że tryb konserwacji zakłóci wszystkie żądania we/wy i oderwie połączenie z portalem Azure, a zostanie wyświetlony monit o potwierdzenie. Wpisz **Y,** aby przejść do trybu konserwacji.
+5. Oba kontrolery zostaną ponownie uruchomione. Po zakończeniu ponownego uruchamiania baner konsoli szeregowej wskazuje, że urządzenie jest w trybie konserwacji. Poniżej pokazano przykładowe dane wyjściowe.
 
 ```
     ---------------------------------------------------------------
@@ -121,12 +121,12 @@ Do przeprowadzenia konserwacji lub zainstaluj aktualizacje trybu konserwacji, mo
 
 #### <a name="to-exit-maintenance-mode"></a>Aby wyjść z trybu konserwacji
 
-1. Zaloguj się do konsoli szeregowej urządzenia. Sprawdź w komunikacie transparentu, że urządzenie jest w trybie konserwacji.
+1. Zaloguj się do konsoli szeregowej urządzenia. Sprawdź na podstawie komunikatu banera, czy urządzenie jest w trybie konserwacji.
 2. W wierszu polecenia wpisz polecenie:
    
     `Exit-HcsMaintenanceMode`
-3. Pojawi się komunikat ostrzegawczy i komunikat z potwierdzeniem. Typ **Y** aby wyjść z trybu konserwacji.
-4. Powoduje ponowne uruchomienie obu kontrolerów. Po zakończeniu ponownego uruchomienia transparent konsoli szeregowej wskazuje, czy urządzenie jest w trybie normalnym. Poniżej pokazano przykładowe dane wyjściowe.
+3. Pojawi się komunikat ostrzegawczy i komunikat potwierdzający. Wpisz **Y,** aby wyjść z trybu konserwacji.
+4. Oba kontrolery zostaną ponownie uruchomione. Po zakończeniu ponownego uruchamiania baner konsoli szeregowej wskazuje, że urządzenie jest w trybie normalnym. Poniżej pokazano przykładowe dane wyjściowe.
 
 ```
     -----------------------MAINTENANCE MODE------------------------
@@ -161,7 +161,7 @@ Do przeprowadzenia konserwacji lub zainstaluj aktualizacje trybu konserwacji, mo
     Please enter your choice>
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak [zastosować aktualizacje trybu normalnego i konserwacja](storsimple-update-device.md) na urządzeniu StorSimple.
+Dowiedz się, jak [zastosować aktualizacje trybu normalnego i konserwacyjnego](storsimple-update-device.md) na urządzeniu StorSimple.
 

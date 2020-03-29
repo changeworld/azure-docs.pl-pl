@@ -1,6 +1,6 @@
 ---
-title: Omówienie zadań usługi Azure IoT Hub | Dokumentacja firmy Microsoft
-description: Przewodnik dla deweloperów — Planowanie zadań do uruchamiania na wielu urządzeniach podłączonych do Centrum IoT. Zadania można zaktualizować tagi i żądane właściwości i wywoływanie metod bezpośrednich na wielu urządzeniach.
+title: Opis zadań usługi Azure IoT Hub | Dokumenty firmy Microsoft
+description: Przewodnik dla deweloperów — planowanie zadań do uruchamiania na wielu urządzeniach podłączonych do centrum IoT Hub. Zadania można aktualizować tagi i żądane właściwości i wywoływać metody bezpośrednie na wielu urządzeniach.
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -9,34 +9,34 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 147dd0f454bd85673bcba5cd6148c5da9716c580
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65409051"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Planowanie zadań na wielu urządzeniach
 
-Usługa Azure IoT Hub umożliwia stosowanie szeregu bloki konstrukcyjne, takich jak [właściwości bliźniaczych reprezentacji urządzeń i tagi](iot-hub-devguide-device-twins.md) i [metody bezpośrednie](iot-hub-devguide-direct-methods.md). Zazwyczaj aplikacji zaplecza Włącz Administratorzy urządzenia i operatory zaktualizować i korzystać z urządzeń IoT w trybie zbiorczym, jak i w zaplanowanym czasie. Zadania wykonywania aktualizacji bliźniaczej reprezentacji urządzenia i metod bezpośrednich dla urządzeń w zaplanowanym czasie. Na przykład operator może użyć aplikacji zaplecza, która inicjuje i śledzi zadania ponownego uruchomienia urządzeń w tworzeniu 43 i piętro 3 w czasie, który nie jest znaczący wpływ na operacje tworzenia.
+Usługa Azure IoT Hub umożliwia szereg bloków konstrukcyjnych, takich jak [właściwości bliźniaczej reprezentacji urządzenia i tagi](iot-hub-devguide-device-twins.md) oraz [metody bezpośrednie.](iot-hub-devguide-direct-methods.md) Zazwyczaj aplikacje zaplecza umożliwiają administratorom urządzeń i operatorom aktualizowanie i interakcję z urządzeniami IoT i interakcję z nimi zbiorczo i w zaplanowanym czasie. Zadania wykonują bliźniacze aktualizacje urządzeń i bezpośrednie metody względem zestawu urządzeń w zaplanowanym czasie. Na przykład operator użyje aplikacji zaplecza, która inicjuje i śledzi zadanie, aby ponownie uruchomić zestaw urządzeń w budynku 43 i 3 w czasie, który nie będzie zakłócający działania budynku.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Rozważ użycie zadania gdy należy zaplanować i śledzić postęp dowolne z następujących działań w zestawie urządzeń:
+Rozważ użycie zadań, gdy musisz zaplanować i śledzić postęp, aby wykonać dowolne z następujących działań na zestawie urządzeń:
 
 * Aktualizowanie żądanych właściwości
-* Aktualizacji tagów
+* Aktualizuj tagi
 * Wywoływanie metod bezpośrednich
 
-## <a name="job-lifecycle"></a>Cykl życia zadania
+## <a name="job-lifecycle"></a>Cykl życia pracy
 
-Zadania są inicjowane przez zaplecze rozwiązania i obsługiwane przez usługę IoT Hub. Możesz zainicjować zadania za pomocą identyfikatora URI przeznaczonych dla usługi (`PUT https://<iot hub>/jobs/v2/<jobID>?api-version=2018-06-30`) i wykonywania zapytań o postęp wykonywania zadania za pomocą identyfikatora URI przeznaczonych dla usługi (`GET https://<iot hub>/jobs/v2/<jobID?api-version=2018-06-30`). Aby odświeżyć stan uruchomionych zadań po zainicjowaniu zadania, uruchom zapytanie zadania.
+Zadania są inicjowane przez zaplecze rozwiązania i obsługiwane przez centrum IoT Hub. Zadanie można zainicjować za pomocą identyfikatora`PUT https://<iot hub>/jobs/v2/<jobID>?api-version=2018-06-30`URI skierowanego do usługi ( ) i kwerendy`GET https://<iot hub>/jobs/v2/<jobID?api-version=2018-06-30`o postęp w wykonywaniu zadania za pośrednictwem identyfikatora URI wychodzącego z usługą ( ). Aby odświeżyć stan uruchomionych zadań po zainicjowaniu zadania, uruchom kwerendę zadania.
 
 > [!NOTE]
-> Po zainicjowaniu zadania nazwy i wartości właściwości mogą zawierać tylko US-ASCII drukowania litery, cyfry, z wyjątkiem tych w następującym zestawie: `$ ( ) < > @ , ; : \ " / [ ] ? = { } SP HT`
+> Podczas inicjowania zadania nazwy i wartości właściwości mogą zawierać tylko alfanumeryczne wydruki US-ASCII, z wyjątkiem dowolnego z następujących zestawów:`$ ( ) < > @ , ; : \ " / [ ] ? = { } SP HT`
 
-## <a name="jobs-to-execute-direct-methods"></a>Zadania do wykonania metody bezpośrednie
+## <a name="jobs-to-execute-direct-methods"></a>Zadania do wykonania metod bezpośrednich
 
-Poniższy fragment kodu przedstawia szczegóły żądania HTTPS 1.1 wykonania [metoda bezpośrednia](iot-hub-devguide-direct-methods.md) na zbiór urządzeń, przy użyciu zadania:
+Poniższy fragment kodu zawiera szczegóły żądania HTTPS 1.1 do wykonywania [metody bezpośredniej](iot-hub-devguide-direct-methods.md) na zestawie urządzeń przy użyciu zadania:
 
 ```
 PUT /jobs/v2/<jobId>?api-version=2018-06-30
@@ -58,7 +58,7 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-Warunek kwerendy mogą być także identyfikator pojedynczego urządzenia lub na liście urządzeń identyfikatorów, jak pokazano w poniższych przykładach:
+Warunek kwerendy może również znajdować się na jednym identyfikatorze urządzenia lub na liście identyfikatorów urządzeń, jak pokazano w poniższych przykładach:
 
 ```
 "queryCondition" = "deviceId = 'MyDevice1'"
@@ -66,9 +66,9 @@ Warunek kwerendy mogą być także identyfikator pojedynczego urządzenia lub na
 "queryCondition" = "deviceId IN ['MyDevice1']"
 ```
 
-[Język zapytań usługi IoT Hub](iot-hub-devguide-query-language.md) obejmuje język zapytań usługi IoT Hub w dodatkowych szczegółów.
+[Język zapytań centrum IoT](iot-hub-devguide-query-language.md) zawiera dodatkowe informacje o języku zapytań centrum IoT.
 
-Poniższy fragment kodu pokazuje żądania i odpowiedzi dla zadania zaplanowane do wywołania metody bezpośredniej o nazwie testMethod na wszystkich urządzeniach w contoso-hub-1:
+Poniższy fragment kodu pokazuje żądanie i odpowiedź dla zadania zaplanowanego do wywołania metody bezpośredniej o nazwie testMetoda na wszystkich urządzeniach contoso-hub-1:
 
 ```
 PUT https://contoso-hub-1.azure-devices.net/jobs/v2/job01?api-version=2018-06-30 HTTP/1.1
@@ -100,9 +100,9 @@ Date: Fri, 03 May 2019 01:46:18 GMT
 {"jobId":"job01","type":"scheduleDeviceMethod","status":"queued"}
 ```
 
-## <a name="jobs-to-update-device-twin-properties"></a>Zadania można zaktualizować właściwości bliźniaczych reprezentacji urządzeń
+## <a name="jobs-to-update-device-twin-properties"></a>Zadania aktualizacji właściwości bliźniaczej reprezentacji urządzenia
 
-Poniższy fragment kodu przedstawia szczegóły żądania HTTPS 1.1 aktualizacji z właściwości bliźniaczych reprezentacji urządzeń przy użyciu zadania:
+Poniższy fragment kodu zawiera szczegóły żądania HTTPS 1.1 dotyczące aktualizowania właściwości bliźniaczej reprezentacji urządzenia przy użyciu zadania:
 
 ```
 PUT /jobs/v2/<jobId>?api-version=2018-06-30
@@ -121,9 +121,9 @@ Content-Type: application/json; charset=utf-8
 ```
 
 > [!NOTE]
-> *UpdateTwin* właściwość wymaga dopasowania prawidłowy element etag, na przykład `etag="*"`.
+> Właściwość *updateTwin* wymaga prawidłowego dopasowania etag; na przykład `etag="*"`.
 
-Poniższy fragment kodu pokazuje żądania i odpowiedzi dla zadania zaplanowane do aktualizacji właściwości bliźniaczych reprezentacji urządzeń na urządzeniu testowym na contoso-hub-1:
+Poniższy fragment kodu zawiera żądanie i odpowiedź dla zadania zaplanowanego do aktualizacji właściwości bliźniaczej reprezentacji urządzenia dla urządzenia testowego na contoso-hub-1:
 
 ```
 PUT https://contoso-hub-1.azure-devices.net/jobs/v2/job02?api-version=2018-06-30 HTTP/1.1
@@ -158,9 +158,9 @@ Date: Fri, 03 May 2019 22:45:13 GMT
 {"jobId":"job02","type":"scheduleUpdateTwin","status":"queued"}
 ```
 
-## <a name="querying-for-progress-on-jobs"></a>Wykonywanie zapytań dotyczących postępu zadania
+## <a name="querying-for-progress-on-jobs"></a>Wyszukiwanie zapytań o postęp w pracach
 
-Poniższy fragment kodu przedstawia szczegóły żądania HTTPS 1.1 zapytań dla zadań:
+Poniższy fragment kodu zawiera szczegóły żądania HTTPS 1.1 do wykonywania zapytań dotyczących zadań:
 
 ```
 GET /jobs/v2/query?api-version=2018-06-30[&jobType=<jobType>][&jobStatus=<jobStatus>][&pageSize=<pageSize>][&continuationToken=<continuationToken>]
@@ -169,53 +169,53 @@ Authorization: <config.sharedAccessSignature>
 Content-Type: application/json; charset=utf-8
 ```
 
-Token kontynuacji jest dostarczany z odpowiedzi.
+KontynuacjaDek jest dostarczany z odpowiedzi.
 
-Można tworzyć zapytania dotyczące stanu wykonywania zadania na temat korzystania z każdego urządzenia [język zapytań usługi IoT Hub dla bliźniaczych reprezentacji urządzeń, zadań i routingu wiadomości](iot-hub-devguide-query-language.md).
+Można zbadać stan wykonania zadania na każdym urządzeniu przy użyciu [języka zapytań Usługi IoT Hub dla bliźniaczych urządzeń, zadań i routingu wiadomości](iot-hub-devguide-query-language.md).
 
-## <a name="jobs-properties"></a>Właściwości zadania
+## <a name="jobs-properties"></a>Właściwości oferty pracy
 
-Na poniższej liście przedstawiono właściwości i opisy odpowiedniego, które mogą być używane podczas wykonywania zapytań dotyczących zadań lub wyniki zadania.
+Na poniższej liście przedstawiono właściwości i odpowiednie opisy, które mogą być używane podczas wykonywania zapytań o zadania lub wyniki zadania.
 
 | Właściwość | Opis |
 | --- | --- |
-| **jobId** |Aplikacja podany identyfikator dla zadania. |
-| **startTime** |Aplikacja podany czas rozpoczęcia (ISO-8601) dla zadania. |
-| **endTime** |Usługa IoT Hub podana data (ISO-8601) ukończenia zadania. Prawidłowe tylko wtedy, gdy zadanie osiągnie stan "ukończone". |
-| **type** |Rodzaje zadań: |
-| | **scheduleUpdateTwin**: Zadanie, używane do aktualizowania zestawu żądane właściwości lub tagów. |
-| | **scheduleDeviceMethod**: Zadania umożliwiają wywoływanie metody urządzenia na zestawie bliźniaczych reprezentacji urządzeń. |
-| **status** |Bieżący stan zadania. Możliwe wartości dla stanu: |
-| | **Oczekujące**: Zaplanowane i Trwa oczekiwanie na być pobierane przez usługę zadania. |
-| | **Zaplanowane**: Zaplanowane na godzinę w przyszłości. |
-| | **Uruchamianie**: Obecnie aktywnych zadań. |
-| | **Anulowano**: Zadanie zostało anulowane. |
-| | **Nie powiodło się**: Zadanie nie powiodło się. |
-| | **Ukończono**: Zadanie zostało ukończone. |
-| **deviceJobStatistics** |Statystyki dotyczące wykonywania zadania. |
-| | **deviceJobStatistics** właściwości: |
-| | **deviceJobStatistics.deviceCount**: Liczba urządzeń w ramach zadania. |
-| | **deviceJobStatistics.failedCount**: Liczba urządzeń, w którym zadanie nie powiodło się. |
-| | **deviceJobStatistics.succeededCount**: Liczba urządzeń, w którym zadanie zakończyło się pomyślnie. |
-| | **deviceJobStatistics.runningCount**: Liczba urządzeń, które są aktualnie uruchomione zadania. |
-| | **deviceJobStatistics.pendingCount**: Liczba urządzeń, oczekujące, aby uruchomić zadanie. |
+| **Jobid** |Podanie aplikacji pod warunkiem identyfikatora zadania. |
+| **startTime** |Podanie aplikacji pod warunkiem, że czas rozpoczęcia zadania (ISO-8601). |
+| **Endtime** |Centrum IoT podało datę (ISO-8601) dla momentu zakończenia zadania. Ważne dopiero po osiągnięciu stanu "ukończone" zadania. |
+| **Typu** |Rodzaje zadań: |
+| | **scheduleUpdateTwin**: Zadanie używane do aktualizowania zestawu żądanych właściwości lub tagów. |
+| | **scheduleDeviceMethod**: Zadanie używane do wywoływania metody urządzenia na zestawie bliźniąt urządzeń. |
+| **Stan** |Bieżący stan zadania. Możliwe wartości stanu: |
+| | **oczekujące**: Zaplanowane i oczekujące na odebranie przez służbę pracy. |
+| | **zaplanowane**: Zaplanowane na pewien czas w przyszłości. |
+| | **działa**: Aktualnie aktywne zadanie. |
+| | **anulowane**: Zadanie zostało anulowane. |
+| | **nie powiodło się:** Zadanie nie powiodło się. |
+| | **ukończono**: Zadanie zostało zakończone. |
+| **deviceJobStatistics (opisy urządzeńJobstatystyczne)** |Statystyki dotyczące wykonania zadania. |
+| | **właściwości deviceJobStatistics:** |
+| | **deviceJobStatistics.deviceCount:** Liczba urządzeń w zadaniu. |
+| | **deviceJobStatistics.failedCount:** Liczba urządzeń, na których zadanie nie powiodło się. |
+| | **deviceJobStatistics.succeededCount:** Liczba urządzeń, na których zadanie zakończyło się pomyślnie. |
+| | **deviceJobStatistics.runningCount:** Liczba urządzeń, na których jest aktualnie uruchomione zadanie. |
+| | **deviceJobStatistics.pendingCount:** Liczba urządzeń oczekujących na uruchomienie zadania. |
 
-### <a name="additional-reference-material"></a>Dodatkowe materiały
+### <a name="additional-reference-material"></a>Dodatkowy materiał referencyjny
 
 Inne tematy referencyjne w przewodniku dla deweloperów usługi IoT Hub obejmują:
 
-* [Punkty końcowe usługi IoT Hub](iot-hub-devguide-endpoints.md) w tym artykule opisano różne punkty końcowe, które każde Centrum IoT hub udostępnia dla operacji zarządzania i środowiska wykonawczego.
+* [Punkty końcowe usługi IoT Hub](iot-hub-devguide-endpoints.md) opisano różne punkty końcowe, które każdy centrum IoT udostępnia dla operacji wykonywania i zarządzania.
 
-* [Przydziału i ograniczanie przepływności](iot-hub-devguide-quotas-throttling.md) w tym artykule opisano przydziały, które mają zastosowanie do usługi IoT Hub i zachowanie ograniczania przepływności można oczekiwać, gdy korzystasz z usługi.
+* [Ograniczanie i przydziały](iot-hub-devguide-quotas-throttling.md) opisuje przydziały, które mają zastosowanie do usługi Centrum IoT i zachowanie ograniczania przepustowości, których można oczekiwać podczas korzystania z usługi.
 
-* [Usługa Azure IoT usługi zestawy SDK urządzeń i](iot-hub-devguide-sdks.md) Wyświetla język różnych zestawów SDK, można użyć podczas tworzenia aplikacji usług i urządzeń, które współdziałają z usługą IoT Hub.
+* [Zestaw SDK urządzeń i usług Usługi Azure IoT](iot-hub-devguide-sdks.md) zawiera listę zestawów SDK w różnych językach, których można używać podczas tworzenia aplikacji na urządzenia i usługi, które współdziałają z centrum IoT Hub.
 
-* [Język zapytań usługi IoT Hub dla bliźniaczych reprezentacji urządzeń, zadań i routingu wiadomości](iot-hub-devguide-query-language.md) opisuje język zapytań usługi IoT Hub. Użyj ten język zapytań, aby pobrać informacje z usługi IoT Hub o bliźniaczych reprezentacji urządzeń i zadań.
+* [Język zapytań centrum IoT dla bliźniaczych urządzeń, zadań i routingu wiadomości](iot-hub-devguide-query-language.md) opisuje język zapytań usługi IoT Hub. Ten język zapytań służy do pobierania informacji z Usługi IoT Hub o bliźniaczych urządzeń i zadaniach.
 
-* [Obsługa protokołu MQTT Centrum IoT](iot-hub-mqtt-support.md) zawiera więcej informacji na temat obsługi usługi IoT Hub dla protokołu MQTT.
+* [Obsługa protokołu MQTT w uężoniać w uiszczaprzestwu IoT Hub](iot-hub-mqtt-support.md) zawiera więcej informacji na temat obsługi protokołu MQTT w centrum IoT Hub.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby wypróbować pojęcia opisane w tym artykule, zobacz następujące samouczki usługi IoT Hub:
+Aby wypróbować niektóre pojęcia opisane w tym artykule, zobacz następujący samouczek Usługi IoT Hub:
 
 * [Planowanie i emitowanie zadań](iot-hub-node-node-schedule-jobs.md)

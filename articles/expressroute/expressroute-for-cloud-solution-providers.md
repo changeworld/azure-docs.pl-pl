@@ -9,10 +9,10 @@ ms.date: 10/10/2016
 ms.author: ricarlse
 ms.custom: seodec18
 ms.openlocfilehash: a3bd48f32dfcee1a666ff842cfcab2384a5459ec
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67849258"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>Usługa ExpressRoute dla dostawców rozwiązań w chmurze (CSP)
@@ -31,7 +31,7 @@ Firma Microsoft Azure oferuje coraz więcej usług, które można zaoferować kl
 Firma Microsoft udostępnia dostawcom CSP interfejsy API do zarządzania subskrypcjami klientów Azure przez umożliwienie programowej integracji z ich systemami zarządzania usługami. Obsługiwane funkcje zarządzania można znaleźć [tutaj](https://msdn.microsoft.com/library/partnercenter/dn974944.aspx).
 
 ## <a name="microsoft-azure-resource-management"></a>Zarządzanie zasobami Microsoft Azure
-Umowa z klientem określa, jak będzie zarządzana subskrypcja. Dostawca CSP może bezpośrednio zarządzać tworzeniem i obsługą zasobów lub klient może zachować kontrolę nad subskrypcją Microsoft Azure i tworzyć zasoby Azure zgodnie z zapotrzebowaniem. Jeśli klient zarządza tworzeniem zasobów w ramach subskrypcji Microsoft Azure, użyje jednego z dwóch modeli: Model "*connect-through*" lub "*Direct-to*". Te modele zostały szczegółowo opisane w poniższych sekcjach.  
+Umowa z klientem określa, jak będzie zarządzana subskrypcja. Dostawca CSP może bezpośrednio zarządzać tworzeniem i obsługą zasobów lub klient może zachować kontrolę nad subskrypcją Microsoft Azure i tworzyć zasoby Azure zgodnie z zapotrzebowaniem. Jeśli klient zarządza tworzeniem zasobów w ramach subskrypcji platformy Microsoft Azure, użyje jednego z dwóch modeli: modelu *"Connect-Through"* lub modelu *"Direct-To".* Te modele zostały szczegółowo opisane w poniższych sekcjach.  
 
 ### <a name="connect-through-model"></a>Model typu „połącz przez”
 ![tekst alternatywny](./media/expressroute-for-cloud-solution-providers/connect-through.png)  
@@ -88,7 +88,7 @@ Możesz pomóc podczas konfigurowania połączenia i tras do zezwalania zasobom 
 ## <a name="expressroute-routing-domains"></a>Domeny routingu usługi ExpressRoute
 Usługa ExpressRoute oferuje trzy domeny routingu: publiczną, prywatną i komunikacji równorzędnej firmy Microsoft. Każda z domen routingu jest konfigurowana z identycznymi routerami w konfiguracji aktywny-aktywny w celu uzyskania wysokiej dostępności. Więcej szczegółowych informacji dotyczących domen routingu usługi ExpressRoute można znaleźć [tutaj](expressroute-circuit-peerings.md).
 
-Możesz zdefiniować filtry tras niestandardowych w taki sposób, aby zezwalać tylko na trasy, na które chcesz zezwolić lub których potrzebujesz. Aby uzyskać więcej informacji lub dowiedzieć się, jak wprowadzić te zmiany, zobacz artykuł: [Utwórz i zmodyfikuj Routing dla obwodu usługi ExpressRoute przy użyciu programu PowerShell,](expressroute-howto-routing-classic.md) Aby uzyskać więcej informacji na temat filtrów routingu.
+Możesz zdefiniować filtry tras niestandardowych w taki sposób, aby zezwalać tylko na trasy, na które chcesz zezwolić lub których potrzebujesz. Opis wprowadzania tych zmian i więcej szczegółów dotyczących filtrów routingu znajduje się w artykule [Create and modify routing for an ExpressRoute circuit using PowerShell](expressroute-howto-routing-classic.md) (Tworzenie i modyfikowanie routingu dla obwodu usługi ExpressRoute za pomocą programu PowerShell).
 
 > [!NOTE]
 > W przypadku firmy Microsoft i publicznej komunikacji równorzędnej połączenie musi odbywać się przez publiczny adres IP należący do klienta lub dostawcy CSP i musi być zgodne ze wszystkimi zdefiniowanymi regułami. Więcej informacji znajduje się na stronie [ExpressRoute Prerequisites](expressroute-prerequisites.md) (Wymagania wstępne usługi ExpressRoute).  
@@ -114,13 +114,13 @@ Tabela routingu domyślnego obejmuje następujące trasy:
 ### <a name="user-defined-routing-udr"></a>Routing zdefiniowany przez użytkownika (UDR)
 Trasy zdefiniowane przez użytkownika umożliwiają sterowanie ruchem wychodzącym z przypisanej podsieci do innych podsieci w sieci wirtualnej lub przez jedną z innych wstępnie zdefiniowanych bram (usługę ExpressRoute, Internet lub sieć VPN). Tabelę routingu domyślnego systemu można zastąpić tabelą routingu zdefiniowanego przez użytkownika, która zastępuje tabelę routingu domyślnego trasami niestandardowymi. W przypadku routingu zdefiniowanego przez użytkownika klienci mogą tworzyć określone trasy do takich urządzeń jak zapory lub urządzenia do wykrywania włamań bądź blokować dostęp do określonych podsieci z podsieci obsługującej trasę zdefiniowaną przez użytkownika. Omówienie tras zdefiniowanych przez użytkownika znajduje się [tutaj](../virtual-network/virtual-networks-udr-overview.md). 
 
-## <a name="security"></a>Bezpieczeństwo
+## <a name="security"></a>Zabezpieczenia
 W zależności od tego, czy używany jest model „połącz z” czy „połącz przez”, klient określa zasady zabezpieczeń w sieci wirtualnej lub przekazuje wymagania zasad bezpieczeństwa dostawcy CSP do zdefiniowania dla sieci wirtualnych. Można zdefiniować następujące kryteria zabezpieczeń:
 
 1. **Izolacja klienta** — platforma Azure zapewnia izolację klienta przez przechowywanie identyfikatora klienta i informacji o sieci wirtualnej w bezpiecznej bazie danych, używanej do hermetyzacji ruchu poszczególnych klientów w tunelu GRE.
 2. Reguły **grupy zabezpieczeń sieci (NSG)** służą do definiowania dopuszczonego ruchu do i z podsieci w ramach sieci wirtualnych na platformie Azure. Domyślnie NSG obejmuje reguły blokowania do blokowania ruchu z Internetu do sieci wirtualnej oraz reguły zezwalania dla ruchu w ramach sieci wirtualnej. Więcej informacji na temat grup zabezpieczeń sieci znajduje się [tutaj](https://azure.microsoft.com/blog/network-security-groups/).
 3. **Tunelowanie wymuszone** — jest to opcja przekierowywania ruchu powiązanego z Internetem pochodzącego z platformy Azure za pośrednictwem połączenia usługi ExpressRoute do lokalnego centrum danych. Więcej informacji o na temat tunelowania wymuszonego można znaleźć [tutaj](expressroute-routing.md#advertising-default-routes).  
-4. **Szyfrowanie** — mimo że obwody usługi ExpressRoute są przeznaczone dla określonego klienta, istnieje możliwość naruszenia bezpieczeństwa dostawcy sieci, które pozwoliłoby intruzowi na sprawdzenie ruchu pakietu. Aby rozwiązać ten potencjał, klient lub dostawca usług kryptograficznych może szyfrować ruch przez połączenie przez zdefiniowanie zasad trybu tunelowania IPSec dla całego ruchu przechodzącego między zasobami lokalnymi i zasobami platformy Azure (zobacz opcjonalny Tryb tunelowania IPSec dla klienta 1 na rysunku). 5000 Zabezpieczenia ExpressRoute, powyżej). Druga opcja polega na użyciu urządzenia zapory na każdym punkcie końcowym obwodu usługi ExpressRoute. Wymaga to zainstalowania dodatkowych maszyn wirtualnych/urządzeń zapory innych firm ma obu końcach w celu zaszyfrowania ruchu w ramach obwodu usługi ExpressRoute.
+4. **Szyfrowanie** — mimo że obwody usługi ExpressRoute są przeznaczone dla określonego klienta, istnieje możliwość naruszenia bezpieczeństwa dostawcy sieci, które pozwoliłoby intruzowi na sprawdzenie ruchu pakietu. Aby temu zapobiec, klient lub dostawca CSP może zaszyfrować ruch w ramach połączenia przez zdefiniowanie zasad trybu tunelu ochrony IPSec dla całego ruchu odbywającego się między zasobami lokalnymi i zasobami Azure (informacje na temat opcjonalnej ochrony IPSec trybu tunelu dla klienta 1 znajdują się powyżej na rysunku 5 — Zabezpieczenia usługi ExpressRoute). Druga opcja polega na użyciu urządzenia zapory na każdym punkcie końcowym obwodu usługi ExpressRoute. Wymaga to zainstalowania dodatkowych maszyn wirtualnych/urządzeń zapory innych firm ma obu końcach w celu zaszyfrowania ruchu w ramach obwodu usługi ExpressRoute.
 
 ![tekst alternatywny](./media/expressroute-for-cloud-solution-providers/expressroute-security.png)  
 

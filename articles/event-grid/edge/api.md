@@ -1,6 +1,6 @@
 ---
-title: Interfejs API REST — Azure Event Grid IoT Edge | Microsoft Docs
-description: Interfejs API REST na Event Grid na IoT Edge.
+title: INTERFEJS API REST — usługa Azure Event Grid IoT Edge | Dokumenty firmy Microsoft
+description: INTERFEJS API REST w siatce zdarzeń w usłudze IoT Edge.
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,38 +10,38 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 19f86b1d8233e05844201e1095c1f79324955cd7
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76841833"
 ---
 # <a name="rest-api"></a>Interfejs API REST
-W tym artykule opisano interfejsy API REST Azure Event Grid na IoT Edge
+W tym artykule opisano interfejsy API REST usługi Azure Event Grid w usłudze IoT Edge
 
-## <a name="common-api-behavior"></a>Wspólne zachowanie interfejsu API
+## <a name="common-api-behavior"></a>Typowe zachowanie interfejsu API
 
 ### <a name="base-url"></a>Podstawowy adres URL
-Event Grid on IoT Edge ma następujące interfejsy API udostępniane za pośrednictwem protokołu HTTP (port 5888) i HTTPS (port 4438).
+Usługa Event Grid na stronie IoT Edge ma następujące interfejsy API udostępniane za pośrednictwem protokołu HTTP (port 5888) i HTTPS (port 4438).
 
-* Podstawowy adres URL dla HTTP: http://eventgridmodule:5888
-* Podstawowy adres URL dla protokołu HTTPS: https://eventgridmodule:4438
+* Podstawowy adres URL protokołu HTTP:http://eventgridmodule:5888
+* Podstawowy adres URL protokołu HTTPS:https://eventgridmodule:4438
 
-### <a name="request-query-string"></a>Ciąg zapytania żądania
-Wszystkie żądania interfejsu API wymagają następującego parametru ciągu zapytania:
+### <a name="request-query-string"></a>Żądanie ciągu zapytania
+Wszystkie żądania interfejsu API wymagają następującego parametru ciągu kwerendy:
 
 ```?api-version=2019-01-01-preview```
 
 ### <a name="request-content-type"></a>Typ zawartości żądania
-Wszystkie żądania interfejsu API muszą mieć **Typ zawartości**.
+Wszystkie żądania interfejsu API muszą mieć **typ zawartości**.
 
-W przypadku **EventGridSchema** lub **CustomSchema**wartość typu zawartości może być jedną z następujących wartości:
+W przypadku **EventGridSchema** lub **CustomSchema**wartość Content-Type może być jedną z następujących wartości:
 
 ```Content-Type: application/json```
 
 ```Content-Type: application/json; charset=utf-8```
 
-W przypadku **CloudEventSchemaV1_0** w trybie strukturalnym wartość typu zawartości może być jedną z następujących wartości:
+W przypadku **CloudEventSchemaV1_0** w trybie strukturalnym wartość Content-Type może być jedną z następujących wartości:
 
 ```Content-Type: application/cloudevents+json```
     
@@ -51,7 +51,7 @@ W przypadku **CloudEventSchemaV1_0** w trybie strukturalnym wartość typu zawar
     
 ```Content-Type: application/cloudevents-batch+json; charset=utf-8```
 
-W przypadku **CloudEventSchemaV1_0** w trybie binarnym zapoznaj się z [dokumentacją](https://github.com/cloudevents/spec/blob/master/http-protocol-binding.md) , aby uzyskać szczegółowe informacje.
+W przypadku **CloudEventSchemaV1_0** w trybie binarnym, zapoznaj się z [dokumentacją,](https://github.com/cloudevents/spec/blob/master/http-protocol-binding.md) aby uzyskać szczegółowe informacje.
 
 ### <a name="error-response"></a>Odpowiedź na błąd
 Wszystkie interfejsy API zwracają błąd z następującym ładunkiem:
@@ -72,11 +72,11 @@ Wszystkie interfejsy API zwracają błąd z następującym ładunkiem:
 
 ## <a name="manage-topics"></a>Zarządzanie tematami
 
-### <a name="put-topic-create--update"></a>Umieść temat (Utwórz/zaktualizuj)
+### <a name="put-topic-create--update"></a>Umieść temat (tworzenie / aktualizacja)
 
-**Żądanie**: ``` PUT /topics/<topic_name>?api-version=2019-01-01-preview ```
+**Prośba**:``` PUT /topics/<topic_name>?api-version=2019-01-01-preview ```
 
-**Ładunek**:
+**Ładowność**:
 
 ```json
     {
@@ -88,9 +88,9 @@ Wszystkie interfejsy API zwracają błąd z następującym ładunkiem:
     }
 ```
 
-**Odpowiedź**: http 200
+**Odpowiedź**: HTTP 200
 
-**Ładunek**:
+**Ładowność**:
 
 ```json
 {
@@ -107,11 +107,11 @@ Wszystkie interfejsy API zwracają błąd z następującym ładunkiem:
 
 ### <a name="get-topic"></a>Pobierz temat
 
-**Żądanie**: ``` GET /topics/<topic_name>?api-version=2019-01-01-preview ```
+**Prośba**:``` GET /topics/<topic_name>?api-version=2019-01-01-preview ```
 
-**Odpowiedź**: http 200
+**Odpowiedź**: HTTP 200
 
-**Ładunek**:
+**Ładowność**:
 ```json
 {
     "id": "/iotHubs/<iot_hub_name>/devices/<iot_edge_device_id>/modules/<eventgrid_module_name>/topics/<topic_name>",
@@ -125,13 +125,13 @@ Wszystkie interfejsy API zwracają błąd z następującym ładunkiem:
 }
 ```
 
-### <a name="get-all-topics"></a>Pobierz wszystkie tematy
+### <a name="get-all-topics"></a>Uzyskaj wszystkie tematy
 
-**Żądanie**: ``` GET /topics?api-version=2019-01-01-preview ```
+**Prośba**:``` GET /topics?api-version=2019-01-01-preview ```
 
-**Odpowiedź**: http 200
+**Odpowiedź**: HTTP 200
 
-**Ładunek**:
+**Ładowność**:
 ```json
 [
     {
@@ -159,18 +159,18 @@ Wszystkie interfejsy API zwracają błąd z następującym ładunkiem:
 
 ### <a name="delete-topic"></a>Usuń temat
 
-**Żądanie**: ``` DELETE /topics/<topic_name>?api-version=2019-01-01-preview ```
+**Prośba**:``` DELETE /topics/<topic_name>?api-version=2019-01-01-preview ```
 
-**Odpowiedź**: http 200, pusty ładunek
+**Odpowiedź**: HTTP 200, pusty ładunek
 
 ## <a name="manage-event-subscriptions"></a>Zarządzanie subskrypcjami zdarzeń
-Przykłady w tej sekcji wykorzystują `EndpointType=Webhook;`. Przykłady JSON dla `EndpointType=EdgeHub / EndpointType=EventGrid` znajdują się w następnej sekcji. 
+Przykłady w tej `EndpointType=Webhook;`sekcji użyć . Próbki json `EndpointType=EdgeHub / EndpointType=EventGrid` znajdują się w następnej sekcji. 
 
-### <a name="put-event-subscription-create--update"></a>Umieść subskrypcję zdarzeń (Utwórz/zaktualizuj)
+### <a name="put-event-subscription-create--update"></a>Umieść subskrypcję zdarzeń (tworzenie / aktualizowanie)
 
-**Żądanie**: ``` PUT /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
+**Prośba**:``` PUT /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
 
-**Ładunek**:
+**Ładowność**:
 ```json
 {
     "name": "<subscription_name>", // optional, inferred from URL. If specified must match URL subscription_name
@@ -268,9 +268,9 @@ Przykłady w tej sekcji wykorzystują `EndpointType=Webhook;`. Przykłady JSON d
 }
 ```
 
-**Odpowiedź**: http 200
+**Odpowiedź**: HTTP 200
 
-**Ładunek**:
+**Ładowność**:
 
 ```json
 {
@@ -371,13 +371,13 @@ Przykłady w tej sekcji wykorzystują `EndpointType=Webhook;`. Przykłady JSON d
 ```
 
 
-### <a name="get-event-subscription"></a>Pobierz subskrypcję zdarzeń
+### <a name="get-event-subscription"></a>Uzyskaj subskrypcję wydarzenia
 
-**Żądanie**: ``` GET /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
+**Prośba**:``` GET /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
 
-**Odpowiedź**: http 200
+**Odpowiedź**: HTTP 200
 
-**Ładunek**:
+**Ładowność**:
 ```json
 {
     "id": "/iotHubs/<iot_hub_name>/devices/<iot_edge_device_id>/modules/<eventgrid_module_name>/topics/<topic_name>/eventSubscriptions/<subscription_name>",
@@ -476,13 +476,13 @@ Przykłady w tej sekcji wykorzystują `EndpointType=Webhook;`. Przykłady JSON d
 }
 ```
 
-### <a name="get-event-subscriptions"></a>Pobierz subskrypcje zdarzeń
+### <a name="get-event-subscriptions"></a>Uzyskaj subskrypcje zdarzeń
 
-**Żądanie**: ``` GET /topics/<topic_name>/eventSubscriptions?api-version=2019-01-01-preview ```
+**Prośba**:``` GET /topics/<topic_name>/eventSubscriptions?api-version=2019-01-01-preview ```
 
-**Odpowiedź**: http 200
+**Odpowiedź**: HTTP 200
 
-**Ładunek**:
+**Ładowność**:
 ```json
 [
     {
@@ -494,18 +494,18 @@ Przykłady w tej sekcji wykorzystują `EndpointType=Webhook;`. Przykłady JSON d
 ]
 ```
 
-### <a name="delete-event-subscription"></a>Usuń subskrypcję zdarzeń
+### <a name="delete-event-subscription"></a>Usuwanie subskrypcji zdarzeń
 
-**Żądanie**: ``` DELETE /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
+**Prośba**:``` DELETE /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
 
-**Odpowiedź**: http 200, brak ładunku
+**Odpowiedź**: HTTP 200, bez ładunku
 
 
-## <a name="publish-events-api"></a>Interfejs API zdarzeń publikowania
+## <a name="publish-events-api"></a>Interfejs API publikowania zdarzeń
 
-### <a name="send-batch-of-events-in-event-grid-schema"></a>Wyślij partię zdarzeń (w Event Grid schemacie)
+### <a name="send-batch-of-events-in-event-grid-schema"></a>Wyślij partię zdarzeń (w schemacie siatki zdarzeń)
 
-**Żądanie**: ``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
+**Prośba**:``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
 
 ```json
 [
@@ -523,22 +523,22 @@ Przykłady w tej sekcji wykorzystują `EndpointType=Webhook;`. Przykłady JSON d
 ]
 ```
 
-**Odpowiedź**: http 200, pusty ładunek
+**Odpowiedź**: HTTP 200, pusty ładunek
 
 
 **Opisy pól ładunku**
-- ```Id``` jest obowiązkowy. Może to być dowolna wartość ciągu, która jest wypełniana przez obiekt wywołujący. Event Grid nie wykonuje żadnych zduplikowanych wykryć ani nie wymusza żadnej semantyki tego pola.
-- ```Topic``` jest opcjonalne, ale jeśli określony musi być zgodny z topic_name z adresu URL żądania
-- ```Subject``` jest obowiązkowy, może być dowolną wartością ciągu
-- ```EventType``` jest obowiązkowy, może być dowolną wartością ciągu
-- ```EventTime``` jest obowiązkowy, nie jest on zweryfikowany, ale powinien być prawidłowym obiektem DateTime.
-- ```DataVersion``` jest obowiązkowy
-- ```MetadataVersion``` jest opcjonalne, jeśli określono, musi być ciągiem z wartością ```"1"```
-- ```Data``` jest opcjonalne i może być dowolnym tokenem JSON (Number, String, Boolean, Array, Object)
+- ```Id```jest obowiązkowe. Może to być dowolna wartość ciągu, która jest wypełniona przez wywołującego. Usługa Event Grid NIE wykrywa duplikatów ani nie wymusza żadnych semantyki w tym polu.
+- ```Topic```jest opcjonalna, ale jeśli określono, musi być zgodna z topic_name z adresu URL żądania
+- ```Subject```jest obowiązkowe, może być dowolną wartością ciągu
+- ```EventType```jest obowiązkowe, może być dowolną wartością ciągu
+- ```EventTime```jest obowiązkowe, nie jest weryfikowany, ale powinien być odpowiedni DateTime.
+- ```DataVersion```jest obowiązkowe
+- ```MetadataVersion```jest opcjonalny, jeśli określono, że musi być ciągiem z wartością```"1"```
+- ```Data```jest opcjonalny i może być dowolny token JSON (liczba, ciąg, logiczny, tablica, obiekt)
 
-### <a name="send-batch-of-events-in-custom-schema"></a>Wyślij partię zdarzeń (w schemacie niestandardowym)
+### <a name="send-batch-of-events-in-custom-schema"></a>Wysyłanie partii zdarzeń (w schemacie niestandardowym)
 
-**Żądanie**: ``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
+**Prośba**:``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
 
 ```json
 [
@@ -548,18 +548,18 @@ Przykłady w tej sekcji wykorzystują `EndpointType=Webhook;`. Przykłady JSON d
 ]
 ```
 
-**Odpowiedź**: http 200, pusty ładunek
+**Odpowiedź**: HTTP 200, pusty ładunek
 
 
-**Ograniczenia ładunku**
+**Ograniczenia dotyczące ładowności**
 - MUSI być tablicą zdarzeń.
-- Każdy wpis tablicy musi być obiektem JSON.
-- Brak innych ograniczeń (innych niż rozmiar ładunku).
+- Każdy wpis tablicy MUSI być obiektem JSON.
+- Żadne inne ograniczenia (inne niż rozmiar ładunku).
 
 ## <a name="examples"></a>Przykłady
 
 ### <a name="set-up-topic-with-eventgrid-schema"></a>Konfigurowanie tematu za pomocą schematu EventGrid
-Konfiguruje temat, aby wymagać opublikowania zdarzeń w programie **eventgridschema**.
+Konfiguruje temat, aby wymagać publikowania zdarzeń w **eventgridschema**.
 
 ```json
     {
@@ -572,7 +572,7 @@ Konfiguruje temat, aby wymagać opublikowania zdarzeń w programie **eventgridsc
 ```
 
 ### <a name="set-up-topic-with-custom-schema"></a>Konfigurowanie tematu ze schematem niestandardowym
-Konfiguruje temat, aby wymagać opublikowania zdarzeń w `customschema`.
+Konfiguruje temat, aby wymagać `customschema`publikowania zdarzeń w pliku .
 
 ```json
     {
@@ -584,8 +584,8 @@ Konfiguruje temat, aby wymagać opublikowania zdarzeń w `customschema`.
     }
 ```
 
-### <a name="set-up-topic-with-cloud-event-schema"></a>Konfigurowanie tematu przy użyciu schematu zdarzeń w chmurze
-Konfiguruje temat, aby wymagać opublikowania zdarzeń w `cloudeventschema`.
+### <a name="set-up-topic-with-cloud-event-schema"></a>Konfigurowanie tematu za pomocą schematu zdarzeń w chmurze
+Konfiguruje temat, aby wymagać `cloudeventschema`publikowania zdarzeń w pliku .
 
 ```json
     {
@@ -597,8 +597,8 @@ Konfiguruje temat, aby wymagać opublikowania zdarzeń w `cloudeventschema`.
     }
 ```
 
-### <a name="set-up-webhook-as-destination-events-to-be-delivered-in-eventgridschema"></a>Skonfiguruj element webhook jako miejsce docelowe, zdarzenia, które mają być dostarczone w eventgridschema
-Ten typ docelowy służy do wysyłania zdarzeń do dowolnego innego modułu (który obsługuje punkt końcowy HTTP) lub do dowolnego punktu końcowego z adresem HTTP w sieci/Internecie.
+### <a name="set-up-webhook-as-destination-events-to-be-delivered-in-eventgridschema"></a>Konfigurowanie webhook jako miejsca docelowego, zdarzenia, które mają być dostarczane w eventgridschema
+Ten typ miejsca docelowego służy do wysyłania zdarzeń do dowolnego innego modułu (który obsługuje punkt końcowy HTTP) lub do dowolnego punktu końcowego adresowalny HTTP w sieci/Internecie.
 
 ```json
 {
@@ -617,19 +617,19 @@ Ten typ docelowy służy do wysyłania zdarzeń do dowolnego innego modułu (kt�
 }
 ```
 
-Ograniczenia dotyczące `endpointUrl` atrybutu:
-- Nie może mieć wartości null.
+Ograniczenia atrybutu: `endpointUrl`
+- Musi być bez wartości null.
 - Musi to być bezwzględny adres URL.
-- Jeśli outbound__webhook__httpsOnly ma wartość true w ustawieniach EventGridModule, musi być tylko HTTPS.
-- Jeśli outbound__webhook__httpsOnly ma wartość false, może to być HTTP lub HTTPS.
+- Jeśli outbound__webhook__httpsOnly jest ustawiona na true w ustawieniach EventGridModule, musi być tylko HTTPS.
+- Jeśli outbound__webhook__httpsOnly ustawiona na false, może to być HTTP lub HTTPS.
 
-Ograniczenia dotyczące właściwości `eventDeliverySchema`:
-- Musi być zgodna ze schematem wejściowym tematu subskrybowania.
-- Może mieć wartość null. Domyślnie jest to schemat wejściowy tematu.
+Ograniczenia dotyczące `eventDeliverySchema` właściwości:
+- Musi być zgodny ze schematem wejściowym tematu subskrybowania.
+- Może być null. Domyślnie schemat wejściowy tematu.
 
-### <a name="set-up-iot-edge-as-destination"></a>Skonfiguruj IoT Edge jako miejsce docelowe
+### <a name="set-up-iot-edge-as-destination"></a>Konfigurowanie ioT Edge jako miejsca docelowego
 
-Ta lokalizacja docelowa służy do wysyłania zdarzeń do centrum IoT Edge i podlegająca przekierowaniu do podsystemu Routing/filtrowanie/przekazywanie.
+Użyj tego miejsca docelowego, aby wysłać zdarzenia do usługi IoT Edge Hub i zostać poddane podsystemowi routingu/filtrowania/przekazywania koncentratora usługi Edge Hub.
 
 ```json
 {
@@ -647,9 +647,9 @@ Ta lokalizacja docelowa służy do wysyłania zdarzeń do centrum IoT Edge i pod
 }
 ```
 
-### <a name="set-up-event-grid-cloud-as-destination"></a>Skonfiguruj Event Grid chmurę jako lokalizację docelową
+### <a name="set-up-event-grid-cloud-as-destination"></a>Konfigurowanie chmury usługi Event Grid jako miejsca docelowego
 
-Ta lokalizacja docelowa służy do wysyłania zdarzeń do Event Grid w chmurze (Azure). Najpierw należy skonfigurować temat użytkownika w chmurze, do którego mają być wysyłane zdarzenia, przed utworzeniem subskrypcji zdarzeń na krawędzi.
+Użyj tego miejsca docelowego, aby wysłać zdarzenia do siatki zdarzeń w chmurze (Azure). Przed utworzeniem subskrypcji zdarzeń na krawędzi należy najpierw skonfigurować temat użytkownika w chmurze, do którego zdarzenia powinny być wysyłane.
 
 ```json
 {
@@ -669,33 +669,33 @@ Ta lokalizacja docelowa służy do wysyłania zdarzeń do Event Grid w chmurze (
 }
 ```
 
-EndpointUrl
-- Nie może mieć wartości null.
+Punkt końcowyUrl:
+- Musi być bez wartości null.
 - Musi to być bezwzględny adres URL.
-- `/api/events` ścieżki musi być zdefiniowana w ścieżce URL żądania.
+- Ścieżka `/api/events` musi być zdefiniowana w ścieżce adresu URL żądania.
 - Musi mieć `api-version=2018-01-01` w ciągu zapytania.
-- Jeśli outbound__eventgrid__httpsOnly ma wartość true w ustawieniach EventGridModule (domyślnie true), musi być tylko HTTPS.
+- Jeśli outbound__eventgrid__httpsOnly jest ustawiona na true w ustawieniach EventGridModule (domyślnie true), musi być tylko HTTPS.
 - Jeśli outbound__eventgrid__httpsOnly jest ustawiona na false, może to być HTTP lub HTTPS.
-- Jeśli outbound__eventgrid__allowInvalidHostnames jest ustawiona na false (domyślnie false), musi ona wskazywać jeden z następujących punktów końcowych:
+- Jeśli outbound__eventgrid__allowInvalidHostnames jest ustawiona na false (false domyślnie), musi być skierowany do jednego z następujących punktów końcowych:
    - `eventgrid.azure.net`
    - `eventgrid.azure.us`
    - `eventgrid.azure.cn`
 
 SasKey:
-- Nie może mieć wartości null.
+- Musi być bez wartości null.
 
-Temat:
-- Jeśli subskrypcja. EventDeliverySchema ma wartość EventGridSchema, wartość z tego pola jest umieszczana w polu tematu każdego zdarzenia przed przekazaniem do Event Grid w chmurze.
-- Jeśli wartość Subscription. EventDeliverySchema jest ustawiona na CustomEventSchema, ta właściwość jest ignorowana, a ładunek zdarzenia niestandardowego jest przekazywany dokładnie tak, jak został odebrany.
+Nazwa tematu:
+- Jeśli Subscription.EventDeliverySchema jest ustawiona na EventGridSchema, wartość z tego pola jest umieszczana w polu tematu każdego zdarzenia przed przekazaniem do siatki zdarzeń w chmurze.
+- Jeśli Subscription.EventDeliverySchema jest ustawiona na CustomEventSchema, ta właściwość jest ignorowana i ładunek zdarzenia niestandardowego jest przekazytywnie dokładnie tak, jak zostało odebrane.
 
-## <a name="set-up-event-hubs-as-a-destination"></a>Skonfiguruj Event Hubs jako lokalizację docelową
+## <a name="set-up-event-hubs-as-a-destination"></a>Konfigurowanie centrów zdarzeń jako miejsca docelowego
 
-Aby opublikować w centrum zdarzeń, ustaw `endpointType` na `eventHub` i podaj:
+Aby opublikować w Centrum `endpointType` zdarzeń, ustaw do `eventHub` i podaj:
 
-* connectionString: parametry połączenia dla określonego centrum zdarzeń, które są przeznaczone do wygenerowania za pośrednictwem zasad dostępu współdzielonego.
+* connectionString: Parametry połączenia dla określonego centrum zdarzeń, na które kierowane są reklamy generowane za pośrednictwem zasad dostępu współdzielonego.
 
     >[!NOTE]
-    > Parametry połączenia muszą być specyficzne dla jednostki. Używanie parametrów połączenia z przestrzenią nazw nie będzie działało. Parametry połączenia specyficzne dla jednostki można wygenerować, przechodząc do określonego centrum zdarzeń, które chcesz opublikować w witrynie Azure Portal, a następnie klikając pozycję **zasady dostępu współdzielonego** , aby wygenerować nowy ciąg connecection specyficzny dla jednostki.
+    > Parametry połączenia muszą być specyficzne dla jednostki. Użycie ciągu połączenia obszaru nazw nie będzie działać. Można wygenerować ciąg połączenia określonej jednostki, przechodząc do określonego Centrum zdarzeń, które chcesz opublikować w witrynie Azure Portal i klikając pozycję **Zasady dostępu współdzielonego w** celu wygenerowania nowego ciągu connecection określonego przez jednostkę.
 
     ```json
         {
@@ -710,14 +710,14 @@ Aby opublikować w centrum zdarzeń, ustaw `endpointType` na `eventHub` i podaj:
         }
     ```
 
-## <a name="set-up-service-bus-queues-as-a-destination"></a>Skonfiguruj kolejki Service Bus jako miejsce docelowe
+## <a name="set-up-service-bus-queues-as-a-destination"></a>Konfigurowanie kolejek usługi Service Bus jako miejsca docelowego
 
-Aby opublikować w kolejce Service Bus, ustaw `endpointType` na `serviceBusQueue` i podaj:
+Aby opublikować w kolejce `endpointType` usługi `serviceBusQueue` Service Bus, ustaw do i podaj:
 
-* connectionString: parametry połączenia dla konkretnej kolejki Service Bus są generowane przez zasady dostępu współdzielonego.
+* connectionString: Parametry połączenia dla określonej kolejki magistrali usług, na którą kierowano, generowane za pośrednictwem zasad dostępu współdzielonego.
 
     >[!NOTE]
-    > Parametry połączenia muszą być specyficzne dla jednostki. Używanie parametrów połączenia z przestrzenią nazw nie będzie działało. Wygeneruj parametry połączenia specyficzne dla jednostki, przechodząc do konkretnej kolejki Service Bus, w której chcesz opublikować w witrynie Azure Portal, a następnie klikając pozycję **zasady dostępu współdzielonego** , aby wygenerować nowy ciąg connecection specyficzny dla jednostki.
+    > Parametry połączenia muszą być specyficzne dla jednostki. Użycie ciągu połączenia obszaru nazw nie będzie działać. Generowanie ciągu połączenia określonego encji przez przejście do określonej kolejki usługi Service Bus, które chcesz opublikować w witrynie Azure Portal i kliknięcie ikon **dostępu udostępnionego** w celu wygenerowania nowego ciągu connecection określonego przez jednostkę.
 
     ```json
         {
@@ -732,14 +732,14 @@ Aby opublikować w kolejce Service Bus, ustaw `endpointType` na `serviceBusQueue
         }
     ```
 
-## <a name="set-up-service-bus-topics-as-a-destination"></a>Skonfiguruj Service Bus tematy jako miejsce docelowe
+## <a name="set-up-service-bus-topics-as-a-destination"></a>Konfigurowanie tematów usługi Service Bus jako miejsca docelowego
 
-Aby opublikować w temacie Service Bus, ustaw `endpointType` na `serviceBusTopic` i podaj:
+Aby opublikować w temacie usługi `endpointType` `serviceBusTopic` Service Bus, ustaw do i podaj:
 
-* connectionString: parametry połączenia dla określonego tematu Service Bus, które są przeznaczone do wygenerowania w ramach zasad dostępu współdzielonego.
+* connectionString: Parametry połączenia dla określonego tematu usługi Service Bus, na który kierowano generowane za pośrednictwem zasad dostępu współdzielonego.
 
     >[!NOTE]
-    > Parametry połączenia muszą być specyficzne dla jednostki. Używanie parametrów połączenia z przestrzenią nazw nie będzie działało. Wygeneruj parametry połączenia specyficzne dla jednostki, przechodząc do określonego tematu Service Bus, w którym chcesz opublikować w witrynie Azure Portal, a następnie klikając pozycję **zasady dostępu współdzielonego** , aby wygenerować nowy ciąg connecection specyficzny dla jednostki.
+    > Parametry połączenia muszą być specyficzne dla jednostki. Użycie ciągu połączenia obszaru nazw nie będzie działać. Generowanie ciągu połączenia określonego encji przez przejście do określonego tematu usługi Service Bus, który chcesz opublikować w witrynie Azure Portal i kliknięcie ikon **dostępu udostępnionego** w celu wygenerowania nowego ciągu connecection określonego przez jednostkę.
 
     ```json
         {
@@ -754,15 +754,15 @@ Aby opublikować w temacie Service Bus, ustaw `endpointType` na `serviceBusTopic
         }
     ```
 
-## <a name="set-up-storage-queues-as-a-destination"></a>Skonfiguruj kolejki magazynu jako lokalizację docelową
+## <a name="set-up-storage-queues-as-a-destination"></a>Konfigurowanie kolejek magazynu jako miejsca docelowego
 
-Aby opublikować w kolejce magazynu, ustaw `endpointType` na `storageQueue` i podaj:
+Aby opublikować w kolejce `endpointType` `storageQueue` magazynu, ustaw do i podaj:
 
-* QueueName: Nazwa kolejki magazynu, w której jest publikowany.
-* connectionString: parametry połączenia dla konta magazynu, w którym znajduje się kolejka magazynu.
+* nazwa queueName: Nazwa kolejki magazynu, do której publikujesz.
+* connectionString: Parametry połączenia dla konta magazynu, w które znajduje się kolejka magazynu.
 
     >[!NOTE]
-    > Nieliniowe Event Hubs, kolejki Service Bus i tematy Service Bus, parametry połączenia używane dla kolejek magazynu nie są specyficzne dla jednostki. Zamiast tego należy użyć parametrów połączenia dla konta magazynu.
+    > Unline Event Hubs, Kolejki magistrali usług i Tematy usługi Service Bus, ciąg połączenia używany dla kolejek magazynu nie jest specyficzny dla encji. Zamiast tego musi, ale parametry połączenia dla konta magazynu.
 
     ```json
         {

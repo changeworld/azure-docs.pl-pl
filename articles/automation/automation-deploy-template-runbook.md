@@ -1,40 +1,40 @@
 ---
-title: Wdrażanie szablonu Azure Resource Manager w elemencie Runbook Azure Automation
-description: Jak wdrożyć szablon Azure Resource Manager przechowywany w usłudze Azure Storage z elementu Runbook
+title: Wdrażanie szablonu usługi Azure Resource Manager w ożeniu usługi Azure Automation
+description: Jak wdrożyć szablon usługi Azure Resource Manager przechowywany w usłudze Azure Storage z uruchomieniu księgi rozmieszczenia
 services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-keywords: PowerShell, Runbook, JSON, Automatyzacja Azure
+keywords: powershell, runbook, json, azure automation
 ms.openlocfilehash: d4adbea42cda54380ad32dce40cfa0d8391ee490
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75366638"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-an-azure-automation-powershell-runbook"></a>Wdrażanie szablonu usługi Azure Resource Manager w elemencie runbook programu PowerShell usługi Azure Automation
 
-Można napisać [Azure Automation element Runbook programu PowerShell](automation-first-runbook-textual-powershell.md) , który wdraża zasób platformy Azure za pomocą [szablonu usługi Azure Resource Management](../azure-resource-manager/resource-manager-create-first-template.md).
+Można napisać element [runbook programu Azure Automation PowerShell,](automation-first-runbook-textual-powershell.md) który wdraża zasób platformy Azure przy użyciu [szablonu zarządzania zasobami platformy Azure.](../azure-resource-manager/resource-manager-create-first-template.md)
 
-Dzięki temu można zautomatyzować wdrażanie zasobów platformy Azure. Szablony Menedżer zasobów można obsługiwać w centralnej, bezpiecznej lokalizacji, takiej jak usługa Azure Storage.
+W ten sposób można zautomatyzować wdrażanie zasobów platformy Azure. Szablony Usługi Resource Manager można zachować w centralnej, bezpiecznej lokalizacji, takiej jak usługa Azure Storage.
 
-W tym artykule opisano Tworzenie elementu Runbook programu PowerShell, który używa szablonu Menedżer zasobów przechowywanego w [usłudze Azure Storage](../storage/common/storage-introduction.md) w celu wdrożenia nowego konta usługi Azure Storage.
+W tym artykule tworzymy projekt runbook programu PowerShell, który używa szablonu Usługi Resource Manager przechowywane w [usłudze Azure Storage](../storage/common/storage-introduction.md) do wdrożenia nowego konta usługi Azure Storage.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby ukończyć ten samouczek, potrzebne są następujące elementy:
 
-* Subskrypcja platformy Azure. Jeśli jeszcze jej nie masz, możesz [aktywować korzyści dla subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) lub [utworzyć bezpłatne konto](https://azure.microsoft.com/free/).
+* Subskrypcja platformy Azure. Jeśli jeszcze go nie masz, możesz [aktywować swoje korzyści dla subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) lub [założyć bezpłatne konto.](https://azure.microsoft.com/free/)
 * [Konto usługi Automation](automation-sec-configure-azure-runas-account.md) do przechowywania elementu Runbook i uwierzytelniania w zasobach platformy Azure.  To konto musi mieć uprawnienia do uruchamiania i zatrzymywania maszyny wirtualnej.
-* [Konto magazynu platformy Azure](../storage/common/storage-create-storage-account.md) , w którym ma być przechowywany szablon Menedżer zasobów
-* Program Azure PowerShell został zainstalowany na komputerze lokalnym. Aby uzyskać informacje na temat pobierania Azure PowerShell [, zobacz Instalowanie i Konfigurowanie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) .
+* [Konto usługi Azure Storage,](../storage/common/storage-create-storage-account.md) na którym ma być przechowywane szablon Usługi Resource Manager
+* Program Azure Powershell zainstalowany na komputerze lokalnym. Zobacz [Instalowanie i konfigurowanie programu Azure Powershell,](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) aby uzyskać informacje dotyczące sposobu uzyskania programu Azure PowerShell.
 
 ## <a name="create-the-resource-manager-template"></a>Tworzenie szablonu usługi Resource Manager
 
-W tym przykładzie używamy szablonu Menedżer zasobów, który wdraża nowe konto usługi Azure Storage.
+W tym przykładzie używamy szablonu Menedżera zasobów, który wdraża nowe konto usługi Azure Storage.
 
-W edytorze tekstów Skopiuj następujący tekst:
+W edytorze tekstu skopiuj następujący tekst:
 
 ```json
 {
@@ -88,14 +88,14 @@ W edytorze tekstów Skopiuj następujący tekst:
 }
 ```
 
-Zapisz plik lokalnie jako `TemplateTest.json`.
+Zapisz plik lokalnie `TemplateTest.json`jako .
 
-## <a name="save-the-resource-manager-template-in-azure-storage"></a>Zapisz szablon Menedżer zasobów w usłudze Azure Storage
+## <a name="save-the-resource-manager-template-in-azure-storage"></a>Zapisywanie szablonu Usługi Resource Manager w usłudze Azure Storage
 
-Teraz używamy programu PowerShell do utworzenia udziału plików usługi Azure Storage i przekazania pliku `TemplateTest.json`.
-Aby uzyskać instrukcje dotyczące sposobu tworzenia udziału plików i przekazywania pliku w Azure Portal, zobacz Rozpoczynanie [pracy z usługą Azure File Storage w systemie Windows](../storage/files/storage-dotnet-how-to-use-files.md).
+Teraz używamy programu PowerShell do utworzenia udziału `TemplateTest.json` plików usługi Azure Storage i przekazania pliku.
+Aby uzyskać instrukcje dotyczące tworzenia udziału plików i przekazywania pliku w witrynie Azure portal, zobacz Wprowadzenie do [magazynu plików platformy Azure w systemie Windows](../storage/files/storage-dotnet-how-to-use-files.md).
 
-Uruchom program PowerShell na maszynie lokalnej i uruchom następujące polecenia, aby utworzyć udział plików i przekazać szablon Menedżer zasobów do tego udziału plików.
+Uruchom program PowerShell na komputerze lokalnym i uruchom następujące polecenia, aby utworzyć udział plików i przekazać szablon Menedżera zasobów do tego udziału plików.
 
 ```powershell
 # Login to Azure
@@ -116,11 +116,11 @@ $templateFile = 'C:\TemplatePath'
 Set-AzureStorageFileContent -ShareName $fileShare.Name -Context $context -Source $templateFile
 ```
 
-## <a name="create-the-powershell-runbook-script"></a>Utwórz skrypt elementu Runbook programu PowerShell
+## <a name="create-the-powershell-runbook-script"></a>Tworzenie skryptu śmiętu programu PowerShell
 
-Teraz tworzymy skrypt programu PowerShell, który pobiera plik `TemplateTest.json` z usługi Azure Storage i wdraża szablon w celu utworzenia nowego konta usługi Azure Storage.
+Teraz tworzymy skrypt programu PowerShell, który pobiera `TemplateTest.json` plik z usługi Azure Storage i wdraża szablon, aby utworzyć nowe konto usługi Azure Storage.
 
-W edytorze tekstów wklej następujący tekst:
+W edytorze tekstu wklej następujący tekst:
 
 ```powershell
 param (
@@ -167,14 +167,14 @@ $TemplateFile = Join-Path -Path 'C:\Temp' -ChildPath $StorageFileName
 New-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateFile $TemplateFile -TemplateParameterObject $Parameters 
 ``` 
 
-Zapisz plik lokalnie jako `DeployTemplate.ps1`.
+Zapisz plik lokalnie `DeployTemplate.ps1`jako .
 
-## <a name="import-and-publish-the-runbook-into-your-azure-automation-account"></a>Importowanie i publikowanie elementu Runbook na koncie Azure Automation
+## <a name="import-and-publish-the-runbook-into-your-azure-automation-account"></a>Importowanie i publikowanie podręcznika runbooka na koncie usługi Azure Automation
 
-Teraz używamy programu PowerShell do zaimportowania elementu Runbook do konta Azure Automation, a następnie opublikowania elementu Runbook.
-Aby uzyskać informacje o sposobach importowania i publikowania elementu Runbook w Azure Portal, zobacz [Zarządzanie elementami Runbook w programie Azure Automation](manage-runbooks.md).
+Teraz używamy programu PowerShell do zaimportowania życiornika do konta usługi Azure Automation, a następnie opublikowania systemu runbook.
+Aby uzyskać informacje dotyczące importowania i publikowania likwidu w witrynie Azure Portal, zobacz [Zarządzanie podręcznikami runbook w usłudze Azure Automation](manage-runbooks.md).
 
-Aby zaimportować `DeployTemplate.ps1` do konta usługi Automation jako element Runbook programu PowerShell, uruchom następujące polecenia programu PowerShell:
+Aby `DeployTemplate.ps1` zaimportować do konta automatyzacji jako system runbook programu PowerShell, uruchom następujące polecenia programu PowerShell:
 
 ```powershell
 # MyPath is the path where you saved DeployTemplate.ps1
@@ -199,9 +199,9 @@ Publish-AzureRmAutomationRunbook @publishParams
 
 ## <a name="start-the-runbook"></a>Uruchamianie elementu runbook
 
-Teraz uruchamiamy element Runbook przez wywołanie polecenia cmdlet [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook) .
+Teraz uruchamiamy księgę uruchominiczą, wywołując polecenie cmdlet [Start-AzureRmAutomationRunbook.](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook)
 
-Aby uzyskać informacje o sposobach uruchamiania elementu Runbook w Azure Portal, zobacz [Uruchamianie elementu Runbook w programie Azure Automation](automation-starting-a-runbook.md).
+Aby uzyskać informacje dotyczące uruchamiania uruchomieniu w witrynie Azure portal, zobacz [Uruchamianie uruchomieniu w usłudze Azure Automation.](automation-starting-a-runbook.md)
 
 Uruchom następujące polecenia w konsoli programu PowerShell:
 
@@ -226,23 +226,23 @@ $startParams = @{
 $job = Start-AzureRmAutomationRunbook @startParams
 ```
 
-Działa element Runbook, a jego stan można sprawdzić, uruchamiając `$job.Status`.
+Runbook działa i można sprawdzić jego `$job.Status`stan, uruchamiając program .
 
-Element Runbook pobierze szablon Menedżer zasobów i użyje go do wdrożenia nowego konta usługi Azure Storage.
-Aby zobaczyć, że nowe konto magazynu zostało utworzone, należy uruchomić następujące polecenie:
+Zestaw runbook pobiera szablon Menedżera zasobów i używa go do wdrożenia nowego konta usługi Azure Storage.
+Widać, że nowe konto magazynu zostało utworzone przez uruchomienie następującego polecenia:
 ```powershell
 Get-AzureRmStorageAccount
 ```
 
 ## <a name="summary"></a>Podsumowanie
 
-Gotowe. Teraz możesz używać Azure Automation i usługi Azure Storage oraz szablonów Menedżer zasobów do wdrażania wszystkich zasobów platformy Azure.
+Gotowe. Teraz możesz użyć usługi Azure Automation i usługi Azure Storage oraz szablonów Usługi Resource Manager, aby wdrożyć wszystkie zasoby platformy Azure.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby dowiedzieć się więcej na temat szablonów Menedżer zasobów, zobacz [omówienie Azure Resource Manager](../azure-resource-manager/management/overview.md)
-* Aby rozpocząć pracę z usługą Azure Storage, zobacz [wprowadzenie do usługi Azure Storage](../storage/common/storage-introduction.md).
-* Aby znaleźć inne przydatne Azure Automation elementy Runbook, zobacz [elementy Runbook i galerie modułów dla Azure Automation](automation-runbook-gallery.md).
-* Aby znaleźć inne przydatne Menedżer zasobów szablonów, zobacz [Szablony szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/)
+* Aby dowiedzieć się więcej o szablonach Usługi Resource Manager, zobacz [Omówienie usługi Azure Resource Manager](../azure-resource-manager/management/overview.md)
+* Aby rozpocząć korzystanie z usługi Azure Storage, zobacz [Wprowadzenie do usługi Azure Storage](../storage/common/storage-introduction.md).
+* Aby znaleźć inne przydatne elementy runbook usługi Azure Automation, zobacz [Galeria żyli i galerii modułów dla usługi Azure Automation.](automation-runbook-gallery.md)
+* Aby znaleźć inne przydatne szablony Menedżera zasobów, zobacz [Szablony szybki start platformy Azure](https://azure.microsoft.com/resources/templates/)
 
 

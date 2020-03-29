@@ -1,6 +1,6 @@
 ---
-title: Łączenie środowiska laboratorium siecią wirtualną, w usłudze Azure DevTest Labs | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak połączyć środowisku (na przykład klaster usługi Service Fabric) do sieci wirtualnej w środowisku laboratoryjnym w usłudze Azure DevTest Labs
+title: Łączenie środowisk z siecią wirtualną laboratorium w laboratorium Azure DevTest Labs | Dokumenty firmy Microsoft
+description: Dowiedz się, jak połączyć środowisko (takie jak klaster sieci szkieletowej usług) z siecią wirtualną laboratorium w laboratoriach DevTest
 services: devtest-lab,lab-services
 documentationcenter: na
 author: spelluru
@@ -13,17 +13,17 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: spelluru
 ms.openlocfilehash: bb8b5f7d6578390fd0f48c3de154cfdb034ac6c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60777172"
 ---
-# <a name="connect-an-environment-to-your-labs-virtual-network-in-azure-devtest-labs"></a>Środowisko nawiązać połączenie z sieci wirtualnej w środowisku laboratoryjnym w usłudze Azure DevTest Labs
-Usługa Azure DevTest Labs ułatwia tworzenie maszyn wirtualnych w laboratorium obejmującym [wbudowanymi funkcjami sieci](devtest-lab-configure-vnet.md). Ma on dużą elastyczność dzięki możliwości [tworzenie środowisk z wieloma Maszynami wirtualnymi](devtest-lab-test-env.md). W tym artykule przedstawiono sposób łączenia maszyn wirtualnych w środowisku do sieci wirtualnej w laboratorium. Jeden scenariusz, w których możesz korzystać z tej funkcji jest konfigurowanie aplikacji N-warstwowa za pomocą warstwy danych programu SQL Server, który jest podłączony do laboratorium sieć wirtualna umożliwiająca test maszyny wirtualne w laboratorium, aby uzyskać do niego dostęp.  
+# <a name="connect-an-environment-to-your-labs-virtual-network-in-azure-devtest-labs"></a>Łączenie środowiska z siecią wirtualną laboratorium w laboratorium Azure DevTest Labs
+Laboratorium devtest platformy Azure ułatwia tworzenie maszyn wirtualnych w laboratorium z [wbudowaną siecią.](devtest-lab-configure-vnet.md) Ma dużą elastyczność dzięki możliwości tworzenia środowisk wielu maszyn [wirtualnych.](devtest-lab-test-env.md) W tym artykule pokazano, jak połączyć maszyny wirtualne w środowisku z siecią wirtualną laboratorium. Jednym ze scenariuszy, w którym używasz tej funkcji jest konfigurowanie aplikacji warstwy N z warstwą danych programu SQL Server, która jest połączona z siecią wirtualną laboratorium, umożliwiając testowe maszyny wirtualne w laboratorium, aby uzyskać do niej dostęp.  
 
-## <a name="sample-environment-that-uses-lab-vnet"></a>Środowisko próbki, które używa laboratorium sieci wirtualnej
-Oto szablon proste środowisko, który łączy podsieci laboratorium. W tym przykładzie `DTLSubnetId` parametru reprezentuje identyfikator podsieci, w której istnieje laboratorium. Jest przypisany do: `$(LabSubnetId)`, który jest automatycznie rozwiązany przez DevTest Labs identyfikator podsieci laboratorium. **Podsieci** właściwość **interfejs sieciowy** pamięci maszyny Wirtualnej w tej definicji jest ustawiona na `DTLSubnetId` tak, aby dołączeniu tej samej podsieci. 
+## <a name="sample-environment-that-uses-lab-vnet"></a>Przykładowe środowisko korzystające z sieci wirtualnej laboratorium
+Oto prosty szablon środowiska, który łączy podsieć laboratorium. W tym przykładzie `DTLSubnetId` parametr reprezentuje identyfikator podsieci, w której istnieje laboratorium. Jest przypisany do: `$(LabSubnetId)`, który jest automatycznie rozpoznawany przez DevTest Labs do identyfikatora podsieci laboratorium. Właściwość **podsieci** **interfejsu sieciowego maszyny** Wirtualnej `DTLSubnetId` w tej definicji jest ustawiona na tak, aby łączyła się z tą samą podsiecią. 
 
 ```json
 {
@@ -160,5 +160,5 @@ Oto szablon proste środowisko, który łączy podsieci laboratorium. W tym przy
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-Zobacz następujący artykuł w witrynie Azure portal można wykonywać następujące operacje: [Uruchom ponownie Maszynę wirtualną](devtest-lab-restart-vm.md).
+## <a name="next-steps"></a>Następne kroki
+Zobacz następujący artykuł dotyczący korzystania z witryny Azure portal do wykonywania tych operacji: [Uruchom ponownie maszynę wirtualną](devtest-lab-restart-vm.md).

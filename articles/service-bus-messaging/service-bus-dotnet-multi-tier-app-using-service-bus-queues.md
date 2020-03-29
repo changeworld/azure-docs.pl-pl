@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: d4d837bb49e4ce80340d59f8a01334f3c80ff413
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60403379"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>Aplikacja wielowarstwowa platformy .NET używająca kolejek usługi Azure Service Bus
@@ -33,7 +33,7 @@ Dowiesz się:
 
 Dzięki temu samouczkowi będziesz w stanie utworzyć i uruchomić aplikację wielowarstwową w usłudze w chmurze platformy Azure. Fronton ma przypisaną rolę sieci Web programu ASP.NET MVC, a zaplecze rolę procesu roboczego używającego kolejki usługi Service Bus. Taką samą aplikację wielowarstwową z frontonem możesz utworzyć jako projekt sieci Web, który jest wdrażany w witrynie sieci Web platformy Azure, a nie jako usługa w chmurze. Możesz również wypróbować samouczek na temat [hybrydowych aplikacji lokalnych/w chmurze platformy .NET](../service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md).
 
-Poniższy zrzut ekranu przedstawia gotową aplikację.
+Poniższy zrzut ekranu przedstawia ukończoną aplikację.
 
 ![][0]
 
@@ -58,7 +58,7 @@ W poniższych sekcjach omówiono kod, który implementuje tę architekturę.
 
 ## <a name="create-a-namespace"></a>Tworzenie przestrzeni nazw
 
-Pierwszym krokiem jest utworzenie *przestrzeni nazw*i uzyskać [sygnatury dostępu współdzielonego (SAS)](service-bus-sas.md) klucza dla tego obszaru nazw. Przestrzeń nazw wyznacza granice każdej aplikacji uwidacznianej za pośrednictwem usługi Service Bus. Klucz sygnatury dostępu współdzielonego jest generowany przez system po utworzeniu przestrzeni nazw. Kombinacja nazwy przestrzeni nazw i klucza sygnatury dostępu współdzielonego dostarcza poświadczenia dla usługi Service Bus w celu uwierzytelnienia dostępu do aplikacji.
+Pierwszym krokiem jest utworzenie *obszaru nazw*i uzyskanie klucza [sygnatury dostępu współdzielonego (SAS)](service-bus-sas.md) dla tej przestrzeni nazw. Przestrzeń nazw wyznacza granice każdej aplikacji uwidacznianej za pośrednictwem usługi Service Bus. Klucz sygnatury dostępu współdzielonego jest generowany przez system po utworzeniu przestrzeni nazw. Kombinacja nazwy przestrzeni nazw i klucza sygnatury dostępu współdzielonego dostarcza poświadczenia dla usługi Service Bus w celu uwierzytelnienia dostępu do aplikacji.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
@@ -94,7 +94,7 @@ Następnie dodaje się kod, który przesyła elementy do kolejki usługi Service
    ![][13]
    
    Zwróć uwagę na to, że pojawią się odwołania do wymaganych zestawów klientów i dodanych zostanie kilka nowych plików kodu.
-10. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy pozycję **Modele** i kliknij pozycję **Dodaj**, następnie kliknij pozycję **Klasa**. W okienku **Nazwa** wpisz nazwę **OnlineOrder.cs**. Następnie kliknij pozycję **Dodaj**.
+10. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy pozycję **Modele** i kliknij pozycję **Dodaj**, następnie kliknij pozycję **Klasa**. W okienku **Nazwa** wpisz nazwę **OnlineOrder.cs**. Następnie kliknij przycisk **Dodaj**.
 
 ### <a name="write-the-code-for-your-web-role"></a>Pisanie kodu dla roli sieci Web
 W tej sekcji utworzysz różne strony, które będą wyświetlane przez Twoją aplikację.
@@ -177,7 +177,7 @@ W tej sekcji utworzysz różne strony, które będą wyświetlane przez Twoją a
 6. Zostanie wyświetlone okno dialogowe tworzenia widoku. Na liście **Szablony** wybierz pozycję **Utwórz**. Z listy **Klasa modelu** wybierz klasę **OnlineOrder**.
    
    ![][15]
-7. Kliknij pozycję **Add** (Dodaj).
+7. Kliknij przycisk **Dodaj**.
 8. Teraz zmień nazwę wyświetlaną aplikacji. W **Eksploratorze rozwiązań** kliknij dwukrotnie plik **Views\Shared\\_Layout.cshtml**, aby otworzyć go w edytorze programu Visual Studio.
 9. Zamień wszystkie wystąpienia hasła **My ASP.NET Application** na hasło **Northwind Traders Products**.
 10. Usuń linki **Home**, **About** oraz **Contact**. Usuń wyróżniony kod:
@@ -316,7 +316,7 @@ Teraz utworzysz rolę procesu roboczego, która przetwarza zgłoszenia zamówie�
 4. W oknie dialogowym **Dodawanie nowego projektu roli** kliknij pozycję **Rola procesu roboczego z kolejką usługi Service Bus**.
    
    ![][23]
-5. W polu **Nazwa** podaj nazwę projektu **OrderProcessingRole**. Następnie kliknij pozycję **Dodaj**.
+5. W polu **Nazwa** podaj nazwę projektu **OrderProcessingRole**. Następnie kliknij przycisk **Dodaj**.
 6. Skopiuj do schowka parametry połączenia uzyskane w kroku 9 sekcji „Tworzenie przestrzeni nazw usługi Service Bus”.
 7. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy rolę **OrderProcessingRole**, która została utworzona w kroku 5 (upewnij się, że klikasz rolę **OrderProcessingRole** w sekcji **Role**, a nie klasę). Następnie kliknij pozycję **Właściwości**.
 8. Na karcie **Ustawienia** okna dialogowego **Właściwości** kliknij wewnątrz pola **Wartość** dla pozycji **Microsoft.ServiceBus.ConnectionString**, a następnie wklej skopiowaną w kroku 6 wartość punktu końcowego.
@@ -350,7 +350,7 @@ Teraz utworzysz rolę procesu roboczego, która przetwarza zgłoszenia zamówie�
     
     ![][20]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej na temat usługi Service Bus, zobacz następujące zasoby:  
 
 * [Rozpoczynanie korzystania z kolejek usługi Service Bus][sbacomqhowto]

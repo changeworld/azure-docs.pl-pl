@@ -1,6 +1,6 @@
 ---
-title: Importowanie kolekcji Postman przy użyciu operacji przesyłania strumieniowego na żądanie platformy Azure
-description: Ten artykuł zawiera definicję kolekcji Postman na potrzeby połączeń usługi Azure Media Services REST.
+title: Importowanie kolekcji Postman za pomocą operacji przesyłania strumieniowego na żądanie platformy Azure
+description: Ten artykuł zawiera definicję kolekcji Postman dla usługi Azure Media Services REST wywołania.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 37fd131e570fa9f50df2479503b35407d67410cb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60637539"
 ---
-# <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>Importuj kolekcję Postman z operacjami On-Demand Streaming 
+# <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>Importowanie kolekcji listonosza za pomocą operacji przesyłania strumieniowego na żądanie 
 
-Ten artykuł zawiera definicję **Postman** kolekcję zawierającą pogrupowane żądań HTTP, które wywołują interfejsów API REST usługi Azure Media. Aby uzyskać informacje o sposobie konfigurowania **Postman** , dzięki czemu może służyć do wywołania interfejsów API REST usługi Media Services, zobacz [wywołuje Konfigurowanie narzędzia Postman dla interfejsu API REST usługi Media Services](media-rest-apis-with-postman.md) samouczek.
+Ten artykuł zawiera definicję kolekcji **Postman,** która zawiera zgrupowane żądania HTTP, które wywołują interfejsy API REST usługi Azure Media Services. Aby uzyskać informacje dotyczące konfigurowania **postmana,** tak aby można było go używać do wywoływania interfejsów API REST usługi Media Services, zobacz [Konfigurowanie postmana dla obsługi interfejsu API usługi Media Services.](media-rest-apis-with-postman.md)
 
 ```json
 {

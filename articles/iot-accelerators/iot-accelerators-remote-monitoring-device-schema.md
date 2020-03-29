@@ -1,6 +1,6 @@
 ---
-title: Schemat urządzenia w rozwiązaniu do monitorowania zdalnego — Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano schematu JSON, który definiuje symulowanego urządzenia w rozwiązaniu do zdalnego monitorowania.
+title: Schemat urządzenia w rozwiązaniu do zdalnego monitorowania — Azure | Dokumenty firmy Microsoft
+description: W tym artykule opisano schemat JSON, który definiuje symulowane urządzenie w rozwiązaniu zdalnego monitorowania.
 author: dominicbetts
 manager: philmea
 ms.author: dobett
@@ -9,37 +9,37 @@ services: iot-accelerators
 ms.date: 12/18/2018
 ms.topic: conceptual
 ms.openlocfilehash: 0f9669d491648ecc621aab27d0908dcc3dc84438
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65823327"
 ---
-# <a name="understand-the-device-model-schema"></a>Zrozumienie schematu modelu urządzenia
+# <a name="understand-the-device-model-schema"></a>Opis schematu modelu urządzenia
 
-Symulowane urządzenia w rozwiązaniu do zdalnego monitorowania służy do testowania jego zachowanie. Rozwiązania do zdalnego monitorowania zawiera usługi symulacji urządzeń, aby uruchomić symulowane urządzenia. Podczas wdrażania rozwiązania do zdalnego monitorowania zbiór symulowanych urządzeń jest automatycznie inicjowana obsługa. Można dostosować istniejący Symulowane urządzenia, lub Utwórz swoje własne.
+Można użyć symulowanych urządzeń w rozwiązaniu zdalnego monitorowania, aby przetestować jego zachowanie. Rozwiązanie do zdalnego monitorowania obejmuje usługę symulacji urządzeń do uruchamiania symulowanych urządzeń. Podczas wdrażania rozwiązania zdalnego monitorowania kolekcja symulowanych urządzeń jest aprowizowana automatycznie. Istniejące symulowane urządzenia można dostosować lub utworzyć własne.
 
-W tym artykule opisano schematu modelu urządzenia, która określa zachowanie symulowanego urządzenia. Model urządzenia jest przechowywany w pliku JSON.
+W tym artykule opisano schemat modelu urządzenia, który określa możliwości i zachowanie symulowanego urządzenia. Model urządzenia jest przechowywany w pliku JSON.
 
 > [!NOTE]
-> Tego schematu modelu urządzenia jest tylko w przypadku symulowanych urządzeń hostowanej w usłudze symulacji urządzenia. Jeśli chcesz utworzyć rzeczywistego urządzenia, zobacz [Podłączanie urządzenia do akceleratora rozwiązania monitorowania zdalnego](iot-accelerators-connecting-devices.md).
+> Ten schemat modelu urządzenia jest przeznaczony tylko dla symulowanych urządzeń hostowanych w usłudze symulacji urządzeń. Jeśli chcesz utworzyć prawdziwe urządzenie, zobacz [Łączenie urządzenia z akceleratorem rozwiązań do zdalnego monitorowania](iot-accelerators-connecting-devices.md).
 
-Następujące artykuły odnoszą się do bieżącego artykułu:
+Następujące artykuły są związane z bieżącym artykułem:
 
-* [Implementowanie zachowania modelu urządzenia](iot-accelerators-remote-monitoring-device-behavior.md) opisano pliki języka JavaScript umożliwia Implementowanie zachowania urządzenia symulowanego.
-* [Utwórz nowe urządzenie symulowane](iot-accelerators-remote-monitoring-create-simulated-device.md) umieszcza go wszystko ze sobą i dowiesz się, jak wdrożyć nowy typ symulowanego urządzenia do rozwiązania.
+* [Zaimplementuj zachowanie modelu urządzenia](iot-accelerators-remote-monitoring-device-behavior.md) opisuje pliki JavaScript używane do implementacji zachowania symulowanego urządzenia.
+* [Tworzenie nowego symulowanego urządzenia](iot-accelerators-remote-monitoring-create-simulated-device.md) łączy je ze sobą i pokazuje, jak wdrożyć nowy typ symulowanego urządzenia w rozwiązaniu.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
 >[!div class="checklist"]
-> * Zdefiniuj model symulowanego urządzenia przy użyciu pliku JSON
-> * Określ właściwości symulowane urządzenie
-> * Określ, które symulowane urządzenia wysyłają dane telemetryczne
-> * Określają metody chmury do urządzenia, które odpowiada urządzenie
+> * Definiowanie symulowanego modelu urządzenia za pomocą pliku JSON
+> * Określanie właściwości symulowanego urządzenia
+> * Określanie danych telemetrycznych wysyłanych przez symulowane urządzenie
+> * Określ metody chmury do urządzenia, na które urządzenie reaguje
 
 ## <a name="the-parts-of-the-device-model-schema"></a>Części schematu modelu urządzenia
 
-Każdy model urządzenia, takie jak Chłodnica lub truck, definiuje typ urządzenia, które można symulować usługi symulacji. Każdy model urządzenia jest przechowywany w pliku JSON z poniższym schematem najwyższego poziomu:
+Każdy model urządzenia, taki jak agregat chłodniczy lub ciężarówka, definiuje typ urządzenia, które usługa symulacji może symulować. Każdy model urządzenia jest przechowywany w pliku JSON z następującym schematem najwyższego poziomu:
 
 ```json
 {
@@ -64,33 +64,33 @@ Każdy model urządzenia, takie jak Chłodnica lub truck, definiuje typ urządze
 }
 ```
 
-Możesz wyświetlić pliki schematów do domyślnego symulowane urządzenia w [folderu devicemodels](https://github.com/Azure/device-simulation-dotnet/tree/master/Services/data/devicemodels) w witrynie GitHub.
+Można wyświetlić pliki schematu dla domyślnych symulowanych urządzeń w [folderze devicemodels](https://github.com/Azure/device-simulation-dotnet/tree/master/Services/data/devicemodels) w usłudze GitHub.
 
 W poniższej tabeli opisano wpisy schematu najwyższego poziomu:
 
-| Schemat wejścia | Opis |
+| Wpis schematu | Opis |
 | -- | --- |
-| `SchemaVersion` | Wersja schematu jest zawsze `1.0.0` i zależy od formatu tego pliku. |
+| `SchemaVersion` | Wersja schematu jest `1.0.0` zawsze i jest specyficzna dla formatu tego pliku. |
 | `Id` | Unikatowy identyfikator dla tego modelu urządzenia. |
 | `Version` | Identyfikuje wersję modelu urządzenia. |
 | `Name` | Przyjazna nazwa modelu urządzenia. |
 | `Description` | Opis modelu urządzenia. |
-| `Protocol` | Protokół połączenia urządzenia używa. Może być jednym z `AMQP`, `MQTT`, i `HTTP`. |
+| `Protocol` | Protokół połączenia używany przez urządzenie. Może być `AMQP`jednym `MQTT`z `HTTP`, i . |
 
 W poniższych sekcjach opisano inne sekcje w schemacie JSON:
 
 ## <a name="simulation"></a>Symulacja
 
-W `Simulation` sekcji, zdefiniuj stan wewnętrzny symulowanego urządzenia. Wszystkie wartości telemetryczne wysyłane przez urządzenie musi być częścią tego stanu urządzenia.
+W `Simulation` sekcji można zdefiniować stan wewnętrzny symulowanego urządzenia. Wszystkie wartości telemetryczne wysyłane przez urządzenie muszą być częścią tego stanu urządzenia.
 
-Definicja stan urządzenia ma dwa elementy:
+Definicja stanu urządzenia ma dwa elementy:
 
-* `InitialState` definiuje początkowe wartości dla właściwości obiektu stanu urządzenia.
-* `Script` Określa plik języka JavaScript uruchamiana zgodnie z harmonogramem, aby zaktualizować stan urządzenia. Można użyć tego pliku skryptu, aby losowo ustawiać wartości telemetryczne wysyłane przez urządzenie.
+* `InitialState`definiuje wartości początkowe dla wszystkich właściwości obiektu stanu urządzenia.
+* `Script`identyfikuje plik JavaScript, który działa zgodnie z harmonogramem, aby zaktualizować stan urządzenia. Za pomocą tego pliku skryptu można losowo losować wartości telemetryczne wysyłane przez urządzenie.
 
-Aby dowiedzieć się więcej na temat pliku JavaScript, która aktualizuje obiekt stanu urządzenia, zobacz [zrozumieć zachowania modelu urządzenia](../../articles/iot-accelerators/iot-accelerators-device-simulation-advanced-device.md).
+Aby dowiedzieć się więcej o pliku JavaScript, który aktualizuje obiekt stanu urządzenia, zobacz [Opis zachowania modelu urządzenia](../../articles/iot-accelerators/iot-accelerators-device-simulation-advanced-device.md).
 
-Definicja obiektu stanu urządzenia dla urządzenia symulowanego Chłodnica można znaleźć w poniższym przykładzie:
+W poniższym przykładzie przedstawiono definicję obiektu stanu urządzenia dla symulowanego urządzenia agregatu chłodniczego:
 
 ```json
 "Simulation": {
@@ -112,11 +112,11 @@ Definicja obiektu stanu urządzenia dla urządzenia symulowanego Chłodnica moż
 }
 ```
 
-Uruchamia usługę symulacji **Chłodnica-01-state.js** pliku co pięć sekund, aby zaktualizować stan urządzenia. Widać plików JavaScript dla urządzeń domyślne symulowane w [folder skryptów](https://github.com/Azure/device-simulation-dotnet/tree/master/Services/data/devicemodels/scripts) w witrynie GitHub. Zgodnie z Konwencją, te pliki JavaScript mają sufiks **— stan** aby odróżnić je od plików, które implementują metody zachowania.
+Usługa symulacji uruchamia plik **chiller-01-state.js** co pięć sekund, aby zaktualizować stan urządzenia. Pliki JavaScript dla domyślnych symulowanych urządzeń można zobaczyć w [folderze skryptów](https://github.com/Azure/device-simulation-dotnet/tree/master/Services/data/devicemodels/scripts) w usłudze GitHub. Zgodnie z konwencją te pliki JavaScript mają sufiks **-state,** aby odróżnić je od plików, które implementują zachowania metody.
 
 ## <a name="properties"></a>Właściwości
 
-`Properties` Sekcja schemat definiuje wartości właściwości urządzenie raportuje do rozwiązania. Na przykład:
+Sekcja `Properties` schematu definiuje wartości właściwości, które urządzenie zgłasza do rozwiązania. Przykład:
 
 ```json
 "Properties": {
@@ -127,13 +127,13 @@ Uruchamia usługę symulacji **Chłodnica-01-state.js** pliku co pięć sekund, 
 }
 ```
 
-Po uruchomieniu rozwiązania, wysyła zapytanie symulowanych urządzeń w celu utworzenia listy `Type` wartości mają być używane w interfejsie użytkownika. Rozwiązanie używa `Latitude` i `Longitude` właściwości, aby dodać lokalizację urządzenia do mapy na pulpicie nawigacyjnym.
+Po uruchomieniu rozwiązania, wysyła zapytanie do wszystkich symulowanych `Type` urządzeń, aby utworzyć listę wartości do użycia w interfejsie użytkownika. Rozwiązanie używa `Latitude` właściwości `Longitude` i, aby dodać lokalizację urządzenia do mapy na pulpicie nawigacyjnym.
 
 ## <a name="telemetry"></a>Telemetria
 
-`Telemetry` Tablicy zawiera listę wszystkich typów danych telemetrycznych symulowane urządzenie wysyła do rozwiązania.
+Tablica `Telemetry` zawiera listę wszystkich typów danych telemetrycznych wysyłanych do rozwiązania przez symulowane urządzenie.
 
-Poniższy przykład wysyła komunikat telemetrii JSON co 10 sekund przy użyciu `floor`, `vibration`, i `temperature` danych z czujników elevator:
+Poniższy przykład wysyła komunikat telemetrii JSON `floor` `vibration`co `temperature` 10 sekund z programem i dane z czujników windy:
 
 ```json
 "Telemetry": [
@@ -155,21 +155,21 @@ Poniższy przykład wysyła komunikat telemetrii JSON co 10 sekund przy użyciu 
 ]
 ```
 
-`MessageTemplate` definiuje strukturę komunikat JSON wysyłane przez urządzenie symulowane. Symbole zastępcze w wywołaniach `MessageTemplate` należy użyć składni `${NAME}` gdzie `NAME` jest kluczem z [obiektu stanu urządzenia](#simulation). Ciągi powinny być ujmowane w cudzysłów, nie powinien liczb.
+`MessageTemplate`definiuje strukturę wiadomości JSON wysyłanej przez symulowane urządzenie. Symbole zastępcze `MessageTemplate` używają `${NAME}` składni, `NAME` w której jest kluczem z [obiektu stanu urządzenia](#simulation). Ciągi powinny być cytowane, liczby nie powinny.
 
-`MessageSchema` Definiuje schemat wiadomości wysyłane przez urządzenie symulowane. Schemat wiadomości jest również opublikowany w Centrum IoT, aby umożliwić aplikacji wewnętrznej bazy danych i ponowne użycie informacji do interpretacji przychodzących danych telemetrycznych.
+`MessageSchema`definiuje schemat wiadomości wysyłanej przez symulowane urządzenie. Schemat wiadomości jest również publikowany w centrum IoT Hub, aby umożliwić aplikacjom wewnętrznej bazy danych ponowne użycie informacji do interpretacji danych wejściowych.
 
-Obecnie można używać tylko schematów komunikatów JSON. Pola wymienione w schemacie można się z następujących typów:
+Obecnie można używać tylko schematów wiadomości JSON. Pola wymienione w schemacie mogą być następujące typy:
 
-* Obiekt - zserializowanym przy użyciu formatu JSON
-* Plik binarny - serializacji przy użyciu base64
-* Text
-* Boolean
-* Integer
+* Obiekt — serializowany przy użyciu języka JSON
+* Binarny - serializowany przy użyciu base64
+* Tekst
+* Wartość logiczna
+* Liczba całkowita
 * Double
 * DateTime
 
-Aby wysyłać komunikaty telemetryczne w różnych interwałach, należy dodać wiele typów danych telemetrycznych do `Telemetry` tablicy. Poniższy przykład wysyła dane temperatury i wilgotności co 10 sekund, a stan światło na minutę:
+Aby wysyłać komunikaty telemetryczne w różnych odstępach czasu, dodaj wiele typów danych `Telemetry` telemetrycznych do tablicy. Poniższy przykład wysyła dane temperatury i wilgotności co 10 sekund i stan światła co minutę:
 
 ```json
 "Telemetry": [
@@ -201,18 +201,18 @@ Aby wysyłać komunikaty telemetryczne w różnych interwałach, należy dodać 
 ],
 ```
 
-## <a name="cloudtodevicemethods"></a>CloudToDeviceMethods
+## <a name="cloudtodevicemethods"></a>Metody CloudToDeviceMethods
 
-Symulowane urządzenie może odpowiadać na metody chmury do urządzenia, wywoływana z usługi IoT hub. `CloudToDeviceMethods` Sekcji w pliku schematu modelu urządzenia:
+Symulowane urządzenie może reagować na metody chmury do urządzenia wywoływane z centrum IoT hub. Sekcja `CloudToDeviceMethods` w pliku schematu modelu urządzenia:
 
-* Definiuje metody, które może odpowiedzieć urządzenie symulowane.
-* Określa plik JavaScript, który zawiera logikę do wykonania.
+* Definiuje metody, na które symulowane urządzenie może reagować.
+* Identyfikuje plik JavaScript, który zawiera logikę do wykonania.
 
-Symulowane urządzenie wysyła listę obsługiwanych metodach do usługi IoT hub, który jest połączony.
+Symulowane urządzenie wysyła listę metod, które obsługuje do centrum IoT, z który jest połączony.
 
-Aby dowiedzieć się więcej na temat pliku JavaScript, który implementuje zachowanie urządzenia, zobacz [zrozumieć zachowania modelu urządzenia](../../articles/iot-accelerators/iot-accelerators-device-simulation-advanced-device.md).
+Aby dowiedzieć się więcej o pliku JavaScript, który implementuje zachowanie urządzenia, zobacz [Opis zachowania modelu urządzenia](../../articles/iot-accelerators/iot-accelerators-device-simulation-advanced-device.md).
 
-Poniższy przykład określa trzy metody obsługiwane i pliki JavaScript, które implementują tych metod:
+Poniższy przykład określa trzy obsługiwane metody i pliki JavaScript, które implementują te metody:
 
 ```json
 "CloudToDeviceMethods": {
@@ -231,22 +231,22 @@ Poniższy przykład określa trzy metody obsługiwane i pliki JavaScript, które
 }
 ```
 
-Widać plików JavaScript dla urządzeń domyślne symulowane w [folder skryptów](https://github.com/Azure/device-simulation-dotnet/tree/master/Services/data/devicemodels/scripts) w witrynie GitHub. Zgodnie z Konwencją, te pliki JavaScript mają sufiks **— metoda** aby odróżnić je od plików, które implementują zachowania stanu.
+Pliki JavaScript dla domyślnych symulowanych urządzeń można zobaczyć w [folderze skryptów](https://github.com/Azure/device-simulation-dotnet/tree/master/Services/data/devicemodels/scripts) w usłudze GitHub. Zgodnie z konwencją te pliki JavaScript mają sufiks **-metoda,** aby odróżnić je od plików, które implementują zachowanie stanu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym artykule opisano sposób tworzenia modelu niestandardowego symulowanego urządzenia. Ten artykuł pokazuje, jak do:
+W tym artykule opisano sposób tworzenia własnego niestandardowego symulowanego modelu urządzenia. W tym artykule pokazano, jak:
 
 <!-- Repeat task list from intro -->
 >[!div class="checklist"]
-> * Zdefiniuj model symulowanego urządzenia przy użyciu pliku JSON
-> * Określ właściwości symulowane urządzenie
-> * Określ, które symulowane urządzenia wysyłają dane telemetryczne
-> * Określają metody chmury do urządzenia, które odpowiada urządzenie
+> * Definiowanie symulowanego modelu urządzenia za pomocą pliku JSON
+> * Określanie właściwości symulowanego urządzenia
+> * Określanie danych telemetrycznych wysyłanych przez symulowane urządzenie
+> * Określ metody chmury do urządzenia, na które urządzenie reaguje
 
-Teraz, kiedy znasz już o schematu JSON, sugerowane następnym krokiem jest Dowiedz się, jak [Implementowanie zachowania urządzenia symulowanego](iot-accelerators-remote-monitoring-device-behavior.md).
+Teraz, gdy dowiedziałeś się o schemacie JSON, sugerowanym następnym krokiem jest nauczenie się [implementacji zachowania symulowanego urządzenia.](iot-accelerators-remote-monitoring-device-behavior.md)
 
-Aby uzyskać więcej informacji dla deweloperów o rozwiązaniu monitorowania zdalnego Zobacz:
+Aby uzyskać więcej informacji dewelopera na temat rozwiązania do zdalnego monitorowania, zobacz:
 
 * [Przewodnik informacyjny dla deweloperów](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 * [Przewodnik po rozwiązywaniu problemów dla deweloperów](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)

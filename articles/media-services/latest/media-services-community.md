@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services społeczność — Omówienie
-description: Ta strona społeczności Azure Media Services omawia różne sposoby zadawania pytań, przekazywania opinii i uzyskiwania aktualizacji dotyczących Media Services.
+title: Omówienie społeczności usługi Azure Media Services w wersji 3
+description: Ta strona społeczności usługi Azure Media Services omawia różne sposoby zadawania pytań, przekazywania opinii i utrzymywali aktualizacje dotyczące usługi Media Services.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,38 +14,38 @@ ms.topic: article
 ms.date: 01/22/2020
 ms.author: juliako
 ms.openlocfilehash: 70d366551dc3130d2a1bdac6108e3b3de95976d9
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76545929"
 ---
-# <a name="azure-media-services-v3-community"></a>Społeczność Azure Media Services v3  
+# <a name="azure-media-services-v3-community"></a>Społeczność usługi Azure Media Services w wersji 3  
 
-Ta strona społeczności Azure Media Services omawia różne sposoby zadawania pytań, przekazywania opinii i uzyskiwania aktualizacji dotyczących Media Services.
+Ta strona społeczności usługi Azure Media Services omawia różne sposoby zadawania pytań, przekazywania opinii i utrzymywali aktualizacje dotyczące usługi Media Services.
 
-## <a name="provide-feedback-and-make-suggestions"></a>Prześlij opinię i Utwórz sugestie
+## <a name="provide-feedback-and-make-suggestions"></a>Przekazywanie opinii i przedstawianie sugestii
 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="discussion"></a>Dyskusja
+## <a name="discussion"></a>Dyskusji
 
-### <a name="twitter"></a>Serwis Twitter
+### <a name="twitter"></a>Twitter
 
-Aby skontaktować się z nami lub obserwować aktualizacje w serwisie Twitter, możesz użyć uchwytu usługi [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) w serwisie Twitter. Użyj [@AzureSupport](https://twitter.com/azuresupport) obsługi usługi Twitter, aby zażądać pomocy technicznej w serwisie Twitter.  
+Możesz użyć [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) uchwytu twitter, aby skontaktować się z nami lub śledzić aktualizacje na Twitterze. Użyj [@AzureSupport](https://twitter.com/azuresupport) uchwytu twitter, aby poprosić o wsparcie na Twitterze.  
 
-### <a name="online-forums"></a>Fora online
+### <a name="online-forums"></a>Fora internetowe
 
-Poniższe fora mogą służyć do zadawania pytań dotyczących bieżących produktów i funkcji.
+Poniższe fora mogą być używane do zadawania pytań dotyczących bieżących produktów i funkcji.
 
-Obecnie Witryna MSDN jest Media Services głównym forum społeczności zespołu.
+Obecnie MSDN jest głównym forum społeczności zespołu media services.
 
-[![MSDN](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
+[![Msdn](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
 
-Zespół monitoruje również pytania otagowane Stack Overflow z "Azure-Media-Services".
+Zespół monitoruje również pytania oznaczone na przepełnienie stosu za pomocą "azure-media-services".
 
-[![StackOverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
+[![Stackoverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Przegląd Azure Media Services](media-services-overview.md)
+[Omówienie usługi Azure Media Services](media-services-overview.md)

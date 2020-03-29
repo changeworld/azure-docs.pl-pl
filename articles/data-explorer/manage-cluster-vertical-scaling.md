@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie skalowaniem pionowym klastra (skalowanie w górę) w celu dopasowania do popytu na platformie Azure Eksplorator danych
-description: W tym artykule opisano kroki umożliwiające skalowanie klastra Eksplorator danych platformy Azure w górę i w dół w zależności od zmieniających się wymagań.
+title: Zarządzanie skalowaniem pionowym klastra (skalowanie w górę) w celu dopasowania do popytu w Eksploratorze danych platformy Azure
+description: W tym artykule opisano kroki skalowania w górę i skalowania w dół klastra usługi Azure Data Explorer na podstawie zmieniającego się popytu.
 author: radennis
 ms.author: radennis
 ms.reviewer: orspodek
@@ -8,47 +8,47 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/14/2019
 ms.openlocfilehash: 95275598febae2b6b0355a7bc3e512490dae500d
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77560443"
 ---
-# <a name="manage-cluster-vertical-scaling-scale-up-in-azure-data-explorer-to-accommodate-changing-demand"></a>Zarządzanie skalowaniem pionowym klastra (skalowanie w górę) w usłudze Azure Eksplorator danych w celu uwzględnienia zmiany zapotrzebowania
+# <a name="manage-cluster-vertical-scaling-scale-up-in-azure-data-explorer-to-accommodate-changing-demand"></a>Zarządzanie skalowaniem pionowym klastra (skalowanie w górę) w Eksploratorze danych platformy Azure w celu uwzględnienia zmieniającego się popytu
 
-Odpowiednio ustalanie wielkości klastra ma kluczowe znaczenie dla wydajności Eksplorator danych platformy Azure. Statyczny rozmiar klastra może prowadzić do użycia lub nadmiernego użycia, nie jest idealnym rozwiązaniem.
+Odpowiednie rozmiary klastra ma kluczowe znaczenie dla wydajności Eksploratora danych platformy Azure. Rozmiar klastra statycznego może prowadzić do niepełnego wykorzystania lub nadmiernego wykorzystania, z których żaden nie jest idealny.
 
-Ponieważ zapotrzebowanie na klaster nie może być przewidywane z dokładnością absolutną, lepszym rozwiązaniem jest *skalowanie* klastra, Dodawanie i usuwanie zasobów pojemności i procesora przy użyciu zmieniających się wymagań. 
+Ponieważ popytu na klastrze nie można przewidzieć z dokładnością bezwzględną, lepszym podejściem jest *skalowanie* klastra, dodawanie i usuwanie pojemności i zasobów procesora przy zmieniającym się zapotrzebowaniu. 
 
-Istnieją dwa przepływy pracy umożliwiające skalowanie klastra Eksplorator danych platformy Azure:
+Istnieją dwa przepływy pracy do skalowania klastra usługi Azure Data Explorer:
 
-* [Skalowanie w poziomie](manage-cluster-horizontal-scaling.md), nazywane również skalowaniem do wewnątrz i na zewnątrz.
-* Skalowanie w pionie, nazywane również skalowaniem w górę i w dół.
+* [Skalowanie poziome](manage-cluster-horizontal-scaling.md), zwane również skalowaniem i wyskakiwem.
+* Skalowanie pionowe, nazywane również skalowaniem w górę i w dół.
 
-W tym artykule opisano przepływ pracy skalowania w pionie:
+W tym artykule opisano przepływ pracy skalowania pionowego:
 
-## <a name="configure-vertical-scaling"></a>Konfiguruj skalowanie w pionie
+## <a name="configure-vertical-scaling"></a>Konfigurowanie skalowania pionowego
 
-1. W Azure Portal przejdź do zasobu klastra usługi Azure Eksplorator danych. W obszarze **Ustawienia**wybierz pozycję **Skaluj w górę**.
+1. W witrynie Azure portal przejdź do zasobu klastra usługi Azure Data Explorer. W obszarze **Ustawienia**wybierz pozycję **Skaluj w górę**.
 
-1. W oknie **skalowanie w górę** zostanie wyświetlona lista dostępnych jednostek SKU dla danego klastra. Na przykład na poniższej ilustracji są dostępne tylko cztery jednostki SKU.
+1. W oknie **Skalowanie w górę** zostanie wyświetlona lista dostępnych jednostek SKU dla klastra. Na przykład na poniższej ilustracji dostępne są tylko cztery jednostki SKU.
 
     ![Skalowanie w górę](media/manage-cluster-vertical-scaling/scale-up.png)
 
-    Jednostki SKU są wyłączone, ponieważ są one bieżącą jednostką SKU lub nie są dostępne w regionie, w którym znajduje się klaster.
+    Jednostki SKU są wyłączone, ponieważ są bieżącą jednostką SKU lub nie są dostępne w regionie, w którym znajduje się klaster.
 
 1. Aby zmienić jednostkę SKU, wybierz nową jednostkę SKU i kliknij przycisk **Wybierz**.
 
 > [!NOTE]
-> * Proces skalowania w pionie może potrwać kilka minut, a w tym czasie klaster zostanie zawieszony. 
+> * Proces skalowania pionowego może potrwać kilka minut, a w tym czasie klaster zostanie zawieszony. 
 > * Skalowanie w dół może uszkodzić wydajność klastra.
-> * Cena to oszacowanie maszyn wirtualnych klastra i kosztów usługi Azure Eksplorator danych. Inne koszty nie są uwzględniane. Aby uzyskać pełne informacje o cenach, [zobacz Eksplorator danych stronę](https://azure.microsoft.com/pricing/details/data-explorer/) usługi Azure Eksplorator danych [Cost szacowania](https://dataexplorer.azure.com/AzureDataExplorerCostEstimator.html) .
+> * Cena jest szacunkowa dla maszyn wirtualnych klastra i kosztów usługi Azure Data Explorer. Pozostałe koszty nie są wliczone w cenę. Zobacz stronę [szacowania kosztów](https://dataexplorer.azure.com/AzureDataExplorerCostEstimator.html) usługi Azure Data Explorer, aby uzyskać informacje o oszacowaniu i [stronie cennika](https://azure.microsoft.com/pricing/details/data-explorer/) usługi Azure Data Explorer, aby uzyskać pełne informacje o cenach.
 
-Skalowanie w pionie dla klastra usługi Azure Eksplorator danych zostało skonfigurowane. Dodaj kolejną regułę skalowania w poziomie. Jeśli potrzebujesz pomocy w rozwiązywaniu problemów ze skalowaniem klastra, [Otwórz żądanie obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) w Azure Portal.
+Skonfigurowano skalowanie pionowe dla klastra usługi Azure Data Explorer. Dodaj kolejną regułę skalowania poziomego. Jeśli potrzebujesz pomocy dotyczącej problemów ze skalowaniem klastra, [otwórz żądanie pomocy technicznej](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) w witrynie Azure portal.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Zarządzanie skalowaniem w poziomie klastra](manage-cluster-horizontal-scaling.md) w celu dynamicznego skalowania liczby wystąpień na podstawie określonych metryk.
+* [Zarządzaj skalowaniem w poziomie klastra,](manage-cluster-horizontal-scaling.md) aby dynamicznie skalować liczbę wystąpień w poziomie na podstawie określonych metryk.
 
-* Monitoruj użycie zasobów, wykonując czynności opisane w tym artykule: [monitorowanie wydajności, kondycji i użycia usługi Azure Eksplorator danych przy użyciu metryk](using-metrics.md).
+* Monitorowanie użycia zasobów przez następującemu artykułem: [Monitorowanie wydajności, kondycji i użycia usługi Azure Data Explorer za pomocą metryk](using-metrics.md).
 

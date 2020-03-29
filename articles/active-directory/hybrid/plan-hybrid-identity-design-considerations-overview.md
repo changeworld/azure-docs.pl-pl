@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Active Directory hybrydowego zagadnienia dotyczące projektowania tożsamości — omówienie | Dokumentacja firmy Microsoft
-description: Omówienie i zawartości mapy Przewodnik po zagadnieniach dotyczących projektowania tożsamości hybrydowej
+title: Zagadnienia dotyczące projektowania tożsamości hybrydowej usługi Azure Active Directory — omówienie | Dokumenty firmy Microsoft
+description: Omówienie i mapę zawartości przewodnika zagadnienia dotyczące projektowania tożsamości hybrydowej
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -17,52 +17,52 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e7f8dd49f3668b8f68753681123a04d21edac46c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60381493"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations"></a>Zagadnienia dotyczące projektowania tożsamości hybrydowej usługi Azure Active Directory
-Urządzenia z systemem odbiorcy są proliferating świecie korporacyjnym, a oprogramowanie jako usługa (SaaS) aplikacji działających w chmurze są łatwe do przyjęcia. W rezultacie zachowaniu kontroli nad użytkownikom aplikacji wewnętrznych platformach centrów danych i chmury może być trudne.  
+Urządzenia konsumpcyjne mnożą się w świecie korporacyjnym, a aplikacje oparte na chmurze oprogramowania jako usługi (SaaS) są łatwe do przyjęcia. W rezultacie utrzymanie kontroli nad dostępem użytkowników do aplikacji w wewnętrznych centrach danych i platformach w chmurze jest wyzwaniem.  
 
-Rozwiązania firmy Microsoft do obsługi tożsamości obejmują zarówno funkcje lokalne, jak i chmurowe, tworząc jedną tożsamość użytkownika na potrzeby uwierzytelniania i autoryzacji w kontekście wszystkich zasobów, niezależnie od lokalizacji. Takie podejście jest określany jako tożsamość hybrydowa. Istnieją różne projektowania i opcji konfiguracji dla tożsamości hybrydowej za pomocą rozwiązania firmy Microsoft, a w niektórych przypadkach może być trudno określić, która kombinacja będzie najlepiej spełnia wymagania danej organizacji. 
+Rozwiązania firmy Microsoft do obsługi tożsamości obejmują zarówno funkcje lokalne, jak i chmurowe, tworząc jedną tożsamość użytkownika na potrzeby uwierzytelniania i autoryzacji w kontekście wszystkich zasobów, niezależnie od lokalizacji. Ta koncepcja jest znana jako tożsamość hybrydowa. Istnieją różne opcje projektowania i konfiguracji tożsamości hybrydowej przy użyciu rozwiązań firmy Microsoft, a w niektórych przypadkach może być trudne do określenia, która kombinacja najlepiej spełni potrzeby twojej organizacji. 
 
-Ten podręcznik zagadnienia dotyczące projektowania tożsamości hybrydowej pomoże Ci zrozumieć, jak projektować rozwiązania z tożsamością hybrydową, najlepiej dostosowane do potrzeb firmy i technologiczne organizacji.  Ten przewodnik zawiera szczegóły serii kroków i zadań, które można wykonać, aby ułatwić projektowanie rozwiązania z tożsamością hybrydową spełniające unikatowe wymagania danej organizacji. W ramach zadań i kroków przewodnik będą obecne odpowiednich technologii i opcje dostępne dla organizacji, aby zaspokoić potrzeby funkcjonalności i jakości usługi (np. dostępność, skalowalność, wydajność, możliwości zarządzania i bezpieczeństwo) są wyposażone w poziomie wymagania. 
+Ten przewodnik dotyczący projektowania tożsamości hybrydowych pomoże Ci zrozumieć, jak zaprojektować rozwiązanie tożsamości hybrydowej, które najlepiej odpowiada potrzebom biznesowym i technologicznym twojej organizacji.  W tym przewodniku opisano szereg kroków i zadań, które można wykonać, aby ułatwić projektowanie rozwiązania tożsamości hybrydowej, które spełnia unikatowe wymagania organizacji. W trakcie etapów i zadań przewodnik przedstawia odpowiednie technologie i opcje funkcji dostępne dla organizacji w celu spełnienia poziomu funkcjonalności i jakości usług (takich jak dostępność, skalowalność, wydajność, łatwość zarządzania i bezpieczeństwo) Wymagania. 
 
-W szczególności celów przewodnik zagadnienia dotyczące projektowania tożsamości hybrydowej są odpowiedzieć na następujące pytania: 
+W szczególności zagadnienia dotyczące projektowania tożsamości hybrydowej są celem przewodnim, aby odpowiedzieć na następujące pytania: 
 
-* Na jakie pytania muszę pytania i odpowiedzi, aby zaprojektować specyficzne dla tożsamości hybrydowej technologii lub dziedziny problemu, najlepiej odpowiadają wymaganiom?
-* Jakie sekwencję działań należy wykonać do projektowania rozwiązania tożsamości hybrydowej dla technologii lub dziedziny problemu? 
-* Jakie hybrydowego tożsamości technologii i konfiguracji opcje są dostępne, które ułatwią spełnienie moich wymagań? Co to są kompromis między tymi opcjami, dzięki czemu mogę wybrać najlepszym rozwiązaniem dla mojej firmy?
+* Jakie pytania należy zadać i odpowiedzieć, aby uzyskać hybrydowy projekt specyficzny dla tożsamości dla technologii lub domeny problemowej, która najlepiej spełnia moje wymagania?
+* Jaką sekwencję działań należy wykonać, aby zaprojektować rozwiązanie tożsamości hybrydowej dla domeny technologii lub problemu? 
+* Jakie technologie tożsamości hybrydowej i opcje konfiguracji są dostępne, aby pomóc mi spełnić moje wymagania? Jakie są kompromisy między tymi opcjami, abym mógł wybrać najlepszą opcję dla mojej firmy?
 
-## <a name="who-is-this-guide-intended-for"></a>Kogo jest przeznaczony ten przewodnik?
- CIO CITO, dyrektor tożsamości architektów, architektów w przedsiębiorstwach i architektów IT, które odpowiadają za projektowanie rozwiązania z tożsamością hybrydową dla średnich i dużych organizacji.
+## <a name="who-is-this-guide-intended-for"></a>Dla kogo jest przeznaczony ten przewodnik?
+ CIO, CITO, Chief Identity Architects, Enterprise Architects i IT Architects odpowiedzialny za projektowanie hybrydowego rozwiązania tożsamości dla średnich i dużych organizacji.
 
-## <a name="how-can-this-guide-help-you"></a>Jak ten przewodnik pomoże Ci?
-Aby dowiedzieć się, jak zaprojektować rozwiązanie tożsamości hybrydowej, które jest w stanie integracji systemu zarządzania tożsamościami oparta na chmurze z bieżącego rozwiązania tożsamości lokalnych, można użyć tego przewodnika. 
+## <a name="how-can-this-guide-help-you"></a>W czym może być pomocny ten przewodnik?
+Ten przewodnik służy do zrozumienia, jak zaprojektować rozwiązanie tożsamości hybrydowej, który jest w stanie zintegrować system zarządzania tożsamością w chmurze z bieżącego rozwiązania tożsamości lokalnej. 
 
-Na poniższym rysunku przedstawiono przykład rozwiązania tożsamości hybrydowej, która umożliwia administratorom IT do zarządzania zintegrować ich bieżącego Windows Server Active Directory rozwiązanie znajduje się w środowisku lokalnym za pomocą usługi Microsoft Azure Active Directory umożliwiające użytkownikom na używanie logowania jednokrotnego ( Logowanie Jednokrotne) w aplikacjach, które znajduje się w chmurze i lokalnych.
+Na poniższej ilustracji przedstawiono przykład rozwiązania tożsamości hybrydowej, które umożliwia administratorom IT zintegrowanie bieżącego rozwiązania usługi Windows Server Active Directory znajdującego się lokalnie z usługą Microsoft Azure Active Directory w celu umożliwienia użytkownikom korzystania z logowania jednokrotnego ( SSO) w aplikacjach znajdujących się w chmurze i lokalnie.
 
 ![Przykład](media/plan-hybrid-identity-design-considerations/hybridID-example.png)
 
-Ilustracja powyżej jest przykładem rozwiązania tożsamości hybrydowej, która polega na wykorzystaniu usług w chmurze do integracji z funkcjami lokalnymi w celu zapewnienia jednego środowiska do procesu uwierzytelniania użytkowników końcowych i ułatwienia IT zarządzanie tymi zasoby. Chociaż w tym przykładzie może być to typowy scenariusz, projektowania tożsamości hybrydowej każda organizacja jest może być inna niż przykładzie pokazano na rysunku 1 z powodu różnych wymagań. 
+Powyższa ilustracja jest przykładem rozwiązania tożsamości hybrydowej, które wykorzystuje usługi w chmurze do integracji z możliwościami lokalnymi w celu zapewnienia jednego środowiska w procesie uwierzytelniania użytkowników końcowych i ułatwienia zarządzania tymi Zasobów. Chociaż ten przykład może być typowym scenariuszem, projekt tożsamości hybrydowej każdej organizacji może być inny niż przykład zilustrowany na rysunku 1 ze względu na różne wymagania. 
 
-Ten przewodnik zawiera serię kroków i zadań, które można wykonać w celu projektowania rozwiązania tożsamości hybrydowej, który spełnia unikatowe wymagania danej organizacji. W następujących kroków i zadań przewodnik przedstawia informacje o odpowiednich technologiach i opcjach funkcji dostępnych możesz zapewnić wymaganą funkcjonalność i dotyczące poziomu jakości usługi dla swojej organizacji.
+Ten przewodnik zawiera szereg kroków i zadań, które można wykonać, aby zaprojektować rozwiązanie tożsamości hybrydowej, które spełnia unikatowe wymagania organizacji. W trakcie wykonywania poniższych kroków i zadań przewodnik przedstawia odpowiednie technologie i opcje funkcji dostępne w celu spełnienia wymagań dotyczących poziomu jakości funkcjonalności i jakości usług w organizacji.
 
-**Założenia**: Użytkownik ma pewne doświadczenie z systemu Windows Server, Active Directory Domain Services i Azure Active Directory. W tym dokumencie zakłada się, że szukasz jak te rozwiązania mogą spełniać Twoje potrzeby biznesowe samodzielnie lub w rozwiązaniu zintegrowanym.
+**Założenia:** Masz pewne doświadczenie z systemem Windows Server, Usługami domenowymi Active Directory i usługą Azure Active Directory. W tym dokumencie zakłada się, że szukasz, w jaki sposób te rozwiązania mogą zaspokoić Twoje potrzeby biznesowe samodzielnie lub w zintegrowanym rozwiązaniu.
 
-## <a name="design-considerations-overview"></a>Omówienie zagadnień dotyczących projektowania
-Ten dokument zawiera zestaw kroków i zadań, które można wykonać w celu projektowania rozwiązania tożsamości hybrydowej, która najlepiej spełnia Twoje wymagania. Kroki są prezentowane w uporządkowanej kolejności. Zagadnienia dotyczące projektowania, których można dowiedzieć się w dalszych krokach, mogą wymagać konieczność zmiany decyzji podjętych we wcześniejszych krokach, jednak z powodu sprzecznych decyzji projektowych. Zostanie podjęta próba każdy alert potencjalnymi konfliktami projektowymi dokumentu. 
+## <a name="design-considerations-overview"></a>Omówienie zagadnień projektowych
+Ten dokument zawiera zestaw kroków i zadań, które można wykonać, aby zaprojektować rozwiązanie tożsamości hybrydowej, które najlepiej spełnia Twoje wymagania. Kroki są prezentowane w uporządkowanej kolejności. Zagadnienia projektowe, których nauczysz się w późniejszych krokach, mogą wymagać zmiany decyzji podjętych we wcześniejszych krokach, jednak z powodu sprzecznych wyborów projektowych. Każda próba jest podejmowana, aby powiadomić o potencjalnych konfliktów projektu w całym dokumencie. 
 
-Zostanie wyświetlony projekt najlepiej spełniający wymagania dopiero po wykonaniu kroków tyle razy, ile trzeba, aby uwzględnieniu wszystkich zagadnień opisane w dokumencie. 
+Dojdziesz do projektu, który najlepiej spełnia twoje wymagania dopiero po iteracji przez kroki tyle razy, ile jest to konieczne, aby uwzględnić wszystkie zagadnienia w dokumencie. 
 
-| Faza tożsamości hybrydowej | Na liście tematów |
+| Faza tożsamości hybrydowej | Lista tematów |
 | --- | --- |
-| Określanie wymagań dotyczących tożsamości |[Określanie potrzeb biznesowych](plan-hybrid-identity-design-considerations-business-needs.md)<br> [Określić wymagania dotyczące synchronizacji katalogu](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)<br> [Określanie wymagań dotyczących uwierzytelniania wieloskładnikowego](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)<br> [Definiowanie strategii wdrażania tożsamości hybrydowej](plan-hybrid-identity-design-considerations-identity-adoption-strategy.md) |
-| Planowanie wzmocnienia zabezpieczeń danych za pośrednictwem rozwiązania silna tożsamość |[Określanie wymagań dotyczących ochrony danych](plan-hybrid-identity-design-considerations-dataprotection-requirements.md) <br> [Określanie wymagań dotyczących zarządzania zawartością](plan-hybrid-identity-design-considerations-contentmgt-requirements.md)<br> [Określić wymagania dotyczące kontroli dostępu](plan-hybrid-identity-design-considerations-accesscontrol-requirements.md)<br> [Określanie wymagań dotyczących odpowiedzi na zdarzenia](plan-hybrid-identity-design-considerations-incident-response-requirements.md) <br> [Definiowanie strategii ochrony danych](plan-hybrid-identity-design-considerations-data-protection-strategy.md) |
-| Planowanie cyklu życia tożsamości hybrydowej |[Określić zadania związane z zarządzaniem tożsamości hybrydowej](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md) <br> [Zarządzanie synchronizacji](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)<br> [Określenia strategii wdrażania zarządzania tożsamości hybrydowej](plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md) |
+| Określanie wymagań dotyczących tożsamości |[Określanie potrzeb biznesowych](plan-hybrid-identity-design-considerations-business-needs.md)<br> [Określanie wymagań dotyczących synchronizacji katalogów](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)<br> [Określanie wymagań dotyczących uwierzytelniania wieloskładnikowego](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)<br> [Definiowanie strategii wdrażania tożsamości hybrydowej](plan-hybrid-identity-design-considerations-identity-adoption-strategy.md) |
+| Planowanie zwiększenia bezpieczeństwa danych dzięki silnemu rozwiązaniu tożsamości |[Określanie wymogów ochrony danych](plan-hybrid-identity-design-considerations-dataprotection-requirements.md) <br> [Określanie wymagań dotyczących zarządzania zawartością](plan-hybrid-identity-design-considerations-contentmgt-requirements.md)<br> [Określanie wymagań dotyczących kontroli dostępu](plan-hybrid-identity-design-considerations-accesscontrol-requirements.md)<br> [Określanie wymagań dotyczących odpowiadania na zdarzenia](plan-hybrid-identity-design-considerations-incident-response-requirements.md) <br> [Definiowanie strategii ochrony danych](plan-hybrid-identity-design-considerations-data-protection-strategy.md) |
+| Planowanie cyklu życia tożsamości hybrydowej |[Określanie zadań zarządzania tożsamościami hybrydowymi](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md) <br> [Zarządzanie synchronizacją](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)<br> [Określanie strategii wdrażania zarządzania tożsamościami hybrydowymi](plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md) |
 
 ## <a name="next-steps"></a>Następne kroki
-[Określić wymagania dotyczące tożsamości](plan-hybrid-identity-design-considerations-business-needs.md)
+[Określanie wymagań dotyczących tożsamości](plan-hybrid-identity-design-considerations-business-needs.md)
 

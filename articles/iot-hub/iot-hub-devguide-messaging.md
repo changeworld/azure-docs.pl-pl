@@ -1,6 +1,6 @@
 ---
-title: Omówienie obsługi komunikatów usługi Azure IoT Hub | Dokumentacja firmy Microsoft
-description: Przewodnik dewelopera — urządzenia do chmury i obsługa komunikatów za pomocą usługi IoT Hub chmury do urządzenia. Zawiera informacje na temat formatów wiadomości i protokołów komunikacyjnych obsługiwanych.
+title: Opis obsługi wiadomości usługi Azure IoT Hub | Dokumenty firmy Microsoft
+description: Przewodnik dla deweloperów — wiadomości między urządzeniami a chmurą i z chmury do urządzenia za pomocą usługi IoT Hub. Zawiera informacje o formatach wiadomości i obsługiwanych protokołach komunikacyjnych.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -9,40 +9,40 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.openlocfilehash: f56332fa7f53c729ffaa28ea375f043d1b4a3678
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60626251"
 ---
-# <a name="send-device-to-cloud-and-cloud-to-device-messages-with-iot-hub"></a>Wysyłanie komunikatów z urządzenia do chmury i z chmury do urządzeń z usługą IoT Hub
+# <a name="send-device-to-cloud-and-cloud-to-device-messages-with-iot-hub"></a>Wysyłanie komunikatów między urządzeniami do chmury i chmury do urządzenia za pomocą usługi IoT Hub
 
-Usługa IoT Hub umożliwia dwukierunkowej komunikacji z urządzeniami. Użycie usługi IoT Hub komunikatów do komunikowania się z urządzeniami przez wysyłanie komunikatów z urządzeń do rozwiązania ponownie zakończyć i wysyłania poleceń z IoT rozwiązania zaplecza do urządzeń z systemem. Dowiedz się więcej o [format komunikatów usługi IoT Hub](iot-hub-devguide-messages-construct.md).
+Centrum IoT umożliwia dwukierunkową komunikację z urządzeniami. Komunikacja z urządzeniami za pomocą usługi IoT Hub umożliwia komunikację z urządzeniami, wysyłając wiadomości z urządzeń do zaplecza rozwiązań i wysyłając polecenia z rozwiązań IoT zaplecza do urządzeń. Dowiedz się więcej o [formacie wiadomości Centrum IoT](iot-hub-devguide-messages-construct.md).
 
-## <a name="sending-device-to-cloud-messages-to-iot-hub"></a>Wysyłanie komunikatów z urządzenia do chmury do Centrum IoT Hub
+## <a name="sending-device-to-cloud-messages-to-iot-hub"></a>Wysyłanie komunikatów z urządzenia do chmury do centrum IoT Hub
 
-Usługa IoT Hub ma wbudowanej usługi punktu końcowego, który może służyć przez usługi zaplecza do odczytywania komunikatów telemetrycznych z urządzeń. Ten punkt końcowy jest zgodny z [usługi Event Hubs](https://docs.microsoft.com/azure/event-hubs/) można użyć standardowego IoT Hub SDKs do [odczytywać ten wbudowany punkt końcowy](iot-hub-devguide-messages-read-builtin.md).
+Usługa IoT Hub ma wbudowany punkt końcowy usługi, który może być używany przez usługi zaplecza do odczytywania komunikatów telemetrycznych z urządzeń. Ten punkt końcowy jest zgodny z [centrum zdarzeń](https://docs.microsoft.com/azure/event-hubs/) i można użyć standardowych pakietów SDK usługi IoT Hub do [odczytu z tego wbudowanego punktu końcowego.](iot-hub-devguide-messages-read-builtin.md)
 
-Usługa IoT Hub obsługuje również [niestandardowe punkty końcowe](iot-hub-devguide-endpoints.md#custom-endpoints) , można zdefiniować przez użytkowników do wysyłania danych telemetrycznych z urządzeń i zdarzeń do usług platformy Azure przy użyciu [routing komunikatów](iot-hub-devguide-messages-d2c.md).
+Usługa IoT Hub obsługuje również [niestandardowe punkty końcowe,](iot-hub-devguide-endpoints.md#custom-endpoints) które mogą być definiowane przez użytkowników w celu wysyłania danych i zdarzeń telemetrycznych urządzenia do usług platformy Azure przy użyciu [routingu wiadomości.](iot-hub-devguide-messages-d2c.md)
 
-## <a name="sending-cloud-to-device-messages-from-iot-hub"></a>Wysyłanie komunikatów z chmury do urządzeń z usługi IoT Hub
+## <a name="sending-cloud-to-device-messages-from-iot-hub"></a>Wysyłanie komunikatów z chmury do urządzenia z Usługi IoT Hub
 
-Możesz wysłać [chmury do urządzenia](iot-hub-devguide-messages-c2d.md) wiadomości z rozwiązania zaplecza do urządzeń.
+Możesz wysyłać [komunikaty z chmury do urządzenia](iot-hub-devguide-messages-c2d.md) z zaplecza rozwiązania do urządzeń.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-Właściwości podstawowe funkcje obsługi komunikatów usługi IoT Hub są niezawodności i trwałości wiadomości. Właściwości te umożliwiają odporność na sporadycznie po stronie urządzenia i załadować skoki w przypadku przetwarzania po stronie chmury. IoT Hub zaimplementowano *co najmniej raz* dostarczania gwarantuje komunikatów urządzenia do chmury i z chmury do urządzeń.
+Podstawowe właściwości funkcji obsługi wiadomości usługi IoT Hub to niezawodność i trwałość wiadomości. Te właściwości umożliwiają odporność na sporadyczne łączności po stronie urządzenia i załadować skoki w przetwarzaniu zdarzeń po stronie chmury. Usługa IoT Hub implementuje *co najmniej raz* gwarancje dostarczania zarówno dla komunikacji między urządzeniami do chmury, jak i z chmury do urządzenia.
 
-## <a name="choosing-the-right-type-of-iot-hub-messaging"></a>Wybierania właściwego typu komunikatów w Centrum IoT Hub
+## <a name="choosing-the-right-type-of-iot-hub-messaging"></a>Wybieranie odpowiedniego typu wiadomości usługi IoT Hub
 
-Na użytek komunikatów z urządzenia do chmury do wysyłania czas serii telemetrię i alerty z aplikacji urządzenia i komunikaty z chmury do urządzenia jednokierunkowe powiadomienia do aplikacji urządzenia.
+Użyj komunikatów z urządzenia do chmury do wysyłania danych telemetrycznych szeregów czasowych i alertów z aplikacji urządzenia oraz komunikatów z chmury do urządzenia dla jednokierunkowych powiadomień do aplikacji urządzenia.
 
-* Zapoznaj się [wskazówki dotyczące komunikacji urządzenia do chmury](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-d2c-guidance) wybrać komunikatów z urządzenia do chmury, zgłaszanych właściwości lub przekazywanie pliku.
+* Zapoznaj się ze [wskazówkami dotyczącymi komunikacji między urządzeniami a chmurą,](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-d2c-guidance) aby wybrać między komunikatami między urządzeniami a chmurami, zgłoszonymi właściwościami lub przekazywaniem plików.
 
-* Zapoznaj się [wskazówki dotyczące komunikacji chmury do urządzenia](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-c2d-guidance) dokonać wyboru między komunikaty z chmury do urządzenia, żądanych właściwości i metod bezpośrednich.
+* Zapoznaj się ze [wskazówkami dotyczącymi komunikacji z chmury do urządzenia,](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-c2d-guidance) aby wybrać między komunikatami z chmury do urządzenia, żądanymi właściwościami lub metodami bezpośrednimi.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej o usłudze IoT Hub [routing komunikatów](iot-hub-devguide-messages-d2c.md).
+* Dowiedz się więcej o [routingu wiadomości](iot-hub-devguide-messages-d2c.md)w centrum IoT .
 
-* Dowiedz się więcej o usłudze IoT Hub [komunikatów z chmury do urządzenia](iot-hub-devguide-messages-c2d.md).
+* Dowiedz się więcej o [wiadomościach z chmury do urządzenia](iot-hub-devguide-messages-c2d.md)usługi IoT Hub.

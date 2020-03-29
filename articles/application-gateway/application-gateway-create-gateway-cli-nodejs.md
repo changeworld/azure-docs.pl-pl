@@ -1,6 +1,6 @@
 ---
-title: Tworzenie usługi Azure Application Gateway — klasycznego wiersza polecenia platformy Azure
-description: Dowiedz się, jak utworzyć bramę aplikacji przy użyciu klasycznego wiersza polecenia platformy Azure w usłudze Resource Manager
+title: Tworzenie bramy aplikacji platformy Azure — klasyczna platforma 11-osobowa platformy Azure
+description: Dowiedz się, jak utworzyć bramę aplikacji przy użyciu klasycznego interfejsu wiersza polecenia platformy Azure w Menedżerze zasobów
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,61 +8,61 @@ ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: victorh
 ms.openlocfilehash: 7107f45253c4f13b3378489726bf5034e104fa30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "62095986"
 ---
-# <a name="create-an-application-gateway-by-using-the-azure-cli"></a>Tworzenie bramy aplikacji przy użyciu wiersza polecenia platformy Azure
+# <a name="create-an-application-gateway-by-using-the-azure-cli"></a>Tworzenie bramy aplikacji przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Usługa Azure Application Gateway to moduł równoważenia obciążenia warstwy 7. Udostępnia tryb failover, oparty na wydajności routing żądań HTTP między różnymi serwerami — w chmurze i lokalnymi. Usługa Application gateway ma następujące funkcje dostarczania aplikacji: Równoważenie obciążenia HTTP, koligację sesji na podstawie plików cookie i odciążanie protokołu Secure Sockets Layer (SSL), niestandardowe sondy kondycji i obsługę wielu witryn.
+Usługa Azure Application Gateway to moduł równoważenia obciążenia warstwy 7. Udostępnia tryb failover, oparty na wydajności routing żądań HTTP między różnymi serwerami — w chmurze i lokalnymi. Brama aplikacji ma następujące funkcje dostarczania aplikacji: równoważenie obciążenia HTTP, koligacja sesji oparta na plikach cookie i odciążanie warstwy SSL (Secure Sockets Layer), niestandardowe sondy kondycji i obsługa wielu lokacji.
 
-## <a name="prerequisite-install-the-azure-cli"></a>Wymagania wstępne: Zainstaluj interfejs wiersza polecenia platformy Azure
+## <a name="prerequisite-install-the-azure-cli"></a>Warunek wstępny: instalowanie interfejsu wiersza polecenia platformy Azure
 
-Aby wykonać kroki opisane w tym artykule, musisz [zainstalować interfejs wiersza polecenia platformy Azure](../xplat-cli-install.md) i trzeba [Zaloguj się na platformie Azure](/cli/azure/authenticate-azure-cli). 
+Aby wykonać kroki opisane w tym artykule, należy [zainstalować interfejsu wiersza polecenia platformy Azure](../xplat-cli-install.md) i zalogować się na [platformie Azure](/cli/azure/authenticate-azure-cli). 
 
 > [!NOTE]
-> Jeśli nie masz konta platformy Azure, możesz je utworzyć. Zarejestruj się, aby skorzystać z [bezpłatnego demo](../active-directory/fundamentals/sign-up-organization.md).
+> Jeśli nie masz konta platformy Azure, potrzebujesz go. Zarejestruj się, aby skorzystać z [bezpłatnego demo](../active-directory/fundamentals/sign-up-organization.md).
 
 ## <a name="scenario"></a>Scenariusz
 
 W tym scenariuszu dowiesz się, jak utworzyć bramę aplikacji przy użyciu witryny Azure portal.
 
-W tym scenariuszu wykonują następujące czynności:
+W tym scenariuszu:
 
-* Tworzenie bramy aplikacji średnie z dwoma wystąpieniami.
-* Tworzenie sieci wirtualnej o nazwie ContosoVNET przy użyciu zarezerwowanego bloku CIDR 10.0.0.0/16.
-* Utwórz podsieć o nazwie subnet01, która używa 10.0.0.0/28 jako bloku CIDR.
+* Utwórz średnią bramę aplikacji z dwoma wystąpieniami.
+* Utwórz sieć wirtualną o nazwie ContosoVNET z zarezerwowanym blokiem CIDR 10.0.0.0/16.
+* Utwórz podsieć o nazwie podsieć, która używa 10.0.0.0/28 jako blok CIDR.
 
 > [!NOTE]
-> Dodatkowa konfiguracja usługi application gateway, w tym kondycji niestandardowe sondy, adresy w puli zaplecza oraz dodatkowe reguły są skonfigurowane, po skonfigurowaniu bramy aplikacji, a nie podczas początkowego wdrożenia.
+> Dodatkowa konfiguracja bramy aplikacji, w tym niestandardowe sondy kondycji, adresy puli wewnętrznej bazy danych i dodatkowe reguły są konfigurowane po skonfigurowaniu bramy aplikacji, a nie podczas wdrażania początkowego.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Usługa Azure Application Gateway wymaga własnej podsieci. Podczas tworzenia sieci wirtualnej, upewnij się, pozostanie wystarczająco dużo przestrzeni adresowej do wielu podsieci. Po wdrożeniu bramy aplikacji z podsiecią bramy aplikacji z jedynymi dodatkowymi są w stanie mają zostać dodane do tej podsieci.
+Usługa Azure Application Gateway wymaga własnej podsieci. Podczas tworzenia sieci wirtualnej upewnij się, że pozostawiasz wystarczającą ilość miejsca na adres, aby mieć wiele podsieci. Po wdrożeniu bramy aplikacji do podsieci można dodać tylko dodatkowe bramy aplikacji do podsieci.
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Otwórz **wiersza polecenia platformy Azure Microsoft**i zaloguj się.
+Otwórz **wiersz polecenia platformy Microsoft Azure**i zaloguj się.
 
 ```azurecli-interactive
 az login
 ```
 
-Po wpisaniu poprzedniego przykładu, znajduje się kod. Przejdź do https://aka.ms/devicelogin w przeglądarce, aby kontynuować proces logowania.
+Po wpisaniu poprzedniego przykładu jest dostarczany kod. Przejdź https://aka.ms/devicelogin do przeglądarki, aby kontynuować proces logowania.
 
-![Logowanie do urządzenia przedstawiający cmd][1]
+![cmd pokazujący login urządzenia][1]
 
-W przeglądarce wprowadź otrzymany kod. Nastąpi przekierowanie do strony logowania.
+W przeglądarce wprowadź otrzymany kod. Zostaniesz przekierowany do strony logowania.
 
-![Wprowadź kod w przeglądarce][2]
+![przeglądarka, aby wprowadzić kod][2]
 
-Po wprowadzeniu kodu użytkownik jest zalogowany, zamknij przeglądarkę, aby kontynuować z tego scenariusza.
+Po wprowadzeniu kodu jesteś zalogowany, zamknij przeglądarkę, aby kontynuować scenariusz.
 
-![Zalogowano pomyślnie][3]
+![pomyślnie zalogowany][3]
 
-## <a name="switch-to-resource-manager-mode"></a>Przełącz do trybu usługi Resource Manager
+## <a name="switch-to-resource-manager-mode"></a>Przełączanie do trybu Menedżera zasobów
 
 ```azurecli-interactive
 azure config mode arm
@@ -70,7 +70,7 @@ azure config mode arm
 
 ## <a name="create-the-resource-group"></a>Tworzenie grupy zasobów
 
-Przed utworzeniem bramy aplikacji, grupy zasobów zostanie utworzona brama aplikacji. Poniżej przedstawiono polecenia.
+Przed utworzeniem bramy aplikacji tworzona jest grupa zasobów zawierająca bramę aplikacji. Poniżej przedstawiono polecenia.
 
 ```azurecli-interactive
 azure group create \
@@ -80,7 +80,7 @@ azure group create \
 
 ## <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 
-Po utworzeniu grupy zasobów, sieć wirtualna jest tworzona w usłudze application gateway.  W poniższym przykładzie przestrzeni adresowej była jako 10.0.0.0/16 zgodnie z definicją w poprzednim scenariuszu o.
+Po utworzeniu grupy zasobów dla bramy aplikacji jest tworzona sieć wirtualna.  W poniższym przykładzie przestrzeń adresowa była jako 10.0.0.0/16 zgodnie z definicją w poprzednich notatek scenariusza.
 
 ```azurecli-interactive
 azure network vnet create \
@@ -92,7 +92,7 @@ azure network vnet create \
 
 ## <a name="create-a-subnet"></a>Tworzenie podsieci
 
-Po utworzeniu sieci wirtualnej, podsieć zostanie dodany w usłudze application gateway.  Jeśli planujesz użyć bramy aplikacji z aplikacją sieci web hostowanych w tej samej sieci wirtualnej co brama aplikacji, należy pozostawić wystarczającą ilość miejsca na inną podsieć.
+Po utworzeniu sieci wirtualnej dla bramy aplikacji jest dodawana podsieć.  Jeśli planujesz używać bramy aplikacji z aplikacją sieci web hostowanych w tej samej sieci wirtualnej co brama aplikacji, pamiętaj, aby pozostawić wystarczająco dużo miejsca dla innej podsieci.
 
 ```azurecli-interactive
 azure network vnet subnet create \
@@ -104,7 +104,7 @@ azure network vnet subnet create \
 
 ## <a name="create-the-application-gateway"></a>Tworzenie bramy aplikacji
 
-Po utworzeniu sieci wirtualnej i podsieci spełniono wymagania wstępne w usłudze application gateway. Ponadto certyfikat wcześniej wyeksportowanego pliku PFX i hasło dla certyfikatu są wymagane dla następujący krok: Adresy IP używane dla zaplecza są adresy IP dla serwera wewnętrznej bazy danych. Te wartości mogą być prywatne adresy IP w sieci wirtualnej, publiczne adresy IP lub w pełni kwalifikowanych nazw domen dla serwerów zaplecza.
+Po utworzeniu sieci wirtualnej i podsieci zostaną ukończone wymagania wstępne dla bramy aplikacji. Ponadto wcześniej wyeksportowany certyfikat .pfx i hasło do certyfikatu są wymagane w następującym kroku: Adresy IP używane dla wewnętrznej bazy danych są adresami IP serwera wewnętrznej bazy danych. Wartości te mogą być prywatnymi adresami IP w sieci wirtualnej, publicznymi adresami IP lub w pełni kwalifikowanymi nazwami domen dla serwerów zaplecza.
 
 ```azurecli-interactive
 azure network application-gateway create \
@@ -126,16 +126,16 @@ azure network application-gateway create \
 ```
 
 > [!NOTE]
-> Aby uzyskać listę parametrów, które można podać podczas tworzenia, uruchom następujące polecenie: **Tworzenie bramy aplikacji sieci platformy azure — Pomoc**.
+> Aby wyświetlić listę parametrów, które mogą być dostarczone podczas tworzenia, uruchom następujące polecenie: **Azure network application-gateway create --help**.
 
-Ten przykład tworzy bramę aplikacji w warstwie podstawowa przy użyciu ustawień domyślnych dla odbiornika, puli zaplecza, ustawienia http zaplecza i reguł. Można zmodyfikować te ustawienia do potrzeb danego wdrożenia po pomyślnej aprowizacji.
-Jeśli masz już aplikację sieci web zdefiniowany z pulą zaplecza w poprzednich krokach, po utworzeniu równoważenia obciążenia rozpoczyna się.
+W tym przykładzie tworzy podstawową bramę aplikacji z ustawieniami domyślnymi dla odbiornika, puli wewnętrznej bazy danych, ustawień http wewnętrznej bazy danych i reguł. Można zmodyfikować te ustawienia, aby dopasować je do wdrożenia po pomyślnym zakończeniu inicjowania obsługi administracyjnej.
+Jeśli aplikacja sieci web jest już zdefiniowana z pulą wewnętrznej bazy danych w poprzednich krokach, po utworzeniu rozpoczyna się równoważenie obciążenia.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak tworzyć niestandardowe sondy kondycji, odwiedzając [Utwórz sondę kondycji niestandardowe](application-gateway-create-probe-portal.md)
+Dowiedz się, jak utworzyć niestandardowe sondy kondycji, odwiedzając pozycję [Utwórz niestandardową sondę kondycji](application-gateway-create-probe-portal.md)
 
-Dowiedz się, jak skonfigurować odciążanie protokołu SSL i kosztownych odszyfrowywania protokołu SSL, wyłącz serwerów sieci web, odwiedzając [skonfigurować odciążanie protokołu SSL](application-gateway-ssl-arm.md)
+Dowiedz się, jak skonfigurować odciążanie SSL i odszyfrować kosztowne odszyfrowywanie SSL z serwerów sieci web, odwiedzając [pozycję Konfiguruj odciążanie SSL](application-gateway-ssl-arm.md)
 
 <!--Image references-->
 

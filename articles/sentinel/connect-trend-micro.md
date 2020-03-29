@@ -1,6 +1,6 @@
 ---
-title: Łączenie Trend Micro głębokiego zabezpieczenia z platformą Azure Microsoft Docs
-description: Dowiedz się, jak łączyć zabezpieczenia Trend Micro ze wskaźnikiem na platformie Azure.
+title: Połącz trend Micro Deep Security z usługą Azure Sentinel| Dokumenty firmy Microsoft
+description: Dowiedz się, jak połączyć program Trend Micro Deep Security z usługą Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,33 +15,33 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: a25d76b4b8a6f516de70604146bd1b236ba3ca1e
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77588029"
 ---
-# <a name="connect-trend-micro-deep-security"></a>Łącz zabezpieczenia Trend Micro głęboki
+# <a name="connect-trend-micro-deep-security"></a>Połącz trend micro głębokie zabezpieczenia
 
-Łącznik zabezpieczeń Trend Micro głęboki pozwala łatwo połączyć się z szczegółowymi dziennikami zabezpieczeń za pomocą platformy Azure, aby wyświetlić pulpity nawigacyjne, utworzyć niestandardowe alerty i poprawić badanie. Zapewnia to dokładniejszy wgląd w sieci i systemy organizacji oraz usprawnia możliwości operacji na zabezpieczeniach.
+Łącznik Trend Micro Deep Security umożliwia łatwe łączenie dzienników zabezpieczeń deep security z usługą Azure Sentinel, wyświetlanie pulpitów nawigacyjnych, tworzenie niestandardowych alertów i usprawnianie dochodzeń. Zapewnia to lepszy wgląd w sieci i systemy organizacji oraz zwiększa możliwości obsługi zabezpieczeń.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Uprawnienia do odczytu i zapisu do obszaru roboczego wskaźnikowego platformy Azure.
+- Uprawnienia do odczytu i zapisu w obszarze roboczym usługi Azure Sentinel.
 
-## <a name="connect-azure-sentinel-to-trend-micro-deep-security"></a>Łączenie z platformą Azure wskaźnikiem do Trend Micro głębokiego bezpieczeństwa
+## <a name="connect-azure-sentinel-to-trend-micro-deep-security"></a>Łączenie usługi Azure Sentinel z funkcją Trend Micro Deep Security
 
-1. W Azure Portal przejdź do okna **wskaźnik platformy Azure** , > **Łączniki danych** , a następnie wybierz łącznik **zabezpieczeń Trend Micro głębokiego** .
+1. W witrynie Azure portal przejdź do łączników **usługi Azure Sentinel** > **Data,** a następnie wybierz łącznik **Trend Micro Deep Security.**
 
-2. Wybierz pozycję **Otwórz stronę łącznika**.
+2. Wybierz **pozycję Otwórz stronę łącznika**.
 
 3. Postępuj zgodnie z instrukcjami i następnymi krokami.
 
 ## <a name="next-steps"></a>Następne kroki
-W tym dokumencie przedstawiono sposób nawiązywania połączenia z usługą Trend Micro głębokiej ochrony z platformą Azure. Aby dowiedzieć się więcej na temat platformy Azure, zobacz następujące artykuły:
-- Dowiedz się [, jak uzyskać wgląd w dane oraz potencjalne zagrożenia](quickstart-get-visibility.md).
-- Rozpocznij [wykrywanie zagrożeń za pomocą platformy Azure — wskaźnik](tutorial-detect-threats-built-in.md).
-- [Używaj skoroszytów](tutorial-monitor-your-data.md) do monitorowania danych.
+W tym dokumencie dowiesz się, jak połączyć program Trend Micro Deep Security z usługą Azure Sentinel. Aby dowiedzieć się więcej o usłudze Azure Sentinel, zobacz następujące artykuły:
+- Dowiedz się, jak [uzyskać wgląd w dane i potencjalne zagrożenia.](quickstart-get-visibility.md)
+- Rozpocznij [wykrywanie zagrożeń za pomocą usługi Azure Sentinel](tutorial-detect-threats-built-in.md).
+- Monitorowanie danych [za pomocą skoroszytów.](tutorial-monitor-your-data.md)
 
 

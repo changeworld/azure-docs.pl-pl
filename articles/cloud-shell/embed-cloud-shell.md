@@ -1,6 +1,6 @@
 ---
-title: Osadzanie usługi Azure Cloud Shell | Dokumentacja firmy Microsoft
-description: Dowiedz się osadzić usługę Azure Cloud Shell.
+title: Osadzanie powłoki chmury platformy Azure | Dokumenty firmy Microsoft
+description: Dowiedz się, jak osadzić usługę Azure Cloud Shell.
 services: cloud-shell
 documentationcenter: ''
 author: maertendMSFT
@@ -15,47 +15,47 @@ ms.topic: article
 ms.date: 12/11/2017
 ms.author: damaerte
 ms.openlocfilehash: bbf6c1f3049265961559ea34c8b748b2b4d263b6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60614306"
 ---
-# <a name="embed-azure-cloud-shell"></a>Osadzanie usługi Azure Cloud Shell
+# <a name="embed-azure-cloud-shell"></a>Osadzanie powłoki chmury platformy Azure
 
-Osadzanie usługi Cloud Shell umożliwia programistom oraz autorzy zawartości bezpośrednio Otwórz usługę Cloud Shell z dedykowanym adresem URL [shell.azure.com](https://shell.azure.com). Dzięki temu od razu udostępniają pełnych możliwości uwierzytelniania w usłudze Cloud Shell, narzędzi, i aktualne Azure CLI/Azure PowerShell narzędzi dla użytkowników.
+Osadzanie powłoki w chmurze umożliwia deweloperom i modułom zapisującymi zawartość bezpośrednie otwieranie powłoki Cloud Shell z dedykowanego adresu [URL, shell.azure.com.](https://shell.azure.com) To natychmiast przynosi pełną moc uwierzytelniania, narzędzi i aktualnych narzędzi interfejsu wiersza polecenia platformy Azure/Azure PowerShell w usłudze Cloud Shell.
 
-Zwykły przycisk wielkości
+Przycisk o regularnym rozmiarze
 
-[![Regularne uruchamianie](https://shell.azure.com/images/launchcloudshell.png "Uruchom usługę Azure Cloud Shell")](https://shell.azure.com)
+[![Regularne uruchamianie](https://shell.azure.com/images/launchcloudshell.png "Uruchamianie usługi Azure Cloud Shell")](https://shell.azure.com)
 
-Duży przycisk wielkości
+Przycisk o dużym rozmiarze
 
-[![Uruchamianie dużych](https://shell.azure.com/images/launchcloudshell@2x.png "Uruchom usługę Azure Cloud Shell")](https://shell.azure.com)
+[![Duża premiera](https://shell.azure.com/images/launchcloudshell@2x.png "Uruchamianie usługi Azure Cloud Shell")](https://shell.azure.com)
 
-## <a name="how-to"></a>Instrukcje
+## <a name="how-to"></a>Porady
 
-Integrowanie przycisk uruchamiania w usłudze Cloud Shell plików markdown, kopiując następujące czynności:
+Zintegruj przycisk uruchamiania usługi Cloud Shell z plikami znaczników, kopiując następujące pliki:
 
 ```markdown
 [![Launch Cloud Shell](https://shell.azure.com/images/launchcloudshell.png "Launch Cloud Shell")](https://shell.azure.com)
 ```
 
-Kod HTML do osadzenia wyskakującego Cloud Shell znajduje się poniżej:
+Kod HTML do osadzenia wyskakujących powłoki chmurowej znajduje się poniżej:
 ```html
 <a style="cursor:pointer" onclick='javascript:window.open("https://shell.azure.com", "_blank", "toolbar=no,scrollbars=yes,resizable=yes,menubar=no,location=no,status=no")'><img alt="Launch Azure Cloud Shell" src="https://shell.azure.com/images/launchcloudshell.png" /></a>
 ```
 
-## <a name="customize-experience"></a>Dostosowywanie doświadczenia z
+## <a name="customize-experience"></a>Dostosowywanie środowiska
 
-Ustaw środowisko konkretna powłoka, rozszerzając adresu URL.
+Ustaw określoną powłokę, powiększając adres URL.
 
-|Środowisko   |Adres URL   |
+|Środowisko użytkownika   |Adres URL   |
 |---|---|
-|Ostatnio używane powłoki   |[shell.azure.com](https://shell.azure.com)           |
+|Ostatnio używana powłoka   |[shell.azure.com](https://shell.azure.com)           |
 |Bash                       |[shell.azure.com/bash](https://shell.azure.com/bash)       |
 |PowerShell                 |[shell.azure.com/powershell](https://shell.azure.com/powershell) |
 
-## <a name="next-steps"></a>Kolejne kroki
-[Powłoka bash w usłudze Cloud Shell przewodnika Szybki Start](quickstart.md)<br>
-[Program PowerShell w usłudze Cloud Shell Przewodnik Szybki Start](quickstart-powershell.md)
+## <a name="next-steps"></a>Następne kroki
+[Bash w cloud shell szybki start](quickstart.md)<br>
+[Program PowerShell w programie Cloud Shell szybki start](quickstart-powershell.md)

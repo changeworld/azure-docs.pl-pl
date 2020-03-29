@@ -1,6 +1,6 @@
 ---
-title: Jak używać usługi e-mail SendGrid (Node.js) | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wysyłać wiadomości e-mail za pomocą usługi e-mail SendGrid na platformie Azure. Przykłady kodu napisane przy użyciu interfejsu API środowiska Node.js.
+title: Jak korzystać z usługi sendgrid poczty e-mail (Node.js) | Dokumenty firmy Microsoft
+description: Dowiedz się, jak wysyłać wiadomości e-mail za pomocą usługi sendgrid na platformie Azure. Przykłady kodu napisane przy użyciu interfejsu API node.js.
 services: ''
 documentationcenter: nodejs
 author: erikre
@@ -15,53 +15,53 @@ ms.topic: article
 ms.date: 01/05/2016
 ms.author: erikre
 ms.openlocfilehash: f2d653441598a47986913d525057672eed24b435
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60931721"
 ---
-# <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>Jak wysyłać pocztę E-mail za pomocą usługi SendGrid z poziomu środowiska Node.js
+# <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>Jak wysyłać wiadomości e-mail za pomocą SendGrid z Node.js
 
-Ten przewodnik pokazuje sposób wykonywania typowych zadań programistycznych za pomocą usługi e-mail SendGrid na platformie Azure. Przykłady są napisane przy użyciu interfejsu API środowiska Node.js. Omówione scenariusze obejmują **konstruowanie e-mail**, **wysyłania wiadomości e-mail**, **dodawania załączników**, **przy użyciu filtrów**i **aktualizowanie właściwości**. Aby uzyskać więcej informacji na temat usługi SendGrid i wysyłania wiadomości e-mail, zobacz [następne kroki](#next-steps) sekcji.
+W tym przewodniku pokazano, jak wykonywać typowe zadania programowania za pomocą usługi sendgrid poczty e-mail na platformie Azure. Przykłady są zapisywane przy użyciu interfejsu API node.js. Scenariusze obejmują **konstruowanie wiadomości e-mail,** **wysyłanie wiadomości e-mail,** **dodawanie załączników,** **używanie filtrów**i **aktualizowanie właściwości.** Aby uzyskać więcej informacji na temat SendGrid i wysyłania wiadomości e-mail, zobacz [następne kroki](#next-steps) sekcji.
 
-## <a name="what-is-the-sendgrid-email-service"></a>Co to jest usługa SendGrid poczty E-mail?
+## <a name="what-is-the-sendgrid-email-service"></a>Co to jest usługa poczty e-mail SendGrid?
 
-Usługa SendGrid jest [usługa oparta na chmurze poczty e-mail] zapewniająca niezawodne [dostarczania wiadomości e-mail dotyczącej transakcji], skalowalność i analizę w czasie rzeczywistym oraz udostępnia elastyczne interfejsy API, które umożliwiają łatwe niestandardową integrację. Typowe scenariusze użycia usługi SendGrid obejmują:
+SendGrid to [chmurowa usługa poczty e-mail,] która zapewnia niezawodne [transakcyjne dostarczanie wiadomości e-mail,]skalowalność i analizę w czasie rzeczywistym wraz z elastycznymi interfejsami API, które ułatwiają niestandardową integrację. Typowe scenariusze użycia SendGrid obejmują:
 
-* Nie są automatycznie wysyłane potwierdzenia do klientów
-* Administrowanie dystrybucji Wyświetla wysyłania klientom miesięczne e-rozsyłanych materiałach marketingowych firmowych i ofert specjalnych
-* Zbieranie metryk w czasie rzeczywistym w przypadku elementów, np. blokowania wiadomości e-mail i szybkość reakcji klientów
-* Generowanie raportów, aby ułatwić identyfikację trendów
-* Przekazywanie zapytania klientów
+* Automatyczne wysyłanie potwierdzeń do odbiorców
+* Administrowanie listami dystrybucyjnymi do wysyłania klientom miesięcznych e-ulotek i ofert specjalnych
+* Zbieranie danych w czasie rzeczywistym dla takich rzeczy, jak zablokowana poczta e-mail i responsywność klienta
+* Generowanie raportów ułatwiających identyfikację trendów
+* Przekazywanie zapytań klientów
 * Powiadomienia e-mail z aplikacji
 
-Aby uzyskać więcej informacji, zobacz [https://sendgrid.com](https://sendgrid.com).
+Aby uzyskać więcej [https://sendgrid.com](https://sendgrid.com)informacji, zobacz .
 
-## <a name="create-a-sendgrid-account"></a>Utwórz konto usługi SendGrid
+## <a name="create-a-sendgrid-account"></a>Tworzenie konta SendGrid
 
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
 
-## <a name="reference-the-sendgrid-nodejs-module"></a>Odwołanie moduł Node.js usługi SendGrid
+## <a name="reference-the-sendgrid-nodejs-module"></a>Odwoł się do modułu SendGrid Node.js
 
-Moduł usługi SendGrid dla środowiska Node.js można zainstalować za pomocą narzędzia node package manager (npm) przy użyciu następującego polecenia:
+Moduł SendGrid dla node.js można zainstalować za pomocą menedżera pakietów węzłów (npm) za pomocą następującego polecenia:
 
 ```bash
 npm install sendgrid
 ```
 
-Po zakończeniu instalacji może wymagać modułu w aplikacji przy użyciu następującego kodu:
+Po instalacji można wymagać modułu w aplikacji przy użyciu następującego kodu:
 
 ```javascript
 var sendgrid = require('sendgrid')(sendgrid_username, sendgrid_password);
 ```
 
-Moduł usługi SendGrid eksportuje **SendGrid** i **E-mail** funkcji.
-**SendGrid** jest odpowiedzialny za wysyłanie wiadomości e-mail za pośrednictwem interfejsu API sieci Web, podczas gdy **E-mail** hermetyzuje wiadomości e-mail.
+Moduł SendGrid eksportuje funkcje **SendGrid** i **Email.**
+**SendGrid** jest odpowiedzialny za wysyłanie wiadomości e-mail za pośrednictwem interfejsu API sieci Web, podczas gdy **poczta e-mail** hermetyzuje wiadomość e-mail.
 
-## <a name="how-to-create-an-email"></a>Instrukcje: Utwórz wiadomość E-mail
+## <a name="how-to-create-an-email"></a>Jak: Tworzenie wiadomości e-mail
 
-Tworzenie wiadomości e-mail przy użyciu modułu usługi SendGrid obejmuje, najpierw tworząc wiadomości e-mail przy użyciu funkcji poczty E-mail, a następnie wysyłając je przy użyciu funkcji usługi SendGrid. Oto przykład tworzy nowy komunikat przy użyciu funkcji wiadomości E-mail:
+Tworzenie wiadomości e-mail przy użyciu modułu SendGrid polega najpierw na utworzeniu wiadomości e-mail za pomocą funkcji Poczta e-mail, a następnie wysłaniu jej za pomocą funkcji SendGrid. Poniżej przedstawiono przykład tworzenia nowej wiadomości przy użyciu funkcji Poczta e-mail:
 
 ```javascript
 var email = new sendgrid.Email({
@@ -72,19 +72,19 @@ var email = new sendgrid.Email({
 });
 ```
 
-Można również określić wiadomości w formacie HTML w przypadku klientów, które go obsługują, ustawiając właściwość html. Na przykład:
+Można również określić komunikat HTML dla klientów, którzy go obsługują, ustawiając właściwość html. Przykład:
 
 ```javascript
 html: This is a sample <b>HTML<b> email message.
 ```
 
-Ustawianie właściwości tekst i html zawiera łagodne powrót do zawartości tekstowej w przypadku klientów, które nie obsługują wiadomości w formacie HTML.
+Ustawienie właściwości tekstu i html zapewnia pełne wdzięku powrót do zawartości tekstowej dla klientów, którzy nie mogą obsługiwać wiadomości HTML.
 
-Aby uzyskać więcej informacji na temat wszystkich właściwości obsługiwane przez funkcję poczty E-mail, zobacz [sendgrid nodejs][sendgrid-nodejs].
+Aby uzyskać więcej informacji na temat wszystkich właściwości obsługiwanych przez funkcję Poczta e-mail, zobacz [sendgrid-nodejs][sendgrid-nodejs].
 
-## <a name="how-to-send-an-email"></a>Instrukcje: Wyślij wiadomość E-mail
+## <a name="how-to-send-an-email"></a>Jak: Wyślij wiadomość e-mail
 
-Po utworzeniu wiadomości e-mail przy użyciu funkcji poczty E-mail, możesz wysłać go za pomocą interfejsu API sieci Web udostępniane przez usługi SendGrid. 
+Po utworzeniu wiadomości e-mail za pomocą funkcji Poczta e-mail można ją wysłać za pomocą interfejsu API sieci Web dostarczonego przez SendGrid. 
 
 ### <a name="web-api"></a>Interfejs API sieci Web
 
@@ -96,7 +96,7 @@ sendgrid.send(email, function(err, json){
 ```
 
 > [!NOTE]
-> Podczas w powyższych przykładach przekazywanie w funkcji wywołania zwrotnego i obiektu poczty e-mail, można również bezpośrednio wywołać funkcja wysyłania, bezpośrednio określać właściwości wiadomości e-mail. Na przykład:  
+> Podczas gdy powyższe przykłady pokazują przekazywanie w obiekcie wiadomości e-mail i funkcji wywołania zwrotnego, można również bezpośrednio wywołać funkcję wysyłania, określając bezpośrednio właściwości wiadomości e-mail. Przykład:  
 > 
 > ```javascript
 > sendgrid.send({
@@ -108,8 +108,8 @@ sendgrid.send(email, function(err, json){
 > ```
 >
 
-## <a name="how-to-add-an-attachment"></a>Instrukcje: Dodaj załącznik
-Załączniki można dodawać do wiadomości przez określenie nazwy pliku i ścieżki w **pliki** właściwości. W poniższym przykładzie pokazano wysyłania załącznika:
+## <a name="how-to-add-an-attachment"></a>Jak: Dodawanie załącznika
+Załączniki można dodać do wiadomości, określając nazwy plików i ścieżki we właściwości **plików.** Poniższy przykład pokazuje wysyłanie załącznika:
 
 ```javascript
 sendgrid.send({
@@ -131,17 +131,17 @@ sendgrid.send({
 ```
 
 > [!NOTE]
-> Korzystając z **pliki** właściwości, plik musi być dostępny za pośrednictwem [fs.readFile](https://nodejs.org/docs/v0.6.7/api/fs.html#fs.readFile). Jeśli plik, który chcesz dołączyć jest hostowana w usłudze Azure Storage, takich jak kontener obiektów Blob, najpierw należy skopiować plik do lokalnego magazynu lub dysku z systemem Azure zanim będzie można wysłać jako załącznik przy użyciu **pliki** właściwości.
+> Podczas korzystania z właściwości **files** plik musi być dostępny za pośrednictwem [pliku fs.readFile](https://nodejs.org/docs/v0.6.7/api/fs.html#fs.readFile). Jeśli plik, który chcesz dołączyć, jest hostowany w usłudze Azure Storage, na przykład w kontenerze obiektów Blob, należy najpierw skopiować plik do magazynu lokalnego lub na dysk platformy Azure, zanim będzie można go wysłać jako załącznik przy użyciu właściwości **plików.**
 > 
 > 
 
-## <a name="how-to-use-filters-to-enable-footers-and-tracking"></a>Instrukcje: Użyj filtrów w celu śledzenia i Włącz stopki
+## <a name="how-to-use-filters-to-enable-footers-and-tracking"></a>Jak: Użyj filtrów, aby włączyć stopki i śledzenie
 
-Usługa SendGrid umożliwia funkcje dodatkowe poczty e-mail przy użyciu filtrów. Są to ustawienia, które można dodać do wiadomości e-mail, aby włączyć określonych funkcji, takich jak umożliwianie śledzenie kliknięć, usługi Google analytics, subskrypcji, śledzenia i tak dalej. Aby uzyskać pełną listę filtrów, zobacz [ustawienia filtru][Filter Settings].
+SendGrid zapewnia dodatkowe funkcje poczty e-mail za pomocą filtrów. Są to ustawienia, które można dodać do wiadomości e-mail, aby włączyć określone funkcje, takie jak włączanie śledzenia kliknięć, google analytics, śledzenie subskrypcji i tak dalej. Aby uzyskać pełną listę filtrów, zobacz [Ustawienia filtrów][Filter Settings].
 
-Filtry można stosować do wiadomości przy użyciu **filtry** właściwości.
-Każdy filtr jest określony przez skrót zawierający ustawienia specyficzne dla filtru.
-Poniższe przykłady pokazują stopki i kliknij śledzenia filtrów:
+Filtry można zastosować do wiadomości przy użyciu **właściwości filters.**
+Każdy filtr jest określony przez skrót zawierający ustawienia specyficzne dla filtra.
+Poniższe przykłady pokazują filtry śledzenia stopki i kliknięć:
 
 ### <a name="footer"></a>Stopka
 
@@ -165,7 +165,7 @@ email.setFilters({
 sendgrid.send(email);
 ```
 
-### <a name="click-tracking"></a>Śledzenie kliknięć
+### <a name="click-tracking"></a>Kliknij pozycję Śledzenie
 
 ```javascript
 var email = new sendgrid.Email({
@@ -186,38 +186,38 @@ email.setFilters({
 sendgrid.send(email);
 ```
 
-## <a name="how-to-update-email-properties"></a>Instrukcje: Aktualizowanie właściwości wiadomości E-mail
+## <a name="how-to-update-email-properties"></a>Jak: Aktualizowanie właściwości wiadomości e-mail
 
-Niektóre właściwości wiadomości e-mail może zostać zastąpiona przy użyciu **setProperty** lub dołączonych przy użyciu **addProperty**. Na przykład można dodać dodatkowych adresatów za pomocą
+Niektóre właściwości wiadomości e-mail można nadpisywały za pomocą **setProperty** lub dołączane za pomocą **addProperty**. Można na przykład dodać dodatkowych adresatów za pomocą
 
 ```javascript
 email.addTo('jeff@contoso.com');
 ```
 
-lub ustawić filtr przy użyciu
+lub ustaw filtr za pomocą
 
 ```javascript
 email.addFilter('footer', 'enable', 1);
 email.addFilter('footer', 'text/html', '<strong>boo</strong>');
 ```
 
-Aby uzyskać więcej informacji, zobacz [sendgrid nodejs][sendgrid-nodejs].
+Aby uzyskać więcej informacji, zobacz [sendgrid-nodejs][sendgrid-nodejs].
 
-## <a name="how-to-use-additional-sendgrid-services"></a>Instrukcje: Za pomocą usługi SendGrid dodatkowych usług
+## <a name="how-to-use-additional-sendgrid-services"></a>Jak: Korzystanie z dodatkowych usług SendGrid
 
-Usługa SendGrid oferuje oparte na sieci web interfejsów API, które można korzystać z dodatkowych funkcji usługi SendGrid z aplikacji systemu Azure. Aby uzyskać szczegółowe informacje, zobacz [dokumentacji interfejsu API usługi SendGrid][SendGrid API documentation].
+SendGrid oferuje interfejsy API oparte na sieci Web, których można użyć do wykorzystania dodatkowych funkcji SendGrid z aplikacji platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [dokumentację interfejsu API SendGrid][SendGrid API documentation].
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, kiedy znasz już podstawy usługi E-mail SendGrid, skorzystaj z poniższych linków, aby dowiedzieć się więcej.
+Teraz, gdy nauczyłeś się podstaw usługi SendGrid Email, skorzystaj z tych linków, aby dowiedzieć się więcej.
 
-* Repozytorium moduł Node.js usługi SendGrid: [nodejs usługi sendgrid][sendgrid-nodejs]
-* Dokumentacja interfejsu API usługi SendGrid: <https://sendgrid.com/docs>
-* Usługa SendGrid specjalna oferta dla klientów platformy Azure: [http://sendgrid.com/azure.html](https://sendgrid.com/windowsazure.html)
+* Repozytorium modułu SendGrid Node.js: [sendgrid-nodejs][sendgrid-nodejs]
+* SendGrid API dokumentacji:<https://sendgrid.com/docs>
+* Oferta specjalna SendGrid dla klientów platformy Azure:[http://sendgrid.com/azure.html](https://sendgrid.com/windowsazure.html)
 
 [special offer]: https://sendgrid.com/windowsazure.html
 [sendgrid-nodejs]: https://github.com/sendgrid/sendgrid-nodejs
 [Filter Settings]: https://sendgrid.com/docs/API_Reference/SMTP_API/apps.html
 [SendGrid API documentation]: https://sendgrid.com/docs
-[Usługa oparta na chmurze poczty e-mail]: https://sendgrid.com/email-solutions
-[dostarczania wiadomości e-mail dotyczącej transakcji]: https://sendgrid.com/transactional-email
+[chmurowa usługa poczty e-mail]: https://sendgrid.com/email-solutions
+[transakcyjna dostawa wiadomości e-mail]: https://sendgrid.com/transactional-email

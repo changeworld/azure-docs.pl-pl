@@ -1,6 +1,6 @@
 ---
-title: Operacji na platformie Azure IoT Hub monitorowania (przestarzałe) | Dokumentacja firmy Microsoft
-description: Jak używać usługi Azure IoT Hub operacji monitoring do monitorowania stanu operacji w Centrum IoT w czasie rzeczywistym.
+title: Monitorowanie operacji usługi Azure IoT Hub (przestarzałe) | Dokumenty firmy Microsoft
+description: Jak używać monitorowania operacji usługi Azure IoT Hub do monitorowania stanu operacji w centrum IoT w czasie rzeczywistym.
 author: nberdy
 manager: briz
 ms.service: iot-hub
@@ -9,53 +9,53 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: nberdy
 ms.openlocfilehash: 84f28a1cb411e7df156fc08fa683efe7f83eda64
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60345724"
 ---
-# <a name="iot-hub-operations-monitoring-deprecated"></a>Operacje usługi IoT Hub monitorowania (przestarzałe)
+# <a name="iot-hub-operations-monitoring-deprecated"></a>Monitorowanie operacji usługi IoT Hub (przestarzałe)
 
-Monitorowanie operacji usługi IoT Hub umożliwia monitorowanie stanu operacji w Centrum IoT w czasie rzeczywistym. Usługa IoT Hub śledzi zdarzenia w ramach kilku kategorii operacji. Możesz zdecydować się na wysyłanie zdarzeń z jedną lub więcej kategorii do punktu końcowego Centrum IoT Hub do przetworzenia. Można monitorować dane dotyczące błędów lub skonfigurować bardziej złożone przetwarzanie na podstawie wzorców danych.
+Monitorowanie operacji usługi IoT Hub umożliwia monitorowanie stanu operacji w centrum IoT hub w czasie rzeczywistym. Centrum IoT hub śledzi zdarzenia w kilku kategoriach operacji. Możesz zdecydować się na wysyłanie zdarzeń z jednej lub więcej kategorii do punktu końcowego centrum IoT hub do przetwarzania. Można monitorować dane pod kątem błędów lub skonfigurować bardziej złożone przetwarzanie na podstawie wzorców danych.
 
 >[!NOTE]
->Usługa IoT Hub **monitorowanie operacji jest przestarzały i został usunięty z usługi IoT Hub na 10 marca 2019**. Do monitorowania operacji i kondycji Centrum IoT Hub, zobacz [monitorowania kondycji usługi Azure IoT Hub i szybkie diagnozowanie problemów](iot-hub-monitor-resource-health.md). Aby uzyskać więcej informacji na temat osi czasu wycofywania, zobacz [Monitoruj rozwiązania Azure IoT za pomocą usługi Azure Monitor i Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health).
+>Monitorowanie operacji usługi IoT Hub **jest przestarzałe i zostało usunięte z Usługi IoT Hub 10 marca 2019 r.** Aby zapoznać się z monitorowaniem operacji i kondycji usługi IoT Hub, zobacz [Monitorowanie kondycji usługi Azure IoT Hub i szybkie diagnozowanie problemów.](iot-hub-monitor-resource-health.md) Aby uzyskać więcej informacji na temat osi czasu wycofania, zobacz [Monitorowanie rozwiązań IoT platformy Azure za pomocą usługi Azure Monitor i usługi Azure Resource Health.](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health)
 
-Usługa IoT Hub monitoruje sześć kategorie zdarzeń:
+Centrum IoT monitoruje sześć kategorii zdarzeń:
 
-* Operacje dotyczące tożsamości urządzenia
-* Danych telemetrycznych z urządzenia
+* Operacje tożsamości urządzenia
+* Telemetria urządzenia
 * Komunikaty z chmury do urządzenia
 * Połączenia
 * Operacje przekazywania plików
-* Routing wiadomości
+* Routing komunikatów
 
 > [!IMPORTANT]
-> Monitorowanie operacji usługi IoT Hub nie gwarantuje niezawodne lub są uporządkowane dostarczenia zdarzeń. W zależności od podstawowej infrastruktury usługi IoT Hub niektóre zdarzenia mogą utracone lub dostarczony poza kolejnością. Użyj operacji na monitorowanie w celu generowania alertów w oparciu o sygnały błędu, takie jak próby nawiązania połączenia nie powiodło się lub odłączenia o wysokiej częstotliwości dla określonych urządzeń. Nie należy polegać na operacje monitorowania zdarzeń, aby utworzyć magazyn spójnego stanu urządzenia, np. store, śledzenie połączone lub odłączona stan urządzenia. 
+> Monitorowanie operacji usługi IoT Hub nie gwarantuje niezawodnego lub uporządkowanego dostarczania zdarzeń. W zależności od infrastruktury podstawowej usługi IoT Hub niektóre zdarzenia mogą zostać utracone lub dostarczone poza kolejnością. Monitorowanie operacji służy do generowania alertów na podstawie sygnałów błędów, takich jak nieudane próby połączenia lub rozłączenia o wysokiej częstotliwości dla określonych urządzeń. Nie należy polegać na zdarzeniach monitorowania operacji, aby utworzyć spójny magazyn dla stanu urządzenia, na przykład stan połączonego lub odłączonego sklepu urządzenia. 
 
 ## <a name="how-to-enable-operations-monitoring"></a>Jak włączyć monitorowanie operacji
 
-1. Utwórz centrum IoT. Instrukcje można znaleźć na temat tworzenia Centrum IoT hub w [wprowadzenie](quickstart-send-telemetry-dotnet.md) przewodnik.
+1. Utwórz centrum IoT. Instrukcje dotyczące tworzenia centrum IoT hub można znaleźć w przewodniku [Wprowadzenie.](quickstart-send-telemetry-dotnet.md)
 
-2. Otwórz blok Centrum IoT hub. W tym miejscu, kliknij przycisk **monitorowanie operacji**.
+2. Otwórz ostrzu piasty IoT. Stamtąd kliknij pozycję **Monitorowanie operacji**.
 
-    ![Operacje dostępu do monitorowania konfiguracji w portalu](./media/iot-hub-operations-monitoring/enable-OM-1.png)
+    ![Konfiguracja monitorowania operacji dostępu w portalu](./media/iot-hub-operations-monitoring/enable-OM-1.png)
 
-3. Wybierz kategorie monitorowania, chcesz monitorować, a następnie kliknij przycisk **Zapisz**. Zdarzenia są dostępne do odczytywania z punktu końcowego zgodnego z Centrum zdarzeń, na liście **ustawienia monitorowania**. Następuje wywołanie punktu końcowego usługi IoT Hub `messages/operationsmonitoringevents`.
+3. Wybierz kategorie monitorowania, które chcesz monitorować, a następnie kliknij przycisk **Zapisz**. Zdarzenia są dostępne do odczytu z punktu końcowego zgodnego z Centrum zdarzeń wymienionego w **ustawieniach monitorowania**. Punkt końcowy centrum IoT `messages/operationsmonitoringevents`hub jest wywoływany .
 
-    ![Konfiguruj monitorowanie Centrum IoT operacji](./media/iot-hub-operations-monitoring/enable-OM-2.png)
+    ![Konfigurowanie monitorowania operacji w centrum IoT](./media/iot-hub-operations-monitoring/enable-OM-2.png)
 
 > [!NOTE]
-> Wybieranie **pełne** monitorowania **połączeń** category powoduje, że usługi IoT Hub można wygenerować komunikaty diagnostyczne dodatkowe. Dla wszystkich innych kategoriach **pełne** zmiany ustawień ilość informacji o usłudze IoT Hub zawiera każdy komunikat o błędzie.
+> Wybranie pełnej kontroli dla kategorii **Połączenia** powoduje, że Centrum IoT hub generuje dodatkowe komunikaty **diagnostyczne.** Dla wszystkich innych kategorii ustawienie **pełne** zmienia ilość informacji, które Centrum IoT zawiera w każdym komunikacie o błędzie.
 
-## <a name="event-categories-and-how-to-use-them"></a>Kategorie zdarzeń i sposobu ich używania
+## <a name="event-categories-and-how-to-use-them"></a>Kategorie zdarzeń i jak z nich korzystać
 
-Każdy śledzi kategorii monitorowanie operacji innego typu interakcji z IoT Hub, a każda kategoria monitorowania zawiera schemat definiujący strukturze zdarzeń w danej kategorii.
+Każda kategoria monitorowania operacji śledzi inny typ interakcji z Centrum IoT, a każda kategoria monitorowania ma schemat, który definiuje strukturę zdarzeń w tej kategorii.
 
-### <a name="device-identity-operations"></a>Operacje dotyczące tożsamości urządzenia
+### <a name="device-identity-operations"></a>Operacje tożsamości urządzenia
 
-Kategoria operacje tożsamości urządzenia do śledzenia błędów występujących podczas próby utworzenia, aktualizacji lub usuń wpis w rejestrze tożsamości usługi IoT hub. Śledzenie tej kategorii jest przydatne w przypadku inicjowania obsługi scenariuszy.
+Kategoria operacji tożsamości urządzenia śledzi błędy, które występują podczas próby utworzenia, aktualizacji lub usunięcia wpisu w rejestrze tożsamości centrum IoT. Śledzenie tej kategorii jest przydatne w przypadku scenariuszy inicjowania obsługi administracyjnej.
 
 ```json
 {
@@ -72,9 +72,9 @@ Kategoria operacje tożsamości urządzenia do śledzenia błędów występując
 }
 ```
 
-### <a name="device-telemetry"></a>Danych telemetrycznych z urządzenia
+### <a name="device-telemetry"></a>Telemetria urządzenia
 
-Kategorię danych telemetrycznych urządzenia do śledzenia błędów, które występują w Centrum IoT hub i są powiązane z potoku danych telemetrycznych. Ta kategoria zawiera błędy, które występują podczas wysyłania danych telemetrycznych zdarzeń (takie jak ograniczanie przepustowości) i odbieranie danych telemetrycznych zdarzeń (np. czytnik nieautoryzowany). Ta kategoria nie umożliwia przechwytywania błędów spowodowanych przez kod działający na samym urządzeniu.
+Kategoria telemetrii urządzenia śledzi błędy występujące w centrum IoT hub i są związane z potoku telemetrii. Ta kategoria zawiera błędy, które występują podczas wysyłania zdarzeń telemetrycznych (takich jak ograniczanie przepustowości) i odbieranie zdarzeń telemetrycznych (takich jak nieautoryzowany czytnik). Ta kategoria nie może przechwytyć błędów spowodowanych przez kod uruchomiony na samym urządzeniu.
 
 ```json
 {
@@ -96,9 +96,9 @@ Kategorię danych telemetrycznych urządzenia do śledzenia błędów, które wy
 }
 ```
 
-### <a name="cloud-to-device-commands"></a>Poleceń z chmury do urządzenia
+### <a name="cloud-to-device-commands"></a>Polecenia chmury do urządzenia
 
-Kategorii poleceń chmura urządzenie do śledzenia błędów, które występują w Centrum IoT hub i są powiązane z potok komunikatów z chmury do urządzenia. Ta kategoria obejmuje błędów występujących podczas wysyłania komunikatów z chmury do urządzeń (na przykład nieautoryzowanego nadawcę), odbieranie komunikatów z chmury do urządzeń (np. Przekroczono licznik dostaw) i odbieranie opinii komunikatów z chmury do urządzenia (takie jak opinii wygasła). Ta kategoria nie może przechwytywać błędy z urządzenia, obsługujący nieprawidłowo komunikatu chmura urządzenie, jeśli komunikatu chmura urządzenie zostało pomyślnie dostarczone.
+Kategoria poleceń chmury do urządzenia śledzi błędy występujące w centrum IoT hub i są związane z potokiem komunikatów z chmury do urządzenia. Ta kategoria obejmuje błędy, które występują podczas wysyłania komunikatów z chmury do urządzenia (takich jak nieautoryzowany nadawca), odbierania komunikatów z chmury do urządzenia (takich jak przekroczenie liczby dostarczania) i odbierania opinii z chmury do urządzenia (takich jak opinie wygasły). Ta kategoria nie wychwytuje błędów z urządzenia, które nieprawidłowo obsługuje komunikat chmury do urządzenia, jeśli komunikat z chmury do urządzenia został dostarczony pomyślnie.
 
 ```json
 {
@@ -122,7 +122,7 @@ Kategorii poleceń chmura urządzenie do śledzenia błędów, które występuj�
 
 ### <a name="connections"></a>Połączenia
 
-Kategoria połączenia służy do śledzenia błędów, które występują, gdy urządzenia łączyć i rozłączać z Centrum IoT hub. Śledzenie tej kategorii jest przydatne do identyfikowania próby nawiązania połączenia nieautoryzowanych i śledzenia, gdy połączenie zostanie przerwane dla urządzeń w obszarach niską łączności.
+Kategoria połączeń śledzi błędy, które występują, gdy urządzenia łączą się lub rozłączają z centrum IoT hub. Śledzenie tej kategorii jest przydatne do identyfikowania nieautoryzowanych prób połączenia i śledzenia, gdy połączenie zostanie utracone dla urządzeń w obszarach słabej łączności.
 
 ```json
 {
@@ -142,15 +142,15 @@ Kategoria połączenia służy do śledzenia błędów, które występują, gdy 
 
 ### <a name="file-uploads"></a>Operacje przekazywania plików
 
-Kategoria przekazywania pliku do śledzenia błędów, które występują w Centrum IoT hub i są związane z funkcjonalnością przekazywania plików. Ta kategoria obejmuje:
+Kategoria przekazywania plików śledzi błędy występujące w centrum IoT i są związane z funkcją przekazywania plików. Kategoria ta obejmuje:
 
-* Błędy występujące z identyfikatora URI połączenia SAS, takie jak kiedy wygasa przed urządzenia powiadamia Centrum przekazywanie zostało ukończone.
+* Błędy występujące w identyfikatorze URI sygnatury dostępu Współdzielonego, na przykład po wygaśnięciu, zanim urządzenie powiadomi centrum zakończonego przekazywania.
 
-* Nie powiodło się przekazywania zgłoszona przez urządzenie.
+* Nie powiodło się przesłania zgłoszone przez urządzenie.
 
-* Błędy, które występują, gdy nie można odnaleźć pliku w magazynie podczas tworzenia komunikatu powiadomienia usługi IoT Hub.
+* Błędy, które występują, gdy plik nie zostanie znaleziony w magazynie podczas tworzenia komunikatów powiadomień Usługi IoT Hub.
 
-Ta kategoria nie umożliwia przechwytywania błędów występujących bezpośrednio podczas przekazywania pliku z urządzenia do usługi storage.
+Ta kategoria nie może przechwytywać błędów, które występują bezpośrednio podczas przekazywania pliku do magazynu.
 
 ```json
 {
@@ -169,9 +169,9 @@ Ta kategoria nie umożliwia przechwytywania błędów występujących bezpośred
 }
 ```
 
-### <a name="message-routing"></a>Routing wiadomości
+### <a name="message-routing"></a>Routing komunikatów
 
-Kategoria routingu wiadomości do śledzenia błędów występujących podczas oceny trasy wiadomości i punktu końcowego kondycji postrzeganiu przez usługę IoT Hub. Ta kategoria zawiera zdarzenia, np. gdy reguła zwraca "undefined", gdy usługi IoT Hub oznacza punktu końcowego jako martwe i inne błędy otrzymane od punktu końcowego. Ta kategoria nie obejmuje określone błędy dotyczące komunikatów samodzielnie (na przykład urządzenie błędy ograniczania przepływności), które zostały zgłoszone w kategorii "danych telemetrycznych z urządzenia".
+Kategoria routingu wiadomości śledzi błędy występujące podczas oceny trasy wiadomości i kondycji punktu końcowego jako postrzegane przez Centrum IoT Hub. Ta kategoria obejmuje zdarzenia, takie jak gdy reguła ma wartość "niezdefiniowana", gdy centrum IoT oznacza punkt końcowy jako martwy, oraz wszelkie inne błędy odebrane z punktu końcowego. Ta kategoria nie zawiera określonych błędów dotyczących samych komunikatów (takich jak błędy ograniczania przepustowości urządzeń), które są zgłaszane w kategorii "telemetria urządzenia".
 
 ```json
 {
@@ -188,31 +188,31 @@ Kategoria routingu wiadomości do śledzenia błędów występujących podczas o
 }
 ```
 
-## <a name="connect-to-the-monitoring-endpoint"></a>Nawiązać połączenie z monitorowania punktu końcowego
+## <a name="connect-to-the-monitoring-endpoint"></a>Łączenie się z punktem końcowym monitorowania
 
-Punkt końcowy monitorowania w Centrum IoT to punkt końcowy zgodny z Centrum zdarzeń. Możesz użyć dowolnego mechanizmu, który współpracuje z usługą Event Hubs do odczytywania komunikatów monitorowania z tego punktu końcowego. Poniższy przykład tworzy czytnika podstawowego, który nie jest odpowiedni dla wdrożenia o wysokiej przepływności. Aby uzyskać więcej informacji na temat sposobu przetwarzania komunikatów z usługi Event Hubs, zobacz [Rozpoczynanie pracy z usługą Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md) samouczka.
+Punkt końcowy monitorowania w centrum IoT hub jest punktem końcowym zgodnym z Centrum zdarzeń. Można użyć dowolnego mechanizmu, który współpracuje z Centrum zdarzeń do odczytywania komunikatów monitorowania z tego punktu końcowego. Poniższy przykład tworzy podstawowy czytnik, który nie nadaje się do wdrożenia o wysokiej przepływności. Więcej informacji na temat przetwarzania komunikatów z usługi Event Hubs znajduje się w samouczku [Rozpoczynanie pracy z usługą Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md).
 
-Aby połączyć z monitorowania punktu końcowego, należy parametry połączenia i nazwę punktu końcowego. Poniższe kroki pokazują, jak znaleźć potrzebne wartości w portalu:
+Aby połączyć się z punktem końcowym monitorowania, potrzebujesz ciągu połączenia i nazwy punktu końcowego. Poniższe kroki pokazują, jak znaleźć niezbędne wartości w portalu:
 
-1. W portalu przejdź do bloku zasobów usługi IoT Hub.
+1. W portalu przejdź do bloku zasobu usługi IoT Hub.
 
-2. Wybierz **monitorowanie operacji**i zanotuj **nazwę zgodną z Centrum zdarzeń** i **punktu końcowego zgodnego z Centrum zdarzeń** wartości:
+2. Wybierz **pozycję Monitorowanie operacji**i zanotuj nazwę **zgodną z Centrum zdarzeń** i wartości punktów końcowych **zgodnych z Centrum zdarzeń:**
 
-    ![Wartości punktu końcowego zgodnego z Centrum zdarzeń](./media/iot-hub-operations-monitoring/monitoring-endpoint.png)
+    ![Wartości punktów końcowych zgodnych z centrum zdarzeń](./media/iot-hub-operations-monitoring/monitoring-endpoint.png)
 
-3. Wybierz **zasady dostępu współdzielonego**, następnie wybierz **usługi**. Zwróć uwagę na **klucz podstawowy** wartość:
+3. Wybierz pozycję **Zasady dostępu współdzielonego**, a następnie wybierz **usługę**. Zanotuj wartość **klucza podstawowego:**
 
-    ![Klucz podstawowy zasady dostępu współdzielonego usługi](./media/iot-hub-operations-monitoring/service-key.png)
+    ![Klucz podstawowy zasad dostępu współdzielonego usługi](./media/iot-hub-operations-monitoring/service-key.png)
 
-Poniższy przykładowy kod języka C# jest pobierana z programu Visual Studio **Windows Classic Desktop** aplikację konsoli C#. Projekt ma **WindowsAzure.ServiceBus** zainstalowany pakiet NuGet.
+Poniższy przykład kodu języka C# jest pobierany z aplikacji konsoli klasycznego **pulpitu** systemu Visual Studio Windows Desktop C#. Projekt ma zainstalowany pakiet **WindowsAzure.ServiceBus** NuGet.
 
-* Zastąp symbol zastępczy parametrów połączenia parametrami połączenia, który używa **punktu końcowego zgodnego z Centrum zdarzeń** i usługa **klucz podstawowy** wartościami zanotowanymi wcześniej, jak pokazano w poniższym przykładzie:
+* Zastąp symbol zastępczy ciągu połączenia ciągiem połączenia, który używa wartości **klucza końcowego zgodnego z Centrum zdarzeń** i usługi **Podstawowej,** które zostały wcześniej odnotowane, jak pokazano w poniższym przykładzie:
 
     ```csharp
     "Endpoint={your Event Hub-compatible endpoint};SharedAccessKeyName=service;SharedAccessKey={your service primary key value}"
     ```
 
-* Zastąp monitorowania symbol zastępczy nazwy punktu końcowego przy użyciu **nazwę zgodną z Centrum zdarzeń** wartość zanotowanymi wcześniej.
+* Zastąp symbol zastępczy nazwy punktu końcowego monitorowania wartością **nazwy zgodną z Centrum zdarzeń,** którą wcześniej wspomniano.
 
 ```csharp
 class Program
@@ -264,10 +264,10 @@ class Program
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby bliżej zapoznać się z możliwościami usługi IoT Hub, zobacz:
+Aby dokładniej zbadać możliwości usługi IoT Hub, zobacz:
 
 * [Przewodnik dla deweloperów usługi IoT Hub](iot-hub-devguide.md)
 
-* [Wdrażanie rozwiązań SI na urządzeniach brzegowych za pomocą usługi Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Wdrażanie rozwiązań SI na urządzeniach brzegowych przy użyciu usługi Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)

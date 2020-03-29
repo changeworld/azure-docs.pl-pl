@@ -1,6 +1,6 @@
 ---
-title: Ułatwienia dostępu Eksploratora usługi Azure Storage (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Ułatwienia dostępu Eksploratora usługi Azure Storage (wersja zapoznawcza)
+title: Ułatwienia dostępu w Eksploratorze usługi Azure Storage (wersja zapoznawcza) | Dokumenty firmy Microsoft
+description: Ułatwienia dostępu w Eksploratorze usługi Azure Storage (wersja zapoznawcza)
 services: storage
 documentationcenter: na
 author: MrayermannMSFT
@@ -15,97 +15,97 @@ ms.workload: na
 ms.date: 02/20/2018
 ms.author: marayerm
 ms.openlocfilehash: aa42d6b898a3cc474575f6c8dae65ff420fc8e30
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60457270"
 ---
 # <a name="storage-explorer-accessibility"></a>Ułatwienia dostępu Eksploratora usługi Storage
 
-## <a name="screen-readers"></a>Czytniki zawartości ekranu
+## <a name="screen-readers"></a>Czytniki ekranu
 
-Eksplorator usługi Storage obsługuje korzystanie z czytnika zawartości ekranu w Windows i Mac. Zaleca się następujące czytniki zawartości ekranu, dla każdej platformy:
+Eksplorator magazynu obsługuje korzystanie z czytnika zawartości ekranu w systemach Windows i Mac. Dla każdej platformy zalecane są następujące czytniki ekranu:
 
-Platforma | Czytnik zawartości ekranu
+Platforma | Czytnik ekranu
 ---------|--------------
-Windows  | NVDA
-Mac      | Protokół Voice Over
-Linux    | (czytniki zawartości ekranu nie są obsługiwane w systemie Linux)
+Windows  | Nvda
+Mac      | Voice Over
+Linux    | (czytniki ekranu nie są obsługiwane w systemie Linux)
 
-Jeśli napotkasz problem ułatwień dostępu przy użyciu Eksploratora usługi Storage, [Otwórz problem w serwisie GitHub](https://github.com/Microsoft/AzureStorageExplorer/issues).
+Jeśli podczas korzystania z Eksploratora magazynu napotkasz problem z [dostępnością, otwórz problem w usłudze GitHub](https://github.com/Microsoft/AzureStorageExplorer/issues).
 
-## <a name="zoom"></a>Powiększenie
+## <a name="zoom"></a>Zoom
 
-Można powiększyć tekst w Eksploratorze usługi Storage za pośrednictwem powiększyć. Aby powiększyć, kliknij **Powiększ** w menu Pomoc. Można również użyć menu Pomoc, aby pomniejszyć i resetowania powiększenia z powrotem na domyślny poziom.
+Tekst w Eksploratorze magazynu można powiększyć, powiększając. Aby powiększyć, kliknij **polecenie Powiększenie** w menu Pomoc. Można również użyć menu Pomoc, aby pomniejszyć i zresetować poziom powiększenia z powrotem do poziomu domyślnego.
 
-![Powiększenie w menu Pomoc][0]
+![Opcje powiększania w menu pomocy][0]
 
-Ustawienie powiększenia zwiększa rozmiar większości elementów interfejsu użytkownika. Zalecane jest także włączyć duże pole tekstowe i ustawienia dla Twojego systemu operacyjnego upewnić się, że wszystkie elementy interfejsu użytkownika są prawidłowo przeskalowane powiększenia.
+Ustawienie powiększenia zwiększa rozmiar większości elementów interfejsu użytkownika. Zaleca się również włączenie dużych ustawień tekstu i powiększenia dla systemu operacyjnego, aby upewnić się, że wszystkie elementy interfejsu użytkownika są prawidłowo skalowane.
 
 ## <a name="high-contrast-themes"></a>Motywy o wysokim kontraście
 
-Eksplorator usługi Storage ma dwa o wysokim kontraście motywy, **wysoki kontrast światła** i **wysoki kontrast ciemny**. Twój wybrany motyw można zmienić, wybierając z pomocy > menu motywów.
+Eksplorator magazynu ma dwa motywy o wysokim kontraście, **o wysokim kontraście i** **ciemne o wysokim kontraście.** Motyw można zmienić, wybierając go w menu Pomoc > Motywy.
 
-![Motywy podmenu][1]
+![Podmenu tematy][1]
 
-Ustawienie motywu zmienia kolor większości elementów interfejsu użytkownika. Zalecane jest również umożliwić, system operacyjny dopasowanie kompozycję Duży kontrast, aby upewnić się, że wszystkie elementy interfejsu użytkownika są prawidłowo kolorowe.
+Ustawienie motywu zmienia kolor większości elementów interfejsu użytkownika. Zaleca się również włączenie dopasowania motywu wysokiego kontrastu systemu operacyjnego, aby upewnić się, że wszystkie elementy interfejsu użytkownika są prawidłowo kolorowe.
 
-## <a name="shortcut-keys"></a>Klawisze skrótów
+## <a name="shortcut-keys"></a>Klawisze skrótu
 
-### <a name="window-commands"></a>Okno polecenia
+### <a name="window-commands"></a>Polecenia okna
 
 Polecenie       | Skrót klawiaturowy
 --------------|--------------------
-Nowe okno    | **Control+Shift+N**
-Zamknij Edytor  | **Control+F4**
-Zamknij          | **Control+Shift+W**
+Nowe okno    | **Sterowanie+Shift+N**
+Zamknij edytor  | **Sterowanie+F4**
+Zakończ          | **Sterowanie+Shift+W**
 
 ### <a name="navigation-commands"></a>Polecenia nawigacji
 
 Polecenie                | Skrót klawiaturowy
 -----------------------|----------------------
-Fokus dalej panelu       | **F6**
-Poprzedni Panel koncentracji uwagi   | **SHIFT + F6**
-Eksplorator               | **Control+Shift+E**
-Zarządzanie kontami     | **Control+Shift+A**
-Przełącz pasek boczny        | **Control+B**
-Dziennik aktywności           | **Control+Shift+L**
-Akce a Vlastnosti | **Control+Shift+P**
-Bieżący edytor         | **Kontrolka + Home**
-Edytor dalej            | **Control+Page Down**
-Poprzednie edytora        | **Kontrolka + Page Up**
+Skoncentruj następny panel       | **F6**
+Główny panel Focus   | **Shift+F6**
+Eksplorator               | **Sterowanie+Shift+E**
+Zarządzanie kontami     | **Sterowanie+Shift+A**
+Przełączanie paska bocznego        | **Sterowanie+B**
+Dziennik aktywności           | **Sterowanie+Shift+L**
+Akcje i właściwości | **Sterowanie+Shift+P**
+Bieżący edytor         | **Control+Strona główna**
+Następny edytor            | **Sterowanie+strona w dół**
+Poprzedni edytor        | **Sterowanie+strona w górę**
 
 ### <a name="zoom-commands"></a>Polecenia powiększenia
 
 Polecenie  | Skrót klawiaturowy
 ---------|------------------
-Powiększ  | **Control+=**
-Pomniejsz | **Control +-**
+Powiększ  | **Sterowanie+=**
+Pomniejszenie | **Sterowanie+-**
 
-### <a name="blob-and-file-share-editor-commands"></a>Obiekt blob i poleceń edytora udziału plików
+### <a name="blob-and-file-share-editor-commands"></a>Polecenia edytora obiektów Blob i file share
 
 Polecenie | Skrót klawiaturowy
 --------|--------------------
-Wstecz    | **Alt + Strzałka w lewo**
-do przodu | **Alt + Strzałka w prawo**
-W górę      | **Alt + Strzałka w górę**
+Back    | **Alt+Strzałka w lewo**
+do przodu | **Alt+Strzałka w prawo**
+W górę      | **Alt+Strzałka w górę**
 
-### <a name="editor-commands"></a>Poleceń edytora
+### <a name="editor-commands"></a>Polecenia edytora
 
 Polecenie | Skrót klawiaturowy
 --------|------------------
-Kopiuj    | **Control+C**
-Wytnij     | **Control + X**
-Wklej   | **Control+V**
-Odśwież  | **Control+R**
+Copy    | **Sterowanie+C**
+Wytnij     | **Sterowanie+X**
+Wklej   | **Sterowanie+V**
+Odświeżanie  | **Sterowanie+R**
 
 ### <a name="other-commands"></a>Inne polecenia
 
 Polecenie                | Skrót klawiaturowy
 -----------------------|------------------
-Przełącz narzędzia dla deweloperów | **F12**
-Załaduj ponownie                 | **Alt+Control+R**
+Przełączanie narzędzi programistycznych | **F12**
+Załaduj ponownie                 | **Alt+Sterowanie+R**
 
 [0]: ./media/vs-azure-tools-storage-explorer-accessibility/Zoom.png
 [1]: ./media/vs-azure-tools-storage-explorer-accessibility/HighContrast.png

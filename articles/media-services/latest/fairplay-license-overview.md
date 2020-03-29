@@ -1,6 +1,6 @@
 ---
-title: Usługa Media Services i technologii FairPlay firmy Apple licencji pomoc techniczna — Azure | Dokumentacja firmy Microsoft
-description: Ten temat zawiera omówienie licencji technologii FairPlay firmy Apple, wymagań i konfiguracji.
+title: Obsługa licencji Usługi Media Services i Apple FairPlay — Platforma Azure | Dokumenty firmy Microsoft
+description: W tym temacie przedstawiono omówienie wymagań i konfiguracji licencji Apple FairPlay.
 author: juliako
 manager: femila
 editor: ''
@@ -15,73 +15,73 @@ ms.date: 12/08/2018
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 6d4b7ba842d08723b90a4f2491d9e79e68dd932e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60733576"
 ---
-# <a name="apple-fairplay-license-requirements-and-configuration"></a>Wymagania licencyjne technologii FairPlay firmy Apple i Konfiguracja 
+# <a name="apple-fairplay-license-requirements-and-configuration"></a>Wymagania licencyjne i konfiguracja technologii FairPlay firmy Apple 
 
-Usługa Azure Media Services umożliwia szyfrowanie zawartości przy użyciu protokołu HLS **technologii FairPlay firmy Apple** (CBC AES-128). Media Services udostępnia również usługę dostarczania licencje usługi fairplay:. Gdy gracz próbuje odtwarzanie zawartości chronionej na technologii FairPlay, żądanie jest wysyłane do usługi dostarczania licencji uzyskanie licencji. Jeśli usługa licencji zatwierdza żądanie, problemy z licencji, która jest wysyłana do klienta i jest używany do odszyfrowania i odtwarzania określonej zawartości.
+Usługa Azure Media Services umożliwia szyfrowanie zawartości HLS za pomocą **usługi Apple FairPlay** (AES-128 CBC). Usługa Media Services zapewnia również usługę dostarczania licencji FairPlay. Gdy gracz próbuje odtworzyć zawartość chronioną przez FairPlay, żądanie jest wysyłane do usługi dostarczania licencji w celu uzyskania licencji. Jeśli usługa licencji zatwierdzi żądanie, wystawia licencję, która jest wysyłana do klienta i jest używana do odszyfrowywania i odtwarzania określonej zawartości.
 
-Media Services dostarcza również interfejsy API, które można użyć, aby skonfigurować licencje FairPlay. W tym temacie omówiono wymagania licencyjne FairPlay i pokazuje, jak konfigurować **FairPlay** Uzyskaj licencję za pomocą interfejsów API usług Media Services. 
+Usługi Media Services udostępnia również interfejsy API, których można używać do konfigurowania licencji FairPlay. W tym temacie omówiono wymagania dotyczące licencji FairPlay i pokazano, jak można skonfigurować licencję **FairPlay** przy użyciu interfejsów API usługi Media Services. 
 
 ## <a name="requirements"></a>Wymagania
 
-Szyfrowanie zawartości przy użyciu protokołu HLS przy użyciu usługi Media Services są wymagane następujące **technologii FairPlay firmy Apple** a dostarczać licencje usługi fairplay: za pomocą usługi Media Services:
+Podczas szyfrowania zawartości HLS za pomocą usługi **Apple FairPlay** i dostarczania licencji FairPlay za pomocą usługi Media Services wymagane są następujące elementy:
 
-* Zarejestruj się przy użyciu [programem tworzącym Apple](https://developer.apple.com/).
-* Firma Apple wymaga właścicielem zawartości w celu uzyskania [pakietu wdrożeniowego](https://developer.apple.com/contact/fps/). Stan już zaimplementowany klucz zabezpieczeń modułu (KSM) za pomocą usługi Media Services i żądają pakiecie końcowym kl. / s. Istnieją instrukcje w pakiecie końcowym kl. / s, aby wygenerować certyfikacji i Uzyskaj klucz klucz tajny aplikacji (AKS). ZADAJ umożliwiają konfigurowanie technologii FairPlay.
-* Stronie dostarczania kluczy/licencji Media Services, musi być ustawione następujące elementy:
+* Zarejestruj się w [Programie Rozwoju Firmy Apple](https://developer.apple.com/).
+* Firma Apple wymaga od właściciela zawartości uzyskania [pakietu wdrożeniowego](https://developer.apple.com/contact/fps/). Oświadcza, że moduł zabezpieczeń kluczy (KSM) został już zaimplementowany w u usług media services i że żądasz ostatecznego pakietu FPS. Istnieją instrukcje w ostatecznym pakiecie FPS do generowania certyfikacji i uzyskania klucza tajnego aplikacji (ASK). Ask służy do konfigurowania FairPlay.
+* Po stronie dostarczania klucza/licencji usługi Media Services należy ustawić następujące czynności:
 
-    * **Certyfikat aplikacji (AC)** : Jest to plik PFX, który zawiera klucz prywatny. Utwórz ten plik i szyfrować je przy użyciu hasła. Plik PFX powinien być w formacie Base64.
+    * **Certyfikat aplikacji (AC)**: Jest to plik .pfx, który zawiera klucz prywatny. Tworzysz ten plik i szyfrujesz go hasłem. Plik .pfx powinien być w formacie Base64.
 
-        W poniższych krokach opisano sposób generowania plik certyfikatu PFX dla technologii FairPlay:
+        W poniższych krokach opisano sposób generowania pliku certyfikatu pfx dla gry FairPlay:
 
-        1. Zainstalować protokół OpenSSL z https://slproweb.com/products/Win32OpenSSL.html.
+        1. Zainstaluj OpenSSL https://slproweb.com/products/Win32OpenSSL.htmlz .
 
-            Przejdź do folderu, w których certyfikat FairPlay i inne pliki dostarczane przez firmę Apple.
-        2. W wierszu polecenia uruchom następujące polecenie. Spowoduje to konwersję plik cer do pliku PEM.
+            Przejdź do folderu, w którym znajduje się certyfikat FairPlay i inne pliki dostarczane przez firmę Apple.
+        2. W wierszu polecenia uruchom następujące polecenie. Spowoduje to przekonwertowanie pliku cer na plik pem.
 
-            "C:\OpenSSL-Win32\bin\openssl.exe" x509 — informuje der — w FairPlay.cer-out out.pem technologii FairPlay
-        3. W wierszu polecenia uruchom następujące polecenie. Spowoduje to konwersję plik PEM do pliku .pfx, przy użyciu klucza prywatnego. Hasło dla pliku PFX jest następnie proszeni przez OpenSSL.
+            "C:\OpenSSL-Win32\bin\openssl.exe" x509 -inform der -in FairPlay.cer -out FairPlay-out.pem
+        3. W wierszu polecenia uruchom następujące polecenie. Spowoduje to przekonwertowanie pliku pem na plik .pfx z kluczem prywatnym. Hasło do pliku .pfx jest następnie zadawane przez OpenSSL.
 
-            Pkcs12 "C:\OpenSSL-Win32\bin\openssl.exe" — Eksportowanie — limit FairPlay out.pfx-inkey privatekey.pem — w file:privatekey-pem-pass.txt - passin out.pem technologii FairPlay
+            "C:\OpenSSL-Win32\bin\openssl.exe" pkcs12 -export -out FairPlay-out.pfx -inkey privatekey.pem -in FairPlay-out.pem -passin file:privatekey-pem-pass.txt
             
     * **Hasło certyfikatu aplikacji**: Hasło do tworzenia pliku .pfx.
-    * **POPROŚ**: Ten klucz jest zgłaszany, jeśli Generowanie certyfikacji przy użyciu portalu dla deweloperów firmy Apple. Każdy zespół programistyczny otrzymuje unikatowy pytanie. Zapisz kopię ZADAJ i zapisz go w bezpiecznym miejscu. Należy skonfigurować poproś jako FairPlayAsk za pomocą usługi Media Services.
+    * **ASK:** Ten klucz jest odbierany podczas generowania certyfikacji przy użyciu portalu Apple Developer. Każdy zespół programistów otrzymuje unikatowy ASK. Zapisz kopię ask i przechowuj ją w bezpiecznym miejscu. Należy skonfigurować ASK jako FairPlayAsk z usługą Media Services.
     
-* Po stronie klienta kl. / s, należy ustawić następujące elementy:
+* Po stronie klienta FPS muszą być ustawione następujące czynności:
 
-  * **Certyfikat aplikacji (AC)** : Jest to plik.cer/.der, który zawiera klucz publiczny, który system operacyjny używa szyfrowania niektóre ładunku. Usługa Media Services musi znać na jego temat, ponieważ jest to wymagane przez gracza. Usługa dostarczania kluczy odszyfrowuje ją przy użyciu odpowiedniego klucza prywatnego.
+  * **Certyfikat aplikacji (AC)**: Jest to plik .cer/.der, który zawiera klucz publiczny, którego system operacyjny używa do szyfrowania ładunku. Usługi media muszą o tym wiedzieć, ponieważ jest to wymagane przez odtwarzacza. Usługa dostarczania kluczy odszyfrowuje go przy użyciu odpowiedniego klucza prywatnego.
 
-* Aby odtworzyć strumień zaszyfrowanej technologia FairPlay, Pobierz rzeczywistych ZADAJĄ pierwszy, a następnie wygeneruj prawdziwym certyfikatem. Ten proces tworzy wszystkie trzy elementy:
+* Aby odtworzyć zaszyfrowany strumień FairPlay, najpierw uzyskaj prawdziwy ask, a następnie wygeneruj prawdziwy certyfikat. Proces ten tworzy wszystkie trzy części:
 
-  * pliku der
-  * plik PFX
-  * hasło PFX
+  * plik der
+  * .pfx plik
+  * hasło do .pfx
 
-## <a name="fairplay-and-player-apps"></a>Technologia FairPlay, jak i odtwarzacz aplikacji
+## <a name="fairplay-and-player-apps"></a>FairPlay i aplikacje dla graczy
 
-Gdy zawartość jest szyfrowana za pomocą **technologii FairPlay firmy Apple**, poszczególne próbki audio i wideo są szyfrowane przy użyciu **CBC AES-128** trybu. **FairPlay Streaming** (kl. / s) jest zintegrowana z systemów operacyjnych urządzeń z natywną obsługą w systemach iOS i Apple TV. Safari w systemie OS X umożliwia kl. / s za pomocą obsługi interfejsu Encrypted Media Extensions (EME).
+Gdy zawartość jest szyfrowana za pomocą **apple FairPlay,** poszczególne próbki wideo i audio są szyfrowane przy użyciu trybu **CBC AES-128.** **Usługa FairPlay Streaming** (FPS) jest zintegrowana z systemami operacyjnymi urządzeń, z natywną obsługą na iOS i Apple TV. Safari w os X włącza FPS przy użyciu obsługi interfejsu szyfrowanych rozszerzeń multimediów (EME).
 
-Usługa Azure Media Player obsługuje również FairPlay odtwarzania. Aby uzyskać więcej informacji, zobacz [dokumentacji usługi Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html).
+Program Azure Media Player obsługuje również odtwarzanie fairplay. Aby uzyskać więcej informacji, zobacz [dokumentację programu Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html).
 
-Możesz tworzyć własne aplikacje player przy użyciu zestawu SDK dla systemu iOS. Aby można było do odtwarzania zawartości z użyciem technologii FairPlay, musisz zaimplementować protokół wymiany licencji. Ten protokół nie jest określony przez firmę Apple. Jest każda aplikacja sposób wysyłania żądań dostarczania kluczy. Usługa dostarczania kluczy Media Services FairPlay oczekuje SPC na uszkodzonym www-form-url wpis zakodowany komunikat w następującej postaci:
+Możesz tworzyć własne aplikacje dla graczy za pomocą sdk iOS. Aby móc odtwarzać zawartość FairPlay, musisz zaimplementować protokół wymiany licencji. Ten protokół nie jest określony przez apple. To do każdej aplikacji, jak wysyłać żądania dostarczania kluczy. Usługa dostarczania kluczy Programu Media Services FairPlay oczekuje, że SPC pojawi się jako wiadomość post zakodowana w formularzu www-form-url w następującej formie:
 
 ```
 spc=<Base64 encoded SPC>
 ```
 
-## <a name="fairplay-configuration-net-example"></a>Przykład konfiguracji technologii FairPlay dla środowiska .NET
+## <a name="fairplay-configuration-net-example"></a>Przykład konfiguracji FairPlay .NET
 
-Aby skonfigurować licencje usługi fairplay:, można użyć interfejsu API usługi Media Services. Próbą odtwarzanie zawartości chronionej na technologii FairPlay, żądania są wysyłane do usługi dostarczania licencji, aby uzyskać licencję. Jeśli usługa licencji zatwierdza żądanie, problemy z usługą licencji. Ona są wysyłane do klienta i jest używany do odszyfrowania i odtwarzania określonej zawartości.
+Za pomocą interfejsu API usługi Media Services można skonfigurować licencje FairPlay. Gdy gracz próbuje odtworzyć zawartość chronioną przez FairPlay, żądanie jest wysyłane do usługi dostarczania licencji w celu uzyskania licencji. Jeśli usługa licencji zatwierdzi żądanie, usługa wystawia licencję. Jest wysyłany do klienta i służy do odszyfrowywania i odtwarzania określonej zawartości.
 
 > [!NOTE]
-> Zazwyczaj należy skonfigurować opcje zasad FairPlay tylko raz, ponieważ masz tylko jeden zestaw certyfikacji i poproś.
+> Zazwyczaj chcesz skonfigurować opcje zasad FairPlay tylko raz, ponieważ będziesz mieć tylko jeden zestaw certyfikatów i ASK.
 
-W poniższym przykładzie użyto [Media Services .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) skonfigurować licencji.
+W poniższym przykładzie użyto [narzędzia Media Services .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) do skonfigurowania licencji.
 
 ```csharp
 private static ContentKeyPolicyFairPlayConfiguration ConfigureFairPlayPolicyOptions()
@@ -115,6 +115,6 @@ private static ContentKeyPolicyFairPlayConfiguration ConfigureFairPlayPolicyOpti
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z jak [chronić za pomocą technologii DRM](protect-with-drm.md)
+Sprawdź, jak [chronić za pomocą DRM](protect-with-drm.md)

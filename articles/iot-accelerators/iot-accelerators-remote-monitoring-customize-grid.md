@@ -1,6 +1,6 @@
 ---
-title: Dodać siatkę z rozwiązaniem monitorowania zdalnego interfejsu użytkownika — Azure | Dokumentacja firmy Microsoft
-description: W tym artykule przedstawiono sposób dodawania nowych gid w zdalne monitorowanie rozwiązań akceleratora internetowego interfejsu użytkownika strony.
+title: Dodawanie siatki do interfejsu użytkownika rozwiązania do zdalnego monitorowania — Azure | Dokumenty firmy Microsoft
+description: W tym artykule pokazano, jak dodać nowy gid na stronie w interfejsie użytkownika sieci Web akceleratora rozwiązania zdalnego monitorowania.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,42 +9,42 @@ services: iot-accelerators
 ms.date: 10/04/2018
 ms.topic: conceptual
 ms.openlocfilehash: a24cb7f39ccb8ea07d4dde2869dc7c924b91983a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61447101"
 ---
-# <a name="add-a-custom-grid-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Dodaj niestandardowe siatki do monitorowania zdalnego rozwiązania akceleratora internetowego interfejsu użytkownika
+# <a name="add-a-custom-grid-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Dodawanie siatki niestandardowej do interfejsu użytkownika sieci Web akceleratora rozwiązania do zdalnego monitorowania
 
-W tym artykule pokazano, jak dodać nową siatkę na stronę w zdalne monitorowanie rozwiązań akceleratora internetowego interfejsu użytkownika. W artykule opisano:
+W tym artykule pokazano, jak dodać nową siatkę do strony w interfejsie użytkownika sieci Web akceleratora rozwiązania zdalnego monitorowania. W artykule opisano:
 
-- Jak przygotować lokalne Środowisko deweloperskie.
-- Jak dodać nową siatkę do strony w internetowym interfejsie użytkownika.
+- Jak przygotować lokalne środowisko programistyczne.
+- Jak dodać nową siatkę do strony w interfejsie użytkownika sieci Web.
 
-W siatce przykładu w tym artykule są wyświetlane dane z usługi, [dodawania niestandardowych usługi do monitorowania zdalnego rozwiązania akceleratora internetowego interfejsu użytkownika](iot-accelerators-remote-monitoring-customize-service.md) artykule przedstawiono sposób dodawania.
+Przykładowa siatka w tym artykule wyświetla dane z usługi, które [Dodaj usługę niestandardową do interfejsu użytkownika sieci Web akceleratora rozwiązania zdalnego monitorowania sieci Web](iot-accelerators-remote-monitoring-customize-service.md) pokazuje, jak dodać.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby wykonać kroki opisane w tym przewodniku z instrukcjami, potrzebne są następujące oprogramowanie zainstalowane na lokalnej maszynie do programowania:
+Aby wykonać kroki opisane w tym przewodniku, na lokalnym komputerze deweloperskim należy zainstalować następujące oprogramowanie:
 
-- [Usługa Git](https://git-scm.com/downloads)
+- [Git](https://git-scm.com/downloads)
 - [Node.js](https://nodejs.org/download/)
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
-Przed kontynuowaniem należy wykonać czynności opisane w następujących artykułach:
+Przed kontynuowaniem należy wykonać kroki opisane w następujących artykułach:
 
-- [Dodawanie niestandardowej strony do monitorowania zdalnego rozwiązania akceleratora internetowy interfejs użytkownika](iot-accelerators-remote-monitoring-customize-page.md).
-- [Dodaj niestandardowe usługi do monitorowania zdalnego rozwiązania akceleratora internetowego interfejsu użytkownika](iot-accelerators-remote-monitoring-customize-service.md)
+- Dodaj stronę niestandardową do interfejsu użytkownika [internetowego akceleratora rozwiązań do zdalnego monitorowania](iot-accelerators-remote-monitoring-customize-page.md).
+- [Dodawanie usługi niestandardowej do interfejsu użytkownika sieci Web akceleratora rozwiązań do zdalnego monitorowania](iot-accelerators-remote-monitoring-customize-service.md)
 
 ## <a name="add-a-grid"></a>Dodawanie siatki
 
-Aby dodać siatkę do interfejsu użytkownika sieci web, należy dodać pliki źródłowe, które definiują siatki i zmodyfikować niektóre istniejące pliki, aby uświadomić interfejsu użytkownika sieci web nowego składnika.
+Aby dodać siatkę do interfejsu użytkownika sieci Web, należy dodać pliki źródłowe definiujące siatkę i zmodyfikować niektóre istniejące pliki, aby uwrażliwić internetowy interfejs użytkownika o nowym składniku.
 
-### <a name="add-the-new-files-that-define-the-grid"></a>Dodawaj nowe pliki, które definiują siatki
+### <a name="add-the-new-files-that-define-the-grid"></a>Dodawanie nowych plików definiujących siatkę
 
-Aby rozpocząć pracę, **src/wskazówki/składniki/stron/pageWithGrid/exampleGrid** folder zawiera pliki, które definiują siatki:
+Aby rozpocząć, **src/instruktaż/składniki/strony/pageWithGrid/exampleGrid** folder zawiera pliki definiujące siatkę:
 
 **exampleGrid.js**
 
@@ -54,11 +54,11 @@ Aby rozpocząć pracę, **src/wskazówki/składniki/stron/pageWithGrid/exampleGr
 
 [!code-javascript[Example grid configuration](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithGrid/exampleGrid/exampleGridConfig.js?name=gridconfig "Example grid configuration")]
 
-Kopiuj **src/wskazówki/składniki/stron/pageWithGrid/exampleGrid** folder do **src/składniki/stron/przykład** folderu.
+Skopiuj folder **src/instruktażowy/składniki/strony/pageWithGrid/exampleGrid** do folderu **src/components/pages/example.**
 
-### <a name="add-the-grid-to-the-page"></a>Na stronie Dodaj siatki
+### <a name="add-the-grid-to-the-page"></a>Dodawanie siatki do strony
 
-Modyfikowanie **src/components/pages/example/basicPage.container.js** w następujący sposób, aby zaimportować definicje usług:
+Zmodyfikuj **src/components/pages/example/basicPage.container.js** w następujący sposób, aby zaimportować definicje usług:
 
 ```js
 import { connect } from 'react-redux';
@@ -89,7 +89,7 @@ const mapDispatchToProps = dispatch => ({
 export const BasicPageContainer = translate()(connect(mapStateToProps, mapDispatchToProps)(BasicPage));
 ```
 
-Modyfikowanie **src/components/pages/example/basicPage.js** w następujący sposób, aby dodać siatki:
+Zmodyfikuj **src/components/pages/example/basicPage.js** w następujący sposób, aby dodać siatkę:
 
 ```js
 // Copyright (c) Microsoft. All rights reserved.
@@ -144,7 +144,7 @@ export class BasicPage extends Component {
 }
 ```
 
-Modyfikowanie **src/components/pages/example/basicPage.test.js** w następujący sposób w celu zaktualizowania testów:
+Zmodyfikuj **src/components/pages/example/basicPage.test.js** w następujący sposób, aby zaktualizować testy:
 
 ```js
 // Copyright (c) Microsoft. All rights reserved.
@@ -176,23 +176,23 @@ describe('BasicPage Component', () => {
 
 ## <a name="test-the-grid"></a>Testowanie siatki
 
-Jeśli internetowy interfejs użytkownika nie jest jeszcze uruchomiona lokalnie, uruchom następujące polecenie w folderze głównym lokalnej kopii repozytorium:
+Jeśli interfejs użytkownika sieci Web nie jest jeszcze uruchomiony lokalnie, uruchom następujące polecenie w katalogu głównym lokalnej kopii repozytorium:
 
 ```cmd/sh
 npm start
 ```
 
-Poprzednie polecenie uruchamia interfejsu użytkownika lokalnie [ http://localhost:3000/dashboard ](http://localhost:3000/dashboard). Przejdź do **przykład** stronę, aby wyświetlić siatkę wyświetlenie danych z usługi.
+Poprzednie polecenie uruchamia interfejs użytkownika [http://localhost:3000/dashboard](http://localhost:3000/dashboard)lokalnie w pliku . Przejdź do **przykładowej** strony, aby wyświetlić dane siatki wyświetlane z usługi.
 
-## <a name="select-rows"></a>Wybierz wiersze
+## <a name="select-rows"></a>Zaznaczanie wierszy
 
-Istnieją dwie opcje umożliwiające użytkownika do wybrania wierszy do siatki:
+Istnieją dwie opcje umożliwiające użytkownikowi zaznaczanie wierszy w siatce:
 
-### <a name="hard-select-rows"></a>Twarde wybierz wiersze
+### <a name="hard-select-rows"></a>Wiersze z wyborem twardym
 
-Jeśli użytkownik musi działać w wielu wierszach, w tym samym czasie, użyj pól wyboru w wierszach:
+Jeśli użytkownik musi działać w wielu wierszach jednocześnie, użyj pól wyboru w wierszach:
 
-1. Włącz twardych zaznaczenia wierszy, dodając **checkboxColumn** do **columnDefs** dostarczane do siatki. **checkboxColumn** jest zdefiniowany w **/src/components/shared/pcsGrid/pcsGrid.js**:
+1. Włącz twardy wybór wierszy, dodając **checkboxColumn** do **columnDefs** dostarczone do siatki. **checkboxColumn** jest zdefiniowany w **/src/components/shared/pcsGrid/pcsGrid.js**:
 
     ```js
     this.columnDefs = [
@@ -202,7 +202,7 @@ Jeśli użytkownik musi działać w wielu wierszach, w tym samym czasie, użyj p
     ];
     ```
 
-1. Dostęp do wybranych elementów, możesz uzyskać odwołanie do interfejsu API siatki wewnętrzny:
+1. Aby uzyskać dostęp do wybranych elementów, otrzymasz odwołanie do wewnętrznego interfejsu API siatki:
 
     ```js
     onGridReady = gridReadyEvent => {
@@ -214,7 +214,7 @@ Jeśli użytkownik musi działać w wielu wierszach, w tym samym czasie, użyj p
     };
     ```
 
-1. Podaj przyciski kontekstu do strony po wiersza w siatce twardych wybrane:
+1. Podaj przyciski kontekstu do strony, gdy wiersz w siatce jest zaznaczony na twardo:
 
     ```js
     this.contextBtns = [
@@ -234,7 +234,7 @@ Jeśli użytkownik musi działać w wielu wierszach, w tym samym czasie, użyj p
     }
     ```
 
-1. Po kliknięciu przycisku kontekstu, Pobierz twardych wybrane elementy do pracy na:
+1. Po kliknięciu przycisku kontekstu pobierz starannie wybrane elementy, nad którymi chcesz wykonać pracę:
 
     ```js
     doSomething = () => {
@@ -243,11 +243,11 @@ Jeśli użytkownik musi działać w wielu wierszach, w tym samym czasie, użyj p
     };
     ```
 
-### <a name="soft-select-rows"></a>Wybierz elastyczne wierszy
+### <a name="soft-select-rows"></a>Wiersze z miękkim zaznaczeniem
 
-Jeśli użytkownik musi jedynie do działania w jednym wierszu, skonfiguruj soft wybierz link do co najmniej jedną kolumnę w **columnDefs**.
+Jeśli użytkownik musi działać tylko w jednym wierszu, skonfiguruj łącze wyboru nietrwego losowego dla jednej lub kilku kolumn w **kolumnieDefs**.
 
-1. W **exampleGridConfig.js**, Dodaj **SoftSelectLinkRenderer** jako **cellRendererFramework** dla **columnDef**.
+1. W **przykładzieGridConfig.js**, dodaj **SoftSelectLinkRenderer** jako **cellRendererFramework** dla **columnDef**.
 
     ```js
     export const exampleColumnDefs = {
@@ -260,7 +260,7 @@ Jeśli użytkownik musi jedynie do działania w jednym wierszu, skonfiguruj soft
     };
     ```
 
-1. Po kliknięciu łącza soft-select, wyzwala **onSoftSelectChange** zdarzeń. Wykonaj dowolną akcję jest pożądane dla tego wiersza, np. otwierając menu wysuwanego szczegółowe informacje. W tym przykładzie po prostu zapisuje do konsoli:
+1. Po kliknięciu łącza wyboru nietrwałego wyzwala zdarzenie **onSoftSelectChange.** Wykonaj dowolną czynność wymaganą dla tego wiersza, na przykład otwierając wysuń szczegółów. W tym przykładzie po prostu zapisuje do konsoli:
 
     ```js
     onSoftSelectChange = (rowId, rowData) => {
@@ -277,10 +277,10 @@ Jeśli użytkownik musi jedynie do działania w jednym wierszu, skonfiguruj soft
     }
     ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym artykule opisano dostępnych zasobów umożliwiających można dodawać lub dostosowywanie stron w internetowym interfejsie użytkownika w akceleratora rozwiązania monitorowania zdalnego.
+W tym artykule dowiesz się o dostępnych zasobach ułatwiające dodawanie lub dostosowywanie stron w interfejsie użytkownika sieci Web w akceleratorze rozwiązań do zdalnego monitorowania.
 
-Po zdefiniowaniu siatki, następnym krokiem jest [dodać niestandardowe okno wysuwane do monitorowania zdalnego rozwiązania akceleratora internetowy interfejs użytkownika](iot-accelerators-remote-monitoring-customize-flyout.md) wyświetlającą na przykładowej stronie.
+Teraz zdefiniowano siatkę, następnym krokiem jest [dodanie niestandardowego wysuń do interfejsu użytkownika sieci web akceleratora rozwiązania zdalnego monitorowania,](iot-accelerators-remote-monitoring-customize-flyout.md) który jest wyświetlany na przykładowej stronie.
 
-Aby uzyskać obszerniejszych informacji koncepcyjnych związanych akceleratora rozwiązania monitorowania zdalnego, zobacz [Architektura zdalnego monitorowania](iot-accelerators-remote-monitoring-sample-walkthrough.md).
+Aby uzyskać więcej informacji koncepcyjnych dotyczących akceleratora rozwiązań do zdalnego monitorowania, zobacz [Architektura zdalnego monitorowania](iot-accelerators-remote-monitoring-sample-walkthrough.md).

@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Konfigurowanie Concur dla automatycznej aprowizacji użytkowników z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Konfigurowanie concur do automatycznego inicjowania obsługi administracyjnej za pomocą usługi Azure Active Directory| Dokumenty firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Concur.
 services: active-directory
 documentationCenter: na
@@ -16,114 +16,114 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 441aa9805f2a453e22f207238315125d2a281838
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60280402"
 ---
-# <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Concur dla automatycznej aprowizacji użytkowników
+# <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie konkursu do automatycznego inicjowania obsługi administracyjnej przez użytkowników
 
-Celem tego samouczka jest pokazanie czynności, które należy wykonać w Concur i Azure AD w celu automatycznego aprowizowania lub cofania aprowizacji kont użytkowników z usługi Azure AD do Concur.
+Celem tego samouczka jest pokazanie kroki, które należy wykonać w Concur i usługi Azure AD, aby automatycznie aprowizować i usuwać z aprowizowania konta użytkowników z usługi Azure AD do Concur.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Scenariusz opisany w tym samouczku przyjęto założenie, że masz następujące elementy:
+Scenariusz opisany w tym samouczku zakłada, że masz już następujące elementy:
 
-*   Dzierżawy usługi Azure Active directory.
-*   Concur logowanie jednokrotne włączone subskrypcji.
-*   Konto użytkownika w Concur z uprawnieniami administratora zespołu.
+*   Dzierżawa usługi Azure Active directory.
+*   A Concur subskrypcji z włączoną rejestracją jednokrotną.
+*   Konto użytkownika w concur z uprawnieniami administratora zespołu.
 
-## <a name="assigning-users-to-concur"></a>Przypisywanie użytkowników do Concur
+## <a name="assigning-users-to-concur"></a>Przypisywanie użytkowników do concur
 
-Usługa Azure Active Directory używa koncepcji o nazwie "przypisania", aby określić, użytkowników, którzy otrzymają dostęp do wybranych aplikacji. W kontekście Inicjowanie obsługi administracyjnej konta użytkowników są synchronizowane tylko użytkowników i grup, które "przypisano" do aplikacji w usłudze Azure AD.
+Usługa Azure Active Directory używa pojęcia o nazwie "przydziały", aby określić, którzy użytkownicy powinni otrzymać dostęp do wybranych aplikacji. W kontekście automatycznego inicjowania obsługi administracyjnej konta użytkownika tylko użytkownicy i grupy, które zostały "przypisane" do aplikacji w usłudze Azure AD jest synchronizowana.
 
-Przed Skonfiguruj i włącz usługę aprowizacji, musisz zdecydować, jakie użytkowników i/lub grup w usłudze Azure AD reprezentują użytkowników, którzy potrzebują dostępu do aplikacji Concur. Po decyzję, możesz przypisać użytkowników do aplikacji Concur, zgodnie z instrukcjami w tym miejscu:
+Przed skonfigurowaniem i włączeniem usługi inicjowania obsługi administracyjnej należy zdecydować, którzy użytkownicy i/lub grupy w usłudze Azure AD reprezentują użytkowników, którzy potrzebują dostępu do aplikacji Concur. Po podjęciu decyzji, można przypisać tych użytkowników do aplikacji Concur, postępując zgodnie z instrukcjami tutaj:
 
 [Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
 ### <a name="important-tips-for-assigning-users-to-concur"></a>Ważne wskazówki dotyczące przypisywania użytkowników do Concur
 
-*   Zalecane jest, że jeden użytkownik usługi Azure AD można przypisać do Concur do testowania konfiguracji aprowizacji. Później można przypisać dodatkowych użytkowników i/lub grup.
+*   Zaleca się, aby jeden użytkownik usługi Azure AD został przypisany do Concur, aby przetestować konfigurację inicjowania obsługi administracyjnej. Dodatkowi użytkownicy i/lub grupy mogą być przypisane później.
 
-*   Podczas przypisywania użytkowników do Concur, należy wybrać poprawnej roli użytkownika. Rola "Domyślnego dostępu" nie działa w przypadku inicjowania obsługi administracyjnej.
+*   Podczas przypisywania użytkownika do concur, należy wybrać prawidłową rolę użytkownika. Rola "Dostęp domyślny" nie działa w przypadku inicjowania obsługi administracyjnej.
 
-## <a name="enable-user-provisioning"></a>Włącz aprowizację użytkowników
+## <a name="enable-user-provisioning"></a>Włączanie inicjowania obsługi administracyjnej użytkowników
 
-Ta sekcja przeprowadzi Cię przez połączenie usługi Azure AD do konta użytkownika firmy Concur aprowizujący interfejs API i konfigurowanie inicjowania obsługi usługi do tworzenia, aktualizacji, a następnie wyłącz konta użytkowników przypisane w Concur na podstawie przypisania użytkowników i grup w usłudze Azure AD.
+W tej sekcji przewodnik po połączeniu usługi Azure AD z interfejsem API inicjowania obsługi administracyjnej konta użytkownika concur i konfigurowaniu usługi inicjowania obsługi administracyjnej w celu tworzenia, aktualizowania i wyłączania przypisanych kont użytkowników w concur na podstawie przypisania użytkownika i grupy w usłudze Azure AD.
 
 > [!Tip] 
-> Można też włączyć opartej na SAML logowania jednokrotnego dla Concur, wykonując instrukcje podane w [witryny Azure portal](https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatyczną aprowizację, chociaż te dwie funkcje uzupełnienie siebie nawzajem.
+> Można również włączyć samoostiło samol oparte na logacie jednokrotne dla concur, postępując zgodnie z instrukcjami podanymi w [witrynie Azure portal.](https://portal.azure.com) Logowanie jednokrotne można skonfigurować niezależnie od automatycznego inicjowania obsługi administracyjnej, chociaż te dwie funkcje wzajemnie się uzupełniają.
 
-### <a name="to-configure-user-account-provisioning"></a>Aby skonfigurować, inicjowanie obsługi administracyjnej konta użytkownika:
+### <a name="to-configure-user-account-provisioning"></a>Aby skonfigurować inicjowanie obsługi administracyjnej kont użytkowników:
 
-Jest celem tej sekcji opisano sposób włączyć aprowizację kont użytkowników usługi Active Directory do Concur.
+Celem tej sekcji jest określenie sposobu włączania obsługi administracyjnej kont użytkowników usługi Active Directory do concur.
 
-Aby włączyć aplikacje w usłudze wydatków ma musi być prawidłową konfigurację i użycie profilu administratora usługi sieci Web. Nie dodawaj rolę administratora WS do istniejącego profilu administratora używanego dla T & E funkcje administracyjne.
+Aby włączyć aplikacje w usłudze wydatków, musi istnieć właściwa konfiguracja i korzystanie z profilu administratora usługi sieci Web. Nie dodawaj roli Administrator WS do istniejącego profilu administratora używanego w funkcjach administracyjnych T&E.
 
-Concur konsultantów lub administrator klienta należy utworzyć odrębne profil administratora usługi sieci Web i administrator klienta, należy użyć tego profilu funkcji administratora usługi sieci Web (na przykład, dzięki czemu aplikacje). Te profile muszą być oddzielone od administratora klienta codzienne T & admin atny (T & atny administratora nie powinny mieć przypisaną rolę WSAdmin).
+Concur Consultants lub administrator klienta muszą utworzyć odrębny profil administratora usługi sieci Web, a administrator klienta musi używać tego profilu dla funkcji administratora usług sieci Web (na przykład włączanie aplikacji). Profile te muszą być oddzielone od codziennego profilu administratora klienta T&E (profil administratora T&E nie powinien mieć przypisanej roli WSAdmin).
 
-Podczas tworzenia profilu służący do włączania aplikacji, wprowadź nazwę administratora klienta w polach profilu użytkownika. Powoduje prawa własności do tego profilu. Po utworzeniu co najmniej jeden profil klienta, należy zalogować się do tego profilu, kliknij pozycję "*Włącz*" przycisk aplikacji partnera w ramach menu usługi sieci Web.
+Podczas tworzenia profilu, który ma być używany do włączania aplikacji, wprowadź nazwę administratora klienta w polach profilu użytkownika. Spowoduje to przypisanie własności do profilu. Po utworzeniu jednego lub więcej profili klient musi zalogować się za pomocą tego profilu, aby kliknąć przycisk *"Włącz"* aplikacji partnera w menu Usługi sieci Web.
 
-Z następujących powodów ta akcja nie powinna być podejmowana z profil, który ich za pomocą której administrujesz normalne T & E.
+Z następujących powodów, to działanie nie powinno być wykonywane z profilem, którego używają do normalnego administracji T&E.
 
-* Klient musi mieć ten, który kliknie przycisk "*tak*" w oknie dialogu, które jest wyświetlane, gdy aplikacja zostanie włączona. Tego kliknij potwierdza, że klient jest gotowa dla aplikacji partnera dostęp do swoich danych, dzięki czemu możesz lub partnera nie kliknij ten przycisk Tak.
+* Klient musi być tym, który klika *"Tak"* w oknie dialogowym, które jest wyświetlane po włączeniu aplikacji. To kliknięcie potwierdza, że klient jest skłonny do aplikacji Partnera, aby uzyskać dostęp do swoich danych, więc ty lub partner nie można kliknąć tego przycisku Tak.
 
-* Jeśli administrator klienta, która włączyła aplikację przy użyciu administratora T & E profilu opuści firmę (co w profilu są zdezaktywowano), wszystkie aplikacje, włączone za pomocą profilu nie działać do czasu włączenia aplikacji z innym profilem administratora WS active. Jest to, dlaczego są powinien utworzyć odrębne administratora WS profile.
+* Jeśli administrator klienta, który włączył aplikację przy użyciu profilu administratora T&E, opuści firmę (co powoduje dezaktywowanie profilu), wszystkie aplikacje włączone przy użyciu tego profilu nie będą działać, dopóki aplikacja nie zostanie włączona z innym aktywnym profilem administratora WS. Dlatego masz tworzyć różne profile administratorów WS.
 
-* Jeśli administrator opuści firmę, nazwy skojarzonej z profilem administrator WS można zmienić administratorowi zastąpienia, w razie potrzeby bez wywierania wpływu na, że włączono aplikacji, ponieważ ten profil nie jest konieczne zdezaktywowano.
+* Jeśli administrator opuści firmę, nazwę skojarzoną z profilem administratora WS można zmienić na administratora zastępczego w razie potrzeby bez wpływu na włączoną aplikację, ponieważ ten profil nie wymaga dezaktywacji.
 
-**Aby skonfigurować aprowizację użytkowników, wykonaj następujące czynności:**
+**Aby skonfigurować aprowizację użytkowników, wykonaj następujące kroki:**
 
-1. Zaloguj się do Twojej **Concur** dzierżawy.
+1. Zaloguj się do **dzierżawy Concur.**
 
-2. Z **administracji** menu, wybierz opcję **usług sieci Web**.
+2. Z menu **Administracja** wybierz polecenie **Usługi sieci Web**.
    
-    ![Dzierżawy Concur](./media/concur-provisioning-tutorial/IC721729.png "Concur dzierżawy")
+    ![Zbieżny najemca](./media/concur-provisioning-tutorial/IC721729.png "Zbieżny najemca")
 
-3. Po lewej stronie z **usług sieci Web** okienku wybierz **Włączanie aplikacji partnera**.
+3. Po lewej stronie w okienku **Usługi sieci Web** wybierz pozycję Włącz aplikację **partnera**.
    
-    ![Włącz aplikację partnera](./media/concur-provisioning-tutorial/ic721730.png "partnera aplikacji włączyć")
+    ![Włącz aplikację partnera](./media/concur-provisioning-tutorial/ic721730.png "Włącz aplikację partnera")
 
-4. Z **Włączanie aplikacji** listy wybierz **usługi Azure Active Directory**, a następnie kliknij przycisk **Włącz**.
+4. Z listy **Włącz aplikację** wybierz pozycję Azure **Active Directory**, a następnie kliknij pozycję **Włącz**.
    
-    ![Microsoft Azure Active Directory](./media/concur-provisioning-tutorial/ic721731.png "Microsoft Azure Active Directory")
+    ![Usługa Microsoft Azure Active Directory](./media/concur-provisioning-tutorial/ic721731.png "Usługi Active Directory systemu Microsoft Azure")
 
-5. Kliknij przycisk **tak** zamknąć **Potwierdź akcję** okna dialogowego.
+5. Kliknij **przycisk Tak,** aby zamknąć okno dialogowe **Potwierdź akcję.**
    
     ![Potwierdź akcję](./media/concur-provisioning-tutorial/ic721732.png "Potwierdź akcję")
 
-6. W [witryny Azure portal](https://portal.azure.com), przejdź do **usługi Azure Active Directory > aplikacje dla przedsiębiorstw > wszystkie aplikacje** sekcji.
+6. W [witrynie Azure portal](https://portal.azure.com)przejdź do sekcji **Azure Active Directory > Enterprise Apps > wszystkie aplikacje.**
 
-7. Jeśli już skonfigurowano Concur dla logowania jednokrotnego, wyszukiwania dla swojego wystąpienia usługi Concur przy użyciu pola wyszukiwania. W przeciwnym razie wybierz **Dodaj** i wyszukaj **Concur** w galerii aplikacji. Wybierz Concur z wyników wyszukiwania, a następnie dodaj go do listy aplikacji.
+7. Jeśli skonfigurowano już concur dla logowania jednokrotnego, wyszukaj wystąpienie Concur przy użyciu pola wyszukiwania. W przeciwnym razie wybierz pozycję **Dodaj** i wyszukaj **concur** w galerii aplikacji. Wybierz pozycję Zbieżn z wyników wyszukiwania i dodaj je do listy aplikacji.
 
-8. Wybierz wystąpienie Concur, a następnie wybierz **aprowizacji** kartę.
+8. Wybierz wystąpienie Concur, a następnie wybierz kartę **Inicjowanie obsługi administracyjnej.**
 
-9. Ustaw **tryb obsługi administracyjnej** do **automatyczne**. 
+9. Ustaw **tryb inicjowania obsługi administracyjnej** na **Automatyczny**. 
  
-    ![Inicjowanie obsługi administracyjnej](./media/concur-provisioning-tutorial/provisioning.png)
+    ![Inicjowania obsługi](./media/concur-provisioning-tutorial/provisioning.png)
 
-10. W obszarze **poświadczeń administratora** sekcji, wprowadź **nazwa_użytkownika** i **hasło** administratora Concur.
+10. W sekcji **Poświadczenia administratora** wprowadź **nazwę użytkownika** i **hasło** administratora concur.
 
-11. W witrynie Azure portal kliknij pozycję **Testuj połączenie** aby upewnij się, Azure AD można połączyć się z aplikacji Concur. Jeśli połączenie nie powiedzie się, upewnij się, że Twoje konto Concur ma uprawnienia administratora zespołu.
+11. W witrynie Azure portal kliknij pozycję **Testuj połączenie,** aby upewnić się, że usługa Azure AD może łączyć się z aplikacją Concur. Jeśli połączenie nie powiedzie się, upewnij się, że twoje konto Concur ma uprawnienia administratora zespołu.
 
-12. Wprowadź adres e-mail osoby lub grupy, który powinien zostać wyświetlony inicjowania obsługi administracyjnej powiadomienia o błędach w **wiadomość E-mail z powiadomieniem** pola, a następnie zaznacz pole wyboru.
+12. Wprowadź adres e-mail osoby lub grupy, która powinna otrzymywać powiadomienia o błędach inicjowania obsługi administracyjnej w polu **Wiadomości e-mail powiadomień,** i zaznacz pole wyboru.
 
-13. Kliknij przycisk **Zapisz.**
+13. Kliknij **pozycję Zapisz.**
 
-14. W sekcji mapowania, wybierz **synchronizacji Azure użytkownicy usługi Active Directory do Concur.**
+14. W sekcji Mapowania wybierz pozycję **Synchronizuj użytkowników usługi Azure Active Directory do concur.**
 
-15. W **mapowania atrybutów** Przejrzyj atrybutów użytkowników, które są synchronizowane z usługi Azure AD Concur. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania kont użytkowników w Concur operacji aktualizacji. Wybierz przycisk Zapisz, aby zatwierdzić zmiany.
+15. W sekcji **Mapowania atrybutów** przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD do Concur. Atrybuty wybrane jako **pasujące** właściwości są używane do dopasowania kont użytkowników w Concur dla operacji aktualizacji. Wybierz przycisk Zapisz, aby zatwierdzić wszelkie zmiany.
 
-16. Aby włączyć usługi Azure AD, usługi dla Concur inicjowania obsługi administracyjnej, zmień **stanie aprowizacji** do **na** w **ustawienia** sekcji
+16. Aby włączyć usługę inicjowania obsługi administracyjnej usługi Azure AD dla concur, zmień **stan inicjowania obsługi administracyjnej** **na Włączone** w sekcji **Ustawienia**
 
-17. Kliknij przycisk **Zapisz.**
+17. Kliknij **pozycję Zapisz.**
 
-Teraz można utworzyć konta testowego. Poczekaj do 20 minut, aby sprawdzić, czy konta zostały zsynchronizowane Concur.
+Teraz możesz utworzyć konto testowe. Poczekaj do 20 minut, aby sprawdzić, czy konto zostało zsynchronizowane z Concur.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Zarządzanie inicjowanie obsługi administracyjnej kont użytkowników dla aplikacji dla przedsiębiorstw](tutorial-list.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 * [Konfigurowanie logowania jednokrotnego](concur-tutorial.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Interfejs API sieci Web, który wywołuje interfejsy API sieci Web — Microsoft Identity platform | Azure
-description: Dowiedz się, jak utworzyć internetowy interfejs API, który wywołuje interfejsy API sieci Web.
+title: Internetowy interfejs API, który wywołuje internetowe interfejsy API — platforma tożsamości firmy Microsoft | Azure
+description: Dowiedz się, jak utworzyć internetowy interfejs API, który wywołuje internetowe interfejsy API.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,23 +15,23 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: d66a08d4e84a3771d6c3fa46b96c975869435452
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76833383"
 ---
-# <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Internetowy interfejs API, który wywołuje interfejsy API sieci Web: wywoływanie interfejsu API
+# <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Internetowy interfejs API wywołujący internetowe interfejsy API: wywoływanie interfejsu API
 
-Po uzyskaniu tokenu można wywołać chroniony internetowy interfejs API. Można to zrobić na kontrolerze interfejsu API sieci Web.
+Po tokenie można wywołać chroniony interfejs API sieci web. Można to zrobić z kontrolera interfejsu API sieci web.
 
 ## <a name="controller-code"></a>Kod kontrolera
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Poniższy kod kontynuuje przykładowy kod, który jest wyświetlany w [interfejsie API sieci Web, który wywołuje interfejsy API sieci Web: uzyskuje token dla aplikacji](scenario-web-api-call-api-acquire-token.md). Kod jest wywoływany w akcjach kontrolerów interfejsu API. Wywołuje podrzędny interfejs API o nazwie *todolist*.
+Poniższy kod kontynuuje przykładowy kod, który jest wyświetlany w [interfejsie API sieci web, który wywołuje interfejsy API sieci web: Uzyskaj token dla aplikacji](scenario-web-api-call-api-acquire-token.md). Kod jest wywoływany w akcjach kontrolerów interfejsu API. Wywołuje podrzędny interfejs API o nazwie *todolist*.
 
-Po uzyskaniu tokenu Użyj go jako tokenu okaziciela, aby wywołać podrzędny interfejs API.
+Po nabyciu tokenu użyj go jako tokenu nośnika do wywołania interfejsu API podrzędnego.
 
 ```csharp
 private async Task GetTodoList(bool isAppStarting)
@@ -59,11 +59,11 @@ HttpResponseMessage response = await _httpClient.GetAsync(TodoListBaseAddress + 
 }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-Poniższy kod kontynuuje przykładowy kod, który jest wyświetlany w [interfejsie API sieci Web, który wywołuje interfejsy API sieci Web: uzyskuje token dla aplikacji](scenario-web-api-call-api-acquire-token.md). Kod jest wywoływany w akcjach kontrolerów interfejsu API. Wywołuje podrzędny interfejs API programu MS Graph.
+Poniższy kod kontynuuje przykładowy kod, który jest wyświetlany w [interfejsie API sieci web, który wywołuje interfejsy API sieci web: Uzyskaj token dla aplikacji](scenario-web-api-call-api-acquire-token.md). Kod jest wywoływany w akcjach kontrolerów interfejsu API. Wywołuje podrzędny interfejs API MS Graph.
 
-Po uzyskaniu tokenu Użyj go jako tokenu okaziciela, aby wywołać podrzędny interfejs API.
+Po nabyciu tokenu użyj go jako tokenu nośnika do wywołania interfejsu API podrzędnego.
 
 ```Java
 private String callMicrosoftGraphMeEndpoint(String accessToken){
@@ -83,12 +83,12 @@ private String callMicrosoftGraphMeEndpoint(String accessToken){
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
-Przykład pokazujący ten przepływ przy użyciu języka MSAL Python nie jest jeszcze dostępny.
+# <a name="python"></a>[Python](#tab/python)
+Przykład demonstruujący ten przepływ za pomocą biuletynu MSAL Python nie jest jeszcze dostępny.
 
 ---
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Internetowy interfejs API, który wywołuje interfejsy API sieci Web: Przenieś do środowiska produkcyjnego](scenario-web-api-call-api-production.md)
+> [Internetowy interfejs API, który wywołuje internetowe interfejsy API: przejście do produkcji](scenario-web-api-call-api-production.md)

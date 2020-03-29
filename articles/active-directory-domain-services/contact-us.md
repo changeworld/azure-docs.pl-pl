@@ -1,6 +1,6 @@
 ---
-title: 'Azure Active Directory Domain Services: Skontaktuj się z nami | Dokumentacja firmy Microsoft'
-description: Skontaktuj się z zespołem produktu usługi Azure AD Domain Services
+title: 'Usługi domenowe Usługi domenowe Active Directory platformy Azure: skontaktuj się z nami | Dokumenty firmy Microsoft'
+description: Skontaktuj się z zespołem produktów usług domenowych usługi Azure AD
 services: active-directory-ds
 documentationcenter: ''
 author: iainfoulds
@@ -16,29 +16,29 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: iainfou
 ms.openlocfilehash: 83d1011d28eb13ed2e45587df8d385ebf19abbd1
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67483337"
 ---
-# <a name="azure-ad-domain-services---contact-us"></a>Usług domenowych Azure AD — skontaktuj się z nami
+# <a name="azure-ad-domain-services---contact-us"></a>Usługi domenowe usługi Azure AD — skontaktuj się z nami
 
 ## <a name="feedback"></a>Opinia
-Jeśli chcesz przesłać opinię dla naszej usługi lub pytania Nietechniczne, można udostępniać Twoje żądanie grupy produktów usługi domenowe Azure AD przez nas na wysyłanie wiadomości e-mail: [Usług domenowych Azure AD opinii](mailto:aaddsfb@microsoft.com). Wiadomości e-mail na ten adres są przeglądane. Członkowie tej grupy produktów **może** odpowiadanie na żądania dalszych informacji. Nie otrzymasz odpowiedzi na żądania dotyczące pomocy technicznej, aby ten adres e-mail.
+Jeśli masz opinię na temat naszej usługi lub pytań nietechnicznych, możesz udostępnić swoje żądanie grupie produktów usługi domenowej usługi Azure AD, wysyłając do nas wiadomość e-mail na [adres: Opinie dotyczące usług domenowych usługi Azure AD](mailto:aaddsfb@microsoft.com). E-maile na ten adres są sprawdzane. Członkowie grupy produktów **mogą** odpowiedzieć na prośbę o dalsze informacje. Prośby o pomoc techniczną na ten adres e-mail nie będą odbierane.
 
 ## <a name="technical-assistance"></a>Pomoc techniczna
-Jeśli masz problemy z Twoją domeną zarządzaną, sprawdź, jeżeli kroki opisane w [przewodnik rozwiązywania problemów](troubleshoot.md) rozwiązać ten problem. Jeśli nadal występują problemy, zaloguj się do witryny Azure portal. Otwórz **usług domenowych Azure AD** strony głównej i wybierz pozycję **nowe żądanie obsługi** z okienka akcji w obszarze **pomoc techniczna i rozwiązywanie problemów z**.
+Jeśli masz problemy z domeną zarządzana, sprawdź, czy kroki opisane w [Przewodniku rozwiązywania problemów](troubleshoot.md) rozwiążą problem. Jeśli nadal masz problemy, zaloguj się do witryny Azure portal. Otwórz stronę główną **usług domenowych usługi Azure AD** i wybierz pozycję Nowe żądanie pomocy **technicznej** z okienka akcji w obszarze **Pomoc techniczna + rozwiązywanie problemów**.
 
-![Nowe żądanie obsługi](./media/contact-us/supportRequest.png) 
+![nowe żądanie pomocy technicznej](./media/contact-us/supportRequest.png) 
 
-Wypełnij każdej sekcji żądania pomocy technicznej jak to możliwe. Podczas wybierania usługi, upewnij się, że **usługi Azure Active Directory Domain Services (VM - kontrolerów domen)** przekierowywać żądania do odpowiednich pomocy technicznej.
+Wypełnij każdą sekcję żądania pomocy technicznej tak dokładnie, jak to możliwe. Wybierając usługę, upewnij się, że wybierzesz **usługi domenowe Active Directory platformy Azure (VM — kontrolery domeny),** aby skierować żądanie do odpowiedniego specjalisty pomocy technicznej.
 
 > [!IMPORTANT]
-> Wybierz **usługi Azure Active Directory katalogów, domeny i obiekty** z listy usług, aby uzyskać pomoc dotyczącą weryfikacji domeny w usłudze Azure Active Directory.
+> Wybierz **pozycję Katalogi, domeny i obiekty usługi Azure Active Directory** z list usług, aby uzyskać pomoc dotyczącą sprawdzania poprawności domeny za pomocą usługi Azure Active Directory.
 >
 > 
 
 ## <a name="feature-requests"></a>Żądania funkcji
-Masz pomysł na ulepszenie usługi Azure Active Directory Domain Services? Chcielibyśmy poznać na jego temat. Przejdź do forum opinii platformy Azure, przejdź do folderu [usługi domenowe](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=160593) kategorii i Podziel się pomysłem. Członkowie tej grupy produktów, przejrzyj te żądania.
+Czy masz pomysł, w jaki sposób możemy ulepszyć usługi domenowe Usługi domenowe Active Directory platformy Azure? Chcielibyśmy o tym usłyszeć. Przejdź do forów opinii platformy Azure, przejdź do kategorii [Usługi domenowe](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=160593) i udostępnij swój pomysł. Członkowie grupy produktów przejrzeć te żądania.
 

@@ -1,28 +1,28 @@
 ---
-title: Micro fokus środowiska deweloperskie i testowe na platformie Azure | Dokumentacja firmy Microsoft
-description: Ponowne hostowanie obciążeń mainframe firmy IBM z/OS za pomocą rozwiązań Micro fokus na maszynach wirtualnych Azure (maszyny wirtualne).
+title: Środowiska deweloperne/testowe micro Focus na platformie Azure | Dokumenty firmy Microsoft
+description: Hostuj ponownie obciążenia komputerów mainframe IBM z/OS przy użyciu rozwiązań Micro Focus na maszynach wirtualnych platformy Azure.Rehost your IBM z/OS mainframe workloads using Micro Focus solutions on Azure virtual machines (VMs).
 author: njray
 ms.author: sread
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: d83b4c89d0f37e2217974d6d1ed32ac73d8fa4df
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60498903"
 ---
-# <a name="micro-focus-devtest-environments-on-azure"></a>Micro fokus środowiska deweloperskie i testowe na platformie Azure
+# <a name="micro-focus-devtest-environments-on-azure"></a>Środowiska deweloperne/testowe micro Focus na platformie Azure
 
-Wprowadzenie do środowiska tworzenia i testowania na platformie Azure jest doskonałym sposobem na zwiększyć swoje modernizację. Aplikacji mainframe, które są zależne od starsze systemy, takie jak CICS IBM (System kontroli informacje klienta) i ISP (System zarządzania informacji) może być rehosted na platformie Azure przy użyciu rozwiązań partnerskich.
+Wprowadzenie na platformę Azure ze środowiskiem deweloperskim i testowym to świetny sposób na zwiększenie wysiłków modernizacyjnych. Aplikacje mainframe, które zależą od starszych systemów, takich jak IBM CICS (Customer Information Control System) i IMS (Information Management System) mogą być ponownie hostowane na platformie Azure przy użyciu rozwiązań partnerskich.
 
-Micro Focus nawiązała współpracę z firmą Microsoft oferuje atrakcyjne mainframe narzędzia do migracji i rehosting. Można uruchomić aplikacji mainframe rozwoju, testowania i scenariuszy produkcyjnych na platformie Azure i platformy Microsoft Windows.
+Micro Focus nawiązał współpracę z firmą Microsoft, aby zaoferować atrakcyjne narzędzia do migracji i hostowania mainframe. Aplikacje mainframe można uruchamiać w scenariuszach programowania, testowania i produkcji na platformie Azure i platformie Microsoft Windows.
 
-Micro Focus oferuje rehosting programowania i testów rehosting rozwiązania, które rozszerzają istniejących COBOL i PL / I aplikacji biznesowych na platformie Azure.
+Micro Focus oferuje rozwiązania do ponownego hostowania i testowania, które rozszerzają istniejące aplikacje biznesowe COBOL i PL/I na platformę Azure.
 
 **Następne kroki**
 
-- [Instalowanie Micro Focus Enterprise Server w wersji 4.0 i Enterprise, Developer 4.0 na platformie Azure](./set-up-micro-focus-azure.md)
-- [Konfigurowanie Micro fokus CICS BankDemo Micro fokus Enterprise Developer 4.0 na platformie Azure](./demo.md)
-- [Uruchamianie serwera przedsiębiorstwa w kontenerach platformy Docker na platformie Azure](./run-enterprise-server-container.md)
+- [Instalowanie programu Micro Focus Enterprise Server 4.0 i Enterprise Developer 4.0 na platformie Azure](./set-up-micro-focus-azure.md)
+- [Konfigurowanie programu Micro Focus CICS BankDemo dla programu Micro Focus Enterprise Developer 4.0 na platformie Azure](./demo.md)
+- [Uruchamianie serwera enterprise server w kontenerach platformy Docker na platformie Azure](./run-enterprise-server-container.md)

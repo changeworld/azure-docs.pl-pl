@@ -1,6 +1,6 @@
 ---
-title: Elementy B2B wiadomości e-mail z zaproszeniem — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Szablon wiadomości e-mail z zaproszeniem współpracy platformy Azure Active Directory B2B
+title: Elementy wiadomości e-mail z zaproszeniem B2B — usługa Azure Active Directory | Dokumenty firmy Microsoft
+description: Szablon wiadomości e-mail z zaproszeniem do współpracy usługi Azure Active Directory B2B
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -13,80 +13,80 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3f93586d46aa01116990f8f02f344c6952d3c1b1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65768368"
 ---
-# <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>Elementy e-mail z zaproszeniem współpracy B2B — usługi Azure Active Directory
+# <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>Elementy wiadomości e-mail z zaproszeniem do współpracy B2B — usługa Azure Active Directory
 
-Wiadomości e-mail z zaproszeniem są kluczowym aspektem doprowadzić partnerów na pokładzie użytkowników we współpracy B2B w usłudze Azure AD. Można użyć je, aby zwiększyć zaufanie adresata. Możesz dodawać legalności i sprawdzone rozwiązanie do poczty e-mail, aby upewnić się, że odbiorca czuje doświadczenia z wybraniu **wprowadzenie** przycisk, aby zaakceptować zaproszenie. Jest to zaufanie klucza oznacza, że wysyłaj do udostępniania. I chcesz również wprowadzić adres e-mail wyglądał świetnie!
+Wiadomości e-mail z zaproszeniem są kluczowym składnikiem, który ma na celu wprowadzenie partnerów jako użytkowników współpracy B2B w usłudze Azure AD. Można ich użyć, aby zwiększyć zaufanie adresata. możesz dodać legitymację i dowód społeczny do wiadomości e-mail, aby upewnić się, że odbiorca czuje się komfortowo z wybraniem przycisku **Rozpocznij,** aby zaakceptować zaproszenie. To zaufanie jest kluczowym środkiem do zmniejszenia tarcia współdzielenia. A także chcesz, aby e-mail wyglądał świetnie!
 
-![Zrzut ekranu przedstawiający wiadomość e-mail z zaproszeniem dla B2B](media/invitation-email-elements/invitation-email.png)
+![Zrzut ekranu przedstawiający wiadomość e-mail z zaproszeniem B2B](media/invitation-email-elements/invitation-email.png)
 
-## <a name="explaining-the-email"></a>Wyjaśniające, wiadomości e-mail
-Spójrzmy na kilka elementów w wiadomości e-mail, aby było wiadomo, jak najlepiej wykorzystać jego możliwości.
+## <a name="explaining-the-email"></a>Objaśnienie wiadomości e-mail
+Przyjrzyjmy się kilku elementom wiadomości e-mail, aby wiedzieć, jak najlepiej korzystać z ich możliwości.
 
-### <a name="subject"></a>Subject
-Temat wiadomości e-mail jest zgodny ze wzorcem następujące: Zaproszono Cię do &lt;tenantname&gt; organizacji
+### <a name="subject"></a>Podmiot
+Temat wiadomości e-mail jest zgodny z następującym &lt;wzorcem: Zostaniesz zaproszony do organizacji tenantname&gt;
 
-### <a name="from-address"></a>Adres nadawcy
-Firma Microsoft na użytek wzorzec LinkedIn przypominającej adres nadawcy.  Powinien być niejasne, zapraszającej będącego i adres e-mail od firmy oraz wyjaśnienie, że wiadomość e-mail pochodzi od firmy Microsoft. Format jest następujący: Microsoft Invitations <invites@microsoft.com> lub &lt;Nazwa wyświetlana osoby zapraszającej&gt; z &lt;tenantname&gt; (za pośrednictwem firmy Microsoft) <invites@microsoft.com>.
+### <a name="from-address"></a>Z adresu
+Używamy wzorca podobnego do LinkedIn dla adresu Od.  Powinieneś być jasny, kto jest zaproszonym i z jakiej firmy, a także wyjaśnić, że wiadomość e-mail pochodzi z adresu e-mail firmy Microsoft. Format to: Zaproszenia <invites@microsoft.com> &lt;firmy Microsoft lub&gt; &lt;wyświetlana&gt; nazwa osoby <invites@microsoft.com>zapraszania z tenantname (za pośrednictwem firmy Microsoft).
 
-### <a name="reply-to"></a>Odpowiedz
-Odpowiedz do wiadomości e-mail jest równa zapraszającej poczty e-mail, jeśli są dostępne, tak, aby odpowiadanie na wiadomości e-mail wysyła wiadomość e-mail do osoby zapraszającej.
+### <a name="reply-to"></a>Odpowiedz na
+Wiadomość e-mail z odpowiedzią jest ustawiona na adres e-mail osoby zapraszającej, gdy jest dostępna, dzięki czemu odpowiadanie na wiadomość e-mail odsyła wiadomość e-mail z powrotem do osoby zapraszającej.
 
 ### <a name="branding"></a>Znakowanie
-Wiadomości e-mail z zaproszeniem, w wyniku używania dzierżawy firmowe, można zdefiniować dla Twojej dzierżawy. Jeśli chcesz móc korzystać z tej możliwości [tutaj](https://docs.microsoft.com/azure/active-directory/active-directory-branding-custom-signon-azure-portal) znajdują się szczegółowe informacje o sposobie konfigurowania go. Baner logo jest wyświetlany w wiadomości e-mail. Postępuj zgodnie z rozmiar obrazu i instrukcje dotyczące jakości [tutaj](https://docs.microsoft.com/azure/active-directory/active-directory-branding-custom-signon-azure-portal) uzyskać jak najlepsze rezultaty. Ponadto nazwa firmy również pojawia się w wywołaniu akcji.
+Wiadomości e-mail z zaproszeniem od dzierżawy używają marki firmy, która może być skonfigurowana dla dzierżawy. Jeśli chcesz skorzystać z tej możliwości, [oto](https://docs.microsoft.com/azure/active-directory/active-directory-branding-custom-signon-azure-portal) szczegółowe informacje na temat konfigurowania go. Logo baneru pojawi się w wiadomości e-mail. Postępuj zgodnie z instrukcjami dotyczącymi rozmiaru i jakości [obrazu,](https://docs.microsoft.com/azure/active-directory/active-directory-branding-custom-signon-azure-portal) aby uzyskać najlepsze wyniki. Ponadto nazwa firmy pojawia się również w wezwaniu do działania.
 
-### <a name="call-to-action"></a>Wywołanie akcji
-Wezwanie do działania składa się z dwóch części: wyjaśniający, Dlaczego adresat otrzyma wiadomość e-mail, a co adresat jest pytany, rozwiązanie.
-- W sekcji "Dlaczego" może zostać zlikwidowane przy użyciu następującego wzorca: Zaproszono Cię do uzyskania dostępu do aplikacji w &lt;tenantname&gt; organizacji
+### <a name="call-to-action"></a>Wezwanie do działania
+Wezwanie do działania składa się z dwóch części: wyjaśnienia, dlaczego odbiorca otrzymał wiadomość i o co prosi się odbiorcę.
+- Sekcję "dlaczego" można rozwiązać za pomocą następującego wzorca: Zostałeś &lt;zaproszony&gt; do dostępu do aplikacji w organizacji tenantname
 
-- I "co to jest monicie o czy" sekcji jest oznaczany przez obecność **wprowadzenie** przycisku. Gdy adresat została dodana bez konieczności zaproszenia, ten przycisk nie jest wyświetlane.
+- A sekcja "o to, o co cię proszono" jest wskazywana przez obecność przycisku **Rozpocznij.** Gdy odbiorca został dodany bez konieczności zapraszania, ten przycisk nie jest pokazywany.
 
-### <a name="inviters-information"></a>Informacji przez osoby zapraszającej
-Nazwa wyświetlana osoby zapraszającej jest dołączony do wiadomości e-mail. A dodatkowo, jeśli skonfigurowano zdjęcie profilowe dla konta usługi Azure AD, zapraszający wiadomość e-mail będzie zawierać także tego obrazu. Oba są przeznaczone do zwiększenia ufności z odbiorców w wiadomości e-mail.
+### <a name="inviters-information"></a>Informacje o zaproszeniu
+Nazwa wyświetlana osoby zapraszawej jest podłączona do wiadomości e-mail. Ponadto jeśli masz skonfigurowany obraz profilu dla konta usługi Azure AD, zapraszająca wiadomość e-mail również będzie zawierać ten obraz. Oba mają na celu zwiększenie zaufania odbiorcy do wiadomości e-mail.
 
-W przypadku swoje zdjęcie profilowe nie został jeszcze skonfigurowany, jest wyświetlana ikona inicjały zapraszającej zamiast obrazu:
+Jeśli zdjęcie profilowe nie jest jeszcze skonfigurowane, zamiast obrazu zostanie wyświetlona ikona z inicjałami zaproszonego:
 
-  ![Zrzut ekranu przedstawiający z zaproszeniem zapraszającej Inicjały wyświetlane](media/invitation-email-elements/inviters-initials.png)
+  ![Zrzut ekranu przedstawiający zaproszenie z wyświetlonymi inicjałami osoby zapraszania](media/invitation-email-elements/inviters-initials.png)
 
 ### <a name="body"></a>Treść
-Treść zawiera komunikat zapraszającej Redaguj, kiedy [zaproszeniem użytkownika gościa do katalogu, grupa lub aplikacja](add-users-administrator.md) lub [przy użyciu interfejsu API zaproszenia](customize-invitation-api.md). Jest obszar tekstu, więc nie przetwarza tagów HTML ze względów bezpieczeństwa.
+Treść zawiera komunikat, który osoba zapraszająca komponuje podczas [zapraszania użytkownika-gościa do katalogu, grupy lub aplikacji](add-users-administrator.md) lub [przy użyciu interfejsu API zaproszenia](customize-invitation-api.md). Jest to obszar tekstowy, więc nie przetwarza tagów HTML ze względów bezpieczeństwa.
 
   ![Zrzut ekranu przedstawiający treść wiadomości e-mail z zaproszeniem](media/invitation-email-elements/invitation-email-body.png)
 
-### <a name="footer-section"></a>Sekcji stopki
-Stopka zawiera marki firmy Microsoft i umożliwia odbiorcy znać, jeśli wiadomość e-mail została wysłana z niemonitorowanego aliasu. 
+### <a name="footer-section"></a>Przekrój stopki
+Stopka zawiera markę firmy Microsoft i informuje odbiorcę, czy wiadomość e-mail została wysłana z niemonitorowanego aliasu. 
 
-Specjalne przypadki:
+Przypadki szczególne:
 
-- Osoba zapraszająca nie ma adresu e-mail w zapraszający dzierżawy
+- Osoba zapraszająca nie ma adresu e-mail w zaproszeniu do najmu
 
-  ![Zrzut ekranu, gdy osoba zapraszająca nie ma adresu e-mail w zapraszający dzierżawy](media/invitation-email-elements/inviter-no-email.png)
+  ![Zrzut ekranu, gdy osoba zapraszająca nie ma wiadomości e-mail w zaproszeniu do najmu](media/invitation-email-elements/inviter-no-email.png)
 
 
-- Odbiorca nie ma konieczności zrealizować zaproszenia
+- Odbiorca nie musi realizować zaproszenia
 
-  ![Zrzut ekranu, gdy adresat nie ma konieczności zrealizować zaproszenia](media/invitation-email-elements/when-recipient-doesnt-redeem.png)
+  ![Zrzut ekranu, gdy odbiorca nie musi realizować zaproszenia](media/invitation-email-elements/when-recipient-doesnt-redeem.png)
 
-## <a name="how-the-language-is-determined"></a>Jak język jest określana.
-Język prezentowane użytkownikowi Gość w wiadomości e-mail z zaproszeniem jest określany przez następujące ustawienia. Te ustawienia są wymienione w kolejności priorytetu. Jeśli to ustawienie nie zostanie skonfigurowane, następne ustawienie na liście określa język. 
-- **MessageLanguage** właściwość [invitedUserMessageInfo](https://docs.microsoft.com/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0) obiektu, jeśli używana jest zaproszenia do tworzenia interfejsu API
--   **PreferredLanguage** właściwości określonej w przez gościa [obiektu użytkownika](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0)
--   **Język powiadomienia** ustaw we właściwościach użytkownika gościa dzierżawy głównej (dla tylko dzierżaw usługi Azure AD)
--   **Język powiadomienia** ustaw we właściwościach zasobu dzierżawy
+## <a name="how-the-language-is-determined"></a>Jak określa się język
+Język przedstawiony użytkownikowi-gościowi w wiadomości e-mail z zaproszeniem zależy od następujących ustawień. Te ustawienia są wyświetlane w kolejności pierwszeństwa. Jeśli ustawienie nie jest skonfigurowane, następne ustawienie na liście określa język. 
+- **MessageLanguage** właściwość [zaproszonegouserMessageInfo](https://docs.microsoft.com/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0) obiektu, jeśli create invitation API jest używany
+-   Właściwość **preferredLanguage** określona w [obiekcie użytkownika](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0) gościa
+-   **Język powiadomień** ustawiony we właściwościach dzierżawy domowej użytkownika-gościa (tylko dla dzierżaw usługi Azure AD)
+-   **Język powiadomień** ustawiony we właściwościach dzierżawy zasobów
 
-Jeśli żadne z tych ustawień są skonfigurowane, wartości domyślne języka angielskiego (US).
+Jeśli żadne z tych ustawień nie jest skonfigurowane, domyślnie język jest domyślny na angielski (US).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Na współpracy B2B usługi Azure AD, zobacz następujące artykuły:
+Zobacz następujące artykuły dotyczące współpracy usługi Azure AD B2B:
 
-- [Czym jest współpraca B2B w usłudze Azure AD](what-is-b2b.md)
-- [Jak Administratorzy usługi Azure Active Directory dodać użytkowników we współpracy B2B?](add-users-administrator.md)
-- [Jak pracownicy przetwarzający informacje mogą dodać użytkowników we współpracy B2B?](add-users-information-worker.md)
-- [Realizacja zaproszenia współpracy B2B](redemption-experience.md)
-- [Dodają użytkowników we współpracy B2B bez zaproszenia](add-user-without-invite.md)
+- [Co to jest współpraca usługi Azure AD B2B](what-is-b2b.md)
+- [Jak administratorzy usługi Azure Active Directory dodawać użytkowników współpracy B2B?](add-users-administrator.md)
+- [W jaki sposób pracownicy informacji dodają użytkowników współpracy B2B?](add-users-information-worker.md)
+- [Wykup zaproszenia do współpracy B2B](redemption-experience.md)
+- [Dodawanie użytkowników współpracy B2B bez zaproszenia](add-user-without-invite.md)

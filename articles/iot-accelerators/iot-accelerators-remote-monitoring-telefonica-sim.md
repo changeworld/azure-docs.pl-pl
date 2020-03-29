@@ -1,6 +1,6 @@
 ---
-title: Integrowanie danych SIM w rozwiązaniu do zdalnego monitorowania — Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób integrowanie danych Telefónica SIM rozwiązania do zdalnego monitorowania.
+title: Integracja danych karty SIM z rozwiązaniem do zdalnego monitorowania — Azure| Dokumenty firmy Microsoft
+description: W tym artykule opisano, jak zintegrować dane karty SIM Telefónica z rozwiązaniem do zdalnego monitorowania.
 author: hegate
 manager: ''
 ms.author: hegate
@@ -9,65 +9,65 @@ services: iot-accelerators
 ms.date: 05/15/2018
 ms.topic: conceptual
 ms.openlocfilehash: b07e21131d9560a49d99644525835ac5ee3bac9e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61442243"
 ---
-# <a name="integrate-sim-data-in-the-remote-monitoring-solution"></a>Integrowanie danych SIM w rozwiązaniu do zdalnego monitorowania
+# <a name="integrate-sim-data-in-the-remote-monitoring-solution"></a>Integracja danych karty SIM z rozwiązaniem do zdalnego monitorowania
 
-Urządzenia IoT często łączą w chmurze za pomocą karty SIM, umożliwiającego wysyłanie strumieni danych z dowolnego miejsca. Rozwiązania do zdalnego monitorowania usługi Azure IoT umożliwia integrację danych IoT zarządzane łączności, tak aby operatorzy mogą również śledzić kondycji urządzenia za pomocą danych dostarczanych przez IoT SIM.
+Urządzenia IoT często łączą się z chmurą za pomocą karty SIM, która umożliwia im wysyłanie strumieni danych z dowolnego miejsca. Rozwiązanie do zdalnego monitorowania usługi Azure IoT umożliwia integrację danych łączności zarządzanej przez IoT, dzięki czemu operatorzy mogą również śledzić kondycję urządzenia za pomocą danych dostarczonych przez kartę IoT SIM.
 
-Monitorowania zdalnego udostępnia poza integracji z usługą Telefónica IoT łączności, w którym klienci korzystający z platformy IoT łączności synchronizowanie ich urządzenia kart SIM połączenia danych do swoich rozwiązań. To rozwiązanie do obsługi innych dostawców łączności IoT za pośrednictwem witryny GitHub można rozszerzyć [repozytorium](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet).
+Zdalne monitorowanie zapewnia integrację po wyjęciu z łącznością IoT Telefónica, umożliwiając klientom korzystającym z platformy łączności IoT synchronizowanie danych łączności z urządzeniami SAM z ich rozwiązaniami. To rozwiązanie można rozszerzyć na obsługę innych dostawców łączności IoT za pośrednictwem [repozytorium](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)GitHub.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
-* Integrowanie danych Telefónica IoT SIM rozwiązania do zdalnego monitorowania
+* Integracja danych Telefónica IoT SIM z rozwiązaniem do zdalnego monitorowania
 * Wyświetlanie danych telemetrycznych w czasie rzeczywistym
-* Wyświetlanie danych SIM
+* Wyświetlanie danych karty SIM
 
-## <a name="telefnica-iot-integration-setup"></a>Instalacja środowiska integration Telefónica IoT
+## <a name="telefnica-iot-integration-setup"></a>Konfiguracja integracji Telefóniki IoT
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-Tej dodatkowej funkcji monitorowania zdalnego jest obecnie w wersji zapoznawczej. Synchronizowanie danych połączenia na platformie Azure rozwiązanie do monitorowania zdalnego, wykonaj następujące kroki:
+Ta dodatkowa funkcja zdalnego monitorowania jest obecnie w wersji zapoznawczej. Aby zsynchronizować dane dotyczące łączności z rozwiązaniem do zdalnego monitorowania platformy Azure, wykonaj następujące kroki:
 
-1. Wypełnij wniosek na [witryny firmy Telefónica](https://iot.telefonica.com/contact), wybierz opcję **zdalnego monitorowania platformy Azure**, w tym dane kontaktowe.
-2. Telefónica aktywuje konto.
-3. Jeśli nie jesteś klientem Telefónica jeszcze, a użytkownik chce Ciesz się to lub inne IoT łączności chmury gotowe usługi, odwiedź stronę [witryny firmy Telefónica](https://iot.telefonica.com/) i wybierz opcję **łączności**.
+1. Wypełnij żądanie w [witrynie Telefóniki](https://iot.telefonica.com/contact), wybierz opcję **Azure Remote Monitoring**, w tym swoje dane kontaktowe.
+2. Telefónica aktywuje Twoje konto.
+3. Jeśli nie jesteś jeszcze klientem Telefóniki i chcesz korzystać z tych lub innych usług IoT Connectivity Cloud Ready, odwiedź [witrynę Telefóniki](https://iot.telefonica.com/) i wybierz opcję **Łączność**.
 
-### <a name="telefnica-sim-setup"></a>Telefónica SIM setup
-Skojarzenie identyfikator Telefónica SIM & Azure bliźniaczej reprezentacji urządzenia zależy od właściwości "alias" Telefónica IoT SIM. 
+### <a name="telefnica-sim-setup"></a>Konfiguracja karty SIM Telefónica
+Telefónica SIM & skojarzenia identyfikatora urządzenia Usługi Azure Twin opiera się na właściwości "alias" telefóniki IoT SIM. 
 
-Przejdź do [Telefónica IoT łączność platformy portalu](https://m2m-movistar-es.telefonica.com/) > Spis SIM > Wybierz kartą SIM, a następnie zaktualizuj każdego SIM "alias" przy użyciu usługi żądaną deviceID bliźniaczej reprezentacji. To zadanie można również wykonać w trybie zbiorczo (zobacz platformy łączności IoT Telefónica podręczniki użytkownika).
+Przejdź do [portalu telefóniki IoT Connectivity Platform Portal](https://m2m-movistar-es.telefonica.com/) > SIM Inventory > Wybierz kartę SIM i zaktualizuj każdy "alias" karty SIM za pomocą żądanego identyfikatora bliźniaczego urządzenia. To zadanie można również wykonać w trybie zbiorczym (patrz Instrukcje obsługi platformy łączności Telefónica IoT).
 
-To zadanie można również wykonać w trybie zbiorczo (zobacz podręczniki użytkownika platformy łączności IoT Telefónica)
+To zadanie można również wykonać w trybie zbiorczym (patrz instrukcje obsługi telefóniki platformy łączności IoT)
 
-![Telefónica Update](./media/iot-accelerators-remote-monitoring-telefonica-sim/telefonica_site.png)
+![Aktualizacja Telefóniki](./media/iot-accelerators-remote-monitoring-telefonica-sim/telefonica_site.png)
 
-Aby Podłącz urządzenie do monitorowania zdalnego, możesz wykonać tych samouczków przy użyciu [C](iot-accelerators-connecting-devices-linux.md) lub [węzła](iot-accelerators-connecting-devices-node.md). 
+Aby podłączyć urządzenie do zdalnego monitorowania, można wykonać te samouczki za pomocą [języka C](iot-accelerators-connecting-devices-linux.md) lub [Node](iot-accelerators-connecting-devices-node.md). 
 
-## <a name="view-device-telemetry-and-sim-properties"></a>Wyświetlanie danych telemetrycznych z urządzeń i właściwości SIM
+## <a name="view-device-telemetry-and-sim-properties"></a>Wyświetlanie danych telemetrycznych urządzenia i właściwości karty SIM
 
-Gdy konto Telefónica jest prawidłowo skonfigurowane i urządzenie jest podłączone, możesz wyświetlić szczegóły urządzenia i danych SIM.
+Po prawidłowym skonfigurowaniu konta Telefónica i podłączeniu urządzenia można wyświetlić szczegóły urządzenia i dane karty SIM.
 
-Następujące parametry połączenia są publikowane:
+Opublikowano następujące parametry łączności:
 
-* ICCID
-* IP
-* Dostęp do sieci
-* Stan SIM
-* Lokalizacji sieciowej
-* Ruch związany z wykorzystanych danych
+* Identyfikator ICCID
+* Adres IP
+* Obecność w sieci
+* Stan karty SIM
+* Lokalizacja sieciowa
+* Zużyty ruch danych
 
 ![Pulpit nawigacyjny](./media/iot-accelerators-remote-monitoring-telefonica-sim/dashboard.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy podstawowe informacje o integrowanie danych SIM do zdalnego monitorowania usługi Azure IoT, Oto zalecane kolejne kroki dla akceleratorów rozwiązań:
+Teraz, gdy masz przegląd sposobu integracji danych karty SIM z zdalnym monitorowaniem usługi Azure IoT, w tym miejscu przedstawiono następujące sugestie dotyczące kolejnych kroków dotyczących akceleratorów rozwiązań:
 
-* [Działanie rozwiązania do zdalnego monitorowania usługi Azure IoT](quickstart-remote-monitoring-deploy.md)
+* [Obsługa rozwiązania do zdalnego monitorowania usługi Azure IoT](quickstart-remote-monitoring-deploy.md)
 * [Wykonywanie zaawansowanego monitorowania](iot-accelerators-remote-monitoring-monitor.md)
 * [Zarządzanie urządzeniami](iot-accelerators-remote-monitoring-manage.md)
 * [Rozwiązywanie problemów z urządzeniami](iot-accelerators-remote-monitoring-maintain.md)

@@ -1,6 +1,6 @@
 ---
-title: Sprawdzanie kondycji klastra usługi Azure Eksplorator danych
-description: W tym artykule opisano kroki w celu monitorowania kondycji klastra Eksploratora danych usługi Azure.
+title: Sprawdzanie kondycji klastra usługi Azure Data Explorer
+description: W tym artykule opisano kroki monitorowania kondycji klastra usługi Azure Data Explorer.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
@@ -8,34 +8,34 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: a280d8869a3790444a97c38f792a3d9eeb6bde1d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60861322"
 ---
-# <a name="check-the-health-of-an-azure-data-explorer-cluster"></a>Sprawdzanie kondycji klastra usługi Azure Eksplorator danych
+# <a name="check-the-health-of-an-azure-data-explorer-cluster"></a>Sprawdzanie kondycji klastra usługi Azure Data Explorer
 
-Istnieje kilka czynników, które mają wpływ na kondycję klastra Eksploratora danych usługi Azure, w tym procesora CPU, pamięci i podsystem dysku. W tym artykule przedstawiono niektóre podstawowe kroki można wykonać w celu oceniania kondycji klastra.
+Istnieje kilka czynników, które wpływają na kondycję klastra usługi Azure Data Explorer, w tym procesora CPU, pamięci i podsystemu dysku. W tym artykule przedstawiono kilka podstawowych kroków, które można wykonać, aby ocenić kondycję klastra.
 
-1. Zaloguj się do witryny [https://dataexplorer.azure.com](https://dataexplorer.azure.com).
+1. Zaloguj się [https://dataexplorer.azure.com](https://dataexplorer.azure.com)do .
 
-1. W okienku po lewej stronie wybierz klaster, a następnie uruchom następujące polecenie.
+1. W lewym okienku wybierz klaster i uruchom następujące polecenie.
 
     ```Kusto
     .show diagnostics
     | project IsHealthy
     ```
-    Dane wyjściowe 1 jest w dobrej kondycji; dane wyjściowe 0 jest w złej kondycji.
+    Wyjście 1 jest zdrowe; wyjście 0 jest niezdrowe.
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com), a następnie przejdź do klastra.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com)i przejdź do klastra.
 
-1. W obszarze **monitorowanie**, wybierz opcję **metryki**, a następnie wybierz **zachować aktywności**, jak pokazano na poniższej ilustracji. Dane wyjściowe zbliżone do wartości 1 oznacza, że klaster działa prawidłowo.
+1. W obszarze **Monitorowanie**wybierz **pozycję Metryki**, a następnie wybierz pozycję **Zachowaj przy życiu**, jak pokazano na poniższej ilustracji. Dane wyjściowe bliskie 1 oznacza klaster w dobrej kondycji.
 
-    ![Metryka zachować aktywności klastra](media/check-cluster-health/portal-metrics.png)
+    ![Metryka Utrzymywanie aktywności klastra](media/check-cluster-health/portal-metrics.png)
 
-1. Istnieje możliwość dodać innych metryk do wykresu. Następnie wybierz wykres **Dodaj metrykę**. Wybierz inną metrykę — w tym przykładzie **Procesora**.
+1. Można dodać inne metryki do wykresu. Zaznacz wykres, a następnie **dodaj metrykę**. Wybierz inną metrykę - w tym przykładzie pokazano **procesora .**
 
     ![Dodawanie metryki](media/check-cluster-health/add-metric.png)
 
-1. Jeśli potrzebujesz pomocy w diagnozowaniu problemów z kondycją klastra, otwórz żądanie pomocy technicznej w [witryny Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
+1. Jeśli potrzebujesz pomocy w diagnozowaniu problemów ze zdrowiem klastra, otwórz żądanie pomocy technicznej w [witrynie Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).

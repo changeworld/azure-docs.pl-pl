@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: fedec6ea764394d36f5b4d7c883f7cb9f9520a29
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64869019"
 ---
 # <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Rozpoczynanie korzystania z zestawu SDK klienta Java dla usług Azure Media Services  
 
 > [!NOTE]
-> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md)
+> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Sprawdź najnowszą wersję usługi [Media Services w wersji 3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówki dotyczące migracji z wersji 2 do v3](../latest/migrate-from-v2-to-v3.md)
 
 W tym samouczku przedstawiono kolejne kroki wdrażania podstawowej usługi dostarczania zawartości wideo za pomocą usług Azure Media Services przy użyciu zestawu SDK klienta Java.
 
@@ -32,11 +32,11 @@ W tym samouczku przedstawiono kolejne kroki wdrażania podstawowej usługi dosta
 
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
-* Konto platformy Azure. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
+* Konto platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 * Konto usługi Media Services. Aby utworzyć konto usługi Media Services, zobacz temat [Jak utworzyć konto usługi Media Services](media-services-portal-create-account.md).
 * Bieżący [zestaw SDK Java usług Azure Media Services](https://mvnrepository.com/artifact/com.microsoft.azure/azure-media/latest)
 
-## <a name="how-to-import-the-azure-media-services-java-client-sdk-package"></a>Instrukcje: Importowanie pakietu zestawu SDK Java usługi Azure Media Services
+## <a name="how-to-import-the-azure-media-services-java-client-sdk-package"></a>Instrukcje: importowanie pakietu zestawu SDK Java usług Azure Media Services
 
 Aby rozpocząć korzystanie z zestawu SDK usług Media Services dla języka Java, dodaj odwołanie do bieżącej wersji (0.9.8) pakietu `azure-media` z [zestawu SDK Java usług Azure Media Services](https://mvnrepository.com/artifact/com.microsoft.azure/azure-media/latest).
 
@@ -50,10 +50,10 @@ Jeśli na przykład Twoim narzędziem kompilacji jest narzędzie `gradle`, dodaj
 >[!NOTE]
 >Kod źródłowy zestawu SDK Java usług Azure Media Services znajdziesz w naszym [repozytorium GitHub](https://github.com/Azure/azure-sdk-for-java/tree/0.9/services/azure-media). Pamiętaj, aby przejść do gałęzi 0.9, a nie gałęzi głównej. 
 
-## <a name="how-to-use-azure-media-services-with-java"></a>Instrukcje: Korzystanie z usługi Azure Media Services z językiem Java
+## <a name="how-to-use-azure-media-services-with-java"></a>Instrukcje: korzystanie z usług Azure Media Services z językiem Java
 
 >[!NOTE]
->Po utworzeniu konta usług Media Services do Twojego konta dodawany jest **domyślny** punkt końcowy przesyłania strumieniowego w stanie **Zatrzymany**. Aby rozpocząć przesyłanie strumieniowe zawartości oraz korzystać z dynamicznego tworzenia pakietów i szyfrowania dynamicznego, punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać zawartość, musi mieć stan **Uruchomiony**.
+>Po utworzeniu konta usługi Media Services **domyślny** punkt końcowy przesyłania strumieniowego jest dodawany do konta w stanie **Zatrzymane.** Aby rozpocząć przesyłanie strumieniowe zawartości oraz korzystać z dynamicznego tworzenia pakietów i szyfrowania dynamicznego, punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać zawartość, musi mieć stan **Uruchomiony**.
 
 Poniższy kod przedstawia sposób tworzenia elementu zawartości, przesyłania pliku multimediów do elementu zawartości, uruchamiania zadania polegającego na przekształceniu elementu zawartości i tworzenia lokalizatora w celu strumieniowego przesyłania wideo.
 
@@ -63,7 +63,7 @@ Kod umożliwia nawiązanie połączenia z interfejsem API usług Azure Media Ser
 * `tenant`: domena dzierżawy usługi Azure AD, w której znajduje się aplikacja usługi Azure AD
 * `clientId`: identyfikator klienta aplikacji usługi Azure AD
 * `clientKey`: klucz klienta aplikacji usługi Azure AD
-* `restApiEndpoint`: punkt końcowy interfejsu API REST konta usługi Azure Media Services
+* `restApiEndpoint`: punkt końcowy interfejsu API REST konta usług Azure Media Services
 
 Możesz utworzyć aplikację usługi Azure AD i uzyskać powyższe wartości konfiguracji z witryny Azure Portal. Aby uzyskać więcej informacji, zobacz sekcję **Uwierzytelnianie jednostki usługi** w artykule [Wprowadzenie do uwierzytelniania w usłudze Azure AD przy użyciu witryny Azure Portal](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad).
 

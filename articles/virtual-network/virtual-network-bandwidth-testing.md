@@ -1,5 +1,5 @@
 ---
-title: Testowanie przepływności sieci maszyny Wirtualnej platformy Azure
+title: Testowanie przepływności sieci maszyn wirtualnych platformy Azure
 titlesuffix: Azure Virtual Network
 description: Dowiedz się, jak przetestować przepływność sieci maszyny wirtualnej platformy Azure.
 services: virtual-network
@@ -13,159 +13,159 @@ ms.workload: infrastructure-services
 ms.date: 07/21/2017
 ms.author: steveesp
 ms.openlocfilehash: 80e8a5e5de1da2098d895e09b36fb209050743a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60743085"
 ---
-# <a name="bandwidththroughput-testing-ntttcp"></a>Przepustowość/testowania (NTTTCP)
+# <a name="bandwidththroughput-testing-ntttcp"></a>Testowanie przepustowości/przepływności (NTTTCP)
 
-Testowanie wydajności przepustowość sieci na platformie Azure, najlepiej użyć narzędzia, który jest przeznaczony dla sieci do testowania i minimalizuje użycie innych zasobów, które mogą mieć wpływ na wydajność. Zaleca się NTTTCP.
+Podczas testowania wydajności przepływności sieci na platformie Azure najlepiej jest użyć narzędzia, które jest przeznaczone dla sieci do testowania i minimalizuje użycie innych zasobów, które mogą mieć wpływ na wydajność. NTTTCP jest zalecane.
 
-Skopiuj narzędzie do dwóch maszyn wirtualnych platformy Azure w tej samej wielkości. Jedna maszyna wirtualna działa jak NADAWCA, a drugi jako ODBIORNIK.
+Skopiuj narzędzie do dwóch maszyn wirtualnych platformy Azure o tym samym rozmiarze. Jedna maszyna wirtualna działa jako nadawca, a druga jako ODBIORCA.
 
 #### <a name="deploying-vms-for-testing"></a>Wdrażanie maszyn wirtualnych do testowania
-Na potrzeby tego testu dwie maszyny wirtualne powinny być w tej samej usługi w chmurze lub w tym samym zestawie dostępności, można używać ich wewnętrznych adresów IP i wykluczyć modułów równoważenia obciążenia z testu. Istnieje możliwość testowania przy użyciu adresu VIP, ale tego rodzaju testy wykracza poza zakres tego dokumentu.
+Na potrzeby tego testu dwie maszyny wirtualne powinny znajdować się w tej samej usłudze w chmurze lub w tym samym zestawie dostępności, abyśmy mogli użyć ich wewnętrznych serwerów IP i wykluczyć moduły równoważenia obciążenia z testu. Jest możliwe, aby przetestować z VIP, ale tego rodzaju badania jest poza zakresem tego dokumentu.
 
-Zanotuj adres IP ODBIORNIKA. Nadajmy ten adres IP "a.b.c.r"
+Zanotuj adres IP odbiorcy. Nazwijmy to IP "a.b.c.r"
 
-Zanotuj liczbę rdzeni na maszynie Wirtualnej. Nazwiemy to "\#num\_rdzeni"
+Zanotuj liczbę rdzeni na maszynie Wirtualnej. Nazwijmy to\#"rdzeniami num"\_
 
-Uruchom NTTTCP test 300 sekund (lub 5 minut) na nadawcy maszyny Wirtualnej i odbiorcy maszyny Wirtualnej.
+Uruchom test NTTTCP przez 300 sekund (lub 5 minut) na maszynie wirtualnej nadawcy i odbiornika maszyn wirtualnych.
 
-Porada: Podczas konfigurowania tego testu po raz pierwszy, możesz spróbować krótszy okres test, aby szybciej uzyskać opinie. Gdy narzędzie działa zgodnie z oczekiwaniami, dotyczyć 300 sekund, aby uzyskać najbardziej dokładne wyniki testu.
-
-> [!NOTE]
-> Nadawca **i** odbiornika należy określić **takie same** parametru czas trwania testu (-t).
-
-Aby przetestować jednemu strumieniowi TCP przez 10 sekund:
-
-Parametry odbiorcy: ntttcp - r -t 10 - P 1
-
-Parametry nadawcy: ntttcp-s10.27.33.7 metoda "-t 10 - n" 1 -P 1
+Wskazówka: podczas konfigurowania tego testu po raz pierwszy możesz wypróbować krótszy okres testowy, aby szybciej uzyskać opinię. Gdy narzędzie działa zgodnie z oczekiwaniami, wydłuż okres testu do 300 sekund, aby uzyskać najdokładniejsze wyniki.
 
 > [!NOTE]
-> Poprzedni przykład stosować tylko o potwierdzenie konfigurację. Prawidłowe przykłady testów zostały omówione w dalszej części tego dokumentu.
+> Nadawca **i** odbiorca muszą określić **ten sam** parametr czasu trwania testu (-t).
+
+Aby przetestować pojedynczy strumień TCP przez 10 sekund:
+
+Parametry odbiornika: ntttcp -r -t 10 -P 1
+
+Parametry nadawcy: ntttcp -s10.27.33.7 -t 10 -n 1 -P 1
+
+> [!NOTE]
+> Poprzednia próbka powinna być używana tylko do potwierdzenia konfiguracji. Prawidłowe przykłady testowania są omówione w dalszej części tego dokumentu.
 
 ## <a name="testing-vms-running-windows"></a>Testowanie maszyn wirtualnych z systemem WINDOWS:
 
-#### <a name="get-ntttcp-onto-the-vms"></a>Uzyskaj NTTTCP na maszynach wirtualnych.
+#### <a name="get-ntttcp-onto-the-vms"></a>Pobierz NTTTCP na maszyny wirtualne.
 
-Pobierz najnowszą wersję: <https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769>
+Pobierz najnowszą wersję:<https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769>
 
-Lub wyszukaj go w przypadku przeniesienia: <https://www.bing.com/search?q=ntttcp+download> \< — należy najpierw zostanie osiągnięty.
+Lub poszukaj <https://www.bing.com/search?q=ntttcp+download> \< go, jeśli zostanie przeniesiony: -- powinien być pierwszy trafiony
 
-Rozważ umieszczenie NTTTCP w oddzielnym folderze, np. c:\\narzędzia
+Rozważ umieszczenie NTTTCP w osobnym\\folderze, takim jak narzędzia c:
 
-#### <a name="allow-ntttcp-through-the-windows-firewall"></a>Zezwalaj na NTTTCP przez zaporę Windows
-Na ODBIORNIK Utwórz regułę zezwalającą na zaporze Windows, aby zezwolić na ruch NTTTCP dostarczenie. Najłatwiej można umożliwić całego programu NTTTCP według nazwy, a nie umożliwia określonych portów TCP dla ruchu przychodzącego.
+#### <a name="allow-ntttcp-through-the-windows-firewall"></a>Zezwalaj ntttcp przez zaporę systemu Windows
+W receiverie utwórz regułę Zezwalaj na Zaporę systemu Windows, aby umożliwić przychodzący ruch NTTTCP. Najłatwiej jest zezwolić całemu programowi NTTTCP według nazwy, a nie zezwolić na przychodzące określone porty TCP.
 
-Zezwalaj na ntttcp przez zaporę Windows następująco:
+Zezwól ntttcp za pośrednictwem Zapory systemu Windows w ten sposób:
 
-netsh advfirewall zapory Dodawanie reguły programu =\<ścieżki\>\\ntttcp.exe nazwa = "ntttcp" protokołu = wszystkie dir = w działaniu = Zezwalaj na włączenie = yes profile = ANY
+netsh advfirewall firewall add\<\>\\rule program= PATH ntttcp.exe name="ntttcp" protocol=any dir=in action=allow enable=yes profile=ANY
 
-Na przykład, jeśli został skopiowany ntttcp.exe do "c:\\narzędzia" folder, to polecenie: 
+Na przykład, jeśli plik ntttcp.exe został\\skopiowany do folderu "c:tools", będzie to polecenie: 
 
-netsh advfirewall zapory Dodawanie reguły programu = c:\\narzędzia\\ntttcp.exe nazwa = "ntttcp" protokołu = wszystkie dir = w działaniu = Zezwalaj na włączenie = yes profile = ANY
+netsh advfirewall firewall add rule\\\\program=c: tools ntttcp.exe name="ntttcp" protocol=any dir=in action=allow enable=yes profile=ANY
 
 #### <a name="running-ntttcp-tests"></a>Uruchamianie testów NTTTCP
 
-Rozpocznij NTTTCP odbiornika (**Uruchom z CMD**, a nie z programu PowerShell):
+Uruchom ntttcp na odbiorniku **(uruchom z CMD**, a nie z programu PowerShell):
 
-ntttcp - r – m [2\*\#num\_rdzeni],\*, a.b.c.r -t 300
+ntttcp -r –m\*\#[2 rdzenie num],\_\*a.b.c.r -t 300
 
-Jeśli maszyna wirtualna ma cztery rdzenie i adresie IP 10.0.0.4, wyglądałby następująco:
+Jeśli maszyna wirtualna ma cztery rdzenie i adres IP 10.0.0.4, będzie wyglądać następująco:
 
-ntttcp - r – m 8\*, 10.0.0.4 -t 300
+ntttcp -r –m\*8, ,10.0.0.4 -t 300
 
 
-Rozpocznij NTTTCP nadawcy (**Uruchom z CMD**, a nie z programu PowerShell):
+Uruchom ntttcp na nadawcy **(uruchom z CMD**, a nie z programu PowerShell):
 
-ntttcp -s – m 8\*, 10.0.0.4 -t 300 
+ntttcp -s –m\*8, ,10.0.0.4 -t 300 
 
-Poczekaj, aż wyniki.
+Poczekaj na wyniki.
 
 
 ## <a name="testing-vms-running-linux"></a>Testowanie maszyn wirtualnych z systemem LINUX:
 
-Użyj nttcp dla systemu linux. Jest ona dostępna z <https://github.com/Microsoft/ntttcp-for-linux>
+Użyj nttcp-for-linux. Jest on dostępny od<https://github.com/Microsoft/ntttcp-for-linux>
 
-W systemie Linux maszyn wirtualnych (NADAWCĄ i odbiorcą) uruchom następujące polecenia, aby przygotować ntttcp for linux na maszynach wirtualnych:
+Na maszynach wirtualnych z systemem Linux (zarówno nadawca, jak i odbiornik) uruchom następujące polecenia, aby przygotować ntttcp-for-linux na maszynach wirtualnych:
 
-CentOS — instalacja narzędzia Git:
+CentOS - Zainstaluj Git:
 ``` bash
   yum install gcc -y  
   yum install git -y
 ```
-Ubuntu - Git instalacji:
+Ubuntu - Zainstaluj Git:
 ``` bash
  apt-get -y install build-essential  
  apt-get -y install git
 ```
-Wprowadź, a następnie zainstalować zarówno:
+Dokonaj i zainstaluj na obu:
 ``` bash
  git clone https://github.com/Microsoft/ntttcp-for-linux
  cd ntttcp-for-linux/src
  make && make install
 ```
 
-Tak jak w przykładzie Windows przyjęto założenie, że adres IP ODBIORNIKA Linux 10.0.0.4
+Podobnie jak w przykładzie systemu Windows, zakładamy, że adres IP odbiornika Linuksa wynosi 10.0.0.4
 
-Rozpocznij NTTTCP dla systemu Linux w ODBIORNIKU:
+Uruchom NTTTCP-for-Linux na odbiorniku:
 
 ``` bash
 ntttcp -r -t 300
 ```
 
-I na nadawcy, uruchom:
+A na nadawcy uruchom:
 
 ``` bash
 ntttcp -s10.0.0.4 -t 300
 ```
  
-Biorąc pod uwagę testu długość wartość domyślna to 60 sekund, jeśli nie parametrze czasu
+Domyślna długość testu wynosi 60 sekund, jeśli nie podano parametru czasu
 
 ## <a name="testing-between-vms-running-windows-and-linux"></a>Testowanie między maszynami wirtualnymi z systemem Windows i LINUX:
 
-W tym scenariuszy firma Microsoft Włącz tryb nie synchronizacji, aby uruchomić test. Jest to wykonywane przy użyciu **flagi -N** dla systemu Linux i **flagi -ns** dla Windows.
+W tym scenariuszu należy włączyć tryb bez synchronizacji, dzięki czemu można uruchomić test. Odbywa się to przy użyciu **flagi -N** dla linuksa i **flagi -ns** dla systemu Windows.
 
-#### <a name="from-linux-to-windows"></a>Z systemu Linux do Windows:
+#### <a name="from-linux-to-windows"></a>Od Linuksa do Systemu Windows:
 
-Odbiornik \<Windows >:
+Odbiornik \<> systemu Windows:
 
 ``` bash
 ntttcp -r -m <2 x nr cores>,*,<Windows server IP>
 ```
 
-Nadawca \<Linux >:
+Nadawca \<Linux>:
 
 ``` bash
 ntttcp -s -m <2 x nr cores>,*,<Windows server IP> -N -t 300
 ```
 
-#### <a name="from-windows-to-linux"></a>Od Windows z systemem Linux:
+#### <a name="from-windows-to-linux"></a>Z systemu Windows do Linuksa:
 
-Odbiornik \<Linux >:
+Odbiornik \<Linux>:
 
 ``` bash
 ntttcp -r -m <2 x nr cores>,*,<Linux server IP>
 ```
 
-Sender \<Windows>:
+Nadawca \<windows>:
 
 ``` bash
 ntttcp -s -m <2 x nr cores>,*,<Linux  server IP> -ns -t 300
 ```
-## <a name="testing-cloud-service-instances"></a>Testing Cloud Service Instances:
-Należy dodać następujące sekcji do Twojej ServiceDefinition.csdef
+## <a name="testing-cloud-service-instances"></a>Testowanie wystąpień usługi w chmurze:
+Do servicedefinition.csdef należy dodać następującą sekcję
 ```xml
 <Endpoints>
   <InternalEndpoint name="Endpoint3" protocol="any" />
 </Endpoints> 
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-* W zależności od wyników, może być miejsca, aby [optymalizacji maszyn przepływność sieci](virtual-network-optimize-network-bandwidth.md) dla danego scenariusza.
-* Przeczytaj o tym, jak [przepustowość jest przydzielona do maszyn wirtualnych](virtual-machine-network-throughput.md)
-* Dowiedz się więcej dzięki [sieci wirtualnej platformy Azure — często zadawane pytania (FAQ)](virtual-networks-faq.md)
+## <a name="next-steps"></a>Następne kroki
+* W zależności od wyników może być miejsce na [optymalizację maszyn przepływności sieci dla](virtual-network-optimize-network-bandwidth.md) twojego scenariusza.
+* Przeczytaj o [przydzielaniu przepustowości do maszyn wirtualnych](virtual-machine-network-throughput.md)
+* Dowiedz się więcej dzięki [często zadawanym pytaniom usługi Azure Virtual Network (CZĘSTO ZADAWANE PYTANIA)](virtual-networks-faq.md)

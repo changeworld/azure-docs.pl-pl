@@ -1,6 +1,6 @@
 ---
-title: Informacje o wersji usługi StorSimple 8000 Series Update 2.2 | Dokumentacja firmy Microsoft
-description: W tym artykule opisano nowe funkcje, problemy i rozwiązania dla usługi StorSimple 8000 Series Update 2.2.
+title: StorSimple 8000 Series Update 2.2 informacje o wersji | Dokumenty firmy Microsoft
+description: W tym artykule opisano nowe funkcje, problemy i obejścia aktualizacji 2.2 storsimple z serii 8000.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,86 +15,86 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 12d11cddf077d4d07732490255d44e89ddaf3217
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60531053"
 ---
-# <a name="storsimple-8000-series-update-22-release-notes"></a>Informacje o wersji usługi StorSimple 8000 Series Update 2.2
+# <a name="storsimple-8000-series-update-22-release-notes"></a>StorSimple 8000 Series Update 2.2 informacje o wersji
 
 ## <a name="overview"></a>Omówienie
-Poniższe informacje o wersji opisano nowe funkcje i zidentyfikować krytyczne nierozwiązane problemy dla usługi StorSimple 8000 Series Update 2.2. Zawierają one również listę aktualizacji oprogramowania StorSimple, które są zawarte w tej wersji.
+W poniższych informacjach o wersji opisano nowe funkcje i zidentyfikowano krytyczne otwarte problemy dla aktualizacji 2.2 storsimple z serii 8000. Zawierają one również listę aktualizacji oprogramowania StorSimple zawartych w tej wersji.
 
-Aktualizacji Update 2.2 mogą stosowane do każdego urządzenia StorSimple z wersji (GA) lub aktualizacji 0.1 za pośrednictwem Update 2.1. Wersja urządzenia skojarzone z aktualizacją Update 2.2 jest 6.3.9600.17708.
+Aktualizacja 2.2 może być stosowana do dowolnego urządzenia StorSimple z systemem Release (GA) lub Update 0.1 do aktualizacji 2.1. Wersja urządzenia skojarzona z aktualizacją 2.2 to 6.3.9600.17708.
 
-Przejrzyj informacje zawarte w informacjach o wersji przed wdrożeniem aktualizacji w rozwiązaniu StorSimple.
+Zapoznaj się z informacjami zawartymi w informacjach o wersji przed wdrożeniem aktualizacji w rozwiązaniu StorSimple.
 
 > [!IMPORTANT]
-> * Aktualizacja 2.2 zawiera tylko aktualizacje oprogramowania. Trwa około 1,5-2 godzin do zainstalowania tej aktualizacji. 
-> * Używasz Update 2.1, firma Microsoft zaleca stosowanie aktualizacji 2.2 tak szybko, jak to możliwe.
-> * Do nowych wersji, mogą nie być widoczne aktualizacje od razu, ponieważ robimy etapowego wdrażania aktualizacji. Poczekaj kilka dni, a następnie skanowanie w poszukiwaniu aktualizacji ponownie jako te staną się dostępne wkrótce.
+> * Aktualizacja 2.2 ma tylko aktualizacje oprogramowania. Instalacja tej aktualizacji trwa około 1,5-2 godzin. 
+> * Jeśli korzystasz z aktualizacji 2.1, zalecamy jak najszybsze zastosowanie aktualizacji 2.2.
+> * W przypadku nowych wersji aktualizacje mogą nie być widoczne natychmiast, ponieważ wprowadzamy aktualizacje stopniowo. Poczekaj kilka dni, a następnie przeskanuj w poszukiwaniu aktualizacji ponownie, ponieważ wkrótce staną się one dostępne.
 > 
 > 
 
-## <a name="whats-new-in-update-22"></a>What's new in Update 2.2
-Następujące ulepszenia klucza zostały dokonane w Update 2.2.
+## <a name="whats-new-in-update-22"></a>Co nowego w aktualizacji 2.2
+W aktualizacji 2.2 wprowadzono następujące kluczowe ulepszenia.
 
-* **Automatyczne odzyskiwanie optymalizacje** — gdy dane są usuwane na woluminy alokowane elastycznie potrzebę bloki nieużywane magazynu można odzyskać. W tej wersji ulepszono proces odzyskiwanie miejsca z chmury, co nieużywane miejsce staje się dostępna szybciej w porównaniu do poprzednich wersji.
-* **Ulepszenia wydajności migawki** – 2.2 aktualizacji ulepszono czasu przetwarzania w chmurze migawki w niektórych scenariuszach, w przypadku, gdy duże woluminy są używane i jest minimalny, aby nie współczynnik zmian danych. Scenariusz, w którym będą korzystać z to ulepszenie byłoby woluminów archiwów.
-* **Ograniczenie funkcjonalności pakietu dla pomocy technicznej zbierania** — wprowadziliśmy ulepszenia w taki sposób, pakiet dla pomocy technicznej są zbierane i przekazywane w tej wersji. 
-* **Aktualizuj poprawki niezawodności** — ta wersja zawiera poprawki błędów, których wynikiem Zwiększona niezawodność aktualizacji.
+* **Automatyczna optymalizacja odzyskiwania miejsca** — gdy dane są usuwane na woluminach nieobe aprowizacji, nieużywane bloki magazynu muszą zostać odzyskane. Ta wersja usprawniła proces rekultywacji miejsca z chmury, co spowodowało, że nieużywane miejsce stało się dostępne szybciej w porównaniu z poprzednimi wersjami.
+* **Ulepszenia wydajności migawki** — aktualizacja 2.2 poprawiła czas przetwarzania migawki chmury w niektórych scenariuszach, w których używane są duże woluminy i nie ma minimalnego do żadnego wpływu na dane. Scenariusz, który skorzystałby z tego ulepszenia byłoby woluminów archiwum.
+* **Wzmocnienie gromadzenia pakietów pomocy technicznej** — wprowadzono ulepszenia w sposobie zbierania i przesyłania pakietu pomocy technicznej w tej wersji. 
+* **Ulepszenia niezawodności aktualizacji** — w tej wersji wprowadzono poprawki błędów, które powodują poprawę niezawodności aktualizacji.
 
-## <a name="issues-fixed-in-update-22"></a>Problemy rozwiązane w Update 2.2
-Poniższe tabele zawiera podsumowanie problemów, które zostały rozwiązane w aktualizacji 2.2 i 2.1.    
+## <a name="issues-fixed-in-update-22"></a>Problemy rozwiązane w aktualizacji 2.2
+Poniższe tabele zawierają podsumowanie problemów, które zostały rozwiązane w aktualizacjach 2.2 i 2.1.    
 
-| Nie | Cecha | Problem | Stosuje się do urządzenia fizycznego | Dotyczy urządzenia wirtualnego |
+| Nie | Funkcja | Problem | Dotyczy urządzenia fizycznego | Dotyczy urządzenia wirtualnego |
 | --- | --- | --- | --- | --- |
-| 1 |Wydajność hosta |Problemy z wydajnością po stronie hosta zaobserwowano w starszej wersji, podczas tworzenia woluminu przypiętego lokalnie i w wyniku konwersji woluminu warstwowego woluminu przypiętego lokalnie. Te problemy zostały rozwiązane w tej wersji, powodując poprawę wydajności hosta podczas wykonywania procedur tworzenia i konwersji woluminu. |Tak |Nie |
-| 2 |Lokalnie przypięte woluminy |W rzadkich przypadkach system ulegał awarii podczas tworzenia woluminu przypiętego lokalnie. Ten błąd został naprawiony w tej wersji. |Tak |Nie |
-| 3 |Obsługa warstw |Wystąpiły sporadyczne awarie, gdy metadane dla urządzeń StorSimple w chmurze (8010 i 8020) warstwy do chmury. Ten problem jest rozwiązany w tej wersji. |Nie |Tak |
-| 4 |Tworzenie migawki |Wystąpiły problemy związane z tworzenia migawek przyrostowych w scenariuszach z dużymi ilościami i minimalnym się do utraty nie danych. Te problemy zostały rozwiązane w tej wersji. |Tak |Yes |
-| 5 |Openstack uwierzytelniania |Korzystając z Openstack jako dostawca usług w chmurze, użytkownik może działać w rzadkich usterki związane z uwierzytelnianiem, gdzie analizatora składni JSON spowodowały awarię. Ten problem został rozwiązany w tej wersji. |Yes |Nie |
-| 6 |Kopiuj po stronie hosta |We wcześniejszych wersjach oprogramowania rzadkie usterki związane z czasu funkcji ODX występowało podczas kopiowania danych z jednego woluminu na innym woluminie. Spowodowałoby to praca awaryjna kontrolera, a system może potencjalnie przejdą w tryb odzyskiwania. Ten problem został rozwiązany w tej wersji. |Tak |Nie |
-| 7 |Instrumentacja zarządzania Windows (WMI) |W poprzednich wersjach oprogramowania były kilka wystąpień awarii serwera proxy sieci web, z wyjątkiem "\<managementexception — > Błąd ładowania dostawcy". Ta usterka została przypisana do wycieku pamięci WMI i został rozwiązany. |Yes |Nie |
-| 8 |Aktualizacja |W niektórych rzadkich przypadkach, w poprzednich wersjach oprogramowania "CisPowershellHcsscripterror" odebrane przez użytkownika, podczas próby skanowania lub instalowania aktualizacji. Ten problem jest rozwiązany w tej wersji. |Tak |Yes |
-| 9 |Pakiet dla pomocy technicznej |W tej wersji zostały ulepszenia sposobu gromadzenia i przekazać pakietu dla pomocy technicznej. |Tak |Tak |
+| 1 |Wydajność hosta |We wcześniejszej wersji problemy z wydajnością po stronie hosta zostały zaobserwowane podczas tworzenia woluminu przypiętego lokalnie i podczas konwersji woluminu warstwowego na wolumin przypięty lokalnie. Te problemy zostały rozwiązane w tej wersji, co powoduje poprawę wydajności hosta podczas tworzenia woluminu i procedur konwersji. |Tak |Nie |
+| 2 |Lokalnie przypięte woluminy |W rzadkich przypadkach system ulega awarii podczas tworzenia woluminu przypiętego lokalnie. Ten błąd został naprawiony w tej wersji. |Tak |Nie |
+| 3 |Poziomy |Zdarzały się sporadyczne awarie, gdy metadane urządzeń w chmurze StorSimple (8010 i 8020) warstwowe do chmury. Ten problem został rozwiązany w tej wersji. |Nie |Tak |
+| 4 |Tworzenie migawki |Wystąpiły problemy związane z tworzeniem migawek przyrostowych w scenariuszach z dużymi woluminami i minimalnym lub żadnym zmianem danych. Te problemy zostały rozwiązane w tej wersji. |Tak |Tak |
+| 5 |Uwierzytelnianie openstack |Podczas korzystania z Openstack jako dostawcy usług w chmurze, użytkownik będzie działać na rzadki błąd związany z uwierzytelnianiem, gdzie parser JSON spowodowało awarię. Ten błąd został naprawiony w tej wersji. |Tak |Nie |
+| 6 |Kopia po stronie hosta |We wcześniejszych wersjach oprogramowania podczas kopiowania danych z jednego woluminu do innego zaobserwowano rzadki błąd związany z taktowaniem ODX. Spowodowałoby to, że kontroler przechodzi w tryb failover, a system może potencjalnie przejść w tryb odzyskiwania. Ten błąd został naprawiony w tej wersji. |Tak |Nie |
+| 7 |Instrumentacja zarządzania windowsem (WMI) |W poprzednich wersjach oprogramowania było kilka wystąpień awarii serwera\<proxy sieci web z wyjątkiem "ManagementException> Provider load failure". Ten błąd został przypisany do przecieku pamięci WMI i został naprawiony. |Tak |Nie |
+| 8 |Aktualizacja |W niektórych rzadkich przypadkach, w poprzednich wersjach oprogramowania, użytkownik otrzymał "CisPowershellHcsscripterror" podczas próby skanowania lub instalowania aktualizacji. Ten problem został rozwiązany w tej wersji. |Tak |Tak |
+| 9 |Pakiet pomocy technicznej |W tej wersji wprowadzono ulepszenia dotyczące sposobu, w jaki pakiet pomocy technicznej jest zbierany i przesyłany. |Tak |Tak |
 
-## <a name="known-issues-in-update-22"></a>Znane problemy w programie Update 2.2
-Poniższa tabela zawiera podsumowanie znanych problemów występujących w tej wersji.
+## <a name="known-issues-in-update-22"></a>Znane problemy w aktualizacji 2.2
+Poniższa tabela zawiera podsumowanie znanych problemów w tej wersji.
 
-| Nie. | Cecha | Problem | Komentarze / obejście | Stosuje się do urządzenia fizycznego | Dotyczy urządzenia wirtualnego |
+| Nie. | Funkcja | Problem | Komentarze / obejście | Dotyczy urządzenia fizycznego | Dotyczy urządzenia wirtualnego |
 | --- | --- | --- | --- | --- | --- |
-| 1 |Dysku kworum |W rzadkich przypadkach jeśli większość dysków w obudowie EBOD się do urządzenia 8600 są odłączone skutkuje dysku kworum, następnie puli magazynu przejdzie w trybie offline. Pozostanie w trybie offline, nawet wtedy, gdy dyski są zakończone. |Będzie konieczne ponowne uruchomienie urządzenia. Jeśli problem będzie się powtarzać, skontaktuj się z pomocą firmy Microsoft Support dla następnych kroków. |Tak |Nie |
-| 2 |Identyfikator niepoprawne kontrolera |Podczas zastępowania kontrolera kontrolera 0 może stanowić kontrolera 1. Podczas zastępowania kontrolera gdy obraz jest ładowany z węzła równorzędnego identyfikator kontrolera było wyświetlane początkowo jako identyfikator kontrolera elementów równorzędnych. W rzadkich przypadkach to zachowanie może być widoczny po ponownym uruchomieniu systemu. |Użytkownik jest wymagana żadna akcja. Ta sytuacja sam się rozwiąże po zakończeniu zastępczego kontrolera. |Tak |Nie |
-| 3 |Konta magazynu |Za pomocą usługi Storage można usunąć konta magazynu jest to nieobsługiwany scenariusz. Spowoduje to doprowadzić do sytuacji, w której nie można pobrać danych użytkownika. | |Tak |Tak |
-| 4 |Tryb failover urządzenia |Wielu przejścia w tryb failover kontenera woluminów na tym samym urządzeniu źródła urządzeniom inny element docelowy nie jest obsługiwane. Tryb failover z jednym urządzeniu martwy do wielu urządzeń spowoduje, że kontenery woluminów na pierwszym urządzeniu w trybie Failover utracić prawa własności do danych. Po włączeniu tych trybu failover te kontenery woluminów wyglądają lub działają inaczej w przypadku można je wyświetlić w klasycznym portalu Azure. | |Tak |Nie |
-| 5 |Instalacja |Podczas adaptera StorSimple dla instalacji programu SharePoint musisz podać adres IP urządzenia, w kolejności do pomyślnego ukończenia instalacji. | |Tak |Nie |
-| 6 |Serwer proxy sieci Web |Jeśli w konfiguracji serwera proxy sieci web HTTPS jako określony protokół, komunikacja usługi urządzeń będzie to miało wpływu i urządzenie przejdą w tryb offline. Obsługa pakietów również zostanie wygenerowany w procesie zużywają znaczne zasoby na urządzeniu z systemem. |Upewnij się, że adres URL serwera proxy sieci web ma HTTP jako określony protokół. Aby uzyskać więcej informacji, zobacz temat [Konfigurowanie serwera proxy sieci Web dla urządzenia](storsimple-configure-web-proxy.md). |Tak |Nie |
-| 7 |Serwer proxy sieci Web |Jeśli skonfigurować i włączyć serwer proxy sieci web na zarejestrowanym urządzeniu, należy uruchomić ponownie aktywny kontroler, na urządzeniu. | |Tak |Nie |
-| 8 |Czas oczekiwania w chmurze o wysokiej i wysokiego obciążenia We/Wy |Gdy urządzenia StorSimple napotyka chmura bardzo duże opóźnienia (kolejność w sekundach) i wysokiego obciążenia We/Wy, do woluminów urządzenia przechodzi w stan obniżonej wydajności i operacji We/Wy może zakończyć się niepowodzeniem z powodu błędu "urządzenie nie jest gotowy". |Należy ręcznie ponownie uruchomić kontrolery urządzeń lub urządzeń w tryb failover do odzyskania z tej sytuacji. |Tak |Nie |
-| 9 |Azure PowerShell |Kiedy używasz polecenia cmdlet usługi StorSimple **Get AzureStorSimpleStorageAccountCredential &#124; Select-Object - najpierw 1 - Wait** do wybrania pierwszego obiektu tak, aby utworzyć nową **elementu VolumeContainer** obiekt, polecenie cmdlet zwraca wszystkie obiekty. |Opakowanie polecenia cmdlet w nawiasach w następujący sposób: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object - najpierw 1 - Wait** |Yes |Yes |
-| 10 |Migracja |W przypadku wielu kontenerów woluminów są przekazywane do migracji, Inżyniera najnowszej kopii zapasowej jest prawidłowe tylko dla pierwszego kontenera woluminów. Ponadto migracji równoległej rozpocznie się po pierwszych 4 kopie zapasowe w pierwszym kontenera woluminów są migrowane. |Zaleca się migrację jeden kontener woluminów naraz. |Yes |Nie |
-| 11 |Migracja |Po przywróceniu woluminy nie są dodawane do zasad kopii zapasowych lub grupy dysków wirtualnych. |Należy dodać te woluminy do zasad kopii zapasowych w celu tworzenia kopii zapasowych. |Yes |Tak |
-| 12 |Migracja |Po zakończeniu migracji urządzeń serii 5000 i 7000 nie musi uzyskać dostęp do kontenerów zmigrowanych danych. |Zaleca się usuwanie kontenerów migrowanych danych, po migracji, ukończone i zatwierdzone. |Yes |Nie |
-| 13 |Klonuj i odzyskiwanie po awarii |Urządzenia StorSimple z aktualizacją Update 1 nie można sklonować lub odzyskiwanie danych po awarii na urządzeniu z systemem przed aktualizacją oprogramowania 1. |Należy zaktualizować urządzenie docelowe do Update 1, aby zezwolić na te operacje |Tak |Tak |
-| 14 |Migracja |Kopia zapasowa konfiguracji migracji może zakończyć się niepowodzeniem na urządzeniach serii 5000 – 7000 przypadku grupami woluminów za pomocą skojarzonych woluminów. |Usuń wszystkie grupy pusty wolumin z woluminów skojarzonych, a następnie ponów próbę wykonania kopii zapasowej konfiguracji. |Yes |Nie |
-| 15 |Polecenia cmdlet programu PowerShell systemu Azure i lokalnie przypięte woluminy |Nie można utworzyć woluminu przypiętego lokalnie za pomocą poleceń cmdlet programu Azure PowerShell. (Będą umieszczane woluminów utworzonych za pomocą programu Azure PowerShell.) |Zawsze należy używać usługi StorSimple Manager do skonfigurowania woluminów przypiętych lokalnie. |Tak |Nie |
-| 16 |Miejsce dostępne dla woluminów przypiętych lokalnie |Jeśli usuniesz wolumin przypięty lokalnie, miejsce dostępne do nowych woluminów nie może natychmiast zaktualizować. Usługa StorSimple Manager aktualizuje lokalne miejsce dostępne mniej więcej co godzinę. |Zaczekaj godzinę przed próbą utworzenia nowego woluminu. |Tak |Nie |
-| 17 |Lokalnie przypięte woluminy |Zadanie przywracania udostępnia tymczasowe migawki kopii zapasowej w katalogu kopii zapasowej, ale tylko na czas trwania zadania przywracania. Ponadto udostępnia ona grupy dysków wirtualnych z prefiksem **tmpCollection** na **zasady tworzenia kopii zapasowych** strony, ale tylko na czas trwania zadania przywracania. |To zachowanie może wystąpić, jeśli zadanie przywracania tylko lokalnie ma przypięte woluminy lub kombinacji lokalnie woluminów przypiętych i podzielonych na warstwy. Jeśli zadanie przywracania zawiera tylko woluminy warstwowe, to zachowanie nie będzie występować. Interwencja użytkownika nie jest wymagane. |Tak |Nie |
-| 18 |Lokalnie przypięte woluminy |Jeśli anulowanie zadania przywracania, a do kontrolera pracy awaryjnej natychmiast po wyświetli zadanie **przywracania** zamiast **anulowane**. Jeśli zadanie przywracania kończy się niepowodzeniem, a do kontrolera pracy awaryjnej natychmiast po wyświetli zadanie **przywracania** **anulowane** zamiast. |To zachowanie może wystąpić, jeśli zadanie przywracania tylko lokalnie ma przypięte woluminy lub kombinacji lokalnie woluminów przypiętych i podzielonych na warstwy. Jeśli zadanie przywracania zawiera tylko woluminy warstwowe, to zachowanie nie będzie występować. Interwencja użytkownika nie jest wymagane. |Tak |Nie |
-| 19 |Lokalnie przypięte woluminy |Jeśli anulujesz zadanie przywracania lub jeśli przywracania kończy się niepowodzeniem, a następnie odbywa się praca awaryjna kontrolera, zadania przywracania dodatkowe pojawia się na **zadań** strony. |To zachowanie może wystąpić, jeśli zadanie przywracania tylko lokalnie ma przypięte woluminy lub kombinacji lokalnie woluminów przypiętych i podzielonych na warstwy. Jeśli zadanie przywracania zawiera tylko woluminy warstwowe, to zachowanie nie będzie występować. Interwencja użytkownika nie jest wymagane. |Tak |Nie |
-| 20 |Lokalnie przypięte woluminy |Jeśli użytkownik próbuje przekonwertować wolumin warstwowy (utworzone i sklonowany za pomocą 1.2 aktualizacji lub starszym) do woluminu przypiętego lokalnie i urządzeniu zaczyna brakować miejsca lub występuje awaria chmury, clone(s) może być uszkodzony. |Ten problem występuje tylko w przypadku woluminów, które zostały utworzone i sklonowany za pomocą przed aktualizacją 2.1 oprogramowania. Powinna to być rzadkie scenariusza. | | |
-| 21 |Konwersja woluminu |Nie są uaktualniane rekordów Acr, dołączone do woluminu w trakcie konwersji woluminu (warstwowego na lokalnie przypięty i na odwrót). Aktualizowanie rekordów Acr może spowodować uszkodzenie danych. |W razie potrzeby zaktualizuj rekordów Acr przed konwersji woluminu i nie należy wprowadzać wszelkie dalsze aktualizacji rejestru Azure container Registry w trakcie konwersji. | | |
+| 1 |Kworum dysku |W rzadkich przypadkach, jeśli większość dysków w obudowy EBOD urządzenia 8600 są odłączone, co powoduje brak kworum dysku, a następnie puli magazynu przejdzie do trybu offline. Pozostanie w trybie offline, nawet jeśli dyski zostaną ponownie podłączone. |Musisz ponownie uruchomić urządzenie. Jeśli problem będzie się powtarzał, skontaktuj się z pomocą techniczną firmy Microsoft, aby uzyskać następujące kroki. |Tak |Nie |
+| 2 |Nieprawidłowy identyfikator kontrolera |Po wykonaniu wymiany kontrolera kontroler 0 może pojawić się jako kontroler 1. Podczas zastępowania kontrolera, gdy obraz jest ładowany z węzła równorzędnego, identyfikator kontrolera może być początkowo pokazywał się jako identyfikator kontrolera równorzędnego. W rzadkich przypadkach to zachowanie może być również widoczne po ponownym uruchomieniu systemu. |Nie jest wymagana żadna akcja użytkownika. Ta sytuacja rozwiąże się po zakończeniu wymiany kontrolera. |Tak |Nie |
+| 3 |Konta magazynu |Za pomocą usługi magazynowania, aby usunąć konto magazynu jest nieobsługiwał scenariusz. Doprowadzi to do sytuacji, w której nie można pobrać danych użytkownika. | |Tak |Tak |
+| 4 |Przewijowanie awaryjne urządzenia |Wiele przechyłów awaryjnych kontenera woluminu z tego samego urządzenia źródłowego do różnych urządzeń docelowych nie jest obsługiwany. Przewijanie awaryjne z jednego martwego urządzenia do wielu urządzeń spowoduje, że kontenery woluminów na pierwszym urządzeniu awaryjnym utracić własność danych. Po takiej pracy awaryjnej te kontenery woluminów będą wyświetlane lub zachowywać się inaczej podczas wyświetlania ich w klasycznej witrynie Azure portal. | |Tak |Nie |
+| 5 |Instalacja |Podczas instalacji karty StorSimple dla programu SharePoint należy podać adres IP urządzenia, aby instalacja zakończyła się pomyślnie. | |Tak |Nie |
+| 6 |Serwer proxy sieci Web |Jeśli konfiguracja serwera proxy sieci Web ma https jako określony protokół, komunikacja między urządzeniami zostanie naruszona, a urządzenie przejdzie w tryb offline. Pakiety pomocy technicznej będą również generowane w procesie, zużywając znaczne zasoby na urządzeniu. |Upewnij się, że adres URL serwera proxy sieci Web ma http jako określony protokół. Aby uzyskać więcej informacji, zobacz temat [Konfigurowanie serwera proxy sieci Web dla urządzenia](storsimple-configure-web-proxy.md). |Tak |Nie |
+| 7 |Serwer proxy sieci Web |Jeśli skonfigurujesz i włączysz serwer proxy sieci Web na zarejestrowanym urządzeniu, musisz ponownie uruchomić aktywny kontroler na urządzeniu. | |Tak |Nie |
+| 8 |Duże opóźnienia w chmurze i duże obciążenie we/wy |Gdy urządzenie StorSimple napotka kombinację bardzo dużych opóźnień w chmurze (kolejność sekund) i wysokiego obciążenia we/wy, woluminy urządzenia przechodzą w stan pogorszenia, a we/wy mogą zakończyć się niepowodzeniem z błędem "urządzenie nie jest gotowe". |Należy ręcznie ponownie uruchomić kontrolery urządzeń lub wykonać pracy awaryjnej urządzenia, aby odzyskać z tej sytuacji. |Tak |Nie |
+| 9 |Azure PowerShell |Korzystając z polecenia cmdlet StorSimple **Get-AzureStorSimpleStorageAccredential &#124; Select-Object -First 1 -Wait,** aby zaznaczyć pierwszy obiekt, aby można było utworzyć nowy obiekt **VolumeContainer,** polecenie cmdlet zwraca wszystkie obiekty. |Zawijanie polecenia cmdlet w nawiasach w następujący sposób: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object -First 1 -Wait** |Tak |Tak |
+| 10 |Migracja |Gdy wiele kontenerów woluminów są przekazywane do migracji, ETA dla najnowszej kopii zapasowej jest dokładne tylko dla pierwszego kontenera woluminu. Ponadto migracja równoległa rozpocznie się po migrowanie pierwszych 4 kopii zapasowych w pierwszym kontenerze woluminu. |Zaleca się migrację jednego kontenera woluminów naraz. |Tak |Nie |
+| 11 |Migracja |Po przywróceniu woluminy nie są dodawane do zasad tworzenia kopii zapasowych ani do grupy dysków wirtualnych. |Aby utworzyć kopie zapasowe, należy dodać te woluminy do zasad tworzenia kopii zapasowych. |Tak |Tak |
+| 12 |Migracja |Po zakończeniu migracji urządzenie serii 5000/7000 nie może uzyskać dostępu do zmigrowanych kontenerów danych. |Zaleca się usunięcie zmigrowanych kontenerów danych po zakończeniu migracji i zaajsnaniu. |Tak |Nie |
+| 13 |Klon i dr |Urządzenie StorSimple z aktualizacją 1 nie może sklonować ani wykonywać odzyskiwania po awarii na urządzeniu z uruchomionym oprogramowaniem przed aktualizacją 1. |Należy zaktualizować urządzenie docelowe do aktualizacji 1, aby umożliwić te operacje |Tak |Tak |
+| 14 |Migracja |Kopia zapasowa konfiguracji dla migracji może zakończyć się niepowodzeniem na urządzeniu z serii 5000-7000, gdy istnieją grupy woluminów bez skojarzonych woluminów. |Usuń wszystkie puste grupy woluminów bez skojarzonych woluminów, a następnie ponów próbę wykonania kopii zapasowej konfiguracji. |Tak |Nie |
+| 15 |Polecenia cmdlet programu Azure PowerShell i woluminy przypięte lokalnie |Nie można utworzyć woluminu przypiętego lokalnie za pośrednictwem poleceń cmdlet programu Azure PowerShell. (Każdy wolumin utworzony za pośrednictwem programu Azure PowerShell będzie warstwowy).) |Zawsze używaj usługi StorSimple Manager do konfigurowania woluminów przypiętych lokalnie. |Tak |Nie |
+| 16 |Dostępne miejsce na woluminy przypięte lokalnie |Jeśli usuniesz wolumin przypięty lokalnie, miejsce dostępne dla nowych woluminów może nie zostać natychmiast zaktualizowane. Usługa StorSimple Manager aktualizuje lokalne miejsce dostępne około co godzinę. |Poczekaj godzinę, zanim spróbujesz utworzyć nowy wolumin. |Tak |Nie |
+| 17 |Lokalnie przypięte woluminy |Zadanie przywracania udostępnia tymczasową kopię zapasową migawki w wykazie kopii zapasowych, ale tylko na czas trwania zadania przywracania. Ponadto udostępnia grupę dysków wirtualnych z prefiksem **tmpCollection** na stronie **Zasady tworzenia kopii zapasowych,** ale tylko na czas trwania zadania przywracania. |To zachowanie może wystąpić, jeśli zadanie przywracania ma tylko lokalnie przypięte woluminy lub kombinację woluminów przypiętych lokalnie i warstwowych. Jeśli zadanie przywracania zawiera tylko woluminy warstwowe, to zachowanie nie wystąpi. Interwencja użytkownika nie jest wymagana. |Tak |Nie |
+| 18 |Lokalnie przypięte woluminy |Jeśli anulujesz zadanie przywracania, a kontroler przejdzie w stan failover natychmiast po tym, zadanie przywracania będzie wyświetlane **nie powiodło się** zamiast **Anulowane**. Jeśli zadanie przywracania nie powiedzie się, a kontroler przejdzie w stan failover natychmiast po, zadanie przywracania wyświetli **anulowane** zamiast **nie powiodło się**. |To zachowanie może wystąpić, jeśli zadanie przywracania ma tylko lokalnie przypięte woluminy lub kombinację woluminów przypiętych lokalnie i warstwowych. Jeśli zadanie przywracania zawiera tylko woluminy warstwowe, to zachowanie nie wystąpi. Interwencja użytkownika nie jest wymagana. |Tak |Nie |
+| 19 |Lokalnie przypięte woluminy |Jeśli anulujesz zadanie przywracania lub jeśli przywracanie nie powiedzie się, a następnie nastąpi praca awaryjna kontrolera, na stronie **Zadania** zostaną wyświetlona dodatkowe zadanie przywracania. |To zachowanie może wystąpić, jeśli zadanie przywracania ma tylko lokalnie przypięte woluminy lub kombinację woluminów przypiętych lokalnie i warstwowych. Jeśli zadanie przywracania zawiera tylko woluminy warstwowe, to zachowanie nie wystąpi. Interwencja użytkownika nie jest wymagana. |Tak |Nie |
+| 20 |Lokalnie przypięte woluminy |Jeśli spróbujesz przekonwertować wolumin warstwowy (utworzony i sklonowany za pomocą aktualizacji 1.2 lub wcześniejszej) na wolumin przypięty lokalnie, a na urządzeniu zaczyna brakować miejsca lub występuje awaria chmury, klony mogą zostać uszkodzone. |Ten problem występuje tylko w przypadku woluminów, które zostały utworzone i sklonowane za pomocą oprogramowania przed aktualizacją 2.1. Powinno to być rzadkie scenariusz. | | |
+| 21 |Konwersja woluminów |Nie należy aktualizować AKS dołączonych do woluminu, gdy trwa konwersja woluminu (warstwowa do przypiętych lokalnie lub odwrotnie). Aktualizacja AKS może spowodować uszkodzenie danych. |W razie potrzeby zaktualizuj ACR przed konwersją woluminu i nie wprowadzaj żadnych dalszych aktualizacji ACR w trakcie konwersji. | | |
 
-## <a name="controller-and-firmware-updates-in-update-22"></a>Aktualizacje oprogramowania układowego i kontrolera, w Update 2.2
-Ta wersja ma aktualizacji oprogramowania. Jednak aktualizowania w wersji wcześniejszej niż Update 2, należy zainstalować sterownika Storport, Spaceport, a (w niektórych przypadkach) dysku aktualizacje oprogramowania układowego na urządzeniu.
+## <a name="controller-and-firmware-updates-in-update-22"></a>Aktualizacje kontrolera i oprogramowania układowego w aktualizacji 2.2
+Ta wersja ma aktualizacje tylko do oprogramowania. Jeśli jednak aktualizujesz wersję przed aktualizacją 2, musisz zainstalować na urządzeniu aktualizacje oprogramowania sprzętowego sterownika Storport, Spaceport i (w niektórych przypadkach) oprogramowania układowego dysku.
 
-Aby uzyskać więcej informacji na temat instalowania sterownika Storport, Spaceport i aktualizacje oprogramowania układowego dysku, zobacz [zainstalować Aktualizacja 2.2](storsimple-install-update-21.md) na urządzeniu StorSimple.
+Aby uzyskać więcej informacji na temat instalowania aktualizacji sterownika, storportu, portu kosmicznego i oprogramowania układowego dysku, zobacz [instalowanie aktualizacji 2.2](storsimple-install-update-21.md) na urządzeniu StorSimple.
 
-## <a name="virtual-device-updates-in-update-22"></a>Aktualizacje urządzenia wirtualnego w Update 2.2
-Ta aktualizacja nie można zastosować do urządzenia wirtualnego. Nowe urządzenia wirtualnego należy ma zostać utworzony. 
+## <a name="virtual-device-updates-in-update-22"></a>Aktualizacje urządzeń wirtualnych w aktualizacji 2.2
+Tej aktualizacji nie można zastosować do urządzenia wirtualnego. Konieczne będzie utworzenie nowych urządzeń wirtualnych. 
 
 ## <a name="next-step"></a>Następny krok
-Dowiedz się, jak [zainstalować Aktualizacja 2.2](storsimple-install-update-21.md) na urządzeniu StorSimple.
+Dowiedz się, jak [zainstalować aktualizację 2.2](storsimple-install-update-21.md) na urządzeniu StorSimple.
 

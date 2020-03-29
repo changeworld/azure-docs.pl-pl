@@ -1,7 +1,7 @@
 ---
 title: Pisanie zaawansowanych funkcji języka R
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: Dowiedz się, jak napisać funkcję języka R do zaawansowanych obliczeń statystycznych w usłudze Azure SQL Database przy użyciu usług Machine Learning (wersja zapoznawcza).
+description: Dowiedz się, jak napisać funkcję Języka R dla zaawansowanych obliczeń statystycznych w usłudze Azure SQL Database przy użyciu usług uczenia maszynowego (wersja zapoznawcza).
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -14,15 +14,15 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
 ms.openlocfilehash: 939798d5d9eb2843d7bbbbe74680342e4ce6ce95
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60702456"
 ---
-# <a name="write-advanced-r-functions-in-azure-sql-database-using-machine-learning-services-preview"></a>Zapisywanie zaawansowane funkcje języka R w usłudze Azure SQL Database przy użyciu usług Machine Learning (wersja zapoznawcza)
+# <a name="write-advanced-r-functions-in-azure-sql-database-using-machine-learning-services-preview"></a>Pisanie zaawansowanych funkcji języka R w bazie danych SQL usługi Azure przy użyciu usług uczenia maszynowego (wersja zapoznawcza)
 
-W tym artykule opisano sposób osadzania R matematyczne i procedury składowanej funkcje narzędziowe w języku SQL. Zaawansowane funkcje statystyczne, są skomplikowane implementacji języka T-SQL, które można zrobić w języku R z jednego wiersza kodu.
+W tym artykule opisano sposób osadzania funkcji matematycznych i narzędziowych języka R w procedurze składowanej SQL. Zaawansowane funkcje statystyczne, które są skomplikowane do zaimplementowania w T-SQL można wykonać w języku R tylko z jednego wiersza kodu.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
@@ -30,21 +30,21 @@ W tym artykule opisano sposób osadzania R matematyczne i procedury składowanej
 
 - Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz konto](https://azure.microsoft.com/free/).
 
-- Aby uruchomić przykładowy kod w tych ćwiczeń, najpierw musisz mieć usługi Azure SQL database przy użyciu usług Machine Learning (przy użyciu języka R) włączone. W okresie publicznej wersji zapoznawczej firma Microsoft dołączy Cię i włączy usługę Machine Learning dla Twojej istniejącej lub nowej bazy danych. Postępuj zgodnie z instrukcjami w części [Tworzenie konta na potrzeby korzystania z wersji zapoznawczej](sql-database-machine-learning-services-overview.md#signup).
+- Aby uruchomić przykładowy kod w tych ćwiczeniach, musisz najpierw mieć bazę danych SQL platformy Azure z włączonymi usługami uczenia maszynowego (z włączoną funkcją R). W okresie publicznej wersji zapoznawczej firma Microsoft dołączy Cię i włączy usługę Machine Learning dla Twojej istniejącej lub nowej bazy danych. Postępuj zgodnie z instrukcjami w części [Tworzenie konta na potrzeby korzystania z wersji zapoznawczej](sql-database-machine-learning-services-overview.md#signup).
 
-- Upewnij się, że została zainstalowana najnowsza wersja [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS). Można uruchomić skrypty języka R przy użyciu innych Zarządzanie bazą danych lub narzędzi do obsługi zapytań, ale w tym przewodniku Szybki Start użyjesz programu SSMS.
+- Upewnij się, że zainstalowano najnowsze [program SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS). Skrypty języka R można uruchamiać przy użyciu innych narzędzi do zarządzania bazami danych lub zapytań, ale w tym przewodniku Szybki start użyjesz programu SSMS.
 
-## <a name="create-a-stored-procedure-to-generate-random-numbers"></a>Utwórz procedurę przechowywaną, aby generować liczby losowe
+## <a name="create-a-stored-procedure-to-generate-random-numbers"></a>Tworzenie procedury składowanej w celu generowania liczb losowych
 
-Dla uproszczenia Użyjmy R `stats` pakiet, który został zainstalowany i domyślnie jest ładowany z usługi Azure SQL Database przy użyciu usług Machine Learning (wersja zapoznawcza). Pakiet zawiera setki funkcje dla typowych zadań statystycznych, między nimi `rnorm` funkcji. Ta funkcja generuje liczby losowe przy użyciu rozkładu normalnego, rozpoczynając od podanej odchylenie standardowe oznacza określoną liczbę.
+Dla uproszczenia użyjmy `stats` pakietu Języka R, który jest instalowany i ładowany domyślnie z usługą Azure SQL Database przy użyciu usług uczenia maszynowego (wersja zapoznawcza). Pakiet zawiera setki funkcji dla typowych zadań `rnorm` statystycznych, wśród nich funkcja. Ta funkcja generuje określoną liczbę liczb losowych przy użyciu rozkładu normalnego, biorąc pod uwagę odchylenie standardowe i środki.
 
-Na przykład poniższy kod R zwraca liczby 100 na mean 50, biorąc pod uwagę odchylenie standardowe w 3.
+Na przykład poniższy kod R zwraca 100 liczb na średnią 50, biorąc pod uwagę odchylenie standardowe 3.
 
 ```R
 as.data.frame(rnorm(100, mean = 50, sd = 3));
 ```
 
-Aby wywołać ten wiersz języka R z języka T-SQL, należy uruchomić `sp_execute_external_script` i Dodaj funkcję języka R w parametrze skrypt języka R następująco:
+Aby wywołać ten wiersz języka R `sp_execute_external_script` z T-SQL, uruchom i dodaj funkcję R w parametrze skryptu Języka R, w ten sposób:
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -55,9 +55,9 @@ OutputDataSet <- as.data.frame(rnorm(100, mean = 50, sd =3));
 WITH RESULT SETS(([Density] FLOAT NOT NULL));
 ```
 
-Co zrobić, jeśli chcesz ułatwić Generowanie inny zbiór liczb losowych?
+Co zrobić, jeśli chcesz ułatwić generowanie innego zestawu liczb losowych?
 
-To łatwe w połączeniu z językiem SQL. Należy zdefiniować procedury przechowywanej, która pobiera argumenty od użytkownika, a następnie przekazać te argumenty do skryptu języka R jako zmienne.
+Jest to łatwe w połączeniu z SQL. Można zdefiniować procedurę składowaną, która pobiera argumenty od użytkownika, a następnie przekazać te argumenty do skryptu R jako zmienne.
 
 ```sql
 CREATE PROCEDURE MyRNorm (
@@ -78,13 +78,13 @@ OutputDataSet <- as.data.frame(rnorm(mynumbers, mymean, mysd));
 WITH RESULT SETS(([Density] FLOAT NOT NULL));
 ```
 
-- Pierwszy wiersz definiuje każdego z parametrów wejściowych SQL, które są wymagane podczas wykonywania procedury składowanej.
+- Pierwszy wiersz definiuje każdy z parametrów wejściowych SQL, które są wymagane podczas wykonywania procedury składowanej.
 
-- Wiersz zaczynający się od `@params` definiuje wszystkie zmienne używane przez kod R i odpowiadające im typy danych SQL.
+- Wiersz rozpoczynający `@params` się od definiuje wszystkie zmienne używane przez kod Języka R i odpowiednie typy danych SQL.
 
-- Wiersze, które następują bezpośrednio po mapowania nazw parametrów SQL do odpowiedniej nazwy zmiennych R.
+- Wiersze, które natychmiast po mapują nazwy parametrów SQL do odpowiednich nazw zmiennych R.
 
-Teraz, gdy funkcja R zostały opakowane w procedurze składowanej, można łatwo wywołanie funkcji i przekazać różne wartości w następujący sposób:
+Teraz, gdy funkcja R została opakowana w procedurę składowaną, można łatwo wywołać funkcję i przekazać różne wartości, takie jak:
 
 ```sql
 EXECUTE MyRNorm @param1 = 100
@@ -92,11 +92,11 @@ EXECUTE MyRNorm @param1 = 100
     , @param3 = 3
 ```
 
-## <a name="use-r-utility-functions-for-troubleshooting"></a>Korzystanie z rozwiązań R funkcji narzędzia do rozwiązywania problemów
+## <a name="use-r-utility-functions-for-troubleshooting"></a>Używanie funkcji narzędzia R do rozwiązywania problemów
 
-`utils` Zainstalowany domyślny pakiet oferuje różne funkcje narzędziowe badania bieżące środowisko R. Te funkcje mogą być przydatne, jeśli niezgodności w taki sposób, który wykonuje kodu języka R, SQL i w środowiskach poza programem. Na przykład, może użyć języka R `memory.limit()` funkcję, aby pobrać pamięci dla bieżącego środowiska języka R.
+Pakiet, `utils` zainstalowany domyślnie, zapewnia wiele funkcji narzędziowych do badania bieżącego środowiska R. Te funkcje mogą być przydatne, jeśli znajdziesz rozbieżności w sposobie wykonywania kodu języka R w języku SQL i w środowiskach zewnętrznych. Na przykład można użyć `memory.limit()` funkcji R, aby uzyskać pamięć dla bieżącego środowiska R.
 
-Ponieważ `utils` pakiet jest zainstalowany, ale nie załadowano domyślnie, należy użyć `library()` funkcji najpierw go załadować.
+Ponieważ `utils` pakiet jest zainstalowany, ale nie jest `library()` ładowany domyślnie, należy użyć funkcji, aby załadować go najpierw.
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -110,4 +110,4 @@ WITH RESULT SETS(([Col1] INT NOT NULL));
 ```
 
 > [!TIP]
-> Wielu użytkowników, takich jak używać funkcji czasu systemu w języku R, takich jak `system.time` i `proc.time`czas wykorzystywane przez procesy R przechwytywania i analizowania problemów z wydajnością.
+> Wielu użytkowników lubi używać funkcji chronometrażu `system.time` `proc.time`systemu w R, takich jak i , aby uchwycić czas używany przez procesy R i analizować problemy z wydajnością.

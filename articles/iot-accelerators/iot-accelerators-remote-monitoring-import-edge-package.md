@@ -1,6 +1,6 @@
 ---
-title: Rozwiązania do zdalnego monitorowania importowania pakietu Edge — Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano jak zaimportować pakiet IoT Edge do akceleratora rozwiązania monitorowania zdalnego
+title: Pakiet usługi zdalnego monitorowania zaimportowania usługi Edge — Azure | Dokumenty firmy Microsoft
+description: W tym artykule opisano sposób importowania pakietu usługi IoT Edge do akceleratora rozwiązań do zdalnego monitorowania
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,48 +9,48 @@ services: iot-accelerators
 ms.date: 10/10/2018
 ms.topic: conceptual
 ms.openlocfilehash: 34222f396ed3c43932371aa9f64a459bb2a5dd0e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61443015"
 ---
-# <a name="import-an-iot-edge-package-into-your-remote-monitoring-solution-accelerator"></a>Importowanie pakietu IoT Edge w akceleratorze rozwiązanie monitorowania zdalnego
+# <a name="import-an-iot-edge-package-into-your-remote-monitoring-solution-accelerator"></a>Importowanie pakietu usługi IoT Edge do akceleratora rozwiązania do monitorowania zdalnego
 
-Manifest wdrażania określa moduły do wdrożenia na urządzeniu usługi IoT Edge. W tym artykule przyjęto założenie, że deweloper w Twojej organizacji został już utworzony manifest wdrożenia. Aby dowiedzieć się, jak deweloper tworzy manifestu, zobacz jeden z następujących artykułów z instrukcjami usługi IoT Edge:
+Manifest wdrażania definiuje moduły do wdrożenia na urządzeniu usługi IoT Edge. W tym artykule założono, że deweloper w organizacji utworzył już manifest wdrożenia. Aby dowiedzieć się, jak deweloper tworzy manifest, zobacz jeden z następujących artykułów insytów IoT Edge:
 
-- [Wdrożyć moduły usługi Azure IoT Edge w witrynie Azure portal](../iot-edge/how-to-deploy-modules-portal.md)
-- [Wdrożyć moduły usługi Azure IoT Edge przy użyciu wiersza polecenia platformy Azure](../iot-edge/how-to-deploy-modules-cli.md)
-- [Wdrażanie usługi Azure IoT Edge modułów z programu Visual Studio Code](../iot-edge/how-to-deploy-modules-vscode.md)
+- [Wdrażanie modułów usługi Azure IoT Edge z witryny Azure portal](../iot-edge/how-to-deploy-modules-portal.md)
+- [Wdrażanie modułów usługi Azure IoT Edge za pomocą interfejsu wiersza polecenia platformy Azure](../iot-edge/how-to-deploy-modules-cli.md)
+- [Wdrażanie modułów usługi Azure IoT Edge z kodu programu Visual Studio](../iot-edge/how-to-deploy-modules-vscode.md)
 
-Deweloper tworzy i testuje manifest wdrożenia w środowisku programistycznym. Gdy wszystko będzie gotowe, możesz zaimportować manifest w akceleratorze rozwiązanie monitorowania zdalnego.
+Deweloper tworzy i testuje manifest wdrażania w środowisku deweloperskim. Gdy będziesz gotowy, możesz zaimportować manifest do akceleratora rozwiązania zdalnego monitorowania.
 
-## <a name="export-a-manifest"></a>Eksportuj manifestu
+## <a name="export-a-manifest"></a>Eksportowanie manifestu
 
-Eksportowanie pliku manifestu wdrożenia ze środowiska programowania za pomocą witryny Azure portal:
+Użyj witryny Azure portal do eksportowania manifestu wdrażania ze środowiska deweloperskiego:
 
-1. W witrynie Azure portal przejdź do Centrum IoT hub, używane do tworzenia i testowania na urządzeniach usługi IoT Edge. Kliknij przycisk **usługi IoT Edge** i następnie **wdrożenia usługi IoT Edge**: ![IoT Edge](media/iot-accelerators-remote-monitoring-import-edge-package/iotedge.png)
+1. W witrynie Azure portal przejdź do centrum IoT hub, którego używasz do tworzenia i testowania urządzeń usługi IoT Edge. Kliknij pozycję **IoT Edge,** a następnie **wdrożenia usługi IoT Edge**: ![IoT Edge](media/iot-accelerators-remote-monitoring-import-edge-package/iotedge.png)
 
-1. Kliknij wdrożenie konfiguracji wdrożenia, którego chcesz użyć. **Szczegóły wdrożenia** spowoduje wyświetlenie strony: ![Szczegóły wdrożenia usługi IoT Edge](media/iot-accelerators-remote-monitoring-import-edge-package/deploymentdetails.png)
+1. Kliknij wdrożenie, które ma konfigurację wdrożenia, której chcesz użyć. Zostanie wyświetlona strona ![ **Szczegóły wdrożenia:** Szczegóły wdrożenia usługi IoT Edge](media/iot-accelerators-remote-monitoring-import-edge-package/deploymentdetails.png)
 
-1. Kliknij przycisk **manifestu usługi IoT Edge Pobierz**:  ![Pobierz manifest wdrażania](media/iot-accelerators-remote-monitoring-import-edge-package/download.png)
+1. Kliknij **pozycję Pobierz manifest usługi IoT Edge**: ![Pobierz manifest wdrożenia](media/iot-accelerators-remote-monitoring-import-edge-package/download.png)
 
 1. Zapisz plik JSON jako plik lokalny o nazwie **deploymentmanifest.json**.
 
-Masz teraz plik, który zawiera manifest wdrożenia. W następnej sekcji można zaimportować tego manifestu w pakiecie do rozwiązania do zdalnego monitorowania.
+Teraz masz plik, który zawiera manifest wdrożenia. W następnej sekcji zaimportujesz ten manifest jako pakiet do rozwiązania zdalnego monitorowania.
 
 ## <a name="import-a-package"></a>Importowanie pakietu
 
-Wykonaj poniższe kroki, aby zaimportować manifest wdrożenia Edge jako pakiet do rozwiązania:
+Wykonaj poniższe czynności, aby zaimportować manifest wdrożenia usługi Edge jako pakiet do rozwiązania:
 
-1. Przejdź do **pakietów** strony w internetowym interfejsie użytkownika zdalnego monitorowania:  ![Strona pakietów](media/iot-accelerators-remote-monitoring-import-edge-package/packagespage.png)
+1. Przejdź do strony **Pakiety** na stronie ![Interfejs użytkownika sieci Web zdalnego monitorowania: pakiety](media/iot-accelerators-remote-monitoring-import-edge-package/packagespage.png)
 
-1. Kliknij przycisk **+ nowy pakiet**, wybierz **manifestu krawędzi** typ pakietu, a następnie kliknij przycisk **Przeglądaj** wybrać **deploymentmanifest.json** pliku został zapisany w poprzedniej sekcji:  ![Wybierz manifestu](media/iot-accelerators-remote-monitoring-import-edge-package/selectmanifest.png)
+1. Kliknij **+ Nowy pakiet**, wybierz manifest **krawędzi** jako typ pakietu, a następnie kliknij przycisk **Przeglądaj,** ![aby wybrać plik **deploymentmanifest.json** zapisany w poprzedniej sekcji: Wybierz manifest](media/iot-accelerators-remote-monitoring-import-edge-package/selectmanifest.png)
 
-1. Kliknij przycisk **przekazywanie** Dodaj pakiet do rozwiązania monitorowania zdalnego:  ![Przekazany pakiet.](media/iot-accelerators-remote-monitoring-import-edge-package/uploadedpackage.png)
+1. Kliknij **przycisk Przekaż,** aby dodać pakiet ![do rozwiązania do zdalnego monitorowania: Przekazany pakiet](media/iot-accelerators-remote-monitoring-import-edge-package/uploadedpackage.png)
 
-Teraz gdy już przesłano manifest wdrożenia usługi IoT Edge jako pakiet. Na **wdrożeń** strony, można wdrożyć tego pakietu do połączonych urządzeń usługi IoT Edge.
+Teraz przekażesz manifest wdrożenia usługi IoT Edge jako pakiet. Na stronie **Wdrożenia** można wdrożyć ten pakiet na podłączonych urządzeniach usługi IoT Edge.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy wiesz jak wdrażać moduły na urządzeniu usługi IoT Edge z rozwiązania do zdalnego monitorowania, następnym krokiem jest więcej informacji na temat [usługi IoT Edge](../iot-edge/about-iot-edge.md).
+Teraz, gdy dowiesz się, jak wdrożyć moduły na urządzeniu Usługi IoT Edge z rozwiązania do zdalnego monitorowania, następnym krokiem jest dowiedzenie się więcej o [Udręki IoT.](../iot-edge/about-iot-edge.md)

@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie uwierzytelniania subskrybenta elementu webhook — Azure Event Grid IoT Edge | Microsoft Docs
+title: Konfigurowanie uwierzytelniania subskrybentów elementu webhook — usługa Azure Event Grid IoT Edge | Dokumenty firmy Microsoft
 description: Konfigurowanie uwierzytelniania subskrybenta elementu webhook
 author: VidyaKukke
 manager: rajarv
@@ -10,17 +10,17 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 101dcae5870322878cec48098f2efae32cc68c14
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76841734"
 ---
 # <a name="configure-webhook-subscriber-authentication"></a>Konfigurowanie uwierzytelniania subskrybenta elementu webhook
 
-Ten przewodnik zawiera przykłady możliwych konfiguracji subskrybentów elementu webhook dla modułu Event Grid. Domyślnie tylko punkty końcowe HTTPS są akceptowane dla subskrybentów elementu webhook. Moduł Event Grid zostanie odrzucony, jeśli Subskrybenci przedstawiają certyfikat z podpisem własnym.
+W tym przewodniku przedstawiono przykłady możliwych konfiguracji subskrybentów elementu webhook dla modułu siatki zdarzeń. Domyślnie tylko punkty końcowe HTTPS są akceptowane dla subskrybentów elementu webhook. Moduł siatki zdarzeń zostanie odrzucony, jeśli subskrybent przedstawi certyfikat z podpisem własnym.
 
-## <a name="allow-only-https-subscriber"></a>Zezwalaj tylko na subskrybenta HTTPS
+## <a name="allow-only-https-subscriber"></a>Zezwalaj tylko subskrybentowi HTTPS
 
 ```json
  {
@@ -32,7 +32,7 @@ Ten przewodnik zawiera przykłady możliwych konfiguracji subskrybentów element
 }
  ```
 
-## <a name="allow-https-subscriber-with-self-signed-certificate"></a>Zezwalaj na subskrybenta HTTPS z certyfikatem z podpisem własnym
+## <a name="allow-https-subscriber-with-self-signed-certificate"></a>Zezwalaj subskrybentowi HTTPS z certyfikatem z podpisem własnym
 
 ```json
  {
@@ -45,9 +45,9 @@ Ten przewodnik zawiera przykłady możliwych konfiguracji subskrybentów element
  ```
 
 >[!NOTE]
->Ustaw właściwość `outbound__webhook__allowUnknownCA` na `true` tylko w środowiskach testowych, ponieważ zazwyczaj używasz certyfikatów z podpisem własnym. W przypadku obciążeń produkcyjnych zaleca się ich ustawienie na **wartość false**.
+>Ustaw `outbound__webhook__allowUnknownCA` właściwość `true` tylko w środowiskach testowych, jak zazwyczaj można użyć certyfikatów z podpisem własnym. W przypadku obciążeń produkcyjnych zaleca się ustawienie ich na **false**.
 
-## <a name="allow-https-subscriber-but-skip-certificate-validation"></a>Zezwalaj na subskrybenta HTTPS, ale Pomijaj weryfikację certyfikatu
+## <a name="allow-https-subscriber-but-skip-certificate-validation"></a>Zezwalaj subskrybentowi HTTPS na pomijanie sprawdzania poprawności certyfikatu
 
 ```json
  {
@@ -60,9 +60,9 @@ Ten przewodnik zawiera przykłady możliwych konfiguracji subskrybentów element
  ```
 
 >[!NOTE]
->Ustaw właściwość `outbound__webhook__skipServerCertValidation` tak, aby `true` tylko w środowiskach testowych, ponieważ użytkownik nie będzie przedprezentować certyfikatu, który musi zostać uwierzytelniony. W przypadku obciążeń produkcyjnych zaleca się ich ustawienie na **wartość FAŁSZ** .
+>Ustaw `outbound__webhook__skipServerCertValidation` właściwość `true` tylko w środowiskach testowych, ponieważ może nie być przedstawienie certyfikatu, który musi być uwierzytelniony. W przypadku obciążeń produkcyjnych zaleca się ustawienie ich **na**
 
-## <a name="allow-both-http-and-https-with-self-signed-certificates"></a>Zezwalaj na protokoły HTTP i HTTPS z certyfikatami z podpisem własnym
+## <a name="allow-both-http-and-https-with-self-signed-certificates"></a>Zezwalaj na zarówno protokół HTTP, jak i protokół HTTPS z certyfikatami z podpisem własnym
 
 ```json
  {
@@ -75,4 +75,4 @@ Ten przewodnik zawiera przykłady możliwych konfiguracji subskrybentów element
  ```
 
 >[!NOTE]
->Ustaw właściwość `outbound__webhook__httpsOnly` na `false` tylko w środowiskach testowych, ponieważ warto najpierw utworzyć subskrybenta protokołu HTTP. W przypadku obciążeń produkcyjnych zaleca się ich ustawienie na **wartość true**
+>Ustaw `outbound__webhook__httpsOnly` właściwość `false` tylko w środowiskach testowych, jak można wywołać subskrybenta HTTP pierwszy. W przypadku obciążeń produkcyjnych zalecamy ustawienie ich **na prawdziwe**
