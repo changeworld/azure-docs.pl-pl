@@ -1,7 +1,7 @@
 ---
-title: Testy wsadowe — LUIS
+title: Testowanie wsadowe — usługa LUIS
 titleSuffix: Azure Cognitive Services
-description: Umożliwia testowanie partii stale Praca nad aplikacją, aby dostosować go i zwiększyć jej interpretacji języka.
+description: Użyj testowania wsadowego, aby stale pracować nad aplikacją, aby ją udoskonalić i poprawić jej zrozumienie języka.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,45 +12,45 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
 ms.openlocfilehash: e9ad7c52af20762633c710b39a64fbebf0cf6213
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79220051"
 ---
-# <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>Testowanie wsadowe przy użyciu 1000 wyrażenia długości w portalu LUIS
+# <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>Testowanie wsadowe z 1000 wypowiedzi w portalu usługi LUIS
 
-Testy wsadowe sprawdzają poprawność aktywnej przeszkolonej wersji, aby zmierzyć jej dokładność przewidywania. Test wsadowy ułatwia przeglądanie dokładności poszczególnych zamierzeń i jednostek w aktywnej wersji, wyświetlając wyniki z wykresem. Zapoznaj się z wynikami testów wsadowych, aby podjąć odpowiednie działania w celu poprawienia dokładności, na przykład dodając więcej przykładowych wyrażenia długości do zamiaru, jeśli aplikacja często nie zidentyfikuje odpowiednich obiektów potrzebnych lub etykietowania w ramach wypowiedź.
+Testowanie wsadowe sprawdza poprawność aktywnej wersji uczonej, aby zmierzyć dokładność przewidywania. Test wsadowy pomaga wyświetlić dokładność każdego zamiaru i jednostki w aktywnej wersji, wyświetlając wyniki z wykresem. Przejrzyj wyniki testu wsadowego, aby podjąć odpowiednie działania w celu zwiększenia dokładności, takie jak dodawanie więcej wypowiedzi przykład do intencji, jeśli aplikacja często nie można zidentyfikować poprawne intencji lub etykietowania jednostek w wypowiedź.
 
-## <a name="group-data-for-batch-test"></a>Dane grupy dla usługi batch testu
+## <a name="group-data-for-batch-test"></a>Dane grupy dla testu wsadowego
 
-Jest ważne, czy jesteś nowym użytkownikiem usługi LUIS wypowiedzi używane do testowania usługi batch. Jeśli masz zestaw danych wyrażenia długości, Podziel wyrażenia długości na trzy zestawy: przykład wyrażenia długości dodany do intencji, wyrażenia długości otrzymany z opublikowanego punktu końcowego i wyrażenia długości używany do wsadowego testowania LUIS po jego przeszkoleniu. 
+Ważne jest, że wypowiedzi używane do testowania wsadowego są nowe usługi LUIS. Jeśli masz zestaw danych wypowiedzi, podzielić wypowiedzi na trzy zestawy: wypowiedzi przykład dodane do intencji, wypowiedzi odebrane z opublikowanego punktu końcowego i wypowiedzi używane do testu wsadowego usługi LUIS po jego uczone. 
 
-## <a name="a-data-set-of-utterances"></a>Zestaw danych wyrażenia długości
+## <a name="a-data-set-of-utterances"></a>Zestaw danych wypowiedzi
 
-Prześlij plik wsadowy wyrażenia długości, nazywany *zestawem danych*, na potrzeby testowania wsadowego. Zestaw danych jest plikiem w formacie JSON zawierającym maksymalnie 1 000 oznaczony **niezduplikowaną** wyrażenia długości. W aplikacji można testować do 10 zestawów danych. Jeśli chcesz przetestować więcej, Usuń zestaw danych, a następnie Dodaj nowy.
+Prześlij plik wsadowy wypowiedzi, znany jako *zestaw danych,* do testowania wsadowego. Zestaw danych jest plikiem w formacie JSON zawierającym maksymalnie 1000 wypowiedzi bez **duplikatów.** Możesz przetestować maksymalnie 10 zestawów danych w aplikacji. Jeśli chcesz przetestować więcej, usuń zestaw danych, a następnie dodaj nowy.
 
-|**Przepisy**|
+|**Zasady**|
 |--|
-|\* Nie zduplikowane wypowiedzi|
-|wyrażenia o 1000 lub mniej|
+|*Brak zduplikowanych wypowiedzi|
+|1000 wypowiedzi lub mniej|
 
-\* Duplikaty są traktowane jako zgodne dokładnie taki ciąg znaków, nie dopasowania, które są najpierw stokenizowanego. 
+*Duplikaty są traktowane jako dokładne dopasowania ciągów, a nie dopasowania, które są najpierw tokenizowane. 
 
-## <a name="entities-allowed-in-batch-tests"></a>Dozwolone w partii testów jednostek
+## <a name="entities-allowed-in-batch-tests"></a>Jednostki dozwolone w testach wsadowych
 
-Wszystkie jednostki niestandardowe znajdą się w modelu są wyświetlane w filtrze partii jednostek testów, nawet, jeśli brak odpowiednich jednostek w pliku danych usługi batch.
+Wszystkie encje niestandardowe w modelu są wyświetlane w filtrze jednostek testu wsadowego, nawet jeśli w danych pliku wsadowego nie ma odpowiednich jednostek.
 
 <a name="json-file-with-no-duplicates"></a>
 <a name="example-batch-file"></a>
 
 ## <a name="batch-file-format"></a>Format pliku wsadowego
 
-Plik wsadowy składa się z wypowiedzi. Każdy wypowiedź musi mieć oczekiwaną prognozę zamierzenia wraz z wszelkimi [jednostkami](luis-concept-entity-types.md#types-of-entities) , które powinny być wykrywane. 
+Plik wsadowy składa się z wypowiedzi. Każdy wypowiedź musi mieć przewidywanie intencji oczekiwanych wraz z wszelkich [jednostek maszyny,](luis-concept-entity-types.md#types-of-entities) które oczekują, że zostaną wykryte. 
 
-## <a name="batch-syntax-template-for-intents-with-entities"></a>Szablon składni usługi Batch dla intencji z jednostkami
+## <a name="batch-syntax-template-for-intents-with-entities"></a>Szablon składni partii dla intencji z encjami
 
-Uruchom plik wsadowy za pomocą następującego szablonu:
+Użyj następującego szablonu, aby uruchomić plik wsadowy:
 
 ```JSON
 [
@@ -74,13 +74,13 @@ Uruchom plik wsadowy za pomocą następującego szablonu:
 ]
 ```
 
-Plik wsadowy używa właściwości **startPos** i **endPos** do zanotowania początku i końca jednostki. Wartości są oparte na zerze i powinna nie rozpocząć lub kończy się spacją. To różni się od dzienników zapytań, korzystających z startIndex i endIndex właściwości. 
+Plik wsadowy używa właściwości **startPos** i **endPos,** aby zanotować początek i koniec jednostki. Wartości są oparte na wartości zero i nie powinny rozpoczynać się ani kończyć na spacji. Różni się to od dzienników kwerend, które używają właściwości startIndex i endIndex. 
 
 [!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 
-## <a name="batch-syntax-template-for-intents-without-entities"></a>Szablon składni usługi Batch dla intencji bez jednostek
+## <a name="batch-syntax-template-for-intents-without-entities"></a>Szablon składni partii dla intencji bez encji
 
-Użyj następującego szablonu, aby uruchomić plik wsadowy bez jednostek:
+Użyj następującego szablonu, aby uruchomić plik wsadowy bez encji:
 
 ```JSON
 [
@@ -92,45 +92,45 @@ Użyj następującego szablonu, aby uruchomić plik wsadowy bez jednostek:
 ]
 ```
 
-Jeśli nie chcesz testować jednostek, Dołącz Właściwość `entities` i ustaw wartość jako pustą tablicę `[]`.
+Jeśli nie chcesz testować jednostek, `entities` dołącz właściwość i ustaw `[]`wartość jako pustą tablicę, .
 
 
-## <a name="common-errors-importing-a-batch"></a>Typowe błędy importowania partii
+## <a name="common-errors-importing-a-batch"></a>Typowe błędy podczas importowania partii
 
-Typowe błędy: 
+Typowe błędy obejmują: 
 
-> * Więcej niż 1000 wypowiedzi
-> * Obiekt JSON wypowiedź, która nie ma właściwości jednostki. Właściwość może być pustą tablicą.
-> * Wyrazy z etykietą w wielu jednostkach
-> * Etykieta jednostki rozpoczęcia lub zakończenia w miejscu.
+> * Ponad 1000 wypowiedzi
+> * Wypowiedź JSON obiektu, który nie ma właściwości jednostki. Właściwość może być pustą tablicą.
+> * Programy Word(y) oznaczone w wielu encjach
+> * Etykieta jednostki rozpoczynająca się lub kończąca spację.
 
-## <a name="batch-test-state"></a>Stan testu usługi Batch
+## <a name="batch-test-state"></a>Stan testu wsadowego
 
-LUIS śledzi stan ostatniego testu zestawu danych. Obejmuje to data ostatniego uruchomienia rozmiar (liczba wypowiedzi w zadaniu wsadowym) i wynik ostatniego (Liczba pomyślnie przewidywane wypowiedzi).
+Usługa LUIS śledzi stan ostatniego testu każdego zestawu danych. Obejmuje to rozmiar (liczba wypowiedzi w partii), data ostatniego uruchomienia i ostatni wynik (liczba pomyślnie przewidywanych wypowiedzi).
 
 <a name="sections-of-the-results-chart"></a>
 
-## <a name="batch-test-results"></a>Wyniki testu usługi Batch
+## <a name="batch-test-results"></a>Wyniki testów wsadowych
 
-Wynik testu usługi batch jest wykres punktowy, znane jako macierz błędu. Ten wykres jest porównanie sposób 4 wypowiedzi w pliku wsadowego i celem przewidywane bieżącego modelu oraz jednostki. 
+Wynik testu wsadowego jest wykresem punktowym, znanym jako macierz błędów. Ten wykres jest 4-sposób porównania wypowiedzi w pliku wsadowym i przewidywanych intencji bieżącego modelu i jednostek. 
 
-Punkty danych w sekcjach **fałszywe pozytywne** i **fałszywe wartości ujemne** wskazują błędy, które należy zbadać. Jeśli wszystkie punkty danych znajdują się w sekcjach **prawdziwe pozytywne** i **prawdziwe** , dokładność Twojej aplikacji jest idealna dla tego zestawu danych.
+Punkty danych w sekcjach **Fałszywie dodatni** i **Fałszywy ujemny** wskazują błędy, które należy zbadać. Jeśli wszystkie punkty danych znajdują się w sekcjach **True Positive** i **True Negative,** dokładność aplikacji jest idealna w tym zestawie danych.
 
 ![Cztery sekcje wykresu](./media/luis-concept-batch-test/chart-sections.png)
 
-Ten wykres ułatwia znajdowanie wypowiedzi przewiduje LUIS niepoprawnie oparte na jego bieżący szkolenia. Wyniki są wyświetlane na region wykresu. Wybierać poszczególne punkty na wykresie, aby przejrzeć informacje o wypowiedź lub wybierz nazwę region, aby przejrzeć wyniki wypowiedź w danym regionie.
+Ten wykres pomaga znaleźć wypowiedzi, które usługa LUIS przewiduje niepoprawnie na podstawie jego bieżącego szkolenia. Wyniki są wyświetlane dla regionu wykresu. Wybierz poszczególne punkty na wykresie, aby przejrzeć informacje o wypowiedź lub wybierz nazwę regionu do przeglądu wyników wypowiedź w tym regionie.
 
 ![Testowanie wsadowe](./media/luis-concept-batch-test/batch-testing.png)
 
 ## <a name="errors-in-the-results"></a>Błędy w wynikach
 
-Błędy w teście partii wskazują intencji, które nie są przewidzieć, jak wspomniano w pliku wsadowym. Błędy są oznaczone w sekcjach czerwony wykresu. 
+Błędy w teście wsadowym wskazują intencje, które nie są przewidywane, jak wspomniano w pliku wsadowym. Błędy są wskazane w dwóch czerwonych sekcjach wykresu. 
 
-Sekcji dodatnią wartość false wskazuje, że wypowiedź dopasowane przeznaczenie lub jednostki, gdy go nie powinny mieć. Ujemna wartość false wskazuje, że wypowiedź niezgodny przeznaczenie lub jednostki usługi podczas powinien mieć. 
+Sekcja fałszywie dodatnia wskazuje, że wypowiedź odpowiada intencji lub jednostki, gdy nie powinien mieć. Fałszywy ujemny wskazuje, że wypowiedź nie pasuje do intencji lub jednostki, kiedy powinna mieć. 
 
-## <a name="fixing-batch-errors"></a>Naprawianie błędów usługi batch
+## <a name="fixing-batch-errors"></a>Naprawianie błędów partii
 
-Jeśli występują błędy podczas badania usługi batch, możesz dodać więcej wypowiedzi do intencji lub etykiety więcej wypowiedzi o jednostkę którą chcesz pomóc upewnić rozróżnić intencje usługi LUIS. Po dodaniu wyrażenia długości i oznaczeniu ich, a mimo to w testowaniu wsadowym nadal pojawiają się błędy przewidywania, rozważ dodanie funkcji [listy fraz](luis-concept-feature.md) z słownictwem specyficznym dla domeny, aby ułatwić Luis szybsze uczenie się. 
+Jeśli istnieją błędy w testowaniu wsadowym, można dodać więcej wypowiedzi do intencji i/lub etykiety więcej wypowiedzi z jednostką, aby pomóc usługi LUIS dokonać dyskryminacji między intencjami. Jeśli dodano wypowiedzi i oznaczone je i nadal uzyskać błędy przewidywania w testowaniu wsadowym, należy rozważyć dodanie funkcji [listy fraz](luis-concept-feature.md) ze słownikiem specyficznym dla domeny, aby pomóc usługi LUIS szybciej. 
 
 ## <a name="next-steps"></a>Następne kroki
 

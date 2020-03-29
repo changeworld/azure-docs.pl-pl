@@ -1,7 +1,7 @@
 ---
-title: Jak określić język źródłowy dla zamiany mowy na tekst
+title: Jak określić język źródłowy mowy do tekstu
 titleSuffix: Azure Cognitive Services
-description: Zestaw Speech SDK umożliwia określenie języka źródłowego podczas konwertowania mowy na tekst. W tym artykule opisano sposób korzystania z metod FromConfig i SourceLanguageConfig w celu umożliwienia usłudze mowy znajomości języka źródłowego i dostarczania niestandardowego obiektu docelowego modelu.
+description: Pakiet SDK mowy umożliwia określenie języka źródłowego podczas konwertowania mowy na tekst. W tym artykule opisano, jak używać FromConfig i SourceLanguageConfig metody, aby umożliwić usługi mowy znać język źródłowy i zapewnić niestandardowy model docelowy.
 services: cognitive-services
 author: susanhu
 manager: nitinme
@@ -11,35 +11,35 @@ ms.topic: conceptual
 ms.date: 01/07/2020
 ms.author: qiohu
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: e4f4dd3c1e23855a8a1a69dac72c232779206f1d
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: f0723534d9d2187593cb73f058ffea62473b80a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121713"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235966"
 ---
-# <a name="specify-source-language-for-speech-to-text"></a>Określ język źródłowy dla zamiany mowy na tekst
+# <a name="specify-source-language-for-speech-to-text"></a>Określanie języka źródłowego mowy na tekst
 
-W tym artykule dowiesz się, jak określić język źródłowy wejścia audio przesłanego do zestawu Speech SDK na potrzeby rozpoznawania mowy. Dodatkowo przykładowy kod jest dostarczany, aby określić niestandardowy model mowy na potrzeby ulepszonego rozpoznawania.
+W tym artykule dowiesz się, jak określić język źródłowy dla danych wejściowych audio przekazanych do SDK mowy do rozpoznawania mowy. Ponadto przykładowy kod jest dostarczany, aby określić niestandardowy model mowy dla lepszego rozpoznawania.
 
 ::: zone pivot="programming-language-csharp"
 
-## <a name="how-to-specify-source-language-in-c"></a>Jak określić język źródłowy wC#
+## <a name="how-to-specify-source-language-in-c"></a>Jak określić język źródłowy w języku C #
 
-W tym przykładzie język źródłowy jest dostarczany jawnie jako parametr korzystający z konstrukcji `SpeechRecognizer`.
+W tym przykładzie język źródłowy jest jawnie dostarczany jako parametr przy użyciu `SpeechRecognizer` konstrukcji.
 
 ```csharp
 var recognizer = new SpeechRecognizer(speechConfig, "de-DE", audioConfig);
 ```
 
-W tym przykładzie język źródłowy jest dostarczany przy użyciu `SourceLanguageConfig`. Następnie `sourceLanguageConfig` jest przenoszona jako parametr do `SpeechRecognizer` konstrukcja.
+W tym przykładzie język źródłowy jest dostarczany przy użyciu `SourceLanguageConfig`programu . Następnie `sourceLanguageConfig` jest przekazywana jako `SpeechRecognizer` parametr do konstruowania.
 
 ```csharp
 var sourceLanguageConfig = SourceLanguageConfig.FromLanguage("de-DE");
 var recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioConfig);
 ```
 
-W tym przykładzie język źródłowy i niestandardowy punkt końcowy są udostępniane przy użyciu `SourceLanguageConfig`. Następnie `sourceLanguageConfig` jest przenoszona jako parametr do `SpeechRecognizer` konstrukcja.
+W tym przykładzie język źródłowy i `SourceLanguageConfig`niestandardowy punkt końcowy są dostarczane przy użyciu . Następnie `sourceLanguageConfig` jest przekazywana jako `SpeechRecognizer` parametr do konstruowania.
 
 ```csharp
 var sourceLanguageConfig = SourceLanguageConfig.FromLanguage("de-DE", "The Endpoint ID for your custom model.");
@@ -47,29 +47,29 @@ var recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioC
 ```
 
 >[!Note]
-> Metody `SpeechRecognitionLanguage` i `EndpointId` Set są przestarzałe z klasy `SpeechConfig` w C#. Korzystanie z tych metod jest niezalecane i nie powinno być używane podczas konstruowania `SpeechRecognizer`.
+> `SpeechRecognitionLanguage`i `EndpointId` set metody są przestarzałe z `SpeechConfig` klasy w języku C#. Stosowanie tych metod są odradzane i nie powinny `SpeechRecognizer`być używane podczas konstruowania .
 
 ::: zone-end
 
 ::: zone pivot="programming-language-cpp"
 
 
-## <a name="how-to-specify-source-language-in-c"></a>Jak określić język źródłowy wC++
+## <a name="how-to-specify-source-language-in-c"></a>Jak określić język źródłowy w języku C++
 
-W tym przykładzie język źródłowy jest dostarczany jawnie jako parametr przy użyciu metody `FromConfig`.
+W tym przykładzie język źródłowy jest jawnie `FromConfig` dostarczany jako parametr przy użyciu metody.
 
 ```C++
 auto recognizer = SpeechRecognizer::FromConfig(speechConfig, "de-DE", audioConfig);
 ```
 
-W tym przykładzie język źródłowy jest dostarczany przy użyciu `SourceLanguageConfig`. Następnie `sourceLanguageConfig` jest przenoszona jako parametr do `FromConfig` podczas tworzenia `recognizer`.
+W tym przykładzie język źródłowy jest dostarczany przy użyciu `SourceLanguageConfig`programu . Następnie `sourceLanguageConfig` jest przekazywana jako `FromConfig` parametr podczas `recognizer`tworzenia pliku .
 
 ```C++
 auto sourceLanguageConfig = SourceLanguageConfig::FromLanguage("de-DE");
 auto recognizer = SpeechRecognizer::FromConfig(speechConfig, sourceLanguageConfig, audioConfig);
 ```
 
-W tym przykładzie język źródłowy i niestandardowy punkt końcowy są udostępniane przy użyciu `SourceLanguageConfig`. `sourceLanguageConfig` jest przenoszona jako parametr do `FromConfig` podczas tworzenia `recognizer`.
+W tym przykładzie język źródłowy i `SourceLanguageConfig`niestandardowy punkt końcowy są dostarczane przy użyciu . Jest `sourceLanguageConfig` przekazywana jako `FromConfig` parametr podczas `recognizer`tworzenia pliku .
 
 ```C++
 auto sourceLanguageConfig = SourceLanguageConfig::FromLanguage("de-DE", "The Endpoint ID for your custom model.");
@@ -77,7 +77,7 @@ auto recognizer = SpeechRecognizer::FromConfig(speechConfig, sourceLanguageConfi
 ```
 
 >[!Note]
-> `SetSpeechRecognitionLanguage` i `SetEndpointId` są przestarzałymi metodami z klasy `SpeechConfig` w C++ języku i Java. Korzystanie z tych metod jest niezalecane i nie powinno być używane podczas konstruowania `SpeechRecognizer`.
+> `SetSpeechRecognitionLanguage`i `SetEndpointId` są przestarzałe `SpeechConfig` metody z klasy w językach C++ i Java. Stosowanie tych metod są odradzane i nie powinny `SpeechRecognizer`być używane podczas konstruowania .
 
 ::: zone-end
 
@@ -85,20 +85,20 @@ auto recognizer = SpeechRecognizer::FromConfig(speechConfig, sourceLanguageConfi
 
 ## <a name="how-to-specify-source-language-in-java"></a>Jak określić język źródłowy w języku Java
 
-W tym przykładzie język źródłowy jest dostarczany jawnie podczas tworzenia nowego `SpeechRecognizer`.
+W tym przykładzie język źródłowy jest jawnie `SpeechRecognizer`podany podczas tworzenia nowego pliku .
 
 ```Java
 SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, "de-DE", audioConfig);
 ```
 
-W tym przykładzie język źródłowy jest dostarczany przy użyciu `SourceLanguageConfig`. Następnie `sourceLanguageConfig` jest przenoszona jako parametr podczas tworzenia nowego `SpeechRecognizer`.
+W tym przykładzie język źródłowy jest dostarczany przy użyciu `SourceLanguageConfig`programu . Następnie `sourceLanguageConfig` jest przekazywana jako parametr podczas `SpeechRecognizer`tworzenia nowego .
 
 ```Java
 SourceLanguageConfig sourceLanguageConfig = SourceLanguageConfig.fromLanguage("de-DE");
 SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioConfig);
 ```
 
-W tym przykładzie język źródłowy i niestandardowy punkt końcowy są udostępniane przy użyciu `SourceLanguageConfig`. Następnie `sourceLanguageConfig` jest przenoszona jako parametr podczas tworzenia nowego `SpeechRecognizer`.
+W tym przykładzie język źródłowy i `SourceLanguageConfig`niestandardowy punkt końcowy są dostarczane przy użyciu . Następnie `sourceLanguageConfig` jest przekazywana jako parametr podczas `SpeechRecognizer`tworzenia nowego .
 
 ```Java
 SourceLanguageConfig sourceLanguageConfig = SourceLanguageConfig.fromLanguage("de-DE", "The Endpoint ID for your custom model.");
@@ -106,7 +106,7 @@ SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, sourceLanguageC
 ```
 
 >[!Note]
-> `setSpeechRecognitionLanguage` i `setEndpointId` są przestarzałymi metodami z klasy `SpeechConfig` w C++ języku i Java. Korzystanie z tych metod jest niezalecane i nie powinno być używane podczas konstruowania `SpeechRecognizer`.
+> `setSpeechRecognitionLanguage`i `setEndpointId` są przestarzałe `SpeechConfig` metody z klasy w językach C++ i Java. Stosowanie tych metod są odradzane i nie powinny `SpeechRecognizer`być używane podczas konstruowania .
 
 ::: zone-end
 
@@ -114,64 +114,71 @@ SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, sourceLanguageC
 
 ## <a name="how-to-specify-source-language-in-python"></a>Jak określić język źródłowy w języku Python
 
-Pierwszym krokiem jest utworzenie `speech_config`:
+W tym przykładzie język źródłowy jest jawnie dostarczany jako parametr przy użyciu `SpeechRecognizer` konstrukcji.
 
 ```Python
-speech_key, service_region = "YourSubscriptionKey", "YourServiceRegion"
-speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
+speech_recognizer = speechsdk.SpeechRecognizer(
+        speech_config=speech_config, language="de-DE", audio_config=audio_config)
 ```
 
-Następnie określ język źródłowy dźwięku za pomocą `speech_recognition_language`:
+W tym przykładzie język źródłowy jest dostarczany przy użyciu `SourceLanguageConfig`programu . Następnie `SourceLanguageConfig` jest przekazywana jako `SpeechRecognizer` parametr do konstruowania.
 
 ```Python
-speech_config.speech_recognition_language="de-DE"
+source_language_config = speechsdk.languageconfig.SourceLanguageConfig("de-DE")
+speech_recognizer = speechsdk.SpeechRecognizer(
+        speech_config=speech_config, source_language_config=source_language_config, audio_config=audio_config)
 ```
 
-Jeśli używasz modelu niestandardowego do rozpoznawania, możesz określić punkt końcowy z `endpoint_id`:
+W tym przykładzie język źródłowy i `SourceLanguageConfig`niestandardowy punkt końcowy są dostarczane przy użyciu . Następnie `SourceLanguageConfig` jest przekazywana jako `SpeechRecognizer` parametr do konstruowania.
 
 ```Python
-speech_config.endpoint_id = "The Endpoint ID for your custom model."
+source_language_config = speechsdk.languageconfig.SourceLanguageConfig("de-DE", "The Endpoint ID for your custom model.")
+speech_recognizer = speechsdk.SpeechRecognizer(
+        speech_config=speech_config, source_language_config=source_language_config, audio_config=audio_config)
 ```
+
+>[!Note]
+> `speech_recognition_language`i `endpoint_id` właściwości są przestarzałe z `SpeechConfig` klasy w Pythonie. Korzystanie z tych właściwości są odradzane i nie powinny `SpeechRecognizer`być używane podczas konstruowania .
 
 ::: zone-end
 
 ::: zone pivot="programming-language-more"
 
-## <a name="how-to-specify-source-language-in-javascript"></a>Jak określić język źródłowy w języku JavaScript
+## <a name="how-to-specify-source-language-in-javascript"></a>Jak określić język źródłowy w javascript
 
-Pierwszym krokiem jest utworzenie `SpeechConfig`:
+Pierwszym krokiem jest `SpeechConfig`utworzenie :
 
 ```Javascript
 var speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionkey", "YourRegion");
 ```
 
-Następnie określ język źródłowy dźwięku za pomocą `speechRecognitionLanguage`:
+Następnie określ język źródłowy `speechRecognitionLanguage`dźwięku za pomocą:
 
 ```Javascript
 speechConfig.speechRecognitionLanguage = "de-DE";
 ```
 
-Jeśli używasz modelu niestandardowego do rozpoznawania, możesz określić punkt końcowy z `endpointId`:
+Jeśli używasz niestandardowego modelu do rozpoznawania, możesz określić punkt końcowy za pomocą: `endpointId`
 
 ```Javascript
 speechConfig.endpointId = "The Endpoint ID for your custom model.";
 ```
 
-## <a name="how-to-specify-source-language-in-objective-c"></a>Jak określić język źródłowy w zamierzeniu-C
+## <a name="how-to-specify-source-language-in-objective-c"></a>Jak określić język źródłowy w języku Objective-C
 
-Pierwszym krokiem jest utworzenie `speechConfig`:
+Pierwszym krokiem jest `speechConfig`utworzenie :
 
 ```Objective-C
 SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithSubscription:@"YourSubscriptionkey" region:@"YourRegion"];
 ```
 
-Następnie określ język źródłowy dźwięku za pomocą `speechRecognitionLanguage`:
+Następnie określ język źródłowy `speechRecognitionLanguage`dźwięku za pomocą:
 
 ```Objective-C
 speechConfig.speechRecognitionLanguage = @"de-DE";
 ```
 
-Jeśli używasz modelu niestandardowego do rozpoznawania, możesz określić punkt końcowy z `endpointId`:
+Jeśli używasz niestandardowego modelu do rozpoznawania, możesz określić punkt końcowy za pomocą: `endpointId`
 
 ```Objective-C
 speechConfig.endpointId = @"The Endpoint ID for your custom model.";
@@ -179,10 +186,10 @@ speechConfig.endpointId = @"The Endpoint ID for your custom model.";
 
 ::: zone-end
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
-* Aby uzyskać listę obsługiwanych języków i ustawień regionalnych dla zamiany mowy na tekst, zobacz temat [Obsługa języków](language-support.md).
+* Aby uzyskać listę obsługiwanych języków i ustawień regionalnych dla mowy do tekstu, zobacz [Obsługa języka](language-support.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Dokumentacja referencyjna zestawu Speech SDK](speech-sdk.md)
+* [Dokumentacja referencyjna SDK mowy](speech-sdk.md)

@@ -1,7 +1,7 @@
 ---
-title: Wyświetlanie szczegółów modelu — translator niestandardowy
+title: Wyświetlanie szczegółów modelu — tłumacz niestandardowy
 titleSuffix: Azure Cognitive Services
-description: Karta modele w obszarze dowolnego projektu pokazuje szczegóły każdego modelu, takie jak nazwa modelu, stan modelu, BLEU oceny, uczenie, dostrajanie, liczba zdań testowania.
+description: Karta Modele w dowolnym projekcie zawiera szczegóły każdego modelu, takie jak nazwa modelu, stan modelu, wynik BLEU, szkolenie, dostrajanie, testowanie liczby zdań.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -10,87 +10,87 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: 64f446c3b331c1aa6ddaae9081b7f61943f74ab2
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68595567"
 ---
 # <a name="view-model-details"></a>Wyświetlanie szczegółów modelu
 
-Karta modele w obszarze projekt zawiera wszystkie modele w tym projekcie. Na tej karcie są wyświetlane wszystkie modele przeszkolone dla tego projektu.
+Modelowanie kartę w obszarze projekt pokazuje wszystkie modele w tym projekcie. Wszystkie modele przeszkolone dla tego projektu jest wymieniony w tej karcie.
 
-Dla każdego modelu w projekcie są wyświetlane te szczegóły.
+Dla każdego modelu w projekcie te szczegóły są wyświetlane.
 
 1.  Nazwa modelu: Pokazuje nazwę modelu danego modelu.
 
-2.  Stan: Pokazuje stan danego modelu. Twoje nowe szkolenie będzie miało status przesłany do momentu jego zaakceptowania. Stan zmieni się na przetwarzanie danych, podczas gdy usługa szacuje zawartość dokumentów. Po zakończeniu oceny dokumentów stan zmieni się na uruchomiony i będzie można zobaczyć liczbę zdań, które są częścią szkolenia, w tym zestawy dostrajania i testowania, które są tworzone automatycznie. Poniżej znajduje się lista stan modelu opisująca stan modeli.
+2.  Stan: Pokazuje stan danego modelu. Twoje nowe szkolenie będzie miało status Przesłane, dopóki nie zostanie zaakceptowane. Stan zmieni się na Przetwarzanie danych, podczas gdy usługa ocenia zawartość dokumentów. Po zakończeniu oceny dokumentów stan zmieni się na Uruchomiony i będzie można zobaczyć liczbę zdań, które są częścią szkolenia, w tym strojenie i testowanie zestawów, które są tworzone dla Ciebie automatycznie. Poniżej znajduje się lista stanu modelu, który opisuje stan modeli.
 
-    -  Złożona Określa, czy zaplecze przetwarza dokumenty dla tego modelu.
+    -  Przesłane: Określa, że wewnętrznej bazy danych jest przetwarzanie dokumentów dla tego modelu.
 
-    -  TrainingQueued: Określa, że szkolenie jest umieszczane w kolejce do MT systemu dla tego modelu.
+    -  TrainingQueued: Określa, że szkolenie jest w kolejce do systemu MT dla tego modelu.
 
     -  Uruchomione: Określa, że szkolenie jest uruchomione w systemie MT dla tego modelu.
 
-    -  Powiodło się Określa, że szkolenie powiodło się w systemie MT i jest dostępny model. W tym stanie zostanie wyświetlony wynik BLEU dla tego modelu.
+    -  Powiodło się: Określa, że szkolenie zakończyło się pomyślnie w systemie MT i model jest dostępny. W tym stanie wynik BLEU jest wyświetlany dla tego modelu.
 
-    -  Szczebl Określa, że pomyślnie szkolony model jest przesyłany do komputera MT w celu wdrożenia.
+    -  Wdrożony: Określa, że pomyślny model szkolony jest przesyłany do systemu MT w celu wdrożenia.
 
-    -  Cofnięto wdrożenie: Określa, że wdrożony model zostaje cofnięty.
+    -  Undeploying: Określa, że wdrożony model jest undeploying.
 
-    -  Niewdrażanego Określa, że proces rozmieszczenia został ukończony pomyślnie.
+    -  Nieskładkowane: Określa, że proces cofania dostępu modelu został zakończony pomyślnie.
 
-    -  Szkolenie nie powiodło się: Określa, że szkolenie nie powiodło się. Jeśli wystąpi awaria szkoleniowa, spróbuj ponownie wykonać zadanie szkoleniowe. Jeśli błąd będzie się powtarzać, skontaktuj się z nami. Nie usuwaj modelu, który uległ awarii.
+    -  Szkolenie nie powiodło się: Określa, że szkolenie nie powiodło się. Jeśli wystąpi niepowodzenie szkolenia, ponów próbę zadania szkoleniowego. Jeśli błąd będzie się powtarzał, skontaktuj się z nami. Nie usuwaj modelu, który uległ awarii.
 
-    - DataProcessingFailed: Określa, że przetwarzanie danych nie powiodło się dla co najmniej jednego dokumentu należącego do modelu.
+    - DataProcessingFailed: Określa, że przetwarzanie danych nie powiodło się dla jednego lub więcej dokumentów należących do modelu.
 
     - DeploymentFailed: Określa, że wdrożenie modelu nie powiodło się.
 
-    - MigratedDraft: Określa, że model jest w stanie wersji roboczej po migracji z centrum do translatora niestandardowego.
+    - MigratedDraft: Określa, że model jest w stanie roboczym po migracji z centrum do usługi Translator niestandardowy.
 
-4.  BLEU Score: pokazuje wynik BLEU (analiza dwujęzyczna) dla modelu, wskazujący jakość systemu tłumaczenia. Ten wynik zawiera informacje o tym, jak ściśle tłumaczenia wykonywane przez system tłumaczenia wynikający z tego szkolenia pasują do zdań odniesienia w zestawie danych testowych. Wynik BLEU pojawia się, jeśli szkolenie zostało pomyślnie zakończone. Jeśli szkolenie nie zostało ukończone/nie zakończyło się niepowodzeniem, nie zobaczysz żadnego wyniku BLEU.
+4.  Wynik BLEU: pokazuje wynik BLEU (Dwujęzyczna Ocena Understudy) modelu, wskazując jakość systemu tłumaczenia. Ten wynik informuje, jak ściśle tłumaczenia wykonane przez system tłumaczenia wynikające z tego szkolenia odpowiadają zdaniach referencyjnych w zestawie danych testowych. Wynik BLEU pojawia się, jeśli szkolenie zostanie pomyślnie zakończone. Jeśli szkolenie nie zostanie zakończone/ nie powiodło się, nie zobaczysz żadnego wyniku BLEU.
 
-5.  Liczba zdań szkoleniowych: Pokazuje łączną liczbę zdań użytych jako zestaw szkoleniowy.
+5.  Liczba zdań szkolenia: pokazuje całkowitą liczbę zdań używanych jako zestaw szkoleniowy.
 
-6.  Liczba zdań strojenia: Pokazuje łączną liczbę zdań używanych jako zestaw dostrajania.
+6.  Liczba zdań dostrajania: pokazuje całkowitą liczbę zdań używanych jako zestaw strojenia.
 
-7.  Liczba zdań szkoleniowych: Pokazuje łączną liczbę zdań użytych jako zestaw testowy.
+7.  Liczba zdań szkoleniowych: pokazuje całkowitą liczbę zdań używanych jako zestaw testowy.
 
-8.  Liczba zdań mono: Pokazuje łączną liczbę zdań użytych jako zestaw mono.
+8.  Liczba zdań mono: pokazuje całkowitą liczbę zdań używanych jako zestaw mono.
 
-9.  Przycisk wdrożenia akcji: W przypadku modelu, który został pomyślnie przeszkolony, wyświetla przycisk "wdróż", jeśli nie został wdrożony. Jeśli model został wdrożony, wyświetlany jest przycisk "Rozmieść".
+9.  Przycisk akcji Wdrażanie: W przypadku pomyślnie uczonego modelu jest wyświetlany przycisk "Wdrażanie", jeśli nie zostanie wdrożony. Jeśli model jest wdrożony, wyświetlany jest przycisk "Undeploy".
 
-10. Usunięty Jeśli chcesz usunąć model, możesz użyć tego przycisku. Usunięcie modelu nie spowoduje usunięcia żadnego z dokumentów użytych do utworzenia tego modelu.
+10. Usuń: Możesz użyć tego przycisku, jeśli chcesz usunąć model. Usunięcie modelu nie spowoduje usunięcia żadnych dokumentów użytych do utworzenia tego modelu.
 
     ![Wyświetlanie szczegółów modelu](media/how-to/how-to-view-model-details.png)
 
 >[!Note]
->Aby porównać kolejne szkolenia dla tych samych systemów, ważne jest, aby zachować zestaw strojenia i stały zestaw testów.
+>Aby porównać kolejne szkolenia dla tych samych systemów, ważne jest, aby zachować stały zestaw strojenia i zestaw testów.
 
-## <a name="view-model-training-details"></a>Wyświetl szczegóły szkolenia modelu
+## <a name="view-model-training-details"></a>Wyświetlanie szczegółów szkolenia modelu
 
-Po zakończeniu szkolenia możesz zapoznać się ze szczegółowymi informacjami na temat szkolenia ze strony szczegółów. Wybierz projekt, Znajdź i wybierz kartę modele i wybierz model.
+Po zakończeniu szkolenia można przejrzeć szczegóły dotyczące szkolenia na stronie szczegółów. Wybierz projekt, znajdź i wybierz kartę modele oraz wybierz model.
 
-Strona modelu ma dwie karty: Szczegóły i testowanie szkolenia.
+Strona modelu ma dwie karty: szczegóły szkolenia i test.
 
-1.  **Szczegóły szkolenia:** Ta karta zawiera listę dokumentów użytych w szkoleniu:
+1.  **Szczegóły szkolenia:** Ta karta zawiera listę dokumentów używanych w szkoleniu:
 
-    -  Nazwa dokumentów: To pole zawiera nazwę dokumentu
+    -  Nazwa dokumentu: to pole zawiera nazwę dokumentu
 
-    -  Typ dokumentu: To pole wskazuje, czy ten dokument jest równoległy/mono.
+    -  Typ dokumentu: To pole pokazuje, czy ten dokument jest równoległy/ mono.
 
-    -  Liczba zdań w języku źródłowym: To pole pokazuje liczbę zdań w postaci części języka źródłowego.
+    -  Liczba zdań w języku źródłowym: to pole pokazuje liczbę zdań jako część języka źródłowego.
 
-    -  Liczba zdań w języku docelowym: W tym polu jest wyświetlana liczba zdań w języku docelowym.
+    -  Liczba zdań w języku docelowym: to pole pokazuje liczbę zdań jako część języka docelowego.
 
-    -  Wyrównane zdania: To pole pokazuje liczbę zdań wyrównanych przez translatora niestandardowego podczas procesu wyrównania.
+    -  Wyrównane zdania: To pole zawiera liczbę zdań wyrównanych przez tłumacza niestandardowego podczas procesu wyrównywania.
 
-    -  Używane zdania: W tym polu jest wyświetlana liczba zdań używanych przez translatora niestandardowego podczas tego szkolenia.
+    -  Używane zdania: To pole zawiera liczbę zdań, które zostały użyte przez tłumacza niestandardowego podczas tego szkolenia.
 
     ![Szczegóły szkolenia modelu](media/how-to/how-to-model-training-details.png)
 
-2.  **Badan** Na tej karcie są wyświetlane szczegóły testu dotyczące pomyślnego szkolenia.
+2.  **Badanie:** Ta karta zawiera szczegóły testu dla pomyślnego szkolenia.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Przejrzyj [wyniki testów](how-to-view-system-test-results.md) i Przeanalizuj wyniki szkolenia.
+- Przejrzyj [wyniki testów](how-to-view-system-test-results.md) i analizuj wyniki treningu.

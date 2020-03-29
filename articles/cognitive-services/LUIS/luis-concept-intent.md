@@ -1,7 +1,7 @@
 ---
-title: Intencje i jednostki — LUIS
+title: Intencje i jednostki — usługa LUIS
 titleSuffix: Azure Cognitive Services
-description: Pojedynczy cel reprezentuje zadanie lub akcję, które użytkownik chce wykonać. Jest to cel lub celem wyrażone w wypowiedź użytkownika. Definiują zestaw intencji, które odnosi się do akcji, które użytkownicy chcą w aplikacji.
+description: Pojedynczy zamiar reprezentuje zadanie lub akcję, które użytkownik chce wykonać. Jest to cel lub zamierzenie wyrażone w wypowiedzi użytkownika. Zdefiniuj zestaw intencji, który odpowiada działaniom, które użytkownicy chcą podjąć w aplikacji.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,96 +12,96 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: diberry
 ms.openlocfilehash: 309a2592dbac2918aeb532fbe91e33d296f4e5a5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79220975"
 ---
-# <a name="intents-in-your-luis-app"></a>Intencje w aplikacji LUIS
+# <a name="intents-in-your-luis-app"></a>Intencje w aplikacji usługi LUIS
 
-Intencji reprezentuje zadanie lub akcję użytkownik chce wykonać. Jest to cel lub cel wyrażony w [wypowiedź](luis-concept-utterance.md)użytkownika.
+Intencja reprezentuje zadanie lub akcję, które użytkownik chce wykonać. Jest to cel lub cel wyrażony w [wypowiedź](luis-concept-utterance.md)użytkownika .
 
-Definiują zestaw intencji, które odnosi się do akcji, które użytkownicy chcą w aplikacji. Na przykład aplikacji turystycznej definiuje kilka opcji:
+Zdefiniuj zestaw intencji, który odpowiada działaniom, które użytkownicy chcą podjąć w aplikacji. Na przykład aplikacja turystyczna definiuje kilka intencji:
 
-Przeznaczeniu podróży   |   Przykładowe wypowiedzi   | 
+Intencje aplikacji podróżniczej   |   Przykładowe wypowiedzi   | 
 ------|------|
- BookFlight     |   "Zarezerwuj mnie lot Rio w następnym tygodniu" <br/> "Podnoszenia mnie do Rio na 24th" <br/> "Potrzebuję bilet płaszczyzny niedzielę dalej do Rio de Janeiro"    |
- Powitanie     |   "Hi" <br/>"Hello" <br/>"Good morning"  |
- CheckWeather | "Co to jest dane takie jak pogody w Bostonie?" <br/> "Pokaż prognozy dla tego weekend" |
- None         | "Dostać się ze mną przepisu plik cookie"<br>"Czy Lakers wygrać?" |
+ BookFlight     |   "Zarezerwuj mi lot do Rio w przyszłym tygodniu" <br/> "Leć mnie do Rio na 24" <br/> "Potrzebuję biletu lotniczego w najbliższą niedzielę do Rio de Janeiro"    |
+ Powitanie     |   "Cześć" <br/>"Hello" <br/>"Dzień dobry"  |
+ CheckWeather (właśc. | "Jaka jest pogoda w Bostonie?" <br/> "Pokaż mi prognozę na ten weekend" |
+ Brak         | "Get me przepis cookie"<br>"Czy Lakers wygrali?" |
 
-Wszystkie aplikacje są dostarczane ze wstępnie zdefiniowanym zamiarem "[none](#none-intent)", który jest zamiarem alternatywnym. 
+Wszystkie aplikacje pochodzą z predefiniowanym zamiarem "[Brak](#none-intent)", który jest zamiarem rezerwy. 
 
-## <a name="prebuilt-domains-provide-intents"></a>Ze wstępnie utworzonych domen zapewniają intencji
-Oprócz elementów docelowych, które można zdefiniować, można użyć prebudowanych intencji z jednej z [prekompilowanych domen](luis-how-to-use-prebuilt-domains.md). 
+## <a name="prebuilt-domains-provide-intents"></a>Wstępnie utworzone domeny zapewniają intencje
+Oprócz intencji zdefiniowanych można użyć wstępnie utworzonych intencji z jednej ze [wstępnie utworzonych domen](luis-how-to-use-prebuilt-domains.md). 
 
-## <a name="return-all-intents-scores"></a>Zwraca wyniki wszystkich intencji
-Wypowiedź należy przypisać do pojedynczego celem. Gdy LUIS odbiera wypowiedź w punkcie końcowym, domyślnie zwraca najwyższy zamiar dla tego wypowiedź. 
+## <a name="return-all-intents-scores"></a>Zwracanie wyników wszystkich intencji
+Przypisać wypowiedź do jednego zamiaru. Gdy usługa LUIS odbiera wypowiedź w punkcie końcowym, domyślnie zwraca górną intencję dla tej wypowiedzi. 
 
-Jeśli chcesz uzyskać wyniki dla wszystkich intencji dla wypowiedź, możesz podać flagę w ciągu zapytania w interfejsie API przewidywania. 
+Jeśli chcesz wyniki dla wszystkich intencji dla wypowiedź, można podać flagę na ciąg kwerendy interfejsu API przewidywania. 
 
 |Wersja interfejsu API przewidywania|Flaga|
 |--|--|
 |Wersja 2|`verbose=true`|
-|V3|`show-all-intents=true`|
+|Wersja V3|`show-all-intents=true`|
 
-## <a name="intent-compared-to-entity"></a>Celem w porównaniu do jednostki
-Cel reprezentuje akcję, którą aplikacja powinna wykonać dla użytkownika i opiera się na całej wypowiedź. Wypowiedź może mieć tylko jeden górnej oceniania intencji, ale może mieć wiele jednostek. 
+## <a name="intent-compared-to-entity"></a>Intencja w porównaniu z encją
+Intencji reprezentuje akcję aplikacji należy podjąć dla użytkownika i opiera się na całej wypowiedź. Wypowiedź może mieć tylko jeden najwyższej intencji punktacji, ale może mieć wiele jednostek. 
 
 <a name="how-do-intents-relate-to-entities"></a>
 
-Utwórz cel, gdy _zamiaru_ użytkownika wywoła akcję w aplikacji klienckiej, taką jak wywołanie funkcji checkweather (). Następnie Utwórz jednostki do reprezentowania parametrów wymaganych do wykonania akcji. 
+Utwórz zamiar, gdy _intencja_ użytkownika wyzwoli akcję w aplikacji klienckiej, taką jak wywołanie funkcji checkweather(). Następnie utwórz jednostki do reprezentowania parametrów wymaganych do wykonania akcji. 
 
 |Intencja   | Jednostka | Przykładowa wypowiedź   | 
 |------------------|------------------------------|------------------------------|
-| CheckWeather | {"type": "Lokalizacja", "entity": "seattle"}<br>{"type": "builtin.datetimeV2.date","entity": "jutro", "Rozwiązanie": "2018-05-23"} | Co to jest pogoda, jak w `Seattle` `tomorrow`? |
-| CheckWeather | {"type": "date_range", "entity": "ten weekend"} | Pokaż prognozę dla `this weekend` | 
+| CheckWeather (właśc. | { "type": "location", "entity": "seattle" }<br>{ "type": "builtin.datetimeV2.date","entity": "tomorrow","resolution":"2018-05-23" } | Jaka jest pogoda `Seattle` `tomorrow`w ? |
+| CheckWeather (właśc. | { "type": "date_range", "entity": "this weekend" } | Pokaż mi prognozę dla`this weekend` | 
 ||||
 
-## <a name="prebuilt-domain-intents"></a>Wstępnie utworzone domeny intencji
+## <a name="prebuilt-domain-intents"></a>Wstępnie utworzone intencje domeny
 
-[Prebudowane domeny](luis-how-to-use-prebuilt-domains.md) zapewniają intencje wyrażenia długości. 
+[Wstępnie utworzone domeny](luis-how-to-use-prebuilt-domains.md) zapewniają intencje z wypowiedzi. 
 
 ## <a name="none-intent"></a>Intencja None
 
-Opcja **Brak** jest tworzona, ale pozostaje pusta w celu. Intencją **none** nie jest wymagane i nie można jej usunąć ani zmienić jej nazwy. Wypełnij ją wypowiedzi, które znajdują się poza domenę.
+Intencja **Brak** jest tworzona, ale celowo pusta. Intencja **Brak** jest wymaganą intencją i nie można jej usunąć ani zmienić nazwy. Wypełnij go wypowiedziami, które znajdują się poza domeną.
 
-Opcja **Brak** jest zamiarem rezerwowym, istotnym dla każdej aplikacji i powinna mieć 10% całkowitej wyrażenia długości. Służy do nauki LUIS wypowiedzi, które nie są istotne w domenie aplikacji (obszar podmiotu). Jeśli nie dodasz żadnych wyrażenia długości dla zamiaru **Brak** , Luis wymusza wypowiedź, który znajduje się poza domeną, do jednej z intencji domeny. Będzie to pochylanie wyniki prognozowania, nauczania usługi LUIS niewłaściwego przeznaczenie wypowiedź. 
+Brak **None** intencji jest intencji rezerwowych, ważne w każdej aplikacji i powinien mieć 10% całkowitych wypowiedzi. Służy do uczenia wypowiedzi usługi LUIS, które nie są ważne w domenie aplikacji (obszar tematu). Jeśli nie dodać żadnych wypowiedzi dla **Brak** intencji, usługa LUIS wymusza wypowiedź, która znajduje się poza domeną do jednej z intencji domeny. Spowoduje to wypaczenie wyników przewidywania przez nauczanie usługi LUIS niewłaściwego zamiaru wypowiedź. 
 
-Gdy wypowiedź jest przewidywany jako cel, aplikacja kliencka może zadawać więcej pytań lub podać menu, aby skierować użytkownika do prawidłowych opcji. 
+Gdy wypowiedź jest przewidywane jako Brak intencji, aplikacja kliencka może zadać więcej pytań lub podać menu, aby skierować użytkownika do prawidłowych wyborów. 
 
-## <a name="negative-intentions"></a>Ujemna intencji 
-Jeśli chcesz określić ujemne i pozytywne zamiary, na przykład **"chcę mieć** samochód" i " **nie** chcę, aby samochód", możesz utworzyć dwa intencje (jedną wartość dodatnią i jedną ujemną) i dodać odpowiednie wyrażenia długości dla każdego z nich. Lub można utworzyć pojedynczy intencji i oznaczyć te dwa różne terminy dodatnie i ujemne jako jednostka.  
+## <a name="negative-intentions"></a>Negatywne intencje 
+Jeśli chcesz określić negatywne i pozytywne intencje, takie jak **"Chcę** samochód" i **"Nie** chcę samochodu", możesz utworzyć dwa zamiary (jeden pozytywny i jeden negatywny) i dodać odpowiednie wypowiedzi dla każdego. Lub można utworzyć pojedynczy zamiar i oznaczyć dwa różne terminy dodatnie i ujemne jako jednostki.  
 
 ## <a name="intents-and-patterns"></a>Intencje i wzorce
 
-Jeśli masz przykład wyrażenia długości, który można zdefiniować w części lub całości jako wyrażenie regularne, rozważ użycie [jednostki wyrażenia regularnego](luis-concept-entity-types.md#regular-expression-entity) sparowanego ze [wzorcem](luis-concept-patterns.md). 
+Jeśli masz przykładowe wypowiedzi, które mogą być zdefiniowane w części lub w całości jako wyrażenie regularne, należy rozważyć użycie [jednostki wyrażenia regularnego](luis-concept-entity-types.md#regular-expression-entity) sparowanego ze [wzorcem](luis-concept-patterns.md). 
 
-Użycie jednostki wyrażenia regularnego gwarantuje ekstrakcję danych, tak aby wzorzec był dopasowany. Dopasowywanie do wzorca gwarantuje dokładne przeznaczenie. 
+Za pomocą jednostki wyrażenia regularnego gwarantuje wyodrębnianie danych, tak aby wzorzec jest dopasowany. Dopasowanie wzorca gwarantuje, że zwracana jest dokładna intencja. 
 
 ## <a name="intent-balance"></a>Saldo intencji
-Przeznaczeniu domeny powinien mieć saldo wypowiedzi w każdej intencji. Nie masz zamiar jednego z 10 wypowiedzi i inną intencji z wypowiedzi 500. Nie jest równoważone. Jeśli masz tę sytuację, zapoznaj się z zamiarem 500 wyrażenia długości, aby sprawdzić, czy wiele zamiar można zreorganizować do [wzorca](luis-concept-patterns.md). 
+Intencje domeny aplikacji powinny mieć równowagę wypowiedzi w każdej intencji. Nie mają jednego zamiaru z 10 wypowiedzi i innego zamiaru z 500 wypowiedzi. To nie jest wyważone. Jeśli masz taką sytuację, przejrzyj intencję z 500 wypowiedzi, aby zobaczyć, czy wiele intencji można zreorganizować na [wzorzec](luis-concept-patterns.md). 
 
-Zamiara **Brak** nie jest uwzględniona w saldzie. Tym przeznaczeniem powinna zawierać 10% całkowitej wypowiedzi w aplikacji.
+Intencja **Brak** nie jest uwzględniona w saldzie. Ten zamiar powinien zawierać 10% całkowitych wypowiedzi w aplikacji.
 
 ## <a name="intent-limits"></a>Limity intencji
-Przejrzyj [limity](luis-boundaries.md#model-boundaries) , aby zrozumieć, ile intencji można dodać do modelu. 
+Przejrzyj [limity,](luis-boundaries.md#model-boundaries) aby zrozumieć, ile intencji można dodać do modelu. 
 
-### <a name="if-you-need-more-than-the-maximum-number-of-intents"></a>Jeśli potrzebujesz większej niż maksymalna liczba intencji 
-Najpierw należy rozważyć, czy system używa zbyt dużo intencji. 
+### <a name="if-you-need-more-than-the-maximum-number-of-intents"></a>Jeśli potrzebujesz więcej niż maksymalna liczba intencji 
+Najpierw należy rozważyć, czy system używa zbyt wielu intencji. 
 
-### <a name="can-multiple-intents-be-combined-into-single-intent-with-entities"></a>Wiele intencji można łączyć w pojedynczej intencji przy użyciu jednostek 
-Intencji, które są zbyt podobne może utrudnić dla usługi LUIS do rozróżnienia między nimi. Intencji powinien być wystarczająco dużo, aby przechwycić głównych zadań, które pyta użytkownika, ale nie potrzebują do przechwytywania każdej ścieżce kodu przyjmuje zróżnicowane. Na przykład oddzielnych intencje w podróży aplikacji może być BookFlight i FlightCustomerService, ale BookInternationalFlight i BookDomesticFlight są zbyt podobne. Jeśli system musi odróżnić je, należy użyć jednostek lub inne logiki zamiast intencji. 
+### <a name="can-multiple-intents-be-combined-into-single-intent-with-entities"></a>Czy wiele intencji można połączyć w jeden zamiar z encjami 
+Intencje, które są zbyt podobne może utrudnić usługi LUIS do odróżnienia ich. Intencje powinny być wystarczająco zróżnicowane, aby przechwycić główne zadania, o które prosi użytkownik, ale nie muszą przechwytywać każdej ścieżki, którą wykonuje kod. Na przykład BookFlight i FlightCustomerService mogą być oddzielne intencje w aplikacji podróży, ale BookInternationalFlight i BookDomesticFlight są zbyt podobne. Jeśli system musi je odróżnić, użyj jednostek lub innej logiki, a nie intencji. 
 
-### <a name="dispatcher-model"></a>Dyspozytor modelu
-Dowiedz się więcej na temat łączenia aplikacji LUIS i QnA Maker z [modelem wysyłania](luis-concept-enterprise.md#when-you-need-to-combine-several-luis-and-qna-maker-apps). 
+### <a name="dispatcher-model"></a>Model dyspozytora
+Dowiedz się więcej o łączeniu aplikacji usługi LUIS i QnA maker z [modelem wysyłki.](luis-concept-enterprise.md#when-you-need-to-combine-several-luis-and-qna-maker-apps) 
 
-### <a name="request-help-for-apps-with-significant-number-of-intents"></a>Prosić o pomoc dla aplikacji za pomocą znacznej liczby intencji
-Zmniejszenie liczby intencji lub podzielenie Twoje intencje w wielu aplikacjach nie działa, należy się z pomocą techniczną. Jeśli Twoja subskrypcja platformy Azure obejmuje usługi pomocy technicznej, skontaktuj się z [pomocą techniczną platformy Azure](https://azure.microsoft.com/support/options/). 
+### <a name="request-help-for-apps-with-significant-number-of-intents"></a>Poproś o pomoc dla aplikacji o znacznej liczbie intencji
+Jeśli zmniejszenie liczby intencji lub podzielenie zamiarów na wiele aplikacji nie działa, skontaktuj się z pomocą techniczną. Jeśli twoja subskrypcja platformy Azure obejmuje usługi pomocy technicznej, skontaktuj się z [pomocą techniczną platformy Azure.](https://azure.microsoft.com/support/options/) 
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej o [jednostkach](luis-concept-entity-types.md), które są ważnymi wyrazami istotnymi dla intencji
-* Dowiedz się [, jak dodawać intencje i zarządzać nimi](luis-how-to-add-intents.md) w aplikacji Luis.
-* Zapoznaj się z [najlepszymi rozwiązaniami](luis-concept-best-practices.md) założeń
+* Dowiedz się więcej o [jednostkach](luis-concept-entity-types.md), które są ważnymi słowami istotnymi dla intencji
+* Dowiedz się, jak [dodawać intencje i zarządzać nimi](luis-how-to-add-intents.md) w aplikacji usługi LUIS.
+* Przejrzyj [najważniejsze wskazówki dotyczące intencji](luis-concept-best-practices.md)

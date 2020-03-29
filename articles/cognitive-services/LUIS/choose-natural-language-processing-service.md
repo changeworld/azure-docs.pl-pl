@@ -1,7 +1,7 @@
 ---
-title: Korzystanie z NLP Cognitive Services do wzbogacania konwersacji
+title: Wzbogacenie konwersacji za pomocą usług NLP Cognitive Services
 titleSuffix: Azure Cognitive Services
-description: Cognitive Services oferuje dwie usługi przetwarzania języka naturalnego, Language Understanding i QnA Maker, z których każdy ma inny cel. Informacje o tym, kiedy należy używać każdej usługi i od siebie nawzajem.
+description: Cognitive Services oferuje dwie usługi przetwarzania języka naturalnego, Language Understanding i QnA Maker, z których każda ma inny cel. Zrozum, kiedy korzystać z każdej usługi i jak się wzajemnie komplementują.
 author: diberry
 ms.author: diberry
 manager: nitinme
@@ -9,85 +9,85 @@ ms.topic: conceptual
 ms.service: cognitive-services
 ms.date: 08/01/2019
 ms.openlocfilehash: 32159b37d3d1a8609181d81dc1a73f27177adb85
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73818199"
 ---
-# <a name="use-cognitive-services-with-natural-language-processing-nlp-to-enrich-bot-conversations"></a>Używanie Cognitive Services z przetwarzaniem języka naturalnego (NLP) w celu wzbogacania konwersacji bot
+# <a name="use-cognitive-services-with-natural-language-processing-nlp-to-enrich-bot-conversations"></a>Korzystanie z usług Cognitive Services z przetwarzaniem języka naturalnego (NLP) w celu wzbogacenia konwersacji botów
 
-Cognitive Services oferuje dwie usługi przetwarzania języka naturalnego, [Language Understanding](what-is-luis.md) i [QNA Maker](../qnamaker/overview/overview.md), z których każdy ma inny cel. Informacje o tym, kiedy należy używać każdej usługi i od siebie nawzajem. 
+Cognitive Services oferuje dwie usługi przetwarzania języka naturalnego, [Language Understanding](what-is-luis.md) i [QnA Maker](../qnamaker/overview/overview.md), każda o innym celu. Zrozum, kiedy korzystać z każdej usługi i jak się wzajemnie komplementują. 
 
-Przetwarzanie języka naturalnego (NLP) umożliwia aplikacji klienckiej, takiej jak czat bot, współpracującej z użytkownikami przy użyciu języka naturalnego. Użytkownik wprowadza zdanie lub frazę. Tekst użytkownika może mieć niską gramatykę, pisownię i interpunkcję. Usługa poznawcze może nadal pracować przez zdanie użytkownika, zwracając informacje, które bot rozmowy musi pomóc użytkownikowi. 
+Przetwarzanie języka naturalnego (NLP) umożliwia aplikacji klienckiej, takiej jak czat bot, do pracy z użytkownikami, przy użyciu języka naturalnego. Użytkownik wprowadza zdanie lub frazę. Tekst użytkownika może mieć słabą gramatykę, pisownię i znaki interpunkcyjne. Usługa Cognitive Service może pracować za pomocą zdania użytkownika tak, zwracając informacje, które bot czatu musi pomóc użytkownikowi. 
 
-## <a name="cognitive-services-with-nlp"></a>Cognitive Services z NLP
+## <a name="cognitive-services-with-nlp"></a>Usługi kognitywne z NLP
 
-Language Understanding (LUIS) i QnA Maker udostępniają NLP. Aplikacja kliencka przesyła tekst w języku naturalnym. Usługa przyjmuje tekst, przetwarza go i zwraca wynik. 
+Zrozumienie języka (LUIS) i QnA Maker zapewniają NLP. Aplikacja kliencka przesyła tekst w języku naturalnym. Usługa pobiera tekst, przetwarza go i zwraca wynik. 
 
-## <a name="when-to-use-each-service"></a>Kiedy używać każdej usługi
+## <a name="when-to-use-each-service"></a>Kiedy korzystać z każdej usługi
 
-Language Understanding (LUIS) i QnA Maker rozwiązują różne problemy. LUIS określa cel tekstu użytkownika (znany jako wypowiedź), podczas gdy QnA Maker określa odpowiedź do tekstu użytkownika (nazywanego kwerendą). 
+Rozumienie języka (LUIS) i QnA Maker rozwiązują różne problemy. Usługa LUIS określa intencję tekstu użytkownika (nazywaną wypowiedź), podczas gdy program QnA Maker określa odpowiedź na tekst użytkownika (znany jako kwerenda). 
 
-Aby można było wybrać poprawną usługę, należy zrozumieć tekst użytkownika pochodzący z aplikacji klienckiej oraz informacje o tym, co aplikacja kliencka musi pobrać z usługi poznawczej.
+Aby wybrać poprawną usługę, należy zrozumieć tekst użytkownika pochodzący z aplikacji klienckiej i jakie informacje aplikacja kliencka musi uzyskać z usługi Cognitive Service.
 
-Jeśli bot rozmowy otrzymuje tekst `How do I get to the Human Resources building on the Seattle North campus?`, Skorzystaj z poniższego wykresu, aby zrozumieć, w jaki sposób każda usługa współpracuje z tekstem.
+Jeśli twój czat bot `How do I get to the Human Resources building on the Seattle North campus?`odbiera tekst, skorzystaj z poniższego wykresu, aby zrozumieć, jak każda usługa działa z tekstem.
 
 |Usługa|Aplikacja kliencka określa|
 |--|--|
-|LUIS|**Określa zamiar użytkownika** tekst — usługa nie zwraca odpowiedzi na pytanie. Na przykład ten tekst jest klasyfikowany jako pasujący do zamiaru `FindLocation`.<br>|
-|QnA Maker|**Zwraca odpowiedź na pytanie** z niestandardowej bazy wiedzy. Na przykład ten tekst jest określany jako pytanie z odpowiedzią na tekst statyczny `Get on the #9 bus and get off at Franklin street`.|
+|LUIS|**Określa zamiar użytkownika** tekstu — usługa nie zwraca odpowiedzi na pytanie. Na przykład ten tekst jest `FindLocation` klasyfikowany jako pasujące intencji.<br>|
+|QnA Maker|**Zwraca odpowiedź na pytanie** z niestandardowej bazy wiedzy. Na przykład ten tekst jest określany jako pytanie `Get on the #9 bus and get off at Franklin street`ze statyczną odpowiedzią tekstową .|
 |||
 
-## <a name="when-do-you-use-luis"></a>Kiedy używać LUIS? 
+## <a name="when-do-you-use-luis"></a>Kiedy używasz usługi LUIS? 
 
-Użyj LUIS, gdy musisz znać zamiar wypowiedź w ramach procesu w usłudze Chat bot. Kontynuując przykładowy tekst, `How do I get to the Human Resources building on the Seattle North campus?`, gdy wiadomo, że zamierzone jest znalezienie lokalizacji przez użytkownika, można przekazać szczegóły dotyczące wypowiedź (z jednostkami) do innej usługi, takiej jak serwer transportu, aby uzyskać odpowiedź. 
+Użyj usługi LUIS, gdy trzeba znać intencji wypowiedź jako część procesu w bot czatu. Kontynuując przykładowy tekst, , gdy wiesz, `How do I get to the Human Resources building on the Seattle North campus?`że intencją użytkownika jest znalezienie lokalizacji, można przekazać szczegóły dotyczące wypowiedź (wyciągnął z jednostek) do innej usługi, takich jak serwer transportu, aby uzyskać odpowiedź. 
 
-Nie musisz łączyć LUIS i QnA Maker, aby określić cel. 
+Nie trzeba łączyć usługi LUIS i QnA Maker w celu określenia intencji. 
 
-Możesz połączyć te dwie usługi dla tego wypowiedź, jeśli bot rozmowy musi przetworzyć tekst w oparciu o zamiary i jednostki (przy użyciu LUIS), a także znaleźć konkretną odpowiedź tekstową (przy użyciu QnA Maker).
+Możesz połączyć dwie usługi dla tej wypowiedzi, jeśli bot czatu musi przetworzyć tekst na podstawie intencji i jednostek (przy użyciu usługi LUIS), a także znaleźć określoną statyczną odpowiedź tekstową (przy użyciu programu QnA Maker).
 
-## <a name="when-do-you-use-qna-maker"></a>Kiedy używać QnA Maker? 
+## <a name="when-do-you-use-qna-maker"></a>Kiedy korzystasz z QnA Maker? 
 
-Użyj QnA Maker, jeśli masz statyczną bazę wiedzy z odpowiedzią. Ta baza wiedzy jest niestandardowa w Twoich potrzebach, które zostały skompilowane przy użyciu dokumentów, takich jak pliki PDF i adresy URL. 
+Użyj QnA Maker, gdy masz statyczną bazę wiedzy odpowiedzi. Ta baza wiedzy jest dostosowana do Twoich potrzeb, które zostały utworzone z dokumentów, takich jak pliki PDF i adresy URL. 
 
-Kontynuując przykład wypowiedź, `How do I get to the Human Resources building on the Seattle North campus?`, wyślij tekst jako zapytanie do opublikowanej usługi QnA Maker i otrzymasz najlepszą odpowiedź. 
+Kontynuując z wypowiedź `How do I get to the Human Resources building on the Seattle North campus?`przykład, , wysłać tekst, jako zapytanie, do opublikowanej usługi QnA Maker i otrzymać najlepszą odpowiedź. 
 
-Nie musisz łączyć LUIS i QnA Maker, aby określić odpowiedź na pytanie.
+Nie trzeba łączyć usługi LUIS i QnA Maker, aby określić odpowiedź na pytanie.
 
-Możesz połączyć te dwie usługi dla tego wypowiedź, jeśli bot rozmowy musi przetworzyć tekst w oparciu o zamiary i jednostki (przy użyciu LUIS), a także znaleźć odpowiedź (przy użyciu QnA Maker).
+Możesz połączyć dwie usługi dla tej wypowiedzi, jeśli bot czatu musi przetworzyć tekst na podstawie intencji i jednostek (przy użyciu usługi LUIS), a także znaleźć odpowiedź (przy użyciu programu QnA Maker).
 
-## <a name="use-both-services-when-your-knowledge-base-is-incomplete"></a>Użyj obu usług, gdy baza wiedzy jest niepełna
+## <a name="use-both-services-when-your-knowledge-base-is-incomplete"></a>Korzystaj z obu usług, gdy baza wiedzy jest niekompletna
 
-Jeśli tworzysz QnA Maker bazę wiedzy, ale wiesz, że domena podmiotu jest zmieniana (na przykład informacje o czasie), możesz połączyć usługi LUIS i QnA Maker. Pozwala to na użycie informacji z bazy wiedzy, ale również określenie zamiaru użytkownika przy użyciu LUIS. Gdy aplikacja kliencka jest zamiarem, może zażądać odpowiednich informacji z innego źródła. 
+Jeśli budujesz swoją bazę wiedzy QnA Maker, ale wiesz, że domena tematu się zmienia (na przykład informacje na czas), możesz połączyć usługi LUIS i QnA Maker. Dzięki temu można użyć informacji w bazie wiedzy, ale także użyć usługi LUIS do określenia intencji użytkownika. Gdy aplikacja kliencka ma zamiar, może zażądać odpowiednich informacji z innego źródła. 
 
-Aplikacja kliencka musi monitorować zarówno LUIS, jak i QnA Maker odpowiedzi dla wyników. Jeśli wynik QnA Maker jest poniżej pewnego progu, użyj informacji o zamiarach i jednostkach zwróconych z LUIS, aby przekazać informacje do usługi innej firmy.
+Aplikacja kliencka będzie musiała monitorować odpowiedzi usługi LUIS i QnA Maker pod kątem wyników. Jeśli wynik z programu QnA Maker jest poniżej pewnego dowolnego progu, użyj intencji i informacji o jednostce zwróconych z usługi LUIS, aby przekazać informacje do usługi innej firmy.
 
-Kontynuując przykładowy tekst, `How do I get to the Human Resources building on the Seattle North campus?`, Załóżmy, że QnA Maker zwraca wynik o niskiej pewności. Aby wysłać te informacje do mapowania lub usługi wyszukiwania dla innej odpowiedzi, należy użyć metody zwróconej przez LUIS, `FindLocation` i wszystkie wyodrębnione jednostki, takie jak `Human Resources building` i `Seattle North campus`. 
+Kontynuując przykładowy tekst, załóżmy, `How do I get to the Human Resources building on the Seattle North campus?`że program QnA Maker zwraca niski wynik zaufania. Użyj intencji zwróconych `FindLocation` z usługi LUIS i `Human Resources building` wyodrębnionych jednostek, takich jak i `Seattle North campus`, aby wysłać te informacje do usługi mapowania lub wyszukiwania innej odpowiedzi. 
 
-Tę odpowiedź innej firmy można przedstawić użytkownikowi na potrzeby weryfikacji. Po zatwierdzeniu użytkownika możesz wrócić do QnA Maker, aby dodać informacje, aby zwiększyć swoją wiedzę. 
+Można przedstawić tę odpowiedź innej firmy do użytkownika do weryfikacji. Po uzyskaniu zgody użytkownika możesz wrócić do programu QnA Maker, aby dodać informacje, aby zwiększyć swoją wiedzę. 
 
-## <a name="use-both-services-when-your-chat-bot-needs-more-information"></a>Używaj obu usług, gdy rozmowa bot potrzebuje więcej informacji
+## <a name="use-both-services-when-your-chat-bot-needs-more-information"></a>Korzystaj z obu usług, gdy twój czat bot potrzebuje więcej informacji
 
-Jeśli rozmowa bot potrzebuje więcej informacji niż zapewnia usługa, aby kontynuować przez drzewo decyzyjne, należy użyć obu tych usług i przetworzyć obie odpowiedzi w aplikacji klienckiej. 
+Jeśli twój czat bot potrzebuje więcej informacji niż którakolwiek z usług zapewnia, aby kontynuować za pośrednictwem drzewa decyzyjnego, należy użyć obu usług i przetwarzać obie odpowiedzi w aplikacji klienckiej. 
 
-Użyj narzędzia **[interfejsu wiersza polecenia do wysyłania](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** bot Framework, aby pomóc w tworzeniu procesu do pracy z obiema usługami. To narzędzie służy do tworzenia najwyższej aplikacji LUIS, które są wysyłane między LUIS i QnA Maker jako aplikacje podrzędne. 
+Użyj narzędzia **[Interfejsu wiersza polecenia wysyłki](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** platformy bot, aby ułatwić tworzenie procesu do pracy z obiema usługami. To narzędzie tworzy najlepszą aplikację usługi LUIS intencji, która wywołuje między usługą LUIS i QnA Maker jako aplikacje podrzędne. 
 
-Aby zaimplementować ten typ rozmowy bot, użyj przykładu bot [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) Builder, **NLP z wysyłaniem**danych w języku [Node. js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch). 
+Użyj przykładu konstruktora botów, **NLP z wysyłką**, w [języku C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) lub [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch), aby zaimplementować tego typu bota czatu. 
 
-## <a name="best-practices"></a>Najlepsze praktyki
+## <a name="best-practices"></a>Najlepsze rozwiązania
 
-Zaimplementuj najlepsze rozwiązania dla każdej usługi:
+Implementowanie najlepszych rozwiązań dla każdej usługi:
 
-* Najlepsze rozwiązania [Luis](luis-concept-best-practices.md)
-* [QNA Maker](../qnamaker/concepts/best-practices.md) najlepszych praktyk
+* Najważniejsze wskazówki dotyczące [usługi LUIS](luis-concept-best-practices.md)
+* [QnA Maker](../qnamaker/concepts/best-practices.md) – najważniejsze wskazówki
 
 ## <a name="see-also"></a>Zobacz też
 
-* [Language Understanding (LUIS)](what-is-luis.md)
+* [Rozumienie języka (LUIS)](what-is-luis.md)
 * [QnA Maker](../qnamaker/overview/overview.md)
-* [Interfejs wiersza polecenia wysyłania](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)
-* [Przykłady struktury bot Framework](https://github.com/Microsoft/BotBuilder-Samples)
-* [Usługa Azure bot](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)
-* [Emulator usługi Azure bot](https://github.com/Microsoft/BotFramework-Emulator)
-* [Czat w sieci Web bot Framework](https://github.com/microsoft/BotFramework-WebChat)
+* [Wysyłka interfejsu wiersza polecenia](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)
+* [Przykłady struktury botów](https://github.com/Microsoft/BotBuilder-Samples)
+* [Usługa bota platformy Azure](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)
+* [Emulator bota platformy Azure](https://github.com/Microsoft/BotFramework-Emulator)
+* [Czat internetowy z platformą botów](https://github.com/microsoft/BotFramework-WebChat)

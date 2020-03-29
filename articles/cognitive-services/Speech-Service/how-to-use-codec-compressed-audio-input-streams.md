@@ -1,7 +1,7 @@
 ---
-title: Koder-dekoder audio skompresowany dźwięk przy użyciu zestawu mowy SDK-Speech Service
+title: Skompresowany dźwięk kodeka strumieniowego za pomocą gniazda Mowy SDK — usługa mowy
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak przesyłać strumieniowo skompresowane audio do usługi mowy przy użyciu zestawu Speech SDK. Dostępne dla C++systemów C#, i Java dla systemu Linux, Java w systemach Android i w środowisku C w systemie iOS.
+description: Dowiedz się, jak przesyłać strumieniowo skompresowany dźwięk do usługi Mowy za pomocą SDK mowy. Dostępne dla języka C++, C#i Java dla systemów Linux, Java w systemie Android i Objective-C w systemie iOS.
 services: cognitive-services
 author: amitkumarshukla
 manager: nitinme
@@ -12,19 +12,19 @@ ms.date: 03/09/2020
 ms.author: amishu
 zone_pivot_groups: programming-languages-set-twelve
 ms.openlocfilehash: 3fab02d3dc567a2c54edad5bfb05abe7d99f7b7c
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78943775"
 ---
-# <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>Korzystanie z kodera-dekoder skompresowanego audio przy użyciu zestawu Speech SDK
+# <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>Używanie skompresowanego wejścia audio kodeka z sdk mowy
 
-Interfejs API **strumienia danych wejściowych audio** usługi Speech Service SDK umożliwia przesyłanie strumieniowe skompresowanego dźwięku do usługi mowy przy użyciu `PullStream` lub `PushStream`.
+Interfejs API SDK **Skompresowanego strumienia wejściowego audio** usługi mowy umożliwia strumieniowe przesyłanie skompresowanego dźwięku do usługi Mowy przy użyciu pliku `PullStream` lub `PushStream`.
 
 > [!IMPORTANT]
-> Przesyłane strumieniowo skompresowane audio wejściowe jest obecnie C#obsługiwane C++przez program,, Java w systemie Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8). Jest ona również obsługiwana w przypadku języka Java w systemach Android i C na platformie iOS.
-> Wymagany jest program Speech SDK w wersji 1.7.0 lub nowszej (w wersji 1.10.0 lub nowszej dla RHEL 8, CentOS 8).
+> Streaming skompresowanego dźwięku wejściowego jest obecnie obsługiwany dla C#, C++, Java w systemie Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9, RHEL 8, CentOS 8). Jest również obsługiwany dla języka Java w systemie Android i Objective-C na platformie iOS.
+> Wymagany jest numer SDK mowy w wersji 1.7.0 lub nowszej (wersja 1.10.0 lub nowsza dla RHEL 8, CentOS 8).
 
 [!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
@@ -46,7 +46,7 @@ Interfejs API **strumienia danych wejściowych audio** usługi Speech Service SD
 [!INCLUDE [prerequisites](includes/how-tos/compressed-audio-input/objectivec/prerequisites.md)]
 ::: zone-end
 
-## <a name="example-code-using-codec-compressed-audio-input"></a>Przykładowy kod przy użyciu kodera skompresowanego sygnału audio
+## <a name="example-code-using-codec-compressed-audio-input"></a>Przykładowy kod przy użyciu skompresowanego wejścia audio kodeka
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [prerequisites](includes/how-tos/compressed-audio-input/csharp/examples.md)]

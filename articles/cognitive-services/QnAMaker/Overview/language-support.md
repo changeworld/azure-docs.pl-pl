@@ -1,7 +1,7 @@
 ---
-title: Obsługa języków — QnA Maker
+title: Obsługa języków - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Lista kultury, naturalny języki obsługiwane przez narzędzie QnA Maker bazy wiedzy. Nie należy mieszać języki obsługiwane w tej samej bazie wiedzy knowledge base.
+description: Lista kultur, języków naturalnych obsługiwanych przez QnA Maker dla twojej bazy wiedzy. Nie mieszaj języków w tej samej bazie wiedzy.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,17 +11,17 @@ ms.topic: reference
 ms.date: 09/24/2019
 ms.author: diberry
 ms.openlocfilehash: 96440bf0e9c26e6f222f3bc94c8fabb0bc8f488d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79220557"
 ---
-# <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>Obsługa języka dla zasobów QnA Maker i baz wiedzy
+# <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>Obsługa języków dla zasobów i baz wiedzy programu QnA Maker
 
-Język dla usługi jest wybierany podczas tworzenia pierwszej bazy wiedzy w zasobie. Wszystkie dodatkowe bazy wiedzy w zasobie muszą znajdować się w tym samym języku. 
+Język usługi jest wybierany podczas tworzenia pierwszej bazy wiedzy w zasobie. Wszystkie dodatkowe bazy wiedzy w zasobie muszą być w tym samym języku. 
 
-Język określa przydatność wyników QnA Maker zapewnia odpowiedzi na zapytania użytkownika.
+Język określa trafność wyników, które program QnA Maker zapewnia w odpowiedzi na zapytania użytkowników.
 
 Dowiedz się więcej o [wpływie wyboru języka](../how-to/language-knowledge-base.md).
 
@@ -31,7 +31,7 @@ Poniższa lista zawiera języki obsługiwane dla zasobu QnA Maker.
 
 |Język|
 |--|
-|arabski|
+|Arabski|
 |Armeński|
 |Bengalski|
 |Baskijski|
@@ -41,21 +41,21 @@ Poniższa lista zawiera języki obsługiwane dla zasobu QnA Maker.
 |Chinese_Traditional|
 |Chorwacki|
 |Czeski|
-|Duński|
-|holenderski|
+|duński|
+|Niderlandzki|
 |Polski|
 |Estoński|
-|Fiński|
+|fiński|
 |Francuski|
 |Galicyjski|
 |Niemiecki|
-|Grecki|
+|grecki|
 |Gudżarati|
 |Hebrajski|
 |Hindi|
-|Węgierski|
-|islandzki|
-|indonezyjski|
+|węgierski|
+|Islandzki|
+|Indonezyjski|
 |Irlandzki|
 |Włoski|
 |Japoński|
@@ -63,27 +63,27 @@ Poniższa lista zawiera języki obsługiwane dla zasobu QnA Maker.
 |Koreański|
 |Łotewski|
 |Litewski|
-|Malajalam|
-|malajski|
+|Malayalam|
+|Malajski|
 |Norweski|
 |Polski|
 |Portugalski|
 |Pendżabski|
-|rumuński|
+|Rumuński|
 |Rosyjski|
 |Serbian_Cyrillic|
 |Serbian_Latin|
 |Słowacki|
 |Słoweński|
 |Hiszpański|
-|Szwedzki|
+|szwedzki|
 |Tamilski|
 |Telugu|
 |Tajski|
 |Turecki|
 |Ukraiński|
-|urdu|
-|wietnamski|
+|Urdu|
+|Wietnamski|
 
 ## <a name="next-steps"></a>Następne kroki
 

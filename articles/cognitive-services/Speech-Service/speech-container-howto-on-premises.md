@@ -1,56 +1,56 @@
 ---
-title: Korzystanie z kontenerów usługi mowy z Kubernetes i Helm
+title: Używanie kontenerów usługi mowy z kubernetami i helmem
 titleSuffix: Azure Cognitive Services
-description: Za pomocą Kubernetes i Helm do definiowania obrazów kontenerów zamiany mowy na tekst i zamiany tekstu na mowę utworzysz pakiet Kubernetes. Ten pakiet zostanie wdrożony w klastrze Kubernetes lokalnie.
+description: Za pomocą Kubernetes i Helm do definiowania obrazów kontenerów zamiany mowy na tekst i zamiany tekstu na mowę utworzymy pakiet Kubernetes. Ten pakiet zostanie wdrożony w lokalnym klastrze kubernetes.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/09/2020
+ms.date: 03/16/2020
 ms.author: dapine
-ms.openlocfilehash: cd4ff97902b1ce3d1d5a0ea066608fd33e6bf697
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.openlocfilehash: 6ad5a843c8cc287834305e09b48cd3fafe09ca51
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79037102"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79474768"
 ---
-# <a name="use-speech-service-containers-with-kubernetes-and-helm"></a>Korzystanie z kontenerów usługi mowy z Kubernetes i Helm
+# <a name="use-speech-service-containers-with-kubernetes-and-helm"></a>Używanie kontenerów usługi mowy z kubernetami i helmem
 
-Jedną z opcji zarządzania kontenerami mowy w środowisku lokalnym jest użycie Kubernetes i Helm. Za pomocą Kubernetes i Helm do definiowania obrazów kontenerów zamiany mowy na tekst i zamiany tekstu na mowę utworzysz pakiet Kubernetes. Ten pakiet zostanie wdrożony w klastrze Kubernetes lokalnie. Na koniec dowiesz się, jak przetestować wdrożone usługi i różne opcje konfiguracji. Aby uzyskać więcej informacji na temat uruchamiania kontenerów platformy Docker bez aranżacji Kubernetes, zobacz [Install and run Speech Service Containers](speech-container-howto.md).
+Jedną z opcji zarządzania kontenerami mowy lokalnie jest użycie kubernetes i helm. Za pomocą Kubernetes i Helm do definiowania obrazów kontenerów zamiany mowy na tekst i zamiany tekstu na mowę utworzymy pakiet Kubernetes. Ten pakiet zostanie wdrożony w lokalnym klastrze kubernetes. Na koniec zbadamy, jak przetestować wdrożone usługi i różne opcje konfiguracji. Aby uzyskać więcej informacji na temat uruchamiania kontenerów platformy Docker bez aranżacji kubernetes, zobacz [instalowanie i uruchamianie kontenerów usługi mowy](speech-container-howto.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Poniższe wymagania wstępne przed użyciem kontenerów mowy w środowisku lokalnym:
+Następujące wymagania wstępne przed użyciem kontenerów mowy w środowisku lokalnym:
 
-|Wymagany|Przeznaczenie|
-|--|--|
-| Azure Account | Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto][free-azure-account]. |
-| Dostęp Container Registry | Aby Kubernetes do ściągania obrazów platformy Docker do klastra, będzie potrzebny dostęp do rejestru kontenerów. |
-| Interfejs wiersza polecenia Kubernetes | [Interfejs wiersza polecenia Kubernetes][kubernetes-cli] jest wymagany do zarządzania poświadczeniami udostępnionymi z rejestru kontenerów. Kubernetes jest również wymagany przed Helm, który jest menedżerem pakietów Kubernetes. |
-| Interfejs wiersza polecenia Helm | W ramach instalacji [interfejsu wiersza polecenia Helm][helm-install] trzeba również zainicjować Helm, który zainstaluje [System.][tiller-install] |
-|Zasób mowy |Aby można było korzystać z tych kontenerów, musisz mieć:<br><br>Zasób platformy Azure _mowy_ , aby uzyskać skojarzony klucz rozliczeń i identyfikator URI punktu końcowego rozliczenia. Obie wartości są dostępne na stronach przeglądów **mowy** Azure Portal i kluczy i są wymagane do uruchomienia kontenera.<br><br>**{API_KEY}** : klucz zasobu<br><br>**{ENDPOINT_URI}** : przykład identyfikatora URI punktu końcowego: `https://westus.api.cognitive.microsoft.com/sts/v1.0`|
+| Wymagany | Przeznaczenie |
+|----------|---------|
+| Konto platformy Azure | Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto][free-azure-account] przed rozpoczęciem. |
+| Dostęp do rejestru kontenerów | Aby kubernetes wyciągnąć obrazy platformy docker do klastra, będzie potrzebował dostępu do rejestru kontenerów. |
+| Kubernetes CLI | [Kubernetes CLI][kubernetes-cli] jest wymagane do zarządzania poświadczeniami udostępnionymi z rejestru kontenerów. Kubernetes jest również potrzebne przed Helm, który jest menedżerem pakietów Kubernetes. |
+| Helm CLI | Zainstaluj [interfejsu wiersza polecenia helm][helm-install], który jest używany do instalowania wykresu helm (definicja pakietu kontenera). |
+|Zasób mowy |Aby korzystać z tych pojemników, musisz mieć:<br><br>Zasób _platformy Speech_ Azure w celu uzyskania skojarzonego klucza rozliczeniowego i identyfikatora URI punktu końcowego rozliczeń. Obie wartości są dostępne na stronach **Omówienie mowy** i klucze witryny azure portal i są wymagane do uruchomienia kontenera.<br><br>**{API_KEY}**: klucz zasobu<br><br>**{ENDPOINT_URI}**: przykład identyfikatora URI punktu końcowego to:`https://westus.api.cognitive.microsoft.com/sts/v1.0`|
 
-## <a name="the-recommended-host-computer-configuration"></a>Zalecana konfiguracja komputera hosta
+## <a name="the-recommended-host-computer-configuration"></a>Zalecana konfiguracja komputera-hosta
 
-Zapoznaj się z informacjami na temat [komputera hosta kontenera usługi Speech][speech-container-host-computer] . Ten *Wykres Helm* automatycznie oblicza wymagania dotyczące procesora i pamięci w zależności od liczby dekoderów (współbieżnych żądań) określanych przez użytkownika. Ponadto dostosowuje się w zależności od tego, czy optymalizacje danych wejściowych audio/tekstowych są skonfigurowane jako `enabled`. Wykres Helm ma wartość domyślną, dwa współbieżne żądania i wyłączenie optymalizacji.
+Odnoszą się do szczegółów [komputera hosta kontenera usługi mowy][speech-container-host-computer] jako odwołanie. Ten *wykres helm* automatycznie oblicza wymagania procesora CPU i pamięci na podstawie liczby dekodów (równoczesnych żądań), które określa użytkownik. Ponadto dostosuje się do tego, czy optymalizacje dla wprowadzania audio/tekstowego są skonfigurowane jako `enabled`. Domyślnie wykres helm, dwa równoczesne żądania i wyłączenie optymalizacji.
 
-| Usługa | Procesor CPU/kontener | Pamięć/kontener |
+| Usługa | Procesor / kontener | Pamięć / Kontener |
 |--|--|--|
-| **Zamiana mowy na tekst** | jeden dekoder wymaga co najmniej 1 150 millicores. Jeśli `optimizedForAudioFile` jest włączona, wymagane są 1 950 millicores. (domyślnie: dwa dekodery) | Wymagane: 2 GB<br>Ograniczone: 4 GB |
-| **Zamiana tekstu na mowę** | jedno współbieżne żądanie wymaga co najmniej 500 millicores. Jeśli `optimizeForTurboMode` jest włączona, wymagane są 1 000 millicores. (domyślnie: dwa współbieżne żądania) | Wymagane: 1 GB<br> Ograniczone: 2 GB |
+| **Zamiana mowy na tekst** | jeden dekoder wymaga minimum 1150 milikores. Jeśli `optimizedForAudioFile` jest włączona, wymagane jest 1950 milikores. (domyślnie: dwa dekodery) | Wymagane: 2 GB<br>Limitowane: 4 GB |
+| **Text-to-speech** | jednocześnie wymaga co najmniej 500 milikores. Jeśli `optimizeForTurboMode` jest włączona, wymagane jest 1000 milikores. (domyślnie: dwa równoczesne żądania) | Wymagane: 1 GB<br> Limitowane: 2 GB |
 
-## <a name="connect-to-the-kubernetes-cluster"></a>Nawiązywanie połączenia z klastrem Kubernetes
+## <a name="connect-to-the-kubernetes-cluster"></a>Łączenie się z klastrem Kubernetes
 
-Oczekuje się, że komputer hosta ma dostępny klaster Kubernetes. Zapoznaj się z tym samouczkiem dotyczącym [wdrażania klastra Kubernetes](../../aks/tutorial-kubernetes-deploy-cluster.md) , aby poznać koncepcję wdrażania klastra Kubernetes na komputerze hosta.
+Oczekuje się, że komputer-host będzie miał dostępny klaster Kubernetes. Zobacz ten samouczek dotyczący [wdrażania klastra Kubernetes,](../../aks/tutorial-kubernetes-deploy-cluster.md) aby zapoznać się z koncepcyjnie, jak wdrożyć klaster Kubernetes na komputerze-hoście.
 
-### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>Udostępnianie poświadczeń platformy Docker w klastrze Kubernetes
+### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>Udostępnianie poświadczeń platformy Docker za pomocą klastra Kubernetes
 
-Aby umożliwić klastrowi Kubernetes `docker pull` skonfigurowanych obrazów z rejestru kontenerów `containerpreview.azurecr.io`, należy przenieść poświadczenia platformy Docker do klastra. Wykonaj poniższe polecenie [`kubectl create`][kubectl-create] , aby utworzyć *wpis tajny Docker-Registry* na podstawie poświadczeń podanych w ramach wymagania wstępnego dostępu do rejestru kontenerów.
+Aby zezwolić klastrowi Kubernetes na `docker pull` skonfigurowane `containerpreview.azurecr.io` obrazy z rejestru kontenerów, należy przenieść poświadczenia platformy docker do klastra. Wykonaj [`kubectl create`][kubectl-create] poniższe polecenie, aby utworzyć *klucz tajny rejestru platformy docker* na podstawie poświadczeń podanych z wymaganego dostępu do rejestru kontenera.
 
-Z wybranego interfejsu wiersza polecenia Uruchom następujące polecenie. Pamiętaj, aby zastąpić `<username>`, `<password>`i `<email-address>` poświadczeniami rejestru kontenerów.
+Z wybranego interfejsu wiersza polecenia uruchom następujące polecenie. Pamiętaj, aby `<username>`zastąpić `<password>`, `<email-address>` i poświadczenia rejestru kontenera.
 
 ```console
 kubectl create secret docker-registry mcr \
@@ -61,41 +61,41 @@ kubectl create secret docker-registry mcr \
 ```
 
 > [!NOTE]
-> Jeśli masz już dostęp do rejestru kontenerów `containerpreview.azurecr.io`, możesz utworzyć wpis tajny Kubernetes przy użyciu flagi generycznej. Rozważ następujące polecenie, które jest wykonywane względem pliku JSON konfiguracji platformy Docker.
+> Jeśli masz już dostęp `containerpreview.azurecr.io` do rejestru kontenerów, można utworzyć klucz tajny Kubernetes przy użyciu flagi ogólnej zamiast. Należy wziąć pod uwagę następujące polecenie, które wykonuje przeciwko konfiguracji platformy Docker JSON.
 > ```console
 >  kubectl create secret generic mcr \
 >      --from-file=.dockerconfigjson=~/.docker/config.json \
 >      --type=kubernetes.io/dockerconfigjson
 > ```
 
-Następujące dane wyjściowe są drukowane w konsoli po pomyślnym utworzeniu wpisu tajnego.
+Następujące dane wyjściowe są drukowane na konsoli po pomyślnym utworzeniu klucza tajnego.
 
 ```console
 secret "mcr" created
 ```
 
-Aby sprawdzić, czy wpis tajny został utworzony, wykonaj [`kubectl get`][kubectl-get] z flagą `secrets`.
+Aby sprawdzić, czy klucz tajny [`kubectl get`][kubectl-get] został `secrets` utworzony, wykonaj z flagą.
 
 ```console
 kubectl get secrets
 ```
 
-Wykonanie `kubectl get secrets` drukuje wszystkie skonfigurowane wpisy tajne.
+Wykonywanie `kubectl get secrets` wydruków wszystkie skonfigurowane wpisy tajne.
 
 ```console
 NAME    TYPE                              DATA    AGE
 mcr     kubernetes.io/dockerconfigjson    1       30s
 ```
 
-## <a name="configure-helm-chart-values-for-deployment"></a>Konfigurowanie wartości wykresu Helm na potrzeby wdrożenia
+## <a name="configure-helm-chart-values-for-deployment"></a>Konfigurowanie wartości wykresu helm dla wdrożenia
 
-Odwiedź [centrum Helm firmy Microsoft][ms-helm-hub] , aby uzyskać wszystkie dostępne publicznie wykresy Helm oferowane przez firmę Microsoft. W centrum programu Microsoft Helm znajdziesz **Wykres lokalny Cognitive Services mowy**. Jest to wykres, który zostanie zainstalowany **w środowisku Cognitive Services Speech** , ale musimy najpierw utworzyć plik `config-values.yaml` z jawnymi konfiguracjami. Zacznijmy od dodania repozytorium Microsoft do naszego wystąpienia Helm.
+Odwiedź [centrum Microsoft Helm Hub, aby][ms-helm-hub] uzyskać wszystkie publicznie dostępne wykresy helm oferowane przez firmę Microsoft. W centrum Microsoft Helm Hub znajdziesz **lokalny wykres mowy usług Cognitive Services**. **Program Cognitive Services Speech On-Premises** jest wykresem, który zainstalujemy, ale najpierw musimy utworzyć plik z jawnymi `config-values.yaml` konfiguracjami. Zacznijmy od dodania repozytorium firmy Microsoft do naszego wystąpienia Helm.
 
 ```console
 helm repo add microsoft https://microsoft.github.io/charts/repo
 ```
 
-Następnie skonfigurujemy nasze wartości wykresu Helm. Skopiuj i wklej następujący YAML do pliku o nazwie `config-values.yaml`. Aby uzyskać więcej informacji na temat dostosowywania **Cognitive Services mowy lokalnego wykresu Helm**, zobacz [Dostosowywanie wykresów Helm](#customize-helm-charts). Zastąp `# {ENDPOINT_URI}` i `# {API_KEY}` Komentarze własnymi wartościami.
+Następnie skonfigurujemy nasze wartości wykresu Helm. Skopiuj i wklej następujący `config-values.yaml`PLIK YAML do pliku o nazwie . Aby uzyskać więcej informacji na temat dostosowywania **lokalnego wykresu helmu mowy usług Cognitive Services,** zobacz [dostosowywanie wykresów helm .](#customize-helm-charts) Zastąp `# {ENDPOINT_URI}` i `# {API_KEY}` komentarze własnymi wartościami.
 
 ```yaml
 # These settings are deployment specific and users can provide customizations
@@ -134,19 +134,19 @@ textToSpeech:
 ```
 
 > [!IMPORTANT]
-> Jeśli wartości `billing` i `apikey` nie zostaną podane, usługi wygasną po 15 minutach. Podobnie weryfikacja nie powiedzie się, ponieważ usługi nie będą dostępne.
+> Jeśli `billing` wartości `apikey` i wartości nie zostaną dostarczone, usługi wygasną po 15 minutach. Podobnie weryfikacja zakończy się niepowodzeniem, ponieważ usługi nie będą dostępne.
 
 ### <a name="the-kubernetes-package-helm-chart"></a>Pakiet Kubernetes (wykres Helm)
 
-*Wykres Helm* zawiera konfigurację, którą obrazy platformy Docker pobrać z rejestru kontenerów `containerpreview.azurecr.io`.
+*Wykres Helm* zawiera konfigurację obrazów dokowych do ścinania do ściągnięcia z rejestru `containerpreview.azurecr.io` kontenerów.
 
-> [Wykres Helm][helm-charts] to zbiór plików, które opisują powiązany zestaw zasobów Kubernetes. Pojedynczy wykres może służyć do wdrażania bardzo prostego, takiego jak Memcached pod lub złożonego, takiego jak pełny stos aplikacji sieci Web z serwerami HTTP, bazami danych, pamięciami podręcznymi i tak dalej.
+> [Wykres helm][helm-charts] jest zbiorem plików, które opisują powiązany zestaw zasobów Kubernetes. Jeden wykres może służyć do wdrażania coś prostego, jak memcached zasobnika lub coś złożonego, jak pełny stos aplikacji sieci web z serwerami HTTP, baz danych, pamięci podręcznych i tak dalej.
 
-Dostarczone *wykresy Helm* umożliwiają ściąganie obrazów platformy Docker usługi mowy, zamiany tekstu na mowę i usług zamiany mowy na tekst z rejestru kontenerów `containerpreview.azurecr.io`.
+Dostarczone *wykresy Helm* wyciągnąć obrazy platformy docker usługi mowy, zarówno tekst do mowy i `containerpreview.azurecr.io` usług zamiany mowy na tekst z rejestru kontenerów.
 
 ## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>Instalowanie wykresu Helm w klastrze Kubernetes
 
-Aby zainstalować *Wykres Helm* , należy wykonać polecenie [`helm install`][helm-install-cmd] , zastępując `<config-values.yaml>` z odpowiednią ścieżką i argumentem nazwy pliku. `microsoft/cognitive-services-speech-onpremise` wykres Helm, do którego odwołuje się poniżej, jest dostępny w [centrum Microsoft Helm w tym miejscu][ms-helm-hub-speech-chart].
+Aby zainstalować *wykres helm* musimy wykonać [`helm install`][helm-install-cmd] polecenie, zastępując `<config-values.yaml>` odpowiednią ścieżkę i argument nazwy pliku. Wykres `microsoft/cognitive-services-speech-onpremise` Helm, do którego odwołuje się poniższy, jest dostępny w [Microsoft Helm Hub tutaj][ms-helm-hub-speech-chart].
 
 ```console
 helm install onprem-speech microsoft/cognitive-services-speech-onpremise \
@@ -154,7 +154,7 @@ helm install onprem-speech microsoft/cognitive-services-speech-onpremise \
     --values <config-values.yaml> 
 ```
 
-Oto przykładowe dane wyjściowe, które mogą być widoczne w przypadku pomyślnego wykonania instalacji:
+Oto przykładowe dane wyjściowe, których można oczekiwać po pomyślnym wykonaniu instalacji:
 
 ```console
 NAME:   onprem-speech
@@ -196,13 +196,13 @@ cognitive-services-speech-onpremise has been installed!
 Release is named onprem-speech
 ```
 
-Wdrożenie Kubernetes może potrwać kilka minut. Aby upewnić się, że oba typy i usługi są poprawnie wdrożone i dostępne, wykonaj następujące polecenie:
+Wdrożenie usługi Kubernetes może potrwać kilka minut. Aby potwierdzić, że zarówno zasobników, jak i usług są poprawnie wdrożone i dostępne, wykonaj następujące polecenie:
 
 ```console
 kubectl get all
 ```
 
-Powinieneś oczekiwać, że zobaczysz coś podobnego do następującego:
+Należy się spodziewać, aby zobaczyć coś podobnego do następującego wyjścia:
 
 ```console
 NAME                                  READY     STATUS    RESTARTS   AGE
@@ -229,18 +229,18 @@ horizontalpodautoscaler.autoscaling/speech-to-text-autoscaler   Deployment/speec
 horizontalpodautoscaler.autoscaling/text-to-speech-autoscaler   Deployment/text-to-speech   0%/50%    2         10        2          34m
 ```
 
-### <a name="verify-helm-deployment-with-helm-tests"></a>Weryfikowanie wdrożenia Helm z testami Helm
+### <a name="verify-helm-deployment-with-helm-tests"></a>Weryfikowanie wdrażania helmu za pomocą testów Helm
 
-Zainstalowane wykresy Helm definiują *testy Helm*, które stanowią wygodę do weryfikacji. Te testy weryfikują gotowość usługi. Aby zweryfikować usługi **zamiany mowy na tekst** i zamiany **tekstu na mowę** , zostanie wykonane polecenie [test Helm][helm-test] .
+Zainstalowane wykresy Helm definiują *testy Helm,* które służą jako wygoda weryfikacji. Te testy sprawdzają gotowość usługi. Aby zweryfikować zarówno **zamiany mowy na tekst,** jak i usługi **zamiany tekstu na mowę,** wykonamy polecenie [testu Helm.][helm-test]
 
 ```console
 helm test onprem-speech
 ```
 
 > [!IMPORTANT]
-> Te testy zakończą się niepowodzeniem, jeśli stan POD nie jest `Running` lub jeśli wdrożenie nie znajduje się na liście `AVAILABLE` kolumnie. Poczekaj, aż ukończenie tego procesu może potrwać od 10 minut.
+> Te testy zakończy się niepowodzeniem, jeśli stan POD `Running` nie `AVAILABLE` jest lub jeśli wdrożenie nie jest wymienione w kolumnie. Bądź cierpliwy, ponieważ może to potrwać ponad dziesięć minut.
 
-Te testy będą wyprowadzać różne wyniki stanu:
+Testy te będą wyprowadzać różne wyniki stanu:
 
 ```console
 RUNNING: speech-to-text-readiness-test
@@ -249,11 +249,11 @@ RUNNING: text-to-speech-readiness-test
 PASSED: text-to-speech-readiness-test
 ```
 
-Alternatywą dla wykonywania *testów Helm*może być zebranie *zewnętrznych adresów IP* i odpowiednich portów z polecenia `kubectl get all`. Korzystając z adresu IP i portu, Otwórz przeglądarkę internetową i przejdź do `http://<external-ip>:<port>:/swagger/index.html`, aby wyświetlić strony struktury API Swagger.
+Jako alternatywę dla wykonywania *testów steru*można zebrać zewnętrzne adresy *IP* i odpowiednie porty z `kubectl get all` polecenia. Korzystając z adresu IP i portu, `http://<external-ip>:<port>:/swagger/index.html` otwórz przeglądarkę internetową i przejdź do, aby wyświetlić strony swagger interfejsu API.
 
-## <a name="customize-helm-charts"></a>Dostosuj wykresy Helm
+## <a name="customize-helm-charts"></a>Dostosowywanie wykresów helm
 
-Wykresy Helm są hierarchiczne. Jest to hierarchia umożliwiająca dziedziczenie wykresu, a także jest również koncepcją specyfiki, w której ustawienia, które są bardziej szczegółowymi regułami przesłonięć.
+Wykresy helm są hierarchiczne. Hierarchiczne umożliwia dziedziczenie wykresu, ale także uwzględnia pojęcie specyfiki, gdzie ustawienia, które są bardziej szczegółowe zastępowania reguł dziedziczonych.
 
 [!INCLUDE [Speech umbrella-helm-chart-config](includes/speech-umbrella-helm-chart-config.md)]
 
@@ -263,10 +263,10 @@ Wykresy Helm są hierarchiczne. Jest to hierarchia umożliwiająca dziedziczenie
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat instalowania aplikacji z programem Helm w usłudze Azure Kubernetes Service (AKS), [odwiedź to tutaj][installing-helm-apps-in-aks].
+Aby uzyskać więcej informacji na temat instalowania aplikacji z helmem w usłudze Azure Kubernetes Service (AKS), [odwiedź tutaj][installing-helm-apps-in-aks].
 
 > [!div class="nextstepaction"]
-> [Kontenery Cognitive Services][cog-svcs-containers]
+> [Kontenery usług Cognitive Services][cog-svcs-containers]
 
 <!-- LINKS - external -->
 [free-azure-account]: https://azure.microsoft.com/free

@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: dapine
 ms.openlocfilehash: 0e8a6a0ffa451337b9e7ea7590cfe614fc1129a1
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78943748"
 ---
-Aby przesłać strumieniowo w skompresowanym formacie audio do usługi mowy, Utwórz `PullAudioInputStream` lub `PushAudioInputStream`. Następnie utwórz `AudioConfig` z wystąpienia klasy Stream, określając format kompresji strumienia.
+Aby przesyłać strumieniowo w skompresowanym `PullAudioInputStream` `PushAudioInputStream`formacie audio do usługi Mowa, utwórz lub . Następnie należy `AudioConfig` utworzyć z wystąpienia klasy strumienia, określając format kompresji strumienia.
 
-Załóżmy, że masz klasę strumienia wejściowego o nazwie `pushStream` i używają OPUS/OGG. Twój kod może wyglądać następująco:
+Załóżmy, że masz klasę strumienia wejściowego o nazwie `pushStream` i używasz OPUS/OGG. Kod może wyglądać następująco:
 
 ```csharp
 using Microsoft.CognitiveServices.Speech;

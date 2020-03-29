@@ -1,7 +1,7 @@
 ---
-title: Wypychanie platformy Docker dla kontenera wykrywanie języka
+title: Ściąganie platformy Docker dla kontenera wykrywania języka
 titleSuffix: Azure Cognitive Services
-description: Polecenie Docker pull dla kontenera wykrywanie języka
+description: Polecenie ściągania platformy Docker dla kontenera wykrywania języka
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,17 +10,17 @@ ms.topic: include
 ms.date: 09/12/2019
 ms.author: dapine
 ms.openlocfilehash: 23669a5440799ff071b3a30e3e41ab5d49f212df
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "70966782"
 ---
-#### <a name="docker-pull-for-the-language-detection-container"></a>Wypychanie platformy Docker dla kontenera wykrywanie języka
+#### <a name="docker-pull-for-the-language-detection-container"></a>Ściąganie platformy Docker dla kontenera wykrywania języka
 
-Użyj polecenia [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) , aby pobrać obraz kontenera z programu Microsoft Container Registry.
+Użyj [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) polecenia, aby pobrać obraz kontenera z rejestru kontenerów firmy Microsoft.
 
-Pełny opis znaczników dostępnych dla kontenerów analiza tekstu można znaleźć w kontenerze [wykrywanie języka](https://go.microsoft.com/fwlink/?linkid=2018759) w usłudze Docker Hub.
+Aby uzyskać pełny opis dostępnych tagów dla kontenerów analizy tekstu, zobacz kontener [wykrywania języka](https://go.microsoft.com/fwlink/?linkid=2018759) w Centrum platformy Docker.
 
 ```
 docker pull mcr.microsoft.com/azure-cognitive-services/language:latest

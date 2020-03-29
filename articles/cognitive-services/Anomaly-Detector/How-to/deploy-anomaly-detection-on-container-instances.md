@@ -1,7 +1,7 @@
 ---
-title: Uruchom kontener wykrywania anomalii w Azure Container Instances
+title: Uruchom kontener detektora anomalii w wystąpieniach kontenera platformy Azure
 titleSuffix: Azure Cognitive Services
-description: Wdróż kontener wykrywania anomalii w usłudze Azure Container instance i przetestuj go w przeglądarce sieci Web.
+description: Wdrażanie kontenera detektora anomalii w wystąpieniu kontenera platformy Azure i testowanie go w przeglądarce sieci Web.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -11,21 +11,21 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: dapine
 ms.openlocfilehash: 2fba0a0d64502a30b6dfbc9f4f109bca65cca8b9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76716350"
 ---
-# <a name="deploy-an-anomaly-detector-container-to-azure-container-instances"></a>Wdróż kontener wykrywania anomalii w Azure Container Instances
+# <a name="deploy-an-anomaly-detector-container-to-azure-container-instances"></a>Wdrażanie kontenera detektora anomalii w wystąpieniach kontenerów platformy Azure
 
-Dowiedz się, jak wdrożyć kontener [wykrywania anomalii](../anomaly-detector-container-howto.md) Cognitive Services na platformie Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/). Ta procedura pokazuje tworzenie zasobu wykrywania anomalii. Następnie omówiono ściąganie skojarzonego obrazu kontenera. Na koniec wyróżnimy możliwość wykonywania aranżacji tych dwóch z przeglądarki. Korzystanie z kontenerów umożliwia przechodzenie przez deweloperów do zarządzania infrastrukturą, aby zamiast tego koncentrować się na tworzeniu aplikacji.
+Dowiedz się, jak wdrożyć kontener [detektora anomalii](../anomaly-detector-container-howto.md) usług Cognitive Services w [wystąpieniach kontenerów](https://docs.microsoft.com/azure/container-instances/)platformy Azure. Ta procedura pokazuje tworzenie zasobu detektora anomalii. Następnie omówimy ciągnięcie skojarzonego obrazu kontenera. Na koniec podkreślamy możliwość wykonywania aranżacji dwóch z przeglądarki. Korzystanie z kontenerów można przenieść uwagę deweloperów od zarządzania infrastrukturą zamiast skupiać się na tworzeniu aplikacji.
 
 [!INCLUDE [Prerequisites](../../containers/includes/container-preview-prerequisites.md)]
 
-## <a name="request-access-to-the-private-container-registry"></a>Poproś o dostęp do prywatnego rejestru kontenerów
+## <a name="request-access-to-the-private-container-registry"></a>Żądanie dostępu do rejestru kontenerów prywatnych
 
-Musisz najpierw zakończyć i przesłać [formularz żądania kontenera wykrywania anomalii](https://aka.ms/adcontainer) , aby zażądać dostępu do kontenera.
+Najpierw należy wypełnić i przesłać [formularz żądania kontenera detektora anomalii,](https://aka.ms/adcontainer) aby zażądać dostępu do kontenera.
 
 [!INCLUDE [Request access](../../../../includes/cognitive-services-containers-request-access-only.md)]
 
@@ -37,6 +37,6 @@ Musisz najpierw zakończyć i przesłać [formularz żądania kontenera wykrywan
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Zapoznaj się z tematem [Instalowanie i uruchamianie kontenerów](../anomaly-detector-container-configuration.md) na potrzeby ściągania obrazu kontenera i uruchamiania kontenera
-* Przegląd [konfigurowania kontenerów](../anomaly-detector-container-configuration.md) dla ustawień konfiguracji
-* [Dowiedz się więcej o usłudze interfejsu API wykrywania anomalii](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
+* Przejrzyj [Instalowanie i uruchamianie kontenerów](../anomaly-detector-container-configuration.md) do wyciągania obrazu kontenera i uruchamianie kontenera
+* Przeglądanie [Konfigurowanie kontenerów](../anomaly-detector-container-configuration.md) pod kątem ustawień konfiguracji
+* [Dowiedz się więcej o usłudze INTERFEJSU API detektora anomalii](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

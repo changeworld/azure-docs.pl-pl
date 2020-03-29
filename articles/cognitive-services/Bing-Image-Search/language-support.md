@@ -11,37 +11,37 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: ca3821b6088e45730334d1b0971e270b1d86dfce
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68881918"
 ---
-# <a name="language-and-region-support-for-the-bing-image-search-api"></a>Obsługa języka i regionu dla interfejs API wyszukiwania obrazów Bing
+# <a name="language-and-region-support-for-the-bing-image-search-api"></a>Obsługa języka i regionu interfejsu API wyszukiwania obrazów usługi Bing
 
-Interfejs API wyszukiwania obrazów Bing obsługuje więcej niż trzy dziesiątki krajów/regionów, wiele z więcej niż jednym językiem. Określenie kraju/regionu z zapytaniem służy głównie do uściślenia wyników wyszukiwania w oparciu o zainteresowania w tym kraju/regionie. Ponadto wyniki mogą zawierać linki do usługi Bing, a te linki mogą lokalizować środowisko użytkownika Bing zgodnie z określonym krajem lub regionami lub językiem.
+Interfejs API wyszukiwania obrazów Bing obsługuje ponad trzy tuziny krajów/regionów, wiele z więcej niż jednym językiem. Określanie kraju/regionu za pomocą kwerendy służy przede wszystkim do zawężania wyników wyszukiwania na podstawie zainteresowań w tym kraju/regionie. Ponadto wyniki mogą zawierać łącza do usługi Bing, a te łącza mogą lokalizować środowisko użytkownika usługi Bing zgodnie z określonym krajem/regionem lub językiem.
 
-Aby określić kraj/region i język, ustaw `mkt` parametr zapytania (rynek) na kod z tabeli **rynków** poniżej. Rynek określa kraj/region i język. Jeśli użytkownik woli zobaczyć tekst wyświetlany w innym języku, należy ustawić `setLang` parametr zapytania na odpowiedni kod języka.
+Aby określić kraj/region i `mkt` język, ustaw parametr zapytania (rynkowego) na kod z poniższej **tabeli Rynki.** Rynek określa zarówno kraj/region, jak i język. Jeśli użytkownik woli wyświetlać tekst wyświetlania w `setLang` innym języku, ustaw parametr zapytania na odpowiedni kod języka.
 
-Alternatywnie możesz określić kraj/region przy użyciu `cc` parametru zapytania. W przypadku określenia kraju/regionu należy również określić jeden lub więcej kodów języka przy użyciu `Accept-Language` nagłówka HTTP. Obsługiwane języki różnią się w zależności od kraju/regionu; są one przyznawane dla każdego kraju/regionu w tabeli rynków.
+Alternatywnie można określić kraj/region `cc` przy użyciu parametru zapytania. Jeśli określisz kraj/region, należy również określić jeden `Accept-Language` lub więcej kodów języków za pomocą nagłówka HTTP. Obsługiwane języki różnią się w zależności od kraju/regionu; dla każdego kraju/regionu w tabeli Rynki.
 
 > [!NOTE]
 > Interfejs API obrazów trendów obsługuje obecnie tylko następujące rynki:
 > - pl-US (angielski, Stany Zjednoczone)
-> - EN-CA (angielski, Kanada)
+> - en-CA (angielski, Kanada)
 > - en-AU (angielski, Australia)
 > - zh-CN (chiński, Chiny)
 
 ## <a name="countriesregions"></a>Kraje/regiony
 
-|Country/region|Kod|
+|Kraj/region|Code|
 |-------|----|
 |Argentyna|AR|
 |Australia|AU|
 |Austria|AT|
 |Belgia|BE|
 |Brazylia|BR|
-|Kanada|Urząd certyfikacji|
+|Kanada|CA|
 |Chile|CL|
 |Dania|DK|
 |Finlandia|FI|
@@ -49,10 +49,10 @@ Alternatywnie możesz określić kraj/region przy użyciu `cc` parametru zapytan
 |Niemcy|DE|
 |SRA Hongkong|HK|
 |Indie|IN|
-|Indonezja|id|
-|Włochy|it|
+|Indonezja|ID|
+|Włochy|IT|
 |Japonia|JP|
-|Korea Południowa|KR|
+|Korea|KR|
 |Malezja|MY|
 |Meksyk|MX|
 |Holandia|NL|
@@ -64,59 +64,59 @@ Alternatywnie możesz określić kraj/region przy użyciu `cc` parametru zapytan
 |Filipiny|PH|
 |Rosja|RU|
 |Arabia Saudyjska|SA|
-|RPA|ZA|
+|Republika Południowej Afryki|ZA|
 |Hiszpania|ES|
 |Szwecja|SE|
 |Szwajcaria|CH|
 |Tajwan|TW|
 |Turcja|TR|
-|Zjednoczone Królestwo|GB|
+|Wielka Brytania|GB|
 |Stany Zjednoczone|USA|
 
 
-## <a name="markets"></a>Wprowadza
+## <a name="markets"></a>Rynków
 
-|Country/region|Język|Kod rynkowy|
+|Kraj/region|Język|Kodeks rynku|
 |-------|--------|-----------|
-|Argentyna|Hiszpański|ES-AR|
-|Australia|Angielski|EN-AU|
-|Austria|niemiecki|de-AT|
-|Belgia|Holenderski|nl-BE|
+|Argentyna|Hiszpański|es-AR|
+|Australia|Polski|pl-UA|
+|Austria|Niemiecki|de-AT|
+|Belgia|Niderlandzki|nl-BE|
 |Belgia|Francuski|fr-BE|
 |Brazylia|Portugalski|pt-BR|
-|Kanada|Angielski|EN-CA|
+|Kanada|Polski|pl-CA|
 |Kanada|Francuski|fr-CA|
-|Chile|Hiszpański|ES — CL|
-|Dania|Duński|Akcelerator deweloperski w wersji DK|
-|Finlandia|Fiński|fi-FI|
+|Chile|Hiszpański|es-CL|
+|Dania|duński|da-DK|
+|Finlandia|fiński|fi-FI|
 |Francja|Francuski|fr-FR|
-|Niemcy|niemiecki|de-DE.|
+|Niemcy|Niemiecki|de-DE|
 |SRA Hongkong|Chiński tradycyjny|zh-HK|
-|Indie|Angielski|EN-IN|
-|Indonezja|Angielski|pl-ID|
-|Włochy|Włoski|IT-IT|
+|Indie|Polski|pl-IN|
+|Indonezja|Polski|en-ID|
+|Włochy|Włoski|it-IT|
 |Japonia|Japoński|ja-JP|
-|Korea Południowa|Koreański|ko-KR|
-|Malezja|Angielski|pl — MY|
+|Korea|Koreański|ko-KR|
+|Malezja|Polski|pl-MY|
 |Meksyk|Hiszpański|es-MX|
-|Holandia|Holenderski|NL-NL|
-|Nowa Zelandia|Angielski|EN NZ|
+|Holandia|Niderlandzki|nl-NL|
+|Nowa Zelandia|Polski|pl-NZ|
 |Chiny|Chiński|zh-CN|
 |Polska|Polski|pl-PL|
 |Portugalia|Portugalski|pt-PT|
-|Filipiny|Angielski|EN-PH|
+|Filipiny|Polski|pl-PH|
 |Rosja|Rosyjski|ru-RU|
 |Arabia Saudyjska|Arabski|ar-SA|
-|RPA|Angielski|pl-za|
+|Republika Południowej Afryki|Polski|pl-ZA|
 |Hiszpania|Hiszpański|es-ES|
-|Szwecja|Szwedzki|sv-SE|
-|Szwajcaria|Francuski|FR-CH|
-|Szwajcaria|niemiecki|de-CH|
+|Szwecja|szwedzki|sv-SE|
+|Szwajcaria|Francuski|fr-CH|
+|Szwajcaria|Niemiecki|de-CH|
 |Tajwan|Chiński tradycyjny|zh-TW|
 |Turcja|Turecki|tr-TR|
-|Zjednoczone Królestwo|Angielski|en-GB|
-|Stany Zjednoczone|Angielski|en-US|
-|Stany Zjednoczone|Hiszpański|es-US|
+|Wielka Brytania|Polski|en-GB|
+|Stany Zjednoczone|Polski|pl-PL|
+|Stany Zjednoczone|Hiszpański|es-USA|
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać więcej informacji o wyszukiwanie wiadomości Bing punktach końcowych, zobacz [News wyszukiwanie obrazów API wersji 7 Reference](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference).
+Aby uzyskać więcej informacji na temat punktów końcowych wyszukiwania wiadomości Bing, zobacz [Odwołanie do interfejsu API wyszukiwania obrazów wiadomości w wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference).

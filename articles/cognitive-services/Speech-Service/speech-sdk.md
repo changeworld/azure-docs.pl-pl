@@ -1,7 +1,7 @@
 ---
-title: Informacje o zestawie SDK mowy — Speech Service
+title: Informacje o SDK mowy — usługa mowy
 titleSuffix: Azure Cognitive Services
-description: Zestaw Speech Software Development Kit (SDK) zapewnia aplikacjom natywny dostęp do funkcji usługi mowy, ułatwiając opracowywanie oprogramowania. Ten artykuł zawiera dodatkowe szczegóły dotyczące zestawu SDK dla Windows, Linux i Android.
+description: Zestaw SDK (Speech Software Development Kit) zapewnia aplikacjom natywny dostęp do funkcji usługi Mowy, co ułatwia tworzenie oprogramowania. Ten artykuł zawiera dodatkowe szczegóły dotyczące sdk dla systemów Windows, Linux i Android.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -11,46 +11,46 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: dapine
 ms.openlocfilehash: 984d2dfe07faa22756b4be167aa86a69806b1a84
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78331097"
 ---
 # <a name="about-the-speech-sdk"></a>Informacje o zestawie SDK usługi Mowa
 
-Mowy Software Development Kit (SDK) daje dostęp aplikacji do funkcji usługi rozpoznawania mowy, co ułatwia tworzenie oprogramowania dla komputerów z obsługą mowy. Obecnie zestawy SDK zapewniają dostęp do funkcji **zamiany mowy na tekst**, zamiany **tekstu na mowę**, **tłumaczenia mowy**, **rozpoznawania zamierzeń**i **bezpośredniego kanału mowy w programie bot Framework**.
+Zestaw SDK (Speech Software Development Kit) zapewnia aplikacjom dostęp do funkcji usługi Mowy, co ułatwia tworzenie oprogramowania obsługującego mowę. Obecnie zestawY SDK zapewniają dostęp do **zamiany mowy na tekst,** **zamiany tekstu na mowę,** **tłumaczenia mowy,** **rozpoznawania intencji**i **kanału Direct Line Speech firmy Bot Framework.**
 
-Możesz łatwo przechwycić dźwięk z mikrofonu, odczytać ze strumienia lub uzyskać dostęp do plików audio z magazynu za pomocą zestawu Speech SDK. Zestaw Speech SDK obsługuje format WAV/PCM 16-bitowy, 16 kHz/8 kHz, dźwięk z jednym kanałem na potrzeby rozpoznawania mowy. Dodatkowe formaty audio są obsługiwane za pomocą [punktu końcowego REST zamiany mowy na tekst](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) lub [usługi transkrypcji partii](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats).
+Za pomocą zestawu SDK mowy można łatwo przechwytywać dźwięk z mikrofonu, odczytywać go ze strumienia lub uzyskiwać dostęp do plików audio z pamięci masowej. Zestaw Speech SDK obsługuje 16-bitowy, 16 kHz/8 kHz, jednokanałowy dźwięk WAV/PCM do rozpoznawania mowy. Dodatkowe formaty audio są obsługiwane przy użyciu [punktu końcowego REST zamiany mowy na tekst](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) lub usługi [transkrypcji wsadowej.](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats)
 
-Ogólne omówienie możliwości i obsługiwanych platform można znaleźć na [stronie wprowadzanie](https://aka.ms/csspeech)dokumentacji.
+Ogólny przegląd możliwości i obsługiwanych platform można znaleźć na [stronie wpisu](https://aka.ms/csspeech)dokumentacji .
 
 [!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-## <a name="get-the-sdk"></a>Pobierz zestaw SDK
+## <a name="get-the-sdk"></a>Pobierz sdk
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
 > [!WARNING]
-> Zestaw Speech SDK obsługuje system Windows 10 lub nowszy. Wcześniejsze wersje systemu Windows **nie są obsługiwane**.
+> Zestaw SDK mowy obsługuje system Windows 10 lub nowsze wersje. Wcześniejsze wersje systemu Windows nie są **obsługiwane**.
 
-Dla Windows firma Microsoft obsługuje następujące języki:
+W systemie Windows obsługujemy następujące języki:
 
-* C# C++ (platformy UWP i programowi .NET): można odwołać się i używać najnowszej wersji naszych pakietu NuGet zestawu SDK rozpoznawania mowy. Ten pakiet zawiera biblioteki klienckie 32-bitowych i 64-bitowych i bibliotek zarządzanych (.NET). Zestaw SDK można zainstalować w programie Visual Studio za pomocą narzędzia NuGet, [Microsoft. CognitiveServices. Speech](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech).
+* C# (UWP i .NET), C++: Można odwoływać się i używać najnowszej wersji naszego pakietu NuGet zestawu SDK mowy. Pakiet zawiera 32-bitowe i 64-bitowe biblioteki klienckie i biblioteki zarządzane (.NET). SDK można zainstalować w programie Visual Studio przy użyciu NuGet, [Microsoft.CognitiveServices.Speech](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech).
 
-* Java: Możesz odwołać się i używać najnowszej wersji naszych pakietu Maven zestaw SDK rozpoznawania mowy, który obsługuje tylko Windows x64. W projekcie Maven Dodaj `https://csspeechstorage.blob.core.windows.net/maven/` jako dodatkowe repozytorium i odwołania `com.microsoft.cognitiveservices.speech:client-sdk:1.8.0` jako zależność.
+* Java: Możesz odwoływać się i używać najnowszej wersji naszego pakietu Speech SDK Maven, który obsługuje tylko system Windows x64. W projekcie Maven `https://csspeechstorage.blob.core.windows.net/maven/` dodaj jako dodatkowe repozytorium i odwołanie `com.microsoft.cognitiveservices.speech:client-sdk:1.8.0` jako zależność.
 
 # <a name="linux"></a>[Linux](#tab/linux)
 
 > [!NOTE]
-> Obecnie obsługujemy tylko Ubuntu 16,04, Ubuntu 18,04, Debian 9, Red Hat Enterprise Linux (RHEL) 8 i CentOS 8 dla następujących architektur docelowych:
-> - x86 (Debian/Ubuntu), x64, ARM32 (Debian/Ubuntu) i ARM64 (Debian/Ubuntu) do C++ programowania
-> - x64, ARM32 (Debian/Ubuntu) i ARM64 (Debian/Ubuntu) dla języka Java
-> - x64 dla platformy .NET Core i Python
+> Obecnie obsługujemy tylko Ubuntu 16.04, Ubuntu 18.04, Debian 9, Red Hat Enterprise Linux (RHEL) 8 i CentOS 8 na następujących architekturach docelowych:
+> - x86 (Debian/Ubuntu), x64, ARM32 (Debian/Ubuntu) i ARM64 (Debian/Ubuntu) dla rozwoju C++
+> - x64, ARM32 (Debian/Ubuntu) i ARM64 (Debian/Ubuntu) dla Javy
+> - x64 dla .NET Core i Python
 
-Upewnij się, że wymagane biblioteki są zainstalowane, uruchamiając następujące polecenia powłoki:
+Upewnij się, że masz zainstalowane wymagane biblioteki, uruchamiając następujące polecenia powłoki:
 
 W systemie Ubuntu:
 
@@ -59,14 +59,14 @@ sudo apt-get update
 sudo apt-get install libssl1.0.0 libasound2
 ```
 
-W programie Debian 9:
+Na Debianie 9:
 
 ```sh
 sudo apt-get update
 sudo apt-get install libssl1.0.2 libasound2
 ```
 
-W systemie RHEL/CentOS 8:
+Na RHEL/CentOS 8:
 
 ```sh
 sudo yum update
@@ -74,47 +74,47 @@ sudo yum install alsa-lib openssl
 ```
 
 > [!NOTE]
-> W systemie RHEL/CentOS 8 postępuj zgodnie z instrukcjami dotyczącymi [sposobu konfigurowania OpenSSL dla systemu Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
+> Na RHEL/CentOS 8 postępuj zgodnie z instrukcjami [dotyczącymi konfigurowania OpenSSL dla systemu Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
 
-* C#: Można odwołać się i używać najnowszej wersji naszych pakietu NuGet zestawu SDK rozpoznawania mowy. Aby odwołać się do zestawu SDK, należy dodać następujące odwołanie pakietu do projektu:
+* C#: Możesz odwoływać się i używać najnowszej wersji naszego pakietu NuGet zestawu SDK mowy. Aby odwołać się do zestawu SDK, dodaj do projektu następujące odwołanie do pakietu:
 
   ```xml
   <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.8.0" />
   ```
 
-* Java: Możesz odwołać się i używać najnowszej wersji naszych pakietu Maven zestaw SDK rozpoznawania mowy. W projekcie Maven Dodaj `https://csspeechstorage.blob.core.windows.net/maven/` jako dodatkowe repozytorium i odwołania `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` jako zależność.
+* Java: Możesz odwoływać się i używać najnowszej wersji naszego pakietu Speech SDK Maven. W projekcie Maven `https://csspeechstorage.blob.core.windows.net/maven/` dodaj jako dodatkowe repozytorium i odwołanie `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` jako zależność.
 
-* C++: Pobierz zestaw SDK jako [pakiet tar](https://aka.ms/csspeech/linuxbinary) i rozpakuj pliki w wybranym katalogu. W poniższej tabeli przedstawiono strukturę folderu zestawu SDK:
+* C++: Pobierz pakiet SDK jako [pakiet .tar](https://aka.ms/csspeech/linuxbinary) i rozpakuj pliki w wybranym katalogu. W poniższej tabeli przedstawiono strukturę folderów SDK:
 
   |Ścieżka|Opis|
   |-|-|
   |`license.md`|Licencja|
   |`ThirdPartyNotices.md`|Uwagi dotyczące innych firm|
-  |`include`|Pliki nagłówkowe dla języków C i C++|
-  |`lib/x64`|X64 natywnej biblioteki do łączenia się z aplikacją|
-  |`lib/x86`|X86 natywnej biblioteki do łączenia się z aplikacją|
+  |`include`|Pliki nagłówkowe dla języka C i C++|
+  |`lib/x64`|Natywna biblioteka x64 do łączenia z aplikacją|
+  |`lib/x86`|Natywna biblioteka x86 do łączenia z aplikacją|
 
-  Aby utworzyć aplikację, skopiuj lub Przenieś wymagane pliki binarne (i biblioteki) do środowiska deweloperskiego. Włączyć je zgodnie z potrzebami w procesie kompilacji.
+  Aby utworzyć aplikację, skopiuj lub przenieś wymagane pliki binarne (i biblioteki) do środowiska programistycznego. Uwzględnij je zgodnie z wymaganiami w procesie kompilacji.
 
 # <a name="android"></a>[Android](#tab/android)
 
-Zestaw Java SDK dla systemu Android jest spakowany jako [AAR (Biblioteka systemu Android)](https://developer.android.com/studio/projects/android-library), który obejmuje niezbędne biblioteki i wymagane uprawnienia systemu Android. Jest ona hostowana w repozytorium Maven w `https://csspeechstorage.blob.core.windows.net/maven/` jako `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0`pakietu.
+Zestaw Java SDK dla systemu Android jest dostarczany jako [biblioteka AAR (Android Library),](https://developer.android.com/studio/projects/android-library)która zawiera niezbędne biblioteki i wymagane uprawnienia systemu Android. Jest hostowany w repozytorium Maven `https://csspeechstorage.blob.core.windows.net/maven/` w `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0`pakiecie.
 
-Korzystanie z pakietu z projektu w programie Android Studio, należy wprowadzić następujące zmiany:
+Aby korzystać z pakietu z projektu Android Studio, należy wprowadzić następujące zmiany:
 
-* W pliku Build. Gradle na poziomie projektu Dodaj następujące polecenie do sekcji `repository`:
+* W pliku build.gradle na poziomie projektu dodaj `repository` do sekcji następujące elementy:
 
   ```gradle
   maven { url 'https://csspeechstorage.blob.core.windows.net/maven/' }
   ```
 
-* W pliku Build. Gradle na poziomie modułu Dodaj następujące polecenie do sekcji `dependencies`:
+* W pliku build.gradle na poziomie modułu `dependencies` dodaj do sekcji następujące elementy:
 
   ```gradle
   implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.7.0'
   ```
 
-Zestaw Java SDK jest również częścią [zestawu Speech Devices SDK](speech-devices-sdk.md).
+Java SDK jest również częścią [SDK urządzeń mowy](speech-devices-sdk.md).
 
 ---
 
@@ -123,4 +123,4 @@ Zestaw Java SDK jest również częścią [zestawu Speech Devices SDK](speech-de
 ## <a name="next-steps"></a>Następne kroki
 
 * [Pobierz subskrypcję usługi mowy w wersji próbnej](https://azure.microsoft.com/try/cognitive-services/)
-* [Zobacz, jak rozpoznać mowęC#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
+* [Zobacz, jak rozpoznać mowę w języku C #](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

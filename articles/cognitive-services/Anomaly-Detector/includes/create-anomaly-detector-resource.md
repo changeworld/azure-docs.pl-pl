@@ -9,34 +9,34 @@ ms.topic: include
 ms.date: 7/5/2019
 ms.author: dapine
 ms.openlocfilehash: b40f1833f08074cb0a8d45fe3afc6bac7cbac7f0
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73523486"
 ---
-## <a name="create-an-anomaly-detector-resource"></a>Tworzenie zasobu wykrywania anomalii
+## <a name="create-an-anomaly-detector-resource"></a>Tworzenie zasobu detektora anomalii
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com)
-1. Kliknij pozycję [Utwórz zasób **wykrywania anomalii** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector)
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com)
+1. Kliknij [pozycję Utwórz zasób **Detektor anomalii** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector)
 1. Wprowadź wszystkie wymagane ustawienia:
 
     |Ustawienie|Wartość|
     |--|--|
-    |Nazwa|Wymagana nazwa (2-64 znaków)|
+    |Nazwa|Żądana nazwa (2-64 znaki)|
     |Subskrypcja|Wybierz odpowiednią subskrypcję|
-    |Lokalizacja|Wybierz dowolną lokalizację w pobliżu i dostępną|
-    |Warstwa cenowa|`F0` — minimalna warstwa cenowa|
-    |Grupa zasobów|Wybierz dostępną grupę zasobów|
-    |Pole wyboru potwierdzenia podglądu (wymagane)|Bez względu na to, czy Przeczytaj informacje o **wersji zapoznawczej**|
+    |Lokalizacja|Wybierz dowolną lokalizację w pobliżu i do dyspozycji|
+    |Warstwa cenowa|`F0`- minimalny poziom cenowy|
+    |Grupa zasobów|Wybieranie dostępnej grupy zasobów|
+    |Pole wyboru potwierdzenia podglądu (wymagane)|Niezależnie od tego, czy zapoznałeś się z informacją o **podglądzie,** czy nie|
 
-1. Kliknij przycisk **Utwórz** i poczekaj na utworzenie zasobu. Po jego utworzeniu przejdź do strony zasobów
-1. Zbierz skonfigurowane `endpoint` i klucz interfejsu API:
+1. Kliknij **przycisk Utwórz** i poczekaj na utworzenie zasobu. Po utworzeniu przejdź do strony zasobu
+1. Zbieranie skonfigurowanych `endpoint` i klucz interfejsu API:
 
-    |Karta zasób w portalu|Ustawienie|Wartość|
+    |Karta Zasoby w portalu|Ustawienie|Wartość|
     |--|--|--|
-    |**Omówienie**|Endpoint|Skopiuj punkt końcowy. Wygląda podobnie do `https://westus2.api.cognitive.microsoft.com/`|
-    |**Ponownie**|Klucz interfejsu API|Kopiuj 1 z dwóch kluczy. Jest to 32 ciąg znaków alfanumerycznych bez spacji ani kresek, `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
+    |**Przegląd**|Endpoint|Skopiuj punkt końcowy. Wygląda podobnie do`https://westus2.api.cognitive.microsoft.com/`|
+    |**Klucze**|Klucz interfejsu API|Skopiuj 1 z dwóch klawiszy. Jest to ciąg 32 znaków alfanumerycznej bez spacji lub kresek, `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
 
 
 

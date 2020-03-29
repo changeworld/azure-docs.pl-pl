@@ -1,7 +1,7 @@
 ---
-title: Konfigurowanie kontenerów — przetwarzanie obrazów
+title: Konfigurowanie kontenerów — wizja komputerowa
 titleSuffix: Azure Cognitive Services
-description: W tym artykule opisano sposób konfigurowania ustawień wymaganych i opcjonalnych dla kontenerów Rozpoznawanie tekstu w przetwarzanie obrazów.
+description: W tym artykule pokazano, jak skonfigurować ustawienia wymagane i opcjonalne dla kontenerów rozpoznawania tekstu w wizji komputerowej.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -12,30 +12,30 @@ ms.date: 11/04/2019
 ms.author: dapine
 ms.custom: seodec18
 ms.openlocfilehash: ddbee3695c2a7ef7cb63c48cccacbd2d53a8c1a9
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73718988"
 ---
-# <a name="configure-computer-vision-docker-containers"></a>Konfigurowanie przetwarzanie obrazów kontenerów platformy Docker
+# <a name="configure-computer-vision-docker-containers"></a>Konfigurowanie kontenerów platformy Docker usługi Computer Vision
 
-Środowisko uruchomieniowe kontenera przetwarzanie obrazów można skonfigurować za pomocą argumentów polecenia `docker run`. Ten kontener ma kilka wymaganych ustawień oraz kilka opcjonalnych ustawień. Kilka [przykładów](#example-docker-run-commands) polecenia jest dostępnych. Ustawienia dotyczące rozliczeń dotyczą tylko kontenera. 
+Środowisko wykonawcze kontenera przetwarzania obrazów komputerowych `docker run` można skonfigurować przy użyciu argumentów polecenia. Ten kontener ma kilka wymaganych ustawień, wraz z kilkoma ustawieniami opcjonalnymi. Dostępnych jest kilka [przykładów](#example-docker-run-commands) polecenia. Ustawienia specyficzne dla kontenera to ustawienia rozliczeń. 
 
 ## <a name="configuration-settings"></a>Ustawienia konfiguracji
 
 [!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
 
 > [!IMPORTANT]
-> Ustawienia [`ApiKey`](#apikey-configuration-setting), [`Billing`](#billing-configuration-setting)i [`Eula`](#eula-setting) są używane razem i należy podać prawidłowe wartości dla wszystkich trzech z nich; w przeciwnym razie kontener nie zostanie uruchomiony. Aby uzyskać więcej informacji na temat tworzenia wystąpienia kontenera przy użyciu tych ustawień konfiguracji, zobacz [rozliczenia](computer-vision-how-to-install-containers.md).
+> Ustawienia [`ApiKey`](#apikey-configuration-setting) [`Billing`](#billing-configuration-setting)i [`Eula`](#eula-setting) ustawienia są używane razem i należy podać prawidłowe wartości dla wszystkich trzech z nich; w przeciwnym razie kontener nie zostanie uruchomiony. Aby uzyskać więcej informacji na temat używania tych ustawień konfiguracji do tworzenia wystąpienia kontenera, zobacz [Rozliczenia](computer-vision-how-to-install-containers.md).
 
-## <a name="apikey-configuration-setting"></a>Ustawienie konfiguracji ApiKey
+## <a name="apikey-configuration-setting"></a>Ustawienie konfiguracji apikey
 
-Ustawienie `ApiKey` określa klucz zasobów usługi Azure `Cognitive Services` używany do śledzenia informacji rozliczeniowych dla kontenera. Należy określić wartość ApiKey, a wartość musi być prawidłowym kluczem dla zasobu _Cognitive Services_ określonego dla ustawienia konfiguracji [`Billing`](#billing-configuration-setting) .
+Ustawienie `ApiKey` określa klucz `Cognitive Services` zasobów platformy Azure używany do śledzenia informacji rozliczeniowych dla kontenera. Należy określić wartość dla apikey i wartość musi być prawidłowy klucz [`Billing`](#billing-configuration-setting) dla zasobu usług Cognitive _Services_ określonych dla ustawienia konfiguracji.
 
-To ustawienie można znaleźć w następujących miejscach:
+To ustawienie można znaleźć w następującym miejscu:
 
-* Azure Portal: **Cognitive Services** zarządzania zasobami w obszarze **klucze**
+* Portal Azure: Zarządzanie zasobami **usług Cognitive Services** w obszarze **Klucze**
 
 ## <a name="applicationinsights-setting"></a>Ustawienie ApplicationInsights
 
@@ -43,23 +43,23 @@ To ustawienie można znaleźć w następujących miejscach:
 
 ## <a name="billing-configuration-setting"></a>Ustawienie konfiguracji rozliczeń
 
-Ustawienie `Billing` określa identyfikator URI punktu końcowego zasobu _Cognitive Services_ na platformie Azure używany do pomiaru informacji rozliczeniowych dla kontenera. Należy określić wartość tego ustawienia konfiguracji, a wartość musi być prawidłowym identyfikatorem URI punktu końcowego dla zasobu _Cognitive Services_ na platformie Azure. Kontener zgłasza użycie co 10 do 15 minut.
+Ustawienie `Billing` określa identyfikator URI punktu końcowego zasobu _usług Cognitive Services_ na platformie Azure używanego do pomiaru informacji rozliczeniowych dla kontenera. Należy określić wartość dla tego ustawienia konfiguracji, a wartość musi być prawidłowym identyfikatorem URI punktu końcowego dla zasobu _usług Cognitive Services_ na platformie Azure. Kontener raportuje użycie co 10 do 15 minut.
 
-To ustawienie można znaleźć w następujących miejscach:
+To ustawienie można znaleźć w następującym miejscu:
 
-* Azure Portal: **Cognitive Services** Omówienie z etykietą `Endpoint`
+* Portal Azure: Omówienie **usług Cognitive Services,** oznaczone etykietą`Endpoint`
 
-Pamiętaj, aby dodać `vision/v1.0` Routing do identyfikatora URI punktu końcowego, jak pokazano w poniższej tabeli. 
+Pamiętaj, aby `vision/v1.0` dodać routing do identyfikatora URI punktu końcowego, jak pokazano w poniższej tabeli. 
 
 |Wymagany| Nazwa | Typ danych | Opis |
 |--|------|-----------|-------------|
-|Tak| `Billing` | Ciąg | Identyfikator URI punktu końcowego rozliczenia<br><br>Przykład:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
+|Tak| `Billing` | Ciąg | Identyfikator URI punktu końcowego rozliczeń<br><br>Przykład:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
 
-## <a name="eula-setting"></a>Ustawienie umowy EULA
+## <a name="eula-setting"></a>Ustawienie Eula
 
 [!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
 
-## <a name="fluentd-settings"></a>Ustawienia pozostały
+## <a name="fluentd-settings"></a>Płynne ustawienia
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
@@ -67,46 +67,46 @@ Pamiętaj, aby dodać `vision/v1.0` Routing do identyfikatora URI punktu końcow
 
 [!INCLUDE [Container shared configuration HTTP proxy settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
-## <a name="logging-settings"></a>Ustawienia rejestrowania
+## <a name="logging-settings"></a>Ustawienia logowania
  
 [!INCLUDE [Container shared configuration logging settings](../../../includes/cognitive-services-containers-configuration-shared-settings-logging.md)]
 
 ## <a name="mount-settings"></a>Ustawienia instalacji
 
-Użyj instalacji powiązań, aby odczytywać i zapisywać dane w kontenerze i z niego. Można określić instalację wejściową lub instalację wyjściową, określając opcję `--mount` w poleceniu [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) .
+Użyj powiązania wierzchowce do odczytu i zapisu danych do i z kontenera. Można określić mocowanie wejściowe lub `--mount` mocowanie wyjściowe, określając opcję w poleceniu [uruchamiania platformy docker.](https://docs.docker.com/engine/reference/commandline/run/)
 
-Kontenery przetwarzanie obrazów nie używają instalacji danych wejściowych lub wyjściowych do przechowywania danych szkoleniowych lub usług. 
+Kontenery przetwarzania nie używają instalacji wejściowych ani wyjściowych do przechowywania danych szkoleniowych lub usługowych. 
 
-Dokładna składnia lokalizacji instalacji hosta różni się w zależności od systemu operacyjnego hosta. Ponadto lokalizacja instalacji [komputera hosta](computer-vision-how-to-install-containers.md#the-host-computer)może być niedostępna z powodu konfliktu między uprawnieniami używanymi przez konto usługi platformy Docker i uprawnieniami lokalizacji instalacji hosta. 
+Dokładna składnia lokalizacji instalacji hosta różni się w zależności od systemu operacyjnego hosta. Ponadto lokalizacja instalacji [komputera-hosta](computer-vision-how-to-install-containers.md#the-host-computer)może być niedostępna z powodu konfliktu między uprawnieniami używanymi przez konto usługi Platformy Docker a uprawnieniami lokalizacji instalacji hosta. 
 
 |Optional (Opcjonalność)| Nazwa | Typ danych | Opis |
 |-------|------|-----------|-------------|
-|Niedozwolone| `Input` | Ciąg | Kontenery przetwarzanie obrazów nie używają tego.|
-|Optional (Opcjonalność)| `Output` | Ciąg | Obiekt docelowy instalacji wyjściowej. Wartość domyślna to `/output`. Jest to lokalizacja dzienników. Dotyczy to również dzienników kontenerów. <br><br>Przykład:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Niedozwolone| `Input` | Ciąg | Kontenery przetwarzania nie używają tego.|
+|Optional (Opcjonalność)| `Output` | Ciąg | Miejsce docelowe mocowania wyjściowego. Wartością domyślną jest `/output`. Jest to lokalizacja dzienników. Obejmuje to dzienniki kontenerów. <br><br>Przykład:<br>`--mount type=bind,src=c:\output,target=/output`|
 
-## <a name="example-docker-run-commands"></a>Przykładowe polecenia uruchamiania platformy Docker
+## <a name="example-docker-run-commands"></a>Przykładowe polecenia uruchamiania platformy dok.
 
-W poniższych przykładach użyto ustawień konfiguracji, aby zilustrować sposób pisania i używania poleceń `docker run`.  Po uruchomieniu kontenera kontynuuje działanie, dopóki nie zostanie [zatrzymane](computer-vision-how-to-install-containers.md#stop-the-container) .
+Poniższe przykłady używają ustawień konfiguracji, aby zilustrować sposób pisania i używania `docker run` poleceń.  Po uruchomieniu kontener będzie nadal działał, dopóki go nie [zatrzymasz.](computer-vision-how-to-install-containers.md#stop-the-container)
 
-* **Znak kontynuacji wiersza**: polecenia platformy Docker w poniższych sekcjach używają ukośnika odwrotnego, `\`jako znaku kontynuacji wiersza. Zastąp lub usuń to w zależności od wymagań systemu operacyjnego hosta. 
-* **Kolejność**argumentów: nie zmieniaj kolejności argumentów, o ile nie znasz już kontenerów platformy Docker.
+* **Znak kontynuacji wiersza:** Polecenia platformy Docker w poniższych `\`sekcjach używają ukośnika wstecznego, jako znaku kontynuacji wiersza. Zastąp lub usuń to na podstawie wymagań systemu operacyjnego hosta. 
+* **Kolejność argumentów:** Nie należy zmieniać kolejności argumentów, chyba że są bardzo zaznajomieni z kontenerami platformy Docker.
 
-Zastąp {_argument_name_} własnymi wartościami:
+Zamień {_argument_name_} własnymi wartościami:
 
 | Symbol zastępczy | Wartość | Format lub przykład |
 |-------------|-------|---|
-| **{API_KEY}** | Klucz punktu końcowego zasobu `Computer Vision` na stronie klucze `Computer Vision` platformy Azure. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
-| **{ENDPOINT_URI}** | Wartość punktu końcowego rozliczenia jest dostępna na stronie Przegląd `Computer Vision` platformy Azure.| Zobacz [zbieranie wymaganych parametrów](computer-vision-how-to-install-containers.md#gathering-required-parameters) dla jawnych przykładów. |
+| **{API_KEY}** | Klucz punktu końcowego `Computer Vision` zasobu `Computer Vision` na stronie Klucze platformy Azure. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | Wartość punktu końcowego rozliczeń jest `Computer Vision` dostępna na stronie Przegląd platformy Azure.| Zobacz [zbieranie wymaganych parametrów](computer-vision-how-to-install-containers.md#gathering-required-parameters) dla jawnych przykładów. |
 
 [!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
-> Aby można było uruchomić kontener, należy określić opcje `Eula`, `Billing`i `ApiKey`. w przeciwnym razie kontener nie zostanie uruchomiony.  Aby uzyskać więcej informacji, zobacz [rozliczenia](computer-vision-how-to-install-containers.md#billing).
-> Wartość ApiKey jest **kluczem** ze strony klucze zasobów usługi Azure `Cognitive Services`.
+> Aby `Eula` `Billing`uruchomić `ApiKey` kontener, należy określić opcje i opcje; w przeciwnym razie kontener nie zostanie uruchomiony.  Aby uzyskać więcej informacji, zobacz [Rozliczenia](computer-vision-how-to-install-containers.md#billing).
+> Wartość ApiKey jest **kluczem** `Cognitive Services` ze strony klucze zasobów platformy Azure.
 
-## <a name="container-docker-examples"></a>Przykłady kontenera Docker
+## <a name="container-docker-examples"></a>Przykłady platformy Docker kontenera
 
-Poniższe przykłady platformy Docker dotyczą kontenera odczyt.
+Poniższe przykłady platformy Docker są dla odczytu kontenera.
 
 ### <a name="basic-example"></a>Przykład podstawowy
 
@@ -131,4 +131,4 @@ Poniższe przykłady platformy Docker dotyczą kontenera odczyt.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Zapoznaj [się z tematem Instalowanie i uruchamianie kontenerów](computer-vision-how-to-install-containers.md).
+* Sprawdź, [jak zainstalować i uruchomić kontenery](computer-vision-how-to-install-containers.md).

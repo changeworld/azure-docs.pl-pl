@@ -1,7 +1,7 @@
 ---
-title: Jak skonfigurować kontener dla interfejsu API wykrywania anomalii
+title: Jak skonfigurować kontener dla interfejsu API detektora anomalii
 titleSuffix: Azure Cognitive Services
-description: Środowisko uruchomieniowe kontenera interfejsu API wykrywania anomalii jest konfigurowane przy użyciu argumentów polecenia `docker run`. Ten kontener ma kilka wymaganych ustawień oraz kilka opcjonalnych ustawień.
+description: Środowisko wykonawcze kontenera kontenera detektora `docker run` anomalii jest konfigurowane przy użyciu argumentów polecenia. Ten kontener ma kilka wymaganych ustawień, wraz z kilkoma ustawieniami opcjonalnymi.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 11/07/2019
 ms.author: dapine
 ms.openlocfilehash: f7e04a16fa35d492b8e5e6c53a05220e8b96a38a
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73795847"
 ---
 # <a name="configure-anomaly-detector-containers"></a>Konfigurowanie kontenerów narzędzia do wykrywania anomalii
 
-Środowisko uruchomieniowe kontenera **wykrywania anomalii** jest konfigurowane przy użyciu argumentów polecenia `docker run`. Ten kontener ma kilka wymaganych ustawień oraz kilka opcjonalnych ustawień. Kilka [przykładów](#example-docker-run-commands) polecenia jest dostępnych. Ustawienia dotyczące rozliczeń dotyczą tylko kontenera. 
+Środowisko wykonawcze **kontenera detektora anomalii** jest konfigurowane przy użyciu argumentów `docker run` polecenia. Ten kontener ma kilka wymaganych ustawień, wraz z kilkoma ustawieniami opcjonalnymi. Dostępnych jest kilka [przykładów](#example-docker-run-commands) polecenia. Ustawienia specyficzne dla kontenera to ustawienia rozliczeń. 
 
 ## <a name="configuration-settings"></a>Ustawienia konfiguracji
 
@@ -27,25 +27,25 @@ Ten kontener ma następujące ustawienia konfiguracji:
 
 |Wymagany|Ustawienie|Przeznaczenie|
 |--|--|--|
-|Tak|[ApiKey](#apikey-configuration-setting)|Służy do śledzenia informacji dotyczących rozliczeń.|
-|Nie|[ApplicationInsights](#applicationinsights-setting)|Umożliwia dodanie obsługi telemetrii [usługi Azure Application Insights](https://docs.microsoft.com/azure/application-insights) do kontenera.|
+|Tak|[Klawisz ApiKey](#apikey-configuration-setting)|Służy do śledzenia informacji rozliczeniowych.|
+|Nie|[ApplicationInsights](#applicationinsights-setting)|Umożliwia dodawanie obsługi telemetrii [usługi Azure Application Insights](https://docs.microsoft.com/azure/application-insights) do kontenera.|
 |Tak|[Rozliczenia](#billing-configuration-setting)|Określa identyfikator URI punktu końcowego zasobu usługi na platformie Azure.|
-|Tak|[Umowy](#eula-setting)| Wskazuje, że licencja dla kontenera została zaakceptowana.|
-|Nie|[Pozostało](#fluentd-settings)|Zapisz dziennik i, opcjonalnie, dane metryki na serwerze z systemem.|
-|Nie|[Serwer proxy http](#http-proxy-credentials-settings)|Skonfiguruj serwer proxy HTTP do wykonywania żądań wychodzących.|
-|Nie|[Rejestrować](#logging-settings)|Zapewnia obsługę rejestrowania ASP.NET Core dla kontenera. |
-|Nie|[Instaluje](#mount-settings)|Odczytaj i Zapisz dane z komputera hosta do kontenera oraz z kontenera z powrotem do komputera hosta.|
+|Tak|[Eula](#eula-setting)| Wskazuje, że licencja dla kontenera została zaakceptowana.|
+|Nie|[Biegle](#fluentd-settings)|Zapis dziennika i, opcjonalnie, dane metryki na serwerze Fluentd.|
+|Nie|[Http Proxy](#http-proxy-credentials-settings)|Konfigurowanie serwera proxy HTTP do wysyłania żądań wychodzących.|
+|Nie|[Rejestrowanie](#logging-settings)|Zapewnia ASP.NET podstawową obsługę rejestrowania kontenera. |
+|Nie|[Wierzchowce](#mount-settings)|Odczytywanie i zapisywanie danych z komputera-hosta do kontenera i z kontenera z powrotem do komputera hosta.|
 
 > [!IMPORTANT]
-> Ustawienia [`ApiKey`](#apikey-configuration-setting), [`Billing`](#billing-configuration-setting)i [`Eula`](#eula-setting) są używane razem i należy podać prawidłowe wartości dla wszystkich trzech z nich; w przeciwnym razie kontener nie zostanie uruchomiony. Aby uzyskać więcej informacji na temat tworzenia wystąpienia kontenera przy użyciu tych ustawień konfiguracji, zobacz [rozliczenia](anomaly-detector-container-howto.md#billing).
+> Ustawienia [`ApiKey`](#apikey-configuration-setting) [`Billing`](#billing-configuration-setting)i [`Eula`](#eula-setting) ustawienia są używane razem i należy podać prawidłowe wartości dla wszystkich trzech z nich; w przeciwnym razie kontener nie zostanie uruchomiony. Aby uzyskać więcej informacji na temat używania tych ustawień konfiguracji do tworzenia wystąpienia kontenera, zobacz [Rozliczenia](anomaly-detector-container-howto.md#billing).
 
-## <a name="apikey-configuration-setting"></a>Ustawienie konfiguracji ApiKey
+## <a name="apikey-configuration-setting"></a>Ustawienie konfiguracji apikey
 
-Ustawienie `ApiKey` określa klucz zasobów platformy Azure służący do śledzenia informacji rozliczeniowych dla kontenera. Należy określić wartość dla ApiKey, a wartość musi być prawidłowym kluczem dla zasobu _wykrywania anomalii_ określonego dla ustawienia konfiguracji [`Billing`](#billing-configuration-setting) .
+Ustawienie `ApiKey` określa klucz zasobów platformy Azure używany do śledzenia informacji rozliczeniowych dla kontenera. Należy określić wartość dla apikey i wartość musi być prawidłowy klucz dla [`Billing`](#billing-configuration-setting) zasobu _Detektor anomalii_ określony dla ustawienia konfiguracji.
 
-To ustawienie można znaleźć w następujących miejscach:
+To ustawienie można znaleźć w następującym miejscu:
 
-* Azure Portal: zarządzanie zasobami **wykrywania anomalii** w obszarze **klucze**
+* Portal Azure: Zarządzanie zasobami **detektora anomalii** w obszarze **Klucze**
 
 ## <a name="applicationinsights-setting"></a>Ustawienie ApplicationInsights
 
@@ -53,21 +53,21 @@ To ustawienie można znaleźć w następujących miejscach:
 
 ## <a name="billing-configuration-setting"></a>Ustawienie konfiguracji rozliczeń
 
-Ustawienie `Billing` określa identyfikator URI punktu końcowego zasobu _wykrywania anomalii_ na platformie Azure używany do pomiaru informacji rozliczeniowych dla kontenera. Należy określić wartość tego ustawienia konfiguracji, a wartość musi być prawidłowym identyfikatorem URI punktu końcowego dla zasobu _wykrywania anomalii_ na platformie Azure.
+Ustawienie `Billing` określa identyfikator URI punktu końcowego zasobu _Wykrywania anomalii_ na platformie Azure używanego do pomiaru informacji rozliczeniowych dla kontenera. Należy określić wartość dla tego ustawienia konfiguracji, a wartość musi być prawidłowym identyfikatorem URI punktu końcowego dla zasobu _detektora anomalii_ na platformie Azure.
 
-To ustawienie można znaleźć w następujących miejscach:
+To ustawienie można znaleźć w następującym miejscu:
 
-* Azure Portal: Omówienie narzędzia **wykrywania anomalii** z etykietą `Endpoint`
+* Portal Azure: Przegląd **detektora anomalii,** oznaczony etykietą`Endpoint`
 
 |Wymagany| Nazwa | Typ danych | Opis |
 |--|------|-----------|-------------|
-|Tak| `Billing` | Ciąg | Identyfikator URI punktu końcowego rozliczenia. Aby uzyskać więcej informacji na temat uzyskiwania identyfikatora URI rozliczeń, zobacz [zbieranie wymaganych parametrów](anomaly-detector-container-howto.md#gathering-required-parameters). Aby uzyskać więcej informacji i pełną listę regionalnych punktów końcowych, zobacz [niestandardowe nazwy domen poddomen dla Cognitive Services](../cognitive-services-custom-subdomains.md). |
+|Tak| `Billing` | Ciąg | Identyfikator URI punktu końcowego rozliczeń. Aby uzyskać więcej informacji na temat uzyskiwania identyfikatora URI rozliczeń, zobacz [zbieranie wymaganych parametrów](anomaly-detector-container-howto.md#gathering-required-parameters). Aby uzyskać więcej informacji i pełną listę regionalnych punktów końcowych, zobacz [Niestandardowe nazwy poddomen dla usług Cognitive Services](../cognitive-services-custom-subdomains.md). |
 
-## <a name="eula-setting"></a>Ustawienie umowy EULA
+## <a name="eula-setting"></a>Ustawienie Eula
 
 [!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
 
-## <a name="fluentd-settings"></a>Ustawienia pozostały
+## <a name="fluentd-settings"></a>Płynne ustawienia
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
@@ -75,47 +75,47 @@ To ustawienie można znaleźć w następujących miejscach:
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
-## <a name="logging-settings"></a>Ustawienia rejestrowania
+## <a name="logging-settings"></a>Ustawienia logowania
  
 [!INCLUDE [Container shared configuration logging settings](../../../includes/cognitive-services-containers-configuration-shared-settings-logging.md)]
 
 
 ## <a name="mount-settings"></a>Ustawienia instalacji
 
-Użyj instalacji powiązań, aby odczytywać i zapisywać dane w kontenerze i z niego. Można określić instalację wejściową lub instalację wyjściową, określając opcję `--mount` w poleceniu [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) .
+Użyj powiązania wierzchowce do odczytu i zapisu danych do i z kontenera. Można określić mocowanie wejściowe lub `--mount` mocowanie wyjściowe, określając opcję w poleceniu [uruchamiania platformy docker.](https://docs.docker.com/engine/reference/commandline/run/)
 
-Kontenery wykrywania anomalii nie używają instalacji danych wejściowych lub wyjściowych do przechowywania danych szkoleniowych lub usług. 
+Kontenery detektora anomalii nie używają instalacji wejściowych ani wyjściowych do przechowywania danych szkoleniowych lub usługowych. 
 
-Dokładna składnia lokalizacji instalacji hosta różni się w zależności od systemu operacyjnego hosta. Ponadto lokalizacja instalacji [komputera hosta](anomaly-detector-container-howto.md#the-host-computer)może być niedostępna z powodu konfliktu między uprawnieniami używanymi przez konto usługi platformy Docker i uprawnieniami lokalizacji instalacji hosta. 
+Dokładna składnia lokalizacji instalacji hosta różni się w zależności od systemu operacyjnego hosta. Ponadto lokalizacja instalacji [komputera-hosta](anomaly-detector-container-howto.md#the-host-computer)może być niedostępna z powodu konfliktu między uprawnieniami używanymi przez konto usługi Platformy Docker a uprawnieniami lokalizacji instalacji hosta. 
 
 |Optional (Opcjonalność)| Nazwa | Typ danych | Opis |
 |-------|------|-----------|-------------|
-|Niedozwolone| `Input` | Ciąg | Kontenery wykrywania anomalii nie używają tego.|
-|Optional (Opcjonalność)| `Output` | Ciąg | Obiekt docelowy instalacji wyjściowej. Wartość domyślna to `/output`. Jest to lokalizacja dzienników. Dotyczy to również dzienników kontenerów. <br><br>Przykład:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Niedozwolone| `Input` | Ciąg | Kontenery detektora anomalii nie używają tego.|
+|Optional (Opcjonalność)| `Output` | Ciąg | Miejsce docelowe mocowania wyjściowego. Wartością domyślną jest `/output`. Jest to lokalizacja dzienników. Obejmuje to dzienniki kontenerów. <br><br>Przykład:<br>`--mount type=bind,src=c:\output,target=/output`|
 
-## <a name="example-docker-run-commands"></a>Przykładowe polecenia uruchamiania platformy Docker 
+## <a name="example-docker-run-commands"></a>Przykładowe polecenia uruchamiania platformy dok. 
 
-W poniższych przykładach użyto ustawień konfiguracji, aby zilustrować sposób pisania i używania poleceń `docker run`.  Po uruchomieniu kontenera kontynuuje działanie, dopóki nie zostanie [zatrzymane](anomaly-detector-container-howto.md#stop-the-container) .
+Poniższe przykłady używają ustawień konfiguracji, aby zilustrować sposób pisania i używania `docker run` poleceń.  Po uruchomieniu kontener będzie nadal działał, dopóki go nie [zatrzymasz.](anomaly-detector-container-howto.md#stop-the-container)
 
-* **Znak kontynuacji wiersza**: polecenia platformy Docker w poniższych sekcjach używają ukośnika odwrotnego, `\`jako znaku kontynuacji wiersza dla powłoki bash. Zastąp lub usuń to w zależności od wymagań systemu operacyjnego hosta. Na przykład znak kontynuacji wiersza dla systemu Windows jest karetką `^`. Zastąp ukośnik odwrotny. 
-* **Kolejność**argumentów: nie zmieniaj kolejności argumentów, o ile nie znasz już kontenerów platformy Docker.
+* **Znak kontynuacji wiersza:** Polecenia platformy Docker w poniższych `\`sekcjach używają ukośnika wstecznego, jako znaku kontynuacji wiersza dla powłoki bash. Zastąp lub usuń to na podstawie wymagań systemu operacyjnego hosta. Na przykład znakiem kontynuacji wiersza dla `^`okien jest cieszka, . Wymień ukośnik pleców na ciesznik. 
+* **Kolejność argumentów:** Nie należy zmieniać kolejności argumentów, chyba że są bardzo zaznajomieni z kontenerami platformy Docker.
 
-Zastąp wartość w nawiasach, `{}`z własnymi wartościami:
+Zamień wartość `{}`w nawiasy , z własnymi wartościami:
 
 | Symbol zastępczy | Wartość | Format lub przykład |
 |-------------|-------|---|
-| **{API_KEY}** | Klucz punktu końcowego zasobu `Anomaly Detector` na stronie klucze `Anomaly Detector` platformy Azure. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
-| **{ENDPOINT_URI}** | Wartość punktu końcowego rozliczenia jest dostępna na stronie Przegląd `Anomaly Detector` platformy Azure.| Zobacz [zbieranie wymaganych parametrów](anomaly-detector-container-howto.md#gathering-required-parameters) dla jawnych przykładów. |
+| **{API_KEY}** | Klucz punktu końcowego `Anomaly Detector` zasobu `Anomaly Detector` na stronie Klucze platformy Azure. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | Wartość punktu końcowego rozliczeń jest `Anomaly Detector` dostępna na stronie Przegląd platformy Azure.| Zobacz [zbieranie wymaganych parametrów](anomaly-detector-container-howto.md#gathering-required-parameters) dla jawnych przykładów. |
 
 [!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
-> Aby można było uruchomić kontener, należy określić opcje `Eula`, `Billing`i `ApiKey`. w przeciwnym razie kontener nie zostanie uruchomiony.  Aby uzyskać więcej informacji, zobacz [rozliczenia](anomaly-detector-container-howto.md#billing).
-> Wartość ApiKey jest **kluczem** ze strony klucze zasobów wykrywania anomalii platformy Azure. 
+> Aby `Eula` `Billing`uruchomić `ApiKey` kontener, należy określić opcje i opcje; w przeciwnym razie kontener nie zostanie uruchomiony.  Aby uzyskać więcej informacji, zobacz [Rozliczenia](anomaly-detector-container-howto.md#billing).
+> Wartość ApiKey jest **kluczem** ze strony kluczy zasobów usługi Azure Anomaly Detector. 
 
-## <a name="anomaly-detector-container-docker-examples"></a>Przykłady platformy Docker dotyczącej aparatu wykrywania anomalii
+## <a name="anomaly-detector-container-docker-examples"></a>Przykłady kontenerów kontenerów anomalii
 
-Poniższe przykłady platformy Docker dotyczą kontenera wykrywania anomalii. 
+Poniższe przykłady platformy Docker są dla kontenera detektora anomalii. 
 
 ### <a name="basic-example"></a>Przykład podstawowy 
 
@@ -139,5 +139,5 @@ Poniższe przykłady platformy Docker dotyczą kontenera wykrywania anomalii.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Wdróż kontener wykrywania anomalii w Azure Container Instances](how-to/deploy-anomaly-detection-on-container-instances.md)
-* [Dowiedz się więcej o usłudze interfejsu API wykrywania anomalii](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
+* [Wdrażanie kontenera detektora anomalii w wystąpieniach kontenerów platformy Azure](how-to/deploy-anomaly-detection-on-container-instances.md)
+* [Dowiedz się więcej o usłudze INTERFEJSU API detektora anomalii](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

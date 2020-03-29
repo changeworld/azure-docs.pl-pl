@@ -1,47 +1,46 @@
 ### YamlMime:Landing
 title: Dokumentacja urządzeń usługi Mowa
-summary: Zestawu Speech Devices SDK jest biblioteką pretuned, który jest powiązany z systemom, mikrofon tablicy development Kit.
+summary: Zestaw SDK urządzeń mowy to wstępnie dostrojona biblioteka, która jest sparowana z specjalnie zaprojektowanymi zestawami programistycznymi macierzy mikrofonowej.
 metadata:
-  title: Dokumentacja dotycząca urządzeń mowy — samouczki, dokumentacja interfejsu API — Azure Cognitive Services | Microsoft Docs
+  title: Dokumentacja urządzeń mowy — samouczki, informacje o interfejsie API — usługi Azure Cognitive Services | Dokumenty firmy Microsoft
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: cbdbcce25d357530775140bc8b5fdf82808c64ad
-  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+  ms.openlocfilehash: 5fc9e045162c03585f20e0b06a01524480070050
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: MT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 03/14/2020
-  ms.locfileid: "79369254"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "79415363"
 landingContent:
-- title: Informacje o zestawie SDK urządzeń mowy
+- title: Informacje o sdk urządzeń mowy
   linkLists:
   - linkListType: overview
     links:
-    - text: Co to jest zestaw SDK urządzeń mowy?
+    - text: Co to jest SDK urządzeń mowy?
       url: speech-devices-sdk.md
   - linkListType: quickstart
     links:
-    - text: Korzystanie z zestawu SDK urządzeń mowy (Windows)
+    - text: Używanie sdk urządzeń mowy (Windows)
       url: speech-devices-sdk-quickstart.md?pivots=platform-windows
-    - text: Korzystanie z zestawu Speech Devices SDK (Linux)
+    - text: Korzystanie z sdk urządzeń mowy (Linux)
       url: speech-devices-sdk-quickstart.md?pivots=platform-linux
-    - text: Korzystanie z zestawu Speech Devices SDK (Android)
+    - text: Korzystanie z sdk urządzeń mowy (Android)
       url: speech-devices-sdk-quickstart.md?pivots=platform-android
-- title: Tworzenie za pomocą zestawu Speech Devices SDK
+- title: Tworzenie za pomocą sdk urządzeń mowy
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Projektowanie macierzy mikrofonu
       url: speech-devices-sdk-microphone.md
-    - text: Konfigurowanie zestawu roobo v1
+    - text: Konfiguracja zestawu Roobo v1
       url: speech-devices-sdk-roobo-v1.md
-- title: Dokumentacja
+- title: Tematy pomocy
   linkLists:
   - linkListType: whats-new
     links:

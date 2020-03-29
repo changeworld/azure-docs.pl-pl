@@ -1,7 +1,7 @@
 ---
-title: Wzorce ułatwiają prognozowanie — LUIS
+title: Wzorce pomagają w przewidywaniu — usługa LUIS
 titleSuffix: Azure Cognitive Services
-description: Wzorzec pozwala uzyskać większą dokładność dla intencji bez zapewniania wielu dodatkowych wypowiedzi.
+description: Wzorzec pozwala uzyskać większą dokładność intencji bez dostarczania wielu wypowiedzi więcej.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,69 +12,69 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: diberry
 ms.openlocfilehash: 6c1b548de25369c162b4a08dfa20fce62c17f99f
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75890285"
 ---
-# <a name="patterns-improve-prediction-accuracy"></a>Wzorce zwiększenia dokładności prognozy
-Wzorce są przeznaczone do zwiększenia dokładności, gdy kilka wypowiedzi są bardzo podobne.  Wzorzec pozwala uzyskać większą dokładność dla intencji bez zapewniania wielu dodatkowych wypowiedzi. 
+# <a name="patterns-improve-prediction-accuracy"></a>Wzorce zwiększają dokładność przewidywania
+Wzorce są przeznaczone do poprawy dokładności, gdy kilka wypowiedzi są bardzo podobne.  Wzorzec pozwala uzyskać większą dokładność intencji bez dostarczania wielu wypowiedzi więcej. 
 
-## <a name="patterns-solve-low-intent-confidence"></a>Wzorce rozwiązać niski ufności intencji
-Należy wziąć pod uwagę aplikacja zarządzania zasobami ludzkimi, zawierający raporty dotyczące schematu organizacyjnego w odniesieniu do pracownika. Podana nazwa pracownika i relacji, LUIS zwraca pracowników zaangażowane. Należy wziąć pod uwagę pracownika, Tom, za pomocą Menedżera nazwę Alicja i zespół o nazwie podwładnych: Michael Rebecca i Carl.
+## <a name="patterns-solve-low-intent-confidence"></a>Wzorce rozwiązują niskie zaufanie intencji
+Należy wziąć pod uwagę aplikację Zasobów Ludzkich, która raportuje na wykresie organizacyjnym w odniesieniu do pracownika. Biorąc pod uwagę nazwę i relację pracownika, usługa LUIS zwraca zaangażowanych pracowników. Rozważmy pracownika, Toma, z nazwą menedżera Alice i zespół podwładnych o nazwie: Michael, Rebecca i Carl.
 
 ![Obraz schematu organizacyjnego](./media/luis-concept-patterns/org-chart.png)
 
-|Wypowiedzi|Przewidywany intencji|Wynik konwersji|
+|Wypowiedzi|Przewidywane intencje|Wynik intencji|
 |--|--|--|
-|Kto jest podwładnym Tom firmy?|GetOrgChart|.30|
-|Kto jest podwładnym Tom?|GetOrgChart|.30|
+|Kto jest podwładnym Toma?|Schemat GetOrgChart|.30|
+|Kto jest podwładnym Toma?|Schemat GetOrgChart|.30|
 
-Jeśli aplikacja ma od 10 do 20 wypowiedzi o różnej długości zdania, inną kolejność słów i nawet innych wyrazów (synonimy "podrzędne", "manage", "raport"), LUIS, mogą zwracać współczynnik ufności niski. Utwórz wzorzec, aby pomóc LUIS zrozumieć znaczenie kolejności wyrazów. 
+Jeśli aplikacja ma od 10 do 20 wypowiedzi o różnych długościach zdania, innej kolejności wyrazów, a nawet różnych wyrazach (synonimy "podrzędny", "zarządzaj", "raport"), usługa LUIS może zwrócić niski wynik zaufania. Utwórz wzorzec, aby pomóc usługi LUIS zrozumieć znaczenie kolejności wyrazów. 
 
-Wzorce rozwiązać w następujących sytuacjach: 
+Wzorce rozwiązują następujące sytuacje: 
 
-* Wynik przeznaczenie jest niski
-* Poprawna wartość nie jest najważniejszym wynikiem, ale zbyt blisko najwyższego wyniku. 
+* Wynik intencji jest niski
+* Prawidłowa intencja nie jest najlepszy wynik, ale zbyt blisko najwyższego wyniku. 
 
-## <a name="patterns-are-not-a-guarantee-of-intent"></a>Wzorce nie są gwarancji intencji
-Wzorce używać różnych technologii prognozy. Ustawienie przeznaczenie wypowiedź szablonu we wzorcu nie jest gwarancja intencji prognozowania, ale jest silny sygnał. 
+## <a name="patterns-are-not-a-guarantee-of-intent"></a>Wzorce nie są gwarancją intencji
+Wzorce używają kombinacji technologii przewidywania. Ustawienie intencji dla wypowiedź szablonu we wzorcu nie jest gwarancją przewidywania intencji, ale jest silnym sygnałem. 
 
 <a name="patterns-do-not-improve-entity-detection"/></a>
 
-## <a name="patterns-do-not-improve-machine-learned-entity-detection"></a>Wzorce nie poprawiają wykrywania jednostek wykrywanych przez maszynę
+## <a name="patterns-do-not-improve-machine-learned-entity-detection"></a>Wzorce nie poprawiają wykrywania jednostek nauczanych maszynowo
 
-Wzorzec jest głównie przeznaczony do przewidywania intencji i ról. _Wzorzec. Każda_ jednostka służy do wyodrębniania jednostek o dowolnej postaci. Podczas gdy wzorce używają jednostek, wzorzec nie pomaga wykrywać jednostki obsługiwanej przez maszynę.  
+Wzorzec ma przede wszystkim pomóc w przewidywaniu intencji i ról. _Pattern.any_ jednostki jest używany do wyodrębniania jednostek dowolnych. Podczas gdy wzorce używają jednostek, wzorzec nie pomaga wykryć jednostki nauczanych maszynowo.  
 
-Nie oczekuje się, że w przypadku zwinięcia wielu wyrażenia długości do jednego wzorca nie widzisz ulepszonej przewidywania jednostek. Aby proste jednostki były wyzwalane, należy dodać wyrażenia długości lub użyć jednostek listy, ponieważ wzorzec nie zostanie uruchomiony.
+Nie oczekuj, aby zobaczyć lepsze przewidywanie jednostki, jeśli zwiń wiele wypowiedzi w jeden wzorzec. Dla prostych jednostek do ognia, należy dodać wypowiedzi lub użyć jednostek listy inaczej wzorzec nie będzie uruchamiany.
 
-## <a name="patterns-use-entity-roles"></a>Wzorce użycia ról jednostki
-Jeśli dwa lub więcej jednostek w wzorzec kontekstowe są powiązane, wzorców użycia jednostki [role](luis-concept-roles.md) można wyodrębnić informacje kontekstowe dotyczące jednostek.  
+## <a name="patterns-use-entity-roles"></a>Wzorce używają ról encji
+Jeśli dwie lub więcej jednostek we wzorcu są powiązane kontekstowo, wzorce używają [ról jednostek](luis-concept-roles.md) do wyodrębniania informacji kontekstowych o jednostkach.  
 
 ## <a name="prediction-scores-with-and-without-patterns"></a>Wyniki prognozowania z i bez wzorców
-Mając wystarczająco dużo wypowiedzi przykładu, LUIS będą mogli zwiększyć ufności prognoz bez wzorców. Wzorce zwiększyć współczynnik ufności bez konieczności podawania tyle wypowiedzi.  
+Biorąc pod uwagę wiele wypowiedzi przykład, usługa LUIS będzie w stanie zwiększyć zaufanie przewidywania bez wzorców. Wzorce zwiększyć wynik zaufania bez konieczności zapewnienia jak najwięcej wypowiedzi.  
 
-## <a name="pattern-matching"></a>Dopasowanie wzorca
-Wzorzec jest takie samo zależnie od wykrywania jednostek w wzorzec najpierw, a następnie weryfikowania reszty słów i kolejność słów w wzorca. Jednostki są wymagane w wzorzec wzorzec do dopasowania. Wzorzec jest stosowany na poziomie token, a nie na poziomie znaków. 
+## <a name="pattern-matching"></a>Dopasowanie do wzorca
+Wzorzec jest dopasowywał się na podstawie wykrywania jednostek wewnątrz wzorca, a następnie sprawdzania poprawności pozostałych wyrazów i kolejności wyrazów wzorca. Jednostki są wymagane we wzorcu dla wzorca, aby dopasować. Wzorzec jest stosowany na poziomie tokenu, a nie na poziomie znaku. 
 
-## <a name="pattern-only-apps"></a>Aplikacje tylko dla wzorców
-Możesz utworzyć aplikację z intencjami, które nie mają przykładowej wyrażenia długości, o ile istnieje wzorzec dla każdego zamiaru. W przypadku aplikacji tylko dla wzorców wzorzec nie powinien zawierać jednostek maszynowych, ponieważ wymagają one przykładowej wyrażenia długości. 
+## <a name="pattern-only-apps"></a>Aplikacje tylko do wzorka
+Można utworzyć aplikację z intencji, które nie mają wypowiedzi przykład, tak długo, jak istnieje wzorzec dla każdego zamiaru. Dla aplikacji tylko do wzorca wzorzec nie powinien zawierać jednostek nauczanych maszynowo, ponieważ wymagają one wypowiedzi przykładowych. 
 
 ## <a name="best-practices"></a>Najlepsze rozwiązania
-Dowiedz się, [najlepsze praktyki](luis-concept-best-practices.md).
+Poznaj [najlepsze wskazówki](luis-concept-best-practices.md).
 
 ## <a name="pattern-syntax"></a>Składnia wzorca
 
-Poznaj składnię wzorca na podstawie [odwołania do składni wzorców](reference-pattern-syntax.md). 
+Naucz się składni wzorca na podstawie [odwołania do składni wzorca](reference-pattern-syntax.md). 
 
 ## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o wzorcach:
 
-* [Jak dodać wzorce](luis-how-to-model-intent-pattern.md)
-* [Jak dodać wzorzec. dowolna jednostka](luis-how-to-add-entities.md#add-a-patternany-entity)
+* [Jak dodać wzory](luis-how-to-model-intent-pattern.md)
+* [Jak dodać pattern.any encji](luis-how-to-add-entities.md#add-a-patternany-entity)
 * [Składnia wzorców](reference-pattern-syntax.md)
 
 > [!div class="nextstepaction"]
-> [Dowiedz się, jak Implementowanie wzorców w ramach tego samouczka](luis-tutorial-pattern.md)
+> [Dowiedz się, jak zaimplementować wzorce w tym samouczku](luis-tutorial-pattern.md)

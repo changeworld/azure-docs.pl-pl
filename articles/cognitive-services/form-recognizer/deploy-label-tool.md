@@ -1,46 +1,127 @@
 ---
-title: Jak wdrożyć przykładowe narzędzie do etykietowania z aparatem rozpoznawania formularzy
+title: Jak wdrożyć narzędzie do etykietowania przykładowego aparatu rozpoznawania formularzy
 titleSuffix: Azure Cognitive Services
-description: Poznaj różne sposoby wdrażania przykładowego narzędzia do etykietowania aparatu rozpoznawania formularzy, które ułatwia uczenie nadzorowane.
+description: Dowiedz się, jak wdrożyć narzędzie do etykietowania przykładowego aparatu rozpoznawania formularzy, aby ułatwić nadzorowane uczenie się.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
-ms.topic: conceptual
-ms.date: 02/28/2020
+ms.topic: how-to
+ms.date: 03/20/2020
 ms.author: pafarley
-ms.openlocfilehash: fa419d7dd9668ac2ce8f2b0eb904117c7e22692d
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 795d21e05ade652b52c06d597ca4c5fef85e7245
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78207845"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80152851"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>Wdrażanie przykładowego narzędzia do etykietowania
 
-Przykładowe narzędzie do etykietowania z aparatem rozpoznawania formularzy to aplikacja działająca w kontenerze platformy Docker. Zapewnia przydatny interfejs użytkownika, którego można użyć do ręcznego etykietowania dokumentów w celu przeprowadzenia nadzorowanej nauki. [Szkolenie z etykietami](./quickstarts/label-tool.md) szybki start przedstawia sposób uruchamiania narzędzia na komputerze lokalnym, który jest najbardziej typowym scenariuszem. 
+Narzędzie do etykietowania przykładowego aparatu rozpoznawania formularzy to aplikacja, która zapewnia prosty interfejs użytkownika (UI), którego można używać do ręcznego etykietowania formularzy (dokumentów) w celu nadzorowanego uczenia się. W tym artykule udostępnimy linki i instrukcje, które nauczą Cię, jak:
 
-W tym przewodniku wyjaśniono alternatywne sposoby wdrażania i uruchamiania przykładowego narzędzia do etykietowania. 
+* [Lokalne uruchamianie przykładowego narzędzia do etykietowania](#run-the-sample-labeling-tool-locally)
+* [Wdrażanie przykładowego narzędzia do etykietowania w wystąpieniu kontenera platformy Azure (ACI)](#deploy-with-azure-container-instances-aci)
+* [Używanie i współtworzenie narzędzia do etykietowania formularzy OCR typu open source](#open-source-on-github)
 
-## <a name="deploy-with-azure-container-instances"></a>Wdrażanie za pomocą Azure Container Instances
+## <a name="run-the-sample-labeling-tool-locally"></a>Lokalne uruchamianie przykładowego narzędzia do etykietowania
 
-Narzędzie Label można uruchomić w kontenerze aplikacji sieci Web platformy Docker. Najpierw [Utwórz nowy zasób aplikacji sieci Web](https://ms.portal.azure.com/#create/Microsoft.WebSite) na Azure Portal. Wypełnij formularz informacjami o subskrypcji i grupie zasobów. Wprowadź następujące informacje w wymaganych polach:
-* **Publikowanie**: kontener platformy Docker
-* **Działanie** System: Linux
+Najszybszym sposobem rozpoczęcia etykietowania danych jest lokalne uruchomienie przykładowego narzędzia do etykietowania. Poniższy przewodnik Szybki start używa interfejsu API REST aparatu rozpoznawania formularzy i przykładowego narzędzia do etykietowania, aby wyszkolić model niestandardowy z danymi oznaczonymi ręcznie. 
 
-Na następnej stronie wypełnij następujące pola konfiguracji kontenera Docker:
+* [Szybki start: etykietuj formularze, trenuj model i analizuj formularz za pomocą przykładowego narzędzia do etykietowania](./quickstarts/label-tool.md).
 
-* **Opcje**: pojedynczy kontener
-* **Źródło obrazu**: Azure Container Registry
-* **Typ dostępu**: publiczny
-* **Obraz i tag**: MCR.Microsoft.com/Azure-Cognitive-Services/Custom-form/labeltool:Latest
+## <a name="deploy-with-azure-container-instances-aci"></a>Wdrażanie przy za pomocą wystąpień kontenerów platformy Azure (ACI)
 
-Poniższe kroki są opcjonalne. Po zakończeniu wdrażania aplikacji można uruchomić ją i uzyskać dostęp do narzędzia etykiet w trybie online.
+Zanim zaczniemy, należy pamiętać, że istnieją dwa sposoby wdrażania przykładowego narzędzia do etykietowania w wystąpieniu kontenera platformy Azure (ACI). Obie opcje są używane do uruchamiania przykładowego narzędzia do etykietowania za pomocą ACI: 
 
-### <a name="connect-to-azure-ad-for-authorization"></a>Nawiązywanie połączenia z usługą Azure AD w celu autoryzacji
+* [Korzystanie z witryny Azure portal](#azure-portal)
+* [Korzystanie z interfejsu wiersza polecenia platformy Azure](#azure-cli)
 
-Zalecamy łączenie aplikacji sieci Web z usługą Azure Active Directory (AAD), tak aby tylko ktoś z poświadczeniami mógł się zalogować i korzystać z aplikacji. Postępuj zgodnie z instrukcjami w temacie [Konfigurowanie aplikacji App Service](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad) , aby nawiązać połączenie z usługą AAD.
+### <a name="azure-portal"></a>Portal Azure
+
+Wykonaj następujące kroki, aby utworzyć nowy zasób przy użyciu witryny Azure portal: 
+
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com/signin/index/).
+2. Wybierz pozycję **Utwórz zasób**. 
+3. Następnie wybierz pozycję **Aplikacja sieci Web**. 
+
+   > [!div class="mx-imgBorder"]
+   > ![Wybierz aplikację internetową](./media/quickstarts/formre-create-web-app.png)
+   
+4. Najpierw upewnij się, że jest zaznaczona karta **Podstawy.** Teraz będziesz musiał podać kilka informacji: 
+
+   > [!div class="mx-imgBorder"]
+   > ![Wybierz podstawowe](./media/quickstarts/formre-select-basics.png)
+   * Subskrypcja — wybierz istniejącą subskrypcję platformy Azure
+   * Grupa zasobów — można ponownie użyć istniejącej grupy zasobów lub utworzyć nową dla tego projektu. Zaleca się utworzenie nowej grupy zasobów.
+   * Nazwa — nadaj aplikacji internetowej nazwę. 
+   * Publikuj — wybierz **kontener platformy Docker**
+   * System operacyjny - Wybierz **Linuksa**
+   * Region — wybierz region, który ma dla Ciebie sens.
+   * Plan systemu Linux — wybierz warstwę cenową/plan usługi aplikacji. 
+
+   > [!div class="mx-imgBorder"]
+   > ![Konfigurowanie aplikacji sieci Web](./media/quickstarts/formre-select-docker-linux.png)
+
+5. Następnie wybierz kartę **Docker.** 
+
+   > [!div class="mx-imgBorder"]
+   > ![Wybierz pozycję Docker](./media/quickstarts/formre-select-docker.png)
+
+6. Teraz skonfigurujmy kontener platformy Docker. Wszystkie pola są wymagane, chyba że zaznaczono inaczej:
+
+   * Opcje — **wybieranie pojedynczego kontenera**
+   * Źródło zdj. **Private Registry** 
+   * Adres URL serwera — ustaw na taki adres`https://mcr.microsoft.com`
+   * Nazwa użytkownika (opcjonalnie) — tworzenie nazwy użytkownika. 
+   * Hasło (opcjonalnie) — utwórz bezpieczne hasło, które zapamiętasz.
+   * Obraz i znacznik — ustaw na to`mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest`
+   * Polecenie Uruchamianie — ustaw na to`./run.sh eula=accept`
+
+   > [!div class="mx-imgBorder"]
+   > ![Konfigurowanie platformy Docker](./media/quickstarts/formre-configure-docker.png)
+
+7. Gotowe. Następnie wybierz **pozycję Przejrzyj + Utwórz**, a następnie **utwórz,** aby wdrożyć aplikację sieci Web. Po zakończeniu można uzyskać dostęp do aplikacji sieci web pod adresem URL podanym w **przeglądzie** zasobu.
+
+> [!NOTE]
+> Podczas tworzenia aplikacji sieci web można również skonfigurować autoryzację/uwierzytelnianie. Nie jest to konieczne, aby rozpocząć. 
+
+### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
+
+Jako alternatywę dla korzystania z witryny Azure portal, można utworzyć zasób przy użyciu interfejsu wiersza polecenia platformy Azure. Przed kontynuowaniem należy zainstalować narzędzie [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Możesz pominąć ten krok, jeśli już pracujesz z interfejsu wiersza polecenia platformy Azure. 
+
+Jest kilka rzeczy, które musisz wiedzieć o tym poleceniu:
+
+* `DNS_NAME_LABEL=aci-demo-$RANDOM`generuje losową nazwę DNS. 
+* W tym przykładzie przyjęto założenie, że masz grupę zasobów, której można użyć do utworzenia zasobu. Zamień `<resource_group_name>` ją na prawidłową grupę zasobów skojarzoną z subskrypcją. 
+* Musisz określić, gdzie chcesz utworzyć zasób. Zamień `<region name>` żądany region aplikacji internetowej. 
+* To polecenie automatycznie akceptuje umowy EuLA.
+
+W interfejsie wiersza polecenia platformy Azure uruchom to polecenie, aby utworzyć zasób aplikacji sieci web dla przykładowego narzędzia do etykietowania: 
+
+```azurecli
+DNS_NAME_LABEL=aci-demo-$RANDOM
+
+az container create \
+  --resource-group <resorunce_group_name> \
+  --name <name> \
+  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool \
+  --ports 3000 \
+  --dns-name-label $DNS_NAME_LABEL \
+  --location <region name> \
+  --cpu 2 \
+  --memory 8
+  --command-line "./run.sh eula=accept"
+```
+
+### <a name="connect-to-azure-ad-for-authorization"></a>Łączenie się z usługą Azure AD w celu autoryzacji
+
+Zaleca się połączenie aplikacji sieci web z usługą Azure Active Directory. Dzięki temu tylko użytkownicy z prawidłowymi poświadczeniami mogą logować się i korzystać z aplikacji sieci web. Postępuj zgodnie z instrukcjami w [konfigurowanie aplikacji usługi App Service,](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad) aby połączyć się z usługą Azure Active Directory.
+
+## <a name="open-source-on-github"></a>Open source w usłudze GitHub
+
+Narzędzie do etykietowania formularzy OCR jest również dostępne jako projekt typu open source w usłudze GitHub. Narzędzie jest aplikacją internetową stworzoną przy użyciu React + Redux i jest napisane w TypeScript. Aby dowiedzieć się więcej lub przyczynić się, zobacz [Narzędzie do etykietowania formularzy OCR](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-Wróć do przewodnika Szybki Start [z etykietami](./quickstarts/label-tool.md) , aby dowiedzieć się, jak ręcznie etykietować dane szkoleniowe i uczenia nadzorowanego za pomocą narzędzia.
+Skorzystaj z przewodnika Szybki start [pociągu z etykietami,](./quickstarts/label-tool.md) aby dowiedzieć się, jak używać tego narzędzia do ręcznego etykietowania danych szkoleniowych i wykonywania nadzorowanego uczenia się.

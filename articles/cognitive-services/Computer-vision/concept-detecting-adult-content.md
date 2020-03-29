@@ -1,7 +1,7 @@
 ---
-title: Dorosła, erotycznej, gorii Content — przetwarzanie obrazów
+title: Treści dla dorosłych, rasistowskie, gory - Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Pojęcia związane z wykrywaniem treści dla dorosłych w obrazach przy użyciu interfejsu APi przetwarzanie obrazów.
+description: Pojęcia związane z wykrywaniem zawartości dla dorosłych na obrazach za pomocą interfejsu APi wizji komputerowej.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -12,30 +12,30 @@ ms.date: 10/01/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: ee18916a59bb081d65494f46e7aba7c29c7177cc
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71718513"
 ---
 # <a name="detect-adult-content"></a>Wykrywanie treści dla dorosłych
 
-Przetwarzanie obrazów może wykryć dorosłe materiały w obrazach, dzięki czemu deweloperzy mogą ograniczyć wyświetlanie tych obrazów w oprogramowaniu. Flagi zawartości są stosowane z wynikiem między wartością zero a jedną, tak aby deweloperzy mogli interpretować wyniki zgodnie z ich własnymi preferencjami.
+Computer Vision może wykrywać materiały dla dorosłych na obrazach, dzięki czemu deweloperzy mogą ograniczyć wyświetlanie tych obrazów w swoim oprogramowaniu. Flagi zawartości są stosowane z wynikiem między zerem a punktem, dzięki czemu deweloperzy mogą interpretować wyniki zgodnie z własnymi preferencjami.
 
 > [!NOTE]
-> Wiele z tych funkcji jest oferowanych przez usługę [Content moderator platformy Azure](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview) . Zapoznaj się z tą alternatywą dla rozwiązań bardziej rygorystycznych scenariuszy moderowania zawartości, takich jak moderowanie tekstu i przepływy pracy przeglądu przez ludzi.
+> Wiele z tych funkcji jest oferowanych przez usługę [Azure Content Moderator.](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview) Zobacz tę alternatywę dla rozwiązań bardziej rygorystycznych scenariuszy moderowania zawartości, takich jak moderowanie tekstu i przepływy pracy przeglądu ludzkiego.
 
 ## <a name="content-flag-definitions"></a>Definicje flag zawartości
 
-W ramach klasyfikacji "Dorosła" są kilka różnych kategorii:
+W klasyfikacji "dla dorosłych" znajduje się kilka różnych kategorii:
 
-- Obrazy **dla dorosłych** są definiowane jako te, które są wyraźnie płciowo i często przedstawiają nagość i seks.
-- Obrazy **erotycznej** są definiowane jako obrazy, które mają charakter płciowo sugerujący i często zawierają mniej wyraźną zawartość z Seksem niż obrazy otagowane jako **osoba dorosła**.
-- Obrazy **gorii** są definiowane jako te, które przedstawiają Gore.
+- Obrazy **dla dorosłych** są definiowane jako te, które mają charakter o charakterze wyraźnie seksualnym i często przedstawiają nagość i akty seksualne.
+- **Obrazy racy** są definiowane jako obrazy, które są seksualnie sugestywne w przyrodzie i często zawierają mniej treści o charakterze jednoznacznie seksualnym niż obrazy oznaczone jako **Adult**.
+- **Gory** obrazy są zdefiniowane jako te, które przedstawiają gore.
 
 ## <a name="use-the-api"></a>Używanie interfejsu API
 
-Możesz wykryć zawartość dla dorosłych za pomocą interfejsu API [analizy obrazu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) . Po dodaniu wartości `Adult` do parametru zapytania **visualFeatures** interfejs API zwraca trzy właściwości logiczne&mdash;`isAdultContent`, `isRacyContent`i `isGoryContent`&mdash;w swojej odpowiedzi JSON. Metoda zwraca również odpowiednie właściwości&mdash;`adultScore`, `racyScore`i `goreScore`&mdash;, które reprezentują wyniki zaufania od zera i jeden dla każdej odpowiedniej kategorii.
+Zawartość dla dorosłych można wykryć za pomocą interfejsu API [analizowania obrazu.](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) Po dodaniu wartości `Adult` parametru **kwerendy visualFeatures** interfejs API zwraca&mdash;`isAdultContent` `isRacyContent`trzy `isGoryContent` &mdash;właściwości logiczne , a w odpowiedzi JSON. Metoda zwraca również odpowiednie&mdash;`adultScore` `racyScore`właściwości `goreScore` &mdash;, i które reprezentują wyniki zaufania między oderem a jednym dla każdej odpowiedniej kategorii.
 
-- [Szybki Start: analizowanie obrazu (zestaw SDK dla platformy .NET)](./quickstarts-sdk/csharp-analyze-sdk.md)
-- [Szybki Start: analizowanie obrazu (interfejs API REST)](./quickstarts/csharp-analyze.md)
+- [Szybki start: analizowanie obrazu (SDK.NET)](./quickstarts-sdk/csharp-analyze-sdk.md)
+- [Szybki start: analizowanie obrazu (INTERFEJS API REST)](./quickstarts/csharp-analyze.md)

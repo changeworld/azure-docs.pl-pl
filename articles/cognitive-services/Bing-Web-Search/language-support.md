@@ -1,7 +1,7 @@
 ---
-title: Obsługa języka — interfejs API wyszukiwania w sieci Web Bing
+title: Obsługa języka — interfejs API wyszukiwania w sieci Web usługi Bing
 titleSuffix: Azure Cognitive Services
-description: Lista języków naturalnych, krajów i regionów, które są obsługiwane przez interfejs API wyszukiwania wiadomości Bing.
+description: Lista języków naturalnych, krajów i regionów obsługiwanych przez interfejs API wyszukiwania wiadomości Bing.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,30 +11,30 @@ ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
 ms.openlocfilehash: 9425de6e75a9a46d71ff85ce49b0650c8e7a9a16
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68882689"
 ---
-# <a name="language-and-region-support-for-the-bing-web-search-api"></a>Obsługa języka i regionu dla interfejs API wyszukiwania w sieci Web Bing
+# <a name="language-and-region-support-for-the-bing-web-search-api"></a>Obsługa języka i regionu interfejsu API wyszukiwania w sieci Web usługi Bing
 
-Interfejs API wyszukiwania w sieci Web Bing obsługuje ponad trzy dziesiątki krajów lub regionów, wiele z więcej niż jednym językiem. Określenie kraju lub regionu z zapytaniem ułatwia dokładne wyniki wyszukiwania w zależności od danego kraju lub regionu zainteresowania. Wyniki mogą zawierać linki do usługi Bing, a te linki mogą lokalizować środowisko użytkownika Bing w zależności od określonego kraju/regionu lub języka.
+Interfejs API wyszukiwania w sieci Web usługi Bing obsługuje ponad trzy tuziny krajów lub regionów, wiele z więcej niż jednym językiem. Określenie kraju lub regionu za pomocą kwerendy pomaga uściślać wyniki wyszukiwania na podstawie tego kraju lub regionów zainteresowań. Wyniki mogą zawierać łącza do usługi Bing, a te łącza mogą zlokalizować środowisko użytkownika usługi Bing zgodnie z określonym krajem/regionem lub językiem.
 
-Możesz określić kraj lub region przy użyciu `cc` parametru zapytania. W przypadku określenia kraju lub regionu należy określić jeden lub więcej kodów języka z [ `Accept-Language` nagłówkiem](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers). Skorzystaj z [tabeli rynków](#markets) , aby zapoznać się z listą języków obsługiwanych na poszczególnych rynkach.
+Za pomocą parametru kwerendy `cc` można określić kraj lub region. Po określeniu kraju lub regionu należy określić jeden lub więcej kodów języków za pomocą [ `Accept-Language` nagłówka](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers). Użyj [tabeli Rynki,](#markets) aby wyświetlić listę języków obsługiwanych na każdym rynku.
 
-Alternatywnie można określić rynek z `mkt` parametrem zapytania i kodem z tabeli **rynków** . Określenie rynku jednocześnie określa kraj lub region i preferowany język. Można jawnie ustawić język przy użyciu `setLang` parametru zapytania.
+Alternatywnie można określić rynek `mkt` za pomocą parametru zapytania i kodu z tabeli **Rynki.** Określenie rynku jednocześnie określa kraj lub region oraz preferowany język. Można jawnie ustawić język `setLang` z parametrem kwerendy.
 
 ## <a name="countriesregions"></a>Kraje/regiony
 
-|Country/region|Kod|
+|Kraj/region|Code|
 |-------|----|
 |Argentyna|AR|
 |Australia|AU|
 |Austria|AT|
 |Belgia|BE|
 |Brazylia|BR|
-|Kanada|Urząd certyfikacji|
+|Kanada|CA|
 |Chile|CL|
 |Dania|DK|
 |Finlandia|FI|
@@ -42,10 +42,10 @@ Alternatywnie można określić rynek z `mkt` parametrem zapytania i kodem z tab
 |Niemcy|DE|
 |SRA Hongkong|HK|
 |Indie|IN|
-|Indonezja|id|
-|Włochy|it|
+|Indonezja|ID|
+|Włochy|IT|
 |Japonia|JP|
-|Korea Południowa|KR|
+|Korea|KR|
 |Malezja|MY|
 |Meksyk|MX|
 |Holandia|NL|
@@ -57,59 +57,59 @@ Alternatywnie można określić rynek z `mkt` parametrem zapytania i kodem z tab
 |Filipiny|PH|
 |Rosja|RU|
 |Arabia Saudyjska|SA|
-|RPA|ZA|
+|Republika Południowej Afryki|ZA|
 |Hiszpania|ES|
 |Szwecja|SE|
 |Szwajcaria|CH|
 |Tajwan|TW|
 |Turcja|TR|
-|Zjednoczone Królestwo|GB|
+|Wielka Brytania|GB|
 |Stany Zjednoczone|USA|
 
-## <a name="markets"></a>Wprowadza
+## <a name="markets"></a>Rynków
 
-|Country/region|Język|Kod rynkowy|
+|Kraj/region|Język|Kodeks rynku|
 |-------|--------|-----------|
-|Argentyna|Hiszpański|ES-AR|
-|Australia|Angielski|EN-AU|
-|Austria|niemiecki|de-AT|
-|Belgia|Holenderski|nl-BE|
+|Argentyna|Hiszpański|es-AR|
+|Australia|Polski|pl-UA|
+|Austria|Niemiecki|de-AT|
+|Belgia|Niderlandzki|nl-BE|
 |Belgia|Francuski|fr-BE|
 |Brazylia|Portugalski|pt-BR|
-|Kanada|Angielski|EN-CA|
+|Kanada|Polski|pl-CA|
 |Kanada|Francuski|fr-CA|
-|Chile|Hiszpański|ES — CL|
-|Dania|Duński|Akcelerator deweloperski w wersji DK|
-|Finlandia|Fiński|fi-FI|
+|Chile|Hiszpański|es-CL|
+|Dania|duński|da-DK|
+|Finlandia|fiński|fi-FI|
 |Francja|Francuski|fr-FR|
-|Niemcy|niemiecki|de-DE.|
+|Niemcy|Niemiecki|de-DE|
 |SRA Hongkong|Chiński tradycyjny|zh-HK|
-|Indie|Angielski|EN-IN|
-|Indonezja|Angielski|pl-ID|
-|Włochy|Włoski|IT-IT|
+|Indie|Polski|pl-IN|
+|Indonezja|Polski|en-ID|
+|Włochy|Włoski|it-IT|
 |Japonia|Japoński|ja-JP|
-|Korea Południowa|Koreański|ko-KR|
-|Malezja|Angielski|pl — MY|
+|Korea|Koreański|ko-KR|
+|Malezja|Polski|pl-MY|
 |Meksyk|Hiszpański|es-MX|
-|Holandia|Holenderski|NL-NL|
-|Nowa Zelandia|Angielski|EN NZ|
-|Norwegia|Norweski|nie — nie|
+|Holandia|Niderlandzki|nl-NL|
+|Nowa Zelandia|Polski|pl-NZ|
+|Norwegia|Norweski|no-NO|
 |Chiny|Chiński|zh-CN|
 |Polska|Polski|pl-PL|
 |Portugalia|Portugalski|pt-PT|
-|Filipiny|Angielski|EN-PH|
+|Filipiny|Polski|pl-PH|
 |Rosja|Rosyjski|ru-RU|
 |Arabia Saudyjska|Arabski|ar-SA|
-|RPA|Angielski|pl-za|
+|Republika Południowej Afryki|Polski|pl-ZA|
 |Hiszpania|Hiszpański|es-ES|
-|Szwecja|Szwedzki|sv-SE|
-|Szwajcaria|Francuski|FR-CH|
-|Szwajcaria|niemiecki|de-CH|
+|Szwecja|szwedzki|sv-SE|
+|Szwajcaria|Francuski|fr-CH|
+|Szwajcaria|Niemiecki|de-CH|
 |Tajwan|Chiński tradycyjny|zh-TW|
 |Turcja|Turecki|tr-TR|
-|Zjednoczone Królestwo|Angielski|en-GB|
-|Stany Zjednoczone|Angielski|en-US|
-|Stany Zjednoczone|Hiszpański|es-US|
+|Wielka Brytania|Polski|en-GB|
+|Stany Zjednoczone|Polski|pl-PL|
+|Stany Zjednoczone|Hiszpański|es-USA|
 
 ## <a name="next-steps"></a>Następne kroki
 

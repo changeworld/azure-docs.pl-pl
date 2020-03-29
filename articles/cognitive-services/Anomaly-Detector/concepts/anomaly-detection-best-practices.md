@@ -1,7 +1,7 @@
 ---
 title: Najlepsze rozwiązania dotyczące interfejsu API narzędzia do wykrywania anomalii
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się więcej o najlepszych rozwiązaniach podczas wykrywania anomalii przy użyciu interfejsu API wykrywanie anomalii.
+description: Dowiedz się więcej o najlepszych rozwiązaniach podczas wykrywania anomalii za pomocą interfejsu API detektora anomalii.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,50 +11,50 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: aahi
 ms.openlocfilehash: 9407f2fc9375765efb6eb9688b3ebfeef24ba90a
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67721625"
 ---
-# <a name="best-practices-for-using-the-anomaly-detector-api"></a>Najlepsze rozwiązania dotyczące korzystania z interfejsu API wykrywanie anomalii
+# <a name="best-practices-for-using-the-anomaly-detector-api"></a>Najważniejsze wskazówki dotyczące korzystania z interfejsu API detektora anomalii
 
-Interfejs API usługi Wykrywanie anomalii jest usługa wykrywania anomalii bezstanowe. Niezawodność i wydajność jej wynik może mieć wpływ na:
+Interfejs API detektora anomalii jest usługą wykrywania anomalii bezstanowych. Na dokładność i wydajność jego wyników mogą mieć wpływ:
 
-* Jak przygotować danych szeregów czasowych.
-* Parametry interfejsu API wykrywanie anomalii, które były używane.
-* Liczba punktów danych w Twoim żądaniu interfejsu API. 
+* Sposób przygotowania danych szeregów czasowych.
+* Parametry interfejsu API detektora anomalii, które zostały użyte.
+* Liczba punktów danych w żądaniu interfejsu API. 
 
-Aby poznać najlepsze rozwiązania dotyczące korzystania z interfejsu API, uzyskania najlepszych rezultatów dla swoich danych, należy użyć w tym artykule. 
+Użyj tego artykułu, aby dowiedzieć się o najlepszych praktykach dotyczących korzystania z interfejsu API, uzyskując najlepsze wyniki dla danych. 
 
-## <a name="when-to-use-batch-entire-or-latest-last-point-anomaly-detection"></a>Kiedy należy używać usługi batch (całkowity) lub najnowsze (ostatnia) wskazują wykrywania anomalii
+## <a name="when-to-use-batch-entire-or-latest-last-point-anomaly-detection"></a>Kiedy używać wykrywania anomalii punktu partii (w całości) lub najnowszej (ostatniej)
 
-Punktu końcowego wykrywania usługi batch API wykrywanie anomalii pozwala wykrywać nieprawidłowe stany, przez cały czas serii danych. W tym trybie wykrywania pojedynczego modelu statystyczne jest utworzony i zastosowane do każdego punktu w zestawie danych. Jeśli Twoje szeregów czasowych ma pod cech, zaleca się przy użyciu wykrywania usługi batch, aby wyświetlić podgląd danych w jednym wywołaniu interfejsu API.
+Punkt końcowy wykrywania wsadowego detektora anomalii umożliwia wykrywanie anomalii za pośrednictwem danych serii cały czas. W tym trybie wykrywania tworzony jest pojedynczy model statystyczny i stosowany do każdego punktu w zestawie danych. Jeśli szeregi czasowe mają następujące cechy, zaleca się użycie wykrywania partii do podglądu danych w jednym wywołaniu interfejsu API.
 
-* Szeregów czasowych sezonowe, za pomocą okazjonalne anomalii.
-* Płaski trend szeregów czasowych, z okazjonalne wzrostów/spadku. 
+* Sezonowe szeregi czasowe z sporadycznymi anomaliami.
+* Płaskie serie czasowe trendu, z okazjonalnymi skokami/spadkami. 
 
-Nie zaleca się przy użyciu wykrywania anomalii w usłudze batch dla danych w czasie rzeczywistym, monitorowania lub korzystania z niego w danych szeregów czasowych, która nie ma powyżej właściwości. 
+Nie zaleca się używania wykrywania anomalii partii do monitorowania danych w czasie rzeczywistym lub używania go w danych szeregów czasowych, które nie mają powyższych cech. 
 
-* Wykrywanie Batch tworzy i stosuje tylko jeden model, wykrywania dla każdego punktu odbywa się w kontekście całej serii. Czas serii trendy danych górę i w dół bez sezonowości, punktów niektóre zmiany (adresy DIP i gwałtowny wzrost danych) mogą zostać pominięci przez model. Podobnie niektóre punkty zmian, które są mniej istotne niż te, które później w zestawie danych nie mogą być liczone jako tyle znaczące, należy włączyć do modelu.
+* Wykrywanie partii tworzy i stosuje tylko jeden model, wykrywanie dla każdego punktu odbywa się w kontekście całej serii. Jeśli trendy danych szeregów czasowych w górę i w dół bez sezonowości, niektóre punkty zmian (spadki i skoki w danych) mogą zostać pominięte przez model. Podobnie niektóre punkty zmian, które są mniej istotne niż te w późniejszym zestawie danych, mogą nie być liczone jako wystarczająco istotne, aby można je było włączyć do modelu.
 
-* Wykrywanie partii jest mniejsza niż wykrywania anomalii stan najnowszego punktu, w trakcie monitorowania danych w czasie rzeczywistym, ze względu na liczbę punktów analizowane.
+* Wykrywanie partii jest wolniejsze niż wykrywanie stanu anomalii najnowszego punktu podczas monitorowania danych w czasie rzeczywistym, ze względu na liczbę analizowanych punktów.
 
-Do monitorowania danych w czasie rzeczywistym, firma Microsoft zaleca, wykrywanie anomalii stan tylko najnowsze punktu danych. Stosując stale ostatnie wykrywanie punktu, przesyłanie strumieniowe danych monitorowania może odbywać się bardziej wydajne i dokładne.
+W przypadku monitorowania danych w czasie rzeczywistym zaleca się wykrywanie stanu anomalii tylko najnowszego punktu danych. Dzięki ciągłego stosowania najnowszego wykrywania punktów, monitorowanie danych strumieniowych można wykonać wydajniej i dokładniej.
 
-W poniższym przykładzie opisano wpływ tych trybów wykrywania może mieć na wydajność. Pierwsze obraz przedstawia wynik stale wykrywania anomalii stan najnowszego punktu wzdłuż punktów danych poprzednio oglądaną 28. Czerwony punkty są anomalie.
+W poniższym przykładzie opisano wpływ tych trybów wykrywania na wydajność. Pierwsze zdjęcie przedstawia wynik ciągłego wykrywania stanu anomalii ostatniego punktu wzdłuż 28 wcześniej widzianych punktów danych. Czerwone punkty są anomalie.
 
 ![Obraz przedstawiający wykrywanie anomalii przy użyciu najnowszego punktu](../media/last.png)
 
-Poniżej znajduje się ten sam zestaw danych przy użyciu wykrywania anomalii w usłudze batch. Model tworzony dla operacji został zignorowany kilka anomalie, oznaczony za prostokąty.
+Poniżej znajduje się ten sam zestaw danych przy użyciu wykrywania anomalii partii. Model zbudowany dla operacji zignorował kilka anomalii, oznaczonych prostokątami.
 
-![Obraz przedstawiający wykrywanie anomalii przy użyciu metody usługi batch](../media/entire.png)
+![Obraz przedstawiający wykrywanie anomalii przy użyciu metody wsadowej](../media/entire.png)
 
 ## <a name="data-preparation"></a>Przygotowywanie danych
 
-Interfejs API usługi Wykrywanie anomalii akceptuje szeregów czasowych dane sformatowane do obiektu żądania JSON. Szeregi czasowe może być dowolnym dane liczbowe, zapisywane wraz z upływem czasu, w kolejności sekwencyjnej. Windows danych szeregów czasowych może wysyłać do punktu końcowego interfejsu API wykrywanie anomalii, aby zwiększyć wydajność interfejsu API. Minimalna liczba punktów danych, który można wysłać to 12, a wartość maksymalna to 8640 punktów. [Poziom szczegółowości](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) jest zdefiniowany jako szybkość, z jaką dane są próbkowane tak, w. 
+Interfejs API detektora anomalii akceptuje dane szeregów czasowych sformatowane w obiekcie żądania JSON. Szeregi czasowe mogą być dowolnymi danymi liczbowymi zarejestrowanymi w czasie w kolejności sekwencyjnej. Można wysłać okna danych szeregów czasowych do punktu końcowego interfejsu API detektora anomalii, aby poprawić wydajność interfejsu API. Minimalna liczba punktów danych, które można wysłać, wynosi 12, a maksymalna to 8640 punktów. [Ziarnistość](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) jest definiowana jako szybkość, w jakim dane są próbkowane. 
 
-Punktów danych wysłanych do interfejsu API wykrywanie anomalii musi mieć prawidłową sygnaturę czasową uniwersalnego czasu koordynowanego (UTC), a wartość liczbową. 
+Punkty danych wysyłane do interfejsu API detektora anomalii muszą mieć prawidłowy sygnatura czasowa skoordynowanego czasu uniwersalnego (UTC) i wartość liczbową. 
 
 ```json
 {
@@ -72,7 +72,7 @@ Punktów danych wysłanych do interfejsu API wykrywanie anomalii musi mieć praw
 }
 ```
 
-Jeśli dane są próbkowane tak, w odstępach czasu niestandardowej, możesz je określić, dodając `customInterval` atrybutów w żądaniu. Na przykład serii są próbkowane co 5 minut, można dodać następujące do żądania JSON:
+Jeśli dane są próbkowanie w niestandardowym przedziale czasu, `customInterval` można określić go przez dodanie atrybutu w żądaniu. Na przykład jeśli seria jest próbkowana co 5 minut, można dodać następujące elementy do żądania JSON:
 
 ```json
 {
@@ -81,27 +81,27 @@ Jeśli dane są próbkowane tak, w odstępach czasu niestandardowej, możesz je 
 }
 ```
 
-### <a name="missing-data-points"></a>Brak punktów danych
+### <a name="missing-data-points"></a>Brakujące punkty danych
 
-Brak punktów danych są wspólne w zestawach danych serii czasu równomierną dystrybucję, szczególnie te, które z zapewniającym dużą szczegółowość (interwał próbkowania małe. Adapterem, dane próbkowane co kilka minut). Brak mniej niż 10% oczekiwanej liczby punktów danych, nie powinny mieć negatywny wpływ na wyniki wykrywania. Należy wziąć pod uwagę wypełnianie luki w oparciu o jego cechy, takie jak podstawianie punktów danych w poprzednim okresie, interpolacji liniowej lub średniej ruchomej danych.
+Brakujące punkty danych są powszechne w równomiernie rozproszonych zestawach danych szeregów czasowych, zwłaszcza tych o drobnym szczegółowości (mały interwał próbkowania. Na przykład dane próbkowania co kilka minut). Brak mniej niż 10% oczekiwanej liczby punktów w danych nie powinien mieć negatywnego wpływu na wyniki wykrywania. Rozważ wypełnienie luk w danych na podstawie ich cech, takich jak zastąpienie punktów danych z wcześniejszego okresu, interpolacja liniowa lub średnia ruchoma.
 
 ### <a name="aggregate-distributed-data"></a>Agregowanie danych rozproszonych
 
-Interfejs API usługi Wykrywanie anomalii sprawdza się najlepiej w szeregu czasowego równomierną dystrybucję. Jeśli Twoje dane są losowo rozproszone, możesz powinien agregować je przez jednostkę czasu, takich jak na minutę, godzinową lub dzienną na przykład.
+Interfejs API detektora anomalii działa najlepiej w równomiernie rozproszonych szeregach czasowych. Jeśli dane są dystrybuowane losowo, należy zagregować je według jednostki czasu, na przykład na minutę, co godzinę lub codziennie.
 
-## <a name="anomaly-detection-on-data-with-seasonal-patterns"></a>Wykrywanie anomalii w danych ze wzorcami sezonowych
+## <a name="anomaly-detection-on-data-with-seasonal-patterns"></a>Wykrywanie anomalii na danych z sezonowymi wzorcami
 
-Jeśli wiesz, że szeregami czasowymi ma wzorcu sezonowym, (jeden, który występuje w regularnych odstępach czasu), można zwiększyć dokładność i czasu odpowiedzi interfejsu API. 
+Jeśli wiesz, że dane szeregów czasowych ma wzorzec sezonowy (taki, który występuje w regularnych odstępach czasu), można poprawić dokładność i czas odpowiedzi interfejsu API. 
 
-Określanie `period` podczas konstruowania żądania JSON może zmniejszyć opóźnienie wykrywania anomalii nawet o 50%. `period` Jest liczba całkowita określająca punkty około ile danych szeregów czasowych zajmuje się do powtarzania wzorca. Na przykład miałby szeregów czasowych z jeden punkt danych na dzień `period` jako `7`, muszą szeregów czasowych z jednym punktem na godzinę (przy użyciu tego samego wzorca co tydzień) `period` z `7*24`. Jeśli masz pewności co do wzorców swoje dane, nie trzeba określenia tego parametru.
+Określenie `period` podczas konstruowania żądania JSON może zmniejszyć opóźnienie wykrywania anomalii nawet o 50%. Jest `period` całkowitej liczby, która określa mniej więcej, ile punktów danych szeregów czasowych trwa do powtórzenia wzorca. Na przykład szeregi czasowe z jednym `period` punktem `7`danych dziennie będą miały as , a szeregi czasowe `period` `7*24`z jednym punktem na godzinę (z tym samym wzorcem tygodniowym) miałyby jeden schemat . Jeśli nie masz pewności co do wzorców danych, nie musisz określać tego parametru.
 
-Aby uzyskać najlepsze wyniki, należy podać 4 `period`użytkownika, przez które punktu danych, a także drugą. Na przykład co godzinę danych za pomocą wzorca co tydzień zgodnie z powyższym opisem powinny dostarczyć 673 punktów danych w treści żądania (`7 * 24 * 4 + 1`).
+Aby uzyskać najlepsze wyniki, podaj punkt danych o wartości 4 `period`000 000 000 000 000 000 000 000 000 000 000 Na przykład dane godzinowe z tygodniowym wzorcem, jak opisano powyżej, powinny`7 * 24 * 4 + 1`dostarczyć 673 punktów danych w treści żądania ( ).
 
-### <a name="sampling-data-for-real-time-monitoring"></a>Dane z próbkowania dla monitorowania w czasie rzeczywistym
+### <a name="sampling-data-for-real-time-monitoring"></a>Dane próbkowania do monitorowania w czasie rzeczywistym
 
-Jeśli dane przesyłania strumieniowego są próbkowane tak, w krótkich odstępach czasu (w sekundach lub minutach), wysyłając zalecana liczba punktów danych może przekroczyć API wykrywanie anomalii maksymalna liczba dozwolonych (8640 punkty danych). Jeśli dane pokazuje stabilny wzorcu sezonowym, należy wziąć pod uwagę wysyłania próbkę danych szeregów czasowych w większych odstępach czasu, takich jak godziny. Próbkowanie danych w ten sposób może również znacznie poprawić czas odpowiedzi interfejsu API. 
+Jeśli dane przesyłania strumieniowego są próbkowane w krótkim odstępie czasu (na przykład sekund lub minut), wysłanie zalecanej liczby punktów danych może przekroczyć maksymalną dozwoloną liczbę interfejsu API detektora anomalii (8640 punktów danych). Jeśli dane pokazują stabilny wzorzec sezonowy, należy rozważyć wysłanie próbki danych szeregów czasowych w większych odstępach czasu, takich jak godziny. Próbkowanie danych w ten sposób może również znacznie poprawić czas odpowiedzi interfejsu API. 
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Co to jest interfejs API usługi Wykrywanie anomalii?](../overview.md)
-* [Szybki start: Wykrywanie anomalii w danych szeregów czasowych za pomocą interfejsu API REST wykrywanie anomalii](../quickstarts/detect-data-anomalies-csharp.md)
+* [Co to jest interfejs API narzędzia do wykrywania anomalii?](../overview.md)
+* [Szybki start: wykrywanie anomalii w danych szeregów czasowych przy użyciu interfejsu API REST detektora anomalii](../quickstarts/detect-data-anomalies-csharp.md)

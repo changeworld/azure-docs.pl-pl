@@ -1,7 +1,7 @@
 ---
-title: Uczenie modelu — translator niestandardowy
+title: Trenuj model - Niestandardowy tłumacz
 titleSuffix: Azure Cognitive Services
-description: Uczenie modelu jest ważnym krokiem podczas kompilowania modelu tłumaczenia. Szkolenia odbywają się w oparciu o dokumenty wybrane dla tych szkoleń.
+description: Szkolenie modelu jest ważnym krokiem podczas tworzenia modelu tłumaczenia. Szkolenie odbywa się na podstawie dokumentów wybranych dla tych szkoleń.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -10,69 +10,69 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: a875cc8f5e69be8b940f9d177d3b915bfaa2c973
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68595686"
 ---
 # <a name="train-a-model"></a>Szkolenie modelu
 
-Uczenie modelu jest ważnym krokiem do kompilowania modelu tłumaczenia, ponieważ bez uczenia nie można skompilować modelu. Szkolenia odbywają się w oparciu o dokumenty wybrane dla szkoleń.
+Szkolenie modelu jest ważnym krokiem do tworzenia modelu tłumaczenia, ponieważ bez szkolenia, model nie może być zbudowany. Szkolenie odbywa się na podstawie dokumentów wybranych do szkoleń.
 
-Aby nauczyć model:
+Aby wyszkolić model:
 
-1.  Wybierz projekt, w którym chcesz skompilować model.
+1.  Wybierz projekt, w którym chcesz utworzyć model.
 
-2.  Na karcie dane dla projektu zostaną wyświetlone wszystkie odpowiednie dokumenty dla pary języka projektu. Ręcznie wybierz dokumenty, których chcesz użyć do uczenia modelu. Na tym ekranie można wybrać opcję uczenie, dostrajanie i testowanie dokumentów. Po prostu wybierasz zestaw szkoleniowy i masz do niego możliwość utworzenia przez Ciebie zestawu dostrajania i zestawów testów.
+2.  Karta Dane dla projektu wyświetli wszystkie odpowiednie dokumenty dla pary języków projektu. Ręcznie wybierz dokumenty, których chcesz użyć do przeszkolenia modelu. Na tym ekranie można wybrać dokumenty szkoleniowe, strojenia i testowania. Również po prostu wybrać zestaw szkoleniowy i mieć Custom Translator utworzyć strojenie i zestawy testów dla Ciebie.
 
-    -  Nazwa dokumentu: Nazwa dokumentu.
+    -  Nazwa dokumentu: nazwa dokumentu.
 
-    -  Skojarzenia Jeśli dokument jest równoległy lub międzyjęzykowy. Dokumenty z obsługą wielu języków nie są obecnie obsługiwane w przypadku szkoleń.
+    -  Parowanie: Jeśli ten dokument jest dokumentem równoległym lub jednojęzycznym. Dokumenty jednojęzyczne nie są obecnie obsługiwane w szkoleniach.
 
-    -  Typ dokumentu: Może być szkoleń, dostrajania, testowania lub słownika.
+    -  Typ dokumentu: może to być szkolenie, dostrajanie, testowanie lub słownik.
 
-    -  Para językowa: Spowoduje to wyświetlenie języka źródłowego i docelowego dla projektu.
+    -  Para języków: spowoduje to wyświetlenie języka źródłowego i docelowego dla projektu.
 
-    -  Zdania źródłowe: Pokazuje liczbę zdań wyodrębnionych z pliku źródłowego.
+    -  Zdania źródłowe: pokazuje liczbę zdań wyodrębnionych z pliku źródłowego.
 
-    -  Zdania docelowe: Pokazuje liczbę zdań wyodrębnionych z pliku docelowego.
+    -  Zdania docelowe: pokazuje liczbę zdań wyodrębnionych z pliku docelowego.
 
-    ![Model uczenia](media/how-to/how-to-train-model.png)
+    ![Trenowanie modelu](media/how-to/how-to-train-model.png)
 
-3.  Kliknij przycisk uczenie.
+3.  Kliknij przycisk Pociąg.
 
-4.  W oknie dialogowym Określ nazwę modelu.
+4.  W oknie dialogowym określ nazwę modelu.
 
-5.  Kliknij pozycję uczenie modelu.
+5.  Kliknij pozycję Model pociągu.
 
-    ![Okno dialogowe uczenie modelu](media/how-to/how-to-train-model-2.png)
+    ![Okno dialogowe modelu pociągu](media/how-to/how-to-train-model-2.png)
 
-6.  Tłumaczenie niestandardowe przekaże szkolenie i wyświetli stan szkolenia na karcie modele.
+6.  Translator niestandardowy prześle szkolenie i wyświetli stan szkolenia na karcie modele.
 
-    ![Strona uczenie modelu](media/how-to/how-to-train-model-3.png)
+    ![Strona modelu pociągu](media/how-to/how-to-train-model-3.png)
 
 >[!Note]
->Translator niestandardowy obsługuje 10 współbieżnych szkoleń w obszarze roboczym w dowolnym momencie.
+>Usługa Custom Translator obsługuje 10 równoczesnych szkoleń w obszarze roboczym w dowolnym momencie.
 
 
 ## <a name="edit-a-model"></a>Edytowanie modelu
 
-Można edytować model przy użyciu linku Edytuj na stronie Szczegóły modelu.
+Model można edytować za pomocą łącza Edytuj na stronie Szczegóły modelu.
 
-1.  Kliknij ikonę ołówka.
+1.  Kliknij ikonę Ołówek.
 
     ![Edytuj model](media/how-to/how-to-edit-model.png)
 
-2.  W oknie dialogowym zmiany
+2.  W oknie dialogowym
 
-    1.  Nazwa modelu (wymagana): Nadaj modelowi zrozumiałą nazwę.
+    1.  Nazwa modelu (wymagane): Nadaj modelowi znaczącą nazwę.
 
-        ![Edytuj Więcej okna dialogowego](media/how-to/how-to-edit-model-dialog.png)
+        ![Okno dialogowe Edytowanie kolejnych](media/how-to/how-to-edit-model-dialog.png)
 
 3.  Kliknij pozycję Zapisz.
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się [, jak wyświetlić szczegóły modelu](how-to-view-model-details.md).
+- Dowiedz [się, jak wyświetlić szczegóły modelu](how-to-view-model-details.md).

@@ -1,7 +1,7 @@
 ---
-title: Przykłady interfejs API tłumaczenia tekstu w usłudze Translator słownika
+title: Metoda przykładów słownika interfejsu API tłumacza
 titleSuffix: Azure Cognitive Services
-description: Przykłady interfejs API tłumaczenia tekstu w usłudze Translator słownika zawierają przykłady pokazujące, w jaki sposób terminy w słowniku są używane w kontekście.
+description: Metoda Przykłady słownika interfejsu API tłumacza zawiera przykłady, które pokazują, jak terminy w słowniku są używane w kontekście.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: reference
 ms.date: 01/21/2020
 ms.author: swmachan
 ms.openlocfilehash: b3551a8df19e47178c7bacd9218cfa60b66d81f9
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76548071"
 ---
-# <a name="translator-text-api-30-dictionary-examples"></a>Interfejs API tłumaczenia tekstu w usłudze Translator 3,0: przykłady słownika
+# <a name="translator-text-api-30-dictionary-examples"></a>Translator Text API 3.0: Przykłady słownika
 
-Zawiera przykłady pokazujące, jak terminy w słowniku są używane w kontekście. Ta operacja jest używana wspólnie z funkcją [Lookup dictionary](./v3-0-dictionary-lookup.md).
+Zawiera przykłady, które pokazują, jak terminy w słowniku są używane w kontekście. Ta operacja jest używana w połączeniu z [wyszukiwaniem słownika](./v3-0-dictionary-lookup.md).
 
 ## <a name="request-url"></a>Adres URL żądania
 
-Wyślij żądanie `POST` do:
+Wyślij `POST` prośbę na:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.0
@@ -31,32 +31,32 @@ https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.
 
 ## <a name="request-parameters"></a>Parametry żądania
 
-Parametry żądania przesłane na ciągu zapytania są następujące:
+Parametry żądania przekazywane na ciąg zapytania są:
 
-| Parametr zapytania | Opis |
+| Parametr kwerendy | Opis |
 | --------- | ----------- |
-| api-version <img width=200/> | **Wymagany parametr**.<br/>Wersja interfejsu API żądana przez klienta. Wartość musi być `3.0`. |
-| z | **Wymagany parametr**.<br/>Określa język tekstu wejściowego. Język źródłowy musi być jednym z [obsługiwanych języków](./v3-0-languages.md) znajdujących się w zakresie `dictionary`. |
-| na | **Wymagany parametr**.<br/>Określa język tekstu wyjściowego. Język docelowy musi być jednym z [obsługiwanych języków](./v3-0-languages.md) uwzględnionych w zakresie `dictionary`.  | 
+| api-version <img width=200/> | **Wymagany parametr**.<br/>Wersja interfejsu API żądana przez klienta. Wartość musi `3.0`być . |
+| Z | **Wymagany parametr**.<br/>Określa język tekstu wejściowego. Język źródłowy musi być jednym z [obsługiwanych języków zawartych](./v3-0-languages.md) w `dictionary` zakresie. |
+| na | **Wymagany parametr**.<br/>Określa język tekstu wyjściowego. Język docelowy musi być jednym z [obsługiwanych języków zawartych](./v3-0-languages.md) w `dictionary` zakresie.  | 
 
 Nagłówki żądań obejmują:
 
 | Nagłówki  | Opis |
 | ------ | ----------- |
 | Nagłówki uwierzytelniania <img width=200/>  | **Wymagany nagłówek żądania**.<br/>Zobacz <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">dostępne opcje uwierzytelniania</a>. |
-| Content-Type | **Wymagany nagłówek żądania**.<br/>Określa typ zawartości ładunku. Możliwe wartości to: `application/json`. |
+| Content-Type | **Wymagany nagłówek żądania**.<br/>Określa typ zawartości ładunku. Możliwe wartości `application/json`to: . |
 | Długość zawartości   | **Wymagany nagłówek żądania**.<br/>Długość treści żądania. |
-| X-ClientTraceId   | **Opcjonalnie**.<br/>Wygenerowany przez klienta identyfikator GUID służący do unikatowej identyfikacji żądania. Możesz pominąć ten nagłówek, jeśli dołączysz identyfikator śledzenia w ciągu zapytania przy użyciu parametru zapytania o nazwie `ClientTraceId`. |
+| Identyfikator X-ClientTraceId   | **Opcjonalnie**.<br/>Identyfikator GUID wygenerowany przez klienta, aby jednoznacznie zidentyfikować żądanie. Ten nagłówek można pominąć, jeśli identyfikator śledzenia zostanie uwzględniony w `ClientTraceId`ciągu zapytania przy użyciu parametru kwerendy o nazwie . |
 
 ## <a name="request-body"></a>Treść żądania
 
 Treść żądania jest tablicą JSON. Każdy element tablicy jest obiektem JSON o następujących właściwościach:
 
-  * `Text`: ciąg określający termin do wyszukania. Powinna to być wartość pola `normalizedText` z przetłumaczeń z tyłu poprzedniego żądania [wyszukiwania słownika](./v3-0-dictionary-lookup.md) . Może to być również wartość pola `normalizedSource`.
+  * `Text`: Ciąg określający termin do wyszukiwania. Powinna to być wartość `normalizedText` pola z wstecznych tłumaczeń poprzedniego żądania [wyszukiwania słownika.](./v3-0-dictionary-lookup.md) Może to być również `normalizedSource` wartość pola.
 
-  * `Translation`: ciąg określający przetłumaczony tekst, który został wcześniej zwrócony przez operację [wyszukiwania słownika](./v3-0-dictionary-lookup.md) . Powinna to być wartość pola `normalizedTarget` na liście `translations` odpowiedzi [wyszukiwania słownika](./v3-0-dictionary-lookup.md) . Usługa zwróci przykłady dla określonej pary wyrazów dla docelowej lokalizacji źródłowej.
+  * `Translation`: Ciąg określający przetłumaczony tekst wcześniej [zwrócony](./v3-0-dictionary-lookup.md) przez operację wyszukiwania słownika. Powinna to być wartość `normalizedTarget` z `translations` pola na liście odpowiedzi [odnośnika słownika.](./v3-0-dictionary-lookup.md) Usługa zwróci przykłady dla pary wyrazów określonego źródła docelowego.
 
-Przykład:
+Przykładem jest:
 
 ```json
 [
@@ -64,45 +64,45 @@ Przykład:
 ]
 ```
 
-Mają zastosowanie następujące ograniczenia:
+Obowiązują następujące ograniczenia:
 
-* Tablica może zawierać co najwyżej 10 elementów.
-* Wartość tekstowa elementu tablicy nie może być dłuższa niż 100 znaków, w tym spacje.
+* Tablica może mieć co najwyżej 10 elementów.
+* Wartość tekstowa elementu tablicy nie może przekraczać 100 znaków, w tym spacji.
 
 ## <a name="response-body"></a>Treść odpowiedzi
 
-Pomyślna odpowiedź to tablica JSON z jednym wynikiem dla każdego ciągu w tablicy wejściowej. Obiekt wynikowy zawiera następujące właściwości:
+Pomyślna odpowiedź jest tablicą JSON z jednym wynikiem dla każdego ciągu w tablicy wejściowej. Obiekt wynikowy zawiera następujące właściwości:
 
-  * `normalizedSource`: ciąg dający znormalizowaną formę okresu źródłowego. Ogólnie rzecz biorąc powinna być taka sama jak wartość pola `Text` w indeksie zgodnej listy w treści żądania.
+  * `normalizedSource`: Ciąg dający znormalizowaną formę terminu źródłowego. Ogólnie rzecz biorąc powinno to być `Text` identyczne z wartością pola w indeksie listy dopasowania w treści żądania.
     
-  * `normalizedTarget`: ciąg dający znormalizowaną postać terminu docelowego. Ogólnie rzecz biorąc powinna być taka sama jak wartość pola `Translation` w indeksie zgodnej listy w treści żądania.
+  * `normalizedTarget`: Ciąg dający znormalizowaną formę terminu docelowego. Ogólnie rzecz biorąc powinno to być `Translation` identyczne z wartością pola w indeksie listy dopasowania w treści żądania.
   
-  * `examples`: Lista przykładów dla pary (termin źródłowy, termin docelowy). Każdy element listy jest obiektem o następujących właściwościach:
+  * `examples`: Lista przykładów pary (termin źródłowy, termin docelowy). Każdy element listy jest obiektem o następujących właściwościach:
 
-    * `sourcePrefix`: ciąg do łączenia _przed_ wartością `sourceTerm`, aby utworzyć kompletny przykład. Nie należy dodawać znaku spacji, ponieważ jest już tam, gdy powinien być. Ta wartość może być pustym ciągiem.
+    * `sourcePrefix`: Ciąg do łączenia _przed_ `sourceTerm` wartością w celu utworzenia pełnego przykładu. Nie dodawaj znaku spacji, ponieważ jest już tam, kiedy powinien być. Ta wartość może być pusty ciąg.
 
-    * `sourceTerm`: ciąg równy rzeczywistemu wyszukiwanemu okresowi. Ciąg zostanie dodany z `sourcePrefix` i `sourceSuffix`, aby utworzyć kompletny przykład. Jego wartość jest oddzielona, aby można było ją oznaczyć w interfejsie użytkownika, np. przez pogrubienie.
+    * `sourceTerm`: Ciąg równy rzeczywistemu terminowi spojrzał w górę. Ciąg jest dodawany z `sourcePrefix` i `sourceSuffix` tworzą pełny przykład. Jego wartość jest oddzielona, dzięki czemu można ją oznaczyć w interfejsie użytkownika, na przykład poprzez pogrubienie go.
 
-    * `sourceSuffix`: ciąg, który ma zostać połączony _po_ wartości `sourceTerm`, aby utworzyć kompletny przykład. Nie należy dodawać znaku spacji, ponieważ jest już tam, gdy powinien być. Ta wartość może być pustym ciągiem.
+    * `sourceSuffix`: Ciąg do łączenia _po_ `sourceTerm` wartości, aby utworzyć pełny przykład. Nie dodawaj znaku spacji, ponieważ jest już tam, kiedy powinien być. Ta wartość może być pusty ciąg.
 
-    * `targetPrefix`: ciąg podobny do `sourcePrefix`, ale dla elementu docelowego.
+    * `targetPrefix`: Ciąg podobny `sourcePrefix` do ale dla celu.
 
-    * `targetTerm`: ciąg podobny do `sourceTerm`, ale dla elementu docelowego.
+    * `targetTerm`: Ciąg podobny `sourceTerm` do ale dla celu.
 
-    * `targetSuffix`: ciąg podobny do `sourceSuffix`, ale dla elementu docelowego.
+    * `targetSuffix`: Ciąg podobny `sourceSuffix` do ale dla celu.
 
     > [!NOTE]
-    > Jeśli w słowniku nie ma przykładów, odpowiedź to 200 (OK), ale lista `examples` jest pustą listą.
+    > Jeśli w słowniku nie ma żadnych przykładów, odpowiedź wynosi 200 (OK), ale `examples` lista jest pustą listą.
 
 ## <a name="examples"></a>Przykłady
 
-Ten przykład pokazuje, jak odszukać przykłady dla pary składającej się z `fly` terminów w języku angielskim i `volar`tłumaczenia hiszpańskiego.
+W tym przykładzie pokazano, jak wyszukać przykłady `fly` dla pary `volar`składającej się z terminu angielskiego i jego tłumaczenia na język hiszpański .
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.0&from=en&to=es" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly', 'Translation':'volar'}]"
 ```
 
-Treść odpowiedzi (skróci do przejrzystości) to:
+Organ odpowiedzi (w skrócie dla jasności) jest:
 
 ```
 [

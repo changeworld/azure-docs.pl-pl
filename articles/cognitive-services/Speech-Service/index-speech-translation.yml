@@ -1,25 +1,24 @@
 ### YamlMime:Landing
 title: Dokumentacja tłumaczenia mowy
-summary: Tłumaczenie mowy z usługi mowy umożliwia korzystanie z funkcji zamiany mowy na mowę w czasie rzeczywistym i wielu języków
+summary: Tłumaczenie mowy z usługi Mowy umożliwia tłumaczenie strumieni audio w czasie rzeczywistym, wielojęzycznym i zamiany mowy na tekst
 metadata:
-  title: Dokumentacja funkcji tłumaczenia mowy — samouczki, dokumentacja interfejsu API — Azure Cognitive Services | Microsoft Docs
+  title: Dokumentacja tłumaczenia mowy — samouczki, informacje o interfejsie API — usługi Azure Cognitive Services | Dokumenty firmy Microsoft
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: 742b9710fc7ab396aa906c956d6809df9440c78e
-  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+  ms.openlocfilehash: 75f620d5210f5ba0dc61ac1c5be2f30aa23dea9c
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: MT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 03/14/2020
-  ms.locfileid: "79367979"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "79415330"
 landingContent:
-- title: Tłumaczenie mowy — informacje
+- title: Informacje o tłumaczeniu mowy
   linkLists:
   - linkListType: overview
     links:
@@ -33,7 +32,7 @@ landingContent:
       url: quickstarts/translate-speech-to-text-multiple-languages.md
     - text: Tłumaczenie mowy na mowę
       url: quickstarts/translate-speech-to-speech.md
-- title: Programowanie za pomocą tłumaczenia mowy
+- title: Rozwijanie za pomocą tłumaczenia mowy
   linkLists:
   - linkListType: learn
     links:
@@ -41,9 +40,9 @@ landingContent:
       url: https://docs.microsoft.com/learn/modules/convert-speech-to-text
   - linkListType: tutorial
     links:
-    - text: Tłumaczenie i syntezowanie tekstu przy użyciu interfejsów API REST
+    - text: Tłumaczenie i synteza tekstu za pomocą interfejsów API REST
       url: ../translator/tutorial-build-flask-app-translation-synthesis.md
-- title: Dokumentacja
+- title: Tematy pomocy
   linkLists:
   - linkListType: reference
     links:
@@ -51,5 +50,5 @@ landingContent:
       url: language-support.md#speech-translation
     - text: Często zadawane pytania dotyczące tłumaczenia mowy
       url: https://www.microsoft.com/translator/business/faq/
-    - text: Cennik tłumaczenia mowy
+    - text: Ceny tłumaczeń mowy
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/

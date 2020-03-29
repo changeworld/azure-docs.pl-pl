@@ -1,7 +1,7 @@
 ---
-title: Obsługa języków — interfejs API Content Moderator
+title: Obsługa języka — interfejs API moderatora zawartości
 titleSuffix: Azure Cognitive Services
-description: Jest to lista języków naturalnych obsługiwanych przez interfejs API platformy Azure Cognitive Services Content Moderator.
+description: Jest to lista języków naturalnych, które obsługuje interfejs API moderatora zawartości usług Azure Cognitive Services.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,119 +11,119 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 9574af31c881589668c462099cae46d9e83b454b
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73744367"
 ---
-# <a name="language-support-for-content-moderator-api"></a>Obsługa języka dla interfejsu API Content Moderator
+# <a name="language-support-for-content-moderator-api"></a>Obsługa języka interfejsu API moderatora zawartości
 
 > [!NOTE]
-> W polu parametr **języka** Przypisz `eng` lub pozostaw to pole puste, aby wyświetlić odpowiedź **klasyfikacji** z obsługą maszyn (funkcja w wersji zapoznawczej). **Ta funkcja obsługuje tylko język angielski**.
+> Dla **language** parametru języka `eng` przypisz lub pozostaw go pusty, aby wyświetlić odpowiedź **klasyfikacji** wspomaganej maszynowo (funkcja podglądu). **Ta funkcja obsługuje tylko język angielski**.
 >
-> W przypadku wykrywania **warunków wulgarnych** Użyj [kodu ISO 639-3](http://www-01.sil.org/iso639-3/codes.asp) dla obsługiwanych języków wymienionych w tym artykule lub pozostaw to pole puste.
+> W przypadku wykrywania **wulgaryzmów** należy użyć [kodu ISO 639-3](http://www-01.sil.org/iso639-3/codes.asp) obsługiwanych języków wymienionych w tym artykule lub pozostawić go pustym.
 
 
-| Wykrywanie języka | Wulgaryzmów   | OCR    | Funkcja Autokorekty     |
+| Wykrywanie języka | Wulgaryzmy   | OCR    | Automatyczna korekta     |
 | -------------------- |-------------|--------|---------------------|
-| Arabski (łaciński)   | Afrikaans   | Arabski   | Arabski |
-| Balinese | Albański | Chiński (uproszczony)    | Duński |
-| Bengalski | Amharski | Chiński (tradycyjny)     | Holenderski |
-| Buginese | Arabski | Czeski                     | Polski |
-| Buhid | Armeński | Duński                     | Fiński |
-| Carian | Assamski | Holenderski                     | Francuski |
-| Chiński (uproszczony) | Azerbejdżański | Polski  | Grecki (nowoczesny) |
-| Chiński (tradycyjny) | Bengalski — Bangladesz | Fiński  | Włoski |
-| Staro cerkiewno (słowiański) | Bengalski — Indie | Francuski     | Koreański |
-| Coptic | Baskijski | Niemiecki                      | Norweski |
+| Arabski (romanized)   | Afrikaans   | Arabski   | Arabski |
+| Balijski | Albański | Chiński uproszczony    | duński |
+| Bengalski | Amharski | Chiński (tradycyjny)     | Niderlandzki |
+| Buginese (buginese) | Arabski | Czeski                     | Polski |
+| Buhid (Buhid) | Armeński | duński                     | fiński |
+| Carian (Carian) | Assamese | Niderlandzki                     | Francuski |
+| Chiński uproszczony | Azerski | Polski  | Grecki (nowoczesny) |
+| Chiński (tradycyjny) | Bangla - Bangladesz | fiński  | Włoski |
+| Kościół (słowiański) | Bangla - Indie | Francuski     | Koreański |
+| Koptyjski | Baskijski | Niemiecki                      | Norweski |
 | Czeski |  Białoruski | Grecki (nowoczesny)         | Polski |
-| Dhivehi | Bośniacki (cyrylica) | Węgierski      | Portugalski |
-| Holenderski | Bośniacki — łaciński | Włoski             | Rumuński |
-| Angielski (haitański) | Bretoński [GeoPol] | Japoński  | Rosyjski |
-| Perski | Bułgarski | Koreański                        | Słowacki |
+| Diwehi | Bośniacki - cyrylica | węgierski      | Portugalski |
+| Niderlandzki | Bośniacki - łaciński | Włoski             | Rumuński |
+| Angielski (kreolskiego) | Breton [non-GeoPol] | Japoński  | Rosyjski |
+| Farsi | Bułgarski | Koreański                        | Słowacki |
 | Francuski | Kataloński | Norweski                        | Hiszpański |
-| Niemiecki | Kurdyjski centralny | Polski        | Turecki |
-| Grecki | Czirokeski | Portugalski | |
-| Kreolski | Chiński (uproszczony) | Rumuński | |
-| Hebrajski | Chiński (tradycyjny) — Hongkong SAR | Rosyjski | |
-| Hindi | Chiński (tradycyjny) — Tajwan | Serbski (cyrylica) | |
-| Hmong | Chorwacki | Serbski (łaciński) | |
-| Węgierski | Czeski | Słowacki | |
-| Włoski | Duński | Hiszpański | |
-| Japoński | Dari | Szwedzki | |
-| Koreański | Holenderski | Turecki | |
+| Niemiecki | Centralny Kurdyjski | Polski        | Turecki |
+| grecki | Cherokee | Portugalski | |
+| Haiti | Chiński uproszczony | Rumuński | |
+| Hebrajski | Chiński (tradycyjny) - Hong Kong SAR | Rosyjski | |
+| Hindi | Chiński (tradycyjny) - Tajwan | Serbska cyrylica | |
+| Hmong | Chorwacki | Serbska łacina | |
+| węgierski | Czeski | Słowacki | |
+| Włoski | duński | Hiszpański | |
+| Japoński | Dari | szwedzki | |
+| Koreański | Niderlandzki | Turecki | |
 | Kurdyjski (arabski) | Polski | | |
 | Kurdyjski (łaciński) | Estoński | | |
-| Lepcha | Filipiński | | |
-| Limbu | Fiński | | |
+| Okręg wyborczy Lepcha | Filipino | | |
+| Limbu ( Limbu ) | fiński | | |
 | Lu | Francuski | | |
 | Lycian | Galicyjski | | |
-| Lydian | Gruziński | | |
-| Mycenaean (grecki) | Niemiecki | | |
-| Nko | Grecki | | |
+| Lydian (Lydian) | Gruziński | | |
+| Mykeński (grecki) | Niemiecki | | |
+| Nko (nko) | grecki | | |
 | Norweski (Bokmal) | Gudżarati | | |
-| Norweski (Nynorsk) |  Haus | | |
+| Norweski (Nynorsk) |  Hausa | | |
 | Stary (perski) | Hebrajski | | |
 | Paszto | Hindi | | |
-| Polski | Węgierski | | |
+| Polski | węgierski | | |
 | Portugalski | Islandzki | | |
 | Pendżabski | Igbo | | |
-| Rejang | Indonezyjski | | |
+| Rejang ( Rejang ) | Indonezyjski | | |
 | Rosyjski | Inuktitut | | |
-| Santali | Irlandzki | | |
-| Sasak | isiXhosa | | |
-| Saurashtra | isiZulu | | |
-| Serbski (Cyrylica) | Włoski | | |
+| Santali (Santali) | Irlandzki | | |
+| Sasak ( Sasak ) | isiXhosa | | |
+| Saurashtra ( Saurashtra ) | isiZulu ( isiZulu ) | | |
+| Serbski (cyrylica) | Włoski | | |
 | Serbski (łaciński) | Japoński | | |
 | Syngaleski | Kannada | | |
 | Słoweński | Kazachski | | |
-| Hiszpański | Khmerski | | |
-| Szwedzki | Kicze | | |
-| Sylheti | Kinjarwanda | | |
-| Języka | Kiswahili | | |
-| Tagbanwa | Konkani | | |
+| Hiszpański | Khmer | | |
+| szwedzki | K'iche ( K'iche ) | | |
+| Sylheti ( Sylheti ) | Kinyarwanda | | |
+| Syryjski | Kiswahili | | |
+| Tagbanwa ( Tagbanwa ) | Konkani | | |
 | Tai (Nua) | Koreański | | |
-| Tamashek | Kirgiski | | |
-| Turecki | - | | |
-| Ugaritic | Łotewski | | |
+| Tamashek (Tamashek) | Kirgiski | | |
+| Turecki | Lao | | |
+| Ugaritic (ugaritic) | Łotewski | | |
 | Uzbecki (Cyrylica) | Litewski | | |
-| Uzbecki (łaciński) | Luksemburski | | |
-| Vai | Macedonii | | |
+| Uzbeckie (łaciński) | Luksemburski | | |
+| Vai | Macedoński | | |
 | Yi | Malajski | | |
-| Czuang, Czuang | Malayalam | | |
+| Zhuang , Chuang | Malayalam | | |
 | | Maltański | | |
 | | Maoryjski | | |
 | | Marathi | | |
 | | Mongolski | | |
 | | Nepalski | | |
-| | Norweski (bokmål) | | |
+| | Norweski (Bokmål) | | |
 | | Norweski (Nynorsk) | | |
-| | Odia | | |
+| | Odia (Odia) | | |
 | | Paszto | | |
 | | Perski | | |
 | | Polski | | |
 | | Portugalski (Brazylia) | | |
 | | Portugalski (Portugalia) | | |
-| | Pulaar | | |
+| | Pulaar ( Pulaar ) | | |
 | | Pendżabski | | |
 | | Pendżabski (Pakistan) | | |
-| | Keczua (Peru) | | |
+| | Quechua (Peru) | | |
 | | Rumuński | | |
 | | Rosyjski | | |
 | | Szkocki gaelicki | | |
-| | Serbski (Cyrylica) | | |
-| | Serbski (cyrylica, Bośnia i Hercegowina) | | |
+| | Serbski (cyrylica) | | |
+| | serbski (cyrylica, Bośnia i Hercegowina) | | |
 | | Serbski (łaciński) | | |
-| | Języka | | |
-| | Sesotho północny | | |
+| | Sesotho | | |
+| | Sesotho sa Leboa | | |
 | | Setswana | | |
 | | Sindhi | | |
 | | Syngaleski | | |
 | | Słowacki | | |
 | | Słoweński | | |
 | | Hiszpański | | |
-| | Szwedzki | | |
+| | szwedzki | | |
 | | Tadżycki | | |
 | | Tamilski | | |
 | | Tatarski | | |
@@ -136,7 +136,7 @@ ms.locfileid: "73744367"
 | | Urdu | | |
 | | Ujgurski | | |
 | | Uzbecki | | |
-| | Walencki | | |
+| | Walencji | | |
 | | Wietnamski | | |
 | | Walijski | | |
 | | Wolof | | |

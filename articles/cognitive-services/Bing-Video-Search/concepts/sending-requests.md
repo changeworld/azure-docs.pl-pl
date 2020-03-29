@@ -1,5 +1,5 @@
 ---
-title: Wysyłaj żądania wyszukiwania do interfejs API wyszukiwania wideo Bing
+title: Wysyłanie żądań wyszukiwania do interfejsu API wyszukiwania wideo usługi Bing
 titleSuffix: Azure Cognitive Services
 description: W tym artykule opisano parametry i atrybuty żądań wysyłanych do interfejsu API wyszukiwania wideo Bing, a także zwracany przez ten interfejs obiekt odpowiedzi JSON.
 services: cognitive-services
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: aahi
 ms.openlocfilehash: b27aa1409d543c157069d2701c49ef54a097e552
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79220293"
 ---
 # <a name="sending-search-requests-to-the-bing-video-search-api"></a>Wysyłanie żądań wyszukiwania do interfejsu API wyszukiwania wideo Bing
@@ -51,7 +51,7 @@ Zalecamy, aby wszystkie żądania pochodziły z serwera. Dystrybuowanie klucza w
 -   [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#clientip)  
 -   [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#location)  
 
-Nagłówki lokalizacji i adresu IP klienta są ważne w przypadku, gdy ma być zwracana zawartość zależna od lokalizacji.  
+Nagłówki adresu IP klienta i lokalizacji są ważne z punktu widzenia zwracania zawartości odpowiedniej dla danej lokalizacji.  
 
 Aby uzyskać listę wszystkich nagłówków żądań i odpowiedzi, zobacz [Nagłówki](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#headers).
 

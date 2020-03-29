@@ -1,7 +1,7 @@
 ---
-title: Weryfikowanie wyodrębnianie kluczowych fraz wystąpienia kontenera
+title: Sprawdź wystąpienie kontenera wyodrębniania frazy kluczowej
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak zweryfikować wystąpienie kontenera wyodrębnianie kluczowych fraz.
+description: Dowiedz się, jak zweryfikować wystąpienie kontenera wyodrębniania fraz kluczowych.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,22 +10,22 @@ ms.topic: include
 ms.date: 09/12/2019
 ms.author: dapine
 ms.openlocfilehash: 1e2001c1f4cb2da195a3dcd0ca8fe198de8dd264
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "70968599"
 ---
-### <a name="verify-the-key-phrase-extraction-container-instance"></a>Weryfikowanie wyodrębnianie kluczowych fraz wystąpienia kontenera
+### <a name="verify-the-key-phrase-extraction-container-instance"></a>Sprawdź wystąpienie kontenera wyodrębniania frazy kluczowej
 
 1. Wybierz kartę **Przegląd** i skopiuj adres IP.
-1. Otwórz nową kartę przeglądarki, a następnie wprowadź adres IP. Na przykład wpisz `http://<IP-address>:5000 (http://55.55.55.55:5000`). Zostanie wyświetlona strona główna kontenera, która informuje o tym, że kontener jest uruchomiony.
+1. Otwórz nową kartę przeglądarki i wprowadź adres IP. Na przykład `http://<IP-address>:5000 (http://55.55.55.55:5000`wprowadź ). Zostanie wyświetlona strona główna kontenera, która informuje, że kontener jest uruchomiony.
 
     ![Wyświetl stronę główną kontenera, aby sprawdzić, czy jest uruchomiona](../media/how-tos/container-instance/swagger-docs-on-container.png)
 
-1. Wybierz link **opis interfejsu API usługi** , aby przejść do strony struktury Swagger kontenera.
+1. Wybierz **łącze Opis interfejsu API usługi,** aby przejść do strony Swagger kontenera.
 
-1. Wybierz dowolny z **wpisów** interfejsów API, a następnie wybierz opcję **Wypróbuj**. Wyświetlane są parametry, które obejmują następujące przykładowe dane wejściowe:
+1. Wybierz dowolny z **interfejsów** API POST i wybierz pozycję **Wypróbuj**. Wyświetlane są parametry, które obejmują ten przykładowy wkład:
 
     ```json
     {
@@ -64,13 +64,13 @@ ms.locfileid: "70968599"
     }
     ```
 
-1. Ustaw wartość showStats `true`na.
+1. Ustaw **showStats** na `true`.
 
-1. Wybierz pozycję **Execute (wykonaj** ), aby określić tonacji tekstu.
+1. Wybierz **polecenie Wykonaj,** aby określić tonację tekstu.
 
-    Model, który znajduje się w kontenerze, generuje wynik, który mieści się w zakresie od 0 do 1, gdzie 0 jest ujemna i 1 jest dodatnia.
+    Model, który jest pakowany w kontenerze generuje wynik, który waha się od 0 do 1, gdzie 0 jest ujemna, a 1 jest dodatnia.
 
-    Zwracana odpowiedź JSON zawiera tonacji dla zaktualizowanych danych wejściowych tekstu:
+    Zwracana odpowiedź JSON zawiera tonację dla zaktualizowanego wprowadzania tekstu:
 
     ```json
     {
@@ -100,4 +100,4 @@ ms.locfileid: "70968599"
     }
     ```
 
-Teraz można skorelować dokument `id` danych JSON ładunku odpowiedzi do oryginalnego dokumentu `id`ładunku żądania. Dokument z wynikiem zawiera `keyPhrases` tablicę zawierającą listę fraz kluczowych, które zostały wyodrębnione z odpowiedniego dokumentu wejściowego. Ponadto istnieją różne statystyki, takie jak `characterCount` i `transactionCount` dla każdego uzyskanego dokumentu.
+Możemy teraz skorelować `id` dokument danych JSON ładunku odpowiedzi z oryginalnym `id`dokumentem ładunku żądania . Wynikowy dokument ma `keyPhrases` tablicę, która zawiera listę fraz kluczowych, które zostały wyodrębnione z odpowiedniego dokumentu wejściowego. Ponadto istnieją różne statystyki, takie `characterCount` `transactionCount` jak i dla każdego wynikowego dokumentu.

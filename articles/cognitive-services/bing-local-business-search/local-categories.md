@@ -1,7 +1,7 @@
 ---
-title: Kategorie wyszukiwania dla interfejsu API wyszukiwania lokalnego usługi Bing
+title: Kategorie wyszukiwania interfejsu API wyszukiwania lokalnego firmy Bing
 titleSuffix: Azure Cognitive Services
-description: Skorzystaj z tego artykułu, aby dowiedzieć się, jak określić kategorie wyszukiwania dla punktu końcowego interfejsu API wyszukiwania w usłudze Bing Local Business.
+description: Ten artykuł służy do określania kategorii wyszukiwania dla punktu końcowego interfejsu API wyszukiwania lokalnego firmy Bing.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,79 +11,79 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
 ms.openlocfilehash: 56b94d66eb0929d2fd0ca74a1a631d229330adfa
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "69906393"
 ---
-# <a name="search-categories-for-the-bing-local-business-search-api"></a>Kategorie wyszukiwania dla interfejsu API wyszukiwania lokalnego usługi Bing
+# <a name="search-categories-for-the-bing-local-business-search-api"></a>Kategorie wyszukiwania interfejsu API wyszukiwania lokalnego firmy Bing
 
-Interfejs API wyszukiwania lokalnego usługi Bing pozwala wyszukiwać lokalne jednostki biznesowe w różnych kategoriach z priorytetem dla wyników zamknięcia lokalizacji użytkownika. Można uwzględnić te wyszukiwania w wyszukiwaniach wraz z `localCircularView` parametrami `localMapView` i. [](specify-geographic-search.md)
+Interfejs API wyszukiwania lokalnej firmy Bing umożliwia wyszukiwanie lokalnych jednostek biznesowych w różnych kategoriach, przy czym priorytet nadano wynikom zamknięcia lokalizacji użytkownika. Wyszukiwania te można uwzględnić w `localCircularView` `localMapView` wyszukiwaniach wraz z parametrami i [parametrami](specify-geographic-search.md).
 
 
-## <a name="toplevel-categories"></a>Kategorie TopLevel 
+## <a name="toplevel-categories"></a>Kategorie Najwyższej klasy 
 
-Poniższe typy definiują główne kategorie wyszukiwania.  Za pomocą listy rozdzielanej przecinkami przypisanej do `localCategories` parametru można określić więcej niż jedną kategorię.  
-- EatDrink 
-- SeeDo 
+Następujące typy definiują główne kategorie wyszukiwania.  Więcej niż jedną kategorię można określić za pomocą listy rozdzielanych przecinkami przypisanej do parametru. `localCategories`  
+- EatDrink (Niem. 
+- ZobaczDo 
 - Sklep 
-- HotelsAndMotels 
-- BanksAndCreditUnions 
-- Przy 
-- Budowy 
+- HoteleAndMotels 
+- BankiAndCreditUnions 
+- Parking 
+- Szpitale 
 
 ## <a name="sub-categories"></a>Podkategorie
-Podkategorie są przesyłane w taki sam sposób `localCategories`jak w przypadku. Podkategorie są bardziej szczegółowymi kategoriami. Są one podwładnymi w sensie, że jeśli określisz kategorię C i jedną z jej podkategorii S w tej samej liście rozdzielanej przecinkami, otrzymasz te same wyniki, co w przypadku, gdy określono tylko znak C.
+Podkategorie są przekazywane w `localCategories`taki sam sposób jak . Podkategorie są bardziej szczegółowe kategorie. Są one podporządkowane w tym sensie, że jeśli określisz kategorię C i jedną z jej podkategorii S na tej samej liście rozdzielanych przecinkami, otrzymasz takie same wyniki, jak w przypadku określenia tylko C.
 
-### <a name="eat-drink"></a>Napój Eat 
+### <a name="eat-drink"></a>Jedz drinka 
 |  |  |  |  |
 | - | - | - | - |
-| BreweriesAndBrewPubs | CocktailLounges | AfricanRestaurants |
-| AmericanRestaurants | Bagels | BarbecueRestaurants |
-| Taverns | SportsBars | Barach |
-| BarsGrillsAndPubs | BuffetRestaurants| BelgianRestaurants | 
-| BritishRestaurants | CafeRestaurants | CaribbeanRestaurants |
-| ChineseRestaurants | CoffeeAndTea | Delicatessens | 
-| DeliveryService | Diners | DiscountStores | 
-| Donuts | FastFood | FrenchRestaurants | 
-| FrozenYogurt | GermanRestaurants | Supermarkets | 
-| GreekRestaurants | Artykuły spożywcze | HawaiianRestaurants | 
-| HungarianRestaurants | IceCreamAndFrozenDesserts | IndianRestaurants | 
-| ItalianRestaurants | JapaneseRestaurants | Soki | 
-| KoreanRestaurants | LiquorStores | MexicanRestaurants |
-| MiddleEasternRestaurants | Pizza | PolishRestaurants | 
-| PortugueseRestaurants | Pretzels | Restauracje | 
-| RussianAndUkrainianRestaurants | Sandwiches | SeafoodRestaurants | 
-| SpanishRestaurants | SteakHouseRestaurants | SushiRestaurants | 
-| Wnioskiem | ThaiRestaurants | TurkishRestaurants | 
-| VegetarianAndVeganRestaurants | VietnameseRestaurants|  |
+| BrowaryAndBrewPubs | CocktailLounges (Koktajle) | Afrykańskierestauraty |
+| AmerykańskieRestauraty | Bajgle | Restauraty do grillowania |
+| Tawern | Bary sportowe | Bary |
+| BarsGrillsAndPubs | BuffetRestaurants| BelgijskiRestauraty | 
+| BrytyjskieRestauraty | CafeRestaurants | KaraibyRestaurants |
+| ChińskieRestauraty | KawaAndTea | Delicatessens | 
+| Usługa doręczenia | Diner amerykański | Sklepy ze zniżkami | 
+| Pączki | Fastfood | FrancuskieRestauraty | 
+| MrożoneJgurt | NiemieckieRestauraty | Artykuły spożywcze | 
+| GreckiRestauratory | Sklep spożywczy | HawajskieRestauranty | 
+| WęgierskiRestauraty | LodyAndFrozenDesserts | Indyjskirestauratory | 
+| WłoskiRestauraty | Japońskirestauraty | Soki | 
+| Koreańskirestauratory | LiquorStores ( LiquorStores ) | MeksykańskieRestauranty |
+| MiddleEasternRestaurants | Pizza | PolskieRestauraty | 
+| PortugalskiRestauranty | Precle | Restauracje | 
+| RussianAndUkrainianRestaurants (Rosjanie III- ukraińskierestauraty) | Kanapki | Owoce morzaRestauraty | 
+| HiszpańskiRestauratory | SteakHouseRestauraty | SushiRestaurants | 
+| Fast food | TajskiRestauraty | Tureckirestauranty | 
+| Wegetariańskie iveganrestauranty | WietnamskiRestauranty|  |
  
-### <a name="see-do"></a>Zobacz zrobić 
+### <a name="see-do"></a>Zobacz Do 
 |  |  |  |
 | -- | -- | -- |
-| AmusementParks | Attractions | Carnivals |
-| Casinos | LandmarksAndHistoricalSites | MiniatureGolfCourses |
-| MovieTheaters | Muzea | Parki |
-| SightseeingTours | TouristInformation | Ogrod |
+| Parki rozrywki | Atrakcji | Karnawał |
+| Kasyna | Punkty orientacyjneAndHistoricalSites | Miniaturowe Courses |
+| MovieTheaters (Teaters) | Muzea | Parki |
+| Wycieczki | Informacje turystyczne | Ogrody zoologiczne |
  
 ### <a name="shop"></a>Sklep 
 |  |  |  |
 | -- | -- | -- |
-| AntiqueStores | Bookstores | CDAndRecordStores |
-| ChildrensClothingStores | CigarAndTobaccoShops | ComicBookStores |
-| DepartmentStores | DiscountStores | FleaMarketsAndBazaars |
-| FurnitureStores | HomeImprovementStores | JewelryAndWatchesStores |
-| KitchenwareStores | LiquorStores | MallsAndShoppingCenters |
-| MensClothingStores | MusicStores | OutletStores |
-| PetShops | PetSupplyStores | SchoolAndOfficeSupplyStores |
-| ShoeStores | SportingGoodsStores | ToyAndGameStores |
-| VitaminAndSupplementStores | WomensClothingStores |  |
+| Sklepy z antykami | Księgarnie | CdAndRecordSklepy |
+| DzieciSklei | CygaraAndTobaccoSklepów | Sklepy z komiksami |
+| Sklepy departmentstores | Sklepy ze zniżkami | FleaMarketsAndBazaars |
+| MebleSklepy | Strona głównaImprovementStores | BiżuteriaIWatchesSsedy |
+| Naczynia kuchenneSklepy | LiquorStores ( LiquorStores ) | Centra handloweIcentra handlowe |
+| Odzież męskaSklepy | Sklepy muzyczne | OutletSklepy |
+| Sklepy pet | PetSupplySklepy | SchoolAndOfficeSupplyStores |
+| Sklepy obuwnicze | SportingGoodsSklepy | Sklepy z toyandgamestores |
+| VitaminAndSupplementSkleje | DamskieSklepy |  |
 
 
-## <a name="examples-of-local-categories-search"></a>Przykłady lokalnych kategorii wyszukiwania
+## <a name="examples-of-local-categories-search"></a>Przykłady wyszukiwania kategorii lokalnych
 
-Poniższe przykłady pobierają wyniki zgodnie `localCategories` z parametrem:
+Następujące przykłady get wyniki `localCategories` zgodnie z parametrem:
 
 `https://api.cognitive.microsoft.com/localbusinesses/v7.0/search?&q=&mkt=en-US&localcategories=HotelsAndMotels`
 
@@ -93,11 +93,11 @@ Poniższe przykłady pobierają wyniki zgodnie `localCategories` z parametrem:
 
 `https://api.cognitive.microsoft.com/localbusinesses/v7.0/search?&q=&mkt=en-US&localcategories=Hospitals`
 
-Następujące zapytanie ogranicza liczbę wyników "Szpital" do pierwszych trzech zwróconych z interfejsu API lokalnego wyszukiwania biznesowego Bing:
+Następujące zapytanie ogranicza liczbę wyników "szpitalnych" do pierwszych trzech zwróconych z interfejsu API wyszukiwania lokalnego firmy Bing:
 
 `https://api.cognitive.microsoft.com/localbusinesses/v7.0/search?&q=&mkt=en-US&localCategories=Hospitals&count=3&offset=0`
 
-Następująca przykładowa odpowiedź JSON obejmuje trzy Szpitale w większym obszarze Seattle:
+Poniższa przykładowa odpowiedź JSON obejmuje trzy szpitale w większym obszarze Seattle:
 
 ```json
 BingAPIs-TraceId: 68AFB51807C6485CAB8AAF20E232EFFF
@@ -219,4 +219,4 @@ X-MSEdge-Ref: Ref A: 68AFB51807C6485CAB8AAF20E232EFFF Ref B: CO1EDGE0108 Ref C: 
 ## <a name="next-steps"></a>Następne kroki
 - [Granice wyszukiwania geograficznego](specify-geographic-search.md)
 - [Zapytanie i odpowiedź](local-search-query-response.md)
-- [Szybki Start wC#](quickstarts/local-quickstart.md)
+- [Szybki start w języku C #](quickstarts/local-quickstart.md)

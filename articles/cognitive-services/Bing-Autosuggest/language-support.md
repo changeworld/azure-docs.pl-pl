@@ -1,7 +1,7 @@
 ---
-title: Obsługa języków — interfejs API automatycznego sugerowania Bing
+title: Obsługa języka — interfejs API autosuggest usługi Bing
 titleSuffix: Azure Cognitive Services
-description: Lista obsługiwanych językach i regionach dla interfejsu API automatycznego sugerowania Bing.
+description: Lista obsługiwanych języków i regionów interfejsu API autosugestywowania Bing.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,38 +11,38 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fe2e78501024983544b399762fb936d86e5c9d5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "60547340"
 ---
-# <a name="language-and-region-support-for-the-bing-autosuggest-api"></a>Obsługa języka i regionu dla interfejsu API automatycznego sugerowania Bing
+# <a name="language-and-region-support-for-the-bing-autosuggest-api"></a>Obsługa języka i regionu dla interfejsu API automatycznego przełączania mapowania usługi Bing
 
-Poniższa lista zawiera języki obsługiwane przez interfejs API automatycznego sugerowania Bing.
+Poniżej wymieniono języki obsługiwane przez interfejs API autosuggest usługi Bing.
 
 | Język    | Kod języka |
 |:----------- |:-------------:|
 | Arabski      | `ar`          |
-| Chiński (Chińskiej Republiki Ludowej)     | `zh-CN`          |
-| Chiński (SRA Hongkong)    | `zh-HK`          |
+| Chiński (Chińska Republika Ludowa)     | `zh-CN`          |
+| Chiński (Hongkong SAR)    | `zh-HK`          |
 | Chiński (Tajwan)     | `zh-TW`          |
-| Duński      | `da`          |
+| duński      | `da`          |
 | Holenderski (Belgia)       | `nl-BE`          |
-| Holenderski (Holandia)      | `nl-NL`          |
+| Niderlandzki (Holandia)      | `nl-NL`          |
 | Angielski (Australia)    | `en-AU`          |
 | Angielski (Kanada)     | `en-CA`          |
-| English (India)    | `en-IN`          |
+| Angielski (Indie)    | `en-IN`          |
 | Angielski (Indonezja)     | `en-ID`          |
 | Angielski (Malezja)     | `en-MY`          |
 | Angielski (Nowa Zelandia)    | `en-NZ`          |
 | Angielski (Filipiny)     | `en-PH`          |
-| Angielski (RPA)    | `en-ZA`          |
+| Angielski (Republika Południowej Afryki)    | `en-ZA`          |
 | Angielski (Zjednoczone Królestwo)    | `en-GB`          |
 | Angielski (Stany Zjednoczone)    | `en-US`          |
-| Fiński     | `fi`          |
+| fiński     | `fi`          |
 | Francuski (Belgia)     | `fr-BE`          |
-| Francuski (Kanada)     | `fr-CA`          |
+| francuski (Kanada)     | `fr-CA`          |
 | Francuski (Francja)     | `fr-FR`          |
 | Francuski (Szwajcaria)      | `fr-CH`          |
 | Niemiecki (Austria)      | `de-AT`          |
@@ -53,18 +53,18 @@ Poniższa lista zawiera języki obsługiwane przez interfejs API automatycznego 
 | Koreański      | `ko`          |
 | Norweski   | `no`          |
 | Polski      | `pl`          |
-| Portugalski (Brazylia)   | `pt-BR`|
+| portugalski (Brazylia)   | `pt-BR`|
 | Portugalski (Portugalia) | `pt-PT`|
 | Rosyjski     | `ru`          |
 | Hiszpański (Argentyna)    | `es-AR`          |
 | Hiszpański (Chile)     | `es-CL`          |
 | Hiszpański (Meksyk)    | `es-MX`          |
-| Hiszpański (Hiszpania)    | `es-ES`          |
+| hiszpański (Hiszpania)    | `es-ES`          |
 | Hiszpański (Stany Zjednoczone)    | `es-US`          |
-| Szwedzki     | `sv`          |
+| szwedzki     | `sv`          |
 | Turecki     | `tr`          |
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
-- [Strona dokumentacja usług Cognitive Services w portalu Azure](https://docs.microsoft.com/azure/cognitive-services/)
-- [Strona produktu usługi Cognitive Services usługi Azure](https://azure.microsoft.com/services/cognitive-services/)
+- [Strona Dokumentacja usług Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)
+- [Strona produktu usługi Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)

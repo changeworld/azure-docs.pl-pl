@@ -1,7 +1,7 @@
 ---
-title: Ograniczenia kontenera — LUIS
+title: Ograniczenia kontenera — USŁUGA LUIS
 titleSuffix: Azure Cognitive Services
-description: Obsługiwane języki kontenera LUIS.
+description: Obsługiwane języki kontenerów usługi LUIS.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -11,55 +11,55 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
 ms.openlocfilehash: bd8a7a63113bcf4e972ab08655aa58b35ddff03d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73507859"
 ---
-# <a name="language-understanding-luis-container-limitations"></a>Ograniczenia dotyczące kontenerów Language Understanding (LUIS)
+# <a name="language-understanding-luis-container-limitations"></a>Ograniczenia kontenera rozumienia języka (LUIS)
 
-Kontenery LUIS mają kilka istotnych ograniczeń. W przypadku nieobsługiwanych zależności, w tym artykule szczegółowo opisano te ograniczenia.
+Kontenery usługi LUIS mają kilka istotnych ograniczeń. Od nieobsługiwał zależności do podzbioru obsługiwanych języków, w tym artykule opisano te ograniczenia.
 
-## <a name="supported-dependencies-for-latest-container"></a>Obsługiwane zależności dla kontenera `latest`
+## <a name="supported-dependencies-for-latest-container"></a>Obsługiwane zależności dla `latest` kontenera
 
-Najnowszy kontener LUIS, wydawany w [//build/2019](https://news.microsoft.com/build2019/), będzie obsługiwał:
+Najnowszy kontener usługi LUIS, wydany w [//build/ 2019,](https://news.microsoft.com/build2019/)będzie obsługiwał:
 
-* [Nowe prebudowane domeny](luis-reference-prebuilt-domains.md): te domeny ukierunkowane na przedsiębiorstwa obejmują jednostki, przykładowe wyrażenia długości i wzorce. Rozwiń te domeny do własnych potrzeb.
+* [Nowe wstępnie utworzone domeny:](luis-reference-prebuilt-domains.md)te domeny skoncentrowane na przedsiębiorstwie obejmują jednostki, przykładowe wypowiedzi i wzorce. Rozszerz te domeny na własny użytek.
 
-## <a name="unsupported-dependencies-for-latest-container"></a>Nieobsługiwane zależności dla kontenera `latest`
+## <a name="unsupported-dependencies-for-latest-container"></a>Nieobsługiwały zależności `latest` kontenera
 
-Aby [wyeksportować kontener](luis-container-howto.md#export-packaged-app-from-luis), należy usunąć nieobsługiwane zależności z aplikacji Luis. Podczas próby eksportowania dla kontenera Portal LUIS zgłasza te Nieobsługiwane funkcje, które należy usunąć.
+Aby [wyeksportować do kontenera,](luis-container-howto.md#export-packaged-app-from-luis)należy usunąć nieobsługiwał zależności z aplikacji usługi LUIS. Podczas próby wyeksportowania do kontenera, portal usługi LUIS raportuje te nieobsługiwały funkcje, które należy usunąć.
 
-Aplikacji LUIS można użyć, jeśli **nie zawiera** ona żadnych z następujących zależności:
+Aplikacji usługi LUIS można użyć, jeśli **nie zawiera** ona żadnej z następujących zależności:
 
-Nieobsługiwane konfiguracje aplikacji|Szczegóły|
+Nieobsługiwały konfiguracje aplikacji|Szczegóły|
 |--|--|
-|Nieobsługiwane kultury kontenerów| Holenderski (`nl-NL`)<br>Japoński (`ja-JP`)<br>Język niemiecki jest obsługiwany tylko w przypadku [1.0.2 tokenizatora](luis-language-support.md#custom-tokenizer-versions).|
-|Nieobsługiwane jednostki dla wszystkich kultur|Wstępnie utworzona jednostka [KeyPhrase](luis-reference-prebuilt-keyphrase.md) dla wszystkich kultur|
-|Nieobsługiwane jednostki dla kultury angielskiej (`en-US`)|Wstępnie skompilowane jednostki [GeographyV2](luis-reference-prebuilt-geographyV2.md)|
-|Napełnianiu mowy|Zależności zewnętrzne nie są obsługiwane w kontenerze.|
+|Nieobsługiwały kultury kontenerów| holenderski`nl-NL`( )<br>Japoński`ja-JP`( )<br>Niemiecki jest obsługiwany tylko z [tokenizatorem 1.0.2](luis-language-support.md#custom-tokenizer-versions).|
+|Nieobsługiwały się jednostki dla wszystkich kultur|Wstępnie skompilowana encja [KeyPhrase](luis-reference-prebuilt-keyphrase.md) dla wszystkich kultur|
+|Nieobsługiwały się jednostkami kultury języka angielskiego (`en-US`)|Wstępnie utworzone jednostki [w lokalizacji geograficznejV2](luis-reference-prebuilt-geographyV2.md)|
+|Gruntowanie mowy|Zależności zewnętrzne nie są obsługiwane w kontenerze.|
 |Analiza tonacji|Zależności zewnętrzne nie są obsługiwane w kontenerze.|
 |Sprawdzanie pisowni Bing|Zależności zewnętrzne nie są obsługiwane w kontenerze.|
 
 ## <a name="languages-supported"></a>Obsługiwane języki
 
-Kontenery LUIS obsługują podzbiór [języków obsługiwanych](luis-language-support.md#languages-supported) przez Luis. Kontenery LUIS mogą zrozumieć wyrażenia długości w następujących językach:
+Kontenery usługi LUIS obsługują podzbiór [języków obsługiwanych](luis-language-support.md#languages-supported) przez właściwą usługę LUIS. Kontenery usługi LUIS są w stanie zrozumieć wypowiedzi w następujących językach:
 
-| Język | Ustawienia regionalne | Preskompilowana domena | Wstępnie utworzona jednostka | Zalecenia dotyczące listy fraz | [Analiza tekstu](../text-analytics/language-support.md) **<br>(Tonacji i<br>Służąc|
+| Język | Ustawienia regionalne | Wstępnie skompilowana domena | Wstępnie skompilowana jednostka | Rekomendacje listy fraz | **[Analiza tekstu](../text-analytics/language-support.md)<br>(Sentyment i<br>Słowa kluczowe)|
 |--|--|:--:|:--:|:--:|:--:|
-| Angielski (amerykański) | `en-US` | ✔️ | ✔️ | ✔️ | ✔️ |
-| *[chiński](#chinese-support-notes) |`zh-CN` | ✔️ | ✔️ | ✔️ | ❌ |
+| amerykański angielski | `en-US` | ✔️ | ✔️ | ✔️ | ✔️ |
+| *[Chiński](#chinese-support-notes) |`zh-CN` | ✔️ | ✔️ | ✔️ | ❌ |
 | Francuski (Francja) |`fr-FR` | ✔️ | ✔️ | ✔️ | ✔️ |
-| Francuski (Kanada) |`fr-CA` | ❌ | ❌ | ❌ | ✔️ |
+| francuski (Kanada) |`fr-CA` | ❌ | ❌ | ❌ | ✔️ |
 | Niemiecki |`de-DE` | ✔️ | ✔️ | ✔️ | ✔️ |
 | Hindi | `hi-IN`| ❌ | ❌ | ❌ | ❌ |
 | Włoski |`it-IT` | ✔️ | ✔️ | ✔️ | ✔️ |
-| Koreański |`ko-KR` | ✔️ | ❌ | ❌ | Tylko *fraza klucza* |
-| Portugalski (Brazylia) |`pt-BR` | ✔️ | ✔️ | ✔️ | nie wszystkie hodowle podrzędne |
-| Hiszpański (Hiszpania) |`es-ES` | ✔️ | ✔️ |✔️|✔️|
+| Koreański |`ko-KR` | ✔️ | ❌ | ❌ | *Tylko fraza kluczowa* |
+| portugalski (Brazylia) |`pt-BR` | ✔️ | ✔️ | ✔️ | nie wszystkie podkultury |
+| hiszpański (Hiszpania) |`es-ES` | ✔️ | ✔️ |✔️|✔️|
 | Hiszpański (Meksyk)|`es-MX` | ❌ | ❌ |✔️|✔️|
-| Turecki | `tr-TR` |✔️| ❌ | ❌ | Tylko *tonacji* |
+| Turecki | `tr-TR` |✔️| ❌ | ❌ | *Tylko sentyment* |
 
 [!INCLUDE [Chinese language support notes](includes/chinese-language-support-notes.md)]
 

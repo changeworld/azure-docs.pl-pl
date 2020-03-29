@@ -9,44 +9,44 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/30/2019
 ms.author: dapine
-ms.openlocfilehash: 35f5cffdc644370082e229c88d67db33e853c446
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 20f78d9269d4b2270293c8746157ba495c694562
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499171"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80272961"
 ---
-## <a name="azure-cognitive-services-container-security"></a>Zabezpieczenia kontenera Cognitive Services platformy Azure
+## <a name="azure-cognitive-services-container-security"></a>Zabezpieczenia kontenerów usług Azure Cognitive Services
 
-Bezpieczeństwo powinno być głównym punktem skupienia przy tworzeniu aplikacji. Znaczenie zabezpieczeń jest metryką dla sukcesu. W przypadku tworzenia architektury rozwiązania programowego, które zawiera Cognitive Services kontenerów, ważne jest, aby zrozumieć, jakie ograniczenia i możliwości są dostępne dla użytkownika. Aby uzyskać więcej informacji o zabezpieczeniach sieci, zobacz [Konfigurowanie platformy Azure Cognitive Services sieci wirtualnych][az-security].
+Bezpieczeństwo powinno być głównym celem podczas tworzenia aplikacji. Znaczenie zabezpieczeń jest metryką sukcesu. Podczas zarządzania rozwiązaniem programowym, które zawiera kontenery usług Cognitive Services, ważne jest, aby zrozumieć ograniczenia i możliwości dostępne dla Ciebie. Aby uzyskać więcej informacji na temat zabezpieczeń sieci, zobacz [Konfigurowanie sieci wirtualnych usług Azure Cognitive Services][az-security].
 
 > [!IMPORTANT]
-> Domyślnie *nie ma żadnych zabezpieczeń* w interfejsie API kontenera Cognitive Services. Przyczyną jest to, że najczęściej kontener zostanie uruchomiony jako część elementu, który jest chroniony przez mostek sieciowy. Możliwe jest jednak włączenie uwierzytelniania, które działa identycznie z uwierzytelnianiem używanym podczas uzyskiwania dostępu do [Cognitive Services opartego na chmurze][request-authentication].
+> Domyślnie nie ma *żadnych zabezpieczeń* w interfejsie API kontenera usług Cognitive Services. Powodem tego jest to, że najczęściej kontener będzie działał jako część zasobnika, który jest chroniony od zewnątrz przez most sieciowy. Możliwe jest jednak włączenie uwierzytelniania, które działa identycznie jak uwierzytelnianie używane podczas uzyskiwania dostępu do [chmurowych usług Cognitive Services.][request-authentication]
 
-Na poniższym diagramie przedstawiono domyślne i **niebezpieczne** podejście:
+Poniższy diagram ilustruje domyślne i **niezabezpieczane** podejście:
 
 ![Zabezpieczenia kontenerów](../media/container-security.svg)
 
-Jako alternatywne i *bezpieczne* podejście, odbiorcy Cognitive Services kontenerów mogą rozszerzyć kontener z składnikiem czołowym, utrzymując punkt końcowy kontenera jako prywatny. Rozważmy scenariusz, w którym korzystamy z [Istio][istio] jako bramy transferu danych przychodzących. Istio obsługuje uwierzytelnianie przy użyciu protokołu HTTPS/SSL i certyfikatu klienta. W tym scenariuszu fronton Istio uwidacznia dostęp do kontenera, który przedstawia certyfikat klienta, który jest listy dozwolonych wcześniej z Istio.
+Jako alternatywne i *bezpieczne* podejście, konsumenci kontenerów usług Cognitive Services może rozszerzyć kontener z przodu składnika, zachowując punkt końcowy kontenera prywatne. Rozważmy scenariusz, w którym używamy [Istio][istio] jako bramy przychodzącej. Istio obsługuje protokół HTTPS/TLS i uwierzytelnianie certyfikatu klienta. W tym scenariuszu fronton Istio udostępnia dostęp do kontenera, przedstawiając certyfikat klienta, który jest wcześniej umieszczony na białej liście z Istio.
 
-[Nginx][nginx] jest innym popularnym wyborem w tej samej kategorii. Zarówno Istio, jak i Nginx działają jako siatka usługi i oferują dodatkowe funkcje, takie jak równoważenie obciążenia, Routing i sterowanie szybkością.
+[Nginx][nginx] to kolejny popularny wybór w tej samej kategorii. Zarówno Istio, jak i Nginx działają jako siatka usług i oferują dodatkowe funkcje, takie jak równoważenie obciążenia, routing i kontrola szybkości.
 
 ### <a name="container-networking"></a>Sieć kontenerów
 
-Kontenery Cognitive Services są wymagane do przesyłania informacji o pomiarach dotyczących rozliczeń. Jedynym wyjątkiem jest *kontenery w trybie offline* , ponieważ są one zgodne z inną metodą rozliczania. Niezezwolenie na wyświetlanie listy różnych kanałów sieciowych, na których zależą Cognitive Services kontenery, uniemożliwi pracę kontenera.
+Kontenery usług Cognitive Services są zobowiązane do przesyłania informacji o pomiarach do celów rozliczeniowych. Jedynym wyjątkiem są *kontenery w trybie offline,* ponieważ są one zgodne z inną metodologią rozliczeń. Nie można zezwolić na listę różnych kanałów sieciowych, na których opierają się kontenery usług Cognitive Services, uniemożliwi działanie kontenera.
 
-#### <a name="allow-list-cognitive-services-domains-and-ports"></a>Zezwalaj na wyświetlanie listy domen i portów Cognitive Services
+#### <a name="allow-list-cognitive-services-domains-and-ports"></a>Zezwalaj na listy domen i portów usług Cognitive Services
 
-Host powinien zezwalać na listę **portów 443** i następujących domen:
+Host powinien zezwolić na port listy **443** i następujące domeny:
 
 * `*.cognitive.microsoft.com`
 * `*.cognitiveservices.azure.com`
 
-#### <a name="disable-deep-packet-inspection"></a>Wyłącz dokładną inspekcję pakietów
+#### <a name="disable-deep-packet-inspection"></a>Wyłączanie inspekcji pakietów głębokich
 
-> [Głębokie Inspekcja pakietów](https://en.wikipedia.org/wiki/Deep_packet_inspection) (dpi) to typ przetwarzania danych, który sprawdza szczegółowo dane wysyłane przez sieć komputerową i zazwyczaj wykonuje akcję przez zablokowanie, ponowne kierowanie lub zarejestrowanie odpowiednio.
+> [Głęboka inspekcja pakietów](https://en.wikipedia.org/wiki/Deep_packet_inspection) (DPI) to rodzaj przetwarzania danych, który szczegółowo sprawdza dane przesyłane przez sieć komputerową i zwykle podejmuje działania, blokując, ponownie routingu lub rejestrując je odpowiednio.
 
-Wyłącz wartość DPI w bezpiecznych kanałach, które kontenery Cognitive Services tworzyć na serwerach firmy Microsoft. Niewykonanie tej czynności uniemożliwi poprawne działanie kontenera.
+Wyłącz dpi na bezpiecznych kanałach, które kontenery usług Cognitive Services tworzą na serwerach firmy Microsoft. Niezastosowanie się do tego uniemożliwi prawidłowe działanie kontenera.
 
 [istio]: https://istio.io/
 [nginx]: https://www.nginx.com

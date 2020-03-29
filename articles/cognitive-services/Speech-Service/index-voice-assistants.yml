@@ -1,31 +1,30 @@
 ### YamlMime:Landing
 title: Dokumentacja asystentów głosowych
-summary: Asystenci głosu korzystający z usługi mowy umożliwiają deweloperom tworzenie naturalnych, przypominających konwersacje interfejsów dla aplikacji i środowisk.
+summary: Asystenci głosowi korzystający z usługi Mowy umożliwiają deweloperom tworzenie naturalnych, podobnych do człowieka interfejsów konwersacyjnych dla swoich aplikacji i środowisk.
 metadata:
-  title: Dokumentacja dotycząca asystentów głosowych — samouczki i dokumentacja interfejsu API — Azure Cognitive Services | Microsoft Docs
+  title: Dokumentacja asystentów głosowych — samouczki, informacje o interfejsie API — usługi Azure Cognitive Services | Dokumenty firmy Microsoft
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: 369213485934236a05ecb3fcb458bdd28fd76136
-  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+  ms.openlocfilehash: 6ae919317269753cbc3c8bf5b0df11e19a47989f
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: MT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 03/14/2020
-  ms.locfileid: "79365563"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "79415159"
 landingContent:
-- title: Asystenci głosu — informacje
+- title: Asystentów głosowych – informacje
   linkLists:
   - linkListType: overview
     links:
     - text: Co to jest asystent głosowy?
       url: voice-assistants.md
-    - text: Co to jest aplikacja poleceń niestandardowych?
+    - text: Co to jest aplikacja Polecenia niestandardowe?
       url: custom-commands.md
     - text: Co to jest mowa Direct Line?
       url: direct-line-speech.md
@@ -33,31 +32,31 @@ landingContent:
     links:
     - text: Często zadawane pytania dotyczące asystentów głosowych
       url: faq-voice-assistants.md
-    - text: Cennik asystentów głosowych
+    - text: Ceny asystentów głosowych
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
 - title: Tworzenie za pomocą poleceń niestandardowych
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Tworzenie aplikacji poleceń niestandardowych
+    - text: Tworzenie aplikacji Polecenia niestandardowe
       url: quickstart-custom-speech-commands-create-new.md
-    - text: Utwórz polecenie niestandardowe z parametrami
+    - text: Tworzenie polecenia niestandardowego z parametrami
       url: quickstart-custom-speech-commands-create-parameters.md
-    - text: Używanie poleceń niestandardowych z niestandardowym głosem
+    - text: Używanie poleceń niestandardowych za pomocą niestandardowego głosu
       url: quickstart-custom-speech-commands-select-custom-voice.md
-    - text: Używanie poleceń niestandardowych z zestawem SDK mowy
+    - text: Używanie poleceń niestandardowych z sdkem mowy
       url: quickstart-custom-speech-commands-speech-sdk.md
   - linkListType: how-to-guide
     links:
-    - text: Realizacja poleceń z klienta
+    - text: Wypełnianie poleceń od klienta
       url: how-to-custom-speech-commands-fulfill-sdk.md
-    - text: Dodawanie walidacji parametru
+    - text: Dodawanie sprawdzania poprawności parametrów
       url: how-to-custom-speech-commands-validations.md
-    - text: Dodaj potwierdzenie
+    - text: Dodawanie potwierdzenia
       url: how-to-custom-speech-commands-confirmations.md
     - text: Dodawanie korekty jednoetapowej
       url: how-to-custom-speech-commands-one-step-correction.md
-- title: Programowanie przy użyciu bezpośredniej linii mowy
+- title: Rozwijaj się za pomocą direct line speech
   linkLists:
   - linkListType: quickstart
     links:
@@ -71,7 +70,7 @@ landingContent:
     links:
     - text: Dodawanie obsługi głosu do bota przy użyciu zestawu SDK usługi Mowa
       url: tutorial-voice-enable-your-bot-speech-sdk.md
-- title: Programowanie za pomocą słowa kluczowego Custom
+- title: Rozwijaj za pomocą niestandardowego słowa kluczowego
   linkLists:
   - linkListType: how-to-guide
     links:

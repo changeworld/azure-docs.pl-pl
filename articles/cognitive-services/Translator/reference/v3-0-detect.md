@@ -1,7 +1,7 @@
 ---
-title: Metoda wykrywania interfejs API tłumaczenia tekstu w usłudze Translator
+title: Metoda wykrywania interfejsu API tekstu tłumacza
 titleSuffix: Azure Cognitive Services
-description: Zidentyfikuj język fragmentu tekstu za pomocą metody wykrywania interfejs API tłumaczenia tekstu w usłudze Translator Cognitive Services platformy Azure.
+description: Zidentyfikuj język fragmentu tekstu za pomocą metody wykrywania interfejsu API usługi Azure Cognitive Services Translator translatora.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
 ms.openlocfilehash: 370f3b14c12fc05f181d6497b7069bbf1cf3c9cc
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73837292"
 ---
-# <a name="translator-text-api-30-detect"></a>Interfejs API tłumaczenia tekstu w usłudze Translator 3,0: wykrywanie
+# <a name="translator-text-api-30-detect"></a>Interfejs API tekstu tłumacza 3.0: Wykrywanie
 
 Identyfikuje język fragmentu tekstu.
 
 ## <a name="request-url"></a>Adres URL żądania
 
-Wyślij żądanie `POST` do:
+Wyślij `POST` prośbę na:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
@@ -31,14 +31,14 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 
 ## <a name="request-parameters"></a>Parametry żądania
 
-Parametry żądania przesłane na ciągu zapytania są następujące:
+Parametry żądania przekazywane na ciąg zapytania są:
 
 <table width="100%">
-  <th width="20%">Parametr zapytania</th>
+  <th width="20%">Parametr kwerendy</th>
   <th>Opis</th>
   <tr>
-    <td>wersja interfejsu API</td>
-    <td>*Wymagany parametr*.<br/>Wersja interfejsu API żądana przez klienta. Wartość musi być `3.0`.</td>
+    <td>api-version</td>
+    <td>*Wymagany parametr*.<br/>Wersja interfejsu API żądana przez klienta. Wartość musi `3.0`być .</td>
   </tr>
 </table> 
 
@@ -53,21 +53,21 @@ Nagłówki żądań obejmują:
   </tr>
   <tr>
     <td>Content-Type</td>
-    <td>*Wymagany nagłówek żądania*.<br/>Określa typ zawartości ładunku. Możliwe wartości to: `application/json`.</td>
+    <td>*Wymagany nagłówek żądania*.<br/>Określa typ zawartości ładunku. Możliwe wartości `application/json`to: .</td>
   </tr>
   <tr>
     <td>Długość zawartości</td>
     <td>*Wymagany nagłówek żądania*.<br/>Długość treści żądania.</td>
   </tr>
   <tr>
-    <td>X-ClientTraceId</td>
-    <td>*Opcjonalnie*.<br/>Wygenerowany przez klienta identyfikator GUID służący do unikatowej identyfikacji żądania. Należy pamiętać, że ten nagłówek można pominąć, jeśli w ciągu zapytania zostanie uwzględniony identyfikator śledzenia, przy użyciu parametru zapytania o nazwie `ClientTraceId`.</td>
+    <td>Identyfikator X-ClientTraceId</td>
+    <td>*Opcjonalnie*.<br/>Identyfikator GUID wygenerowany przez klienta, aby jednoznacznie zidentyfikować żądanie. Należy zauważyć, że można pominąć ten nagłówek, jeśli dodasz identyfikator `ClientTraceId`śledzenia do ciągu zapytania przy użyciu parametru kwerendy o nazwie .</td>
   </tr>
 </table> 
 
 ## <a name="request-body"></a>Treść żądania
 
-Treść żądania jest tablicą JSON. Każdy element tablicy jest obiektem JSON z właściwością ciągu o nazwie `Text`. Wykrywanie języka jest stosowane do wartości właściwości `Text`. Przykładowa treść żądania wygląda następująco:
+Treść żądania jest tablicą JSON. Każdy element tablicy jest obiektem JSON z właściwością string o nazwie `Text`. Wykrywanie języka jest stosowany do `Text` wartości właściwości. Przykładowa treść żądania wygląda następująco:
 
 ```json
 [
@@ -77,23 +77,23 @@ Treść żądania jest tablicą JSON. Każdy element tablicy jest obiektem JSON 
 
 Obowiązują następujące ograniczenia:
 
-* Tablica może zawierać maksymalnie 100 elementów.
-* Wartość tekstowa elementu tablicy nie może być dłuższa niż 10 000 znaków, w tym spacje.
-* Cały tekst zawarty w żądaniu nie może zawierać więcej niż 50 000 znaków, w tym spacji.
+* Tablica może mieć co najwyżej 100 elementów.
+* Wartość tekstowa elementu tablicy nie może przekraczać 10 000 znaków, w tym spacji.
+* Cały tekst zawarty w żądaniu nie może przekraczać 50 000 znaków wraz ze spacjami.
 
 ## <a name="response-body"></a>Treść odpowiedzi
 
-Pomyślna odpowiedź to tablica JSON z jednym wynikiem dla każdego ciągu w tablicy wejściowej. Obiekt wynikowy zawiera następujące właściwości:
+Pomyślna odpowiedź jest tablicą JSON z jednym wynikiem dla każdego ciągu w tablicy wejściowej. Obiekt wynikowy zawiera następujące właściwości:
 
   * `language`: Kod wykrytego języka.
 
-  * `score`: wartość zmiennoprzecinkowa wskazująca wiarygodność w wyniku. Wynik jest z przedziału od zera do jednego, a niski Wynik wskazuje na niski poziom pewności.
+  * `score`: Wartość pływaka wskazująca zaufanie do wyniku. Wynik jest od zera do jednego, a niski wynik wskazuje na niską pewność siebie.
 
-  * `isTranslationSupported`: wartość logiczna prawda, jeśli wykryty język jest jednym z języków obsługiwanych przez tłumaczenie tekstu.
+  * `isTranslationSupported`: Wartość logiczna, która jest prawdziwa, jeśli wykryty język jest jednym z języków obsługiwanych do tłumaczenia tekstu.
 
-  * `isTransliterationSupported`: wartość logiczna, której wartość to true, jeśli wykryty język jest jednym z języków obsługiwanych przez narzędzie do oblitrowania.
+  * `isTransliterationSupported`: Wartość logiczna, która jest prawdziwa, jeśli wykryty język jest jednym z języków obsługiwanych do transliteracji.
   
-  * `alternatives`: tablica innych możliwych języków. Każdy element tablicy jest innym obiektem o tych samych właściwościach wymienionych powyżej: `language`, `score`, `isTranslationSupported` i `isTransliterationSupported`.
+  * `alternatives`: Tablica innych możliwych języków. Każdy element tablicy jest innym obiektem o `language`tych `score` `isTranslationSupported` samych właściwościach wymienionych powyżej: , i `isTransliterationSupported`.
 
 Przykładowa odpowiedź JSON to:
 
@@ -128,14 +128,14 @@ Przykładowa odpowiedź JSON to:
   <th width="20%">Nagłówki</th>
   <th>Opis</th>
   <tr>
-    <td>X-IdentyfikatorŻądania</td>
-    <td>Wartość wygenerowana przez usługę w celu zidentyfikowania żądania. Służy do rozwiązywania problemów.</td>
+    <td>X-RequestId (ida żądania X)</td>
+    <td>Wartość generowana przez usługę w celu zidentyfikowania żądania. Jest on używany do rozwiązywania problemów.</td>
   </tr>
 </table> 
 
 ## <a name="response-status-codes"></a>Kody stanu odpowiedzi
 
-Oto możliwe kody stanu HTTP zwracane przez żądanie. 
+Poniżej przedstawiono możliwe kody stanu HTTP, które zwraca żądanie. 
 
 <table width="100%">
   <th width="20%">Kod stanu</th>
@@ -146,7 +146,7 @@ Oto możliwe kody stanu HTTP zwracane przez żądanie.
   </tr>
   <tr>
     <td>400</td>
-    <td>Brakuje jednego z parametrów zapytania lub jest on nieprawidłowy. Popraw parametry żądania przed ponowną próbą.</td>
+    <td>Brakuje jednego z parametrów zapytania lub jest on nieprawidłowy. Popraw parametry żądania przed ponowieniem próby.</td>
   </tr>
   <tr>
     <td>401</td>
@@ -154,27 +154,27 @@ Oto możliwe kody stanu HTTP zwracane przez żądanie.
   </tr>
   <tr>
     <td>403</td>
-    <td>Żądanie nie ma autoryzacji. Sprawdź komunikat o błędzie szczegóły. Często oznacza to, że używane są wszystkie bezpłatne tłumaczenia udostępnione w ramach wersji próbnej.</td>
+    <td>Żądanie nie jest autoryzowane. Sprawdź komunikat o błędzie szczegółów. Często oznacza to, że wszystkie bezpłatne tłumaczenia dostarczane z subskrypcją próbną zostały wykorzystane.</td>
   </tr>
   <tr>
     <td>429</td>
-    <td>Serwer odrzucił żądanie z powodu przekroczenia limitów żądań przez klienta.</td>
+    <td>Serwer odrzucił żądanie, ponieważ klient przekroczył limity żądań.</td>
   </tr>
   <tr>
     <td>500</td>
-    <td>Wystąpił nieoczekiwany błąd. Jeśli błąd będzie się powtarzać, zgłoś go z: Data i godzina błędu, identyfikator żądania z nagłówka odpowiedzi `X-RequestId`i identyfikator klienta z nagłówka żądania `X-ClientTraceId`.</td>
+    <td>Wystąpił nieoczekiwany błąd. Jeśli błąd będzie się powtarzał, zgłoś go z: datą i godziną awarii, identyfikatorem żądania z nagłówka `X-RequestId`odpowiedzi i identyfikatorem klienta z nagłówka `X-ClientTraceId`żądania .</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>Serwer jest tymczasowo niedostępny. Ponów żądanie. Jeśli błąd będzie się powtarzać, zgłoś go z: Data i godzina błędu, identyfikator żądania z nagłówka odpowiedzi `X-RequestId`i identyfikator klienta z nagłówka żądania `X-ClientTraceId`.</td>
+    <td>Serwer tymczasowo niedostępny. Ponów próbę żądania. Jeśli błąd będzie się powtarzał, zgłoś go z: datą i godziną awarii, identyfikatorem żądania z nagłówka `X-RequestId`odpowiedzi i identyfikatorem klienta z nagłówka `X-ClientTraceId`żądania .</td>
   </tr>
 </table> 
 
-Jeśli wystąpi błąd, żądanie zwróci także odpowiedź na błąd JSON. Kod błędu to 6-cyfrowy numer łączący 3-cyfrowy kod stanu HTTP, a następnie 3-cyfrowy numer do dalszej kategoryzacji błędu. Typowe kody błędów można znaleźć na [stronie odniesienia interfejs API tłumaczenia tekstu w usłudze translator v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
+Jeśli wystąpi błąd, żądanie zwróci również odpowiedź na błąd JSON. Kod błędu to 6-cyfrowy numer łączący 3-cyfrowy kod stanu HTTP, po którym następuje 3-cyfrowy numer w celu dalszej kategoryzowania błędu. Typowe kody błędów można znaleźć na [stronie odwołania do interfejsu API tekstu tłumacza translatora](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
 
 ## <a name="examples"></a>Przykłady
 
-Poniższy przykład pokazuje, jak pobrać języki obsługiwane w przypadku tłumaczenia tekstu.
+W poniższym przykładzie pokazano, jak pobrać języki obsługiwane do tłumaczenia tekstu.
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/detect?api-version=3.0" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'What language is this text written in?'}]"

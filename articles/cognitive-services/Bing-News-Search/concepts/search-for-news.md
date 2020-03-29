@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fa12febe99e77efde45bcd2d538de78f618e641
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79220326"
 ---
 # <a name="search-for-news-with-the-bing-news-search-api"></a>Wyszukiwanie wiadomości za pomocą interfejsu API wyszukiwania wiadomości Bing
@@ -107,7 +107,7 @@ Jeśli usłudze Bing uda się określić kategorię artykułu z wiadomościami, 
 
 ## <a name="get-todays-top-news"></a>Pobieranie dzisiejszych najważniejszych wiadomości
 
-Aby uzyskać dzisiejsze najpopularniejsze artykuły z wiadomościami, możesz wysłać te same ogólne żądanie, tak jak wcześniej, pozostawiając `q` nie można cofnąć.
+Aby uzyskać dzisiejsze najlepsze artykuły z wiadomościami, możesz wysłać to `q` samo ogólne żądanie wiadomości, co poprzednio, pozostawiając parametr niezastawienia.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=&mkt=en-us HTTP/1.1
@@ -119,7 +119,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-Odpowiedź na korzystanie z najważniejszych wiadomości jest niemal taka sama jak w przypadku uzyskiwania ogólnych wiadomości. Jednak odpowiedź `news` nie zawiera pola `totalEstimatedMatches`, ponieważ obowiązuje określona liczba wyników. Liczba najważniejszych artykułów może być inna w zależności od cyklu życia informacji. Pamiętaj, aby użyć pola `provider`, aby pomieścić artykuł.
+Odpowiedź na uzyskanie najlepszych wiadomości jest prawie taka sama jak ta dla uzyskania ogólnych wiadomości. Jednak odpowiedź `news` nie zawiera pola `totalEstimatedMatches`, ponieważ obowiązuje określona liczba wyników. Liczba najważniejszych artykułów może być inna w zależności od cyklu życia informacji. Pamiętaj, aby `provider` użyć tego pola do przypisania artykułu.
 
 ## <a name="get-news-by-category"></a>Pobieranie wiadomości według kategorii
 

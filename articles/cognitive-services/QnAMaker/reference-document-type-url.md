@@ -1,58 +1,58 @@
 ---
-title: Typy adresów URL obsługiwane przez QnA Maker importowania
-description: Dowiedz się, w jaki sposób typy adresów URL są używane do importowania i tworzenia zestawów QnA.
+title: Typy adresów URL obsługiwane do importowania — QnA Maker
+description: Dowiedz się, jak typy adresów URL są używane do importowania i tworzenia zestawów QnA.
 ms.topic: reference
 ms.date: 01/02/2020
 ms.openlocfilehash: cf2a02f55d7c95ff9b3f0231ea07a783d18b73cf
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77651829"
 ---
 # <a name="urls-supported-for-importing-documents"></a>Adresy URL obsługiwane do importowania dokumentów
 
-Dowiedz się, w jaki sposób typy adresów URL są używane do importowania i tworzenia zestawów QnA.
+Dowiedz się, jak typy adresów URL są używane do importowania i tworzenia zestawów QnA.
 
-## <a name="faq-urls"></a>Adresy URL — często zadawane pytania
+## <a name="faq-urls"></a>Często zadawane pytania adresy URL
 
-QnA Maker mogą obsługiwać strony sieci Web często zadawane pytania w 3 różnych formach:
+QnA Maker może obsługiwać strony internetowe FAQ w 3 różnych formach:
 
-* Zwykły stron — często zadawane pytania
-* Często zadawane pytania dotyczące strony wraz z łączami
-* Strony z często zadawanymi pytaniami z stroną główną tematów
+* Zwykłe strony często zadawanych pytań
+* Strony często zadawanych pytań z linkami
+* Strony często zadawanych pytań ze stroną główną tematów
 
-### <a name="plain-faq-pages"></a>Zwykły stron — często zadawane pytania
+### <a name="plain-faq-pages"></a>Zwykłe strony często zadawanych pytań
 
-Jest to najczęściej spotykanym typem z często Zadawanymi pytaniami, w którym odpowiedzi natychmiast wykonaj na pytania w tej samej stronie.
+Jest to najczęstszy typ strony FAQ, na której odpowiedzi natychmiast podążają za pytaniami na tej samej stronie.
 
-Poniżej przedstawiono przykład zwykłego strony — często zadawane pytania:
+Poniżej znajduje się przykład zwykłej strony z często zadawanymi pytaniami:
 
-![Zwykły przykładowa strona — często zadawane pytania dla bazy wiedzy](./media/qnamaker-concepts-datasources/plain-faq.png)
-
-
-### <a name="faq-pages-with-links"></a>Często zadawane pytania dotyczące strony wraz z łączami
-
-W tym typie — często zadawane pytania pytania są zagregowane ze sobą i są połączone z odpowiedzi, które znajdują się w różne sekcje w tej samej stronie lub na różnych stronach.
-
-Poniżej przedstawiono przykład strony — często zadawane pytania wraz z łączami w sekcji, które znajdują się w tej samej stronie:
-
- ![Przykładowa strona łącze — często zadawane pytania sekcji dla bazy wiedzy](./media/qnamaker-concepts-datasources/sectionlink-faq.png)
+![Zwykły przykład strony często zadawanych pytań dla bazy wiedzy](./media/qnamaker-concepts-datasources/plain-faq.png)
 
 
-### <a name="parent-topics-page-links-to-child-answers-pages"></a>Strony tematów nadrzędnych łącza do stron odpowiedzi podrzędnych
+### <a name="faq-pages-with-links"></a>Strony często zadawanych pytań z linkami
 
-Ten typ często zadawanych pytań zawiera strony tematów, w których każdy temat jest połączony z odpowiednim zestawem pytań i odpowiedzi na innej stronie. QnA Maker przeszukuje wszystkie połączone strony w celu wyodrębnienia odpowiednich pytań & odpowiedzi.
+Na tej stronie często zadawanych pytań pytania są agregowane razem i są połączone z odpowiedziami, które znajdują się w różnych sekcjach tej samej strony lub na różnych stronach.
 
-Poniżej znajduje się przykład strony tematów z linkami do sekcji często zadawanych pytań na różnych stronach.
+Poniżej znajduje się przykład strony z często zadawanymi pytaniami z łączami w sekcjach, które znajdują się na tej samej stronie:
 
- ![Przykładowa strona link bezpośredni — często zadawane pytania dla bazy wiedzy](./media/qnamaker-concepts-datasources/topics-faq.png)
+ ![Przykład często zadawanych pytań dotyczących łącza sekcji dla bazy wiedzy](./media/qnamaker-concepts-datasources/sectionlink-faq.png)
 
-## <a name="support-urls"></a>Adresy URL pomocy technicznej
 
-QnA Maker mogą przetwarzać strony sieci Web pomocy technicznej z częściową strukturą, takie jak artykuły w sieci Web, które opisują sposób wykonywania danego zadania, diagnozowania i rozwiązywania danego problemu oraz najważniejszych rozwiązań dla danego procesu. Wyodrębnianie działa najlepiej w przypadku zawartości, która ma jasno strukturę z nagłówkami hierarchicznymi.
+### <a name="parent-topics-page-links-to-child-answers-pages"></a>Strony Tematy nadrzędne zawiera łącza do stron odpowiedzi podrzędnych
+
+Ten typ często zadawanych pytań zawiera stronę Tematy, na której każdy temat jest połączony z odpowiednim zestawem pytań i odpowiedzi na innej stronie. QnA Maker indeksuje wszystkie połączone strony, aby wyodrębnić odpowiednie pytania & odpowiedzi.
+
+Poniżej znajduje się przykład strony Tematy z łączami do sekcji często zadawanych pytań na różnych stronach.
+
+ ![Przykład strony faq z głębokim linkiem dla bazy wiedzy](./media/qnamaker-concepts-datasources/topics-faq.png)
+
+## <a name="support-urls"></a>Obsługa adresów URL
+
+Program QnA Maker może przetwarzać częściowo ustrukturyzowane strony sieci web, takie jak artykuły sieci Web opisujące sposób wykonywania danego zadania, diagnozowanie i rozwiązywanie danego problemu oraz najlepsze rozwiązania dla danego procesu. Wyodrębnianie działa najlepiej na zawartości, która ma przejrzystą strukturę z nagłówkami hierarchicznymi.
 
 > [!NOTE]
-> Wyodrębnianie artykułów pomocy technicznej jest nową funkcją i znajduje się na wczesnych etapach. Najlepiej sprawdza się w przypadku prostych stron, które są dobrze strukturalne i nie zawierają złożonych nagłówków/stopek.
+> Ekstrakcja artykułów pomocy technicznej jest nową funkcją i jest we wczesnych stadiach. Najlepiej sprawdza się w przypadku prostych stron, które są dobrze zorganizowane i nie zawierają złożonych nagłówków/stopek.
 
-![QnA Maker obsługuje wyodrębnianie ze stron sieci Web z częściową strukturą, w przypadku których przejrzysta struktura jest prezentowana z nagłówkami hierarchicznymi](./media/qnamaker-concepts-datasources/support-web-pages-with-heirarchical-structure.png)
+![QnA Maker obsługuje ekstrakcję ze stron półstrukturacyjnych, gdzie przedstawiono jasną strukturę z nagłówkami hierarchicznymi](./media/qnamaker-concepts-datasources/support-web-pages-with-heirarchical-structure.png)

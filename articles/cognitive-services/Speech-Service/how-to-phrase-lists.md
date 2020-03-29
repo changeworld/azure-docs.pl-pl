@@ -1,7 +1,7 @@
 ---
 title: Listy fraz — usługa mowy
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak dostarczać usługę mowy z listą fraz przy użyciu obiektu `PhraseListGrammar`, aby poprawić wyniki rozpoznawania zamiany mowy na tekst.
+description: Dowiedz się, jak dostarczyć usługę mowy `PhraseListGrammar` z listą fraz przy użyciu obiektu, aby poprawić wyniki rozpoznawania mowy na tekst.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -12,26 +12,26 @@ ms.date: 02/04/2020
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: f84ea6b2b0f1e8246e1d765e54f663cd01f29b1d
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77560851"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>Listy fraz dla zamiany mowy na tekst
 
-Dostarczając usługę mowy z listą fraz, można poprawić dokładność rozpoznawania mowy. Listy fraz są używane do identyfikowania znanych fraz w danych audio, takich jak nazwa osoby lub określonej lokalizacji.
+Udostępniając usługę mowy z listą fraz, można poprawić dokładność rozpoznawania mowy. Listy fraz służą do identyfikowania znanych fraz w danych audio, takich jak imię i nazwisko osoby lub określona lokalizacja.
 
-Jeśli na przykład masz polecenie "Przenieś do" i możliwe miejsce docelowe "do wewnątrz", które może być wymawiane, możesz dodać wpis "przejdź do samego". Dodanie frazy spowoduje zwiększenie prawdopodobieństwa, że gdy dźwięk zostanie rozpoznany, że "Przenieś do wewnątrz" zostanie rozpoznany zamiast "Przenieś w stronę".
+Na przykład, jeśli masz polecenie "Przenieś do" i możliwe miejsce docelowe "Ward", które może być wypowiedziane, możesz dodać wpis "Przenieś do okręgu". Dodanie frazy zwiększy prawdopodobieństwo, że po rozpoznaniu dźwięku, że "Przenieś do Warda" zostanie rozpoznany zamiast "Przejdź w kierunku".
 
-Pojedyncze słowa lub kompletne wyrażenia można dodać do listy fraz. Podczas rozpoznawania, jest używany wpis na liście frazy, jeśli dokładne dopasowanie dla całej frazy jest dołączane do dźwięku jako oddzielnej frazy. Jeśli nie znaleziono dokładnego dopasowania do frazy, rozpoznawanie nie jest wspierane.
+Pojedyncze słowa lub pełne frazy można dodać do listy fraz. Podczas rozpoznawania wpis na liście fraz jest używany, jeśli dokładne dopasowanie dla całej frazy jest zawarte w audio jako osobna fraza. Jeśli dokładne dopasowanie do frazy nie zostanie znalezione, rozpoznawanie nie jest wspomagane.
 
 >[!Note]
-> Obecnie listy fraz obsługują tylko język angielski dla zamiany mowy na tekst.
+> Obecnie listy fraz obsługuje tylko angielski dla mowy do tekstu.
 
-## <a name="how-to-use-phrase-lists"></a>Jak używać list fraz
+## <a name="how-to-use-phrase-lists"></a>Jak korzystać z list fraz
 
-Poniższe przykłady ilustrują sposób tworzenia listy fraz przy użyciu obiektu `PhraseListGrammar`.
+Poniższe przykłady ilustrują sposób tworzenia `PhraseListGrammar` listy fraz przy użyciu obiektu.
 
 ::: zone pivot="programming-language-csharp"
 
@@ -89,9 +89,9 @@ phraseListGrammar.addPhrase("Move to Ted");
 ::: zone-end
 
 >[!Note]
-> Maksymalna liczba list fraz, które będą używane przez usługę mowy do dopasowania mowy, to 1024 fraz.
+> Maksymalna liczba list fraz, które usługa Mowy będzie używać do dopasowania mowy jest 1024 fraz.
 
-Możesz również wyczyścić frazy skojarzone z `PhraseListGrammar` przez wywołanie Clear ().
+Można również wyczyścić frazy skojarzone z wywołaniem `PhraseListGrammar` clear().
 
 ::: zone pivot="programming-language-csharp"
 
@@ -134,8 +134,8 @@ phraseListGrammar.clear();
 ::: zone-end
 
 > [!NOTE]
-> Zmiany w obiekcie `PhraseListGrammar` zaczną obowiązywać przy następnym rozpoznaniu lub po ponownym nawiązaniu połączenia z usługą mowy.
+> Zmiany w `PhraseListGrammar` obiekcie mają wpływ na następne rozpoznanie lub po ponownym połączeniu z usługą mowy.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Dokumentacja referencyjna zestawu Speech SDK](speech-sdk.md)
+* [Dokumentacja referencyjna SDK mowy](speech-sdk.md)

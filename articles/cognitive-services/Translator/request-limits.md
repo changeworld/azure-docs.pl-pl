@@ -1,31 +1,31 @@
 ---
-title: Limity żądań — interfejs API tłumaczenia tekstu w usłudze Translator
+title: Limity żądań — interfejs API tekstu tłumacza
 titleSuffix: Azure Cognitive Services
-description: W tym artykule przedstawiono limity żądań dla interfejs API tłumaczenia tekstu w usłudze Translator. Opłaty są naliczane w oparciu o liczbę znaków, a nie częstotliwość żądań z limitem 5 000 znaków na żądanie. Limity znaków są oparte na subskrypcjach, z F0 ograniczone do 2 000 000 znaków na godzinę.
+description: W tym artykule wymieniono limity żądań dla interfejsu API tekstu tłumacza. Opłaty są naliczane na podstawie liczby znaków, a nie częstotliwości żądania z limitem 5000 znaków na żądanie. Limity znaków są oparte na subskrypcji, z F0 ograniczona do 2 milionów znaków na godzinę.
 services: cognitive-services
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 11/25/2019
+ms.date: 03/17/2020
 ms.author: swmachan
-ms.openlocfilehash: 3694c8cb34b2a050c9e18265c8cc0a0198456076
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 8d26efec2783d6f121c319e46b1b505b6e1b1e09
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533721"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79498937"
 ---
-# <a name="request-limits-for-translator-text"></a>Limity żądań dla tłumaczenie tekstu w usłudze Translator
+# <a name="request-limits-for-translator-text"></a>Limity żądań dla tekstu tłumacza
 
-W tym artykule przedstawiono limity ograniczania dla interfejs API tłumaczenia tekstu w usłudze Translator. Usługi obejmują tłumaczenie, przekształcenie, wykrywanie długości zdania, wykrywanie języka i alternatywne tłumaczenia.
+Ten artykuł zawiera limity ograniczania przepustowości dla interfejsu API tekstu translatora. Usługi obejmują tłumaczenie, transliterację, wykrywanie długości zdania, wykrywanie języka i tłumaczenia alternatywne.
 
-## <a name="character-and-array-limits-per-request"></a>Limity liczby znaków i tablic na żądanie
+## <a name="character-and-array-limits-per-request"></a>Limity znaków i tablic na żądanie
 
-Każde żądanie tłumaczenia jest ograniczone do 5 000 znaków. Opłata jest naliczana za znak, a nie przez liczbę żądań. Zaleca się wysyłanie krótszych żądań.
+Każde żądanie tłumaczenia jest ograniczone do 5000 znaków we wszystkich językach docelowych, na które tłumaczysz. Na przykład wysłanie żądania tłumaczenia 1500 znaków do przetłumaczenia na 3 różne języki powoduje rozmiar żądania 1500x3 = 4500 znaków, co spełnia limit żądania. Opłata jest naliczana za znak, a nie od liczby żądań. Zaleca się wysyłanie krótszych żądań.
 
-W poniższej tabeli wymieniono limity elementów tablicy i znaków dla każdej operacji interfejs API tłumaczenia tekstu w usłudze Translator.
+W poniższej tabeli wymieniono limity elementów tablicy i znaków dla każdej operacji interfejsu API tekstu translatora.
 
 | Operacja | Maksymalny rozmiar elementu tablicy |   Maksymalna liczba elementów tablicy |  Maksymalny rozmiar żądania (znaki) |
 |:----|:----|:----|:----|
@@ -34,52 +34,52 @@ W poniższej tabeli wymieniono limity elementów tablicy i znaków dla każdej o
 | Wykrywanie | 10 000 | 100 |   50 000 |
 | BreakSentence | 10 000    | 100 | 50 000 |
 | Wyszukiwanie w słowniku| 100 |  10  | 1000 |
-| Przykłady słowników | 100 dla tekstu i 100 dla tłumaczenia (łącznie 200)| 10|   2 000 |
+| Przykłady słowników | 100 dla tekstu i 100 do tłumaczenia (łącznie 200)| 10|   2000 |
 
 ## <a name="character-limits-per-hour"></a>Limity znaków na godzinę
 
-Limit znaków na godzinę jest oparty na warstwie subskrypcji tłumaczenie tekstu w usłudze Translator. 
+Limit znaków na godzinę jest oparty na warstwie subskrypcji translatora. 
 
-Przydział godzinowy powinien być wykorzystany nawet w ciągu godziny. Na przykład w przypadku F0 limitu warstwy o 2 000 000 znaków na godzinę, znaki powinny być używane nie szybciej niż w przybliżeniu 33 300 znaki na minutę (2 000 000 znaki podzielone przez 60 minut).
+Przydział godzinowy powinien być zużywany równomiernie przez całą godzinę. Na przykład przy limicie warstwy F0 wynoszącym 2 miliony znaków na godzinę znaki powinny być używane nie szybciej niż około 33 300 znaków na minutę okna przesuwnego (2 miliony znaków podzielonych przez 60 minut).
 
-W przypadku osiągnięcia lub przekroczenia tych limitów lub wysłania zbyt dużej części limitu przydziału w krótkim czasie prawdopodobnie otrzymasz odpowiedź na brak limitu przydziału. Nie ma ograniczeń dla współbieżnych żądań.
+Jeśli osiągniesz lub przekroczysz te limity lub wyślesz zbyt dużą część przydziału w krótkim czasie, prawdopodobnie otrzymasz odpowiedź poza przydziałem. Nie ma żadnych ograniczeń dotyczących równoczesnych żądań.
 
 | Warstwa | Limit znaków |
 |------|-----------------|
-| F0 | 2 000 000 znaków na godzinę |
-| S1 | 40 000 000 znaków na godzinę |
-| S2/C2 | 40 000 000 znaków na godzinę |
-| S3/C3 | 120 000 000 znaków na godzinę |
-| S4/C4 | 200 000 000 znaków na godzinę |
+| F0 | 2 miliony znaków na godzinę |
+| S1 | 40 milionów znaków na godzinę |
+| S2 / C2 | 40 milionów znaków na godzinę |
+| S3 / C3 | 120 milionów znaków na godzinę |
+| S4 / C4 | 200 milionów znaków na godzinę |
 
-Limity dla [subskrypcji dla kilku usług](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication) są takie same jak w przypadku warstwy S1.
+Limity [dla subskrypcji wielu usług](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication) są takie same jak w warstwie S1.
 
-Limity te są ograniczone do standardowych modeli tłumaczenia firmy Microsoft. Niestandardowe modele tłumaczenia korzystające z translatora niestandardowego są ograniczone do 1 800 znaków na sekundę.
+Limity te są ograniczone do standardowych modeli tłumaczenia firmy Microsoft. Niestandardowe modele tłumaczenia korzystające z usługi Custom Translator są ograniczone do 1800 znaków na sekundę.
 
 ## <a name="latency"></a>Opóźnienie
 
-Interfejs API tłumaczenia tekstu w usłudze Translator ma maksymalne opóźnienie wynoszące 15 sekund przy użyciu modeli standardowych i 120 sekund podczas korzystania z modeli niestandardowych. Zazwyczaj odpowiedzi *na tekst w ciągu 100 znaków* są zwracane w 150 ms do 300 milisekund. Modele translatorów niestandardowych mają podobne charakterystyki opóźnienia dotyczące długotrwałego żądania i mogą mieć wyższy czas opóźnienia, gdy częstotliwość żądań jest nieprzerwana. Czasy odpowiedzi będą się różnić w zależności od rozmiaru pary żądań i języków. Jeśli nie otrzymasz tłumaczenia lub odpowiedź na [błąd](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors) w tym okresie, sprawdź kod, połączenie sieciowe i ponów próbę. 
+Interfejs API tekstu translatora ma maksymalne opóźnienie 15 sekund przy użyciu modeli standardowych i 120 sekund podczas korzystania z modeli niestandardowych. Zazwyczaj odpowiedzi *dla tekstu w ciągu 100 znaków* są zwracane w 150 milisekund do 300 milisekund. Niestandardowe modele tłumacza mają podobne właściwości opóźnienia w przypadku trwałej szybkości żądania i mogą mieć większe opóźnienie, gdy szybkość żądania jest przerywana. Czas odpowiedzi zależy od rozmiaru żądania i pary języków. Jeśli nie otrzymasz tłumaczenia lub [odpowiedzi na błąd](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors) w tym przedziale czasowym, sprawdź kod, połączenie sieciowe i ponów próbę. 
 
 ## <a name="sentence-length-limits"></a>Limity długości zdania
 
-W przypadku korzystania z funkcji [BreakSentence](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence) długość zdania jest ograniczona do 275 znaków. Istnieją wyjątki dla następujących języków:
+W przypadku korzystania z funkcji [BreakSentence](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence) długość zdania jest ograniczona do 275 znaków. Istnieją wyjątki dla tych języków:
 
-| Język | Kod | Limit znaków |
+| Język | Code | Limit znaków |
 |----------|------|-----------------|
-| Chiński | zh | 132 |
+| Chiński | Zh | 132 |
 | Niemiecki | de | 290 |
 | Włoski | it | 280 |
 | Japoński | ja | 150 |
-| Portugalski | zmiennoprzecinkow | 290 |
-| Hiszpański | es | 280 |
+| Portugalski | pkt. | 290 |
+| Hiszpański | Tak | 280 |
 | Włoski | it | 280 |
-| Tajski | th | 258 |
+| Tajski | Th | 258 |
 
 > [!NOTE]
-> Ten limit nie dotyczy tłumaczeń.
+> Ten limit nie ma zastosowania do tłumaczeń.
 
 ## <a name="next-steps"></a>Następne kroki
 
 * [Cennik](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
 * [Dostępność regionalna](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
-* [Dokumentacja interfejs API tłumaczenia tekstu w usłudze Translator v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+* [Dokumentacja interfejsu API v3 tłumaczenia tekstu w usłudze Translator](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

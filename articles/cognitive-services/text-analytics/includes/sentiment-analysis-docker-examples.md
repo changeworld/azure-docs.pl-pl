@@ -1,7 +1,7 @@
 ---
-title: Przykłady analiza tonacji Docker kontenera
+title: Przykłady dokowania kontenera analizy tonacji
 titleSuffix: Azure Cognitive Services
-description: Przykłady analiza tonacji Docker kontenera
+description: Przykłady dokowania kontenera analizy tonacji
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,17 +10,17 @@ ms.topic: include
 ms.date: 09/19/2019
 ms.author: dapine
 ms.openlocfilehash: c384d9d8af932db343aad106b6e89ea87821d900
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71148460"
 ---
-### <a name="sentiment-analysis-container-docker-examples"></a>Przykłady analiza tonacji Docker kontenera
+### <a name="sentiment-analysis-container-docker-examples"></a>Przykłady dokowania kontenera analizy tonacji
 
-Poniższe przykłady platformy Docker dotyczą kontenera analiza tonacji.
+Poniższe przykłady docker są dla analizy tonacji kontenera.
 
-#### <a name="basic-example"></a>Podstawowy przykład 
+#### <a name="basic-example"></a>Przykład podstawowy 
 
   ```
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \

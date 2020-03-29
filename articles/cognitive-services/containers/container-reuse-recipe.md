@@ -1,7 +1,7 @@
 ---
-title: Przepisy dotyczące kontenerów platformy Docker
+title: Przepisy na pojemniki platformy Docker
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak tworzyć, testować i przechowywać kontenery przy użyciu niektórych lub wszystkich ustawień konfiguracji do wdrożenia i ponownego użycia.
+description: Dowiedz się, jak tworzyć, testować i przechowywać kontenery z niektórymi lub wszystkimi ustawieniami konfiguracji do wdrażania i ponownego użycia.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -11,51 +11,51 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: dapine
 ms.openlocfilehash: 97342f1dd4f6ce343626ba6c294f09dabe3db5c0
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76717207"
 ---
 # <a name="create-containers-for-reuse"></a>Tworzenie kontenerów do ponownego użycia
 
-Te przepisy kontenera dotyczą tworzenia kontenerów Cognitive Services, które mogą być ponownie używane. Kontenery można kompilować przy użyciu niektórych lub wszystkich ustawień konfiguracji, aby _nie_ były one używane po rozpoczęciu kontenera.
+Użyj tych receptur kontenerów do tworzenia kontenerów usług Cognitive Services, które mogą być ponownie użyte. Kontenery mogą być budowane przy niektórych lub wszystkich ustawieniach konfiguracji, tak aby _nie_ były potrzebne po uruchomieniu kontenera.
 
-Po utworzeniu nowej warstwy kontenera (z ustawieniami) i przetestowaniu jej lokalnie można przechowywać kontener w rejestrze kontenerów. Po uruchomieniu kontenera będą potrzebne tylko te ustawienia, które nie są obecnie przechowywane w kontenerze. Kontener rejestru prywatnego zawiera przestrzeń konfiguracyjną do przekazania tych ustawień w programie.
+Po tej nowej warstwie kontenera (z ustawieniami) i przetestowaniu go lokalnie, można przechowywać kontener w rejestrze kontenerów. Po uruchomieniu kontenera będzie potrzebował tylko tych ustawień, które nie są obecnie przechowywane w kontenerze. Kontener rejestru prywatnego zapewnia miejsce konfiguracji do przekazania tych ustawień.
 
-## <a name="docker-run-syntax"></a>Składnia uruchomienia platformy Docker
+## <a name="docker-run-syntax"></a>Składnia uruchamiania platformy Docker
 
-Wszystkie `docker run` przykłady w tym dokumencie zakładają konsolę systemu Windows z znakiem kontynuacji wiersza `^`. Do własnego użytku należy wziąć pod uwagę następujące kwestie:
+Wszelkie `docker run` przykłady w tym dokumencie `^` zakładają, że konsola systemu Windows ze znakiem kontynuacji wiersza. Należy wziąć pod uwagę następujące kwestie na własny użytek:
 
-* Nie należy zmieniać kolejność argumentów, jeśli nie znasz bardzo kontenerów platformy docker.
-* Jeśli używasz systemu operacyjnego innego niż Windows lub konsoli innej niż konsola systemu Windows, użyj prawidłowej konsoli/terminalu, składni folderu dla instalacji i znaku kontynuacji wiersza dla konsoli i systemu.  Ponieważ kontener Cognitive Services jest systemem operacyjnym Linux, instalacja docelowa używa składni folderu w stylu systemu Linux.
-* `docker run` przykłady użyj katalogu poza dyskiem `c:`, aby uniknąć konfliktów uprawnień w systemie Windows. Jeśli musisz użyć określonego katalogu jako katalog wejściowy może być konieczne przyznanie platformy docker usługi uprawnienia.
+* Nie należy zmieniać kolejności argumentów, chyba że są bardzo zaznajomieni z kontenerów docker.
+* Jeśli używasz systemu operacyjnego innego niż Windows lub konsoli innej niż konsola Systemu Windows, użyj odpowiedniej konsoli/terminala, składni folderów dla instalacji i znaku kontynuacji linii dla konsoli i systemu.  Ponieważ kontener usług Cognitive Services jest systemem operacyjnym Linux, instalacja docelowa używa składni folderów w stylu linuksa.
+* `docker run`przykłady użyć katalogu poza `c:` dyskiem, aby uniknąć konfliktów uprawnień w systemie Windows. Jeśli musisz użyć określonego katalogu jako katalogu wejściowego, może być konieczne udzielenie uprawnienia usługi docker.
 
-## <a name="store-no-configuration-settings-in-image"></a>Nie przechowuj ustawień konfiguracji w obrazie
+## <a name="store-no-configuration-settings-in-image"></a>Przechowywanie ustawień konfiguracji na obrazie
 
-Przykład `docker run` polecenia dla każdej usługi nie przechowują żadnych ustawień konfiguracyjnych w kontenerze. Po uruchomieniu kontenera z poziomu konsoli lub usługi rejestru te ustawienia konfiguracji muszą zostać przekazane. Kontener rejestru prywatnego zawiera przestrzeń konfiguracyjną do przekazania tych ustawień w programie.
+Przykładowe `docker run` polecenia dla każdej usługi nie przechowują żadnych ustawień konfiguracji w kontenerze. Po uruchomieniu kontenera z konsoli lub usługi rejestru te ustawienia konfiguracji muszą być przekazywać. Kontener rejestru prywatnego zapewnia miejsce konfiguracji do przekazania tych ustawień.
 
-## <a name="reuse-recipe-store-all-configuration-settings-with-container"></a>Ponownie Użyj przepisu: Przechowuj wszystkie ustawienia konfiguracji przy użyciu kontenera
+## <a name="reuse-recipe-store-all-configuration-settings-with-container"></a>Ponowne użycie przepisu: przechowuj wszystkie ustawienia konfiguracji za pomocą kontenera
 
-Aby można było przechowywać wszystkie ustawienia konfiguracji, należy utworzyć `Dockerfile` przy użyciu tych ustawień.
+Aby zapisać wszystkie ustawienia konfiguracji, `Dockerfile` utwórz z tymi ustawieniami.
 
 Problemy z tym podejściem:
 
-* Nowy kontener ma oddzielną nazwę i tag od oryginalnego kontenera.
+* Nowy kontener ma osobną nazwę i tag z oryginalnego kontenera.
 * Aby zmienić te ustawienia, należy zmienić wartości pliku dockerfile, odbudować obraz i ponownie opublikować w rejestrze.
-* Jeśli ktoś uzyska dostęp do rejestru kontenerów lub hosta lokalnego, może uruchomić kontener i użyć punktów końcowych Cognitive Services.
-* Jeśli usługa poznawcze nie wymaga instalacji wejściowych, nie dodawaj `COPY` wierszy do pliku dockerfile.
+* Jeśli ktoś uzyska dostęp do rejestru kontenerów lub lokalnego hosta, może uruchomić kontener i użyć punktów końcowych usług Cognitive Services.
+* Jeśli usługa Cognitive Service nie wymaga instalacji wejściowych, nie dodawaj `COPY` wierszy do pliku Dockerfile.
 
-Utwórz pliku dockerfile, pobierając z istniejącego kontenera Cognitive Services, którego chcesz użyć, a następnie Użyj poleceń platformy Docker w pliku dockerfile, aby ustawić lub ściągnąć informacje wymagane przez kontener.
+Utwórz plik Dockerfile, pobierając z istniejącego kontenera usług Cognitive Services, którego chcesz użyć, a następnie użyj poleceń platformy docker w pliku Dockerfile, aby ustawić lub wyciągnąć informacje potrzebne kontenerowi.
 
-Ten przykład:
+W tym przykładzie:
 
-* Ustawia punkt końcowy rozliczeń, `{BILLING_ENDPOINT}` z klucza środowiska hosta przy użyciu `ENV`.
-* Ustawia klucz interfejsu API rozliczeń, `{ENDPOINT_KEY}` z klucza środowiska hosta przy użyciu funkcji ENV.
+* Ustawia punkt końcowy rozliczeń `{BILLING_ENDPOINT}` z klucza środowiska `ENV`hosta przy użyciu programu .
+* Ustawia klucz api rozliczeń `{ENDPOINT_KEY}` z klucza środowiska hosta przy użyciu env.
 
-### <a name="reuse-recipe-store-billing-settings-with-container"></a>Ponownie Użyj przepisu: Zapisz ustawienia rozliczeń za pomocą kontenera
+### <a name="reuse-recipe-store-billing-settings-with-container"></a>Ponowne użycie przepisu: ustawienia rozliczeń sklepu z kontenerem
 
-Ten przykład pokazuje, jak utworzyć kontener tonacji "analiza tekstu" z pliku dockerfile.
+W tym przykładzie pokazano, jak utworzyć kontener tonacji analizy tekstu z pliku Dockerfile.
 
 ```Dockerfile
 FROM mcr.microsoft.com/azure-cognitive-services/sentiment:latest
@@ -64,15 +64,15 @@ ENV apikey={ENDPOINT_KEY}
 ENV EULA=accept
 ```
 
-Kompiluj i uruchamiaj kontener [lokalnie](#how-to-use-container-on-your-local-host) lub z [kontenera prywatnego rejestru](#how-to-add-container-to-private-registry) , zgodnie z potrzebami.
+W razie potrzeby skompiluj i uruchom kontener [lokalnie](#how-to-use-container-on-your-local-host) lub z [prywatnego kontenera rejestru.](#how-to-add-container-to-private-registry)
 
-### <a name="reuse-recipe-store-billing-and-mount-settings-with-container"></a>Ponownie Użyj przepisu: Zapisz ustawienia rozliczeń i instalacji za pomocą kontenera
+### <a name="reuse-recipe-store-billing-and-mount-settings-with-container"></a>Ponowne użycie przepisu: ustawienia rozliczeń i instalacji sklepu z kontenerem
 
-Ten przykład pokazuje, jak używać Language Understanding, zapisywania rozliczeń i modeli z pliku dockerfile.
+W tym przykładzie pokazano, jak używać rozumienia języka, zapisywanie rozliczeń i modeli z Dockerfile.
 
-* Kopiuje plik modelu Language Understanding (LUIS) z systemu plików hosta przy użyciu `COPY`.
-* Kontener LUIS obsługuje więcej niż jeden model. Jeśli wszystkie modele są przechowywane w tym samym folderze, należy wykonać jedną `COPY` instrukcji.
-* Uruchom plik platformy Docker z względnego elementu nadrzędnego katalogu wejściowego modelu. W poniższym przykładzie Uruchom `docker build` i `docker run` polecenia z względnej klasy nadrzędnej `/input`. Pierwszy `/input` w poleceniu `COPY` jest katalogiem komputera hosta. Drugim `/input` jest katalog kontenera.
+* Kopiuje plik modelu rozumienia języka (LUIS) z `COPY`systemu plików hosta za pomocą pliku .
+* Kontener usługi LUIS obsługuje więcej niż jeden model. Jeśli wszystkie modele są przechowywane w tym `COPY` samym folderze, wszystkie potrzebne są jedno instrukcja.
+* Uruchom plik docker z względnego nadrzędnego katalogu wejściowego modelu. W poniższym przykładzie `docker build` `docker run` uruchom polecenia i polecenia `/input`z względnego rodzica . Pierwszym `/input` z `COPY` nich jest katalog komputera-hosta. Drugi `/input` to katalog kontenera.
 
 ```Dockerfile
 FROM <container-registry>/<cognitive-service-container-name>:<tag>
@@ -82,17 +82,17 @@ ENV EULA=accept
 COPY /input /input
 ```
 
-Kompiluj i uruchamiaj kontener [lokalnie](#how-to-use-container-on-your-local-host) lub z [kontenera prywatnego rejestru](#how-to-add-container-to-private-registry) , zgodnie z potrzebami.
+W razie potrzeby skompiluj i uruchom kontener [lokalnie](#how-to-use-container-on-your-local-host) lub z [prywatnego kontenera rejestru.](#how-to-add-container-to-private-registry)
 
-## <a name="how-to-use-container-on-your-local-host"></a>Jak używać kontenera na hoście lokalnym
+## <a name="how-to-use-container-on-your-local-host"></a>Jak używać kontenera na lokalnym hoście
 
-Aby skompilować plik platformy Docker, Zastąp `<your-image-name>` nową nazwą obrazu, a następnie użyj:
+Aby utworzyć plik platformy `<your-image-name>` Docker, zastąp nową nazwą obrazu, a następnie użyj:
 
 ```console
 docker build -t <your-image-name> .
 ```
 
-Aby uruchomić obraz i usunąć go po zatrzymaniu kontenera (`--rm`):
+Aby uruchomić obraz i usunąć go po`--rm`zatrzymaniu kontenera ( ):
 
 ```console
 docker run --rm <your-image-name>
@@ -100,49 +100,49 @@ docker run --rm <your-image-name>
 
 ## <a name="how-to-add-container-to-private-registry"></a>Jak dodać kontener do rejestru prywatnego
 
-Wykonaj następujące kroki, aby użyć pliku dockerfile i umieścić nowy obraz w rejestrze kontenera prywatnego.  
+Wykonaj następujące kroki, aby użyć pliku Dockerfile i umieścić nowy obraz w rejestrze kontenerów prywatnych.  
 
-1. Utwórz `Dockerfile` z tekstem używanym do ponownego użycia przepisu. `Dockerfile` nie ma rozszerzenia.
+1. Utwórz `Dockerfile` z tekstem z przepisu ponownego użycia. A `Dockerfile` nie ma rozszerzenia.
 
-1. Zamień wszystkie wartości w nawiasach kątowych na własne wartości.
+1. Zastąp dowolne wartości w nawiasach kątowych własnymi wartościami.
 
-1. Skompiluj plik do obrazu w wierszu polecenia lub terminalu przy użyciu poniższego polecenia. Zastąp wartości w nawiasach kątowych, `<>`z własną nazwą kontenera i tagiem.  
+1. Tworzenie pliku do obrazu w wierszu polecenia lub terminalu, za pomocą następującego polecenia. Zastąp wartości w `<>`nawiasach kątowych, własną nazwą kontenera i znacznikiem.  
 
-    Opcja tagu `-t`jest sposobem dodawania informacji o zmianach w kontenerze. Na przykład nazwa kontenera `modified-LUIS` wskazuje, że oryginalny kontener został warstwowy. Nazwa tagu `with-billing-and-model` wskazuje sposób modyfikacji kontenera Language Understanding (LUIS).
+    Opcja tagu `-t`, to sposób na dodanie informacji o tym, co zostało zmienione dla kontenera. Na przykład nazwa kontenera `modified-LUIS` wskazuje, że oryginalny kontener został warstwowy. Nazwa tagu `with-billing-and-model` wskazuje, jak zmodyfikowano kontener rozumienia języka (LUIS).
 
     ```Bash
     docker build -t <your-new-container-name>:<your-new-tag-name> .
     ```
 
-1. Zaloguj się do interfejsu wiersza polecenia platformy Azure z poziomu konsoli programu. To polecenie otwiera przeglądarkę i wymaga uwierzytelnienia. Po uwierzytelnieniu można zamknąć przeglądarkę i kontynuować pracę w konsoli programu.
+1. Zaloguj się do interfejsu wiersza polecenia platformy Azure z konsoli. To polecenie otwiera przeglądarkę i wymaga uwierzytelnienia. Po uwierzytelnieniu można zamknąć przeglądarkę i kontynuować pracę w konsoli.
 
     ```azurecli
     az login
     ```
 
-1. Zaloguj się do prywatnego rejestru przy użyciu interfejsu wiersza polecenia platformy Azure z konsoli programu.
+1. Zaloguj się do rejestru prywatnego za pomocą interfejsu wiersza polecenia platformy Azure z konsoli.
 
-    Zastąp wartości w nawiasach kątowych, `<my-registry>`przy użyciu własnej nazwy rejestru.  
+    Zastąp wartości w `<my-registry>`nawiasach kątowych własną nazwą rejestru.  
 
     ```azurecli
     az acr login --name <my-registry>
     ```
 
-    Możesz również zalogować się przy użyciu logowania platformy Docker, jeśli przypisano nazwę główną usługi.
+    Można również zalogować się za pomocą logowania docker, jeśli są przypisane jednostki usługi.
 
     ```Bash
     docker login <my-registry>.azurecr.io
     ```
 
-1. Oznacz kontener przy użyciu lokalizacji w rejestrze prywatnym. Zastąp wartości w nawiasach kątowych, `<my-registry>`przy użyciu własnej nazwy rejestru. 
+1. Oznaczanie kontenera lokalizacją rejestru prywatnego. Zastąp wartości w `<my-registry>`nawiasach kątowych własną nazwą rejestru. 
 
     ```Bash
     docker tag <your-new-container-name>:<your-new-tag-name> <my-registry>.azurecr.io/<your-new-container-name-in-registry>:<your-new-tag-name>
     ```
 
-    Jeśli nie używasz nazwy tagu, `latest` jest implikowana.
+    Jeśli nie używasz nazwy tagu, `latest` jest implikowane.
 
-1. Wypchnij nowy obraz do prywatnego rejestru kontenerów. Po wyświetleniu prywatnego rejestru kontenerów nazwa kontenera użyta w poniższym poleceniu interfejsu wiersza polecenia będzie nazwą repozytorium.
+1. Wypchnij nowy obraz do rejestru kontenerów prywatnych. Podczas wyświetlania rejestru kontenerów prywatnych nazwa kontenera używana w następującym poleceniu interfejsu wiersza polecenia będzie nazwą repozytorium.
 
     ```Bash
     docker push <my-registry>.azurecr.io/<your-new-container-name-in-registry>:<your-new-tag-name>

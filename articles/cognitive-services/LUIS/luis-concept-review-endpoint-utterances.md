@@ -1,7 +1,7 @@
 ---
-title: Przeglądanie użytkownika wypowiedź — LUIS
+title: Przeglądanie wypowiedzi użytkownika — usługa LUIS
 titleSuffix: Azure Cognitive Services
-description: Aktywna nauka, swoje wypowiedzi punkt końcowy Przegląd poprawne intencji i jednostki. Usługa LUIS wybiera wypowiedzi punktu końcowego, który jest nieznany.
+description: Dzięki aktywnemu uczeniu wypowiedzi punktu końcowego przeglądu dla poprawnej intencji i jednostki. Usługa LUIS wybiera wypowiedzi punktu końcowego, o które nie ma pewności.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,37 +12,37 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: diberry
 ms.openlocfilehash: 375d4b4e7c3fcafbdfde1ff447bedc3e16aff2f2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79219941"
 ---
-# <a name="concepts-for-enabling-active-learning-by-reviewing-endpoint-utterances"></a>Pojęcia dotyczące włączania aktywne uczenie, przeglądając wypowiedzi punktu końcowego
-Aktywna nauka jest jednym z trzech strategii w celu zwiększenia dokładności prognozy i najłatwiejsza do wdrożenia. Aktywna nauka, swoje wypowiedzi punkt końcowy Przegląd poprawne intencji i jednostki. Usługa LUIS wybiera wypowiedzi punktu końcowego, który jest nieznany.
+# <a name="concepts-for-enabling-active-learning-by-reviewing-endpoint-utterances"></a>Pojęcia dotyczące włączania aktywnego uczenia się przez przeglądanie wypowiedzi punktów końcowych
+Aktywne uczenie się jest jedną z trzech strategii poprawiania dokładności przewidywania i najłatwiejszych do wdrożenia. Dzięki aktywnemu uczeniu wypowiedzi punktu końcowego przeglądu dla poprawnej intencji i jednostki. Usługa LUIS wybiera wypowiedzi punktu końcowego, o które nie ma pewności.
 
-## <a name="what-is-active-learning"></a>Co to jest aktywna nauka
-Aktywna nauka jest procesem dwuetapowym. Po pierwsze LUIS wybiera wypowiedzi otrzymywanych w punkcie końcowym aplikacji, które wymagają weryfikacji. Drugi krok jest wykonywany przez właściciela aplikacji lub współpracownika, aby zweryfikować wybrane wyrażenia długości do [przeglądu](luis-how-to-review-endpoint-utterances.md), w tym odpowiednie zamierzenie i wszystkie jednostki w ramach zamiaru. Po zapoznaniu się z wypowiedzi, szkolenie i ponownie Opublikuj aplikację.
+## <a name="what-is-active-learning"></a>Czym jest aktywne uczenie się
+Aktywne uczenie się jest procesem dwuetapowym. Najpierw usługa LUIS wybiera wypowiedzi, które otrzymuje w punkcie końcowym aplikacji, które wymagają weryfikacji. Drugi krok jest wykonywany przez właściciela aplikacji lub współpracownika, aby sprawdzić poprawność wybranych wypowiedzi do [przeglądu,](luis-how-to-review-endpoint-utterances.md)w tym poprawne intencji i wszystkie jednostki w ramach intencji. Po przejrzeniu wypowiedzi, pociągu i opublikować aplikację ponownie.
 
-## <a name="which-utterances-are-on-the-review-list"></a>Które wypowiedzi znajdują się na liście przeglądu
-LUIS wypowiedzi są dodawane do listy przeglądu, jeśli u góry, wyzwalania intencji znajduje się niskim wynikiem lub zbyt Zamknij oceny najważniejszych dwóch intencji.
+## <a name="which-utterances-are-on-the-review-list"></a>Które wypowiedzi znajdują się na liście recenzji
+Usługa LUIS dodaje wypowiedzi do listy recenzji, gdy górna intencja wypalania ma niski wynik lub wyniki dwóch najlepszych intencji są zbyt blisko.
 
-## <a name="single-pool-for-utterances-per-app"></a>Jednej puli dla wypowiedzi na aplikację
-Lista **wyrażenia długości punktu końcowego recenzji** nie zmienia się w zależności od wersji. Jest tylko jedna pula wypowiedzi do przejrzenia, niezależnie od aktywnie edytowanej wersji wypowiedzi ani od wersji aplikacji opublikowanej w punkcie końcowym.
+## <a name="single-pool-for-utterances-per-app"></a>Pojedyncza pula wypowiedzi na aplikację
+Lista **przejrzyj wypowiedzi punktu końcowego** nie zmienia się na podstawie wersji. Jest tylko jedna pula wypowiedzi do przejrzenia, niezależnie od aktywnie edytowanej wersji wypowiedzi ani od wersji aplikacji opublikowanej w punkcie końcowym.
 
 ## <a name="where-are-the-utterances-from"></a>Gdzie są wypowiedzi z
-Punkt końcowy wypowiedzi są pobierane z zapytań przez użytkownika końcowego na punkt końcowy HTTP w aplikacji. Jeśli Twoja aplikacja nie został opublikowany lub nie otrzymał trafień jeszcze, nie masz wypowiedzi, aby przejrzeć. Odebranie nie trafienia punktu końcowego dla określonych przeznaczenie lub jednostki nie masz wypowiedzi do przeglądania, zawierające je.
+Wypowiedzi punktu końcowego są pobierane z zapytań użytkowników końcowych w punkcie końcowym HTTP aplikacji. Jeśli aplikacja nie została opublikowana lub nie otrzymała jeszcze trafień, nie masz żadnych wypowiedzi do przejrzenia. Jeśli nie trafienia punktu końcowego są odbierane dla określonego zamiaru lub jednostki, nie masz wypowiedzi do przeglądu, które je zawierają.
 
-## <a name="schedule-review-periodically"></a>Okresowo przeglądu harmonogramu
-Przeglądania sugerowanych wypowiedzi nie musi odbywać się codziennie, ale powinna być częścią Twojego regularnej konserwacji usługi LUIS.
+## <a name="schedule-review-periodically"></a>Okresowo planuj przegląd
+Przeglądanie sugerowane wypowiedzi nie musi być wykonywane codziennie, ale powinny być częścią regularnej konserwacji usługi LUIS.
 
-## <a name="delete-review-items-programmatically"></a>Usuń elementy przeglądu programowe
-Użyj interfejsu API **[usuwania bez etykiet wyrażenia długości](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/58b6f32139e2bb139ce823c9)** . Przed usunięciem wykonaj kopię zapasową tych wyrażenia długości, **[eksportując pliki dziennika](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36)** .
+## <a name="delete-review-items-programmatically"></a>Programowo usuwanie elementów recenzji
+Użyj interfejsu API **[usuwania wypowiedzi bez etykiety.](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/58b6f32139e2bb139ce823c9)** Wykonaj te wypowiedzi przed usunięciem, **[eksportując pliki dziennika](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36)**.
 
-## <a name="enable-active-learning"></a>Włącz aktywną naukę
+## <a name="enable-active-learning"></a>Włącz aktywne uczenie się
 
-Aby włączyć aktywną naukę, należy zarejestrować zapytania użytkownika. Jest to realizowane przez wywołanie [zapytania punktu końcowego](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint) z `log=true` ciągu QueryString i wartością.
+Aby włączyć aktywne uczenie, należy rejestrować zapytania użytkowników. Jest to realizowane przez wywołanie [kwerendy punktu końcowego](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint) `log=true` z querystring parametru i wartości.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się, jak [przeglądać](luis-how-to-review-endpoint-utterances.md) punkt końcowy wyrażenia długości
+* Dowiedz się, jak [przeglądać](luis-how-to-review-endpoint-utterances.md) wypowiedzi punktów końcowych

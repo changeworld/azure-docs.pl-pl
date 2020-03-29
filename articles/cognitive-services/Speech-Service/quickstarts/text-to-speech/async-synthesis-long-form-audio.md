@@ -1,7 +1,7 @@
 ---
-title: 'Szybki Start: synteza asynchroniczna dla długich form audio (wersja zapoznawcza) — usługa mowy'
+title: 'Szybki start: Synteza asynchroniza dla dźwięku o długiej formie (wersja zapoznawcza) — usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: Używaj długiego interfejsu API audio, aby asynchronicznie konwertować tekst na mowę i pobrać dane wyjściowe audio z identyfikatora URI dostarczonego przez usługę. Ten interfejs API REST jest idealnym rozwiązaniem dla dostawców zawartości, którzy muszą konwertować pliki tekstowe o więcej niż 10 000 znaków lub 50 akapitów na mowę.
+description: Użyj interfejsu API long audio, aby asynchronicznie konwertować tekst na mowę i pobierać dane wyjściowe audio z identyfikatora URI dostarczonego przez usługę. Ten interfejs API REST jest idealny dla dostawców zawartości, którzy muszą konwertować pliki tekstowe większe niż 10 000 znaków lub 50 akapitów na mowę syntetyzowaną.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,30 +11,30 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
 ms.openlocfilehash: d3cd330001bcf53e7bd4fb9e6955c76a9ef20511
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78331080"
 ---
-# <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>Szybki Start: synteza asynchroniczna dla długich form audio w języku Python (wersja zapoznawcza)
+# <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>Szybki start: Asynchroniowa synteza dla dźwięku o długiej formie w Pythonie (wersja zapoznawcza)
 
-W tym przewodniku szybki start użyjesz długiego interfejsu API audio do asynchronicznego konwertowania tekstu na mowę i pobrania danych wyjściowych audio z identyfikatora URI dostarczonego przez usługę. Ten interfejs API REST jest idealnym rozwiązaniem dla dostawców zawartości, którzy muszą wyszukiwać dźwięk z tekstu większego niż 5 000 znaków (lub więcej niż 10 minut). Aby uzyskać więcej informacji, zobacz [Long audio API](../../long-audio-api.md).
+W tym przewodniku Szybki start użyjesz interfejsu API long audio do asynchronicznie konwertowania tekstu na mowę i pobierania danych wyjściowych audio z identyfikatora URI dostarczonego przez usługę. Ten interfejs API REST jest idealny dla dostawców zawartości, którzy muszą syntetyzować dźwięk z tekstu większego niż 5000 znaków (lub więcej niż 10 minut długości). Aby uzyskać więcej informacji, zobacz [Long Audio API](../../long-audio-api.md).
 
 > [!NOTE]
-> Asynchronicznej syntezy audio o długim formacie można używać tylko z [niestandardowymi głosymi neuronowych](../../how-to-custom-voice.md#custom-neural-voices).
+> Synteza asynchronizalna dla dźwięku o długiej formie może być używana tylko z [niestandardowymi głosami neuronowym.](../../how-to-custom-voice.md#custom-neural-voices)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Ten przewodnik Szybki start wymaga następujących elementów:
 
-* Python 2.7. x lub 3. x.
-* [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download)lub ulubiony Edytor tekstu.
-* Subskrypcja platformy Azure i klucz subskrypcji usługi rozpoznawania mowy. [Utwórz konto platformy Azure](../../get-started.md#new-resource) i [Utwórz zasób mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-resource) , aby uzyskać klucz. Podczas tworzenia zasobu mowy upewnij się, że warstwa cenowa jest ustawiona na **S0**, a lokalizacja jest ustawiona na [obsługiwany region](../../regions.md#standard-and-neural-voices).
+* Python 2.7.x lub 3.x.
+* [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download)lub ulubiony edytor tekstu.
+* Subskrypcja platformy Azure i klucz subskrypcji usługi mowy. [Utwórz konto platformy Azure](../../get-started.md#new-resource) i [utwórz zasób mowy,](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-resource) aby uzyskać klucz. Podczas tworzenia zasobu Mowy upewnij się, że warstwa cenowa jest ustawiona na **S0,** a lokalizacja jest [ustawiona](../../regions.md#standard-and-neural-voices)na obsługiwany region .
 
 ## <a name="create-a-project-and-import-required-modules"></a>Tworzenie projektu i importowanie wymaganych modułów
 
-Utwórz nowy projekt języka Python przy użyciu ulubionego środowiska IDE lub edytora. Następnie skopiuj ten fragment kodu do pliku o nazwie `voice_synthesis_client.py`.
+Utwórz nowy projekt języka Python przy użyciu ulubionego środowiska IDE lub edytora. Następnie skopiuj ten fragment `voice_synthesis_client.py`kodu do pliku o nazwie .
 
 ```python
 import argparse
@@ -52,11 +52,11 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 > [!NOTE]
 > Jeśli te moduły nie były używane, należy je zainstalować przed uruchomieniem programu. Aby zainstalować te pakiety, uruchom polecenie `pip install requests urllib3`.
 
-Te moduły są używane do analizowania argumentów, konstruowania żądania HTTP i wywoływania interfejsu API REST typu "Zamiana tekstu na mowę".
+Moduły te są używane do analizowania argumentów, konstruowania żądania HTTP i wywoływania interfejsu API REST audio od strony tekstu na mowę.
 
-## <a name="get-a-list-of-supported-voices"></a>Pobierz listę obsługiwanych głosów
+## <a name="get-a-list-of-supported-voices"></a>Wyświetlanie listy obsługiwanych głosów
 
-Ten kod pobiera listę dostępnych głosów, których można użyć do konwersji zamiany tekstu na mowę. Dodaj kod do `voice_synthesis_client.py`:
+Ten kod zawiera listę dostępnych głosów, których można użyć do konwersji tekstu na mowę. Dodaj kod `voice_synthesis_client.py`do:
 
 ```python
 parser = argparse.ArgumentParser(description='Cris client tool to submit voice synthesis requests.')
@@ -80,10 +80,10 @@ if args.voices:
 
 ### <a name="test-your-code"></a>testowanie kodu
 
-Przetestujmy to, co zostało zrobione dotąd. Musisz zaktualizować kilka elementów w żądaniu poniżej:
+Sprawdźmy, co zrobiłeś do tej pory. Musisz zaktualizować kilka rzeczy w poniższym żądaniu:
 
-* Zastąp `<your_key>` kluczem subskrypcji usługi rozpoznawania mowy. Te informacje są dostępne na karcie **Przegląd** dla zasobu w [Azure Portal](https://aka.ms/azureportal).
-* Zastąp `<region>` w regionie, w którym został utworzony zasób mowy (na przykład: `eastus` lub `westus`). Te informacje są dostępne na karcie **Przegląd** dla zasobu w [Azure Portal](https://aka.ms/azureportal).
+* Zamień `<your_key>` klucz subskrypcji usługi mowy. Te informacje są dostępne na karcie **Przegląd** zasobu w [witrynie Azure portal](https://aka.ms/azureportal).
+* Zamień `<region>` na region, w którym utworzono zasób mowy (na przykład: `eastus` lub `westus`). Te informacje są dostępne na karcie **Przegląd** zasobu w [witrynie Azure portal](https://aka.ms/azureportal).
 
 Uruchom następujące polecenie:
 
@@ -91,7 +91,7 @@ Uruchom następujące polecenie:
 python voice_synthesis_client.py --voices -key <your_key> -region <Region>
 ```
 
-Zobaczysz dane wyjściowe, które wyglądają następująco:
+Zobaczysz dane wyjściowe, które wygląda następująco:
 
 ```console
 There are xx voices available:
@@ -100,16 +100,16 @@ Name: Microsoft Server Speech Text to Speech Voice (en-US, xxx), Description: xx
 Name: Microsoft Server Speech Text to Speech Voice (zh-CN, xxx), Description: xxx , Id: xxx, Locale: zh-CN, Gender: Female, PublicVoice: xxx, Created: 2019-08-26T04:55:39Z
 ```
 
-## <a name="prepare-input-files"></a>Przygotuj pliki wejściowe
+## <a name="prepare-input-files"></a>Przygotowywanie plików wejściowych
 
-Przygotuj wejściowy plik tekstowy. Może to być zwykły tekst lub tekst SSML. Wymagania dotyczące pliku wejściowego znajdują się w temacie How to [Prepare content for syntezy](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#prepare-content-for-synthesis).
+Przygotowanie wejściowego pliku tekstowego. Może to być zwykły tekst lub tekst SSML. Aby zapoznać się z wymaganiami dotyczącymi plików wejściowych, zobacz jak przygotować zawartość do [syntezy](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#prepare-content-for-synthesis).
 
-## <a name="convert-text-to-speech"></a>Konwertuj tekst na mowę
+## <a name="convert-text-to-speech"></a>Konwertowanie tekstu na mowę
 
-Po przygotowaniu wejściowego pliku tekstowego Dodaj następujący kod do syntezy mowy, aby `voice_synthesis_client.py`:
+Po przygotowaniu wejściowego pliku tekstowego dodaj `voice_synthesis_client.py`ten kod do syntezy mowy do:
 
 > [!NOTE]
-> "concatenateResult" jest opcjonalnym parametrem. Jeśli ten parametr nie jest ustawiony, wyjście audio zostanie wygenerowane na akapit. Możesz również połączyć dźwięk do 1 wyjściowego przez ustawienie parametru. Domyślnie wyjście audio jest ustawione na RIFF-16khz-16bit-mono-PCM. Aby uzyskać więcej informacji na temat obsługiwanych wyjść audio, zobacz [formaty danych wyjściowych audio](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#audio-output-formats).
+> 'concatenateResult' jest parametrem opcjonalnym. Jeśli ten parametr nie jest ustawiony, wyjścia audio zostaną wygenerowane na akapit. Można również łączyć dźwięki z 1 wyjściem, ustawiając parametr. Domyślnie wyjście audio jest ustawione na riff-16khz-16bit-mono-pcm. Aby uzyskać więcej informacji na temat obsługiwanych wyjść audio, zobacz [Formaty wyjścia audio](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#audio-output-formats).
 
 ```python
 parser.add_argument('--submit', action="store_true", default=False, help='submit a synthesis request')
@@ -172,26 +172,26 @@ if args.submit:
 
 ### <a name="test-your-code"></a>testowanie kodu
 
-Utwórzmy żądanie syntezy tekstu przy użyciu pliku wejściowego jako źródła. Musisz zaktualizować kilka elementów w żądaniu poniżej:
+Złóżmy żądanie syntezy tekstu przy użyciu pliku wejściowego jako źródła. Musisz zaktualizować kilka rzeczy w poniższym żądaniu:
 
-* Zastąp `<your_key>` kluczem subskrypcji usługi rozpoznawania mowy. Te informacje są dostępne na karcie **Przegląd** dla zasobu w [Azure Portal](https://aka.ms/azureportal).
-* Zastąp `<region>` w regionie, w którym został utworzony zasób mowy (na przykład: `eastus` lub `westus`). Te informacje są dostępne na karcie **Przegląd** dla zasobu w [Azure Portal](https://aka.ms/azureportal).
-* Zastąp `<input>` ścieżką do pliku tekstowego, który został przygotowany do zamiany tekstu na mowę.
-* Zastąp `<locale>` odpowiednimi ustawieniami regionalnymi danych wyjściowych. Aby uzyskać więcej informacji, zobacz [Obsługa języków](../../language-support.md#neural-voices).
-* Zastąp `<voice_guid>` pożądanym głosem wyjściowym. Użyj jednego z głosów zwracanego przez [uzyskanie listy obsługiwanych głosów](#get-a-list-of-supported-voices).
+* Zamień `<your_key>` klucz subskrypcji usługi mowy. Te informacje są dostępne na karcie **Przegląd** zasobu w [witrynie Azure portal](https://aka.ms/azureportal).
+* Zamień `<region>` na region, w którym utworzono zasób mowy (na przykład: `eastus` lub `westus`). Te informacje są dostępne na karcie **Przegląd** zasobu w [witrynie Azure portal](https://aka.ms/azureportal).
+* Zastąp `<input>` ścieżką do pliku tekstowego przygotowanego dla zamiany tekstu na mowę.
+* Zamień `<locale>` na żądane ustawienia regionalne danych wyjściowych. Aby uzyskać więcej informacji, zobacz [obsługa języka](../../language-support.md#neural-voices).
+* Wymień `<voice_guid>` na żądany głos wyjściowy. Użyj jednego z głosów zwróconych przez [Pobierz listę obsługiwanych głosów](#get-a-list-of-supported-voices).
 
-Konwertuj tekst na mowę przy użyciu tego polecenia:
+Konwertuj tekst na mowę za pomocą tego polecenia:
 
 ```console
 python voice_synthesis_client.py --submit -key <your_key> -region <Region> -file <input> -locale <locale> -voiceId <voice_guid>
 ```
 
 > [!NOTE]
-> Jeśli masz więcej niż 1 pliki wejściowe, musisz przesłać wiele żądań. Istnieją pewne ograniczenia, które należy wziąć pod uwagę. 
-> * Klient może przesłać do **5** żądań na serwer na sekundę dla każdego konta subskrypcji platformy Azure. W przypadku przekroczenia ograniczenia klient otrzyma kod błędu 429 (zbyt wiele żądań). Zmniejsz liczbę żądań na sekundę
-> * Serwer może działać i kolejkować do **120** żądań dla każdego konta subskrypcji platformy Azure. W przypadku przekroczenia ograniczenia serwer zwróci kod błędu 429 (zbyt wiele żądań). Zaczekaj i unikaj przesyłania nowego żądania do momentu ukończenia niektórych żądań
+> Jeśli masz więcej niż 1 pliki wejściowe, musisz przesłać wiele żądań. Istnieją pewne ograniczenia, które muszą być świadome. 
+> * Klient może przesłać do **serwera maksymalnie 5** żądań na sekundę dla każdego konta subskrypcji platformy Azure. Jeśli przekroczy ograniczenie, klient otrzyma kod błędu 429 (zbyt wiele żądań). Zmniejsz kwotę żądania na sekundę
+> * Serwer może uruchamiać i kolejkować do **120** żądań dla każdego konta subskrypcji platformy Azure. Jeśli przekroczy ograniczenie, serwer zwróci kod błędu 429 (zbyt wiele żądań). Poczekaj i unikaj składania nowych wniosków, dopóki niektóre wnioski nie zostaną zakończone
 
-Zobaczysz dane wyjściowe, które wyglądają następująco:
+Zobaczysz dane wyjściowe, które wygląda następująco:
 
 ```console
 Submit synthesis request successful
@@ -209,13 +209,13 @@ Checking status
 Succeeded... Result file downloaded : xxxx.zip
 ```
 
-Wynik zawiera tekst wejściowy i pliki wyjściowe audio, które są generowane przez usługę. Te pliki można pobrać w pliku zip.
+Wynik zawiera tekst wejściowy i pliki wyjściowe audio, które są generowane przez usługę. Możesz pobrać te pliki w zip.
 
-## <a name="remove-previous-requests"></a>Usuń poprzednie żądania
+## <a name="remove-previous-requests"></a>Usuwanie poprzednich żądań
 
-Serwer będzie przechowywać do **20 000** żądań dla każdego konta subskrypcji platformy Azure. Jeśli kwota żądania przekracza to ograniczenie, Usuń poprzednie żądania przed wprowadzeniem nowych. Jeśli nie usuniesz istniejących żądań, otrzymasz powiadomienie o błędzie.
+Serwer będzie przechowywać do **20 000** żądań dla każdego konta subskrypcji platformy Azure. Jeśli kwota żądania przekroczy to ograniczenie, usuń poprzednie wnioski przed dokonaniem nowych. Jeśli nie usuniesz istniejących żądań, otrzymasz powiadomienie o błędzie.
 
-Dodaj kod do `voice_synthesis_client.py`:
+Dodaj kod `voice_synthesis_client.py`do:
 
 ```python
 parser.add_argument('--syntheses', action="store_true", default=False, help='print synthesis list')
@@ -248,10 +248,10 @@ if args.delete:
 
 ### <a name="test-your-code"></a>testowanie kodu
 
-Teraz sprawdźmy, czy żądania zostały wcześniej przesłane. Przed kontynuowaniem należy zaktualizować kilka rzeczy w ramach tego żądania:
+Teraz sprawdźmy, jakie żądania zostały wcześniej przesłane. Przed kontynuowaniem należy zaktualizować kilka czynności w tym żądaniu:
 
-* Zastąp `<your_key>` kluczem subskrypcji usługi rozpoznawania mowy. Te informacje są dostępne na karcie **Przegląd** dla zasobu w [Azure Portal](https://aka.ms/azureportal).
-* Zastąp `<region>` w regionie, w którym został utworzony zasób mowy (na przykład: `eastus` lub `westus`). Te informacje są dostępne na karcie **Przegląd** dla zasobu w [Azure Portal](https://aka.ms/azureportal).
+* Zamień `<your_key>` klucz subskrypcji usługi mowy. Te informacje są dostępne na karcie **Przegląd** zasobu w [witrynie Azure portal](https://aka.ms/azureportal).
+* Zamień `<region>` na region, w którym utworzono zasób mowy (na przykład: `eastus` lub `westus`). Te informacje są dostępne na karcie **Przegląd** zasobu w [witrynie Azure portal](https://aka.ms/azureportal).
 
 Uruchom następujące polecenie:
 
@@ -259,7 +259,7 @@ Uruchom następujące polecenie:
 python voice_synthesis_client.py --syntheses -key <your_key> -region <Region>
 ```
 
-Spowoduje to zwrócenie listy utworzonych przez siebie żądań syntezy. Zobaczysz dane wyjściowe podobne do tego:
+Spowoduje to zwrócenie listy żądań syntezy, które zostały wykonane. Zobaczysz dane wyjściowe w ten sposób:
 
 ```console
 There are <number> synthesis requests submitted:
@@ -268,14 +268,14 @@ ID : xxx , Name : xxx, Status : Running
 ID : xxx , Name : xxx : Succeeded
 ```
 
-Teraz usuńmy wcześniej przesłane żądanie. Musisz zaktualizować kilka elementów w poniższym kodzie:
+Teraz usuńmy wcześniej przesłane żądanie. Musisz zaktualizować kilka rzeczy w poniższym kodzie:
 
-* Zastąp `<your_key>` kluczem subskrypcji usługi rozpoznawania mowy. Te informacje są dostępne na karcie **Przegląd** dla zasobu w [Azure Portal](https://aka.ms/azureportal).
-* Zastąp `<region>` w regionie, w którym został utworzony zasób mowy (na przykład: `eastus` lub `westus`). Te informacje są dostępne na karcie **Przegląd** dla zasobu w [Azure Portal](https://aka.ms/azureportal).
+* Zamień `<your_key>` klucz subskrypcji usługi mowy. Te informacje są dostępne na karcie **Przegląd** zasobu w [witrynie Azure portal](https://aka.ms/azureportal).
+* Zamień `<region>` na region, w którym utworzono zasób mowy (na przykład: `eastus` lub `westus`). Te informacje są dostępne na karcie **Przegląd** zasobu w [witrynie Azure portal](https://aka.ms/azureportal).
 * Zastąp `<synthesis_id>` wartością zwróconą w poprzednim żądaniu.
 
 > [!NOTE]
-> Nie można usunąć ani usunąć żądań ze stanem "Uruchamianie"/"oczekiwanie".
+> Nie można usunąć ani usunąć żądań o stanie "Uruchomiony"/'Oczekiwanie'.
 
 Uruchom następujące polecenie:
 
@@ -283,18 +283,18 @@ Uruchom następujące polecenie:
 python voice_synthesis_client.py --delete -key <your_key> -region <Region> -synthesisId <synthesis_id>
 ```
 
-Zobaczysz dane wyjściowe podobne do tego:
+Zobaczysz dane wyjściowe w ten sposób:
 
 ```console
 delete voice synthesis xxx
 delete successful
 ```
 
-## <a name="get-the-full-client"></a>Uzyskaj pełny klient
+## <a name="get-the-full-client"></a>Zdobądź pełnego klienta
 
-Ukończony `voice_synthesis_client.py` jest dostępny do pobrania w witrynie [GitHub](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Python/voiceclient.py).
+Wypełniony `voice_synthesis_client.py` jest dostępny do pobrania na [GitHub](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Python/voiceclient.py).
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej o długim interfejsie API audio](../../long-audio-api.md)
+> [Dowiedz się więcej o interfejsie API Long Audio](../../long-audio-api.md)

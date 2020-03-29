@@ -1,39 +1,39 @@
 ---
-title: Limity i granice — QnA Maker
-description: Usługa QnA Maker ma meta limity dla części bazy wiedzy knowledge base i usługi. Należy zachować wiedzy w ramach tych limitów w celu testowania i publikowania.
+title: Granice i granice - QnA Maker
+description: QnA Maker posiada meta-limity dla części bazy wiedzy i usług. Ważne jest, aby utrzymać swoją bazę wiedzy w tych granicach, aby przetestować i opublikować.
 ms.topic: reference
 ms.date: 02/14/2020
 ms.openlocfilehash: 6375a6c6efc0c7016d9947e04e9479385aa80af5
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273348"
 ---
-# <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Usługa QnA Maker wiedzy limity i granice
+# <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker podstawy wiedzy granice i granice
 
-Podane poniżej limity QnA Maker są kombinacją [limitów warstwy cenowej platformy Azure wyszukiwanie poznawcze](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity) i [limity warstwy cenowej QNA Maker](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/). Musisz znać oba zestawy limitów, aby zrozumieć, jak wiele baz wiedzy można utworzyć dla każdego zasobu i jak duże mogą rosnąć poszczególne bazy wiedzy.
+Limity programu QnA Maker podane poniżej są kombinacją [limitów warstw cenowych usługi Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity) i [limitów warstw cenowych QnA Maker.](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/) Musisz znać oba zestawy limitów, aby zrozumieć, ile baz wiedzy można utworzyć na zasób i jak duża może się rozwijać każda baza wiedzy.
 
 ## <a name="knowledge-bases"></a>Bazy wiedzy
 
-Maksymalna liczba baz wiedzy zależy od [limitów warstwy wyszukiwanie poznawcze platformy Azure](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity).
+Maksymalna liczba baz wiedzy jest oparta na [limitach warstw usługi Azure Cognitive Search.](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)
 
-|**Warstwa usługi Azure Wyszukiwanie poznawcze** | **Bezpłatna** | **Podstawowa** |**S1** | **S2**| **S3** |**WYJŚCIE S3 HD**|
+|**Warstwa usługi Azure Cognitive Search** | **Bezpłatna** | **Podstawowa (Basic)** |**S1** | **S2**| **S3** |**S3 (wysoka gęstość)**|
 |---|---|---|---|---|---|----|
-|Dozwolona maksymalna liczba opublikowanych baz wiedzy|2|14|49|199|199|2,999|
+|Maksymalna dozwolona liczba opublikowanych baz wiedzy|2|14|49|199|199|2,999|
 
- Na przykład jeśli warstwa ma 15 dozwolonych indeksów, można opublikować 14 baz wiedzy (1 indeks na opublikowaną bazę wiedzy). Piętnasty indeks, `testkb`, jest używany dla wszystkich baz wiedzy na potrzeby tworzenia i testowania.
+ Na przykład jeśli warstwa ma 15 dozwolonych indeksów, można opublikować 14 baz wiedzy (1 indeks na opublikowaną bazę wiedzy). Piętnasty `testkb`indeks, jest używany dla wszystkich baz wiedzy do tworzenia i testowania.
 
-## <a name="extraction-limits"></a>Limity wyodrębniania
+## <a name="extraction-limits"></a>Limity ekstrakcji
 
 ### <a name="file-naming-constraints"></a>Ograniczenia nazewnictwa plików
 
-Nazwy plików nie mogą zawierać następujących znaków:
+Nazwy plików mogą nie zawierać następujących znaków:
 
-|Nie używaj znaku|
+|Nie używaj znaków|
 |--|
-|`'` pojedynczego cudzysłowu|
-|`"` podwójnego cudzysłowu|
+|Oferta pojedyncza`'`|
+|Podwójna wycena`"`|
 
 ### <a name="maximum-file-size"></a>Maksymalna wielkość pliku
 
@@ -47,59 +47,59 @@ Nazwy plików nie mogą zawierać następujących znaków:
 
 ### <a name="maximum-number-of-files"></a>Maksymalna liczba plików
 
-Maksymalna liczba plików, które można wyodrębnić, i maksymalny rozmiar pliku opiera się na **[QNA Maker limitów warstwy cenowej](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)** .
+Maksymalna liczba plików, które można wyodrębnić i maksymalny rozmiar pliku jest oparta na **[limitach warstwy cenowej QnA Maker](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)**.
 
-### <a name="maximum-number-of-deep-links-from-url"></a>Maksymalna liczba linków głębokiego adresu URL
+### <a name="maximum-number-of-deep-links-from-url"></a>Maksymalna liczba głębokich linków z adresu URL
 
-Maksymalna liczba linków głębokiego, które mogą być przeszukiwane w celu wyodrębnienia bazami ze strony adresu URL, to **20**.
+Maksymalna liczba głębokich linków, które mogą być indeksowane do wyodrębniania QnAs ze strony ADRESU URL jest **20**.
 
 ## <a name="metadata-limits"></a>Limity metadanych
 
-Metadane są prezentowane jako para tekstowa: wartość, taka jak `product:windows 10`. Jest on przechowywany i porównywany małymi literami.
+Metadane są prezentowane jako para klucza `product:windows 10`tekstowego:wartość, na przykład . Jest przechowywany i porównywany w małe litery.
 
-### <a name="by-azure-cognitive-search-pricing-tier"></a>Według warstwy cenowej usługi Azure Wyszukiwanie poznawcze
+### <a name="by-azure-cognitive-search-pricing-tier"></a>Według warstwy cenowej usługi Azure Cognitive Search
 
-Maksymalna liczba pól metadanych na bazę wiedzy zależy od **[limitów warstwy wyszukiwanie poznawcze platformy Azure](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)** .
+Maksymalna liczba pól metadanych na bazę wiedzy jest oparta na **[limitach warstwy usługi Azure Cognitive Search.](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)**
 
-|**Warstwa usługi Azure Wyszukiwanie poznawcze** | **Bezpłatna** | **Podstawowa** |**S1** | **S2**| **S3** |**WYJŚCIE S3 HD**|
+|**Warstwa usługi Azure Cognitive Search** | **Bezpłatna** | **Podstawowa (Basic)** |**S1** | **S2**| **S3** |**S3 (wysoka gęstość)**|
 |---|---|---|---|---|---|----|
-|Pola metadanych maksymalnej dla danej usługi QnA Maker (we wszystkich artykułów bazy wiedzy)|1000|100 *|1000|1000|1000|1000|
+|Maksymalna liczba pól metadanych na usługę QnA Maker (we wszystkich kb)|1000|100*|1000|1000|1000|1000|
 
 ### <a name="by-name-and-value"></a>Według nazwy i wartości
 
-W poniższej tabeli wymieniono długość i dopuszczalne znaki nazwy i wartości metadanych.
+Długość i dopuszczalne znaki dla nazwy i wartości metadanych są wymienione w poniższej tabeli.
 
-|Element|Dozwolone znaki|Dopasowanie wzorca wyrażenia regularnego|Maks. liczba znaków|
+|Element|Dozwolone znaki|Dopasowanie wzorca regex|Maksymalne znaki|
 |--|--|--|--|
-|Nazwa (klucz)|Udostępnia<br>alfanumeryczne (litery i cyfry)<br>`_` (podkreślenie)<br> Nie może zawierać spacji.|`^[a-zA-Z0-9_]+$`|100|
-|Wartość|Zezwala na wszystko z wyjątkiem<br>`:` (dwukropek)<br>`|` (potok pionowy)<br>Dozwolona jest tylko jedna wartość.|`^[^:|]+$`|500|
+|Nazwa (klucz)|Pozwala<br>alfanumeryczne (litery i cyfry)<br>`_`(podkreślenie)<br> Nie może zawierać spacji.|`^[a-zA-Z0-9_]+$`|100|
+|Wartość|Pozwala na wszystko, z wyjątkiem<br>`:`(dwukropek)<br>`|`(rura pionowa)<br>Dozwolona jest tylko jedna wartość.|`^[^:|]+$`|500|
 |||||
 
 ## <a name="knowledge-base-content-limits"></a>Limity zawartości bazy wiedzy
-Ogólne ograniczenia dotyczące zawartości w bazie wiedzy knowledge base:
+Ogólne limity zawartości bazy wiedzy:
 * Długość tekstu odpowiedzi: 25 000
-* Długość tekstu zapytania: 1000
-* Długość tekstu klucz/wartość metadanych: 100
-* Obsługiwane znaki dla nazwy metadanych: alfabety, cyfry i `_`
-* Obsługiwane znaki dla wartości metadanych: wszystkie z wyjątkiem `:` i `|`
+* Długość tekstu pytania: 1000
+* Długość tekstu klucza/wartości metadanych: 100
+* Obsługiwane znaki dla nazwy metadanych: alfabety, cyfry i`_`
+* Obsługiwane znaki dla wartości metadanych: Wszystkie z wyjątkiem `:` i`|`
 * Długość nazwy pliku: 200
-* Obsługiwane formaty plików: "tsv", ".pdf", ".txt", ".docx", "xlsx".
-* Maksymalna liczba pytań alternatywnych: 300
-* Maksymalna liczba par pytań i odpowiedzi: zależy od wybranej **[warstwy wyszukiwanie poznawcze platformy Azure](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)** . Para pytań i odpowiedzi mapuje do dokumentu na indeks Wyszukiwanie poznawcze platformy Azure.
-* Adres URL/strona HTML: 1 000 000 znaków
+* Obsługiwane formaty plików: ".tsv", ".pdf", ".txt", ".docx", ".xlsx".
+* Maksymalna liczba alternatywnych pytań: 300
+* Maksymalna liczba par pytań i odpowiedzi: zależy od wybranej **[warstwy usługi Azure Cognitive Search.](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)** Para pytań i odpowiedzi jest mapowana do dokumentu w indeksie usługi Azure Cognitive Search.
+* Strona URL/HTML: 1 milion znaków
 
-## <a name="create-knowledge-base-call-limits"></a>Utwórz limity wywołania w bazie wiedzy Knowledge base:
-Reprezentują one limity dla każdej akcji tworzenia bazy wiedzy; oznacza to, że kliknięcie pozycji *Utwórz KB* lub wywołanie interfejsu API usługi.
-* Maksymalna liczba pytań alternatywnych na odpowiedź: 300
+## <a name="create-knowledge-base-call-limits"></a>Tworzenie limitów połączeń bazy wiedzy:
+Reprezentują one limity dla każdego tworzenia akcji bazy wiedzy; oznacza to, że kliknij przycisk *Utwórz KB* lub wywołanie createKnowledgeBase INTERFEJSU API.
+* Maksymalna liczba alternatywnych pytań na odpowiedź: 300
 * Maksymalna liczba adresów URL: 10
 * Maksymalna liczba plików: 10
 
-## <a name="update-knowledge-base-call-limits"></a>Aktualizowanie limitów wywołanie bazy wiedzy
-Reprezentują one limity dla każdej akcji aktualizacji; oznacza to, że kliknięcie przycisku *Zapisz i pouczenie* lub wywołanie interfejsu API UpdateKnowledgeBase.
-* Długość nazwy źródła: 300
-* Maksymalna liczba dodanych lub usuniętych pytań alternatywnych: 300
-* Maksymalna liczba pól metadane dodawane lub usuwane: 10
-* Maksymalna liczba adresów URL, które mogą być odświeżane: 5
+## <a name="update-knowledge-base-call-limits"></a>Aktualizowanie limitów połączeń bazy wiedzy Knowledge base
+Reprezentują one limity dla każdej akcji aktualizacji; oznacza to, że kliknięcie *przycisku Zapisz i trenuj* lub wywołanie interfejsu API UpdateKnowledgeBase.
+* Długość każdej nazwy źródła: 300
+* Maksymalna liczba dodatkowych pytań dodanych lub usuniętych: 300
+* Maksymalna liczba dodanych lub usuniętych pól metadanych: 10
+* Maksymalna liczba adresów URL, które można odświeżyć: 5
 
 ## <a name="next-steps"></a>Następne kroki
 

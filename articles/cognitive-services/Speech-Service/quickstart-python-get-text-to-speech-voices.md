@@ -1,7 +1,7 @@
 ---
-title: Lista głosów zamiany tekstu na mowę, języka Python-Speech Service
+title: Lista głosów zamiany tekstu na mowę, Python - Usługa mowy
 titleSuffix: Azure Cognitive Services
-description: W tym artykule dowiesz się, jak uzyskać pełną listę głosów standardowych i neuronowych dla regionu/punktu końcowego przy użyciu języka Python. Lista jest zwracana w formacie JSON i dostępność głosu różni się w zależności od regionu.
+description: W tym artykule dowiesz się, jak uzyskać pełną listę standardowych i neuronowych głosów dla regionu/punktu końcowego przy użyciu języka Python. Lista jest zwracana jako JSON, a dostępność głosu zależy od regionu.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -11,23 +11,23 @@ ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: dapine
 ms.openlocfilehash: 51fe6cea80e097f34432ab8dc7293c758bd8d720
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77119798"
 ---
-# <a name="get-the-list-of-text-to-speech-voices-using-python"></a>Pobieranie listy głosów zamiany tekstu na mowę przy użyciu języka Python
+# <a name="get-the-list-of-text-to-speech-voices-using-python"></a>Pobierz listę głosów zamiany tekstu na mowę za pomocą języka Python
 
-W tym artykule dowiesz się, jak uzyskać pełną listę głosów standardowych i neuronowych dla regionu/punktu końcowego przy użyciu języka Python. Lista jest zwracana w formacie JSON i dostępność głosu różni się w zależności od regionu. Aby zapoznać się z listą obsługiwanych regionów, zobacz [regiony](regions.md).
+W tym artykule dowiesz się, jak uzyskać pełną listę standardowych i neuronowych głosów dla regionu/punktu końcowego przy użyciu języka Python. Lista jest zwracana jako JSON, a dostępność głosu zależy od regionu. Aby uzyskać listę obsługiwanych regionów, zobacz [regiony](regions.md).
 
-Ten artykuł wymaga [konta Cognitive Services platformy Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z zasobem usługi mowy. Jeśli nie masz konta, możesz użyć [bezpłatnej wersji próbnej](get-started.md), aby uzyskać klucz subskrypcji.
+Ten artykuł wymaga [konta usługi Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z zasobem usługi mowy. Jeśli nie masz konta, możesz użyć [bezpłatnej wersji próbnej](get-started.md), aby uzyskać klucz subskrypcji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Środowisko Python 2.7.x lub 3.x
 * Program [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download) lub ulubiony edytor tekstów
-* Klucz subskrypcji platformy Azure dla usługi mowy
+* Klucz subskrypcji platformy Azure dla usługi Mowy
 
 ## <a name="create-a-project-and-import-required-modules"></a>Tworzenie projektu i importowanie wymaganych modułów
 
@@ -42,9 +42,9 @@ import requests
 
 Żądania są używane dla żądań HTTP do usługi zamiany tekstu na mowę.
 
-## <a name="set-the-subscription-key-and-create-a-prompt-for-tts"></a>Ustaw klucz subskrypcji i Utwórz monit dla TTS
+## <a name="set-the-subscription-key-and-create-a-prompt-for-tts"></a>Ustawianie klucza subskrypcji i tworzenie monitu dla usługi TTS
 
-W kolejnych sekcjach utworzysz metody obsługi autoryzacji, wywołania interfejsu API zamiany tekstu na mowę i sprawdzania poprawności odpowiedzi. Zacznijmy od utworzenia klasy. Jest to, gdzie umieścimy naszych metody wymiany tokenu i wywołania interfejsu API zamiany tekstu na mowę.
+W następnych kilku sekcjach utworzysz metody obsługi autoryzacji, wywołasz interfejs API zamiany tekstu na mowę i sprawdź poprawność odpowiedzi. Zacznijmy od utworzenia klasy. W tym miejscu umieścimy nasze metody wymiany tokenów i wywołanie interfejsu API zamiany tekstu na mowę.
 
 ```python
 class GetVoices(object):
@@ -53,15 +53,15 @@ class GetVoices(object):
         self.access_token = None
 ```
 
-`subscription_key` jest unikatowym kluczem z Azure Portal.
+Jest `subscription_key` to unikatowy klucz z witryny Azure portal.
 
 ## <a name="get-an-access-token"></a>Pobranie tokenu dostępu
 
-Ten punkt końcowy wymaga tokenu dostępu do uwierzytelniania. Aby uzyskać token dostępu, wymagana jest wymiana. Ten przykład umożliwia wymianę klucza subskrypcji usługi mowy dla tokenu dostępu przy użyciu punktu końcowego `issueToken`.
+Ten punkt końcowy wymaga tokenu dostępu do uwierzytelniania. Aby uzyskać token dostępu, wymagana jest wymiana. W tym przykładzie wymienia klucz subskrypcji usługi `issueToken` mowy dla tokenu dostępu przy użyciu punktu końcowego.
 
-W tym przykładzie przyjęto założenie, że subskrypcja usługi mowy znajduje się w regionie zachodnie stany USA. Jeśli używasz innego regionu, zaktualizuj wartość `fetch_token_url`. Aby uzyskać pełną listę, zobacz [regiony](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
+W tym przykładzie przyjęto założenie, że subskrypcja usługi mowy znajduje się w regionie Zachodnie stany USA. Jeśli używasz innego regionu, zaktualizuj wartość dla `fetch_token_url`. Aby uzyskać pełną listę, zobacz [Regiony](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
 
-Skopiuj ten kod do klasy `GetVoices`:
+Skopiuj `GetVoices` ten kod do klasy:
 
 ```python
 def get_token(self):
@@ -74,15 +74,15 @@ def get_token(self):
 ```
 
 > [!NOTE]
-> Aby uzyskać więcej informacji na temat uwierzytelniania, zobacz [uwierzytelnianie przy użyciu tokenu dostępu](https://docs.microsoft.com/azure/cognitive-services/authentication#authenticate-with-an-authentication-token).
+> Aby uzyskać więcej informacji na temat uwierzytelniania, zobacz [Uwierzytelnianie przy użyciu tokenu dostępu](https://docs.microsoft.com/azure/cognitive-services/authentication#authenticate-with-an-authentication-token).
 
-## <a name="make-a-request-and-save-the-response"></a>Tworzenie żądania i zapisać odpowiedź
+## <a name="make-a-request-and-save-the-response"></a>Złożyć wniosek i zapisać odpowiedź
 
-W tym miejscu zamierzasz skompilować żądanie i zapisać listę zwróconych głosów. Najpierw należy ustawić `base_url` i `path`. W tym przykładzie przyjęto założenie, że używasz punktu końcowego zachodnie stany USA. Jeśli zasób jest zarejestrowany w innym regionie, upewnij się, że `base_url`. Aby uzyskać więcej informacji, zobacz [regiony usługi mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
+Tutaj masz zamiar zbudować żądanie i zapisać listę zwróconych głosów. Najpierw musisz ustawić `base_url` i `path`. W tym przykładzie przyjęto założenie, że używasz punktu końcowego zachodniego us. Jeśli zasób jest zarejestrowany w innym regionie, należy zaktualizować plik `base_url`. Aby uzyskać więcej informacji, zobacz [Regiony usługi mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
 
-Następnie Dodaj wymagane nagłówki dla żądania. Na koniec wprowadzisz żądania do usługi. Jeśli żądanie zakończy się pomyślnie i zostanie zwrócony kod stanu 200, odpowiedź jest zapisywana w pliku.
+Następnie dodaj wymagane nagłówki dla żądania. Na koniec złożysz wniosek do usługi. Jeśli żądanie zakończy się pomyślnie i zwracany jest kod stanu 200, odpowiedź jest zapisywana w pliku.
 
-Skopiuj ten kod do klasy `GetVoices`:
+Skopiuj `GetVoices` ten kod do klasy:
 
 ```python
 def get_voices(self):
@@ -105,7 +105,7 @@ def get_voices(self):
 
 ## <a name="put-it-all-together"></a>Zebranie wszystkich elementów
 
-To już prawie koniec. Ostatnim krokiem jest do utworzenia wystąpienia klasy i wywołania funkcji.
+To już prawie koniec. Ostatnim krokiem jest tworzenie wystąpienia klasy i wywołanie funkcji.
 
 ```python
 if __name__ == "__main__":
@@ -117,7 +117,7 @@ if __name__ == "__main__":
 
 ## <a name="run-the-sample-app"></a>Uruchamianie przykładowej aplikacji
 
-Jest to gotowe do uruchomienia przykładu. Z wiersza polecenia (lub sesji terminalowej) przejdź do katalogu projektu, a następnie uruchom:
+To wszystko, jesteś gotowy do uruchomienia próbki. Z wiersza polecenia (lub sesji terminalowej) przejdź do katalogu projektu, a następnie uruchom:
 
 ```console
 python get-voices.py
@@ -136,4 +136,4 @@ Upewnij się, że wszystkie poufne informacje, takie jak klucze subskrypcji, zos
 
 * [Dokumentacja interfejsu API zamiany tekstu na mowę](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
 * [Tworzenie niestandardowych czcionek głosowych](how-to-customize-voice-font.md)
-* [Rejestruj przykłady głosu, aby utworzyć niestandardowy głos](record-custom-voice-samples.md)
+* [Nagrywanie próbek głosu w celu utworzenia niestandardowego głosu](record-custom-voice-samples.md)

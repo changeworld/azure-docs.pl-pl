@@ -1,7 +1,7 @@
 ---
-title: Przykłady usługi Bing Insights — wyszukiwanie wizualne Bing
+title: Przykłady szczegółowych informacji usługi Bing — wyszukiwanie wizualne usługi Bing
 titleSuffix: Azure Cognitive Services
-description: Ten artykuł zawiera przykłady korzystania z wyszukiwanie wizualne Bing i wyświetlania szczegółowych informacji o obrazach w programie Bing.com.
+description: Ten artykuł zawiera przykłady sposobu używania i wyświetlania szczegółowych informacji o obrazie w usłudze Bing Visual Search w Bing.com.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,71 +11,71 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: scottwhi
 ms.openlocfilehash: df66dbeebb04209921ff91c4b99a14580f026718
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74111639"
 ---
-# <a name="examples-of-bing-insights-usage"></a>Przykłady użycia usługi Bing Insights
+# <a name="examples-of-bing-insights-usage"></a>Przykłady użycia usługi Bing insights
 
-W tym artykule przedstawiono przykłady użycia usługi Bing i wyświetlania szczegółowych informacji o obrazach w programie Bing.com.
+Ten artykuł zawiera przykłady sposobu używania i wyświetlania szczegółowych informacji o obrazie w usłudze Bing w Bing.com.
 
-## <a name="pagesincluding-insight-example"></a>Przykład usługi PagesIncluding Insight
+## <a name="pagesincluding-insight-example"></a>PagesWłączenie przykładu wglądu
 
-Poniżej znajduje się łącze do pierwszej strony sieci Web i umożliwia użytkownikowi rozwijanie i zwijanie listy innych stron internetowych, które zawierają obraz:
+Poniżej znajduje się łącze do pierwszej strony sieci Web i umożliwia użytkownikowi rozwinięcie i zwinięcie listy innych stron sieci Web, które zawierają obraz:
 
-![Rozwinięte strony, w tym](./media/pages-including.PNG)
+![Rozszerzone strony, w tym](./media/pages-including.PNG)
 
-## <a name="shoppingsources-insight-example"></a>Przykład usługi ShoppingSources Insight
+## <a name="shoppingsources-insight-example"></a>Przykład wglądu w shoppingsources
 
-Poniżej przedstawiono sposób wyświetlania przez usługę Bing źródeł zakupów dla produktów widocznych na obrazie:
+Poniżej przedstawiono, jak usługa Bing może wyświetlać źródła zakupów produktów widocznych na obrazie:
 
 ![Źródła zakupów](./media/shopping-sources.PNG)
 
-## <a name="visualsearch-insight-example"></a>Przykład usługi VisualSearch Insight
+## <a name="visualsearch-insight-example"></a>Przykład wglądu w wygląd programu VisualSearch
 
-Poniżej przedstawiono sposób wyświetlania wizualnie podobnych obrazów w usłudze Bing (zobacz **powiązane obrazy** w przykładzie):
+Poniżej przedstawiono, jak bing może wyświetlać obrazy podobne wizualnie (zobacz **Powiązane obrazy** w przykładzie):
 
 ![Obrazy podobne wizualnie](./media/similar-images.PNG)
 
-## <a name="recipes-insight-example"></a>Przykład szczegółowych informacji
+## <a name="recipes-insight-example"></a>Przykład wglądu w przepisy
 
-Poniżej przedstawiono sposób wyświetlania przez usługę Bing przepisów dotyczących żywności widocznej na obrazie. Przykład umożliwia użytkownikowi znane są następujące przepisy:
+Poniżej przedstawiono, jak bing może wyświetlać przepisy na jedzenie pokazane na obrazie. W przykładzie użytkownik wie, że dostępne są przepisy:
 
 ![Przepisy i strony, w tym](./media/recipes-pages-including.PNG)
 
- I udostępnia link do przepisów, gdy użytkownik rozwinie listę:
+ I zawiera link do receptur, gdy użytkownik rozszerza listę:
 
-![Rozwinięte strony przepisowe, w tym](./media/expanded-recipes-pages-including.PNG)
+![Rozszerzone strony z przepisami, w tym](./media/expanded-recipes-pages-including.PNG)
 
-## <a name="relatedsearches-insight-example"></a>Przykład usługi RelatedSearches Insight
+## <a name="relatedsearches-insight-example"></a>Przykład informacji RelatedSearches
 
-Poniżej przedstawiono sposób wyświetlania przez usługę Bing pokrewnych wyszukiwań obrazów wykonywanych przez inne osoby. Jeśli użytkownik kliknie obraz, użytkownik zostanie przełączony do strony wyników wyszukiwania Bing.com/images dla tego powiązanego zapytania.
+Poniżej przedstawiono, jak bing może wyświetlać powiązane wyszukiwania obrazów wykonanych przez inne osoby. Jeśli użytkownik kliknie obraz, użytkownik zostanie przesuń do Bing.com/images strony wyników wyszukiwania dla tej powiązanej kwerendy.
 
 ![Powiązane wyszukiwania obrazów](./media/bordered-related-searches.PNG)
 
-## <a name="entity-insight-example"></a>Przykład usługi Entity Insight
+## <a name="entity-insight-example"></a>Przykład wglądu w encję
 
-Poniżej pokazano, w jaki sposób Bing może wyświetlać informacje o jednostce (osoba, miejsce lub rzecz) widocznej na obrazie. Jeśli użytkownik kliknie łącze jednostki, użytkownik zostanie przełączony do strony wyników wyszukiwania Bing.com dla jednostki:
+Poniżej przedstawiono, jak bing może wyświetlać informacje o encji (osoby, miejsca lub rzeczy) wyświetlane na obrazie. Jeśli użytkownik kliknie łącze encji, zostanie on przesunął się na stronę wyników wyszukiwania Bing.com encji:
 
-![Jednostka pokazana w obrazie](./media/entity.PNG)
+![Jednostka pokazana na obrazie](./media/entity.PNG)
 
-## <a name="displaying-other-insights-that-the-user-might-explore"></a>Wyświetlanie innych szczegółowych informacji, które użytkownik może zbadać
+## <a name="displaying-other-insights-that-the-user-might-explore"></a>Wyświetlanie innych szczegółowych informacji, które użytkownik może eksplorować
 
-Poniżej pokazano, w jaki sposób Bing może wyświetlać inne informacje o obrazie, który użytkownik może zbadać.
+Poniżej przedstawiono, jak Bing może wyświetlać inne informacje o obrazie, który użytkownik może eksplorować.
 
 ![Poznaj inne szczegółowe informacje o obrazie](./media/apple-pie-more-tags.PNG)
 
-## <a name="bounding-boxes-and-hot-spots"></a>Pola ograniczenia i punkty aktywne
+## <a name="bounding-boxes-and-hot-spots"></a>Obwiednie i hot spoty
 
-Tagi inne niż domyślne zawierają pole ograniczenia, które identyfikuje obszar zainteresowania obrazu, do którego odnosi się tag. Jeśli pole ograniczenia nie identyfikuje całego obrazu, użyj pola ograniczenia, aby utworzyć gorącą plamę obrazu. Użytkownik może kliknąć punkt aktywny, aby uzyskać informacje dotyczące zawartości znalezionej pod punktem aktywnym (lub prostokątem). Na przykład, jeśli obraz jest obrazem wysokiej jakości, wyniki mogą zawierać Tagi (i pola ograniczające) dla akcesoriów widocznych na obrazie, takich jak okrężnica, biżuterii, scarfs i tak dalej. Poniższy przykład pokazuje prostokąt gorąca dla szklanych pokazanych na obrazie:
+Tagi inne niż domyślne obejmują obwiednię identyfikujące obszar zainteresowania obrazem, do których ma zastosowanie znacznik. Jeśli obwiednia nie identyfikuje całego obrazu, użyj obwiedni, aby utworzyć punkt gorąca na obrazie. Użytkownik może kliknąć punkt kontaktowy, aby uzyskać informacje związane z zawartością znajdującą się w punkcie kontaktowym (lub prostokącie). Na przykład, jeśli obraz jest obrazem o wysokiej jakości, wyniki mogą zawierać znaczniki (i obwiedni) dla akcesoriów wyświetlanych na obrazie, takich jak torebka, biżuteria, szaliki i tak dalej. W poniższym przykładzie pokazano prostokąt hot-spot dla okularów przeciwsłonecznych pokazanych na obrazie:
 
-![Pole ograniczenia i punkt aktywny](./media/click-to-search.PNG)
+![Obwiednia i hot spot](./media/click-to-search.PNG)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby rozpocząć pracę z pierwszym żądaniem, zobacz Przewodniki Szybki Start: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [Node. js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)
+Aby rozpocząć pracę z pierwszym żądaniem, zobacz przewodniki Szybki start: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)
 
 
 

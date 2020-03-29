@@ -1,7 +1,7 @@
 ---
-title: Migrowanie danych czołowych między subskrypcjami — głowa
+title: Migrowanie danych twarzy w ramach subskrypcji — Face
 titleSuffix: Azure Cognitive Services
-description: W tym przewodniku pokazano, jak migrować przechowywane dane ze swojej firmy z jednej subskrypcji czołowej do innej.
+description: W tym przewodniku pokazano, jak przeprowadzić migrację przechowywanych danych twarzy z jednej subskrypcji Face do innej.
 services: cognitive-services
 author: lewlu
 manager: nitinme
@@ -11,37 +11,37 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: lewlu
 ms.openlocfilehash: e5ca51da7322e4eab4ea364ec5da086a1068fa9a
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76169807"
 ---
-# <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Migrowanie danych własnych do innej subskrypcji programu Marketo
+# <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Migrowanie danych twarzy do innej subskrypcji Face
 
-W tym przewodniku pokazano, jak przenosić dane twarzy, takie jak zapisany obiekt z obiektu z twarzy, do innej subskrypcji platformy Azure Cognitive Services. Aby przenieść dane, użyj funkcji Snapshot. W ten sposób można uniknąć wielokrotnego kompilowania i uczenia obiektu osoby lub FaceList podczas przenoszenia lub rozszerzania operacji. Na przykład być może utworzono obiekt obiektu osoby za pomocą bezpłatnej subskrypcji próbnej i teraz chcesz przeprowadzić migrację go do subskrypcji płatnej. Lub może być konieczne zsynchronizowanie danych czołowych w różnych regionach w ramach dużej operacji przedsiębiorstwa.
+W tym przewodniku pokazano, jak przenieść dane twarzy, takie jak zapisany obiekt PersonGroup z twarzami, do innej subskrypcji usługi Azure Cognitive Services Face. Aby przenieść dane, należy użyć funkcji Migawka. W ten sposób można uniknąć konieczności wielokrotnego tworzenia i trenowania PersonGroup lub FaceList obiektu podczas przenoszenia lub rozwijania operacji. Na przykład być może utworzono obiekt PersonGroup przy użyciu bezpłatnej subskrypcji próbnej, a teraz chcesz przeprowadzić migrację do płatnej subskrypcji. Lub może być konieczne zsynchronizowane dane twarzy w ramach subskrypcji w różnych regionach dla operacji dużego przedsiębiorstwa.
 
-Ta sama Strategia migracji dotyczy również obiektów LargePersonGroup i LargeFaceList. Jeśli nie znasz koncepcji z tego przewodnika, zobacz ich definicje w przewodniku dotyczą [pojęć dotyczących rozpoznawania](../concepts/face-recognition.md) . W tym przewodniku jest stosowana Biblioteka kliencka C#programu .NET z systemem.
+Ta sama strategia migracji ma również zastosowanie do LargePersonGroup i LargeFaceList obiektów. Jeśli nie znasz pojęć w tym przewodniku, zobacz ich definicje w przewodniku po [pojęciach rozpoznawania twarzy.](../concepts/face-recognition.md) W tym przewodniku użyto biblioteki klienta Face .NET z c#.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Potrzebne są następujące elementy:
 
-- Dwa klucze subskrypcji — jeden z istniejącymi danymi i jeden do migracji. Aby subskrybować usługę kroju i uzyskać klucz, postępuj zgodnie z instrukcjami w temacie [Tworzenie konta Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
-- Ciąg identyfikatora subskrypcji tarczy, który odpowiada subskrypcji docelowej. Aby go znaleźć, wybierz pozycję **Przegląd** w Azure Portal. 
-- Dowolna wersja programu [Visual Studio 2015 lub 2017](https://www.visualstudio.com/downloads/).
+- Dwa klucze subskrypcji Face, jeden z istniejącymi danymi i jeden do migracji. Aby zasubskrybować usługę Face i uzyskać klucz, postępuj zgodnie z instrukcjami w aplikacji [Utwórz konto usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
+- Ciąg identyfikatora subskrypcji face, który odpowiada subskrypcji docelowej. Aby go znaleźć, wybierz **omówienie** w witrynie Azure portal. 
+- Dowolna wersja [programu Visual Studio 2015 lub 2017](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-the-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
 
-W tym przewodniku zastosowano prostą aplikację konsolową do uruchomienia migracji danych programu. Aby uzyskać pełną implementację, zobacz [przykład Snapshot](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample) Retail w witrynie GitHub.
+Ten przewodnik używa prostej aplikacji konsoli do uruchamiania migracji danych twarzy. Aby uzyskać pełną implementację, zobacz [przykład migawki twarzy](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample) w usłudze GitHub.
 
-1. W programie Visual Studio Utwórz nową aplikację konsolową .NET Framework projektu. Nadaj mu nazwę **FaceApiSnapshotSample**.
-1. Pobierz wymagane pakiety NuGet. Kliknij prawym przyciskiem myszy projekt w Eksplorator rozwiązań i wybierz polecenie **Zarządzaj pakietami NuGet**. Wybierz kartę **Przeglądaj** , a następnie wybierz pozycję **Uwzględnij wersję wstępną**. Znajdź i zainstaluj następujący pakiet:
+1. W programie Visual Studio utwórz nowy projekt programu Console .NET Framework. Nazwij go **FaceApiSnapshotSample**.
+1. Pobierz wymagane pakiety NuGet. Kliknij prawym przyciskiem myszy projekt w Eksploratorze rozwiązań i wybierz pozycję **Zarządzaj pakietami NuGet**. Wybierz kartę **Przeglądaj** i wybierz pozycję **Dołącz wydanie wstępne**. Znajdź i zainstaluj następujący pakiet:
     - [Microsoft.Azure.CognitiveServices.Vision.Face 2.3.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview)
 
-## <a name="create-face-clients"></a>Tworzenie klientów z czołową
+## <a name="create-face-clients"></a>Tworzenie klientów twarzy
 
-W metodzie **Main** w programie *program.cs*Utwórz dwa wystąpienia [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) dla subskrypcji źródłowej i docelowej. W tym przykładzie w regionie Azja Wschodnia jako źródło i zachodnie stany USA jako element docelowy jest stosowana subskrypcja czołowa. W tym przykładzie pokazano, jak migrować dane z jednego regionu świadczenia usługi Azure do innego. 
+W **Main** metody w *Program.cs*, utworzyć dwa [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) wystąpień dla źródła i subskrypcji docelowych. W tym przykładzie użyto subskrypcji face w regionie Azji Wschodniej jako źródło i zachodnia subskrypcja USA jako miejsce docelowe. W tym przykładzie pokazano, jak migrować dane z jednego regionu platformy Azure do innego. 
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -57,21 +57,21 @@ var FaceClientWestUS = new FaceClient(new ApiKeyServiceClientCredentials("<West 
     };
 ```
 
-Wypełnij wartości klucza subskrypcji i adresy URL punktów końcowych dla subskrypcji źródłowej i docelowej.
+Wypełnij wartości klucza subskrypcji i adresy URL punktów końcowych dla subskrypcji źródłowych i docelowych.
 
 
-## <a name="prepare-a-persongroup-for-migration"></a>Przygotowywanie osoby do migracji
+## <a name="prepare-a-persongroup-for-migration"></a>Przygotowanie grupy osób do migracji
 
-Potrzebujesz identyfikatora osoby w Twojej subskrypcji źródłowej, aby przeprowadzić migrację do subskrypcji docelowej. Użyj metody [PersonGroupOperationsExtensions. ListAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperationsextensions.listasync?view=azure-dotnet) , aby pobrać listę obiektów osoby. Następnie Pobierz Właściwość [Persons. PersonGroupId](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.persongroup.persongroupid?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_Face_Models_PersonGroup_PersonGroupId) . Proces ten wygląda różnie w zależności od tego, jakie obiekty są dostępne. W tym przewodniku identyfikator źródłowej osoby jest przechowywany w `personGroupId`.
+Potrzebujesz identyfikatora persongroup w subskrypcji źródłowej, aby przeprowadzić migrację do subskrypcji docelowej. Użyj [metody PersonGroupOperationsExtensions.ListAsync,](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperationsextensions.listasync?view=azure-dotnet) aby pobrać listę obiektów persongroup. Następnie pobierz [właściwość PersonGroup.PersonGroupId.](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.persongroup.persongroupid?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_Face_Models_PersonGroup_PersonGroupId) Ten proces wygląda inaczej w zależności od tego, jakie obiekty PersonGroup masz. W tym przewodniku źródłowy identyfikator grupy `personGroupId`persongroup jest przechowywany w pliku .
 
 > [!NOTE]
-> [Przykładowy kod](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample) tworzy i pociąga za niego nową osobę do migracji. W większości przypadków powinna istnieć już osoba, która ma być używana.
+> [Przykładowy kod](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample) tworzy i szkoli nową grupę osób do migracji. W większości przypadków powinieneś już mieć persongroup do użycia.
 
-## <a name="take-a-snapshot-of-a-persongroup"></a>Utwórz migawkę osoby
+## <a name="take-a-snapshot-of-a-persongroup"></a>Tworzenie migawki grupy osób
 
-Migawka jest tymczasowym magazynem zdalnym dla określonych typów danych czołowych. Działa jako rodzaj schowka do kopiowania danych z jednej subskrypcji do innej. Najpierw należy wykonać migawkę danych w subskrypcji źródłowej. Następnie należy zastosować ją do nowego obiektu danych w subskrypcji docelowej.
+Migawka jest tymczasowym magazynem zdalnym dla niektórych typów danych twarzy. Działa jako rodzaj schowka do kopiowania danych z jednej subskrypcji do drugiej. Najpierw należy zrobić migawkę danych w subskrypcji źródłowej. Następnie należy zastosować go do nowego obiektu danych w subskrypcji docelowej.
 
-Użyj wystąpienia FaceClient subskrypcji źródłowej, aby wykonać migawkę tej osoby. Użyj [TakeAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperationsextensions.takeasync?view=azure-dotnet) z identyfikatorem osoby i identyfikatorem subskrypcji docelowej. Jeśli masz wiele subskrypcji docelowych, Dodaj je jako wpisy tablicowe w trzecim parametrze.
+Użyj wystąpienia FaceClient subskrypcji źródłowej, aby zrobić migawkę persongroup. Użyj [TakeAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperationsextensions.takeasync?view=azure-dotnet) z identyfikatorem osobygroup i identyfikatorem subskrypcji docelowej. Jeśli masz wiele subskrypcji docelowych, dodaj je jako wpisy tablicy w trzecim parametrze.
 
 ```csharp
 var takeSnapshotResult = await FaceClientEastAsia.Snapshot.TakeAsync(
@@ -81,24 +81,24 @@ var takeSnapshotResult = await FaceClientEastAsia.Snapshot.TakeAsync(
 ```
 
 > [!NOTE]
-> Proces tworzenia i stosowania migawek nie zakłóca żadnych zwykłych wywołań elementu Source ani Target grup osób wynosi lub FaceLists. Nie należy wykonywać jednoczesnych wywołań, które zmieniają obiekt źródłowy, takich jak [wywołania zarządzania FaceList](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.facelistoperations?view=azure-dotnet) lub wywołania [szkolenia z zespołu osób](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperations?view=azure-dotnet) , na przykład. Operacja migawki może zostać uruchomiona przed lub po tych operacjach lub może napotkać błędy.
+> Proces robienia i stosowania migawek nie zakłóca żadnych regularnych wywołań do źródła lub docelowych persongroups lub FaceLists. Nie należy wykonywać jednoczesne wywołania, które zmieniają obiekt źródłowy, takich jak [FaceList połączeń zarządzania](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.facelistoperations?view=azure-dotnet) lub [persongroup train wywołanie,](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperations?view=azure-dotnet) na przykład. Operacja migawki może działać przed lub po tych operacjach lub może wystąpić błędy.
 
-## <a name="retrieve-the-snapshot-id"></a>Pobierz identyfikator migawki
+## <a name="retrieve-the-snapshot-id"></a>Pobieranie identyfikatora migawki
 
-Metoda używana do tworzenia migawek jest asynchroniczna, dlatego należy poczekać na jego zakończenie. Nie można anulować operacji migawek. W tym kodzie Metoda `WaitForOperation` monitoruje wywołanie asynchroniczne. Sprawdza stan co 100 ms. Po zakończeniu operacji Pobierz identyfikator operacji, przeanalizowany pole `OperationLocation`. 
+Metoda używana do robienia migawek jest asynchroniczne, więc należy poczekać na jego zakończenie. Nie można anulować operacji migawki. W tym kodzie `WaitForOperation` metoda monitoruje wywołanie asynchroniczne. Sprawdza stan co 100 ms. Po zakończeniu operacji pobierz identyfikator operacji, analizując `OperationLocation` pole. 
 
 ```csharp
 var takeOperationId = Guid.Parse(takeSnapshotResult.OperationLocation.Split('/')[2]);
 var operationStatus = await WaitForOperation(FaceClientEastAsia, takeOperationId);
 ```
 
-Typowa wartość `OperationLocation` wygląda następująco:
+Typowa `OperationLocation` wartość wygląda następująco:
 
 ```csharp
 "/operations/a63a3bdd-a1db-4d05-87b8-dbad6850062a"
 ```
 
-Metoda pomocnika `WaitForOperation` jest tutaj:
+Metoda `WaitForOperation` pomocnika jest tutaj:
 
 ```csharp
 /// <summary>
@@ -127,21 +127,21 @@ private static async Task<OperationStatus> WaitForOperation(IFaceClient client, 
 }
 ```
 
-Po wyświetleniu stanu operacji `Succeeded`uzyskać identyfikator migawki przez analizowanie pola `ResourceLocation` zwróconego wystąpienia OperationStatus.
+Po po wyświetleniu `Succeeded`stanu operacji pobierz identyfikator migawki, analizując `ResourceLocation` pole zwróconego wystąpienia OperationStatus.
 
 ```csharp
 var snapshotId = Guid.Parse(operationStatus.ResourceLocation.Split('/')[2]);
 ```
 
-Typowa wartość `resourceLocation` wygląda następująco:
+Typowa `resourceLocation` wartość wygląda następująco:
 
 ```csharp
 "/snapshots/e58b3f08-1e8b-4165-81df-aa9858f233dc"
 ```
 
-## <a name="apply-a-snapshot-to-a-target-subscription"></a>Zastosuj migawkę do subskrypcji docelowej
+## <a name="apply-a-snapshot-to-a-target-subscription"></a>Stosowanie migawki do subskrypcji docelowej
 
-Następnie utwórz nową osobę w subskrypcji docelowej przy użyciu losowo wygenerowanego identyfikatora. Następnie użyj wystąpienia FaceClient subskrypcji docelowej, aby zastosować migawkę do tej osoby. Przekaż identyfikator migawki i nowy identyfikator osoby.
+Następnie utwórz nową grupę persongroup w subskrypcji docelowej przy użyciu losowo wygenerowanego identyfikatora. Następnie użyj wystąpienia FaceClient subskrypcji docelowej, aby zastosować migawkę do tej grupy osób. Przekaż identyfikator migawki i nowy identyfikator grupy persongroup.
 
 ```csharp
 var newPersonGroupId = Guid.NewGuid().ToString();
@@ -150,15 +150,15 @@ var applySnapshotResult = await FaceClientWestUS.Snapshot.ApplyAsync(snapshotId,
 
 
 > [!NOTE]
-> Obiekt migawki jest prawidłowy tylko przez 48 godzin. Utwórz migawkę tylko wtedy, gdy zamierzasz używać jej do migracji danych wkrótce.
+> Obiekt Migawka jest prawidłowy tylko przez 48 godzin. Zrób migawkę tylko wtedy, gdy zamierzasz użyć jej do migracji danych wkrótce potem.
 
-Żądanie zastosowania migawki zwraca inny identyfikator operacji. Aby uzyskać ten identyfikator, Przeanalizuj pole `OperationLocation` zwróconego wystąpienia applySnapshotResult. 
+Żądanie zastosowania migawki zwraca inny identyfikator operacji. Aby uzyskać ten identyfikator, należy `OperationLocation` przeanalizować pole zwracanego wystąpienia applySnapshotResult. 
 
 ```csharp
 var applyOperationId = Guid.Parse(applySnapshotResult.OperationLocation.Split('/')[2]);
 ```
 
-Proces aplikacji Snapshot jest również asynchroniczny, dlatego należy ponownie użyć `WaitForOperation`, aby poczekać na zakończenie działania.
+Proces aplikacji migawki jest również asynchroniczne, więc ponownie użyć `WaitForOperation` czekać na zakończenie.
 
 ```csharp
 operationStatus = await WaitForOperation(FaceClientWestUS, applyOperationId);
@@ -166,9 +166,9 @@ operationStatus = await WaitForOperation(FaceClientWestUS, applyOperationId);
 
 ## <a name="test-the-data-migration"></a>Testowanie migracji danych
 
-Po zastosowaniu migawki nowa osoba w ramach subskrypcji docelowej wypełnia pierwotne dane. Domyślnie są również kopiowane wyniki szkolenia. Nowy użytkownik jest gotowy do identyfikacji tożsamości, bez konieczności ponownego szkolenia.
+Po zastosowaniu migawki, nowy PersonGroup w subskrypcji docelowej wypełnia z oryginalnych danych twarzy. Domyślnie wyniki szkolenia są również kopiowane. Nowa grupa persongroup jest gotowa do wywołania identyfikacji twarzy bez konieczności ponownego szkolenia.
 
-Aby przetestować migrację danych, uruchom następujące operacje i Porównaj wyniki, które drukują w konsoli:
+Aby przetestować migrację danych, uruchom następujące operacje i porównaj wyniki, które drukują na konsoli:
 
 ```csharp
 await DisplayPersonGroup(FaceClientEastAsia, personGroupId);
@@ -216,13 +216,13 @@ private static async Task IdentifyInPersonGroup(IFaceClient client, string perso
 }
 ```
 
-Teraz możesz użyć nowej osoby w subskrypcji docelowej. 
+Teraz możesz użyć nowej grupy persongroup w subskrypcji docelowej. 
 
-Aby ponownie zaktualizować docelową osobę w przyszłości, Utwórz nową osobę, która ma otrzymać migawkę. Aby to zrobić, wykonaj kroki opisane w tym przewodniku. Do jednej z obiektów jednej osoby może być zastosowana migawka tylko jeden raz.
+Aby ponownie zaktualizować docelową grupę osób w przyszłości, utwórz nową grupę osób, aby otrzymać migawkę. Aby to zrobić, wykonaj kroki opisane w tym przewodniku. Pojedynczy obiekt PersonGroup może mieć migawkę zastosowaną do niego tylko jeden raz.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Po zakończeniu migracji danych czołowych Usuń ręcznie obiekt Snapshot.
+Po zakończeniu migracji danych twarzy ręcznie usuń obiekt migawki.
 
 ```csharp
 await FaceClientEastAsia.Snapshot.DeleteAsync(snapshotId);
@@ -230,10 +230,10 @@ await FaceClientEastAsia.Snapshot.DeleteAsync(snapshotId);
 
 ## <a name="next-steps"></a>Następne kroki
 
-Następnie zapoznaj się z dokumentacją dotyczącą interfejsów API, zobacz przykładową aplikację korzystającą z funkcji Snapshot lub wykonaj instrukcje, aby zacząć korzystać z innych operacji interfejsu API wymienionych tutaj:
+Następnie zapoznaj się z odpowiednią dokumentacją referencyjną interfejsu API, zapoznaj się z przykładową aplikacją, która korzysta z funkcji Migawka, lub postępuj zgodnie z instrukcjami, aby rozpocząć korzystanie z innych operacji interfejsu API wymienionych w tym miejscu:
 
-- [Dokumentacja referencyjna migawek (zestaw SDK dla platformy .NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperations?view=azure-dotnet)
-- [Przykładowa migawka czołowa](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)
+- [Dokumentacja odwołania do migawek (SDK.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperations?view=azure-dotnet)
+- [Próbka migawki ściany](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)
 - [Dodawanie twarzy](how-to-add-faces.md)
 - [Wykrywanie twarzy na obrazie](HowtoDetectFacesinImage.md)
 - [Identyfikowanie twarzy na obrazie](HowtoIdentifyFacesinImage.md)

@@ -1,7 +1,7 @@
 ---
-title: Przestarzałe wstępnie skompilowane jednostki — LUIS
+title: Przestarzałe wstępnie utworzone jednostki — usługa LUIS
 titleSuffix: Azure Cognitive Services
-description: Ten artykuł zawiera informacje przestarzałe wstępnie utworzone jednostki w Language Understanding (LUIS).
+description: Ten artykuł zawiera przestarzałe wstępnie utworzone informacje o jednostce w funkcji Rozumienie języka (LUIS).
 services: cognitive-services
 author: diberry
 ms.custom: seodec18
@@ -12,25 +12,25 @@ ms.topic: reference
 ms.date: 07/29/2019
 ms.author: diberry
 ms.openlocfilehash: 46da828b7553fdf9cdded817febd3bb95cd4cbb9
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78270676"
 ---
-# <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>Przestarzałe wstępnie skompilowane jednostki w aplikacji LUIS
-Następujące wstępnie utworzone jednostki są przestarzałe i nie można dodawać do nowych aplikacji usługi LUIS.
+# <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>Przestarzałe wstępnie utworzone jednostki w aplikacji usługi LUIS
+Następujące wstępnie utworzone jednostki są przestarzałe i nie można dodać do nowych aplikacji usługi LUIS.
 
-* **DateTime**: istniejące aplikacje Luis, które używają **typu DateTime** , powinny zostać zmigrowane do **datetimeV2**, mimo że jednostka DateTime nadal działa we wstępnie istniejących aplikacjach, które go używają.
-* **Lokalizacja geograficzna**: istniejące aplikacje Luis korzystające z lokalizacji **geograficznej** są obsługiwane do grudnia 2018.
-* **Encyklopedia**: istniejące aplikacje Luis korzystające z **encyklopedii** są obsługiwane do grudnia 2018.
+* **Datetime**: Istniejące aplikacje usługi LUIS, które używają **datetime** powinny być migrowane do **datetimeV2**, chociaż datetime jednostki nadal działa we wstępnie istniejących aplikacji, które go używają.
+* **Geografia:** Istniejące aplikacje usługi LUIS korzystające z **lokalizacji geograficznej** są obsługiwane do grudnia 2018 r.
+* **Encyklopedia:** Istniejące aplikacje usługi LUIS korzystające z **encyklopedii** są obsługiwane do grudnia 2018 r.
 
-## <a name="geography-culture"></a>Lokalizacja geograficzna kultury
-**Lokalizacja geograficzna** jest dostępna tylko w `en-us` ustawieniach regionalnych.
+## <a name="geography-culture"></a>Kultura geografii
+**Geografia** jest dostępna `en-us` tylko w ustawieniach regionalnych.
 
-#### <a name="3-geography-subtypes"></a>3 podtypy lokalizacji geograficznej
+#### <a name="3-geography-subtypes"></a>3 Podtypy geografii
 
-Wstępnie utworzone jednostki   |   Przykładowa wypowiedź   |   JSON
+Wstępnie skompilowana jednostka   |   Przykładowa wypowiedź   |   JSON
 ------|------|------|
 `builtin.geography.city`   |  `seattle`    |`{ "type": "builtin.geography.city", "entity": "seattle" }`|
 `builtin.geography.city`   |  `paris`    |`{ "type": "builtin.geography.city", "entity": "paris" }`|
@@ -39,11 +39,11 @@ Wstępnie utworzone jednostki   |   Przykładowa wypowiedź   |   JSON
 `builtin.geography.pointOfInterest`   |   `amazon river` |`{ "type": "builtin.geography.pointOfInterest", "entity": "amazon river" }`|
 `builtin.geography.pointOfInterest`   |   `sahara desert`|`{ "type": "builtin.geography.pointOfInterest", "entity": "sahara desert" }`|
 
-## <a name="encyclopedia-culture"></a>Kultura encyklopedii
-**Encyklopedia** jest dostępna tylko w `en-US` ustawieniach regionalnych.
+## <a name="encyclopedia-culture"></a>Kultura Encyklopedii
+**Encyklopedia** jest dostępna `en-US` tylko w lokalizacjach.
 
-#### <a name="encyclopedia-subtypes"></a>Podtypy encyklopedii
-Wbudowane jednostki encyklopedii zawiera ponad 100 typy podrzędne w poniższej tabeli: Ponadto encyklopedii jednostki są często mapowane na wiele typów. Na przykład zapytanie Ronald Reagan daje:
+#### <a name="encyclopedia-subtypes"></a>Podtypy Encyklopedii
+Wbudowana jednostka Encyklopedia zawiera ponad 100 podtypów w poniższej tabeli: Ponadto jednostki encyklopedii często mapują na wiele typów. Na przykład kwerenda Ronald Reagan daje:
 
 ```json
 {
@@ -65,7 +65,7 @@ Wbudowane jednostki encyklopedii zawiera ponad 100 typy podrzędne w poniższej 
  ```
 
 
-Wstępnie utworzone jednostki   |   Wstępnie utworzone jednostki (typy podrzędne)   |   Przykładowa wypowiedź
+Wstępnie skompilowana jednostka   |   Wstępnie skompilowana jednostka (podtypy)   |   Przykładowa wypowiedź
 ------|------|------|
 `builtin.encyclopedia.people.person`| `builtin.encyclopedia.people.person`| `bryan adams` |
 `builtin.encyclopedia.people.person`| `builtin.encyclopedia.film.producer`| `walt disney` |
@@ -163,5 +163,5 @@ Wstępnie utworzone jednostki   |   Wstępnie utworzone jednostki (typy podrzęd
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat [wymiaru](luis-reference-prebuilt-dimension.md), jednostek [poczty e-mail](luis-reference-prebuilt-email.md) i [liczby](luis-reference-prebuilt-number.md).
+Dowiedz się więcej o [wymiarze,](luis-reference-prebuilt-dimension.md)encjach [poczty e-mail](luis-reference-prebuilt-email.md) i [numerze](luis-reference-prebuilt-number.md).
 

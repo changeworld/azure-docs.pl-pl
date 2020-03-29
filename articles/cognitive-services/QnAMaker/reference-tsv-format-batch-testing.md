@@ -1,7 +1,7 @@
 ---
-title: Format TSV testu wsadowego — QnA Maker
+title: Format TSV testu wsadowego - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Informacje o formacie TSV dla testów wsadowych
+description: Opis formatu TSV do testowania wsadowego
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,50 +11,50 @@ ms.topic: reference
 ms.date: 10/24/2019
 ms.author: diberry
 ms.openlocfilehash: dccf034b6497651db70b6cc09fff3f1b1d645a1b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73507826"
 ---
-# <a name="batch-testing-tsv-format"></a>Format TSV testów wsadowych
+# <a name="batch-testing-tsv-format"></a>Format TSV testowania wsadowego
 
-Testowanie wsadowe jest dostępne z [kodu źródłowego](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/batchtesting) lub jako [plik wykonywalny do pobrania](https://aka.ms/qna_btzip). Format polecenia do uruchomienia testu wsadowego to:
+Testowanie wsadowe jest dostępne z [kodu źródłowego](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/batchtesting) lub jako plik [wykonywalny do pobrania spakowany.](https://aka.ms/qna_btzip) Format polecenia uruchomienia testu wsadowego jest:
 
 ```console
 batchtesting.exe input.tsv https://YOUR-HOST.azurewebsites.net ENDPOINT-KEY out.tsv
 ```
 
-|Param|Oczekiwana wartość|
+|Param|Wartość oczekiwana|
 |--|--|
-|1|Nazwa pliku TSV sformatowana przy użyciu [pól wejściowych TSV](#tsv-input-fields)|
-|2|Identyfikator URI dla punktu końcowego z HOSTem — ze strony publikowania w portalu QnA Maker.|
-|3|KLUCZ punktu końcowego znajduje się na stronie publikowania w portalu QnA Maker.|
-|4|Nazwa pliku TSV utworzonego przez test wsadowy dla wyników.|
+|1|nazwa pliku tsv sformatowanego za pomocą [pól wejściowych TSV](#tsv-input-fields)|
+|2|Identyfikator URI dla punktu końcowego z YOUR-HOST ze strony Publikowania portalu QnA Maker.|
+|3|ENDPOINT-KEY, znaleziono na stronie Publikowania portalu QnA Maker.|
+|4|nazwa pliku tsv utworzonego przez test wsadowy dla wyników.|
 
-Skorzystaj z poniższych informacji, aby zrozumieć i zaimplementować format TSV dla testów wsadowych. 
+Poniższe informacje można wykorzystać, aby zrozumieć i zaimplementować format TSV do testowania wsadowego. 
 
 ## <a name="tsv-input-fields"></a>Pola wejściowe TSV
 
-|Pola wejściowe plików TSV|Uwagi|
+|Pola pliku wejściowego TSV|Uwagi|
 |--|--|
-|KBID|Na stronie publikowania znaleziono identyfikator bazy wiedzy.|
-|Pytanie|Pytanie, które użytkownik wprowadzi.|
-|Tagi metadanych|Obowiązkowe|
-|Górny parametr|Obowiązkowe| 
-|Oczekiwany identyfikator odpowiedzi|Obowiązkowe|
+|KBID|Identyfikator KB znajduje się na stronie Publikowanie.|
+|Pytanie|Pytanie, które użytkownik wprowadziłby.|
+|Tagi metadanych|optional|
+|Parametr górny|optional| 
+|Identyfikator oczekiwanej odpowiedzi|optional|
 
-![Format danych wejściowych dla pliku TSV na potrzeby testowania wsadowego.](media/batch-test/input-tsv-format-batch-test.png)
+![Format wejściowy dla pliku TSV do testowania wsadowego.](media/batch-test/input-tsv-format-batch-test.png)
 
 ## <a name="tsv-output-fields"></a>Pola wyjściowe TSV 
 
 |Parametry pliku wyjściowego TSV|Uwagi|
 |--|--|
-|KBID|Na stronie publikowania znaleziono identyfikator bazy wiedzy.|
-|Pytanie|Pytanie wprowadzone w pliku wejściowym.|
-|Odpowiedź|Najważniejsze odpowiedzi z bazy wiedzy.|
+|KBID|Identyfikator KB znajduje się na stronie Publikowanie.|
+|Pytanie|Pytanie wprowadzone z pliku wejściowego.|
+|Odpowiedź|Najlepsza odpowiedź z bazy wiedzy.|
 |Identyfikator odpowiedzi|Identyfikator odpowiedzi|
-|Wynik|Wynik przewidywania dla odpowiedzi. |
-|Tagi metadanych|skojarzone z zwróconą odpowiedzią|
-|Oczekiwany identyfikator odpowiedzi|opcjonalne (tylko gdy jest podawany oczekiwany identyfikator odpowiedzi)|
-|Etykieta orzeczenia|Opcjonalne wartości mogą być następujące: poprawne lub nieprawidłowe (tylko w przypadku podanej oczekiwanej odpowiedzi)|
+|Wynik|Wynik przewidywania odpowiedzi. |
+|Tagi metadanych|związane z zwróconą odpowiedzią|
+|Identyfikator oczekiwanej odpowiedzi|opcjonalne (tylko wtedy, gdy podany jest oczekiwany identyfikator odpowiedzi)|
+|Etykieta wyroku|opcjonalne, wartości mogą być: poprawne lub nieprawidłowe (tylko wtedy, gdy udzielona jest oczekiwana odpowiedź)|

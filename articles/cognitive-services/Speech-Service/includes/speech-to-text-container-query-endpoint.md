@@ -7,30 +7,30 @@ ms.topic: include
 ms.date: 01/21/2020
 ms.author: dapine
 ms.openlocfilehash: 9b4317064196c4ea3d761fd1a0bd43a764054fe6
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77563300"
 ---
-### <a name="speech-to-text-or-custom-speech-to-text"></a>Zamiana mowy na tekst lub Custom Speech na tekst
+### <a name="speech-to-text-or-custom-speech-to-text"></a>Zamiana mowy na tekst lub niestandardowa zamiana mowy na tekst
 
-Kontener udostępnia interfejsy API punktu końcowego zapytania opartego na protokole WebSocket, do których można uzyskać dostęp za pośrednictwem [zestawu Speech SDK](../index.yml). Domyślnie zestaw Speech SDK używa usług online Speech Services. Aby użyć kontenera, należy zmienić metodę inicjacji.
+Kontener udostępnia interfejsy API punktu końcowego programu query oparte na websocket, które są dostępne za pośrednictwem [SDK mowy.](../index.yml) Domyślnie SDK mowy używa usług mowy online. Aby użyć kontenera, należy zmienić metodę inicjowania.
 
 > [!TIP]
-> W przypadku korzystania z zestawu Speech SDK z kontenerami nie trzeba podawać klucza subskrypcji zasobów usługi Azure Speech [ani tokenu okaziciela uwierzytelniania](../rest-speech-to-text.md#authentication).
+> Podczas korzystania z zestawu SDK mowy z kontenerami nie trzeba podawać klucza subskrypcji zasobu usługi Azure Speech [ani tokenu nośnego uwierzytelniania.](../rest-speech-to-text.md#authentication)
 
-Zapoznaj się z poniższymi przykładami.
+Zobacz poniższe przykłady.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-Zmień użycie tego wywołania inicjalizacji Azure-Cloud:
+Zmień z przy użyciu tego wywołania inicjowania chmury platformy Azure:
 
 ```csharp
 var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 ```
 
-do tego wywołania przy użyciu [hosta](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromhost?view=azure-dotnet)kontenera:
+do tego wywołania przy użyciu [hosta kontenera:](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromhost?view=azure-dotnet)
 
 ```csharp
 var config = SpeechConfig.FromHost(
@@ -38,14 +38,14 @@ var config = SpeechConfig.FromHost(
 ```
 # <a name="python"></a>[Python](#tab/python)
 
-Zmień użycie tego wywołania inicjalizacji Azure-Cloud:
+Zmień z przy użyciu tego wywołania inicjowania chmury platformy Azure:
 
 ```python
 speech_config = speechsdk.SpeechConfig(
     subscription=speech_key, region=service_region)
 ```
 
-do tego wywołania przy użyciu [hosta](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python)kontenera:
+do tego wywołania przy użyciu [hosta kontenera:](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python)
 
 ```python
 speech_config = speechsdk.SpeechConfig(

@@ -1,7 +1,7 @@
 ---
-title: Obsługa języków — interfejs API wyszukiwania niestandardowego Bing
+title: Obsługa języka — interfejs API wyszukiwania niestandardowego usługi Bing
 titleSuffix: Azure Cognitive Services
-description: Lista obsługiwanych językach i regionach interfejsu API wyszukiwania niestandardowego Bing.
+description: Lista obsługiwanych języków i regionów interfejsu API wyszukiwania niestandardowego Bing.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,25 +11,25 @@ ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: aahi
 ms.openlocfilehash: 85326ae9166f7ea15ec2f45c01755b8f9ef03aff
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "66388559"
 ---
-# <a name="language-and-region-support-for-the-bing-custom-search-api"></a>Obsługa języka i regionu dla interfejsu API wyszukiwania niestandardowego Bing
+# <a name="language-and-region-support-for-the-bing-custom-search-api"></a>Obsługa języka i regionu interfejsu API wyszukiwania niestandardowego usługi Bing
 
-Interfejs API wyszukiwania niestandardowego Bing obsługuje więcej niż trzech tuzina kraje/regiony, wiele z więcej niż jednym języku.
+Interfejs API wyszukiwania niestandardowego usługi Bing obsługuje ponad trzy tuziny krajów/regionów, wiele z więcej niż jednym językiem.
 
-Chociaż jest to opcjonalne, należy określić żądanie [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#mkt) parametr zapytania, który identyfikuje na rynku, którego wyniki pochodzą. Aby uzyskać listę parametrów opcjonalnych zapytania, zobacz [parametry zapytania](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)
+Mimo że jest to opcjonalne, żądanie należy określić [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#mkt) query parametr, który identyfikuje rynku, na którym mają pochodzić wyniki. Aby uzyskać listę opcjonalnych parametrów kwerendy, zobacz [Parametry kwerendy](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)
 
-Można określić kraj/region, w którym używana jest `cc` parametr zapytania. Jeśli określisz kraju/regionu, należy także określić co najmniej jeden kod języka przy użyciu `Accept-Language` nagłówka. Obsługiwane języki zależą od kraju/regionu podane są dla każdego kraju/regionu w **rynków** tabeli.
+Można określić kraj/region `cc` przy użyciu parametru kwerendy. Jeśli określisz kraj/region, należy również określić jeden `Accept-Language` lub więcej kodów języków za pomocą nagłówka. Obsługiwane języki różnią się w zależności od kraju/regionu; dla każdego kraju/regionu w tabeli **Rynki.**
 
-`Accept-Language` Nagłówka i `setLang` parametr zapytania wykluczają się wzajemnie — nie określać jednocześnie. Aby uzyskać więcej informacji, zobacz [Accept-Language](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#acceptlanguage).
+Nagłówek `Accept-Language` i `setLang` parametr zapytania wzajemnie się wykluczają — nie należy określać obu tych opcji. Aby uzyskać szczegółowe informacje, zobacz [Akceptowanie języka](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#acceptlanguage).
 
 ## <a name="countriesregions"></a>Kraje/regiony
 
-|Country/region|Kod|
+|Kraj/region|Code|
 |-------|----|
 |Argentyna|AR|
 |Australia|AU|
@@ -65,51 +65,51 @@ Można określić kraj/region, w którym używana jest `cc` parametr zapytania. 
 |Szwajcaria|CH|
 |Tajwan|TW|
 |Turcja|TR|
-|Zjednoczone Królestwo|GB|
+|Wielka Brytania|GB|
 |Stany Zjednoczone|USA|
 
 
-## <a name="markets"></a>Rynki
+## <a name="markets"></a>Rynków
 
-|Country/region|Język|Rynek kodu|
+|Kraj/region|Język|Kodeks rynku|
 |-------|--------|-----------|
-|Argentyna|Hiszpański|ES AR|
-|Australia|Polski|EN-AU|
+|Argentyna|Hiszpański|es-AR|
+|Australia|Polski|pl-UA|
 |Austria|Niemiecki|de-AT|
-|Belgia|Holenderski|nl-BE|
+|Belgia|Niderlandzki|nl-BE|
 |Belgia|Francuski|fr-BE|
 |Brazylia|Portugalski|pt-BR|
-|Kanada|Polski|EN-CA|
+|Kanada|Polski|pl-CA|
 |Kanada|Francuski|fr-CA|
-|Chile|Hiszpański|ES-CL|
-|Dania|Duński|Akcelerator deweloperski w wersji DK|
-|Finlandia|Fiński|fi-FI|
+|Chile|Hiszpański|es-CL|
+|Dania|duński|da-DK|
+|Finlandia|fiński|fi-FI|
 |Francja|Francuski|fr-FR|
-|Niemcy|Niemiecki|de-DE.|
-|SRA Hongkong|Chiński (tradycyjny)|zh-HK|
-|Indie|Polski|EN-IN|
-|Indonezja|Polski|EN-ID|
-|Włochy|Włoski|IT-IT|
+|Niemcy|Niemiecki|de-DE|
+|Hongkong, SAR|Chiński tradycyjny|zh-HK|
+|Indie|Polski|pl-IN|
+|Indonezja|Polski|en-ID|
+|Włochy|Włoski|it-IT|
 |Japonia|Japoński|ja-JP|
 |Korea|Koreański|ko-KR|
-|Malezja|Polski|Moje en|
+|Malezja|Polski|pl-MY|
 |Meksyk|Hiszpański|es-MX|
-|Holandia|Holenderski|NL-NL|
-|Nowa Zelandia|Polski|EN NZ|
+|Holandia|Niderlandzki|nl-NL|
+|Nowa Zelandia|Polski|pl-NZ|
 |Norwegia|Norweski|no-NO|
 |Chiny|Chiński|zh-CN|
 |Polska|Polski|pl-PL|
 |Portugalia|Portugalski|pt-PT|
-|Filipiny|Polski|en-PH|
+|Filipiny|Polski|pl-PH|
 |Rosja|Rosyjski|ru-RU|
 |Arabia Saudyjska|Arabski|ar-SA|
-|Republika Południowej Afryki|Polski|en-ZA|
+|Republika Południowej Afryki|Polski|pl-ZA|
 |Hiszpania|Hiszpański|es-ES|
-|Szwecja|Szwedzki|sv-SE|
-|Szwajcaria|Francuski|FR-CH|
+|Szwecja|szwedzki|sv-SE|
+|Szwajcaria|Francuski|fr-CH|
 |Szwajcaria|Niemiecki|de-CH|
-|Tajwan|Chiński (tradycyjny)|zh-TW|
+|Tajwan|Chiński tradycyjny|zh-TW|
 |Turcja|Turecki|tr-TR|
-|Zjednoczone Królestwo|Polski|en-GB|
-|Stany Zjednoczone|Polski|en-US|
-|Stany Zjednoczone|Hiszpański|es-US|
+|Wielka Brytania|Polski|en-GB|
+|Stany Zjednoczone|Polski|pl-PL|
+|Stany Zjednoczone|Hiszpański|es-USA|

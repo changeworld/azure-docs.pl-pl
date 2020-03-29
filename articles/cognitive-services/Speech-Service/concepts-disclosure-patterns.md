@@ -1,7 +1,7 @@
 ---
-title: Wzorce projektowania ujawniania
+title: Wzorce projektu ujawniania informacji
 titleSuffix: Azure Cognitive Services
-description: Wzorce projektowe i najlepsze rozwiązania związane z ujawnianiem.
+description: Wzorce projektowe i najlepsze praktyki dotyczące ujawniania informacji.
 services: cognitive-services
 author: sharonlo101
 manager: nitinme
@@ -11,247 +11,247 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: angle
 ms.openlocfilehash: 3e7d8ee2b156a30b11cda79798a8af8a8ecf4f64
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74776626"
 ---
 # <a name="disclosure-design-patterns"></a>Wzorce projektowania ujawniania
-Teraz,&#39;po ustaleniu właściwego [poziomu ujawniania](concepts-disclosure-guidelines.md#disclosure-assessment) danych na potrzeby obsługi głosu syntetycznego,&#39;warto zapoznać się z potencjalnymi wzorcami projektowymi.
-## <a name="overview"></a>Przegląd
-Istnieje szeroki zakres wzorców projektowych, które można zastosować do Twoich syntetycznych połączeń głosowych. Jeśli wynik oceny ujawnienia był "wysokim ujawnieniem", zalecamy [**jawne ujawnienie**](#explicit-disclosure), co oznacza, że komunikacja z pochodzeniem z syntetycznego głosu jest nieodpowiednia. [**Niejawne ujawnienie**](#implicit-disclosure) obejmuje wskaźniki i wzorce interakcji, które korzystają z głosu, niezależnie od tego, czy wymagane poziomy ujawniania są wysokie czy niskie.
-![spektrum ujawniania](media/responsible-ai/disclosure-patterns/affordances.png)
+Teraz, gdy&#39;określisz odpowiedni poziom ujawnienia dla swojego [syntetycznego](concepts-disclosure-guidelines.md#disclosure-assessment) doświadczenia głosowego,&#39;to dobry moment na zbadanie potencjalnych wzorców projektowych.
+## <a name="overview"></a>Omówienie
+Istnieje spektrum wzorców projektowania ujawniania informacji, które można zastosować do swojego syntetycznego głosu. Jeśli wynikiem oceny ujawnienia było "Wysokie ujawnienie", zalecamy [**wyraźne ujawnienie,**](#explicit-disclosure)co oznacza bezpośrednie informowanie o pochodzeniu syntetycznego głosu. [**Niejawne ujawnienie**](#implicit-disclosure) obejmuje wskazówki i wzorce interakcji, które przynoszą korzyści doświadczeniom głosowym, niezależnie od tego, czy wymagane poziomy ujawniania są wysokie czy niskie.
+![Spektrum wzorców ujawniania informacji](media/responsible-ai/disclosure-patterns/affordances.png)
 
 
 
 
 
 
-| Jawne wzorce ujawniania                                                                                                                                                                                    | Niejawne wzorce ujawniania                                                                 |
+| Jawne wzorce ujawniania informacji                                                                                                                                                                                    | Wzorce ujawniania niejawnego                                                                 |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
-|[Przejrzyste wprowadzenie](#transparent-introduction)<br> [Werbalne jawne wprowadzenie](#verbal-transparent-introduction)<br>  [Jawne Byline](#explicit-byline)<br>  [Dostosowywanie i kalibracja](#customization-and-calibration)<br> [Ujawnienie rodzicielskie](#parental-disclosure)<br> [Zapewnianie możliwości Dowiedz się więcej o tym, jak nastąpiło głos](#providing-opportunities-to-learn-more-about-how-the-voice-was-made) | [Ujawnienie możliwości](#capability-disclosure)<br>[Niejawne wskaźniki i opinie](#implicit-cues--feedback)<br> [Przezroczystość konwersacji](#conversational-transparency) |
+|[Przejrzyste wprowadzenie](#transparent-introduction)<br> [Werbalne przejrzyste wprowadzenie](#verbal-transparent-introduction)<br>  [Jawna linia](#explicit-byline)<br>  [Dostosowywanie i kalibracja](#customization-and-calibration)<br> [Ujawnienie rodzicielskie](#parental-disclosure)<br> [Zapewnienie możliwości dowiedzieć się więcej o tym, jak powstał głos](#providing-opportunities-to-learn-more-about-how-the-voice-was-made) | [Ujawnianie możliwości](#capability-disclosure)<br>[Niejawne wskazówki i opinie](#implicit-cues--feedback)<br> [Przejrzystość konwersacji](#conversational-transparency) |
 
 
 
-Skorzystaj z poniższej tabeli, aby odwołać się bezpośrednio do wzorców, które są stosowane do głosu syntetycznego. Niektóre z innych warunków tego wykresu mogą również dotyczyć Twojego scenariusza:<br/>
+Użyj poniższej tabeli, aby odnieść się bezpośrednio do wzorców, które mają zastosowanie do głosu syntetycznego. Niektóre z innych warunków na tym wykresie mogą również dotyczyć scenariusza:<br/>
 
 
 
-| Jeśli Twoje środowisko głosu syntetycznego... | Polecane elementy | Wzorce projektowe |
+| Jeśli twoje syntetyczne doświadczenie głosu... | Zalecenia | Wzorce projektowe |
 | --- | --- | --- |
-| Wymaga wysokiego ujawnienia  | Użyj co najmniej jednego jawnego wzorca i niejawnych wskazówek na początku, aby ułatwić użytkownikom tworzenie skojarzeń. |[Jawne ujawnienie](#explicit-disclosure)<br>[Niejawne ujawnienie](#implicit-disclosure)  |
-| Wymaga niskiej ilości informacji | Ujawnienie może być minimalne lub niepotrzebne, ale może korzystać z niektórych niejawnych wzorców. | [Ujawnienie możliwości](#capability-disclosure)<br>[Przezroczystość konwersacji](#conversational-transparency)  |
-| Ma wysoki poziom zaangażowania | Kompiluj przez długi czas i oferując wiele punktów wejścia do ujawnienia podczas podróży użytkownika. Zdecydowanie zaleca się korzystanie z funkcji dołączania. | [Przejrzyste wprowadzenie](#transparent-introduction)<br>[Dostosowywanie i kalibracja](#customization-and-calibration)<br>[Ujawnienie możliwości](#capability-disclosure) |
-| Zawiera elementy podrzędne jako głównej zamierzonej grupy odbiorców | Kierowanie obiektów docelowych jako głównych odbiorców ujawniania i zapewnienie, że mogą one efektywnie komunikować się z odniesiemi do elementów podrzędnych.  | [Ujawnienie rodzicielskie](#parental-disclosure)<br>[Werbalne jawne wprowadzenie](#verbal-transparent-introduction)<br> [Niejawne ujawnienie](#implicit-disclosure)<br> [Przezroczystość konwersacji](#conversational-transparency)  |
-| Obejmuje użytkowników niewidomych lub osób mających słabą wizję jako podstawową zamierzonymi odbiorcami  | Załącz się z wszystkimi użytkownikami i upewnij się, że jakakolwiek forma ujawniania wizualnego ma skojarzone alternatywny tekst lub efekty dYwiękowe. Przestrzegaj standardów dostępności dla współczynnika kontrastu i rozmiaru ekranu. Użyj wskaźników audytorów, aby komunikować się z ujawnianiem.  | [Werbalne jawne wprowadzenie](#verbal-transparent-introduction) <br>[Wskaźniki audytorów](#implicit-cues--feedback)<br>[Haptic podpowiedzi](#implicit-cues--feedback)<br>[Przezroczystość konwersacji](#conversational-transparency)<br>[Standardy dostępności](https://www.microsoft.com/accessibility) |
-| Jest mniejsze niż ekran, urządzenia i mniejsze lub używa głosu jako podstawowego lub tylko trybu interakcji | Użyj wskaźników audytorów, aby komunikować się z ujawnianiem. | [Werbalne jawne wprowadzenie](#verbal-transparent-introduction) <br> [Wskaźniki audytorów](#implicit-cues--feedback)  |
-| Potencjalnie obejmuje wielu użytkowników/odbiorników (np. Personal Assistant w wielu gospodarstwach domowych)  | Zapoznaj się z różnymi kontekstami użytkownika i poziomami interpretacji i oferując wiele możliwości ujawniania w podróży użytkownika.  | [Jawne wprowadzenie (użytkownik zwrotny)](#transparent-introduction)<br> [Zapewnianie możliwości Dowiedz się więcej o tym, jak nastąpiło głos](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)<br> [Przezroczystość konwersacji](#conversational-transparency)  |
+| Wymaga wysokiego ujawnienia  | Użyj co najmniej jeden jawny wzorzec i niejawne wskazówki z góry, aby pomóc użytkownikom tworzyć skojarzenia. |[Jawne ujawnianie informacji](#explicit-disclosure)<br>[Ukryte ujawnienie](#implicit-disclosure)  |
+| Wymaga niskiego ujawnienia | Ujawnienie może być minimalne lub niepotrzebne, ale może korzystać z niektórych ukrytych wzorców. | [Ujawnianie możliwości](#capability-disclosure)<br>[Przejrzystość konwersacji](#conversational-transparency)  |
+| Ma wysoki poziom zaangażowania | Twórz na dłuższą metę i oferuj wiele punktów wejścia do ujawnienia wzdłuż podróży użytkownika. Zdecydowanie zaleca się, aby mieć doświadczenie onboarding. | [Przejrzyste wprowadzenie](#transparent-introduction)<br>[Dostosowywanie i kalibracja](#customization-and-calibration)<br>[Ujawnianie możliwości](#capability-disclosure) |
+| Obejmuje dzieci jako podstawowego zamierzonego odbiorcy | Kieruj do rodziców jako główną grupę odbiorców informacji i zapewnij, że mogą skutecznie informować dzieci o ujawnianiu informacji.  | [Ujawnienie rodzicielskie](#parental-disclosure)<br>[Werbalne przejrzyste wprowadzenie](#verbal-transparent-introduction)<br> [Ukryte ujawnienie](#implicit-disclosure)<br> [Przejrzystość konwersacji](#conversational-transparency)  |
+| Obejmuje niewidomych użytkowników lub osoby niedowidzące jako główną odbiorcę  | Należy uwzględniać wszystkich użytkowników i zapewnić, że każda forma wizualnego ujawnienia ma związane z alternatywnym tekstem lub efektami dźwiękowymi. Stosować się do standardów dostępności dla współczynnika kontrastu i rozmiaru wyświetlacza. Użyj wskazówek słuchowych, aby przekazać ujawnienie.  | [Werbalne przejrzyste wprowadzenie](#verbal-transparent-introduction) <br>[Sygnały słuchowe](#implicit-cues--feedback)<br>[Haptyczne sygnały](#implicit-cues--feedback)<br>[Przejrzystość konwersacji](#conversational-transparency)<br>[Standardy dostępności](https://www.microsoft.com/accessibility) |
+| Jest bez ekranu, bez urządzenia lub używa głosu jako podstawowy lub jedyny tryb interakcji | Użyj wskazówek słuchowych, aby przekazać ujawnienie. | [Werbalne przejrzyste wprowadzenie](#verbal-transparent-introduction) <br> [Sygnały słuchowe](#implicit-cues--feedback)  |
+| Potencjalnie obejmuje wielu użytkowników / słuchaczy (np. osobistego asystenta w wielu gospodarstwach domowych)  | Należy pamiętać o różnych kontekstach użytkownika i poziom zrozumienia i oferują wiele możliwości ujawnienia w podróży użytkownika.  | [Wprowadzenie do przezroczystego (użytkownik zwrotny)](#transparent-introduction)<br> [Zapewnienie możliwości dowiedzieć się więcej o tym, jak powstał głos](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)<br> [Przejrzystość konwersacji](#conversational-transparency)  |
 
 
 
-## <a name="explicit-disclosure"></a>Jawne ujawnienie
-Jeśli środowisko głosu syntetycznego wymaga wysokiego ujawnienia, najlepszym rozwiązaniem jest użycie co najmniej jednego z następujących jawnych wzorców w celu jasnego podania charakteru syntetycznego.
+## <a name="explicit-disclosure"></a>Jawne ujawnianie informacji
+Jeśli twoje syntetyczne doświadczenie głosu wymaga wysokiego ujawnienia, najlepiej użyć co najmniej jednego z następujących jawnych wzorców, aby wyraźnie podać syntetyczny charakter.
 ### <a name="transparent-introduction"></a>Przejrzyste wprowadzenie
 
-Przed rozpoczęciem pracy z głosem należy wprowadzić asystenta cyfrowego przez pełny wgląd w informacje o źródłach głosu i jego możliwości. Najlepszym momentem korzystania z tego wzorca jest dołączenie nowego użytkownika lub wprowadzenie nowych funkcji do zwracanego użytkownika. Zaimplementowanie niejawnych wskazówek podczas wprowadzania ułatwia użytkownikom formę modelu psychicznego na temat syntetycznego charakteru agenta cyfrowego.
+Zanim rozpocznie się doświadczenie głosowe, wprowadź cyfrowego asystenta, będąc w pełni przejrzystym co do pochodzenia jego głosu i jego możliwości. Optymalnym momentem, aby użyć tego wzorca jest podczas dołączania nowego użytkownika lub podczas wprowadzania nowych funkcji do powracającego użytkownika. Implementowanie niejawnych wskazówek podczas wprowadzania pomaga użytkownikom tworzyć model psychiczny o syntetycznym charakterze agenta cyfrowego.
 
-#### <a name="first-time-user-experience"></a>Środowisko użytkownika pierwszego czasu
+#### <a name="first-time-user-experience"></a>Pierwsze środowisko użytkownika
 
-![przejrzyste wprowadzenie podczas pierwszego uruchomienia środowiska](media/responsible-ai/disclosure-patterns/transparent-intro-first.png) <br>
-*Głos syntetyczny jest wprowadzany podczas dołączania nowego użytkownika.*
+![Przejrzyste wprowadzenie podczas pierwszego uruchomienia](media/responsible-ai/disclosure-patterns/transparent-intro-first.png) <br>
+*Syntetyczny głos jest wprowadzany podczas dołączania nowego użytkownika.*
 
-Polecane elementy
-- Opisz, że głos jest sztuczny (np. &quot;Digital&quot;)
-- Opisz, do czego służy Agent
-- Jawnie określaj źródła&#39;głosu
-- Oferowanie punktu wejścia, aby dowiedzieć się więcej o głosowaniu syntetycznym
+Zalecenia
+- Opisz, że głos jest sztuczny (np. &quot;cyfrowy)&quot;
+- Opisz, co agent jest w stanie zrobić
+- Wyraźnie podać&#39;pochodzenie głosu
+- Zaoferuj punkt wejścia, aby dowiedzieć się więcej o syntetycznym głosie
 
-#### <a name="returning-user-experience"></a>Zwracanie środowiska użytkownika
+#### <a name="returning-user-experience"></a>Powrót środowiska użytkownika
 
-Jeśli użytkownik pomija środowisko dołączania, kontynuuje oferowanie punktów wejścia do przezroczystego środowiska wprowadzania do momentu wyzwolenia głosu przez użytkownika po raz pierwszy.
+Jeśli użytkownik pomija środowisko dołączania, kontynuuj oferowanie punktów wejścia do środowiska Wprowadzenie przezroczyste, dopóki użytkownik nie uruchomi głosu po raz pierwszy.
 <br/>
 
-![przejrzyste wprowadzenie podczas korzystania ze środowiska użytkownika zwrotnego](media/responsible-ai/disclosure-patterns/transparent-intro-return.png)<br/>
-*Zapewnienie spójnego punktu wejścia do obsługi głosu syntetycznego. Zezwalaj użytkownikowi na powrót do środowiska dołączania, gdy wyzwala głos po raz pierwszy w dowolnym momencie podróży użytkownika.*
+![Przejrzyste wprowadzenie podczas powrotu użytkownika](media/responsible-ai/disclosure-patterns/transparent-intro-return.png)<br/>
+*Zapewnij spójny punkt wejścia do syntetycznego doświadczenia głosowego. Pozwól użytkownikowi powrócić do środowiska dołączania, gdy po raz pierwszy wyzwoli głos w dowolnym momencie podróży użytkownika.*
 
 
-### <a name="verbal-transparent-introduction"></a>Werbalne jawne wprowadzenie
+### <a name="verbal-transparent-introduction"></a>Werbalne przejrzyste wprowadzenie
 
-Mówiony monit zawierający informacje o źródłach głosu asystenta&#39;cyfrowego jest wystarczająco wyraźny, aby uzyskać ujawnienie. Ten wzorzec jest najlepszy dla scenariuszy o wysokim poziomie ujawniania, w których głos jest jedynym dostępnym trybem interakcji.
+Głos mówionego, który podaje pochodzenie cyfrowego asystenta&#39;głosem, jest wystarczająco wyraźny, aby osiągnąć ujawnienie. Ten wzorzec jest najlepszy w przypadku scenariuszy wysokiego ujawniania informacji, w których głos jest jedynym dostępnym trybem interakcji.
 <br/>
 
-![j niezauważalne wprowadzenie](media/responsible-ai/disclosure-patterns/spoken-prompt-1.png)
-<br/>*W przypadku momentu, w którym użytkownik może już wprowadzać lub atrybutować&#39;głos, można użyć przejrzystego wprowadzenia.*
+![Werbalnie wypowiedziane przejrzyste wprowadzenie](media/responsible-ai/disclosure-patterns/spoken-prompt-1.png)
+<br/>*Użyj przejrzystego wprowadzenia, gdy w środowiskach użytkownika występują momenty, w których możesz już wprowadzić lub przypisać osobę&#39;głosem s.*
 
 
-![j czasownikowo niewidocznym wprowadzeniem w pierwszej osoby](media/responsible-ai/disclosure-patterns/spoken-prompt-2.png)<br/>
-*W celu uzyskania dodatkowej przejrzystości aktora głosowego może ujawnić źródła głosu syntetycznego w pierwszej osoby.*
+![Werbalnie wypowiedziane przejrzyste wprowadzenie w pierwszej osobie](media/responsible-ai/disclosure-patterns/spoken-prompt-2.png)<br/>
+*Aby uzyskać dodatkową przejrzystość, aktor głosowy może ujawnić pochodzenie syntetycznego głosu w pierwszej osobie.*
 
-### <a name="explicit-byline"></a>Jawne Byline
+### <a name="explicit-byline"></a>Jawna linia
 
-Użyj tego wzorca, jeśli użytkownik będzie pracowali przy użyciu odtwarzacza audio lub składnika interaktywnego w celu wyzwolenia głosu.
+Użyj tego wzorca, jeśli użytkownik będzie wchodził w interakcje z odtwarzaczem audio lub komponentem interaktywnym, aby wyzwolić głos.
 
 
-![Explicit Byline w scenariuszu multimediów wiadomości](media/responsible-ai/disclosure-patterns/explicit-byline.png) <br/>
-*Jawna Byline jest przyznanym miejscu, z którego pochodzi głos.*
+![Jawna linia w scenariuszu mediów informacyjnych](media/responsible-ai/disclosure-patterns/explicit-byline.png) <br/>
+*Jawny byline jest przypisanie, gdzie głos pochodzi.*
 
-Polecane elementy
+Zalecenia
 
-- Punkt wejścia oferty, aby dowiedzieć się więcej o wystawionym głosie
+- Zaoferuj punkt wejścia, aby dowiedzieć się więcej o syntetyzowanym głosie
 
 ### <a name="customization-and-calibration"></a>Dostosowywanie i kalibracja
 
-Zapewnij użytkownikom kontrolę nad tym, w jaki sposób asystent cyfrowy reaguje na nie (tj. jak dźwięki głosowe).  Gdy użytkownik współdziała z systemem zgodnie z własnym warunkiem i z konkretnymi celami, a następnie według definicji, rozumieli już, że&#39;nie jest to prawdziwa osoba.
+Zapewnij użytkownikom kontrolę nad tym, jak asystent cyfrowy reaguje na nie (tj. jak brzmi głos).  Kiedy użytkownik wchodzi w interakcję z systemem na własnych warunkach i z myślą o konkretnych celach, to z definicji już zrozumieli, że nie&#39;to prawdziwa osoba.
 
-#### <a name="user-control"></a>Kontrolka użytkownika
+#### <a name="user-control"></a>Kontrola użytkownika
 
-Oferuje opcje, które mają znaczący i zauważalny wpływ na środowisko głosu syntetycznego.
+Zaoferuj opcje, które mają znaczący i zauważalny wpływ na syntetyczne doświadczenie głosowe.
 
-![preferencje użytkownika](media/responsible-ai/disclosure-patterns/customization-user-control.png)<br/>
+![Preferencje użytkownika](media/responsible-ai/disclosure-patterns/customization-user-control.png)<br/>
 *Preferencje użytkownika umożliwiają użytkownikom dostosowywanie i ulepszanie ich środowiska.*
 
-Polecane elementy
+Zalecenia
 
-- Zezwól użytkownikom na dostosowywanie głosu (np. Wybierz język i typ głosu)
-- Zapewnianie użytkownikom możliwości nauczenia systemu w celu reagowania na jego unikatowy głos (np. Kalibracja głosu, polecenia niestandardowe)
-- Optymalizuj pod kątem interakcji generowanych przez użytkownika lub kontekstowych (np. przypomnień)
+- Zezwalaj użytkownikom na dostosowywanie głosu (np. wybierz język i typ głosu)
+- Zapewnij użytkownikom sposób na nauczenie systemu reagowania na jego unikalny głos (np. kalibracja głosu, niestandardowe polecenia)
+- Optymalizacja pod kątem interakcji generowanych przez użytkowników lub kontekstowych (np. przypomnień)
 
-#### <a name="persona-customization"></a>Dostosowanie osoby
+#### <a name="persona-customization"></a>Personalizacja persony
 
-Oferuje sposoby dostosowywania głosu asystenta&#39;cyfrowego. Jeśli głos jest oparty na osobistości lub szeroko rozpoznawalnej osobie, rozważ użycie wizualizacji i wprowadzenie, gdy użytkownicy wyświetlają Podgląd głosu.
+Zaoferuj sposoby dostosowywania cyfrowego asystenta&#39;głosem. Jeśli głos jest oparty na celebrycie lub szeroko rozpoznawalnej osobie, rozważ użycie zarówno wizualnych, jak i mówionych wprowadzeń, gdy użytkownicy wyświetlą podgląd głosu.
 
-![dostosowania głosu](media/responsible-ai/disclosure-patterns/customization-voice-type.png)<br/>
-*Oferowanie możliwości wyboru z zestawu głosów ułatwia przekazanie sztucznego charakteru.*
+![Dostosowywanie głosu](media/responsible-ai/disclosure-patterns/customization-voice-type.png)<br/>
+*Oferowanie możliwości wyboru z zestawu głosów pomaga przekazać sztuczną naturę.*
 
-Polecane elementy
-- Zezwalaj użytkownikom na podgląd dźwięku każdego głosu
-- Użyj oryginalnego wprowadzenia dla każdego głosu
-- Punkty wejścia oferty, aby dowiedzieć się więcej o wystawionym głosie
+Zalecenia
+- Zezwalaj użytkownikom na wyświetlanie podglądu dźwięku każdego głosu
+- Użyj autentycznego wprowadzenia dla każdego głosu
+- Zaoferuj punkty wejścia, aby dowiedzieć się więcej o syntetyzowanym głosie
 
 ### <a name="parental-disclosure"></a>Ujawnienie rodzicielskie
 
-Oprócz zgodności z przepisami COPPA należy zapewnić ujawnienie rodzicom, jeśli głównymi zamierzonymi odbiorcami są młode elementy podrzędne, a poziom ekspozycji jest wysoki. W celu uwzględnienia wrażliwych celów należy rozważyć kontroli środowiska, dopóki osoba dorosła nie potwierdzi użycia syntetycznego głosu. Zachęcaj rodziców do przekazywania wiadomości do ich elementów podrzędnych.
+Oprócz przestrzegania przepisów COPPA, należy ujawniać rodzicom informacje, jeśli głównym odbiorcą są małe dzieci, a poziom ekspozycji jest wysoki. W przypadku zastosowań wrażliwych należy rozważyć przeżycie, dopóki dorosły nie uzna użycia syntetycznego głosu. Zachęć rodziców, aby przekazywali przesłanie swoim dzieciom.
 
-![ujawnienie dla elementów nadrzędnych](media/responsible-ai/disclosure-patterns/parental-disclosure.png)<br/>
-*Przejrzyste wprowadzenie zoptymalizowane pod kątem rodziców gwarantuje, że osoba dorosła świadomie poznała syntetycznego charakteru głosu przed interakcją z nim.*
+![Ujawnienie informacji dla rodziców](media/responsible-ai/disclosure-patterns/parental-disclosure.png)<br/>
+*Przejrzyste wprowadzenie zoptymalizowane pod kątem rodziców zapewnia, że osoba dorosła została poinformowana o syntetycznym charakterze głosu, zanim dziecko wejdzie w interakcję z nim.*
 
-Polecane elementy
+Zalecenia
 
-- Kierowanie obiektów docelowych jako głównych odbiorców do ujawnienia
-- Zachęcanie rodziców do przekazywania informacji do ich elementów podrzędnych
-- Punkty wejścia oferty, aby dowiedzieć się więcej o wystawionym głosie
-- Poinformuj o tym, jak zadawać rodzicom proste &quot;ochronę&quot;, aby pokazać, że zapoznają się z ujawnieniem
+- Kierować reklamy na rodziców jako główną grupę odbiorców do ujawnienia
+- Zachęcanie rodziców do informowania swoich dzieci o ujawnianiu informacji
+- Zaoferuj punkty wejścia, aby dowiedzieć się więcej o syntetyzowanym głosie
+- Prześlij doświadczenie, &quot;zadając rodzicom proste pytanie ochronne,&quot; aby pokazać, że przeczytali ujawnienie
 
-### <a name="providing-opportunities-to-learn-more-about-how-the-voice-was-made"></a>Zapewnianie możliwości Dowiedz się więcej o tym, jak nastąpiło głos
+### <a name="providing-opportunities-to-learn-more-about-how-the-voice-was-made"></a>Zapewnienie możliwości dowiedzieć się więcej o tym, jak powstał głos
 
-Udostępniaj kontekstowe punkty wejścia do strony, wyskakującej lub zewnętrznej witryny zawierającej więcej informacji na temat syntetycznej technologii głosowej. Można na przykład utworzyć link, aby dowiedzieć się więcej podczas dołączania, lub gdy użytkownik poprosi o dodatkowe informacje podczas rozmowy.
+Zaoferuj kontekstowe punkty wejścia do strony, okna podręcznego lub witryny zewnętrznej, która zawiera więcej informacji na temat technologii syntetycznego głosu. Na przykład można wyświetlić łącze, aby dowiedzieć się więcej podczas dołączania lub gdy użytkownik monituje o więcej informacji podczas konwersacji.
 
-![punkt wejścia, aby dowiedzieć się więcej](media/responsible-ai/disclosure-patterns/learn-more-entry-point.png)<br/>
-*Przykład punktu wejścia, aby zaoferować szansę dowiedzieć się więcej o wykorzystanym głosie.*
+![Punkt wejścia, aby dowiedzieć się więcej](media/responsible-ai/disclosure-patterns/learn-more-entry-point.png)<br/>
+*Przykład punktu wejścia, aby zaoferować możliwość dowiedzieć się więcej o syntetyzowanym głosie.*
 
-Gdy użytkownik zażąda więcej informacji na temat głosu syntetycznego, główny cel polega na przeprowadzeniu szkolenia dotyczącego pochodzenia syntetycznego i przejrzystego o technologii.
+Gdy użytkownik zażąda więcej informacji na temat syntetycznego głosu, głównym celem jest edukowanie ich na temat pochodzenia syntetycznego głosu i przejrzystość technologii.
 
-![zapewnić użytkownikom więcej informacji na temat syntetycznego głosu](media/responsible-ai/disclosure-patterns/learn-more.png)<br/>
-*Więcej informacji można uzyskać w witrynie pomocy zewnętrznej witryny.*
+![Zapewnij użytkownikom więcej informacji na temat syntetycznego głosu](media/responsible-ai/disclosure-patterns/learn-more.png)<br/>
+*Więcej informacji można uzyskać w zewnętrznej witrynie pomocy.*
 
-Polecane elementy
+Zalecenia
 
-- Uprość złożone koncepcje i Unikaj korzystania z Legalese i technicznych żargon
-- Nie Bury tej zawartości w oświadczeniach o ochronie prywatności i warunkach użytkowania
-- Przechowuj zawartość zwięzłą i Używaj obrazów, jeśli są dostępne
+- Uprość złożone koncepcje i unikaj używania żargonu prawnego i technicznego
+- Nie zakopuj tych treści w oświadczeniach dotyczących prywatności i warunków użytkowania
+- Zachowaj zwięzłe treści i używaj obrazów, jeśli są dostępne
 
 ## <a name="implicit-disclosure"></a>Niejawne ujawnienie
 
-Spójność to klucz umożliwiający ujawnienie niejawnie w całej podróży użytkownika. Spójne korzystanie z podpowiedzi wizualizacji i audytorów na urządzeniach i w różnych trybach interakcji może pomóc w tworzeniu skojarzeń między niejawnymi wzorcami i jawnym ujawnieniem.
+Spójność jest kluczem do osiągnięcia ujawnienia w sposób niejawny w trakcie podróży użytkownika. Spójne stosowanie wskazówek wizualnych i słuchowych na różnych urządzeniach i trybach interakcji może pomóc w tworzeniu skojarzeń między niejawnymi wzorcami a jawnym ujawnieniem.
 
 ![Spójność niejawnych wskazówek](media/responsible-ai/disclosure-patterns/consistency.png)
 
-### <a name="implicit-cues--feedback"></a>Niejawne wskaźniki & Opinie
+### <a name="implicit-cues--feedback"></a>Niejawne wskazówki & opinii
 
-Anthropomorphism może zamanifestować różne sposoby, od rzeczywistej reprezentacji agenta do głosu, dYwięków, wzorców świateł, odbijających się kształtów, a nawet wibracji urządzenia. Podczas definiowania osoby należy wykorzystać niejawne wskaźniki i wzorce opinii zamiast dążyć do bardzo przypominającego awatara. Jest to jeden ze sposobów, aby zminimalizować potrzebę bardziej jawnego ujawniania.
+Antropomorfizm może objawiać się na różne sposoby, od rzeczywistej wizualnej reprezentacji agenta, do głosu, dźwięków, wzorów światła, odbijających się kształtów, a nawet wibracji urządzenia. Podczas definiowania swojej persony, wykorzystaj ukryte sygnały i wzorce sprzężenia zwrotnego, zamiast dążyć do bardzo ludzkiego awatara. Jest to jeden ze sposobów zminimalizowania potrzeby bardziej wyraźnego ujawnienia.
 
-![podpowiedzi i opinii wizualnych](media/responsible-ai/disclosure-patterns/visual-affordances.png)<br/>
-*Te wskaźniki pomagają anthropomorphize agenta, nie są zbyt podobne do ludzi. Mogą oni także stać się skutecznymi mechanizmami ujawniania, gdy są używane spójnie z upływem czasu.*
+![Podpowiedzi wizualne i opinie](media/responsible-ai/disclosure-patterns/visual-affordances.png)<br/>
+*Te wskazówki pomagają antropomorfizować środek, nie będąc zbyt ludzkim. Mogą one również stać się skutecznymi mechanizmami ujawniania informacji na własną rękę, gdy są stosowane konsekwentnie w czasie.*
 
-Należy wziąć pod uwagę różne tryby interakcji środowiska podczas uwzględniania następujących typów wskaźników:
+Biorąc pod uwagę różne tryby interakcji doświadczenia podczas włączania następujących typów wskazówek:
 
-| Podpowiedzi wizualne                                                                                                                                                               | Wskaźniki audytorów                                                      | Haptic podpowiedzi |
+| Wizualnych                                                                                                                                                               | Sygnały słuchowe                                                      | Haptyczne sygnały |
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------|-------------|
-|  Pojawia <br>Wskaźniki czasu rzeczywistego odpowiedzi (np. animacje)<br> Podpowiedzi, które nie są ekranem (np. światła i wzorce na urządzeniu)<br>  | Sonicon (np. krótki dźwięk odróżniający, Seria notatek muzycznych) | Wibracj   |
+|  Awatar <br>Responsywne sygnały w czasie rzeczywistym (np. animacje)<br> Sygnały nieekranowe (np. światła i wzory na urządzeniu)<br>  | Sonicon (np. krótki charakterystyczny dźwięk, seria nut) | Wibracji   |
 
-### <a name="capability-disclosure"></a>Ujawnienie możliwości
+### <a name="capability-disclosure"></a>Ujawnianie możliwości
 
-Ujawnienie można uzyskać niejawnie, ustawiając dokładne oczekiwania na to, co może być możliwe. Podaj przykładowe polecenia, aby użytkownicy mogli dowiedzieć się, jak korzystać z Asystenta cyfrowego i oferować pomoc kontekstową, aby dowiedzieć się więcej o głosowaniu syntetycznym na wczesnych etapach tego środowiska.
+Ujawnienie można osiągnąć w sposób dorozumiany poprzez ustalenie dokładnych oczekiwań co do tego, do czego zdolny jest cyfrowy asystent. Podaj przykładowe polecenia, aby użytkownicy mogli dowiedzieć się, jak wchodzić w interakcje z asystentem cyfrowym i oferować pomoc kontekstową, aby dowiedzieć się więcej o syntetycznym głosie we wczesnych stadiach środowiska.
 
-![Wizualne podpowiedzi i opinie](media/responsible-ai/disclosure-patterns/capability-disclosure.png)<br/>
+![Podpowiedzi wizualne i opinie](media/responsible-ai/disclosure-patterns/capability-disclosure.png)<br/>
 
-### <a name="conversational-transparency"></a>Przezroczystość konwersacji
+### <a name="conversational-transparency"></a>Przejrzystość konwersacji
 
-Gdy konwersacje znajdują się w nieoczekiwanych ścieżkach, warto wziąć pod uwagę odpowiedzi domyślne, które mogą pomóc w resetowaniu oczekiwań, wzmocnić przejrzystości i dowiązywać użytkowników do pomyślnych Istnieją również okazje do użycia jawnego ujawnienia w konwersacji.
+Gdy konwersacje mieszczą się w nieoczekiwanych ścieżkach, rozważ tworzenie domyślnych odpowiedzi, które mogą pomóc zresetować oczekiwania, wzmocnić przejrzystość i skierować użytkowników w kierunku udanych ścieżek. Istnieją możliwości wykorzystania jawnego ujawnienia w rozmowie, jak również.
 
 ![Obsługa nieoczekiwanych ścieżek](media/responsible-ai/disclosure-patterns/conversational-transparency-1.png)<br/>
 
 <br/>
-Niezależne lub &quot;osobiste pytania&quot; kierowane do agenta to dobry moment, aby przypominać użytkowników o syntetycznym charakterze agenta i kierować je do odpowiednich osób lub przekierowywać je do rzeczywistej osoby.
+Off-zadanie &quot;lub&quot; osobiste pytania skierowane do agenta to dobry moment, aby przypomnieć użytkownikom o syntetycznym charakterze agenta i kierować ich do zaangażowania się z nim odpowiednio lub przekierować je do prawdziwej osoby.
 
-![Obsługa z pytaniami dotyczącymi zadań](media/responsible-ai/disclosure-patterns/conversational-transparency-2.png)<br/>
+![Obsługa pytań poza zadaniami](media/responsible-ai/disclosure-patterns/conversational-transparency-2.png)<br/>
 
-## <a name="when-to-disclose"></a>Kiedy należy ujawnić
+## <a name="when-to-disclose"></a>Kiedy ujawnić
 
-Istnieje wiele możliwości ujawniania informacji w trakcie podróży użytkownika. Zaprojektuj do pierwszego użycia, drugiego użycia, n-ty..., ale również przeznaczenie momentu &quot;awarii&quot; do wyróżnienia przejrzystości, jak w przypadku błędu systemu lub gdy użytkownik odkryje ograniczenie możliwości agenta&#39;.
+Istnieje wiele możliwości ujawnienia w całej podróży użytkownika. Projektowanie do pierwszego użycia, drugiego użycia, n-tego użycia &quot;&quot; ... ale także obejmować momenty braku podświetlenia przezroczystości, jak wtedy, gdy system popełnia błąd lub gdy użytkownik odkryje ograniczenie możliwości agenta&#39;s.
 
 ![Możliwości ujawniania informacji w trakcie podróży użytkownika](media/responsible-ai/disclosure-patterns/touchpoints.png)<br/>
 
-Przykład standardowej podróży użytkownika asystenta cyfrowego wyróżniający różne możliwości ujawniania.
+Przykład standardowej podróży użytkownika cyfrowego asystenta, który podkreśla różne możliwości ujawniania informacji.
 
-### <a name="up-front"></a>Do przodu
+### <a name="up-front"></a>Góry
 
-Optymalny czas na ujawnienie jest podczas pierwszego działania osoby w przypadku głosu syntetycznego.  W scenariuszu osobistego asystenta głosowego będzie to możliwe podczas dołączania lub podczas pierwszego rozłączenia środowiska użytkownika. W innych scenariuszach może to być za pierwszym razem, gdy użytkownik odczytuje zawartość w witrynie sieci Web lub po raz pierwszy współdziała z wirtualnym znakiem.
+Optymalnym momentem do ujawnienia jest pierwszy raz, kiedy dana osoba wchodzi w interakcję z syntetycznym głosem.W scenariuszu osobistego asystenta głosowego byłoby to podczas dołączania lub przy pierwszym uruchomieniu użytkownika praktycznie rozpakuje środowisko. W innych scenariuszach może to być pierwszy odczyt syntetycznego głosu w witrynie sieci Web lub za pierwszym razem, gdy użytkownik wchodzi w interakcję z postacią wirtualną.
 
 - [Przejrzyste wprowadzenie](#transparent-introduction)
-- [Ujawnienie możliwości](#capability-disclosure)
+- [Ujawnianie możliwości](#capability-disclosure)
 - [Dostosowywanie i kalibracja](#customization-and-calibration)
-- [Niejawne podpowiedzi](#implicit-cues--feedback)
+- [Niejawne wskazówki](#implicit-cues--feedback)
 
-### <a name="upon-request"></a>Na żądanie
+### <a name="upon-request"></a>Życzenie
 
-Użytkownicy powinni mieć możliwość łatwego dostępu do dodatkowych informacji, preferencji kontroli i otrzymywania przejrzystych informacji w dowolnym momencie podczas podróży użytkownika.
+Użytkownicy powinni mieć możliwość łatwego dostępu do dodatkowych informacji, preferencji kontrolnych i otrzymywania przejrzystej komunikacji w dowolnym momencie podróży użytkownika, gdy jest to wymagane.
 
-- [Zapewnianie możliwości Dowiedz się więcej o tym, jak nastąpiło głos](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)
+- [Zapewnienie możliwości dowiedzieć się więcej o tym, jak powstał głos](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)
 - [Dostosowywanie i kalibracja](#customization-and-calibration)
-- [Przezroczystość konwersacji](#conversational-transparency)
+- [Przejrzystość konwersacji](#conversational-transparency)
 
-### <a name="continuously"></a>Stałą
+### <a name="continuously"></a>Stale
 
-Używaj niejawnych wzorców projektowych, które zwiększają możliwości środowiska użytkownika w sposób ciągły.
+Użyj niejawnych wzorców projektowych, które stale zwiększają komfort użytkownika.
 
-- [Ujawnienie możliwości](#capability-disclosure)
-- [Niejawne podpowiedzi](#implicit-cues--feedback)
+- [Ujawnianie możliwości](#capability-disclosure)
+- [Niejawne wskazówki](#implicit-cues--feedback)
 
 ### <a name="when-the-system-fails"></a>Gdy system ulegnie awarii
 
-Użyj ujawnienia jako możliwości bezproblemowego niepowodzenia.
+Użyj ujawnienia jako okazji do niepowodzenia z gracją.
 
-- [Przezroczystość konwersacji](#conversational-transparency)
-- [Zapewnianie możliwości Dowiedz się więcej o tym, jak nastąpiło głos](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)
-- [Oddanie ludzi](#conversational-transparency)
+- [Przejrzystość konwersacji](#conversational-transparency)
+- [Zapewnienie możliwości dowiedzieć się więcej o tym, jak powstał głos](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)
+- [Przekazanie ludziom](#conversational-transparency)
 
 
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
-- [Wytyczne dotyczące bot firmy Microsoft](https://www.microsoft.com/research/uploads/prod/2018/11/Bot_Guidelines_Nov_2018.pdf)
+- [Wskazówki dotyczące botów firmy Microsoft](https://www.microsoft.com/research/uploads/prod/2018/11/Bot_Guidelines_Nov_2018.pdf)
 - [Wskazówki dotyczące projektowania Cortany](https://docs.microsoft.com/cortana/voice-commands/voicecommand-design-guidelines)
-- [Wskazówki dotyczące projektowania mowy w systemie Microsoft Windows platformy UWP](https://docs.microsoft.com/windows/uwp/design/input/speech-interactions)
-- [Wskazówki dotyczące poleceń głosowych programu Microsoft Windows Mixed Reality](https://docs.microsoft.com/windows/mixed-reality/voice-design#top-things-users-should-know-about-speech-in-mixed-reality)
+- [Wskazówki dotyczące projektowania mowy systemu Microsoft Windows UWP](https://docs.microsoft.com/windows/uwp/design/input/speech-interactions)
+- [Wskazówki dotyczące poleceń głosowych w systemie Microsoft Windows Mixed Reality](https://docs.microsoft.com/windows/mixed-reality/voice-design#top-things-users-should-know-about-speech-in-mixed-reality)
 
-## <a name="reference-docs"></a>Dokumentacja
+## <a name="reference-docs"></a>Dokumenty referencyjne
 
-* [Ujawnienie dla talent głosu](https://aka.ms/disclosure-voice-talent)
-* [Wytyczne dotyczące odpowiedzialnego wdrożenia syntetycznej technologii głosowej](concepts-guidelines-responsible-deployment-synthetic.md)
-* [Kontroli — Omówienie](concepts-gating-overview.md)
+* [Ujawnienie talentu głosów](https://aka.ms/disclosure-voice-talent)
+* [Wytyczne dotyczące odpowiedzialnego wdrażania technologii syntetycznego głosu](concepts-guidelines-responsible-deployment-synthetic.md)
+* [Przegląd Gating](concepts-gating-overview.md)
 * [Jak ujawnić](concepts-disclosure-guidelines.md)
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Ujawnienie dla talent głosu](https://aka.ms/disclosure-voice-talent)
+* [Ujawnienie talentu głosów](https://aka.ms/disclosure-voice-talent)

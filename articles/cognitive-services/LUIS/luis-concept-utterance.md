@@ -1,7 +1,7 @@
 ---
-title: Dobry przykład wyrażenia długości-LUIS
+title: Dobre przykładowe wypowiedzi — usługa LUIS
 titleSuffix: Azure Cognitive Services
-description: Wyrażenia długości są danymi wejściowymi od użytkownika, który musi być interpretowany przez aplikację. Zbierz frazy, które będą wprowadzane przez użytkowników. Uwzględnij wyrażenia długości, które oznaczają te same czynności, ale są konstruowane inaczej niż długość słowa i umieszczanie wyrazów.
+description: Wypowiedzi to dane wejściowe od użytkownika, które Twoja aplikacja musi zinterpretować. Zbieraj frazy, które, jak myślisz, że użytkownicy wejdą. Dołącz wypowiedzi, które oznaczają to samo, ale są skonstruowane inaczej w długości wyrazów i umieszczaniu wyrazów.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,85 +12,85 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: diberry
 ms.openlocfilehash: 7412677773b60a1894a6ece7251e797bfddee091
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79219919"
 ---
-# <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Dowiedz się, co to jest dobry wyrażenia długości dla aplikacji LUIS
+# <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Zrozumienie, jakie są dobre wypowiedzi dla aplikacji usługi LUIS
 
-**Wyrażenia długości** są danymi wejściowymi od użytkownika, który musi być interpretowany przez aplikację. Aby przeprowadzić uczenie LUIS w celu wyodrębnienia z nich intencji i jednostek, ważne jest, aby przechwycić wiele różnych przykładowych wyrażenia długości dla każdego zamiaru. Proaktywne uczenie lub proces ciągłego uczenia się z nowymi wyrażenia długościami jest niezwykle istotny dla analizy maszynowej, która zapewnia LUIS.
+Wypowiedzi są dane **wejściowe** od użytkownika, który aplikacja musi zinterpretować. Aby przeszkolić usługi LUIS, aby wyodrębnić intencje i jednostki z nich, ważne jest, aby przechwycić różne wypowiedzi przykład dla każdego zamiaru. Aktywne uczenie się lub proces kontynuowania uczenia się na nowe wypowiedzi, jest niezbędna do analizy uczenia się maszynowego, który zapewnia usługi LUIS.
 
-Zbieraj wyrażenia długości, że użytkownicy będą wprowadzać. Uwzględnij wyrażenia długości, co oznacza, że są one takie same, ale są zbudowane na różne sposoby:
+Zbieraj wypowiedzi, które, jak myślisz, że użytkownicy wejdą. Dołącz wypowiedzi, co oznacza to samo, ale są skonstruowane na wiele różnych sposobów:
 
-* Wypowiedź długość — krótko, średnia i długa dla aplikacji klienckiej
+* Długość wypowiedź - krótki, średni i długi dla aplikacji klienckiej
 * Długość wyrazu i frazy 
-* Położenie wyrazów — jednostka na początku, na środku i na końcu wypowiedź
-* Poprawności 
-* Pluralizacja
-* Uszkodzeniem
-* Wybór rzeczowników i czasowników
-* Interpunkcja — dobra odmiana przy użyciu poprawnych, niepoprawnych i bez gramatyki
+* Umieszczanie programu Word — encja na początku, w środku i na końcu wypowiedź
+* Gramatyka 
+* Pluralizm
+* Wynikające
+* Wybór rzeczownika i czasownika
+* Interpunkcja - dobra odmiana przy użyciu poprawne, nieprawidłowe i nie gramatyki
 
-## <a name="how-to-choose-varied-utterances"></a>Jak wybrać różne wyrażenia długości
+## <a name="how-to-choose-varied-utterances"></a>Jak wybrać różne wypowiedzi
 
-Po pierwszym uruchomieniu dodając [przykład wyrażenia długości](luis-how-to-add-example-utterances.md) do modelu Luis, należy wziąć pod uwagę pewne zasady.
+Po pierwszym uruchomieniu przez [dodanie wypowiedzi przykład](luis-how-to-add-example-utterances.md) do modelu usługi LUIS, oto kilka zasad, o których należy pamiętać.
 
-### <a name="utterances-arent-always-well-formed"></a>Wyrażenia długości nie zawsze są poprawnie sformułowane
+### <a name="utterances-arent-always-well-formed"></a>Wypowiedzi nie zawsze są dobrze sformułowane
 
-Może to być zdanie, na przykład "książka biletowa do Paryż dla mnie" lub fragment zdania, taki jak "rezerwacja" lub "lot paryski".  Użytkownicy często sprawiają błędy pisowni. Podczas planowania aplikacji należy rozważyć, czy przed przekazaniem jej do LUIS należy używać [Sprawdzanie pisowni Bing](luis-tutorial-bing-spellcheck.md) do poprawienia danych wejściowych użytkownika. 
+Może to być zdanie, takie jak "Zarezerwuj dla mnie bilet do Paryża", lub fragment zdania, taki jak "Rezerwacja" lub "lot do Paryża".  Użytkownicy często popełniają błędy ortograficzne. Podczas planowania aplikacji, należy rozważyć, czy używasz [sprawdzania pisowni Bing,](luis-tutorial-bing-spellcheck.md) aby poprawić dane wejściowe użytkownika przed przekazaniem go do usługi LUIS. 
 
-Jeśli nie sprawdzisz pisowni wyrażenia długości użytkownika, należy poszkolić LUIS na wyrażenia długości, które zawierają literówki i błędy pisowni.
+Jeśli nie pisowni sprawdź wypowiedzi użytkownika, należy trenować usługi LUIS na wypowiedzi, które zawierają literówki i błędy pisowni.
 
-### <a name="use-the-representative-language-of-the-user"></a>Korzystanie z języka reprezentatywnego dla użytkownika
+### <a name="use-the-representative-language-of-the-user"></a>Używanie reprezentatywnego języka użytkownika
 
-Podczas wybierania wyrażenia długości należy pamiętać, że to, co myślisz, jest powszechny termin lub fraza może być niepoprawna dla typowego użytkownika aplikacji klienckiej. Mogą nie mieć środowiska domeny. Należy zachować ostrożność w przypadku używania warunków lub fraz, które użytkownik może powiedzieć tylko, jeśli byli ekspertami.
+Wybierając wypowiedzi, należy pamiętać, że to, co uważasz za wspólny termin lub frazę może nie być poprawne dla typowego użytkownika aplikacji klienckiej. Mogą nie mieć doświadczenia domeny. Należy zachować ostrożność podczas używania terminów lub fraz, które użytkownik powiedziałby tylko wtedy, gdy był ekspertem.
 
-### <a name="choose-varied-terminology-as-well-as-phrasing"></a>Wybierz zróżnicowaną terminologię, a także sformułowanie
+### <a name="choose-varied-terminology-as-well-as-phrasing"></a>Wybierz zróżnicowaną terminologię, a także frazowanie
 
-Zobaczysz, że nawet jeśli podejmujesz wysiłki w celu utworzenia różnych wzorców zdań, nadal powtarzamy niektóre słownictwo.
+Przekonasz się, że nawet jeśli dołożysz starań, aby stworzyć różne wzorce zdań, nadal będziesz powtarzać pewne słownictwo.
 
-Wykonaj następujące przykładowe wyrażenia długości:
+Weźmy następujące wypowiedzi przykład:
 
 |Przykładowe wypowiedzi|
 |--|
-|how do I get a computer?|
-|Where do I get a computer?|
-|I want to get a computer, how do I go about it?|
-|When can I have a computer?| 
+|jak uzyskać komputer?|
+|Gdzie mogę uzyskać komputer?|
+|Chcę dostać komputer, jak go o tym?|
+|Kiedy mogę mieć komputer?| 
 
-W tym miejscu termin "Computer" nie jest zróżnicowany. Używaj rozwiązań alternatywnych, takich jak komputer stacjonarny, laptop, stacja robocza, lub nawet dla komputera. LUIS może inteligentnie wywnioskować synonimy z kontekstu, ale w przypadku tworzenia wyrażenia długości do szkolenia są one zawsze lepsze od siebie.
+Podstawowe określenie tutaj, "komputer", nie jest zróżnicowane. Używaj alternatyw, takich jak komputer stacjonarny, laptop, stacja robocza, a nawet tylko maszyna. Usługa LUIS może inteligentnie wywnioskować synonimy z kontekstu, ale podczas tworzenia wypowiedzi dla szkolenia, zawsze lepiej je zmieniać.
 
-## <a name="example-utterances-in-each-intent"></a>Przykład wyrażenia długości w każdym zamiarze
+## <a name="example-utterances-in-each-intent"></a>Przykładowe wypowiedzi w każdej intencji
 
-Każdy cel musi mieć przykład wyrażenia długości, co najmniej 15. Jeśli masz intencję, która nie ma żadnego przykładu wyrażenia długości, nie będziesz mieć możliwości uczenia się LUIS. Jeśli masz zamiar z jednym lub kilkoma przykładami wyrażenia długości, LUIS może nie dokładnie przewidzieć zamiar. 
+Każdy zamiar musi mieć wypowiedzi przykład, co najmniej 15. Jeśli masz intencji, która nie ma żadnych wypowiedzi przykład, nie będzie można trenować usługi LUIS. Jeśli masz intencji z jednego lub bardzo niewielu wypowiedzi przykład, usługa LUIS nie może dokładnie przewidzieć intencji. 
 
-## <a name="add-small-groups-of-15-utterances-for-each-authoring-iteration"></a>Dodaj małe grupy 15 wyrażenia długości dla każdej iteracji tworzenia
+## <a name="add-small-groups-of-15-utterances-for-each-authoring-iteration"></a>Dodawanie małych grup po 15 wypowiedzi dla każdej iteracji tworzenia
 
-W każdej iteracji modelu nie należy dodawać dużej liczby wyrażenia długości. Dodaj wyrażenia długości w ilościach 15. Ponownie [nauczenie](luis-how-to-train.md), [opublikowanie](luis-how-to-publish-app.md)i [przetestowanie](luis-interactive-test.md) .  
+W każdej iteracji modelu nie należy dodawać dużą ilość wypowiedzi. Dodaj wypowiedzi w ilości 15. [Pociąg](luis-how-to-train.md), [publikować](luis-how-to-publish-app.md)i [testować](luis-interactive-test.md) ponownie.  
 
-LUIS kompiluje wydajne modele z wyrażenia długości, które są starannie wybierane przez autora modelu LUIS. Dodanie zbyt wielu wyrażenia długości nie jest cenne, ponieważ wprowadza pomyłkę.
+Usługa LUIS tworzy skuteczne modele z wypowiedzi, które są starannie wybrane przez autora modelu usługi LUIS. Dodawanie zbyt wiele wypowiedzi nie jest cenne, ponieważ wprowadza zamieszanie.
 
-Lepiej zacząć od kilku wyrażenia długościów, a następnie [przejrzeć punkt końcowy wyrażenia długości](luis-how-to-review-endpoint-utterances.md) w celu poprawnego przewidywania zamierzeń i wyodrębnienia jednostek.
+Lepiej jest zacząć od kilku wypowiedzi, a następnie [przejrzeć wypowiedzi punktu końcowego](luis-how-to-review-endpoint-utterances.md) dla przewidywania poprawne intencji i wyodrębniania jednostek.
 
-## <a name="utterance-normalization"></a>Normalizacja wypowiedź
+## <a name="utterance-normalization"></a>Normalizacja wypowiedzi
 
-Normalizacja wypowiedź jest procesem ignorowania efektów interpunkcji i znaków diakrytycznych podczas szkolenia i przewidywania.
+Normalizacja wypowiedź jest procesem ignorowania skutków znaków interpunkcyjnych i znaków diakracyjnych podczas szkolenia i przewidywania.
 
-## <a name="utterance-normalization-for-diacritics-and-punctuation"></a>Normalizacja wypowiedź dla znaków diakrytycznych i interpunkcji
+## <a name="utterance-normalization-for-diacritics-and-punctuation"></a>Normalizacja wypowiedzi dla znaków diakrutycznych i znaków interpunkcyjnych
 
 Normalizacja wypowiedź jest definiowana podczas tworzenia lub importowania aplikacji, ponieważ jest to ustawienie w pliku JSON aplikacji. Ustawienia normalizacji wypowiedź są domyślnie wyłączone. 
 
-Znaki diakrytyczne są znakami lub znakami w tekście, na przykład: 
+Znaki diakrytyczne to znaki lub znaki w tekście, takie jak: 
 
 ```
 İ ı Ş Ğ ş ğ ö ü
 ```
 
-Jeśli aplikacja zostanie przesunięta na, wyniki w okienku **testów** , testy wsadowe i zapytania dotyczące punktów końcowych zmienią się dla wszystkich wyrażenia długości za pomocą znaków diakrytycznych lub interpunkcji.
+Jeśli aplikacja włącza normalizację, wyniki w **okienku testowym,** testy wsadowe i kwerendy punktu końcowego zmienią się dla wszystkich wypowiedzi przy użyciu znaków diakracyjnych lub znaków interpunkcyjnych.
 
-Włącz normalizację wypowiedź dla znaków diakrytycznych lub interpunkcji do pliku aplikacji LUIS JSON w parametrze `settings`.
+Włącz normalizację wypowiedź dla znaków diakretycznych lub znaków interpunkcyjnych do pliku aplikacji USŁUGI LUIS JSON w parametrze. `settings`
 
 ```JSON
 "settings": [
@@ -99,57 +99,57 @@ Włącz normalizację wypowiedź dla znaków diakrytycznych lub interpunkcji do 
 ] 
 ```
 
-Normalizacja **interpunkcji** oznacza, że zanim modele są przeszkolone i zanim zapytania punktu końcowego zostaną przewidywalne, interpunkcja zostanie usunięta z wyrażenia długości. 
+Normalizacja **interpunkcji** oznacza, że zanim modele się uszkodzą i zanim kwerendy punktu końcowego uzyskać przewidywane, znaki interpunkcyjne zostaną usunięte z wypowiedzi. 
 
-Normalizacja znaków **diakrytycznych** zastępuje znaki znakami diakrytycznymi w wyrażenia długości z regularnymi znakami. Na przykład: `Je parle français` jest `Je parle francais`. 
+Normalizacja **znaków diakrmtycznych** zastępuje znaki znakami znakowymi w wypowiedziach ze zwykłymi znakami. Na `Je parle français` przykład: `Je parle francais`staje się . 
 
-Normalizacja nie oznacza, że w przykładach wyrażenia długości lub przewidywania nie zobaczysz interpunkcji ani znaków diakrytycznych, tylko te, które zostaną zignorowane podczas uczenia się i przewidywania.
+Normalizacja nie oznacza, że nie będzie widać znaków interpunkcyjnych i znaków diakracyjnych w wypowiedzi przykład lub odpowiedzi przewidywania, tylko, że będą one ignorowane podczas szkolenia i przewidywania.
 
 
 ### <a name="punctuation-marks"></a>Znaki interpunkcyjne
 
-Znak interpunkcyjny jest tokenu oddzielnych w usługi LUIS. Wypowiedź, który zawiera kropkę na końcu, a wypowiedź, który nie zawiera kropki na końcu, to dwa oddzielne wyrażenia długości i mogą uzyskać dwa różne przewidywania. 
+Znaki interpunkcyjne jest oddzielny token w usłudze LUIS. Wypowiedź, która zawiera okres na końcu w porównaniu do wypowiedź, która nie zawiera kropki na końcu są dwa oddzielne wypowiedzi i może uzyskać dwa różne prognozy. 
 
-Jeśli interpunkcja nie jest znormalizowana, LUIS nie ignoruje znaków interpunkcyjnych, domyślnie, ponieważ niektóre aplikacje klienckie mogą umieścić istotny wpływ na te znaki. Upewnij się, że przykład wyrażenia długości używać interpunkcji i bez znaków interpunkcyjnych, aby oba style zwracały te same wyniki względne. 
+Jeśli znaki interpunkcyjne nie są znormalizowane, usługa LUIS domyślnie nie ignoruje znaków interpunkcyjnych, ponieważ niektóre aplikacje klienckie mogą mieć znaczenie dla tych znaków. Upewnij się, że wypowiedzi przykład używać zarówno znaki interpunkcyjne i bez znaków interpunkcyjnych w celu obu stylów, aby zwrócić te same względne wyniki. 
 
-Upewnij się, że model obsługuje interpunkcję w przykład wyrażenia długości (bez znaków interpunkcyjnych) lub w [wzorcach](luis-concept-patterns.md) , w których łatwiej jest zignorować interpunkcję z specjalną składnią: `I am applying for the {Job} position[.]`
+Upewnij się, że model obsługuje znaki interpunkcyjne albo w wypowiedzi przykład (o i nie o znaki interpunkcyjne) lub w [wzorcach,](luis-concept-patterns.md) gdzie łatwiej jest zignorować znaki interpunkcyjne ze specjalną składnią:`I am applying for the {Job} position[.]`
 
-Jeśli interpunkcja nie ma określonego znaczenia w aplikacji klienckiej, należy wziąć pod uwagę [Ignorowanie interpunkcji](#utterance-normalization) przez normalizowanie interpunkcji. 
+Jeśli znaki interpunkcyjne nie ma określonego znaczenia w aplikacji klienckiej, należy rozważyć [ignorowanie znaków interpunkcyjnych](#utterance-normalization) przez normalizację interpunkcji. 
 
-### <a name="ignoring-words-and-punctuation"></a>Ignorowanie wyrazów i interpunkcji
+### <a name="ignoring-words-and-punctuation"></a>Ignorowanie słów i znaków interpunkcyjnych
 
-Jeśli chcesz zignorować określone wyrazy lub interpunkcję w wzorcach, użyj [wzorca](luis-concept-patterns.md#pattern-syntax) z _ignorowaną_ składnią nawiasów kwadratowych, `[]`. 
+Jeśli chcesz zignorować określone wyrazy lub znaki interpunkcyjne we wzorcach, użyj [wzorca](luis-concept-patterns.md#pattern-syntax) ze składnią _ignorowania_ nawiasów kwadratowych, `[]`. 
 
-## <a name="training-utterances"></a>Szkolenia wyrażenia długości
+## <a name="training-utterances"></a>Wypowiedzi szkoleniowe
 
-Szkolenie jest ogólnie niedeterministyczne: przewidywania wypowiedź może się nieco różnić w różnych wersjach lub aplikacjach. Można usunąć niedeterministyczne szkolenie przez zaktualizowanie interfejsu API [ustawień wersji](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) za pomocą pary nazwa `UseAllTrainingData`/wartość, aby używać wszystkich danych szkoleniowych.
+Szkolenie jest zazwyczaj niedeterministyczne: przewidywanie wypowiedź może się nieznacznie różnić w różnych wersjach lub aplikacjach. Szkolenie niedeterministyczne można usunąć, aktualizując interfejs `UseAllTrainingData` API ustawień [wersji](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) przy użyciu pary nazwa/wartość w celu użycia wszystkich danych szkoleniowych.
 
-## <a name="testing-utterances"></a>Testowanie wyrażenia długości 
+## <a name="testing-utterances"></a>Testowanie wypowiedzi 
 
-Deweloperzy powinni zacząć testować swoją aplikację LUIS z rzeczywistym ruchem, wysyłając wyrażenia długości do adresu URL [punktu końcowego przewidywania](luis-how-to-azure-subscription.md) . Te wyrażenia długości są używane do ulepszania wydajności intencji i jednostek z [przeglądem wyrażenia długości](luis-how-to-review-endpoint-utterances.md). Testy przesłane za pomocą okienka testowania witryny sieci Web LUIS nie są wysyłane za pomocą punktu końcowego i nie przyczyniają się do aktywnego uczenia. 
+Deweloperzy powinni rozpocząć testowanie aplikacji usługi LUIS z rzeczywistym ruchem, wysyłając wypowiedzi do adresu URL [punktu końcowego przewidywania.](luis-how-to-azure-subscription.md) Te wypowiedzi są używane do poprawy wydajności intencji i jednostek z [przejrzyj wypowiedzi.](luis-how-to-review-endpoint-utterances.md) Testy przesłane za pomocą okienka testowania witryny sieci LUIS nie są wysyłane za pośrednictwem punktu końcowego, a więc nie przyczyniają się do aktywnego uczenia się. 
 
-## <a name="review-utterances"></a>Przegląd wyrażenia długości
+## <a name="review-utterances"></a>Przeglądanie wypowiedzi
 
-Po przeszkoleniu, opublikowaniu i odebraniu zapytania dotyczącego [punktu końcowego](luis-glossary.md#endpoint) [Sprawdź wyrażenia długości](luis-how-to-review-endpoint-utterances.md) sugerowane przez Luis. LUIS wybiera punkt końcowy wyrażenia długości, który ma niskie wyniki dla zamiaru lub jednostki. 
+Po modelu jest uczony, opublikowane i odbieranie zapytań [punktu końcowego,](luis-glossary.md#endpoint) [przejrzyj wypowiedzi sugerowane](luis-how-to-review-endpoint-utterances.md) przez usługę LUIS. Usługa LUIS wybiera wypowiedzi punktów końcowych, które mają niskie wyniki dla intencji lub jednostki. 
 
-## <a name="best-practices"></a>Najlepsze praktyki
+## <a name="best-practices"></a>Najlepsze rozwiązania
 
-Zapoznaj się z [najlepszymi rozwiązaniami](luis-concept-best-practices.md) i zastosuj je w ramach regularnego cyklu tworzenia.
+Przejrzyj [najlepsze praktyki](luis-concept-best-practices.md) i zastosuj je w ramach regularnego cyklu tworzenia.
 
-## <a name="label-for-word-meaning"></a>Etykieta znaczenie słowa
+## <a name="label-for-word-meaning"></a>Etykieta dla znaczenia słowa
 
-Jeśli wybór programu word lub rozmieszczeniu word jest taka sama, ale nie oznaczają to samo, nie przypisuj jej etykiety bez jednostki. 
+Jeśli wybór wyrazu lub rozmieszczenie wyrazów jest takie samo, ale nie oznacza tego samego, nie oznaczaj go jednostką. 
 
-Następujący wyrażenia długości, słowo `fair` to homograph. Została wpisana takie same, ale ma inne znaczenie:
+Następujące wypowiedzi, słowo `fair` jest homografem. Jest napisane tak samo, ale ma inne znaczenie:
 
 |Wypowiedź|
 |--|
-|What kind of county fairs are happening in the Seattle area this summer?|
-|Is the current rating for the Seattle review fair?|
+|Jakie targi powiatu dzieje się w obszarze Seattle tego lata?|
+|Czy aktualna ocena recenzji w Seattle jest sprawiedliwa?|
 
-Jeśli chcesz, aby jednostka zdarzenia znalazła wszystkie dane zdarzeń, Oznacz słowo `fair` w pierwszej wypowiedź, ale nie w drugim.
+Jeśli chcesz, aby jednostka zdarzenia znaleźć wszystkie `fair` dane zdarzeń, oznaczyć wyraz w pierwszym wypowiedź, ale nie w drugim.
 
 
 ## <a name="next-steps"></a>Następne kroki
-Zobacz [Dodawanie przykładu wyrażenia długości](luis-how-to-add-example-utterances.md) , aby uzyskać informacje na temat szkolenia aplikacji Luis, aby poznać wyrażenia długości użytkownika.
+Zobacz [Dodawanie wypowiedzi przykład informacji](luis-how-to-add-example-utterances.md) na temat szkolenia aplikacji usługi LUIS, aby zrozumieć wypowiedzi użytkowników.
 

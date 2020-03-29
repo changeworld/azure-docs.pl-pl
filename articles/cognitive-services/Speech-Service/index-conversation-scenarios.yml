@@ -1,59 +1,58 @@
 ### YamlMime:Landing
 title: Dokumentacja scenariuszy konwersacji
-summary: Poznaj różne scenariusze konwersacji, transkrypcję konwersacji lub konwersację obejmującą wiele urządzeń.
+summary: Poznaj różne scenariusze konwersacji. Dowiedz się, jak używać transkrypcji konwersacji lub konwersacji na wielu urządzeniach w scenariuszach spotkań i transkrypcji w scenariuszach Centrum obsługi.
 metadata:
-  title: Dokumentacja scenariuszy konwersacji — samouczki, dokumentacja interfejsu API — Azure Cognitive Services | Microsoft Docs
+  title: Dokumentacja scenariuszy konwersacji — samouczki, informacje o interfejsie API — usługi Azure Cognitive Services | Dokumenty firmy Microsoft
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 03/10/2020
+  ms.date: 03/16/2020
   ms.author: dapine
-  ms.openlocfilehash: 0df2992564dcf90f6b927b5a917993caec18af45
-  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+  ms.openlocfilehash: 75254b0b0b3afb391006a422300c0d4cb9d27fdb
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: MT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 03/14/2020
-  ms.locfileid: "79365790"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "79479692"
 landingContent:
-- title: Informacje o transkrypcji konwersacji
+- title: Transkrypcja konwersacji — informacje (scenariusz spotkania)
   linkLists:
   - linkListType: overview
     links:
-    - text: Co to jest transkrypcja konwersacji?
+    - text: Co to jest transkrypcja konwersacji podczas spotkań?
       url: conversation-transcription.md
   - linkListType: how-to-guide
     links:
-    - text: Obsługa scenariuszy biura obsługi
-      url: call-center-transcription.md
     - text: Transkrypcja konwersacji w czasie rzeczywistym
       url: how-to-use-conversation-transcription.md
     - text: Asynchroniczna transkrypcja konwersacji
       url: how-to-async-conversation-transcription.md
-  - linkListType: reference
-    links:
-    - text: Obsługa języka transkrypcji konwersacji
-      url: conversation-transcription.md#language-support
-- title: Konwersacja z obsługą kilku urządzeń — informacje
+- title: Konwersacja na wielu urządzeniach (scenariusz spotkania) — informacje
   linkLists:
   - linkListType: overview
     links:
-    - text: Co to jest konwersacja między wieloma urządzeniami?
+    - text: Co to jest konwersacja na wielu urządzeniach?
       url: multi-device-conversation.md
   - linkListType: quickstart
     links:
     - text: Rozpoczynanie konwersacji i dołączanie do niej
       url: quickstarts/multi-device-conversation.md
-  - linkListType: reference
+- title: Transkrypcja biura obsługi (scenariusz niestandardowy/agent)
+  linkLists:
+  - linkListType: overview
     links:
-    - text: Obsługa języka konwersacji w wielu urządzeniach
-      url: multi-device-conversation.md#language-support
-- title: Dokumentacja
+    - text: Obsługa scenariuszy biura obsługi
+      url: call-center-transcription.md
+- title: Tematy pomocy
   linkLists:
   - linkListType: reference
     links:
-    - text: Cennik transkrypcji mowy
+    - text: Obsługa języka transkrypcji konwersacji
+      url: conversation-transcription.md#language-support
+    - text: Obsługa języka konwersacji na wielu urządzeniach
+      url: multi-device-conversation.md#language-support
+    - text: Ceny transkrypcji mowy
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/

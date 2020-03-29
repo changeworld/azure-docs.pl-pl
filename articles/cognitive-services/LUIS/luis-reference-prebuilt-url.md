@@ -1,7 +1,7 @@
 ---
-title: Wbudowane jednostki adresów URL — LUIS
+title: Wstępnie utworzone jednostki adresu URL — usługa LUIS
 titleSuffix: Azure Cognitive Services
-description: Ten artykuł zawiera adres url informacji o wstępnie utworzone jednostki w Language Understanding (LUIS).
+description: Ten artykuł zawiera wstępnie utworzone informacje o jednostce adresu URL w yrozmaicieniu języka (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,27 +12,27 @@ ms.topic: reference
 ms.date: 10/04/2019
 ms.author: diberry
 ms.openlocfilehash: 49f145ce3e9022826abad5d274dd611bb2cc6530
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78270349"
 ---
-# <a name="url-prebuilt-entity-for-a-luis-app"></a>Obiekt prekompilowanego adresu URL dla aplikacji LUIS
-Adres URL jednostki wyodrębnia adresy URL przy użyciu nazwy domen i adresów IP. Ponieważ przeprowadzono już uczenie tej jednostki, nie musisz Dodawanie wypowiedzi przykład zawierające adresy URL do aplikacji. Jednostka adresu URL jest obsługiwana tylko w `en-us` kulturze.
+# <a name="url-prebuilt-entity-for-a-luis-app"></a>Wstępnie skompilowana encja adresu URL dla aplikacji usługi LUIS
+Jednostka adresu URL wyodrębnia adresy URL z nazwami domen lub adresami IP. Ponieważ ta jednostka jest już przeszkolony, nie trzeba dodawać wypowiedzi przykład zawierający adresy URL do aplikacji. Jednostka adresu URL `en-us` jest obsługiwana tylko w kulturze.
 
 ## <a name="types-of-urls"></a>Typy adresów URL
-Adres URL jest zarządzany przez [Aparaty rozpoznawania tekstu —](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-URL.yaml) repozytorium GitHub
+Adres URL jest zarządzany za pomocą repozytorium GitHub [w tekście aparatury rozpoznawania](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-URL.yaml)
 
-## <a name="resolution-for-prebuilt-url-entity"></a>Rozwiązania dla wstępnie utworzone jednostki adresu URL
+## <a name="resolution-for-prebuilt-url-entity"></a>Rozwiązanie dla wstępnie utworzonej encji adresu URL
 
-Następujące obiekty jednostki są zwracane dla zapytania:
+Następujące obiekty encji są zwracane dla kwerendy:
 
 `https://www.luis.ai is a great cognitive services example of artificial intelligence`
 
-#### <a name="v3-response"></a>[Odpowiedź v3](#tab/V3)
+#### <a name="v3-response"></a>[Odpowiedź V3](#tab/V3)
 
-Poniższy kod JSON jest z parametrem `verbose` ustawionym na `false`:
+Następujący JSON jest `verbose` z parametrem ustawionym na: `false`
 
 ```json
 "entities": {
@@ -41,9 +41,9 @@ Poniższy kod JSON jest z parametrem `verbose` ustawionym na `false`:
     ]
 }
 ```
-#### <a name="v3-verbose-response"></a>[Pełna odpowiedź w wersji 3](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[Odpowiedź pełne V3](#tab/V3-verbose)
 
-Poniższy kod JSON jest z parametrem `verbose` ustawionym na `true`:
+Następujący JSON jest `verbose` z parametrem ustawionym na: `true`
 
 ```json
 "entities": {
@@ -67,9 +67,9 @@ Poniższy kod JSON jest z parametrem `verbose` ustawionym na `true`:
     }
 }
 ```
-#### <a name="v2-response"></a>[Odpowiedź w wersji 2](#tab/V2)
+#### <a name="v2-response"></a>[Odpowiedź V2](#tab/V2)
 
-W poniższym przykładzie przedstawiono rozwiązanie https://www.luis.ai jest doskonałym przykładem usługi poznawczej analizy
+Poniższy przykład pokazuje rozdzielczość https://www.luis.ai jest doskonałym przykładem usług poznawczych sztucznej inteligencji
 
 ```json
 "entities": [
@@ -86,6 +86,6 @@ W poniższym przykładzie przedstawiono rozwiązanie https://www.luis.ai jest do
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o [punkcie końcowym przewidywania v3](luis-migration-api-v3.md).
+Dowiedz się więcej o [punkcie końcowym przewidywania V3](luis-migration-api-v3.md).
 
-Dowiedz się więcej o liczbie [porządkowej](luis-reference-prebuilt-ordinal.md), [liczbie](luis-reference-prebuilt-number.md)i jednostkach [temperatury](luis-reference-prebuilt-temperature.md) .
+Dowiedz się więcej o jednostkach [porządkowych,](luis-reference-prebuilt-ordinal.md) [liczba](luis-reference-prebuilt-number.md)i [temperatura.](luis-reference-prebuilt-temperature.md)

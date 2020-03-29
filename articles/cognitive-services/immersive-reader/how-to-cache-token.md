@@ -1,7 +1,7 @@
 ---
-title: Buforuj token uwierzytelniania
+title: Buforowanie tokenu uwierzytelniania
 titleSuffix: Azure Cognitive Services
-description: W tym artykule przedstawiono sposób buforowania tokenu uwierzytelniania.
+description: W tym artykule pokazano, jak buforować token uwierzytelniania.
 author: metanMSFT
 manager: guillasi
 ms.service: cognitive-services
@@ -10,19 +10,19 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: metan
 ms.openlocfilehash: e652aa29b1c1935fcc4887dbe13ef9b683a8bd05
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75946167"
 ---
 # <a name="how-to-cache-the-authentication-token"></a>Jak buforować token uwierzytelniania
 
-W tym artykule pokazano, jak buforować token uwierzytelniania w celu poprawy wydajności aplikacji.
+W tym artykule pokazano, jak buforować token uwierzytelniania w celu zwiększenia wydajności aplikacji.
 
 ## <a name="using-aspnet"></a>Korzystanie z ASP.NET
 
-Zaimportuj pakiet NuGet **Microsoft. IdentityModel. clients. ActiveDirectory** , który jest używany do uzyskiwania tokenu. Następnie użyj poniższego kodu, aby uzyskać `AuthenticationResult`przy użyciu wartości uwierzytelniania uzyskanych podczas [tworzenia zasobu czytnika immersyjny](./how-to-create-immersive-reader.md).
+Zaimportuj pakiet **Microsoft.IdentityModel.Clients.ActiveDirectory** NuGet, który jest używany do uzyskiwania tokenu. Następnie użyj następującego kodu, `AuthenticationResult`aby uzyskać program ,używając wartości uwierzytelniania, które zostały utworzone podczas [tworzenia zasobu Czytnik immersyjny.](./how-to-create-immersive-reader.md)
 
 ```csharp
 private async Task<AuthenticationResult> GetTokenAsync()
@@ -34,11 +34,11 @@ private async Task<AuthenticationResult> GetTokenAsync()
 }
 ```
 
-Obiekt `AuthenticationResult` ma właściwość `AccessToken`, która jest rzeczywistym tokenem, który będzie używany podczas uruchamiania czytnika immersyjny przy użyciu zestawu SDK. Ma również właściwość `ExpiresOn`, która oznacza, że token wygaśnie. Przed uruchomieniem czytnika immersyjny można sprawdzić, czy token wygasł i uzyskać nowy token tylko wtedy, gdy jego ważność wygasła.
+Obiekt `AuthenticationResult` ma `AccessToken` właściwość, która jest rzeczywisty token, który będzie używany podczas uruchamiania Immersive Reader przy użyciu SDK. Posiada również `ExpiresOn` właściwość, która oznacza, kiedy token wygaśnie. Przed uruchomieniem Immersive Reader, można sprawdzić, czy token wygasł i uzyskać nowy token tylko wtedy, gdy wygasł.
 
-## <a name="using-nodejs"></a>Przy użyciu środowiska Node. JS
+## <a name="using-nodejs"></a>Korzystanie z node.js
 
-Dodaj pakiet [**żądania**](https://www.npmjs.com/package/request) npm do projektu. Użyj poniższego kodu, aby uzyskać token, używając wartości uwierzytelniania uzyskanych podczas [tworzenia zasobu czytnika immersyjny](./how-to-create-immersive-reader.md).
+Dodaj pakiet npm [**żądania**](https://www.npmjs.com/package/request) do projektu. Użyj następującego kodu, aby uzyskać token, używając wartości uwierzytelniania, które zostały utworzone podczas [tworzenia zasobu Immersive Reader](./how-to-create-immersive-reader.md).
 
 ```javascript
 router.get('/token', function(req, res) {
@@ -64,7 +64,7 @@ router.get('/token', function(req, res) {
 });
 ```
 
-Właściwość `expires_on` to data i godzina wygaśnięcia tokenu wyrażona jako liczba sekund od 1 stycznia 1970 czasu UTC. Użyj tej wartości, aby określić, czy token wygasł przed podjęciem próby uzyskania nowego.
+Właściwość `expires_on` jest datą i godziną wygaśnięcia tokenu, wyrażoną jako liczba sekund od 1 stycznia 1970 UTC. Użyj tej wartości, aby ustalić, czy token wygasł przed podjęciem próby uzyskania nowego.
 
 ```javascript
 async function getToken() {
@@ -77,4 +77,4 @@ async function getToken() {
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Poznaj [Kompendium zestawu SDK czytnika immersyjny](./reference.md)
+* Poznaj [dokumentację immersyjnego sdk czytnika](./reference.md)

@@ -5,48 +5,48 @@ ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
 ms.openlocfilehash: dc5e251fee00ee22edb2261c1abd8404714834ba
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78669310"
 ---
 ## <a name="authentication"></a>Uwierzytelnianie
 
-Każde żądanie wymaga nagłówka autoryzacji. W poniższej tabeli zestawiono, które nagłówki są obsługiwane dla każdej usługi:
+Każde żądanie wymaga nagłówka autoryzacji. W tej tabeli przedstawiono, które nagłówki są obsługiwane dla każdej usługi:
 
-| Nagłówki obsługiwane autoryzacji | Zamiana mowy na tekst | Zamiana tekstu na mowę |
+| Obsługiwane nagłówki autoryzacji | Zamiana mowy na tekst | Zamiana tekstu na mowę |
 |------------------------|----------------|----------------|
-| OCP-Apim-Subscription-Key | Yes | Nie |
-| Autoryzacja: elementu nośnego | Yes | Yes |
+| Ocp-Apim-Subscription-Key | Tak | Nie |
+| Autoryzacja: Okaziciela | Tak | Tak |
 
-W przypadku korzystania z nagłówka `Ocp-Apim-Subscription-Key` jest wymagane tylko podanie klucza subskrypcji. Na przykład:
+Podczas korzystania `Ocp-Apim-Subscription-Key` z nagłówka, musisz tylko podać klucz subskrypcji. Przykład:
 
 ```http
 'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'
 ```
 
-W przypadku korzystania z nagłówka `Authorization: Bearer` wymagane jest żądanie żądania do punktu końcowego `issueToken`. W tym żądaniu możesz wymienić klucz subskrypcji dla tokenu dostępu, który jest ważny przez 10 minut. W kilku następnych sekcjach dowiesz się, jak uzyskać token i użyć tokenu.
+Podczas korzystania `Authorization: Bearer` z nagłówka, musisz złożyć żądanie `issueToken` do punktu końcowego. W tym żądaniu można wymienić klucz subskrypcji token dostępu, który jest prawidłowy przez 10 minut. W następnych kilku sekcjach dowiesz się, jak uzyskać token i użyć tokenu.
 
 ### <a name="how-to-get-an-access-token"></a>Jak uzyskać token dostępu
 
-Aby uzyskać token dostępu, musisz wykonać żądanie do punktu końcowego `issueToken` przy użyciu `Ocp-Apim-Subscription-Key` i klucza subskrypcji.
+Aby uzyskać token dostępu, musisz złożyć żądanie `issueToken` do punktu `Ocp-Apim-Subscription-Key` końcowego przy użyciu klucza subskrypcji i.
 
-Punkt końcowy `issueToken` ma następujący format:
+Punkt `issueToken` końcowy ma ten format:
 
 ```http
 https://<REGION_IDENTIFIER>.api.cognitive.microsoft.com/sts/v1.0/issueToken
 ```
 
-Zastąp `<REGION_IDENTIFIER>` identyfikatorem odpowiadającym regionowi subskrypcji z tej tabeli:
+Zamień `<REGION_IDENTIFIER>` identyfikator odpowiadający regionowi subskrypcji z tej tabeli:
 
 [!INCLUDE [](cognitive-services-speech-service-region-identifier.md)]
 
-Aby utworzyć żądanie tokenu dostępu za pomocą tych przykładów.
+Użyj tych przykładów, aby utworzyć żądanie tokenu dostępu.
 
-#### <a name="http-sample"></a>Przykładowe HTTP
+#### <a name="http-sample"></a>Przykład HTTP
 
-W tym przykładzie jest proste żądania HTTP w celu pobrania tokenu. Zastąp `YOUR_SUBSCRIPTION_KEY` kluczem subskrypcji usługi rozpoznawania mowy. Jeśli Twoja subskrypcja nie znajduje się w regionie zachodnie stany USA, Zastąp nagłówek `Host` nazwą hosta regionu.
+W tym przykładzie jest proste żądanie HTTP, aby uzyskać token. Zamień `YOUR_SUBSCRIPTION_KEY` klucz subskrypcji usługi mowy. Jeśli subskrypcji nie ma w regionie Zachodnie `Host` stany USA, zastąp nagłówek nazwą hosta w regionie.
 
 ```http
 POST /sts/v1.0/issueToken HTTP/1.1
@@ -56,11 +56,11 @@ Content-type: application/x-www-form-urlencoded
 Content-Length: 0
 ```
 
-Treść odpowiedzi zawiera token dostępu w formacie tokenu sieci Web JSON (JWT).
+Treść odpowiedzi zawiera token dostępu w formacie JSON Web Token (JWT).
 
 #### <a name="powershell-sample"></a>Przykładowy skrypt programu PowerShell
 
-W tym przykładzie jest to prosty skrypt programu PowerShell w celu uzyskania tokenu dostępu. Zastąp `YOUR_SUBSCRIPTION_KEY` kluczem subskrypcji usługi rozpoznawania mowy. Upewnij się, że używasz właściwego punktu końcowego dla regionu, który pasuje do Twojej subskrypcji. W tym przykładzie jest aktualnie skonfigurowana do regionu zachodnie stany USA.
+W tym przykładzie jest prosty skrypt programu PowerShell, aby uzyskać token dostępu. Zamień `YOUR_SUBSCRIPTION_KEY` klucz subskrypcji usługi mowy. Upewnij się, że używasz poprawnego punktu końcowego dla regionu, który pasuje do subskrypcji. Ten przykład jest obecnie ustawiony na zachodnie stany USA.
 
 ```powershell
 $FetchTokenHeader = @{
@@ -77,9 +77,9 @@ $OAuthToken
 
 ```
 
-#### <a name="curl-sample"></a>przykład programu cURL
+#### <a name="curl-sample"></a>Próbka cURL
 
-cURL to narzędzie wiersza polecenia dostępne w systemie Linux (i podsystem Windows dla systemu Linux). To polecenie cURL ilustruje sposób uzyskania tokenu dostępu. Zastąp `YOUR_SUBSCRIPTION_KEY` kluczem subskrypcji usługi rozpoznawania mowy. Upewnij się, że używasz właściwego punktu końcowego dla regionu, który pasuje do Twojej subskrypcji. W tym przykładzie jest aktualnie skonfigurowana do regionu zachodnie stany USA.
+cURL to narzędzie wiersza polecenia dostępne w systemie Linux (i w podsystemie Windows dla systemu Linux). To polecenie cURL ilustruje sposób uzyskiwania tokenu dostępu. Zamień `YOUR_SUBSCRIPTION_KEY` klucz subskrypcji usługi mowy. Upewnij się, że używasz poprawnego punktu końcowego dla regionu, który pasuje do subskrypcji. Ten przykład jest obecnie ustawiony na zachodnie stany USA.
 
 ```console
 curl -v -X POST
@@ -91,7 +91,7 @@ curl -v -X POST
 
 #### <a name="c-sample"></a>Przykład w języku C#
 
-To C# klasy ilustruje sposób uzyskania tokenu dostępu. Przekaż swój klucz subskrypcji usługa rozpoznawania mowy, podczas tworzenia wystąpienia klasy. Jeśli Twoja subskrypcja nie znajduje się w regionie zachodnie stany USA, Zmień wartość `FetchTokenUri`, aby była zgodna z regionem subskrypcji.
+Ta klasa Języka C# ilustruje sposób uzyskiwania tokenu dostępu. Przekaż klucz subskrypcji usługi mowy podczas tworzenia wystąpienia klasy. Jeśli subskrypcji nie ma w regionie Zachodnie stany `FetchTokenUri` USA, zmień wartość, aby dopasować go do regionu subskrypcji.
 
 ```csharp
 public class Authentication
@@ -127,7 +127,7 @@ public class Authentication
 }
 ```
 
-#### <a name="python-sample"></a>Przykład języka Python
+#### <a name="python-sample"></a>Przykład pythona
 
 ```python
 # Request module must be installed.
@@ -147,11 +147,11 @@ def get_token(subscription_key):
     print(access_token)
 ```
 
-### <a name="how-to-use-an-access-token"></a>Sposób użycia tokenu dostępu
+### <a name="how-to-use-an-access-token"></a>Jak używać tokenu dostępu
 
-Token dostępu powinien zostać wysłany do usługi jako nagłówek `Authorization: Bearer <TOKEN>`. Każdy token dostępu jest ważny przez 10 minut. Możesz uzyskać nowy token w dowolnym momencie, aby zminimalizować ruch sieciowy i opóźnienia, firma Microsoft zaleca jednak przy użyciu tego samego tokenu na dziewięć minut.
+Token dostępu powinny być wysyłane do `Authorization: Bearer <TOKEN>` usługi jako nagłówek. Każdy token dostępu jest ważny przez 10 minut. Możesz uzyskać nowy token w dowolnym momencie, jednak, aby zminimalizować ruch sieciowy i opóźnienia, zaleca się przy użyciu tego samego tokenu przez dziewięć minut.
 
-Oto przykładowe żądanie HTTP, zamiany tekstu na mowę interfejsu API REST:
+Oto przykładowe żądanie HTTP do interfejsu API REST od zamiany tekstu na mowę:
 
 ```http
 POST /cognitiveservices/v1 HTTP/1.1

@@ -5,14 +5,14 @@ ms.date: 06/26/2019
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: 71f81c23b63d6299e7f48ed9b7d9a6f70841f91f
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68356995"
 ---
 > [!TIP]
-> Możesz użyć [obrazów platformy docker](https://docs.docker.com/engine/reference/commandline/images/) polecenie, aby wyświetlić listę obrazów kontenerów pobrany. Na przykład następujące polecenie wyświetla identyfikator, repozytorium i tag każdy obraz kontenera pobrany, sformatowane jako tabela:
+> Za pomocą polecenia [Obrazy platformy docker](https://docs.docker.com/engine/reference/commandline/images/) można wyświetlić listę pobranych obrazów kontenerów. Na przykład następujące polecenie zawiera listę identyfikatora, repozytorium i znacznika każdego pobranego obrazu kontenera, sformatowanego jako tabela:
 >
 >  ```
 >  docker images --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"

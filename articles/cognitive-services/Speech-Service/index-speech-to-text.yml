@@ -1,30 +1,33 @@
 ### YamlMime:Landing
 title: Dokumentacja zamiany mowy na tekst
-summary: Zamiana mowy na tekst z usługi mowy, znanej również jako rozpoznawanie mowy, umożliwia zapisanie strumieni audio w czasie rzeczywistym do tekstu.
+summary: Zamiana mowy na tekst z usługi Mowy, znanej również jako rozpoznawanie mowy, umożliwia transkrypcję strumieni audio w czasie rzeczywistym i wsadową do tekstu.
 metadata:
-  title: Dokumentacja dotycząca zamiany mowy na tekst — samouczki, dokumentacja interfejsu API — Azure Cognitive Services | Microsoft Docs
+  title: Dokumentacja zamiany mowy na tekst — samouczki, informacje o interfejsie API — usługi Azure Cognitive Services | Dokumenty firmy Microsoft
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 03/10/2020
+  ms.date: 03/19/2020
   ms.author: dapine
-  ms.openlocfilehash: 7f3486e9944cf7f01c2a53ca101c5cc26530e086
-  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+  ms.openlocfilehash: b6f2fed7b5d6722b07b7f996c46e48ea0d86f755
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: MT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 03/14/2020
-  ms.locfileid: "79370359"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "80052837"
 landingContent:
-- title: Informacje o zamiany mowy na tekst
+- title: Informacje o zamianie mowy na tekst
   linkLists:
   - linkListType: overview
     links:
-    - text: Co to jest zamiana mowy na tekst?
+    - text: Co to jest zamiana mowy na tekst w czasie rzeczywistym?
       url: speech-to-text.md
+    - text: Co to jest wsadowa zamiana mowy na tekst?
+      url: batch-transcription.md
+    - text: Podstawy rozpoznawania mowy?
+      url: speech-to-text-basics.md
   - linkListType: quickstart
     links:
     - text: Rozpoznawanie mowy z danych wejściowych mikrofonu
@@ -33,7 +36,7 @@ landingContent:
       url: quickstarts/speech-to-text-from-file.md
     - text: Rozpoznawanie mowy przechowywanej w usłudze Blob Storage
       url: quickstarts/from-blob.md
-- title: Programowanie za pomocą zamiany mowy na tekst
+- title: Tworzenie za pomocą zamiany mowy na tekst
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -45,11 +48,15 @@ landingContent:
       url: how-to-custom-speech.md
     - text: Używanie skompresowanych formatów dźwiękowych danych wejściowych
       url: how-to-use-codec-compressed-audio-input-streams.md
+  - linkListType: tutorial
+    links:
+    - text: Zwiększanie dokładności za pomocą modeli dzierżaw
+      url: tutorial-tenant-model.md
   - linkListType: concept
     links:
-    - text: Przygotuj dane dla Custom Speech
+    - text: Przygotowywanie danych do mowy niestandardowej
       url: how-to-custom-speech-test-data.md
-    - text: Uczenie modelu dla Custom Speech
+    - text: Trenuj model mowy niestandardowej
       url: how-to-custom-speech-train-model.md
     - text: Tworzenie transkrypcji oznaczonych etykietą przez użytkownika
       url: how-to-custom-speech-human-labeled-transcriptions.md
@@ -61,5 +68,5 @@ landingContent:
       url: language-support.md#speech-to-text
     - text: Często zadawane pytania dotyczące zamiany mowy na tekst
       url: faq-stt.md
-    - text: Cennik zamiany mowy na tekst
+    - text: Ceny zamiany mowy na tekst
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services

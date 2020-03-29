@@ -1,7 +1,7 @@
 ---
-title: Umiarkowany tekst przy użyciu interfejsu API moderowania tekstu — Content Moderator
+title: Moderowanie tekstu za pomocą interfejsu API moderowania tekstu — Moderator treści
 titleSuffix: Azure Cognitive Services
-description: Moderowanie tekstu dysku testowego za pomocą interfejsu API moderowania tekstu w konsoli online.
+description: Moderowanie tekstu na dysku testowym przy użyciu interfejsu API moderowania tekstu w konsoli online.
 services: cognitive-services
 author: PatrickFarley
 ms.author: pafarley
@@ -11,56 +11,56 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.openlocfilehash: e0930558f31b27a77fa2cd6b44fcea2fe9091086
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74538824"
 ---
-# <a name="moderate-text-from-the-api-console"></a>Umiarkowany tekst z konsoli interfejsu API
+# <a name="moderate-text-from-the-api-console"></a>Moderowanie tekstu z konsoli interfejsu API
 
-Użyj [interfejsu API moderowania tekstu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f) w usłudze Azure Content moderator, aby przeskanować zawartość tekstową pod kątem niewulgarności i porównać ją z niestandardowymi i udostępnionymi listami.
+Użyj [interfejsu API moderowania tekstu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f) w usłudze Azure Content Moderator, aby skanować zawartość tekstową w poszukiwaniu wulgaryzmów i porównywać ją z listami niestandardowymi i udostępnionymi.
 
 ## <a name="get-your-api-key"></a>Pobierz klucz interfejsu API
 
-Aby można było przetestować interfejs API w konsoli online, musisz mieć swój klucz subskrypcji. Ta lokalizacja znajduje się na karcie **Ustawienia** w polu **OCP-APIM-Subscription-Key** . Aby uzyskać więcej informacji, zobacz [Omówienie](overview.md).
+Aby można było przetestować interfejs API w konsoli online, potrzebny jest klucz subskrypcji. Znajduje się on na karcie **Ustawienia** w polu **Ocp-Apim-Subscription-Key.** Aby uzyskać więcej informacji, zobacz [Omówienie](overview.md).
 
 ## <a name="navigate-to-the-api-reference"></a>Przejdź do odwołania do interfejsu API
 
-Przejdź do [dokumentacji interfejsu API moderowania tekstu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f). 
+Przejdź do [odwołania interfejsu API moderowania tekstu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f). 
 
-  Zostanie otwarta strona **ekran tekstu** .
+  Zostanie otwarta strona **Tekst — ekran.**
 
-## <a name="open-the-api-console"></a>Otwórz konsolę interfejsu API
+## <a name="open-the-api-console"></a>Otwieranie konsoli interfejsu API
 
-W obszarze **Otwórz konsolę testowania interfejsu API**wybierz region, który najlepiej opisuje lokalizację. 
+W przypadku **konsoli testowania otwartego interfejsu API**wybierz region, który najbardziej opisuje Twoją lokalizację. 
 
-  ![Wybór obszaru strony ekranu tekstu](images/test-drive-region.png)
+  ![Tekst — wybór regionu strony ekranowej](images/test-drive-region.png)
 
-  Zostanie otwarta konsola interfejsu API **tekstu** .
+  Zostanie otwarta konsola interfejsu API **Text — Screen.**
 
 ## <a name="select-the-inputs"></a>Wybierz dane wejściowe
 
 ### <a name="parameters"></a>Parametry
 
-Wybierz parametry zapytania, które mają być używane na ekranie tekstowym. W tym przykładzie Użyj wartości domyślnej dla **języka**. Możesz również pozostawić to pole puste, ponieważ operacja automatycznie wykryje prawdopodobnie język w ramach jego wykonywania.
+Zaznacz parametry kwerendy, których chcesz użyć na ekranie tekstowym. W tym przykładzie należy użyć wartości domyślnej dla **języka**. Można również pozostawić puste, ponieważ operacja automatycznie wykryje prawdopodobny język jako część jego wykonania.
 
 > [!NOTE]
-> W polu parametr **języka** Przypisz `eng` lub pozostaw to pole puste, aby wyświetlić odpowiedź **klasyfikacji** z obsługą maszyn (funkcja w wersji zapoznawczej). **Ta funkcja obsługuje tylko język angielski**.
+> Dla **language** parametru języka `eng` przypisz lub pozostaw go pusty, aby wyświetlić odpowiedź **klasyfikacji** wspomaganej maszynowo (funkcja podglądu). **Ta funkcja obsługuje tylko język angielski**.
 >
-> W przypadku wykrywania **warunków wulgarnych** Użyj [kodu ISO 639-3](http://www-01.sil.org/iso639-3/codes.asp) dla obsługiwanych języków wymienionych w tym artykule lub pozostaw to pole puste.
+> W przypadku wykrywania **wulgaryzmów** należy użyć [kodu ISO 639-3](http://www-01.sil.org/iso639-3/codes.asp) obsługiwanych języków wymienionych w tym artykule lub pozostawić go pustym.
 
-W przypadku funkcji **Autokorekta**, dane **osobowe**i **klasyfikowanie (wersja zapoznawcza)** wybierz pozycję **prawda**. Pozostaw puste pole **ListId** .
+W przypadku **autokorekty** **, pii**i **klasyfikuj (podgląd)** wybierz **true**. Pozostaw pole **Nrd** puste.
 
-  ![Parametry zapytania konsoli ekranowej](images/text-api-console-inputs.PNG)
+  ![Tekst — parametry kwerendy konsoli ekranowej](images/text-api-console-inputs.PNG)
 
 ### <a name="content-type"></a>Typ zawartości
 
-W **polu Typ zawartości**wybierz typ zawartości, która ma być wykorzystana. Na potrzeby tego przykładu Użyj domyślnego typu zawartości **tekst/zwykły** . W polu **OCP-APIM-Subscription-Key** wprowadź swój klucz subskrypcji.
+W przypadku **zawartości typu**wybierz typ zawartości, którą chcesz prześwietlić. W tym przykładzie należy użyć domyślnego **tekstu/zwykłego** typu zawartości. W polu **Ocp-Apim-Subscription-Key** wprowadź klucz subskrypcji.
 
 ### <a name="sample-text-to-scan"></a>Przykładowy tekst do skanowania
 
-W polu **treść żądania** wprowadź tekst. W poniższym przykładzie przedstawiono zamierzone literówki w tekście.
+W **treści Żądanie** wprowadź tekst. W poniższym przykładzie pokazano celowe literówki w tekście.
 
 ```
 Is this a grabage or crap email abcdef@abcd.com, phone: 4255550111, IP: 255.255.255.255, 1234 Main Boulevard, Panapolis WA 96555. These are all UK phone numbers, the last two being Microsoft UK support numbers: +44 870 608 4000 or 0344 800 2400 or 0800 820 3300. Also, 999-99-9999 looks like a social security number (SSN).
@@ -68,10 +68,10 @@ Is this a grabage or crap email abcdef@abcd.com, phone: 4255550111, IP: 255.255.
 
 ## <a name="analyze-the-response"></a>Analizowanie odpowiedzi
 
-W poniższej odpowiedzi przedstawiono różne informacje z interfejsu API. Zawiera potencjalne nieżywotność, dane osobowe, klasyfikację (wersja zapoznawcza) i automatycznie poprawioną wersję.
+Poniższa odpowiedź pokazuje różne spostrzeżenia z interfejsu API. Zawiera potencjalne wulgaryzmy, dane osobowe, klasyfikację (wersja zapoznawcza) i wersję automatycznie poprawioną.
 
 > [!NOTE]
-> Funkcja klasyfikacji oparta na maszynach jest w wersji zapoznawczej i obsługuje tylko język angielski.
+> Funkcja "Klasyfikacja" wspomagana maszynowo znajduje się w wersji zapoznawczej i obsługuje tylko język angielski.
 
 ```json
 {"OriginalText":"Is this a grabage or crap email abcdef@abcd.com, phone: 4255550111, IP: 255.255.255.255, 1234 Main Boulevard, Panapolis WA 96555.\r\nThese are all UK phone numbers: +44 123 456 7890 or 0234 567 8901 or 0456 789 0123.\r\nAlso, 999-99-9999 looks like a social security number (SSN).",
@@ -167,8 +167,8 @@ W poniższej odpowiedzi przedstawiono różne informacje z interfejsu API. Zawie
 }
 ```
 
-Szczegółowe wyjaśnienie wszystkich sekcji odpowiedzi JSON można znaleźć w przewodniku koncepcyjnym [moderowania tekstu](text-moderation-api.md) .
+Szczegółowe wyjaśnienie wszystkich sekcji odpowiedzi JSON można znaleźć w przewodniku koncepcyjnym [moderacji tekstu.](text-moderation-api.md)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Użyj interfejsu API REST w kodzie lub postępuj zgodnie z [przewodnikiem Szybki Start dla zestawu .NET SDK](dotnet-sdk-quickstart.md) , aby przeprowadzić integrację z aplikacją.
+Użyj interfejsu API REST w kodzie lub postępuj zgodnie z [programem Szybki start .NET SDK,](dotnet-sdk-quickstart.md) aby zintegrować się z aplikacją.

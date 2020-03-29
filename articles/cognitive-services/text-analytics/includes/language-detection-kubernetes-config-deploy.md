@@ -1,7 +1,7 @@
 ---
-title: wykrywanie języka Kubernetes konfigurację i wdrażanie kroków
+title: Wykrywanie języka Kubernetes konfiguracji i wdrażania kroków
 titleSuffix: Azure Cognitive Services
-description: wykrywanie języka Kubernetes konfigurację i wdrażanie kroków
+description: Wykrywanie języka Kubernetes konfiguracji i wdrażania kroków
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,45 +10,45 @@ ms.topic: include
 ms.date: 11/21/2019
 ms.author: dapine
 ms.openlocfilehash: addb044d82429a4471e7ecd302351dd7b7eada84
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78261953"
 ---
-### <a name="deploy-the-language-detection-container-to-an-aks-cluster"></a>Wdrażanie kontenera wykrywanie języka w klastrze AKS
+### <a name="deploy-the-language-detection-container-to-an-aks-cluster"></a>Wdrażanie kontenera wykrywania języka w klastrze AKS
 
-1. Otwórz interfejs wiersza polecenia platformy Azure i zaloguj się do platformy Azure.
+1. Otwórz interfejsu wiersza polecenia platformy Azure i zaloguj się na platformie Azure.
 
     ```azurecli
     az login
     ```
 
-1. Zaloguj się do klastra AKS. Zastąp `your-cluster-name` i `your-resource-group` odpowiednimi wartościami.
+1. Zaloguj się do klastra AKS. Wymień `your-cluster-name` i `your-resource-group` na odpowiednie wartości.
 
     ```azurecli
     az aks get-credentials -n your-cluster-name -g -your-resource-group
     ```
 
-    Po uruchomieniu tego polecenia raport przedstawia komunikat podobny do następującego:
+    Po uruchomieniu tego polecenia zgłasza komunikat podobny do następującego:
 
     ```output
     Merged "your-cluster-name" as current context in /home/username/.kube/config
     ```
 
     > [!WARNING]
-    > Jeśli masz wiele subskrypcji na Twoim koncie platformy Azure, a polecenie `az aks get-credentials` zwraca z błędem, typowy problem polega na tym, że używasz niewłaściwej subskrypcji. Ustaw kontekst sesji interfejsu wiersza polecenia platformy Azure, aby użyć tej samej subskrypcji, w której zostały utworzone zasoby, i spróbuj ponownie.
+    > Jeśli masz wiele subskrypcji dostępnych na koncie `az aks get-credentials` platformy Azure, a polecenie zwraca się z błędem, częstym problemem jest użycie niewłaściwej subskrypcji. Ustaw kontekst sesji interfejsu wiersza polecenia platformy Azure, aby używać tej samej subskrypcji, z którą utworzono zasoby, i spróbuj ponownie.
     > ```azurecli
     >  az account set -s subscription-id
     > ```
 
-1. Otwórz Edytor tekstu. Ten przykład używa Visual Studio Code.
+1. Otwórz wybrany edytor tekstu. W tym przykładzie użyto programu Visual Studio Code.
 
     ```console
     code .
     ```
 
-1. W edytorze tekstów Utwórz nowy plik o nazwie *Language. YAML*i wklej do niego następujące YAML. Pamiętaj, aby zastąpić `billing/value` i `apikey/value` własnymi informacjami.
+1. W edytorze tekstu utwórz nowy plik o nazwie *language.yaml*i wklej do niego następujący plik YAML. Pamiętaj, aby `billing/value` `apikey/value` zastąpić i z własnymi informacjami.
 
     ```yaml
     apiVersion: apps/v1beta1
@@ -94,39 +94,39 @@ ms.locfileid: "78261953"
         app: language-app
     ```
 
-1. Zapisz plik i Zamknij Edytor tekstu.
-1. Uruchom polecenie Kubernetes `apply` z plikiem *Language. YAML* jako obiektem docelowym:
+1. Zapisz plik i zamknij edytor tekstu.
+1. Uruchom polecenie Kubernetes `apply` z plikiem *language.yaml* jako jego celem:
 
     ```console
     kubectl apply -f language.yaml
     ```
 
-    Gdy polecenie pomyślnie zastosuje konfigurację wdrożenia, zostanie wyświetlony komunikat podobny do następującego:
+    Po pomyślnym rozmieszczeniu konfiguracji wdrożenia zostanie wyświetlony komunikat podobny do następującego wyjścia:
 
     ```output
     deployment.apps "language" created
     service "language" created
     ```
-1. Sprawdź, czy w obszarze został wdrożony:
+1. Sprawdź, czy zasobnik został wdrożony:
 
     ```console
     kubectl get pods
     ```
 
-    Dane wyjściowe dla stanu uruchomienia pod:
+    Dane wyjściowe stanu bieżącego zasobnika:
 
     ```output
     NAME                         READY     STATUS    RESTARTS   AGE
     language-5c9ccdf575-mf6k5   1/1       Running   0          1m
     ```
 
-1. Sprawdź, czy usługa jest dostępna i Pobierz adres IP.
+1. Sprawdź, czy usługa jest dostępna i uzyskaj adres IP.
 
     ```console
     kubectl get services
     ```
 
-    Dane wyjściowe dla stanu uruchomienia usługi *językowej* w obszarze:
+    Dane wyjściowe dla stanu uruchomionej usługi *języka* w zasobniku:
 
     ```output
     NAME         TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)          AGE

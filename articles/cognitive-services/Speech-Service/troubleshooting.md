@@ -1,7 +1,7 @@
 ---
-title: Rozwiązywanie problemów z zestawem Speech SDK — Speech Service
+title: Rozwiązywanie problemów z sdk mowy — usługa mowy
 titleSuffix: Azure Cognitive Services
-description: Ten artykuł zawiera informacje ułatwiające rozwiązywanie problemów, które mogą wystąpić podczas korzystania z zestawu Speech SDK.
+description: Ten artykuł zawiera informacje ułatwiające rozwiązywanie problemów, które mogą wystąpić podczas korzystania z SDK mowy.
 services: cognitive-services
 author: jhakulin
 manager: nitinme
@@ -11,42 +11,42 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: jhakulin
 ms.openlocfilehash: 421b9adf4ae5d2c641484e646bea096716d46cca
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74815417"
 ---
 # <a name="troubleshoot-the-speech-sdk"></a>Rozwiązywanie problemów z zestawem Speech SDK
 
-Ten artykuł zawiera informacje ułatwiające rozwiązywanie problemów, które mogą wystąpić podczas korzystania z zestawu Speech SDK.
+Ten artykuł zawiera informacje ułatwiające rozwiązywanie problemów, które mogą wystąpić podczas korzystania z SDK mowy.
 
-## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Błąd: Uaktualnienie WebSocket nie powiodło się z powodu błędu uwierzytelniania (403)
+## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Błąd: uaktualnienie websocket nie powiodło się z błędem uwierzytelniania (403)
 
-Konieczne może być nieprawidłowy punkt końcowy dla Twojego regionu lub usługi. Sprawdź identyfikator URI, aby upewnić się, że jest on poprawny.
+Może mieć niewłaściwy punkt końcowy dla regionu lub usługi. Sprawdź identyfikator URI, aby upewnić się, że jest poprawny.
 
-Ponadto może być problem z Twoim klucz subskrypcji lub autoryzacji tokenu. Aby uzyskać więcej informacji zobacz następną sekcję.
+Ponadto może wystąpić problem z kluczem subskrypcji lub tokenem autoryzacji. Aby uzyskać więcej informacji, zobacz następną sekcję.
 
-## <a name="error-http-403-forbidden-or-http-401-unauthorized"></a>Błąd: HTTP 403 Dostęp zabroniony lub HTTP 401 Brak autoryzacji
+## <a name="error-http-403-forbidden-or-http-401-unauthorized"></a>Błąd: HTTP 403 Zabronione lub HTTP 401 Nieautoryzowane
 
-Ten błąd jest często spowodowane przez problemy z uwierzytelnianiem. Żądania połączenia bez prawidłowego `Ocp-Apim-Subscription-Key` lub `Authorization` nagłówka zostały odrzucone ze stanem 403 lub 401.
+Ten błąd często jest spowodowany przez problemy z uwierzytelnianiem. Żądania połączenia bez `Ocp-Apim-Subscription-Key` `Authorization` prawidłowego lub nagłówka są odrzucane o stanie 403 lub 401.
 
-* Klucz subskrypcji używany do uwierzytelniania, może zostać wyświetlony błąd, ponieważ:
+* Jeśli używasz klucza subskrypcji do uwierzytelniania, może zostać wyświetlony błąd, ponieważ:
 
-    - klucz subskrypcji lub jest nieprawidłowy
-    - Przekroczono limit przydziału użycia Twojej subskrypcji
+    - Brakuje klucza subskrypcji lub brakuje go
+    - Przekroczono limit użycia subskrypcji
 
-* Token autoryzacji używany do uwierzytelniania, może zostać wyświetlony błąd, ponieważ:
+* Jeśli używasz tokenu autoryzacji do uwierzytelniania, może zostać wyświetlony błąd, ponieważ:
 
-    - token autoryzacji jest nieprawidłowy
-    - wygasł token autoryzacji
+    - Token autoryzacji jest nieprawidłowy
+    - Token autoryzacji wygasł
 
-### <a name="validate-your-subscription-key"></a>Zweryfikuj swój klucz subskrypcji
+### <a name="validate-your-subscription-key"></a>Sprawdzanie poprawności klucza subskrypcji
 
-Aby sprawdzić, mają klucz ważnej subskrypcji, uruchamiając jeden z następujących poleceń.
+Możesz sprawdzić, czy masz prawidłowy klucz subskrypcji, uruchamiając jedno z następujących poleceń.
 
 > [!NOTE]
-> Zastąp `YOUR_SUBSCRIPTION_KEY` i `YOUR_REGION` własny klucz subskrypcji i regionu skojarzonego.
+> Zamień `YOUR_SUBSCRIPTION_KEY` i `YOUR_REGION` z własnym kluczem subskrypcji i skojarzonym regionem.
 
 * PowerShell
 
@@ -66,14 +66,14 @@ Aby sprawdzić, mają klucz ważnej subskrypcji, uruchamiając jeden z następuj
     curl -v -X POST "https://YOUR_REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken" -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY" -H "Content-type: application/x-www-form-urlencoded" -H "Content-Length: 0"
     ```
 
-Jeśli wprowadzono prawidłowy klucz subskrypcji, polecenie zwróci Token autoryzacji, w przeciwnym razie zwracany jest błąd.
+Jeśli wprowadzono prawidłowy klucz subskrypcji, polecenie zwraca token autoryzacji, w przeciwnym razie zwracany jest błąd.
 
-### <a name="validate-an-authorization-token"></a>Zweryfikuj token autoryzacji
+### <a name="validate-an-authorization-token"></a>Sprawdzanie poprawności tokenu autoryzacji
 
-Jeśli token autoryzacji jest używany do uwierzytelniania, uruchom jedno z poniższych poleceń, aby sprawdzić, czy token autoryzacji jest nadal ważny. Tokeny są ważne przez 10 minut.
+Jeśli używasz tokenu autoryzacji do uwierzytelniania, uruchom jedno z następujących poleceń, aby sprawdzić, czy token autoryzacji jest nadal prawidłowy. Tokeny są ważne przez 10 minut.
 
 > [!NOTE]
-> Zastąp `YOUR_AUDIO_FILE` ze ścieżką do pliku nagrań audio. Zastąp `YOUR_ACCESS_TOKEN` tokenem autoryzacji są zwracane w poprzednim kroku. Zastąp `YOUR_REGION` z poprawny region.
+> Zastąp `YOUR_AUDIO_FILE` ścieżką do wstępnie zarejestrowanego pliku audio. Zamień `YOUR_ACCESS_TOKEN` token autoryzacji zwrócony w poprzednim kroku. Wymień `YOUR_REGION` na odpowiedni region.
 
 * PowerShell
 
@@ -103,26 +103,26 @@ Jeśli token autoryzacji jest używany do uwierzytelniania, uruchom jedno z poni
     curl -v -X POST "https://YOUR_REGION.stt.speech.microsoft.com/speech/recognition/interactive/cognitiveservices/v1?language=en-US" -H "Authorization: Bearer YOUR_ACCESS_TOKEN" -H "Transfer-Encoding: chunked" -H "Content-type: audio/wav; codec=audio/pcm; samplerate=16000" --data-binary @YOUR_AUDIO_FILE
     ```
 
-Jeśli wprowadzono prawidłowy token autoryzacji, polecenie zwróci transkrypcję pliku audio, w przeciwnym razie zwracany jest błąd.
+Jeśli wprowadzono prawidłowy token autoryzacji, polecenie zwraca transkrypcję pliku audio, w przeciwnym razie zwracany jest błąd.
 
 ---
 
-## <a name="error-http-400-bad-request"></a>Błąd: HTTP 400 Niewłaściwe żądanie
+## <a name="error-http-400-bad-request"></a>Błąd: HTTP 400 Złe żądanie
 
-Ten błąd występuje zazwyczaj, gdy treść żądania zawiera nieprawidłowe dane audio. Jest obsługiwany tylko format WAV. Sprawdź, czy nagłówki żądania, aby upewnić się, można określić odpowiednie wartości dla `Content-Type` i `Content-Length`.
+Ten błąd zwykle występuje, gdy treść żądania zawiera nieprawidłowe dane audio. Obsługiwany jest tylko format WAV. Ponadto sprawdź nagłówki żądania, aby upewnić się, `Content-Type` że `Content-Length`określono odpowiednie wartości dla i .
 
-## <a name="error-http-408-request-timeout"></a>Błąd: Limit czasu z 408 żądania HTTP
+## <a name="error-http-408-request-timeout"></a>Błąd: Limit czasu żądania HTTP 408
 
-Najbardziej prawdopodobną błąd występuje, ponieważ nie dane audio są wysyłane do usługi. Ten błąd może być także spowodowany przez problemy z siecią.
+Błąd najprawdopodobniej występuje, ponieważ żadne dane audio nie są wysyłane do usługi. Ten błąd może być również spowodowany problemami z siecią.
 
 ## <a name="recognitionstatus-in-the-response-is-initialsilencetimeout"></a>"RecognitionStatus" w odpowiedzi jest "InitialSilenceTimeout"
 
-Ten problem jest zazwyczaj spowodowane danych audio. Może zostać wyświetlony ten błąd, ponieważ:
+Ten problem jest zwykle spowodowany przez dane audio. Ten błąd może zostać wyświetlony, ponieważ:
 
-* Istnieje długa odcinek wyciszenia na początku audio. W takiej sytuacji usługa zatrzymuje uznanie za kilka sekund i zwraca `InitialSilenceTimeout`.
+* Na początku dźwięku panuje długa cisza. W takim przypadku usługa zatrzymuje rozpoznawanie po `InitialSilenceTimeout`kilku sekundach i zwraca .
 
-* Audio w formacie nieobsługiwanego kodera-dekodera, co powoduje, że dane audio powinien być traktowany jako wyciszenia.
+* Dźwięk używa nieobsługitowanego formatu kodeka, co powoduje, że dane audio są traktowane jako cisza.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Zapoznaj się z informacjami o wersji](releasenotes.md)
+* [Przejrzyj informacje o wersji](releasenotes.md)

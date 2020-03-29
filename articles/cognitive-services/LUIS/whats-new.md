@@ -1,91 +1,95 @@
 ---
-title: Co nowego — Language Understanding (LUIS)
-description: Ten artykuł jest regularnie aktualizowany za pomocą wiadomości o interfejs API usługi Language Understanding usługi Azure Cognitive Services.
+title: Co nowego — rozumienie języka (LUIS)
+description: Ten artykuł jest regularnie aktualizowany o wiadomości dotyczące interfejsu API rozpoznawania języka usług Wirtualnych platformy Azure.
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: 716860b54e7d8e75984c0365cac61d14153c09ff
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 562f7f8b4974363daab91991e6a8219b352432fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137807"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156008"
 ---
-# <a name="whats-new-in-language-understanding"></a>Co nowego w Language Understanding
+# <a name="whats-new-in-language-understanding"></a>Co nowego w zrozumieniu języka
 
-Dowiedz się, co nowego w usłudze. Te elementy obejmują informacje o wersji, klipy wideo, wpisy w blogu i inne rodzaje informacji. Oznacz Tę stronę zakładką, aby zapewnić aktualność usługi.
+Dowiedz się, co nowego w usłudze. Elementy te obejmują informacje o wersji, filmy, wpisy w blogu i inne rodzaje informacji. Zaznacz tę stronę w zakładce, aby być na bieżąco z usługą.
 
 ## <a name="release-notes"></a>Informacje o wersji
 
-### <a name="november-4-2019---ignite"></a>4 listopada 2019 — zapłon
+### <a name="march-2020"></a>Marzec 2020 r.
 
-* [Language Understanding zaawansowane modele wideo (NLU) z Luis i Azure Cognitive Services | BRK2188](https://www.youtube.com/watch?v=JdJEV2jV0_Y)
+* Protokół TLS 1.2 jest teraz wymuszany dla wszystkich żądań HTTP do tej usługi. Aby uzyskać więcej informacji, zobacz [zabezpieczenia usług Azure Cognitive Services](../cognitive-services-security.md).
 
-* Ulepszona produktywność dla deweloperów
-    * Ogólna dostępność naszego [punktu końcowego przewidywania v3](luis-migration-api-v3.md).
-    * Możliwość importowania i eksportowania aplikacji z formatem. lu ([LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)). To paves sposób na efektywny proces ciągłej integracji/ciągłego dostarczania.
-* Rozwinięcie języka
-    * [Język arabski i hindi](luis-language-support.md) w publicznej wersji zapoznawczej.
+### <a name="november-4-2019---ignite"></a>4 listopada 2019 - Ignite
+
+* Wideo — [zaawansowane modele zrozumienia języka naturalnego (NLU) przy użyciu usługi LUIS i azure cognitive services | BRK2188](https://www.youtube.com/watch?v=JdJEV2jV0_Y)
+
+* Większa produktywność deweloperów
+    * Ogólna dostępność naszego [punktu końcowego przewidywania V3](luis-migration-api-v3.md).
+    * Możliwość importowania i eksportowania aplikacji w formacie .lu[(LUDown).](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown) To toruje drogę do skutecznego procesu ciągłej integracji/ciągłego wdrażania.
+* Rozszerzenie języka
+    * [arabski i hindi](luis-language-support.md) w publicznej wersji zapoznawczej.
 * Wstępnie utworzone modele
-    * [Wstępnie skompilowane domeny](luis-reference-prebuilt-domains.md) są teraz ogólnie dostępne (ga)
-    * Japońskie wstępnie [skompilowane jednostki](luis-reference-prebuilt-entities.md#japanese-entity-support) — wiek, waluta, liczba i procent nie są obsługiwane w wersji 3.
-    * Włoskie wstępnie [skompilowane jednostki](luis-reference-prebuilt-entities.md#italian-entity-support) — wiek, waluta, wymiar, numer i rozdzielczość procentową zmieniono z wersji 2.
-* Ulepszone środowisko użytkownika w [portalu Preview.Luis.AI](https://preview.luis.ai) — środowisko etykietowania odnowionych umożliwiające tworzenie i debugowanie modeli złożonych. Wypróbuj samouczki dotyczące portalu w wersji zapoznawczej:
+    * [Wstępnie utworzone domeny są](luis-reference-prebuilt-domains.md) teraz ogólnie dostępne (GA)
+    * Japońskie [wstępnie utworzone jednostki](luis-reference-prebuilt-entities.md#japanese-entity-support) — wiek, waluta, liczba i procent nie są obsługiwane w wersji 3.
+    * Włoskie [wstępnie utworzone encje](luis-reference-prebuilt-entities.md#italian-entity-support) — wiek, waluta, wymiar, liczba i rozdzielczość procentowa zmienione z V2.
+* Ulepszone środowisko użytkownika w [preview.luis.ai portalu](https://preview.luis.ai) — odnowione środowisko etykietowania umożliwiające tworzenie i debugowanie złożonych modeli. Wypróbuj samouczki portalu podglądu:
     * [Tylko intencje](tutorial-intents-only.md)
-    * [Odtworzona jednostka pouczenia maszynowego](tutorial-machine-learned-entity.md)
-* Dokładniejsze Omówienie języka — [tworzenie zaawansowanych modeli języków](luis-concept-entity-types.md) z mniejszym nakładem pracy.
-* Zdefiniuj funkcje uczenia maszynowego na poziomie modelu i Włącz modele, które mają być używane jako sygnały do innych modeli, na przykład użycie jednostek jako funkcji do intencji i innych jednostek.
-* Nowe, rozwinięte [limity](luis-boundaries.md) — większa liczba list fraz i łączna liczba fraz, nowy model jako limity funkcji
-* Wyodrębnij informacje z tekstu w formacie głębokiej struktury hierarchii, co sprawia, że aplikacje do konwersacji są bardziej wydajne.
+    * [Rozkładalna jednostka wyuczona maszynowo](tutorial-machine-learned-entity.md)
+* Rozwijanie możliwości rozumienia języka - [tworzenie zaawansowanych modeli językowych](luis-concept-entity-types.md) przy mniejszym wysiłku.
+* Zdefiniuj funkcje uczenia maszynowego na poziomie modelu i włącz modele, które mają być używane jako sygnały do innych modeli, na przykład przy użyciu jednostek jako funkcji intencji i innych jednostek.
+* Nowe, [rozszerzone limity](luis-boundaries.md) - wyższe maksimum dla list fraz i zwrotów całkowitych, nowy model jako limity funkcji
+* Wyodrębnij informacje z tekstu w formacie głębokiej struktury hierarchii, dzięki czemu aplikacje konwersacji są bardziej zaawansowane.
 
-    ![obraz jednostki o Poznaniu maszynowym](./media/whats-new/deep-entity-extraction-example.png)
+    ![obraz jednostki nauczanych maszynowo](./media/whats-new/deep-entity-extraction-example.png)
 
-### <a name="september-3-2019"></a>3 września, 2019
+### <a name="september-3-2019"></a>3 września 2019 r.
 
-* Tworzenie zasobu platformy Azure — [Migrowanie teraz](luis-migration-authoring.md).
+* Zasób tworzenia platformy Azure — [migruj teraz](luis-migration-authoring.md).
     * 500 aplikacji na zasób platformy Azure
     * 100 wersji na aplikację
-* Wsparcie tureckie dla wstępnie utworzonych jednostek
-* Obsługa języka włoskiego dla datetimeV2
+* Tureckie wsparcie dla wstępnie zbudowanych podmiotów
+* Włoskie wsparcie dla datetimeV2
 
-### <a name="july-23-2019"></a>23 lipca 2019
+### <a name="july-23-2019"></a>23 lipca 2019 r.
 
-* Aktualizowanie [aparatów rozpoznawania tekstu](https://github.com/microsoft/Recognizers-Text/releases/tag/dotnet-v1.2.3) do 1.2.3
+* Aktualizowanie [tekstu aparatów rozpoznawania](https://github.com/microsoft/Recognizers-Text/releases/tag/dotnet-v1.2.3) do 1.2.3
     * Aparaty rozpoznawania wieku, temperatury, wymiaru i waluty w języku włoskim.
-    * Poprawa rozpoznawania dni w języku angielskim w celu poprawnego obliczenia dat opartych na świętach.
-    * Ulepszenia w francuskim elemencie DateTime, aby zmniejszyć liczbę fałszywych wartości niebędących nieaktualnymi i niebędącymi jednostkami czasu.
-    * Obsługa kalendarza/szkoły/roku obrachunkowego i akronimów w języku angielskim DateRange.
-    * Ulepszone rozpoznawanie telefonu w języku chińskim i japońskim.
+    * Poprawa rozpoznawania holiday w języku angielskim, aby poprawnie obliczyć daty oparte na Święcie Dziękczynienia.
+    * Ulepszenia w języku francuskim DateTime w celu zmniejszenia fałszywych alarmów jednostek innych niż Data i non-Time.
+    * Obsługa kalendarza/ szkoły / roku obrachunkowego i akronimów w języku angielskim DateRange.
+    * Ulepszone rozpoznawanie numerów telefonicznych w języku chińskim i japońskim.
     * Ulepszona obsługa NumberRange w języku angielskim.
-    * Ulepszenia wydajności.
+    * Usprawnienia wydajności.
 
-### <a name="june-24-2019"></a>24 czerwca 2019
+### <a name="june-24-2019"></a>24 czerwca 2019 r.
 
-* [OrdinalV2 prekompilowana jednostka](luis-reference-prebuilt-ordinal-v2.md) do obsługi kolejności takich jak Next, Previous i Last. Tylko kultura w języku angielskim.
+* [Wstępnie skompilowana jednostka OrdinalV2](luis-reference-prebuilt-ordinal-v2.md) do obsługi zamawiania, taka jak następny, poprzedni i ostatni. Tylko kultura angielska.
 
-### <a name="may-6-2019---build-conference"></a>6 maja 2019 — Konferencja Build
+### <a name="may-6-2019---build-conference"></a>6 maja 2019 - //Build Conference
 
-Następujące funkcje zostały wydane na konferencji Build 2019:
+Na konferencji Build 2019 zostały wydane następujące funkcje:
 
-* [Przewodnik migracji interfejsu API v3](luis-migration-api-v3.md)
-* [Udoskonalony pulpit nawigacyjny analizy](luis-how-to-use-dashboard.md)
-* [Ulepszone prebudowane domeny](luis-reference-prebuilt-domains.md)
-* [Jednostki listy dynamicznej](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
-* [Jednostki zewnętrzne](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
+* [Przewodnik po migracji interfejsu API w wersji Zapoznawczej systemu V3](luis-migration-api-v3.md)
+* [Ulepszony pulpit nawigacyjny analizy](luis-how-to-use-dashboard.md)
+* [Ulepszone wstępnie utworzone domeny](luis-reference-prebuilt-domains.md)
+* [Encje listy dynamicznej](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
+* [Podmioty zewnętrzne](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
 
 ## <a name="blogs"></a>Blogi
 
-[Bot Framework](https://blog.botframework.com/)
+[Struktura botów](https://blog.botframework.com/)
 
 ## <a name="videos"></a>Filmy wideo
 
-### <a name="2019-ignite-videos"></a>wideo o zapłonie 2019
+### <a name="2019-ignite-videos"></a>Filmy Ignite 2019
 
-[Zaawansowane modele naturalnych Language Understanding (NLU) korzystające z LUIS i platformy Azure Cognitive Services | BRK2188](https://www.youtube.com/watch?v=JdJEV2jV0_Y)
+[Modele zaawansowanego rozumienia języka naturalnego (NLU) przy użyciu usługi LUIS i usługi Azure Cognitive Services | BRK2188](https://www.youtube.com/watch?v=JdJEV2jV0_Y)
 
-### <a name="2019-build-videos"></a>wideo kompilacji 2019
+### <a name="2019-build-videos"></a>2019 Tworzenie filmów
 
-[Jak skalować swoją firmę do nowej generacji przy użyciu funkcji Azure Conversation AI](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
+[Jak używać sztucznej inteligencji konwersacyjnej platformy Azure do skalowania firmy dla następnej generacji](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
 
 ## <a name="service-updates"></a>Aktualizacje usług
 
-[Anonse aktualizacji platformy Azure dla Cognitive Services](https://azure.microsoft.com/updates/?product=cognitive-services)
+[Anonse aktualizacji platformy Azure dla usług Cognitive Services](https://azure.microsoft.com/updates/?product=cognitive-services)

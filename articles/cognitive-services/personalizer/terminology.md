@@ -1,70 +1,70 @@
 ---
-title: Terminologia — Personalizacja
-description: Personalizowanie używa terminologii z uczenia wzmacniania. Te warunki są używane w Azure Portal i interfejsy API.
+title: Terminologia - Personalizer
+description: Personalizer wykorzystuje terminologię z uczenia się wzmacniającego. Terminy te są używane w witrynie Azure portal i interfejsów API.
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: f75437c5afd5d3fd7f7570079be410d3db1ca8db
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77624276"
 ---
 # <a name="terminology"></a>Terminologia
 
-Personalizowanie używa terminologii z uczenia wzmacniania. Te warunki są używane w Azure Portal i interfejsy API.
+Personalizer wykorzystuje terminologię z uczenia się wzmacniającego. Terminy te są używane w witrynie Azure portal i interfejsów API.
 
-## <a name="conceptual-terminology"></a>Terminologia dotycząca pojęć
+## <a name="conceptual-terminology"></a>Terminologia konceptualna
 
-* **Pętla szkoleniowa**: tworzysz zasób narzędzia personalizacji o nazwie _Pętla szkoleniowa_dla każdej części aplikacji, która może korzystać z personalizacji. Jeśli masz więcej niż jedno środowisko do personalizacji, Utwórz pętlę dla każdego z nich.
+* **Pętla uczenia się:** Tworzenie zasobu Personalizer, o nazwie _pętli uczenia się,_ dla każdej części aplikacji, które mogą korzystać z personalizacji. Jeśli masz więcej niż jedno doświadczenie do personalizacji, utwórz pętlę dla każdego.
 
-* **Model**: model personalizowania przechwytuje wszystkie dane, które są uzyskiwane na temat zachowania użytkowników, uzyskiwanie danych szkoleniowych z kombinacji argumentów wysyłanych do rangi i płatnych wywołań oraz z zachowaniem szkolenia określonym przez zasady uczenia się.
+* **Model:** Model Personalizer przechwytuje wszystkie dane informacje o zachowaniu użytkownika, uzyskiwanie danych szkoleniowych z kombinacji argumentów wysyłanych do wywołań rangi i nagrody oraz z zachowaniem szkoleniowym określonym przez zasady uczenia się.
 
-## <a name="personalizer-configuration"></a>Konfiguracja personalizacji
+## <a name="personalizer-configuration"></a>Konfiguracja personalizatora
 
-Personalizacja jest konfigurowana z poziomu [Azure Portal](https://portal.azure.com).
+Personalizer jest skonfigurowany z [witryny Azure portal](https://portal.azure.com).
 
-* **Nagrody**: Skonfiguruj wartości domyślne dla nagrody czas oczekiwania, domyślne wynagrodzenie i nagrody agregacji.
+* **Nagrody:** skonfiguruj domyślne wartości dla czasu oczekiwania na nagrody, domyślnej zasady agregacji nagród i nagród.
 
-* **Eksploracja**: Konfigurowanie wartości procentowej wywołań rangi do użycia podczas eksploracji
+* **Eksploracja**: konfigurowanie procentu wywołań rangi, które mają być używane do eksploracji
 
-* **Częstotliwość aktualizacji modelu**: częstotliwość ponownego uczenia modelu.
+* **Częstotliwość aktualizacji modelu:** częstotliwość ponownego szkolenia modelu.
 
-* **Przechowywanie danych**: ile dni danych ma być przechowywanych. Może to mieć wpływ na oceny w trybie offline, które są używane do ulepszania pętli szkoleniowej.
+* **Przechowywanie danych**: Ile dni warto przechowywać dane. Może to mieć wpływ na oceny w trybie offline, które są używane do poprawy pętli uczenia się.
 
-## <a name="use-rank-and-reward-apis"></a>Korzystanie z interfejsów API rangi i nagrody
+## <a name="use-rank-and-reward-apis"></a>Korzystanie z interfejsów API rangi i nagród
 
-* **Ranga**: w przypadku akcji z funkcjami i funkcjami kontekstu użyj narzędzia Eksploruj lub Exploit, aby zwrócić górną akcję (element zawartości).
+* **Ranga:** Biorąc pod uwagę akcje z funkcjami i funkcjami kontekstu, użyj eksploruj lub wykorzystaj, aby zwrócić główną akcję (element zawartości).
 
-    * **Akcje**: akcje to elementy zawartości, takie jak produkty lub promocje, do wyboru. Personalizacja wybiera górną akcję (zwrotny Identyfikator akcji) do wyświetlenia użytkownikom za pośrednictwem interfejsu API rangi.
+    * **Akcje:** Akcje to elementy zawartości, takie jak produkty lub promocje, do wyboru. Personalizer wybiera najwyższą akcję (zwrócony identyfikator akcji nagrody), aby pokazać je użytkownikom za pośrednictwem interfejsu API rangi.
 
-    * **Kontekst**: aby zapewnić dokładniejszą rangę, podaj informacje o Twoim kontekście, na przykład:
-        * Użytkownik.
-        * Urządzenie, na którym się znajdują.
+    * **Kontekst**: Aby zapewnić dokładniejszą rangę, podaj informacje o kontekście, na przykład:
+        * Twój użytkownik.
+        * Urządzenie, na które się znajdują.
         * Bieżący czas.
-        * Inne dane dotyczące bieżącej sytuacji.
+        * Inne dane na temat bieżącej sytuacji.
         * Dane historyczne dotyczące użytkownika lub kontekstu.
 
-        Dana aplikacja może mieć różne informacje o kontekście.
+        Określona aplikacja może mieć różne informacje kontekstowe.
 
-    * **[Funkcje](concepts-features.md)** : jednostka informacji o elemencie zawartości lub kontekście użytkownika. Pamiętaj, aby używać tylko zagregowanych funkcji. Nie używaj określonych godzin, identyfikatorów użytkowników ani innych danych niezagregowanych jako funkcji.
+    * **[Funkcje](concepts-features.md)**: Jednostka informacji o elemencie zawartości lub kontekście użytkownika. Upewnij się, że używasz tylko funkcji, które są agregowane. Nie używaj określonych czasów, identyfikatorów użytkowników ani innych danych nieagregowanych jako funkcji.
 
         * _Funkcja akcji_ to metadane dotyczące zawartości.
-        * _Funkcja kontekstu_ to metadane dotyczące kontekstu, w którym jest prezentowana zawartość.
+        * _Funkcja kontekstu_ to metadane dotyczące kontekstu, w którym prezentowana jest zawartość.
 
-* **Eksploracja**: usługa personalizacji szuka, gdy, zamiast zwracać najlepszą akcję, wybiera inną akcję dla użytkownika. Usługa personalizacji pozwala uniknąć dryfowania, stagnation i można dostosowywać do bieżących zachowań użytkowników przez Eksplorowanie.
+* **Eksploracja:** Usługa Personalizer eksploruje, gdy zamiast zwracać najlepszą akcję, wybiera inną akcję dla użytkownika. Usługa Personalizer pozwala uniknąć dryfowania, stagnacji i może dostosować się do bieżącego zachowania użytkownika, eksplorując.
 
-* **Wykorzystanie**: usługa personalizujer korzysta z bieżącego modelu, aby określić najlepszą akcję na podstawie przeszłych danych.
+* **Wykorzystanie:** Usługa Personalizer używa bieżącego modelu, aby zdecydować o najlepszym działaniu na podstawie przeszłych danych.
 
-* **Czas trwania eksperymentu**: ilość czasu, przez jaką usługa personalizacji czeka na wynagrodzenie, rozpoczynając od momentu wywołania rangi dla tego zdarzenia.
+* **Czas trwania eksperymentu:** czas oczekiwania usługi Personalizatora na nagrodę, począwszy od momentu wywołania rangi dla tego wydarzenia.
 
-* **Zdarzenia nieaktywne**: zdarzenie nieaktywne to wystąpienie o nazwie rangi, ale nie masz pewności, że użytkownik zobaczy wynik z powodu decyzji aplikacji klienta. Nieaktywne zdarzenia umożliwiają tworzenie i przechowywanie wyników personalizacji, a następnie podjęcie decyzji o odrzuceniu ich później bez wpływu na model uczenia maszynowego.
+* **Zdarzenia nieaktywne:** Zdarzenie nieaktywne to zdarzenie, w którym nazywasz się Ranga, ale nie masz pewności, że użytkownik kiedykolwiek zobaczy wynik z powodu decyzji aplikacji klienckiej. Nieaktywne zdarzenia umożliwiają tworzenie i przechowywanie wyników personalizacji, a następnie zdecydować się na ich późniejsze odrzucenie bez wpływu na model uczenia maszynowego.
 
 
-* **Wynagrodzenie**: miara sposobu, w jaki użytkownik ODPOWIEDZIAŁ na identyfikator akcji w interfejsie API rangi, jako wynik z przedziału od 0 do 1. Wartość od 0 do 1 jest ustawiana przez logikę biznesową, w zależności od tego, jak wybór pozwala osiągnąć cele biznesowe personalizacji. Pętla szkoleniowa nie przechowuje tego wynagrodzenia jako pojedynczej historii użytkownika.
+* **Nagroda:** Miara tego, jak użytkownik zareagował na identyfikator akcji zwróconej nagrody interfejsu API rangi, jako wynik od 0 do 1. Wartość od 0 do 1 jest ustawiana przez logikę biznesową, w oparciu o to, w jaki sposób wybór pomógł osiągnąć cele biznesowe personalizacji. Pętla uczenia się nie przechowuje tej nagrody jako historii poszczególnych użytkowników.
 
 ## <a name="offline-evaluations"></a>Oceny w trybie offline
 
-* **Ocena**: Ocena w trybie offline określa najlepsze zasady uczenia dla pętli na podstawie danych pętli.
+* **Ocena:** Ocena w trybie offline określa najlepsze zasady uczenia się dla pętli na podstawie danych pętli.
 
-* **Zasady uczenia**: jak program Personalizuj pociąga za siebie model dla każdego zdarzenia, będzie określać niektóre parametry, które wpływają na działanie algorytmu uczenia maszynowego. Nowa pętla szkoleniowa rozpoczyna się od domyślnych **zasad uczenia**, co może spowodować umiarkowaną wydajność. Podczas przeprowadzania [obliczeń](concepts-offline-evaluation.md)program Personalizuj tworzy nowe zasady uczenia, które zostały zoptymalizowane pod kątem użycia pętli. Personalizacja będzie działać znacznie lepiej dzięki zasadom zoptymalizowanym dla każdej konkretnej pętli, generowanej podczas obliczania. Zasady uczenia są nazywane _ustawieniami uczenia_ w **ustawieniach model i nauka** dla zasobu Personalizacja w Azure Portal.
+* **Zasady uczenia się:** Jak Personalizer trenuje model na każdym zdarzeniu będzie określany przez niektóre parametry, które wpływają na działanie algorytmu uczenia maszynowego. Nowa pętla uczenia się rozpoczyna się od domyślnej **zasady uczenia się,** która może przynieść umiarkowaną wydajność. Podczas [uruchamiania oceny,](concepts-offline-evaluation.md)Personalizer tworzy nowe zasady uczenia się specjalnie zoptymalizowane do przypadków użycia pętli. Personalizer będzie działać znacznie lepiej z zasad zoptymalizowanych dla każdej określonej pętli, generowane podczas oceny. Zasady uczenia się nosi nazwę _ustawienia uczenia się_ w **ustawieniach modelu i uczenia się** dla zasobu Personalizer w witrynie Azure portal.

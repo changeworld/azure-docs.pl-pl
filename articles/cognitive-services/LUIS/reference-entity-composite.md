@@ -1,7 +1,7 @@
 ---
-title: Typ jednostki złożonej — LUIS
+title: Typ jednostki złożonej — USŁUGA LUIS
 titleSuffix: Azure Cognitive Services
-description: Jednostka złożona składa się z innych jednostek, takich jak wstępnie zbudowane jednostki, proste, wyrażenie regularne i jednostki listy. Oddzielne jednostki tworzą całość jednostki.
+description: Jednostka złożona składa się z innych jednostek, takich jak wstępnie utworzone jednostki, proste, wyrażenie regularne i jednostki listy. Oddzielne jednostki tworzą całą encję.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,39 +11,39 @@ ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
 ms.openlocfilehash: a5a1ad467074ee0aa55d14d50ae153ac68304e6f
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71695169"
 ---
 # <a name="composite-entity"></a>Jednostka złożona 
 
-Jednostka złożona składa się z innych jednostek, takich jak wstępnie zbudowane jednostki, proste, wyrażenie regularne i jednostki listy. Oddzielne jednostki tworzą całość jednostki. 
+Jednostka złożona składa się z innych jednostek, takich jak wstępnie utworzone jednostki, proste, wyrażenie regularne i jednostki listy. Oddzielne jednostki tworzą całą encję. 
 
-**Ta jednostka jest przydatna, gdy dane:**
+**Ta jednostka jest dobrym rozwiązaniem, gdy dane:**
 
-* Są ze sobą powiązane. 
-* Są powiązane ze sobą w kontekście wypowiedź.
-* Używaj różnych typów jednostek.
-* Należy grupować i przetwarzać przez aplikację kliencką jako jednostkę informacji.
-* Posiadanie różnych wyrażenia długości użytkowników, które wymagają uczenia maszynowego.
+* Są ze sobą spokrewnione. 
+* Są ze sobą powiązane w kontekście wypowiedzi.
+* Użyj różnych typów encji.
+* Muszą być pogrupowane i przetwarzane przez aplikację kliencką jako jednostkę informacji.
+* Mają wiele wypowiedzi użytkownika, które wymagają uczenia maszynowego.
 
-![Jednostka złożona](./media/luis-concept-entities/composite-entity.png)
+![jednostka złożona](./media/luis-concept-entities/composite-entity.png)
 
-## <a name="example-json"></a>Przykładowy kod JSON
+## <a name="example-json"></a>Przykład JSON
 
-Rozważmy jednostkę złożoną prekompilowanego `number` i `Location::ToLocation` z następującymi wypowiedź:
+Należy wziąć pod uwagę `number` `Location::ToLocation` złożoną jednostkę wstępnie utworzone i z następującym wypowiedź:
 
 `book 2 tickets to cairo`
 
-Zwróć uwagę, że `2`, liczba i `cairo`, ToLocation zawierają słowa między nimi, które nie są częścią żadnych jednostek. Zielone podkreślenie używane w wypowiedź z etykietą w witrynie sieci Web [Luis](luis-reference-regions.md) wskazuje jednostkę złożoną.
+Należy `2`zauważyć, że `cairo`, liczba i , ToLocation mają słowa między nimi, które nie są częścią żadnej z jednostek. Zielone podkreślenie, używane w wypowiedź etykietą w witrynie sieci Web [usługi LUIS,](luis-reference-regions.md) wskazuje jednostki złożonej.
 
 ![Jednostka złożona](./media/luis-concept-data-extraction/composite-entity.png)
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[Odpowiedź punktu końcowego przewidywania v2](#tab/V2)
 
-Jednostki złożone są zwracane w tablicy `compositeEntities`, a wszystkie jednostki w ramach elementu złożonego są również zwracane w tablicy `entities`:
+Jednostki złożone są `compositeEntities` zwracane w tablicy i wszystkie jednostki w kompozyt są również zwracane w `entities` tablicy:
 
 ```JSON
   "entities": [
@@ -89,9 +89,9 @@ Jednostki złożone są zwracane w tablicy `compositeEntities`, a wszystkie jedn
   ]
 ```    
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[Odpowiedź punktu końcowego przewidywania V3](#tab/V3)
 
-Jest to kod JSON, jeśli w ciągu zapytania jest ustawiony `verbose=false`:
+Jest to JSON, jeśli `verbose=false` jest ustawiona w ciągu zapytania:
 
 ```json
 "entities": {
@@ -108,7 +108,7 @@ Jest to kod JSON, jeśli w ciągu zapytania jest ustawiony `verbose=false`:
 }
 ```
 
-Jest to kod JSON, jeśli w ciągu zapytania jest ustawiony `verbose=true`:
+Jest to JSON, jeśli `verbose=true` jest ustawiona w ciągu zapytania:
 
 ```json
 "entities": {
@@ -174,9 +174,9 @@ Jest to kod JSON, jeśli w ciągu zapytania jest ustawiony `verbose=true`:
 
 |Obiekt danych|Nazwa jednostki|Wartość|
 |--|--|--|
-|Wstępnie zbudowany numer jednostki|"wbudowane. Number"|dwóch|
-|Wstępnie skonstruowany obiekt Entity-GeographyV2|"Lokalizacja:: ToLocation"|Kair|
+|Wstępnie utworzony encji - numer|"wbudowany.numer"|"2"|
+|Wstępnie zbudowany encja - GeographyV2|"Lokalizacja::ToLokacja"|"kair"|
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym [samouczku](luis-tutorial-composite-entity.md)Dodaj **jednostkę złożoną** , aby powiązać wyodrębnione dane różnych typów w jedną zawierającą ją jednostkę. Poprzez zgrupowanie danych aplikacja kliencka może łatwo wyodrębnić powiązane dane w różnych typach danych.
+W tym [samouczku](luis-tutorial-composite-entity.md)dodaj **jednostkę złożoną,** aby połączyć wyodrębnione dane różnych typów do jednej jednostki zawierającej. Łącząc dane, aplikacja kliencka może łatwo wyodrębnić powiązane dane w różnych typach danych.
