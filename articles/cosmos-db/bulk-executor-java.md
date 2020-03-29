@@ -1,6 +1,6 @@
 ---
-title: Użycie zbiorczej wykonawcze biblioteki środowiska Java w Azure Cosmos DB do wykonywania operacji importu zbiorczego i aktualizacji
-description: Zbiorcze importowanie i aktualizowanie Azure Cosmos DB dokumentów przy użyciu biblioteki środowiska wykonawczego w języku Java
+title: Użyj zbiorczej biblioteki java executor w usłudze Azure Cosmos DB do wykonywania operacji importowania zbiorczego i aktualizacji
+description: Zbiorcze importowanie i aktualizowanie dokumentów usługi Azure Cosmos DB przy użyciu zbiorczej biblioteki java wykonawca
 author: tknandu
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -10,25 +10,25 @@ ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
 ms.openlocfilehash: bf2a2385b3129ddf24ede7f6d851701186b0e33c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75445712"
 ---
-# <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Wykonywały operacje zbiorcze na danych usługi Azure Cosmos DB za pomocą biblioteki języka Java przetwarzania zbiorczego
+# <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Wykonywanie operacji zbiorczych w usłudze Azure Cosmos DB przy użyciu biblioteki funkcji wykonawczej Java operacji zbiorczych
 
-Ten samouczek zawiera instrukcje na temat korzystania z usługi Azure Cosmos DB zbiorcze wykonawca Java biblioteki do zaimportowania, a następnie zaktualizować dokumenty usługi Azure Cosmos DB. Aby dowiedzieć się o biblioteki wykonawca zbiorcze oraz jak pomaga w ogromnej przepustowości i magazynu, zobacz [zbiorczo Przegląd biblioteki wykonawca](bulk-executor-overview.md) artykułu. W tym samouczku utworzysz aplikację Java, która generuje losowe dokumenty i są one zbiorczo importowane do kontenera usługi Azure Cosmos. Po zaimportowaniu będą zbiorczo zaktualizować niektóre właściwości dokumentu. 
+Ten samouczek zawiera instrukcje dotyczące importowania i aktualizowania dokumentów usługi Azure Cosmos DB w celu zaimportowania i aktualizowania dokumentów usługi Azure Cosmos DB. Aby dowiedzieć się więcej o zbiorczej bibliotece executor i jak pomaga wykorzystać ogromną przepływność i magazyn, zobacz [zbiorczy artykuł omówienia biblioteki executora.](bulk-executor-overview.md) W tym samouczku tworzysz aplikację Java, która generuje losowe dokumenty i są one zbiorczo importowane do kontenera usługi Azure Cosmos. Po zaimportowaniu można zbiorczo zaktualizować niektóre właściwości dokumentu. 
 
-Obecnie Biblioteka wykonawców zbiorczych jest obsługiwana tylko przez Azure Cosmos DB z INTERFEJSem API SQL i kontami interfejsu API Gremlin. W tym artykule opisano sposób użycia zbiorczej procedury tworzenia biblioteki Java z kontami interfejsu API SQL. Aby dowiedzieć się więcej o korzystaniu z biblioteki .NET wykonawca zbiorcze za pomocą interfejsu API języka Gremlin, zobacz [wykonywały operacje zbiorcze w usłudze Azure Cosmos DB — interfejs API Gremlin](bulk-executor-graph-dotnet.md).
+Obecnie biblioteka zbiorczego executora jest obsługiwana tylko przez konta interfejsu API SQL usługi Azure Cosmos DB i interfejsu API Gremlin. W tym artykule opisano sposób używania zbiorczej biblioteki java executor z kontami interfejsu API SQL. Aby dowiedzieć się więcej na temat używania zbiorczej biblioteki .NET w interfejsie API gremlin, zobacz [wykonywanie operacji zbiorczych w interfejsie API gremlin usługi Azure Cosmos DB](bulk-executor-graph-dotnet.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).  
+* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) przed rozpoczęciem.  
 
-* Możesz bezpłatnie [wypróbować Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) bez subskrypcji platformy Azure. Można też użyć [emulatora Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/local-emulator) z punktem końcowym `https://localhost:8081`. Klucz podstawowy został podany w sekcji [Uwierzytelnianie żądań](local-emulator.md#authenticating-requests).  
+* Możesz [bezpłatnie wypróbować usługę Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) bez bezpłatnej subskrypcji platformy Azure i zobowiązań. Lub można użyć [emulatora usługi Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/local-emulator) z punktem `https://localhost:8081` końcowym. Klucz podstawowy został podany w sekcji [Uwierzytelnianie żądań](local-emulator.md#authenticating-requests).  
 
-* [Zestaw Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks)  
+* [Zestaw java development (JDK) 1.7+](https://aka.ms/azure-jdks)  
   - W systemie Ubuntu uruchom polecenie `apt-get install default-jdk`, aby zainstalować zestaw JDK.  
 
   - Upewnij się, że zmienna środowiskowa JAVA_HOME wskazuje folder, w którym zainstalowano zestaw JDK.
@@ -37,23 +37,23 @@ Obecnie Biblioteka wykonawców zbiorczych jest obsługiwana tylko przez Azure Co
   
   - W systemie Ubuntu możesz uruchomić polecenie `apt-get install maven`, aby zainstalować narzędzie Maven.
 
-* Utwórz konto Azure Cosmos DB interfejsu API SQL, korzystając z procedury opisanej w sekcji [Tworzenie konta bazy danych](create-sql-api-java.md#create-a-database-account) artykułu przewodnika Szybki Start w języku Java.
+* Utwórz konto interfejsu API SQL usługi Azure Cosmos DB przy użyciu kroków opisanych w sekcji [tworzenia konta bazy danych](create-sql-api-java.md#create-a-database-account) w artykule Szybki start języka Java.
 
 ## <a name="clone-the-sample-application"></a>Klonowanie przykładowej aplikacji
 
-Teraz przejdźmy do pracy z kodem pobierając przykładowej aplikacji Java z usługi GitHub. Ta aplikacja wykonuje operacje zbiorcze na danych usługi Azure Cosmos DB. Aby sklonować aplikację, otwórz wiersz polecenia, przejdź do katalogu, w którym chcesz skopiować aplikację i uruchom następujące polecenie:
+Teraz przejdźmy do pracy z kodem, pobierając przykładową aplikację Java z GitHub. Ta aplikacja wykonuje operacje zbiorcze na danych usługi Azure Cosmos DB. Aby sklonować aplikację, otwórz wiersz polecenia, przejdź do katalogu, w którym chcesz skopiować aplikację, i uruchom następujące polecenie:
 
 ```
  git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started.git 
 ```
 
-Sklonowanego repozytorium zawiera dwa przykłady "elementów bulkimport" i "bulkupdate" względną do folderu "\azure-cosmosdb-bulkexecutor-java-getting-started\samples\bulkexecutor-sample\src\main\java\com\microsoft\azure\cosmosdb\bulkexecutor". Aplikacja "elementów bulkimport" generuje losowe dokumentów i importuje je do usługi Azure Cosmos DB. Aplikacja "bulkupdate" aktualizuje niektóre dokumenty w usłudze Azure Cosmos DB. W kolejnych sekcjach omówimy kod w każdym z tych przykładowych aplikacji. 
+Sklonowane repozytorium zawiera dwie przykłady "bulkimport" i "bulkupdate" względem folderu "\azure-cosmosdb-bulkexecutor-java-getting-started\samples\bulkexecutor-sample\src\main\java\com\microsoft\azure\cosmosdb\bulkexecutor". Aplikacja "bulkimport" generuje losowe dokumenty i importuje je do usługi Azure Cosmos DB. Aplikacja "bulkupdate" aktualizuje niektóre dokumenty w usłudze Azure Cosmos DB. W następnych sekcjach przejrzymy kod w każdej z tych przykładowych aplikacji. 
 
 ## <a name="bulk-import-data-to-azure-cosmos-db"></a>Zbiorcze importowanie danych do usługi Azure Cosmos DB
 
-1. Parametry połączenia usługi Azure Cosmos DB są odczytywane jako argumentów i przypisane zmienne zdefiniowane w pliku CmdLineConfiguration.java.  
+1. Parametry połączenia usługi Azure Cosmos DB są odczytywane jako argumenty i przypisywane do zmiennych zdefiniowanych w pliku CmdLineConfiguration.java.  
 
-2. Obok obiektu DocumentClient jest inicjowany za pomocą następujących instrukcji:  
+2. Następnie obiekt DocumentClient jest inicjowany przy użyciu następujących instrukcji:  
 
    ```java
    ConnectionPolicy connectionPolicy = new ConnectionPolicy();
@@ -65,7 +65,7 @@ Sklonowanego repozytorium zawiera dwa przykłady "elementów bulkimport" i "bulk
       ConsistencyLevel.Session)
    ```
 
-3. Obiekt DocumentBulkExecutor jest inicjowany za pomocą ponownych prób wysoki czas oczekiwania i ograniczenia żądań. A następnie są one ustawione na 0 do przekazywania kontroli przeciążenia do DocumentBulkExecutor na cały okres ich istnienia.  
+3. Obiekt DocumentBulkExecutor jest inicjowany z wysokimi wartościami ponawiania dla czasu oczekiwania i ograniczonych żądań. A następnie są one ustawione na 0, aby przekazać kontrolę przeciążenia do DocumentBulkExecutor przez cały okres jego istnienia.  
 
    ```java
    // Set client's retry options high for initialization
@@ -88,12 +88,12 @@ Sklonowanego repozytorium zawiera dwa przykłady "elementów bulkimport" i "bulk
    client.getConnectionPolicy().getRetryOptions().setMaxRetryAttemptsOnThrottledRequests(0);
    ```
 
-4. Wywołaj interfejs API, który generuje losowe dokumenty do zbiorczego importowania do kontenera usługi Azure Cosmos. Można skonfigurować konfiguracje wiersza polecenia w pliku CmdLineConfiguration.java.
+4. Wywołanie importAll API, który generuje losowe dokumenty do zbiorczego importu do kontenera usługi Azure Cosmos. Konfiguracje wiersza polecenia można skonfigurować w pliku CmdLineConfiguration.java.
 
    ```java
    BulkImportResponse bulkImportResponse = bulkExecutor.importAll(documents, false, true, null);
    ```
-   Interfejs API importu zbiorczego akceptuje kolekcji serializacji JSON dokumentów i składa się z następującej składni, aby uzyskać więcej informacji, zobacz [dokumentacji interfejsu API](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor):
+   Interfejs API importu zbiorczego akceptuje kolekcję dokumentów seryjnych JSON i ma następującą składnię, aby uzyskać więcej informacji, zobacz [dokumentację interfejsu API:](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)
 
    ```java
    public BulkImportResponse importAll(
@@ -103,43 +103,43 @@ Sklonowanego repozytorium zawiera dwa przykłady "elementów bulkimport" i "bulk
         Integer maxConcurrencyPerPartitionRange) throws DocumentClientException;   
    ```
 
-   Metoda wartość importAll przyjmuje następujące parametry:
+   Metoda importAll akceptuje następujące parametry:
  
    |**Parametr**  |**Opis**  |
    |---------|---------|
-   |isUpsert    |   Flaga włączenia upsert dokumentów. Jeśli dokument o podanym identyfikatorze już istnieje, jest on aktualizowany.  |
-   |disableAutomaticIdGeneration     |   Flagi, aby wyłączyć automatyczne generowanie identyfikatora. Domyślnie jest ustawiona na wartość true.   |
-   |maxConcurrencyPerPartitionRange    |  Maksymalny stopień współbieżności na zakres kluczy partycji. Wartość domyślna to 20.  |
+   |isUpsert (isUpsert)    |   Flaga umożliwiająca upsert dokumentów. Jeśli dokument o podanym identyfikatorze już istnieje, jest aktualizowany.  |
+   |disableAutomaticIdGeneration     |   Flaga wyłączania automatycznego generowania identyfikatora. Domyślnie jest ustawiona na true.   |
+   |maxConcurrencyPerPartitionRange    |  Maksymalny stopień współbieżności na zakres klucza partycji. Wartość domyślna to 20.  |
 
-   **Definicja obiektu odpowiedzi importu zbiorczego** wynikiem importowania zbiorczego wywołania interfejsu API zawiera następujące metody get:
+   **Definicja obiektu odpowiedzi zbiorczej na import** Wynik wywołania interfejsu API importu zbiorczego zawiera następujące metody get:
 
    |**Parametr**  |**Opis**  |
    |---------|---------|
-   |int getNumberOfDocumentsImported()  |   Całkowita liczba dokumentów, które zostały pomyślnie zaimportowane z dostarczonych do zbiorczego dokumentów zaimportować wywołania interfejsu API.      |
-   |Podwójna getTotalRequestUnitsConsumed()   |  Łączna liczba jednostek żądania (RU) używane przez większość zaimportować wywołania interfejsu API.       |
-   |Czas trwania getTotalTimeTaken()   |    Łączny czas za pomocą importowania zbiorczego do ukończenia wykonywania wywołań interfejsu API.     |
-   |Lista wyjątków\<> GetErrors () |  Pobiera listę błędów, jeśli niektóre dokumenty z usługi batch do zbiorczego zaimportować wywołania interfejsu API nie można pobrać wstawiony.       |
-   |Lista\<obiektów > getBadInputDocuments ()  |    Lista dokumentów nieprawidłowego formatu, które nie zostały pomyślnie zaimportowane zbiorczo zaimportować wywołania interfejsu API. Użytkownik powinien rozwiązać zwróconych dokumentów i ponów próbę importowania. Sformatowana niewłaściwe dokumenty zawierają dokumentów, których wartość Identyfikatora jest ciąg (wartość null lub jakikolwiek inny typ danych jest uznawane za nieprawidłowe).     |
+   |int getNumberOfDocumentsImported()  |   Całkowita liczba dokumentów, które zostały pomyślnie zaimportowane z dokumentów dostarczonych do wywołania interfejsu API importu zbiorczego.      |
+   |podwójne getTotalRequestUnitsConsumed()   |  Łączna liczba jednostek żądań (RU) zużytych przez wywołanie interfejsu API importu zbiorczego.       |
+   |Czas trwania getTotalTimeTaken()   |    Całkowity czas wykonany przez wywołanie interfejsu API importu zbiorczego, aby zakończyć wykonanie.     |
+   |Lista\<wyjątków> getErrors() |  Pobiera listę błędów, jeśli niektóre dokumenty z partii dostarczone do wywołania interfejsu API importu zbiorczego nie można wstawić.       |
+   |Lista\<obiektów> getBadInputDocuments()  |    Lista dokumentów w złym formacie, które nie zostały pomyślnie zaimportowane w wywołaniu interfejsu API importu zbiorczego. Użytkownik powinien naprawić zwrócone dokumenty i ponowić próbę importu. Dokumenty w złym formacie obejmują dokumenty, których wartość identyfikatora nie jest ciągiem znaków (null lub inny typ danych jest uznawany za nieprawidłowy).     |
 
-5. Po umieszczeniu zbiorcze importowanie gotowych aplikacji kompilacji narzędzia wiersza polecenia ze źródła przy użyciu polecenia "mvn czyste pakiet". To polecenie spowoduje wygenerowanie pliku jar w folderze docelowym:  
+5. Po przygotowaniu aplikacji importu zbiorczego skompiluj narzędzie wiersza polecenia ze źródła za pomocą polecenia "mvn clean package". To polecenie generuje plik jar w folderze docelowym:  
 
    ```java
    mvn clean package
    ```
 
-6. Po wygenerowaniu miejsce docelowe zależności aplikacji importera zbiorczego można wywołać za pomocą następującego polecenia:  
+6. Po wygenerowaniu zależności docelowych można wywołać aplikację importera zbiorczego za pomocą następującego polecenia:  
 
    ```java
    java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint *<Fill in your Azure Cosmos DB’s endpoint>*  -masterKey *<Fill in your Azure Cosmos DB’s master key>* -databaseId bulkImportDb -collectionId bulkImportColl -operation import -shouldCreateCollection -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
    ```
 
-   Importer zbiorcze tworzy nową bazę danych i kolekcji przy użyciu nazwy bazy danych, nazwę kolekcji i wartości przepływności, określone w pliku App.config. 
+   Importer zbiorczy tworzy nową bazę danych i kolekcję z nazwą bazy danych, nazwą kolekcji i wartościami przepływności określonymi w pliku App.config. 
 
-## <a name="bulk-update-data-in-azure-cosmos-db"></a>Zbiorcza aktualizacja danych w usłudze Azure Cosmos DB
+## <a name="bulk-update-data-in-azure-cosmos-db"></a>Zbiorcze dane aktualizacji w usłudze Azure Cosmos DB
 
-Należy zaktualizować istniejące dokumenty przy użyciu interfejsu API BulkUpdateAsync. W tym przykładzie zostanie ustawiona nazwa pola na nową wartość i usuń pole opisu z istniejących dokumentów. Aby uzyskać pełny zestaw obsługiwanych pól operacje aktualizacji, zobacz [dokumentacji interfejsu API](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor). 
+Istniejące dokumenty można zaktualizować za pomocą interfejsu API BulkUpdateAsync. W tym przykładzie ustawisz pole Nazwa na nową wartość i usuniesz pole Opis z istniejących dokumentów. Aby uzyskać pełny zestaw obsługiwanych operacji aktualizacji pola, zobacz [dokumentację interfejsu API](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor). 
 
-1. Definiuje elementy aktualizacji oraz odpowiednie operacje aktualizacji pola. W tym przykładzie użyjesz SetUpdateOperation aktualizuje pole nazwy i UnsetUpdateOperation, aby usunąć pole opisu z wszystkich dokumentów. Możesz także wykonywać inne operacje, takie jak zwiększenie pole dokumentu o określoną wartość, wypychanie określone wartości do pola tablicy lub usunąć określoną wartość z pola tablicy. Aby dowiedzieć się więcej na temat różnych metod dostarczonych przez interfejs API aktualizacji zbiorczej, zobacz [dokumentacji interfejsu API](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor).  
+1. Definiuje elementy aktualizacji wraz z odpowiednimi operacjami aktualizacji pola. W tym przykładzie użyjesz SetUpdateOperation, aby zaktualizować pole Nazwa i UnsetUpdateOperation, aby usunąć pole Opis ze wszystkich dokumentów. Można również wykonywać inne operacje, takie jak zwiększanie pola dokumentu o określoną wartość, wypychanie określonych wartości do pola tablicy lub usuwanie określonej wartości z pola tablicy. Aby dowiedzieć się więcej o różnych metodach dostarczanych przez interfejs API aktualizacji zbiorczej, zobacz [dokumentację interfejsu API](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor).  
 
    ```java
    SetUpdateOperation<String> nameUpdate = new SetUpdateOperation<>("Name","UpdatedDocValue");
@@ -155,13 +155,13 @@ Należy zaktualizować istniejące dokumenty przy użyciu interfejsu API BulkUpd
     }).collect(Collectors.toCollection(() -> updateItems));
    ```
 
-2. Wywołaj interfejs API updateAll, który generuje losowe dokumenty, które mają zostać zbiorczo zaimportowane do kontenera usługi Azure Cosmos. Można skonfigurować konfiguracje wiersza polecenia do przekazania w pliku CmdLineConfiguration.java.
+2. Wywołanie updateAll API, który generuje losowe dokumenty, które mają być następnie zbiorczo importowane do kontenera usługi Azure Cosmos. Konfiguracje wiersza polecenia można skonfigurować w pliku CmdLineConfiguration.java.
 
    ```java
    BulkUpdateResponse bulkUpdateResponse = bulkExecutor.updateAll(updateItems, null)
    ```
 
-   Aktualizacja zbiorcza interfejs API akceptuje kolekcję elementów do zaktualizowania. Każdy element aktualizacji określa listę pól aktualizacji operacji wykonywanej na dokument identyfikowany przez identyfikator i wartość klucza partycji. Aby uzyskać więcej informacji, zobacz [dokumentacji interfejsu API](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor):
+   Interfejs API aktualizacji zbiorczej akceptuje kolekcję elementów, które mają zostać zaktualizowane. Każdy element aktualizacji określa listę operacji aktualizacji pola, które mają być wykonywane w dokumencie oznaczonym identyfikatorem i wartością klucza partycji. aby uzyskać więcej informacji, zobacz [dokumentację interfejsu API:](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)
 
    ```java
    public BulkUpdateResponse updateAll(
@@ -169,28 +169,28 @@ Należy zaktualizować istniejące dokumenty przy użyciu interfejsu API BulkUpd
         Integer maxConcurrencyPerPartitionRange) throws DocumentClientException;
    ```
 
-   UpdateAll — metoda przyjmuje następujące parametry:
+   UpdateAll Metoda akceptuje następujące parametry:
 
    |**Parametr** |**Opis** |
    |---------|---------|
-   |maxConcurrencyPerPartitionRange   |  Maksymalny stopień współbieżności na zakres kluczy partycji. Wartość domyślna to 20.  |
+   |maxConcurrencyPerPartitionRange   |  Maksymalny stopień współbieżności na zakres klucza partycji. Wartość domyślna to 20.  |
  
-   **Definicja obiektu odpowiedzi importu zbiorczego** wynikiem importowania zbiorczego wywołania interfejsu API zawiera następujące metody get:
+   **Definicja obiektu odpowiedzi zbiorczej na import** Wynik wywołania interfejsu API importu zbiorczego zawiera następujące metody get:
 
    |**Parametr** |**Opis**  |
    |---------|---------|
-   |int getNumberOfDocumentsUpdated()  |   Całkowita liczba dokumentów, które zostały pomyślnie zaktualizowane poza dokumentów dostarczonych wywołania interfejsu API pakietu zbiorczego aktualizacji.      |
-   |Podwójna getTotalRequestUnitsConsumed() |  Jednostki łączna liczba żądań (RU) używane przez aktualizacja zbiorcza wywołania interfejsu API.       |
-   |Czas trwania getTotalTimeTaken()  |   Łączny czas zbiorczego aktualizacji do ukończenia wykonywania wywołań interfejsu API.      |
-   |Lista wyjątków\<> GetErrors ()   |    Pobiera listę błędów, jeśli niektóre dokumenty, poza partii dostarczane do wywołania interfejsu API zbiorcze aktualizacji nie można pobrać wstawiony.      |
+   |int getNumberOfDocumentsUpdated()  |   Całkowita liczba dokumentów, które zostały pomyślnie zaktualizowane z dokumentów dostarczonych do wywołania interfejsu API aktualizacji zbiorczej.      |
+   |podwójne getTotalRequestUnitsConsumed() |  Łączna liczba jednostek żądań (RU) zużytych przez wywołanie interfejsu API aktualizacji zbiorczej.       |
+   |Czas trwania getTotalTimeTaken()  |   Całkowity czas wykonany przez wywołanie interfejsu API aktualizacji zbiorczej w celu ukończenia wykonania.      |
+   |Lista\<wyjątków> getErrors()   |    Pobiera listę błędów, jeśli niektóre dokumenty z partii dostarczone do wywołania interfejsu API aktualizacji zbiorczej nie można wstawić.      |
 
-3. Po umieszczeniu zbiorczej aktualizacji gotowych aplikacji kompilacji narzędzia wiersza polecenia ze źródła przy użyciu polecenia "mvn czyste pakiet". To polecenie spowoduje wygenerowanie pliku jar w folderze docelowym:  
+3. Po przygotowaniu aplikacji aktualizacji zbiorczej skompiluj narzędzie wiersza polecenia ze źródła za pomocą polecenia "mvn clean package". To polecenie generuje plik jar w folderze docelowym:  
 
    ```
    mvn clean package
    ```
 
-4. Po wygenerowaniu miejsce docelowe zależności, można wywołać zbiorcze aktualizowanie aplikacji przy użyciu następującego polecenia:
+4. Po wygenerowaniu zależności docelowych można wywołać aplikację aktualizacji zbiorczej za pomocą następującego polecenia:
 
    ```
    java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint **<Fill in your Azure Cosmos DB’s endpoint>* -masterKey **<Fill in your Azure Cosmos DB’s master key>* -databaseId bulkUpdateDb -collectionId bulkUpdateColl -operation update -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
@@ -198,20 +198,20 @@ Należy zaktualizować istniejące dokumenty przy użyciu interfejsu API BulkUpd
 
 ## <a name="performance-tips"></a>Porady dotyczące wydajności 
 
-Korzystając z biblioteki program wykonujący zbiorcze, należy wziąć pod uwagę następujące punkty, w celu zapewnienia lepszej wydajności:
+Należy wziąć pod uwagę następujące punkty dla lepszej wydajności podczas korzystania z biblioteki wykonawca luzem:
 
-* Aby uzyskać najlepszą wydajność Uruchom aplikację w maszynie Wirtualnej platformy Azure, w tym samym regionie, co region zapisu konta usługi Cosmos DB.  
-* Do osiągnięcia wyższej przepustowości:  
+* Aby uzyskać najlepszą wydajność, uruchom aplikację z maszyny Wirtualnej platformy Azure w tym samym regionie co region zapisu konta usługi Cosmos DB.  
+* Aby osiągnąć wyższą przepustowość:  
 
-   * Ustaw rozmiar sterty JVM numerowi wystarczająco duży, aby uniknąć wszelkich problemu pamięci podczas obsługi dużej liczby dokumentów. Sugerowany rozmiar sterty: maksymalny (3GB, 3 * sizeof (wszystkie dokumenty przekazany do zbiorczego importowanie interfejsu API w jednej partii)).  
-   * Brak czasu przetwarzania wstępnego, z powodu którego uzyskasz większą przepływność podczas wykonywania operacji zbiorczych z dużą liczbą dokumentów. Tak Jeśli chcesz zaimportować 10 000 000 dokumentów, uruchomienie importu zbiorczego 10 razy na 10 zbiorcze dokumentów każdego o rozmiarze 1 000 000 jest korzystniejsze niż Uruchamianie importu zbiorczego 100 razy na 100 zbiorcze dokumentów każdej wielkości 100 000 dokumentów.  
+   * Ustaw rozmiar sterty JVM na wystarczająco dużą liczbę, aby uniknąć problemów z pamięcią podczas obsługi dużej liczby dokumentów. Sugerowany rozmiar sterty: max(3GB, 3 * sizeof (wszystkie dokumenty przekazywane do interfejsu API importu zbiorczego w jednej partii)).  
+   * Istnieje czas wstępnego przetwarzania, dzięki czemu otrzymasz wyższą przepływność podczas wykonywania operacji zbiorczych z dużą liczbą dokumentów. Tak więc, jeśli chcesz zaimportować 10 000 000 dokumentów, uruchamianie importu zbiorczego 10 razy na 10 większości dokumentów każdego rozmiaru 1 000 000 jest lepsze niż uruchamianie importu zbiorczego 100 razy na 100 większości dokumentów o rozmiarze 100 000 dokumentów.  
 
-* Zaleca się utworzenie wystąpienia pojedynczego obiektu DocumentBulkExecutor dla całej aplikacji w ramach jednej maszyny wirtualnej odpowiadającej określonemu kontenerowi usługi Azure Cosmos.  
+* Zaleca się wystąpienie pojedynczego obiektu DocumentBulkExecutor dla całej aplikacji w ramach jednej maszyny wirtualnej, która odpowiada określonemu kontenerowi usługi Azure Cosmos.  
 
-* Od momentu wykonania operacji interfejsu API pojedynczej zbiorczej zużywa duże fragment komputerze klienckim procesora CPU i sieci We/Wy. Dzieje się tak wewnętrznie duplikując wielu zadań, należy unikać duplikowania wiele równoczesnych zadań w procesie aplikacji wywoływanych w każdej wykonywanie zbiorczej operacji interfejsu API. W przypadku wywołania operacji interfejsu API pojedynczej zbiorczej, uruchomiony w jednej maszynie wirtualnej nie można użyć całego kontenera przepływności (Jeśli Twój kontener przepływności > 1 mln jednostek RU/s), lepiej jest utworzyć osobne maszyny wirtualne, aby jednocześnie wykonać zbiorcze wywołania operacji interfejsu API.
+* Ponieważ wykonanie interfejsu API pojedynczej operacji zbiorczej zużywa duży fragment procesora CPU i we/wy komputera klienckiego. Dzieje się tak poprzez tarło wielu zadań wewnętrznie, uniknąć tarło wiele równoczesnych zadań w ramach procesu aplikacji każdego wykonywania wywołań interfejsu API operacji zbiorczej. Jeśli wywołanie interfejsu API pojedynczej operacji zbiorczej uruchomione na jednej maszynie wirtualnej nie może zużywać przepływności całego kontenera (jeśli przepływność kontenera > 1 mln jednostek RU/s), zaleca się utworzenie oddzielnych maszyn wirtualnych do równoczesnych wykonywania wywołań interfejsu API operacji zbiorczych.
 
     
 ## <a name="next-steps"></a>Następne kroki
-* Dowiedz się więcej o szczegóły pakietu maven i biblioteki języka Java wykonawca zbiorcze informacje o wersji, zobacz[zbiorczo Szczegóły zestawu SDK funkcji wykonawczej](sql-api-sdk-bulk-executor-java.md).
+* Aby dowiedzieć się więcej o szczegółach pakietu maven i informacjach o wydaniu biblioteki Java, zobacz[szczegóły zestawu SDK wykonawcy zbiorczego.](sql-api-sdk-bulk-executor-java.md)
 
 

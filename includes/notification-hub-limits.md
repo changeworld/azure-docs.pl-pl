@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 01/04/2019
 ms.author: spelluru
 ms.openlocfilehash: 6efcd46b174d34670a01bb7d5c440559bf0f116a
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67183621"
 ---
-| Warstwa              | Wolne         | Podstawowa    | Standardowa (Standard)   |
+| Warstwa              | Bezpłatna         | Podstawowa (Basic)    | Standardowa   |
 | ------------------ | ------------ | ---------- | ---------- |
-| Wliczone wypchnięcia    | 1 mln    | 10 mln | 10 mln |
+| Dołączone popychacza    | 1 mln    | 10 mln | 10 mln |
 | Aktywne urządzenia     | 500          | 200,000    | 10 mln |
-| Przydział tagu dla instalacji lub rejestracji | 60  | 60 |  60 |
+| Tag przydziału na instalację lub rejestrację | 60  | 60 |  60 |
 
-Aby uzyskać więcej informacji o limitach i cenach, zobacz [Notification Hubs Cennik](https://azure.microsoft.com/pricing/details/notification-hubs/).
+Aby uzyskać więcej informacji na temat limitów i cen, zobacz [Notyfikacja centrum cenowe](https://azure.microsoft.com/pricing/details/notification-hubs/).

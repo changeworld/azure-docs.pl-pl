@@ -5,74 +5,74 @@ ms.topic: include
 ms.date: 02/27/2020
 ms.author: ccompy
 ms.openlocfilehash: 2d2a82552a846cedfa5da3bb6ec6df8a40b67732
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78671488"
 ---
-Chociaż ta funkcja jest łatwa do skonfigurowania, nie oznacza to, że Twoje środowisko nie będzie miało problemu. Jeśli wystąpią problemy z uzyskaniem dostępu do żądanego punktu końcowego, istnieją pewne narzędzia, których można użyć do testowania łączności z poziomu konsoli aplikacji. Istnieją dwie konsole, których można użyć. Jedna z nich jest konsolą kudu, a druga jest konsolą w Azure Portal. Aby nawiązać połączenie z konsolą kudu z poziomu aplikacji, przejdź do pozycji narzędzia-> kudu. Możesz również uzyskać dostęp do konsoli Kudo na stronie [sitename]. SCM. azurewebsites. NET. Po załadowaniu witryny sieci Web przejdź do karty konsola debugowania. Aby przejść do Azure Portal hostowanej konsoli, w aplikacji przejdź do pozycji narzędzia — > Konsola. 
+Chociaż funkcja jest łatwa w konfiguracji, nie oznacza to, że twoje doświadczenie będzie bezproblemowe. Jeśli wystąpią problemy z dostępem do żądanego punktu końcowego istnieją pewne narzędzia, których można użyć do testowania łączności z konsoli aplikacji. Istnieją dwie konsole, których można użyć. Jednym z nich jest konsola Kudu, a druga jest konsolą w witrynie Azure portal. Aby dotrzeć do konsoli Kudu z aplikacji, przejdź do narzędzia -> Kudu. Można również dotrzeć do konsoli Kudo w [sitename].scm.azurewebsites.net. Po załadowaniu witryny sieci Web przejdź do karty Konsoli debugowania. Aby przejść do konsoli hosta hostowanego w witrynie Azure portal, a następnie z aplikacji przejdź do konsoli narzędzia ->. 
 
 #### <a name="tools"></a>Narzędzia
-Narzędzia **ping**, **nslookup**i **tracert** nie będą przełączane przez konsolę ze względu na ograniczenia zabezpieczeń. Aby wypełnić wartość void, dodano dwa osobne narzędzia. W celu przetestowania funkcjonalności DNS dodaliśmy narzędzie o nazwie nameresolver. exe. Składnia jest następująca:
+Narzędzia **ping**, **nslookup**i **tracert** nie będą działać przez konsolę ze względu na ograniczenia bezpieczeństwa. Aby wypełnić pustkę, dodano dwa oddzielne narzędzia. Aby przetestować funkcjonalność DNS, dodaliśmy narzędzie o nazwie nameresolver.exe. Składnia jest następująca:
 
     nameresolver.exe hostname [optional: DNS Server]
 
-Możesz użyć **nameresolver** , aby sprawdzić nazwy hostów, od których zależy aplikacja. W ten sposób możesz sprawdzić, czy masz jakieś nieprawidłowo skonfigurowane usługi DNS lub że nie masz dostępu do serwera DNS. Możesz zobaczyć serwer DNS, który będzie używany przez aplikację w konsoli programu, przeglądając zmienne środowiskowe WEBSITE_DNS_SERVER i WEBSITE_DNS_ALT_SERVER.
+Za pomocą **nameresolver** można sprawdzić nazwy hostów, od których zależy aplikacja. W ten sposób można sprawdzić, czy masz coś nieprawidłowo skonfigurowany z DNS lub być może nie mają dostępu do serwera DNS. Serwer DNS, którego aplikacja będzie używać w konsoli, można wyświetlić, patrząc na zmienne środowiskowe WEBSITE_DNS_SERVER i WEBSITE_DNS_ALT_SERVER.
 
-Następne narzędzie umożliwia przetestowanie łączności TCP z połączeniem hosta i portu. To narzędzie ma nazwę **tcpping** , a Składnia:
+Następne narzędzie umożliwia przetestowanie łączności TCP z kombinacją hosta i portu. To narzędzie jest nazywane **tcpping** i składni jest:
 
     tcpping.exe hostname [optional: port]
 
-Narzędzie **tcpping** informuje o tym, czy można nawiązać połączenie z określonym hostem i portem. Można wyświetlić tylko sukces, jeśli: istnieje aplikacja nasłuchująca na hoście i w kombinacji portów i istnieje dostęp do sieci z aplikacji do określonego hosta i portu.
+Narzędzie **tcpping** informuje, czy można dotrzeć do określonego hosta i portu. Może pokazać sukces tylko wtedy, gdy: istnieje aplikacja nasłuchiwania na hoście i kombinacji portu i istnieje dostęp do sieci z aplikacji do określonego hosta i portu.
 
-#### <a name="debugging-access-to-vnet-hosted-resources"></a>Debugowanie dostępu do hostowanych zasobów sieci wirtualnej
-Istnieje wiele rzeczy, które mogą uniemożliwić aplikacji osiągnięcie określonego hosta i portu. Większość czasu jest jedną z trzech rzeczy:
+#### <a name="debugging-access-to-vnet-hosted-resources"></a>Debugowanie dostępu do zasobów hostowanych w sieci wirtualnej
+Istnieje wiele rzeczy, które mogą uniemożliwić aplikacji dotarcie do określonego hosta i portu. W większości przypadków jest to jedna z trzech rzeczy:
 
-* **Zapora jest w ten sposób.** Jeśli w ten sposób masz zaporę, zostanie osiągnięty limit czasu protokołu TCP. Limit czasu protokołu TCP wynosi 21 sekund w tym przypadku. Użyj narzędzia **tcpping** , aby przetestować łączność. Limity czasu protokołu TCP mogą być spowodowane wieloma niektórymi zaporami, ale w tym miejscu. 
-* **Usługa DNS jest niedostępna.** Limit czasu DNS wynosi trzy sekundy na serwer DNS. Jeśli masz dwa serwery DNS, limit czasu wynosi 6 sekund. Użyj nameresolver, aby sprawdzić, czy usługa DNS działa. Należy pamiętać, że nie można użyć polecenia nslookup, które nie korzysta z serwera DNS skonfigurowanego dla sieci wirtualnej. W przypadku niedostępności może być dostępna zapora lub sieciowej grupy zabezpieczeń blokujące dostęp do systemu DNS lub może nie działać.
+* **Zapora jest w drodze.** Jeśli masz zapory w drodze, zostanie przesuń limit czasu TCP. Limit czasu TCP wynosi 21 sekund w tym przypadku. Użyj narzędzia **tcpping,** aby przetestować łączność. Limity czasu TCP mogą być spowodowane wieloma rzeczami poza zaporami, ale zaczynają się tam. 
+* **Usługa DNS nie jest dostępna.** Limit czasu DNS wynosi trzy sekundy na serwer DNS. Jeśli masz dwa serwery DNS, limit czasu wynosi 6 sekund. Użyj nameresolver, aby sprawdzić, czy system DNS działa. Pamiętaj, że nie można użyć nslookup, ponieważ nie używa dns sieci wirtualnej jest skonfigurowany. Jeśli jest niedostępny, może istnieć zapora lub sieciowej sieciowej blokowania dostępu do SYSTEMU DNS lub może być w dół.
 
-Jeśli te elementy nie odpowiadają na problemy, należy najpierw sprawdzić, jak: 
+Jeśli te elementy nie odpowiadają na Twoje problemy, poszukaj najpierw takich rzeczy, jak: 
 
-**Integracja z regionalną siecią wirtualną**
-* Czy miejscem docelowym jest adres nieRFC1918y, a WEBSITE_VNET_ROUTE_ALL nie ma ustawionej wartości 1?
-* Czy istnieje sieciowej grupy zabezpieczeń blokujące ruch wychodzący z podsieci integracji?
-* w przypadku przechodzenia między ExpressRoute lub sieci VPN czy brama lokalna jest skonfigurowana do kierowania ruchu z kopii zapasowej na platformę Azure? Jeśli możesz uzyskać dostęp do punktów końcowych w sieci wirtualnej, ale nie w środowisku lokalnym, sprawdź trasy.
-* Czy masz wystarczające uprawnienia do ustawiania delegowania w podsieci integracji? Podczas konfiguracji integracji regionalnej sieci wirtualnej Twoja podsieć integracji zostanie przedelegowana do firmy Microsoft. Web. Interfejs użytkownika integracji sieci wirtualnej automatycznie przekaże podsieć do firmy Microsoft. Web. Jeśli Twoje konto nie ma wystarczających uprawnień sieciowych do ustawiania delegowania, będziesz potrzebować kogoś, kto może ustawić atrybuty w podsieci integracji w celu delegowania podsieci. Aby ręcznie delegować podsieć integracji, przejdź do interfejsu użytkownika podsieci usługi Azure Virtual Network i ustaw delegowanie dla Microsoft. Web. 
+**regionalna integracja sieci wirtualnej**
+* czy miejsce docelowe jest adresem spoza RFC1918 i nie masz WEBSITE_VNET_ROUTE_ALL ustawionego na 1?
+* czy istnieje wyjście blokujące nsg z podsieci integracji?
+* jeśli będzie przez ExpressRoute lub VPN, jest brama lokalna skonfigurowana do kierowania ruchu z powrotem do platformy Azure? Jeśli można dotrzeć do punktów końcowych w sieci wirtualnej, ale nie lokalnie, sprawdź trasy.
+* czy masz wystarczająco dużo uprawnień, aby ustawić delegowanie w podsieci integracji? Podczas konfiguracji integracji regionalnej sieci wirtualnej podsieć integracji zostanie delegowana do witryny Microsoft.Web. Interfejs użytkownika integracji sieci wirtualnej automatycznie przedeleguje podsieci do witryny Microsoft.Web. Jeśli twoje konto nie ma wystarczających uprawnień sieciowych do ustawiania delegowania, potrzebny będzie ktoś, kto może ustawić atrybuty w podsieci integracji, aby delegować podsieć. Aby ręcznie delegować podsieć integracji, przejdź do interfejsu użytkownika podsieci sieci wirtualnej platformy Azure i ustaw delegowanie dla witryny Microsoft.Web. 
 
-**Integracja sieci wirtualnej wymagana przez bramę**
-* czy zakres adresów punkt-lokacja w zakresach RFC 1918 (10.0.0.0-10.255.255.255/172.16.0.0-172.31.255.255/192.168.0.0-192.168.255.255)?
-* Czy brama ma być wyświetlana w portalu? Jeśli Brama nie działa, przenieś ją z powrotem.
-* Czy certyfikaty są wyświetlane jako zsynchronizowane lub czy podejrzewasz, że konfiguracja sieci została zmieniona?  Jeśli certyfikaty nie są zsynchronizowane lub podejrzewasz, że wprowadzono zmiany w konfiguracji sieci wirtualnej, które nie zostały zsynchronizowane z nazywani, naciśnij pozycję "Synchronizuj sieć".
-* Jeśli przechodzą przez sieć VPN, czy brama lokalna skonfigurowana do kierowania ruchu z kopii zapasowej na platformę Azure? Jeśli możesz uzyskać dostęp do punktów końcowych w sieci wirtualnej, ale nie w środowisku lokalnym, sprawdź trasy.
-* Czy próbujesz użyć bramy współistnienia, która obsługuje oba punkty do lokacji i ExpressRoute? Bramy współistnienia nie są obsługiwane z integracją sieci wirtualnej.
+**wymagana integracja sieci wirtualnej bramy**
+* to zakres adresów typu "punkt-lokacja" w zakresach RFC 1918 (10,0,0,0-10,255 255,255 / 172,16,10.0-172.31.255.255 / 192.168.0.0-192.168.255.255)?
+* Czy brama jest pokazywany jako w portalu? Jeśli brama jest wyłączna, przyjmij ją z powrotem.
+* Czy certyfikaty są zsynchronizowane, czy podejrzewasz, że konfiguracja sieci została zmieniona?  Jeśli certyfikaty są niezsynchronizowane lub podejrzewasz, że nastąpiła zmiana w konfiguracji sieci wirtualnej, która nie została zsynchronizowana z asps, a następnie naciśnij "Sieć synchronizacji".
+* Jeśli przechodząc przez sieć VPN, jest brama lokalna skonfigurowana do kierowania ruchu z powrotem do platformy Azure? Jeśli można dotrzeć do punktów końcowych w sieci wirtualnej, ale nie lokalnie, sprawdź trasy.
+* Czy próbujesz użyć bramy współistnienia, która obsługuje zarówno punkt do witryny, jak i usługi ExpressRoute? Bramy współistnienia nie są obsługiwane za pomocą integracji sieci wirtualnej.
 
-Debugowanie problemów z siecią jest wyzwaniem, ponieważ nie można zobaczyć, co blokuje dostęp do określonego hosta: kombinacja portów. Niektóre z tych przyczyn obejmują:
+Debugowanie problemów z siecią jest wyzwaniem, ponieważ nie można zobaczyć, co blokuje dostęp do określonej kombinacji host:port. Niektóre z przyczyn obejmują:
 
-* Na hoście istnieje Zapora uniemożliwiająca dostęp do portu aplikacji z zakresu adresów IP punktu do lokacji. Przekroczenia podsieci często wymagają dostępu publicznego.
-* Host docelowy nie działa.
-* Aplikacja nie działa.
-* Masz nieprawidłowy adres IP lub nazwa hosta.
-* Aplikacja nasłuchuje na innym porcie niż oczekiwano. Identyfikator procesu można dopasować do portu nasłuchiwania przy użyciu polecenia "netstat-Aon" na hoście punktu końcowego. 
-* Sieciowe grupy zabezpieczeń są konfigurowane w taki sposób, że uniemożliwiają dostęp do hosta i portu aplikacji z zakresu adresów IP lokacji.
+* Masz zaporę na hoście uniemożliwiając dostęp do portu aplikacji z zakresu adresów IP punktu do witryny. Przekraczanie podsieci często wymaga dostępu publicznego.
+* Twój docelowy host jest w dół.
+* Aplikacja jest w dół.
+* Miałeś niewłaściwy adres IP lub nazwa hosta.
+* Aplikacja nasłuchuje na innym porcie niż oczekiwano. Identyfikator procesu można dopasować do portu nasłuchiwania przy użyciu "netstat -aon" na hoście punktu końcowego. 
+* Sieciowe grupy zabezpieczeń są skonfigurowane w taki sposób, że uniemożliwiają dostęp do hosta i portu aplikacji z zakresu adresów IP punktu do lokacji.
 
-Należy pamiętać, że nie wiesz, jaki jest adres używany przez aplikację. Może to być dowolny adres w podsieci integracji lub zakres adresów punktu do lokacji, dlatego należy zezwolić na dostęp z całego zakresu adresów. 
+Pamiętaj, że nie wiesz, jaki adres będzie faktycznie używany przez aplikację. Może to być dowolny adres w podsieci integracji lub zakres adresów typu punkt-lokacja, więc musisz zezwolić na dostęp z całego zakresu adresów. 
 
 Dodatkowe kroki debugowania obejmują:
 
-* Nawiąż połączenie z maszyną wirtualną w sieci wirtualnej i spróbuj skontaktować się z hostem zasobów w tym miejscu: port. Aby przetestować dostęp do protokołu TCP, użyj polecenia programu PowerShell **test-NetConnection**. Składnia jest następująca:
+* Połącz się z maszyną wirtualną w sieci wirtualnej i spróbuj dotrzeć do hosta zasobu:port stamtąd. Aby przetestować dostęp TCP, użyj polecenia **test-netconnection**polecenia programu PowerShell . Składnia jest następująca:
 
       test-netconnection hostname [optional: -Port]
 
-* Wywołaj aplikację na maszynie wirtualnej i przetestuj dostęp do tego hosta i portu z konsoli programu z poziomu aplikacji przy użyciu usługi **tcpping**
+* Przywołanie aplikacji na maszynie Wirtualnej i przetestowanie dostępu do tego hosta i portu z konsoli z aplikacji przy użyciu **tcppingu**
 
 #### <a name="on-premises-resources"></a>Zasoby lokalne ####
 
-Jeśli aplikacja nie może nawiązać połączenia z lokalnym zasobem, sprawdź, czy możesz uzyskać dostęp do zasobu z sieci wirtualnej. Użyj polecenia **test-NetConnection** PowerShell, aby sprawdzić dostęp do protokołu TCP. Jeśli maszyna wirtualna nie może nawiązać połączenia z zasobem lokalnym, połączenie sieci VPN lub ExpressRoute może być niepoprawnie skonfigurowane.
+Jeśli aplikacja nie może dotrzeć do zasobu lokalnie, sprawdź, czy można dotrzeć do zasobu z sieci wirtualnej. Użyj polecenia **test-netconnection** PowerShell, aby sprawdzić, czy dostęp TCP. Jeśli maszyna wirtualna nie może dotrzeć do zasobu lokalnego, połączenie sieci VPN lub usługi ExpressRoute może nie być poprawnie skonfigurowane.
 
-Jeśli hostowana maszyna wirtualna może nawiązać połączenie z systemem lokalnym, ale aplikacja nie może, przyczyna jest prawdopodobnie jedną z następujących przyczyn:
+Jeśli twoja wirtualna hostowana maszyna wirtualna może dotrzeć do systemu lokalnego, ale aplikacja nie może, przyczyną jest prawdopodobnie jeden z następujących powodów:
 
-* Trasy nie są skonfigurowane z podsiecią lub wskazują zakresy adresów lokacji w bramie lokalnej.
-* Sieciowe grupy zabezpieczeń blokują dostęp do zakresu adresów IP punkt-lokacja.
-* Zapora lokalna blokuje ruch z zakresu adresów IP punkt-lokacja.
-* Próbujesz nawiązać połączenie z adresem innym niż RFC 1918 przy użyciu funkcji integracji regionalnej sieci wirtualnej.
+* Trasy nie są skonfigurowane z zakresami adresów podsieci ani zakresów adresów lokacji w bramie lokalnej.
+* Sieciowe grupy zabezpieczeń blokują dostęp do zakresu adresów IP typu punkt-lokacja.
+* Zapory lokalne blokują ruch z zakresu adresów IP typu punkt-lokacja.
+* Próbujesz osiągnąć adres nie-RFC 1918 przy użyciu funkcji integracji regionalnej sieci wirtualnej.

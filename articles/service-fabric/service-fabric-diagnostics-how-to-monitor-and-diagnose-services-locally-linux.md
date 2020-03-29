@@ -1,16 +1,16 @@
 ---
-title: Debugowanie aplikacji Service Fabric platformy Azure w systemie Linux
-description: Dowiedz się, jak monitorować i diagnozować usługi Service Fabric na lokalnym komputerze deweloperskim systemu Linux.
+title: Debugowanie aplikacji sieci szkieletowej usług Azure w systemie Linux
+description: Dowiedz się, jak monitorować i diagnozować usługi sieci szkieletowej usług na lokalnym komputerze deweloperskim systemu Linux.
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: d8b5ec2f2190586f5eced5eee112b190a82504c3
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75526298"
 ---
-# <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>Monitorowanie i diagnozowanie usług w ramach instalacji lokalnego komputera z systemem Linux
+# <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>Monitorowanie i diagnozowanie usług w lokalnej konfiguracji tworzenia maszyn systemu Linux
 
 
 > [!div class="op_single_selector"]
@@ -19,14 +19,14 @@ ms.locfileid: "75526298"
 >
 >
 
-Monitorowanie, wykrywanie, diagnozowanie i rozwiązywanie problemów, dzięki czemu usługi mogą kontynuować minimalne zakłócenia środowiska użytkownika. Monitorowanie i Diagnostyka mają kluczowe znaczenie w rzeczywistym wdrożonym środowisku produkcyjnym. Zastosowanie podobnego modelu podczas tworzenia usług gwarantuje, że potok diagnostyczny działa po przejściu do środowiska produkcyjnego. Service Fabric ułatwia deweloperom usług implementację diagnostyki, która może bezproblemowo współpracować zarówno z lokalnymi konfiguracjami programistycznymi na jednym komputerze, jak i rzeczywistymi konfiguracjami klastrów produkcyjnych.
+Monitorowanie, wykrywanie, diagnozowanie i rozwiązywanie problemów umożliwiają usługom kontynuowanie z minimalnymi zakłóceniami w doświadczeniu użytkownika. Monitorowanie i diagnostyka mają kluczowe znaczenie w rzeczywistym wdrożonym środowisku produkcyjnym. Przyjęcie podobnego modelu podczas opracowywania usług zapewnia, że potok diagnostyczny działa po przejściu do środowiska produkcyjnego. Sieć szkieletowa usług ułatwia deweloperom usług implementowanie diagnostyki, która może bezproblemowo pracować zarówno w konfiguracjach lokalnego programowania jednoprzez, jak i w rzeczywistych konfiguracjach klastra produkcyjnego.
 
 
-## <a name="debugging-service-fabric-java-applications"></a>Debugowanie Service Fabric aplikacji Java
+## <a name="debugging-service-fabric-java-applications"></a>Aplikacje Java usługi debugowania
 
-W przypadku aplikacji Java dostępnych jest [wiele platform rejestrowania](https://en.wikipedia.org/wiki/Java_logging_framework) . Ponieważ `java.util.logging` jest domyślną opcją środowiska JRE, jest również używana do [przykładów kodu w usłudze GitHub](https://github.com/Azure-Samples/service-fabric-java-getting-started). W poniższej dyskusji wyjaśniono, jak skonfigurować strukturę `java.util.logging`.
+W przypadku aplikacji Java dostępnych jest [wiele struktur rejestrowania.](https://en.wikipedia.org/wiki/Java_logging_framework) Ponieważ `java.util.logging` jest to opcja domyślna z jre, jest również używana dla [przykładów kodu w GitHub](https://github.com/Azure-Samples/service-fabric-java-getting-started). W poniższej dyskusji wyjaśniono, jak skonfigurować platformę. `java.util.logging`
 
-Za pomocą języka Java. util. rejestrowanie można przekierować Dzienniki aplikacji do pamięci, strumieni danych wyjściowych, plików konsoli lub gniazd. Dla każdej z tych opcji istnieją już domyślne programy obsługi w strukturze. Można utworzyć plik `app.properties`, aby skonfigurować procedurę obsługi plików dla aplikacji w celu przekierowania wszystkich dzienników do pliku lokalnego.
+Za pomocą java.util.logging można przekierować dzienniki aplikacji do pamięci, strumieni wyjściowych, plików konsoli lub gniazd. Dla każdej z tych opcji istnieją domyślne programy obsługi już dostarczone w ramach. Można utworzyć `app.properties` plik, aby skonfigurować program obsługi plików dla aplikacji, aby przekierować wszystkie dzienniki do pliku lokalnego.
 
 Poniższy fragment kodu zawiera przykładową konfigurację:
 
@@ -40,34 +40,34 @@ java.util.logging.FileHandler.count = 10
 java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log
 ```
 
-Folder wskazany przez plik `app.properties` musi istnieć. Po utworzeniu pliku `app.properties` należy również zmodyfikować skrypt punktu wejścia, `entrypoint.sh` w folderze `<applicationfolder>/<servicePkg>/Code/`, aby ustawić właściwość `java.util.logging.config.file` na `app.properties` plik. Wpis powinien wyglądać podobnie do następującego fragmentu kodu:
+Folder wskazany przez `app.properties` plik musi istnieć. Po `app.properties` utworzeniu pliku należy również zmodyfikować skrypt `entrypoint.sh` punktu `<applicationfolder>/<servicePkg>/Code/` wejścia w folderze, aby ustawić właściwość `java.util.logging.config.file` na `app.properties` plik. Wpis powinien wyglądać następująco:
 
 ```sh
 java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path to app.properties> -jar <service name>.jar
 ```
 
 
-Ta konfiguracja powoduje, że dzienniki są zbierane w sposób rotacyjny na `/tmp/servicefabric/logs/`. Plik dziennika w tym przypadku ma nazwę mysfapp% u .% g. log, gdzie:
-* **% u** jest unikatowym numerem do rozwiązywania konfliktów między jednoczesnymi procesami Java.
-* **% g** jest numerem generacji umożliwiającym rozróżnienie między obracanymi dziennikami.
+Ta konfiguracja powoduje, że dzienniki są `/tmp/servicefabric/logs/`zbierane w sposób obrotowy w . Plik dziennika w tym przypadku nosi nazwę mysfapp%u.%g.log, gdzie:
+* **%u** jest unikatową liczbą do rozwiązywania konfliktów między równoczesnymi procesami Java.
+* **%g** jest numerem generacji do rozróżniania obrotowych dzienników.
 
-Domyślnie jeśli żadna procedura obsługi nie jest jawnie skonfigurowana, program obsługi konsoli jest zarejestrowany. Jeden może wyświetlać dzienniki w dzienniku systemowym w obszarze/var/log/syslog.
+Domyślnie, jeśli żaden program obsługi nie jest jawnie skonfigurowany, program obsługi konsoli jest zarejestrowany. Można wyświetlić dzienniki w syslog pod /var/log/syslog.
 
-Aby uzyskać więcej informacji, zobacz [przykłady kodu w](https://github.com/Azure-Samples/service-fabric-java-getting-started)serwisie GitHub.
-
-
-## <a name="debugging-service-fabric-c-applications"></a>Debugowanie Service Fabric C# aplikacji
+Aby uzyskać więcej informacji, zobacz [przykłady kodu w usłudze GitHub](https://github.com/Azure-Samples/service-fabric-java-getting-started).
 
 
-W systemie Linux dostępne są wiele platform do śledzenia aplikacji CoreCLR. Aby uzyskać więcej informacji, zobacz artykuł [GitHub: rejestrowanie](http:/github.com/aspnet/logging).  Ze względu na to C# , że funkcja EventSource jest znana dla deweloperów, "w tym artykule jest stosowane śledzenie CoreCLR próbek w systemie Linux.
+## <a name="debugging-service-fabric-c-applications"></a>Aplikacje sieci szkieletowej usługi debugowania W#
 
-Pierwszym krokiem jest dołączenie system. Diagnostics. Tracing, aby można było napisać dzienniki do pamięci, strumieni wyjściowych lub plików konsoli.  W przypadku rejestrowania przy użyciu elementu EventSource Dodaj następujący projekt do pliku Project. JSON:
+
+Wiele struktur są dostępne do śledzenia aplikacji CoreCLR w systemie Linux. Aby uzyskać więcej informacji, zobacz [GitHub: rejestrowanie](http:/github.com/aspnet/logging).  Ponieważ EventSource jest znany deweloperom języka C#,'w tym artykule używa EventSource do śledzenia w przykładach CoreCLR w systemie Linux.
+
+Pierwszym krokiem jest uwzględnienie System.Diagnostics.Tracing, dzięki czemu można zapisywać dzienniki w pamięci, strumieniach wyjściowych lub plikach konsoli.  W przypadku rejestrowania przy użyciu źródła zdarzeń dodaj do pliku project.json następujący projekt:
 
 ```json
     "System.Diagnostics.StackTrace": "4.0.1"
 ```
 
-Możesz użyć niestandardowego odbiornika do nasłuchiwania zdarzenia usługi, a następnie odpowiednio przekierować je do plików śledzenia. Poniższy fragment kodu przedstawia przykładową implementację rejestrowania przy użyciu elementu EventSource i niestandardowego odbiornika:
+Można użyć niestandardowego EventListener nasłuchiwać zdarzenia usługi, a następnie odpowiednio przekierować je do śledzenia plików. Poniższy fragment kodu pokazuje przykładową implementację rejestrowania przy użyciu eventsource i niestandardowego EventListener:
 
 
 ```csharp
@@ -120,16 +120,16 @@ internal class ServiceEventListener : EventListener
 ```
 
 
-Poprzedni fragment kodu wyprowadza dzienniki do pliku w `/tmp/MyServiceLog.txt`. Ta nazwa pliku musi być odpowiednio aktualizowana. W przypadku, gdy chcesz przekierować dzienniki do konsoli programu, użyj następującego fragmentu kodu w dostosowanej klasie odbiornika:
+Poprzedni fragment kodu wyprowadza dzienniki do pliku w `/tmp/MyServiceLog.txt`pliku . Ta nazwa pliku musi zostać odpowiednio zaktualizowana. Jeśli chcesz przekierować dzienniki do konsoli, użyj następującego fragmentu kodu w dostosowanej klasie EventListener:
 
 ```csharp
 public static TextWriter Out = Console.Out;
 ```
 
-Przykłady w [ C# przykładach](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started) używają elementu EventSource i niestandardowego odbiornika do rejestrowania zdarzeń do pliku.
+Przykłady w [c# przykłady](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started) używać EventSource i niestandardowe EventListener do rejestrowania zdarzeń do pliku.
 
 
 
 ## <a name="next-steps"></a>Następne kroki
-Ten sam kod śledzenia dodany do aplikacji również współdziała z diagnostyką aplikacji w klastrze platformy Azure. Zapoznaj się z tymi artykułami, które omawiają różne opcje narzędzi i opisują, jak je skonfigurować.
-* [Jak zbierać dzienniki przy użyciu Diagnostyka Azure](service-fabric-diagnostics-how-to-setup-lad.md)
+Ten sam kod śledzenia dodany do aplikacji działa również z diagnostyką aplikacji w klastrze platformy Azure. Zapoznaj się z tymi artykułami, w których omówiono różne opcje narzędzi i opisano sposób ich konfigurowania.
+* [Jak zbierać dzienniki za pomocą usługi Azure Diagnostics](service-fabric-diagnostics-how-to-setup-lad.md)

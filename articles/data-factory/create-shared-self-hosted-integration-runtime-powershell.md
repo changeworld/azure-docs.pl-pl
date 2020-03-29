@@ -1,6 +1,6 @@
 ---
-title: Tworzenie współużytkowanego środowiska Integration Runtime przy użyciu programu PowerShell
-description: Dowiedz się, jak utworzyć udostępnione środowisko Integration Runtime w Azure Data Factory, dzięki czemu wiele fabryk danych może uzyskać dostęp do środowiska Integration Runtime.
+title: Tworzenie udostępnionego środowiska wykonawczego integracji hostowanego przez użytkownika za pomocą programu PowerShell
+description: Dowiedz się, jak utworzyć udostępnione środowisko uruchomieniowe integracji hostowanego samodzielnie w usłudze Azure Data Factory, dzięki czemu wiele fabryk danych może uzyskać dostęp do środowiska wykonawczego integracji.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -12,61 +12,61 @@ manager: anansub
 ms.custom: seo-lt-2019
 ms.date: 10/31/2018
 ms.openlocfilehash: a2f24d8203ac5fb9724370cbdf4309bdc43c166a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75444095"
 ---
-# <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Utwórz udostępnione środowisko Integration Runtime w Azure Data Factory
+# <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Tworzenie udostępnionego środowiska wykonawczego integracji hostowanego samodzielnie w usłudze Azure Data Factory
 
-W tym przewodniku pokazano, jak utworzyć udostępnione środowisko Integration Runtime w Azure Data Factory. Następnie możesz użyć udostępnionego środowiska Integration Runtime w innej fabryce danych.
+W tym przewodniku pokazano, jak utworzyć udostępnione środowisko uruchomieniowe integracji hostowanego samodzielnie w usłudze Azure Data Factory. Następnie można użyć udostępnionego środowiska wykonawczego integracji hostowanego samodzielnie w innej fabryce danych.
 
-## <a name="create-a-shared-self-hosted-ir-using-azure-data-factory-ui"></a>Tworzenie udostępnionego samoobsługowego środowiska IR przy użyciu Azure Data Factory interfejsu użytkownika
+## <a name="create-a-shared-self-hosted-ir-using-azure-data-factory-ui"></a>Tworzenie udostępnionego, hostowanego samodzielnie podczerwonego podczerwionego interfejsu użytkownika przy użyciu interfejsu użytkownika usługi Azure Data Factory
 
-Aby utworzyć udostępniony samoobsługowy środowisko IR przy użyciu interfejsu użytkownika Azure Data Factory, można wykonać następujące czynności:
+Aby utworzyć współdzielone samodzielnie podczerwone podczerwone przy użyciu interfejsu użytkownika usługi Azure Data Factory, można wykonać następujące kroki:
 
-1. W przypadku samodzielnego udostępniania środowiska IR Udziel uprawnień do fabryki danych, w której chcesz utworzyć połączony IR.
+1. W samodzielnym hostowanym podczerwonym podczerwonym do udostępnienia udziel uprawnień do fabryki danych, w której chcesz utworzyć połączone podczerwone podczerwone.
       
-    ![Przycisk do przyznawania uprawnień na karcie Udostępnianie](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)
+    ![Przycisk udzielania uprawnień na karcie Udostępnianie](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)
       
-    ![Wybory dotyczące przypisywania uprawnień](media/create-self-hosted-integration-runtime/3_rbac_permissions.png)     
+    ![Wybory do przypisywania uprawnień](media/create-self-hosted-integration-runtime/3_rbac_permissions.png)     
     
-2. Zanotuj identyfikator zasobu samodzielnego środowiska IR, który ma zostać udostępniony.
+2. Zanotuj identyfikator zasobu samodzielnie hostowanego podczerwonu do udostępnienia.
       
    ![Lokalizacja identyfikatora zasobu](media/create-self-hosted-integration-runtime/4_ResourceID_self-hostedIR.png)
     
-3. W fabryce danych, do której udzielono uprawnień, Utwórz nowe środowisko IR (połączone), a następnie wprowadź identyfikator zasobu.
+3. W fabryce danych, do której przyznano uprawnienia, utwórz nową, samodzielnie hostowane podczerwone podczerwone (połączone) i wprowadź identyfikator zasobu.
       
-   ![Przycisk służący do tworzenia połączonego środowiska Integration Runtime (własny)](media/create-self-hosted-integration-runtime/6_create-linkedIR_2.png)
+   ![Przycisk do tworzenia połączonego środowiska wykonawczego integracji hostowanego samodzielnie](media/create-self-hosted-integration-runtime/6_create-linkedIR_2.png)
       
-    ![Pola nazwy i identyfikatora zasobu](media/create-self-hosted-integration-runtime/6_create-linkedIR_3.png)
+    ![Pola dotyczące nazwy i identyfikatora zasobu](media/create-self-hosted-integration-runtime/6_create-linkedIR_3.png)
 
-## <a name="create-a-shared-self-hosted-ir-using-azure-powershell"></a>Tworzenie udostępnionego samoobsługowego środowiska IR przy użyciu Azure PowerShell
+## <a name="create-a-shared-self-hosted-ir-using-azure-powershell"></a>Tworzenie udostępnionego, hostowanego samodzielnie podczerwonu przy użyciu programu Azure PowerShell
 
-Aby utworzyć udostępniony samoobsługowy środowisko IR przy użyciu Azure PowerShell, można wykonać następujące czynności: 
+Aby utworzyć współdzielone samodzielnie podczerwone podczerwone przy użyciu programu Azure PowerShell, można wykonać następujące kroki: 
 1. Tworzenie fabryki danych. 
 1. Utwórz własne środowisko Integration Runtime.
-1. Udostępnij własne środowisko Integration Runtime innym fabrykom danych.
-1. Utwórz połączone środowisko Integration Runtime.
+1. Udostępnianie środowiska wykonawczego integracji hostowanego samodzielnie z innymi fabrykami danych.
+1. Tworzenie połączonego środowiska wykonawczego integracji.
 1. Odwołaj udostępnianie.
 
 ### <a name="prerequisites"></a>Wymagania wstępne 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Subskrypcja platformy Azure**. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/). 
+- **Subskrypcja platformy Azure**. Jeśli nie masz subskrypcji platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem. 
 
-- Zainstalowanie programu **Azure PowerShell**. Postępuj zgodnie z instrukcjami w temacie [Install Azure PowerShell in Windows with PowerShellGet](https://docs.microsoft.com/powershell/azure/install-az-ps). Program PowerShell służy do uruchamiania skryptu w celu utworzenia własnego środowiska Integration Runtime, które może być współużytkowane z innymi fabrykami danych. 
+- **Program Azure PowerShell**. Postępuj zgodnie z instrukcjami w [install Azure PowerShell w systemie Windows z programem PowerShellGet](https://docs.microsoft.com/powershell/azure/install-az-ps). Program PowerShell służy do uruchamiania skryptu w celu utworzenia środowiska uruchomieniowego integracji hostowanego samodzielnie, które można udostępniać innym fabrykom danych. 
 
 > [!NOTE]  
-> Aby zapoznać się z listą regionów świadczenia usługi Azure, w których Data Factory są obecnie dostępne, wybierz regiony, które interesują Cię z [produktami dostępnymi według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory).
+> Aby uzyskać listę regionów platformy Azure, w których usługa Data Factory jest obecnie dostępna, wybierz regiony, które Cię interesują w [produktach dostępnych według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory).
 
 ### <a name="create-a-data-factory"></a>Tworzenie fabryki danych
 
 1. Uruchom środowisko Windows PowerShell Integrated Scripting Environment (ISE).
 
-1. Utwórz zmienne. Skopiuj i wklej poniższy skrypt. Zastąp zmienne, takie jak **subscriptionname** i **ResourceGroupName**, wartościami rzeczywistymi: 
+1. Tworzenie zmiennych. Skopiuj i wklej następujący skrypt. Zastąp zmienne, takie jak **SubscriptionName** i **ResourceGroupName,** wartościami rzeczywistymi: 
 
     ```powershell
     # If input contains a PSH special character, e.g. "$", precede it with the escape character "`" like "`$". 
@@ -87,7 +87,7 @@ Aby utworzyć udostępniony samoobsługowy środowisko IR przy użyciu Azure Pow
     $LinkedIntegrationRuntimeDescription = "[Description for Linked Integration Runtime]"
     ```
 
-1. Zaloguj się i wybierz subskrypcję. Dodaj następujący kod do skryptu, aby zalogować się i wybrać subskrypcję platformy Azure:
+1. Zaloguj się i wybierz subskrypcję. Dodaj następujący kod do skryptu, aby się zalogować i wybrać subskrypcję platformy Azure:
 
     ```powershell
     Connect-AzAccount
@@ -97,9 +97,9 @@ Aby utworzyć udostępniony samoobsługowy środowisko IR przy użyciu Azure Pow
 1. Tworzenie grupy zasobów i fabryki danych.
 
     > [!NOTE]  
-    > Ten krok jest opcjonalny. Jeśli masz już fabrykę danych, Pomiń ten krok. 
+    > Ten krok jest opcjonalny. Jeśli masz już fabrykę danych, pomiń ten krok. 
 
-    Utwórz [grupę zasobów platformy Azure](../azure-resource-manager/management/overview.md) za pomocą polecenia [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) . Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi w formie grupy. Poniższy przykład tworzy grupę zasobów o nazwie `myResourceGroup` w lokalizacji WestEurope: 
+    Utwórz [grupę zasobów platformy Azure](../azure-resource-manager/management/overview.md) przy użyciu polecenia [New-AzResourceGroup.](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi w formie grupy. Poniższy przykład tworzy grupę zasobów o nazwie `myResourceGroup` w lokalizacji WestEurope: 
 
     ```powershell
     New-AzResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName
@@ -116,9 +116,9 @@ Aby utworzyć udostępniony samoobsługowy środowisko IR przy użyciu Azure Pow
 ### <a name="create-a-self-hosted-integration-runtime"></a>Tworzenie własnego środowiska Integration Runtime
 
 > [!NOTE]  
-> Ten krok jest opcjonalny. Jeśli masz już własne środowisko Integration Runtime, które chcesz udostępnić innym fabrykom danych, Pomiń ten krok.
+> Ten krok jest opcjonalny. Jeśli masz już środowisko uruchomieniowe integracji hostowanego samodzielnie, które chcesz udostępnić innym fabrykom danych, pomiń ten krok.
 
-Uruchom następujące polecenie, aby utworzyć własne środowisko Integration Runtime:
+Uruchom następujące polecenie, aby utworzyć środowisko uruchomieniowe integracji hostowanego samodzielnie:
 
 ```powershell
 $SharedIR = Set-AzDataFactoryV2IntegrationRuntime `
@@ -129,9 +129,9 @@ $SharedIR = Set-AzDataFactoryV2IntegrationRuntime `
     -Description $SharedIntegrationRuntimeDescription
 ```
 
-#### <a name="get-the-integration-runtime-authentication-key-and-register-a-node"></a>Pobierz klucz uwierzytelniania środowiska Integration Runtime i zarejestruj węzeł
+#### <a name="get-the-integration-runtime-authentication-key-and-register-a-node"></a>Pobierz klucz uwierzytelniania środowiska uruchomieniowego integracji i zarejestruj węzeł
 
-Uruchom następujące polecenie, aby uzyskać klucz uwierzytelniania dla własnego środowiska Integration Runtime:
+Uruchom następujące polecenie, aby uzyskać klucz uwierzytelniania dla środowiska wykonawczego integracji hostowanego samodzielnie:
 
 ```powershell
 Get-AzDataFactoryV2IntegrationRuntimeKey `
@@ -140,31 +140,31 @@ Get-AzDataFactoryV2IntegrationRuntimeKey `
     -Name $SharedIntegrationRuntimeName
 ```
 
-Odpowiedź zawiera klucz uwierzytelniania dla własnego środowiska Integration Runtime. Ten klucz jest używany podczas rejestrowania węzła Integration Runtime.
+Odpowiedź zawiera klucz uwierzytelniania dla tego środowiska wykonawczego integracji hostowanego samodzielnie. Ten klucz jest używany podczas rejestrowania węzła środowiska wykonawczego integracji.
 
-#### <a name="install-and-register-the-self-hosted-integration-runtime"></a>Instalowanie i Rejestrowanie własnego środowiska Integration Runtime
+#### <a name="install-and-register-the-self-hosted-integration-runtime"></a>Instalowanie i rejestrowanie środowiska uruchomieniowego integracji hostowanego samodzielnie
 
-1. Pobierz własny Instalator środowiska Integration Runtime z [Azure Data Factory Integration Runtime](https://aka.ms/dmg).
+1. Pobierz instalator środowiska wykonawczego integracji hostowanego samodzielnie z środowiska wykonawczego [usługi Azure Data Factory Integration Runtime](https://aka.ms/dmg).
 
-2. Uruchom Instalatora, aby zainstalować samodzielną integrację na komputerze lokalnym.
+2. Uruchom instalatora, aby zainstalować integrację hostowanego samodzielnie na komputerze lokalnym.
 
-3. Zarejestruj nową integrację samodzielną z kluczem uwierzytelniania pobranym w poprzednim kroku.
+3. Zarejestruj nową integrację hostowanego samodzielnie z kluczem uwierzytelniania pobranym w poprzednim kroku.
 
-### <a name="share-the-self-hosted-integration-runtime-with-another-data-factory"></a>Udostępnianie własnego środowiska Integration Runtime innym fabrykom danych
+### <a name="share-the-self-hosted-integration-runtime-with-another-data-factory"></a>Udostępnianie środowiska wykonawczego integracji hostowanego samodzielnie z inną fabryką danych
 
 #### <a name="create-another-data-factory"></a>Tworzenie innej fabryki danych
 
 > [!NOTE]  
-> Ten krok jest opcjonalny. Jeśli masz już fabrykę danych, którą chcesz udostępnić, Pomiń ten krok.
+> Ten krok jest opcjonalny. Jeśli masz już fabrykę danych, której chcesz udostępnić, pomiń ten krok.
 
 ```powershell
 $factory = Set-AzDataFactoryV2 -ResourceGroupName $ResourceGroupName `
     -Location $DataFactoryLocation `
     -Name $LinkedDataFactoryName
 ```
-#### <a name="grant-permission"></a>Udziel uprawnienia
+#### <a name="grant-permission"></a>Udzielanie uprawnień
 
-Udziel uprawnienia do fabryki danych, która musi mieć dostęp do utworzonego i zarejestrowanego środowiska Integration Runtime.
+Udziel uprawnień do fabryki danych, która musi uzyskać dostęp do środowiska uruchomieniowego integracji hostowanego przez ciebie, utworzonego i zarejestrowanego.
 
 > [!IMPORTANT]  
 > Nie pomijaj tego kroku!
@@ -176,9 +176,9 @@ New-AzRoleAssignment `
     -Scope $SharedIR.Id
 ```
 
-### <a name="create-a-linked-self-hosted-integration-runtime"></a>Tworzenie połączonego środowiska Integration Runtime (własny)
+### <a name="create-a-linked-self-hosted-integration-runtime"></a>Tworzenie połączonego środowiska wykonawczego integracji hostowanego samodzielnie
 
-Uruchom następujące polecenie, aby utworzyć połączone środowisko Integration Runtime (własne):
+Uruchom następujące polecenie, aby utworzyć połączone środowisko wykonawcze integracji hostowanego samodzielnie:
 
 ```powershell
 Set-AzDataFactoryV2IntegrationRuntime `
@@ -190,11 +190,11 @@ Set-AzDataFactoryV2IntegrationRuntime `
     -Description $LinkedIntegrationRuntimeDescription
 ```
 
-Teraz można użyć tego połączonego środowiska Integration Runtime w dowolnej połączonej usłudze. Połączone środowisko Integration runtime używa udostępnionego środowiska Integration Runtime do uruchamiania działań.
+Teraz można użyć tego połączonego środowiska wykonawczego integracji w dowolnej połączonej usłudze. Środowisko uruchomieniowe połączonej integracji używa środowiska wykonawczego integracji udostępnionej do uruchamiania działań.
 
-### <a name="revoke-integration-runtime-sharing-from-a-data-factory"></a>Odwołaj udostępnianie środowiska Integration Runtime z fabryki danych
+### <a name="revoke-integration-runtime-sharing-from-a-data-factory"></a>Odwoływanie udostępniania środowiska uruchomieniowego integracji z fabryki danych
 
-Aby odwołać dostęp do fabryki danych z udostępnionego środowiska Integration Runtime, uruchom następujące polecenie:
+Aby odwołać dostęp do fabryki danych ze środowiska wykonawczego integracji współużytkowej, uruchom następujące polecenie:
 
 ```powershell
 Remove-AzRoleAssignment `
@@ -203,7 +203,7 @@ Remove-AzRoleAssignment `
     -Scope $SharedIR.Id
 ```
 
-Aby usunąć istniejące połączone środowisko Integration Runtime, uruchom następujące polecenie w ramach udostępnionego środowiska Integration Runtime:
+Aby usunąć istniejące środowisko uruchomieniowe połączonej integracji, uruchom następujące polecenie względem udostępnionego środowiska wykonawczego integracji:
 
 ```powershell
 Remove-AzDataFactoryV2IntegrationRuntime `
@@ -216,6 +216,6 @@ Remove-AzDataFactoryV2IntegrationRuntime `
 
 ### <a name="next-steps"></a>Następne kroki
 
-- Zapoznaj [się z tematami dotyczącymi środowiska Integration Runtime w Azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime).
+- Przejrzyj [koncepcje środowiska uruchomieniowego integracji w usłudze Azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime).
 
-- Dowiedz się [, jak utworzyć własne środowisko Integration Runtime w Azure Portal](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime).
+- Dowiedz się, jak [utworzyć środowisko wykonawcze integracji hostowanego samodzielnie w witrynie Azure portal.](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)

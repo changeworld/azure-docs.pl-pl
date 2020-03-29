@@ -1,5 +1,5 @@
 ---
-title: PRZESTARZAŁE Szybki Start — klaster Azure Kubernetes dla systemu Windows
+title: (PRZESTARZAŁE) Szybki start — klaster Azure Kubernetes dla systemu Windows
 description: Szybka nauka tworzenia klastra Kubernetes dla kontenerów systemu Windows w usłudze Azure Container Service za pomocą interfejsu wiersza polecenia platformy Azure.
 author: dlepow
 ms.service: container-service
@@ -8,19 +8,19 @@ ms.date: 07/18/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc, devcenter
 ms.openlocfilehash: 2e36de9f2a6af3643b6f609339d413968f6a8d6e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76277644"
 ---
-# <a name="deprecated-deploy-kubernetes-cluster-for-windows-containers"></a>PRZESTARZAŁE Wdrażanie klastra Kubernetes dla kontenerów systemu Windows
+# <a name="deprecated-deploy-kubernetes-cluster-for-windows-containers"></a>(PRZESTARZAŁE) Wdrażanie klastra Kubernetes dla kontenerów systemu Windows
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Interfejs wiersza polecenia platformy Azure umożliwia tworzenie zasobów Azure i zarządzanie nimi z poziomu wiersza polecenia lub skryptów. W tym przewodniku zawarto szczegółowe informacje dotyczące korzystania z interfejsu wiersza polecenia platformy Azure w celu wdrożenia klastra [Kubernetes](https://kubernetes.io/docs/home/) w [usłudze Azure Container Service](../container-service-intro.md). Po wdrożeniu klastra nawiążesz z nim połączenie za pomocą narzędzia wiersza polecenia `kubectl` usługi Kubernetes i wdrożysz swój pierwszy kontener systemu Windows.
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -61,7 +61,7 @@ Po kilku minutach polecenie zostanie zakończone i wyświetlone zostaną informa
 
 ## <a name="install-kubectl"></a>Instalowanie narzędzia kubectl
 
-Aby nawiązać połączenie z klastrem Kubernetes z komputera klienckiego, należy użyć klienta wiersza polecenia usługi Kubernetes [`kubectl`](https://kubernetes.io/docs/user-guide/kubectl/). 
+Aby połączyć się z klastrem Kubernetes z komputera klienckiego, użyj [`kubectl`](https://kubernetes.io/docs/user-guide/kubectl/)klienta wiersza polecenia Kubernetes. 
 
 Jeśli korzystasz z usługi Azure CloudShell, narzędzie `kubectl` jest już zainstalowane. Jeśli chcesz zainstalować je lokalnie, możesz użyć polecenia [az acs kubernetes install-cli](/cli/azure/acs/kubernetes).
 
@@ -160,7 +160,7 @@ Aby udostępnić zasobnik światu z publicznym adresem IP, wpisz następujące p
 kubectl expose pods iis --port=80 --type=LoadBalancer
 ```
 
-Za pomocą tego polecenia Kubernetes tworzy usługę i regułę modułu równoważenia obciążenia platformy Azure z publicznym adresem IP dla usługi. 
+To polecenie spowoduje utworzenie przez rozwiązanie Kubernetes usługi i reguły usługi Azure Load Balancer z publicznym adresem IP usługi. 
 
 Uruchom poniższe polecenie, aby wyświetlić stan usługi.
 

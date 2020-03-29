@@ -5,24 +5,24 @@ ms.service: cloud-services
 ms.topic: include
 ms.date: 11/25/2018
 ms.openlocfilehash: 5deba9d8968f71ef1b21517e74e6af4c39aa9271
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76279633"
 ---
 > [!WARNING]
-> Po włączeniu diagnostyki dla istniejącej roli wszystkie rozszerzenia, które zostały już ustawione, są wyłączone podczas wdrażania pakietu. Należą do nich:
+> Po włączeniu diagnostyki dla istniejącej roli, wszystkie rozszerzenia, które zostały już ustawione są wyłączone po wdrożeniu pakietu. Należą do nich:
 >
-> * Diagnostyka Microsoft Monitoring Agent
-> * Microsoft Azure monitorowanie zabezpieczeń
+> * Diagnostyka agenta monitorowania firmy Microsoft
+> * Monitorowanie zabezpieczeń platformy Microsoft Azure
 > * Usługa firmy Microsoft chroniąca przed złośliwym kodem                 
 > * Microsoft Monitoring Agent
-> * Agent Service Profiler firmy Microsoft      
+> * Agent profilera usług firmy Microsoft      
 > * Rozszerzenie domeny systemu Windows Azure        
-> * Rozszerzenie Diagnostyka Azure systemu Windows   
-> * Rozszerzenie Pulpit zdalny platformy Microsoft Azure
-> * Moduł zbierający Dzienniki systemu Windows Azure
+> * Rozszerzenie diagnostyki systemu Windows Azure   
+> * Rozszerzenie pulpitu zdalnego systemu Windows Azure
+> * Moduł zbierający dzienniki systemu Windows Azure
 >
-> Możesz zresetować rozszerzenia za pomocą Azure Portal lub PowerShell po wdrożeniu zaktualizowanej roli.
+> Rozszerzenia można zresetować za pośrednictwem witryny Azure portal lub programu PowerShell po wdrożeniu zaktualizowanej roli.
 >

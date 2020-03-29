@@ -1,6 +1,6 @@
 ---
 title: Tworzenie wizualne
-description: Dowiedz się, jak używać tworzenia wizualnego w Azure Data Factory
+description: Dowiedz się, jak używać tworzenia wizualizacji w usłudze Azure Data Factory
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -11,48 +11,48 @@ ms.reviewer: ''
 manager: anandsub
 ms.date: 12/19/2019
 ms.openlocfilehash: 09d4055ba98da2dd87efc9421402f2827a87ba16
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75440933"
 ---
-# <a name="visual-authoring-in-azure-data-factory"></a>Tworzenie wizualne w Azure Data Factory
+# <a name="visual-authoring-in-azure-data-factory"></a>Tworzenie wizualne w fabryce danych platformy Azure
 
-Środowisko interfejsu użytkownika Azure Data Factory (UX) umożliwia wizualne tworzenie i wdrażanie zasobów dla fabryki danych bez konieczności pisania kodu. Możesz przeciągnąć działania na kanwę potoku, wykonywać przebiegi testowe, debugować iteracyjnie i wdrażać i monitorować uruchomienia potoków.
+Środowisko interfejsu użytkownika usługi Azure Data Factory (UX) umożliwia wizualne tworzenie i wdrażanie zasobów dla fabryki danych bez konieczności pisania kodu. Można przeciągać działania do kanwy potoku, wykonywać przebiegi testowe, debugować iteracyjnie oraz wdrażać i monitorować przebiegi potoku.
 
-Obecnie Azure Data Factory UX jest obsługiwane tylko w przeglądarkach Microsoft Edge i Google Chrome.
+Obecnie środowisko użytkownika usługi Azure Data Factory UX jest obsługiwane tylko w przeglądarkach Microsoft Edge i Google Chrome.
 
-## <a name="authoring-canvas"></a>Kanwa tworzenia
+## <a name="authoring-canvas"></a>Tworzenie kanwy
 
-Aby otworzyć **kanwę tworzenia**, kliknij ikonę ołówka. 
+Aby otworzyć **kanwę tworzenia,** kliknij ikonę ołówka. 
 
-![Kanwa tworzenia](media/author-visually/authoring-canvas.png)
+![Kanwa do tworzenia](media/author-visually/authoring-canvas.png)
 
-Tutaj utworzysz potoki, działania, zestawy danych, połączone usługi, przepływy danych, wyzwalacze i środowiska Integration Runtime wchodzące w skład Twojego fabryki. Aby rozpocząć tworzenie potoku przy użyciu kanwy tworzenia, zobacz [Kopiowanie danych za pomocą działania kopiowania](tutorial-copy-data-portal.md). 
+W tym miejscu zostaną autorstwa potoków, działań, zestawów danych, połączonych usług, przepływów danych, wyzwalaczy i środowiskach uruchomieniowych integracji, które składają się na fabrykę. Aby rozpocząć tworzenie potoku przy użyciu kanwy autora, zobacz [Kopiowanie danych przy użyciu działania kopiowania](tutorial-copy-data-portal.md). 
 
-Domyślne środowisko tworzenia wizualizacji działa bezpośrednio z usługą Data Factory. Azure Repos integracja z usługą Git lub GitHub jest również obsługiwana, aby umożliwić kontrolę źródła i współpracę w ramach potoków usługi Data Factory. Aby dowiedzieć się więcej o różnicach między tymi środowiskami tworzenia, zobacz [Kontrola źródła w Azure Data Factory](source-control.md).
+Domyślne środowisko tworzenia wizualnego jest bezpośrednio pracy z usługą data factory. Integracja z usługą Azure Repos Git lub GitHub jest również obsługiwana, aby umożliwić kontrolę źródła i współpracę w celu pracy nad potokami fabryki danych. Aby dowiedzieć się więcej o różnicach między tymi środowiskami tworzenia, zobacz [Kontrola źródła w usłudze Azure Data Factory](source-control.md).
 
 ## <a name="expressions-and-functions"></a>Wyrażenia i funkcje
 
-Wyrażenia i funkcje mogą być używane zamiast wartości statycznych, aby określić wiele właściwości w Azure Data Factory.
+Wyrażenia i funkcje mogą służyć zamiast wartości statycznych, aby określić wiele właściwości w usłudze Azure Data Factory.
 
-Aby określić wyrażenie dla wartości właściwości, wybierz pozycję **Dodaj zawartość dynamiczną** , a następnie kliknij przycisk **Alt + P** , jednocześnie skupiając się na tym polu.
+Aby określić wyrażenie dla wartości właściwości, wybierz pozycję **Dodaj zawartość dynamiczną** lub kliknij przycisk **Alt + P,** koncentrując się na polu.
 
-![Dodaj zawartość dynamiczną](media/author-visually/dynamic-content-1.png)
+![Dodawanie zawartości dynamicznej](media/author-visually/dynamic-content-1.png)
 
-Spowoduje to otwarcie **konstruktora wyrażeń Data Factory** , w którym można tworzyć wyrażenia z obsługiwanych zmiennych systemowych, danych wyjściowych działań, funkcji i zmiennych lub parametrów określonych przez użytkownika. 
+Spowoduje to otwarcie **Konstruktora wyrażeń fabryki danych,** w którym można tworzyć wyrażenia z obsługiwanych zmiennych systemowych, danych wyjściowych aktywności, funkcji oraz zmiennych lub parametrów określonych przez użytkownika. 
 
 ![Konstruktor wyrażeń](media/author-visually/dynamic-content-2.png)
 
-Aby uzyskać informacje na temat języka wyrażeń, zobacz [Expressions and Functions in Azure Data Factory](control-flow-expression-language-functions.md).
+Aby uzyskać informacje na temat języka wyrażeń, zobacz [Wyrażenia i funkcje w usłudze Azure Data Factory](control-flow-expression-language-functions.md).
 
-## <a name="provide-feedback"></a>Prześlij opinię
+## <a name="provide-feedback"></a>Przekazywanie opinii
 
-Wybierz **opinię** , aby skomentować informacje o funkcjach lub powiadomić firmę Microsoft o problemach z narzędziem:
+Wybierz **opinię,** aby skomentować funkcje lub powiadomić firmę Microsoft o problemach z narzędziem:
 
 ![Opinia](media/author-visually/provide-feedback.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat monitorowania potoków i zarządzania nimi, zobacz temat [monitorowanie potoków i zarządzanie nimi programowo](monitor-programmatically.md).
+Aby dowiedzieć się więcej na temat monitorowania potoków i zarządzania nimi, zobacz [Programowo monitorowanie potoków i zarządzanie nimi](monitor-programmatically.md).

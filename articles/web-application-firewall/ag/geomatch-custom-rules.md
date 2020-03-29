@@ -1,6 +1,6 @@
 ---
-title: Reguły niestandardowe geodopasowania zapory aplikacji sieci Web platformy Azure (WAF)
-description: Ten artykuł zawiera omówienie niestandardowych reguł geodopasowania zapory aplikacji sieci Web (WAF) w usłudze Azure Application Gateway.
+title: Reguły niestandardowe geomatchu zapory aplikacji sieci Web platformy Azure (WAF)
+description: Ten artykuł zawiera omówienie reguł niestandardowych geomatch zapory aplikacji sieci Web (WAF) w usłudze Azure Application Gateway.
 services: web-application-firewall
 ms.topic: article
 author: vhorne
@@ -8,24 +8,24 @@ ms.service: web-application-firewall
 ms.date: 01/31/2020
 ms.author: victorh
 ms.openlocfilehash: 6725e1de21dbd103850071f7511e2800c6bd7b69
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76961090"
 ---
-# <a name="geomatch-custom-rules-preview"></a>Reguły niestandardowe geodopasowania (wersja zapoznawcza)
+# <a name="geomatch-custom-rules-preview"></a>Reguły niestandardowe geomatchu (wersja zapoznawcza)
 
-Reguły niestandardowe umożliwiają tworzenie dostosowanych reguł spełniających dokładne potrzeby aplikacji i zasad zabezpieczeń. Teraz możesz ograniczyć dostęp do aplikacji sieci Web według kraju/regionu. Podobnie jak w przypadku wszystkich reguł niestandardowych, ta logika może zostać złożona z innymi regułami, aby odpowiadały potrzebom aplikacji.
+Reguły niestandardowe umożliwiają tworzenie dostosowanych reguł do potrzeb aplikacji i zasad zabezpieczeń. Teraz możesz ograniczyć dostęp do aplikacji internetowych według kraju/regionu. Podobnie jak w przypadku wszystkich reguł niestandardowych, ta logika może być spotęgowana z innymi regułami, aby dostosować się do potrzeb aplikacji.
 
-Aby utworzyć regułę niestandardową filtrowania geograficznego, po prostu wybierz *lokalizację geograficzną* jako typ dopasowania, a następnie wybierz kraj lub kraje, które mają być dozwolone/blokowane w aplikacji. Aby uzyskać więcej informacji, zobacz [jak utworzyć niestandardowe reguły w programie PowerShell](configure-waf-custom-rules.md) i więcej przykładów reguł niestandardowych (Create-Custom-waf-rules.MD).
+Aby utworzyć regułę niestandardową filtrowania geograficznego, po prostu wybierz *lokalizację geograficzną* jako typ dopasowania, a następnie wybierz kraj lub kraje, na które chcesz zezwolić/zablokować aplikację. Zobacz, [jak utworzyć reguły niestandardowe w programie Powershell](configure-waf-custom-rules.md) i więcej przykładów reguł niestandardowych (create-custom-waf-rules.md), aby uzyskać więcej informacji.
 
 > [!IMPORTANT]
 > Ten podgląd publiczny nie jest objęty umową dotyczącą poziomu usług i nie należy korzystać z niego w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, mogą mieć ograniczone możliwości lub mogą nie być dostępne we wszystkich lokalizacjach platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="country-codes"></a>Kody krajów
 
-Jeśli używasz operatora geodopasowania, selektory mogą być jednym z następujących kodów krajów dwucyfrowych. 
+Jeśli używasz operatora Geomatch, selektory mogą być dowolnym z następujących dwucyfrowych kodów krajów. 
 
 |Kod kraju | Nazwa kraju |
 | ----- | ----- |
@@ -50,7 +50,7 @@ Jeśli używasz operatora geodopasowania, selektory mogą być jednym z następu
 | BH | Bahrajn|
 | BI | Burundi|
 | BJ | Benin|
-| BL | Saint Barthélemy|
+| BL | Św Barthélemy|
 | BN | Brunei Darussalam|
 | BO | Boliwia|
 | BR | Brazylia|
@@ -70,10 +70,10 @@ Jeśli używasz operatora geodopasowania, selektory mogą być jednym z następu
 | CO | Kolumbia|
 | CR | Kostaryka|
 | CU | Kuba|
-| CV | Wyspy Zielonego Przylądka|
+| CV | Cabo Verde|
 | CY | Cypr|
-| CZ | Republika Czeska|
-| Niemcy | Niemcy|
+| CZ | Czechy|
+| DE | Niemcy|
 | DK | Dania|
 | DO | Dominikana|
 | DZ | Algieria|
@@ -86,7 +86,7 @@ Jeśli używasz operatora geodopasowania, selektory mogą być jednym z następu
 | FJ | Fidżi|
 | FM | Federalne Stany Mikronezji|
 | PW | Francja|
-| GB | Zjednoczone Królestwo|
+| GB | Wielka Brytania|
 | GE | Gruzja|
 | GF | Gujana Francuska|
 | GH | Ghana|
@@ -97,7 +97,7 @@ Jeśli używasz operatora geodopasowania, selektory mogą być jednym z następu
 | GY | Gujana|
 | HK | SRA Hongkong|
 | HN | Honduras|
-| Kadry | Chorwacja|
+| HR | Chorwacja|
 | HT | Haiti|
 | HU | Węgry|
 | ID | Indonezja|
@@ -121,7 +121,7 @@ Jeśli używasz operatora geodopasowania, selektory mogą być jednym z następu
 | KW | Kuwejt|
 | KY | Kajmany|
 | KZ | Kazachstan|
-| AMERYKA ŁACIŃSKA | Laotańska Republika Ludowo-Demokratyczna|
+| LA | Laotańska Republika Ludowo-Demokratyczna|
 | LB | Liban|
 | LI | Liechtenstein|
 | LK | Sri Lanka|
@@ -185,7 +185,7 @@ Jeśli używasz operatora geodopasowania, selektory mogą być jednym z następu
 | SV | Salwador|
 | SY | Arabska Republika Syryjska|
 | SZ | Suazi|
-| TC | Turks i Caicos|
+| TC | Wyspy Turks i Caicos|
 | TG | Togo|
 | TH | Tajlandia|
 | TN | Tunezja|
@@ -195,7 +195,7 @@ Jeśli używasz operatora geodopasowania, selektory mogą być jednym z następu
 | TZ | Zjednoczona Republika Tanzanii|
 | UA | Ukraina|
 | UG | Uganda|
-| Stany Zjednoczone | Stany Zjednoczone|
+| USA | Stany Zjednoczone|
 | UY | Urugwaj|
 | UZ | Uzbekistan|
 | VC | Saint Vincent i Grenadyny|
@@ -209,4 +209,4 @@ Jeśli używasz operatora geodopasowania, selektory mogą być jednym z następu
 
 ## <a name="next-steps"></a>Następne kroki
 
-Po poznaniu reguł niestandardowych [Utwórz własne reguły niestandardowe](create-custom-waf-rules.md).
+Po zapoznaniu się z regułami niestandardowymi [utwórz własne reguły niestandardowe](create-custom-waf-rules.md).

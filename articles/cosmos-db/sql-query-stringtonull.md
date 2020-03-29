@@ -1,6 +1,6 @@
 ---
-title: StringToNull w języku zapytań Azure Cosmos DB
-description: Dowiedz się więcej o funkcji StringToNull systemu SQL w Azure Cosmos DB.
+title: StringToNull w języku kwerendy usługi Azure Cosmos DB
+description: Dowiedz się więcej o funkcji systemu SQL StringToNull w usłudze Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 7e17547f88465103b61eabec04978ea806ffa2c9
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78296443"
 ---
-# <a name="stringtonull-azure-cosmos-db"></a>StringToNull (Azure Cosmos DB)
- Zwraca wyrażenie przetłumaczone na wartość null. Jeśli wyrażenia nie można przetłumaczyć, funkcja zwraca wartość undefined.  
+# <a name="stringtonull-azure-cosmos-db"></a>StringToNull (usługa Azure Cosmos DB)
+ Zwraca wyrażenie przetłumaczone na wartość null. Jeśli nie można przetłumaczyć wyrażenia, zwraca niezdefiniowane.  
   
 ## <a name="syntax"></a>Składnia
   
@@ -26,17 +26,17 @@ StringToNull(<str_expr>)
 ## <a name="arguments"></a>Argumenty
   
 *str_expr*  
-   Jest wyrażeniem ciągu, które ma być analizowane jako wyrażenie o wartości null.
+   Jest wyrażeniem ciągu, które ma być analizowane jako wyrażenie null.
   
-## <a name="return-types"></a>Typy zwracane
+## <a name="return-types"></a>Typy zwrotów
   
-  Zwraca wyrażenie o wartości null lub niezdefiniowane.  
+  Zwraca wyrażenie zerowe lub niezdefiniowane.  
   
 ## <a name="examples"></a>Przykłady
   
-  Poniższy przykład pokazuje, jak `StringToNull` działa w różnych typach. 
+  W poniższym `StringToNull` przykładzie pokazano, jak zachowuje się w różnych typach. 
 
-Poniżej przedstawiono przykłady z prawidłowymi danymi wejściowymi.
+Poniżej przedstawiono przykłady z prawidłowym wejściem.
 
  Odstęp jest dozwolony tylko przed lub po "null".
 
@@ -53,9 +53,9 @@ SELECT
 [{"n1": null, "n2": null, "n3": true}]
 ```  
 
-Poniżej przedstawiono przykłady z nieprawidłowymi danymi wejściowymi.
+Poniżej przedstawiono przykłady z nieprawidłowym wprowadzaniem danych.
 
-Wartość null uwzględnia wielkość liter i musi być zapisana ze wszystkimi małymi literami, np. "null".
+Null jest rozróżniana wielkość liter i musi być zapisywana ze wszystkimi małych liter, czyli "null".
 
 ```sql
 SELECT    
@@ -69,7 +69,7 @@ SELECT
 [{}]
 ```  
 
-Wyrażenie przesłane zostanie przeanalizowane jako wyrażenie o wartości null; te dane wejściowe nie są oceniane do typu null i w rezultacie zwracają niezdefiniowane.
+Wyrażenie przekazane zostanie przeanalizowane jako wyrażenie null; te dane wejściowe nie są do oceny typu null i w związku z tym zwracają niezdefiniowane.
 
 ```sql
 SELECT    
@@ -87,10 +87,10 @@ SELECT
 
 ## <a name="remarks"></a>Uwagi
 
-Ta funkcja systemowa nie będzie używać indeksu.
+Ta funkcja systemu nie będzie korzystać z indeksu.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Azure Cosmos DB funkcje ciągów](sql-query-string-functions.md)
-- [Azure Cosmos DB funkcje systemowe](sql-query-system-functions.md)
-- [Wprowadzenie do Azure Cosmos DB](introduction.md)
+- [Funkcje ciągów usługi Azure Cosmos DB](sql-query-string-functions.md)
+- [Funkcje systemowe Usługi Azure Cosmos DB](sql-query-system-functions.md)
+- [Wprowadzenie do usługi Azure Cosmos DB](introduction.md)

@@ -1,6 +1,6 @@
 ---
-title: Operacje usuwania na Azure Cosmos DB interfejs API Cassandra z platformy Spark
-description: W tym artykule szczegółowo opisano sposób usuwania danych w tabelach w Azure Cosmos DB interfejs API Cassandra z platformy Spark
+title: Usuwanie operacji w interfejsie API cassandra usługi Azure Cosmos DB z platformy Spark
+description: W tym artykule opisano sposób usuwania danych w tabelach w interfejsie API Cassandra usługi Azure Cosmos DB z platformy Spark
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -9,17 +9,17 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 0317fab158b2ea73b365bedc272721816da22c4e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75442087"
 ---
-# <a name="delete-data-in-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Usuwanie danych w Azure Cosmos DB interfejs API Cassandra tabelach z platformy Spark
+# <a name="delete-data-in-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Usuwanie danych w tabelach interfejsu API usługi Azure Cosmos DB Cassandra z platformy Spark
 
-W tym artykule opisano sposób usuwania danych w Azure Cosmos DB interfejs API Cassandra tabelach z platformy Spark.
+W tym artykule opisano sposób usuwania danych w tabelach interfejsu API usługi Azure Cosmos DB Cassandra z platformy Spark.
 
-## <a name="cassandra-api-configuration"></a>Konfiguracja interfejsu API rozwiązania Cassandra
+## <a name="cassandra-api-configuration"></a>Konfiguracja interfejsu API Cassandra
 
 ```scala
 import org.apache.spark.sql.cassandra._
@@ -46,8 +46,8 @@ spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
 
-## <a name="sample-data-generator"></a>Generator przykładowych danych
-Ten fragment kodu zostanie użyty do wygenerowania przykładowych danych:
+## <a name="sample-data-generator"></a>Przykładowy generator danych
+Użyjemy tego fragmentu kodu do generowania przykładowych danych:
 
 ```scala
 //Create dataframe
@@ -67,9 +67,9 @@ booksDF.write
   .save()
 ```
 
-## <a name="dataframe-api"></a>Ramka danych interfejsu API
+## <a name="dataframe-api"></a>Interfejs API dla ram danych
 
-### <a name="delete-rows-that-match-a-condition"></a>Usuń wiersze, które pasują do warunku
+### <a name="delete-rows-that-match-a-condition"></a>Usuwanie wierszy zgodnych z warunkiem
 
 ```scala
 //1) Create dataframe
@@ -153,7 +153,7 @@ deleteBooksDF: org.apache.spark.sql.Dataset[org.apache.spark.sql.Row] = [book_id
 cdbConnector: com.datastax.spark.connector.cql.CassandraConnector = com.datastax.spark.connector.cql.CassandraConnector@187deb43
 ```
 
-### <a name="delete-all-the-rows-in-the-table"></a>Usuń wszystkie wiersze z tabeli
+### <a name="delete-all-the-rows-in-the-table"></a>Usuwanie wszystkich wierszy w tabeli
 
 ```scala
 //1) Create dataframe
@@ -231,9 +231,9 @@ ReadSchema: struct<book_id:string,book_author:string,book_name:string,book_price
 +-------+-----------+---------+----------+-------------+
 ```
 
-## <a name="rdd-api"></a>INTERFEJS API RDD
+## <a name="rdd-api"></a>RDD API
 
-### <a name="delete-all-the-rows-in-the-table"></a>Usuń wszystkie wiersze z tabeli
+### <a name="delete-all-the-rows-in-the-table"></a>Usuwanie wszystkich wierszy w tabeli
 ```scala
 //1) Create RDD with all rows
 val deleteBooksRDD = 
@@ -300,7 +300,7 @@ deleteBooksRDD: com.datastax.spark.connector.rdd.CassandraTableScanRDD[com.datas
 cdbConnector: com.datastax.spark.connector.cql.CassandraConnector = com.datastax.spark.connector.cql.CassandraConnector@317927
 ```
 
-### <a name="delete-specific-columns"></a>Usuń określone kolumny
+### <a name="delete-specific-columns"></a>Usuwanie określonych kolumn
 
 ```scala
 //1) Create RDD 
@@ -358,7 +358,7 @@ deleteBooksRDD: com.datastax.spark.connector.rdd.CassandraTableScanRDD[com.datas
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby wykonać operacje agregacji i kopiowania danych, zobacz
+Aby wykonać operacje agregacji i kopiowania danych,
  
 * [Operacje agregacji](cassandra-spark-aggregation-ops.md)
 * [Operacje kopiowania tabeli](cassandra-spark-table-copy-ops.md)

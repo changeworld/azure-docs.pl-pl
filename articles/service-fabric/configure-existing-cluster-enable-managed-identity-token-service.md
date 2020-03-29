@@ -1,30 +1,30 @@
 ---
-title: Konfigurowanie obsługi tożsamości zarządzanej w istniejącym klastrze Service Fabric
-description: Poniżej przedstawiono sposób włączania obsługi tożsamości zarządzanych w istniejącym klastrze Service Fabric platformy Azure
+title: Konfigurowanie obsługi tożsamości zarządzanych w istniejącym klastrze sieci szkieletowej usług
+description: Poniżej opisano, jak włączyć obsługę tożsamości zarządzanych w istniejącym klastrze sieci szkieletowej usług Azure
 ms.topic: article
 ms.date: 12/09/2019
 ms.custom: sfrev
 ms.openlocfilehash: cb6e4ab00afd80cba41881e46296f7046a905919
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76934947"
 ---
-# <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster-preview"></a>Konfigurowanie obsługi tożsamości zarządzanej w istniejącym klastrze Service Fabric (wersja zapoznawcza)
+# <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster-preview"></a>Konfigurowanie obsługi tożsamości zarządzanych w istniejącym klastrze sieci szkieletowej usług (wersja zapoznawcza)
 
-Aby używać [tożsamości zarządzanych dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md) w aplikacjach Service Fabric, należy najpierw włączyć *usługę tokenu tożsamości zarządzanej* w klastrze. Ta usługa jest odpowiedzialna za uwierzytelnianie aplikacji Service Fabric przy użyciu ich tożsamości zarządzanych i uzyskiwania tokenów dostępu w ich imieniu. Po włączeniu usługi zobaczysz ją w Service Fabric Explorer w sekcji **system** w okienku po lewej stronie, działając w obszarze Nazwa **sieci szkieletowej:/system/ManagedIdentityTokenService**.
+Aby użyć [tożsamości zarządzanych dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md) w aplikacjach sieci szkieletowej usług, należy najpierw włączyć usługę *tokenu tożsamości zarządzanej* w klastrze. Ta usługa jest odpowiedzialna za uwierzytelnianie aplikacji sieci szkieletowej usług przy użyciu ich tożsamości zarządzanych i uzyskiwanie tokenów dostępu w ich imieniu. Po włączeniu usługi można ją wyświetlić w Eksploratorze sieci szkieletowej usług w sekcji **System** w lewym okienku, działającej pod nazwą **sieci szkieletowej:/System/ManagedIdentityTokenService**.
 
 > [!NOTE]
-> Aby włączyć **usługę zarządzanego tokenu tożsamości**, wymagana jest Service Fabric środowiska uruchomieniowego w wersji 6.5.658.9590 lub nowszej.  
+> Aby włączyć **usługę Token Tokenu Tożsamości Zarządzanej,** wymagana jest wersja wykonawcza sieci szkieletowej usług w wersji 6.5.658.9590 lub nowszej.  
 >
-> Service Fabric wersję klastra można znaleźć z poziomu Azure Portal, otwierając zasób klastra i sprawdzając Właściwość **wersja Service Fabric** w sekcji **podstawowe** informacje.
+> Wersję sieci szkieletowej usług klastra można znaleźć w portalu Azure, otwierając zasób klastra i sprawdzając właściwość **wersji sieci szkieletowej usług** w sekcji **Essentials.**
 >
-> Jeśli klaster działa w trybie uaktualniania **ręcznego** , należy najpierw uaktualnić go do 6.5.658.9590 lub nowszego.
+> Jeśli klaster jest w trybie **ręcznego** uaktualniania, należy najpierw uaktualnić go do 6.5.658.9590 lub nowszego.
 
-## <a name="enable-managed-identity-token-service-in-an-existing-cluster"></a>Włączanie *usługi zarządzanych tokenów tożsamości* w istniejącym klastrze
+## <a name="enable-managed-identity-token-service-in-an-existing-cluster"></a>Włączanie *usługi tokenu tożsamości zarządzanej* w istniejącym klastrze
 
-Aby włączyć usługę tokenu tożsamości zarządzanej w istniejącym klastrze, należy zainicjować uaktualnienie klastra, określając dwie zmiany: (1) włączenie usługi tokenu tożsamości zarządzanej oraz (2) żądanie ponownego uruchomienia każdego węzła. Najpierw Dodaj następujący fragment kodu dotyczący szablonu Azure Resource Manager klastra:
+Aby włączyć usługę tokenu tożsamości zarządzanej w istniejącym klastrze, należy zainicjować uaktualnienie klastra określające dwie zmiany: (1) Włączanie usługi tokenu tożsamości zarządzanej i (2) żądanie ponownego uruchomienia każdego węzła. Najpierw dodaj następujący fragment kodu szablonu usługi Azure Resource Manager klastra:
 
 ```json
 "fabricSettings": [
@@ -40,7 +40,7 @@ Aby włączyć usługę tokenu tożsamości zarządzanej w istniejącym klastrze
 ]
 ```
 
-Aby zmiany zaczęły obowiązywać, należy również zmienić zasady uaktualniania, aby określić wymuszenie ponownego uruchomienia Service Fabric środowiska uruchomieniowego na każdym węźle w miarę postępu uaktualniania przez klaster. To ponowne uruchomienie zapewnia, że nowo włączona usługa systemu zostanie uruchomiona i uruchomiona w każdym węźle. W poniższym fragmencie kodu `forceRestart` jest to podstawowe ustawienie; Użyj istniejących wartości dla pozostałej części ustawień.  
+Aby zmiany zostały wprowadzone, należy również zmienić zasady uaktualniania, aby określić silne ponowne uruchomienie środowiska uruchomieniowego sieci szkieletowej usług w każdym węźle w miarę postępu uaktualniania za pośrednictwem klastra. To ponowne uruchomienie gwarantuje, że nowo włączona usługa systemowa jest uruchomiona i uruchomiona w każdym węźle. We poniższym urywek `forceRestart` jest podstawowym ustawieniem; użyj istniejących wartości dla pozostałych ustawień.  
 
 ```json
 "upgradeDescription": {
@@ -55,11 +55,11 @@ Aby zmiany zaczęły obowiązywać, należy również zmienić zasady uaktualnia
 ```
 
 > [!NOTE]
-> Po pomyślnym zakończeniu uaktualniania nie zapomnij wycofać ustawienia `forceRestart`, aby zminimalizować wpływ kolejnych uaktualnień. 
+> Po pomyślnym zakończeniu uaktualnienia, nie zapomnij `forceRestart` wycofać ustawienie, aby zminimalizować wpływ kolejnych uaktualnień. 
 
 ## <a name="errors-and-troubleshooting"></a>Błędy i rozwiązywanie problemów
 
-Jeśli wdrożenie zakończy się niepowodzeniem z następującym komunikatem, oznacza to, że klaster nie jest uruchomiony na wystarczająco wysokiej wersji Service Fabric:
+Jeśli wdrożenie nie powiedzie się z następującym komunikatem, oznacza to, że klaster nie jest uruchomiony w wersji sieci szkieletowej o wystarczającej wysokości:
 
 ```json
 {
@@ -69,7 +69,7 @@ Jeśli wdrożenie zakończy się niepowodzeniem z następującym komunikatem, oz
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-* [Wdrażanie aplikacji Service Fabric platformy Azure przy użyciu tożsamości zarządzanej przypisanej do systemu](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
-* [Wdrażanie aplikacji Service Fabric platformy Azure przy użyciu tożsamości zarządzanej przypisanej przez użytkownika](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
-* [Korzystanie z zarządzanej tożsamości aplikacji Service Fabric z poziomu kodu usługi](./how-to-managed-identity-service-fabric-app-code.md)
-* [Przyznaj aplikacji Service Fabric platformy Azure dostęp do innych zasobów platformy Azure](./how-to-grant-access-other-resources.md)
+* [Wdrażanie aplikacji sieci szkieletowej usług Azure z tożsamością zarządzaną przypisaną do systemu](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
+* [Wdrażanie aplikacji sieci szkieletowej usług Azure z tożsamością zarządzaną przypisaną przez użytkownika](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
+* [Wykorzystaj zarządzaną tożsamość aplikacji sieci szkieletowej usług z kodu usługi](./how-to-managed-identity-service-fabric-app-code.md)
+* [Udzielanie dostępu aplikacji sieci szkieletowej usługi Azure do innych zasobów platformy Azure](./how-to-grant-access-other-resources.md)

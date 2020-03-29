@@ -1,6 +1,6 @@
 ---
-title: Przekształcanie danych za pomocą notesu datakosteks
-description: Dowiedz się, jak przetwarzać lub przekształcać dane, uruchamiając Notes datakostks.
+title: Przekształcanie danych za pomocą notesu databricks
+description: Dowiedz się, jak przetwarzać lub przekształcać dane, uruchamiając notes Databricks.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -12,19 +12,19 @@ ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.openlocfilehash: c7a2aec35511ef066033c3d6462143ac31660e76
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74923057"
 ---
-# <a name="transform-data-by-running-a-databricks-notebook"></a>Przekształcanie danych przez uruchamianie notesu datakostks
+# <a name="transform-data-by-running-a-databricks-notebook"></a>Przekształcanie danych przez uruchamianie notesu databricks
 
-Działanie notesu Azure Databricks w [potoku Data Factory](concepts-pipelines-activities.md) uruchamia Notes datacegły w obszarze roboczym Azure Databricks. W tym artykule opisano [działania przekształcania danych](transform-data.md) artykuł, który przedstawia ogólne omówienie transformacji danych i obsługiwanych działań transformacji. Azure Databricks to zarządzana platforma do uruchamiania Apache Spark.
+Aktywność notesu usługi Azure Databricks w [potoku usługi Data Factory](concepts-pipelines-activities.md) uruchamia notes Databricks w obszarze roboczym usługi Azure Databricks. W tym artykule opiera się na [działaniach](transform-data.md) transformacji danych, który przedstawia ogólny przegląd transformacji danych i obsługiwanych działań transformacji.Usługa Azure Databricks to zarządzana platforma do uruchamiania platformy Apache Spark.
 
-## <a name="databricks-notebook-activity-definition"></a>Definicja działania notesu dla elementów datacegłs
+## <a name="databricks-notebook-activity-definition"></a>Definicja aktywności notesu databricks
 
-Poniżej znajduje się przykładowa definicja JSON działania notesu datakostky:
+Oto przykładowa definicja JSON aktywności notesu Databricks:
 
 ```json
 {
@@ -52,24 +52,24 @@ Poniżej znajduje się przykładowa definicja JSON działania notesu datakostky:
 }
 ```
 
-## <a name="databricks-notebook-activity-properties"></a>Właściwości działania notesu dla elementów datacegły
+## <a name="databricks-notebook-activity-properties"></a>Właściwości aktywności notesu databricks
 
 W poniższej tabeli opisano właściwości JSON używane w definicji JSON:
 
-|Właściwość|Opis|Wymagane|
+|Właściwość|Opis|Wymagany|
 |---|---|---|
 |name|Nazwa działania w potoku.|Tak|
-|description|Tekst opisujący działanie działania.|Nie|
-|type|W przypadku działania notesu datacegły typem działania jest DatabricksNotebook.|Tak|
-|linkedServiceName|Nazwa połączonej usługi datakostki, w której działa Notes datakostki. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz artykuł informacje o [obliczeniu usługi połączonej](compute-linked-services.md) .|Tak|
-|notebookPath|Ścieżka bezwzględna notesu do uruchomienia w obszarze roboczym datakostki. Ta ścieżka musi zaczynać się od ukośnika.|Tak|
-|baseParameters|Tablica par klucz-wartość. Parametry podstawowe mogą być używane dla każdego uruchomienia działania. Jeśli Notes przyjmuje parametr, który nie jest określony, zostanie użyta wartość domyślna z notesu. Więcej informacji na temat parametrów w [notesach datakostks](https://docs.databricks.com/api/latest/jobs.html#jobsparampair).|Nie|
-|biblioteki|Lista bibliotek do zainstalowania w klastrze, w którym będą wykonywane zadania. Może to być tablica \<ciągu, > obiektu.|Nie|
+|description|Tekst opisujący działanie.|Nie|
+|type|W przypadku aktywności notesu databricks typem działania jest DatabricksNotebook.|Tak|
+|linkedServiceName|Nazwa usługi połączonej Databricks, na której działa notes Databricks. Aby dowiedzieć się więcej o tej połączonej usłudze, zobacz Artykuł dotyczący  [powiązanych usług obliczeń.](compute-linked-services.md)|Tak|
+|ścieżka notesu|Ścieżka bezwzględna notesu do uruchomienia w obszarze roboczym Databricks. Ta ścieżka musi zaczynać się od ukośnika.|Tak|
+|baseParametry|Tablica par klucz-wartość. Parametry podstawowe mogą być używane dla każdego uruchomienia działania. Jeśli notes przyjmuje parametr, który nie jest określony, zostanie użyta wartość domyślna z notesu. Więcej informacji na temat parametrów można znaleźć w [notesach databricks](https://docs.databricks.com/api/latest/jobs.html#jobsparampair).|Nie|
+|biblioteki|Lista bibliotek, które mają być zainstalowane w klastrze, który wykona zadanie. Może to być \<tablica ciągów,>.|Nie|
 
 
-## <a name="supported-libraries-for-databricks-activities"></a>Biblioteki obsługiwane dla działań datakostek
+## <a name="supported-libraries-for-databricks-activities"></a>Obsługiwane biblioteki dla działań Databricks
 
-W powyższych definicjach działań datacegły należy określić następujące typy biblioteki: *jar*, *egg*, *WHL*, *Maven*, *PyPi*, *Cran*.
+W powyższej definicji aktywności Databricks można określić następujące typy bibliotek: *jar,* *egg*, *whl*, *maven*, *pypi*, *cran*.
 
 ```json
 {
@@ -109,31 +109,31 @@ W powyższych definicjach działań datacegły należy określić następujące 
 
 ```
 
-Aby uzyskać więcej informacji, zobacz [dokumentację](https://docs.azuredatabricks.net/api/latest/libraries.html#managedlibrarieslibrary) dotyczącą typów bibliotek.
+Aby uzyskać więcej informacji, zobacz [Dokumentację Databricks](https://docs.azuredatabricks.net/api/latest/libraries.html#managedlibrarieslibrary) dla typów bibliotek.
 
-## <a name="passing-parameters-between-notebooks-and-data-factory"></a>Przekazywanie parametrów między notesami i Data Factory
+## <a name="passing-parameters-between-notebooks-and-data-factory"></a>Przekazywanie parametrów między notesami a fabryką danych
 
-Parametry fabryki danych można przekazać do notesów przy użyciu właściwości *baseParameters* w działaniu z danymi. 
+Parametry fabryki danych można przekazać do notesów przy użyciu *właściwości baseParameters* w aktywności databricks. 
 
-W niektórych przypadkach może być konieczne przekazanie z powrotem określonych wartości z notesu do fabryki danych, które mogą być używane dla przepływu sterowania (sprawdzanie warunkowe) w fabryce danych lub zużywane przez działania podrzędne (limit rozmiaru wynosi 2 MB). 
+W niektórych przypadkach może być konieczne przekazanie niektórych wartości z notebooka z powrotem do fabryki danych, które mogą być używane do sterowania przepływem (kontrole warunkowe) w fabryce danych lub być używane przez działania niższego rzędu (limit rozmiaru wynosi 2 MB). 
 
-1. W Twoim notesie można wywołać metodę [. Notes. Exit ("ReturnValue")](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-workflows.html#notebook-workflows-exit) i odpowiadający jej "ReturnValue" zostaną zwrócone do fabryki danych.
+1. W notesie można wywołać [dbutils.notebook.exit("returnValue")](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-workflows.html#notebook-workflows-exit) i odpowiednie "returnValue" zostaną zwrócone do fabryki danych.
 
-2. Możesz użyć danych wyjściowych w usłudze Data Factory przy użyciu wyrażenia, takiego jak `'@activity('databricks notebook activity name').output.runOutput'`. 
+2. Dane wyjściowe można wykorzystać w fabryce `'@activity('databricks notebook activity name').output.runOutput'`danych przy użyciu wyrażenia, takiego jak . 
 
    > [!IMPORTANT]
-   > W przypadku przekazywania obiektu JSON można pobrać wartości poprzez dołączenie nazw właściwości. Przykład: `'@activity('databricks notebook activity name').output.runOutput.PropertyName'`
+   > W przypadku przekazywania obiektu JSON można pobrać wartości, dołączając nazwy właściwości. Przykład: `'@activity('databricks notebook activity name').output.runOutput.PropertyName'`
 
-## <a name="how-to-upload-a-library-in-databricks"></a>Jak przekazać bibliotekę w kostkach
+## <a name="how-to-upload-a-library-in-databricks"></a>Jak przesłać bibliotekę w Databricks
 
-#### <a name="using-databricks-workspace-uihttpsdocsazuredatabricksnetuser-guidelibrarieshtmlcreate-a-library"></a>[Korzystanie z interfejsu użytkownika obszaru roboczego](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library)
+#### <a name="using-databricks-workspace-ui"></a>[Korzystanie z interfejsu użytkownika obszaru roboczego Databricks](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library)
 
-Aby uzyskać ścieżkę dBfs biblioteki dodanej przy użyciu interfejsu użytkownika, możesz użyć interfejsu [wiersza polecenia datakosteks (instalacja)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli). 
+Aby uzyskać ścieżkę dbfs biblioteki dodanej przy użyciu interfejsu użytkownika, można użyć [interfejsu wiersza polecenia Databricks (instalacja).](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli) 
 
-Zazwyczaj biblioteki jar są przechowywane w obszarze dBfs:/FileStore/Jars przy użyciu interfejsu użytkownika. Wszystkie te listę można wyświetlić za pomocą interfejsu wiersza polecenia: *datakosteks FS LS dBfs:/FileStore/Jars*.
+Zazwyczaj biblioteki Jar są przechowywane w dbfs:/FileStore/jars podczas korzystania z interfejsu użytkownika. Można wymienić wszystko za pośrednictwem interfejsu wiersza polecenia: *databricks fs ls dbfs:/FileStore/jars*.
 
 
 
-#### <a name="copy-library-using-databricks-clihttpsdocsazuredatabricksnetuser-guidedev-toolsdatabricks-clihtmlcopy-a-file-to-dbfs"></a>[Kopiowanie biblioteki przy użyciu interfejsu wiersza polecenia datakosteks](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#copy-a-file-to-dbfs)
+#### <a name="copy-library-using-databricks-cli"></a>[Kopiowanie biblioteki przy użyciu interfejsu WIERSZA POLECENIA Databricks](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#copy-a-file-to-dbfs)
 
-Przykład: *datakosteks FS CP sparkpi-Assembly-0,1. jar dBfs:/FileStore/Jars*
+Przykład: *databricks fs cp SparkPi-assembly-0.1.jar dbfs:/FileStore/jars*

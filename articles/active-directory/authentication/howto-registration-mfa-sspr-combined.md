@@ -1,6 +1,6 @@
 ---
-title: Wprowadzenie do połączonej rejestracji — Azure Active Directory
-description: Włączanie połączonej usługi Azure AD Multi-Factor Authentication i samoobsługowego rejestrowania funkcji resetowania haseł (wersja zapoznawcza)
+title: Wprowadzenie do rejestracji połączonej — usługa Azure Active Directory
+description: Włącz połączone uwierzytelnianie wieloskładnikowe usługi Azure AD i samoobsługową rejestrację resetowania haseł (wersja zapoznawcza)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,45 +12,45 @@ manager: daveba
 ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 25c64d9e959b1d68de23e83e26d3495bd3939986
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75425196"
 ---
-# <a name="enable-combined-security-information-registration-preview"></a>Włącz rejestrację połączonych informacji o zabezpieczeniach (wersja zapoznawcza)
+# <a name="enable-combined-security-information-registration-preview"></a>Włączanie połączonej rejestracji informacji o zabezpieczeniach (wersja zapoznawcza)
 
-Przed włączeniem nowego środowiska zapoznaj się z artykułem [łączenie informacji o zabezpieczeniach (wersja zapoznawcza)](concept-registration-mfa-sspr-combined.md) w celu zapoznania się z funkcjami i efektami tej funkcji.
+Przed włączeniem nowego środowiska zapoznaj się z artykułem [Połączono rejestrację informacji o zabezpieczeniach (wersja zapoznawcza),](concept-registration-mfa-sspr-combined.md) aby upewnić się, że rozumiesz funkcjonalność i efekty tej funkcji.
 
-![Ulepszone środowisko rejestracji informacji o zabezpieczeniach](media/howto-registration-mfa-sspr-combined/combined-security-info-more-required.png)
+![Połączone doświadczenie rejestracji informacji o zabezpieczeniach](media/howto-registration-mfa-sspr-combined/combined-security-info-more-required.png)
 
 |     |
 | --- |
-| Rejestracja informacji o zabezpieczeniach dotycząca usług Azure Multi-Factor Authentication i Azure Active Directory (Azure AD) samoobsługowego resetowania hasła jest publiczną funkcją w wersji zapoznawczej usługi Azure AD. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz temat [Dodatkowe warunki użytkowania dotyczące wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
+| Połączone rejestracje informacji o zabezpieczeniach dla uwierzytelniania wieloskładnikowego platformy Azure i samoobsługowego resetowania hasła usługi Azure Active Directory (Azure AD) to publiczna funkcja w wersji zapoznawczej usługi Azure AD. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz temat [Dodatkowe warunki użytkowania dotyczące wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |     |
 
 > [!NOTE]
-> Organizacje, które obsługują poprzednią wersję zapoznawczą rejestrowania i zarządzania informacjami o zabezpieczeniach, powinny wykonać poniższe kroki, aby włączyć Ulepszone środowisko w wersji zapoznawczej. W przypadku organizacji, które nie przełączają się na 8 października 2019, firma Microsoft przełączy użytkowników poprzedniej wersji zapoznawczej w celu zarejestrowania i zarządzania informacjami o zabezpieczeniach w udoskonalonym środowisku. 
+> Organizacje, które włączyły poprzednią wersję zapoznawczą do rejestrowania informacji zabezpieczających i zarządzania nimi, powinny wykonać poniższe czynności, aby włączyć ulepszone środowisko w wersji zapoznawczej. W przypadku organizacji, które nie dokonają zmiany, 8 października 2019 r. firma Microsoft przełączy użytkowników poprzedniej wersji zapoznawczej do rejestrowania informacji zabezpieczających i zarządzania nimi na ulepszone środowisko. 
 > 
-> Jeśli nie została włączona żadna wersja wersji zapoznawczej, nie wpłynie to na Twoją organizację.
+> Jeśli nie włączono żadnej wersji wersji podglądu, twoja organizacja nie będzie miała wpływu.
 
 ## <a name="enable-combined-registration"></a>Włączanie rejestracji łączonej
 
 Wykonaj następujące kroki, aby włączyć rejestrację połączoną:
 
-1. Zaloguj się do Azure Portal jako administrator użytkownika lub Administrator globalny.
-2. Przejdź do pozycji **Azure Active Directory** > **Ustawienia użytkownika** > **Zarządzanie ustawieniami wersji zapoznawczej funkcji użytkownika**.
-3. W obszarze **Użytkownicy mogą używać funkcji w wersji zapoznawczej do rejestrowania i zarządzania informacjami o zabezpieczeniach**, wybierz opcję Włącz dla **wybranej** grupy użytkowników lub dla **wszystkich** użytkowników.
+1. Zaloguj się do witryny Azure portal jako administrator użytkownika lub administrator globalny.
+2. Przejdź do ustawień**użytkownika** >  **usługi Azure Active Directory** > Zarządzanie**ustawieniami podglądu funkcji użytkownika**.
+3. W obszarze **Użytkownicy można używać funkcji w wersji zapoznawczej do rejestrowania informacji zabezpieczających i zarządzania**nimi wybierz opcję włączenia dla **wybranej** grupy użytkowników lub dla **wszystkich** użytkowników.
 
-   ![Włącz środowisko wersji zapoznawczej połączonej informacji zabezpieczeń dla wszystkich użytkowników](media/howto-registration-mfa-sspr-combined/enable-the-combined-security-info-preview.png)
+   ![Włącz połączone środowisko podglądu informacji zabezpieczających dla wszystkich użytkowników](media/howto-registration-mfa-sspr-combined/enable-the-combined-security-info-preview.png)
 
 > [!IMPORTANT]
-> Od marca 2019 opcje połączeń telefonicznych nie będą dostępne dla Multi-Factor Authentication i SSPR użytkowników w bezpłatnych/bezpłatnych dzierżawach usługi Azure AD. Ta zmiana nie wpłynie na wiadomości SMS. Opcje połączenia telefonicznego będą nadal dostępne dla użytkowników z płatnymi dzierżawami usługi Azure AD.
+> Począwszy od marca 2019 r. opcje połączeń telefonicznych nie będą dostępne dla użytkowników uwierzytelniania wieloskładnikowego i sspr w bezpłatnych/próbnych dzierżawach usługi Azure AD. Zmiana ta nie ma wpływu na wiadomości SMS. Opcje połączeń telefonicznych będą nadal dostępne dla użytkowników płatnych dzierżaw usługi Azure AD.
 
 > [!NOTE]
-> Po włączeniu łączenia się użytkowników, którzy rejestrują lub potwierdzają swój numer telefonu lub aplikację mobilną za pomocą nowego środowiska, mogą używać ich do Multi-Factor Authentication i SSPR, jeśli te metody są włączone w Multi-Factor Authentication i SSPR jazd. Jeśli wyłączysz to środowisko, użytkownicy, którzy przejdą do poprzedniej strony rejestracji SSPR w `https://aka.ms/ssprsetup` będą musieli przeprowadzić uwierzytelnianie wieloskładnikowe, zanim uzyskają dostęp do strony.
+> Po włączeniu rejestracji połączonej użytkownicy, którzy zarejestrują lub potwierdzą swój numer telefonu lub aplikację mobilną za pośrednictwem nowego środowiska, mogą z nich korzystać w przypadku uwierzytelniania wieloskładnikowego i samookreślenia, jeśli te metody są włączone w uwierzytelniania wieloskładnikowym i uwierzytelniania SSPR Zasady działalności. Jeśli następnie wyłączysz to środowisko, użytkownicy, którzy `https://aka.ms/ssprsetup` przejdą do poprzedniej strony rejestracji samookapła, będą musieli wykonać uwierzytelnianie wieloskładnikowe, zanim będą mogli uzyskać dostęp do strony.
 
-Jeśli skonfigurowano listę przypisywania lokacji do strefy w programie Internet Explorer, następujące Lokacje muszą znajdować się w tej samej strefie:
+Jeśli w programie Internet Explorer skonfigurowano listę przypisania witryny do stref, następujące witryny muszą znajdować się w tej samej strefie:
 
 * [https://login.microsoftonline.com](https://login.microsoftonline.com)
 * [https://mysignins.microsoft.com](https://mysignins.microsoft.com)
@@ -58,45 +58,45 @@ Jeśli skonfigurowano listę przypisywania lokacji do strefy w programie Interne
 
 ## <a name="conditional-access-policies-for-combined-registration"></a>Zasady dostępu warunkowego dla połączonej rejestracji
 
-Zabezpieczanie, kiedy i jak użytkownicy rejestrują się w usłudze Azure Multi-Factor Authentication i samoobsługowego resetowania hasła jest teraz możliwe z działaniami użytkowników w zasadach dostępu warunkowego. Ta funkcja w wersji zapoznawczej jest dostępna dla organizacji, które włączyły [Podgląd rejestracji połączonej](../authentication/concept-registration-mfa-sspr-combined.md). Ta funkcjonalność może być włączona w organizacjach, w których użytkownicy mogą rejestrować się w usłudze Azure Multi-Factor Authentication i SSPR z centralnej lokalizacji, takiej jak Zaufane lokalizacje sieciowe podczas dołączania do usługi kadr. Aby uzyskać więcej informacji na temat tworzenia zaufanych lokalizacji w dostępie warunkowym, zobacz artykuł [jaki jest warunek lokalizacji w Azure Active Directory dostęp warunkowy?](../conditional-access/location-condition.md#named-locations)
+Zabezpieczanie, kiedy i jak użytkownicy rejestrują się w celu autoryzacji wieloskładnikowej platformy Azure i samoobsługowego resetowania hasła jest teraz możliwe dzięki działaniom użytkownika w zasadach dostępu warunkowego. Ta funkcja podglądu jest dostępna dla organizacji, które włączyły [połączoną wersję zapoznawczą rejestracji](../authentication/concept-registration-mfa-sspr-combined.md). Ta funkcja może być włączona w organizacjach, w których użytkownicy mają rejestrować się w usłudze Azure Multi-Factor Authentication i SSPR z centralnej lokalizacji, takiej jak zaufana lokalizacja sieciowa podczas dołączania do działu kadr. Aby uzyskać więcej informacji na temat tworzenia zaufanych lokalizacji w programie Dostęp warunkowy, zobacz artykuł [Jaki jest warunek lokalizacji w usłudze Azure Active Directory Dostęp warunkowy?](../conditional-access/location-condition.md#named-locations)
 
-### <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>Utwórz zasady, aby wymagać rejestracji z zaufanej lokalizacji
+### <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>Tworzenie zasad wymagających rejestracji z zaufanej lokalizacji
 
-Poniższe zasady mają zastosowanie do wszystkich wybranych użytkowników, którzy próbują zarejestrować się przy użyciu połączonego środowiska rejestracji i blokują dostęp, chyba że nawiązują połączenie z lokalizacji oznaczonej jako zaufane sieci.
+Poniższe zasady mają zastosowanie do wszystkich wybranych użytkowników, którzy próbują zarejestrować się przy użyciu połączonego środowiska rejestracji i blokują dostęp, chyba że łączą się z lokalizacji oznaczonej jako zaufana sieć.
 
 ![Tworzenie zasad urzędu certyfikacji w celu kontrolowania rejestracji informacji zabezpieczających](media/howto-registration-mfa-sspr-combined/require-registration-from-trusted-location.png)
 
-1. W **Azure Portal**przejdź do **Azure Active Directory** > **zabezpieczenia** > **dostęp warunkowy**
+1. W **witrynie Azure portal**przejdź do usługi **Azure Active Directory** > **Security** > **Conditional Access**
 1. Wybierz pozycję **Nowe zasady**
-1. W polu Nazwa wprowadź nazwę dla tych zasad. Przykładowa **rejestracja informacji o zabezpieczeniach w zaufanych sieciach**
-1. W obszarze **przypisania**kliknij pozycję **Użytkownicy i grupy**, a następnie wybierz użytkowników i grupy, do których te zasady mają być stosowane
+1. W nazwie wprowadź nazwę dla tej zasady. Na przykład **rejestracja połączonych informacji zabezpieczających w zaufanych sieciach**
+1. W obszarze **Przydziały**kliknij pozycję **Użytkownicy i grupy**i wybierz użytkowników i grupy, do których ma się odnosić ta zasada
 
    > [!WARNING]
-   > Użytkownicy muszą mieć włączoną funkcję [Podgląd rejestracji połączonej](../authentication/howto-registration-mfa-sspr-combined.md).
+   > Użytkownicy muszą być włączeni dla [połączonej wersji zapoznawczej rejestracji](../authentication/howto-registration-mfa-sspr-combined.md).
 
-1. W obszarze **aplikacje lub akcje w chmurze**wybierz pozycję **akcje użytkownika**, a następnie sprawdź pozycję **zarejestruj informacje zabezpieczające (wersja zapoznawcza)**
-1. W obszarze **warunki** > **lokalizacje**
-   1. Skonfiguruj **tak**
+1. W obszarze **Aplikacje lub akcje w chmurze**wybierz pozycję **Akcje użytkownika**, zaznacz pozycję **Zarejestruj informacje o zabezpieczeniach (wersja zapoznawcza)**
+1. W **warunkach** > **lokalizacje**
+   1. Konfigurowanie **tak**
    1. Uwzględnij **dowolną lokalizację**
-   1. Wyklucz **wszystkie Zaufane lokalizacje**
-   1. Kliknij przycisk **gotowe** w bloku lokalizacje
-   1. Kliknij przycisk **gotowe** w bloku warunki
-1. W obszarze **kontroli dostępu** > **Udziel**
-   1. Kliknij pozycję **Blokuj dostęp**
-   1. Następnie kliknij pozycję **Wybierz** .
-1. Ustaw opcję **Włącz zasady** na wartość **włączone**
-1. Następnie kliknij pozycję **Utwórz** .
+   1. Wyklucz **wszystkie zaufane lokalizacje**
+   1. Kliknij **gotowe** na lemieszu Lokalizacje
+   1. Kliknij **gotowe** na ostrze Warunki
+1. W obszarze **Kontrola** > **Grant** dostępu
+   1. Kliknij **pozycję Blokuj dostęp**
+   1. Następnie kliknij przycisk **Zaznacz**
+1. Ustaw **włącz zasadę** **na Włączone**
+1. Następnie kliknij przycisk **Utwórz**
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Wymuś ponowne zarejestrowanie metod uwierzytelniania przez użytkowników](howto-mfa-userdevicesettings.md#manage-authentication-methods)
+[Wymuszanie na użytkownikach ponownych rejestracji metod uwierzytelniania](howto-mfa-userdevicesettings.md#manage-authentication-methods)
 
-[Dostępne metody dla Multi-Factor Authentication i SSPR](concept-authentication-methods.md)
+[Dostępne metody uwierzytelniania wieloskładnikowego i samookapła](concept-authentication-methods.md)
 
 [Konfigurowanie samoobsługowego resetowania hasła](howto-sspr-deployment.md)
 
-[Konfigurowanie Multi-Factor Authentication platformy Azure](howto-mfa-getstarted.md)
+[Konfigurowanie usługi Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
 
 [Rozwiązywanie problemów z rejestracją połączonych informacji zabezpieczających](howto-registration-mfa-sspr-combined-troubleshoot.md)
 
-[Jaki jest warunek lokalizacji w Azure Active Directory dostęp warunkowy?](../conditional-access/location-condition.md)
+[Jaki jest warunek lokalizacji w usłudze Azure Active Directory Dostęp warunkowy?](../conditional-access/location-condition.md)

@@ -1,96 +1,96 @@
 ---
-title: Interfejs wiersza polecenia platformy Azure Service Fabric — sfctl obr./min
-description: Dowiedz się więcej na temat sfctl, interfejsu wiersza polecenia platformy Azure Service Fabric. Zawiera listę poleceń dla usługi Repair Manager.
+title: Sieci szkieletowej usługi Azure CLI- sfctl rpm
+description: Dowiedz się więcej o sfctl, interfejsie wiersza polecenia sieci szkieletowej usługi Azure. Zawiera listę poleceń dla usługi menedżera napraw.
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 1787c0c8a8d5994ce1f1e9e4c55f155bbca6934c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76904941"
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
-Wykonywanie zapytań i wysyłanie poleceń do usługi Repair Manager.
+Wysyłaj kwerendy i wysyłaj polecenia do usługi menedżera napraw.
 
 ## <a name="commands"></a>Polecenia
 
 |Polecenie|Opis|
 | --- | --- |
-| approve-force | Wymusza zatwierdzenie danego zadania naprawy. |
-| delete | Usuwa zakończone zadanie naprawy. |
-| list | Pobiera listę zadań naprawczych zgodnych z podanym filtrem. |
+| siła zatwierdzania | Wymusza zatwierdzenie danego zadania naprawczego. |
+| delete | Usuwa ukończone zadanie naprawy. |
+| list | Pobiera listę zadań naprawy pasujących do danego filtrów. |
 
-## <a name="sfctl-rpm-approve-force"></a>sfctl RPM — Zatwierdź — Wymuś
-Wymusza zatwierdzenie danego zadania naprawy.
+## <a name="sfctl-rpm-approve-force"></a>sfctl rpm approve-force (siła zatwierdzania obr./min)
+Wymusza zatwierdzenie danego zadania naprawczego.
 
-Ten interfejs API obsługuje platformę Service Fabric. nie jest przeznaczona do użycia bezpośrednio w kodzie.
-
-### <a name="arguments"></a>Argumenty
-
-|Argument|Opis|
-| --- | --- |
-| --Task-ID [wymagane] | Identyfikator zadania naprawy. |
-| --Version | Bieżący numer wersji zadania naprawy. Jeśli wartość jest różna od zera, żądanie zakończy się powodzeniem tylko wtedy, gdy zostanie ona zgodna z rzeczywistą bieżącą wersją zadania naprawy. Jeśli wartość jest równa zero, Sprawdzanie wersji nie jest wykonywane. |
-
-### <a name="global-arguments"></a>Argumenty globalne
-
-|Argument|Opis|
-| --- | --- |
-| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
-| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: JSON, jsonc, Table, TSV.  Domyślny\: JSON. |
-| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji i przykładów, zobacz http\://jmespath.org/. |
-| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
-
-## <a name="sfctl-rpm-delete"></a>sfctl RPM
-Usuwa zakończone zadanie naprawy.
-
-Ten interfejs API obsługuje platformę Service Fabric. nie jest przeznaczona do użycia bezpośrednio w kodzie.
+Ten interfejs API obsługuje platformę sieci szkieletowej usług; nie jest przeznaczony do użycia bezpośrednio z kodu.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| --Task-ID [wymagane] | Identyfikator ukończonego zadania naprawy, które ma zostać usunięte. |
-| --Version | Bieżący numer wersji zadania naprawy. Jeśli wartość jest różna od zera, żądanie zakończy się powodzeniem tylko wtedy, gdy zostanie ona zgodna z rzeczywistą bieżącą wersją zadania naprawy. Jeśli wartość jest równa zero, Sprawdzanie wersji nie jest wykonywane. |
+| --task-id [Wymagane] | Identyfikator zadania naprawy. |
+| --wersja | Bieżący numer wersji zadania naprawy. Jeśli nie zero, żądanie zakończy się pomyślnie tylko wtedy, gdy ta wartość jest zgodna z rzeczywistą bieżącą wersją zadania naprawy. Jeśli zero, to nie jest wykonywane sprawdzanie wersji. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
-| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: JSON, jsonc, Table, TSV.  Domyślny\: JSON. |
-| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji i przykładów, zobacz http\://jmespath.org/. |
-| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
+| --debug | Zwiększ szczegółowość rejestrowania, aby wyświetlić wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i zamknij. |
+| --wyjście -o | Format wyjściowy.  Dozwolone wartości\: json, jsonc, table, tsv.  Domyślny\: json. |
+| --zapytanie | Ciąg zapytania JMESPath. Zobacz\:http //jmespath.org/ aby uzyskać więcej informacji i przykładów. |
+| --pełne | Zwiększ szczegółowość rejestrowania. Użyj --debug dla pełnych dzienników debugowania. |
 
-## <a name="sfctl-rpm-list"></a>Lista sfctl RPM
-Pobiera listę zadań naprawczych zgodnych z podanym filtrem.
+## <a name="sfctl-rpm-delete"></a>sfctl rpm usunąć
+Usuwa ukończone zadanie naprawy.
 
-Ten interfejs API obsługuje platformę Service Fabric. nie jest przeznaczona do użycia bezpośrednio w kodzie.
+Ten interfejs API obsługuje platformę sieci szkieletowej usług; nie jest przeznaczony do użycia bezpośrednio z kodu.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| --executor-filter | Nazwa programu wykonującego naprawy, którego odpowiednie zadania powinny znajdować się na liście. |
-| --state-filter | Bitowe lub następujące wartości określające, które Stany zadań mają być uwzględnione na liście wyników. <ul><li>1 — utworzono</li><li>2 — zatwierdzono</li><li>4 — przygotowywanie</li><li>8 — zatwierdzone</li><li>16 — wykonywanie</li><li>32 — przywracanie</li><li>64 — ukończono</li></ul>
-| --task-id-filter | Prefiks identyfikatora zadania naprawy, który ma zostać dopasowany. |
+| --task-id [Wymagane] | Identyfikator ukończonego zadania naprawy do usunięcia. |
+| --wersja | Bieżący numer wersji zadania naprawy. Jeśli nie zero, żądanie zakończy się pomyślnie tylko wtedy, gdy ta wartość jest zgodna z rzeczywistą bieżącą wersją zadania naprawy. Jeśli zero, to nie jest wykonywane sprawdzanie wersji. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
-| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: JSON, jsonc, Table, TSV.  Domyślny\: JSON. |
-| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji i przykładów, zobacz http\://jmespath.org/. |
-| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
+| --debug | Zwiększ szczegółowość rejestrowania, aby wyświetlić wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i zamknij. |
+| --wyjście -o | Format wyjściowy.  Dozwolone wartości\: json, jsonc, table, tsv.  Domyślny\: json. |
+| --zapytanie | Ciąg zapytania JMESPath. Zobacz\:http //jmespath.org/ aby uzyskać więcej informacji i przykładów. |
+| --pełne | Zwiększ szczegółowość rejestrowania. Użyj --debug dla pełnych dzienników debugowania. |
+
+## <a name="sfctl-rpm-list"></a>lista obrotów obrotowych sfctl
+Pobiera listę zadań naprawy pasujących do danego filtrów.
+
+Ten interfejs API obsługuje platformę sieci szkieletowej usług; nie jest przeznaczony do użycia bezpośrednio z kodu.
+
+### <a name="arguments"></a>Argumenty
+
+|Argument|Opis|
+| --- | --- |
+| --executor-filter | Nazwa wykonawcy naprawy, którego zadania roszczenia powinny być zawarte na liście. |
+| --state-filter | Bitowy-OR z następujących wartości, określając, które stany zadań powinny być uwzględnione na liście wyników. <ul><li>1 - Utworzono</li><li>2 - Zgłoszone</li><li>4 - Przygotowanie</li><li>8 - Zatwierdzone</li><li>16 - Wykonanie</li><li>32 - Przywracanie</li><li>64 - Zakończono</li></ul>
+| --task-id-filter | Prefiks identyfikatora zadania naprawy, który ma być dopasowany. |
+
+### <a name="global-arguments"></a>Argumenty globalne
+
+|Argument|Opis|
+| --- | --- |
+| --debug | Zwiększ szczegółowość rejestrowania, aby wyświetlić wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i zamknij. |
+| --wyjście -o | Format wyjściowy.  Dozwolone wartości\: json, jsonc, table, tsv.  Domyślny\: json. |
+| --zapytanie | Ciąg zapytania JMESPath. Zobacz\:http //jmespath.org/ aby uzyskać więcej informacji i przykładów. |
+| --pełne | Zwiększ szczegółowość rejestrowania. Użyj --debug dla pełnych dzienników debugowania. |
 
 
 ## <a name="next-steps"></a>Następne kroki
-- [Skonfiguruj](service-fabric-cli.md) interfejs wiersza polecenia Service Fabric.
-- Dowiedz się, jak używać interfejsu wiersza polecenia Service Fabric przy użyciu [przykładowych skryptów](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Konfigurowanie](service-fabric-cli.md) interfejsu wiersza polecenia sieci szkieletowej usług.
+- Dowiedz się, jak używać interfejsu wiersza polecenia sieci szkieletowej usług przy użyciu [przykładowych skryptów.](/azure/service-fabric/scripts/sfctl-upgrade-application)

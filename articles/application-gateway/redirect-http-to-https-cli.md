@@ -1,5 +1,5 @@
 ---
-title: Przekierowywanie protokołu HTTP do protokołu HTTPS przy użyciu interfejsu wiersza polecenia
+title: Przekierowanie http do HTTPS przy użyciu interfejsu wiersza polecenia
 titleSuffix: Azure Application Gateway
 description: Dowiedz się, jak utworzyć bramę aplikacji i dodać certyfikat terminacji SSL przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: application-gateway
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 11/15/2019
 ms.author: victorh
 ms.openlocfilehash: 41b2fb754f1d6ead3a7475ca146ab99758aa8134
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78246873"
 ---
-# <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Tworzenie bramy aplikacji przy użyciu protokołu HTTP do HTTPS za pomocą interfejsu wiersza polecenia platformy Azure
+# <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Tworzenie bramy aplikacji z przekierowaniem HTTP do HTTPS przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Możesz użyć interfejsu wiersza polecenia platformy Azure, aby utworzyć [bramę aplikacji](overview.md) z certyfikatem na potrzeby zakończenia protokołu SSL. Reguła routingu jest używany do przekierowywania ruchu HTTP do portu HTTPS w Twojej bramy application gateway. W tym przykładzie utworzysz również [zestaw skalowania maszyn wirtualnych](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) dla puli zaplecza bramy aplikacji, która zawiera dwa wystąpienia maszyn wirtualnych.
+Za pomocą interfejsu wiersza polecenia platformy Azure można utworzyć [bramę aplikacji](overview.md) z certyfikatem zakończenia SSL. Reguła routingu służy do przekierowywania ruchu HTTP do portu HTTPS w bramie aplikacji. W tym przykładzie można również utworzyć [zestaw skalowania maszyny wirtualnej](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) dla puli wewnętrznej bazy danych bramy aplikacji, która zawiera dwa wystąpienia maszyny wirtualnej.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
@@ -25,10 +25,10 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 > * Tworzenie certyfikatu z podpisem własnym
 > * Konfigurowanie sieci
 > * Tworzenie bramy aplikacji z certyfikatem
-> * Dodaj regułę odbiornik i Przekierowanie
+> * Dodawanie odbiornika i reguły przekierowania
 > * Tworzenie zestawu skalowania maszyn wirtualnych przy użyciu domyślnej puli zaplecza
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -36,7 +36,7 @@ Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z
 
 ## <a name="create-a-self-signed-certificate"></a>Tworzenie certyfikatu z podpisem własnym
 
-Do użycia w środowisku produkcyjnym należy zaimportować prawidłowy certyfikat podpisany przez zaufanego dostawcę. W tym samouczku utworzysz certyfikat z podpisem własnym i plik pfx za pomocą polecenia biblioteki openssl.
+Do użytku w produkcji należy zaimportować prawidłowy certyfikat podpisany przez zaufanego dostawcę. W tym samouczku utworzysz certyfikat z podpisem własnym i plik pfx za pomocą polecenia biblioteki openssl.
 
 ```console
 openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out appgwcert.crt
@@ -50,7 +50,7 @@ openssl pkcs12 -export -out appgwcert.pfx -inkey privateKey.key -in appgwcert.cr
 
 Wprowadź hasło certyfikatu. W tym przykładzie używane jest hasło *Azure123456!* .
 
-## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group).
 
@@ -115,11 +115,11 @@ az network application-gateway create \
 - *appGatewayFrontendIP* — przypisuje adres *myAGPublicIPAddress* do odbiornika *appGatewayHttpListener*.
 - *rule1* — domyślna reguła routingu skojarzona z odbiornikiem *appGatewayHttpListener*.
 
-## <a name="add-a-listener-and-redirection-rule"></a>Dodaj regułę odbiornik i Przekierowanie
+## <a name="add-a-listener-and-redirection-rule"></a>Dodawanie odbiornika i reguły przekierowania
 
 ### <a name="add-the-http-port"></a>Dodawanie portu HTTP
 
-Możesz użyć [AZ Network Application-Gateway fronton-port Create](/cli/azure/network/application-gateway/frontend-port#az-network-application-gateway-frontend-port-create) , aby dodać port HTTP do bramy aplikacji.
+Aby dodać port HTTP do bramy aplikacji, można użyć [utworzenia portu frontowego bramy aplikacji az.](/cli/azure/network/application-gateway/frontend-port#az-network-application-gateway-frontend-port-create)
 
 ```azurecli-interactive
 az network application-gateway frontend-port create \
@@ -131,7 +131,7 @@ az network application-gateway frontend-port create \
 
 ### <a name="add-the-http-listener"></a>Dodawanie odbiornika HTTP
 
-Możesz użyć [AZ Network Application-Gateway HTTP-Listener Create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create) , aby dodać odbiornik o nazwie *Listen* do bramy aplikacji.
+Można użyć [az sieci aplikacji bramy http-listener utworzyć,](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create) aby dodać odbiornik o nazwie *myListener* do bramy aplikacji.
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -144,7 +144,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-the-redirection-configuration"></a>Dodawanie konfiguracji przekierowania
 
-Dodaj konfigurację przekierowania HTTP do HTTPS do bramy aplikacji za pomocą polecenia [AZ Network Application-Gateway redirect-config Create](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create).
+Dodaj konfigurację przekierowania HTTP do HTTPS do bramy aplikacji przy użyciu [funkcji przekierowania-config aplikacji az network-gateway](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create).
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -157,9 +157,9 @@ az network application-gateway redirect-config create \
   --include-query-string true
 ```
 
-### <a name="add-the-routing-rule"></a>Dodawanie reguły routingu
+### <a name="add-the-routing-rule"></a>Dodawanie reguły marszruty
 
-Dodaj regułę routingu o nazwie *ograniczeniem zakresu wystąpień* z konfiguracją przekierowania do bramy aplikacji za pomocą polecenia [AZ Network Application-Gateway Rule Create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create).
+Dodaj regułę routingu o nazwie *rule2* z konfiguracją przekierowania do bramy aplikacji przy użyciu [reguły aplikacji az network-gateway .](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create)
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -173,7 +173,7 @@ az network application-gateway rule create \
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Tworzenie zestawu skalowania maszyn wirtualnych
 
-W tym przykładzie utworzysz zestaw skalowania maszyn wirtualnych o nazwie *myvmss* , który udostępnia serwery dla puli zaplecza w bramie aplikacji. Maszyny wirtualne w zestawie skalowania są kojarzone z podsiecią *myBackendSubnet* i pulą *appGatewayBackendPool*. Aby utworzyć zestaw skalowania, możesz użyć polecenia [az vmss create](/cli/azure/vmss#az-vmss-create).
+W tym przykładzie utworzysz zestaw skalowania maszyny wirtualnej o nazwie *myvmss,* który udostępnia serwery dla puli wewnętrznej bazy danych w bramie aplikacji. Maszyny wirtualne w zestawie skalowania są kojarzone z podsiecią *myBackendSubnet* i pulą *appGatewayBackendPool*. Aby utworzyć zestaw skalowania, możesz użyć polecenia [az vmss create](/cli/azure/vmss#az-vmss-create).
 
 ```azurecli-interactive
 az vmss create \
@@ -230,7 +230,7 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > * Tworzenie certyfikatu z podpisem własnym
 > * Konfigurowanie sieci
 > * Tworzenie bramy aplikacji z certyfikatem
-> * Dodaj regułę odbiornik i Przekierowanie
+> * Dodawanie odbiornika i reguły przekierowania
 > * Tworzenie zestawu skalowania maszyn wirtualnych przy użyciu domyślnej puli zaplecza
 
 

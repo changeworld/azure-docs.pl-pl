@@ -9,80 +9,80 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/26/2019
 ms.openlocfilehash: 1e13c7ef8eae81ef2a12a8761b0596f6329f94dc
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76937904"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Rozwiązywanie problemów z błędami tworzenia klastra za pomocą usługi Azure HDInsight
 
-Następujące problemy są Najczęstszymi przyczynami głównych niepowodzeń tworzenia klastra:
+Następujące problemy są najczęstszymi przyczynami błędów tworzenia klastra:
 
 - Problemy z uprawnieniami
 - Ograniczenia zasad zasobów
 - Zapory
 - Blokady zasobów
-- Nieobsługiwane wersje składników
-- Ograniczenia nazw kont magazynu
-- Awaria usługi
+- Nieobsługiwały wersje składników
+- Ograniczenia nazwy konta magazynu
+- Przerwy w dostawie usług
 
 ## <a name="permissions-issues"></a>Problemy z uprawnieniami
 
-Jeśli używasz Azure Data Lake Storage Gen2 i otrzymujesz błąd ```AmbariClusterCreationFailedErrorCode```, ```Internal server error occurred while processing the request. Please retry the request or contact support.```otworzyć Azure Portal, przejdź do konta magazynu i w obszarze Access Control (IAM), upewnij się, że **współautor danych obiektów blob magazynu** lub rola **właściciela danych obiektu blob magazynu** ma przypisany dostęp do **tożsamości zarządzanej przypisanej do użytkownika** dla subskrypcji. Aby uzyskać szczegółowe instrukcje, zobacz [Konfigurowanie uprawnień dla tożsamości zarządzanej na koncie Data Lake Storage Gen2](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account).
+Jeśli używasz usługi Azure Data Lake Storage ```AmbariClusterCreationFailedErrorCode```Gen2 i otrzymasz błąd ```Internal server error occurred while processing the request. Please retry the request or contact support.```, otwórz witrynę Azure portal, przejdź do konta magazynu i w obszarze Kontrola dostępu (IAM), upewnij się, że **współautor danych obiektów blob magazynu** lub rola właściciel danych obiektu **blob magazynu** ma przypisany dostęp do użytkownika **przypisanego tożsamości zarządzanej** dla subskrypcji. Aby uzyskać szczegółowe instrukcje, zobacz [Konfigurowanie uprawnień dla tożsamości zarządzanej na koncie Data Lake Storage Gen2](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account).
 
-Jeśli używasz Azure Data Lake Storage Gen1, zobacz instrukcje dotyczące instalacji i konfiguracji w [tym miejscu](../hdinsight-hadoop-use-data-lake-store.md). Data Lake Storage Gen1 nie jest obsługiwana w przypadku klastrów HBase i nie jest obsługiwana w usłudze HDInsight w wersji 4,0.
+Jeśli używasz usługi Azure Data Lake Storage Gen1, zobacz instrukcje konfiguracji i konfiguracji [tutaj](../hdinsight-hadoop-use-data-lake-store.md). Data Lake Storage Gen1 nie jest obsługiwany dla klastrów HBase i nie jest obsługiwany w hdinsight w wersji 4.0.
 
-W przypadku korzystania z usługi Azure Storage upewnij się, że nazwa konta magazynu jest prawidłowa podczas tworzenia klastra.
+Jeśli używasz usługi Azure Storage, upewnij się, że nazwa konta magazynu jest prawidłowa podczas tworzenia klastra.
 
 ## <a name="resource-policy-restrictions"></a>Ograniczenia zasad zasobów
 
-Zasady platformy Azure oparte na subskrypcjach mogą odmówić tworzenia publicznych adresów IP. Do utworzenia klastra usługi HDInsight wymagane są dwa publiczne adresy IP.  
+Zasady platformy Azure oparte na subskrypcji mogą odmówić utworzenia publicznych adresów IP. Do utworzenia klastra usługi HDInsight wymagane są dwa publiczne adresy IP.  
 
 Ogólnie rzecz biorąc, następujące zasady mogą mieć wpływ na tworzenie klastra:
 
-* Zasady uniemożliwiające tworzenie adresów IP & modułów równoważenia obciążenia w ramach subskrypcji.
-* Zasady uniemożliwiające utworzenie konta magazynu.
-* Zasady uniemożliwiają usuwanie zasobów sieciowych (usługi równoważenia adresów IP/Load).
+* Zasady uniemożliwiające tworzenie modułów równoważenia obciążenia adresu IP & w ramach subskrypcji.
+* Zasady uniemożliwiające tworzenie konta magazynu.
+* Zasady zapobiegające usuwaniu zasobów sieciowych (ip address /Load Balancers).
 
 ## <a name="firewalls"></a>Zapory
 
-Zapory w sieci wirtualnej lub koncie magazynu mogą odmówić komunikacji z adresami IP zarządzania usługą HDInsight.
+Zapory sieci wirtualnej lub konta magazynu mogą odmówić komunikacji z adresami IP zarządzania hdinsight.
 
 Zezwalaj na ruch z adresów IP w poniższej tabeli.
 
-| Źródłowy adres IP | Cel | Kierunek |
+| Źródłowy adres IP | Element docelowy | Kierunek |
 |---|---|---|
-| 168.61.49.99 | *: 443 | Przychodzące |
-| 23.99.5.239 | *: 443 | Przychodzące |
-| 168.61.48.131 | *: 443 | Przychodzące |
-| 138.91.141.162 | *: 443 | Przychodzące |
+| 168.61.49.99 | *:443 | Przychodzący |
+| 23.99.5.239 | *:443 | Przychodzący |
+| 168.61.48.131 | *:443 | Przychodzący |
+| 138.91.141.162 | *:443 | Przychodzący |
 
-Należy również dodać adresy IP specyficzne dla regionu, w którym jest tworzony klaster. Zobacz [adresy IP zarządzania usługą HDInsight](../hdinsight-management-ip-addresses.md) , aby uzyskać listę adresów dla każdego regionu świadczenia usługi Azure.
+Dodaj również adresy IP specyficzne dla regionu, w którym jest tworzony klaster. Zobacz [adresy IP zarządzania hdinsight](../hdinsight-management-ip-addresses.md) dla listy adresów dla każdego regionu platformy Azure.
 
-Jeśli używasz trasy Express lub własnego niestandardowego serwera DNS, zobacz [Planowanie sieci wirtualnej dla usługi Azure HDInsight — łączenie wielu sieci](../hdinsight-plan-virtual-network-deployment.md#multinet).
+Jeśli używasz trasy ekspresowej lub własnego niestandardowego serwera DNS, zobacz [Planowanie sieci wirtualnej dla usługi Azure HDInsight — łączenie wielu sieci](../hdinsight-plan-virtual-network-deployment.md#multinet).
 
 ## <a name="resources-locks"></a>Blokady zasobów  
 
-Upewnij się, że [w sieci wirtualnej i grupie zasobów](../../azure-resource-manager/management/lock-resources.md)nie ma blokad. Nie można utworzyć lub usunąć klastrów, jeśli grupa zasobów jest zablokowana. 
+Upewnij się, że [w sieci wirtualnej i grupie zasobów](../../azure-resource-manager/management/lock-resources.md)nie ma żadnych blokad . Klastrów nie można utworzyć ani usunąć, jeśli grupa zasobów jest zablokowana. 
 
-## <a name="unsupported-component-versions"></a>Nieobsługiwane wersje składników
+## <a name="unsupported-component-versions"></a>Nieobsługiwały wersje składników
 
-Upewnij się, że używasz [obsługiwanej wersji usługi Azure HDInsight](../hdinsight-component-versioning.md) i wszystkich [składników Apache Hadoop](../hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions) w rozwiązaniu.  
+Upewnij się, że używasz [obsługiwanej wersji usługi Azure HDInsight](../hdinsight-component-versioning.md) i wszelkich [składników Apache Hadoop](../hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions) w rozwiązaniu.  
 
-## <a name="storage-account-name-restrictions"></a>Ograniczenia nazw kont magazynu
+## <a name="storage-account-name-restrictions"></a>Ograniczenia nazwy konta magazynu
 
-Nazwy kont magazynu nie mogą być dłuższe niż 24 znaki i nie mogą zawierać znaku specjalnego. Te ograniczenia dotyczą również nazwy domyślnego kontenera w ramach konta magazynu.
+Nazwy kont magazynu nie mogą zawierać więcej niż 24 znaków i nie mogą zawierać znaku specjalnego. Te ograniczenia dotyczą również nazwy domyślnego kontenera w ramach konta magazynu.
 
-Inne ograniczenia nazewnictwa stosują się również do tworzenia klastra. Aby uzyskać więcej informacji, zobacz [ograniczenia nazw klastrów](../hdinsight-hadoop-provision-linux-clusters.md#cluster-name).
+Inne ograniczenia nazewnictwa mają również zastosowanie do tworzenia klastra. Aby uzyskać więcej informacji, zobacz [Ograniczenia nazw klastrów.](../hdinsight-hadoop-provision-linux-clusters.md#cluster-name)
 
-## <a name="service-outages"></a>Awaria usługi
+## <a name="service-outages"></a>Przerwy w dostawie usług
 
-Sprawdź [Stan platformy Azure](https://status.azure.com) , aby uzyskać potencjalne problemy związane z awarią lub usługą.
+Sprawdź [stan platformy Azure](https://status.azure.com) pod kątem potencjalnych awarii lub problemów z usługą.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Rozszerzanie usługi Azure HDInsight za pomocą usługi Azure Virtual Network](../hdinsight-plan-virtual-network-deployment.md)
-* [Korzystanie z usługi Azure Data Lake Storage Gen2 w połączeniu z klastrami usługi Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen2.md)  
+* [Rozszerzanie usługi Azure HDInsight przy użyciu sieci wirtualnej platformy Azure](../hdinsight-plan-virtual-network-deployment.md)
+* [Korzystanie z usługi Azure Data Lake Storage Gen2 z klastrami usługi Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen2.md)  
 * [Korzystanie z usługi Azure Storage w połączeniu z klastrami usługi Azure HDInsight](../hdinsight-hadoop-use-blob-storage.md)
 * [Konfigurowanie klastrów w usłudze HDInsight przy użyciu technologii Apache Hadoop, Apache Spark, Apache Kafka i innych](../hdinsight-hadoop-provision-linux-clusters.md)

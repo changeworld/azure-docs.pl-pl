@@ -1,6 +1,6 @@
 ---
-title: Monitorowanie i programowe zarządzanie zadaniami usługi Azure Stream Analytics
-description: W tym artykule opisano, jak programowe monitorowanie zadań usługi Stream Analytics utworzone za pomocą interfejsów API REST, zestaw SDK usługi Azure lub programu PowerShell.
+title: Programowo monitoruj zadania usługi Azure Stream Analytics i zarządzaj nimi
+description: W tym artykule opisano sposób programowego monitorowania zadań usługi Stream Analytics utworzonych za pośrednictwem interfejsów API REST, azure SDK lub PowerShell.
 author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
@@ -8,35 +8,35 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
 ms.openlocfilehash: 23c0cc0d0e4a007fdf46021f857b559266f6a193
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75431667"
 ---
-# <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Programowe tworzenie monitor zadania usługi Stream Analytics
+# <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Programowo tworzenie monitora zadań usługi Stream Analytics
 
-W tym artykule przedstawiono sposób włączania monitorowania dla zadania usługi Stream Analytics. Zadania usługi Stream Analytics, które są tworzone za pomocą interfejsów API REST, zestaw SDK usługi Azure lub programu PowerShell monitorowania, domyślnie nie jest konieczne. Można ręcznie włączyć ją w witrynie Azure portal, przechodząc do strony Monitor zadania i klikając przycisk Włącz, lub możesz zautomatyzować ten proces, wykonując kroki opisane w tym artykule. Dane monitorowania będzie wyświetlany w obszarze metryki w witrynie Azure portal. zadania usługi Stream Analytics.
+W tym artykule pokazano, jak włączyć monitorowanie zadania usługi Stream Analytics. Zadania usługi Stream Analytics, które są tworzone za pośrednictwem interfejsów API REST, Azure SDK lub PowerShell nie mają domyślnie włączone monitorowanie. Możesz ręcznie włączyć go w witrynie Azure portal, przechodząc do strony Monitor zadania i klikając przycisk Włącz lub możesz zautomatyzować ten proces, wykonując kroki opisane w tym artykule. Dane monitorowania będą wyświetlane w obszarze Metryki witryny Azure portal dla zadania usługi Stream Analytics.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem tego procesu należy spełnić następujące wymagania wstępne:
+Przed rozpoczęciem tego procesu należy mieć następujące wymagania wstępne:
 
 * Visual Studio 2019 lub 2015
-* [Zestaw Azure .NET SDK](https://azure.microsoft.com/downloads/) pobrane i zainstalowane
-* Istniejące zadanie usługi Stream Analytics, która musi mieć monitorowanie jest włączone
+* Pobrany i zainstalowany [zestaw SDK platformy Azure .NET](https://azure.microsoft.com/downloads/)
+* Istniejące zadanie usługi Stream Analytics, które musi mieć włączone monitorowanie
 
 ## <a name="create-a-project"></a>Tworzenie projektu
 
-1. Utwórz aplikację konsolową programu Visual Studio C# .NET.
-2. W konsoli Menedżera pakietów uruchom następujące polecenia, aby zainstalować pakiety NuGet. Pierwsza z nich jest usługi Azure Stream Analytics Management .NET SDK. Drugim jest SDK monitora platformy Azure, która będzie służyć do umożliwienia monitorowania. Klienta usługi Azure Active Directory, który będzie używany do uwierzytelniania jest ostatni z nich.
+1. Utwórz aplikację konsoli Visual Studio C# .NET.
+2. W konsoli Menedżera pakietów uruchom następujące polecenia, aby zainstalować pakiety NuGet. Pierwszym z nich jest azure stream analytics management .NET SDK. Drugi to zestaw SDK usługi Azure Monitor, który będzie używany do włączania monitorowania. Ostatni to klient usługi Azure Active Directory, który będzie używany do uwierzytelniania.
    
    ```powershell
    Install-Package Microsoft.Azure.Management.StreamAnalytics
    Install-Package Microsoft.Azure.Insights -Pre
    Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
    ```
-3. Dodaj następującą sekcję appSettings w pliku App.config.
+3. Dodaj następującą sekcję appSettings do pliku App.config.
    
    ```csharp
    <appSettings>
@@ -53,7 +53,7 @@ Przed rozpoczęciem tego procesu należy spełnić następujące wymagania wstę
      <add key="ActiveDirectoryTenantId" value="YOUR TENANT ID" />
    </appSettings>
    ```
-   Zastąp wartości *SubscriptionId* i *ActiveDirectoryTenantId* za pomocą usługi Azure identyfikatory subskrypcji i dzierżawy. Te wartości można uzyskać, uruchamiając następujące polecenie cmdlet programu PowerShell:
+   Zamień wartości *identyfikatora subscriptionid* i *identyfikatora ActiveDirectoryTenantId* na subskrypcję platformy Azure i identyfikatory dzierżawy. Te wartości można uzyskać, uruchamiając następujące polecenie cmdlet programu PowerShell:
    
    ```powershell
    Get-AzureAccount
@@ -111,7 +111,7 @@ Przed rozpoczęciem tego procesu należy spełnić następujące wymagania wstę
 
 ## <a name="create-management-clients"></a>Tworzenie klientów zarządzania
 
-Poniższy kod zostanie skonfigurowany niezbędne zmiennych i zarządzania klientami.
+Poniższy kod skonfiguruje niezbędne zmienne i klientów zarządzania.
 
    ```csharp
     string resourceGroupName = "<YOUR AZURE RESOURCE GROUP NAME>";
@@ -133,18 +133,18 @@ Poniższy kod zostanie skonfigurowany niezbędne zmiennych i zarządzania klient
     InsightsManagementClient(aadTokenCredentials, resourceManagerUri);
    ```
 
-## <a name="enable-monitoring-for-an-existing-stream-analytics-job"></a>Włącz monitorowanie dla istniejącego zadania usługi Stream Analytics
+## <a name="enable-monitoring-for-an-existing-stream-analytics-job"></a>Włączanie monitorowania dla istniejącego zadania usługi Stream Analytics
 
-Poniższy kod umożliwia monitorowanie **istniejących** zadania usługi Stream Analytics. Pierwsza część kod wykonuje żądanie GET względem usługi Stream Analytics można pobrać informacji dotyczących określonego zadania usługi Stream Analytics. Używa właściwości *ID* (pobranej z żądania GET) jako parametru metody Put w drugiej połowie kodu, co spowoduje wysłanie żądania Put do usługi Insights w celu włączenia monitorowania dla zadania Stream Analytics.
+Poniższy kod umożliwia monitorowanie **istniejącego** zadania usługi Stream Analytics. Pierwsza część kodu wykonuje żądanie GET względem usługi Usługi Usługi Usługi Stream Analytics w celu pobrania informacji o określonym zadaniu usługi Usługi Usługi Stream Analytics. Używa właściwości *Identyfikator* (pobrane z żądania GET) jako parametr dla Put metody w drugiej połowie kodu, który wysyła put żądania do usługi Insights, aby włączyć monitorowanie zadania usługi Analizy strumienia.
 
 > [!WARNING]
-> Jeśli zostało wcześniej włączone monitorowanie dla innego zadania usługi Stream Analytics, za pośrednictwem witryny Azure portal lub programowo przy użyciu poniższego kodu, **firma Microsoft zaleca, aby zapewnić taką samą nazwę konta magazynu, który był używany podczas wcześniej włączone monitorowanie.**
+> Jeśli wcześniej włączono monitorowanie dla innego zadania usługi Stream Analytics za pośrednictwem witryny Azure portal lub programowo za pomocą poniższego kodu, **zaleca się podanie tej samej nazwy konta magazynu, która została użyta podczas wcześniej włączonego monitorowania.**
 > 
-> Konto magazynu jest połączony z regionu, utworzone zadanie usługi Stream Analytics, w, a nie do samo zadanie.
+> Konto magazynu jest połączone z regionem, w którego utworzono zadanie usługi Stream Analytics, a nie specjalnie z samym zadaniem.
 > 
-> Wszystkie Stream Analytics zadania (i innych zasobów platformy Azure), w tym samym regionie udostępnić to konto magazynu do przechowywania danych monitorowania. Jeśli podasz innego konta magazynu, może spowodować niezamierzone efekty uboczne w monitorowaniu inne zadania usługi Stream Analytics lub innych zasobów platformy Azure.
+> Wszystkie zadania usługi Stream Analytics (i wszystkie inne zasoby platformy Azure) w tym samym regionie współużytkują to konto magazynu do przechowywania danych monitorowania. Jeśli podasz inne konto magazynu, może to spowodować niezamierzone skutki uboczne w monitorowaniu innych zadań usługi Stream Analytics lub innych zasobów platformy Azure.
 > 
-> Nazwa konta magazynu, która umożliwia zastąpienie `<YOUR STORAGE ACCOUNT NAME>` w poniższym kodzie powinna być w tej samej subskrypcji co zadanie usługi Stream Analytics, które są Włączanie monitorowania dla konta magazynu.
+> Nazwa konta magazynu, której `<YOUR STORAGE ACCOUNT NAME>` używasz do zastąpienia w poniższym kodzie, powinna być kontem magazynu, które znajduje się w tej samej subskrypcji, co zadanie usługi Stream Analytics, dla którego włączono monitorowanie.
 > 
 > 
 >    ```csharp
@@ -167,9 +167,9 @@ Poniższy kod umożliwia monitorowanie **istniejących** zadania usługi Stream 
 >   ```
 
 
-## <a name="get-support"></a>Uzyskaj pomoc techniczną
+## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
-Aby uzyskać dalszą pomoc, Wypróbuj nasz [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Aby uzyskać dalszą pomoc, wypróbuj nasze [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Następne kroki
 

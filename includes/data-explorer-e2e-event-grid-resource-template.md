@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 02/03/2020
 ms.author: lugoldbe
 ms.openlocfilehash: 22af1f413bef0c69eb732f75fa03049140e4c7e3
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76964307"
 ---
 ## <a name="azure-resource-manager-template"></a>Szablon usługi Azure Resource Manager
 
-W tym artykule opisano tworzenie grupy zasobów, konta magazynu i kontenera, centrum zdarzeń oraz klastra Eksplorator danych platformy Azure i bazy danych przy użyciu szablonu Azure Resource Manager. Zapisz następującą zawartość w pliku o nazwie `template.json`. Ten plik zostanie użyty do uruchomienia przykładu kodu.
+W tym artykule używasz szablonu Usługi Azure Resource Manager do utworzenia grupy zasobów, konta magazynu i kontenera, centrum zdarzeń oraz klastra i bazy danych usługi Azure Data Explorer. Zapisz następującą zawartość w pliku `template.json`o nazwie . Użyjesz tego pliku do uruchomienia przykładu kodu.
 
 ```json
 {

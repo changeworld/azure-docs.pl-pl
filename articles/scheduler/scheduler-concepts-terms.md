@@ -10,22 +10,22 @@ ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
 ms.openlocfilehash: 0a744c2de320ddad2e7959cae7b62d7990879953
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78898571"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Pojęcia, terminologia i jednostki w usłudze Azure Scheduler
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) zastępuje usługę Azure Scheduler, która jest [wycofywana](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Aby kontynuować pracę z zadaniami skonfigurowanymi w usłudze Scheduler, [Przeprowadź migrację do Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) najszybciej, jak to możliwe. 
+> [Usługa Azure Logic Apps](../logic-apps/logic-apps-overview.md) zastępuje harmonogram platformy Azure, który jest [wycofywany.](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date) Aby kontynuować pracę z zadaniami skonfigurowane w harmonogramie, należy jak [najszybciej przeprowadzić migrację do usługi Azure Logic Apps.](../scheduler/migrate-from-scheduler-to-logic-apps.md) 
 >
-> Usługa Scheduler nie jest już dostępna w Azure Portal, ale polecenia cmdlet programu PowerShell dla [interfejsu API REST](/rest/api/scheduler) i [usługi Azure Scheduler](scheduler-powershell-reference.md) pozostają dostępne w tym momencie, aby można było zarządzać zadaniami i kolekcjami zadań.
+> Harmonogram nie jest już dostępny w witrynie Azure portal, ale [interfejsy CMDLET interfejsu REST](/rest/api/scheduler) i [narzędzia cmdlet programu Azure Scheduler PowerShell](scheduler-powershell-reference.md) pozostają dostępne w tej chwili, dzięki czemu można zarządzać zadaniami i kolekcjami zadań.
 
 ## <a name="entity-hierarchy"></a>Hierarchia jednostek
 
-Interfejs API REST usługi Azure Scheduler zawiera następujące jednostki główne, czyli zasoby, i korzysta z nich:
+Interfejs API REST usługi Azure Scheduler uwidacznia następujące jednostki główne, czyli zasoby, i korzysta z nich:
 
 | Jednostka | Opis |
 |--------|-------------|
@@ -36,11 +36,11 @@ Interfejs API REST usługi Azure Scheduler zawiera następujące jednostki głó
 
 ## <a name="entity-management"></a>Zarządzanie jednostkami
 
-Na wysokim poziomie interfejs API REST usługi Scheduler zawiera następujące operacje z zakresu zarządzania jednostkami.
+Na wysokim poziomie interfejs API REST usługi Scheduler uwidacznia te operacje na potrzeby zarządzania jednostkami.
 
 ### <a name="job-management"></a>Zarządzanie zadaniami
 
-Obsługuje operacje tworzenia i edytowania zadań. Wszystkie zadania muszą należeć do istniejącej kolekcji zadań, w związku z czym nie ma możliwości niejawnego tworzenia. Aby uzyskać więcej informacji, zobacz [Interfejs API REST usługi Scheduler — zadania](https://docs.microsoft.com/rest/api/scheduler/jobs). Oto adres URI dla następujących operacji:
+Obsługuje operacje tworzenia i edytowania zadań. Wszystkie zadania muszą należeć do istniejącej kolekcji zadań, w związku z czym nie ma możliwości niejawnego tworzenia. Aby uzyskać więcej informacji, zobacz [Interfejs API REST usługi Scheduler — zadania](https://docs.microsoft.com/rest/api/scheduler/jobs). Oto adres identyfikatora URI dla tych operacji:
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}
@@ -48,7 +48,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 ### <a name="job-collection-management"></a>Zarządzanie kolekcją zadań
 
-Obsługuje operacje tworzenia oraz edytowania zadań i kolekcji zadań, które są mapowane na przydziały i wspólne ustawienia. Przydziały dotyczą na przykład maksymalnej liczby zadań oraz najmniejszego interwału cyklu. Aby uzyskać więcej informacji, zobacz [Interfejs API REST usługi Scheduler — kolekcje zadań](https://docs.microsoft.com/rest/api/scheduler/jobcollections). Oto adres URI dla następujących operacji:
+Obsługuje operacje tworzenia i edytowania zadań i kolekcji zadań, które są mapowane na przydziały i wspólne ustawienia. Przydziały dotyczą na przykład maksymalnej liczby zadań oraz najmniejszego interwału cyklu. Aby uzyskać więcej informacji, zobacz [Interfejs API REST usługi Scheduler — kolekcje zadań](https://docs.microsoft.com/rest/api/scheduler/jobcollections). Oto adres identyfikatora URI dla tych operacji:
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}
@@ -56,7 +56,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 ### <a name="job-history-management"></a>Zarządzanie historią zadania
 
-Obsługuje operację GET umożliwiającą pobranie historii wykonywania zadania z 60 dni, obejmującej m.in. informacje o czasie, który upłynął podczas zadania, oraz o wynikach wykonania zadania. Obejmuje obsługę parametru ciągu zapytania służącego do filtrowania na podstawie stanu i statusu. Aby uzyskać więcej informacji, zobacz [Interfejs API REST usługi Scheduler — lista historii zadania](https://docs.microsoft.com/rest/api/scheduler/jobs/listjobhistory). Oto adres URI dla tej operacji:
+Obsługuje operację GET umożliwiającą pobranie historii wykonywania zadania z 60 dni, obejmującej m.in. informacje o czasie, który upłynął podczas zadania, oraz o wynikach wykonania zadania. Obejmuje obsługę parametru ciągu zapytania służącego do filtrowania na podstawie stanu i statusu. Aby uzyskać więcej informacji, zobacz [Interfejs API REST usługi Scheduler — lista historii zadania](https://docs.microsoft.com/rest/api/scheduler/jobs/listjobhistory). Oto adres identyfikatora URI dla tej operacji:
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history
@@ -84,16 +84,16 @@ Zadanie zawiera również dane dostarczane przez system, takie jak czas następn
 
 | Element | Wymagany | Opis | 
 |---------|----------|-------------| 
-| [**startTime**](#start-time) | Nie | Godzina rozpoczęcia zadania z przesunięciem strefy czasowej w [formacie ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) | 
-| [**action**](#action) | Yes | Szczegóły akcji podstawowej, które mogą zawierać obiekt **errorAction** | 
+| [**Starttime**](#start-time) | Nie | Godzina rozpoczęcia zadania z przesunięciem strefy czasowej w [formacie ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) | 
+| [**Działania**](#action) | Tak | Szczegóły akcji podstawowej, które mogą zawierać obiekt **errorAction** | 
 | [**errorAction**](#error-action) | Nie | Szczegóły akcji pomocniczej, która jest uruchamiana, gdy akcja podstawowa zakończy się niepowodzeniem |
-| [**recurrence**](#recurrence) | Nie | Szczegóły, takie jak częstotliwość i interwał, dla zadania cyklicznego | 
-| [**retryPolicy**](#retry-policy) | Nie | Szczegóły dotyczące częstotliwości ponawiania próby wykonania akcji | 
-| [**state**](#state) | Yes | Szczegóły dotyczące bieżącego stanu zadania |
-| [**status**](#status) | Yes | Szczegóły dotyczące bieżącego stanu zadania, który jest kontrolowany przez usługę |
+| [**Cyklu**](#recurrence) | Nie | Szczegóły, takie jak częstotliwość i interwał, dla zadania cyklicznego | 
+| [**ponów próbęPolityka**](#retry-policy) | Nie | Szczegóły dotyczące częstotliwości ponawiania próby wykonania akcji | 
+| [**Państwa**](#state) | Tak | Szczegóły dotyczące bieżącego stanu zadania |
+| [**Stan**](#status) | Tak | Szczegóły dotyczące bieżącego stanu zadania, który jest kontrolowany przez usługę |
 ||||
 
-Oto przykład pokazujący kompleksową definicję zadania dla akcji HTTP z pełniejszymi szczegółami elementów opisanymi w kolejnych sekcjach: 
+Oto przykład pokazujący kompleksową definicję zadania dla akcji HTTP z pełniejszymi szczegółami elementu opisanymi w kolejnych sekcjach: 
 
 ```json
 "properties": {
@@ -249,15 +249,15 @@ Zadanie jest uruchamiane cyklicznie, jeśli definicja JSON zadania zawiera obiek
 | Właściwość | Wymagany | Wartość | Opis | 
 |----------|----------|-------|-------------| 
 | **frequency** | Tak, gdy jest używany obiekt **recurrence** | „Minute”, „Hour”, „Day”, „Week”, „Month”, „Year” | Jednostka czasu między wystąpieniami | 
-| **interval** | Nie | od 1 do 1000 (włącznie) | Dodatnia liczba całkowita określająca liczbę jednostek czasu między każdym wystąpieniem na podstawie właściwości **frequency** (częstotliwość) | 
-| **schedule** | Nie | Różna | Szczegółowe informacje dla bardziej złożonych i zaawansowanych harmonogramów. Zobacz właściwości **hours**, **minutes**, **weekDays**, **months** i **monthDays** | 
+| **Interwał** | Nie | od 1 do 1000 (włącznie) | Dodatnia liczba całkowita określająca liczbę jednostek czasu między każdym wystąpieniem na podstawie właściwości **frequency** (częstotliwość) | 
+| **Harmonogram** | Nie | Różna | Szczegółowe informacje dla bardziej złożonych i zaawansowanych harmonogramów. Zobacz właściwości **hours**, **minutes**, **weekDays**, **months** i **monthDays** | 
 | **hours** | Nie | Od 1 do 24 | Tablica z oznaczeniami godzin dla czasu uruchomienia zadania | 
-| **minutes** | Nie | od 0 do 59 | Tablica z oznaczeniami minut dla czasu uruchomienia zadania | 
+| **minutes** | Nie | Od 0 do 59 | Tablica z oznaczeniami minut dla czasu uruchomienia zadania | 
 | **months** | Nie | Od 1 do 12 | Tablica z miesiącami dla czasu uruchomienia zadania | 
 | **monthDays** | Nie | Różna | Tablica z dniami miesiąca dla czasu uruchomienia zadania | 
 | **weekDays** | Nie | „Monday”, „Tuesday”, „Wednesday”, „Thursday”, „Friday”, „Saturday” lub „Sunday” | Tablica z dniami tygodnia dla czasu uruchomienia zadania | 
-| **count** | Nie | <*none*> | Liczba cykli. Wartość domyślna to cykl nieskończony. Nie można używać jednocześnie właściwości **count** i **endTime**. Obowiązuje zasada, że uwzględniana jest wartość, która kończy zadanie jako pierwsza. | 
-| **endTime** | Nie | <*none*> | Data i godzina zakończenia cyklu. Wartość domyślna to cykl nieskończony. Nie można używać jednocześnie właściwości **count** i **endTime**. Obowiązuje zasada, że uwzględniana jest wartość, która kończy zadanie jako pierwsza. | 
+| **Liczba** | Nie | <*Brak*> | Liczba cykli. Wartość domyślna to cykl nieskończony. Nie można używać jednocześnie właściwości **count** i **endTime**. Obowiązuje zasada, że uwzględniana jest wartość, która kończy zadanie jako pierwsza. | 
+| **Endtime** | Nie | <*Brak*> | Data i godzina zakończenia cyklu. Wartość domyślna to cykl nieskończony. Nie można używać jednocześnie właściwości **count** i **endTime**. Obowiązuje zasada, że uwzględniana jest wartość, która kończy zadanie jako pierwsza. | 
 ||||
 
 Aby uzyskać więcej informacji na temat tych elementów, zobacz [Tworzenie złożonych i zaawansowanych harmonogramów cyklicznych](../scheduler/scheduler-advanced-complexity.md).
@@ -278,7 +278,7 @@ Dla przypadków, w których zadanie usługi Scheduler może zakończyć się nie
 
 | Właściwość | Wymagany | Wartość | Opis | 
 |----------|----------|-------|-------------| 
-| **retryType** | Yes | **Fixed**, **None** | Określa, czy zasada ponawiania jest zdefiniowana (**fixed**), czy nie (**none**). | 
+| **retryType** | Tak | **Fixed**, **None** | Określa, czy zasada ponawiania jest zdefiniowana (**fixed**), czy nie (**none**). | 
 | **retryInterval** | Nie | PT30S | Określa interwał i częstotliwość między ponownymi próbami w [formacie ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Wartość minimalna wynosi 15 sekund, natomiast wartość maksymalna to 18 miesięcy. | 
 | **retryCount** | Nie | 4 | Określa liczbę ponownych prób. Wartość maksymalna to 20. | 
 ||||
@@ -308,7 +308,7 @@ Po rozpoczęciu zadania usługa Scheduler zwraca informacje dotyczące statusu z
 * Liczba niepowodzeń, jeśli wystąpiły
 * Liczba błędów, jeśli wystąpiły
 
-Na przykład:
+Przykład:
 
 ```json
 "status": {

@@ -1,5 +1,5 @@
 ---
-title: Zapisuj procedury składowane, wyzwalacze i UDF w Azure Cosmos DB
+title: Zapis procedur przechowywanych, wyzwalaczy i plików UDF w usłudze Azure Cosmos DB
 description: Dowiedz się, jak definiować procedury składowane, wyzwalacze i funkcje zdefiniowane przez użytkownika w usłudze Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: mjbrown
 ms.openlocfilehash: 4dee017323bda5fc08598a9b24cadd11516807cf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75441732"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Jak pisać procedury składowane, wyzwalacze i funkcje zdefiniowane przez użytkownika w usłudze Azure Cosmos DB
 
-Usługa Azure Cosmos DB zapewnia zintegrowane z językiem, transakcyjne wykonywanie kodu JavaScript, które umożliwia pisanie **procedur składowanych**, **wyzwalaczy** i **funkcji zdefiniowanych przez użytkownika (UDF)** . Korzystając z interfejsu API SQL w usłudze Azure Cosmos DB, można definiować procedury składowane, wyzwalacze i funkcje UDF w języku JavaScript. Logikę można napisać w języku JavaScript, a następnie wykonać ją w aparacie bazy danych. Wyzwalacze, procedury składowane i funkcje UDF można tworzyć i wykonywać przy użyciu witryny [Azure Portal](https://portal.azure.com/), [zintegrowanego interfejsu API zapytań języka JavaScript w usłudze Azure Cosmos DB](javascript-query-api.md) i [zestawów SDK klienta interfejsu API SQL usługi Cosmos DB](sql-api-dotnet-samples.md). 
+Usługa Azure Cosmos DB zapewnia zintegrowane z językiem, transakcyjne wykonywanie kodu JavaScript, które umożliwia pisanie **procedur składowanych**, **wyzwalaczy** i **funkcji zdefiniowanych przez użytkownika (UDF)**. Korzystając z interfejsu API SQL w usłudze Azure Cosmos DB, można definiować procedury składowane, wyzwalacze i funkcje UDF w języku JavaScript. Logikę można napisać w języku JavaScript, a następnie wykonać ją w aparacie bazy danych. Wyzwalacze, procedury składowane i funkcje UDF można tworzyć i wykonywać przy użyciu witryny [Azure Portal](https://portal.azure.com/), [zintegrowanego interfejsu API zapytań języka JavaScript w usłudze Azure Cosmos DB](javascript-query-api.md) i [zestawów SDK klienta interfejsu API SQL usługi Cosmos DB](sql-api-dotnet-samples.md). 
 
 Aby wywołać procedurę składowaną, wyzwalacz i funkcję zdefiniowaną przez użytkownika, należy je zarejestrować. Aby uzyskać więcej informacji, zobacz [Jak pracować z procedurami składowanymi, wyzwalaczami i funkcjami zdefiniowanymi przez użytkownika w usłudze Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md).
 
@@ -23,9 +23,9 @@ Aby wywołać procedurę składowaną, wyzwalacz i funkcję zdefiniowaną przez 
 > W przypadku kontenerów podzielonych na partycje podczas wykonywania procedury składowanej w opcjach żądania należy podać wartość klucza partycji. Procedury składowane są zawsze ograniczone do klucza partycji. Elementy, które mają inną wartość klucza partycji, nie będą widoczne dla procedury składowanej. Ma to również zastosowanie do wyzwalaczy.
 
 > [!Tip]
-> Program Cosmos obsługuje wdrażanie kontenerów za pomocą procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika. Aby uzyskać więcej informacji [, zobacz Tworzenie kontenera Azure Cosmos dB przy użyciu funkcji po stronie serwera.](manage-sql-with-resource-manager.md#create-sproc)
+> Usługa Cosmos obsługuje wdrażanie kontenerów z procedurami przechowywanymi, wyzwalaczami i funkcjami zdefiniowanymi przez użytkownika. Aby uzyskać więcej informacji, zobacz [Tworzenie kontenera usługi Azure Cosmos DB z funkcjami po stronie serwera.](manage-sql-with-resource-manager.md#create-sproc)
 
-## <a id="stored-procedures"></a>Jak pisać procedury składowane
+## <a name="how-to-write-stored-procedures"></a><a id="stored-procedures"></a>Jak pisać procedury składowane
 
 Procedury składowane pisze się przy użyciu języka JavaScript. Mogą one tworzyć, aktualizować, odczytywać i usuwać elementy w kontenerze usługi Azure Cosmos oraz wysyłać względem nich zapytania. Procedury składowane są rejestrowane w danej kolekcji i mogą operować na dowolnych dokumentach lub załącznikach znajdujących się w tej kolekcji.
 
@@ -49,13 +49,13 @@ Obiekt kontekstu zapewnia dostęp do wszystkich operacji, które mogą być wyko
 
 Po napisaniu procedurę składowaną należy zarejestrować w kolekcji. Aby dowiedzieć się więcej, zobacz artykuł [Jak używać procedur składowanych w usłudze Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md#stored-procedures).
 
-### <a id="create-an-item"></a>Tworzenie elementu za pomocą procedury składowanej
+### <a name="create-an-item-using-stored-procedure"></a><a id="create-an-item"></a>Tworzenie elementu za pomocą procedury składowanej
 
-Po utworzeniu elementu przy użyciu procedury składowanej, element zostanie wstawiony do kontenera usługi Azure Cosmos i zostanie zwrócony identyfikator nowo utworzonego elementu. Tworzenie elementu jest operacją asynchroniczną i zależy od funkcji wywołania zwrotnego języka JavaScript. Funkcja wywołania zwrotnego ma dwa parametry — jeden dla obiektu błędu na wypadek, gdyby operacja zakończyła się niepowodzeniem, a drugi dla wartości zwracanej, czyli w tym przypadku dla utworzonego obiektu. Wewnątrz wywołania zwrotnego można obsłużyć wyjątek lub zgłosić błąd. W przypadku, gdy wywołanie zwrotne nie zostanie podane i wystąpi błąd, środowisko uruchomieniowe usługi Azure Cosmos DB zgłosi błąd. 
+Podczas tworzenia elementu przy użyciu procedury składowanej element jest wstawiany do kontenera usługi Azure Cosmos i identyfikator dla nowo utworzonego elementu jest zwracany. Tworzenie elementu jest operacją asynchroniczną i zależy od funkcji wywołania zwrotnego języka JavaScript. Funkcja wywołania zwrotnego ma dwa parametry — jeden dla obiektu błędu na wypadek, gdyby operacja zakończyła się niepowodzeniem, a drugi dla wartości zwracanej, czyli w tym przypadku dla utworzonego obiektu. Wewnątrz wywołania zwrotnego można obsłużyć wyjątek lub zgłosić błąd. W przypadku, gdy wywołanie zwrotne nie zostanie podane i wystąpi błąd, środowisko uruchomieniowe usługi Azure Cosmos DB zgłosi błąd. 
 
 Procedura składowana obejmuje również parametr umożliwiający ustawienie opisu — jest to wartość logiczna. Jeśli dla tego parametru zostanie ustawiona wartość „true”, a opisu nie będzie, procedura składowana zgłosi wyjątek. W przeciwnym razie pozostała część procedury składowanej zostanie wykonana.
 
-Następująca przykładowa procedura składowana Pobiera nowy element usługi Azure Cosmos jako dane wejściowe, wstawia go do kontenera usługi Azure Cosmos i zwraca identyfikator nowo utworzonego elementu. W tym przykładzie wykorzystujemy próbkę ToDoList z [przewodnika Szybki start interfejsu API SQL platformy .NET](create-sql-api-dotnet.md)
+Poniższa przykładowa procedura składowana przyjmuje nowy element usługi Azure Cosmos jako dane wejściowe, wstawia go do kontenera usługi Azure Cosmos i zwraca identyfikator nowo utworzonego elementu. W tym przykładzie wykorzystujemy próbkę ToDoList z [przewodnika Szybki start interfejsu API SQL platformy .NET](create-sql-api-dotnet.md)
 
 ```javascript
 function createToDoItem(itemToCreate) {
@@ -88,9 +88,9 @@ function sample(arr) {
 }
 ```
 
-### <a id="transactions"></a>Transakcje w ramach procedur składowanych
+### <a name="transactions-within-stored-procedures"></a><a id="transactions"></a>Transakcje w ramach procedur składowanych
 
-Za pomocą procedury składowanej można zaimplementować transakcje na elementach w kontenerze. W poniższym przykładzie użyto transakcji w ramach aplikacji gry w ligę futbolową, aby wymieniać zawodników między dwoma drużynami w jednej operacji. Procedura składowana próbuje odczytać dwa elementy usługi Azure Cosmos, które odpowiadają identyfikatorom odtwarzacza przekazanym jako argument. Jeśli obydwaj zawodnicy zostaną odnalezieni, to procedura składowana aktualizuje te elementy, zamieniając ich drużyny. Jeśli po drodze zostaną napotkane jakiekolwiek błędy, procedura składowana zgłasza wyjątek języka JavaScript, który niejawnie przerywa transakcję.
+Za pomocą procedury składowanej można zaimplementować transakcje na elementach w kontenerze. W poniższym przykładzie użyto transakcji w ramach aplikacji gry w ligę futbolową, aby wymieniać zawodników między dwoma drużynami w jednej operacji. Procedura składowana próbuje odczytać dwa elementy usługi Azure Cosmos, każdy odpowiadający identyfikatorom odtwarzacza przekazany jako argument. Jeśli obydwaj zawodnicy zostaną odnalezieni, to procedura składowana aktualizuje te elementy, zamieniając ich drużyny. Jeśli po drodze zostaną napotkane jakiekolwiek błędy, procedura składowana zgłasza wyjątek języka JavaScript, który niejawnie przerywa transakcję.
 
 ```javascript
 // JavaScript source code
@@ -156,7 +156,7 @@ function tradePlayers(playerId1, playerId2) {
 }
 ```
 
-### <a id="bounded-execution"></a>Powiązane wykonywanie w ramach procedur składowanych
+### <a name="bounded-execution-within-stored-procedures"></a><a id="bounded-execution"></a>Powiązane wykonywanie w ramach procedur składowanych
 
 Poniżej przedstawiono przykład procedury składowanej, która zbiorczo importuje elementy do kontenera usługi Azure Cosmos. Procedura składowana obsługuje powiązane wykonywanie, sprawdzając wartość logiczną zwracaną z obiektu `createDocument`, a następnie używa liczby elementów wstawianych w każdym wywołaniu procedury składowanej do śledzenia i wznawiania postępu w partiach.
 
@@ -211,13 +211,13 @@ function bulkImport(items) {
 }
 ```
 
-## <a id="triggers"></a>Jak pisać wyzwalacze
+## <a name="how-to-write-triggers"></a><a id="triggers"></a>Jak pisać wyzwalacze
 
 Usługa Azure Cosmos DB obsługuje wyzwalacze wykonywane przed operacją (pre-trigger) i po operacji (post-trigger). Te pierwsze są wykonywane przed modyfikacją elementu bazy danych, a te drugie są wykonywane po modyfikacji elementu bazy danych.
 
-### <a id="pre-triggers"></a>Wyzwalacze wykonywane przed operacją
+### <a name="pre-triggers"></a><a id="pre-triggers"></a>Wyzwalacze wykonywane przed operacją
 
-Poniższy przykład pokazuje, jak prewyzwalacz jest używany do sprawdzania poprawności właściwości elementu usługi Azure Cosmos, który jest tworzony. W tym przykładzie wykorzystujemy próbkę ToDoList z [przewodnika Szybki start interfejsu API SQL platformy .NET](create-sql-api-dotnet.md), aby dodać właściwość znacznika czasu do nowo dodanego elementu, jeśli jeszcze jej nie zawiera.
+W poniższym przykładzie pokazano, jak pre-trigger jest używany do sprawdzania poprawności właściwości elementu usługi Azure Cosmos, który jest tworzony. W tym przykładzie wykorzystujemy próbkę ToDoList z [przewodnika Szybki start interfejsu API SQL platformy .NET](create-sql-api-dotnet.md), aby dodać właściwość znacznika czasu do nowo dodanego elementu, jeśli jeszcze jej nie zawiera.
 
 ```javascript
 function validateToDoItemTimestamp() {
@@ -238,13 +238,13 @@ function validateToDoItemTimestamp() {
 }
 ```
 
-Wyzwalacze wykonywane przed operacją nie mogą mieć żadnych parametrów wejściowych. Obiekt żądania w wyzwalaczu służy do manipulowania komunikatem żądania skojarzonym z tą operacją. W poprzednim przykładzie przed utworzeniem elementu usługi Azure Cosmos jest uruchamiany przed wyzwalaczem, a treść komunikatu żądania zawiera element, który ma zostać utworzony w formacie JSON.
+Wyzwalacze wykonywane przed operacją nie mogą mieć żadnych parametrów wejściowych. Obiekt żądania w wyzwalaczu służy do manipulowania komunikatem żądania skojarzonym z tą operacją. W poprzednim przykładzie pre-trigger jest uruchamiany podczas tworzenia elementu usługi Azure Cosmos, a treść komunikatu żądania zawiera element, który ma zostać utworzony w formacie JSON.
 
 Podczas rejestrowania wyzwalaczy można określić operacje, z którymi można je uruchamiać. Ten wyzwalacz powinien zostać utworzony z wartością `TriggerOperation` operacji `TriggerOperation.Create`, co oznacza, że użycie tego wyzwalacza w operacji zamieniania, jak pokazano w poniższym kodzie, jest niedozwolone.
 
 Aby zapoznać się z przykładami rejestrowania i wywoływania wyzwalacza wykonywanego przed operacją, zobacz artykuły na temat [wyzwalaczy wykonywanych przed operacją](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) i [wyzwalaczy wykonywanych po operacji](how-to-use-stored-procedures-triggers-udfs.md#post-triggers). 
 
-### <a id="post-triggers"></a>Wyzwalacze wykonywane po operacji
+### <a name="post-triggers"></a><a id="post-triggers"></a>Wyzwalacze wykonywane po operacji
 
 W poniższym przykładzie pokazano wyzwalacz wykonywany po operacji. Ten wyzwalacz wysyła zapytanie o element metadanych i aktualizuje go za pomocą informacji o nowo utworzonym elemencie.
 
@@ -282,11 +282,11 @@ function updateMetadataCallback(err, items, responseOptions) {
 }
 ```
 
-Jedną rzeczą, o której należy pamiętać, jest transakcyjne wykonywanie wyzwalaczy w usłudze Azure Cosmos DB. Wyzwalacz po uruchomieniu jest uruchamiany jako część tej samej transakcji dla samego elementu bazowego. Wyjątek podczas wykonywania po wyzwoleniu spowoduje niepowodzenie całej transakcji. Wszystkie przekazane elementy zostaną wycofane i zwrócono wyjątek.
+Jedną rzeczą, o której należy pamiętać, jest transakcyjne wykonywanie wyzwalaczy w usłudze Azure Cosmos DB. Wyzwalacz po uruchomieniu jako część tej samej transakcji dla samego towaru bazowego. Wyjątek podczas wykonywania po wyzwalaczu zakończy się niepowodzeniem całej transakcji. Wszystko, co zostanie zatwierdzone, zostanie wycofane i zwrócony wyjątek.
 
 Aby zapoznać się z przykładami rejestrowania i wywoływania wyzwalacza wykonywanego przed operacją, zobacz artykuły na temat [wyzwalaczy wykonywanych przed operacją](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) i [wyzwalaczy wykonywanych po operacji](how-to-use-stored-procedures-triggers-udfs.md#post-triggers). 
 
-## <a id="udfs"></a>Jak pisać funkcje zdefiniowane przez użytkownika
+## <a name="how-to-write-user-defined-functions"></a><a id="udfs"></a>Jak pisać funkcje zdefiniowane przez użytkownika
 
 Poniższy przykład pokazuje tworzenie funkcji zdefiniowanej przez użytkownika w celu obliczenia podatku dochodowego dla różnych przedziałów dochodu. Ta funkcja zdefiniowana przez użytkownika zostanie następnie użyta w zapytaniu. Na potrzeby tego przykładu załóżmy, że istnieje kontener o nazwie „Incomes” (Dochody) z następującymi właściwościami:
 
@@ -319,7 +319,7 @@ Aby zapoznać się z przykładami rejestrowania i używania funkcji zdefiniowane
 
 ## <a name="logging"></a>Rejestrowanie 
 
-Korzystając z procedury składowanej, wyzwalaczy lub funkcji zdefiniowanych przez użytkownika, można rejestrować kroki przy użyciu polecenia `console.log()`. To polecenie spowoduje skoncentrowanie ciągu do debugowania, gdy `EnableScriptLogging` jest ustawiona na wartość true, jak pokazano w następującym przykładzie:
+Podczas korzystania z procedury składowanej, wyzwalaczy lub funkcji `console.log()` zdefiniowanych przez użytkownika można rejestrować kroki za pomocą polecenia. To polecenie skoncentruje ciąg `EnableScriptLogging` do debugowania, gdy jest ustawiony na true, jak pokazano w poniższym przykładzie:
 
 ```javascript
 var response = await client.ExecuteStoredProcedureAsync(

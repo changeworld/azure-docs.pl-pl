@@ -1,57 +1,57 @@
 ---
 title: Wywoływanie aplikacji logiki za pomocą usługi Azure Functions
-description: Tworzenie usługi Azure Functions, która wywołuje lub wyzwala Aplikacje logiki przez nasłuchiwanie w usłudze Azure Service Bus
+description: Tworzenie funkcji platformy Azure, które wywołują lub wyzwalają aplikacje logiki, nasłuchiwanie usługi Azure Service Bus
 services: logic-apps
 ms.suite: integration
 ms.reviewer: jehollan, klam, logicappspm
 ms.topic: article
 ms.date: 11/08/2019
 ms.openlocfilehash: afd2735bae2a79ad942c347219019ef200b61070
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75428702"
 ---
-# <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>Wywołaj lub Wyzwól Aplikacje logiki przy użyciu Azure Functions i Azure Service Bus
+# <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>Wywoływanie lub wyzwalanie aplikacji logiki przy użyciu usług Azure Functions i usługi Azure Service Bus
 
-Możesz użyć [Azure Functions](../azure-functions/functions-overview.md) , aby wyzwolić aplikację logiki, gdy zachodzi potrzeba wdrożenia długotrwałego odbiornika lub zadania. Można na przykład utworzyć funkcję platformy Azure, która nasłuchuje w kolejce [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) i natychmiast uruchamia aplikację logiki jako wyzwalacz wypychania.
+Usługi [azure usługi](../azure-functions/functions-overview.md) wyzwolić aplikację logiki, gdy trzeba wdrożyć odbiornika długo działającego lub zadania. Na przykład można utworzyć funkcję platformy Azure, która nasłuchuje w kolejce [usługi Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) i natychmiast uruchamia aplikację logiki jako wyzwalacz wypychania.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
 
-* Przestrzeń nazw Azure Service Bus. Jeśli nie masz przestrzeni nazw, [najpierw utwórz swój obszar nazw](../service-bus-messaging/service-bus-create-namespace-portal.md).
+* Obszar nazw usługi Azure Service Bus. Jeśli nie masz obszaru nazw, [najpierw utwórz obszar nazw](../service-bus-messaging/service-bus-create-namespace-portal.md).
 
-* Aplikacja funkcji platformy Azure, która jest kontenerem dla usługi Azure Functions. Jeśli nie masz aplikacji funkcji, [najpierw Utwórz aplikację funkcji](../azure-functions/functions-create-first-azure-function.md)i upewnij się, że wybrano pozycję .NET jako stos środowiska uruchomieniowego.
+* Aplikacja funkcji platformy Azure, która jest kontenerem dla funkcji platformy Azure. Jeśli nie masz aplikacji funkcji, [najpierw utwórz aplikację funkcji](../azure-functions/functions-create-first-azure-function.md)i upewnij się, że wybierzesz .NET jako stos środowiska wykonawczego.
 
-* Podstawowa wiedza [na temat tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Podstawowa wiedza na temat [tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
 ## <a name="create-logic-app"></a>Tworzenie aplikacji logiki
 
-W tym scenariuszu masz funkcję uruchamiającego każdą aplikację logiki, która ma zostać wyzwolona. Najpierw Utwórz aplikację logiki, która rozpoczyna się od wyzwalacza żądania HTTP. Funkcja wywołuje ten punkt końcowy za każdym razem, gdy zostanie odebrany komunikat kolejki.
+W tym scenariuszu masz funkcję z uruchomioną każdą aplikację logiki, którą chcesz wyzwolić. Najpierw utwórz aplikację logiki, która rozpoczyna się od wyzwalacza żądania HTTP. Funkcja wywołuje ten punkt końcowy za każdym razem, gdy zostanie odebrany komunikat kolejki.
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com)i Utwórz pustą aplikację logiki.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com)i utwórz pustą aplikację logiki.
 
-   Jeśli dopiero zaczynasz tworzyć aplikacje logiki, zapoznaj się z [przewodnikiem Szybki Start: Tworzenie pierwszej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+   Jeśli jesteś nowym użytkownikem aplikacji logiki, przejrzyj [przewodnik Szybki start: utwórz pierwszą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-1. W polu wyszukiwania wpisz `http request`. Z listy Wyzwalacze wybierz wyzwalacz **po odebraniu żądania HTTP** .
+1. W polu wyszukiwania wpisz `http request`. Z listy wyzwalaczy wybierz wyzwalacz **po odebraniu żądania HTTP.**
 
    ![Wybierz wyzwalacz](./media/logic-apps-scenario-function-sb-trigger/when-http-request-received-trigger.png)
 
-   Przy użyciu wyzwalacza żądania można opcjonalnie wprowadzić schemat JSON, który ma być używany z komunikatem kolejki. Schematy JSON pomagają projektantowi aplikacji logiki zrozumieć strukturę danych wejściowych i ułatwiają korzystanie z nich w przepływie pracy.
+   Za pomocą wyzwalacza żądania można opcjonalnie wprowadzić schemat JSON do użycia z komunikatem kolejki. Schematy JSON pomagają projektantowi aplikacji logiki zrozumieć strukturę danych wejściowych i ułatwić korzystanie z danych wyjściowych w przepływie pracy.
 
-1. Aby określić schemat, wprowadź schemat w polu **schemat JSON treści żądania** , na przykład:
+1. Aby określić schemat, wprowadź schemat w polu **Schemat JSON treści żądania,** na przykład:
 
-   ![Określ schemat JSON](./media/logic-apps-scenario-function-sb-trigger/when-http-request-received-trigger-schema.png)
+   ![Określanie schematu JSON](./media/logic-apps-scenario-function-sb-trigger/when-http-request-received-trigger-schema.png)
 
-   Jeśli nie masz schematu, ale masz przykładowy ładunek w formacie JSON, możesz wygenerować schemat z tego ładunku.
+   Jeśli nie masz schematu, ale masz ładunek próbki w formacie JSON, można wygenerować schemat z tego ładunku.
 
-   1. W wyzwalaczu żądania wybierz pozycję **Użyj przykładowego ładunku do wygenerowania schematu**.
+   1. W wyzwalaczu Żądanie wybierz opcję **Użyj przykładowego ładunku do wygenerowania schematu**.
 
-   1. W obszarze **wprowadzanie lub wklejanie przykładowego ładunku JSON**wprowadź przykładowy ładunek, a następnie wybierz pozycję **gotowe**.
+   1. W **obszarze Wprowadzanie lub wklejanie przykładowego ładunku JSON**wprowadź przykładową ładowność, a następnie wybierz pozycję **Gotowe**.
 
-      ![Wprowadź przykładowy ładunek](./media/logic-apps-scenario-function-sb-trigger/enter-sample-payload.png)
+      ![Wprowadź ładunek próbki](./media/logic-apps-scenario-function-sb-trigger/enter-sample-payload.png)
 
    Ten przykładowy ładunek generuje ten schemat, który pojawia się w wyzwalaczu:
 
@@ -83,47 +83,47 @@ W tym scenariuszu masz funkcję uruchamiającego każdą aplikację logiki, któ
    }
    ```
 
-1. Dodaj inne akcje, które mają być uruchamiane po odebraniu komunikatu w kolejce.
+1. Dodaj inne akcje, które chcesz uruchomić po otrzymaniu wiadomości kolejki.
 
-   Na przykład możesz wysłać wiadomość e-mail za pomocą łącznika programu Outlook dla pakietu Office 365.
+   Na przykład można wysłać wiadomość e-mail za pomocą łącznika programu Outlook usługi Office 365.
 
-1. Zapisz aplikację logiki, która generuje adres URL wywołania zwrotnego dla wyzwalacza w tej aplikacji logiki. Później Użyj tego adresu URL wywołania zwrotnego w kodzie dla wyzwalacza kolejki Azure Service Bus.
+1. Zapisz aplikację logiki, która generuje adres URL wywołania zwrotnego dla wyzwalacza w tej aplikacji logiki. Później użyj tego adresu URL wywołania zwrotnego w kodzie wyzwalacza kolejki usługi Azure Service Bus.
 
-   Adres URL wywołania zwrotnego jest wyświetlany w właściwości **http post adresu URL** .
+   Adres URL wywołania zwrotnego pojawi się we właściwości **ADRESU URL HTTP POST.**
 
    ![Wygenerowany adres URL wywołania zwrotnego dla wyzwalacza](./media/logic-apps-scenario-function-sb-trigger/callback-URL-for-trigger.png)
 
-## <a name="create-azure-function"></a>Utwórz funkcję platformy Azure
+## <a name="create-azure-function"></a>Tworzenie funkcji platformy Azure
 
-Następnie Utwórz funkcję, która działa jako wyzwalacz i nasłuchuje kolejki.
+Następnie utwórz funkcję, która działa jako wyzwalacz i nasłuchuje kolejki.
 
-1. W Azure Portal Otwórz i rozwiń swoją aplikację funkcji, jeśli nie została jeszcze otwarta. 
+1. W witrynie Azure portal otwórz i rozwiń aplikację funkcji, jeśli nie jest jeszcze otwarta. 
 
-1. W obszarze Nazwa aplikacji funkcji rozwiń pozycję **funkcje**. W okienku **funkcje** wybierz pozycję **Nowa funkcja**.
+1. Pod nazwą aplikacji funkcji rozwiń pozycję **Funkcje**. W okienku **Funkcje** wybierz pozycję **Nowa funkcja**.
 
-   ![Rozwiń "funkcje" i wybierz pozycję "Nowa funkcja"](./media/logic-apps-scenario-function-sb-trigger/add-new-function-to-function-app.png)
+   ![Rozwiń "Funkcje" i wybierz "Nowa funkcja"](./media/logic-apps-scenario-function-sb-trigger/add-new-function-to-function-app.png)
 
-1. Wybierz ten szablon na podstawie tego, czy utworzono nową aplikację funkcji, w której wybrano platformę .NET jako stos środowiska uruchomieniowego, czy używasz istniejącej aplikacji funkcji.
+1. Wybierz ten szablon na podstawie tego, czy utworzono nową aplikację funkcji, w której wybrano opcję .NET jako stos środowiska uruchomieniowego, czy używasz istniejącej aplikacji funkcji.
 
-   * W przypadku nowych aplikacji funkcji wybierz ten szablon: **Service Bus wyzwalacz kolejki**
+   * W przypadku nowych aplikacji funkcyjnych wybierz ten szablon: **Wyzwalacz kolejki usługi Service Bus**
 
      ![Wybierz szablon dla nowej aplikacji funkcji](./media/logic-apps-scenario-function-sb-trigger/current-add-queue-trigger-template.png)
 
-   * W przypadku istniejącej aplikacji funkcji wybierz ten szablon: **Service Bus wyzwalacza kolejki — C#**
+   * W przypadku istniejącej aplikacji funkcji wybierz ten szablon: **Wyzwalacz kolejki usługi Service Bus — C#**
 
-     ![Wybieranie szablonu istniejącej aplikacji funkcji](./media/logic-apps-scenario-function-sb-trigger/legacy-add-queue-trigger-template.png)
+     ![Wybierz szablon dla istniejącej aplikacji funkcji](./media/logic-apps-scenario-function-sb-trigger/legacy-add-queue-trigger-template.png)
 
-1. W okienku **Azure Service Bus wyzwalacza kolejki** Podaj nazwę wyzwalacza i skonfiguruj **połączenie Service Bus** dla kolejki, która używa odbiornika Azure Service Bus zestawu SDK `OnMessageReceive()` i wybierz pozycję **Utwórz**.
+1. W okienku **wyzwalania kolejki usługi Azure Service Bus** podaj nazwę wyzwalacza i skonfiguruj połączenie **magistrali usług Service Bus** dla kolejki, która używa odbiornika zestawu SDK `OnMessageReceive()` usługi Azure Service Bus, a następnie wybierz pozycję **Utwórz**.
 
-1. Napisz podstawową funkcję do wywołania utworzonego wcześniej punktu końcowego aplikacji logiki przy użyciu komunikatu kolejki jako wyzwalacza. Przed zapisaniem funkcji zapoznaj się z następującymi kwestiami:
+1. Napisz podstawową funkcję, aby wywołać poprzednio utworzony punkt końcowy aplikacji logiki przy użyciu komunikatu kolejki jako wyzwalacza. Zanim napiszesz swoją funkcję, zapoznaj się z tymi zagadnieniami:
 
-   * Ten przykład używa typu zawartości komunikatu `application/json`, ale w razie potrzeby można zmienić ten typ.
+   * W tym przykładzie `application/json` użyto typu zawartości wiadomości, ale można zmienić ten typ w razie potrzeby.
    
-   * Ze względu na możliwe współbieżnie uruchomione funkcje, duże ilości lub duże obciążenia, należy unikać tworzenia wystąpienia [klasy HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) za pomocą instrukcji `using` i bezpośrednio tworzyć wystąpienia HttpClient na żądanie. Aby uzyskać więcej informacji, zobacz [Używanie HttpClientFactory do implementowania odpornych żądań HTTP](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net-core).
+   * Ze względu na możliwe równocześnie uruchomione funkcje, duże woluminy lub duże obciążenia, `using` należy unikać tworzenia wystąpienia [klasy HTTPClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) z instrukcją i bezpośrednio tworzenia wystąpień HTTPClient na żądanie. Aby uzyskać więcej informacji, zobacz [Używanie funkcji HttpClientFactory do implementowania odpornych żądań HTTP.](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net-core)
    
-   * Jeśli to możliwe, ponownie Użyj wystąpienia klientów HTTP. Aby uzyskać więcej informacji, zobacz [Zarządzanie połączeniami w Azure Functions](../azure-functions/manage-connections.md).
+   * Jeśli to możliwe, ponownie użyć wystąpienia klientów HTTP. Aby uzyskać więcej informacji, zobacz [Zarządzanie połączeniami w usłudze Azure Functions](../azure-functions/manage-connections.md).
 
-   W tym przykładzie zastosowano [metodę`Task.Run`](https://docs.microsoft.com/dotnet/api/system.threading.tasks.task.run) w trybie [asynchronicznym](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/async) . Aby uzyskać więcej informacji, zobacz [programowanie asynchroniczne z Async i await](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/).
+   W tym przykładzie [ `Task.Run` ](https://docs.microsoft.com/dotnet/api/system.threading.tasks.task.run) użyto metody w trybie [asynchroniczne.](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/async) Aby uzyskać więcej informacji, zobacz [programowanie asynchroniczne za pomocą asynchanu i poczekaj](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/).
 
    ```csharp
    using System;
@@ -144,10 +144,10 @@ Następnie Utwórz funkcję, która działa jako wyzwalacz i nasłuchuje kolejki
    }
    ```
 
-1. Aby przetestować funkcję, Dodaj komunikat w kolejce przy użyciu narzędzia, takiego jak [eksplorator Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer).
+1. Aby przetestować tę funkcję, dodaj komunikat kolejki za pomocą narzędzia, takiego jak [Eksplorator usługi Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer).
 
-   Aplikacja logiki jest wyzwalana natychmiast po odebraniu komunikatu przez funkcję.
+   Aplikacja logiki wyzwala natychmiast po odebraniu wiadomości przez funkcję.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Wywoływanie, wyzwalanie lub zagnieżdżanie przepływów pracy za pomocą punktów końcowych HTTP](../logic-apps/logic-apps-http-endpoint.md)
+* [Przepływy pracy wywoływania, wyzwalania lub zagnieżdżania przy użyciu punktów końcowych HTTP](../logic-apps/logic-apps-http-endpoint.md)

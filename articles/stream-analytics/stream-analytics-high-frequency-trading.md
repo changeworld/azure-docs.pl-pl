@@ -1,5 +1,5 @@
 ---
-title: Handel o wysokiej częstotliwości przy użyciu Azure Stream Analytics
+title: Handel o wysokiej częstotliwości za pomocą usługi Azure Stream Analytics
 description: Sposób przeprowadzania szkolenia i oceniania modelu regresji liniowej w ramach zadania usługi Azure Stream Analytics.
 author: mamccrea
 ms.author: mamccrea
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: 06a4bdb8a8ee5d458347d30b53f740952151799e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75426206"
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>Symulacja transakcji o wysokiej częstotliwości za pomocą usługi Stream Analytics
@@ -70,7 +70,7 @@ Nierównowaga wielkości zleceń (VOI, Volume Order Imbalance) to funkcja bież�
 
 Uczony model jest następnie używany do prognozowania zmian cen ofert dla bieżącej sesji giełdowej w czasie rzeczywistym. Jeśli prognozowana zmiana ceny jest wystarczająco duża, następuje transakcja handlowa. W zależności od ustawienia progu w ciągu sesji giełdowej można oczekiwać tysięcy transakcji powiązanych z jednym rodzajem akcji.
 
-![Definicja nierównowagi kolejności woluminu](./media/stream-analytics-high-frequency-trading/volume-order-imbalance-formula.png)
+![Definicja nierównowagi kolejności woluminów](./media/stream-analytics-high-frequency-trading/volume-order-imbalance-formula.png)
 
 Teraz przedstawmy operacje szkolenia i prognozowania w zadaniu usługi Azure Stream Analytics.
 
@@ -202,7 +202,7 @@ modelInput AS (
 
 Ponieważ usługa Azure Stream Analytics nie ma wbudowanej funkcji regresji liniowej, używamy agregacji **SUM** i **AVG** do obliczania współczynników w modelu liniowym.
 
-![Formuły matematyczne regresji liniowej](./media/stream-analytics-high-frequency-trading/linear-regression-formula.png)
+![Formuła matematyczna regresji liniowej](./media/stream-analytics-high-frequency-trading/linear-regression-formula.png)
 
 ```SQL
 modelagg AS (
@@ -450,9 +450,9 @@ SELECT
 FROM simulation /* output trade simulation to PBI */
 ```
 
-![Zamienia wizualizacji wykresu usługi Power BI](./media/stream-analytics-high-frequency-trading/trades-power-bi-chart.png)
+![Zagosi wizualizację wykresu usługi Power BI](./media/stream-analytics-high-frequency-trading/trades-power-bi-chart.png)
 
-![Wykres PNL usługi Power BI visual](./media/stream-analytics-high-frequency-trading/pnl-power-bi-chart.png)
+![Wizualizacja wykresu usługi Power BI PNL](./media/stream-analytics-high-frequency-trading/pnl-power-bi-chart.png)
 
 
 ## <a name="summary"></a>Podsumowanie

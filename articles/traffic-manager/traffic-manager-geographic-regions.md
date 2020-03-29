@@ -1,6 +1,6 @@
 ---
-title: Hierarchia krajów/regionów używana przez Routing geograficzny — Traffic Manager platformy Azure
-description: W tym artykule wymieniono hierarchię kraju/regionu używaną przez typ routingu geograficznego Traffic Manager platformy Azure
+title: Hierarchia kraju/regionu używana przez routing geograficzny — usługa Azure Traffic Manager
+description: W tym artykule wymieniono hierarchię kraju/regionu używaną przez typ routingu geograficznego usługi Azure Traffic Manager
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
@@ -13,113 +13,113 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: rohink
 ms.openlocfilehash: 19445c06ccf08d2d7916545ad495c56883616c7a
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938645"
 ---
-# <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Hierarchia krajów/regionów używana przez usługę Azure Traffic Manager dla metody routingu ruchu geograficznego
+# <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Hierarchia kraju/regionu używana przez usługę Azure Traffic Manager dla metody routingu ruchu geograficznego
 
-W tym artykule wymieniono kraje i regiony używane przez metodę routingu ruchu **geograficznego** w usłudze Azure Traffic Manager. Te informacje można również programowo uzyskać, wywołując [interfejs API REST usługi Azure Traffic Manager](https://docs.microsoft.com/rest/api/trafficmanager/). 
+W tym artykule wymieniono kraje i regiony używane przez metodę routingu ruchu **geograficznego** w usłudze Azure Traffic Manager. Można również uzyskać te informacje programowo, wywołując [interfejs API REST usługi Azure Traffic Manager.](https://docs.microsoft.com/rest/api/trafficmanager/) 
 
-- ŚWIAT (świat)
+- ŚWIAT (Świat)
 
-    - Geograficzna — UE (Europa)
+    - GEO-EU(Europa)
 
-        - AD (Andora)
+        - AD(Andora)
 
         - AL(Albania)
 
         - AT(Austria)
 
-        - AX (Wyspy Åland)
+        - AX (Wyspy Alandzkie)
 
         - BA (Bośnia i Hercegowina)
 
-        - BYĆ (Belgia)
+        - BE (Belgia)
 
         - BG (Bułgaria)
 
-        - WEDŁUG (Białoruś)
+        - BY (Białoruś)
 
-        - CH (Szwajcaria)
+        - CH(Szwajcaria)
 
-        - CY (Cypr)
+        - CY(Cypr)
 
         - CZ (Czechy)
 
-        - Niemcy (Niemcy)
+        - DE(Niemcy)
 
-        - DK (Dania)
+        - DK(Dania)
 
         - EE(Estonia)
 
-        - ES (Hiszpania)
+        - ES(Hiszpania)
 
-        - FI (Finlandia)
+        - FI(Finlandia)
 
         - FO (Wyspy Owcze)
 
-        - FR (Francja)
+        - FR(Francja)
 
-        - GB (Wielka Brytania)
+        - GB(Wielka Brytania)
 
-        - GG (Guernsey)
+        - GG(Guernsey)
 
-        - GI(Gibraltar)
+        - GI (Gibraltar)
 
-        - GR (Grecja)
+        - GR(Grecja)
 
-        - HR (Chorwacja)
+        - HR(Chorwacja)
 
         - HU (Węgry)
 
-        - IE (Irlandia)
+        - IE(Irlandia)
 
-        - KOMUNIKATOR (Wyspa Man)
+        - IM (Wyspa Man)
 
-        - IS (Islandia)
+        - IS(Islandia)
 
         - IT (Włochy)
 
-        - JE (Jersey)
+        - JE(Koszulka)
 
-        - LI (Liechtenstein)
+        - LI(Liechtenstein)
 
-        - LT (Litwa)
+        - LT(Litwa)
 
         - LU (Luksemburg)
 
-        - LV (Łotwa)
+        - LV(Łotwa)
 
-        - MC(Monaco)
+        - MC(Monako)
 
-        - MD(Moldova)
+        - MD (Mołdawia)
 
-        - ME(Montenegro)
+        - ME(Czarnogóra)
 
-        - MK (Ameryka Północna)
+        - MK (Macedonia Północna)
 
-        - MT (Malta)
+        - MT(Malta)
 
-        - NL (Holandia)
+        - NL(Holandia)
 
-        - NIE (Norwegia)
+        - NO(Norwegia)
 
-        - PL (Polska)
+        - PL(Polska)
 
-        - PT (Portugalia)
+        - PT(Portugalia)
 
-        - RO (Rumunia)
+        - RO(Rumunia)
 
         - RS(Serbia)
 
-        - RU (Rosja)
+        - RU(Rosja)
 
         - SE (Szwecja)
 
-        - SI (Słowenia)
+        - SI(Słowenia)
 
         - SJ(Svalbard)
 
@@ -128,103 +128,103 @@ W tym artykule wymieniono kraje i regiony używane przez metodę routingu ruchu 
         - SM (San Marino)
 
         - UA (Ukraina)
-            - Region Krym
+            - Region Krymu
 
         - VA (Watykan)
 
-        - XJ (Jan Mayen)
+        - Jan Mayen
 
-        - XK(Kosovo)
+        - XK(Kosowo)
 
-    - Geograficznie (Bliski Wschód)
+    - GEO-ME (Bliski Wschód)
 
         - AE (Zjednoczone Emiraty Arabskie)
 
-        - BH (Bahrajn)
+        - BH(Bahrajn)
 
-        - IL (Izrael)
+        - IL(Izrael)
 
-        - IQ (Irak)
+        - IQ(Irak)
 
-        - IR (Iran)
+        - IR(Iran)
 
-        - JO (Jordania)
+        - JO(Jordania)
 
         - KW (Kuwejt)
 
-        - LB (Liban)
+        - LB(Liban)
 
-        - OM (Oman)
+        - OM(Oman)
 
         - PS (Autonomia Palestyńska)
 
-        - Pytania i odpowiedzi (katar)
+        - QA (Katar)
 
-        - SY(Syria)
+        - SY (Syria)
 
         - SA (Arabia Saudyjska)
 
-        - TR (Turcja)
+        - TR(Turcja)
 
         - YE (Jemen)
 
-    - Geograficzna (Ameryka Północna/Ameryka Środkowa/Karaiby)
+    - GEO-NA(Ameryka Północna / Ameryka Środkowa / Karaiby)
 
         - AG (Antigua i Barbuda)
 
-        - AI(Anguilla)
+        - Ai(Anguilla)
 
         - AW(Aruba)
 
         - BB (Barbados)
 
-        - BL (Saint Barthélemy)
+        - BL(Święty Barthélemy)
 
-        - BM(Bermuda)
+        - BM(Bermudy)
 
-        - BQ (Bonaire)
+        - BQ(Bonaire)
 
         - BS (Bahamy)
 
         - BZ(Belize)
 
-        - Urząd certyfikacji (Kanada)
+        - CA(Kanada)
 
-            - CA-AB (Alberta)
+            - CA-AB(Alberta)
 
             - CA-BC (Kolumbia Brytyjska)
 
-            - CA-MB (Manitoba)
+            - CA-MB(Manitoba)
 
-            - CA-NB (Nowy Brunszwik)
+            - CA-NB(Nowy Brunszwik)
 
-            - CA — NL (Nowa Fundlandia i Labrador)
+            - CA-NL (Nowa Fundlandia i Labrador)
 
-            - CA-NS (Nowa Szkocja)
+            - CA-NS(Nowa Szkocja)
 
-            - CA-NT (Terytoria Północno)
+            - CA-NT (Terytoria Północno-Zachodnie)
 
-            - CA-ni (Nunavut)
+            - CA-NU(Nunavut)
 
-            - Urząd certyfikacji (Ontario)
+            - CA-ON (Ontario)
 
-            - CA-PE (Wyspa Księcia Edward)
+            - CA-PE (Wyspa Księcia Edwarda)
 
-            - CA-QC (Québec)
+            - CA-QC(Québec)
 
             - CA-SK (Saskatchewan)
 
-            - CA-YT (Yukon terytorium)
+            - CA-YT (Terytorium Yukon)
 
-        - CR (Kostaryka)
+        - CR(Kostaryka)
 
         - CU (Kuba)
 
         - CW(CuraÃ§ao)
 
-        - DM (Dominika)
+        - DM(Dominika)
 
-        - Zrób (Dominikana)
+        - DO (Dominikana)
 
         - GD(Grenada)
 
@@ -234,9 +234,9 @@ W tym artykule wymieniono kraje i regiony używane przez metodę routingu ruchu 
 
         - GT (Gwatemala)
 
-        - HN (Honduras)
+        - HN(Honduras)
 
-        - HT (Haiti)
+        - HT(Haiti)
 
         - JM (Jamajka)
 
@@ -246,43 +246,43 @@ W tym artykule wymieniono kraje i regiony używane przez metodę routingu ruchu 
 
         - LC(Saint Lucia)
 
-        - MF (Saint Martin)
+        - MF (Święty Marcin)
 
-        - MQ (Martynika)
+        - MQ(Martynika)
 
         - MS(Montserrat)
 
-        - MX(Mexico)
+        - MX(Meksyk)
 
-        - NI (Nikaragua)
+        - NI(Nikaragua)
 
         - PA(Panama)
 
-        - PM (Saint-Pierre i Miquelon)
+        - PM (Saint Pierre i Miquelon)
 
-        - PR (Portoryko)
+        - PR(Portoryko)
 
-        - OHR (Salwador)
+        - SV (Salwador)
 
-        - SX (Sint Maarten)
+        - SX(Sint Maarten)
 
-        - TC (Wyspy Turks i Caicos)
+        - TC (Turks i Caicos)
 
-        - TT (Trynidad i Tobago)
+        - TT(Trynidad i Tobago)
 
-        - UM (odległe wyspy USA)
+        - UM (Wyspy U.S. Outlying)
 
-        - US (Stany Zjednoczone)
+        - STANY ZJEDNOCZONE
 
-            - US-klucza uwierzytelniania (Alaska)
+            - STANY ZJEDNOCZONE-AK (Alaska)
 
-            - US-AL(Alabama)
+            - STANY ZJEDNOCZONE-AL(Alabama)
 
-            - US-AR (Arkansas)
+            - STANY ZJEDNOCZONE-AR (Arkansas)
 
-            - US-AZ(Arizona)
+            - STANY ZJEDNOCZONE (Arizona)
 
-            - Stany Zjednoczone — CA (Kalifornia)
+            - Stany Zjednoczone-Kalifornia
 
             - US-CO (Kolorado)
 
@@ -290,29 +290,29 @@ W tym artykule wymieniono kraje i regiony używane przez metodę routingu ruchu 
 
             - US-DC (Dystrykt Kolumbii)
 
-            - US-DE(Delaware)
+            - STANY ZJEDNOCZONE-DE (Delaware)
 
-            - US-FL(Florida)
+            - USA-FL (Floryda)
 
-            - US-GA(Georgia)
+            - STANY ZJEDNOCZONE-GA (Gruzja)
 
-            - US-Witaj (Hawaje)
+            - US-HI (Hawaje)
 
-            - US-IA (Iowa)
+            - Stany Zjednoczone-IA(Iowa)
 
-            - US-ID (Idaho)
+            - Us-ID (Idaho)
 
-            - US-IL(Illinois)
+            - STANY ZJEDNOCZONE (Illinois)
 
-            - US (Indiana)
+            - Us-IN (Indiana)
 
             - US-KS (Kansas)
 
-            - US-KY(Kentucky)
+            - Stany Zjednoczone-KY (Kentucky)
 
-            - US-LA (Luizjana)
+            - USA-LA (Luizjana)
 
-            - US-MA(Massachusetts)
+            - US-MA (Massachusetts)
 
             - US-MD (Maryland)
 
@@ -320,59 +320,59 @@ W tym artykule wymieniono kraje i regiony używane przez metodę routingu ruchu 
 
             - US-MI (Michigan)
 
-            - US-MN(Minnesota)
+            - Stany Zjednoczone-MN (Minnesota)
 
             - US-MO (Missouri)
 
-            - US-MS (Mississippi)
+            - US-MS (Missisipi)
 
-            - US-MT (Montana)
+            - STANY ZJEDNOCZONE-MT (Montana)
 
-            - US-NC (Karolinie Północna)
+            - STANY ZJEDNOCZONE-NC (Karolina Północna)
 
-            - US-ND (Dakota Północna)
+            - STANY ZJEDNOCZONE (Dakota Północna)
 
-            - US-NE(Nebraska)
+            - USA-NE (Nebraska)
 
-            - US-NH (nowy Hampshire)
+            - Stany Zjednoczone-NH (New Hampshire)
 
-            - US-NJ (Nowa Jersey)
+            - STANY ZJEDNOCZONE-NJ (New Jersey)
 
-            - US – NM (Nowy Meksyk)
+            - US-NM (Nowy Meksyk)
 
-            - US-NV(Nevada)
+            - Stany Zjednoczone-NV (Nevada)
 
-            - US-NY (Nowy Jork)
+            - USA-NY (Nowy Jork)
 
-            - Stany USA (Ohio)
+            - USA-OH (Ohio)
 
-            - US-OK(Oklahoma)
+            - USA-OK(Oklahoma)
 
-            - US-lub (Oregon)
+            - US-OR (Oregon)
 
-            - US-PA(Pennsylvania)
+            - US-PA (Pensylwania)
 
-            - US-RI (wyspa Rhode)
+            - US-RI (Rhode Island)
 
-            - US-SC (południowe Karolinie)
+            - US-SC (Karolina Południowa)
 
             - US-SD (Dakota Południowa)
 
-            - US-TN (Tennessee)
+            - STANY ZJEDNOCZONE -TN (Tennessee)
 
-            - US-TX (Texas)
+            - US-TX (Teksas)
 
             - US-UT (Utah)
 
-            - Stany USA (Wirginia)
+            - US-VA (Wirginia)
 
-            - US — VT (Vermont)
+            - STANY ZJEDNOCZONE-VT(Vermont)
 
-            - US-WA (Waszyngton)
+            - Stany Zjednoczone-WA (Waszyngton)
 
-            - US-WI (Wisconsin)
+            - Stany Zjednoczone-WI (Wisconsin)
 
-            - US-WV (zachodni Wirginia)
+            - US-WV (Wirginia Zachodnia)
 
             - US-WY (Wyoming)
 
@@ -382,17 +382,17 @@ W tym artykule wymieniono kraje i regiony używane przez metodę routingu ruchu 
 
         - VI (Wyspy Dziewicze Stanów Zjednoczonych)
 
-        - XE (Sint Eustatius)
+        - XE(Sint Eustatius)
 
         - XS(Saba)
 
-    - Geograficznie (Azja)
+    - GEO-AS(Azja)
 
         - AF (Afganistan)
 
         - AM(Armenia)
 
-        - AZ (Azerbejdżan)
+        - AZ(Azerbejdżan)
 
         - BD (Bangladesz)
 
@@ -400,139 +400,139 @@ W tym artykule wymieniono kraje i regiony używane przez metodę routingu ruchu 
 
         - BT (Bhutan)
 
-        - CC (Wyspy Kokosowe)
+        - CC(Wyspy Kokosowe (Keeling)
 
-        - CN(China)
+        - CN(Chiny)
 
         - CX (Wyspa Bożego Narodzenia)
 
-        - GE(Georgia)
+        - GE(Gruzja)
 
-        - HK (SRA Hongkong)
+        - HK(Hongkong SAR)
 
-        - Identyfikator (Indonezja)
+        - ID(Indonezja)
 
-        - IN (Indie)
+        - IN(Indie)
 
-        - We/wy (Brytyjskie Terytorium Oceanu Indyjskiego)
+        - IO (Brytyjskie Terytorium Oceanu Indyjskiego)
 
-        - JP (Japonia)
+        - JP(Japonia)
 
-        - KG (Kirgistan)
+        - KG(Kirgistan)
 
-        - KH(Cambodia)
+        - KH (Kambodża)
 
         - KP (Korea Północna)
 
-        - KR (Korea)
+        - KR(Korea)
 
-        - KZ(Kazakhstan)
+        - KZ(Kazachstan)
 
         - LA (Laos)
 
         - LK(Sri Lanka)
 
-        - MM (Myanmar)
+        - MM(Myanmar)
 
         - MN(Mongolia)
 
-        - MO (SRA Makau)
+        - MO(Makao SAR)
 
         - MV (Malediwy)
 
         - MY (Malezja)
 
-        - NP. (Nepal)
+        - NP(Nepal)
 
         - PH (Filipiny)
 
-        - PK(Pakistan)
+        - PK (Pakistan)
 
         - SG (Singapur)
 
-        - TH (Tajlandia)
+        - TH(Tajlandia)
 
-        - TJ (Tadżykistan)
+        - TJ(Tadżykistan)
 
-        - PRZEŁĄCZNIK (Timor_Leste)
+        - TL(Timor_Leste)
 
-        - TM (Turkmenistan)
+        - TM(Turkmenistan)
 
-        - TW(Taiwan)
+        - TW(Tajwan)
 
         - UZ(Uzbekistan)
 
-        - VN(Vietnam)
+        - VN(Wietnam)
 
-    - GEO-AF (Afryka)
+    - GEO-AF(Afryka)
 
-        - AO(Angola)
+        - (Angola)
 
         - BF(Burkina Faso)
 
         - BI(Burundi)
 
-        - BJ(Benin)
+        - BJ (Benin)
 
-        - BV (Wyspa Bouvet)
+        - BV (Wyspa Bouveta)
 
-        - BW (Botswany)
+        - BW(Botswana)
 
-        - CD(Congo (DRC))
+        - CD(Kongo (DRK))
 
         - CF (Republika Środkowoafrykańska)
 
-        - CI (Wybrzeże Kości Słoniowej — Côte d’Ivoire)
+        - (Wybrzeże Kości Słoniowej)
 
-        - CM (Kamerun)
+        - CM(Kamerun)
 
-        - CV (Cabo Verde)
+        - CV(Cabo Verde)
 
         - DJ (Dżibuti)
 
-        - DZ (Algieria)
+        - DZ(Algieria)
 
-        - NP. (Egipt)
+        - EG (Egipt)
 
-        - ER (Erytrea)
+        - ER(Erytrea)
 
         - ET (Etiopia)
 
         - GA(Gabon)
 
-        - GH (Ghana)
+        - GH(Ghana)
 
         - GM(Gambia)
 
-        - GN(Guinea)
+        - GN(Gwinea)
 
         - GQ (Gwinea Równikowa)
 
         - GW(Guinea_Bissau)
 
-        - KE(Kenya)
+        - KE (Kenia)
 
-        - KM (komory)
+        - KM(Komory)
 
-        - LR (Liberia)
+        - LR(Liberia)
 
         - LS(Lesotho)
 
-        - LY(Libya)
+        - LY (Libia)
 
-        - MA(Morocco)
+        - MA(Maroko)
 
-        - MG(Madagascar)
+        - MG (Madagaskar)
 
-        - ML (Mali)
+        - ML(Mali)
 
-        - MR(Mauritania)
+        - MR(Mauretania)
 
-        - MU(Mauritius)
+        - MU (Mauritius)
 
         - MW(Malawi)
 
-        - MZ(Mozambique)
+        - MZ(Mozambik)
 
         - NA(Namibia)
 
@@ -540,115 +540,115 @@ W tym artykule wymieniono kraje i regiony używane przez metodę routingu ruchu 
 
         - NG (Nigeria)
 
-        - RE (Réunion)
+        - RE(Réunion)
 
         - RW(Rwanda)
 
-        - SC (Seszele)
+        - SC(Seszele)
 
-        - SD (Sudan)
+        - SD(Sudan)
 
-        - SH (Wyspa Świętej Heleny, Wyspa Wniebowstąpienia i Tristan da Cunha)
+        - SH(St Helena, Wniebowstąpienie, Tristan da Cunha)
 
         - SL (Sierra Leone)
 
-        - SN(Senegal)
+        - SN (Senegal)
 
-        - SO(Somalia)
+        - SO (Somalia)
 
-        - SS (Sudan południowy)
+        - SS (Sudan Południowy)
 
-        - ST (Wyspy Świętego Tomasza i Książęca)
+        - ST(São Tomé i Książęce)
 
-        - SZ(Swaziland)
+        - SZ(Suazi)
 
-        - TD (Czad)
+        - TD(Czad)
 
-        - TF (Francuskie Terytoria Południowe)
+        - TF (francuskie terytoria południowe)
 
-        - TG (Togo)
+        - TG(Togo)
 
-        - TN(Tunisia)
+        - TN(Tunezja)
 
         - TZ(Tanzania)
 
-        - G (Uganda)
+        - UG(Uganda)
 
-        - YT (Majotta)
+        - YT(Majotta)
 
-        - Za (Republika Południowej Afryki)
+        - ZA(Republika Południowej Afryki)
 
         - ZM(Zambia)
 
-        - ZW(Zimbabwe)
+        - ZW (Zimbabwe)
 
-    - Geograficzna — a (Antarktyda)
+    - GEO-AN (Antarktyda)
 
         - AQ (Antarktyda)
 
-    - Geograficzna — skojarzenia zabezpieczeń (Ameryka Południowa)
+    - GEO-SA (Ameryka Południowa)
 
-        - AR (Argentyna)
+        - AR(Argentyna)
 
         - BO (Boliwia)
 
-        - BR (Brazylia)
+        - BR(Brazylia)
 
         - CL(Chile)
 
-        - CO (Kolumbia)
+        - CO(Kolumbia)
 
-        - EC (Ekwador)
+        - WE(Ekwador)
 
         - FK (Falklandy)
 
-        - GF (Gujana Francuska)
+        - GF(Gujana Francuska)
 
-        - GS (Wyspy Georgia Południowa i Sandwich Południowy)
+        - GS (Georgia Południowa i Sandwich Południowy)
 
         - GY (Gujana)
 
-        - PE(Peru)
+        - PE (Peru)
 
-        - Z PR (Paragwaj)
+        - PY (Paragwaj)
 
-        - SR (Surinam)
+        - SR(Surinam)
 
-        - UY (Urugwaj)
+        - UY(Urugwaj)
 
-        - VE (Wenezuela)
+        - VE(Wenezuela)
 
-    - Lokalizacja geograficzna (Australia/Pacyfik)
+    - GEO-AP(Australia / Pacyfik)
 
         - AS(Samoa Amerykańskie)
 
         - AU(Australia)
 
-            - AU-ACT (australijskie terytorium kapitałowe)
+            - AU-ACT (Australijskie Terytorium Stołeczne)
 
             - AU-NSW (Nowa Południowa Walia)
 
-            - AU-NT (terytorium Północne)
+            - AU-NT (Terytorium Północne)
 
             - AU-QLD (Queensland)
 
             - AU-SA (Australia Południowa)
 
-            - AU-zadania (Tasmania ()
+            - AU-TAS (Tasmania)
 
-            - AU-VIC (stan Wiktoria)
+            - AU-VIC (Wiktoria)
 
-            - AU-WA (Zachodnia Australia)
+            - AU-WA (Australia Zachodnia)
 
-        - Wkręt (Wyspy Cooka)
+        - CK (Wyspy Cooka)
 
-        - FJ(Fiji)
+        - FJ (Fidżi)
 
         - FM (Mikronezja)
 
         - GU(Guam)
 
-        - HM (Wyspy Heard i McDonald)
+        - HM (Wyspa Heard i Wyspy McDonalda)
 
         - KI (Kiribati)
 
@@ -656,21 +656,21 @@ W tym artykule wymieniono kraje i regiony używane przez metodę routingu ruchu 
 
         - MP (Mariany Północne)
 
-        - NC (Nowa Kaledonia)
+        - NC(Nowa Kaledonia)
 
         - NF (Wyspa Norfolk)
 
         - NR(Nauru)
 
-        - NI (Niue)
+        - NU(Niue)
 
-        - NZ (Nowa Zelandia)
+        - NZ(Nowa Zelandia)
 
         - PF (Polinezja Francuska)
 
-        - PG (Papua Nowa Gwinea)
+        - PG(Papua-Nowa Gwinea)
 
-        - PN (Wyspy Pitcairn)
+        - PN(Wyspy Pitcairn)
 
         - PW(Palau)
 
@@ -678,9 +678,9 @@ W tym artykule wymieniono kraje i regiony używane przez metodę routingu ruchu 
 
         - TK(Tokelau)
 
-        - DO (Tonga)
+        - TO(Tonga)
 
-        - Telewizja (Tuwalu)
+        - TV (Tuvalu)
 
         - VU (Vanuatu)
 

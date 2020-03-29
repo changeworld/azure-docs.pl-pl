@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie danych z usługi Google Analytics za pomocą usługi Azure Data Factory
-description: Dowiedz się, jak skopiować dane z usługi Google BigQuery do magazynów danych ujścia obsługiwane za pomocą działania kopiowania w potoku usługi fabryka danych.
+title: Kopiowanie danych z Google BigQuery przy użyciu usługi Azure Data Factory
+description: Dowiedz się, jak kopiować dane z Google BigQuery do obsługiwanych magazynów danych ujścia przy użyciu działania kopiowania w potoku fabryki danych.
 services: data-factory
 documentationcenter: ''
 ms.author: jingwang
@@ -13,57 +13,57 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
 ms.openlocfilehash: c0eb043ce040f154050ef4c3675f165dad326e32
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74929426"
 ---
-# <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Kopiowanie danych z usługi Google Analytics za pomocą usługi Azure Data Factory
+# <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Kopiowanie danych z Google BigQuery przy użyciu usługi Azure Data Factory
 
-W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych z usługi Google Analytics. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
+W tym artykule opisano, jak kopiować dane z usługi Google BigQuery za pomocą funkcji Kopiowanie aktywności w usłudze Azure Data Factory. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykuł, który przedstawia ogólne omówienie działania kopiowania.
 
-## <a name="supported-capabilities"></a>Obsługiwane funkcje
+## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
-Ten łącznik usługi Google BigQuery jest obsługiwany dla następujących działań:
+Ten łącznik Google BigQuery jest obsługiwany w następujących działaniach:
 
-- [Działanie kopiowania](copy-activity-overview.md) z [obsługiwaną macierzą źródłową/ujścia](copy-activity-overview.md)
-- [Działanie Lookup](control-flow-lookup-activity.md)
+- [Kopiowanie aktywności](copy-activity-overview.md) z [obsługiwaną macierzą źródło/ujście](copy-activity-overview.md)
+- [Działanie odnośnika](control-flow-lookup-activity.md)
 
-Możesz skopiować dane z usługi Google Analytics, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła lub ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
+Możesz skopiować dane z Google BigQuery do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, które są obsługiwane jako źródła lub pochłaniacze przez działanie kopiowania, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
-Data Factory oferuje wbudowane sterowników, aby włączyć łączność. W związku z tym nie trzeba ręcznie zainstalować sterownik, aby użyć tego łącznika.
+Usługa Data Factory udostępnia wbudowany sterownik umożliwiający łączność. W związku z tym nie trzeba ręcznie zainstalować sterownik, aby użyć tego łącznika.
 
 >[!NOTE]
->Ten łącznik Google BigQuery bazuje na interfejsach BigQuery. Należy pamiętać, że limity BigQuery maksymalna szybkość przychodzące żądania i wymusza odpowiednie limity przydziału dla poszczególnych projektów, odnoszą się do [limity przydziału i limity - żądań interfejsu API](https://cloud.google.com/bigquery/quotas#api_requests). Upewnij się, że nie wyzwalają za dużo współbieżnych żądań do konta.
+>To złącze Google BigQuery jest zbudowany na szczycie Interfejsów API BigQuery. Należy pamiętać, że BigQuery ogranicza maksymalną szybkość przychodzących żądań i wymusza odpowiednie przydziały na podstawie projektu, odnoszą się do [limitów & przydziałów — żądania interfejsu API](https://cloud.google.com/bigquery/quotas#api_requests). Upewnij się, że nie wyzwolić zbyt wiele równoczesnych żądań do konta.
 
-## <a name="get-started"></a>Rozpocznij
+## <a name="get-started"></a>Wprowadzenie
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości, które są używane do definiowania jednostek usługi fabryka danych określonej do łącznika usługi Google BigQuery.
+Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek fabryki danych specyficznych dla łącznika Google BigQuery.
 
-## <a name="linked-service-properties"></a>Właściwości usługi połączonej
+## <a name="linked-service-properties"></a>Połączone właściwości usługi
 
-Następujące właściwości są obsługiwane dla usługi Google BigQuery połączoną usługę.
+Następujące właściwości są obsługiwane dla usługi połączonej Google BigQuery.
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa **GoogleBigQuery**. | Tak |
-| project | Identyfikator projektu domyślny projekt BigQuery dla zapytania.  | Tak |
-| additionalProjects | Rozdzielana przecinkami lista identyfikatorów projektu publicznych BigQuery projekty do dostępu.  | Nie |
-| requestGoogleDriveScope | Określa, czy żądanie dostępu do usługi dysk Google. Zezwolenie na dostęp do usługi dysk Google umożliwia obsługę tabel federacyjnych, które łączą dane BigQuery przy użyciu danych z usługi dysk Google. Wartość domyślna to **false**.  | Nie |
-| authenticationType | Mechanizm uwierzytelniania OAuth 2.0 używany do uwierzytelniania. ServiceAuthentication może być używany tylko dla środowiskiem Integration Runtime. <br/>Dozwolone wartości to **UserAuthentication** i **ServiceAuthentication**. Zapoznaj się sekcje poniżej tej tabeli na więcej właściwości i przykłady kodu JSON dla tych typów uwierzytelniania, odpowiednio. | Tak |
+| type | Właściwość typu musi być ustawiona na **GoogleBigQuery**. | Tak |
+| projekt | Identyfikator projektu domyślnego projektu BigQuery do kwerendy.  | Tak |
+| dodatkoweProjekty | Oddzielona przecinkami lista identyfikatorów projektów publicznych projektów BigQuery, do do które mają być dostępne.  | Nie |
+| requestGoogleDriveScope | Czy chcesz uzyskać dostęp do Dysku Google. Zezwolenie na dostęp do Dysku Google umożliwia obsługę tabel federacyjnych, które łączą dane BigQuery z danymi z Dysku Google. Wartość domyślna to **fałsz**.  | Nie |
+| authenticationType | Mechanizm uwierzytelniania OAuth 2.0 używany do uwierzytelniania. ServiceAuthentication może być używany tylko w czasie wykonywania integracji hostowane samodzielnie. <br/>Dozwolone wartości to **UserAuthentication** i **ServiceAuthentication**. Zapoznaj się z sekcjami poniżej tej tabeli na więcej właściwości i przykłady JSON dla tych typów uwierzytelniania odpowiednio. | Tak |
 
-### <a name="using-user-authentication"></a>Przy użyciu uwierzytelniania użytkownika
+### <a name="using-user-authentication"></a>Korzystanie z uwierzytelniania użytkowników
 
-Ustaw właściwość "authenticationType" **UserAuthentication**, a następnie określ następujące właściwości wraz z ogólne właściwości opisanych w poprzedniej sekcji:
+Ustaw właściwość "authenticationType" na **UserAuthentication**i określ następujące właściwości wraz z właściwościami ogólnymi opisanymi w poprzedniej sekcji:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| clientId | Identyfikator aplikacji, używany do generowania tokenu odświeżania. | Nie |
-| clientSecret | Klucz tajny aplikacji używane do generowania tokenu odświeżania. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
-| refreshToken | Token odświeżania, uzyskany od firmy Google, służące do autoryzowania dostępu do BigQuery. Dowiedz się, jak je z [tokenów dostępu Uzyskiwanie OAuth 2.0](https://developers.google.com/identity/protocols/OAuth2WebServer#obtainingaccesstokens) i [ten blog społeczności](https://jpd.ms/getting-your-bigquery-refresh-token-for-azure-datafactory-f884ff815a59). Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
+| clientId | Identyfikator aplikacji używanej do generowania tokenu odświeżania. | Nie |
+| clientSecret | Klucz tajny aplikacji używanej do generowania tokenu odświeżania. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać go w fabryce danych lub [odwołaj się do klucza tajnego przechowywanego w usłudze Azure Key Vault.](store-credentials-in-key-vault.md) | Nie |
+| odświeżanieDoken | Token odświeżania uzyskany od Google służy do autoryzacji dostępu do BigQuery. Dowiedz się, jak uzyskać jeden z [Uzyskiwanie OAuth 2.0 tokeny dostępu](https://developers.google.com/identity/protocols/OAuth2WebServer#obtainingaccesstokens) i [tego bloga społeczności](https://jpd.ms/getting-your-bigquery-refresh-token-for-azure-datafactory-f884ff815a59). Oznacz to pole jako SecureString, aby bezpiecznie przechowywać go w fabryce danych lub [odwołaj się do klucza tajnego przechowywanego w usłudze Azure Key Vault.](store-credentials-in-key-vault.md) | Nie |
 
 **Przykład:**
 
@@ -91,16 +91,16 @@ Ustaw właściwość "authenticationType" **UserAuthentication**, a następnie o
 }
 ```
 
-### <a name="using-service-authentication"></a>Przy użyciu uwierzytelniania usługi
+### <a name="using-service-authentication"></a>Korzystanie z uwierzytelniania usługi
 
-Ustaw właściwość "authenticationType" **ServiceAuthentication**, a następnie określ następujące właściwości wraz z ogólne właściwości opisanych w poprzedniej sekcji. Ten typ uwierzytelniania może służyć tylko na środowiskiem Integration Runtime.
+Ustaw właściwość "authenticationType" na **ServiceAuthentication**i określ następujące właściwości wraz z właściwościami ogólnymi opisanymi w poprzedniej sekcji. Tego typu uwierzytelniania można używać tylko w samodzielnym czasie działania integracji.
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| e-mail | Identyfikator konta usługi poczty e-mail, służąca do ServiceAuthentication. Może służyć tylko na środowiskiem Integration Runtime.  | Nie |
-| keyFilePath | Pełna ścieżka do pliku klucza p12, który jest używany do uwierzytelniania adres e-mail konta usługi. | Nie |
-| trustedCertPath | Pełna ścieżka pliku PEM, który zawiera certyfikatów zaufanego urzędu certyfikacji służącego do weryfikowania serwera, po nawiązaniu połączenia za pośrednictwem protokołu SSL. Tę właściwość można ustawić tylko wtedy, gdy używasz protokołu SSL na środowiskiem Integration Runtime. Wartość domyślna to plik cacerts.pem zainstalowane za pomocą środowiska integration runtime.  | Nie |
-| useSystemTrustStore | Określa, czy ma być używany certyfikat urzędu certyfikacji z magazynu zaufania systemu lub z pliku określonego PEM. Wartość domyślna to **false**.  | Nie |
+| email | Identyfikator wiadomości e-mail konta usługi, który jest używany do ServiceAuthentication. Może być używany tylko w własnym czasie działania integracji.  | Nie |
+| keyFilePath | Pełna ścieżka do pliku klucza .p12, który jest używany do uwierzytelniania adresu e-mail konta usługi. | Nie |
+| trustedCertPath | Pełna ścieżka pliku pem zawierającego zaufane certyfikaty urzędu certyfikacji używane do weryfikacji serwera podczas łączenia się za pomocą ssl. Tę właściwość można ustawić tylko wtedy, gdy używasz SSL w samodzielnym czasie działania integracji. Wartością domyślną jest plik cacerts.pem zainstalowany wraz ze środowiska wykonawczego integracji.  | Nie |
+| useSystemTrustStore | Określa, czy certyfikat urzędu certyfikacji ma być używany z magazynu zaufania systemu, czy z określonego pliku pem. Wartość domyślna to **fałsz**.  | Nie |
 
 **Przykład:**
 
@@ -126,16 +126,16 @@ Ustaw właściwość "authenticationType" **ServiceAuthentication**, a następni
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych usługi Google BigQuery.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz artykuł [Zestawy danych.](concepts-datasets-linked-services.md) Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych Google BigQuery.
 
-Aby skopiować dane z usługi Google Analytics, należy ustawić właściwość typu zestawu danych na **GoogleBigQueryObject**. Obsługiwane są następujące właściwości:
+Aby skopiować dane z Google BigQuery, ustaw właściwość typu zestawu danych na **GoogleBigQueryObject**. Obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość typu elementu dataset musi być równa: **GoogleBigQueryObject** | Tak |
-| zestaw danych | Nazwa zestawu danych usługi Google BigQuery. |Nie (Jeśli określono parametr "query" w źródle działania)  |
-| table | Nazwa tabeli. |Nie (Jeśli określono parametr "query" w źródle działania)  |
-| tableName | Nazwa tabeli. Ta właściwość jest obsługiwana w celu zapewnienia zgodności z poprzednimi wersjami. W przypadku nowych obciążeń Użyj `dataset` i `table`. | Nie (Jeśli określono parametr "query" w źródle działania) |
+| type | Właściwość typu zestawu danych musi być ustawiona na: **GoogleBigQueryObject** | Tak |
+| Dataset | Nazwa zestawu danych Google BigQuery. |Nie (jeśli określono "zapytanie" w źródle działania)  |
+| tabela | Nazwa tabeli. |Nie (jeśli określono "zapytanie" w źródle działania)  |
+| tableName | Nazwa tabeli. Ta właściwość jest obsługiwana w celu zapewnienia zgodności z powrotem. W przypadku nowego `dataset` `table`obciążenia, użycia i programu . | Nie (jeśli określono "zapytanie" w źródle działania) |
 
 **Przykład**
 
@@ -156,16 +156,16 @@ Aby skopiować dane z usługi Google Analytics, należy ustawić właściwość 
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez typ źródła w usłudze Google BigQuery.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz [Pipelines](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez typ źródła Google BigQuery.
 
 ### <a name="googlebigquerysource-as-a-source-type"></a>GoogleBigQuerySource jako typ źródła
 
-Aby skopiować dane z usługi Google Analytics, należy ustawić typ źródłowego w działaniu kopiowania, aby **GoogleBigQuerySource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji.
+Aby skopiować dane z Google BigQuery, ustaw typ źródła w aktywności kopiowania na **GoogleBigQuerySource**. Następujące właściwości są obsługiwane w sekcji **źródła** działania kopiowania.
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość typu źródła działania kopiowania musi być równa **GoogleBigQuerySource**. | Tak |
-| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Może to być na przykład `"SELECT * FROM MyTable"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
+| type | Właściwość typu źródła aktywności kopiowania musi być ustawiona na **GoogleBigQuerySource**. | Tak |
+| query | Użyj niestandardowej kwerendy SQL, aby odczytać dane. Może to być na przykład `"SELECT * FROM MyTable"`. | Nie (jeśli określono "nazwa tabela" w zestawie danych) |
 
 **Przykład:**
 
@@ -199,9 +199,9 @@ Aby skopiować dane z usługi Google Analytics, należy ustawić typ źródłowe
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Właściwości działania Lookup
+## <a name="lookup-activity-properties"></a>Właściwości działania odnośnika
 
-Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (wyszukiwanie](control-flow-lookup-activity.md)).
+Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie odnośnika](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Aby uzyskać listę magazynów danych obsługiwanych jako źródła i pochłaniacze przez działanie kopiowania w fabryce danych, zobacz [Obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

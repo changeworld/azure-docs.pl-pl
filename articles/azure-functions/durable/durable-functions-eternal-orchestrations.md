@@ -1,39 +1,39 @@
 ---
-title: Eternal aranżacje w Durable Functions — Azure
-description: Dowiedz się, jak wdrożyć aranżacje Eternal przy użyciu rozszerzenia Durable Functions Azure Functions.
+title: Wieczne aranżacji w funkcji trwałych — Azure
+description: Dowiedz się, jak zaimplementować wieczne aranżacji przy użyciu rozszerzenia funkcje trwałe dla funkcji platformy Azure.
 author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 572fec4d6e47efd734bc84a40dc974c79bd619fb
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76262983"
 ---
-# <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Eternal aranżacji w Durable Functions (Azure Functions)
+# <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Wieczne aranżacji w funkcji trwałych (usługi Azure)
 
-*Eternal aranżacje* to funkcje programu Orchestrator, które nigdy nie kończą się. Są one przydatne, gdy chcesz używać [Durable Functions](durable-functions-overview.md) do agregowania i scenariusza, który wymaga pętli nieskończonej.
+*Wieczne aranżacje* są funkcjami orkiestratora, które nigdy się nie kończą. Są one przydatne, gdy chcesz użyć [funkcji trwałych](durable-functions-overview.md) dla agregatorów i każdy scenariusz, który wymaga nieskończonej pętli.
 
 ## <a name="orchestration-history"></a>Historia aranżacji
 
-Zgodnie z opisem w temacie [historia aranżacji](durable-functions-orchestrations.md#orchestration-history) , trwała struktura zadań śledzi historię każdej aranżacji funkcji. Ta historia stale rośnie, o ile funkcja programu Orchestrator nadal planuje nową pracę. Jeśli funkcja programu Orchestrator przejdzie w nieskończoną pętlę i ciągle planuje prace, ta historia może zwiększyć wydajność krytyczną i spowodować znaczne problemy z wydajnością. Koncepcja *aranżacji Eternal* została zaprojektowana w celu ograniczenia tego rodzaju problemów dla aplikacji, które wymagają nieskończonych pętli.
+Jak wyjaśniono w temacie [historii aranżacji,](durable-functions-orchestrations.md#orchestration-history) trwała struktura zadań śledzi historię każdej aranżacji funkcji. Ta historia stale rośnie tak długo, jak funkcja koordynatora nadal planuje nowe prace. Jeśli funkcja koordynatora przechodzi w nieskończoną pętlę i stale planuje pracę, ta historia może wzrosnąć krytycznie duże i powodować znaczące problemy z wydajnością. Koncepcja *wiecznej aranżacji* została zaprojektowana w celu złagodzenia tego rodzaju problemów dla aplikacji, które wymagają nieskończonych pętli.
 
 ## <a name="resetting-and-restarting"></a>Resetowanie i ponowne uruchamianie
 
-Zamiast używać nieskończonych pętli, funkcja programu Orchestrator resetuje swój stan przez wywołanie metody `ContinueAsNew` (.NET) lub `continueAsNew` (JavaScript) [powiązania wyzwalacza aranżacji](durable-functions-bindings.md#orchestration-trigger). Ta metoda przyjmuje jeden parametr możliwy do serializacji JSON, który staje się nowym danymi wejściowymi dla następnej generacji funkcji programu Orchestrator.
+Zamiast używać nieskończonych pętli, funkcje aranżatora resetują swój stan, wywołując metodę `ContinueAsNew` (.NET) lub `continueAsNew` (JavaScript) powiązania [wyzwalacza aranżacji](durable-functions-bindings.md#orchestration-trigger). Ta metoda przyjmuje pojedynczy parametr serializable JSON, który staje się nowym wejściem dla następnego generowania funkcji orkiestry.
 
-Gdy `ContinueAsNew` jest wywoływana, wystąpienie enqueues komunikat do samego siebie przed opuszczeniem. Komunikat uruchamia ponownie wystąpienie z nową wartością wejściową. Ten sam identyfikator wystąpienia jest zachowywany, ale historia funkcji programu Orchestrator jest efektywnie obcinana.
+Po `ContinueAsNew` wywołaniu wystąpienia w kolejce wiadomość do siebie przed zamknięciem. Komunikat uruchamia ponownie wystąpienie z nową wartością wejściową. Ten sam identyfikator wystąpienia jest zachowywany, ale historia funkcji koordynatora jest skutecznie obcinana.
 
 > [!NOTE]
-> Usługa trwałych zadań obsługuje ten sam identyfikator wystąpienia, ale wewnętrznie tworzy nowy *Identyfikator wykonania* dla funkcji programu Orchestrator, która jest resetowana przez `ContinueAsNew`. Ten identyfikator wykonania zwykle nie jest ujawniany zewnętrznie, ale może być przydatne podczas debugowania wykonywania aranżacji.
+> Struktura trwałych zadań zachowuje ten sam identyfikator wystąpienia, ale wewnętrznie tworzy nowy *identyfikator* wykonania `ContinueAsNew`dla funkcji koordynatora, która zostanie zresetowana przez program . Ten identyfikator wykonania zazwyczaj nie jest narażony na zewnątrz, ale może być przydatne wiedzieć o podczas debugowania wykonanie aranżacji.
 
-## <a name="periodic-work-example"></a>Przykład pracy okresowej
+## <a name="periodic-work-example"></a>Przykład pracy okresowego
 
-Jeden przypadek użycia dla aranżacji Eternal to kod, który musi wykonywać okresowe zadania na czas nieokreślony.
+Jednym z przypadków użycia dla wiecznych aranżacji jest kod, który musi wykonywać okresową pracę przez czas nieokreślony.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("Periodic_Cleanup_Loop")]
@@ -51,9 +51,9 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Poprzedni C# przykład dotyczy Durable Functions 2. x. W przypadku Durable Functions 1. x należy użyć `DurableOrchestrationContext` zamiast `IDurableOrchestrationContext`. Aby uzyskać więcej informacji o różnicach między wersjami, zobacz artykuł dotyczący [wersji Durable Functions](durable-functions-versions.md) .
+> Poprzedni przykład języka C# jest dla funkcji trwałych 2.x. W przypadku funkcji trwałych 1.x należy używać `DurableOrchestrationContext` zamiast `IDurableOrchestrationContext`. Aby uzyskać więcej informacji na temat różnic między wersjami, zobacz [wersje funkcji trwałych](durable-functions-versions.md) artykułu.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -72,16 +72,16 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-Różnica między tym przykładem a funkcją wyzwalaną czasomierzem oznacza, że czasy wyzwalacza czyszczenia nie są oparte na harmonogramie. Na przykład harmonogram firmy CRONUS, który wykonuje funkcję co godzinę, będzie wykonywał ją na 1:00, 2:00, 3:00 itd. i może być potencjalnie niezależny. Jeśli jednak oczyszczanie trwa 30 minut, zostanie zaplanowane o godzinie 1:00, 2:30, 4:00 itd. i nie ma możliwości nakładania się.
+Różnica między tym przykładem a funkcją wyzwalaną przez czasomierza polega na tym, że czasy wyzwalania oczyszczania w tym miejscu nie są oparte na harmonogramie. Na przykład harmonogram CRON, który wykonuje funkcję co godzinę będzie wykonywać go o 1:00, 2:00, 3:00 itp. W tym przykładzie jednak, jeśli oczyszczanie trwa 30 minut, a następnie zostanie zaplanowane na 1:00, 2:30, 4:00, itp.
 
-## <a name="starting-an-eternal-orchestration"></a>Rozpoczynanie aranżacji Eternal
+## <a name="starting-an-eternal-orchestration"></a>Rozpoczynanie wiecznej aranżacji
 
-Użyj metody `StartNewAsync` (.NET) lub `startNew` (JavaScript), aby rozpocząć aranżację Eternal, podobnie jak w przypadku każdej innej funkcji aranżacji.  
+Użyj `StartNewAsync` metody (.NET) `startNew` lub (JavaScript), aby rozpocząć wieczną aranżację, tak jak w przypadku każdej innej funkcji aranżacji.  
 
 > [!NOTE]
-> Jeśli musisz upewnić się, że Eternal aranżacja jest uruchomiona, ważne jest, aby zachować to samo wystąpienie `id` podczas uruchamiania aranżacji. Aby uzyskać więcej informacji, zobacz [Zarządzanie wystąpieniami](durable-functions-instance-management.md).
+> Jeśli musisz upewnić się, że pojedyncza wieczna aranżacja `id` jest uruchomiona, ważne jest, aby zachować to samo wystąpienie podczas uruchamiania aranżacji. Aby uzyskać więcej informacji, zobacz [Zarządzanie wystąpieniami](durable-functions-instance-management.md).
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("Trigger_Eternal_Orchestration")]
@@ -97,9 +97,9 @@ public static async Task<HttpResponseMessage> OrchestrationTrigger(
 ```
 
 > [!NOTE]
-> Poprzedni kod jest przeznaczony dla Durable Functions 2. x. W przypadku Durable Functions 1. x należy użyć atrybutu `OrchestrationClient` zamiast atrybutu `DurableClient` i należy użyć typu parametru `DurableOrchestrationClient` zamiast `IDurableOrchestrationClient`. Aby uzyskać więcej informacji o różnicach między wersjami, zobacz artykuł dotyczący [wersji Durable Functions](durable-functions-versions.md) .
+> Poprzedni kod jest dla funkcji trwałych 2.x. W przypadku funkcji trwałych 1.x należy `OrchestrationClient` użyć `DurableClient` atrybutu zamiast atrybutu `DurableOrchestrationClient` i zamiast `IDurableOrchestrationClient`parametru . Aby uzyskać więcej informacji na temat różnic między wersjami, zobacz [wersje funkcji trwałych](durable-functions-versions.md) artykułu.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -118,13 +118,13 @@ module.exports = async function (context, req) {
 
 ---
 
-## <a name="exit-from-an-eternal-orchestration"></a>Wyjdź z aranżacji Eternal
+## <a name="exit-from-an-eternal-orchestration"></a>Wyjście z wiecznej aranżacji
 
-Jeśli funkcja programu Orchestrator musi zostać zakończona, wystarczy, że *nie* wywołaj `ContinueAsNew` i pozwól na zakończenie działania funkcji.
+Jeśli funkcja koordynatora musi ostatecznie zakończyć, to wszystko, `ContinueAsNew` co musisz zrobić, to *nie* wywołać i pozwolić na zakończenie funkcji.
 
-Jeśli funkcja programu Orchestrator jest w pętli nieskończonej i musi zostać zatrzymana, należy użyć metody `TerminateAsync` (.NET) lub `terminate` (JavaScript) [powiązania klienta aranżacji](durable-functions-bindings.md#orchestration-client) , aby ją zatrzymać. Aby uzyskać więcej informacji, zobacz [Zarządzanie wystąpieniami](durable-functions-instance-management.md).
+Jeśli funkcja aranżatora jest w nieskończonej pętli `TerminateAsync` i musi `terminate` zostać zatrzymana, użyj metody (.NET) lub (JavaScript) [powiązania klienta aranżacji,](durable-functions-bindings.md#orchestration-client) aby go zatrzymać. Aby uzyskać więcej informacji, zobacz [Zarządzanie wystąpieniami](durable-functions-instance-management.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się, jak zaimplementować pojedyncze aranżacje](durable-functions-singletons.md)
+> [Dowiedz się, jak zaimplementować aranżacji singleton](durable-functions-singletons.md)
