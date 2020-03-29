@@ -1,107 +1,107 @@
 ---
-title: Zarządzanie serwerem Azure Portal-Azure Database for MySQL
-description: Dowiedz się, jak zarządzać serwerem Azure Database for MySQL przy użyciu Azure Portal.
+title: Zarządzanie serwerem — witryna Azure portal — usługa Azure Database for MySQL
+description: Dowiedz się, jak zarządzać usługą Azure Database dla serwera MySQL z witryny Azure portal.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 3fed615a767fee2fff1700f996b2103f411db825
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 3/18/2020
+ms.openlocfilehash: c0bee0b628a49746a19545d14b8b8761d0e880d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973479"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062415"
 ---
-# <a name="manage-an-azure-database-for-mysql-server-using-the-azure-portal"></a>Zarządzanie serwerem Azure Database for MySQL przy użyciu Azure Portal
-W tym artykule pokazano, jak zarządzać serwerami Azure Database for MySQL. Zadania zarządzania obejmują skalowanie obliczeniowe i magazynowe, Resetowanie hasła administratora oraz wyświetlanie szczegółów serwera.
+# <a name="manage-an-azure-database-for-mysql-server-using-the-azure-portal"></a>Zarządzanie usługą Azure Database dla serwera MySQL przy użyciu witryny Azure portal
+W tym artykule pokazano, jak zarządzać usługą Azure Database dla serwerów MySQL. Zadania zarządzania obejmują skalowanie danych obliczeniowych i magazynowania, resetowanie hasła administratora oraz wyświetlanie szczegółów serwera.
 
-## <a name="sign-in"></a>Zaloguj
-Zaloguj się do [portalu Azure](https://portal.azure.com).
+## <a name="sign-in"></a>Logowanie
+Zaloguj się do [Portalu Azure](https://portal.azure.com).
 
 ## <a name="create-a-server"></a>Tworzenie serwera
-Przejdź do [przewodnika Szybki Start](quickstart-create-mysql-server-database-using-azure-portal.md) , aby dowiedzieć się, jak utworzyć serwer Azure Database for MySQL i rozpocząć pracę z nim.
+Odwiedź [przewodnik Szybki start,](quickstart-create-mysql-server-database-using-azure-portal.md) aby dowiedzieć się, jak utworzyć i rozpocząć korzystanie z usługi Azure Database dla serwera MySQL.
 
-## <a name="scale-compute-and-storage"></a>Skalowanie zasobów obliczeniowych i magazynu
+## <a name="scale-compute-and-storage"></a>Skalowanie obliczeń i pamięci masowej
 
-Po utworzeniu serwera można skalować warstwy Ogólnego przeznaczenia i zoptymalizowane pod kątem pamięci stosownie do potrzeb. Możesz również skalować obliczenia i pamięć, zwiększając lub zmniejszając rdzeni wirtualnych. Magazyn można skalować w górę (nie można jednak skalować w dół).
+Po utworzeniu serwera można skalować warstwy ogólnego przeznaczenia i zoptymalizowane pod kątem pamięci w miarę zmiany potrzeb. Można również skalować obliczenia i pamięć, zwiększając lub zmniejszając liczbę wirtualnych. Magazyn można skalować w górę (jednak nie można skalować w dół).
 
-### <a name="scale-between-general-purpose-and-memory-optimized-tiers"></a>Skalowanie między Ogólnego przeznaczenia i warstw zoptymalizowanych pod kątem pamięci
+### <a name="scale-between-general-purpose-and-memory-optimized-tiers"></a>Skalowanie między warstwami ogólnego przeznaczenia i zoptymalizowane pod kątem pamięci
 
-Możesz skalować od Ogólnego przeznaczenia do zoptymalizowanej pod kątem pamięci i na odwrót. Zmiana na i z warstwy Podstawowa po utworzeniu serwera nie jest obsługiwana. 
+Można skalować z ogólnego przeznaczenia do zoptymalizowane pod kątem pamięci i odwrotnie. Zmiana na i z warstwy Podstawowa po utworzeniu serwera nie jest obsługiwana. 
 
-1. Wybierz serwer w Azure Portal. Wybierz pozycję **warstwa cenowa**znajdująca się w sekcji **Ustawienia** .
+1. Wybierz serwer w witrynie Azure portal. Wybierz **warstwę cenową**, znajdującą się w sekcji **Ustawienia.**
 
-2. Wybierz **ogólnego przeznaczenia** lub **zoptymalizowane pod kątem pamięci**, w zależności od tego, na czym polegasz skalowaniu. 
+2. Wybierz **opcję Ogólne przeznaczenie** lub **Zoptymalizowane pod kątem pamięci**, w zależności od tego, do czego się skalujesz. 
 
-    ![zmiana ceny — warstwa](./media/howto-create-manage-server-portal/change-pricing-tier.png)
+    ![warstwa zmiany cen](./media/howto-create-manage-server-portal/change-pricing-tier.png)
 
     > [!NOTE]
     > Zmiana warstw powoduje ponowne uruchomienie serwera.
 
-4. Wybierz **przycisk OK** , aby zapisać zmiany.
+4. Wybierz **przycisk OK,** aby zapisać zmiany.
 
 
-### <a name="scale-vcores-up-or-down"></a>Skalowanie rdzeni wirtualnych w górę lub w dół
+### <a name="scale-vcores-up-or-down"></a>Skalowanie korli wirtualnych w górę lub w dół
 
-1. Wybierz serwer w Azure Portal. Wybierz pozycję **warstwa cenowa**znajdująca się w sekcji **Ustawienia** .
+1. Wybierz serwer w witrynie Azure portal. Wybierz **warstwę cenową**, znajdującą się w sekcji **Ustawienia.**
 
-2. Zmień ustawienie **rdzeń wirtualny** , przesuwając suwak do żądanej wartości.
+2. Zmień ustawienie **vCore,** przesuwając suwak do żądanej wartości.
 
-    ![Skalowanie — obliczenia](./media/howto-create-manage-server-portal/scaling-compute.png)
-
-    > [!NOTE]
-    > Skalowanie rdzeni wirtualnych powoduje ponowne uruchomienie serwera.
-
-3. Wybierz **przycisk OK** , aby zapisać zmiany.
-
-
-### <a name="scale-storage-up"></a>Skalowanie w górę
-
-1. Wybierz serwer w Azure Portal. Wybierz pozycję **warstwa cenowa**znajdująca się w sekcji **Ustawienia** .
-
-2. Zmień ustawienie **magazynu** , przesuwając suwak w górę do żądanej wartości.
-
-    ![Skalowanie magazynu](./media/howto-create-manage-server-portal/scaling-storage.png)
+    ![obliczenia skali](./media/howto-create-manage-server-portal/scaling-compute.png)
 
     > [!NOTE]
-    > Nie można skalować magazynu.
+    > Skalowanie korli wirtualnych powoduje ponowne uruchomienie serwera.
 
-3. Wybierz **przycisk OK** , aby zapisać zmiany.
+3. Wybierz **przycisk OK,** aby zapisać zmiany.
 
 
-## <a name="update-admin-password"></a>Aktualizowanie hasła administratora
-Hasło roli administratora można zmienić przy użyciu Azure Portal.
+### <a name="scale-storage-up"></a>Skalowanie pamięci masowej w górę
 
-1. Wybierz serwer w Azure Portal. W oknie **Przegląd** wybierz pozycję **Resetuj hasło**.
+1. Wybierz serwer w witrynie Azure portal. Wybierz **warstwę cenową**, znajdującą się w sekcji **Ustawienia.**
+
+2. Zmień ustawienie **Magazyn,** przesuwając suwak do żądanej wartości.
+
+    ![magazyn skalny](./media/howto-create-manage-server-portal/scaling-storage.png)
+
+    > [!NOTE]
+    > Nie można zmniejszyć pojemności.
+
+3. Wybierz **przycisk OK,** aby zapisać zmiany.
+
+
+## <a name="update-admin-password"></a>Aktualizacja hasła administratora
+Hasło roli administratora można zmienić za pomocą witryny Azure Portal.
+
+1. Wybierz serwer w witrynie Azure portal. W oknie **Przegląd** wybierz **pozycję Resetuj hasło**.
 
    ![overview](./media/howto-create-manage-server-portal/overview-reset-password.png)
 
-2. Wprowadź nowe hasło i Potwierdź hasło. W polu tekstowym zostanie wyświetlony monit o podanie wymagań dotyczących złożoności haseł.
+2. Wprowadź nowe hasło i potwierdź hasło. Pole tekstowe wyświetli monit o wymagania dotyczące złożoności hasła.
 
-   ![Resetowanie hasła](./media/howto-create-manage-server-portal/reset-password.png)
+   ![resetowanie hasła](./media/howto-create-manage-server-portal/reset-password.png)
 
-3. Wybierz **przycisk OK** , aby zapisać nowe hasło.
+3. Wybierz **przycisk OK,** aby zapisać nowe hasło.
 
 
 ## <a name="delete-a-server"></a>Usuwanie serwera
 
 Serwer można usunąć, jeśli nie jest już potrzebny. 
 
-1. Wybierz serwer w Azure Portal. W oknie **Przegląd** wybierz pozycję **Usuń**.
+1. Wybierz serwer w witrynie Azure portal. W oknie **Przegląd** wybierz pozycję **Usuń**.
 
     ![delete](./media/howto-create-manage-server-portal/overview-delete.png)
 
-2. Wpisz nazwę serwera w polu wejściowym, aby upewnić się, że jest to serwer, który chcesz usunąć.
+2. Wpisz nazwę serwera w polu wejściowym, aby potwierdzić, że jest to serwer, który chcesz usunąć.
 
-    ![confirm-delete](./media/howto-create-manage-server-portal/confirm-delete.png)
+    ![potwierdzanie-usuwanie](./media/howto-create-manage-server-portal/confirm-delete.png)
 
     > [!NOTE]
-    > Usuwanie serwera jest nieodwracalne.
+    > Usunięcie serwera jest nieodwracalne.
 
 3. Wybierz pozycję **Usuń**.
 
 
 ## <a name="next-steps"></a>Następne kroki
-- Informacje o [kopiach zapasowych i przywracaniu serwera](howto-restore-server-portal.md)
-- Informacje o [opcjach dostrajania i monitorowania w Azure Database for MySQL](concepts-monitoring.md)
+- Dowiedz się więcej o [kopiach zapasowych i przywracaniu serwera](howto-restore-server-portal.md)
+- Dowiedz się więcej o [opcjach dostrajania i monitorowania w usłudze Azure Database for MySQL](concepts-monitoring.md)

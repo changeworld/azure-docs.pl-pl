@@ -1,65 +1,131 @@
 ---
-title: Mapowanie wybierania przepływu danych
-description: Mapowanie Azure Data Factory Wybieranie przepływu danych
+title: Transformacja wyboru przepływu danych mapowania
+description: Transformacja wyboru przepływu danych usługi Azure Data Factory mapowania
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/08/2020
-ms.openlocfilehash: 2d04de420f743e4fef4cff4bd2912559dae0886a
-ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
+ms.date: 03/18/2020
+ms.openlocfilehash: cfa15f5424dcd5d52b03fb65afe051444127f5ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78934181"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80065216"
 ---
-# <a name="mapping-data-flow-select-transformation"></a>Mapowanie wybierania przepływu danych
+# <a name="select-transformation-in-mapping-data-flow"></a>Wybieranie transformacji w przepływie danych mapowania
 
+Użyj transformacji wyboru, aby zmienić nazwę kolumn, upuścić lub zmienić kolejność. Ta transformacja nie zmienia danych wierszy, ale wybiera, które kolumny są propagowane w dół. 
 
-Użyj tej transformacji dla selektywnej kolumny (zmniejszając liczbę kolumn), kolumn aliasów i nazw strumieni oraz Zmień kolejność kolumn.
+W transformacji wybierając użytkownicy mogą określać stałe mapowania, używać wzorców do mapowania opartego na regułach lub włączyć automatyczne mapowanie. Mapowania stałe i oparte na regułach mogą być używane w ramach tej samej transformacji wyboru. Jeśli kolumna nie pasuje do jednego z zdefiniowanych mapowań, zostanie porzucona.
 
-## <a name="how-to-use-select-transformation"></a>Jak używać transformacji SELECT
-Wybranie przekształcenia pozwala na aliasowanie całego strumienia lub kolumn w tym strumieniu, przypisywanie różnych nazw (aliasów), a następnie odwoływanie się do tych nowych nazw później w przepływie danych. To przekształcenie jest przydatne w scenariuszach samosprzężenia. Sposobem implementacji samosprzężenia w przepływie danych ADF jest wykonanie strumienia, rozgałęzienie go przy użyciu "nowej gałęzi", a następnie natychmiastowe dodanie przekształcenia "Select". Ten strumień będzie teraz miał nową nazwę, której można użyć do dołączenia do oryginalnego strumienia, tworząc samosprzężenie:
+## <a name="fixed-mapping"></a>Stałe mapowanie
 
-![Samosprzężenie](media/data-flow/selfjoin.png "Samosprzężenie")
+Jeśli w rzutowaniu zdefiniowano mniej niż 50 kolumn, wszystkie zdefiniowane kolumny będą domyślnie miały stałe mapowanie. Stałe mapowanie przyjmuje zdefiniowaną, przychodzącą kolumnę i mapuje ją pod dokładną nazwą.
 
-Na powyższym diagramie wybór przekształceń znajduje się u góry. Jest to alias oryginalnego strumienia do "OrigSourceBatting". W wyróżnionym przekształceniu Join poniżej można zobaczyć, że używamy tego strumienia SELECT aliasu jako sprzężenia po prawej stronie, umożliwiając nam odwoływanie się do tego samego klucza zarówno w lewej & po prawej stronie sprzężenia wewnętrznego.
+![Stałe mapowanie](media/data-flow/fixedmapping.png "Stałe mapowanie")
 
-Opcji wybierz można także użyć jako sposobu usuwania kolumn z przepływu danych. Jeśli na przykład masz 6 kolumn zdefiniowanych w ujścia, ale chcesz tylko wybrać konkretny 3 do przekształcenia, a następnie przetworzyć przepływ do ujścia, możesz wybrać tylko te 3 przy użyciu opcji Przekształć.
+> [!NOTE]
+> Nie można mapować ani zmieniać nazwy kolumny dryfował przy użyciu stałego mapowania
 
-![Wybierz transformację](media/data-flow/newselect1.png "Wybierz alias")
+### <a name="mapping-hierarchical-columns"></a>Mapowanie kolumn hierarchicznych
 
-## <a name="options"></a>Opcje
-* Ustawieniem domyślnym dla opcji "Select" jest uwzględnianie wszystkich kolumn przychodzących i zachowywanie tych oryginalnych nazw. Strumień można aliasować przez ustawienie nazwy przekształcenia SELECT.
-* Aby określić alias poszczególnych kolumn, usuń zaznaczenie opcji "Zaznacz wszystko" i użyj mapowania kolumn u dołu.
-* Wybierz pozycję Pomiń duplikaty, aby wyeliminować zduplikowane kolumny z metadanych danych wejściowych lub wyjściowych.
+Stałe mapowania mogą być używane do mapowania podkolumny kolumny hierarchicznej na kolumnę najwyższego poziomu. Jeśli masz zdefiniowaną hierarchię, użyj listy rozwijanej kolumny, aby wybrać podkolumnę. Transformacja select utworzy nową kolumnę z wartością i typem danych podkolumny.
+
+![mapowanie hierarchiczne](media/data-flow/select-hierarchy.png "mapowanie hierarchiczne")
+
+## <a name="rule-based-mapping"></a>Mapowanie oparte na regułach
+
+Jeśli chcesz mapować wiele kolumn naraz lub przekazać dryfowane kolumny w dół, użyj mapowania opartego na regułach, aby zdefiniować mapowania przy użyciu wzorców kolumn. Dopasuj `name` `type`na `stream`podstawie `position` , , i kolumn. Można mieć dowolną kombinację mapowań stałych i opartych na regułach. Domyślnie wszystkie rzuty z większą niż 50 kolumn domyślnie będzie mapowanie oparte na regułach, który pasuje do każdej kolumny i wyprowadza wprowadzonej nazwy. 
+
+Aby dodać mapowanie oparte na regułach, kliknij pozycję **Dodaj mapowanie** i wybierz pozycję **Mapowanie oparte na regułach**.
+
+![mapowanie oparte na regułach](media/data-flow/rule2.png "Mapowanie oparte na regułach")
+
+Każde mapowanie oparte na regułach wymaga dwóch danych wejściowych: warunek, dla którego ma być zgodny według i co do nazwy każdej zamapowanej kolumny. Obie wartości są wprowadzane za pośrednictwem [konstruktora wyrażeń](concepts-data-flow-expression-builder.md). W lewym polu wyrażenia wprowadź warunek dopasowania logicznego. W prawym polu wyrażenia określ, do jakiej kolumny dopasowanej będzie mapowana.
+
+![mapowanie oparte na regułach](media/data-flow/rule-based-mapping.png "Mapowanie oparte na regułach")
+
+Użyj `$$` składni, aby odwołać się do nazwy wejściowej dopasowanej kolumny. Używając powyższego obrazu jako przykładu, powiedzmy, że użytkownik chce dopasować na wszystkich kolumnach ciągów, których nazwy są krótsze niż sześć znaków. Jeśli nazwano `test`jedną kolumnę `$$ + '_short'` przychodzącą, `test_short`wyrażenie zmieni nazwę kolumny . Jeśli jest to tylko mapowanie, które istnieje, wszystkie kolumny, które nie spełniają warunek zostaną usunięte z danych wyjściowych.
+
+Wzorce pasują zarówno do kolumn dryfowanych, jak i zdefiniowanych. Aby zobaczyć, które zdefiniowane kolumny są mapowane przez regułę, kliknij ikonę okularów obok reguły. Sprawdź dane wyjściowe za pomocą podglądu danych.
+
+### <a name="regex-mapping"></a>Mapowanie regeksu
+
+Po kliknięciu ikony szewronu w dół można określić warunek oddawania wartości. Warunek mapowania wyrażenia regularnego pasuje do wszystkich nazw kolumn, które odpowiadają określonej warunku wyrażenia regularnego. Może to być używane w połączeniu ze standardowymi mapowaniami opartymi na regułach.
+
+![mapowanie oparte na regułach](media/data-flow/regex-matching.png "Mapowanie oparte na regułach")
+
+Powyższy przykład pasuje do `(r)` wzorca wyrażenia regularnego lub dowolnej nazwy kolumny zawierającej małe litery r. Podobnie jak w przypadku mapowania opartego na regułach standardowych, wszystkie `$$` dopasowane kolumny są zmieniane przez warunek po prawej stronie przy użyciu składni.
+
+Jeśli w nazwie kolumny znajduje się wiele dopasowań wyrażenia `$n` regularnego, możesz odwołać się do określonych dopasowań, używając, gdzie "n" odnosi się do tego, które dopasowanie. Na przykład "$2" odnosi się do drugiego dopasowania w nazwie kolumny.
+
+### <a name="rule-based-hierarchies"></a>Hierarchie oparte na regułach
+
+Jeśli zdefiniowana projekcja ma hierarchię, można użyć mapowania opartego na regułach do mapowania podkolumnów hierarchii. Określ pasujący warunek i kolumnę złożoną, której podkolumny chcesz zamapować. Każdy dopasowany podkolumn zostanie wysunięty przy użyciu reguły "Nazwa jako" określonej po prawej stronie.
+
+![mapowanie oparte na regułach](media/data-flow/rule-based-hierarchy.png "Mapowanie oparte na regułach")
+
+Powyższy przykład pasuje do wszystkich podkolumnów złożonej kolumny `a`. `a`zawiera dwa podkolumny `b` i `c`. Schemat danych wyjściowych `b` będzie zawierał `c` dwie kolumny, a `$$`warunkiem "Nazwa jako" jest .
+
+### <a name="parameterization"></a>Parametryzacja
+
+Nazwy kolumn można sparametryzować za pomocą mapowania opartego na regułach. Użyj słowa ```name``` kluczowego, aby dopasować nazwy kolumn przychodzących do parametru. Na przykład, jeśli masz parametr ```mycolumn```przepływu danych, można utworzyć regułę, która ```mycolumn```pasuje do dowolnej nazwy kolumny, która jest równa . Dopasowaną kolumnę można zmienić na ciąg kodowany na stałe, taki jak "klucz biznesowy", i odwołać się do niego jawnie. W tym przykładzie warunek ```name == $mycolumn``` dopasowania jest i warunek nazwy jest "klucz biznesowy". 
+
+## <a name="auto-mapping"></a>Automatyczne mapowanie
+
+Podczas dodawania transformacji wyboru **automatyczne mapowanie** można włączyć, przełączając suwak Automatycznego mapowania. W przypadku automatycznego mapowania wybierz transformację mapuje wszystkie przychodzące kolumny, z wyłączeniem duplikatów, o takiej samej nazwie jak ich dane wejściowe. Będzie to obejmować dryfowane kolumny, co oznacza, że dane wyjściowe mogą zawierać kolumny niezdefiniowane w schemacie. Aby uzyskać więcej informacji na temat kolumn dryfowanych, zobacz [dryf schematu](concepts-data-flow-schema-drift.md).
+
+![Automatyczne mapowanie](media/data-flow/automap.png "Automatyczne mapowanie")
+
+Po wł., po wł., opcja przekształcenie wybierz będzie honorować zduplikowane ustawienia pomijania i będzie dostarczać nowy alias dla istniejących kolumn. Aliasing jest przydatne podczas wykonywania wielu sprzężeń lub odnośnych w tym samym strumieniu i w scenariuszach samodzielnego sprzężenia. 
+
+## <a name="duplicate-columns"></a>Zduplikowane kolumny
+
+Domyślnie transformacja select porzuca zduplikowane kolumny zarówno w projekcji wejściowej, jak i wyjściowej. Zduplikowane kolumny wejściowe często pochodzą z przekształceń sprzężenia i wyszukiwania, w których nazwy kolumn są duplikowane po każdej stronie sprzężenia. Zduplikowane kolumny wyjściowe mogą wystąpić, jeśli mapujesz dwie różne kolumny wejściowe o tej samej nazwie. Wybierz, czy mają być upuszczane, czy przekazywanie zduplikowanych kolumn, przełączanie do pola wyboru.
 
 ![Pomiń duplikaty](media/data-flow/select-skip-dup.png "Pomiń duplikaty")
 
-* Po wybraniu opcji pomijania duplikatów wyniki będą widoczne na karcie Inspekcja. ADF będzie przechowywać pierwsze wystąpienie kolumny i zobaczysz, że wszystkie kolejne wystąpienia tej samej kolumny zostały usunięte z przepływu.
+## <a name="ordering-of-columns"></a>Kolejność kolumn
 
-> [!NOTE]
-> Aby wyczyścić reguły mapowania, naciśnij przycisk **Resetuj** .
+Kolejność mapowań określa kolejność kolumn wyjściowych. Jeśli kolumna wejściowa jest mapowana wiele razy, tylko pierwsze mapowanie zostanie honorowane. Dla każdego zduplikowanego upuszczenia kolumny, pierwszy mecz zostanie zachowany.
 
-## <a name="mapping"></a>Mapowanie
-Domyślnie wybranie przekształcenia spowoduje automatyczne zamapowanie wszystkich kolumn, które przechodzą przez wszystkie kolumny przychodzące do tej samej nazwy w danych wyjściowych. Nazwa strumienia wyjściowego ustawiona w obszarze Wybierz ustawienia spowoduje zdefiniowanie nowej nazwy aliasu dla strumienia. Jeśli zachowasz pozycję Wybierz dla opcji Automap, możesz odaliasować cały strumień ze wszystkimi kolumnami w ten sam sposób.
+## <a name="data-flow-script"></a>Skrypt przepływu danych
 
-![Wybieranie reguł przekształcania](media/data-flow/rule2.png "Mapowanie oparte na regułach")
+### <a name="syntax"></a>Składnia
 
-Jeśli chcesz, aby alias, usuwanie, zmienianie nazwy lub zmiana kolejności kolumn, musisz najpierw wyłączyć "Automap". Domyślnie zostanie wyświetlona domyślna reguła o nazwie "wszystkie kolumny wejściowe". Tę regułę można pozostawić w miejscu, jeśli zamierzasz zawsze zezwolić na mapowanie wszystkich kolumn przychodzących na taką samą nazwę w danych wyjściowych.
+```
+<incomingStream>
+    select(mapColumn(
+        each(<hierarchicalColumn>, match(<matchCondition>), <nameCondition> = $$), ## hierarchical rule-based matching
+        <fixedColumn>, ## fixed mapping, no rename
+        <renamedFixedColumn> = <fixedColumn>, ## fixed mapping, rename
+        each(match(<matchCondition>), <nameCondition> = $$), ## rule-based mapping
+        each(patternMatch(<regexMatching>), <nameCondition> = $$) ## regex mapping
+    ),
+    skipDuplicateMapInputs: { true | false },
+    skipDuplicateMapOutputs: { true | false }) ~> <selectTransformationName>
+```
 
-Jeśli jednak chcesz dodać reguły niestandardowe, kliknij pozycję "Dodaj mapowanie". Mapowanie pól umożliwi wyświetlenie listy nazw kolumn przychodzących i wychodzących na potrzeby mapowania i aliasowania. Wybierz pozycję "mapowanie oparte na regułach", aby utworzyć reguły dopasowania wzorców.
+### <a name="example"></a>Przykład
 
-## <a name="rule-based-mapping"></a>Mapowanie oparte na regułach
-Po wybraniu mapowania opartego na regułach, nastąpi naliczanie PODAJNIKa, aby oszacować pasujące wyrażenie zgodne z regułami przychodzącego wzorca i zdefiniować nazwy pól wychodzących. Możesz dodać dowolną kombinację mapowań pól i reguł. Nazwy pól są następnie generowane w czasie wykonywania przez moduł ADF na podstawie przychodzących metadanych ze źródła. Podczas debugowania można wyświetlać nazwy wygenerowanych pól i korzystać z okienka Podgląd danych.
+Poniżej znajduje się przykład mapowania wyboru i jego skryptu przepływu danych:
 
-Więcej szczegółów na temat dopasowywania do wzorca jest dostępnych w [dokumentacji wzorca kolumny](concepts-data-flow-column-pattern.md).
+![Wybierz przykład skryptu](media/data-flow/select-script-example.png "Wybierz przykład skryptu")
 
-### <a name="use-rule-based-mapping-to-parameterize-the-select-transformation"></a>Użycie mapowania opartego na regułach do Sparametryzuj transformacji SELECT
-Można Sparametryzuj Mapowanie pól w ramach wybierz transformację przy użyciu mapowania opartego na regułach. Użyj słowa kluczowego ```name```, aby sprawdzić nazwy kolumn przychodzących względem parametru. Na przykład jeśli masz parametr przepływu danych o nazwie ```mycolumn``` można utworzyć pojedynczą regułę przekształcania, która zawsze mapuje każdą nazwę kolumny ustawioną ```mycolumn``` na nazwę pola w ten sposób:
-
-```name == $mycolumn```
+```
+DerivedColumn1 select(mapColumn(
+        each(a, match(true())),
+        movie,
+        title1 = title,
+        each(match(name == 'Rating')),
+        each(patternMatch(`(y)`),
+            $1 + 'regex' = $$)
+    ),
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> Select1
+```
 
 ## <a name="next-steps"></a>Następne kroki
-* Po użyciu opcji wybierz, aby zmienić nazwę, kolejność i aliasowanie kolumn Użyj [transformacji ujścia](data-flow-sink.md) , aby wyrównać dane do magazynu danych.
+* Po użyciu Wybierz do zmiany nazwy, zmienić kolejność i kolumny alias, użyj [sink transformacji](data-flow-sink.md) do ziemi danych do magazynu danych.

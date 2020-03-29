@@ -1,6 +1,6 @@
 ---
-title: Wstępne ładowanie elementów zawartości w punkcie końcowym usługi Azure CDN | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak i wstępne ładowanie pamięci podręcznej zawartości w punkcie końcowym usługi Azure CDN.
+title: Wstępne ładowanie zasobów w punkcie końcowym usługi Azure CDN | Dokumenty firmy Microsoft
+description: Dowiedz się, jak wstępnie załadować zawartość buforowaną w punkcie końcowym usługi Azure CDN.
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -15,59 +15,59 @@ ms.topic: article
 ms.date: 02/12/2018
 ms.author: magattus
 ms.openlocfilehash: d91507ad2cb271b23b588ef7da88e6e6712915b1
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593577"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>Wstępne ładowanie zasobów w punkcie końcowym usługi Azure CDN
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
 
-Domyślnie zasoby są buforowane, tylko wtedy, gdy są one wymagane. Ponieważ serwery krawędzi zawartość nie jest jeszcze buforowane i chcesz przekazywać żądania do serwera pochodzenia, pierwsze żądanie z każdego regionu może trwać dłużej niż kolejnych żądań. Aby uniknąć tego opóźnienia trafiony pierwszy, Załaduj wstępnie zasoby. Ponadto, aby zapewnić lepsze środowisko klienta, wstępnego ładowania zawartości pamięci podręcznej można zmniejszyć ruch sieciowy na serwerze źródłowym.
+Domyślnie zasoby są buforowane tylko wtedy, gdy są wymagane. Ponieważ serwery brzegowe nie zostały jeszcze buforowane zawartości i trzeba przesłać dalej żądanie do serwera pochodzenia, pierwsze żądanie z każdego regionu może trwać dłużej niż kolejne żądania. Aby uniknąć tego opóźnienia pierwszego trafienia, wstępnie załaduj zasoby. Oprócz zapewnienia lepszej obsługi klienta, wstępne ładowanie buforowanych zasobów może zmniejszyć ruch sieciowy na serwerze pochodzenia.
 
 > [!NOTE]
-> Wstępne ładowanie zasobów jest przydatne w przypadku dużych wydarzeń lub zawartości, która staje się równocześnie jest dostępna dla wielu użytkowników, takie jak nowe wydanie filmu lub aktualizacji oprogramowania.
+> Wstępne ładowanie zasobów jest przydatne w przypadku dużych zdarzeń lub zawartości, które stają się jednocześnie dostępne dla wielu użytkowników, takie jak nowa wersja filmu lub aktualizacja oprogramowania.
 > 
 > 
 
-Ten samouczek przeprowadzi Cię przez wstępne ładowanie zawartości pamięci podręcznej we wszystkich węzłach brzegowych usługi Azure CDN.
+W tym samouczku można przejść przez wstępne ładowanie zawartości w pamięci podręcznej we wszystkich węzłach brzegowych usługi Azure CDN.
 
-## <a name="to-pre-load-assets"></a>Wstępne ładowanie zasobów
-1. W [witryny Azure portal](https://portal.azure.com), przejdź do profilu usługi CDN zawierającego punkt końcowy do wstępnego załadowania. Zostanie otwarte okienko profilu.
+## <a name="to-pre-load-assets"></a>Aby wstępnie załadować zasoby
+1. W [witrynie Azure portal](https://portal.azure.com)przejdź do profilu sieci CDN zawierającego punkt końcowy, który chcesz wstępnie załadować. Zostanie otwarte okienko profilu.
     
 2. Kliknij punkt końcowy na liście. Zostanie otwarte okienko punktu końcowego.
-3. W okienku punktu końcowego usługi CDN wybierz **obciążenia**.
+3. W okienku punktu końcowego sieci CDN wybierz pozycję **Załaduj**.
    
-    ![Okienko punktu końcowego usługi CDN](./media/cdn-preload-endpoint/cdn-endpoint-blade.png)
+    ![Okienko punktu końcowego sieci CDN](./media/cdn-preload-endpoint/cdn-endpoint-blade.png)
    
-    **Obciążenia** zostanie otwarte okienko.
+    Zostanie otwarte okienko **Wczytywnie.**
    
-    ![Okienko obciążenia sieci CDN](./media/cdn-preload-endpoint/cdn-load-blade.png)
-4. Aby uzyskać **ścieżki zawartości**, wprowadź pełną ścieżkę każdego zasobu do załadowania (na przykład `/pictures/kitten.png`).
+    ![Okienko ładowania sieci CDN](./media/cdn-preload-endpoint/cdn-load-blade.png)
+4. W przypadku **ścieżki zawartości**wprowadź pełną ścieżkę każdego zasobu, `/pictures/kitten.png`który chcesz załadować (na przykład ).
    
    > [!TIP]
-   > Po rozpoczęciu wprowadzania tekstu, więcej **ścieżki zawartości** pól tekstowych, pojawi się umożliwia tworzenie listy wielu zasobów. Aby usunąć zasoby z listy, kliknij przycisk wielokropka (...), a następnie wybierz **Usuń**.
+   > Po rozpoczęciu wprowadzania tekstu pojawi się więcej pól tekstowych **Ścieżka zawartości,** aby umożliwić tworzenie listy wielu zasobów. Aby usunąć zasoby z listy, wybierz przycisk wielokropka (...) a następnie wybierz pozycję **Usuń**.
    > 
-   > Każda ścieżka zawartości musi być względnym adresem URL, która pasuje do następujących [wyrażeń regularnych](/dotnet/standard/base-types/regular-expression-language-quick-reference):  
-   > - Ładuj ścieżkę pojedynczego pliku: `^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$`  
-   > - Załaduj pojedynczy plik z ciągu zapytania: `^(?:\?[-_a-zA-Z0-9\/%:;=!,.\+'&\u0020]*)?$` 
+   > Każda ścieżka zawartości musi być względnym adresem URL, który pasuje do następujących [wyrażeń regularnych:](/dotnet/standard/base-types/regular-expression-language-quick-reference)  
+   > - Załaduj pojedynczą ścieżkę pliku:`^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$`  
+   > - Załaduj pojedynczy plik z ciągiem zapytania:`^(?:\?[-_a-zA-Z0-9\/%:;=!,.\+'&\u0020]*)?$` 
    > 
-   > Każdy zasób musi mieć swój własny ścieżki, nie istnieje żadne funkcje symboli wieloznacznych wstępne ładowanie zasobów.
+   > Ponieważ każdy zasób musi mieć własną ścieżkę, nie ma funkcji symboli wieloznacznych dla wstępnie ładowania zasobów.
    > 
    > 
    
     ![Przycisk Załaduj](./media/cdn-preload-endpoint/cdn-load-paths.png)
-5. Po zakończeniu wprowadzania ścieżki zawartości, wybierz **obciążenia**.
+5. Po zakończeniu wprowadzania ścieżek zawartości wybierz pozycję **Załaduj**.
    
 
 > [!NOTE]
-> Obowiązuje limit 10 żądań obciążenia na minutę na profil usługi CDN i 50 współbieżnych ścieżek, które mogą być przetwarzane w tym samym czasie. Każda ścieżka ma limit długość ścieżki 1024 znaków.
+> Istnieje limit 10 żądań obciążenia na minutę na profil sieci CDN i 50 równoczesnych ścieżek mogą być przetwarzane w tym czasie. Każda ścieżka ma limit długości ścieżki 1024 znaków.
 > 
 > 
 
-## <a name="see-also"></a>Zobacz także
-* [Przeczyszczanie punktu końcowego usługi Azure CDN](cdn-purge-endpoint.md)
-* [Dokumentacja interfejsu API REST usługi CDN Azure: Wstępne ładowanie zawartości w punkcie końcowym](https://docs.microsoft.com/rest/api/cdn/endpoints/loadcontent)
-* [Dokumentacja interfejsu API REST usługi CDN Azure: Przeczyszczanie zawartości z punktu końcowego](https://docs.microsoft.com/rest/api/cdn/endpoints/purgecontent)
+## <a name="see-also"></a>Zobacz też
+* [Czyszczenie punktu końcowego usługi Azure CDN](cdn-purge-endpoint.md)
+* [Odwołanie do interfejsu API rest usługi Azure CDN: wstępnie wczytać zawartość do punktu końcowego](https://docs.microsoft.com/rest/api/cdn/endpoints/loadcontent)
+* [Odwołanie do interfejsu API REST usługi Azure CDN: przeczyszczanie zawartości z punktu końcowego](https://docs.microsoft.com/rest/api/cdn/endpoints/purgecontent)
 

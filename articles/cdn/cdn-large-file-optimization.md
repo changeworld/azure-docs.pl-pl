@@ -1,6 +1,6 @@
 ---
 title: Optymalizacja pobierania dużych plików za pomocą usługi Azure CDN
-description: W tym artykule wyjaśniono, jak duże pliki, które mogą być optymalizowane pliki do pobrania.
+description: W tym artykule wyjaśniono, jak można zoptymalizować pobieranie dużych plików.
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -15,130 +15,130 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: magattus
 ms.openlocfilehash: 4fe72985a799595908a0ff6bceb1a73dca823c8f
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593783"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>Optymalizacja pobierania dużych plików za pomocą usługi Azure CDN
 
-Rozmiary plików zawartości dostarczane za pośrednictwem Internetu bez przerwy Rozwijaj rozszerzoną funkcjonalność, ulepszone grafiki i zawartości multimedialnej. Ten wzrost jest wymuszany przez wiele czynników: penetracji komórkowej łączności szerokopasmowej, większych urządzeniach niedrogiego magazynu, powszechne wzrost o wysokiej rozdzielczości wideo i połączonych z Internetem urządzeń (IoT). Mechanizm szybkie i wydajne dostarczanie dużych plików krytyczne jest zapewnienie środowiska płynne i przyjemne konsumenta.
+Rozmiary plików zawartości dostarczanej przez Internet nadal rosną dzięki ulepszonej funkcjonalności, ulepszonej grafice i zawartości multimedialnej. Wzrost ten jest napędzany przez wiele czynników: penetrację łączy szerokopasmowych, większe niedrogie urządzenia pamięci masowej, powszechny wzrost wideo w wysokiej rozdzielczości i urządzeń podłączonych do Internetu (IoT). Szybki i wydajny mechanizm dostarczania dużych plików ma kluczowe znaczenie dla zapewnienia płynnego i przyjemnego doświadczenia konsumenta.
 
-Dostarczanie dużych plików ma kilka kwestii. Po pierwsze Średni czas pobierania dużych plików mogą być znaczące, ponieważ aplikacje nie mogą pobierać wszystkie dane sekwencyjnie. W niektórych przypadkach aplikacje mogą pobierać ostatnią część pliku przed pierwszą część. Wymagane są tylko niewielką ilość pliku lub zatrzymaniu dostępny do pobrania, pliki do pobrania może zakończyć się niepowodzeniem. Pobieranie również może zostać opóźnione do po sieć dostarczania zawartości (CDN) pobiera cały plik z serwera pochodzenia. 
+Dostarczanie dużych plików ma kilka wyzwań. Po pierwsze, średni czas pobierania dużego pliku może być znaczący, ponieważ aplikacje mogą nie pobierać wszystkich danych sekwencyjnie. W niektórych przypadkach aplikacje mogą pobrać ostatnią część pliku przed pierwszą częścią. Jeśli zażąda się tylko niewielkiej ilości pliku lub użytkownik wstrzyma pobieranie, pobieranie może zakończyć się niepowodzeniem. Pobieranie również może być opóźnione, dopóki sieć dostarczania zawartości (CDN) nie pobierze całego pliku z serwera pochodzenia. 
 
-Po drugie opóźnienie między komputerem użytkownika i plik Określa szybkość jaką mogą wyświetlać zawartość. Ponadto problemów przeciążenia i pojemność sieci również wpływać na przepływności. Większa odległość między serwerami i użytkownikom tworzyć dodatkowe możliwości utraty pakietów, wystąpią, co zmniejsza jakości. Obniżenie jakości spowodowane ograniczona przepływność i utraty pakietów zwiększone wydłużyć czas oczekiwania do pobierania plików zakończyć. 
+Po drugie opóźnienie między komputerem użytkownika a plikiem określa szybkość, z jaką mogą wyświetlać zawartość. Ponadto problemy z przeciążeniem sieci i przepustowością mają również wpływ na przepustowość. Większe odległości między serwerami a użytkownikami stwarzają dodatkowe możliwości utraty pakietów, co obniża jakość. Obniżenie jakości spowodowane ograniczoną przepływnością i zwiększoną utratą pakietów może wydłużyć czas oczekiwania na zakończenie pobierania pliku. 
 
-Po trzecie liczba dużych plików nie zostały jeszcze dostarczone w całości. Użytkownicy mogą anulować pobieranie w połowie lub Obejrzyj tylko pierwszych kilku minut długich wideo MP4. W związku z tym oprogramowania i dostarczania firmom multimedialnym chcesz dostarczyć tylko część pliku, które są wymagane. Wydajne rozmieszczenie żądanej części zmniejsza ruch wychodzący z serwera pochodzenia. Wydajnej dystrybucji zmniejsza pamięci i wykorzystanie we/wy na serwerze źródłowym. 
+Po trzecie, wiele dużych plików nie są dostarczane w całości. Użytkownicy mogą anulować pobieranie w połowie lub obejrzeć tylko kilka pierwszych minut długiego filmu MP4. W związku z tym firmy dostarczające oprogramowanie i media chcą dostarczyć tylko część pliku, który jest wymagany. Wydajna dystrybucja żądanych części zmniejsza ruch wychodzący z serwera pochodzenia. Wydajna dystrybucja zmniejsza również ciśnienie pamięci i we/wy na serwerze pochodzenia. 
 
 
-## <a name="optimize-for-delivery-of-large-files-with-azure-cdn-from-microsoft"></a>Optymalizacja pod kątem dostarczanie dużych plików o wysokiej dostępności treści Azure firmy Microsoft
+## <a name="optimize-for-delivery-of-large-files-with-azure-cdn-from-microsoft"></a>Optymalizacja pod kątem dostarczania dużych plików za pomocą usługi Azure CDN firmy Microsoft
 
-**Usługa Azure CDN Standard from Microsoft** punktów końcowych dostarczanie dużych plików bez limitu rozmiaru pliku. Dodatkowe funkcje są włączone domyślnie, aby przyspieszyć dostarczanie dużych plików.
+**Usługa Azure CDN Standard z** punktów końcowych firmy Microsoft dostarcza duże pliki bez ograniczenia rozmiaru pliku. Dodatkowe funkcje są domyślnie włączone, aby przyspieszyć dostarczanie dużych plików.
 
-### <a name="object-chunking"></a>Obiekt segmentu 
+### <a name="object-chunking"></a>Fragmentowanie obiektów 
 
-**Usługa Azure CDN Standard from Microsoft** wykorzystuje technikę o nazwie obiekt segmentu. Jeśli wymagane są duże pliki, sieci CDN pobiera mniejsze kawałki pliku ze źródła. Po serwer protokołu POP CDN odbiera żądanie pliku full lub zakres bajtów, serwer krawędzi sieci CDN żąda pliku z pochodzenia we fragmentach po 8 MB. 
+**Usługa Azure CDN Standard firmy Microsoft** używa techniki zwanej fragmentami obiektów. Gdy wymagany jest duży plik, sieć CDN pobiera mniejsze fragmenty pliku ze źródła. Po odebraniu przez serwer POP usługi CDN żądania pliku pełnego lub zakresu bajtów serwer brzegowy sieci CDN żąda pliku od początku w fragmentach 8 MB. 
 
-Po odebraniu fragmentów na krawędzi sieci CDN ma pamięci podręcznej i obsłużonych natychmiast użytkownika. Usługa CDN wstępnie wyłapuje następnie dalej fragmentów w sposób równoległy. To pobieranie z wyprzedzeniem gwarantuje, że zawartość pozostaje w jednym fragmencie w przód od użytkownika, co zmniejsza opóźnienie. Ten proces jest kontynuowany aż do całego pobrany plik (jeśli jest to wymagane), wszystkich zakresów bajtów są dostępne (jeśli jest to wymagane), lub klient zakończy połączenie. 
+Po fragment dociera do krawędzi sieci CDN, jest buforowane i natychmiast serwowane do użytkownika. CdN następnie wstępnie pobiera następny fragment równolegle. Ten dostęp z wyprzedzeniem zapewnia, że zawartość pozostaje jeden fragment przed użytkownikiem, co zmniejsza opóźnienia. Ten proces jest kontynuowany do momentu pobrania całego pliku (jeśli jest to wymagane), wszystkie zakresy bajtów są dostępne (jeśli jest to wymagane) lub klient zakończy połączenie. 
 
 Aby uzyskać więcej informacji na temat żądania zakresu bajtów, zobacz [RFC 7233](https://tools.ietf.org/html/rfc7233).
 
-Po odebraniu usługa CDN buforuje wszelkie fragmenty. Cały plik nie musi być buforowane w pamięci podręcznej usługi CDN. Kolejne żądania dla pliku lub bajt zakresy są udostępniane z pamięci podręcznej usługi CDN. Jeśli nie wszystkie fragmenty są buforowane w usłudze CDN, pobieranie z wyprzedzeniem jest używany do zażądania fragmentów ze źródła. Tego rodzaju optymalizacji opiera się na serwerze źródłowym możliwość obsługi żądania zakresu bajtów; Jeśli serwer pochodzenia nie obsługuje żądania zakresu bajtów, optymalizacja nie jest skuteczna. 
+CdN buforuje wszystkie fragmenty, ponieważ są one odbierane. Cały plik nie musi być buforowany w pamięci podręcznej sieci CDN. Kolejne żądania dotyczące zakresów plików lub bajtów są obsługiwane z pamięci podręcznej sieci CDN. Jeśli nie wszystkie fragmenty są buforowane w sieci CDN, pobieranie z fragmentów z prefetch jest używany do żądania fragmentów od źródła. Ta optymalizacja opiera się na zdolności serwera pochodzenia do obsługi żądań zakresu bajtów; Jeśli serwer pochodzenia nie obsługuje żądań zakresu bajtów, ta optymalizacja nie jest skuteczna. 
 
-### <a name="conditions-for-large-file-optimization"></a>Warunki Optymalizacja dużych plików
-Optymalizacja dużych plików funkcji dla **Azure CDN Standard from Microsoft** są domyślnie włączone, korzystając z typu optymalizacji dostarczania ogólnych sieci web. Nie ma ograniczeń na maksymalny rozmiar pliku.
-
-
-## <a name="optimize-for-delivery-of-large-files-with-azure-cdn-from-verizon"></a>Optymalizacja pod kątem dostarczanie dużych plików za pomocą usługi Azure CDN from Verizon
-
-**Usługa Azure CDN Standard from Verizon** i **Azure CDN Premium from Verizon** punktów końcowych dostarczanie dużych plików bez limitu rozmiaru pliku. Dodatkowe funkcje są włączone domyślnie, aby przyspieszyć dostarczanie dużych plików.
-
-### <a name="complete-cache-fill"></a>Wypełnienie pamięci podręcznej ukończone
-
-Funkcja wypełnienie pamięci podręcznej ukończone domyślne umożliwia pobierania pliku w pamięci podręcznej, gdy wstępne żądanie zostanie porzucone lub utraty w sieci CDN. 
-
-Wypełnienie pamięci podręcznej ukończone jest najbardziej przydatny w przypadku dużych zasobów. Zazwyczaj użytkownicy nie mogą pobierać je od początku do końca. Używają pobierania progresywnego. Domyślne zachowanie wymusza na serwerze granicznym, aby zainicjować pobieranie w tle elementu zawartości z serwera pochodzenia. Później element zawartości znajduje się w lokalnej pamięci podręcznej serwer graniczny. Po zakończeniu pełnego obiektu w pamięci podręcznej, serwer krawędzi spełnia żądania zakresu bajtów do sieci CDN dla obiektu w pamięci podręcznej.
-
-Domyślne zachowanie można wyłączyć za pomocą aparatu reguł w **Azure CDN Premium from Verizon**.
-
-### <a name="peer-cache-fill-hot-filing"></a>Równorzędna pamięć podręczna wypełnienia hot zgłoszenia
-
-Domyślne równorzędnej pamięci podręcznej wypełnienia hot zgłoszenia funkcja korzysta z zaawansowanego algorytmu. Używa ona dodatkowe krawędzi pamięci podręcznej serwerów, na podstawie przepustowości i agregacji żąda metryk do spełnienia żądania klienta dla obiektów duże, bardzo popularny. Ta funkcja zapobiega sytuacji, w którym dużą liczbę żądań dodatkowe są wysyłane do serwera pochodzenia użytkownika. 
-
-### <a name="conditions-for-large-file-optimization"></a>Warunki Optymalizacja dużych plików
-
-Optymalizacja dużych plików funkcji dla **Azure CDN Standard from Verizon** i **Azure CDN Premium from Verizon** są domyślnie włączone, korzystając z typu optymalizacji dostarczania ogólnych sieci web. Nie ma ograniczeń na maksymalny rozmiar pliku. 
+### <a name="conditions-for-large-file-optimization"></a>Warunki optymalizacji dużych plików
+Funkcje optymalizacji dużych plików dla **usługi Azure CDN Standard firmy Microsoft** są domyślnie włączone, gdy używasz ogólnego typu optymalizacji dostarczania sieci Web. Nie ma żadnych ograniczeń dotyczących maksymalnego rozmiaru pliku.
 
 
-## <a name="optimize-for-delivery-of-large-files-with-azure-cdn-standard-from-akamai"></a>Optymalizacja pod kątem dostarczanie dużych plików za pomocą usługi Azure CDN Standard from Akamai
+## <a name="optimize-for-delivery-of-large-files-with-azure-cdn-from-verizon"></a>Optymalizacja pod kątem dostarczania dużych plików za pomocą usługi Azure CDN firmy Verizon
 
-**Usługa Azure CDN Standard from Akamai** punktów końcowych profilu oferuje funkcję, która dostarcza dużych plików efektywnie użytkowników na całym świecie na dużą skalę. Ta funkcja zmniejsza opóźnienia, ponieważ redukuje obciążenie serwerów źródłowych.
+**Usługa Azure CDN Standard firmy Verizon** i **Azure CDN Premium firmy Verizon** dostarcza duże pliki bez limitu rozmiaru pliku. Dodatkowe funkcje są domyślnie włączone, aby przyspieszyć dostarczanie dużych plików.
 
-Funkcja typu optymalizacji plików o dużym rozmiarze włącza optymalizację sieci i konfiguracje dostarczanie dużych plików, szybciej i bardziej elastycznie zmieniać. Ogólne dostarczanie w Internecie przy użyciu **Azure CDN Standard from Akamai** punktów końcowych przechowuje pliki tylko poniżej 1,8 GB i może tunelu (nie pamięci podręcznej) pliki do 150 GB. Optymalizacja dużych plików w pamięci podręcznej plików do 150 GB.
+### <a name="complete-cache-fill"></a>Pełne wypełnienie pamięci podręcznej
 
-Optymalizacja dużych plików jest efektywne, gdy są spełnione określone warunki. Warunki obejmują, jak działa serwer pochodzenia i rozmiary i typy plików, które są wymagane. 
+Domyślna funkcja wypełniania pełnej pamięci podręcznej umożliwia sieci CDN wyciągnięcie pliku do pamięci podręcznej, gdy początkowe żądanie zostanie porzucone lub utracone. 
 
-### <a name="configure-an-akamai-cdn-endpoint-to-optimize-delivery-of-large-files"></a>Konfigurowanie punktu końcowego usługi CDN firmy Akamai w celu zoptymalizowania dostarczanie dużych plików
+Pełne wypełnienie pamięci podręcznej jest najbardziej przydatne w przypadku dużych zasobów. Zazwyczaj użytkownicy nie pobierają ich od początku do końca. Używają progresywnego pobierania. Domyślne zachowanie wymusza serwer krawędzi do zainicjowania pobierania w tle zasobu z serwera pochodzenia. Następnie zasób znajduje się w lokalnej pamięci podręcznej serwera brzegowego. Po pełnym obiektu znajduje się w pamięci podręcznej, serwer brzegowy spełnia żądania zakresu bajtów do sieci CDN dla obiektu buforowanego.
 
-Można skonfigurować usługi **Azure CDN Standard from Akamai** punktu końcowego do optymalizacji dostarczania dla dużych plików za pośrednictwem witryny Azure portal. Aby to zrobić, można użyć interfejsów API REST, ani żadnego z zestawów SDK klienta. Poniższe kroki pokazują proces za pośrednictwem interfejsu witryny Azure portal dla **Azure CDN Standard from Akamai** profilu:
+Domyślne zachowanie można wyłączyć za pomocą aparatu reguł w **usłudze Azure CDN Premium firmy Verizon**.
 
-1. Aby dodać nowy punkt końcowy na Akamai **profil CDN** wybierz opcję **punktu końcowego**.
+### <a name="peer-cache-fill-hot-filing"></a>Pamięć podręczna równorzędnych wypełnianie hot-filing
+
+Domyślna funkcja wypełniania pamięci podręcznej elementów równorzędnych używa zaawansowanego zastrzeżonego algorytmu. Używa dodatkowych serwerów buforowania krawędzi na podstawie przepustowości i agregacji żądań metryki do obsługi żądań klientów dla dużych, bardzo popularnych obiektów. Ta funkcja zapobiega sytuacji, w której duża liczba dodatkowych żądań są wysyłane do serwera pochodzenia użytkownika. 
+
+### <a name="conditions-for-large-file-optimization"></a>Warunki optymalizacji dużych plików
+
+Funkcje optymalizacji dużych plików dla **platformy Azure CDN Standard firmy Verizon** i azure **CDN Premium firmy Verizon** są domyślnie włączone, gdy używasz ogólnego typu optymalizacji dostarczania sieci Web. Nie ma żadnych ograniczeń dotyczących maksymalnego rozmiaru pliku. 
+
+
+## <a name="optimize-for-delivery-of-large-files-with-azure-cdn-standard-from-akamai"></a>Optymalizacja pod kątem dostarczania dużych plików za pomocą usługi Azure CDN Standard firmy Akamai
+
+Usługa Azure CDN Standard z punktów końcowych profilu **Akamai** oferuje funkcję, która zapewnia wydajne duże pliki użytkownikom na całym świecie na dużą skalę. Funkcja zmniejsza opóźnienia, ponieważ zmniejsza obciążenie serwerów pochodzenia.
+
+Funkcja optymalizacji dużych plików włącza optymalizacje i konfiguracje sieci, aby dostarczać duże pliki szybciej i bardziej responsywnie. Ogólne dostarczanie sieci Web za pomocą usługi Azure CDN Standard z punktów końcowych **Akamai** buforuje pliki tylko poniżej 1,8 GB i może tunelować (nie buforować) plików o rozmiarze do 150 GB. Optymalizacja dużych plików buforuje pliki o rozmiarze do 150 GB.
+
+Optymalizacja dużych plików jest skuteczna, gdy spełnione są określone warunki. Warunki obejmują sposób działania serwera pochodzenia oraz rozmiary i typy żądanych plików. 
+
+### <a name="configure-an-akamai-cdn-endpoint-to-optimize-delivery-of-large-files"></a>Konfigurowanie punktu końcowego Akamai CDN w celu optymalizacji dostarczania dużych plików
+
+Standard usługi Azure CDN można skonfigurować z punktu końcowego **Akamai,** aby zoptymalizować dostarczanie dla dużych plików za pośrednictwem witryny Azure portal. Można również użyć interfejsów API REST lub dowolnego z sdk klienta, aby to zrobić. Następujące kroki pokazują proces za pośrednictwem witryny Azure portal dla **standardu usługi Azure CDN z profilu Akamai:**
+
+1. Aby dodać nowy punkt końcowy, na stronie **profilu sieci CDN** Akamai wybierz pozycję **Punkt końcowy**.
 
     ![Nowy punkt końcowy](./media/cdn-large-file-optimization/cdn-new-akamai-endpoint.png)    
  
-2. W **zoptymalizowane pod kątem** listy rozwijanej wybierz **pobierania dużych plików**.
+2. Z listy **rozwijanej Zoptymalizowano pod kątem** wyboru **Duże pobieranie plików**.
 
-    ![Optymalizacja dużych plików wybrane](./media/cdn-large-file-optimization/cdn-large-file-select.png)
+    ![Wybrana optymalizacja dużych plików](./media/cdn-large-file-optimization/cdn-large-file-select.png)
 
 
-Po utworzeniu punktu końcowego usługi CDN, ma to zastosowanie Optymalizacja dużych plików, dla wszystkich plików spełniających określone kryteria. W poniższej sekcji opisano tego procesu.
+Po utworzeniu punktu końcowego sieci CDN stosuje się optymalizacje dużych plików dla wszystkich plików, które odpowiadają określonym kryteriom. W poniższej sekcji opisano ten proces.
 
-### <a name="object-chunking"></a>Obiekt segmentu 
+### <a name="object-chunking"></a>Fragmentowanie obiektów 
 
-Optymalizacja dużych plików za pomocą **Azure CDN Standard from Akamai** wykorzystuje technikę o nazwie obiekt segmentu. Jeśli wymagane są duże pliki, sieci CDN pobiera mniejsze kawałki pliku ze źródła. Po serwer protokołu POP CDN odbiera żądanie pliku full lub zakres bajtów, sprawdza, czy typ pliku jest obsługiwany dla tego rodzaju optymalizacji. Sprawdza również, czy typ pliku spełnia wymagania dotyczące rozmiaru pliku. Jeśli rozmiar pliku jest większa niż 10 MB, serwer krawędzi sieci CDN żąda pliku z źródła we fragmentach 2 MB. 
+Optymalizacja dużych plików za pomocą **standardu Azure CDN standard firmy Akamai** używa techniki zwanej fragmentami obiektów. Gdy wymagany jest duży plik, sieć CDN pobiera mniejsze fragmenty pliku ze źródła. Po odebraniu przez serwer POP usługi CDN żądania pełnego lub zakresu bajtów sprawdza, czy typ pliku jest obsługiwany dla tej optymalizacji. Sprawdza również, czy typ pliku spełnia wymagania dotyczące rozmiaru pliku. Jeśli rozmiar pliku jest większy niż 10 MB, serwer krawędzi sieci CDN żąda pliku od początku w fragmentach 2 MB. 
 
-Po odebraniu fragmentów na krawędzi sieci CDN ma pamięci podręcznej i obsłużonych natychmiast użytkownika. Usługa CDN wstępnie wyłapuje następnie dalej fragmentów w sposób równoległy. To pobieranie z wyprzedzeniem gwarantuje, że zawartość pozostaje w jednym fragmencie w przód od użytkownika, co zmniejsza opóźnienie. Ten proces jest kontynuowany aż do całego pobrany plik (jeśli jest to wymagane), wszystkich zakresów bajtów są dostępne (jeśli jest to wymagane), lub klient zakończy połączenie. 
+Po fragment dociera do krawędzi sieci CDN, jest buforowane i natychmiast serwowane do użytkownika. CdN następnie wstępnie pobiera następny fragment równolegle. Ten dostęp z wyprzedzeniem zapewnia, że zawartość pozostaje jeden fragment przed użytkownikiem, co zmniejsza opóźnienia. Ten proces jest kontynuowany do momentu pobrania całego pliku (jeśli jest to wymagane), wszystkie zakresy bajtów są dostępne (jeśli jest to wymagane) lub klient zakończy połączenie. 
 
 Aby uzyskać więcej informacji na temat żądania zakresu bajtów, zobacz [RFC 7233](https://tools.ietf.org/html/rfc7233).
 
-Po odebraniu usługa CDN buforuje wszelkie fragmenty. Cały plik nie musi być buforowane w pamięci podręcznej usługi CDN. Kolejne żądania dla pliku lub bajt zakresy są udostępniane z pamięci podręcznej usługi CDN. Jeśli nie wszystkie fragmenty są buforowane w usłudze CDN, pobieranie z wyprzedzeniem jest używany do zażądania fragmentów ze źródła. Tego rodzaju optymalizacji opiera się na serwerze źródłowym możliwość obsługi żądania zakresu bajtów; Jeśli serwer pochodzenia nie obsługuje żądania zakresu bajtów, optymalizacja nie jest skuteczna.
+CdN buforuje wszystkie fragmenty, ponieważ są one odbierane. Cały plik nie musi być buforowany w pamięci podręcznej sieci CDN. Kolejne żądania dotyczące zakresów plików lub bajtów są obsługiwane z pamięci podręcznej sieci CDN. Jeśli nie wszystkie fragmenty są buforowane w sieci CDN, pobieranie z fragmentów z prefetch jest używany do żądania fragmentów od źródła. Ta optymalizacja opiera się na zdolności serwera pochodzenia do obsługi żądań zakresu bajtów; Jeśli serwer pochodzenia nie obsługuje żądań zakresu bajtów, ta optymalizacja nie jest skuteczna.
 
 ### <a name="caching"></a>Buforowanie
-Optymalizacja dużych plików korzysta inny domyślny czas wygaśnięcia pamięci podręcznej od ogólne dostarczanie w Internecie. Program rozróżnia buforowanie pozytywne i negatywne buforowanie na podstawie kodów odpowiedzi HTTP. Jeśli serwer pochodzenia określa czas wygaśnięcia przy użyciu nagłówka cache-control lub expires nagłówka w odpowiedzi, sieć CDN honoruje tę wartość. Jeśli punkt początkowy nie określił, plik jest zgodne z warunkami typu i rozmiaru dla tego typu optymalizacji sieci CDN używa wartości domyślnych dla Optymalizacja dużych plików. W przeciwnym razie sieci CDN używa wartości domyślnych dla ogólne dostarczanie w Internecie.
+Optymalizacja dużych plików używa różnych domyślnych czasów buforowania wygaśnięcia z ogólnego dostarczania sieci Web. Rozróżnia buforowanie dodatnie i buforowanie ujemne na podstawie kodów odpowiedzi HTTP. Jeśli serwer pochodzenia określa czas wygaśnięcia za pośrednictwem kontroli pamięci podręcznej lub wygasa nagłówka w odpowiedzi, cdn honoruje tę wartość. Jeśli pochodzenie nie określa, a plik jest zgodny z warunkami typu i rozmiaru dla tego typu optymalizacji, sieć CDN używa wartości domyślnych do optymalizacji dużych plików. W przeciwnym razie sieć CDN używa wartości domyślnych dla ogólnego dostarczania w sieci Web.
 
 
-|    | Ogólne sieci web | Optymalizacja dużych plików 
+|    | Ogólna sieć web | Optymalizacja dużych plików 
 --- | --- | --- 
-Pamięć podręczna: Dodatnie <br> HTTP 200, 203, 300, <br> 301, 302 i do 410 | 7 dni |1 dzień  
-Pamięć podręczna: Ujemne <br> HTTP 204, 305, 404, <br> i 405 | Brak | 1 sekunda 
+Buforowanie: Pozytywne <br> HTTP 200, 203, 300, <br> 301, 302 i 410 | 7 dni |1 dzień  
+Buforowanie: Negatywne <br> HTTP 204, 305, 404, <br> i 405 | Brak | 1 sekunda 
 
-### <a name="deal-with-origin-failure"></a>Dotyczy błąd źródła
+### <a name="deal-with-origin-failure"></a>Radzenie sobie z awarią pochodzenia
 
-Długość limit czasu odczytu pochodzenia zwiększa się z dwóch sekund, aby uzyskać ogólne dostarczanie w Internecie do dwóch minut dla typu Optymalizacja dużych plików. Ten wzrost kont większych plików uniknąć przedwczesnej limit czasu połączenia.
+Długość limitu czasu odczytu pochodzenia zwiększa się z dwóch sekund dla ogólnego dostarczania w sieci Web do dwóch minut dla typu optymalizacji dużych plików. Ten wzrost odpowiada za większe rozmiary plików, aby uniknąć przedwczesnego limitu czasu połączenia.
 
-Jeśli upłynie limit czasu połączenia, sieć CDN ponawia próbę kilkukrotnie przed wysłaniem błąd "504 — Limit czasu bramy" do klienta. 
+Po przesiądeniu limitu czasu połączenia, usługa CDN ponawia kilka razy ponawia proces, zanim wyśle do klienta błąd "504 - limit czasu bramy". 
 
-### <a name="conditions-for-large-file-optimization"></a>Warunki Optymalizacja dużych plików
+### <a name="conditions-for-large-file-optimization"></a>Warunki optymalizacji dużych plików
 
-Poniższa lista zawiera zbiór kryteria, które należy spełnić w celu Optymalizacja dużych plików:
+W poniższej tabeli wymieniono zestaw kryteriów, które należy spełnić w celu optymalizacji dużych plików:
 
 Warunek | Wartości 
 --- | --- 
-Obsługiwane typy plików | 3g2, 3gp, asf, avi, bz2, dmg, exe, f4v, flv, <br> gz, hdp, iso, jxr, m4v, mkv, mov, mp4, <br> mpeg, mpg, mts, pkg, qt, rm, swf, tar, <br> tgz, wdp, webm, webp, wma, wmv, zip  
+Obsługiwane typy plików | 3g2, 3gp, asf, avi, bz2, dmg, exe, f4v, flv, <br> gz, hdp, iso, jxr, m4v, mkv, mov, mp4, <br> mpeg, mpg, mts, pkg, qt, rm, swf, smoła, <br> tgz, wdp, webm, webp, wma, wmv, zip  
 Minimalny rozmiar pliku | 10 MB 
 Maksymalna wielkość pliku | 150 GB 
-Właściwości serwera pochodzenia | Musi obsługiwać żądania zakresu bajtów 
+Charakterystyka serwera Origin | Musi obsługiwać żądania zakresu bajtów 
 
 ## <a name="additional-considerations"></a>Dodatkowe zagadnienia
 
-Należy wziąć pod uwagę następujące aspekty dodatkowe dla tego typu optymalizacji:
+Należy wziąć pod uwagę następujące dodatkowe aspekty dla tego typu optymalizacji:
 
-- Segmentu proces generuje dodatkowych żądań do serwera pochodzenia. Łączna ilość danych dostarczonych ze źródła jest jednak znacznie mniejszy. Segmentu powoduje lepsze charakterystyce buforowania usługi CDN.
+- Proces tworzenia fragmentów generuje dodatkowe żądania do serwera pochodzenia. Jednak ogólna ilość danych dostarczonych z pochodzenia jest znacznie mniejsza. Fragmentowanie skutkuje lepszą charakterystyką buforowania w sieci CDN.
 
-- Pamięć i wykorzystanie We/Wy są ograniczone w źródle, ponieważ mniejsze części pliku są dostarczane.
+- Ciśnienie we/wy pamięci i we/wy są zmniejszane w momencie początkowym, ponieważ dostarczane są mniejsze fragmenty pliku.
 
-- Dla fragmentów zbuforowana w sieci CDN Brak dodatkowych żądań do źródła, do momentu wygaśnięcia zawartości lub zostanie usunięty z pamięci podręcznej.
+- W przypadku fragmentów buforowanych w sieci CDN nie ma żadnych dodatkowych żądań do źródła, dopóki zawartość nie wygaśnie lub nie zostaną eksmitowane z pamięci podręcznej.
 
-- Użytkownicy mogą wprowadzać zakresu żądań do usługi CDN, które są traktowane tak jak każdy plik normalny. Optymalizacja ma zastosowanie tylko wtedy, gdy jest prawidłowy typ pliku i zakres bajtów jest od 10 MB do 150 GB. Jeśli średni rozmiar plików wymagane jest mniejsza niż 10 MB, należy użyć ogólne dostarczanie w Internecie.
+- Użytkownicy mogą składać żądania zakresu do sieci CDN, które są traktowane jak każdy normalny plik. Optymalizacja ma zastosowanie tylko wtedy, gdy jest to prawidłowy typ pliku, a zakres bajtów wynosi od 10 MB do 150 GB. Jeśli żądany średni rozmiar pliku jest mniejszy niż 10 MB, należy użyć ogólnego dostarczania w sieci Web.
 

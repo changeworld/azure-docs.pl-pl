@@ -1,6 +1,6 @@
 ---
-title: Azure Disk Encryption w sieci izolowanej
-description: Ten artykuł zawiera wskazówki dotyczące rozwiązywania problemów z Microsoft Azure szyfrowaniem dysków dla maszyn wirtualnych z systemem Linux.
+title: Szyfrowanie dysków platformy Azure w sieci izolowanej
+description: Ten artykuł zawiera wskazówki dotyczące rozwiązywania problemów z szyfrowaniem dysków platformy Microsoft Azure dla maszyn wirtualnych z systemem Linux.
 author: msmbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
@@ -9,47 +9,47 @@ ms.author: mbaldwin
 ms.date: 02/27/2020
 ms.custom: seodec18
 ms.openlocfilehash: aa0dc204a017e2d40eb3952a9ede0755127f8de2
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78970660"
 ---
-# <a name="azure-disk-encryption-on-an-isolated-network"></a>Azure Disk Encryption w sieci izolowanej
+# <a name="azure-disk-encryption-on-an-isolated-network"></a>Szyfrowanie dysków platformy Azure w sieci izolowanej
 
-Gdy łączność jest ograniczona przez zapory, wymagania serwera proxy lub ustawienia Sieciowej grupy zabezpieczeń sieci, może zostać przerwane możliwości rozszerzenia, aby wykonać niezbędne zadania. Ta przerw w działaniu może doprowadzić do komunikatów o stanie, takie jak "Nie jest dostępna na maszynie Wirtualnej stan rozszerzenia."
+Gdy łączność jest ograniczona przez zaporę, wymagania serwera proxy lub ustawienia sieciowej grupy zabezpieczeń (NSG), możliwość wykonywania potrzebnych zadań przez rozszerzenie może zostać zakłócona. To zakłócenie może spowodować komunikaty o stanie, takie jak "Stan rozszerzenia nie jest dostępny na maszynie wirtualnej."
 
 ## <a name="package-management"></a>Zarządzanie pakietami
 
-Azure Disk Encryption zależy od wielu składników, które zazwyczaj są instalowane w ramach włączania ADE, jeśli jeszcze nie istnieją. Te pakiety muszą być wstępnie zainstalowane lub dostępne lokalnie, gdy jest za zaporą lub w inny sposób odizolowany od Internetu.
+Szyfrowanie dysków platformy Azure zależy od wielu składników, które są zazwyczaj instalowane jako część włączenia usługi ADE, jeśli nie są już obecne. Gdy za zaporą lub w inny sposób odizolowane od Internetu, te pakiety muszą być wstępnie zainstalowane lub dostępne lokalnie.
 
-Poniżej przedstawiono pakiety niezbędne do każdej dystrybucji. Aby zapoznać się z pełną listą obsługiwanych typów dystrybucje i woluminów, zobacz [obsługiwane maszyny wirtualne i systemy operacyjne](disk-encryption-overview.md#supported-vms-and-operating-systems).
+Oto pakiety niezbędne dla każdej dystrybucji. Aby uzyskać pełną listę obsługiwanych dystrybucji i typów woluminów, zobacz [obsługiwane maszyny wirtualne i systemy operacyjne](disk-encryption-overview.md#supported-vms-and-operating-systems).
 
-- **Ubuntu 14,04, 16,04, 18,04**: lsscsi, psmisc, at, cryptsetup-bin, Python-część, Python-sześć, procps
-- **CentOS 7,2-7,7**: lsscsi, psmisc, lvm2, UUID, at, patch, cryptsetup, cryptsetup-reszyfrowania, pyparted, procps-ng, util-linux
-- **CentOS 6,8**: lsscsi, psmisc, lvm2, UUID, at, cryptsetup-reszyfrowania, pyparted, Python — sześć
-- **RedHat 7,2-7,7**: lsscsi, psmisc, lvm2, UUID, at, patch, cryptsetup, cryptsetup-reszyfrowania, procps-ng, util-linux
-- **RedHat 6,8**: lsscsi, psmisc, lvm2, UUID, at, patch, cryptsetup-reszyfruj
-- **openSUSE 42,3, SLES 12-SP4, 12-SP3**: lsscsi, cryptsetup
+- **Ubuntu 14.04, 16.04, 18.04**: lsscsi, psmisc, at, cryptsetup-bin, python-parted, python-six, procps
+- **CentOS 7.2 - 7.7**: lsscsi, psmisc, lvm2, uuid, at, patch, cryptsetup, cryptsetup-reencrypt, pyparted, procps-ng, util-linux
+- **CentOS 6.8**: lsscsi, psmisc, lvm2, uuid, at, cryptsetup-reencrypt, pyparted, python-six
+- **RedHat 7.2 - 7.7**: lsscsi, psmisc, lvm2, uuid, at, patch, cryptsetup, cryptsetup-reencrypt, procps-ng, util-linux
+- **RedHat 6.8**: lsscsi, psmisc, lvm2, uuid, at, patch, cryptsetup-reencrypt
+- **openSUSE 42.3, SLES 12-SP4, 12-SP3**: lsscsi, cryptsetup
 
-W systemie Red Hat Jeśli serwer proxy jest wymagane, należy się upewnić, że Menedżer subskrypcji i yum są prawidłowo skonfigurowane. Aby uzyskać więcej informacji, zobacz [temat Rozwiązywanie problemów z usługą Subscription-Manager i yum](https://access.redhat.com/solutions/189533).  
+W programie Red Hat, gdy wymagany jest serwer proxy, należy upewnić się, że menedżer subskrypcji i mniam są poprawnie skonfigurowane. Aby uzyskać więcej informacji, zobacz [Jak rozwiązać problemy z menedżerem subskrypcji i mniam](https://access.redhat.com/solutions/189533).  
 
-Gdy pakiety są instalowane ręcznie, muszą być również ręcznie uaktualnione po wydaniu nowych wersji.
+Gdy pakiety są instalowane ręcznie, muszą być również uaktualniane ręcznie w miarę zwalniania nowych wersji.
 
 ## <a name="network-security-groups"></a>Grupy zabezpieczeń sieci
-Wszystkie ustawienia sieciowej grupy zabezpieczeń, które są stosowane, muszą nadal zezwalać, aby punkt końcowy spełniał udokumentowane wymagania wstępne konfiguracji sieci na potrzeby szyfrowania dysku.  Zobacz [Azure Disk Encryption: wymagania dotyczące sieci](disk-encryption-overview.md#networking-requirements)
+Wszystkie zastosowane ustawienia sieciowej grupy zabezpieczeń muszą nadal zezwalać punktowi końcowemu na spełnienie wymagań wstępnych dotyczących konfiguracji sieci udokumentowanych dla szyfrowania dysku.  Zobacz [Szyfrowanie dysków platformy Azure: Wymagania dotyczące sieci](disk-encryption-overview.md#networking-requirements)
 
-## <a name="azure-disk-encryption-with-azure-ad-previous-version"></a>Azure Disk Encryption z usługą Azure AD (poprzednia wersja)
+## <a name="azure-disk-encryption-with-azure-ad-previous-version"></a>Szyfrowanie dysków platformy Azure za pomocą usługi Azure AD (poprzednia wersja)
 
-W przypadku korzystania [z Azure Disk Encryption z usługą Azure AD (poprzednia wersja)](disk-encryption-overview-aad.md) [Biblioteka Azure Active Directory](../../active-directory/azuread-dev/active-directory-authentication-libraries.md) będzie musiała zostać zainstalowana ręcznie dla wszystkich dystrybucje (oprócz pakietów odpowiednich dla dystrybucji, jak [wymieniono powyżej](#package-management)).
+W przypadku korzystania [z usługi Azure Disk Encryption z usługą Azure AD (poprzednia wersja)](disk-encryption-overview-aad.md) [biblioteka usługi Azure Active Directory](../../active-directory/azuread-dev/active-directory-authentication-libraries.md) musi zostać zainstalowana ręcznie dla wszystkich dystrybucji (oprócz pakietów odpowiednich dla dystrybucji, jak [wymieniono powyżej).](#package-management)
 
-Gdy szyfrowanie jest włączane przy użyciu [poświadczeń usługi Azure AD](disk-encryption-linux-aad.md), docelowa maszyna wirtualna musi zezwalać na połączenie z punktami końcowymi Azure Active Directory i Key Vault punktów końcowych. Bieżące punkty końcowe uwierzytelniania Azure Active Directory są obsługiwane w sekcjach 56 i 59 w dokumentacji [pakietu Office 365 adresy URL i zakresy adresów IP](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) . Instrukcje Key Vault są dostępne w dokumentacji dotyczącej sposobu [uzyskiwania dostępu Azure Key Vault za zaporą](../../key-vault/key-vault-access-behind-firewall.md).
+Gdy szyfrowanie jest włączone przy użyciu [poświadczeń usługi Azure AD,](disk-encryption-linux-aad.md)docelowa maszyna wirtualna musi zezwalać na łączność z punktami końcowymi usługi Azure Active Directory i punktami końcowymi usługi Key Vault. Bieżące punkty końcowe uwierzytelniania usługi Azure Active Directory są obsługiwane w sekcjach 56 i 59 z dokumentacji [adresów URL i zakresów adresów IP usługi Office 365.](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) Instrukcje usługi Key Vault znajdują się w dokumentacji dotyczącej sposobu uzyskiwania dostępu do [usługi Azure Key Vault za zaporą.](../../key-vault/key-vault-access-behind-firewall.md)
 
-### <a name="azure-instance-metadata-service"></a>Instance Metadata Service platformy Azure 
+### <a name="azure-instance-metadata-service"></a>Usługa metadanych wystąpienia platformy Azure 
 
-Maszyna wirtualna musi mieć dostęp do punktu końcowego [usługi metadanych wystąpienia platformy Azure](instance-metadata-service.md) , który używa dobrze znanego adresu IP bez obsługi routingu (`169.254.169.254`), do którego można uzyskać dostęp tylko z poziomu maszyny wirtualnej.  Konfiguracje serwera proxy, które modyfikują lokalny ruch HTTP na ten adres (na przykład dodanie nagłówka X-forwardd-for) nie są obsługiwane.
+Maszyna wirtualna musi mieć dostęp do punktu końcowego [usługi metadanych wystąpienia platformy Azure,](instance-metadata-service.md) `169.254.169.254`który używa dobrze znanego nie rutowalny adres IP ( ), który można uzyskać tylko z poziomu maszyny Wirtualnej.  Konfiguracje serwera proxy, które zmieniają lokalny ruch HTTP na ten adres (na przykład dodawanie nagłówka X-Forwarded-For) nie są obsługiwane.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Zobacz więcej kroków [rozwiązywania problemów z usługą Azure Disk Encryption](disk-encryption-troubleshooting.md)
+- Zobacz więcej kroków rozwiązywania [problemów z szyfrowaniem dysków platformy Azure](disk-encryption-troubleshooting.md)
 - [Szyfrowanie danych platformy Azure w spoczynku](../../security/fundamentals/encryption-atrest.md)

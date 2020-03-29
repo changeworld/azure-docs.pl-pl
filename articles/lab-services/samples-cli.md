@@ -1,6 +1,6 @@
 ---
-title: Przykłady interfejsu wiersza polecenia platformy Azure dla Azure Lab Services | Microsoft Docs
-description: Ten artykuł zawiera listę przykładów skryptów interfejsu wiersza polecenia platformy Azure, które ułatwiają Zarządzanie laboratoriami w Azure Lab Services.
+title: Przykłady interfejsu wiersza polecenia platformy Azure dla usług Azure Lab | Dokumenty firmy Microsoft
+description: Ten artykuł zawiera listę przykładów skryptów interfejsu wiersza polecenia platformy Azure, które ułatwiają zarządzanie laboratoriami w usługach Azure Lab Services.
 services: lab-services
 author: spelluru
 manager: ''
@@ -14,18 +14,18 @@ ms.date: 01/24/2020
 ms.author: spelluru
 ms.custom: mvc
 ms.openlocfilehash: 35c1a18587ebae1253bd1661a57e21c39f34ee51
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76760508"
 ---
-# <a name="azure-cli-samples-for-azure-lab-services"></a>Przykłady interfejsu wiersza polecenia platformy Azure dla Azure Lab Services
+# <a name="azure-cli-samples-for-azure-lab-services"></a>Przykłady interfejsu wiersza polecenia platformy Azure dla usług Azure Lab Services
 
-Poniższa tabela zawiera linki do skryptów bash utworzonych przy użyciu skryptów interfejsu wiersza polecenia platformy Azure dla Azure Lab Services. 
+Poniższa tabela zawiera łącza do skryptów bash utworzonych przy użyciu skryptów interfejsu wiersza polecenia platformy Azure dla usług Azure Lab Services. 
 
 | | |
 |---|---|
-| [Tworzenie i Weryfikowanie dostępności maszyny wirtualnej](scripts/create-verify-virtual-machine-in-lab-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Tworzy maszynę wirtualną z systemem Windows z minimalną konfiguracją. |
+| [Tworzenie i weryfikowanie dostępności maszyny Wirtualnej](scripts/create-verify-virtual-machine-in-lab-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Tworzy maszynę wirtualną systemu Windows przy minimalnej konfiguracji. |
 | [Uruchamianie maszyny wirtualnej](scripts/start-connect-virtual-machine-in-lab-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Uruchamia maszynę wirtualną. |
-| [Zatrzymaj i Usuń maszynę wirtualną](scripts/stop-delete-virtual-machine-in-lab-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Kończy i usuwa maszynę wirtualną. |
+| [Zatrzymywać i usuwać maszynę wirtualną](scripts/stop-delete-virtual-machine-in-lab-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Zatrzymuje i usuwa maszynę wirtualną. |

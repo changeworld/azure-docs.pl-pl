@@ -1,6 +1,6 @@
 ---
-title: Wymagania dotyczące tożsamości dla hybrydowych w chmurze projektowania tożsamości platformy Azure | Dokumentacja firmy Microsoft
-description: Ustalenie potrzeb firmy w firmie, prowadzących do definiowania wymagań dotyczących projektowania tożsamości hybrydowej.
+title: Wymagania dotyczące tożsamości dla platformy Azure projektu tożsamości w chmurze hybrydowej | Dokumenty firmy Microsoft
+description: Zidentyfikuj potrzeby biznesowe firmy, które doprowadzą Cię do zdefiniowania wymagań dotyczących projektu tożsamości hybrydowej.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,98 +18,98 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9ecc90e13f49c231d8d3ab0cff1de91443b80f21
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65950900"
 ---
-# <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>Określić wymagania dotyczące tożsamości dla Twojego rozwiązania tożsamości hybrydowej
-Pierwszym krokiem podczas projektowania rozwiązania tożsamości hybrydowej jest do określenia wymagań dla organizacji biznesowej, która będzie wykorzystaniu tego rozwiązania.  Tożsamość hybrydowa startuje jako rolę pomocniczą (obsługuje on wszystkie inne rozwiązania w chmurze, zapewniając uwierzytelniania) i przechodzi do możliwości i interesujące, które uwalniają nowych obciążeń dla użytkowników.  Te obciążenia lub usługi, które chcesz przyjmuje użytkowników określają wymagania dotyczące projektowania tożsamości hybrydowej.  Te usługi i obciążeń musiał skorzystać tożsamości hybrydowej w środowisku lokalnym i w chmurze.  
+# <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>Określanie wymagań dotyczących tożsamości dla rozwiązania tożsamości hybrydowej
+Pierwszym krokiem w projektowaniu rozwiązania tożsamości hybrydowej jest określenie wymagań dla organizacji biznesowej, która będzie wykorzystaniem tego rozwiązania.  Tożsamość hybrydowa rozpoczyna się jako rola pomocnicza (obsługuje wszystkie inne rozwiązania w chmurze, zapewniając uwierzytelnianie) i zapewnia nowe i interesujące funkcje, które odblokowują nowe obciążenia dla użytkowników.  Te obciążenia lub usługi, które chcesz przyjąć dla użytkowników będzie dyktować wymagania dotyczące projektu tożsamości hybrydowej.  Te usługi i obciążenia muszą korzystać z tożsamości hybrydowej zarówno lokalnie, jak i w chmurze.  
 
-Należy zapoznać się z kluczowymi aspektami biznesowe, aby zrozumieć, jakie są wymagania teraz i firma planuje w przyszłości. Jeśli nie masz widoczność długoterminowych strategii projektowania tożsamości hybrydowej jest szansa, że rozwiązanie nie będzie skalowalne potrzeb i rozwoju firmy. Na poniższym diagramie przedstawiono przykład architektury tożsamości hybrydowej i obciążeń, które są jest odblokowana dla użytkowników. To przykładowe wszystkich nowych możliwości, które mogą być odblokowane i dostarczane dzięki strategii w zakresie tożsamości hybrydowej stałych. 
+Musisz przejść przez te kluczowe aspekty działalności, aby zrozumieć, co to jest wymóg teraz i co firma planuje na przyszłość. Jeśli nie masz widoczności długoterminowej strategii projektowania tożsamości hybrydowej, istnieje szansa, że twoje rozwiązanie nie będzie skalowalne w miarę rozwoju i zmiany potrzeb biznesowych. Poniższy diagram przedstawia przykład architektury tożsamości hybrydowej i obciążeń, które są odblokowane dla użytkowników. Jest to tylko przykład wszystkich nowych możliwości, które można odblokować i dostarczyć z solidną strategią tożsamości hybrydowej. 
 
-Niektóre składniki, które są częścią architektury tożsamości hybrydowej ![architektury tożsamości hybrydowej](./media/plan-hybrid-identity-design-considerations/hybrid-identity-architechture.png)
+Niektóre składniki, które są częścią ![architektury tożsamości hybrydowej architektury tożsamości hybrydowej](./media/plan-hybrid-identity-design-considerations/hybrid-identity-architechture.png)
 
 ## <a name="determine-business-needs"></a>Określanie potrzeb biznesowych
-Każda firma będzie miała inne wymagania, nawet jeśli te firmy są częścią tej samej branży rzeczywistych biznesowych, które wymagań może się różnić. Można wykorzystywać najlepsze rozwiązania z branży, ale ostatecznie to potrzeby biznesowe firmy, które spowoduje przejście do definiowania wymagań dotyczących projektowania tożsamości hybrydowej. 
+Każda firma będzie miała inne wymagania, nawet jeśli te firmy są częścią tej samej branży, rzeczywiste wymagania biznesowe mogą się różnić. Nadal można wykorzystać najlepsze praktyki z branży, ale ostatecznie to potrzeby biznesowe firmy, które doprowadzą Cię do zdefiniowania wymagań dla projektu tożsamości hybrydowej. 
 
-Pamiętaj odpowiedzieć na następujące pytania, aby zidentyfikować potrzeby biznesowe:
+Aby zidentyfikować potrzeby biznesowe, należy odpowiedzieć na następujące pytania:
 
-* Firma poszukuje wycinania kosztów operacyjnych IT
-* Firma poszukuje do zabezpieczania zasobów w chmurze (SaaS, aplikacji i infrastruktury)
-* To firmie chcą zmodernizować dział IT?
-  * Czy użytkownicy bardziej mobilni i wymagających IT, aby utworzyć wyjątki w sieci Obwodowej, aby zezwolić na różnych typów ruchu sieciowego, aby uzyskać dostęp do różnych zasobów?
-  * Czy firma dysponuje starsze aplikacje, które wymagane do opublikowania dla tych użytkowników nowoczesne, ale nie są łatwe do ponownego zapisywania?
-  * Czy firma potrzebuje do wykonywania tych zadań i przenieś ją pod kontrolą w tym samym czasie?
-* Firma poszukuje do zabezpieczania tożsamości użytkowników i zmniejszyć ryzyko, dodając nowe narzędzia, korzystających z doświadczeń firmy Microsoft zabezpieczeń platformy Azure doświadczenie w środowisku lokalnym
-* Firma próbuje pozbyć się dreaded kont "external" w środowisku lokalnym i przenieść je do chmury, w którym nie są już nieaktywni zagrożeń wewnątrz usługi w środowisku lokalnym?
+* Czy Twoja firma chce obniżyć koszty operacyjne IT?
+* Czy Twoja firma chce zabezpieczyć zasoby chmury (aplikacje SaaS, infrastruktura)?
+* Czy Twoja firma chce zmodernizować swój IT?
+  * Czy użytkownicy są bardziej mobilni i wymagają od działu IT tworzenia wyjątków w strefie DMZ, aby umożliwić dostęp do różnych zasobów innego typu ruchu?
+  * Czy Twoja firma ma starsze aplikacje, które musiały zostać opublikowane tym współczesnym użytkownikom, ale nie są łatwe do przepisania?
+  * Czy Twoja firma musi wykonać wszystkie te zadania i zapewnić kontrolę w tym samym czasie?
+* Czy Twoja firma chce zabezpieczyć tożsamość użytkowników i zmniejszyć ryzyko, wprowadzając nowe narzędzia, które wykorzystują wiedzę specjalistyczną firmy Microsoft w zakresie zabezpieczeń platformy Azure w środowisku lokalnym?
+* Czy Twoja firma próbuje pozbyć się przerażających "zewnętrznych" kont w środowisku lokalnym i przenieść je do chmury, gdzie nie są już uśpionym zagrożeniem w środowisku lokalnym?
 
 ## <a name="analyze-on-premises-identity-infrastructure"></a>Analizowanie lokalnej infrastruktury tożsamości
-Teraz, gdy masz pomysł dotyczące Twoje wymagania biznesowe firmy, należy ocenić swoją lokalną infrastrukturę tożsamości. Ocena jest ważne w przypadku definiowania wymagań technicznych, aby zintegrować z bieżącego rozwiązania tożsamości do systemu zarządzania tożsamościami w chmurze. Pamiętaj odpowiedzieć na następujące pytania:
+Teraz, gdy masz pomysł dotyczący wymagań biznesowych firmy, musisz ocenić lokalną infrastrukturę tożsamości. Ta ocena jest ważne dla definiowania wymagań technicznych, aby zintegrować bieżące rozwiązanie tożsamości do systemu zarządzania tożsamościami w chmurze. Pamiętaj, aby odpowiedzieć na następujące pytania:
 
-* Twoja firma działa to jakie rozwiązanie uwierzytelniania i autoryzacji używany lokalny? 
-* Czy firma dysponuje obecnie żadnych usług synchronizacji w środowisku lokalnym?
-* Firma używa dostawcy tożsamości (IdP) żadnych innych firm?
+* Jakie rozwiązanie uwierzytelniania i autoryzacji używa lokalnie przez Firmę? 
+* Czy Twoja firma ma obecnie jakieś lokalne usługi synchronizacji?
+* Czy Twoja firma korzysta z zewnętrznych dostawców tożsamości (IdP)?
 
-Należy również mieć świadomość usług w chmurze, które firma może polegać. Bardzo ważne jest wykonanie oceny zrozumienie bieżącego integracji z modelami SaaS, IaaS i PaaS w środowisku. Pamiętaj odpowiedzieć na następujące pytania podczas tej oceny:
+Należy również pamiętać o usługach w chmurze, które firma może mieć. Przeprowadzenie oceny w celu zrozumienia bieżącej integracji z modelami SaaS, IaaS lub PaaS w twoim środowisku jest bardzo ważne. Podczas tej oceny należy odpowiedzieć na następujące pytania:
 
-* Czy firma dysponuje zintegrowany z dostawcy usług w chmurze?
-* Jeśli tak, jakie usługi są używane?
-* Trwa tej integracji w środowisku produkcyjnym, czy jest pilotażu?
+* Czy Twoja firma ma jakąś integrację z dostawcą usług w chmurze?
+* Jeśli tak, które usługi są używane?
+* Czy ta integracja jest obecnie w produkcji, czy jest to pilot?
 
 > [!NOTE]
-> Rozwiązanie cloud Discovery analizuje dzienniki ruchu względem wykazu aplikacji w chmurze Microsoft Cloud App Security ponad 16 000 chmury, aplikacje, które są pozycjonowane i oceniane na podstawie których ponad 70 czynników ryzyka, aby zapewnić ciągły wgląd w chmurze używasz, niezatwierdzonych przez dział IT oraz ryzykiem W tle stwarza IT w Twojej organizacji. Aby uzyskać wstępne informacje, zobacz [konfigurowanie rozwiązania Cloud Discovery](/cloud-app-security/set-up-cloud-discovery).
+> Cloud Discovery analizuje dzienniki ruchu w katalogu aplikacji w chmurze usługi Microsoft Cloud App Security zawierającym ponad 16 000 aplikacji w chmurze, które są klasyfikowane i oceniane na podstawie ponad 70 czynników ryzyka, aby zapewnić bieżący wgląd w korzystanie z chmury, shadow IT i ryzyko, jakie shadow IT stwarza dla twojej organizacji. Aby rozpocząć, zobacz [Konfigurowanie odnajdywania chmury](/cloud-app-security/set-up-cloud-discovery).
 > 
 > 
 
-## <a name="evaluate-identity-integration-requirements"></a>Oceń wymagania dotyczące integracji tożsamości
-Następnie należy ocenić wymagania dotyczące integracji tożsamości. Ocena ważne jest określenie wymagań technicznych dotyczących uwierzytelnianiu użytkowników, wygląd obecność organizacji w chmurze, jak dozwolony autoryzacji w organizacji i środowisko użytkownika ma być. Pamiętaj odpowiedzieć na następujące pytania:
+## <a name="evaluate-identity-integration-requirements"></a>Ocena wymagań dotyczących integracji tożsamości
+Następnie należy ocenić wymagania integracji tożsamości. Ta ocena jest ważne, aby zdefiniować wymagania techniczne dotyczące sposobu uwierzytelniania użytkowników, jak obecność organizacji będzie wyglądać w chmurze, jak organizacja zezwoli na autoryzację i jakie będzie środowisko użytkownika. Pamiętaj, aby odpowiedzieć na następujące pytania:
 
-* Twojej organizacji używać federacyjnego uwierzytelniania standardowego lub oba?
-* Jest wymagana, federacyjnej?  Ze względu na następujący:
-  * Usługa rejestracji Jednokrotnej z opartego na protokole Kerberos
-  * Twoja firma ma lokalne aplikacje (albo wbudowany w wewnętrznych lub 3 firmy), których używa podobne możliwości federation lub SAML.
-  * Uwierzytelnianie wieloskładnikowe za pomocą kart inteligentnych. RSA SecurID, etc.
-  * Reguły dostępu klienta, które rozwiązują poniższe pytania:
-    1. Czy można zablokować cały zewnętrzny dostęp do usługi Office 365 na podstawie adresu IP klienta?
-    2. Czy można zablokować cały zewnętrzny dostęp do usługi Office 365, z wyjątkiem programu Exchange ActiveSync?
-    3. Czy można zablokować cały zewnętrzny dostęp do usługi Office 365, z wyjątkiem aplikacji opartych na przeglądarce (program OWA, SPO)
-    4. Dla członków grup usługi Active Directory wyznaczonym można zablokować cały zewnętrzny dostęp do usługi Office 365
-* Dotyczy/inspekcji zabezpieczeń
-* Już istniejących inwestycji w uwierzytelniania federacyjnego
-* Jaką nazwę naszej organizacji będą korzystać z naszych domeny w chmurze?
-* Czy organizacja ma niestandardową domenę?
-  1. Jest tej domeny publicznej i łatwe do sprawdzenia przy użyciu usługi DNS?
-  2. Jeśli nie jest dostępne, następnie masz domenę publiczną, który może służyć do rejestrowania alternatywne nazwy UPN w AD?
-* Identyfikatory użytkowników są spójne dla reprezentacji chmury? 
+* Czy Twoja organizacja będzie używać federacji, uwierzytelniania standardowego lub obu tych czynów?
+* Czy federacja jest wymagana?  Ze względu na następujące kwestie:
+  * Logowanie jednokrotne oparte na protokole Kerberos
+  * Twoja firma ma aplikacje lokalne (wbudowane w domu lub innej firmy), które używają SAML lub podobnych możliwości federacji.
+  * mfa za pośrednictwem kart inteligentnych. RSA SecurID itp.
+  * Reguły dostępu klienta, które odnoszą się do poniższych pytań:
+    1. Czy mogę zablokować cały zewnętrzny dostęp do usługi Office 365 na podstawie adresu IP klienta?
+    2. Czy mogę zablokować cały dostęp zewnętrzny do usługi Office 365, z wyjątkiem programu Exchange ActiveSync?
+    3. Czy mogę zablokować cały dostęp zewnętrzny do usługi Office 365, z wyjątkiem aplikacji opartych na przeglądarce (OWA, SPO)
+    4. Czy mogę zablokować cały dostęp zewnętrzny do usługi Office 365 dla członków wyznaczonych grup usług AD
+* Kwestie związane z bezpieczeństwem/audytem
+* Już istniejące inwestycje w uwierzytelnianie federacyjne
+* Jaką nazwę będzie używać naszej organizacji dla naszej domeny w chmurze?
+* Czy organizacja ma domenę niestandardową?
+  1. Czy ta domena jest publiczna i łatwa do zweryfikowania za pośrednictwem systemu DNS?
+  2. Jeśli tak nie jest, to czy masz domenę publiczną, która może służyć do rejestrowania alternatywnej nazwy UPN w urzędzie ad?
+* Czy identyfikatory użytkownika są spójne dla reprezentacji chmury? 
 * Czy organizacja ma aplikacje, które wymagają integracji z usługami w chmurze?
-* Czy organizacja ma wiele domen i będą wszystkie używają standardowych lub federacyjnego uwierzytelniania?
+* Czy organizacja ma wiele domen i czy wszystkie będą używać uwierzytelniania standardowego lub federacyjnego?
 
-## <a name="evaluate-applications-that-run-in-your-environment"></a>Ocena aplikacji działających w Twoim środowisku
-Skoro masz pomysł, dotyczące lokalnych i infrastruktury chmury, należy ocenić aplikacje, które działają w tych środowiskach. Ocena ważne jest, aby zdefiniować wymagania techniczne, aby zintegrować te aplikacje do systemu zarządzania tożsamościami w chmurze. Pamiętaj odpowiedzieć na następujące pytania:
+## <a name="evaluate-applications-that-run-in-your-environment"></a>Ocenianie aplikacji uruchamianych w twoim środowisku
+Teraz, gdy masz pomysł dotyczący infrastruktury lokalnej i chmury, należy ocenić aplikacje, które działają w tych środowiskach. Ta ocena jest ważne, aby zdefiniować wymagania techniczne, aby zintegrować te aplikacje do systemu zarządzania tożsamościami w chmurze. Pamiętaj, aby odpowiedzieć na następujące pytania:
 
-* Gdzie będą znajdować naszych aplikacji
-* Będą użytkownikom uzyskiwać dostęp do aplikacji lokalnych?  W chmurze? Lub oba?
-* Czy istnieją plany, aby przejąć kontrolę istniejących obciążeń aplikacji i przenieść je do chmury?
-* Czy istnieją plany, aby tworzyć nowe aplikacje, które będą znajdować się lokalnie lub w chmurze, która będzie używana w chmurze uwierzytelniania?
+* Gdzie będą żyły nasze aplikacje?
+* Czy użytkownicy będą uzyskiwać dostęp do aplikacji lokalnych?  W chmurze? Albo jedno i drugie?
+* Czy istnieją plany podjęcia istniejących obciążeń aplikacji i przenieść je do chmury?
+* Czy istnieją plany tworzenia nowych aplikacji, które będą rezydować lokalnie lub w chmurze, które będą korzystać z uwierzytelniania w chmurze?
 
 ## <a name="evaluate-user-requirements"></a>Ocena wymagań użytkownika
-Należy również ocenić wymagania użytkownika. Ocena ważne jest, aby zdefiniować czynności, które będą potrzebne do wdrażania i wspomaganie użytkowników, ponieważ mogą przejść do chmury. Pamiętaj odpowiedzieć na następujące pytania:
+Należy również ocenić wymagania użytkownika. Ta ocena jest ważne, aby zdefiniować kroki, które będą potrzebne do wejścia na pokład i pomocy użytkownikom podczas przechodzenia do chmury. Pamiętaj, aby odpowiedzieć na następujące pytania:
 
-* Będą użytkownikom uzyskiwać dostęp do aplikacji w środowisku lokalnym?
-* Będą użytkownikom uzyskiwać dostęp do aplikacji w chmurze?
-* W jaki sposób użytkownicy zazwyczaj Zaloguj się do ich w środowisku lokalnym?
-* Jak będzie logowania użytkownika do chmury?
+* Czy użytkownicy będą uzyskiwać dostęp do aplikacji lokalnie?
+* Czy użytkownicy będą uzyskiwać dostęp do aplikacji w chmurze?
+* Jak użytkownicy zazwyczaj logują się do środowiska lokalnego?
+* W jaki sposób użytkownicy będą logować się do chmury?
 
 > [!NOTE]
-> Pamiętaj zanotować wszystkie odpowiedzi i zrozumieć uzasadnienie. [Określanie wymagań dotyczących odpowiedzi na zdarzenia](plan-hybrid-identity-design-considerations-incident-response-requirements.md) zostanie umieszczona nad dostępnych opcji i specjaliści/wady każdej opcji.  Po udzieleniu odpowiedzi na te pytania można wybrać opcję, która najlepiej pasujące do działalności potrzebuje.
+> Pamiętaj, aby zanotować wszystkie odpowiedzi i zrozumieć ich uzasadnienie. [Określ wymagania dotyczące reagowania na incydenty](plan-hybrid-identity-design-considerations-incident-response-requirements.md) zostaną przejmą dostępne opcje i zalety/minusy każdej opcji.  Odpowiadając na te pytania, wybierzesz opcję, która najlepiej odpowiada Twoim potrzebom biznesowym.
 > 
 > 
 
-## <a name="next-steps"></a>Kolejne kroki
-[Określić wymagania dotyczące synchronizacji katalogu](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)
+## <a name="next-steps"></a>Następne kroki
+[Określanie wymagań dotyczących synchronizacji katalogów](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)
 
-## <a name="see-also"></a>Zobacz także
-[Omówienie zagadnień dotyczących projektowania](plan-hybrid-identity-design-considerations-overview.md)
+## <a name="see-also"></a>Zobacz też
+[Omówienie zagadnień projektowych](plan-hybrid-identity-design-considerations-overview.md)
 

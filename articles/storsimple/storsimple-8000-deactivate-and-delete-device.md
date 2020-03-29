@@ -1,6 +1,6 @@
 ---
-title: Dezaktywacja i usuwanie urządzenia StorSimple 8000 series | Dokumentacja firmy Microsoft
-description: Zawiera opis procedury usuwania urządzenia StorSimple z usługą najpierw dezaktywowanie go, a następnie usuwając go.
+title: Dezaktywowanie i usuwanie urządzenia storsimple serii 8000 | Dokumenty firmy Microsoft
+description: W tym artykule opisano sposób usuwania urządzenia StorSimple z usługi, najpierw dezaktywując je, a następnie usuwając.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,110 +15,110 @@ ms.workload: na
 ms.date: 07/23/2018
 ms.author: alkohli
 ms.openlocfilehash: 116ac5c4efda87b5d16336dd326d516299f6955d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61481981"
 ---
 # <a name="deactivate-and-delete-a-storsimple-device"></a>Dezaktywacja i usuwanie urządzenia StorSimple
 
 ## <a name="overview"></a>Omówienie
 
-W tym artykule opisano sposób Dezaktywacja i usuwanie urządzenia StorSimple, która jest połączona z usługą Menedżera urządzeń StorSimple. Wskazówki zawarte w tym artykule dotyczą tylko urządzeń z serii StorSimple 8000 w tym urządzeń StorSimple w chmurze. Jeśli używasz rozwiązania StorSimple Virtual Array, następnie przejdź do strony [dezaktywowanie i usuwanie rozwiązania StorSimple Virtual Array](storsimple-virtual-array-deactivate-and-delete-device.md).
+W tym artykule opisano sposób dezaktywacji i usunięcia urządzenia StorSimple podłączonego do usługi StorSimple Device Manager. Wskazówki zawarte w tym artykule dotyczą tylko urządzeń z serii StorSimple 8000, w tym urządzeń storsimple w chmurze. Jeśli używasz tablicy wirtualnej StorSimple, przejdź do [dezaktywacji i usuń tablicę wirtualną StorSimple](storsimple-virtual-array-deactivate-and-delete-device.md).
 
-Dezaktywacja wcześniej połączenie między urządzeniem i odpowiednie usługi Menedżer urządzeń StorSimple. Możesz wykonać na urządzeniu StorSimple, usługi, (na przykład, jeśli są zastępowanie lub uaktualnianie urządzenia lub jeśli już używasz usługi StorSimple). Jeśli tak, musisz dezaktywować urządzenie przed jego usunięciem.
+Dezaktywacja powoduje zerwanie połączenia między urządzeniem a odpowiednią usługą StorSimple Device Manager. Użytkownik może chcieć wykluczyć urządzenie StorSimple z usługi (na przykład w przypadku wymiany lub uaktualnienia urządzenia lub nieużycia storsimple). Jeśli tak, musisz dezaktywować urządzenie, zanim będzie można je usunąć.
 
-Po dezaktywacji urządzenia żadnych danych, który został zapisany lokalnie na urządzeniu nie jest już dostępny. Można odzyskać tylko dane, które są skojarzone z urządzenia, które są przechowywane w chmurze.
+Po dezaktywacji urządzenia wszelkie dane przechowywane lokalnie na urządzeniu nie są już dostępne. Można odzyskać tylko dane skojarzone z urządzeniem, które było przechowywane w chmurze.
 
 > [!WARNING]
-> Dezaktywacja jest operacją NIEODWRACALNĄ i nie można cofnąć. Dezaktywowanego urządzenia nie można zarejestrować w usłudze Menedżer urządzeń StorSimple, o ile zostanie zresetowane do ustawień fabrycznych.
+> Dezaktywacja jest operacją PERMANENT i nie można jej cofnąć. Dezaktywowanego urządzenia nie można zarejestrować w usłudze StorSimple Device Manager, chyba że zostanie ono zresetowane do ustawień fabrycznych.
 >
-> Resetowanie do ustawień fabrycznych procesu usuwa wszystkie dane, które są przechowywane lokalnie na urządzeniu z systemem. W związku z tym należy wykonać migawkę wszystkich danych w chmurze, przed dezaktywacją urządzenia. Migawka w chmurze umożliwia odzyskanie wszystkich danych na późniejszym etapie.
+> Proces przywracania ustawień fabrycznych usuwa wszystkie dane, które były przechowywane lokalnie na urządzeniu. W związku z tym należy zrobić migawkę chmury wszystkich danych przed dezaktywacją urządzenia. Ta migawka w chmurze umożliwia odzyskanie wszystkich danych na późniejszym etapie.
 
-Po przeczytaniu tego samouczka, będzie mieć możliwość:
+Po przeczytaniu tego samouczka, będzie można:
 
-* Dezaktywacja urządzenia i usuwanie danych.
-* Dezaktywuj urządzenie i przechowywania danych.
+* Dezaktywuj urządzenie i usuń dane.
+* Dezaktywuj urządzenie i zachowaj je.
 
 > [!NOTE]
-> Przed dezaktywacją urządzenia fizycznego StorSimple lub urządzenia w chmurze, zatrzymać lub usunąć klientów i hosty, które są zależne od tego urządzenia.
+> Przed dezaktywacją urządzenia fizycznego storsimple lub urządzenia w chmurze, zatrzymać lub usunąć klientów i hostów, które zależą od tego urządzenia.
 
 
-## <a name="deactivate-and-delete-data"></a>Dezaktywacja i usuwanie danych
+## <a name="deactivate-and-delete-data"></a>Dezaktywowanie i usuwanie danych
 
-Jeśli interesują Cię całkowicie usunięciem urządzenia, a nie chcesz przechowywać dane na urządzeniu, następnie wykonaj następujące czynności.
+Jeśli chcesz całkowicie usunąć urządzenie i nie chcesz przechowywać danych na urządzeniu, wykonaj następujące kroki.
 
 #### <a name="to-deactivate-the-device-and-delete-the-data"></a>Aby dezaktywować urządzenie i usunąć dane
 
-1. Przed dezaktywacją urządzenia, należy usunąć wszystkich woluminów kontenerów (i woluminy) skojarzone z urządzeniem. Kontenery woluminów można usunąć tylko wtedy, gdy została usunięta skojarzonych kopii zapasowych.
+1. Przed dezaktywacją urządzenia należy usunąć wszystkie kontenery woluminów (i woluminy) skojarzone z urządzeniem. Kontenery woluminów można usuwać tylko po usunięciu skojarzonych kopii zapasowych.
 
     > [!NOTE]
-    > Przed dezaktywacją urządzenia fizycznego StorSimple lub urządzenia w chmurze, upewnij się, że dane z kontenera woluminów usunięto faktycznie jest usuwany z urządzenia. Można monitorować, wykresy użycia chmury i wyświetlenie użycia chmury, Porzuć ze względu na kopie zapasowe, które zostały usunięte następnie można przystąpić do dezaktywowania urządzenia. Dezaktywacja urządzenia przed wystąpieniem tego spadku dane jest skrętki na koncie magazynu i zostały naliczone opłaty.
+    > Przed dezaktywacją urządzenia fizycznego StorSimple lub urządzenia w chmurze upewnij się, że dane z kontenera woluminu usuniętego są faktycznie usuwane z urządzenia. Możesz monitorować wykresy zużycia w chmurze, a gdy zobaczysz spadek użycia chmury z powodu usuniętych kopii zapasowych, możesz przystąpić do dezaktywacji urządzenia. Jeśli dezaktywujesz urządzenie przed wystąpieniem tej kropli, dane zostaną osierocone na koncie magazynu i naliczane są opłaty.
 
-2. Dezaktywacja urządzenia w następujący sposób:
+2. Dezaktywuj urządzenie w następujący sposób:
    
-   1. Przejdź do usługi Menedżer urządzeń StorSimple i kliknij pozycję **Urządzenia**. W **urządzeń** bloku wybierz urządzenie, które chcesz zdezaktywować, kliknij prawym przyciskiem myszy, a następnie kliknij **Dezaktywuj**.
+   1. Przejdź do usługi Menedżer urządzeń StorSimple i kliknij pozycję **Urządzenia**. W bloku **Urządzenia** wybierz urządzenie, które chcesz dezaktywować, kliknij prawym przyciskiem myszy, a następnie kliknij polecenie **Dezaktywuj**.
 
         ![Dezaktywacja urządzenia StorSimple](./media/storsimple-8000-deactivate-and-delete-device/deactivate1.png)
-   2. W **Dezaktywuj** bloku, wpisz nazwę urządzenia, aby upewnić się, a następnie kliknij przycisk **Dezaktywuj**. Rozpocznie się proces Dezaktywuj, w którym zostanie zajmuje kilka minut.
+   2. W bloku **Dezaktywuj** wpisz nazwę urządzenia, aby potwierdzić, a następnie kliknij przycisk **Dezaktywuj**. Proces dezaktywacji rozpoczyna się i trwa kilka minut.
 
         ![Dezaktywacja urządzenia StorSimple](./media/storsimple-8000-deactivate-and-delete-device/deactivate2.png)
 
-3. Po dezaktywacji możesz całkowicie usunąć urządzenia. Usuwanie urządzenia spowoduje usunięcie jej z listy urządzeń podłączonych do usługi. Usługa nie będzie można następnie zarządzać usuniętego urządzenia. Aby usunąć urządzenie, wykonaj następujące kroki:
+3. Po dezaktywacji można całkowicie usunąć urządzenie. Usunięcie urządzenia powoduje usunięcie go z listy urządzeń podłączonych do usługi. Usługa nie może już zarządzać usuniętym urządzeniem. Aby usunąć urządzenie, należy wykonać następujące czynności:
    
-   1. Przejdź do usługi Menedżer urządzeń StorSimple i kliknij pozycję **Urządzenia**. W **urządzeń** bloku wybranie zdezaktywowanego urządzenia, które chcesz usunąć, kliknij prawym przyciskiem myszy, a następnie kliknij **Usuń**.
+   1. Przejdź do usługi Menedżer urządzeń StorSimple i kliknij pozycję **Urządzenia**. W bloku **Urządzenia** wybierz dezaktywowane urządzenie, które chcesz usunąć, kliknij prawym przyciskiem myszy, a następnie kliknij polecenie **Usuń**.
 
         ![Dezaktywacja urządzenia StorSimple](./media/storsimple-8000-deactivate-and-delete-device/deactivate5.png)
-   2. W **Usuń** bloku, wpisz nazwę urządzenia, aby upewnić się, a następnie kliknij przycisk **Usuń**. Usuwanie zajmuje kilka minut.
+   2. W bloku **Usuń** wpisz nazwę urządzenia, aby potwierdzić, a następnie kliknij przycisk **Usuń**. Usunięcie trwa kilka minut.
 
         ![Dezaktywacja urządzenia StorSimple](./media/storsimple-8000-deactivate-and-delete-device/deactivate6.png)
-   3. Po zakończeniu usuwania pomyślnie otrzymasz powiadomienie. Lista urządzeń aktualizuje również w celu odzwierciedlenia usunięcia.
+   3. Po pomyślnym zakończeniu usuwania użytkownik zostanie o tym powiadomiony. Lista urządzeń jest również aktualizowana w celu odzwierciedlenia usunięcia.
 
-## <a name="deactivate-and-retain-data"></a>Dezaktywacja i przechowywanie danych
+## <a name="deactivate-and-retain-data"></a>Dezaktywowanie i przechowywanie danych
 
-Jeśli są zainteresowani usunięciem urządzenia, ale chcesz przechowywać dane, następnie wykonaj następujące czynności:
+Jeśli chcesz usunąć urządzenie, ale chcesz zachować dane, wykonaj następujące czynności:
 
-#### <a name="to-deactivate-a-device-and-retain-the-data"></a>Aby dezaktywować urządzenie i przechowywania danych
-1. Dezaktywacja urządzenia. Wszystkie kontenery woluminów i migawek urządzenia pozostaną.
+#### <a name="to-deactivate-a-device-and-retain-the-data"></a>Aby dezaktywować urządzenie i zachować dane
+1. Dezaktywuj urządzenie. Wszystkie kontenery woluminów i migawki urządzenia pozostają.
    
-   1. Przejdź do usługi Menedżer urządzeń StorSimple i kliknij pozycję **Urządzenia**. W **urządzeń** bloku wybierz urządzenie, które chcesz zdezaktywować, kliknij prawym przyciskiem myszy, a następnie kliknij **Dezaktywuj**.
+   1. Przejdź do usługi Menedżer urządzeń StorSimple i kliknij pozycję **Urządzenia**. W bloku **Urządzenia** wybierz urządzenie, które chcesz dezaktywować, kliknij prawym przyciskiem myszy, a następnie kliknij polecenie **Dezaktywuj**.
 
          ![Dezaktywacja urządzenia StorSimple](./media/storsimple-8000-deactivate-and-delete-device/deactivate1.png)
-   2. W **Dezaktywuj** bloku, wpisz nazwę urządzenia, aby upewnić się, a następnie kliknij przycisk **Dezaktywuj**. Rozpocznie się proces Dezaktywuj, w którym zostanie zajmuje kilka minut.
+   2. W bloku **Dezaktywuj** wpisz nazwę urządzenia, aby potwierdzić, a następnie kliknij przycisk **Dezaktywuj**. Proces dezaktywacji rozpoczyna się i trwa kilka minut.
 
          ![Dezaktywacja urządzenia StorSimple](./media/storsimple-8000-deactivate-and-delete-device/deactivate2.png)
-2. Możesz teraz przełączać awaryjnie kontenery woluminów i skojarzone migawki. Aby uzyskać procedury, przejdź do [trybu Failover i odzyskiwanie po awarii dla urządzenia StorSimple](storsimple-8000-device-failover-disaster-recovery.md).
-3. Po dezaktywacji i trybu failover możesz całkowicie usunąć urządzenia. Usuwanie urządzenia spowoduje usunięcie jej z listy urządzeń podłączonych do usługi. Usługa nie będzie można następnie zarządzać usuniętego urządzenia. Aby usunąć urządzenie, wykonaj następujące czynności:
+2. Teraz można w pracy awaryjnej kontenerów woluminów i skojarzonych migawek. Aby uzyskać procedury, przejdź do [trybu failover i odzyskiwania po awarii dla urządzenia StorSimple](storsimple-8000-device-failover-disaster-recovery.md).
+3. Po dezaktywacji i pracy awaryjnej można całkowicie usunąć urządzenie. Usunięcie urządzenia powoduje usunięcie go z listy urządzeń podłączonych do usługi. Usługa nie może już zarządzać usuniętym urządzeniem. Aby usunąć urządzenie, wykonaj następujące czynności:
    
-   1. Przejdź do usługi Menedżer urządzeń StorSimple i kliknij pozycję **Urządzenia**. W **urządzeń** bloku wybranie zdezaktywowanego urządzenia, które chcesz usunąć, kliknij prawym przyciskiem myszy, a następnie kliknij **Usuń**.
+   1. Przejdź do usługi Menedżer urządzeń StorSimple i kliknij pozycję **Urządzenia**. W bloku **Urządzenia** wybierz dezaktywowane urządzenie, które chcesz usunąć, kliknij prawym przyciskiem myszy, a następnie kliknij polecenie **Usuń**.
 
        ![Dezaktywacja urządzenia StorSimple](./media/storsimple-8000-deactivate-and-delete-device/deactivate5.png)
-   2. W **Usuń** bloku, wpisz nazwę urządzenia, aby upewnić się, a następnie kliknij przycisk **Usuń**. Usuwanie zajmuje kilka minut.
+   2. W bloku **Usuń** wpisz nazwę urządzenia, aby potwierdzić, a następnie kliknij przycisk **Usuń**. Usunięcie trwa kilka minut.
 
        ![Dezaktywacja urządzenia StorSimple](./media/storsimple-8000-deactivate-and-delete-device/deactivate6.png)
-   3. Po zakończeniu usuwania pomyślnie otrzymasz powiadomienie. Lista urządzeń aktualizuje również w celu odzwierciedlenia usunięcia.
+   3. Po pomyślnym zakończeniu usuwania użytkownik zostanie o tym powiadomiony. Lista urządzeń jest również aktualizowana w celu odzwierciedlenia usunięcia.
 
      
-## <a name="deactivate-and-delete-a-cloud-appliance"></a>Dezaktywacja i usuwanie urządzenia w chmurze
+## <a name="deactivate-and-delete-a-cloud-appliance"></a>Dezaktywowanie i usuwanie urządzenia w chmurze
 
-Dla urządzenia StorSimple w chmurze dezaktywacji, z poziomu portalu powoduje cofnięcie przydziału i usuwa maszyny wirtualne i zasoby utworzone podczas jej aprowizacji. Po dezaktywacji urządzenia w chmurze nie można go przywrócić do poprzedniego stanu.
+W przypadku urządzenia StorSimple Cloud Appliance dezaktywacja z portalu przydziela i usuwa maszynę wirtualną oraz zasoby utworzone podczas jej inicjowania obsługi administracyjnej. Po dezaktywacji urządzenia w chmurze nie można go przywrócić do poprzedniego stanu.
 
 ![Dezaktywacja urządzenia StorSimple w chmurze](./media/storsimple-8000-deactivate-and-delete-device/deactivate7.png)
 
-Powoduje dezaktywację następujące akcje:
+Dezaktywacja powoduje następujące działania:
 
-* Urządzenie StorSimple w chmurze jest wyłączany.
-* Maszyna wirtualna, dla urządzenia StorSimple w chmurze zostanie usunięta.
-* Dysk systemu operacyjnego i dyski danych utworzone dla urządzenia StorSimple w chmurze zostaną zachowane. Jeśli nie używasz tych jednostek, należy je usunąć ręcznie.
-* Hostowana usługa i sieć wirtualną, które zostały utworzone podczas inicjowania obsługi zostaną zachowane. Jeśli nie używasz tych jednostek, należy je usunąć ręcznie.
-* Migawki w chmurze utworzone przez urządzenie StorSimple w chmurze zostaną zachowane.
+* Urządzenie StorSimple Cloud Appliance zostanie usunięte z usługi.
+* Maszyna wirtualna dla urządzenia StorSimple Cloud Appliance zostanie usunięta.
+* Dysk systemu operacyjnego i dyski danych utworzone dla urządzenia StorSimple Cloud Appliance są zachowywane. Jeśli nie używasz tych jednostek, należy usunąć je ręcznie.
+* Usługa hostowana i sieć wirtualna, które zostały utworzone podczas inicjowania obsługi administracyjnej są zachowywane. Jeśli nie używasz tych jednostek, należy usunąć je ręcznie.
+* Migawki chmury utworzone przez Urządzenie StorSimple Cloud Appliance są zachowywane.
 
-Po dezaktywacji urządzenia w chmurze, możesz go usunąć z listy urządzeń. Wybierz dezaktywowanego urządzenia, kliknij prawym przyciskiem myszy, a następnie kliknij **Usuń**. StorSimple powiadamia, należy po usunięciu urządzenia i lista urządzeń jest aktualizowana.
+Po dezaktywacji urządzenia w chmurze można je usunąć z listy urządzeń. Wybierz dezaktywowane urządzenie, kliknij prawym przyciskiem myszy, a następnie kliknij polecenie **Usuń**. StorSimple powiadamia użytkownika po usunięciu urządzenia i aktualizacji listy urządzeń.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Aby przywrócić dezaktywowanego urządzenia do ustawień fabrycznych, przejdź do [zresetowania urządzenia do domyślnych ustawień fabrycznych](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings).
-* Aby uzyskać pomoc techniczną [skontaktuj się z Microsoft Support](storsimple-8000-contact-microsoft-support.md).
-* Aby dowiedzieć się więcej o sposobie używania usługi Menedżer urządzeń StorSimple, przejdź do [korzystać z usługi Menedżer urządzeń StorSimple do administrowania urządzeniem StorSimple](storsimple-8000-manager-service-administration.md).
+* Aby przywrócić ustawienia fabryczne dezaktywowanego urządzenia, przejdź do [pozycji Resetowanie urządzenia do ustawień domyślnych ustawień fabrycznych](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings).
+* Aby uzyskać pomoc techniczną, [skontaktuj się z pomocą techniczną firmy Microsoft](storsimple-8000-contact-microsoft-support.md).
+* Aby dowiedzieć się więcej o korzystaniu z usługi StorSimple Device Manager, zobacz [Korzystanie z usługi StorSimple Device Manager do administrowania urządzeniem StorSimple](storsimple-8000-manager-service-administration.md).
 

@@ -1,103 +1,102 @@
 ---
-title: Aktualizowanie istniejącej oferty modułu Azure IoT Edge | Portal Azure Marketplace
-description: Jak zaktualizować istniejącą ofertę modułu IoT Edge w portalu Azure Marketplace.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+title: Aktualizowanie istniejącej oferty modułów usługi Azure IoT Edge | Azure Marketplace
+description: Jak zaktualizować istniejącą ofertę modułu usługi IoT Edge w portalu Azure Marketplace.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/18/2018
-ms.author: pabutler
-ms.openlocfilehash: cd0167e1af5bf8ef667df88237d83e9f33ed41f9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: dceff3e320554edc972654aa49552bffbc4c9a13
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73813389"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286493"
 ---
-# <a name="update-an-existing-iot-edge-module-offer"></a>Aktualizowanie istniejącej oferty modułu IoT Edge
+# <a name="update-an-existing-iot-edge-module-offer"></a>Aktualizowanie istniejącej oferty modułów usługi IoT Edge
 
-W tym artykule opisano różne aspekty aktualizowania oferty modułu IoT Edge w [Portal Cloud partner](https://cloudpartner.azure.com/) a następnie ponowne opublikowanie oferty.
+W tym artykule krok postępuje przez różne aspekty aktualizowania oferty modułu Usługi IoT Edge w [portalu cloud partner,](https://cloudpartner.azure.com/) a następnie ponownego publikowania oferty.
 
-Istnieje kilka powodów, dla których warto zaktualizować ofertę, na przykład:
+Istnieje kilka powodów, dla których warto zaktualizować ofertę, takich jak:
 
--  Dodawanie nowej wersji obrazu modułu IoT Edge do istniejących jednostek SKU.
+-  Dodawanie nowej wersji obrazu modułu usługi IoT Edge do istniejących jednostek SKU.
 -  Dodawanie nowych jednostek SKU.
--  Aktualizowanie metadanych witryny Marketplace dla oferty lub poszczególnych jednostek SKU.
+-  Aktualizowanie metadanych portalu marketplace dla oferty lub poszczególnych jednostek SKU.
 
-Aby ułatwić Ci modyfikację, Portal oferuje funkcje **porównywania** i **historii** .  
+Aby pomóc w tych modyfikacjach, portal oferuje funkcje **Porównaj** i **Historia.**  
 
 
-## <a name="unpermitted-changes-to-iot-edge-module-offer-or-sku"></a>Niedozwolone zmiany w ofercie modułu IoT Edge lub w jednostce SKU
+## <a name="unpermitted-changes-to-iot-edge-module-offer-or-sku"></a>Niedozwolone zmiany w ofercie modułów IoT Edge lub jednostce SKU
 
-Istnieją atrybuty oferty modułu IoT Edge lub jednostki SKU, których nie można zmienić po zakończeniu oferty w witrynie Azure Marketplace. Nie można zmienić następujących ustawień:
+Istnieją atrybuty oferty modułu usługi IoT Edge lub jednostki SKU, których nie można zmienić po uruchomieniu oferty w portalu Azure Marketplace. Nie można zmienić następujących ustawień:
 
 -  **Identyfikator oferty** i **identyfikator wydawcy** oferty
 -  **Identyfikator jednostki SKU** istniejących jednostek SKU
--  Tagi wersji, na przykład: `1.0.1`
--  Zmiany modelu rozliczeń/licencji na istniejące jednostki SKU
+-  Tagi wersji, na przykład:`1.0.1`
+-  Zmiany modelu rozliczeń/licencji na istniejących jednostkach SKU
 
 ## <a name="common-update-operations"></a>Typowe operacje aktualizacji
 
 Następujące operacje aktualizacji są wspólne.
 
-### <a name="update-the-iot-edge-module-image-version-for-a-sku"></a>Aktualizowanie wersji obrazu modułu IoT Edge dla jednostki SKU
+### <a name="update-the-iot-edge-module-image-version-for-a-sku"></a>Aktualizowanie wersji obrazu modułu usługi IoT Edge dla jednostki SKU
 
-Typowym sposobem aktualizowania obrazu modułu IoT Edge jest okresowe aktualizowanie poprawek zabezpieczeń, dodatkowych funkcji i tak dalej. W tym scenariuszu należy zaktualizować obraz modułu IoT Edge, do którego odwołuje się jednostka SKU, wykonując następujące czynności:
+Często jest to, że obraz modułu usługi IoT Edge jest okresowo aktualizowany za pomocą poprawek zabezpieczeń, dodatkowych funkcji i tak dalej. W tym scenariuszu chcesz zaktualizować obraz modułu usługi IoT Edge, do którego odwołuje się jednostka SKU, wykonując następujące kroki:
 
-1.  Zaloguj się do [Portal Cloud partner](https://cloudpartner.azure.com/).
+1.  Zaloguj się do [portalu cloud partner](https://cloudpartner.azure.com/).
 
-2.  W obszarze **wszystkie oferty**Znajdź ofertę, którą chcesz zaktualizować.
+2.  W obszarze **Wszystkie oferty**znajdź ofertę, którą chcesz zaktualizować.
 
-3.  Na karcie **jednostki SKU** wybierz jednostkę SKU skojarzoną z obrazem modułu IoT Edge, który ma zostać zaktualizowany.
+3.  Na karcie **Jednostki SKU** wybierz jednostkę SKU skojarzoną z obrazem modułu usługi IoT Edge do zaktualizowania.
 
-4.  W obszarze **obraz modułu krawędzi**wybierz pozycję **+ Nowa wersja obrazu** , aby dodać nowy obraz modułu IoT Edge.
+4.  W obszarze **Obraz modułu Brzeg**wybierz **+ Nowa wersja obrazu,** aby dodać nowy obraz modułu IoT Edge.
 
-5.  Podaj nowe **wersje obrazu**modułu IoT Edge. Wersja obrazu musi być zgodna z tymi samymi wskazówkami dotyczącymi tagów, co w poprzednich wersjach. Tagi wersji powinny mieć postać X. Y. Z, gdzie X, Y i Z są liczbami całkowitymi. Sprawdź, czy wprowadzona nowa wersja jest nowsza niż wszystkie poprzednie wersje.
+5.  Podaj nowe wersje **obrazów**modułu IoT Edge . Wersja obrazu musi być zgodna z tymi samymi wytycznymi dotyczącymi znaczników, co poprzednie wersje. Tagi wersji powinny mieć postać X.Y.Z, gdzie X, Y i Z są liczbami całkowitymi. Sprawdź, czy nowa wersja, którą podasz, jest większa niż wszystkie poprzednie wersje.
 
-6.  Wybierz pozycję **Opublikuj** , aby uruchomić przepływ pracy w celu opublikowania nowej wersji modułu IoT Edge w portalu Azure Marketplace.
+6.  Wybierz **pozycję Publikuj,** aby uruchomić przepływ pracy, aby opublikować nową wersję modułu usługi IoT Edge w portalu Azure Marketplace.
 
-### <a name="add-a-new-sku"></a>Dodaj nową jednostkę SKU
+### <a name="add-a-new-sku"></a>Dodawanie nowej jednostki SKU
 
-Wykonaj następujące kroki, aby udostępnić nową jednostkę SKU dla oferty: 
+Aby udostępnić nową jednostkę SKU dla swojej oferty, użyj następujących czynności: 
 
-1.  Zaloguj się do [Portal Cloud partner](https://cloudpartner.azure.com/).
+1.  Zaloguj się do [portalu cloud partner](https://cloudpartner.azure.com/).
 
-2.  W obszarze **wszystkie oferty**Znajdź ofertę, którą chcesz zaktualizować.
+2.  W obszarze **Wszystkie oferty**znajdź ofertę, którą chcesz zaktualizować.
 
-3.  Na karcie **jednostki SKU** wybierz pozycję **Dodaj nową jednostkę SKU** i podaj **Identyfikator jednostki SKU** w oknie podręcznym.
+3.  Na karcie **Jednostki SKU** wybierz pozycję **Dodaj nową jednostkę SKU** i podaj identyfikator **jednostki SKU** w wyskakującym oknie.
 
-4.  Opublikuj ponownie moduł IoT Edge, wykonując kroki opisane w sekcji [Publikowanie modułu IoT Edge w witrynie Azure Marketplace](./cpp-publish-offer.md).
+4.  Ponownie opublikuj moduł usługi IoT Edge, wykonując czynności opisane w [obszarze Publikowanie modułu usługi IoT Edge w portalu Azure Marketplace.](./cpp-publish-offer.md)
 
-5.  Wybierz pozycję **Publikuj** , aby uruchomić przepływ pracy w celu opublikowania nowej jednostki SKU.
+5.  Wybierz **pozycję Publikuj,** aby uruchomić przepływ pracy, aby opublikować nową jednostkę SKU.
 
 
-### <a name="update-offer-marketplace-metadata"></a>Aktualizowanie metadanych witryny Marketplace z ofertą
+### <a name="update-offer-marketplace-metadata"></a>Aktualizowanie metadanych portalu marketplace ofert
 
-Wykonaj następujące kroki, aby zaktualizować metadane portalu Marketplace skojarzone z ofertą. (Na przykład: Nazwa firmy, logo itp.)
+Aby zaktualizować metadane portalu marketplace skojarzone z ofertą, należy wykonać następujące czynności. (Na przykład: nazwa firmy, logo itp.)
 
-1.  Zaloguj się do [Portal Cloud partner](https://cloudpartner.azure.com/).
+1.  Zaloguj się do [portalu cloud partner](https://cloudpartner.azure.com/).
 
-2.  W obszarze **wszystkie oferty**Znajdź ofertę, którą chcesz zaktualizować.
+2.  W obszarze **Wszystkie oferty**znajdziesz ofertę, którą chcesz zaktualizować.
 
-3.  Przejdź do karty **Marketplace** . Skorzystaj z instrukcji przedstawionych w artykule [Publikowanie modułu IoT Edge w portalu Azure Marketplace](./cpp-publish-offer.md) , aby wprowadzić zmiany w metadanych.
+3.  Przejdź do karty **Marketplace.** Użyj instrukcji w [artykule Publikowania modułu usługi IoT Edge](./cpp-publish-offer.md) w portalu Azure Marketplace, aby wprowadzić zmiany metadanych.
 
-4.  Wybierz pozycję **Publikuj** , aby uruchomić przepływ pracy w celu opublikowania zmian.
+4.  Wybierz **pozycję Publikuj,** aby uruchomić przepływ pracy, aby opublikować zmiany.
 
 ## <a name="compare-feature"></a>Porównaj funkcję
 
-Po wprowadzeniu zmian w opublikowanej ofercie można użyć funkcji **porównania** , aby przeprowadzić inspekcję wprowadzonych zmian. 
+Po wprowadzeniu zmian w opublikowanej ofercie można użyć funkcji **Porównaj** do inspekcji wprowadzonych zmian. 
 
-**Aby użyć funkcji porównania:**
+**Aby użyć funkcji Porównaj:**
 
-1.  W dowolnym momencie procesu edycji wybierz pozycję **PORÓWNAJ** z ofertą.
+1.  W dowolnym momencie procesu edycji wybierz **pozycję Porównaj** dla swojej oferty.
 
-    ![Przycisk porównania funkcji](./media/iot-edge-module-compare.png)
-
-
-2.  Zobacz obok siebie wersje zasobów i metadanych marketingowych.
+    ![Przycisk Porównaj funkcję](./media/iot-edge-module-compare.png)
 
 
-## <a name="history-of-publishing-actions"></a>Historia akcji publikowania
+2.  Przyjrzyj się wersjom zasobów marketingowych i metadanych obok siebie.
 
-Aby wyświetlić historyczne działanie publikowania, wybierz kartę **historia** na pasku menu nawigacji po lewej stronie Portal Cloud partner. Możesz zobaczyć działania z sygnaturami czasowymi podejmowane w okresie istnienia ofert portalu Azure Marketplace.  <!-- Need to find correct link here:  legal time windowsFor more information, see [History page](cpp-history-page.md) -->
+
+## <a name="history-of-publishing-actions"></a>Historia akcji wydawniczych
+
+Aby wyświetlić historyczne działania publikowania, wybierz kartę **Historia** na pasku menu nawigacji po lewej stronie portalu Cloud Partner Portal. Możesz zobaczyć akcje sygnatury czasowej podjęte w okresie istnienia oferty portalu Azure Marketplace.  <!-- Need to find correct link here:  legal time windowsFor more information, see [History page](cpp-history-page.md) -->

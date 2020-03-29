@@ -1,6 +1,6 @@
 ---
 title: pozyskiwanie danych z platformy Kafka do usługi Azure Data Explorer
-description: W tym artykule dowiesz się, jak w celu pozyskiwania danych (załaduj) do Eksploratora danych platformy Azure z platformy Kafka.
+description: W tym artykule dowiesz się, jak pozyskiwania (ładowania) danych do usługi Azure Data Explorer z platformy Kafka.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 03b46ff50683149a22c71ccb155480a0f08455bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66497284"
 ---
 # <a name="ingest-data-from-kafka-into-azure-data-explorer"></a>pozyskiwanie danych z platformy Kafka do usługi Azure Data Explorer
@@ -20,13 +20,13 @@ Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na 
  
 ## <a name="prerequisites"></a>Wymagania wstępne
  
-* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/). 
+* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/) przed rozpoczęciem. 
  
-* [Klaster testowy i bazy danych](create-cluster-database-portal.md).
+* [Klaster testowy i baza danych](create-cluster-database-portal.md).
  
-* [Przykładową aplikację](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/kafka) która generuje dane i wysyła je do platformy Kafka.
+* [Przykładowa aplikacja,](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/kafka) która generuje dane i wysyła je do platformy Kafka.
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) uruchamianie przykładowej aplikacji.
+* [Visual Studio 2019,](https://visualstudio.microsoft.com/vs/) aby uruchomić przykładową aplikację.
  
 ## <a name="kafka-connector-setup"></a>Konfigurowanie łącznika platformy Kafka
 
@@ -57,7 +57,7 @@ W katalogu głównym *kafka-sink-azure-kusto* uruchom następujące polecenie:
 mvn clean compile assembly:single
 ```
 
-### <a name="deploy"></a>Wdrażanie 
+### <a name="deploy"></a>Wdrożenie 
 
 Załaduj wtyczkę do platformy Kafka. Przykład wdrożenia za pomocą platformy Docker można znaleźć pod adresem [kafka-sink-azure-kusto](https://github.com/Azure/kafka-sink-azure-kusto#deploy)
  
@@ -121,7 +121,7 @@ git clone git://github.com:Azure/azure-kusto-samples-dotnet.git
 cd ./azure-kusto-samples-dotnet/kafka/
 ```
 
-### <a name="run-the-app"></a>Uruchamianie aplikacji
+### <a name="run-the-app"></a>Uruchomienie aplikacji
 
 1. Otwórz przykładowe rozwiązanie aplikacji w programie Visual Studio.
 
@@ -160,6 +160,6 @@ cd ./azure-kusto-samples-dotnet/kafka/
  
     ![Zestaw wyników komunikatów](media/ingest-data-event-hub/message-result-set.png)
  
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
  
-* [Wykonywanie zapytań dotyczących danych w Eksploratorze danych platformy Azure](web-query-data.md)
+* [wykonywanie zapytań o dane w usłudze Azure Data Explorer](web-query-data.md)

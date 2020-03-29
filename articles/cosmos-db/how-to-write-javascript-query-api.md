@@ -1,5 +1,5 @@
 ---
-title: Zapisz procedury składowane i wyzwalacze przy użyciu interfejsu API zapytań języka JavaScript w Azure Cosmos DB
+title: Pisanie procedur przechowywanych i wyzwalaczy przy użyciu interfejsu API kwerendy JavaScript w usłudze Azure Cosmos DB
 description: Dowiedz się, jak pisać procedury składowane i wyzwalacze przy użyciu interfejsu API zapytań języka JavaScript w usłudze Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
@@ -7,19 +7,19 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: mjbrown
 ms.openlocfilehash: 221a3118808a044ef1b1b822b9c95772bf792f34
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75441708"
 ---
 # <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>Jak pisać procedury składowane i wyzwalacze przy użyciu interfejsu API zapytań języka JavaScript w usłudze Azure Cosmos DB
 
 Usługa Azure Cosmos DB umożliwia wykonywanie zapytań zoptymalizowanych przy użyciu płynnego interfejsu języka JavaScript bez konieczności znajomości języka SQL, co może służyć do pisania procedur składowanych i wyzwalaczy. Aby dowiedzieć się więcej na temat obsługi interfejsu API zapytań języka JavaScript w usłudze Azure Cosmos DB, zobacz artykuł [Praca ze zintegrowanym interfejsem API zapytań języka JavaScript w usłudze Azure Cosmos DB](javascript-query-api.md).
 
-## <a id="stored-procedures"></a>Procedura składowana używająca interfejsu API zapytań języka JavaScript
+## <a name="stored-procedure-using-the-javascript-query-api"></a><a id="stored-procedures"></a>Procedura składowana używająca interfejsu API zapytań języka JavaScript
 
-Poniższy przykładowy kod pokazuje użycie interfejsu API zapytań języka JavaScript w kontekście procedury składowanej. Procedura składowana wstawia element Cosmos platformy Azure, który jest określany przez parametr wejściowy, i aktualizuje dokument metadanych przy użyciu metody `__.filter()`, z minSize, parametrem totalSize oraz właściwością size elementu wejściowego.
+Poniższy przykładowy kod pokazuje użycie interfejsu API zapytań języka JavaScript w kontekście procedury składowanej. Procedura składowana wstawia element usługi Azure Cosmos, który jest określony przez `__.filter()` parametr wejściowy i aktualizuje dokument metadanych przy użyciu metody, z minSize, maxSize i totalSize na podstawie właściwości rozmiaru elementu wejściowego.
 
 > [!NOTE]
 > `__` (podwójne podkreślenie) jest aliasem funkcji `getContext().getCollection()` podczas korzystania z interfejsu API zapytań języka JavaScript.

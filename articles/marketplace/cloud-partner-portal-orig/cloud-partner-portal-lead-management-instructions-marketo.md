@@ -1,53 +1,52 @@
 ---
-title: Konfigurowanie zarządzania liderem w programie Marketo | Portal Azure Marketplace
-description: Skonfiguruj zarządzanie potencjalnymi klientami dla programu Marketo dla klientów portalu Azure Marketplace.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+title: Konfigurowanie zarządzania potencjalnymi klientami w Marketo | Azure Marketplace
+description: Skonfiguruj zarządzanie potencjalnymi klientami dla marketo dla platformy Azure.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: pabutler
-ms.openlocfilehash: 7949507c8c7ef57cded25cde8579c1945aa93a81
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 9fa05eae2d297cbd6ae7243d191cae5a7a3f990e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825213"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288533"
 ---
-# <a name="configure-lead-management-in-marketo"></a>Konfigurowanie zarządzania potencjalnymi klientami w programie Marketo
+# <a name="configure-lead-management-in-marketo"></a>Konfigurowanie zarządzania potencjalnymi klientami w Marketo
 
-W tym artykule opisano sposób konfigurowania programu Marketo do obsługi potencjalnych klientów sprzedaży firmy Microsoft.
+W tym artykule opisano sposób konfigurowania marketo do obsługi potencjalnych klientów firmy Microsoft.
 
-1. Zaloguj się do programu Marketo.
-2. Wybierz pozycję **projekt Studio**.
-    ![projekt Market](./media/cloud-partner-portal-lead-management-instructions-marketo/marketo1.png)
+1. Zaloguj się do Marketo.
+2. Wybierz **Design Studio**.
+    ![Studio Projektowe Marketo](./media/cloud-partner-portal-lead-management-instructions-marketo/marketo1.png)
 
-3.  Wybierz pozycję **nowy formularz**.
-    nowy formularz ![Market](./media/cloud-partner-portal-lead-management-instructions-marketo/marketo2.png)
+3.  Wybierz **pozycję Nowy formularz**.
+    ![Marketo nowa forma](./media/cloud-partner-portal-lead-management-instructions-marketo/marketo2.png)
 
 4.  Wypełnij wymagane pola w nowym formularzu, a następnie wybierz pozycję **Utwórz**.
-    ![Marketo Utwórz nowy formularz](./media/cloud-partner-portal-lead-management-instructions-marketo/marketo3.png)
+    ![Marketo tworzenie nowego formularza](./media/cloud-partner-portal-lead-management-instructions-marketo/marketo3.png)
 
-4.  W polu Szczegóły pola wybierz pozycję **Zakończ**.
-    formularz zakończenia ![Marketa](./media/cloud-partner-portal-lead-management-instructions-marketo/marketo4.png)
+4.  W obszarze Szczegóły pola wybierz pozycję **Zakończ**.
+    ![Formularz wykończenia Marketo](./media/cloud-partner-portal-lead-management-instructions-marketo/marketo4.png)
 
-5.  Zatwierdź i Zamknij.
+5.  Zatwierdź i zamknij.
 
 6.  Na karcie MarketplaceLeadBacked wybierz pozycję **Osadź kod**.
-    ![opcji kodu osadzania programu Marketo](./media/cloud-partner-portal-lead-management-instructions-marketo/marketo5.png)
+    ![Opcja kodu osadzania Marketo](./media/cloud-partner-portal-lead-management-instructions-marketo/marketo5.png)
 
-7.  Kod osadzania programu Marketo wyświetla kod podobny do poniższego przykładu.
+7.  Marketo Embed Code wyświetla kod podobny do poniższego przykładu.
 
 `<script src="//app-ys12.marketo.com/js/forms2/js/forms2.min.js"></script>`
 
     <form id="mktoForm_1179"></form>
-    <script>MktoForms2.loadForm("("//app-ys12.marketo.com", "123-PQR-789", 1179);</script>
+    <script>MktoForms2.loadForm("//app-ys12.marketo.com", "123-PQR-789", 1179);</script>
 
-1. Skopiuj wartości wyświetlane w polu osadź kod, aby skonfigurować **Identyfikator serwera**, **Identyfikator Munchkin**i **Identyfikator formularza** w polach Marketo na portal Cloud partner.
+1. Skopiuj wartości wyświetlane w polu Kod osadzania, aby skonfigurować **identyfikator serwera**, **identyfikator Munchkin**i **identyfikator formularza** w polach Marketo w portalu Cloud Partner Portal.
 
-W następnym przykładzie przedstawiono Przewodnik dotyczący uzyskiwania wymaganych identyfikatorów z przykładu kodu osadzania programu Marketo.
+Użyj następnego przykładu jako przewodnika do uzyskiwania identyfikatorów, których potrzebujesz w przykładzie Marketo Embed Code.
 
 - Identyfikator serwera = **ys12**
-- Identyfikator Munchkin = **123-PQR-789**
-- Identyfikator formularza = **1179**\
+- Munchkin Id = **123-PQR-789**
+- Identyfikator formularza = **1179**

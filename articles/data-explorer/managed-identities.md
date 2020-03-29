@@ -1,41 +1,76 @@
 ---
-title: Jak skonfigurować tożsamości zarządzane dla klastra usługi Azure Eksplorator danych
-description: Dowiedz się, jak skonfigurować tożsamości zarządzane dla klastra Eksplorator danych platformy Azure.
+title: Jak skonfigurować tożsamości zarządzane dla klastra usługi Azure Data Explorer
+description: Dowiedz się, jak skonfigurować tożsamości zarządzane dla klastra usługi Azure Data Explorer.
 author: saguiitay
 ms.author: itsagui
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: e76ae2e072bb780ac9788902e9157db871e4f09d
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.date: 03/12/2020
+ms.openlocfilehash: f9592f5d2666684e0cf5eef687b1e69cfb55066c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77373374"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80065564"
 ---
-# <a name="configure-managed-identities-for-your-azure-data-explorer-cluster"></a>Konfigurowanie tożsamości zarządzanych dla klastra usługi Azure Eksplorator danych
+# <a name="configure-managed-identities-for-your-azure-data-explorer-cluster"></a>Konfigurowanie tożsamości zarządzanych dla klastra usługi Azure Data Explorer
 
-[Zarządzana tożsamość z Azure Active Directory](/azure/active-directory/managed-identities-azure-resources/overview) umożliwia klastrowi łatwe uzyskiwanie dostępu do innych zasobów chronionych przez usługi AAD, takich jak Azure Key Vault. Tożsamość jest zarządzana przez platformę Azure i nie wymaga aprowizacji ani rotacji żadnych wpisów tajnych. W tym artykule pokazano, jak utworzyć zarządzaną tożsamość dla klastrów Eksplorator danych platformy Azure. Konfiguracja tożsamości zarządzanej jest obecnie obsługiwana tylko w celu [włączenia kluczy zarządzanych przez klienta w klastrze](/azure/data-explorer/security#customer-managed-keys-with-azure-key-vault).
+[Tożsamość zarządzana z usługi Azure Active Directory](/azure/active-directory/managed-identities-azure-resources/overview) umożliwia klastrowi łatwy dostęp do innych zasobów chronionych przez usługę AAD, takich jak usługa Azure Key Vault. Tożsamość jest zarządzana przez platformę Azure i nie wymaga aprowidizacji ani obracania żadnych wpisów tajnych. W tym artykule pokazano, jak utworzyć tożsamość zarządzaną dla klastrów usługi Azure Data Explorer. Konfiguracja tożsamości zarządzanej jest obecnie obsługiwana tylko w celu [włączenia kluczy zarządzanych przez klienta dla klastra](/azure/data-explorer/security#customer-managed-keys-with-azure-key-vault).
 
 > [!Note]
-> Tożsamość zarządzana dla usługi Azure Eksplorator danych nie będzie działać zgodnie z oczekiwaniami, jeśli Twoja aplikacja jest migrowana między subskrypcjami lub dzierżawcami. Aplikacja będzie musiała uzyskać nową tożsamość, którą można wykonać, wyłączając i ponownie włączając funkcję przy użyciu polecenia [Usuń tożsamość](#remove-an-identity). Zasady dostępu do zasobów podrzędnych również muszą zostać zaktualizowane, aby można było korzystać z nowej tożsamości.
+> Tożsamości zarządzane dla Usługi Azure Data Explorer nie będą zachowywać się zgodnie z oczekiwaniami, jeśli aplikacja jest migrowana między subskrypcjami lub dzierżawami. Aplikacja będzie musiała uzyskać nową tożsamość, co można zrobić, [wyłączając](#remove-a-system-assigned-identity) i [ponownie włączając](#add-a-system-assigned-identity) tę funkcję. Aby użyć nowej tożsamości, konieczne będzie również zaktualizowanie zasad dostępu do zasobów niższego szczebla.
 
 ## <a name="add-a-system-assigned-identity"></a>Dodawanie tożsamości przypisanej do systemu
+                                                                                                    
+Przypisz tożsamość przypisaną systemowi, która jest powiązana z klastrem i jest usuwana, jeśli klaster zostanie usunięty. Klaster może mieć tylko jedną tożsamość przypisaną do systemu. Tworzenie klastra z tożsamością przypisaną do systemu wymaga ustawienia dodatkowej właściwości w klastrze. Tożsamość przypisana do systemu jest dodawana przy użyciu szablonów Języka C#, ARM lub witryny Azure portal, jak opisano poniżej.
 
-Do klastra można przypisać **tożsamość przypisaną do systemu** , która jest powiązana z klastrem, i jest usuwana, Jeśli klaster został usunięty. Klaster może mieć tylko jedną tożsamość przypisaną do systemu. Utworzenie klastra z tożsamością przypisaną do systemu wymaga ustawienia dodatkowej właściwości w klastrze.
+# <a name="azure-portal"></a>[Portal Azure](#tab/portal)
 
-### <a name="add-a-system-assigned-identity-using-c"></a>Dodawanie tożsamości przypisanej do systemu przy użyciuC#
+### <a name="add-a-system-assigned-identity-using-the-azure-portal"></a>Dodawanie tożsamości przypisanej do systemu przy użyciu portalu Azure
 
-Aby skonfigurować tożsamość zarządzaną za pomocą klienta Eksplorator danych C# platformy Azure, wykonaj następujące czynności:
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 
-* Zainstaluj [pakiet NuGet platformy Azure Eksplorator danych (Kusto)](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
-* Zainstaluj [pakiet NuGet Microsoft. IdentityModel. clients. ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) na potrzeby uwierzytelniania.
-* Aby uruchomić Poniższy przykład, [Utwórz aplikację usługi Azure AD](/azure/active-directory/develop/howto-create-service-principal-portal) i nazwę główną usługi, która może uzyskiwać dostęp do zasobów. Możesz dodać przypisanie roli do zakresu subskrypcji i uzyskać wymagane `Directory (tenant) ID`, `Application ID`i `Client Secret`.
+#### <a name="new-azure-data-explorer-cluster"></a>Nowy klaster Eksploratora danych platformy Azure
 
-#### <a name="create-or-update-your-cluster"></a>Utwórz lub zaktualizuj klaster
+1. [Tworzenie klastra eksploratora danych platformy Azure](/azure/data-explorer/create-cluster-database-portal#create-a-cluster) 
+1. Na karcie **Zabezpieczenia** > **system przypisany tożsamość**, wybierz **wł**. Aby usunąć przypisaną tożsamość systemu, wybierz opcję **Wył.**
+2. Wybierz **przycisk Dalej:Znaczniki>** lub **Przejrzyj + utwórz,** aby utworzyć klaster.
 
-1. Utwórz lub zaktualizuj klaster przy użyciu właściwości `Identity`:
+    ![Dodawanie tożsamości przypisanej do systemu do nowego klastra](media/managed-identities/system-assigned-identity-new-cluster.png)
+
+#### <a name="existing-azure-data-explorer-cluster"></a>Istniejący klaster Eksploratora danych platformy Azure
+
+1. Otwórz istniejący klaster usługi Azure Data Explorer.
+1. Wybierz **pozycję Ustawienia** > **tożsamości** w lewym okienku portalu.
+1. Na karcie Przypisany > **okienku** **tożsamości:**
+   1. Przesuń suwak **Stan** do **wł.**
+   1. Wybierz pozycję **Zapisz**.
+   1. W wyskakującym oknie wybierz pozycję **Tak**
+
+    ![Dodawanie tożsamości przypisanej do systemu](media/managed-identities/turn-system-assigned-identity-on.png)
+
+1. Po kilku minutach na ekranie pojawi się: 
+  * **Identyfikator obiektu** — używany dla kluczy zarządzanych przez klienta 
+  * **Przypisania ról** — kliknij łącze, aby przypisać odpowiednie role
+
+    ![Tożsamość przypisaną przez system na](media/managed-identities/system-assigned-identity-on.png)
+
+# <a name="c"></a>[C #](#tab/c-sharp)
+
+### <a name="add-a-system-assigned-identity-using-c"></a>Dodawanie tożsamości przypisanej do systemu przy użyciu języka C #
+
+#### <a name="prerequisites"></a>Wymagania wstępne
+
+Aby skonfigurować tożsamość zarządzaną przy użyciu klienta Usługi Azure Data Explorer C#:
+
+* Zainstaluj [pakiet Azure Data Explorer (Kusto) NuGet](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
+* Zainstaluj [pakiet Microsoft.IdentityModel.Clients.ActiveDirectory NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) do uwierzytelniania.
+* [Utwórz jednostkę aplikacji](/azure/active-directory/develop/howto-create-service-principal-portal) i usługi Azure AD, która może uzyskiwać dostęp do zasobów. Dodaj przypisanie roli w zakresie subskrypcji `Directory (tenant) ID`i `Application ID`otrzymujesz wymagane , i `Client Secret`.
+
+#### <a name="create-or-update-your-cluster"></a>Tworzenie lub aktualizowanie klastra
+
+1. Utwórz lub zaktualizuj klaster przy `Identity` użyciu właściwości:
 
     ```csharp
     var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -52,7 +87,7 @@ Aby skonfigurować tożsamość zarządzaną za pomocą klienta Eksplorator dany
     {
         SubscriptionId = subscriptionId
     };
-    
+                                                                                                    
     var resourceGroupName = "testrg";
     var clusterName = "mykustocluster";
     var location = "Central US";
@@ -65,26 +100,28 @@ Aby skonfigurować tożsamość zarządzaną za pomocą klienta Eksplorator dany
     await kustoManagementClient.Clusters.CreateOrUpdateAsync(resourceGroupName, clusterName, cluster);
     ```
     
-2. Uruchom następujące polecenie, aby sprawdzić, czy klaster został pomyślnie utworzony lub zaktualizowany przy użyciu tożsamości:
+2. Uruchom następujące polecenie, aby sprawdzić, czy klaster został pomyślnie utworzony lub zaktualizowany przy łączeniu tożsamości:
 
     ```csharp
     kustoManagementClient.Clusters.Get(resourceGroupName, clusterName);
     ```
 
-    Jeśli wynik zawiera `ProvisioningState` z wartością `Succeeded`, klaster został utworzony lub zaktualizowany i powinien mieć następujące właściwości:
-   
+    Jeśli wynik `ProvisioningState` zawiera `Succeeded` wartość, klaster został utworzony lub zaktualizowany i powinien mieć następujące właściwości:
+
     ```csharp
     var principalId = cluster.Identity.PrincipalId;
     var tenantId = cluster.Identity.TenantId;
     ```
 
-    `PrincipalId` i `TenantId` są zastępowane identyfikatorami GUID. Właściwość `TenantId` identyfikuje dzierżawcę usługi AAD, do której należy tożsamość. `PrincipalId` jest unikatowym identyfikatorem nowej tożsamości klastra. W usłudze AAD nazwa główna usługi ma taką samą nazwę, która została nadana App Service lub Azure Functions wystąpieniem.
+`PrincipalId`i `TenantId` są zastępowane identyfikatorami GUID. Właściwość `TenantId` identyfikuje dzierżawy usługi AAD, do której należy tożsamość. Jest `PrincipalId` unikatowy identyfikator dla nowej tożsamości klastra. W ramach usługi AAD podmiotu zabezpieczeń usługi ma taką samą nazwę, która została nadana do usługi app service lub wystąpienia usługi Azure Functions.
 
-### <a name="add-a-system-assigned-identity-using-an-azure-resource-manager-template"></a>Dodawanie tożsamości przypisanej do systemu przy użyciu szablonu Azure Resource Manager
+# <a name="arm-template"></a>[Szablon ARM](#tab/arm)
 
-Szablon Azure Resource Manager może służyć do automatyzowania wdrażania zasobów platformy Azure. Aby dowiedzieć się więcej o wdrażaniu do usługi Azure Eksplorator danych, zobacz [Tworzenie klastra Eksplorator danych platformy Azure i bazy danych przy użyciu szablonu Azure Resource Manager](create-cluster-database-resource-manager.md).
+### <a name="add-a-system-assigned-identity-using-an-azure-resource-manager-template"></a>Dodawanie tożsamości przypisanej do systemu przy użyciu szablonu usługi Azure Resource Manager
 
-Dodanie typu przypisanego do systemu informuje platformę Azure, aby utworzył tożsamość klastra i zarządzać nią. Każdy zasób typu `Microsoft.Kusto/clusters` można utworzyć za pomocą tożsamości, dołączając następującą właściwość w definicji zasobu: 
+Szablon usługi Azure Resource Manager może służyć do automatyzacji wdrażania zasobów platformy Azure. Aby dowiedzieć się więcej na temat wdrażania w Eksploratorze danych platformy Azure, zobacz [Tworzenie klastra i bazy danych Usługi Azure Data Explorer przy użyciu szablonu Usługi Azure Resource Manager](create-cluster-database-resource-manager.md).
+
+Dodanie typu przypisanego do systemu nakazuje platformie Azure tworzenie tożsamości klastra i zarządzanie nią. Każdy zasób typu `Microsoft.Kusto/clusters` można utworzyć za pomocą tożsamości, dołączając następującą właściwość do definicji zasobu: 
 
 ```json
 "identity": {
@@ -92,7 +129,7 @@ Dodanie typu przypisanego do systemu informuje platformę Azure, aby utworzył t
 }    
 ```
 
-Na przykład:
+Przykład:
 
 ```json
 {
@@ -113,7 +150,7 @@ Na przykład:
 }
 ```
 
-Po utworzeniu klastra ma następujące dodatkowe właściwości:
+Po utworzeniu klastra ma następujące właściwości dodatkowe:
 
 ```json
 "identity": {
@@ -123,11 +160,44 @@ Po utworzeniu klastra ma następujące dodatkowe właściwości:
 }
 ```
 
-`<TENANTID>` i `<PRINCIPALID>` są zastępowane identyfikatorami GUID. Właściwość `TenantId` identyfikuje dzierżawcę usługi AAD, do której należy tożsamość. `PrincipalId` jest unikatowym identyfikatorem nowej tożsamości klastra. W usłudze AAD nazwa główna usługi ma taką samą nazwę, która została nadana App Service lub Azure Functions wystąpieniem.
+`<TENANTID>`i `<PRINCIPALID>` są zastępowane identyfikatorami GUID. Właściwość `TenantId` identyfikuje dzierżawy usługi AAD, do której należy tożsamość. Jest `PrincipalId` unikatowy identyfikator dla nowej tożsamości klastra. W ramach usługi AAD podmiotu zabezpieczeń usługi ma taką samą nazwę, która została nadana do usługi app service lub wystąpienia usługi Azure Functions.
 
-## <a name="remove-an-identity"></a>Usuwanie tożsamości
+---
 
-Usunięcie tożsamości przypisanej do systemu spowoduje również usunięcie jej z usługi AAD. Tożsamości przypisane do systemu są również automatycznie usuwane z usługi AAD po usunięciu zasobu klastra. Tożsamość przypisana przez system można usunąć, wyłączając funkcję:
+## <a name="remove-a-system-assigned-identity"></a>Usuwanie tożsamości przypisanej przez system
+
+Usunięcie tożsamości przypisanej przez system spowoduje również usunięcie jej z usługi AAD. Tożsamości przypisane do systemu są również automatycznie usuwane z usługi AAD po usunięciu zasobu klastra. Tożsamość przypisaną do systemu można usunąć, wyłączając tę funkcję.  Tożsamość przypisana do systemu jest usuwana przy użyciu szablonów języka C#, ARM lub witryny Azure portal, jak opisano poniżej.
+
+# <a name="azure-portal"></a>[Portal Azure](#tab/portal)
+
+### <a name="remove-a-system-assigned-identity-using-the-azure-portal"></a>Usuwanie tożsamości przypisanej przez system przy użyciu witryny Azure portal
+
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
+1. Wybierz **pozycję Ustawienia** > **tożsamości** w lewym okienku portalu.
+1. Na karcie Przypisany > **okienku** **tożsamości:**
+    1. Przesuń suwak **Stan** do **wyłączonego**.
+    1. Wybierz pozycję **Zapisz**.
+    1. W wyskakującym oknie wybierz pozycję **Tak,** aby wyłączyć tożsamość przypisaną do systemu. **Okienko Tożsamości** powraca do tego samego warunku, co przed dodaniem tożsamości przypisanej przez system.
+
+    ![Tożsamość przypisana do systemu wyłączona](media/managed-identities/system-assigned-identity.png)
+
+# <a name="c"></a>[C #](#tab/c-sharp)
+
+### <a name="remove-a-system-assigned-identity-using-c"></a>Usuwanie tożsamości przypisanej przez system przy użyciu języka C #
+
+Uruchom następujące czynności, aby usunąć tożsamość przypisaną do systemu:
+
+```csharp
+var identity = new Identity(IdentityType.None);
+var cluster = new Cluster(location, sku, identity: identity);
+await kustoManagementClient.Clusters.CreateOrUpdateAsync(resourceGroupName, clusterName, cluster);
+```
+
+# <a name="arm-template"></a>[Szablon ARM](#tab/arm)
+
+### <a name="remove-a-system-assigned-identity-using-an-azure-resource-manager-template"></a>Usuwanie tożsamości przypisanej przez system przy użyciu szablonu usługi Azure Resource Manager
+
+Uruchom następujące czynności, aby usunąć tożsamość przypisaną do systemu:
 
 ```json
 "identity": {
@@ -135,9 +205,11 @@ Usunięcie tożsamości przypisanej do systemu spowoduje również usunięcie je
 }
 ```
 
+---
+
 ## <a name="next-steps"></a>Następne kroki
 
-* [Zabezpieczanie klastrów usługi Azure Eksplorator danych na platformie Azure](security.md)
-* [Zabezpiecz swój klaster na platformie Azure Eksplorator danych — Azure Portal](manage-cluster-security.md) przez włączenie szyfrowania w stanie spoczynku.
- * [Konfigurowanie kluczy zarządzanych przez klienta przy użyciuC#](customer-managed-keys-csharp.md)
- * [Konfigurowanie kluczy zarządzanych przez klienta przy użyciu szablonu Azure Resource Manager](customer-managed-keys-resource-manager.md)
+* [Zabezpieczanie klastrów eksploratora danych platformy Azure na platformie Azure](security.md)
+* [Zabezpiecz swój klaster w usłudze Azure Data Explorer — witryna Azure portal,](manage-cluster-security.md) włączając szyfrowanie w spoczynku.
+ * [Konfigurowanie kluczy zarządzanych przez klienta przy użyciu języka C #](customer-managed-keys-csharp.md)
+ * [Konfigurowanie kluczy zarządzanych przez klienta przy użyciu szablonu usługi Azure Resource Manager](customer-managed-keys-resource-manager.md)

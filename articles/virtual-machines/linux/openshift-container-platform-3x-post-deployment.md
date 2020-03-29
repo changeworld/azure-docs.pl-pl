@@ -1,6 +1,6 @@
 ---
-title: OpenShift kontenerów platformy 3,11 w zadaniach po wdrożeniu platformy Azure
-description: Dodatkowe zadania dla programu po wdrożeniu klastra OpenShift Container platform 3,11.
+title: Platforma kontenerów OpenShift 3.11 w zadaniach po wdrożeniu platformy Azure
+description: Dodatkowe zadania po wdrożeniu klastra platformy kontenerowej OpenShift 3.11.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
@@ -14,43 +14,43 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: d3008e2e2d720b67fcf0846c27d2fed1ef7db307
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1635589b282dc33f6a1e9c2552dc8a73c67b9004
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035505"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294741"
 ---
 # <a name="post-deployment-tasks"></a>Zadania po wdrożeniu
 
-Po wdrożeniu klastra OpenShift można skonfigurować dodatkowe elementy. W tym artykule omówiono:
+Po wdrożeniu klastra OpenShift można skonfigurować dodatkowe elementy. Ten artykuł obejmuje:
 
-- Jak skonfigurować Logowanie jednokrotne przy użyciu Azure Active Directory (Azure AD)
-- Jak skonfigurować dzienniki Azure Monitor na potrzeby monitorowania OpenShift
-- Jak skonfigurować metryki i rejestrowanie
-- Jak zainstalować otwarte Service Broker dla platformy Azure (OSBA)
+- Jak skonfigurować logowanie jednokrotne przy użyciu usługi Azure Active Directory (Azure AD)
+- Jak skonfigurować dzienniki usługi Azure Monitor do monitorowania programu OpenShift
+- Jak skonfigurować dane i rejestrowanie
+- Jak zainstalować open service broker dla platformy Azure (OSBA)
 
-## <a name="configure-single-sign-on-by-using-azure-active-directory"></a>Konfigurowanie logowania jednokrotnego przy użyciu Azure Active Directory
+## <a name="configure-single-sign-on-by-using-azure-active-directory"></a>Konfigurowanie logowania jednokrotnego przy użyciu usługi Azure Active Directory
 
-Aby użyć Azure Active Directory na potrzeby uwierzytelniania, najpierw musisz utworzyć rejestrację aplikacji usługi Azure AD. Ten proces obejmuje dwa kroki: Tworzenie rejestracji aplikacji i Konfigurowanie uprawnień.
+Aby używać usługi Azure Active Directory do uwierzytelniania, najpierw należy utworzyć rejestrację aplikacji usługi Azure AD. Ten proces obejmuje dwa kroki: tworzenie rejestracji aplikacji i konfigurowanie uprawnień.
 
 ### <a name="create-an-app-registration"></a>Tworzenie rejestracji aplikacji
 
-Te kroki używają interfejsu wiersza polecenia platformy Azure w celu utworzenia rejestracji aplikacji oraz graficznego interfejsu użytkownika (portalu) w celu ustawienia uprawnień. Aby można było utworzyć rejestrację aplikacji, potrzebne są następujące pięć informacji:
+Te kroki używają interfejsu wiersza polecenia platformy Azure do utworzenia rejestracji aplikacji, a gui (portal) do ustawiania uprawnień. Aby utworzyć rejestrację aplikacji, potrzebujesz następujących pięciu informacji:
 
-- Nazwa wyświetlana: Nazwa rejestracji aplikacji (na przykład OCPAzureAD)
-- Strona główna: adres URL konsoli OpenShift (na przykład https://masterdns343khhde.westus.cloudapp.azure.com/console)
-- Identyfikator URI identyfikatora: adres URL konsoli OpenShift (na przykład https://masterdns343khhde.westus.cloudapp.azure.com/console)
-- Adres URL odpowiedzi: główny publiczny adres URL i nazwa rejestracji aplikacji (na przykład https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD)
-- Hasło: bezpieczne hasło (użyj silnego hasła)
+- Nazwa wyświetlana: nazwa rejestracji aplikacji (na przykład OCPAzureAD)
+- Strona główna: adres URL konsoli `https://masterdns343khhde.westus.cloudapp.azure.com/console`OpenShift (na przykład )
+- Identyfikator URI: adres URL konsoli OpenShift (na przykład `https://masterdns343khhde.westus.cloudapp.azure.com/console`)
+- Adres URL odpowiedzi: główny publiczny adres URL `https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD`i nazwa rejestracji aplikacji (na przykład )
+- Hasło: Bezpieczne hasło (użyj silnego hasła)
 
-Poniższy przykład umożliwia utworzenie rejestracji aplikacji przy użyciu podanych powyżej informacji:
+Poniższy przykład tworzy rejestrację aplikacji przy użyciu powyższych informacji:
 
 ```azurecli
 az ad app create --display-name OCPAzureAD --homepage https://masterdns343khhde.westus.cloudapp.azure.com/console --reply-urls https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/hwocpadint --identifier-uris https://masterdns343khhde.westus.cloudapp.azure.com/console --password {Strong Password}
 ```
 
-Jeśli polecenie zakończy się pomyślnie, otrzymasz dane wyjściowe JSON podobne do:
+Jeśli polecenie zakończy się pomyślnie, otrzymasz wyjście JSON podobne do:
 
 ```json
 {
@@ -70,39 +70,39 @@ Jeśli polecenie zakończy się pomyślnie, otrzymasz dane wyjściowe JSON podob
 }
 ```
 
-Zanotuj Właściwość appId zwracaną z polecenia w celu wykonania kolejnego kroku.
+Zanotuj appId właściwość zwrócona z polecenia dla późniejszego kroku.
 
 W witrynie Azure Portal:
 
-1. Wybierz pozycję **Azure Active Directory** > **rejestracji aplikacji**.
+1. Wybierz pozycję**Rejestracja aplikacji** **usługi Azure Active Directory** > .
 2. Wyszukaj rejestrację aplikacji (na przykład OCPAzureAD).
 3. W wynikach kliknij rejestrację aplikacji.
-4. W obszarze **Ustawienia**wybierz pozycję **wymagane uprawnienia**.
-5. W obszarze **wymagane uprawnienia**wybierz pozycję **Dodaj**.
+4. W obszarze **Ustawienia**wybierz pozycję **Wymagane uprawnienia**.
+5. W **obszarze Wymagane uprawnienia**wybierz pozycję **Dodaj**.
 
    ![Rejestracja aplikacji](media/openshift-post-deployment/app-registration.png)
 
-6. Kliknij pozycję krok 1. Wybierz pozycję Interfejs API, a następnie kliknij pozycję **Windows Azure Active Directory (Microsoft. Azure. ActiveDirectory)** . Kliknij pozycję **Wybierz** u dołu.
+6. Kliknij krok 1: Wybierz interfejs API, a następnie kliknij pozycję **Usługa Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory).** Kliknij **pozycję Wybierz** u dołu.
 
-   ![Interfejs API wybierania rejestracji aplikacji](media/openshift-post-deployment/app-registration-select-api.png)
+   ![Interfejs API wyboru rejestracji aplikacji](media/openshift-post-deployment/app-registration-select-api.png)
 
-7. W kroku 2: wybierz pozycję uprawnienia, wybierz pozycję **Zaloguj się i odczytaj profil użytkownika** w obszarze **delegowane uprawnienia**, a następnie kliknij pozycję **Wybierz**.
+7. W kroku 2: Wybierz pozycję Uprawnienia, wybierz pozycję **Zaloguj się i przeczytaj profil użytkownika w** obszarze Uprawnienia **delegowane**, a następnie kliknij przycisk **Wybierz**.
 
    ![Dostęp do rejestracji aplikacji](media/openshift-post-deployment/app-registration-access.png)
 
 8. Wybierz pozycję **Done** (Gotowe).
 
-### <a name="configure-openshift-for-azure-ad-authentication"></a>Konfigurowanie OpenShift na potrzeby uwierzytelniania w usłudze Azure AD
+### <a name="configure-openshift-for-azure-ad-authentication"></a>Konfigurowanie usługi OpenShift dla uwierzytelniania usługi Azure AD
 
-Aby skonfigurować OpenShift do korzystania z usługi Azure AD jako dostawcy uwierzytelniania, należy edytować plik/etc/Origin/Master/Master-config.YAML we wszystkich węzłach głównych.
+Aby skonfigurować funkcję OpenShift do używania usługi Azure AD jako dostawcy uwierzytelniania, plik /etc/origin/master-config.yaml musi być edytowany we wszystkich węzłach głównych.
 
-Znajdź identyfikator dzierżawy, korzystając z następującego polecenia interfejsu CLI:
+Znajdź identyfikator dzierżawy za pomocą następującego polecenia interfejsu wiersza polecenia:
 
 ```azurecli
 az account show
 ```
 
-W pliku YAML Znajdź następujące wiersze:
+W pliku yaml znajdź następujące wiersze:
 
 ```yaml
 oauthConfig:
@@ -120,7 +120,7 @@ oauthConfig:
       kind: HTPasswdPasswordIdentityProvider
 ```
 
-Wstaw następujące wiersze bezpośrednio po powyższych wierszach:
+Wstawić następujące wiersze bezpośrednio po poprzednich wierszach:
 
 ```yaml
   - name: <App Registration Name>
@@ -146,37 +146,37 @@ Wstaw następujące wiersze bezpośrednio po powyższych wierszach:
         token: https://login.microsoftonline.com/<tenant Id>/oauth2/token
 ```
 
-Upewnij się, że tekst jest wyrównany prawidłowo w obszarze skojarzeni. Znajdź identyfikator dzierżawy, korzystając z następującego polecenia interfejsu CLI: ```az account show```
+Upewnij się, że tekst jest wyrównany poprawnie w obszarze identityProviders. Znajdź identyfikator dzierżawy za pomocą następującego polecenia interfejsu wiersza polecenia:```az account show```
 
-Uruchom ponownie usługi Master OpenShift na wszystkich węzłach głównych:
+Uruchom ponownie usługi główne OpenShift we wszystkich węzłach głównych:
 
 ```bash
 sudo /usr/local/bin/master-restart api
 sudo /usr/local/bin/master-restart controllers
 ```
 
-W konsoli OpenShift są teraz wyświetlane dwie opcje uwierzytelniania: htpasswd_auth i [Rejestracja aplikacji].
+W konsoli OpenShift są teraz widoczne dwie opcje uwierzytelniania: htpasswd_auth i [Rejestracja aplikacji].
 
-## <a name="monitor-openshift-with-azure-monitor-logs"></a>Monitoruj OpenShift z dziennikami Azure Monitor
+## <a name="monitor-openshift-with-azure-monitor-logs"></a>Monitoruj openshift za pomocą dzienników usługi Azure Monitor
 
-Istnieją trzy sposoby dodawania agenta Log Analytics do OpenShift.
-- Zainstaluj agenta Log Analytics dla systemu Linux bezpośrednio w każdym węźle OpenShift
-- Włącz Azure Monitor rozszerzenie maszyny wirtualnej w każdym węźle OpenShift
-- Instalowanie agenta Log Analytics jako zestawu demonów OpenShift
+Istnieją trzy sposoby dodawania agenta usługi Log Analytics do funkcji OpenShift.
+- Zainstaluj agenta usługi Log Analytics dla systemu Linux bezpośrednio w każdym węźle OpenShift
+- Włącz rozszerzenie maszyny wirtualnej usługi Azure Monitor w każdym węźle OpenShift
+- Instalowanie agenta usługi Log Analytics jako zestawu demonów OpenShift
 
-Zapoznaj się z pełnymi [instrukcjami](https://docs.microsoft.com/azure/log-analytics/log-analytics-containers#configure-a-log-analytics-agent-for-red-hat-openshift) , aby uzyskać więcej szczegółów.
+Przeczytaj pełne [instrukcje,](https://docs.microsoft.com/azure/log-analytics/log-analytics-containers#configure-a-log-analytics-agent-for-red-hat-openshift) aby uzyskać więcej informacji.
 
-## <a name="configure-metrics-and-logging"></a>Konfigurowanie metryk i rejestrowania
+## <a name="configure-metrics-and-logging"></a>Konfigurowanie danych i rejestrowania
 
-W oparciu o gałąź Azure Resource Manager szablony dla platformy kontenerów OpenShift i OKD mogą dostarczyć parametry wejściowe umożliwiające włączenie metryk i rejestrowania w ramach instalacji.
+Na podstawie gałęzi szablony usługi Azure Resource Manager dla platformy kontenerów OpenShift i OKD mogą dostarczać parametry wejściowe umożliwiające metryki i rejestrowanie w ramach instalacji.
 
-Oferta platformy kontenera OpenShift w portalu Marketplace udostępnia również opcję włączania metryk i rejestrowania podczas instalacji klastra.
+Oferta OpenShift Container Platform Marketplace zawiera również opcję włączania metryk i rejestrowania podczas instalacji klastra.
 
-Jeśli metryki/rejestrowanie nie zostały włączone podczas instalacji klastra, można je łatwo włączyć po tym fakcie.
+Jeśli metryki / rejestrowanie nie została włączona podczas instalacji klastra, można je łatwo włączyć po fakcie.
 
-### <a name="azure-cloud-provider-in-use"></a>Dostawca chmury platformy Azure w użyciu
+### <a name="azure-cloud-provider-in-use"></a>Dostawca chmury Azure w użyciu
 
-Używanie protokołu SSH z węzłem bastionu lub pierwszym węzłem głównym (na podstawie szablonu i gałęzi w użyciu) przy użyciu poświadczeń podanych podczas wdrażania. Wydaj następujące polecenie:
+SSH do węzła bastionu lub pierwszego węzła głównego (na podstawie szablonu i gałęzi w użyciu) przy użyciu poświadczeń podanych podczas wdrażania. Wydać następujące polecenie:
 
 ```bash
 ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-metrics/config.yml \
@@ -188,7 +188,7 @@ ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-loggin
 -e openshift_logging_es_pvc_dynamic=true
 ```
 
-### <a name="azure-cloud-provider-not-in-use"></a>Dostawca chmury platformy Azure nie jest używany
+### <a name="azure-cloud-provider-not-in-use"></a>Dostawca chmury Azure nie jest używany
 
 ```bash
 ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-metrics/config.yml \
@@ -198,14 +198,14 @@ ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-loggin
 -e openshift_logging_install_logging=True
 ```
 
-## <a name="install-open-service-broker-for-azure-osba"></a>Zainstaluj otwarte Service Broker dla platformy Azure (OSBA)
+## <a name="install-open-service-broker-for-azure-osba"></a>Zainstaluj open service broker dla platformy Azure (OSBA)
 
-Otwarcie Service Broker dla systemu Azure lub OSBA umożliwia udostępnienie Cloud Services platformy Azure bezpośrednio z poziomu programu OpenShift. OSBA w ramach implementacji interfejsu API Open Service Broker dla platformy Azure. Interfejs API Open Service Broker to specyfikacja, która definiuje wspólny język dla dostawców chmury, których natywne aplikacje w chmurze mogą używać do zarządzania usługami w chmurze bez blokowania.
+Otwórz brokera usług dla platformy Azure lub OSBA, umożliwia aprowizyjanie usług w chmurze Azure bezpośrednio z OpenShift. OSBA w implementacji interfejsu API open service broker dla platformy Azure. Interfejs API Open Service Broker to specyfikacja, która definiuje wspólny język dla dostawców chmury, których aplikacje natywne w chmurze mogą używać do zarządzania usługami w chmurze bez blokady.
 
-Aby zainstalować OSBA na OpenShift, postępuj zgodnie z instrukcjami znajdującymi się tutaj: https://github.com/Azure/open-service-broker-azure#openshift-project-template. 
+Aby zainstalować OSBA na OpenShift, postępuj https://github.com/Azure/open-service-broker-azure#openshift-project-templatezgodnie z instrukcjami znajdującymi się tutaj: . 
 > [!NOTE]
-> Wykonaj kroki opisane w sekcji szablon projektu OpenShift, a nie całej sekcji instalacji.
+> Wykonaj tylko kroki opisane w sekcji Szablon projektu OpenShift, a nie w całej sekcji Instalowanie.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Wprowadzenie do platformy kontenerów OpenShift](https://docs.openshift.com)
+- [Wprowadzenie do platformy kontenerowej OpenShift](https://docs.openshift.com)

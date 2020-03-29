@@ -1,7 +1,7 @@
 ---
-title: Pomoc techniczna dotycząca platformy Azure AD FS (MSAL Python)
+title: Obsługa usługi Azure AD FS (MSAL Python)
 titleSuffix: Microsoft identity platform
-description: Informacje na temat obsługi Active Directory Federation Services (AD FS) w bibliotece uwierzytelniania firmy Microsoft dla języka Python
+description: Informacje o obsłudze usług federacyjnych Active Directory (AD FS) w bibliotece uwierzytelniania firmy Microsoft dla języka Python
 services: active-directory
 author: abhidnya13
 manager: CelesteDG
@@ -14,51 +14,51 @@ ms.author: abpati
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 01d4cb626aabc83117e864b75b49eec63a6c0af0
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76699550"
 ---
-# <a name="active-directory-federation-services-support-in-msal-for-python"></a>Obsługa Active Directory Federation Services w programie MSAL for Python
+# <a name="active-directory-federation-services-support-in-msal-for-python"></a>Obsługa usług federacyjnych Active Directory w języku MSAL dla języka Python
 
-Active Directory Federation Services (AD FS) w systemie Windows Server umożliwia dodawanie uwierzytelniania i autoryzacji usługi OpenID Connect Connect i OAuth 2,0 do aplikacji przy użyciu biblioteki uwierzytelniania firmy Microsoft (MSAL) dla języka Python. Za pomocą MSAL dla biblioteki języka Python aplikacja może uwierzytelniać użytkowników bezpośrednio przed AD FS. Aby uzyskać więcej informacji na temat scenariuszy, zobacz [AD FS scenariusze dla deweloperów](/windows-server/identity/ad-fs/ad-fs-development).
+Usługi federacyjne Active Directory (AD FS) w systemie Windows Server umożliwiają dodawanie uwierzytelniania i autoryzacji opartej na usłudze OpenID Connect i OAuth 2.0 do aplikacji przy użyciu biblioteki uwierzytelniania Firmy Microsoft (MSAL) dla języka Python. Za pomocą biblioteki MSAL dla języka Python aplikacja może uwierzytelniać użytkowników bezpośrednio względem usług AD FS. Aby uzyskać więcej informacji na temat scenariuszy, zobacz [Scenariusze usług AD FS dla deweloperów](/windows-server/identity/ad-fs/ad-fs-development).
 
-Istnieją zwykle dwa sposoby uwierzytelniania w odniesieniu do AD FS:
+Zazwyczaj istnieją dwa sposoby uwierzytelniania względem usług AD FS:
 
-- MSAL Język Python rozmowy do Azure Active Directory, który sam jest federacyjny z innymi dostawcami tożsamości. Federacja odbywa się za pomocą AD FS. MSAL Python nawiązuje połączenie z usługą Azure AD, co oznacza, że użytkownicy, którzy są zarządzani za pomocą usługi Azure AD (zarządzani użytkownicy) lub Użytkownicy zarządzani przez innego dostawcę tożsamości, takie jak AD FS (Użytkownicy zafederacyjnych). MSAL Python nie wie, że użytkownik jest federacyjny. Po prostu rozmowy z usługą Azure AD. [Urząd](msal-client-application-configuration.md#authority) , którego używasz w tym przypadku, jest zazwyczaj urzędem certyfikacji (nazwa hosta urzędu + dzierżawca, typowe lub organizacje).
-- MSAL Python bezpośrednio do urzędu AD FS. Jest to obsługiwane tylko przez AD FS 2019 i nowsze.
+- Program MSAL Python prowadzi rozmowy z usługą Azure Active Directory, która sama jest sfederowana z innymi dostawcami tożsamości. Federacja odbywa się za pośrednictwem usług AD FS. Msal Python łączy się z usługą Azure AD, która loguje się do użytkowników zarządzanych w usłudze Azure AD (zarządzanych użytkowników) lub użytkowników zarządzanych przez innego dostawcę tożsamości, takiego jak AD FS (użytkownicy federowani). MSAL Python nie wie, że użytkownik jest sfederowany. Po prostu rozmawia z usługą Azure AD. [Urząd](msal-client-application-configuration.md#authority) używany w tym przypadku jest zwykłym organem (nazwa hosta urzędu + dzierżawca, wspólne lub organizacje).
+- Program MSAL Python prowadzi rozmowy bezpośrednio z urzędem usług AD FS. Jest to obsługiwane tylko przez usługi AD FS 2019 i nowsze.
 
-## <a name="connect-to-active-directory-federated-with-ad-fs"></a>Nawiązywanie połączenia z usługą Active Directory Federation with AD FS
+## <a name="connect-to-active-directory-federated-with-ad-fs"></a>Łączenie się z usługą Active Directory z usługą AD FS
 
-### <a name="acquire-a-token-interactively-for-a-federated-user"></a>Interaktywny pozyskiwanie tokenu dla użytkownika federacyjnego
+### <a name="acquire-a-token-interactively-for-a-federated-user"></a>Uzyskaj token interaktywnie dla użytkownika federacyjnego
 
-Poniżej można nawiązać bezpośrednie połączenie z Active Directory Federation Services (AD FS) lub Active Directory.
+Poniżej przedstawiono, czy łączysz się bezpośrednio z usługami federacyjnymi Active Directory (AD FS), czy za pośrednictwem usługi Active Directory.
 
-Podczas wywoływania `acquire_token_by_authorization_code` lub `acquire_token_by_device_flow`środowisko użytkownika jest zwykle następujące:
+Podczas połączenia `acquire_token_by_authorization_code` `acquire_token_by_device_flow`lub , środowisko użytkownika jest zazwyczaj w następujący sposób:
 
-1. Użytkownik wprowadza swój identyfikator konta.
-2. Usługa Azure AD wyświetla krótko komunikat "przejmowanie strony organizacji", a użytkownik zostaje przekierowany do strony logowania dostawcy tożsamości. Strona logowania jest zwykle dostosowana do logo organizacji.
+1. Użytkownik wprowadzi swój identyfikator konta.
+2. Usługa Azure AD wyświetla krótko komunikat "Zawładniesz do strony organizacji", a użytkownik zostanie przekierowany do strony logowania dostawcy tożsamości. Strona logowania jest zwykle dostosowywana za pomocą logo organizacji.
 
-Obsługiwane wersje AD FS w tym scenariuszu federacyjnym są następujące:
-- Active Directory Federation Services FS v2
-- Active Directory Federation Services v3 (Windows Server 2012 R2)
-- Active Directory Federation Services v4 (AD FS 2016)
+Obsługiwane wersje usług AD FS w tym scenariuszu federacyjne są następujące:
+- Usługi federacyjne Active Directory FS w wersji 2
+- Usługi federacyjne Active Directory w wersji 3 (Windows Server 2012 R2)
+- Usługi federacyjne Active Directory w wersji 4 (AD FS 2016)
 
-### <a name="acquire-a-token-via-username-and-password"></a>Uzyskiwanie tokenu za pomocą nazwy użytkownika i hasła
+### <a name="acquire-a-token-via-username-and-password"></a>Zdobądź token za pomocą nazwy użytkownika i hasła
 
-Poniżej można nawiązać bezpośrednie połączenie z Active Directory Federation Services (AD FS) lub Active Directory.
+Poniżej przedstawiono, czy łączysz się bezpośrednio z usługami federacyjnymi Active Directory (AD FS), czy za pośrednictwem usługi Active Directory.
 
-Po pozyskaniu tokenu przy użyciu `acquire_token_by_username_password`, MSAL Python pobiera dostawcę tożsamości do kontaktu na podstawie nazwy użytkownika. MSAL Python pobiera [token SAML 1,1](reference-saml-tokens.md) od dostawcy tożsamości, który następnie zapewnia usłudze Azure AD, która zwraca token sieci Web JSON (JWT).
+Po nabyciu `acquire_token_by_username_password`tokenu przy użyciu programu MSAL Python pobiera dostawcę tożsamości do kontaktu na podstawie nazwy użytkownika. MSAL Python pobiera [token SAML 1.1](reference-saml-tokens.md) od dostawcy tożsamości, który następnie udostępnia do usługi Azure AD, która zwraca token json web token (JWT).
 
-## <a name="connecting-directly-to-ad-fs"></a>Bezpośrednie łączenie z AD FS
+## <a name="connecting-directly-to-ad-fs"></a>Łączenie się bezpośrednio z usługą AD FS
 
-Po nawiązaniu połączenia z usługą AD FS urząd, który ma być używany do kompilowania aplikacji, będzie podobny do `https://somesite.contoso.com/adfs/`
+Po podłączeniu katalogu do usług AD FS urząd, którego chcesz użyć do utworzenia aplikacji, będzie czymś w rodzaju`https://somesite.contoso.com/adfs/`
 
-MSAL Python obsługuje usługi ADFS 2019.
+Protokół MSAL Python obsługuje usługę ADFS 2019.
 
-Nie obsługuje bezpośredniego połączenia z usługami ADFS 2016 i ADFS v2. Jeśli musisz obsługiwać scenariusze wymagające bezpośredniego połączenia z usługami AD FS 2016, użyj najnowszej wersji środowiska Python dla biblioteki ADAL. Po uaktualnieniu systemu lokalnego do usług AD FS 2019 można użyć języka Python MSAL.
+Nie obsługuje bezpośredniego połączenia z usługą ADFS 2016 lub ADFS v2. Jeśli potrzebujesz obsługi scenariuszy wymagających bezpośredniego połączenia z usługą ADFS 2016, użyj najnowszej wersji programu ADAL Python. Po uaktualnieniu systemu lokalnego do systemu ADFS 2019 można użyć programu MSAL Python.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- W przypadku federacyjnego przypadku należy zapoznać się z tematem [Konfigurowanie zachowania logowania Azure Active Directory aplikacji przy użyciu zasad odnajdywania obszaru głównego](../manage-apps/configure-authentication-for-federated-users-portal.md) .
+- W przypadku federacyjnego zobacz [Konfigurowanie zachowania logowania usługi Azure Active Directory dla aplikacji przy użyciu zasad odnajdowania obszaru macierzystego](../manage-apps/configure-authentication-for-federated-users-portal.md)

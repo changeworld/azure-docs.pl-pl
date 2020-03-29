@@ -1,6 +1,6 @@
 ---
-title: Utwórz bilet pomocy technicznej lub w przypadku zadania usługi Azure Import/Export | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak rejestrowanie żądania pomocy technicznej w przypadku problemów związanych z zadania importu/eksportu.
+title: Utwórz zgłoszenie pomocy technicznej lub przypadek zadania importowania/eksportowania platformy Azure | Dokumenty firmy Microsoft
+description: Dowiedz się, jak rejestrować żądanie pomocy technicznej w przypadku problemów związanych z zadaniem importowania/eksportowania.
 services: storsimple
 author: alkohli
 ms.service: storage
@@ -9,82 +9,82 @@ ms.date: 03/29/2018
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 8361c32860d48b78c778ea5106ba04715fcc5f3c
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67621051"
 ---
-# <a name="open-a-support-ticket-for-an-importexport-job"></a>Otwórz bilet pomocy technicznej do zadania importu/eksportu
+# <a name="open-a-support-ticket-for-an-importexport-job"></a>Otwieranie biletu pomocy technicznej dla zadania Importuj/Eksportuj
 
-Jeśli napotkasz jakiekolwiek problemy przy użyciu usługi Import/Export można utworzyć żądania obsługi, aby uzyskać pomoc techniczną. Ten artykuł przeprowadzi Cię przez:
+Jeśli wystąpią jakiekolwiek problemy z usługą importu/eksportu, możesz utworzyć żądanie serwisu dla pomocy technicznej. W tym artykule otrzymasz:
 
 * Jak utworzyć żądanie pomocy technicznej.
-* Jak zarządzać żądanie zasady świadczenia pomocy technicznej z poziomu portalu.
+* Jak zarządzać cyklem życia żądania pomocy technicznej z poziomu portalu.
 
 ## <a name="create-a-support-request"></a>Tworzenie żądania obsługi
 
-Wykonaj poniższe kroki, aby utworzyć żądanie pomocy technicznej:
+Wykonaj następujące kroki, aby utworzyć żądanie pomocy technicznej:
 
-1. Przejdź do zadania importu/eksportu. Przejdź do **pomoc techniczna i rozwiązywanie problemów** sekcji, a następnie kliknij przycisk **nowe żądanie obsługi**.
+1. Przejdź do zadania importu/eksportu. Przejdź do sekcji **POMOC TECHNICZNA + ROZWIĄZYWANIE PROBLEMÓW,** a następnie kliknij pozycję **Nowe żądanie pomocy technicznej**.
      
     ![Podstawy](./media/storage-import-export-contact-microsoft-support/import-export-support1.png)
    
-2. W **nowe żądanie obsługi**, wybierz opcję **podstawy**. W **podstawy**, wykonaj następujące czynności:
+2. W **obszarze Nowe żądanie pomocy technicznej**wybierz pozycję **Podstawy**. W **programach Podstawowe**wykonaj następujące czynności:
     
-    1. Z **typ problemu** listy rozwijanej wybierz **techniczne**.
+    1. Z listy rozwijanej **Typ problemu** wybierz pozycję **Techniczne**.
     2. Wybierz **subskrypcję**.
-    3. W obszarze **usługi**, sprawdź **Moje usług**. Z listy rozwijanej można wybrać jedną z opcji - **Zarządzanie kontem magazynu**, **Blob**, lub **pliku**. 
-        - Jeśli wybierzesz **Zarządzanie kontem magazynu**, wybierz opcję **zasobów**, i **plan pomocy technicznej**.
-            ![Wybierz pozycję Zarządzanie kontem magazynu](./media/storage-import-export-contact-microsoft-support/import-export-support3.png)
-        - Jeśli wybierzesz **Blob**, wybierz opcję **zasobów**, **nazwy kontenera** (opcjonalnie) i **plan pomocy technicznej**.
-            ![Wybierz obiekt Blob](./media/storage-import-export-contact-microsoft-support/import-export-support2.png)
-        - Jeśli wybierzesz **pliku**, wybierz opcję **zasobów**, **nazwy udziałów plików** (opcjonalnie) i **plan pomocy technicznej** ![wybierz plik](./media/storage-import-export-contact-microsoft-support/import-export-support4.png)
-    4. Kliknij przycisk **Dalej**.
+    3. W obszarze **Usługa**sprawdź **moje usługi**. Z listy rozwijanej można wybrać jedną z opcji - **Zarządzanie kontem magazynu**, **Obiekt Blob**lub **Plik**. 
+        - W przypadku wybrania opcji **Zarządzanie kontem magazynu**wybierz pozycję **Zasób**i **Plan pomocy technicznej**.
+            ![Wybieranie opcji Zarządzanie kontem magazynu](./media/storage-import-export-contact-microsoft-support/import-export-support3.png)
+        - W przypadku wybrania opcji **Obiekt Blob**wybierz pozycję **Zasób**, **Nazwy kontenerów** (opcjonalnie) i **Plan pomocy technicznej**.
+            ![Wybierz obiekt blob](./media/storage-import-export-contact-microsoft-support/import-export-support2.png)
+        - Jeśli wybierzesz **plik**, wybierz **zasób**, **nazwy udziału plików** (opcjonalnie) i plan ![pomocy **technicznej** Wybierz plik](./media/storage-import-export-contact-microsoft-support/import-export-support4.png)
+    4. Kliknij przycisk **alej**.
 
-3. W **nowe żądanie obsługi**, wybierz opcję **kroku 2 Problem**. W **Problem**, wykonaj następujące czynności:
+3. W **obszarze Nowe żądanie pomocy technicznej**wybierz krok **2 Problem**. W **sprawie Problem**wykonaj następujące czynności:
     
-    1. Wybierz **ważność** jako **C — znaczenie minimalne**. Obsługa spowoduje zaktualizowanie go w razie potrzeby.
-    2. Wybierz **typ problemu** jako **migracji danych**.
-    3. Wybierz **kategorii** jako **zaimportować — eksportowanie**.
-    4. Podaj **tytuł** dla problem i nie tylko **szczegóły**.
-    5. Podaj datę i godzinę rozpoczęcia dla problemu.
-    6. W **przekazywanie pliku**, kliknij ikonę folderu, aby przejść do innych plików, który chcesz przekazać.
-    7. Sprawdź **Udostępnij informacje diagnostyczne**.
-    8. Kliknij przycisk **Dalej**.
+    1. Wybierz **ważność** jako **C - Minimalny wpływ**. W razie potrzeby pomoc techniczna zaktualizuje go.
+    2. Wybierz **typ problem** jako **migracja danych**.
+    3. Wybierz **kategorię** jako **Import — Eksport**.
+    4. Podaj **tytuł** problemu i więcej **szczegółów**.
+    5. Podaj datę i godzinę rozpoczęcia problemu.
+    6. W **folderze Przekazywanie plików**kliknij ikonę folderu, aby przeglądać inne pliki, które chcesz przekazać.
+    7. Sprawdź **informacje diagnostyczne udostępniania**.
+    8. Kliknij przycisk **alej**.
 
        ![Problem](./media/storage-import-export-contact-microsoft-support/import-export-support5.png)
 
-4. W **nowe żądanie obsługi**, kliknij przycisk **informacji skontaktuj się z kroku 3**. W **informacje kontaktowe**, wykonaj następujące czynności:
+4. W **2014**r. kliknij pozycję Nowe żądanie pomocy technicznej , kliknij **krok 3 Informacje kontaktowe**. W **informacjach kontaktowych**wykonaj następujące czynności:
 
-   1. W **opcje kontaktu**, podaj preferowaną metodę kontaktu (telefonu lub adresu e-mail) i język. Czas odpowiedzi zostanie automatycznie wybrany w oparciu o plan subskrypcji.
-   2. Informacje kontaktowe zawiera nazwę, adres e-mail, opcjonalny skontaktuj się z pomocą, kraj/region. Wybierz **Zapisz zmiany dotyczące kontaktu dla przyszłych żądań obsługi** pola wyboru.
+   1. W **opcjach Kontakt**podaj preferowaną metodę kontaktu (telefon lub adres e-mail) i język. Czas odpowiedzi jest wybierany automatycznie na podstawie planu subskrypcji.
+   2. W informacjach kontaktowych podaj swoje imię i nazwisko, adres e-mail, opcjonalny kontakt, kraj/region. Zaznacz pole wyboru **Zapisz zmiany kontaktu dla przyszłych żądań pomocy technicznej.**
    3. Kliknij przycisk **Utwórz**.
    
        ![Informacje kontaktowe](./media/storage-import-export-contact-microsoft-support/import-export-support7.png)   
 
-      Informacje te są wykorzystywane do skontaktować się z Tobą dodatkowe informacje, diagnozowania i rozwiązywania Microsoft Support.
-      Gdy prześlesz żądanie inżynier pomocy technicznej się z Tobą tak szybko, jak to możliwe, aby kontynuować z żądaniem.
+      Pomoc techniczna firmy Microsoft będzie korzystać z tych informacji, aby uzyskać dalsze informacje, diagnozę i rozwiązanie problemu.
+      Po przesłaniu wniosku, inżynier pomocy technicznej skontaktuje się z Tobą tak szybko, jak to możliwe, aby kontynuować twoją prośbę.
 
-## <a name="manage-a-support-request"></a>Zarządzaj żądaniami obsługi
+## <a name="manage-a-support-request"></a>Zarządzanie żądaniem pomocy technicznej
 
 Po utworzeniu biletu pomocy technicznej możesz zarządzać jego cyklem życia z poziomu portalu.
 
 #### <a name="to-manage-your-support-requests"></a>Aby zarządzać żądaniami pomocy technicznej
 
-1. Aby uzyskać dostęp do strony pomocy i obsługi technicznej, przejdź do **Przeglądaj > Pomoc i obsługa techniczna**.
+1. Aby przejść do strony pomocy i pomocy technicznej, przejdź do **sekcji Przeglądaj > Pomoc + pomoc + pomoc .**
 
-    ![Zarządzaj żądaniami obsługi](./media/storage-import-export-contact-microsoft-support/manage-support-ticket2.png)   
+    ![Zarządzanie żądaniami pomocy technicznej](./media/storage-import-export-contact-microsoft-support/manage-support-ticket2.png)   
 
-2. Tabelarycznej liście **żądania obsługi ostatnie** jest wyświetlany w **Pomoc i obsługa techniczna**.
+2. Tabelaryczny wykaz **ostatnich żądań pomocy technicznej** jest wyświetlany w Pomocy + pomocy **technicznej**.
 
-    ![Zarządzaj żądaniami obsługi](./media/storage-import-export-contact-microsoft-support/manage-support-ticket1.png) 
+    ![Zarządzanie żądaniami pomocy technicznej](./media/storage-import-export-contact-microsoft-support/manage-support-ticket1.png) 
 
-3. Wybierz, a następnie kliknij przycisk żądania pomocy technicznej. Można wyświetlić stan i szczegóły dotyczące tego żądania. Kliknij przycisk **+ Nowa wiadomość** Aby wykonywać dalsze czynności dla tego żądania.
+3. Wybierz i kliknij żądanie pomocy technicznej. Można wyświetlić stan i szczegóły tego żądania. Kliknij **+ Nowa wiadomość,** jeśli chcesz wykonać następujące żądanie.
 
-    ![Zarządzaj żądaniami obsługi](./media/storage-import-export-contact-microsoft-support/manage-support-ticket3.png) 
+    ![Zarządzanie żądaniami pomocy technicznej](./media/storage-import-export-contact-microsoft-support/manage-support-ticket3.png) 
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak [rozwiązywania problemów związanych z usługi Import/Export](storage-import-export-tool-troubleshooting-v1.md).
+Dowiedz się, jak [rozwiązywać problemy związane z usługą Importuj/Eksportuj](storage-import-export-tool-troubleshooting-v1.md).

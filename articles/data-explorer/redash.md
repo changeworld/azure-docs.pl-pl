@@ -1,6 +1,6 @@
 ---
-title: Wizualizuj Eksplorator danych platformy Azure za pomocą rozłącznika
-description: W tym artykule dowiesz się, jak wizualizować dane w usłudze Azure Eksplorator danych przy użyciu natywnego łącznika rekreskowanego.
+title: Wizualizuj Eksploratora danych platformy Azure za pomocą redash
+description: W tym artykule dowiesz się, jak wizualizować dane w Eksploratorze danych platformy Azure za pomocą łącznika natywnego Redash.
 author: orspod
 ms.author: orspodek
 ms.reviewer: gabil
@@ -8,93 +8,93 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 0380689ae6ca81e3f31a07f1e205c7773fdea8c6
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76773960"
 ---
-# <a name="visualize-data-from-azure-data-explorer-in-redash"></a>Wizualizuj dane z usługi Azure Eksplorator danych w odkreskowaniu
+# <a name="visualize-data-from-azure-data-explorer-in-redash"></a>Wizualizuj dane z eksploratora danych platformy Azure w redash
 
-Polecenie [rekreska](https://redash.io/) łączy się ze źródłami danych i wysyła do nich zapytania, kompiluje pulpity nawigacyjne, aby wizualizować dane i udostępniać je równorzędnym. W tym artykule dowiesz się, jak skonfigurować Eksplorator danych platformy Azure jako źródło danych dla połącznika, a następnie wizualizować dane.
+[Redash](https://redash.io/) łączy i wysyła zapytania do źródeł danych, tworzy pulpity nawigacyjne w celu wizualizacji danych i udostępniania ich partnerom równorzędnym. W tym artykule dowiesz się, jak skonfigurować Eksploratora danych platformy Azure jako źródło danych dla redash, a następnie wizualizować dane.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-1. [Utwórz klaster i bazę danych](create-cluster-database-portal.md).
-1. Pozyskiwanie danych w sposób wyjaśniony w pozyskaniu [przykładowych danych do usługi Azure Eksplorator danych](ingest-sample-data.md). Aby uzyskać więcej opcji pozyskiwania, zobacz [Omówienie](ingest-data-overview.md)pozyskiwania.
+1. [Tworzenie klastra i bazy danych](create-cluster-database-portal.md).
+1. Połknąć dane, jak wyjaśniono w [pozyskiwania przykładowych danych do Usługi Azure Data Explorer](ingest-sample-data.md). Aby uzyskać więcej opcji pozyskiwania, zobacz [przegląd pozyskiwania](ingest-data-overview.md).
 
 [!INCLUDE [data-explorer-configure-data-source](../../includes/data-explorer-configure-data-source.md)]
 
-## <a name="create-azure-data-explorer-connector-in-redash"></a>Utwórz łącznik usługi Azure Eksplorator danych w odkreskowaniu 
+## <a name="create-azure-data-explorer-connector-in-redash"></a>Tworzenie łącznika eksploratora danych platformy Azure w redash 
 
-1. Zaloguj się w celu [rozłącznika](https://www.redash.io/). Wybierz pozycję **Rozpocznij** , aby utworzyć konto.
-1. W obszarze Zacznijmy **pracę**wybierz pozycję **Połącz źródło danych**.
+1. Zaloguj się do [Redash](https://www.redash.io/). Wybierz **pozycję Wprowadzenie,** aby utworzyć konto.
+1. W obszarze **Rozpocznijmy wprowadzenie**wybierz pozycję **Połącz źródło danych**.
 
     ![Łączenie ze źródłem danych](media/redash/connect-data-source.png)
 
-1. W oknie **Tworzenie nowego źródła danych** wybierz pozycję **Azure Eksplorator danych (Kusto)** , a następnie wybierz pozycję **Utwórz**. 
+1. W oknie **Utwórz nowe źródło danych** wybierz pozycję **Azure Data Explorer (Kusto),** a następnie wybierz pozycję **Utwórz**. 
 
-    ![Wybierz pozycję Azure Eksplorator danych Data Source](media/redash/select-adx-data-source.png)
+    ![Wybieranie źródła danych Usługi Azure Data Explorer](media/redash/select-adx-data-source.png)
 
-1. W oknie **Azure Eksplorator danych (Kusto)** Wypełnij poniższe formularz i wybierz pozycję **Utwórz**.
+1. W oknie **Eksploratora danych platformy Azure (Kusto)** wypełnij następujący formularz i wybierz pozycję **Utwórz**.
 
-    ![Okno ustawień usługi Azure Eksplorator danych (Kusto)](media/redash/adx-settings-window.png)
+    ![Okno ustawień eksploratora danych platformy Azure (Kusto)](media/redash/adx-settings-window.png)
 
-1. W oknie **Ustawienia** wybierz pozycję **Zapisz** i **Testuj połączenie** , aby przetestować połączenie ze źródłem danych **platformy Azure Eksplorator danych (Kusto)** .
+1. W oknie **Ustawienia** wybierz pozycję **Zapisz** i **przetestuj połączenie,** aby przetestować połączenie ze źródłem danych **usługi Azure Data Explorer (Kusto).**
 
-## <a name="create-queries-in-redash"></a>Utwórz zapytania w odkreskowaniu
+## <a name="create-queries-in-redash"></a>Tworzenie zapytań w redash
 
-1. W lewym górnym rogu ekranu wybierz pozycję **utwórz** > **zapytanie**. Kliknij pozycję **nowe zapytanie** i Zmień nazwę zapytania.
+1. W lewym górnym rogu opcji Redash wybierz pozycję **Utwórz** > **kwerendę**. Kliknij **pozycję Nowa kwerenda** i zmień nazwę kwerendy.
 
-    ![Utwórz zapytanie](media/redash/create-query.png)
+    ![Utwórz kwerendę](media/redash/create-query.png)
 
-1. Wpisz zapytanie w górnym okienku edycji, a następnie wybierz pozycję **Zapisz** i **Wykonaj**. Wybierz pozycję **Opublikuj** , aby opublikować zapytanie do użycia w przyszłości.
+1. Wpisz zapytanie w górnym okienku edycji i wybierz pozycję **Zapisz** i **wykonaj**. Wybierz **pozycję Publikuj,** aby opublikować kwerendę do wykorzystania w przyszłości.
 
-    ![Zapisz i wykonaj zapytanie](media/redash/save-and-execute-query.png)
+    ![Zapisywanie i wykonywanie kwerendy](media/redash/save-and-execute-query.png)
 
-    W lewym okienku można zobaczyć nazwę połączenia ze źródłem danych (**Łącznik usługi GitHub** w naszym przepływie) w menu rozwijanym i tabele w wybranej bazie danych. 
+    W lewym okienku można zobaczyć nazwę połączenia źródła danych **(łącznik Github** w naszym przepływie) w menu rozwijanym i tabele w wybranej bazie danych. 
 
-1. Wyświetl wyniki zapytania w dolnym okienku środkowym. Utwórz wizualizację, aby przejść do zapytania, wybierając przycisk **Nowa Wizualizacja** .
+1. Wyświetlanie wyników kwerendy w dolnym centralnym okienku. Utwórz wizualizację, aby przejść do kwerendy, wybierając przycisk **Nowa wizualizacja.**
 
-    ![Nowa Wizualizacja](media/redash/new-visualization.png)
+    ![Nowa wizualizacja](media/redash/new-visualization.png)
 
-1. Na ekranie Wizualizacja wybierz **typ wizualizacji** i odpowiednie pola, takie jak kolumna **X** i **kolumna Y**. **Zapisz** wizualizację.
+1. Na ekranie wizualizacji wybierz **typ wizualizacji** i odpowiednie pola, takie jak **Kolumna X** i **Kolumna Y**. **Zapisz** wizualizację.
 
     ![Konfigurowanie i zapisywanie wizualizacji](media/redash/configure-visualization.png)
 
-### <a name="create-a-query-using-a-parameter"></a>Tworzenie zapytania przy użyciu parametru
+### <a name="create-a-query-using-a-parameter"></a>Tworzenie kwerendy przy użyciu parametru
 
-1. **Utwórz** **kwerendę** > , aby utworzyć nowe zapytanie. Dodaj do niego parametr przy użyciu nawiasów klamrowych {{}}. Wybierz pozycję **{{}}** , aby otworzyć okno **Dodawanie parametrów** . Możesz również wybrać *ikonę Ustawienia* , aby zmodyfikować atrybuty istniejącego parametru i otworzyć okno **< parameter_name >** . 
+1. **Utwórz** > **kwerendę,** aby utworzyć nową kwerendę. Dodaj do niego parametr{}za pomocą { } nawiasów klamrowych. Wybierz **{}{ },** aby otworzyć okno **Dodaj parametr.** Można również wybrać *ikonę ustawień,* aby zmodyfikować atrybuty istniejącego parametru i otworzyć **okno<parameter_name parameter_name>.** 
 
-    ![Wstaw parametr](media/redash/insert-parameter.png)
+    ![parametr insert](media/redash/insert-parameter.png)
 
-1. Nazwij parametr. Wybierz **Typ**: **Lista rozwijana oparta na zapytaniu** z menu rozwijanego. Kliknij przycisk **OK**
+1. Nazwij swój parametr. Wybierz **typ:** **Lista rozwijana oparta na kwerendach** z menu rozwijanego. Wybierz **przycisk OK**
 
-    ![Lista rozwijana oparta na zapytaniu](media/redash/query-based-dropdown-list.png)
+    ![lista rozwijana oparta na kwerendach](media/redash/query-based-dropdown-list.png)
 
     > [!NOTE]
-    > Zapytanie używa wielu wartości, dlatego należy uwzględnić następującą składnię `| where Type in ((split('{{Type}}', ',')))`. Aby uzyskać więcej informacji, zobacz [w operatorze](/azure/kusto/query/inoperator). Powoduje to [wiele opcji parametrów zapytania w aplikacji rekreskowana](https://redash.io/help/user-guide/querying/query-parameters#Serialized-Multi-Select-Query-Parametersredash.io)
+    > Kwerenda używa wielu wartości, dlatego należy dołączyć następującą składnię `| where Type in ((split('{{Type}}', ',')))`. Aby uzyskać więcej informacji, zobacz [operator](/azure/kusto/query/inoperator). Powoduje to [wiele opcji parametrów kwerendy w aplikacji redash](https://redash.io/help/user-guide/querying/query-parameters#Serialized-Multi-Select-Query-Parametersredash.io)
 
-## <a name="create-a-dashboard-in-redash"></a>Tworzenie pulpitu nawigacyjnego w oddzielu
+## <a name="create-a-dashboard-in-redash"></a>Tworzenie pulpitu nawigacyjnego w aplikacji Redash
 
-1. Aby utworzyć pulpit nawigacyjny , Utwórz **pulpit nawigacyjny** > . Możesz też wybrać pozycję istniejący pulpit nawigacyjny, **pulpity nawigacyjne** > wybrać pulpit nawigacyjny z listy.
+1. Aby utworzyć pulpit nawigacyjny, **utwórz** > **pulpit nawigacyjny**. Alternatywnie wybierz istniejący pulpit nawigacyjny, **pulpity nawigacyjne** > wybierz pulpit nawigacyjny z listy.
 
-    ![Utwórz pulpit nawigacyjny](media/redash/create-dashboard.png)
+    ![Tworzenie pulpitu nawigacyjnego](media/redash/create-dashboard.png)
 
-1. W oknie **nowy pulpit nawigacyjny** Nazwij pulpit nawigacyjny i wybierz pozycję **Zapisz**. W oknie **< Dashboard_name >** wybierz pozycję **Dodaj widżet** , aby utworzyć nowy element widget. 
+1. W oknie **Nowy pulpit nawigacyjny** nazwij pulpit nawigacyjny i wybierz pozycję **Zapisz**. W **<Dashboard_name>** okna wybierz pozycję **Dodaj widżet,** aby utworzyć nowy widżet. 
 
-1. W oknie **Dodawanie widżetu** wybierz opcję Nazwa zapytania, **Wybierz wizualizację**i **Parametry**. Wybierz pozycję **Dodaj do pulpitu nawigacyjnego**
+1. W oknie **Dodaj widżet** wybierz nazwę kwerendy, **wybierz wizualizację**i **Parametry**. Wybierz **pozycję Dodaj do pulpitu nawigacyjnego**
 
-   ![Wybierz wizualizacje i Dodaj do pulpitu nawigacyjnego](media/redash/add-widget-window.png)
+   ![Wybieranie wizualizacji i dodawanie do pulpitu nawigacyjnego](media/redash/add-widget-window.png)
 
-1. Wybierz pozycję **gotowe do edycji** , aby ukończyć tworzenie pulpitu nawigacyjnego.
+1. Wybierz **pozycję Gotowe edytowanie,** aby zakończyć tworzenie pulpitu nawigacyjnego.
 
-1.  W trybie edycji pulpitu nawigacyjnego wybierz opcję **Użyj filtrów na poziomie pulpitu nawigacyjnego** , aby użyć wcześniej zdefiniowanego parametru **typu** .
+1.  W trybie edycji pulpitu nawigacyjnego wybierz pozycję **Użyj filtrów poziomu pulpitu nawigacyjnego,** aby użyć wcześniej zdefiniowanego parametru **Type.**
 
-    ![Ukończ tworzenie pulpitu nawigacyjnego](media/redash/complete-dashboard.png)
+    ![Pełne tworzenie pulpitu nawigacyjnego](media/redash/complete-dashboard.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Pisanie zapytań dla usługi Azure Data Explorer](write-queries.md)
+* [Pisanie zapytań dla Eksploratora danych platformy Azure](write-queries.md)
 
 

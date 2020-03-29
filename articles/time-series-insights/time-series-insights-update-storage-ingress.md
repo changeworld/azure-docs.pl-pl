@@ -1,6 +1,6 @@
 ---
-title: Magazyn danych i ruch przychodzący w wersji zapoznawczej — Azure Time Series Insights | Microsoft Docs
-description: Dowiedz się więcej na temat przechowywania i transferów danych w wersji zapoznawczej Azure Time Series Insights.
+title: Przechowywanie i przychyłów danych w wersji zapoznawczej — usługa Azure Time Series Insights | Dokumenty firmy Microsoft
+description: Dowiedz się więcej o przechowywaniu danych i transferze danych w usłudze Azure Time Series Insights Preview.
 author: lyrana
 ms.author: lyhughes
 manager: cshankar
@@ -11,232 +11,232 @@ ms.topic: conceptual
 ms.date: 02/10/2020
 ms.custom: seodec18
 ms.openlocfilehash: 2f12cf303c58f0fa614c59ffe643c6c2ee5d2415
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78246190"
 ---
-# <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Magazyn danych i ruch przychodzący w wersji zapoznawczej Azure Time Series Insights
+# <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Przechowywanie danych i ruch przychodzący w usłudze Azure Time Series Insights Preview
 
-W tym artykule opisano aktualizacje usługi Data Storage i transfer danych przychodzących na potrzeby wersji zapoznawczej Azure Time Series Insights. Opisuje on podstawową strukturę magazynu, format pliku i Właściwość identyfikatora szeregów czasowych. Opisano również podstawowe procesy związane z transferem danych przychodzących, najlepsze rozwiązania i bieżące ograniczenia wersji zapoznawczej.
+W tym artykule opisano aktualizacje magazynu danych i transferu danych przychodzących dla usługi Azure Time Series Insights Preview. Opisano w nim podstawową strukturę magazynu, format pliku i właściwość identyfikator szeregów czasowych. Opisano również podstawowy proces transferu danych przychodzących, najlepsze rozwiązania i bieżące ograniczenia wersji zapoznawczej.
 
-## <a name="data-ingress"></a>Dane wejściowe
+## <a name="data-ingress"></a>Transfer danych
 
-Środowisko Azure Time Series Insights zawiera *aparat* pozyskiwania do zbierania, przetwarzania i przechowywania danych szeregów czasowych. 
+Środowisko usługi Azure Time Series Insights zawiera *aparat pozyskiwania* do zbierania, przetwarzania i przechowywania danych szeregów czasowych. 
 
-Istnieją pewne kwestie, które należy wziąć pod uwagę w celu zapewnienia, że wszystkie dane przychodzące są przetwarzane, aby osiągnąć wysoką skalę transferu danych przychodzących, i zminimalizować *opóźnienia* pozyskiwania (czas potrzebny na Time Series Insights odczytywania i przetwarzania dane ze źródła zdarzeń) podczas [planowania środowiska](time-series-insights-update-plan.md).
+Istnieją pewne kwestie, o których należy pamiętać, aby upewnić się, że wszystkie przychodzące dane są przetwarzane, aby osiągnąć skalę wysokiego transferu danych przychodzących i zminimalizować *opóźnienie pozyskiwania* (czas pochłonięty przez time series insights do odczytu i przetwarzania danych ze źródła zdarzeń) podczas [planowania środowiska.](time-series-insights-update-plan.md)
 
-Time Series Insights w wersji zapoznawczej zasady dotyczące danych przychodzących określają, z których danych mogą pochodzić dane i jakie dane powinny mieć format.
+Zasady transferu danych danych usługi Time Series Insights w wersji zapoznawczej określają, skąd dane mogą pochodzić i jaki format powinny mieć dane.
 
-### <a name="ingress-policies"></a>Zasady dotyczące transferu danych przychodzących
+### <a name="ingress-policies"></a>Zasady transferu przychodzącego
 
-Transfer *danych* przychodzących polega na tym, jak dane są wysyłane do środowiska Azure Time Series Insights w wersji zapoznawczej. 
+*Transfer danych* obejmuje sposób wysyłania danych do środowiska usługi Azure Time Series Insights Preview. 
 
-Poniżej zestawiono podstawowe wskazówki dotyczące konfiguracji, formatowania i najlepszych rozwiązań.
+Poniżej podsumowano konfigurację kluczy, formatowanie i najważniejsze wskazówki.
 
 #### <a name="event-sources"></a>Źródła zdarzeń
 
-Wersja zapoznawcza Azure Time Series Insights obsługuje następujące źródła zdarzeń:
+Usługa Azure Time Series Insights Preview obsługuje następujące źródła zdarzeń:
 
 - [Azure IoT Hub](../iot-hub/about-iot-hub.md)
 - [Azure Event Hubs](../event-hubs/event-hubs-about.md)
 
-Wersja zapoznawcza Azure Time Series Insights obsługuje maksymalnie dwa źródła zdarzeń na wystąpienie.
+Usługa Azure Time Series Insights Preview obsługuje maksymalnie dwa źródła zdarzeń na wystąpienie.
 
 > [!IMPORTANT] 
-> * W przypadku dołączania źródła zdarzeń do środowiska w wersji zapoznawczej mogą wystąpić wysokie początkowe opóźnienia. 
-> Opóźnienie źródła zdarzenia zależy od liczby zdarzeń znajdujących się obecnie w IoT Hub lub centrum zdarzeń.
-> * Duże opóźnienie zostanie umieszczone po pierwszym pozyskaniu danych źródła zdarzenia. Prześlij bilet pomocy technicznej za pomocą Azure Portal, jeśli wystąpią duże opóźnienia.
+> * Podczas dołączania źródła zdarzeń do środowiska w wersji zapoznawczej może wystąpić duże opóźnienie początkowe. 
+> Opóźnienie źródła zdarzeń zależy od liczby zdarzeń aktualnie w centrum IoT hub lub centrum zdarzeń.
+> * Duże opóźnienie ustąpi po pierwszym spożyciu danych źródła zdarzeń. Prześlij zgłoszenie pomocy technicznej za pośrednictwem witryny Azure portal, jeśli wystąpi ciągłe duże opóźnienia.
 
-#### <a name="supported-data-format-and-types"></a>Obsługiwane formaty i typy danych
+#### <a name="supported-data-format-and-types"></a>Obsługiwany format i typy danych
 
-Azure Time Series Insights obsługuje zakodowany w formacie JSON format UTF-8 wysłany z usługi Azure IoT Hub lub Azure Event Hubs. 
+Usługa Azure Time Series Insights obsługuje kodowany json zgodnie z utf-8 wysyłany z usługi Azure IoT Hub lub usługi Azure Event Hubs. 
 
 Obsługiwane typy danych to:
 
 | Typ danych | Opis |
 |---|---|
-| **logiczna** | Typ danych, który ma jeden z dwóch stanów: `true` lub `false`. |
-| **Datę** | Reprezentuje chwilę w czasie, zwykle wyrażoną jako datę i godzinę dnia. Wyrażony w formacie [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) . |
-| **Double** | Podwójnie precyzyjne 64-bitowe [IEEE 754](https://ieeexplore.ieee.org/document/8766229) zmiennoprzecinkowe. |
-| **parametry** | Wartości tekstowe składające się z znaków Unicode.          |
+| **bool** | Typ danych o jednym z `true` `false`dwóch stanów: lub . |
+| **Datetime** | Reprezentuje chwilę w czasie, zwykle wyrażoną jako data i godzina dnia. Wyrażona w formacie [ISO 8601.](https://www.iso.org/iso-8601-date-and-time-format.html) |
+| **double** | Podwójna precyzja 64-bitowy [IEEE 754](https://ieeexplore.ieee.org/document/8766229) zmiennoprzecinkowy. |
+| **Ciąg** | Wartości tekstowe, składające się ze znaków Unicode.          |
 
 #### <a name="objects-and-arrays"></a>Obiekty i tablice
 
-Można wysyłać złożone typy, takie jak obiekty i tablice, w ramach ładunku zdarzenia, ale dane zostaną przetworzone przez proces spłaszczania w przypadku przechowywania. 
+Możesz wysyłać złożone typy, takie jak obiekty i tablice jako część ładunku zdarzeń, ale dane zostaną poddane procesowi spłaszczania podczas przechowywania. 
 
-Szczegółowe informacje opisujące sposób kształtowania zdarzeń w formacie JSON, wysyłania typu złożonego i zagnieżdżonego spłaszczania obiektów są dostępne w [metodzie tworzenia kształtów JSON dla](./time-series-insights-update-how-to-shape-events.md) ruchu przychodzącego i zapytań w celu ułatwienia planowania i optymalizacji.
+Szczegółowe informacje opisujące sposób kształtowania zdarzeń JSON, wysyłania typów złożonych i spłaszczania obiektów zagnieżdżonych są dostępne w [obszarze Jak kształtować JSON dla ruchu przychodzącego i kwerendy,](./time-series-insights-update-how-to-shape-events.md) aby pomóc w planowaniu i optymalizacji.
 
-### <a name="ingress-best-practices"></a>Najlepsze rozwiązania związane z transferem danych przychodzących
+### <a name="ingress-best-practices"></a>Najważniejsze wskazówki dotyczące transferu przychodzącego
 
-Zalecamy stosowanie następujących najlepszych rozwiązań:
+Zaleca się stosowanie następujących sprawdzonych rozwiązań:
 
-* Skonfiguruj Azure Time Series Insights i wszystkie IoT Hub lub centrum zdarzeń w tym samym regionie, aby zmniejszyć potencjalne opóźnienia.
+* Skonfiguruj usługę Azure Time Series Insights i dowolną usługę IoT Hub lub Centrum zdarzeń w tym samym regionie, aby zmniejszyć potencjalne opóźnienia.
 
-* [Zaplanuj potrzeby skalowania](time-series-insights-update-plan.md) , obliczając przewidywany wskaźnik pozyskiwania i sprawdzając, czy znajduje się on w ramach obsługiwanej stawki wymienionej poniżej.
+* [Zaplanuj swoje potrzeby skalowania,](time-series-insights-update-plan.md) obliczając przewidywany wskaźnik spożycia i sprawdzając, czy mieści się on w obsługiwanym tempie podanym poniżej.
 
-* Dowiedz się, jak optymalizować i kształtować dane JSON, a także bieżące ograniczenia w wersji zapoznawczej, odczytując [Informacje o sposobie tworzenia kształtu JSON dla](./time-series-insights-update-how-to-shape-events.md)ruchu przychodzącego i zapytań.
+* Dowiedz się, jak zoptymalizować i kształtować dane JSON, a także bieżące ograniczenia w wersji zapoznawczej, czytając sposób [kształtowania JSON dla ruchu przychodzącego i zapytania](./time-series-insights-update-how-to-shape-events.md).
 
-### <a name="ingress-scale-and-preview-limitations"></a>Ograniczenia skali i wersji zapoznawczej 
+### <a name="ingress-scale-and-preview-limitations"></a>Ograniczenia skali transferu wnika i podglądu 
 
-Poniżej opisano ograniczenia związane z transferem danych przychodzących Azure Time Series Insights.
+Ograniczenia transferu danych przychodzących usługi Azure Time Series Insights w wersji zapoznawczej są opisane poniżej.
 
 > [!TIP]
-> Przeczytaj artykuł [Planowanie środowiska w wersji zapoznawczej](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-plan#review-preview-limits) , aby uzyskać pełną listę wszystkich limitów wersji zapoznawczych.
+> Przeczytaj [artykuł Planowanie środowiska w wersji zapoznawczej,](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-plan#review-preview-limits) aby uzyskać pełną listę wszystkich limitów wersji zapoznawczej.
 
-#### <a name="per-environment-limitations"></a>Ograniczenia dotyczące środowiska
+#### <a name="per-environment-limitations"></a>Na ograniczenia środowiskowe
 
-Ogólnie rzecz biorąc, stawki za transfer danych przychodzących są wyświetlane jako współczynnik liczby urządzeń w organizacji, częstotliwości emisji zdarzeń i rozmiaru każdego zdarzenia:
+Ogólnie rzecz biorąc, współczynniki transferu ruchu przychodzącego są wyświetlane jako współczynnik liczby urządzeń w organizacji, częstotliwość emisji zdarzeń i rozmiar każdego zdarzenia:
 
-*  **Liczba urządzeń** × **częstotliwość emisji zdarzeń** × **rozmiar każdego zdarzenia**.
+*  **Liczba urządzeń** × **Częstotliwość emisji zdarzeń** × Rozmiar każdego **zdarzenia**.
 
-Domyślnie Time Series Insights w wersji zapoznawczej można pozyskać dane przychodzące z szybkością **do 1 megabajtów na sekundę (MB/s) na Time Series Insights środowisku**.
+Domyślnie usługa Time Series Insights umożliwia pozyskiwania przychodzących danych z szybkością **do 1 megabajta na sekundę (MB/s) w środowisku usługi Time Series Insights**.
 
 > [!TIP] 
-> * Obsługa środowiska w celu pozyskiwania prędkości do 16 MB/s może być świadczona przez żądanie.
-> * Skontaktuj się z nami, jeśli potrzebujesz wyższej przepływności przez przesłanie biletu pomocy technicznej za pomocą Azure Portal.
+> * Na życzenie można zapewnić obsługę środowiska dla pozyskiwania prędkości do 16 MB/s.
+> * Skontaktuj się z nami, jeśli potrzebujesz wyższej przepływności, przesyłając zgłoszenie pomocy technicznej za pośrednictwem witryny Azure portal.
  
 * **Przykład 1:**
 
-    Wysyłka firmy Contoso obejmuje 100 000 urządzeń, które emitują wydarzenie trzy razy na minutę. Rozmiar zdarzenia to 200 bajtów. Korzystają one z centrum zdarzeń z czterema partycjami jako źródłem zdarzeń Time Series Insights.
+    Contoso Shipping ma 100 000 urządzeń, które emitują zdarzenie trzy razy na minutę. Rozmiar zdarzenia wynosi 200 bajtów. Używają Centrum zdarzeń z czterema partycjami jako źródło zdarzeń usługi Time Series Insights.
 
-    * Szybkość pozyskiwania dla środowiska Time Series Insights: **100 000 urządzeń * 200 bajtów/zdarzenia * (3/60 Event/s) = 1 MB/s**.
-    * Szybkość pozyskiwania na partycję 0,25 MB/s.
-    * Stawka pozyskiwania kosztów wysyłki firmy Contoso będzie w ramach ograniczenia skalowania w wersji zapoznawczej.
+    * Szybkość pozyskiwania dla ich środowiska Time Series Insights wynosi: **100 000 urządzeń * 200 bajtów/zdarzenie * (zdarzenie 3/60/s) = 1 MB/s**.
+    * Szybkość pozyskiwania na partycję wynosi 0,25 MB/s.
+    * Szybkość pozyskiwania usługi Contoso Shipping mieściłaby się w ograniczeniu skali wersji zapoznawczej.
 
 * **Przykład 2:**
 
-    Analiza floty firmy Contoso obejmuje 60 000 urządzeń, które emitują zdarzenia co sekundę. Używają one IoT Hub 24 liczba partycji 4 jako źródło zdarzeń Time Series Insights. Rozmiar zdarzenia to 200 bajtów.
+    Contoso Fleet Analytics ma 60 000 urządzeń, które emitują zdarzenie co sekundę. Używają liczby partycji Usługi IoT Hub 24 4 jako źródła zdarzeń usługi Time Series Insights. Rozmiar zdarzenia wynosi 200 bajtów.
 
-    * Szybkość pozyskiwania środowiska: **20 000 urządzeń * 200 bajtów/zdarzenie * 1 zdarzenie/s = 4 MB/s**.
-    * Stawka za partycje wynosi 1 MB/s.
-    * Analiza floty firmy Contoso może przesłać żądanie Time Series Insights przez Azure Portal, aby zwiększyć szybkość pozyskiwania dla środowiska.
+    * Szybkość pozyskiwania środowiska wynosi: **20 000 urządzeń * 200 bajtów/zdarzenie * 1 zdarzenie/s = 4 MB/s**.
+    * Stawka za partycję wynosi 1 MB/s.
+    * Contoso Fleet Analytics można przesłać żądanie do usługi Time Series Insights za pośrednictwem witryny Azure portal, aby zwiększyć szybkość pozyskiwania dla swojego środowiska.
 
-#### <a name="hub-partitions-and-per-partition-limits"></a>Partycje centrum i limity na partycję
+#### <a name="hub-partitions-and-per-partition-limits"></a>Partycje koncentratora i limity partycji
 
-Planując środowisko Time Series Insights, należy rozważyć konfigurację źródeł zdarzeń, z którymi będziesz się łączyć Time Series Insights. Zarówno IoT Hub platformy Azure, jak i Event Hubs używają partycji, aby włączyć skalowanie w poziomie na potrzeby przetwarzania zdarzeń. 
+Planując środowisko usługi Time Series Insights, należy wziąć pod uwagę konfigurację źródeł zdarzeń, które będą łączyć się z usługą Time Series Insights. Usługa Azure IoT Hub i usługi Event Hubs wykorzystują partycje, aby włączyć skalę poziomą do przetwarzania zdarzeń. 
 
-*Partycja* to uporządkowana sekwencja zdarzeń przechowywanych w centrum. Liczba partycji jest ustawiana podczas fazy tworzenia centrum i nie można jej zmienić. 
+*Partycja* jest uporządkowaną sekwencją zdarzeń przechowywanych w centrum. Liczba partycji jest ustawiana podczas fazy tworzenia koncentratora i nie można jej zmienić. 
 
-Aby zapoznać się z najlepszymi rozwiązaniami dotyczącymi partycjonowania Event Hubs, sprawdź, [ile partycji jest potrzebnych?](https://docs.microsoft.com/azure/event-hubs/event-hubs-faq#how-many-partitions-do-i-need)
+W przypadku centrów zdarzeń partycjonowania najlepszych rozwiązań, sprawdź ile [partycji muszę?](https://docs.microsoft.com/azure/event-hubs/event-hubs-faq#how-many-partitions-do-i-need)
 
 > [!NOTE]
-> Większość centrów IoT używanych z Azure Time Series Insights potrzebuje tylko czterech partycji.
+> Większość centrów IoT używanych z usługą Azure Time Series Insights potrzebuje tylko czterech partycji.
 
-Bez względu na to, czy tworzysz nowe centrum dla środowiska Time Series Insights, czy korzystasz z istniejącego, musisz obliczyć współczynnik pozyskiwania partycji, aby określić, czy jest on w ramach limitów wersji zapoznawczej. 
+Niezależnie od tego, czy tworzysz nowe centrum dla środowiska usługi Time Series Insights, czy też używasz istniejącego, musisz obliczyć szybkość pozyskiwania na partycje, aby określić, czy mieści się on w granicach podglądu. 
 
-Wersja zapoznawcza Azure Time Series Insights ma obecnie **limit na partycję 0,5 MB/s**.
+Usługa Azure Time Series Insights Preview ma obecnie ogólny **limit na partycję 0,5 MB/s.**
 
-#### <a name="iot-hub-specific-considerations"></a>Zagadnienia dotyczące IoT Hub
+#### <a name="iot-hub-specific-considerations"></a>Zagadnienia specyficzne dla usługi IoT Hub
 
-Gdy urządzenie zostanie utworzone w IoT Hub, zostaje trwale przypisane do partycji. W takim przypadku IoT Hub jest w stanie zagwarantować porządkowanie zdarzeń (ponieważ nigdy nie zmieni się przypisanie).
+Gdy urządzenie jest tworzone w Centrum IoT, jest trwale przypisane do partycji. W ten sposób Usługa IoT Hub jest w stanie zagwarantować kolejność zdarzeń (ponieważ przypisanie nigdy się nie zmienia).
 
-Stałe przypisanie partycji ma także wpływ na Time Series Insights wystąpieniami, które pobierają dane wysyłane z IoT Hub podrzędnych. Gdy komunikaty z wielu urządzeń są przekazywane do koncentratora przy użyciu tego samego identyfikatora urządzenia bramy, mogą się one pojawić w tej samej partycji, co może spowodować przekroczenie limitów skalowania partycji. 
+Przypisanie partycji stałej ma również wpływ na wystąpienia usługi Time Series Insights, które pochłoną dane wysyłane z usługi IoT Hub. Gdy wiadomości z wielu urządzeń są przekazywane do koncentratora przy użyciu tego samego identyfikatora urządzenia bramy, mogą one pojawić się w tej samej partycji w tym samym czasie potencjalnie przekraczające limity skali partycji. 
 
 **Wpływ**:
 
-* Jeśli jedna partycja ma stałą częstotliwość pozyskiwania w ramach limitu wersji zapoznawczej, istnieje możliwość, że Time Series Insights nie zsynchronizuje wszystkich danych telemetrycznych urządzenia przed przekroczeniem okresu przechowywania IoT Hub. W związku z tym wysyłane dane mogą zostać utracone w przypadku stałego przekroczenia limitów pozyskiwania.
+* Jeśli pojedyncza partycja wystąpi trwałe tempo pozyskiwania w ramach limitu wersji zapoznawczej, jest możliwe, że usługa Time Series Insights nie zsynchronizuje wszystkich danych telemetrycznych urządzenia przed przekroczeniem okresu przechowywania danych usługi IoT Hub. W rezultacie wysłane dane mogą zostać utracone, jeśli limity pozyskiwania są stale przekraczane.
 
-Aby wyeliminować to okoliczności, zalecamy stosowanie następujących najlepszych rozwiązań:
+Aby złagodzić tę okoliczność, zaleca się następujące najlepsze rozwiązania:
 
-* Przed wdrożeniem rozwiązania Oblicz swoje licencje na środowisko i przejęcie na partycje.
-* Upewnij się, że urządzenia IoT Hub są zrównoważone obciążenia w możliwie najszerszym zakresie.
+* Oblicz szybkość pozyskiwania danych na środowisko i partycję przed wdrożeniem rozwiązania.
+* Upewnij się, że urządzenia Usługi IoT Hub są równoważące obciążenie w najszerszym możliwym zakresie.
 
 > [!IMPORTANT]
-> W przypadku środowisk, w których IoT Hub jako źródło zdarzeń, Oblicz wskaźnik pozyskiwania przy użyciu liczby używanych urządzeń Hub, aby upewnić się, że stawka spadnie poniżej limitu 0,5 MB/s na partycję w wersji zapoznawczej.
-> * Nawet wtedy, gdy kilka zdarzeń dociera jednocześnie, limit wersji zapoznawczej nie zostanie przekroczony.
+> W przypadku środowisk używających usługi IoT Hub jako źródła zdarzeń oblicz szybkość pozyskiwania przy użyciu liczby używanych urządzeń koncentratorów, aby upewnić się, że szybkość spada poniżej ograniczenia 0,5 MB/s na partycję w wersji zapoznawczej.
+> * Nawet jeśli kilka zdarzeń pojawi się jednocześnie, limit podglądu nie zostanie przekroczony.
 
-  ![Diagram partycji IoT Hub](media/concepts-ingress-overview/iot-hub-partiton-diagram.png)
+  ![Diagram partycji centrum IoT](media/concepts-ingress-overview/iot-hub-partiton-diagram.png)
 
-Zapoznaj się z poniższymi zasobami, aby dowiedzieć się więcej na temat optymalizowania przepływności i partycji centrum:
+Zapoznaj się z następującymi zasobami, aby dowiedzieć się więcej na temat optymalizacji przepływności i partycji koncentratora:
 
-* [Skalowanie IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-scaling)
-* [Skala centrum zdarzeń](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#throughput-units)
-* [Partycje centrum zdarzeń](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#partitions)
+* [Skala piasty IoT](https://docs.microsoft.com/azure/iot-hub/iot-hub-scaling)
+* [Skala Centrum zdarzeń](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#throughput-units)
+* [Partycje Centrum zdarzeń](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#partitions)
 
 ### <a name="data-storage"></a>Magazyn danych
 
-Po utworzeniu środowiska Time Series Insights w wersji zapoznawczej *płatność zgodnie z rzeczywistym* użyciem (PAYG) utworzysz dwa zasoby platformy Azure:
+Podczas tworzenia środowiska SKU usługi *PayG (PayG)* w usłudze Time Series Insights Preview (payg) tworzysz dwa zasoby platformy Azure:
 
-* Środowisko Azure Time Series Insights w wersji zapoznawczej, które można skonfigurować pod kątem magazynu z ciepłymi danymi.
-* Konto usługi Azure Storage ogólnego przeznaczenia w wersji 1 dla magazynu zimnych danych.
+* Środowisko usługi Azure Time Series Insights Preview, które można skonfigurować pod kątem ciepłego magazynu danych.
+* Konto obiektów blob ogólnego przeznaczenia usługi Azure Storage dla magazynu danych w chłodni.
 
-Dane w magazynie ciepłym są dostępne tylko za pośrednictwem [zapytania szeregów czasowych](./time-series-insights-update-tsq.md) i [Eksploratora Azure Time Series Insights Preview](./time-series-insights-update-explorer.md). Sklep ciepły będzie zawierał ostatnie dane w [okresie przechowywania](./time-series-insights-update-plan.md#the-preview-environment) wybranym podczas tworzenia środowiska Time Series Insights.
+Dane w ciepłym magazynie są dostępne tylko za pośrednictwem [zapytania szeregów czasowych](./time-series-insights-update-tsq.md) i [eksploratora usługi Azure Time Series Insights Preview.](./time-series-insights-update-explorer.md) Ciepły magazyn będzie zawierał najnowsze dane w [okresie przechowywania](./time-series-insights-update-plan.md#the-preview-environment) wybranym podczas tworzenia środowiska Usługi Time Series Insights.
 
-Time Series Insights w wersji zapoznawczej zapisuje dane w chłodnym sklepie w usłudze Azure Blob Storage w [formacie pliku Parquet](#parquet-file-format-and-folder-structure). Time Series Insights wersja zapoznawcza zarządza wyłącznie tym zimnym magazynem danych, ale jest dostępny do odczytu bezpośrednio jako standardowe pliki Parquet.
+Usługa Time Series Insights Preview zapisuje dane chłodni w magazynie obiektów Blob platformy Azure w [formacie pliku Parkietu.](#parquet-file-format-and-folder-structure) Usługa Time Series Insights Preview zarządza wyłącznie tymi danymi w chłodni, ale jest dostępna do odczytu bezpośrednio jako standardowe pliki parkietu.
 
 > [!WARNING]
-> Jako właściciel konta usługi Azure Blob Storage, na którym znajdują się dane w chłodnym sklepie, masz pełny dostęp do wszystkich danych na koncie. Ten dostęp obejmuje uprawnienia do zapisu i usuwania. Nie Edytuj ani nie usuwaj danych, które Time Series Insights zapisywania w wersji zapoznawczej, ponieważ może to spowodować utratę danych.
+> Jako właściciel konta magazynu obiektów Blob platformy Azure, na którym znajdują się dane chłodni, masz pełny dostęp do wszystkich danych na koncie. Ten dostęp obejmuje uprawnienia do zapisu i usuwania. Nie edytuj ani nie usuwaj danych, które zapisuje usługa Time Series Insights Preview, ponieważ może to spowodować utratę danych.
 
 ### <a name="data-availability"></a>Dostępność danych
 
-Azure Time Series Insights Podgląd partycji i indeksowanie danych w celu uzyskania optymalnej wydajności zapytań. Dane staną się dostępne do wykonywania zapytań z obu ciepłej (jeśli są włączone) i magazynu zimnego po jego indeksowaniu. Ilość danych, które są pozyskiwane, może mieć wpływ na tę dostępność.
+Usługa Azure Time Series Insights — partycje i indeksuje dane w celu uzyskania optymalnej wydajności zapytań. Dane stają się dostępne do kwerendy zarówno z ciepłych (jeśli jest włączona) i chłodni po jego indeksacji. Ilość danych, które są pozyskiwania może mieć wpływ na tę dostępność.
 
 > [!IMPORTANT]
-> W trakcie korzystania z wersji zapoznawczej może wystąpić okres do 60 sekund, po upływie którego dane staną się dostępne. Jeśli wystąpi znaczący czas oczekiwania przekraczający 60 sekund, Prześlij bilet pomocy technicznej za pomocą Azure Portal.
+> Podczas podglądu może wystąpić okres do 60 sekund, zanim dane staną się dostępne. Jeśli wystąpi znaczne opóźnienie powyżej 60 sekund, prześlij zgłoszenie pomocy technicznej za pośrednictwem witryny Azure portal.
 
 ## <a name="azure-storage"></a>Azure Storage
 
-W tej sekcji opisano szczegóły usługi Azure Storage istotne dla Azure Time Series Insights wersji zapoznawczej.
+W tej sekcji opisano szczegóły usługi Azure Storage dotyczące usługi Azure Time Series Insights Preview.
 
-Aby uzyskać dokładny opis magazynu obiektów blob platformy Azure, Przeczytaj [wprowadzenie do magazynu obiektów BLOB](../storage/blobs/storage-blobs-introduction.md).
+Aby uzyskać dokładny opis magazynu obiektów Blob platformy Azure, przeczytaj [wprowadzenie obiektów blob magazynu.](../storage/blobs/storage-blobs-introduction.md)
 
-### <a name="your-storage-account"></a>Twoje konto magazynu
+### <a name="your-storage-account"></a>Twoje konto pamięci masowej
 
-W przypadku tworzenia środowiska Azure Time Series Insights w wersji zapoznawczej usługa Azure Storage ogólnego przeznaczenia w wersji 1 zostanie utworzona jako długoterminowy chłodny magazyn.  
+Podczas tworzenia środowiska PAYG usługi Azure Time Series Insights Preview konto obiektów blob ogólnego przeznaczenia usługi Azure Storage jest tworzony jako długoterminowa chłodnię.  
 
-Azure Time Series Insights Preview zachowuje maksymalnie dwie kopie każdego zdarzenia na koncie usługi Azure Storage. Jedna kopia przechowuje zdarzenia uporządkowane według czasu pozyskiwania, które zawsze umożliwiają dostęp do zdarzeń w kolejności uporządkowanej według czasu. W miarę upływu czasu program Time Series Insights Preview tworzy również kopię ponownie partycjonowaną danych, która zostanie zoptymalizowana pod kątem wykonywania Time Series Insights kwerendy. 
+Usługa Azure Time Series Insights Preview zachowuje do dwóch kopii każdego zdarzenia na koncie usługi Azure Storage. Jedna kopia przechowuje zdarzenia uporządkowane przez czas pozyskiwania, zawsze umożliwiając dostęp do zdarzeń w kolejności czasu. Z biegiem czasu usługa Time Series Insights Preview tworzy również partycjonowane kopie danych w celu optymalizacji pod kątem wydajnej kwerendy usługi Time Series Insights. 
 
-W publicznej wersji zapoznawczej dane są przechowywane na koncie usługi Azure Storage na czas nieokreślony.
+Podczas publicznej wersji zapoznawczej dane są przechowywane przez czas nieokreślony na koncie usługi Azure Storage.
 
-#### <a name="writing-and-editing-time-series-insights-blobs"></a>Pisanie i edytowanie Time Series Insights obiektów BLOB
+#### <a name="writing-and-editing-time-series-insights-blobs"></a>Zapisywanie i edytowanie obiektów blob usługi Time Series Insights
 
-Aby zapewnić wydajność zapytań i dostępność danych, nie należy edytować ani usuwać obiektów blob, które są tworzone Time Series Insights Podgląd.
+Aby zapewnić wydajność kwerendy i dostępność danych, nie edytuj ani nie usuwaj żadnych obiektów blob, które tworzy usługa Time Series Insights Preview.
 
-#### <a name="accessing-time-series-insights-preview-cold-store-data"></a>Uzyskiwanie dostępu do danych w chłodnym magazynie Time Series Insights Preview 
+#### <a name="accessing-time-series-insights-preview-cold-store-data"></a>Uzyskiwanie dostępu do danych chłodni usługi Time Series Insights Preview 
 
-Oprócz uzyskiwania dostępu do danych za pomocą zapytania programu [Time Series Insights Preview](./time-series-insights-update-explorer.md) i z [szeregów czasowych](./time-series-insights-update-tsq.md)możesz również uzyskać dostęp do danych bezpośrednio z plików Parquet przechowywanych w chłodnym magazynie. Na przykład można odczytywać, przekształcać i czyścić dane w notesie Jupyter, a następnie używać go do uczenia modelu Azure Machine Learning w tym samym przepływie pracy platformy Spark.
+Oprócz uzyskiwania dostępu do danych z [Eksploratora podglądu szeregów czasowych](./time-series-insights-update-explorer.md) i [zapytania szeregów czasowych](./time-series-insights-update-tsq.md)można również uzyskać dostęp do danych bezpośrednio z plików parkietu przechowywanych w chłodni. Na przykład można odczytać, przekształcić i oczyścić dane w notesie Jupyter, a następnie użyć go do uczenia modelu usługi Azure Machine Learning w tym samym obiegu pracy platformy Spark.
 
-Aby uzyskać dostęp do danych bezpośrednio z konta usługi Azure Storage, musisz mieć dostęp do odczytu do konta używanego do przechowywania danych w wersji zapoznawczej Time Series Insights. Następnie można odczytać wybrane dane na podstawie czasu utworzenia pliku Parquet znajdującego się w folderze `PT=Time` opisanym poniżej w sekcji [Format pliku Parquet](#parquet-file-format-and-folder-structure) .  Aby uzyskać więcej informacji na temat włączania dostępu do odczytu do konta magazynu, zobacz [Zarządzanie dostępem do zasobów konta magazynu](../storage/blobs/storage-manage-access-to-resources.md).
+Aby uzyskać dostęp do danych bezpośrednio z konta usługi Azure Storage, potrzebujesz dostępu do odczytu do konta używanego do przechowywania danych usługi Time Series Insights Preview. Następnie można odczytać wybrane dane na podstawie czasu utworzenia `PT=Time` pliku Parkietu znajdującego się w folderze opisanym poniżej w sekcji [Format pliku Parkietu.](#parquet-file-format-and-folder-structure)  Aby uzyskać więcej informacji na temat włączania dostępu do odczytu konta magazynu, zobacz [Zarządzanie dostępem do zasobów konta magazynu](../storage/blobs/storage-manage-access-to-resources.md).
 
 #### <a name="data-deletion"></a>Usuwanie danych
 
-Nie usuwaj plików w wersji zapoznawczej Time Series Insights. Zarządzaj powiązanymi danymi wyłącznie w programie Time Series Insights Preview.
+Nie usuwaj plików usługi Time Series Insights Preview. Zarządzanie powiązanymi danymi tylko z poziomu usługi Time Series Insights Preview.
 
-### <a name="parquet-file-format-and-folder-structure"></a>Parquet format pliku i struktura folderów
+### <a name="parquet-file-format-and-folder-structure"></a>Format pliku parkietu i struktura folderów
 
-Parquet to format pliku kolumnowego Open Source zaprojektowany w celu zapewnienia wydajnego magazynu i wydajności. Time Series Insights w wersji zapoznawczej używa Parquet do włączenia wydajności zapytań opartych na IDENTYFIKATORach szeregów czasowych.  
+Parkiet to format pliku kolumnowego typu open source zaprojektowany z myślą o wydajnej pamięci masowej i wydajności. Aplikacja Time Series Insights Preview używa parkietu, aby włączyć wydajność zapytań opartych na identyfikatorze szeregów czasowych na dużą skalę.  
 
-Aby uzyskać więcej informacji na temat typu pliku Parquet, Przeczytaj [dokumentację dotyczącą Parquet](https://parquet.apache.org/documentation/latest/).
+Aby uzyskać więcej informacji na temat typu pliku Parkiet, przeczytaj [dokumentację Parkietu](https://parquet.apache.org/documentation/latest/).
 
-Time Series Insights w wersji zapoznawczej przechowuje kopie danych w następujący sposób:
+Usługa Time Series Insights Preview przechowuje kopie danych w następujący sposób:
 
-* Pierwsza kopia początkowa jest podzielona na partycje według czasu pozyskiwania i przechowuje dane w sposób przybliżony w kolejności przybycia. Te dane znajdują się w folderze `PT=Time`:
+* Pierwsza, początkowa kopia jest podzielona na partycje przez czas pozyskiwania i przechowuje dane w przybliżeniu w kolejności przybycia. Te dane znajdują się `PT=Time` w folderze:
 
   `V=1/PT=Time/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
 
-* Druga, ponownie partycjonowana kopia jest pogrupowana według identyfikatorów szeregów czasowych i znajduje się w folderze `PT=TsId`:
+* Druga kopia partycjonowana jest pogrupowana według identyfikatorów szeregów czasowych i znajduje się w folderze: `PT=TsId`
 
   `V=1/PT=TsId/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
 
-W obu przypadkach Właściwość Time pliku Parquet odpowiada czasowi utworzenia obiektu BLOB. Dane w folderze `PT=Time` są zachowywane bez zmian po zapisaniu ich w pliku. Dane w folderze `PT=TsId` zostaną zoptymalizowane pod kątem zapytania w czasie i nie są statyczne.
+W obu przypadkach właściwość czasu pliku Parkiet odpowiada czas utworzenia obiektu blob. Dane w `PT=Time` folderze są zachowywane bez zmian po zapisaniu ich w pliku. Dane w `PT=TsId` folderze będą zoptymalizowane pod kątem zapytania w czasie i nie są statyczne.
 
 > [!NOTE]
-> * `<YYYY>` mapuje do czwartej reprezentacji roku.
-> * `<MM>` mapuje na dwucyfrowy reprezentację miesiąca.
-> * `<YYYYMMDDHHMMSSfff>` mapuje do sygnatury czasowej przy użyciu czterocyfrowego roku (`YYYY`), dwucyfrowego miesiąca (`MM`), dwucyfrowego dnia (`DD`), godziny dwucyfrowej (`HH`), dwucyfrowej minuty (`MM`), dwucyfrowej sekundy (`SS`) i 3-cyfrowy milisekundy (`fff`).
+> * `<YYYY>`map do czterocyfrowej reprezentacji roku.
+> * `<MM>`mapuje się na dwucyfrową reprezentację miesiąca.
+> * `<YYYYMMDDHHMMSSfff>`mapuje na reprezentację sygnatury`YYYY`czasowej z`MM`czterocyfrowym rokiem ( ),`HH`dwucyfrowym miesiącem`MM`( ), dwucyfrowym`SS`dniem (`DD`), dwucyfrową`fff`godziną ( ), dwucyfrową minutą ( ), dwucyfrową sekundą ( ) i trzycyfrową milisekundą ( ).
 
-Zdarzenia w wersji zapoznawczej Time Series Insights są mapowane do zawartości pliku Parquet w następujący sposób:
+Zdarzenia podglądu usługi Time Series Insights są mapowane na zawartość pliku Parkietu w następujący sposób:
 
-* Każde zdarzenie jest mapowane na jeden wiersz.
-* Każdy wiersz zawiera kolumnę **timestamp** z sygnaturą czasową zdarzenia. Właściwość sygnatury czasowej nigdy nie ma wartości null. Wartość domyślna zdarzenia jest umieszczana w **kolejce czasu** , jeśli właściwość sygnatura czasowa nie została określona w źródle zdarzenia. Sygnatura czasowa przechowywana jest zawsze w formacie UTC.
-* Każdy wiersz zawiera kolumny identyfikatora szeregów czasowych (TSID), zgodnie z definicją podczas tworzenia środowiska Time Series Insights. Nazwa właściwości identyfikatora TSID zawiera sufiks `_string`.
-* Wszystkie inne właściwości wysyłane jako dane telemetryczne są mapowane na nazwy kolumn kończące się na `_string` (ciąg), `_bool` (wartość logiczna), `_datetime` (DateTime) lub `_double` (Double), w zależności od typu właściwości.
-* Ten schemat mapowania dotyczy pierwszej wersji formatu pliku, do którego odwołuje się wartość **V = 1** i jest przechowywana w folderze podstawowym o tej samej nazwie. W miarę rozwoju tej funkcji ten schemat mapowania może ulec zmianie, a Nazwa odwołania jest zwiększana.
+* Każde zdarzenie jest mapowane do jednego wiersza.
+* Każdy wiersz zawiera kolumnę **sygnatury czasowej** z sygnaturą czasową zdarzenia. Właściwość sygnatury czasowej nigdy nie jest null. Domyślnie zdarzenie jest w **kolejce,** jeśli właściwość sygnatury czasowej nie jest określona w źródle zdarzenia. Przechowywana sygnatura czasowa jest zawsze w czasie UTC.
+* Każdy wiersz zawiera kolumny identyfikatora serii czasowych (TSID) zdefiniowane podczas tworzenia środowiska usługi Time Series Insights. Nazwa właściwości TSID `_string` zawiera sufiks.
+* Wszystkie inne właściwości wysyłane jako dane telemetryczne są `_string` mapowane `_bool` na nazwy `_datetime` kolumn, które `_double` kończą się (ciąg), (boolean), (datetime) lub (double), w zależności od typu właściwości.
+* Ten schemat mapowania ma zastosowanie do pierwszej wersji formatu pliku, określanej jako **V=1** i przechowywanej w folderze podstawowym o tej samej nazwie. W miarę rozwoju tej funkcji ten schemat mapowania może ulec zmianie, a nazwa odwołania została przyrostowana.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Przeczytaj [, jak Shape JSON dla](./time-series-insights-update-how-to-shape-events.md)ruchu przychodzącego i zapytań.
+- Przeczytaj, [jak kształtować JSON dla ruchu przychodzącego i kwerendy](./time-series-insights-update-how-to-shape-events.md).
 
 - Przeczytaj o nowym [modelowaniu danych](./time-series-insights-update-tsm.md).

@@ -1,25 +1,25 @@
 ---
-title: Używanie funkcji Cloud-init na maszynie wirtualnej z systemem Linux na platformie Azure
-description: Jak używać funkcji Cloud-init do aktualizowania i instalowania pakietów na maszynie wirtualnej z systemem Linux podczas tworzenia przy użyciu interfejsu wiersza polecenia platformy Azure
+title: Używanie funkcji cloud-init na maszynie wirtualnej z systemem Linux na platformie Azure
+description: Jak używać cloud-init do aktualizowania i instalowania pakietów na maszynie Wirtualnej z systemem Linux podczas tworzenia za pomocą interfejsu wiersza polecenia platformy Azure
 author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: cynthn
 ms.openlocfilehash: 7b7a03572a001fc6d5114635b33510f1a4b1bc70
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78969155"
 ---
-# <a name="use-cloud-init-to-update-and-install-packages-in-a-linux-vm-in-azure"></a>Używanie funkcji Cloud-init do aktualizowania i instalowania pakietów na maszynie wirtualnej z systemem Linux na platformie Azure
-W tym artykule pokazano, jak za pomocą usługi [Cloud-init](https://cloudinit.readthedocs.io) aktualizować pakiety na maszynie wirtualnej z systemem Linux lub w zestawach skalowania maszyn wirtualnych w czasie aprowizacji na platformie Azure. Te skrypty usługi Cloud-init są uruchamiane podczas pierwszego rozruchu po udostępnieniu zasobów przez platformę Azure. Aby uzyskać więcej informacji na temat sposobu, w jaki usługa Cloud-init działa natywnie na platformie Azure i obsługiwanych dystrybucje z systemem Linux, zobacz [Omówienie usługi Cloud-init](using-cloud-init.md)
+# <a name="use-cloud-init-to-update-and-install-packages-in-a-linux-vm-in-azure"></a>Aktualizowanie i instalowanie pakietów na maszynie Wirtualnej z systemem Linux na platformie Azure za pomocą funkcji cloud-init
+W tym artykule pokazano, jak używać [cloud-init](https://cloudinit.readthedocs.io) do aktualizowania pakietów na maszynie wirtualnej systemu Linux (VM) lub zestawów skalowania maszyny wirtualnej w czasie inicjowania obsługi administracyjnej na platformie Azure. Te skrypty init w chmurze są uruchamiane przy pierwszym rozruchu po zainicjowaniu zasobów przez platformę Azure. Aby uzyskać więcej informacji na temat działania cloud-init na platformie Azure i obsługiwanych dystrybucji systemu Linux, zobacz [omówienie cloud-init](using-cloud-init.md)
 
-## <a name="update-a-vm-with-cloud-init"></a>Aktualizowanie maszyny wirtualnej za pomocą funkcji Cloud-init
-Ze względów bezpieczeństwa można skonfigurować maszynę wirtualną w celu zastosowania najnowszych aktualizacji podczas pierwszego rozruchu. Ponieważ usługa Cloud-init działa w różnych dystrybucjeach systemu Linux, nie ma potrzeby określania `apt` lub `yum` dla Menedżera pakietów. Zamiast tego należy zdefiniować `package_upgrade` i pozwól, aby proces Cloud-init wyznaczył odpowiedni mechanizm dla dystrybucji w użyciu. Ten przepływ pracy umożliwia korzystanie z tego samego skryptów Cloud-init w programie dystrybucje.
+## <a name="update-a-vm-with-cloud-init"></a>Aktualizowanie maszyny Wirtualnej za pomocą initu w chmurze
+Ze względów bezpieczeństwa można skonfigurować maszynę wirtualną do stosowania najnowszych aktualizacji przy pierwszym rozruchu. Ponieważ cloud-init działa w różnych dystrybucjach linuksa, nie ma potrzeby określania `apt` ani `yum` menedżera pakietów. Zamiast tego można `package_upgrade` zdefiniować i niech proces cloud-init określić odpowiedni mechanizm dla dystrybucji w użyciu. Ten przepływ pracy umożliwia korzystanie z tych samych skryptów init chmury w dystrybucjach.
 
-Aby wyświetlić proces uaktualniania w działaniu, Utwórz plik w bieżącej powłoce o nazwie *cloud_init_upgrade. txt* i wklej następującą konfigurację. Na potrzeby tego przykładu Utwórz plik w Cloud Shell nie na komputerze lokalnym. Możesz użyć dowolnego edytora. Wprowadź `sensible-editor cloud_init_upgrade.txt`, aby utworzyć plik i wyświetlić listę dostępnych edytorów. Wybierz #1, aby użyć edytora **nano** . Upewnij się, że cały plik Cloud-init został poprawnie skopiowany, szczególnie w pierwszym wierszu.  
+Aby wyświetlić proces uaktualniania w działaniu, utwórz plik w bieżącej powłoce o nazwie *cloud_init_upgrade.txt* i wklej następującą konfigurację. W tym przykładzie utwórz plik w usłudze Cloud Shell nie na komputerze lokalnym. Możesz użyć dowolnego edytora. Wprowadź `sensible-editor cloud_init_upgrade.txt`, aby utworzyć plik i wyświetlić listę dostępnych edytorów. Wybierz #1, aby użyć **edytora nano.** Upewnij się, że cały plik cloud-init jest kopiowany poprawnie, zwłaszcza w pierwszym wierszu.  
 
 ```yaml
 #cloud-config
@@ -28,13 +28,13 @@ packages:
 - httpd
 ```
 
-Przed wdrożeniem tego obrazu należy utworzyć grupę zasobów za pomocą polecenia [AZ Group Create](/cli/azure/group) . Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*.
+Przed wdrożeniem tego obrazu należy utworzyć grupę zasobów za pomocą polecenia [tworzenie grupy az.](/cli/azure/group) Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-Teraz Utwórz maszynę wirtualną za pomocą [AZ VM Create](/cli/azure/vm) i określ plik Cloud-init z `--custom-data cloud_init_upgrade.txt` w następujący sposób:
+Teraz utwórz maszynę wirtualną z [az vm utworzyć](/cli/azure/vm) `--custom-data cloud_init_upgrade.txt` i określić plik cloud-init w następujący sposób:
 
 ```azurecli-interactive 
 az vm create \
@@ -45,19 +45,19 @@ az vm create \
   --generate-ssh-keys 
 ```
 
-SSH do publicznego adresu IP maszyny wirtualnej wyświetlanej w danych wyjściowych poprzedniego polecenia. Wprowadź własne **publicIpAddress** w następujący sposób:
+SSH do publicznego adresu IP maszyny Wirtualnej pokazane w danych wyjściowych z poprzedniego polecenia. Wpisz swój własny **publicIpAddress** w następujący sposób:
 
 ```bash
 ssh <publicIpAddress>
 ```
 
-Uruchom narzędzie do zarządzania pakietami i sprawdź, czy są dostępne aktualizacje.
+Uruchom narzędzie do zarządzania pakietami i sprawdź dostępność aktualizacji.
 
 ```bash
 sudo yum update
 ```
 
-Gdy usługa Cloud-init zaznaczono i zainstalowano aktualizacje przy rozruchu, nie powinno być żadnych dodatkowych aktualizacji do zastosowania.  Zobaczysz proces aktualizacji, liczbę zmienionych pakietów oraz instalację `httpd` przez uruchomienie `yum history` i Przejrzyj dane wyjściowe podobne do przedstawionego poniżej.
+Ponieważ chmura init sprawdzone i zainstalowane aktualizacje podczas rozruchu, nie powinno być żadnych dodatkowych aktualizacji do zastosowania.  Widzisz proces aktualizacji, liczbę zmienionych pakietów, a `httpd` także `yum history` instalację przez uruchomienie i przejrzenie danych wyjściowych podobnych do poniższego.
 
 ```bash
 Loaded plugins: fastestmirror, langpacks
@@ -69,9 +69,9 @@ ID     | Command line             | Date and time    | Action(s)      | Altered
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać dodatkowe przykłady dotyczące zmian konfiguracji w chmurze, zobacz następujące tematy:
+Aby uzyskać dodatkowe przykłady zmian konfiguracji w chmurze, zobacz następujące elementy:
  
-- [Dodawanie dodatkowego użytkownika systemu Linux do maszyny wirtualnej](cloudinit-add-user.md)
-- [Uruchom Menedżera pakietów, aby zaktualizować istniejące pakiety przy pierwszym rozruchu](cloudinit-update-vm.md)
-- [Zmień lokalną nazwę hosta maszyny wirtualnej](cloudinit-update-vm-hostname.md) 
-- [Zainstaluj pakiet aplikacji, zaktualizuj pliki konfiguracji i klucze iniekcji](tutorial-automate-vm-deployment.md)
+- [Dodawanie dodatkowego użytkownika systemu Linux do maszyny Wirtualnej](cloudinit-add-user.md)
+- [Uruchamianie menedżera pakietów w celu zaktualizowania istniejących pakietów przy pierwszym rozruchu](cloudinit-update-vm.md)
+- [Zmienianie nazwy hosta lokalnego maszyny Wirtualnej](cloudinit-update-vm-hostname.md) 
+- [Instalowanie pakietu aplikacji, aktualizowanie plików konfiguracyjnych i wstrzykiwanie kluczy](tutorial-automate-vm-deployment.md)

@@ -1,48 +1,48 @@
 ---
-title: Azure Cosmos DB zasad indeksowania
-description: Dowiedz się, jak skonfigurować i zmienić domyślne zasady indeksowania dla automatycznego indeksowania i zwiększenia wydajności w Azure Cosmos DB.
-author: ThomasWeiss
+title: Zasady indeksowania usługi Azure Cosmos DB
+description: Dowiedz się, jak skonfigurować i zmienić domyślne zasady indeksowania dla automatycznego indeksowania i większej wydajności w usłudze Azure Cosmos DB.
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/10/2019
-ms.author: thweiss
-ms.openlocfilehash: 86dbcee7150adacd0e961dbe07cf66ad117d2041
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/26/2020
+ms.author: tisande
+ms.openlocfilehash: 930f156ebec76be860e7af02d41540ce67982f92
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79252001"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80292058"
 ---
-# <a name="indexing-policies-in-azure-cosmos-db"></a>Zasady indeksowania w Azure Cosmos DB
+# <a name="indexing-policies-in-azure-cosmos-db"></a>Zasady indeksowania w usłudze Azure Cosmos DB
 
-W Azure Cosmos DB każdy kontener ma zasady indeksowania, które określają sposób indeksowania elementów kontenera. Domyślne zasady indeksowania dla nowo utworzonych kontenerów indeksuje każdą właściwość każdego elementu, wymuszając indeksy zakresów dla dowolnego ciągu lub liczby oraz indeksy przestrzenne dla dowolnego obiektu GEOJSON typu punkt. Dzięki temu można uzyskać wysoką wydajność zapytań bez konieczności zawieszania indeksowania i zarządzania indeksem z góry.
+W usłudze Azure Cosmos DB każdy kontener ma zasady indeksowania, które określają, jak elementy kontenera powinny być indeksowane. Domyślna zasada indeksowania dla nowo utworzonych kontenerów indeksuje każdą właściwość każdego elementu, wymuszając indeksy zakresu dla dowolnego ciągu lub liczby oraz indeksy przestrzenne dla dowolnego obiektu GeoJSON typu Point. Dzięki temu można uzyskać wysoką wydajność kwerendy bez konieczności myślenia o indeksowania i zarządzania indeksem z góry.
 
-W niektórych sytuacjach może być potrzebne zastąpienie tego automatycznego zachowania zachowaniem lepiej dostosowanym do wymagań. Można dostosować zasady indeksowania kontenera, ustawiając jego *tryb indeksowania*i dołączając lub wykluczając *ścieżki właściwości*.
+W niektórych sytuacjach może być potrzebne zastąpienie tego automatycznego zachowania zachowaniem lepiej dostosowanym do wymagań. Zasady indeksowania kontenera można dostosować, ustawiając jego *tryb indeksowania*oraz dołączając lub wykluczając *ścieżki właściwości.*
 
 > [!NOTE]
-> Metoda aktualizacji zasad indeksowania opisana w tym artykule ma zastosowanie tylko do interfejsu API SQL (Core) Azure Cosmos DB.
+> Metoda aktualizowania zasad indeksowania opisanych w tym artykule dotyczy tylko interfejsu API SQL (Core) usługi Azure Cosmos DB.
 
 ## <a name="indexing-mode"></a>Tryb indeksowania
 
-Azure Cosmos DB obsługuje dwa tryby indeksowania:
+Usługa Azure Cosmos DB obsługuje dwa tryby indeksowania:
 
-- **Spójne**: indeks jest aktualizowany synchronicznie podczas tworzenia, aktualizowania lub usuwania elementów. Oznacza to, że spójność zapytań odczytu będzie [spójna z konfiguracją dla konta](consistency-levels.md).
-- **Brak**: indeksowanie jest wyłączone w kontenerze. Jest to często używane, gdy kontener jest używany jako czysty magazyn klucz-wartość bez konieczności stosowania indeksów pomocniczych. Może również służyć do poprawy wydajności operacji zbiorczych. Po zakończeniu operacji zbiorczych tryb indeksu może być ustawiony na spójny, a następnie monitorowany przy użyciu [IndexTransformationProgress](how-to-manage-indexing-policy.md#use-the-net-sdk-v2) do momentu ukończenia.
+- **Spójne:** Indeks jest aktualizowany synchronicznie podczas tworzenia, aktualizowania lub usuwania elementów. Oznacza to, że spójność zapytań odczytu będzie [spójność skonfigurowana dla konta](consistency-levels.md).
+- **Brak:** Indeksowanie jest wyłączone w kontenerze. Jest to często używane, gdy kontener jest używany jako magazyn czystej wartości klucza bez konieczności indeksów pomocniczych. Może również służyć do poprawy wydajności operacji zbiorczych. Po zakończeniu operacji zbiorczych tryb indeksu można ustawić na Spójne, a następnie monitorować przy użyciu [IndexTransformationProgress](how-to-manage-indexing-policy.md#use-the-net-sdk-v2) do czasu zakończenia.
 
 > [!NOTE]
-> Cosmos DB obsługuje również tryb indeksowania z opóźnieniem. Indeksowanie z opóźnieniem wykonuje aktualizacje dla indeksu na znacznie niższym poziomie priorytetu, gdy aparat nie wykonuje żadnej innej pracy. Może to spowodować **niespójne lub niekompletne** wyniki zapytania. Ponadto używanie indeksowania z opóźnieniem zamiast wartości "none" dla operacji zbiorczych również nie zapewnia żadnych korzyści, ponieważ jakakolwiek zmiana w trybie indeksowania spowoduje, że indeks zostanie usunięty i utworzony ponownie. Z tych powodów zalecamy, aby klienci korzystali z tej usługi. Aby zwiększyć wydajność operacji zbiorczych, ustaw tryb indeksowania na None, a następnie wróć do trybu spójnego i monitoruj Właściwość `IndexTransformationProgress` w kontenerze do momentu ukończenia.
+> Usługa Azure Cosmos DB obsługuje również tryb indeksowania z opóźnieniem. Indeksowanie z opóźnieniem wykonuje aktualizacje indeksu na znacznie niższym poziomie priorytetu, gdy aparat nie wykonuje żadnej innej pracy. Może to spowodować **niespójne lub niekompletne** wyniki kwerendy. Jeśli planujesz kwerendy kontenera usługi Cosmos, nie należy wybierać indeksowanie z opóźnieniem.
 
-Domyślnie zasady indeksowania są ustawione na `automatic`. Jest to osiągane przez ustawienie właściwości `automatic` w zasadach indeksowania, aby `true`. Ustawienie tej właściwości na `true` umożliwia usłudze Azure CosmosDB Automatyczne indeksowanie dokumentów w miarę ich pisania.
+Domyślnie zasada indeksowania jest `automatic`ustawiona na . Osiąga się to poprzez `automatic` ustawienie właściwości w zasadach indeksowania na `true`. Ustawienie tej `true` właściwości, aby umożliwia usługi Azure CosmosDB automatycznie indeksować dokumenty, ponieważ są one zapisywane.
 
-## <a id="include-exclude-paths"></a>Uwzględnianie i wykluczanie ścieżek właściwości
+## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a>Włączanie ścieżek właściwości i wykluczanie
 
-Niestandardowe zasady indeksowania mogą określać ścieżki właściwości, które są jawnie dołączone lub wykluczone z indeksowania. Przez optymalizację liczby indeksowanych ścieżek można obniżyć ilość miejsca używanego przez kontener i poprawić opóźnienia operacji zapisu. Te ścieżki są zdefiniowane po [metodzie opisanej w sekcji Omówienie indeksowania](index-overview.md#from-trees-to-property-paths) z następującymi dodatkami:
+Niestandardowe zasady indeksowania można określić ścieżki właściwości, które są jawnie uwzględnione lub wykluczone z indeksowania. Optymalizując liczbę ścieżek, które są indeksowane, można zmniejszyć ilość miejsca do magazynowania używanego przez kontener i poprawić opóźnienie operacji zapisu. Ścieżki te są definiowane [zgodnie z metodą opisaną w sekcji przegląd indeksowania](index-overview.md#from-trees-to-property-paths) z następującymi dodatkami:
 
-- ścieżka prowadząca do wartości skalarnej (ciąg lub Number) kończąca się na `/?`
-- elementy z tablicy są rozłączone za pośrednictwem notacji `/[]` (zamiast `/0`, `/1` itd.)
-- Symbol wieloznaczny `/*` może służyć do dopasowania elementów poniżej węzła
+- ścieżka prowadząca do wartości skalarnej (ciągu lub liczby) kończy się`/?`
+- elementy z tablicy są `/[]` adresowane razem poprzez `/0` `/1` notację (zamiast itp.)
+- symbol `/*` wieloznaczny może być używany do dopasowania dowolnych elementów poniżej węzła
 
-Ponowne wykonanie tego samego przykładu:
+Biorąc ten sam przykład ponownie:
 
 ```
     {
@@ -58,34 +58,36 @@ Ponowne wykonanie tego samego przykładu:
     }
 ```
 
-- ścieżka `employees` `headquarters`jest `/headquarters/employees/?`
+- `employees` ścieżka `headquarters`jest`/headquarters/employees/?`
 
-- ścieżka `country` `locations`a jest `/locations/[]/country/?`
+- ' `locations` `country` ścieżka jest`/locations/[]/country/?`
 
-- ścieżka do elementów `headquarters` jest `/headquarters/*`
+- droga do wszystkiego, pod czym `headquarters` jest`/headquarters/*`
 
-Na przykład możemy uwzględnić ścieżkę `/headquarters/employees/?`. Ta ścieżka zapewni, że indeksuje Właściwość Employees, ale nie indeksuje dodatkowych zagnieżdżonych JSON w ramach tej właściwości.
+Na przykład możemy uwzględnić ścieżkę. `/headquarters/employees/?` Ta ścieżka zapewni, że indeksujemy właściwość pracowników, ale nie indeksuje dodatkowych zagnieżdżonych JSON w ramach tej właściwości.
 
-## <a name="includeexclude-strategy"></a>Strategia uwzględniania/wykluczania
+## <a name="includeexclude-strategy"></a>Uwzględnij/wyklucz strategię
 
-Każda zasada indeksowania musi zawierać ścieżkę katalogu głównego `/*` jako dołączona lub wykluczona ścieżka.
+Wszystkie zasady indeksowania muszą zawierać `/*` ścieżkę główną jako ścieżkę dołączona lub wykluczoną.
 
-- Uwzględnij ścieżkę główną, aby wykluczać ścieżki, które nie muszą być indeksowane. Jest to zalecane podejście, które pozwala Azure Cosmos DB aktywnie indeksować wszelkie nowe właściwości, które mogą zostać dodane do modelu.
-- Wyklucz ścieżkę katalogu głównego do selektywnego dołączania ścieżek, które muszą być indeksowane.
+- Dołącz ścieżkę główną, aby selektywnie wykluczyć ścieżki, które nie muszą być indeksowane. Jest to zalecane podejście, ponieważ umożliwia usługi Azure Cosmos DB proaktywnie indeksować wszystkie nowe właściwości, które mogą być dodawane do modelu.
+- Wyklucz ścieżkę główną, aby selektywnie uwzględnić ścieżki, które muszą być indeksowane.
 
-- W przypadku ścieżek ze zwykłymi znakami, które zawierają: znaki alfanumeryczne i _ (podkreślenie), nie trzeba określać ciągu ścieżki wokół podwójnych cudzysłowów (na przykład "/Path/?"). W przypadku ścieżek z innymi znakami specjalnymi należy wypróbować ciąg ścieżki wokół podwójnych cudzysłowów (na przykład "/\"ścieżka-ABC\"/?"). Jeśli oczekujesz znaków specjalnych w ścieżce, możesz pominąć wszystkie ścieżki w celu zapewnienia bezpieczeństwa. Funkcjonalnie nie ma żadnej różnicy, jeśli wykorzystasz wszystkie ścieżki, a tylko te, które zawierają znaki specjalne.
+- W przypadku ścieżek ze zwykłymi znakami, które zawierają: znaki alfanumeryczne i _ (podkreślenie), nie trzeba uciekać ciąg ścieżki wokół cudzysłowów (na przykład "/path/?"). W przypadku ścieżek z innymi znakami specjalnymi należy uciec od ciągu\"ścieżki wokół\"cudzysłowów (na przykład "/ path-abc /?"). Jeśli spodziewasz się znaków specjalnych na swojej drodze, możesz uciec z każdej ścieżki dla bezpieczeństwa. Funkcjonalnie nie ma żadnej różnicy, jeśli uciec każdej ścieżki Vs tylko te, które mają znaki specjalne.
 
-- Właściwość systemowa "_etag" jest domyślnie wykluczona z indeksowania, chyba że element ETag zostanie dodany do ścieżki dołączonej do indeksowania.
+- Właściwość `_etag` systemowa jest domyślnie wykluczona z indeksowania, chyba że etag zostanie dodany do dołączonej ścieżki indeksowania.
 
-W przypadku dołączania i wykluczania ścieżek mogą wystąpić następujące atrybuty:
+- Jeśli tryb indeksowania jest ustawiony na **spójny**, właściwości `id` systemu i `_ts` są automatycznie indeksowane.
 
-- `kind` może być `range` lub `hash`. Funkcja indeksu zakresu zapewnia wszystkie funkcje indeksu wartości skrótu, dlatego zalecamy użycie indeksu zakresu.
+W przypadku włączania ścieżek i wykluczania można napotkać następujące atrybuty:
 
-- `precision` to liczba zdefiniowana na poziomie indeksu dla dołączonych ścieżek. Wartość `-1` wskazuje maksymalną precyzję. Zaleca się, aby wartość tej wartości była `-1`.
+- `kind`może być `range` albo `hash`lub . Funkcja indeksu zakresu zapewnia wszystkie funkcje indeksu mieszania, dlatego zalecamy użycie indeksu zakresu.
 
-- `dataType` może być `String` lub `Number`. Wskazuje typy właściwości JSON, które będą indeksowane.
+- `precision`jest liczbą zdefiniowaną na poziomie indeksu dla uwzględnionych ścieżek. Wartość wskazuje `-1` maksymalną precyzję. Zalecamy zawsze ustawienie `-1`tej wartości na .
 
-Gdy nie zostanie określony, te właściwości będą miały następujące wartości domyślne:
+- `dataType`może być `String` albo `Number`lub . Wskazuje typy właściwości JSON, które będą indeksowane.
+
+Jeśli nie zostanie określony, te właściwości będą miały następujące wartości domyślne:
 
 | **Nazwa właściwości**     | **Wartość domyślna** |
 | ----------------------- | -------------------------------- |
@@ -93,48 +95,48 @@ Gdy nie zostanie określony, te właściwości będą miały następujące warto
 | `precision`   | `-1`  |
 | `dataType`    | `String` i `Number` |
 
-Zapoznaj się z [tą sekcją](how-to-manage-indexing-policy.md#indexing-policy-examples) , aby zapoznać się z przykładami zasad indeksowania obejmującymi i wykluczającymi ścieżki.
+Zobacz [tę sekcję,](how-to-manage-indexing-policy.md#indexing-policy-examples) aby zapoznać się z przykładami zasad indeksowania, aby uwzględnić ścieżki i wykluczyć.
 
 ## <a name="spatial-indexes"></a>Indeksy przestrzenne
 
-Podczas definiowania ścieżki przestrzennej w zasadach indeksowania należy określić, który indeks ```type``` powinien zostać zastosowany do tej ścieżki. Możliwe typy indeksów przestrzennych obejmują:
+Podczas definiowania ścieżki przestrzennej w zasadach indeksowania ```type``` należy zdefiniować, który indeks powinien być stosowany do tej ścieżki. Możliwe typy indeksów przestrzennych obejmują:
 
-* Moment
+* Punkt
 
-* Tworząc
+* Wielokąt
 
-* MultiPolygon
+* Multipolygon
 
-* LineString
+* Linestring
 
-Domyślnie Azure Cosmos DB nie utworzy żadnych indeksów przestrzennych. Jeśli chcesz używać przestrzennych funkcji języka SQL, należy utworzyć indeks przestrzenny dla wymaganych właściwości. Zobacz [tę sekcję](geospatial.md) , aby zapoznać się z przykładami zasad indeksowania służącymi do dodawania indeksów przestrzennych.
+Usługa Azure Cosmos DB domyślnie nie tworzy żadnych indeksów przestrzennych. Jeśli chcesz użyć funkcji wbudowanych sql przestrzennych, należy utworzyć indeks przestrzenny na wymaganych właściwości. Zobacz [tę sekcję,](geospatial.md) aby dodawać przykłady zasad indeksowania do dodawania indeksów przestrzennych.
 
 ## <a name="composite-indexes"></a>Indeksy złożone
 
-Zapytania, które mają klauzulę `ORDER BY` z co najmniej dwiema właściwościami, wymagają indeksu złożonego. Można również zdefiniować indeks złożony, aby zwiększyć wydajność wielu zapytań równości i zakresu. Domyślnie nie są zdefiniowane żadne indeksy złożone, dlatego należy [dodać indeksy złożone](how-to-manage-indexing-policy.md#composite-indexing-policy-examples) zgodnie z wymaganiami.
+Kwerendy, które `ORDER BY` mają klauzulę z co najmniej dwie właściwości wymagają indeksu złożonego. Można również zdefiniować indeks złożony, aby poprawić wydajność wielu zapytań równości i zakresu. Domyślnie nie zdefiniowano żadnych indeksów złożonych, więc należy [dodać indeksy złożone w](how-to-manage-indexing-policy.md#composite-indexing-policy-examples) razie potrzeby.
 
 Podczas definiowania indeksu złożonego należy określić:
 
-- Co najmniej dwie ścieżki właściwości. Sekwencja, w której są zdefiniowane ścieżki właściwości.
+- Dwie lub więcej ścieżek właściwości. Kolejność, w której ścieżki właściwości są zdefiniowane, ma znaczenie.
 
-- Zamówienie (rosnąco lub malejąco).
+- Kolejność (rosnąca lub malejąca).
 
 > [!NOTE]
-> Po dodaniu indeksu złożonego zapytanie będzie używać istniejących indeksów zakresu do momentu ukończenia nowego złożonego dodawania indeksu. W związku z tym, po dodaniu indeksu złożonego, nie należy od razu obserwować ulepszeń wydajności. Istnieje możliwość śledzenia postępu transformacji indeksu przy [użyciu jednego z zestawów SDK](how-to-manage-indexing-policy.md).
+> Po dodaniu indeksu złożonego kwerenda będzie korzystać z istniejących indeksów zakresu, dopóki nie zostanie ukończony nowy dodatek indeksu złożonego. W związku z tym po dodaniu indeksu złożonego, nie może natychmiast obserwować poprawę wydajności. Możliwe jest śledzenie postępu transformacji indeksu [za pomocą jednego z SDK](how-to-manage-indexing-policy.md).
 
-### <a name="order-by-queries-on-multiple-properties"></a>Zaporządkuj według zapytań dotyczących wielu właściwości:
+### <a name="order-by-queries-on-multiple-properties"></a>KOLEJNOŚĆ według zapytań dotyczących wielu właściwości:
 
-Poniższe zagadnienia są używane podczas używania indeksów złożonych dla zapytań z klauzulą `ORDER BY` z co najmniej dwiema właściwościami:
+Następujące zagadnienia są używane podczas korzystania z indeksów złożonych dla kwerend z klauzulą `ORDER BY` z co najmniej dwiema właściwościami:
 
-- Jeśli ścieżki indeksu złożonego nie pasują do sekwencji właściwości w klauzuli `ORDER BY`, wówczas indeks złożony nie będzie obsługiwał zapytania.
+- Jeśli złożone ścieżki indeksu nie są zgodne z `ORDER BY` sekwencją właściwości w klauzuli, indeks złożony nie może obsługiwać kwerendy.
 
-- Kolejność ścieżek indeksu złożonego (rosnąco lub malejąco) powinna również pasować do `order` w klauzuli `ORDER BY`.
+- Kolejność złożonych ścieżek indeksu (rosnąco lub malejąco) powinna również odpowiadać `order` klauzuli w klauzuli. `ORDER BY`
 
-- Indeks złożony również obsługuje klauzulę `ORDER BY` z odwrotną kolejnością we wszystkich ścieżkach.
+- Indeks złożony obsługuje `ORDER BY` również klauzulę o odwrotnej kolejności na wszystkich ścieżkach.
 
-Rozważmy następujący przykład, w którym zdefiniowano indeks złożony w nazwach właściwości, wieku i _ts:
+Rozważmy następujący przykład, w którym indeks złożony jest zdefiniowany na nazwę właściwości, wiek i _ts:
 
-| **Indeks złożony**     | **Przykładowe zapytanie `ORDER BY`**      | **Obsługiwane przez indeks złożony?** |
+| **Indeks złożony**     | **Przykładowa `ORDER BY` kwerenda**      | **Obsługiwane przez Composite Index?** |
 | ----------------------- | -------------------------------- | -------------- |
 | ```(name ASC, age ASC)```   | ```SELECT * FROM c ORDER BY c.name ASC, c.age asc``` | ```Yes```            |
 | ```(name ASC, age ASC)```   | ```SELECT * FROM c ORDER BY c.age ASC, c.name asc```   | ```No```             |
@@ -143,41 +145,41 @@ Rozważmy następujący przykład, w którym zdefiniowano indeks złożony w naz
 | ```(name ASC, age ASC, timestamp ASC)``` | ```SELECT * FROM c ORDER BY c.name ASC, c.age ASC, timestamp ASC``` | ```Yes```            |
 | ```(name ASC, age ASC, timestamp ASC)``` | ```SELECT * FROM c ORDER BY c.name ASC, c.age ASC``` | ```No```            |
 
-Zasady indeksowania należy dostosować, aby można było obsłużyć wszystkie niezbędne `ORDER BY`ych zapytań.
+Należy dostosować zasady indeksowania, dzięki czemu `ORDER BY` można obsługiwać wszystkie niezbędne zapytania.
 
 ### <a name="queries-with-filters-on-multiple-properties"></a>Zapytania z filtrami na wielu właściwościach
 
-Jeśli zapytanie zawiera filtry dla co najmniej dwóch właściwości, warto utworzyć indeks złożony dla tych właściwości.
+Jeśli kwerenda ma filtry na co najmniej dwie właściwości, może być przydatne do utworzenia indeksu złożonego dla tych właściwości.
 
-Rozważmy na przykład następujące zapytanie, które ma filtr równości dla dwóch właściwości:
+Rozważmy na przykład następującą kwerendę, która ma filtr równości na dwóch właściwościach:
 
 ```sql
 SELECT * FROM c WHERE c.name = "John" AND c.age = 18
 ```
 
-To zapytanie będzie bardziej wydajne, co zajmuje mniej czasu i zużywa mniejszą liczbę jednostek RU, jeśli może wykorzystać indeks złożony w dniu (nazwa ASC, wiek ASC).
+Ta kwerenda będzie bardziej wydajne, biorąc mniej czasu i zużywa mniej RU, jeśli jest w stanie wykorzystać złożony indeks na (nazwa ASC, wiek ASC).
 
-Zapytania z filtrami zakresu można także zoptymalizować przy użyciu indeksu złożonego. Jednak zapytanie może mieć tylko jeden filtr zakresu. Filtry zakresu obejmują `>`, `<`, `<=`, `>=`i `!=`. Filtr zakresu powinien być zdefiniowany jako ostatni w indeksie złożonym.
+Zapytania z filtrami zakresu można również zoptymalizować za pomocą indeksu złożonego. Jednak kwerenda może mieć tylko jeden zakres filtru. Filtry zakresu `>` `<`obejmują `<=` `>=`, `!=`, , i . Filtr zakresu powinien być zdefiniowany jako ostatni w indeksie złożonym.
 
-Rozważ następujące zapytanie z filtrami równości i zakresu:
+Należy wziąć pod uwagę następujące zapytanie z filtrami równości i zakresu:
 
 ```sql
 SELECT * FROM c WHERE c.name = "John" AND c.age > 18
 ```
 
-To zapytanie będzie bardziej wydajne z indeksem złożonym w dniu (nazwa ASC, wiek ASC). Jednak zapytanie nie korzysta ze złożonego indeksu w (Age ASC, Name ASC), ponieważ filtry równości muszą być zdefiniowane najpierw w indeksie złożonym.
+Ta kwerenda będzie bardziej wydajne z indeksu złożonego na (nazwa ASC, wiek ASC). Jednak kwerenda nie będzie korzystać z indeksu złożonego na (wiek ASC, nazwa ASC), ponieważ filtry równości muszą być zdefiniowane najpierw w indeksie złożonym.
 
-Poniższe zagadnienia są używane podczas tworzenia indeksów złożonych dla zapytań z filtrami dla wielu właściwości
+Podczas tworzenia indeksów złożonych dla kwerend z filtrami dotyczącymi wielu właściwości używane są następujące zagadnienia: następujące zagadnienia:
 
-- Właściwości w filtrze zapytania powinny być zgodne z tymi w indeksie złożonym. Jeśli właściwość znajduje się w indeksie złożonym, ale nie jest uwzględniona w zapytaniu jako filtr, zapytanie nie będzie korzystać z indeksu złożonego.
-- Jeśli zapytanie ma dodatkowe właściwości w filtrze, który nie został zdefiniowany w indeksie złożonym, wówczas do obliczenia zapytania zostanie użyta kombinacja indeksów złożonych i zakresów. Będzie to wymagało mniejszej liczby jednostek RU niż w przypadku używania indeksów zakresów.
-- Jeśli właściwość ma filtr zakresu (`>`, `<`, `<=`, `>=`lub `!=`), wówczas ta właściwość powinna być zdefiniowana jako Ostatnia w indeksie złożonym. Jeśli zapytanie ma więcej niż jeden filtr zakresu, nie będzie używać indeksu złożonego.
-- Podczas tworzenia indeksu złożonego do optymalizowania zapytań z wieloma filtrami `ORDER` indeksu złożonego nie będą miały wpływu na wyniki. Ta właściwość jest opcjonalna.
-- Jeśli nie zdefiniujesz indeksu złożonego dla zapytania z filtrami dla wielu właściwości, zapytanie będzie nadal kończyło się pomyślnie. Koszt RU zapytania można jednak zmniejszyć przy użyciu indeksu złożonego.
+- Właściwości w filtrze kwerendy powinny być zgodne z właściwościami w indeksie złożonym. Jeśli właściwość znajduje się w indeksie złożonym, ale nie jest uwzględniona w kwerendzie jako filtr, kwerenda nie będzie korzystać z indeksu złożonego.
+- Jeśli kwerenda ma dodatkowe właściwości w filtrze, które nie zostały zdefiniowane w indeksie złożonym, do oceny kwerendy zostanie użyta kombinacja indeksów złożonych i zakresowych. Będzie to wymagało mniejszej liczby RU niż wyłącznie przy użyciu indeksów zakresu.
+- Jeśli właściwość ma filtr`>` `<`zakresu `<=` `>=`( `!=`, , , , lub ), to ta właściwość powinna być zdefiniowana jako ostatnia w indeksie złożonym. Jeśli kwerenda ma więcej niż jeden filtr zakresu, nie będzie korzystać z indeksu złożonego.
+- Podczas tworzenia indeksu złożonego w celu optymalizacji zapytań z wieloma filtrami indeks `ORDER` złożony nie będzie miał wpływu na wyniki. Ta właściwość jest opcjonalna.
+- Jeśli nie zdefiniujesz indeksu złożonego dla kwerendy z filtrami na wiele właściwości, kwerenda będzie nadal sukces. Jednak koszt RU kwerendy można zmniejszyć za pomocą indeksu złożonego.
 
-Rozważmy następujące przykłady, w których zdefiniowany jest indeks złożony w polu Nazwa właściwości, wiek i sygnatura czasowa:
+Rozważmy następujące przykłady, w których indeks złożony jest zdefiniowany na nazwę właściwości, wiek i sygnatura czasowa:
 
-| **Indeks złożony**     | **Przykładowe zapytanie**      | **Obsługiwane przez indeks złożony?** |
+| **Indeks złożony**     | **Przykładowa kwerenda**      | **Obsługiwane przez Composite Index?** |
 | ----------------------- | -------------------------------- | -------------- |
 | ```(name ASC, age ASC)```   | ```SELECT * FROM c WHERE c.name = "John" AND c.age = 18``` | ```Yes```            |
 | ```(name ASC, age ASC)```   | ```SELECT * FROM c WHERE c.name = "John" AND c.age > 18```   | ```Yes```             |
@@ -188,44 +190,44 @@ Rozważmy następujące przykłady, w których zdefiniowany jest indeks złożon
 
 ### <a name="queries-with-a-filter-as-well-as-an-order-by-clause"></a>Zapytania z filtrem, a także z klauzulą ORDER BY
 
-Jeśli zapytanie filtruje dla jednej lub wielu właściwości i ma inne właściwości w klauzuli ORDER BY, pomocne może być dodanie właściwości w filtrze do klauzuli `ORDER BY`.
+Jeśli kwerenda filtruje jedną lub więcej właściwości i ma różne właściwości w klauzuli ORDER BY, może `ORDER BY` być pomocne dodanie właściwości w filtrze do klauzuli.
 
-Na przykład dodając właściwości w filtrze do klauzuli ORDER BY, można ponownie napisać następujące zapytanie, aby użyć złożonego indeksu:
+Na przykład przez dodanie właściwości w filtrze do order by klauzuli, następujące zapytanie może być przepisany do wykorzystania indeksu złożonego:
 
-Zapytanie przy użyciu indeksu zakresu:
+Kwerenda używająca indeksu zakresu:
 
 ```sql
 SELECT * FROM c WHERE c.name = "John" ORDER BY c.timestamp
 ```
 
-Zapytanie przy użyciu indeksu złożonego:
+Kwerenda przy użyciu indeksu złożonego:
 
 ```sql
 SELECT * FROM c WHERE c.name = "John" ORDER BY c.name, c.timestamp
 ```
 
-Te same optymalizacje wzorca i kwerendy mogą być uogólnione dla zapytań z wieloma filtrami równości:
+Ten sam wzorzec i optymalizacje zapytań można uogólnić dla kwerend z wieloma filtrami równości:
 
-Zapytanie przy użyciu indeksu zakresu:
+Kwerenda używająca indeksu zakresu:
 
 ```sql
 SELECT * FROM c WHERE c.name = "John", c.age = 18 ORDER BY c.timestamp
 ```
 
-Zapytanie przy użyciu indeksu złożonego:
+Kwerenda przy użyciu indeksu złożonego:
 
 ```sql
 SELECT * FROM c WHERE c.name = "John", c.age = 18 ORDER BY c.name, c.age, c.timestamp
 ```
 
-Poniższe zagadnienia są używane podczas tworzenia indeksów złożonych w celu optymalizacji zapytania z klauzulą Filter i `ORDER BY`:
+Podczas tworzenia indeksów złożonych używane są następujące zagadnienia w `ORDER BY` celu optymalizacji kwerendy za pomocą filtru i klauzuli:
 
-* Jeśli zapytanie filtruje właściwości, powinny one zostać uwzględnione jako pierwsze w klauzuli `ORDER BY`.
-* Jeśli nie zdefiniujesz indeksu złożonego w zapytaniu z filtrem dla jednej właściwości i oddzielną klauzulą `ORDER BY` przy użyciu innej właściwości, zapytanie będzie nadal kończyć się powodzeniem. Koszt RU zapytania można jednak zmniejszyć przy użyciu indeksu złożonego, szczególnie jeśli właściwość w klauzuli `ORDER BY` ma wysoką Kardynalność.
-* Wszystkie zagadnienia dotyczące tworzenia indeksów złożonych dla `ORDER BY` zapytań z wieloma właściwościami oraz zapytania z filtrami dla wielu właściwości nadal mają zastosowanie.
+* Jeśli kwerenda filtruje właściwości, powinny one być `ORDER BY` uwzględnione najpierw w klauzuli.
+* Jeśli nie zdefiniujesz indeksu złożonego w kwerendzie `ORDER BY` z filtrem na jednej właściwości i osobnej klauzuli przy użyciu innej właściwości, kwerenda będzie nadal sukces. Jednak koszt RU kwerendy można zmniejszyć za pomocą indeksu złożonego, `ORDER BY` szczególnie jeśli właściwość w klauzuli ma wysoką kardynalność.
+* Wszystkie zagadnienia dotyczące tworzenia indeksów złożonych dla `ORDER BY` kwerend z wieloma właściwościami, a także kwerend z filtrami na wiele właściwości nadal mają zastosowanie.
 
 
-| **Indeks złożony**                      | **Przykładowe zapytanie `ORDER BY`**                                  | **Obsługiwane przez indeks złożony?** |
+| **Indeks złożony**                      | **Przykładowa `ORDER BY` kwerenda**                                  | **Obsługiwane przez Composite Index?** |
 | ---------------------------------------- | ------------------------------------------------------------ | --------------------------------- |
 | ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" ORDER BY c.name ASC, c.timestamp ASC``` | `Yes` |
 | ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" ORDER BY c.timestamp ASC, c.name ASC``` | `No`  |
@@ -235,25 +237,25 @@ Poniższe zagadnienia są używane podczas tworzenia indeksów złożonych w cel
 
 ## <a name="modifying-the-indexing-policy"></a>Modyfikowanie zasad indeksowania
 
-Zasady indeksowania kontenera można aktualizować w dowolnym momencie przy [użyciu Azure Portal lub jednego z obsługiwanych zestawów SDK](how-to-manage-indexing-policy.md). Aktualizacja zasad indeksowania wyzwala transformację ze starego indeksu do nowego, który jest wykonywany w trybie online i w miejscu (dlatego w trakcie operacji nie jest używane dodatkowe miejsce do magazynowania). Stary indeks zasad jest efektywnie przekształcany w nowe zasady bez wpływu na dostępność zapisu lub przepływność zainicjowaną w kontenerze. Przekształcanie indeksów jest operacją asynchroniczną i czas potrzebny do ukończenia zależy od przepływności, liczby elementów i ich rozmiaru.
+Zasady indeksowania kontenera można zaktualizować w dowolnym momencie [przy użyciu witryny Azure portal lub jednego z obsługiwanych zestawów SDK.](how-to-manage-indexing-policy.md) Aktualizacja zasad indeksowania wyzwala transformację ze starego indeksu do nowego, który jest wykonywany w trybie online i w miejscu (więc nie dodatkowe miejsce do magazynowania jest zużywane podczas operacji). Indeks starych zasad jest skutecznie przekształcany do nowych zasad bez wpływu na dostępność zapisu lub przepływność aprowizowana w kontenerze. Transformacja indeksu jest operacją asynchronizacyjną, a czas potrzebny do ukończenia zależy od aprowizowanej przepływności, liczby elementów i ich rozmiaru.
 
 > [!NOTE]
-> Podczas dodawania zakresu lub indeksu przestrzennego zapytania mogą nie zwracać wszystkich pasujących wyników i nie będą zwracać żadnych błędów. Oznacza to, że wyniki zapytania mogą nie być spójne do momentu zakończenia transformacji indeksu. Istnieje możliwość śledzenia postępu transformacji indeksu przy [użyciu jednego z zestawów SDK](how-to-manage-indexing-policy.md).
+> Podczas dodawania zakresu lub indeksu przestrzennego kwerendy mogą nie zwracać wszystkich pasujących wyników i będą to robić bez zwracania błędów. Oznacza to, że wyniki kwerendy mogą nie być spójne, dopóki transformacja indeksu nie zostanie zakończona. Możliwe jest śledzenie postępu transformacji indeksu [za pomocą jednego z SDK](how-to-manage-indexing-policy.md).
 
-Jeśli nowy tryb zasad indeksowania jest ustawiony na spójne, nie można zastosować żadnej innej zmiany zasad indeksowania, gdy trwa przekształcanie indeksu. Uruchomioną transformację indeksu można anulować, ustawiając tryb zasad indeksowania na brak (co spowoduje natychmiastowe porzucenie indeksu).
+Jeśli tryb nowej zasady indeksowania jest ustawiony na Spójne, nie można zastosować żadnej innej zmiany zasad indeksowania podczas przekształcania indeksu. Bieżąca transformacja indeksu można anulować, ustawiając tryb zasad indeksowania na Brak (który natychmiast spadnie indeksu).
 
-## <a name="indexing-policies-and-ttl"></a>Zasady indeksowania i czas wygaśnięcia
+## <a name="indexing-policies-and-ttl"></a>Zasady indeksowania i czasu wygaśnięcia
 
-[Funkcja czasu wygaśnięcia (TTL, Time-to-Live)](time-to-live.md) wymaga, aby indeksowanie było aktywne w kontenerze, w którym jest włączona. Oznacza to, że:
+[Funkcja Czas wygaśnięcia (TTL)](time-to-live.md) wymaga, aby indeksowanie było aktywne w kontenerze, który jest włączony. Oznacza to, że:
 
-- nie można aktywować czasu wygaśnięcia w kontenerze, w którym tryb indeksowania jest ustawiony na none.
-- nie można ustawić trybu indeksowania na brak w kontenerze, w którym jest aktywowany czas wygaśnięcia.
+- nie jest możliwe aktywowanie czasu wygaśnięcia w kontenerze, w którym tryb indeksowania jest ustawiony na Brak,
+- nie jest możliwe ustawienie trybu indeksowania na Brak w kontenerze, w którym jest aktywowany czas wygaśnięcia.
 
-W przypadku scenariuszy, w których nie ma potrzeby indeksowania ścieżki właściwości, ale czas wygaśnięcia jest wymagany, można użyć zasad indeksowania z:
+W scenariuszach, w których nie ma ścieżki właściwości musi być indeksowane, ale TTL jest wymagane, można użyć zasad indeksowania z:
 
-- Tryb indeksowania ustawiony na spójne i
-- Brak dołączonej ścieżki i
-- `/*` jako jedyną wykluczoną ścieżkę.
+- tryb indeksowania ustawiony na Spójny, oraz
+- nie zawiera ścieżki, oraz
+- `/*`jako jedyna wykluczona ścieżka.
 
 ## <a name="next-steps"></a>Następne kroki
 

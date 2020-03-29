@@ -1,88 +1,88 @@
 ---
-title: Zgłoszenie do pomocy technicznej lub otworzyć zgłoszenie do urządzenia Azure Data Box | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak rejestrowanie żądania pomocy technicznej w przypadku problemów związanych z usługi Data Box lub dysku Data Box.
+title: Bilet pomocy technicznej dziennika lub otwarta sprawa dla usługi Azure Data Box | Dokumenty firmy Microsoft
+description: Dowiedz się, jak rejestrować żądania pomocy technicznej dotyczące problemów związanych z zamówieniami na dysku data box lub data box.
 services: databox
 author: alkohli
 ms.service: databox
-ms.subservice: ''
+ms.subservice: disk
 ms.topic: article
 ms.date: 05/24/2019
 ms.author: alkohli
-ms.openlocfilehash: acba9d2c87d2fb23e48ac24cec22388044702bac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 000659793707c860de881f150e6ce07e4506c602
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66240147"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064968"
 ---
-# <a name="open-a-support-ticket-for-azure-data-box"></a>Otwórz bilet pomocy technicznej urządzenia Azure Data Box 
+# <a name="open-a-support-ticket-for-azure-data-box"></a>Otwieranie biletu pomocy technicznej dla usługi Azure Data Box 
 
-Ten artykuł dotyczy usługi Azure Data Box, Azure Data Box duże i dysku Azure Data Box, które są zarządzane przez usługę Azure Data Box. Jeśli napotkasz jakiekolwiek problemy z usługą Azure Data Box można utworzyć żądania obsługi, aby uzyskać pomoc techniczną. Ten artykuł przeprowadzi Cię przez:
+Ten artykuł dotyczy usługi Azure Data Box, Azure Data Box Heavy i Azure Data Box Disk, z których wszystkie są zarządzane przez usługę Azure Data Box. Jeśli wystąpią jakiekolwiek problemy z usługą Azure Data Box, możesz utworzyć żądanie usługi dla pomocy technicznej. W tym artykule otrzymasz:
 
 * Jak utworzyć żądanie pomocy technicznej.
-* Jak zarządzać żądanie zasady świadczenia pomocy technicznej z poziomu portalu.
+* Jak zarządzać cyklem życia żądania pomocy technicznej z poziomu portalu.
 
 ## <a name="create-a-support-request"></a>Tworzenie żądania obsługi
 
-Wykonaj poniższe kroki, aby utworzyć żądanie pomocy technicznej:
+Wykonaj następujące kroki, aby utworzyć żądanie pomocy technicznej:
 
-1. Przejdź do Twoje zamówienie urządzenia Data Box lub dysku Data Box. Przejdź do **pomoc techniczna i rozwiązywanie problemów** sekcji, a następnie kliknij przycisk **nowe żądanie obsługi**.
+1. Przejdź do kolejności data box lub data box disk. Przejdź do sekcji **POMOC TECHNICZNA + ROZWIĄZYWANIE PROBLEMÓW,** a następnie kliknij pozycję **Nowe żądanie pomocy technicznej**.
      
     ![Nowe żądanie pomocy technicznej](./media/data-box-disk-contact-microsoft-support/data-box-disk-support-request.png)
    
-2. W **nowe żądanie obsługi**, wybierz opcję **podstawy**. W **podstawy**, wykonaj następujące czynności:
+2. W **obszarze Nowe żądanie pomocy technicznej**wybierz pozycję **Podstawy**. W **programach Podstawowe**wykonaj następujące czynności:
     
-    1. Z **typ problemu** listy rozwijanej wybierz **techniczne**.
+    1. Z listy rozwijanej **Typ problemu** wybierz pozycję **Techniczne**.
     2. Wybierz **subskrypcję**.
-    3. W obszarze **usługi**, sprawdź **wszystkich usług**. Z listy rozwijanej wybierz **urządzenia Data Box**. 
-    4. Określ swoje **plan pomocy technicznej**.
-    5. Kliknij przycisk **Dalej**.
+    3. W obszarze **Usługa**sprawdź **wszystkie usługi**. Z listy rozwijanej wybierz pozycję **Pole danych**. 
+    4. Określ **plan pomocy technicznej**.
+    5. Kliknij przycisk **alej**.
 
         ![Podstawy](./media/data-box-disk-contact-microsoft-support/data-box-disk-support1.png)
 
-3. W **nowe żądanie obsługi**, wybierz opcję **kroku 2 Problem**. W **Problem**, wykonaj następujące czynności:
+3. W **obszarze Nowe żądanie pomocy technicznej**wybierz krok **2 Problem**. W **sprawie Problem**wykonaj następujące czynności:
     
-    1. Wybierz **ważność** jako **C — znaczenie minimalne**. Obsługa spowoduje zaktualizowanie go w razie potrzeby.
-    2. Wybierz **typ problemu** z listy rozwijanej.
-    3. Oparte na wybrany typ problemu, wybierz odpowiednią **kategorii**.
-    4. Podaj **tytuł** dla problem i nie tylko **szczegóły**.
-    5. Podaj datę i godzinę rozpoczęcia dla problemu.
-    6. W **przekazywanie pliku**, kliknij ikonę folderu, aby przejść do innych plików, który chcesz przekazać.
-    7. Sprawdź **Udostępnij informacje diagnostyczne**.
-    8. Kliknij przycisk **Dalej**.
+    1. Wybierz **ważność** jako **C - Minimalny wpływ**. W razie potrzeby pomoc techniczna zaktualizuje go.
+    2. Wybierz **typ Problem** z listy rozwijanej.
+    3. Na podstawie wybranego typu problemu wybierz odpowiednią **kategorię**.
+    4. Podaj **tytuł** problemu i więcej **szczegółów**.
+    5. Podaj datę i godzinę rozpoczęcia problemu.
+    6. W **folderze Przekazywanie plików**kliknij ikonę folderu, aby przeglądać inne pliki, które chcesz przekazać.
+    7. Sprawdź **informacje diagnostyczne udostępniania**.
+    8. Kliknij przycisk **alej**.
 
        ![Problem](./media/data-box-disk-contact-microsoft-support/data-box-disk-support2.png)
 
-4. W **nowe żądanie obsługi**, kliknij przycisk **informacji skontaktuj się z kroku 3**. W **informacje kontaktowe**, wykonaj następujące czynności:
+4. W **2014**r. kliknij pozycję Nowe żądanie pomocy technicznej , kliknij **krok 3 Informacje kontaktowe**. W **informacjach kontaktowych**wykonaj następujące czynności:
 
-   1. W **opcje kontaktu**, podaj preferowaną metodę kontaktu (telefonu lub adresu e-mail) i język. Czas odpowiedzi zostanie automatycznie wybrany w oparciu o plan subskrypcji.
-   2. W **informacje kontaktowe**, podaj nazwę, adres e-mail, opcjonalny skontaktuj się z pomocą, kraj/region. Wybierz **Zapisz zmiany dotyczące kontaktu dla przyszłych żądań obsługi**.
-   3. Kliknij pozycję **Utwórz**.
+   1. W **opcjach Kontakt**podaj preferowaną metodę kontaktu (telefon lub adres e-mail) i język. Czas odpowiedzi jest wybierany automatycznie na podstawie planu subskrypcji.
+   2. W **informacjach kontaktowych**podaj swoje imię i nazwisko, adres e-mail, opcjonalny kontakt, kraj/region. Wybierz **pozycję Zapisz zmiany kontaktu dla przyszłych żądań pomocy technicznej**.
+   3. Kliknij przycisk **Utwórz**.
    
        ![Informacje kontaktowe](./media/data-box-disk-contact-microsoft-support/data-box-disk-support3.png)   
 
-      Support firmy Microsoft używa tych informacji, aby skontaktować się z Tobą dodatkowe informacje, diagnozowania i rozwiązywania.
-      Gdy prześlesz żądanie inżynier pomocy technicznej się z Tobą tak szybko, jak to możliwe, aby kontynuować z żądaniem.
+      Pomoc techniczna firmy Microsoft korzysta z tych informacji, aby uzyskać dalsze informacje, diagnozę i rozwiązanie problemu.
+      Po przesłaniu wniosku, inżynier pomocy technicznej skontaktuje się z Tobą tak szybko, jak to możliwe, aby kontynuować twoją prośbę.
 
-## <a name="manage-a-support-request"></a>Zarządzaj żądaniami obsługi
+## <a name="manage-a-support-request"></a>Zarządzanie żądaniem pomocy technicznej
 
 Po utworzeniu biletu pomocy technicznej możesz zarządzać jego cyklem życia z poziomu portalu.
 
 #### <a name="to-manage-your-support-requests"></a>Aby zarządzać żądaniami pomocy technicznej
 
-1. Aby uzyskać dostęp do strony pomocy i obsługi technicznej, przejdź do **Przeglądaj > Pomoc i obsługa techniczna**.
+1. Aby przejść do strony pomocy i pomocy technicznej, przejdź do **sekcji Przeglądaj > Pomoc + pomoc + pomoc .**
 
-    ![Zarządzaj żądaniami obsługi](./media/data-box-disk-contact-microsoft-support/data-box-disk-manage-support-ticket1.png)   
+    ![Zarządzanie żądaniami pomocy technicznej](./media/data-box-disk-contact-microsoft-support/data-box-disk-manage-support-ticket1.png)   
 
-2. Tabelarycznej liście **żądania obsługi ostatnie** jest wyświetlany w **Pomoc i obsługa techniczna**.
+2. Tabelaryczny wykaz **ostatnich żądań pomocy technicznej** jest wyświetlany w Pomocy + pomocy **technicznej**.
 
-    ![Zarządzaj żądaniami obsługi](./media/data-box-disk-contact-microsoft-support/data-box-disk-manage-support-ticket2.png) 
+    ![Zarządzanie żądaniami pomocy technicznej](./media/data-box-disk-contact-microsoft-support/data-box-disk-manage-support-ticket2.png) 
 
-3. Wybierz, a następnie kliknij przycisk żądania pomocy technicznej. Można wyświetlić stan i szczegóły dotyczące tego żądania. Kliknij przycisk **+ Nowa wiadomość** Aby wykonywać dalsze czynności dla tego żądania.
+3. Wybierz i kliknij żądanie pomocy technicznej. Można wyświetlić stan i szczegóły tego żądania. Kliknij **+ Nowa wiadomość,** jeśli chcesz wykonać następujące żądanie.
 
    
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak [rozwiązywania problemów związanych z dysku Data Box](data-box-disk-troubleshoot.md).
-Dowiedz się, jak [rozwiązywania problemów związanych z Data Box](data-box-troubleshoot.md).
-Dowiedz się, jak [rozwiązywania problemów związanych z magazynu obiektów Blob pole danych](data-box-troubleshoot-rest.md).
+Dowiedz się, jak [rozwiązywać problemy związane z dyskiem pola danych](data-box-disk-troubleshoot.md).
+Dowiedz się, jak [rozwiązywać problemy związane z polem danych](data-box-troubleshoot.md).
+Dowiedz się, jak [rozwiązywać problemy związane z magazynem obiektów Blob w polach danych](data-box-troubleshoot-rest.md).

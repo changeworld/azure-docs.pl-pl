@@ -1,7 +1,7 @@
 ---
 title: Co to jest Video Indexer?
 titleSuffix: Azure Media Services
-description: Ten artykuł zawiera omówienie usługi Video Indexer Azure Media Services.
+description: Ten artykuł zawiera omówienie usługi indeksatora wideo usługi Azure Media Services.
 services: media-services
 author: Juliako
 manager: femila
@@ -11,111 +11,111 @@ ms.topic: article
 ms.date: 02/02/2020
 ms.author: juliako
 ms.openlocfilehash: efd8386f464bfdf2ac27d3be07e6572dc27952e1
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78163594"
 ---
 # <a name="what-is-video-indexer"></a>Co to jest Video Indexer?
 
-Video Indexer (VI) to rozwiązanie Azure Media Services AI i część marki Cognitive Services platformy Azure. Video Indexer zapewnia możliwość wyodrębnienia szczegółowego wglądu (bez konieczności analizowania danych lub umiejętności kodowania) przy użyciu modeli uczenia maszynowego na podstawie wielu kanałów (Voice, vocals, Wizualizacja). Modele można dostosowywać i wyszkolić. Usługa umożliwia głębokie wyszukiwanie, zmniejsza koszty operacyjne, udostępnia nowe możliwości zysków i tworzy nowe środowisko użytkownika w dużych archiwach filmów wideo (z niskimi ograniczeniami wejścia).
+Indeksator wideo (VI) to rozwiązanie sztucznej inteligencji usługi Azure Media Services i część marki Usługi Azure Cognitive Services. Indeksator wideo zapewnia możliwość wyodrębniania szczegółowych informacji (bez potrzeby analizy danych lub umiejętności kodowania) przy użyciu modeli uczenia maszynowego opartych na wielu kanałach (głos, wokal, wizualny). Można dodatkowo dostosować i wyszkolić modele. Usługa umożliwia głębokie wyszukiwanie, zmniejsza koszty operacyjne, umożliwia nowe możliwości zarabiania i tworzy nowe środowisko użytkownika w dużych archiwach filmów (z niskimi barierami wejścia).
 
-Aby rozpocząć wyodrębnianie szczegółowych informacji z Video Indexer, musisz utworzyć konto i przekazać wideo. Po przekazaniu wideo do Video Indexer, analizuje wizualizacje i dźwięk, uruchamiając różne modele AI. Ponieważ Video Indexer analizuje wideo, szczegółowe informacje, które są wyodrębniane przez modele AI.
+Aby rozpocząć wyodrębnianie statystyk za pomocą indeksatora wideo, musisz utworzyć konto i przesłać filmy. Gdy przesyłasz filmy do indeksatora wideo, analizuje zarówno efekty wizualne, jak i dźwięk, uruchamiając różne modele SI. Gdy indeksator wideo analizuje twój film, szczegółowe informacje, które są wyodrębniane przez modele AI.
 
-Na poniższym diagramie przedstawiono ilustrację, a nie objaśnienie techniczne sposobu działania Video Indexer w zapleczu.
+Poniższy diagram jest ilustracją, a nie technicznym wyjaśnieniem, jak indeksator wideo działa w wewnętrznej bazy danych.
 
-![Diagram przepływu Video Indexer Azure Media Services](./media/video-indexer-overview/model-chart.png)
+![Diagram przepływu indeksatora wideo usługi Azure Media Services](./media/video-indexer-overview/model-chart.png)
 
 
 ## <a name="compliance-privacy-and-security"></a>Zgodność, ochrona prywatności i zabezpieczenia
 
-Ważną kwestią jest przestrzeganie wszystkich obowiązujących przepisów dotyczących używania Video Indexer i nie można używać Video Indexer lub żadnej usługi platformy Azure w sposób naruszający prawa innych osób lub mogą być szkodliwe dla innych osób.
+Jako ważne przypomnienie musisz przestrzegać wszystkich obowiązujących przepisów podczas korzystania z indeksatora wideo i nie możesz używać indeksatora wideo ani żadnej usługi platformy Azure w sposób, który narusza prawa innych osób lub może być szkodliwy dla innych osób.
 
-Przed przekazaniem dowolnych filmów wideo/obrazów do Video Indexer należy dysponować wszystkimi odpowiednimi prawami do używania wideo/obrazu, w tym, gdzie jest to wymagane przez prawo, do użycia, przetwarzania i przechowywania danych w usłudze Video Indexer i na platformie Azure. Niektóre jurysdykcje mogą nakładać specjalne wymagania prawne dotyczące zbierania, przetwarzania online i przechowywania określonych kategorii danych, takich jak dane biometryczne. Przed rozpoczęciem korzystania z Video Indexer i platformy Azure do przetwarzania i przechowywania danych z zastrzeżeniem szczególnych wymagań prawnych należy zapewnić zgodność z wszelkimi wymaganiami prawnymi, które mogą mieć zastosowanie do Ciebie.
+Przed przesłaniem jakichkolwiek wideo/obrazów do video Indexer, Użytkownik musi mieć wszystkie odpowiednie prawa do korzystania z wideo/obrazu, w tym, jeśli jest to wymagane przez prawo, wszystkie niezbędne zgody od osób fizycznych (jeśli istnieją) w wideo /obraz, do wykorzystania, przetwarzania i przechowywania ich danych w Video Indexer i azure. Niektóre jurysdykcje mogą nakładać specjalne wymogi prawne dotyczące gromadzenia, przetwarzania i przechowywania danych online określonych kategorii danych, takich jak dane biometryczne. Przed użyciem video indexer i platformy Azure do przetwarzania i przechowywania wszelkich danych podlegających specjalnym wymogom prawnym, Należy zapewnić zgodność z takimi wymogami prawnymi, które mogą mieć zastosowanie do Ciebie.
 
-Aby dowiedzieć się więcej o zgodności, prywatności i zabezpieczeniach w Video Indexer odwiedź [Centrum zaufania](https://www.microsoft.com/TrustCenter/CloudServices/Azure/default.aspx)firmy Microsoft. W przypadku zobowiązań związanych z ochroną prywatności firmy Microsoft, obsługi i przechowywania danych, w tym sposobu usuwania danych, zapoznaj się z zasadami [zachowania poufności informacji](https://privacy.microsoft.com/PrivacyStatement)firmy Microsoft, [postanowieniami dotyczącymi usług online](https://www.microsoft.com/licensing/product-licensing/products?rtc=1) ("Ost") i [uzupełnieniem przetwarzania danych](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA"). Korzystając z Video Indexer, wyrażasz zgodę na powiązanie plików OST, DPA i zasad zachowania poufności informacji.
+Aby dowiedzieć się więcej o zgodności, prywatności i bezpieczeństwie w video indexerze, odwiedź [Centrum zaufania](https://www.microsoft.com/TrustCenter/CloudServices/Azure/default.aspx)firmy Microsoft . W przypadku obowiązków firmy Microsoft w zakresie ochrony prywatności, praktyk w zakresie przetwarzania danych i ich przechowywania, w tym sposobu usuwania danych, należy zapoznać się z [Zasadami zachowania poufności informacji](https://privacy.microsoft.com/PrivacyStatement)firmy Microsoft, [Warunkami korzystania z usług online](https://www.microsoft.com/licensing/product-licensing/products?rtc=1) ("OST") i [uzupełnieniem dotyczącym przetwarzania danych](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA"). Korzystając z Video Indexer, użytkownik wyraża zgodę na przestrzeganie OST, DPA i Oświadczenia o ochronie prywatności.
 
-## <a name="what-can-i-do-with-video-indexer"></a>Co mogę zrobić z Video Indexer?
+## <a name="what-can-i-do-with-video-indexer"></a>Co mogę zrobić z video indexerem?
 
-Szczegółowe informacje o Video Indexerach można zastosować do wielu scenariuszy, między innymi:
+Statystyki indeksatora wideo można zastosować do wielu scenariuszy, wśród nich są:
 
-* *Głębokie wyszukiwanie*: Korzystaj z szczegółowych informacji uzyskanych z filmu wideo, aby ulepszyć środowisko wyszukiwania w bibliotece wideo. Na przykład indeksowanie słów i twarzy może umożliwić wyszukiwanie w miejscu wideo, w którym osoba połączyła się z pewnymi słowami lub kiedy dwie osoby były widoczne wspólnie. Wyszukiwanie w oparciu o te szczegółowe informacje z filmów wideo dotyczy agencji Aktualności, instytutów edukacyjnych, nadawców, właścicieli zawartości rozrywkowej, aplikacji biznesowych przedsiębiorstwa, a także ogólnie dla każdej branży, która ma bibliotekę wideo, której użytkownicy muszą wyszukiwać.
-* *Tworzenie zawartości*: Tworzenie przyczep, wyróżnianie elementów, zawartości mediów społecznościowych lub klipów informacyjnych na podstawie wyciągów Video Indexer szczegółowych informacji z zawartości. Klatki kluczowe, znaczniki scen i sygnatury czasowe dla osób i etykiet mogą sprawiać, że proces tworzenia jest znacznie bardziej gładszy i łatwiejszy w obsłużyć do części wideo, które są potrzebne do tworzenia zawartości.
-* *Ułatwienia dostępu*: Czy chcesz udostępnić zawartość osobom niepełnosprawnym lub jeśli chcesz, aby zawartość była dystrybuowana do różnych regionów przy użyciu różnych języków, możesz użyć transkrypcji i tłumaczenia udostępnianego przez indeksator wideo w wielu językach.
-* *Zysków*: Video Indexer może pomóc zwiększyć wartość wideo. Na przykład branże korzystające z przychodów usługi AD (Media News, Media społecznościowe itp.) mogą dostarczać odpowiednie reklamy przy użyciu wyodrębnionych informacji jako dodatkowych sygnałów do serwera usługi AD.
-* *Moderowanie zawartości*: Użyj modeli moderowania treści tekstowych i wizualnych, aby zapewnić użytkownikom bezpieczeństwo przed niestosowną zawartością i sprawdzać, czy zawartość publikowana odpowiada wartościom organizacji. Możesz automatycznie blokować niektóre wideo lub otrzymywać alerty dla użytkowników o zawartości.
-* *Zalecenia*: szczegółowe informacje można wykorzystać w celu usprawnienia zaangażowania użytkowników, wyróżnianie odpowiednich filmów wideo użytkownikom. Oznaczając każdy klip wideo z dodatkowymi metadanymi, możesz zalecić użytkownikom najbardziej odpowiednie wideo i wyróżnić części filmu wideo, które będą zgodne z ich potrzebami.
+* *Głębokie wyszukiwanie:* skorzystaj ze statystyk wyodrębnionych z filmu, aby poprawić jakość wyszukiwania w bibliotece wideo. Na przykład indeksowanie wypowiedzianych słów i twarzy może umożliwić wyszukiwanie momentów w filmie, w którym dana osoba wypowiedziała określone słowa lub gdy dwie osoby były widziane razem. Wyszukiwanie na podstawie takich informacji z filmów ma zastosowanie do agencji informacyjnych, instytucji edukacyjnych, nadawców, właścicieli treści rozrywkowych, aplikacji BIZNESOWYCH LOB i ogólnie do każdej branży, która ma bibliotekę wideo, której użytkownicy muszą przeszukiwać.
+* *Tworzenie treści:* twórz zwiastuny, wyróżnij bębny, treści w mediach społecznościowych lub klipy z wiadomościami na podstawie statystyk, które indeksator wideo wyodrębnia z twoich treści. Klatki kluczowe, znaczniki scen i znaczniki czasu dla osób i wyglądy etykiet sprawiają, że proces tworzenia jest znacznie płynniejszy i łatwiejszy oraz pozwala uzyskać dostęp do części wideo potrzebnych do tworzenia zawartości.
+* *Ułatwienia dostępu:* Niezależnie od tego, czy chcesz udostępnić zawartość osobom niepełnosprawnym, czy chcesz, aby twoje treści były dystrybuowane do różnych regionów w różnych językach, możesz użyć transkrypcji i tłumaczenia dostarczonego przez indeksator wideo w wielu językach.
+* *Zarabianie:* Indeksator wideo może pomóc zwiększyć wartość filmów. Na przykład branże, które opierają się na przychodach z reklam (media informacyjne, media społecznościowe itd.) mogą wyświetlać trafne reklamy, używając wyodrębnionych statystyk jako dodatkowych sygnałów do serwera reklam.
+* *Moderowanie zawartości:* użyj modeli moderowania treści tekstowych i wizualnych, aby chronić użytkowników przed nieodpowiednimi treściami i sprawdzać, czy publikowana zawartość jest zgodna z wartościami organizacji. Możesz automatycznie zablokować niektóre filmy lub powiadomić użytkowników o treści.
+* *Rekomendacje:* statystyki wideo mogą być wykorzystane do zwiększenia zaangażowania użytkowników, podświetlając odpowiednie momenty wideo dla użytkowników. Oznaczając każdy film dodatkowymi metadanymi, możesz polecić użytkownikom najbardziej odpowiednie filmy i wyróżnić części filmu, które będą odpowiadały ich potrzebom.
 
 ## <a name="features"></a>Funkcje
 
-Na poniższej liście przedstawiono szczegółowe informacje, które można pobrać z filmów wideo przy użyciu Video Indexer modele wideo i audio:
+Na poniższej liście przedstawiono szczegółowe informacje, które można pobrać z filmów przy użyciu modeli wideo i audio indeksatora wideo:
 
-### <a name="video-insights"></a>Szczegółowe informacje wideo
+### <a name="video-insights"></a>Wgląd w wideo
 
 * **Wykrywanie twarzy**: wykrywa i grupuje twarze pojawiające się w nagraniu wideo.
-* **Osobistości Identification**: Video Indexer automatycznie określa ponad 1 000 000 osobistości, takich jak światowy liderzy, aktorzy, Actresses, sportowców, badacze, biznesowe i techniczne liderzy na całym świecie. Dane dotyczące tych osobistości można także znaleźć w różnych witrynach sieci Web (IMDB, Wikipedia i tak dalej).
-* **Identyfikowanie twarzy na podstawie konta**: usługa Video Indexer szkoli model na podstawie określonego konta. Następnie rozpoznaje twarze w wideo w oparciu o szkolony model. Aby uzyskać więcej informacji, zobacz [Dostosowywanie modelu osoby z witryny internetowej Video Indexer](customize-person-model-with-website.md) i [Dostosowywanie modelu osoby za pomocą interfejsu API Video Indexer](customize-person-model-with-api.md).
-* **Wyodrębnianie miniatur dla** twarzy ("Najlepsza twarz"): program automatycznie identyfikuje najlepiej przechwyconą twarz w każdej grupie twarzy (na podstawie jakości, rozmiaru i położenia czołowego) i wyodrębnia ją jako zasób obrazu.
-* **Rozpoznawanie tekstu wizualnego** (OCR): wyodrębnia tekst, który jest wizualnie wyświetlany w filmie wideo.
+* **Identyfikacja gwiazd:** Video Indexer automatycznie identyfikuje ponad milion gwiazd , takich jak światowi liderzy, aktorzy, aktorki, sportowcy, naukowcy, biznes i liderzy technologii na całym świecie. Dane o tych celebrytach można również znaleźć na różnych stronach internetowych (IMDB, Wikipedia i tak dalej).
+* **Identyfikowanie twarzy na podstawie konta**: usługa Video Indexer szkoli model na podstawie określonego konta. Następnie rozpoznaje twarze w filmie na podstawie wyszkolonego modelu. Aby uzyskać więcej informacji, zobacz [Dostosowywanie modelu osoby z witryny indeksatora wideo](customize-person-model-with-website.md) i [dostosowywanie modelu osoby za pomocą interfejsu API indeksatora wideo](customize-person-model-with-api.md).
+* **Wyodrębnianie miniatur dla twarzy** ("najlepsza twarz"): Automatycznie identyfikuje najlepiej przechwyconą twarz w każdej grupie ścian (na podstawie jakości, rozmiaru i pozycji czołowej) i wyodrębnia ją jako zasób obrazu.
+* **Wizualne rozpoznawanie tekstu** (OCR): wyodrębnia tekst, który jest wizualnie wyświetlany w filmie.
 * **Moderowanie zawartości wizualnej**: wykrywa widoczną zawartość dla dorosłych i/lub erotyczną.
 * **Identyfikowanie etykiet**: identyfikuje widoczne obiekty i czynności.
-* **Segmentacja sceny**: określa, kiedy scena zmienia się w wideo na podstawie podpowiedzi wizualizacji. Scena przedstawia pojedyncze zdarzenie i składa się z szeregu kolejnych zrzutów, które są semantycznie powiązane.
-* **Wykrywanie zrzutu**: określa, kiedy zrzut w wideo jest zmieniany na podstawie podpowiedzi wizualizacji. Zrzut to seria ramek pobieranych z tego samego aparatu obrazu ruchu. Aby uzyskać więcej informacji, zobacz [sceny, zrzuty i ramki kluczowe](scenes-shots-keyframes.md).
+* **Segmentacja sceny**: Określa, kiedy scena zmienia się w filmie na podstawie wskazówek wizualnych. Scena przedstawia pojedyncze zdarzenie i składa się z serii kolejnych ujęć, które są semantycznie związane.
+* **Wykrywanie strzałów:** Określa, kiedy ujęcie zmienia się w filmie na podstawie wskazówek wizualnych. Ujęcie to seria klatek pobranych z tej samej kamery filmowej. Aby uzyskać więcej informacji, zobacz [Sceny, zdjęcia i klatki kluczowe](scenes-shots-keyframes.md).
 * **Wykrywanie czarnych ramek**: identyfikuje pojawiające się w nagraniu wideo czarne ramki.
 * **Wyodrębnianie ramek kluczowych**: wykrywa ramki kluczowe w nagraniu wideo.
-* **Kredyty kroczące**: określa początek i koniec okresów kroczących na końcu programów telewizyjnych i filmów.
-* **Wykrywanie znaków animowanych** (wersja zapoznawcza): wykrywanie, grupowanie i rozpoznawanie znaków w animowanej zawartości poprzez integrację z [Cognitive Services wzrokiem niestandardowym](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/). Aby uzyskać więcej informacji, zobacz [wykrywanie znaków animowanych](animated-characters-recognition.md).
-* **Wykrywanie typu zrzutu redakcyjnego**: wypełnianie zrzutów na podstawie ich typu (na przykład szerokiego zrzutu, średniego zrzutu, zamknięcia, ekstremalnego zamknięcia, dwóch zastrzelonych, wielu osób, na zewnątrz i do wewnątrz itd.). Aby uzyskać więcej informacji, zobacz [wykrywanie typów zrzutów redakcyjnych](scenes-shots-keyframes.md#editorial-shot-type-detection).
+* **Kredyty kroczące**: Określa początek i koniec kredytów kroczących na końcu programów telewizyjnych i filmów.
+* **Wykrywanie animowanych znaków** (podgląd): wykrywanie, grupowanie i rozpoznawanie znaków w animowanej zawartości poprzez integrację z [niestandardową wizją usług Cognitive Services.](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/) Aby uzyskać więcej informacji, zobacz [Animowane wykrywanie znaków](animated-characters-recognition.md).
+* **Wykrywanie typu zdjęć redakcyjnych:** Oznaczanie zdjęć na podstawie ich typu (np. szeroki strzał, średni strzał, zbliżenie, ekstremalne zbliżenie, dwa ujęcia, wiele osób, na zewnątrz i w pomieszczeniach, i tak dalej). Aby uzyskać więcej informacji, zobacz [Wykrywanie typu zdjęcia redakcyjnego](scenes-shots-keyframes.md#editorial-shot-type-detection).
 
-### <a name="audio-insights"></a>Szczegółowe informacje o usłudze audio
+### <a name="audio-insights"></a>Szczegółowe informacje audio
 
-* **Automatyczne wykrywanie języka**: automatycznie rozpoznaje dominujący język mówiony. Obsługiwane języki to angielski, hiszpański, francuski, niemiecki, włoski, chiński (uproszczony), japoński, rosyjski i portugalski (Brazylia). Jeśli nie można zidentyfikować języka z pewnością, Video Indexer zakłada, że język mówiony jest w języku angielskim. Aby uzyskać więcej informacji, zobacz [Language Identification model](language-identification-model.md).
-* **Identyfikacja i transkrypcja mowy w wielu językach** (wersja zapoznawcza): automatycznie identyfikuje język mówiony w różnych segmentach z dźwiękiem. Wysyła każdy segment pliku nośnika jako uzyskanego, a następnie łączy transkrypcję z powrotem do jednego ujednoliconego transkrypcji. Aby uzyskać więcej informacji, zobacz [Automatyczne identyfikowanie i transkrypcja zawartości w wielu językach](multi-language-identification-transcription.md).
-* **Transkrypcja audio**: konwertuje mowę na tekst w 12 językach i zezwala na rozszerzenia. Obsługiwane języki to angielski, hiszpański, francuski, niemiecki, włoski, chiński (uproszczony), japoński, arabski, rosyjski, portugalski (Brazylia), hindi i koreański.
-* **Napisy (transkrypcja)** : tworzy napisy w trzech formatach: VTT, TTML i SRT.
-* **Przetwarzanie dwóch kanałów**: automatycznie wykrywa odrębne transkrypcje i scala do pojedynczej osi czasu.
-* **Redukcja szumu**: czyści nagranie audio lub szumów z dźwiękiem (na podstawie filtrów Skype).
-* **Dostosowanie transkrypcji** (CRI): pociąga za siebie niestandardowe mowy do modeli tekstowych, aby utworzyć transkrypcje specyficzne dla branży. Aby uzyskać więcej informacji, zobacz [Dostosowywanie modelu języka z witryny sieci web video Indexer](customize-language-model-with-website.md) i [Dostosowywanie modelu języka za pomocą interfejsów API Video Indexer](customize-language-model-with-api.md).
-* **Wyliczenie głośników**: mapuje i rozumie, które osoby mówiące i kiedy.
-* **Statystyka prelegenta**: zawiera statystykę współczynniki mowy dla głośników.
+* **Automatyczne wykrywanie języka**: automatycznie rozpoznaje dominujący język mówiony. Obsługiwane języki to angielski, hiszpański, francuski, niemiecki, włoski, chiński (uproszczony), japoński, rosyjski i brazylijski portugalski. Jeśli nie można zidentyfikować języka z ufnością, Indeksator wideo zakłada, że językiem mówionym jest angielski. Aby uzyskać więcej informacji, zobacz [Model identyfikacji języka](language-identification-model.md).
+* **Wielojęzyczna identyfikacja mowy i transkrypcja** (wersja zapoznawcza): automatycznie identyfikuje język mówiony w różnych segmentach z audio. Wysyła każdy segment pliku multimedialnego do transkrypcji, a następnie łączy transkrypcję z powrotem do jednej ujednoliconej transkrypcji. Aby uzyskać więcej informacji, zobacz [Automatyczne identyfikowanie i transkrybowanie zawartości wielojęzycznej](multi-language-identification-transcription.md).
+* **Transkrypcja audio:** Konwertuje mowę na tekst w 12 językach i umożliwia rozszerzenia. Obsługiwane języki to angielski, hiszpański, francuski, niemiecki, włoski, chiński (uproszczony), japoński, arabski, rosyjski, brazylijski portugalski, hindi i koreański.
+* **Napisy (transkrypcja)**: tworzy napisy w trzech formatach: VTT, TTML i SRT.
+* **Przetwarzanie dwóch kanałów:** Automatycznie wykrywa oddzielne transkrypcje i scala się z pojedynczą osią czasu.
+* **Redukcja szumów:** Usuwa dźwięk telefonii lub hałaśliwe nagrania (na podstawie filtrów Skype).
+* **Dostosowywanie transkrypcji** (CRIS): Trenuje niestandardowe modele mowy do tekstu w celu utworzenia transkrypcji specyficznych dla branży. Aby uzyskać więcej informacji, zobacz [Dostosowywanie modelu języka z witryny indeksatora wideo](customize-language-model-with-website.md) i [dostosowywanie modelu języka za pomocą interfejsów API indeksatora wideo](customize-language-model-with-api.md).
+* **Wyliczenie prelegenta**: Mapy i rozumie, który mówca mówił, które słowa i kiedy.
+* **Statystyki prelegentów**: Zawiera statystyki dotyczące wskaźników mowy prelegentów.
 * **Moderowanie zawartości tekstowej**: wykrywa jawny tekst w transkrypcji audio.
-* **Efekty audio**: identyfikuje efekty audio, takie jak claps, Speech i wyciszenie.
-* **Wykrywanie rozpoznawania emocji**: identyfikuje emocji w oparciu o mowę (co jest określane) i tonów głosu (jak są używane). Rozpoznawania emocji może być radością, smutek, gniew lub obawą.
+* **Efekty dźwiękowe:** Identyfikuje efekty dźwiękowe, takie jak klaszcze dłoni, mowa i cisza.
+* **Wykrywanie emocji**: Identyfikuje emocje na podstawie mowy (co się mówi) i tonalności głosu (jak to się mówi). Emocją może być radość, smutek, gniew lub strach.
 * **Tłumaczenie**: tworzy tłumaczenia transkrypcji audio na 54 języki.
 
-### <a name="audio-and-video-insights-multi-channels"></a>Wgląd w dane audio i wideo (wiele kanałów)
+### <a name="audio-and-video-insights-multi-channels"></a>Wgląd audio i wideo (wielokanasowy)
 
-Podczas indeksowania według jednego kanału będzie dostępny częściowy wynik dla tych modeli.
+Podczas indeksowania przez jeden kanał, wynik częściowy dla tych modeli będą dostępne.
 
-* **Wyodrębnianie słów kluczowych**: wyodrębnia słowa kluczowe z mowy i tekstu wizualnego.
-* **Wyodrębnianie nazwanych jednostek**: wyodrębnia marki, lokalizacje i ludzie z mowy i tekstu wizualnego za pośrednictwem przetwarzania języka naturalnego (NLP).
-* **Ustalanie tematów**: ustala główne tematy na podstawie transkrypcji. Dołączona jest Taksonomia IPTC 2.
+* **Wyodrębnianie słów kluczowych**: Wyodrębnia słowa kluczowe z mowy i tekstu wizualnego.
+* **Wyodrębnianie nazwanych jednostek**: Wyodrębnia marki, lokalizacje i osoby z mowy i tekstu wizualnego za pośrednictwem przetwarzania języka naturalnego (NLP).
+* **Ustalanie tematów**: ustala główne tematy na podstawie transkrypcji. W cenę zakwaterowania wliczono taksonomię IPTC drugiego poziomu.
 * **Artefakty**: wyodrębnia rozbudowany zestaw artefaktów „następnego poziomu szczegółów” dla poszczególnych modeli.
 * **Analiza tonacji**: rozpoznaje pozytywne, negatywne i neutralne opinie w padających wypowiedziach i tekście widocznym w nagraniu wideo.
 
-## <a name="how-can-i-get-started-with-video-indexer"></a>Jak rozpocząć pracę z Video Indexer?
+## <a name="how-can-i-get-started-with-video-indexer"></a>Jak mogę rozpocząć pracę z video indexer?
 
-Dostęp do Video Indexer możliwości można uzyskać na trzy sposoby:
+Dostęp do funkcji indeksatora wideo można uzyskać na trzy sposoby:
 
-* Portal Video Indexer: łatwe w użyciu rozwiązanie, które umożliwia ocenę produktu, zarządzanie kontem i dostosowywanie modeli.
+* Portal indeksatora wideo: łatwe w użyciu rozwiązanie, które pozwala ocenić produkt, zarządzać kontem i dostosować modele.
 
-    Aby uzyskać więcej informacji na temat portalu, zobacz [Rozpoczynanie pracy z witryną Video Indexer](video-indexer-get-started.md).  
+    Aby uzyskać więcej informacji o portalu, zobacz [Wprowadzenie do witryny indeksatora wideo](video-indexer-get-started.md)w witrynie sieci Web .  
 
-* Integracja z interfejsem API: wszystkie funkcje Video Indexer są dostępne za pomocą interfejsu API REST, który umożliwia integrację rozwiązania z aplikacjami i infrastrukturą.
+* Integracja interfejsu API: wszystkie możliwości indeksatora wideo są dostępne za pośrednictwem interfejsu API REST, który umożliwia zintegrowanie rozwiązania z aplikacjami i infrastrukturą.
 
-    Aby rozpocząć pracę jako deweloper, zobacz [Korzystanie z interfejsu API REST Video Indexer](video-indexer-use-apis.md).
+    Aby rozpocząć pracę jako deweloper, zobacz [Korzystanie z interfejsu API REST indeksatora wideo](video-indexer-use-apis.md).
 
-* Element widget z możliwością osadzenia: umożliwia osadzenie Video Indexer szczegółowych informacji, odtwarzacza i środowiska edytora w aplikacji.
+* Osadzany widżet: umożliwia osadzenie w aplikacji szczegółowych informacji indeksatora wideo, odtwarzacza i edytora.
 
-    Aby uzyskać więcej informacji, zobacz [osadzanie wizualizacji wizualnych w aplikacji](video-indexer-embed-widgets.md).
+    Aby uzyskać więcej informacji, zobacz [Osadzanie widżetów wizualnych w aplikacji](video-indexer-embed-widgets.md).
 
-Jeśli używasz witryny sieci Web, szczegółowe informacje są dodawane jako metadane i są widoczne w portalu. Jeśli używasz interfejsów API, szczegółowe informacje są dostępne jako plik JSON.
+Jeśli korzystasz z witryny sieci Web, szczegółowe informacje są dodawane jako metadane i są widoczne w portalu. Jeśli używasz interfejsów API, szczegółowe informacje są dostępne jako plik JSON.
 
 ## <a name="next-steps"></a>Następne kroki
 
 Możesz już rozpocząć pracę z usługą Video Indexer. Aby uzyskać więcej informacji zobacz następujące artykuły:
 
-- [Rozpocznij pracę z witryną sieci web video Indexer](video-indexer-get-started.md).
-- [Przetwarzaj zawartość za pomocą interfejsu API REST Video Indexer](video-indexer-use-apis.md).
-- [Osadź wizualne elementy widget w aplikacji](video-indexer-embed-widgets.md).
+- [Zacznij łączec z witryną video indexer](video-indexer-get-started.md).
+- [Przetwarzaj zawartość za pomocą interfejsu API REST programu Video Indexer](video-indexer-use-apis.md).
+- [Osadzanie widżetów wizualnych w aplikacji](video-indexer-embed-widgets.md).

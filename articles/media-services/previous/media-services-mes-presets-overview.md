@@ -1,6 +1,6 @@
 ---
-title: Zadań wstępne dla usługi Media Encoder Standard (MES) | Dokumentacja firmy Microsoft
-description: Udostępnia tematu, a omówienie przykładu zdefiniowane przez usługę ustawienia wstępne dla Media Encoder Standard (MES).
+title: Ustawienia predefiniowane zadań dla standardu kodera multimediów (MES) | Dokumenty firmy Microsoft
+description: W temacie przedstawiono i omówienie ustawień predefiniowanych przykładów zdefiniowanych przez usługę dla standardu mes (Media Encoder Standard).
 author: Juliako
 manager: femila
 editor: johndeu
@@ -15,75 +15,75 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 50c52369a5a957a4dd6279cac5079e2dea023106
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61463407"
 ---
-# <a name="sample-presets-for-media-encoder-standard-mes"></a>Przykładowe ustawienia usługi Media Encoder Standard (MES)
+# <a name="sample-presets-for-media-encoder-standard-mes"></a>Przykładowe ustawienia predefiniowane dla standardu kodera multimediów (MES)
 
-**Usługi Media Encoder Standard** definiuje zestaw wstępnie zdefiniowanych system kodowania ustawień wstępnych, można użyć podczas tworzenia zadań kodowania. Zaleca się używać "adaptacyjnego przesyłania strumieniowego" ustawienie wstępne, jeśli chcesz kodować wideo do przesyłania strumieniowego za pomocą usługi Media Services. Po określeniu ustawienia wstępnego, spowoduje Media Encoder Standard [automatyczne generowanie drabiny szybkości transmisji bitów](media-services-autogen-bitrate-ladder-with-mes.md). 
+**Media Encoder Standard** definiuje zestaw wstępnie zdefiniowanych ustawień kodowania systemu, których można używać podczas tworzenia zadań kodowania. Zaleca się użycie predefiniowanego ustawienia "Adaptive Streaming", jeśli chcesz zakodować wideo do przesyłania strumieniowego za pomocą usługi Media Services. Po określeniu tego ustawienia wstępnego program Media Encoder Standard [automatycznie wygeneruje drabinę szybkości transmisji bitów](media-services-autogen-bitrate-ladder-with-mes.md). 
 
 ### <a name="creating-custom-presets-from-samples"></a>Tworzenie niestandardowych ustawień wstępnych z przykładów
-Usługa Media Services w pełni obsługuje dostosowywania wszystkie wartości w ustawieniach wstępnych w celu spełnienia specyficznych potrzeb kodowania i wymagań dotyczących usługi. Jeśli potrzebujesz dostosować ustawienia wstępne kodowania, należy rozpocząć od jednego z poniższych ustawienia systemu, które znajdują się w tej sekcji jako szablonu dla niestandardowej konfiguracji. Objaśnienia każdego elementu w tych oznacza, że ustawienia i prawidłowe wartości dla każdego elementu, zobacz [schemat usługi Media Encoder Standard](media-services-mes-schema.md) tematu.  
+Usługi Media Services w pełni obsługuje dostosowywanie wszystkich wartości w ustawieniach predefiniowanych, aby spełnić określone potrzeby i wymagania dotyczące kodowania. Jeśli chcesz dostosować ustawienia wstępne kodowania, należy rozpocząć od jednego z poniższych ustawień systemowych, które są podane w tej sekcji jako szablon dla konfiguracji niestandardowej. Aby uzyskać wyjaśnienia, co oznacza każdy element w tych ustawieniach predefiniowanych i prawidłowe wartości dla każdego elementu, zobacz temat [schematu Standardowy koder nośnika.](media-services-mes-schema.md)  
   
 > [!NOTE]
->  Korzystając z ustawienia domyślne dla koduje 4k, należy uzyskać `S3` zastrzeżone typu jednostki. Aby uzyskać więcej informacji, zobacz [jak kodowanie skalowania](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
+>  Podczas korzystania z predefiniowanego dla kodów 4k, należy uzyskać typ jednostki `S3` zarezerwowane. Aby uzyskać więcej informacji, zobacz [Jak skalować kodowanie](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
 
-#### <a name="video-rotation-default-setting-in-presets"></a>Obrót wideo domyślne ustawienie wstępne:
-Podczas pracy z usługi Media Encoder Standard, obracanie wideo jest domyślnie włączona. Jeśli Twoje wideo zostało zarejestrowane na urządzeniu przenośnym w orientacji pionowej, następnie predefiniowane dyżury je do orientacji poziomej przed kodowaniem.
+#### <a name="video-rotation-default-setting-in-presets"></a>Domyślne ustawienie obrotu wideo w ustawieniach predefiniowanych:
+Podczas pracy ze standardem media encoder obrót wideo jest domyślnie włączony. Jeśli film wideo został nagrany na urządzeniu przenośnym w trybie pionowym, te ustawienia wstępne będą obracać je w trybie poziomym przed kodowaniem.
  
-## <a name="available-presets"></a>Dostępne ustawienia: 
+## <a name="available-presets"></a>Dostępne ustawienia wstępne: 
 
- [Różne szybkości transmisji bitów H264 1080p Audio 5.1](media-services-mes-preset-H264-Multiple-Bitrate-1080p-Audio-5.1.md) tworzy zbiór 8 wyrównane GOP pliki MP4 z, od 6000 KB/s do 400 KB/s i audio AAC 5.1.  
+ [H264 Multiple Bitrate 1080p Audio 5.1](media-services-mes-preset-H264-Multiple-Bitrate-1080p-Audio-5.1.md) tworzy zestaw 8 plików MP4 wyrównanych do GOP, od 6000 kbps do 400 kbps i dźwięku AAC 5.1.  
   
- [Wiele szybkość transmisji bitów H264 1080p](media-services-mes-preset-H264-Multiple-Bitrate-1080p.md) tworzy zbiór 8 wyrównane GOP pliki MP4 z, od 6000 KB/s do 400 KB/s i stereo AAC audio.  
+ [H264 Multiple Bitrate 1080p](media-services-mes-preset-H264-Multiple-Bitrate-1080p.md) tworzy zestaw 8 plików MP4 wyrównanych do GOP, od 6000 kb/s do 400 kb/s i stereofoniczny dźwięk AAC.  
   
- [Wiele szybkość transmisji bitów H264 16 x 9 dla systemu iOS](media-services-mes-preset-H264-Multiple-Bitrate-16x9-for-iOS.md) tworzy zbiór 8 wyrównane GOP pliki MP4 z, od 8500 KB/s do 200 KB/s i stereo AAC audio.  
+ [H264 Multiple Bitrate 16x9 dla systemu iOS](media-services-mes-preset-H264-Multiple-Bitrate-16x9-for-iOS.md) tworzy zestaw 8 plików MP4 wyrównanych do GOP, od 8500 kbps do 200 kbps i stereo audio AAC.  
   
- [Wiele szybkość transmisji bitów H264 16 x 9 SD Audio 5.1](media-services-mes-preset-H264-Multiple-Bitrate-16x9-SD-Audio-5.1.md) tworzy zbiór 5 wyrównane GOP pliki MP4 z, od 1900 KB/s do 400 KB/s i audio AAC 5.1.  
+ [H264 Multiple Bitrate 16x9 SD Audio 5.1](media-services-mes-preset-H264-Multiple-Bitrate-16x9-SD-Audio-5.1.md) tworzy zestaw 5 plików MP4 wyrównanych do GOP, od 1900 kb/s do 400 kb/s i dźwięku AAC 5.1.  
   
- [Wiele szybkość transmisji bitów H264 16 x 9 SD](media-services-mes-preset-H264-Multiple-Bitrate-16x9-SD.md) tworzy zbiór 5 wyrównane GOP pliki MP4 z, od 1900 KB/s do 400 KB/s i stereo AAC audio.  
+ [H264 Multiple Bitrate 16x9 SD](media-services-mes-preset-H264-Multiple-Bitrate-16x9-SD.md) tworzy zestaw 5 plików MP4 wyrównanych do GOP, od 1900 kb/s do 400 kb/s i stereofoniczny dźwięk AAC.  
   
- [Wiele szybkość transmisji bitów H264 4K Audio 5.1](media-services-mes-preset-H264-Multiple-Bitrate-4K-Audio-5.1.md) tworzy zbiór 12 wyrównane GOP pliki MP4 z, od 20000 KB/s do 1000 KB/s i audio AAC 5.1.  
+ [H264 Multiple Bitrate 4K Audio 5.1](media-services-mes-preset-H264-Multiple-Bitrate-4K-Audio-5.1.md) tworzy zestaw 12 plików MP4 wyrównanych do GOP, od 20000 kb/s do 1000 kb/s i dźwięku AAC 5.1.  
   
- [Wiele szybkość transmisji bitów H264 4K](media-services-mes-preset-H264-Multiple-Bitrate-4K.md) tworzy zbiór 12 wyrównane GOP pliki MP4 z, od 20000 KB/s do 1000 KB/s i stereo AAC audio.  
+ [H264 Multiple Bitrate 4K](media-services-mes-preset-H264-Multiple-Bitrate-4K.md) tworzy zestaw 12 plików MP4 wyrównanych do GOP, od 20000 kb/s do 1000 kb/s i stereofoniczny dźwięk AAC.  
   
- [Wiele szybkość transmisji bitów H264 4 x 3 dla systemu iOS](media-services-mes-preset-H264-Multiple-Bitrate-4x3-for-iOS.md) tworzy zbiór 8 wyrównane GOP pliki MP4 z, od 8500 KB/s do 200 KB/s i stereo AAC audio.  
+ [H264 Multiple Bitrate 4x3 for iOS](media-services-mes-preset-H264-Multiple-Bitrate-4x3-for-iOS.md) tworzy zestaw 8 plików MP4 wyrównanych do GOP, od 8500 kb/s do 200 kb/s i stereofoniczny dźwięk AAC.  
   
- [Wiele szybkość transmisji bitów H264 4 x 3 SD Audio 5.1](media-services-mes-preset-H264-Multiple-Bitrate-4x3-SD-Audio-5.1.md) tworzy zbiór 5 wyrównane GOP pliki MP4 z, od 1600 KB/s do 400 KB/s i audio AAC 5.1.  
+ [H264 Multiple Bitrate 4x3 SD Audio 5.1](media-services-mes-preset-H264-Multiple-Bitrate-4x3-SD-Audio-5.1.md) tworzy zestaw 5 plików MP4 wyrównanych do GOP, od 1600 kbps do 400 kbps i dźwięku AAC 5.1.  
   
- [Wiele szybkość transmisji bitów H264 4 x 3 SD](media-services-mes-preset-H264-Multiple-Bitrate-4x3-SD.md) tworzy zbiór 5 wyrównane GOP pliki MP4 z, od 1600 KB/s do 400 KB/s i stereo AAC audio.  
+ [H264 Multiple Bitrate 4x3 SD](media-services-mes-preset-H264-Multiple-Bitrate-4x3-SD.md) tworzy zestaw 5 plików MP4 wyrównanych do GOP, od 1600 kbps do 400 kbps i stereo audio AAC.  
   
- [Różne szybkości transmisji bitów H264 720p Audio 5.1](media-services-mes-preset-H264-Multiple-Bitrate-720p-Audio-5.1.md) tworzy zbiór 6 wyrównane GOP pliki MP4 z, od 3400 KB/s do 400 KB/s i audio AAC 5.1.  
+ [H264 Multiple Bitrate 720p Audio 5.1](media-services-mes-preset-H264-Multiple-Bitrate-720p-Audio-5.1.md) tworzy zestaw 6 plików MP4 wyrównanych do GOP, od 3400 kbps do 400 kbps i dźwięku AAC 5.1.  
   
- [Wiele szybkość transmisji bitów H264 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) tworzy zbiór 6 wyrównane GOP pliki MP4 z, od 3400 KB/s do 400 KB/s i stereo AAC audio.  
+ [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) tworzy zestaw 6 plików MP4 wyrównanych do GOP, od 3400 kb/s do 400 kb/s i stereofoniczny dźwięk AAC.  
   
- [Pojedyncza szybkość transmisji bitów H264 1080p Audio 5.1](media-services-mes-preset-H264-Single-Bitrate-1080p-Audio-5.1.md) tworzy pojedynczego pliku MP4 z bitrate 6750 KB/s i audio AAC 5.1.  
+ [H264 Single Bitrate 1080p Audio 5.1](media-services-mes-preset-H264-Single-Bitrate-1080p-Audio-5.1.md) tworzy pojedynczy plik MP4 o szybkości transmisji bitów 6750 kb/s i dźwięku AAC 5.1.  
   
- [Pojedynczy szybkość transmisji bitów H264 1080p](media-services-mes-preset-H264-Single-Bitrate-1080p.md) tworzy pojedynczego pliku MP4 z 6750 KB/s i stereo AAC audio szybkość transmisji bitów.  
+ [H264 Single Bitrate 1080p](media-services-mes-preset-H264-Single-Bitrate-1080p.md) tworzy pojedynczy plik MP4 o szybkości transmisji bitów 6750 kb/s i stereofoniczny dźwięk AAC.  
   
- [Pojedynczy szybkość transmisji bitów H264 4K Audio 5.1](media-services-mes-preset-H264-Single-Bitrate-4K-Audio-5.1.md) tworzy pojedynczego pliku MP4 z bitrate 18000 KB/s i audio AAC 5.1.  
+ [H264 Single Bitrate 4K Audio 5.1](media-services-mes-preset-H264-Single-Bitrate-4K-Audio-5.1.md) tworzy pojedynczy plik MP4 o szybkości transmisji bitów 18000 kb/s i dźwięku AAC 5.1.  
   
- [Pojedynczy szybkość transmisji bitów H264 4K](media-services-mes-preset-H264-Single-Bitrate-4K.md) tworzy pojedynczego pliku MP4 z 18000 KB/s i stereo AAC audio szybkość transmisji bitów.  
+ [H264 Single Bitrate 4K](media-services-mes-preset-H264-Single-Bitrate-4K.md) tworzy pojedynczy plik MP4 o szybkości transmisji bitów 18000 kb/s i stereofoniczny dźwięk AAC.  
   
- [Pojedynczy szybkość transmisji bitów H264 4 x 3 SD Audio 5.1](media-services-mes-preset-H264-Single-Bitrate-4x3-SD-Audio-5.1.md) tworzy pojedynczego pliku MP4 z bitrate 1800 KB/s i audio AAC 5.1.  
+ [H264 Single Bitrate 4x3 SD Audio 5.1](media-services-mes-preset-H264-Single-Bitrate-4x3-SD-Audio-5.1.md) tworzy pojedynczy plik MP4 o szybkości transmisji bitów 1800 kb/s i dźwięku AAC 5.1.  
   
- [Pojedynczy szybkość transmisji bitów H264 4 x 3 SD](media-services-mes-preset-H264-Single-Bitrate-4x3-SD.md) tworzy pojedynczego pliku MP4 z 1800 KB/s i stereo AAC audio szybkość transmisji bitów.  
+ [H264 Single Bitrate 4x3 SD](media-services-mes-preset-H264-Single-Bitrate-4x3-SD.md) tworzy pojedynczy plik MP4 o szybkości transmisji bitów 1800 kb/s i stereofoniczny dźwięk AAC.  
   
- [Pojedynczy szybkość transmisji bitów H264 16 x 9 SD Audio 5.1](media-services-mes-preset-H264-Single-Bitrate-16x9-SD-Audio-5.1.md) tworzy pojedynczego pliku MP4 z bitrate 2200 KB/s i audio AAC 5.1.  
+ [H264 Single Bitrate 16x9 SD Audio 5.1](media-services-mes-preset-H264-Single-Bitrate-16x9-SD-Audio-5.1.md) tworzy pojedynczy plik MP4 o szybkości transmisji bitów 2200 kb/s i dźwięku AAC 5.1.  
   
- [Pojedynczy szybkość transmisji bitów H264 16 x 9 SD](media-services-mes-preset-H264-Single-Bitrate-16x9-SD.md) tworzy pojedynczego pliku MP4 o rozmiarze 2200 KB/s i stereo AAC audio szybkość transmisji bitów.  
+ [H264 Single Bitrate 16x9 SD](media-services-mes-preset-H264-Single-Bitrate-16x9-SD.md) tworzy pojedynczy plik MP4 o szybkości transmisji bitów 2200 kb/s i stereofoniczny dźwięk AAC.  
   
- [Pojedyncza szybkość transmisji bitów H264 720p Audio 5.1](media-services-mes-preset-H264-Single-Bitrate-720p-Audio-5.1.md) tworzy pojedynczego pliku MP4 z bitrate 4500 KB/s i audio AAC 5.1.  
+ [H264 Single Bitrate 720p Audio 5.1](media-services-mes-preset-H264-Single-Bitrate-720p-Audio-5.1.md) tworzy pojedynczy plik MP4 o szybkości transmisji bitów 4500 kb/s i dźwięku AAC 5.1.  
   
- [Pojedynczy szybkość transmisji bitów H264 720p dla systemu Android](media-services-mes-preset-H264-Single-Bitrate-720p-for-Android.md) ustawienie wstępne tworzy pojedynczego pliku MP4 z bitrate 2000 KB/s i stereo adaptacyjnych kontrolek aplikacji.  
+ [H264 Single Bitrate 720p for Android](media-services-mes-preset-H264-Single-Bitrate-720p-for-Android.md) preset produkuje pojedynczy plik MP4 z szybkością transmisji bitów 2000 kb/s i stereo AAC.  
   
- [Pojedynczy szybkość transmisji bitów H264 720p](media-services-mes-preset-H264-Single-Bitrate-720p.md) tworzy pojedynczego pliku MP4 z 4500 KB/s i stereo AAC audio szybkość transmisji bitów.  
+ [H264 Single Bitrate 720p](media-services-mes-preset-H264-Single-Bitrate-720p.md) tworzy pojedynczy plik MP4 o szybkości transmisji bitów 4500 kb/s i stereofoniczny dźwięk AAC.  
   
- [H264 pojedynczej szybkości transmisji bitów wysokiej jakości SD dla systemu Android](media-services-mes-preset-H264-Single-Bitrate-High-Quality-SD-for-Android.md) tworzy pojedynczego pliku MP4 z bitrate 500 KB/s i stereo AAC audio...  
+ [H264 Single Bitrate High Quality SD for Android](media-services-mes-preset-H264-Single-Bitrate-High-Quality-SD-for-Android.md) tworzy pojedynczy plik MP4 o szybkości transmisji bitów 500 kb/s i stereofonicznym dźwięku AAC..  
   
- [H264 pojedynczej szybkości transmisji bitów niskiej jakości SD dla systemu Android](media-services-mes-preset-H264-Single-Bitrate-Low-Quality-SD-for-Android.md) tworzy pojedynczego pliku MP4 z 56 Kb/s i stereo AAC audio szybkość transmisji bitów.  
+ [H264 Single Bitrate Low Quality SD for Android](media-services-mes-preset-H264-Single-Bitrate-Low-Quality-SD-for-Android.md) tworzy pojedynczy plik MP4 o szybkości transmisji bitów 56 kb/s i stereofoniczny dźwięk AAC.  
   
- Aby uzyskać więcej informacji związanych z koderów usługi Media Services, zobacz [kodowania na żądanie przy użyciu usługi Azure Media Services](https://azure.microsoft.com/documentation/articles/media-services-encode-asset/).
+ Aby uzyskać więcej informacji dotyczących koderów usług Media Services, zobacz [Kodowanie na żądanie za pomocą usługi Azure Media Services](https://azure.microsoft.com/documentation/articles/media-services-encode-asset/).

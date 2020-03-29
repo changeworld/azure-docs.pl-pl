@@ -1,7 +1,7 @@
 ---
-title: Narzędzia do oceny wydajności systemu Linux
+title: Narzędzia do wydajności systemu Linux
 titleSuffix: Azure Kubernetes Service
-description: Dowiedz się, jak rozwiązywać typowe problemy związane z korzystaniem z usługi Azure Kubernetes Service (AKS)
+description: Dowiedz się, jak rozwiązywać typowe problemy i rozwiązywać je podczas korzystania z usługi Azure Kubernetes Service (AKS)
 services: container-service
 author: alexeldeib
 ms.service: container-service
@@ -9,58 +9,58 @@ ms.topic: troubleshooting
 ms.date: 02/10/2020
 ms.author: aleldeib
 ms.openlocfilehash: eb6b126b4d1794adf0380432040190b91a17a675
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77925607"
 ---
 # <a name="linux-performance-troubleshooting"></a>Rozwiązywanie problemów z wydajnością systemu Linux
 
-Wyczerpanie zasobów na komputerach z systemem Linux jest typowym problemem i może być manifestem przez wiele różnych symptomów. Ten dokument zawiera ogólne omówienie dostępnych narzędzi, które ułatwiają diagnozowanie problemów.
+Wyczerpanie zasobów na komputerach z systemem Linux jest częstym problemem i może objawiać się za pomocą wielu różnych objawów. Ten dokument zawiera ogólny przegląd dostępnych narzędzi ułatwiających diagnozowanie takich problemów.
 
-Wiele z tych narzędzi akceptuje interwał, w którym można generować wycofywane dane wyjściowe. Ten format danych wyjściowych zwykle sprawia, że wzorce wykrywania trendów są znacznie prostsze. W przypadku zaakceptowania przykładowe wywołanie będzie zawierać `[interval]`.
+Wiele z tych narzędzi akceptuje interwał, w którym można produkować dane wyjściowe. Ten format wyjściowy zazwyczaj znacznie ułatwia wykrywanie wzorców. Jeśli zostanie zaakceptowana, przykładowe `[interval]`wywołanie będzie zawierać .
 
-Wiele z tych narzędzi ma obszerną historię i szeroki zestaw opcji konfiguracji. Ta strona zawiera tylko prosty podzbiór wywołań do wyróżnienia typowych problemów. Kanoniczne źródło informacji jest zawsze dokumentacją referencyjną dla każdego określonego narzędzia. Ta dokumentacja będzie znacznie bardziej dokładna niż podano w tym miejscu.
+Wiele z tych narzędzi ma bogatą historię i szeroki zestaw opcji konfiguracyjnych. Ta strona zawiera tylko prosty podzbiór wywołań, aby wyróżnić typowe problemy. Kanoniczne źródło informacji jest zawsze dokumentacją referencyjną dla każdego konkretnego narzędzia. Dokumentacja ta będzie znacznie dokładniejsza niż to, co jest tutaj zawarte.
 
 ## <a name="guidance"></a>Wskazówki
 
-Należy przeprowadzić systematyczne podejście do badania problemów z wydajnością. UŻYWANE są dwa popularne podejścia (użycie, nasycenie, błędy) i RED (stawka, błędy, czas trwania). CZERWONY jest zwykle używany w kontekście usług do monitorowania opartego na żądaniach. Użycie jest zwykle używane w przypadku monitorowania zasobów: dla każdego zasobu na komputerze, monitorowania wykorzystania, nasycenia i błędów. Cztery główne rodzaje zasobów na dowolnym komputerze to procesor CPU, pamięć, dysk i sieć. Wysokie użycie, nasycenie lub częstotliwości błędów dla dowolnego z tych zasobów wskazuje możliwy problem z systemem. Gdy występuje problem, zbadaj główną przyczynę: Dlaczego opóźnienie operacji we/wy dysku jest wysokie? Czy są ograniczane dyski lub jednostki SKU maszyny wirtualnej? Jakie procesy są zapisywane na urządzeniach i w jakich plikach?
+Bądź systematyczny w podejściu do badania problemów z wydajnością. Dwa typowe podejścia to USE (wykorzystanie, nasycenie, błędy) i RED (poziom, błędy, czas trwania). RED jest zwykle używany w kontekście usług monitorowania opartego na żądaniach. USE jest zwykle używany do monitorowania zasobów: dla każdego zasobu na komputerze, wykorzystanie monitora, nasycenie i błędy. Cztery główne rodzaje zasobów na dowolnym komputerze to procesor, pamięć, dysk i sieć. Wysokie wykorzystanie, nasycenie lub poziom błędu dla któregokolwiek z tych zasobów wskazuje na możliwy problem z systemem. Gdy występuje problem, zbadaj główną przyczynę: dlaczego opóźnienie we/wy dysku jest wysokie? Czy dyski lub jednostka SKU maszyny wirtualnej są ograniczone? Jakie procesy zapisują się na urządzeniach i do jakich plików?
 
-Przykłady typowych problemów i wskaźników w celu ich zdiagnozowania:
-- Ograniczanie liczby operacji we/wy: Użyj iostat do mierzenia liczby operacji we/wy na urządzenie. Upewnij się, że żaden dysk nie przekracza jego limitu, a suma dla wszystkich dysków jest mniejsza niż limit dla maszyny wirtualnej.
-- Ograniczanie przepustowości: Użyj iostat jako dla operacji IOPS, ale mierząc przepływność odczytu i zapisu. Upewnij się, że przepustowość dla poszczególnych urządzeń i agregowania jest mniejsza niż wartość limitu przepustowości.
-- Wyczerpanie połączenia z ruchem: może to spowodować zalogowanie się jako wysoce aktywne (wychodzące) w programie SAR. 
-- Utrata pakietów: Ta wartość może być mierzona przez serwer proxy za pomocą liczby ponownych transmisji protokołu TCP względem liczby wysłanych/odebranych. Te informacje mogą być wyświetlane zarówno w `sar`, jak i `netstat`.
+Kilka przykładów typowych problemów i wskaźników do ich zdiagnozowania:
+- Ograniczanie we/wy we/wy: użyj iostat do pomiaru liczby we/wy na urządzenie. Upewnij się, że żaden pojedynczy dysk nie przekracza limitu, a suma dla wszystkich dysków jest mniejsza niż limit dla maszyny wirtualnej.
+- Ograniczanie przepustowości: użyj iostat jak dla IOPS, ale pomiaru przepływności odczytu/zapisu. Upewnij się, że przepływność na urządzenie i agregacja są poniżej limitów przepustowości.
+- Wyczerpanie SNAT: może to objawiać się jako wysokie połączenia aktywne (wychodzące) w SAR. 
+- Utrata pakietów: może to być mierzone przez serwer proxy za pośrednictwem licznika retransmisji TCP względem liczby wysłanych/odebranych. Oba `sar` `netstat` i może pokazać te informacje.
 
 ## <a name="general"></a>Ogólne
 
-Te narzędzia są ogólnego przeznaczenia i obejmują podstawowe informacje o systemie. Są to dobry punkt wyjścia do dalszej analizy.
+Narzędzia te mają charakter ogólny i obejmują podstawowe informacje o systemie. Są one dobrym punktem wyjścia do dalszych badań.
 
-### <a name="uptime"></a>czas
+### <a name="uptime"></a>Uptime
 
 ```
 $ uptime
  19:32:33 up 17 days, 12:36,  0 users,  load average: 0.21, 0.77, 0.69
 ```
 
-czas przestoju zapewnia czas systemowy i 1, 5 i 15 minut średnie obciążenia. Te średnie obciążenia są w przybliżeniu odpowiadają wątkom wykonującym pracę lub oczekującym na ukończenie pracy awaryjnej. Bezwzględnie te liczby mogą być trudne do zinterpretowania, ale mierzone w czasie, które mogą powiedzieć nam przydatne informacje:
+zapewnia czas pracy systemu oraz 1, 5 i 15-minutowe średnie obciążenia. Te średnie obciążenia w przybliżeniu odpowiadają wątkom wykonującym pracę lub oczekującym na wykonanie pracy awaryjnej. W absolutnej liczby te mogą być trudne do interpretacji, ale mierzone w czasie mogą nam powiedzieć przydatne informacje:
 
-- Średnia 1-minutowa średnia > 5 minut oznacza zwiększenie obciążenia.
-- Średnia 1-minutowa średnia < 5 minut oznacza zmniejszenie obciążeń.
+- 1-minutowa średnia > 5-minutowa średnia oznacza, że obciążenie rośnie.
+- 1-minutowa średnia < 5-minutowa średnia oznacza, że obciążenie maleje.
 
-czas pracy może również mieć wpływ na to, dlaczego informacje są niedostępne: problem mógł zostać rozwiązany samodzielnie lub przez ponowne uruchomienie komputera, zanim użytkownik będzie mógł uzyskać do niego dostęp.
+czas pracy bez przestojów może również oświetlić, dlaczego informacje nie są dostępne: problem mógł zostać rozwiązany samodzielnie lub przez ponowne uruchomienie, zanim użytkownik będzie mógł uzyskać dostęp do urządzenia.
 
-Średnia obciążenia większa niż liczba dostępnych wątków procesora może wskazywać na problem z wydajnością dla danego obciążenia.
+Średnie obciążenia wyższe niż liczba dostępnych wątków procesora CPU może wskazywać na problem z wydajnością z danym obciążeniem.
 
-### <a name="dmesg"></a>dmesg
+### <a name="dmesg"></a>Dmesg
 
 ```
 $ dmesg | tail 
 $ dmesg --level=err | tail
 ```
 
-dmesg zrzuca bufor jądra. Zdarzenia, takie jak OOMKill, dodają wpis do buforu jądra. Znajdowanie OOMKill lub innych komunikatów wyczerpania zasobów w dziennikach dmesg jest silnym wskaźnikiem problemu.
+dmesg zrzuca bufor jądra. Zdarzenia, takie jak OOMKill dodać wpis do buforu jądra. Znalezienie OOMKill lub innych komunikatów wyczerpania zasobów w dziennikach dmesg jest silnym wskaźnikiem problemu.
 
 ### <a name="top"></a>top
 
@@ -78,17 +78,17 @@ KiB Swap:        0 total,        0 free,        0 used. 62739060 avail Mem
      ...
 ```
 
-`top` zawiera szeroki przegląd bieżącego stanu systemu. Nagłówki zawierają przydatne informacje zagregowane:
+`top`zapewnia szeroki przegląd bieżącego stanu systemu. Nagłówki zawierają kilka przydatnych informacji zbiorczych:
 
-- stan zadań: uruchomiony, uśpiony, zatrzymany.
-- Użycie procesora CPU w tym przypadku przede wszystkim przedstawia czas bezczynności.
-- całkowita, bezpłatna i używana pamięć systemowa.
+- stan zadań: bieganie, spanie, zatrzymywane.
+- Wykorzystanie procesora CPU, w tym przypadku głównie pokazano czas bezczynny.
+- całkowitej, wolnej i używanej pamięci systemowej.
 
-`top` może pominąć procesy krótkoterminowe; alternatywy takie jak `htop` i `atop` zapewniają podobne interfejsy, jednocześnie rozwiązując niektóre z tych wad.
+`top`mogą pominąć krótkotrwałe procesy; alternatywnych, `htop` `atop` takich jak i zapewniają podobne interfejsy, jednocześnie naprawiając niektóre z tych niedociągnięć.
 
 ## <a name="cpu"></a>Procesor CPU
 
-Te narzędzia zapewniają informacje o użyciu procesora CPU. Jest to szczególnie przydatne w przypadku kroczących danych wyjściowych, gdzie wzorce stają się łatwe do zapunktowania.
+Narzędzia te dostarczają informacji o wykorzystaniu procesora CPU. Jest to szczególnie przydatne w przypadku wyjścia tocznego, gdzie wzory stają się łatwe do wykrycia.
 
 ### <a name="mpstat"></a>mpstat
 
@@ -108,9 +108,9 @@ Linux 4.15.0-1064-azure (aks-main-10212767-vmss000001)  02/10/20        _x86_64_
 19:49:04       7    1.98    0.00    0.99    0.00    0.00    0.00    0.00    0.00    0.00   97.03
 ```
 
-`mpstat` drukuje podobne informacje o procesorze CPU do góry, ale podzielone według wątku procesora CPU. Jednoczesne wyświetlanie wszystkich rdzeni może być przydatne do wykrywania wysoce niezrównoważonego użycia procesora CPU, na przykład gdy aplikacja jednowątkowa używa jednego rdzenia na 100%. Ten problem może być trudniejszy do zapamiętania, gdy jest zagregowany cały procesor CPU w systemie.
+`mpstat`drukuje podobne informacje o procesorze do góry, ale w podziale według wątku procesora. Wyświetlanie wszystkich rdzeni jednocześnie może być przydatne do wykrywania wysoce niezrównoważonego użycia procesora CPU, na przykład gdy aplikacja jednowątkowa używa jednego rdzenia przy 100% wykorzystaniu. Ten problem może być trudniejszy do wykrycia po zagregowanym przez wszystkie procesory w systemie.
 
-### <a name="vmstat"></a>vmstat
+### <a name="vmstat"></a>vmstat ( vmstat )
 
 ```
 $ vmstat [interval]
@@ -119,13 +119,13 @@ procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
  2  0      0 43300372 545716 19691456    0    0     3    50    3    3  2  1 95  1  0
 ```
 
-`vmstat` zapewnia podobne informacje `mpstat` i `top`, wyliczanie liczby procesów oczekujących na procesor CPU (r Column), statystyk pamięci i procent czasu procesora CPU spędzony w każdym stanie pracy.
+`vmstat`zawiera podobne `mpstat` `top`informacje i , wyliczając liczbę procesów oczekujących na CPU (r kolumna), statystyki pamięci i procent czasu procesora CPU spędzonego w każdym stanie roboczym.
 
-## <a name="memory"></a>Pamięć
+## <a name="memory"></a>Memory (Pamięć)
 
-Pamięć to bardzo ważne i Thankfully, które umożliwiają śledzenie. Niektóre narzędzia mogą raportować zarówno procesor, jak i pamięć, takie jak `vmstat`. Jednak narzędzia takie jak `free` mogą być nadal przydatne do szybkiego debugowania.
+Pamięć jest bardzo ważnym i na szczęście łatwym zasobem do śledzenia. Niektóre narzędzia mogą zgłaszać zarówno `vmstat`procesor, jak i pamięć, takie jak . Ale narzędzia, takie jak `free` może nadal być przydatne do szybkiego debugowania.
 
-### <a name="free"></a>zwolniony
+### <a name="free"></a>free
 
 ```
 $ free -m
@@ -134,11 +134,11 @@ Mem:          64403        2338       42485           1       19579       61223
 Swap:             0           0           0
 ```
 
-`free` prezentuje podstawowe informacje o całkowitej ilości pamięci, a także o używanej i wolnej pamięci. `vmstat` może być bardziej użyteczna nawet w przypadku podstawowej analizy pamięci z powodu jej zdolności do dostarczania danych wyjściowych.
+`free`przedstawia podstawowe informacje o całkowitej pamięci, a także używanej i wolnej pamięci. `vmstat`może być bardziej przydatne nawet do analizy pamięci podstawowej ze względu na jego zdolność do zapewnienia wyjścia toczenia.
 
 ## <a name="disk"></a>Dysk
 
-Narzędzia te mierzą operacje we/wy na dysku, kolejki oczekiwania i łączną przepływność. 
+Te narzędzia mierzą we/wy na dysku We/Wy, kolejki oczekiwania i całkowitą przepływność. 
 
 ### <a name="iostat"></a>iostat
 
@@ -157,31 +157,31 @@ sda               0.00    56.00    0.00   65.00     0.00   504.00    15.51     0
 scd0              0.00     0.00    0.00    0.00     0.00     0.00     0.00     0.00    0.00    0.00    0.00   0.00   0.00
 ```
 
-`iostat` zapewnia szczegółowe informacje o wykorzystaniu dysku. To wywołanie kończy się `-x` w przypadku statystyk rozszerzonych, `-y`, aby pominąć początkową średnią systemu drukowania wyjściowego od momentu rozruchu, a `1 1`, aby określić, że chcemy 1 Sekundować interwał, kończąc po jednym bloku danych wyjściowych. 
+`iostat`zapewnia głęboki wgląd w wykorzystanie dysku. To wywołanie `-x` przechodzi dla rozszerzonych `-y` statystyk, aby pominąć średnie systemu `1 1` drukowania początkowego wydruku od rozruchu i określić chcemy 1-sekundowy interwał, kończący się po jednym bloku danych wyjściowych. 
 
-`iostat` uwidacznia wiele przydatnych statystyk:
+`iostat`ujawnia wiele przydatnych statystyk:
 
-- `r/s` i `w/s` są odczytami na sekundę i zapisu na sekundę. Suma tych wartości to IOPS.
-- `rkB/s` i `wkB/s` są kilobajtami do odczytu/zapisu na sekundę. Suma tych wartości jest przepływność.
-- `await` to średni czas iowait w milisekundach dla żądań umieszczonych w kolejce.
-- `avgqu-sz` to średni rozmiar kolejki w podanym interwale.
+- `r/s`i `w/s` są odczyty na sekundę i zapisuje na sekundę. Suma tych wartości to We/Wy.
+- `rkB/s`i `wkB/s` są kilobajtami odczytu/zapisu na sekundę. Sumą tych wartości jest przepływność.
+- `await`to średni czas iowait w milisekundach dla żądań w kolejce.
+- `avgqu-sz`to średni rozmiar kolejki w podanym przedziale.
 
-Na maszynie wirtualnej platformy Azure:
+Na maszynie Wirtualnej platformy Azure:
 
-- suma `r/s` i `w/s` dla poszczególnych urządzeń blokujących nie może przekroczyć limitów jednostek SKU tego dysku.
-- suma `rkB/s` i `wkB/s` dla poszczególnych urządzeń blokujących nie może przekroczyć limitów jednostek SKU tego dysku
-- suma `r/s` i `w/s` dla wszystkich urządzeń blokujących nie może przekroczyć limitów dla jednostki SKU maszyny wirtualnej.
-- suma `rkB/s` i "wkB/s dla wszystkich urządzeń blokujących nie może przekroczyć limitów dla jednostki SKU maszyny wirtualnej.
+- suma `r/s` poszczególnych urządzeń blokowych nie `w/s` może przekraczać limitów jednostek SKU tego dysku.
+- suma `rkB/s` poszczególnych `wkB/s` urządzeń blokowych nie może przekraczać limitów jednostki SKU tego dysku
+- suma `r/s` wszystkich `w/s` urządzeń blokowych nie może przekraczać limitów dla jednostki SKU maszyny Wirtualnej.
+- suma `rkB/s` i 'wkB/s dla wszystkich urządzeń blokowych nie może przekraczać limitów dla jednostki SKU maszyny Wirtualnej.
 
-Należy zauważyć, że dysk systemu operacyjnego jest liczony jako dysk zarządzany o najmniejszej jednostce SKU odpowiadającej jej pojemności. Na przykład dysk systemu operacyjnego 1024GB odnosi się do dysku P30. Stałe dyski systemu operacyjnego i dyski tymczasowe nie mają indywidualnych limitów dysku; są one ograniczone tylko przez pełne limity maszyn wirtualnych.
+Należy zauważyć, że dysk systemu operacyjnego liczy się jako dysk zarządzany najmniejszej jednostki SKU odpowiadającej jego pojemności. Na przykład dysk systemu operacyjnego o wartości 1024 GB odpowiada dyskowi P30. Efemeryczne dyski systemu operacyjnego i dyski tymczasowe nie mają indywidualnych limitów dysków; są one ograniczone tylko przez pełne limity maszyn wirtualnych.
 
-Niezerowe wartości await lub avgqu-sz są również dobrymi wskaźnikami rywalizacji we/wy.
+Wartości niezerowe await lub avgqu-sz są również dobrymi wskaźnikami rywalizacji we/wy.
 
-## <a name="network"></a>Network
+## <a name="network"></a>Network (Sieć)
 
-Narzędzia te mierzą dane statystyczne sieci, takie jak przepływność, awarie transmisji i wykorzystanie. Dokładniejsza analiza może uwidaczniać szczegółowe dane statystyczne protokołu TCP dotyczące przeciążenia i pakietów porzuconych.
+Narzędzia te mierzą statystyki sieci, takie jak przepustowość, awarie transmisji i wykorzystanie. Głębsza analiza może ujawnić szczegółowe statystyki TCP dotyczące przeciążenia i porzuconych pakietów.
 
-### <a name="sar"></a>SAR
+### <a name="sar"></a>Współczynnik absorpcji ( sar
 
 ```
 $ sar -n DEV [interval]
@@ -199,10 +199,10 @@ $ sar -n DEV [interval]
 22:36:58    azvdbf16b0b2fc      9.00     19.00      3.36      1.18      0.00      0.00      0.00      0.00
 ```
 
-`sar` to zaawansowane narzędzie do szerokiego zakresu analizy. Chociaż w tym przykładzie wykorzystuje ona możliwości mierzenia statystyk sieci, jest to równie wydajne dla mierzenia zużycia procesora i pamięci. Ten przykład wywołuje `sar` z flagą `-n`, aby określić słowo kluczowe `DEV` (urządzenie sieciowe), wyświetlając przepływność sieci według urządzenia.
+`sar`jest potężnym narzędziem do szerokiego zakresu analiz. W tym przykładzie używa możliwości pomiaru statystyk sieciowych, ale jest równie wydajny do pomiaru zużycia procesora i pamięci. W tym `sar` przykładzie wywołuje `-n` `DEV` z flagą, aby określić słowo kluczowe (urządzenie sieciowe), wyświetlanie przepływności sieci przez urządzenie.
 
-- Suma `rxKb/s` i `txKb/s` to łączna przepływność dla danego urządzenia. Gdy ta wartość przekroczy limit aprowizacji kart sieciowych platformy Azure, obciążenia na maszynie będą zwiększone do opóźnienia sieci.
-- `%ifutil` miary wykorzystania dla danego urządzenia. Ponieważ ta wartość zbliża się do 100%, obciążenia będą powodować zwiększone opóźnienia sieci.
+- Suma `rxKb/s` i `txKb/s` jest całkowita przepływność dla danego urządzenia. Gdy ta wartość przekracza limit dla aprowizowanych kart sieciowych platformy Azure, obciążeń na komputerze będzie wystąpić zwiększone opóźnienie sieci.
+- `%ifutil`wykorzystania danego urządzenia. W miarę zbliżania się tej wartości do 100%, obciążenia będą doświadczać zwiększonego opóźnienia sieci.
 
 ```
 $ sar -n TCP,ETCP [interval]
@@ -221,11 +221,11 @@ Average:     atmptf/s  estres/s retrans/s isegerr/s   orsts/s
 Average:         0.00      0.00      0.00      0.00      0.00
 ```
 
-To wywołanie `sar` używa słów kluczowych `TCP,ETCP` do badania połączeń TCP. Trzecia kolumna ostatniego wiersza "retransd" to liczba retransmisji TCP na sekundę. Wysokie wartości dla tego pola wskazują niezawodne połączenie sieciowe. W pierwszym i trzecim wierszu "aktywny" oznacza połączenie pochodzące z urządzenia lokalnego, podczas gdy "zdalny" wskazuje połączenie przychodzące.  Typowym problemem związanym z platformą Azure jest wyczerpanie portów, które `sar` mogą pomóc wykryć. Wyczerpanie portów protokołu przesyłania adresów sieciowych będzie manifestować jako wysokie wartości "aktywne", ponieważ przyczyną tego problemu jest wysoka liczba wychodzących, inicjowanych lokalnie połączeń TCP.
+To wywołanie `sar` używa `TCP,ETCP` słów kluczowych do badania połączeń TCP. Trzecia kolumna ostatniego wiersza, "retrans", to liczba retransmitów TCP na sekundę. Wysokie wartości dla tego pola wskazują na zawodne połączenie sieciowe. W pierwszym i trzecim wierszu "aktywny" oznacza połączenie pochodzące z urządzenia lokalnego, podczas gdy "zdalny" wskazuje połączenie przychodzące.  Typowym problemem na platformie Azure jest `sar` wyczerpanie portów SNAT, które może pomóc w wykryciu. Wyczerpanie portów SNAT będzie manifestować jako wysokie wartości "aktywne", ponieważ problem wynika z dużej szybkości wychodzących, inicjowanych lokalnie połączeń TCP.
 
-Jak `sar` przyjmuje interwał, drukuje dane wyjściowe, a następnie drukuje końcowe wiersze danych wyjściowych zawierające średnie wyniki wywołania.
+W `sar` miarę upływu czasu drukuje toczenia, a następnie drukuje ostatnie wiersze danych wyjściowych zawierające średnie wyniki z wywołania.
 
-### <a name="netstat"></a>netstat
+### <a name="netstat"></a>Netstat
 
 ```
 $ netstat -s
@@ -323,4 +323,4 @@ IpExt:
     InECT0Pkts: 14
 ```
 
-`netstat` może Introspect szeroką gamę statystyk sieci w tym miejscu z podsumowaniem danych wyjściowych. W zależności od tego problemu istnieje wiele przydatnych pól. Jednym z przydatnych pól w sekcji TCP jest "nieudane próby połączenia". Może to wskazywać na wyczerpanie portów lub inne problemy związane z ruchem wychodzącym. Wysoka szybkość przesyłania segmentów (również w sekcji TCP) może wskazywać na problemy z dostarczaniem pakietów. 
+`netstat`może introspekcji szerokiej gamy statystyk sieci, tutaj wywoływane z wyjściem podsumowania. Istnieje wiele przydatnych pól w zależności od problemu. Jednym z przydatnych pól w sekcji TCP jest "nieudane próby połączenia". Może to być wskazanie wyczerpania portu SNAT lub innych problemów z wykonywaniem połączeń wychodzących. Wysoki wskaźnik retransmitowanych segmentów (również w sekcji TCP) może wskazywać na problemy z dostarczaniem pakietów. 

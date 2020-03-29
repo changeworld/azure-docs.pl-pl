@@ -1,6 +1,6 @@
 ---
-title: PRZESTARZAŁE Wdrażanie kontenerów za pomocą Helm na platformie Azure Kubernetes
-description: Używanie narzędzia Helm pakowanie do wdrażania kontenerów w klastrze Kubernetes w Azure Container Service
+title: (PRZESTARZAŁE) Wdrażanie kontenerów z helmem w usłudze Azure Kubernetes
+description: Narzędzie do pakowania Helm służy do wdrażania kontenerów w klastrze usługi Kubernetes w usłudze Azure Container Service
 author: sauryadas
 ms.service: container-service
 ms.topic: conceptual
@@ -8,51 +8,51 @@ ms.date: 04/10/2017
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: a32c9fab3877a693d2df26571b9fae4aa7b4380c
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76271086"
 ---
-# <a name="deprecated-use-helm-to-deploy-containers-on-a-kubernetes-cluster"></a>PRZESTARZAŁE Wdrażanie kontenerów w klastrze Kubernetes przy użyciu programu Helm
+# <a name="deprecated-use-helm-to-deploy-containers-on-a-kubernetes-cluster"></a>(PRZESTARZAŁE) Wdrażanie kontenerów w klastrze kubernetes za pomocą funkcji Helm
 
 > [!TIP]
-> Zaktualizowaną wersję tego artykułu korzystającego z usługi Azure Kubernetes Service można znaleźć [w temacie Install Applications with Helm in Azure Kubernetes Service (AKS)](../../aks/kubernetes-helm.md).
+> Aby zapoznać się ze zaktualizowaną wersją tego artykułu, która korzysta z usługi Azure Kubernetes, zobacz [Instalowanie aplikacji z helmem w usłudze Azure Kubernetes Service (AKS)](../../aks/kubernetes-helm.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-[Helm](https://github.com/kubernetes/helm/) to narzędzie do tworzenia pakietów typu "open source", które ułatwia Instalowanie i zarządzanie cyklem życia aplikacji Kubernetes. Podobnie jak w przypadku menedżerów pakietów systemu Linux, takich jak apt-get i yum, Helm służy do zarządzania wykresami Kubernetes, które są pakietami wstępnie skonfigurowanych zasobów Kubernetes. W tym artykule przedstawiono sposób pracy z usługą Helm w klastrze Kubernetes wdrożonym w Azure Container Service.
+[Helm](https://github.com/kubernetes/helm/) to narzędzie do pakowania typu open source, które pomaga zainstalować cykl życia aplikacji Kubernetes i zarządzać nimi. Podobnie jak menedżerów pakietów Linuksa, takich jak Apt-get i Yum, Helm służy do zarządzania wykresami Kubernetes, które są pakietami wstępnie skonfigurowanych zasobów Kubernetes. W tym artykule pokazano, jak pracować z helmem w klastrze Kubernetes wdrożonym w usłudze Azure Container Service.
 
 Helm ma dwa składniki: 
-* **Interfejs wiersza polecenia Helm** jest klientem działającym na komputerze lokalnym lub w chmurze  
+* **Helm CLI** to klient, który działa na komputerze lokalnie lub w chmurze  
 
-* **Jest to** serwer, który działa w klastrze Kubernetes i zarządza cyklem życia aplikacji Kubernetes 
+* **Tiller** to serwer, który działa w klastrze Kubernetes i zarządza cyklem życia aplikacji Kubernetes 
  
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Tworzenie klastra Kubernetes](container-service-kubernetes-walkthrough.md) w Azure Container Service
+* [Tworzenie klastra usługi Kubernetes](container-service-kubernetes-walkthrough.md) w usłudze kontenerów platformy Azure
 
-* [Instalowanie i konfigurowanie `kubectl`](../container-service-connect.md) na komputerze lokalnym
+* [Instalowanie i `kubectl` konfigurowanie](../container-service-connect.md) na komputerze lokalnym
 
-* [Instalowanie Helm](https://github.com/kubernetes/helm/blob/master/docs/install.md) na komputerze lokalnym
+* [Instalowanie programu Helm](https://github.com/kubernetes/helm/blob/master/docs/install.md) na komputerze lokalnym
 
-## <a name="helm-basics"></a>Helm — podstawy 
+## <a name="helm-basics"></a>Podstawy steru 
 
-Aby wyświetlić informacje o klastrze Kubernetes, który jest instalowany, i wdrożyć aplikacje w programie, wpisz następujące polecenie:
+Aby wyświetlić informacje o klastrze Kubernetes, w których instalujesz program Tiller i w których wdrażasz aplikacje, wpisz następujące polecenie:
 
 ```bash
 kubectl cluster-info 
 ```
-![polecenia kubectl — informacje o klastrze](./media/container-service-kubernetes-helm/clusterinfo.png)
+![kubectl cluster-info](./media/container-service-kubernetes-helm/clusterinfo.png)
  
-Po zainstalowaniu Helm Zainstaluj program do logowania do klastra Kubernetes, wpisując następujące polecenie:
+Po zainstalowaniu programu Helm zainstaluj program Tiller w klastrze kubernetes, wpisując następujące polecenie:
 
 ```bash
 helm init --upgrade
 ```
-Po pomyślnym zakończeniu zostanie wyświetlone dane wyjściowe podobne do następujących:
+Po pomyślnym zakończeniu zobaczysz dane wyjściowe następujące:
 
-![Instalacja przez Instalatora](./media/container-service-kubernetes-helm/tiller-install.png)
+![Instalacja kultywatera](./media/container-service-kubernetes-helm/tiller-install.png)
  
  
  
@@ -63,29 +63,29 @@ Aby wyświetlić wszystkie wykresy Helm dostępne w repozytorium, wpisz następu
 helm search 
 ```
 
-Zobaczysz dane wyjściowe podobne do następujących:
+Widzisz dane wyjściowe następujące:
 
-![Wyszukiwanie Helm](./media/container-service-kubernetes-helm/helm-search.png)
+![Wyszukiwanie sterów](./media/container-service-kubernetes-helm/helm-search.png)
  
 Aby zaktualizować wykresy w celu uzyskania najnowszych wersji, wpisz:
 
 ```bash 
 helm repo update 
 ```
-## <a name="deploy-an-nginx-ingress-controller-chart"></a>Wdrażanie wykresu kontrolera danych wejściowych Nginx 
+## <a name="deploy-an-nginx-ingress-controller-chart"></a>Wdrażanie wykresu kontrolera transferu danych przychodzących Nginx 
  
 Aby wdrożyć wykres kontrolera transferu danych przychodzących Nginx, wpisz pojedyncze polecenie:
 
 ```bash
 helm install stable/nginx-ingress 
 ```
-![Wdróż kontroler transferu danych przychodzących](./media/container-service-kubernetes-helm/nginx-ingress.png)
+![Wdrażanie kontrolera transferu danych przychodzących](./media/container-service-kubernetes-helm/nginx-ingress.png)
 
-Jeśli wpiszesz `kubectl get svc`, aby wyświetlić wszystkie usługi działające w klastrze, zobaczysz, że adres IP jest przypisany do kontrolera transferu danych przychodzących. (Podczas gdy przypisanie jest w toku, zobaczysz `<pending>`. Wykonanie tej czynności trwa kilka minut. 
+Po wpisaniu, `kubectl get svc` aby wyświetlić wszystkie usługi, które są uruchomione w klastrze, widać, że adres IP jest przypisany do kontrolera transferu danych przychodzących. (Gdy przypisanie jest w `<pending>`toku, zobaczysz . Zajmuje to kilka minut). 
 
-Po przypisaniu adresu IP przejdź do wartości zewnętrznego adresu IP, aby zobaczyć, że zaplecze nginx jest uruchomione. 
+Po przypisaniu adresu IP przejdź do wartości zewnętrznego adresu IP, aby wyświetlić uruchomione zaplecze Nginx. 
  
-![Adres IP ruchu przychodzącego](./media/container-service-kubernetes-helm/ingress-ip-address.png)
+![Adres IP usługi Ingress](./media/container-service-kubernetes-helm/ingress-ip-address.png)
 
 
 Aby wyświetlić listę wykresów zainstalowanych w klastrze, wpisz:
@@ -94,14 +94,14 @@ Aby wyświetlić listę wykresów zainstalowanych w klastrze, wpisz:
 helm list 
 ```
 
-Można skrócić polecenie do `helm ls`.
+Polecenie można skrócić do `helm ls`.
  
  
  
  
-## <a name="deploy-a-mariadb-chart-and-client"></a>Wdrażanie wykresu MariaDB i klienta
+## <a name="deploy-a-mariadb-chart-and-client"></a>Wdrażanie wykresu i klienta MariaDB
 
-Teraz Wdróż wykres MariaDB i klienta MariaDB w celu nawiązania połączenia z bazą danych.
+Teraz wdrożyć wykres MariaDB i klienta MariaDB, aby połączyć się z bazą danych.
 
 Aby wdrożyć wykres MariaDB, wpisz następujące polecenie:
 
@@ -109,10 +109,10 @@ Aby wdrożyć wykres MariaDB, wpisz następujące polecenie:
 helm install --name v1 stable/mariadb
 ```
 
-gdzie `--name` jest tagiem używanym w wersjach.
+gdzie `--name` jest znacznik używany do wydań.
 
 > [!TIP]
-> Jeśli wdrożenie nie powiedzie się, uruchom `helm repo update` i spróbuj ponownie.
+> Jeśli wdrożenie nie `helm repo update` powiedzie się, uruchom i spróbuj ponownie.
 >
  
  
@@ -129,25 +129,25 @@ kubectl get deployments
 ``` 
  
  
-Aby na koniec uzyskać dostęp do klienta programu, wpisz:
+Na koniec, aby uruchomić zasobnik, aby uzyskać dostęp do klienta, wpisz:
 
 ```bash
 kubectl run v1-mariadb-client --rm --tty -i --image bitnami/mariadb --command -- bash  
 ``` 
  
  
-Aby nawiązać połączenie z klientem, wpisz następujące polecenie, zastępując `v1-mariadb` nazwą wdrożenia:
+Aby połączyć się z klientem, `v1-mariadb` wpisz następujące polecenie, zastępując nazwą wdrożenia:
 
 ```bash
 sudo mysql –h v1-mariadb
 ```
  
  
-Możesz teraz używać standardowych poleceń SQL do tworzenia baz danych, tabel itp. Na przykład `Create DATABASE testdb1;` tworzy pustą bazę danych. 
+Teraz można używać standardowych poleceń SQL do tworzenia baz danych, tabel itp. Na przykład `Create DATABASE testdb1;` tworzy pustą bazę danych. 
  
  
  
 ## <a name="next-steps"></a>Następne kroki
 
-* Więcej informacji o zarządzaniu wykresami Kubernetes można znaleźć w [dokumentacji Helm](https://github.com/kubernetes/helm/blob/master/docs/index.md). 
+* Aby uzyskać więcej informacji na temat zarządzania wykresami kubernetes, zobacz [dokumentację Helm](https://github.com/kubernetes/helm/blob/master/docs/index.md). 
 

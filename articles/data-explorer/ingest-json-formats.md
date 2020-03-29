@@ -1,6 +1,6 @@
 ---
-title: Pozyskiwanie danych w formacie JSON w usłudze Azure Eksplorator danych
-description: Dowiedz się więcej o sposobie pozyskiwania danych w formacie JSON w usłudze Azure Eksplorator danych.
+title: Postrząślij sformatowane dane JSON do Eksploratora danych platformy Azure
+description: Dowiedz się, jak pozyskiwania danych sformatowanych JSON do Usługi Azure Data Explorer.
 author: orspod
 ms.author: orspodek
 ms.reviewer: kerend
@@ -8,15 +8,15 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: d293b76e004d693813a074cb8551a86cb3c0bec2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76772332"
 ---
-# <a name="ingest-json-formatted-sample-data-into-azure-data-explorer"></a>Zyskaj przykładowe dane JSON sformatowane do Eksplorator danych platformy Azure
+# <a name="ingest-json-formatted-sample-data-into-azure-data-explorer"></a>Przyjmowanie przykładowych danych sformatowanych json do Eksploratora danych platformy Azure
 
-W tym artykule opisano sposób pozyskiwania danych w formacie JSON w bazie danych Eksplorator danych platformy Azure. Zacznij od prostych przykładów nieprzetworzonego i zamapowanego JSON, przejdź do wielowierszowego kodu JSON, a następnie spróbuj wykonać bardziej złożone schematy JSON zawierające tablice i słowniki.  Przykłady opisują proces pozyskiwania danych w formacie JSON przy użyciu języka zapytań Kusto (KQL), C#lub Python. Polecenia sterowania `ingest` języka zapytań Kusto są wykonywane bezpośrednio w punkcie końcowym aparatu. W scenariuszach produkcyjnych pozyskiwanie jest wykonywane do usługi Zarządzanie danymi przy użyciu bibliotek klienta lub połączeń danych. Odczytaj dane pozyskiwania [przy użyciu biblioteki języka Python platformy azure Eksplorator danych](/azure/data-explorer/python-ingest-data) i pozyskaj [dane przy użyciu zestawu SDK usługi Azure Eksplorator danych .NET Standard](/azure/data-explorer/net-standard-ingest-data) w celu uzyskania informacji dotyczących pozyskiwania danych z tymi bibliotekami klientów.
+W tym artykule pokazano, jak pozyskiwania danych Sformatowanych JSON do bazy danych Usługi Azure Data Explorer. Zaczniesz od prostych przykładów surowego i mapowane JSON, nadal wielościeżkowych JSON, a następnie rozwiązania bardziej złożonych schematów JSON zawierających tablice i słowniki.  Przykłady szczegółowo proces pozyskiwania danych JSON sformatowany przy użyciu języka zapytania Kusto (KQL), C#, lub Python. Polecenia sterujące `ingest` językiem kwerendy Kusto są wykonywane bezpośrednio do punktu końcowego aparatu. W scenariuszach produkcyjnych pozyskiwania jest wykonywane do usługi zarządzania danymi przy użyciu bibliotek klienta lub połączeń danych. [Odczytuj dane pozyskiwania przy użyciu biblioteki Języka Python usługi Azure Data Explorer](/azure/data-explorer/python-ingest-data) i pozyskiwania danych przy użyciu [standardowego sdk usługi Azure Data Explorer .NET](/azure/data-explorer/net-standard-ingest-data) dla przejścia dotyczącego pozyskiwania danych za pomocą tych bibliotek klienta.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -24,17 +24,17 @@ W tym artykule opisano sposób pozyskiwania danych w formacie JSON w bazie danyc
 
 ## <a name="the-json-format"></a>Format JSON
 
-Usługa Azure Eksplorator danych obsługuje dwa formaty plików JSON:
-* `json`: kod JSON rozdzielony wierszem. Każdy wiersz w danych wejściowych ma dokładnie jeden rekord JSON.
-* `multijson`: wielowierszowy kod JSON. Analizator ignoruje separatory wierszy i odczytuje rekord z poprzedniej pozycji do końca prawidłowego kodu JSON.
+Usługa Azure Data Explorer obsługuje dwa formaty plików JSON:
+* `json`: Linia oddzielona JSON. Każdy wiersz w danych wejściowych ma dokładnie jeden rekord JSON.
+* `multijson`: JSON z wieloma podszewkami. Analizator konsomanuje separatory linii i odczytuje rekord z poprzedniej pozycji do końca prawidłowego JSON.
 
-### <a name="ingest-and-map-json-formatted-data"></a>Pozyskiwanie i mapowanie danych w formacie JSON
+### <a name="ingest-and-map-json-formatted-data"></a>Połknienie i mapowanie danych sformatowanych json
 
-Pozyskiwanie danych w formacie JSON wymaga określenia *formatu* przy użyciu [Właściwości](/azure/kusto/management/data-ingestion/index#ingestion-properties)pozyskiwania. Pozyskiwanie danych JSON wymaga [mapowania](/azure/kusto/management/mappings), które mapuje wpis źródła JSON do jego kolumny docelowej. Podczas pozyskiwania danych Użyj wstępnie zdefiniowanej właściwości pozyskiwania `jsonMappingReference` lub określ `jsonMapping`Właściwość pozyskiwania. W tym artykule zostanie użyta Właściwość pozyskiwania `jsonMappingReference`, która jest wstępnie zdefiniowana w tabeli używanej do pozyskiwania. W poniższych przykładach zaczniemy od pozyskania rekordów JSON jako danych pierwotnych do jednokolumnowej tabeli. Następnie użyjemy mapowania, aby pozyskiwać każdą właściwość do swojej mapowanej kolumny. 
+Połknienie danych sformatowanych json wymaga określenia *formatu* przy użyciu [właściwości pozyskiwania](/azure/kusto/management/data-ingestion/index#ingestion-properties). Pozyskiwanie danych JSON wymaga [mapowania](/azure/kusto/management/mappings), który mapuje wpis źródła JSON do kolumny docelowej. Podczas pozyskiwania danych należy użyć wstępnie `jsonMappingReference` zdefiniowanej właściwości pozyskiwania lub `jsonMapping`określić właściwość pozyskiwania. W tym artykule użyje `jsonMappingReference` właściwości pozyskiwania, która jest wstępnie zdefiniowana w tabeli używanej do pozyskiwania. W poniższych przykładach zaczniemy od pozyskiwania rekordów JSON jako nieprzetworzonych danych do pojedynczej tabeli kolumn. Następnie użyjemy mapowania do pozyskiwania każdej właściwości do jego zamapowane kolumny. 
 
 ### <a name="simple-json-example"></a>Prosty przykład JSON
 
-Poniższy przykład to prosty kod JSON z płaską strukturą. Dane zawierają informacje o temperatury i wilgotności, zbierane przez kilka urządzeń. Każdy rekord jest oznaczony IDENTYFIKATORem i sygnaturą czasową.
+Poniższy przykład jest prosty JSON, o płaskiej strukturze. Dane są zbierane przez kilka urządzeń. Każdy rekord jest oznaczony identyfikatorem i sygnaturą czasową.
 
 ```json
 {
@@ -46,27 +46,27 @@ Poniższy przykład to prosty kod JSON z płaską strukturą. Dane zawierają in
 }
 ```
 
-## <a name="ingest-raw-json-records"></a>Pozyskiwanie nieprzetworzonych rekordów JSON 
+## <a name="ingest-raw-json-records"></a>Połknienie nieprzetworzonych rekordów JSON 
 
-W tym przykładzie rekordy JSON są pozyskiwane jako dane pierwotne do pojedynczej tabeli kolumn. Manipulowanie danymi, korzystanie z zapytań i zasad aktualizacji odbywa się po pozyskaniu danych.
+W tym przykładzie pozyskiwania rekordów JSON jako nieprzetworzonych danych do pojedynczej tabeli kolumn. Manipulowanie danymi, przy użyciu zapytań i zasad aktualizacji odbywa się po spożyciu danych.
 
-# <a name="kqltabkusto-query-language"></a>[KQL](#tab/kusto-query-language)
+# <a name="kql"></a>[Kql](#tab/kusto-query-language)
 
-Użyj języka zapytań Kusto do pozyskiwania danych w formacie JSON.
+Użyj języka zapytania Kusto do pozyskiwania danych w nieprzetworzonym formacie JSON.
 
-1. Zaloguj się do witryny [https://dataexplorer.azure.com](https://dataexplorer.azure.com).
+1. Zaloguj się [https://dataexplorer.azure.com](https://dataexplorer.azure.com)do .
 
 1. Wybierz pozycję **Dodaj klaster**.
 
-1. W oknie dialogowym **Dodawanie klastra** wprowadź adres URL klastra w formularzu `https://<ClusterName>.<Region>.kusto.windows.net/`, a następnie wybierz pozycję **Dodaj**.
+1. W oknie dialogowym **Dodawanie klastra** wprowadź `https://<ClusterName>.<Region>.kusto.windows.net/`adres URL klastra w formularzu , a następnie wybierz pozycję **Dodaj**.
 
-1. Wklej w poniższym poleceniu i wybierz polecenie **Uruchom** , aby utworzyć tabelę.
+1. Wklej w poniższym poleceniu, a następnie wybierz pozycję **Uruchom,** aby utworzyć tabelę.
 
     ```Kusto
     .create table RawEvents (Event: dynamic)
     ```
 
-    To zapytanie tworzy tabelę z pojedynczą kolumną `Event` o [dynamicznym](/azure/kusto/query/scalar-data-types/dynamic) typie danych.
+    Ta kwerenda tworzy tabelę z pojedynczą `Event` kolumną [dynamicznego](/azure/kusto/query/scalar-data-types/dynamic) typu danych.
 
 1. Utwórz mapowanie JSON.
 
@@ -74,19 +74,19 @@ Użyj języka zapytań Kusto do pozyskiwania danych w formacie JSON.
     .create table RawEvents ingestion json mapping 'RawEventMapping' '[{"column":"Event","path":"$"}]'
     ```
 
-    To polecenie tworzy mapowanie i mapuje ścieżkę katalogu głównego JSON `$` do kolumny `Event`.
+    To polecenie tworzy mapowanie i mapuje `$` ścieżkę główną JSON do `Event` kolumny.
 
-1. Pozyskaj dane do tabeli `RawEvents`.
+1. Połknąć dane `RawEvents` do tabeli.
 
     ```Kusto
     .ingest into table RawEvents h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=json, jsonMappingReference=RawEventMapping)
     ```
 
-# <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
+# <a name="c"></a>[C #](#tab/c-sharp)
 
-Służy C# do pozyskiwania danych w formacie nieprzetworzonym JSON.
+Użyj języka C# do pozyskiwania danych w formacie JSON nieprzetworzonego.
 
-1. Utwórz tabelę `RawEvents`.
+1. Utwórz `RawEvents` tabelę.
 
     ```C#
     var kustoUri = "https://<ClusterName>.<Region>.kusto.windows.net:443/";
@@ -128,9 +128,9 @@ Służy C# do pozyskiwania danych w formacie nieprzetworzonym JSON.
 
     kustoClient.ExecuteControlCommand(command);
     ```
-    To polecenie tworzy mapowanie i mapuje ścieżkę katalogu głównego JSON `$` do kolumny `Event`.
+    To polecenie tworzy mapowanie i mapuje `$` ścieżkę główną JSON do `Event` kolumny.
 
-1. Pozyskaj dane do tabeli `RawEvents`.
+1. Połknąć dane `RawEvents` do tabeli.
 
     ```C#
     var ingestUri = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443/";
@@ -157,13 +157,13 @@ Służy C# do pozyskiwania danych w formacie nieprzetworzonym JSON.
     ```
 
 > [!NOTE]
-> Dane są agregowane zgodnie z [zasadami wsadowymi](/azure/kusto/concepts/batchingpolicy), co spowodowało opóźnienie wynoszące kilka minut.
+> Dane są agregowane zgodnie z [zasadami przetwarzania wsadowego,](/azure/kusto/concepts/batchingpolicy)co powoduje kilkuminutowe opóźnienie.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-Użyj języka Python do pozyskiwania danych w formacie nieprzetworzonym JSON.
+Użyj języka Python do pozyskiwania danych w formacie JSON nieprzetworzonego.
 
-1. Utwórz tabelę `RawEvents`.
+1. Utwórz `RawEvents` tabelę.
 
     ```Python
     KUSTO_URI = "https://<ClusterName>.<Region>.kusto.windows.net:443/"
@@ -185,7 +185,7 @@ Użyj języka Python do pozyskiwania danych w formacie nieprzetworzonym JSON.
     dataframe_from_result_table(RESPONSE.primary_results[0])
     ```
 
-1. Pozyskaj dane do tabeli `RawEvents`.
+1. Połknąć dane `RawEvents` do tabeli.
 
     ```Python
     INGEST_URI = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443/"
@@ -200,17 +200,17 @@ Użyj języka Python do pozyskiwania danych w formacie nieprzetworzonym JSON.
     ```
 
     > [!NOTE]
-    > Dane są agregowane zgodnie z [zasadami wsadowymi](/azure/kusto/concepts/batchingpolicy), co spowodowało opóźnienie wynoszące kilka minut.
+    > Dane są agregowane zgodnie z [zasadami przetwarzania wsadowego,](/azure/kusto/concepts/batchingpolicy)co powoduje kilkuminutowe opóźnienie.
 
 ---
 
-## <a name="ingest-mapped-json-records"></a>Pozyskiwanie mapowanych rekordów JSON
+## <a name="ingest-mapped-json-records"></a>Połknienie mapowanych rekordów JSON
 
-W tym przykładzie pozyskasz dane rekordów JSON. Każda właściwość JSON jest zamapowana na pojedynczą kolumnę w tabeli. 
+W tym przykładzie pozyskiwania danych JSON rekordów. Każda właściwość JSON jest mapowana na jedną kolumnę w tabeli. 
 
-# <a name="kqltabkusto-query-language"></a>[KQL](#tab/kusto-query-language)
+# <a name="kql"></a>[Kql](#tab/kusto-query-language)
 
-1. Utwórz nową tabelę zawierającą podobny schemat do danych wejściowych JSON. Użyjemy tej tabeli dla wszystkich poniższych przykładów i poleceń pozyskiwania. 
+1. Utwórz nową tabelę o podobnym schemacie do danych wejściowych JSON. Użyjemy tej tabeli dla wszystkich poniższych przykładów i polecenia pozyskiwania. 
 
     ```Kusto
     .create table Events (Time: datetime, Device: string, MessageId: string, Temperature: double, Humidity: double)
@@ -222,19 +222,19 @@ W tym przykładzie pozyskasz dane rekordów JSON. Każda właściwość JSON jes
     .create table Events ingestion json mapping 'FlatEventMapping' '[{"column":"Time","path":"$.timestamp"},{"column":"Device","path":"$.deviceId"},{"column":"MessageId","path":"$.messageId"},{"column":"Temperature","path":"$.temperature"},{"column":"Humidity","path":"$.humidity"}]'
     ```
 
-    W ramach tego mapowania zdefiniowanego przez schemat tabeli wpisy `timestamp` zostaną pozyskane do kolumny `Time` jako `datetime` typy danych.
+    W tym mapowaniu, zgodnie z definicją w schemacie tabeli, `timestamp` wpisy zostaną przyjmone do kolumny `Time` jako `datetime` typy danych.
 
-1. Pozyskaj dane do tabeli `Events`.
+1. Połknąć dane `Events` do tabeli.
 
     ```Kusto
     .ingest into table Events h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=json, jsonMappingReference=FlatEventMapping)
     ```
 
-    Plik "Simple. JSON" zawiera kilka rekordów JSON rozdzielonych wierszami. Format jest `json`, a mapowanie używane w poleceniu pozyskiwania to `FlatEventMapping` utworzony.
+    Plik "simple.json" ma kilka rekordów JSON oddzielonych linią. Format jest `json`, a mapowanie używane w poleceniu pozyskiwania jest utworzony. `FlatEventMapping`
 
-# <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
+# <a name="c"></a>[C #](#tab/c-sharp)
 
-1. Utwórz nową tabelę zawierającą podobny schemat do danych wejściowych JSON. Użyjemy tej tabeli dla wszystkich poniższych przykładów i poleceń pozyskiwania. 
+1. Utwórz nową tabelę o podobnym schemacie do danych wejściowych JSON. Użyjemy tej tabeli dla wszystkich poniższych przykładów i polecenia pozyskiwania. 
 
     ```C#
     var table = "Events";
@@ -273,9 +273,9 @@ W tym przykładzie pozyskasz dane rekordów JSON. Każda właściwość JSON jes
     kustoClient.ExecuteControlCommand(command);
     ```
 
-    W ramach tego mapowania zdefiniowanego przez schemat tabeli wpisy `timestamp` zostaną pozyskane do kolumny `Time` jako `datetime` typy danych.    
+    W tym mapowaniu, zgodnie z definicją w schemacie tabeli, `timestamp` wpisy zostaną przyjmone do kolumny `Time` jako `datetime` typy danych.    
 
-1. Pozyskaj dane do tabeli `Events`.
+1. Połknąć dane `Events` do tabeli.
 
     ```C#
     var blobPath = "https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D";
@@ -289,11 +289,11 @@ W tym przykładzie pozyskasz dane rekordów JSON. Każda właściwość JSON jes
     ingestClient.IngestFromSingleBlob(blobPath, deleteSourceOnSuccess: false, ingestionProperties: properties);
     ```
 
-    Plik "Simple. JSON" zawiera kilka rekordów JSON rozdzielonych wierszami. Format jest `json`, a mapowanie używane w poleceniu pozyskiwania to `FlatEventMapping` utworzony.
+    Plik "simple.json" ma kilka rekordów JSON oddzielonych linią. Format jest `json`, a mapowanie używane w poleceniu pozyskiwania jest utworzony. `FlatEventMapping`
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-1. Utwórz nową tabelę zawierającą podobny schemat do danych wejściowych JSON. Użyjemy tej tabeli dla wszystkich poniższych przykładów i poleceń pozyskiwania. 
+1. Utwórz nową tabelę o podobnym schemacie do danych wejściowych JSON. Użyjemy tej tabeli dla wszystkich poniższych przykładów i polecenia pozyskiwania. 
 
     ```Python
     TABLE = "RawEvents"
@@ -311,7 +311,7 @@ W tym przykładzie pozyskasz dane rekordów JSON. Każda właściwość JSON jes
     dataframe_from_result_table(RESPONSE.primary_results[0])
     ```
 
-1. Pozyskaj dane do tabeli `Events`.
+1. Połknąć dane `Events` do tabeli.
 
     ```Python
     BLOB_PATH = 'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D'
@@ -322,24 +322,24 @@ W tym przykładzie pozyskasz dane rekordów JSON. Każda właściwość JSON jes
         BLOB_DESCRIPTOR, ingestion_properties=INGESTION_PROPERTIES)
     ```
 
-    Plik "Simple. JSON" zawiera kilka niepodzielonych wierszy rekordów JSON. Format jest `json`, a mapowanie używane w poleceniu pozyskiwania to `FlatEventMapping` utworzony.    
+    Plik "simple.json" ma kilka wierszy oddzielone rekordy JSON. Format jest `json`, a mapowanie używane w poleceniu pozyskiwania jest utworzony. `FlatEventMapping`    
 ---
 
-## <a name="ingest-multi-lined-json-records"></a>Pozyskiwanie wielowierszowych rekordów JSON
+## <a name="ingest-multi-lined-json-records"></a>Połknienie wielościeżkowych rekordów JSON
 
-W tym przykładzie pozyskasz wielowierszowe rekordy JSON. Każda właściwość JSON jest zamapowana na pojedynczą kolumnę w tabeli. Plik "wieloline. JSON" zawiera kilka wcięć rekordów JSON. Format `multijson` informuje aparat do odczytywania rekordów przez strukturę JSON.
+W tym przykładzie pozyskiwania rekordów JSON z wieloma wyściełami. Każda właściwość JSON jest mapowana na jedną kolumnę w tabeli. Plik "multilined.json" ma kilka wciętych rekordów JSON. Format `multijson` nakazuje aparatowi odczytywanie rekordów przez strukturę JSON.
 
-# <a name="kqltabkusto-query-language"></a>[KQL](#tab/kusto-query-language)
+# <a name="kql"></a>[Kql](#tab/kusto-query-language)
 
-Pozyskaj dane do tabeli `Events`.
+Połknąć dane `Events` do tabeli.
 
 ```Kusto
 .ingest into table Events h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/multilined.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=multijson, jsonMappingReference=FlatEventMapping)
 ```
 
-# <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
+# <a name="c"></a>[C #](#tab/c-sharp)
 
-Pozyskaj dane do tabeli `Events`.
+Połknąć dane `Events` do tabeli.
 
 ```C#
 var tableMapping = "FlatEventMapping";
@@ -354,9 +354,9 @@ var properties =
 ingestClient.IngestFromSingleBlob(blobPath, deleteSourceOnSuccess: false, ingestionProperties: properties);
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-Pozyskaj dane do tabeli `Events`.
+Połknąć dane `Events` do tabeli.
 
 ```Python
 MAPPING = "FlatEventMapping"
@@ -369,9 +369,9 @@ INGESTION_CLIENT.ingest_from_blob(
 
 ---
 
-## <a name="ingest-json-records-containing-arrays"></a>Pozyskiwanie rekordów JSON zawierających tablice
+## <a name="ingest-json-records-containing-arrays"></a>Pochłonienie rekordów JSON zawierających tablice
 
-Typy danych tablicy to uporządkowana Kolekcja wartości. Pozyskiwanie tablicy JSON jest wykonywane przez [zasady aktualizacji](/azure/kusto/management/update-policy). KOD JSON jest pobierany jako-do tabeli pośredniej. Zasady aktualizacji uruchamiają wstępnie zdefiniowaną funkcję w tabeli `RawEvents`, przepobierając wyniki do tabeli docelowej. Będziemy pozyskiwać dane przy użyciu następującej struktury:
+Typy danych tablicy są uporządkowanym zbiorem wartości. Połknienie tablicy JSON odbywa się za pomocą [zasad aktualizacji](/azure/kusto/management/update-policy). JSON jest pochłonięty jako jest do tabeli pośredniej. Zasady aktualizacji uruchamia wstępnie zdefiniowaną `RawEvents` funkcję w tabeli, przykuwając ponownie wyniki do tabeli docelowej. Będziemy pojmować dane o następującej strukturze:
 
 ```json
 {
@@ -395,9 +395,9 @@ Typy danych tablicy to uporządkowana Kolekcja wartości. Pozyskiwanie tablicy J
 }
 ```
 
-# <a name="kqltabkusto-query-language"></a>[KQL](#tab/kusto-query-language)
+# <a name="kql"></a>[Kql](#tab/kusto-query-language)
 
-1. Utwórz funkcję `update policy`, która rozszerza kolekcję `records`, tak aby każda wartość w kolekcji otrzymywała oddzielny wiersz przy użyciu operatora `mv-expand`. Użyjemy `RawEvents` tabeli jako tabeli źródłowej i `Events` jako tabeli docelowej.
+1. Utwórz `update policy` funkcję, która rozwija `records` kolekcję tak, aby każda wartość w `mv-expand` kolekcji odbierał oddzielny wiersz, przy użyciu operatora. Użyjemy tabeli `RawEvents` jako tabeli źródłowej i `Events` tabeli docelowej.
 
     ```Kusto
     .create function EventRecordsExpand() {
@@ -412,33 +412,33 @@ Typy danych tablicy to uporządkowana Kolekcja wartości. Pozyskiwanie tablicy J
     }
     ```
 
-1. Schemat otrzymany przez funkcję musi być zgodny ze schematem tabeli docelowej. Użyj operatora `getschema`, aby przejrzeć schemat.
+1. Schemat odebrany przez funkcję musi być zgodny ze schematem tabeli docelowej. Użyj `getschema` operatora, aby przejrzeć schemat.
 
     ```Kusto
     EventRecordsExpand() | getschema
     ```
 
-1. Dodaj zasady aktualizacji do tabeli docelowej. Te zasady spowodują automatyczne uruchomienie zapytania na wszystkich nowych danych pozyskanych w `RawEvents` tabeli pośredniej i pozyskaniu wyników do tabeli `Events`. Zdefiniuj zasady przechowywania zerowego, aby uniknąć utrwalania tabeli pośredniej.
+1. Dodaj zasady aktualizacji do tabeli docelowej. Ta zasada automatycznie uruchomi kwerendę na wszystkich nowo pochłoniętych danych w tabeli pośredniej `RawEvents` i pochłonie wyniki w `Events` tabeli. Zdefiniuj zasady zerowego przechowywania, aby uniknąć utrwalania tabeli pośredniej.
 
     ```Kusto
     .alter table Events policy update @'[{"Source": "RawEvents", "Query": "EventRecordsExpand()", "IsEnabled": "True"}]'
     ```
 
-1. Pozyskaj dane do tabeli `RawEvents`.
+1. Połknąć dane `RawEvents` do tabeli.
 
     ```Kusto
     .ingest into table Events h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/array.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=multijson, jsonMappingReference=RawEventMapping)
     ```
 
-1. Przejrzyj dane w tabeli `Events`.
+1. Przejrzyj `Events` dane w tabeli.
 
     ```Kusto
     Events
     ```
 
-# <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
+# <a name="c"></a>[C #](#tab/c-sharp)
 
-1. Utwórz funkcję aktualizacji, która rozszerza zbiór `records` tak, aby każda wartość w kolekcji otrzymywała oddzielny wiersz przy użyciu operatora `mv-expand`. Użyjemy `RawEvents` tabeli jako tabeli źródłowej i `Events` jako tabeli docelowej.   
+1. Utwórz funkcję aktualizacji, która `records` rozwija kolekcję tak, aby każda wartość `mv-expand` w kolekcji odbierała oddzielny wiersz, przy użyciu operatora. Użyjemy tabeli `RawEvents` jako tabeli źródłowej i `Events` tabeli docelowej.   
 
     ```C#
     var command =
@@ -461,9 +461,9 @@ Typy danych tablicy to uporządkowana Kolekcja wartości. Pozyskiwanie tablicy J
     ```
 
     > [!NOTE]
-    > Schemat otrzymany przez funkcję musi być zgodny ze schematem tabeli docelowej.
+    > Schemat odebrany przez funkcję musi być zgodny ze schematem tabeli docelowej.
 
-1. Dodaj zasady aktualizacji do tabeli docelowej. Te zasady spowodują automatyczne uruchomienie zapytania na wszystkich nowych danych pozyskanych w `RawEvents` tabeli pośredniej i pozyskaniu wyników do tabeli `Events`. Zdefiniuj zasady przechowywania zerowego, aby uniknąć utrwalania tabeli pośredniej.
+1. Dodaj zasady aktualizacji do tabeli docelowej. Ta zasada automatycznie uruchomi kwerendę na wszystkich nowo pochłoniętych danych w tabeli pośredniej `RawEvents` i pochłonie jej wyniki w `Events` tabeli. Zdefiniuj zasady zerowego przechowywania, aby uniknąć utrwalania tabeli pośredniej.
 
     ```C#
     var command =
@@ -472,7 +472,7 @@ Typy danych tablicy to uporządkowana Kolekcja wartości. Pozyskiwanie tablicy J
     kustoClient.ExecuteControlCommand(command);
     ```
 
-1. Pozyskaj dane do tabeli `RawEvents`.
+1. Połknąć dane `RawEvents` do tabeli.
 
     ```C#
     var table = "RawEvents";
@@ -488,11 +488,11 @@ Typy danych tablicy to uporządkowana Kolekcja wartości. Pozyskiwanie tablicy J
     ingestClient.IngestFromSingleBlob(blobPath, deleteSourceOnSuccess: false, ingestionProperties: properties);
     ```
     
-1. Przejrzyj dane w tabeli `Events`.
+1. Przejrzyj `Events` dane w tabeli.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-1. Utwórz funkcję aktualizacji, która rozszerza zbiór `records` tak, aby każda wartość w kolekcji otrzymywała oddzielny wiersz przy użyciu operatora `mv-expand`. Użyjemy `RawEvents` tabeli jako tabeli źródłowej i `Events` jako tabeli docelowej.   
+1. Utwórz funkcję aktualizacji, która `records` rozwija kolekcję tak, aby każda wartość `mv-expand` w kolekcji odbierała oddzielny wiersz, przy użyciu operatora. Użyjemy tabeli `RawEvents` jako tabeli źródłowej i `Events` tabeli docelowej.   
 
     ```Python
     CREATE_FUNCTION_COMMAND = 
@@ -511,9 +511,9 @@ Typy danych tablicy to uporządkowana Kolekcja wartości. Pozyskiwanie tablicy J
     ```
 
     > [!NOTE]
-    > Schemat otrzymany przez funkcję musi być zgodny ze schematem tabeli docelowej.
+    > Schemat odebrany przez funkcję musi być zgodny ze schematem tabeli docelowej.
 
-1. Dodaj zasady aktualizacji do tabeli docelowej. Te zasady spowodują automatyczne uruchomienie zapytania na wszystkich nowych danych pozyskanych w `RawEvents` tabeli pośredniej i pozyskaniu wyników do tabeli `Events`. Zdefiniuj zasady przechowywania zerowego, aby uniknąć utrwalania tabeli pośredniej.
+1. Dodaj zasady aktualizacji do tabeli docelowej. Ta zasada automatycznie uruchomi kwerendę na wszystkich nowo pochłoniętych danych w tabeli pośredniej `RawEvents` i pochłonie jej wyniki w `Events` tabeli. Zdefiniuj zasady zerowego przechowywania, aby uniknąć utrwalania tabeli pośredniej.
 
     ```Python
     CREATE_UPDATE_POLICY_COMMAND = 
@@ -522,7 +522,7 @@ Typy danych tablicy to uporządkowana Kolekcja wartości. Pozyskiwanie tablicy J
     dataframe_from_result_table(RESPONSE.primary_results[0])
     ```
 
-1. Pozyskaj dane do tabeli `RawEvents`.
+1. Połknąć dane `RawEvents` do tabeli.
 
     ```Python
     TABLE = "RawEvents"
@@ -534,13 +534,13 @@ Typy danych tablicy to uporządkowana Kolekcja wartości. Pozyskiwanie tablicy J
         BLOB_DESCRIPTOR, ingestion_properties=INGESTION_PROPERTIES)
     ```
 
-1. Przejrzyj dane w tabeli `Events`.
+1. Przejrzyj `Events` dane w tabeli.
 
 ---    
 
-## <a name="ingest-json-records-containing-dictionaries"></a>Pozyskiwanie rekordów JSON zawierających słowniki
+## <a name="ingest-json-records-containing-dictionaries"></a>Niuszowanie rekordów JSON zawierających słowniki
 
-Strukturalny plik JSON zawiera pary klucz-wartość. Rekordy JSON podlegają mapowaniu pozyskiwania przy użyciu wyrażenia logicznego w `JsonPath`. Można pozyskać dane przy użyciu następującej struktury:
+Słownik strukturalny JSON zawiera pary klucz-wartość. Rekordy Json są poddawane mapowaniu pozyskiwania `JsonPath`przy użyciu wyrażenia logicznego w pliku . Można pozyskiwania danych z następującą strukturą:
 
 ```json
 {
@@ -570,23 +570,23 @@ Strukturalny plik JSON zawiera pary klucz-wartość. Rekordy JSON podlegają map
 }
 ```
 
-# <a name="kqltabkusto-query-language"></a>[KQL](#tab/kusto-query-language)
+# <a name="kql"></a>[Kql](#tab/kusto-query-language)
 
-1. Utwórz mapowanie JSON.
+1. Tworzenie mapowania JSON.
 
     ```Kusto
     .create table Events ingestion json mapping 'KeyValueEventMapping' '[{"column":"Time","path":"$.event[?(@.Key == 'timestamp')]"},{"column":"Device","path":"$.event[?(@.Key == 'deviceId')]"},{"column":"MessageId","path":"$.event[?(@.Key == 'messageId')]"},{"column":"Temperature","path":"$.event[?(@.Key == 'temperature')]"},{"column":"Humidity","path":"$.event[?(@.Key == 'humidity')]"}]'
     ```
 
-1. Pozyskaj dane do tabeli `Events`.
+1. Połknąć dane `Events` do tabeli.
 
     ```Kusto
     .ingest into table Events h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/dictionary.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=multijson, jsonMappingReference=KeyValueEventMapping)
     ```
 
-# <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
+# <a name="c"></a>[C #](#tab/c-sharp)
 
-1. Utwórz mapowanie JSON.
+1. Tworzenie mapowania JSON.
 
     ```C#
     var tableName = "Events";
@@ -607,7 +607,7 @@ Strukturalny plik JSON zawiera pary klucz-wartość. Rekordy JSON podlegają map
     kustoClient.ExecuteControlCommand(command);
     ```
 
-1. Pozyskaj dane do tabeli `Events`.
+1. Połknąć dane `Events` do tabeli.
 
     ```C#
     var blobPath = "https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/dictionary.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D";
@@ -621,9 +621,9 @@ Strukturalny plik JSON zawiera pary klucz-wartość. Rekordy JSON podlegają map
     ingestClient.IngestFromSingleBlob(blobPath, deleteSourceOnSuccess: false, ingestionProperties: properties);
     ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-1. Utwórz mapowanie JSON.
+1. Tworzenie mapowania JSON.
 
     ```Python
     MAPPING = "KeyValueEventMapping"
@@ -632,7 +632,7 @@ Strukturalny plik JSON zawiera pary klucz-wartość. Rekordy JSON podlegają map
     dataframe_from_result_table(RESPONSE.primary_results[0])
     ```
 
-1. Pozyskaj dane do tabeli `Events`.
+1. Połknąć dane `Events` do tabeli.
 
      ```Python
     MAPPING = "KeyValueEventMapping"
@@ -647,5 +647,5 @@ Strukturalny plik JSON zawiera pary klucz-wartość. Rekordy JSON podlegają map
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Przegląd pozyskiwania danych](ingest-data-overview.md)
+* [Omówienie pozyskiwania danych](ingest-data-overview.md)
 * [Pisanie zapytań](write-queries.md)

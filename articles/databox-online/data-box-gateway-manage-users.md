@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie użytkownikami w usłudze Azure Data Box Gateway | Microsoft Docs
+title: Zarządzanie harmonogramami przepustowości w usłudze Azure Data Box Gateway | Microsoft Docs
 description: W tym artykule opisano sposób zarządzania użytkownikami w usłudze Azure Data Box Gateway przy użyciu witryny Azure Portal.
 services: databox
 author: alkohli
@@ -9,21 +9,21 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 60fd5476d687d9f44aec885cdf888572e8e523a4
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78946116"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-gateway"></a>Zarządzanie użytkownikami w usłudze Azure Data Box Gateway przy użyciu witryny Azure Portal
 
-W tym artykule opisano sposób zarządzania harmonogramami przepustowości w usłudze Azure Data Box Gateway. Usługą Azure Data Box Gateway można zarządzać w witrynie Azure Portal lub za pomocą lokalnego internetowego interfejsu użytkownika. Witryna Azure Portal umożliwia dodawanie, modyfikowanie i usuwanie użytkowników.
+W tym artykule opisano sposób zarządzania użytkownikami w usłudze Azure Data Box Gateway. Usługą Azure Data Box Gateway można zarządzać w witrynie Azure Portal lub za pomocą lokalnego internetowego interfejsu użytkownika. Witryna Azure Portal umożliwia dodawanie, modyfikowanie i usuwanie użytkowników.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
 > * Dodawanie użytkownika
-> * Modyfikowanie użytkownika
+> * Modyfikowanie harmonogramu
 > * Usuwanie użytkownika
 
 ## <a name="about-users"></a>Informacje o użytkownikach
@@ -33,7 +33,7 @@ Użytkownicy mogą mieć prawo tylko do odczytu lub pełne uprawnienia. Jak suge
  - **Użytkownik z pełnymi uprawnieniami** — użytkownik lokalny z pełnym dostępem.
  - **Użytkownik z prawem tylko do odczytu** — użytkownik lokalny z dostępem tylko do odczytu. Ci użytkownicy są powiązani z udziałami, które umożliwiają wykonywanie operacji tylko do odczytu.
 
-Uprawnienia użytkownika są definiowane podczas jego tworzenia w czasie tworzenia udziału. Modyfikowanie uprawnień na poziomie udziału nie jest obecnie obsługiwane.
+Uprawnienia użytkownika są definiowane podczas jego tworzenia w czasie tworzenia udziału. Modyfikacja uprawnień na poziomie udziału nie jest obecnie obsługiwana.
 
 ## <a name="add-a-user"></a>Dodawanie użytkownika
 
@@ -53,11 +53,11 @@ Wykonaj następujące czynności w witrynie Azure Portal, aby dodać użytkownik
 3. Otrzymasz powiadomienie, gdy tworzenie użytkownika zostanie rozpoczęte i zakończone. Po utworzeniu użytkownika na pasku poleceń kliknij przycisk **Odśwież**, aby wyświetlić zaktualizowaną listę użytkowników.
 
 
-## <a name="modify-user"></a>Modyfikowanie użytkownika
+## <a name="modify-user"></a>Modyfikowanie harmonogramu
 
 Po utworzeniu użytkownika możesz zmienić przypisane do niego hasło. Kliknij wybraną pozycję na liście użytkowników. Podaj i potwierdź nowe hasło. Zapisz zmiany.
  
-![Modyfikowanie użytkownika](media/data-box-gateway-manage-users/modify-user-1.png)
+![Modyfikowanie harmonogramu](media/data-box-gateway-manage-users/modify-user-1.png)
 
 
 ## <a name="delete-a-user"></a>Usuwanie użytkownika

@@ -1,48 +1,47 @@
 ---
-title: Klient samotestowy do wstępnego weryfikowania maszyny wirtualnej | Portal Azure Marketplace
-description: Jak utworzyć klienta samotestowego służący do wstępnego sprawdzania poprawności obrazu maszyny wirtualnej w witrynie Azure Marketplace.
-services: Azure, Marketplace, Cloud Partner Portal, Virtual Machine
-author: dan-wesley
+title: Klient autotestu do wstępnej weryfikacji maszyny wirtualnej | Azure Marketplace
+description: Jak utworzyć klienta autotestu do wstępnej weryfikacji obrazu maszyny wirtualnej dla portalu Azure Marketplace.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/23/2018
-ms.author: pabutler
-ms.openlocfilehash: fc62875873f38630e592c79aebd6a138665ed6e4
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: fb568400cb60f108303909353bfa703e98ab6157
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73809207"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286425"
 ---
-# <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Tworzenie klienta samotestowego w celu wstępnego zweryfikowania obrazu maszyny wirtualnej platformy Azure
+# <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Tworzenie klienta autotestu w celu wstępnej weryfikacji obrazu maszyny wirtualnej platformy Azure
 
-Ten artykuł zawiera Przewodnik dotyczący tworzenia usługi klienta, która korzysta z interfejsu API samoobsługowego testowania. Aby sprawdzić, czy maszyna wirtualna (VM) spełnia najnowsze wymagania dotyczące publikowania w portalu Marketplace, można użyć interfejsu API samoobsługowego testowania. Ta usługa klienta umożliwia testowanie maszyny wirtualnej przed przesłaniem oferty na potrzeby certyfikacji firmy Microsoft.
+Użyj tego artykułu jako przewodnika do tworzenia usługi klienta, która korzysta z interfejsu API autotestu. Za pomocą interfejsu API autotestu można wstępnie sprawdzić poprawność maszyny wirtualnej (VM), aby upewnić się, że spełnia ona najnowsze wymagania dotyczące publikowania w portalu Azure Marketplace. Ta usługa klienta umożliwia przetestowanie maszyny Wirtualnej przed przesłaniem oferty certyfikacji firmy Microsoft.
 
-## <a name="development-and-testing-overview"></a>Przegląd opracowywania i testowania
+## <a name="development-and-testing-overview"></a>Omówienie rozwoju i testowania
 
-W ramach procesu samodzielnego testowania utworzysz klienta lokalnego, który łączy się z portalem Azure Marketplace, aby sprawdzić, czy maszyna wirtualna jest uruchomiona w ramach subskrypcji platformy Azure. Na maszynie wirtualnej może działać system operacyjny Windows lub Linux.
+W ramach procesu autotestu utworzysz klienta lokalnego, który łączy się z witryną Azure Marketplace, aby sprawdzić poprawność maszyny wirtualnej uruchomionej w ramach subskrypcji platformy Azure. Maszyna wirtualna może być uruchomiona w systemie operacyjnym Windows lub Linux.
 
-Klient lokalny uruchamia skrypt uwierzytelniający się za pomocą interfejsu API samoobsługowego testowania, wysyła informacje o połączeniu i odbiera wyniki testów.
+Klient lokalny uruchamia skrypt, który uwierzytelnia się za pomocą interfejsu API autotestu, wysyła informacje o połączeniu i odbiera wyniki testów.
 
-Ogólne kroki tworzenia klienta samodzielnego są następujące:
+Kroki wysokiego poziomu tworzenia klienta autotestu są następujące:
 
-1. Wybierz dzierżawę usługi Azure Active Directory (AD) dla swojej aplikacji.
+1. Wybierz dzierżawę usługi Azure Active Directory (AD) dla aplikacji.
 2. Zarejestruj aplikację kliencką.
-3. Utwórz token dla aplikacji klienta usługi Azure AD.
-4. Przekaż token do interfejsu API samoobsługowego testowania.
+3. Utwórz token dla aplikacji usługi Azure AD klienta.
+4. Przekaż token do interfejsu API autotestu.
 
-Po utworzeniu klienta można przetestować go na maszynie wirtualnej.
+Po utworzeniu klienta, można przetestować go na maszynie wirtualnej.
 
-### <a name="self-test-client-authorization"></a>Samoobsługowa autoryzacja klienta
+### <a name="self-test-client-authorization"></a>Autoryzacja klienta autotestu
 
-Na poniższym diagramie pokazano, jak autoryzacja działa dla wywołań usługi do usługi przy użyciu poświadczeń klienta (wspólny klucz tajny lub certyfikat).
+Na poniższym diagramie pokazano, jak działa autoryzacja dla usługi do obsługi wywołań przy użyciu poświadczeń klienta (udostępniony klucz tajny lub certyfikat).)
 
 ![Proces autoryzacji klienta](./media/stclient-dev-process.png)
 
-## <a name="the-self-test-client-api"></a>Interfejs API klienta samoobsługowego testowania
+## <a name="the-self-test-client-api"></a>Interfejs API klienta autotestu
 
-Interfejs API samoobsługowego testowania zawiera pojedynczy punkt końcowy obsługujący tylko metodę POST.  Ma ona następującą strukturę.
+Interfejs API autotestu zawiera pojedynczy punkt końcowy, który obsługuje tylko metodę POST.  Ma następującą strukturę.
 
 ```
 Uri:             https://isvapp.azurewebsites.net/selftest-vm
@@ -65,25 +64,25 @@ W poniższej tabeli opisano pola interfejsu API.
 
 |      Pole         |    Opis    |
 |  ---------------   |  ---------------  |
-|  Autoryzacja     |  Ciąg "Bearer xxxx-xxxx-xxxx-XXXXX" zawiera token klienta Azure Active Directory (AD), który można utworzyć za pomocą programu PowerShell.          |
-|  DNSName           |  Nazwa DNS maszyny wirtualnej do przetestowania    |
-|  Użytkownik              |  Nazwa użytkownika służąca do logowania się do maszyny wirtualnej         |
-|  Hasło          |  Hasło do logowania się do maszyny wirtualnej          |
-|  System operacyjny                |  System operacyjny maszyny wirtualnej: `Linux` lub `Windows`          |
-|  PortNo            |  Otwórz numer portu, aby nawiązać połączenie z maszyną wirtualną. Numer portu jest zwykle `22` dla systemów Linux i `5986` dla systemu Windows.          |
+|  Autoryzacja     |  Ciąg "Bearer xxxx-xxxx-xxxx-xxxxx" zawiera token klienta usługi Azure Active Directory (AD), który można utworzyć przy użyciu programu PowerShell.          |
+|  Nazwa DNS           |  Nazwa DNS maszyny Wirtualnej do przetestowania    |
+|  Użytkownik              |  Nazwa użytkownika do logowania się do maszyny Wirtualnej         |
+|  Hasło          |  Hasło do logowania się do maszyny Wirtualnej          |
+|  System operacyjny                |  System operacyjny maszyny Wirtualnej: `Linux` albo`Windows`          |
+|  PortNo            |  Otwórz numer portu do łączenia się z maszyną wirtualną. Numer portu jest `22` zazwyczaj dla `5986` systemu Linux i Windows.          |
 |  |  |
 
 ## <a name="consuming-the-api"></a>Korzystanie z interfejsu API
 
-Interfejs API samoobsługowego testowania można wykorzystać przy użyciu programu PowerShell lub zwinięcie.
+Można używać interfejsu API autotest przy użyciu programu PowerShell lub cURL.
 
-### <a name="use-powershell-to-consume-the-api-on-the-linux-os"></a>Korzystanie z interfejsu API w systemie operacyjnym Linux przy użyciu programu PowerShell
+### <a name="use-powershell-to-consume-the-api-on-the-linux-os"></a>Używanie programu PowerShell do korzystania z interfejsu API w systemie operacyjnym Linux
 
 Aby wywołać interfejs API w programie PowerShell, wykonaj następujące kroki:
 
-1. Użyj polecenia `Invoke-WebRequest`, aby wywołać interfejs API.
-2. Metoda ma wartość post i typ zawartości to JSON, jak pokazano w poniższym przykładzie kodu i przechwytywaniu ekranu.
-3. Określ parametry treści w formacie JSON.
+1. Użyj `Invoke-WebRequest` polecenia, aby wywołać interfejs API.
+2. Metoda jest Post i typ zawartości jest JSON, jak pokazano w poniższym przykładzie kodu i przechwytywania ekranu.
+3. Określ parametry obiektu w formacie JSON.
 
 Poniższy przykład kodu pokazuje wywołanie programu PowerShell do interfejsu API.
 
@@ -103,11 +102,11 @@ $Body = @{
 $res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" -Headers $headers;
 $Content = $res | ConvertFrom-Json
 ```
-Poniższy zrzut ekranu przedstawia przykład wywołania interfejsu API w programie PowerShell.
+Następujące przechwytywanie ekranu pokazuje przykład wywoływania interfejsu API w programie PowerShell.
 
-![Wywoływanie interfejsu API za pomocą programu PowerShell dla systemu operacyjnego Linux](./media/stclient-call-api-ps-linuxvm.png)
+![Wywołaj interfejs API z programem PowerShell dla systemu operacyjnego Linux](./media/stclient-call-api-ps-linuxvm.png)
 
-Korzystając z poprzedniego przykładu, można pobrać kod JSON i przeanalizować go w celu uzyskania następujących szczegółów:
+Korzystając z poprzedniego przykładu, można pobrać JSON i przeanalizować go, aby uzyskać następujące szczegóły:
 
 ```powershell
 $testresult = ConvertFrom-Json -InputObject (ConvertFrom-Json -InputObject $res)
@@ -126,21 +125,21 @@ For ($i=0; $i -lt $testresult.Tests.Length; $i++)
 }
 ```
 
-Poniższy zrzut ekranu, który pokazuje `$res.Content`, zawiera szczegółowe informacje o wynikach testu w formacie JSON.
+Następujące zrzut ekranu, `$res.Content`który pokazuje , zawiera szczegółowe informacje o wynikach testu w formacie JSON.
 
-![Wyniki JSON z wywołania programu PowerShell do systemu Linux](./media/stclient-pslinux-rescontent-json.png)
+![JSON wyniki z wywołania programu PowerShell do systemu Linux](./media/stclient-pslinux-rescontent-json.png)
 
-Poniższy zrzut ekranu przedstawia przykład wyników testów JSON wyświetlanych w podglądzie JSON online (na przykład [Code Beautify](https://codebeautify.org/jsonviewer) lub [Podgląd JSON](https://jsonformatter.org/json-viewer)).
+Następujące zrzut ekranu przedstawia przykład wyników testu JSON wyświetlanych w przeglądarce JSON online (na przykład [Code Beautify](https://codebeautify.org/jsonviewer) lub [JSON Viewer](https://jsonformatter.org/json-viewer)).
 
-![Wyniki JSON z wywołania programu PowerShell do maszyny wirtualnej z systemem Linux](./media/stclient-consume-api-pslinux-json.png)
+![JSON wyniki z wywołania programu PowerShell do maszyny Wirtualnej systemu Linux](./media/stclient-consume-api-pslinux-json.png)
 
-### <a name="use-powershell-to-consume-the-api-on-the-windows-os"></a>Korzystanie z interfejsu API w systemie operacyjnym Windows przy użyciu programu PowerShell
+### <a name="use-powershell-to-consume-the-api-on-the-windows-os"></a>Korzystanie z interfejsu API w systemie operacyjnym Windows za pomocą programu PowerShell
 
 Aby wywołać interfejs API w programie PowerShell, wykonaj następujące kroki:
 
-1. Użyj polecenia `Invoke-WebRequest`, aby wywołać interfejs API.
-2. Metoda ma wartość post i typ zawartości to JSON, jak pokazano w poniższym przykładzie kodu i przechwytywaniu ekranu.
-3. Utwórz parametry treści w formacie JSON.
+1. Użyj `Invoke-WebRequest` polecenia, aby wywołać interfejs API.
+2. Metoda jest Post i typ zawartości jest JSON, jak pokazano w poniższym przykładzie kodu i przechwytywania ekranu.
+3. Utwórz parametry obiektu w formacie JSON.
 
 Poniższy przykład kodu pokazuje wywołanie programu PowerShell do interfejsu API.
 
@@ -161,11 +160,11 @@ $res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "appl
 $Content = $res | ConvertFrom-Json
 ```
 
-Poniższy zrzut ekranu przedstawia przykład wywołania interfejsu API w programie PowerShell.
+Następujące przechwytywanie ekranu pokazuje przykład wywoływania interfejsu API w programie PowerShell.
 
-![Wywoływanie interfejsu API za pomocą programu PowerShell dla maszyny wirtualnej z systemem Windows](./media/stclient-call-api-ps-windowsvm.png)
+![Wywoływanie interfejsu API z programem PowerShell dla maszyny Wirtualnej systemu Windows](./media/stclient-call-api-ps-windowsvm.png)
 
-Korzystając z poprzedniego przykładu, można pobrać kod JSON i przeanalizować go w celu uzyskania następujących szczegółów:
+Korzystając z poprzedniego przykładu, można pobrać JSON i przeanalizować go, aby uzyskać następujące szczegóły:
 
 ```powershell
 $testresult = ConvertFrom-Json -InputObject (ConvertFrom-Json -InputObject $res)
@@ -184,21 +183,21 @@ For ($i=0; $i -lt $testresult.Tests.Length; $i++)
 }
 ```
 
-Poniższy zrzut ekranu, który pokazuje `$res.Content`, zawiera szczegółowe informacje o wynikach testu w formacie JSON.
+Następujące zrzut ekranu, `$res.Content`który pokazuje , zawiera szczegółowe informacje o wynikach testu w formacie JSON.
 
-![Wyniki JSON z wywołania programu PowerShell do systemu Windows](./media/stclient-pswindows-rescontent-json.png)
+![JSON wyniki z wywołania programu PowerShell do systemu Windows](./media/stclient-pswindows-rescontent-json.png)
 
-Poniższy zrzut ekranu przedstawia wyniki testów wyświetlane w podglądzie JSON w trybie online.
-(na przykład [Code Beautify](https://codebeautify.org/jsonviewer), [Podgląd JSON](https://jsonformatter.org/json-viewer))
+Następujące zrzut ekranu pokazuje wyniki testów wyświetlane w przeglądarce JSON online.
+(na przykład [Kod Upiększyć](https://codebeautify.org/jsonviewer), [JSON Viewer](https://jsonformatter.org/json-viewer))
 
-![Wyniki JSON z wywołania programu PowerShell do maszyny wirtualnej z systemem Windows](./media/stclient-consume-api-pswindows-json.png)
+![JSON wyniki z wywołania programu PowerShell do maszyny Wirtualnej systemu Windows](./media/stclient-consume-api-pswindows-json.png)
 
-### <a name="use-curl-to-consume-the-api-on-the-linux-os"></a>Korzystanie z programu zwinięcie do korzystania z interfejsu API w systemie operacyjnym Linux
+### <a name="use-curl-to-consume-the-api-on-the-linux-os"></a>Użyj cURL, aby korzystać z interfejsu API w systemie operacyjnym Linux
 
-Aby wywołać interfejs API z zwinięciem, wykonaj następujące kroki:
+Aby wywołać interfejs API za pomocą cURL, wykonaj następujące kroki:
 
-1. Użyj polecenia zwinięcie, aby wywołać interfejs API.
-2. Metoda ma wartość post i typ zawartości to JSON, jak pokazano w poniższym fragmencie kodu.
+1. Użyj polecenia curl, aby wywołać interfejs API.
+2. Metoda jest Post i typ zawartości jest JSON, jak pokazano w poniższym fragmentie kodu.
 
 ```
 CURL POST -H "Content-Type:application/json"
@@ -207,108 +206,108 @@ https://isvapp.azurewebsites.net/selftest-vm
 -d '{ "DNSName":"XXXX.westus.cloudapp.azure.com", "User":"XXX", "Password":"XXXX@123456", "OS":"Linux", "PortNo":"22", "CompanyName":"ABCD"}'
 ```
 
-Na poniższym ekranie przedstawiono przykład użycia zwinięcie do wywołania interfejsu API.
+Na poniższym ekranie przedstawiono przykład za pomocą curl do wywołania interfejsu API.
 
-![Wywołanie interfejsu API za pomocą polecenia zwinięcie](./media/stclient-consume-api-curl.png)
+![Wywołanie interfejsu API za pomocą polecenia curl](./media/stclient-consume-api-curl.png)
 
-Poniższy przechwytywanie ekranu pokazuje wyniki JSON z wywołania zazwinięcie.
+Następujące przechwytywanie ekranu pokazuje wyniki JSON z wywołania curl.
 
-![Wyniki JSON z wywołania pliku](./media/stclient-consume-api-curl-json.png)
+![JSON wyniki z curl call](./media/stclient-consume-api-curl-json.png)
 
 
 ## <a name="choose-the-azure-ad-tenant-for-the-app"></a>Wybierz dzierżawę usługi Azure AD dla aplikacji
 
-Wykonaj poniższe kroki, aby wybrać dzierżawę usługi Azure AD, w której chcesz utworzyć aplikację.
+Skorzystaj z poniższych kroków, aby wybrać dzierżawę usługi Azure AD, w której chcesz utworzyć aplikację.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
-2. Na górnym pasku menu wybierz swoje konto i na liście katalog wybierz dzierżawę Active Directory, w której chcesz zarejestrować aplikację. Lub wybierz ikonę **katalogu i subskrypcji** , aby zobaczyć globalny filtr subskrypcji. Na poniższym zrzucie ekranu przedstawiono przykład tego filtru.
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
+2. Na górnym pasku menu wybierz swoje konto, a na liście Katalog wybierz dzierżawę usługi Active Directory, w której chcesz zarejestrować aplikację. Możesz też wybrać ikonę **Katalog + Subskrypcja,** aby wyświetlić filtr Subskrypcji globalnej. Następujące zrzut ekranu pokazuje przykład tego filtru.
 
    ![Wybierz filtr subskrypcji](./media/stclient-subscription-filter.png)
 
-3. Na pasku nawigacyjnym po lewej stronie wybierz pozycję **wszystkie usługi** , a następnie wybierz pozycję **Azure Active Directory**.
+3. Na lewym pasku nawigacyjnym wybierz **pozycję Wszystkie usługi,** a następnie wybierz pozycję **Azure Active Directory**.
 
-   W poniższych krokach może być wymagana nazwa dzierżawy (lub nazwa katalogu) lub identyfikator dzierżawy (lub identyfikator katalogu).
+   W poniższych krokach może być potrzebna nazwa dzierżawy (lub nazwa katalogu) lub identyfikator dzierżawy (lub identyfikator katalogu).
 
    **Aby uzyskać informacje o dzierżawie:**
 
-   W obszarze **przegląd Azure Active Directory**Wyszukaj ciąg "Properties" (właściwości), a następnie wybierz pozycję **Properties**(właściwości). Poniższy przykład przechwytywania ekranu:
+   W **przeglądzie usługi Azure Active Directory**wyszukaj hasło "Właściwości", a następnie wybierz pozycję **Właściwości**. Na przykładzie użycia następującego zrzutu ekranu:
 
    - **Nazwa** — nazwa dzierżawy lub nazwa katalogu
-   - **Identyfikator katalogu** — identyfikator dzierżawy lub identyfikator katalogu albo użyj paska przewijania, aby znaleźć właściwości.
+   - **Identyfikator katalogu** — identyfikator dzierżawy lub identyfikator katalogu lub użyj paska przewijania, aby znaleźć właściwości.
 
-   ![Strona właściwości Azure Active Directory](./media/stclient-aad-properties.png)
+   ![Strona właściwości usługi Azure Active Directory](./media/stclient-aad-properties.png)
 
-## <a name="register-the-client-app"></a>Rejestrowanie aplikacji klienckiej
+## <a name="register-the-client-app"></a>Zarejestruj aplikację kliencką
 
-Wykonaj poniższe kroki, aby zarejestrować aplikację kliencką.
+Aby zarejestrować aplikację kliencką, należy wykonać następujące czynności.
 
-1. Na pasku nawigacyjnym po lewej stronie wybierz pozycję **wszystkie usługi** , a następnie wybierz pozycję **rejestracje aplikacji**.
-2. W obszarze **rejestracje aplikacji**wybierz pozycję **+ Nowa rejestracja aplikacji**.
+1. Na lewym pasku nawigacyjnym wybierz **pozycję Wszystkie usługi,** a następnie wybierz pozycję **Rejestracje aplikacji**.
+2. W obszarze **Rejestracje aplikacji**wybierz **+ Nowa rejestracja aplikacji**.
 3. W obszarze **Utwórz**podaj informacje wymagane dla następujących pól:
 
    - **Nazwa** — wprowadź przyjazną nazwę aplikacji. Na przykład "SelfTestClient".
-   - **Typ aplikacji** — wybierz pozycję **aplikacja sieci Web/interfejs API**
-   - **Adres URL logowania** — typ "https:\//isvapp.azurewebsites.NET/SelfTest-VM"
+   - **Typ aplikacji** — wybieranie **aplikacji/interfejsu API w sieci Web**
+   - **Adres URL logowania** — typ\/"https: /isvapp.azurewebsites.net/selftest-vm"
 
-4. Wybierz pozycję **Utwórz**.
-5. W obszarze **rejestracje aplikacji** lub **zarejestrowanej aplikacji**Skopiuj **Identyfikator aplikacji**.
+4. Wybierz **pozycję Utwórz**.
+5. W obszarze **Rejestracje aplikacji** lub **Zarejestrowana aplikacja**skopiuj **identyfikator aplikacji**.
 
-   ![Pobieranie identyfikatora aplikacji](./media/stclient-app-id.png)
+   ![Pobierz identyfikator aplikacji](./media/stclient-app-id.png)
 
-6. Na pasku narzędzi rejestracja aplikacji wybierz pozycję **Ustawienia**.
-7. Wybierz pozycję **wymagane uprawnienia** , aby skonfigurować uprawnienia dla aplikacji.
-8. W obszarze **wymagane uprawnienia**wybierz pozycję **+ Dodaj**.
-9. W obszarze **Dodaj dostęp do interfejsu API** **Wybierz opcję wybieraj interfejs API**.
-10. W obszarze **Wybierz interfejs API**wpisz "klasyczny model wdrażania systemu Windows Azure", aby wyszukać interfejs API.
-11. W wynikach wyszukiwania wybierz **klasyczny model wdrażania systemu Windows Azure** , a następnie kliknij przycisk **Wybierz**.
+6. Na pasku narzędzi zarejestrowanej aplikacji wybierz pozycję **Ustawienia**.
+7. Wybierz **pozycję Wymagane uprawnienia** do konfigurowania uprawnień dla aplikacji.
+8. W **obszarze Wymagane uprawnienia**wybierz pozycję + **Dodaj**.
+9. W obszarze **Dodaj dostęp do interfejsu API**wybierz pozycję Wybierz interfejs **API**.
+10. W obszarze **Wybierz interfejs API**wpisz "Klasyczny model wdrażania systemu Windows Azure", aby wyszukać interfejs API.
+11. W wynikach wyszukiwania wybierz **klasyczny model wdrażania systemu Windows Azure,** a następnie kliknij przycisk **Wybierz**.
 
-    ![Konfigurowanie wielu dzierżawców dla aplikacji](./media/stclient-select-api.png)
+    ![Konfigurowanie wielu dzierżaw dla aplikacji](./media/stclient-select-api.png)
 
-12. W obszarze **Dodaj dostęp do interfejsu API** **Wybierz pozycję uprawnienia SELECT**.
-13. Wybierz pozycję **dostęp "Windows Azure interfejs API zarządzania usługami"** .
+12. W obszarze **Dodaj dostęp do interfejsu API**wybierz pozycję Wybierz **uprawnienia**.
+13. Wybierz **pozycję Dostęp "Interfejs API zarządzania usługami systemu Windows Azure"**.
 
-    ![Włącz dostęp do interfejsu API dla aplikacji](./media/stclient-enable-api-access.png)
+    ![Włączanie dostępu do interfejsu API dla aplikacji](./media/stclient-enable-api-access.png)
 
-14. Kliknij pozycję **Wybierz**.
+14. Kliknij **pozycję Wybierz**.
 15. Wybierz pozycję **Done** (Gotowe).
 16. W obszarze **Ustawienia** wybierz pozycję **Właściwości**.
-17. W obszarze **Właściwości**przewiń w dół do pozycji **wiele dzierżawców**. Wybierz pozycję **Tak**.
+17. W obszarze **Właściwości**przewiń w dół do **wielodostępne**. Wybierz **pozycję Tak**.
 
-    ![Konfigurowanie wielu dzierżawców dla aplikacji](./media/stclient-yes-multitenant.png)
+    ![Konfigurowanie wielu dzierżaw dla aplikacji](./media/stclient-yes-multitenant.png)
 
-18. Wybierz pozycję **Zapisz**.
-19. W obszarze **Ustawienia**wybierz pozycję **klucze**.
-20. Utwórz klucz tajny, zaznaczając pole tekstowe **Opis** klucza. Skonfiguruj następujące pola:
+18. Wybierz **pozycję Zapisz**.
+19. W obszarze **Ustawienia**wybierz pozycję **Klawisze**.
+20. Utwórz klucz tajny, zaznaczając pole **tekstowe** Opis klucza. Skonfiguruj następujące pola:
 
     - Wpisz nazwę klucza. Na przykład "selftestclient"
-    - Na liście rozwijanej **wygaśnięcie** wybierz pozycję "w 1 roku".
-    - Wybierz pozycję **Zapisz** , aby wygenerować klucz.
-    - W obszarze **wartość**skopiuj klucz.
+    - Na liście rozwijanej **WYGASAS** wybierz "Za 1 rok".
+    - Wybierz **pozycję Zapisz,** aby wygenerować klucz.
+    - W obszarze **WARTOŚĆ**skopiuj klucz.
 
       >[!Important]
-      >Po zamknięciu formularza **klucze** nie będzie można zobaczyć wartości klucza.
+      >Nie będzie można zobaczyć wartość klucza po zamknięciu **keys** formularza.
 
     ![Formularz wartości klucza](./media/stclient-create-key.png)
 
 ## <a name="create-the-token-for-the-client-app"></a>Tworzenie tokenu dla aplikacji klienckiej
 
-Do utworzenia i pobrania tokenu za pomocą interfejsu API REST protokołu OAuth można użyć dowolnego z następujących programów:
+Do utworzenia i uzyskania tokenu przy użyciu interfejsu API OAuth REST można użyć dowolnego z następujących programów:
 
 - Postman
-- Zwinięcie w systemie Linux
+- cURL w systemie Linux
 - C&#35;
 - PowerShell
 
-### <a name="to-create-and-get-a-token-using-postman"></a>Aby utworzyć i uzyskać token przy użyciu programu Poster
+### <a name="to-create-and-get-a-token-using-postman"></a>Aby utworzyć i uzyskać token za pomocą listonosza
 
- Aby poprosił rozwiązanie Auth0 o tokeny dla dowolnych z autoryzowanych aplikacji, wykonaj operację POST w punkcie końcowym [https://login.microsoftonline.com/common/oauth2/token](https://login.microsoftonline.com/common/oauth2/token) z ładunkiem w następującym formacie:
+ Aby poprosić Auth0 o tokeny dla dowolnej autoryzowanej aplikacji, wykonaj operację POST do punktu [https://login.microsoftonline.com/common/oauth2/token](https://login.microsoftonline.com/common/oauth2/token) końcowego z ładunkiem w następującym formacie:
 
 ```
 Method Type : POST
 Base Url: https://login.microsoftonline.com/common/oauth2/token
 ```
 
-Przekaż następujące parametry w treści żądania:
+Przekaż następujące parametry w treści Żądanie:
 
 ```
 Body Content-Type: x-www-form-urlencoded
@@ -324,13 +323,13 @@ Przekaż następujące parametry w nagłówku żądania:
 Content-Type: application/x-www-form-urlencoded
 ```
 
-Poniższy zrzut ekranu przedstawia przykład użycia programu Poster do pobrania tokenu.
+Następujące przechwytywanie ekranu pokazuje przykład za pomocą postmana, aby uzyskać token.
 
-![Pobieranie tokenu za pomocą programu Poster](./media/stclient-postman-get-token.png)
+![Zdobądź token z Listonoszem](./media/stclient-postman-get-token.png)
 
-### <a name="to-create-and-get-a-token-using-curl-in-linux"></a>Aby utworzyć i uzyskać token przy użyciu zwinięcia w systemie Linux
+### <a name="to-create-and-get-a-token-using-curl-in-linux"></a>Aby utworzyć i uzyskać token przy użyciu cURL w systemie Linux
 
-Aby poprosił rozwiązanie Auth0 o tokeny dla dowolnych z autoryzowanych aplikacji, wykonaj operację POST w punkcie końcowym [https://login.microsoftonline.com/common/oauth2/token](https://login.microsoftonline.com/common/oauth2/token) z ładunkiem w następującym formacie:
+Aby poprosić Auth0 o tokeny dla dowolnej autoryzowanej aplikacji, wykonaj operację POST do punktu [https://login.microsoftonline.com/common/oauth2/token](https://login.microsoftonline.com/common/oauth2/token) końcowego z ładunkiem w następującym formacie:
 
 ```
 Request:
@@ -345,13 +344,13 @@ Response:
 {"token":"UClCUUKxUlkdbhE1cHLz3kyjbIZYVh9eB34A5Q21Y3FPqKGSJs","expires":"2014-02-17 18:46:08"}
 ```
 
-Poniższy zrzut ekranu przedstawia przykład użycia zwinięcie polecenia, aby uzyskać token.
+Następujące przechwytywanie ekranu pokazuje przykład za pomocą polecenia curl, aby uzyskać token.
 
-![Pobieranie tokenu za pomocą polecenia zwinięcie](./media/stclient-curl-get-token.png)
+![Pobierz token z poleceniem curl](./media/stclient-curl-get-token.png)
 
 ### <a name="to-create-and-get-a-token-using-c35"></a>Aby utworzyć i uzyskać token przy użyciu języka C&#35;
 
-Aby poprosił rozwiązanie Auth0 o tokeny dla dowolnej z autoryzowanych aplikacji, wykonaj operację POST w punkcie końcowym https:\//soamtenant.auth0.com/oauth/token z ładunkiem w następującym formacie:
+Aby poprosić Auth0 o tokeny dla dowolnej autoryzowanej aplikacji, wykonaj\/operację POST na https: /soamtenant.auth0.com/oauth/token punkt końcowy z ładunkiem w następującym formacie:
 
 ```csharp
 string clientId = "Your Application Id";
@@ -374,7 +373,7 @@ var token = JObject.Parse(content)["access_token"];
 
 ### <a name="to-create-and-get-a-token-using-powershell"></a>Aby utworzyć i uzyskać token przy użyciu programu PowerShell
 
-Aby poprosił rozwiązanie Auth0 o tokeny dla dowolnej z autoryzowanych aplikacji, wykonaj operację POST w punkcie końcowym https:\//soamtenant.auth0.com/oauth/token z ładunkiem w następującym formacie:
+Aby poprosić Auth0 o tokeny dla dowolnej autoryzowanej aplikacji, wykonaj\/operację POST na https: /soamtenant.auth0.com/oauth/token punkt końcowy z ładunkiem w następującym formacie:
 
 ```powershell
 $clientId = "Application Id of AD Client APP";
@@ -393,9 +392,9 @@ $token = $resp.Content | ConvertFrom-Json
 $token.AccessToken
 ```
 
-## <a name="pass-the-client-app-token-to-the-api"></a>Przekaż token aplikacji klienta do interfejsu API
+## <a name="pass-the-client-app-token-to-the-api"></a>Przekazywanie tokenu aplikacji klienckiej do interfejsu API
 
-Przekaż token do interfejsu API samoobsługowego testowania przy użyciu następującego kodu w nagłówku autoryzacji:
+Przekaż token do interfejsu API autotestu przy użyciu następującego kodu w nagłówku autoryzacji:
 
 ```powershell
 $redirectUri = 'https://isvapp.azurewebsites.net/selftest-vm'
@@ -418,19 +417,19 @@ Write-Output 'Test Results:'
 $result.Content
 ```
 
-## <a name="test-your-self-test-client"></a>Testowanie klienta samotestowego
+## <a name="test-your-self-test-client"></a>Przetestuj swojego klienta autotestu
 
 Aby przetestować klienta, wykonaj następujące kroki:
 
-1. Wdróż maszynę wirtualną, którą chcesz przetestować.
-2. Wywołaj interfejs API służący do samoobsługowego testowania przy użyciu tokenu aplikacji klienta do autoryzacji.
+1. Wdrażanie maszyny Wirtualnej, którą chcesz przetestować.
+2. Wywołanie interfejsu API autotestu przy użyciu tokenu aplikacji klienckiej do autoryzacji.
 3. Pobierz wyniki testu w formacie JSON.
 
-### <a name="test-result-examples"></a>Przykłady wyników testu
+### <a name="test-result-examples"></a>Przykłady wyników testów
 
 Poniższe fragmenty kodu pokazują wyniki testów w formacie JSON.
 
-**Wyniki testu dla maszyny wirtualnej z systemem Windows:**
+**Wyniki testów maszyny Wirtualnej systemu Windows:**
 
 ```json
 {
@@ -469,7 +468,7 @@ Poniższe fragmenty kodu pokazują wyniki testów w formacie JSON.
     },
 ```
 
-**Wyniki testu dla maszyny wirtualnej z systemem Linux:**
+**Wyniki testów maszyny Wirtualnej systemu Linux:**
 
 ```json
 {
@@ -510,4 +509,4 @@ Poniższe fragmenty kodu pokazują wyniki testów w formacie JSON.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Po pomyślnym przetestowaniu maszyny wirtualnej platformy Azure możesz [opublikować tę ofertę](./cpp-publish-offer.md).
+Po pomyślnym przetestowaniu maszyny wirtualnej platformy Azure można [opublikować ofertę](./cpp-publish-offer.md).

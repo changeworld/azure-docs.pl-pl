@@ -1,26 +1,26 @@
 ---
-title: Zarządzanie ograniczeniami kontekstu zabezpieczeń w systemie Azure Red Hat OpenShift | Microsoft Docs
-description: Ograniczenia kontekstu zabezpieczeń dla administratorów klastrów Red Hat OpenShift platformy Azure
+title: Zarządzanie ograniczeniami kontekstu zabezpieczeń w usłudze Azure Red Hat OpenShift | Dokumenty firmy Microsoft
+description: Ograniczenia kontekstu zabezpieczeń dla administratorów klastrów Azure Red Hat OpenShift
 services: container-service
 author: troy0820
-ms.author: jzim
+ms.author: b-trconn
 ms.service: container-service
 ms.topic: article
 ms.date: 09/25/2019
-ms.openlocfilehash: f98f55dca8b3dbbfbe03cb8c79691cedb63335a0
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 24163adcec889e9eedc2362ff1f01f00257a98f3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168993"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063171"
 ---
-# <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>Zarządzanie ograniczeniami kontekstu zabezpieczeń na platformie Azure Red Hat OpenShift 
+# <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>Zarządzanie ograniczeniami kontekstu zabezpieczeń w usłudze Azure Red Hat OpenShift 
 
-Ograniczenia kontekstu zabezpieczeń (SCCs) umożliwiają administratorom klastra kontrolowanie uprawnień dla zasobników. Aby dowiedzieć się więcej na temat tego typu interfejsu API, zobacz [dokumentację architektury dla SCCs](https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html). Możesz zarządzać SCCs w swoim wystąpieniu jako normalnymi obiektami interfejsu API za pomocą interfejsu wiersza polecenia.
+Ograniczenia kontekstu zabezpieczeń (SCC) umożliwiają administratorom klastra kontrolowanie uprawnień zasobników. Aby dowiedzieć się więcej o tym typie interfejsu API, zobacz [dokumentację architektury kontrolerów SC.](https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html) Scc w wystąpieniu można zarządzać jako normalne obiekty interfejsu API przy użyciu interfejsu wiersza polecenia.
 
-## <a name="list-security-context-constraints"></a>Wyświetl listę ograniczeń kontekstu zabezpieczeń
+## <a name="list-security-context-constraints"></a>Wyświetlanie ograniczeń kontekstu zabezpieczeń
 
-Aby uzyskać bieżącą listę SCCs, użyj tego polecenia: 
+Aby uzyskać bieżącą listę kontrolerów SC, użyj tego polecenia: 
 
 ```bash
 $ oc get scc
@@ -35,41 +35,41 @@ privileged         true      [*]       RunAsAny    RunAsAny           RunAsAny  
 restricted         false     []        MustRunAs   MustRunAsRange     MustRunAs   RunAsAny    <none>     false            [configMap downwardAPI emptyDir persistentVolumeClaim secret]
 ```
 
-## <a name="examine-an-object-for-security-context-constraints"></a>Badanie obiektu pod kątem ograniczeń kontekstu zabezpieczeń
+## <a name="examine-an-object-for-security-context-constraints"></a>Sprawdzanie obiektu pod kątem ograniczeń kontekstu zabezpieczeń
 
-Aby zapoznać się z konkretnym SCC, użyj `oc get`, `oc describe` lub `oc edit`.  Aby na przykład przeanalizować **ograniczoną** wartość SCC, użyj tego polecenia:
+Aby zbadać określony SCC, `oc describe`użyj `oc edit` `oc get`, lub .  Na przykład, aby sprawdzić **ograniczone** SCC, użyj tego polecenia:
 ```bash
 $ oc describe scc restricted
-Name:                   restricted
-Priority:               <none>
+Name:                    restricted
+Priority:                <none>
 Access:
   Users:                <none>
-  Groups:               system:authenticated
+  Groups:                system:authenticated
 Settings:
-  Allow Privileged:         false
-  Default Add Capabilities:     <none>
-  Required Drop Capabilities:       KILL,MKNOD,SYS_CHROOT,SETUID,SETGID
-  Allowed Capabilities:         <none>
-  Allowed Seccomp Profiles:     <none>
-  Allowed Volume Types:         configMap,downwardAPI,emptyDir,persistentVolumeClaim,projected,secret
-  Allow Host Network:           false
-  Allow Host Ports:         false
-  Allow Host PID:           false
-  Allow Host IPC:           false
+  Allow Privileged:            false
+  Default Add Capabilities:        <none>
+  Required Drop Capabilities:        KILL,MKNOD,SYS_CHROOT,SETUID,SETGID
+  Allowed Capabilities:            <none>
+  Allowed Seccomp Profiles:        <none>
+  Allowed Volume Types:            configMap,downwardAPI,emptyDir,persistentVolumeClaim,projected,secret
+  Allow Host Network:            false
+  Allow Host Ports:            false
+  Allow Host PID:            false
+  Allow Host IPC:            false
   Read Only Root Filesystem:        false
   Run As User Strategy: MustRunAsRange
     UID:                <none>
-    UID Range Min:          <none>
-    UID Range Max:          <none>
+    UID Range Min:            <none>
+    UID Range Max:            <none>
   SELinux Context Strategy: MustRunAs
-    User:               <none>
-    Role:               <none>
-    Type:               <none>
-    Level:              <none>
+    User:                <none>
+    Role:                <none>
+    Type:                <none>
+    Level:                <none>
   FSGroup Strategy: MustRunAs
-    Ranges:             <none>
+    Ranges:                <none>
   Supplemental Groups Strategy: RunAsAny
-    Ranges:             <none>
+    Ranges:                <none>
 ```
 ## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"]

@@ -1,70 +1,70 @@
 ---
-title: Przechowywanie wersji zestawu SDK klienta i serwera
-description: Lista zestawów SDK klienta i zgodność z wersjami zestawu SDK serwera dla Mobile Services i Mobile Apps platformy Azure.
+title: Przechowywanie wersji sdk klienta i serwera
+description: Lista zestawów SDK klienta i zgodność z wersjami zestawów SDK serwera dla usług mobilnych i aplikacji mobilnych platformy Azure.
 ms.assetid: 35b19672-c9d6-49b5-b405-a6dcd1107cd5
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.openlocfilehash: f24ae0a48b835785a2e000210f3609b82d42d0f6
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: a9ba442c00ec2498139ee34a1ff7497c98f17ede
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461559"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80293480"
 ---
-# <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>Przechowywanie wersji klienta i serwera w Mobile Apps i Mobile Services
+# <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>Przechowywanie wersji dla klientów i serwerów w aplikacjach mobilnych i usługach mobilnych
 
-Najnowsza wersja platformy Azure Mobile Services jest funkcją **Mobile Apps** Azure App Service.
+Najnowsza wersja usług azure mobile services to funkcja **aplikacji mobilnych** usługi Azure App Service.
 
-Zestawy SDK klienta i serwera Mobile Apps są pierwotnie oparte na Mobile Services, ale *nie* są ze sobą zgodne.
-Oznacza to, że należy użyć zestawu SDK klienta *Mobile Apps* z zestawem SDK *Mobile Apps* Server, podobnie jak w przypadku *Mobile Services*. Ta umowa jest wymuszana za pomocą specjalnej wartości nagłówka używanej przez zestawy SDK klienta i serwera `ZUMO-API-VERSION`.
+SDK klientów i serwerów aplikacji mobilnych są pierwotnie oparte na tych w usługach mobilnych, ale *nie* są ze sobą zgodne.
+Oznacza to, że należy użyć sdk klienta *aplikacji mobilnych* z SDK serwera *aplikacji mobilnych* i podobnie dla *usług mobilnych*. Ta umowa jest wymuszana za pomocą specjalnej wartości nagłówka używanej przez sdk klienta i serwera, `ZUMO-API-VERSION`.
 
-Uwaga: zawsze, gdy ten dokument odwołuje się do *Mobile Services* zaplecza, nie musi być hostowany na Mobile Services. Teraz można migrować usługę mobilną do uruchamiania na App Service bez żadnych zmian w kodzie, ale usługa nadal będzie używać *Mobile Services* wersji zestawu SDK.
+Uwaga: za każdym razem, gdy ten dokument odnosi się do zaplecza *usług mobilnych,* nie musi być hostowany w usługach mobilnych. Teraz można przeprowadzić migrację usługi mobilnej do uruchomienia w usłudze App Service bez żadnych zmian kodu, ale usługa nadal będzie używać wersji SDK *usług mobilnych.*
 
 ## <a name="header-specification"></a>Specyfikacja nagłówka
-Klucz `ZUMO-API-VERSION` może być określony w nagłówku HTTP lub ciągu zapytania. Wartość jest ciągiem wersji w postaci **x. y. z**.
+Klucz `ZUMO-API-VERSION` może być określony w nagłówku HTTP lub ciągu zapytania. Wartość jest ciągiem wersji w postaci **x.y.z**.
 
-Na przykład:
+Przykład:
 
-Pobierz https://service.azurewebsites.net/tables/TodoItem
+`GET https://service.azurewebsites.net/tables/TodoItem`
 
 NAGŁÓWKI: ZUMO-API-VERSION: 2.0.0
 
-Opublikuj https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
+`POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0`
 
 ## <a name="opting-out-of-version-checking"></a>Rezygnacja z sprawdzania wersji
-Możesz zrezygnować z sprawdzania wersji, ustawiając wartość **true** dla ustawienia aplikacji **MS_SkipVersionCheck**. Określ ją w pliku Web. config lub w sekcji Ustawienia aplikacji Azure Portal.
+Możesz zrezygnować z sprawdzania wersji, ustawiając wartość **true** dla ustawienia aplikacji **MS_SkipVersionCheck**. Określ to w witrynie web.config lub w sekcji Ustawienia aplikacji w witrynie Azure portal.
 
 > [!NOTE]
-> Istnieje wiele zmian w zachowaniu między Mobile Services i Mobile Apps, szczególnie w obszarach synchronizacji w trybie offline, uwierzytelniania i powiadomień wypychanych. Sprawdzanie wersji należy zrezygnować tylko po zakończeniu testowania, aby upewnić się, że te zmiany zachowania nie przerywają funkcjonalności aplikacji.
+> Istnieje wiele zmian w zachowaniu między usługami mobilnymi i aplikacjami mobilnymi, szczególnie w obszarach synchronizacji w trybie offline, uwierzytelniania i powiadomień wypychanych. Należy zrezygnować z sprawdzania wersji tylko po zakończeniu testowania, aby upewnić się, że te zmiany behawioralne nie łamią funkcji aplikacji.
 
-## <a name="2.0.0"></a>Klient i serwer Mobile Apps platformy Azure
-### <a name="MobileAppsClients"></a>Zestawy SDK klienta *aplikacji* mobilnych
-Wprowadzono Sprawdzanie wersji, rozpoczynając od następujących wersji zestawu Client SDK dla **platformy Azure Mobile Apps**:
+## <a name="azure-mobile-apps-client-and-server"></a><a name="2.0.0"></a>Klient i serwer usługi Azure Mobile Apps
+### <a name="mobile-apps-client-sdks"></a><a name="MobileAppsClients"></a>*SDK* klienta aplikacji mobilnych
+Wprowadzono sprawdzanie wersji, począwszy od następujących wersji sdk klienta dla **aplikacji mobilnych platformy Azure:**
 
-| Platforma klienta | Wersja | Wartość nagłówka wersji |
+| Klient platforma | Wersja | Wartość nagłówka wersji |
 | --- | --- | --- |
 | Klient zarządzany (Windows, Xamarin) |[2.0.0](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/2.0.0) |2.0.0 |
 | iOS |[3.0.0](https://go.microsoft.com/fwlink/?LinkID=529823) |2.0.0 |
 | Android |[3.0.0](https://go.microsoft.com/fwlink/?LinkID=717033&clcid=0x409) |3.0.0 |
 
-### <a name="mobile-apps-server-sdks"></a>Zestawy SDK serwera *aplikacji* mobilnych
-Sprawdzanie wersji jest zawarte w następujących wersjach zestawu SDK serwera:
+### <a name="mobile-apps-server-sdks"></a>SDK serwera *aplikacji* mobilnych
+Sprawdzanie wersji jest zawarte w następujących wersjach SDK serwera:
 
-| Platforma serwera | SDK | Nagłówek zaakceptowanej wersji |
+| Platforma serwerowa | SDK | Nagłówek zaakceptowana wersja |
 | --- | --- | --- |
-| .NET |[Microsoft. Azure. Mobile. Server](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/) |2.0.0 |
-| Node.js |[Azure-Mobile-Apps)](https://www.npmjs.com/package/azure-mobile-apps) |2.0.0 |
+| .NET |[Microsoft.Azure.Mobile.Server](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/) |2.0.0 |
+| Node.js |[azure-mobile-apps)](https://www.npmjs.com/package/azure-mobile-apps) |2.0.0 |
 
-### <a name="behavior-of-mobile-apps-backends"></a>Zachowanie Mobile Apps
-| ZUMO-API-VERSION | Wartość MS_SkipVersionCheck | Odpowiedź |
+### <a name="behavior-of-mobile-apps-backends"></a>Zachowanie zaplecza aplikacji mobilnych
+| ZUMO-API-WERSJA | Wartość MS_SkipVersionCheck | Odpowiedź |
 | --- | --- | --- |
-| x. y. z lub null |True |200 — OK |
-| Null |Nie określono wartości false/not |400 — Nieprawidłowe żądanie |
-| 1. x. y |Nie określono wartości false/not |400 — Nieprawidłowe żądanie |
-| 2.0.0-2. x. y |Nie określono wartości false/not |200 — OK |
-| 3.0.0-3. x. y |Nie określono wartości false/not |400 — Nieprawidłowe żądanie |
+| x.y.z lub null |True |200 - OK |
+| Null |Fałsz/nieokreślone |400 — Nieprawidłowe żądanie |
+| 1.x.r. |Fałsz/nieokreślone |400 — Nieprawidłowe żądanie |
+| 2.0.0-2.x.y |Fałsz/nieokreślone |200 - OK |
+| 3.0.0-3.x.y |Fałsz/nieokreślone |400 — Nieprawidłowe żądanie |
 
 [Mobile Services clients]: #MobileServicesClients
 [Mobile Apps clients]: #MobileAppsClients

@@ -1,6 +1,6 @@
 ---
-title: Przykłady Notification Hubs platformy Azure
-description: Lista dostępnych przykładów Notification Hubs platformy Azure.
+title: Przykłady centrów powiadomień platformy Azure
+description: Lista dostępnych przykładów centrów powiadomień platformy Azure.
 services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
@@ -14,15 +14,15 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/28/2019
 ms.openlocfilehash: eb382a66ac901853d28b4d63d31a30ed2f65b96c
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76263935"
 ---
-# <a name="azure-notification-hubs-samples"></a>Przykłady Notification Hubs platformy Azure
+# <a name="azure-notification-hubs-samples"></a>Przykłady centrów powiadomień platformy Azure
 
-Ten artykuł zawiera linki do przykładów demonstrujących kluczowe funkcje platformy Azure Notification Hubs.
+Ten artykuł zawiera łącza do przykładów, które pokazują kluczowe funkcje w usłudze Azure Notification Hubs.
 
 ## <a name="samples"></a>Samples
 
@@ -34,4 +34,4 @@ Ten artykuł zawiera linki do przykładów demonstrujących kluczowe funkcje pla
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zobacz samouczki w sekcji **samouczki** spisu treści.
+Zobacz samouczki w **samouczkach** sekcji spisu treści.

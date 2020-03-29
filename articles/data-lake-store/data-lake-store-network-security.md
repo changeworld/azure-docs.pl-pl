@@ -14,10 +14,10 @@ ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
 ms.openlocfilehash: 7d6c826df2a509ffb378809e3682073bd5ab1301
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60612702"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>Integracja z siecią wirtualną w usłudze Azure Data Lake Storage Gen1
@@ -65,7 +65,7 @@ Oprócz zabezpieczania dostępu do kont usługi Data Lake Storage z poziomu siec
 Użyj rozwiązania zapory w sieci wirtualnej do filtrowania ruchu wychodzącego na podstawie adresu URL konta docelowego. Zezwalaj na dostęp tylko przez zatwierdzone konta usługi Data Lake Storage Gen1.
 
 Dostępne opcje to między innymi:
-- [Azure Firewall](https://docs.microsoft.com/azure/firewall/overview): [wdróż i skonfiguruj usługę Azure Firewall](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal) dla sieci wirtualnej. Zabezpiecz ruch wychodzący usługi Data Lake Storage i ogranicz go do adresów URL znanych i zatwierdzonych kont.
+- Usługa [Azure Firewall](https://docs.microsoft.com/azure/firewall/overview): [wdróż i skonfiguruj usługę Azure Firewall](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal) dla sieci wirtualnej. Zabezpiecz ruch wychodzący usługi Data Lake Storage i ogranicz go do adresów URL znanych i zatwierdzonych kont.
 - Zapora [wirtualnego urządzenia sieciowego](https://azure.microsoft.com/solutions/network-appliances/): administrator może zezwolić na użycie tylko określonych dostawców komercyjnych zapór. Skorzystaj z rozwiązania zapory urządzenia sieci wirtualnej, które jest dostępne w witrynie Azure Marketplace, do realizacji tych samych funkcji.
 
 > [!NOTE]
@@ -83,7 +83,7 @@ Dostępne opcje to między innymi:
 
 ## <a name="configuration"></a>Konfigurowanie
 
-### <a name="step-1-configure-your-virtual-network-to-use-an-azure-ad-service-endpoint"></a>Krok 1: Konfigurowanie sieci wirtualnej pod kątem korzystania z punktu końcowego usługi Azure AD
+### <a name="step-1-configure-your-virtual-network-to-use-an-azure-ad-service-endpoint"></a>Krok 1. Konfigurowanie sieci wirtualnej pod kątem korzystania z punktu końcowego usługi Azure AD
 
 1.  Przejdź do witryny Azure Portal i zaloguj się na swoim koncie.
  
@@ -107,7 +107,7 @@ Dostępne opcje to między innymi:
  
     ![Pomyślne dodanie punktu końcowego usługi](media/data-lake-store-network-security/config-vnet-4.png)
 
-### <a name="step-2-set-up-the-allowed-virtual-network-or-subnet-for-your-data-lake-storage-gen1-account"></a>Krok 2: Konfigurowanie dozwolonej sieci wirtualnej lub podsieci dla konta usługi Data Lake Storage Gen1
+### <a name="step-2-set-up-the-allowed-virtual-network-or-subnet-for-your-data-lake-storage-gen1-account"></a>Krok 2. Konfigurowanie dozwolonej sieci wirtualnej lub podsieci dla konta usługi Data Lake Storage Gen1
 
 1.  Po skonfigurowaniu sieci wirtualnej [utwórz nowe konto usługi Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md#create-a-data-lake-storage-gen1-account) w ramach subskrypcji. Możesz też przejść do istniejącego konta usługi Data Lake Storage Gen1. Konto usługi Data Lake Storage Gen1 musi znajdować się w tym samym regionie co sieć wirtualna.
  
@@ -128,7 +128,7 @@ Dostępne opcje to między innymi:
 
     ![Wybieranie sieci wirtualnej i podsieci](media/data-lake-store-network-security/config-adls-3.png)
 
-6.  Upewnij się, że wybrane sieci wirtualne i podsieci są wyświetlane prawidłowo na liście. Wybierz pozycję **Zapisz**.
+6.  Upewnij się, że wybrane sieci wirtualne i podsieci są wyświetlane prawidłowo na liście. Wybierz **pozycję Zapisz**.
 
     ![Zapisywanie nowej reguły](media/data-lake-store-network-security/config-adls-4.png)
 

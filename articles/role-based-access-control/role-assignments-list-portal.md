@@ -1,6 +1,6 @@
 ---
-title: Wyświetlanie listy przypisań ról przy użyciu funkcji RBAC platformy Azure i Azure Portal
-description: Dowiedz się, jak określić, które zasoby użytkownicy, grupy, nazwy główne usług lub tożsamości zarządzane są dostępne do korzystania z kontroli dostępu opartej na rolach (RBAC) na platformie Azure i Azure Portal.
+title: Lista przypisań ról przy użyciu usługi Azure RBAC i witryny Azure portal
+description: Dowiedz się, jak określić, do jakich zasobów użytkownicy, grupy, jednostki usługi lub tożsamości zarządzane mają dostęp do przy użyciu kontroli dostępu opartej na rolach platformy Azure (RBAC) i witryny Azure portal.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,78 +11,78 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/23/2020
+ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 63aef8d2036e442659145e031d384e9677c779a1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 03a3d3c7d572d7ec5b8d3ac3d527d0d59e649bc2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79245618"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062238"
 ---
-# <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Wyświetlanie listy przypisań ról przy użyciu funkcji RBAC platformy Azure i Azure Portal
+# <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Lista przypisań ról przy użyciu usługi Azure RBAC i witryny Azure portal
 
-[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] w tym artykule opisano sposób wyświetlania przypisań ról przy użyciu Azure Portal.
+[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)]W tym artykule opisano sposób listy przypisań ról przy użyciu witryny Azure Portal.
 
 > [!NOTE]
-> Jeśli organizacja ma funkcje zarządzania, które są używane przez usługę zarządzania [zasobami delegowanymi przez platformę Azure](../lighthouse/concepts/azure-delegated-resource-management.md), w tym miejscu nie będą wyświetlane przypisania ról autoryzowane przez tego dostawcę usług.
+> Jeśli twoja organizacja zleciła funkcje zarządzania na zewnątrz dostawcy usług, który korzysta z [usługi Azure zarządzanie zasobami delegowanymi,](../lighthouse/concepts/azure-delegated-resource-management.md)przypisania ról autoryzowane przez tego dostawcę usług nie będą wyświetlane w tym miejscu.
 
-## <a name="list-role-assignments-for-a-user-or-group"></a>Wyświetl listę przypisań ról dla użytkownika lub grupy
+## <a name="list-role-assignments-for-a-user-or-group"></a>Wyświetlanie przypisań ról dla użytkownika lub grupy
 
-Najprostszym sposobem wyświetlenia ról przypisanych do użytkownika lub grupy w ramach subskrypcji jest użycie okienka **zasoby platformy Azure** .
+Najprostszym sposobem, aby wyświetlić role przypisane do użytkownika lub grupy w ramach subskrypcji jest użycie okienka **zasobów platformy Azure.**
 
-1. W Azure Portal kliknij pozycję **wszystkie usługi** , a następnie wybierz pozycję **Użytkownicy** lub **grupy**.
+1. W witrynie Azure portal kliknij pozycję **Wszystkie usługi,** a następnie wybierz pozycję **Użytkownicy** lub **grupy**.
 
 1. Kliknij użytkownika lub grupę, dla której chcesz wyświetlić listę przypisań ról.
 
-1. Kliknij pozycję **zasoby platformy Azure**.
+1. Kliknij pozycję **Zasoby platformy Azure**.
 
-    Zostanie wyświetlona lista ról przypisanych do wybranego użytkownika lub grupy w różnych zakresach, takich jak grupa zarządzania, subskrypcja, Grupa zasobów lub zasób. Ta lista zawiera wszystkie przypisania ról, do których masz uprawnienia do odczytu.
+    Zostanie wyświetlona lista ról przypisanych do wybranego użytkownika lub grupy w różnych zakresach, takich jak grupa zarządzania, subskrypcja, grupa zasobów lub zasób. Ta lista zawiera wszystkie przypisania ról, do których masz uprawnienia do odczytu.
 
     ![Przypisania ról dla użytkownika](./media/role-assignments-list-portal/azure-resources-user.png)    
 
-1. Aby zmienić subskrypcję, kliknij listę **subskrypcje** .
+1. Aby zmienić subskrypcję, kliknij listę **Subskrypcje.**
 
-## <a name="list-owners-of-a-subscription"></a>Wyświetl listę właścicieli subskrypcji
+## <a name="list-owners-of-a-subscription"></a>Lista właścicieli subskrypcji
 
-Użytkownicy, którym przypisano rolę [właściciela](built-in-roles.md#owner) dla subskrypcji, mogą zarządzać wszystkimi subskrypcjami w ramach subskrypcji. Wykonaj następujące kroki, aby wyświetlić listę właścicieli subskrypcji.
+Użytkownicy, którzy zostali przypisani do roli [Właściciel](built-in-roles.md#owner) subskrypcji, mogą zarządzać wszystkim w ramach subskrypcji. Wykonaj następujące kroki, aby wyświetlić listę właścicieli subskrypcji.
 
 1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**, a następnie wybierz pozycję **Subskrypcje**.
 
-1. Kliknij subskrypcję, dla której chcesz wyświetlić listę właścicieli.
+1. Kliknij subskrypcję, którą chcesz wyświetlić na liście właścicieli.
 
-1. Kliknij pozycję **Kontrola dostępu (IAM)** .
+1. Kliknij pozycję **Kontrola dostępu (IAM)**.
 
 1. Kliknij kartę **Przypisania ról**, aby wyświetlić wszystkie przypisania ról dla tej subskrypcji.
 
-1. Przewiń do sekcji **właściciele** , aby wyświetlić wszystkich użytkowników, którym przypisano rolę właściciela dla tej subskrypcji.
+1. Przewiń do sekcji **Właściciele,** aby wyświetlić wszystkich użytkowników, którzy zostali przypisani roli Właściciel dla tej subskrypcji.
 
-   ![Kontrola dostępu do subskrypcji — karta przypisania ról](./media/role-assignments-list-portal/access-control-role-assignments-subscription.png)
+   ![Kontrola dostępu do subskrypcji — karta Przypisania ról](./media/role-assignments-list-portal/access-control-role-assignments-subscription.png)
 
-## <a name="list-role-assignments-at-a-scope"></a>Wyświetl listę przypisań ról w zakresie
+## <a name="list-role-assignments-at-a-scope"></a>Wyświetlanie przypisań ról w zakresie
 
-1. W Azure Portal kliknij pozycję **wszystkie usługi** , a następnie wybierz zakres. Można na przykład wybrać **grupy zarządzania**, **subskrypcje**, **grupy zasobów**lub zasób.
+1. W witrynie Azure portal kliknij pozycję **Wszystkie usługi,** a następnie wybierz zakres. Na przykład można wybrać **grupy zarządzania,** subskrypcje, **grupy zasobów**lub **zasób.**
 
-1. Kliknij konkretny zasób.
+1. Kliknij określony zasób.
 
-1. Kliknij pozycję **Kontrola dostępu (IAM)** .
+1. Kliknij pozycję **Kontrola dostępu (IAM)**.
 
-1. Kliknij kartę **przypisania roli** , aby wyświetlić wszystkie przypisania ról w tym zakresie.
+1. Kliknij kartę **Przypisania ról,** aby wyświetlić wszystkie przypisania ról w tym zakresie.
 
-   ![Kontrola dostępu — karta przypisania ról](./media/role-assignments-list-portal/access-control-role-assignments.png)
+   ![Kontrola dostępu — karta Przypisania ról](./media/role-assignments-list-portal/access-control-role-assignments.png)
 
-   Na karcie przypisania roli można zobaczyć, kto ma dostęp w tym zakresie. Należy zauważyć, że niektóre role należą do zakresu **tego zasobu**, a inne są **dziedziczone** z innego zakresu. Dostęp jest przypisany do tego zasobu lub Dziedziczony z przypisania do zakresu nadrzędnego.
+   Na karcie Przypisania ról można sprawdzić, kto ma dostęp w tym zakresie. Należy zauważyć, że niektóre role należą do zakresu **tego zasobu**, a inne są **dziedziczone** z innego zakresu. Program Access jest przypisywany specjalnie do tego zasobu lub dziedziczony z przypisania do zakresu nadrzędnego.
 
-## <a name="list-role-assignments-for-a-user-at-a-scope"></a>Wyświetlanie listy przypisań ról dla użytkownika w zakresie
+## <a name="list-role-assignments-for-a-user-at-a-scope"></a>Wyświetlanie przypisań ról dla użytkownika w zakresie
 
-Aby wyświetlić listę dostępu dla użytkownika, grupy, nazwy głównej usługi lub tożsamości zarządzanej, należy wyświetlić listę przypisań ról. Wykonaj następujące kroki, aby wyświetlić listę przypisań ról dla pojedynczego użytkownika, grupy, nazwy głównej usługi lub tożsamości zarządzanej w określonym zakresie.
+Aby wyświetlić listę dostępu dla użytkownika, grupy, jednostki usługi lub tożsamości zarządzanej, należy wyświetlić listę ich przypisań ról. Wykonaj następujące kroki, aby wyświetlić listę przypisań ról dla pojedynczego użytkownika, grupy, jednostki usługi lub tożsamości zarządzanej w określonym zakresie.
 
-1. W Azure Portal kliknij pozycję **wszystkie usługi** , a następnie wybierz zakres. Można na przykład wybrać **grupy zarządzania**, **subskrypcje**, **grupy zasobów**lub zasób.
+1. W witrynie Azure portal kliknij pozycję **Wszystkie usługi,** a następnie wybierz zakres. Na przykład można wybrać **grupy zarządzania,** subskrypcje, **grupy zasobów**lub **zasób.**
 
-1. Kliknij konkretny zasób.
+1. Kliknij określony zasób.
 
-1. Kliknij pozycję **Kontrola dostępu (IAM)** .
+1. Kliknij pozycję **Kontrola dostępu (IAM)**.
 
 1. Kliknij kartę **Sprawdź dostęp**.
 
@@ -100,43 +100,43 @@ Aby wyświetlić listę dostępu dla użytkownika, grupy, nazwy głównej usług
 
     W tym okienku są wyświetlane role przypisane do wybranego podmiotu zabezpieczeń i zakresu. Jeśli istnieją przypisania odmowy występujące w tym zakresie lub dziedziczone przez ten zakres, zostaną wyświetlone.
 
-## <a name="list-role-assignments-for-a-system-assigned-managed-identity"></a>Wyświetlanie listy przypisań ról dla tożsamości zarządzanej przypisanej przez system
+## <a name="list-role-assignments-for-a-system-assigned-managed-identity"></a>Wyświetlanie przypisań ról dla tożsamości zarządzanej przypisanej do systemu
 
-1. W Azure Portal Otwórz przypisaną przez system tożsamość zarządzaną.
+1. W witrynie Azure portal otwórz tożsamość zarządzaną przypisaną do systemu.
 
-1. W menu po lewej stronie kliknij pozycję **tożsamość**.
+1. W menu po lewej stronie kliknij pozycję **Tożsamość**.
 
-    ![Tożsamość zarządzana przypisana przez system](./media/role-assignments-list-portal/identity-system-assigned.png)
+    ![Tożsamość zarządzana przypisana do systemu](./media/role-assignments-list-portal/identity-system-assigned.png)
 
-1. W obszarze **przypisania ról**kliknij pozycję **Pokaż role RBAC platformy Azure przypisane do tej tożsamości zarządzanej**.
+1. W obszarze **Przypisania ról**kliknij pozycję **Pokaż role usługi Azure RBAC przypisane do tej tożsamości zarządzanej**.
 
-    Zostanie wyświetlona lista ról przypisanych do wybranej tożsamości zarządzanej przypisanej przez system w różnych zakresach, takich jak grupa zarządzania, subskrypcja, Grupa zasobów lub zasób. Ta lista zawiera wszystkie przypisania ról, do których masz uprawnienia do odczytu.
+    Zostanie wyświetlona lista ról przypisanych do wybranej tożsamości zarządzanej przypisanej do systemu w różnych zakresach, takich jak grupa zarządzania, subskrypcja, grupa zasobów lub zasób. Ta lista zawiera wszystkie przypisania ról, do których masz uprawnienia do odczytu.
 
     ![Przypisania ról dla tożsamości zarządzanej przypisanej do systemu](./media/role-assignments-list-portal/azure-resources-system-assigned.png)
 
-## <a name="list-role-assignments-for-a-user-assigned-managed-identity"></a>Wyświetl listę przypisań ról dla tożsamości zarządzanej przypisanej przez użytkownika
+## <a name="list-role-assignments-for-a-user-assigned-managed-identity"></a>Wyświetlanie przypisań ról dla tożsamości zarządzanej przypisanej przez użytkownika
 
-1. W Azure Portal Otwórz tożsamość zarządzaną przypisaną przez użytkownika.
+1. W witrynie Azure portal otwórz tożsamość zarządzaną przypisaną przez użytkownika.
 
-1. Kliknij pozycję **zasoby platformy Azure**.
+1. Kliknij pozycję **Zasoby platformy Azure**.
 
-    Zostanie wyświetlona lista ról przypisanych do wybranej tożsamości zarządzanej przypisanej przez użytkownika w różnych zakresach, takich jak grupa zarządzania, subskrypcja, Grupa zasobów lub zasób. Ta lista zawiera wszystkie przypisania ról, do których masz uprawnienia do odczytu.
+    Zostanie wyświetlona lista ról przypisanych do wybranej tożsamości zarządzanej przypisanej przez użytkownika w różnych zakresach, takich jak grupa zarządzania, subskrypcja, grupa zasobów lub zasób. Ta lista zawiera wszystkie przypisania ról, do których masz uprawnienia do odczytu.
 
     ![Przypisania ról dla tożsamości zarządzanej przypisanej do systemu](./media/role-assignments-list-portal/azure-resources-user-assigned.png)
 
-1. Aby zmienić subskrypcję, kliknij listę **subskrypcje** .
+1. Aby zmienić subskrypcję, kliknij listę **Subskrypcje.**
 
-## <a name="list-number-of-role-assignments"></a>Liczba przypisań ról
+## <a name="list-number-of-role-assignments"></a>Wyświetlanie liczby przypisań ról
 
-W każdej subskrypcji można korzystać z maksymalnie **2000** przypisań ról. Aby ułatwić śledzenie tych limitów, karta **przypisania ról** zawiera wykres, który wyświetla bieżącą liczbę przypisań ról.
+W każdej subskrypcji może być maksymalnie **2000** przypisań ról. Aby ułatwić śledzenie tego limitu, karta **Przypisania ról** zawiera wykres z listą liczby przypisań ról dla bieżącej subskrypcji.
 
-![Kontrola dostępu — liczba wykresów przypisań ról](./media/role-assignments-list-portal/access-control-role-assignments-chart.png)
+![Kontrola dostępu — liczba przypisań ról](./media/role-assignments-list-portal/access-control-role-assignments-chart.png)
 
-Jeśli zbliżasz się do maksymalnej liczby i podjęto próbę dodania kolejnych przypisań ról, w okienku **Dodaj przypisanie roli** zostanie wyświetlone ostrzeżenie. Możesz zmniejszyć liczbę przypisań ról, usuwając przydziały ról, które nie są już potrzebne, lub przypisując role do grup zamiast poszczególnych użytkowników.
+Jeśli zbliżasz się do maksymalnej liczby i spróbujesz dodać więcej przypisań ról, zobaczysz ostrzeżenie w okienku **Dodawanie przypisania roli.** Aby uzyskać sposoby zmniejszenia liczby przypisań ról, zobacz [Rozwiązywanie problemów z programem Azure RBAC](troubleshooting.md#azure-role-assignments-limit).
 
-![Kontrola dostępu — ostrzeżenie o przypisaniu roli](./media/role-assignments-list-portal/add-role-assignment-warning.png)
+![Kontrola dostępu — ostrzeżenie o przypisywanie ról](./media/role-assignments-list-portal/add-role-assignment-warning.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Dodawanie lub usuwanie przypisań ról przy użyciu funkcji RBAC platformy Azure i Azure Portal](role-assignments-portal.md)
-- [Rozwiązywanie problemów z funkcją RBAC dla zasobów platformy Azure](troubleshooting.md)
+- [Dodawanie lub usuwanie przypisań ról przy użyciu usługi Azure RBAC i witryny Azure Portal](role-assignments-portal.md)
+- [Rozwiązywanie problemów z materiałami RBAC dla platformy Azure](troubleshooting.md)

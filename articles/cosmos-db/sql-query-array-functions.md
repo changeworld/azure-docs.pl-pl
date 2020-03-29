@@ -1,6 +1,6 @@
 ---
-title: Funkcje tablicowe w Azure Cosmos DB języku zapytań
-description: Dowiedz się, jak funkcje tablicy umożliwiają wykonywanie operacji na tablicach w Azure Cosmos DB
+title: Funkcje tablicy w języku kwerend usługi Azure Cosmos DB
+description: Dowiedz się, jak funkcje tablic umożliwiają wykonywanie operacji na tablicach w usłudze Azure Cosmos DB
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,19 +8,19 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: a0256470892d634361498f1632027aff562c7761
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74871809"
 ---
-# <a name="array-functions-azure-cosmos-db"></a>Funkcje tablicy (Azure Cosmos DB)
+# <a name="array-functions-azure-cosmos-db"></a>Funkcje tablicowe (usługa Azure Cosmos DB)
 
-Funkcje Array umożliwiają wykonywanie operacji na tablicach w Azure Cosmos DB.
+Funkcje tablicy umożliwiają wykonywanie operacji na tablicach w usłudze Azure Cosmos DB.
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Funkcje
 
-Następujące funkcje skalarne wykonują operacje na wartości wejściowej tablicy i zwracają wartości liczbowe, logiczne lub tablicowe:
+Następujące funkcje skalarne wykonują operację na wartości wejściowej tablicy i zwracają wartość liczbową, logiczną lub tablicową:
   
 ||||  
 |-|-|-|  
@@ -30,7 +30,7 @@ Następujące funkcje skalarne wykonują operacje na wartości wejściowej tabli
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Azure Cosmos DB funkcje systemowe](sql-query-system-functions.md)
-- [Wprowadzenie do Azure Cosmos DB](introduction.md)
+- [Funkcje systemowe Usługi Azure Cosmos DB](sql-query-system-functions.md)
+- [Wprowadzenie do usługi Azure Cosmos DB](introduction.md)
 - [Funkcje zdefiniowane przez użytkownika](sql-query-udfs.md)
 - [Agregacje](sql-query-aggregates.md)

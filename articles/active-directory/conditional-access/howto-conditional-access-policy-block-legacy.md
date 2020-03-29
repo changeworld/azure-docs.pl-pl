@@ -1,53 +1,53 @@
 ---
-title: Dostęp warunkowy — Blokuj starsze uwierzytelnianie — Azure Active Directory
+title: Dostęp warunkowy — blokowanie uwierzytelniania starszego — usługa Azure Active Directory
 description: Tworzenie niestandardowych zasad dostępu warunkowego w celu blokowania starszych protokołów uwierzytelniania
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/20/2019
+ms.date: 03/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0aca5019f4f7fca47195fb8fb821b1af1ae9ec77
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 6a868c8199ac34a498a280e2522d6b1e4c7ec370
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024249"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295211"
 ---
-# <a name="conditional-access-block-legacy-authentication"></a>Dostęp warunkowy: Blokuj starsze uwierzytelnianie
+# <a name="conditional-access-block-legacy-authentication"></a>Dostęp warunkowy: blokowanie uwierzytelniania starszego
 
-Ze względu na zwiększone ryzyko związane ze starszymi protokołami uwierzytelniania firma Microsoft zaleca, aby organizacje blokowały żądania uwierzytelniania przy użyciu tych protokołów i wymagały nowoczesnego uwierzytelniania.
+Ze względu na zwiększone ryzyko związane ze starszymi protokołami uwierzytelniania firma Microsoft zaleca organizacjom blokowanie żądań uwierzytelniania przy użyciu tych protokołów i wymaganie nowoczesnego uwierzytelniania.
 
 ## <a name="create-a-conditional-access-policy"></a>Tworzenie zasad dostępu warunkowego
 
-Poniższe kroki pomogą w tworzeniu zasad dostępu warunkowego w celu blokowania starszych żądań uwierzytelniania.
+Poniższe kroki pomogą utworzyć zasady dostępu warunkowego do blokowania starszych żądań uwierzytelniania. Ta zasada jest wprowadzana w [trybie tylko](howto-conditional-access-report-only.md) do raportu, aby rozpocząć, aby administratorzy mogli określić wpływ, jaki będą mieli na istniejących użytkowników. Gdy administratorzy są wygodne, że zasady stosuje się zgodnie z ich zamiarem, mogą przełączyć **się na włącz** lub etap wdrożenia, dodając określone grupy i wykluczając inne.
 
-1. Zaloguj się do **Azure Portal** jako Administrator globalny, administrator zabezpieczeń lub administrator dostępu warunkowego.
-1. Przejdź do **Azure Active Directory** > **zabezpieczenia** > **dostęp warunkowy**.
-1. Wybierz pozycję **nowe zasady**.
-1. Nadaj zasadom nazwę. Firma Microsoft zaleca, aby organizacje utworzyły znaczący Standard nazw swoich zasad.
-1. W obszarze **przypisania**wybierz pozycję **Użytkownicy i grupy**
-   1. W obszarze **dołączanie**wybierz pozycję **Wszyscy użytkownicy**.
-   1. W obszarze **Wyklucz**wybierz pozycję **Użytkownicy i grupy** , a następnie wybierz wszystkie konta, które muszą mieć możliwość korzystania z starszego uwierzytelniania. Należy wykluczyć co najmniej jedno konto, aby zapobiec jego zablokowaniu. Jeśli nie wykluczasz żadnego konta, nie będziesz w stanie utworzyć tych zasad.
+1. Zaloguj się do **witryny Azure portal** jako administrator globalny, administrator zabezpieczeń lub administrator dostępu warunkowego.
+1. Przejdź do **usługi Azure Active Directory** > **Security** > **Conditional Access**.
+1. Wybierz **pozycję Nowa zasada**.
+1. Nadaj polityce nazwę. Zaleca się, aby organizacje tworzyły znaczący standard nazw swoich zasad.
+1. W obszarze **Przydziały**wybierz **pozycję Użytkownicy i grupy**
+   1. W **obszarze Uwzględnij**wybierz pozycję **Wszyscy użytkownicy**.
+   1. W obszarze **Wyklucz**wybierz **pozycję Użytkownicy i grupy** i wybierz wszystkie konta, które muszą zachować możliwość korzystania ze starszego uwierzytelniania. Wyklucz co najmniej jedno konto, aby zapobiec zablokowaniu siebie. Jeśli nie wykluczysz żadnego konta, nie będziesz mógł utworzyć tej zasady.
    1. Wybierz pozycję **Done** (Gotowe).
-1. W obszarze **aplikacje lub akcje w chmurze** wybierz pozycję **wszystkie aplikacje w chmurze**.
+1. W obszarze **Aplikacje lub akcje w chmurze**wybierz pozycję **Wszystkie aplikacje w chmurze**.
    1. Wybierz pozycję **Done** (Gotowe).
-1. W obszarze **warunki** > **aplikacje klienckie (wersja zapoznawcza)** ustaw opcję **Skonfiguruj** na **wartość tak**.
-   1. Sprawdź tylko ramki **aplikacje mobilne i klienci stacjonarni** > **innych klientów**.
+1. W **obszarze Warunki** > **aplikacje klienckie (wersja zapoznawcza)** ustaw **configure** na **Tak**.
+   1. Zaznacz tylko pola **Aplikacje mobilne i klienci komputerowi** > **Inni klienci**.
    1. Wybierz pozycję **Done** (Gotowe).
-1. W obszarze **kontroli dostępu** > **Udziel**wybierz pozycję **Blokuj dostęp**.
+1. W obszarze **Formanty** > dostępu**Przyznanie**wybierz pozycję **Zablokuj dostęp**.
    1. Wybierz przycisk **Wybierz**.
-1. Potwierdź ustawienia i ustaw opcję **Włącz zasady** na **włączone**.
-1. Wybierz pozycję **Utwórz** , aby utworzyć zasady.
+1. Potwierdź ustawienia i ustaw **włącz zasadę** **na Tylko raport**.
+1. Wybierz **pozycję Utwórz,** aby utworzyć, aby włączyć zasady.
 
 ## <a name="next-steps"></a>Następne kroki
 
 [Wspólne zasady dostępu warunkowego](concept-conditional-access-policy-common.md)
 
-[Określanie wpływu przy użyciu trybu tylko Raport z dostępem warunkowym](howto-conditional-access-report-only.md)
+[Określanie wpływu przy użyciu trybu tylko dla dostępu warunkowego](howto-conditional-access-report-only.md)
 
-[Symulowanie zachowania logowania za pomocą narzędzia What If dostępu warunkowego](troubleshoot-conditional-access-what-if.md)
+[Symulowanie zachowania logowania za pomocą narzędzia Co jeśli dostęp warunkowy](troubleshoot-conditional-access-what-if.md)

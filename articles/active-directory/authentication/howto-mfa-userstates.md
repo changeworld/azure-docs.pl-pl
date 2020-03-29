@@ -1,6 +1,6 @@
 ---
-title: Multi-Factor Authentication poszczególnych użytkowników — Azure Active Directory
-description: Włącz usługę MFA, zmieniając Stany użytkowników w usłudze Azure Multi-Factor Authentication.
+title: Uwierzytelnianie wieloskładnikowe dla użytkowników — usługa Azure Active Directory
+description: Włącz usługę MFA, zmieniając stany użytkowników w usłudze Azure Multi-Factor Authentication.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,86 +12,86 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 61d7227c57422cfe2228002750ec29bffa385d44
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76756774"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Jak wymagać weryfikacji dwuetapowej dla użytkownika
 
-W celu przeprowadzenia weryfikacji dwuetapowej można wykonać jedną z dwóch metod, które wymagają użycia konta administratora globalnego. Pierwszą opcją jest włączenie każdego użytkownika dla usługi Azure Multi-Factor Authentication (MFA). Gdy użytkownicy są włączani indywidualnie, przeprowadzają weryfikację dwuetapową przy każdym logowaniu (z pewnymi wyjątkami, takimi jak logowanie przy użyciu zaufanych adresów IP lub włączenie funkcji _zapamiętanych urządzeń_ ). Druga opcja polega na skonfigurowaniu zasad dostępu warunkowego, które wymagają weryfikacji dwuetapowej w określonych warunkach.
+Można podjąć jedną z dwóch metod wymagających weryfikacji dwuetapowej, z których oba wymagają przy użyciu konta administratora globalnego. Pierwszą opcją jest włączenie każdego użytkownika dla usługi Azure Multi-Factor Authentication (MFA). Gdy użytkownicy są włączeni indywidualnie, przeprowadzają weryfikację dwuetapową za każdym razem, gdy się logują (z pewnymi wyjątkami, na przykład podczas logowania się z zaufanych adresów IP lub gdy funkcja _zapamiętanych urządzeń_ jest włączona). Drugą opcją jest skonfigurowanie zasad dostępu warunkowego, która wymaga weryfikacji dwuetapowej pod pewnymi warunkami.
 
 > [!TIP]
-> Zalecanym podejściem jest włączenie Multi-Factor Authentication platformy Azure korzystającej z zasad dostępu warunkowego. Zmiana stanu użytkowników nie jest już zalecana, chyba że licencje nie uwzględniają dostępu warunkowego, ponieważ będą wymagały od użytkowników wykonania uwierzytelniania MFA przy każdym logowaniu.
+> Włączenie uwierzytelniania wieloskładnikowego platformy Azure przy użyciu zasad dostępu warunkowego jest zalecane podejście. Zmiana stanu użytkownika nie jest już zalecana, chyba że licencje nie zawierają dostępu warunkowego, ponieważ będzie wymagać od użytkowników wykonywania usługi MFA za każdym razem, gdy się zalogują.
 
 ## <a name="choose-how-to-enable"></a>Wybieranie sposobu włączania
 
-**Włączone przez zmianę stanu użytkownika** — jest to tradycyjna metoda wymagająca weryfikacji dwuetapowej i została omówiona w tym artykule. Działa ona zarówno z usługą Azure MFA w chmurze, jak i na serwerze usługi Azure MFA. Użycie tej metody wymaga, aby użytkownicy przeprowadzali weryfikację dwuetapową przy **każdym** logowaniu i zastępują zasady dostępu warunkowego.
+**Włączone przez zmianę stanu użytkownika** — jest to tradycyjna metoda wymaga weryfikacji dwuetapowej i została omówiona w tym artykule. Działa zarówno z usługi Azure MFA w chmurze i usługi Azure MFA Server. Za pomocą tej metody wymaga od użytkowników do wykonywania weryfikacji dwuetapowej **za każdym razem, gdy** się logują i zastępuje zasady dostępu warunkowego.
 
-**Włączone przez zasady dostępu warunkowego** — jest to najbardziej elastyczny sposób na umożliwienie weryfikacji dwuetapowej dla użytkowników. Włączenie zasad dostępu warunkowego działa tylko dla usługi Azure MFA w chmurze i jest funkcją Premium usługi Azure AD. Więcej informacji na temat tej metody można znaleźć w temacie [wdrażanie usługi Azure Multi-Factor Authentication opartej na chmurze](howto-mfa-getstarted.md).
+**Włączone przez zasady dostępu warunkowego** — jest to najbardziej elastyczny sposób, aby umożliwić weryfikację dwuetapową dla użytkowników. Włączenie przy użyciu zasad dostępu warunkowego działa tylko dla usługi Azure MFA w chmurze i jest funkcją premium usługi Azure AD. Więcej informacji na temat tej metody można znaleźć w [obszarze Wdrażanie opartego na chmurze uwierzytelniania wieloskładnikowego platformy Azure.](howto-mfa-getstarted.md)
 
-**Włączone przez Azure AD Identity Protection** — ta metoda korzysta z zasad ryzyka Azure AD Identity Protection, aby wymagać weryfikacji dwuetapowej na podstawie ryzyka związanego z logowaniem dla wszystkich aplikacji w chmurze. Ta metoda wymaga licencjonowania Azure Active Directory P2. Więcej informacji na temat tej metody można znaleźć w [Azure Active Directory Identity Protection](../identity-protection/howto-sign-in-risk-policy.md)
+**Włączona przez usługę Azure AD Identity Protection** — ta metoda używa zasad ryzyka usługi Azure AD Identity Protection, aby wymagać weryfikacji dwuetapowej na podstawie ryzyka logowania dla wszystkich aplikacji w chmurze. Ta metoda wymaga licencjonowania usługi Azure Active Directory P2. Więcej informacji na temat tej metody można znaleźć w [usłudze Azure Active Directory Identity Protection](../identity-protection/howto-sign-in-risk-policy.md)
 
 > [!Note]
-> Więcej informacji o licencjach i cenach można znaleźć na stronach z cennikiem [usługi Azure AD](https://azure.microsoft.com/pricing/details/active-directory/
-) i [Multi-Factor Authentication](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) .
+> Więcej informacji na temat licencji i cen można znaleźć na stronach cenowych [usługi Azure AD](https://azure.microsoft.com/pricing/details/active-directory/
+) i [uwierzytelniania wieloskładnikowego.](https://azure.microsoft.com/pricing/details/multi-factor-authentication/)
 
 ## <a name="enable-azure-mfa-by-changing-user-state"></a>Włączanie usługi Azure MFA przez zmianę stanu użytkownika
 
-Konta użytkowników na platformie Azure Multi-Factor Authentication mają trzy różne stany:
+Konta użytkowników w usłudze Azure Multi-Factor Authentication mają następujące trzy różne stany:
 
 > [!IMPORTANT]
-> Włączenie usługi Azure MFA za pomocą zasad dostępu warunkowego nie spowoduje zmiany stanu użytkownika. Nie są wyświetlane alarmy, które są wyłączone. Dostęp warunkowy nie zmienia stanu. **Organizacje nie powinny włączać ani wymuszać użytkowników, jeśli korzystają z zasad dostępu warunkowego.**
+> Włączenie usługi Azure MFA za pośrednictwem zasad dostępu warunkowego nie zmieni stanu użytkownika. Nie zaalarmuj użytkowników, którzy są wyłączeni. Dostęp warunkowy nie zmienia stanu. **Organizacje nie powinny włączać ani wymuszać użytkowników, jeśli korzystają z zasad dostępu warunkowego.**
 
-| Stan | Opis | Uwzględnione aplikacje nie korzystające z przeglądarki | Uwzględnione aplikacje przeglądarki | Zmodyfikowane nowoczesne uwierzytelnianie |
+| Stan | Opis | Dotyczy to aplikacji innych niż przeglądarki | Dotyczy to aplikacji przeglądarki | Nowoczesne uwierzytelnianie, którego dotyczy problem |
 |:---:| --- |:---:|:--:|:--:|
-| Disabled (Wyłączony) | Stan domyślny dla nowego użytkownika, który nie jest zarejestrowany w usłudze Azure MFA. | Nie | Nie | Nie |
-| Enabled (Włączony) | Użytkownik został zarejestrowany w usłudze Azure MFA, ale nie została zarejestrowana. Otrzymują monit o zarejestrowanie się przy następnym logowaniu. | Nie.  Nadal działają do momentu zakończenia procesu rejestracji. | Tak. Po wygaśnięciu sesji wymagana jest rejestracja w usłudze Azure MFA.| Tak. Po wygaśnięciu tokenu dostępu wymagana jest rejestracja w usłudze Azure MFA. |
-| Enforced (Wymuszony) | Użytkownik został zarejestrowany i ukończył proces rejestracji w usłudze Azure MFA. | Tak. Aplikacje wymagają haseł aplikacji. | Tak. Usługa Azure MFA jest wymagana podczas logowania. | Tak. Usługa Azure MFA jest wymagana podczas logowania. |
+| Disabled (Wyłączony) | Domyślny stan dla nowego użytkownika nie zarejestrowanego w usłudze Azure MFA. | Nie | Nie | Nie |
+| Enabled (Włączony) | Użytkownik został zarejestrowany w usłudze Azure MFA, ale nie został zarejestrowany. Otrzymują monit o zarejestrowanie się przy następnym loguchi. | Nie.  Kontynuują pracę do czasu zakończenia procesu rejestracji. | Tak. Po wygaśnięciu sesji wymagana jest rejestracja usługi Azure MFA.| Tak. Po wygaśnięciu tokenu dostępu wymagana jest rejestracja usługi Azure MFA. |
+| Enforced (Wymuszony) | Użytkownik został zarejestrowany i zakończył proces rejestracji usługi Azure MFA. | Tak. Aplikacje wymagają haseł aplikacji. | Tak. Usługa Azure MFA jest wymagana przy logowaniu. | Tak. Usługa Azure MFA jest wymagana przy logowaniu. |
 
-Stan użytkownika wskazuje, czy administrator zarejestrował je w usłudze Azure MFA, oraz czy ukończył proces rejestracji.
+Stan użytkownika odzwierciedla, czy administrator zarejestrował je w usłudze Azure MFA i czy zakończył proces rejestracji.
 
-Wszyscy użytkownicy zaczynają *wyłączać*. Po zarejestrowaniu użytkowników w usłudze Azure MFA ich stan zmieni się na *włączone*. Gdy użytkownicy będą mogli się zalogować i zakończyć proces rejestracji, ich stan zmieni się na *wymuszone*.
+Wszyscy użytkownicy zaczynają *wyłączone*. Podczas rejestrowania użytkowników w usłudze Azure MFA ich stan zmienia się na *Włączone*. Gdy włączono użytkowników zalogować się i zakończyć proces rejestracji, ich stan zmienia się *na Wymuszone*.
 
 > [!NOTE]
-> Jeśli usługa MFA jest ponownie włączona w obiekcie użytkownika, który ma już szczegóły rejestracji, na przykład telefon lub poczta e-mail, Administratorzy muszą ponownie zarejestrować usługę MFA za pośrednictwem Azure Portal lub PowerShell. Jeśli użytkownik nie zostanie ponownie zarejestrowany, jego stan MFA nie przechodzi z *włączonego* do *wymuszanego* w interfejsie użytkownika zarządzania uwierzytelnianiem usługi MFA.
+> Jeśli usługa MFA jest ponownie włączona w obiekcie użytkownika, który ma już szczegóły rejestracji, takie jak telefon lub poczta e-mail, administratorzy muszą ponownie zarejestrować usługę MFA tego użytkownika za pośrednictwem witryny Azure portal lub programu PowerShell. Jeśli użytkownik nie zarejestruje się ponownie, ich stan usługi MFA nie przechodzi z *Włączone* do *wymuszone* w interfejsie użytkownika zarządzania zarządzania usługi MFA.
 
 ### <a name="view-the-status-for-a-user"></a>Wyświetlanie stanu użytkownika
 
-Wykonaj następujące kroki, aby uzyskać dostęp do strony, na której można wyświetlać Stany użytkowników i zarządzać nimi:
+Aby uzyskać dostęp do strony, na której można wyświetlać stany użytkowników i zarządzać nimi, należy wykonać następujące czynności:
 
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator.
-2. Wyszukaj i wybierz *Azure Active Directory*. Wybierz pozycję **Użytkownicy** , > **Wszyscy użytkownicy**.
-3. Wybierz **Multi-Factor Authentication**. Może być konieczne przewinięcie w prawo, aby wyświetlić tę opcję menu. Wybierz Poniższy przykładowy zrzut ekranu, aby zobaczyć pełne okno Azure Portal i lokalizację menu:[![](media/howto-mfa-userstates/selectmfa-cropped.png "Wybierz Multi-Factor Authentication z okna użytkowników w usłudze Azure AD")](media/howto-mfa-userstates/selectmfa.png#lightbox)
-4. Zostanie wyświetlona nowa strona wyświetlająca Stany użytkownika.
-   ![stanu użytkownika usługi uwierzytelniania wieloskładnikowego — zrzut ekranu](./media/howto-mfa-userstates/userstate1.png)
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) jako administrator.
+2. Wyszukaj i wybierz pozycję *Azure Active Directory*. Wybierz **pozycję Użytkownicy** > **Wszyscy użytkownicy**.
+3. Wybierz pozycję **Uwierzytelnianie wieloskładnikowe**. Może być konieczne przewinięcie w prawo, aby wyświetlić tę opcję menu. Wybierz przykładowy zrzut ekranu poniżej, aby wyświetlić pełne okno witryny Azure portal i lokalizację menu:[![](media/howto-mfa-userstates/selectmfa-cropped.png "Wybieranie uwierzytelniania wieloskładnikowego w oknie Użytkownicy w usłudze Azure AD")](media/howto-mfa-userstates/selectmfa.png#lightbox)
+4. Zostanie otwarta nowa strona z wyświetlaniem stanów użytkownika.
+   ![stan użytkownika uwierzytelniania wieloskładnikowego — zrzut ekranu](./media/howto-mfa-userstates/userstate1.png)
 
-### <a name="change-the-status-for-a-user"></a>Zmiana stanu użytkownika
+### <a name="change-the-status-for-a-user"></a>Zmienianie stanu użytkownika
 
-1. Wykonaj powyższe kroki, aby przejść do strony **Użytkownicy** usługi Azure Multi-Factor Authentication.
-2. Znajdź użytkownika, który ma zostać włączony dla usługi Azure MFA. Może być konieczna zmiana widoku w górnej części strony.
-   ![wybierz użytkownika, aby zmienić stan dla na karcie Użytkownicy](./media/howto-mfa-userstates/enable1.png)
-3. Zaznacz pole obok nazwy.
-4. Po prawej stronie w obszarze **szybkie kroki**wybierz pozycję **Włącz** lub **Wyłącz**.
-   ![włączyć wybranego użytkownika, klikając pozycję Włącz w menu szybkie kroki](./media/howto-mfa-userstates/user1.png)
+1. Użyj powyższych kroków, aby przejść do strony **użytkowników** uwierzytelniania wieloskładnikowego platformy Azure.
+2. Znajdź użytkownika, którego chcesz włączyć dla usługi Azure MFA. Może być konieczna zmiana widoku u góry.
+   ![Wybierz użytkownika, dla niego, aby zmienić stan na karcie Użytkownicy](./media/howto-mfa-userstates/enable1.png)
+3. Zaznacz pole obok ich nazwy.
+4. Po prawej stronie w obszarze **Szybkie kroki**wybierz pozycję **Włącz** lub **Wyłącz**.
+   ![Włącz wybranego użytkownika, klikając włącz w menu szybkie kroki](./media/howto-mfa-userstates/user1.png)
 
    > [!TIP]
-   > *Włączone* użytkownicy są automatycznie przełączane w celu *wymuszenia* rejestracji w usłudze Azure MFA. Nie zmieniaj ręcznie stanu użytkownika na *wymuszone*.
+   > *Włączono* użytkowników są automatycznie przełączane do *wymuszone* podczas rejestracji usługi Azure MFA. Nie należy ręcznie zmieniać stanu użytkownika na *Wymuszony*.
 
-5. Potwierdź wybór w otwartym oknie podręcznym.
+5. Potwierdź swój wybór w otwieranych oknach podręcznych.
 
-Po włączeniu użytkowników Powiadom ich pocztą e-mail. Poinformuj ich o konieczności zarejestrowania się podczas następnego logowania. Ponadto, jeśli w organizacji są używane aplikacje nie korzystające z przeglądarki, które nie obsługują nowoczesnego uwierzytelniania, muszą one tworzyć hasła aplikacji. Możesz również dołączyć link do [podręcznika użytkownika końcowego usługi Azure MFA](../user-help/multi-factor-authentication-end-user.md) , aby ułatwić Ci rozpoczęcie pracy.
+Po włączeniu użytkowników powiadom ich za pośrednictwem poczty e-mail. Poinformuj ich, że zostaną poproszeni o zarejestrowanie się przy następnym loguchi. Ponadto jeśli organizacja używa aplikacji innych niż przeglądarki, które nie obsługują nowoczesnego uwierzytelniania, muszą utworzyć hasła aplikacji. Można również dołączyć łącze do [podręcznika użytkownika końcowego usługi Azure MFA,](../user-help/multi-factor-authentication-end-user.md) aby ułatwić im rozpoczęcie pracy.
 
-### <a name="use-powershell"></a>Używanie programu PowerShell
+### <a name="use-powershell"></a>Korzystanie z programu PowerShell
 
-Aby zmienić stan użytkownika przy użyciu [programu Azure AD PowerShell](/powershell/azure/overview), Zmień `$st.State`. Istnieją trzy możliwe stany:
+Aby zmienić stan użytkownika przy użyciu programu `$st.State`Azure AD [PowerShell,](/powershell/azure/overview)zmień plik . Istnieją trzy możliwe stany:
 
 * Enabled (Włączony)
 * Enforced (Wymuszony)
 * Disabled (Wyłączony)  
 
-Nie przenoś użytkowników bezpośrednio do stanu *wymuszonego* . W takim przypadku aplikacje niekorzystające z przeglądarki przestaną działać, ponieważ użytkownik nie przeszedł rejestrację usługi Azure MFA i uzyskał [hasło aplikacji](howto-mfa-mfasettings.md#app-passwords).
+Nie przenosij użytkowników bezpośrednio do stanu *Wymuszone.* Jeśli to zrobisz, aplikacje nie oparte na przeglądarce przestaną działać, ponieważ użytkownik nie przeszedł rejestracji usługi Azure MFA i uzyskał [hasło aplikacji](howto-mfa-mfasettings.md#app-passwords).
 
 Najpierw zainstaluj moduł, używając:
 
@@ -100,13 +100,13 @@ Najpierw zainstaluj moduł, używając:
    ```
 
 > [!TIP]
-> Nie zapomnij najpierw nawiązać połączenia za pomocą polecenia **Connect-MsolService**
+> Nie zapomnij połączyć się najpierw za pomocą **Connect-MsolService**
 
    ```PowerShell
    Connect-MsolService
    ```
 
-Ten przykładowy skrypt programu PowerShell umożliwia uwierzytelnianie wieloskładnikowe dla pojedynczego użytkownika:
+W tym przykładzie skrypt programu PowerShell umożliwia uwierzytelnianie wieloskładnikowe dla poszczególnych użytkowników:
 
    ```PowerShell
    Import-Module MSOnline
@@ -118,7 +118,7 @@ Ten przykładowy skrypt programu PowerShell umożliwia uwierzytelnianie wielosk�
    Set-MsolUser -UserPrincipalName bsimon@contoso.com -StrongAuthenticationRequirements $sta
    ```
 
-Korzystanie z programu PowerShell jest dobrym rozwiązaniem w przypadku konieczności zbiorczego włączania użytkowników. Przykładowo następujący skrypt pętli przez listę użytkowników i włącza uwierzytelnianie wieloskładnikowe na swoich kontach:
+Korzystanie z programu PowerShell jest dobrym rozwiązaniem, gdy trzeba zbiorczo włączyć użytkowników. Na przykład następujący skrypt pętli za pośrednictwem listy użytkowników i umożliwia mfa na swoich kontach:
 
    ```PowerShell
    $users = "bsimon@contoso.com","jsmith@contoso.com","ljacobson@contoso.com"
@@ -138,17 +138,17 @@ Aby wyłączyć usługę MFA, użyj tego skryptu:
    Get-MsolUser -UserPrincipalName user@domain.com | Set-MsolUser -StrongAuthenticationRequirements @()
    ```
 
-który może być również skrócony do:
+które można również skrócić do:
 
    ```PowerShell
    Set-MsolUser -UserPrincipalName user@domain.com -StrongAuthenticationRequirements @()
    ```
 
-### <a name="convert-users-from-per-user-mfa-to-conditional-access-based-mfa"></a>Konwertowanie użytkowników z usługi MFA na użytkownika na podstawie dostępu warunkowego
+### <a name="convert-users-from-per-user-mfa-to-conditional-access-based-mfa"></a>Konwertowanie użytkowników z usługi MFA na użytkownika na uwierzytelnianie wieloskładnikowe oparte na dostępie warunkowym
 
-Poniższe środowisko programu PowerShell może pomóc w konwersji do usługi Azure Multi-Factor Authentication opartej na dostęp warunkowy.
+Poniższy program PowerShell może pomóc w konwersji do usługi Azure multi-factor authentication oparty na usłudze Azure.
 
-Uruchom to środowisko PowerShell w oknie ISE lub Zapisz jako. Plik PS1 do uruchomienia lokalnego.
+Uruchom ten program PowerShell w oknie ISE lub zapisz jako . ps1, aby uruchomić lokalnie.
 
 ```PowerShell
 # Sets the MFA requirement state
@@ -185,12 +185,12 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 ```
 
 > [!NOTE]
-> Ostatnio zmieniono zachowanie i skrypt programu PowerShell powyżej. Wcześniej skrypt zapisany z metod MFA, wyłączył uwierzytelnianie MFA i przywrócił metody. Nie jest to już konieczne, ponieważ domyślne zachowanie funkcji Disable nie czyści metod.
+> Niedawno zmieniliśmy zachowanie i skrypt programu PowerShell powyżej odpowiednio. Wcześniej skrypt zapisane poza metody uwierzytelniania Wieloskładnikowego, wyłączone mfa i przywrócone metody. Nie jest to już konieczne teraz, gdy domyślne zachowanie wyłączenia nie wyczyści ć metod.
 >
-> Jeśli usługa MFA jest ponownie włączona w obiekcie użytkownika, który ma już szczegóły rejestracji, na przykład telefon lub poczta e-mail, Administratorzy muszą ponownie zarejestrować usługę MFA za pośrednictwem Azure Portal lub PowerShell. Jeśli użytkownik nie zostanie ponownie zarejestrowany, jego stan MFA nie przechodzi z *włączonego* do *wymuszanego* w interfejsie użytkownika zarządzania uwierzytelnianiem usługi MFA.
+> Jeśli usługa MFA jest ponownie włączona w obiekcie użytkownika, który ma już szczegóły rejestracji, takie jak telefon lub poczta e-mail, administratorzy muszą ponownie zarejestrować usługę MFA tego użytkownika za pośrednictwem witryny Azure portal lub programu PowerShell. Jeśli użytkownik nie zarejestruje się ponownie, ich stan usługi MFA nie przechodzi z *Włączone* do *wymuszone* w interfejsie użytkownika zarządzania zarządzania usługi MFA.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Dlaczego użytkownik był monitowany lub nie ma monitu o przeprowadzenie uwierzytelniania MFA? Zapoznaj się z sekcją [raport dotyczący logowania usługi Azure AD w artykule raporty w usłudze azure Multi-Factor Authentication](howto-mfa-reporting.md#azure-ad-sign-ins-report).
-* Aby skonfigurować dodatkowe ustawienia, takie jak Zaufane adresy IP, niestandardowe wiadomości głosowe i alerty oszustwa, zobacz artykuł [Konfigurowanie ustawień usługi Azure Multi-Factor Authentication](howto-mfa-mfasettings.md)
-* Informacje o zarządzaniu ustawieniami użytkownika w usłudze Azure Multi-Factor Authentication można znaleźć w artykule [Zarządzanie ustawieniami użytkownika w usłudze azure Multi-Factor Authentication w chmurze](howto-mfa-userdevicesettings.md)
+* Dlaczego użytkownik został poproszony lub nie został poproszony o wykonanie usługi MFA? Zobacz sekcję [Raport logowania usługi Azure AD w raporcie Raporty w dokumencie uwierzytelniania wieloskładnikowego platformy Azure](howto-mfa-reporting.md#azure-ad-sign-ins-report).
+* Aby skonfigurować dodatkowe ustawienia, takie jak zaufane pliki IP, niestandardowe wiadomości głosowe i alerty o oszustwach, zobacz artykuł [Konfigurowanie ustawień uwierzytelniania wieloskładnikowego platformy Azure](howto-mfa-mfasettings.md)
+* Informacje dotyczące zarządzania ustawieniami użytkownika dla uwierzytelniania wieloskładnikowego platformy Azure można znaleźć w artykule [Zarządzanie ustawieniami użytkownika za pomocą uwierzytelniania wieloskładnikowego platformy Azure w chmurze](howto-mfa-userdevicesettings.md)

@@ -1,6 +1,6 @@
 ---
 title: Dekodowanie komunikatów EDIFACT
-description: Sprawdź poprawność EDI i Generuj potwierdzenia przy użyciu dekodera komunikatów EDIFACT dla Azure Logic Apps z Pakiet integracyjny dla przedsiębiorstw
+description: Sprawdzanie poprawności edi i generowanie potwierdzeń za pomocą dekodera komunikatów EDIFACT dla aplikacji Logika Azure z pakietem integracji przedsiębiorstwa
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -9,91 +9,91 @@ ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 01/27/2017
 ms.openlocfilehash: 78c0d20c0f32a6d63d134e958b30d38fe11fcc5c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74790671"
 ---
-# <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Dekodowanie komunikatów EDIFACT dla Azure Logic Apps z Pakiet integracyjny dla przedsiębiorstw
+# <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Dekodowanie komunikatów EDIFACT dla aplikacji logiki azure za pomocą pakietu Enterprise Integration Pack
 
-Za pomocą łącznika komunikatu deEDIFACT można sprawdzić poprawność właściwości EDI i specyficznych dla partnera, podzielić zmiany na zestawy transakcji lub zachować całe zmiany i generować potwierdzenia dla przetworzonych transakcji. Aby użyć tego łącznika, należy dodać Łącznik do istniejącego wyzwalacza w aplikacji logiki.
+Za pomocą łącznika komunikatu Dekodowanie EDIFACT można sprawdzać poprawność właściwości EDI i właściwości specyficzne dla partnera, dzielić wymiany na zestawy transakcji lub zachowywać całe węzły przesiadkowe oraz generować potwierdzenia dla przetworzonych transakcji. Aby użyć tego łącznika, należy dodać łącznik do istniejącego wyzwalacza w aplikacji logiki.
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
-Oto elementy, których potrzebujesz:
+Oto potrzebne przedmioty:
 
-* Konto platformy Azure; Możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free)
-* [Konto integracji](logic-apps-enterprise-integration-create-integration-account.md) , które jest już zdefiniowane i skojarzone z subskrypcją platformy Azure. Musisz mieć konto integracji, aby używać łącznika komunikatu EDIFACT dekodowanie. 
-* Co najmniej dwóch [partnerów](logic-apps-enterprise-integration-partners.md) , które są już zdefiniowane na koncie integracji
-* [Umowa EDIFACT](logic-apps-enterprise-integration-edifact.md) , która jest już zdefiniowana na koncie integracji
+* Konto platformy Azure; można utworzyć [darmowe konto](https://azure.microsoft.com/free)
+* [Konto integracji,](logic-apps-enterprise-integration-create-integration-account.md) które jest już zdefiniowane i skojarzone z subskrypcją platformy Azure. Aby użyć łącznika komunikatu Dekodowanie EDIFACT, musisz mieć konto integracji. 
+* Co najmniej dwóch [partnerów,](logic-apps-enterprise-integration-partners.md) którzy są już zdefiniowani na koncie integracji
+* [Umowa EDIFACT,](logic-apps-enterprise-integration-edifact.md) która jest już zdefiniowana na koncie integracyjnym
 
 ## <a name="decode-edifact-messages"></a>Dekodowanie komunikatów EDIFACT
 
-1. [Utwórz aplikację logiki](quickstart-create-first-logic-app-workflow.md).
+1. [Tworzenie aplikacji logiki](quickstart-create-first-logic-app-workflow.md).
 
-2. Łącznik EDIFACT komunikatów dekodowania nie ma wyzwalaczy, dlatego należy dodać wyzwalacz do uruchamiania aplikacji logiki, jak wyzwalacz żądania. W Projektancie aplikacji logiki Dodaj wyzwalacz, a następnie Dodaj akcję do aplikacji logiki.
+2. Łącznik komunikatu Dekodowanie EDIFACT nie ma wyzwalaczy, więc należy dodać wyzwalacz do uruchamiania aplikacji logiki, takich jak wyzwalacz żądania. W projektancie aplikacji logiki dodaj wyzwalacz, a następnie dodaj akcję do aplikacji logiki.
 
-3. W polu wyszukiwania wprowadź ciąg "EDIFACT" jako filtr. Wybierz opcję **Dekoduj komunikat EDIFACT**.
+3. W polu wyszukiwania wpisz "EDIFACT" jako filtr. Wybierz **opcję Dekoduj komunikat EDIFACT**.
    
-    ![Wyszukaj EDIFACT](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage1.png)
+    ![szukaj EDIFACT](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage1.png)
 
-3. Jeśli nie utworzono wcześniej żadnych połączeń z kontem integracji, zostanie wyświetlony monit o utworzenie tego połączenia teraz. Nazwij połączenie i wybierz konto integracji, które chcesz połączyć.
+3. Jeśli wcześniej nie utworzyłeś żadnych połączeń z kontem integracji, zostanie wyświetlony monit o utworzenie tego połączenia. Nazwij połączenie i wybierz konto integracji, które chcesz połączyć.
    
-    ![Utwórz konto integracji](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage2.png)
+    ![tworzenie konta integracji](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage2.png)
 
-    Właściwości z gwiazdką są wymagane.
+    Wymagane są właściwości z gwiazdką.
 
     | Właściwość | Szczegóły |
     | --- | --- |
-    | Nazwa połączenia * |Wprowadź dowolną nazwę dla połączenia. |
-    | Konto integracji * |Wprowadź nazwę konta integracji. Upewnij się, że Twoje konto integracji i aplikacja logiki znajdują się w tej samej lokalizacji platformy Azure. |
+    | Nazwa połączenia * |Wprowadź dowolną nazwę połączenia. |
+    | Konto integracji * |Wprowadź nazwę konta integracyjnego. Upewnij się, że konto integracji i aplikacja logiki znajdują się w tej samej lokalizacji platformy Azure. |
 
 4. Po zakończeniu tworzenia połączenia wybierz pozycję **Utwórz**. Szczegóły połączenia powinny wyglądać podobnie do tego przykładu:
 
-    ![Szczegóły konta integracji](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage3.png)  
+    ![szczegóły konta integracji](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage3.png)  
 
-5. Po utworzeniu połączenia, jak pokazano w tym przykładzie, wybierz komunikat pliku EDIFACT Flat, aby zdekodować.
+5. Po utworzeniu połączenia, jak pokazano w tym przykładzie, wybierz płaski komunikat pliku EDIFACT do dekodowania.
 
-    ![utworzono połączenie z kontem integracji](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage4.png)  
+    ![utworzone połączenie z kontem integracji](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage4.png)  
 
-    Na przykład:
+    Przykład:
 
-    ![Wybieranie komunikatu prostego pliku EDIFACT do dekodowania](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage5.png)  
+    ![Wybierz płaski komunikat pliku EDIFACT do dekodowania](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage5.png)  
 
-## <a name="edifact-decoder-details"></a>Szczegóły dekodera EDIFACT
+## <a name="edifact-decoder-details"></a>Detale dekodera EDIFACT
 
-Łącznik EDIFACT dekodowanie wykonuje następujące zadania: 
+Łącznik Dekodowania EDIFACT wykonuje następujące zadania: 
 
-* Sprawdza poprawność koperty względem umowy partnera handlowego.
-* Rozwiązuje umowę przez dopasowanie kwalifikatora nadawcy & identyfikator i kwalifikator odbiorcy & identyfikator.
-* Dzieli wymianę na wiele transakcji, gdy wymiana zawiera więcej niż jedną transakcję na podstawie konfiguracji ustawień odbioru umowy.
-* Demontażuje wymianę.
-* Sprawdza poprawność EDI i właściwości specyficzne dla partnera, w tym:
-  * Weryfikacja struktury obwiedni wymiany
-  * Sprawdzanie poprawności schematu na kopercie względem schematu kontroli
-  * Sprawdzanie poprawności schematu dla elementów danych zestawu transakcji względem schematu komunikatów
-  * Sprawdzanie poprawności EDI dla elementów danych zestawu transakcji
-* Sprawdza, czy cyfry wymiany, grupy i kontroli zestawu transakcji nie są duplikatami (jeśli są skonfigurowane) 
-  * Sprawdza numer kontroli wymiany przed wcześniej odebranymi zmianami. 
-  * Sprawdza numer kontrolny grupy pod kątem innych numerów kontroli grupy w wymianie. 
-  * Sprawdza numer kontroli zestawu transakcji dla innych numerów kontroli zestawu transakcji w tej grupie.
-* Dzieli wymianę na zestawy transakcji lub zachowuje całą transakcję wymiany:
-  * Rozdziel wymianę jako zestawy transakcji — Zawieś zestawy transakcji w przypadku błędu: dzieli wymianę na zestawy transakcji i analizuje poszczególne zestawy transakcji. 
-  Akcja dekodowania X12 wyprowadza tylko te zestawy transakcji, których Walidacja nie powiodła się, do `badMessages`i wyprowadza pozostałe zestawy transakcji do `goodMessages`.
-  * Rozdziel wymianę jako zestawy transakcji — Zawieś wymianę w przypadku błędu: dzieli wymianę na zestawy transakcji i analizuje poszczególne zestawy transakcji. 
-  Jeśli co najmniej jeden zestaw transakcji w ramach walidacji niepowodzenia wymiany, Akcja dekodowania X12 wyprowadza wszystkie zestawy transakcji w tej wymianie do `badMessages`.
-  * Zachowaj zestawy transakcji zawieszania wymiany w przypadku błędu: Zachowaj wymianę i przetwórz całą partię zbiorczą. 
-  Akcja dekodowania X12 wyprowadza tylko te zestawy transakcji, których Walidacja nie powiodła się, do `badMessages`i wyprowadza pozostałe zestawy transakcji do `goodMessages`.
-  * Zachowaj wymianę — Wstrzymaj wymianę w przypadku błędu: Zachowaj wymianę i przetwórz całą partię zbiorczą. 
-  Jeśli co najmniej jeden zestaw transakcji w ramach walidacji niepowodzenia wymiany, Akcja dekodowania X12 wyprowadza wszystkie zestawy transakcji w tej wymianie do `badMessages`.
-* Generuje techniczne (kontrolkę) i/lub potwierdzenie funkcjonalności (jeśli są skonfigurowane).
-  * Potwierdzenie techniczne lub potwierdzenie CONTRL raportują wyniki sprawdzania składniowego kompletnej otrzymanej wymiany.
-  * Potwierdzenie funkcjonalne potwierdza akceptowanie lub odrzucanie odebranej wymiany lub grupy
+* Weryfikuje kopertę przed umową z partnerem handlowym.
+* Rozwiązuje umowę, dopasowując kwalifikator nadawcy & identyfikator i kwalifikator odbiorcy & identyfikator.
+* Dzieli wymianę na wiele transakcji, gdy wymiana ma więcej niż jedną transakcję na podstawie konfiguracji ustawień odbioru umowy.
+* Dezasembles wymiany.
+* Sprawdza poprawność właściwości EDI i specyficzne dla partnera, w tym:
+  * Walidacja struktury kopert wymiany
+  * Sprawdzanie poprawności schematu koperty względem schematu formantu
+  * Sprawdzanie poprawności schematu elementów danych zestawu transakcji względem schematu wiadomości
+  * Sprawdzanie poprawności EDI wykonywane na elementach danych zestawu transakcji
+* Sprawdza, czy numery kontroli wymiany, grupy i zestawu transakcji nie są duplikatami (jeśli są skonfigurowane) 
+  * Sprawdza numer kontroli wymiany na stosunku do wcześniej odebranych węzłów przesiadkowych. 
+  * Sprawdza numer kontrolny grupy pod względem innych numerów kontrolnych grupy w wymianie. 
+  * Sprawdza numer kontroli zestawu transakcji względem innych numerów kontroli zestawu transakcji w tej grupie.
+* Dzieli wymianę na zestawy transakcji lub zachowuje całą wymianę:
+  * Podziel interchange jako zestawy transakcji - wstrzymanie transakcji ustawia się na błąd: Dzieli wymiany na zestawy transakcji i analizuje każdy zestaw transakcji. 
+  Akcja Dekodowania X12 wyprowadza tylko te `badMessages`zestawy transakcji, które nie uwzględniają poprawności, i wyprowadza pozostałe transakcje na `goodMessages`.
+  * Split Interchange jako zestawy transakcji - zawiesić wymianę na błąd: Dzieli wymiany na zestawy transakcji i analizuje każdy zestaw transakcji. 
+  Jeśli co najmniej jeden zestaw transakcji w weryfikacji wymiany zakończy się niepowodzeniem, akcja Dekodowania X12 wyprowadza wszystkie zestawy transakcji w tej wymianie do `badMessages`.
+  * Zachowaj interchange - zawiesić zestawy transakcji na błąd: Zachowaj wymiany i przetwarzania całej wymiany partii. 
+  Akcja Dekodowania X12 wyprowadza tylko te `badMessages`zestawy transakcji, które nie uwzględniają poprawności, i wyprowadza pozostałe transakcje na `goodMessages`.
+  * Zachowaj wymianę - wstrzymaj wymianę na błąd: Zachowaj wymianę i przetwórz całą wymianę wsadową. 
+  Jeśli co najmniej jeden zestaw transakcji w weryfikacji wymiany zakończy się niepowodzeniem, akcja Dekodowania X12 wyprowadza wszystkie zestawy transakcji w tej wymianie do `badMessages`.
+* Generuje potwierdzenie techniczne (formantu) i/lub funkcjonalne (jeśli jest skonfigurowane).
+  * Potwierdzenie techniczne lub CONTRL ACK raportuje wyniki syntaktycznej kontroli pełnej otrzymanej wymiany.
+  * Potwierdzenie funkcjonalne potwierdza akceptację lub odrzucenie odebranej wymiany lub grupy
 
 ## <a name="view-swagger-file"></a>Wyświetl plik Swagger
-Aby wyświetlić szczegóły struktury Swagger dla łącznika EDIFACT, zobacz [EDIFACT](/connectors/edifact/).
+Aby wyświetlić szczegóły Swagger dla złącza EDIFACT, zobacz [EDIFACT](/connectors/edifact/).
 
 ## <a name="next-steps"></a>Następne kroki
-[Dowiedz się więcej o Pakiet integracyjny dla przedsiębiorstw](logic-apps-enterprise-integration-overview.md "Dowiedz się więcej o Pakiet integracyjny dla przedsiębiorstw") 
+[Dowiedz się więcej o pakiecie integracji dla przedsiębiorstw](logic-apps-enterprise-integration-overview.md "Dowiedz się więcej o pakiecie integracji w przedsiębiorstwie") 
 
